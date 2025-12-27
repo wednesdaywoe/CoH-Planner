@@ -25,31 +25,39 @@ function closePoolModal() {
  * @param {number} level - Minimum level required
  */
 function addPoolPower(pool, powerName, level) {
-    // Check pool limit
-    const poolsUsed = Build.pool.poolsUsed.length;
-    const newPool = !Build.pool.poolsUsed.includes(pool);
-    
+    // Use Build.pools (array of pools) rather than deprecated Build.pool
+    // Check pool limit (max 4 distinct pools)
+    const poolsUsed = Build.pools.length;
+    let poolData = Build.pools.find(p => p.name === pool || p.id === pool);
+    const newPool = !poolData;
+
     if (newPool && poolsUsed >= 4) {
         alert('Cannot select more than 4 different power pools!');
         return;
     }
-    
-    // Check if power already exists
-    const existing = Build.pool.powers.find(p => p.name === powerName);
+
+    // Check if power already exists across all pools
+    const existing = Build.pools.some(p => p.powers && p.powers.some(pp => pp.name === powerName));
     if (existing) {
         alert(`${powerName} is already in your build!`);
         return;
     }
-    
-    // Create and add power
+
+    // Ensure pool entry exists
+    if (!poolData) {
+        poolData = { id: pool, name: pool, powers: [] };
+        Build.pools.push(poolData);
+    }
+
+    // Create and add power to the pool
     const power = createPower(powerName, `${pool} Pool`, level, 6);
-    addPower('pool', power);
-    
+    poolData.powers.push(power);
+
     // Add to DOM
     addPoolPowerToDOM(power);
-    
+
     // Update pool counter
     updatePoolCounter();
-    
+
     closePoolModal();
 }

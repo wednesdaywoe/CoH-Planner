@@ -21,7 +21,7 @@ const Build = {
         inherent: null
     },
     level: 1, // Current character level
-    levelGatedMode: true, // Toggle for level-gated vs freeform
+    progressionMode: 'auto', // 'auto' or 'freeform'
     
     // Power sets
     primary: {
@@ -34,10 +34,7 @@ const Build = {
         name: '',
         powers: []
     },
-    pool: {
-        powers: [],
-        poolsUsed: [] // Track which pools are selected (max 4)
-    },
+    pools: [], // Array of {id, name, powers: []}
     inherent: {
         powers: []
     },
@@ -97,56 +94,40 @@ function createEnhancement(type, data) {
 // ============================================
 
 /**
- * Add a power to the build
- * @param {string} category - 'primary', 'secondary', 'pool', or 'inherent'
+ * Add a power to the build (LEGACY - use character-creator.js functions instead)
+ * @param {string} category - 'primary', 'secondary', or 'inherent'
  * @param {Object} power - Power object
  */
 function addPower(category, power) {
+    // Pool powers are now managed in character-creator.js via Build.pools array
     if (category === 'pool') {
-        Build.pool.powers.push(power);
-        
-        // Track pool usage
-        const poolName = power.powerSet.replace(' Pool', '');
-        if (!Build.pool.poolsUsed.includes(poolName)) {
-            Build.pool.poolsUsed.push(poolName);
-        }
-    } else {
-        Build[category].powers.push(power);
+        console.warn('addPower(pool) is deprecated - use character-creator.js pool functions');
+        return;
     }
     
+    Build[category].powers.push(power);
     console.log(`Added power: ${power.name} to ${category}`);
 }
 
 /**
- * Remove a power from the build
+ * Remove a power from the build (LEGACY)
  * @param {string} category - Power category
  * @param {string} powerName - Name of power to remove
  */
 function removePower(category, powerName) {
-    const collection = category === 'pool' ? Build.pool : Build[category];
+    // Pool powers are now managed in character-creator.js
+    if (category === 'pool') {
+        console.warn('removePower(pool) is deprecated - use character-creator.js pool functions');
+        return;
+    }
+    
+    const collection = Build[category];
     const index = collection.powers.findIndex(p => p.name === powerName);
     
     if (index !== -1) {
         collection.powers.splice(index, 1);
         console.log(`Removed power: ${powerName} from ${category}`);
-        
-        // Update pool tracking
-        if (category === 'pool') {
-            updatePoolTracking();
-        }
     }
-}
-
-/**
- * Update pool tracking after power removal
- */
-function updatePoolTracking() {
-    const poolsInUse = new Set();
-    Build.pool.powers.forEach(power => {
-        const poolName = power.powerSet.replace(' Pool', '');
-        poolsInUse.add(poolName);
-    });
-    Build.pool.poolsUsed = Array.from(poolsInUse);
 }
 
 /**
@@ -155,13 +136,20 @@ function updatePoolTracking() {
  * @returns {Object|null} Power object or null if not found
  */
 function findPower(powerName) {
-    const categories = ['primary', 'secondary', 'pool', 'inherent'];
-    
+    // Check primary/secondary/inherent
+    const categories = ['primary', 'secondary', 'inherent'];
     for (const category of categories) {
-        const collection = category === 'pool' ? Build.pool : Build[category];
-        const power = collection.powers.find(p => p.name === powerName);
+        const power = Build[category].powers.find(p => p.name === powerName);
         if (power) {
             return { category, power };
+        }
+    }
+    
+    // Check all pool powers
+    for (const pool of Build.pools) {
+        const power = pool.powers.find(p => p.name === powerName);
+        if (power) {
+            return { category: 'pool', power, poolId: pool.id };
         }
     }
     
@@ -369,33 +357,12 @@ function getActiveSetBonuses() {
 // ============================================
 
 /**
- * Initialize the build with demo data
+ * Initialize the build with demo data (DEPRECATED - not used in current implementation)
  */
 function initializeDemoBuild() {
-    // Primary powers
-    addPower('primary', createPower('Flares', 'Fire Blast', 1, 6));
-    addPower('primary', createPower('Fire Blast', 'Fire Blast', 1, 6));
-    addPower('primary', createPower('Fireball', 'Fire Blast', 2, 6));
-    addPower('primary', createPower('Rain of Fire', 'Fire Blast', 6, 6));
-    addPower('primary', createPower('Blaze', 'Fire Blast', 8, 6));
-    
-    // Secondary powers
-    addPower('secondary', createPower('Ring of Fire', 'Fire Manipulation', 1, 6));
-    addPower('secondary', createPower('Fire Sword', 'Fire Manipulation', 2, 6));
-    addPower('secondary', createPower('Combustion', 'Fire Manipulation', 4, 6));
-    
-    // Pool powers
-    addPower('pool', createPower('Hover', 'Flight Pool', 4, 6));
-    addPower('pool', createPower('Fly', 'Flight Pool', 14, 6));
-    addPower('pool', createPower('Maneuvers', 'Leadership Pool', 20, 6));
-    
-    // Inherent powers
-    addPower('inherent', createPower('Sprint', 'Inherent', 1, 1));
-    addPower('inherent', createPower('Rest', 'Inherent', 1, 1));
-    addPower('inherent', createPower('Brawl', 'Inherent', 1, 6));
-    addPower('inherent', createPower('Defiance', 'Inherent', 1, 0)); // No slots
-    
-    console.log('Demo build initialized:', Build);
+    // Note: Pool powers are now managed through character-creator.js
+    // This function is kept for reference only
+    console.warn('initializeDemoBuild() is deprecated');
 }
 
 // ============================================
@@ -434,8 +401,7 @@ function importBuild(jsonData) {
         // Clear current build
         Build.primary.powers = data.primary.powers || [];
         Build.secondary.powers = data.secondary.powers || [];
-        Build.pool.powers = data.pool.powers || [];
-        Build.pool.poolsUsed = data.pool.poolsUsed || [];
+        Build.pools = data.pools || []; // Use new pools array
         Build.inherent.powers = data.inherent.powers || [];
         
         // Restore sets

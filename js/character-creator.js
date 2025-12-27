@@ -376,8 +376,8 @@ function canSelectPrimaryPower(power) {
         return false; // Must pick secondary first!
     }
     
-    // STAGE 3: After first secondary - Check level gating
-    if (Build.levelGatedMode) {
+    // STAGE 3: After first secondary - Check progression mode
+    if (Build.progressionMode === 'auto') {
         return power.available <= Build.level; // Can only pick powers at or below current level
     } else {
         return true; // Freeform mode - all powers available
@@ -408,7 +408,7 @@ function canSelectSecondaryPower(power) {
     }
     
     // After first secondary: Normal level-based gating
-    if (Build.levelGatedMode) {
+    if (Build.progressionMode === 'auto') {
         return power.available <= Build.level; // Can only pick powers at or below current level
     } else {
         return true; // Freeform mode - all powers available
@@ -457,14 +457,13 @@ function selectPower(powerData, category) {
     // Add to build
     categoryData.powers.push(power);
     
-    // Increment character level in level-gated mode
-    if (Build.levelGatedMode) {
-        // Find the minimum level needed to select this power
-        const nextLevel = Math.max(Build.level, powerData.available);
-        if (nextLevel > Build.level) {
-            Build.level = nextLevel;
+    // Auto-level in auto mode: Jump to next power level
+    if (Build.progressionMode === 'auto') {
+        const nextPowerLevel = getNextPowerLevel(Build.level);
+        if (nextPowerLevel) {
+            Build.level = nextPowerLevel;
             updateCharacterLevel();
-            console.log(`Character level increased to ${Build.level}`);
+            console.log(`Auto-leveled to ${Build.level} (next power pick)`);
         }
     }
     
@@ -530,6 +529,84 @@ function refreshAvailablePowers() {
             updateAvailableSecondaryPowers(powerset);
         }
     }
+    
+    // Update pool powers column (column 4)
+    if (arePoolsUnlocked()) {
+        updatePoolPowersColumn();
+    }
+}
+
+/**
+ * Update pool powers column (column 4)
+ */
+function updatePoolPowersColumn() {
+    const container = document.querySelector('.column:nth-child(4) .column-content');
+    if (!container) return;
+    
+    // Clear existing content
+    container.innerHTML = '';
+    
+    // Add pool selector button
+    const addPoolBtn = document.createElement('button');
+    addPoolBtn.className = 'add-pool-btn';
+    addPoolBtn.textContent = '+ Add Power Pool';
+    addPoolBtn.onclick = () => openPoolPowerModal();
+    container.appendChild(addPoolBtn);
+    
+    // Display selected pool powers grouped by pool
+    Build.pools.forEach(poolData => {
+        const pool = POWER_POOLS[poolData.id];
+        if (!pool) return;
+        
+        // Only show pool if it has powers
+        if (poolData.powers.length === 0) return;
+        
+        // Create pool group
+        const poolGroup = document.createElement('div');
+        poolGroup.className = 'pool-power-group';
+        poolGroup.style.marginTop = '16px';
+        
+        // Pool header
+        const poolHeader = document.createElement('div');
+        poolHeader.style.fontWeight = '600';
+        poolHeader.style.fontSize = '11px';
+        poolHeader.style.color = 'var(--accent)';
+        poolHeader.style.textTransform = 'uppercase';
+        poolHeader.style.letterSpacing = '0.05em';
+        poolHeader.style.marginBottom = '8px';
+        poolHeader.textContent = pool.name;
+        poolGroup.appendChild(poolHeader);
+        
+        // Pool powers
+        const poolPowerNames = [];
+        poolData.powers.forEach(power => {
+            const powerElement = document.createElement('div');
+            powerElement.className = 'selected-power';
+            powerElement.dataset.powerName = power.name;
+            powerElement.innerHTML = `
+                <div class="selected-power-header">
+                    <span class="selected-power-name">${power.name}</span>
+                    <span class="selected-power-level">Level ${power.level}</span>
+                </div>
+                <div class="enhancement-slots"></div>
+            `;
+            
+            // Add tooltip - get original power data
+            const originalPower = getOriginalPowerData(power.name, 'pool', poolData.id);
+            if (originalPower) {
+                powerElement.onmouseenter = (e) => showPowerTooltip(e, originalPower, true);
+                powerElement.onmouseleave = () => hideTooltip();
+            }
+            
+            poolGroup.appendChild(powerElement);
+            poolPowerNames.push(power.name);
+        });
+
+        container.appendChild(poolGroup);
+
+        // Initialize slots after the group is in the DOM so querySelectorAll finds the elements
+        poolPowerNames.forEach(name => updatePowerSlots(name));
+    });
 }
 
 /**
@@ -552,6 +629,13 @@ function addPowerToColumn(power, category) {
         </div>
         <div class="enhancement-slots"></div>
     `;
+    
+    // Add tooltip - get original power data to show effects
+    const originalPower = getOriginalPowerData(power.name, category);
+    if (originalPower) {
+        powerElement.onmouseenter = (e) => showPowerTooltip(e, originalPower, true);
+        powerElement.onmouseleave = () => hideTooltip();
+    }
     
     // Add to column
     container.appendChild(powerElement);
@@ -626,7 +710,7 @@ function updatePrimaryColumnHeader(powersetName) {
     const columns = document.querySelectorAll('.column');
     const primaryColumn = columns[1];
     const header = primaryColumn.querySelector('.column-header');
-    header.textContent = `Primary: ${powersetName}`;
+    header.textContent = 'Primary Powers';
 }
 
 /**
@@ -637,7 +721,7 @@ function updateSecondaryColumnHeader(powersetName) {
     const columns = document.querySelectorAll('.column');
     const secondaryColumn = columns[2];
     const header = secondaryColumn.querySelector('.column-header');
-    header.textContent = `Secondary: ${powersetName}`;
+    header.textContent = 'Secondary Powers';
 }
 
 // ============================================
@@ -677,6 +761,33 @@ function updateInherentPowerDisplay(inherent) {
 // ============================================
 
 /**
+ * Get original power data from powersets or pools
+ * @param {string} powerName - Power name
+ * @param {string} category - 'primary', 'secondary', or 'pool'
+ * @param {string} poolId - Pool ID (for pool powers)
+ * @returns {Object|null} Original power data
+ */
+function getOriginalPowerData(powerName, category, poolId = null) {
+    if (category === 'primary' && Build.primary.id) {
+        const powerset = POWERSETS[Build.primary.id];
+        if (powerset) {
+            return powerset.powers.find(p => p.name === powerName);
+        }
+    } else if (category === 'secondary' && Build.secondary.id) {
+        const powerset = POWERSETS[Build.secondary.id];
+        if (powerset) {
+            return powerset.powers.find(p => p.name === powerName);
+        }
+    } else if (category === 'pool' && poolId) {
+        const pool = POWER_POOLS[poolId];
+        if (pool) {
+            return pool.powers.find(p => p.name === powerName);
+        }
+    }
+    return null;
+}
+
+/**
  * Format powerset ID to readable name
  * @param {string} powersetId - Powerset ID
  * @returns {string} Formatted name
@@ -692,27 +803,45 @@ function formatPowersetName(powersetId) {
  * Show detailed power tooltip
  * @param {Event} event - Mouse event
  * @param {Object} power - Power data
+ * @param {boolean} showEnhancements - Whether to show enhancement bonuses
  */
-function showPowerTooltip(event, power) {
+function showPowerTooltip(event, power, showEnhancements = false) {
     const tooltip = document.getElementById('tooltip');
-    if (!tooltip) return;
+    if (!tooltip) {
+        console.error('Tooltip element not found!');
+        return;
+    }
+    
+    if (!power) {
+        console.error('Power data is null!');
+        return;
+    }
     
     let html = `<div class="tooltip-title">${power.name}</div>`;
     
     // Power type
-    html += `<div class="tooltip-section">`;
-    html += `<div class="tooltip-label">Type</div>`;
-    html += `<div class="tooltip-value">${formatPowerType(power.type)}</div>`;
-    html += `</div>`;
+    if (power.type) {
+        html += `<div class="tooltip-section">`;
+        html += `<div class="tooltip-label">Type</div>`;
+        html += `<div class="tooltip-value">${formatPowerType(power.type)}</div>`;
+        html += `</div>`;
+    }
     
     // Description
-    html += `<div class="tooltip-section">`;
-    html += `<div class="tooltip-desc">${power.description}</div>`;
-    html += `</div>`;
+    if (power.description) {
+        html += `<div class="tooltip-section">`;
+        html += `<div class="tooltip-desc">${power.description}</div>`;
+        html += `</div>`;
+    }
     
     // Effects
     if (power.effects) {
         html += `<div class="tooltip-section" style="border-top: 1px solid var(--border); padding-top: 8px; margin-top: 8px;">`;
+        
+        // Note: Enhancement bonuses placeholder
+        if (showEnhancements) {
+            html += `<div style="font-size: 11px; color: var(--accent); margin-bottom: 6px; font-style: italic;">With Enhancements</div>`;
+        }
         
         // Damage
         if (power.effects.damage) {
@@ -797,6 +926,38 @@ function showPowerTooltip(event, power) {
             html += `</div>`;
         }
         
+        // Defense
+        if (power.effects.defense) {
+            html += `<div class="tooltip-stat">`;
+            html += `<span class="tooltip-label">Defense:</span> `;
+            html += `<span class="tooltip-value">+${(power.effects.defense * 100).toFixed(1)}%</span>`;
+            html += `</div>`;
+        }
+        
+        // Resistance
+        if (power.effects.resistance) {
+            html += `<div class="tooltip-stat">`;
+            html += `<span class="tooltip-label">Resistance:</span> `;
+            html += `<span class="tooltip-value">+${(power.effects.resistance * 100).toFixed(1)}%</span>`;
+            html += `</div>`;
+        }
+        
+        // Regeneration
+        if (power.effects.regeneration !== undefined) {
+            html += `<div class="tooltip-stat">`;
+            html += `<span class="tooltip-label">Regeneration:</span> `;
+            html += `<span class="tooltip-value">+${(power.effects.regeneration * 100).toFixed(1)}%</span>`;
+            html += `</div>`;
+        }
+        
+        // Recovery
+        if (power.effects.recovery !== undefined) {
+            html += `<div class="tooltip-stat">`;
+            html += `<span class="tooltip-label">Recovery:</span> `;
+            html += `<span class="tooltip-value">+${(power.effects.recovery * 100).toFixed(1)}%</span>`;
+            html += `</div>`;
+        }
+        
         // Buffs
         if (power.effects.tohitBuff !== undefined) {
             html += `<div class="tooltip-stat">`;
@@ -862,12 +1023,11 @@ function positionTooltip(tooltip, event) {
     let x = event.clientX + offset;
     let y = event.clientY + offset;
     
-    // Get tooltip dimensions
+    // Set initial position
     tooltip.style.left = x + 'px';
     tooltip.style.top = y + 'px';
-    tooltip.style.visibility = 'hidden';
-    tooltip.style.display = 'block';
     
+    // Get tooltip dimensions for edge detection
     const rect = tooltip.getBoundingClientRect();
     
     // Adjust if tooltip goes off right edge
@@ -880,9 +1040,9 @@ function positionTooltip(tooltip, event) {
         y = event.clientY - rect.height - offset;
     }
     
+    // Apply final position
     tooltip.style.left = x + 'px';
     tooltip.style.top = y + 'px';
-    tooltip.style.visibility = 'visible';
 }
 
 // Initialize on page load
@@ -891,17 +1051,416 @@ window.addEventListener('DOMContentLoaded', function() {
 });
 
 // ============================================
-// LEVEL GATING MODE TOGGLE
+// POWER POOL MANAGEMENT
 // ============================================
 
 /**
- * Toggle between level-gated and freeform mode
+ * Check if power pools are unlocked (level 4+)
+ * @returns {boolean}
  */
-function toggleLevelGatedMode() {
-    const checkbox = document.getElementById('levelGatedMode');
-    Build.levelGatedMode = checkbox.checked;
+function arePoolsUnlocked() {
+    return Build.level >= 4;
+}
+
+/**
+ * Check if a pool power can be selected
+ * @param {Object} pool - Pool definition
+ * @param {Object} power - Power from pool
+ * @returns {boolean}
+ */
+function canSelectPoolPower(pool, power) {
+    // Pools unlock at level 4
+    if (!arePoolsUnlocked()) {
+        return false;
+    }
     
-    console.log(`Level-gated mode: ${Build.levelGatedMode ? 'ON' : 'OFF'}`);
+    // Check level requirement
+    if (Build.progressionMode === 'auto' && power.available > Build.level) {
+        return false;
+    }
+    
+    // Rank 1-2: Available immediately (at level 4+)
+    if (power.rank === 1 || power.rank === 2) {
+        return true;
+    }
+    
+    // Rank 3-4: Check prerequisite count
+    const poolData = Build.pools.find(p => p.id === pool.id);
+    if (!poolData) {
+        return false; // Pool not selected yet
+    }
+    
+    const powersTaken = poolData.powers.length;
+    const requiredCount = power.prerequisiteCount || 0;
+    
+    return powersTaken >= requiredCount;
+}
+
+/**
+ * Add a power pool to the build
+ * @param {string} poolId - Pool ID
+ */
+function addPowerPool(poolId) {
+    // Check if pool already added
+    if (Build.pools.some(p => p.id === poolId)) {
+        console.log(`Pool already added: ${poolId}`);
+        return;
+    }
+    
+    // Max 4 pools
+    if (Build.pools.length >= 4) {
+        alert('Maximum 4 power pools allowed');
+        return;
+    }
+    
+    const pool = POWER_POOLS[poolId];
+    if (!pool) {
+        console.warn(`Pool not found: ${poolId}`);
+        return;
+    }
+    
+    // Add pool to build
+    Build.pools.push({
+        id: poolId,
+        name: pool.name,
+        powers: []
+    });
+    
+    console.log(`Added pool: ${pool.name}`);
+    
+    // Close modal
+    closePoolSelector();
+    
+    // Refresh available powers
+    refreshAvailablePowers();
+}
+
+/**
+ * Remove a power pool from the build
+ * @param {string} poolId - Pool ID
+ */
+function removePowerPool(poolId) {
+    const index = Build.pools.findIndex(p => p.id === poolId);
+    if (index === -1) {
+        return;
+    }
+    
+    // Remove pool and all its powers
+    Build.pools.splice(index, 1);
+    
+    console.log(`Removed pool: ${poolId}`);
+    
+    // Refresh UI
+    refreshAvailablePowers();
+}
+
+/**
+ * Select a power from a power pool
+ * @param {Object} powerData - Power definition
+ * @param {string} poolId - Pool ID
+ */
+function selectPoolPower(powerData, poolId) {
+    const poolData = Build.pools.find(p => p.id === poolId);
+    if (!poolData) {
+        console.error(`Pool not found: ${poolId}`);
+        return;
+    }
+    
+    // Check if already selected
+    if (poolData.powers.some(p => p.name === powerData.name)) {
+        console.log(`${powerData.name} already selected`);
+        return;
+    }
+    
+    // Create power object
+    const power = {
+        name: powerData.name,
+        level: powerData.available,
+        rank: powerData.rank,
+        powerSet: poolData.name,
+        category: 'pool',
+        poolId: poolId,
+        slots: [null],
+        maxSlots: 6,
+        allowedEnhancements: powerData.allowedEnhancements,
+        effects: powerData.effects
+    };
+    
+    // Add to pool
+    poolData.powers.push(power);
+    
+    // Auto-level in auto mode
+    if (Build.progressionMode === 'auto') {
+        const nextPowerLevel = getNextPowerLevel(Build.level);
+        if (nextPowerLevel) {
+            Build.level = nextPowerLevel;
+            updateCharacterLevel();
+            console.log(`Auto-leveled to ${Build.level} (next power pick)`);
+        }
+    }
+    
+    // Refresh UI
+    refreshAvailablePowers();
+    
+    console.log(`Added pool power: ${powerData.name} from ${poolData.name}`);
+}
+
+/**
+ * Remove a pool power from build
+ * @param {string} powerName - Power name
+ * @param {string} poolId - Pool ID
+ */
+function removePoolPowerFromBuild(powerName, poolId) {
+    const poolData = Build.pools.find(p => p.id === poolId);
+    if (!poolData) return;
+    
+    const index = poolData.powers.findIndex(p => p.name === powerName);
+    if (index === -1) return;
+    
+    // Remove power
+    poolData.powers.splice(index, 1);
+    
+    // Refresh UI
+    refreshAvailablePowers();
+    
+    console.log(`Removed pool power: ${powerName}`);
+}
+
+/**
+ * Open pool power selection modal
+ */
+function openPoolPowerModal() {
+    // Create modal overlay
+    const modal = document.createElement('div');
+    modal.id = 'poolPowerModal';
+    modal.className = 'simple-modal';
+    
+    // Create modal content container
+    const modalContent = document.createElement('div');
+    modalContent.className = 'simple-modal-content pool-modal-content';
+    
+    // Header
+    const header = document.createElement('h3');
+    header.textContent = 'Select Power Pool Power';
+    modalContent.appendChild(header);
+    
+    // Scrollable list container
+    const listContainer = document.createElement('div');
+    listContainer.className = 'pool-modal-list';
+    
+    // Build pool sections
+    Object.values(POWER_POOLS).forEach(pool => {
+        const poolSection = document.createElement('div');
+        poolSection.className = 'pool-section';
+        
+        // Pool header
+        const poolHeader = document.createElement('div');
+        poolHeader.className = 'pool-section-header';
+        poolHeader.textContent = pool.name;
+        poolSection.appendChild(poolHeader);
+        
+        // Pool powers
+        pool.powers.forEach(power => {
+            const canSelect = canSelectPoolPowerInModal(pool, power);
+            
+            const powerOption = document.createElement('div');
+            powerOption.className = 'pool-power-option';
+            if (!canSelect) {
+                powerOption.classList.add('disabled');
+            }
+            
+            // Power info
+            const powerInfo = document.createElement('div');
+            
+            const powerName = document.createElement('div');
+            powerName.className = 'pool-power-name';
+            powerName.textContent = power.name;
+            powerInfo.appendChild(powerName);
+            
+            const powerDesc = document.createElement('div');
+            powerDesc.className = 'pool-power-desc';
+            powerDesc.textContent = power.description;
+            powerInfo.appendChild(powerDesc);
+            
+            powerOption.appendChild(powerInfo);
+            
+            // Level requirement
+            const powerLevel = document.createElement('div');
+            powerLevel.className = 'pool-power-level';
+            let levelText = `Level ${power.available}`;
+            if (power.prerequisiteCount) {
+                levelText += ` (${power.prerequisiteCount}+ from ${pool.name})`;
+            }
+            powerLevel.textContent = levelText;
+            powerOption.appendChild(powerLevel);
+            
+            // Add click handler if selectable
+            if (canSelect) {
+                powerOption.style.cursor = 'pointer';
+                powerOption.addEventListener('click', () => {
+                    selectPoolPowerFromModal(pool.id, power.name);
+                });
+            }
+            
+            // Add tooltip (base values for modal)
+            powerOption.addEventListener('mouseenter', (e) => {
+                showPowerTooltip(e, power, false);
+            });
+            powerOption.addEventListener('mouseleave', () => {
+                hideTooltip();
+            });
+            
+            poolSection.appendChild(powerOption);
+        });
+        
+        listContainer.appendChild(poolSection);
+    });
+    
+    modalContent.appendChild(listContainer);
+    
+    // Cancel button
+    const cancelBtn = document.createElement('button');
+    cancelBtn.textContent = 'Cancel';
+    cancelBtn.addEventListener('click', closePoolPowerModal);
+    modalContent.appendChild(cancelBtn);
+    
+    // Assemble modal
+    modal.appendChild(modalContent);
+    
+    // Close on background click
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            closePoolPowerModal();
+        }
+    });
+    
+    // Add to page
+    document.body.appendChild(modal);
+}
+
+/**
+ * Check if a pool power can be selected (in modal context)
+ * @param {Object} pool - Pool definition
+ * @param {Object} power - Power from pool
+ * @returns {boolean}
+ */
+function canSelectPoolPowerInModal(pool, power) {
+    // Check if already selected
+    const poolData = Build.pools.find(p => p.id === pool.id);
+    if (poolData && poolData.powers.some(p => p.name === power.name)) {
+        return false; // Already selected
+    }
+    
+    // Pools unlock at level 4
+    if (Build.level < 4) {
+        return false;
+    }
+    
+    // Check level requirement
+    if (Build.progressionMode === 'auto' && power.available > Build.level) {
+        return false;
+    }
+    
+    // Rank 1-2: Available immediately (at level 4+)
+    if (power.rank === 1 || power.rank === 2) {
+        return true;
+    }
+    
+    // Rank 3-4: Check prerequisite count
+    if (!poolData) {
+        return false; // Pool not added yet, can't select rank 3-4
+    }
+    
+    const powersTaken = poolData.powers.length;
+    const requiredCount = power.prerequisiteCount || 0;
+    
+    return powersTaken >= requiredCount;
+}
+
+/**
+ * Select a pool power from the modal
+ * @param {string} poolId - Pool ID
+ * @param {string} powerName - Power name
+ */
+function selectPoolPowerFromModal(poolId, powerName) {
+    const pool = POWER_POOLS[poolId];
+    if (!pool) return;
+    
+    const power = pool.powers.find(p => p.name === powerName);
+    if (!power) return;
+    
+    // Add pool to build if not already added
+    let poolData = Build.pools.find(p => p.id === poolId);
+    if (!poolData) {
+        // Check max pools
+        if (Build.pools.length >= 4) {
+            alert('Maximum 4 power pools allowed');
+            return;
+        }
+        
+        poolData = {
+            id: poolId,
+            name: pool.name,
+            powers: []
+        };
+        Build.pools.push(poolData);
+        console.log(`Added pool: ${pool.name}`);
+    }
+    
+    // Create power object
+    const powerObj = {
+        name: power.name,
+        level: power.available,
+        rank: power.rank,
+        powerSet: pool.name,
+        category: 'pool',
+        poolId: poolId,
+        slots: [null],
+        maxSlots: 6,
+        allowedEnhancements: power.allowedEnhancements,
+        effects: power.effects
+    };
+    
+    // Add to pool
+    poolData.powers.push(powerObj);
+    
+    // Auto-level in auto mode
+    if (Build.progressionMode === 'auto') {
+        const nextPowerLevel = getNextPowerLevel(Build.level);
+        if (nextPowerLevel) {
+            Build.level = nextPowerLevel;
+            updateCharacterLevel();
+            console.log(`Auto-leveled to ${Build.level} (next power pick)`);
+        }
+    }
+    
+    console.log(`Added pool power: ${power.name} from ${pool.name}`);
+    
+    // Close modal and refresh
+    closePoolPowerModal();
+    refreshAvailablePowers();
+}
+
+/**
+ * Close pool power modal
+ */
+function closePoolPowerModal() {
+    const modal = document.getElementById('poolPowerModal');
+    if (modal) modal.remove();
+}
+
+// ============================================
+// PROGRESSION MODE
+// ============================================
+
+/**
+ * Change progression mode (auto-level or freeform)
+ */
+function changeProgressionMode() {
+    const modeSelect = document.getElementById('progressionMode');
+    Build.progressionMode = modeSelect.value;
+    
+    console.log(`Progression mode: ${Build.progressionMode}`);
     
     // Refresh available powers to update gating
     refreshAvailablePowers();

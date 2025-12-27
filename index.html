@@ -35,10 +35,11 @@
             </div>
 
             <div class="level-info">
-                <label>
-                    <input type="checkbox" id="levelGatedMode" onchange="toggleLevelGatedMode()" checked>
-                    Level-Gated Mode
-                </label>
+                <label>Progression Mode:</label>
+                <select id="progressionMode" onchange="changeProgressionMode()">
+                    <option value="auto">Auto-Level (Recommended)</option>
+                    <option value="freeform">Freeform</option>
+                </select>
                 <label>Character Level: <span id="charLevel">1</span></label>
             </div>
 
@@ -103,7 +104,7 @@
 
             <!-- Column B: Primary Powers -->
             <div class="column">
-                <div class="column-header">Primary: Fire Blast</div>
+                <div class="column-header">Primary Powers</div>
                 <div class="column-content" id="selectedPrimaryPowers">
                     <!-- Selected primary powers will be populated here -->
                 </div>
@@ -111,97 +112,17 @@
 
             <!-- Column C: Secondary Powers -->
             <div class="column">
-                <div class="column-header">Secondary: Fire Manipulation</div>
+                <div class="column-header">Secondary Powers</div>
                 <div class="column-content" id="selectedSecondaryPowers">
                     <!-- Selected secondary powers will be populated here -->
                 </div>
             </div>
 
-            <!-- Column D: Pool Powers + Inherent -->
+            <!-- Column D: Pool Powers -->
             <div class="column">
-                <div class="column-header">Power Pools & Epic</div>
+                <div class="column-header">Pool Powers</div>
                 <div class="column-content">
-                    <button class="add-pool-btn" onclick="openPoolPowerModal()">+ Add Power Pool (2/4 pools used)</button>
-
-                    <div style="margin-top: 12px;">
-                        <div class="selected-power">
-                            <div class="selected-power-header">
-                                <span class="selected-power-name">Hover</span>
-                                <span class="selected-power-level">Level 4</span>
-                            </div>
-                            <div class="enhancement-slots">
-                                <div class="slot io">IO</div>
-                                <div class="slot empty" onclick="openPicker('Hover', 'Flight Pool')">+</div>
-                            </div>
-                        </div>
-
-                        <div class="selected-power">
-                            <div class="selected-power-header">
-                                <span class="selected-power-name">Fly</span>
-                                <span class="selected-power-level">Level 14</span>
-                            </div>
-                            <div class="enhancement-slots">
-                                <div class="slot io">IO</div>
-                                <div class="slot io">IO</div>
-                            </div>
-                        </div>
-
-                        <div class="selected-power">
-                            <div class="selected-power-header">
-                                <span class="selected-power-name">Maneuvers</span>
-                                <span class="selected-power-level">Level 20</span>
-                            </div>
-                            <div class="enhancement-slots">
-                                <div class="slot io">IO</div>
-                                <div class="slot empty" onclick="openPicker('Maneuvers', 'Leadership Pool')">+</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Inherent Powers Section (Always at Bottom) -->
-                    <div style="margin-top: auto; padding-top: 20px; border-top: 1px solid var(--border);">
-                        <div style="font-weight: 600; font-size: 11px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px;">Inherent Powers</div>
-                        
-                        <div class="selected-power">
-                            <div class="selected-power-header">
-                                <span class="selected-power-name">Sprint</span>
-                                <span class="selected-power-level">Level 1</span>
-                            </div>
-                            <div class="enhancement-slots">
-                                <div class="slot empty" onclick="openPicker('Sprint', 'Inherent')">+</div>
-                            </div>
-                        </div>
-
-                        <div class="selected-power">
-                            <div class="selected-power-header">
-                                <span class="selected-power-name">Rest</span>
-                                <span class="selected-power-level">Level 1</span>
-                            </div>
-                            <div class="enhancement-slots">
-                                <div class="slot empty" onclick="openPicker('Rest', 'Inherent')">+</div>
-                            </div>
-                        </div>
-
-                        <div class="selected-power">
-                            <div class="selected-power-header">
-                                <span class="selected-power-name">Brawl</span>
-                                <span class="selected-power-level">Level 1</span>
-                            </div>
-                            <div class="enhancement-slots">
-                                <div class="slot empty" onclick="openPicker('Brawl', 'Inherent')">+</div>
-                            </div>
-                        </div>
-
-                        <div class="selected-power">
-                            <div class="selected-power-header">
-                                <span class="selected-power-name">Defiance</span>
-                                <span class="selected-power-level">Inherent</span>
-                            </div>
-                            <div style="font-size: 11px; color: var(--text-tertiary); font-style: italic; margin-top: 4px;">
-                                No slots available
-                            </div>
-                        </div>
-                    </div>
+                    <!-- Pool powers will be populated by JavaScript -->
                 </div>
             </div>
         </div>
@@ -307,235 +228,26 @@
                     </div>
                 </div>
 
-
-
-    <!-- Pool Power Selection Modal -->
-    <div class="modal-overlay" id="poolModal" onclick="closePoolModal()">
-        <div class="modal" onclick="event.stopPropagation()">
-            <div class="modal-header">
-                <div class="modal-title">
-                    <span>Select a Power Pool Power</span>
-                </div>
-                <button class="modal-close" onclick="closePoolModal()">×</button>
-            </div>
-
-            <div class="pool-modal-body">
-                <!-- Flight -->
-                <div class="pool-group">
-                    <div class="pool-group-header">Flight</div>
-                    <div class="pool-power-option" onclick="addPoolPower('Flight', 'Hover', 4)">
-                        <div>
-                            <div class="pool-power-name">Hover</div>
-                            <div class="pool-power-desc">Fly at a slow pace while attacking</div>
-                        </div>
-                        <div class="pool-power-level">Level 4</div>
-                    </div>
-                    <div class="pool-power-option" onclick="addPoolPower('Flight', 'Fly', 14)">
-                        <div>
-                            <div class="pool-power-name">Fly</div>
-                            <div class="pool-power-desc">Fly through the air at high speed</div>
-                        </div>
-                        <div class="pool-power-level">Level 14</div>
-                    </div>
-                    <div class="pool-power-option" onclick="addPoolPower('Flight', 'Air Superiority', 4)">
-                        <div>
-                            <div class="pool-power-name">Air Superiority</div>
-                            <div class="pool-power-desc">Melee attack that knocks foes from the sky</div>
-                        </div>
-                        <div class="pool-power-level">Level 4</div>
-                    </div>
-                    <div class="pool-power-option" onclick="addPoolPower('Flight', 'Group Fly', 20)">
-                        <div>
-                            <div class="pool-power-name">Group Fly</div>
-                            <div class="pool-power-desc">Grant flight to nearby allies</div>
-                        </div>
-                        <div class="pool-power-level">Level 20</div>
-                    </div>
-                </div>
-
-                <!-- Speed -->
-                <div class="pool-group">
-                    <div class="pool-group-header">Speed</div>
-                    <div class="pool-power-option" onclick="addPoolPower('Speed', 'Hasten', 4)">
-                        <div>
-                            <div class="pool-power-name">Hasten</div>
-                            <div class="pool-power-desc">Greatly increase recharge speed</div>
-                        </div>
-                        <div class="pool-power-level">Level 4</div>
-                    </div>
-                    <div class="pool-power-option" onclick="addPoolPower('Speed', 'Super Speed', 14)">
-                        <div>
-                            <div class="pool-power-name">Super Speed</div>
-                            <div class="pool-power-desc">Run at super speed</div>
-                        </div>
-                        <div class="pool-power-level">Level 14</div>
-                    </div>
-                    <div class="pool-power-option" onclick="addPoolPower('Speed', 'Flurry', 4)">
-                        <div>
-                            <div class="pool-power-name">Flurry</div>
-                            <div class="pool-power-desc">Melee attack with rapid punches</div>
-                        </div>
-                        <div class="pool-power-level">Level 4</div>
-                    </div>
-                    <div class="pool-power-option" onclick="addPoolPower('Speed', 'Burnout', 20)">
-                        <div>
-                            <div class="pool-power-name">Burnout</div>
-                            <div class="pool-power-desc">Immediately recharge all powers</div>
-                        </div>
-                        <div class="pool-power-level">Level 20</div>
-                    </div>
-                </div>
-
-                <!-- Fighting -->
-                <div class="pool-group">
-                    <div class="pool-group-header">Fighting</div>
-                    <div class="pool-power-option" onclick="addPoolPower('Fighting', 'Boxing', 4)">
-                        <div>
-                            <div class="pool-power-name">Boxing</div>
-                            <div class="pool-power-desc">Melee punch attack with chance to stun</div>
-                        </div>
-                        <div class="pool-power-level">Level 4</div>
-                    </div>
-                    <div class="pool-power-option" onclick="addPoolPower('Fighting', 'Kick', 4)">
-                        <div>
-                            <div class="pool-power-name">Kick</div>
-                            <div class="pool-power-desc">Melee kick attack with knockback</div>
-                        </div>
-                        <div class="pool-power-level">Level 4</div>
-                    </div>
-                    <div class="pool-power-option" onclick="addPoolPower('Fighting', 'Tough', 14)">
-                        <div>
-                            <div class="pool-power-name">Tough</div>
-                            <div class="pool-power-desc">Toggle: Smashing/Lethal resistance</div>
-                        </div>
-                        <div class="pool-power-level">Level 14</div>
-                    </div>
-                    <div class="pool-power-option" onclick="addPoolPower('Fighting', 'Weave', 20)">
-                        <div>
-                            <div class="pool-power-name">Weave</div>
-                            <div class="pool-power-desc">Toggle: Melee/Ranged/AoE defense</div>
-                        </div>
-                        <div class="pool-power-level">Level 20</div>
-                    </div>
-                </div>
-
-                <!-- Leadership -->
-                <div class="pool-group">
-                    <div class="pool-group-header">Leadership</div>
-                    <div class="pool-power-option" onclick="addPoolPower('Leadership', 'Maneuvers', 4)">
-                        <div>
-                            <div class="pool-power-name">Maneuvers</div>
-                            <div class="pool-power-desc">Toggle: Team defense buff</div>
-                        </div>
-                        <div class="pool-power-level">Level 4</div>
-                    </div>
-                    <div class="pool-power-option" onclick="addPoolPower('Leadership', 'Assault', 4)">
-                        <div>
-                            <div class="pool-power-name">Assault</div>
-                            <div class="pool-power-desc">Toggle: Team damage buff</div>
-                        </div>
-                        <div class="pool-power-level">Level 4</div>
-                    </div>
-                    <div class="pool-power-option" onclick="addPoolPower('Leadership', 'Tactics', 14)">
-                        <div>
-                            <div class="pool-power-name">Tactics</div>
-                            <div class="pool-power-desc">Toggle: Team accuracy and perception buff</div>
-                        </div>
-                        <div class="pool-power-level">Level 14</div>
-                    </div>
-                    <div class="pool-power-option" onclick="addPoolPower('Leadership', 'Vengeance', 20)">
-                        <div>
-                            <div class="pool-power-name">Vengeance</div>
-                            <div class="pool-power-desc">Buff team when ally is defeated</div>
-                        </div>
-                        <div class="pool-power-level">Level 20</div>
-                    </div>
-                </div>
-
-                <!-- Leaping -->
-                <div class="pool-group">
-                    <div class="pool-group-header">Leaping</div>
-                    <div class="pool-power-option" onclick="addPoolPower('Leaping', 'Combat Jumping', 4)">
-                        <div>
-                            <div class="pool-power-name">Combat Jumping</div>
-                            <div class="pool-power-desc">Toggle: Jump while attacking, defense buff</div>
-                        </div>
-                        <div class="pool-power-level">Level 4</div>
-                    </div>
-                    <div class="pool-power-option" onclick="addPoolPower('Leaping', 'Super Jump', 14)">
-                        <div>
-                            <div class="pool-power-name">Super Jump</div>
-                            <div class="pool-power-desc">Jump great heights and distances</div>
-                        </div>
-                        <div class="pool-power-level">Level 14</div>
-                    </div>
-                    <div class="pool-power-option" onclick="addPoolPower('Leaping', 'Jump Kick', 4)">
-                        <div>
-                            <div class="pool-power-name">Jump Kick</div>
-                            <div class="pool-power-desc">Melee kick with knockback</div>
-                        </div>
-                        <div class="pool-power-level">Level 4</div>
-                    </div>
-                    <div class="pool-power-option" onclick="addPoolPower('Leaping', 'Acrobatics', 20)">
-                        <div>
-                            <div class="pool-power-name">Acrobatics</div>
-                            <div class="pool-power-desc">Toggle: Hold protection</div>
-                        </div>
-                        <div class="pool-power-level">Level 20</div>
-                    </div>
-                </div>
-
-                <!-- Medicine -->
-                <div class="pool-group">
-                    <div class="pool-group-header">Medicine</div>
-                    <div class="pool-power-option" onclick="addPoolPower('Medicine', 'Aid Other', 4)">
-                        <div>
-                            <div class="pool-power-name">Aid Other</div>
-                            <div class="pool-power-desc">Heal a teammate</div>
-                        </div>
-                        <div class="pool-power-level">Level 4</div>
-                    </div>
-                    <div class="pool-power-option" onclick="addPoolPower('Medicine', 'Stimulant', 4)">
-                        <div>
-                            <div class="pool-power-name">Stimulant</div>
-                            <div class="pool-power-desc">Free teammate from status effects</div>
-                        </div>
-                        <div class="pool-power-level">Level 4</div>
-                    </div>
-                    <div class="pool-power-option" onclick="addPoolPower('Medicine', 'Aid Self', 14)">
-                        <div>
-                            <div class="pool-power-name">Aid Self</div>
-                            <div class="pool-power-desc">Heal yourself</div>
-                        </div>
-                        <div class="pool-power-level">Level 14</div>
-                    </div>
-                    <div class="pool-power-option" onclick="addPoolPower('Medicine', 'Resuscitate', 20)">
-                        <div>
-                            <div class="pool-power-name">Resuscitate</div>
-                            <div class="pool-power-desc">Revive a defeated teammate</div>
-                        </div>
-                        <div class="pool-power-level">Level 20</div>
-                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- Tooltip -->
+        <!-- Tooltip -->
     <div class="tooltip" id="tooltip"></div>
 
     <!-- JavaScript Files -->
     <script src="js/data/archetypes.js"></script>
     <script src="js/data/powersets.js"></script>
+    <script src="js/data/power-pools.js"></script>
     <script src="js/data/io-sets.js"></script>
     <script src="js/data/enhancements.js"></script>
+    <script src="js/data/level-progression.js"></script>
     <script src="js/app.js"></script>
     <script src="js/build.js"></script>
     <script src="js/icons.js"></script>
+    <script src="js/ui.js"></script>  <!-- MOVED BEFORE character-creator.js -->
     <script src="js/character-creator.js"></script>
-    <script src="js/ui.js"></script>
     <script src="js/enhancement-selector.js"></script>
     <script src="js/stats.js"></script>
-    <script src="js/pools.js"></script>
 </body>
 </html>

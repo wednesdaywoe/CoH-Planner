@@ -21,11 +21,15 @@ function updatePowerSlots(powerName) {
     
     const { power } = result;
     
-    // Find all slot elements for this power
+    // Find the DOM element for this power; prefer data-power-name attribute
     const powerElements = document.querySelectorAll('.selected-power');
     let targetElement = null;
-    
+
     for (const elem of powerElements) {
+        if (elem.dataset && elem.dataset.powerName === powerName) {
+            targetElement = elem;
+            break;
+        }
         const nameElem = elem.querySelector('.selected-power-name');
         if (nameElem && nameElem.textContent === powerName) {
             targetElement = elem;
@@ -35,11 +39,13 @@ function updatePowerSlots(powerName) {
     
     if (!targetElement) {
         console.error(`Cannot find DOM element for power: ${powerName}`);
+        console.log('Available .selected-power elements:', document.querySelectorAll('.selected-power'));
         return;
     }
     
     // Get slots container
     const slotsContainer = targetElement.querySelector('.enhancement-slots');
+    console.log(`updatePowerSlots: ${powerName} -> slots array length: ${power.slots.length}`, { power, targetElement, slotsContainer });
     if (!slotsContainer) return;
     
     // Clear existing slots
@@ -434,7 +440,7 @@ function updateStatsDisplay() {
 function updatePoolCounter() {
     const button = document.querySelector('.add-pool-btn');
     if (button) {
-        const poolCount = Build.pool.poolsUsed.length;
+        const poolCount = Build.pools.length;
         button.textContent = `+ Add Power Pool (${poolCount}/4 pools used)`;
         
         // Disable if at max
@@ -464,6 +470,7 @@ function addPoolPowerToDOM(power) {
     // Create power element
     const powerElement = document.createElement('div');
     powerElement.className = 'selected-power';
+    powerElement.dataset.powerName = power.name;
     powerElement.innerHTML = `
         <div class="selected-power-header">
             <span class="selected-power-name">${power.name}</span>
@@ -471,6 +478,13 @@ function addPoolPowerToDOM(power) {
         </div>
         <div class="enhancement-slots"></div>
     `;
+
+    // Tooltip hookup if original power data is available
+    const originalPower = getOriginalPowerData ? getOriginalPowerData(power.name, 'pool', power.poolId) : null;
+    if (originalPower) {
+        powerElement.onmouseenter = (e) => showPowerTooltip(e, originalPower, true);
+        powerElement.onmouseleave = () => hideTooltip();
+    }
     
     // Insert before inherent section
     if (inherentSection) {
@@ -497,9 +511,9 @@ function refreshAllPowers() {
         updatePowerSlots(power.name);
     });
     
-    // Update pool powers
-    Build.pool.powers.forEach(power => {
-        updatePowerSlots(power.name);
+    // Update pool powers (iterate each pool)
+    Build.pools.forEach(pool => {
+        pool.powers.forEach(power => updatePowerSlots(power.name));
     });
     
     // Update inherent powers
