@@ -29,9 +29,8 @@
             </select>
 
             <div class="io-level-setting">
-                <label>Common IO Level:</label>
-                <input type="range" min="10" max="53" value="50" id="globalIOLevel" oninput="updateGlobalIOLevel()">
-                <span id="globalIOLevelDisplay">Level 50</span>
+                <label>Enh Level:</label>
+                <input type="number" min="10" max="53" value="50" id="globalIOLevel" oninput="updateGlobalIOLevel()">
             </div>
 
             <div class="level-info">
@@ -46,6 +45,7 @@
             <div class="resource-badge">
                 Slots: <span>67/67</span>
             </div>
+            <button class="debug-btn" onclick="debugFireFire()" style="margin-left: 10px; padding: 6px 12px; background: #ff6b35; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 12px;">🔥 Fire/Fire Debug</button>
         </div>
 
         <!-- Stats Dashboard Row -->
@@ -238,6 +238,170 @@
     <!-- JavaScript Files -->
     <script src="js/data/archetypes.js"></script>
     <script src="js/data/powersets.js"></script>
+    
+    <!-- Blaster Primary Powersets (Alphabetical) -->
+    <script src="js/data/powersets/archery.js"></script>
+    <script src="js/data/powersets/assault-rifle.js"></script>
+    <script src="js/data/powersets/beam-rifle.js"></script>
+    <script src="js/data/powersets/dark-blast.js"></script>
+    <script src="js/data/powersets/dual-pistols.js"></script>
+    <script src="js/data/powersets/electrical-blast.js"></script>
+    <script src="js/data/powersets/energy-blast.js"></script>
+    <script src="js/data/powersets/fire-blast.js"></script>
+    <script src="js/data/powersets/ice-blast.js"></script>
+    <script src="js/data/powersets/psychic-blast.js"></script>
+    <script src="js/data/powersets/radiation-blast.js"></script>
+    <script src="js/data/powersets/seismic-blast.js"></script>
+    <script src="js/data/powersets/sonic-attack.js"></script>
+    <script src="js/data/powersets/storm-blast.js"></script>
+    <script src="js/data/powersets/water-blast.js"></script>
+    
+    <!-- Blaster Secondary Powersets (Alphabetical) -->
+    <script src="js/data/powersets/darkness-manipulation.js"></script>
+    <script src="js/data/powersets/earth-manipulation.js"></script>
+    <script src="js/data/powersets/electricity-manipulation.js"></script>
+    <script src="js/data/powersets/energy-manipulation.js"></script>
+    <script src="js/data/powersets/fire-manipulation.js"></script>
+    <script src="js/data/powersets/gadgets.js"></script>
+    <script src="js/data/powersets/ice-manipulation.js"></script>
+    <script src="js/data/powersets/martial-manipulation.js"></script>
+    <script src="js/data/powersets/mental-manipulation.js"></script>
+    <script src="js/data/powersets/ninja-training.js"></script>
+    <script src="js/data/powersets/plant-manipulation.js"></script>
+    <script src="js/data/powersets/radiation-manipulation.js"></script>
+    <script src="js/data/powersets/sonic-manipulation.js"></script>
+    <script src="js/data/powersets/tactical-arrow.js"></script>
+    <script src="js/data/powersets/temporal-manipulation.js"></script>
+    
+    <!-- Scrapper Primary Powersets (Alphabetical) -->
+    <script src="js/data/powersets/battle-axe.js"></script>
+    <script src="js/data/powersets/brawling.js"></script>
+    <script src="js/data/powersets/broad-sword.js"></script>
+    <script src="js/data/powersets/claws.js"></script>
+    <script src="js/data/powersets/dark-melee.js"></script>
+    <script src="js/data/powersets/dual-blades.js"></script>
+    <script src="js/data/powersets/electrical-melee.js"></script>
+    <script src="js/data/powersets/energy-melee.js"></script>
+    <script src="js/data/powersets/fiery-melee.js"></script>
+    <script src="js/data/powersets/ice-melee.js"></script>
+    <script src="js/data/powersets/katana.js"></script>
+    <script src="js/data/powersets/kinetic-attack.js"></script>
+    <script src="js/data/powersets/martial-arts.js"></script>
+    <script src="js/data/powersets/psionic-melee.js"></script>
+    <script src="js/data/powersets/quills.js"></script>
+    <script src="js/data/powersets/radiation-melee.js"></script>
+    <script src="js/data/powersets/savage-melee.js"></script>
+    <script src="js/data/powersets/staff-fighting.js"></script>
+    <script src="js/data/powersets/stone-melee.js"></script>
+    <script src="js/data/powersets/titan-weapons.js"></script>
+    <script src="js/data/powersets/war-mace.js"></script>
+    
+    <!-- Scrapper Secondary Powersets (Alphabetical) -->
+    <script src="js/data/powersets/bio-organic-armor.js"></script>
+    <script src="js/data/powersets/dark-armor.js"></script>
+    <script src="js/data/powersets/electric-armor.js"></script>
+    <script src="js/data/powersets/energy-aura.js"></script>
+    <script src="js/data/powersets/fiery-aura.js"></script>
+    <script src="js/data/powersets/ice-armor.js"></script>
+    <script src="js/data/powersets/invulnerability.js"></script>
+    <script src="js/data/powersets/ninjitsu.js"></script>
+    <script src="js/data/powersets/psionic-armor.js"></script>
+    <script src="js/data/powersets/radiation-armor.js"></script>
+    <script src="js/data/powersets/regeneration.js"></script>
+    <script src="js/data/powersets/shield-defense.js"></script>
+    <script src="js/data/powersets/stone-armor.js"></script>
+    <script src="js/data/powersets/super-reflexes.js"></script>
+    <script src="js/data/powersets/willpower.js"></script>
+    
+    <!-- Defender Primary Powersets (Alphabetical) -->
+    <script src="js/data/powersets/cold-domination.js"></script>
+    <script src="js/data/powersets/dark-miasma.js"></script>
+    <script src="js/data/powersets/empathy.js"></script>
+    <script src="js/data/powersets/force-field.js"></script>
+    <script src="js/data/powersets/kinetics.js"></script>
+    <script src="js/data/powersets/marine-affinity.js"></script>
+    <script src="js/data/powersets/nature-affinity.js"></script>
+    <script src="js/data/powersets/pain-domination.js"></script>
+    <script src="js/data/powersets/poison.js"></script>
+    <script src="js/data/powersets/radiation-emission.js"></script>
+    <script src="js/data/powersets/shock-therapy.js"></script>
+    <script src="js/data/powersets/sonic-debuff.js"></script>
+    <script src="js/data/powersets/storm-summoning.js"></script>
+    <script src="js/data/powersets/thermal-radiation.js"></script>
+    <script src="js/data/powersets/time-manipulation.js"></script>
+    <script src="js/data/powersets/traps.js"></script>
+    <script src="js/data/powersets/trick-arrow.js"></script>
+    <!-- Note: Defender secondaries use Blaster primaries (already loaded above) -->
+    
+    <!-- Controller Primary Powersets (Alphabetical) -->
+    <script src="js/data/powersets/arsenal-control.js"></script>
+    <script src="js/data/powersets/darkness-control.js"></script>
+    <script src="js/data/powersets/earth-control.js"></script>
+    <script src="js/data/powersets/electric-control.js"></script>
+    <script src="js/data/powersets/fire-control.js"></script>
+    <script src="js/data/powersets/gravity-control.js"></script>
+    <script src="js/data/powersets/ice-control.js"></script>
+    <script src="js/data/powersets/illusion-control.js"></script>
+    <script src="js/data/powersets/mind-control.js"></script>
+    <script src="js/data/powersets/plant-control.js"></script>
+    <script src="js/data/powersets/pyrotechnic-control.js"></script>
+    <script src="js/data/powersets/symphony-control.js"></script>
+    <script src="js/data/powersets/wind-control.js"></script>
+    
+    <!-- Controller Secondary Powersets -->
+    <script src="js/data/powersets/darkness-affinity.js"></script>
+    <!-- Note: Other Controller secondaries use Defender primaries (already loaded above) -->
+    
+    <!-- Tanker Secondary Powersets (Melee) -->
+    <script src="js/data/powersets/spines.js"></script>
+    <script src="js/data/powersets/super-strength.js"></script>
+    <!-- Note: Tanker primaries use Scrapper secondaries (already loaded above) -->
+    <!-- Note: Other Tanker secondaries use Scrapper primaries (already loaded above) -->
+    
+    <!-- Sentinel Powersets -->
+    <!-- Note: Sentinel primaries use Blaster primaries (already loaded above) -->
+    <!-- Note: Sentinel secondaries use Scrapper secondaries (already loaded above) -->
+    
+    <!-- Dominator Secondary Powersets (Assault) -->
+    <script src="js/data/powersets/arsenal-assault.js"></script>
+    <script src="js/data/powersets/dark-assault.js"></script>
+    <script src="js/data/powersets/earth-assault.js"></script>
+    <script src="js/data/powersets/electricity-assault.js"></script>
+    <script src="js/data/powersets/energy-assault.js"></script>
+    <script src="js/data/powersets/fiery-assault.js"></script>
+    <script src="js/data/powersets/icy-assault.js"></script>
+    <script src="js/data/powersets/martial-assault.js"></script>
+    <script src="js/data/powersets/psionic-assault.js"></script>
+    <script src="js/data/powersets/radioactive-assault.js"></script>
+    <script src="js/data/powersets/savage-assault.js"></script>
+    <script src="js/data/powersets/sonic-assault.js"></script>
+    <script src="js/data/powersets/thorny-assault.js"></script>
+    <!-- Note: Dominator primaries use Controller primaries (already loaded above) -->
+    
+    <!-- Brute Powersets -->
+    <!-- Note: Brute primaries use Scrapper primaries + Tanker exclusives (already loaded above) -->
+    <!-- Note: Brute secondaries use Scrapper secondaries (already loaded above) -->
+    
+    <!-- Corruptor Secondary Powersets (Buff/Debuff) -->
+    <script src="js/data/powersets/sonic-resonance.js"></script>
+    <!-- Note: Corruptor primaries use Blaster primaries (already loaded above) -->
+    <!-- Note: Other Corruptor secondaries use Defender primaries (already loaded above) -->
+    
+    <!-- Stalker Primary Powersets (Melee) -->
+    <script src="js/data/powersets/ninja-sword.js"></script>
+    <!-- Note: Other Stalker primaries use Scrapper primaries (already loaded above) -->
+    <!-- Note: Stalker secondaries use Scrapper secondaries (already loaded above) -->
+    
+    <!-- Mastermind Primary Powersets (Pet Summoning) -->
+    <script src="js/data/powersets/beast-mastery.js"></script>
+    <script src="js/data/powersets/demon-summoning.js"></script>
+    <script src="js/data/powersets/mercenaries.js"></script>
+    <script src="js/data/powersets/necromancy.js"></script>
+    <script src="js/data/powersets/ninjas.js"></script>
+    <script src="js/data/powersets/robotics.js"></script>
+    <script src="js/data/powersets/thugs.js"></script>
+    <!-- Note: Mastermind secondaries use Defender/Controller primaries (already loaded above) -->
+    
     <script src="js/data/power-pools.js"></script>
     <script src="js/data/io-sets.js"></script>
     <script src="js/data/enhancements.js"></script>
@@ -246,8 +410,11 @@
     <script src="js/build.js"></script>
     <script src="js/icons.js"></script>
     <script src="js/ui.js"></script>  <!-- MOVED BEFORE character-creator.js -->
+    <script src="js/tooltips/unified-tooltips.js"></script>
     <script src="js/character-creator.js"></script>
     <script src="js/enhancement-selector.js"></script>
+    <script src="js/rule-of-five.js"></script>
     <script src="js/stats.js"></script>
+    <script src="js/debug.js"></script>
 </body>
 </html>
