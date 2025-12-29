@@ -89,82 +89,12 @@ const ENHANCEMENT_TO_SET_TYPE_MAP = {
 };
 
 /**
- * Determine power's attack characteristics from its properties
- * @param {Object} power - Power object
- * @param {string} powersetId - ID of the powerset
- * @returns {Object} { isRanged, isAoE, isPet } characteristics
- */
-function determinePowerAttackType(power, powersetId) {
-    const characteristics = {
-        isRanged: false,
-        isAoE: false,
-        isPet: false
-    };
-    
-    // Check powerset type for pet sets
-    const powerset = POWERSETS[powersetId];
-    if (powerset && (
-        powersetId.includes('summoning') ||
-        powersetId.includes('control') ||
-        powerset.name?.toLowerCase().includes('mastermind')
-    )) {
-        // Check if this power summons pets
-        if (power.allowedEnhancements?.includes('Pet Damage') || 
-            power.name?.toLowerCase().includes('summon') ||
-            power.name?.toLowerCase().includes('upgrade')) {
-            characteristics.isPet = true;
-        }
-    }
-    
-    // Determine if ranged (range > 20 is typically ranged)
-    const range = power.effects?.range || 0;
-    if (range > 20) {
-        characteristics.isRanged = true;
-    } else if (range <= 10 && range > 0) {
-        characteristics.isRanged = false; // Melee range
-    } else {
-        // Check powerset name/type
-        const powersetName = powerset?.name?.toLowerCase() || '';
-        characteristics.isRanged = powersetName.includes('blast') ||
-                                   powersetName.includes('rifle') ||
-                                   powersetName.includes('archery') ||
-                                   powersetName.includes('bow');
-    }
-    
-    // Dt power = result.power;
-    const powersetId = result.powersetId;
-    
-    console.log(`${powerName} allowed enhancements:`, allowedEnhancements);
-    
-    // Filter sets by category and compatibility
-    const compatibleSets = [];
-    for (const [setId, set] of Object.entries(IO_SETS)) {
-        if (set.category === category) {
-            const canSlot = canSlotSetInPower(set, allowedEnhancements, power, powersetId);
-            if (canSlot) {
-                compatibleSets.push({ setId, set });
-            }
-        }
-    }
-    
-    console.log(`Found ${compatibleSets.length} compatible sets in category ${category} for ${powerName
-                           powerName.includes('spray') ||
-                           powerName.includes('circle') ||
-                           powerName.includes('fistful') ||
-                           powerName.includes('buckshot');
-    
-    return characteristics;
-}
-
-/**
  * Check if an IO set can be slotted into a power
  * @param {Object} ioSet - The IO set to check
  * @param {Array} allowedEnhancements - Power's allowed enhancement types
- * @param {Object} power - The power object (optional, for better filtering)
- * @param {string} powersetId - The powerset ID (optional, for better filtering)
  * @returns {boolean} True if set can be slotted
  */
-function canSlotSetInPower(ioSet, allowedEnhancements, power = null, powersetId = null) {
+function canSlotSetInPower(ioSet, allowedEnhancements) {
     if (!ioSet || !allowedEnhancements) return false;
     
     // Get compatible set types for this power's allowed enhancements
@@ -180,39 +110,6 @@ function canSlotSetInPower(ioSet, allowedEnhancements, power = null, powersetId 
     // If no compatible types were found, this power can't slot any typed sets
     if (compatibleTypes.size === 0) {
         return false;
-    }
-    
-    // Smart filtering for damage sets
-    if (allowedEnhancements.includes('Damage') && power && powersetId) {
-        const attackType = determinePowerAttackType(power, powersetId);
-        
-        // Filter out incompatible damage set types
-        if (attackType.isPet) {
-            // Pet powers only accept Pet Damage sets
-            if (ioSet.type !== 'Pet Damage' && ioSet.type !== 'Universal Damage') {
-                return false;
-            }
-        } else if (attackType.isRanged && attackType.isAoE) {
-            // Ranged AoE: accepts Ranged AoE, Targeted AoE, Universal
-            if (!['Ranged AoE Damage', 'Targeted AoE Damage', 'Universal Damage'].includes(ioSet.type)) {
-                return false;
-            }
-        } else if (!attackType.isRanged && attackType.isAoE) {
-            // Melee AoE / PBAoE: accepts PBAoE, Melee AoE, Targeted AoE, Universal
-            if (!['PBAoE Damage', 'Melee AoE Damage', 'Targeted AoE Damage', 'Universal Damage'].includes(ioSet.type)) {
-                return false;
-            }
-        } else if (attackType.isRanged && !attackType.isAoE) {
-            // Ranged single-target: accepts Ranged Damage, Sniper, Universal
-            if (!['Ranged Damage', 'Sniper Attacks', 'Universal Damage'].includes(ioSet.type)) {
-                return false;
-            }
-        } else if (!attackType.isRanged && !attackType.isAoE) {
-            // Melee single-target: accepts Melee Damage, Universal
-            if (!['Melee Damage', 'Universal Damage'].includes(ioSet.type)) {
-                return false;
-            }
-        }
     }
     
     // Check if the IO set's type matches any compatible type
@@ -252,11 +149,12 @@ function getCompatibleSetsForPower(powerName, category) {
 }
 
 /**
- * Gparam {Object} power - The power object (optional, for better filtering)
- * @param {string} powersetId - The powerset ID (optional, for better filtering)
+ * Get unique set types that are compatible with a power
+ * @param {Array} allowedEnhancements - Power's allowed enhancement types  
+ * @param {string} category - Category filter (io-set, purple, ato, event)
  * @returns {Array} Array of {type: string, count: number} objects
  */
-function getCompatibleSetTypes(allowedEnhancements, category, power = null, powersetId = null) {
+function getCompatibleSetTypes(allowedEnhancements, category) {
     if (!allowedEnhancements) return [];
     
     // Get all sets in this category
@@ -264,9 +162,6 @@ function getCompatibleSetTypes(allowedEnhancements, category, power = null, powe
         .filter(([_, set]) => set.category === category)
         .map(([setId, set]) => ({ setId, set }));
     
-    // Filter to compatible sets
-    const compatibleSets = setsInCategory.filter(({ set }) => 
-        canSlotSetInPower(set, allowedEnhancements, power, powersetId
     // Filter to compatible sets
     const compatibleSets = setsInCategory.filter(({ set }) => 
         canSlotSetInPower(set, allowedEnhancements)
