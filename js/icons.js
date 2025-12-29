@@ -112,7 +112,20 @@ function getEnhancementIcon(enhancement) {
     
     // IO Set - Use pre-composed icon
     if (enhancement.type === 'io-set') {
-        const iconFile = IO_SET_ICONS[enhancement.setId];
+        // Try hardcoded mapping first
+        let iconFile = IO_SET_ICONS[enhancement.setId];
+        
+        // If not found, get from IO set data
+        if (!iconFile && IO_SETS && IO_SETS[enhancement.setId]) {
+            iconFile = IO_SETS[enhancement.setId].icon;
+        }
+        
+        // Fallback to a default icon if still not found
+        if (!iconFile) {
+            console.warn('No icon found for set:', enhancement.setId);
+            iconFile = 'IO_Generic.png'; // Generic IO icon
+        }
+        
         return {
             type: 'single',
             path: `img/Enhancements/${iconFile}`
@@ -204,8 +217,14 @@ function createEnhancementIconElement(enhancement) {
  * @returns {string} Icon path
  */
 function getSetIcon(setId) {
+    // Use icon from IO_SETS data if available
+    if (typeof IO_SETS !== 'undefined' && IO_SETS[setId] && IO_SETS[setId].icon) {
+        return `img/Enhancements/${IO_SETS[setId].icon}`;
+    }
+    
+    // Fallback to hardcoded mapping for backwards compatibility
     const iconFile = IO_SET_ICONS[setId];
-    return iconFile ? `img/Enhancements/${iconFile}` : null;
+    return iconFile ? `img/Enhancements/${iconFile}` : 'img/Enhancements/Damage.png';
 }
 
 /**

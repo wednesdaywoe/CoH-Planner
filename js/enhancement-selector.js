@@ -97,28 +97,120 @@ function selectCategory(category) {
  */
 function loadSetsForCategory(category) {
     const setsPanel = document.querySelector('#selectionViewSets .sets-panel');
+    const typesPanel = document.querySelector('#selectionViewSets .types-panel');
     
-    // Filter sets by category
-    let setsToShow = [];
-    if (category === 'io-set') {
-        setsToShow = ['positrons', 'thunderstrike', 'crushing-impact', 'eradication', 'ruin'];
-    } else if (category === 'very-rare') {
-        setsToShow = ['apocalypse', 'ragnarok'];
-    } else if (category === 'event') {
-        setsToShow = ['avalanche', 'winters-bite'];
-    } else if (category === 'archetype') {
-        setsToShow = ['blasters-wrath', 'defiant-barrage'];
+    // Map UI category buttons to IO set categories
+    const categoryMap = {
+        'io-set': 'io-set',
+        'very-rare': 'purple',
+        'event': 'event',
+        'archetype': 'ato'
+    };
+    
+    const ioCategory = categoryMap[category];
+    
+    // Get compatible sets for this power
+    let compatibleSets = getCompatibleSetsForPower(AppState.currentPowerName, ioCategory);
+    
+    // Store for type filtering
+    AppState.currentCompatibleSets = compatibleSets;
+    AppState.currentTypeFilter = null;
+    
+    // Generate type filter buttons
+    generateTypeFilterButtons(typesPanel, compatibleSets);
+    
+    // Render sets
+    renderSetsList(setsPanel, compatibleSets);
+}
+
+/**
+ * Generate type filter buttons based on compatible sets
+ * @param {HTMLElement} typesPanel - The types panel element
+ * @param {Array} compatibleSets - Array of compatible {setId, set} objects
+ */
+function generateTypeFilterButtons(typesPanel, compatibleSets) {
+    // Count sets by type
+    const typeCounts = {};
+    compatibleSets.forEach(({ set }) => {
+        if (!typeCounts[set.type]) {
+            typeCounts[set.type] = 0;
+        }
+        typeCounts[set.type]++;
+    });
+    
+    // Sort by count (descending)
+    const sortedTypes = Object.entries(typeCounts)
+        .sort((a, b) => b[1] - a[1]);
+    
+    let html = '<div class="types-title">Types</div>';
+    
+    // "All" button - use data attribute instead of onclick
+    html += `<div class="type-option selected" data-type-filter="all">All (${compatibleSets.length})</div>`;
+    
+    // Type buttons - use data attributes
+    sortedTypes.forEach(([type, count]) => {
+        html += `<div class="type-option" data-type-filter="${type}">${type} (${count})</div>`;
+    });
+    
+    typesPanel.innerHTML = html;
+    
+    // Set up event delegation for type filter clicks
+    setupTypeFilterEvents(typesPanel);
+}
+
+/**
+ * Setup event handlers for type filter buttons
+ */
+function setupTypeFilterEvents(typesPanel) {
+    // Check if listeners are already set up
+    if (typesPanel.dataset.listenersAttached === 'true') {
+        return;
     }
     
-    // Build HTML - each set gets its own row
-    let html = '';
+    // Mark as having listeners attached
+    typesPanel.dataset.listenersAttached = 'true';
     
-    setsToShow.forEach(setId => {
-        const set = IO_SETS[setId];
-        if (!set) return;
+    // Click handler
+    typesPanel.addEventListener('click', (e) => {
+        const button = e.target.closest('.type-option');
+        if (!button) return;
         
+        const typeFilter = button.dataset.typeFilter;
+        
+        // Update button styles
+        typesPanel.querySelectorAll('.type-option').forEach(btn => {
+            btn.classList.remove('selected');
+        });
+        button.classList.add('selected');
+        
+        // Filter and render
+        const type = typeFilter === 'all' ? null : typeFilter;
+        AppState.currentTypeFilter = type;
+        const filtered = filterSetsByType(AppState.currentCompatibleSets, type);
+        const setsPanel = document.querySelector('#selectionViewSets .sets-panel');
+        renderSetsList(setsPanel, filtered);
+    });
+}
+
+
+/**
+ * Render list of sets
+ * @param {HTMLElement} setsPanel - The sets panel element
+ * @param {Array} setsToShow - Array of {setId, set} objects
+ */
+function renderSetsList(setsPanel, setsToShow) {
+    if (setsToShow.length === 0) {
+        setsPanel.innerHTML = '<div style="padding: 20px; text-align: center; color: var(--text-tertiary);">No compatible sets found</div>';
+        return;
+    }
+    
+    // Sort alphabetically
+    setsToShow.sort((a, b) => a.set.name.localeCompare(b.set.name));
+    
+    let html = '';
+    setsToShow.forEach(({ setId, set }) => {
         const iconPath = getSetIcon(setId) || 'img/Enhancements/Damage.png';
-        const purpleClass = set.purple ? ' purple' : '';
+        const purpleClass = set.category === 'purple' ? ' purple' : '';
         
         html += `
             <div class="set-row">
@@ -126,15 +218,17 @@ function loadSetsForCategory(category) {
                     ${set.name}
                     <span class="set-row-meta">Lv ${set.minLevel}-${set.maxLevel} • ${set.pieces.length} pieces</span>
                 </div>
-                <div class="set-pieces-grid">
+                <div class="set-pieces-grid" data-set-id="${setId}">
         `;
         
         set.pieces.forEach(piece => {
+            const uniqueClass = piece.unique ? ' unique' : '';
+            const procClass = piece.proc ? ' proc' : '';
+            // Use data attributes instead of inline onclick
             html += `
-                <div class="set-piece-icon" 
-                     onmouseenter="showSetPieceTooltip(event, '${setId}', ${piece.num})" 
-                     onmouseleave="hideTooltip()" 
-                     onclick="addEnhancement('${setId}', ${piece.num})">
+                <div class="set-piece-icon${uniqueClass}${procClass}" 
+                     data-set-id="${setId}"
+                     data-piece-num="${piece.num}">
                     <img src="${iconPath}" alt="${set.name}">
                     <div class="set-piece-number">${piece.num}</div>
                 </div>
@@ -148,6 +242,57 @@ function loadSetsForCategory(category) {
     });
     
     setsPanel.innerHTML = html;
+    
+    // Add event delegation for clicks and tooltips
+    setupSetPieceEvents(setsPanel);
+}
+
+/**
+ * Setup event handlers for set pieces using event delegation
+ * Only sets up once per panel to avoid accumulating listeners
+ */
+function setupSetPieceEvents(setsPanel) {
+    // Check if listeners are already set up
+    if (setsPanel.dataset.listenersAttached === 'true') {
+        // Just refresh drag selection
+        initDragSelection();
+        return;
+    }
+    
+    // Mark as having listeners attached
+    setsPanel.dataset.listenersAttached = 'true';
+    
+    // Click handler
+    setsPanel.addEventListener('click', (e) => {
+        const piece = e.target.closest('.set-piece-icon');
+        if (!piece) return;
+        
+        const setId = piece.dataset.setId;
+        const pieceNum = parseInt(piece.dataset.pieceNum);
+        handlePieceClick(e, setId, pieceNum);
+    });
+    
+    // Tooltip handlers
+    setsPanel.addEventListener('mouseenter', (e) => {
+        const piece = e.target.closest('.set-piece-icon');
+        if (!piece) return;
+        
+        const setId = piece.dataset.setId;
+        const pieceNum = parseInt(piece.dataset.pieceNum);
+        // Use enhanced tooltip from tooltip-improvements.js
+        if (typeof showEnhancementPieceTooltip === 'function') {
+            showEnhancementPieceTooltip(e, setId, pieceNum);
+        }
+    }, true);
+    
+    setsPanel.addEventListener('mouseleave', (e) => {
+        const piece = e.target.closest('.set-piece-icon');
+        if (!piece) return;
+        hideTooltip();
+    }, true);
+    
+    // Add drag selection handlers
+    initDragSelection();
 }
 
 /**

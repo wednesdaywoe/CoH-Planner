@@ -97,28 +97,40 @@ function createFilledSlotElement(enhancement, powerName, slotIndex) {
         }
     }
     
-    // Left click: Open picker with clear option
+    // Left click: Open picker to replace
     slot.onclick = (e) => {
         e.preventDefault();
+        if (!e.shiftKey) {
+            // Normal left click: Open picker to replace
+            openPickerForFilledSlot(powerName, slotIndex, enhancement);
+        }
+        // Shift + Left click on filled slot: Do nothing
+    };
+    
+    // Right click: Remove enhancement OR remove slot
+    slot.oncontextmenu = (e) => {
+        e.preventDefault();
         if (e.shiftKey) {
-            // Shift + Left click: Remove slot
+            // Shift + Right click: Remove slot entirely
             removeSlotFromPower(powerName, slotIndex);
             updatePowerSlots(powerName);
             recalculateStats();
         } else {
-            // Normal left click: Open picker with clear option
-            openPickerForFilledSlot(powerName, slotIndex, enhancement);
+            // Normal right click: Remove enhancement but keep slot
+            const result = findPower(powerName);
+            if (result) {
+                result.power.slots[slotIndex] = null;
+                if (enhancement.type === 'io-set') {
+                    untrackSetBonus(enhancement.setId, enhancement.pieceNum);
+                }
+                updatePowerSlots(powerName);
+                recalculateStats();
+            }
         }
     };
     
-    // Right click: Open picker for same category/set
-    slot.oncontextmenu = (e) => {
-        e.preventDefault();
-        openPickerSameCategory(powerName, slotIndex, enhancement);
-    };
-    
     // Hover tooltip
-    slot.onmouseenter = (e) => showEnhancementTooltip(e, enhancement);
+    slot.onmouseenter = (e) => showEnhancementTooltip(e, enhancement, powerName);
     slot.onmouseleave = hideTooltip;
     
     return slot;
@@ -139,14 +151,12 @@ function createEmptySlotElement(powerName, slotIndex) {
     const result = findPower(powerName);
     const powerSet = result ? result.power.powerSet : '';
     
-    // Left click: Open enhancement picker
+    // Left click: Open enhancement picker OR smart duplicate
     slot.onclick = (e) => {
         e.preventDefault();
         if (e.shiftKey) {
-            // Shift + Left click: Remove slot
-            removeSlotFromPower(powerName, slotIndex);
-            updatePowerSlots(powerName);
-            recalculateStats();
+            // Shift + Left click: Smart duplicate (copy last enhancement or add next from set)
+            smartAddEnhancement(powerName, slotIndex);
         } else {
             // Normal left click: Open picker
             AppState.currentSlotIndex = slotIndex;
@@ -154,10 +164,16 @@ function createEmptySlotElement(powerName, slotIndex) {
         }
     };
     
-    // Right click: Smart-add next enhancement
+    // Right click: Remove slot (shift) or do nothing (normal)
     slot.oncontextmenu = (e) => {
         e.preventDefault();
-        smartAddEnhancement(powerName, slotIndex);
+        if (e.shiftKey) {
+            // Shift + Right click: Remove slot entirely
+            removeSlotFromPower(powerName, slotIndex);
+            updatePowerSlots(powerName);
+            recalculateStats();
+        }
+        // Normal right click on empty slot: Do nothing
     };
     
     return slot;
@@ -358,26 +374,98 @@ function openPickerSameCategory(powerName, slotIndex, enhancement) {
  * Show tooltip for slotted enhancement
  * @param {Event} event - Mouse event
  * @param {Object} enhancement - Enhancement data
+ * @param {string} powerName - Name of the power this enhancement is in
  */
-function showEnhancementTooltip(event, enhancement) {
+function showEnhancementTooltip(event, enhancement, powerName) {
     const tooltip = document.getElementById('tooltip');
     let html = '';
     
     if (enhancement.type === 'io-set') {
         const set = IO_SETS[enhancement.setId];
         const piece = set.pieces.find(p => p.num === enhancement.pieceNum);
-        html = `
-            <div class="tooltip-title">${set.name} - ${piece.name}</div>
-            <div class="tooltip-section">
-                <div class="tooltip-label">Enhancement Values</div>
-                <div class="tooltip-value">${piece.values}</div>
-            </div>
-            <div class="tooltip-section" style="margin-top: 8px; font-size: 11px; color: var(--text-tertiary);">
-                Left click: Replace/Clear<br>
-                Right click: Change piece<br>
-                Shift+Click: Remove slot
-            </div>
-        `;
+        
+        html = `<div class="tooltip-title">${set.name}</div>`;
+        html += `<div class="tooltip-section">`;
+        html += `<div style="font-weight: 600; font-size: 12px; color: var(--accent);">${piece.name}</div>`;
+        html += `</div>`;
+        
+        // Parse and show enhancement values
+        if (piece.aspects) {
+            html += `<div class="tooltip-section" style="border-top: 1px solid var(--border); padding-top: 8px; margin-top: 8px;">`;
+            html += `<div class="tooltip-label" style="margin-bottom: 6px;">Enhancement Values</div>`;
+            
+            // Get IO level
+            const ioLevel = AppState.globalIOLevel || 50;
+            const level = Math.min(ioLevel, set.maxLevel);
+            
+            // Multi-aspect modifier
+            const aspectCount = piece.aspects.length;
+            let modifier = 1.0;
+            if (aspectCount === 2) {
+                modifier = 0.70;
+            } else if (aspectCount >= 3) {
+                modifier = 0.50;
+            }
+            
+            piece.aspects.forEach(aspect => {
+                // Each aspect has its own schedule and gets modified by aspect count
+                const normalized = normalizeAspectName(aspect);
+                const schedule = normalized ? getAspectSchedule(normalized) : 'A';
+                const baseValue = (typeof getIOValueAtLevel === 'function' ? getIOValueAtLevel(level, schedule) : 0.255);
+                const enhValue = baseValue * modifier * 100;
+                html += `<div style="font-size: 11px; padding: 2px 0;">`;
+                html += `<span style="font-weight: 600;">${aspect}: +${enhValue.toFixed(1)}%</span>`;
+                html += `</div>`;
+            });
+            html += `</div>`;
+        }
+        
+        // Show set bonuses
+        html += `<div class="tooltip-section" style="border-top: 1px solid var(--border); padding-top: 8px; margin-top: 8px;">`;
+        html += `<div class="tooltip-label" style="margin-bottom: 6px;">Set Bonuses</div>`;
+        
+        // Count how many pieces from this set are slotted in this power
+        let slottedPieceCount = 0;
+        if (powerName) {
+            const result = findPower(powerName);
+            if (result && result.power.slots) {
+                slottedPieceCount = result.power.slots.filter(slot => 
+                    slot && slot.type === 'io-set' && slot.setId === enhancement.setId
+                ).length;
+            }
+        }
+        
+        const bonusesByPieces = {};
+        set.bonuses.forEach(bonus => {
+            const pieces = bonus.pieces || 0;
+            if (!bonusesByPieces[pieces]) bonusesByPieces[pieces] = [];
+            bonusesByPieces[pieces].push(bonus);
+        });
+        
+        Object.keys(bonusesByPieces).map(Number).sort((a,b)=>a-b).forEach(pieceCount => {
+            const bonuses = bonusesByPieces[pieceCount];
+            const isActive = slottedPieceCount >= pieceCount;
+            const opacity = isActive ? '1.0' : '0.5';
+            const fontWeight = isActive ? '700' : '400';
+            const checkmark = isActive ? ' ✓' : '';
+            
+            html += `<div style="margin-bottom: 6px; opacity: ${opacity};">`;
+            html += `<div style="font-weight: ${fontWeight}; font-size: 10px; margin-bottom: 2px;">${pieceCount} pieces${checkmark}:</div>`;
+            bonuses.forEach(bonus => {
+                if (bonus.effects && Array.isArray(bonus.effects)) {
+                    bonus.effects.forEach(effect => {
+                        html += `<div style="padding-left: 12px; font-size: 10px;">${effect.desc || effect.stat}</div>`;
+                    });
+                }
+            });
+            html += `</div>`;
+        });
+        
+        html += `</div>`;
+        
+        html += `<div class="tooltip-section" style="margin-top: 8px; font-size: 11px; color: var(--text-tertiary);">`;
+        html += `Left click: Replace • Right click: Remove • Shift+Right: Delete slot`;
+        html += `</div>`;
     } else if (enhancement.type === 'io-generic') {
         const value = calculateCommonIOValue(enhancement.level);
         html = `
@@ -387,7 +475,7 @@ function showEnhancementTooltip(event, enhancement) {
                 <div class="tooltip-value">+${value.toFixed(1)}%</div>
             </div>
             <div class="tooltip-section" style="margin-top: 8px; font-size: 11px; color: var(--text-tertiary);">
-                Right click empty slot: Add copy
+                Shift+Left on empty: Add copy
             </div>
         `;
     } else if (enhancement.type === 'hamidon') {

@@ -15,6 +15,105 @@
 // ============================================
 
 /**
+ * Normalize stat names from IO set bonuses to internal stat keys
+ * @param {string} statName - Stat name from IO set data
+ * @returns {string|null} Normalized stat key or null if unknown
+ */
+function normalizeStatName(statName) {
+    if (!statName) return null;
+    
+    // Map of stat names from IO sets to internal stat keys
+    const statMap = {
+        // Offense (various formats)
+        'Damage': 'damage',
+        'damage': 'damage',
+        'DamageBuff': 'damage',
+        'Accuracy': 'accuracy',
+        'accuracy': 'accuracy',
+        'ToHit': 'tohit',
+        'tohit': 'tohit',
+        'Recharge': 'recharge',
+        'recharge': 'recharge',
+        'RechargeTime': 'recharge',
+        'EnduranceDiscount': 'endrdx',
+        'endurance_discount': 'endrdx',
+        'EnduranceReduction': 'endrdx',
+        
+        // Defense - Positional
+        'MeleeDef': 'defMelee',
+        'melee_defense': 'defMelee',
+        'RangedDef': 'defRanged',
+        'ranged_defense': 'defRanged',
+        'AoEDef': 'defAoE',
+        'aoe_defense': 'defAoE',
+        
+        // Defense - Typed
+        'SmashingDef': 'defSmashing',
+        'smashing_defense': 'defSmashing',
+        'LethalDef': 'defLethal',
+        'lethal_defense': 'defLethal',
+        'FireDef': 'defFire',
+        'fire_defense': 'defFire',
+        'ColdDef': 'defCold',
+        'cold_defense': 'defCold',
+        'EnergyDef': 'defEnergy',
+        'energy_defense': 'defEnergy',
+        'NegativeDef': 'defNegative',
+        'negative_defense': 'defNegative',
+        'PsionicDef': 'defPsionic',
+        'psionic_defense': 'defPsionic',
+        'ToxicDef': 'defToxic',
+        'toxic_defense': 'defToxic',
+        
+        // Resistance
+        'SmashingRes': 'resSmashing',
+        'damage_resistance_(smashing)': 'resSmashing',
+        'LethalRes': 'resLethal',
+        'damage_resistance_(lethal)': 'resLethal',
+        'FireRes': 'resFire',
+        'damage_resistance_(fire)': 'resFire',
+        'ColdRes': 'resCold',
+        'damage_resistance_(cold)': 'resCold',
+        'EnergyRes': 'resEnergy',
+        'damage_resistance_(energy)': 'resEnergy',
+        'NegativeRes': 'resNegative',
+        'damage_resistance_(negative)': 'resNegative',
+        'PsionicRes': 'resPsionic',
+        'damage_resistance_(psionic)': 'resPsionic',
+        'ToxicRes': 'resToxic',
+        'damage_resistance_(toxic)': 'resToxic',
+        
+        // Recovery & HP
+        'Recovery': 'recovery',
+        'recovery': 'recovery',
+        'Regeneration': 'regeneration',
+        'regeneration': 'regeneration',
+        'MaxHitPoints': 'maxhp',
+        'maximum_hitpoints': 'maxhp',
+        'MaxHealth': 'maxhp',
+        'MaxEndurance': 'maxend',
+        'maximum_endurance': 'maxend',
+        
+        // Movement
+        'RunSpeed': 'runspeed',
+        'run_speed': 'runspeed',
+        'FlySpeed': 'flyspeed',
+        'fly_speed': 'flyspeed',
+        'JumpSpeed': 'jumpspeed',
+        'jump_speed': 'jumpspeed',
+        'JumpHeight': 'jumpheight',
+        'jump_height': 'jumpheight',
+        
+        // Special stats (not yet in dashboard, but won't cause errors)
+        'mez_resistance_(all)': null,  // Mez resistance not tracked yet
+        'MezRes': null
+    };
+    
+    // Return the mapped stat, null for explicitly ignored stats, or undefined for unknown stats
+    return statMap.hasOwnProperty(statName) ? statMap[statName] : undefined;
+}
+
+/**
  * Global bonus tracking object
  * Structure:
  * {
@@ -128,97 +227,48 @@ function collectAllSetBonuses() {
             
             // Check each set bonus
             set.bonuses.forEach(bonus => {
-                // Support two bonus formats: structured objects and legacy strings
-                let parsed = null;
-
-                if (typeof bonus === 'string') {
-                    // Example string formats: "2 pieces: +3% Damage" or "3 pieces: +9% Accuracy"
-                    const m = bonus.match(/(\d+)\s*pieces\s*:\s*\+?([\d.]+)%\s*(.+)/i);
-                    if (m) {
-                        const pieces = parseInt(m[1], 10);
-                        const value = parseFloat(m[2]);
-                        const label = m[3].trim();
-
-                        // Map human-readable labels to internal stat keys
-                        const labelMap = {
-                            'Damage': 'damage',
-                            'Accuracy': 'accuracy',
-                            'Recharge': 'recharge',
-                            'Ranged Defense': 'defRanged',
-                            'AoE Defense': 'defAoE',
-                            'Melee Defense': 'defMelee',
-                            'Max HP': 'maxhp',
-                            'Max Endurance': 'maxend',
-                            'Recovery': 'recovery',
-                            'Regeneration': 'regeneration',
-                            'Run Speed': 'runspeed',
-                            'Fly Speed': 'flyspeed',
-                            'Jump Speed': 'jumpspeed'
-                        };
-
-                        // Try direct mapping first, otherwise try to guess by keyword
-                        let statKey = labelMap[label] || null;
-                        if (!statKey) {
-                            if (/damage/i.test(label)) statKey = 'damage';
-                            else if (/accuracy/i.test(label)) statKey = 'accuracy';
-                            else if (/recharge/i.test(label)) statKey = 'recharge';
-                            else if (/ranged defense/i.test(label)) statKey = 'defRanged';
-                            else if (/aoe defense/i.test(label)) statKey = 'defAoE';
-                            else if (/melee defense/i.test(label)) statKey = 'defMelee';
-                            else if (/max hp/i.test(label)) statKey = 'maxhp';
-                            else if (/max end/i.test(label)) statKey = 'maxend';
-                            else if (/recovery/i.test(label)) statKey = 'recovery';
-                            else if (/regeneration/i.test(label)) statKey = 'regeneration';
-                            else if (/run speed/i.test(label)) statKey = 'runspeed';
-                            else if (/fly speed/i.test(label)) statKey = 'flyspeed';
-                            else if (/jump speed/i.test(label)) statKey = 'jumpspeed';
+                if (!bonus || !bonus.pieces) return;
+                
+                // Only count if we have enough pieces slotted
+                if (pieceCount < bonus.pieces) return;
+                
+                // Handle bonuses with effects array (our format)
+                if (bonus.effects && Array.isArray(bonus.effects)) {
+                    bonus.effects.forEach(effect => {
+                        const stat = normalizeStatName(effect.stat);
+                        if (stat === undefined) {
+                            // Unknown stat - not in our mapping at all
+                            console.warn('Unknown stat in set bonus:', effect.stat, 'in', set.name);
+                            return;
                         }
-
-                        if (statKey) {
-                            parsed = {
-                                pieces: pieces,
-                                stat: statKey,
-                                value: value,
-                                desc: bonus
-                            };
+                        if (stat === null) {
+                            // Explicitly ignored stat (like mez resistance)
+                            return;
                         }
-                    }
-                } else if (bonus && typeof bonus === 'object' && bonus.pieces && bonus.stat && (bonus.value !== undefined)) {
-                    parsed = bonus;
-                }
-
-                if (!parsed) return; // skip unparseable bonus entries (procs, text-only)
-
-                // If stat is missing, try to infer from description
-                if (!parsed.stat && parsed.desc) {
-                    const desc = parsed.desc;
-                    if (/accuracy/i.test(desc)) parsed.stat = 'accuracy';
-                    else if (/damage/i.test(desc)) parsed.stat = 'damage';
-                    else if (/recharge/i.test(desc)) parsed.stat = 'recharge';
-                    else if (/ranged defense/i.test(desc)) parsed.stat = 'defRanged';
-                    else if (/aoe defense/i.test(desc)) parsed.stat = 'defAoE';
-                    else if (/melee defense/i.test(desc)) parsed.stat = 'defMelee';
-                    else if (/max hp/i.test(desc)) parsed.stat = 'maxhp';
-                    else if (/max end/i.test(desc)) parsed.stat = 'maxend';
-                    else if (/recovery/i.test(desc)) parsed.stat = 'recovery';
-                    else if (/regeneration/i.test(desc)) parsed.stat = 'regeneration';
-                }
-
-                if (!parsed.stat) {
-                    console.warn('Skipping set bonus with unknown stat:', parsed, setId, powerName);
-                    return;
-                }
-
-                // Only count if we have enough pieces
-                if (pieceCount >= parsed.pieces) {
-                    bonuses.push({
-                        stat: parsed.stat,
-                        value: parsed.value,
-                        source: `${set.name} (${parsed.pieces}pc in ${powerName})`,
-                        setName: set.name,
-                        pieceCount: parsed.pieces,
-                        powerName: powerName
+                        
+                        bonuses.push({
+                            stat: stat,
+                            value: effect.value,
+                            source: `${set.name} (${bonus.pieces}pc in ${powerName})`,
+                            setName: set.name,
+                            pieceCount: bonus.pieces,
+                            powerName: powerName
+                        });
                     });
+                }
+                // Legacy format support: direct stat/value on bonus object
+                else if (bonus.stat && bonus.value !== undefined) {
+                    const stat = normalizeStatName(bonus.stat);
+                    if (stat) {
+                        bonuses.push({
+                            stat: stat,
+                            value: bonus.value,
+                            source: `${set.name} (${bonus.pieces}pc in ${powerName})`,
+                            setName: set.name,
+                            pieceCount: bonus.pieces,
+                            powerName: powerName
+                        });
+                    }
                 }
             });
         });
