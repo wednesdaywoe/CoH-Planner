@@ -31,7 +31,8 @@ const ARCHETYPES = {
                 melee: 0.5,
                 ranged: 1.125,
                 aoe: 1.0
-            }
+            },
+            buffDebuffModifier: 0.625
         },
         primarySets: [
             'archery',
@@ -87,7 +88,8 @@ const ARCHETYPES = {
                 melee: 0.55,
                 ranged: 0.55,
                 aoe: 0.5
-            }
+            },
+            buffDebuffModifier: 1.0
         },
         primarySets: [
             'arsenal-control',
@@ -143,7 +145,8 @@ const ARCHETYPES = {
                 melee: 0.55,
                 ranged: 0.65,
                 aoe: 0.5
-            }
+            },
+            buffDebuffModifier: 1.25
         },
         primarySets: [
             'cold-domination',
@@ -201,7 +204,8 @@ const ARCHETYPES = {
                 melee: 1.125,
                 ranged: 0.5,
                 aoe: 0.8
-            }
+            },
+            buffDebuffModifier: 1.0
         },
         primarySets: [
             'battle-axe',
@@ -263,7 +267,8 @@ const ARCHETYPES = {
                 melee: 0.8,
                 ranged: 0.5,
                 aoe: 0.7
-            }
+            },
+            buffDebuffModifier: 1.0
         },
         primarySets: [
             'bio-organic-armor',
@@ -325,7 +330,8 @@ const ARCHETYPES = {
                 melee: 0.65,
                 ranged: 0.95,
                 aoe: 0.8
-            }
+            },
+            buffDebuffModifier: 1.0
         },
         primarySets: [
             'archery',
@@ -488,7 +494,8 @@ const ARCHETYPES = {
                 melee: 0.75,
                 ranged: 0.5,
                 aoe: 0.65
-            }
+            },
+            buffDebuffModifier: 1.0
         },
         primarySets: [
             'battle-axe',
@@ -550,7 +557,8 @@ const ARCHETYPES = {
                 melee: 0.55,
                 ranged: 0.75,
                 aoe: 0.6
-            }
+            },
+            buffDebuffModifier: 0.75
         },
         primarySets: [
             'archery',
@@ -608,7 +616,8 @@ const ARCHETYPES = {
                 melee: 0.75,
                 ranged: 0.75,
                 aoe: 0.65
-            }
+            },
+            buffDebuffModifier: 0.9
         },
         primarySets: [
             'arsenal-control',
@@ -660,7 +669,8 @@ const ARCHETYPES = {
                 melee: 0.55,
                 ranged: 0.55,
                 aoe: 0.5
-            }
+            },
+            buffDebuffModifier: 0.75
         },
         primarySets: [
             'beast-mastery',
@@ -710,7 +720,8 @@ const ARCHETYPES = {
                 melee: 1.0,
                 ranged: 0.6,
                 aoe: 0.7
-            }
+            },
+            buffDebuffModifier: 1.0
         },
         primarySets: [
             'brawling',
