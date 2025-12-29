@@ -219,12 +219,12 @@ function createEnhancementIconElement(enhancement) {
 function getSetIcon(setId) {
     // Use icon from IO_SETS data if available
     if (typeof IO_SETS !== 'undefined' && IO_SETS[setId] && IO_SETS[setId].icon) {
-        return `img/Enhancements/${IO_SETS[setId].icon}`;
+        return `img/Sets/${IO_SETS[setId].icon}`;
     }
     
     // Fallback to hardcoded mapping for backwards compatibility
     const iconFile = IO_SET_ICONS[setId];
-    return iconFile ? `img/Enhancements/${iconFile}` : 'img/Enhancements/Damage.png';
+    return iconFile ? `img/Sets/${iconFile}` : 'img/Enhancements/Damage.png';
 }
 
 /**
