@@ -28,10 +28,10 @@ POWERSETS['archery'] = {
                                 "endurance": 5.2,
                                 "cast": 1.67,
                                 "damage": {
-                                            "scale": 1.32
+                                            "type": "Lethal",
+                                            "scale": 3.1292
                                 },
-                                "dotDamage": 0.11,
-                                "dotTicks": 4
+                                "buffDuration": 9.17
                     }
         },
         {
@@ -53,10 +53,10 @@ POWERSETS['archery'] = {
                                 "endurance": 3.536,
                                 "cast": 1.0,
                                 "damage": {
-                                            "scale": 0.84
+                                            "type": "Lethal",
+                                            "scale": 2.0202
                                 },
-                                "dotDamage": 0.066,
-                                "dotTicks": 4
+                                "buffDuration": 8.5
                     }
         },
         {
@@ -78,10 +78,10 @@ POWERSETS['archery'] = {
                                 "endurance": 8.528,
                                 "cast": 1.17,
                                 "damage": {
-                                            "scale": 0.91
+                                            "type": "Lethal",
+                                            "scale": 1.5382
                                 },
-                                "dotDamage": 0.032,
-                                "dotTicks": 4
+                                "buffDuration": 8.67
                     }
         },
         {
@@ -103,10 +103,15 @@ POWERSETS['archery'] = {
                                 "endurance": 10.192,
                                 "cast": 1.83,
                                 "damage": {
-                                            "scale": 1.96
+                                            "type": "Lethal",
+                                            "scale": 4.0413
                                 },
-                                "dotDamage": 0.125,
-                                "dotTicks": 2
+                                "dotDamage": {
+                                            "type": "Fire",
+                                            "scale": 0.125,
+                                            "ticks": 4
+                                },
+                                "buffDuration": 4.125
                     }
         },
         {
@@ -123,11 +128,8 @@ POWERSETS['archery'] = {
                                 "recharge": 90.0,
                                 "endurance": 5.2,
                                 "cast": 1.17,
-                                "damage": {
-                                            "scale": 5.0
-                                },
-                                "dotDamage": 5.0,
-                                "dotTicks": 5
+                                "tohitBuff": 5.0,
+                                "buffDuration": 10.0
                     }
         },
         {
@@ -149,10 +151,19 @@ POWERSETS['archery'] = {
                                 "endurance": 15.184,
                                 "cast": 1.0,
                                 "damage": {
-                                            "scale": 0.45
+                                            "types": [
+                                                        {
+                                                                    "type": "Fire",
+                                                                    "scale": 1.9633999999999998
+                                                        },
+                                                        {
+                                                                    "type": "Lethal",
+                                                                    "scale": 1.2067
+                                                        }
+                                            ],
+                                            "scale": 3.1700999999999997
                                 },
-                                "dotDamage": 0.02,
-                                "dotTicks": 4
+                                "buffDuration": 8.5
                     }
         },
         {
@@ -172,7 +183,11 @@ POWERSETS['archery'] = {
                                 "range": 150.0,
                                 "recharge": 12.0,
                                 "endurance": 14.352,
-                                "cast": 1.67
+                                "cast": 1.67,
+                                "damage": {
+                                            "type": "Lethal",
+                                            "scale": 0.0
+                                }
                     }
         },
         {
@@ -194,10 +209,10 @@ POWERSETS['archery'] = {
                                 "endurance": 10.192,
                                 "cast": 1.0,
                                 "damage": {
+                                            "type": "Smashing",
                                             "scale": 0.25
                                 },
-                                "dotDamage": 0.066,
-                                "dotTicks": 4
+                                "buffDuration": 8.5
                     }
         },
         {
@@ -217,7 +232,13 @@ POWERSETS['archery'] = {
                                 "range": 90.0,
                                 "recharge": 65.0,
                                 "endurance": 20.8,
-                                "cast": 2.0
+                                "cast": 2.0,
+                                "dotDamage": {
+                                            "type": "Lethal",
+                                            "scale": 0.0,
+                                            "ticks": 0
+                                },
+                                "buffDuration": 3.0
                     }
         }
     ]

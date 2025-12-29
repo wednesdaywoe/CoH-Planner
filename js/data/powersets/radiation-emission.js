@@ -30,6 +30,8 @@ POWERSETS['radiation-emission'] = {
                     "available": 0,
                     "maxSlots": 6,
                     "allowedEnhancements": [
+                                "ToHitDebuff",
+                                "DefenseDebuff",
                                 "EnduranceReduction",
                                 "Range",
                                 "Recharge"
