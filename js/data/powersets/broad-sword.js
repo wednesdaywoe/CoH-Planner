@@ -31,7 +31,8 @@ const BROAD_SWORD_POWERSET = {
                     types: [
                         {
                             type: "Lethal",
-                            scale: 8.2218},
+                            scale: 8.2218
+                        },
         {type: "Fire",
                             scale: 0.738
                         }
@@ -65,7 +66,8 @@ const BROAD_SWORD_POWERSET = {
                     types: [
                         {
                             type: "Lethal",
-                            scale: 5.9818},
+                            scale: 5.9818
+                        },
         {type: "Fire",
                             scale: 0.45
                         }
@@ -100,7 +102,8 @@ const BROAD_SWORD_POWERSET = {
                     types: [
                         {
                             type: "Lethal",
-                            scale: 6.8820000000000014},
+                            scale: 6.8820000000000014
+                        },
         {type: "Fire",
                             scale: 0.5535
                         }
@@ -154,7 +157,8 @@ const BROAD_SWORD_POWERSET = {
                     types: [
                         {
                             type: "Lethal",
-                            scale: 5.4218},
+                            scale: 5.4218
+                        },
         {type: "Fire",
                             scale: 0.378
                         }
@@ -206,7 +210,8 @@ const BROAD_SWORD_POWERSET = {
                     types: [
                         {
                             type: "Lethal",
-                            scale: 6.6495999999999995},
+                            scale: 6.6495999999999995
+                        },
         {type: "Fire",
                             scale: 0.45
                         }
@@ -251,7 +256,8 @@ const BROAD_SWORD_POWERSET = {
                     types: [
                         {
                             type: "Lethal",
-                            scale: 9.9998},
+                            scale: 9.9998
+                        },
         {type: "Fire",
                             scale: 0.882
                         }
@@ -286,7 +292,8 @@ const BROAD_SWORD_POWERSET = {
                     types: [
                         {
                             type: "Lethal",
-                            scale: 10.3818},
+                            scale: 10.3818
+                        },
         {type: "Fire",
                             scale: 1.17
                         }

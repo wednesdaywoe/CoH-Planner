@@ -71,7 +71,8 @@ const KATANA_POWERSET = {
                     types: [
                         {
                             type: "Lethal",
-                            scale: 6.3178},
+                            scale: 6.3178
+                        },
         {type: "Fire",
                             scale: 0.522
                         }
@@ -106,7 +107,8 @@ const KATANA_POWERSET = {
                     types: [
                         {
                             type: "Lethal",
-                            scale: 5.1668},
+                            scale: 5.1668
+                        },
         {type: "Fire",
                             scale: 0.4455
                         }
@@ -160,7 +162,8 @@ const KATANA_POWERSET = {
                     types: [
                         {
                             type: "Lethal",
-                            scale: 5.4218},
+                            scale: 5.4218
+                        },
         {type: "Fire",
                             scale: 0.378
                         }
@@ -212,7 +215,8 @@ const KATANA_POWERSET = {
                     types: [
                         {
                             type: "Lethal",
-                            scale: 5.561},
+                            scale: 5.561
+                        },
         {type: "Fire",
                             scale: 0.45
                         }
@@ -257,7 +261,8 @@ const KATANA_POWERSET = {
                     types: [
                         {
                             type: "Lethal",
-                            scale: 8.7818},
+                            scale: 8.7818
+                        },
         {type: "Fire",
                             scale: 0.81
                         }
@@ -292,7 +297,8 @@ const KATANA_POWERSET = {
                     types: [
                         {
                             type: "Lethal",
-                            scale: 8.881799999999998},
+                            scale: 8.881799999999998
+                        },
         {type: "Fire",
                             scale: 1.026
                         }

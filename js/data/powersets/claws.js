@@ -31,7 +31,8 @@ const CLAWS_POWERSET = {
                     types: [
                         {
                             type: "Lethal",
-                            scale: 5.9338},
+                            scale: 5.9338
+                        },
         {type: "Fire",
                             scale: 0.486
                         }
@@ -63,7 +64,8 @@ const CLAWS_POWERSET = {
                     types: [
                         {
                             type: "Lethal",
-                            scale: 4.4059},
+                            scale: 4.4059
+                        },
         {type: "Fire",
                             scale: 0.47700000000000004
                         }
@@ -94,7 +96,8 @@ const CLAWS_POWERSET = {
                     types: [
                         {
                             type: "Lethal",
-                            scale: 7.0059000000000005},
+                            scale: 7.0059000000000005
+                        },
         {type: "Fire",
                             scale: 0.594
                         }
@@ -127,7 +130,8 @@ const CLAWS_POWERSET = {
                     types: [
                         {
                             type: "Lethal",
-                            scale: 7.6176},
+                            scale: 7.6176
+                        },
         {type: "Fire",
                             scale: 0.711
                         }
@@ -158,7 +162,8 @@ const CLAWS_POWERSET = {
                     types: [
                         {
                             type: "Lethal",
-                            scale: 5.3218000000000005},
+                            scale: 5.3218000000000005
+                        },
         {type: "Fire",
                             scale: 0.36
                         }
@@ -211,7 +216,8 @@ const CLAWS_POWERSET = {
                     types: [
                         {
                             type: "Lethal",
-                            scale: 6.529799999999999},
+                            scale: 6.529799999999999
+                        },
         {type: "Fire",
                             scale: 0.6255
                         }
@@ -244,7 +250,8 @@ const CLAWS_POWERSET = {
                     types: [
                         {
                             type: "Lethal",
-                            scale: 7.7818000000000005},
+                            scale: 7.7818000000000005
+                        },
         {type: "Fire",
                             scale: 0.8955
                         }
@@ -277,7 +284,8 @@ const CLAWS_POWERSET = {
                     types: [
                         {
                             type: "Lethal",
-                            scale: 4.4022},
+                            scale: 4.4022
+                        },
         {type: "Fire",
                             scale: 0.4725
                         }

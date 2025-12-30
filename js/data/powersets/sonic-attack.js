@@ -66,7 +66,8 @@ const SONIC_ATTACK_POWERSET = {
                     types: [
                         {
                             type: "Energy",
-                            scale: 1.64},
+                            scale: 1.64
+                        },
         {type: "Smashing",
                             scale: 0.42
                         }
@@ -100,7 +101,8 @@ const SONIC_ATTACK_POWERSET = {
                     types: [
                         {
                             type: "Energy",
-                            scale: 2.9257999999999997},
+                            scale: 2.9257999999999997
+                        },
         {type: "Smashing",
                             scale: 0.3347
                         }
@@ -134,7 +136,8 @@ const SONIC_ATTACK_POWERSET = {
                     types: [
                         {
                             type: "Smashing",
-                            scale: 0.8426},
+                            scale: 0.8426
+                        },
         {type: "Energy",
                             scale: 0.8426
                         }
@@ -165,7 +168,8 @@ const SONIC_ATTACK_POWERSET = {
                     types: [
                         {
                             type: "Smashing",
-                            scale: 2.08},
+                            scale: 2.08
+                        },
         {type: "Energy",
                             scale: 2.08
                         }
@@ -244,7 +248,8 @@ const SONIC_ATTACK_POWERSET = {
                     types: [
                         {
                             type: "Smashing",
-                            scale: 2.105},
+                            scale: 2.105
+                        },
         {type: "Energy",
                             scale: 2.105
                         }
@@ -277,7 +282,8 @@ const SONIC_ATTACK_POWERSET = {
                     types: [
                         {
                             type: "Energy",
-                            scale: 3.4065000000000003},
+                            scale: 3.4065000000000003
+                        },
         {type: "Smashing",
                             scale: 2.0
                         }

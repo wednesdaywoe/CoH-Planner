@@ -237,7 +237,8 @@ const ICE_ARMOR_POWERSET = {
                     types: [
                         {
                             type: "Cold",
-                            scale: 0.2},
+                            scale: 0.2
+                        },
         {type: "Fire",
                             scale: 0.09
                         }

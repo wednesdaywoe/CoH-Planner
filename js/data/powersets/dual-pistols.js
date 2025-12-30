@@ -90,11 +90,14 @@ const DUAL_PISTOLS_POWERSET = {
                     types: [
                         {
                             type: "Lethal",
-                            scale: 3.1292999999999997},
+                            scale: 3.1292999999999997
+                        },
         {type: "Fire",
-                            scale: 0.9388},
+                            scale: 0.9388
+                        },
         {type: "Cold",
-                            scale: 0.9388},
+                            scale: 0.9388
+                        },
         {type: "Toxic",
                             scale: 0.9388
                         }
@@ -131,11 +134,14 @@ const DUAL_PISTOLS_POWERSET = {
                     types: [
                         {
                             type: "Lethal",
-                            scale: 2.2601},
+                            scale: 2.2601
+                        },
         {type: "Fire",
-                            scale: 0.6779999999999999},
+                            scale: 0.6779999999999999
+                        },
         {type: "Cold",
-                            scale: 0.6779999999999999},
+                            scale: 0.6779999999999999
+                        },
         {type: "Toxic",
                             scale: 0.6779999999999999
                         }
@@ -292,11 +298,14 @@ const DUAL_PISTOLS_POWERSET = {
                     types: [
                         {
                             type: "Lethal",
-                            scale: 4.0893},
+                            scale: 4.0893
+                        },
         {type: "Fire",
-                            scale: 1.2268},
+                            scale: 1.2268
+                        },
         {type: "Cold",
-                            scale: 1.2268},
+                            scale: 1.2268
+                        },
         {type: "Toxic",
                             scale: 1.2268
                         }
@@ -336,11 +345,14 @@ const DUAL_PISTOLS_POWERSET = {
                     types: [
                         {
                             type: "Lethal",
-                            scale: 4.5920000000000005},
+                            scale: 4.5920000000000005
+                        },
         {type: "Fire",
-                            scale: 1.3776},
+                            scale: 1.3776
+                        },
         {type: "Cold",
-                            scale: 1.3776},
+                            scale: 1.3776
+                        },
         {type: "Toxic",
                             scale: 1.3026
                         }

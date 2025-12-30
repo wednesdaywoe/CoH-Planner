@@ -223,7 +223,8 @@ const MENTAL_MANIPULATION_POWERSET = {
                     types: [
                         {
                             type: "Psionic",
-                            scale: 3.6688},
+                            scale: 3.6688
+                        },
         {type: "Smashing",
                             scale: 1.46
                         }

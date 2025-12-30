@@ -32,9 +32,11 @@ const PSIONIC_MELEE_POWERSET = {
                     types: [
                         {
                             type: "Psionic",
-                            scale: 4.4449},
+                            scale: 4.4449
+                        },
         {type: "Smashing",
-                            scale: 0.515},
+                            scale: 0.515
+                        },
         {type: "Fire",
                             scale: 0.378
                         }
@@ -72,9 +74,11 @@ const PSIONIC_MELEE_POWERSET = {
                     types: [
                         {
                             type: "Psionic",
-                            scale: 5.8141},
+                            scale: 5.8141
+                        },
         {type: "Lethal",
-                            scale: 0.6677},
+                            scale: 0.6677
+                        },
         {type: "Fire",
                             scale: 0.513
                         }
@@ -111,9 +115,11 @@ const PSIONIC_MELEE_POWERSET = {
                     types: [
                         {
                             type: "Psionic",
-                            scale: 8.0806},
+                            scale: 8.0806
+                        },
         {type: "Smashing",
-                            scale: 0.8972},
+                            scale: 0.8972
+                        },
         {type: "Fire",
                             scale: 0.81
                         }
@@ -173,9 +179,11 @@ const PSIONIC_MELEE_POWERSET = {
                     types: [
                         {
                             type: "Psionic",
-                            scale: 6.773999999999999},
+                            scale: 6.773999999999999
+                        },
         {type: "Lethal",
-                            scale: 0.762},
+                            scale: 0.762
+                        },
         {type: "Fire",
                             scale: 0.648
                         }
@@ -253,9 +261,11 @@ const PSIONIC_MELEE_POWERSET = {
                     types: [
                         {
                             type: "Psionic",
-                            scale: 15.1572},
+                            scale: 15.1572
+                        },
         {type: "Lethal",
-                            scale: 1.3775},
+                            scale: 1.3775
+                        },
         {type: "Fire",
                             scale: 1.242
                         }
@@ -287,7 +297,8 @@ const PSIONIC_MELEE_POWERSET = {
                     types: [
                         {
                             type: "Smashing",
-                            scale: 6.4597999999999995},
+                            scale: 6.4597999999999995
+                        },
         {type: "Fire",
                             scale: 0.639
                         }

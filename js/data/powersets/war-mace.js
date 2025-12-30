@@ -32,7 +32,8 @@ const WAR_MACE_POWERSET = {
                     types: [
                         {
                             type: "Smashing",
-                            scale: 5.6988},
+                            scale: 5.6988
+                        },
         {type: "Fire",
                             scale: 0.45
                         }
@@ -65,7 +66,8 @@ const WAR_MACE_POWERSET = {
                     types: [
                         {
                             type: "Smashing",
-                            scale: 8.1238},
+                            scale: 8.1238
+                        },
         {type: "Fire",
                             scale: 0.738
                         }
@@ -97,7 +99,8 @@ const WAR_MACE_POWERSET = {
                     types: [
                         {
                             type: "Smashing",
-                            scale: 9.6466},
+                            scale: 9.6466
+                        },
         {type: "Fire",
                             scale: 0.882
                         }
@@ -149,7 +152,8 @@ const WAR_MACE_POWERSET = {
                     types: [
                         {
                             type: "Smashing",
-                            scale: 12.2008},
+                            scale: 12.2008
+                        },
         {type: "Fire",
                             scale: 1.314
                         }
@@ -201,7 +205,8 @@ const WAR_MACE_POWERSET = {
                     types: [
                         {
                             type: "Smashing",
-                            scale: 6.2860000000000005},
+                            scale: 6.2860000000000005
+                        },
         {type: "Fire",
                             scale: 0.504
                         }
@@ -235,7 +240,8 @@ const WAR_MACE_POWERSET = {
                     types: [
                         {
                             type: "Smashing",
-                            scale: 11.0008},
+                            scale: 11.0008
+                        },
         {type: "Fire",
                             scale: 1.026
                         }
@@ -268,7 +274,8 @@ const WAR_MACE_POWERSET = {
                     types: [
                         {
                             type: "Smashing",
-                            scale: 7.862000000000001},
+                            scale: 7.862000000000001
+                        },
         {type: "Fire",
                             scale: 0.7245
                         }

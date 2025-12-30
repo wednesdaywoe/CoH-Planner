@@ -110,7 +110,8 @@ const ASSAULT_RIFLE_POWERSET = {
                     types: [
                         {
                             type: "Fire",
-                            scale: 2.0032},
+                            scale: 2.0032
+                        },
         {type: "Lethal",
                             scale: 1.7788
                         }

@@ -31,7 +31,8 @@ const ENERGY_BLAST_POWERSET = {
                     types: [
                         {
                             type: "Energy",
-                            scale: 2.8891999999999998},
+                            scale: 2.8891999999999998
+                        },
         {type: "Smashing",
                             scale: 0.64
                         }
@@ -63,7 +64,8 @@ const ENERGY_BLAST_POWERSET = {
                     types: [
                         {
                             type: "Energy",
-                            scale: 2.0602},
+                            scale: 2.0602
+                        },
         {type: "Smashing",
                             scale: 0.2
                         }
@@ -96,7 +98,8 @@ const ENERGY_BLAST_POWERSET = {
                     types: [
                         {
                             type: "Energy",
-                            scale: 1.3445},
+                            scale: 1.3445
+                        },
         {type: "Smashing",
                             scale: 0.3
                         }
@@ -127,7 +130,8 @@ const ENERGY_BLAST_POWERSET = {
                     types: [
                         {
                             type: "Energy",
-                            scale: 3.3203},
+                            scale: 3.3203
+                        },
         {type: "Smashing",
                             scale: 1.0
                         }
@@ -199,7 +203,8 @@ const ENERGY_BLAST_POWERSET = {
                     types: [
                         {
                             type: "Smashing",
-                            scale: 0.33},
+                            scale: 0.33
+                        },
         {type: "Energy",
                             scale: 0.156
                         }
@@ -231,7 +236,8 @@ const ENERGY_BLAST_POWERSET = {
                     types: [
                         {
                             type: "Energy",
-                            scale: 3.2887},
+                            scale: 3.2887
+                        },
         {type: "Smashing",
                             scale: 0.5
                         }

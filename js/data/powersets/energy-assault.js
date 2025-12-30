@@ -32,7 +32,8 @@ const ENERGY_ASSAULT_POWERSET = {
                     types: [
                         {
                             type: "Energy",
-                            scale: 2.286},
+                            scale: 2.286
+                        },
         {type: "Smashing",
                             scale: 1.524
                         }
@@ -65,7 +66,8 @@ const ENERGY_ASSAULT_POWERSET = {
                     types: [
                         {
                             type: "Energy",
-                            scale: 1.3559999999999999},
+                            scale: 1.3559999999999999
+                        },
         {type: "Smashing",
                             scale: 0.904
                         }
@@ -96,7 +98,8 @@ const ENERGY_ASSAULT_POWERSET = {
                     types: [
                         {
                             type: "Energy",
-                            scale: 1.8780000000000001},
+                            scale: 1.8780000000000001
+                        },
         {type: "Smashing",
                             scale: 1.252
                         }
@@ -127,7 +130,8 @@ const ENERGY_ASSAULT_POWERSET = {
                     types: [
                         {
                             type: "Energy",
-                            scale: 2.9467999999999996},
+                            scale: 2.9467999999999996
+                        },
         {type: "Smashing",
                             scale: 0.9823
                         }
@@ -182,7 +186,8 @@ const ENERGY_ASSAULT_POWERSET = {
                     types: [
                         {
                             type: "Energy",
-                            scale: 1.7015000000000002},
+                            scale: 1.7015000000000002
+                        },
         {type: "Smashing",
                             scale: 1.1344
                         }
@@ -213,7 +218,8 @@ const ENERGY_ASSAULT_POWERSET = {
                     types: [
                         {
                             type: "Energy",
-                            scale: 4.1586},
+                            scale: 4.1586
+                        },
         {type: "Smashing",
                             scale: 2.7724
                         }
@@ -265,7 +271,8 @@ const ENERGY_ASSAULT_POWERSET = {
                     types: [
                         {
                             type: "Energy",
-                            scale: 3.0974000000000004},
+                            scale: 3.0974000000000004
+                        },
         {type: "Smashing",
                             scale: 1.6316000000000002
                         }

@@ -69,9 +69,11 @@ const ENERGY_MELEE_POWERSET = {
                     types: [
                         {
                             type: "Energy",
-                            scale: 1.6387},
+                            scale: 1.6387
+                        },
         {type: "Smashing",
-                            scale: 0.7022999999999999},
+                            scale: 0.7022999999999999
+                        },
         {type: "Fire",
                             scale: 0.522
                         }
@@ -102,9 +104,11 @@ const ENERGY_MELEE_POWERSET = {
                     types: [
                         {
                             type: "Energy",
-                            scale: 2.0780000000000003},
+                            scale: 2.0780000000000003
+                        },
         {type: "Smashing",
-                            scale: 1.171},
+                            scale: 1.171
+                        },
         {type: "Fire",
                             scale: 0.738
                         }
@@ -158,9 +162,11 @@ const ENERGY_MELEE_POWERSET = {
                     types: [
                         {
                             type: "Energy",
-                            scale: 1.4809},
+                            scale: 1.4809
+                        },
         {type: "Smashing",
-                            scale: 1.0725},
+                            scale: 1.0725
+                        },
         {type: "Fire",
                             scale: 0.5415
                         }
@@ -211,9 +217,11 @@ const ENERGY_MELEE_POWERSET = {
                     types: [
                         {
                             type: "Energy",
-                            scale: 1.4},
+                            scale: 1.4
+                        },
         {type: "Smashing",
-                            scale: 1.0138},
+                            scale: 1.0138
+                        },
         {type: "Fire",
                             scale: 0.5318
                         }
@@ -244,9 +252,11 @@ const ENERGY_MELEE_POWERSET = {
                     types: [
                         {
                             type: "Energy",
-                            scale: 4.6396},
+                            scale: 4.6396
+                        },
         {type: "Smashing",
-                            scale: 1.8913},
+                            scale: 1.8913
+                        },
         {type: "Fire",
                             scale: 1.602
                         }

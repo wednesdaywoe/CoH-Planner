@@ -63,7 +63,8 @@ const FIRE_BLAST_POWERSET = {
                     types: [
                         {
                             type: "Fire",
-                            scale: 1.1641},
+                            scale: 1.1641
+                        },
         {type: "Smashing",
                             scale: 0.2
                         }
@@ -220,7 +221,8 @@ const FIRE_BLAST_POWERSET = {
                     types: [
                         {
                             type: "Fire",
-                            scale: 4.4065},
+                            scale: 4.4065
+                        },
         {type: "Smashing",
                             scale: 1.0
                         }

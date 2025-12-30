@@ -32,7 +32,8 @@ const ICY_ASSAULT_POWERSET = {
                     types: [
                         {
                             type: "Cold",
-                            scale: 1.968},
+                            scale: 1.968
+                        },
         {type: "Smashing",
                             scale: 0.492
                         }
@@ -65,7 +66,8 @@ const ICY_ASSAULT_POWERSET = {
                     types: [
                         {
                             type: "Cold",
-                            scale: 2.2337},
+                            scale: 2.2337
+                        },
         {type: "Lethal",
                             scale: 1.4573
                         }
@@ -97,7 +99,8 @@ const ICY_ASSAULT_POWERSET = {
                     types: [
                         {
                             type: "Lethal",
-                            scale: 1.4947},
+                            scale: 1.4947
+                        },
         {type: "Cold",
                             scale: 1.4947
                         }
@@ -129,7 +132,8 @@ const ICY_ASSAULT_POWERSET = {
                     types: [
                         {
                             type: "Cold",
-                            scale: 2.005},
+                            scale: 2.005
+                        },
         {type: "Smashing",
                             scale: 0.655
                         }
@@ -238,7 +242,8 @@ const ICY_ASSAULT_POWERSET = {
                     types: [
                         {
                             type: "Lethal",
-                            scale: 2.7205000000000004},
+                            scale: 2.7205000000000004
+                        },
         {type: "Cold",
                             scale: 2.7205000000000004
                         }
@@ -270,7 +275,8 @@ const ICY_ASSAULT_POWERSET = {
                     types: [
                         {
                             type: "Cold",
-                            scale: 2.2086},
+                            scale: 2.2086
+                        },
         {type: "Smashing",
                             scale: 1.7005
                         }

@@ -32,7 +32,8 @@ const PYROTECHNIC_CONTROL_POWERSET = {
                     types: [
                         {
                             type: "Fire",
-                            scale: 1.6268000000000002},
+                            scale: 1.6268000000000002
+                        },
         {type: "Energy",
                             scale: 1.6268000000000002
                         }

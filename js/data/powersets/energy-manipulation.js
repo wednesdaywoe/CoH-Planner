@@ -31,7 +31,8 @@ const ENERGY_MANIPULATION_POWERSET = {
                     types: [
                         {
                             type: "Smashing",
-                            scale: 1.7046000000000001},
+                            scale: 1.7046000000000001
+                        },
         {type: "Energy",
                             scale: 1.6364
                         }
@@ -64,7 +65,8 @@ const ENERGY_MANIPULATION_POWERSET = {
                     types: [
                         {
                             type: "Energy",
-                            scale: 1.7399},
+                            scale: 1.7399
+                        },
         {type: "Smashing",
                             scale: 0.4
                         }
@@ -116,7 +118,8 @@ const ENERGY_MANIPULATION_POWERSET = {
                     types: [
                         {
                             type: "Smashing",
-                            scale: 3.2270000000000003},
+                            scale: 3.2270000000000003
+                        },
         {type: "Energy",
                             scale: 1.383
                         }
@@ -234,7 +237,8 @@ const ENERGY_MANIPULATION_POWERSET = {
                     types: [
                         {
                             type: "Energy",
-                            scale: 4.696400000000001},
+                            scale: 4.696400000000001
+                        },
         {type: "Smashing",
                             scale: 1.8346
                         }

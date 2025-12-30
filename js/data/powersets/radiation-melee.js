@@ -32,9 +32,11 @@ const RADIATION_MELEE_POWERSET = {
                     types: [
                         {
                             type: "Energy",
-                            scale: 3.5414},
+                            scale: 3.5414
+                        },
         {type: "Smashing",
-                            scale: 1.1804},
+                            scale: 1.1804
+                        },
         {type: "Fire",
                             scale: 0.378
                         }
@@ -68,9 +70,11 @@ const RADIATION_MELEE_POWERSET = {
                     types: [
                         {
                             type: "Energy",
-                            scale: 5.925000000000001},
+                            scale: 5.925000000000001
+                        },
         {type: "Smashing",
-                            scale: 1.975},
+                            scale: 1.975
+                        },
         {type: "Fire",
                             scale: 0.666
                         }
@@ -163,9 +167,11 @@ const RADIATION_MELEE_POWERSET = {
                     types: [
                         {
                             type: "Energy",
-                            scale: 7.9514},
+                            scale: 7.9514
+                        },
         {type: "Smashing",
-                            scale: 2.6504000000000003},
+                            scale: 2.6504000000000003
+                        },
         {type: "Fire",
                             scale: 0.882
                         }
@@ -238,9 +244,11 @@ const RADIATION_MELEE_POWERSET = {
                     types: [
                         {
                             type: "Energy",
-                            scale: 11.3534},
+                            scale: 11.3534
+                        },
         {type: "Smashing",
-                            scale: 3.7844},
+                            scale: 3.7844
+                        },
         {type: "Fire",
                             scale: 1.386
                         }
@@ -274,9 +282,11 @@ const RADIATION_MELEE_POWERSET = {
                     types: [
                         {
                             type: "Toxic",
-                            scale: 5.4861},
+                            scale: 5.4861
+                        },
         {type: "Energy",
-                            scale: 1.8287},
+                            scale: 1.8287
+                        },
         {type: "Fire",
                             scale: 0.6975
                         }

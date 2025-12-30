@@ -81,7 +81,8 @@ const PSYCHIC_BLAST_POWERSET = {
                     types: [
                         {
                             type: "Psionic",
-                            scale: 3.0002},
+                            scale: 3.0002
+                        },
         {type: "Smashing",
                             scale: 0.46
                         }

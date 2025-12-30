@@ -32,7 +32,8 @@ const SONIC_ASSAULT_POWERSET = {
                     types: [
                         {
                             type: "Energy",
-                            scale: 1.64},
+                            scale: 1.64
+                        },
         {type: "Smashing",
                             scale: 0.42
                         }
@@ -132,7 +133,8 @@ const SONIC_ASSAULT_POWERSET = {
                     types: [
                         {
                             type: "Smashing",
-                            scale: 0.9263},
+                            scale: 0.9263
+                        },
         {type: "Energy",
                             scale: 0.9263
                         }
@@ -187,7 +189,8 @@ const SONIC_ASSAULT_POWERSET = {
                     types: [
                         {
                             type: "Smashing",
-                            scale: 0.9509},
+                            scale: 0.9509
+                        },
         {type: "Energy",
                             scale: 0.9509
                         }
@@ -239,7 +242,8 @@ const SONIC_ASSAULT_POWERSET = {
                     types: [
                         {
                             type: "Energy",
-                            scale: 3.6603000000000003},
+                            scale: 3.6603000000000003
+                        },
         {type: "Smashing",
                             scale: 1.3
                         }
@@ -270,7 +274,8 @@ const SONIC_ASSAULT_POWERSET = {
                     types: [
                         {
                             type: "Smashing",
-                            scale: 3.0695},
+                            scale: 3.0695
+                        },
         {type: "Energy",
                             scale: 3.0695
                         }

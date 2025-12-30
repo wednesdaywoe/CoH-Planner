@@ -226,7 +226,8 @@ const ELECTRICAL_BLAST_POWERSET = {
                     types: [
                         {
                             type: "Energy",
-                            scale: 4.9475999999999996},
+                            scale: 4.9475999999999996
+                        },
         {type: "Smashing",
                             scale: 1.0
                         }

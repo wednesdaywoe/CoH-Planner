@@ -32,7 +32,8 @@ const QUILLS_POWERSET = {
                     types: [
                         {
                             type: "Lethal",
-                            scale: 4.7219999999999995},
+                            scale: 4.7219999999999995
+                        },
         {type: "Fire",
                             scale: 0.378
                         }
@@ -70,7 +71,8 @@ const QUILLS_POWERSET = {
                     types: [
                         {
                             type: "Lethal",
-                            scale: 7.522},
+                            scale: 7.522
+                        },
         {type: "Fire",
                             scale: 0.594
                         }
@@ -117,7 +119,8 @@ const QUILLS_POWERSET = {
                     types: [
                         {
                             type: "Lethal",
-                            scale: 4.6324},
+                            scale: 4.6324
+                        },
         {type: "Fire",
                             scale: 0.405
                         }
@@ -175,7 +178,8 @@ const QUILLS_POWERSET = {
                     types: [
                         {
                             type: "Lethal",
-                            scale: 9.762},
+                            scale: 9.762
+                        },
         {type: "Fire",
                             scale: 0.738
                         }
@@ -242,7 +246,8 @@ const QUILLS_POWERSET = {
                     types: [
                         {
                             type: "Lethal",
-                            scale: 9.0378},
+                            scale: 9.0378
+                        },
         {type: "Fire",
                             scale: 0.765
                         }
@@ -281,7 +286,8 @@ const QUILLS_POWERSET = {
                     types: [
                         {
                             type: "Lethal",
-                            scale: 4.8675999999999995},
+                            scale: 4.8675999999999995
+                        },
         {type: "Fire",
                             scale: 0.4905
                         }

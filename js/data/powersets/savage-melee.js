@@ -32,7 +32,8 @@ const SAVAGE_MELEE_POWERSET = {
                     types: [
                         {
                             type: "Lethal",
-                            scale: 2.5788},
+                            scale: 2.5788
+                        },
         {type: "Fire",
                             scale: 0.522
                         }
@@ -155,7 +156,8 @@ const SAVAGE_MELEE_POWERSET = {
                     types: [
                         {
                             type: "Lethal",
-                            scale: 3.7289000000000003},
+                            scale: 3.7289000000000003
+                        },
         {type: "Fire",
                             scale: 0.81
                         }
@@ -226,7 +228,8 @@ const SAVAGE_MELEE_POWERSET = {
                     types: [
                         {
                             type: "Lethal",
-                            scale: 1.4498},
+                            scale: 1.4498
+                        },
         {type: "Fire",
                             scale: 0.351
                         }

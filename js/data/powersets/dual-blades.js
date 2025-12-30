@@ -144,7 +144,8 @@ const DUAL_BLADES_POWERSET = {
                     types: [
                         {
                             type: "Lethal",
-                            scale: 4.2608},
+                            scale: 4.2608
+                        },
         {type: "Fire",
                             scale: 0.2565
                         }
@@ -190,7 +191,8 @@ const DUAL_BLADES_POWERSET = {
                     types: [
                         {
                             type: "Lethal",
-                            scale: 5.839799999999999},
+                            scale: 5.839799999999999
+                        },
         {type: "Fire",
                             scale: 0.36
                         }
@@ -243,7 +245,8 @@ const DUAL_BLADES_POWERSET = {
                     types: [
                         {
                             type: "Lethal",
-                            scale: 9.761700000000001},
+                            scale: 9.761700000000001
+                        },
         {type: "Fire",
                             scale: 0.738
                         }
@@ -276,7 +279,8 @@ const DUAL_BLADES_POWERSET = {
                     types: [
                         {
                             type: "Lethal",
-                            scale: 6.1108},
+                            scale: 6.1108
+                        },
         {type: "Fire",
                             scale: 0.765
                         }
@@ -322,7 +326,8 @@ const DUAL_BLADES_POWERSET = {
                     types: [
                         {
                             type: "Lethal",
-                            scale: 8.089400000000001},
+                            scale: 8.089400000000001
+                        },
         {type: "Fire",
                             scale: 0.315
                         }

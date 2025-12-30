@@ -128,7 +128,8 @@ const MERCENARIES_POWERSET = {
                     types: [
                         {
                             type: "Fire",
-                            scale: 1.0574},
+                            scale: 1.0574
+                        },
         {type: "Lethal",
                             scale: 0.5207999999999999
                         }

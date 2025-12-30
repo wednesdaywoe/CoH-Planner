@@ -32,7 +32,8 @@ const RADIOACTIVE_ASSAULT_POWERSET = {
                     types: [
                         {
                             type: "Energy",
-                            scale: 2.2058},
+                            scale: 2.2058
+                        },
         {type: "Smashing",
                             scale: 0.7353
                         }
@@ -167,7 +168,8 @@ const RADIOACTIVE_ASSAULT_POWERSET = {
                     types: [
                         {
                             type: "Energy",
-                            scale: 3.5385999999999997},
+                            scale: 3.5385999999999997
+                        },
         {type: "Smashing",
                             scale: 1.1770999999999998
                         }
@@ -200,7 +202,8 @@ const RADIOACTIVE_ASSAULT_POWERSET = {
                     types: [
                         {
                             type: "Toxic",
-                            scale: 2.16},
+                            scale: 2.16
+                        },
         {type: "Energy",
                             scale: 0.7257
                         }
@@ -254,7 +257,8 @@ const RADIOACTIVE_ASSAULT_POWERSET = {
                     types: [
                         {
                             type: "Energy",
-                            scale: 4.972799999999999},
+                            scale: 4.972799999999999
+                        },
         {type: "Smashing",
                             scale: 1.6601
                         }

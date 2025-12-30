@@ -59,7 +59,8 @@ const ICE_MANIPULATION_POWERSET = {
                     types: [
                         {
                             type: "Cold",
-                            scale: 2.2908},
+                            scale: 2.2908
+                        },
         {type: "Smashing",
                             scale: 1.0
                         }
@@ -91,7 +92,8 @@ const ICE_MANIPULATION_POWERSET = {
                     types: [
                         {
                             type: "Cold",
-                            scale: 2.7308},
+                            scale: 2.7308
+                        },
         {type: "Lethal",
                             scale: 0.96
                         }

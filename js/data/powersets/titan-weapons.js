@@ -97,7 +97,8 @@ const TITAN_WEAPONS_POWERSET = {
                     types: [
                         {
                             type: "Smashing",
-                            scale: 8.870899999999999},
+                            scale: 8.870899999999999
+                        },
         {type: "Fire",
                             scale: 0.9702
                         }
@@ -190,7 +191,8 @@ const TITAN_WEAPONS_POWERSET = {
                     types: [
                         {
                             type: "Smashing",
-                            scale: 4.448},
+                            scale: 4.448
+                        },
         {type: "Fire",
                             scale: 0.468
                         }

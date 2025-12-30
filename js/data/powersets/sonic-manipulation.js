@@ -31,7 +31,8 @@ const SONIC_MANIPULATION_POWERSET = {
                     types: [
                         {
                             type: "Smashing",
-                            scale: 0.8061},
+                            scale: 0.8061
+                        },
         {type: "Energy",
                             scale: 0.8061
                         }
@@ -144,7 +145,8 @@ const SONIC_MANIPULATION_POWERSET = {
                     types: [
                         {
                             type: "Smashing",
-                            scale: 0.9509},
+                            scale: 0.9509
+                        },
         {type: "Energy",
                             scale: 0.9509
                         }
@@ -250,7 +252,8 @@ const SONIC_MANIPULATION_POWERSET = {
                     types: [
                         {
                             type: "Smashing",
-                            scale: 3.0695},
+                            scale: 3.0695
+                        },
         {type: "Energy",
                             scale: 3.0695
                         }

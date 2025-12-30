@@ -235,7 +235,8 @@ const RADIATION_BLAST_POWERSET = {
                     types: [
                         {
                             type: "Energy",
-                            scale: 3.9424},
+                            scale: 3.9424
+                        },
         {type: "Smashing",
                             scale: 1.4641
                         }

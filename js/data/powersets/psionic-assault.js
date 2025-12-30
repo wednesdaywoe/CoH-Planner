@@ -83,7 +83,8 @@ const PSIONIC_ASSAULT_POWERSET = {
                     types: [
                         {
                             type: "Psionic",
-                            scale: 2.145},
+                            scale: 2.145
+                        },
         {type: "Smashing",
                             scale: 0.715
                         }

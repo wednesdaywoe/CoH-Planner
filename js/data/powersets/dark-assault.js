@@ -58,7 +58,8 @@ const DARK_ASSAULT_POWERSET = {
                     types: [
                         {
                             type: "Negative",
-                            scale: 2.2892},
+                            scale: 2.2892
+                        },
         {type: "Smashing",
                             scale: 0.7497
                         }

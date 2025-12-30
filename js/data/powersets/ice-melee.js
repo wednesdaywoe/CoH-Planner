@@ -32,9 +32,11 @@ const ICE_MELEE_POWERSET = {
                     types: [
                         {
                             type: "Cold",
-                            scale: 4.3185},
+                            scale: 4.3185
+                        },
         {type: "Smashing",
-                            scale: 0.3154},
+                            scale: 0.3154
+                        },
         {type: "Fire",
                             scale: 0.225
                         }
@@ -79,9 +81,11 @@ const ICE_MELEE_POWERSET = {
                     types: [
                         {
                             type: "Cold",
-                            scale: 5.7627},
+                            scale: 5.7627
+                        },
         {type: "Lethal",
-                            scale: 1.0441},
+                            scale: 1.0441
+                        },
         {type: "Fire",
                             scale: 0.594
                         }
@@ -213,9 +217,11 @@ const ICE_MELEE_POWERSET = {
                     types: [
                         {
                             type: "Cold",
-                            scale: 8.2424},
+                            scale: 8.2424
+                        },
         {type: "Lethal",
-                            scale: 2.0380000000000003},
+                            scale: 2.0380000000000003
+                        },
         {type: "Fire",
                             scale: 0.882
                         }

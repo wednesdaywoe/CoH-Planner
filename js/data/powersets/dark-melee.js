@@ -31,9 +31,11 @@ const DARK_MELEE_POWERSET = {
                     types: [
                         {
                             type: "Negative",
-                            scale: 3.9414999999999996},
+                            scale: 3.9414999999999996
+                        },
         {type: "Smashing",
-                            scale: 0.7804},
+                            scale: 0.7804
+                        },
         {type: "Fire",
                             scale: 0.378
                         }
@@ -67,9 +69,11 @@ const DARK_MELEE_POWERSET = {
                     types: [
                         {
                             type: "Negative",
-                            scale: 5.9481},
+                            scale: 5.9481
+                        },
         {type: "Smashing",
-                            scale: 0.6496999999999999},
+                            scale: 0.6496999999999999
+                        },
         {type: "Fire",
                             scale: 0.594
                         }
@@ -166,7 +170,8 @@ const DARK_MELEE_POWERSET = {
                     types: [
                         {
                             type: "Negative",
-                            scale: 10.181799999999999},
+                            scale: 10.181799999999999
+                        },
         {type: "Fire",
                             scale: 0.882
                         }
@@ -219,7 +224,8 @@ const DARK_MELEE_POWERSET = {
                     types: [
                         {
                             type: "Negative",
-                            scale: 3.0309},
+                            scale: 3.0309
+                        },
         {type: "Fire",
                             scale: 0.36
                         }
@@ -250,7 +256,8 @@ const DARK_MELEE_POWERSET = {
                     types: [
                         {
                             type: "Negative",
-                            scale: 3.7885999999999997},
+                            scale: 3.7885999999999997
+                        },
         {type: "Fire",
                             scale: 0.45
                         }
@@ -283,7 +290,8 @@ const DARK_MELEE_POWERSET = {
                     types: [
                         {
                             type: "Negative",
-                            scale: 12.2335},
+                            scale: 12.2335
+                        },
         {type: "Fire",
                             scale: 0.9945
                         }

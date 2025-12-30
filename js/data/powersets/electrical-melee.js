@@ -32,7 +32,8 @@ const ELECTRICAL_MELEE_POWERSET = {
                     types: [
                         {
                             type: "Energy",
-                            scale: 1.1606},
+                            scale: 1.1606
+                        },
         {type: "Smashing",
                             scale: 0.7804
                         }
@@ -65,7 +66,8 @@ const ELECTRICAL_MELEE_POWERSET = {
                     types: [
                         {
                             type: "Energy",
-                            scale: 1.8139},
+                            scale: 1.8139
+                        },
         {type: "Smashing",
                             scale: 1.1960000000000002
                         }

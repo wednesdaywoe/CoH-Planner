@@ -31,7 +31,8 @@ const MARTIAL_ARTS_POWERSET = {
                     types: [
                         {
                             type: "Smashing",
-                            scale: 2.5410000000000004},
+                            scale: 2.5410000000000004
+                        },
         {type: "Fire",
                             scale: 0.594
                         }
@@ -63,7 +64,8 @@ const MARTIAL_ARTS_POWERSET = {
                     types: [
                         {
                             type: "Smashing",
-                            scale: 1.9409999999999998},
+                            scale: 1.9409999999999998
+                        },
         {type: "Fire",
                             scale: 0.378
                         }
@@ -94,7 +96,8 @@ const MARTIAL_ARTS_POWERSET = {
                     types: [
                         {
                             type: "Smashing",
-                            scale: 3.9289},
+                            scale: 3.9289
+                        },
         {type: "Fire",
                             scale: 0.882
                         }
@@ -146,7 +149,8 @@ const MARTIAL_ARTS_POWERSET = {
                     types: [
                         {
                             type: "Smashing",
-                            scale: 3.9289},
+                            scale: 3.9289
+                        },
         {type: "Fire",
                             scale: 0.882
                         }
@@ -197,7 +201,8 @@ const MARTIAL_ARTS_POWERSET = {
                     types: [
                         {
                             type: "Smashing",
-                            scale: 4.0799},
+                            scale: 4.0799
+                        },
         {type: "Fire",
                             scale: 0.954
                         }
@@ -230,7 +235,8 @@ const MARTIAL_ARTS_POWERSET = {
                     types: [
                         {
                             type: "Smashing",
-                            scale: 2.0953999999999997},
+                            scale: 2.0953999999999997
+                        },
         {type: "Fire",
                             scale: 0.5318
                         }
@@ -261,7 +267,8 @@ const MARTIAL_ARTS_POWERSET = {
                     types: [
                         {
                             type: "Smashing",
-                            scale: 4.930999999999999},
+                            scale: 4.930999999999999
+                        },
         {type: "Fire",
                             scale: 1.026
                         }

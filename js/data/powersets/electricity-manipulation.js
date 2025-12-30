@@ -32,7 +32,8 @@ const ELECTRICITY_MANIPULATION_POWERSET = {
                     types: [
                         {
                             type: "Energy",
-                            scale: 2.3810000000000002},
+                            scale: 2.3810000000000002
+                        },
         {type: "Smashing",
                             scale: 0.96
                         }
@@ -112,7 +113,8 @@ const ELECTRICITY_MANIPULATION_POWERSET = {
                     types: [
                         {
                             type: "Energy",
-                            scale: 4.01},
+                            scale: 4.01
+                        },
         {type: "Smashing",
                             scale: 0.6
                         }

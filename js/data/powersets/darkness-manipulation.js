@@ -59,7 +59,8 @@ const DARKNESS_MANIPULATION_POWERSET = {
                     types: [
                         {
                             type: "Negative",
-                            scale: 2.5791},
+                            scale: 2.5791
+                        },
         {type: "Smashing",
                             scale: 0.8596999999999999
                         }

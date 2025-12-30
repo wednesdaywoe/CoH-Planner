@@ -32,7 +32,8 @@ const WATER_BLAST_POWERSET = {
                     types: [
                         {
                             type: "Cold",
-                            scale: 1.5451000000000001},
+                            scale: 1.5451000000000001
+                        },
         {type: "Smashing",
                             scale: 0.515
                         }
@@ -66,7 +67,8 @@ const WATER_BLAST_POWERSET = {
                     types: [
                         {
                             type: "Cold",
-                            scale: 2.4969},
+                            scale: 2.4969
+                        },
         {type: "Smashing",
                             scale: 0.8323
                         }
@@ -99,7 +101,8 @@ const WATER_BLAST_POWERSET = {
                     types: [
                         {
                             type: "Cold",
-                            scale: 1.8634000000000002},
+                            scale: 1.8634000000000002
+                        },
         {type: "Smashing",
                             scale: 0.3982
                         }
@@ -173,7 +176,8 @@ const WATER_BLAST_POWERSET = {
                     types: [
                         {
                             type: "Cold",
-                            scale: 2.2719},
+                            scale: 2.2719
+                        },
         {type: "Smashing",
                             scale: 0.7573
                         }
@@ -261,7 +265,8 @@ const WATER_BLAST_POWERSET = {
                     types: [
                         {
                             type: "Fire",
-                            scale: 4.1755},
+                            scale: 4.1755
+                        },
         {type: "Smashing",
                             scale: 0.8922
                         }
