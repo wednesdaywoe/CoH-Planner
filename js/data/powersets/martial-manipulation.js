@@ -25,6 +25,7 @@ const MARTIAL_MANIPULATION_POWERSET = {
             effects: {
                 accuracy: 1.0
             }
+        }
         },
         {name: "Ki Push",
             available: 0,
@@ -50,6 +51,7 @@ const MARTIAL_MANIPULATION_POWERSET = {
                 },
                 buffDuration: 2.0
             }
+        }
         },
         {name: "Martial Combat",
             available: 0,
@@ -90,6 +92,7 @@ const MARTIAL_MANIPULATION_POWERSET = {
                 },
                 buffDuration: 1.5
             }
+        }
         },
         {name: "Burst of Speed",
             available: 9,
@@ -111,6 +114,7 @@ const MARTIAL_MANIPULATION_POWERSET = {
                 cast: 1.0,
                 buffDuration: 2.0
             }
+        }
         },
         {name: "Dragon's Tail",
             available: 15,
@@ -136,6 +140,7 @@ const MARTIAL_MANIPULATION_POWERSET = {
                 },
                 buffDuration: 9.0
             }
+        }
         },
         {name: "Reaction Time",
             available: 19,
@@ -156,6 +161,7 @@ const MARTIAL_MANIPULATION_POWERSET = {
                 cast: 1.83,
                 buffDuration: 5.0
             }
+        }
         },
         {name: "Inner Will",
             available: 23,
@@ -177,6 +183,7 @@ const MARTIAL_MANIPULATION_POWERSET = {
                 stunDuration: 30.0,
                 buffDuration: 30.0
             }
+        }
         },
         {name: "Throw Sand",
             available: 27,
@@ -201,6 +208,7 @@ const MARTIAL_MANIPULATION_POWERSET = {
                 stun: 3.0,
                 buffDuration: 20.0
             }
+        }
         },
         {name: "Eagles Claw",
             available: 29,

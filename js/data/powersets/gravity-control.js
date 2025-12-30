@@ -35,6 +35,7 @@ const GRAVITY_CONTROL_POWERSET = {
                 },
                 buffDuration: 9.2
             }
+        }
         },
         {name: "Lift",
             available: 0,
@@ -60,6 +61,7 @@ const GRAVITY_CONTROL_POWERSET = {
                 },
                 buffDuration: 10.0
             }
+        }
         },
         {name: "Gravity Distortion",
             available: 1,
@@ -86,6 +88,7 @@ const GRAVITY_CONTROL_POWERSET = {
                 },
                 buffDuration: 4.2
             }
+        }
         },
         {name: "Propel",
             available: 5,
@@ -110,6 +113,7 @@ const GRAVITY_CONTROL_POWERSET = {
                     type: "Smashing",
                     scale: 5.5635
                 }
+        }
         },
         {name: "Crushing Field",
             available: 7,
@@ -137,6 +141,7 @@ const GRAVITY_CONTROL_POWERSET = {
                 },
                 buffDuration: 5.2
             }
+        }
         },
         {name: "Dimension Shift",
             available: 11,
@@ -158,6 +163,7 @@ const GRAVITY_CONTROL_POWERSET = {
                 cast: 1.17,
                 buffDuration: 20.0
             }
+        }
         },
         {name: "Gravity Distortion Field",
             available: 17,
@@ -178,6 +184,7 @@ const GRAVITY_CONTROL_POWERSET = {
                 endurance: 15.6,
                 cast: 1.83
             }
+        }
         },
         {name: "Wormhole",
             available: 21,
@@ -201,6 +208,7 @@ const GRAVITY_CONTROL_POWERSET = {
                 buffDuration: 1.5,
                 stun: 4.0
             }
+        }
         },
         {name: "Singularity",
             available: 25,

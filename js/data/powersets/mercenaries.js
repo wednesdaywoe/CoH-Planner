@@ -36,6 +36,7 @@ const MERCENARIES_POWERSET = {
                 buffDuration: 0.91,
                 defenseDebuff: 1.0
             }
+        }
         },
         {name: "Soldiers",
             available: 0,
@@ -56,6 +57,7 @@ const MERCENARIES_POWERSET = {
                 endurance: 5.46,
                 cast: 2.03
             }
+        }
         },
         {name: "Slug",
             available: 1,
@@ -81,6 +83,7 @@ const MERCENARIES_POWERSET = {
                 },
                 buffDuration: 30.0
             }
+        }
         },
         {name: "Equip Mercenary",
             available: 5,
@@ -103,6 +106,7 @@ const MERCENARIES_POWERSET = {
                 cast: 1.3,
                 buffDuration: 3.5
             }
+        }
         },
         {name: "M30 Grenade",
             available: 7,
@@ -137,6 +141,7 @@ const MERCENARIES_POWERSET = {
                 },
                 buffDuration: 30.0
             }
+        }
         },
         {name: "Spec Ops",
             available: 11,
@@ -157,6 +162,7 @@ const MERCENARIES_POWERSET = {
                 endurance: 9.62,
                 cast: 2.03
             }
+        }
         },
         {name: "Serum",
             available: 17,
@@ -181,6 +187,7 @@ const MERCENARIES_POWERSET = {
                 stunDuration: 60.0,
                 tohitBuff: 1.0
             }
+        }
         },
         {name: "Commando",
             available: 21,
@@ -201,6 +208,7 @@ const MERCENARIES_POWERSET = {
                 endurance: 13.18,
                 cast: 2.03
             }
+        }
         },
         {name: "Tactical Upgrade",
             available: 25,

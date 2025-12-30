@@ -29,6 +29,7 @@ const PAIN_DOMINATION_POWERSET = {
                 endurance: 13.0,
                 cast: 2.03
             }
+        }
         },
         {name: "Soothe",
             available: 0,
@@ -49,6 +50,7 @@ const PAIN_DOMINATION_POWERSET = {
                 endurance: 13.0,
                 cast: 2.27
             }
+        }
         },
         {name: "Share Pain",
             available: 1,
@@ -70,6 +72,7 @@ const PAIN_DOMINATION_POWERSET = {
                 cast: 2.27,
                 buffDuration: 15.0
             }
+        }
         },
         {name: "Conduit of Pain",
             available: 5,
@@ -93,6 +96,7 @@ const PAIN_DOMINATION_POWERSET = {
                 tohitBuff: 2.0,
                 tohitDebuff: 2.0
             }
+        }
         },
         {name: "Enforced Morale",
             available: 7,
@@ -116,6 +120,7 @@ const PAIN_DOMINATION_POWERSET = {
                 stunDuration: 90.0,
                 buffDuration: 90.0
             }
+        }
         },
         {name: "Soothing Aura",
             available: 11,
@@ -136,6 +141,7 @@ const PAIN_DOMINATION_POWERSET = {
                 endurance: 0.78,
                 cast: 1.67
             }
+        }
         },
         {name: "World of Pain",
             available: 17,
@@ -158,6 +164,7 @@ const PAIN_DOMINATION_POWERSET = {
                 tohitBuff: 1.0,
                 buffDuration: 90.0
             }
+        }
         },
         {name: "Anguishing Cry",
             available: 21,
@@ -180,6 +187,7 @@ const PAIN_DOMINATION_POWERSET = {
                 defenseDebuff: 3.0,
                 buffDuration: 30.0
             }
+        }
         },
         {name: "Painbringer",
             available: 25,

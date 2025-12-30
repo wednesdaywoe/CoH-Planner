@@ -35,6 +35,7 @@ const DARKNESS_CONTROL_POWERSET = {
                 tohitDebuff: 0.75,
                 buffDuration: 10.0
             }
+        }
         },
         {name: "Shadowy Binds",
             available: 0,
@@ -62,6 +63,7 @@ const DARKNESS_CONTROL_POWERSET = {
                 buffDuration: 9.2,
                 tohitDebuff: 0.75
             }
+        }
         },
         {name: "Living Shadows",
             available: 1,
@@ -91,6 +93,7 @@ const DARKNESS_CONTROL_POWERSET = {
                 buffDuration: 5.2,
                 tohitDebuff: 0.75
             }
+        }
         },
         {name: "Possess",
             available: 5,
@@ -111,6 +114,7 @@ const DARKNESS_CONTROL_POWERSET = {
                 endurance: 8.528,
                 cast: 2.33
             }
+        }
         },
         {name: "Fearsome Stare",
             available: 7,
@@ -135,6 +139,7 @@ const DARKNESS_CONTROL_POWERSET = {
                 tohitDebuff: 1.5,
                 buffDuration: 20.0
             }
+        }
         },
         {name: "Heart of Darkness",
             available: 11,
@@ -163,6 +168,7 @@ const DARKNESS_CONTROL_POWERSET = {
                 stun: 1.0,
                 tohitDebuff: 0.75
             }
+        }
         },
         {name: "Haunt",
             available: 17,
@@ -184,6 +190,7 @@ const DARKNESS_CONTROL_POWERSET = {
                 cast: 2.33,
                 buffDuration: 1.0
             }
+        }
         },
         {name: "Shadow Field",
             available: 21,
@@ -205,6 +212,7 @@ const DARKNESS_CONTROL_POWERSET = {
                 cast: 2.67,
                 buffDuration: 45.0
             }
+        }
         },
         {name: "Umbra Beast",
             available: 25,

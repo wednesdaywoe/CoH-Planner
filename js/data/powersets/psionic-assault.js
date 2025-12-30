@@ -34,6 +34,7 @@ const PSIONIC_ASSAULT_POWERSET = {
                 },
                 buffDuration: 6.0
             }
+        }
         },
         {name: "Psionic Dart",
             available: 0,
@@ -59,6 +60,7 @@ const PSIONIC_ASSAULT_POWERSET = {
                 },
                 buffDuration: 5.0
             }
+        }
         },
         {name: "Telekinetic Thrust",
             available: 3,
@@ -90,6 +92,7 @@ const PSIONIC_ASSAULT_POWERSET = {
                     ],
                     scale: 2.86
                 }
+        }
         },
         {name: "Mental Blast",
             available: 9,
@@ -115,6 +118,7 @@ const PSIONIC_ASSAULT_POWERSET = {
                 },
                 buffDuration: 6.0
             }
+        }
         },
         {name: "Psychic Scream",
             available: 15,
@@ -142,6 +146,7 @@ const PSIONIC_ASSAULT_POWERSET = {
                 },
                 buffDuration: 10.0
             }
+        }
         },
         {name: "Drain Psyche",
             available: 19,
@@ -163,6 +168,7 @@ const PSIONIC_ASSAULT_POWERSET = {
                 cast: 1.33,
                 buffDuration: 30.0
             }
+        }
         },
         {name: "Subdue",
             available: 23,
@@ -186,6 +192,7 @@ const PSIONIC_ASSAULT_POWERSET = {
                     type: "Psionic",
                     scale: 3.5476
                 }
+        }
         },
         {name: "Psionic Lance",
             available: 27,
@@ -206,6 +213,7 @@ const PSIONIC_ASSAULT_POWERSET = {
                 endurance: 18.512,
                 cast: 1.33
             }
+        }
         },
         {name: "Psychic Shockwave",
             available: 29,

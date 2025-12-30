@@ -43,6 +43,7 @@ const RADIOACTIVE_ASSAULT_POWERSET = {
                 defenseDebuff: 1.39,
                 buffDuration: 10.0
             }
+        }
         },
         {name: "Neutrino Bolt",
             available: 0,
@@ -69,6 +70,7 @@ const RADIOACTIVE_ASSAULT_POWERSET = {
                 defenseDebuff: 1.0,
                 buffDuration: 3.0
             }
+        }
         },
         {name: "X-Ray Beam",
             available: 3,
@@ -95,6 +97,7 @@ const RADIOACTIVE_ASSAULT_POWERSET = {
                 defenseDebuff: 2.0,
                 buffDuration: 6.0
             }
+        }
         },
         {name: "Electron Haze",
             available: 9,
@@ -123,6 +126,7 @@ const RADIOACTIVE_ASSAULT_POWERSET = {
                 defenseDebuff: 2.0,
                 buffDuration: 8.0
             }
+        }
         },
         {name: "Fusion",
             available: 15,
@@ -144,6 +148,7 @@ const RADIOACTIVE_ASSAULT_POWERSET = {
                 tohitBuff: 2.0,
                 buffDuration: 10.0
             }
+        }
         },
         {name: "Radiation Siphon",
             available: 19,
@@ -178,6 +183,7 @@ const RADIOACTIVE_ASSAULT_POWERSET = {
                 defenseDebuff: 1.5,
                 buffDuration: 10.0
             }
+        }
         },
         {name: "Atom Smasher",
             available: 23,
@@ -213,6 +219,7 @@ const RADIOACTIVE_ASSAULT_POWERSET = {
                 buffDuration: 10.0,
                 stun: 2.0
             }
+        }
         },
         {name: "Proton Volley",
             available: 27,
@@ -233,6 +240,7 @@ const RADIOACTIVE_ASSAULT_POWERSET = {
                 endurance: 18.512,
                 cast: 1.33
             }
+        }
         },
         {name: "Devastating Blow",
             available: 29,

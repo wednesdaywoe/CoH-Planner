@@ -35,6 +35,7 @@ const ICE_MANIPULATION_POWERSET = {
                 },
                 buffDuration: 9.2
             }
+        }
         },
         {name: "Frozen Fists",
             available: 0,
@@ -68,6 +69,7 @@ const ICE_MANIPULATION_POWERSET = {
                 },
                 buffDuration: 5.0
             }
+        }
         },
         {name: "Ice Sword",
             available: 3,
@@ -101,6 +103,7 @@ const ICE_MANIPULATION_POWERSET = {
                 },
                 buffDuration: 8.0
             }
+        }
         },
         {name: "Frigid Protection",
             available: 9,
@@ -121,6 +124,7 @@ const ICE_MANIPULATION_POWERSET = {
                 cast: 0.73,
                 buffDuration: 5.0
             }
+        }
         },
         {name: "Build Up",
             available: 15,
@@ -142,6 +146,7 @@ const ICE_MANIPULATION_POWERSET = {
                 tohitBuff: 2.0,
                 buffDuration: 10.0
             }
+        }
         },
         {name: "Ice Patch",
             available: 19,
@@ -162,6 +167,7 @@ const ICE_MANIPULATION_POWERSET = {
                 cast: 1.57,
                 buffDuration: 30.0
             }
+        }
         },
         {name: "Shiver",
             available: 23,
@@ -185,6 +191,7 @@ const ICE_MANIPULATION_POWERSET = {
                 cast: 2.17,
                 buffDuration: 18.0
             }
+        }
         },
         {name: "Freezing Touch",
             available: 27,
@@ -215,6 +222,7 @@ const ICE_MANIPULATION_POWERSET = {
                 },
                 buffDuration: 6.0
             }
+        }
         },
         {name: "Frozen Aura",
             available: 29,

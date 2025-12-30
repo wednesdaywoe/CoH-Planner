@@ -34,6 +34,7 @@ const MIND_CONTROL_POWERSET = {
                 },
                 buffDuration: 10.0
             }
+        }
         },
         {name: "Mesmerize",
             available: 0,
@@ -57,6 +58,7 @@ const MIND_CONTROL_POWERSET = {
                     type: "Psionic",
                     scale: 1.809
                 }
+        }
         },
         {name: "Dominate",
             available: 1,
@@ -80,6 +82,7 @@ const MIND_CONTROL_POWERSET = {
                     type: "Psionic",
                     scale: 1.745
                 }
+        }
         },
         {name: "Confuse",
             available: 5,
@@ -100,6 +103,7 @@ const MIND_CONTROL_POWERSET = {
                 endurance: 8.528,
                 cast: 2.0
             }
+        }
         },
         {name: "Mass Hypnosis",
             available: 7,
@@ -121,6 +125,7 @@ const MIND_CONTROL_POWERSET = {
                 endurance: 15.6,
                 cast: 2.03
             }
+        }
         },
         {name: "Telekinesis",
             available: 11,
@@ -143,6 +148,7 @@ const MIND_CONTROL_POWERSET = {
                 cast: 1.13,
                 buffDuration: 1.5
             }
+        }
         },
         {name: "Total Domination",
             available: 17,
@@ -164,6 +170,7 @@ const MIND_CONTROL_POWERSET = {
                 endurance: 8.528,
                 cast: 2.03
             }
+        }
         },
         {name: "Terrify",
             available: 21,
@@ -189,6 +196,7 @@ const MIND_CONTROL_POWERSET = {
                     type: "Psionic",
                     scale: 1.7437
                 }
+        }
         },
         {name: "Mass Confusion",
             available: 25,

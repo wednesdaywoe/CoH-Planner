@@ -43,6 +43,7 @@ const WATER_BLAST_POWERSET = {
                 defenseDebuff: 1.0,
                 buffDuration: 8.0
             }
+        }
         },
         {name: "Hydro Blast",
             available: 0,
@@ -76,6 +77,7 @@ const WATER_BLAST_POWERSET = {
                 },
                 buffDuration: 10.0
             }
+        }
         },
         {name: "Water Burst",
             available: 1,
@@ -110,6 +112,7 @@ const WATER_BLAST_POWERSET = {
                 },
                 buffDuration: 10.0
             }
+        }
         },
         {name: "Whirlpool",
             available: 5,
@@ -131,6 +134,7 @@ const WATER_BLAST_POWERSET = {
                 cast: 2.03,
                 buffDuration: 15.0
             }
+        }
         },
         {name: "Tidal Forces",
             available: 7,
@@ -152,6 +156,7 @@ const WATER_BLAST_POWERSET = {
                 tohitBuff: 5.0,
                 buffDuration: 10.0
             }
+        }
         },
         {name: "Dehydrate",
             available: 11,
@@ -191,6 +196,7 @@ const WATER_BLAST_POWERSET = {
                 buffDuration: 4.1,
                 defenseDebuff: 1.0
             }
+        }
         },
         {name: "Water Jet",
             available: 17,
@@ -211,6 +217,7 @@ const WATER_BLAST_POWERSET = {
                 endurance: 10.192,
                 cast: 1.43
             }
+        }
         },
         {name: "Steam Spray",
             available: 21,
@@ -240,6 +247,7 @@ const WATER_BLAST_POWERSET = {
                 buffDuration: 0.6,
                 defenseDebuff: 1.0
             }
+        }
         },
         {name: "Geyser",
             available: 25,

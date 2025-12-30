@@ -30,6 +30,7 @@ const STONE_ARMOR_POWERSET = {
                 buffDuration: 0.75,
                 defenseBuff: 0.4
             }
+        }
         },
         {name: "Stone Skin",
             available: 0,
@@ -52,6 +53,7 @@ const STONE_ARMOR_POWERSET = {
                 },
                 buffDuration: 10.25
             }
+        }
         },
         {name: "Earth's Embrace",
             available: 3,
@@ -77,6 +79,7 @@ const STONE_ARMOR_POWERSET = {
                 },
                 buffDuration: 60.0
             }
+        }
         },
         {name: "Mud Pots",
             available: 9,
@@ -102,6 +105,7 @@ const STONE_ARMOR_POWERSET = {
                 },
                 buffDuration: 5.0
             }
+        }
         },
         {name: "Rooted",
             available: 15,
@@ -126,6 +130,7 @@ const STONE_ARMOR_POWERSET = {
                 stunDuration: 0.75,
                 tohitBuff: 0.3
             }
+        }
         },
         {name: "Crystal Armor",
             available: 19,
@@ -147,6 +152,7 @@ const STONE_ARMOR_POWERSET = {
                 buffDuration: 0.75,
                 defenseBuff: 0.4
             }
+        }
         },
         {name: "Minerals",
             available: 23,
@@ -167,6 +173,7 @@ const STONE_ARMOR_POWERSET = {
                 cast: 0.73,
                 buffDuration: 0.75
             }
+        }
         },
         {name: "Brimstone Armor",
             available: 27,
@@ -187,6 +194,7 @@ const STONE_ARMOR_POWERSET = {
                 cast: 0.73,
                 buffDuration: 0.75
             }
+        }
         },
         {name: "Geode",
             available: 29,

@@ -32,6 +32,7 @@ const FIERY_ASSAULT_POWERSET = {
                     scale: 2.0978
                 }
             }
+        }
         },
         {name: "Incinerate",
             available: 0,
@@ -58,6 +59,7 @@ const FIERY_ASSAULT_POWERSET = {
                 },
                 buffDuration: 4.6
             }
+        }
         },
         {name: "Fire Breath",
             available: 3,
@@ -86,6 +88,7 @@ const FIERY_ASSAULT_POWERSET = {
                 },
                 buffDuration: 2.1
             }
+        }
         },
         {name: "Fire Blast",
             available: 9,
@@ -116,6 +119,7 @@ const FIERY_ASSAULT_POWERSET = {
                 },
                 buffDuration: 3.1
             }
+        }
         },
         {name: "Embrace of Fire",
             available: 15,
@@ -136,6 +140,7 @@ const FIERY_ASSAULT_POWERSET = {
                 cast: 0.73,
                 buffDuration: 30.0
             }
+        }
         },
         {name: "Combustion",
             available: 19,
@@ -166,6 +171,7 @@ const FIERY_ASSAULT_POWERSET = {
                 },
                 buffDuration: 7.1
             }
+        }
         },
         {name: "Consume",
             available: 23,
@@ -187,6 +193,7 @@ const FIERY_ASSAULT_POWERSET = {
                 cast: 2.03,
                 buffDuration: 15.0
             }
+        }
         },
         {name: "Blazing Bolt",
             available: 27,
@@ -207,6 +214,7 @@ const FIERY_ASSAULT_POWERSET = {
                 endurance: 18.512,
                 cast: 1.67
             }
+        }
         },
         {name: "Blaze",
             available: 29,

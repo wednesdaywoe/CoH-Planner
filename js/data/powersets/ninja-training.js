@@ -35,6 +35,7 @@ const NINJA_TRAINING_POWERSET = {
                 },
                 buffDuration: 3.1
             }
+        }
         },
         {name: "Sting of the Wasp",
             available: 0,
@@ -61,6 +62,7 @@ const NINJA_TRAINING_POWERSET = {
                 defenseDebuff: 1.0,
                 buffDuration: 10.0
             }
+        }
         },
         {name: "Choking Powder",
             available: 3,
@@ -87,6 +89,7 @@ const NINJA_TRAINING_POWERSET = {
                 },
                 buffDuration: 4.2
             }
+        }
         },
         {name: "Shinobi",
             available: 9,
@@ -107,6 +110,7 @@ const NINJA_TRAINING_POWERSET = {
                 buffDuration: 0.75,
                 tohitBuff: 0.5
             }
+        }
         },
         {name: "The Lotus Drops",
             available: 15,
@@ -138,6 +142,7 @@ const NINJA_TRAINING_POWERSET = {
                 buffDuration: 2.1,
                 defenseDebuff: 1.0
             }
+        }
         },
         {name: "Kuji-In Toh",
             available: 19,
@@ -163,6 +168,7 @@ const NINJA_TRAINING_POWERSET = {
                 },
                 buffDuration: 210.0
             }
+        }
         },
         {name: "Smoke Flash",
             available: 23,
@@ -184,6 +190,7 @@ const NINJA_TRAINING_POWERSET = {
                 cast: 1.83,
                 buffDuration: 15.0
             }
+        }
         },
         {name: "Blinding Powder",
             available: 27,
@@ -208,6 +215,7 @@ const NINJA_TRAINING_POWERSET = {
                 tohitDebuff: 1.0,
                 buffDuration: 15.0
             }
+        }
         },
         {name: "Golden Dragonfly",
             available: 29,

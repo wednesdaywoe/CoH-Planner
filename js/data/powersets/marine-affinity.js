@@ -32,6 +32,7 @@ const MARINE_AFFINITY_POWERSET = {
                 defenseDebuff: 1.6,
                 buffDuration: 20.0
             }
+        }
         },
         {name: "Soothing Wave",
             available: 0,
@@ -54,6 +55,7 @@ const MARINE_AFFINITY_POWERSET = {
                 endurance: 13.52,
                 cast: 2.0
             }
+        }
         },
         {name: "Toroidal Bubble",
             available: 1,
@@ -105,6 +107,7 @@ const MARINE_AFFINITY_POWERSET = {
                 },
                 buffDuration: 60.0
             }
+        }
         },
         {name: "Whitecap",
             available: 5,
@@ -125,6 +128,7 @@ const MARINE_AFFINITY_POWERSET = {
                 endurance: 18.0,
                 cast: 2.0
             }
+        }
         },
         {name: "Tide Pool",
             available: 7,
@@ -146,6 +150,7 @@ const MARINE_AFFINITY_POWERSET = {
                 cast: 2.33,
                 buffDuration: 240.0
             }
+        }
         },
         {name: "Brine",
             available: 11,
@@ -167,6 +172,7 @@ const MARINE_AFFINITY_POWERSET = {
                 cast: 2.07,
                 buffDuration: 60.0
             }
+        }
         },
         {name: "Shifting Tides",
             available: 17,
@@ -193,6 +199,7 @@ const MARINE_AFFINITY_POWERSET = {
                 },
                 buffDuration: 2.0
             }
+        }
         },
         {name: "Barrier Reef",
             available: 21,
@@ -214,6 +221,7 @@ const MARINE_AFFINITY_POWERSET = {
                 cast: 2.37,
                 buffDuration: 240.0
             }
+        }
         },
         {name: "Power of the Depths",
             available: 25,

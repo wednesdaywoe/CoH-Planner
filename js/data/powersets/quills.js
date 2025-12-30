@@ -47,6 +47,7 @@ const QUILLS_POWERSET = {
                 },
                 buffDuration: 4.0
             }
+        }
         },
         {name: "Lunge",
             available: 0,
@@ -85,6 +86,7 @@ const QUILLS_POWERSET = {
                 },
                 buffDuration: 6.0
             }
+        }
         },
         {name: "Spines",
             available: 0,
@@ -133,6 +135,7 @@ const QUILLS_POWERSET = {
                 },
                 buffDuration: 10.0
             }
+        }
         },
         {name: "Build Up",
             available: 5,
@@ -154,6 +157,7 @@ const QUILLS_POWERSET = {
                 tohitBuff: 2.0,
                 buffDuration: 10.0
             }
+        }
         },
         {name: "Impale",
             available: 7,
@@ -192,6 +196,7 @@ const QUILLS_POWERSET = {
                 },
                 buffDuration: 15.0
             }
+        }
         },
         {name: "Confront",
             available: 11,
@@ -220,6 +225,7 @@ const QUILLS_POWERSET = {
                 },
                 buffDuration: 3.0
             }
+        }
         },
         {name: "Ripper",
             available: 21,
@@ -260,6 +266,7 @@ const QUILLS_POWERSET = {
                 },
                 buffDuration: 10.0
             }
+        }
         },
         {name: "Throw Spines",
             available: 25,

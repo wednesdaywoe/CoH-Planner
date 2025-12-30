@@ -36,6 +36,7 @@ const SAVAGE_ASSAULT_POWERSET = {
                 buffDuration: 3.1,
                 defenseDebuff: 1.0
             }
+        }
         },
         {name: "Maiming Slash",
             available: 0,
@@ -66,6 +67,7 @@ const SAVAGE_ASSAULT_POWERSET = {
                 },
                 buffDuration: 3.1
             }
+        }
         },
         {name: "Vicious Slash",
             available: 3,
@@ -96,6 +98,7 @@ const SAVAGE_ASSAULT_POWERSET = {
                 },
                 buffDuration: 3.1
             }
+        }
         },
         {name: "Unkindness",
             available: 9,
@@ -125,6 +128,7 @@ const SAVAGE_ASSAULT_POWERSET = {
                 buffDuration: 3.1,
                 defenseDebuff: 1.0
             }
+        }
         },
         {name: "Spot Prey",
             available: 15,
@@ -146,6 +150,7 @@ const SAVAGE_ASSAULT_POWERSET = {
                 tohitBuff: 5.0,
                 buffDuration: 10.0
             }
+        }
         },
         {name: "Rending Flurry",
             available: 19,
@@ -166,6 +171,7 @@ const SAVAGE_ASSAULT_POWERSET = {
                 endurance: 13.52,
                 cast: 2.17
             }
+        }
         },
         {name: "Blood Craze",
             available: 23,
@@ -186,6 +192,7 @@ const SAVAGE_ASSAULT_POWERSET = {
                 cast: 2.0,
                 buffDuration: 9.1
             }
+        }
         },
         {name: "Call Hawk",
             available: 27,
@@ -213,6 +220,7 @@ const SAVAGE_ASSAULT_POWERSET = {
                 buffDuration: 1.3,
                 tohitDebuff: 0.75
             }
+        }
         },
         {name: "Feral Charge",
             available: 29,

@@ -29,6 +29,7 @@ const DARK_MIASMA_POWERSET = {
                 cast: 3.1,
                 buffDuration: 45.0
             }
+        }
         },
         {name: "Twilight Grasp",
             available: 0,
@@ -51,6 +52,7 @@ const DARK_MIASMA_POWERSET = {
                 tohitDebuff: 0.5,
                 buffDuration: 20.0
             }
+        }
         },
         {name: "Darkest Night",
             available: 1,
@@ -74,6 +76,7 @@ const DARK_MIASMA_POWERSET = {
                 buffDuration: 0.75,
                 tohitDebuff: 1.5
             }
+        }
         },
         {name: "Howling Twilight",
             available: 5,
@@ -101,6 +104,7 @@ const DARK_MIASMA_POWERSET = {
                 buffDuration: 30.0,
                 stun: 3.0
             }
+        }
         },
         {name: "Shadow Fall",
             available: 7,
@@ -122,6 +126,7 @@ const DARK_MIASMA_POWERSET = {
                 cast: 2.03,
                 buffDuration: 0.75
             }
+        }
         },
         {name: "Fearsome Stare",
             available: 11,
@@ -146,6 +151,7 @@ const DARK_MIASMA_POWERSET = {
                 tohitDebuff: 1.5,
                 buffDuration: 20.0
             }
+        }
         },
         {name: "Petrifying Gaze",
             available: 17,
@@ -166,6 +172,7 @@ const DARK_MIASMA_POWERSET = {
                 endurance: 7.8,
                 cast: 1.67
             }
+        }
         },
         {name: "Black Hole",
             available: 21,
@@ -187,6 +194,7 @@ const DARK_MIASMA_POWERSET = {
                 endurance: 13.0,
                 cast: 1.03
             }
+        }
         },
         {name: "Dark Servant",
             available: 25,

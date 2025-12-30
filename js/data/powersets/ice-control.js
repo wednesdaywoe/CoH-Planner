@@ -34,6 +34,7 @@ const ICE_CONTROL_POWERSET = {
                 },
                 buffDuration: 12.0
             }
+        }
         },
         {name: "Chilblain",
             available: 0,
@@ -60,6 +61,7 @@ const ICE_CONTROL_POWERSET = {
                 },
                 buffDuration: 9.2
             }
+        }
         },
         {name: "Frostbite",
             available: 1,
@@ -87,6 +89,7 @@ const ICE_CONTROL_POWERSET = {
                 },
                 buffDuration: 5.2
             }
+        }
         },
         {name: "Arctic Air",
             available: 5,
@@ -108,6 +111,7 @@ const ICE_CONTROL_POWERSET = {
                 cast: 2.03,
                 buffDuration: 2.25
             }
+        }
         },
         {name: "Cold Snap",
             available: 7,
@@ -131,6 +135,7 @@ const ICE_CONTROL_POWERSET = {
                 cast: 2.17,
                 buffDuration: 18.0
             }
+        }
         },
         {name: "Ice Slick",
             available: 11,
@@ -152,6 +157,7 @@ const ICE_CONTROL_POWERSET = {
                 cast: 1.67,
                 buffDuration: 30.0
             }
+        }
         },
         {name: "Flash Freeze",
             available: 17,
@@ -176,6 +182,7 @@ const ICE_CONTROL_POWERSET = {
                     type: "Cold",
                     scale: 0.2
                 }
+        }
         },
         {name: "Glacier",
             available: 21,
@@ -197,6 +204,7 @@ const ICE_CONTROL_POWERSET = {
                 cast: 2.03,
                 buffDuration: 10.0
             }
+        }
         },
         {name: "Jack Frost",
             available: 25,

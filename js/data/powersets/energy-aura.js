@@ -41,6 +41,7 @@ const ENERGY_AURA_POWERSET = {
                 },
                 buffDuration: 10.25
             }
+        }
         },
         {name: "Kinetic Shield",
             available: 0,
@@ -62,6 +63,7 @@ const ENERGY_AURA_POWERSET = {
                 buffDuration: 0.75,
                 defenseBuff: 0.5
             }
+        }
         },
         {name: "Power Shield",
             available: 3,
@@ -83,6 +85,7 @@ const ENERGY_AURA_POWERSET = {
                 buffDuration: 0.75,
                 defenseBuff: 0.5
             }
+        }
         },
         {name: "Entropic Aura",
             available: 9,
@@ -104,6 +107,7 @@ const ENERGY_AURA_POWERSET = {
                 cast: 0.73,
                 buffDuration: 2.0
             }
+        }
         },
         {name: "Energy Protection",
             available: 15,
@@ -139,6 +143,7 @@ const ENERGY_AURA_POWERSET = {
                 },
                 buffDuration: 10.25
             }
+        }
         },
         {name: "Energy Cloak",
             available: 19,
@@ -159,6 +164,7 @@ const ENERGY_AURA_POWERSET = {
                 cast: 0.73,
                 buffDuration: 0.75
             }
+        }
         },
         {name: "Energize",
             available: 23,
@@ -179,6 +185,7 @@ const ENERGY_AURA_POWERSET = {
                 cast: 1.17,
                 buffDuration: 30.0
             }
+        }
         },
         {name: "Energy Drain",
             available: 27,
@@ -199,6 +206,7 @@ const ENERGY_AURA_POWERSET = {
                 endurance: 13.0,
                 cast: 2.37
             }
+        }
         },
         {name: "Overload",
             available: 29,

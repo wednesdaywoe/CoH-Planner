@@ -39,6 +39,7 @@ const DEMON_SUMMONING_POWERSET = {
                 },
                 buffDuration: 3.1
             }
+        }
         },
         {name: "Summon Demonlings",
             available: 0,
@@ -59,6 +60,7 @@ const DEMON_SUMMONING_POWERSET = {
                 endurance: 5.46,
                 cast: 2.0
             }
+        }
         },
         {name: "Lash",
             available: 1,
@@ -89,6 +91,7 @@ const DEMON_SUMMONING_POWERSET = {
                 },
                 buffDuration: 3.1
             }
+        }
         },
         {name: "Enchant Demon",
             available: 5,
@@ -110,6 +113,7 @@ const DEMON_SUMMONING_POWERSET = {
                 endurance: 11.375,
                 cast: 2.17
             }
+        }
         },
         {name: "Crack Whip",
             available: 7,
@@ -142,6 +146,7 @@ const DEMON_SUMMONING_POWERSET = {
                 },
                 buffDuration: 6.0
             }
+        }
         },
         {name: "Summon Demons",
             available: 11,
@@ -162,6 +167,7 @@ const DEMON_SUMMONING_POWERSET = {
                 endurance: 9.62,
                 cast: 2.0
             }
+        }
         },
         {name: "Hell on Earth",
             available: 17,
@@ -184,6 +190,7 @@ const DEMON_SUMMONING_POWERSET = {
                 tohitBuff: 1.0,
                 buffDuration: 90.0
             }
+        }
         },
         {name: "Summon Demon Prince",
             available: 21,
@@ -204,6 +211,7 @@ const DEMON_SUMMONING_POWERSET = {
                 endurance: 13.18,
                 cast: 2.0
             }
+        }
         },
         {name: "Abyssal Empowerment",
             available: 25,

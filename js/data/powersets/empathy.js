@@ -28,6 +28,7 @@ const EMPATHY_POWERSET = {
                 endurance: 13.0,
                 cast: 2.27
             }
+        }
         },
         {name: "Healing Aura",
             available: 0,
@@ -48,6 +49,7 @@ const EMPATHY_POWERSET = {
                 endurance: 13.0,
                 cast: 2.03
             }
+        }
         },
         {name: "Absorb Pain",
             available: 1,
@@ -69,6 +71,7 @@ const EMPATHY_POWERSET = {
                 cast: 2.27,
                 buffDuration: 20.0
             }
+        }
         },
         {name: "Resurrect",
             available: 5,
@@ -90,6 +93,7 @@ const EMPATHY_POWERSET = {
                 cast: 3.2,
                 buffDuration: 0.5
             }
+        }
         },
         {name: "Clear Mind",
             available: 7,
@@ -113,6 +117,7 @@ const EMPATHY_POWERSET = {
                 stunDuration: 90.0,
                 buffDuration: 90.0
             }
+        }
         },
         {name: "Fortitude",
             available: 11,
@@ -135,6 +140,7 @@ const EMPATHY_POWERSET = {
                 tohitBuff: 1.5,
                 buffDuration: 120.0
             }
+        }
         },
         {name: "Recovery Aura",
             available: 17,
@@ -156,6 +162,7 @@ const EMPATHY_POWERSET = {
                 cast: 2.03,
                 buffDuration: 90.0
             }
+        }
         },
         {name: "Regeneration Aura",
             available: 21,
@@ -177,6 +184,7 @@ const EMPATHY_POWERSET = {
                 cast: 2.03,
                 buffDuration: 90.0
             }
+        }
         },
         {name: "Adrenalin Boost",
             available: 25,

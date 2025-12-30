@@ -41,6 +41,7 @@ const ENERGY_MANIPULATION_POWERSET = {
                 },
                 stun: 2.0
             }
+        }
         },
         {name: "Power Thrust",
             available: 0,
@@ -72,6 +73,7 @@ const ENERGY_MANIPULATION_POWERSET = {
                     ],
                     scale: 2.1399
                 }
+        }
         },
         {name: "Build Up",
             available: 3,
@@ -93,6 +95,7 @@ const ENERGY_MANIPULATION_POWERSET = {
                 tohitBuff: 2.0,
                 buffDuration: 10.0
             }
+        }
         },
         {name: "Bone Smasher",
             available: 9,
@@ -126,6 +129,7 @@ const ENERGY_MANIPULATION_POWERSET = {
                 },
                 stun: 3.0
             }
+        }
         },
         {name: "Energize",
             available: 15,
@@ -148,6 +152,7 @@ const ENERGY_MANIPULATION_POWERSET = {
                 stun: 1.0,
                 stunDuration: 60.0
             }
+        }
         },
         {name: "Stun",
             available: 19,
@@ -168,6 +173,7 @@ const ENERGY_MANIPULATION_POWERSET = {
                 endurance: 10.192,
                 cast: 1.8
             }
+        }
         },
         {name: "Power Boost",
             available: 23,
@@ -192,6 +198,7 @@ const ENERGY_MANIPULATION_POWERSET = {
                 tohitBuff: 0.66,
                 defenseBuff: 0.66
             }
+        }
         },
         {name: "Boost Range",
             available: 27,
@@ -212,6 +219,7 @@ const ENERGY_MANIPULATION_POWERSET = {
                 cast: 1.17,
                 buffDuration: 30.0
             }
+        }
         },
         {name: "Total Focus",
             available: 29,

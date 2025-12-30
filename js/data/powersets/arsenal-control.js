@@ -33,6 +33,7 @@ const ARSENAL_CONTROL_POWERSET = {
                 },
                 buffDuration: 12.0
             }
+        }
         },
         {name: "Tranquilizer",
             available: 0,
@@ -58,6 +59,7 @@ const ARSENAL_CONTROL_POWERSET = {
                 },
                 buffDuration: 5.0
             }
+        }
         },
         {name: "Sleep Grenade",
             available: 1,
@@ -79,6 +81,7 @@ const ARSENAL_CONTROL_POWERSET = {
                 cast: 1.87,
                 buffDuration: 30.0
             }
+        }
         },
         {name: "Liquid Nitrogen",
             available: 5,
@@ -100,6 +103,7 @@ const ARSENAL_CONTROL_POWERSET = {
                 cast: 2.0,
                 buffDuration: 30.0
             }
+        }
         },
         {name: "Cloaking Device",
             available: 7,
@@ -120,6 +124,7 @@ const ARSENAL_CONTROL_POWERSET = {
                 cast: 0.73,
                 buffDuration: 0.75
             }
+        }
         },
         {name: "Smoke Canister",
             available: 11,
@@ -141,6 +146,7 @@ const ARSENAL_CONTROL_POWERSET = {
                 cast: 1.4,
                 buffDuration: 30.0
             }
+        }
         },
         {name: "Flash Bang",
             available: 17,
@@ -169,6 +175,7 @@ const ARSENAL_CONTROL_POWERSET = {
                 buffDuration: 20.0,
                 stun: 4.0
             }
+        }
         },
         {name: "Tear Gas",
             available: 21,
@@ -190,6 +197,7 @@ const ARSENAL_CONTROL_POWERSET = {
                 cast: 1.87,
                 buffDuration: 60.0
             }
+        }
         },
         {name: "Tri-Cannon",
             available: 25,

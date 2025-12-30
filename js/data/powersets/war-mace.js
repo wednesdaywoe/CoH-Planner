@@ -42,6 +42,7 @@ const WAR_MACE_POWERSET = {
                 },
                 stun: 2.0
             }
+        }
         },
         {name: "Pulverize",
             available: 0,
@@ -75,6 +76,7 @@ const WAR_MACE_POWERSET = {
                 },
                 stun: 2.0
             }
+        }
         },
         {name: "Jawbreaker",
             available: 1,
@@ -106,6 +108,7 @@ const WAR_MACE_POWERSET = {
                     ],
                     scale: 10.528599999999999
                 }
+        }
         },
         {name: "Build Up",
             available: 5,
@@ -127,6 +130,7 @@ const WAR_MACE_POWERSET = {
                 tohitBuff: 2.0,
                 buffDuration: 10.0
             }
+        }
         },
         {name: "Clobber",
             available: 7,
@@ -160,6 +164,7 @@ const WAR_MACE_POWERSET = {
                 },
                 stun: 3.0
             }
+        }
         },
         {name: "Confront",
             available: 11,
@@ -180,6 +185,7 @@ const WAR_MACE_POWERSET = {
                 cast: 1.67,
                 buffDuration: 12.0
             }
+        }
         },
         {name: "Whirling Mace",
             available: 17,
@@ -213,6 +219,7 @@ const WAR_MACE_POWERSET = {
                 },
                 stun: 2.0
             }
+        }
         },
         {name: "Shatter",
             available: 21,
@@ -246,6 +253,7 @@ const WAR_MACE_POWERSET = {
                     ],
                     scale: 12.0268
                 }
+        }
         },
         {name: "Crowd Control",
             available: 25,
