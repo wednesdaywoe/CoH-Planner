@@ -40,7 +40,8 @@ const ELECTRICAL_MELEE_POWERSET = {
                     scale: 1.941
                 },
                 buffDuration: 2.0
-            },
+            }
+        },
         {name: "Havoc Punch",
             available: 0,
             tier: 1,

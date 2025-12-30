@@ -33,7 +33,8 @@ const PSIONIC_ASSAULT_POWERSET = {
                     scale: 3.5789999999999997
                 },
                 buffDuration: 6.0
-            },
+            }
+        },
         {name: "Psionic Dart",
             available: 0,
             tier: 1,

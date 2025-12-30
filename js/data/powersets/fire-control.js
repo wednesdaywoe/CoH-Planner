@@ -34,7 +34,8 @@ const FIRE_CONTROL_POWERSET = {
                     ticks: 4
                 },
                 buffDuration: 4.2
-            },
+            }
+        },
         {name: "Ring of Fire",
             available: 0,
             tier: 1,

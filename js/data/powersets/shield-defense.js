@@ -29,7 +29,8 @@ const SHIELD_DEFENSE_POWERSET = {
                 cast: 1.5,
                 buffDuration: 0.75,
                 defenseBuff: 0.4
-            },
+            }
+        },
         {name: "Deflection",
             available: 0,
             tier: 1,

@@ -34,7 +34,8 @@ const ICE_MANIPULATION_POWERSET = {
                     ticks: 4
                 },
                 buffDuration: 9.2
-            },
+            }
+        },
         {name: "Frozen Fists",
             available: 0,
             tier: 1,

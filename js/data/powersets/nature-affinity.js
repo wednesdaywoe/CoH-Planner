@@ -29,7 +29,8 @@ const NATURE_AFFINITY_POWERSET = {
                 endurance: 8.528,
                 cast: 1.0,
                 buffDuration: 30.0
-            },
+            }
+        },
         {name: "Regrowth",
             available: 0,
             tier: 1,

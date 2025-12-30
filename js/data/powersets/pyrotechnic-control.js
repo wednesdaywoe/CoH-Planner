@@ -39,7 +39,8 @@ const PYROTECHNIC_CONTROL_POWERSET = {
                     ],
                     scale: 3.2536000000000005
                 }
-            },
+            }
+        },
         {name: "Sparkling Cage",
             available: 0,
             tier: 1,

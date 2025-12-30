@@ -29,7 +29,8 @@ const SUPER_REFLEXES_POWERSET = {
                 cast: 0.67,
                 buffDuration: 0.75,
                 defenseBuff: 0.4
-            },
+            }
+        },
         {name: "Focused Senses",
             available: 0,
             tier: 1,

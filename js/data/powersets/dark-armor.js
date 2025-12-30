@@ -27,7 +27,8 @@ const DARK_ARMOR_POWERSET = {
                 endurance: 0.104,
                 cast: 0.67,
                 buffDuration: 0.75
-            },
+            }
+        },
         {name: "Death Shroud",
             available: 0,
             tier: 1,

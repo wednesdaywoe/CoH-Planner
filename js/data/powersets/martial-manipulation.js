@@ -24,7 +24,8 @@ const MARTIAL_MANIPULATION_POWERSET = {
             effectArea: "SingleTarget",
             effects: {
                 accuracy: 1.0
-            },
+            }
+        },
         {name: "Ki Push",
             available: 0,
             tier: 1,

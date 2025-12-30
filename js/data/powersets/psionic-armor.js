@@ -26,7 +26,8 @@ const PSIONIC_ARMOR_POWERSET = {
                 recharge: 2.0,
                 endurance: 0.104,
                 cast: 1.17
-            },
+            }
+        },
         {name: "Psychic Wall",
             available: 0,
             tier: 1,

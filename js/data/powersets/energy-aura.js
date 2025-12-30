@@ -40,7 +40,8 @@ const ENERGY_AURA_POWERSET = {
                     ]
                 },
                 buffDuration: 10.25
-            },
+            }
+        },
         {name: "Kinetic Shield",
             available: 0,
             tier: 1,

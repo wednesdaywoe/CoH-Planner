@@ -34,7 +34,8 @@ const TACTICAL_ARROW_POWERSET = {
                     ticks: 4
                 },
                 buffDuration: 0.75
-            },
+            }
+        },
         {name: "Glue Arrow",
             available: 0,
             tier: 1,

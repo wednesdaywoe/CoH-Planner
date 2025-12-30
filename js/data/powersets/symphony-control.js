@@ -33,7 +33,8 @@ const SYMPHONY_CONTROL_POWERSET = {
                     scale: 2.8890000000000002
                 },
                 buffDuration: 18.0
-            },
+            }
+        },
         {name: "Melodic Binding",
             available: 0,
             tier: 1,

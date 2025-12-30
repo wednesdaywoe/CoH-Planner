@@ -28,7 +28,8 @@ const TITAN_WEAPONS_POWERSET = {
                 recharge: 8.0,
                 endurance: 8.7838,
                 cast: 2.0
-            },
+            }
+        },
         {name: "Defensive Sweep",
             available: 0,
             tier: 1,

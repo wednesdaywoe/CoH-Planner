@@ -34,7 +34,8 @@ const STORM_SUMMONING_POWERSET = {
                     type: "Smashing",
                     scale: 0.1
                 }
-            },
+            }
+        },
         {name: "O2 Boost",
             available: 0,
             tier: 1,

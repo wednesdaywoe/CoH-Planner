@@ -34,7 +34,8 @@ const POISON_POWERSET = {
                     ticks: 30
                 },
                 buffDuration: 60.0
-            },
+            }
+        },
         {name: "Envenom",
             available: 0,
             tier: 1,

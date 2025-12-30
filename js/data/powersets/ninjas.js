@@ -28,7 +28,8 @@ const NINJAS_POWERSET = {
                 recharge: 5.0,
                 endurance: 5.46,
                 cast: 1.7
-            },
+            }
+        },
         {name: "Snap Shot",
             available: 0,
             tier: 1,

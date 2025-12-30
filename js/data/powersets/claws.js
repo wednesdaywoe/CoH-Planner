@@ -38,7 +38,8 @@ const CLAWS_POWERSET = {
                     ],
                     scale: 6.4197999999999995
                 }
-            },
+            }
+        },
         {name: "Swipe",
             available: 0,
             tier: 1,

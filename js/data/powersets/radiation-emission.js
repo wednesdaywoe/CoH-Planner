@@ -28,7 +28,8 @@ const RADIATION_EMISSION_POWERSET = {
                 recharge: 8.0,
                 endurance: 13.0,
                 cast: 2.03
-            },
+            }
+        },
         {name: "Radiation Infection",
             available: 0,
             tier: 1,

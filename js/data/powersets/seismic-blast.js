@@ -34,7 +34,8 @@ const SEISMIC_BLAST_POWERSET = {
                 },
                 defenseDebuff: 0.5,
                 buffDuration: 3.0
-            },
+            }
+        },
         {name: "Seismic Shockwaves",
             available: 0,
             tier: 1,

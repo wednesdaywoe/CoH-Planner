@@ -33,7 +33,8 @@ const ICE_CONTROL_POWERSET = {
                     scale: 3.0291
                 },
                 buffDuration: 12.0
-            },
+            }
+        },
         {name: "Chilblain",
             available: 0,
             tier: 1,

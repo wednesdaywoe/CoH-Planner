@@ -31,7 +31,8 @@ const FIERY_ASSAULT_POWERSET = {
                     type: "Fire",
                     scale: 2.0978
                 }
-            },
+            }
+        },
         {name: "Incinerate",
             available: 0,
             tier: 1,

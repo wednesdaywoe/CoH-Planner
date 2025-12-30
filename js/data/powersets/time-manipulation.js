@@ -29,7 +29,8 @@ const TIME_MANIPULATION_POWERSET = {
                 endurance: 13.0,
                 cast: 2.03,
                 buffDuration: 30.0
-            },
+            }
+        },
         {name: "Time Crawl",
             available: 0,
             tier: 1,

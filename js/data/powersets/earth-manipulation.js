@@ -31,7 +31,8 @@ const EARTH_MANIPULATION_POWERSET = {
                     type: "Smashing",
                     scale: 4.0908999999999995
                 }
-            },
+            }
+        },
         {name: "Stone Prison",
             available: 0,
             tier: 1,

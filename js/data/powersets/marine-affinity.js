@@ -31,7 +31,8 @@ const MARINE_AFFINITY_POWERSET = {
                 cast: 2.17,
                 defenseDebuff: 1.6,
                 buffDuration: 20.0
-            },
+            }
+        },
         {name: "Soothing Wave",
             available: 0,
             tier: 1,

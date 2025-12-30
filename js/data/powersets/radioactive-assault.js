@@ -41,7 +41,8 @@ const RADIOACTIVE_ASSAULT_POWERSET = {
                 },
                 defenseDebuff: 1.39,
                 buffDuration: 10.0
-            },
+            }
+        },
         {name: "Neutrino Bolt",
             available: 0,
             tier: 1,

@@ -47,7 +47,8 @@ const THERMAL_RADIATION_POWERSET = {
                     ]
                 },
                 buffDuration: 240.0
-            },
+            }
+        },
         {name: "Warmth",
             available: 0,
             tier: 1,

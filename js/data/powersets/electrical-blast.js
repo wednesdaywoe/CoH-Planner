@@ -32,7 +32,8 @@ const ELECTRICAL_BLAST_POWERSET = {
                     type: "Energy",
                     scale: 2.2602
                 }
-            },
+            }
+        },
         {name: "Lightning Bolt",
             available: 0,
             tier: 1,

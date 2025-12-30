@@ -29,7 +29,8 @@ const ICE_ARMOR_POWERSET = {
                 cast: 0.73,
                 buffDuration: 0.75,
                 defenseBuff: 0.4
-            },
+            }
+        },
         {name: "Hoarfrost",
             available: 0,
             tier: 1,

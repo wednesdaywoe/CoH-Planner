@@ -39,7 +39,8 @@ const ENERGY_MANIPULATION_POWERSET = {
                     scale: 3.341
                 },
                 stun: 2.0
-            },
+            }
+        },
         {name: "Power Thrust",
             available: 0,
             tier: 1,

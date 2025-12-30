@@ -44,7 +44,8 @@ const ENERGY_MELEE_POWERSET = {
                     ]
                 },
                 buffDuration: 0.3
-            },
+            }
+        },
         {name: "Energy Punch",
             available: 0,
             tier: 1,

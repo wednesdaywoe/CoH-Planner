@@ -28,7 +28,8 @@ const ELECTRIC_ARMOR_POWERSET = {
                 endurance: 0.13,
                 cast: 0.67,
                 buffDuration: 0.75
-            },
+            }
+        },
         {name: "Lightning Field",
             available: 0,
             tier: 1,

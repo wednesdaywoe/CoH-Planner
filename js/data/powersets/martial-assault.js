@@ -31,7 +31,8 @@ const MARTIAL_ASSAULT_POWERSET = {
                     type: "Lethal",
                     scale: 2.26
                 }
-            },
+            }
+        },
         {name: "Thunder Kick",
             available: 0,
             tier: 1,

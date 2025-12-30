@@ -31,7 +31,8 @@ const BATTLE_AXE_POWERSET = {
                     type: "Lethal",
                     scale: 2.26
                 }
-            },
+            }
+        },
         {name: "Chop",
             available: 0,
             tier: 1,

@@ -40,7 +40,8 @@ const WAR_MACE_POWERSET = {
                     scale: 6.1488000000000005
                 },
                 stun: 2.0
-            },
+            }
+        },
         {name: "Pulverize",
             available: 0,
             tier: 1,

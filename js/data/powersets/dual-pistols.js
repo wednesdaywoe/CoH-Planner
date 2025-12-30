@@ -27,7 +27,8 @@ const DUAL_PISTOLS_POWERSET = {
                 recharge: 4.0,
                 cast: 0.63,
                 buffDuration: 0.75
-            },
+            }
+        },
         {name: "Cryo Ammunition",
             available: -1,
             tier: 2,

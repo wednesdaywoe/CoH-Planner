@@ -31,7 +31,8 @@ const EARTH_ASSAULT_POWERSET = {
                     type: "Smashing",
                     scale: 3.48
                 }
-            },
+            }
+        },
         {name: "Stone Spears",
             available: 0,
             tier: 1,

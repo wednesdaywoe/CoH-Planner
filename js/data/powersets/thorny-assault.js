@@ -39,7 +39,8 @@ const THORNY_ASSAULT_POWERSET = {
                 },
                 buffDuration: 3.1,
                 defenseDebuff: 2.0
-            },
+            }
+        },
         {name: "Thorny Darts",
             available: 0,
             tier: 1,

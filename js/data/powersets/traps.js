@@ -29,7 +29,8 @@ const TRAPS_POWERSET = {
                 endurance: 7.8,
                 cast: 1.07,
                 buffDuration: 45.0
-            },
+            }
+        },
         {name: "Web Grenade",
             available: 0,
             tier: 1,

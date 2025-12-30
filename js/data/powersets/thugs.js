@@ -28,7 +28,8 @@ const THUGS_POWERSET = {
                 recharge: 5.0,
                 endurance: 5.46,
                 cast: 1.67
-            },
+            }
+        },
         {name: "Pistols",
             available: 0,
             tier: 1,

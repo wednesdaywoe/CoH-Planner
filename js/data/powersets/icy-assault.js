@@ -40,7 +40,8 @@ const ICY_ASSAULT_POWERSET = {
                     scale: 2.46
                 },
                 buffDuration: 6.0
-            },
+            }
+        },
         {name: "Ice Sword",
             available: 0,
             tier: 1,

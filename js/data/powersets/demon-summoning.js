@@ -38,7 +38,8 @@ const DEMON_SUMMONING_POWERSET = {
                     ticks: 3
                 },
                 buffDuration: 3.1
-            },
+            }
+        },
         {name: "Summon Demonlings",
             available: 0,
             tier: 1,

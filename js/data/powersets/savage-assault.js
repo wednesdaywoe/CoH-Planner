@@ -35,7 +35,8 @@ const SAVAGE_ASSAULT_POWERSET = {
                 },
                 buffDuration: 3.1,
                 defenseDebuff: 1.0
-            },
+            }
+        },
         {name: "Maiming Slash",
             available: 0,
             tier: 1,

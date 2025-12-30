@@ -32,7 +32,8 @@ const ARSENAL_CONTROL_POWERSET = {
                     scale: 2.8890000000000002
                 },
                 buffDuration: 12.0
-            },
+            }
+        },
         {name: "Tranquilizer",
             available: 0,
             tier: 1,

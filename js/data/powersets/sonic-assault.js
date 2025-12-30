@@ -39,7 +39,8 @@ const SONIC_ASSAULT_POWERSET = {
                     ],
                     scale: 2.06
                 }
-            },
+            }
+        },
         {name: "Strident Echo",
             available: 0,
             tier: 1,

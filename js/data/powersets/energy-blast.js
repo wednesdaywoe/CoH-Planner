@@ -38,7 +38,8 @@ const ENERGY_BLAST_POWERSET = {
                     ],
                     scale: 3.5292
                 }
-            },
+            }
+        },
         {name: "Power Bolt",
             available: 0,
             tier: 1,

@@ -39,7 +39,8 @@ const SONIC_MANIPULATION_POWERSET = {
                     scale: 1.6122
                 },
                 buffDuration: 2.0
-            },
+            }
+        },
         {name: "Strident Echo",
             available: 0,
             tier: 1,

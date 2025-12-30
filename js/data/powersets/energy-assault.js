@@ -40,7 +40,8 @@ const ENERGY_ASSAULT_POWERSET = {
                     scale: 3.81
                 },
                 buffDuration: 15.0
-            },
+            }
+        },
         {name: "Power Bolt",
             available: 0,
             tier: 1,

@@ -44,7 +44,8 @@ const DUAL_BLADES_POWERSET = {
                     ]
                 },
                 buffDuration: 0.5
-            },
+            }
+        },
         {name: "Power Slice",
             available: 0,
             tier: 1,

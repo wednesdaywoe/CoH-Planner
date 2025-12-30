@@ -33,7 +33,8 @@ const STORM_BLAST_POWERSET = {
                     scale: 2.379
                 },
                 buffDuration: 4.0
-            },
+            }
+        },
         {name: "Hailstones",
             available: 0,
             tier: 1,

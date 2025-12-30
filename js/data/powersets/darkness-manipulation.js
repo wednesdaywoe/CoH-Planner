@@ -34,7 +34,8 @@ const DARKNESS_MANIPULATION_POWERSET = {
                 },
                 buffDuration: 9.2,
                 tohitDebuff: 0.75
-            },
+            }
+        },
         {name: "Smite",
             available: 0,
             tier: 1,

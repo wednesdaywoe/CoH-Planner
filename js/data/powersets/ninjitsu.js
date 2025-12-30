@@ -29,7 +29,8 @@ const NINJITSU_POWERSET = {
                 cast: 0.83,
                 buffDuration: 0.75,
                 defenseBuff: 0.5
-            },
+            }
+        },
         {name: "Ninja Reflexes",
             available: 0,
             tier: 1,

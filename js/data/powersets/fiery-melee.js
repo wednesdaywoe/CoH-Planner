@@ -38,7 +38,8 @@ const FIERY_MELEE_POWERSET = {
                 },
                 buffDuration: 3.1,
                 defenseDebuff: 0.5
-            },
+            }
+        },
         {name: "Scorch",
             available: 0,
             tier: 1,

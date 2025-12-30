@@ -34,7 +34,8 @@ const DARKNESS_CONTROL_POWERSET = {
                 },
                 tohitDebuff: 0.75,
                 buffDuration: 10.0
-            },
+            }
+        },
         {name: "Shadowy Binds",
             available: 0,
             tier: 1,

@@ -34,7 +34,8 @@ const NECROMANCY_POWERSET = {
                 },
                 tohitDebuff: 0.75,
                 buffDuration: 6.0
-            },
+            }
+        },
         {name: "Zombie Horde",
             available: 0,
             tier: 1,

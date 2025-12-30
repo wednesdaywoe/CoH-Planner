@@ -29,7 +29,8 @@ const TRICK_ARROW_POWERSET = {
                 endurance: 5.2,
                 cast: 1.0,
                 buffDuration: 30.0
-            },
+            }
+        },
         {name: "Flash Arrow",
             available: 0,
             tier: 1,

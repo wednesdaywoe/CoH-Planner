@@ -41,7 +41,8 @@ const PLANT_MANIPULATION_POWERSET = {
                     ]
                 },
                 buffDuration: 9.2
-            },
+            }
+        },
         {name: "Skewer",
             available: 0,
             tier: 1,

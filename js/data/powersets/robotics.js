@@ -28,7 +28,8 @@ const ROBOTICS_POWERSET = {
                 recharge: 5.0,
                 endurance: 5.46,
                 cast: 2.03
-            },
+            }
+        },
         {name: "Pulse Rifle Blast",
             available: 0,
             tier: 1,

@@ -35,7 +35,8 @@ const FORCE_FIELD_POWERSET = {
                     ticks: 120
                 },
                 buffDuration: 240.0
-            },
+            }
+        },
         {name: "Personal Force Field",
             available: 0,
             tier: 1,

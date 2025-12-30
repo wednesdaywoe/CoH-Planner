@@ -38,7 +38,8 @@ const MARTIAL_ARTS_POWERSET = {
                     ],
                     scale: 3.1350000000000002
                 }
-            },
+            }
+        },
         {name: "Thunder Kick",
             available: 0,
             tier: 1,

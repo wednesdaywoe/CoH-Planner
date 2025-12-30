@@ -32,7 +32,8 @@ const STONE_MELEE_POWERSET = {
                     type: "Smashing",
                     scale: 2.141
                 }
-            },
+            }
+        },
         {name: "Stone Mallet",
             available: 0,
             tier: 1,

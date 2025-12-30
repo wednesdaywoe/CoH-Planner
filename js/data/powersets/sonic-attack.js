@@ -41,7 +41,8 @@ const SONIC_ATTACK_POWERSET = {
                     ]
                 },
                 buffDuration: 1.05
-            },
+            }
+        },
         {name: "Shriek",
             available: 0,
             tier: 1,

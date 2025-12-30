@@ -32,7 +32,8 @@ const ILLUSION_CONTROL_POWERSET = {
                     type: "Psionic",
                     scale: 4.8936
                 }
-            },
+            }
+        },
         {name: "Spectral Wounds",
             available: 0,
             tier: 1,

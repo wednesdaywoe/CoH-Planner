@@ -45,7 +45,8 @@ const QUILLS_POWERSET = {
                     ticks: 2
                 },
                 buffDuration: 4.0
-            },
+            }
+        },
         {name: "Lunge",
             available: 0,
             tier: 1,

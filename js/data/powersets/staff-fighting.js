@@ -27,7 +27,8 @@ const STAFF_FIGHTING_POWERSET = {
                 recharge: 4.0,
                 cast: 0.63,
                 buffDuration: 1.25
-            },
+            }
+        },
         {name: "Form of the Mind",
             available: -1,
             tier: 2,

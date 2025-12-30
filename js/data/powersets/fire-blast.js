@@ -37,7 +37,8 @@ const FIRE_BLAST_POWERSET = {
                     ticks: 3
                 },
                 buffDuration: 3.1
-            },
+            }
+        },
         {name: "Fire Ball",
             available: 1,
             tier: 1,

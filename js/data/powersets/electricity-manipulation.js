@@ -40,7 +40,8 @@ const ELECTRICITY_MANIPULATION_POWERSET = {
                     scale: 3.341
                 },
                 buffDuration: 2.0
-            },
+            }
+        },
         {name: "Electric Fence",
             available: 0,
             tier: 1,

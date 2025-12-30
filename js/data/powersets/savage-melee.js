@@ -40,7 +40,8 @@ const SAVAGE_MELEE_POWERSET = {
                     scale: 3.1008000000000004
                 },
                 buffDuration: 10.0
-            },
+            }
+        },
         {name: "Savage Strike",
             available: 0,
             tier: 1,

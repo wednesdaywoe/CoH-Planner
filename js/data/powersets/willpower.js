@@ -25,7 +25,8 @@ const WILLPOWER_POWERSET = {
             effects: {
                 accuracy: 1.0,
                 buffDuration: 10.25
-            },
+            }
+        },
         {name: "Mind Over Body",
             available: 0,
             tier: 1,

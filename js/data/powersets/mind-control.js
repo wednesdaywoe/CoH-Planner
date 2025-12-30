@@ -33,7 +33,8 @@ const MIND_CONTROL_POWERSET = {
                     scale: 3.2691
                 },
                 buffDuration: 10.0
-            },
+            }
+        },
         {name: "Mesmerize",
             available: 0,
             tier: 1,

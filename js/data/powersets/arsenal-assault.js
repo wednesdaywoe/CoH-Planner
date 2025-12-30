@@ -34,7 +34,8 @@ const ARSENAL_ASSAULT_POWERSET = {
                 },
                 buffDuration: 0.91,
                 defenseDebuff: 1.0
-            },
+            }
+        },
         {name: "Buttstroke",
             available: 0,
             tier: 1,

@@ -34,7 +34,8 @@ const GRAVITY_CONTROL_POWERSET = {
                     ticks: 4
                 },
                 buffDuration: 9.2
-            },
+            }
+        },
         {name: "Lift",
             available: 0,
             tier: 1,

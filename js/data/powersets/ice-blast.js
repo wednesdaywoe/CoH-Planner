@@ -32,7 +32,8 @@ const ICE_BLAST_POWERSET = {
                     scale: 2.2602
                 },
                 buffDuration: 6.0
-            },
+            }
+        },
         {name: "Frost Breath",
             available: 1,
             tier: 1,

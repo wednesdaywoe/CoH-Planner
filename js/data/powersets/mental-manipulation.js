@@ -32,7 +32,8 @@ const MENTAL_MANIPULATION_POWERSET = {
                     scale: 3.1788999999999996
                 },
                 buffDuration: 6.0
-            },
+            }
+        },
         {name: "Subdual",
             available: 0,
             tier: 1,

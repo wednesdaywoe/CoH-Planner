@@ -25,7 +25,8 @@ const REGENERATION_POWERSET = {
             effects: {
                 accuracy: 1.0,
                 buffDuration: 10.0
-            },
+            }
+        },
         {name: "Reconstruction",
             available: 0,
             tier: 1,

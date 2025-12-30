@@ -28,7 +28,8 @@ const KINETICS_POWERSET = {
                 endurance: 10.4,
                 cast: 1.93,
                 buffDuration: 30.0
-            },
+            }
+        },
         {name: "Transfusion",
             available: 0,
             tier: 1,

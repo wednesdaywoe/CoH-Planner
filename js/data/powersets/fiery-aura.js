@@ -32,7 +32,8 @@ const FIERY_AURA_POWERSET = {
                     type: "Fire",
                     scale: 0.319
                 }
-            },
+            }
+        },
         {name: "Fire Shield",
             available: 0,
             tier: 1,
