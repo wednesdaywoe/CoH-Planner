@@ -1,177 +1,223 @@
 /**
- * City of Heroes: Radiation Armor
- * 
- * Extracted from raw_data_homecoming-20250617_6916
+ * Radiation Armor - Blaster Primary
+ * Extracted from raw_data_homecoming with updated converter
  */
 
-POWERSETS['radiation-armor'] = {
+const RADIATION_ARMOR_POWERSET = {
     name: "Radiation Armor",
-    type: "secondary",
-    description: "TODO: Add description",
+    category: "Blaster_RANGED",
+    description: "Radiation Armor powerset",
+    icon: "radiation-armor_set.png",
     powers: [
         {
-                    "name": "Alpha Barrier",
-                    "available": 0,
-                    "maxSlots": 6,
-                    "allowedEnhancements": [
-                                "EnduranceReduction",
-                                "Recharge"
-                    ],
-                    "tier": 1,
-                    "effects": {
-                                "accuracy": 1.0,
-                                "recharge": 2.0,
-                                "endurance": 0.13,
-                                "cast": 0.67,
-                                "damage": {
-                                            "scale": 3.0
-                                }
-                    }
+            name: "Alpha Barrier",
+            available: 0,
+            tier: 1,
+            maxSlots: 6,
+            allowedEnhancements: ["EnduranceReduction", "Recharge"],
+            allowedSetCategories: ["Resist Damage"],
+            description: "You cloak yourself in a field of protective radiation that grants you a good deal of resistance to Lethal, Smashing and Toxic damage.",
+            shortHelp: "Toggle: Self +Res(Lethal, Smash, Toxic)",
+            icon: "radiationarmor_alphabarrier.png",
+            powerType: "Toggle",
+            targetType: "Self",
+            effectArea: "SingleTarget",
+            effects: {
+                accuracy: 1.0,
+                recharge: 2.0,
+                endurance: 0.13,
+                cast: 0.67,
+                buffDuration: 0.75
+            }
         },
         {
-                    "name": "Gamma Boost",
-                    "available": 0,
-                    "maxSlots": 6,
-                    "allowedEnhancements": [
-                                "Damage",
-                                "Accuracy",
-                                "Recharge",
-                                "EnduranceReduction"
-                    ],
-                    "tier": 1,
-                    "effects": {
-                                "accuracy": 1.0
-                    }
+            name: "Gamma Boost",
+            available: 0,
+            tier: 1,
+            maxSlots: 6,
+            allowedEnhancements: ["Damage", "Accuracy", "Recharge", "EnduranceReduction"],
+            allowedSetCategories: ["Endurance Modification", "Healing"],
+            description: "Gamma Boost grants you a passive boost to both regeneration and recovery. The lower your current health is, the greater the regeneration bonus you'll receive from Gamma Boost. The higher your current health is, the greater the recovery bonus you'll receive from Gamma Boost. This power is always active.",
+            shortHelp: "Auto: Self +Regen, +Recovery, Special",
+            icon: "radiationarmor_gammaboost.png",
+            powerType: "Auto",
+            targetType: "Self",
+            effectArea: "SingleTarget",
+            effects: {
+                accuracy: 1.0,
+                buffDuration: 1.25
+            }
         },
         {
-                    "name": "Proton Armor",
-                    "available": 3,
-                    "maxSlots": 6,
-                    "allowedEnhancements": [
-                                "EnduranceReduction",
-                                "Recharge"
-                    ],
-                    "tier": 2,
-                    "effects": {
-                                "accuracy": 1.0,
-                                "recharge": 2.0,
-                                "endurance": 0.13,
-                                "cast": 0.67,
-                                "damage": {
-                                            "scale": 4.0
-                                }
-                    }
+            name: "Radiation Armor",
+            available: 0,
+            tier: 1,
+            maxSlots: 6,
+            allowedEnhancements: ["Damage", "Accuracy", "Recharge", "EnduranceReduction"],
+            allowedSetCategories: [],
+            description: "Radiation emanates from your body which harms foes, but empowers and shields yourself. You can use this energy to absorb damage, heal from your wounds and debilitate nearby foes.",
+            shortHelp: "Radiation Armor",
+            icon: "radiation_armor_set.png"
         },
         {
-                    "name": "Fallout Shelter",
-                    "available": 9,
-                    "maxSlots": 6,
-                    "allowedEnhancements": [
-                                "EnduranceReduction",
-                                "Recharge"
-                    ],
-                    "tier": 3,
-                    "effects": {
-                                "accuracy": 1.0,
-                                "recharge": 4.0,
-                                "endurance": 0.104,
-                                "cast": 0.73,
-                                "damage": {
-                                            "scale": 0.5
-                                },
-                                "slow": 1.05,
-                                "rechargeDebuff": 1.05
-                    }
+            name: "Proton Armor",
+            available: 3,
+            tier: 2,
+            maxSlots: 6,
+            allowedEnhancements: ["EnduranceReduction", "Recharge"],
+            allowedSetCategories: ["Resist Damage"],
+            description: "When active, your body is encased in a shield-like radiation barrier that gives you good resistance to Energy and Fire damage and moderate resistance to Cold and Negative Energy attacks.",
+            shortHelp: "Toggle: Self, +Res(Energy, Fire, Cold and Negative)",
+            icon: "radiationarmor_protonarmor.png",
+            powerType: "Toggle",
+            targetType: "Self",
+            effectArea: "SingleTarget",
+            effects: {
+                accuracy: 1.0,
+                recharge: 2.0,
+                endurance: 0.13,
+                cast: 0.67,
+                buffDuration: 0.75
+            }
         },
         {
-                    "name": "Radiation Therapy",
-                    "available": 15,
-                    "maxSlots": 6,
-                    "allowedEnhancements": [
-                                "EnduranceReduction",
-                                "Recharge",
-                                "Damage",
-                                "Accuracy"
-                    ],
-                    "tier": 4,
-                    "effects": {
-                                "accuracy": 1.2,
-                                "recharge": 60.0,
-                                "endurance": 13.0,
-                                "cast": 1.03
-                    }
+            name: "Fallout Shelter",
+            available: 9,
+            tier: 3,
+            maxSlots: 6,
+            allowedEnhancements: ["EnduranceReduction", "Recharge"],
+            allowedSetCategories: ["Resist Damage"],
+            description: "While active you are protected from recharge, movement, hold, sleep, immobilize, stun and knockdown effects. Additionally Fallout Shelter grants you minor resistance to toxic and psionic damage as well as a measure of resistance against slow effects.",
+            shortHelp: "Toggle: Self +Res(Hold, Sleep, Immobilize, Stun, Knockdown, Toxic, Psi, Slow)",
+            icon: "radiationarmor_falloutshelter.png",
+            powerType: "Toggle",
+            targetType: "Self",
+            effectArea: "SingleTarget",
+            effects: {
+                accuracy: 1.0,
+                recharge: 4.0,
+                endurance: 0.104,
+                cast: 0.73,
+                stun: 1.0,
+                stunDuration: 0.75,
+                buffDuration: 0.75,
+                tohitBuff: 0.3
+            }
         },
         {
-                    "name": "Beta Decay",
-                    "available": 19,
-                    "maxSlots": 6,
-                    "allowedEnhancements": [
-                                "EnduranceReduction",
-                                "Recharge"
-                    ],
-                    "tier": 4,
-                    "effects": {
-                                "accuracy": 1.0,
-                                "recharge": 10.0,
-                                "endurance": 0.208,
-                                "cast": 0.67,
-                                "rechargeDebuff": 0.025
-                    }
+            name: "Radiation Therapy",
+            available: 15,
+            tier: 4,
+            maxSlots: 6,
+            allowedEnhancements: ["EnduranceReduction", "Recharge", "Damage", "Accuracy"],
+            allowedSetCategories: ["Accurate Healing", "Endurance Modification", "Healing", "Melee AoE Damage", "Scrapper Archetype Sets", "Universal Damage Sets"],
+            description: "You channel a tremendous amount of radiation into a barrier around you. For a short time you will have a strong absorption shield in addition to a regeneration and recovery buff.<br><br><br><color #fcfc95>Notes: This power has adaptive recharge. It has a base recharge of <color #FF7F27>15</color> </color> seconds and each affected foe will increase the recharge by a varying amount. First target adds <color #FF7F27>12</color> seconds for a maximum total of <color #FF7F27>60</color> seconds.</color>",
+            shortHelp: "PBAoE, DMG(Energy), DoT(Toxic), Foe -Regen, Self +HP, +End, Res(-Regen)",
+            icon: "radiationarmor_radiationtherapy.png",
+            powerType: "Click",
+            targetType: "Self",
+            effectArea: "AoE",
+            maxTargets: 10,
+            effects: {
+                accuracy: 1.2,
+                recharge: 60.0,
+                endurance: 13.0,
+                cast: 1.03
+            }
         },
         {
-                    "name": "Particle Shielding",
-                    "available": 23,
-                    "maxSlots": 6,
-                    "allowedEnhancements": [
-                                "EnduranceReduction",
-                                "Recharge"
-                    ],
-                    "tier": 5,
-                    "effects": {
-                                "accuracy": 1.0,
-                                "recharge": 120.0,
-                                "endurance": 10.4,
-                                "cast": 0.73
-                    }
+            name: "Beta Decay",
+            available: 19,
+            tier: 4,
+            maxSlots: 6,
+            allowedEnhancements: ["EnduranceReduction", "Recharge"],
+            allowedSetCategories: ["Defense Debuff", "Threat Duration", "To Hit Debuff"],
+            description: "While Beta Decay is active, nearby foes will have their chance to hit and defense decreased slightly and will be taunted. You will gain a recharge bonus per nearby target up to 10 targets. The first target grants the largest benefit.",
+            shortHelp: "Toggle: Foe, Taunt, -To Hit, -Defense, Self +Recharge",
+            icon: "radiationarmor_betadecay.png",
+            powerType: "Toggle",
+            targetType: "Self",
+            effectArea: "AoE",
+            maxTargets: 10,
+            effects: {
+                accuracy: 1.0,
+                recharge: 10.0,
+                endurance: 0.208,
+                cast: 0.67,
+                tohitDebuff: 0.75,
+                buffDuration: 1.0,
+                defenseDebuff: 1.5
+            }
         },
         {
-                    "name": "Ground Zero",
-                    "available": 27,
-                    "maxSlots": 6,
-                    "allowedEnhancements": [
-                                "EnduranceReduction",
-                                "Recharge",
-                                "Damage",
-                                "Accuracy"
-                    ],
-                    "tier": 5,
-                    "effects": {
-                                "accuracy": 1.2,
-                                "recharge": 90.0,
-                                "endurance": 13.0,
-                                "cast": 3.0
-                    }
+            name: "Particle Shielding",
+            available: 23,
+            tier: 5,
+            maxSlots: 6,
+            allowedEnhancements: ["EnduranceReduction", "Recharge"],
+            allowedSetCategories: ["Healing"],
+            description: "You channel a tremendous amount of radiation into a barrier around you. For a short time you will have a strong absorption shield in addition to a regeneration and recovery buff.<br><br><color #fcfc95>Recharge: Long.</color>",
+            shortHelp: "Self, +Absorb, +Regeneration",
+            icon: "radiationarmor_particleshielding.png",
+            powerType: "Click",
+            targetType: "Self",
+            effectArea: "SingleTarget",
+            effects: {
+                accuracy: 1.0,
+                recharge: 120.0,
+                endurance: 10.4,
+                cast: 0.73,
+                buffDuration: 60.0
+            }
         },
         {
-                    "name": "Meltdown",
-                    "available": 29,
-                    "maxSlots": 6,
-                    "allowedEnhancements": [
-                                "EnduranceReduction",
-                                "Recharge"
-                    ],
-                    "tier": 5,
-                    "effects": {
-                                "accuracy": 1.0,
-                                "recharge": 480.0,
-                                "endurance": 2.6,
-                                "cast": 2.93,
-                                "damage": {
-                                            "scale": 2.0
-                                },
-                                "dotDamage": 2.0,
-                                "dotTicks": 30
-                    }
+            name: "Ground Zero",
+            available: 27,
+            tier: 5,
+            maxSlots: 6,
+            allowedEnhancements: ["EnduranceReduction", "Recharge", "Damage", "Accuracy"],
+            allowedSetCategories: ["Accurate Defense Debuff", "Defense Debuff", "Healing", "Melee AoE Damage", "Scrapper Archetype Sets", "Universal Damage Sets"],
+            description: "You release a mixture of radiation into the area. Nearby foes will be barraged with harmful radiation and will suffer Moderate Energy damage immediately, followed by moderate toxic damage over time. Affected foes will also have their defense reduced. Nearby allies will be healed for a moderate amount and will recover health over time. This power can affect a total of 30 targets. This includes both friends and foes. Ground Zero has no effect on the caster, only nearby allies and enemies.",
+            shortHelp: "PBAoE, Foe DMG(Energy), DoT (Toxic), -DEF(All), Ally +HP, +Heal over time",
+            icon: "radiationarmor_groundzero.png",
+            powerType: "Click",
+            targetType: "Self",
+            effectArea: "AoE",
+            maxTargets: 10,
+            effects: {
+                accuracy: 1.2,
+                recharge: 90.0,
+                endurance: 13.0,
+                cast: 3.0
+            }
+        },
+        {
+            name: "Meltdown",
+            available: 29,
+            tier: 5,
+            maxSlots: 6,
+            allowedEnhancements: ["EnduranceReduction", "Recharge"],
+            allowedSetCategories: ["Endurance Modification", "Resist Damage"],
+            description: "After building up a dangerous amount of radiation you release it to both shield and empower yourself. While active you will gain a good amount of damage resistance to all types of damage, recover endurance more quickly and deal more damage for a short time. When this power wears off you will lose a small amount endurance.",
+            shortHelp: "Self, +Res(All), +Recovery, +DMG(All)",
+            icon: "radiationarmor_meltdown.png",
+            powerType: "Click",
+            targetType: "Self",
+            effectArea: "SingleTarget",
+            effects: {
+                accuracy: 1.0,
+                recharge: 480.0,
+                endurance: 2.6,
+                cast: 2.93,
+                buffDuration: 60.0
+            }
         }
     ]
 };
+
+// Register to POWERSETS
+if (typeof POWERSETS !== 'undefined') {
+    POWERSETS['radiation-armor'] = RADIATION_ARMOR_POWERSET;
+} else if (typeof window !== 'undefined') {
+    window.RADIATION_ARMOR_POWERSET = RADIATION_ARMOR_POWERSET;
+}

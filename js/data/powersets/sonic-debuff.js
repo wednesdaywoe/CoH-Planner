@@ -1,203 +1,285 @@
 /**
- * City of Heroes: Sonic Debuff
- * 
- * Extracted from raw_data_homecoming-20250617_6916
+ * Sonic Debuff - Blaster Primary
+ * Extracted from raw_data_homecoming with updated converter
  */
 
-POWERSETS['sonic-debuff'] = {
+const SONIC_DEBUFF_POWERSET = {
     name: "Sonic Debuff",
-    type: "secondary",
-    description: "TODO: Add description",
+    category: "Blaster_RANGED",
+    description: "Sonic Debuff powerset",
+    icon: "sonic-debuff_set.png",
     powers: [
         {
-                    "name": "Sonic Barrier",
-                    "available": 0,
-                    "maxSlots": 6,
-                    "allowedEnhancements": [
-                                "EnduranceReduction",
-                                "Range",
-                                "Recharge"
-                    ],
-                    "tier": 1,
-                    "effects": {
-                                "accuracy": 1.0,
-                                "range": 80.0,
-                                "recharge": 2.0,
-                                "endurance": 7.8,
-                                "cast": 1.33,
-                                "damage": {
-                                            "scale": 2.0
-                                },
-                                "dotDamage": 2.0,
-                                "dotTicks": 120,
-                                "buffDuration": 240.0
-                    }
+            name: "Sonic Barrier",
+            available: 0,
+            tier: 1,
+            maxSlots: 6,
+            allowedEnhancements: ["EnduranceReduction", "Range", "Recharge"],
+            allowedSetCategories: ["Resist Damage"],
+            description: "This shield dramatically reduces the damage an ally takes from Smashing, Lethal, and Toxic attacks for a limited time. You cannot stack multiple Sonic Barriers on the same target; however, the shield can be improved by another ally using the same power. Can also be used in conjunction with your Sonic Haven. You cannot use this power on yourself.<br><br><color #fcfc95>Recharge: Very Fast.</color>",
+            shortHelp: "Ranged, Ally +Res(Smash, Lethal, Toxic)",
+            icon: "sonicdebuff_protectphysical.png",
+            powerType: "Click",
+            targetType: "Ally (Alive)",
+            effectArea: "AoE",
+            maxTargets: 255,
+            effects: {
+                accuracy: 1.0,
+                range: 80.0,
+                recharge: 2.0,
+                endurance: 7.8,
+                cast: 1.33,
+                dotDamage: {
+                    types: [
+                        {
+                            type: "Smashing",
+                            scale: 2.0,
+                            ticks: 120
+                        },
+                        {
+                            type: "Lethal",
+                            scale: 2.0,
+                            ticks: 120
+                        },
+                        {
+                            type: "Toxic",
+                            scale: 2.0,
+                            ticks: 120
+                        }
+                    ]
+                },
+                buffDuration: 240.0
+            }
         },
         {
-                    "name": "Sonic Siphon",
-                    "available": 0,
-                    "maxSlots": 6,
-                    "allowedEnhancements": [
-                                "EnduranceReduction",
-                                "Range",
-                                "Recharge",
-                                "Accuracy"
-                    ],
-                    "tier": 1,
-                    "effects": {
-                                "accuracy": 1.0,
-                                "range": 80.0,
-                                "recharge": 16.0,
-                                "endurance": 8.528,
-                                "cast": 2.17,
-                                "dotDamage": -3.0,
-                                "dotTicks": 15,
-                                "buffDuration": 30.0
-                    }
+            name: "Sonic Resonance",
+            available: 0,
+            tier: 1,
+            maxSlots: 6,
+            allowedEnhancements: ["Damage", "Accuracy", "Recharge", "EnduranceReduction"],
+            allowedSetCategories: [],
+            description: "You have the ability to control sound in several fashions. You can create semi-solid barriers, set up waves which weaken or strengthen a target, as well as creating soothing sounds which act to counteract any negative effects which may exist on your friends.",
+            shortHelp: "Sonic Resonance",
+            icon: "sonic_debuff_set.png"
         },
         {
-                    "name": "Sonic Haven",
-                    "available": 1,
-                    "maxSlots": 6,
-                    "allowedEnhancements": [
-                                "EnduranceReduction",
-                                "Range",
-                                "Recharge"
-                    ],
-                    "tier": 2,
-                    "effects": {
-                                "accuracy": 1.0,
-                                "range": 80.0,
-                                "recharge": 2.0,
-                                "endurance": 7.8,
-                                "cast": 1.33,
-                                "damage": {
-                                            "scale": 2.0
-                                },
-                                "dotDamage": 2.0,
-                                "dotTicks": 120,
-                                "buffDuration": 240.0
-                    }
+            name: "Sonic Siphon",
+            available: 0,
+            tier: 1,
+            maxSlots: 6,
+            allowedEnhancements: ["EnduranceReduction", "Range", "Recharge", "Accuracy"],
+            allowedSetCategories: [],
+            description: "By setting up a constant vibration within the body of your foe, you weaken their Damage Resistance. Affected targets will take more damage from successful attacks.<br><br><color #fcfc95>Recharge: Slow.</color>",
+            shortHelp: "Ranged, Foe -Res(All)",
+            icon: "sonicdebuff_debuffdamres.png",
+            powerType: "Click",
+            targetType: "Foe (Alive)",
+            effectArea: "SingleTarget",
+            effects: {
+                accuracy: 1.0,
+                range: 80.0,
+                recharge: 16.0,
+                endurance: 8.528,
+                cast: 2.17,
+                buffDuration: 30.0
+            }
         },
         {
-                    "name": "Sonic Cage",
-                    "available": 5,
-                    "maxSlots": 6,
-                    "allowedEnhancements": [
-                                "EnduranceReduction",
-                                "Range",
-                                "Recharge",
-                                "Accuracy"
-                    ],
-                    "tier": 3,
-                    "effects": {
-                                "accuracy": 1.4,
-                                "range": 80.0,
-                                "recharge": 60.0,
-                                "endurance": 12.48,
-                                "cast": 1.67,
-                                "buffDuration": 30.0
-                    }
+            name: "Sonic Haven",
+            available: 1,
+            tier: 1,
+            maxSlots: 6,
+            allowedEnhancements: ["EnduranceReduction", "Range", "Recharge"],
+            allowedSetCategories: ["Resist Damage"],
+            description: "This shield dramatically reduces the damage an ally takes from Fire, Cold, Energy, and Negative Energy attacks for a limited time. You cannot stack multiple Sonic Havens on the same target; however, the shield can be improved by another ally using the same power. Can also be used in conjunction with your Sonic Barrier. You cannot use this power on yourself.<br><br><color #fcfc95>Recharge: Very Fast.</color>",
+            shortHelp: "Ranged, Ally +Res(Fire, Cold, Energy, Negative Energy)",
+            icon: "sonicdebuff_protectelements.png",
+            powerType: "Click",
+            targetType: "Ally (Alive)",
+            effectArea: "AoE",
+            maxTargets: 255,
+            effects: {
+                accuracy: 1.0,
+                range: 80.0,
+                recharge: 2.0,
+                endurance: 7.8,
+                cast: 1.33,
+                dotDamage: {
+                    types: [
+                        {
+                            type: "Fire",
+                            scale: 2.0,
+                            ticks: 120
+                        },
+                        {
+                            type: "Cold",
+                            scale: 2.0,
+                            ticks: 120
+                        },
+                        {
+                            type: "Energy",
+                            scale: 2.0,
+                            ticks: 120
+                        },
+                        {
+                            type: "Negative",
+                            scale: 2.0,
+                            ticks: 120
+                        }
+                    ]
+                },
+                buffDuration: 240.0
+            }
         },
         {
-                    "name": "Disruption Field",
-                    "available": 7,
-                    "maxSlots": 6,
-                    "allowedEnhancements": [
-                                "EnduranceReduction",
-                                "Recharge"
-                    ],
-                    "tier": 3,
-                    "effects": {
-                                "accuracy": 1.0,
-                                "range": 70.0,
-                                "recharge": 8.0,
-                                "endurance": 0.26,
-                                "cast": 2.7,
-                                "buffDuration": 0.75
-                    }
+            name: "Sonic Cage",
+            available: 5,
+            tier: 3,
+            maxSlots: 6,
+            allowedEnhancements: ["EnduranceReduction", "Range", "Recharge", "Accuracy"],
+            allowedSetCategories: [],
+            description: "Encases the target in an impenetrable field of sonic waves. The target cannot attack or be attacked.<br><br><color #fcfc95>Recharge: Slow.</color>",
+            shortHelp: "Ranged, Foe Capture (Special)",
+            icon: "sonicdebuff_hold.png",
+            powerType: "Click",
+            targetType: "Foe (Alive)",
+            effectArea: "SingleTarget",
+            effects: {
+                accuracy: 1.4,
+                range: 80.0,
+                recharge: 60.0,
+                endurance: 12.48,
+                cast: 1.67,
+                buffDuration: 30.0
+            }
         },
         {
-                    "name": "Sonic Dispersion",
-                    "available": 11,
-                    "maxSlots": 6,
-                    "allowedEnhancements": [
-                                "EnduranceReduction",
-                                "Recharge"
-                    ],
-                    "tier": 4,
-                    "effects": {
-                                "accuracy": 1.0,
-                                "recharge": 15.0,
-                                "endurance": 1.04,
-                                "cast": 2.03,
-                                "damage": {
-                                            "scale": 1.5
-                                },
-                                "dotDamage": 1.5,
-                                "dotTicks": 1,
-                                "buffDuration": 2.25
-                    }
+            name: "Disruption Field",
+            available: 7,
+            tier: 3,
+            maxSlots: 6,
+            allowedEnhancements: ["EnduranceReduction", "Recharge"],
+            allowedSetCategories: [],
+            description: "You set up a constant wave of sonic energy around an ally, weakening the Damage Resistance of all nearby foes.<br><br><color #fcfc95>Recharge: Moderate.</color>",
+            shortHelp: "Toggle: Ranged (Target Ally AoE), Foe -Res",
+            icon: "sonicdebuff_teamdebuffdamres.png",
+            powerType: "Toggle",
+            targetType: "Ally (Alive)",
+            effectArea: "AoE",
+            maxTargets: 16,
+            effects: {
+                accuracy: 1.0,
+                range: 70.0,
+                recharge: 8.0,
+                endurance: 0.26,
+                cast: 2.7,
+                buffDuration: 0.75
+            }
         },
         {
-                    "name": "Sonic Repulsion",
-                    "available": 17,
-                    "maxSlots": 6,
-                    "allowedEnhancements": [
-                                "EnduranceReduction",
-                                "Recharge",
-                                "Accuracy"
-                    ],
-                    "tier": 4,
-                    "effects": {
-                                "accuracy": 1.0,
-                                "range": 70.0,
-                                "recharge": 8.0,
-                                "endurance": 0.325,
-                                "cast": 2.33,
-                                "buffDuration": 0.5
-                    }
+            name: "Sonic Dispersion",
+            available: 11,
+            tier: 4,
+            maxSlots: 6,
+            allowedEnhancements: ["EnduranceReduction", "Recharge"],
+            allowedSetCategories: ["Resist Damage"],
+            description: "You create a large field of sonic waves, protecting all allies inside. The Sonic Dispersion gives all allies within increased Resistance against all damage except Psionic. The Sonic Bubble also protects allies from Immobilization, Disorient, and Hold effects.<br><br><color #fcfc95>Recharge: Slow.</color>",
+            shortHelp: "Toggle: PBAoE, Ally +Res(All DMG except Psionic, Hold, Immobilize, Disorient)",
+            icon: "sonicdebuff_buffdamageres.png",
+            powerType: "Toggle",
+            targetType: "Self",
+            effectArea: "AoE",
+            maxTargets: 255,
+            effects: {
+                accuracy: 1.0,
+                recharge: 15.0,
+                endurance: 1.04,
+                cast: 2.03,
+                dotDamage: {
+                    type: "Psionic",
+                    scale: 1.5,
+                    ticks: 1
+                },
+                buffDuration: 2.25,
+                stun: 1.0,
+                stunDuration: 2.25
+            }
         },
         {
-                    "name": "Clarity",
-                    "available": 21,
-                    "maxSlots": 6,
-                    "allowedEnhancements": [
-                                "EnduranceReduction",
-                                "Range",
-                                "Recharge"
-                    ],
-                    "tier": 5,
-                    "effects": {
-                                "accuracy": 1.0,
-                                "range": 70.0,
-                                "recharge": 4.0,
-                                "endurance": 5.2,
-                                "cast": 1.5,
-                                "buffDuration": 90.0
-                    }
+            name: "Sonic Repulsion",
+            available: 17,
+            tier: 4,
+            maxSlots: 6,
+            allowedEnhancements: ["EnduranceReduction", "Recharge", "Accuracy"],
+            allowedSetCategories: ["Knockback"],
+            description: "You create a powerful sonic resonance around an ally, repelling all foes nearby. You will lose endurance for each target repelled.<br><br><color #fcfc95>Recharge: Moderate.</color>",
+            shortHelp: "Toggle: Ranged (Target Ally AoE), Foe Knockback",
+            icon: "sonicdebuff_teamknockback.png",
+            powerType: "Toggle",
+            targetType: "Leaguemate (Alive)",
+            effectArea: "AoE",
+            maxTargets: 16,
+            effects: {
+                accuracy: 1.0,
+                range: 70.0,
+                recharge: 8.0,
+                endurance: 0.325,
+                cast: 2.33,
+                buffDuration: 0.5
+            }
         },
         {
-                    "name": "Liquefy",
-                    "available": 25,
-                    "maxSlots": 6,
-                    "allowedEnhancements": [
-                                "Hold",
-                                "EnduranceReduction",
-                                "Range",
-                                "Recharge",
-                                "Damage",
-                                "Accuracy"
-                    ],
-                    "tier": 5,
-                    "effects": {
-                                "accuracy": 1.0,
-                                "range": 60.0,
-                                "recharge": 150.0,
-                                "endurance": 23.4,
-                                "cast": 2.67,
-                                "buffDuration": 30.0
-                    }
+            name: "Clarity",
+            available: 21,
+            tier: 5,
+            maxSlots: 6,
+            allowedEnhancements: ["EnduranceReduction", "Range", "Recharge"],
+            allowedSetCategories: [],
+            description: "By bouncing a carefully pitched sound wave off an ally's ear drum, you can free them from any Disorient, Hold, Sleep, Confusion, Fear, or Immobilize effects, and leave them resistant to such effects for a good while. Protection will improve with multiple applications and as you advance in level. Clarity also provides your ally enhanced perception.<br><br><color #fcfc95>Recharge: Fast.</color>",
+            shortHelp: "Ally +Res(Disorient, Hold, Sleep, Immobilize, Terrorize, Confusion), +Perception",
+            icon: "sonicdebuff_dispel.png",
+            powerType: "Click",
+            targetType: "Ally (Alive)",
+            effectArea: "SingleTarget",
+            effects: {
+                accuracy: 1.0,
+                range: 70.0,
+                recharge: 4.0,
+                endurance: 5.2,
+                cast: 1.5,
+                stun: 1.0,
+                stunDuration: 90.0,
+                buffDuration: 90.0
+            }
+        },
+        {
+            name: "Liquefy",
+            available: 25,
+            tier: 5,
+            maxSlots: 6,
+            allowedEnhancements: ["Hold", "EnduranceReduction", "Range", "Recharge", "Damage", "Accuracy"],
+            allowedSetCategories: ["Accurate Defense Debuff", "Accurate To-Hit Debuff", "Defender Archetype Sets", "Defense Debuff", "Holds", "Ranged AoE Damage", "To Hit Debuff", "Universal Damage Sets"],
+            description: "You unleash a barrage of sonic waves on the Earth itself, generating a powerful, localized earthquake. The impact of the sonic shockwave may Hold some foes and deal some minor damage. Most foes that pass through the location will fall down. The violent shaking also reduces their chance to hit and Defense.<br><br><color #fcfc95>Recharge: Very Long.</color>",
+            shortHelp: "Ranged (Location AoE), Minor DMG(Smashing/Energy), Foe Hold, Knockdown, -To Hit, -DEF",
+            icon: "sonicdebuff_dropknockback.png",
+            powerType: "Click",
+            targetType: "Location",
+            effectArea: "Location",
+            effects: {
+                accuracy: 1.0,
+                range: 60.0,
+                recharge: 150.0,
+                endurance: 23.4,
+                cast: 2.67,
+                buffDuration: 30.0
+            }
         }
     ]
 };
+
+// Register to POWERSETS
+if (typeof POWERSETS !== 'undefined') {
+    POWERSETS['sonic-debuff'] = SONIC_DEBUFF_POWERSET;
+} else if (typeof window !== 'undefined') {
+    window.SONIC_DEBUFF_POWERSET = SONIC_DEBUFF_POWERSET;
+}
