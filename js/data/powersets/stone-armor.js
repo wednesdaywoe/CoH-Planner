@@ -29,21 +29,8 @@ const STONE_ARMOR_POWERSET = {
                 cast: 0.73,
                 buffDuration: 0.75,
                 defenseBuff: 0.4
-            }
-        },
-        {
-            name: "Stone Armor",
-            available: 0,
-            tier: 1,
-            maxSlots: 6,
-            allowedEnhancements: ["Damage", "Accuracy", "Recharge", "EnduranceReduction"],
-            allowedSetCategories: [],
-            description: "You can transform your skin into various forms of rock and stone. Stone Armor is one of the few Scrapper Defensive Power Sets that offers defense to Psionics.",
-            shortHelp: "Stone Armor",
-            icon: "stone_armor_set.png"
-        },
-        {
-            name: "Stone Skin",
+            },
+        {name: "Stone Skin",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -63,10 +50,8 @@ const STONE_ARMOR_POWERSET = {
                     ticks: 5
                 },
                 buffDuration: 10.25
-            }
-        },
-        {
-            name: "Earth's Embrace",
+            },
+        {name: "Earth's Embrace",
             available: 3,
             tier: 2,
             maxSlots: 6,
@@ -89,10 +74,8 @@ const STONE_ARMOR_POWERSET = {
                     ticks: 30
                 },
                 buffDuration: 60.0
-            }
-        },
-        {
-            name: "Mud Pots",
+            },
+        {name: "Mud Pots",
             available: 9,
             tier: 3,
             maxSlots: 6,
@@ -115,10 +98,8 @@ const STONE_ARMOR_POWERSET = {
                     scale: 0.18
                 },
                 buffDuration: 5.0
-            }
-        },
-        {
-            name: "Rooted",
+            },
+        {name: "Rooted",
             available: 15,
             tier: 4,
             maxSlots: 6,
@@ -140,10 +121,8 @@ const STONE_ARMOR_POWERSET = {
                 stun: 1.0,
                 stunDuration: 0.75,
                 tohitBuff: 0.3
-            }
-        },
-        {
-            name: "Crystal Armor",
+            },
+        {name: "Crystal Armor",
             available: 19,
             tier: 4,
             maxSlots: 6,
@@ -162,10 +141,8 @@ const STONE_ARMOR_POWERSET = {
                 cast: 1.0,
                 buffDuration: 0.75,
                 defenseBuff: 0.4
-            }
-        },
-        {
-            name: "Minerals",
+            },
+        {name: "Minerals",
             available: 23,
             tier: 5,
             maxSlots: 6,
@@ -183,10 +160,8 @@ const STONE_ARMOR_POWERSET = {
                 endurance: 0.104,
                 cast: 0.73,
                 buffDuration: 0.75
-            }
-        },
-        {
-            name: "Brimstone Armor",
+            },
+        {name: "Brimstone Armor",
             available: 27,
             tier: 5,
             maxSlots: 6,
@@ -204,10 +179,8 @@ const STONE_ARMOR_POWERSET = {
                 endurance: 0.104,
                 cast: 0.73,
                 buffDuration: 0.75
-            }
-        },
-        {
-            name: "Geode",
+            },
+        {name: "Geode",
             available: 29,
             tier: 5,
             maxSlots: 6,

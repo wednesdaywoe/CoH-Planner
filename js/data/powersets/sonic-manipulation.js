@@ -9,19 +9,7 @@ const SONIC_MANIPULATION_POWERSET = {
     description: "Sonic Manipulation powerset",
     icon: "sonic-manipulation_set.png",
     powers: [
-        {
-            name: "Sonic Manipulation",
-            available: 0,
-            tier: 1,
-            maxSlots: 6,
-            allowedEnhancements: ["Damage", "Accuracy", "Recharge", "EnduranceReduction"],
-            allowedSetCategories: [],
-            description: "You have the ability to control sound in several fashions. You can create semi-solid barriers, set up waves which weaken or strengthen a target, as well as inflicing devastating close range sonic attacks that can cause Migraines that hold foes for a short hold. This chance can be dramatically increased by using Sound Booster.",
-            shortHelp: "Sonic Manipulation",
-            icon: "sonic_manipulation_set.png"
-        },
-        {
-            name: "Sonic Thrust",
+        {name: "Sonic Thrust",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -43,20 +31,16 @@ const SONIC_MANIPULATION_POWERSET = {
                     types: [
                         {
                             type: "Smashing",
-                            scale: 0.8061
-                        },
-                        {
-                            type: "Energy",
+                            scale: 0.8061},
+        {type: "Energy",
                             scale: 0.8061
                         }
                     ],
                     scale: 1.6122
                 },
                 buffDuration: 2.0
-            }
-        },
-        {
-            name: "Strident Echo",
+            },
+        {name: "Strident Echo",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -79,20 +63,16 @@ const SONIC_MANIPULATION_POWERSET = {
                         {
                             type: "Smashing",
                             scale: 0.34409999999999996,
-                            ticks: 5
-                        },
-                        {
-                            type: "Energy",
+                            ticks: 5},
+        {type: "Energy",
                             scale: 0.34409999999999996,
                             ticks: 5
                         }
                     ]
                 },
                 buffDuration: 2.1
-            }
-        },
-        {
-            name: "Echo Chamber",
+            },
+        {name: "Echo Chamber",
             available: 3,
             tier: 2,
             maxSlots: 6,
@@ -114,10 +94,8 @@ const SONIC_MANIPULATION_POWERSET = {
                     type: "Energy",
                     scale: 2.729
                 }
-            }
-        },
-        {
-            name: "Sound Booster",
+            },
+        {name: "Sound Booster",
             available: 9,
             tier: 3,
             maxSlots: 6,
@@ -138,10 +116,8 @@ const SONIC_MANIPULATION_POWERSET = {
                 buffDuration: 10.0,
                 stun: 1.0,
                 stunDuration: 10.0
-            }
-        },
-        {
-            name: "Deafening Wave",
+            },
+        {name: "Deafening Wave",
             available: 15,
             tier: 4,
             maxSlots: 6,
@@ -163,19 +139,15 @@ const SONIC_MANIPULATION_POWERSET = {
                     types: [
                         {
                             type: "Smashing",
-                            scale: 0.9509
-                        },
-                        {
-                            type: "Energy",
+                            scale: 0.9509},
+        {type: "Energy",
                             scale: 0.9509
                         }
                     ],
                     scale: 1.9018
                 }
-            }
-        },
-        {
-            name: "Sound Barrier",
+            },
+        {name: "Sound Barrier",
             available: 19,
             tier: 4,
             maxSlots: 6,
@@ -196,20 +168,16 @@ const SONIC_MANIPULATION_POWERSET = {
                         {
                             type: "Smashing",
                             scale: 1.0,
-                            ticks: 1
-                        },
-                        {
-                            type: "Energy",
+                            ticks: 1},
+        {type: "Energy",
                             scale: 1.0,
                             ticks: 1
                         }
                     ]
                 },
                 buffDuration: 2.25
-            }
-        },
-        {
-            name: "Disruption Aura",
+            },
+        {name: "Disruption Aura",
             available: 23,
             tier: 5,
             maxSlots: 6,
@@ -228,10 +196,8 @@ const SONIC_MANIPULATION_POWERSET = {
                 endurance: 1.04,
                 cast: 1.97,
                 buffDuration: 2.25
-            }
-        },
-        {
-            name: "Sound Cannon",
+            },
+        {name: "Sound Cannon",
             available: 27,
             tier: 5,
             maxSlots: 6,
@@ -252,10 +218,8 @@ const SONIC_MANIPULATION_POWERSET = {
                 endurance: 20.18,
                 cast: 1.5,
                 stun: 3.0
-            }
-        },
-        {
-            name: "Earsplitter",
+            },
+        {name: "Earsplitter",
             available: 29,
             tier: 5,
             maxSlots: 6,
@@ -277,10 +241,8 @@ const SONIC_MANIPULATION_POWERSET = {
                     types: [
                         {
                             type: "Smashing",
-                            scale: 3.0695
-                        },
-                        {
-                            type: "Energy",
+                            scale: 3.0695},
+        {type: "Energy",
                             scale: 3.0695
                         }
                     ],

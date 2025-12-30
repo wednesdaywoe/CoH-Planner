@@ -33,20 +33,16 @@ const SONIC_ATTACK_POWERSET = {
                         {
                             type: "Energy",
                             scale: 0.4658,
-                            ticks: 4
-                        },
-                        {
-                            type: "Smashing",
+                            ticks: 4},
+        {type: "Smashing",
                             scale: 0.132,
                             ticks: 4
                         }
                     ]
                 },
                 buffDuration: 1.05
-            }
-        },
-        {
-            name: "Shriek",
+            },
+        {name: "Shriek",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -68,31 +64,16 @@ const SONIC_ATTACK_POWERSET = {
                     types: [
                         {
                             type: "Energy",
-                            scale: 1.64
-                        },
-                        {
-                            type: "Smashing",
+                            scale: 1.64},
+        {type: "Smashing",
                             scale: 0.42
                         }
                     ],
                     scale: 2.06
                 },
                 buffDuration: 8.0
-            }
-        },
-        {
-            name: "Sonic Attack",
-            available: 0,
-            tier: 1,
-            maxSlots: 6,
-            allowedEnhancements: ["Damage", "Accuracy", "Recharge", "EnduranceReduction"],
-            allowedSetCategories: [],
-            description: "Sonic Attack lets you use the power of sound waves to damage and weaken your foes.",
-            shortHelp: "Sonic Attack",
-            icon: "sonic_attack_set.png"
-        },
-        {
-            name: "Howl",
+            },
+        {name: "Howl",
             available: 1,
             tier: 1,
             maxSlots: 6,
@@ -116,20 +97,16 @@ const SONIC_ATTACK_POWERSET = {
                     types: [
                         {
                             type: "Energy",
-                            scale: 2.9257999999999997
-                        },
-                        {
-                            type: "Smashing",
+                            scale: 2.9257999999999997},
+        {type: "Smashing",
                             scale: 0.3347
                         }
                     ],
                     scale: 3.2604999999999995
                 },
                 buffDuration: 8.0
-            }
-        },
-        {
-            name: "Shockwave",
+            },
+        {name: "Shockwave",
             available: 5,
             tier: 3,
             maxSlots: 6,
@@ -153,19 +130,15 @@ const SONIC_ATTACK_POWERSET = {
                     types: [
                         {
                             type: "Smashing",
-                            scale: 0.8426
-                        },
-                        {
-                            type: "Energy",
+                            scale: 0.8426},
+        {type: "Energy",
                             scale: 0.8426
                         }
                     ],
                     scale: 1.6852
                 }
-            }
-        },
-        {
-            name: "Shout",
+            },
+        {name: "Shout",
             available: 7,
             tier: 3,
             maxSlots: 6,
@@ -187,20 +160,16 @@ const SONIC_ATTACK_POWERSET = {
                     types: [
                         {
                             type: "Smashing",
-                            scale: 2.08
-                        },
-                        {
-                            type: "Energy",
+                            scale: 2.08},
+        {type: "Energy",
                             scale: 2.08
                         }
                     ],
                     scale: 4.16
                 },
                 buffDuration: 10.0
-            }
-        },
-        {
-            name: "Amplify",
+            },
+        {name: "Amplify",
             available: 11,
             tier: 4,
             maxSlots: 6,
@@ -219,10 +188,8 @@ const SONIC_ATTACK_POWERSET = {
                 cast: 1.17,
                 tohitBuff: 5.0,
                 buffDuration: 10.0
-            }
-        },
-        {
-            name: "Sirens Song",
+            },
+        {name: "Sirens Song",
             available: 17,
             tier: 4,
             maxSlots: 6,
@@ -246,10 +213,8 @@ const SONIC_ATTACK_POWERSET = {
                     type: "Energy",
                     scale: 0.9546
                 }
-            }
-        },
-        {
-            name: "Screech",
+            },
+        {name: "Screech",
             available: 21,
             tier: 5,
             maxSlots: 6,
@@ -271,10 +236,8 @@ const SONIC_ATTACK_POWERSET = {
                     types: [
                         {
                             type: "Smashing",
-                            scale: 2.105
-                        },
-                        {
-                            type: "Energy",
+                            scale: 2.105},
+        {type: "Energy",
                             scale: 2.105
                         }
                     ],
@@ -282,10 +245,8 @@ const SONIC_ATTACK_POWERSET = {
                 },
                 stun: 3.0,
                 buffDuration: 15.0
-            }
-        },
-        {
-            name: "Dreadful Wail",
+            },
+        {name: "Dreadful Wail",
             available: 25,
             tier: 5,
             maxSlots: 6,
@@ -307,10 +268,8 @@ const SONIC_ATTACK_POWERSET = {
                     types: [
                         {
                             type: "Energy",
-                            scale: 3.4065000000000003
-                        },
-                        {
-                            type: "Smashing",
+                            scale: 3.4065000000000003},
+        {type: "Smashing",
                             scale: 2.0
                         }
                     ],

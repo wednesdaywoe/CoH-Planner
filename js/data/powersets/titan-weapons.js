@@ -28,10 +28,8 @@ const TITAN_WEAPONS_POWERSET = {
                 recharge: 8.0,
                 endurance: 8.7838,
                 cast: 2.0
-            }
-        },
-        {
-            name: "Defensive Sweep",
+            },
+        {name: "Defensive Sweep",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -51,21 +49,8 @@ const TITAN_WEAPONS_POWERSET = {
                 recharge: 4.0,
                 endurance: 5.356,
                 cast: 2.2
-            }
-        },
-        {
-            name: "Titan Weapons",
-            available: 0,
-            tier: 1,
-            maxSlots: 6,
-            allowedEnhancements: ["Damage", "Accuracy", "Recharge", "EnduranceReduction"],
-            allowedSetCategories: [],
-            description: "You wield an over-sized weapon of some sort; a gigantic sword, mace or axe or possibly even a railroad crossing sign. The weapon's sheer mass gives it great destructive power, and your immense strength and skill allow you to use it as a devastating weapon. Titan Weapons as a set, has exceptional area of effect capability, while retaining a strong single target ability. Certain powers can only be used as follow up attacks and are grayed out when first entering combat, while others allow you to build up momentum and accelerate your attack speed for a few moments. Momentum is gained by using a Titan Weapon power when you don't already have Momentum. This effect lasts for 5 seconds. Once Momentum wears off, another Titan Weapon attack must be used to grant Momentum again.",
-            shortHelp: "Titan Weapons",
-            icon: "titan_weapons_set.png"
-        },
-        {
-            name: "Titan Sweep",
+            },
+        {name: "Titan Sweep",
             available: 1,
             tier: 1,
             maxSlots: 6,
@@ -85,10 +70,8 @@ const TITAN_WEAPONS_POWERSET = {
                 recharge: 10.0,
                 endurance: 10.4982,
                 cast: 2.43
-            }
-        },
-        {
-            name: "Follow Through",
+            },
+        {name: "Follow Through",
             available: 5,
             tier: 3,
             maxSlots: 6,
@@ -110,20 +93,16 @@ const TITAN_WEAPONS_POWERSET = {
                     types: [
                         {
                             type: "Smashing",
-                            scale: 8.870899999999999
-                        },
-                        {
-                            type: "Fire",
+                            scale: 8.870899999999999},
+        {type: "Fire",
                             scale: 0.9702
                         }
                     ],
                     scale: 9.841099999999999
                 },
                 stun: 3.0
-            }
-        },
-        {
-            name: "Build Momentum",
+            },
+        {name: "Build Momentum",
             available: 7,
             tier: 3,
             maxSlots: 6,
@@ -142,10 +121,8 @@ const TITAN_WEAPONS_POWERSET = {
                 cast: 1.17,
                 tohitBuff: 2.0,
                 buffDuration: 10.0
-            }
-        },
-        {
-            name: "Confront",
+            },
+        {name: "Confront",
             available: 11,
             tier: 4,
             maxSlots: 6,
@@ -163,10 +140,8 @@ const TITAN_WEAPONS_POWERSET = {
                 recharge: 3.0,
                 cast: 1.67,
                 buffDuration: 12.0
-            }
-        },
-        {
-            name: "Rend Armor",
+            },
+        {name: "Rend Armor",
             available: 17,
             tier: 4,
             maxSlots: 6,
@@ -184,10 +159,8 @@ const TITAN_WEAPONS_POWERSET = {
                 recharge: 16.0,
                 endurance: 15.6395,
                 cast: 2.3
-            }
-        },
-        {
-            name: "Whirling Smash",
+            },
+        {name: "Whirling Smash",
             available: 21,
             tier: 5,
             maxSlots: 6,
@@ -209,19 +182,15 @@ const TITAN_WEAPONS_POWERSET = {
                     types: [
                         {
                             type: "Smashing",
-                            scale: 4.448
-                        },
-                        {
-                            type: "Fire",
+                            scale: 4.448},
+        {type: "Fire",
                             scale: 0.468
                         }
                     ],
                     scale: 4.916
                 }
-            }
-        },
-        {
-            name: "Arc of Destruction",
+            },
+        {name: "Arc of Destruction",
             available: 25,
             tier: 5,
             maxSlots: 6,

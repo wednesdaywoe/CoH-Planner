@@ -29,10 +29,8 @@ const SHIELD_DEFENSE_POWERSET = {
                 cast: 1.5,
                 buffDuration: 0.75,
                 defenseBuff: 0.4
-            }
-        },
-        {
-            name: "Deflection",
+            },
+        {name: "Deflection",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -50,21 +48,8 @@ const SHIELD_DEFENSE_POWERSET = {
                 endurance: 0.104,
                 cast: 1.5,
                 buffDuration: 0.75
-            }
-        },
-        {
-            name: "Shield Defense",
-            available: 0,
-            tier: 1,
-            maxSlots: 6,
-            allowedEnhancements: ["Damage", "Accuracy", "Recharge", "EnduranceReduction"],
-            allowedSetCategories: [],
-            description: "Your mastery over the shield protects you from all forms of attacks in the form of defense as well as some moderate damage resistance to most types of damage. Your training with the shield enables you to protect your nearby allies boosting their defenses.",
-            shortHelp: "Shield Defense",
-            icon: "shield_defense_set.png"
-        },
-        {
-            name: "True Grit",
+            },
+        {name: "True Grit",
             available: 3,
             tier: 2,
             maxSlots: 6,
@@ -83,35 +68,25 @@ const SHIELD_DEFENSE_POWERSET = {
                         {
                             type: "Fire",
                             scale: 1.5,
-                            ticks: 5
-                        },
-                        {
-                            type: "Cold",
+                            ticks: 5},
+        {type: "Cold",
                             scale: 1.5,
-                            ticks: 5
-                        },
-                        {
-                            type: "Energy",
+                            ticks: 5},
+        {type: "Energy",
                             scale: 1.5,
-                            ticks: 5
-                        },
-                        {
-                            type: "Negative",
+                            ticks: 5},
+        {type: "Negative",
                             scale: 1.5,
-                            ticks: 5
-                        },
-                        {
-                            type: "Toxic",
+                            ticks: 5},
+        {type: "Toxic",
                             scale: 1.5,
                             ticks: 5
                         }
                     ]
                 },
                 buffDuration: 10.25
-            }
-        },
-        {
-            name: "Active Defense",
+            },
+        {name: "Active Defense",
             available: 9,
             tier: 3,
             maxSlots: 6,
@@ -133,10 +108,8 @@ const SHIELD_DEFENSE_POWERSET = {
                 buffDuration: 120.0,
                 tohitBuff: 0.3,
                 defenseBuff: 0.5
-            }
-        },
-        {
-            name: "Against All Odds",
+            },
+        {name: "Against All Odds",
             available: 15,
             tier: 4,
             maxSlots: 6,
@@ -155,10 +128,8 @@ const SHIELD_DEFENSE_POWERSET = {
                 endurance: 0.208,
                 cast: 2.5,
                 buffDuration: 1.25
-            }
-        },
-        {
-            name: "Phalanx Fighting",
+            },
+        {name: "Phalanx Fighting",
             available: 19,
             tier: 4,
             maxSlots: 6,
@@ -174,10 +145,8 @@ const SHIELD_DEFENSE_POWERSET = {
             effects: {
                 accuracy: 1.0,
                 buffDuration: 1.0
-            }
-        },
-        {
-            name: "Grant Cover",
+            },
+        {name: "Grant Cover",
             available: 23,
             tier: 5,
             maxSlots: 6,
@@ -197,10 +166,8 @@ const SHIELD_DEFENSE_POWERSET = {
                 cast: 2.5,
                 buffDuration: 2.25,
                 defenseBuff: 0.4
-            }
-        },
-        {
-            name: "Shield Charge",
+            },
+        {name: "Shield Charge",
             available: 27,
             tier: 5,
             maxSlots: 6,
@@ -219,10 +186,8 @@ const SHIELD_DEFENSE_POWERSET = {
                 endurance: 13.52,
                 cast: 1.5,
                 buffDuration: 4.0
-            }
-        },
-        {
-            name: "One with the Shield",
+            },
+        {name: "One with the Shield",
             available: 29,
             tier: 5,
             maxSlots: 6,
@@ -244,35 +209,23 @@ const SHIELD_DEFENSE_POWERSET = {
                         {
                             type: "Smashing",
                             scale: 3.0,
-                            ticks: 60
-                        },
-                        {
-                            type: "Lethal",
+                            ticks: 60},
+        {type: "Lethal",
                             scale: 3.0,
-                            ticks: 60
-                        },
-                        {
-                            type: "Fire",
+                            ticks: 60},
+        {type: "Fire",
                             scale: 1.5,
-                            ticks: 60
-                        },
-                        {
-                            type: "Cold",
+                            ticks: 60},
+        {type: "Cold",
                             scale: 1.5,
-                            ticks: 60
-                        },
-                        {
-                            type: "Energy",
+                            ticks: 60},
+        {type: "Energy",
                             scale: 1.5,
-                            ticks: 60
-                        },
-                        {
-                            type: "Negative",
+                            ticks: 60},
+        {type: "Negative",
                             scale: 1.5,
-                            ticks: 60
-                        },
-                        {
-                            type: "Toxic",
+                            ticks: 60},
+        {type: "Toxic",
                             scale: 1.5,
                             ticks: 60
                         }

@@ -29,10 +29,8 @@ const TRICK_ARROW_POWERSET = {
                 endurance: 5.2,
                 cast: 1.0,
                 buffDuration: 30.0
-            }
-        },
-        {
-            name: "Flash Arrow",
+            },
+        {name: "Flash Arrow",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -53,21 +51,8 @@ const TRICK_ARROW_POWERSET = {
                 cast: 1.0,
                 tohitDebuff: 0.5,
                 buffDuration: 60.0
-            }
-        },
-        {
-            name: "Trick Arrow",
-            available: 0,
-            tier: 1,
-            maxSlots: 6,
-            allowedEnhancements: ["Damage", "Accuracy", "Recharge", "EnduranceReduction"],
-            allowedSetCategories: [],
-            description: "Trick Arrows are tipped with an odd variety of payloads, which if used strategically, can dramatically alter a battle site.",
-            shortHelp: "Trick Arrow",
-            icon: "trick_arrow_set.png"
-        },
-        {
-            name: "Glue Arrow",
+            },
+        {name: "Glue Arrow",
             available: 1,
             tier: 1,
             maxSlots: 6,
@@ -87,10 +72,8 @@ const TRICK_ARROW_POWERSET = {
                 endurance: 7.8,
                 cast: 1.16,
                 buffDuration: 60.0
-            }
-        },
-        {
-            name: "Ice Arrow",
+            },
+        {name: "Ice Arrow",
             available: 5,
             tier: 3,
             maxSlots: 6,
@@ -109,10 +92,8 @@ const TRICK_ARROW_POWERSET = {
                 endurance: 8.528,
                 cast: 1.67,
                 buffDuration: 10.0
-            }
-        },
-        {
-            name: "Poison Gas Arrow",
+            },
+        {name: "Poison Gas Arrow",
             available: 7,
             tier: 3,
             maxSlots: 6,
@@ -132,10 +113,8 @@ const TRICK_ARROW_POWERSET = {
                 endurance: 10.4,
                 cast: 1.16,
                 buffDuration: 20.0
-            }
-        },
-        {
-            name: "Acid Arrow",
+            },
+        {name: "Acid Arrow",
             available: 11,
             tier: 4,
             maxSlots: 6,
@@ -161,10 +140,8 @@ const TRICK_ARROW_POWERSET = {
                 },
                 buffDuration: 20.0,
                 defenseDebuff: 2.0
-            }
-        },
-        {
-            name: "Disruption Arrow",
+            },
+        {name: "Disruption Arrow",
             available: 17,
             tier: 4,
             maxSlots: 6,
@@ -183,10 +160,8 @@ const TRICK_ARROW_POWERSET = {
                 endurance: 14.56,
                 cast: 1.16,
                 buffDuration: 45.0
-            }
-        },
-        {
-            name: "Oil Slick Arrow",
+            },
+        {name: "Oil Slick Arrow",
             available: 21,
             tier: 5,
             maxSlots: 6,
@@ -205,10 +180,8 @@ const TRICK_ARROW_POWERSET = {
                 endurance: 15.6,
                 cast: 1.16,
                 buffDuration: 30.0
-            }
-        },
-        {
-            name: "EMP Arrow",
+            },
+        {name: "EMP Arrow",
             available: 25,
             tier: 5,
             maxSlots: 6,

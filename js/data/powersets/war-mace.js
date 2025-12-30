@@ -32,20 +32,16 @@ const WAR_MACE_POWERSET = {
                     types: [
                         {
                             type: "Smashing",
-                            scale: 5.6988
-                        },
-                        {
-                            type: "Fire",
+                            scale: 5.6988},
+        {type: "Fire",
                             scale: 0.45
                         }
                     ],
                     scale: 6.1488000000000005
                 },
                 stun: 2.0
-            }
-        },
-        {
-            name: "Pulverize",
+            },
+        {name: "Pulverize",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -67,31 +63,16 @@ const WAR_MACE_POWERSET = {
                     types: [
                         {
                             type: "Smashing",
-                            scale: 8.1238
-                        },
-                        {
-                            type: "Fire",
+                            scale: 8.1238},
+        {type: "Fire",
                             scale: 0.738
                         }
                     ],
                     scale: 8.861799999999999
                 },
                 stun: 2.0
-            }
-        },
-        {
-            name: "War Mace",
-            available: 0,
-            tier: 1,
-            maxSlots: 6,
-            allowedEnhancements: ["Damage", "Accuracy", "Recharge", "EnduranceReduction"],
-            allowedSetCategories: [],
-            description: "You can wield a Medieval Mace and master a variety of powerful Smashing attacks. Attack speeds are good, and the weight of the Mace has good Disorienting capabilities. The sheer weight of this weapon gives it a bonus to hit.",
-            shortHelp: "War Mace",
-            icon: "war_mace_set.png"
-        },
-        {
-            name: "Jawbreaker",
+            },
+        {name: "Jawbreaker",
             available: 1,
             tier: 1,
             maxSlots: 6,
@@ -113,19 +94,15 @@ const WAR_MACE_POWERSET = {
                     types: [
                         {
                             type: "Smashing",
-                            scale: 9.6466
-                        },
-                        {
-                            type: "Fire",
+                            scale: 9.6466},
+        {type: "Fire",
                             scale: 0.882
                         }
                     ],
                     scale: 10.528599999999999
                 }
-            }
-        },
-        {
-            name: "Build Up",
+            },
+        {name: "Build Up",
             available: 5,
             tier: 3,
             maxSlots: 6,
@@ -144,10 +121,8 @@ const WAR_MACE_POWERSET = {
                 cast: 1.17,
                 tohitBuff: 2.0,
                 buffDuration: 10.0
-            }
-        },
-        {
-            name: "Clobber",
+            },
+        {name: "Clobber",
             available: 7,
             tier: 3,
             maxSlots: 6,
@@ -169,20 +144,16 @@ const WAR_MACE_POWERSET = {
                     types: [
                         {
                             type: "Smashing",
-                            scale: 12.2008
-                        },
-                        {
-                            type: "Fire",
+                            scale: 12.2008},
+        {type: "Fire",
                             scale: 1.314
                         }
                     ],
                     scale: 13.5148
                 },
                 stun: 3.0
-            }
-        },
-        {
-            name: "Confront",
+            },
+        {name: "Confront",
             available: 11,
             tier: 4,
             maxSlots: 6,
@@ -200,10 +171,8 @@ const WAR_MACE_POWERSET = {
                 recharge: 3.0,
                 cast: 1.67,
                 buffDuration: 12.0
-            }
-        },
-        {
-            name: "Whirling Mace",
+            },
+        {name: "Whirling Mace",
             available: 17,
             tier: 4,
             maxSlots: 6,
@@ -225,20 +194,16 @@ const WAR_MACE_POWERSET = {
                     types: [
                         {
                             type: "Smashing",
-                            scale: 6.2860000000000005
-                        },
-                        {
-                            type: "Fire",
+                            scale: 6.2860000000000005},
+        {type: "Fire",
                             scale: 0.504
                         }
                     ],
                     scale: 6.790000000000001
                 },
                 stun: 2.0
-            }
-        },
-        {
-            name: "Shatter",
+            },
+        {name: "Shatter",
             available: 21,
             tier: 5,
             maxSlots: 6,
@@ -262,19 +227,15 @@ const WAR_MACE_POWERSET = {
                     types: [
                         {
                             type: "Smashing",
-                            scale: 11.0008
-                        },
-                        {
-                            type: "Fire",
+                            scale: 11.0008},
+        {type: "Fire",
                             scale: 1.026
                         }
                     ],
                     scale: 12.0268
                 }
-            }
-        },
-        {
-            name: "Crowd Control",
+            },
+        {name: "Crowd Control",
             available: 25,
             tier: 5,
             maxSlots: 6,
@@ -298,10 +259,8 @@ const WAR_MACE_POWERSET = {
                     types: [
                         {
                             type: "Smashing",
-                            scale: 7.862000000000001
-                        },
-                        {
-                            type: "Fire",
+                            scale: 7.862000000000001},
+        {type: "Fire",
                             scale: 0.7245
                         }
                     ],

@@ -34,10 +34,8 @@ const STORM_SUMMONING_POWERSET = {
                     type: "Smashing",
                     scale: 0.1
                 }
-            }
-        },
-        {
-            name: "O2 Boost",
+            },
+        {name: "O2 Boost",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -58,21 +56,8 @@ const STORM_SUMMONING_POWERSET = {
                 buffDuration: 60.0,
                 stun: 1.0,
                 stunDuration: 60.0
-            }
-        },
-        {
-            name: "Storm Summoning",
-            available: 0,
-            tier: 1,
-            maxSlots: 6,
-            allowedEnhancements: ["Damage", "Accuracy", "Recharge", "EnduranceReduction"],
-            allowedSetCategories: [],
-            description: "You can command the forces of nature! Storm Summoning allows you to control wind and weather to aid your allies and wreak havoc on your foes.",
-            shortHelp: "Storm Summoning",
-            icon: "storm_summoning_set.png"
-        },
-        {
-            name: "Snow Storm",
+            },
+        {name: "Snow Storm",
             available: 1,
             tier: 1,
             maxSlots: 6,
@@ -92,10 +77,8 @@ const STORM_SUMMONING_POWERSET = {
                 endurance: 0.26,
                 cast: 2.03,
                 buffDuration: 0.75
-            }
-        },
-        {
-            name: "Steamy Mist",
+            },
+        {name: "Steamy Mist",
             available: 5,
             tier: 3,
             maxSlots: 6,
@@ -114,10 +97,8 @@ const STORM_SUMMONING_POWERSET = {
                 endurance: 0.26,
                 cast: 1.87,
                 buffDuration: 0.75
-            }
-        },
-        {
-            name: "Freezing Rain",
+            },
+        {name: "Freezing Rain",
             available: 7,
             tier: 3,
             maxSlots: 6,
@@ -136,10 +117,8 @@ const STORM_SUMMONING_POWERSET = {
                 endurance: 18.2,
                 cast: 2.03,
                 buffDuration: 15.0
-            }
-        },
-        {
-            name: "Hurricane",
+            },
+        {name: "Hurricane",
             available: 11,
             tier: 4,
             maxSlots: 6,
@@ -159,10 +138,8 @@ const STORM_SUMMONING_POWERSET = {
                 cast: 2.03,
                 tohitDebuff: 3.0,
                 buffDuration: 10.0
-            }
-        },
-        {
-            name: "Thunder Clap",
+            },
+        {name: "Thunder Clap",
             available: 17,
             tier: 4,
             maxSlots: 6,
@@ -181,10 +158,8 @@ const STORM_SUMMONING_POWERSET = {
                 endurance: 10.4,
                 cast: 2.37,
                 stun: 2.0
-            }
-        },
-        {
-            name: "Tornado",
+            },
+        {name: "Tornado",
             available: 21,
             tier: 5,
             maxSlots: 6,
@@ -203,10 +178,8 @@ const STORM_SUMMONING_POWERSET = {
                 endurance: 20.8,
                 cast: 1.17,
                 buffDuration: 30.0
-            }
-        },
-        {
-            name: "Lightning Storm",
+            },
+        {name: "Lightning Storm",
             available: 25,
             tier: 5,
             maxSlots: 6,

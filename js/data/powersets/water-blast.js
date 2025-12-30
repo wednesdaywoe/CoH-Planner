@@ -32,10 +32,8 @@ const WATER_BLAST_POWERSET = {
                     types: [
                         {
                             type: "Cold",
-                            scale: 1.5451000000000001
-                        },
-                        {
-                            type: "Smashing",
+                            scale: 1.5451000000000001},
+        {type: "Smashing",
                             scale: 0.515
                         }
                     ],
@@ -43,10 +41,8 @@ const WATER_BLAST_POWERSET = {
                 },
                 defenseDebuff: 1.0,
                 buffDuration: 8.0
-            }
-        },
-        {
-            name: "Hydro Blast",
+            },
+        {name: "Hydro Blast",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -68,31 +64,16 @@ const WATER_BLAST_POWERSET = {
                     types: [
                         {
                             type: "Cold",
-                            scale: 2.4969
-                        },
-                        {
-                            type: "Smashing",
+                            scale: 2.4969},
+        {type: "Smashing",
                             scale: 0.8323
                         }
                     ],
                     scale: 3.3292
                 },
                 buffDuration: 10.0
-            }
-        },
-        {
-            name: "Water Blast",
-            available: 0,
-            tier: 1,
-            maxSlots: 6,
-            allowedEnhancements: ["Damage", "Accuracy", "Recharge", "EnduranceReduction"],
-            allowedSetCategories: [],
-            description: "Water Blast grants you command over the power of water. This can be used to weaken and crush your foes with all the power of a tidal wave. Some Water Blast powers allow the user to build Tidal Power, while others consume Tidal Power. You can have 3 stacks of Tidal Power on yourself at a time. Your Tidal Power can be released to strengthen your Water Burst, Water Jet, Dehydrate and Geyser powers. Using these powers will remove all of your Tidal Power.",
-            shortHelp: "Water Blast",
-            icon: "water_blast_set.png"
-        },
-        {
-            name: "Water Burst",
+            },
+        {name: "Water Burst",
             available: 1,
             tier: 1,
             maxSlots: 6,
@@ -115,20 +96,16 @@ const WATER_BLAST_POWERSET = {
                     types: [
                         {
                             type: "Cold",
-                            scale: 1.8634000000000002
-                        },
-                        {
-                            type: "Smashing",
+                            scale: 1.8634000000000002},
+        {type: "Smashing",
                             scale: 0.3982
                         }
                     ],
                     scale: 2.2616
                 },
                 buffDuration: 10.0
-            }
-        },
-        {
-            name: "Whirlpool",
+            },
+        {name: "Whirlpool",
             available: 5,
             tier: 3,
             maxSlots: 6,
@@ -147,10 +124,8 @@ const WATER_BLAST_POWERSET = {
                 endurance: 15.6,
                 cast: 2.03,
                 buffDuration: 15.0
-            }
-        },
-        {
-            name: "Tidal Forces",
+            },
+        {name: "Tidal Forces",
             available: 7,
             tier: 3,
             maxSlots: 6,
@@ -169,10 +144,8 @@ const WATER_BLAST_POWERSET = {
                 cast: 1.17,
                 tohitBuff: 5.0,
                 buffDuration: 10.0
-            }
-        },
-        {
-            name: "Dehydrate",
+            },
+        {name: "Dehydrate",
             available: 11,
             tier: 4,
             maxSlots: 6,
@@ -194,10 +167,8 @@ const WATER_BLAST_POWERSET = {
                     types: [
                         {
                             type: "Cold",
-                            scale: 2.2719
-                        },
-                        {
-                            type: "Smashing",
+                            scale: 2.2719},
+        {type: "Smashing",
                             scale: 0.7573
                         }
                     ],
@@ -210,10 +181,8 @@ const WATER_BLAST_POWERSET = {
                 },
                 buffDuration: 4.1,
                 defenseDebuff: 1.0
-            }
-        },
-        {
-            name: "Water Jet",
+            },
+        {name: "Water Jet",
             available: 17,
             tier: 4,
             maxSlots: 6,
@@ -231,10 +200,8 @@ const WATER_BLAST_POWERSET = {
                 recharge: 10.0,
                 endurance: 10.192,
                 cast: 1.43
-            }
-        },
-        {
-            name: "Steam Spray",
+            },
+        {name: "Steam Spray",
             available: 21,
             tier: 5,
             maxSlots: 6,
@@ -261,10 +228,8 @@ const WATER_BLAST_POWERSET = {
                 },
                 buffDuration: 0.6,
                 defenseDebuff: 1.0
-            }
-        },
-        {
-            name: "Geyser",
+            },
+        {name: "Geyser",
             available: 25,
             tier: 5,
             maxSlots: 6,
@@ -287,10 +252,8 @@ const WATER_BLAST_POWERSET = {
                     types: [
                         {
                             type: "Fire",
-                            scale: 4.1755
-                        },
-                        {
-                            type: "Smashing",
+                            scale: 4.1755},
+        {type: "Smashing",
                             scale: 0.8922
                         }
                     ],

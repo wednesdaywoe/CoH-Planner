@@ -34,21 +34,8 @@ const SEISMIC_BLAST_POWERSET = {
                 },
                 defenseDebuff: 0.5,
                 buffDuration: 3.0
-            }
-        },
-        {
-            name: "Seismic Blast",
-            available: 0,
-            tier: 1,
-            maxSlots: 6,
-            allowedEnhancements: ["Damage", "Accuracy", "Recharge", "EnduranceReduction"],
-            allowedSetCategories: [],
-            description: "You can manipulate earth and stone to defeat your foes. The crushing force of many Earth Powers can reduce a target's Defense. <br><br>Being of the Earth, you are the most powerful while on the ground. While grounded, your attacks increase Seismic Pressure. As your Seismic Pressure increases, your chance of triggering Seismic Shockwaves increases and the cooldown of other Seismic Blast attacks is slightly reduced. These Seismic Shockwaves will have the chance of knocking down foes and, while standing on the ground, empower some of your attacks; Rock Shards will have its area and target cap increased, Seismic Force will decrease the cooldown of all recharging Seismic Blast attacks by a moderate amount, and Stalagmite will deal a large amount of damage.",
-            shortHelp: "Seismic Blast",
-            icon: "archery_set.png"
-        },
-        {
-            name: "Seismic Shockwaves",
+            },
+        {name: "Seismic Shockwaves",
             available: 0,
             tier: 1,
             maxSlots: 0,
@@ -63,10 +50,8 @@ const SEISMIC_BLAST_POWERSET = {
             maxTargets: 1,
             effects: {
                 accuracy: 0.8
-            }
-        },
-        {
-            name: "Shatter",
+            },
+        {name: "Shatter",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -90,10 +75,8 @@ const SEISMIC_BLAST_POWERSET = {
                 },
                 defenseDebuff: 1.0,
                 buffDuration: 6.0
-            }
-        },
-        {
-            name: "Rock Shards",
+            },
+        {name: "Rock Shards",
             available: 1,
             tier: 1,
             maxSlots: 6,
@@ -113,10 +96,8 @@ const SEISMIC_BLAST_POWERSET = {
                 recharge: 8.0,
                 endurance: 8.528,
                 cast: 1.07
-            }
-        },
-        {
-            name: "Entomb",
+            },
+        {name: "Entomb",
             available: 5,
             tier: 3,
             maxSlots: 6,
@@ -140,10 +121,8 @@ const SEISMIC_BLAST_POWERSET = {
                 },
                 defenseDebuff: 1.0,
                 buffDuration: 12.0
-            }
-        },
-        {
-            name: "Seismic Force",
+            },
+        {name: "Seismic Force",
             available: 7,
             tier: 3,
             maxSlots: 6,
@@ -162,10 +141,8 @@ const SEISMIC_BLAST_POWERSET = {
                 cast: 1.17,
                 tohitBuff: 5.0,
                 buffDuration: 10.0
-            }
-        },
-        {
-            name: "Upthrust",
+            },
+        {name: "Upthrust",
             available: 11,
             tier: 4,
             maxSlots: 6,
@@ -190,10 +167,8 @@ const SEISMIC_BLAST_POWERSET = {
                 },
                 defenseDebuff: 0.7,
                 buffDuration: 16.0
-            }
-        },
-        {
-            name: "Tombstone",
+            },
+        {name: "Tombstone",
             available: 17,
             tier: 4,
             maxSlots: 6,
@@ -211,10 +186,8 @@ const SEISMIC_BLAST_POWERSET = {
                 recharge: 12.0,
                 endurance: 14.352,
                 cast: 1.67
-            }
-        },
-        {
-            name: "Stalagmite",
+            },
+        {name: "Stalagmite",
             available: 21,
             tier: 5,
             maxSlots: 6,
@@ -232,10 +205,8 @@ const SEISMIC_BLAST_POWERSET = {
                 recharge: 8.0,
                 endurance: 10.192,
                 cast: 1.0
-            }
-        },
-        {
-            name: "Meteor",
+            },
+        {name: "Meteor",
             available: 25,
             tier: 5,
             maxSlots: 6,

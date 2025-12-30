@@ -39,21 +39,8 @@ const THORNY_ASSAULT_POWERSET = {
                 },
                 buffDuration: 3.1,
                 defenseDebuff: 2.0
-            }
-        },
-        {
-            name: "Thorny Assault",
-            available: 0,
-            tier: 1,
-            maxSlots: 6,
-            allowedEnhancements: ["Damage", "Accuracy", "Recharge", "EnduranceReduction"],
-            allowedSetCategories: [],
-            description: "Thorns protrude from your body and can deal damage in melee or at range. Thorns are hollow and inject toxin that deals additional Toxic damage and can weaken your enemy's Defense. Very few foes have resistance to Thorn toxins.",
-            shortHelp: "Thorny Assault",
-            icon: "thorny_assault_set.png"
-        },
-        {
-            name: "Thorny Darts",
+            },
+        {name: "Thorny Darts",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -82,10 +69,8 @@ const THORNY_ASSAULT_POWERSET = {
                 },
                 buffDuration: 3.1,
                 defenseDebuff: 2.0
-            }
-        },
-        {
-            name: "Fling Thorns",
+            },
+        {name: "Fling Thorns",
             available: 3,
             tier: 2,
             maxSlots: 6,
@@ -116,10 +101,8 @@ const THORNY_ASSAULT_POWERSET = {
                 },
                 buffDuration: 4.1,
                 defenseDebuff: 2.0
-            }
-        },
-        {
-            name: "Impale",
+            },
+        {name: "Impale",
             available: 9,
             tier: 3,
             maxSlots: 6,
@@ -148,10 +131,8 @@ const THORNY_ASSAULT_POWERSET = {
                 },
                 buffDuration: 15.0,
                 defenseDebuff: 3.0
-            }
-        },
-        {
-            name: "Build Up",
+            },
+        {name: "Build Up",
             available: 15,
             tier: 4,
             maxSlots: 6,
@@ -170,10 +151,8 @@ const THORNY_ASSAULT_POWERSET = {
                 cast: 1.17,
                 tohitBuff: 2.0,
                 buffDuration: 10.0
-            }
-        },
-        {
-            name: "Thorn Burst",
+            },
+        {name: "Thorn Burst",
             available: 19,
             tier: 4,
             maxSlots: 6,
@@ -202,10 +181,8 @@ const THORNY_ASSAULT_POWERSET = {
                 },
                 buffDuration: 3.1,
                 defenseDebuff: 3.0
-            }
-        },
-        {
-            name: "Thorntrops",
+            },
+        {name: "Thorntrops",
             available: 23,
             tier: 5,
             maxSlots: 6,
@@ -224,10 +201,8 @@ const THORNY_ASSAULT_POWERSET = {
                 endurance: 7.8,
                 cast: 1.63,
                 buffDuration: 45.0
-            }
-        },
-        {
-            name: "Ripper",
+            },
+        {name: "Ripper",
             available: 27,
             tier: 5,
             maxSlots: 6,
@@ -258,10 +233,8 @@ const THORNY_ASSAULT_POWERSET = {
                 },
                 buffDuration: 4.1,
                 defenseDebuff: 3.0
-            }
-        },
-        {
-            name: "Thorn Barrage",
+            },
+        {name: "Thorn Barrage",
             available: 29,
             tier: 5,
             maxSlots: 6,
@@ -284,10 +257,8 @@ const THORNY_ASSAULT_POWERSET = {
                         {
                             type: "Lethal",
                             scale: 1.4401000000000002,
-                            ticks: 3
-                        },
-                        {
-                            type: "Toxic",
+                            ticks: 3},
+        {type: "Toxic",
                             scale: 0.1529,
                             ticks: 3
                         }

@@ -32,30 +32,15 @@ const SONIC_ASSAULT_POWERSET = {
                     types: [
                         {
                             type: "Energy",
-                            scale: 1.64
-                        },
-                        {
-                            type: "Smashing",
+                            scale: 1.64},
+        {type: "Smashing",
                             scale: 0.42
                         }
                     ],
                     scale: 2.06
                 }
-            }
-        },
-        {
-            name: "Sonic Assault",
-            available: 0,
-            tier: 1,
-            maxSlots: 6,
-            allowedEnhancements: ["Damage", "Accuracy", "Recharge", "EnduranceReduction"],
-            allowedSetCategories: [],
-            description: "Sonic Assault lets you use the power of sound waves to damage and weaken your foes.",
-            shortHelp: "Sonic Assault",
-            icon: "sonic_attack_set.png"
-        },
-        {
-            name: "Strident Echo",
+            },
+        {name: "Strident Echo",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -78,20 +63,16 @@ const SONIC_ASSAULT_POWERSET = {
                         {
                             type: "Smashing",
                             scale: 0.3607,
-                            ticks: 5
-                        },
-                        {
-                            type: "Energy",
+                            ticks: 5},
+        {type: "Energy",
                             scale: 0.3607,
                             ticks: 5
                         }
                     ]
                 },
                 buffDuration: 2.1
-            }
-        },
-        {
-            name: "Scream",
+            },
+        {name: "Scream",
             available: 3,
             tier: 2,
             maxSlots: 6,
@@ -114,20 +95,16 @@ const SONIC_ASSAULT_POWERSET = {
                         {
                             type: "Energy",
                             scale: 0.4658,
-                            ticks: 4
-                        },
-                        {
-                            type: "Smashing",
+                            ticks: 4},
+        {type: "Smashing",
                             scale: 0.132,
                             ticks: 4
                         }
                     ]
                 },
                 buffDuration: 1.05
-            }
-        },
-        {
-            name: "Shockwave",
+            },
+        {name: "Shockwave",
             available: 9,
             tier: 3,
             maxSlots: 6,
@@ -151,19 +128,15 @@ const SONIC_ASSAULT_POWERSET = {
                     types: [
                         {
                             type: "Smashing",
-                            scale: 0.9263
-                        },
-                        {
-                            type: "Energy",
+                            scale: 0.9263},
+        {type: "Energy",
                             scale: 0.9263
                         }
                     ],
                     scale: 1.8526
                 }
-            }
-        },
-        {
-            name: "Bass Boost",
+            },
+        {name: "Bass Boost",
             available: 15,
             tier: 4,
             maxSlots: 6,
@@ -185,10 +158,8 @@ const SONIC_ASSAULT_POWERSET = {
                 stunDuration: 10.0,
                 tohitBuff: 0.5,
                 defenseBuff: 0.5
-            }
-        },
-        {
-            name: "Deafening Wave",
+            },
+        {name: "Deafening Wave",
             available: 19,
             tier: 4,
             maxSlots: 6,
@@ -210,19 +181,15 @@ const SONIC_ASSAULT_POWERSET = {
                     types: [
                         {
                             type: "Smashing",
-                            scale: 0.9509
-                        },
-                        {
-                            type: "Energy",
+                            scale: 0.9509},
+        {type: "Energy",
                             scale: 0.9509
                         }
                     ],
                     scale: 1.9018
                 }
-            }
-        },
-        {
-            name: "Disruption Aura",
+            },
+        {name: "Disruption Aura",
             available: 23,
             tier: 5,
             maxSlots: 6,
@@ -241,10 +208,8 @@ const SONIC_ASSAULT_POWERSET = {
                 endurance: 1.04,
                 cast: 1.97,
                 buffDuration: 2.25
-            }
-        },
-        {
-            name: "Shout",
+            },
+        {name: "Shout",
             available: 27,
             tier: 5,
             maxSlots: 6,
@@ -266,19 +231,15 @@ const SONIC_ASSAULT_POWERSET = {
                     types: [
                         {
                             type: "Energy",
-                            scale: 3.6603000000000003
-                        },
-                        {
-                            type: "Smashing",
+                            scale: 3.6603000000000003},
+        {type: "Smashing",
                             scale: 1.3
                         }
                     ],
                     scale: 4.9603
                 }
-            }
-        },
-        {
-            name: "Earsplitter",
+            },
+        {name: "Earsplitter",
             available: 29,
             tier: 5,
             maxSlots: 6,
@@ -300,10 +261,8 @@ const SONIC_ASSAULT_POWERSET = {
                     types: [
                         {
                             type: "Smashing",
-                            scale: 3.0695
-                        },
-                        {
-                            type: "Energy",
+                            scale: 3.0695},
+        {type: "Energy",
                             scale: 3.0695
                         }
                     ],

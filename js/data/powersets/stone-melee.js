@@ -32,10 +32,8 @@ const STONE_MELEE_POWERSET = {
                     type: "Smashing",
                     scale: 2.141
                 }
-            }
-        },
-        {
-            name: "Stone Mallet",
+            },
+        {name: "Stone Mallet",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -57,21 +55,8 @@ const STONE_MELEE_POWERSET = {
                     type: "Smashing",
                     scale: 3.4869
                 }
-            }
-        },
-        {
-            name: "Stone Melee",
-            available: 0,
-            tier: 1,
-            maxSlots: 6,
-            allowedEnhancements: ["Damage", "Accuracy", "Recharge", "EnduranceReduction"],
-            allowedSetCategories: [],
-            description: "You can use the powers of earth and stone to do battle with your foes. Stone Melee allows you to strike with fists of stone, summon earthen weapons, and even quake the very ground itself.",
-            shortHelp: "Stone Melee",
-            icon: "stone_melee_set.png"
-        },
-        {
-            name: "Heavy Mallet",
+            },
+        {name: "Heavy Mallet",
             available: 1,
             tier: 1,
             maxSlots: 6,
@@ -93,10 +78,8 @@ const STONE_MELEE_POWERSET = {
                     type: "Smashing",
                     scale: 4.301
                 }
-            }
-        },
-        {
-            name: "Build Up",
+            },
+        {name: "Build Up",
             available: 5,
             tier: 3,
             maxSlots: 6,
@@ -115,10 +98,8 @@ const STONE_MELEE_POWERSET = {
                 cast: 1.17,
                 tohitBuff: 2.0,
                 buffDuration: 10.0
-            }
-        },
-        {
-            name: "Fault",
+            },
+        {name: "Fault",
             available: 7,
             tier: 3,
             maxSlots: 6,
@@ -136,10 +117,8 @@ const STONE_MELEE_POWERSET = {
                 recharge: 20.0,
                 endurance: 10.192,
                 cast: 2.1
-            }
-        },
-        {
-            name: "Confront",
+            },
+        {name: "Confront",
             available: 11,
             tier: 4,
             maxSlots: 6,
@@ -157,10 +136,8 @@ const STONE_MELEE_POWERSET = {
                 recharge: 3.0,
                 cast: 1.67,
                 buffDuration: 12.0
-            }
-        },
-        {
-            name: "Seismic Smash",
+            },
+        {name: "Seismic Smash",
             available: 17,
             tier: 4,
             maxSlots: 6,
@@ -182,10 +159,8 @@ const STONE_MELEE_POWERSET = {
                     type: "Smashing",
                     scale: 5.8099
                 }
-            }
-        },
-        {
-            name: "Hurl Boulder",
+            },
+        {name: "Hurl Boulder",
             available: 21,
             tier: 5,
             maxSlots: 6,
@@ -208,10 +183,8 @@ const STONE_MELEE_POWERSET = {
                     scale: 3.6159
                 },
                 buffDuration: 15.0
-            }
-        },
-        {
-            name: "Tremor",
+            },
+        {name: "Tremor",
             available: 25,
             tier: 5,
             maxSlots: 6,

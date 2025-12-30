@@ -29,21 +29,8 @@ const TRAPS_POWERSET = {
                 endurance: 7.8,
                 cast: 1.07,
                 buffDuration: 45.0
-            }
-        },
-        {
-            name: "Traps",
-            available: 0,
-            tier: 1,
-            maxSlots: 6,
-            allowedEnhancements: ["Damage", "Accuracy", "Recharge", "EnduranceReduction"],
-            allowedSetCategories: [],
-            description: "Traps are devices and gadgets you construct to cripple your foes. By using them strategically, you can gain a great tactical advantage. Traps include ambush devises, as well as gadgets that can be constructed to aid you and your allies.",
-            shortHelp: "Traps",
-            icon: "traps_set.png"
-        },
-        {
-            name: "Web Grenade",
+            },
+        {name: "Web Grenade",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -62,10 +49,8 @@ const TRAPS_POWERSET = {
                 endurance: 7.8,
                 cast: 1.37,
                 buffDuration: 15.0
-            }
-        },
-        {
-            name: "Triage Beacon",
+            },
+        {name: "Triage Beacon",
             available: 1,
             tier: 1,
             maxSlots: 6,
@@ -83,10 +68,8 @@ const TRAPS_POWERSET = {
                 endurance: 13.0,
                 cast: 2.77,
                 buffDuration: 90.0
-            }
-        },
-        {
-            name: "Acid Mortar",
+            },
+        {name: "Acid Mortar",
             available: 5,
             tier: 3,
             maxSlots: 6,
@@ -104,10 +87,8 @@ const TRAPS_POWERSET = {
                 endurance: 13.0,
                 cast: 2.77,
                 buffDuration: 60.0
-            }
-        },
-        {
-            name: "Force Field Generator",
+            },
+        {name: "Force Field Generator",
             available: 7,
             tier: 3,
             maxSlots: 6,
@@ -126,10 +107,8 @@ const TRAPS_POWERSET = {
                 endurance: 13.0,
                 cast: 2.03,
                 buffDuration: 240.0
-            }
-        },
-        {
-            name: "Poison Trap",
+            },
+        {name: "Poison Trap",
             available: 11,
             tier: 4,
             maxSlots: 6,
@@ -147,10 +126,8 @@ const TRAPS_POWERSET = {
                 endurance: 13.0,
                 cast: 2.77,
                 buffDuration: 260.0
-            }
-        },
-        {
-            name: "Seeker Drones",
+            },
+        {name: "Seeker Drones",
             available: 17,
             tier: 4,
             maxSlots: 6,
@@ -169,10 +146,8 @@ const TRAPS_POWERSET = {
                 endurance: 15.6,
                 cast: 2.03,
                 buffDuration: 240.0
-            }
-        },
-        {
-            name: "Trip Mine",
+            },
+        {name: "Trip Mine",
             available: 21,
             tier: 5,
             maxSlots: 6,
@@ -190,10 +165,8 @@ const TRAPS_POWERSET = {
                 endurance: 13.0,
                 cast: 5.0,
                 buffDuration: 260.0
-            }
-        },
-        {
-            name: "Temporal Bomb",
+            },
+        {name: "Temporal Bomb",
             available: 25,
             tier: 5,
             maxSlots: 6,

@@ -29,10 +29,8 @@ const TIME_MANIPULATION_POWERSET = {
                 endurance: 13.0,
                 cast: 2.03,
                 buffDuration: 30.0
-            }
-        },
-        {
-            name: "Time Crawl",
+            },
+        {name: "Time Crawl",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -51,21 +49,8 @@ const TIME_MANIPULATION_POWERSET = {
                 endurance: 10.4,
                 cast: 1.6,
                 buffDuration: 20.0
-            }
-        },
-        {
-            name: "Time Manipulation",
-            available: 0,
-            tier: 1,
-            maxSlots: 6,
-            allowedEnhancements: ["Damage", "Accuracy", "Recharge", "EnduranceReduction"],
-            allowedSetCategories: [],
-            description: "By gazing into the flow of time you are able to manipulate time itself. Time Manipulation allows the wielder to inflict crippling debuffs, buff and heal allies and also be able to empower effects on single targets through careful use of Time Crawl and Temporal Selection.",
-            shortHelp: "Time Manipulation",
-            icon: "time_manipulation_set.png"
-        },
-        {
-            name: "Time's Juncture",
+            },
+        {name: "Time's Juncture",
             available: 1,
             tier: 1,
             maxSlots: 6,
@@ -85,10 +70,8 @@ const TIME_MANIPULATION_POWERSET = {
                 cast: 0.67,
                 tohitDebuff: 1.5,
                 buffDuration: 1.0
-            }
-        },
-        {
-            name: "Temporal Selection",
+            },
+        {name: "Temporal Selection",
             available: 5,
             tier: 3,
             maxSlots: 6,
@@ -107,10 +90,8 @@ const TIME_MANIPULATION_POWERSET = {
                 endurance: 10.4,
                 cast: 2.27,
                 buffDuration: 120.0
-            }
-        },
-        {
-            name: "Distortion Field",
+            },
+        {name: "Distortion Field",
             available: 7,
             tier: 3,
             maxSlots: 6,
@@ -129,10 +110,8 @@ const TIME_MANIPULATION_POWERSET = {
                 endurance: 14.56,
                 cast: 2.03,
                 buffDuration: 45.0
-            }
-        },
-        {
-            name: "Time Stop",
+            },
+        {name: "Time Stop",
             available: 11,
             tier: 4,
             maxSlots: 6,
@@ -151,10 +130,8 @@ const TIME_MANIPULATION_POWERSET = {
                 endurance: 8.84,
                 cast: 2.17,
                 buffDuration: 20.0
-            }
-        },
-        {
-            name: "Farsight",
+            },
+        {name: "Farsight",
             available: 17,
             tier: 4,
             maxSlots: 6,
@@ -174,10 +151,8 @@ const TIME_MANIPULATION_POWERSET = {
                 cast: 2.03,
                 buffDuration: 120.0,
                 tohitBuff: 1.0
-            }
-        },
-        {
-            name: "Slowed Response",
+            },
+        {name: "Slowed Response",
             available: 21,
             tier: 5,
             maxSlots: 6,
@@ -198,10 +173,8 @@ const TIME_MANIPULATION_POWERSET = {
                 cast: 2.27,
                 buffDuration: 30.0,
                 defenseDebuff: 2.5
-            }
-        },
-        {
-            name: "Chrono Shift",
+            },
+        {name: "Chrono Shift",
             available: 25,
             tier: 5,
             maxSlots: 6,

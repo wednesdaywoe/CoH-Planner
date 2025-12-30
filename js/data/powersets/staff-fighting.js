@@ -27,10 +27,8 @@ const STAFF_FIGHTING_POWERSET = {
                 recharge: 4.0,
                 cast: 0.63,
                 buffDuration: 1.25
-            }
-        },
-        {
-            name: "Form of the Mind",
+            },
+        {name: "Form of the Mind",
             available: -1,
             tier: 2,
             maxSlots: 0,
@@ -47,10 +45,8 @@ const STAFF_FIGHTING_POWERSET = {
                 recharge: 4.0,
                 cast: 0.63,
                 buffDuration: 1.25
-            }
-        },
-        {
-            name: "Form of the Soul",
+            },
+        {name: "Form of the Soul",
             available: -1,
             tier: 2,
             maxSlots: 0,
@@ -67,10 +63,8 @@ const STAFF_FIGHTING_POWERSET = {
                 recharge: 4.0,
                 cast: 0.63,
                 buffDuration: 1.25
-            }
-        },
-        {
-            name: "Mercurial Blow",
+            },
+        {name: "Mercurial Blow",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -88,10 +82,8 @@ const STAFF_FIGHTING_POWERSET = {
                 recharge: 3.0,
                 endurance: 4.368,
                 cast: 1.0
-            }
-        },
-        {
-            name: "Precise Strike",
+            },
+        {name: "Precise Strike",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -109,21 +101,8 @@ const STAFF_FIGHTING_POWERSET = {
                 recharge: 6.0,
                 endurance: 6.864,
                 cast: 1.13
-            }
-        },
-        {
-            name: "Staff Fighting",
-            available: 0,
-            tier: 1,
-            maxSlots: 6,
-            allowedEnhancements: ["Damage", "Accuracy", "Recharge", "EnduranceReduction"],
-            allowedSetCategories: [],
-            description: "You have mastered the art of staff fighting, allowing you to strike at your foes in great sweeping arcs. Staff Fighting provides a good amount of control effects as well as some self buffs. By selecting the Staff Mastery power, you will gain access to techniques that further empower your Staff Fighting techniques and grant you useful augmentations that build up as you fight.",
-            shortHelp: "Staff Fighting",
-            icon: "staff_fighting_set.png"
-        },
-        {
-            name: "Guarded Spin",
+            },
+        {name: "Guarded Spin",
             available: 1,
             tier: 1,
             maxSlots: 6,
@@ -144,10 +123,8 @@ const STAFF_FIGHTING_POWERSET = {
                 endurance: 8.528,
                 cast: 1.83,
                 buffDuration: 10.0
-            }
-        },
-        {
-            name: "Eye of the Storm",
+            },
+        {name: "Eye of the Storm",
             available: 5,
             tier: 3,
             maxSlots: 6,
@@ -165,10 +142,8 @@ const STAFF_FIGHTING_POWERSET = {
                 recharge: 17.0,
                 endurance: 16.016,
                 cast: 2.57
-            }
-        },
-        {
-            name: "Staff Mastery",
+            },
+        {name: "Staff Mastery",
             available: 7,
             tier: 3,
             maxSlots: 0,
@@ -183,10 +158,8 @@ const STAFF_FIGHTING_POWERSET = {
             effects: {
                 accuracy: 1.0,
                 buffDuration: 10.25
-            }
-        },
-        {
-            name: "Confront",
+            },
+        {name: "Confront",
             available: 11,
             tier: 4,
             maxSlots: 6,
@@ -204,10 +177,8 @@ const STAFF_FIGHTING_POWERSET = {
                 recharge: 3.0,
                 cast: 2.0,
                 buffDuration: 12.0
-            }
-        },
-        {
-            name: "Serpent's Reach",
+            },
+        {name: "Serpent's Reach",
             available: 17,
             tier: 4,
             maxSlots: 6,
@@ -229,10 +200,8 @@ const STAFF_FIGHTING_POWERSET = {
                     type: "Smashing",
                     scale: 1.9989
                 }
-            }
-        },
-        {
-            name: "Innocuous Strikes",
+            },
+        {name: "Innocuous Strikes",
             available: 21,
             tier: 5,
             maxSlots: 6,
@@ -252,10 +221,8 @@ const STAFF_FIGHTING_POWERSET = {
                 recharge: 10.0,
                 endurance: 10.192,
                 cast: 2.17
-            }
-        },
-        {
-            name: "Sky Splitter",
+            },
+        {name: "Sky Splitter",
             available: 25,
             tier: 5,
             maxSlots: 6,

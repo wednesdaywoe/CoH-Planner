@@ -34,10 +34,8 @@ const TACTICAL_ARROW_POWERSET = {
                     ticks: 4
                 },
                 buffDuration: 0.75
-            }
-        },
-        {
-            name: "Glue Arrow",
+            },
+        {name: "Glue Arrow",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -55,21 +53,8 @@ const TACTICAL_ARROW_POWERSET = {
                 recharge: 45.0,
                 endurance: 7.8,
                 cast: 1.16
-            }
-        },
-        {
-            name: "Tactical Arrow",
-            available: 0,
-            tier: 1,
-            maxSlots: 6,
-            allowedEnhancements: ["Damage", "Accuracy", "Recharge", "EnduranceReduction"],
-            allowedSetCategories: [],
-            description: "Gain an advantage in combat with a combination of training techniques that boost your accuracy and movement skills in addition to Tactical Arrows tipped with a variety of payloads, which if used strategically, can dramatically alter a battle site.",
-            shortHelp: "Tactical Arrow",
-            icon: "tactical_arrow_set.png"
-        },
-        {
-            name: "Ice Arrow",
+            },
+        {name: "Ice Arrow",
             available: 3,
             tier: 2,
             maxSlots: 6,
@@ -93,10 +78,8 @@ const TACTICAL_ARROW_POWERSET = {
                     ticks: 8
                 },
                 buffDuration: 10.0
-            }
-        },
-        {
-            name: "Upshot",
+            },
+        {name: "Upshot",
             available: 9,
             tier: 3,
             maxSlots: 6,
@@ -115,10 +98,8 @@ const TACTICAL_ARROW_POWERSET = {
                 cast: 1.17,
                 tohitBuff: 1.5,
                 buffDuration: 10.0
-            }
-        },
-        {
-            name: "Flash Arrow",
+            },
+        {name: "Flash Arrow",
             available: 15,
             tier: 4,
             maxSlots: 6,
@@ -139,10 +120,8 @@ const TACTICAL_ARROW_POWERSET = {
                 cast: 1.0,
                 buffDuration: 60.0,
                 tohitDebuff: 0.7
-            }
-        },
-        {
-            name: "Eagle Eye",
+            },
+        {name: "Eagle Eye",
             available: 19,
             tier: 4,
             maxSlots: 6,
@@ -160,10 +139,8 @@ const TACTICAL_ARROW_POWERSET = {
                 cast: 1.17,
                 tohitBuff: 2.0,
                 buffDuration: 0.75
-            }
-        },
-        {
-            name: "Gymnastics",
+            },
+        {name: "Gymnastics",
             available: 23,
             tier: 5,
             maxSlots: 6,
@@ -180,10 +157,8 @@ const TACTICAL_ARROW_POWERSET = {
                 recharge: 10.0,
                 endurance: 0.13,
                 buffDuration: 0.5
-            }
-        },
-        {
-            name: "ESD Arrow",
+            },
+        {name: "ESD Arrow",
             available: 27,
             tier: 5,
             maxSlots: 6,
@@ -207,10 +182,8 @@ const TACTICAL_ARROW_POWERSET = {
                     scale: 1.64
                 },
                 stun: 3.0
-            }
-        },
-        {
-            name: "Oil Slick Arrow",
+            },
+        {name: "Oil Slick Arrow",
             available: 29,
             tier: 5,
             maxSlots: 6,

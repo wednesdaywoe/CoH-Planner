@@ -28,10 +28,8 @@ const THUGS_POWERSET = {
                 recharge: 5.0,
                 endurance: 5.46,
                 cast: 1.67
-            }
-        },
-        {
-            name: "Pistols",
+            },
+        {name: "Pistols",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -53,21 +51,8 @@ const THUGS_POWERSET = {
                     type: "Lethal",
                     scale: 2.3600000000000003
                 }
-            }
-        },
-        {
-            name: "Thugs",
-            available: 0,
-            tier: 1,
-            maxSlots: 6,
-            allowedEnhancements: ["Damage", "Accuracy", "Recharge", "EnduranceReduction"],
-            allowedSetCategories: [],
-            description: "Street-wise and extremely loyal to the right leader, Thugs make the perfect Henchmen for a manipulative Mastermind. The Rogue Isle are a perfect breeding ground for Thugs, and 'street-cred' can go a long way. Thugs are no stranger to urban warfare, and they are quite proficient with various weapons. Most Thugs aren't particularly resistant to any damage type, but their Lieutenants possess good Leadership skills to harden all your Henchmen.",
-            shortHelp: "Thugs",
-            icon: "thugs_set.png"
-        },
-        {
-            name: "Dual Wield",
+            },
+        {name: "Dual Wield",
             available: 1,
             tier: 1,
             maxSlots: 6,
@@ -91,10 +76,8 @@ const THUGS_POWERSET = {
                     ticks: 1
                 },
                 buffDuration: 0.3
-            }
-        },
-        {
-            name: "Equip Thugs",
+            },
+        {name: "Equip Thugs",
             available: 5,
             tier: 3,
             maxSlots: 6,
@@ -114,10 +97,8 @@ const THUGS_POWERSET = {
                 endurance: 11.375,
                 cast: 1.3,
                 buffDuration: 3.5
-            }
-        },
-        {
-            name: "Empty Clips",
+            },
+        {name: "Empty Clips",
             available: 7,
             tier: 3,
             maxSlots: 6,
@@ -143,10 +124,8 @@ const THUGS_POWERSET = {
                     ticks: 2
                 },
                 buffDuration: 0.7
-            }
-        },
-        {
-            name: "Call Enforcer",
+            },
+        {name: "Call Enforcer",
             available: 11,
             tier: 4,
             maxSlots: 6,
@@ -164,10 +143,8 @@ const THUGS_POWERSET = {
                 recharge: 10.0,
                 endurance: 9.62,
                 cast: 1.67
-            }
-        },
-        {
-            name: "Gang War",
+            },
+        {name: "Gang War",
             available: 17,
             tier: 4,
             maxSlots: 6,
@@ -185,10 +162,8 @@ const THUGS_POWERSET = {
                 recharge: 600.0,
                 endurance: 13.0,
                 cast: 1.67
-            }
-        },
-        {
-            name: "Call Bruiser",
+            },
+        {name: "Call Bruiser",
             available: 21,
             tier: 5,
             maxSlots: 6,
@@ -206,10 +181,8 @@ const THUGS_POWERSET = {
                 recharge: 15.0,
                 endurance: 13.18,
                 cast: 1.67
-            }
-        },
-        {
-            name: "Upgrade Equipment",
+            },
+        {name: "Upgrade Equipment",
             available: 25,
             tier: 5,
             maxSlots: 6,

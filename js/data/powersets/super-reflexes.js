@@ -29,10 +29,8 @@ const SUPER_REFLEXES_POWERSET = {
                 cast: 0.67,
                 buffDuration: 0.75,
                 defenseBuff: 0.4
-            }
-        },
-        {
-            name: "Focused Senses",
+            },
+        {name: "Focused Senses",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -51,21 +49,8 @@ const SUPER_REFLEXES_POWERSET = {
                 cast: 2.03,
                 buffDuration: 0.75,
                 defenseBuff: 0.4
-            }
-        },
-        {
-            name: "Super Reflexes",
-            available: 0,
-            tier: 1,
-            maxSlots: 6,
-            allowedEnhancements: ["Damage", "Accuracy", "Recharge", "EnduranceReduction"],
-            allowedSetCategories: [],
-            description: "Your Super Reflexes and acute senses allow you to react deftly to avoid danger. Regardless of what comes at you, Super Reflexes simply allows you to avoid the attack. The type of weapon or attack used against you is irrelevant. So swords, bullets, fire, energy, even Psionic Attacks can be avoided. Super Reflexes focuses on different techniques. Avoiding melee attacks is different than avoiding ranged attacks or even area-of-effect attacks. Your weakness is your opponents accuracy.",
-            shortHelp: "Super Reflexes",
-            icon: "super_reflexes_set.png"
-        },
-        {
-            name: "Agile",
+            },
+        {name: "Agile",
             available: 3,
             tier: 2,
             maxSlots: 6,
@@ -81,10 +66,8 @@ const SUPER_REFLEXES_POWERSET = {
                 accuracy: 1.0,
                 buffDuration: 0.75,
                 defenseBuff: 0.2
-            }
-        },
-        {
-            name: "Practiced Brawler",
+            },
+        {name: "Practiced Brawler",
             available: 9,
             tier: 3,
             maxSlots: 6,
@@ -106,10 +89,8 @@ const SUPER_REFLEXES_POWERSET = {
                 stunDuration: 120.0,
                 tohitBuff: 0.3,
                 defenseBuff: 0.3
-            }
-        },
-        {
-            name: "Dodge",
+            },
+        {name: "Dodge",
             available: 15,
             tier: 4,
             maxSlots: 6,
@@ -125,10 +106,8 @@ const SUPER_REFLEXES_POWERSET = {
                 accuracy: 1.0,
                 buffDuration: 0.75,
                 defenseBuff: 0.2
-            }
-        },
-        {
-            name: "Quickness",
+            },
+        {name: "Quickness",
             available: 19,
             tier: 4,
             maxSlots: 6,
@@ -143,10 +122,8 @@ const SUPER_REFLEXES_POWERSET = {
             effects: {
                 accuracy: 1.0,
                 buffDuration: 10.25
-            }
-        },
-        {
-            name: "Lucky",
+            },
+        {name: "Lucky",
             available: 23,
             tier: 5,
             maxSlots: 6,
@@ -162,10 +139,8 @@ const SUPER_REFLEXES_POWERSET = {
                 accuracy: 1.0,
                 buffDuration: 0.75,
                 defenseBuff: 0.2
-            }
-        },
-        {
-            name: "Evasion",
+            },
+        {name: "Evasion",
             available: 27,
             tier: 5,
             maxSlots: 6,
@@ -184,10 +159,8 @@ const SUPER_REFLEXES_POWERSET = {
                 cast: 3.0,
                 buffDuration: 0.75,
                 defenseBuff: 0.4
-            }
-        },
-        {
-            name: "Elude",
+            },
+        {name: "Elude",
             available: 29,
             tier: 5,
             maxSlots: 6,

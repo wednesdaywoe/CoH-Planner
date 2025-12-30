@@ -9,19 +9,7 @@ const THERMAL_RADIATION_POWERSET = {
     description: "Thermal Radiation powerset",
     icon: "thermal-radiation_set.png",
     powers: [
-        {
-            name: "Thermal Radiation",
-            available: 0,
-            tier: 1,
-            maxSlots: 6,
-            allowedEnhancements: ["Damage", "Accuracy", "Recharge", "EnduranceReduction"],
-            allowedSetCategories: [],
-            description: "You have the ability to control heat and Thermal Radiation. This allows you to protect allies from harm, heal them or increase their abilities. You can also weaken your enemies.",
-            shortHelp: "Thermal Radiation",
-            icon: "thermal_radiation_set.png"
-        },
-        {
-            name: "Thermal Shield",
+        {name: "Thermal Shield",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -45,30 +33,22 @@ const THERMAL_RADIATION_POWERSET = {
                         {
                             type: "Smashing",
                             scale: 2.0,
-                            ticks: 120
-                        },
-                        {
-                            type: "Lethal",
+                            ticks: 120},
+        {type: "Lethal",
                             scale: 2.0,
-                            ticks: 120
-                        },
-                        {
-                            type: "Fire",
+                            ticks: 120},
+        {type: "Fire",
                             scale: 2.0,
-                            ticks: 120
-                        },
-                        {
-                            type: "Cold",
+                            ticks: 120},
+        {type: "Cold",
                             scale: 1.0,
                             ticks: 120
                         }
                     ]
                 },
                 buffDuration: 240.0
-            }
-        },
-        {
-            name: "Warmth",
+            },
+        {name: "Warmth",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -86,10 +66,8 @@ const THERMAL_RADIATION_POWERSET = {
                 recharge: 8.0,
                 endurance: 13.0,
                 cast: 2.03
-            }
-        },
-        {
-            name: "Cauterize",
+            },
+        {name: "Cauterize",
             available: 1,
             tier: 1,
             maxSlots: 6,
@@ -107,10 +85,8 @@ const THERMAL_RADIATION_POWERSET = {
                 recharge: 4.0,
                 endurance: 13.0,
                 cast: 2.27
-            }
-        },
-        {
-            name: "Plasma Shield",
+            },
+        {name: "Plasma Shield",
             available: 5,
             tier: 3,
             maxSlots: 6,
@@ -134,25 +110,19 @@ const THERMAL_RADIATION_POWERSET = {
                         {
                             type: "Fire",
                             scale: 2.0,
-                            ticks: 120
-                        },
-                        {
-                            type: "Energy",
+                            ticks: 120},
+        {type: "Energy",
                             scale: 2.0,
-                            ticks: 120
-                        },
-                        {
-                            type: "Negative",
+                            ticks: 120},
+        {type: "Negative",
                             scale: 2.0,
                             ticks: 120
                         }
                     ]
                 },
                 buffDuration: 240.0
-            }
-        },
-        {
-            name: "Power of the Phoenix",
+            },
+        {name: "Power of the Phoenix",
             available: 7,
             tier: 3,
             maxSlots: 6,
@@ -171,10 +141,8 @@ const THERMAL_RADIATION_POWERSET = {
                 endurance: 49.4,
                 cast: 1.67,
                 buffDuration: 0.5
-            }
-        },
-        {
-            name: "Thaw",
+            },
+        {name: "Thaw",
             available: 11,
             tier: 4,
             maxSlots: 6,
@@ -200,10 +168,8 @@ const THERMAL_RADIATION_POWERSET = {
                 stun: 1.0,
                 stunDuration: 90.0,
                 buffDuration: 90.0
-            }
-        },
-        {
-            name: "Forge",
+            },
+        {name: "Forge",
             available: 17,
             tier: 4,
             maxSlots: 6,
@@ -223,10 +189,8 @@ const THERMAL_RADIATION_POWERSET = {
                 cast: 2.27,
                 tohitBuff: 2.0,
                 buffDuration: 120.0
-            }
-        },
-        {
-            name: "Heat Exhaustion",
+            },
+        {name: "Heat Exhaustion",
             available: 21,
             tier: 5,
             maxSlots: 6,
@@ -245,10 +209,8 @@ const THERMAL_RADIATION_POWERSET = {
                 endurance: 13.0,
                 cast: 2.07,
                 buffDuration: 40.0
-            }
-        },
-        {
-            name: "Melt Armor",
+            },
+        {name: "Melt Armor",
             available: 25,
             tier: 5,
             maxSlots: 6,

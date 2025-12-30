@@ -25,10 +25,8 @@ const WILLPOWER_POWERSET = {
             effects: {
                 accuracy: 1.0,
                 buffDuration: 10.25
-            }
-        },
-        {
-            name: "Mind Over Body",
+            },
+        {name: "Mind Over Body",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -46,21 +44,8 @@ const WILLPOWER_POWERSET = {
                 endurance: 0.104,
                 cast: 0.67,
                 buffDuration: 0.75
-            }
-        },
-        {
-            name: "Willpower",
-            available: 0,
-            tier: 1,
-            maxSlots: 6,
-            allowedEnhancements: ["Damage", "Accuracy", "Recharge", "EnduranceReduction"],
-            allowedSetCategories: [],
-            description: "You aren't Invulnerable. Bullets don't bounce off of you, and if you are cut, you bleed. You are, however, tough, grizzled and strong willed. It takes more than a little cut to keep you down! Willpower offers a strong balance of healing, damage resistance and defense. While you have no real vulnerabilities, you can't quite deal with 'alpha strikes' as well as some other protective powers.",
-            shortHelp: "Willpower",
-            icon: "willpower_set.png"
-        },
-        {
-            name: "Fast Healing",
+            },
+        {name: "Fast Healing",
             available: 3,
             tier: 2,
             maxSlots: 6,
@@ -75,10 +60,8 @@ const WILLPOWER_POWERSET = {
             effects: {
                 accuracy: 1.0,
                 buffDuration: 10.0
-            }
-        },
-        {
-            name: "Indomitable Will",
+            },
+        {name: "Indomitable Will",
             available: 9,
             tier: 3,
             maxSlots: 6,
@@ -100,10 +83,8 @@ const WILLPOWER_POWERSET = {
                 buffDuration: 0.75,
                 tohitBuff: 0.3,
                 defenseBuff: 0.3
-            }
-        },
-        {
-            name: "Rise to the Challenge",
+            },
+        {name: "Rise to the Challenge",
             available: 15,
             tier: 4,
             maxSlots: 6,
@@ -123,10 +104,8 @@ const WILLPOWER_POWERSET = {
                 cast: 3.0,
                 tohitDebuff: 0.5,
                 buffDuration: 1.0
-            }
-        },
-        {
-            name: "Quick Recovery",
+            },
+        {name: "Quick Recovery",
             available: 19,
             tier: 4,
             maxSlots: 6,
@@ -141,10 +120,8 @@ const WILLPOWER_POWERSET = {
             effects: {
                 accuracy: 1.0,
                 buffDuration: 10.25
-            }
-        },
-        {
-            name: "Heightened Senses",
+            },
+        {name: "Heightened Senses",
             available: 23,
             tier: 5,
             maxSlots: 6,
@@ -163,10 +140,8 @@ const WILLPOWER_POWERSET = {
                 cast: 0.67,
                 buffDuration: 0.75,
                 defenseBuff: 0.5
-            }
-        },
-        {
-            name: "Resurgence",
+            },
+        {name: "Resurgence",
             available: 27,
             tier: 5,
             maxSlots: 6,
@@ -185,10 +160,8 @@ const WILLPOWER_POWERSET = {
                 buffDuration: 0.5,
                 tohitBuff: 3.0,
                 tohitDebuff: 3.0
-            }
-        },
-        {
-            name: "Strength of Will",
+            },
+        {name: "Strength of Will",
             available: 29,
             tier: 5,
             maxSlots: 6,
@@ -210,40 +183,26 @@ const WILLPOWER_POWERSET = {
                         {
                             type: "Smashing",
                             scale: 2.5,
-                            ticks: 60
-                        },
-                        {
-                            type: "Lethal",
+                            ticks: 60},
+        {type: "Lethal",
                             scale: 2.5,
-                            ticks: 60
-                        },
-                        {
-                            type: "Fire",
+                            ticks: 60},
+        {type: "Fire",
                             scale: 1.25,
-                            ticks: 60
-                        },
-                        {
-                            type: "Cold",
+                            ticks: 60},
+        {type: "Cold",
                             scale: 1.25,
-                            ticks: 60
-                        },
-                        {
-                            type: "Energy",
+                            ticks: 60},
+        {type: "Energy",
                             scale: 1.25,
-                            ticks: 60
-                        },
-                        {
-                            type: "Negative",
+                            ticks: 60},
+        {type: "Negative",
                             scale: 1.25,
-                            ticks: 60
-                        },
-                        {
-                            type: "Psionic",
+                            ticks: 60},
+        {type: "Psionic",
                             scale: 1.25,
-                            ticks: 60
-                        },
-                        {
-                            type: "Toxic",
+                            ticks: 60},
+        {type: "Toxic",
                             scale: 1.25,
                             ticks: 60
                         }
