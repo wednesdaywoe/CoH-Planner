@@ -50,6 +50,7 @@ const PSIONIC_MELEE_POWERSET = {
                 },
                 buffDuration: 6.0
             }
+        }
         },
         {name: "Psi Blade",
             available: 0,
@@ -91,6 +92,7 @@ const PSIONIC_MELEE_POWERSET = {
                 },
                 buffDuration: 6.0
             }
+        }
         },
         {name: "Telekinetic Blow",
             available: 1,
@@ -132,6 +134,7 @@ const PSIONIC_MELEE_POWERSET = {
                 },
                 buffDuration: 3.1
             }
+        }
         },
         {name: "Concentration",
             available: 5,
@@ -153,6 +156,7 @@ const PSIONIC_MELEE_POWERSET = {
                 tohitBuff: 2.0,
                 buffDuration: 10.0
             }
+        }
         },
         {name: "Psi Blade Sweep",
             available: 7,
@@ -197,6 +201,7 @@ const PSIONIC_MELEE_POWERSET = {
                 buffDuration: 6.0,
                 stun: 3.0
             }
+        }
         },
         {name: "Confront",
             available: 11,
@@ -217,6 +222,7 @@ const PSIONIC_MELEE_POWERSET = {
                 cast: 1.67,
                 buffDuration: 12.0
             }
+        }
         },
         {name: "Boggle",
             available: 17,
@@ -237,6 +243,7 @@ const PSIONIC_MELEE_POWERSET = {
                 endurance: 7.8,
                 cast: 2.0
             }
+        }
         },
         {name: "Greater Psi Blade",
             available: 21,
@@ -273,6 +280,7 @@ const PSIONIC_MELEE_POWERSET = {
                 },
                 buffDuration: 6.0
             }
+        }
         },
         {name: "Mass Levitate",
             available: 25,

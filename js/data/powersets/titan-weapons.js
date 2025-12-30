@@ -29,6 +29,7 @@ const TITAN_WEAPONS_POWERSET = {
                 endurance: 8.7838,
                 cast: 2.0
             }
+        }
         },
         {name: "Defensive Sweep",
             available: 0,
@@ -51,6 +52,7 @@ const TITAN_WEAPONS_POWERSET = {
                 endurance: 5.356,
                 cast: 2.2
             }
+        }
         },
         {name: "Titan Sweep",
             available: 1,
@@ -73,6 +75,7 @@ const TITAN_WEAPONS_POWERSET = {
                 endurance: 10.4982,
                 cast: 2.43
             }
+        }
         },
         {name: "Follow Through",
             available: 5,
@@ -106,6 +109,7 @@ const TITAN_WEAPONS_POWERSET = {
                 },
                 stun: 3.0
             }
+        }
         },
         {name: "Build Momentum",
             available: 7,
@@ -127,6 +131,7 @@ const TITAN_WEAPONS_POWERSET = {
                 tohitBuff: 2.0,
                 buffDuration: 10.0
             }
+        }
         },
         {name: "Confront",
             available: 11,
@@ -147,6 +152,7 @@ const TITAN_WEAPONS_POWERSET = {
                 cast: 1.67,
                 buffDuration: 12.0
             }
+        }
         },
         {name: "Rend Armor",
             available: 17,
@@ -167,6 +173,7 @@ const TITAN_WEAPONS_POWERSET = {
                 endurance: 15.6395,
                 cast: 2.3
             }
+        }
         },
         {name: "Whirling Smash",
             available: 21,
@@ -198,6 +205,7 @@ const TITAN_WEAPONS_POWERSET = {
                     ],
                     scale: 4.916
                 }
+        }
         },
         {name: "Arc of Destruction",
             available: 25,

@@ -30,6 +30,7 @@ const TRAPS_POWERSET = {
                 cast: 1.07,
                 buffDuration: 45.0
             }
+        }
         },
         {name: "Web Grenade",
             available: 0,
@@ -51,6 +52,7 @@ const TRAPS_POWERSET = {
                 cast: 1.37,
                 buffDuration: 15.0
             }
+        }
         },
         {name: "Triage Beacon",
             available: 1,
@@ -71,6 +73,7 @@ const TRAPS_POWERSET = {
                 cast: 2.77,
                 buffDuration: 90.0
             }
+        }
         },
         {name: "Acid Mortar",
             available: 5,
@@ -91,6 +94,7 @@ const TRAPS_POWERSET = {
                 cast: 2.77,
                 buffDuration: 60.0
             }
+        }
         },
         {name: "Force Field Generator",
             available: 7,
@@ -112,6 +116,7 @@ const TRAPS_POWERSET = {
                 cast: 2.03,
                 buffDuration: 240.0
             }
+        }
         },
         {name: "Poison Trap",
             available: 11,
@@ -132,6 +137,7 @@ const TRAPS_POWERSET = {
                 cast: 2.77,
                 buffDuration: 260.0
             }
+        }
         },
         {name: "Seeker Drones",
             available: 17,
@@ -153,6 +159,7 @@ const TRAPS_POWERSET = {
                 cast: 2.03,
                 buffDuration: 240.0
             }
+        }
         },
         {name: "Trip Mine",
             available: 21,
@@ -173,6 +180,7 @@ const TRAPS_POWERSET = {
                 cast: 5.0,
                 buffDuration: 260.0
             }
+        }
         },
         {name: "Temporal Bomb",
             available: 25,

@@ -34,6 +34,7 @@ const SYMPHONY_CONTROL_POWERSET = {
                 },
                 buffDuration: 18.0
             }
+        }
         },
         {name: "Melodic Binding",
             available: 0,
@@ -59,6 +60,7 @@ const SYMPHONY_CONTROL_POWERSET = {
                 },
                 buffDuration: 15.0
             }
+        }
         },
         {name: "Aria of Stasis",
             available: 1,
@@ -86,6 +88,7 @@ const SYMPHONY_CONTROL_POWERSET = {
                 },
                 buffDuration: 15.0
             }
+        }
         },
         {name: "Impassioned Serenade",
             available: 5,
@@ -116,6 +119,7 @@ const SYMPHONY_CONTROL_POWERSET = {
                 },
                 buffDuration: 30.0
             }
+        }
         },
         {name: "Dreadful Discord",
             available: 7,
@@ -141,6 +145,7 @@ const SYMPHONY_CONTROL_POWERSET = {
                     type: "Psionic",
                     scale: 1.2437
                 }
+        }
         },
         {name: "Enfeebling Lullaby",
             available: 11,
@@ -168,6 +173,7 @@ const SYMPHONY_CONTROL_POWERSET = {
                 },
                 buffDuration: 15.0
             }
+        }
         },
         {name: "Confounding Chant",
             available: 17,
@@ -191,6 +197,7 @@ const SYMPHONY_CONTROL_POWERSET = {
                 cast: 2.33,
                 stun: 3.0
             }
+        }
         },
         {name: "Chords of Despair",
             available: 21,
@@ -212,6 +219,7 @@ const SYMPHONY_CONTROL_POWERSET = {
                 endurance: 8.528,
                 cast: 2.67
             }
+        }
         },
         {name: "Reverberant",
             available: 25,

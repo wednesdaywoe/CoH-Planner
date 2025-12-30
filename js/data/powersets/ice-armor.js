@@ -30,6 +30,7 @@ const ICE_ARMOR_POWERSET = {
                 buffDuration: 0.75,
                 defenseBuff: 0.4
             }
+        }
         },
         {name: "Hoarfrost",
             available: 0,
@@ -55,6 +56,7 @@ const ICE_ARMOR_POWERSET = {
                 },
                 buffDuration: 120.0
             }
+        }
         },
         {name: "Rime",
             available: 0,
@@ -80,6 +82,7 @@ const ICE_ARMOR_POWERSET = {
                 },
                 buffDuration: 60.0
             }
+        }
         },
         {name: "Chilling Embrace",
             available: 3,
@@ -101,6 +104,7 @@ const ICE_ARMOR_POWERSET = {
                 cast: 0.73,
                 buffDuration: 5.0
             }
+        }
         },
         {name: "Wet Ice",
             available: 9,
@@ -125,6 +129,7 @@ const ICE_ARMOR_POWERSET = {
                 tohitBuff: 0.3,
                 defenseBuff: 0.4
             }
+        }
         },
         {name: "Glacial Armor",
             available: 15,
@@ -146,6 +151,7 @@ const ICE_ARMOR_POWERSET = {
                 buffDuration: 0.75,
                 defenseBuff: 0.4
             }
+        }
         },
         {name: "Energy Absorption",
             available: 19,
@@ -166,6 +172,7 @@ const ICE_ARMOR_POWERSET = {
                 endurance: 13.0,
                 cast: 1.33
             }
+        }
         },
         {name: "Permafrost",
             available: 23,
@@ -213,6 +220,7 @@ const ICE_ARMOR_POWERSET = {
                 },
                 buffDuration: 10.25
             }
+        }
         },
         {name: "Icicles",
             available: 27,
@@ -244,6 +252,7 @@ const ICE_ARMOR_POWERSET = {
                     ],
                     scale: 0.29000000000000004
                 }
+        }
         },
         {name: "Icy Bastion",
             available: 29,

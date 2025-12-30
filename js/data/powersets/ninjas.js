@@ -29,6 +29,7 @@ const NINJAS_POWERSET = {
                 endurance: 5.46,
                 cast: 1.7
             }
+        }
         },
         {name: "Snap Shot",
             available: 0,
@@ -52,6 +53,7 @@ const NINJAS_POWERSET = {
                     type: "Lethal",
                     scale: 1.8599999999999999
                 }
+        }
         },
         {name: "Aimed Shot",
             available: 1,
@@ -75,6 +77,7 @@ const NINJAS_POWERSET = {
                     type: "Lethal",
                     scale: 2.26
                 }
+        }
         },
         {name: "Train Ninjas",
             available: 5,
@@ -97,6 +100,7 @@ const NINJAS_POWERSET = {
                 cast: 2.37,
                 buffDuration: 5.0
             }
+        }
         },
         {name: "Fistful of Arrows",
             available: 7,
@@ -122,6 +126,7 @@ const NINJAS_POWERSET = {
                     type: "Lethal",
                     scale: 1.6225
                 }
+        }
         },
         {name: "Call Jounin",
             available: 11,
@@ -142,6 +147,7 @@ const NINJAS_POWERSET = {
                 endurance: 9.62,
                 cast: 1.7
             }
+        }
         },
         {name: "Smoke Flash",
             available: 17,
@@ -164,6 +170,7 @@ const NINJAS_POWERSET = {
                 cast: 1.17,
                 buffDuration: 3.0
             }
+        }
         },
         {name: "Oni",
             available: 21,
@@ -184,6 +191,7 @@ const NINJAS_POWERSET = {
                 endurance: 13.18,
                 cast: 2.03
             }
+        }
         },
         {name: "Kuji-In Zen",
             available: 25,

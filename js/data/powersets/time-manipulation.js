@@ -30,6 +30,7 @@ const TIME_MANIPULATION_POWERSET = {
                 cast: 2.03,
                 buffDuration: 30.0
             }
+        }
         },
         {name: "Time Crawl",
             available: 0,
@@ -51,6 +52,7 @@ const TIME_MANIPULATION_POWERSET = {
                 cast: 1.6,
                 buffDuration: 20.0
             }
+        }
         },
         {name: "Time's Juncture",
             available: 1,
@@ -73,6 +75,7 @@ const TIME_MANIPULATION_POWERSET = {
                 tohitDebuff: 1.5,
                 buffDuration: 1.0
             }
+        }
         },
         {name: "Temporal Selection",
             available: 5,
@@ -94,6 +97,7 @@ const TIME_MANIPULATION_POWERSET = {
                 cast: 2.27,
                 buffDuration: 120.0
             }
+        }
         },
         {name: "Distortion Field",
             available: 7,
@@ -115,6 +119,7 @@ const TIME_MANIPULATION_POWERSET = {
                 cast: 2.03,
                 buffDuration: 45.0
             }
+        }
         },
         {name: "Time Stop",
             available: 11,
@@ -136,6 +141,7 @@ const TIME_MANIPULATION_POWERSET = {
                 cast: 2.17,
                 buffDuration: 20.0
             }
+        }
         },
         {name: "Farsight",
             available: 17,
@@ -158,6 +164,7 @@ const TIME_MANIPULATION_POWERSET = {
                 buffDuration: 120.0,
                 tohitBuff: 1.0
             }
+        }
         },
         {name: "Slowed Response",
             available: 21,
@@ -181,6 +188,7 @@ const TIME_MANIPULATION_POWERSET = {
                 buffDuration: 30.0,
                 defenseDebuff: 2.5
             }
+        }
         },
         {name: "Chrono Shift",
             available: 25,

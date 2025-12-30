@@ -34,6 +34,7 @@ const EARTH_CONTROL_POWERSET = {
                 defenseDebuff: 2.0,
                 buffDuration: 12.0
             }
+        }
         },
         {name: "Stone Prison",
             available: 0,
@@ -61,6 +62,7 @@ const EARTH_CONTROL_POWERSET = {
                 buffDuration: 9.2,
                 defenseDebuff: 2.0
             }
+        }
         },
         {name: "Stone Cages",
             available: 1,
@@ -89,6 +91,7 @@ const EARTH_CONTROL_POWERSET = {
                 buffDuration: 5.2,
                 defenseDebuff: 2.0
             }
+        }
         },
         {name: "Quicksand",
             available: 5,
@@ -110,6 +113,7 @@ const EARTH_CONTROL_POWERSET = {
                 cast: 3.1,
                 buffDuration: 45.0
             }
+        }
         },
         {name: "Salt Crystals",
             available: 7,
@@ -132,6 +136,7 @@ const EARTH_CONTROL_POWERSET = {
                 defenseDebuff: 2.0,
                 buffDuration: 15.0
             }
+        }
         },
         {name: "Stalagmites",
             available: 11,
@@ -160,6 +165,7 @@ const EARTH_CONTROL_POWERSET = {
                 defenseDebuff: 2.0,
                 buffDuration: 12.0
             }
+        }
         },
         {name: "Earthquake",
             available: 17,
@@ -181,6 +187,7 @@ const EARTH_CONTROL_POWERSET = {
                 cast: 2.03,
                 buffDuration: 30.0
             }
+        }
         },
         {name: "Volcanic Gasses",
             available: 21,
@@ -202,6 +209,7 @@ const EARTH_CONTROL_POWERSET = {
                 cast: 1.17,
                 buffDuration: 60.0
             }
+        }
         },
         {name: "Animate Stone",
             available: 25,

@@ -28,6 +28,7 @@ const DARK_ARMOR_POWERSET = {
                 cast: 0.67,
                 buffDuration: 0.75
             }
+        }
         },
         {name: "Death Shroud",
             available: 0,
@@ -51,6 +52,7 @@ const DARK_ARMOR_POWERSET = {
                     type: "Negative",
                     scale: 0.2
                 }
+        }
         },
         {name: "Murky Cloud",
             available: 3,
@@ -71,6 +73,7 @@ const DARK_ARMOR_POWERSET = {
                 cast: 1.17,
                 buffDuration: 0.75
             }
+        }
         },
         {name: "Obsidian Shield",
             available: 9,
@@ -95,6 +98,7 @@ const DARK_ARMOR_POWERSET = {
                 tohitBuff: 0.3,
                 defenseBuff: 0.3
             }
+        }
         },
         {name: "Dark Regeneration",
             available: 15,
@@ -118,6 +122,7 @@ const DARK_ARMOR_POWERSET = {
                     type: "Negative",
                     scale: 0.2
                 }
+        }
         },
         {name: "Obscure Sustenance",
             available: 15,
@@ -139,6 +144,7 @@ const DARK_ARMOR_POWERSET = {
                 buffDuration: 10.0,
                 tohitBuff: 0.75
             }
+        }
         },
         {name: "Cloak of Darkness",
             available: 19,
@@ -159,6 +165,7 @@ const DARK_ARMOR_POWERSET = {
                 cast: 1.17,
                 buffDuration: 0.75
             }
+        }
         },
         {name: "Cloak of Fear",
             available: 23,
@@ -179,6 +186,7 @@ const DARK_ARMOR_POWERSET = {
                 endurance: 0.26,
                 cast: 1.17
             }
+        }
         },
         {name: "Oppressive Gloom",
             available: 27,
@@ -200,6 +208,7 @@ const DARK_ARMOR_POWERSET = {
                 cast: 1.17,
                 stun: 2.0
             }
+        }
         },
         {name: "Soul Transfer",
             available: 29,

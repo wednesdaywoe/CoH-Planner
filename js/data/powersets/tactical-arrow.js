@@ -35,6 +35,7 @@ const TACTICAL_ARROW_POWERSET = {
                 },
                 buffDuration: 0.75
             }
+        }
         },
         {name: "Glue Arrow",
             available: 0,
@@ -55,6 +56,7 @@ const TACTICAL_ARROW_POWERSET = {
                 endurance: 7.8,
                 cast: 1.16
             }
+        }
         },
         {name: "Ice Arrow",
             available: 3,
@@ -81,6 +83,7 @@ const TACTICAL_ARROW_POWERSET = {
                 },
                 buffDuration: 10.0
             }
+        }
         },
         {name: "Upshot",
             available: 9,
@@ -102,6 +105,7 @@ const TACTICAL_ARROW_POWERSET = {
                 tohitBuff: 1.5,
                 buffDuration: 10.0
             }
+        }
         },
         {name: "Flash Arrow",
             available: 15,
@@ -125,6 +129,7 @@ const TACTICAL_ARROW_POWERSET = {
                 buffDuration: 60.0,
                 tohitDebuff: 0.7
             }
+        }
         },
         {name: "Eagle Eye",
             available: 19,
@@ -145,6 +150,7 @@ const TACTICAL_ARROW_POWERSET = {
                 tohitBuff: 2.0,
                 buffDuration: 0.75
             }
+        }
         },
         {name: "Gymnastics",
             available: 23,
@@ -164,6 +170,7 @@ const TACTICAL_ARROW_POWERSET = {
                 endurance: 0.13,
                 buffDuration: 0.5
             }
+        }
         },
         {name: "ESD Arrow",
             available: 27,
@@ -190,6 +197,7 @@ const TACTICAL_ARROW_POWERSET = {
                 },
                 stun: 3.0
             }
+        }
         },
         {name: "Oil Slick Arrow",
             available: 29,

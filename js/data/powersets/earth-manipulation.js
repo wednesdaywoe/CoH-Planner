@@ -32,6 +32,7 @@ const EARTH_MANIPULATION_POWERSET = {
                     scale: 4.0908999999999995
                 }
             }
+        }
         },
         {name: "Stone Prison",
             available: 0,
@@ -59,6 +60,7 @@ const EARTH_MANIPULATION_POWERSET = {
                 buffDuration: 9.2,
                 defenseDebuff: 1.0
             }
+        }
         },
         {name: "Salt Crystals",
             available: 3,
@@ -81,6 +83,7 @@ const EARTH_MANIPULATION_POWERSET = {
                 defenseDebuff: 1.0,
                 buffDuration: 10.0
             }
+        }
         },
         {name: "Build Up",
             available: 9,
@@ -102,6 +105,7 @@ const EARTH_MANIPULATION_POWERSET = {
                 tohitBuff: 2.0,
                 buffDuration: 10.0
             }
+        }
         },
         {name: "Tremor",
             available: 15,
@@ -125,6 +129,7 @@ const EARTH_MANIPULATION_POWERSET = {
                     type: "Smashing",
                     scale: 2.1324
                 }
+        }
         },
         {name: "Mud Bath",
             available: 19,
@@ -145,6 +150,7 @@ const EARTH_MANIPULATION_POWERSET = {
                 cast: 2.03,
                 buffDuration: 5.0
             }
+        }
         },
         {name: "Beryl Crystals",
             available: 23,
@@ -166,6 +172,7 @@ const EARTH_MANIPULATION_POWERSET = {
                 buffDuration: 0.75,
                 tohitBuff: 1.0
             }
+        }
         },
         {name: "Fracture",
             available: 27,
@@ -190,6 +197,7 @@ const EARTH_MANIPULATION_POWERSET = {
                 buffDuration: 10.0,
                 stun: 3.0
             }
+        }
         },
         {name: "Seismic Smash",
             available: 29,

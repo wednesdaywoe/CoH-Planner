@@ -35,6 +35,7 @@ const SEISMIC_BLAST_POWERSET = {
                 defenseDebuff: 0.5,
                 buffDuration: 3.0
             }
+        }
         },
         {name: "Seismic Shockwaves",
             available: 0,
@@ -52,6 +53,7 @@ const SEISMIC_BLAST_POWERSET = {
             effects: {
                 accuracy: 0.8
             }
+        }
         },
         {name: "Shatter",
             available: 0,
@@ -78,6 +80,7 @@ const SEISMIC_BLAST_POWERSET = {
                 defenseDebuff: 1.0,
                 buffDuration: 6.0
             }
+        }
         },
         {name: "Rock Shards",
             available: 1,
@@ -100,6 +103,7 @@ const SEISMIC_BLAST_POWERSET = {
                 endurance: 8.528,
                 cast: 1.07
             }
+        }
         },
         {name: "Entomb",
             available: 5,
@@ -126,6 +130,7 @@ const SEISMIC_BLAST_POWERSET = {
                 defenseDebuff: 1.0,
                 buffDuration: 12.0
             }
+        }
         },
         {name: "Seismic Force",
             available: 7,
@@ -147,6 +152,7 @@ const SEISMIC_BLAST_POWERSET = {
                 tohitBuff: 5.0,
                 buffDuration: 10.0
             }
+        }
         },
         {name: "Upthrust",
             available: 11,
@@ -174,6 +180,7 @@ const SEISMIC_BLAST_POWERSET = {
                 defenseDebuff: 0.7,
                 buffDuration: 16.0
             }
+        }
         },
         {name: "Tombstone",
             available: 17,
@@ -194,6 +201,7 @@ const SEISMIC_BLAST_POWERSET = {
                 endurance: 14.352,
                 cast: 1.67
             }
+        }
         },
         {name: "Stalagmite",
             available: 21,
@@ -214,6 +222,7 @@ const SEISMIC_BLAST_POWERSET = {
                 endurance: 10.192,
                 cast: 1.0
             }
+        }
         },
         {name: "Meteor",
             available: 25,

@@ -30,6 +30,7 @@ const TRICK_ARROW_POWERSET = {
                 cast: 1.0,
                 buffDuration: 30.0
             }
+        }
         },
         {name: "Flash Arrow",
             available: 0,
@@ -53,6 +54,7 @@ const TRICK_ARROW_POWERSET = {
                 tohitDebuff: 0.5,
                 buffDuration: 60.0
             }
+        }
         },
         {name: "Glue Arrow",
             available: 1,
@@ -75,6 +77,7 @@ const TRICK_ARROW_POWERSET = {
                 cast: 1.16,
                 buffDuration: 60.0
             }
+        }
         },
         {name: "Ice Arrow",
             available: 5,
@@ -96,6 +99,7 @@ const TRICK_ARROW_POWERSET = {
                 cast: 1.67,
                 buffDuration: 10.0
             }
+        }
         },
         {name: "Poison Gas Arrow",
             available: 7,
@@ -118,6 +122,7 @@ const TRICK_ARROW_POWERSET = {
                 cast: 1.16,
                 buffDuration: 20.0
             }
+        }
         },
         {name: "Acid Arrow",
             available: 11,
@@ -146,6 +151,7 @@ const TRICK_ARROW_POWERSET = {
                 buffDuration: 20.0,
                 defenseDebuff: 2.0
             }
+        }
         },
         {name: "Disruption Arrow",
             available: 17,
@@ -167,6 +173,7 @@ const TRICK_ARROW_POWERSET = {
                 cast: 1.16,
                 buffDuration: 45.0
             }
+        }
         },
         {name: "Oil Slick Arrow",
             available: 21,
@@ -188,6 +195,7 @@ const TRICK_ARROW_POWERSET = {
                 cast: 1.16,
                 buffDuration: 30.0
             }
+        }
         },
         {name: "EMP Arrow",
             available: 25,

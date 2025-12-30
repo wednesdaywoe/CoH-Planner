@@ -35,6 +35,7 @@ const RADIATION_BLAST_POWERSET = {
                 defenseDebuff: 1.0,
                 buffDuration: 3.0
             }
+        }
         },
         {name: "X-Ray Beam",
             available: 0,
@@ -61,6 +62,7 @@ const RADIATION_BLAST_POWERSET = {
                 defenseDebuff: 2.0,
                 buffDuration: 6.0
             }
+        }
         },
         {name: "Irradiate",
             available: 1,
@@ -88,6 +90,7 @@ const RADIATION_BLAST_POWERSET = {
                 buffDuration: 4.6,
                 defenseDebuff: 3.0
             }
+        }
         },
         {name: "Electron Haze",
             available: 5,
@@ -116,6 +119,7 @@ const RADIATION_BLAST_POWERSET = {
                 defenseDebuff: 2.0,
                 buffDuration: 8.0
             }
+        }
         },
         {name: "Aim",
             available: 7,
@@ -137,6 +141,7 @@ const RADIATION_BLAST_POWERSET = {
                 tohitBuff: 5.0,
                 buffDuration: 10.0
             }
+        }
         },
         {name: "Proton Volley",
             available: 11,
@@ -157,6 +162,7 @@ const RADIATION_BLAST_POWERSET = {
                 endurance: 14.352,
                 cast: 1.33
             }
+        }
         },
         {name: "Cosmic Burst",
             available: 17,
@@ -184,6 +190,7 @@ const RADIATION_BLAST_POWERSET = {
                 defenseDebuff: 3.0,
                 buffDuration: 12.0
             }
+        }
         },
         {name: "Neutron Bomb",
             available: 21,
@@ -211,6 +218,7 @@ const RADIATION_BLAST_POWERSET = {
                 defenseDebuff: 2.0,
                 buffDuration: 16.0
             }
+        }
         },
         {name: "Atomic Blast",
             available: 25,
