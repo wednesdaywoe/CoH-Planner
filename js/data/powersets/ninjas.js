@@ -52,6 +52,7 @@ const NINJAS_POWERSET = {
                     type: "Lethal",
                     scale: 1.8599999999999999
                 }
+            }
         },
         {name: "Aimed Shot",
             available: 1,
@@ -75,6 +76,7 @@ const NINJAS_POWERSET = {
                     type: "Lethal",
                     scale: 2.26
                 }
+            }
         },
         {name: "Train Ninjas",
             available: 5,
@@ -122,6 +124,7 @@ const NINJAS_POWERSET = {
                     type: "Lethal",
                     scale: 1.6225
                 }
+            }
         },
         {name: "Call Jounin",
             available: 11,

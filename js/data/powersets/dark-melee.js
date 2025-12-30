@@ -231,6 +231,7 @@ const DARK_MELEE_POWERSET = {
                     ],
                     scale: 3.3909
                 }
+            }
         },
         {name: "Soul Drain",
             available: 21,

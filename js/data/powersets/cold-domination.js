@@ -42,7 +42,6 @@ const COLD_DOMINATION_POWERSET = {
                 },
                 buffDuration: 240.0
             }
-        }
         },
         {name: "Infrigidate",
             available: 0,
@@ -70,7 +69,6 @@ const COLD_DOMINATION_POWERSET = {
                 buffDuration: 20.0,
                 defenseDebuff: 2.5
             }
-        }
         },
         {name: "Snow Storm",
             available: 1,
@@ -93,7 +91,6 @@ const COLD_DOMINATION_POWERSET = {
                 cast: 2.03,
                 buffDuration: 0.75
             }
-        }
         },
         {name: "Glacial Shield",
             available: 5,
@@ -121,7 +118,6 @@ const COLD_DOMINATION_POWERSET = {
                 },
                 buffDuration: 240.0
             }
-        }
         },
         {name: "Frostwork",
             available: 7,
@@ -148,7 +144,6 @@ const COLD_DOMINATION_POWERSET = {
                 },
                 buffDuration: 120.0
             }
-        }
         },
         {name: "Arctic Fog",
             available: 11,
@@ -170,7 +165,6 @@ const COLD_DOMINATION_POWERSET = {
                 cast: 1.87,
                 buffDuration: 0.75
             }
-        }
         },
         {name: "Benumb",
             available: 17,
@@ -192,7 +186,6 @@ const COLD_DOMINATION_POWERSET = {
                 cast: 2.07,
                 buffDuration: 30.0
             }
-        }
         },
         {name: "Sleet",
             available: 21,
@@ -214,7 +207,6 @@ const COLD_DOMINATION_POWERSET = {
                 cast: 2.03,
                 buffDuration: 15.0
             }
-        }
         },
         {name: "Heat Loss",
             available: 25,

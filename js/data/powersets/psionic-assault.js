@@ -90,6 +90,7 @@ const PSIONIC_ASSAULT_POWERSET = {
                     ],
                     scale: 2.86
                 }
+            }
         },
         {name: "Mental Blast",
             available: 9,
@@ -186,6 +187,7 @@ const PSIONIC_ASSAULT_POWERSET = {
                     type: "Psionic",
                     scale: 3.5476
                 }
+            }
         },
         {name: "Psionic Lance",
             available: 27,

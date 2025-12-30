@@ -244,6 +244,7 @@ const ICE_ARMOR_POWERSET = {
                     ],
                     scale: 0.29000000000000004
                 }
+            }
         },
         {name: "Icy Bastion",
             available: 29,

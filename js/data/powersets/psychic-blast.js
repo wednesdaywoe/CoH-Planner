@@ -32,6 +32,7 @@ const PSYCHIC_BLAST_POWERSET = {
                     type: "Psionic",
                     scale: 2.2602
                 }
+            }
         },
         {name: "Mental Blast",
             available: 0,
@@ -88,6 +89,7 @@ const PSYCHIC_BLAST_POWERSET = {
                     ],
                     scale: 3.4602
                 }
+            }
         },
         {name: "Psionic Darts",
             available: 5,
@@ -206,6 +208,7 @@ const PSYCHIC_BLAST_POWERSET = {
                     type: "Psionic",
                     scale: 4.0862
                 }
+            }
         },
         {name: "Psychic Wail",
             available: 25,

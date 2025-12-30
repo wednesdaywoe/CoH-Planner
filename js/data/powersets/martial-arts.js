@@ -71,6 +71,7 @@ const MARTIAL_ARTS_POWERSET = {
                     ],
                     scale: 2.319
                 }
+            }
         },
         {name: "Cobra Strike",
             available: 1,
@@ -102,6 +103,7 @@ const MARTIAL_ARTS_POWERSET = {
                     ],
                     scale: 4.8109
                 }
+            }
         },
         {name: "Focus Chi",
             available: 5,
@@ -154,6 +156,7 @@ const MARTIAL_ARTS_POWERSET = {
                     ],
                     scale: 4.8109
                 }
+            }
         },
         {name: "Warriors Challenge",
             available: 11,
@@ -239,6 +242,7 @@ const MARTIAL_ARTS_POWERSET = {
                     ],
                     scale: 2.6271999999999998
                 }
+            }
         },
         {name: "Eagles Claw",
             available: 25,

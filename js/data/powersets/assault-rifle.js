@@ -58,6 +58,7 @@ const ASSAULT_RIFLE_POWERSET = {
                     type: "Lethal",
                     scale: 3.3402
                 }
+            }
         },
         {name: "Buckshot",
             available: 1,
@@ -83,6 +84,7 @@ const ASSAULT_RIFLE_POWERSET = {
                     type: "Lethal",
                     scale: 1.5351
                 }
+            }
         },
         {name: "M30 Grenade",
             available: 5,
@@ -115,6 +117,7 @@ const ASSAULT_RIFLE_POWERSET = {
                     ],
                     scale: 3.782
                 }
+            }
         },
         {name: "Beanbag",
             available: 7,

@@ -110,6 +110,7 @@ const GRAVITY_CONTROL_POWERSET = {
                     type: "Smashing",
                     scale: 5.5635
                 }
+            }
         },
         {name: "Crushing Field",
             available: 7,

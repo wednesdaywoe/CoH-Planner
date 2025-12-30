@@ -82,6 +82,7 @@ const MENTAL_MANIPULATION_POWERSET = {
                     type: "Psionic",
                     scale: 0.12
                 }
+            }
         },
         {name: "Psychic Scream",
             available: 9,

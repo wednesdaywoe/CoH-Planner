@@ -209,6 +209,7 @@ const STAFF_FIGHTING_POWERSET = {
                     type: "Smashing",
                     scale: 1.9989
                 }
+            }
         },
         {name: "Innocuous Strikes",
             available: 21,

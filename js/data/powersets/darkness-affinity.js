@@ -71,6 +71,7 @@ POWERSETS['darkness-affinity'] = {
                                 "damage": {
                                             "scale": 3.0
                                 }
+                    }
         },
         {
                     "name": "Howling Twilight",
@@ -114,6 +115,7 @@ POWERSETS['darkness-affinity'] = {
                                 "damage": {
                                             "scale": 2.0
                                 }
+                    }
         },
         {
                     "name": "Fade",

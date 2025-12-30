@@ -72,6 +72,7 @@ const ENERGY_MANIPULATION_POWERSET = {
                     ],
                     scale: 2.1399
                 }
+            }
         },
         {name: "Build Up",
             available: 3,

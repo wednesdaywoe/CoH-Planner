@@ -71,6 +71,7 @@ const CLAWS_POWERSET = {
                     ],
                     scale: 4.8829
                 }
+            }
         },
         {name: "Slash",
             available: 1,
@@ -136,6 +137,7 @@ const CLAWS_POWERSET = {
                     ],
                     scale: 8.3286
                 }
+            }
         },
         {name: "Follow Up",
             available: 7,
@@ -221,6 +223,7 @@ const CLAWS_POWERSET = {
                     ],
                     scale: 7.155299999999999
                 }
+            }
         },
         {name: "Eviscerate",
             available: 21,
@@ -254,6 +257,7 @@ const CLAWS_POWERSET = {
                     ],
                     scale: 8.6773
                 }
+            }
         },
         {name: "Shockwave",
             available: 25,

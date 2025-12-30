@@ -58,6 +58,7 @@ const ARSENAL_ASSAULT_POWERSET = {
                     type: "Smashing",
                     scale: 3.179
                 }
+            }
         },
         {name: "Buckshot",
             available: 3,
@@ -83,6 +84,7 @@ const ARSENAL_ASSAULT_POWERSET = {
                     type: "Lethal",
                     scale: 1.5351
                 }
+            }
         },
         {name: "Elbow Strike",
             available: 9,
@@ -106,6 +108,7 @@ const ARSENAL_ASSAULT_POWERSET = {
                     type: "Smashing",
                     scale: 3.909
                 }
+            }
         },
         {name: "Power Up",
             available: 15,

@@ -198,6 +198,7 @@ const TITAN_WEAPONS_POWERSET = {
                     ],
                     scale: 4.916
                 }
+            }
         },
         {name: "Arc of Destruction",
             available: 25,

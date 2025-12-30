@@ -52,6 +52,7 @@ const ELECTRIC_ARMOR_POWERSET = {
                     type: "Energy",
                     scale: 0.2
                 }
+            }
         },
         {name: "Conductive Shield",
             available: 3,

@@ -92,6 +92,7 @@ const DARKNESS_MANIPULATION_POWERSET = {
                     type: "Negative",
                     scale: 0.2
                 }
+            }
         },
         {name: "Shadow Maul",
             available: 9,

@@ -55,6 +55,7 @@ const EARTH_ASSAULT_POWERSET = {
                     type: "Lethal",
                     scale: 2.2601
                 }
+            }
         },
         {name: "Tremor",
             available: 3,
@@ -78,6 +79,7 @@ const EARTH_ASSAULT_POWERSET = {
                     type: "Smashing",
                     scale: 1.9881
                 }
+            }
         },
         {name: "Hurl Boulder",
             available: 9,
@@ -150,6 +152,7 @@ const EARTH_ASSAULT_POWERSET = {
                     type: "Smashing",
                     scale: 4.901
                 }
+            }
         },
         {name: "Seismic Smash",
             available: 23,
@@ -173,6 +176,7 @@ const EARTH_ASSAULT_POWERSET = {
                     type: "Smashing",
                     scale: 5.8100000000000005
                 }
+            }
         },
         {name: "Mud Pots",
             available: 27,

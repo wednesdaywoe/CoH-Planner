@@ -89,6 +89,7 @@ const STORM_BLAST_POWERSET = {
                     type: "Smashing",
                     scale: 1.6037
                 }
+            }
         },
         {name: "Storm Cell",
             available: 5,

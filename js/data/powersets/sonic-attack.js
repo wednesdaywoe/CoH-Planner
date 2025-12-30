@@ -143,6 +143,7 @@ const SONIC_ATTACK_POWERSET = {
                     ],
                     scale: 1.6852
                 }
+            }
         },
         {name: "Shout",
             available: 7,
@@ -222,6 +223,7 @@ const SONIC_ATTACK_POWERSET = {
                     type: "Energy",
                     scale: 0.9546
                 }
+            }
         },
         {name: "Screech",
             available: 21,

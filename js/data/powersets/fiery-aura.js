@@ -192,6 +192,7 @@ const FIERY_AURA_POWERSET = {
                     type: "Fire",
                     scale: 1.44
                 }
+            }
         },
         {name: "Fiery Embrace",
             available: 27,
@@ -212,6 +213,7 @@ const FIERY_AURA_POWERSET = {
                 cast: 0.73,
                 buffDuration: 20.0
             }
+        }
     ]
 };
 

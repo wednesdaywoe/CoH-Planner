@@ -176,6 +176,7 @@ const ICE_CONTROL_POWERSET = {
                     type: "Cold",
                     scale: 0.2
                 }
+            }
         },
         {name: "Glacier",
             available: 21,

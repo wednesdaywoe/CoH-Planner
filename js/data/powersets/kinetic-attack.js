@@ -301,6 +301,7 @@ const KINETIC_ATTACK_POWERSET = {
                     ],
                     scale: 5.111
                 }
+            }
         },
         {
             name: "Confront",

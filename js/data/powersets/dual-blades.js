@@ -252,6 +252,7 @@ const DUAL_BLADES_POWERSET = {
                     ],
                     scale: 10.4997
                 }
+            }
         },
         {name: "Sweeping Strike",
             available: 21,

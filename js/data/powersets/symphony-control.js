@@ -141,6 +141,7 @@ const SYMPHONY_CONTROL_POWERSET = {
                     type: "Psionic",
                     scale: 1.2437
                 }
+            }
         },
         {name: "Enfeebling Lullaby",
             available: 11,

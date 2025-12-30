@@ -73,6 +73,7 @@ POWERSETS['wind-control'] = {
                                 "damage": {
                                             "scale": 1.0
                                 }
+                    }
         },
         {
                     "name": "Breathless",
@@ -142,6 +143,7 @@ POWERSETS['wind-control'] = {
                                 "damage": {
                                             "scale": 0.24
                                 }
+                    }
         },
         {
                     "name": "Microburst",
@@ -211,6 +213,7 @@ POWERSETS['wind-control'] = {
                                 "damage": {
                                             "scale": 0.15
                                 }
+                    }
         },
         {
                     "name": "Vortex",

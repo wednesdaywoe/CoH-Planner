@@ -59,8 +59,7 @@ const MARTIAL_MANIPULATION_POWERSET = {
             allowedSetCategories: [],
             description: "Your mastery of Martial Combat allows you to draw on the physical energy stored within your body to perform remarkable feats. You deliver damage to your enemies via withering kicks and punches, while your preternatural senses keep you moving faster and striking harder than any who oppose you.",
             shortHelp: "Martial Combat",
-            icon: "martial_manipulation_set.png"}
-        },
+            icon: "martial_manipulation_set.png"},
         {name: "Storm Kick",
             available: 0,
             tier: 1,

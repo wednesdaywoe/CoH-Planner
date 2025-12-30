@@ -47,6 +47,7 @@ const ARCHERY_POWERSET = {
                     "type": "Lethal",
                     "scale": 0.84
                 }
+            }
         },
         {
             "name": "Aimed Shot",
@@ -81,6 +82,7 @@ const ARCHERY_POWERSET = {
                     "type": "Lethal",
                     "scale": 1.32
                 }
+            }
         },
         {
             "name": "Fistful of Arrows",
@@ -117,6 +119,7 @@ const ARCHERY_POWERSET = {
                     "type": "Lethal",
                     "scale": 0.91
                 }
+            }
         },
         {
             "name": "Blazing Arrow",
@@ -156,6 +159,7 @@ const ARCHERY_POWERSET = {
                     "scale": 0.125,
                     "ticks": 4
                 }
+            }
         },
         {
             "name": "Aim",
@@ -231,6 +235,7 @@ const ARCHERY_POWERSET = {
                     ],
                     "scale": 0.9
                 }
+            }
         },
         {
             "name": "Ranged Shot",

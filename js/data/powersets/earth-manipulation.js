@@ -125,6 +125,7 @@ const EARTH_MANIPULATION_POWERSET = {
                     type: "Smashing",
                     scale: 2.1324
                 }
+            }
         },
         {name: "Mud Bath",
             available: 19,

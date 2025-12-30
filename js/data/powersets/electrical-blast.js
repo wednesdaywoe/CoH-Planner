@@ -56,6 +56,7 @@ const ELECTRICAL_BLAST_POWERSET = {
                     type: "Energy",
                     scale: 3.5292
                 }
+            }
         },
         {name: "Ball Lightning",
             available: 1,

@@ -94,8 +94,7 @@ const QUILLS_POWERSET = {
             allowedSetCategories: [],
             description: "Spines protrude from your body and can deal damage in melee or at very short ranges. Spines are hollow and hold a neural toxin that deals additional Toxic damage and can Slow or Immobilize your enemies. The toxin is cumulative, and multiple hits will affect a target more strongly. Very few foes have resistance to Spine poison. Like all scrapper powers, all Spine attacks can sometimes land a critical hit for double damage.",
             shortHelp: "Spines",
-            icon: "quills_set.png"}
-        },
+            icon: "quills_set.png"},
         {name: "Spine Burst",
             available: 1,
             tier: 1,
@@ -211,14 +210,6 @@ const QUILLS_POWERSET = {
                 recharge: 3.0,
                 cast: 1.67,
                 buffDuration: 12.0
-            },
-        {type: "Fire",
-                            scale: 0.0675
-                        }
-                    ],
-                    scale: 0.6358
-                },
-                buffDuration: 3.0
             }
         },
         {name: "Ripper",

@@ -81,6 +81,7 @@ const MARTIAL_ASSAULT_POWERSET = {
                     type: "Lethal",
                     scale: 2.5
                 }
+            }
         },
         {name: "Spinning Kick",
             available: 9,
@@ -106,6 +107,7 @@ const MARTIAL_ASSAULT_POWERSET = {
                     type: "Smashing",
                     scale: 2.7464
                 }
+            }
         },
         {name: "Envenomed Blades",
             available: 15,
@@ -150,6 +152,7 @@ const MARTIAL_ASSAULT_POWERSET = {
                     type: "Smashing",
                     scale: 2.7914
                 }
+            }
         },
         {name: "Caltrops",
             available: 23,

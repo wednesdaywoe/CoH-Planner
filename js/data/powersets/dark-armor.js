@@ -51,6 +51,7 @@ const DARK_ARMOR_POWERSET = {
                     type: "Negative",
                     scale: 0.2
                 }
+            }
         },
         {name: "Murky Cloud",
             available: 3,
@@ -118,6 +119,7 @@ const DARK_ARMOR_POWERSET = {
                     type: "Negative",
                     scale: 0.2
                 }
+            }
         },
         {name: "Obscure Sustenance",
             available: 15,

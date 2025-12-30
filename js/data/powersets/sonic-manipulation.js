@@ -97,6 +97,7 @@ const SONIC_MANIPULATION_POWERSET = {
                     type: "Energy",
                     scale: 2.729
                 }
+            }
         },
         {name: "Sound Booster",
             available: 9,
@@ -151,6 +152,7 @@ const SONIC_MANIPULATION_POWERSET = {
                     ],
                     scale: 1.9018
                 }
+            }
         },
         {name: "Sound Barrier",
             available: 19,

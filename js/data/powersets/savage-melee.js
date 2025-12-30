@@ -163,6 +163,7 @@ const SAVAGE_MELEE_POWERSET = {
                     ],
                     scale: 4.5389
                 }
+            }
         },
         {name: "Confront",
             available: 11,

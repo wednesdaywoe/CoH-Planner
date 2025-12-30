@@ -55,6 +55,7 @@ const BATTLE_AXE_POWERSET = {
                     type: "Lethal",
                     scale: 3.2
                 }
+            }
         },
         {name: "Gash",
             available: 1,
@@ -78,6 +79,7 @@ const BATTLE_AXE_POWERSET = {
                     type: "Lethal",
                     scale: 3.649
                 }
+            }
         },
         {name: "Build Up",
             available: 5,
@@ -123,6 +125,7 @@ const BATTLE_AXE_POWERSET = {
                     type: "Lethal",
                     scale: 2.5170000000000003
                 }
+            }
         },
         {name: "Confront",
             available: 11,
@@ -166,6 +169,7 @@ const BATTLE_AXE_POWERSET = {
                     type: "Lethal",
                     scale: 4.119
                 }
+            }
         },
         {name: "Axe Cyclone",
             available: 21,

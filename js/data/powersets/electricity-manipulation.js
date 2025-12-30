@@ -166,6 +166,7 @@ const ELECTRICITY_MANIPULATION_POWERSET = {
                     type: "Energy",
                     scale: 0.30820000000000003
                 }
+            }
         },
         {name: "Power Sink",
             available: 23,
