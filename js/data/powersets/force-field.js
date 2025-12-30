@@ -36,7 +36,6 @@ const FORCE_FIELD_POWERSET = {
                 },
                 buffDuration: 240.0
             }
-        }
         },
         {name: "Personal Force Field",
             available: 0,

@@ -42,7 +42,6 @@ const ENERGY_ASSAULT_POWERSET = {
                 },
                 buffDuration: 15.0
             }
-        }
         },
         {name: "Power Bolt",
             available: 0,
@@ -74,7 +73,6 @@ const ENERGY_ASSAULT_POWERSET = {
                     ],
                     scale: 2.26
                 }
-            }
         },
         {name: "Power Push",
             available: 3,
@@ -106,7 +104,6 @@ const ENERGY_ASSAULT_POWERSET = {
                     ],
                     scale: 3.13
                 }
-            }
         },
         {name: "Power Blast",
             available: 9,
@@ -138,7 +135,6 @@ const ENERGY_ASSAULT_POWERSET = {
                     ],
                     scale: 3.9290999999999996
                 }
-            }
         },
         {name: "Power Up",
             available: 15,
@@ -194,7 +190,6 @@ const ENERGY_ASSAULT_POWERSET = {
                     ],
                     scale: 2.8359000000000005
                 }
-            }
         },
         {name: "Total Focus",
             available: 23,

@@ -28,7 +28,6 @@ const DUAL_PISTOLS_POWERSET = {
                 cast: 0.63,
                 buffDuration: 0.75
             }
-        }
         },
         {name: "Cryo Ammunition",
             available: -1,

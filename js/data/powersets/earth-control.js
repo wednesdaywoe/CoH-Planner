@@ -34,7 +34,6 @@ const EARTH_CONTROL_POWERSET = {
                 defenseDebuff: 2.0,
                 buffDuration: 12.0
             }
-        }
         },
         {name: "Stone Prison",
             available: 0,

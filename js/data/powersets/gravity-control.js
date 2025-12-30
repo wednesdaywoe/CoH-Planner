@@ -35,7 +35,6 @@ const GRAVITY_CONTROL_POWERSET = {
                 },
                 buffDuration: 9.2
             }
-        }
         },
         {name: "Lift",
             available: 0,
@@ -111,7 +110,6 @@ const GRAVITY_CONTROL_POWERSET = {
                     type: "Smashing",
                     scale: 5.5635
                 }
-            }
         },
         {name: "Crushing Field",
             available: 7,

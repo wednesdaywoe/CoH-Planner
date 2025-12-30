@@ -40,7 +40,6 @@ const ENERGY_BLAST_POWERSET = {
                     scale: 3.5292
                 }
             }
-        }
         },
         {name: "Power Bolt",
             available: 0,
@@ -72,7 +71,6 @@ const ENERGY_BLAST_POWERSET = {
                     ],
                     scale: 2.2602
                 }
-            }
         },
         {name: "Energy Torrent",
             available: 1,
@@ -106,7 +104,6 @@ const ENERGY_BLAST_POWERSET = {
                     ],
                     scale: 1.6445
                 }
-            }
         },
         {name: "Power Burst",
             available: 5,
@@ -138,7 +135,6 @@ const ENERGY_BLAST_POWERSET = {
                     ],
                     scale: 4.3203
                 }
-            }
         },
         {name: "Sniper Blast",
             available: 7,
@@ -211,7 +207,6 @@ const ENERGY_BLAST_POWERSET = {
                     ],
                     scale: 0.486
                 }
-            }
         },
         {name: "Explosive Blast",
             available: 21,
@@ -244,7 +239,6 @@ const ENERGY_BLAST_POWERSET = {
                     ],
                     scale: 3.7887
                 }
-            }
         },
         {name: "Nova",
             available: 25,

@@ -30,7 +30,6 @@ const SHIELD_DEFENSE_POWERSET = {
                 buffDuration: 0.75,
                 defenseBuff: 0.4
             }
-        }
         },
         {name: "Deflection",
             available: 0,

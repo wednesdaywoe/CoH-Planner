@@ -46,7 +46,6 @@ const RADIATION_MELEE_POWERSET = {
                 defenseDebuff: 1.0,
                 buffDuration: 10.0
             }
-        }
         },
         {name: "Radioactive Smash",
             available: 0,

@@ -33,7 +33,6 @@ const ELECTRICAL_BLAST_POWERSET = {
                     scale: 2.2602
                 }
             }
-        }
         },
         {name: "Lightning Bolt",
             available: 0,
@@ -57,7 +56,6 @@ const ELECTRICAL_BLAST_POWERSET = {
                     type: "Energy",
                     scale: 3.5292
                 }
-            }
         },
         {name: "Ball Lightning",
             available: 1,

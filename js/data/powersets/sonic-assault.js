@@ -41,7 +41,6 @@ const SONIC_ASSAULT_POWERSET = {
                     scale: 2.06
                 }
             }
-        }
         },
         {name: "Strident Echo",
             available: 0,
@@ -141,7 +140,6 @@ const SONIC_ASSAULT_POWERSET = {
                     ],
                     scale: 1.8526
                 }
-            }
         },
         {name: "Bass Boost",
             available: 15,
@@ -197,7 +195,6 @@ const SONIC_ASSAULT_POWERSET = {
                     ],
                     scale: 1.9018
                 }
-            }
         },
         {name: "Disruption Aura",
             available: 23,
@@ -250,7 +247,6 @@ const SONIC_ASSAULT_POWERSET = {
                     ],
                     scale: 4.9603
                 }
-            }
         },
         {name: "Earsplitter",
             available: 29,

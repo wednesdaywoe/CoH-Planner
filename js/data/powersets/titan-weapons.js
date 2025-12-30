@@ -29,7 +29,6 @@ const TITAN_WEAPONS_POWERSET = {
                 endurance: 8.7838,
                 cast: 2.0
             }
-        }
         },
         {name: "Defensive Sweep",
             available: 0,
@@ -199,7 +198,6 @@ const TITAN_WEAPONS_POWERSET = {
                     ],
                     scale: 4.916
                 }
-            }
         },
         {name: "Arc of Destruction",
             available: 25,

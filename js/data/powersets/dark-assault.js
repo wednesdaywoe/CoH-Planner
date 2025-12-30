@@ -34,7 +34,6 @@ const DARK_ASSAULT_POWERSET = {
                 tohitDebuff: 0.75,
                 buffDuration: 6.0
             }
-        }
         },
         {name: "Smite",
             available: 0,

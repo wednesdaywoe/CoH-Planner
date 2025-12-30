@@ -33,7 +33,6 @@ const MENTAL_MANIPULATION_POWERSET = {
                 },
                 buffDuration: 6.0
             }
-        }
         },
         {name: "Subdual",
             available: 0,
@@ -83,7 +82,6 @@ const MENTAL_MANIPULATION_POWERSET = {
                     type: "Psionic",
                     scale: 0.12
                 }
-            }
         },
         {name: "Psychic Scream",
             available: 9,

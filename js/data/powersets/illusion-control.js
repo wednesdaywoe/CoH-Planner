@@ -33,7 +33,6 @@ const ILLUSION_CONTROL_POWERSET = {
                     scale: 4.8936
                 }
             }
-        }
         },
         {name: "Spectral Wounds",
             available: 0,

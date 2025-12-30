@@ -42,7 +42,6 @@ const WAR_MACE_POWERSET = {
                 },
                 stun: 2.0
             }
-        }
         },
         {name: "Pulverize",
             available: 0,
@@ -107,7 +106,6 @@ const WAR_MACE_POWERSET = {
                     ],
                     scale: 10.528599999999999
                 }
-            }
         },
         {name: "Build Up",
             available: 5,
@@ -248,7 +246,6 @@ const WAR_MACE_POWERSET = {
                     ],
                     scale: 12.0268
                 }
-            }
         },
         {name: "Crowd Control",
             available: 25,

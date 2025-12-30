@@ -47,7 +47,6 @@ const KATANA_POWERSET = {
                 buffDuration: 0.3,
                 defenseDebuff: 1.0
             }
-        }
         },
         {name: "Sting of the Wasp",
             available: 0,

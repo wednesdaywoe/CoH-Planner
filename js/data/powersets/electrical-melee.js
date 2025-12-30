@@ -42,7 +42,6 @@ const ELECTRICAL_MELEE_POWERSET = {
                 },
                 buffDuration: 2.0
             }
-        }
         },
         {name: "Havoc Punch",
             available: 0,

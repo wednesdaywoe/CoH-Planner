@@ -50,7 +50,6 @@ const PSIONIC_MELEE_POWERSET = {
                 },
                 buffDuration: 6.0
             }
-        }
         },
         {name: "Psi Blade",
             available: 0,

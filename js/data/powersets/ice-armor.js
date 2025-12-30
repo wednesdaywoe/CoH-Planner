@@ -30,7 +30,6 @@ const ICE_ARMOR_POWERSET = {
                 buffDuration: 0.75,
                 defenseBuff: 0.4
             }
-        }
         },
         {name: "Hoarfrost",
             available: 0,
@@ -245,7 +244,6 @@ const ICE_ARMOR_POWERSET = {
                     ],
                     scale: 0.29000000000000004
                 }
-            }
         },
         {name: "Icy Bastion",
             available: 29,

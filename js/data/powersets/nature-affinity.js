@@ -30,7 +30,6 @@ const NATURE_AFFINITY_POWERSET = {
                 cast: 1.0,
                 buffDuration: 30.0
             }
-        }
         },
         {name: "Regrowth",
             available: 0,

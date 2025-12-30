@@ -41,7 +41,6 @@ const ENERGY_MANIPULATION_POWERSET = {
                 },
                 stun: 2.0
             }
-        }
         },
         {name: "Power Thrust",
             available: 0,
@@ -73,7 +72,6 @@ const ENERGY_MANIPULATION_POWERSET = {
                     ],
                     scale: 2.1399
                 }
-            }
         },
         {name: "Build Up",
             available: 3,

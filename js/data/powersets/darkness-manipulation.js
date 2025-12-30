@@ -35,7 +35,6 @@ const DARKNESS_MANIPULATION_POWERSET = {
                 buffDuration: 9.2,
                 tohitDebuff: 0.75
             }
-        }
         },
         {name: "Smite",
             available: 0,
@@ -93,7 +92,6 @@ const DARKNESS_MANIPULATION_POWERSET = {
                     type: "Negative",
                     scale: 0.2
                 }
-            }
         },
         {name: "Shadow Maul",
             available: 9,

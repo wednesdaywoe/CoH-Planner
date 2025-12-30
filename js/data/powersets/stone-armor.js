@@ -30,7 +30,6 @@ const STONE_ARMOR_POWERSET = {
                 buffDuration: 0.75,
                 defenseBuff: 0.4
             }
-        }
         },
         {name: "Stone Skin",
             available: 0,

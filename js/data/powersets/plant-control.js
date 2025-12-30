@@ -42,7 +42,6 @@ const PLANT_CONTROL_POWERSET = {
                 },
                 buffDuration: 9.2
             }
-        }
         },
         {name: "Strangler",
             available: 0,

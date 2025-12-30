@@ -29,7 +29,6 @@ const ELECTRIC_ARMOR_POWERSET = {
                 cast: 0.67,
                 buffDuration: 0.75
             }
-        }
         },
         {name: "Lightning Field",
             available: 0,
@@ -53,7 +52,6 @@ const ELECTRIC_ARMOR_POWERSET = {
                     type: "Energy",
                     scale: 0.2
                 }
-            }
         },
         {name: "Conductive Shield",
             available: 3,

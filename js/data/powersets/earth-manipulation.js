@@ -32,7 +32,6 @@ const EARTH_MANIPULATION_POWERSET = {
                     scale: 4.0908999999999995
                 }
             }
-        }
         },
         {name: "Stone Prison",
             available: 0,
@@ -126,7 +125,6 @@ const EARTH_MANIPULATION_POWERSET = {
                     type: "Smashing",
                     scale: 2.1324
                 }
-            }
         },
         {name: "Mud Bath",
             available: 19,

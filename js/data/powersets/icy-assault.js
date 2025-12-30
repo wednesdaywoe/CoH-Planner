@@ -42,7 +42,6 @@ const ICY_ASSAULT_POWERSET = {
                 },
                 buffDuration: 6.0
             }
-        }
         },
         {name: "Ice Sword",
             available: 0,

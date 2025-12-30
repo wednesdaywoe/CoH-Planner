@@ -35,7 +35,6 @@ const DARK_BLAST_POWERSET = {
                 buffDuration: 3.6,
                 tohitDebuff: 0.75
             }
-        }
         },
         {name: "Umbral Torrent",
             available: 1,

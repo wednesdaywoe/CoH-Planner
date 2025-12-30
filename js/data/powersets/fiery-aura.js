@@ -33,7 +33,6 @@ const FIERY_AURA_POWERSET = {
                     scale: 0.319
                 }
             }
-        }
         },
         {name: "Fire Shield",
             available: 0,
@@ -193,7 +192,6 @@ const FIERY_AURA_POWERSET = {
                     type: "Fire",
                     scale: 1.44
                 }
-            }
         },
         {name: "Fiery Embrace",
             available: 27,

@@ -43,7 +43,6 @@ const WATER_BLAST_POWERSET = {
                 defenseDebuff: 1.0,
                 buffDuration: 8.0
             }
-        }
         },
         {name: "Hydro Blast",
             available: 0,

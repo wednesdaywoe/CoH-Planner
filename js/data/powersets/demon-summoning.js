@@ -39,7 +39,6 @@ const DEMON_SUMMONING_POWERSET = {
                 },
                 buffDuration: 3.1
             }
-        }
         },
         {name: "Summon Demonlings",
             available: 0,

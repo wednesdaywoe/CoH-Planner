@@ -35,7 +35,6 @@ const STORM_SUMMONING_POWERSET = {
                     scale: 0.1
                 }
             }
-        }
         },
         {name: "O2 Boost",
             available: 0,

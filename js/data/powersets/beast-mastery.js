@@ -35,7 +35,6 @@ const BEAST_MASTERY_POWERSET = {
                 buffDuration: 3.1,
                 defenseDebuff: 1.0
             }
-        }
         },
         {name: "Summon Wolves",
             available: 0,

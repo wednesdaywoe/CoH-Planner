@@ -34,7 +34,6 @@ const ELECTRIC_CONTROL_POWERSET = {
                 },
                 buffDuration: 9.2
             }
-        }
         },
         {name: "Tesla Cage",
             available: 0,

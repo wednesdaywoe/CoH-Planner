@@ -47,7 +47,6 @@ const QUILLS_POWERSET = {
                 },
                 buffDuration: 4.0
             }
-        }
         },
         {name: "Lunge",
             available: 0,

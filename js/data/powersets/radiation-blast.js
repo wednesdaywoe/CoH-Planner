@@ -35,7 +35,6 @@ const RADIATION_BLAST_POWERSET = {
                 defenseDebuff: 1.0,
                 buffDuration: 3.0
             }
-        }
         },
         {name: "X-Ray Beam",
             available: 0,

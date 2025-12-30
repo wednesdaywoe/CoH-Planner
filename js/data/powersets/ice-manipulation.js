@@ -35,7 +35,6 @@ const ICE_MANIPULATION_POWERSET = {
                 },
                 buffDuration: 9.2
             }
-        }
         },
         {name: "Frozen Fists",
             available: 0,

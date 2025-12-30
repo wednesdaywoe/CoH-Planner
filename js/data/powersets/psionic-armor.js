@@ -27,7 +27,6 @@ const PSIONIC_ARMOR_POWERSET = {
                 endurance: 0.104,
                 cast: 1.17
             }
-        }
         },
         {name: "Psychic Wall",
             available: 0,

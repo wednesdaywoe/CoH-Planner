@@ -29,7 +29,6 @@ const THUGS_POWERSET = {
                 endurance: 5.46,
                 cast: 1.67
             }
-        }
         },
         {name: "Pistols",
             available: 0,
@@ -53,7 +52,6 @@ const THUGS_POWERSET = {
                     type: "Lethal",
                     scale: 2.3600000000000003
                 }
-            }
         },
         {name: "Dual Wield",
             available: 1,

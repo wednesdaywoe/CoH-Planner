@@ -35,7 +35,6 @@ const NINJA_TRAINING_POWERSET = {
                 },
                 buffDuration: 3.1
             }
-        }
         },
         {name: "Sting of the Wasp",
             available: 0,

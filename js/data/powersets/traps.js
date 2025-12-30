@@ -30,7 +30,6 @@ const TRAPS_POWERSET = {
                 cast: 1.07,
                 buffDuration: 45.0
             }
-        }
         },
         {name: "Web Grenade",
             available: 0,

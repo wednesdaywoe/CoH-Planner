@@ -28,7 +28,6 @@ const EMPATHY_POWERSET = {
                 endurance: 13.0,
                 cast: 2.27
             }
-        }
         },
         {name: "Healing Aura",
             available: 0,

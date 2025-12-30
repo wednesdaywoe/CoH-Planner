@@ -42,7 +42,6 @@ const SAVAGE_MELEE_POWERSET = {
                 },
                 buffDuration: 10.0
             }
-        }
         },
         {name: "Savage Strike",
             available: 0,
@@ -164,7 +163,6 @@ const SAVAGE_MELEE_POWERSET = {
                     ],
                     scale: 4.5389
                 }
-            }
         },
         {name: "Confront",
             available: 11,

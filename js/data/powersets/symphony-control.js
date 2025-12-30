@@ -34,7 +34,6 @@ const SYMPHONY_CONTROL_POWERSET = {
                 },
                 buffDuration: 18.0
             }
-        }
         },
         {name: "Melodic Binding",
             available: 0,
@@ -142,7 +141,6 @@ const SYMPHONY_CONTROL_POWERSET = {
                     type: "Psionic",
                     scale: 1.2437
                 }
-            }
         },
         {name: "Enfeebling Lullaby",
             available: 11,

@@ -42,7 +42,6 @@ const BROAD_SWORD_POWERSET = {
                 defenseDebuff: 1.0,
                 buffDuration: 10.0
             }
-        }
         },
         {name: "Slash",
             available: 0,

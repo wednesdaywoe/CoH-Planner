@@ -32,7 +32,6 @@ const BEAM_RIFLE_POWERSET = {
                     scale: 4.0586
                 }
             }
-        }
         },
         {name: "Single Shot",
             available: 0,

@@ -29,7 +29,6 @@ const RADIATION_EMISSION_POWERSET = {
                 endurance: 13.0,
                 cast: 2.03
             }
-        }
         },
         {name: "Radiation Infection",
             available: 0,

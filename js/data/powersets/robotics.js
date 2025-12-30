@@ -29,7 +29,6 @@ const ROBOTICS_POWERSET = {
                 endurance: 5.46,
                 cast: 2.03
             }
-        }
         },
         {name: "Pulse Rifle Blast",
             available: 0,

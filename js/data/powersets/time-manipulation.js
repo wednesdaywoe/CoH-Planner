@@ -30,7 +30,6 @@ const TIME_MANIPULATION_POWERSET = {
                 cast: 2.03,
                 buffDuration: 30.0
             }
-        }
         },
         {name: "Time Crawl",
             available: 0,

@@ -33,7 +33,6 @@ const ARSENAL_CONTROL_POWERSET = {
                 },
                 buffDuration: 12.0
             }
-        }
         },
         {name: "Tranquilizer",
             available: 0,

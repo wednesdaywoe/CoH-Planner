@@ -35,7 +35,6 @@ const POISON_POWERSET = {
                 },
                 buffDuration: 60.0
             }
-        }
         },
         {name: "Envenom",
             available: 0,

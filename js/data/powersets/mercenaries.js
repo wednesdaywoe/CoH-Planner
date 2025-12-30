@@ -36,7 +36,6 @@ const MERCENARIES_POWERSET = {
                 buffDuration: 0.91,
                 defenseDebuff: 1.0
             }
-        }
         },
         {name: "Soldiers",
             available: 0,

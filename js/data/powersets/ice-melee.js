@@ -57,7 +57,6 @@ const ICE_MELEE_POWERSET = {
                 },
                 buffDuration: 0.3
             }
-        }
         },
         {name: "Ice Sword",
             available: 0,

@@ -42,7 +42,6 @@ const COLD_DOMINATION_POWERSET = {
                 },
                 buffDuration: 240.0
             }
-        }
         },
         {name: "Infrigidate",
             available: 0,

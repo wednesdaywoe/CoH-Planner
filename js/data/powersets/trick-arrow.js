@@ -30,7 +30,6 @@ const TRICK_ARROW_POWERSET = {
                 cast: 1.0,
                 buffDuration: 30.0
             }
-        }
         },
         {name: "Flash Arrow",
             available: 0,

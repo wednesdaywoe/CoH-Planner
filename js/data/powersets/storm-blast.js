@@ -34,7 +34,6 @@ const STORM_BLAST_POWERSET = {
                 },
                 buffDuration: 4.0
             }
-        }
         },
         {name: "Hailstones",
             available: 0,
@@ -90,7 +89,6 @@ const STORM_BLAST_POWERSET = {
                     type: "Smashing",
                     scale: 1.6037
                 }
-            }
         },
         {name: "Storm Cell",
             available: 5,

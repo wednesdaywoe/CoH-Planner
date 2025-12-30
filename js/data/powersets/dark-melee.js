@@ -45,7 +45,6 @@ const DARK_MELEE_POWERSET = {
                 tohitDebuff: 0.75,
                 buffDuration: 6.0
             }
-        }
         },
         {name: "Smite",
             available: 0,
@@ -232,7 +231,6 @@ const DARK_MELEE_POWERSET = {
                     ],
                     scale: 3.3909
                 }
-            }
         },
         {name: "Soul Drain",
             available: 21,

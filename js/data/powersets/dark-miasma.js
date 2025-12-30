@@ -29,7 +29,6 @@ const DARK_MIASMA_POWERSET = {
                 cast: 3.1,
                 buffDuration: 45.0
             }
-        }
         },
         {name: "Twilight Grasp",
             available: 0,

@@ -34,7 +34,6 @@ const ICE_CONTROL_POWERSET = {
                 },
                 buffDuration: 12.0
             }
-        }
         },
         {name: "Chilblain",
             available: 0,
@@ -177,7 +176,6 @@ const ICE_CONTROL_POWERSET = {
                     type: "Cold",
                     scale: 0.2
                 }
-            }
         },
         {name: "Glacier",
             available: 21,

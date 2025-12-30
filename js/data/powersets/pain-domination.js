@@ -29,7 +29,6 @@ const PAIN_DOMINATION_POWERSET = {
                 endurance: 13.0,
                 cast: 2.03
             }
-        }
         },
         {name: "Soothe",
             available: 0,

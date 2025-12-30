@@ -25,7 +25,6 @@ const MARTIAL_MANIPULATION_POWERSET = {
             effects: {
                 accuracy: 1.0
             }
-        }
         },
         {name: "Ki Push",
             available: 0,

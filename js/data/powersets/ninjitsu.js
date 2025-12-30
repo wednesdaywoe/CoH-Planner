@@ -30,7 +30,6 @@ const NINJITSU_POWERSET = {
                 buffDuration: 0.75,
                 defenseBuff: 0.5
             }
-        }
         },
         {name: "Ninja Reflexes",
             available: 0,

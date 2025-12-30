@@ -38,7 +38,6 @@ const FIRE_BLAST_POWERSET = {
                 },
                 buffDuration: 3.1
             }
-        }
         },
         {name: "Fire Ball",
             available: 1,

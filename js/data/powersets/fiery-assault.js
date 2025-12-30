@@ -32,7 +32,6 @@ const FIERY_ASSAULT_POWERSET = {
                     scale: 2.0978
                 }
             }
-        }
         },
         {name: "Incinerate",
             available: 0,

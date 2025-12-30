@@ -28,7 +28,6 @@ const DARK_ARMOR_POWERSET = {
                 cast: 0.67,
                 buffDuration: 0.75
             }
-        }
         },
         {name: "Death Shroud",
             available: 0,
@@ -52,7 +51,6 @@ const DARK_ARMOR_POWERSET = {
                     type: "Negative",
                     scale: 0.2
                 }
-            }
         },
         {name: "Murky Cloud",
             available: 3,
@@ -120,7 +118,6 @@ const DARK_ARMOR_POWERSET = {
                     type: "Negative",
                     scale: 0.2
                 }
-            }
         },
         {name: "Obscure Sustenance",
             available: 15,

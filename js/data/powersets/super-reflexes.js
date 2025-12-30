@@ -30,7 +30,6 @@ const SUPER_REFLEXES_POWERSET = {
                 buffDuration: 0.75,
                 defenseBuff: 0.4
             }
-        }
         },
         {name: "Focused Senses",
             available: 0,

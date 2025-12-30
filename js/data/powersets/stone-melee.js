@@ -33,7 +33,6 @@ const STONE_MELEE_POWERSET = {
                     scale: 2.141
                 }
             }
-        }
         },
         {name: "Stone Mallet",
             available: 0,
@@ -57,7 +56,6 @@ const STONE_MELEE_POWERSET = {
                     type: "Smashing",
                     scale: 3.4869
                 }
-            }
         },
         {name: "Heavy Mallet",
             available: 1,
@@ -81,7 +79,6 @@ const STONE_MELEE_POWERSET = {
                     type: "Smashing",
                     scale: 4.301
                 }
-            }
         },
         {name: "Build Up",
             available: 5,
@@ -166,7 +163,6 @@ const STONE_MELEE_POWERSET = {
                     type: "Smashing",
                     scale: 5.8099
                 }
-            }
         },
         {name: "Hurl Boulder",
             available: 21,

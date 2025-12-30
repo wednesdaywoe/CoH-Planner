@@ -35,7 +35,6 @@ const TACTICAL_ARROW_POWERSET = {
                 },
                 buffDuration: 0.75
             }
-        }
         },
         {name: "Glue Arrow",
             available: 0,

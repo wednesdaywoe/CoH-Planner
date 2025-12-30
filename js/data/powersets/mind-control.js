@@ -34,7 +34,6 @@ const MIND_CONTROL_POWERSET = {
                 },
                 buffDuration: 10.0
             }
-        }
         },
         {name: "Mesmerize",
             available: 0,
@@ -58,7 +57,6 @@ const MIND_CONTROL_POWERSET = {
                     type: "Psionic",
                     scale: 1.809
                 }
-            }
         },
         {name: "Dominate",
             available: 1,
@@ -82,7 +80,6 @@ const MIND_CONTROL_POWERSET = {
                     type: "Psionic",
                     scale: 1.745
                 }
-            }
         },
         {name: "Confuse",
             available: 5,
@@ -192,7 +189,6 @@ const MIND_CONTROL_POWERSET = {
                     type: "Psionic",
                     scale: 1.7437
                 }
-            }
         },
         {name: "Mass Confusion",
             available: 25,

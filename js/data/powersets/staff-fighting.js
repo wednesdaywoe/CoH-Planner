@@ -28,7 +28,6 @@ const STAFF_FIGHTING_POWERSET = {
                 cast: 0.63,
                 buffDuration: 1.25
             }
-        }
         },
         {name: "Form of the Mind",
             available: -1,
@@ -210,7 +209,6 @@ const STAFF_FIGHTING_POWERSET = {
                     type: "Smashing",
                     scale: 1.9989
                 }
-            }
         },
         {name: "Innocuous Strikes",
             available: 21,

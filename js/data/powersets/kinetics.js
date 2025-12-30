@@ -29,7 +29,6 @@ const KINETICS_POWERSET = {
                 cast: 1.93,
                 buffDuration: 30.0
             }
-        }
         },
         {name: "Transfusion",
             available: 0,

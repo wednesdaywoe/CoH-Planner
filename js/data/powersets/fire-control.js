@@ -35,7 +35,6 @@ const FIRE_CONTROL_POWERSET = {
                 },
                 buffDuration: 4.2
             }
-        }
         },
         {name: "Ring of Fire",
             available: 0,

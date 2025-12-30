@@ -33,7 +33,6 @@ const ICE_BLAST_POWERSET = {
                 },
                 buffDuration: 6.0
             }
-        }
         },
         {name: "Frost Breath",
             available: 1,
