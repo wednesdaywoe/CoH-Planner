@@ -1,11 +1,11 @@
 /**
- * Force Field - Blaster Primary
- * Extracted from raw_data_homecoming with updated converter
+ * Force Field
+ * Extracted from raw_data_homecoming with redirect and entity support
  */
 
 const FORCE_FIELD_POWERSET = {
     name: "Force Field",
-    category: "Blaster_RANGED",
+    category: "UNKNOWN",
     description: "Force Field powerset",
     icon: "force-field_set.png",
     powers: [
@@ -23,6 +23,7 @@ const FORCE_FIELD_POWERSET = {
             targetType: "Ally (Alive)",
             effectArea: "AoE",
             maxTargets: 255,
+            radius: 30.0,
             effects: {
                 accuracy: 1.0,
                 range: 80.0,
@@ -34,10 +35,12 @@ const FORCE_FIELD_POWERSET = {
                     scale: 4.0,
                     ticks: 120
                 },
-                buffDuration: 240.0
+                resistanceDebuff: 4.0,
+                duration: 240.0
             }
         },
-        {name: "Personal Force Field",
+        {
+            name: "Personal Force Field",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -54,10 +57,12 @@ const FORCE_FIELD_POWERSET = {
                 recharge: 15.0,
                 endurance: 0.13,
                 cast: 2.03,
-                buffDuration: 0.75
+                resistanceBuff: 4.0,
+                duration: 0.75
             }
         },
-        {name: "Repulsion Bolt",
+        {
+            name: "Repulsion Bolt",
             available: 1,
             tier: 1,
             maxSlots: 6,
@@ -79,10 +84,13 @@ const FORCE_FIELD_POWERSET = {
                     type: "Smashing",
                     scale: 0.2
                 },
-                buffDuration: 30.0
+                knockback: 1.0,
+                resistanceDebuff: 2.0,
+                duration: 30.0
             }
         },
-        {name: "Insulation Shield",
+        {
+            name: "Insulation Shield",
             available: 5,
             tier: 3,
             maxSlots: 6,
@@ -95,18 +103,30 @@ const FORCE_FIELD_POWERSET = {
             targetType: "Ally (Alive)",
             effectArea: "AoE",
             maxTargets: 255,
+            radius: 30.0,
             effects: {
                 accuracy: 1.0,
                 range: 80.0,
                 recharge: 2.0,
                 endurance: 7.8,
                 cast: 2.07,
-                buffDuration: 240.0,
+                resistanceDebuff: 2.0,
+                duration: 240.0,
+                recoveryDebuff: 2.0,
+                hold: 1.0,
+                holdDuration: 90.0,
                 stun: 1.0,
-                stunDuration: 90.0
+                stunDuration: 90.0,
+                immobilize: 1.0,
+                immobilizeDuration: 90.0,
+                sleep: 1.0,
+                sleepDuration: 90.0,
+                confuse: 1.0,
+                confuseDuration: 90.0
             }
         },
-        {name: "Detention Field",
+        {
+            name: "Detention Field",
             available: 7,
             tier: 3,
             maxSlots: 6,
@@ -124,10 +144,12 @@ const FORCE_FIELD_POWERSET = {
                 recharge: 60.0,
                 endurance: 10.4,
                 cast: 2.07,
-                buffDuration: 30.0
+                immobilize: 1.0,
+                immobilizeDuration: 4.0
             }
         },
-        {name: "Dispersion Bubble",
+        {
+            name: "Dispersion Bubble",
             available: 11,
             tier: 4,
             maxSlots: 6,
@@ -140,17 +162,24 @@ const FORCE_FIELD_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 255,
+            radius: 25.0,
             effects: {
                 accuracy: 1.0,
                 recharge: 15.0,
                 endurance: 1.04,
                 cast: 1.07,
-                buffDuration: 15.0,
+                hold: 1.0,
+                holdDuration: 15.0,
                 stun: 1.0,
-                stunDuration: 15.0
+                stunDuration: 15.0,
+                immobilize: 1.0,
+                immobilizeDuration: 15.0,
+                resistanceDebuff: 2.0,
+                duration: 15.0
             }
         },
-        {name: "Repulsion Field",
+        {
+            name: "Repulsion Field",
             available: 17,
             tier: 4,
             maxSlots: 6,
@@ -163,6 +192,7 @@ const FORCE_FIELD_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 25.0,
             effects: {
                 accuracy: 1.0,
                 recharge: 20.0,
@@ -170,7 +200,8 @@ const FORCE_FIELD_POWERSET = {
                 cast: 2.03
             }
         },
-        {name: "Force Bomb",
+        {
+            name: "Force Bomb",
             available: 21,
             tier: 5,
             maxSlots: 6,
@@ -183,6 +214,7 @@ const FORCE_FIELD_POWERSET = {
             targetType: "Foe (Alive)",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 15.0,
             effects: {
                 accuracy: 1.2,
                 range: 70.0,
@@ -193,10 +225,13 @@ const FORCE_FIELD_POWERSET = {
                     type: "Smashing",
                     scale: 0.6
                 },
-                buffDuration: 30.0
+                knockback: 1.0,
+                resistanceDebuff: 1.5,
+                duration: 30.0
             }
         },
-        {name: "Damping Bubble",
+        {
+            name: "Damping Bubble",
             available: 25,
             tier: 5,
             maxSlots: 6,
@@ -214,7 +249,14 @@ const FORCE_FIELD_POWERSET = {
                 recharge: 90.0,
                 endurance: 5.2,
                 cast: 1.07,
-                buffDuration: 45.0
+                resistanceDebuff: 0.5,
+                duration: 45.0,
+                tohitDebuff: 1.0,
+                rechargeDebuff: 1.0,
+                movementDebuff: 1.0,
+                regenerationDebuff: 1.0,
+                defenseDebuff: 0.5,
+                movementBuff: 1.0
             }
         }
     ]

@@ -1,11 +1,11 @@
 /**
- * Sonic Debuff - Blaster Primary
- * Extracted from raw_data_homecoming with updated converter
+ * Sonic Debuff
+ * Extracted from raw_data_homecoming with redirect and entity support
  */
 
 const SONIC_DEBUFF_POWERSET = {
     name: "Sonic Debuff",
-    category: "Blaster_RANGED",
+    category: "UNKNOWN",
     description: "Sonic Debuff powerset",
     icon: "sonic-debuff_set.png",
     powers: [
@@ -23,6 +23,7 @@ const SONIC_DEBUFF_POWERSET = {
             targetType: "Ally (Alive)",
             effectArea: "AoE",
             maxTargets: 255,
+            radius: 30.0,
             effects: {
                 accuracy: 1.0,
                 range: 80.0,
@@ -48,19 +49,9 @@ const SONIC_DEBUFF_POWERSET = {
                         }
                     ]
                 },
-                buffDuration: 240.0
+                resistanceDebuff: 2.0,
+                duration: 240.0
             }
-        },
-        {
-            name: "Sonic Resonance",
-            available: 0,
-            tier: 1,
-            maxSlots: 6,
-            allowedEnhancements: ["Damage", "Accuracy", "Recharge", "EnduranceReduction"],
-            allowedSetCategories: [],
-            description: "You have the ability to control sound in several fashions. You can create semi-solid barriers, set up waves which weaken or strengthen a target, as well as creating soothing sounds which act to counteract any negative effects which may exist on your friends.",
-            shortHelp: "Sonic Resonance",
-            icon: "sonic_debuff_set.png"
         },
         {
             name: "Sonic Siphon",
@@ -81,7 +72,8 @@ const SONIC_DEBUFF_POWERSET = {
                 recharge: 16.0,
                 endurance: 8.528,
                 cast: 2.17,
-                buffDuration: 30.0
+                resistanceDebuff: 3.0,
+                duration: 30.0
             }
         },
         {
@@ -98,6 +90,7 @@ const SONIC_DEBUFF_POWERSET = {
             targetType: "Ally (Alive)",
             effectArea: "AoE",
             maxTargets: 255,
+            radius: 30.0,
             effects: {
                 accuracy: 1.0,
                 range: 80.0,
@@ -128,7 +121,8 @@ const SONIC_DEBUFF_POWERSET = {
                         }
                     ]
                 },
-                buffDuration: 240.0
+                resistanceDebuff: 2.0,
+                duration: 240.0
             }
         },
         {
@@ -150,7 +144,8 @@ const SONIC_DEBUFF_POWERSET = {
                 recharge: 60.0,
                 endurance: 12.48,
                 cast: 1.67,
-                buffDuration: 30.0
+                immobilize: 1.0,
+                immobilizeDuration: 4.0
             }
         },
         {
@@ -167,13 +162,15 @@ const SONIC_DEBUFF_POWERSET = {
             targetType: "Ally (Alive)",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 15.0,
             effects: {
                 accuracy: 1.0,
                 range: 70.0,
                 recharge: 8.0,
                 endurance: 0.26,
                 cast: 2.7,
-                buffDuration: 0.75
+                resistanceDebuff: 3.0,
+                duration: 0.75
             }
         },
         {
@@ -190,6 +187,7 @@ const SONIC_DEBUFF_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 255,
+            radius: 25.0,
             effects: {
                 accuracy: 1.0,
                 recharge: 15.0,
@@ -200,9 +198,15 @@ const SONIC_DEBUFF_POWERSET = {
                     scale: 1.5,
                     ticks: 1
                 },
-                buffDuration: 2.25,
+                resistanceDebuff: 2.0,
+                duration: 2.25,
+                resistanceBuff: 1.5,
+                hold: 1.0,
+                holdDuration: 2.25,
                 stun: 1.0,
-                stunDuration: 2.25
+                stunDuration: 2.25,
+                immobilize: 1.0,
+                immobilizeDuration: 2.25
             }
         },
         {
@@ -219,13 +223,13 @@ const SONIC_DEBUFF_POWERSET = {
             targetType: "Leaguemate (Alive)",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 10.0,
             effects: {
                 accuracy: 1.0,
                 range: 70.0,
                 recharge: 8.0,
                 endurance: 0.325,
-                cast: 2.33,
-                buffDuration: 0.5
+                cast: 2.33
             }
         },
         {
@@ -247,9 +251,18 @@ const SONIC_DEBUFF_POWERSET = {
                 recharge: 4.0,
                 endurance: 5.2,
                 cast: 1.5,
+                hold: 1.0,
+                holdDuration: 90.0,
                 stun: 1.0,
                 stunDuration: 90.0,
-                buffDuration: 90.0
+                immobilize: 1.0,
+                immobilizeDuration: 90.0,
+                sleep: 1.0,
+                sleepDuration: 90.0,
+                confuse: 1.0,
+                confuseDuration: 90.0,
+                resistanceDebuff: 2.5,
+                duration: 90.0
             }
         },
         {
@@ -270,8 +283,7 @@ const SONIC_DEBUFF_POWERSET = {
                 range: 60.0,
                 recharge: 150.0,
                 endurance: 23.4,
-                cast: 2.67,
-                buffDuration: 30.0
+                cast: 2.67
             }
         }
     ]

@@ -1,11 +1,11 @@
 /**
- * Ice Armor - Blaster Primary
- * Extracted from raw_data_homecoming with updated converter
+ * Ice Armor
+ * Extracted from raw_data_homecoming with redirect and entity support
  */
 
 const ICE_ARMOR_POWERSET = {
     name: "Ice Armor",
-    category: "Blaster_RANGED",
+    category: "UNKNOWN",
     description: "Ice Armor powerset",
     icon: "ice-armor_set.png",
     powers: [
@@ -27,11 +27,13 @@ const ICE_ARMOR_POWERSET = {
                 recharge: 2.0,
                 endurance: 0.13,
                 cast: 0.73,
-                buffDuration: 0.75,
+                resistanceBuff: 0.4,
+                duration: 0.75,
                 defenseBuff: 0.4
             }
         },
-        {name: "Hoarfrost",
+        {
+            name: "Hoarfrost",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -53,10 +55,13 @@ const ICE_ARMOR_POWERSET = {
                     scale: 2.0,
                     ticks: 60
                 },
-                buffDuration: 120.0
+                resistanceBuff: 2.0,
+                duration: 120.0,
+                healing: 4.0
             }
         },
-        {name: "Rime",
+        {
+            name: "Rime",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -78,10 +83,14 @@ const ICE_ARMOR_POWERSET = {
                     scale: 2.0,
                     ticks: 30
                 },
-                buffDuration: 60.0
+                resistanceBuff: 2.0,
+                duration: 60.0,
+                absorb: 3.0,
+                regenerationBuff: 1.0
             }
         },
-        {name: "Chilling Embrace",
+        {
+            name: "Chilling Embrace",
             available: 3,
             tier: 2,
             maxSlots: 6,
@@ -94,15 +103,19 @@ const ICE_ARMOR_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 10,
+            radius: 10.0,
             effects: {
                 accuracy: 1.0,
                 recharge: 2.0,
                 endurance: 0.13,
                 cast: 0.73,
-                buffDuration: 5.0
+                movementDebuff: 1.0,
+                duration: 5.0,
+                rechargeDebuff: 0.4
             }
         },
-        {name: "Wet Ice",
+        {
+            name: "Wet Ice",
             available: 9,
             tier: 3,
             maxSlots: 6,
@@ -119,14 +132,25 @@ const ICE_ARMOR_POWERSET = {
                 recharge: 2.0,
                 endurance: 0.13,
                 cast: 0.73,
-                buffDuration: 0.75,
+                resistanceBuff: 0.4,
+                duration: 0.75,
+                knockback: 1.0,
+                hold: 1.0,
+                holdDuration: 0.75,
                 stun: 1.0,
                 stunDuration: 0.75,
-                tohitBuff: 0.3,
-                defenseBuff: 0.4
+                immobilize: 1.0,
+                immobilizeDuration: 0.75,
+                sleep: 1.0,
+                sleepDuration: 0.75,
+                rechargeBuff: 0.5,
+                movementBuff: 0.5,
+                defenseBuff: 0.4,
+                tohitBuff: 0.3
             }
         },
-        {name: "Glacial Armor",
+        {
+            name: "Glacial Armor",
             available: 15,
             tier: 4,
             maxSlots: 6,
@@ -143,11 +167,13 @@ const ICE_ARMOR_POWERSET = {
                 recharge: 2.0,
                 endurance: 0.13,
                 cast: 2.03,
-                buffDuration: 0.75,
+                resistanceBuff: 0.4,
+                duration: 0.75,
                 defenseBuff: 0.4
             }
         },
-        {name: "Energy Absorption",
+        {
+            name: "Energy Absorption",
             available: 19,
             tier: 4,
             maxSlots: 6,
@@ -160,6 +186,7 @@ const ICE_ARMOR_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 10,
+            radius: 12.0,
             effects: {
                 accuracy: 1.0,
                 recharge: 60.0,
@@ -167,7 +194,8 @@ const ICE_ARMOR_POWERSET = {
                 cast: 1.33
             }
         },
-        {name: "Permafrost",
+        {
+            name: "Permafrost",
             available: 23,
             tier: 5,
             maxSlots: 6,
@@ -186,35 +214,53 @@ const ICE_ARMOR_POWERSET = {
                         {
                             type: "Cold",
                             scale: 3.0,
-                            ticks: 5},
-        {type: "Fire",
+                            ticks: 5
+                        },
+                        {
+                            type: "Fire",
                             scale: 1.25,
-                            ticks: 5},
-        {type: "Smashing",
+                            ticks: 5
+                        },
+                        {
+                            type: "Smashing",
                             scale: 0.5,
-                            ticks: 5},
-        {type: "Lethal",
+                            ticks: 5
+                        },
+                        {
+                            type: "Lethal",
                             scale: 0.5,
-                            ticks: 5},
-        {type: "Energy",
+                            ticks: 5
+                        },
+                        {
+                            type: "Energy",
                             scale: 0.5,
-                            ticks: 5},
-        {type: "Negative",
+                            ticks: 5
+                        },
+                        {
+                            type: "Negative",
                             scale: 0.5,
-                            ticks: 5},
-        {type: "Psionic",
+                            ticks: 5
+                        },
+                        {
+                            type: "Psionic",
                             scale: 0.5,
-                            ticks: 5},
-        {type: "Toxic",
+                            ticks: 5
+                        },
+                        {
+                            type: "Toxic",
                             scale: 0.5,
                             ticks: 5
                         }
                     ]
                 },
-                buffDuration: 10.25
+                resistanceBuff: 0.2,
+                duration: 10.25,
+                rechargeBuff: 0.2,
+                movementBuff: 0.2
             }
         },
-        {name: "Icicles",
+        {
+            name: "Icicles",
             available: 27,
             tier: 5,
             maxSlots: 6,
@@ -227,6 +273,7 @@ const ICE_ARMOR_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 10,
+            radius: 8.0,
             effects: {
                 accuracy: 1.0,
                 recharge: 4.0,
@@ -238,7 +285,8 @@ const ICE_ARMOR_POWERSET = {
                             type: "Cold",
                             scale: 0.2
                         },
-        {type: "Fire",
+                        {
+                            type: "Fire",
                             scale: 0.09
                         }
                     ],
@@ -246,7 +294,8 @@ const ICE_ARMOR_POWERSET = {
                 }
             }
         },
-        {name: "Icy Bastion",
+        {
+            name: "Icy Bastion",
             available: 29,
             tier: 5,
             maxSlots: 6,
@@ -261,7 +310,20 @@ const ICE_ARMOR_POWERSET = {
             effects: {
                 accuracy: 1.0,
                 recharge: 300.0,
-                endurance: 0.1085
+                endurance: 0.1085,
+                knockback: 1.0,
+                resistanceBuff: 6.0,
+                duration: 30.0,
+                recoveryBuff: 2.0,
+                regenerationBuff: 4.0,
+                hold: 1.0,
+                holdDuration: 30.0,
+                stun: 1.0,
+                stunDuration: 30.0,
+                immobilize: 1.0,
+                immobilizeDuration: 30.0,
+                sleep: 1.0,
+                sleepDuration: 30.0
             }
         }
     ]

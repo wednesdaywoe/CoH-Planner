@@ -1,11 +1,11 @@
 /**
- * Poison - Blaster Primary
- * Extracted from raw_data_homecoming with updated converter
+ * Poison
+ * Extracted from raw_data_homecoming with redirect and entity support
  */
 
 const POISON_POWERSET = {
     name: "Poison",
-    category: "Blaster_RANGED",
+    category: "UNKNOWN",
     description: "Poison powerset",
     icon: "poison_set.png",
     powers: [
@@ -33,10 +33,13 @@ const POISON_POWERSET = {
                     scale: 2.0,
                     ticks: 30
                 },
-                buffDuration: 60.0
+                healing: 1.73,
+                resistanceDebuff: 2.0,
+                duration: 60.0
             }
         },
-        {name: "Envenom",
+        {
+            name: "Envenom",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -49,6 +52,7 @@ const POISON_POWERSET = {
             targetType: "Foe (Alive)",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 8.0,
             effects: {
                 accuracy: 1.0,
                 range: 70.0,
@@ -56,10 +60,14 @@ const POISON_POWERSET = {
                 endurance: 10.4,
                 cast: 1.33,
                 defenseDebuff: 1.5,
-                buffDuration: 30.0
+                duration: 30.0,
+                resistanceDebuff: 1.0,
+                healing: 1.0,
+                regenerationDebuff: 5.75
             }
         },
-        {name: "Weaken",
+        {
+            name: "Weaken",
             available: 1,
             tier: 1,
             maxSlots: 6,
@@ -72,17 +80,19 @@ const POISON_POWERSET = {
             targetType: "Foe (Alive)",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 8.0,
             effects: {
                 accuracy: 1.0,
                 range: 70.0,
                 recharge: 16.0,
                 endurance: 10.4,
                 cast: 2.07,
-                buffDuration: 30.0,
-                tohitDebuff: 0.75
+                tohitDebuff: 0.75,
+                duration: 30.0
             }
         },
-        {name: "Neurotoxic Breath",
+        {
+            name: "Neurotoxic Breath",
             available: 5,
             tier: 3,
             maxSlots: 6,
@@ -96,16 +106,21 @@ const POISON_POWERSET = {
             effectArea: "Cone",
             maxTargets: 16,
             arc: 0.5236,
+            radius: 60.0,
             effects: {
                 accuracy: 1.0,
                 range: 60.0,
                 recharge: 30.0,
                 endurance: 10.4,
                 cast: 2.67,
-                buffDuration: 20.0
+                rechargeDebuff: 0.65,
+                duration: 20.0,
+                movementDebuff: 0.65,
+                hold: 2.0
             }
         },
-        {name: "Elixir of Life",
+        {
+            name: "Elixir of Life",
             available: 7,
             tier: 3,
             maxSlots: 6,
@@ -128,12 +143,18 @@ const POISON_POWERSET = {
                     scale: 2.0,
                     ticks: 45
                 },
-                buffDuration: 0.5,
-                tohitBuff: 3.0,
-                tohitDebuff: 3.0
+                healing: 1.0,
+                recoveryDebuff: 2.0,
+                rechargeDebuff: 1.0,
+                duration: 90.0,
+                tohitDebuff: 3.0,
+                resistanceDebuff: 2.0,
+                hold: 1.0,
+                holdDuration: 4.0
             }
         },
-        {name: "Antidote",
+        {
+            name: "Antidote",
             available: 11,
             tier: 4,
             maxSlots: 6,
@@ -156,19 +177,33 @@ const POISON_POWERSET = {
                         {
                             type: "Toxic",
                             scale: 2.0,
-                            ticks: 45},
-        {type: "Cold",
+                            ticks: 45
+                        },
+                        {
+                            type: "Cold",
                             scale: 1.0,
                             ticks: 45
                         }
                     ]
                 },
+                hold: 1.0,
+                holdDuration: 90.0,
                 stun: 1.0,
                 stunDuration: 90.0,
-                buffDuration: 90.0
+                immobilize: 1.0,
+                immobilizeDuration: 90.0,
+                sleep: 1.0,
+                sleepDuration: 90.0,
+                confuse: 1.0,
+                confuseDuration: 90.0,
+                resistanceDebuff: 2.0,
+                duration: 90.0,
+                rechargeDebuff: 0.5,
+                movementDebuff: 0.5
             }
         },
-        {name: "Paralytic Poison",
+        {
+            name: "Paralytic Poison",
             available: 17,
             tier: 4,
             maxSlots: 6,
@@ -185,10 +220,12 @@ const POISON_POWERSET = {
                 range: 70.0,
                 recharge: 16.0,
                 endurance: 7.8,
-                cast: 2.0
+                cast: 2.0,
+                hold: 3.0
             }
         },
-        {name: "Poison Trap",
+        {
+            name: "Poison Trap",
             available: 21,
             tier: 5,
             maxSlots: 6,
@@ -204,11 +241,11 @@ const POISON_POWERSET = {
                 accuracy: 1.0,
                 recharge: 60.0,
                 endurance: 10.4,
-                cast: 1.0,
-                buffDuration: 260.0
+                cast: 1.0
             }
         },
-        {name: "Venomous Gas",
+        {
+            name: "Venomous Gas",
             available: 25,
             tier: 5,
             maxSlots: 6,
@@ -221,13 +258,15 @@ const POISON_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 15.0,
             effects: {
                 accuracy: 1.0,
                 range: 70.0,
                 recharge: 8.0,
                 endurance: 0.26,
                 cast: 2.03,
-                buffDuration: 0.75,
+                resistanceDebuff: 2.5,
+                duration: 0.75,
                 defenseDebuff: 1.0,
                 tohitDebuff: 1.0
             }

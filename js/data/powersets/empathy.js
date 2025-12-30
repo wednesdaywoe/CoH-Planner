@@ -1,15 +1,16 @@
 /**
- * Empathy - Blaster Primary
- * Extracted from raw_data_homecoming with updated converter
+ * Empathy
+ * Extracted from raw_data_homecoming with redirect and entity support
  */
 
 const EMPATHY_POWERSET = {
     name: "Empathy",
-    category: "Blaster_RANGED",
+    category: "UNKNOWN",
     description: "Empathy powerset",
     icon: "empathy_set.png",
     powers: [
-        {name: "Heal Other",
+        {
+            name: "Heal Other",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -26,10 +27,12 @@ const EMPATHY_POWERSET = {
                 range: 80.0,
                 recharge: 4.0,
                 endurance: 13.0,
-                cast: 2.27
+                cast: 2.27,
+                healing: 1.96
             }
         },
-        {name: "Healing Aura",
+        {
+            name: "Healing Aura",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -42,14 +45,17 @@ const EMPATHY_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 255,
+            radius: 25.0,
             effects: {
                 accuracy: 1.0,
                 recharge: 8.0,
                 endurance: 13.0,
-                cast: 2.03
+                cast: 2.03,
+                healing: 1.0
             }
         },
-        {name: "Absorb Pain",
+        {
+            name: "Absorb Pain",
             available: 1,
             tier: 1,
             maxSlots: 6,
@@ -67,10 +73,14 @@ const EMPATHY_POWERSET = {
                 recharge: 15.0,
                 endurance: 0.52,
                 cast: 2.27,
-                buffDuration: 20.0
+                healing: 0.5,
+                regenerationDebuff: 0.5,
+                resistanceBuff: 0.5,
+                duration: 20.0
             }
         },
-        {name: "Resurrect",
+        {
+            name: "Resurrect",
             available: 5,
             tier: 3,
             maxSlots: 6,
@@ -88,10 +98,11 @@ const EMPATHY_POWERSET = {
                 recharge: 180.0,
                 endurance: 26.0,
                 cast: 3.2,
-                buffDuration: 0.5
+                healing: 1.0
             }
         },
-        {name: "Clear Mind",
+        {
+            name: "Clear Mind",
             available: 7,
             tier: 3,
             maxSlots: 6,
@@ -109,12 +120,22 @@ const EMPATHY_POWERSET = {
                 recharge: 4.0,
                 endurance: 5.2,
                 cast: 1.0,
+                hold: 1.0,
+                holdDuration: 90.0,
                 stun: 1.0,
                 stunDuration: 90.0,
-                buffDuration: 90.0
+                immobilize: 1.0,
+                immobilizeDuration: 90.0,
+                sleep: 1.0,
+                sleepDuration: 90.0,
+                confuse: 1.0,
+                confuseDuration: 90.0,
+                resistanceDebuff: 2.5,
+                duration: 90.0
             }
         },
-        {name: "Fortitude",
+        {
+            name: "Fortitude",
             available: 11,
             tier: 4,
             maxSlots: 6,
@@ -132,11 +153,12 @@ const EMPATHY_POWERSET = {
                 recharge: 60.0,
                 endurance: 10.4,
                 cast: 2.27,
-                tohitBuff: 1.5,
-                buffDuration: 120.0
+                tohitDebuff: 1.5,
+                duration: 120.0
             }
         },
-        {name: "Recovery Aura",
+        {
+            name: "Recovery Aura",
             available: 17,
             tier: 4,
             maxSlots: 6,
@@ -149,15 +171,17 @@ const EMPATHY_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 255,
+            radius: 25.0,
             effects: {
                 accuracy: 1.0,
                 recharge: 500.0,
                 endurance: 26.0,
                 cast: 2.03,
-                buffDuration: 90.0
+                recoveryDebuff: 2.0
             }
         },
-        {name: "Regeneration Aura",
+        {
+            name: "Regeneration Aura",
             available: 21,
             tier: 5,
             maxSlots: 6,
@@ -170,15 +194,17 @@ const EMPATHY_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 255,
+            radius: 25.0,
             effects: {
                 accuracy: 1.0,
                 recharge: 500.0,
                 endurance: 26.0,
                 cast: 2.03,
-                buffDuration: 90.0
+                regenerationDebuff: 5.0
             }
         },
-        {name: "Adrenalin Boost",
+        {
+            name: "Adrenalin Boost",
             available: 25,
             tier: 5,
             maxSlots: 6,
@@ -196,7 +222,12 @@ const EMPATHY_POWERSET = {
                 recharge: 300.0,
                 endurance: 10.4,
                 cast: 2.27,
-                buffDuration: 90.0
+                recoveryDebuff: 8.0,
+                regenerationDebuff: 5.0,
+                rechargeDebuff: 0.8,
+                duration: 90.0,
+                resistanceDebuff: 0.8,
+                movementDebuff: 0.8
             }
         }
     ]

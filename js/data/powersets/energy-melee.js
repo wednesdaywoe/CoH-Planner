@@ -1,11 +1,11 @@
 /**
- * Energy Melee - Blaster Primary
- * Extracted from raw_data_homecoming with updated converter
+ * Energy Melee
+ * Extracted from raw_data_homecoming with redirect and entity support
  */
 
 const ENERGY_MELEE_POWERSET = {
     name: "Energy Melee",
-    category: "Blaster_RANGED",
+    category: "UNKNOWN",
     description: "Energy Melee powerset",
     icon: "energy-melee_set.png",
     powers: [
@@ -33,20 +33,25 @@ const ENERGY_MELEE_POWERSET = {
                         {
                             type: "Energy",
                             scale: 1.0891,
-                            ticks: 1},
-        {type: "Smashing",
+                            ticks: 1
+                        },
+                        {
+                            type: "Smashing",
                             scale: 0.3564,
-                            ticks: 1},
-        {type: "Fire",
+                            ticks: 1
+                        },
+                        {
+                            type: "Fire",
                             scale: 0.297,
                             ticks: 1
                         }
                     ]
                 },
-                buffDuration: 0.3
+                regenerationDebuff: 1.0
             }
         },
-        {name: "Energy Punch",
+        {
+            name: "Energy Punch",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -70,10 +75,12 @@ const ENERGY_MELEE_POWERSET = {
                             type: "Energy",
                             scale: 1.6387
                         },
-        {type: "Smashing",
+                        {
+                            type: "Smashing",
                             scale: 0.7022999999999999
                         },
-        {type: "Fire",
+                        {
+                            type: "Fire",
                             scale: 0.522
                         }
                     ],
@@ -81,7 +88,8 @@ const ENERGY_MELEE_POWERSET = {
                 }
             }
         },
-        {name: "Bone Smasher",
+        {
+            name: "Bone Smasher",
             available: 1,
             tier: 1,
             maxSlots: 6,
@@ -105,10 +113,12 @@ const ENERGY_MELEE_POWERSET = {
                             type: "Energy",
                             scale: 2.0780000000000003
                         },
-        {type: "Smashing",
+                        {
+                            type: "Smashing",
                             scale: 1.171
                         },
-        {type: "Fire",
+                        {
+                            type: "Fire",
                             scale: 0.738
                         }
                     ],
@@ -116,7 +126,8 @@ const ENERGY_MELEE_POWERSET = {
                 }
             }
         },
-        {name: "Build Up",
+        {
+            name: "Build Up",
             available: 5,
             tier: 3,
             maxSlots: 6,
@@ -134,10 +145,11 @@ const ENERGY_MELEE_POWERSET = {
                 endurance: 5.2,
                 cast: 1.17,
                 tohitBuff: 2.0,
-                buffDuration: 10.0
+                duration: 10.0
             }
         },
-        {name: "Power Crash",
+        {
+            name: "Power Crash",
             available: 7,
             tier: 3,
             maxSlots: 6,
@@ -151,6 +163,7 @@ const ENERGY_MELEE_POWERSET = {
             effectArea: "Cone",
             maxTargets: 5,
             arc: 2.0944,
+            radius: 10.0,
             effects: {
                 accuracy: 1.0,
                 range: 10.0,
@@ -163,10 +176,12 @@ const ENERGY_MELEE_POWERSET = {
                             type: "Energy",
                             scale: 1.4809
                         },
-        {type: "Smashing",
+                        {
+                            type: "Smashing",
                             scale: 1.0725
                         },
-        {type: "Fire",
+                        {
+                            type: "Fire",
                             scale: 0.5415
                         }
                     ],
@@ -174,7 +189,8 @@ const ENERGY_MELEE_POWERSET = {
                 }
             }
         },
-        {name: "Confront",
+        {
+            name: "Confront",
             available: 11,
             tier: 4,
             maxSlots: 6,
@@ -190,11 +206,11 @@ const ENERGY_MELEE_POWERSET = {
                 accuracy: 1.0,
                 range: 70.0,
                 recharge: 3.0,
-                cast: 1.67,
-                buffDuration: 12.0
+                cast: 1.67
             }
         },
-        {name: "Whirling Hands",
+        {
+            name: "Whirling Hands",
             available: 17,
             tier: 4,
             maxSlots: 6,
@@ -207,6 +223,7 @@ const ENERGY_MELEE_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 10,
+            radius: 8.0,
             effects: {
                 accuracy: 1.0,
                 recharge: 14.0,
@@ -218,10 +235,12 @@ const ENERGY_MELEE_POWERSET = {
                             type: "Energy",
                             scale: 1.4
                         },
-        {type: "Smashing",
+                        {
+                            type: "Smashing",
                             scale: 1.0138
                         },
-        {type: "Fire",
+                        {
+                            type: "Fire",
                             scale: 0.5318
                         }
                     ],
@@ -229,7 +248,8 @@ const ENERGY_MELEE_POWERSET = {
                 }
             }
         },
-        {name: "Total Focus",
+        {
+            name: "Total Focus",
             available: 21,
             tier: 5,
             maxSlots: 6,
@@ -253,10 +273,12 @@ const ENERGY_MELEE_POWERSET = {
                             type: "Energy",
                             scale: 4.6396
                         },
-        {type: "Smashing",
+                        {
+                            type: "Smashing",
                             scale: 1.8913
                         },
-        {type: "Fire",
+                        {
+                            type: "Fire",
                             scale: 1.602
                         }
                     ],
@@ -265,7 +287,8 @@ const ENERGY_MELEE_POWERSET = {
                 stun: 3.0
             }
         },
-        {name: "Energy Transfer",
+        {
+            name: "Energy Transfer",
             available: 25,
             tier: 5,
             maxSlots: 6,

@@ -1,25 +1,14 @@
 /**
- * Shock Therapy - Blaster Primary
- * Extracted from raw_data_homecoming with updated converter
+ * Shock Therapy
+ * Extracted from raw_data_homecoming with redirect and entity support
  */
 
 const SHOCK_THERAPY_POWERSET = {
     name: "Shock Therapy",
-    category: "Blaster_RANGED",
+    category: "UNKNOWN",
     description: "Shock Therapy powerset",
     icon: "shock-therapy_set.png",
     powers: [
-        {
-            name: "Electrical Affinity",
-            available: 0,
-            tier: 1,
-            maxSlots: 6,
-            allowedEnhancements: ["Damage", "Accuracy", "Recharge", "EnduranceReduction"],
-            allowedSetCategories: [],
-            description: "You are able to control and manipulate electricity to aid your allies and weaken your enemies. Some Electrical Affinity powers build Static, which increases the number of targets your Circuit powers can chain to.",
-            shortHelp: "Electrical Affinity",
-            icon: "shock_therapy_set.png"
-        },
         {
             name: "Rejuvenating Circuit",
             available: 0,
@@ -34,12 +23,14 @@ const SHOCK_THERAPY_POWERSET = {
             targetType: "Ally (Alive)",
             effectArea: "Chain",
             maxTargets: 5,
+            radius: 25.0,
             effects: {
                 accuracy: 1.0,
                 range: 80.0,
                 recharge: 8.0,
                 endurance: 13.0,
-                cast: 1.17
+                cast: 1.17,
+                healing: 0.41
             }
         },
         {
@@ -61,7 +52,8 @@ const SHOCK_THERAPY_POWERSET = {
                 recharge: 12.0,
                 endurance: 8.528,
                 cast: 2.0,
-                buffDuration: 25.0
+                regenerationDebuff: 0.75,
+                recoveryDebuff: 0.75
             }
         },
         {
@@ -77,13 +69,13 @@ const SHOCK_THERAPY_POWERSET = {
             powerType: "Click",
             targetType: "Location",
             effectArea: "Location",
+            radius: 15.0,
             effects: {
                 accuracy: 1.0,
                 range: 80.0,
                 recharge: 60.0,
                 endurance: 25.0,
-                cast: 2.03,
-                buffDuration: 120.0
+                cast: 2.03
             }
         },
         {
@@ -100,13 +92,15 @@ const SHOCK_THERAPY_POWERSET = {
             targetType: "Ally (Alive)",
             effectArea: "Chain",
             maxTargets: 5,
+            radius: 25.0,
             effects: {
                 accuracy: 1.0,
                 range: 80.0,
                 recharge: 35.0,
                 endurance: 13.0,
                 cast: 1.67,
-                buffDuration: 5.0
+                rechargeDebuff: 1.25,
+                duration: 5.0
             }
         },
         {
@@ -128,7 +122,20 @@ const SHOCK_THERAPY_POWERSET = {
                 recharge: 10.0,
                 endurance: 13.0,
                 cast: 1.07,
-                buffDuration: 240.0
+                resistanceDebuff: 1.0,
+                duration: 240.0,
+                rechargeDebuff: 0.7,
+                recoveryDebuff: 0.7,
+                immobilize: 1.0,
+                immobilizeDuration: 20.0,
+                hold: 1.0,
+                holdDuration: 20.0,
+                stun: 1.0,
+                stunDuration: 20.0,
+                sleep: 1.0,
+                sleepDuration: 20.0,
+                knockback: 1.0,
+                movementBuff: 1.0
             }
         },
         {
@@ -145,14 +152,15 @@ const SHOCK_THERAPY_POWERSET = {
             targetType: "Ally (Alive)",
             effectArea: "Chain",
             maxTargets: 5,
+            radius: 25.0,
             effects: {
                 accuracy: 1.0,
                 range: 80.0,
                 recharge: 15.0,
                 endurance: 13.0,
                 cast: 1.0,
-                buffDuration: 60.0,
-                tohitBuff: 1.2
+                tohitDebuff: 1.2,
+                duration: 60.0
             }
         },
         {
@@ -173,7 +181,10 @@ const SHOCK_THERAPY_POWERSET = {
                 range: 7.0,
                 recharge: 120.0,
                 endurance: 26.0,
-                cast: 3.3
+                cast: 3.3,
+                healing: 1.0,
+                sleep: 3.0,
+                recoveryDebuff: 30.0
             }
         },
         {
@@ -190,13 +201,15 @@ const SHOCK_THERAPY_POWERSET = {
             targetType: "Ally (Alive)",
             effectArea: "Chain",
             maxTargets: 5,
+            radius: 25.0,
             effects: {
                 accuracy: 1.0,
                 range: 80.0,
                 recharge: 20.0,
                 endurance: 13.0,
                 cast: 1.0,
-                buffDuration: 30.0
+                absorb: 2.0,
+                duration: 30.0
             }
         },
         {
@@ -218,11 +231,24 @@ const SHOCK_THERAPY_POWERSET = {
                 recharge: 300.0,
                 endurance: 10.4,
                 cast: 2.57,
-                buffDuration: 90.0,
+                rechargeDebuff: 0.5,
+                duration: 90.0,
+                movementDebuff: 6.0,
+                healing: 6.0,
+                recoveryBuff: 6.0,
+                absorb: 6.0,
+                hold: 1.0,
+                holdDuration: 90.0,
                 stun: 1.0,
                 stunDuration: 90.0,
-                tohitBuff: 3.6,
-                defenseBuff: 3.6
+                immobilize: 1.0,
+                immobilizeDuration: 90.0,
+                sleep: 1.0,
+                sleepDuration: 90.0,
+                confuse: 1.0,
+                confuseDuration: 90.0,
+                defenseDebuff: 3.6,
+                tohitDebuff: 3.6
             }
         }
     ]

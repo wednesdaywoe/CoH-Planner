@@ -1,11 +1,11 @@
 /**
- * War Mace - Blaster Primary
- * Extracted from raw_data_homecoming with updated converter
+ * War Mace
+ * Extracted from raw_data_homecoming with redirect and entity support
  */
 
 const WAR_MACE_POWERSET = {
     name: "War Mace",
-    category: "Blaster_RANGED",
+    category: "UNKNOWN",
     description: "War Mace powerset",
     icon: "war-mace_set.png",
     powers: [
@@ -34,7 +34,8 @@ const WAR_MACE_POWERSET = {
                             type: "Smashing",
                             scale: 5.6988
                         },
-        {type: "Fire",
+                        {
+                            type: "Fire",
                             scale: 0.45
                         }
                     ],
@@ -43,7 +44,8 @@ const WAR_MACE_POWERSET = {
                 stun: 2.0
             }
         },
-        {name: "Pulverize",
+        {
+            name: "Pulverize",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -67,7 +69,8 @@ const WAR_MACE_POWERSET = {
                             type: "Smashing",
                             scale: 8.1238
                         },
-        {type: "Fire",
+                        {
+                            type: "Fire",
                             scale: 0.738
                         }
                     ],
@@ -76,7 +79,8 @@ const WAR_MACE_POWERSET = {
                 stun: 2.0
             }
         },
-        {name: "Jawbreaker",
+        {
+            name: "Jawbreaker",
             available: 1,
             tier: 1,
             maxSlots: 6,
@@ -100,15 +104,18 @@ const WAR_MACE_POWERSET = {
                             type: "Smashing",
                             scale: 9.6466
                         },
-        {type: "Fire",
+                        {
+                            type: "Fire",
                             scale: 0.882
                         }
                     ],
                     scale: 10.528599999999999
-                }
+                },
+                knockback: 1.0
             }
         },
-        {name: "Build Up",
+        {
+            name: "Build Up",
             available: 5,
             tier: 3,
             maxSlots: 6,
@@ -126,10 +133,11 @@ const WAR_MACE_POWERSET = {
                 endurance: 5.2,
                 cast: 1.17,
                 tohitBuff: 2.0,
-                buffDuration: 10.0
+                duration: 10.0
             }
         },
-        {name: "Clobber",
+        {
+            name: "Clobber",
             available: 7,
             tier: 3,
             maxSlots: 6,
@@ -153,7 +161,8 @@ const WAR_MACE_POWERSET = {
                             type: "Smashing",
                             scale: 12.2008
                         },
-        {type: "Fire",
+                        {
+                            type: "Fire",
                             scale: 1.314
                         }
                     ],
@@ -162,7 +171,8 @@ const WAR_MACE_POWERSET = {
                 stun: 3.0
             }
         },
-        {name: "Confront",
+        {
+            name: "Confront",
             available: 11,
             tier: 4,
             maxSlots: 6,
@@ -178,11 +188,11 @@ const WAR_MACE_POWERSET = {
                 accuracy: 1.0,
                 range: 70.0,
                 recharge: 3.0,
-                cast: 1.67,
-                buffDuration: 12.0
+                cast: 1.67
             }
         },
-        {name: "Whirling Mace",
+        {
+            name: "Whirling Mace",
             available: 17,
             tier: 4,
             maxSlots: 6,
@@ -195,6 +205,7 @@ const WAR_MACE_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 10,
+            radius: 8.0,
             effects: {
                 accuracy: 1.05,
                 recharge: 14.0,
@@ -206,7 +217,8 @@ const WAR_MACE_POWERSET = {
                             type: "Smashing",
                             scale: 6.2860000000000005
                         },
-        {type: "Fire",
+                        {
+                            type: "Fire",
                             scale: 0.504
                         }
                     ],
@@ -215,7 +227,8 @@ const WAR_MACE_POWERSET = {
                 stun: 2.0
             }
         },
-        {name: "Shatter",
+        {
+            name: "Shatter",
             available: 21,
             tier: 5,
             maxSlots: 6,
@@ -229,6 +242,7 @@ const WAR_MACE_POWERSET = {
             effectArea: "Cone",
             maxTargets: 5,
             arc: 0.7854,
+            radius: 8.0,
             effects: {
                 accuracy: 1.05,
                 range: 8.0,
@@ -241,15 +255,18 @@ const WAR_MACE_POWERSET = {
                             type: "Smashing",
                             scale: 11.0008
                         },
-        {type: "Fire",
+                        {
+                            type: "Fire",
                             scale: 1.026
                         }
                     ],
                     scale: 12.0268
-                }
+                },
+                knockback: 1.0
             }
         },
-        {name: "Crowd Control",
+        {
+            name: "Crowd Control",
             available: 25,
             tier: 5,
             maxSlots: 6,
@@ -263,6 +280,7 @@ const WAR_MACE_POWERSET = {
             effectArea: "Cone",
             maxTargets: 10,
             arc: 3.1416,
+            radius: 8.0,
             effects: {
                 accuracy: 1.05,
                 range: 8.0,
@@ -275,12 +293,14 @@ const WAR_MACE_POWERSET = {
                             type: "Smashing",
                             scale: 7.862000000000001
                         },
-        {type: "Fire",
+                        {
+                            type: "Fire",
                             scale: 0.7245
                         }
                     ],
                     scale: 8.586500000000001
-                }
+                },
+                knockback: 1.0
             }
         }
     ]

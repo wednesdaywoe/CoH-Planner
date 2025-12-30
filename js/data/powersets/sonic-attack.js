@@ -1,11 +1,11 @@
 /**
- * Sonic Attack - Blaster Primary
- * Extracted from raw_data_homecoming with updated converter
+ * Sonic Attack
+ * Extracted from raw_data_homecoming with redirect and entity support
  */
 
 const SONIC_ATTACK_POWERSET = {
     name: "Sonic Attack",
-    category: "Blaster_RANGED",
+    category: "UNKNOWN",
     description: "Sonic Attack powerset",
     icon: "sonic-attack_set.png",
     powers: [
@@ -33,17 +33,21 @@ const SONIC_ATTACK_POWERSET = {
                         {
                             type: "Energy",
                             scale: 0.4658,
-                            ticks: 4},
-        {type: "Smashing",
+                            ticks: 4
+                        },
+                        {
+                            type: "Smashing",
                             scale: 0.132,
                             ticks: 4
                         }
                     ]
                 },
-                buffDuration: 1.05
+                resistanceDebuff: 1.5,
+                duration: 8.0
             }
         },
-        {name: "Shriek",
+        {
+            name: "Shriek",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -67,16 +71,19 @@ const SONIC_ATTACK_POWERSET = {
                             type: "Energy",
                             scale: 1.64
                         },
-        {type: "Smashing",
+                        {
+                            type: "Smashing",
                             scale: 0.42
                         }
                     ],
                     scale: 2.06
                 },
-                buffDuration: 8.0
+                resistanceDebuff: 1.5,
+                duration: 8.0
             }
         },
-        {name: "Howl",
+        {
+            name: "Howl",
             available: 1,
             tier: 1,
             maxSlots: 6,
@@ -90,6 +97,7 @@ const SONIC_ATTACK_POWERSET = {
             effectArea: "Cone",
             maxTargets: 10,
             arc: 0.5236,
+            radius: 50.0,
             effects: {
                 accuracy: 1.0,
                 range: 50.0,
@@ -102,16 +110,19 @@ const SONIC_ATTACK_POWERSET = {
                             type: "Energy",
                             scale: 2.9257999999999997
                         },
-        {type: "Smashing",
+                        {
+                            type: "Smashing",
                             scale: 0.3347
                         }
                     ],
                     scale: 3.2604999999999995
                 },
-                buffDuration: 8.0
+                resistanceDebuff: 1.5,
+                duration: 8.0
             }
         },
-        {name: "Shockwave",
+        {
+            name: "Shockwave",
             available: 5,
             tier: 3,
             maxSlots: 6,
@@ -125,6 +136,7 @@ const SONIC_ATTACK_POWERSET = {
             effectArea: "Cone",
             maxTargets: 10,
             arc: 0.5236,
+            radius: 50.0,
             effects: {
                 accuracy: 1.0,
                 range: 50.0,
@@ -137,15 +149,18 @@ const SONIC_ATTACK_POWERSET = {
                             type: "Smashing",
                             scale: 0.8426
                         },
-        {type: "Energy",
+                        {
+                            type: "Energy",
                             scale: 0.8426
                         }
                     ],
                     scale: 1.6852
-                }
+                },
+                knockback: 1.0
             }
         },
-        {name: "Shout",
+        {
+            name: "Shout",
             available: 7,
             tier: 3,
             maxSlots: 6,
@@ -169,16 +184,19 @@ const SONIC_ATTACK_POWERSET = {
                             type: "Smashing",
                             scale: 2.08
                         },
-        {type: "Energy",
+                        {
+                            type: "Energy",
                             scale: 2.08
                         }
                     ],
                     scale: 4.16
                 },
-                buffDuration: 10.0
+                resistanceDebuff: 1.5,
+                duration: 10.0
             }
         },
-        {name: "Amplify",
+        {
+            name: "Amplify",
             available: 11,
             tier: 4,
             maxSlots: 6,
@@ -196,10 +214,11 @@ const SONIC_ATTACK_POWERSET = {
                 endurance: 5.2,
                 cast: 1.17,
                 tohitBuff: 5.0,
-                buffDuration: 10.0
+                duration: 10.0
             }
         },
-        {name: "Sirens Song",
+        {
+            name: "Sirens Song",
             available: 17,
             tier: 4,
             maxSlots: 6,
@@ -213,6 +232,7 @@ const SONIC_ATTACK_POWERSET = {
             effectArea: "Cone",
             maxTargets: 16,
             arc: 0.8727,
+            radius: 40.0,
             effects: {
                 accuracy: 1.0,
                 range: 40.0,
@@ -222,10 +242,12 @@ const SONIC_ATTACK_POWERSET = {
                 damage: {
                     type: "Energy",
                     scale: 0.9546
-                }
+                },
+                sleep: 3.0
             }
         },
-        {name: "Screech",
+        {
+            name: "Screech",
             available: 21,
             tier: 5,
             maxSlots: 6,
@@ -249,17 +271,20 @@ const SONIC_ATTACK_POWERSET = {
                             type: "Smashing",
                             scale: 2.105
                         },
-        {type: "Energy",
+                        {
+                            type: "Energy",
                             scale: 2.105
                         }
                     ],
                     scale: 4.21
                 },
                 stun: 3.0,
-                buffDuration: 15.0
+                resistanceDebuff: 1.5,
+                duration: 15.0
             }
         },
-        {name: "Dreadful Wail",
+        {
+            name: "Dreadful Wail",
             available: 25,
             tier: 5,
             maxSlots: 6,
@@ -272,6 +297,7 @@ const SONIC_ATTACK_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 25.0,
             effects: {
                 accuracy: 1.4,
                 recharge: 145.0,
@@ -283,14 +309,16 @@ const SONIC_ATTACK_POWERSET = {
                             type: "Energy",
                             scale: 3.4065000000000003
                         },
-        {type: "Smashing",
+                        {
+                            type: "Smashing",
                             scale: 2.0
                         }
                     ],
                     scale: 5.4065
                 },
                 stun: 3.0,
-                buffDuration: 20.0
+                resistanceDebuff: 1.5,
+                duration: 20.0
             }
         }
     ]

@@ -1,15 +1,16 @@
 /**
- * Electric Control - Blaster Primary
- * Extracted from raw_data_homecoming with updated converter
+ * Electric Control
+ * Extracted from raw_data_homecoming with redirect and entity support
  */
 
 const ELECTRIC_CONTROL_POWERSET = {
     name: "Electric Control",
-    category: "Blaster_RANGED",
+    category: "UNKNOWN",
     description: "Electric Control powerset",
     icon: "electric-control_set.png",
     powers: [
-        {name: "Electric Fence",
+        {
+            name: "Electric Fence",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -32,10 +33,16 @@ const ELECTRIC_CONTROL_POWERSET = {
                     scale: 0.9187000000000001,
                     ticks: 4
                 },
-                buffDuration: 9.2
+                immobilize: 1.0,
+                recoveryDebuff: 1.0,
+                resistanceDebuff: 100.0,
+                duration: 15.0,
+                knockback: 1.0,
+                movementDebuff: 1.6
             }
         },
-        {name: "Tesla Cage",
+        {
+            name: "Tesla Cage",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -57,10 +64,12 @@ const ELECTRIC_CONTROL_POWERSET = {
                     type: "Energy",
                     scale: 4.8336
                 },
-                buffDuration: 4.0
+                hold: 4.0,
+                recoveryDebuff: 1.0
             }
         },
-        {name: "Chain Fences",
+        {
+            name: "Chain Fences",
             available: 1,
             tier: 1,
             maxSlots: 6,
@@ -73,6 +82,7 @@ const ELECTRIC_CONTROL_POWERSET = {
             targetType: "Foe (Alive)",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 30.0,
             effects: {
                 accuracy: 0.9,
                 range: 80.0,
@@ -88,10 +98,14 @@ const ELECTRIC_CONTROL_POWERSET = {
                     scale: 0.2,
                     ticks: 2
                 },
-                buffDuration: 5.2
+                immobilize: 3.0,
+                recoveryDebuff: 1.0,
+                movementDebuff: 1.6,
+                duration: 15.0
             }
         },
-        {name: "Jolting Chain",
+        {
+            name: "Jolting Chain",
             available: 5,
             tier: 3,
             maxSlots: 6,
@@ -104,6 +118,7 @@ const ELECTRIC_CONTROL_POWERSET = {
             targetType: "Foe (Alive)",
             effectArea: "Chain",
             maxTargets: 16,
+            radius: 15.0,
             effects: {
                 accuracy: 1.0,
                 range: 80.0,
@@ -114,10 +129,12 @@ const ELECTRIC_CONTROL_POWERSET = {
                     type: "Energy",
                     scale: 3.8544
                 },
-                buffDuration: 8.0
+                knockback: 1.0,
+                recoveryDebuff: 0.5
             }
         },
-        {name: "Conductive Aura",
+        {
+            name: "Conductive Aura",
             available: 7,
             tier: 3,
             maxSlots: 6,
@@ -130,14 +147,18 @@ const ELECTRIC_CONTROL_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 20.0,
             effects: {
                 accuracy: 1.0,
                 recharge: 15.0,
                 cast: 2.03,
-                buffDuration: 2.25
+                regenerationBuff: 0.05,
+                duration: 2.25,
+                recoveryBuff: 0.0313
             }
         },
-        {name: "Static Field",
+        {
+            name: "Static Field",
             available: 11,
             tier: 4,
             maxSlots: 6,
@@ -154,11 +175,11 @@ const ELECTRIC_CONTROL_POWERSET = {
                 range: 60.0,
                 recharge: 40.0,
                 endurance: 15.6,
-                cast: 2.03,
-                buffDuration: 25.0
+                cast: 2.03
             }
         },
-        {name: "Tesla Coil",
+        {
+            name: "Tesla Coil",
             available: 17,
             tier: 4,
             maxSlots: 6,
@@ -175,10 +196,14 @@ const ELECTRIC_CONTROL_POWERSET = {
                 range: 80.0,
                 recharge: 240.0,
                 endurance: 15.6,
-                cast: 1.67
+                cast: 1.67,
+                movementDebuff: 1.6,
+                duration: 4.25,
+                rechargeDebuff: 0.15
             }
         },
-        {name: "Synaptic Overload",
+        {
+            name: "Synaptic Overload",
             available: 21,
             tier: 5,
             maxSlots: 6,
@@ -191,16 +216,19 @@ const ELECTRIC_CONTROL_POWERSET = {
             targetType: "Foe (Alive)",
             effectArea: "Chain",
             maxTargets: 16,
+            radius: 15.0,
             effects: {
                 accuracy: 1.0,
                 range: 80.0,
                 recharge: 6.0,
                 endurance: 15.6,
                 cast: 2.0,
-                buffDuration: 8.0
+                confuse: 1.0,
+                recoveryDebuff: 1.0
             }
         },
-        {name: "Gremlins",
+        {
+            name: "Gremlins",
             available: 25,
             tier: 5,
             maxSlots: 6,

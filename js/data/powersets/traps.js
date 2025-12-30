@@ -1,11 +1,11 @@
 /**
- * Traps - Blaster Primary
- * Extracted from raw_data_homecoming with updated converter
+ * Traps
+ * Extracted from raw_data_homecoming with redirect and entity support
  */
 
 const TRAPS_POWERSET = {
     name: "Traps",
-    category: "Blaster_RANGED",
+    category: "UNKNOWN",
     description: "Traps powerset",
     icon: "traps_set.png",
     powers: [
@@ -28,10 +28,17 @@ const TRAPS_POWERSET = {
                 recharge: 45.0,
                 endurance: 7.8,
                 cast: 1.07,
-                buffDuration: 45.0
+                damage: {
+                    type: "Lethal",
+                    scale: 0.05
+                },
+                movementDebuff: 1.0,
+                duration: 1.3,
+                fear: 50.0
             }
         },
-        {name: "Web Grenade",
+        {
+            name: "Web Grenade",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -49,10 +56,16 @@ const TRAPS_POWERSET = {
                 recharge: 4.0,
                 endurance: 7.8,
                 cast: 1.37,
-                buffDuration: 15.0
+                immobilize: 3.0,
+                movementDebuff: 10.0,
+                duration: 15.0,
+                rechargeDebuff: 0.5,
+                resistanceDebuff: 100.0,
+                knockback: 1.0
             }
         },
-        {name: "Triage Beacon",
+        {
+            name: "Triage Beacon",
             available: 1,
             tier: 1,
             maxSlots: 6,
@@ -68,11 +81,11 @@ const TRAPS_POWERSET = {
                 accuracy: 1.0,
                 recharge: 200.0,
                 endurance: 13.0,
-                cast: 2.77,
-                buffDuration: 90.0
+                cast: 2.77
             }
         },
-        {name: "Acid Mortar",
+        {
+            name: "Acid Mortar",
             available: 5,
             tier: 3,
             maxSlots: 6,
@@ -88,11 +101,11 @@ const TRAPS_POWERSET = {
                 accuracy: 1.0,
                 recharge: 90.0,
                 endurance: 13.0,
-                cast: 2.77,
-                buffDuration: 60.0
+                cast: 2.77
             }
         },
-        {name: "Force Field Generator",
+        {
+            name: "Force Field Generator",
             available: 7,
             tier: 3,
             maxSlots: 6,
@@ -109,11 +122,11 @@ const TRAPS_POWERSET = {
                 range: 20.0,
                 recharge: 15.0,
                 endurance: 13.0,
-                cast: 2.03,
-                buffDuration: 240.0
+                cast: 2.03
             }
         },
-        {name: "Poison Trap",
+        {
+            name: "Poison Trap",
             available: 11,
             tier: 4,
             maxSlots: 6,
@@ -129,11 +142,11 @@ const TRAPS_POWERSET = {
                 accuracy: 1.0,
                 recharge: 90.0,
                 endurance: 13.0,
-                cast: 2.77,
-                buffDuration: 260.0
+                cast: 2.77
             }
         },
-        {name: "Seeker Drones",
+        {
+            name: "Seeker Drones",
             available: 17,
             tier: 4,
             maxSlots: 6,
@@ -150,11 +163,11 @@ const TRAPS_POWERSET = {
                 range: 60.0,
                 recharge: 90.0,
                 endurance: 15.6,
-                cast: 2.03,
-                buffDuration: 240.0
+                cast: 2.03
             }
         },
-        {name: "Trip Mine",
+        {
+            name: "Trip Mine",
             available: 21,
             tier: 5,
             maxSlots: 6,
@@ -170,11 +183,11 @@ const TRAPS_POWERSET = {
                 accuracy: 1.2,
                 recharge: 20.0,
                 endurance: 13.0,
-                cast: 5.0,
-                buffDuration: 260.0
+                cast: 5.0
             }
         },
-        {name: "Temporal Bomb",
+        {
+            name: "Temporal Bomb",
             available: 25,
             tier: 5,
             maxSlots: 6,

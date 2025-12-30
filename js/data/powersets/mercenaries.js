@@ -1,11 +1,11 @@
 /**
- * Mercenaries - Blaster Primary
- * Extracted from raw_data_homecoming with updated converter
+ * Mercenaries
+ * Extracted from raw_data_homecoming with redirect and entity support
  */
 
 const MERCENARIES_POWERSET = {
     name: "Mercenaries",
-    category: "Blaster_RANGED",
+    category: "UNKNOWN",
     description: "Mercenaries powerset",
     icon: "mercenaries_set.png",
     powers: [
@@ -33,11 +33,12 @@ const MERCENARIES_POWERSET = {
                     scale: 0.585,
                     ticks: 3
                 },
-                buffDuration: 0.91,
-                defenseDebuff: 1.0
+                defenseDebuff: 1.0,
+                duration: 8.0
             }
         },
-        {name: "Soldiers",
+        {
+            name: "Soldiers",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -57,7 +58,8 @@ const MERCENARIES_POWERSET = {
                 cast: 2.03
             }
         },
-        {name: "Slug",
+        {
+            name: "Slug",
             available: 1,
             tier: 1,
             maxSlots: 6,
@@ -79,10 +81,11 @@ const MERCENARIES_POWERSET = {
                     type: "Lethal",
                     scale: 3.529
                 },
-                buffDuration: 30.0
+                knockback: 1.0
             }
         },
-        {name: "Equip Mercenary",
+        {
+            name: "Equip Mercenary",
             available: 5,
             tier: 3,
             maxSlots: 6,
@@ -95,16 +98,17 @@ const MERCENARIES_POWERSET = {
             targetType: "Own Pet (Alive)",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 30.0,
             effects: {
                 accuracy: 1.0,
                 range: 50.0,
                 recharge: 6.0,
                 endurance: 11.375,
-                cast: 1.3,
-                buffDuration: 3.5
+                cast: 1.3
             }
         },
-        {name: "M30 Grenade",
+        {
+            name: "M30 Grenade",
             available: 7,
             tier: 3,
             maxSlots: 6,
@@ -117,6 +121,7 @@ const MERCENARIES_POWERSET = {
             targetType: "Foe (Alive)",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 15.0,
             effects: {
                 accuracy: 1.05,
                 range: 80.0,
@@ -129,16 +134,18 @@ const MERCENARIES_POWERSET = {
                             type: "Fire",
                             scale: 1.0574
                         },
-        {type: "Lethal",
+                        {
+                            type: "Lethal",
                             scale: 0.5207999999999999
                         }
                     ],
                     scale: 1.5781999999999998
                 },
-                buffDuration: 30.0
+                knockback: 1.0
             }
         },
-        {name: "Spec Ops",
+        {
+            name: "Spec Ops",
             available: 11,
             tier: 4,
             maxSlots: 6,
@@ -158,7 +165,8 @@ const MERCENARIES_POWERSET = {
                 cast: 2.03
             }
         },
-        {name: "Serum",
+        {
+            name: "Serum",
             available: 17,
             tier: 4,
             maxSlots: 6,
@@ -176,13 +184,21 @@ const MERCENARIES_POWERSET = {
                 recharge: 250.0,
                 endurance: 15.0,
                 cast: 1.3,
-                buffDuration: 60.0,
+                hold: 1.0,
+                holdDuration: 60.0,
                 stun: 1.0,
                 stunDuration: 60.0,
-                tohitBuff: 1.0
+                immobilize: 1.0,
+                immobilizeDuration: 60.0,
+                sleep: 1.0,
+                sleepDuration: 60.0,
+                knockback: 1.0,
+                tohitBuff: 1.0,
+                duration: 60.0
             }
         },
-        {name: "Commando",
+        {
+            name: "Commando",
             available: 21,
             tier: 5,
             maxSlots: 6,
@@ -202,7 +218,8 @@ const MERCENARIES_POWERSET = {
                 cast: 2.03
             }
         },
-        {name: "Tactical Upgrade",
+        {
+            name: "Tactical Upgrade",
             available: 25,
             tier: 5,
             maxSlots: 6,
@@ -215,13 +232,13 @@ const MERCENARIES_POWERSET = {
             targetType: "Own Pet (Alive)",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 30.0,
             effects: {
                 accuracy: 1.0,
                 range: 50.0,
                 recharge: 10.0,
                 endurance: 11.375,
-                cast: 2.03,
-                buffDuration: 11.0
+                cast: 2.03
             }
         }
     ]

@@ -1,11 +1,11 @@
 /**
- * Ice Manipulation - Blaster Primary
- * Extracted from raw_data_homecoming with updated converter
+ * Ice Manipulation
+ * Extracted from raw_data_homecoming with redirect and entity support
  */
 
 const ICE_MANIPULATION_POWERSET = {
     name: "Ice Manipulation",
-    category: "Blaster_RANGED",
+    category: "UNKNOWN",
     description: "Ice Manipulation powerset",
     icon: "ice-manipulation_set.png",
     powers: [
@@ -33,10 +33,16 @@ const ICE_MANIPULATION_POWERSET = {
                     scale: 0.4758,
                     ticks: 4
                 },
-                buffDuration: 9.2
+                immobilize: 3.0,
+                movementDebuff: 1.6,
+                duration: 18.0,
+                rechargeDebuff: 0.2,
+                resistanceDebuff: 100.0,
+                knockback: 1.0
             }
         },
-        {name: "Frozen Fists",
+        {
+            name: "Frozen Fists",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -60,16 +66,20 @@ const ICE_MANIPULATION_POWERSET = {
                             type: "Cold",
                             scale: 2.2908
                         },
-        {type: "Smashing",
+                        {
+                            type: "Smashing",
                             scale: 1.0
                         }
                     ],
                     scale: 3.2908
                 },
-                buffDuration: 5.0
+                movementDebuff: 0.1,
+                duration: 5.0,
+                rechargeDebuff: 0.1
             }
         },
-        {name: "Ice Sword",
+        {
+            name: "Ice Sword",
             available: 3,
             tier: 2,
             maxSlots: 6,
@@ -93,16 +103,20 @@ const ICE_MANIPULATION_POWERSET = {
                             type: "Cold",
                             scale: 2.7308
                         },
-        {type: "Lethal",
+                        {
+                            type: "Lethal",
                             scale: 0.96
                         }
                     ],
                     scale: 3.6908
                 },
-                buffDuration: 8.0
+                rechargeDebuff: 0.1,
+                duration: 8.0,
+                movementDebuff: 0.1
             }
         },
-        {name: "Frigid Protection",
+        {
+            name: "Frigid Protection",
             available: 9,
             tier: 3,
             maxSlots: 6,
@@ -115,14 +129,18 @@ const ICE_MANIPULATION_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 10,
+            radius: 30.0,
             effects: {
                 accuracy: 1.0,
                 recharge: 10.0,
                 cast: 0.73,
-                buffDuration: 5.0
+                movementDebuff: 0.7,
+                duration: 5.0,
+                rechargeDebuff: 0.4
             }
         },
-        {name: "Build Up",
+        {
+            name: "Build Up",
             available: 15,
             tier: 4,
             maxSlots: 6,
@@ -140,10 +158,11 @@ const ICE_MANIPULATION_POWERSET = {
                 endurance: 5.2,
                 cast: 1.17,
                 tohitBuff: 2.0,
-                buffDuration: 10.0
+                duration: 10.0
             }
         },
-        {name: "Ice Patch",
+        {
+            name: "Ice Patch",
             available: 19,
             tier: 4,
             maxSlots: 6,
@@ -160,10 +179,13 @@ const ICE_MANIPULATION_POWERSET = {
                 recharge: 35.0,
                 endurance: 10.4,
                 cast: 1.57,
-                buffDuration: 30.0
+                knockback: 1.0,
+                movementDebuff: 1.0,
+                duration: 0.45
             }
         },
-        {name: "Shiver",
+        {
+            name: "Shiver",
             available: 23,
             tier: 5,
             maxSlots: 6,
@@ -177,16 +199,20 @@ const ICE_MANIPULATION_POWERSET = {
             effectArea: "Cone",
             maxTargets: 10,
             arc: 2.3562,
+            radius: 60.0,
             effects: {
                 accuracy: 1.0,
                 range: 60.0,
                 recharge: 12.0,
                 endurance: 10.4,
                 cast: 2.17,
-                buffDuration: 18.0
+                rechargeDebuff: 0.325,
+                duration: 18.0,
+                movementDebuff: 0.65
             }
         },
-        {name: "Freezing Touch",
+        {
+            name: "Freezing Touch",
             available: 27,
             tier: 5,
             maxSlots: 6,
@@ -213,10 +239,14 @@ const ICE_MANIPULATION_POWERSET = {
                     scale: 0.2582,
                     ticks: 10
                 },
-                buffDuration: 6.0
+                resistanceDebuff: 100.0,
+                duration: 6.0,
+                knockback: 1.0,
+                hold: 3.0
             }
         },
-        {name: "Frozen Aura",
+        {
+            name: "Frozen Aura",
             available: 29,
             tier: 5,
             maxSlots: 6,
@@ -229,6 +259,7 @@ const ICE_MANIPULATION_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 10,
+            radius: 10.0,
             effects: {
                 accuracy: 1.0,
                 recharge: 20.0,
@@ -237,7 +268,8 @@ const ICE_MANIPULATION_POWERSET = {
                 damage: {
                     type: "Cold",
                     scale: 1.068
-                }
+                },
+                sleep: 3.0
             }
         }
     ]

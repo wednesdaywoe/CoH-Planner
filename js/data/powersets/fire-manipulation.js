@@ -1,15 +1,14 @@
 /**
- * Fire Manipulation - Blaster Primary
- * Extracted from raw_data_homecoming with updated converter
+ * Fire Manipulation
+ * Extracted from raw_data_homecoming with redirect and entity support
  */
 
 const FIRE_MANIPULATION_POWERSET = {
     name: "Fire Manipulation",
-    category: "Blaster_RANGED",
+    category: "UNKNOWN",
     description: "Fire Manipulation powerset",
     icon: "fire-manipulation_set.png",
     powers: [
-        
         {
             name: "Fire Sword",
             available: 0,
@@ -38,8 +37,8 @@ const FIRE_MANIPULATION_POWERSET = {
                     scale: 0.1,
                     ticks: 4
                 },
-                buffDuration: 3.1,
-                defenseDebuff: 0.5
+                defenseDebuff: 0.5,
+                duration: 10.0
             }
         },
         {
@@ -66,7 +65,11 @@ const FIRE_MANIPULATION_POWERSET = {
                     scale: 0.4632,
                     ticks: 6
                 },
-                buffDuration: 9.2
+                immobilize: 3.0,
+                resistanceDebuff: 100.0,
+                duration: 15.0,
+                knockback: 1.0,
+                movementDebuff: 1.6
             }
         },
         {
@@ -83,6 +86,7 @@ const FIRE_MANIPULATION_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 10,
+            radius: 15.0,
             effects: {
                 accuracy: 1.0,
                 recharge: 15.0,
@@ -96,8 +100,7 @@ const FIRE_MANIPULATION_POWERSET = {
                     type: "Fire",
                     scale: 0.1971,
                     ticks: 9
-                },
-                buffDuration: 7.1
+                }
             }
         },
         {
@@ -114,6 +117,7 @@ const FIRE_MANIPULATION_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 10,
+            radius: 10.0,
             effects: {
                 accuracy: 1.0,
                 recharge: 20.0,
@@ -136,8 +140,7 @@ const FIRE_MANIPULATION_POWERSET = {
                     type: "Fire",
                     scale: 0.1,
                     ticks: 2
-                },
-                buffDuration: 2.1
+                }
             }
         },
         {
@@ -159,7 +162,7 @@ const FIRE_MANIPULATION_POWERSET = {
                 endurance: 5.2,
                 cast: 1.17,
                 tohitBuff: 2.0,
-                buffDuration: 10.0
+                duration: 10.0
             }
         },
         {
@@ -176,6 +179,7 @@ const FIRE_MANIPULATION_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 10,
+            radius: 8.0,
             effects: {
                 accuracy: 1.0,
                 recharge: 10.0,
@@ -200,12 +204,14 @@ const FIRE_MANIPULATION_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 10,
+            radius: 20.0,
             effects: {
                 accuracy: 1.0,
                 recharge: 180.0,
                 endurance: 0.52,
                 cast: 2.03,
-                buffDuration: 15.0
+                recoveryBuff: 0.05,
+                duration: 15.0
             }
         },
         {
@@ -222,6 +228,7 @@ const FIRE_MANIPULATION_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 5,
+            radius: 8.0,
             effects: {
                 accuracy: 1.0,
                 recharge: 25.0,
@@ -247,6 +254,7 @@ const FIRE_MANIPULATION_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 10,
+            radius: 20.0,
             effects: {
                 accuracy: 1.0,
                 recharge: 20.0,
@@ -256,7 +264,9 @@ const FIRE_MANIPULATION_POWERSET = {
                     type: "Fire",
                     scale: 0.45330000000000004
                 },
-                buffDuration: 15.0
+                fear: 3.0,
+                movementDebuff: 0.7,
+                duration: 15.0
             }
         }
     ]

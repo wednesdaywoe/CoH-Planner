@@ -1,11 +1,11 @@
 /**
- * Radiation Blast - Blaster Primary
- * Extracted from raw_data_homecoming with updated converter
+ * Radiation Blast
+ * Extracted from raw_data_homecoming with redirect and entity support
  */
 
 const RADIATION_BLAST_POWERSET = {
     name: "Radiation Blast",
-    category: "Blaster_RANGED",
+    category: "UNKNOWN",
     description: "Radiation Blast powerset",
     icon: "radiation-blast_set.png",
     powers: [
@@ -33,10 +33,11 @@ const RADIATION_BLAST_POWERSET = {
                     scale: 2.2602
                 },
                 defenseDebuff: 1.0,
-                buffDuration: 3.0
+                duration: 3.0
             }
         },
-        {name: "X-Ray Beam",
+        {
+            name: "X-Ray Beam",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -59,10 +60,11 @@ const RADIATION_BLAST_POWERSET = {
                     scale: 3.5292
                 },
                 defenseDebuff: 2.0,
-                buffDuration: 6.0
+                duration: 6.0
             }
         },
-        {name: "Irradiate",
+        {
+            name: "Irradiate",
             available: 1,
             tier: 1,
             maxSlots: 6,
@@ -75,6 +77,7 @@ const RADIATION_BLAST_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 20.0,
             effects: {
                 accuracy: 1.1,
                 recharge: 20.0,
@@ -85,11 +88,12 @@ const RADIATION_BLAST_POWERSET = {
                     scale: 0.1287,
                     ticks: 9
                 },
-                buffDuration: 4.6,
-                defenseDebuff: 3.0
+                defenseDebuff: 3.0,
+                duration: 10.0
             }
         },
-        {name: "Electron Haze",
+        {
+            name: "Electron Haze",
             available: 5,
             tier: 3,
             maxSlots: 6,
@@ -103,6 +107,7 @@ const RADIATION_BLAST_POWERSET = {
             effectArea: "Cone",
             maxTargets: 10,
             arc: 0.5236,
+            radius: 40.0,
             effects: {
                 accuracy: 1.1,
                 range: 40.0,
@@ -114,10 +119,12 @@ const RADIATION_BLAST_POWERSET = {
                     scale: 5.2985
                 },
                 defenseDebuff: 2.0,
-                buffDuration: 8.0
+                duration: 8.0,
+                knockback: 1.0
             }
         },
-        {name: "Aim",
+        {
+            name: "Aim",
             available: 7,
             tier: 3,
             maxSlots: 6,
@@ -135,10 +142,11 @@ const RADIATION_BLAST_POWERSET = {
                 endurance: 5.2,
                 cast: 1.17,
                 tohitBuff: 5.0,
-                buffDuration: 10.0
+                duration: 10.0
             }
         },
-        {name: "Proton Volley",
+        {
+            name: "Proton Volley",
             available: 11,
             tier: 4,
             maxSlots: 6,
@@ -158,7 +166,8 @@ const RADIATION_BLAST_POWERSET = {
                 cast: 1.33
             }
         },
-        {name: "Cosmic Burst",
+        {
+            name: "Cosmic Burst",
             available: 17,
             tier: 4,
             maxSlots: 6,
@@ -182,10 +191,11 @@ const RADIATION_BLAST_POWERSET = {
                 },
                 stun: 3.0,
                 defenseDebuff: 3.0,
-                buffDuration: 12.0
+                duration: 12.0
             }
         },
-        {name: "Neutron Bomb",
+        {
+            name: "Neutron Bomb",
             available: 21,
             tier: 5,
             maxSlots: 6,
@@ -198,6 +208,7 @@ const RADIATION_BLAST_POWERSET = {
             targetType: "Foe (Alive)",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 15.0,
             effects: {
                 accuracy: 1.1,
                 range: 80.0,
@@ -209,10 +220,11 @@ const RADIATION_BLAST_POWERSET = {
                     scale: 1.5798
                 },
                 defenseDebuff: 2.0,
-                buffDuration: 16.0
+                duration: 16.0
             }
         },
-        {name: "Atomic Blast",
+        {
+            name: "Atomic Blast",
             available: 25,
             tier: 5,
             maxSlots: 6,
@@ -225,6 +237,7 @@ const RADIATION_BLAST_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 25.0,
             effects: {
                 accuracy: 1.4,
                 recharge: 145.0,
@@ -236,14 +249,16 @@ const RADIATION_BLAST_POWERSET = {
                             type: "Energy",
                             scale: 3.9424
                         },
-        {type: "Smashing",
+                        {
+                            type: "Smashing",
                             scale: 1.4641
                         }
                     ],
                     scale: 5.4065
                 },
+                hold: 3.0,
                 defenseDebuff: 4.0,
-                buffDuration: 20.0
+                duration: 20.0
             }
         }
     ]

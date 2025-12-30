@@ -1,15 +1,16 @@
 /**
- * Dual Blades - Blaster Primary
- * Extracted from raw_data_homecoming with updated converter
+ * Dual Blades
+ * Extracted from raw_data_homecoming with redirect and entity support
  */
 
 const DUAL_BLADES_POWERSET = {
     name: "Dual Blades",
-    category: "Blaster_RANGED",
+    category: "UNKNOWN",
     description: "Dual Blades powerset",
     icon: "dual-blades_set.png",
     powers: [
-        {name: "Nimble Slash",
+        {
+            name: "Nimble Slash",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -36,17 +37,19 @@ const DUAL_BLADES_POWERSET = {
                         {
                             type: "Lethal",
                             scale: 1.0405,
-                            ticks: 1},
-        {type: "Fire",
+                            ticks: 1
+                        },
+                        {
+                            type: "Fire",
                             scale: 0.189,
                             ticks: 1
                         }
                     ]
-                },
-                buffDuration: 0.5
+                }
             }
         },
-        {name: "Power Slice",
+        {
+            name: "Power Slice",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -73,17 +76,19 @@ const DUAL_BLADES_POWERSET = {
                         {
                             type: "Lethal",
                             scale: 0.9133,
-                            ticks: 2},
-        {type: "Fire",
+                            ticks: 2
+                        },
+                        {
+                            type: "Fire",
                             scale: 0.174,
                             ticks: 2
                         }
                     ]
-                },
-                buffDuration: 1.0
+                }
             }
         },
-        {name: "Ablating Strike",
+        {
+            name: "Ablating Strike",
             available: 1,
             tier: 1,
             maxSlots: 6,
@@ -110,18 +115,21 @@ const DUAL_BLADES_POWERSET = {
                         {
                             type: "Lethal",
                             scale: 1.3405,
-                            ticks: 1},
-        {type: "Fire",
+                            ticks: 1
+                        },
+                        {
+                            type: "Fire",
                             scale: 0.3883,
                             ticks: 2
                         }
                     ]
                 },
-                buffDuration: 0.6,
-                defenseDebuff: 1.0
+                defenseDebuff: 1.0,
+                duration: 10.0
             }
         },
-        {name: "Typhoon's Edge",
+        {
+            name: "Typhoon's Edge",
             available: 5,
             tier: 3,
             maxSlots: 6,
@@ -134,6 +142,7 @@ const DUAL_BLADES_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 10,
+            radius: 8.0,
             effects: {
                 accuracy: 1.0,
                 recharge: 12.0,
@@ -145,7 +154,8 @@ const DUAL_BLADES_POWERSET = {
                             type: "Lethal",
                             scale: 4.2608
                         },
-        {type: "Fire",
+                        {
+                            type: "Fire",
                             scale: 0.2565
                         }
                     ],
@@ -156,19 +166,23 @@ const DUAL_BLADES_POWERSET = {
                         {
                             type: "Lethal",
                             scale: 1.2753999999999999,
-                            ticks: 1},
-        {type: "Fire",
+                            ticks: 1
+                        },
+                        {
+                            type: "Fire",
                             scale: 0.2565,
                             ticks: 1
                         }
                     ]
                 },
-                buffDuration: 0.6,
                 defenseDebuff: 1.0,
-                tohitDebuff: 1.0
+                duration: 20.0,
+                tohitDebuff: 1.0,
+                knockback: 1.0
             }
         },
-        {name: "Blinding Feint",
+        {
+            name: "Blinding Feint",
             available: 7,
             tier: 3,
             maxSlots: 6,
@@ -192,17 +206,19 @@ const DUAL_BLADES_POWERSET = {
                             type: "Lethal",
                             scale: 5.839799999999999
                         },
-        {type: "Fire",
+                        {
+                            type: "Fire",
                             scale: 0.36
                         }
                     ],
                     scale: 6.1998
                 },
                 tohitBuff: 0.33,
-                buffDuration: 10.0
+                duration: 10.0
             }
         },
-        {name: "Confront",
+        {
+            name: "Confront",
             available: 11,
             tier: 4,
             maxSlots: 6,
@@ -218,11 +234,11 @@ const DUAL_BLADES_POWERSET = {
                 accuracy: 1.0,
                 range: 70.0,
                 recharge: 3.0,
-                cast: 1.93,
-                buffDuration: 12.0
+                cast: 1.93
             }
         },
-        {name: "Vengeful Slice",
+        {
+            name: "Vengeful Slice",
             available: 17,
             tier: 4,
             maxSlots: 6,
@@ -246,15 +262,18 @@ const DUAL_BLADES_POWERSET = {
                             type: "Lethal",
                             scale: 9.761700000000001
                         },
-        {type: "Fire",
+                        {
+                            type: "Fire",
                             scale: 0.738
                         }
                     ],
                     scale: 10.4997
-                }
+                },
+                knockback: 1.0
             }
         },
-        {name: "Sweeping Strike",
+        {
+            name: "Sweeping Strike",
             available: 21,
             tier: 5,
             maxSlots: 6,
@@ -268,6 +287,7 @@ const DUAL_BLADES_POWERSET = {
             effectArea: "Cone",
             maxTargets: 5,
             arc: 1.5708,
+            radius: 7.0,
             effects: {
                 accuracy: 1.0,
                 range: 7.0,
@@ -280,7 +300,8 @@ const DUAL_BLADES_POWERSET = {
                             type: "Lethal",
                             scale: 6.1108
                         },
-        {type: "Fire",
+                        {
+                            type: "Fire",
                             scale: 0.765
                         }
                     ],
@@ -291,17 +312,19 @@ const DUAL_BLADES_POWERSET = {
                         {
                             type: "Lethal",
                             scale: 0.2,
-                            ticks: 4},
-        {type: "Fire",
+                            ticks: 4
+                        },
+                        {
+                            type: "Fire",
                             scale: 0.09,
                             ticks: 4
                         }
                     ]
-                },
-                buffDuration: 4.1
+                }
             }
         },
-        {name: "One Thousand Cuts",
+        {
+            name: "One Thousand Cuts",
             available: 25,
             tier: 5,
             maxSlots: 6,
@@ -315,6 +338,7 @@ const DUAL_BLADES_POWERSET = {
             effectArea: "Cone",
             maxTargets: 10,
             arc: 1.5708,
+            radius: 7.0,
             effects: {
                 accuracy: 1.0,
                 range: 7.0,
@@ -327,7 +351,8 @@ const DUAL_BLADES_POWERSET = {
                             type: "Lethal",
                             scale: 8.089400000000001
                         },
-        {type: "Fire",
+                        {
+                            type: "Fire",
                             scale: 0.315
                         }
                     ],
@@ -338,14 +363,16 @@ const DUAL_BLADES_POWERSET = {
                         {
                             type: "Lethal",
                             scale: 0.36060000000000003,
-                            ticks: 10},
-        {type: "Fire",
+                            ticks: 10
+                        },
+                        {
+                            type: "Fire",
                             scale: 0.068,
                             ticks: 10
                         }
                     ]
                 },
-                buffDuration: 2.05
+                knockback: 1.0
             }
         }
     ]

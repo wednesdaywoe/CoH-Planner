@@ -1,11 +1,11 @@
 /**
- * Electric Armor - Blaster Primary
- * Extracted from raw_data_homecoming with updated converter
+ * Electric Armor
+ * Extracted from raw_data_homecoming with redirect and entity support
  */
 
 const ELECTRIC_ARMOR_POWERSET = {
     name: "Electric Armor",
-    category: "Blaster_RANGED",
+    category: "UNKNOWN",
     description: "Electric Armor powerset",
     icon: "electric-armor_set.png",
     powers: [
@@ -27,10 +27,12 @@ const ELECTRIC_ARMOR_POWERSET = {
                 recharge: 2.0,
                 endurance: 0.13,
                 cast: 0.67,
-                buffDuration: 0.75
+                resistanceBuff: 3.5,
+                duration: 0.75
             }
         },
-        {name: "Lightning Field",
+        {
+            name: "Lightning Field",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -43,6 +45,7 @@ const ELECTRIC_ARMOR_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 10,
+            radius: 8.0,
             effects: {
                 accuracy: 1.0,
                 recharge: 10.0,
@@ -54,7 +57,8 @@ const ELECTRIC_ARMOR_POWERSET = {
                 }
             }
         },
-        {name: "Conductive Shield",
+        {
+            name: "Conductive Shield",
             available: 3,
             tier: 2,
             maxSlots: 6,
@@ -71,10 +75,12 @@ const ELECTRIC_ARMOR_POWERSET = {
                 recharge: 2.0,
                 endurance: 0.13,
                 cast: 0.67,
-                buffDuration: 0.75
+                resistanceBuff: 2.0,
+                duration: 0.75
             }
         },
-        {name: "Static Shield",
+        {
+            name: "Static Shield",
             available: 9,
             tier: 3,
             maxSlots: 6,
@@ -93,7 +99,8 @@ const ELECTRIC_ARMOR_POWERSET = {
                 cast: 1.17
             }
         },
-        {name: "Grounded",
+        {
+            name: "Grounded",
             available: 15,
             tier: 4,
             maxSlots: 6,
@@ -109,7 +116,8 @@ const ELECTRIC_ARMOR_POWERSET = {
                 accuracy: 1.0
             }
         },
-        {name: "Energize",
+        {
+            name: "Energize",
             available: 19,
             tier: 4,
             maxSlots: 6,
@@ -126,10 +134,13 @@ const ELECTRIC_ARMOR_POWERSET = {
                 recharge: 120.0,
                 endurance: 10.4,
                 cast: 1.17,
-                buffDuration: 30.0
+                regenerationBuff: 1.0,
+                duration: 45.0,
+                healing: 2.5
             }
         },
-        {name: "Lightning Reflexes",
+        {
+            name: "Lightning Reflexes",
             available: 23,
             tier: 5,
             maxSlots: 6,
@@ -143,10 +154,14 @@ const ELECTRIC_ARMOR_POWERSET = {
             effectArea: "SingleTarget",
             effects: {
                 accuracy: 1.0,
-                buffDuration: 10.25
+                rechargeBuff: 0.4,
+                duration: 10.25,
+                movementBuff: 0.1,
+                resistanceBuff: 0.4
             }
         },
-        {name: "Power Sink",
+        {
+            name: "Power Sink",
             available: 27,
             tier: 5,
             maxSlots: 6,
@@ -159,6 +174,7 @@ const ELECTRIC_ARMOR_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 10,
+            radius: 10.0,
             effects: {
                 accuracy: 1.0,
                 recharge: 60.0,
@@ -166,7 +182,8 @@ const ELECTRIC_ARMOR_POWERSET = {
                 cast: 2.03
             }
         },
-        {name: "Power Surge",
+        {
+            name: "Power Surge",
             available: 29,
             tier: 5,
             maxSlots: 6,

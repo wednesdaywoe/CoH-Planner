@@ -1,11 +1,11 @@
 /**
- * Ice Control - Blaster Primary
- * Extracted from raw_data_homecoming with updated converter
+ * Ice Control
+ * Extracted from raw_data_homecoming with redirect and entity support
  */
 
 const ICE_CONTROL_POWERSET = {
     name: "Ice Control",
-    category: "Blaster_RANGED",
+    category: "UNKNOWN",
     description: "Ice Control powerset",
     icon: "ice-control_set.png",
     powers: [
@@ -32,10 +32,16 @@ const ICE_CONTROL_POWERSET = {
                     type: "Cold",
                     scale: 3.0291
                 },
-                buffDuration: 12.0
+                hold: 4.0,
+                movementDebuff: 0.3,
+                duration: 12.0,
+                rechargeDebuff: 0.3,
+                resistanceDebuff: 100.0,
+                knockback: 1.0
             }
         },
-        {name: "Chilblain",
+        {
+            name: "Chilblain",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -58,10 +64,16 @@ const ICE_CONTROL_POWERSET = {
                     scale: 0.4758,
                     ticks: 4
                 },
-                buffDuration: 9.2
+                immobilize: 5.0,
+                movementDebuff: 1.6,
+                duration: 15.0,
+                rechargeDebuff: 0.2,
+                resistanceDebuff: 100.0,
+                knockback: 1.0
             }
         },
-        {name: "Frostbite",
+        {
+            name: "Frostbite",
             available: 1,
             tier: 1,
             maxSlots: 6,
@@ -74,6 +86,7 @@ const ICE_CONTROL_POWERSET = {
             targetType: "Foe (Alive)",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 30.0,
             effects: {
                 accuracy: 0.9,
                 range: 80.0,
@@ -85,10 +98,16 @@ const ICE_CONTROL_POWERSET = {
                     scale: 0.1,
                     ticks: 2
                 },
-                buffDuration: 5.2
+                immobilize: 4.0,
+                movementDebuff: 1.6,
+                duration: 12.0,
+                rechargeDebuff: 0.2,
+                resistanceDebuff: 100.0,
+                knockback: 1.0
             }
         },
-        {name: "Arctic Air",
+        {
+            name: "Arctic Air",
             available: 5,
             tier: 3,
             maxSlots: 6,
@@ -101,15 +120,20 @@ const ICE_CONTROL_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 25.0,
             effects: {
                 accuracy: 1.0,
                 recharge: 15.0,
                 endurance: 2.08,
                 cast: 2.03,
-                buffDuration: 2.25
+                rechargeDebuff: 0.5,
+                duration: 2.25,
+                movementDebuff: 1.0,
+                confuse: 4.0
             }
         },
-        {name: "Cold Snap",
+        {
+            name: "Cold Snap",
             available: 7,
             tier: 3,
             maxSlots: 6,
@@ -123,16 +147,20 @@ const ICE_CONTROL_POWERSET = {
             effectArea: "Cone",
             maxTargets: 16,
             arc: 2.3562,
+            radius: 60.0,
             effects: {
                 accuracy: 1.0,
                 range: 60.0,
                 recharge: 40.0,
                 endurance: 10.4,
                 cast: 2.17,
-                buffDuration: 18.0
+                rechargeDebuff: 0.65,
+                duration: 18.0,
+                movementDebuff: 1.0
             }
         },
-        {name: "Ice Slick",
+        {
+            name: "Ice Slick",
             available: 11,
             tier: 4,
             maxSlots: 6,
@@ -150,10 +178,17 @@ const ICE_CONTROL_POWERSET = {
                 recharge: 90.0,
                 endurance: 10.4,
                 cast: 1.67,
-                buffDuration: 30.0
+                damage: {
+                    type: "Cold",
+                    scale: 0.01
+                },
+                movementDebuff: 1.0,
+                duration: 0.5,
+                knockback: 1.0
             }
         },
-        {name: "Flash Freeze",
+        {
+            name: "Flash Freeze",
             available: 17,
             tier: 4,
             maxSlots: 6,
@@ -166,6 +201,7 @@ const ICE_CONTROL_POWERSET = {
             targetType: "Foe (Alive)",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 25.0,
             effects: {
                 accuracy: 1.0,
                 range: 60.0,
@@ -175,10 +211,12 @@ const ICE_CONTROL_POWERSET = {
                 damage: {
                     type: "Cold",
                     scale: 0.2
-                }
+                },
+                sleep: 4.0
             }
         },
-        {name: "Glacier",
+        {
+            name: "Glacier",
             available: 21,
             tier: 5,
             maxSlots: 6,
@@ -191,15 +229,22 @@ const ICE_CONTROL_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 30.0,
             effects: {
                 accuracy: 0.8,
                 recharge: 8.0,
                 endurance: 8.528,
                 cast: 2.03,
-                buffDuration: 10.0
+                hold: 4.0,
+                resistanceDebuff: 100.0,
+                duration: 10.0,
+                knockback: 1.0,
+                rechargeDebuff: 0.5,
+                movementDebuff: 0.5
             }
         },
-        {name: "Jack Frost",
+        {
+            name: "Jack Frost",
             available: 25,
             tier: 5,
             maxSlots: 6,

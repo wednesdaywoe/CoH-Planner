@@ -1,11 +1,11 @@
 /**
- * Mind Control - Blaster Primary
- * Extracted from raw_data_homecoming with updated converter
+ * Mind Control
+ * Extracted from raw_data_homecoming with redirect and entity support
  */
 
 const MIND_CONTROL_POWERSET = {
     name: "Mind Control",
-    category: "Blaster_RANGED",
+    category: "UNKNOWN",
     description: "Mind Control powerset",
     icon: "mind-control_set.png",
     powers: [
@@ -32,10 +32,13 @@ const MIND_CONTROL_POWERSET = {
                     type: "Smashing",
                     scale: 3.2691
                 },
-                buffDuration: 10.0
+                movementDebuff: 1.6,
+                duration: 10.0,
+                knockback: 1.0
             }
         },
-        {name: "Mesmerize",
+        {
+            name: "Mesmerize",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -56,10 +59,12 @@ const MIND_CONTROL_POWERSET = {
                 damage: {
                     type: "Psionic",
                     scale: 1.809
-                }
+                },
+                sleep: 4.0
             }
         },
-        {name: "Dominate",
+        {
+            name: "Dominate",
             available: 1,
             tier: 1,
             maxSlots: 6,
@@ -80,10 +85,12 @@ const MIND_CONTROL_POWERSET = {
                 damage: {
                     type: "Psionic",
                     scale: 1.745
-                }
+                },
+                hold: 4.0
             }
         },
-        {name: "Confuse",
+        {
+            name: "Confuse",
             available: 5,
             tier: 3,
             maxSlots: 6,
@@ -100,10 +107,12 @@ const MIND_CONTROL_POWERSET = {
                 range: 80.0,
                 recharge: 8.0,
                 endurance: 8.528,
-                cast: 2.0
+                cast: 2.0,
+                confuse: 3.0
             }
         },
-        {name: "Mass Hypnosis",
+        {
+            name: "Mass Hypnosis",
             available: 7,
             tier: 3,
             maxSlots: 6,
@@ -116,15 +125,18 @@ const MIND_CONTROL_POWERSET = {
             targetType: "Foe (Alive)",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 25.0,
             effects: {
                 accuracy: 1.0,
                 range: 80.0,
                 recharge: 45.0,
                 endurance: 15.6,
-                cast: 2.03
+                cast: 2.03,
+                sleep: 4.0
             }
         },
-        {name: "Telekinesis",
+        {
+            name: "Telekinesis",
             available: 11,
             tier: 4,
             maxSlots: 6,
@@ -137,16 +149,21 @@ const MIND_CONTROL_POWERSET = {
             targetType: "Foe",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 20.0,
             effects: {
                 accuracy: 1.0,
                 range: 50.0,
                 recharge: 90.0,
                 endurance: 0.26,
                 cast: 1.13,
-                buffDuration: 1.5
+                immobilize: 4.0,
+                resistanceDebuff: 100.0,
+                duration: 1.5,
+                knockback: 1.0
             }
         },
-        {name: "Total Domination",
+        {
+            name: "Total Domination",
             available: 17,
             tier: 4,
             maxSlots: 6,
@@ -159,15 +176,18 @@ const MIND_CONTROL_POWERSET = {
             targetType: "Foe (Alive)",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 20.0,
             effects: {
                 accuracy: 0.8,
                 range: 80.0,
                 recharge: 8.0,
                 endurance: 8.528,
-                cast: 2.03
+                cast: 2.03,
+                hold: 4.0
             }
         },
-        {name: "Terrify",
+        {
+            name: "Terrify",
             available: 21,
             tier: 5,
             maxSlots: 6,
@@ -181,6 +201,7 @@ const MIND_CONTROL_POWERSET = {
             effectArea: "Cone",
             maxTargets: 16,
             arc: 1.5708,
+            radius: 60.0,
             effects: {
                 accuracy: 1.0,
                 range: 60.0,
@@ -193,7 +214,8 @@ const MIND_CONTROL_POWERSET = {
                 }
             }
         },
-        {name: "Mass Confusion",
+        {
+            name: "Mass Confusion",
             available: 25,
             tier: 5,
             maxSlots: 6,
@@ -206,12 +228,14 @@ const MIND_CONTROL_POWERSET = {
             targetType: "Foe (Alive)",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 25.0,
             effects: {
                 accuracy: 1.0,
                 range: 80.0,
                 recharge: 8.0,
                 endurance: 8.528,
-                cast: 1.67
+                cast: 1.67,
+                confuse: 3.0
             }
         }
     ]

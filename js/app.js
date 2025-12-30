@@ -150,5 +150,46 @@ window.addEventListener('DOMContentLoaded', function() {
         soTypeElement.classList.add('stat-damage');
     }
     
+    // Initialize hints toggle state
+    initializeHintsToggle();
+    
     console.log('City of Heroes Planner - Ready!');
 });
+
+// ============================================
+// HINTS TOGGLE FUNCTIONALITY
+// ============================================
+
+/**
+ * Initialize hints toggle from localStorage
+ */
+function initializeHintsToggle() {
+    const hintsEnabled = localStorage.getItem('hintsEnabled') !== 'false'; // Default to true
+    
+    if (hintsEnabled) {
+        document.body.classList.add('hints-enabled');
+        updateHintsToggleButton(true);
+    } else {
+        document.body.classList.remove('hints-enabled');
+        updateHintsToggleButton(false);
+    }
+}
+
+/**
+ * Toggle hints visibility
+ */
+function toggleHints() {
+    const hintsEnabled = document.body.classList.toggle('hints-enabled');
+    localStorage.setItem('hintsEnabled', hintsEnabled.toString());
+    updateHintsToggleButton(hintsEnabled);
+}
+
+/**
+ * Update hints toggle button text
+ */
+function updateHintsToggleButton(enabled) {
+    const toggleText = document.getElementById('hintsToggleText');
+    if (toggleText) {
+        toggleText.textContent = enabled ? 'Hide Hints' : 'Show Hints';
+    }
+}

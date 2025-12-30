@@ -1,11 +1,11 @@
 /**
- * Storm Summoning - Blaster Primary
- * Extracted from raw_data_homecoming with updated converter
+ * Storm Summoning
+ * Extracted from raw_data_homecoming with redirect and entity support
  */
 
 const STORM_SUMMONING_POWERSET = {
     name: "Storm Summoning",
-    category: "Blaster_RANGED",
+    category: "UNKNOWN",
     description: "Storm Summoning powerset",
     icon: "storm-summoning_set.png",
     powers: [
@@ -24,6 +24,7 @@ const STORM_SUMMONING_POWERSET = {
             effectArea: "Cone",
             maxTargets: 16,
             arc: 1.3963,
+            radius: 50.0,
             effects: {
                 accuracy: 0.9,
                 range: 50.0,
@@ -33,10 +34,12 @@ const STORM_SUMMONING_POWERSET = {
                 damage: {
                     type: "Smashing",
                     scale: 0.1
-                }
+                },
+                knockback: 1.0
             }
         },
-        {name: "O2 Boost",
+        {
+            name: "O2 Boost",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -54,12 +57,18 @@ const STORM_SUMMONING_POWERSET = {
                 recharge: 4.0,
                 endurance: 13.0,
                 cast: 2.27,
-                buffDuration: 60.0,
+                healing: 1.32,
+                resistanceDebuff: 2.0,
+                duration: 60.0,
+                recoveryDebuff: 2.0,
+                sleep: 1.0,
+                sleepDuration: 60.0,
                 stun: 1.0,
                 stunDuration: 60.0
             }
         },
-        {name: "Snow Storm",
+        {
+            name: "Snow Storm",
             available: 1,
             tier: 1,
             maxSlots: 6,
@@ -72,16 +81,20 @@ const STORM_SUMMONING_POWERSET = {
             targetType: "Foe",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 25.0,
             effects: {
                 accuracy: 1.0,
                 range: 80.0,
                 recharge: 10.0,
                 endurance: 0.26,
                 cast: 2.03,
-                buffDuration: 0.75
+                movementDebuff: 1.0,
+                duration: 0.75,
+                rechargeDebuff: 0.5
             }
         },
-        {name: "Steamy Mist",
+        {
+            name: "Steamy Mist",
             available: 5,
             tier: 3,
             maxSlots: 6,
@@ -94,15 +107,20 @@ const STORM_SUMMONING_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 255,
+            radius: 40.0,
             effects: {
                 accuracy: 1.0,
                 recharge: 15.0,
                 endurance: 0.26,
                 cast: 1.87,
-                buffDuration: 0.75
+                resistanceDebuff: 7.0,
+                duration: 0.75,
+                confuse: 1.0,
+                confuseDuration: 0.75
             }
         },
-        {name: "Freezing Rain",
+        {
+            name: "Freezing Rain",
             available: 7,
             tier: 3,
             maxSlots: 6,
@@ -119,11 +137,11 @@ const STORM_SUMMONING_POWERSET = {
                 range: 60.0,
                 recharge: 60.0,
                 endurance: 18.2,
-                cast: 2.03,
-                buffDuration: 15.0
+                cast: 2.03
             }
         },
-        {name: "Hurricane",
+        {
+            name: "Hurricane",
             available: 11,
             tier: 4,
             maxSlots: 6,
@@ -136,16 +154,19 @@ const STORM_SUMMONING_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 25.0,
             effects: {
                 accuracy: 1.0,
                 recharge: 10.0,
                 endurance: 0.1625,
                 cast: 2.03,
                 tohitDebuff: 3.0,
-                buffDuration: 10.0
+                duration: 10.0,
+                knockback: 1.0
             }
         },
-        {name: "Thunder Clap",
+        {
+            name: "Thunder Clap",
             available: 17,
             tier: 4,
             maxSlots: 6,
@@ -158,6 +179,7 @@ const STORM_SUMMONING_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 25.0,
             effects: {
                 accuracy: 0.8,
                 recharge: 45.0,
@@ -166,7 +188,8 @@ const STORM_SUMMONING_POWERSET = {
                 stun: 2.0
             }
         },
-        {name: "Tornado",
+        {
+            name: "Tornado",
             available: 21,
             tier: 5,
             maxSlots: 6,
@@ -184,10 +207,18 @@ const STORM_SUMMONING_POWERSET = {
                 recharge: 60.0,
                 endurance: 20.8,
                 cast: 1.17,
-                buffDuration: 30.0
+                damage: {
+                    type: "Smashing",
+                    scale: 0.15
+                },
+                knockback: 1.0,
+                stun: 2.0,
+                defenseDebuff: 1.5,
+                duration: 8.0
             }
         },
-        {name: "Lightning Storm",
+        {
+            name: "Lightning Storm",
             available: 25,
             tier: 5,
             maxSlots: 6,
@@ -203,8 +234,7 @@ const STORM_SUMMONING_POWERSET = {
                 accuracy: 1.4,
                 recharge: 90.0,
                 endurance: 31.2,
-                cast: 2.03,
-                buffDuration: 60.0
+                cast: 2.03
             }
         }
     ]

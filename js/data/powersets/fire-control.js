@@ -1,11 +1,11 @@
 /**
- * Fire Control - Blaster Primary
- * Extracted from raw_data_homecoming with updated converter
+ * Fire Control
+ * Extracted from raw_data_homecoming with redirect and entity support
  */
 
 const FIRE_CONTROL_POWERSET = {
     name: "Fire Control",
-    category: "Blaster_RANGED",
+    category: "UNKNOWN",
     description: "Fire Control powerset",
     icon: "fire-control_set.png",
     powers: [
@@ -33,10 +33,11 @@ const FIRE_CONTROL_POWERSET = {
                     scale: 0.8807,
                     ticks: 4
                 },
-                buffDuration: 4.2
+                hold: 4.0
             }
         },
-        {name: "Ring of Fire",
+        {
+            name: "Ring of Fire",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -59,10 +60,15 @@ const FIRE_CONTROL_POWERSET = {
                     scale: 0.8537,
                     ticks: 4
                 },
-                buffDuration: 9.2
+                immobilize: 1.0,
+                resistanceDebuff: 100.0,
+                duration: 15.0,
+                knockback: 1.0,
+                movementDebuff: 1.6
             }
         },
-        {name: "Fire Cages",
+        {
+            name: "Fire Cages",
             available: 1,
             tier: 1,
             maxSlots: 6,
@@ -75,6 +81,7 @@ const FIRE_CONTROL_POWERSET = {
             targetType: "Foe (Alive)",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 30.0,
             effects: {
                 accuracy: 0.9,
                 range: 80.0,
@@ -86,10 +93,15 @@ const FIRE_CONTROL_POWERSET = {
                     scale: 0.3497,
                     ticks: 2
                 },
-                buffDuration: 5.2
+                immobilize: 4.0,
+                resistanceDebuff: 100.0,
+                duration: 12.0,
+                knockback: 1.0,
+                movementDebuff: 1.6
             }
         },
-        {name: "Smoke",
+        {
+            name: "Smoke",
             available: 5,
             tier: 3,
             maxSlots: 6,
@@ -102,17 +114,19 @@ const FIRE_CONTROL_POWERSET = {
             targetType: "Foe (Alive)",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 35.0,
             effects: {
                 accuracy: 1.0,
                 range: 80.0,
                 recharge: 15.0,
                 endurance: 7.8,
                 cast: 1.17,
-                buffDuration: 60.0,
-                tohitDebuff: 0.5
+                tohitDebuff: 0.5,
+                duration: 60.0
             }
         },
-        {name: "Hot Feet",
+        {
+            name: "Hot Feet",
             available: 7,
             tier: 3,
             maxSlots: 6,
@@ -125,6 +139,7 @@ const FIRE_CONTROL_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 20.0,
             effects: {
                 accuracy: 1.0,
                 recharge: 20.0,
@@ -134,10 +149,13 @@ const FIRE_CONTROL_POWERSET = {
                     type: "Fire",
                     scale: 0.5746
                 },
-                buffDuration: 15.0
+                fear: 3.0,
+                movementDebuff: 0.7,
+                duration: 15.0
             }
         },
-        {name: "Flashfire",
+        {
+            name: "Flashfire",
             available: 11,
             tier: 4,
             maxSlots: 6,
@@ -150,6 +168,7 @@ const FIRE_CONTROL_POWERSET = {
             targetType: "Foe (Alive)",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 25.0,
             effects: {
                 accuracy: 0.8,
                 range: 70.0,
@@ -161,11 +180,11 @@ const FIRE_CONTROL_POWERSET = {
                     scale: 0.1379,
                     ticks: 4
                 },
-                buffDuration: 4.0,
                 stun: 4.0
             }
         },
-        {name: "Cinders",
+        {
+            name: "Cinders",
             available: 17,
             tier: 4,
             maxSlots: 6,
@@ -178,14 +197,17 @@ const FIRE_CONTROL_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 30.0,
             effects: {
                 accuracy: 0.8,
                 recharge: 8.0,
                 endurance: 8.528,
-                cast: 1.07
+                cast: 1.07,
+                hold: 4.0
             }
         },
-        {name: "Bonfire",
+        {
+            name: "Bonfire",
             available: 21,
             tier: 5,
             maxSlots: 6,
@@ -202,11 +224,11 @@ const FIRE_CONTROL_POWERSET = {
                 range: 70.0,
                 recharge: 60.0,
                 endurance: 13.0,
-                cast: 3.07,
-                buffDuration: 45.0
+                cast: 3.07
             }
         },
-        {name: "Fire Imps",
+        {
+            name: "Fire Imps",
             available: 25,
             tier: 5,
             maxSlots: 6,

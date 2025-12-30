@@ -1,11 +1,11 @@
 /**
- * Titan Weapons - Blaster Primary
- * Extracted from raw_data_homecoming with updated converter
+ * Titan Weapons
+ * Extracted from raw_data_homecoming with redirect and entity support
  */
 
 const TITAN_WEAPONS_POWERSET = {
     name: "Titan Weapons",
-    category: "Blaster_RANGED",
+    category: "UNKNOWN",
     description: "Titan Weapons powerset",
     icon: "titan-weapons_set.png",
     powers: [
@@ -30,7 +30,8 @@ const TITAN_WEAPONS_POWERSET = {
                 cast: 2.0
             }
         },
-        {name: "Defensive Sweep",
+        {
+            name: "Defensive Sweep",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -44,6 +45,7 @@ const TITAN_WEAPONS_POWERSET = {
             effectArea: "Cone",
             maxTargets: 5,
             arc: 2.0944,
+            radius: 10.0,
             effects: {
                 accuracy: 1.0,
                 range: 10.0,
@@ -52,7 +54,8 @@ const TITAN_WEAPONS_POWERSET = {
                 cast: 2.2
             }
         },
-        {name: "Titan Sweep",
+        {
+            name: "Titan Sweep",
             available: 1,
             tier: 1,
             maxSlots: 6,
@@ -66,6 +69,7 @@ const TITAN_WEAPONS_POWERSET = {
             effectArea: "Cone",
             maxTargets: 5,
             arc: 2.0944,
+            radius: 10.0,
             effects: {
                 accuracy: 1.0,
                 range: 10.0,
@@ -74,7 +78,8 @@ const TITAN_WEAPONS_POWERSET = {
                 cast: 2.43
             }
         },
-        {name: "Follow Through",
+        {
+            name: "Follow Through",
             available: 5,
             tier: 3,
             maxSlots: 6,
@@ -98,16 +103,19 @@ const TITAN_WEAPONS_POWERSET = {
                             type: "Smashing",
                             scale: 8.870899999999999
                         },
-        {type: "Fire",
+                        {
+                            type: "Fire",
                             scale: 0.9702
                         }
                     ],
                     scale: 9.841099999999999
                 },
+                knockback: 1.0,
                 stun: 3.0
             }
         },
-        {name: "Build Momentum",
+        {
+            name: "Build Momentum",
             available: 7,
             tier: 3,
             maxSlots: 6,
@@ -125,10 +133,11 @@ const TITAN_WEAPONS_POWERSET = {
                 endurance: 5.2,
                 cast: 1.17,
                 tohitBuff: 2.0,
-                buffDuration: 10.0
+                duration: 10.0
             }
         },
-        {name: "Confront",
+        {
+            name: "Confront",
             available: 11,
             tier: 4,
             maxSlots: 6,
@@ -144,11 +153,11 @@ const TITAN_WEAPONS_POWERSET = {
                 accuracy: 1.0,
                 range: 70.0,
                 recharge: 3.0,
-                cast: 1.67,
-                buffDuration: 12.0
+                cast: 1.67
             }
         },
-        {name: "Rend Armor",
+        {
+            name: "Rend Armor",
             available: 17,
             tier: 4,
             maxSlots: 6,
@@ -168,7 +177,8 @@ const TITAN_WEAPONS_POWERSET = {
                 cast: 2.3
             }
         },
-        {name: "Whirling Smash",
+        {
+            name: "Whirling Smash",
             available: 21,
             tier: 5,
             maxSlots: 6,
@@ -181,6 +191,7 @@ const TITAN_WEAPONS_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 10,
+            radius: 10.0,
             effects: {
                 accuracy: 1.0,
                 recharge: 14.0,
@@ -192,15 +203,18 @@ const TITAN_WEAPONS_POWERSET = {
                             type: "Smashing",
                             scale: 4.448
                         },
-        {type: "Fire",
+                        {
+                            type: "Fire",
                             scale: 0.468
                         }
                     ],
                     scale: 4.916
-                }
+                },
+                knockback: 1.0
             }
         },
-        {name: "Arc of Destruction",
+        {
+            name: "Arc of Destruction",
             available: 25,
             tier: 5,
             maxSlots: 6,
@@ -214,6 +228,7 @@ const TITAN_WEAPONS_POWERSET = {
             effectArea: "Cone",
             maxTargets: 5,
             arc: 2.0944,
+            radius: 10.0,
             effects: {
                 accuracy: 1.0,
                 range: 10.0,

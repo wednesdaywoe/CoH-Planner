@@ -1,15 +1,16 @@
 /**
- * Cold Domination - Blaster Primary
- * Extracted from raw_data_homecoming with updated converter
+ * Cold Domination
+ * Extracted from raw_data_homecoming with redirect and entity support
  */
 
 const COLD_DOMINATION_POWERSET = {
     name: "Cold Domination",
-    category: "Blaster_RANGED",
+    category: "UNKNOWN",
     description: "Cold Domination powerset",
     icon: "cold-domination_set.png",
     powers: [
-        {name: "Ice Shield",
+        {
+            name: "Ice Shield",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -22,6 +23,7 @@ const COLD_DOMINATION_POWERSET = {
             targetType: "Ally (Alive)",
             effectArea: "AoE",
             maxTargets: 255,
+            radius: 30.0,
             effects: {
                 accuracy: 1.0,
                 range: 80.0,
@@ -33,17 +35,21 @@ const COLD_DOMINATION_POWERSET = {
                         {
                             type: "Cold",
                             scale: 1.25,
-                            ticks: 120},
-        {type: "Fire",
+                            ticks: 120
+                        },
+                        {
+                            type: "Fire",
                             scale: 1.0,
                             ticks: 120
                         }
                     ]
                 },
-                buffDuration: 240.0
+                resistanceDebuff: 1.0,
+                duration: 240.0
             }
         },
-        {name: "Infrigidate",
+        {
+            name: "Infrigidate",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -66,11 +72,14 @@ const COLD_DOMINATION_POWERSET = {
                     scale: 3.0,
                     ticks: 10
                 },
-                buffDuration: 20.0,
+                movementDebuff: 1.0,
+                duration: 20.0,
+                rechargeDebuff: 0.7,
                 defenseDebuff: 2.5
             }
         },
-        {name: "Snow Storm",
+        {
+            name: "Snow Storm",
             available: 1,
             tier: 1,
             maxSlots: 6,
@@ -83,16 +92,20 @@ const COLD_DOMINATION_POWERSET = {
             targetType: "Foe",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 25.0,
             effects: {
                 accuracy: 1.0,
                 range: 80.0,
                 recharge: 10.0,
                 endurance: 0.26,
                 cast: 2.03,
-                buffDuration: 0.75
+                movementDebuff: 1.0,
+                duration: 0.75,
+                rechargeDebuff: 0.5
             }
         },
-        {name: "Glacial Shield",
+        {
+            name: "Glacial Shield",
             available: 5,
             tier: 3,
             maxSlots: 6,
@@ -105,6 +118,7 @@ const COLD_DOMINATION_POWERSET = {
             targetType: "Ally (Alive)",
             effectArea: "AoE",
             maxTargets: 255,
+            radius: 30.0,
             effects: {
                 accuracy: 1.0,
                 range: 80.0,
@@ -116,10 +130,12 @@ const COLD_DOMINATION_POWERSET = {
                     scale: 1.25,
                     ticks: 120
                 },
-                buffDuration: 240.0
+                resistanceDebuff: 1.25,
+                duration: 240.0
             }
         },
-        {name: "Frostwork",
+        {
+            name: "Frostwork",
             available: 7,
             tier: 3,
             maxSlots: 6,
@@ -142,10 +158,12 @@ const COLD_DOMINATION_POWERSET = {
                     scale: 2.0,
                     ticks: 60
                 },
-                buffDuration: 120.0
+                resistanceDebuff: 2.0,
+                duration: 120.0
             }
         },
-        {name: "Arctic Fog",
+        {
+            name: "Arctic Fog",
             available: 11,
             tier: 4,
             maxSlots: 6,
@@ -158,15 +176,20 @@ const COLD_DOMINATION_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 255,
+            radius: 40.0,
             effects: {
                 accuracy: 1.0,
                 recharge: 15.0,
                 endurance: 0.26,
                 cast: 1.87,
-                buffDuration: 0.75
+                resistanceDebuff: 0.6,
+                duration: 0.75,
+                rechargeDebuff: 0.6,
+                movementDebuff: 0.6
             }
         },
-        {name: "Benumb",
+        {
+            name: "Benumb",
             available: 17,
             tier: 4,
             maxSlots: 6,
@@ -184,10 +207,11 @@ const COLD_DOMINATION_POWERSET = {
                 recharge: 120.0,
                 endurance: 13.0,
                 cast: 2.07,
-                buffDuration: 30.0
+                regenerationDebuff: 20.0
             }
         },
-        {name: "Sleet",
+        {
+            name: "Sleet",
             available: 21,
             tier: 5,
             maxSlots: 6,
@@ -204,11 +228,11 @@ const COLD_DOMINATION_POWERSET = {
                 range: 60.0,
                 recharge: 60.0,
                 endurance: 18.2,
-                cast: 2.03,
-                buffDuration: 15.0
+                cast: 2.03
             }
         },
-        {name: "Heat Loss",
+        {
+            name: "Heat Loss",
             available: 25,
             tier: 5,
             maxSlots: 6,

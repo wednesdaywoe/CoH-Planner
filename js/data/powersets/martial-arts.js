@@ -1,15 +1,16 @@
 /**
- * Martial Arts - Blaster Primary
- * Extracted from raw_data_homecoming with updated converter
+ * Martial Arts
+ * Extracted from raw_data_homecoming with redirect and entity support
  */
 
 const MARTIAL_ARTS_POWERSET = {
     name: "Martial Arts",
-    category: "Blaster_RANGED",
+    category: "UNKNOWN",
     description: "Martial Arts powerset",
     icon: "martial-arts_set.png",
     powers: [
-        {name: "Storm Kick",
+        {
+            name: "Storm Kick",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -33,7 +34,8 @@ const MARTIAL_ARTS_POWERSET = {
                             type: "Smashing",
                             scale: 2.5410000000000004
                         },
-        {type: "Fire",
+                        {
+                            type: "Fire",
                             scale: 0.594
                         }
                     ],
@@ -41,7 +43,8 @@ const MARTIAL_ARTS_POWERSET = {
                 }
             }
         },
-        {name: "Thunder Kick",
+        {
+            name: "Thunder Kick",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -65,7 +68,8 @@ const MARTIAL_ARTS_POWERSET = {
                             type: "Smashing",
                             scale: 1.9409999999999998
                         },
-        {type: "Fire",
+                        {
+                            type: "Fire",
                             scale: 0.378
                         }
                     ],
@@ -73,7 +77,8 @@ const MARTIAL_ARTS_POWERSET = {
                 }
             }
         },
-        {name: "Cobra Strike",
+        {
+            name: "Cobra Strike",
             available: 1,
             tier: 1,
             maxSlots: 6,
@@ -97,7 +102,8 @@ const MARTIAL_ARTS_POWERSET = {
                             type: "Smashing",
                             scale: 3.9289
                         },
-        {type: "Fire",
+                        {
+                            type: "Fire",
                             scale: 0.882
                         }
                     ],
@@ -105,7 +111,8 @@ const MARTIAL_ARTS_POWERSET = {
                 }
             }
         },
-        {name: "Focus Chi",
+        {
+            name: "Focus Chi",
             available: 5,
             tier: 3,
             maxSlots: 6,
@@ -123,10 +130,11 @@ const MARTIAL_ARTS_POWERSET = {
                 endurance: 5.2,
                 cast: 1.17,
                 tohitBuff: 2.0,
-                buffDuration: 10.0
+                duration: 10.0
             }
         },
-        {name: "Crane Kick",
+        {
+            name: "Crane Kick",
             available: 7,
             tier: 3,
             maxSlots: 6,
@@ -150,7 +158,8 @@ const MARTIAL_ARTS_POWERSET = {
                             type: "Smashing",
                             scale: 3.9289
                         },
-        {type: "Fire",
+                        {
+                            type: "Fire",
                             scale: 0.882
                         }
                     ],
@@ -158,7 +167,8 @@ const MARTIAL_ARTS_POWERSET = {
                 }
             }
         },
-        {name: "Warriors Challenge",
+        {
+            name: "Warriors Challenge",
             available: 11,
             tier: 4,
             maxSlots: 6,
@@ -174,11 +184,11 @@ const MARTIAL_ARTS_POWERSET = {
                 accuracy: 1.0,
                 range: 70.0,
                 recharge: 3.0,
-                cast: 1.67,
-                buffDuration: 12.0
+                cast: 1.67
             }
         },
-        {name: "Crippling Axe Kick",
+        {
+            name: "Crippling Axe Kick",
             available: 17,
             tier: 4,
             maxSlots: 6,
@@ -202,17 +212,21 @@ const MARTIAL_ARTS_POWERSET = {
                             type: "Smashing",
                             scale: 4.0799
                         },
-        {type: "Fire",
+                        {
+                            type: "Fire",
                             scale: 0.954
                         }
                     ],
                     scale: 5.0339
                 },
-                buffDuration: 8.0,
+                immobilize: 2.0,
+                movementDebuff: 0.5,
+                duration: 8.0,
                 defenseDebuff: 1.0
             }
         },
-        {name: "Dragon's Tail",
+        {
+            name: "Dragon's Tail",
             available: 21,
             tier: 5,
             maxSlots: 6,
@@ -225,6 +239,7 @@ const MARTIAL_ARTS_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 10,
+            radius: 8.0,
             effects: {
                 accuracy: 1.05,
                 recharge: 14.0,
@@ -236,7 +251,8 @@ const MARTIAL_ARTS_POWERSET = {
                             type: "Smashing",
                             scale: 2.0953999999999997
                         },
-        {type: "Fire",
+                        {
+                            type: "Fire",
                             scale: 0.5318
                         }
                     ],
@@ -244,7 +260,8 @@ const MARTIAL_ARTS_POWERSET = {
                 }
             }
         },
-        {name: "Eagles Claw",
+        {
+            name: "Eagles Claw",
             available: 25,
             tier: 5,
             maxSlots: 6,
@@ -268,14 +285,14 @@ const MARTIAL_ARTS_POWERSET = {
                             type: "Smashing",
                             scale: 4.930999999999999
                         },
-        {type: "Fire",
+                        {
+                            type: "Fire",
                             scale: 1.026
                         }
                     ],
                     scale: 5.956999999999999
                 },
-                stun: 3.0,
-                buffDuration: 2.0
+                stun: 3.0
             }
         }
     ]

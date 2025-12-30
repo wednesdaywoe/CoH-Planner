@@ -1,15 +1,16 @@
 /**
- * Earth Assault - Blaster Primary
- * Extracted from raw_data_homecoming with updated converter
+ * Earth Assault
+ * Extracted from raw_data_homecoming with redirect and entity support
  */
 
 const EARTH_ASSAULT_POWERSET = {
     name: "Earth Assault",
-    category: "Blaster_RANGED",
+    category: "UNKNOWN",
     description: "Earth Assault powerset",
     icon: "earth-assault_set.png",
     powers: [
-        {name: "Stone Mallet",
+        {
+            name: "Stone Mallet",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -30,10 +31,12 @@ const EARTH_ASSAULT_POWERSET = {
                 damage: {
                     type: "Smashing",
                     scale: 3.48
-                }
+                },
+                knockback: 1.0
             }
         },
-        {name: "Stone Spears",
+        {
+            name: "Stone Spears",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -54,10 +57,12 @@ const EARTH_ASSAULT_POWERSET = {
                 damage: {
                     type: "Lethal",
                     scale: 2.2601
-                }
+                },
+                knockback: 1.0
             }
         },
-        {name: "Tremor",
+        {
+            name: "Tremor",
             available: 3,
             tier: 2,
             maxSlots: 6,
@@ -70,6 +75,7 @@ const EARTH_ASSAULT_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 10,
+            radius: 15.0,
             effects: {
                 accuracy: 1.0,
                 recharge: 18.0,
@@ -78,10 +84,12 @@ const EARTH_ASSAULT_POWERSET = {
                 damage: {
                     type: "Smashing",
                     scale: 1.9881
-                }
+                },
+                knockback: 1.0
             }
         },
-        {name: "Hurl Boulder",
+        {
+            name: "Hurl Boulder",
             available: 9,
             tier: 3,
             maxSlots: 6,
@@ -103,10 +111,13 @@ const EARTH_ASSAULT_POWERSET = {
                     type: "Smashing",
                     scale: 4.2101
                 },
-                buffDuration: 15.0
+                knockback: 1.0,
+                movementDebuff: 1.6,
+                duration: 15.0
             }
         },
-        {name: "Power Up",
+        {
+            name: "Power Up",
             available: 15,
             tier: 4,
             maxSlots: 6,
@@ -123,14 +134,27 @@ const EARTH_ASSAULT_POWERSET = {
                 recharge: 90.0,
                 endurance: 7.8,
                 cast: 1.17,
-                buffDuration: 10.0,
+                movementBuff: 0.5,
+                duration: 10.0,
+                healing: 0.5,
+                recoveryBuff: 0.5,
+                absorb: 0.5,
+                hold: 1.0,
+                holdDuration: 10.0,
                 stun: 1.0,
                 stunDuration: 10.0,
-                tohitBuff: 0.5,
-                defenseBuff: 0.5
+                immobilize: 1.0,
+                immobilizeDuration: 10.0,
+                sleep: 1.0,
+                sleepDuration: 10.0,
+                confuse: 1.0,
+                confuseDuration: 10.0,
+                defenseBuff: 0.5,
+                tohitBuff: 0.5
             }
         },
-        {name: "Heavy Mallet",
+        {
+            name: "Heavy Mallet",
             available: 19,
             tier: 4,
             maxSlots: 6,
@@ -151,10 +175,12 @@ const EARTH_ASSAULT_POWERSET = {
                 damage: {
                     type: "Smashing",
                     scale: 4.901
-                }
+                },
+                knockback: 1.0
             }
         },
-        {name: "Seismic Smash",
+        {
+            name: "Seismic Smash",
             available: 23,
             tier: 5,
             maxSlots: 6,
@@ -175,10 +201,12 @@ const EARTH_ASSAULT_POWERSET = {
                 damage: {
                     type: "Smashing",
                     scale: 5.8100000000000005
-                }
+                },
+                hold: 1.0
             }
         },
-        {name: "Mud Pots",
+        {
+            name: "Mud Pots",
             available: 27,
             tier: 5,
             maxSlots: 6,
@@ -191,6 +219,7 @@ const EARTH_ASSAULT_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 10,
+            radius: 15.0,
             effects: {
                 accuracy: 1.0,
                 recharge: 4.0,
@@ -200,10 +229,13 @@ const EARTH_ASSAULT_POWERSET = {
                     type: "Fire",
                     scale: 0.13
                 },
-                buffDuration: 5.0
+                movementDebuff: 0.5,
+                duration: 5.0,
+                immobilize: 2.0
             }
         },
-        {name: "Fissure",
+        {
+            name: "Fissure",
             available: 29,
             tier: 5,
             maxSlots: 6,
@@ -216,6 +248,7 @@ const EARTH_ASSAULT_POWERSET = {
             targetType: "Foe (Alive)",
             effectArea: "AoE",
             maxTargets: 10,
+            radius: 10.0,
             effects: {
                 accuracy: 1.0,
                 range: 20.0,
@@ -226,6 +259,7 @@ const EARTH_ASSAULT_POWERSET = {
                     type: "Smashing",
                     scale: 2.0305999999999997
                 },
+                knockback: 1.0,
                 stun: 1.0
             }
         }

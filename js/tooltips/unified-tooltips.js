@@ -143,44 +143,155 @@ function generateAvailablePowerTooltipHTML(basePower) {
             }
         });
         
-        // Buffs
+        // === DEBUFFS SECTION ===
+        const debuffDisplay = [
+            { key: 'resistanceDebuff', label: 'Resistance Debuff', color: '#ff6b6b' },
+            { key: 'defenseDebuff', label: 'Defense Debuff', color: '#ff6b6b' },
+            { key: 'tohitDebuff', label: 'ToHit Debuff', color: '#ff6b6b' },
+            { key: 'damageDebuff', label: 'Damage Debuff', color: '#ff6b6b' },
+            { key: 'rechargeDebuff', label: 'Recharge Debuff', color: '#ff6b6b' },
+            { key: 'movementDebuff', label: 'Movement Debuff', color: '#ff6b6b' },
+            { key: 'regenerationDebuff', label: 'Regeneration Debuff', color: '#ff6b6b' },
+            { key: 'recoveryDebuff', label: 'Recovery Debuff', color: '#ff6b6b' }
+        ];
+        
+        const hasDebuffs = debuffDisplay.some(({ key }) => effects[key] !== undefined);
+        if (hasDebuffs) {
+            html += `<div style="margin-top: 6px; padding-top: 6px; border-top: 1px solid rgba(255,255,255,0.1);">`;
+            html += `<div style="font-size: 10px; font-weight: 600; opacity: 0.7; margin-bottom: 4px;">DEBUFFS</div>`;
+            debuffDisplay.forEach(({ key, label, color }) => {
+                if (effects[key] !== undefined) {
+                    html += `<div style="display: flex; justify-content: space-between; font-size: 11px; padding: 2px 0;">`;
+                    html += `<span style="opacity: 0.8;">${label}:</span>`;
+                    html += `<span style="font-weight: 600; color: ${color};">-${(effects[key] * 100).toFixed(0)}%</span>`;
+                    html += `</div>`;
+                }
+            });
+            html += `</div>`;
+        }
+        
+        // === BUFFS SECTION ===
         const buffDisplay = [
             { key: 'tohitBuff', label: 'ToHit Buff' },
             { key: 'damageBuff', label: 'Damage Buff' },
             { key: 'defenseBuff', label: 'Defense Buff' },
-            { key: 'resistanceBuff', label: 'Resistance Buff' }
+            { key: 'resistanceBuff', label: 'Resistance Buff' },
+            { key: 'rechargeBuff', label: 'Recharge Buff' },
+            { key: 'movementBuff', label: 'Movement Buff' },
+            { key: 'regenerationBuff', label: 'Regeneration Buff' },
+            { key: 'recoveryBuff', label: 'Recovery Buff' },
+            { key: 'maxHPBuff', label: 'Max HP Buff' }
         ];
         
-        buffDisplay.forEach(({ key, label }) => {
-            if (effects[key] !== undefined) {
-                html += `<div style="display: flex; justify-content: space-between; font-size: 11px; padding: 2px 0;">`;
-                html += `<span style="opacity: 0.8;">${label}:</span>`;
-                html += `<span style="font-weight: 600; color: var(--accent);">+${(effects[key] * 100).toFixed(0)}%</span>`;
-                html += `</div>`;
-            }
-        });
-        
-        // Buff duration
-        if (effects.buffDuration !== undefined) {
-            html += `<div style="display: flex; justify-content: space-between; font-size: 11px; padding: 2px 0;">`;
-            html += `<span style="opacity: 0.8;">Duration:</span>`;
-            html += `<span style="font-weight: 600;">${effects.buffDuration.toFixed(1)}s</span>`;
+        const hasBuffs = buffDisplay.some(({ key }) => effects[key] !== undefined);
+        if (hasBuffs) {
+            html += `<div style="margin-top: 6px; padding-top: 6px; border-top: 1px solid rgba(255,255,255,0.1);">`;
+            html += `<div style="font-size: 10px; font-weight: 600; opacity: 0.7; margin-bottom: 4px;">BUFFS</div>`;
+            buffDisplay.forEach(({ key, label }) => {
+                if (effects[key] !== undefined) {
+                    html += `<div style="display: flex; justify-content: space-between; font-size: 11px; padding: 2px 0;">`;
+                    html += `<span style="opacity: 0.8;">${label}:</span>`;
+                    html += `<span style="font-weight: 600; color: var(--accent);">+${(effects[key] * 100).toFixed(0)}%</span>`;
+                    html += `</div>`;
+                }
+            });
             html += `</div>`;
         }
         
-        // Control effects (stun, hold, etc.)
-        if (effects.stun !== undefined) {
-            html += `<div style="margin-top: 4px; padding-top: 4px; border-top: 1px solid rgba(255,255,255,0.1);">`;
-            html += `<div style="display: flex; justify-content: space-between; font-size: 11px; padding: 2px 0;">`;
-            html += `<span style="opacity: 0.8;">Stun Magnitude:</span>`;
-            html += `<span style="font-weight: 600; color: #ffa500;">Mag ${effects.stun.toFixed(0)}</span>`;
-            html += `</div>`;
-            if (effects.stunDuration !== undefined) {
+        // === HEALING/ABSORB SECTION ===
+        if (effects.healing !== undefined || effects.absorb !== undefined) {
+            html += `<div style="margin-top: 6px; padding-top: 6px; border-top: 1px solid rgba(255,255,255,0.1);">`;
+            html += `<div style="font-size: 10px; font-weight: 600; opacity: 0.7; margin-bottom: 4px;">HEALING</div>`;
+            
+            if (effects.healing !== undefined) {
                 html += `<div style="display: flex; justify-content: space-between; font-size: 11px; padding: 2px 0;">`;
-                html += `<span style="opacity: 0.8;">Stun Duration:</span>`;
-                html += `<span style="font-weight: 600;">${effects.stunDuration.toFixed(1)}s</span>`;
+                html += `<span style="opacity: 0.8;">Healing:</span>`;
+                html += `<span style="font-weight: 600; color: #4ade80;">${(effects.healing * 100).toFixed(1)}% HP</span>`;
                 html += `</div>`;
             }
+            
+            if (effects.absorb !== undefined) {
+                html += `<div style="display: flex; justify-content: space-between; font-size: 11px; padding: 2px 0;">`;
+                html += `<span style="opacity: 0.8;">Absorb Shield:</span>`;
+                html += `<span style="font-weight: 600; color: #60a5fa;">${(effects.absorb * 100).toFixed(1)}% HP</span>`;
+                html += `</div>`;
+            }
+            
+            html += `</div>`;
+        }
+        
+        // === CONTROL EFFECTS SECTION ===
+        const controlEffects = [
+            { key: 'hold', durKey: 'holdDuration', label: 'Hold', color: '#a78bfa' },
+            { key: 'stun', durKey: 'stunDuration', label: 'Stun', color: '#fbbf24' },
+            { key: 'immobilize', durKey: 'immobilizeDuration', label: 'Immobilize', color: '#fb923c' },
+            { key: 'sleep', durKey: 'sleepDuration', label: 'Sleep', color: '#94a3b8' },
+            { key: 'confuse', durKey: 'confuseDuration', label: 'Confuse', color: '#c084fc' },
+            { key: 'fear', durKey: 'fearDuration', label: 'Fear', color: '#f87171' },
+            { key: 'knockback', label: 'Knockback', color: '#38bdf8' }
+        ];
+        
+        const hasControl = controlEffects.some(({ key }) => effects[key] !== undefined);
+        if (hasControl) {
+            html += `<div style="margin-top: 6px; padding-top: 6px; border-top: 1px solid rgba(255,255,255,0.1);">`;
+            html += `<div style="font-size: 10px; font-weight: 600; opacity: 0.7; margin-bottom: 4px;">CONTROL EFFECTS</div>`;
+            
+            controlEffects.forEach(({ key, durKey, label, color }) => {
+                if (effects[key] !== undefined) {
+                    html += `<div style="margin-bottom: 4px;">`;
+                    html += `<div style="display: flex; justify-content: space-between; font-size: 11px; padding: 2px 0;">`;
+                    html += `<span style="opacity: 0.8;">${label} Magnitude:</span>`;
+                    html += `<span style="font-weight: 600; color: ${color};">Mag ${effects[key].toFixed(1)}</span>`;
+                    html += `</div>`;
+                    
+                    if (durKey && effects[durKey] !== undefined) {
+                        html += `<div style="display: flex; justify-content: space-between; font-size: 10px; padding: 2px 0; padding-left: 12px;">`;
+                        html += `<span style="opacity: 0.6;">Duration:</span>`;
+                        html += `<span style="font-weight: 600;">${effects[durKey].toFixed(1)}s</span>`;
+                        html += `</div>`;
+                    }
+                    html += `</div>`;
+                }
+            });
+            
+            html += `</div>`;
+        }
+        
+        // === STATUS PROTECTION SECTION ===
+        const protectionEffects = [
+            { key: 'holdProtection', label: 'Hold Protection' },
+            { key: 'stunProtection', label: 'Stun Protection' },
+            { key: 'immobilizeProtection', label: 'Immobilize Protection' },
+            { key: 'sleepProtection', label: 'Sleep Protection' },
+            { key: 'confuseProtection', label: 'Confuse Protection' },
+            { key: 'fearProtection', label: 'Fear Protection' },
+            { key: 'knockbackProtection', label: 'Knockback Protection' }
+        ];
+        
+        const hasProtection = protectionEffects.some(({ key }) => effects[key] !== undefined);
+        if (hasProtection) {
+            html += `<div style="margin-top: 6px; padding-top: 6px; border-top: 1px solid rgba(255,255,255,0.1);">`;
+            html += `<div style="font-size: 10px; font-weight: 600; opacity: 0.7; margin-bottom: 4px;">STATUS PROTECTION</div>`;
+            
+            protectionEffects.forEach(({ key, label }) => {
+                if (effects[key] !== undefined) {
+                    html += `<div style="display: flex; justify-content: space-between; font-size: 11px; padding: 2px 0;">`;
+                    html += `<span style="opacity: 0.8;">${label}:</span>`;
+                    html += `<span style="font-weight: 600; color: #10b981;">Mag ${effects[key].toFixed(1)}</span>`;
+                    html += `</div>`;
+                }
+            });
+            
+            html += `</div>`;
+        }
+        
+        // === DURATION (if not shown elsewhere) ===
+        if (effects.duration !== undefined && !hasControl) {
+            html += `<div style="margin-top: 6px; padding-top: 6px; border-top: 1px solid rgba(255,255,255,0.1);">`;
+            html += `<div style="display: flex; justify-content: space-between; font-size: 11px; padding: 2px 0;">`;
+            html += `<span style="opacity: 0.8;">Duration:</span>`;
+            html += `<span style="font-weight: 600;">${effects.duration.toFixed(1)}s</span>`;
+            html += `</div>`;
             html += `</div>`;
         }
         

@@ -1,15 +1,16 @@
 /**
- * Fiery Assault - Blaster Primary
- * Extracted from raw_data_homecoming with updated converter
+ * Fiery Assault
+ * Extracted from raw_data_homecoming with redirect and entity support
  */
 
 const FIERY_ASSAULT_POWERSET = {
     name: "Fiery Assault",
-    category: "Blaster_RANGED",
+    category: "UNKNOWN",
     description: "Fiery Assault powerset",
     icon: "fiery-assault_set.png",
     powers: [
-        {name: "Flares",
+        {
+            name: "Flares",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -33,7 +34,8 @@ const FIERY_ASSAULT_POWERSET = {
                 }
             }
         },
-        {name: "Incinerate",
+        {
+            name: "Incinerate",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -55,11 +57,11 @@ const FIERY_ASSAULT_POWERSET = {
                     type: "Fire",
                     scale: 0.4089,
                     ticks: 9
-                },
-                buffDuration: 4.6
+                }
             }
         },
-        {name: "Fire Breath",
+        {
+            name: "Fire Breath",
             available: 3,
             tier: 2,
             maxSlots: 6,
@@ -73,6 +75,7 @@ const FIERY_ASSAULT_POWERSET = {
             effectArea: "Cone",
             maxTargets: 10,
             arc: 0.5236,
+            radius: 40.0,
             effects: {
                 accuracy: 1.2,
                 range: 40.0,
@@ -83,11 +86,11 @@ const FIERY_ASSAULT_POWERSET = {
                     type: "Fire",
                     scale: 1.2584,
                     ticks: 2
-                },
-                buffDuration: 2.1
+                }
             }
         },
-        {name: "Fire Blast",
+        {
+            name: "Fire Blast",
             available: 9,
             tier: 3,
             maxSlots: 6,
@@ -113,11 +116,11 @@ const FIERY_ASSAULT_POWERSET = {
                     type: "Fire",
                     scale: 0.15,
                     ticks: 3
-                },
-                buffDuration: 3.1
+                }
             }
         },
-        {name: "Embrace of Fire",
+        {
+            name: "Embrace of Fire",
             available: 15,
             tier: 4,
             maxSlots: 6,
@@ -133,11 +136,11 @@ const FIERY_ASSAULT_POWERSET = {
                 accuracy: 1.0,
                 recharge: 180.0,
                 endurance: 7.8,
-                cast: 0.73,
-                buffDuration: 30.0
+                cast: 0.73
             }
         },
-        {name: "Combustion",
+        {
+            name: "Combustion",
             available: 19,
             tier: 4,
             maxSlots: 6,
@@ -150,6 +153,7 @@ const FIERY_ASSAULT_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 10,
+            radius: 15.0,
             effects: {
                 accuracy: 1.0,
                 recharge: 17.0,
@@ -163,11 +167,11 @@ const FIERY_ASSAULT_POWERSET = {
                     type: "Fire",
                     scale: 0.1,
                     ticks: 7
-                },
-                buffDuration: 7.1
+                }
             }
         },
-        {name: "Consume",
+        {
+            name: "Consume",
             available: 23,
             tier: 5,
             maxSlots: 6,
@@ -180,15 +184,18 @@ const FIERY_ASSAULT_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 10,
+            radius: 20.0,
             effects: {
                 accuracy: 1.0,
                 recharge: 180.0,
                 endurance: 0.52,
                 cast: 2.03,
-                buffDuration: 15.0
+                recoveryBuff: 0.05,
+                duration: 15.0
             }
         },
-        {name: "Blazing Bolt",
+        {
+            name: "Blazing Bolt",
             available: 27,
             tier: 5,
             maxSlots: 6,
@@ -208,7 +215,8 @@ const FIERY_ASSAULT_POWERSET = {
                 cast: 1.67
             }
         },
-        {name: "Blaze",
+        {
+            name: "Blaze",
             available: 29,
             tier: 5,
             maxSlots: 6,
@@ -234,8 +242,7 @@ const FIERY_ASSAULT_POWERSET = {
                     type: "Fire",
                     scale: 0.225,
                     ticks: 4
-                },
-                buffDuration: 4.1
+                }
             }
         }
     ]

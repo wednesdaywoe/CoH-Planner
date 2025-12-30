@@ -1,15 +1,16 @@
 /**
- * Energy Blast - Blaster Primary
- * Extracted from raw_data_homecoming with updated converter
+ * Energy Blast
+ * Extracted from raw_data_homecoming with redirect and entity support
  */
 
 const ENERGY_BLAST_POWERSET = {
     name: "Energy Blast",
-    category: "Blaster_RANGED",
+    category: "UNKNOWN",
     description: "Energy Blast powerset",
     icon: "energy-blast_set.png",
     powers: [
-        {name: "Power Blast",
+        {
+            name: "Power Blast",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -33,15 +34,18 @@ const ENERGY_BLAST_POWERSET = {
                             type: "Energy",
                             scale: 2.8891999999999998
                         },
-        {type: "Smashing",
+                        {
+                            type: "Smashing",
                             scale: 0.64
                         }
                     ],
                     scale: 3.5292
-                }
+                },
+                knockback: 1.0
             }
         },
-        {name: "Power Bolt",
+        {
+            name: "Power Bolt",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -65,15 +69,18 @@ const ENERGY_BLAST_POWERSET = {
                             type: "Energy",
                             scale: 2.0602
                         },
-        {type: "Smashing",
+                        {
+                            type: "Smashing",
                             scale: 0.2
                         }
                     ],
                     scale: 2.2602
-                }
+                },
+                knockback: 1.0
             }
         },
-        {name: "Energy Torrent",
+        {
+            name: "Energy Torrent",
             available: 1,
             tier: 1,
             maxSlots: 6,
@@ -87,6 +94,7 @@ const ENERGY_BLAST_POWERSET = {
             effectArea: "Cone",
             maxTargets: 10,
             arc: 0.7854,
+            radius: 40.0,
             effects: {
                 accuracy: 1.0,
                 range: 40.0,
@@ -99,15 +107,18 @@ const ENERGY_BLAST_POWERSET = {
                             type: "Energy",
                             scale: 1.3445
                         },
-        {type: "Smashing",
+                        {
+                            type: "Smashing",
                             scale: 0.3
                         }
                     ],
                     scale: 1.6445
-                }
+                },
+                knockback: 1.0
             }
         },
-        {name: "Power Burst",
+        {
+            name: "Power Burst",
             available: 5,
             tier: 3,
             maxSlots: 6,
@@ -131,15 +142,18 @@ const ENERGY_BLAST_POWERSET = {
                             type: "Energy",
                             scale: 3.3203
                         },
-        {type: "Smashing",
+                        {
+                            type: "Smashing",
                             scale: 1.0
                         }
                     ],
                     scale: 4.3203
-                }
+                },
+                knockback: 1.0
             }
         },
-        {name: "Sniper Blast",
+        {
+            name: "Sniper Blast",
             available: 7,
             tier: 3,
             maxSlots: 6,
@@ -159,7 +173,8 @@ const ENERGY_BLAST_POWERSET = {
                 cast: 1.33
             }
         },
-        {name: "Aim",
+        {
+            name: "Aim",
             available: 11,
             tier: 4,
             maxSlots: 6,
@@ -177,10 +192,11 @@ const ENERGY_BLAST_POWERSET = {
                 endurance: 5.2,
                 cast: 1.17,
                 tohitBuff: 5.0,
-                buffDuration: 10.0
+                duration: 10.0
             }
         },
-        {name: "Power Push",
+        {
+            name: "Power Push",
             available: 17,
             tier: 4,
             maxSlots: 6,
@@ -204,15 +220,18 @@ const ENERGY_BLAST_POWERSET = {
                             type: "Smashing",
                             scale: 0.33
                         },
-        {type: "Energy",
+                        {
+                            type: "Energy",
                             scale: 0.156
                         }
                     ],
                     scale: 0.486
-                }
+                },
+                knockback: 1.0
             }
         },
-        {name: "Explosive Blast",
+        {
+            name: "Explosive Blast",
             available: 21,
             tier: 5,
             maxSlots: 6,
@@ -225,6 +244,7 @@ const ENERGY_BLAST_POWERSET = {
             targetType: "Foe (Alive)",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 15.0,
             effects: {
                 accuracy: 1.0,
                 range: 80.0,
@@ -237,15 +257,18 @@ const ENERGY_BLAST_POWERSET = {
                             type: "Energy",
                             scale: 3.2887
                         },
-        {type: "Smashing",
+                        {
+                            type: "Smashing",
                             scale: 0.5
                         }
                     ],
                     scale: 3.7887
-                }
+                },
+                knockback: 1.0
             }
         },
-        {name: "Nova",
+        {
+            name: "Nova",
             available: 25,
             tier: 5,
             maxSlots: 6,
@@ -258,6 +281,7 @@ const ENERGY_BLAST_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 25.0,
             effects: {
                 accuracy: 1.4,
                 recharge: 145.0,
@@ -266,7 +290,8 @@ const ENERGY_BLAST_POWERSET = {
                 damage: {
                     type: "Energy",
                     scale: 5.4065
-                }
+                },
+                knockback: 1.0
             }
         }
     ]

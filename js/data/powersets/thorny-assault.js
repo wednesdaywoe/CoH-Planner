@@ -1,11 +1,11 @@
 /**
- * Thorny Assault - Blaster Primary
- * Extracted from raw_data_homecoming with updated converter
+ * Thorny Assault
+ * Extracted from raw_data_homecoming with redirect and entity support
  */
 
 const THORNY_ASSAULT_POWERSET = {
     name: "Thorny Assault",
-    category: "Blaster_RANGED",
+    category: "UNKNOWN",
     description: "Thorny Assault powerset",
     icon: "thorny-assault_set.png",
     powers: [
@@ -37,11 +37,12 @@ const THORNY_ASSAULT_POWERSET = {
                     scale: 0.0805,
                     ticks: 3
                 },
-                buffDuration: 3.1,
-                defenseDebuff: 2.0
+                defenseDebuff: 2.0,
+                duration: 6.0
             }
         },
-        {name: "Thorny Darts",
+        {
+            name: "Thorny Darts",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -68,11 +69,12 @@ const THORNY_ASSAULT_POWERSET = {
                     scale: 0.0595,
                     ticks: 3
                 },
-                buffDuration: 3.1,
-                defenseDebuff: 2.0
+                defenseDebuff: 2.0,
+                duration: 5.0
             }
         },
-        {name: "Fling Thorns",
+        {
+            name: "Fling Thorns",
             available: 3,
             tier: 2,
             maxSlots: 6,
@@ -86,6 +88,7 @@ const THORNY_ASSAULT_POWERSET = {
             effectArea: "Cone",
             maxTargets: 10,
             arc: 1.5708,
+            radius: 30.0,
             effects: {
                 accuracy: 1.0,
                 range: 30.0,
@@ -101,11 +104,12 @@ const THORNY_ASSAULT_POWERSET = {
                     scale: 0.086,
                     ticks: 4
                 },
-                buffDuration: 4.1,
-                defenseDebuff: 2.0
+                defenseDebuff: 2.0,
+                duration: 8.0
             }
         },
-        {name: "Impale",
+        {
+            name: "Impale",
             available: 9,
             tier: 3,
             maxSlots: 6,
@@ -132,11 +136,14 @@ const THORNY_ASSAULT_POWERSET = {
                     scale: 0.1195,
                     ticks: 6
                 },
-                buffDuration: 15.0,
+                immobilize: 3.0,
+                movementDebuff: 0.3,
+                duration: 15.0,
                 defenseDebuff: 3.0
             }
         },
-        {name: "Build Up",
+        {
+            name: "Build Up",
             available: 15,
             tier: 4,
             maxSlots: 6,
@@ -154,10 +161,11 @@ const THORNY_ASSAULT_POWERSET = {
                 endurance: 5.2,
                 cast: 1.17,
                 tohitBuff: 2.0,
-                buffDuration: 10.0
+                duration: 10.0
             }
         },
-        {name: "Thorn Burst",
+        {
+            name: "Thorn Burst",
             available: 19,
             tier: 4,
             maxSlots: 6,
@@ -170,6 +178,7 @@ const THORNY_ASSAULT_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 10,
+            radius: 15.0,
             effects: {
                 accuracy: 1.0,
                 recharge: 17.0,
@@ -184,11 +193,12 @@ const THORNY_ASSAULT_POWERSET = {
                     scale: 0.1,
                     ticks: 3
                 },
-                buffDuration: 3.1,
-                defenseDebuff: 3.0
+                defenseDebuff: 3.0,
+                duration: 10.0
             }
         },
-        {name: "Thorntrops",
+        {
+            name: "Thorntrops",
             available: 23,
             tier: 5,
             maxSlots: 6,
@@ -206,10 +216,17 @@ const THORNY_ASSAULT_POWERSET = {
                 recharge: 45.0,
                 endurance: 7.8,
                 cast: 1.63,
-                buffDuration: 45.0
+                damage: {
+                    type: "Lethal",
+                    scale: 0.05
+                },
+                movementDebuff: 1.0,
+                duration: 1.3,
+                fear: 50.0
             }
         },
-        {name: "Ripper",
+        {
+            name: "Ripper",
             available: 27,
             tier: 5,
             maxSlots: 6,
@@ -223,6 +240,7 @@ const THORNY_ASSAULT_POWERSET = {
             effectArea: "Cone",
             maxTargets: 5,
             arc: 1.0472,
+            radius: 7.0,
             effects: {
                 accuracy: 1.0,
                 range: 7.0,
@@ -238,11 +256,13 @@ const THORNY_ASSAULT_POWERSET = {
                     scale: 0.2,
                     ticks: 4
                 },
-                buffDuration: 4.1,
-                defenseDebuff: 3.0
+                knockback: 1.0,
+                defenseDebuff: 3.0,
+                duration: 12.0
             }
         },
-        {name: "Thorn Barrage",
+        {
+            name: "Thorn Barrage",
             available: 29,
             tier: 5,
             maxSlots: 6,
@@ -265,15 +285,18 @@ const THORNY_ASSAULT_POWERSET = {
                         {
                             type: "Lethal",
                             scale: 1.4401000000000002,
-                            ticks: 3},
-        {type: "Toxic",
+                            ticks: 3
+                        },
+                        {
+                            type: "Toxic",
                             scale: 0.1529,
                             ticks: 3
                         }
                     ]
                 },
-                buffDuration: 1.75,
-                defenseDebuff: 3.0
+                knockback: 1.0,
+                defenseDebuff: 3.0,
+                duration: 12.0
             }
         }
     ]

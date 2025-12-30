@@ -1,15 +1,16 @@
 /**
- * Beam Rifle - Blaster Primary
- * Extracted from raw_data_homecoming with updated converter
+ * Beam Rifle
+ * Extracted from raw_data_homecoming with redirect and entity support
  */
 
 const BEAM_RIFLE_POWERSET = {
     name: "Beam Rifle",
-    category: "Blaster_RANGED",
+    category: "UNKNOWN",
     description: "Beam Rifle powerset",
     icon: "beam-rifle_set.png",
     powers: [
-        {name: "Charged Shot",
+        {
+            name: "Charged Shot",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -30,10 +31,12 @@ const BEAM_RIFLE_POWERSET = {
                 damage: {
                     type: "Energy",
                     scale: 4.0586
-                }
+                },
+                knockback: 1.0
             }
         },
-        {name: "Single Shot",
+        {
+            name: "Single Shot",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -55,10 +58,12 @@ const BEAM_RIFLE_POWERSET = {
                     type: "Energy",
                     scale: 2.2602
                 },
-                buffDuration: 10.0
+                knockback: 1.0,
+                regenerationDebuff: 3.0
             }
         },
-        {name: "Cutting Beam",
+        {
+            name: "Cutting Beam",
             available: 1,
             tier: 1,
             maxSlots: 6,
@@ -72,6 +77,7 @@ const BEAM_RIFLE_POWERSET = {
             effectArea: "Cone",
             maxTargets: 10,
             arc: 0.5236,
+            radius: 50.0,
             effects: {
                 accuracy: 1.05,
                 range: 50.0,
@@ -87,11 +93,12 @@ const BEAM_RIFLE_POWERSET = {
                     scale: 0.1966,
                     ticks: 2
                 },
-                buffDuration: 2.1,
-                defenseDebuff: 1.0
+                defenseDebuff: 1.0,
+                duration: 10.0
             }
         },
-        {name: "Disintegrate",
+        {
+            name: "Disintegrate",
             available: 5,
             tier: 3,
             maxSlots: 6,
@@ -114,10 +121,11 @@ const BEAM_RIFLE_POWERSET = {
                     scale: 0.45030000000000003,
                     ticks: 9
                 },
-                buffDuration: 10.5
+                regenerationDebuff: 6.0
             }
         },
-        {name: "Aim",
+        {
+            name: "Aim",
             available: 7,
             tier: 3,
             maxSlots: 6,
@@ -135,10 +143,11 @@ const BEAM_RIFLE_POWERSET = {
                 endurance: 5.2,
                 cast: 1.17,
                 tohitBuff: 5.0,
-                buffDuration: 10.0
+                duration: 10.0
             }
         },
-        {name: "Lancer Shot",
+        {
+            name: "Lancer Shot",
             available: 11,
             tier: 4,
             maxSlots: 6,
@@ -163,7 +172,8 @@ const BEAM_RIFLE_POWERSET = {
                 stun: 3.0
             }
         },
-        {name: "Penetrating Ray",
+        {
+            name: "Penetrating Ray",
             available: 17,
             tier: 4,
             maxSlots: 6,
@@ -183,7 +193,8 @@ const BEAM_RIFLE_POWERSET = {
                 cast: 1.67
             }
         },
-        {name: "Piercing Beam",
+        {
+            name: "Piercing Beam",
             available: 21,
             tier: 5,
             maxSlots: 6,
@@ -197,6 +208,7 @@ const BEAM_RIFLE_POWERSET = {
             effectArea: "Cone",
             maxTargets: 3,
             arc: 0.0873,
+            radius: 80.0,
             effects: {
                 accuracy: 1.05,
                 range: 80.0,
@@ -207,10 +219,12 @@ const BEAM_RIFLE_POWERSET = {
                     type: "Energy",
                     scale: 5.9524
                 },
-                buffDuration: 10.0
+                resistanceDebuff: 2.0,
+                duration: 10.0
             }
         },
-        {name: "Overcharge",
+        {
+            name: "Overcharge",
             available: 25,
             tier: 5,
             maxSlots: 6,
@@ -223,6 +237,7 @@ const BEAM_RIFLE_POWERSET = {
             targetType: "Foe (Alive)",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 25.0,
             effects: {
                 accuracy: 1.4,
                 range: 80.0,
@@ -238,8 +253,8 @@ const BEAM_RIFLE_POWERSET = {
                     scale: 0.1,
                     ticks: 4
                 },
-                buffDuration: 4.1,
                 defenseDebuff: 1.5,
+                duration: 15.0,
                 stun: 3.0
             }
         }

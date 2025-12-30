@@ -1,11 +1,11 @@
 /**
- * Radiation Melee - Blaster Primary
- * Extracted from raw_data_homecoming with updated converter
+ * Radiation Melee
+ * Extracted from raw_data_homecoming with redirect and entity support
  */
 
 const RADIATION_MELEE_POWERSET = {
     name: "Radiation Melee",
-    category: "Blaster_RANGED",
+    category: "UNKNOWN",
     description: "Radiation Melee powerset",
     icon: "radiation-melee_set.png",
     powers: [
@@ -29,25 +29,15 @@ const RADIATION_MELEE_POWERSET = {
                 endurance: 4.368,
                 cast: 0.83,
                 damage: {
-                    types: [
-                        {
-                            type: "Energy",
-                            scale: 3.5414
-                        },
-        {type: "Smashing",
-                            scale: 1.1804
-                        },
-        {type: "Fire",
-                            scale: 0.378
-                        }
-                    ],
-                    scale: 5.0998
+                    type: "Toxic",
+                    scale: 0.2999
                 },
                 defenseDebuff: 1.0,
-                buffDuration: 10.0
+                duration: 10.0
             }
         },
-        {name: "Radioactive Smash",
+        {
+            name: "Radioactive Smash",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -66,25 +56,16 @@ const RADIATION_MELEE_POWERSET = {
                 endurance: 7.696,
                 cast: 1.5,
                 damage: {
-                    types: [
-                        {
-                            type: "Energy",
-                            scale: 5.925000000000001
-                        },
-        {type: "Smashing",
-                            scale: 1.975
-                        },
-        {type: "Fire",
-                            scale: 0.666
-                        }
-                    ],
-                    scale: 8.566
+                    type: "Toxic",
+                    scale: 0.4684
                 },
                 defenseDebuff: 1.5,
-                buffDuration: 10.0
+                duration: 10.0,
+                knockback: 1.0
             }
         },
-        {name: "Proton Sweep",
+        {
+            name: "Proton Sweep",
             available: 1,
             tier: 1,
             maxSlots: 6,
@@ -98,6 +79,7 @@ const RADIATION_MELEE_POWERSET = {
             effectArea: "Cone",
             maxTargets: 10,
             arc: 1.309,
+            radius: 7.0,
             effects: {
                 accuracy: 1.0,
                 range: 7.0,
@@ -109,21 +91,26 @@ const RADIATION_MELEE_POWERSET = {
                         {
                             type: "Toxic",
                             scale: 1.3429,
-                            ticks: 3},
-        {type: "Energy",
+                            ticks: 3
+                        },
+                        {
+                            type: "Energy",
                             scale: 0.49899999999999994,
-                            ticks: 3},
-        {type: "Fire",
+                            ticks: 3
+                        },
+                        {
+                            type: "Fire",
                             scale: 0.1609,
                             ticks: 3
                         }
                     ]
                 },
-                buffDuration: 3.1,
-                defenseDebuff: 1.2
+                defenseDebuff: 1.2,
+                duration: 10.0
             }
         },
-        {name: "Fusion",
+        {
+            name: "Fusion",
             available: 5,
             tier: 3,
             maxSlots: 6,
@@ -141,10 +128,11 @@ const RADIATION_MELEE_POWERSET = {
                 endurance: 5.2,
                 cast: 1.17,
                 tohitBuff: 2.0,
-                buffDuration: 10.0
+                duration: 10.0
             }
         },
-        {name: "Radiation Siphon",
+        {
+            name: "Radiation Siphon",
             available: 7,
             tier: 3,
             maxSlots: 6,
@@ -163,25 +151,16 @@ const RADIATION_MELEE_POWERSET = {
                 endurance: 10.192,
                 cast: 2.23,
                 damage: {
-                    types: [
-                        {
-                            type: "Energy",
-                            scale: 7.9514
-                        },
-        {type: "Smashing",
-                            scale: 2.6504000000000003
-                        },
-        {type: "Fire",
-                            scale: 0.882
-                        }
-                    ],
-                    scale: 11.4838
+                    type: "Toxic",
+                    scale: 0.5423
                 },
                 defenseDebuff: 1.5,
-                buffDuration: 10.0
+                duration: 10.0,
+                healing: 0.6667
             }
         },
-        {name: "Confront",
+        {
+            name: "Confront",
             available: 11,
             tier: 4,
             maxSlots: 6,
@@ -197,11 +176,11 @@ const RADIATION_MELEE_POWERSET = {
                 accuracy: 1.0,
                 range: 70.0,
                 recharge: 3.0,
-                cast: 1.67,
-                buffDuration: 12.0
+                cast: 1.67
             }
         },
-        {name: "Irradiated Ground",
+        {
+            name: "Irradiated Ground",
             available: 17,
             tier: 4,
             maxSlots: 6,
@@ -214,6 +193,7 @@ const RADIATION_MELEE_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 10,
+            radius: 8.0,
             effects: {
                 accuracy: 1.0,
                 recharge: 4.0,
@@ -221,7 +201,8 @@ const RADIATION_MELEE_POWERSET = {
                 cast: 2.03
             }
         },
-        {name: "Devastating Blow",
+        {
+            name: "Devastating Blow",
             available: 21,
             tier: 5,
             maxSlots: 6,
@@ -240,26 +221,16 @@ const RADIATION_MELEE_POWERSET = {
                 endurance: 16.016,
                 cast: 2.67,
                 damage: {
-                    types: [
-                        {
-                            type: "Energy",
-                            scale: 11.3534
-                        },
-        {type: "Smashing",
-                            scale: 3.7844
-                        },
-        {type: "Fire",
-                            scale: 1.386
-                        }
-                    ],
-                    scale: 16.5238
+                    type: "Toxic",
+                    scale: 0.4684
                 },
                 defenseDebuff: 2.0,
-                buffDuration: 10.0,
+                duration: 10.0,
                 stun: 3.0
             }
         },
-        {name: "Atom Smasher",
+        {
+            name: "Atom Smasher",
             available: 25,
             tier: 5,
             maxSlots: 6,
@@ -272,6 +243,7 @@ const RADIATION_MELEE_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 10.0,
             effects: {
                 accuracy: 1.0,
                 recharge: 22.0,
@@ -283,17 +255,19 @@ const RADIATION_MELEE_POWERSET = {
                             type: "Toxic",
                             scale: 5.4861
                         },
-        {type: "Energy",
+                        {
+                            type: "Energy",
                             scale: 1.8287
                         },
-        {type: "Fire",
+                        {
+                            type: "Fire",
                             scale: 0.6975
                         }
                     ],
                     scale: 8.0123
                 },
                 defenseDebuff: 1.2,
-                buffDuration: 10.0,
+                duration: 10.0,
                 stun: 2.0
             }
         }

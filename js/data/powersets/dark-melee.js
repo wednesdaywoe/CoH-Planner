@@ -1,15 +1,16 @@
 /**
- * Dark Melee - Blaster Primary
- * Extracted from raw_data_homecoming with updated converter
+ * Dark Melee
+ * Extracted from raw_data_homecoming with redirect and entity support
  */
 
 const DARK_MELEE_POWERSET = {
     name: "Dark Melee",
-    category: "Blaster_RANGED",
+    category: "UNKNOWN",
     description: "Dark Melee powerset",
     icon: "dark-melee_set.png",
     powers: [
-        {name: "Shadow Punch",
+        {
+            name: "Shadow Punch",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -33,20 +34,23 @@ const DARK_MELEE_POWERSET = {
                             type: "Negative",
                             scale: 3.9414999999999996
                         },
-        {type: "Smashing",
+                        {
+                            type: "Smashing",
                             scale: 0.7804
                         },
-        {type: "Fire",
+                        {
+                            type: "Fire",
                             scale: 0.378
                         }
                     ],
                     scale: 5.0999
                 },
                 tohitDebuff: 0.75,
-                buffDuration: 6.0
+                duration: 6.0
             }
         },
-        {name: "Smite",
+        {
+            name: "Smite",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -70,20 +74,23 @@ const DARK_MELEE_POWERSET = {
                             type: "Negative",
                             scale: 5.9481
                         },
-        {type: "Smashing",
+                        {
+                            type: "Smashing",
                             scale: 0.6496999999999999
                         },
-        {type: "Fire",
+                        {
+                            type: "Fire",
                             scale: 0.594
                         }
                     ],
                     scale: 7.1918
                 },
                 tohitDebuff: 0.75,
-                buffDuration: 10.0
+                duration: 10.0
             }
         },
-        {name: "Shadow Maul",
+        {
+            name: "Shadow Maul",
             available: 1,
             tier: 1,
             maxSlots: 6,
@@ -97,6 +104,7 @@ const DARK_MELEE_POWERSET = {
             effectArea: "Cone",
             maxTargets: 5,
             arc: 2.0944,
+            radius: 7.0,
             effects: {
                 accuracy: 1.0,
                 range: 7.0,
@@ -112,21 +120,26 @@ const DARK_MELEE_POWERSET = {
                         {
                             type: "Smashing",
                             scale: 0.44079999999999997,
-                            ticks: 3},
-        {type: "Negative",
+                            ticks: 3
+                        },
+                        {
+                            type: "Negative",
                             scale: 0.44079999999999997,
-                            ticks: 3},
-        {type: "Fire",
+                            ticks: 3
+                        },
+                        {
+                            type: "Fire",
                             scale: 0.1821,
                             ticks: 3
                         }
                     ]
                 },
-                buffDuration: 2.0,
-                tohitDebuff: 0.75
+                tohitDebuff: 0.75,
+                duration: 10.0
             }
         },
-        {name: "Touch of Fear",
+        {
+            name: "Touch of Fear",
             available: 5,
             tier: 3,
             maxSlots: 6,
@@ -139,15 +152,33 @@ const DARK_MELEE_POWERSET = {
             targetType: "Foe (Alive)",
             effectArea: "AoE",
             maxTargets: 10,
+            radius: 6.0,
             effects: {
                 accuracy: 1.0,
                 range: 7.0,
                 recharge: 8.0,
                 endurance: 8.528,
-                cast: 1.97
+                cast: 1.97,
+                dotDamage: {
+                    types: [
+                        {
+                            type: "Negative",
+                            scale: 0.3935,
+                            ticks: 4
+                        },
+                        {
+                            type: "Fire",
+                            scale: 0.0777,
+                            ticks: 4
+                        }
+                    ]
+                },
+                tohitDebuff: 1.5,
+                duration: 20.0
             }
         },
-        {name: "Siphon Life",
+        {
+            name: "Siphon Life",
             available: 7,
             tier: 3,
             maxSlots: 6,
@@ -171,17 +202,20 @@ const DARK_MELEE_POWERSET = {
                             type: "Negative",
                             scale: 10.181799999999999
                         },
-        {type: "Fire",
+                        {
+                            type: "Fire",
                             scale: 0.882
                         }
                     ],
                     scale: 11.063799999999999
                 },
+                healing: 1.0,
                 tohitDebuff: 0.75,
-                buffDuration: 10.0
+                duration: 10.0
             }
         },
-        {name: "Confront",
+        {
+            name: "Confront",
             available: 11,
             tier: 4,
             maxSlots: 6,
@@ -197,11 +231,11 @@ const DARK_MELEE_POWERSET = {
                 accuracy: 1.0,
                 range: 70.0,
                 recharge: 3.0,
-                cast: 1.67,
-                buffDuration: 12.0
+                cast: 1.67
             }
         },
-        {name: "Dark Consumption",
+        {
+            name: "Dark Consumption",
             available: 17,
             tier: 4,
             maxSlots: 6,
@@ -214,6 +248,7 @@ const DARK_MELEE_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 10,
+            radius: 8.0,
             effects: {
                 accuracy: 1.0,
                 recharge: 180.0,
@@ -225,7 +260,8 @@ const DARK_MELEE_POWERSET = {
                             type: "Negative",
                             scale: 3.0309
                         },
-        {type: "Fire",
+                        {
+                            type: "Fire",
                             scale: 0.36
                         }
                     ],
@@ -233,7 +269,8 @@ const DARK_MELEE_POWERSET = {
                 }
             }
         },
-        {name: "Soul Drain",
+        {
+            name: "Soul Drain",
             available: 21,
             tier: 5,
             maxSlots: 6,
@@ -246,6 +283,7 @@ const DARK_MELEE_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 10,
+            radius: 10.0,
             effects: {
                 accuracy: 1.2,
                 recharge: 120.0,
@@ -257,17 +295,19 @@ const DARK_MELEE_POWERSET = {
                             type: "Negative",
                             scale: 3.7885999999999997
                         },
-        {type: "Fire",
+                        {
+                            type: "Fire",
                             scale: 0.45
                         }
                     ],
                     scale: 4.2386
                 },
                 tohitBuff: 1.0,
-                buffDuration: 30.0
+                duration: 30.0
             }
         },
-        {name: "Midnight Grasp",
+        {
+            name: "Midnight Grasp",
             available: 25,
             tier: 5,
             maxSlots: 6,
@@ -291,7 +331,8 @@ const DARK_MELEE_POWERSET = {
                             type: "Negative",
                             scale: 12.2335
                         },
-        {type: "Fire",
+                        {
+                            type: "Fire",
                             scale: 0.9945
                         }
                     ],
@@ -302,15 +343,18 @@ const DARK_MELEE_POWERSET = {
                         {
                             type: "Negative",
                             scale: 0.1889,
-                            ticks: 4},
-        {type: "Fire",
+                            ticks: 4
+                        },
+                        {
+                            type: "Fire",
                             scale: 0.045,
                             ticks: 4
                         }
                     ]
                 },
-                buffDuration: 3.1,
-                tohitDebuff: 0.75
+                immobilize: 3.0,
+                tohitDebuff: 0.75,
+                duration: 20.0
             }
         }
     ]

@@ -1,15 +1,16 @@
 /**
- * Dark Armor - Blaster Primary
- * Extracted from raw_data_homecoming with updated converter
+ * Dark Armor
+ * Extracted from raw_data_homecoming with redirect and entity support
  */
 
 const DARK_ARMOR_POWERSET = {
     name: "Dark Armor",
-    category: "Blaster_RANGED",
+    category: "UNKNOWN",
     description: "Dark Armor powerset",
     icon: "dark-armor_set.png",
     powers: [
-        {name: "Dark Embrace",
+        {
+            name: "Dark Embrace",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -26,10 +27,12 @@ const DARK_ARMOR_POWERSET = {
                 recharge: 2.0,
                 endurance: 0.104,
                 cast: 0.67,
-                buffDuration: 0.75
+                resistanceBuff: 2.0,
+                duration: 0.75
             }
         },
-        {name: "Death Shroud",
+        {
+            name: "Death Shroud",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -42,6 +45,7 @@ const DARK_ARMOR_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 10,
+            radius: 8.0,
             effects: {
                 accuracy: 1.0,
                 recharge: 4.0,
@@ -53,7 +57,8 @@ const DARK_ARMOR_POWERSET = {
                 }
             }
         },
-        {name: "Murky Cloud",
+        {
+            name: "Murky Cloud",
             available: 3,
             tier: 2,
             maxSlots: 6,
@@ -70,10 +75,14 @@ const DARK_ARMOR_POWERSET = {
                 recharge: 2.0,
                 endurance: 0.104,
                 cast: 1.17,
-                buffDuration: 0.75
+                resistanceBuff: 2.0,
+                duration: 0.75,
+                resistanceDebuff: 2.0,
+                recoveryDebuff: 2.0
             }
         },
-        {name: "Obsidian Shield",
+        {
+            name: "Obsidian Shield",
             available: 9,
             tier: 3,
             maxSlots: 6,
@@ -90,14 +99,22 @@ const DARK_ARMOR_POWERSET = {
                 recharge: 4.0,
                 endurance: 0.104,
                 cast: 1.17,
-                buffDuration: 0.75,
+                resistanceBuff: 0.5,
+                duration: 0.75,
+                hold: 1.0,
+                holdDuration: 0.75,
                 stun: 1.0,
                 stunDuration: 0.75,
+                sleep: 1.0,
+                sleepDuration: 0.75,
+                defenseBuff: 0.3,
                 tohitBuff: 0.3,
-                defenseBuff: 0.3
+                rechargeBuff: 0.3,
+                movementBuff: 0.5
             }
         },
-        {name: "Dark Regeneration",
+        {
+            name: "Dark Regeneration",
             available: 15,
             tier: 4,
             maxSlots: 6,
@@ -110,6 +127,7 @@ const DARK_ARMOR_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 10,
+            radius: 20.0,
             effects: {
                 accuracy: 1.0,
                 recharge: 30.0,
@@ -118,10 +136,12 @@ const DARK_ARMOR_POWERSET = {
                 damage: {
                     type: "Negative",
                     scale: 0.2
-                }
+                },
+                healing: 3.0
             }
         },
-        {name: "Obscure Sustenance",
+        {
+            name: "Obscure Sustenance",
             available: 15,
             tier: 4,
             maxSlots: 6,
@@ -138,11 +158,16 @@ const DARK_ARMOR_POWERSET = {
                 recharge: 60.0,
                 endurance: 10.4,
                 cast: 1.93,
-                buffDuration: 10.0,
+                healing: 2.5,
+                regenerationBuff: 0.75,
+                duration: 10.0,
+                recoveryBuff: 0.1,
+                resistanceBuff: 0.75,
                 tohitBuff: 0.75
             }
         },
-        {name: "Cloak of Darkness",
+        {
+            name: "Cloak of Darkness",
             available: 19,
             tier: 4,
             maxSlots: 6,
@@ -159,10 +184,14 @@ const DARK_ARMOR_POWERSET = {
                 recharge: 2.0,
                 endurance: 0.13,
                 cast: 1.17,
-                buffDuration: 0.75
+                resistanceBuff: 3.0,
+                duration: 0.75,
+                immobilize: 1.0,
+                immobilizeDuration: 0.75
             }
         },
-        {name: "Cloak of Fear",
+        {
+            name: "Cloak of Fear",
             available: 23,
             tier: 5,
             maxSlots: 6,
@@ -175,6 +204,7 @@ const DARK_ARMOR_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 10,
+            radius: 15.0,
             effects: {
                 accuracy: 0.8,
                 recharge: 4.0,
@@ -182,7 +212,8 @@ const DARK_ARMOR_POWERSET = {
                 cast: 1.17
             }
         },
-        {name: "Oppressive Gloom",
+        {
+            name: "Oppressive Gloom",
             available: 27,
             tier: 5,
             maxSlots: 6,
@@ -195,6 +226,7 @@ const DARK_ARMOR_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 10,
+            radius: 12.0,
             effects: {
                 accuracy: 1.0,
                 recharge: 8.0,
@@ -203,7 +235,8 @@ const DARK_ARMOR_POWERSET = {
                 stun: 2.0
             }
         },
-        {name: "Soul Transfer",
+        {
+            name: "Soul Transfer",
             available: 29,
             tier: 5,
             maxSlots: 6,
@@ -216,6 +249,7 @@ const DARK_ARMOR_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 10,
+            radius: 25.0,
             effects: {
                 accuracy: 1.0,
                 recharge: 10.0,

@@ -1,11 +1,11 @@
 /**
- * Seismic Blast - Blaster Primary
- * Extracted from raw_data_homecoming with updated converter
+ * Seismic Blast
+ * Extracted from raw_data_homecoming with redirect and entity support
  */
 
 const SEISMIC_BLAST_POWERSET = {
     name: "Seismic Blast",
-    category: "Blaster_RANGED",
+    category: "UNKNOWN",
     description: "Seismic Blast powerset",
     icon: "seismic-blast_set.png",
     powers: [
@@ -33,10 +33,12 @@ const SEISMIC_BLAST_POWERSET = {
                     scale: 2.26
                 },
                 defenseDebuff: 0.5,
-                buffDuration: 3.0
+                duration: 3.0,
+                movementDebuff: 1.0
             }
         },
-        {name: "Seismic Shockwaves",
+        {
+            name: "Seismic Shockwaves",
             available: 0,
             tier: 1,
             maxSlots: 0,
@@ -49,11 +51,14 @@ const SEISMIC_BLAST_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 1,
+            radius: 15.0,
             effects: {
-                accuracy: 0.8
+                accuracy: 0.8,
+                knockback: 1.0
             }
         },
-        {name: "Shatter",
+        {
+            name: "Shatter",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -76,10 +81,12 @@ const SEISMIC_BLAST_POWERSET = {
                     scale: 3.091
                 },
                 defenseDebuff: 1.0,
-                buffDuration: 6.0
+                duration: 6.0,
+                movementDebuff: 1.0
             }
         },
-        {name: "Rock Shards",
+        {
+            name: "Rock Shards",
             available: 1,
             tier: 1,
             maxSlots: 6,
@@ -93,6 +100,7 @@ const SEISMIC_BLAST_POWERSET = {
             effectArea: "Cone",
             maxTargets: 10,
             arc: 0.5236,
+            radius: 40.0,
             effects: {
                 accuracy: 1.0,
                 range: 40.0,
@@ -101,7 +109,8 @@ const SEISMIC_BLAST_POWERSET = {
                 cast: 1.07
             }
         },
-        {name: "Entomb",
+        {
+            name: "Entomb",
             available: 5,
             tier: 3,
             maxSlots: 6,
@@ -124,10 +133,12 @@ const SEISMIC_BLAST_POWERSET = {
                     scale: 4.4089
                 },
                 defenseDebuff: 1.0,
-                buffDuration: 12.0
+                duration: 12.0,
+                movementDebuff: 1.0
             }
         },
-        {name: "Seismic Force",
+        {
+            name: "Seismic Force",
             available: 7,
             tier: 3,
             maxSlots: 6,
@@ -145,10 +156,11 @@ const SEISMIC_BLAST_POWERSET = {
                 endurance: 5.2,
                 cast: 1.17,
                 tohitBuff: 5.0,
-                buffDuration: 10.0
+                duration: 10.0
             }
         },
-        {name: "Upthrust",
+        {
+            name: "Upthrust",
             available: 11,
             tier: 4,
             maxSlots: 6,
@@ -161,6 +173,7 @@ const SEISMIC_BLAST_POWERSET = {
             targetType: "Foe (Alive)",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 15.0,
             effects: {
                 accuracy: 1.0,
                 range: 80.0,
@@ -172,10 +185,12 @@ const SEISMIC_BLAST_POWERSET = {
                     scale: 2.7785
                 },
                 defenseDebuff: 0.7,
-                buffDuration: 16.0
+                duration: 16.0,
+                movementDebuff: 1.0
             }
         },
-        {name: "Tombstone",
+        {
+            name: "Tombstone",
             available: 17,
             tier: 4,
             maxSlots: 6,
@@ -195,7 +210,8 @@ const SEISMIC_BLAST_POWERSET = {
                 cast: 1.67
             }
         },
-        {name: "Stalagmite",
+        {
+            name: "Stalagmite",
             available: 21,
             tier: 5,
             maxSlots: 6,
@@ -215,7 +231,8 @@ const SEISMIC_BLAST_POWERSET = {
                 cast: 1.0
             }
         },
-        {name: "Meteor",
+        {
+            name: "Meteor",
             available: 25,
             tier: 5,
             maxSlots: 6,
@@ -233,7 +250,7 @@ const SEISMIC_BLAST_POWERSET = {
                 recharge: 170.0,
                 endurance: 27.7316,
                 cast: 2.57,
-                buffDuration: 10.0
+                duration: 10.0
             }
         }
     ]

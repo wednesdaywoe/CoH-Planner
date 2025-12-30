@@ -1,11 +1,11 @@
 /**
- * Pain Domination - Blaster Primary
- * Extracted from raw_data_homecoming with updated converter
+ * Pain Domination
+ * Extracted from raw_data_homecoming with redirect and entity support
  */
 
 const PAIN_DOMINATION_POWERSET = {
     name: "Pain Domination",
-    category: "Blaster_RANGED",
+    category: "UNKNOWN",
     description: "Pain Domination powerset",
     icon: "pain-domination_set.png",
     powers: [
@@ -23,14 +23,17 @@ const PAIN_DOMINATION_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 255,
+            radius: 25.0,
             effects: {
                 accuracy: 1.0,
                 recharge: 8.0,
                 endurance: 13.0,
-                cast: 2.03
+                cast: 2.03,
+                healing: 1.0
             }
         },
-        {name: "Soothe",
+        {
+            name: "Soothe",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -47,10 +50,12 @@ const PAIN_DOMINATION_POWERSET = {
                 range: 80.0,
                 recharge: 4.0,
                 endurance: 13.0,
-                cast: 2.27
+                cast: 2.27,
+                healing: 1.96
             }
         },
-        {name: "Share Pain",
+        {
+            name: "Share Pain",
             available: 1,
             tier: 1,
             maxSlots: 6,
@@ -68,10 +73,14 @@ const PAIN_DOMINATION_POWERSET = {
                 recharge: 15.0,
                 endurance: 0.52,
                 cast: 2.27,
-                buffDuration: 15.0
+                healing: 0.5,
+                resistanceBuff: 0.5,
+                duration: 15.0,
+                regenerationDebuff: 0.5
             }
         },
-        {name: "Conduit of Pain",
+        {
+            name: "Conduit of Pain",
             available: 5,
             tier: 3,
             maxSlots: 6,
@@ -89,12 +98,16 @@ const PAIN_DOMINATION_POWERSET = {
                 recharge: 180.0,
                 endurance: 26.0,
                 cast: 3.2,
-                buffDuration: 0.5,
+                healing: 4.0,
+                recoveryBuff: 1.75,
+                duration: 60.0,
+                rechargeBuff: 0.75,
                 tohitBuff: 2.0,
                 tohitDebuff: 2.0
             }
         },
-        {name: "Enforced Morale",
+        {
+            name: "Enforced Morale",
             available: 7,
             tier: 3,
             maxSlots: 6,
@@ -112,12 +125,24 @@ const PAIN_DOMINATION_POWERSET = {
                 recharge: 4.0,
                 endurance: 5.2,
                 cast: 1.0,
+                hold: 1.0,
+                holdDuration: 90.0,
                 stun: 1.0,
                 stunDuration: 90.0,
-                buffDuration: 90.0
+                immobilize: 1.0,
+                immobilizeDuration: 90.0,
+                sleep: 1.0,
+                sleepDuration: 90.0,
+                confuse: 1.0,
+                confuseDuration: 90.0,
+                resistanceDebuff: 2.5,
+                duration: 90.0,
+                rechargeDebuff: 0.05,
+                movementDebuff: 0.05
             }
         },
-        {name: "Soothing Aura",
+        {
+            name: "Soothing Aura",
             available: 11,
             tier: 4,
             maxSlots: 6,
@@ -130,14 +155,17 @@ const PAIN_DOMINATION_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 255,
+            radius: 15.0,
             effects: {
                 accuracy: 1.0,
                 recharge: 10.0,
                 endurance: 0.78,
-                cast: 1.67
+                cast: 1.67,
+                healing: 0.375
             }
         },
-        {name: "World of Pain",
+        {
+            name: "World of Pain",
             available: 17,
             tier: 4,
             maxSlots: 6,
@@ -150,16 +178,19 @@ const PAIN_DOMINATION_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 255,
+            radius: 35.0,
             effects: {
                 accuracy: 1.0,
                 recharge: 240.0,
                 endurance: 10.192,
                 cast: 2.03,
-                tohitBuff: 1.0,
-                buffDuration: 90.0
+                tohitDebuff: 1.0,
+                duration: 90.0,
+                resistanceDebuff: 1.5
             }
         },
-        {name: "Anguishing Cry",
+        {
+            name: "Anguishing Cry",
             available: 21,
             tier: 5,
             maxSlots: 6,
@@ -172,16 +203,19 @@ const PAIN_DOMINATION_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 25.0,
             effects: {
                 accuracy: 1.0,
                 recharge: 120.0,
                 endurance: 13.0,
                 cast: 1.97,
                 defenseDebuff: 3.0,
-                buffDuration: 30.0
+                duration: 30.0,
+                resistanceDebuff: 3.0
             }
         },
-        {name: "Painbringer",
+        {
+            name: "Painbringer",
             available: 25,
             tier: 5,
             maxSlots: 6,
@@ -199,7 +233,8 @@ const PAIN_DOMINATION_POWERSET = {
                 recharge: 300.0,
                 endurance: 10.4,
                 cast: 2.27,
-                buffDuration: 90.0
+                recoveryDebuff: 8.0,
+                regenerationDebuff: 5.0
             }
         }
     ]

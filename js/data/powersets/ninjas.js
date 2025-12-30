@@ -1,11 +1,11 @@
 /**
- * Ninjas - Blaster Primary
- * Extracted from raw_data_homecoming with updated converter
+ * Ninjas
+ * Extracted from raw_data_homecoming with redirect and entity support
  */
 
 const NINJAS_POWERSET = {
     name: "Ninjas",
-    category: "Blaster_RANGED",
+    category: "UNKNOWN",
     description: "Ninjas powerset",
     icon: "ninjas_set.png",
     powers: [
@@ -30,7 +30,8 @@ const NINJAS_POWERSET = {
                 cast: 1.7
             }
         },
-        {name: "Snap Shot",
+        {
+            name: "Snap Shot",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -54,7 +55,8 @@ const NINJAS_POWERSET = {
                 }
             }
         },
-        {name: "Aimed Shot",
+        {
+            name: "Aimed Shot",
             available: 1,
             tier: 1,
             maxSlots: 6,
@@ -78,7 +80,8 @@ const NINJAS_POWERSET = {
                 }
             }
         },
-        {name: "Train Ninjas",
+        {
+            name: "Train Ninjas",
             available: 5,
             tier: 3,
             maxSlots: 6,
@@ -91,16 +94,17 @@ const NINJAS_POWERSET = {
             targetType: "Own Pet (Alive)",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 30.0,
             effects: {
                 accuracy: 1.0,
                 range: 50.0,
                 recharge: 6.0,
                 endurance: 11.375,
-                cast: 2.37,
-                buffDuration: 5.0
+                cast: 2.37
             }
         },
-        {name: "Fistful of Arrows",
+        {
+            name: "Fistful of Arrows",
             available: 7,
             tier: 3,
             maxSlots: 6,
@@ -114,6 +118,7 @@ const NINJAS_POWERSET = {
             effectArea: "Cone",
             maxTargets: 10,
             arc: 0.5236,
+            radius: 40.0,
             effects: {
                 accuracy: 1.155,
                 range: 40.0,
@@ -126,7 +131,8 @@ const NINJAS_POWERSET = {
                 }
             }
         },
-        {name: "Call Jounin",
+        {
+            name: "Call Jounin",
             available: 11,
             tier: 4,
             maxSlots: 6,
@@ -146,7 +152,8 @@ const NINJAS_POWERSET = {
                 cast: 1.7
             }
         },
-        {name: "Smoke Flash",
+        {
+            name: "Smoke Flash",
             available: 17,
             tier: 4,
             maxSlots: 6,
@@ -159,16 +166,17 @@ const NINJAS_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 1,
+            radius: 100.0,
             effects: {
                 accuracy: 1.0,
                 range: 100.0,
                 recharge: 90.0,
                 endurance: 15.0,
-                cast: 1.17,
-                buffDuration: 3.0
+                cast: 1.17
             }
         },
-        {name: "Oni",
+        {
+            name: "Oni",
             available: 21,
             tier: 5,
             maxSlots: 6,
@@ -188,7 +196,8 @@ const NINJAS_POWERSET = {
                 cast: 2.03
             }
         },
-        {name: "Kuji-In Zen",
+        {
+            name: "Kuji-In Zen",
             available: 25,
             tier: 5,
             maxSlots: 6,
@@ -201,13 +210,13 @@ const NINJAS_POWERSET = {
             targetType: "Own Pet (Alive)",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 30.0,
             effects: {
                 accuracy: 1.0,
                 range: 50.0,
                 recharge: 10.0,
                 endurance: 11.375,
-                cast: 2.37,
-                buffDuration: 7.0
+                cast: 2.37
             }
         }
     ]

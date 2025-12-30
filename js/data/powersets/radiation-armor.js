@@ -1,11 +1,11 @@
 /**
- * Radiation Armor - Blaster Primary
- * Extracted from raw_data_homecoming with updated converter
+ * Radiation Armor
+ * Extracted from raw_data_homecoming with redirect and entity support
  */
 
 const RADIATION_ARMOR_POWERSET = {
     name: "Radiation Armor",
-    category: "Blaster_RANGED",
+    category: "UNKNOWN",
     description: "Radiation Armor powerset",
     icon: "radiation-armor_set.png",
     powers: [
@@ -27,10 +27,12 @@ const RADIATION_ARMOR_POWERSET = {
                 recharge: 2.0,
                 endurance: 0.13,
                 cast: 0.67,
-                buffDuration: 0.75
+                resistanceBuff: 3.5,
+                duration: 0.75
             }
         },
-        {name: "Gamma Boost",
+        {
+            name: "Gamma Boost",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -44,10 +46,16 @@ const RADIATION_ARMOR_POWERSET = {
             effectArea: "SingleTarget",
             effects: {
                 accuracy: 1.0,
-                buffDuration: 1.25
+                regenerationBuff: 0.5,
+                duration: 1.25,
+                resistanceBuff: 0.5,
+                recoveryBuff: 1.0,
+                resistanceDebuff: 2.0,
+                recoveryDebuff: 2.0
             }
         },
-        {name: "Proton Armor",
+        {
+            name: "Proton Armor",
             available: 3,
             tier: 2,
             maxSlots: 6,
@@ -64,10 +72,12 @@ const RADIATION_ARMOR_POWERSET = {
                 recharge: 2.0,
                 endurance: 0.13,
                 cast: 0.67,
-                buffDuration: 0.75
+                resistanceBuff: 0.75,
+                duration: 0.75
             }
         },
-        {name: "Fallout Shelter",
+        {
+            name: "Fallout Shelter",
             available: 9,
             tier: 3,
             maxSlots: 6,
@@ -84,13 +94,24 @@ const RADIATION_ARMOR_POWERSET = {
                 recharge: 4.0,
                 endurance: 0.104,
                 cast: 0.73,
+                hold: 1.0,
+                holdDuration: 0.75,
                 stun: 1.0,
                 stunDuration: 0.75,
-                buffDuration: 0.75,
+                immobilize: 1.0,
+                immobilizeDuration: 0.75,
+                sleep: 1.0,
+                sleepDuration: 0.75,
+                resistanceBuff: 1.5,
+                duration: 0.75,
+                knockback: 1.0,
+                rechargeBuff: 1.05,
+                movementBuff: 1.05,
                 tohitBuff: 0.3
             }
         },
-        {name: "Radiation Therapy",
+        {
+            name: "Radiation Therapy",
             available: 15,
             tier: 4,
             maxSlots: 6,
@@ -103,6 +124,7 @@ const RADIATION_ARMOR_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 10,
+            radius: 20.0,
             effects: {
                 accuracy: 1.2,
                 recharge: 60.0,
@@ -110,7 +132,8 @@ const RADIATION_ARMOR_POWERSET = {
                 cast: 1.03
             }
         },
-        {name: "Beta Decay",
+        {
+            name: "Beta Decay",
             available: 19,
             tier: 4,
             maxSlots: 6,
@@ -123,17 +146,20 @@ const RADIATION_ARMOR_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 10,
+            radius: 8.0,
             effects: {
                 accuracy: 1.0,
                 recharge: 10.0,
                 endurance: 0.208,
                 cast: 0.67,
                 tohitDebuff: 0.75,
-                buffDuration: 1.0,
-                defenseDebuff: 1.5
+                duration: 1.0,
+                defenseDebuff: 1.5,
+                rechargeBuff: 0.025
             }
         },
-        {name: "Particle Shielding",
+        {
+            name: "Particle Shielding",
             available: 23,
             tier: 5,
             maxSlots: 6,
@@ -150,10 +176,14 @@ const RADIATION_ARMOR_POWERSET = {
                 recharge: 120.0,
                 endurance: 10.4,
                 cast: 0.73,
-                buffDuration: 60.0
+                absorb: 3.0,
+                duration: 60.0,
+                regenerationBuff: 1.0,
+                recoveryBuff: 0.5
             }
         },
-        {name: "Ground Zero",
+        {
+            name: "Ground Zero",
             available: 27,
             tier: 5,
             maxSlots: 6,
@@ -166,6 +196,7 @@ const RADIATION_ARMOR_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 10,
+            radius: 15.0,
             effects: {
                 accuracy: 1.2,
                 recharge: 90.0,
@@ -173,7 +204,8 @@ const RADIATION_ARMOR_POWERSET = {
                 cast: 3.0
             }
         },
-        {name: "Meltdown",
+        {
+            name: "Meltdown",
             available: 29,
             tier: 5,
             maxSlots: 6,
@@ -190,7 +222,10 @@ const RADIATION_ARMOR_POWERSET = {
                 recharge: 480.0,
                 endurance: 2.6,
                 cast: 2.93,
-                buffDuration: 60.0
+                resistanceBuff: 1.0,
+                duration: 60.0,
+                recoveryBuff: 1.0,
+                recoveryDebuff: 100.0
             }
         }
     ]

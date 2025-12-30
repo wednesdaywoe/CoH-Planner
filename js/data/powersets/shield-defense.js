@@ -1,11 +1,11 @@
 /**
- * Shield Defense - Blaster Primary
- * Extracted from raw_data_homecoming with updated converter
+ * Shield Defense
+ * Extracted from raw_data_homecoming with redirect and entity support
  */
 
 const SHIELD_DEFENSE_POWERSET = {
     name: "Shield Defense",
-    category: "Blaster_RANGED",
+    category: "UNKNOWN",
     description: "Shield Defense powerset",
     icon: "shield-defense_set.png",
     powers: [
@@ -27,11 +27,13 @@ const SHIELD_DEFENSE_POWERSET = {
                 recharge: 4.0,
                 endurance: 0.104,
                 cast: 1.5,
-                buffDuration: 0.75,
+                resistanceBuff: 0.4,
+                duration: 0.75,
                 defenseBuff: 0.4
             }
         },
-        {name: "Deflection",
+        {
+            name: "Deflection",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -48,10 +50,12 @@ const SHIELD_DEFENSE_POWERSET = {
                 recharge: 4.0,
                 endurance: 0.104,
                 cast: 1.5,
-                buffDuration: 0.75
+                resistanceBuff: 1.5,
+                duration: 0.75
             }
         },
-        {name: "True Grit",
+        {
+            name: "True Grit",
             available: 3,
             tier: 2,
             maxSlots: 6,
@@ -70,26 +74,36 @@ const SHIELD_DEFENSE_POWERSET = {
                         {
                             type: "Fire",
                             scale: 1.5,
-                            ticks: 5},
-        {type: "Cold",
+                            ticks: 5
+                        },
+                        {
+                            type: "Cold",
                             scale: 1.5,
-                            ticks: 5},
-        {type: "Energy",
+                            ticks: 5
+                        },
+                        {
+                            type: "Energy",
                             scale: 1.5,
-                            ticks: 5},
-        {type: "Negative",
+                            ticks: 5
+                        },
+                        {
+                            type: "Negative",
                             scale: 1.5,
-                            ticks: 5},
-        {type: "Toxic",
+                            ticks: 5
+                        },
+                        {
+                            type: "Toxic",
                             scale: 1.5,
                             ticks: 5
                         }
                     ]
                 },
-                buffDuration: 10.25
+                resistanceBuff: 1.5,
+                duration: 10.25
             }
         },
-        {name: "Active Defense",
+        {
+            name: "Active Defense",
             available: 9,
             tier: 3,
             maxSlots: 6,
@@ -106,14 +120,27 @@ const SHIELD_DEFENSE_POWERSET = {
                 recharge: 200.0,
                 endurance: 10.4,
                 cast: 1.5,
+                hold: 1.0,
+                holdDuration: 120.0,
                 stun: 1.0,
                 stunDuration: 120.0,
-                buffDuration: 120.0,
+                immobilize: 1.0,
+                immobilizeDuration: 120.0,
+                sleep: 1.0,
+                sleepDuration: 120.0,
+                confuse: 1.0,
+                confuseDuration: 120.0,
+                resistanceBuff: 0.5,
+                duration: 120.0,
+                knockback: 1.0,
+                defenseBuff: 0.5,
                 tohitBuff: 0.3,
-                defenseBuff: 0.5
+                rechargeBuff: 0.3,
+                movementBuff: 0.5
             }
         },
-        {name: "Against All Odds",
+        {
+            name: "Against All Odds",
             available: 15,
             tier: 4,
             maxSlots: 6,
@@ -126,15 +153,16 @@ const SHIELD_DEFENSE_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 10,
+            radius: 8.0,
             effects: {
                 accuracy: 1.0,
                 recharge: 10.0,
                 endurance: 0.208,
-                cast: 2.5,
-                buffDuration: 1.25
+                cast: 2.5
             }
         },
-        {name: "Phalanx Fighting",
+        {
+            name: "Phalanx Fighting",
             available: 19,
             tier: 4,
             maxSlots: 6,
@@ -147,12 +175,13 @@ const SHIELD_DEFENSE_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 3,
+            radius: 8.0,
             effects: {
-                accuracy: 1.0,
-                buffDuration: 1.0
+                accuracy: 1.0
             }
         },
-        {name: "Grant Cover",
+        {
+            name: "Grant Cover",
             available: 23,
             tier: 5,
             maxSlots: 6,
@@ -165,16 +194,20 @@ const SHIELD_DEFENSE_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 255,
+            radius: 15.0,
             effects: {
                 accuracy: 1.0,
                 recharge: 10.0,
                 endurance: 0.312,
                 cast: 2.5,
-                buffDuration: 2.25,
-                defenseBuff: 0.4
+                resistanceDebuff: 0.3,
+                duration: 2.25,
+                defenseDebuff: 0.4,
+                rechargeDebuff: 0.3
             }
         },
-        {name: "Shield Charge",
+        {
+            name: "Shield Charge",
             available: 27,
             tier: 5,
             maxSlots: 6,
@@ -191,11 +224,11 @@ const SHIELD_DEFENSE_POWERSET = {
                 range: 60.0,
                 recharge: 90.0,
                 endurance: 13.52,
-                cast: 1.5,
-                buffDuration: 4.0
+                cast: 1.5
             }
         },
-        {name: "One with the Shield",
+        {
+            name: "One with the Shield",
             available: 29,
             tier: 5,
             maxSlots: 6,
@@ -217,31 +250,52 @@ const SHIELD_DEFENSE_POWERSET = {
                         {
                             type: "Smashing",
                             scale: 3.0,
-                            ticks: 60},
-        {type: "Lethal",
+                            ticks: 60
+                        },
+                        {
+                            type: "Lethal",
                             scale: 3.0,
-                            ticks: 60},
-        {type: "Fire",
+                            ticks: 60
+                        },
+                        {
+                            type: "Fire",
                             scale: 1.5,
-                            ticks: 60},
-        {type: "Cold",
+                            ticks: 60
+                        },
+                        {
+                            type: "Cold",
                             scale: 1.5,
-                            ticks: 60},
-        {type: "Energy",
+                            ticks: 60
+                        },
+                        {
+                            type: "Energy",
                             scale: 1.5,
-                            ticks: 60},
-        {type: "Negative",
+                            ticks: 60
+                        },
+                        {
+                            type: "Negative",
                             scale: 1.5,
-                            ticks: 60},
-        {type: "Toxic",
+                            ticks: 60
+                        },
+                        {
+                            type: "Toxic",
                             scale: 1.5,
                             ticks: 60
                         }
                     ]
                 },
-                buffDuration: 120.0,
+                resistanceBuff: 5.0,
+                duration: 120.0,
+                knockback: 1.0,
+                recoveryBuff: 0.3,
+                hold: 1.0,
+                holdDuration: 120.0,
                 stun: 1.0,
-                stunDuration: 120.0
+                stunDuration: 120.0,
+                immobilize: 1.0,
+                immobilizeDuration: 120.0,
+                sleep: 1.0,
+                sleepDuration: 120.0
             }
         }
     ]

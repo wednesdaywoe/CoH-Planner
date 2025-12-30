@@ -193,7 +193,7 @@ function showEnhancementPieceTooltip(event, setId, pieceNum) {
     const tooltip = document.getElementById('tooltip');
     if (!tooltip) return;
     
-    tooltip.innerHTML = (typeof getTooltipHintsHtml === 'function' ? getTooltipHintsHtml() : '') + generateEnhancementPieceTooltipHTML(set, setId, piece);
+    tooltip.innerHTML = generateEnhancementPieceTooltipHTML(set, setId, piece);
     positionTooltip(tooltip, event);
     tooltip.classList.add('visible');
 }
@@ -275,82 +275,6 @@ function generateImprovedPowerTooltipHTML(power, basePower, showModified = false
     if (basePower.shortHelp) {
         html += `<div class="tooltip-section">`;
         html += `<div class="tooltip-value" style="font-size: 11px; color: var(--accent);">${basePower.shortHelp}</div>`;
-        html += `</div>`;
-    }
-
-    // Extract implicit effects mentioned in shortHelp/description (e.g., "-Res", "-Speed", "-Fly")
-    const implicitEffects = (function extractImplicitEffects(bp) {
-        const out = [];
-        if (!bp) return out;
-        const text = ((bp.shortHelp || '') + ' ' + (bp.description || '')).toLowerCase();
-        const effects = bp.effects || {};
-
-        // Map implicit label => candidate effect keys to look up in bp.effects
-        const IMPLICIT_MAP = [
-            { regex: /(-|\b)(res|resist|resistance)\b/, name: '-Resistance', keys: ['resistance','resistanceDebuff','resist','resistReduction'] },
-            { regex: /(-|\b)(speed|slow)\b/, name: '-Speed', keys: ['slow','speed','movementSpeed','runSpeed','slowAmount'] },
-            { regex: /(-|\b)(fly|cannot fly|no fly|no flying)\b/, name: '-Fly', keys: ['noFly','disableFly','canFly','flyDisabled'] },
-            { regex: /(-|\b)(to hit|to-hit|tohit)\b/, name: '-To Hit', keys: ['tohitDebuff','tohit'] },
-            { regex: /(-|\b)(defen[cs]e|def)\b/, name: '-Defense', keys: ['defenseDebuff','defenseBuff'] },
-            { regex: /(-|\b)(regen|regeneration)\b/, name: '-Regen', keys: ['regen','regeneration','regenDebuff'] },
-            { regex: /(-|\b)(heal|healing)\b/, name: '+Heal', keys: ['heal','healing'] }
-        ];
-
-        IMPLICIT_MAP.forEach(entry => {
-            if (entry.regex.test(text)) {
-                // Try to find a numeric value from effects using candidate keys
-                let found = null;
-                for (const k of entry.keys) {
-                    if (effects[k] !== undefined) {
-                        found = { key: k, value: effects[k] };
-                        break;
-                    }
-                }
-
-                out.push({ name: entry.name, found });
-            }
-        });
-
-        return out;
-    })(basePower);
-
-    if (implicitEffects.length > 0) {
-        html += `<div class="tooltip-section" style="border-top: 1px solid var(--border); padding-top: 8px; margin-top: 8px;">`;
-        html += `<div class="tooltip-label" style="margin-bottom: 6px;">Notable Effects</div>`;
-
-        implicitEffects.forEach(e => {
-            let right = 'Applies';
-            if (e.found) {
-                const val = e.found.value;
-                // Format objects (e.g., resistance: {lethal:0.2})
-                if (typeof val === 'object' && val !== null) {
-                    // Join entries
-                    const parts = Object.entries(val).map(([k,v]) => {
-                        if (typeof v === 'number') return `${k}: ${ (v*100).toFixed(0) }%`;
-                        return `${k}: ${v}`;
-                    });
-                    right = parts.join(' • ');
-                } else if (typeof val === 'number') {
-                    // If value looks like a fraction (<5), treat as scale; otherwise raw
-                    if (Math.abs(val) <= 5) {
-                        // Percent-style
-                        right = `${(val * 100).toFixed(1)}%`;
-                    } else {
-                        right = `${val}`;
-                    }
-                } else if (typeof val === 'boolean') {
-                    right = val ? 'Yes' : 'No';
-                } else {
-                    right = String(val);
-                }
-            }
-
-            html += `<div style="display: flex; justify-content: space-between; font-size: 11px; padding: 2px 0;">`;
-            html += `<span style="opacity: 0.8;">${e.name}:</span>`;
-            html += `<span style="font-weight: 600;">${right}</span>`;
-            html += `</div>`;
-        });
-
         html += `</div>`;
     }
     
@@ -614,6 +538,151 @@ function generateImprovedPowerTooltipHTML(power, basePower, showModified = false
         }
         }
 
+    // === NEW EFFECT TYPES SECTION ===
+    if (basePower.effects) {
+        const effects = basePower.effects;
+        
+        // DEBUFFS SECTION
+        const debuffData = [
+            { key: 'resistanceDebuff', label: 'Resistance Debuff', color: '#ff6b6b' },
+            { key: 'defenseDebuff', label: 'Defense Debuff', color: '#ff6b6b' },
+            { key: 'tohitDebuff', label: 'ToHit Debuff', color: '#ff6b6b' },
+            { key: 'damageDebuff', label: 'Damage Debuff', color: '#ff6b6b' },
+            { key: 'rechargeDebuff', label: 'Recharge Debuff', color: '#ff6b6b' },
+            { key: 'movementDebuff', label: 'Movement Debuff', color: '#ff6b6b' },
+            { key: 'regenerationDebuff', label: 'Regeneration Debuff', color: '#ff6b6b' },
+            { key: 'recoveryDebuff', label: 'Recovery Debuff', color: '#ff6b6b' }
+        ];
+        
+        const debuffs = debuffData.filter(d => effects[d.key] !== undefined);
+        if (debuffs.length > 0) {
+            html += `<div class="tooltip-section" style="border-top: 1px solid var(--border); padding-top: 8px; margin-top: 8px;">`;
+            html += `<div style="font-size: 10px; font-weight: 600; opacity: 0.7; margin-bottom: 4px;">DEBUFFS</div>`;
+            debuffs.forEach(({ key, label, color }) => {
+                html += `<div style="display: flex; justify-content: space-between; font-size: 11px; padding: 2px 0;">`;
+                html += `<span style="opacity: 0.8;">${label}:</span>`;
+                html += `<span style="font-weight: 600; color: ${color};">-${(effects[key] * 100).toFixed(0)}%</span>`;
+                html += `</div>`;
+            });
+            html += `</div>`;
+        }
+        
+        // ADDITIONAL BUFFS SECTION (beyond what's in allowed enhancements)
+        const buffData = [
+            { key: 'rechargeBuff', label: 'Recharge Buff' },
+            { key: 'movementBuff', label: 'Movement Buff' },
+            { key: 'regenerationBuff', label: 'Regeneration Buff' },
+            { key: 'recoveryBuff', label: 'Recovery Buff' },
+            { key: 'maxHPBuff', label: 'Max HP Buff' }
+        ];
+        
+        const buffs = buffData.filter(b => effects[b.key] !== undefined);
+        if (buffs.length > 0) {
+            html += `<div class="tooltip-section" style="border-top: 1px solid var(--border); padding-top: 8px; margin-top: 8px;">`;
+            html += `<div style="font-size: 10px; font-weight: 600; opacity: 0.7; margin-bottom: 4px;">ADDITIONAL BUFFS</div>`;
+            buffs.forEach(({ key, label }) => {
+                html += `<div style="display: flex; justify-content: space-between; font-size: 11px; padding: 2px 0;">`;
+                html += `<span style="opacity: 0.8;">${label}:</span>`;
+                html += `<span style="font-weight: 600; color: var(--accent);">+${(effects[key] * 100).toFixed(0)}%</span>`;
+                html += `</div>`;
+            });
+            html += `</div>`;
+        }
+        
+        // HEALING/ABSORB SECTION
+        if (effects.healing !== undefined || effects.absorb !== undefined) {
+            html += `<div class="tooltip-section" style="border-top: 1px solid var(--border); padding-top: 8px; margin-top: 8px;">`;
+            html += `<div style="font-size: 10px; font-weight: 600; opacity: 0.7; margin-bottom: 4px;">HEALING</div>`;
+            
+            if (effects.healing !== undefined) {
+                html += `<div style="display: flex; justify-content: space-between; font-size: 11px; padding: 2px 0;">`;
+                html += `<span style="opacity: 0.8;">Healing:</span>`;
+                html += `<span style="font-weight: 600; color: #4ade80;">${(effects.healing * 100).toFixed(1)}% HP</span>`;
+                html += `</div>`;
+            }
+            
+            if (effects.absorb !== undefined) {
+                html += `<div style="display: flex; justify-content: space-between; font-size: 11px; padding: 2px 0;">`;
+                html += `<span style="opacity: 0.8;">Absorb Shield:</span>`;
+                html += `<span style="font-weight: 600; color: #60a5fa;">${(effects.absorb * 100).toFixed(1)}% HP</span>`;
+                html += `</div>`;
+            }
+            
+            html += `</div>`;
+        }
+        
+        // CONTROL EFFECTS SECTION
+        const controlData = [
+            { key: 'hold', durKey: 'holdDuration', label: 'Hold', color: '#a78bfa' },
+            { key: 'immobilize', durKey: 'immobilizeDuration', label: 'Immobilize', color: '#fb923c' },
+            { key: 'sleep', durKey: 'sleepDuration', label: 'Sleep', color: '#94a3b8' },
+            { key: 'confuse', durKey: 'confuseDuration', label: 'Confuse', color: '#c084fc' },
+            { key: 'fear', durKey: 'fearDuration', label: 'Fear', color: '#f87171' },
+            { key: 'knockback', label: 'Knockback', color: '#38bdf8' }
+        ];
+        
+        // Note: stun is already handled in EFFECT_KEY_INFO above, so skip it here
+        const controls = controlData.filter(c => effects[c.key] !== undefined);
+        if (controls.length > 0) {
+            html += `<div class="tooltip-section" style="border-top: 1px solid var(--border); padding-top: 8px; margin-top: 8px;">`;
+            html += `<div style="font-size: 10px; font-weight: 600; opacity: 0.7; margin-bottom: 4px;">CONTROL EFFECTS</div>`;
+            
+            controls.forEach(({ key, durKey, label, color }) => {
+                html += `<div style="margin-bottom: 4px;">`;
+                html += `<div style="display: flex; justify-content: space-between; font-size: 11px; padding: 2px 0;">`;
+                html += `<span style="opacity: 0.8;">${label} Magnitude:</span>`;
+                html += `<span style="font-weight: 600; color: ${color};">Mag ${effects[key].toFixed(1)}</span>`;
+                html += `</div>`;
+                
+                if (durKey && effects[durKey] !== undefined) {
+                    html += `<div style="display: flex; justify-content: space-between; font-size: 10px; padding: 2px 0; padding-left: 12px;">`;
+                    html += `<span style="opacity: 0.6;">Duration:</span>`;
+                    html += `<span style="font-weight: 600;">${effects[durKey].toFixed(1)}s</span>`;
+                    html += `</div>`;
+                }
+                html += `</div>`;
+            });
+            
+            html += `</div>`;
+        }
+        
+        // STATUS PROTECTION SECTION
+        const protectionData = [
+            { key: 'holdProtection', label: 'Hold Protection' },
+            { key: 'stunProtection', label: 'Stun Protection' },
+            { key: 'immobilizeProtection', label: 'Immobilize Protection' },
+            { key: 'sleepProtection', label: 'Sleep Protection' },
+            { key: 'confuseProtection', label: 'Confuse Protection' },
+            { key: 'fearProtection', label: 'Fear Protection' },
+            { key: 'knockbackProtection', label: 'Knockback Protection' }
+        ];
+        
+        const protections = protectionData.filter(p => effects[p.key] !== undefined);
+        if (protections.length > 0) {
+            html += `<div class="tooltip-section" style="border-top: 1px solid var(--border); padding-top: 8px; margin-top: 8px;">`;
+            html += `<div style="font-size: 10px; font-weight: 600; opacity: 0.7; margin-bottom: 4px;">STATUS PROTECTION</div>`;
+            
+            protections.forEach(({ key, label }) => {
+                html += `<div style="display: flex; justify-content: space-between; font-size: 11px; padding: 2px 0;">`;
+                html += `<span style="opacity: 0.8;">${label}:</span>`;
+                html += `<span style="font-weight: 600; color: #10b981;">Mag ${effects[key].toFixed(1)}</span>`;
+                html += `</div>`;
+            });
+            
+            html += `</div>`;
+        }
+        
+        // DURATION (if not shown in control effects)
+        if (effects.duration !== undefined && controls.length === 0) {
+            html += `<div class="tooltip-section" style="border-top: 1px solid var(--border); padding-top: 8px; margin-top: 8px;">`;
+            html += `<div style="display: flex; justify-content: space-between; font-size: 11px; padding: 2px 0;">`;
+            html += `<span style="opacity: 0.8;">Duration:</span>`;
+            html += `<span style="font-weight: 600;">${effects.duration.toFixed(1)}s</span>`;
+            html += `</div>`;
+            html += `</div>`;
+        }
+    }
+    
     // Show available level
     html += `<div class="tooltip-section" style="border-top: 1px solid var(--border); padding-top: 4px; margin-top: 4px;">`;
     html += `<div style="font-size: 9px; opacity: 0.6; text-align: center;">Available at Level ${basePower.available}</div>`;
@@ -637,7 +706,7 @@ function showImprovedPowerTooltip(event, power, basePower) {
     // Determine if we should show modified values (columns 2-4 have power object)
     const showModified = power !== null && power !== undefined;
     
-    tooltip.innerHTML = (typeof getTooltipHintsHtml === 'function' ? getTooltipHintsHtml() : '') + generateImprovedPowerTooltipHTML(power, basePower, showModified);
+    tooltip.innerHTML = generateImprovedPowerTooltipHTML(power, basePower, showModified);
     positionTooltip(tooltip, event);
     tooltip.classList.add('visible');
 }

@@ -1,15 +1,16 @@
 /**
- * Battle Axe - Blaster Primary
- * Extracted from raw_data_homecoming with updated converter
+ * Battle Axe
+ * Extracted from raw_data_homecoming with redirect and entity support
  */
 
 const BATTLE_AXE_POWERSET = {
     name: "Battle Axe",
-    category: "Blaster_RANGED",
+    category: "UNKNOWN",
     description: "Battle Axe powerset",
     icon: "battle-axe_set.png",
     powers: [
-        {name: "Beheader",
+        {
+            name: "Beheader",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -33,7 +34,8 @@ const BATTLE_AXE_POWERSET = {
                 }
             }
         },
-        {name: "Chop",
+        {
+            name: "Chop",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -57,7 +59,8 @@ const BATTLE_AXE_POWERSET = {
                 }
             }
         },
-        {name: "Gash",
+        {
+            name: "Gash",
             available: 1,
             tier: 1,
             maxSlots: 6,
@@ -81,7 +84,8 @@ const BATTLE_AXE_POWERSET = {
                 }
             }
         },
-        {name: "Build Up",
+        {
+            name: "Build Up",
             available: 5,
             tier: 3,
             maxSlots: 6,
@@ -99,10 +103,11 @@ const BATTLE_AXE_POWERSET = {
                 endurance: 5.2,
                 cast: 1.17,
                 tohitBuff: 2.0,
-                buffDuration: 10.0
+                duration: 10.0
             }
         },
-        {name: "Pendulum",
+        {
+            name: "Pendulum",
             available: 7,
             tier: 3,
             maxSlots: 6,
@@ -115,6 +120,7 @@ const BATTLE_AXE_POWERSET = {
             targetType: "Foe (Alive)",
             effectArea: "AoE",
             maxTargets: 5,
+            radius: 7.0,
             effects: {
                 accuracy: 1.05,
                 range: 7.0,
@@ -127,7 +133,8 @@ const BATTLE_AXE_POWERSET = {
                 }
             }
         },
-        {name: "Confront",
+        {
+            name: "Confront",
             available: 11,
             tier: 4,
             maxSlots: 6,
@@ -143,11 +150,11 @@ const BATTLE_AXE_POWERSET = {
                 accuracy: 1.0,
                 range: 70.0,
                 recharge: 3.0,
-                cast: 1.67,
-                buffDuration: 12.0
+                cast: 1.67
             }
         },
-        {name: "Swoop",
+        {
+            name: "Swoop",
             available: 17,
             tier: 4,
             maxSlots: 6,
@@ -171,7 +178,8 @@ const BATTLE_AXE_POWERSET = {
                 }
             }
         },
-        {name: "Axe Cyclone",
+        {
+            name: "Axe Cyclone",
             available: 21,
             tier: 5,
             maxSlots: 6,
@@ -184,6 +192,7 @@ const BATTLE_AXE_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 10,
+            radius: 15.0,
             effects: {
                 accuracy: 1.05,
                 recharge: 18.0,
@@ -192,11 +201,11 @@ const BATTLE_AXE_POWERSET = {
                 damage: {
                     type: "Lethal",
                     scale: 1.0
-                },
-                buffDuration: 0.15
+                }
             }
         },
-        {name: "Cleave",
+        {
+            name: "Cleave",
             available: 25,
             tier: 5,
             maxSlots: 6,
@@ -209,6 +218,7 @@ const BATTLE_AXE_POWERSET = {
             targetType: "Foe (Alive)",
             effectArea: "AoE",
             maxTargets: 5,
+            radius: 3.0,
             effects: {
                 accuracy: 1.05,
                 range: 40.0,

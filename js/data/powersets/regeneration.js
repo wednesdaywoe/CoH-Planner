@@ -1,11 +1,11 @@
 /**
- * Regeneration - Blaster Primary
- * Extracted from raw_data_homecoming with updated converter
+ * Regeneration
+ * Extracted from raw_data_homecoming with redirect and entity support
  */
 
 const REGENERATION_POWERSET = {
     name: "Regeneration",
-    category: "Blaster_RANGED",
+    category: "UNKNOWN",
     description: "Regeneration powerset",
     icon: "regeneration_set.png",
     powers: [
@@ -24,10 +24,13 @@ const REGENERATION_POWERSET = {
             effectArea: "SingleTarget",
             effects: {
                 accuracy: 1.0,
-                buffDuration: 10.0
+                regenerationBuff: 0.2,
+                duration: 10.0,
+                resistanceBuff: 0.2
             }
         },
-        {name: "Reconstruction",
+        {
+            name: "Reconstruction",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -49,10 +52,13 @@ const REGENERATION_POWERSET = {
                     scale: 2.0,
                     ticks: 30
                 },
-                buffDuration: 60.0
+                healing: 2.5,
+                resistanceBuff: 2.0,
+                duration: 60.0
             }
         },
-        {name: "Quick Recovery",
+        {
+            name: "Quick Recovery",
             available: 3,
             tier: 2,
             maxSlots: 6,
@@ -66,10 +72,13 @@ const REGENERATION_POWERSET = {
             effectArea: "SingleTarget",
             effects: {
                 accuracy: 1.0,
-                buffDuration: 10.25
+                recoveryBuff: 0.2,
+                duration: 10.25,
+                resistanceBuff: 0.2
             }
         },
-        {name: "Ailment Resistance",
+        {
+            name: "Ailment Resistance",
             available: 9,
             tier: 3,
             maxSlots: 6,
@@ -84,12 +93,18 @@ const REGENERATION_POWERSET = {
             effects: {
                 accuracy: 1.0,
                 recharge: 10.0,
-                buffDuration: 10.3,
+                resistanceBuff: 0.2,
+                duration: 10.25,
+                defenseBuff: 0.2,
                 tohitBuff: 0.2,
-                defenseBuff: 0.2
+                rechargeBuff: 0.2,
+                movementBuff: 0.2,
+                regenerationBuff: 0.2,
+                recoveryBuff: 0.2
             }
         },
-        {name: "Integration",
+        {
+            name: "Integration",
             available: 15,
             tier: 4,
             maxSlots: 6,
@@ -106,14 +121,26 @@ const REGENERATION_POWERSET = {
                 recharge: 10.0,
                 endurance: 0.13,
                 cast: 3.1,
-                buffDuration: 0.75,
+                resistanceBuff: 0.5,
+                duration: 0.75,
+                knockback: 1.0,
+                hold: 1.0,
+                holdDuration: 0.75,
                 stun: 1.0,
                 stunDuration: 0.75,
+                immobilize: 1.0,
+                immobilizeDuration: 0.75,
+                sleep: 1.0,
+                sleepDuration: 0.75,
+                regenerationBuff: 1.0,
+                defenseBuff: 0.3,
                 tohitBuff: 0.3,
-                defenseBuff: 0.3
+                rechargeBuff: 0.3,
+                movementBuff: 0.5
             }
         },
-        {name: "Resilience",
+        {
+            name: "Resilience",
             available: 19,
             tier: 4,
             maxSlots: 6,
@@ -127,12 +154,14 @@ const REGENERATION_POWERSET = {
             effectArea: "SingleTarget",
             effects: {
                 accuracy: 1.0,
+                resistanceBuff: 1.25,
+                duration: 10.25,
                 stun: 1.0,
-                stunDuration: 10.25,
-                buffDuration: 10.25
+                stunDuration: 10.25
             }
         },
-        {name: "Instant Healing",
+        {
+            name: "Instant Healing",
             available: 23,
             tier: 5,
             maxSlots: 6,
@@ -149,10 +178,12 @@ const REGENERATION_POWERSET = {
                 recharge: 650.0,
                 endurance: 10.4,
                 cast: 1.17,
-                buffDuration: 90.0
+                regenerationBuff: 2.0,
+                duration: 90.0
             }
         },
-        {name: "Reactive Regeneration",
+        {
+            name: "Reactive Regeneration",
             available: 23,
             tier: 5,
             maxSlots: 6,
@@ -171,7 +202,8 @@ const REGENERATION_POWERSET = {
                 cast: 1.17
             }
         },
-        {name: "Second Wind",
+        {
+            name: "Second Wind",
             available: 27,
             tier: 5,
             maxSlots: 6,
@@ -190,7 +222,8 @@ const REGENERATION_POWERSET = {
                 cast: 0.73
             }
         },
-        {name: "Moment of Glory",
+        {
+            name: "Moment of Glory",
             available: 29,
             tier: 5,
             maxSlots: 6,

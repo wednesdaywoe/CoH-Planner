@@ -1,11 +1,11 @@
 /**
- * Electrical Melee - Blaster Primary
- * Extracted from raw_data_homecoming with updated converter
+ * Electrical Melee
+ * Extracted from raw_data_homecoming with redirect and entity support
  */
 
 const ELECTRICAL_MELEE_POWERSET = {
     name: "Electrical Melee",
-    category: "Blaster_RANGED",
+    category: "UNKNOWN",
     description: "Electrical Melee powerset",
     icon: "electrical-melee_set.png",
     powers: [
@@ -34,16 +34,18 @@ const ELECTRICAL_MELEE_POWERSET = {
                             type: "Energy",
                             scale: 1.1606
                         },
-        {type: "Smashing",
+                        {
+                            type: "Smashing",
                             scale: 0.7804
                         }
                     ],
                     scale: 1.941
                 },
-                buffDuration: 2.0
+                recoveryDebuff: 1.0
             }
         },
-        {name: "Havoc Punch",
+        {
+            name: "Havoc Punch",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -67,16 +69,18 @@ const ELECTRICAL_MELEE_POWERSET = {
                             type: "Energy",
                             scale: 1.8139
                         },
-        {type: "Smashing",
+                        {
+                            type: "Smashing",
                             scale: 1.1960000000000002
                         }
                     ],
                     scale: 3.0099
                 },
-                buffDuration: 4.0
+                recoveryDebuff: 1.0
             }
         },
-        {name: "Jacobs Ladder",
+        {
+            name: "Jacobs Ladder",
             available: 1,
             tier: 1,
             maxSlots: 6,
@@ -90,6 +94,7 @@ const ELECTRICAL_MELEE_POWERSET = {
             effectArea: "Cone",
             maxTargets: 5,
             arc: 0.8727,
+            radius: 7.0,
             effects: {
                 accuracy: 1.0,
                 range: 7.0,
@@ -100,10 +105,12 @@ const ELECTRICAL_MELEE_POWERSET = {
                     type: "Energy",
                     scale: 3.0986000000000002
                 },
-                buffDuration: 2.0
+                sleep: 2.0,
+                recoveryDebuff: 1.0
             }
         },
-        {name: "Build Up",
+        {
+            name: "Build Up",
             available: 5,
             tier: 3,
             maxSlots: 6,
@@ -121,10 +128,11 @@ const ELECTRICAL_MELEE_POWERSET = {
                 endurance: 5.2,
                 cast: 1.17,
                 tohitBuff: 2.0,
-                buffDuration: 10.0
+                duration: 10.0
             }
         },
-        {name: "Thunder Strike",
+        {
+            name: "Thunder Strike",
             available: 7,
             tier: 3,
             maxSlots: 6,
@@ -137,6 +145,7 @@ const ELECTRICAL_MELEE_POWERSET = {
             targetType: "Foe (Alive)",
             effectArea: "AoE",
             maxTargets: 10,
+            radius: 10.0,
             effects: {
                 accuracy: 1.0,
                 range: 7.0,
@@ -145,7 +154,8 @@ const ELECTRICAL_MELEE_POWERSET = {
                 cast: 2.53
             }
         },
-        {name: "Confront",
+        {
+            name: "Confront",
             available: 11,
             tier: 4,
             maxSlots: 6,
@@ -161,11 +171,11 @@ const ELECTRICAL_MELEE_POWERSET = {
                 accuracy: 1.0,
                 range: 70.0,
                 recharge: 3.0,
-                cast: 1.67,
-                buffDuration: 12.0
+                cast: 1.67
             }
         },
-        {name: "Chain Induction",
+        {
+            name: "Chain Induction",
             available: 17,
             tier: 4,
             maxSlots: 6,
@@ -187,10 +197,11 @@ const ELECTRICAL_MELEE_POWERSET = {
                     type: "Energy",
                     scale: 2.9798999999999998
                 },
-                buffDuration: 2.0
+                recoveryDebuff: 1.0
             }
         },
-        {name: "Lightning Clap",
+        {
+            name: "Lightning Clap",
             available: 21,
             tier: 5,
             maxSlots: 6,
@@ -203,15 +214,18 @@ const ELECTRICAL_MELEE_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 10,
+            radius: 15.0,
             effects: {
                 accuracy: 0.8,
                 recharge: 30.0,
                 endurance: 13.0,
                 cast: 1.23,
-                stun: 2.0
+                stun: 2.0,
+                knockback: 1.0
             }
         },
-        {name: "Lightning Rod",
+        {
+            name: "Lightning Rod",
             available: 25,
             tier: 5,
             maxSlots: 6,
@@ -228,8 +242,7 @@ const ELECTRICAL_MELEE_POWERSET = {
                 range: 60.0,
                 recharge: 90.0,
                 endurance: 13.52,
-                cast: 2.57,
-                buffDuration: 4.0
+                cast: 2.57
             }
         }
     ]

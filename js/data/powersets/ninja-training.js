@@ -1,11 +1,11 @@
 /**
- * Ninja Training - Blaster Primary
- * Extracted from raw_data_homecoming with updated converter
+ * Ninja Training
+ * Extracted from raw_data_homecoming with redirect and entity support
  */
 
 const NINJA_TRAINING_POWERSET = {
     name: "Ninja Training",
-    category: "Blaster_RANGED",
+    category: "UNKNOWN",
     description: "Ninja Training powerset",
     icon: "ninja-training_set.png",
     powers: [
@@ -33,10 +33,14 @@ const NINJA_TRAINING_POWERSET = {
                     scale: 0.522,
                     ticks: 3
                 },
-                buffDuration: 3.1
+                immobilize: 3.0,
+                movementDebuff: 0.3,
+                duration: 18.0,
+                rechargeDebuff: 0.3
             }
         },
-        {name: "Sting of the Wasp",
+        {
+            name: "Sting of the Wasp",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -59,10 +63,11 @@ const NINJA_TRAINING_POWERSET = {
                     scale: 3.5789999999999997
                 },
                 defenseDebuff: 1.0,
-                buffDuration: 10.0
+                duration: 10.0
             }
         },
-        {name: "Choking Powder",
+        {
+            name: "Choking Powder",
             available: 3,
             tier: 2,
             maxSlots: 6,
@@ -85,10 +90,11 @@ const NINJA_TRAINING_POWERSET = {
                     scale: 0.3548,
                     ticks: 4
                 },
-                buffDuration: 4.2
+                hold: 3.0
             }
         },
-        {name: "Shinobi",
+        {
+            name: "Shinobi",
             available: 9,
             tier: 3,
             maxSlots: 6,
@@ -104,11 +110,12 @@ const NINJA_TRAINING_POWERSET = {
                 accuracy: 1.0,
                 recharge: 4.0,
                 endurance: 0.13,
-                buffDuration: 0.75,
-                tohitBuff: 0.5
+                tohitDebuff: 0.5,
+                duration: 0.75
             }
         },
-        {name: "The Lotus Drops",
+        {
+            name: "The Lotus Drops",
             available: 15,
             tier: 4,
             maxSlots: 6,
@@ -121,6 +128,7 @@ const NINJA_TRAINING_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 10,
+            radius: 8.0,
             effects: {
                 accuracy: 1.05,
                 recharge: 14.0,
@@ -135,11 +143,12 @@ const NINJA_TRAINING_POWERSET = {
                     scale: 0.25,
                     ticks: 2
                 },
-                buffDuration: 2.1,
-                defenseDebuff: 1.0
+                defenseDebuff: 1.0,
+                duration: 10.0
             }
         },
-        {name: "Kuji-In Toh",
+        {
+            name: "Kuji-In Toh",
             available: 19,
             tier: 4,
             maxSlots: 6,
@@ -161,10 +170,14 @@ const NINJA_TRAINING_POWERSET = {
                     scale: 1.0,
                     ticks: 105
                 },
-                buffDuration: 210.0
+                regenerationBuff: 1.125,
+                duration: 210.0,
+                recoveryBuff: 0.5,
+                resistanceBuff: 3.0
             }
         },
-        {name: "Smoke Flash",
+        {
+            name: "Smoke Flash",
             available: 23,
             tier: 5,
             maxSlots: 6,
@@ -177,15 +190,18 @@ const NINJA_TRAINING_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 10,
+            radius: 20.0,
             effects: {
                 accuracy: 1.4,
                 recharge: 90.0,
                 endurance: 2.6,
                 cast: 1.83,
-                buffDuration: 15.0
+                resistanceDebuff: 1.5,
+                duration: 15.0
             }
         },
-        {name: "Blinding Powder",
+        {
+            name: "Blinding Powder",
             available: 27,
             tier: 5,
             maxSlots: 6,
@@ -199,6 +215,7 @@ const NINJA_TRAINING_POWERSET = {
             effectArea: "Cone",
             maxTargets: 10,
             arc: 0.7854,
+            radius: 25.0,
             effects: {
                 accuracy: 0.8,
                 range: 25.0,
@@ -206,10 +223,12 @@ const NINJA_TRAINING_POWERSET = {
                 endurance: 7.8,
                 cast: 1.07,
                 tohitDebuff: 1.0,
-                buffDuration: 15.0
+                duration: 15.0,
+                sleep: 3.0
             }
         },
-        {name: "Golden Dragonfly",
+        {
+            name: "Golden Dragonfly",
             available: 29,
             tier: 5,
             maxSlots: 6,
@@ -223,6 +242,7 @@ const NINJA_TRAINING_POWERSET = {
             effectArea: "Cone",
             maxTargets: 10,
             arc: 0.3491,
+            radius: 10.0,
             effects: {
                 accuracy: 1.05,
                 range: 10.0,
@@ -233,8 +253,9 @@ const NINJA_TRAINING_POWERSET = {
                     type: "Lethal",
                     scale: 6.041
                 },
+                knockback: 1.0,
                 defenseDebuff: 1.0,
-                buffDuration: 10.0
+                duration: 10.0
             }
         }
     ]

@@ -1,15 +1,16 @@
 /**
- * Martial Assault - Blaster Primary
- * Extracted from raw_data_homecoming with updated converter
+ * Martial Assault
+ * Extracted from raw_data_homecoming with redirect and entity support
  */
 
 const MARTIAL_ASSAULT_POWERSET = {
     name: "Martial Assault",
-    category: "Blaster_RANGED",
+    category: "UNKNOWN",
     description: "Martial Assault powerset",
     icon: "martial-assault_set.png",
     powers: [
-        {name: "Shuriken Throw",
+        {
+            name: "Shuriken Throw",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -33,7 +34,8 @@ const MARTIAL_ASSAULT_POWERSET = {
                 }
             }
         },
-        {name: "Thunder Kick",
+        {
+            name: "Thunder Kick",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -58,7 +60,8 @@ const MARTIAL_ASSAULT_POWERSET = {
                 stun: 3.0
             }
         },
-        {name: "Trick Shot",
+        {
+            name: "Trick Shot",
             available: 3,
             tier: 2,
             maxSlots: 6,
@@ -71,6 +74,7 @@ const MARTIAL_ASSAULT_POWERSET = {
             targetType: "Foe (Alive)",
             effectArea: "Chain",
             maxTargets: 5,
+            radius: 20.0,
             effects: {
                 accuracy: 1.0,
                 range: 70.0,
@@ -83,7 +87,8 @@ const MARTIAL_ASSAULT_POWERSET = {
                 }
             }
         },
-        {name: "Spinning Kick",
+        {
+            name: "Spinning Kick",
             available: 9,
             tier: 3,
             maxSlots: 6,
@@ -97,6 +102,7 @@ const MARTIAL_ASSAULT_POWERSET = {
             effectArea: "Cone",
             maxTargets: 5,
             arc: 1.5708,
+            radius: 9.0,
             effects: {
                 accuracy: 1.05,
                 range: 9.0,
@@ -106,10 +112,12 @@ const MARTIAL_ASSAULT_POWERSET = {
                 damage: {
                     type: "Smashing",
                     scale: 2.7464
-                }
+                },
+                knockback: 1.0
             }
         },
-        {name: "Envenomed Blades",
+        {
+            name: "Envenomed Blades",
             available: 15,
             tier: 4,
             maxSlots: 6,
@@ -127,10 +135,11 @@ const MARTIAL_ASSAULT_POWERSET = {
                 endurance: 7.8,
                 cast: 1.17,
                 tohitBuff: 0.12,
-                buffDuration: 40.0
+                duration: 40.0
             }
         },
-        {name: "Dragon's Tail",
+        {
+            name: "Dragon's Tail",
             available: 19,
             tier: 4,
             maxSlots: 6,
@@ -143,6 +152,7 @@ const MARTIAL_ASSAULT_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 10,
+            radius: 15.0,
             effects: {
                 accuracy: 1.05,
                 recharge: 16.0,
@@ -151,10 +161,12 @@ const MARTIAL_ASSAULT_POWERSET = {
                 damage: {
                     type: "Smashing",
                     scale: 2.7914
-                }
+                },
+                knockback: 1.0
             }
         },
-        {name: "Caltrops",
+        {
+            name: "Caltrops",
             available: 23,
             tier: 5,
             maxSlots: 6,
@@ -172,10 +184,17 @@ const MARTIAL_ASSAULT_POWERSET = {
                 recharge: 45.0,
                 endurance: 7.8,
                 cast: 1.07,
-                buffDuration: 45.0
+                damage: {
+                    type: "Lethal",
+                    scale: 0.05
+                },
+                movementDebuff: 1.0,
+                duration: 1.3,
+                fear: 50.0
             }
         },
-        {name: "Masterful Throw",
+        {
+            name: "Masterful Throw",
             available: 27,
             tier: 5,
             maxSlots: 6,
@@ -195,7 +214,8 @@ const MARTIAL_ASSAULT_POWERSET = {
                 cast: 1.33
             }
         },
-        {name: "Explosive Shuriken",
+        {
+            name: "Explosive Shuriken",
             available: 29,
             tier: 5,
             maxSlots: 6,

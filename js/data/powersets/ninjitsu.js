@@ -1,11 +1,11 @@
 /**
- * Ninjitsu - Blaster Primary
- * Extracted from raw_data_homecoming with updated converter
+ * Ninjitsu
+ * Extracted from raw_data_homecoming with redirect and entity support
  */
 
 const NINJITSU_POWERSET = {
     name: "Ninjitsu",
-    category: "Blaster_RANGED",
+    category: "UNKNOWN",
     description: "Ninjitsu powerset",
     icon: "ninjitsu_set.png",
     powers: [
@@ -27,11 +27,13 @@ const NINJITSU_POWERSET = {
                 recharge: 4.0,
                 endurance: 0.13,
                 cast: 0.83,
-                buffDuration: 0.75,
+                resistanceBuff: 0.5,
+                duration: 0.75,
                 defenseBuff: 0.5
             }
         },
-        {name: "Ninja Reflexes",
+        {
+            name: "Ninja Reflexes",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -48,11 +50,13 @@ const NINJITSU_POWERSET = {
                 recharge: 4.0,
                 endurance: 0.13,
                 cast: 1.53,
-                buffDuration: 0.75,
+                resistanceBuff: 0.5,
+                duration: 0.75,
                 defenseBuff: 0.5
             }
         },
-        {name: "Shinobi-Iri",
+        {
+            name: "Shinobi-Iri",
             available: 3,
             tier: 2,
             maxSlots: 6,
@@ -67,11 +71,11 @@ const NINJITSU_POWERSET = {
             effects: {
                 accuracy: 1.0,
                 recharge: 2.0,
-                endurance: 0.13,
-                buffDuration: 0.75
+                endurance: 0.13
             }
         },
-        {name: "Kuji-In Rin",
+        {
+            name: "Kuji-In Rin",
             available: 9,
             tier: 3,
             maxSlots: 6,
@@ -93,14 +97,26 @@ const NINJITSU_POWERSET = {
                     scale: 3.0,
                     ticks: 60
                 },
+                hold: 1.0,
+                holdDuration: 120.0,
                 stun: 1.0,
                 stunDuration: 120.0,
-                buffDuration: 120.0,
+                immobilize: 1.0,
+                immobilizeDuration: 120.0,
+                sleep: 1.0,
+                sleepDuration: 120.0,
+                confuse: 1.0,
+                confuseDuration: 120.0,
+                resistanceBuff: 3.0,
+                duration: 120.0,
+                defenseBuff: 0.3,
                 tohitBuff: 0.3,
-                defenseBuff: 0.3
+                rechargeBuff: 0.3,
+                movementBuff: 0.1
             }
         },
-        {name: "Seishinteki Kyoyo",
+        {
+            name: "Seishinteki Kyoyo",
             available: 15,
             tier: 4,
             maxSlots: 6,
@@ -118,7 +134,8 @@ const NINJITSU_POWERSET = {
                 cast: 1.83
             }
         },
-        {name: "Kuji-In Sha",
+        {
+            name: "Kuji-In Sha",
             available: 19,
             tier: 4,
             maxSlots: 6,
@@ -140,10 +157,13 @@ const NINJITSU_POWERSET = {
                     scale: 2.0,
                     ticks: 30
                 },
-                buffDuration: 60.0
+                healing: 2.5,
+                resistanceBuff: 2.0,
+                duration: 60.0
             }
         },
-        {name: "Bo Ryaku",
+        {
+            name: "Bo Ryaku",
             available: 23,
             tier: 5,
             maxSlots: 6,
@@ -157,10 +177,13 @@ const NINJITSU_POWERSET = {
             effectArea: "SingleTarget",
             effects: {
                 accuracy: 1.0,
-                buffDuration: 10.25
+                resistanceBuff: 1.0,
+                duration: 10.25,
+                knockback: 1.0
             }
         },
-        {name: "Blinding Powder",
+        {
+            name: "Blinding Powder",
             available: 27,
             tier: 5,
             maxSlots: 6,
@@ -174,17 +197,20 @@ const NINJITSU_POWERSET = {
             effectArea: "Cone",
             maxTargets: 10,
             arc: 0.7854,
+            radius: 25.0,
             effects: {
                 accuracy: 1.0,
                 range: 25.0,
                 recharge: 120.0,
                 endurance: 7.8,
                 cast: 1.07,
-                buffDuration: 20.0,
-                tohitDebuff: 1.0
+                sleep: 2.0,
+                tohitDebuff: 1.0,
+                duration: 15.0
             }
         },
-        {name: "Kuji-In Retsu",
+        {
+            name: "Kuji-In Retsu",
             available: 29,
             tier: 5,
             maxSlots: 6,
@@ -201,8 +227,12 @@ const NINJITSU_POWERSET = {
                 recharge: 1000.0,
                 endurance: 2.6,
                 cast: 1.83,
-                buffDuration: 180.0,
-                defenseBuff: 1.0
+                recoveryBuff: 1.0,
+                duration: 180.0,
+                movementBuff: 0.5,
+                resistanceBuff: 1.0,
+                defenseBuff: 1.0,
+                recoveryDebuff: 100.0
             }
         }
     ]

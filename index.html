@@ -83,6 +83,9 @@
                 <button class="stats-btn" onclick="openStatsDetail()">
                     <span>📊</span> Detailed View
                 </button>
+                <button class="stats-btn" id="hintsToggle" onclick="toggleHints()">
+                    <span>💡</span> <span id="hintsToggleText">Hide Hints</span>
+                </button>
             </div>
         </div>
 
@@ -145,9 +148,6 @@
             <!-- Interaction hints immediately below the modal header -->
             <div class="modal-hints" aria-hidden="true">
                 <div class="hints-inner">
-                    <div class="hint-row"><strong>Left-Click</strong>		Slot an enhancement</div>
-                    <div class="hint-row"><strong>Shift + Left-Click</strong>	Slot all enhancements in the group</div>
-                    <div class="hint-row"><strong>Left-Click and drag</strong>	Select a variable group</div>
                 </div>
             </div>
 
@@ -186,6 +186,16 @@
 
         <!-- Tooltip -->
         <div class="tooltip" id="tooltip"></div>
+        
+        <!-- Main view hint image (hami_hints_1.png) - bottom right corner -->
+        <div class="main-hint-image">
+            <img src="img/hami_hints_1.png" alt="Main view hints">
+        </div>
+        
+        <!-- Modal hint image (hami_hints_2.png) - bottom right corner when modal open -->
+        <div class="modal-hint-image">
+            <img src="img/hami_hints_2.png" alt="Enhancement selection hints">
+        </div>
 
     <!-- JavaScript Files -->
     <script src="js/data/archetypes.js"></script>

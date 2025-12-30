@@ -1,11 +1,11 @@
 /**
- * Demon Summoning - Blaster Primary
- * Extracted from raw_data_homecoming with updated converter
+ * Demon Summoning
+ * Extracted from raw_data_homecoming with redirect and entity support
  */
 
 const DEMON_SUMMONING_POWERSET = {
     name: "Demon Summoning",
-    category: "Blaster_RANGED",
+    category: "UNKNOWN",
     description: "Demon Summoning powerset",
     icon: "demon-summoning_set.png",
     powers: [
@@ -37,10 +37,12 @@ const DEMON_SUMMONING_POWERSET = {
                     scale: 0.15,
                     ticks: 3
                 },
-                buffDuration: 3.1
+                resistanceDebuff: 1.25,
+                duration: 5.0
             }
         },
-        {name: "Summon Demonlings",
+        {
+            name: "Summon Demonlings",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -60,7 +62,8 @@ const DEMON_SUMMONING_POWERSET = {
                 cast: 2.0
             }
         },
-        {name: "Lash",
+        {
+            name: "Lash",
             available: 1,
             tier: 1,
             maxSlots: 6,
@@ -87,10 +90,13 @@ const DEMON_SUMMONING_POWERSET = {
                     scale: 0.21,
                     ticks: 3
                 },
-                buffDuration: 3.1
+                resistanceDebuff: 1.25,
+                duration: 6.0,
+                knockback: 1.0
             }
         },
-        {name: "Enchant Demon",
+        {
+            name: "Enchant Demon",
             available: 5,
             tier: 3,
             maxSlots: 6,
@@ -103,6 +109,7 @@ const DEMON_SUMMONING_POWERSET = {
             targetType: "Own Pet (Alive)",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 30.0,
             effects: {
                 accuracy: 1.0,
                 range: 50.0,
@@ -111,7 +118,8 @@ const DEMON_SUMMONING_POWERSET = {
                 cast: 2.17
             }
         },
-        {name: "Crack Whip",
+        {
+            name: "Crack Whip",
             available: 7,
             tier: 3,
             maxSlots: 6,
@@ -125,6 +133,7 @@ const DEMON_SUMMONING_POWERSET = {
             effectArea: "Cone",
             maxTargets: 10,
             arc: 0.5236,
+            radius: 30.0,
             effects: {
                 accuracy: 1.0,
                 range: 30.0,
@@ -140,10 +149,13 @@ const DEMON_SUMMONING_POWERSET = {
                     scale: 0.222,
                     ticks: 2
                 },
-                buffDuration: 6.0
+                knockback: 1.0,
+                resistanceDebuff: 1.25,
+                duration: 6.0
             }
         },
-        {name: "Summon Demons",
+        {
+            name: "Summon Demons",
             available: 11,
             tier: 4,
             maxSlots: 6,
@@ -163,7 +175,8 @@ const DEMON_SUMMONING_POWERSET = {
                 cast: 2.0
             }
         },
-        {name: "Hell on Earth",
+        {
+            name: "Hell on Earth",
             available: 17,
             tier: 4,
             maxSlots: 6,
@@ -181,11 +194,12 @@ const DEMON_SUMMONING_POWERSET = {
                 recharge: 600.0,
                 endurance: 16.25,
                 cast: 2.03,
-                tohitBuff: 1.0,
-                buffDuration: 90.0
+                tohitDebuff: 1.0,
+                duration: 90.0
             }
         },
-        {name: "Summon Demon Prince",
+        {
+            name: "Summon Demon Prince",
             available: 21,
             tier: 5,
             maxSlots: 6,
@@ -205,7 +219,8 @@ const DEMON_SUMMONING_POWERSET = {
                 cast: 2.0
             }
         },
-        {name: "Abyssal Empowerment",
+        {
+            name: "Abyssal Empowerment",
             available: 25,
             tier: 5,
             maxSlots: 6,
@@ -218,6 +233,7 @@ const DEMON_SUMMONING_POWERSET = {
             targetType: "Own Pet (Alive)",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 30.0,
             effects: {
                 accuracy: 1.0,
                 range: 30.0,

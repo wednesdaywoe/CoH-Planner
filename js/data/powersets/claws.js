@@ -1,15 +1,16 @@
 /**
- * Claws - Blaster Primary
- * Extracted from raw_data_homecoming with updated converter
+ * Claws
+ * Extracted from raw_data_homecoming with redirect and entity support
  */
 
 const CLAWS_POWERSET = {
     name: "Claws",
-    category: "Blaster_RANGED",
+    category: "UNKNOWN",
     description: "Claws powerset",
     icon: "claws_set.png",
     powers: [
-        {name: "Strike",
+        {
+            name: "Strike",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -33,7 +34,8 @@ const CLAWS_POWERSET = {
                             type: "Lethal",
                             scale: 5.9338
                         },
-        {type: "Fire",
+                        {
+                            type: "Fire",
                             scale: 0.486
                         }
                     ],
@@ -41,7 +43,8 @@ const CLAWS_POWERSET = {
                 }
             }
         },
-        {name: "Swipe",
+        {
+            name: "Swipe",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -65,7 +68,8 @@ const CLAWS_POWERSET = {
                             type: "Lethal",
                             scale: 4.4059
                         },
-        {type: "Fire",
+                        {
+                            type: "Fire",
                             scale: 0.47700000000000004
                         }
                     ],
@@ -73,7 +77,8 @@ const CLAWS_POWERSET = {
                 }
             }
         },
-        {name: "Slash",
+        {
+            name: "Slash",
             available: 1,
             tier: 1,
             maxSlots: 6,
@@ -97,17 +102,19 @@ const CLAWS_POWERSET = {
                             type: "Lethal",
                             scale: 7.0059000000000005
                         },
-        {type: "Fire",
+                        {
+                            type: "Fire",
                             scale: 0.594
                         }
                     ],
                     scale: 7.599900000000001
                 },
                 defenseDebuff: 1.0,
-                buffDuration: 10.0
+                duration: 10.0
             }
         },
-        {name: "Spin",
+        {
+            name: "Spin",
             available: 5,
             tier: 3,
             maxSlots: 6,
@@ -120,6 +127,7 @@ const CLAWS_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 10,
+            radius: 8.0,
             effects: {
                 accuracy: 1.0,
                 recharge: 9.2,
@@ -131,7 +139,8 @@ const CLAWS_POWERSET = {
                             type: "Lethal",
                             scale: 7.6176
                         },
-        {type: "Fire",
+                        {
+                            type: "Fire",
                             scale: 0.711
                         }
                     ],
@@ -139,7 +148,8 @@ const CLAWS_POWERSET = {
                 }
             }
         },
-        {name: "Follow Up",
+        {
+            name: "Follow Up",
             available: 7,
             tier: 3,
             maxSlots: 6,
@@ -163,17 +173,19 @@ const CLAWS_POWERSET = {
                             type: "Lethal",
                             scale: 5.3218000000000005
                         },
-        {type: "Fire",
+                        {
+                            type: "Fire",
                             scale: 0.36
                         }
                     ],
                     scale: 5.681800000000001
                 },
                 tohitBuff: 1.0,
-                buffDuration: 10.0
+                duration: 10.0
             }
         },
-        {name: "Confront",
+        {
+            name: "Confront",
             available: 11,
             tier: 4,
             maxSlots: 6,
@@ -189,11 +201,11 @@ const CLAWS_POWERSET = {
                 accuracy: 1.0,
                 range: 70.0,
                 recharge: 3.0,
-                cast: 1.67,
-                buffDuration: 12.0
+                cast: 1.67
             }
         },
-        {name: "Focus",
+        {
+            name: "Focus",
             available: 17,
             tier: 4,
             maxSlots: 6,
@@ -217,15 +229,18 @@ const CLAWS_POWERSET = {
                             type: "Lethal",
                             scale: 6.529799999999999
                         },
-        {type: "Fire",
+                        {
+                            type: "Fire",
                             scale: 0.6255
                         }
                     ],
                     scale: 7.155299999999999
-                }
+                },
+                knockback: 1.0
             }
         },
-        {name: "Eviscerate",
+        {
+            name: "Eviscerate",
             available: 21,
             tier: 5,
             maxSlots: 6,
@@ -239,6 +254,7 @@ const CLAWS_POWERSET = {
             effectArea: "Cone",
             maxTargets: 5,
             arc: 1.5708,
+            radius: 7.0,
             effects: {
                 accuracy: 1.0,
                 range: 7.0,
@@ -251,7 +267,8 @@ const CLAWS_POWERSET = {
                             type: "Lethal",
                             scale: 7.7818000000000005
                         },
-        {type: "Fire",
+                        {
+                            type: "Fire",
                             scale: 0.8955
                         }
                     ],
@@ -259,7 +276,8 @@ const CLAWS_POWERSET = {
                 }
             }
         },
-        {name: "Shockwave",
+        {
+            name: "Shockwave",
             available: 25,
             tier: 5,
             maxSlots: 6,
@@ -273,6 +291,7 @@ const CLAWS_POWERSET = {
             effectArea: "Cone",
             maxTargets: 10,
             arc: 1.5708,
+            radius: 30.0,
             effects: {
                 accuracy: 1.0,
                 range: 30.0,
@@ -285,12 +304,14 @@ const CLAWS_POWERSET = {
                             type: "Lethal",
                             scale: 4.4022
                         },
-        {type: "Fire",
+                        {
+                            type: "Fire",
                             scale: 0.4725
                         }
                     ],
                     scale: 4.8747
-                }
+                },
+                knockback: 1.0
             }
         }
     ]

@@ -1,11 +1,11 @@
 /**
- * Darkness Control - Blaster Primary
- * Extracted from raw_data_homecoming with updated converter
+ * Darkness Control
+ * Extracted from raw_data_homecoming with redirect and entity support
  */
 
 const DARKNESS_CONTROL_POWERSET = {
     name: "Darkness Control",
-    category: "Blaster_RANGED",
+    category: "UNKNOWN",
     description: "Darkness Control powerset",
     icon: "darkness-control_set.png",
     powers: [
@@ -32,11 +32,13 @@ const DARKNESS_CONTROL_POWERSET = {
                     type: "Negative",
                     scale: 4.8335
                 },
+                hold: 4.0,
                 tohitDebuff: 0.75,
-                buffDuration: 10.0
+                duration: 10.0
             }
         },
-        {name: "Shadowy Binds",
+        {
+            name: "Shadowy Binds",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -59,11 +61,16 @@ const DARKNESS_CONTROL_POWERSET = {
                     scale: 0.7200000000000001,
                     ticks: 4
                 },
-                buffDuration: 9.2,
-                tohitDebuff: 0.75
+                immobilize: 1.0,
+                tohitDebuff: 0.75,
+                duration: 15.0,
+                resistanceDebuff: 100.0,
+                knockback: 1.0,
+                movementDebuff: 1.6
             }
         },
-        {name: "Living Shadows",
+        {
+            name: "Living Shadows",
             available: 1,
             tier: 1,
             maxSlots: 6,
@@ -77,6 +84,7 @@ const DARKNESS_CONTROL_POWERSET = {
             effectArea: "Cone",
             maxTargets: 16,
             arc: 1.0472,
+            radius: 60.0,
             effects: {
                 accuracy: 1.0,
                 range: 60.0,
@@ -88,11 +96,16 @@ const DARKNESS_CONTROL_POWERSET = {
                     scale: 0.3429,
                     ticks: 2
                 },
-                buffDuration: 5.2,
-                tohitDebuff: 0.75
+                immobilize: 3.0,
+                tohitDebuff: 0.75,
+                duration: 8.0,
+                resistanceDebuff: 100.0,
+                knockback: 1.0,
+                movementDebuff: 1.6
             }
         },
-        {name: "Possess",
+        {
+            name: "Possess",
             available: 5,
             tier: 3,
             maxSlots: 6,
@@ -109,10 +122,12 @@ const DARKNESS_CONTROL_POWERSET = {
                 range: 80.0,
                 recharge: 8.0,
                 endurance: 8.528,
-                cast: 2.33
+                cast: 2.33,
+                confuse: 1.0
             }
         },
-        {name: "Fearsome Stare",
+        {
+            name: "Fearsome Stare",
             available: 7,
             tier: 3,
             maxSlots: 6,
@@ -126,6 +141,7 @@ const DARKNESS_CONTROL_POWERSET = {
             effectArea: "Cone",
             maxTargets: 16,
             arc: 0.7854,
+            radius: 70.0,
             effects: {
                 accuracy: 1.0,
                 range: 70.0,
@@ -133,10 +149,11 @@ const DARKNESS_CONTROL_POWERSET = {
                 endurance: 8.528,
                 cast: 2.03,
                 tohitDebuff: 1.5,
-                buffDuration: 20.0
+                duration: 20.0
             }
         },
-        {name: "Heart of Darkness",
+        {
+            name: "Heart of Darkness",
             available: 11,
             tier: 4,
             maxSlots: 6,
@@ -149,6 +166,7 @@ const DARKNESS_CONTROL_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 25.0,
             effects: {
                 accuracy: 0.8,
                 recharge: 90.0,
@@ -159,12 +177,13 @@ const DARKNESS_CONTROL_POWERSET = {
                     scale: 0.42200000000000004,
                     ticks: 4
                 },
-                buffDuration: 4.1,
                 stun: 1.0,
-                tohitDebuff: 0.75
+                tohitDebuff: 0.75,
+                duration: 10.0
             }
         },
-        {name: "Haunt",
+        {
+            name: "Haunt",
             available: 17,
             tier: 4,
             maxSlots: 6,
@@ -181,11 +200,11 @@ const DARKNESS_CONTROL_POWERSET = {
                 range: 80.0,
                 recharge: 210.0,
                 endurance: 10.4,
-                cast: 2.33,
-                buffDuration: 1.0
+                cast: 2.33
             }
         },
-        {name: "Shadow Field",
+        {
+            name: "Shadow Field",
             available: 21,
             tier: 5,
             maxSlots: 6,
@@ -202,11 +221,11 @@ const DARKNESS_CONTROL_POWERSET = {
                 range: 60.0,
                 recharge: 240.0,
                 endurance: 15.6,
-                cast: 2.67,
-                buffDuration: 45.0
+                cast: 2.67
             }
         },
-        {name: "Umbra Beast",
+        {
+            name: "Umbra Beast",
             available: 25,
             tier: 5,
             maxSlots: 6,

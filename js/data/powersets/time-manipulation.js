@@ -1,11 +1,11 @@
 /**
- * Time Manipulation - Blaster Primary
- * Extracted from raw_data_homecoming with updated converter
+ * Time Manipulation
+ * Extracted from raw_data_homecoming with redirect and entity support
  */
 
 const TIME_MANIPULATION_POWERSET = {
     name: "Time Manipulation",
-    category: "Blaster_RANGED",
+    category: "UNKNOWN",
     description: "Time Manipulation powerset",
     icon: "time-manipulation_set.png",
     powers: [
@@ -23,15 +23,22 @@ const TIME_MANIPULATION_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 255,
+            radius: 25.0,
             effects: {
                 accuracy: 1.0,
                 recharge: 18.0,
                 endurance: 13.0,
                 cast: 2.03,
-                buffDuration: 30.0
+                resistanceDebuff: 1.0,
+                duration: 30.0,
+                rechargeDebuff: 0.2,
+                movementDebuff: 0.2,
+                regenerationDebuff: 1.0,
+                healing: 0.2
             }
         },
-        {name: "Time Crawl",
+        {
+            name: "Time Crawl",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -49,10 +56,14 @@ const TIME_MANIPULATION_POWERSET = {
                 recharge: 15.0,
                 endurance: 10.4,
                 cast: 1.6,
-                buffDuration: 20.0
+                movementDebuff: 1.0,
+                duration: 20.0,
+                rechargeDebuff: 0.6,
+                regenerationDebuff: 4.0
             }
         },
-        {name: "Time's Juncture",
+        {
+            name: "Time's Juncture",
             available: 1,
             tier: 1,
             maxSlots: 6,
@@ -65,16 +76,19 @@ const TIME_MANIPULATION_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 25.0,
             effects: {
                 accuracy: 1.0,
                 recharge: 10.0,
                 endurance: 0.39,
                 cast: 0.67,
                 tohitDebuff: 1.5,
-                buffDuration: 1.0
+                duration: 1.0,
+                movementDebuff: 1.2
             }
         },
-        {name: "Temporal Selection",
+        {
+            name: "Temporal Selection",
             available: 5,
             tier: 3,
             maxSlots: 6,
@@ -92,10 +106,13 @@ const TIME_MANIPULATION_POWERSET = {
                 recharge: 120.0,
                 endurance: 10.4,
                 cast: 2.27,
-                buffDuration: 120.0
+                rechargeDebuff: 0.3,
+                duration: 120.0,
+                regenerationDebuff: 1.5
             }
         },
-        {name: "Distortion Field",
+        {
+            name: "Distortion Field",
             available: 7,
             tier: 3,
             maxSlots: 6,
@@ -112,11 +129,11 @@ const TIME_MANIPULATION_POWERSET = {
                 range: 70.0,
                 recharge: 60.0,
                 endurance: 14.56,
-                cast: 2.03,
-                buffDuration: 45.0
+                cast: 2.03
             }
         },
-        {name: "Time Stop",
+        {
+            name: "Time Stop",
             available: 11,
             tier: 4,
             maxSlots: 6,
@@ -134,10 +151,12 @@ const TIME_MANIPULATION_POWERSET = {
                 recharge: 16.0,
                 endurance: 8.84,
                 cast: 2.17,
-                buffDuration: 20.0
+                hold: 1.0,
+                regenerationDebuff: 4.0
             }
         },
-        {name: "Farsight",
+        {
+            name: "Farsight",
             available: 17,
             tier: 4,
             maxSlots: 6,
@@ -150,16 +169,19 @@ const TIME_MANIPULATION_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 255,
+            radius: 25.0,
             effects: {
                 accuracy: 1.0,
                 recharge: 240.0,
                 endurance: 15.6,
                 cast: 2.03,
-                buffDuration: 120.0,
-                tohitBuff: 1.0
+                tohitDebuff: 1.0,
+                duration: 120.0,
+                resistanceDebuff: 1.5
             }
         },
-        {name: "Slowed Response",
+        {
+            name: "Slowed Response",
             available: 21,
             tier: 5,
             maxSlots: 6,
@@ -172,17 +194,20 @@ const TIME_MANIPULATION_POWERSET = {
             targetType: "Foe (Alive)",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 25.0,
             effects: {
                 accuracy: 1.0,
                 range: 80.0,
                 recharge: 90.0,
                 endurance: 15.6,
                 cast: 2.27,
-                buffDuration: 30.0,
+                resistanceDebuff: 3.6,
+                duration: 30.0,
                 defenseDebuff: 2.5
             }
         },
-        {name: "Chrono Shift",
+        {
+            name: "Chrono Shift",
             available: 25,
             tier: 5,
             maxSlots: 6,
@@ -195,12 +220,16 @@ const TIME_MANIPULATION_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 255,
+            radius: 25.0,
             effects: {
                 accuracy: 1.0,
                 recharge: 360.0,
                 endurance: 20.8,
                 cast: 2.03,
-                buffDuration: 30.0
+                healing: 0.3,
+                recoveryDebuff: 0.3,
+                rechargeDebuff: 0.5,
+                duration: 90.0
             }
         }
     ]

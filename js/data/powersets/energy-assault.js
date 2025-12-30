@@ -1,11 +1,11 @@
 /**
- * Energy Assault - Blaster Primary
- * Extracted from raw_data_homecoming with updated converter
+ * Energy Assault
+ * Extracted from raw_data_homecoming with redirect and entity support
  */
 
 const ENERGY_ASSAULT_POWERSET = {
     name: "Energy Assault",
-    category: "Blaster_RANGED",
+    category: "UNKNOWN",
     description: "Energy Assault powerset",
     icon: "energy-assault_set.png",
     powers: [
@@ -34,16 +34,18 @@ const ENERGY_ASSAULT_POWERSET = {
                             type: "Energy",
                             scale: 2.286
                         },
-        {type: "Smashing",
+                        {
+                            type: "Smashing",
                             scale: 1.524
                         }
                     ],
                     scale: 3.81
                 },
-                buffDuration: 15.0
+                regenerationDebuff: 0.5
             }
         },
-        {name: "Power Bolt",
+        {
+            name: "Power Bolt",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -67,7 +69,8 @@ const ENERGY_ASSAULT_POWERSET = {
                             type: "Energy",
                             scale: 1.3559999999999999
                         },
-        {type: "Smashing",
+                        {
+                            type: "Smashing",
                             scale: 0.904
                         }
                     ],
@@ -75,7 +78,8 @@ const ENERGY_ASSAULT_POWERSET = {
                 }
             }
         },
-        {name: "Power Push",
+        {
+            name: "Power Push",
             available: 3,
             tier: 2,
             maxSlots: 6,
@@ -99,15 +103,18 @@ const ENERGY_ASSAULT_POWERSET = {
                             type: "Energy",
                             scale: 1.8780000000000001
                         },
-        {type: "Smashing",
+                        {
+                            type: "Smashing",
                             scale: 1.252
                         }
                     ],
                     scale: 3.13
-                }
+                },
+                knockback: 1.0
             }
         },
-        {name: "Power Blast",
+        {
+            name: "Power Blast",
             available: 9,
             tier: 3,
             maxSlots: 6,
@@ -131,7 +138,8 @@ const ENERGY_ASSAULT_POWERSET = {
                             type: "Energy",
                             scale: 2.9467999999999996
                         },
-        {type: "Smashing",
+                        {
+                            type: "Smashing",
                             scale: 0.9823
                         }
                     ],
@@ -139,7 +147,8 @@ const ENERGY_ASSAULT_POWERSET = {
                 }
             }
         },
-        {name: "Power Up",
+        {
+            name: "Power Up",
             available: 15,
             tier: 4,
             maxSlots: 6,
@@ -156,14 +165,27 @@ const ENERGY_ASSAULT_POWERSET = {
                 recharge: 90.0,
                 endurance: 7.8,
                 cast: 1.17,
-                buffDuration: 10.0,
+                movementBuff: 0.5,
+                duration: 10.0,
+                healing: 0.5,
+                recoveryBuff: 0.5,
+                absorb: 0.5,
+                hold: 1.0,
+                holdDuration: 10.0,
                 stun: 1.0,
                 stunDuration: 10.0,
-                tohitBuff: 0.5,
-                defenseBuff: 0.5
+                immobilize: 1.0,
+                immobilizeDuration: 10.0,
+                sleep: 1.0,
+                sleepDuration: 10.0,
+                confuse: 1.0,
+                confuseDuration: 10.0,
+                defenseBuff: 0.5,
+                tohitBuff: 0.5
             }
         },
-        {name: "Whirling Hands",
+        {
+            name: "Whirling Hands",
             available: 19,
             tier: 4,
             maxSlots: 6,
@@ -176,6 +198,7 @@ const ENERGY_ASSAULT_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 10,
+            radius: 15.0,
             effects: {
                 accuracy: 1.0,
                 recharge: 20.0,
@@ -187,7 +210,8 @@ const ENERGY_ASSAULT_POWERSET = {
                             type: "Energy",
                             scale: 1.7015000000000002
                         },
-        {type: "Smashing",
+                        {
+                            type: "Smashing",
                             scale: 1.1344
                         }
                     ],
@@ -195,7 +219,8 @@ const ENERGY_ASSAULT_POWERSET = {
                 }
             }
         },
-        {name: "Total Focus",
+        {
+            name: "Total Focus",
             available: 23,
             tier: 5,
             maxSlots: 6,
@@ -219,7 +244,8 @@ const ENERGY_ASSAULT_POWERSET = {
                             type: "Energy",
                             scale: 4.1586
                         },
-        {type: "Smashing",
+                        {
+                            type: "Smashing",
                             scale: 2.7724
                         }
                     ],
@@ -228,7 +254,8 @@ const ENERGY_ASSAULT_POWERSET = {
                 stun: 3.0
             }
         },
-        {name: "Sniper Blast",
+        {
+            name: "Sniper Blast",
             available: 27,
             tier: 5,
             maxSlots: 6,
@@ -248,7 +275,8 @@ const ENERGY_ASSAULT_POWERSET = {
                 cast: 1.33
             }
         },
-        {name: "Power Burst",
+        {
+            name: "Power Burst",
             available: 29,
             tier: 5,
             maxSlots: 6,
@@ -272,7 +300,8 @@ const ENERGY_ASSAULT_POWERSET = {
                             type: "Energy",
                             scale: 3.0974000000000004
                         },
-        {type: "Smashing",
+                        {
+                            type: "Smashing",
                             scale: 1.6316000000000002
                         }
                     ],

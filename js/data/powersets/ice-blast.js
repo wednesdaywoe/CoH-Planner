@@ -1,15 +1,44 @@
 /**
- * Ice Blast - Blaster Primary
- * Extracted from raw_data_homecoming with updated converter
+ * Ice Blast
+ * Extracted from raw_data_homecoming with redirect and entity support
  */
 
 const ICE_BLAST_POWERSET = {
     name: "Ice Blast",
-    category: "Blaster_RANGED",
+    category: "UNKNOWN",
     description: "Ice Blast powerset",
     icon: "ice-blast_set.png",
     powers: [
-        {name: "Ice Bolt",
+        {
+            name: "Ice Blast",
+            available: 0,
+            tier: 1,
+            maxSlots: 6,
+            allowedEnhancements: ["Slow", "EnduranceReduction", "Range", "Recharge", "Damage", "Accuracy"],
+            allowedSetCategories: ["Blaster Archetype Sets", "Ranged Damage", "Slow Movement", "Universal Damage Sets"],
+            description: "Ice Blast hurls shards of ice at foes and Slows their attacks and movement for a time. Slower recharge than Ice Bolt, but more damage.",
+            shortHelp: "Ranged, DMG(Cold), Foe -Recharge, -SPD",
+            icon: "iceblast_iceblast.png",
+            powerType: "Click",
+            targetType: "Foe (Alive)",
+            effectArea: "SingleTarget",
+            effects: {
+                accuracy: 1.0,
+                range: 80.0,
+                recharge: 8.0,
+                endurance: 8.528,
+                cast: 1.67,
+                damage: {
+                    type: "Cold",
+                    scale: 3.5292
+                },
+                rechargeDebuff: 0.2,
+                duration: 10.0,
+                movementDebuff: 0.2
+            }
+        },
+        {
+            name: "Ice Bolt",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -31,10 +60,13 @@ const ICE_BLAST_POWERSET = {
                     type: "Cold",
                     scale: 2.2602
                 },
-                buffDuration: 6.0
+                movementDebuff: 0.2,
+                duration: 6.0,
+                rechargeDebuff: 0.2
             }
         },
-        {name: "Frost Breath",
+        {
+            name: "Frost Breath",
             available: 1,
             tier: 1,
             maxSlots: 6,
@@ -48,6 +80,7 @@ const ICE_BLAST_POWERSET = {
             effectArea: "Cone",
             maxTargets: 10,
             arc: 0.5236,
+            radius: 40.0,
             effects: {
                 accuracy: 1.2,
                 range: 40.0,
@@ -59,10 +92,13 @@ const ICE_BLAST_POWERSET = {
                     scale: 2.828,
                     ticks: 1
                 },
-                buffDuration: 0.6
+                rechargeDebuff: 0.2,
+                duration: 10.0,
+                movementDebuff: 0.2
             }
         },
-        {name: "Aim",
+        {
+            name: "Aim",
             available: 5,
             tier: 3,
             maxSlots: 6,
@@ -80,10 +116,11 @@ const ICE_BLAST_POWERSET = {
                 endurance: 5.2,
                 cast: 1.17,
                 tohitBuff: 5.0,
-                buffDuration: 10.0
+                duration: 10.0
             }
         },
-        {name: "Freeze Ray",
+        {
+            name: "Freeze Ray",
             available: 7,
             tier: 3,
             maxSlots: 6,
@@ -106,10 +143,14 @@ const ICE_BLAST_POWERSET = {
                     scale: 0.2,
                     ticks: 10
                 },
-                buffDuration: 2.0
+                hold: 3.0,
+                resistanceDebuff: 100.0,
+                duration: 10.0,
+                knockback: 1.0
             }
         },
-        {name: "Ice Storm",
+        {
+            name: "Ice Storm",
             available: 11,
             tier: 4,
             maxSlots: 6,
@@ -127,10 +168,17 @@ const ICE_BLAST_POWERSET = {
                 recharge: 60.0,
                 endurance: 15.6,
                 cast: 2.03,
-                buffDuration: 15.0
+                damage: {
+                    type: "Cold",
+                    scale: 0.056
+                },
+                rechargeDebuff: 0.1,
+                duration: 0.5,
+                movementDebuff: 1.0
             }
         },
-        {name: "Bitter Ice Blast",
+        {
+            name: "Bitter Ice Blast",
             available: 17,
             tier: 4,
             maxSlots: 6,
@@ -153,10 +201,13 @@ const ICE_BLAST_POWERSET = {
                     scale: 3.9092
                 },
                 tohitDebuff: 1.0,
-                buffDuration: 6.0
+                duration: 6.0,
+                rechargeDebuff: 0.2,
+                movementDebuff: 0.2
             }
         },
-        {name: "Bitter Freeze Ray",
+        {
+            name: "Bitter Freeze Ray",
             available: 21,
             tier: 5,
             maxSlots: 6,
@@ -178,10 +229,16 @@ const ICE_BLAST_POWERSET = {
                     type: "Cold",
                     scale: 5.5100999999999996
                 },
-                buffDuration: 18.0
+                hold: 3.0,
+                rechargeDebuff: 0.2,
+                duration: 18.0,
+                movementDebuff: 0.2,
+                resistanceDebuff: 100.0,
+                knockback: 1.0
             }
         },
-        {name: "Blizzard",
+        {
+            name: "Blizzard",
             available: 25,
             tier: 5,
             maxSlots: 6,
@@ -199,7 +256,24 @@ const ICE_BLAST_POWERSET = {
                 recharge: 170.0,
                 endurance: 27.716,
                 cast: 2.03,
-                buffDuration: 15.0
+                damage: {
+                    types: [
+                        {
+                            type: "Cold",
+                            scale: 0.15
+                        },
+                        {
+                            type: "Lethal",
+                            scale: 0.05
+                        }
+                    ],
+                    scale: 0.2
+                },
+                movementDebuff: 1.0,
+                duration: 5.0,
+                rechargeDebuff: 0.3,
+                tohitDebuff: 2.0,
+                knockback: 1.0
             }
         }
     ]

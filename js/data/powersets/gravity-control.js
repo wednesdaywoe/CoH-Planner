@@ -1,11 +1,11 @@
 /**
- * Gravity Control - Blaster Primary
- * Extracted from raw_data_homecoming with updated converter
+ * Gravity Control
+ * Extracted from raw_data_homecoming with redirect and entity support
  */
 
 const GRAVITY_CONTROL_POWERSET = {
     name: "Gravity Control",
-    category: "Blaster_RANGED",
+    category: "UNKNOWN",
     description: "Gravity Control powerset",
     icon: "gravity-control_set.png",
     powers: [
@@ -33,10 +33,13 @@ const GRAVITY_CONTROL_POWERSET = {
                     scale: 0.8473,
                     ticks: 4
                 },
-                buffDuration: 9.2
+                immobilize: 1.0,
+                movementDebuff: 1.6,
+                duration: 15.0
             }
         },
-        {name: "Lift",
+        {
+            name: "Lift",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -58,10 +61,13 @@ const GRAVITY_CONTROL_POWERSET = {
                     type: "Smashing",
                     scale: 5.011500000000001
                 },
-                buffDuration: 10.0
+                knockback: 1.0,
+                movementDebuff: 1.6,
+                duration: 10.0
             }
         },
-        {name: "Gravity Distortion",
+        {
+            name: "Gravity Distortion",
             available: 1,
             tier: 1,
             maxSlots: 6,
@@ -84,10 +90,15 @@ const GRAVITY_CONTROL_POWERSET = {
                     scale: 1.0403,
                     ticks: 4
                 },
-                buffDuration: 4.2
+                hold: 4.0,
+                movementDebuff: 1.6,
+                duration: 12.0,
+                resistanceDebuff: 100.0,
+                knockback: 1.0
             }
         },
-        {name: "Propel",
+        {
+            name: "Propel",
             available: 5,
             tier: 3,
             maxSlots: 6,
@@ -100,6 +111,7 @@ const GRAVITY_CONTROL_POWERSET = {
             targetType: "Foe (Alive)",
             effectArea: "AoE",
             maxTargets: 4,
+            radius: 15.0,
             effects: {
                 accuracy: 1.0,
                 range: 60.0,
@@ -109,10 +121,12 @@ const GRAVITY_CONTROL_POWERSET = {
                 damage: {
                     type: "Smashing",
                     scale: 5.5635
-                }
+                },
+                knockback: 1.0
             }
         },
-        {name: "Crushing Field",
+        {
+            name: "Crushing Field",
             available: 7,
             tier: 3,
             maxSlots: 6,
@@ -125,6 +139,7 @@ const GRAVITY_CONTROL_POWERSET = {
             targetType: "Foe (Alive)",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 30.0,
             effects: {
                 accuracy: 0.9,
                 range: 80.0,
@@ -136,10 +151,13 @@ const GRAVITY_CONTROL_POWERSET = {
                     scale: 0.3486,
                     ticks: 2
                 },
-                buffDuration: 5.2
+                immobilize: 4.0,
+                movementDebuff: 1.6,
+                duration: 15.0
             }
         },
-        {name: "Dimension Shift",
+        {
+            name: "Dimension Shift",
             available: 11,
             tier: 4,
             maxSlots: 6,
@@ -156,11 +174,11 @@ const GRAVITY_CONTROL_POWERSET = {
                 range: 80.0,
                 recharge: 60.0,
                 endurance: 15.6,
-                cast: 1.17,
-                buffDuration: 20.0
+                cast: 1.17
             }
         },
-        {name: "Gravity Distortion Field",
+        {
+            name: "Gravity Distortion Field",
             available: 17,
             tier: 4,
             maxSlots: 6,
@@ -177,10 +195,16 @@ const GRAVITY_CONTROL_POWERSET = {
                 range: 80.0,
                 recharge: 240.0,
                 endurance: 15.6,
-                cast: 1.83
+                cast: 1.83,
+                hold: 4.0,
+                movementDebuff: 0.5,
+                duration: 5.0,
+                resistanceDebuff: 1.0,
+                knockback: 1.0
             }
         },
-        {name: "Wormhole",
+        {
+            name: "Wormhole",
             available: 21,
             tier: 5,
             maxSlots: 6,
@@ -193,17 +217,21 @@ const GRAVITY_CONTROL_POWERSET = {
             targetType: "Foe (Alive)",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 20.0,
             effects: {
                 accuracy: 1.0,
                 range: 80.0,
                 recharge: 90.0,
                 endurance: 15.6,
                 cast: 3.0,
-                buffDuration: 1.5,
-                stun: 4.0
+                resistanceDebuff: 100.0,
+                duration: 15.0,
+                stun: 4.0,
+                knockback: 1.0
             }
         },
-        {name: "Singularity",
+        {
+            name: "Singularity",
             available: 25,
             tier: 5,
             maxSlots: 6,

@@ -1,11 +1,11 @@
 /**
- * Trick Arrow - Blaster Primary
- * Extracted from raw_data_homecoming with updated converter
+ * Trick Arrow
+ * Extracted from raw_data_homecoming with redirect and entity support
  */
 
 const TRICK_ARROW_POWERSET = {
     name: "Trick Arrow",
-    category: "Blaster_RANGED",
+    category: "UNKNOWN",
     description: "Trick Arrow powerset",
     icon: "trick-arrow_set.png",
     powers: [
@@ -28,10 +28,15 @@ const TRICK_ARROW_POWERSET = {
                 recharge: 4.0,
                 endurance: 5.2,
                 cast: 1.0,
-                buffDuration: 30.0
+                movementDebuff: 2.5,
+                duration: 30.0,
+                resistanceDebuff: 100.0,
+                knockback: 1.0,
+                immobilize: 3.0
             }
         },
-        {name: "Flash Arrow",
+        {
+            name: "Flash Arrow",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -44,6 +49,7 @@ const TRICK_ARROW_POWERSET = {
             targetType: "Foe (Alive)",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 35.0,
             effects: {
                 accuracy: 1.0,
                 range: 80.0,
@@ -51,10 +57,11 @@ const TRICK_ARROW_POWERSET = {
                 endurance: 7.8,
                 cast: 1.0,
                 tohitDebuff: 0.5,
-                buffDuration: 60.0
+                duration: 60.0
             }
         },
-        {name: "Glue Arrow",
+        {
+            name: "Glue Arrow",
             available: 1,
             tier: 1,
             maxSlots: 6,
@@ -67,16 +74,20 @@ const TRICK_ARROW_POWERSET = {
             targetType: "Location",
             effectArea: "Location",
             maxTargets: 16,
+            radius: 25.0,
             effects: {
                 accuracy: 1.0,
                 range: 60.0,
                 recharge: 60.0,
                 endurance: 7.8,
                 cast: 1.16,
-                buffDuration: 60.0
+                movementDebuff: 2.5,
+                duration: 1.25,
+                rechargeDebuff: 0.32
             }
         },
-        {name: "Ice Arrow",
+        {
+            name: "Ice Arrow",
             available: 5,
             tier: 3,
             maxSlots: 6,
@@ -94,10 +105,16 @@ const TRICK_ARROW_POWERSET = {
                 recharge: 18.0,
                 endurance: 8.528,
                 cast: 1.67,
-                buffDuration: 10.0
+                movementDebuff: 0.3,
+                duration: 10.0,
+                rechargeDebuff: 0.2,
+                resistanceDebuff: 100.0,
+                knockback: 1.0,
+                hold: 3.0
             }
         },
-        {name: "Poison Gas Arrow",
+        {
+            name: "Poison Gas Arrow",
             available: 7,
             tier: 3,
             maxSlots: 6,
@@ -110,16 +127,19 @@ const TRICK_ARROW_POWERSET = {
             targetType: "Foe (Alive)",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 25.0,
             effects: {
                 accuracy: 1.5,
                 range: 70.0,
                 recharge: 45.0,
                 endurance: 10.4,
                 cast: 1.16,
-                buffDuration: 20.0
+                sleep: 2.0,
+                duration: 20.0
             }
         },
-        {name: "Acid Arrow",
+        {
+            name: "Acid Arrow",
             available: 11,
             tier: 4,
             maxSlots: 6,
@@ -132,6 +152,7 @@ const TRICK_ARROW_POWERSET = {
             targetType: "Foe (Alive)",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 15.0,
             effects: {
                 accuracy: 1.0,
                 range: 80.0,
@@ -143,11 +164,18 @@ const TRICK_ARROW_POWERSET = {
                     scale: 0.01,
                     ticks: 20
                 },
-                buffDuration: 20.0,
-                defenseDebuff: 2.0
+                defenseDebuff: 2.0,
+                duration: 45.0,
+                resistanceDebuff: 2.0,
+                healing: 2.0,
+                tohitDebuff: 2.0,
+                rechargeDebuff: 2.0,
+                regenerationDebuff: 2.0,
+                recoveryDebuff: 2.0
             }
         },
-        {name: "Disruption Arrow",
+        {
+            name: "Disruption Arrow",
             available: 17,
             tier: 4,
             maxSlots: 6,
@@ -165,10 +193,13 @@ const TRICK_ARROW_POWERSET = {
                 recharge: 30.0,
                 endurance: 14.56,
                 cast: 1.16,
-                buffDuration: 45.0
+                resistanceDebuff: 4.0,
+                duration: 1.25,
+                recoveryDebuff: 5.0
             }
         },
-        {name: "Oil Slick Arrow",
+        {
+            name: "Oil Slick Arrow",
             available: 21,
             tier: 5,
             maxSlots: 6,
@@ -185,11 +216,11 @@ const TRICK_ARROW_POWERSET = {
                 range: 70.0,
                 recharge: 180.0,
                 endurance: 15.6,
-                cast: 1.16,
-                buffDuration: 30.0
+                cast: 1.16
             }
         },
-        {name: "EMP Arrow",
+        {
+            name: "EMP Arrow",
             available: 25,
             tier: 5,
             maxSlots: 6,
@@ -202,13 +233,32 @@ const TRICK_ARROW_POWERSET = {
             targetType: "Location",
             effectArea: "Location",
             maxTargets: 16,
+            radius: 35.0,
             effects: {
                 accuracy: 1.0,
                 range: 70.0,
                 recharge: 300.0,
                 endurance: 23.4,
                 cast: 1.83,
-                buffDuration: 240.0
+                resistanceDebuff: 1.0,
+                duration: 45.0,
+                recoveryDebuff: 2.0,
+                immobilize: 1.0,
+                immobilizeDuration: 45.0,
+                hold: 3.0,
+                holdDuration: 45.0,
+                stun: 1.0,
+                stunDuration: 45.0,
+                sleep: 1.0,
+                sleepDuration: 45.0,
+                knockback: 1.0,
+                movementBuff: 1.0,
+                movementDebuff: 2.0,
+                confuse: 1.0,
+                confuseDuration: 45.0,
+                defenseDebuff: 1.2,
+                tohitDebuff: 1.2,
+                regenerationDebuff: 15.0
             }
         }
     ]

@@ -1,15 +1,16 @@
 /**
- * Marine Affinity - Blaster Primary
- * Extracted from raw_data_homecoming with updated converter
+ * Marine Affinity
+ * Extracted from raw_data_homecoming with redirect and entity support
  */
 
 const MARINE_AFFINITY_POWERSET = {
     name: "Marine Affinity",
-    category: "Blaster_RANGED",
+    category: "UNKNOWN",
     description: "Marine Affinity powerset",
     icon: "marine-affinity_set.png",
     powers: [
-        {name: "Shoal Rush",
+        {
+            name: "Shoal Rush",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -23,6 +24,7 @@ const MARINE_AFFINITY_POWERSET = {
             effectArea: "AoE",
             maxTargets: 16,
             arc: 1.5708,
+            radius: 20.0,
             effects: {
                 accuracy: 1.2,
                 range: 80.0,
@@ -30,10 +32,12 @@ const MARINE_AFFINITY_POWERSET = {
                 endurance: 10.4,
                 cast: 2.17,
                 defenseDebuff: 1.6,
-                buffDuration: 20.0
+                duration: 20.0,
+                movementDebuff: 1.0
             }
         },
-        {name: "Soothing Wave",
+        {
+            name: "Soothing Wave",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -47,15 +51,18 @@ const MARINE_AFFINITY_POWERSET = {
             effectArea: "Cone",
             maxTargets: 255,
             arc: 1.5708,
+            radius: 45.0,
             effects: {
                 accuracy: 1.0,
                 range: 45.0,
                 recharge: 10.0,
                 endurance: 13.52,
-                cast: 2.0
+                cast: 2.0,
+                healing: 1.0
             }
         },
-        {name: "Toroidal Bubble",
+        {
+            name: "Toroidal Bubble",
             available: 1,
             tier: 1,
             maxSlots: 6,
@@ -68,6 +75,7 @@ const MARINE_AFFINITY_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 255,
+            radius: 40.0,
             effects: {
                 accuracy: 1.0,
                 recharge: 60.0,
@@ -78,35 +86,53 @@ const MARINE_AFFINITY_POWERSET = {
                         {
                             type: "Smashing",
                             scale: 2.5,
-                            ticks: 30},
-        {type: "Fire",
+                            ticks: 30
+                        },
+                        {
+                            type: "Fire",
                             scale: 2.5,
-                            ticks: 30},
-        {type: "Lethal",
+                            ticks: 30
+                        },
+                        {
+                            type: "Lethal",
                             scale: 1.25,
-                            ticks: 30},
-        {type: "Cold",
+                            ticks: 30
+                        },
+                        {
+                            type: "Cold",
                             scale: 1.25,
-                            ticks: 30},
-        {type: "Energy",
+                            ticks: 30
+                        },
+                        {
+                            type: "Energy",
                             scale: 1.25,
-                            ticks: 30},
-        {type: "Negative",
+                            ticks: 30
+                        },
+                        {
+                            type: "Negative",
                             scale: 1.25,
-                            ticks: 30},
-        {type: "Psionic",
+                            ticks: 30
+                        },
+                        {
+                            type: "Psionic",
                             scale: 1.25,
-                            ticks: 30},
-        {type: "Toxic",
+                            ticks: 30
+                        },
+                        {
+                            type: "Toxic",
                             scale: 1.25,
                             ticks: 30
                         }
                     ]
                 },
-                buffDuration: 60.0
+                movementDebuff: 0.25,
+                duration: 60.0,
+                resistanceDebuff: 1.25,
+                recoveryDebuff: 0.2
             }
         },
-        {name: "Whitecap",
+        {
+            name: "Whitecap",
             available: 5,
             tier: 3,
             maxSlots: 6,
@@ -123,10 +149,18 @@ const MARINE_AFFINITY_POWERSET = {
                 range: 80.0,
                 recharge: 30.0,
                 endurance: 18.0,
-                cast: 2.0
+                cast: 2.0,
+                damage: {
+                    type: "Cold",
+                    scale: 0.75
+                },
+                resistanceDebuff: 1.5,
+                duration: 30.0,
+                knockback: 1.0
             }
         },
-        {name: "Tide Pool",
+        {
+            name: "Tide Pool",
             available: 7,
             tier: 3,
             maxSlots: 6,
@@ -144,10 +178,13 @@ const MARINE_AFFINITY_POWERSET = {
                 recharge: 10.0,
                 endurance: 13.0,
                 cast: 2.33,
-                buffDuration: 240.0
+                movementDebuff: 1.0,
+                duration: 5.0,
+                knockback: 1.0
             }
         },
-        {name: "Brine",
+        {
+            name: "Brine",
             available: 11,
             tier: 4,
             maxSlots: 6,
@@ -165,10 +202,12 @@ const MARINE_AFFINITY_POWERSET = {
                 recharge: 60.0,
                 endurance: 7.0,
                 cast: 2.07,
-                buffDuration: 60.0
+                resistanceDebuff: 3.0,
+                duration: 60.0
             }
         },
-        {name: "Shifting Tides",
+        {
+            name: "Shifting Tides",
             available: 17,
             tier: 4,
             maxSlots: 6,
@@ -181,6 +220,7 @@ const MARINE_AFFINITY_POWERSET = {
             targetType: "Any",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 25.0,
             effects: {
                 accuracy: 1.0,
                 range: 80.0,
@@ -191,10 +231,12 @@ const MARINE_AFFINITY_POWERSET = {
                     type: "Cold",
                     scale: 0.5
                 },
-                buffDuration: 2.0
+                tohitDebuff: 0.08,
+                rechargeDebuff: 0.02
             }
         },
-        {name: "Barrier Reef",
+        {
+            name: "Barrier Reef",
             available: 21,
             tier: 5,
             maxSlots: 6,
@@ -211,11 +253,11 @@ const MARINE_AFFINITY_POWERSET = {
                 range: 40.0,
                 recharge: 30.0,
                 endurance: 13.52,
-                cast: 2.37,
-                buffDuration: 240.0
+                cast: 2.37
             }
         },
-        {name: "Power of the Depths",
+        {
+            name: "Power of the Depths",
             available: 25,
             tier: 5,
             maxSlots: 6,
@@ -228,12 +270,14 @@ const MARINE_AFFINITY_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 255,
+            radius: 25.0,
             effects: {
                 accuracy: 1.0,
                 recharge: 240.0,
                 endurance: 26.0,
                 cast: 3.0,
-                buffDuration: 60.0
+                recoveryDebuff: 10.0,
+                regenerationDebuff: 2.0
             }
         }
     ]

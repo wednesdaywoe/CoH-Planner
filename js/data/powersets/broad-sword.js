@@ -1,15 +1,16 @@
 /**
- * Broad Sword - Blaster Primary
- * Extracted from raw_data_homecoming with updated converter
+ * Broad Sword
+ * Extracted from raw_data_homecoming with redirect and entity support
  */
 
 const BROAD_SWORD_POWERSET = {
     name: "Broad Sword",
-    category: "Blaster_RANGED",
+    category: "UNKNOWN",
     description: "Broad Sword powerset",
     icon: "broad-sword_set.png",
     powers: [
-        {name: "Hack",
+        {
+            name: "Hack",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -33,17 +34,19 @@ const BROAD_SWORD_POWERSET = {
                             type: "Lethal",
                             scale: 8.2218
                         },
-        {type: "Fire",
+                        {
+                            type: "Fire",
                             scale: 0.738
                         }
                     ],
                     scale: 8.9598
                 },
                 defenseDebuff: 1.0,
-                buffDuration: 10.0
+                duration: 10.0
             }
         },
-        {name: "Slash",
+        {
+            name: "Slash",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -67,17 +70,19 @@ const BROAD_SWORD_POWERSET = {
                             type: "Lethal",
                             scale: 5.9818
                         },
-        {type: "Fire",
+                        {
+                            type: "Fire",
                             scale: 0.45
                         }
                     ],
                     scale: 6.4318
                 },
                 defenseDebuff: 1.0,
-                buffDuration: 6.0
+                duration: 6.0
             }
         },
-        {name: "Slice",
+        {
+            name: "Slice",
             available: 1,
             tier: 1,
             maxSlots: 6,
@@ -91,6 +96,7 @@ const BROAD_SWORD_POWERSET = {
             effectArea: "Cone",
             maxTargets: 5,
             arc: 2.2689,
+            radius: 7.0,
             effects: {
                 accuracy: 1.05,
                 range: 7.0,
@@ -103,17 +109,19 @@ const BROAD_SWORD_POWERSET = {
                             type: "Lethal",
                             scale: 6.8820000000000014
                         },
-        {type: "Fire",
+                        {
+                            type: "Fire",
                             scale: 0.5535
                         }
                     ],
                     scale: 7.435500000000001
                 },
                 defenseDebuff: 1.0,
-                buffDuration: 10.0
+                duration: 10.0
             }
         },
-        {name: "Build Up",
+        {
+            name: "Build Up",
             available: 5,
             tier: 3,
             maxSlots: 6,
@@ -131,10 +139,11 @@ const BROAD_SWORD_POWERSET = {
                 endurance: 5.2,
                 cast: 1.17,
                 tohitBuff: 2.0,
-                buffDuration: 10.0
+                duration: 10.0
             }
         },
-        {name: "Parry",
+        {
+            name: "Parry",
             available: 7,
             tier: 3,
             maxSlots: 6,
@@ -158,16 +167,17 @@ const BROAD_SWORD_POWERSET = {
                             type: "Lethal",
                             scale: 5.4218
                         },
-        {type: "Fire",
+                        {
+                            type: "Fire",
                             scale: 0.378
                         }
                     ],
                     scale: 5.7998
-                },
-                buffDuration: 10.0
+                }
             }
         },
-        {name: "Confront",
+        {
+            name: "Confront",
             available: 11,
             tier: 4,
             maxSlots: 6,
@@ -183,11 +193,11 @@ const BROAD_SWORD_POWERSET = {
                 accuracy: 1.0,
                 range: 70.0,
                 recharge: 3.0,
-                cast: 1.67,
-                buffDuration: 12.0
+                cast: 1.67
             }
         },
-        {name: "Whirling Sword",
+        {
+            name: "Whirling Sword",
             available: 17,
             tier: 4,
             maxSlots: 6,
@@ -200,6 +210,7 @@ const BROAD_SWORD_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 10,
+            radius: 8.0,
             effects: {
                 accuracy: 1.05,
                 recharge: 14.0,
@@ -211,7 +222,8 @@ const BROAD_SWORD_POWERSET = {
                             type: "Lethal",
                             scale: 6.6495999999999995
                         },
-        {type: "Fire",
+                        {
+                            type: "Fire",
                             scale: 0.45
                         }
                     ],
@@ -222,18 +234,21 @@ const BROAD_SWORD_POWERSET = {
                         {
                             type: "Lethal",
                             scale: 0.1,
-                            ticks: 2},
-        {type: "Fire",
+                            ticks: 2
+                        },
+                        {
+                            type: "Fire",
                             scale: 0.045,
                             ticks: 2
                         }
                     ]
                 },
-                buffDuration: 2.1,
-                defenseDebuff: 1.0
+                defenseDebuff: 1.0,
+                duration: 10.0
             }
         },
-        {name: "Disembowel",
+        {
+            name: "Disembowel",
             available: 21,
             tier: 5,
             maxSlots: 6,
@@ -257,17 +272,20 @@ const BROAD_SWORD_POWERSET = {
                             type: "Lethal",
                             scale: 9.9998
                         },
-        {type: "Fire",
+                        {
+                            type: "Fire",
                             scale: 0.882
                         }
                     ],
                     scale: 10.8818
                 },
+                knockback: 1.0,
                 defenseDebuff: 1.0,
-                buffDuration: 10.0
+                duration: 10.0
             }
         },
-        {name: "Head Splitter",
+        {
+            name: "Head Splitter",
             available: 25,
             tier: 5,
             maxSlots: 6,
@@ -281,6 +299,7 @@ const BROAD_SWORD_POWERSET = {
             effectArea: "Cone",
             maxTargets: 5,
             arc: 0.3491,
+            radius: 10.0,
             effects: {
                 accuracy: 1.05,
                 range: 10.0,
@@ -293,14 +312,16 @@ const BROAD_SWORD_POWERSET = {
                             type: "Lethal",
                             scale: 10.3818
                         },
-        {type: "Fire",
+                        {
+                            type: "Fire",
                             scale: 1.17
                         }
                     ],
                     scale: 11.5518
                 },
+                knockback: 1.0,
                 defenseDebuff: 1.0,
-                buffDuration: 10.0
+                duration: 10.0
             }
         }
     ]

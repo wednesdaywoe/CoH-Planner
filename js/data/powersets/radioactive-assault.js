@@ -1,11 +1,11 @@
 /**
- * Radioactive Assault - Blaster Primary
- * Extracted from raw_data_homecoming with updated converter
+ * Radioactive Assault
+ * Extracted from raw_data_homecoming with redirect and entity support
  */
 
 const RADIOACTIVE_ASSAULT_POWERSET = {
     name: "Radioactive Assault",
-    category: "Blaster_RANGED",
+    category: "UNKNOWN",
     description: "Radioactive Assault powerset",
     icon: "radioactive-assault_set.png",
     powers: [
@@ -34,17 +34,19 @@ const RADIOACTIVE_ASSAULT_POWERSET = {
                             type: "Energy",
                             scale: 2.2058
                         },
-        {type: "Smashing",
+                        {
+                            type: "Smashing",
                             scale: 0.7353
                         }
                     ],
                     scale: 2.9411
                 },
                 defenseDebuff: 1.39,
-                buffDuration: 10.0
+                duration: 10.0
             }
         },
-        {name: "Neutrino Bolt",
+        {
+            name: "Neutrino Bolt",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -67,10 +69,11 @@ const RADIOACTIVE_ASSAULT_POWERSET = {
                     scale: 2.2572
                 },
                 defenseDebuff: 1.0,
-                buffDuration: 3.0
+                duration: 3.0
             }
         },
-        {name: "X-Ray Beam",
+        {
+            name: "X-Ray Beam",
             available: 3,
             tier: 2,
             maxSlots: 6,
@@ -93,10 +96,11 @@ const RADIOACTIVE_ASSAULT_POWERSET = {
                     scale: 4.131600000000001
                 },
                 defenseDebuff: 2.0,
-                buffDuration: 6.0
+                duration: 6.0
             }
         },
-        {name: "Electron Haze",
+        {
+            name: "Electron Haze",
             available: 9,
             tier: 3,
             maxSlots: 6,
@@ -110,6 +114,7 @@ const RADIOACTIVE_ASSAULT_POWERSET = {
             effectArea: "Cone",
             maxTargets: 10,
             arc: 0.5236,
+            radius: 40.0,
             effects: {
                 accuracy: 1.0,
                 range: 40.0,
@@ -121,10 +126,12 @@ const RADIOACTIVE_ASSAULT_POWERSET = {
                     scale: 2.6
                 },
                 defenseDebuff: 2.0,
-                buffDuration: 8.0
+                duration: 8.0,
+                knockback: 1.0
             }
         },
-        {name: "Fusion",
+        {
+            name: "Fusion",
             available: 15,
             tier: 4,
             maxSlots: 6,
@@ -142,10 +149,11 @@ const RADIOACTIVE_ASSAULT_POWERSET = {
                 endurance: 5.2,
                 cast: 1.17,
                 tohitBuff: 2.0,
-                buffDuration: 10.0
+                duration: 10.0
             }
         },
-        {name: "Radiation Siphon",
+        {
+            name: "Radiation Siphon",
             available: 19,
             tier: 4,
             maxSlots: 6,
@@ -169,17 +177,20 @@ const RADIOACTIVE_ASSAULT_POWERSET = {
                             type: "Energy",
                             scale: 3.5385999999999997
                         },
-        {type: "Smashing",
+                        {
+                            type: "Smashing",
                             scale: 1.1770999999999998
                         }
                     ],
                     scale: 4.7157
                 },
                 defenseDebuff: 1.5,
-                buffDuration: 10.0
+                duration: 10.0,
+                healing: 0.67
             }
         },
-        {name: "Atom Smasher",
+        {
+            name: "Atom Smasher",
             available: 23,
             tier: 5,
             maxSlots: 6,
@@ -192,6 +203,7 @@ const RADIOACTIVE_ASSAULT_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 10,
+            radius: 10.0,
             effects: {
                 accuracy: 1.0,
                 recharge: 22.0,
@@ -203,18 +215,20 @@ const RADIOACTIVE_ASSAULT_POWERSET = {
                             type: "Toxic",
                             scale: 2.16
                         },
-        {type: "Energy",
+                        {
+                            type: "Energy",
                             scale: 0.7257
                         }
                     ],
                     scale: 2.8857
                 },
                 defenseDebuff: 1.2,
-                buffDuration: 10.0,
+                duration: 10.0,
                 stun: 2.0
             }
         },
-        {name: "Proton Volley",
+        {
+            name: "Proton Volley",
             available: 27,
             tier: 5,
             maxSlots: 6,
@@ -234,7 +248,8 @@ const RADIOACTIVE_ASSAULT_POWERSET = {
                 cast: 1.33
             }
         },
-        {name: "Devastating Blow",
+        {
+            name: "Devastating Blow",
             available: 29,
             tier: 5,
             maxSlots: 6,
@@ -258,14 +273,15 @@ const RADIOACTIVE_ASSAULT_POWERSET = {
                             type: "Energy",
                             scale: 4.972799999999999
                         },
-        {type: "Smashing",
+                        {
+                            type: "Smashing",
                             scale: 1.6601
                         }
                     ],
                     scale: 6.632899999999999
                 },
                 defenseDebuff: 2.0,
-                buffDuration: 10.0,
+                duration: 10.0,
                 stun: 3.0
             }
         }

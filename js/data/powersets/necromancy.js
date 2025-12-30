@@ -1,11 +1,11 @@
 /**
- * Necromancy - Blaster Primary
- * Extracted from raw_data_homecoming with updated converter
+ * Necromancy
+ * Extracted from raw_data_homecoming with redirect and entity support
  */
 
 const NECROMANCY_POWERSET = {
     name: "Necromancy",
-    category: "Blaster_RANGED",
+    category: "UNKNOWN",
     description: "Necromancy powerset",
     icon: "necromancy_set.png",
     powers: [
@@ -33,10 +33,11 @@ const NECROMANCY_POWERSET = {
                     scale: 2.26
                 },
                 tohitDebuff: 0.75,
-                buffDuration: 6.0
+                duration: 6.0
             }
         },
-        {name: "Zombie Horde",
+        {
+            name: "Zombie Horde",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -56,7 +57,8 @@ const NECROMANCY_POWERSET = {
                 cast: 3.1
             }
         },
-        {name: "Gloom",
+        {
+            name: "Gloom",
             available: 1,
             tier: 1,
             maxSlots: 6,
@@ -79,11 +81,12 @@ const NECROMANCY_POWERSET = {
                     scale: 0.4063,
                     ticks: 7
                 },
-                buffDuration: 3.6,
-                tohitDebuff: 0.75
+                tohitDebuff: 0.75,
+                duration: 10.0
             }
         },
-        {name: "Enchant Undead",
+        {
+            name: "Enchant Undead",
             available: 5,
             tier: 3,
             maxSlots: 6,
@@ -96,6 +99,7 @@ const NECROMANCY_POWERSET = {
             targetType: "Own Pet (Alive)",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 30.0,
             effects: {
                 accuracy: 1.0,
                 range: 50.0,
@@ -104,7 +108,8 @@ const NECROMANCY_POWERSET = {
                 cast: 2.07
             }
         },
-        {name: "Life Drain",
+        {
+            name: "Life Drain",
             available: 7,
             tier: 3,
             maxSlots: 6,
@@ -126,11 +131,13 @@ const NECROMANCY_POWERSET = {
                     type: "Negative",
                     scale: 3.7110000000000003
                 },
+                healing: 1.0,
                 tohitDebuff: 0.75,
-                buffDuration: 10.0
+                duration: 10.0
             }
         },
-        {name: "Grave Knight",
+        {
+            name: "Grave Knight",
             available: 11,
             tier: 4,
             maxSlots: 6,
@@ -150,7 +157,8 @@ const NECROMANCY_POWERSET = {
                 cast: 1.07
             }
         },
-        {name: "Soul Extraction",
+        {
+            name: "Soul Extraction",
             available: 17,
             tier: 4,
             maxSlots: 6,
@@ -162,16 +170,17 @@ const NECROMANCY_POWERSET = {
             powerType: "Click",
             targetType: "Self",
             effectArea: "AoE",
+            radius: 80.0,
             effects: {
                 accuracy: 1.0,
                 range: 60.0,
                 recharge: 150.0,
                 endurance: 15.0,
-                cast: 2.03,
-                buffDuration: 0.5
+                cast: 2.03
             }
         },
-        {name: "Lich",
+        {
+            name: "Lich",
             available: 21,
             tier: 5,
             maxSlots: 6,
@@ -191,7 +200,8 @@ const NECROMANCY_POWERSET = {
                 cast: 3.17
             }
         },
-        {name: "Dark Empowerment",
+        {
+            name: "Dark Empowerment",
             available: 25,
             tier: 5,
             maxSlots: 6,
@@ -204,6 +214,7 @@ const NECROMANCY_POWERSET = {
             targetType: "Own Pet (Alive)",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 30.0,
             effects: {
                 accuracy: 1.0,
                 range: 50.0,

@@ -1,15 +1,16 @@
 /**
- * Kinetics - Blaster Primary
- * Extracted from raw_data_homecoming with updated converter
+ * Kinetics
+ * Extracted from raw_data_homecoming with redirect and entity support
  */
 
 const KINETICS_POWERSET = {
     name: "Kinetics",
-    category: "Blaster_RANGED",
+    category: "UNKNOWN",
     description: "Kinetics powerset",
     icon: "kinetics_set.png",
     powers: [
-        {name: "Siphon Power",
+        {
+            name: "Siphon Power",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -26,11 +27,11 @@ const KINETICS_POWERSET = {
                 range: 80.0,
                 recharge: 20.0,
                 endurance: 10.4,
-                cast: 1.93,
-                buffDuration: 30.0
+                cast: 1.93
             }
         },
-        {name: "Transfusion",
+        {
+            name: "Transfusion",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -48,10 +49,12 @@ const KINETICS_POWERSET = {
                 recharge: 8.0,
                 endurance: 7.8,
                 cast: 1.17,
-                buffDuration: 20.0
+                regenerationDebuff: 11.5,
+                healing: 1.7616
             }
         },
-        {name: "Repel",
+        {
+            name: "Repel",
             available: 1,
             tier: 1,
             maxSlots: 6,
@@ -64,15 +67,16 @@ const KINETICS_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 9.0,
             effects: {
                 accuracy: 1.0,
                 recharge: 20.0,
                 endurance: 0.325,
-                cast: 1.07,
-                buffDuration: 0.5
+                cast: 1.07
             }
         },
-        {name: "Siphon Speed",
+        {
+            name: "Siphon Speed",
             available: 5,
             tier: 3,
             maxSlots: 6,
@@ -90,10 +94,15 @@ const KINETICS_POWERSET = {
                 recharge: 60.0,
                 endurance: 7.8,
                 cast: 1.93,
-                buffDuration: 60.0
+                movementDebuff: 0.5,
+                duration: 60.0,
+                rechargeDebuff: 0.2,
+                movementBuff: 0.85,
+                rechargeBuff: 0.2
             }
         },
-        {name: "Increase Density",
+        {
+            name: "Increase Density",
             available: 7,
             tier: 3,
             maxSlots: 6,
@@ -106,6 +115,7 @@ const KINETICS_POWERSET = {
             targetType: "Ally (Alive)",
             effectArea: "AoE",
             maxTargets: 255,
+            radius: 30.0,
             effects: {
                 accuracy: 1.0,
                 range: 70.0,
@@ -117,19 +127,29 @@ const KINETICS_POWERSET = {
                         {
                             type: "Smashing",
                             scale: 2.5,
-                            ticks: 30},
-        {type: "Energy",
+                            ticks: 30
+                        },
+                        {
+                            type: "Energy",
                             scale: 2.5,
                             ticks: 30
                         }
                     ]
                 },
-                buffDuration: 60.0,
+                resistanceDebuff: 1.0,
+                duration: 60.0,
+                hold: 1.0,
+                holdDuration: 60.0,
                 stun: 1.0,
-                stunDuration: 60.0
+                stunDuration: 60.0,
+                immobilize: 1.0,
+                immobilizeDuration: 60.0,
+                knockback: 1.0,
+                movementDebuff: 0.1
             }
         },
-        {name: "Speed Boost",
+        {
+            name: "Speed Boost",
             available: 11,
             tier: 4,
             maxSlots: 6,
@@ -142,16 +162,22 @@ const KINETICS_POWERSET = {
             targetType: "Ally (Alive)",
             effectArea: "AoE",
             maxTargets: 255,
+            radius: 30.0,
             effects: {
                 accuracy: 1.0,
                 range: 50.0,
                 recharge: 2.0,
                 endurance: 7.8,
                 cast: 1.0,
-                buffDuration: 120.0
+                rechargeDebuff: 0.5,
+                duration: 120.0,
+                recoveryDebuff: 0.5,
+                resistanceDebuff: 0.5,
+                movementDebuff: 0.5
             }
         },
-        {name: "Inertial Reduction",
+        {
+            name: "Inertial Reduction",
             available: 17,
             tier: 4,
             maxSlots: 6,
@@ -164,15 +190,18 @@ const KINETICS_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 255,
+            radius: 25.0,
             effects: {
                 accuracy: 1.0,
                 recharge: 60.0,
                 endurance: 23.4,
                 cast: 2.03,
-                buffDuration: 60.0
+                movementDebuff: 1.0,
+                duration: 60.0
             }
         },
-        {name: "Transference",
+        {
+            name: "Transference",
             available: 21,
             tier: 5,
             maxSlots: 6,
@@ -192,7 +221,8 @@ const KINETICS_POWERSET = {
                 cast: 2.27
             }
         },
-        {name: "Fulcrum Shift",
+        {
+            name: "Fulcrum Shift",
             available: 25,
             tier: 5,
             maxSlots: 6,

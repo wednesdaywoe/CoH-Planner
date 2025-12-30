@@ -1,11 +1,11 @@
 /**
- * Thugs - Blaster Primary
- * Extracted from raw_data_homecoming with updated converter
+ * Thugs
+ * Extracted from raw_data_homecoming with redirect and entity support
  */
 
 const THUGS_POWERSET = {
     name: "Thugs",
-    category: "Blaster_RANGED",
+    category: "UNKNOWN",
     description: "Thugs powerset",
     icon: "thugs_set.png",
     powers: [
@@ -30,7 +30,8 @@ const THUGS_POWERSET = {
                 cast: 1.67
             }
         },
-        {name: "Pistols",
+        {
+            name: "Pistols",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -54,7 +55,8 @@ const THUGS_POWERSET = {
                 }
             }
         },
-        {name: "Dual Wield",
+        {
+            name: "Dual Wield",
             available: 1,
             tier: 1,
             maxSlots: 6,
@@ -77,10 +79,11 @@ const THUGS_POWERSET = {
                     scale: 1.4,
                     ticks: 1
                 },
-                buffDuration: 0.3
+                knockback: 1.0
             }
         },
-        {name: "Equip Thugs",
+        {
+            name: "Equip Thugs",
             available: 5,
             tier: 3,
             maxSlots: 6,
@@ -93,16 +96,17 @@ const THUGS_POWERSET = {
             targetType: "Own Pet (Alive)",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 30.0,
             effects: {
                 accuracy: 1.0,
                 range: 50.0,
                 recharge: 6.0,
                 endurance: 11.375,
-                cast: 1.3,
-                buffDuration: 3.5
+                cast: 1.3
             }
         },
-        {name: "Empty Clips",
+        {
+            name: "Empty Clips",
             available: 7,
             tier: 3,
             maxSlots: 6,
@@ -116,6 +120,7 @@ const THUGS_POWERSET = {
             effectArea: "Cone",
             maxTargets: 10,
             arc: 0.5236,
+            radius: 40.0,
             effects: {
                 accuracy: 1.1,
                 range: 40.0,
@@ -127,10 +132,11 @@ const THUGS_POWERSET = {
                     scale: 0.569,
                     ticks: 2
                 },
-                buffDuration: 0.7
+                knockback: 1.0
             }
         },
-        {name: "Call Enforcer",
+        {
+            name: "Call Enforcer",
             available: 11,
             tier: 4,
             maxSlots: 6,
@@ -150,7 +156,8 @@ const THUGS_POWERSET = {
                 cast: 1.67
             }
         },
-        {name: "Gang War",
+        {
+            name: "Gang War",
             available: 17,
             tier: 4,
             maxSlots: 6,
@@ -170,7 +177,8 @@ const THUGS_POWERSET = {
                 cast: 1.67
             }
         },
-        {name: "Call Bruiser",
+        {
+            name: "Call Bruiser",
             available: 21,
             tier: 5,
             maxSlots: 6,
@@ -190,7 +198,8 @@ const THUGS_POWERSET = {
                 cast: 1.67
             }
         },
-        {name: "Upgrade Equipment",
+        {
+            name: "Upgrade Equipment",
             available: 25,
             tier: 5,
             maxSlots: 6,
@@ -203,13 +212,13 @@ const THUGS_POWERSET = {
             targetType: "Own Pet (Alive)",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 30.0,
             effects: {
                 accuracy: 1.0,
                 range: 30.0,
                 recharge: 10.0,
                 endurance: 11.375,
-                cast: 1.67,
-                buffDuration: 7.0
+                cast: 1.67
             }
         }
     ]

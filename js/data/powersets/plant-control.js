@@ -1,11 +1,11 @@
 /**
- * Plant Control - Blaster Primary
- * Extracted from raw_data_homecoming with updated converter
+ * Plant Control
+ * Extracted from raw_data_homecoming with redirect and entity support
  */
 
 const PLANT_CONTROL_POWERSET = {
     name: "Plant Control",
-    category: "Blaster_RANGED",
+    category: "UNKNOWN",
     description: "Plant Control powerset",
     icon: "plant-control_set.png",
     powers: [
@@ -33,17 +33,24 @@ const PLANT_CONTROL_POWERSET = {
                         {
                             type: "Lethal",
                             scale: 0.51,
-                            ticks: 4},
-        {type: "Smashing",
+                            ticks: 4
+                        },
+                        {
+                            type: "Smashing",
                             scale: 0.31000000000000005,
                             ticks: 4
                         }
                     ]
                 },
-                buffDuration: 9.2
+                immobilize: 1.0,
+                resistanceDebuff: 100.0,
+                duration: 15.0,
+                knockback: 1.0,
+                movementDebuff: 1.6
             }
         },
-        {name: "Strangler",
+        {
+            name: "Strangler",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -66,10 +73,11 @@ const PLANT_CONTROL_POWERSET = {
                     scale: 1.0907,
                     ticks: 4
                 },
-                buffDuration: 4.2
+                hold: 4.0
             }
         },
-        {name: "Roots",
+        {
+            name: "Roots",
             available: 1,
             tier: 1,
             maxSlots: 6,
@@ -82,6 +90,7 @@ const PLANT_CONTROL_POWERSET = {
             targetType: "Foe (Alive)",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 30.0,
             effects: {
                 accuracy: 0.9,
                 range: 80.0,
@@ -93,17 +102,24 @@ const PLANT_CONTROL_POWERSET = {
                         {
                             type: "Lethal",
                             scale: 0.385,
-                            ticks: 2},
-        {type: "Smashing",
+                            ticks: 2
+                        },
+                        {
+                            type: "Smashing",
                             scale: 0.185,
                             ticks: 2
                         }
                     ]
                 },
-                buffDuration: 5.2
+                immobilize: 1.0,
+                resistanceDebuff: 100.0,
+                duration: 12.0,
+                knockback: 1.0,
+                movementDebuff: 1.6
             }
         },
-        {name: "Spore Burst",
+        {
+            name: "Spore Burst",
             available: 5,
             tier: 3,
             maxSlots: 6,
@@ -116,15 +132,18 @@ const PLANT_CONTROL_POWERSET = {
             targetType: "Foe (Alive)",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 25.0,
             effects: {
                 accuracy: 1.0,
                 range: 70.0,
                 recharge: 45.0,
                 endurance: 13.0,
-                cast: 1.37
+                cast: 1.37,
+                sleep: 4.0
             }
         },
-        {name: "Seeds of Confusion",
+        {
+            name: "Seeds of Confusion",
             available: 7,
             tier: 3,
             maxSlots: 6,
@@ -138,6 +157,7 @@ const PLANT_CONTROL_POWERSET = {
             effectArea: "Cone",
             maxTargets: 16,
             arc: 1.0472,
+            radius: 50.0,
             effects: {
                 accuracy: 1.0,
                 range: 50.0,
@@ -146,7 +166,8 @@ const PLANT_CONTROL_POWERSET = {
                 cast: 1.07
             }
         },
-        {name: "Spirit Tree",
+        {
+            name: "Spirit Tree",
             available: 11,
             tier: 4,
             maxSlots: 6,
@@ -164,10 +185,12 @@ const PLANT_CONTROL_POWERSET = {
                 recharge: 120.0,
                 endurance: 13.0,
                 cast: 1.67,
-                buffDuration: 60.0
+                regenerationDebuff: 1.5,
+                duration: 60.0
             }
         },
-        {name: "Vines",
+        {
+            name: "Vines",
             available: 17,
             tier: 4,
             maxSlots: 6,
@@ -187,7 +210,8 @@ const PLANT_CONTROL_POWERSET = {
                 cast: 2.1
             }
         },
-        {name: "Carrion Creepers",
+        {
+            name: "Carrion Creepers",
             available: 21,
             tier: 5,
             maxSlots: 6,
@@ -204,11 +228,11 @@ const PLANT_CONTROL_POWERSET = {
                 range: 80.0,
                 recharge: 360.0,
                 endurance: 26.0,
-                cast: 1.17,
-                buffDuration: 120.0
+                cast: 1.17
             }
         },
-        {name: "Fly Trap",
+        {
+            name: "Fly Trap",
             available: 25,
             tier: 5,
             maxSlots: 6,

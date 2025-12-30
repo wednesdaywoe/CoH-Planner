@@ -1,15 +1,16 @@
 /**
- * Assault Rifle - Blaster Primary
- * Extracted from raw_data_homecoming with updated converter
+ * Assault Rifle
+ * Extracted from raw_data_homecoming with redirect and entity support
  */
 
 const ASSAULT_RIFLE_POWERSET = {
     name: "Assault Rifle",
-    category: "Blaster_RANGED",
+    category: "UNKNOWN",
     description: "Assault Rifle powerset",
     icon: "assault-rifle_set.png",
     powers: [
-        {name: "Burst",
+        {
+            name: "Burst",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -32,11 +33,12 @@ const ASSAULT_RIFLE_POWERSET = {
                     scale: 0.6859,
                     ticks: 3
                 },
-                buffDuration: 0.91,
-                defenseDebuff: 1.0
+                defenseDebuff: 1.0,
+                duration: 8.0
             }
         },
-        {name: "Slug",
+        {
+            name: "Slug",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -60,7 +62,8 @@ const ASSAULT_RIFLE_POWERSET = {
                 }
             }
         },
-        {name: "Buckshot",
+        {
+            name: "Buckshot",
             available: 1,
             tier: 1,
             maxSlots: 6,
@@ -74,6 +77,7 @@ const ASSAULT_RIFLE_POWERSET = {
             effectArea: "Cone",
             maxTargets: 10,
             arc: 0.5236,
+            radius: 40.0,
             effects: {
                 accuracy: 1.05,
                 range: 40.0,
@@ -86,7 +90,8 @@ const ASSAULT_RIFLE_POWERSET = {
                 }
             }
         },
-        {name: "M30 Grenade",
+        {
+            name: "M30 Grenade",
             available: 5,
             tier: 3,
             maxSlots: 6,
@@ -99,6 +104,7 @@ const ASSAULT_RIFLE_POWERSET = {
             targetType: "Foe (Alive)",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 15.0,
             effects: {
                 accuracy: 1.05,
                 range: 80.0,
@@ -111,7 +117,8 @@ const ASSAULT_RIFLE_POWERSET = {
                             type: "Fire",
                             scale: 2.0032
                         },
-        {type: "Lethal",
+                        {
+                            type: "Lethal",
                             scale: 1.7788
                         }
                     ],
@@ -119,7 +126,8 @@ const ASSAULT_RIFLE_POWERSET = {
                 }
             }
         },
-        {name: "Beanbag",
+        {
+            name: "Beanbag",
             available: 7,
             tier: 3,
             maxSlots: 6,
@@ -144,7 +152,8 @@ const ASSAULT_RIFLE_POWERSET = {
                 stun: 3.0
             }
         },
-        {name: "Sniper Rifle",
+        {
+            name: "Sniper Rifle",
             available: 11,
             tier: 4,
             maxSlots: 6,
@@ -164,7 +173,8 @@ const ASSAULT_RIFLE_POWERSET = {
                 cast: 1.17
             }
         },
-        {name: "Flamethrower",
+        {
+            name: "Flamethrower",
             available: 17,
             tier: 4,
             maxSlots: 6,
@@ -178,6 +188,7 @@ const ASSAULT_RIFLE_POWERSET = {
             effectArea: "Cone",
             maxTargets: 10,
             arc: 0.7854,
+            radius: 40.0,
             effects: {
                 accuracy: 1.3,
                 range: 40.0,
@@ -188,11 +199,11 @@ const ASSAULT_RIFLE_POWERSET = {
                     type: "Fire",
                     scale: 0.6251,
                     ticks: 4
-                },
-                buffDuration: 4.7
+                }
             }
         },
-        {name: "Ignite",
+        {
+            name: "Ignite",
             available: 21,
             tier: 5,
             maxSlots: 6,
@@ -218,11 +229,11 @@ const ASSAULT_RIFLE_POWERSET = {
                     type: "Fire",
                     scale: 0.19490000000000002,
                     ticks: 21
-                },
-                buffDuration: 5.25
+                }
             }
         },
-        {name: "Full Auto",
+        {
+            name: "Full Auto",
             available: 25,
             tier: 5,
             maxSlots: 6,
@@ -236,6 +247,7 @@ const ASSAULT_RIFLE_POWERSET = {
             effectArea: "Cone",
             maxTargets: 10,
             arc: 1.5708,
+            radius: 80.0,
             effects: {
                 accuracy: 1.35,
                 range: 80.0,
@@ -250,8 +262,7 @@ const ASSAULT_RIFLE_POWERSET = {
                     type: "Lethal",
                     scale: 0.4386,
                     ticks: 10
-                },
-                buffDuration: 2.0
+                }
             }
         }
     ]

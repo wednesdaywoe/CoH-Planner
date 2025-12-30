@@ -1,15 +1,16 @@
 /**
- * Earth Control - Blaster Primary
- * Extracted from raw_data_homecoming with updated converter
+ * Earth Control
+ * Extracted from raw_data_homecoming with redirect and entity support
  */
 
 const EARTH_CONTROL_POWERSET = {
     name: "Earth Control",
-    category: "Blaster_RANGED",
+    category: "UNKNOWN",
     description: "Earth Control powerset",
     icon: "earth-control_set.png",
     powers: [
-        {name: "Fossilize",
+        {
+            name: "Fossilize",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -31,11 +32,15 @@ const EARTH_CONTROL_POWERSET = {
                     type: "Smashing",
                     scale: 5.2536000000000005
                 },
+                hold: 4.0,
                 defenseDebuff: 2.0,
-                buffDuration: 12.0
+                duration: 12.0,
+                resistanceDebuff: 100.0,
+                knockback: 1.0
             }
         },
-        {name: "Stone Prison",
+        {
+            name: "Stone Prison",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -58,11 +63,16 @@ const EARTH_CONTROL_POWERSET = {
                     scale: 0.8263,
                     ticks: 4
                 },
-                buffDuration: 9.2,
-                defenseDebuff: 2.0
+                immobilize: 1.0,
+                resistanceDebuff: 100.0,
+                duration: 15.0,
+                knockback: 1.0,
+                defenseDebuff: 2.0,
+                movementDebuff: 1.6
             }
         },
-        {name: "Stone Cages",
+        {
+            name: "Stone Cages",
             available: 1,
             tier: 1,
             maxSlots: 6,
@@ -75,6 +85,7 @@ const EARTH_CONTROL_POWERSET = {
             targetType: "Foe (Alive)",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 30.0,
             effects: {
                 accuracy: 0.9,
                 range: 80.0,
@@ -86,11 +97,16 @@ const EARTH_CONTROL_POWERSET = {
                     scale: 0.3385,
                     ticks: 2
                 },
-                buffDuration: 5.2,
-                defenseDebuff: 2.0
+                immobilize: 4.0,
+                resistanceDebuff: 100.0,
+                duration: 12.0,
+                knockback: 1.0,
+                defenseDebuff: 2.0,
+                movementDebuff: 1.6
             }
         },
-        {name: "Quicksand",
+        {
+            name: "Quicksand",
             available: 5,
             tier: 3,
             maxSlots: 6,
@@ -108,10 +124,13 @@ const EARTH_CONTROL_POWERSET = {
                 recharge: 30.0,
                 endurance: 7.8,
                 cast: 3.1,
-                buffDuration: 45.0
+                movementDebuff: 1.0,
+                duration: 0.5,
+                defenseDebuff: 2.5
             }
         },
-        {name: "Salt Crystals",
+        {
+            name: "Salt Crystals",
             available: 7,
             tier: 3,
             maxSlots: 6,
@@ -124,16 +143,19 @@ const EARTH_CONTROL_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 30.0,
             effects: {
                 accuracy: 1.0,
                 recharge: 45.0,
                 endurance: 15.6,
                 cast: 1.07,
+                sleep: 4.0,
                 defenseDebuff: 2.0,
-                buffDuration: 15.0
+                duration: 15.0
             }
         },
-        {name: "Stalagmites",
+        {
+            name: "Stalagmites",
             available: 11,
             tier: 4,
             maxSlots: 6,
@@ -146,6 +168,7 @@ const EARTH_CONTROL_POWERSET = {
             targetType: "Foe (Alive)",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 25.0,
             effects: {
                 accuracy: 0.8,
                 range: 70.0,
@@ -158,10 +181,11 @@ const EARTH_CONTROL_POWERSET = {
                 },
                 stun: 4.0,
                 defenseDebuff: 2.0,
-                buffDuration: 12.0
+                duration: 12.0
             }
         },
-        {name: "Earthquake",
+        {
+            name: "Earthquake",
             available: 17,
             tier: 4,
             maxSlots: 6,
@@ -179,10 +203,15 @@ const EARTH_CONTROL_POWERSET = {
                 recharge: 90.0,
                 endurance: 10.4,
                 cast: 2.03,
-                buffDuration: 30.0
+                knockback: 1.0,
+                defenseDebuff: 1.0,
+                duration: 0.45,
+                tohitDebuff: 1.0,
+                movementDebuff: 500.0
             }
         },
-        {name: "Volcanic Gasses",
+        {
+            name: "Volcanic Gasses",
             available: 21,
             tier: 5,
             maxSlots: 6,
@@ -199,11 +228,11 @@ const EARTH_CONTROL_POWERSET = {
                 range: 60.0,
                 recharge: 240.0,
                 endurance: 18.2,
-                cast: 1.17,
-                buffDuration: 60.0
+                cast: 1.17
             }
         },
-        {name: "Animate Stone",
+        {
+            name: "Animate Stone",
             available: 25,
             tier: 5,
             maxSlots: 6,

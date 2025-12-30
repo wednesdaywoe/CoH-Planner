@@ -1,11 +1,11 @@
 /**
- * Willpower - Blaster Primary
- * Extracted from raw_data_homecoming with updated converter
+ * Willpower
+ * Extracted from raw_data_homecoming with redirect and entity support
  */
 
 const WILLPOWER_POWERSET = {
     name: "Willpower",
-    category: "Blaster_RANGED",
+    category: "UNKNOWN",
     description: "Willpower powerset",
     icon: "willpower_set.png",
     powers: [
@@ -24,10 +24,12 @@ const WILLPOWER_POWERSET = {
             effectArea: "SingleTarget",
             effects: {
                 accuracy: 1.0,
-                buffDuration: 10.25
+                resistanceBuff: 0.75,
+                duration: 10.25
             }
         },
-        {name: "Mind Over Body",
+        {
+            name: "Mind Over Body",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -44,10 +46,12 @@ const WILLPOWER_POWERSET = {
                 recharge: 2.0,
                 endurance: 0.104,
                 cast: 0.67,
-                buffDuration: 0.75
+                resistanceBuff: 2.0,
+                duration: 0.75
             }
         },
-        {name: "Fast Healing",
+        {
+            name: "Fast Healing",
             available: 3,
             tier: 2,
             maxSlots: 6,
@@ -61,10 +65,13 @@ const WILLPOWER_POWERSET = {
             effectArea: "SingleTarget",
             effects: {
                 accuracy: 1.0,
-                buffDuration: 10.0
+                regenerationBuff: 0.75,
+                duration: 10.0,
+                resistanceBuff: 0.75
             }
         },
-        {name: "Indomitable Will",
+        {
+            name: "Indomitable Will",
             available: 9,
             tier: 3,
             maxSlots: 6,
@@ -81,14 +88,27 @@ const WILLPOWER_POWERSET = {
                 recharge: 4.0,
                 endurance: 0.104,
                 cast: 0.73,
+                hold: 1.0,
+                holdDuration: 0.75,
                 stun: 1.0,
                 stunDuration: 0.75,
-                buffDuration: 0.75,
+                sleep: 1.0,
+                sleepDuration: 0.75,
+                confuse: 1.0,
+                confuseDuration: 0.75,
+                immobilize: 1.0,
+                immobilizeDuration: 0.75,
+                resistanceBuff: 0.5,
+                duration: 0.75,
+                knockback: 1.0,
+                defenseBuff: 0.3,
                 tohitBuff: 0.3,
-                defenseBuff: 0.3
+                rechargeBuff: 0.3,
+                movementBuff: 0.5
             }
         },
-        {name: "Rise to the Challenge",
+        {
+            name: "Rise to the Challenge",
             available: 15,
             tier: 4,
             maxSlots: 6,
@@ -101,16 +121,19 @@ const WILLPOWER_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 10,
+            radius: 8.0,
             effects: {
                 accuracy: 1.0,
                 recharge: 10.0,
                 endurance: 0.208,
                 cast: 3.0,
                 tohitDebuff: 0.5,
-                buffDuration: 1.0
+                duration: 1.0,
+                regenerationBuff: 1.0
             }
         },
-        {name: "Quick Recovery",
+        {
+            name: "Quick Recovery",
             available: 19,
             tier: 4,
             maxSlots: 6,
@@ -124,10 +147,12 @@ const WILLPOWER_POWERSET = {
             effectArea: "SingleTarget",
             effects: {
                 accuracy: 1.0,
-                buffDuration: 10.25
+                recoveryBuff: 0.3,
+                duration: 10.25
             }
         },
-        {name: "Heightened Senses",
+        {
+            name: "Heightened Senses",
             available: 23,
             tier: 5,
             maxSlots: 6,
@@ -144,11 +169,13 @@ const WILLPOWER_POWERSET = {
                 recharge: 2.0,
                 endurance: 0.104,
                 cast: 0.67,
-                buffDuration: 0.75,
+                resistanceBuff: 0.5,
+                duration: 0.75,
                 defenseBuff: 0.5
             }
         },
-        {name: "Resurgence",
+        {
+            name: "Resurgence",
             available: 27,
             tier: 5,
             maxSlots: 6,
@@ -164,12 +191,15 @@ const WILLPOWER_POWERSET = {
                 accuracy: 1.0,
                 recharge: 300.0,
                 cast: 1.5,
-                buffDuration: 0.5,
-                tohitBuff: 3.0,
+                healing: 0.8,
+                recoveryDebuff: 2.0,
+                rechargeDebuff: 1.0,
+                duration: 90.0,
                 tohitDebuff: 3.0
             }
         },
-        {name: "Strength of Will",
+        {
+            name: "Strength of Will",
             available: 29,
             tier: 5,
             maxSlots: 6,
@@ -191,34 +221,57 @@ const WILLPOWER_POWERSET = {
                         {
                             type: "Smashing",
                             scale: 2.5,
-                            ticks: 60},
-        {type: "Lethal",
+                            ticks: 60
+                        },
+                        {
+                            type: "Lethal",
                             scale: 2.5,
-                            ticks: 60},
-        {type: "Fire",
+                            ticks: 60
+                        },
+                        {
+                            type: "Fire",
                             scale: 1.25,
-                            ticks: 60},
-        {type: "Cold",
+                            ticks: 60
+                        },
+                        {
+                            type: "Cold",
                             scale: 1.25,
-                            ticks: 60},
-        {type: "Energy",
+                            ticks: 60
+                        },
+                        {
+                            type: "Energy",
                             scale: 1.25,
-                            ticks: 60},
-        {type: "Negative",
+                            ticks: 60
+                        },
+                        {
+                            type: "Negative",
                             scale: 1.25,
-                            ticks: 60},
-        {type: "Psionic",
+                            ticks: 60
+                        },
+                        {
+                            type: "Psionic",
                             scale: 1.25,
-                            ticks: 60},
-        {type: "Toxic",
+                            ticks: 60
+                        },
+                        {
+                            type: "Toxic",
                             scale: 1.25,
                             ticks: 60
                         }
                     ]
                 },
-                buffDuration: 120.0,
+                resistanceBuff: 5.0,
+                duration: 120.0,
+                knockback: 1.0,
+                recoveryBuff: 0.3,
                 stun: 1.0,
-                stunDuration: 120.0
+                stunDuration: 120.0,
+                immobilize: 1.0,
+                immobilizeDuration: 120.0,
+                sleep: 1.0,
+                sleepDuration: 120.0,
+                hold: 1.0,
+                holdDuration: 120.0
             }
         }
     ]

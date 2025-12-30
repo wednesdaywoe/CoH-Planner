@@ -1,15 +1,46 @@
 /**
- * Fire Blast - Blaster Primary
- * Extracted from raw_data_homecoming with updated converter
+ * Fire Blast
+ * Extracted from raw_data_homecoming with redirect and entity support
  */
 
 const FIRE_BLAST_POWERSET = {
     name: "Fire Blast",
-    category: "Blaster_RANGED",
+    category: "UNKNOWN",
     description: "Fire Blast powerset",
     icon: "fire-blast_set.png",
     powers: [
-        {name: "Flares",
+        {
+            name: "Fire Blast",
+            available: 0,
+            tier: 1,
+            maxSlots: 6,
+            allowedEnhancements: ["EnduranceReduction", "Range", "Recharge", "Damage", "Accuracy"],
+            allowedSetCategories: ["Blaster Archetype Sets", "Ranged Damage", "Universal Damage Sets"],
+            description: "Sends a Blast of Fire at a targeted foe and sets the target on fire for a short period of time. Slower recharge rate than Flares, but more damage.",
+            shortHelp: "Ranged, DMG(Fire)",
+            icon: "fireblast_fireblast.png",
+            powerType: "Click",
+            targetType: "Foe (Alive)",
+            effectArea: "SingleTarget",
+            effects: {
+                accuracy: 1.0,
+                range: 80.0,
+                recharge: 4.0,
+                endurance: 5.2,
+                cast: 1.2,
+                damage: {
+                    type: "Fire",
+                    scale: 2.4002
+                },
+                dotDamage: {
+                    type: "Fire",
+                    scale: 0.15,
+                    ticks: 3
+                }
+            }
+        },
+        {
+            name: "Flares",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -35,11 +66,11 @@ const FIRE_BLAST_POWERSET = {
                     type: "Fire",
                     scale: 0.15,
                     ticks: 3
-                },
-                buffDuration: 3.1
+                }
             }
         },
-        {name: "Fire Ball",
+        {
+            name: "Fire Ball",
             available: 1,
             tier: 1,
             maxSlots: 6,
@@ -52,6 +83,7 @@ const FIRE_BLAST_POWERSET = {
             targetType: "Foe (Alive)",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 15.0,
             effects: {
                 accuracy: 1.0,
                 range: 80.0,
@@ -64,7 +96,8 @@ const FIRE_BLAST_POWERSET = {
                             type: "Fire",
                             scale: 1.1641
                         },
-        {type: "Smashing",
+                        {
+                            type: "Smashing",
                             scale: 0.2
                         }
                     ],
@@ -74,11 +107,11 @@ const FIRE_BLAST_POWERSET = {
                     type: "Fire",
                     scale: 0.15,
                     ticks: 2
-                },
-                buffDuration: 2.1
+                }
             }
         },
-        {name: "Rain of Fire",
+        {
+            name: "Rain of Fire",
             available: 5,
             tier: 3,
             maxSlots: 6,
@@ -96,10 +129,16 @@ const FIRE_BLAST_POWERSET = {
                 recharge: 60.0,
                 endurance: 26.0,
                 cast: 2.03,
-                buffDuration: 15.0
+                damage: {
+                    type: "Fire",
+                    scale: 0.06470000000000001
+                },
+                movementDebuff: 1.0,
+                duration: 0.5
             }
         },
-        {name: "Fire Breath",
+        {
+            name: "Fire Breath",
             available: 7,
             tier: 3,
             maxSlots: 6,
@@ -113,6 +152,7 @@ const FIRE_BLAST_POWERSET = {
             effectArea: "Cone",
             maxTargets: 10,
             arc: 0.5236,
+            radius: 40.0,
             effects: {
                 accuracy: 1.2,
                 range: 40.0,
@@ -123,11 +163,11 @@ const FIRE_BLAST_POWERSET = {
                     type: "Fire",
                     scale: 2.0037000000000003,
                     ticks: 2
-                },
-                buffDuration: 2.1
+                }
             }
         },
-        {name: "Aim",
+        {
+            name: "Aim",
             available: 11,
             tier: 4,
             maxSlots: 6,
@@ -145,10 +185,11 @@ const FIRE_BLAST_POWERSET = {
                 endurance: 5.2,
                 cast: 1.17,
                 tohitBuff: 5.0,
-                buffDuration: 10.0
+                duration: 10.0
             }
         },
-        {name: "Blaze",
+        {
+            name: "Blaze",
             available: 17,
             tier: 4,
             maxSlots: 6,
@@ -174,11 +215,11 @@ const FIRE_BLAST_POWERSET = {
                     type: "Fire",
                     scale: 0.225,
                     ticks: 4
-                },
-                buffDuration: 4.1
+                }
             }
         },
-        {name: "Blazing Bolt",
+        {
+            name: "Blazing Bolt",
             available: 21,
             tier: 5,
             maxSlots: 6,
@@ -198,7 +239,8 @@ const FIRE_BLAST_POWERSET = {
                 cast: 1.67
             }
         },
-        {name: "Inferno",
+        {
+            name: "Inferno",
             available: 25,
             tier: 5,
             maxSlots: 6,
@@ -211,6 +253,7 @@ const FIRE_BLAST_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 25.0,
             effects: {
                 accuracy: 1.4,
                 recharge: 145.0,
@@ -222,7 +265,8 @@ const FIRE_BLAST_POWERSET = {
                             type: "Fire",
                             scale: 4.4065
                         },
-        {type: "Smashing",
+                        {
+                            type: "Smashing",
                             scale: 1.0
                         }
                     ],
@@ -232,8 +276,7 @@ const FIRE_BLAST_POWERSET = {
                     type: "Fire",
                     scale: 0.3,
                     ticks: 8
-                },
-                buffDuration: 8.1
+                }
             }
         }
     ]

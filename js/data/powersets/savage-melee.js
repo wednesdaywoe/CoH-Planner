@@ -1,11 +1,11 @@
 /**
- * Savage Melee - Blaster Primary
- * Extracted from raw_data_homecoming with updated converter
+ * Savage Melee
+ * Extracted from raw_data_homecoming with redirect and entity support
  */
 
 const SAVAGE_MELEE_POWERSET = {
     name: "Savage Melee",
-    category: "Blaster_RANGED",
+    category: "UNKNOWN",
     description: "Savage Melee powerset",
     icon: "savage-melee_set.png",
     powers: [
@@ -34,16 +34,19 @@ const SAVAGE_MELEE_POWERSET = {
                             type: "Lethal",
                             scale: 2.5788
                         },
-        {type: "Fire",
+                        {
+                            type: "Fire",
                             scale: 0.522
                         }
                     ],
                     scale: 3.1008000000000004
                 },
-                buffDuration: 10.0
+                movementDebuff: 0.7,
+                duration: 10.0
             }
         },
-        {name: "Savage Strike",
+        {
+            name: "Savage Strike",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -66,17 +69,19 @@ const SAVAGE_MELEE_POWERSET = {
                         {
                             type: "Lethal",
                             scale: 0.9101,
-                            ticks: 1},
-        {type: "Fire",
+                            ticks: 1
+                        },
+                        {
+                            type: "Fire",
                             scale: 0.171,
                             ticks: 1
                         }
                     ]
-                },
-                buffDuration: 0.4
+                }
             }
         },
-        {name: "Shred",
+        {
+            name: "Shred",
             available: 1,
             tier: 1,
             maxSlots: 6,
@@ -90,6 +95,7 @@ const SAVAGE_MELEE_POWERSET = {
             effectArea: "Cone",
             maxTargets: 5,
             arc: 1.3963,
+            radius: 7.0,
             effects: {
                 accuracy: 1.0,
                 range: 7.0,
@@ -101,18 +107,21 @@ const SAVAGE_MELEE_POWERSET = {
                         {
                             type: "Lethal",
                             scale: 0.5091,
-                            ticks: 5},
-        {type: "Fire",
+                            ticks: 5
+                        },
+                        {
+                            type: "Fire",
                             scale: 0.0946,
                             ticks: 5
                         }
                     ]
                 },
-                buffDuration: 2.0,
-                defenseDebuff: 1.2
+                defenseDebuff: 1.2,
+                duration: 10.0
             }
         },
-        {name: "Blood Thirst",
+        {
+            name: "Blood Thirst",
             available: 5,
             tier: 3,
             maxSlots: 6,
@@ -130,10 +139,11 @@ const SAVAGE_MELEE_POWERSET = {
                 endurance: 7.8,
                 cast: 2.0,
                 tohitBuff: 1.0,
-                buffDuration: 15.0
+                duration: 15.0
             }
         },
-        {name: "Vicious Slash",
+        {
+            name: "Vicious Slash",
             available: 7,
             tier: 3,
             maxSlots: 6,
@@ -157,7 +167,8 @@ const SAVAGE_MELEE_POWERSET = {
                             type: "Lethal",
                             scale: 3.7289000000000003
                         },
-        {type: "Fire",
+                        {
+                            type: "Fire",
                             scale: 0.81
                         }
                     ],
@@ -165,7 +176,8 @@ const SAVAGE_MELEE_POWERSET = {
                 }
             }
         },
-        {name: "Confront",
+        {
+            name: "Confront",
             available: 11,
             tier: 4,
             maxSlots: 6,
@@ -181,11 +193,11 @@ const SAVAGE_MELEE_POWERSET = {
                 accuracy: 1.0,
                 range: 70.0,
                 recharge: 3.0,
-                cast: 1.67,
-                buffDuration: 12.0
+                cast: 1.67
             }
         },
-        {name: "Rending Flurry",
+        {
+            name: "Rending Flurry",
             available: 17,
             tier: 4,
             maxSlots: 6,
@@ -198,6 +210,7 @@ const SAVAGE_MELEE_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 10,
+            radius: 8.0,
             effects: {
                 accuracy: 1.0,
                 recharge: 14.0,
@@ -205,7 +218,8 @@ const SAVAGE_MELEE_POWERSET = {
                 cast: 2.17
             }
         },
-        {name: "Hemorrhage",
+        {
+            name: "Hemorrhage",
             available: 21,
             tier: 5,
             maxSlots: 6,
@@ -229,7 +243,8 @@ const SAVAGE_MELEE_POWERSET = {
                             type: "Lethal",
                             scale: 1.4498
                         },
-        {type: "Fire",
+                        {
+                            type: "Fire",
                             scale: 0.351
                         }
                     ],
@@ -239,11 +254,11 @@ const SAVAGE_MELEE_POWERSET = {
                     type: "Fire",
                     scale: 0.1638,
                     ticks: 4
-                },
-                buffDuration: 4.1
+                }
             }
         },
-        {name: "Savage Leap",
+        {
+            name: "Savage Leap",
             available: 25,
             tier: 5,
             maxSlots: 6,

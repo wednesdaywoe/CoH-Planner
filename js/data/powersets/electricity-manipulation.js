@@ -1,11 +1,11 @@
 /**
- * Electricity Manipulation - Blaster Primary
- * Extracted from raw_data_homecoming with updated converter
+ * Electricity Manipulation
+ * Extracted from raw_data_homecoming with redirect and entity support
  */
 
 const ELECTRICITY_MANIPULATION_POWERSET = {
     name: "Electricity Manipulation",
-    category: "Blaster_RANGED",
+    category: "UNKNOWN",
     description: "Electricity Manipulation powerset",
     icon: "electricity-manipulation_set.png",
     powers: [
@@ -34,16 +34,19 @@ const ELECTRICITY_MANIPULATION_POWERSET = {
                             type: "Energy",
                             scale: 2.3810000000000002
                         },
-        {type: "Smashing",
+                        {
+                            type: "Smashing",
                             scale: 0.96
                         }
                     ],
                     scale: 3.341
                 },
-                buffDuration: 2.0
+                sleep: 3.0,
+                recoveryDebuff: 1.0
             }
         },
-        {name: "Electric Fence",
+        {
+            name: "Electric Fence",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -66,10 +69,15 @@ const ELECTRICITY_MANIPULATION_POWERSET = {
                     scale: 0.4758,
                     ticks: 4
                 },
-                buffDuration: 8.2
+                immobilize: 3.0,
+                recoveryDebuff: 1.0,
+                resistanceDebuff: 100.0,
+                duration: 15.0,
+                knockback: 1.0
             }
         },
-        {name: "Build Up",
+        {
+            name: "Build Up",
             available: 3,
             tier: 2,
             maxSlots: 6,
@@ -87,10 +95,11 @@ const ELECTRICITY_MANIPULATION_POWERSET = {
                 endurance: 5.2,
                 cast: 1.17,
                 tohitBuff: 2.0,
-                buffDuration: 10.0
+                duration: 10.0
             }
         },
-        {name: "Havoc Punch",
+        {
+            name: "Havoc Punch",
             available: 9,
             tier: 3,
             maxSlots: 6,
@@ -114,16 +123,20 @@ const ELECTRICITY_MANIPULATION_POWERSET = {
                             type: "Energy",
                             scale: 4.01
                         },
-        {type: "Smashing",
+                        {
+                            type: "Smashing",
                             scale: 0.6
                         }
                     ],
                     scale: 4.609999999999999
                 },
-                buffDuration: 4.0
+                sleep: 3.0,
+                knockback: 1.0,
+                recoveryDebuff: 1.0
             }
         },
-        {name: "Thunder Strike",
+        {
+            name: "Thunder Strike",
             available: 15,
             tier: 4,
             maxSlots: 6,
@@ -136,16 +149,17 @@ const ELECTRICITY_MANIPULATION_POWERSET = {
             targetType: "Foe (Alive)",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 10.0,
             effects: {
                 accuracy: 1.0,
                 range: 7.0,
                 recharge: 20.0,
                 endurance: 18.512,
-                cast: 2.53,
-                buffDuration: 10.8
+                cast: 2.53
             }
         },
-        {name: "Dynamo",
+        {
+            name: "Dynamo",
             available: 19,
             tier: 4,
             maxSlots: 6,
@@ -158,6 +172,7 @@ const ELECTRICITY_MANIPULATION_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 10,
+            radius: 20.0,
             effects: {
                 accuracy: 1.0,
                 recharge: 10.0,
@@ -168,7 +183,8 @@ const ELECTRICITY_MANIPULATION_POWERSET = {
                 }
             }
         },
-        {name: "Power Sink",
+        {
+            name: "Power Sink",
             available: 23,
             tier: 5,
             maxSlots: 6,
@@ -181,15 +197,17 @@ const ELECTRICITY_MANIPULATION_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 10,
+            radius: 12.0,
             effects: {
                 accuracy: 1.0,
                 recharge: 60.0,
                 endurance: 13.0,
                 cast: 2.03,
-                buffDuration: 4.0
+                recoveryDebuff: 1.0
             }
         },
-        {name: "Force of Thunder",
+        {
+            name: "Force of Thunder",
             available: 27,
             tier: 5,
             maxSlots: 6,
@@ -202,15 +220,17 @@ const ELECTRICITY_MANIPULATION_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 10,
+            radius: 15.0,
             effects: {
                 accuracy: 0.8,
                 recharge: 30.0,
                 endurance: 14.0,
                 cast: 1.23,
-                buffDuration: 8.73
+                knockback: 1.0
             }
         },
-        {name: "Shocking Grasp",
+        {
+            name: "Shocking Grasp",
             available: 29,
             tier: 5,
             maxSlots: 6,
@@ -233,7 +253,8 @@ const ELECTRICITY_MANIPULATION_POWERSET = {
                     scale: 0.5832999999999999,
                     ticks: 5
                 },
-                buffDuration: 5.1
+                hold: 3.0,
+                recoveryDebuff: 1.0
             }
         }
     ]

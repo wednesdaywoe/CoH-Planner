@@ -1,11 +1,11 @@
 /**
- * Fiery Aura - Blaster Primary
- * Extracted from raw_data_homecoming with updated converter
+ * Fiery Aura
+ * Extracted from raw_data_homecoming with redirect and entity support
  */
 
 const FIERY_AURA_POWERSET = {
     name: "Fiery Aura",
-    category: "Blaster_RANGED",
+    category: "UNKNOWN",
     description: "Fiery Aura powerset",
     icon: "fiery-aura_set.png",
     powers: [
@@ -23,6 +23,7 @@ const FIERY_AURA_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 10,
+            radius: 8.0,
             effects: {
                 accuracy: 1.0,
                 recharge: 4.0,
@@ -34,7 +35,8 @@ const FIERY_AURA_POWERSET = {
                 }
             }
         },
-        {name: "Fire Shield",
+        {
+            name: "Fire Shield",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -51,12 +53,14 @@ const FIERY_AURA_POWERSET = {
                 recharge: 2.0,
                 endurance: 0.13,
                 cast: 1.67,
-                buffDuration: 0.75,
+                resistanceBuff: 3.0,
+                duration: 0.75,
                 stun: 1.0,
                 stunDuration: 0.75
             }
         },
-        {name: "Phoenix Rising",
+        {
+            name: "Phoenix Rising",
             available: 0,
             tier: 1,
             maxSlots: 0,
@@ -69,11 +73,11 @@ const FIERY_AURA_POWERSET = {
             targetType: "Self",
             effectArea: "SingleTarget",
             effects: {
-                accuracy: 1.0,
-                buffDuration: 0.5
+                accuracy: 1.0
             }
         },
-        {name: "Healing Flames",
+        {
+            name: "Healing Flames",
             available: 3,
             tier: 2,
             maxSlots: 6,
@@ -95,10 +99,13 @@ const FIERY_AURA_POWERSET = {
                     scale: 2.0,
                     ticks: 30
                 },
-                buffDuration: 60.0
+                healing: 2.5,
+                resistanceBuff: 2.0,
+                duration: 60.0
             }
         },
-        {name: "Temperature Protection",
+        {
+            name: "Temperature Protection",
             available: 9,
             tier: 3,
             maxSlots: 6,
@@ -117,17 +124,25 @@ const FIERY_AURA_POWERSET = {
                         {
                             type: "Fire",
                             scale: 3.0,
-                            ticks: 5},
-        {type: "Cold",
+                            ticks: 5
+                        },
+                        {
+                            type: "Cold",
                             scale: 1.0,
                             ticks: 5
                         }
                     ]
                 },
-                buffDuration: 10.0
+                resistanceBuff: 0.2,
+                duration: 10.0,
+                rechargeBuff: 0.2,
+                movementBuff: 0.2,
+                regenerationBuff: 1.0,
+                knockback: 1.0
             }
         },
-        {name: "Plasma Shield",
+        {
+            name: "Plasma Shield",
             available: 15,
             tier: 4,
             maxSlots: 6,
@@ -144,12 +159,20 @@ const FIERY_AURA_POWERSET = {
                 recharge: 2.0,
                 endurance: 0.13,
                 cast: 3.0,
-                buffDuration: 0.75,
+                resistanceBuff: 0.5,
+                duration: 0.75,
+                hold: 1.0,
+                holdDuration: 0.75,
+                sleep: 1.0,
+                sleepDuration: 0.75,
+                defenseBuff: 0.3,
                 tohitBuff: 0.3,
-                defenseBuff: 0.3
+                rechargeBuff: 0.3,
+                movementBuff: 0.5
             }
         },
-        {name: "Consume",
+        {
+            name: "Consume",
             available: 19,
             tier: 4,
             maxSlots: 6,
@@ -162,15 +185,18 @@ const FIERY_AURA_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 10,
+            radius: 20.0,
             effects: {
                 accuracy: 1.0,
                 recharge: 180.0,
                 endurance: 0.52,
                 cast: 2.03,
-                buffDuration: 15.0
+                recoveryBuff: 0.05,
+                duration: 15.0
             }
         },
-        {name: "Burn",
+        {
+            name: "Burn",
             available: 23,
             tier: 5,
             maxSlots: 6,
@@ -183,6 +209,7 @@ const FIERY_AURA_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 5,
+            radius: 8.0,
             effects: {
                 accuracy: 1.0,
                 recharge: 25.0,
@@ -194,7 +221,8 @@ const FIERY_AURA_POWERSET = {
                 }
             }
         },
-        {name: "Fiery Embrace",
+        {
+            name: "Fiery Embrace",
             available: 27,
             tier: 5,
             maxSlots: 6,
@@ -210,8 +238,32 @@ const FIERY_AURA_POWERSET = {
                 accuracy: 1.0,
                 recharge: 180.0,
                 endurance: 7.8,
-                cast: 0.73,
-                buffDuration: 20.0
+                cast: 0.73
+            }
+        },
+        {
+            name: "Phoenix Rising",
+            available: 29,
+            tier: 5,
+            maxSlots: 6,
+            allowedEnhancements: ["Recharge", "Damage"],
+            allowedSetCategories: ["Endurance Modification", "Healing", "Melee AoE Damage", "Scrapper Archetype Sets", "Stuns", "Universal Damage Sets"],
+            description: "If you are defeated, you can rise from the ashes. The fiery resurrection blasts nearby foes with an explosion and knocks them down and Disorients them. You will revive with about half of your Hit Points and Endurance. Gift of the Phoenix will leave you invulnerable for a brief time, and protected from XP Debt for 90 seconds.<br><br>You can also use this power even if you have not been defeated, with weakend effects. The closer you are to being defeated, the stronger the effects will be. You need to be under 75% health to activate this power.<br><br><color #fcfc95>Damage: Extreme.</color><br><color #fcfc95>Recharge: Very Long.</color>",
+            shortHelp: "Self Rez, Special",
+            icon: "flamingshield_riseofthephoenix.png",
+            powerType: "Click",
+            targetType: "Self",
+            effectArea: "SingleTarget",
+            effects: {
+                accuracy: 1.0,
+                recharge: 300.0,
+                cast: 2.0,
+                damage: {
+                    type: "Fire",
+                    scale: 4.0
+                },
+                knockback: 1.0,
+                stun: 4.0
             }
         }
     ]

@@ -1,15 +1,16 @@
 /**
- * Mental Manipulation - Blaster Primary
- * Extracted from raw_data_homecoming with updated converter
+ * Mental Manipulation
+ * Extracted from raw_data_homecoming with redirect and entity support
  */
 
 const MENTAL_MANIPULATION_POWERSET = {
     name: "Mental Manipulation",
-    category: "Blaster_RANGED",
+    category: "UNKNOWN",
     description: "Mental Manipulation powerset",
     icon: "mental-manipulation_set.png",
     powers: [
-        {name: "Mind Probe",
+        {
+            name: "Mind Probe",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -31,10 +32,12 @@ const MENTAL_MANIPULATION_POWERSET = {
                     type: "Psionic",
                     scale: 3.1788999999999996
                 },
-                buffDuration: 6.0
+                rechargeDebuff: 0.4,
+                duration: 6.0
             }
         },
-        {name: "Subdual",
+        {
+            name: "Subdual",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -57,10 +60,11 @@ const MENTAL_MANIPULATION_POWERSET = {
                     scale: 0.5458000000000001,
                     ticks: 4
                 },
-                buffDuration: 9.2
+                immobilize: 3.0
             }
         },
-        {name: "World of Confusion",
+        {
+            name: "World of Confusion",
             available: 3,
             tier: 2,
             maxSlots: 6,
@@ -73,6 +77,7 @@ const MENTAL_MANIPULATION_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 10,
+            radius: 8.0,
             effects: {
                 accuracy: 1.0,
                 recharge: 10.0,
@@ -81,10 +86,12 @@ const MENTAL_MANIPULATION_POWERSET = {
                 damage: {
                     type: "Psionic",
                     scale: 0.12
-                }
+                },
+                confuse: 2.0
             }
         },
-        {name: "Psychic Scream",
+        {
+            name: "Psychic Scream",
             available: 9,
             tier: 3,
             maxSlots: 6,
@@ -98,6 +105,7 @@ const MENTAL_MANIPULATION_POWERSET = {
             effectArea: "Cone",
             maxTargets: 10,
             arc: 0.5236,
+            radius: 60.0,
             effects: {
                 accuracy: 1.0,
                 range: 60.0,
@@ -108,10 +116,12 @@ const MENTAL_MANIPULATION_POWERSET = {
                     type: "Psionic",
                     scale: 2.0434
                 },
-                buffDuration: 10.0
+                rechargeDebuff: 0.5,
+                duration: 10.0
             }
         },
-        {name: "Concentration",
+        {
+            name: "Concentration",
             available: 15,
             tier: 4,
             maxSlots: 6,
@@ -129,10 +139,11 @@ const MENTAL_MANIPULATION_POWERSET = {
                 endurance: 5.2,
                 cast: 1.17,
                 tohitBuff: 2.0,
-                buffDuration: 10.0
+                duration: 10.0
             }
         },
-        {name: "Drain Psyche",
+        {
+            name: "Drain Psyche",
             available: 19,
             tier: 4,
             maxSlots: 6,
@@ -145,15 +156,21 @@ const MENTAL_MANIPULATION_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 10,
+            radius: 10.0,
             effects: {
                 accuracy: 1.0,
                 recharge: 120.0,
                 endurance: 13.0,
                 cast: 1.33,
-                buffDuration: 30.0
+                regenerationBuff: 0.75,
+                duration: 30.0,
+                recoveryBuff: 0.75,
+                regenerationDebuff: 5.0,
+                recoveryDebuff: 0.8
             }
         },
-        {name: "Scare",
+        {
+            name: "Scare",
             available: 23,
             tier: 5,
             maxSlots: 6,
@@ -170,11 +187,11 @@ const MENTAL_MANIPULATION_POWERSET = {
                 range: 60.0,
                 recharge: 20.0,
                 endurance: 10.4,
-                cast: 2.67,
-                buffDuration: 10.17
+                cast: 2.67
             }
         },
-        {name: "Psychic Shockwave",
+        {
+            name: "Psychic Shockwave",
             available: 27,
             tier: 5,
             maxSlots: 6,
@@ -187,6 +204,7 @@ const MENTAL_MANIPULATION_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 15.0,
             effects: {
                 accuracy: 1.0,
                 recharge: 20.0,
@@ -197,10 +215,12 @@ const MENTAL_MANIPULATION_POWERSET = {
                     scale: 1.8370000000000002
                 },
                 stun: 2.0,
-                buffDuration: 20.0
+                rechargeDebuff: 0.5,
+                duration: 20.0
             }
         },
-        {name: "Telekinetic Thrust",
+        {
+            name: "Telekinetic Thrust",
             available: 29,
             tier: 5,
             maxSlots: 6,
@@ -224,13 +244,14 @@ const MENTAL_MANIPULATION_POWERSET = {
                             type: "Psionic",
                             scale: 3.6688
                         },
-        {type: "Smashing",
+                        {
+                            type: "Smashing",
                             scale: 1.46
                         }
                     ],
                     scale: 5.1288
                 },
-                buffDuration: 9.57
+                knockback: 1.0
             }
         }
     ]

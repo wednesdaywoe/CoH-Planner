@@ -1,11 +1,11 @@
 /**
- * Nature Affinity - Blaster Primary
- * Extracted from raw_data_homecoming with updated converter
+ * Nature Affinity
+ * Extracted from raw_data_homecoming with redirect and entity support
  */
 
 const NATURE_AFFINITY_POWERSET = {
     name: "Nature Affinity",
-    category: "Blaster_RANGED",
+    category: "UNKNOWN",
     description: "Nature Affinity powerset",
     icon: "nature-affinity_set.png",
     powers: [
@@ -28,10 +28,12 @@ const NATURE_AFFINITY_POWERSET = {
                 recharge: 16.0,
                 endurance: 8.528,
                 cast: 1.0,
-                buffDuration: 30.0
+                resistanceDebuff: 2.5,
+                duration: 30.0
             }
         },
-        {name: "Regrowth",
+        {
+            name: "Regrowth",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -45,16 +47,18 @@ const NATURE_AFFINITY_POWERSET = {
             effectArea: "Cone",
             maxTargets: 255,
             arc: 1.5708,
+            radius: 45.0,
             effects: {
                 accuracy: 1.0,
                 range: 45.0,
                 recharge: 10.0,
                 endurance: 13.52,
                 cast: 2.0,
-                buffDuration: 4.1
+                healing: 0.15
             }
         },
-        {name: "Wild Growth",
+        {
+            name: "Wild Growth",
             available: 1,
             tier: 1,
             maxSlots: 6,
@@ -67,15 +71,19 @@ const NATURE_AFFINITY_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 255,
+            radius: 25.0,
             effects: {
                 accuracy: 1.0,
                 recharge: 225.0,
                 endurance: 15.6,
                 cast: 2.17,
-                buffDuration: 90.0
+                resistanceDebuff: 1.5,
+                duration: 90.0,
+                regenerationDebuff: 1.0
             }
         },
-        {name: "Spore Cloud",
+        {
+            name: "Spore Cloud",
             available: 5,
             tier: 3,
             maxSlots: 6,
@@ -88,6 +96,7 @@ const NATURE_AFFINITY_POWERSET = {
             targetType: "Foe",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 15.0,
             effects: {
                 accuracy: 1.0,
                 range: 70.0,
@@ -95,10 +104,12 @@ const NATURE_AFFINITY_POWERSET = {
                 endurance: 0.26,
                 cast: 3.1,
                 tohitDebuff: 1.5,
-                buffDuration: 0.75
+                duration: 0.75,
+                regenerationDebuff: 2.0
             }
         },
-        {name: "Lifegiving Spores",
+        {
+            name: "Lifegiving Spores",
             available: 7,
             tier: 3,
             maxSlots: 6,
@@ -118,7 +129,8 @@ const NATURE_AFFINITY_POWERSET = {
                 cast: 2.33
             }
         },
-        {name: "Wild Bastion",
+        {
+            name: "Wild Bastion",
             available: 11,
             tier: 4,
             maxSlots: 6,
@@ -131,15 +143,19 @@ const NATURE_AFFINITY_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 255,
+            radius: 25.0,
             effects: {
                 accuracy: 1.0,
                 recharge: 240.0,
                 endurance: 13.0,
                 cast: 2.27,
-                buffDuration: 60.0
+                absorb: 1.0,
+                duration: 60.0,
+                healing: 0.2727
             }
         },
-        {name: "Rebirth",
+        {
+            name: "Rebirth",
             available: 17,
             tier: 4,
             maxSlots: 6,
@@ -159,7 +175,8 @@ const NATURE_AFFINITY_POWERSET = {
                 cast: 3.0
             }
         },
-        {name: "Entangling Aura",
+        {
+            name: "Entangling Aura",
             available: 21,
             tier: 5,
             maxSlots: 6,
@@ -172,14 +189,17 @@ const NATURE_AFFINITY_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 15.0,
             effects: {
                 accuracy: 1.0,
                 recharge: 20.0,
                 endurance: 1.3,
-                cast: 2.03
+                cast: 2.03,
+                hold: 2.0
             }
         },
-        {name: "Overgrowth",
+        {
+            name: "Overgrowth",
             available: 25,
             tier: 5,
             maxSlots: 6,
@@ -192,13 +212,14 @@ const NATURE_AFFINITY_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 255,
+            radius: 25.0,
             effects: {
                 accuracy: 1.0,
                 recharge: 255.0,
                 endurance: 26.0,
                 cast: 3.0,
-                tohitBuff: 1.0,
-                buffDuration: 60.0
+                tohitDebuff: 1.0,
+                duration: 60.0
             }
         }
     ]

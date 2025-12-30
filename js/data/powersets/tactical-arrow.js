@@ -1,11 +1,11 @@
 /**
- * Tactical Arrow - Blaster Primary
- * Extracted from raw_data_homecoming with updated converter
+ * Tactical Arrow
+ * Extracted from raw_data_homecoming with redirect and entity support
  */
 
 const TACTICAL_ARROW_POWERSET = {
     name: "Tactical Arrow",
-    category: "Blaster_RANGED",
+    category: "UNKNOWN",
     description: "Tactical Arrow powerset",
     icon: "tactical-arrow_set.png",
     powers: [
@@ -33,10 +33,16 @@ const TACTICAL_ARROW_POWERSET = {
                     scale: 0.452,
                     ticks: 4
                 },
-                buffDuration: 0.75
+                immobilize: 3.0,
+                movementDebuff: 1.5,
+                duration: 0.75,
+                resistanceDebuff: 100.0,
+                knockback: 1.0,
+                rechargeDebuff: 0.1
             }
         },
-        {name: "Glue Arrow",
+        {
+            name: "Glue Arrow",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -56,7 +62,8 @@ const TACTICAL_ARROW_POWERSET = {
                 cast: 1.16
             }
         },
-        {name: "Ice Arrow",
+        {
+            name: "Ice Arrow",
             available: 3,
             tier: 2,
             maxSlots: 6,
@@ -79,10 +86,16 @@ const TACTICAL_ARROW_POWERSET = {
                     scale: 0.05,
                     ticks: 8
                 },
-                buffDuration: 10.0
+                hold: 3.0,
+                movementDebuff: 0.3,
+                duration: 10.0,
+                rechargeDebuff: 0.1,
+                resistanceDebuff: 100.0,
+                knockback: 1.0
             }
         },
-        {name: "Upshot",
+        {
+            name: "Upshot",
             available: 9,
             tier: 3,
             maxSlots: 6,
@@ -100,10 +113,12 @@ const TACTICAL_ARROW_POWERSET = {
                 endurance: 5.2,
                 cast: 1.17,
                 tohitBuff: 1.5,
-                buffDuration: 10.0
+                duration: 10.0,
+                rechargeBuff: 0.15
             }
         },
-        {name: "Flash Arrow",
+        {
+            name: "Flash Arrow",
             available: 15,
             tier: 4,
             maxSlots: 6,
@@ -116,17 +131,19 @@ const TACTICAL_ARROW_POWERSET = {
             targetType: "Foe (Alive)",
             effectArea: "AoE",
             maxTargets: 10,
+            radius: 35.0,
             effects: {
                 accuracy: 1.0,
                 range: 80.0,
                 recharge: 15.0,
                 endurance: 7.8,
                 cast: 1.0,
-                buffDuration: 60.0,
-                tohitDebuff: 0.7
+                tohitDebuff: 0.7,
+                duration: 60.0
             }
         },
-        {name: "Eagle Eye",
+        {
+            name: "Eagle Eye",
             available: 19,
             tier: 4,
             maxSlots: 6,
@@ -142,11 +159,16 @@ const TACTICAL_ARROW_POWERSET = {
                 accuracy: 1.0,
                 recharge: 10.0,
                 cast: 1.17,
-                tohitBuff: 2.0,
-                buffDuration: 0.75
+                resistanceDebuff: 2.0,
+                duration: 0.75,
+                tohitDebuff: 2.0,
+                resistanceBuff: 0.6,
+                regenerationDebuff: 1.125,
+                recoveryDebuff: 0.5
             }
         },
-        {name: "Gymnastics",
+        {
+            name: "Gymnastics",
             available: 23,
             tier: 5,
             maxSlots: 6,
@@ -162,10 +184,15 @@ const TACTICAL_ARROW_POWERSET = {
                 accuracy: 1.0,
                 recharge: 10.0,
                 endurance: 0.13,
-                buffDuration: 0.5
+                rechargeBuff: 0.4,
+                duration: 0.5,
+                movementBuff: 0.4,
+                resistanceBuff: 0.4,
+                knockback: 1.0
             }
         },
-        {name: "ESD Arrow",
+        {
+            name: "ESD Arrow",
             available: 27,
             tier: 5,
             maxSlots: 6,
@@ -178,6 +205,7 @@ const TACTICAL_ARROW_POWERSET = {
             targetType: "Foe (Alive)",
             effectArea: "AoE",
             maxTargets: 10,
+            radius: 20.0,
             effects: {
                 accuracy: 0.8,
                 range: 70.0,
@@ -188,10 +216,12 @@ const TACTICAL_ARROW_POWERSET = {
                     type: "Energy",
                     scale: 1.64
                 },
-                stun: 3.0
+                stun: 3.0,
+                hold: 1.0
             }
         },
-        {name: "Oil Slick Arrow",
+        {
+            name: "Oil Slick Arrow",
             available: 29,
             tier: 5,
             maxSlots: 6,
@@ -208,8 +238,7 @@ const TACTICAL_ARROW_POWERSET = {
                 range: 70.0,
                 recharge: 90.0,
                 endurance: 15.6,
-                cast: 1.16,
-                buffDuration: 30.0
+                cast: 1.16
             }
         }
     ]

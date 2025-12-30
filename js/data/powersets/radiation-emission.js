@@ -1,11 +1,11 @@
 /**
- * Radiation Emission - Blaster Primary
- * Extracted from raw_data_homecoming with updated converter
+ * Radiation Emission
+ * Extracted from raw_data_homecoming with redirect and entity support
  */
 
 const RADIATION_EMISSION_POWERSET = {
     name: "Radiation Emission",
-    category: "Blaster_RANGED",
+    category: "UNKNOWN",
     description: "Radiation Emission powerset",
     icon: "radiation-emission_set.png",
     powers: [
@@ -23,14 +23,17 @@ const RADIATION_EMISSION_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 255,
+            radius: 25.0,
             effects: {
                 accuracy: 1.0,
                 recharge: 8.0,
                 endurance: 13.0,
-                cast: 2.03
+                cast: 2.03,
+                healing: 1.0
             }
         },
-        {name: "Radiation Infection",
+        {
+            name: "Radiation Infection",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -43,6 +46,7 @@ const RADIATION_EMISSION_POWERSET = {
             targetType: "Foe",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 15.0,
             effects: {
                 accuracy: 1.0,
                 range: 70.0,
@@ -50,11 +54,12 @@ const RADIATION_EMISSION_POWERSET = {
                 endurance: 0.26,
                 cast: 1.5,
                 tohitDebuff: 2.5,
-                buffDuration: 0.75,
+                duration: 0.75,
                 defenseDebuff: 2.5
             }
         },
-        {name: "Accelerate Metabolism",
+        {
+            name: "Accelerate Metabolism",
             available: 1,
             tier: 1,
             maxSlots: 6,
@@ -67,17 +72,29 @@ const RADIATION_EMISSION_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 255,
+            radius: 25.0,
             effects: {
                 accuracy: 1.0,
                 recharge: 422.0,
                 endurance: 15.6,
                 cast: 2.03,
-                buffDuration: 120.0,
+                resistanceDebuff: 1.5,
+                duration: 120.0,
+                hold: 1.0,
+                holdDuration: 120.0,
                 stun: 1.0,
-                stunDuration: 120.0
+                stunDuration: 120.0,
+                immobilize: 1.0,
+                immobilizeDuration: 120.0,
+                sleep: 1.0,
+                sleepDuration: 120.0,
+                rechargeDebuff: 0.3,
+                recoveryDebuff: 0.3,
+                movementDebuff: 0.3
             }
         },
-        {name: "Enervating Field",
+        {
+            name: "Enervating Field",
             available: 5,
             tier: 3,
             maxSlots: 6,
@@ -90,16 +107,19 @@ const RADIATION_EMISSION_POWERSET = {
             targetType: "Foe",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 15.0,
             effects: {
                 accuracy: 1.0,
                 range: 70.0,
                 recharge: 8.0,
                 endurance: 0.26,
                 cast: 1.5,
-                buffDuration: 0.75
+                resistanceDebuff: 4.0,
+                duration: 0.75
             }
         },
-        {name: "Mutation",
+        {
+            name: "Mutation",
             available: 7,
             tier: 3,
             maxSlots: 6,
@@ -117,12 +137,15 @@ const RADIATION_EMISSION_POWERSET = {
                 recharge: 180.0,
                 endurance: 26.0,
                 cast: 3.2,
-                buffDuration: 0.5,
-                tohitBuff: 3.0,
+                healing: 1.0,
+                recoveryDebuff: 2.0,
+                rechargeDebuff: 1.0,
+                duration: 90.0,
                 tohitDebuff: 3.0
             }
         },
-        {name: "Lingering Radiation",
+        {
+            name: "Lingering Radiation",
             available: 11,
             tier: 4,
             maxSlots: 6,
@@ -135,16 +158,21 @@ const RADIATION_EMISSION_POWERSET = {
             targetType: "Foe (Alive)",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 25.0,
             effects: {
                 accuracy: 1.0,
                 range: 80.0,
                 recharge: 90.0,
                 endurance: 15.6,
                 cast: 1.5,
-                buffDuration: 30.0
+                movementDebuff: 1.0,
+                duration: 30.0,
+                rechargeDebuff: 0.6,
+                regenerationDebuff: 20.0
             }
         },
-        {name: "Choking Cloud",
+        {
+            name: "Choking Cloud",
             available: 17,
             tier: 4,
             maxSlots: 6,
@@ -157,14 +185,17 @@ const RADIATION_EMISSION_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 15.0,
             effects: {
                 accuracy: 1.0,
                 recharge: 20.0,
                 endurance: 1.3,
-                cast: 1.0
+                cast: 1.0,
+                hold: 2.0
             }
         },
-        {name: "Fallout",
+        {
+            name: "Fallout",
             available: 21,
             tier: 5,
             maxSlots: 6,
@@ -182,10 +213,18 @@ const RADIATION_EMISSION_POWERSET = {
                 recharge: 300.0,
                 endurance: 20.8,
                 cast: 3.2,
-                buffDuration: 1.0
+                damage: {
+                    type: "Energy",
+                    scale: 29.23
+                },
+                tohitDebuff: 2.4,
+                duration: 30.0,
+                defenseDebuff: 2.4,
+                resistanceDebuff: 3.75
             }
         },
-        {name: "EM Pulse",
+        {
+            name: "EM Pulse",
             available: 25,
             tier: 5,
             maxSlots: 6,
@@ -198,6 +237,7 @@ const RADIATION_EMISSION_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 60.0,
             effects: {
                 accuracy: 1.0,
                 recharge: 300.0,
@@ -207,7 +247,9 @@ const RADIATION_EMISSION_POWERSET = {
                     type: "Energy",
                     scale: 1.64
                 },
-                buffDuration: 15.0
+                hold: 3.0,
+                regenerationDebuff: 30.0,
+                recoveryDebuff: 10.0
             }
         }
     ]

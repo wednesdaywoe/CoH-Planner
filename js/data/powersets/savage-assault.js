@@ -1,11 +1,11 @@
 /**
- * Savage Assault - Blaster Primary
- * Extracted from raw_data_homecoming with updated converter
+ * Savage Assault
+ * Extracted from raw_data_homecoming with redirect and entity support
  */
 
 const SAVAGE_ASSAULT_POWERSET = {
     name: "Savage Assault",
-    category: "Blaster_RANGED",
+    category: "UNKNOWN",
     description: "Savage Assault powerset",
     icon: "savage-assault_set.png",
     powers: [
@@ -33,11 +33,13 @@ const SAVAGE_ASSAULT_POWERSET = {
                     scale: 0.47219999999999995,
                     ticks: 4
                 },
-                buffDuration: 3.1,
-                defenseDebuff: 1.0
+                defenseDebuff: 1.0,
+                duration: 8.0,
+                movementDebuff: 0.2
             }
         },
-        {name: "Maiming Slash",
+        {
+            name: "Maiming Slash",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -64,10 +66,12 @@ const SAVAGE_ASSAULT_POWERSET = {
                     scale: 0.3226,
                     ticks: 3
                 },
-                buffDuration: 3.1
+                movementDebuff: 0.7,
+                duration: 10.0
             }
         },
-        {name: "Vicious Slash",
+        {
+            name: "Vicious Slash",
             available: 3,
             tier: 2,
             maxSlots: 6,
@@ -94,10 +98,11 @@ const SAVAGE_ASSAULT_POWERSET = {
                     scale: 0.5423,
                     ticks: 3
                 },
-                buffDuration: 3.1
+                knockback: 1.0
             }
         },
-        {name: "Unkindness",
+        {
+            name: "Unkindness",
             available: 9,
             tier: 3,
             maxSlots: 6,
@@ -111,6 +116,7 @@ const SAVAGE_ASSAULT_POWERSET = {
             effectArea: "Cone",
             maxTargets: 10,
             arc: 0.5236,
+            radius: 40.0,
             effects: {
                 accuracy: 1.155,
                 range: 40.0,
@@ -122,11 +128,13 @@ const SAVAGE_ASSAULT_POWERSET = {
                     scale: 0.4924,
                     ticks: 4
                 },
-                buffDuration: 3.1,
-                defenseDebuff: 1.0
+                defenseDebuff: 1.0,
+                duration: 10.0,
+                movementDebuff: 1.6
             }
         },
-        {name: "Spot Prey",
+        {
+            name: "Spot Prey",
             available: 15,
             tier: 4,
             maxSlots: 6,
@@ -144,10 +152,11 @@ const SAVAGE_ASSAULT_POWERSET = {
                 endurance: 5.2,
                 cast: 1.17,
                 tohitBuff: 5.0,
-                buffDuration: 10.0
+                duration: 10.0
             }
         },
-        {name: "Rending Flurry",
+        {
+            name: "Rending Flurry",
             available: 19,
             tier: 4,
             maxSlots: 6,
@@ -160,6 +169,7 @@ const SAVAGE_ASSAULT_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 10,
+            radius: 8.0,
             effects: {
                 accuracy: 1.0,
                 recharge: 14.0,
@@ -167,7 +177,8 @@ const SAVAGE_ASSAULT_POWERSET = {
                 cast: 2.17
             }
         },
-        {name: "Blood Craze",
+        {
+            name: "Blood Craze",
             available: 23,
             tier: 5,
             maxSlots: 6,
@@ -184,10 +195,11 @@ const SAVAGE_ASSAULT_POWERSET = {
                 recharge: 180.0,
                 endurance: 7.8,
                 cast: 2.0,
-                buffDuration: 9.1
+                healing: 0.25
             }
         },
-        {name: "Call Hawk",
+        {
+            name: "Call Hawk",
             available: 27,
             tier: 5,
             maxSlots: 6,
@@ -210,11 +222,14 @@ const SAVAGE_ASSAULT_POWERSET = {
                     scale: 1.4855,
                     ticks: 4
                 },
-                buffDuration: 1.3,
-                tohitDebuff: 0.75
+                tohitDebuff: 0.75,
+                duration: 10.0,
+                movementDebuff: 1.6,
+                knockback: 1.0
             }
         },
-        {name: "Feral Charge",
+        {
+            name: "Feral Charge",
             available: 29,
             tier: 5,
             maxSlots: 6,

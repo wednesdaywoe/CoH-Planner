@@ -1,15 +1,16 @@
 /**
- * Beast Mastery - Blaster Primary
- * Extracted from raw_data_homecoming with updated converter
+ * Beast Mastery
+ * Extracted from raw_data_homecoming with redirect and entity support
  */
 
 const BEAST_MASTERY_POWERSET = {
     name: "Beast Mastery",
-    category: "Blaster_RANGED",
+    category: "UNKNOWN",
     description: "Beast Mastery powerset",
     icon: "beast-mastery_set.png",
     powers: [
-        {name: "Call Swarm",
+        {
+            name: "Call Swarm",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -32,11 +33,13 @@ const BEAST_MASTERY_POWERSET = {
                     scale: 0.42879999999999996,
                     ticks: 4
                 },
-                buffDuration: 3.1,
-                defenseDebuff: 1.0
+                defenseDebuff: 1.0,
+                duration: 8.0,
+                movementDebuff: 0.2
             }
         },
-        {name: "Summon Wolves",
+        {
+            name: "Summon Wolves",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -56,7 +59,8 @@ const BEAST_MASTERY_POWERSET = {
                 cast: 1.97
             }
         },
-        {name: "Call Hawk",
+        {
+            name: "Call Hawk",
             available: 1,
             tier: 1,
             maxSlots: 6,
@@ -79,11 +83,14 @@ const BEAST_MASTERY_POWERSET = {
                     scale: 0.7236,
                     ticks: 4
                 },
-                buffDuration: 1.3,
-                tohitDebuff: 0.75
+                tohitDebuff: 0.75,
+                duration: 10.0,
+                movementDebuff: 1.6,
+                knockback: 1.0
             }
         },
-        {name: "Train Beasts",
+        {
+            name: "Train Beasts",
             available: 5,
             tier: 3,
             maxSlots: 6,
@@ -96,6 +103,7 @@ const BEAST_MASTERY_POWERSET = {
             targetType: "Own Pet (Alive)",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 30.0,
             effects: {
                 accuracy: 1.0,
                 range: 50.0,
@@ -104,7 +112,8 @@ const BEAST_MASTERY_POWERSET = {
                 cast: 1.67
             }
         },
-        {name: "Call Ravens",
+        {
+            name: "Call Ravens",
             available: 7,
             tier: 3,
             maxSlots: 6,
@@ -118,6 +127,7 @@ const BEAST_MASTERY_POWERSET = {
             effectArea: "Cone",
             maxTargets: 10,
             arc: 0.5236,
+            radius: 40.0,
             effects: {
                 accuracy: 1.155,
                 range: 40.0,
@@ -129,11 +139,13 @@ const BEAST_MASTERY_POWERSET = {
                     scale: 0.5673999999999999,
                     ticks: 4
                 },
-                buffDuration: 3.1,
-                defenseDebuff: 1.0
+                defenseDebuff: 1.0,
+                duration: 10.0,
+                movementDebuff: 1.6
             }
         },
-        {name: "Summon Lions",
+        {
+            name: "Summon Lions",
             available: 11,
             tier: 4,
             maxSlots: 6,
@@ -153,7 +165,8 @@ const BEAST_MASTERY_POWERSET = {
                 cast: 2.0
             }
         },
-        {name: "Fortify Pack",
+        {
+            name: "Fortify Pack",
             available: 17,
             tier: 4,
             maxSlots: 6,
@@ -166,15 +179,16 @@ const BEAST_MASTERY_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 30.0,
             effects: {
                 accuracy: 1.0,
                 recharge: 240.0,
                 endurance: 16.25,
-                cast: 2.27,
-                buffDuration: 60.0
+                cast: 2.27
             }
         },
-        {name: "Summon Dire Wolf",
+        {
+            name: "Summon Dire Wolf",
             available: 21,
             tier: 5,
             maxSlots: 6,
@@ -194,7 +208,8 @@ const BEAST_MASTERY_POWERSET = {
                 cast: 2.0
             }
         },
-        {name: "Tame Beasts",
+        {
+            name: "Tame Beasts",
             available: 25,
             tier: 5,
             maxSlots: 6,
@@ -207,6 +222,7 @@ const BEAST_MASTERY_POWERSET = {
             targetType: "Own Pet (Alive)",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 30.0,
             effects: {
                 accuracy: 1.0,
                 range: 30.0,

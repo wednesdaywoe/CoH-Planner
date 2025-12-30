@@ -1,11 +1,11 @@
 /**
- * Symphony Control - Blaster Primary
- * Extracted from raw_data_homecoming with updated converter
+ * Symphony Control
+ * Extracted from raw_data_homecoming with redirect and entity support
  */
 
 const SYMPHONY_CONTROL_POWERSET = {
     name: "Symphony Control",
-    category: "Blaster_RANGED",
+    category: "UNKNOWN",
     description: "Symphony Control powerset",
     icon: "symphony-control_set.png",
     powers: [
@@ -32,10 +32,13 @@ const SYMPHONY_CONTROL_POWERSET = {
                     type: "Psionic",
                     scale: 2.8890000000000002
                 },
-                buffDuration: 18.0
+                rechargeDebuff: 0.2,
+                duration: 18.0,
+                hold: 3.0
             }
         },
-        {name: "Melodic Binding",
+        {
+            name: "Melodic Binding",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -57,10 +60,15 @@ const SYMPHONY_CONTROL_POWERSET = {
                     type: "Psionic",
                     scale: 2.6100000000000003
                 },
-                buffDuration: 15.0
+                movementDebuff: 0.3,
+                duration: 15.0,
+                resistanceDebuff: 100.0,
+                knockback: 1.0,
+                immobilize: 4.0
             }
         },
-        {name: "Aria of Stasis",
+        {
+            name: "Aria of Stasis",
             available: 1,
             tier: 1,
             maxSlots: 6,
@@ -74,6 +82,7 @@ const SYMPHONY_CONTROL_POWERSET = {
             effectArea: "Cone",
             maxTargets: 16,
             arc: 1.0472,
+            radius: 60.0,
             effects: {
                 accuracy: 1.0,
                 range: 60.0,
@@ -84,10 +93,15 @@ const SYMPHONY_CONTROL_POWERSET = {
                     type: "Psionic",
                     scale: 1.003
                 },
-                buffDuration: 15.0
+                movementDebuff: 0.3,
+                duration: 15.0,
+                resistanceDebuff: 100.0,
+                knockback: 1.0,
+                immobilize: 3.0
             }
         },
-        {name: "Impassioned Serenade",
+        {
+            name: "Impassioned Serenade",
             available: 5,
             tier: 3,
             maxSlots: 6,
@@ -114,10 +128,11 @@ const SYMPHONY_CONTROL_POWERSET = {
                     scale: 0.04,
                     ticks: 30
                 },
-                buffDuration: 30.0
+                confuse: 4.0
             }
         },
-        {name: "Dreadful Discord",
+        {
+            name: "Dreadful Discord",
             available: 7,
             tier: 3,
             maxSlots: 6,
@@ -131,6 +146,7 @@ const SYMPHONY_CONTROL_POWERSET = {
             effectArea: "Cone",
             maxTargets: 16,
             arc: 0.7854,
+            radius: 70.0,
             effects: {
                 accuracy: 1.0,
                 range: 70.0,
@@ -143,7 +159,8 @@ const SYMPHONY_CONTROL_POWERSET = {
                 }
             }
         },
-        {name: "Enfeebling Lullaby",
+        {
+            name: "Enfeebling Lullaby",
             available: 11,
             tier: 4,
             maxSlots: 6,
@@ -157,6 +174,7 @@ const SYMPHONY_CONTROL_POWERSET = {
             effectArea: "Cone",
             maxTargets: 16,
             arc: 0.7854,
+            radius: 70.0,
             effects: {
                 accuracy: 1.0,
                 range: 70.0,
@@ -167,10 +185,11 @@ const SYMPHONY_CONTROL_POWERSET = {
                     type: "Psionic",
                     scale: 0.2
                 },
-                buffDuration: 15.0
+                sleep: 4.0
             }
         },
-        {name: "Confounding Chant",
+        {
+            name: "Confounding Chant",
             available: 17,
             tier: 4,
             maxSlots: 6,
@@ -184,6 +203,7 @@ const SYMPHONY_CONTROL_POWERSET = {
             effectArea: "Cone",
             maxTargets: 16,
             arc: 0.7854,
+            radius: 70.0,
             effects: {
                 accuracy: 0.8,
                 range: 70.0,
@@ -193,7 +213,8 @@ const SYMPHONY_CONTROL_POWERSET = {
                 stun: 3.0
             }
         },
-        {name: "Chords of Despair",
+        {
+            name: "Chords of Despair",
             available: 21,
             tier: 5,
             maxSlots: 6,
@@ -206,15 +227,18 @@ const SYMPHONY_CONTROL_POWERSET = {
             targetType: "Foe (Alive)",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 20.0,
             effects: {
                 accuracy: 0.8,
                 range: 80.0,
                 recharge: 8.0,
                 endurance: 8.528,
-                cast: 2.67
+                cast: 2.67,
+                hold: 4.0
             }
         },
-        {name: "Reverberant",
+        {
+            name: "Reverberant",
             available: 25,
             tier: 5,
             maxSlots: 6,

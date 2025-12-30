@@ -1,11 +1,11 @@
 /**
- * Water Blast - Blaster Primary
- * Extracted from raw_data_homecoming with updated converter
+ * Water Blast
+ * Extracted from raw_data_homecoming with redirect and entity support
  */
 
 const WATER_BLAST_POWERSET = {
     name: "Water Blast",
-    category: "Blaster_RANGED",
+    category: "UNKNOWN",
     description: "Water Blast powerset",
     icon: "water-blast_set.png",
     powers: [
@@ -34,17 +34,19 @@ const WATER_BLAST_POWERSET = {
                             type: "Cold",
                             scale: 1.5451000000000001
                         },
-        {type: "Smashing",
+                        {
+                            type: "Smashing",
                             scale: 0.515
                         }
                     ],
                     scale: 2.0601000000000003
                 },
                 defenseDebuff: 1.0,
-                buffDuration: 8.0
+                duration: 8.0
             }
         },
-        {name: "Hydro Blast",
+        {
+            name: "Hydro Blast",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -68,16 +70,19 @@ const WATER_BLAST_POWERSET = {
                             type: "Cold",
                             scale: 2.4969
                         },
-        {type: "Smashing",
+                        {
+                            type: "Smashing",
                             scale: 0.8323
                         }
                     ],
                     scale: 3.3292
                 },
-                buffDuration: 10.0
+                movementDebuff: 0.2,
+                duration: 10.0
             }
         },
-        {name: "Water Burst",
+        {
+            name: "Water Burst",
             available: 1,
             tier: 1,
             maxSlots: 6,
@@ -90,6 +95,7 @@ const WATER_BLAST_POWERSET = {
             targetType: "Foe (Alive)",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 15.0,
             effects: {
                 accuracy: 1.0,
                 range: 80.0,
@@ -102,16 +108,20 @@ const WATER_BLAST_POWERSET = {
                             type: "Cold",
                             scale: 1.8634000000000002
                         },
-        {type: "Smashing",
+                        {
+                            type: "Smashing",
                             scale: 0.3982
                         }
                     ],
                     scale: 2.2616
                 },
-                buffDuration: 10.0
+                knockback: 1.0,
+                movementDebuff: 0.3,
+                duration: 10.0
             }
         },
-        {name: "Whirlpool",
+        {
+            name: "Whirlpool",
             available: 5,
             tier: 3,
             maxSlots: 6,
@@ -128,11 +138,11 @@ const WATER_BLAST_POWERSET = {
                 range: 60.0,
                 recharge: 60.0,
                 endurance: 15.6,
-                cast: 2.03,
-                buffDuration: 15.0
+                cast: 2.03
             }
         },
-        {name: "Tidal Forces",
+        {
+            name: "Tidal Forces",
             available: 7,
             tier: 3,
             maxSlots: 6,
@@ -150,10 +160,11 @@ const WATER_BLAST_POWERSET = {
                 endurance: 5.2,
                 cast: 1.17,
                 tohitBuff: 5.0,
-                buffDuration: 10.0
+                duration: 10.0
             }
         },
-        {name: "Dehydrate",
+        {
+            name: "Dehydrate",
             available: 11,
             tier: 4,
             maxSlots: 6,
@@ -177,7 +188,8 @@ const WATER_BLAST_POWERSET = {
                             type: "Cold",
                             scale: 2.2719
                         },
-        {type: "Smashing",
+                        {
+                            type: "Smashing",
                             scale: 0.7573
                         }
                     ],
@@ -188,11 +200,14 @@ const WATER_BLAST_POWERSET = {
                     scale: 0.2698,
                     ticks: 4
                 },
-                buffDuration: 4.1,
-                defenseDebuff: 1.0
+                movementDebuff: 0.2,
+                duration: 8.0,
+                defenseDebuff: 1.0,
+                healing: 0.4125
             }
         },
-        {name: "Water Jet",
+        {
+            name: "Water Jet",
             available: 17,
             tier: 4,
             maxSlots: 6,
@@ -212,7 +227,8 @@ const WATER_BLAST_POWERSET = {
                 cast: 1.43
             }
         },
-        {name: "Steam Spray",
+        {
+            name: "Steam Spray",
             available: 21,
             tier: 5,
             maxSlots: 6,
@@ -226,6 +242,7 @@ const WATER_BLAST_POWERSET = {
             effectArea: "Cone",
             maxTargets: 10,
             arc: 0.8727,
+            radius: 40.0,
             effects: {
                 accuracy: 1.2,
                 range: 40.0,
@@ -237,11 +254,12 @@ const WATER_BLAST_POWERSET = {
                     scale: 3.0260000000000002,
                     ticks: 1
                 },
-                buffDuration: 0.6,
-                defenseDebuff: 1.0
+                defenseDebuff: 1.0,
+                duration: 8.0
             }
         },
-        {name: "Geyser",
+        {
+            name: "Geyser",
             available: 25,
             tier: 5,
             maxSlots: 6,
@@ -254,6 +272,7 @@ const WATER_BLAST_POWERSET = {
             targetType: "Foe (Alive)",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 25.0,
             effects: {
                 accuracy: 1.4,
                 range: 80.0,
@@ -266,7 +285,8 @@ const WATER_BLAST_POWERSET = {
                             type: "Fire",
                             scale: 4.1755
                         },
-        {type: "Smashing",
+                        {
+                            type: "Smashing",
                             scale: 0.8922
                         }
                     ],
@@ -278,7 +298,9 @@ const WATER_BLAST_POWERSET = {
                     ticks: 10
                 },
                 stun: 3.0,
-                buffDuration: 5.1
+                movementDebuff: 0.33,
+                duration: 10.0,
+                knockback: 1.0
             }
         }
     ]

@@ -1,11 +1,11 @@
 /**
- * Dual Pistols - Blaster Primary
- * Extracted from raw_data_homecoming with updated converter
+ * Dual Pistols
+ * Extracted from raw_data_homecoming with redirect and entity support
  */
 
 const DUAL_PISTOLS_POWERSET = {
     name: "Dual Pistols",
-    category: "Blaster_RANGED",
+    category: "UNKNOWN",
     description: "Dual Pistols powerset",
     icon: "dual-pistols_set.png",
     powers: [
@@ -25,11 +25,11 @@ const DUAL_PISTOLS_POWERSET = {
             effects: {
                 accuracy: 1.0,
                 recharge: 4.0,
-                cast: 0.63,
-                buffDuration: 0.75
+                cast: 0.63
             }
         },
-        {name: "Cryo Ammunition",
+        {
+            name: "Cryo Ammunition",
             available: -1,
             tier: 2,
             maxSlots: 0,
@@ -44,11 +44,11 @@ const DUAL_PISTOLS_POWERSET = {
             effects: {
                 accuracy: 1.0,
                 recharge: 4.0,
-                cast: 0.63,
-                buffDuration: 0.75
+                cast: 0.63
             }
         },
-        {name: "Incendiary Ammunition",
+        {
+            name: "Incendiary Ammunition",
             available: -1,
             tier: 2,
             maxSlots: 0,
@@ -63,11 +63,11 @@ const DUAL_PISTOLS_POWERSET = {
             effects: {
                 accuracy: 1.0,
                 recharge: 4.0,
-                cast: 0.63,
-                buffDuration: 0.75
+                cast: 0.63
             }
         },
-        {name: "Dual Wield",
+        {
+            name: "Dual Wield",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -91,13 +91,16 @@ const DUAL_PISTOLS_POWERSET = {
                             type: "Lethal",
                             scale: 3.1292999999999997
                         },
-        {type: "Fire",
+                        {
+                            type: "Fire",
                             scale: 0.9388
                         },
-        {type: "Cold",
+                        {
+                            type: "Cold",
                             scale: 0.9388
                         },
-        {type: "Toxic",
+                        {
+                            type: "Toxic",
                             scale: 0.9388
                         }
                     ],
@@ -108,10 +111,14 @@ const DUAL_PISTOLS_POWERSET = {
                     scale: 0.113,
                     ticks: 3
                 },
-                buffDuration: 3.1
+                knockback: 1.0,
+                movementDebuff: 0.15,
+                duration: 8.0,
+                rechargeDebuff: 0.15
             }
         },
-        {name: "Pistols",
+        {
+            name: "Pistols",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -135,13 +142,16 @@ const DUAL_PISTOLS_POWERSET = {
                             type: "Lethal",
                             scale: 2.2601
                         },
-        {type: "Fire",
+                        {
+                            type: "Fire",
                             scale: 0.6779999999999999
                         },
-        {type: "Cold",
+                        {
+                            type: "Cold",
                             scale: 0.6779999999999999
                         },
-        {type: "Toxic",
+                        {
+                            type: "Toxic",
                             scale: 0.6779999999999999
                         }
                     ],
@@ -152,11 +162,14 @@ const DUAL_PISTOLS_POWERSET = {
                     scale: 0.113,
                     ticks: 2
                 },
-                buffDuration: 2.1,
+                movementDebuff: 0.12,
+                duration: 8.0,
+                rechargeDebuff: 0.12,
                 defenseDebuff: 1.0
             }
         },
-        {name: "Empty Clips",
+        {
+            name: "Empty Clips",
             available: 1,
             tier: 1,
             maxSlots: 6,
@@ -170,6 +183,7 @@ const DUAL_PISTOLS_POWERSET = {
             effectArea: "Cone",
             maxTargets: 10,
             arc: 0.5236,
+            radius: 40.0,
             effects: {
                 accuracy: 1.1,
                 range: 40.0,
@@ -181,24 +195,34 @@ const DUAL_PISTOLS_POWERSET = {
                         {
                             type: "Lethal",
                             scale: 0.48790000000000006,
-                            ticks: 3},
-        {type: "Fire",
+                            ticks: 3
+                        },
+                        {
+                            type: "Fire",
                             scale: 0.2594,
-                            ticks: 3},
-        {type: "Cold",
+                            ticks: 3
+                        },
+                        {
+                            type: "Cold",
                             scale: 0.1464,
-                            ticks: 3},
-        {type: "Toxic",
+                            ticks: 3
+                        },
+                        {
+                            type: "Toxic",
                             scale: 0.1464,
                             ticks: 3
                         }
                     ]
                 },
-                buffDuration: 1.6,
-                defenseDebuff: 1.0
+                defenseDebuff: 1.0,
+                duration: 8.0,
+                knockback: 1.0,
+                movementDebuff: 0.15,
+                rechargeDebuff: 0.15
             }
         },
-        {name: "Swap Ammo",
+        {
+            name: "Swap Ammo",
             available: 5,
             tier: 3,
             maxSlots: 0,
@@ -211,11 +235,11 @@ const DUAL_PISTOLS_POWERSET = {
             targetType: "Self",
             effectArea: "SingleTarget",
             effects: {
-                accuracy: 1.0,
-                buffDuration: 2.25
+                accuracy: 1.0
             }
         },
-        {name: "Bullet Rain",
+        {
+            name: "Bullet Rain",
             available: 7,
             tier: 3,
             maxSlots: 6,
@@ -228,6 +252,7 @@ const DUAL_PISTOLS_POWERSET = {
             targetType: "Foe (Alive)",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 15.0,
             effects: {
                 accuracy: 1.1,
                 range: 80.0,
@@ -239,23 +264,33 @@ const DUAL_PISTOLS_POWERSET = {
                         {
                             type: "Lethal",
                             scale: 1.0957,
-                            ticks: 2},
-        {type: "Fire",
+                            ticks: 2
+                        },
+                        {
+                            type: "Fire",
                             scale: 0.2831,
-                            ticks: 2},
-        {type: "Cold",
+                            ticks: 2
+                        },
+                        {
+                            type: "Cold",
                             scale: 0.1701,
-                            ticks: 2},
-        {type: "Toxic",
+                            ticks: 2
+                        },
+                        {
+                            type: "Toxic",
                             scale: 0.1701,
                             ticks: 2
                         }
                     ]
                 },
-                buffDuration: 1.1
+                knockback: 1.0,
+                movementDebuff: 0.15,
+                duration: 10.0,
+                rechargeDebuff: 0.15
             }
         },
-        {name: "Suppressive Fire",
+        {
+            name: "Suppressive Fire",
             available: 11,
             tier: 4,
             maxSlots: 6,
@@ -275,7 +310,8 @@ const DUAL_PISTOLS_POWERSET = {
                 cast: 1.5
             }
         },
-        {name: "Executioner's Shot",
+        {
+            name: "Executioner's Shot",
             available: 17,
             tier: 4,
             maxSlots: 6,
@@ -299,13 +335,16 @@ const DUAL_PISTOLS_POWERSET = {
                             type: "Lethal",
                             scale: 4.0893
                         },
-        {type: "Fire",
+                        {
+                            type: "Fire",
                             scale: 1.2268
                         },
-        {type: "Cold",
+                        {
+                            type: "Cold",
                             scale: 1.2268
                         },
-        {type: "Toxic",
+                        {
+                            type: "Toxic",
                             scale: 1.2268
                         }
                     ],
@@ -316,11 +355,15 @@ const DUAL_PISTOLS_POWERSET = {
                     scale: 0.169,
                     ticks: 3
                 },
-                buffDuration: 3.1,
+                knockback: 1.0,
+                movementDebuff: 0.15,
+                duration: 10.0,
+                rechargeDebuff: 0.15,
                 defenseDebuff: 1.25
             }
         },
-        {name: "Piercing Rounds",
+        {
+            name: "Piercing Rounds",
             available: 21,
             tier: 5,
             maxSlots: 6,
@@ -334,6 +377,7 @@ const DUAL_PISTOLS_POWERSET = {
             effectArea: "Cone",
             maxTargets: 3,
             arc: 0.0873,
+            radius: 80.0,
             effects: {
                 accuracy: 1.1,
                 range: 80.0,
@@ -346,13 +390,16 @@ const DUAL_PISTOLS_POWERSET = {
                             type: "Lethal",
                             scale: 4.5920000000000005
                         },
-        {type: "Fire",
+                        {
+                            type: "Fire",
                             scale: 1.3776
                         },
-        {type: "Cold",
+                        {
+                            type: "Cold",
                             scale: 1.3776
                         },
-        {type: "Toxic",
+                        {
+                            type: "Toxic",
                             scale: 1.3026
                         }
                     ],
@@ -363,10 +410,14 @@ const DUAL_PISTOLS_POWERSET = {
                     scale: 0.169,
                     ticks: 2
                 },
-                buffDuration: 2.1
+                movementDebuff: 0.15,
+                duration: 8.0,
+                rechargeDebuff: 0.15,
+                resistanceDebuff: 2.0
             }
         },
-        {name: "Hail of Bullets",
+        {
+            name: "Hail of Bullets",
             available: 25,
             tier: 5,
             maxSlots: 6,
@@ -379,6 +430,7 @@ const DUAL_PISTOLS_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 25.0,
             effects: {
                 accuracy: 1.4,
                 recharge: 105.0,
@@ -389,20 +441,29 @@ const DUAL_PISTOLS_POWERSET = {
                         {
                             type: "Lethal",
                             scale: 0.6443,
-                            ticks: 11},
-        {type: "Fire",
+                            ticks: 11
+                        },
+                        {
+                            type: "Fire",
                             scale: 0.393,
-                            ticks: 11},
-        {type: "Cold",
+                            ticks: 11
+                        },
+                        {
+                            type: "Cold",
                             scale: 0.193,
-                            ticks: 11},
-        {type: "Toxic",
+                            ticks: 11
+                        },
+                        {
+                            type: "Toxic",
                             scale: 0.193,
                             ticks: 11
                         }
                     ]
                 },
-                buffDuration: 2.3
+                knockback: 1.0,
+                movementDebuff: 0.2,
+                duration: 10.0,
+                rechargeDebuff: 0.2
             }
         }
     ]

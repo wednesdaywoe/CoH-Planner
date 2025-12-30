@@ -1,11 +1,11 @@
 /**
- * Robotics - Blaster Primary
- * Extracted from raw_data_homecoming with updated converter
+ * Robotics
+ * Extracted from raw_data_homecoming with redirect and entity support
  */
 
 const ROBOTICS_POWERSET = {
     name: "Robotics",
-    category: "Blaster_RANGED",
+    category: "UNKNOWN",
     description: "Robotics powerset",
     icon: "robotics_set.png",
     powers: [
@@ -30,7 +30,8 @@ const ROBOTICS_POWERSET = {
                 cast: 2.03
             }
         },
-        {name: "Pulse Rifle Blast",
+        {
+            name: "Pulse Rifle Blast",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -52,10 +53,11 @@ const ROBOTICS_POWERSET = {
                     type: "Energy",
                     scale: 2.26
                 },
-                buffDuration: 30.0
+                regenerationDebuff: 2.0
             }
         },
-        {name: "Pulse Rifle Burst",
+        {
+            name: "Pulse Rifle Burst",
             available: 1,
             tier: 1,
             maxSlots: 6,
@@ -77,10 +79,11 @@ const ROBOTICS_POWERSET = {
                     type: "Energy",
                     scale: 3.13
                 },
-                buffDuration: 30.0
+                regenerationDebuff: 2.0
             }
         },
-        {name: "Equip Robot",
+        {
+            name: "Equip Robot",
             available: 5,
             tier: 3,
             maxSlots: 6,
@@ -93,16 +96,17 @@ const ROBOTICS_POWERSET = {
             targetType: "Own Pet (Alive)",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 30.0,
             effects: {
                 accuracy: 1.0,
                 range: 50.0,
                 recharge: 6.0,
                 endurance: 11.375,
-                cast: 2.03,
-                buffDuration: 5.6
+                cast: 2.03
             }
         },
-        {name: "Photon Grenade",
+        {
+            name: "Photon Grenade",
             available: 7,
             tier: 3,
             maxSlots: 6,
@@ -115,6 +119,7 @@ const ROBOTICS_POWERSET = {
             targetType: "Foe (Alive)",
             effectArea: "AoE",
             maxTargets: 10,
+            radius: 15.0,
             effects: {
                 accuracy: 1.0,
                 range: 80.0,
@@ -125,10 +130,11 @@ const ROBOTICS_POWERSET = {
                     type: "Energy",
                     scale: 1.6213
                 },
-                buffDuration: 30.0
+                regenerationDebuff: 2.0
             }
         },
-        {name: "Protector Bots",
+        {
+            name: "Protector Bots",
             available: 11,
             tier: 4,
             maxSlots: 6,
@@ -148,7 +154,8 @@ const ROBOTICS_POWERSET = {
                 cast: 2.03
             }
         },
-        {name: "Maintenance Drone",
+        {
+            name: "Maintenance Drone",
             available: 17,
             tier: 4,
             maxSlots: 6,
@@ -168,7 +175,8 @@ const ROBOTICS_POWERSET = {
                 cast: 2.03
             }
         },
-        {name: "Assault Bot",
+        {
+            name: "Assault Bot",
             available: 21,
             tier: 5,
             maxSlots: 6,
@@ -188,7 +196,8 @@ const ROBOTICS_POWERSET = {
                 cast: 2.03
             }
         },
-        {name: "Upgrade Robot",
+        {
+            name: "Upgrade Robot",
             available: 25,
             tier: 5,
             maxSlots: 6,
@@ -201,13 +210,13 @@ const ROBOTICS_POWERSET = {
             targetType: "Own Pet (Alive)",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 30.0,
             effects: {
                 accuracy: 1.0,
                 range: 50.0,
                 recharge: 10.0,
                 endurance: 11.375,
-                cast: 2.03,
-                buffDuration: 11.5
+                cast: 2.03
             }
         }
     ]

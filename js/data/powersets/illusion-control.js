@@ -1,11 +1,11 @@
 /**
- * Illusion Control - Blaster Primary
- * Extracted from raw_data_homecoming with updated converter
+ * Illusion Control
+ * Extracted from raw_data_homecoming with redirect and entity support
  */
 
 const ILLUSION_CONTROL_POWERSET = {
     name: "Illusion Control",
-    category: "Blaster_RANGED",
+    category: "UNKNOWN",
     description: "Illusion Control powerset",
     icon: "illusion-control_set.png",
     powers: [
@@ -31,10 +31,13 @@ const ILLUSION_CONTROL_POWERSET = {
                 damage: {
                     type: "Psionic",
                     scale: 4.8936
-                }
+                },
+                hold: 4.0,
+                sleep: 4.0
             }
         },
-        {name: "Spectral Wounds",
+        {
+            name: "Spectral Wounds",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -55,11 +58,11 @@ const ILLUSION_CONTROL_POWERSET = {
                 damage: {
                     type: "Psionic",
                     scale: 4.7235
-                },
-                buffDuration: 10.0
+                }
             }
         },
-        {name: "Deceive",
+        {
+            name: "Deceive",
             available: 1,
             tier: 1,
             maxSlots: 6,
@@ -76,10 +79,12 @@ const ILLUSION_CONTROL_POWERSET = {
                 range: 80.0,
                 recharge: 8.0,
                 endurance: 8.528,
-                cast: 2.0
+                cast: 2.0,
+                confuse: 1.0
             }
         },
-        {name: "Flash",
+        {
+            name: "Flash",
             available: 5,
             tier: 3,
             maxSlots: 6,
@@ -92,14 +97,17 @@ const ILLUSION_CONTROL_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 30.0,
             effects: {
                 accuracy: 0.8,
                 recharge: 8.0,
                 endurance: 8.528,
-                cast: 3.0
+                cast: 3.0,
+                hold: 4.0
             }
         },
-        {name: "Superior Invisibility",
+        {
+            name: "Superior Invisibility",
             available: 7,
             tier: 3,
             maxSlots: 6,
@@ -115,11 +123,11 @@ const ILLUSION_CONTROL_POWERSET = {
                 accuracy: 1.0,
                 recharge: 2.0,
                 endurance: 0.182,
-                cast: 0.73,
-                buffDuration: 0.75
+                cast: 0.73
             }
         },
-        {name: "Group Invisibility",
+        {
+            name: "Group Invisibility",
             available: 11,
             tier: 4,
             maxSlots: 6,
@@ -132,15 +140,16 @@ const ILLUSION_CONTROL_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 255,
+            radius: 25.0,
             effects: {
                 accuracy: 1.0,
                 recharge: 240.0,
                 endurance: 10.4,
-                cast: 2.03,
-                buffDuration: 120.0
+                cast: 2.03
             }
         },
-        {name: "Phantom Army",
+        {
+            name: "Phantom Army",
             available: 17,
             tier: 4,
             maxSlots: 6,
@@ -158,10 +167,13 @@ const ILLUSION_CONTROL_POWERSET = {
                 recharge: 240.0,
                 endurance: 26.0,
                 cast: 3.1,
-                buffDuration: 60.0
+                resistanceBuff: 100.0,
+                duration: 0.5,
+                healing: 100.0
             }
         },
-        {name: "Spectral Terror",
+        {
+            name: "Spectral Terror",
             available: 21,
             tier: 5,
             maxSlots: 6,
@@ -178,11 +190,11 @@ const ILLUSION_CONTROL_POWERSET = {
                 range: 60.0,
                 recharge: 45.0,
                 endurance: 16.64,
-                cast: 3.2,
-                buffDuration: 45.0
+                cast: 3.2
             }
         },
-        {name: "Phantasm",
+        {
+            name: "Phantasm",
             available: 25,
             tier: 5,
             maxSlots: 6,

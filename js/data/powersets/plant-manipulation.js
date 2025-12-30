@@ -1,11 +1,11 @@
 /**
- * Plant Manipulation - Blaster Primary
- * Extracted from raw_data_homecoming with updated converter
+ * Plant Manipulation
+ * Extracted from raw_data_homecoming with redirect and entity support
  */
 
 const PLANT_MANIPULATION_POWERSET = {
     name: "Plant Manipulation",
-    category: "Blaster_RANGED",
+    category: "UNKNOWN",
     description: "Plant Manipulation powerset",
     icon: "plant-manipulation_set.png",
     powers: [
@@ -33,17 +33,24 @@ const PLANT_MANIPULATION_POWERSET = {
                         {
                             type: "Smashing",
                             scale: 0.24000000000000002,
-                            ticks: 4},
-        {type: "Lethal",
+                            ticks: 4
+                        },
+                        {
+                            type: "Lethal",
                             scale: 0.24000000000000002,
                             ticks: 4
                         }
                     ]
                 },
-                buffDuration: 9.2
+                immobilize: 3.0,
+                resistanceDebuff: 100.0,
+                duration: 15.0,
+                knockback: 1.0,
+                movementDebuff: 1.6
             }
         },
-        {name: "Skewer",
+        {
+            name: "Skewer",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -70,11 +77,12 @@ const PLANT_MANIPULATION_POWERSET = {
                     scale: 0.1,
                     ticks: 3
                 },
-                buffDuration: 3.1,
-                defenseDebuff: 2.0
+                defenseDebuff: 2.0,
+                duration: 6.0
             }
         },
-        {name: "Strangler",
+        {
+            name: "Strangler",
             available: 3,
             tier: 2,
             maxSlots: 6,
@@ -97,10 +105,11 @@ const PLANT_MANIPULATION_POWERSET = {
                     scale: 0.7179,
                     ticks: 4
                 },
-                buffDuration: 4.2
+                hold: 3.0
             }
         },
-        {name: "Toxins",
+        {
+            name: "Toxins",
             available: 9,
             tier: 3,
             maxSlots: 6,
@@ -118,10 +127,11 @@ const PLANT_MANIPULATION_POWERSET = {
                 endurance: 5.2,
                 cast: 1.17,
                 tohitBuff: 2.0,
-                buffDuration: 10.0
+                duration: 10.0
             }
         },
-        {name: "Spore Cloud",
+        {
+            name: "Spore Cloud",
             available: 15,
             tier: 4,
             maxSlots: 6,
@@ -134,6 +144,7 @@ const PLANT_MANIPULATION_POWERSET = {
             targetType: "Foe",
             effectArea: "AoE",
             maxTargets: 10,
+            radius: 10.0,
             effects: {
                 accuracy: 1.0,
                 range: 70.0,
@@ -141,10 +152,12 @@ const PLANT_MANIPULATION_POWERSET = {
                 endurance: 0.26,
                 cast: 3.1,
                 tohitDebuff: 0.75,
-                buffDuration: 0.75
+                duration: 0.75,
+                regenerationDebuff: 1.0
             }
         },
-        {name: "Wild Fortress",
+        {
+            name: "Wild Fortress",
             available: 19,
             tier: 4,
             maxSlots: 6,
@@ -165,10 +178,16 @@ const PLANT_MANIPULATION_POWERSET = {
                     scale: 2.0,
                     ticks: 1
                 },
-                buffDuration: 12.0
+                absorb: 0.15,
+                duration: 12.0,
+                confuse: 1.0,
+                confuseDuration: 2.5,
+                recoveryDebuff: 0.5,
+                resistanceBuff: 2.0
             }
         },
-        {name: "Ripper",
+        {
+            name: "Ripper",
             available: 23,
             tier: 5,
             maxSlots: 6,
@@ -182,6 +201,7 @@ const PLANT_MANIPULATION_POWERSET = {
             effectArea: "Cone",
             maxTargets: 5,
             arc: 1.5708,
+            radius: 7.0,
             effects: {
                 accuracy: 1.0,
                 range: 7.0,
@@ -197,11 +217,13 @@ const PLANT_MANIPULATION_POWERSET = {
                     scale: 0.2,
                     ticks: 4
                 },
-                buffDuration: 4.1,
-                defenseDebuff: 3.0
+                knockback: 1.0,
+                defenseDebuff: 3.0,
+                duration: 12.0
             }
         },
-        {name: "Vines",
+        {
+            name: "Vines",
             available: 27,
             tier: 5,
             maxSlots: 6,
@@ -214,15 +236,18 @@ const PLANT_MANIPULATION_POWERSET = {
             targetType: "Foe (Alive)",
             effectArea: "AoE",
             maxTargets: 10,
+            radius: 15.0,
             effects: {
                 accuracy: 0.8,
                 range: 80.0,
                 recharge: 90.0,
                 endurance: 20.18,
-                cast: 1.17
+                cast: 1.17,
+                hold: 3.0
             }
         },
-        {name: "Thorn Burst",
+        {
+            name: "Thorn Burst",
             available: 29,
             tier: 5,
             maxSlots: 6,
@@ -235,6 +260,7 @@ const PLANT_MANIPULATION_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 10,
+            radius: 15.0,
             effects: {
                 accuracy: 1.0,
                 recharge: 17.0,
@@ -249,8 +275,8 @@ const PLANT_MANIPULATION_POWERSET = {
                     scale: 0.1,
                     ticks: 3
                 },
-                buffDuration: 3.1,
-                defenseDebuff: 3.0
+                defenseDebuff: 3.0,
+                duration: 10.0
             }
         }
     ]

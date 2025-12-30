@@ -1,11 +1,11 @@
 /**
- * Electrical Blast - Blaster Primary
- * Extracted from raw_data_homecoming with updated converter
+ * Electrical Blast
+ * Extracted from raw_data_homecoming with redirect and entity support
  */
 
 const ELECTRICAL_BLAST_POWERSET = {
     name: "Electrical Blast",
-    category: "Blaster_RANGED",
+    category: "UNKNOWN",
     description: "Electrical Blast powerset",
     icon: "electrical-blast_set.png",
     powers: [
@@ -34,7 +34,8 @@ const ELECTRICAL_BLAST_POWERSET = {
                 }
             }
         },
-        {name: "Lightning Bolt",
+        {
+            name: "Lightning Bolt",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -58,7 +59,8 @@ const ELECTRICAL_BLAST_POWERSET = {
                 }
             }
         },
-        {name: "Ball Lightning",
+        {
+            name: "Ball Lightning",
             available: 1,
             tier: 1,
             maxSlots: 6,
@@ -71,6 +73,7 @@ const ELECTRICAL_BLAST_POWERSET = {
             targetType: "Foe (Alive)",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 15.0,
             effects: {
                 accuracy: 1.0,
                 range: 80.0,
@@ -85,11 +88,11 @@ const ELECTRICAL_BLAST_POWERSET = {
                     type: "Energy",
                     scale: 0.1288,
                     ticks: 3
-                },
-                buffDuration: 2.2
+                }
             }
         },
-        {name: "Short Circuit",
+        {
+            name: "Short Circuit",
             available: 5,
             tier: 3,
             maxSlots: 6,
@@ -102,6 +105,7 @@ const ELECTRICAL_BLAST_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 20.0,
             effects: {
                 accuracy: 1.3,
                 recharge: 20.0,
@@ -112,10 +116,11 @@ const ELECTRICAL_BLAST_POWERSET = {
                     scale: 0.3373,
                     ticks: 4
                 },
-                buffDuration: 1.5
+                recoveryDebuff: 1.0
             }
         },
-        {name: "Charge Up",
+        {
+            name: "Charge Up",
             available: 7,
             tier: 3,
             maxSlots: 6,
@@ -133,10 +138,12 @@ const ELECTRICAL_BLAST_POWERSET = {
                 endurance: 5.2,
                 cast: 1.17,
                 tohitBuff: 4.0,
-                buffDuration: 10.0
+                duration: 10.0,
+                recoveryBuff: 0.25
             }
         },
-        {name: "Zapp",
+        {
+            name: "Zapp",
             available: 11,
             tier: 4,
             maxSlots: 6,
@@ -156,7 +163,8 @@ const ELECTRICAL_BLAST_POWERSET = {
                 cast: 1.33
             }
         },
-        {name: "Tesla Cage",
+        {
+            name: "Tesla Cage",
             available: 17,
             tier: 4,
             maxSlots: 6,
@@ -169,6 +177,7 @@ const ELECTRICAL_BLAST_POWERSET = {
             targetType: "Foe (Alive)",
             effectArea: "Chain",
             maxTargets: 1,
+            radius: 10.0,
             effects: {
                 accuracy: 1.0,
                 range: 60.0,
@@ -179,10 +188,12 @@ const ELECTRICAL_BLAST_POWERSET = {
                     type: "Energy",
                     scale: 0.18130000000000002
                 },
-                buffDuration: 8.0
+                recoveryDebuff: 1.0,
+                hold: 3.0
             }
         },
-        {name: "Voltaic Sentinel",
+        {
+            name: "Voltaic Sentinel",
             available: 21,
             tier: 5,
             maxSlots: 6,
@@ -202,7 +213,8 @@ const ELECTRICAL_BLAST_POWERSET = {
                 cast: 3.1
             }
         },
-        {name: "Thunderous Blast",
+        {
+            name: "Thunderous Blast",
             available: 25,
             tier: 5,
             maxSlots: 6,
@@ -215,6 +227,7 @@ const ELECTRICAL_BLAST_POWERSET = {
             targetType: "Foe (Alive)",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 25.0,
             effects: {
                 accuracy: 1.4,
                 range: 60.0,
@@ -227,13 +240,14 @@ const ELECTRICAL_BLAST_POWERSET = {
                             type: "Energy",
                             scale: 4.9475999999999996
                         },
-        {type: "Smashing",
+                        {
+                            type: "Smashing",
                             scale: 1.0
                         }
                     ],
                     scale: 5.9475999999999996
                 },
-                buffDuration: 20.0
+                recoveryDebuff: 1.0
             }
         }
     ]

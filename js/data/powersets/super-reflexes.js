@@ -1,11 +1,11 @@
 /**
- * Super Reflexes - Blaster Primary
- * Extracted from raw_data_homecoming with updated converter
+ * Super Reflexes
+ * Extracted from raw_data_homecoming with redirect and entity support
  */
 
 const SUPER_REFLEXES_POWERSET = {
     name: "Super Reflexes",
-    category: "Blaster_RANGED",
+    category: "UNKNOWN",
     description: "Super Reflexes powerset",
     icon: "super-reflexes_set.png",
     powers: [
@@ -27,11 +27,15 @@ const SUPER_REFLEXES_POWERSET = {
                 recharge: 4.0,
                 endurance: 0.13,
                 cast: 0.67,
-                buffDuration: 0.75,
+                confuse: 1.0,
+                confuseDuration: 0.75,
+                resistanceBuff: 0.4,
+                duration: 0.75,
                 defenseBuff: 0.4
             }
         },
-        {name: "Focused Senses",
+        {
+            name: "Focused Senses",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -48,11 +52,13 @@ const SUPER_REFLEXES_POWERSET = {
                 recharge: 4.0,
                 endurance: 0.13,
                 cast: 2.03,
-                buffDuration: 0.75,
+                resistanceBuff: 0.4,
+                duration: 0.75,
                 defenseBuff: 0.4
             }
         },
-        {name: "Agile",
+        {
+            name: "Agile",
             available: 3,
             tier: 2,
             maxSlots: 6,
@@ -66,11 +72,13 @@ const SUPER_REFLEXES_POWERSET = {
             effectArea: "SingleTarget",
             effects: {
                 accuracy: 1.0,
-                buffDuration: 0.75,
+                resistanceBuff: 0.2,
+                duration: 0.75,
                 defenseBuff: 0.2
             }
         },
-        {name: "Practiced Brawler",
+        {
+            name: "Practiced Brawler",
             available: 9,
             tier: 3,
             maxSlots: 6,
@@ -87,14 +95,25 @@ const SUPER_REFLEXES_POWERSET = {
                 recharge: 200.0,
                 endurance: 10.4,
                 cast: 1.53,
-                buffDuration: 120.0,
+                resistanceBuff: 0.5,
+                duration: 120.0,
+                knockback: 1.0,
+                hold: 1.0,
+                holdDuration: 120.0,
                 stun: 1.0,
                 stunDuration: 120.0,
+                immobilize: 1.0,
+                immobilizeDuration: 120.0,
+                sleep: 1.0,
+                sleepDuration: 120.0,
+                defenseBuff: 0.3,
                 tohitBuff: 0.3,
-                defenseBuff: 0.3
+                rechargeBuff: 0.3,
+                movementBuff: 0.5
             }
         },
-        {name: "Dodge",
+        {
+            name: "Dodge",
             available: 15,
             tier: 4,
             maxSlots: 6,
@@ -108,11 +127,13 @@ const SUPER_REFLEXES_POWERSET = {
             effectArea: "SingleTarget",
             effects: {
                 accuracy: 1.0,
-                buffDuration: 0.75,
+                resistanceBuff: 0.2,
+                duration: 0.75,
                 defenseBuff: 0.2
             }
         },
-        {name: "Quickness",
+        {
+            name: "Quickness",
             available: 19,
             tier: 4,
             maxSlots: 6,
@@ -126,10 +147,14 @@ const SUPER_REFLEXES_POWERSET = {
             effectArea: "SingleTarget",
             effects: {
                 accuracy: 1.0,
-                buffDuration: 10.25
+                rechargeBuff: 0.4,
+                duration: 10.25,
+                movementBuff: 0.1,
+                resistanceBuff: 0.4
             }
         },
-        {name: "Lucky",
+        {
+            name: "Lucky",
             available: 23,
             tier: 5,
             maxSlots: 6,
@@ -143,11 +168,13 @@ const SUPER_REFLEXES_POWERSET = {
             effectArea: "SingleTarget",
             effects: {
                 accuracy: 1.0,
-                buffDuration: 0.75,
+                resistanceBuff: 0.2,
+                duration: 0.75,
                 defenseBuff: 0.2
             }
         },
-        {name: "Evasion",
+        {
+            name: "Evasion",
             available: 27,
             tier: 5,
             maxSlots: 6,
@@ -164,11 +191,13 @@ const SUPER_REFLEXES_POWERSET = {
                 recharge: 4.0,
                 endurance: 0.13,
                 cast: 3.0,
-                buffDuration: 0.75,
+                resistanceBuff: 0.4,
+                duration: 0.75,
                 defenseBuff: 0.4
             }
         },
-        {name: "Elude",
+        {
+            name: "Elude",
             available: 29,
             tier: 5,
             maxSlots: 6,
@@ -185,8 +214,12 @@ const SUPER_REFLEXES_POWERSET = {
                 recharge: 1000.0,
                 endurance: 2.6,
                 cast: 2.0,
-                buffDuration: 180.0,
-                defenseBuff: 1.0
+                recoveryBuff: 1.0,
+                duration: 180.0,
+                movementBuff: 0.5,
+                resistanceBuff: 1.0,
+                defenseBuff: 1.0,
+                recoveryDebuff: 100.0
             }
         }
     ]

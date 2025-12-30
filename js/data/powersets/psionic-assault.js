@@ -1,11 +1,11 @@
 /**
- * Psionic Assault - Blaster Primary
- * Extracted from raw_data_homecoming with updated converter
+ * Psionic Assault
+ * Extracted from raw_data_homecoming with redirect and entity support
  */
 
 const PSIONIC_ASSAULT_POWERSET = {
     name: "Psionic Assault",
-    category: "Blaster_RANGED",
+    category: "UNKNOWN",
     description: "Psionic Assault powerset",
     icon: "psionic-assault_set.png",
     powers: [
@@ -32,10 +32,12 @@ const PSIONIC_ASSAULT_POWERSET = {
                     type: "Psionic",
                     scale: 3.5789999999999997
                 },
-                buffDuration: 6.0
+                rechargeDebuff: 0.4,
+                duration: 6.0
             }
         },
-        {name: "Psionic Dart",
+        {
+            name: "Psionic Dart",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -57,10 +59,12 @@ const PSIONIC_ASSAULT_POWERSET = {
                     type: "Psionic",
                     scale: 1.9409999999999998
                 },
-                buffDuration: 5.0
+                rechargeDebuff: 0.3,
+                duration: 5.0
             }
         },
-        {name: "Telekinetic Thrust",
+        {
+            name: "Telekinetic Thrust",
             available: 3,
             tier: 2,
             maxSlots: 6,
@@ -84,15 +88,18 @@ const PSIONIC_ASSAULT_POWERSET = {
                             type: "Psionic",
                             scale: 2.145
                         },
-        {type: "Smashing",
+                        {
+                            type: "Smashing",
                             scale: 0.715
                         }
                     ],
                     scale: 2.86
-                }
+                },
+                knockback: 1.0
             }
         },
-        {name: "Mental Blast",
+        {
+            name: "Mental Blast",
             available: 9,
             tier: 3,
             maxSlots: 6,
@@ -114,10 +121,12 @@ const PSIONIC_ASSAULT_POWERSET = {
                     type: "Psionic",
                     scale: 3.5290999999999997
                 },
-                buffDuration: 6.0
+                rechargeDebuff: 0.3,
+                duration: 6.0
             }
         },
-        {name: "Psychic Scream",
+        {
+            name: "Psychic Scream",
             available: 15,
             tier: 4,
             maxSlots: 6,
@@ -131,6 +140,7 @@ const PSIONIC_ASSAULT_POWERSET = {
             effectArea: "Cone",
             maxTargets: 10,
             arc: 0.5236,
+            radius: 60.0,
             effects: {
                 accuracy: 1.0,
                 range: 60.0,
@@ -141,10 +151,12 @@ const PSIONIC_ASSAULT_POWERSET = {
                     type: "Psionic",
                     scale: 2.3617
                 },
-                buffDuration: 10.0
+                rechargeDebuff: 0.5,
+                duration: 10.0
             }
         },
-        {name: "Drain Psyche",
+        {
+            name: "Drain Psyche",
             available: 19,
             tier: 4,
             maxSlots: 6,
@@ -157,15 +169,21 @@ const PSIONIC_ASSAULT_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 10,
+            radius: 10.0,
             effects: {
                 accuracy: 1.0,
                 recharge: 120.0,
                 endurance: 13.0,
                 cast: 1.33,
-                buffDuration: 30.0
+                regenerationBuff: 1.0,
+                duration: 30.0,
+                recoveryBuff: 1.0,
+                regenerationDebuff: 5.0,
+                recoveryDebuff: 0.8
             }
         },
-        {name: "Subdue",
+        {
+            name: "Subdue",
             available: 23,
             tier: 5,
             maxSlots: 6,
@@ -186,10 +204,12 @@ const PSIONIC_ASSAULT_POWERSET = {
                 damage: {
                     type: "Psionic",
                     scale: 3.5476
-                }
+                },
+                immobilize: 1.0
             }
         },
-        {name: "Psionic Lance",
+        {
+            name: "Psionic Lance",
             available: 27,
             tier: 5,
             maxSlots: 6,
@@ -209,7 +229,8 @@ const PSIONIC_ASSAULT_POWERSET = {
                 cast: 1.33
             }
         },
-        {name: "Psychic Shockwave",
+        {
+            name: "Psychic Shockwave",
             available: 29,
             tier: 5,
             maxSlots: 6,
@@ -222,6 +243,7 @@ const PSIONIC_ASSAULT_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 15.0,
             effects: {
                 accuracy: 1.0,
                 recharge: 20.0,
@@ -232,7 +254,8 @@ const PSIONIC_ASSAULT_POWERSET = {
                     scale: 2.5690999999999997
                 },
                 stun: 1.0,
-                buffDuration: 20.0
+                rechargeDebuff: 0.5,
+                duration: 20.0
             }
         }
     ]

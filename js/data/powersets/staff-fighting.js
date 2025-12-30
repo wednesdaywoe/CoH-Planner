@@ -1,11 +1,11 @@
 /**
- * Staff Fighting - Blaster Primary
- * Extracted from raw_data_homecoming with updated converter
+ * Staff Fighting
+ * Extracted from raw_data_homecoming with redirect and entity support
  */
 
 const STAFF_FIGHTING_POWERSET = {
     name: "Staff Fighting",
-    category: "Blaster_RANGED",
+    category: "UNKNOWN",
     description: "Staff Fighting powerset",
     icon: "staff-fighting_set.png",
     powers: [
@@ -25,11 +25,11 @@ const STAFF_FIGHTING_POWERSET = {
             effects: {
                 accuracy: 1.0,
                 recharge: 4.0,
-                cast: 0.63,
-                buffDuration: 1.25
+                cast: 0.63
             }
         },
-        {name: "Form of the Mind",
+        {
+            name: "Form of the Mind",
             available: -1,
             tier: 2,
             maxSlots: 0,
@@ -44,11 +44,11 @@ const STAFF_FIGHTING_POWERSET = {
             effects: {
                 accuracy: 1.0,
                 recharge: 4.0,
-                cast: 0.63,
-                buffDuration: 1.25
+                cast: 0.63
             }
         },
-        {name: "Form of the Soul",
+        {
+            name: "Form of the Soul",
             available: -1,
             tier: 2,
             maxSlots: 0,
@@ -63,11 +63,11 @@ const STAFF_FIGHTING_POWERSET = {
             effects: {
                 accuracy: 1.0,
                 recharge: 4.0,
-                cast: 0.63,
-                buffDuration: 1.25
+                cast: 0.63
             }
         },
-        {name: "Mercurial Blow",
+        {
+            name: "Mercurial Blow",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -87,7 +87,8 @@ const STAFF_FIGHTING_POWERSET = {
                 cast: 1.0
             }
         },
-        {name: "Precise Strike",
+        {
+            name: "Precise Strike",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -107,7 +108,8 @@ const STAFF_FIGHTING_POWERSET = {
                 cast: 1.13
             }
         },
-        {name: "Guarded Spin",
+        {
+            name: "Guarded Spin",
             available: 1,
             tier: 1,
             maxSlots: 6,
@@ -121,16 +123,17 @@ const STAFF_FIGHTING_POWERSET = {
             effectArea: "Cone",
             maxTargets: 5,
             arc: 1.5708,
+            radius: 9.0,
             effects: {
                 accuracy: 1.05,
                 range: 9.0,
                 recharge: 8.0,
                 endurance: 8.528,
-                cast: 1.83,
-                buffDuration: 10.0
+                cast: 1.83
             }
         },
-        {name: "Eye of the Storm",
+        {
+            name: "Eye of the Storm",
             available: 5,
             tier: 3,
             maxSlots: 6,
@@ -143,6 +146,7 @@ const STAFF_FIGHTING_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 10,
+            radius: 10.0,
             effects: {
                 accuracy: 1.05,
                 recharge: 17.0,
@@ -150,7 +154,8 @@ const STAFF_FIGHTING_POWERSET = {
                 cast: 2.57
             }
         },
-        {name: "Staff Mastery",
+        {
+            name: "Staff Mastery",
             available: 7,
             tier: 3,
             maxSlots: 0,
@@ -163,11 +168,11 @@ const STAFF_FIGHTING_POWERSET = {
             targetType: "Self",
             effectArea: "SingleTarget",
             effects: {
-                accuracy: 1.0,
-                buffDuration: 10.25
+                accuracy: 1.0
             }
         },
-        {name: "Confront",
+        {
+            name: "Confront",
             available: 11,
             tier: 4,
             maxSlots: 6,
@@ -183,11 +188,11 @@ const STAFF_FIGHTING_POWERSET = {
                 accuracy: 1.0,
                 range: 70.0,
                 recharge: 3.0,
-                cast: 2.0,
-                buffDuration: 12.0
+                cast: 2.0
             }
         },
-        {name: "Serpent's Reach",
+        {
+            name: "Serpent's Reach",
             available: 17,
             tier: 4,
             maxSlots: 6,
@@ -211,7 +216,8 @@ const STAFF_FIGHTING_POWERSET = {
                 }
             }
         },
-        {name: "Innocuous Strikes",
+        {
+            name: "Innocuous Strikes",
             available: 21,
             tier: 5,
             maxSlots: 6,
@@ -225,6 +231,7 @@ const STAFF_FIGHTING_POWERSET = {
             effectArea: "Cone",
             maxTargets: 5,
             arc: 1.5708,
+            radius: 9.0,
             effects: {
                 accuracy: 1.05,
                 range: 9.0,
@@ -233,7 +240,8 @@ const STAFF_FIGHTING_POWERSET = {
                 cast: 2.17
             }
         },
-        {name: "Sky Splitter",
+        {
+            name: "Sky Splitter",
             available: 25,
             tier: 5,
             maxSlots: 6,

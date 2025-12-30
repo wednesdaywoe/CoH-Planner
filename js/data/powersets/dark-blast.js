@@ -1,15 +1,43 @@
 /**
- * Dark Blast - Blaster Primary
- * Extracted from raw_data_homecoming with updated converter
+ * Dark Blast
+ * Extracted from raw_data_homecoming with redirect and entity support
  */
 
 const DARK_BLAST_POWERSET = {
     name: "Dark Blast",
-    category: "Blaster_RANGED",
+    category: "UNKNOWN",
     description: "Dark Blast powerset",
     icon: "dark-blast_set.png",
     powers: [
-        {name: "Gloom",
+        {
+            name: "Dark Blast",
+            available: 0,
+            tier: 1,
+            maxSlots: 6,
+            allowedEnhancements: ["EnduranceReduction", "Range", "Recharge", "Damage", "Accuracy"],
+            allowedSetCategories: ["Accurate To-Hit Debuff", "Blaster Archetype Sets", "Ranged Damage", "To Hit Debuff", "Universal Damage Sets"],
+            description: "A long range blast of dark energy. Deals moderate Negative Energy damage and reduces the target's chance to hit.",
+            shortHelp: "Ranged, DMG(Negative), Foe -To Hit",
+            icon: "darkcast_darkblast.png",
+            powerType: "Click",
+            targetType: "Foe (Alive)",
+            effectArea: "SingleTarget",
+            effects: {
+                accuracy: 1.0,
+                range: 80.0,
+                recharge: 4.0,
+                endurance: 5.2,
+                cast: 1.0,
+                damage: {
+                    type: "Negative",
+                    scale: 2.2602
+                },
+                tohitDebuff: 0.75,
+                duration: 6.0
+            }
+        },
+        {
+            name: "Gloom",
             available: 0,
             tier: 1,
             maxSlots: 6,
@@ -32,11 +60,12 @@ const DARK_BLAST_POWERSET = {
                     scale: 0.4063,
                     ticks: 7
                 },
-                buffDuration: 3.6,
-                tohitDebuff: 0.75
+                tohitDebuff: 0.75,
+                duration: 10.0
             }
         },
-        {name: "Umbral Torrent",
+        {
+            name: "Umbral Torrent",
             available: 1,
             tier: 1,
             maxSlots: 6,
@@ -50,6 +79,7 @@ const DARK_BLAST_POWERSET = {
             effectArea: "Cone",
             maxTargets: 10,
             arc: 0.5236,
+            radius: 80.0,
             effects: {
                 accuracy: 1.0,
                 range: 80.0,
@@ -60,11 +90,13 @@ const DARK_BLAST_POWERSET = {
                     type: "Negative",
                     scale: 1.4784
                 },
+                knockback: 1.0,
                 tohitDebuff: 0.75,
-                buffDuration: 10.0
+                duration: 10.0
             }
         },
-        {name: "Aim",
+        {
+            name: "Aim",
             available: 5,
             tier: 3,
             maxSlots: 6,
@@ -82,10 +114,11 @@ const DARK_BLAST_POWERSET = {
                 endurance: 5.2,
                 cast: 1.17,
                 tohitBuff: 5.0,
-                buffDuration: 10.0
+                duration: 10.0
             }
         },
-        {name: "Moonbeam",
+        {
+            name: "Moonbeam",
             available: 7,
             tier: 3,
             maxSlots: 6,
@@ -105,7 +138,8 @@ const DARK_BLAST_POWERSET = {
                 cast: 1.33
             }
         },
-        {name: "Tenebrous Tentacles",
+        {
+            name: "Tenebrous Tentacles",
             available: 11,
             tier: 4,
             maxSlots: 6,
@@ -119,6 +153,7 @@ const DARK_BLAST_POWERSET = {
             effectArea: "Cone",
             maxTargets: 10,
             arc: 0.6981,
+            radius: 40.0,
             effects: {
                 accuracy: 1.0,
                 range: 40.0,
@@ -134,11 +169,13 @@ const DARK_BLAST_POWERSET = {
                     scale: 0.3104,
                     ticks: 7
                 },
-                buffDuration: 7.1,
-                tohitDebuff: 0.75
+                immobilize: 3.0,
+                tohitDebuff: 0.75,
+                duration: 8.0
             }
         },
-        {name: "Abyssal Gaze",
+        {
+            name: "Abyssal Gaze",
             available: 17,
             tier: 4,
             maxSlots: 6,
@@ -162,10 +199,12 @@ const DARK_BLAST_POWERSET = {
                     ticks: 2
                 },
                 tohitDebuff: 0.75,
-                buffDuration: 10.0
+                duration: 10.0,
+                hold: 3.0
             }
         },
-        {name: "Life Drain",
+        {
+            name: "Life Drain",
             available: 21,
             tier: 5,
             maxSlots: 6,
@@ -187,11 +226,13 @@ const DARK_BLAST_POWERSET = {
                     type: "Negative",
                     scale: 3.7112999999999996
                 },
+                healing: 1.0,
                 tohitDebuff: 0.75,
-                buffDuration: 10.0
+                duration: 10.0
             }
         },
-        {name: "Blackstar",
+        {
+            name: "Blackstar",
             available: 25,
             tier: 5,
             maxSlots: 6,
@@ -204,6 +245,7 @@ const DARK_BLAST_POWERSET = {
             targetType: "Self",
             effectArea: "AoE",
             maxTargets: 16,
+            radius: 25.0,
             effects: {
                 accuracy: 1.4,
                 recharge: 145.0,
@@ -214,7 +256,7 @@ const DARK_BLAST_POWERSET = {
                     scale: 5.4065
                 },
                 tohitDebuff: 5.0,
-                buffDuration: 20.0
+                duration: 20.0
             }
         }
     ]
