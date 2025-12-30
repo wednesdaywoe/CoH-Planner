@@ -40,17 +40,7 @@ const FIRE_BLAST_POWERSET = {
                 buffDuration: 3.1
             }
         },
-        {
-            name: "Fire Blast",
-            available: 0,
-            tier: 1,
-            maxSlots: 6,
-            allowedEnhancements: ["Damage", "Accuracy", "Recharge", "EnduranceReduction"],
-            allowedSetCategories: [],
-            description: "Fire Blast allows you to blast fire at foes, with a tendency to set them ablaze for added damage over time.",
-            shortHelp: "Fire Blast",
-            icon: "fire_blast_set.png"
-        },
+
         {
             name: "Flares",
             available: 0,

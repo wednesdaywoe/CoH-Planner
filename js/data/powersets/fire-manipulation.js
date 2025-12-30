@@ -9,17 +9,7 @@ const FIRE_MANIPULATION_POWERSET = {
     description: "Fire Manipulation powerset",
     icon: "fire-manipulation_set.png",
     powers: [
-        {
-            name: "Fire Manipulation",
-            available: 0,
-            tier: 1,
-            maxSlots: 6,
-            allowedEnhancements: ["Damage", "Accuracy", "Recharge", "EnduranceReduction"],
-            allowedSetCategories: [],
-            description: "Fire Manipulation lets you surround yourself with various manifestations of fire and flames, assaulting and burning nearby foes. Fire Manipulation powers tend to set foes ablaze for added damage over time.",
-            shortHelp: "Fire Manipulation",
-            icon: "fire_manipulation_set.png"
-        },
+        
         {
             name: "Fire Sword",
             available: 0,
