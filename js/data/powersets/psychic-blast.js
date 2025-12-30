@@ -32,7 +32,6 @@ const PSYCHIC_BLAST_POWERSET = {
                     type: "Psionic",
                     scale: 2.2602
                 }
-        }
         },
         {name: "Mental Blast",
             available: 0,
@@ -58,7 +57,6 @@ const PSYCHIC_BLAST_POWERSET = {
                 },
                 buffDuration: 6.0
             }
-        }
         },
         {name: "Telekinetic Blast",
             available: 1,
@@ -90,7 +88,6 @@ const PSYCHIC_BLAST_POWERSET = {
                     ],
                     scale: 3.4602
                 }
-        }
         },
         {name: "Psionic Darts",
             available: 5,
@@ -118,7 +115,6 @@ const PSYCHIC_BLAST_POWERSET = {
                 },
                 buffDuration: 6.0
             }
-        }
         },
         {name: "Psychic Focus",
             available: 7,
@@ -140,7 +136,6 @@ const PSYCHIC_BLAST_POWERSET = {
                 tohitBuff: 5.0,
                 buffDuration: 10.0
             }
-        }
         },
         {name: "Psionic Lance",
             available: 11,
@@ -161,7 +156,6 @@ const PSYCHIC_BLAST_POWERSET = {
                 endurance: 14.352,
                 cast: 1.33
             }
-        }
         },
         {name: "Psionic Tornado",
             available: 17,
@@ -188,7 +182,6 @@ const PSYCHIC_BLAST_POWERSET = {
                 },
                 buffDuration: 10.0
             }
-        }
         },
         {name: "Scramble Minds",
             available: 21,
@@ -213,7 +206,6 @@ const PSYCHIC_BLAST_POWERSET = {
                     type: "Psionic",
                     scale: 4.0862
                 }
-        }
         },
         {name: "Psychic Wail",
             available: 25,

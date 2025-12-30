@@ -28,7 +28,6 @@ const STAFF_FIGHTING_POWERSET = {
                 cast: 0.63,
                 buffDuration: 1.25
             }
-        }
         },
         {name: "Form of the Mind",
             available: -1,
@@ -48,7 +47,6 @@ const STAFF_FIGHTING_POWERSET = {
                 cast: 0.63,
                 buffDuration: 1.25
             }
-        }
         },
         {name: "Form of the Soul",
             available: -1,
@@ -68,7 +66,6 @@ const STAFF_FIGHTING_POWERSET = {
                 cast: 0.63,
                 buffDuration: 1.25
             }
-        }
         },
         {name: "Mercurial Blow",
             available: 0,
@@ -89,7 +86,6 @@ const STAFF_FIGHTING_POWERSET = {
                 endurance: 4.368,
                 cast: 1.0
             }
-        }
         },
         {name: "Precise Strike",
             available: 0,
@@ -110,7 +106,6 @@ const STAFF_FIGHTING_POWERSET = {
                 endurance: 6.864,
                 cast: 1.13
             }
-        }
         },
         {name: "Guarded Spin",
             available: 1,
@@ -134,7 +129,6 @@ const STAFF_FIGHTING_POWERSET = {
                 cast: 1.83,
                 buffDuration: 10.0
             }
-        }
         },
         {name: "Eye of the Storm",
             available: 5,
@@ -155,7 +149,6 @@ const STAFF_FIGHTING_POWERSET = {
                 endurance: 16.016,
                 cast: 2.57
             }
-        }
         },
         {name: "Staff Mastery",
             available: 7,
@@ -173,7 +166,6 @@ const STAFF_FIGHTING_POWERSET = {
                 accuracy: 1.0,
                 buffDuration: 10.25
             }
-        }
         },
         {name: "Confront",
             available: 11,
@@ -194,7 +186,6 @@ const STAFF_FIGHTING_POWERSET = {
                 cast: 2.0,
                 buffDuration: 12.0
             }
-        }
         },
         {name: "Serpent's Reach",
             available: 17,
@@ -218,7 +209,6 @@ const STAFF_FIGHTING_POWERSET = {
                     type: "Smashing",
                     scale: 1.9989
                 }
-        }
         },
         {name: "Innocuous Strikes",
             available: 21,
@@ -241,7 +231,6 @@ const STAFF_FIGHTING_POWERSET = {
                 endurance: 10.192,
                 cast: 2.17
             }
-        }
         },
         {name: "Sky Splitter",
             available: 25,

@@ -34,7 +34,6 @@ const STORM_BLAST_POWERSET = {
                 },
                 buffDuration: 4.0
             }
-        }
         },
         {name: "Hailstones",
             available: 0,
@@ -65,7 +64,6 @@ const STORM_BLAST_POWERSET = {
                 },
                 buffDuration: 1.0
             }
-        }
         },
         {name: "Jet Stream",
             available: 1,
@@ -91,7 +89,6 @@ const STORM_BLAST_POWERSET = {
                     type: "Smashing",
                     scale: 1.6037
                 }
-        }
         },
         {name: "Storm Cell",
             available: 5,
@@ -113,7 +110,6 @@ const STORM_BLAST_POWERSET = {
                 cast: 2.03,
                 buffDuration: 60.0
             }
-        }
         },
         {name: "Intensify",
             available: 7,
@@ -135,7 +131,6 @@ const STORM_BLAST_POWERSET = {
                 tohitBuff: 5.0,
                 buffDuration: 10.0
             }
-        }
         },
         {name: "Direct Strike",
             available: 11,
@@ -156,7 +151,6 @@ const STORM_BLAST_POWERSET = {
                 endurance: 14.352,
                 cast: 1.33
             }
-        }
         },
         {name: "Chain Lightning",
             available: 17,
@@ -188,7 +182,6 @@ const STORM_BLAST_POWERSET = {
                 },
                 buffDuration: 2.1
             }
-        }
         },
         {name: "Cloudburst",
             available: 21,
@@ -215,7 +208,6 @@ const STORM_BLAST_POWERSET = {
                 },
                 buffDuration: 2.9
             }
-        }
         },
         {name: "Category Five",
             available: 25,

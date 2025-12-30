@@ -39,7 +39,6 @@ const FIERY_MELEE_POWERSET = {
                 buffDuration: 3.1,
                 defenseDebuff: 0.5
             }
-        }
         },
         {name: "Scorch",
             available: 0,
@@ -70,7 +69,6 @@ const FIERY_MELEE_POWERSET = {
                 },
                 buffDuration: 2.1
             }
-        }
         },
         {name: "Cremate",
             available: 1,
@@ -101,7 +99,6 @@ const FIERY_MELEE_POWERSET = {
                 },
                 buffDuration: 3.1
             }
-        }
         },
         {name: "Build Up",
             available: 5,
@@ -123,7 +120,6 @@ const FIERY_MELEE_POWERSET = {
                 tohitBuff: 2.0,
                 buffDuration: 10.0
             }
-        }
         },
         {name: "Breath of Fire",
             available: 7,
@@ -152,7 +148,6 @@ const FIERY_MELEE_POWERSET = {
                 },
                 buffDuration: 0.6
             }
-        }
         },
         {name: "Confront",
             available: 11,
@@ -173,7 +168,6 @@ const FIERY_MELEE_POWERSET = {
                 cast: 1.67,
                 buffDuration: 12.0
             }
-        }
         },
         {name: "Fire Sword Circle",
             available: 17,
@@ -205,7 +199,6 @@ const FIERY_MELEE_POWERSET = {
                 buffDuration: 3.1,
                 defenseDebuff: 0.5
             }
-        }
         },
         {name: "Incinerate",
             available: 21,
@@ -232,7 +225,6 @@ const FIERY_MELEE_POWERSET = {
                 },
                 buffDuration: 4.6
             }
-        }
         },
         {name: "Greater Fire Sword",
             available: 25,

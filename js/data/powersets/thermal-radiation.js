@@ -48,7 +48,6 @@ const THERMAL_RADIATION_POWERSET = {
                 },
                 buffDuration: 240.0
             }
-        }
         },
         {name: "Warmth",
             available: 0,
@@ -69,7 +68,6 @@ const THERMAL_RADIATION_POWERSET = {
                 endurance: 13.0,
                 cast: 2.03
             }
-        }
         },
         {name: "Cauterize",
             available: 1,
@@ -90,7 +88,6 @@ const THERMAL_RADIATION_POWERSET = {
                 endurance: 13.0,
                 cast: 2.27
             }
-        }
         },
         {name: "Plasma Shield",
             available: 5,
@@ -128,7 +125,6 @@ const THERMAL_RADIATION_POWERSET = {
                 },
                 buffDuration: 240.0
             }
-        }
         },
         {name: "Power of the Phoenix",
             available: 7,
@@ -150,7 +146,6 @@ const THERMAL_RADIATION_POWERSET = {
                 cast: 1.67,
                 buffDuration: 0.5
             }
-        }
         },
         {name: "Thaw",
             available: 11,
@@ -179,7 +174,6 @@ const THERMAL_RADIATION_POWERSET = {
                 stunDuration: 90.0,
                 buffDuration: 90.0
             }
-        }
         },
         {name: "Forge",
             available: 17,
@@ -202,7 +196,6 @@ const THERMAL_RADIATION_POWERSET = {
                 tohitBuff: 2.0,
                 buffDuration: 120.0
             }
-        }
         },
         {name: "Heat Exhaustion",
             available: 21,
@@ -224,7 +217,6 @@ const THERMAL_RADIATION_POWERSET = {
                 cast: 2.07,
                 buffDuration: 40.0
             }
-        }
         },
         {name: "Melt Armor",
             available: 25,

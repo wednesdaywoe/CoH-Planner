@@ -29,7 +29,6 @@ const RADIATION_ARMOR_POWERSET = {
                 cast: 0.67,
                 buffDuration: 0.75
             }
-        }
         },
         {name: "Gamma Boost",
             available: 0,
@@ -47,7 +46,6 @@ const RADIATION_ARMOR_POWERSET = {
                 accuracy: 1.0,
                 buffDuration: 1.25
             }
-        }
         },
         {name: "Proton Armor",
             available: 3,
@@ -68,7 +66,6 @@ const RADIATION_ARMOR_POWERSET = {
                 cast: 0.67,
                 buffDuration: 0.75
             }
-        }
         },
         {name: "Fallout Shelter",
             available: 9,
@@ -92,7 +89,6 @@ const RADIATION_ARMOR_POWERSET = {
                 buffDuration: 0.75,
                 tohitBuff: 0.3
             }
-        }
         },
         {name: "Radiation Therapy",
             available: 15,
@@ -113,7 +109,6 @@ const RADIATION_ARMOR_POWERSET = {
                 endurance: 13.0,
                 cast: 1.03
             }
-        }
         },
         {name: "Beta Decay",
             available: 19,
@@ -137,7 +132,6 @@ const RADIATION_ARMOR_POWERSET = {
                 buffDuration: 1.0,
                 defenseDebuff: 1.5
             }
-        }
         },
         {name: "Particle Shielding",
             available: 23,
@@ -158,7 +152,6 @@ const RADIATION_ARMOR_POWERSET = {
                 cast: 0.73,
                 buffDuration: 60.0
             }
-        }
         },
         {name: "Ground Zero",
             available: 27,
@@ -179,7 +172,6 @@ const RADIATION_ARMOR_POWERSET = {
                 endurance: 13.0,
                 cast: 3.0
             }
-        }
         },
         {name: "Meltdown",
             available: 29,

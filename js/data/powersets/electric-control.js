@@ -34,7 +34,6 @@ const ELECTRIC_CONTROL_POWERSET = {
                 },
                 buffDuration: 9.2
             }
-        }
         },
         {name: "Tesla Cage",
             available: 0,
@@ -60,7 +59,6 @@ const ELECTRIC_CONTROL_POWERSET = {
                 },
                 buffDuration: 4.0
             }
-        }
         },
         {name: "Chain Fences",
             available: 1,
@@ -92,7 +90,6 @@ const ELECTRIC_CONTROL_POWERSET = {
                 },
                 buffDuration: 5.2
             }
-        }
         },
         {name: "Jolting Chain",
             available: 5,
@@ -119,7 +116,6 @@ const ELECTRIC_CONTROL_POWERSET = {
                 },
                 buffDuration: 8.0
             }
-        }
         },
         {name: "Conductive Aura",
             available: 7,
@@ -140,7 +136,6 @@ const ELECTRIC_CONTROL_POWERSET = {
                 cast: 2.03,
                 buffDuration: 2.25
             }
-        }
         },
         {name: "Static Field",
             available: 11,
@@ -162,7 +157,6 @@ const ELECTRIC_CONTROL_POWERSET = {
                 cast: 2.03,
                 buffDuration: 25.0
             }
-        }
         },
         {name: "Tesla Coil",
             available: 17,
@@ -183,7 +177,6 @@ const ELECTRIC_CONTROL_POWERSET = {
                 endurance: 15.6,
                 cast: 1.67
             }
-        }
         },
         {name: "Synaptic Overload",
             available: 21,
@@ -206,7 +199,6 @@ const ELECTRIC_CONTROL_POWERSET = {
                 cast: 2.0,
                 buffDuration: 8.0
             }
-        }
         },
         {name: "Gremlins",
             available: 25,

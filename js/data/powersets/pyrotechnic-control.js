@@ -41,7 +41,6 @@ const PYROTECHNIC_CONTROL_POWERSET = {
                     scale: 3.2536000000000005
                 }
             }
-        }
         },
         {name: "Sparkling Cage",
             available: 0,
@@ -75,7 +74,6 @@ const PYROTECHNIC_CONTROL_POWERSET = {
                 },
                 buffDuration: 9.2
             }
-        }
         },
         {name: "Sparkling Chain",
             available: 1,
@@ -98,7 +96,6 @@ const PYROTECHNIC_CONTROL_POWERSET = {
                 cast: 1.03,
                 buffDuration: 1.1
             }
-        }
         },
         {name: "Glittering Column",
             available: 5,
@@ -120,7 +117,6 @@ const PYROTECHNIC_CONTROL_POWERSET = {
                 cast: 1.17,
                 buffDuration: 7.0
             }
-        }
         },
         {name: "Hypnotizing Lights",
             available: 7,
@@ -143,7 +139,6 @@ const PYROTECHNIC_CONTROL_POWERSET = {
                 endurance: 8.582,
                 cast: 1.67
             }
-        }
         },
         {name: "Brilliant Barrage",
             available: 11,
@@ -165,7 +160,6 @@ const PYROTECHNIC_CONTROL_POWERSET = {
                 endurance: 15.6,
                 cast: 1.67
             }
-        }
         },
         {name: "Incendiary Aura",
             available: 17,
@@ -189,7 +183,6 @@ const PYROTECHNIC_CONTROL_POWERSET = {
                 buffDuration: 0.45,
                 defenseDebuff: 0.75
             }
-        }
         },
         {name: "Explosive Bouquet",
             available: 21,
@@ -211,7 +204,6 @@ const PYROTECHNIC_CONTROL_POWERSET = {
                 endurance: 8.528,
                 cast: 2.93
             }
-        }
         },
         {name: "Catherine Wheel",
             available: 25,

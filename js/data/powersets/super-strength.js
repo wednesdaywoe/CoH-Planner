@@ -29,7 +29,6 @@ POWERSETS['super-strength'] = {
                                 "damage": {
                                             "scale": 0.68
                                 }
-                    }
         },
         {
                     "name": "Punch",
@@ -51,7 +50,6 @@ POWERSETS['super-strength'] = {
                                 "damage": {
                                             "scale": 1.0
                                 }
-                    }
         },
         {
                     "name": "Haymaker",
@@ -73,7 +71,6 @@ POWERSETS['super-strength'] = {
                                 "damage": {
                                             "scale": 1.64
                                 }
-                    }
         },
         {
                     "name": "Taunt",
@@ -110,7 +107,6 @@ POWERSETS['super-strength'] = {
                                 "damage": {
                                             "scale": 0.4871
                                 }
-                    }
         },
         {
                     "name": "Knockout Blow",
@@ -133,7 +129,6 @@ POWERSETS['super-strength'] = {
                                 "damage": {
                                             "scale": 3.56
                                 }
-                    }
         },
         {
                     "name": "Rage",
@@ -179,7 +174,6 @@ POWERSETS['super-strength'] = {
                                 "damage": {
                                             "scale": 1.64
                                 }
-                    }
         },
         {
                     "name": "Foot Stomp",

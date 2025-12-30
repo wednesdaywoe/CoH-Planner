@@ -42,7 +42,6 @@ const ENERGY_ASSAULT_POWERSET = {
                 },
                 buffDuration: 15.0
             }
-        }
         },
         {name: "Power Bolt",
             available: 0,
@@ -74,7 +73,6 @@ const ENERGY_ASSAULT_POWERSET = {
                     ],
                     scale: 2.26
                 }
-        }
         },
         {name: "Power Push",
             available: 3,
@@ -106,7 +104,6 @@ const ENERGY_ASSAULT_POWERSET = {
                     ],
                     scale: 3.13
                 }
-        }
         },
         {name: "Power Blast",
             available: 9,
@@ -138,7 +135,6 @@ const ENERGY_ASSAULT_POWERSET = {
                     ],
                     scale: 3.9290999999999996
                 }
-        }
         },
         {name: "Power Up",
             available: 15,
@@ -163,7 +159,6 @@ const ENERGY_ASSAULT_POWERSET = {
                 tohitBuff: 0.5,
                 defenseBuff: 0.5
             }
-        }
         },
         {name: "Whirling Hands",
             available: 19,
@@ -195,7 +190,6 @@ const ENERGY_ASSAULT_POWERSET = {
                     ],
                     scale: 2.8359000000000005
                 }
-        }
         },
         {name: "Total Focus",
             available: 23,
@@ -229,7 +223,6 @@ const ENERGY_ASSAULT_POWERSET = {
                 },
                 stun: 3.0
             }
-        }
         },
         {name: "Sniper Blast",
             available: 27,
@@ -250,7 +243,6 @@ const ENERGY_ASSAULT_POWERSET = {
                 endurance: 18.512,
                 cast: 1.33
             }
-        }
         },
         {name: "Power Burst",
             available: 29,

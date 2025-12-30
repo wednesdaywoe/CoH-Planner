@@ -35,7 +35,6 @@ const NECROMANCY_POWERSET = {
                 tohitDebuff: 0.75,
                 buffDuration: 6.0
             }
-        }
         },
         {name: "Zombie Horde",
             available: 0,
@@ -56,7 +55,6 @@ const NECROMANCY_POWERSET = {
                 endurance: 5.46,
                 cast: 3.1
             }
-        }
         },
         {name: "Gloom",
             available: 1,
@@ -84,7 +82,6 @@ const NECROMANCY_POWERSET = {
                 buffDuration: 3.6,
                 tohitDebuff: 0.75
             }
-        }
         },
         {name: "Enchant Undead",
             available: 5,
@@ -106,7 +103,6 @@ const NECROMANCY_POWERSET = {
                 endurance: 11.375,
                 cast: 2.07
             }
-        }
         },
         {name: "Life Drain",
             available: 7,
@@ -133,7 +129,6 @@ const NECROMANCY_POWERSET = {
                 tohitDebuff: 0.75,
                 buffDuration: 10.0
             }
-        }
         },
         {name: "Grave Knight",
             available: 11,
@@ -154,7 +149,6 @@ const NECROMANCY_POWERSET = {
                 endurance: 9.62,
                 cast: 1.07
             }
-        }
         },
         {name: "Soul Extraction",
             available: 17,
@@ -176,7 +170,6 @@ const NECROMANCY_POWERSET = {
                 cast: 2.03,
                 buffDuration: 0.5
             }
-        }
         },
         {name: "Lich",
             available: 21,
@@ -197,7 +190,6 @@ const NECROMANCY_POWERSET = {
                 endurance: 13.18,
                 cast: 3.17
             }
-        }
         },
         {name: "Dark Empowerment",
             available: 25,

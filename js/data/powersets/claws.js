@@ -40,7 +40,6 @@ const CLAWS_POWERSET = {
                     scale: 6.4197999999999995
                 }
             }
-        }
         },
         {name: "Swipe",
             available: 0,
@@ -72,7 +71,6 @@ const CLAWS_POWERSET = {
                     ],
                     scale: 4.8829
                 }
-        }
         },
         {name: "Slash",
             available: 1,
@@ -107,7 +105,6 @@ const CLAWS_POWERSET = {
                 defenseDebuff: 1.0,
                 buffDuration: 10.0
             }
-        }
         },
         {name: "Spin",
             available: 5,
@@ -139,7 +136,6 @@ const CLAWS_POWERSET = {
                     ],
                     scale: 8.3286
                 }
-        }
         },
         {name: "Follow Up",
             available: 7,
@@ -174,7 +170,6 @@ const CLAWS_POWERSET = {
                 tohitBuff: 1.0,
                 buffDuration: 10.0
             }
-        }
         },
         {name: "Confront",
             available: 11,
@@ -195,7 +190,6 @@ const CLAWS_POWERSET = {
                 cast: 1.67,
                 buffDuration: 12.0
             }
-        }
         },
         {name: "Focus",
             available: 17,
@@ -227,7 +221,6 @@ const CLAWS_POWERSET = {
                     ],
                     scale: 7.155299999999999
                 }
-        }
         },
         {name: "Eviscerate",
             available: 21,
@@ -261,7 +254,6 @@ const CLAWS_POWERSET = {
                     ],
                     scale: 8.6773
                 }
-        }
         },
         {name: "Shockwave",
             available: 25,

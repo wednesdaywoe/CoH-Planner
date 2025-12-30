@@ -30,7 +30,6 @@ const SHIELD_DEFENSE_POWERSET = {
                 buffDuration: 0.75,
                 defenseBuff: 0.4
             }
-        }
         },
         {name: "Deflection",
             available: 0,
@@ -51,7 +50,6 @@ const SHIELD_DEFENSE_POWERSET = {
                 cast: 1.5,
                 buffDuration: 0.75
             }
-        }
         },
         {name: "True Grit",
             available: 3,
@@ -90,7 +88,6 @@ const SHIELD_DEFENSE_POWERSET = {
                 },
                 buffDuration: 10.25
             }
-        }
         },
         {name: "Active Defense",
             available: 9,
@@ -115,7 +112,6 @@ const SHIELD_DEFENSE_POWERSET = {
                 tohitBuff: 0.3,
                 defenseBuff: 0.5
             }
-        }
         },
         {name: "Against All Odds",
             available: 15,
@@ -137,7 +133,6 @@ const SHIELD_DEFENSE_POWERSET = {
                 cast: 2.5,
                 buffDuration: 1.25
             }
-        }
         },
         {name: "Phalanx Fighting",
             available: 19,
@@ -156,7 +151,6 @@ const SHIELD_DEFENSE_POWERSET = {
                 accuracy: 1.0,
                 buffDuration: 1.0
             }
-        }
         },
         {name: "Grant Cover",
             available: 23,
@@ -179,7 +173,6 @@ const SHIELD_DEFENSE_POWERSET = {
                 buffDuration: 2.25,
                 defenseBuff: 0.4
             }
-        }
         },
         {name: "Shield Charge",
             available: 27,
@@ -201,7 +194,6 @@ const SHIELD_DEFENSE_POWERSET = {
                 cast: 1.5,
                 buffDuration: 4.0
             }
-        }
         },
         {name: "One with the Shield",
             available: 29,

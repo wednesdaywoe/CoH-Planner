@@ -32,7 +32,6 @@ const BATTLE_AXE_POWERSET = {
                     scale: 2.26
                 }
             }
-        }
         },
         {name: "Chop",
             available: 0,
@@ -56,7 +55,6 @@ const BATTLE_AXE_POWERSET = {
                     type: "Lethal",
                     scale: 3.2
                 }
-        }
         },
         {name: "Gash",
             available: 1,
@@ -80,7 +78,6 @@ const BATTLE_AXE_POWERSET = {
                     type: "Lethal",
                     scale: 3.649
                 }
-        }
         },
         {name: "Build Up",
             available: 5,
@@ -102,7 +99,6 @@ const BATTLE_AXE_POWERSET = {
                 tohitBuff: 2.0,
                 buffDuration: 10.0
             }
-        }
         },
         {name: "Pendulum",
             available: 7,
@@ -127,7 +123,6 @@ const BATTLE_AXE_POWERSET = {
                     type: "Lethal",
                     scale: 2.5170000000000003
                 }
-        }
         },
         {name: "Confront",
             available: 11,
@@ -148,7 +143,6 @@ const BATTLE_AXE_POWERSET = {
                 cast: 1.67,
                 buffDuration: 12.0
             }
-        }
         },
         {name: "Swoop",
             available: 17,
@@ -172,7 +166,6 @@ const BATTLE_AXE_POWERSET = {
                     type: "Lethal",
                     scale: 4.119
                 }
-        }
         },
         {name: "Axe Cyclone",
             available: 21,
@@ -198,7 +191,6 @@ const BATTLE_AXE_POWERSET = {
                 },
                 buffDuration: 0.15
             }
-        }
         },
         {name: "Cleave",
             available: 25,

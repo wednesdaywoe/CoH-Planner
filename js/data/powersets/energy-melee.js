@@ -45,7 +45,6 @@ const ENERGY_MELEE_POWERSET = {
                 },
                 buffDuration: 0.3
             }
-        }
         },
         {name: "Energy Punch",
             available: 0,
@@ -80,7 +79,6 @@ const ENERGY_MELEE_POWERSET = {
                     ],
                     scale: 2.863
                 }
-        }
         },
         {name: "Bone Smasher",
             available: 1,
@@ -115,7 +113,6 @@ const ENERGY_MELEE_POWERSET = {
                     ],
                     scale: 3.987
                 }
-        }
         },
         {name: "Build Up",
             available: 5,
@@ -137,7 +134,6 @@ const ENERGY_MELEE_POWERSET = {
                 tohitBuff: 2.0,
                 buffDuration: 10.0
             }
-        }
         },
         {name: "Power Crash",
             available: 7,
@@ -174,7 +170,6 @@ const ENERGY_MELEE_POWERSET = {
                     ],
                     scale: 3.0949
                 }
-        }
         },
         {name: "Confront",
             available: 11,
@@ -195,7 +190,6 @@ const ENERGY_MELEE_POWERSET = {
                 cast: 1.67,
                 buffDuration: 12.0
             }
-        }
         },
         {name: "Whirling Hands",
             available: 17,
@@ -230,7 +224,6 @@ const ENERGY_MELEE_POWERSET = {
                     ],
                     scale: 2.9455999999999998
                 }
-        }
         },
         {name: "Total Focus",
             available: 21,
@@ -267,7 +260,6 @@ const ENERGY_MELEE_POWERSET = {
                 },
                 stun: 3.0
             }
-        }
         },
         {name: "Energy Transfer",
             available: 25,

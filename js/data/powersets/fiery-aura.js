@@ -33,7 +33,6 @@ const FIERY_AURA_POWERSET = {
                     scale: 0.319
                 }
             }
-        }
         },
         {name: "Fire Shield",
             available: 0,
@@ -56,7 +55,6 @@ const FIERY_AURA_POWERSET = {
                 stun: 1.0,
                 stunDuration: 0.75
             }
-        }
         },
         {name: "Phoenix Rising",
             available: 0,
@@ -74,7 +72,6 @@ const FIERY_AURA_POWERSET = {
                 accuracy: 1.0,
                 buffDuration: 0.5
             }
-        }
         },
         {name: "Healing Flames",
             available: 3,
@@ -100,7 +97,6 @@ const FIERY_AURA_POWERSET = {
                 },
                 buffDuration: 60.0
             }
-        }
         },
         {name: "Temperature Protection",
             available: 9,
@@ -130,7 +126,6 @@ const FIERY_AURA_POWERSET = {
                 },
                 buffDuration: 10.0
             }
-        }
         },
         {name: "Plasma Shield",
             available: 15,
@@ -153,7 +148,6 @@ const FIERY_AURA_POWERSET = {
                 tohitBuff: 0.3,
                 defenseBuff: 0.3
             }
-        }
         },
         {name: "Consume",
             available: 19,
@@ -175,7 +169,6 @@ const FIERY_AURA_POWERSET = {
                 cast: 2.03,
                 buffDuration: 15.0
             }
-        }
         },
         {name: "Burn",
             available: 23,
@@ -199,7 +192,6 @@ const FIERY_AURA_POWERSET = {
                     type: "Fire",
                     scale: 1.44
                 }
-        }
         },
         {name: "Fiery Embrace",
             available: 27,

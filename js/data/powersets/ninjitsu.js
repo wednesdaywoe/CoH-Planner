@@ -30,7 +30,6 @@ const NINJITSU_POWERSET = {
                 buffDuration: 0.75,
                 defenseBuff: 0.5
             }
-        }
         },
         {name: "Ninja Reflexes",
             available: 0,
@@ -52,7 +51,6 @@ const NINJITSU_POWERSET = {
                 buffDuration: 0.75,
                 defenseBuff: 0.5
             }
-        }
         },
         {name: "Shinobi-Iri",
             available: 3,
@@ -72,7 +70,6 @@ const NINJITSU_POWERSET = {
                 endurance: 0.13,
                 buffDuration: 0.75
             }
-        }
         },
         {name: "Kuji-In Rin",
             available: 9,
@@ -102,7 +99,6 @@ const NINJITSU_POWERSET = {
                 tohitBuff: 0.3,
                 defenseBuff: 0.3
             }
-        }
         },
         {name: "Seishinteki Kyoyo",
             available: 15,
@@ -121,7 +117,6 @@ const NINJITSU_POWERSET = {
                 recharge: 60.0,
                 cast: 1.83
             }
-        }
         },
         {name: "Kuji-In Sha",
             available: 19,
@@ -147,7 +142,6 @@ const NINJITSU_POWERSET = {
                 },
                 buffDuration: 60.0
             }
-        }
         },
         {name: "Bo Ryaku",
             available: 23,
@@ -165,7 +159,6 @@ const NINJITSU_POWERSET = {
                 accuracy: 1.0,
                 buffDuration: 10.25
             }
-        }
         },
         {name: "Blinding Powder",
             available: 27,
@@ -190,7 +183,6 @@ const NINJITSU_POWERSET = {
                 buffDuration: 20.0,
                 tohitDebuff: 1.0
             }
-        }
         },
         {name: "Kuji-In Retsu",
             available: 29,

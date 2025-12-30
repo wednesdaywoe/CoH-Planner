@@ -47,7 +47,6 @@ const KATANA_POWERSET = {
                 buffDuration: 0.3,
                 defenseDebuff: 1.0
             }
-        }
         },
         {name: "Sting of the Wasp",
             available: 0,
@@ -82,7 +81,6 @@ const KATANA_POWERSET = {
                 defenseDebuff: 1.0,
                 buffDuration: 10.0
             }
-        }
         },
         {name: "Flashing Steel",
             available: 1,
@@ -119,7 +117,6 @@ const KATANA_POWERSET = {
                 defenseDebuff: 1.0,
                 buffDuration: 10.0
             }
-        }
         },
         {name: "Build Up",
             available: 5,
@@ -141,7 +138,6 @@ const KATANA_POWERSET = {
                 tohitBuff: 2.0,
                 buffDuration: 10.0
             }
-        }
         },
         {name: "Divine Avalanche",
             available: 7,
@@ -175,7 +171,6 @@ const KATANA_POWERSET = {
                 },
                 buffDuration: 10.0
             }
-        }
         },
         {name: "Calling the Wolf",
             available: 11,
@@ -196,7 +191,6 @@ const KATANA_POWERSET = {
                 cast: 1.67,
                 buffDuration: 12.0
             }
-        }
         },
         {name: "The Lotus Drops",
             available: 17,
@@ -243,7 +237,6 @@ const KATANA_POWERSET = {
                 buffDuration: 2.1,
                 defenseDebuff: 1.0
             }
-        }
         },
         {name: "Soaring Dragon",
             available: 21,
@@ -278,7 +271,6 @@ const KATANA_POWERSET = {
                 defenseDebuff: 1.0,
                 buffDuration: 10.0
             }
-        }
         },
         {name: "Golden Dragonfly",
             available: 25,

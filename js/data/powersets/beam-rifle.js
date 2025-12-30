@@ -32,7 +32,6 @@ const BEAM_RIFLE_POWERSET = {
                     scale: 4.0586
                 }
             }
-        }
         },
         {name: "Single Shot",
             available: 0,
@@ -58,7 +57,6 @@ const BEAM_RIFLE_POWERSET = {
                 },
                 buffDuration: 10.0
             }
-        }
         },
         {name: "Cutting Beam",
             available: 1,
@@ -92,7 +90,6 @@ const BEAM_RIFLE_POWERSET = {
                 buffDuration: 2.1,
                 defenseDebuff: 1.0
             }
-        }
         },
         {name: "Disintegrate",
             available: 5,
@@ -119,7 +116,6 @@ const BEAM_RIFLE_POWERSET = {
                 },
                 buffDuration: 10.5
             }
-        }
         },
         {name: "Aim",
             available: 7,
@@ -141,7 +137,6 @@ const BEAM_RIFLE_POWERSET = {
                 tohitBuff: 5.0,
                 buffDuration: 10.0
             }
-        }
         },
         {name: "Lancer Shot",
             available: 11,
@@ -167,7 +162,6 @@ const BEAM_RIFLE_POWERSET = {
                 },
                 stun: 3.0
             }
-        }
         },
         {name: "Penetrating Ray",
             available: 17,
@@ -188,7 +182,6 @@ const BEAM_RIFLE_POWERSET = {
                 endurance: 14.352,
                 cast: 1.67
             }
-        }
         },
         {name: "Piercing Beam",
             available: 21,
@@ -216,7 +209,6 @@ const BEAM_RIFLE_POWERSET = {
                 },
                 buffDuration: 10.0
             }
-        }
         },
         {name: "Overcharge",
             available: 25,

@@ -45,7 +45,6 @@ const DUAL_BLADES_POWERSET = {
                 },
                 buffDuration: 0.5
             }
-        }
         },
         {name: "Power Slice",
             available: 0,
@@ -83,7 +82,6 @@ const DUAL_BLADES_POWERSET = {
                 },
                 buffDuration: 1.0
             }
-        }
         },
         {name: "Ablating Strike",
             available: 1,
@@ -122,7 +120,6 @@ const DUAL_BLADES_POWERSET = {
                 buffDuration: 0.6,
                 defenseDebuff: 1.0
             }
-        }
         },
         {name: "Typhoon's Edge",
             available: 5,
@@ -170,7 +167,6 @@ const DUAL_BLADES_POWERSET = {
                 defenseDebuff: 1.0,
                 tohitDebuff: 1.0
             }
-        }
         },
         {name: "Blinding Feint",
             available: 7,
@@ -205,7 +201,6 @@ const DUAL_BLADES_POWERSET = {
                 tohitBuff: 0.33,
                 buffDuration: 10.0
             }
-        }
         },
         {name: "Confront",
             available: 11,
@@ -226,7 +221,6 @@ const DUAL_BLADES_POWERSET = {
                 cast: 1.93,
                 buffDuration: 12.0
             }
-        }
         },
         {name: "Vengeful Slice",
             available: 17,
@@ -258,7 +252,6 @@ const DUAL_BLADES_POWERSET = {
                     ],
                     scale: 10.4997
                 }
-        }
         },
         {name: "Sweeping Strike",
             available: 21,
@@ -306,7 +299,6 @@ const DUAL_BLADES_POWERSET = {
                 },
                 buffDuration: 4.1
             }
-        }
         },
         {name: "One Thousand Cuts",
             available: 25,

@@ -42,7 +42,6 @@ const ICY_ASSAULT_POWERSET = {
                 },
                 buffDuration: 6.0
             }
-        }
         },
         {name: "Ice Sword",
             available: 0,
@@ -76,7 +75,6 @@ const ICY_ASSAULT_POWERSET = {
                 },
                 buffDuration: 8.0
             }
-        }
         },
         {name: "Ice Sword Circle",
             available: 3,
@@ -110,7 +108,6 @@ const ICY_ASSAULT_POWERSET = {
                 },
                 buffDuration: 8.0
             }
-        }
         },
         {name: "Ice Blast",
             available: 9,
@@ -144,7 +141,6 @@ const ICY_ASSAULT_POWERSET = {
                 },
                 buffDuration: 10.0
             }
-        }
         },
         {name: "Power Up",
             available: 15,
@@ -169,7 +165,6 @@ const ICY_ASSAULT_POWERSET = {
                 tohitBuff: 0.5,
                 defenseBuff: 0.5
             }
-        }
         },
         {name: "Frost Breath",
             available: 19,
@@ -198,7 +193,6 @@ const ICY_ASSAULT_POWERSET = {
                 },
                 buffDuration: 0.6
             }
-        }
         },
         {name: "Chilling Embrace",
             available: 23,
@@ -224,7 +218,6 @@ const ICY_ASSAULT_POWERSET = {
                 },
                 buffDuration: 5.0
             }
-        }
         },
         {name: "Ice Slash",
             available: 27,
@@ -258,7 +251,6 @@ const ICY_ASSAULT_POWERSET = {
                 },
                 buffDuration: 10.0
             }
-        }
         },
         {name: "Bitter Ice Blast",
             available: 29,

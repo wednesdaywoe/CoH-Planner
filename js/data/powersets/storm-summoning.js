@@ -35,7 +35,6 @@ const STORM_SUMMONING_POWERSET = {
                     scale: 0.1
                 }
             }
-        }
         },
         {name: "O2 Boost",
             available: 0,
@@ -59,7 +58,6 @@ const STORM_SUMMONING_POWERSET = {
                 stun: 1.0,
                 stunDuration: 60.0
             }
-        }
         },
         {name: "Snow Storm",
             available: 1,
@@ -82,7 +80,6 @@ const STORM_SUMMONING_POWERSET = {
                 cast: 2.03,
                 buffDuration: 0.75
             }
-        }
         },
         {name: "Steamy Mist",
             available: 5,
@@ -104,7 +101,6 @@ const STORM_SUMMONING_POWERSET = {
                 cast: 1.87,
                 buffDuration: 0.75
             }
-        }
         },
         {name: "Freezing Rain",
             available: 7,
@@ -126,7 +122,6 @@ const STORM_SUMMONING_POWERSET = {
                 cast: 2.03,
                 buffDuration: 15.0
             }
-        }
         },
         {name: "Hurricane",
             available: 11,
@@ -149,7 +144,6 @@ const STORM_SUMMONING_POWERSET = {
                 tohitDebuff: 3.0,
                 buffDuration: 10.0
             }
-        }
         },
         {name: "Thunder Clap",
             available: 17,
@@ -171,7 +165,6 @@ const STORM_SUMMONING_POWERSET = {
                 cast: 2.37,
                 stun: 2.0
             }
-        }
         },
         {name: "Tornado",
             available: 21,
@@ -193,7 +186,6 @@ const STORM_SUMMONING_POWERSET = {
                 cast: 1.17,
                 buffDuration: 30.0
             }
-        }
         },
         {name: "Lightning Storm",
             available: 25,

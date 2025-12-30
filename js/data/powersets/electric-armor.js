@@ -29,7 +29,6 @@ const ELECTRIC_ARMOR_POWERSET = {
                 cast: 0.67,
                 buffDuration: 0.75
             }
-        }
         },
         {name: "Lightning Field",
             available: 0,
@@ -53,7 +52,6 @@ const ELECTRIC_ARMOR_POWERSET = {
                     type: "Energy",
                     scale: 0.2
                 }
-        }
         },
         {name: "Conductive Shield",
             available: 3,
@@ -74,7 +72,6 @@ const ELECTRIC_ARMOR_POWERSET = {
                 cast: 0.67,
                 buffDuration: 0.75
             }
-        }
         },
         {name: "Static Shield",
             available: 9,
@@ -94,7 +91,6 @@ const ELECTRIC_ARMOR_POWERSET = {
                 endurance: 0.104,
                 cast: 1.17
             }
-        }
         },
         {name: "Grounded",
             available: 15,
@@ -111,7 +107,6 @@ const ELECTRIC_ARMOR_POWERSET = {
             effects: {
                 accuracy: 1.0
             }
-        }
         },
         {name: "Energize",
             available: 19,
@@ -132,7 +127,6 @@ const ELECTRIC_ARMOR_POWERSET = {
                 cast: 1.17,
                 buffDuration: 30.0
             }
-        }
         },
         {name: "Lightning Reflexes",
             available: 23,
@@ -150,7 +144,6 @@ const ELECTRIC_ARMOR_POWERSET = {
                 accuracy: 1.0,
                 buffDuration: 10.25
             }
-        }
         },
         {name: "Power Sink",
             available: 27,
@@ -171,7 +164,6 @@ const ELECTRIC_ARMOR_POWERSET = {
                 endurance: 13.0,
                 cast: 2.03
             }
-        }
         },
         {name: "Power Surge",
             available: 29,

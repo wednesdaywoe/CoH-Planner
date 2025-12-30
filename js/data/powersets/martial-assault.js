@@ -32,7 +32,6 @@ const MARTIAL_ASSAULT_POWERSET = {
                     scale: 2.26
                 }
             }
-        }
         },
         {name: "Thunder Kick",
             available: 0,
@@ -58,7 +57,6 @@ const MARTIAL_ASSAULT_POWERSET = {
                 },
                 stun: 3.0
             }
-        }
         },
         {name: "Trick Shot",
             available: 3,
@@ -83,7 +81,6 @@ const MARTIAL_ASSAULT_POWERSET = {
                     type: "Lethal",
                     scale: 2.5
                 }
-        }
         },
         {name: "Spinning Kick",
             available: 9,
@@ -109,7 +106,6 @@ const MARTIAL_ASSAULT_POWERSET = {
                     type: "Smashing",
                     scale: 2.7464
                 }
-        }
         },
         {name: "Envenomed Blades",
             available: 15,
@@ -131,7 +127,6 @@ const MARTIAL_ASSAULT_POWERSET = {
                 tohitBuff: 0.12,
                 buffDuration: 40.0
             }
-        }
         },
         {name: "Dragon's Tail",
             available: 19,
@@ -155,7 +150,6 @@ const MARTIAL_ASSAULT_POWERSET = {
                     type: "Smashing",
                     scale: 2.7914
                 }
-        }
         },
         {name: "Caltrops",
             available: 23,
@@ -177,7 +171,6 @@ const MARTIAL_ASSAULT_POWERSET = {
                 cast: 1.07,
                 buffDuration: 45.0
             }
-        }
         },
         {name: "Masterful Throw",
             available: 27,
@@ -198,7 +191,6 @@ const MARTIAL_ASSAULT_POWERSET = {
                 endurance: 18.512,
                 cast: 1.33
             }
-        }
         },
         {name: "Explosive Shuriken",
             available: 29,

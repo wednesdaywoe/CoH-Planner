@@ -29,7 +29,6 @@ const KINETICS_POWERSET = {
                 cast: 1.93,
                 buffDuration: 30.0
             }
-        }
         },
         {name: "Transfusion",
             available: 0,
@@ -51,7 +50,6 @@ const KINETICS_POWERSET = {
                 cast: 1.17,
                 buffDuration: 20.0
             }
-        }
         },
         {name: "Repel",
             available: 1,
@@ -73,7 +71,6 @@ const KINETICS_POWERSET = {
                 cast: 1.07,
                 buffDuration: 0.5
             }
-        }
         },
         {name: "Siphon Speed",
             available: 5,
@@ -95,7 +92,6 @@ const KINETICS_POWERSET = {
                 cast: 1.93,
                 buffDuration: 60.0
             }
-        }
         },
         {name: "Increase Density",
             available: 7,
@@ -132,7 +128,6 @@ const KINETICS_POWERSET = {
                 stun: 1.0,
                 stunDuration: 60.0
             }
-        }
         },
         {name: "Speed Boost",
             available: 11,
@@ -155,7 +150,6 @@ const KINETICS_POWERSET = {
                 cast: 1.0,
                 buffDuration: 120.0
             }
-        }
         },
         {name: "Inertial Reduction",
             available: 17,
@@ -177,7 +171,6 @@ const KINETICS_POWERSET = {
                 cast: 2.03,
                 buffDuration: 60.0
             }
-        }
         },
         {name: "Transference",
             available: 21,
@@ -198,7 +191,6 @@ const KINETICS_POWERSET = {
                 endurance: 2.6,
                 cast: 2.27
             }
-        }
         },
         {name: "Fulcrum Shift",
             available: 25,

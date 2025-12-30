@@ -26,7 +26,6 @@ const WILLPOWER_POWERSET = {
                 accuracy: 1.0,
                 buffDuration: 10.25
             }
-        }
         },
         {name: "Mind Over Body",
             available: 0,
@@ -47,7 +46,6 @@ const WILLPOWER_POWERSET = {
                 cast: 0.67,
                 buffDuration: 0.75
             }
-        }
         },
         {name: "Fast Healing",
             available: 3,
@@ -65,7 +63,6 @@ const WILLPOWER_POWERSET = {
                 accuracy: 1.0,
                 buffDuration: 10.0
             }
-        }
         },
         {name: "Indomitable Will",
             available: 9,
@@ -90,7 +87,6 @@ const WILLPOWER_POWERSET = {
                 tohitBuff: 0.3,
                 defenseBuff: 0.3
             }
-        }
         },
         {name: "Rise to the Challenge",
             available: 15,
@@ -113,7 +109,6 @@ const WILLPOWER_POWERSET = {
                 tohitDebuff: 0.5,
                 buffDuration: 1.0
             }
-        }
         },
         {name: "Quick Recovery",
             available: 19,
@@ -131,7 +126,6 @@ const WILLPOWER_POWERSET = {
                 accuracy: 1.0,
                 buffDuration: 10.25
             }
-        }
         },
         {name: "Heightened Senses",
             available: 23,
@@ -153,7 +147,6 @@ const WILLPOWER_POWERSET = {
                 buffDuration: 0.75,
                 defenseBuff: 0.5
             }
-        }
         },
         {name: "Resurgence",
             available: 27,
@@ -175,7 +168,6 @@ const WILLPOWER_POWERSET = {
                 tohitBuff: 3.0,
                 tohitDebuff: 3.0
             }
-        }
         },
         {name: "Strength of Will",
             available: 29,

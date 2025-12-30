@@ -29,7 +29,6 @@ const ROBOTICS_POWERSET = {
                 endurance: 5.46,
                 cast: 2.03
             }
-        }
         },
         {name: "Pulse Rifle Blast",
             available: 0,
@@ -55,7 +54,6 @@ const ROBOTICS_POWERSET = {
                 },
                 buffDuration: 30.0
             }
-        }
         },
         {name: "Pulse Rifle Burst",
             available: 1,
@@ -81,7 +79,6 @@ const ROBOTICS_POWERSET = {
                 },
                 buffDuration: 30.0
             }
-        }
         },
         {name: "Equip Robot",
             available: 5,
@@ -104,7 +101,6 @@ const ROBOTICS_POWERSET = {
                 cast: 2.03,
                 buffDuration: 5.6
             }
-        }
         },
         {name: "Photon Grenade",
             available: 7,
@@ -131,7 +127,6 @@ const ROBOTICS_POWERSET = {
                 },
                 buffDuration: 30.0
             }
-        }
         },
         {name: "Protector Bots",
             available: 11,
@@ -152,7 +147,6 @@ const ROBOTICS_POWERSET = {
                 endurance: 9.62,
                 cast: 2.03
             }
-        }
         },
         {name: "Maintenance Drone",
             available: 17,
@@ -173,7 +167,6 @@ const ROBOTICS_POWERSET = {
                 endurance: 16.25,
                 cast: 2.03
             }
-        }
         },
         {name: "Assault Bot",
             available: 21,
@@ -194,7 +187,6 @@ const ROBOTICS_POWERSET = {
                 endurance: 13.18,
                 cast: 2.03
             }
-        }
         },
         {name: "Upgrade Robot",
             available: 25,

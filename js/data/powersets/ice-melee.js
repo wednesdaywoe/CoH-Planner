@@ -57,7 +57,6 @@ const ICE_MELEE_POWERSET = {
                 },
                 buffDuration: 0.3
             }
-        }
         },
         {name: "Ice Sword",
             available: 0,
@@ -94,7 +93,6 @@ const ICE_MELEE_POWERSET = {
                 },
                 buffDuration: 8.0
             }
-        }
         },
         {name: "Frost",
             available: 1,
@@ -134,7 +132,6 @@ const ICE_MELEE_POWERSET = {
                 },
                 buffDuration: 1.1
             }
-        }
         },
         {name: "Build Up",
             available: 5,
@@ -156,7 +153,6 @@ const ICE_MELEE_POWERSET = {
                 tohitBuff: 2.0,
                 buffDuration: 10.0
             }
-        }
         },
         {name: "Ice Patch",
             available: 7,
@@ -177,7 +173,6 @@ const ICE_MELEE_POWERSET = {
                 cast: 1.57,
                 buffDuration: 30.0
             }
-        }
         },
         {name: "Confront",
             available: 11,
@@ -198,7 +193,6 @@ const ICE_MELEE_POWERSET = {
                 cast: 1.67,
                 buffDuration: 12.0
             }
-        }
         },
         {name: "Greater Ice Sword",
             available: 17,
@@ -235,7 +229,6 @@ const ICE_MELEE_POWERSET = {
                 },
                 buffDuration: 10.0
             }
-        }
         },
         {name: "Freezing Touch",
             available: 21,
@@ -273,7 +266,6 @@ const ICE_MELEE_POWERSET = {
                 },
                 buffDuration: 2.6
             }
-        }
         },
         {name: "Frozen Aura",
             available: 25,

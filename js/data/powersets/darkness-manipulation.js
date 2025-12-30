@@ -35,7 +35,6 @@ const DARKNESS_MANIPULATION_POWERSET = {
                 buffDuration: 9.2,
                 tohitDebuff: 0.75
             }
-        }
         },
         {name: "Smite",
             available: 0,
@@ -70,7 +69,6 @@ const DARKNESS_MANIPULATION_POWERSET = {
                 tohitDebuff: 0.75,
                 buffDuration: 10.0
             }
-        }
         },
         {name: "Death Shroud",
             available: 3,
@@ -94,7 +92,6 @@ const DARKNESS_MANIPULATION_POWERSET = {
                     type: "Negative",
                     scale: 0.2
                 }
-        }
         },
         {name: "Shadow Maul",
             available: 9,
@@ -131,7 +128,6 @@ const DARKNESS_MANIPULATION_POWERSET = {
                 buffDuration: 2.0,
                 tohitDebuff: 0.75
             }
-        }
         },
         {name: "Soul Drain",
             available: 15,
@@ -158,7 +154,6 @@ const DARKNESS_MANIPULATION_POWERSET = {
                 tohitBuff: 1.0,
                 buffDuration: 30.0
             }
-        }
         },
         {name: "Touch of the Beyond",
             available: 19,
@@ -179,7 +174,6 @@ const DARKNESS_MANIPULATION_POWERSET = {
                 endurance: 5.2,
                 cast: 1.17
             }
-        }
         },
         {name: "Dark Consumption",
             available: 23,
@@ -205,7 +199,6 @@ const DARKNESS_MANIPULATION_POWERSET = {
                 },
                 buffDuration: 8.53
             }
-        }
         },
         {name: "Dark Pit",
             available: 27,
@@ -229,7 +222,6 @@ const DARKNESS_MANIPULATION_POWERSET = {
                 stun: 3.0,
                 buffDuration: 8.57
             }
-        }
         },
         {name: "Midnight Grasp",
             available: 29,

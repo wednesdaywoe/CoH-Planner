@@ -42,7 +42,6 @@ const PLANT_MANIPULATION_POWERSET = {
                 },
                 buffDuration: 9.2
             }
-        }
         },
         {name: "Skewer",
             available: 0,
@@ -74,7 +73,6 @@ const PLANT_MANIPULATION_POWERSET = {
                 buffDuration: 3.1,
                 defenseDebuff: 2.0
             }
-        }
         },
         {name: "Strangler",
             available: 3,
@@ -101,7 +99,6 @@ const PLANT_MANIPULATION_POWERSET = {
                 },
                 buffDuration: 4.2
             }
-        }
         },
         {name: "Toxins",
             available: 9,
@@ -123,7 +120,6 @@ const PLANT_MANIPULATION_POWERSET = {
                 tohitBuff: 2.0,
                 buffDuration: 10.0
             }
-        }
         },
         {name: "Spore Cloud",
             available: 15,
@@ -147,7 +143,6 @@ const PLANT_MANIPULATION_POWERSET = {
                 tohitDebuff: 0.75,
                 buffDuration: 0.75
             }
-        }
         },
         {name: "Wild Fortress",
             available: 19,
@@ -172,7 +167,6 @@ const PLANT_MANIPULATION_POWERSET = {
                 },
                 buffDuration: 12.0
             }
-        }
         },
         {name: "Ripper",
             available: 23,
@@ -206,7 +200,6 @@ const PLANT_MANIPULATION_POWERSET = {
                 buffDuration: 4.1,
                 defenseDebuff: 3.0
             }
-        }
         },
         {name: "Vines",
             available: 27,
@@ -228,7 +221,6 @@ const PLANT_MANIPULATION_POWERSET = {
                 endurance: 20.18,
                 cast: 1.17
             }
-        }
         },
         {name: "Thorn Burst",
             available: 29,

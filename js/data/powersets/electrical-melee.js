@@ -42,7 +42,6 @@ const ELECTRICAL_MELEE_POWERSET = {
                 },
                 buffDuration: 2.0
             }
-        }
         },
         {name: "Havoc Punch",
             available: 0,
@@ -76,7 +75,6 @@ const ELECTRICAL_MELEE_POWERSET = {
                 },
                 buffDuration: 4.0
             }
-        }
         },
         {name: "Jacobs Ladder",
             available: 1,
@@ -104,7 +102,6 @@ const ELECTRICAL_MELEE_POWERSET = {
                 },
                 buffDuration: 2.0
             }
-        }
         },
         {name: "Build Up",
             available: 5,
@@ -126,7 +123,6 @@ const ELECTRICAL_MELEE_POWERSET = {
                 tohitBuff: 2.0,
                 buffDuration: 10.0
             }
-        }
         },
         {name: "Thunder Strike",
             available: 7,
@@ -148,7 +144,6 @@ const ELECTRICAL_MELEE_POWERSET = {
                 endurance: 18.512,
                 cast: 2.53
             }
-        }
         },
         {name: "Confront",
             available: 11,
@@ -169,7 +164,6 @@ const ELECTRICAL_MELEE_POWERSET = {
                 cast: 1.67,
                 buffDuration: 12.0
             }
-        }
         },
         {name: "Chain Induction",
             available: 17,
@@ -195,7 +189,6 @@ const ELECTRICAL_MELEE_POWERSET = {
                 },
                 buffDuration: 2.0
             }
-        }
         },
         {name: "Lightning Clap",
             available: 21,
@@ -217,7 +210,6 @@ const ELECTRICAL_MELEE_POWERSET = {
                 cast: 1.23,
                 stun: 2.0
             }
-        }
         },
         {name: "Lightning Rod",
             available: 25,

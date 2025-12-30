@@ -184,7 +184,6 @@ const FIRE_MANIPULATION_POWERSET = {
                     type: "Fire",
                     scale: 0.36260000000000003
                 }
-            }
         },
         {
             name: "Consume",
@@ -231,7 +230,6 @@ const FIRE_MANIPULATION_POWERSET = {
                     type: "Fire",
                     scale: 1.44
                 }
-            }
         },
         {
             name: "Hot Feet",

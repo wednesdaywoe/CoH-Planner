@@ -29,7 +29,6 @@ const RADIATION_EMISSION_POWERSET = {
                 endurance: 13.0,
                 cast: 2.03
             }
-        }
         },
         {name: "Radiation Infection",
             available: 0,
@@ -54,7 +53,6 @@ const RADIATION_EMISSION_POWERSET = {
                 buffDuration: 0.75,
                 defenseDebuff: 2.5
             }
-        }
         },
         {name: "Accelerate Metabolism",
             available: 1,
@@ -78,7 +76,6 @@ const RADIATION_EMISSION_POWERSET = {
                 stun: 1.0,
                 stunDuration: 120.0
             }
-        }
         },
         {name: "Enervating Field",
             available: 5,
@@ -101,7 +98,6 @@ const RADIATION_EMISSION_POWERSET = {
                 cast: 1.5,
                 buffDuration: 0.75
             }
-        }
         },
         {name: "Mutation",
             available: 7,
@@ -125,7 +121,6 @@ const RADIATION_EMISSION_POWERSET = {
                 tohitBuff: 3.0,
                 tohitDebuff: 3.0
             }
-        }
         },
         {name: "Lingering Radiation",
             available: 11,
@@ -148,7 +143,6 @@ const RADIATION_EMISSION_POWERSET = {
                 cast: 1.5,
                 buffDuration: 30.0
             }
-        }
         },
         {name: "Choking Cloud",
             available: 17,
@@ -169,7 +163,6 @@ const RADIATION_EMISSION_POWERSET = {
                 endurance: 1.3,
                 cast: 1.0
             }
-        }
         },
         {name: "Fallout",
             available: 21,
@@ -191,7 +184,6 @@ const RADIATION_EMISSION_POWERSET = {
                 cast: 3.2,
                 buffDuration: 1.0
             }
-        }
         },
         {name: "EM Pulse",
             available: 25,

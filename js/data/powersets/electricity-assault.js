@@ -30,7 +30,6 @@ POWERSETS['electricity-assault'] = {
                                 "damage": {
                                             "scale": 0.6732
                                 }
-                    }
         },
         {
                     "name": "Charged Bolts",
@@ -53,7 +52,6 @@ POWERSETS['electricity-assault'] = {
                                 "damage": {
                                             "scale": 1.0
                                 }
-                    }
         },
         {
                     "name": "Lightning Bolt",
@@ -76,7 +74,6 @@ POWERSETS['electricity-assault'] = {
                                 "damage": {
                                             "scale": 1.64
                                 }
-                    }
         },
         {
                     "name": "Havoc Punch",
@@ -99,7 +96,6 @@ POWERSETS['electricity-assault'] = {
                                 "damage": {
                                             "scale": 1.5092
                                 }
-                    }
         },
         {
                     "name": "Build Up",
@@ -163,7 +159,6 @@ POWERSETS['electricity-assault'] = {
                                 "damage": {
                                             "scale": 1.23
                                 }
-                    }
         },
         {
                     "name": "Thunder Strike",
@@ -185,7 +180,6 @@ POWERSETS['electricity-assault'] = {
                                 "damage": {
                                             "scale": 2.044
                                 }
-                    }
         },
         {
                     "name": "Voltaic Sentinel",

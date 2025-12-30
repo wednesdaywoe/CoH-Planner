@@ -46,7 +46,6 @@ const RADIATION_MELEE_POWERSET = {
                 defenseDebuff: 1.0,
                 buffDuration: 10.0
             }
-        }
         },
         {name: "Radioactive Smash",
             available: 0,
@@ -84,7 +83,6 @@ const RADIATION_MELEE_POWERSET = {
                 defenseDebuff: 1.5,
                 buffDuration: 10.0
             }
-        }
         },
         {name: "Proton Sweep",
             available: 1,
@@ -124,7 +122,6 @@ const RADIATION_MELEE_POWERSET = {
                 buffDuration: 3.1,
                 defenseDebuff: 1.2
             }
-        }
         },
         {name: "Fusion",
             available: 5,
@@ -146,7 +143,6 @@ const RADIATION_MELEE_POWERSET = {
                 tohitBuff: 2.0,
                 buffDuration: 10.0
             }
-        }
         },
         {name: "Radiation Siphon",
             available: 7,
@@ -184,7 +180,6 @@ const RADIATION_MELEE_POWERSET = {
                 defenseDebuff: 1.5,
                 buffDuration: 10.0
             }
-        }
         },
         {name: "Confront",
             available: 11,
@@ -205,7 +200,6 @@ const RADIATION_MELEE_POWERSET = {
                 cast: 1.67,
                 buffDuration: 12.0
             }
-        }
         },
         {name: "Irradiated Ground",
             available: 17,
@@ -226,7 +220,6 @@ const RADIATION_MELEE_POWERSET = {
                 endurance: 2.6,
                 cast: 2.03
             }
-        }
         },
         {name: "Devastating Blow",
             available: 21,
@@ -265,7 +258,6 @@ const RADIATION_MELEE_POWERSET = {
                 buffDuration: 10.0,
                 stun: 3.0
             }
-        }
         },
         {name: "Atom Smasher",
             available: 25,

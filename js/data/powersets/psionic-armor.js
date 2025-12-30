@@ -27,7 +27,6 @@ const PSIONIC_ARMOR_POWERSET = {
                 endurance: 0.104,
                 cast: 1.17
             }
-        }
         },
         {name: "Psychic Wall",
             available: 0,
@@ -48,7 +47,6 @@ const PSIONIC_ARMOR_POWERSET = {
                 cast: 0.67,
                 buffDuration: 0.75
             }
-        }
         },
         {name: "Mask Presence",
             available: 3,
@@ -68,7 +66,6 @@ const PSIONIC_ARMOR_POWERSET = {
                 endurance: 0.104,
                 cast: 0.73
             }
-        }
         },
         {name: "Impenetrable Mind",
             available: 9,
@@ -88,7 +85,6 @@ const PSIONIC_ARMOR_POWERSET = {
                 endurance: 0.104,
                 cast: 0.73
             }
-        }
         },
         {name: "Devour Psyche",
             available: 15,
@@ -111,7 +107,6 @@ const PSIONIC_ARMOR_POWERSET = {
                 endurance: 10.5,
                 cast: 1.0
             }
-        }
         },
         {name: "Psychokinetic Barrier",
             available: 19,
@@ -132,7 +127,6 @@ const PSIONIC_ARMOR_POWERSET = {
                 cast: 1.17,
                 buffDuration: 30.0
             }
-        }
         },
         {name: "Precognition",
             available: 23,
@@ -151,7 +145,6 @@ const PSIONIC_ARMOR_POWERSET = {
                 buffDuration: 10.25,
                 defenseBuff: 0.2312
             }
-        }
         },
         {name: "Aura of Insanity",
             available: 27,
@@ -171,7 +164,6 @@ const PSIONIC_ARMOR_POWERSET = {
                 recharge: 10.0,
                 cast: 1.67
             }
-        }
         },
         {name: "Memento Mori",
             available: 29,

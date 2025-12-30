@@ -41,7 +41,6 @@ const SONIC_ASSAULT_POWERSET = {
                     scale: 2.06
                 }
             }
-        }
         },
         {name: "Strident Echo",
             available: 0,
@@ -75,7 +74,6 @@ const SONIC_ASSAULT_POWERSET = {
                 },
                 buffDuration: 2.1
             }
-        }
         },
         {name: "Scream",
             available: 3,
@@ -109,7 +107,6 @@ const SONIC_ASSAULT_POWERSET = {
                 },
                 buffDuration: 1.05
             }
-        }
         },
         {name: "Shockwave",
             available: 9,
@@ -143,7 +140,6 @@ const SONIC_ASSAULT_POWERSET = {
                     ],
                     scale: 1.8526
                 }
-        }
         },
         {name: "Bass Boost",
             available: 15,
@@ -168,7 +164,6 @@ const SONIC_ASSAULT_POWERSET = {
                 tohitBuff: 0.5,
                 defenseBuff: 0.5
             }
-        }
         },
         {name: "Deafening Wave",
             available: 19,
@@ -200,7 +195,6 @@ const SONIC_ASSAULT_POWERSET = {
                     ],
                     scale: 1.9018
                 }
-        }
         },
         {name: "Disruption Aura",
             available: 23,
@@ -222,7 +216,6 @@ const SONIC_ASSAULT_POWERSET = {
                 cast: 1.97,
                 buffDuration: 2.25
             }
-        }
         },
         {name: "Shout",
             available: 27,
@@ -254,7 +247,6 @@ const SONIC_ASSAULT_POWERSET = {
                     ],
                     scale: 4.9603
                 }
-        }
         },
         {name: "Earsplitter",
             available: 29,

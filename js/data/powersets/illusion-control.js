@@ -33,7 +33,6 @@ const ILLUSION_CONTROL_POWERSET = {
                     scale: 4.8936
                 }
             }
-        }
         },
         {name: "Spectral Wounds",
             available: 0,
@@ -59,7 +58,6 @@ const ILLUSION_CONTROL_POWERSET = {
                 },
                 buffDuration: 10.0
             }
-        }
         },
         {name: "Deceive",
             available: 1,
@@ -80,7 +78,6 @@ const ILLUSION_CONTROL_POWERSET = {
                 endurance: 8.528,
                 cast: 2.0
             }
-        }
         },
         {name: "Flash",
             available: 5,
@@ -101,7 +98,6 @@ const ILLUSION_CONTROL_POWERSET = {
                 endurance: 8.528,
                 cast: 3.0
             }
-        }
         },
         {name: "Superior Invisibility",
             available: 7,
@@ -122,7 +118,6 @@ const ILLUSION_CONTROL_POWERSET = {
                 cast: 0.73,
                 buffDuration: 0.75
             }
-        }
         },
         {name: "Group Invisibility",
             available: 11,
@@ -144,7 +139,6 @@ const ILLUSION_CONTROL_POWERSET = {
                 cast: 2.03,
                 buffDuration: 120.0
             }
-        }
         },
         {name: "Phantom Army",
             available: 17,
@@ -166,7 +160,6 @@ const ILLUSION_CONTROL_POWERSET = {
                 cast: 3.1,
                 buffDuration: 60.0
             }
-        }
         },
         {name: "Spectral Terror",
             available: 21,
@@ -188,7 +181,6 @@ const ILLUSION_CONTROL_POWERSET = {
                 cast: 3.2,
                 buffDuration: 45.0
             }
-        }
         },
         {name: "Phantasm",
             available: 25,

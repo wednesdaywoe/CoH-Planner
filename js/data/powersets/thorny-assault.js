@@ -40,7 +40,6 @@ const THORNY_ASSAULT_POWERSET = {
                 buffDuration: 3.1,
                 defenseDebuff: 2.0
             }
-        }
         },
         {name: "Thorny Darts",
             available: 0,
@@ -72,7 +71,6 @@ const THORNY_ASSAULT_POWERSET = {
                 buffDuration: 3.1,
                 defenseDebuff: 2.0
             }
-        }
         },
         {name: "Fling Thorns",
             available: 3,
@@ -106,7 +104,6 @@ const THORNY_ASSAULT_POWERSET = {
                 buffDuration: 4.1,
                 defenseDebuff: 2.0
             }
-        }
         },
         {name: "Impale",
             available: 9,
@@ -138,7 +135,6 @@ const THORNY_ASSAULT_POWERSET = {
                 buffDuration: 15.0,
                 defenseDebuff: 3.0
             }
-        }
         },
         {name: "Build Up",
             available: 15,
@@ -160,7 +156,6 @@ const THORNY_ASSAULT_POWERSET = {
                 tohitBuff: 2.0,
                 buffDuration: 10.0
             }
-        }
         },
         {name: "Thorn Burst",
             available: 19,
@@ -192,7 +187,6 @@ const THORNY_ASSAULT_POWERSET = {
                 buffDuration: 3.1,
                 defenseDebuff: 3.0
             }
-        }
         },
         {name: "Thorntrops",
             available: 23,
@@ -214,7 +208,6 @@ const THORNY_ASSAULT_POWERSET = {
                 cast: 1.63,
                 buffDuration: 45.0
             }
-        }
         },
         {name: "Ripper",
             available: 27,
@@ -248,7 +241,6 @@ const THORNY_ASSAULT_POWERSET = {
                 buffDuration: 4.1,
                 defenseDebuff: 3.0
             }
-        }
         },
         {name: "Thorn Barrage",
             available: 29,

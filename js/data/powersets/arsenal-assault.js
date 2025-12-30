@@ -35,7 +35,6 @@ const ARSENAL_ASSAULT_POWERSET = {
                 buffDuration: 0.91,
                 defenseDebuff: 1.0
             }
-        }
         },
         {name: "Buttstroke",
             available: 0,
@@ -59,7 +58,6 @@ const ARSENAL_ASSAULT_POWERSET = {
                     type: "Smashing",
                     scale: 3.179
                 }
-        }
         },
         {name: "Buckshot",
             available: 3,
@@ -85,7 +83,6 @@ const ARSENAL_ASSAULT_POWERSET = {
                     type: "Lethal",
                     scale: 1.5351
                 }
-        }
         },
         {name: "Elbow Strike",
             available: 9,
@@ -109,7 +106,6 @@ const ARSENAL_ASSAULT_POWERSET = {
                     type: "Smashing",
                     scale: 3.909
                 }
-        }
         },
         {name: "Power Up",
             available: 15,
@@ -134,7 +130,6 @@ const ARSENAL_ASSAULT_POWERSET = {
                 tohitBuff: 0.5,
                 defenseBuff: 0.5
             }
-        }
         },
         {name: "Trip Mine",
             available: 19,
@@ -155,7 +150,6 @@ const ARSENAL_ASSAULT_POWERSET = {
                 cast: 1.93,
                 buffDuration: 170.0
             }
-        }
         },
         {name: "Targeting Drone",
             available: 23,
@@ -177,7 +171,6 @@ const ARSENAL_ASSAULT_POWERSET = {
                 tohitBuff: 2.0,
                 buffDuration: 0.75
             }
-        }
         },
         {name: "Sniper Rifle",
             available: 27,
@@ -198,7 +191,6 @@ const ARSENAL_ASSAULT_POWERSET = {
                 endurance: 18.512,
                 cast: 1.17
             }
-        }
         },
         {name: "Ignite",
             available: 29,

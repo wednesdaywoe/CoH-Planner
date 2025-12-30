@@ -33,7 +33,6 @@ const ICE_BLAST_POWERSET = {
                 },
                 buffDuration: 6.0
             }
-        }
         },
         {name: "Frost Breath",
             available: 1,
@@ -62,7 +61,6 @@ const ICE_BLAST_POWERSET = {
                 },
                 buffDuration: 0.6
             }
-        }
         },
         {name: "Aim",
             available: 5,
@@ -84,7 +82,6 @@ const ICE_BLAST_POWERSET = {
                 tohitBuff: 5.0,
                 buffDuration: 10.0
             }
-        }
         },
         {name: "Freeze Ray",
             available: 7,
@@ -111,7 +108,6 @@ const ICE_BLAST_POWERSET = {
                 },
                 buffDuration: 2.0
             }
-        }
         },
         {name: "Ice Storm",
             available: 11,
@@ -133,7 +129,6 @@ const ICE_BLAST_POWERSET = {
                 cast: 2.03,
                 buffDuration: 15.0
             }
-        }
         },
         {name: "Bitter Ice Blast",
             available: 17,
@@ -160,7 +155,6 @@ const ICE_BLAST_POWERSET = {
                 tohitDebuff: 1.0,
                 buffDuration: 6.0
             }
-        }
         },
         {name: "Bitter Freeze Ray",
             available: 21,
@@ -186,7 +180,6 @@ const ICE_BLAST_POWERSET = {
                 },
                 buffDuration: 18.0
             }
-        }
         },
         {name: "Blizzard",
             available: 25,

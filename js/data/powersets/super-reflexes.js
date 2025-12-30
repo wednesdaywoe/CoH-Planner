@@ -30,7 +30,6 @@ const SUPER_REFLEXES_POWERSET = {
                 buffDuration: 0.75,
                 defenseBuff: 0.4
             }
-        }
         },
         {name: "Focused Senses",
             available: 0,
@@ -52,7 +51,6 @@ const SUPER_REFLEXES_POWERSET = {
                 buffDuration: 0.75,
                 defenseBuff: 0.4
             }
-        }
         },
         {name: "Agile",
             available: 3,
@@ -71,7 +69,6 @@ const SUPER_REFLEXES_POWERSET = {
                 buffDuration: 0.75,
                 defenseBuff: 0.2
             }
-        }
         },
         {name: "Practiced Brawler",
             available: 9,
@@ -96,7 +93,6 @@ const SUPER_REFLEXES_POWERSET = {
                 tohitBuff: 0.3,
                 defenseBuff: 0.3
             }
-        }
         },
         {name: "Dodge",
             available: 15,
@@ -115,7 +111,6 @@ const SUPER_REFLEXES_POWERSET = {
                 buffDuration: 0.75,
                 defenseBuff: 0.2
             }
-        }
         },
         {name: "Quickness",
             available: 19,
@@ -133,7 +128,6 @@ const SUPER_REFLEXES_POWERSET = {
                 accuracy: 1.0,
                 buffDuration: 10.25
             }
-        }
         },
         {name: "Lucky",
             available: 23,
@@ -152,7 +146,6 @@ const SUPER_REFLEXES_POWERSET = {
                 buffDuration: 0.75,
                 defenseBuff: 0.2
             }
-        }
         },
         {name: "Evasion",
             available: 27,
@@ -174,7 +167,6 @@ const SUPER_REFLEXES_POWERSET = {
                 buffDuration: 0.75,
                 defenseBuff: 0.4
             }
-        }
         },
         {name: "Elude",
             available: 29,

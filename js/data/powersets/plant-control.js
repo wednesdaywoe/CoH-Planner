@@ -42,7 +42,6 @@ const PLANT_CONTROL_POWERSET = {
                 },
                 buffDuration: 9.2
             }
-        }
         },
         {name: "Strangler",
             available: 0,
@@ -69,7 +68,6 @@ const PLANT_CONTROL_POWERSET = {
                 },
                 buffDuration: 4.2
             }
-        }
         },
         {name: "Roots",
             available: 1,
@@ -104,7 +102,6 @@ const PLANT_CONTROL_POWERSET = {
                 },
                 buffDuration: 5.2
             }
-        }
         },
         {name: "Spore Burst",
             available: 5,
@@ -126,7 +123,6 @@ const PLANT_CONTROL_POWERSET = {
                 endurance: 13.0,
                 cast: 1.37
             }
-        }
         },
         {name: "Seeds of Confusion",
             available: 7,
@@ -149,7 +145,6 @@ const PLANT_CONTROL_POWERSET = {
                 endurance: 15.6,
                 cast: 1.07
             }
-        }
         },
         {name: "Spirit Tree",
             available: 11,
@@ -171,7 +166,6 @@ const PLANT_CONTROL_POWERSET = {
                 cast: 1.67,
                 buffDuration: 60.0
             }
-        }
         },
         {name: "Vines",
             available: 17,
@@ -192,7 +186,6 @@ const PLANT_CONTROL_POWERSET = {
                 endurance: 15.6,
                 cast: 2.1
             }
-        }
         },
         {name: "Carrion Creepers",
             available: 21,
@@ -214,7 +207,6 @@ const PLANT_CONTROL_POWERSET = {
                 cast: 1.17,
                 buffDuration: 120.0
             }
-        }
         },
         {name: "Fly Trap",
             available: 25,

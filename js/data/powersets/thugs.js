@@ -29,7 +29,6 @@ const THUGS_POWERSET = {
                 endurance: 5.46,
                 cast: 1.67
             }
-        }
         },
         {name: "Pistols",
             available: 0,
@@ -53,7 +52,6 @@ const THUGS_POWERSET = {
                     type: "Lethal",
                     scale: 2.3600000000000003
                 }
-        }
         },
         {name: "Dual Wield",
             available: 1,
@@ -80,7 +78,6 @@ const THUGS_POWERSET = {
                 },
                 buffDuration: 0.3
             }
-        }
         },
         {name: "Equip Thugs",
             available: 5,
@@ -103,7 +100,6 @@ const THUGS_POWERSET = {
                 cast: 1.3,
                 buffDuration: 3.5
             }
-        }
         },
         {name: "Empty Clips",
             available: 7,
@@ -132,7 +128,6 @@ const THUGS_POWERSET = {
                 },
                 buffDuration: 0.7
             }
-        }
         },
         {name: "Call Enforcer",
             available: 11,
@@ -153,7 +148,6 @@ const THUGS_POWERSET = {
                 endurance: 9.62,
                 cast: 1.67
             }
-        }
         },
         {name: "Gang War",
             available: 17,
@@ -174,7 +168,6 @@ const THUGS_POWERSET = {
                 endurance: 13.0,
                 cast: 1.67
             }
-        }
         },
         {name: "Call Bruiser",
             available: 21,
@@ -195,7 +188,6 @@ const THUGS_POWERSET = {
                 endurance: 13.18,
                 cast: 1.67
             }
-        }
         },
         {name: "Upgrade Equipment",
             available: 25,

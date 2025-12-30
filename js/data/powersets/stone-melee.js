@@ -33,7 +33,6 @@ const STONE_MELEE_POWERSET = {
                     scale: 2.141
                 }
             }
-        }
         },
         {name: "Stone Mallet",
             available: 0,
@@ -57,7 +56,6 @@ const STONE_MELEE_POWERSET = {
                     type: "Smashing",
                     scale: 3.4869
                 }
-        }
         },
         {name: "Heavy Mallet",
             available: 1,
@@ -81,7 +79,6 @@ const STONE_MELEE_POWERSET = {
                     type: "Smashing",
                     scale: 4.301
                 }
-        }
         },
         {name: "Build Up",
             available: 5,
@@ -103,7 +100,6 @@ const STONE_MELEE_POWERSET = {
                 tohitBuff: 2.0,
                 buffDuration: 10.0
             }
-        }
         },
         {name: "Fault",
             available: 7,
@@ -124,7 +120,6 @@ const STONE_MELEE_POWERSET = {
                 endurance: 10.192,
                 cast: 2.1
             }
-        }
         },
         {name: "Confront",
             available: 11,
@@ -145,7 +140,6 @@ const STONE_MELEE_POWERSET = {
                 cast: 1.67,
                 buffDuration: 12.0
             }
-        }
         },
         {name: "Seismic Smash",
             available: 17,
@@ -169,7 +163,6 @@ const STONE_MELEE_POWERSET = {
                     type: "Smashing",
                     scale: 5.8099
                 }
-        }
         },
         {name: "Hurl Boulder",
             available: 21,
@@ -195,7 +188,6 @@ const STONE_MELEE_POWERSET = {
                 },
                 buffDuration: 15.0
             }
-        }
         },
         {name: "Tremor",
             available: 25,

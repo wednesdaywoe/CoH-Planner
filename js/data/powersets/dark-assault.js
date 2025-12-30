@@ -34,7 +34,6 @@ const DARK_ASSAULT_POWERSET = {
                 tohitDebuff: 0.75,
                 buffDuration: 6.0
             }
-        }
         },
         {name: "Smite",
             available: 0,
@@ -69,7 +68,6 @@ const DARK_ASSAULT_POWERSET = {
                 tohitDebuff: 0.75,
                 buffDuration: 10.0
             }
-        }
         },
         {name: "Gloom",
             available: 3,
@@ -97,7 +95,6 @@ const DARK_ASSAULT_POWERSET = {
                 buffDuration: 3.6,
                 tohitDebuff: 0.75
             }
-        }
         },
         {name: "Night Fall",
             available: 9,
@@ -127,7 +124,6 @@ const DARK_ASSAULT_POWERSET = {
                 buffDuration: 2.8,
                 tohitDebuff: 0.75
             }
-        }
         },
         {name: "Gather Shadows",
             available: 15,
@@ -152,7 +148,6 @@ const DARK_ASSAULT_POWERSET = {
                 tohitBuff: 0.5,
                 defenseBuff: 0.5
             }
-        }
         },
         {name: "Engulfing Darkness",
             available: 19,
@@ -184,7 +179,6 @@ const DARK_ASSAULT_POWERSET = {
                 buffDuration: 3.1,
                 tohitDebuff: 0.75
             }
-        }
         },
         {name: "Life Drain",
             available: 23,
@@ -211,7 +205,6 @@ const DARK_ASSAULT_POWERSET = {
                 tohitDebuff: 0.75,
                 buffDuration: 10.0
             }
-        }
         },
         {name: "Moon Beam",
             available: 27,
@@ -232,7 +225,6 @@ const DARK_ASSAULT_POWERSET = {
                 endurance: 18.512,
                 cast: 1.33
             }
-        }
         },
         {name: "Midnight Grasp",
             available: 29,
