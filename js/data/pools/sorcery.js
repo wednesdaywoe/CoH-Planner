@@ -104,7 +104,7 @@ const POOL_SORCERY = {
       "name": "Mystic Flight",
       "fullName": "Pool.Sorcery.Mystic_Flight",
       "rank": 4,
-      "available": 3,
+      "available": 4,
       "description": "Using powerful magic you are able to lift yourself from the ground and fly. While Mystic Flight is active you can use Translocation to teleport to a distant location. Mystic Flight also increases your maximum flying speed by 50% whilst it is active.<br><br>Mystic Flight can be active at the same time as other flight toggles, but only the strongest flight speed buff will apply.",
       "shortHelp": "Toggle: Self Fly, (Special)",
       "icon": "sorcerypool_mysticflight.png",

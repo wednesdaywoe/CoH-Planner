@@ -730,6 +730,32 @@ function displayInherentPowers() {
     
     container.appendChild(addPoolBtn);
     
+    // Add epic pool selector button (disabled until level 35)
+    const addEpicPoolBtn = document.createElement('button');
+    addEpicPoolBtn.className = 'add-pool-btn';
+    addEpicPoolBtn.id = 'addEpicPoolBtn';
+    addEpicPoolBtn.textContent = '+ Add Epic Pool';
+    addEpicPoolBtn.style.marginTop = '8px';
+    
+    // Add click handler
+    addEpicPoolBtn.addEventListener('click', () => {
+        if (Build.level < 35) {
+            alert('Epic Pools unlock at level 35');
+            return;
+        }
+        openEpicPoolSelector();
+    });
+    
+    // Check if epic pools are unlocked
+    if (Build.level < 35) {
+        addEpicPoolBtn.disabled = true;
+        addEpicPoolBtn.title = 'Epic Pools unlock at level 35';
+        addEpicPoolBtn.style.opacity = '0.5';
+        addEpicPoolBtn.style.cursor = 'not-allowed';
+    }
+    
+    container.appendChild(addEpicPoolBtn);
+    
     // Organize inherents by category
     const fitnessPowers = Build.inherents.filter(p => p.category === 'fitness');
     const archetypePowers = Build.inherents.filter(p => p.category === 'archetype-specific');

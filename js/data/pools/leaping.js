@@ -96,7 +96,7 @@ const POOL_LEAPING = {
       "name": "Super Jump",
       "fullName": "Pool.Leaping.Long_Jump",
       "rank": 3,
-      "available": 3,
+      "available": 4,
       "description": "While this power is active, you can leap great distances and heights, easily jumping over buildings and from rooftop to rooftop! If you attack a target while this power is on, you will temporarily be reduced to a normal jump height. Super Jump also increases your maximum jumping speed by 35% and gives you access to the Double Jump power whilst it is active.<br><br>Super Jump can be active at the same time as other jumping toggles, but only the strongest jump buff will apply.",
       "shortHelp": "Toggle: Self Long Jump",
       "icon": "jump_longjump.png",

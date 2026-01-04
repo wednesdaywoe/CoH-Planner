@@ -4,10 +4,11 @@
  */
 
 /**
- * Debug button: Instantly set up Fire/Fire Blaster
+ * Debug button: Set up Fire/Fire Blaster with all Primary and Secondary powers
+ * Sets character to level 35 for epic pool testing
  */
 function debugFireFire() {
-    console.log('🔥 Debug: Setting up Fire/Fire Blaster');
+    console.log('🔥 Debug: Setting up Fire/Fire Blaster with all powers for level 35');
     
     // 1. Set Archetype
     const archetypeSelect = document.getElementById('archetypeSelect');
@@ -26,7 +27,33 @@ function debugFireFire() {
             secondarySelect.value = 'fire-manipulation';
             onSecondaryChange();
             
-            console.log('✓ Fire/Fire Blaster ready for testing!');
+            // 4. Add all Primary powers
+            setTimeout(() => {
+                const fireBlastPowerset = POWERSETS['fire-blast'];
+                if (fireBlastPowerset && fireBlastPowerset.powers) {
+                    console.log(`Adding ${fireBlastPowerset.powers.length} Fire Blast powers`);
+                    fireBlastPowerset.powers.forEach(power => {
+                        selectPower(power, 'primary');
+                    });
+                }
+                
+                // 5. Add all Secondary powers
+                setTimeout(() => {
+                    const fireManipulationPowerset = POWERSETS['fire-manipulation'];
+                    if (fireManipulationPowerset && fireManipulationPowerset.powers) {
+                        console.log(`Adding ${fireManipulationPowerset.powers.length} Fire Manipulation powers`);
+                        fireManipulationPowerset.powers.forEach(power => {
+                            selectPower(power, 'secondary');
+                        });
+                    }
+                    
+                    // Update UI
+                    refreshAvailablePowers();
+                    updateCharacterLevel();
+                    
+                    console.log('✓ Fire/Fire Blaster ready! Level:', Build.level);
+                }, 100);
+            }, 100);
         }, 100);
     }, 100);
 }

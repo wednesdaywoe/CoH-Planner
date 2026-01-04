@@ -35,10 +35,18 @@ const Build = {
         powers: []
     },
     pools: [], // Array of {id, name, powers: []}
+    epicPool: {
+        id: null,
+        name: '',
+        powers: []
+    },
     inherents: [], // ADD THIS LINE
     inherent: {
         powers: []
     },
+    
+    // Accolades
+    accolades: [],
     
     // Settings
     settings: {

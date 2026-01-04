@@ -97,7 +97,29 @@ function checkPoolPowerPrerequisites(poolId, powerName, build) {
         return { canSelect: true, reason: '' };
     }
     
-    // Rank 3+: Require level 14
+    // Special handling for travel powers that unlock at level 4
+    // These rank 3+ powers bypass normal level requirements
+    const travelPowersLevel4 = [
+        { pool: 'flight', power: 'Fly' },
+        { pool: 'teleportation', power: 'Teleport' },
+        { pool: 'leaping', power: 'Super Jump' },
+        { pool: 'speed', power: 'Super Speed' },
+        { pool: 'experimentation', power: 'Speed of Sound' },
+        { pool: 'invisibility', power: 'Infiltration' },
+        { pool: 'sorcery', power: 'Mystic Flight' }
+    ];
+    
+    const isTravelPowerLevel4 = travelPowersLevel4.some(t => t.pool === poolId && t.power === power.name);
+    
+    // Travel powers at level 4: Available immediately at level 4+ with no prerequisites
+    if (isTravelPowerLevel4) {
+        if (build.level < 4) {
+            return { canSelect: false, reason: 'Requires level 4' };
+        }
+        return { canSelect: true, reason: '' };
+    }
+    
+    // All other rank 3+: Require level 14
     if (build.level < 14) {
         return { canSelect: false, reason: 'Requires level 14' };
     }

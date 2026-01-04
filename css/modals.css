@@ -727,6 +727,56 @@ body:not(.hints-enabled) .main-hint-image {
     color: var(--text-tertiary);
 }
 
+.epic-pool-option {
+    background: var(--bg-tertiary);
+    border: 2px solid var(--border);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.epic-pool-option:hover {
+    border-color: var(--accent);
+    background: var(--bg-secondary);
+    transform: translateX(4px);
+}
+
+.epic-pool-option.selected {
+    border-color: var(--accent);
+    background: rgba(255, 107, 107, 0.1);
+}
+
+.epic-pool-name {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.epic-pool-desc {
+    font-size: 11px;
+    color: var(--text-secondary);
+    margin-top: 4px;
+}
+
+.epic-modal-list {
+    max-height: 400px;
+    overflow-y: auto;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 8px;
+    margin-bottom: 12px;
+}
+
+.epic-power-modal-list {
+    max-height: 400px;
+    overflow-y: auto;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 8px;
+    margin-bottom: 12px;
+}
+
 /* Drag selection styling */
 .set-piece-icon.drag-selected {
     outline: 3px solid var(--accent);
@@ -833,3 +883,83 @@ body:not(.hints-enabled) .main-hint-image {
         max-width: 300px;
     }
 }
+
+/* ============================================ */
+/* SIMPLE MODAL (Stats, Accolades, etc.) */
+/* ============================================ */
+
+.simple-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.75);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    backdrop-filter: blur(4px);
+}
+
+.simple-modal {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+    max-height: 80vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+.simple-modal-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+    padding: 24px;
+}
+
+.simple-modal-content h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 12px 0;
+}
+
+.simple-modal-content p {
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+.simple-modal-content > div:not(:first-child):not(h3):not(p) {
+    flex: 1;
+    overflow-y: auto;
+    margin: 16px 0;
+}
+
+.simple-modal-content button {
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.simple-modal-content button:hover {
+    background: #2563EB;
+    transform: translateY(-1px);
+}
+
+.simple-modal-content button:active {
+    transform: translateY(0);
+}
+

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Epic Pool Fix Test</title>
+</head>
+<body>
+    <h1>Epic Pool Loading Test</h1>
+    <button onclick="testEpicPoolFix()">Test Epic Pool Registration</button>
+    <pre id="output"></pre>
+
+    <script>
+        async function testEpicPoolFix() {
+            const output = document.getElementById('output');
+            output.textContent = 'Testing epic pool registration...\n\n';
+            
+            // Small delay to ensure all pools are loaded
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            
+            if (!window.EPIC_POOLS) {
+                output.textContent += 'ERROR: EPIC_POOLS not found!\n';
+                return;
+            }
+            
+            output.textContent += 'EPIC_POOLS found!\n';
+            output.textContent += `Total pools registered: ${Object.keys(window.EPIC_POOLS).length}\n\n`;
+            
+            // Test specific pool lookup
+            const testPool = 'blaster_mu_mastery';
+            output.textContent += `Looking up pool: "${testPool}"\n`;
+            
+            if (window.EPIC_POOLS[testPool]) {
+                output.textContent += `✓ FOUND: ${window.EPIC_POOLS[testPool].name}\n`;
+                output.textContent += `  Archetype: ${window.EPIC_POOLS[testPool].archetype}\n`;
+                output.textContent += `  Powers: ${window.EPIC_POOLS[testPool].powers.length}\n`;
+            } else {
+                output.textContent += `✗ NOT FOUND\n`;
+                output.textContent += `  Available pool IDs:\n`;
+                Object.keys(window.EPIC_POOLS).forEach(key => {
+                    output.textContent += `    - ${key}\n`;
+                });
+            }
+        }
+    </script>
+</body>
+</html>

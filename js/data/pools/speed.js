@@ -79,7 +79,7 @@ const POOL_SPEED = {
       "name": "Super Speed",
       "fullName": "Pool.Speed.Super_Speed",
       "rank": 3,
-      "available": 3,
+      "available": 4,
       "description": "You can run at super-human speeds! While running at such speeds, you are a blur, and many foes will not even notice you as you speed past them. As you run, you build momentum, allowing you to jump great distances, but only for a limited time. If you attack a target while this power is on, you will temporarily be slowed to normal speed. Super Speed also increases your maximum run speed by 30% and gives you access to the Speed Phase power whilst it is active.<br><br>Super Speed can be active at the same time as other run speed toggles, but only the strongest run speed buff will apply.",
       "shortHelp": "Toggle: Self +Speed",
       "icon": "superspeed_superspeed.png",

@@ -102,7 +102,7 @@ const POOL_EXPERIMENTATION = {
       "name": "Speed of Sound",
       "fullName": "Pool.Experimentation.Speed_of_Sound",
       "rank": 3,
-      "available": 3,
+      "available": 4,
       "description": "Your experiments have yielded incredible results. By activating this power, you're able to run at incredible speeds. In fact, while this power is active, you gain access to the Jaunt power. Jaunt allows you to teleport to a distant location once every short while. Speed of Sound also increases your maximum run speed by 30% whilst it is active.<br><br>Speed of Sound can be active at the same time as other run speed toggles, but only the strongest run speed buff will apply.",
       "shortHelp": "Toggle: Self +Speed, (Special)",
       "icon": "experimentation_speedofsound.png",

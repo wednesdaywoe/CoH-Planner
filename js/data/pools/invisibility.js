@@ -70,7 +70,7 @@ const POOL_INVISIBILITY = {
       "name": "Infiltration",
       "fullName": "Pool.Invisibility.Invisibility",
       "rank": 3,
-      "available": 3,
+      "available": 4,
       "description": "You blend into your environment and swiftly make your way while attempting to stay undetected. Infiltration grants you a considerable boost to both your jump height and run speed. Even if discovered, you are hard to see and have a bonus to Defense from all attacks. If, however, you attack while using this power, you will be discovered and will lose your Stealth and Defense bonus provided by this power.<br><br>Infiltration can be active at the same time as other running and jumping toggles, but only the strongest run speed buff and strongest jumping buff will apply.",
       "shortHelp": "Toggle: Self, +Jump, +Run Speed, Self Stealth, +DEF(All)",
       "icon": "invisibility_infiltration.png",

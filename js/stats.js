@@ -439,11 +439,16 @@ function updateStatsDashboard() {
                 // Max Endurance = baseline endurance + (baseline * percentage bonus)
                 absValue = BaselineStats.baselineEndurance * (1 + value / 100);
             } else if (statId === 'regeneration') {
-                // Regeneration = baseline recovery + (baseline * percentage bonus)
-                // For regeneration, we need base regen which comes from Rest power or buffs
-                // Using a base of 1 HP/sec for regeneration and applying the bonus
-                const baseRegen = 1; // Base regeneration from Rest or other sources
-                absValue = baseRegen * (1 + value / 100);
+                // Regeneration is based on 5% of max health every 12 seconds
+                // This translates to: (maxHealth * 0.05) / 12 seconds = HP/sec
+                // With percentage bonuses applied to the regeneration multiplier
+                const maxHealth = BaselineStats.baselineMaxHealth * (1 + (CharacterStats.maxhp || 0) / 100);
+                const baseRegenRate = 0.05; // 5% per 12 seconds
+                const baseRegenPerSecond = (maxHealth * baseRegenRate) / 12;
+                
+                // Apply percentage bonuses to base regen rate (if any)
+                const bonusMultiplier = (1 + value / 100);
+                absValue = baseRegenPerSecond * bonusMultiplier;
             } else if (statId === 'recovery') {
                 // Recovery = baseline recovery + (baseline * percentage bonus)
                 absValue = BaselineStats.baselineRecovery * (1 + value / 100);
@@ -712,6 +717,25 @@ function recalculateStats() {
             }
         }
     });
+    
+    // Add accolade bonuses
+    if (typeof getActiveAccoladeBuffs === 'function') {
+        const accoladeBufss = getActiveAccoladeBuffs();
+        
+        // Handle endurance bonuses (+5, +5, etc. are absolute values)
+        if (accoladeBufss.endurance > 0) {
+            CharacterStats.maxend = (CharacterStats.maxend || 0) + accoladeBufss.endurance;
+            console.log(`Applied accolade endurance bonus: +${accoladeBufss.endurance}`);
+        }
+        
+        // Handle max health bonuses (percentage bonuses)
+        if (accoladeBufss.maxHealth > 0) {
+            // Convert percentage bonus to percentage points (0.10 = 10%)
+            const maxHealthBonus = accoladeBufss.maxHealth * 100;
+            CharacterStats.maxhp = (CharacterStats.maxhp || 0) + maxHealthBonus;
+            console.log(`Applied accolade max health bonus: +${maxHealthBonus}%`);
+        }
+    }
     
     // TODO: Add enhancement bonuses from slotted enhancements
     

@@ -107,3 +107,31 @@ function getTotalSlots(level) {
         .filter(entry => entry.level <= level)
         .reduce((sum, entry) => sum + entry.slots, 0);
 }
+
+/**
+ * Calculate the character level based on number of powers selected
+ * Uses actual CoH progression: powers at 1,2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,35,38,41,44,47,49
+ * This replaces manual level tracking with progression-based auto-level
+ * 
+ * @param {number} totalPowerCount - Total powers selected (primary + secondary + pools + epics)
+ * @returns {number} Appropriate character level for that power count
+ */
+function calculateLevelFromPowerCount(totalPowerCount) {
+    if (totalPowerCount === 0) return 1;
+    
+    // Count how many levels we need to go through to get this many power picks
+    let powerPicksAccumulated = 0;
+    
+    for (let i = 0; i < LEVEL_PROGRESSION.length; i++) {
+        const entry = LEVEL_PROGRESSION[i];
+        if (entry.powers > 0) {
+            powerPicksAccumulated += entry.powers;
+            if (powerPicksAccumulated >= totalPowerCount) {
+                return entry.level;
+            }
+        }
+    }
+    
+    // If we somehow exceed all power picks, stay at max level
+    return LEVEL_PROGRESSION[LEVEL_PROGRESSION.length - 1].level;
+}

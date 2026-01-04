@@ -79,7 +79,7 @@ const POOL_TELEPORTATION = {
       "name": "Teleport",
       "fullName": "Pool.Teleportation.Teleport",
       "rank": 3,
-      "available": 3,
+      "available": 4,
       "description": "You can Teleport long distances. Once at your destination, you will be stuck in between dimensions for up to 15s. While in this state, you will not be affected by gravity, and be able to execute additional teleportation jumps at a discounted endurance cost.<br><br>Moving or taking any non-teleport action, though, will snap you back into reality, and you will once more be affected by gravity. <br><br>Teleport has no recharge time, and can be reactivated without pause, as long as you have Endurance.",
       "shortHelp": "Ranged (Location), Self Teleport",
       "icon": "teleportation_teleport.png",

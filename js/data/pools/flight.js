@@ -85,7 +85,7 @@ const POOL_FLIGHT = {
       "name": "Fly",
       "fullName": "Pool.Flight.Fly",
       "rank": 3,
-      "available": 3,
+      "available": 4,
       "description": "Fly allows you to travel large distances quickly. Fly also increases your maximum flying speed by 50% and gives you access to the Afterburner power whilst it is active.<br><br>If you attack a target while this power is on, your flight speed will be temporarily reduced to Hover speed.<br><br>Fly can be active at the same time as other flight toggles, but only the strongest flight speed buff will apply.",
       "shortHelp": "Toggle: Self Fly",
       "icon": "flight_travelflight.png",

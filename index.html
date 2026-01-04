@@ -80,6 +80,9 @@
                 <button class="stats-btn" onclick="openStatsSelector()">
                     <span>⚙</span> Configure Stats
                 </button>
+                <button class="stats-btn" onclick="openAccoladesModal()">
+                    <span>🏆</span> Accolades
+                </button>
                 <button class="stats-btn" onclick="openStatsDetail()">
                     <span>📊</span> Detailed View
                 </button>
@@ -610,6 +613,12 @@
     <script src="js/data/pools/teleportation.js"></script>
     <script src="js/data/pools/utility_belt.js"></script>
     
+    <!-- Epic Pool Auto-Loader (registers all loaded epic pools) -->
+    <script src="js/data/epic-pools.js"></script>
+    
+    <!-- Epic Pool Dynamic Loader (loads all 81 epic pool files) -->
+    <script src="js/data/load-epic-pools.js"></script>
+    
     <script src="js/data/io-sets.js"></script>
     <script src="js/data/enhancements.js"></script>
     <script src="js/data/level-progression.js"></script>
@@ -627,6 +636,7 @@
     <script src="js/enhancement-selector.js"></script>
     <script src="js/rule-of-five.js"></script>
     <script src="js/stats.js"></script>
+    <script src="js/accolades.js"></script>
     <script src="js/debug.js"></script>
 </body>
 </html>
