@@ -79,9 +79,6 @@ function onArchetypeChange() {
     // Display inherent powers in UI
     displayInherentPowers();
     
-    // Update inherent power display
-    updateInherentPowerDisplay(archetype.inherent);
-    
     // Clear selected powers
     clearSelectedPowers();
     
