@@ -505,5 +505,4 @@ if (typeof window !== 'undefined') {
     window.INHERENT_POWERS = INHERENT_POWERS;
     window.FITNESS_POOL = FITNESS_POOL;
     window.getInherentPowersForArchetype = getInherentPowersForArchetype;
-    window.initializeInherentPowers = initializeInherentPowers;
 }
