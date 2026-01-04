@@ -728,7 +728,7 @@ function generateImprovedPowerTooltipHTML(power, basePower, showModified = false
         ];
         
         // Note: stun is already handled in EFFECT_KEY_INFO above, so skip it here
-        const controls = controlData.filter(c => effects[c.key] !== undefined);
+        const controls = controlData.filter(c => effects[c.key] !== undefined && typeof effects[c.key] !== 'object');
         if (controls.length > 0) {
             html += `<div class="tooltip-section" style="border-top: 1px solid var(--border); padding-top: 8px; margin-top: 8px;">`;
             html += `<div style="font-size: 10px; font-weight: 600; opacity: 0.7; margin-bottom: 4px;">CONTROL EFFECTS</div>`;
@@ -737,10 +737,10 @@ function generateImprovedPowerTooltipHTML(power, basePower, showModified = false
                 html += `<div style="margin-bottom: 4px;">`;
                 html += `<div style="display: flex; justify-content: space-between; font-size: 11px; padding: 2px 0;">`;
                 html += `<span style="opacity: 0.8;">${label} Magnitude:</span>`;
-                html += `<span style="font-weight: 600; color: ${color};">Mag ${effects[key].toFixed(1)}</span>`;
+                html += `<span style="font-weight: 600; color: ${color};">Mag ${(typeof effects[key] === 'number' ? effects[key].toFixed(1) : effects[key])}</span>`;
                 html += `</div>`;
                 
-                if (durKey && effects[durKey] !== undefined) {
+                if (durKey && effects[durKey] !== undefined && typeof effects[durKey] === 'number') {
                     html += `<div style="display: flex; justify-content: space-between; font-size: 10px; padding: 2px 0; padding-left: 12px;">`;
                     html += `<span style="opacity: 0.6;">Duration:</span>`;
                     html += `<span style="font-weight: 600;">${effects[durKey].toFixed(1)}s</span>`;
@@ -770,11 +770,13 @@ function generateImprovedPowerTooltipHTML(power, basePower, showModified = false
             
             Object.keys(effects.protection).sort().forEach(type => {
                 const value = effects.protection[type];
-                const label = protectionLabels[type] || (type.charAt(0).toUpperCase() + type.slice(1));
-                html += `<div style="display: flex; justify-content: space-between; font-size: 11px; padding: 2px 0;">`;
-                html += `<span style="opacity: 0.8;">${label} Protection:</span>`;
-                html += `<span style="font-weight: 600; color: #10b981;">Mag ${value.toFixed(1)}</span>`;
-                html += `</div>`;
+                if (typeof value === 'number') {
+                    const label = protectionLabels[type] || (type.charAt(0).toUpperCase() + type.slice(1));
+                    html += `<div style="display: flex; justify-content: space-between; font-size: 11px; padding: 2px 0;">`;
+                    html += `<span style="opacity: 0.8;">${label} Protection:</span>`;
+                    html += `<span style="font-weight: 600; color: #10b981;">Mag ${value.toFixed(1)}</span>`;
+                    html += `</div>`;
+                }
             });
             
             html += `</div>`;

@@ -918,3 +918,49 @@ function positionTooltip(tooltip, event) {
     tooltip.style.left = x + 'px';
     tooltip.style.top = y + 'px';
 }
+
+// ============================================
+// INHERENT POWER TOOLTIPS
+// ============================================
+
+/**
+ * Show tooltip for inherent powers
+ * @param {Event} event - Mouse event
+ * @param {Object} power - Inherent power object
+ */
+function showInherentPowerTooltip(event, power) {
+    const tooltip = document.getElementById('tooltip');
+    if (!tooltip) return;
+    
+    let html = '<div class="tooltip-power">';
+    
+    // Power name
+    html += `<div class="tooltip-power-name">${power.name}</div>`;
+    
+    // Power type
+    html += `<div class="tooltip-power-type">${power.powerType} - ${power.shortHelp}</div>`;
+    
+    // Description
+    html += `<div class="tooltip-description">${power.description}</div>`;
+    
+    // Effects (if slottable)
+    if (power.maxSlots > 0) {
+        html += `<div class="tooltip-section">`;
+        html += `<div class="tooltip-section-label">Enhancements</div>`;
+        html += `<div>Max Slots: ${power.maxSlots}</div>`;
+        if (power.allowedEnhancements.length > 0) {
+            html += `<div>Accepts: ${power.allowedEnhancements.join(', ')}</div>`;
+        }
+        html += `</div>`;
+    } else {
+        html += `<div class="tooltip-note">This power cannot be slotted with enhancements.</div>`;
+    }
+    
+    html += '</div>';
+    
+    tooltip.innerHTML = html;
+    tooltip.style.display = 'block';
+    
+    // Position tooltip
+    positionTooltip(tooltip, event);
+}

@@ -46,13 +46,61 @@ function getTooltipHintsHtml() {
  * @param {string} powerName - Power name
  */
 function updatePowerSlots(powerName) {
+    // First check if it's an inherent power
+    let power = null;
+    if (Build.inherents && Array.isArray(Build.inherents)) {
+        power = Build.inherents.find(p => p.name === powerName);
+        if (power) {
+            // It's an inherent power
+            const powerElements = document.querySelectorAll('.selected-power');
+            let targetElement = null;
+
+            for (const elem of powerElements) {
+                if (elem.dataset && elem.dataset.powerName === powerName) {
+                    targetElement = elem;
+                    break;
+                }
+                const nameElem = elem.querySelector('.selected-power-name');
+                if (nameElem && nameElem.textContent === powerName) {
+                    targetElement = elem;
+                    break;
+                }
+            }
+            
+            if (!targetElement) {
+                return;
+            }
+            
+            // Get slots container
+            const slotsContainer = targetElement.querySelector('.enhancement-slots');
+            if (!slotsContainer) {
+                console.error(`Cannot find enhancement-slots for power: ${powerName}`);
+                return;
+            }
+            
+            // Clear and populate slots
+            slotsContainer.innerHTML = '';
+            for (let i = 0; i < power.maxSlots; i++) {
+                const slot = document.createElement('div');
+                slot.className = 'enhancement-slot empty';
+                slot.dataset.slotIndex = i;
+                slot.dataset.powerName = powerName;
+                slot.addEventListener('click', (e) => onSlotClicked(e, powerName, i));
+                slot.addEventListener('contextmenu', (e) => onSlotRightClicked(e, powerName, i));
+                slotsContainer.appendChild(slot);
+            }
+            return;
+        }
+    }
+    
+    // Check in standard powers
     const result = findPower(powerName);
     if (!result) {
         console.error(`Cannot update slots for power: ${powerName}`);
         return;
     }
-    
-    const { power } = result;
+
+    power = result.power;
     
     // Find the DOM element for this power; prefer data-power-name attribute
     const powerElements = document.querySelectorAll('.selected-power');
@@ -627,6 +675,225 @@ function refreshAllPowers() {
     
     // Update pool counter
     updatePoolCounter();
+}
+
+// ============================================
+// INHERENT POWERS
+// ============================================
+
+/**
+ * Display inherent powers in the Pool Powers column
+ */
+function displayInherentPowers() {
+    const container = document.querySelector('.column:nth-child(4) .column-content');
+    if (!container) return;
+    
+    // Clear existing content
+    container.innerHTML = '';
+    
+    // Add pool selector button first (disabled until level 4)
+    const addPoolBtn = document.createElement('button');
+    addPoolBtn.className = 'add-pool-btn';
+    addPoolBtn.id = 'addPoolBtn';
+    addPoolBtn.textContent = '+ Add Power Pool';
+    
+    // Check if pools are unlocked
+    if (Build.level < 4) {
+        addPoolBtn.disabled = true;
+        addPoolBtn.title = 'Power Pools unlock at level 4';
+        addPoolBtn.style.opacity = '0.5';
+        addPoolBtn.style.cursor = 'not-allowed';
+    } else {
+        addPoolBtn.onclick = () => openPoolPowerModal();
+    }
+    
+    container.appendChild(addPoolBtn);
+    
+    // Organize inherents by category
+    const fitnessPowers = Build.inherents.filter(p => p.category === 'fitness');
+    const archetypePowers = Build.inherents.filter(p => p.category === 'archetype-specific');
+    const universalPowers = Build.inherents.filter(p => p.category === 'universal');
+    
+    console.log('Fitness powers:', fitnessPowers.map(p => p.name));
+    console.log('Archetype powers:', archetypePowers.map(p => p.name));
+    console.log('Universal powers:', universalPowers.map(p => p.name));
+    console.log('Fitness first power object:', fitnessPowers[0]);
+    console.log('Archetype first power object:', archetypePowers[0]);
+    
+    // Helper function to create a power section
+    const createPowerSection = (title, powers) => {
+        if (powers.length === 0) {
+            return null;
+        }
+        
+        const section = document.createElement('div');
+        section.className = 'inherent-powers-section';
+        section.style.marginTop = '20px';
+        section.style.marginBottom = '20px';
+        
+        // Section header
+        const header = document.createElement('div');
+        header.style.fontWeight = '600';
+        header.style.fontSize = '11px';
+        header.style.color = 'var(--accent)';
+        header.style.textTransform = 'uppercase';
+        header.style.letterSpacing = '0.05em';
+        header.style.marginBottom = '8px';
+        header.textContent = title;
+        section.appendChild(header);
+        
+        // Add each power
+        powers.forEach(power => {
+            const powerElement = document.createElement('div');
+            powerElement.className = 'selected-power inherent-power';
+            powerElement.dataset.powerName = power.name;
+            
+            powerElement.innerHTML = `
+                <div class="selected-power-header">
+                    <span class="selected-power-name">${power.name}</span>
+                    <span class="selected-power-level">Inherent</span>
+                </div>
+                <div class="enhancement-slots"></div>
+            `;
+            
+            // Add tooltip - use available power tooltip like columns 1, 2, 3
+            powerElement.onmouseenter = (e) => {
+                if (typeof showAvailablePowerTooltip === 'function') {
+                    showAvailablePowerTooltip(e, power);
+                }
+            };
+            powerElement.onmouseleave = () => {
+                if (typeof hideTooltip === 'function') {
+                    hideTooltip();
+                }
+            };
+            
+            section.appendChild(powerElement);
+        });
+        
+        return section;
+    };
+    
+    // Display fitness section first
+    const fitnessSection = createPowerSection('Inherent Fitness', fitnessPowers);
+    let allSections = null;
+    if (fitnessSection) {
+        // Create a wrapper for all inherent sections
+        if (!allSections) {
+            allSections = document.createElement('div');
+            allSections.id = 'all-inherent-sections';
+        }
+        allSections.appendChild(fitnessSection);
+    }
+    
+    // Display archetype section
+    const archetypeSection = createPowerSection('Inherent Archetype', archetypePowers);
+    if (archetypeSection) {
+        if (!allSections) {
+            allSections = document.createElement('div');
+            allSections.id = 'all-inherent-sections';
+        }
+        allSections.appendChild(archetypeSection);
+    }
+    
+    // Display universal section
+    const universalSection = createPowerSection('Inherent', universalPowers);
+    if (universalSection) {
+        if (!allSections) {
+            allSections = document.createElement('div');
+            allSections.id = 'all-inherent-sections';
+        }
+        allSections.appendChild(universalSection);
+    }
+    
+    // Append all sections as one block
+    if (allSections) {
+        container.appendChild(allSections);
+    }
+    
+    // NOW initialize slots AFTER all DOM elements are added
+    const allInherents = [...fitnessPowers, ...archetypePowers, ...universalPowers];
+    allInherents.forEach(power => {
+        if (power.maxSlots > 0) {
+            updatePowerSlots(power.name);
+        }
+    });
+    
+    // Display selected pool powers (if any)
+    updatePoolPowersDisplay();
+}
+
+/**
+ * Update pool powers display section
+ */
+function updatePoolPowersDisplay() {
+    const container = document.querySelector('.column:nth-child(4) .column-content');
+    if (!container) return;
+    
+    // Remove existing pool power groups
+    const existingGroups = container.querySelectorAll('.pool-power-group');
+    existingGroups.forEach(group => group.remove());
+    
+    // Display selected pool powers grouped by pool
+    Build.pools.forEach(poolData => {
+        const pool = POWER_POOLS[poolData.id];
+        if (!pool) return;
+        
+        // Only show pool if it has powers
+        if (poolData.powers.length === 0) return;
+        
+        // Create pool group
+        const poolGroup = document.createElement('div');
+        poolGroup.className = 'pool-power-group';
+        poolGroup.style.marginTop = '16px';
+        
+        // Pool header
+        const poolHeader = document.createElement('div');
+        poolHeader.style.fontWeight = '600';
+        poolHeader.style.fontSize = '11px';
+        poolHeader.style.color = 'var(--accent)';
+        poolHeader.style.textTransform = 'uppercase';
+        poolHeader.style.letterSpacing = '0.05em';
+        poolHeader.style.marginBottom = '8px';
+        poolHeader.textContent = pool.name;
+        poolGroup.appendChild(poolHeader);
+        
+        // Pool powers
+        poolData.powers.forEach(power => {
+            const powerElement = document.createElement('div');
+            powerElement.className = 'selected-power';
+            powerElement.dataset.powerName = power.name;
+            powerElement.innerHTML = `
+                <div class="selected-power-header">
+                    <span class="selected-power-name">${power.name}</span>
+                    <span class="selected-power-level">Level ${power.level}</span>
+                </div>
+                <div class="enhancement-slots"></div>
+            `;
+            
+            // Add tooltip
+            powerElement.onmouseenter = (e) => {
+                const originalPower = getOriginalPowerData(power.name, 'pool', poolData.id);
+                if (originalPower && typeof showPowerTooltip === 'function') {
+                    showPowerTooltip(e, power, originalPower);
+                }
+            };
+            powerElement.onmouseleave = () => {
+                if (typeof hideTooltip === 'function') {
+                    hideTooltip();
+                }
+            };
+            
+            poolGroup.appendChild(powerElement);
+        });
+        
+        container.appendChild(poolGroup);
+        
+        // Initialize slots
+        poolData.powers.forEach(power => {
+            updatePowerSlots(power.name);
+        });
+    });
 }
 
 // ============================================

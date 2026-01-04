@@ -73,6 +73,12 @@ function onArchetypeChange() {
     populatePrimaryDropdown(archetype.primarySets);
     populateSecondaryDropdown(archetype.secondarySets);
     
+    // Initialize inherent powers
+    Build.inherents = initializeInherentPowers(archetypeId);
+    
+    // Display inherent powers in UI
+    displayInherentPowers();
+    
     // Update inherent power display
     updateInherentPowerDisplay(archetype.inherent);
     
@@ -562,15 +568,19 @@ function updatePoolPowersColumn() {
     const container = document.querySelector('.column:nth-child(4) .column-content');
     if (!container) return;
     
-    // Clear existing content
-    container.innerHTML = '';
+    // Get pool button or create it if needed
+    let addPoolBtn = container.querySelector('.add-pool-btn');
+    if (!addPoolBtn) {
+        addPoolBtn = document.createElement('button');
+        addPoolBtn.className = 'add-pool-btn';
+        addPoolBtn.textContent = '+ Add Power Pool';
+        addPoolBtn.onclick = () => openPoolPowerModal();
+        container.appendChild(addPoolBtn);
+    }
     
-    // Add pool selector button
-    const addPoolBtn = document.createElement('button');
-    addPoolBtn.className = 'add-pool-btn';
-    addPoolBtn.textContent = '+ Add Power Pool';
-    addPoolBtn.onclick = () => openPoolPowerModal();
-    container.appendChild(addPoolBtn);
+    // Remove existing pool power groups (but keep inherent sections)
+    const existingGroups = container.querySelectorAll('.pool-power-group');
+    existingGroups.forEach(group => group.remove());
     
     // Display selected pool powers grouped by pool
     Build.pools.forEach(poolData => {
@@ -597,7 +607,6 @@ function updatePoolPowersColumn() {
         poolGroup.appendChild(poolHeader);
         
         // Pool powers
-        const poolPowerNames = [];
         poolData.powers.forEach(power => {
             const powerElement = document.createElement('div');
             powerElement.className = 'selected-power';
@@ -624,13 +633,14 @@ function updatePoolPowersColumn() {
             };
             
             poolGroup.appendChild(powerElement);
-            poolPowerNames.push(power.name);
         });
 
         container.appendChild(poolGroup);
 
-        // Initialize slots after the group is in the DOM so querySelectorAll finds the elements
-        poolPowerNames.forEach(name => updatePowerSlots(name));
+        // Initialize slots after the group is in the DOM
+        poolData.powers.forEach(power => {
+            updatePowerSlots(power.name);
+        });
     });
 }
 
@@ -1097,11 +1107,35 @@ function openPoolPowerModal() {
             // Level requirement
             const powerLevel = document.createElement('div');
             powerLevel.className = 'pool-power-level';
-            let levelText = `Level ${power.available}`;
-            if (power.prerequisiteCount) {
-                levelText += ` (${power.prerequisiteCount}+ from ${pool.name})`;
+            
+            // Build requirement text
+            let requirementText = '';
+            if (power.rank === 1 || power.rank === 2) {
+                requirementText = `Level ${Math.max(4, power.available || 4)}`;
+            } else if (power.rank === 3) {
+                requirementText = `Level 14, 1 other ${pool.name} power`;
+            } else if (power.rank >= 4) {
+                requirementText = `Level 14, 2 other ${pool.name} powers`;
             }
-            powerLevel.textContent = levelText;
+            
+            powerLevel.textContent = requirementText;
+            
+            // Show why it's disabled
+            if (!canSelect) {
+                if (Build.level < 4) {
+                    powerLevel.textContent += ' (Unlock at level 4)';
+                } else if (power.rank >= 3 && Build.level < 14) {
+                    powerLevel.textContent += ' (Need level 14)';
+                } else if (power.rank >= 3) {
+                    const poolData = Build.pools.find(p => p.id === pool.id);
+                    const powersOwned = poolData ? poolData.powers.length : 0;
+                    const powersNeeded = power.rank === 3 ? 1 : 2;
+                    if (powersOwned < powersNeeded) {
+                        powerLevel.textContent += ` (Need ${powersNeeded - powersOwned} more)`;
+                    }
+                }
+            }
+            
             powerOption.appendChild(powerLevel);
             
             // Add click handler if selectable
@@ -1156,6 +1190,12 @@ function openPoolPowerModal() {
  * @param {Object} power - Power from pool
  * @returns {boolean}
  */
+/**
+ * Check if a pool power can be selected (in modal context)
+ * @param {Object} pool - Pool definition
+ * @param {Object} power - Power from pool
+ * @returns {boolean}
+ */
 function canSelectPoolPowerInModal(pool, power) {
     // Check if already selected
     const poolData = Build.pools.find(p => p.id === pool.id);
@@ -1178,15 +1218,30 @@ function canSelectPoolPowerInModal(pool, power) {
         return true;
     }
     
-    // Rank 3-4: Check prerequisite count
-    if (!poolData) {
-        return false; // Pool not added yet, can't select rank 3-4
+    // Rank 3+: Requires level 14 AND prerequisites
+    if (power.rank >= 3) {
+        // Must be level 14+
+        if (Build.level < 14) {
+            return false;
+        }
+        
+        // Pool must already be added
+        if (!poolData) {
+            return false;
+        }
+        
+        // Rank 3: Need 1 other power from pool
+        if (power.rank === 3) {
+            return poolData.powers.length >= 1;
+        }
+        
+        // Rank 4-5: Need 2 other powers from pool
+        if (power.rank >= 4) {
+            return poolData.powers.length >= 2;
+        }
     }
     
-    const powersTaken = poolData.powers.length;
-    const requiredCount = power.prerequisiteCount || 0;
-    
-    return powersTaken >= requiredCount;
+    return false;
 }
 
 /**
@@ -1281,9 +1336,28 @@ function changeProgressionMode() {
 /**
  * Update character level display
  */
+/**
+ * Update character level display and pool button state
+ */
 function updateCharacterLevel() {
     const levelDisplay = document.getElementById('charLevel');
     if (levelDisplay) {
         levelDisplay.textContent = Build.level;
+    }
+    
+    // Update pool button state
+    const addPoolBtn = document.getElementById('addPoolBtn');
+    if (addPoolBtn) {
+        if (Build.level >= 4) {
+            addPoolBtn.disabled = false;
+            addPoolBtn.title = '';
+            addPoolBtn.style.opacity = '1';
+            addPoolBtn.style.cursor = 'pointer';
+        } else {
+            addPoolBtn.disabled = true;
+            addPoolBtn.title = 'Power Pools unlock at level 4';
+            addPoolBtn.style.opacity = '0.5';
+            addPoolBtn.style.cursor = 'not-allowed';
+        }
     }
 }

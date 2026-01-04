@@ -1,0 +1,39 @@
+Unblock-file batch_convert_with_at_dirs.ps1 -Archetype sentinel -Level 50
+./
+./batch_convert_with_at_dirs.ps1 -Archetype sentinel -Level 50
+./batch_convert_with_at_dirs.ps1 -Archetype defender -Level 50
+./batch_convert_with_at_dirs.ps1 -Archetype tanker -Level 50
+./batch_convert_with_at_dirs.ps1 -Archetype controller -Level 50
+./batch_convert_with_at_dirs.ps1 -Archetype blaster -Level 50
+./batch_convert_with_at_dirs.ps1 -Archetype scrapper -Level 50
+./batch_convert_with_at_dirs.ps1 -Archetype corruptor -Level 50
+./batch_convert_with_at_dirs.ps1 -Archetype brute -Level 50
+./batch_convert_with_at_dirs.ps1 -Archetype dominator -Level 50
+./batch_convert_with_at_dirs.ps1 -Archetype mastermind -Level 50
+./batch_convert_with_at_dirs.ps1 -Archetype stalker -Level 50
+
+
+Find individual powersets
+python convert_powerset.py `
+  "C:\Projects\Raw Data Homecoming\powers\brute_melee_aux\savage_melee" `
+  "C:\Projects\CoH-Planner\js\data\powersets\tanker\savage-melee.js" `
+  --archetype=brute --level=50 `
+  --tables="C:\Projects\Raw Data Homecoming\tables"
+
+python convert_powerset.py `
+  "C:\Projects\Raw Data Homecoming\powers\stalker_melee_aux\savage_melee" `
+  "C:\Projects\CoH-Planner\js\data\powersets\tanker\savage-melee.js" `
+  --archetype=stalker --level=50 `
+  --tables="C:\Projects\Raw Data Homecoming\tables"
+
+python convert_powerset.py `
+  "C:\Projects\Raw Data Homecoming\powers\tanker_melee_aux\savage_melee" `
+  "C:\Projects\CoH-Planner\js\data\powersets\tanker\savage-melee.js" `
+  --archetype=tanker --level=50 `
+  --tables="C:\Projects\Raw Data Homecoming\tables"
+
+python convert_powerset.py `
+  "C:\Projects\Raw Data Homecoming\powers\scrapper_melee_aux\savage_melee" `
+  "C:\Projects\CoH-Planner\js\data\powersets\tanker\savage-melee.js" `
+  --archetype=scrapper --level=50 `
+  --tables="C:\Projects\Raw Data Homecoming\tables"

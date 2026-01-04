@@ -35,6 +35,7 @@ const Build = {
         powers: []
     },
     pools: [], // Array of {id, name, powers: []}
+    inherents: [], // ADD THIS LINE
     inherent: {
         powers: []
     },
