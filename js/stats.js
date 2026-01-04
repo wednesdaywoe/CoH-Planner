@@ -57,6 +57,15 @@ const STAT_CATEGORIES = {
             maxend: { name: 'Max End', format: '+{value}%', color: 'stat-endurance' }
         }
     },
+    baseline: {
+        name: 'Baseline Stats',
+        stats: {
+            baselineEndurance: { name: 'Base Endurance', format: '{value}', color: 'stat-endurance' },
+            baselineRecovery: { name: 'Base Recovery', format: '{value} /sec', color: 'stat-recovery' },
+            baselineHealth: { name: 'Base Health', format: '{value} HP', color: 'stat-healing' },
+            baselineMaxHealth: { name: 'Max Health', format: '{value} HP', color: 'stat-healing' }
+        }
+    },
     movement: {
         name: 'Movement',
         stats: {
@@ -133,6 +142,14 @@ const CharacterStats = {
     flyspeed: 0,
     jumpspeed: 0,
     jumpheight: 0
+};
+
+// Baseline stats (before enhancements and set bonuses)
+const BaselineStats = {
+    baselineEndurance: 0,
+    baselineRecovery: 0,
+    baselineHealth: 0,
+    baselineMaxHealth: 0
 };
 
 // ============================================
@@ -297,6 +314,84 @@ function closeStatsSelector() {
 }
 
 // ============================================
+// BASELINE STATS CALCULATION
+// ============================================
+
+/**
+ * Get baseline endurance for current archetype and level
+ * @returns {number} Baseline endurance value
+ */
+function getBaselineEndurance() {
+    if (!Build.archetype || !ARCHETYPES[Build.archetype]) {
+        return 100;
+    }
+    
+    const archetype = ARCHETYPES[Build.archetype];
+    const baseEnd = archetype.stats.baseEndurance || 100;
+    
+    // Endurance scales slightly with level (approximately +1% per level after level 1)
+    const levelMultiplier = 1 + ((Build.level - 1) * 0.01);
+    return baseEnd * levelMultiplier;
+}
+
+/**
+ * Get baseline recovery for current archetype and level
+ * Recovery = endurance recovered per second
+ * @returns {number} Baseline recovery value
+ */
+function getBaselineRecovery() {
+    if (!Build.archetype || !ARCHETYPES[Build.archetype]) {
+        return 1.67;
+    }
+    
+    const archetype = ARCHETYPES[Build.archetype];
+    const baseRecovery = archetype.stats.baseRecovery || 1.67;
+    
+    // Recovery scales with level (approximately +2% per level after level 1)
+    const levelMultiplier = 1 + ((Build.level - 1) * 0.02);
+    return baseRecovery * levelMultiplier;
+}
+
+/**
+ * Get baseline health for current archetype and level
+ * Health is adjusted by archetype modifiers
+ * @returns {object} Object with baseHealth and maxHealth values
+ */
+function getBaselineHealth() {
+    if (!Build.archetype || !ARCHETYPES[Build.archetype]) {
+        return {
+            baseHealth: 1204.8,
+            maxHealth: 1606.4
+        };
+    }
+    
+    const archetype = ARCHETYPES[Build.archetype];
+    const baseHP = archetype.stats.baseHP || 1204.8;
+    const maxHP = archetype.stats.maxHP || 1606.4;
+    
+    // HP scales with level (approximately +1.5% per level after level 1)
+    const levelMultiplier = 1 + ((Build.level - 1) * 0.015);
+    
+    return {
+        baseHealth: baseHP * levelMultiplier,
+        maxHealth: maxHP * levelMultiplier
+    };
+}
+
+/**
+ * Update baseline stats based on current build
+ * Called whenever archetype or level changes
+ */
+function updateBaselineStats() {
+    BaselineStats.baselineEndurance = getBaselineEndurance();
+    BaselineStats.baselineRecovery = getBaselineRecovery();
+    
+    const health = getBaselineHealth();
+    BaselineStats.baselineHealth = health.baseHealth;
+    BaselineStats.baselineMaxHealth = health.maxHealth;
+}
+
+// ============================================
 // STATS DASHBOARD UPDATE
 // ============================================
 
@@ -320,8 +415,20 @@ function updateStatsDashboard() {
         const statDef = allStats[statId];
         if (!statDef) return;
         
-        const value = CharacterStats[statId] || 0;
-        const formattedValue = statDef.format.replace('{value}', value.toFixed(1));
+        // Get value from appropriate source
+        let value;
+        if (statId.startsWith('baseline')) {
+            // Get baseline stats
+            value = BaselineStats[statId] || 0;
+        } else {
+            // Get character stats (from enhancements and set bonuses)
+            value = CharacterStats[statId] || 0;
+        }
+        
+        // Format the value (baseline stats are absolute values, not percentages)
+        const formattedValue = statDef.format.replace('{value}', 
+            statId.startsWith('baseline') ? value.toFixed(0) : value.toFixed(1)
+        );
         
         const statItem = document.createElement('div');
         statItem.className = 'stat-item';
@@ -394,6 +501,9 @@ function openStatsDetail() {
  * Uses Rule of 5 system for accurate bonus tracking
  */
 function recalculateStats() {
+    // Update baseline stats first
+    updateBaselineStats();
+    
     // Reset all stats to 0
     Object.keys(CharacterStats).forEach(key => {
         CharacterStats[key] = 0;
@@ -421,6 +531,9 @@ function recalculateStats() {
     }
     
     // TODO: Add enhancement bonuses from slotted enhancements
+    
+    // Log baseline stats for debugging
+    console.log('Baseline Stats:', BaselineStats);
     
     // Update dashboard display
     updateStatsDashboard();

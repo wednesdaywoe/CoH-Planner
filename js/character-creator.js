@@ -85,6 +85,14 @@ function onArchetypeChange() {
     // Clear selected powers
     clearSelectedPowers();
     
+    // Update baseline stats and recalculate all stats
+    if (typeof updateBaselineStats === 'function') {
+        updateBaselineStats();
+    }
+    if (typeof recalculateStats === 'function') {
+        recalculateStats();
+    }
+    
     console.log(`Selected archetype: ${archetype.name}`);
 }
 
@@ -1343,6 +1351,14 @@ function updateCharacterLevel() {
     const levelDisplay = document.getElementById('charLevel');
     if (levelDisplay) {
         levelDisplay.textContent = Build.level;
+    }
+    
+    // Update baseline stats when level changes
+    if (typeof updateBaselineStats === 'function') {
+        updateBaselineStats();
+    }
+    if (typeof recalculateStats === 'function') {
+        recalculateStats();
     }
     
     // Update pool button state
