@@ -21,11 +21,14 @@ function initializeInherentPowers(archetypeId) {
     // Fitness inherent powers (always available)
     const fitnessInherents = ['swift', 'hurdle', 'health', 'stamina'];
     
-    // Add fitness inherents - preserve their category
+    // Add fitness inherents - preserve their category and initialize slots
     fitnessInherents.forEach(powerKey => {
         if (INHERENT_POWERS[powerKey]) {
+            const basePower = INHERENT_POWERS[powerKey];
             inherentPowers.push({
-                ...INHERENT_POWERS[powerKey]
+                ...basePower,
+                slots: basePower.maxSlots > 0 ? [null] : [], // Initialize with 1 empty slot if slottable
+                isActive: false // For toggles
             });
         }
     });
@@ -33,18 +36,20 @@ function initializeInherentPowers(archetypeId) {
     // Universal inherent powers (non-fitness) - only add if not already added
     const universalInherents = ['brawl', 'sprint', 'rest'];
     
-    // Add universal inherents - preserve their category or set to 'universal'
+    // Add universal inherents - preserve their category or set to 'universal', and initialize slots
     universalInherents.forEach(powerKey => {
         if (INHERENT_POWERS[powerKey]) {
             const power = INHERENT_POWERS[powerKey];
             inherentPowers.push({
                 ...power,
-                category: power.category || 'universal'
+                category: power.category || 'universal',
+                slots: power.maxSlots > 0 ? [null] : [], // Initialize with 1 empty slot if slottable
+                isActive: false // For toggles
             });
         }
     });
     
-    // Add archetype-specific inherent powers
+    // Add archetype-specific inherent powers with slots
     if (archetype.inherent.powers && Array.isArray(archetype.inherent.powers)) {
         archetype.inherent.powers.forEach(powerKey => {
             if (INHERENT_POWERS[powerKey]) {
@@ -52,7 +57,9 @@ function initializeInherentPowers(archetypeId) {
                 // Only override category if it's 'archetype', otherwise use 'archetype-specific'
                 inherentPowers.push({
                     ...power,
-                    category: (power.category === 'archetype' || power.category === 'archetype-specific') ? 'archetype-specific' : power.category
+                    category: (power.category === 'archetype' || power.category === 'archetype-specific') ? 'archetype-specific' : power.category,
+                    slots: power.maxSlots > 0 ? [null] : [], // Initialize with 1 empty slot if slottable
+                    isActive: false // For toggles
                 });
             }
         });
@@ -66,7 +73,9 @@ function initializeInherentPowers(archetypeId) {
             const power = INHERENT_POWERS[inherentKey];
             inherentPowers.push({
                 ...power,
-                category: (power.category === 'archetype' || power.category === 'archetype-specific') ? 'archetype-specific' : power.category
+                category: (power.category === 'archetype' || power.category === 'archetype-specific') ? 'archetype-specific' : power.category,
+                slots: power.maxSlots > 0 ? [null] : [], // Initialize with 1 empty slot if slottable
+                isActive: false // For toggles
             });
         }
     }

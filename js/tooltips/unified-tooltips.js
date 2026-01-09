@@ -4,6 +4,43 @@
  * UPDATED: Now uses new power data fields (description, shortHelp, targetType, etc.)
  */
 
+
+// ============================================
+// HELPER FUNCTIONS
+// ============================================
+
+/**
+ * Get color for a stat type
+ * @param {string} stat - Stat type
+ * @returns {string} CSS color value
+ */
+function getStatColor(stat) {
+    const colors = {
+        damage: '#ef4444',
+        accuracy: '#3b82f6',
+        recharge: '#8b5cf6',
+        endurance: '#06b6d4',
+        range: '#10b981',
+        cast: '#f59e0b',
+        buff: '#10b981',
+        debuff: '#ef4444',
+        healing: '#10b981',
+        control: '#a78bfa',
+        protection: '#3b82f6'
+    };
+    return colors[stat] || 'var(--text-secondary)';
+}
+
+/**
+ * Get color for a value (positive/negative)
+ * @param {number} value - Numeric value
+ * @returns {string} CSS color value
+ */
+function getValueColor(value) {
+    if (value > 0) return '#10b981'; // Green for positive
+    if (value < 0) return '#ef4444'; // Red for negative
+    return 'var(--text-secondary)'; // Gray for zero
+}
 // ============================================
 // AVAILABLE POWER TOOLTIPS (Column 1)
 // ============================================

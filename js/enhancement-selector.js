@@ -441,6 +441,23 @@ function setupGroupFilterEvents(typesPanel) {
 
 
 /**
+ * Check if a piece from a set is already slotted in the current power
+ * @param {string} setId - Set identifier
+ * @param {number} pieceNum - Piece number
+ * @returns {boolean} True if already slotted
+ */
+function isPieceAlreadySlotted(setId, pieceNum) {
+    if (!AppState.currentPowerName) return false;
+    
+    const result = findPower(AppState.currentPowerName);
+    if (!result || !result.power.slots) return false;
+    
+    return result.power.slots.some(slot => 
+        slot && slot.type === 'io-set' && slot.setId === setId && slot.pieceNum === pieceNum
+    );
+}
+
+/**
  * Render list of sets
  * @param {HTMLElement} setsPanel - The sets panel element
  * @param {Array} setsToShow - Array of {setId, set} objects
@@ -471,9 +488,12 @@ function renderSetsList(setsPanel, setsToShow) {
         set.pieces.forEach(piece => {
             const uniqueClass = piece.unique ? ' unique' : '';
             const procClass = piece.proc ? ' proc' : '';
+            // Check if this piece is already slotted in the current power
+            const alreadySlotted = isPieceAlreadySlotted(setId, piece.num);
+            const disabledClass = alreadySlotted ? ' disabled' : '';
             // Use data attributes instead of inline onclick
             html += `
-                <div class="set-piece-icon${uniqueClass}${procClass}" 
+                <div class="set-piece-icon${uniqueClass}${procClass}${disabledClass}" 
                      data-set-id="${setId}"
                      data-piece-num="${piece.num}">
                     <img src="${iconPath}" alt="${set.name}" onerror="this.onerror=null;this.src='img/Enhancements/Damage.png'">
@@ -513,6 +533,9 @@ function setupSetPieceEvents(setsPanel) {
     setsPanel.addEventListener('click', (e) => {
         const piece = e.target.closest('.set-piece-icon');
         if (!piece) return;
+        
+        // Ignore clicks on disabled pieces
+        if (piece.classList.contains('disabled')) return;
         
         const setId = piece.dataset.setId;
         const pieceNum = parseInt(piece.dataset.pieceNum);

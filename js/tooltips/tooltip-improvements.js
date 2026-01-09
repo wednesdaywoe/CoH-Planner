@@ -536,7 +536,87 @@ function generateImprovedPowerTooltipHTML(power, basePower, showModified = false
             html += `</table>`;
             html += `</div>`;
         }
+    }
+
+    // Additional section: display buff/debuff effects not covered by allowedEnhancements
+    // This ensures powers like Aim and Build Up show their buff values even if not in allowedEnhancements
+    if (basePower.effects && basePower.allowedEnhancements) {
+        const extraStats = [];
+        const effects = basePower.effects;
+        const buffDebuffKeys = ['tohitBuff', 'damageBuff', 'defenseBuff', 'resistanceBuff', 'tohitDebuff', 'defenseDebuff', 'buffDuration'];
+        
+        buffDebuffKeys.forEach(key => {
+            if (effects[key] !== undefined && EFFECT_KEY_INFO[key]) {
+                let rawValue = effects[key];
+                if (typeof rawValue === 'object' && rawValue.scale !== undefined) rawValue = rawValue.scale;
+
+                const info = EFFECT_KEY_INFO[key];
+                let baseValue = rawValue;
+                
+                if ((key === 'tohitDebuff' || key === 'defenseDebuff' || key === 'tohitBuff' || key === 'damageBuff' || key === 'defenseBuff') &&
+                    typeof calculateBuffDebuffValue === 'function') {
+                    const archetypeId = Build.archetype?.id;
+                    baseValue = calculateBuffDebuffValue(rawValue, archetypeId);
+                }
+
+                let enhancedValue = baseValue;
+                let finalValue = baseValue;
+                
+                if (showModified && power && typeof calculatePowerEnhancementBonuses === 'function') {
+                    const bonuses = calculatePowerEnhancementBonuses(power);
+                    if (key === 'tohitBuff') enhancedValue = baseValue * (1 + (bonuses.tohitBuff || 0));
+                    else if (key === 'damageBuff') enhancedValue = baseValue * (1 + (bonuses.damageBuff || 0));
+                    else enhancedValue = baseValue;
+                    
+                    const stats = CharacterStats || {};
+                    finalValue = enhancedValue;
+                }
+
+                extraStats.push({
+                    name: info.name,
+                    color: info.color,
+                    base: info.format(baseValue),
+                    enhanced: info.format(enhancedValue),
+                    final: info.format(finalValue)
+                });
+            }
+        });
+
+        if (extraStats.length > 0) {
+            html += `<div class="tooltip-section" style="border-top: 1px solid var(--border); padding-top: 8px; margin-top: 8px;">`;
+            html += `<table style="width: 100%; font-size: 11px; border-collapse: collapse;">`;
+            html += `<thead>`;
+            html += `<tr style="border-bottom: 1px solid var(--border);">`;
+            html += `<th style="text-align: left; padding: 4px 8px 4px 0; opacity: 0.6;"></th>`;
+            if (showModified) {
+                html += `<th style="text-align: right; padding: 4px 8px; opacity: 0.6;">Base</th>`;
+                html += `<th style="text-align: right; padding: 4px 8px; opacity: 0.6;">Enhanced</th>`;
+                html += `<th style="text-align: right; padding: 4px 8px; opacity: 0.6;">Final</th>`;
+            } else {
+                html += `<th style="text-align: right; padding: 4px 8px; opacity: 0.6;">Value</th>`;
+            }
+            html += `</tr>`;
+            html += `</thead>`;
+            html += `<tbody>`;
+
+            extraStats.forEach(stat => {
+                html += `<tr>`;
+                html += `<td class="${stat.color}" style="padding: 4px 0; font-weight: 600;">${stat.name}</td>`;
+                if (showModified) {
+                    html += `<td style="text-align: right; padding: 4px 8px;">${stat.base}</td>`;
+                    html += `<td style="text-align: right; padding: 4px 8px;">${stat.enhanced}</td>`;
+                    html += `<td class="${stat.color}" style="text-align: right; padding: 4px 8px; font-weight: 600;">${stat.final}</td>`;
+                } else {
+                    html += `<td class="${stat.color}" style="text-align: right; padding: 4px 8px; font-weight: 600;">${stat.base}</td>`;
+                }
+                html += `</tr>`;
+            });
+
+            html += `</tbody>`;
+            html += `</table>`;
+            html += `</div>`;
         }
+    }
 
     // === NEW EFFECT TYPES SECTION ===
     if (basePower.effects) {

@@ -396,15 +396,11 @@ function initializeDemoBuild() {
     console.warn('initializeDemoBuild() is deprecated');
 }
 
-// ============================================
-// EXPORT
-// ============================================
-
 /**
- * Export build to JSON
+ * Export build to JSON (data only)
  * @returns {string} JSON string of build
  */
-function exportBuild() {
+function exportBuildData() {
     // Convert sets Map to object for JSON serialization
     const exportData = {
         ...Build,
@@ -422,18 +418,42 @@ function exportBuild() {
 }
 
 /**
- * Import build from JSON
+ * Import build from JSON (data only)
  * @param {string} jsonData - JSON string
  */
-function importBuild(jsonData) {
+function importBuildData(jsonData) {
     try {
         const data = JSON.parse(jsonData);
         
-        // Clear current build
-        Build.primary.powers = data.primary.powers || [];
-        Build.secondary.powers = data.secondary.powers || [];
-        Build.pools = data.pools || []; // Use new pools array
-        Build.inherent.powers = data.inherent.powers || [];
+        // Restore character info
+        Build.name = data.name || 'Untitled Build';
+        Build.level = data.level || 1;
+        Build.progressionMode = data.progressionMode || 'auto';
+        
+        // Restore archetype
+        Build.archetype = data.archetype || {
+            id: null,
+            name: '',
+            stats: null,
+            inherent: null
+        };
+        
+        // Restore power sets
+        Build.primary = data.primary || { id: null, name: '', powers: [] };
+        Build.secondary = data.secondary || { id: null, name: '', powers: [] };
+        Build.pools = data.pools || [];
+        Build.epicPool = data.epicPool || { id: null, name: '', powers: [] };
+        Build.inherents = data.inherents || [];
+        Build.inherent = data.inherent || { powers: [] };
+        
+        // Restore accolades
+        Build.accolades = data.accolades || [];
+        
+        // Restore settings
+        Build.settings = data.settings || {
+            globalIOLevel: 50,
+            origin: 'Natural'
+        };
         
         // Restore sets
         Build.sets = {};
@@ -452,4 +472,173 @@ function importBuild(jsonData) {
         console.error('Failed to import build:', error);
         return false;
     }
+}
+
+// ============================================
+// UI-FACING EXPORT/IMPORT FUNCTIONS
+// ============================================
+
+/**
+ * Export build and download as JSON file
+ * This is the function called by the UI Export button
+ */
+function exportBuild() {
+    try {
+        // Get the build data as JSON
+        const jsonData = exportBuildData();
+        
+        // Create a blob from the JSON data
+        const blob = new Blob([jsonData], { type: 'application/json' });
+        
+        // Create a download link
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        
+        // Generate filename from build name and date
+        const buildName = Build.name.replace(/[^a-z0-9]/gi, '_').toLowerCase();
+        const date = new Date().toISOString().split('T')[0];
+        link.download = `${buildName}_${date}.json`;
+        
+        // Trigger download
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        
+        // Clean up the URL object
+        URL.revokeObjectURL(url);
+        
+        console.log('Build exported successfully');
+        alert('Build exported successfully!');
+    } catch (error) {
+        console.error('Failed to export build:', error);
+        alert('Failed to export build: ' + error.message);
+    }
+}
+
+/**
+ * Trigger the file input for importing a build
+ * This is the function called by the UI Import button
+ */
+function importBuild() {
+    const fileInput = document.getElementById('importFileInput');
+    if (fileInput) {
+        fileInput.click();
+    } else {
+        console.error('Import file input not found');
+        alert('Import feature not available');
+    }
+}
+
+/**
+ * Handle the file selection from import
+ * This is called when a file is selected
+ */
+function handleImportFile(event) {
+    const file = event.target.files[0];
+    if (!file) {
+        return;
+    }
+    
+    // Check if it's a JSON file
+    if (!file.name.endsWith('.json')) {
+        alert('Please select a valid JSON build file');
+        return;
+    }
+    
+    // Read the file
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        try {
+            const jsonData = e.target.result;
+            
+            // Import the build data
+            const success = importBuildData(jsonData);
+            
+            if (success) {
+                // Refresh the UI to show the imported build
+                refreshUIAfterImport();
+                alert('Build imported successfully!');
+            } else {
+                alert('Failed to import build. Please check the file format.');
+            }
+        } catch (error) {
+            console.error('Error reading file:', error);
+            alert('Failed to read build file: ' + error.message);
+        }
+        
+        // Reset the file input so the same file can be imported again
+        event.target.value = '';
+    };
+    
+    reader.onerror = function() {
+        alert('Failed to read file');
+        event.target.value = '';
+    };
+    
+    reader.readAsText(file);
+}
+
+/**
+ * Refresh the UI after importing a build
+ * This updates all the dropdowns, power lists, and other UI elements
+ */
+function refreshUIAfterImport() {
+    // Update build name
+    const buildNameInput = document.getElementById('buildName');
+    if (buildNameInput) {
+        buildNameInput.value = Build.name;
+    }
+    
+    // Update archetype selection
+    const archetypeSelect = document.getElementById('archetypeSelect');
+    if (archetypeSelect && Build.archetype.id) {
+        archetypeSelect.value = Build.archetype.id;
+        // This will trigger the change event which loads the powersets
+        onArchetypeChange();
+    }
+    
+    // Update primary selection
+    const primarySelect = document.getElementById('primarySelect');
+    if (primarySelect && Build.primary.id) {
+        primarySelect.value = Build.primary.id;
+        onPrimaryChange();
+    }
+    
+    // Update secondary selection
+    const secondarySelect = document.getElementById('secondarySelect');
+    if (secondarySelect && Build.secondary.id) {
+        secondarySelect.value = Build.secondary.id;
+        onSecondaryChange();
+    }
+    
+    // Update progression mode
+    const progressionMode = document.getElementById('progressionMode');
+    if (progressionMode) {
+        progressionMode.value = Build.progressionMode;
+    }
+    
+    // Update global IO level
+    const globalIOLevel = document.getElementById('globalIOLevel');
+    if (globalIOLevel) {
+        globalIOLevel.value = Build.settings.globalIOLevel;
+    }
+    
+    // Update character level display
+    const charLevelSpan = document.getElementById('charLevel');
+    if (charLevelSpan) {
+        charLevelSpan.textContent = Build.level;
+    }
+    
+    // Refresh power displays
+    if (typeof refreshPowerDisplay === 'function') {
+        refreshPowerDisplay();
+    }
+    
+    // Recalculate stats and bonuses
+    if (typeof recalculateStats === 'function') {
+        recalculateStats();
+    }
+    
+    console.log('UI refreshed after import');
 }

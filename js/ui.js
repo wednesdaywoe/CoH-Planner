@@ -48,59 +48,23 @@ function getTooltipHintsHtml() {
 function updatePowerSlots(powerName) {
     // First check if it's an inherent power
     let power = null;
+    let isInherent = false;
     if (Build.inherents && Array.isArray(Build.inherents)) {
         power = Build.inherents.find(p => p.name === powerName);
         if (power) {
-            // It's an inherent power
-            const powerElements = document.querySelectorAll('.selected-power');
-            let targetElement = null;
-
-            for (const elem of powerElements) {
-                if (elem.dataset && elem.dataset.powerName === powerName) {
-                    targetElement = elem;
-                    break;
-                }
-                const nameElem = elem.querySelector('.selected-power-name');
-                if (nameElem && nameElem.textContent === powerName) {
-                    targetElement = elem;
-                    break;
-                }
-            }
-            
-            if (!targetElement) {
-                return;
-            }
-            
-            // Get slots container
-            const slotsContainer = targetElement.querySelector('.enhancement-slots');
-            if (!slotsContainer) {
-                console.error(`Cannot find enhancement-slots for power: ${powerName}`);
-                return;
-            }
-            
-            // Clear and populate slots
-            slotsContainer.innerHTML = '';
-            for (let i = 0; i < power.maxSlots; i++) {
-                const slot = document.createElement('div');
-                slot.className = 'enhancement-slot empty';
-                slot.dataset.slotIndex = i;
-                slot.dataset.powerName = powerName;
-                slot.addEventListener('click', (e) => onSlotClicked(e, powerName, i));
-                slot.addEventListener('contextmenu', (e) => onSlotRightClicked(e, powerName, i));
-                slotsContainer.appendChild(slot);
-            }
-            return;
+            isInherent = true;
         }
     }
     
-    // Check in standard powers
-    const result = findPower(powerName);
-    if (!result) {
-        console.error(`Cannot update slots for power: ${powerName}`);
-        return;
+    // If not inherent, check in standard powers
+    if (!power) {
+        const result = findPower(powerName);
+        if (!result) {
+            console.error(`Cannot update slots for power: ${powerName}`);
+            return;
+        }
+        power = result.power;
     }
-
-    power = result.power;
     
     // Find the DOM element for this power; prefer data-power-name attribute
     const powerElements = document.querySelectorAll('.selected-power');
@@ -120,19 +84,25 @@ function updatePowerSlots(powerName) {
     
     if (!targetElement) {
         console.error(`Cannot find DOM element for power: ${powerName}`);
-        console.log('Available .selected-power elements:', document.querySelectorAll('.selected-power'));
         return;
     }
     
     // Get slots container
     const slotsContainer = targetElement.querySelector('.enhancement-slots');
-    console.log(`updatePowerSlots: ${powerName} -> slots array length: ${power.slots.length}`, { power, targetElement, slotsContainer });
-    if (!slotsContainer) return;
+    if (!slotsContainer) {
+        console.error(`Cannot find enhancement-slots for power: ${powerName}`);
+        return;
+    }
     
     // Clear existing slots
     slotsContainer.innerHTML = '';
     
-    // Add slots (filled or empty)
+    // If power has no slots or can't be slotted, don't show anything
+    if (!power.slots || power.maxSlots === 0) {
+        return;
+    }
+    
+    // Add slots (filled or empty) - same logic for both inherent and regular powers
     power.slots.forEach((enhancement, index) => {
         const slot = enhancement 
             ? createFilledSlotElement(enhancement, powerName, index)
@@ -577,7 +547,7 @@ function showEnhancementTooltip(event, enhancement, powerName) {
         `;
     }
     
-    tooltip.innerHTML = (typeof getTooltipHintsHtml === 'function' ? getTooltipHintsHtml() : '') + html;
+    tooltip.innerHTML = html;
     positionTooltip(tooltip, event);
     tooltip.classList.add('visible');
 }
@@ -910,13 +880,39 @@ function updatePoolPowersDisplay() {
             const powerElement = document.createElement('div');
             powerElement.className = 'selected-power';
             powerElement.dataset.powerName = power.name;
+            
+            // Check if this is a toggle or auto power that needs a checkbox
+            const needsToggle = power.powerType === 'Toggle' || power.powerType === 'Auto';
+            
             powerElement.innerHTML = `
                 <div class="selected-power-header">
                     <span class="selected-power-name">${power.name}</span>
                     <span class="selected-power-level">Level ${power.level}</span>
                 </div>
+                ${needsToggle ? `
+                    <label class="switch" style="position: absolute; bottom: 4px; right: 4px;">
+                        <input type="checkbox" class="power-toggle-input">
+                        <span class="slider round"></span>
+                    </label>
+                ` : ''}
                 <div class="enhancement-slots"></div>
             `;
+            
+            // Add toggle handler if needed
+            if (needsToggle) {
+                const checkbox = powerElement.querySelector('.power-toggle-input');
+                checkbox.checked = power.isActive || false;
+                checkbox.addEventListener('change', (e) => {
+                    e.stopPropagation();
+                    power.isActive = checkbox.checked;
+                    console.log(`${power.name} active: ${power.isActive}`);
+                    // Recalculate stats
+                    if (typeof recalculateStats === 'function') {
+                        recalculateStats();
+                    }
+                });
+            }
+            
             
             // Add tooltip
             powerElement.onmouseenter = (e) => {

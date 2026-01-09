@@ -481,7 +481,8 @@ function selectPower(powerData, category) {
         // New field: allowedSetCategories comes from the powerset data (used by enhancement filtering)
         allowedSetCategories: powerData.allowedSetCategories || null,
         effects: powerData.effects,
-        isActive: false  // For buffs like Aim, Build Up
+        powerType: powerData.powerType || null, // Track power type for Toggle/Auto powers
+        isActive: false  // For toggles, autos, and buffs like Aim, Build Up
     };
     
     // Add to build
@@ -692,13 +693,38 @@ function updatePoolPowersColumn() {
                 const powerElement = document.createElement('div');
                 powerElement.className = 'selected-power epic-power';
                 powerElement.dataset.powerName = power.name;
+                
+                // Check if this is a toggle or auto power that needs a checkbox
+                const needsToggle = power.powerType === 'Toggle' || power.powerType === 'Auto';
+                
                 powerElement.innerHTML = `
                     <div class="selected-power-header">
                         <span class="selected-power-name">${power.name}</span>
+                        ${needsToggle ? `
+                            <label class="switch">
+                                <input type="checkbox" class="power-toggle-input">
+                                <span class="slider round"></span>
+                            </label>
+                        ` : ''}
                         <span class="selected-power-level">Level ${power.level}</span>
                     </div>
                     <div class="enhancement-slots"></div>
                 `;
+                
+                // Add toggle handler if needed
+                if (needsToggle) {
+                    const checkbox = powerElement.querySelector('.power-toggle-input');
+                    checkbox.checked = power.isActive || false;
+                    checkbox.addEventListener('change', (e) => {
+                        e.stopPropagation();
+                        power.isActive = checkbox.checked;
+                        console.log(`${power.name} active: ${power.isActive}`);
+                        // Recalculate stats
+                        if (typeof recalculateStats === 'function') {
+                            recalculateStats();
+                        }
+                    });
+                }
                 
                 // Add tooltip for epic powers
                 powerElement.onmouseenter = (e) => {
@@ -740,21 +766,29 @@ function addPowerToColumn(power, category) {
     powerElement.className = 'selected-power';
     powerElement.dataset.powerName = power.name;
     
-    // Check if this is a buff power (has tohitBuff or damageBuff)
+    // Check if this is a power that needs a toggle checkbox
+    // Toggle/Auto powers always get a checkbox, plus buff powers with tohitBuff or damageBuff
+    const isToggleOrAuto = power.powerType === 'Toggle' || power.powerType === 'Auto';
     const isBuffPower = power.effects && (power.effects.tohitBuff || power.effects.damageBuff);
+    const needsToggle = isToggleOrAuto || isBuffPower;
     
     powerElement.innerHTML = `
         <div class="selected-power-header">
             <span class="selected-power-name">${power.name}</span>
-            ${isBuffPower ? '<input type="checkbox" class="power-toggle" title="Toggle active"></input>' : ''}
             <span class="selected-power-level">Level ${power.level}</span>
         </div>
+        ${needsToggle ? `
+            <label class="switch" style="position: absolute; bottom: 4px; right: 4px;">
+                <input type="checkbox" class="power-toggle-input">
+                <span class="slider round"></span>
+            </label>
+        ` : ''}
         <div class="enhancement-slots"></div>
     `;
     
-    // Add toggle handler for buff powers
-    if (isBuffPower) {
-        const checkbox = powerElement.querySelector('.power-toggle');
+    // Add toggle handler for powers that need it
+    if (needsToggle) {
+        const checkbox = powerElement.querySelector('.power-toggle-input');
         checkbox.checked = power.isActive || false;
         checkbox.addEventListener('change', (e) => {
             e.stopPropagation();
@@ -1105,10 +1139,12 @@ function selectPoolPower(powerData, poolId) {
         powerSet: poolData.name,
         category: 'pool',
         poolId: poolId,
-        slots: [null],
+        slots: [null], // Start with 1 empty slot
         maxSlots: 6,
         allowedEnhancements: powerData.allowedEnhancements,
-        effects: powerData.effects
+        effects: powerData.effects,
+        powerType: powerData.powerType || null, // Track power type for Auto powers
+        isActive: false // For toggle powers and auto powers
     };
     
     // Add to pool
@@ -1647,10 +1683,12 @@ function selectEpicPoolPower(powerData, poolId) {
         powerSet: poolData.name,
         category: 'epic',
         poolId: poolId,
-        slots: [null],
+        slots: [null], // Start with 1 empty slot
         maxSlots: 6,
         allowedEnhancements: powerData.allowedEnhancements,
-        effects: powerData.effects
+        effects: powerData.effects,
+        powerType: powerData.powerType || null, // Track power type for Auto powers
+        isActive: false // For toggle powers and auto powers
     };
     
     // Add to epic pool

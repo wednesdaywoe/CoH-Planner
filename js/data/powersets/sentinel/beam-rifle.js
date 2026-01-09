@@ -141,7 +141,8 @@ const SENTINEL_BEAM_RIFLE_POWERSET = {
                 recharge: 90.0,
                 endurance: 5.2,
                 cast: 1.17,
-                tohitBuff: 5.0,
+                tohitBuff: 0.625,
+                damageBuff: 0.425,
                 buffDuration: 10.0
             }
         },

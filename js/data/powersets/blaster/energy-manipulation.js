@@ -98,7 +98,8 @@ const BLASTER_ENERGY_MANIPULATION_POWERSET = {
                 recharge: 90.0,
                 endurance: 5.2,
                 cast: 1.17,
-                tohitBuff: 2.0,
+                tohitBuff: 0.20,
+                damageBuff: 1.0,
                 buffDuration: 10.0
             }
         },

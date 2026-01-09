@@ -45,7 +45,10 @@
             <div class="resource-badge">
                 Slots: <span>67/67</span>
             </div>
-            <button class="debug-btn" onclick="debugFireFire()" style="margin-left: 10px; padding: 6px 12px; background: #ff6b35; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 12px;">🔥 Fire/Fire Debug</button>
+            
+            <button class="export-btn" onclick="exportBuild()" style="margin-left: 10px; padding: 6px 12px; background: #4CAF50; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 12px;">💾 Export Build</button>
+            <button class="import-btn" onclick="importBuild()" style="margin-left: 5px; padding: 6px 12px; background: #2196F3; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 12px;">📂 Import Build</button>
+            <input type="file" id="importFileInput" accept=".json" style="display: none;" onchange="handleImportFile(event)">
         </div>
 
         <!-- Stats Dashboard Row -->
