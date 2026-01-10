@@ -1,0 +1,26 @@
+{
+  "name": "Lore_Pet_Demons_Support",
+  "display_name": "Lore_Pet_Demons_Support",
+  "display_fullname": "Incarnate.Lore Pet Demons Support",
+  "display_help": "Demons",
+  "display_short_help": "Demons",
+  "available_level": [
+    0,
+    0
+  ],
+  "source_file": "DEFS/POWERS/INCARNATE/LORE_PET_DEMONS_SUPPORT.POWERSETS",
+  "icon": "lore_pet_arachnos_support_set.png",
+  "requires": "",
+  "power_names": [
+    "Incarnate.Lore_Pet_Demons_Support.Chill_of_the_Night",
+    "Incarnate.Lore_Pet_Demons_Support.Twilight_Grasp"
+  ],
+  "power_display_names": [
+    "Chill of the Night",
+    "Twilight Grasp"
+  ],
+  "power_short_helps": [
+    "-ACC",
+    "Ranged, Foe -Acc -DMG, Team Heal"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "name": "Lore_Pet_Longbow_Support",
+  "display_name": "Lore_Pet_Longbow_Support",
+  "display_fullname": "Incarnate.Lore Pet Longbow Support",
+  "display_help": "Longbow",
+  "display_short_help": "Longbow",
+  "available_level": [
+    0,
+    0
+  ],
+  "source_file": "DEFS/POWERS/INCARNATE/LORE_PET_LONGBOW_SUPPORT.POWERSETS",
+  "icon": "lore_pet_longbow_support_set.png",
+  "requires": "",
+  "power_names": [
+    "Incarnate.Lore_Pet_Longbow_Support.Heal_Other",
+    "Incarnate.Lore_Pet_Longbow_Support.Healing_Aura"
+  ],
+  "power_display_names": [
+    "Heal Other",
+    "Healing Aura"
+  ],
+  "power_short_helps": [
+    "Ally Heal",
+    "PBAoE, Team +Heal"
+  ]
+}

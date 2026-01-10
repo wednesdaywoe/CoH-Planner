@@ -1,0 +1,30 @@
+{
+  "name": "Destiny_Silent",
+  "display_name": "Destiny_Silent",
+  "display_fullname": "Incarnate.Destiny Silent",
+  "display_help": "Incarnate",
+  "display_short_help": "Incarnate",
+  "available_level": [
+    0,
+    0,
+    0
+  ],
+  "source_file": "DEFS/POWERS/INCARNATE/DESTINY_SILENT.POWERSETS",
+  "icon": "destiny_silent_set.png",
+  "requires": "",
+  "power_names": [
+    "Incarnate.Destiny_Silent.Level_Shift",
+    "Incarnate.Destiny_Silent.Incandescence",
+    "Incarnate.Destiny_Silent.Incandescence_Wide"
+  ],
+  "power_display_names": [
+    "Level Shift",
+    "Incandescence",
+    "Incandescence"
+  ],
+  "power_short_helps": [
+    "Level Shift",
+    "Incandescence",
+    "Incandescence"
+  ]
+}

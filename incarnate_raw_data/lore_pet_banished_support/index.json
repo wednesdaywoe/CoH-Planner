@@ -1,0 +1,26 @@
+{
+  "name": "Lore_Pet_Banished_Support",
+  "display_name": "Lore_Pet_Banished_Support",
+  "display_fullname": "Incarnate.Lore Pet Banished Support",
+  "display_help": "Incarnate",
+  "display_short_help": "Incarnate",
+  "available_level": [
+    0,
+    0
+  ],
+  "source_file": "DEFS/POWERS/INCARNATE/LORE_PET_BANISHED_SUPPORT.POWERSETS",
+  "icon": "lore_pet_banished_support_set.png",
+  "requires": "",
+  "power_names": [
+    "Incarnate.Lore_Pet_Banished_Support.Frigid_Storm",
+    "Incarnate.Lore_Pet_Banished_Support.Frigid_Burst"
+  ],
+  "power_display_names": [
+    "Enervating Storm",
+    "Empowering Burst"
+  ],
+  "power_short_helps": [
+    "Targeted AoE, Minor DoT(Cold/Negative Energy), -DMG(Foe, All)",
+    "Targeted AoE, +Regen, +Rec, +End, +Recharge"
+  ]
+}

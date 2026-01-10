@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>City of Heroes - Incarnate Component Calculator</title>
+    <style>
+        /* [All the CSS remains exactly the same - keeping it for brevity] */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --bg-primary: #0A0E1A;
+            --bg-secondary: #131826;
+            --bg-tertiary: #1C2333;
+            --text-primary: #E5E7EB;
+            --text-secondary: #9CA3AF;
+            --border: #374151;
+            --border-light: #4B5563;
+            --accent: #3B82F6;
+            --accent-dim: #60A5FA;
+            --highlight: #10B981;
+            
+            --slot-alpha: #60A5FA;
+            --slot-judgement: #F59E0B;
+            --slot-interface: #10B981;
+            --slot-lore: #8B5CF6;
+            --slot-destiny: #EF4444;
+            --slot-hybrid: #EC4899;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        
+        .header p {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        .content {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 20px;
+        }
+        
+        .slots-section {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .slot-panel {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        
+        .slot-panel.selected {
+            border-left: 3px solid var(--slot-color);
+        }
+        
+        .slot-panel.alpha.selected { --slot-color: var(--slot-alpha); }
+        .slot-panel.judgement.selected { --slot-color: var(--slot-judgement); }
+        .slot-panel.interface.selected { --slot-color: var(--slot-interface); }
+        .slot-panel.lore.selected { --slot-color: var(--slot-lore); }
+        .slot-panel.destiny.selected { --slot-color: var(--slot-destiny); }
+        .slot-panel.hybrid.selected { --slot-color: var(--slot-hybrid); }
+        
+        .slot-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 18px;
+            cursor: pointer;
+            transition: background 0.2s;
+            min-height: 60px;
+        }
+        
+        .slot-header:hover {
+            background: var(--bg-secondary);
+        }
+        
+        .slot-info {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            flex: 1;
+        }
+        
+        .expand-arrow {
+            color: var(--text-secondary);
+            font-size: 12px;
+            transition: transform 0.2s;
+            width: 16px;
+            text-align: center;
+        }
+        
+        .slot-panel.expanded .expand-arrow {
+            transform: rotate(90deg);
+        }
+        
+        .slot-name {
+            font-weight: 600;
+            font-size: 14px;
+            min-width: 80px;
+        }
+        
+        .slot-selection {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        .slot-panel.selected .slot-selection {
+            color: var(--text-primary);
+        }
+        
+        .slot-icon-circle {
+            width: 48px;
+            height: 48px;
+            border: 2px solid var(--border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            flex-shrink: 0;
+            background: var(--bg-primary);
+        }
+        
+        .slot-icon-circle:hover {
+            border-color: var(--accent);
+        }
+        
+        .slot-icon-circle.filled {
+            border-color: var(--slot-color);
+        }
+        
+        .empty-icon {
+            font-size: 24px;
+            color: var(--border);
+        }
+        
+        .slot-content {
+            padding: 20px;
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border);
+            min-height: 150px;
+        }
+        
+        .slot-panel.collapsed .slot-content {
+            display: none;
+        }
+        
+        .slot-cost-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        .slot-cost-value {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        
+        .totals-section {
+            background: var(--bg-tertiary);
+            border: 2px solid var(--border-light);
+            border-radius: 6px;
+            padding: 20px;
+            position: sticky;
+            top: 20px;
+        }
+        
+        .totals-title {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent-dim);
+            margin-bottom: 16px;
+        }
+        
+        .totals-empty {
+            text-align: center;
+            color: var(--text-secondary);
+            padding: 40px 20px;
+            font-size: 14px;
+        }
+        
+        .resource-summary {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 14px;
+        }
+        
+        .resource-summary:last-child {
+            border-bottom: none;
+        }
+        
+        .resource-label {
+            color: var(--text-secondary);
+        }
+        
+        .resource-value {
+            font-weight: 600;
+        }
+        
+        .threads { color: var(--accent-dim); }
+        .merits { color: #EC4899; }
+        .shards { color: #A855F7; }
+        
+        .hint {
+            font-size: 11px;
+            color: var(--text-secondary);
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border);
+            line-height: 1.5;
+        }
+        
+        /* Selection Modal */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.85);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            display: none;
+        }
+        
+        .modal-overlay.active {
+            display: flex;
+        }
+        
+        .modal {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        
+        .modal-header {
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .modal-header h2 {
+            font-size: 18px;
+            font-weight: 600;
+        }
+        
+        .close-btn {
+            width: 32px;
+            height: 32px;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            color: var(--text-secondary);
+            cursor: pointer;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+        }
+        
+        .modal-body {
+            padding: 24px;
+        }
+        
+        .tree-selector {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1px;
+            margin-bottom: 1px;
+        }
+        
+        .tree-btn {
+            padding: 12px;
+            background: var(--bg-tertiary);
+            border: 2px solid var(--border);
+            border-radius: 6px;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.2s;
+        }
+        
+        .tree-btn:hover {
+            border-color: var(--accent-dim);
+        }
+        
+        .tree-btn.selected {
+            border-color: var(--accent);
+            background: var(--accent);
+            color: white;
+        }
+        
+        .tree-btn-name {
+            font-weight: 600;
+            font-size: 13px;
+        }
+        
+        .tier-selector {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+        }
+        
+        .tier-btn {
+            padding: 16px 12px;
+            background: var(--bg-tertiary);
+            border: 2px solid var(--border);
+            border-radius: 6px;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.2s;
+        }
+        
+        .tier-btn:hover:not(.disabled) {
+            border-color: var(--accent-dim);
+        }
+        
+        .tier-btn.selected {
+            border-color: var(--accent);
+            background: rgba(59, 130, 246, 0.2);
+        }
+        
+        .tier-btn.disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+        
+        .tier-label {
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+        
+        .tier-name {
+            font-size: 11px;
+            color: var(--text-secondary);
+        }
+        
+        .tier-cost {
+            font-size: 10px;
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
+        
+        .modal-footer {
+            padding: 16px 20px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+        }
+        
+        .btn-clear {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+        
+        .btn-clear:hover {
+            background: var(--bg-tertiary);
+        }
+        
+        .btn-select {
+            background: var(--accent);
+            color: white;
+            flex: 1;
+        }
+        
+        .btn-select:hover {
+            background: #2563EB;
+        }
+        
+        .btn-select:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .footer {
+            margin-top: 32px;
+            text-align: center;
+            font-size: 12px;
+            color: var(--text-secondary);
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Incarnate Component Calculator</h1>
+            <p>Calculate the exact components needed for your Incarnate build</p>
+        </div>
+        
+        <div class="content">
+            <!-- Left: Slots -->
+            <div class="slots-section" id="slotsSection">
+                <!-- Slots will be generated by JS -->
+            </div>
+            
+            <!-- Right: Totals -->
+            <div class="totals-section">
+                <div class="totals-title">Total Components</div>
+                <div id="totalsContent">
+                    <div class="totals-empty">
+                        Click any slot to select a power. Totals will update automatically.
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p><strong>City of Heroes: Homecoming</strong> - Incarnate Component Calculator</p>
+            <p style="margin-top: 8px;">Click slots to select powers • Expand to see individual costs</p>
+        </div>
+    </div>
+    
+    <!-- Selection Modal -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 id="modalTitle">Select Power</h2>
+                <button class="close-btn" onclick="closeModal()">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="tree-selector" id="treeSelector"></div>
+                <div class="tier-selector" id="tierSelector"></div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-clear" onclick="clearSlot()">Clear</button>
+                <button class="btn btn-select" id="selectBtn" onclick="confirmSelection()" disabled>Select Power</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="js/incarnate-recipes.js"></script>
+    <script>
+        // [All JavaScript code remains the same...]
+        const build = {
+            alpha: null,
+            judgement: null,
+            interface: null,
+            lore: null,
+            destiny: null,
+            hybrid: null
+        };
+        
+        let currentSlot = null;
+        let selectedTree = null;
+        let selectedTier = null;
+        let selectedVariant = null;
+        
+        const SLOT_ORDER = ['hybrid', 'destiny', 'lore', 'interface', 'judgement', 'alpha'];
+        
+        function init() {
+            renderSlots();
+            calculateTotals();
+        }
+        
+        function renderSlots() {
+            const container = document.getElementById('slotsSection');
+            container.innerHTML = '';
+            
+            SLOT_ORDER.forEach(slot => {
+                const panel = createSlotPanel(slot);
+                container.appendChild(panel);
+            });
+        }
+        
+        function createSlotPanel(slot) {
+            const selection = build[slot];
+            const isSelected = selection !== null;
+            
+            const panel = document.createElement('div');
+            panel.className = `slot-panel ${slot} ${isSelected ? 'selected' : ''} collapsed`;
+            panel.dataset.slot = slot;
+            
+            const selectionText = selection 
+                ? IncarnateRecipes.getPowerName(slot, selection.tree, selection.tier, selection.variant)
+                : '-';
+            
+            panel.innerHTML = `
+                <div class="slot-header">
+                    <div class="slot-info">
+                        <span class="expand-arrow">▶</span>
+                        <div class="slot-name">${slot.charAt(0).toUpperCase() + slot.slice(1)}</div>
+                        <div class="slot-selection">${selectionText}</div>
+                    </div>
+                    <div class="slot-icon-circle ${isSelected ? 'filled' : ''}">
+                        <span class="empty-icon">${isSelected ? '✓' : '+'}</span>
+                    </div>
+                </div>
+                ${isSelected ? `
+                <div class="slot-content">
+                    ${renderSlotCosts(slot, selection)}
+                </div>
+                ` : ''}
+            `;
+            
+            const header = panel.querySelector('.slot-header');
+            header.addEventListener('click', (e) => {
+                if (e.target.closest('.slot-icon-circle')) return;
+                panel.classList.toggle('expanded');
+                panel.classList.toggle('collapsed');
+            });
+            
+            const circle = panel.querySelector('.slot-icon-circle');
+            circle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                openModal(slot);
+            });
+            
+            return panel;
+        }
+        
+        function renderSlotCosts(slot, selection) {
+            const costs = IncarnateRecipes.calculateCost(slot, selection.tree, selection.tier, selection.variant);
+            
+            let html = '';
+            if (costs.totalThreads > 0) {
+                html += `<div class="slot-cost-item"><span>Incarnate Threads</span><span class="slot-cost-value threads">${costs.totalThreads}</span></div>`;
+            }
+            if (costs.totalEmpyrean > 0) {
+                html += `<div class="slot-cost-item"><span>Empyrean Merits</span><span class="slot-cost-value merits">${costs.totalEmpyrean}</span></div>`;
+            }
+            if (costs.totalShards > 0) {
+                html += `<div class="slot-cost-item"><span>Incarnate Shards</span><span class="slot-cost-value shards">${costs.totalShards}</span></div>`;
+            }
+            
+            return html;
+        }
+        
+        function openModal(slot) {
+            currentSlot = slot;
+            const selection = build[slot];
+            
+            selectedTree = selection?.tree || null;
+            selectedTier = selection?.tier || null;
+            selectedVariant = selection?.variant || null;
+            
+            document.getElementById('modalTitle').textContent = `Select ${slot.charAt(0).toUpperCase() + slot.slice(1)} Power`;
+            renderTreeSelector();
+            renderTierSelector();
+            
+            document.getElementById('modalOverlay').classList.add('active');
+        }
+        
+        function closeModal() {
+            document.getElementById('modalOverlay').classList.remove('active');
+        }
+        
+        function renderTreeSelector() {
+            const container = document.getElementById('treeSelector');
+            const slotData = IncarnateRecipes[currentSlot];
+            
+            container.innerHTML = '';
+            slotData.trees.forEach(tree => {
+                const btn = document.createElement('div');
+                btn.className = `tree-btn ${selectedTree === tree ? 'selected' : ''}`;
+                btn.innerHTML = `<div class="tree-btn-name">${tree}</div>`;
+                btn.addEventListener('click', () => selectTree(tree));
+                container.appendChild(btn);
+            });
+        }
+        
+        function selectTree(tree) {
+            selectedTree = tree;
+            renderTreeSelector();
+            renderTierSelector();
+        }
+        
+        function renderTierSelector() {
+            const container = document.getElementById('tierSelector');
+            container.innerHTML = '';
+            
+            const slotData = IncarnateRecipes[currentSlot];
+            
+            for (let tier = 1; tier <= 4; tier++) {
+                const tierData = slotData.tiers[tier];
+                
+                if (tier === 1) {
+                    const btn = createTierButton(tier, null, tierData);
+                    container.appendChild(btn);
+                } else {
+                    ['core', 'radial'].forEach(variant => {
+                        const btn = createTierButton(tier, variant, tierData[variant] ? { ...tierData, name: tierData[variant].name } : tierData);
+                        container.appendChild(btn);
+                    });
+                }
+            }
+        }
+        
+        function createTierButton(tier, variant, tierData) {
+            const isSelected = selectedTier === tier && (tier === 1 || selectedVariant === variant);
+            
+            const btn = document.createElement('div');
+            btn.className = `tier-btn ${isSelected ? 'selected' : ''}`;
+            
+            const label = tier === 1 ? `T${tier}` : `T${tier}${variant === 'core' ? 'C' : 'R'}`;
+            const threads = IncarnateRecipes[currentSlot].tiers[tier].threads || 0;
+            const empyrean = IncarnateRecipes[currentSlot].tiers[tier].empyrean || 0;
+            
+            let cost = '';
+            if (threads > 0 && empyrean > 0) {
+                cost = `${empyrean}E or ${threads}T`;
+            } else if (threads > 0) {
+                cost = `${threads}T`;
+            } else if (empyrean > 0) {
+                cost = `${empyrean}E`;
+            }
+            
+            btn.innerHTML = `
+                <div class="tier-label">${label}</div>
+                <div class="tier-name">${tierData.name || ''}</div>
+                <div class="tier-cost">${cost}</div>
+            `;
+            
+            btn.addEventListener('click', () => selectTier(tier, variant));
+            
+            return btn;
+        }
+        
+        function selectTier(tier, variant) {
+            if (!selectedTree) return;
+            
+            selectedTier = tier;
+            selectedVariant = tier === 1 ? null : variant;
+            renderTierSelector();
+            updateSelectButton();
+        }
+        
+        function updateSelectButton() {
+            const btn = document.getElementById('selectBtn');
+            
+            if (selectedTree && selectedTier) {
+                btn.disabled = false;
+                const powerName = IncarnateRecipes.getPowerName(currentSlot, selectedTree, selectedTier, selectedVariant);
+                btn.textContent = `Select: ${powerName}`;
+            } else {
+                btn.disabled = true;
+                btn.textContent = 'Select Power';
+            }
+        }
+        
+        function confirmSelection() {
+            if (!selectedTree || !selectedTier) return;
+            
+            build[currentSlot] = {
+                tree: selectedTree,
+                tier: selectedTier,
+                variant: selectedVariant
+            };
+            
+            closeModal();
+            renderSlots();
+            calculateTotals();
+        }
+        
+        function clearSlot() {
+            build[currentSlot] = null;
+            closeModal();
+            renderSlots();
+            calculateTotals();
+        }
+        
+        function calculateTotals() {
+            let totalThreads = 0;
+            let totalEmpyrean = 0;
+            let totalShards = 0;
+            
+            Object.entries(build).forEach(([slot, selection]) => {
+                if (!selection) return;
+                
+                const costs = IncarnateRecipes.calculateCost(slot, selection.tree, selection.tier, selection.variant);
+                totalThreads += costs.totalThreads;
+                totalEmpyrean += costs.totalEmpyrean;
+                totalShards += costs.totalShards;
+            });
+            
+            displayTotals(totalThreads, totalEmpyrean, totalShards);
+        }
+        
+        function displayTotals(threads, empyrean, shards) {
+            const content = document.getElementById('totalsContent');
+            
+            if (threads === 0 && empyrean === 0 && shards === 0) {
+                content.innerHTML = `
+                    <div class="totals-empty">
+                        Click any slot to select a power. Totals will update automatically.
+                    </div>
+                `;
+                return;
+            }
+            
+            content.innerHTML = `
+                <div class="resource-summary">
+                    <span class="resource-label">Incarnate Threads</span>
+                    <span class="resource-value threads">${threads.toLocaleString()}</span>
+                </div>
+                <div class="resource-summary">
+                    <span class="resource-label">Empyrean Merits</span>
+                    <span class="resource-value merits">${empyrean}</span>
+                </div>
+                ${shards > 0 ? `
+                <div class="resource-summary">
+                    <span class="resource-label">Incarnate Shards</span>
+                    <span class="resource-value shards">${shards}</span>
+                </div>
+                ` : ''}
+                <div class="hint">
+                    Totals include all prerequisite tiers. ${empyrean > 0 ? 'Empyrean Merits can be converted from Threads (20 Threads = 1 Empyrean equivalent).' : ''}
+                </div>
+            `;
+        }
+        
+        init();
+    </script>
+</body>
+</html>

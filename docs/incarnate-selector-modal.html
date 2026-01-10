@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Incarnate Power Selector</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --bg-primary: #0A0E1A;
+            --bg-secondary: #131826;
+            --bg-tertiary: #1C2333;
+            --text-primary: #E5E7EB;
+            --text-secondary: #9CA3AF;
+            --border: #374151;
+            --accent: #3B82F6;
+            --accent-dim: #60A5FA;
+            --highlight: #10B981;
+            --selected: #3B82F6;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        
+        .modal {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            width: 700px;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .modal-header {
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .modal-header h1 {
+            font-size: 18px;
+            font-weight: 600;
+        }
+        
+        .close-btn {
+            width: 32px;
+            height: 32px;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            color: var(--text-secondary);
+            cursor: pointer;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-body {
+            padding: 24px;
+            overflow-y: auto;
+        }
+        
+        .tree-selector {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+        
+        .tree-btn {
+            flex: 1;
+            min-width: 100px;
+            padding: 12px;
+            background: var(--bg-tertiary);
+            border: 2px solid var(--border);
+            border-radius: 6px;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.2s;
+        }
+        
+        .tree-btn:hover {
+            border-color: var(--accent-dim);
+            background: var(--bg-secondary);
+        }
+        
+        .tree-btn.selected {
+            border-color: var(--accent);
+            background: var(--accent);
+            color: white;
+        }
+        
+        .tree-btn-name {
+            font-weight: 600;
+            font-size: 14px;
+        }
+        
+        .tree-btn-type {
+            font-size: 11px;
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
+        
+        .tree-btn.selected .tree-btn-type {
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .tree-description {
+            padding: 12px;
+            background: var(--bg-tertiary);
+            border-radius: 6px;
+            margin-bottom: 20px;
+            font-size: 13px;
+            color: var(--text-secondary);
+            text-align: center;
+        }
+        
+        .tier-grid-container {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            margin-bottom: 20px;
+        }
+        
+        .tier-grid {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .tier-node {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background: var(--bg-tertiary);
+            border: 3px solid var(--border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            transform: translate(-50%, -50%);
+            padding: 10px;
+        }
+        
+        .tier-node:hover {
+            border-color: var(--accent-dim);
+            background: var(--bg-secondary);
+            transform: translate(-50%, -50%) scale(1.1);
+            z-index: 10;
+        }
+        
+        .tier-node.selected {
+            border-color: var(--selected);
+            background: var(--selected);
+            color: white;
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+            z-index: 5;
+        }
+        
+        .tier-node.required {
+            border-color: var(--highlight);
+            background: rgba(16, 185, 129, 0.1);
+        }
+        
+        .tier-node.t4 {
+            cursor: context-menu;
+        }
+        
+        .tier-node-icon {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: brightness(0.4);
+            transition: filter 0.2s;
+        }
+        
+        .tier-node:hover .tier-node-icon,
+        .tier-node.selected .tier-node-icon,
+        .tier-node.required .tier-node-icon {
+            filter: brightness(1);
+        }
+        
+        /* Tooltip */
+        .node-tooltip {
+            position: absolute;
+            background: rgba(0, 0, 0, 0.95);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            pointer-events: none;
+            white-space: nowrap;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.2s;
+            border: 1px solid var(--border);
+        }
+        
+        .node-tooltip.show {
+            opacity: 1;
+        }
+        
+        .tier-info {
+            padding: 16px;
+            background: var(--bg-tertiary);
+            border-radius: 6px;
+            min-height: 220px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .tier-info-title {
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        
+        .tier-info-desc {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            margin-bottom: 12px;
+        }
+        
+        .tier-info-cost {
+            padding: 8px 0;
+            border-top: 1px solid var(--border);
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+        
+        .tier-info-components {
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px solid var(--border);
+        }
+        
+        .component-title {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--accent-dim);
+            text-transform: uppercase;
+            margin-bottom: 6px;
+            letter-spacing: 0.05em;
+        }
+        
+        .component-list {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        
+        .component-item {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+        
+        .tier-info-hint {
+            margin-top: auto;
+            padding-top: 12px;
+            border-top: 1px solid var(--border);
+            font-size: 11px;
+            color: var(--accent-dim);
+            font-style: italic;
+        }
+        
+        .modal-footer {
+            padding: 16px 20px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+        }
+        
+        .btn {
+            padding: 8px 20px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .btn-cancel {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+        }
+        
+        .btn-cancel:hover {
+            background: var(--bg-secondary);
+        }
+        
+        .btn-select {
+            background: var(--accent);
+            border: 1px solid var(--accent);
+            color: white;
+        }
+        
+        .btn-select:hover {
+            background: #2563EB;
+        }
+        
+        .btn-select:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <div class="modal">
+        <div class="modal-header">
+            <h1>Select Judgement Power</h1>
+            <button class="close-btn">×</button>
+        </div>
+        
+        <div class="modal-body">
+            <!-- Tree Selector -->
+            <div class="tree-selector">
+                <div class="tree-btn selected" data-tree="cryonic">
+                    <div class="tree-btn-name">Cryonic</div>
+                    <div class="tree-btn-type">Cold</div>
+                </div>
+                <div class="tree-btn" data-tree="ion">
+                    <div class="tree-btn-name">Ion</div>
+                    <div class="tree-btn-type">Energy</div>
+                </div>
+                <div class="tree-btn" data-tree="pyronic">
+                    <div class="tree-btn-name">Pyronic</div>
+                    <div class="tree-btn-type">Fire</div>
+                </div>
+                <div class="tree-btn" data-tree="void">
+                    <div class="tree-btn-name">Void</div>
+                    <div class="tree-btn-type">Negative</div>
+                </div>
+            </div>
+            
+            <div class="tree-description">
+                Ranged Cone, Extreme DMG (Cold), Recharge: Very Long
+            </div>
+            
+            <!-- Tier Grid -->
+            <div class="tier-grid-container">
+                <div class="tier-grid" id="tierGrid">
+                    <!-- Tier nodes will be positioned via JS -->
+                </div>
+                <!-- Tooltip -->
+                <div class="node-tooltip" id="nodeTooltip"></div>
+            </div>
+            
+            <!-- Selected Power Info -->
+            <div class="tier-info" id="tierInfo">
+                <div class="tier-info-title">Hover or click a node to see details</div>
+                <div class="tier-info-desc">
+                    Click any tier node to select that power. Prerequisites will automatically highlight.
+                </div>
+                <div class="tier-info-hint">
+                    💡 Right-click T4 nodes to cycle through different T3 prerequisite combinations
+                </div>
+            </div>
+        </div>
+        
+        <div class="modal-footer">
+            <button class="btn btn-cancel">Cancel</button>
+            <button class="btn btn-select" disabled>Select Power</button>
+        </div>
+    </div>
+    
+    <script>
+        // Grid configuration (5 columns x 4 rows)
+        const GRID_CONFIG = {
+            cols: 5,
+            rows: 4,
+            // Node positions: [col, row] (1-indexed)
+            nodes: {
+                t4_core: [1, 1],      // A1
+                t4_radial: [5, 1],    // A5
+                t3_core_1: [1, 2],    // B1
+                t3_core_2: [2, 2],    // B2
+                t3_radial_1: [4, 2],  // B4
+                t3_radial_2: [5, 2],  // B5
+                t2_core: [2, 3],      // C2
+                t2_radial: [4, 3],    // C4
+                t1: [3, 4]            // D3
+            }
+        };
+        
+        // T4 prerequisite combinations (which T3 pairs are valid)
+        const T4_COMBINATIONS = {
+            t4_core: [
+                ['t3_core_1', 't3_radial_1'],
+                ['t3_core_1', 't3_radial_2'],
+                ['t3_core_2', 't3_radial_1'],
+                ['t3_core_2', 't3_radial_2']
+            ],
+            t4_radial: [
+                ['t3_core_1', 't3_radial_1'],
+                ['t3_core_1', 't3_radial_2'],
+                ['t3_core_2', 't3_radial_1'],
+                ['t3_core_2', 't3_radial_2']
+            ]
+        };
+        
+        // Track which combination index is selected for each T4
+        const t4CombinationIndex = {
+            t4_core: 0,
+            t4_radial: 0
+        };
+        
+        // Component data for each tier
+        const COMPONENTS = {
+            t1: ['1x Common Incarnate Component'],
+            t2_core: ['4x Uncommon Incarnate Component'],
+            t2_radial: ['4x Uncommon Incarnate Component'],
+            t3_core_1: ['1x Rare Incarnate Component'],
+            t3_core_2: ['1x Rare Incarnate Component'],
+            t3_radial_1: ['1x Rare Incarnate Component'],
+            t3_radial_2: ['1x Rare Incarnate Component'],
+            t4_core: ['1x Very Rare Incarnate Component', '+ Both T3 variants (consumed)'],
+            t4_radial: ['1x Very Rare Incarnate Component', '+ Both T3 variants (consumed)']
+        };
+        
+        // Node definitions
+        const NODES = {
+            t1: {
+                id: 't1',
+                label: 'T1',
+                tier: 1,
+                variant: null,
+                name: 'Cryonic Judgement',
+                desc: 'Ranged Cone, Extreme DMG (Cold). Your first Judgement power.',
+                cost: '60 Threads',
+                requires: []
+            },
+            t2_core: {
+                id: 't2_core',
+                label: 'T2C',
+                tier: 2,
+                variant: 'core',
+                name: 'Cryonic Core Beam',
+                desc: 'Improved damage against minions and lieutenants.',
+                cost: '240 Threads',
+                requires: ['t1']
+            },
+            t2_radial: {
+                id: 't2_radial',
+                label: 'T2R',
+                tier: 2,
+                variant: 'radial',
+                name: 'Cryonic Radial Blast',
+                desc: 'Wider cone, better for groups.',
+                cost: '240 Threads',
+                requires: ['t1']
+            },
+            t3_core_1: {
+                id: 't3_core_1',
+                label: 'T3C',
+                tier: 3,
+                variant: 'core',
+                name: 'Cryonic Partial Core Invocation',
+                desc: 'Increased damage to all targets. +1 Level Shift.',
+                cost: '8 Emp or 100 Threads',
+                requires: ['t2_core']
+            },
+            t3_core_2: {
+                id: 't3_core_2',
+                label: 'T3C',
+                tier: 3,
+                variant: 'core',
+                name: 'Cryonic Partial Core Invocation',
+                desc: 'Increased damage to all targets. +1 Level Shift.',
+                cost: '8 Emp or 100 Threads',
+                requires: ['t2_core']
+            },
+            t3_radial_1: {
+                id: 't3_radial_1',
+                label: 'T3R',
+                tier: 3,
+                variant: 'radial',
+                name: 'Cryonic Partial Radial Invocation',
+                desc: 'Adds slow effect. +1 Level Shift.',
+                cost: '8 Emp or 100 Threads',
+                requires: ['t2_radial']
+            },
+            t3_radial_2: {
+                id: 't3_radial_2',
+                label: 'T3R',
+                tier: 3,
+                variant: 'radial',
+                name: 'Cryonic Partial Radial Invocation',
+                desc: 'Adds slow effect. +1 Level Shift.',
+                cost: '8 Emp or 100 Threads',
+                requires: ['t2_radial']
+            },
+            t4_core: {
+                id: 't4_core',
+                label: 'T4C',
+                tier: 4,
+                variant: 'core',
+                name: 'Cryonic Total Core Invocation',
+                desc: 'Maximum damage potential. Requires ANY T3 Core + ANY T3 Radial.',
+                cost: '30 Emp or 300 Threads',
+                get requires() {
+                    return T4_COMBINATIONS.t4_core[t4CombinationIndex.t4_core];
+                }
+            },
+            t4_radial: {
+                id: 't4_radial',
+                label: 'T4R',
+                tier: 4,
+                variant: 'radial',
+                name: 'Cryonic Total Radial Invocation',
+                desc: 'Maximum slow effect. Requires ANY T3 Core + ANY T3 Radial.',
+                cost: '30 Emp or 300 Threads',
+                get requires() {
+                    return T4_COMBINATIONS.t4_radial[t4CombinationIndex.t4_radial];
+                }
+            }
+        };
+        
+        let selectedNode = null;
+        let hoveredNode = null;
+        const currentTree = 'Cryonic';
+        
+        // Get icon path for a node
+        function getIconPath(nodeId) {
+            const node = NODES[nodeId];
+            const tierNames = ['Common', 'Uncommon', 'Rare', 'VeryRare'];
+            const tierName = tierNames[node.tier - 1];
+            
+            // Example: Incarnate_Judgement_Cryonic_Rare.png
+            return `../img/Incarnate/Incarnate_Judgement_${currentTree}_${tierName}.png`;
+        }
+        
+        // Calculate node positions
+        function getNodePosition(col, row) {
+            const container = document.getElementById('tierGrid');
+            const width = container.offsetWidth;
+            const height = container.offsetHeight;
+            
+            const x = (width / (GRID_CONFIG.cols + 1)) * col;
+            const y = (height / (GRID_CONFIG.rows + 1)) * row;
+            
+            return { x, y };
+        }
+        
+        // Get combination label for T4 nodes
+        function getCombinationLabel(nodeId) {
+            const combination = NODES[nodeId].requires;
+            if (!combination || combination.length !== 2) return '';
+            
+            const coreNum = combination[0].match(/\d+$/)[0];
+            const radialNum = combination[1].match(/\d+$/)[0];
+            
+            return `C${coreNum}+R${radialNum}`;
+        }
+        
+        // Create tier nodes
+        function createNodes() {
+            const grid = document.getElementById('tierGrid');
+            grid.innerHTML = '';
+            
+            Object.entries(NODES).forEach(([key, node]) => {
+                const pos = GRID_CONFIG.nodes[key];
+                if (!pos) return;
+                
+                const { x, y } = getNodePosition(pos[0], pos[1]);
+                
+                const nodeEl = document.createElement('div');
+                nodeEl.className = `tier-node ${node.tier === 4 ? 't4' : ''}`;
+                nodeEl.dataset.nodeId = key;
+                nodeEl.style.left = x + 'px';
+                nodeEl.style.top = y + 'px';
+                
+                // Add icon
+                const icon = document.createElement('img');
+                icon.className = 'tier-node-icon';
+                icon.src = getIconPath(key);
+                icon.alt = node.label;
+                nodeEl.appendChild(icon);
+                
+                // Left click to select
+                nodeEl.addEventListener('click', () => selectNode(key));
+                
+                // Right click to cycle T4 combinations
+                if (node.tier === 4) {
+                    nodeEl.addEventListener('contextmenu', (e) => {
+                        e.preventDefault();
+                        cycleT4Combination(key);
+                    });
+                }
+                
+                nodeEl.addEventListener('mouseenter', (e) => {
+                    showNodeInfo(key);
+                    const tooltipText = node.tier === 4 
+                        ? `${node.name} (${getCombinationLabel(key)})`
+                        : node.name;
+                    showTooltip(e, tooltipText);
+                });
+                nodeEl.addEventListener('mouseleave', () => {
+                    hideNodeInfo();
+                    hideTooltip();
+                });
+                nodeEl.addEventListener('mousemove', (e) => {
+                    updateTooltipPosition(e);
+                });
+                
+                grid.appendChild(nodeEl);
+            });
+        }
+        
+        // Show tooltip
+        function showTooltip(e, text) {
+            const tooltip = document.getElementById('nodeTooltip');
+            tooltip.textContent = text;
+            tooltip.classList.add('show');
+            updateTooltipPosition(e);
+        }
+        
+        // Update tooltip position
+        function updateTooltipPosition(e) {
+            const tooltip = document.getElementById('nodeTooltip');
+            const container = document.getElementById('tierGrid');
+            const rect = container.getBoundingClientRect();
+            
+            const x = e.clientX - rect.left + 15;
+            const y = e.clientY - rect.top - 10;
+            
+            tooltip.style.left = x + 'px';
+            tooltip.style.top = y + 'px';
+        }
+        
+        // Hide tooltip
+        function hideTooltip() {
+            const tooltip = document.getElementById('nodeTooltip');
+            tooltip.classList.remove('show');
+        }
+        
+        // Cycle through T4 prerequisite combinations
+        function cycleT4Combination(nodeId) {
+            const combinations = T4_COMBINATIONS[nodeId];
+            if (!combinations) return;
+            
+            t4CombinationIndex[nodeId] = (t4CombinationIndex[nodeId] + 1) % combinations.length;
+            
+            createNodes();
+            
+            if (selectedNode === nodeId) {
+                updateNodeStates();
+                showNodeInfo(nodeId);
+            }
+        }
+        
+        // Select a node
+        function selectNode(nodeId) {
+            selectedNode = nodeId;
+            updateNodeStates();
+            showNodeInfo(nodeId);
+            
+            document.querySelector('.btn-select').disabled = false;
+            document.querySelector('.btn-select').textContent = `Select: ${NODES[nodeId].name}`;
+        }
+        
+        // Update node visual states
+        function updateNodeStates() {
+            document.querySelectorAll('.tier-node').forEach(el => {
+                el.classList.remove('selected', 'required');
+            });
+            
+            if (!selectedNode) return;
+            
+            const selectedEl = document.querySelector(`[data-node-id="${selectedNode}"]`);
+            if (selectedEl) selectedEl.classList.add('selected');
+            
+            const required = getRequiredNodes(selectedNode);
+            required.forEach(nodeId => {
+                const el = document.querySelector(`[data-node-id="${nodeId}"]`);
+                if (el) el.classList.add('required');
+            });
+        }
+        
+        // Get all required prerequisite nodes
+        function getRequiredNodes(nodeId, collected = new Set()) {
+            const node = NODES[nodeId];
+            if (!node) return collected;
+            
+            const requires = node.requires;
+            if (!requires) return collected;
+            
+            requires.forEach(reqId => {
+                if (!collected.has(reqId)) {
+                    collected.add(reqId);
+                    getRequiredNodes(reqId, collected);
+                }
+            });
+            
+            return collected;
+        }
+        
+        // Show node info
+        function showNodeInfo(nodeId) {
+            const node = NODES[nodeId];
+            if (!node) return;
+            
+            const info = document.getElementById('tierInfo');
+            
+            let requiresText = '';
+            if (node.tier === 4) {
+                const combo = getCombinationLabel(nodeId);
+                requiresText = `<div class="tier-info-hint">Using combination: ${combo} (right-click to cycle)</div>`;
+            } else {
+                requiresText = `<div class="tier-info-hint">💡 Right-click T4 nodes to cycle through different T3 prerequisite combinations</div>`;
+            }
+            
+            // Build components list
+            const components = COMPONENTS[nodeId] || [];
+            let componentsHtml = '';
+            if (components.length > 0) {
+                componentsHtml = `
+                    <div class="tier-info-components">
+                        <div class="component-title">Components Needed</div>
+                        <div class="component-list">
+                            ${components.map(c => `<div class="component-item">${c}</div>`).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+            
+            info.innerHTML = `
+                <div class="tier-info-title">${node.name}</div>
+                <div class="tier-info-desc">${node.desc}</div>
+                <div class="tier-info-cost">Cost: ${node.cost}</div>
+                ${componentsHtml}
+                ${requiresText}
+            `;
+        }
+        
+        // Hide node info (reset to default)
+        function hideNodeInfo() {
+            if (!selectedNode) {
+                const info = document.getElementById('tierInfo');
+                info.innerHTML = `
+                    <div class="tier-info-title">Hover or click a node to see details</div>
+                    <div class="tier-info-desc">
+                        Click any tier node to select that power. Prerequisites will automatically highlight.
+                    </div>
+                    <div class="tier-info-hint">
+                        💡 Right-click T4 nodes to cycle through different T3 prerequisite combinations
+                    </div>
+                `;
+            }
+        }
+        
+        // Initialize
+        function init() {
+            createNodes();
+        }
+        
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            document.querySelectorAll('.tier-node').forEach(el => {
+                const nodeId = el.dataset.nodeId;
+                const pos = GRID_CONFIG.nodes[nodeId];
+                if (pos) {
+                    const { x, y } = getNodePosition(pos[0], pos[1]);
+                    el.style.left = x + 'px';
+                    el.style.top = y + 'px';
+                }
+            });
+        });
+        
+        init();
+    </script>
+</body>
+</html>

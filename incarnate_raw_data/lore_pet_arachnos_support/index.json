@@ -1,0 +1,26 @@
+{
+  "name": "Lore_Pet_Arachnos_Support",
+  "display_name": "Lore_Pet_Arachnos_Support",
+  "display_fullname": "Incarnate.Lore Pet Arachnos Support",
+  "display_help": "Arachnos",
+  "display_short_help": "Arachnos",
+  "available_level": [
+    0,
+    0
+  ],
+  "source_file": "DEFS/POWERS/INCARNATE/LORE_PET_ARACHNOS_SUPPORT.POWERSETS",
+  "icon": "lore_pet_arachnos_support_set.png",
+  "requires": "",
+  "power_names": [
+    "Incarnate.Lore_Pet_Arachnos_Support.Mind_Link",
+    "Incarnate.Lore_Pet_Arachnos_Support.Soothe"
+  ],
+  "power_display_names": [
+    "Mind Link",
+    "Soothe"
+  ],
+  "power_short_helps": [
+    "+ACC, Res(Confuse), +Perception",
+    "Ally Heal"
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "name": "Lore_Pet_Banished_Boss",
+  "display_name": "Lore_Pet_Banished_Boss",
+  "display_fullname": "Incarnate.Lore Pet Banished Boss",
+  "display_help": "Incarnate",
+  "display_short_help": "Incarnate",
+  "available_level": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "source_file": "DEFS/POWERS/INCARNATE/LORE_PET_BANISHED_BOSS.POWERSETS",
+  "icon": "lore_pet_banished_boss_set.png",
+  "requires": "",
+  "power_names": [
+    "Incarnate.Lore_Pet_Banished_Boss.Frigid_Smash",
+    "Incarnate.Lore_Pet_Banished_Boss.Frigid_Beam",
+    "Incarnate.Lore_Pet_Banished_Boss.Frigid_Blast",
+    "Incarnate.Lore_Pet_Banished_Boss.Frigid_Enervation"
+  ],
+  "power_display_names": [
+    "Frigid Slam",
+    "Frigid Beam",
+    "Frigid Blast",
+    "Frigid Enervation"
+  ],
+  "power_short_helps": [
+    "PBAoE, Superior DMG(Cold), Minor DoT(Negative Energy), -RES(Foe, Cold & Negative Energy), Chance for +EndCost(Foe), Knockback(Foe), Chance for +EndCost(Foe)",
+    "Ranged (Cone), High DMG(Cold), Moderate DoT(Negative Energy), -RES(Foe, All), -End(Foe), Chance for +EndCost(Foe)",
+    "Ranged, Light DMG(Cold), Minor DoT(Negative Energy), -ToHit(Foe), -Rech(Foe), -Speed(Foe, All), Chance for +EndCost(Foe)",
+    "Targeted AoE (Secondary Target), Moderate DMG(Cold), Moderate(Negative Energy), +EndCost(Foe), -Regen(Foe), -Rec(Foe)"
+  ]
+}

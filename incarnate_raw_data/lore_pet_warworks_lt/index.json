@@ -1,0 +1,26 @@
+{
+  "name": "Lore_Pet_Warworks_LT",
+  "display_name": "Lore_Pet_Warworks_LT",
+  "display_fullname": "Incarnate.Lore Pet Warworks LT",
+  "display_help": "Warworks",
+  "display_short_help": "Warworks",
+  "available_level": [
+    0,
+    0
+  ],
+  "source_file": "DEFS/POWERS/INCARNATE/LORE_PET_WARWORKS_LT.POWERSETS",
+  "icon": "lore_pet_warworks_lt_set.png",
+  "requires": "",
+  "power_names": [
+    "Incarnate.Lore_Pet_Warworks_LT.Plasma_Full_Auto",
+    "Incarnate.Lore_Pet_Warworks_LT.Plasma_Rifle_Burst"
+  ],
+  "power_display_names": [
+    "Plasma Full Auto",
+    "Plasma Rifle Burst"
+  ],
+  "power_short_helps": [
+    "Ranged, Light DMG(Energy), Foe -Regen",
+    "Ranged, Moderate DMG(Energy), Foe -Regen"
+  ]
+}

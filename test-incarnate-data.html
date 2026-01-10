@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Incarnate Power Info Test</title>
+</head>
+<body>
+    <h1>Incarnate Power Info Test</h1>
+    <div id="output"></div>
+    
+    <script src="js/incarnate-power-info.js"></script>
+    <script>
+        try {
+            console.log("IncarnatePowerInfo loaded:", typeof IncarnatePowerInfo);
+            
+            // Test accessing some data
+            const alphaAgility = IncarnatePowerInfo.alpha.powers.agility;
+            console.log("Alpha Agility t1:", alphaAgility.t1.desc);
+            
+            // Count total powers per slot
+            const slots = ['alpha', 'hybrid', 'interface', 'judgement', 'destiny', 'lore'];
+            let html = '<h2>Incarnate Powers Loaded</h2>';
+            html += '<ul>';
+            
+            slots.forEach(slot => {
+                if (IncarnatePowerInfo[slot]) {
+                    const powerCount = Object.keys(IncarnatePowerInfo[slot].powers).length;
+                    const tierCounts = {};
+                    
+                    Object.values(IncarnatePowerInfo[slot].powers).forEach(power => {
+                        Object.keys(power).forEach(tier => {
+                            tierCounts[tier] = (tierCounts[tier] || 0) + 1;
+                        });
+                    });
+                    
+                    html += `<li><strong>${slot.charAt(0).toUpperCase() + slot.slice(1)}:</strong> ${powerCount} powers with tiers: ${Object.keys(tierCounts).sort().join(', ')}</li>`;
+                }
+            });
+            
+            html += '</ul>';
+            document.getElementById('output').innerHTML = html;
+            
+        } catch (e) {
+            console.error('Error:', e);
+            document.getElementById('output').innerHTML = '<p style="color: red;">Error loading IncarnatePowerInfo: ' + e.message + '</p>';
+        }
+    </script>
+</body>
+</html>

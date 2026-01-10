@@ -1,0 +1,22 @@
+{
+  "name": "Lore_Pet_Tsoo_Support_Attack",
+  "display_name": "Lore_Pet_Tsoo_Support_Attack",
+  "display_fullname": "Incarnate.Lore Pet Tsoo Support Attack",
+  "display_help": "Incarnate",
+  "display_short_help": "Incarnate",
+  "available_level": [
+    0
+  ],
+  "source_file": "DEFS/POWERS/INCARNATE/LORE_PET_TSOO_SUPPORT_ATTACK.POWERSETS",
+  "icon": "lore_pet_tsoo_support_attack_set.png",
+  "requires": "",
+  "power_names": [
+    "Incarnate.Lore_Pet_Tsoo_Support_Attack.Petrifying_Gaze"
+  ],
+  "power_display_names": [
+    "Petrifying Gaze"
+  ],
+  "power_short_helps": [
+    "Hold"
+  ]
+}

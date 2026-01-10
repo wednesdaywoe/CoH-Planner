@@ -1,0 +1,26 @@
+{
+  "name": "Lore_Pet_Drones_LT",
+  "display_name": "Lore_Pet_Drones_LT",
+  "display_fullname": "Incarnate.Lore Pet Drones LT",
+  "display_help": "Incarnate",
+  "display_short_help": "Incarnate",
+  "available_level": [
+    0,
+    0
+  ],
+  "source_file": "DEFS/POWERS/INCARNATE/LORE_PET_DRONES_LT.POWERSETS",
+  "icon": "lore_pet_drones_lt_set.png",
+  "requires": "",
+  "power_names": [
+    "Incarnate.Lore_Pet_Drones_LT.Plasma_Cannon_Blast",
+    "Incarnate.Lore_Pet_Drones_LT.Plasma_Cannon_Spray"
+  ],
+  "power_display_names": [
+    "Plasma Cannon Blast",
+    "Plasma Cannon Spray"
+  ],
+  "power_short_helps": [
+    "Ranged, Moderate DMG(Energy), Foe -Regen",
+    "Ranged Cone, Light DMG(Energy), Foe -Regen"
+  ]
+}

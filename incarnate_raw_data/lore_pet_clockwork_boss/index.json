@@ -1,0 +1,30 @@
+{
+  "name": "Lore_Pet_Clockwork_Boss",
+  "display_name": "Lore Pet Clockwork Boss",
+  "display_fullname": "Incarnate.Lore Pet Clockwork Boss",
+  "display_help": "Clockwork",
+  "display_short_help": "Clockwork",
+  "available_level": [
+    0,
+    0,
+    0
+  ],
+  "source_file": "DEFS/POWERS/INCARNATE/LORE_PET_CLOCKWORK_BOSS.POWERSETS",
+  "icon": "lore_pet_clockwork_boss_set.png",
+  "requires": "",
+  "power_names": [
+    "Incarnate.Lore_Pet_Clockwork_Boss.Particle_Blast",
+    "Incarnate.Lore_Pet_Clockwork_Boss.Anti-Matter_Ray",
+    "Incarnate.Lore_Pet_Clockwork_Boss.Anti-Matter_Beam"
+  ],
+  "power_display_names": [
+    "Particle Blast",
+    "Anti-Matter Ray",
+    "Anti-Matter Beam"
+  ],
+  "power_short_helps": [
+    "Ranged, High DMG(Energy) Foe -Regen",
+    "Superior DoT(Energy), Foe -Def",
+    "Ranged (Cone), Superior DMG(Energy), Foe -Def, Knockback"
+  ]
+}

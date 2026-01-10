@@ -1,0 +1,22 @@
+{
+  "name": "Vitae",
+  "display_name": "Vitae",
+  "display_fullname": "Incarnate.Vitae",
+  "display_help": "Incarnate",
+  "display_short_help": "Incarnate",
+  "available_level": [
+    0
+  ],
+  "source_file": "DEFS/POWERS/INCARNATE/VITAE.POWERSETS",
+  "icon": "vitae_set.png",
+  "requires": "",
+  "power_names": [
+    "Incarnate.Vitae.Nothing"
+  ],
+  "power_display_names": [
+    "Nothing"
+  ],
+  "power_short_helps": [
+    "Nothing"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "name": "Lore_Pet_Lights_Support",
+  "display_name": "Lore_Pet_Lights_Support",
+  "display_fullname": "Incarnate.Lore Pet Lights Support",
+  "display_help": "Incarnate",
+  "display_short_help": "Incarnate",
+  "available_level": [
+    0,
+    0
+  ],
+  "source_file": "DEFS/POWERS/INCARNATE/LORE_PET_LIGHTS_SUPPORT.POWERSETS",
+  "icon": "lore_pet_lights_support_set.png",
+  "requires": "",
+  "power_names": [
+    "Incarnate.Lore_Pet_Lights_Support.Glowing_Touch",
+    "Incarnate.Lore_Pet_Lights_Support.Assault"
+  ],
+  "power_display_names": [
+    "Glowing Touch",
+    "Assault"
+  ],
+  "power_short_helps": [
+    "Ally Heal",
+    "PBAoE, Team +DMG, Res(Taunt, Placate)"
+  ]
+}

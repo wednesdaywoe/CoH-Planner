@@ -1,0 +1,26 @@
+{
+  "name": "Lore_Pet_Vanguard_Support",
+  "display_name": "Lore_Pet_Vanguard_Support",
+  "display_fullname": "Incarnate.Lore Pet Vanguard Support",
+  "display_help": "Incarnate",
+  "display_short_help": "Incarnate",
+  "available_level": [
+    0,
+    0
+  ],
+  "source_file": "DEFS/POWERS/INCARNATE/LORE_PET_VANGUARD_SUPPORT.POWERSETS",
+  "icon": "lore_pet_vanguard_support_set.png",
+  "requires": "",
+  "power_names": [
+    "Incarnate.Lore_Pet_Vanguard_Support.Assault",
+    "Incarnate.Lore_Pet_Vanguard_Support.Twilight_Grasp"
+  ],
+  "power_display_names": [
+    "Assault",
+    "Twilight Grasp"
+  ],
+  "power_short_helps": [
+    "PBAoE, Team +DMG, Res(Taunt, Placate)",
+    "Ranged, Foe -Acc -DMG, Team Heal"
+  ]
+}

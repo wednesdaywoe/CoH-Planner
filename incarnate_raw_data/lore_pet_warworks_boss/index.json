@@ -1,0 +1,30 @@
+{
+  "name": "Lore_Pet_Warworks_Boss",
+  "display_name": "Lore_Pet_Warworks_Boss",
+  "display_fullname": "Incarnate.Lore Pet Warworks Boss",
+  "display_help": "Warworks",
+  "display_short_help": "Warworks",
+  "available_level": [
+    0,
+    0,
+    0
+  ],
+  "source_file": "DEFS/POWERS/INCARNATE/LORE_PET_WARWORKS_BOSS.POWERSETS",
+  "icon": "lore_pet_warworks_boss_set.png",
+  "requires": "",
+  "power_names": [
+    "Incarnate.Lore_Pet_Warworks_Boss.Swipe",
+    "Incarnate.Lore_Pet_Warworks_Boss.Cross_Cut",
+    "Incarnate.Lore_Pet_Warworks_Boss.Plasma_Eye_Beams"
+  ],
+  "power_display_names": [
+    "Swipe",
+    "Cross Cut",
+    "Plasma Eye Beams"
+  ],
+  "power_short_helps": [
+    "Melee, Light DMG(Lethal/Energy), Foe -Def",
+    "Melee, Moderate DMG(Lethal/Energy), Foe -Def",
+    "Ranged, Moderate DMG(Energy), Foe -DEF"
+  ]
+}

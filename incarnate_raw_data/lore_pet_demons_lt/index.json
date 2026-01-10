@@ -1,0 +1,30 @@
+{
+  "name": "Lore_Pet_Demons_LT",
+  "display_name": "Lore_Pet_Demons_LT",
+  "display_fullname": "Incarnate.Lore Pet Demons LT",
+  "display_help": "Demons",
+  "display_short_help": "Demons",
+  "available_level": [
+    0,
+    0,
+    0
+  ],
+  "source_file": "DEFS/POWERS/INCARNATE/LORE_PET_DEMONS_LT.POWERSETS",
+  "icon": "lore_pet_arachnos_lt_set.png",
+  "requires": "",
+  "power_names": [
+    "Incarnate.Lore_Pet_Demons_LT.Fire_Smash",
+    "Incarnate.Lore_Pet_Demons_LT.Fire_Sword",
+    "Incarnate.Lore_Pet_Demons_LT.Fire_Blast"
+  ],
+  "power_display_names": [
+    "Fire Smash",
+    "Fire Sword",
+    "Fire Blast"
+  ],
+  "power_short_helps": [
+    "Melee Heavy Smash, Fire",
+    "DoT(Fire)",
+    "DoT(Fire)"
+  ]
+}

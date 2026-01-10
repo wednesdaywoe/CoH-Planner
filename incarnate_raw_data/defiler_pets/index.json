@@ -1,0 +1,22 @@
+{
+  "name": "Defiler_Pets",
+  "display_name": "Defiler_Pets",
+  "display_fullname": "Incarnate.Defiler Pets",
+  "display_help": "Incarnate",
+  "display_short_help": "Incarnate",
+  "available_level": [
+    0
+  ],
+  "source_file": "DEFS/POWERS/INCARNATE/DEFILER_PETS.POWERSETS",
+  "icon": "defiler_pets_set.png",
+  "requires": "",
+  "power_names": [
+    "Incarnate.Defiler_Pets.Frigid_Storm"
+  ],
+  "power_display_names": [
+    "Frigid Storm"
+  ],
+  "power_short_helps": [
+    "Targeted AoE, Minor DoT(Cold/Negative Energy), -DMG(Foe, All)"
+  ]
+}

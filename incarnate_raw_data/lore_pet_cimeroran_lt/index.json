@@ -1,0 +1,34 @@
+{
+  "name": "Lore_Pet_Cimeroran_LT",
+  "display_name": "Lore_Pet_Cimeroran_LT",
+  "display_fullname": "Incarnate.Lore Pet Cimeroran LT",
+  "display_help": "Cimeroran",
+  "display_short_help": "Cimeroran",
+  "available_level": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "source_file": "DEFS/POWERS/INCARNATE/LORE_PET_CIMERORAN_LT.POWERSETS",
+  "icon": "lore_pet_cimeroran_lt_set.png",
+  "requires": "",
+  "power_names": [
+    "Incarnate.Lore_Pet_Cimeroran_LT.Slash",
+    "Incarnate.Lore_Pet_Cimeroran_LT.Slice",
+    "Incarnate.Lore_Pet_Cimeroran_LT.Hack",
+    "Incarnate.Lore_Pet_Cimeroran_LT.Pilum"
+  ],
+  "power_display_names": [
+    "Slash",
+    "Slice",
+    "Hack",
+    "Pilum"
+  ],
+  "power_short_helps": [
+    "Melee, Moderate Dam(Lethal), Foe -DEF",
+    "Melee (Cone), Moderate Dam(Lethal), Foe -DEF",
+    "Melee, High Dam(Lethal), Foe -DEF",
+    "Ranged, Light DMG(Lethal)"
+  ]
+}

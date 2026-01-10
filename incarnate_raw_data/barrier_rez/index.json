@@ -1,0 +1,30 @@
+{
+  "name": "Barrier_Rez",
+  "display_name": "Destiny",
+  "display_fullname": "Incarnate.Destiny",
+  "display_help": "Incarnate",
+  "display_short_help": "Incarnate",
+  "available_level": [
+    0,
+    0,
+    0
+  ],
+  "source_file": "DEFS/POWERS/INCARNATE/BARRIER_REZ.POWERSETS",
+  "icon": "barrier_rez_set.png",
+  "requires": "",
+  "power_names": [
+    "Incarnate.Barrier_Rez.Barrier_Rez_Single",
+    "Incarnate.Barrier_Rez.Barrier_Rez_Double",
+    "Incarnate.Barrier_Rez.Barrier_Rez_Double_Wide"
+  ],
+  "power_display_names": [
+    "Barrier Invocation",
+    "Barrier Invocation",
+    "Barrier Invocation"
+  ],
+  "power_short_helps": [
+    "+XP Debt Protection",
+    "+XP Debt Protection",
+    "+XP Debt Protection"
+  ]
+}

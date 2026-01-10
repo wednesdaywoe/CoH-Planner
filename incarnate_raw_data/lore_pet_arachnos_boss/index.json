@@ -1,0 +1,30 @@
+{
+  "name": "Lore_Pet_Arachnos_Boss",
+  "display_name": "Lore_Pet_Arachnos_Boss",
+  "display_fullname": "Incarnate.Lore Pet Arachnos Boss",
+  "display_help": "Arachnos",
+  "display_short_help": "Arachnos",
+  "available_level": [
+    0,
+    0,
+    0
+  ],
+  "source_file": "DEFS/POWERS/INCARNATE/LORE_PET_ARACHNOS_BOSS.POWERSETS",
+  "icon": "lore_pet_arachnos_boss_set.png",
+  "requires": "",
+  "power_names": [
+    "Incarnate.Lore_Pet_Arachnos_Boss.Venom_Burst",
+    "Incarnate.Lore_Pet_Arachnos_Boss.Toxic_Claws",
+    "Incarnate.Lore_Pet_Arachnos_Boss.Claw_Pierce"
+  ],
+  "power_display_names": [
+    "Venom Burst",
+    "Toxic Claws",
+    "Claw Pierce"
+  ],
+  "power_short_helps": [
+    "Moderate Moderate DMG, DoT(Toxic)",
+    "Moderate Light DMG, DoT(Toxic)",
+    "DoT(Toxic)"
+  ]
+}

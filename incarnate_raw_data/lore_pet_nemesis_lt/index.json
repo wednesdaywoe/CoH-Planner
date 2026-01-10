@@ -1,0 +1,26 @@
+{
+  "name": "Lore_Pet_Nemesis_LT",
+  "display_name": "Lore_Pet_Nemesis_LT",
+  "display_fullname": "Incarnate.Lore Pet Nemesis LT",
+  "display_help": "Nemesis",
+  "display_short_help": "Nemesis",
+  "available_level": [
+    0,
+    0
+  ],
+  "source_file": "DEFS/POWERS/INCARNATE/LORE_PET_NEMESIS_LT.POWERSETS",
+  "icon": "lore_pet_nemesis_lt_set.png",
+  "requires": "",
+  "power_names": [
+    "Incarnate.Lore_Pet_Nemesis_LT.Lance_Rifle",
+    "Incarnate.Lore_Pet_Nemesis_LT.Lance"
+  ],
+  "power_display_names": [
+    "Lance Rifle",
+    "Lance"
+  ],
+  "power_short_helps": [
+    "Sniper Lethal/Fire, AoE Knockback",
+    "Disorient"
+  ]
+}

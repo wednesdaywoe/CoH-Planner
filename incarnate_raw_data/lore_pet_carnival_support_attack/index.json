@@ -1,0 +1,22 @@
+{
+  "name": "Lore_Pet_Carnival_Support_Attack",
+  "display_name": "Lore_Pet_Carnival_Support_Attack",
+  "display_fullname": "Incarnate.Lore Pet Carnival Support Attack",
+  "display_help": "Incarnate",
+  "display_short_help": "Incarnate",
+  "available_level": [
+    0
+  ],
+  "source_file": "DEFS/POWERS/INCARNATE/LORE_PET_CARNIVAL_SUPPORT_ATTACK.POWERSETS",
+  "icon": "lore_pet_carnival_support_attack_set.png",
+  "requires": "",
+  "power_names": [
+    "Incarnate.Lore_Pet_Carnival_Support_Attack.Spit_Fire"
+  ],
+  "power_display_names": [
+    "Spit Fire"
+  ],
+  "power_short_helps": [
+    "DoT(Fire)"
+  ]
+}

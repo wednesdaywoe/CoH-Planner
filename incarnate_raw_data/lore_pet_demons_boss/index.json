@@ -1,0 +1,34 @@
+{
+  "name": "Lore_Pet_Demons_Boss",
+  "display_name": "Lore_Pet_Demons_Boss",
+  "display_fullname": "Incarnate.Lore Pet Demons Boss",
+  "display_help": "Demons",
+  "display_short_help": "Demons",
+  "available_level": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "source_file": "DEFS/POWERS/INCARNATE/LORE_PET_DEMONS_BOSS.POWERSETS",
+  "icon": "lore_pet_arachnos_boss_set.png",
+  "requires": "",
+  "power_names": [
+    "Incarnate.Lore_Pet_Demons_Boss.Come_Hither",
+    "Incarnate.Lore_Pet_Demons_Boss.Blackclaw",
+    "Incarnate.Lore_Pet_Demons_Boss.Hellish_Bolts",
+    "Incarnate.Lore_Pet_Demons_Boss.Fire_Ball"
+  ],
+  "power_display_names": [
+    "Come Hither",
+    "Blackclaw",
+    "Hellish Bolts",
+    "Fire Ball"
+  ],
+  "power_short_helps": [
+    "Ranged, Foe Confuse",
+    "Melee, Light DMG(Lethal/Negative Energy)",
+    "Ranged (Cone), Minor DMG(Negative Energy), Knockback",
+    "DoT(Fire)"
+  ]
+}

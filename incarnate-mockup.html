@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Incarnate System UI Mockup</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --bg-primary: #0F172A;
+            --bg-secondary: #1E293B;
+            --bg-tertiary: #334155;
+            --text-primary: #F1F5F9;
+            --text-secondary: #94A3B8;
+            --border: #475569;
+            --accent: #3B82F6;
+            
+            --incarnate-alpha: #FFD700;
+            --incarnate-judgement: #FF4500;
+            --incarnate-interface: #00CED1;
+            --incarnate-lore: #9370DB;
+            --incarnate-destiny: #32CD32;
+            --incarnate-hybrid: #FF69B4;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 16px;
+            background: var(--bg-secondary);
+            border-radius: 8px;
+        }
+        
+        .header h1 {
+            font-size: 24px;
+            font-weight: 600;
+        }
+        
+        .export-btn {
+            padding: 8px 16px;
+            background: var(--accent);
+            border: none;
+            border-radius: 4px;
+            color: white;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        
+        .slots-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .incarnate-slot {
+            background: var(--bg-secondary);
+            border: 3px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            min-height: 180px;
+        }
+        
+        .incarnate-slot:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+        
+        .incarnate-slot.alpha { border-color: var(--incarnate-alpha); }
+        .incarnate-slot.judgement { border-color: var(--incarnate-judgement); }
+        .incarnate-slot.interface { border-color: var(--incarnate-interface); }
+        .incarnate-slot.lore { border-color: var(--incarnate-lore); }
+        .incarnate-slot.destiny { border-color: var(--incarnate-destiny); }
+        .incarnate-slot.hybrid { border-color: var(--incarnate-hybrid); }
+        
+        .slot-icon {
+            width: 64px;
+            height: 64px;
+            background: var(--bg-tertiary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+        }
+        
+        .alpha .slot-icon { background: var(--incarnate-alpha); color: var(--bg-primary); }
+        .judgement .slot-icon { background: var(--incarnate-judgement); color: white; }
+        .interface .slot-icon { background: var(--incarnate-interface); color: var(--bg-primary); }
+        .lore .slot-icon { background: var(--incarnate-lore); color: white; }
+        .destiny .slot-icon { background: var(--incarnate-destiny); color: var(--bg-primary); }
+        .hybrid .slot-icon { background: var(--incarnate-hybrid); color: white; }
+        
+        .slot-name {
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .slot-power {
+            font-size: 13px;
+            color: var(--text-secondary);
+            text-align: center;
+        }
+        
+        .slot-tier {
+            font-size: 11px;
+            color: var(--text-secondary);
+            background: var(--bg-tertiary);
+            padding: 2px 8px;
+            border-radius: 12px;
+        }
+        
+        .slot-empty {
+            font-size: 36px;
+            color: var(--border);
+        }
+        
+        .shopping-list {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px;
+        }
+        
+        .shopping-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+        
+        .shopping-header h2 {
+            font-size: 18px;
+            font-weight: 600;
+        }
+        
+        .toggle-details {
+            padding: 4px 12px;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            color: var(--text-primary);
+            cursor: pointer;
+            font-size: 12px;
+        }
+        
+        .totals-section {
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid var(--border);
+        }
+        
+        .totals-title {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .resource-row {
+            display: grid;
+            grid-template-columns: 200px 150px 150px;
+            gap: 16px;
+            align-items: center;
+            padding: 8px 0;
+            font-size: 14px;
+        }
+        
+        .resource-name {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 500;
+        }
+        
+        .resource-icon {
+            font-size: 20px;
+        }
+        
+        .resource-input {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-secondary);
+            font-size: 13px;
+        }
+        
+        .resource-input input {
+            width: 80px;
+            padding: 4px 8px;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            color: var(--text-primary);
+            text-align: center;
+        }
+        
+        .resource-need {
+            font-weight: 600;
+            color: var(--accent);
+        }
+        
+        .breakdown-section {
+            margin-top: 16px;
+        }
+        
+        .slot-breakdown {
+            margin-bottom: 20px;
+        }
+        
+        .breakdown-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px;
+            background: var(--bg-tertiary);
+            border-radius: 4px;
+            cursor: pointer;
+            margin-bottom: 8px;
+        }
+        
+        .breakdown-arrow {
+            font-size: 12px;
+            transition: transform 0.2s;
+        }
+        
+        .breakdown-title {
+            font-weight: 600;
+            font-size: 14px;
+        }
+        
+        .breakdown-content {
+            padding-left: 24px;
+        }
+        
+        .tier-requirement {
+            padding: 6px 0;
+            font-size: 13px;
+            color: var(--text-secondary);
+            border-left: 2px solid var(--border);
+            padding-left: 16px;
+            margin-left: 8px;
+        }
+        
+        .tier-requirement:last-child {
+            border-left-color: transparent;
+        }
+        
+        .cost-badge {
+            display: inline-block;
+            padding: 2px 6px;
+            background: var(--bg-primary);
+            border-radius: 3px;
+            font-size: 11px;
+            font-weight: 600;
+            margin-left: 8px;
+        }
+        
+        .cost-threads { color: #06B6D4; }
+        .cost-empyrean { color: #FFD700; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>INCARNATE POWERS</h1>
+            <button class="export-btn">Export Build</button>
+        </div>
+        
+        <div class="slots-grid">
+            <!-- Alpha - Empty -->
+            <div class="incarnate-slot alpha">
+                <div class="slot-icon">⍺</div>
+                <div class="slot-name">Alpha</div>
+                <div class="slot-empty">+</div>
+                <div class="slot-power">Click to select</div>
+            </div>
+            
+            <!-- Judgement - Selected -->
+            <div class="incarnate-slot judgement">
+                <div class="slot-icon">⚡</div>
+                <div class="slot-name">Judgement</div>
+                <div class="slot-power">Ion</div>
+                <div class="slot-tier">T4 Core</div>
+            </div>
+            
+            <!-- Interface - Selected -->
+            <div class="incarnate-slot interface">
+                <div class="slot-icon">⚙</div>
+                <div class="slot-name">Interface</div>
+                <div class="slot-power">Reactive</div>
+                <div class="slot-tier">T3 Radial</div>
+            </div>
+            
+            <!-- Lore - Selected -->
+            <div class="incarnate-slot lore">
+                <div class="slot-icon">👥</div>
+                <div class="slot-name">Lore</div>
+                <div class="slot-power">Warworks</div>
+                <div class="slot-tier">T2 Core</div>
+            </div>
+            
+            <!-- Destiny - Selected -->
+            <div class="incarnate-slot destiny">
+                <div class="slot-icon">🛡</div>
+                <div class="slot-name">Destiny</div>
+                <div class="slot-power">Barrier</div>
+                <div class="slot-tier">T4 Radial</div>
+            </div>
+            
+            <!-- Hybrid - Empty -->
+            <div class="incarnate-slot hybrid">
+                <div class="slot-icon">◈</div>
+                <div class="slot-name">Hybrid</div>
+                <div class="slot-empty">+</div>
+                <div class="slot-power">Click to select</div>
+            </div>
+        </div>
+        
+        <div class="shopping-list">
+            <div class="shopping-header">
+                <h2>SHOPPING LIST</h2>
+                <button class="toggle-details">Toggle Details</button>
+            </div>
+            
+            <div class="totals-section">
+                <div class="totals-title">Total Requirements</div>
+                
+                <div class="resource-row">
+                    <div class="resource-name">
+                        <span class="resource-icon">📊</span>
+                        <span>Incarnate Threads</span>
+                    </div>
+                    <div class="resource-input">
+                        <span>I have:</span>
+                        <input type="number" value="500" min="0">
+                    </div>
+                    <div class="resource-need">
+                        Need: 3,080
+                    </div>
+                </div>
+                
+                <div class="resource-row">
+                    <div class="resource-name">
+                        <span class="resource-icon">⭐</span>
+                        <span>Empyrean Merits</span>
+                    </div>
+                    <div class="resource-input">
+                        <span>I have:</span>
+                        <input type="number" value="20" min="0">
+                    </div>
+                    <div class="resource-need">
+                        Need: 122
+                    </div>
+                </div>
+                
+                <div class="resource-row">
+                    <div class="resource-name">
+                        <span class="resource-icon">💎</span>
+                        <span>Incarnate Shards</span>
+                    </div>
+                    <div class="resource-input">
+                        <span>I have:</span>
+                        <input type="number" value="0" min="0">
+                    </div>
+                    <div class="resource-need">
+                        Need: 0
+                    </div>
+                </div>
+            </div>
+            
+            <div class="breakdown-section">
+                <div class="slot-breakdown">
+                    <div class="breakdown-header">
+                        <span class="breakdown-arrow">▼</span>
+                        <span class="breakdown-title">Judgement: Ion (Tier 4 Core)</span>
+                    </div>
+                    <div class="breakdown-content">
+                        <div class="tier-requirement">
+                            ├─ Tier 4: Very Rare Component 
+                            <span class="cost-badge cost-empyrean">30 Emp</span>
+                            <span class="cost-badge cost-threads">OR 300 Threads</span>
+                        </div>
+                        <div class="tier-requirement">
+                            ├─ Tier 3 Core: Rare Component 
+                            <span class="cost-badge cost-empyrean">8 Emp</span>
+                            <span class="cost-badge cost-threads">OR 100 Threads</span>
+                        </div>
+                        <div class="tier-requirement">
+                            ├─ Tier 3 Radial: Rare Component 
+                            <span class="cost-badge cost-empyrean">8 Emp</span>
+                            <span class="cost-badge cost-threads">OR 100 Threads</span>
+                        </div>
+                        <div class="tier-requirement">
+                            ├─ Tier 2: 4× Uncommon Component 
+                            <span class="cost-badge cost-threads">240 Threads</span>
+                        </div>
+                        <div class="tier-requirement">
+                            └─ Tier 1: 
+                            <span class="cost-badge cost-threads">60 Threads</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="slot-breakdown">
+                    <div class="breakdown-header">
+                        <span class="breakdown-arrow">▼</span>
+                        <span class="breakdown-title">Interface: Reactive (Tier 3 Radial)</span>
+                    </div>
+                    <div class="breakdown-content">
+                        <div class="tier-requirement">
+                            ├─ Tier 3: Rare Component 
+                            <span class="cost-badge cost-empyrean">8 Emp</span>
+                            <span class="cost-badge cost-threads">OR 100 Threads</span>
+                        </div>
+                        <div class="tier-requirement">
+                            ├─ Tier 2: 4× Uncommon Component 
+                            <span class="cost-badge cost-threads">240 Threads</span>
+                        </div>
+                        <div class="tier-requirement">
+                            └─ Tier 1: 
+                            <span class="cost-badge cost-threads">60 Threads</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="slot-breakdown">
+                    <div class="breakdown-header">
+                        <span class="breakdown-arrow">▼</span>
+                        <span class="breakdown-title">Lore: Warworks (Tier 2 Core)</span>
+                    </div>
+                    <div class="breakdown-content">
+                        <div class="tier-requirement">
+                            ├─ Tier 2: 4× Uncommon Component 
+                            <span class="cost-badge cost-threads">240 Threads</span>
+                        </div>
+                        <div class="tier-requirement">
+                            └─ Tier 1: 
+                            <span class="cost-badge cost-threads">60 Threads</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="slot-breakdown">
+                    <div class="breakdown-header">
+                        <span class="breakdown-arrow">▼</span>
+                        <span class="breakdown-title">Destiny: Barrier (Tier 4 Radial)</span>
+                    </div>
+                    <div class="breakdown-content">
+                        <div class="tier-requirement">
+                            ├─ Tier 4: Very Rare Component 
+                            <span class="cost-badge cost-empyrean">30 Emp</span>
+                            <span class="cost-badge cost-threads">OR 300 Threads</span>
+                        </div>
+                        <div class="tier-requirement">
+                            ├─ Tier 3 Core: Rare Component 
+                            <span class="cost-badge cost-empyrean">8 Emp</span>
+                            <span class="cost-badge cost-threads">OR 100 Threads</span>
+                        </div>
+                        <div class="tier-requirement">
+                            ├─ Tier 3 Radial: Rare Component 
+                            <span class="cost-badge cost-empyrean">8 Emp</span>
+                            <span class="cost-badge cost-threads">OR 100 Threads</span>
+                        </div>
+                        <div class="tier-requirement">
+                            ├─ Tier 2: 4× Uncommon Component 
+                            <span class="cost-badge cost-threads">240 Threads</span>
+                        </div>
+                        <div class="tier-requirement">
+                            └─ Tier 1: 
+                            <span class="cost-badge cost-threads">60 Threads</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

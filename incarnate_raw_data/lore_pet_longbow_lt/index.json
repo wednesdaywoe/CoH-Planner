@@ -1,0 +1,30 @@
+{
+  "name": "Lore_Pet_Longbow_LT",
+  "display_name": "Lore_Pet_Longbow_LT",
+  "display_fullname": "Incarnate.Lore Pet Longbow LT",
+  "display_help": "Longbow",
+  "display_short_help": "Longbow",
+  "available_level": [
+    0,
+    0,
+    0
+  ],
+  "source_file": "DEFS/POWERS/INCARNATE/LORE_PET_LONGBOW_LT.POWERSETS",
+  "icon": "lore_pet_longbow_lt_set.png",
+  "requires": "",
+  "power_names": [
+    "Incarnate.Lore_Pet_Longbow_LT.Burst",
+    "Incarnate.Lore_Pet_Longbow_LT.Slug",
+    "Incarnate.Lore_Pet_Longbow_LT.M30_Grenade"
+  ],
+  "power_display_names": [
+    "Burst",
+    "Slug",
+    "M30 Grenade"
+  ],
+  "power_short_helps": [
+    "Ranged, Light DMG(Lethal), Foe -DEF",
+    "Ranged, Moderate DMG(Lethal), Foe Knockback",
+    "Ranged (Targeted AoE), Light DMG(Lethal/Smash), Knockback"
+  ]
+}

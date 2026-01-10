@@ -1,0 +1,22 @@
+{
+  "name": "Omega",
+  "display_name": "Omega",
+  "display_fullname": "Incarnate.Omega",
+  "display_help": "Incarnate",
+  "display_short_help": "Incarnate",
+  "available_level": [
+    0
+  ],
+  "source_file": "DEFS/POWERS/INCARNATE/OMEGA.POWERSETS",
+  "icon": "omega_set.png",
+  "requires": "",
+  "power_names": [
+    "Incarnate.Omega.Nothing"
+  ],
+  "power_display_names": [
+    "Nothing"
+  ],
+  "power_short_helps": [
+    "Nothing"
+  ]
+}

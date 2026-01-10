@@ -1,0 +1,38 @@
+{
+  "name": "Lore_Pet_Cimeroran_Boss",
+  "display_name": "Lore_Pet_Cimeroran_Boss",
+  "display_fullname": "Incarnate.Lore Pet Cimeroran Boss",
+  "display_help": "Cimeroran",
+  "display_short_help": "Cimeroran",
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "source_file": "DEFS/POWERS/INCARNATE/LORE_PET_CIMERORAN_BOSS.POWERSETS",
+  "icon": "lore_pet_cimeroran_boss_set.png",
+  "requires": "",
+  "power_names": [
+    "Incarnate.Lore_Pet_Cimeroran_Boss.Push_Back",
+    "Incarnate.Lore_Pet_Cimeroran_Boss.Slash",
+    "Incarnate.Lore_Pet_Cimeroran_Boss.Slice",
+    "Incarnate.Lore_Pet_Cimeroran_Boss.Hack",
+    "Incarnate.Lore_Pet_Cimeroran_Boss.Pilum"
+  ],
+  "power_display_names": [
+    "Push Back",
+    "Slash",
+    "Slice",
+    "Hack",
+    "Pilum"
+  ],
+  "power_short_helps": [
+    "Melee, Light DMG(Smash), High Knockback",
+    "Melee, Moderate Dam(Lethal), Foe -DEF",
+    "Melee (Cone), Moderate Dam(Lethal), Foe -DEF",
+    "Melee, High Dam(Lethal), Foe -DEF",
+    "Ranged, Light DMG(Lethal)"
+  ]
+}

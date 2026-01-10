@@ -1,0 +1,26 @@
+{
+  "name": "Lore_Pet_Clockwork_Support",
+  "display_name": "Lore_Pet_Clockwork_Support",
+  "display_fullname": "Incarnate.Lore Pet Clockwork Support",
+  "display_help": "Clockwork",
+  "display_short_help": "Clockwork",
+  "available_level": [
+    0,
+    0
+  ],
+  "source_file": "DEFS/POWERS/INCARNATE/LORE_PET_CLOCKWORK_SUPPORT.POWERSETS",
+  "icon": "lore_pet_clockwork_support_set.png",
+  "requires": "",
+  "power_names": [
+    "Incarnate.Lore_Pet_Clockwork_Support.Nano_Repair",
+    "Incarnate.Lore_Pet_Clockwork_Support.Field_Projector"
+  ],
+  "power_display_names": [
+    "Nano Repair",
+    "Field Projector"
+  ],
+  "power_short_helps": [
+    "Ally Heal, Heal over Time",
+    "Ally +DEF(Smash, Lethal, Fire, Cold, Energy, Negative)"
+  ]
+}

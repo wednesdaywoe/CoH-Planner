@@ -1,0 +1,310 @@
+/**
+ * Super Reflexes
+ * Character Level: 50
+ * Archetype: sentinel
+ * Extracted from raw_data_homecoming with archetype modifiers applied
+ */
+
+const SENTINEL_SUPER_REFLEXES_POWERSET = {
+    name: "Super Reflexes",
+    category: "Unknown",
+    description: "Super Reflexes powerset",
+    icon: "super-reflexes_set.png",
+    powers: [
+        {
+            name: "Focused Fighting",
+            available: 0,
+            tier: 1,
+            maxSlots: 6,
+            allowedEnhancements: ["EnduranceReduction", "Recharge"],
+            allowedSetCategories: ["Defense Sets"],
+            description: "You become more evasive to melee attacks while you have Focused Fighting activated. This will increase your Defense versus melee as long as it is active. Your Focus also offers you resistance to Confuse effects and DeBuffs to Defense. If you own Master Brawler you will also gain resistance to Knockback and Immobilization powers. Focused Fighting also adds an Elusivity defense bonus to Melee Attacks in PVP zones.<br><br><color #fcfc95>Recharge: Fast.</color>",
+            shortHelp: "Toggle: Self +DEF(Melee), Res(Confuse, DeBuff DEF)",
+            icon: "superreflexes_focusedfighting.png",
+            powerType: "Toggle",
+            targetType: "Self",
+            effectArea: "SingleTarget",
+            effects: {
+                accuracy: 1.0,
+                recharge: 4.0,
+                endurance: 0.13,
+                cast: 0.67,
+                protection: {
+                    confuse: 8.304,
+                    immobilize: 8.304
+                },
+                debuffResistance: {
+                    defense: 0.11072
+                },
+                buffDuration: 0.75,
+                defenseBuff: 0.4
+            }
+        },
+        {
+            name: "Focused Senses",
+            available: 0,
+            tier: 1,
+            maxSlots: 6,
+            allowedEnhancements: ["EnduranceReduction", "Recharge"],
+            allowedSetCategories: ["Defense Sets"],
+            description: "You become more evasive against ranged attacks while you have Focused Senses activated. This will increase your Defense versus ranged attacks as long as it is active. Your Improved Senses also allow you to perceive stealthy foes as well as resist Defense DeBuffs. If you own Master Brawler you will also gain resistance to Disorient, Hold, Sleep powers. Focused Senses also adds an Elusivity defense bonus to Ranged Attacks in PVP zones.<br><br><color #fcfc95>Recharge: Fast.</color>",
+            shortHelp: "Toggle: Self +DEF(Ranged), +Perception, Res(DeBuff DEF)",
+            icon: "superreflexes_focusedsenses.png",
+            powerType: "Toggle",
+            targetType: "Self",
+            effectArea: "SingleTarget",
+            effects: {
+                accuracy: 1.0,
+                recharge: 4.0,
+                endurance: 0.13,
+                cast: 2.03,
+                protection: {
+                    hold: 8.304,
+                    stun: 8.304,
+                    sleep: 8.304
+                },
+                debuffResistance: {
+                    defense: 0.11072
+                },
+                buffDuration: 0.75,
+                defenseBuff: 0.4,
+                stun: 1.0,
+                stunDuration: 0.75
+            }
+        },
+        {
+            name: "Agile",
+            available: 3,
+            tier: 2,
+            maxSlots: 6,
+            allowedEnhancements: ["Damage", "Accuracy", "Recharge", "EnduranceReduction"],
+            allowedSetCategories: ["Defense Sets"],
+            description: "You become innately more Agile, and are able to naturally avoid some ranged attacks and resist Defense DeBuffs. Your Agility also grants you minor Damage Resistance to all damage except Toxic and Psionic. This Damage Resistance is only available as you lose Health but it improves as your HP declines. This power is always on, and will permanently increase your Defense versus ranged attacks.",
+            shortHelp: "Auto: Self +DEF(Ranged), Res(DeBuff DEF), Res(DMG, Special)",
+            icon: "superreflexes_agile.png",
+            powerType: "Auto",
+            targetType: "Self",
+            effectArea: "SingleTarget",
+            effects: {
+                accuracy: 1.0,
+                resistance: {
+                    smashing: 0.0,
+                    lethal: 0.0,
+                    fire: 0.0,
+                    cold: 0.0,
+                    energy: 0.0,
+                    negative: 0.0,
+                    toxic: 0.0
+                },
+                debuffResistance: {
+                    defense: 0.05536
+                },
+                buffDuration: 0.75,
+                defenseBuff: 0.2
+            }
+        },
+        {
+            name: "Master Brawler",
+            available: 9,
+            tier: 3,
+            maxSlots: 6,
+            allowedEnhancements: ["EnduranceReduction", "Recharge"],
+            allowedSetCategories: ["Healing"],
+            description: "Your are a master brawler, as such you have learned when its best to block an attack and absorb damage the most effectively. Using this power when you have the highest amount of endurance but the lowest amount of health will result in the most powerful effect possible. Owning this power will also improve your Focused Fighting and Focused Senses abilities. This power can not be taken if you take Practiced Brawler.<br><br><color #fcfc95>Recharge: Slow.</color>",
+            shortHelp: "Self +Absorb +Special",
+            icon: "superreflexes_block.png",
+            powerType: "Click",
+            targetType: "Self",
+            effectArea: "SingleTarget",
+            effects: {
+                accuracy: 1.0,
+                recharge: 60.0,
+                endurance: 5.2,
+                cast: 1.53,
+                buffDuration: 30.0
+            }
+        },
+        {
+            name: "Practiced Brawler",
+            available: 9,
+            tier: 3,
+            maxSlots: 6,
+            allowedEnhancements: ["EnduranceReduction", "Recharge"],
+            allowedSetCategories: [],
+            description: "Your training has allowed you to become a Practiced Brawler, tuning you into a perfect fighting machine. You gain a resistance to Knockback, Disorient, Hold, Sleep, and Immobilization powers for a short duration. This power can not be taken if you take Master Brawler.<br><br><color #fcfc95>Recharge: Long.</color>",
+            shortHelp: "Self +Res(Knockback, Disorient, Hold, Sleep, Immobilize)",
+            icon: "superreflexes_practicedbrawler.png",
+            powerType: "Click",
+            targetType: "Self",
+            effectArea: "SingleTarget",
+            effects: {
+                accuracy: 1.0,
+                recharge: 200.0,
+                endurance: 10.4,
+                cast: 1.53,
+                protection: {
+                    hold: 8.304,
+                    stun: 8.304,
+                    sleep: 8.304,
+                    immobilize: 8.304
+                },
+                debuffResistance: {
+                    tohit: 0.3,
+                    defense: 0.3,
+                    recharge: 0.3,
+                    movement: 0.5
+                },
+                buffDuration: 120.0,
+                stun: 1.0,
+                stunDuration: 120.0,
+                tohitBuff: 0.3,
+                defenseBuff: 0.3
+            }
+        },
+        {
+            name: "Enduring",
+            available: 15,
+            tier: 4,
+            maxSlots: 6,
+            allowedEnhancements: ["Damage", "Accuracy", "Recharge", "EnduranceReduction"],
+            allowedSetCategories: ["Defense Sets", "Endurance Modification"],
+            description: "You become innately more Enduring, and are able to make your endurance last longer in battle. You also manage to avoid some psionic attacks and resist Defense DeBuffs. Your Enduring determination also grants you minor Damage Resistance to all damage except Toxic and Psionic. This Damage Resistance is only available as you lose Health but it improves as your HP declines. This power is always on, and will permanently increase your endurance recovery and Defense versus psionic attacks.",
+            shortHelp: "Auto: Self +Recovery, +DEF(Psionic), Res(DeBuff DEF), Res(DMG, Special)",
+            icon: "superreflexes_endure.png",
+            powerType: "Auto",
+            targetType: "Self",
+            effectArea: "SingleTarget",
+            effects: {
+                accuracy: 1.0,
+                resistance: {
+                    smashing: 0.0,
+                    lethal: 0.0,
+                    fire: 0.0,
+                    cold: 0.0,
+                    energy: 0.0,
+                    negative: 0.0,
+                    toxic: 0.0
+                },
+                debuffResistance: {
+                    defense: 0.05536,
+                    tohit: 0.3,
+                    recharge: 0.3,
+                    movement: 0.5
+                },
+                buffDuration: 0.75,
+                defenseBuff: 0.2,
+                tohitBuff: 0.3
+            }
+        },
+        {
+            name: "Dodge",
+            available: 19,
+            tier: 4,
+            maxSlots: 6,
+            allowedEnhancements: ["Damage", "Accuracy", "Recharge", "EnduranceReduction"],
+            allowedSetCategories: ["Defense Sets"],
+            description: "You have the ability to innately Dodge some melee attacks and you resist Defense DeBuffs. Dodge also grants you minor Damage Resistance to all damage except Toxic and Psionic. This Damage Resistance is only available as you lose Health but it improves as your HP declines. This power is always on, and will permanently increase your Defense versus melee attacks.",
+            shortHelp: "Auto: Self +DEF(Melee), Res(DeBuff DEF), Res(All DMG, Special)",
+            icon: "superreflexes_dodge.png",
+            powerType: "Auto",
+            targetType: "Self",
+            effectArea: "SingleTarget",
+            effects: {
+                accuracy: 1.0,
+                resistance: {
+                    smashing: 0.0,
+                    lethal: 0.0,
+                    fire: 0.0,
+                    cold: 0.0,
+                    energy: 0.0,
+                    negative: 0.0,
+                    toxic: 0.0
+                },
+                debuffResistance: {
+                    defense: 0.05536
+                },
+                buffDuration: 0.75,
+                defenseBuff: 0.2
+            }
+        },
+        {
+            name: "Quickness",
+            available: 23,
+            tier: 5,
+            maxSlots: 6,
+            allowedEnhancements: ["Damage", "Accuracy", "Recharge", "EnduranceReduction"],
+            allowedSetCategories: [],
+            description: "Your Quick reflexes allow you to move faster than normal, as well as resist slow effects. This power is always on and permanently increases your attack rate and movement speed.",
+            shortHelp: "Auto: Self +Recharge, +SPD, Res (Slow)",
+            icon: "superreflexes_quickness.png",
+            powerType: "Auto",
+            targetType: "Self",
+            effectArea: "SingleTarget",
+            effects: {
+                accuracy: 1.0,
+                debuffResistance: {
+                    recharge: 0.4,
+                    movement: 0.4
+                },
+                buffDuration: 10.25
+            }
+        },
+        {
+            name: "Evasion",
+            available: 27,
+            tier: 5,
+            maxSlots: 6,
+            allowedEnhancements: ["EnduranceReduction", "Recharge"],
+            allowedSetCategories: ["Defense Sets"],
+            description: "You are Evasive against area effect and cone shaped attacks. This power increases your Defense versus such attacks as long as it is active. Evasion also helps you resist Defense DeBuffs. Evasion also adds an Elusivity defense bonus to AOE Attacks in PVP zones.<br><br><color #fcfc95>Recharge: Fast.</color>",
+            shortHelp: "Toggle: Self +DEF(vs. AoE), Res(DeBuff DEF)",
+            icon: "superreflexes_evasion.png",
+            powerType: "Toggle",
+            targetType: "Self",
+            effectArea: "SingleTarget",
+            effects: {
+                accuracy: 1.0,
+                recharge: 4.0,
+                endurance: 0.13,
+                cast: 3.0,
+                debuffResistance: {
+                    defense: 0.11072
+                },
+                buffDuration: 0.75,
+                defenseBuff: 0.4
+            }
+        },
+        {
+            name: "Elude",
+            available: 29,
+            tier: 5,
+            maxSlots: 6,
+            allowedEnhancements: ["EnduranceReduction", "Recharge"],
+            allowedSetCategories: ["Defense Sets", "Endurance Modification", "Running", "Running & Sprints", "Universal Travel"],
+            description: "You can improve your reflexes, making yourself so quick you can Elude almost any attack, be it ranged, melee, or area effect. Your running speed and jumping height and Endurance Recovery are also increased. Elude also grants you high resistance to Defense DeBuffs. When Elude wears off, you are left drained of all Endurance and unable to recover Endurance for a while.<br><br><color #fcfc95>Recharge: Extremely Long.</color>",
+            shortHelp: "Self +DEF, + SPD, +Recovery, Res(DeBuff DEF), +Special",
+            icon: "superreflexes_elude.png",
+            powerType: "Click",
+            targetType: "Self",
+            effectArea: "SingleTarget",
+            effects: {
+                accuracy: 1.0,
+                recharge: 1000.0,
+                endurance: 2.6,
+                cast: 2.0,
+                debuffResistance: {
+                    defense: 0.2768
+                },
+                buffDuration: 180.0,
+                defenseBuff: 1.0
+            }
+        }
+    ]
+};
+
+// Register to POWERSETS
+if (typeof POWERSETS !== 'undefined') {
+    POWERSETS['sentinel/super-reflexes'] = SENTINEL_SUPER_REFLEXES_POWERSET;
+} else if (typeof window !== 'undefined') {
+    window.SENTINEL_SUPER_REFLEXES_POWERSET = SENTINEL_SUPER_REFLEXES_POWERSET;
+}

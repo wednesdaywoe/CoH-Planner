@@ -1,0 +1,30 @@
+{
+  "name": "Lore_Pet_Carnival_LT",
+  "display_name": "Lore_Pet_Carnival_LT",
+  "display_fullname": "Incarnate.Lore Pet Carnival LT",
+  "display_help": "Incarnate",
+  "display_short_help": "Incarnate",
+  "available_level": [
+    0,
+    0,
+    0
+  ],
+  "source_file": "DEFS/POWERS/INCARNATE/LORE_PET_CARNIVAL_LT.POWERSETS",
+  "icon": "lore_pet_carnival_lt_set.png",
+  "requires": "",
+  "power_names": [
+    "Incarnate.Lore_Pet_Carnival_LT.Hurl",
+    "Incarnate.Lore_Pet_Carnival_LT.Punch",
+    "Incarnate.Lore_Pet_Carnival_LT.Haymaker"
+  ],
+  "power_display_names": [
+    "Hurl",
+    "Punch",
+    "Haymaker"
+  ],
+  "power_short_helps": [
+    "Ranged, Moderate DMG(Smash), Knockback, -Fly",
+    "Melee, Light DMG(Smash), Knockback",
+    "Melee, Moderate DMG(Smash), Knockback"
+  ]
+}

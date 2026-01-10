@@ -1,0 +1,30 @@
+{
+  "name": "Lore_Pet_Rikti_LT",
+  "display_name": "Lore_Pet_Rikti_LT",
+  "display_fullname": "Incarnate.Lore Pet Rikti LT",
+  "display_help": "Incarnate",
+  "display_short_help": "Incarnate",
+  "available_level": [
+    0,
+    0,
+    0
+  ],
+  "source_file": "DEFS/POWERS/INCARNATE/LORE_PET_RIKTI_LT.POWERSETS",
+  "icon": "lore_pet_rikti_lt_set.png",
+  "requires": "",
+  "power_names": [
+    "Incarnate.Lore_Pet_Rikti_LT.Rikti_Sword",
+    "Incarnate.Lore_Pet_Rikti_LT.Greater_Rikti_Sword",
+    "Incarnate.Lore_Pet_Rikti_LT.Rikti_Pistol"
+  ],
+  "power_display_names": [
+    "Rikti Sword",
+    "Greater Rikti Sword",
+    "Rikti Pistol"
+  ],
+  "power_short_helps": [
+    "Disorient",
+    "Disorient",
+    "Disorient"
+  ]
+}

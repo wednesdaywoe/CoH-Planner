@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Incarnate Power Data Verification</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .success { color: green; }
+        .error { color: red; }
+        .test { margin: 10px 0; padding: 10px; border: 1px solid #ccc; }
+    </style>
+</head>
+<body>
+    <h1>Incarnate Power Data Structure Verification</h1>
+    <div id="results"></div>
+    
+    <script src="js/incarnate-power-info.js"></script>
+    <script>
+        let html = '';
+        
+        try {
+            // Test 1: Data loaded
+            if (typeof IncarnatePowerInfo === 'undefined') {
+                throw new Error('IncarnatePowerInfo not loaded');
+            }
+            html += '<div class="test success">✓ IncarnatePowerInfo loaded</div>';
+            
+            // Test 2: Check Alpha slot structure
+            if (!IncarnatePowerInfo.alpha) {
+                throw new Error('Alpha slot not found');
+            }
+            html += '<div class="test success">✓ Alpha slot exists</div>';
+            
+            // Test 3: Check for Agility power
+            if (!IncarnatePowerInfo.alpha.agility) {
+                throw new Error('Agility power not found in Alpha');
+            }
+            html += '<div class="test success">✓ Alpha.Agility power exists</div>';
+            
+            // Test 4: Check Agility t1 tier
+            if (!IncarnatePowerInfo.alpha.agility.t1) {
+                throw new Error('Agility.t1 tier not found');
+            }
+            html += '<div class="test success">✓ Alpha.Agility.t1 tier exists</div>';
+            
+            // Test 5: Check Agility t1 desc
+            if (!IncarnatePowerInfo.alpha.agility.t1.desc) {
+                throw new Error('Agility.t1.desc not found');
+            }
+            html += '<div class="test success">✓ Alpha.Agility.t1.desc exists</div>';
+            
+            // Test 6: Check Judgement slot
+            if (!IncarnatePowerInfo.judgement) {
+                throw new Error('Judgement slot not found');
+            }
+            html += '<div class="test success">✓ Judgement slot exists</div>';
+            
+            // Test 7: Check Cryonic power
+            if (!IncarnatePowerInfo.judgement.cryonic) {
+                throw new Error('Cryonic power not found in Judgement');
+            }
+            html += '<div class="test success">✓ Judgement.Cryonic power exists</div>';
+            
+            // Test 8: Check Cryonic t1
+            if (!IncarnatePowerInfo.judgement.cryonic.t1) {
+                throw new Error('Cryonic.t1 not found');
+            }
+            html += '<div class="test success">✓ Judgement.Cryonic.t1 exists</div>';
+            
+            // Test 9: Verify all slots exist
+            const slots = ['alpha', 'hybrid', 'interface', 'judgement', 'destiny', 'lore'];
+            const missingSlots = slots.filter(s => !IncarnatePowerInfo[s]);
+            if (missingSlots.length > 0) {
+                throw new Error(`Missing slots: ${missingSlots.join(', ')}`);
+            }
+            html += '<div class="test success">✓ All 6 slots exist</div>';
+            
+            // Test 10: Count powers per slot
+            let totalPowers = 0;
+            let details = '<ul>';
+            slots.forEach(slot => {
+                const powerCount = Object.keys(IncarnatePowerInfo[slot]).length;
+                totalPowers += powerCount;
+                details += `<li><strong>${slot}:</strong> ${powerCount} powers</li>`;
+            });
+            details += '</ul>';
+            html += `<div class="test success">✓ Total powers: ${totalPowers}</div>`;
+            html += details;
+            
+            // Test 11: Sample data from each slot
+            html += '<div class="test"><strong>Sample Data:</strong>';
+            html += `<p><strong>Alpha Agility t1:</strong><br/>${IncarnatePowerInfo.alpha.agility.t1.desc.substring(0, 100)}...</p>`;
+            html += `<p><strong>Judgement Cryonic t1:</strong><br/>${IncarnatePowerInfo.judgement.cryonic.t1.desc.substring(0, 100)}...</p>`;
+            html += '</div>';
+            
+        } catch (e) {
+            html += `<div class="test error">✗ Error: ${e.message}</div>`;
+            console.error('Test failed:', e);
+        }
+        
+        document.getElementById('results').innerHTML = html;
+    </script>
+</body>
+</html>

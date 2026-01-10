@@ -1,0 +1,30 @@
+{
+  "name": "Lore_Pet_Knives_LT",
+  "display_name": "Lore_Pet_Knives_LT",
+  "display_fullname": "Incarnate.Lore Pet Knives LT",
+  "display_help": "Incarnate",
+  "display_short_help": "Incarnate",
+  "available_level": [
+    0,
+    0,
+    0
+  ],
+  "source_file": "DEFS/POWERS/INCARNATE/LORE_PET_KNIVES_LT.POWERSETS",
+  "icon": "lore_pet_knives_lt_set.png",
+  "requires": "",
+  "power_names": [
+    "Incarnate.Lore_Pet_Knives_LT.Shockwave_Slice",
+    "Incarnate.Lore_Pet_Knives_LT.Wearying_Strike",
+    "Incarnate.Lore_Pet_Knives_LT.Wrathful_Blade"
+  ],
+  "power_display_names": [
+    "Shockwave Slice",
+    "Wearying Strike",
+    "Wrathful Blade"
+  ],
+  "power_short_helps": [
+    "Ranged (Cone), Light DMG(Lethal), Moderate DoT (Lethal), Chance for -Speed(All), -Recharge on Foes",
+    "Melee, Moderate DMG(Lethal), Moderate DoT (Lethal)",
+    "Melee, Light DMG(Lethal), Moderate DoT (Lethal), Heal(Self), RES(Heal,Foe), -Rec(Foe), -Regen(Foe)"
+  ]
+}
