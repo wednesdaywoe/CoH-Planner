@@ -441,9 +441,11 @@ function updateStatsDashboard() {
         label.className = 'stat-label';
         label.textContent = statDef.name;
         
-        // Apply color scheme if available
+        // Apply color scheme - use both inline styles and CSS class as backup
         if (typeof applyDashboardStatStyle === 'function') {
             applyDashboardStatStyle(label, statId);
+            // Also add the color class name for CSS-based styling as backup
+            label.className += ` ${statDef.color}`;
         } else {
             // Fallback to legacy class-based styling
             label.className += ` ${statDef.color}`;

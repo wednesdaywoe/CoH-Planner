@@ -317,9 +317,10 @@ function getDashboardStatStyle(statType) {
  * @param {string} statType - The stat type
  */
 function applyDashboardStatStyle(element, statType) {
-    const style = getDashboardStatStyle(statType);
-    element.style.color = style.color;
-    element.style.borderLeftColor = style.borderColor;
+    const color = getStatColor(statType);
+    // Use !important to ensure inline styles take precedence over CSS rules
+    element.style.setProperty('color', color, 'important');
+    element.style.borderLeftColor = color;
     element.style.borderLeftWidth = '3px';
     element.style.borderLeftStyle = 'solid';
     element.style.paddingLeft = '6px';
