@@ -359,14 +359,6 @@ function getBaselineHealth() {
  * Update baseline stats based on current build
  * Called whenever archetype or level changes
  */
-function updateBaselineStats() {
-    BaselineStats.baselineEndurance = getBaselineEndurance();
-    BaselineStats.baselineRecovery = getBaselineRecovery();
-    
-    const health = getBaselineHealth();
-    BaselineStats.baselineHealth = health.baseHealth;
-    BaselineStats.baselineMaxHealth = health.maxHealth;
-}
 
 // ============================================
 // STATS DASHBOARD UPDATE
@@ -392,15 +384,8 @@ function updateStatsDashboard() {
         const statDef = allStats[statId];
         if (!statDef) return;
         
-        // Get value from appropriate source
-        let value;
-        if (statId.startsWith('baseline')) {
-            // Get baseline stats
-            value = BaselineStats[statId] || 0;
-        } else {
-            // Get character stats (from enhancements and set bonuses)
-            value = CharacterStats[statId] || 0;
-        }
+        // Get value from CharacterStats (from enhancements and set bonuses)
+        let value = CharacterStats[statId] || 0;
         
         // Format the value
         let formattedValue;
@@ -408,29 +393,31 @@ function updateStatsDashboard() {
             // For stats that show both absolute value and percentage
             let absValue = 0;
             
-            // Calculate absolute value based on stat type
+            // Calculate absolute value based on stat type using standard CoH baselines
             if (statId === 'maxhp') {
-                // Max HP = baseline health + (baseline * percentage bonus)
-                absValue = BaselineStats.baselineMaxHealth * (1 + value / 100);
+                // Max HP = 40 baseline (at level 50) + (40 * percentage bonus)
+                const baselineMaxHP = 40;
+                absValue = baselineMaxHP * (1 + value / 100);
             } else if (statId === 'maxend') {
-                // Max Endurance = baseline endurance + (baseline * percentage bonus)
-                absValue = BaselineStats.baselineEndurance * (1 + value / 100);
+                // Max Endurance = 100 baseline + (100 * percentage bonus)
+                const baselineMaxEnd = 100;
+                absValue = baselineMaxEnd * (1 + value / 100);
             } else if (statId === 'regeneration') {
                 // Regeneration is based on 5% of max health every 12 seconds
-                // This translates to: (maxHealth * 0.05) / 12 seconds = HP/sec
-                // With percentage bonuses applied to the regeneration multiplier
-                const maxHealth = BaselineStats.baselineMaxHealth * (1 + (CharacterStats.maxhp || 0) / 100);
+                const baselineMaxHP = 40;
+                const maxHealth = baselineMaxHP * (1 + (CharacterStats.maxhp || 0) / 100);
                 const baseRegenRate = 0.05; // 5% per 12 seconds
                 const baseRegenPerSecond = (maxHealth * baseRegenRate) / 12;
                 
-                // Apply percentage bonuses to base regen rate (if any)
+                // Apply percentage bonuses
                 const bonusMultiplier = (1 + value / 100);
                 absValue = baseRegenPerSecond * bonusMultiplier;
             } else if (statId === 'recovery') {
-                // Recovery = baseline recovery + (baseline * percentage bonus)
-                absValue = BaselineStats.baselineRecovery * (1 + value / 100);
+                // Recovery = 1.0 baseline + (1.0 * percentage bonus)
+                const baselineRecovery = 1.0;
+                absValue = baselineRecovery * (1 + value / 100);
             } else if (statId === 'runspeed') {
-                // Run speed: base is 12.50 mph (City of Heroes standard), apply percentage bonus
+                // Run speed: base is 12.50 mph (City of Heroes standard)
                 const baseRunSpeed = 12.50;
                 absValue = baseRunSpeed * (1 + value / 100);
             }
@@ -441,10 +428,7 @@ function updateStatsDashboard() {
                 .replace('{value}', value.toFixed(1));
         } else {
             // Standard single value formatting
-            formattedValue = statDef.format.replace('{value}', 
-                statId.startsWith('baseline') ? value.toFixed(0) : value.toFixed(1)
-            );
-        }
+            formattedValue = statDef.format.replace('{value}', value.toFixed(1));
         
         const statItem = document.createElement('div');
         statItem.className = 'stat-item';
@@ -644,9 +628,6 @@ function calculatePoolPowerBonuses() {
  * Uses Rule of 5 system for accurate bonus tracking
  */
 function recalculateStats() {
-    // Update baseline stats first
-    updateBaselineStats();
-    
     // Reset all stats to 0
     Object.keys(CharacterStats).forEach(key => {
         CharacterStats[key] = 0;
@@ -673,25 +654,12 @@ function recalculateStats() {
         console.log('Stats recalculated (old system):', CharacterStats);
     }
     
-    // Add pool power bonuses (as multipliers to baseline)
+    // Add pool power bonuses as percentage points
     const poolBonuses = calculatePoolPowerBonuses();
-    console.log('Applying pool bonuses to CharacterStats, available BaselineStats keys:', Object.keys(BaselineStats));
     Object.entries(poolBonuses).forEach(([stat, multiplier]) => {
         if (multiplier > 0) {
-            const baselineKey = 'baseline' + stat.charAt(0).toUpperCase() + stat.slice(1);
-            console.log(`  Checking ${stat}: looking for key "${baselineKey}", exists in BaselineStats:`, BaselineStats.hasOwnProperty(baselineKey));
-            
-            if (BaselineStats.hasOwnProperty(baselineKey)) {
-                const baseline = BaselineStats[baselineKey];
-                // Apply multiplier to baseline: new value = baseline * multiplier
-                CharacterStats[stat] += (baseline * multiplier);
-                console.log(`  Applied ${stat} bonus: baseline=${baseline}, multiplier=${multiplier}, increase=${baseline * multiplier}`);
-            } else {
-                // For stats without baselines (movement, regen), apply multiplier as percentage points
-                // multiplier is already a decimal (0.2 = 20% bonus)
-                CharacterStats[stat] = (CharacterStats[stat] || 0) + (multiplier * 100);
-                console.log(`  Applied ${stat} as percentage bonus: multiplier=${multiplier}, added ${multiplier * 100}%`);
-            }
+            // Apply multiplier as percentage bonus (multiplier is a decimal like 0.2 = 20%)
+            CharacterStats[stat] = (CharacterStats[stat] || 0) + (multiplier * 100);
         }
     });
     
@@ -702,7 +670,6 @@ function recalculateStats() {
         // Handle endurance bonuses (+5, +5, etc. are absolute values)
         if (accoladeBufss.endurance > 0) {
             CharacterStats.maxend = (CharacterStats.maxend || 0) + accoladeBufss.endurance;
-            console.log(`Applied accolade endurance bonus: +${accoladeBufss.endurance}`);
         }
         
         // Handle max health bonuses (percentage bonuses)
@@ -710,14 +677,10 @@ function recalculateStats() {
             // Convert percentage bonus to percentage points (0.10 = 10%)
             const maxHealthBonus = accoladeBufss.maxHealth * 100;
             CharacterStats.maxhp = (CharacterStats.maxhp || 0) + maxHealthBonus;
-            console.log(`Applied accolade max health bonus: +${maxHealthBonus}%`);
         }
     }
     
     // TODO: Add enhancement bonuses from slotted enhancements
-    
-    // Log baseline stats for debugging
-    console.log('Baseline Stats:', BaselineStats);
     
     // Update dashboard display
     updateStatsDashboard();
