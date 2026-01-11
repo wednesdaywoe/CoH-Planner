@@ -166,10 +166,17 @@ body {
     overflow-y: auto;
     margin-bottom: 12px;
     flex: 1;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    align-content: start;
+    padding: 0 8px;
 }
 
 .pool-section {
-    margin-bottom: 16px;
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
 }
 
 .pool-section:last-child {
@@ -178,27 +185,29 @@ body {
 
 .pool-section-header {
     font-weight: 600;
-    font-size: 12px;
+    font-size: 11px;
     color: var(--accent);
     text-transform: uppercase;
     letter-spacing: 0.05em;
     margin-bottom: 6px;
     padding-bottom: 3px;
     border-bottom: 1px solid var(--border);
+    border-radius: 3px 3px 0 0;
+    padding: 4px 4px 3px 4px;
 }
 
 .pool-power-option {
     background: var(--bg-tertiary);
     border: 1px solid var(--border);
     border-radius: 4px;
-    padding: 8px 10px;
+    padding: 2px 4px;
     margin-bottom: 4px;
     cursor: pointer;
     transition: all 0.15s;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    gap: 10px;
+    gap: 6px;
+    min-height: 20px;
 }
 
 .pool-power-option:hover:not(.disabled) {
@@ -219,21 +228,25 @@ body {
 
 .pool-power-name {
     font-weight: 500;
-    font-size: 12px;
-    margin-bottom: 2px;
+    font-size: 11px;
+    margin-bottom: 0;
 }
 
 .pool-power-desc {
-    font-size: 10px;
+    font-size: 9px;
     color: var(--text-secondary);
-    line-height: 1.3;
+    line-height: 1.2;
+}
+
+.pool-modal-list .pool-power-level {
+    display: none;
 }
 
 .pool-power-level {
-    font-size: 10px;
+    font-size: 9px;
     color: var(--text-secondary);
     white-space: nowrap;
-    text-align: right;
+    text-align: left;
 }
 
 .pool-power-group {

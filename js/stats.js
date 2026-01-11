@@ -640,6 +640,71 @@ function calculatePoolPowerBonuses() {
  * Recalculate all character stats from enhancements and set bonuses
  * Uses Rule of 5 system for accurate bonus tracking
  */
+function calculateActivePowerBufsBonuses() {
+    const bonuses = {};
+    
+    // Check primary powers
+    if (Build.primary && Build.primary.powers) {
+        Build.primary.powers.forEach(power => {
+            if (power.isActive && power.effects) {
+                const effects = power.effects;
+                
+                // Add tohitBuff as percentage bonus
+                if (effects.tohitBuff !== undefined && effects.tohitBuff !== null) {
+                    bonuses.tohit = (bonuses.tohit || 0) + (effects.tohitBuff * 100);
+                }
+                
+                // Add damageBuff as percentage bonus
+                if (effects.damageBuff !== undefined && effects.damageBuff !== null) {
+                    bonuses.damage = (bonuses.damage || 0) + (effects.damageBuff * 100);
+                }
+                
+                // Add defenseBuff as percentage bonus
+                if (effects.defenseBuff !== undefined && effects.defenseBuff !== null) {
+                    bonuses.defense = (bonuses.defense || 0) + (effects.defenseBuff * 100);
+                }
+                
+                // Add resistanceBuff as percentage bonus
+                if (effects.resistanceBuff !== undefined && effects.resistanceBuff !== null) {
+                    bonuses.resistance = (bonuses.resistance || 0) + (effects.resistanceBuff * 100);
+                }
+            }
+        });
+    }
+    
+    // Check secondary powers
+    if (Build.secondary && Build.secondary.powers) {
+        Build.secondary.powers.forEach(power => {
+            if (power.isActive && power.effects) {
+                const effects = power.effects;
+                
+                // Add tohitBuff as percentage bonus
+                if (effects.tohitBuff !== undefined && effects.tohitBuff !== null) {
+                    bonuses.tohit = (bonuses.tohit || 0) + (effects.tohitBuff * 100);
+                }
+                
+                // Add damageBuff as percentage bonus
+                if (effects.damageBuff !== undefined && effects.damageBuff !== null) {
+                    bonuses.damage = (bonuses.damage || 0) + (effects.damageBuff * 100);
+                }
+                
+                // Add defenseBuff as percentage bonus
+                if (effects.defenseBuff !== undefined && effects.defenseBuff !== null) {
+                    bonuses.defense = (bonuses.defense || 0) + (effects.defenseBuff * 100);
+                }
+                
+                // Add resistanceBuff as percentage bonus
+                if (effects.resistanceBuff !== undefined && effects.resistanceBuff !== null) {
+                    bonuses.resistance = (bonuses.resistance || 0) + (effects.resistanceBuff * 100);
+                }
+            }
+        });
+    }
+    
+    console.log('Active power buff bonuses:', bonuses);
+    return bonuses;
+}
+
 function recalculateStats() {
     // Reset all stats to 0
     Object.keys(CharacterStats).forEach(key => {
@@ -673,6 +738,14 @@ function recalculateStats() {
         if (multiplier > 0) {
             // Apply multiplier as percentage bonus (multiplier is a decimal like 0.2 = 20%)
             CharacterStats[stat] = (CharacterStats[stat] || 0) + (multiplier * 100);
+        }
+    });
+    
+    // Add active power buff bonuses
+    const activePowerBuffs = calculateActivePowerBufsBonuses();
+    Object.entries(activePowerBuffs).forEach(([stat, value]) => {
+        if (value > 0) {
+            CharacterStats[stat] = (CharacterStats[stat] || 0) + value;
         }
     });
     

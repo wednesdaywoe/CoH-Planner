@@ -906,8 +906,8 @@ body:not(.hints-enabled) .main-hint-image {
     background: var(--bg-secondary);
     border: 1px solid var(--border);
     border-radius: 8px;
-    width: 90%;
-    max-width: 1000px;
+    width: 95%;
+    max-width: 1400px;
     max-height: 80vh;
     overflow: hidden;
     display: flex;
@@ -923,11 +923,19 @@ body:not(.hints-enabled) .main-hint-image {
     padding: 24px;
 }
 
+.simple-modal-content.pool-modal-content {
+    padding: 16px 8px;
+}
+
 .simple-modal-content h3 {
     font-size: 18px;
     font-weight: 600;
     color: var(--text-primary);
     margin: 0 0 12px 0;
+}
+
+.pool-modal-content h3 {
+    padding: 0 16px;
 }
 
 .simple-modal-content p {
@@ -942,6 +950,10 @@ body:not(.hints-enabled) .main-hint-image {
     margin: 16px 0;
 }
 
+.pool-modal-content > div:not(:first-child):not(h3):not(p):not(:last-child) {
+    margin: 8px 0;
+}
+
 .simple-modal-content button {
     background: var(--accent);
     color: white;
@@ -952,6 +964,11 @@ body:not(.hints-enabled) .main-hint-image {
     font-weight: 600;
     cursor: pointer;
     transition: all 0.15s ease;
+    margin: 0 8px;
+}
+
+.pool-modal-content button {
+    margin: 8px 8px 0 8px;
 }
 
 .simple-modal-content button:hover {

@@ -1098,12 +1098,12 @@ function openPoolPowerModal() {
     listContainer.className = 'pool-modal-list';
     
     // Build pool sections (skip Fitness since those are inherent powers)
-    Object.values(POWER_POOLS).forEach(pool => {
-        // Skip Fitness pool - those powers are inherent and auto-added
-        if (pool.id === 'fitness') {
-            return;
-        }
-        
+    // Sort pools alphabetically by name
+    const poolsToShow = Object.values(POWER_POOLS)
+        .filter(pool => pool.id !== 'fitness' && pool.id !== 'gadgetry' && pool.id !== 'utility_belt')
+        .sort((a, b) => a.name.localeCompare(b.name));
+    
+    poolsToShow.forEach(pool => {
         const poolSection = document.createElement('div');
         poolSection.className = 'pool-section';
         

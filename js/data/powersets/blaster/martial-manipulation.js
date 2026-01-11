@@ -6,9 +6,9 @@
  */
 
 const BLASTER_MARTIAL_MANIPULATION_POWERSET = {
-    name: "Martial Manipulation",
+    name: "Martial Combat",
     category: "Unknown",
-    description: "Martial Manipulation powerset",
+    description: "Martial Combat powerset",
     icon: "martial-manipulation_set.png",
     powers: [
         {

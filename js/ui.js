@@ -162,10 +162,22 @@ function createFilledSlotElement(enhancement, powerName, slotIndex) {
     slot.oncontextmenu = (e) => {
         e.preventDefault();
         if (e.shiftKey) {
-            // Shift + Right click: Remove slot entirely
-            removeSlotFromPower(powerName, slotIndex);
-            updatePowerSlots(powerName);
-            recalculateStats();
+            // Shift + Right click: Remove all enhancements from this power
+            const result = findPower(powerName);
+            if (result) {
+                // Clear all slots but keep the slots themselves
+                result.power.slots.forEach((slotEnhancement, index) => {
+                    if (slotEnhancement && slotEnhancement.type === 'io-set') {
+                        untrackSetBonus(slotEnhancement.setId, slotEnhancement.pieceNum);
+                    }
+                    result.power.slots[index] = null;
+                });
+                updatePowerSlots(powerName);
+                recalculateStats();
+                if (typeof updateSlotCounter === 'function') {
+                    updateSlotCounter();
+                }
+            }
         } else {
             // Normal right click: Remove enhancement but keep slot
             const result = findPower(powerName);
@@ -176,6 +188,9 @@ function createFilledSlotElement(enhancement, powerName, slotIndex) {
                 }
                 updatePowerSlots(powerName);
                 recalculateStats();
+                if (typeof updateSlotCounter === 'function') {
+                    updateSlotCounter();
+                }
             }
         }
     };
@@ -215,16 +230,32 @@ function createEmptySlotElement(powerName, slotIndex) {
         }
     };
     
-    // Right click: Remove slot (shift) or do nothing (normal)
+    // Right click: Remove slot (normal) or remove all added slots (shift)
     slot.oncontextmenu = (e) => {
         e.preventDefault();
         if (e.shiftKey) {
-            // Shift + Right click: Remove slot entirely
+            // Shift + Right click: Remove all added slots, keep default slot
+            const result = findPower(powerName);
+            if (result) {
+                // Remove all slots except the first one (default slot)
+                while (result.power.slots.length > 1) {
+                    result.power.slots.pop();
+                }
+                updatePowerSlots(powerName);
+                recalculateStats();
+                if (typeof updateSlotCounter === 'function') {
+                    updateSlotCounter();
+                }
+            }
+        } else {
+            // Normal right click: Remove this slot
             removeSlotFromPower(powerName, slotIndex);
             updatePowerSlots(powerName);
             recalculateStats();
+            if (typeof updateSlotCounter === 'function') {
+                updateSlotCounter();
+            }
         }
-        // Normal right click on empty slot: Do nothing
     };
     
     return slot;
