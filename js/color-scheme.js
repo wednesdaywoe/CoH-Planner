@@ -34,6 +34,10 @@ const COLOR_SCHEME = {
         defnegative: '#832AFF',
         defpsionic: '#832AFF',
         deftoxic: '#832AFF',
+        // Defense combined types shortcuts
+        defsl: '#832AFF',               // S/L Defense
+        deffc: '#832AFF',               // F/C Defense
+        defen: '#832AFF',               // E/N Defense
         
         // Damage (Red)
         damage: '#FF4757',
@@ -59,6 +63,10 @@ const COLOR_SCHEME = {
         resnegative: '#FF7327',
         respsionic: '#FF7327',
         restoxic: '#FF7327',
+        // Resistance combined types shortcuts
+        ressl: '#FF7327',               // S/L Resistance
+        resfc: '#FF7327',               // F/C Resistance
+        resen: '#FF7327',               // E/N Resistance
         
         // Endurance & Recovery (Light Blue) - All types
         endurance: '#5AC8FA',
