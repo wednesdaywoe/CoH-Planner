@@ -429,6 +429,7 @@ function updateStatsDashboard() {
         } else {
             // Standard single value formatting
             formattedValue = statDef.format.replace('{value}', value.toFixed(1));
+        }
         
         const statItem = document.createElement('div');
         statItem.className = 'stat-item';

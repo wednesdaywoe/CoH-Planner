@@ -556,7 +556,6 @@ function generateImprovedPowerTooltipHTML(power, basePower, showModified = false
                     else if (key === 'damageBuff') enhancedValue = baseValue * (1 + (bonuses.damageBuff || 0));
                     else enhancedValue = baseValue;
                     
-                    const stats = CharacterStats || {};
                     finalValue = enhancedValue;
                 }
 
