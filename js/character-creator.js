@@ -335,10 +335,16 @@ function updateAvailableSecondaryPowers(powerset) {
     header.textContent = `${powerset.name} (Secondary)`;
     container.appendChild(header);
     
+    // DEBUG
+    console.log(`[DEBUG] updateAvailableSecondaryPowers: ${powerset.name}`);
+    console.log(`[DEBUG] Build.primary.powers.length: ${Build.primary.powers.length}`);
+    console.log(`[DEBUG] Build.secondary.powers.length: ${Build.secondary.powers.length}`);
+    
     // Add powers
     powerset.powers.forEach(power => {
         const isSelected = Build.secondary.powers.some(p => p.name === power.name);
         const canSelect = canSelectSecondaryPower(power);
+        console.log(`[DEBUG] Power: ${power.name}, canSelect: ${canSelect}, isSelected: ${isSelected}`);
         
         const powerElement = document.createElement('div');
         powerElement.className = 'power-item available-power';
