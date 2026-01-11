@@ -12,23 +12,6 @@ const BLASTER_MARTIAL_MANIPULATION_POWERSET = {
     icon: "martial-manipulation_set.png",
     powers: [
         {
-            name: "Reach for the Limit",
-            available: -1,
-            tier: 2,
-            maxSlots: 6,
-            allowedEnhancements: ["Damage"],
-            allowedSetCategories: [],
-            description: "Greatly boosts your attacks for a few seconds. Slightly increases chance to hit.",
-            shortHelp: "Self +DMG, +To Hit",
-            icon: "martialmanipulation_reachforthelimit.png",
-            powerType: "Global Enhancement",
-            targetType: "Self",
-            effectArea: "SingleTarget",
-            effects: {
-                accuracy: 1.0
-            }
-        },
-        {
             name: "Ki Push",
             available: 0,
             tier: 1,
