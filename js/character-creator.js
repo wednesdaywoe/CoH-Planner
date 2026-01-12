@@ -1738,7 +1738,7 @@ function selectEpicPoolPower(powerData, poolId) {
         powerSet: poolData.name,
         category: 'epic',
         poolId: poolId,
-        slots: [null, null, null, null, null, null], // Start with 6 empty slots
+        slots: [null], // Start with 1 empty slot
         maxSlots: 6,
         allowedEnhancements: powerData.allowedEnhancements,
         effects: powerData.effects,

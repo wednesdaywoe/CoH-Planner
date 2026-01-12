@@ -1,3 +1,46 @@
+// Returns the number of enhancement slots remaining to assign (0 if full)
+function getSlotsRemaining() {
+    // Calculate total additional slots used (beyond the 1 default per power)
+    let totalSlotCount = 0;
+    let totalPowerCount = 0;
+    if (Build.primary.powers) {
+        Build.primary.powers.forEach(power => {
+            totalSlotCount += power.slots ? power.slots.length : 0;
+            totalPowerCount++;
+        });
+    }
+    if (Build.secondary.powers) {
+        Build.secondary.powers.forEach(power => {
+            totalSlotCount += power.slots ? power.slots.length : 0;
+            totalPowerCount++;
+        });
+    }
+    if (Build.pools) {
+        Build.pools.forEach(pool => {
+            if (pool.powers) {
+                pool.powers.forEach(power => {
+                    totalSlotCount += power.slots ? power.slots.length : 0;
+                    totalPowerCount++;
+                });
+            }
+        });
+    }
+    if (Build.epicPool && Build.epicPool.powers) {
+        Build.epicPool.powers.forEach(power => {
+            totalSlotCount += power.slots ? power.slots.length : 0;
+            totalPowerCount++;
+        });
+    }
+    if (Build.inherents) {
+        Build.inherents.forEach(power => {
+            totalSlotCount += power.slots ? power.slots.length : 0;
+            totalPowerCount++;
+        });
+    }
+    const additionalSlotsUsed = totalSlotCount - totalPowerCount;
+    const maxAdditionalSlots = 67;
+    return Math.max(0, maxAdditionalSlots - Math.max(0, additionalSlotsUsed));
+}
 /**
  * City of Heroes Planner - UI Updates
  * 
@@ -110,8 +153,9 @@ function updatePowerSlots(powerName) {
         slotsContainer.appendChild(slot);
     });
     
-    // Add ghost + button if not at max slots
-    if (power.slots.length < power.maxSlots) {
+    // Add ghost + button if not at max slots (check both per-power and global limits)
+    const slotsRemaining = typeof getSlotsRemaining === 'function' ? getSlotsRemaining() : 67;
+    if (power.slots.length < power.maxSlots && slotsRemaining > 0) {
         const addButton = createAddSlotButton(powerName);
         slotsContainer.appendChild(addButton);
     }
@@ -355,9 +399,13 @@ function handleSlotDragMove(e) {
     
     // Each ~35 pixels of movement adds another slot (roughly the height of a slot + gap)
     const additionalSlots = Math.floor(totalDistance / 35);
-    
-    // Calculate max slots that can be added
-    const maxCanAdd = power.maxSlots - power.slots.length;
+
+    // Calculate max slots that can be added (check both per-power and global limits)
+    const globalSlotsRemaining = typeof getSlotsRemaining === 'function' ? getSlotsRemaining() : 67;
+    const maxCanAdd = Math.min(
+        power.maxSlots - power.slots.length,
+        globalSlotsRemaining
+    );
     SlotDragState.numSlotsToAdd = Math.min(1 + additionalSlots, maxCanAdd);
     
     // Visual feedback - update tooltip
@@ -381,9 +429,13 @@ function updateSlotPreview(numSlots) {
     if (!result) return;
     
     const power = result.power;
-    
-    // Cap preview to actual max addable slots (don't show slots beyond maxSlots)
-    const maxCanAdd = power.maxSlots - power.slots.length;
+
+    // Cap preview to actual max addable slots (check both per-power and global limits)
+    const globalSlotsRemaining = typeof getSlotsRemaining === 'function' ? getSlotsRemaining() : 67;
+    const maxCanAdd = Math.min(
+        power.maxSlots - power.slots.length,
+        globalSlotsRemaining
+    );
     const slotsToPreview = Math.min(numSlots, maxCanAdd);
     
     // Remove old preview slots
@@ -477,26 +529,28 @@ function addMultipleSlots(powerName, numSlots) {
     
     const power = result.power;
     const maxCanAdd = power.maxSlots - power.slots.length;
-    const slotsToAdd = Math.min(numSlots, maxCanAdd);
-    
+    // Also check global slots remaining
+    const slotsRemaining = typeof getSlotsRemaining === 'function' ? getSlotsRemaining() : 67;
+    const slotsToAdd = Math.min(numSlots, maxCanAdd, slotsRemaining);
+
     if (slotsToAdd <= 0) {
-        console.log(`${powerName} already has maximum slots`);
+        alert('No enhancement slots remaining to assign.');
         return;
     }
-    
+
     // Add multiple empty slots
     for (let i = 0; i < slotsToAdd; i++) {
         power.slots.push(null);
     }
-    
+
     // Update display
     updatePowerSlots(powerName);
-    
+
     // Update slot counter
     if (typeof updateSlotCounter === 'function') {
         updateSlotCounter();
     }
-    
+
     console.log(`Added ${slotsToAdd} slot(s) to ${powerName} (${power.slots.length}/${power.maxSlots})`);
 }
 
@@ -844,13 +898,13 @@ function updatePoolCounter() {
  * Update slot counter display in the resource badge
  */
 function updateSlotCounter() {
-    const badge = document.querySelector('.resource-badge span');
+    const badge = document.getElementById('slotCounter');
     if (!badge) return;
-    
+
     // Calculate total additional slots used (beyond the 1 default per power)
     let totalSlotCount = 0;
     let totalPowerCount = 0;
-    
+
     // Count slots in primary powers
     if (Build.primary.powers) {
         Build.primary.powers.forEach(power => {
@@ -858,7 +912,7 @@ function updateSlotCounter() {
             totalPowerCount++;
         });
     }
-    
+
     // Count slots in secondary powers
     if (Build.secondary.powers) {
         Build.secondary.powers.forEach(power => {
@@ -866,7 +920,7 @@ function updateSlotCounter() {
             totalPowerCount++;
         });
     }
-    
+
     // Count slots in pool powers
     if (Build.pools) {
         Build.pools.forEach(pool => {
@@ -878,7 +932,7 @@ function updateSlotCounter() {
             }
         });
     }
-    
+
     // Count slots in epic pool
     if (Build.epicPool && Build.epicPool.powers) {
         Build.epicPool.powers.forEach(power => {
@@ -886,7 +940,7 @@ function updateSlotCounter() {
             totalPowerCount++;
         });
     }
-    
+
     // Count slots in inherent powers
     if (Build.inherents) {
         Build.inherents.forEach(power => {
@@ -894,14 +948,14 @@ function updateSlotCounter() {
             totalPowerCount++;
         });
     }
-    
+
     // Each power comes with 1 default slot (doesn't count toward the 67)
     // So additional slots used = total slots - number of powers
     const additionalSlotsUsed = totalSlotCount - totalPowerCount;
     const maxAdditionalSlots = 67;
     const slotsRemaining = maxAdditionalSlots - Math.max(0, additionalSlotsUsed);
     badge.textContent = `${slotsRemaining}/${maxAdditionalSlots}`;
-    
+
     // Also update power counter
     updatePowerCounter();
 }

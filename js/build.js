@@ -197,14 +197,20 @@ function addSlotToPower(powerName) {
         console.error(`Power ${powerName} already has maximum slots`);
         return false;
     }
-    
+
+    // Check if any slots remain globally
+    if (typeof getSlotsRemaining === 'function' && getSlotsRemaining() <= 0) {
+        alert('No enhancement slots remaining to assign.');
+        return false;
+    }
+
     power.slots.push(null);
-    
+
     // Update slot counter
     if (typeof updateSlotCounter === 'function') {
         updateSlotCounter();
     }
-    
+
     console.log(`Added slot to ${powerName} (${power.slots.length}/${power.maxSlots})`);
     return true;
 }

@@ -58,8 +58,9 @@ function updatePowerSlots(powerName) {
         slotsContainer.appendChild(slotElement);
     });
     
-    // Add ghost slots if more can be added
-    if (power.slots.length < power.maxSlots) {
+    // Add ghost slots if more can be added (check both per-power and global limits)
+    const slotsRemaining = typeof getSlotsRemaining === 'function' ? getSlotsRemaining() : 67;
+    if (power.slots.length < power.maxSlots && slotsRemaining > 0) {
         const ghostSlot = createGhostSlot(power.slots.length, power);
         slotsContainer.appendChild(ghostSlot);
     }
@@ -465,28 +466,38 @@ function addSlotToPower(powerName) {
 function addMultipleSlots(powerName, numSlots) {
     const power = findPowerInBuild(powerName);
     if (!power) return;
-    
-    const maxCanAdd = power.maxSlots - power.slots.length;
+
+    // Check global slot limit
+    const globalSlotsRemaining = typeof getSlotsRemaining === 'function' ? getSlotsRemaining() : 67;
+
+    const maxCanAdd = Math.min(
+        power.maxSlots - power.slots.length,
+        globalSlotsRemaining
+    );
     const slotsToAdd = Math.min(numSlots, maxCanAdd);
-    
+
     if (slotsToAdd <= 0) {
-        console.log(`${powerName} already has maximum slots`);
+        if (globalSlotsRemaining <= 0) {
+            alert('No enhancement slots remaining to assign.');
+        } else {
+            console.log(`${powerName} already has maximum slots`);
+        }
         return;
     }
-    
+
     // Add multiple empty slots
     for (let i = 0; i < slotsToAdd; i++) {
         power.slots.push(null);
     }
-    
+
     // Update display
     updatePowerSlots(powerName);
-    
+
     // Update slot counter
     if (typeof updateSlotCounter === 'function') {
         updateSlotCounter();
     }
-    
+
     console.log(`Added ${slotsToAdd} slot(s) to ${powerName} (${power.slots.length}/${power.maxSlots})`);
 }
 
