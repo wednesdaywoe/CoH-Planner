@@ -355,41 +355,22 @@ function generateImprovedPowerTooltipHTML(power, basePower, showModified = false
                 // Calculate enhanced and final values if showing modified
                 let enhancedValue = baseValue;
                 let finalValue = baseValue;
-                
-                if (showModified && power && typeof calculatePowerEnhancementBonuses === 'function') {
-                    // Get enhancement bonus for this stat
-                    const bonuses = calculatePowerEnhancementBonuses(power);
-                    
-                    // Apply enhancement bonus
-                    if (enhClass === 'Healing') {
-                        enhancedValue = baseValue * (1 + (bonuses.damage || 0));
-                    } else if (enhClass === 'Accuracy') {
-                        enhancedValue = baseValue * (1 + (bonuses.accuracy || 0));
-                    } else if (enhClass === 'Recharge') {
-                        enhancedValue = baseValue / (1 + (bonuses.recharge || 0));
-                    } else if (enhClass === 'EnduranceReduction') {
-                        enhancedValue = baseValue / (1 + (bonuses.endurance || 0));
-                    } else if (enhClass === 'Range') {
-                        enhancedValue = baseValue * (1 + (bonuses.range || 0));
-                    } else if (enhClass === 'ToHitDebuff') {
-                        enhancedValue = baseValue * (1 + (bonuses.tohitDebuff || 0));
-                    } else if (enhClass === 'DefenseDebuff') {
-                        enhancedValue = baseValue * (1 + (bonuses.defenseDebuff || 0));
-                    } else if (enhClass === 'ToHitBuff') {
-                        enhancedValue = baseValue * (1 + (bonuses.tohitBuff || 0));
-                    } else if (enhClass === 'DamageBuff') {
-                        enhancedValue = baseValue * (1 + (bonuses.damageBuff || 0));
-                    } else if (enhClass === 'DefenseBuff') {
-                        enhancedValue = baseValue * (1 + (bonuses.defenseBuff || 0));
-                    } else if (enhClass === 'Hold' || enhClass === 'Immob' || enhClass === 'Stun' || enhClass === 'Sleep' || enhClass === 'Confuse' || enhClass === 'Fear') {
-                        // Mez durations - use the specific mez type bonus
-                        const mezKey = enhClass.toLowerCase();
-                        enhancedValue = baseValue * (1 + (bonuses[mezKey] || 0));
+
+                if (showModified && power && typeof calculatePowerStats === 'function') {
+                    // Use the comprehensive power stats calculator
+                    const powerStats = calculatePowerStats(power);
+
+                    // Get the stat key from the enhancement class
+                    const statKey = statInfo.key;
+
+                    if (powerStats[statKey] && typeof powerStats[statKey] === 'object') {
+                        const stat = powerStats[statKey];
+
+                        // Use calculated values if available
+                        if (stat.base !== undefined) baseValue = stat.base;
+                        if (stat.enhanced !== undefined) enhancedValue = stat.enhanced;
+                        if (stat.final !== undefined) finalValue = stat.final;
                     }
-                    
-                    // Apply global bonuses for final value (if CharacterStats available)
-                    // CharacterStats is defined in stats.js but may not be accessible here
-                    finalValue = enhancedValue; // Default to enhanced value without global bonuses
                 }
                 
                 statsToShow.push({
@@ -463,21 +444,16 @@ function generateImprovedPowerTooltipHTML(power, basePower, showModified = false
 
                 let enhancedValue = baseValue;
                 let finalValue = baseValue;
-                if (showModified && power && typeof calculatePowerEnhancementBonuses === 'function') {
-                    const bonuses = calculatePowerEnhancementBonuses(power);
-                    // Try to apply a sensible mapping from key to bonus
-                    if (key === 'accuracy') enhancedValue = baseValue * (1 + (bonuses.accuracy || 0));
-                    else if (key === 'recharge') enhancedValue = baseValue / (1 + (bonuses.recharge || 0));
-                    else if (key === 'endurance') enhancedValue = baseValue / (1 + (bonuses.endurance || 0));
-                    else if (key === 'range') enhancedValue = baseValue * (1 + (bonuses.range || 0));
-                    else if (key === 'tohitBuff') enhancedValue = baseValue * (1 + (bonuses.tohitBuff || 0));
-                    else if (key === 'damageBuff') enhancedValue = baseValue * (1 + (bonuses.damageBuff || 0));
+                if (showModified && power && typeof calculatePowerStats === 'function') {
+                    // Use the comprehensive power stats calculator
+                    const powerStats = calculatePowerStats(power);
 
-                    // Apply global stats for final value where applicable
-                    const stats = CharacterStats || {};
-                    if (key === 'accuracy') finalValue = enhancedValue * (1 + (stats.accuracy || 0) / 100);
-                    else if (key === 'recharge') finalValue = enhancedValue / (1 + (stats.recharge || 0) / 100);
-                    else finalValue = enhancedValue;
+                    if (powerStats[key] && typeof powerStats[key] === 'object') {
+                        const stat = powerStats[key];
+                        if (stat.base !== undefined) baseValue = stat.base;
+                        if (stat.enhanced !== undefined) enhancedValue = stat.enhanced;
+                        if (stat.final !== undefined) finalValue = stat.final;
+                    }
                 }
 
                 fallbackStats.push({
@@ -549,14 +525,17 @@ function generateImprovedPowerTooltipHTML(power, basePower, showModified = false
 
                 let enhancedValue = baseValue;
                 let finalValue = baseValue;
-                
-                if (showModified && power && typeof calculatePowerEnhancementBonuses === 'function') {
-                    const bonuses = calculatePowerEnhancementBonuses(power);
-                    if (key === 'tohitBuff') enhancedValue = baseValue * (1 + (bonuses.tohitBuff || 0));
-                    else if (key === 'damageBuff') enhancedValue = baseValue * (1 + (bonuses.damageBuff || 0));
-                    else enhancedValue = baseValue;
-                    
-                    finalValue = enhancedValue;
+
+                if (showModified && power && typeof calculatePowerStats === 'function') {
+                    // Use the comprehensive power stats calculator
+                    const powerStats = calculatePowerStats(power);
+
+                    if (powerStats[key] && typeof powerStats[key] === 'object') {
+                        const stat = powerStats[key];
+                        if (stat.base !== undefined) baseValue = stat.base;
+                        if (stat.enhanced !== undefined) enhancedValue = stat.enhanced;
+                        if (stat.final !== undefined) finalValue = stat.final;
+                    }
                 }
 
                 extraStats.push({
