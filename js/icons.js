@@ -210,22 +210,41 @@ function getEnhancementIcon(enhancement) {
         return null;
     }
     
-    // IO Set - Use pre-composed icon
+    // IO Set - Use pre-composed icon (unless attuned, then force layered to show catalyzed overlay)
     if (enhancement.type === 'io-set') {
-        // Try hardcoded mapping first
+        // Get the set-specific icon file
         let iconFile = IO_SET_ICONS[enhancement.setId];
-        
+
         // If not found, get from IO set data
         if (!iconFile && IO_SETS && IO_SETS[enhancement.setId]) {
             iconFile = IO_SETS[enhancement.setId].icon;
         }
-        
+
         // Normalize icon name for case-sensitivity issues
         if (iconFile) {
             iconFile = normalizeIconName(iconFile);
         }
-        
-        // If icon found, return it (will check if file exists in createEnhancementIconElement)
+
+        console.log('=== ICON RENDERING - IO Set ===');
+        console.log('Enhancement:', enhancement.setName, enhancement.pieceName);
+        console.log('enhancement.attuned:', enhancement.attuned);
+        console.log('iconFile:', iconFile);
+
+        // If attuned, use layered approach with the set-specific icon and catalyzed overlay
+        if (enhancement.attuned && iconFile) {
+            console.log('Using layered icon with catalyzed overlay');
+            console.log('================================');
+            return {
+                type: 'layered',
+                base: `img/Enhancements/${iconFile}`,
+                overlay: 'img/Overlay/catalyzed_overlay_placeholder.png'
+            };
+        }
+
+        console.log('Using standard single icon (not attuned)');
+        console.log('================================');
+
+        // If icon found and not attuned, return single icon
         if (iconFile) {
             return {
                 type: 'single',
@@ -235,13 +254,14 @@ function getEnhancementIcon(enhancement) {
             };
         }
         
-        // No icon specified - use layered approach with IO overlay
+        // No icon specified - use layered approach with IO overlay (or catalyzed if attuned)
         console.warn('No icon specified for set:', enhancement.setId, '- using layered approach');
         const baseIcon = getBaseIconForSet(enhancement);
+        const overlayPath = enhancement.attuned ? 'img/Overlay/catalyzed_overlay_placeholder.png' : 'img/Overlay/IO.png';
         return {
             type: 'layered',
             base: `img/Enhancements/${baseIcon}`,
-            overlay: 'img/Overlay/IO.png'
+            overlay: overlayPath
         };
     }
     
@@ -365,12 +385,12 @@ function createEnhancementIconElement(enhancement) {
 function createLayeredIconFallback(enhancement) {
     const container = document.createElement('div');
     container.className = 'enhancement-icon-layered';
-    
+
     let baseIcon, overlayPath;
-    
+
     if (enhancement.type === 'io-set') {
         baseIcon = getBaseIconForSet(enhancement);
-        overlayPath = 'img/Overlay/IO.png';
+        overlayPath = enhancement.attuned ? 'img/Overlay/catalyzed_overlay_placeholder.png' : 'img/Overlay/IO.png';
     } else if (enhancement.type === 'hamidon') {
         baseIcon = getBaseIconForHamidon(enhancement);
         overlayPath = 'img/Overlay/HO.png';

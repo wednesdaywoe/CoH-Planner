@@ -1024,3 +1024,68 @@ body:not(.hints-enabled) .main-hint-image {
 .switch.stat-toggle-sleep input:checked + .slider { background-color: var(--stat-sleep); }
 .switch.stat-toggle-confuse input:checked + .slider { background-color: var(--stat-confuse); }
 .switch.stat-toggle-fear input:checked + .slider { background-color: var(--stat-fear); }
+
+/* ============================================
+   ATTUNEMENT TOGGLE
+   ============================================ */
+
+.modal-header-controls {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.attunement-toggle-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    user-select: none;
+    font-size: 13px;
+    color: var(--text-secondary);
+    transition: color 0.2s ease;
+}
+
+.attunement-toggle-label:hover {
+    color: var(--text-primary);
+}
+
+.attunement-toggle-label input[type="checkbox"] {
+    display: none;
+}
+
+.toggle-slider {
+    position: relative;
+    width: 40px;
+    height: 20px;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    transition: all 0.2s ease;
+}
+
+.toggle-slider::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 14px;
+    height: 14px;
+    background: var(--text-secondary);
+    border-radius: 50%;
+    transition: all 0.2s ease;
+}
+
+.attunement-toggle-label input:checked + .toggle-slider {
+    background: var(--accent);
+    border-color: var(--accent);
+}
+
+.attunement-toggle-label input:checked + .toggle-slider::after {
+    left: 22px;
+    background: white;
+}
+
+.toggle-text {
+    font-weight: 500;
+}

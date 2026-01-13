@@ -660,9 +660,10 @@ function addEnhancement(setId, pieceNum) {
         setName: set.name,
         pieceName: piece.name,
         values: piece.values,
-        unique: piece.unique || false
+        unique: piece.unique || false,
+        attuned: AppState.attunementEnabled || false
     });
-    
+
     // Add to build
     const success = addEnhancementToPower(AppState.currentPowerName, AppState.currentSlotIndex, enhancement);
     

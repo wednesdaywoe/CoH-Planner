@@ -579,7 +579,7 @@ function smartAddEnhancement(powerName, slotIndex) {
     
     if (firstEnhancement.type === 'io-set') {
         // Find next piece from the set that isn't slotted yet
-        smartAddSetPiece(powerName, slotIndex, firstEnhancement.setId, power);
+        smartAddSetPiece(powerName, slotIndex, firstEnhancement.setId, power, firstEnhancement);
     } else {
         // Clone the enhancement (Common IO, Hamidon, or Origin)
         cloneEnhancement(powerName, slotIndex, firstEnhancement);
@@ -592,8 +592,9 @@ function smartAddEnhancement(powerName, slotIndex) {
  * @param {number} slotIndex - Target slot index
  * @param {string} setId - Set ID
  * @param {Object} power - Power object
+ * @param {Object} template - Source enhancement to copy attuned state from
  */
-function smartAddSetPiece(powerName, slotIndex, setId, power) {
+function smartAddSetPiece(powerName, slotIndex, setId, power, template) {
     const set = IO_SETS[setId];
     if (!set) return;
     
@@ -613,14 +614,15 @@ function smartAddSetPiece(powerName, slotIndex, setId, power) {
         return;
     }
     
-    // Create and add the enhancement
+    // Create and add the enhancement (preserve attuned state from template)
     const enhancement = createEnhancement('io-set', {
         setId: setId,
         pieceNum: nextPiece.num,
         setName: set.name,
         pieceName: nextPiece.name,
         values: nextPiece.values,
-        unique: nextPiece.unique || false
+        unique: nextPiece.unique || false,
+        attuned: template.attuned || false
     });
     
     if (addEnhancementToPower(powerName, slotIndex, enhancement)) {

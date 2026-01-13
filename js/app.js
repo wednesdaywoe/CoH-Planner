@@ -20,12 +20,15 @@ const AppState = {
     
     // IO level settings
     globalIOLevel: 50,
-    
+
     // Enhancement type selections
     selectedGenericType: 'damage',
     selectedSOType: 'damage',
     selectedSOTier: 2, // 0=TO, 1=DO, 2=SO
-    
+
+    // Attunement toggle for IO sets
+    attunementEnabled: false,
+
     // Character stats
     characterLevel: 50,
     
@@ -127,6 +130,17 @@ function updateCharLevel() {
     const level = document.getElementById('levelSlider').value;
     AppState.characterLevel = level;
     document.getElementById('charLevel').textContent = level;
+}
+
+/**
+ * Toggle attunement for IO set enhancements
+ */
+function toggleAttunement() {
+    AppState.attunementEnabled = !AppState.attunementEnabled;
+    const toggle = document.getElementById('attunementToggle');
+    if (toggle) {
+        toggle.checked = AppState.attunementEnabled;
+    }
 }
 
 // ============================================

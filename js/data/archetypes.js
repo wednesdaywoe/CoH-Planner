@@ -66,7 +66,7 @@ const ARCHETYPES = {
             'blaster/radiation-manipulation',
             'blaster/sonic-manipulation',
             'blaster/tactical-arrow',
-            'blaster/temporal-manipulation'
+            'blaster/time-manipulation'
         ]
     },
     

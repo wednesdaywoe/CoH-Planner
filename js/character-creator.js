@@ -849,7 +849,12 @@ function getOriginalPowerData(powerName, category, poolId = null) {
  * @returns {string} Formatted name
  */
 function formatPowersetName(powersetId) {
-    return powersetId
+    // Remove archetype prefix if present (e.g., "blaster/time-manipulation" -> "time-manipulation")
+    const nameWithoutArchetype = powersetId.includes('/')
+        ? powersetId.split('/')[1]
+        : powersetId;
+
+    return nameWithoutArchetype
         .split('-')
         .map(word => word.charAt(0).toUpperCase() + word.slice(1))
         .join(' ');

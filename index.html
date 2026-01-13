@@ -40,7 +40,7 @@
 </head>
 <body>
     <div class="wip-banner">
-        ⚠️ WORK IN PROGRESS - This application is incomplete and under active development<span>|</span><span>Expect changes and bugs</span><span></span>|<span>Alpha 2.6.5</span>
+        ⚠️ WORK IN PROGRESS - This application is incomplete and under active development<span>|</span><span>Expect changes and bugs</span><span></span>|<span>Alpha 2.6.6</span>
     </div>
     <div class="container">
         <!-- Top Panel -->
@@ -185,7 +185,14 @@
                     <button class="back-button" id="backBtn" onclick="goBack()">←</button>
                     <span id="modalTitle">Choose an enhancement</span>
                 </div>
-                <button class="modal-close" onclick="closeModal()">×</button>
+                <div class="modal-header-controls">
+                    <label class="attunement-toggle-label" title="Attuned enhancements are level-agnostic and maintain effectiveness regardless of level">
+                        <input type="checkbox" id="attunementToggle" onchange="toggleAttunement()">
+                        <span class="toggle-slider"></span>
+                        <span class="toggle-text">Attuned</span>
+                    </label>
+                    <button class="modal-close" onclick="closeModal()">×</button>
+                </div>
             </div>
 
             <!-- Interaction hints immediately below the modal header -->
