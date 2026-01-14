@@ -504,13 +504,25 @@ function canSelectSecondaryPower(power) {
  * @param {Object} powerData - Power definition from powerset
  * @param {string} category - 'primary' or 'secondary'
  */
+// Track powers currently being added to prevent race conditions
+const _powersBeingAdded = new Set();
+
 function selectPower(powerData, category) {
+    // Prevent race conditions from rapid clicking
+    const powerKey = `${category}:${powerData.name}`;
+    if (_powersBeingAdded.has(powerKey)) {
+        console.log(`${powerData.name} is currently being added, ignoring duplicate click`);
+        return;
+    }
+    _powersBeingAdded.add(powerKey);
+
     // Check if already selected
     const categoryData = category === 'primary' ? Build.primary : Build.secondary;
     const alreadySelected = categoryData.powers.some(p => p.name === powerData.name);
-    
+
     if (alreadySelected) {
         console.log(`${powerData.name} is already selected`);
+        _powersBeingAdded.delete(powerKey);
         return;
     }
     
@@ -518,13 +530,15 @@ function selectPower(powerData, category) {
     const totalPowers = getTotalPowerCount();
     if (totalPowers >= 24) {
         alert('Maximum 24 powers allowed total (primary + secondary + pools + epic). You already have ' + totalPowers + '.');
+        _powersBeingAdded.delete(powerKey);
         return;
     }
-    
+
     // Check if can select
     const canSelect = category === 'primary' ? canSelectPrimaryPower(powerData) : canSelectSecondaryPower(powerData);
     if (!canSelect) {
         console.log(`Cannot select ${powerData.name} - prerequisites not met`);
+        _powersBeingAdded.delete(powerKey);
         return;
     }
     
@@ -563,7 +577,10 @@ function selectPower(powerData, category) {
     if (typeof updateSlotCounter === 'function') {
         updateSlotCounter();
     }
-    
+
+    // Clear the lock
+    _powersBeingAdded.delete(powerKey);
+
     console.log(`Added power: ${powerData.name} to ${category}`);
 }
 
@@ -643,17 +660,23 @@ function refreshAvailablePowers() {
 function addPowerToColumn(power, category) {
     const containerId = category === 'primary' ? 'selectedPrimaryPowers' : 'selectedSecondaryPowers';
     const container = document.getElementById(containerId);
-    
+
+    // Check if power element already exists in UI (prevent duplicates)
+    const existingElement = container.querySelector(`[data-power-name="${power.name}"]`);
+    if (existingElement) {
+        console.log(`Power ${power.name} already exists in UI, skipping`);
+        return;
+    }
+
     // Create power element
     const powerElement = document.createElement('div');
     powerElement.className = 'selected-power';
     powerElement.dataset.powerName = power.name;
     
-    // Check if this is a power that needs a toggle checkbox
-    // Toggle/Auto powers always get a checkbox, plus buff powers with tohitBuff or damageBuff
-    const isToggleOrAuto = power.powerType === 'Toggle' || power.powerType === 'Auto';
-    const isBuffPower = power.effects && (power.effects.tohitBuff || power.effects.damageBuff);
-    const needsToggle = isToggleOrAuto || isBuffPower;
+    // Check if this is a Toggle power that needs a toggle checkbox
+    // Only Toggle powers get a switch - Auto powers are always on
+    const needsToggle = power.powerType === 'Toggle';
+    console.log(`addPowerToColumn: ${power.name}, powerType=${power.powerType}, needsToggle=${needsToggle}`);
     
     // Format: (level) Power Name
     const levelDisplay = power.level > 0 ? `(${power.level})` : '';

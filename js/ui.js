@@ -1117,10 +1117,9 @@ function displayInherentPowers() {
             powerElement.className = 'selected-power';
             powerElement.dataset.powerName = power.name;
             
-            // Check if this is a toggle or auto power that needs a checkbox
-            // Fitness powers are always on and should not have toggles
-            const isFitnessPower = poolData.id === 'fitness';
-            const needsToggle = !isFitnessPower && (power.powerType === 'Toggle' || power.powerType === 'Auto');
+            // Check if this is a Toggle power that needs a toggle checkbox
+            // Only Toggle powers get a switch - Auto powers are always on
+            const needsToggle = power.powerType === 'Toggle';
             
             const levelDisplay = power.level > 0 ? `(${power.level})` : '';
             powerElement.innerHTML = `
@@ -1257,8 +1256,9 @@ function displayInherentPowers() {
                 powerElement.className = 'selected-power epic-power';
                 powerElement.dataset.powerName = power.name;
                 
-                // Check if this is a toggle or auto power that needs a checkbox
-                const needsToggle = power.powerType === 'Toggle' || power.powerType === 'Auto';
+                // Check if this is a Toggle power that needs a toggle checkbox
+                // Only Toggle powers get a switch - Auto powers are always on
+                const needsToggle = power.powerType === 'Toggle';
                 
                 const levelDisplay = power.level > 0 ? `(${power.level})` : '';
                 powerElement.innerHTML = `
@@ -1452,10 +1452,9 @@ function displayInherentPowers() {
             powerElement.className = 'selected-power inherent-power';
             powerElement.dataset.powerName = power.name;
             
-            // Check if this is a toggle or auto power that needs a checkbox
-            // Fitness powers are always on and should not have toggles
-            const isFitnessPower = power.category === 'fitness';
-            const needsToggle = !isFitnessPower && (power.powerType === 'Toggle' || power.powerType === 'Auto');
+            // Check if this is a Toggle power that needs a toggle checkbox
+            // Only Toggle powers get a switch - Auto powers are always on
+            const needsToggle = power.powerType === 'Toggle';
             
             powerElement.innerHTML = `
                 <div class="selected-power-header">

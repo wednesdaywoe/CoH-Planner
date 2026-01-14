@@ -355,8 +355,8 @@ body {
 /* Main Columns */
 .columns {
     display: grid;
-    /* 4 power columns at ~2/3 original width, plus info panel column */
-    grid-template-columns: 2fr 2fr 2fr 2fr 3fr;
+    /* 4 power columns + narrower info panel column */
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     gap: 1px;
     background: var(--border);
     flex: 1;
@@ -487,7 +487,7 @@ body {
 .selected-power-header {
     display: flex;
     align-items: center;
-    flex: 0 0 33%;
+    flex: 0 0 40%;
     min-width: 0;
 }
 
@@ -507,7 +507,7 @@ body {
     display: flex;
     gap: 1px;
     flex-wrap: nowrap;
-    flex: 0 0 67%;
+    flex: 1;
     justify-content: flex-start;
     align-items: center;
 }
@@ -926,9 +926,10 @@ body {
 .switch {
     position: relative;
     display: inline-block;
-    width: 44px;
-    height: 24px;
-    margin: 0 8px;
+    width: 28px;
+    height: 16px;
+    margin: 0 4px;
+    flex-shrink: 0;
 }
 
 /* Hide default HTML checkbox */
@@ -954,10 +955,10 @@ body {
 .slider:before {
     position: absolute;
     content: "";
-    height: 18px;
-    width: 18px;
-    left: 3px;
-    bottom: 3px;
+    height: 12px;
+    width: 12px;
+    left: 2px;
+    bottom: 2px;
     background-color: var(--bg-primary);
     -webkit-transition: .3s;
     transition: .3s;
@@ -972,9 +973,9 @@ input:focus + .slider {
 }
 
 input:checked + .slider:before {
-    -webkit-transform: translateX(20px);
-    -ms-transform: translateX(20px);
-    transform: translateX(20px);
+    -webkit-transform: translateX(12px);
+    -ms-transform: translateX(12px);
+    transform: translateX(12px);
 }
 
 /* Rounded sliders */
