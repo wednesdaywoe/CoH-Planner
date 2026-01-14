@@ -1,39 +1,10 @@
 /**
  * Power Enhancement Calculator
- * Calculates enhancement bonuses for individual powers based on slotted enhancements
+ * Calculates three-tier stats for powers (base/enhanced/final)
+ *
+ * Note: calculatePowerEnhancementBonuses() is defined in enhancement-values.js
+ * and handles IO level properly via AppState.globalIOLevel
  */
-
-/**
- * Calculate enhancement bonuses for a specific power
- * @param {Object} power - Power object with slots
- * @returns {Object} Enhancement bonuses by aspect (as percentages)
- */
-function calculatePowerEnhancementBonuses(power) {
-    if (!power || !power.slots || power.slots.length === 0) {
-        return {};
-    }
-
-    const bonuses = {};
-
-    // Iterate through all slots
-    power.slots.forEach(slot => {
-        if (!slot.enhancement) return;
-
-        // Calculate enhancement values (with ED curve already applied)
-        const enhValues = calculateEnhancementValues(slot.enhancement, slot.level || 50);
-
-        if (!enhValues) return;
-
-        // Accumulate bonuses by aspect
-        Object.entries(enhValues).forEach(([aspect, value]) => {
-            if (typeof value === 'number' && value !== 0) {
-                bonuses[aspect] = (bonuses[aspect] || 0) + value;
-            }
-        });
-    });
-
-    return bonuses;
-}
 
 /**
  * Calculate three-tier stats for a power (base, enhanced, final)
