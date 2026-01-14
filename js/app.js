@@ -250,7 +250,18 @@ window.addEventListener('DOMContentLoaded', function() {
     
     // Initialize hints toggle state
     initializeHintsToggle();
-    
+
+    // Attach exemplar event listeners
+    const exemplarToggle = document.getElementById('exemplarToggle');
+    if (exemplarToggle) {
+        exemplarToggle.addEventListener('change', toggleExemplar);
+    }
+
+    const exemplarSlider = document.getElementById('exemplarLevel');
+    if (exemplarSlider) {
+        exemplarSlider.addEventListener('input', updateExemplarLevel);
+    }
+
     console.log('City of Heroes Planner - Ready!');
 });
 
