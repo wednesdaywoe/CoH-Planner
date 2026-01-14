@@ -31,12 +31,8 @@ function getSlotsRemaining() {
             totalPowerCount++;
         });
     }
-    if (Build.inherents) {
-        Build.inherents.forEach(power => {
-            totalSlotCount += power.slots ? power.slots.length : 0;
-            totalPowerCount++;
-        });
-    }
+    // NOTE: Inherent powers are NOT counted - they have their own slots
+    // that don't affect the 67 additional slot budget
     const additionalSlotsUsed = totalSlotCount - totalPowerCount;
     const maxAdditionalSlots = 67;
     return Math.max(0, maxAdditionalSlots - Math.max(0, additionalSlotsUsed));
@@ -943,13 +939,8 @@ function updateSlotCounter() {
         });
     }
 
-    // Count slots in inherent powers
-    if (Build.inherents) {
-        Build.inherents.forEach(power => {
-            totalSlotCount += power.slots ? power.slots.length : 0;
-            totalPowerCount++;
-        });
-    }
+    // NOTE: Inherent powers are NOT counted - they have their own slots
+    // that don't affect the 67 additional slot budget
 
     // Each power comes with 1 default slot (doesn't count toward the 67)
     // So additional slots used = total slots - number of powers
@@ -989,10 +980,10 @@ function addPoolPowerToDOM(power) {
     const powerElement = document.createElement('div');
     powerElement.className = 'selected-power';
     powerElement.dataset.powerName = power.name;
+    const levelDisplay = power.level > 0 ? `(${power.level})` : '';
     powerElement.innerHTML = `
         <div class="selected-power-header">
-            <span class="selected-power-name">${power.name}</span>
-            <span class="selected-power-level">Level ${power.level}</span>
+            <span class="selected-power-name">${levelDisplay} ${power.name}</span>
         </div>
         <div class="enhancement-slots"></div>
     `;
@@ -1131,19 +1122,19 @@ function displayInherentPowers() {
             const isFitnessPower = poolData.id === 'fitness';
             const needsToggle = !isFitnessPower && (power.powerType === 'Toggle' || power.powerType === 'Auto');
             
+            const levelDisplay = power.level > 0 ? `(${power.level})` : '';
             powerElement.innerHTML = `
                 <div class="selected-power-header">
-                    <span class="selected-power-name">${power.name}</span>
-                    <span class="selected-power-level">Level ${power.level}</span>
-                    <button class="remove-pool-power-btn" title="Remove from build" style="margin-left: auto; padding: 2px 6px; background: var(--button-bg); color: var(--text); border: 1px solid var(--border); cursor: pointer; font-size: 10px; border-radius: 3px;">✕</button>
+                    <span class="selected-power-name">${levelDisplay} ${power.name}</span>
+                    <button class="remove-pool-power-btn" title="Remove from build">✕</button>
                 </div>
+                <div class="enhancement-slots"></div>
                 ${needsToggle ? `
-                    <label class="switch" style="position: absolute; bottom: 4px; right: 4px;">
+                    <label class="switch power-toggle-switch">
                         <input type="checkbox" class="power-toggle-input">
                         <span class="slider round"></span>
                     </label>
                 ` : ''}
-                <div class="enhancement-slots"></div>
             `;
             
             // Add toggle handler if needed
@@ -1269,21 +1260,19 @@ function displayInherentPowers() {
                 // Check if this is a toggle or auto power that needs a checkbox
                 const needsToggle = power.powerType === 'Toggle' || power.powerType === 'Auto';
                 
+                const levelDisplay = power.level > 0 ? `(${power.level})` : '';
                 powerElement.innerHTML = `
-                    <div class="selected-power-header" style="display: flex; justify-content: space-between; align-items: center;">
-                        <div style="flex: 1;">
-                            <span class="selected-power-name">${power.name}</span>
-                            <span class="selected-power-level">Level ${power.level}</span>
-                        </div>
-                        <button class="epic-power-remove-btn" style="font-size: 10px; padding: 2px 6px; background: var(--button-bg); color: var(--text); border: 1px solid var(--border); cursor: pointer; border-radius: 2px; margin-left: 8px; white-space: nowrap;">×</button>
+                    <div class="selected-power-header">
+                        <span class="selected-power-name">${levelDisplay} ${power.name}</span>
+                        <button class="epic-power-remove-btn" title="Remove from build">×</button>
                     </div>
+                    <div class="enhancement-slots"></div>
                     ${needsToggle ? `
-                        <label class="switch" style="position: absolute; bottom: 4px; right: 4px;">
+                        <label class="switch power-toggle-switch">
                             <input type="checkbox" class="power-toggle-input">
                             <span class="slider round"></span>
                         </label>
                     ` : ''}
-                    <div class="enhancement-slots"></div>
                 `;
                 
                 // Add remove button handler
@@ -1471,15 +1460,14 @@ function displayInherentPowers() {
             powerElement.innerHTML = `
                 <div class="selected-power-header">
                     <span class="selected-power-name">${power.name}</span>
-                    <span class="selected-power-level">Inherent</span>
                 </div>
+                <div class="enhancement-slots"></div>
                 ${needsToggle ? `
-                    <label class="switch" style="position: absolute; bottom: 4px; right: 4px;">
+                    <label class="switch power-toggle-switch">
                         <input type="checkbox" class="power-toggle-input">
                         <span class="slider round"></span>
                     </label>
                 ` : ''}
-                <div class="enhancement-slots"></div>
             `;
             
             // Add toggle handler if needed

@@ -320,21 +320,31 @@ function showSlottedEnhancementTooltip(event, slot, power) {
 function showCommonIOTooltip(event, slot) {
     const tooltip = document.getElementById('tooltip');
     if (!tooltip) return;
-    
+
+    const useInfoPanel = document.getElementById('useInfoPanelToggle')?.checked;
+
     const level = slot.level || 50;
     const value = (calculateCommonIOValue && calculateCommonIOValue(level, slot.aspect)) || 0;
-    
+
     let html = `<div class="tooltip-title">Common IO - ${slot.aspect}</div>`;
     html += `<div class="tooltip-section">`;
     html += `<div class="tooltip-label">Level: ${level}</div>`;
     html += `<div class="tooltip-value">+${(value * 100).toFixed(1)}%</div>`;
     html += `</div>`;
-    
-    tooltip.innerHTML = (typeof getTooltipHintsHtml === 'function' ? getTooltipHintsHtml() : '') + html;
-    if (typeof positionTooltip === 'function') {
-        positionTooltip(tooltip, event);
+
+    if (!useInfoPanel) {
+        tooltip.innerHTML = (typeof getTooltipHintsHtml === 'function' ? getTooltipHintsHtml() : '') + html;
+        if (typeof positionTooltip === 'function') {
+            positionTooltip(tooltip, event);
+        }
+        tooltip.classList.add('visible');
+    } else {
+        tooltip.classList.remove('visible');
     }
-    tooltip.classList.add('visible');
+
+    if (typeof updateInfoPanel === 'function') {
+        updateInfoPanel(html, `Common IO - ${slot.aspect}`);
+    }
 }
 
 /**
@@ -345,21 +355,31 @@ function showCommonIOTooltip(event, slot) {
 function showOriginEnhancementTooltip(event, slot) {
     const tooltip = document.getElementById('tooltip');
     if (!tooltip) return;
-    
+
+    const useInfoPanel = document.getElementById('useInfoPanelToggle')?.checked;
+
     const tierNames = ['Training Origin', 'Dual Origin', 'Single Origin'];
     const tierName = tierNames[slot.tier] || 'Unknown';
-    
+
     let html = `<div class="tooltip-title">${tierName}</div>`;
     html += `<div class="tooltip-section">`;
     html += `<div class="tooltip-label">${slot.aspectName || slot.aspect}</div>`;
     html += `<div class="tooltip-value">+${(slot.value * 100).toFixed(1)}%</div>`;
     html += `</div>`;
-    
-    tooltip.innerHTML = (typeof getTooltipHintsHtml === 'function' ? getTooltipHintsHtml() : '') + html;
-    if (typeof positionTooltip === 'function') {
-        positionTooltip(tooltip, event);
+
+    if (!useInfoPanel) {
+        tooltip.innerHTML = (typeof getTooltipHintsHtml === 'function' ? getTooltipHintsHtml() : '') + html;
+        if (typeof positionTooltip === 'function') {
+            positionTooltip(tooltip, event);
+        }
+        tooltip.classList.add('visible');
+    } else {
+        tooltip.classList.remove('visible');
     }
-    tooltip.classList.add('visible');
+
+    if (typeof updateInfoPanel === 'function') {
+        updateInfoPanel(html, `${tierName} - ${slot.aspectName || slot.aspect}`);
+    }
 }
 
 /**
@@ -370,7 +390,9 @@ function showOriginEnhancementTooltip(event, slot) {
 function showHamidonTooltip(event, slot) {
     const tooltip = document.getElementById('tooltip');
     if (!tooltip) return;
-    
+
+    const useInfoPanel = document.getElementById('useInfoPanelToggle')?.checked;
+
     let html = `<div class="tooltip-title">Hamidon Origin</div>`;
     html += `<div class="tooltip-section">`;
     html += `<div class="tooltip-label">${slot.hamiType || 'Unknown'}</div>`;
@@ -378,12 +400,21 @@ function showHamidonTooltip(event, slot) {
         html += `<div class="tooltip-value">${slot.aspects.join(', ')}</div>`;
     }
     html += `</div>`;
-    
-    tooltip.innerHTML = (typeof getTooltipHintsHtml === 'function' ? getTooltipHintsHtml() : '') + html;
-    if (typeof positionTooltip === 'function') {
-        positionTooltip(tooltip, event);
+
+    if (!useInfoPanel) {
+        tooltip.innerHTML = (typeof getTooltipHintsHtml === 'function' ? getTooltipHintsHtml() : '') + html;
+        if (typeof positionTooltip === 'function') {
+            positionTooltip(tooltip, event);
+        }
+        tooltip.classList.add('visible');
+    } else {
+        tooltip.classList.remove('visible');
     }
-    tooltip.classList.add('visible');
+
+    // Also update the fixed info panel
+    if (typeof updateInfoPanel === 'function') {
+        updateInfoPanel(html, `Hamidon - ${slot.hamiType || 'Unknown'}`);
+    }
 }
 
 /**

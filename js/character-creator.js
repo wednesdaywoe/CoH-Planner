@@ -655,18 +655,19 @@ function addPowerToColumn(power, category) {
     const isBuffPower = power.effects && (power.effects.tohitBuff || power.effects.damageBuff);
     const needsToggle = isToggleOrAuto || isBuffPower;
     
+    // Format: (level) Power Name
+    const levelDisplay = power.level > 0 ? `(${power.level})` : '';
     powerElement.innerHTML = `
         <div class="selected-power-header">
-            <span class="selected-power-name">${power.name}</span>
-            <span class="selected-power-level">Level ${power.level}</span>
+            <span class="selected-power-name">${levelDisplay} ${power.name}</span>
         </div>
+        <div class="enhancement-slots"></div>
         ${needsToggle ? `
-            <label class="switch" style="position: absolute; bottom: 4px; right: 4px;">
+            <label class="switch power-toggle-switch">
                 <input type="checkbox" class="power-toggle-input">
                 <span class="slider round"></span>
             </label>
         ` : ''}
-        <div class="enhancement-slots"></div>
     `;
     
     // Add toggle handler for powers that need it

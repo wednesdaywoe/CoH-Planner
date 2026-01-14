@@ -420,18 +420,15 @@ body {
     padding: 8px;
 }
 
-/* Power List Items */
+/* Power List Items (Available Powers - Column 1) */
 .power-item {
     background: var(--bg-secondary);
     border: 1px solid var(--border);
-    border-radius: 3px;
-    padding: 8px 10px;
-    margin-bottom: 4px;
+    border-radius: 2px;
+    padding: 3px 6px;
+    margin-bottom: 2px;
     cursor: pointer;
     transition: all 0.15s;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
 }
 
 .power-item:hover {
@@ -465,77 +462,80 @@ body {
 
 .power-name {
     font-weight: 500;
-    font-size: 12px;
+    font-size: 11px;
 }
 
 .power-level {
-    font-size: 11px;
-    color: var(--text-secondary);
-    background: var(--bg-tertiary);
-    padding: 2px 6px;
-    border-radius: 3px;
+    display: none; /* Hide separate level badge, now part of name */
 }
 
-/* Selected Powers */
+/* Selected Powers (Columns 2-4) */
 .selected-power {
     background: var(--bg-secondary);
     border: 1px solid var(--border);
-    border-radius: 3px;
-    padding: 8px 10px;
-    margin-bottom: 4px;
-    position: relative; /* For absolute positioned toggle */
-    min-height: 54px; /* Maintains consistent height for powers without slots */
+    border-radius: 2px;
+    padding: 2px 4px;
+    margin-bottom: 2px;
+    position: relative;
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    min-height: 24px;
 }
 
 .selected-power-header {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    margin-bottom: 6px;
+    flex: 0 0 33%;
+    min-width: 0;
 }
 
 .selected-power-name {
-    font-weight: 600;
-    font-size: 13px;
+    font-weight: 500;
+    font-size: 11px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .selected-power-level {
-    font-size: 11px;
-    color: var(--text-secondary);
+    display: none; /* Level now in name */
 }
 
 .enhancement-slots {
     display: flex;
-    gap: 3px;
-    flex-wrap: wrap;
+    gap: 1px;
+    flex-wrap: nowrap;
+    flex: 0 0 67%;
+    justify-content: flex-start;
+    align-items: center;
 }
 
 .slot {
-    width: 32px;
-    height: 32px;
-    border: 2px solid var(--border);
+    width: 20px;
+    height: 20px;
+    border: 1px solid var(--border);
     border-radius: 50%;
     background: var(--bg-tertiary);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 10px;
+    font-size: 8px;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.15s;
+    transition: all 0.1s;
     user-select: none;
+    flex-shrink: 0;
 }
 
 .slot:hover {
     border-color: var(--accent);
-    transform: scale(1.05);
+    transform: scale(1.1);
 }
 
 .slot.empty {
     background: #1E293B;
-    border: 2px solid #64748B;
+    border: 1px solid #64748B;
     color: #94A3B8;
     opacity: 1;
 }
@@ -552,7 +552,7 @@ body {
 }
 
 .slot.filled:hover {
-    transform: scale(1.1);
+    transform: scale(1.15);
 }
 
 .slot.so {
@@ -607,9 +607,10 @@ body {
 /* Enhancement Icons */
 .enhancement-icon,
 .enhancement-icon-layered {
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
     display: block;
+    flex-shrink: 0;
 }
 
 .enhancement-icon-layered {
@@ -628,6 +629,11 @@ body {
 }
 
 .slot img {
+    width: 100%;
+    height: 100%;
+    max-width: 20px;
+    max-height: 20px;
+    object-fit: contain;
     pointer-events: none;
 }
 
@@ -750,6 +756,162 @@ body {
     font-size: 10px;
     opacity: 0.95;
     word-break: break-word;
+}
+
+/* Fixed Info Panel */
+.info-panel {
+    background: var(--bg-primary);
+    border-top: 1px solid var(--border);
+    height: 150px;
+    min-height: 150px;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    transition: height 0.2s ease;
+}
+
+.info-panel:hover {
+    height: 200px;
+}
+
+.info-panel-header {
+    background: var(--bg-secondary);
+    border-bottom: 1px solid var(--border);
+    padding: 4px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.info-panel-title {
+    font-weight: 600;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-tertiary);
+}
+
+.info-panel-toggle {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 10px;
+    color: var(--text-secondary);
+    cursor: pointer;
+}
+
+.info-panel-toggle input[type="checkbox"] {
+    width: 12px;
+    height: 12px;
+    cursor: pointer;
+    margin: 0;
+}
+
+.info-panel-content {
+    flex: 1;
+    overflow: hidden;
+    padding: 8px 12px;
+}
+
+.info-panel-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    color: var(--text-tertiary);
+    font-size: 13px;
+    font-style: italic;
+}
+
+/* Power info - use flexbox instead of CSS columns to prevent overflow */
+.info-panel-columns {
+    display: flex;
+    gap: 16px;
+    height: 100%;
+    overflow-x: auto;
+}
+
+.info-col {
+    flex: 0 0 auto;
+    min-width: 100px;
+    border-left: 1px solid var(--border);
+    padding-left: 12px;
+}
+
+.info-col:first-child {
+    border-left: none;
+    padding-left: 0;
+}
+
+.info-col-header {
+    font-size: 9px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--text-tertiary);
+    margin-bottom: 2px;
+    letter-spacing: 0.05em;
+}
+
+.info-power-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--accent);
+    line-height: 1.2;
+}
+
+.info-power-type {
+    font-size: 10px;
+    color: var(--text-secondary);
+    margin-bottom: 4px;
+}
+
+.info-power-desc {
+    font-size: 10px;
+    color: var(--text-secondary);
+    line-height: 1.3;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.info-col-main {
+    flex: 0 0 auto;
+    min-width: 180px;
+    max-width: 260px;
+}
+
+.info-stat-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    padding: 1px 0;
+    gap: 8px;
+    line-height: 1.3;
+}
+
+.info-stat-label {
+    color: var(--text-secondary);
+    white-space: nowrap;
+}
+
+.info-stat-value {
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.info-enh-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px;
+}
+
+.info-enh-item {
+    font-size: 9px;
+    color: var(--text-secondary);
+    background: var(--bg-secondary);
+    padding: 1px 4px;
+    border-radius: 2px;
+    white-space: nowrap;
 }
 
 .bonus-list {

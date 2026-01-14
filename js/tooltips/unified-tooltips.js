@@ -460,10 +460,23 @@ function generateSetTooltipHTML(set, currentPieces = 0) {
 function showSetTooltip(event, set, currentPieces = 0) {
     const tooltip = document.getElementById('tooltip');
     if (!tooltip) return;
-    
-    tooltip.innerHTML = (typeof getTooltipHintsHtml === 'function' ? getTooltipHintsHtml() : '') + generateSetTooltipHTML(set, currentPieces);
-    positionTooltip(tooltip, event);
-    tooltip.classList.add('visible');
+
+    const useInfoPanel = document.getElementById('useInfoPanelToggle')?.checked;
+
+    const html = generateSetTooltipHTML(set, currentPieces);
+
+    if (!useInfoPanel) {
+        tooltip.innerHTML = (typeof getTooltipHintsHtml === 'function' ? getTooltipHintsHtml() : '') + html;
+        positionTooltip(tooltip, event);
+        tooltip.classList.add('visible');
+    } else {
+        tooltip.classList.remove('visible');
+    }
+
+    // Always update the fixed info panel
+    if (typeof updateInfoPanel === 'function') {
+        updateInfoPanel(html, set.name || 'IO Set');
+    }
 }
 
 // ============================================

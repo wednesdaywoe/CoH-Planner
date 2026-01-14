@@ -186,16 +186,31 @@ function generateEnhancementPieceTooltipHTML(set, setId, piece) {
 function showEnhancementPieceTooltip(event, setId, pieceNum) {
     const set = IO_SETS[setId];
     if (!set) return;
-    
+
     const piece = set.pieces.find(p => p.num === pieceNum);
     if (!piece) return;
-    
+
     const tooltip = document.getElementById('tooltip');
     if (!tooltip) return;
-    
-    tooltip.innerHTML = generateEnhancementPieceTooltipHTML(set, setId, piece);
-    positionTooltip(tooltip, event);
-    tooltip.classList.add('visible');
+
+    // Check if info panel mode is enabled (tooltip disabled)
+    const useInfoPanel = document.getElementById('useInfoPanelToggle')?.checked;
+
+    const html = generateEnhancementPieceTooltipHTML(set, setId, piece);
+
+    // Only show floating tooltip if info panel mode is disabled
+    if (!useInfoPanel) {
+        tooltip.innerHTML = html;
+        positionTooltip(tooltip, event);
+        tooltip.classList.add('visible');
+    } else {
+        tooltip.classList.remove('visible');
+    }
+
+    // Always update the fixed info panel
+    if (typeof updateInfoPanel === 'function') {
+        updateInfoPanel(html, `${set.name} - ${piece.name}`);
+    }
 }
 
 // ============================================
@@ -923,14 +938,166 @@ function generateImprovedPowerTooltipHTML(power, basePower, showModified = false
 function showImprovedPowerTooltip(event, power, basePower) {
     const tooltip = document.getElementById('tooltip');
     if (!tooltip) return;
-    
+
+    // Check if info panel mode is enabled (tooltip disabled)
+    const useInfoPanel = document.getElementById('useInfoPanelToggle')?.checked;
+
     // Determine if we should show modified values (columns 2-4 have power object)
     const showModified = power !== null && power !== undefined;
-    
-    tooltip.innerHTML = generateImprovedPowerTooltipHTML(power, basePower, showModified);
-    positionTooltip(tooltip, event);
-    tooltip.classList.add('visible');
+
+    const html = generateImprovedPowerTooltipHTML(power, basePower, showModified);
+
+    // Only show floating tooltip if info panel mode is disabled
+    if (!useInfoPanel) {
+        tooltip.innerHTML = html;
+        positionTooltip(tooltip, event);
+        tooltip.classList.add('visible');
+    } else {
+        tooltip.classList.remove('visible');
+    }
+
+    // Always update the fixed info panel with structured data for horizontal layout
+    const panelData = {
+        type: 'power',
+        power: power,
+        basePower: basePower,
+        effects: basePower?.effects || {},
+        enhancements: power?.slots?.filter(s => s !== null) || []
+    };
+    updateInfoPanel(html, basePower?.name || power?.name || 'Power Info', panelData);
 }
+
+/**
+ * Update the fixed info panel with power/enhancement details
+ * Converts vertical tooltip content to horizontal panel layout
+ * @param {string} html - HTML content to display
+ * @param {string} title - Title for the panel header (unused now)
+ * @param {Object} data - Optional structured data for better horizontal layout
+ */
+function updateInfoPanel(html, title, data) {
+    const infoPanel = document.getElementById('infoPanelContent');
+    if (!infoPanel) return;
+
+    // If we have structured data, create an optimized horizontal layout
+    if (data && data.type === 'power') {
+        infoPanel.innerHTML = generateHorizontalPowerInfo(data);
+        return;
+    }
+
+    // Otherwise, use the tooltip HTML in a multi-column wrapper
+    infoPanel.innerHTML = `<div class="info-panel-columns">${html}</div>`;
+}
+
+/**
+ * Generate horizontal multi-column layout for power info panel
+ * Column 1: Power name, type, description
+ * Column 2+: Stats (up to 5 per column, flows to next)
+ * @param {Object} data - Structured power data
+ */
+function generateHorizontalPowerInfo(data) {
+    const { power, basePower, effects, enhancements } = data;
+
+    let html = '<div class="info-panel-columns">';
+
+    // Column 1: Power name, type (target info), and description
+    html += '<div class="info-col info-col-main">';
+    html += `<div class="info-power-name">${basePower?.name || power?.name || 'Unknown'}</div>`;
+
+    // Build power type string (e.g., "Ranged Location (AoE), DoT (Lethal)")
+    const typeInfo = [];
+    if (basePower?.powerType) typeInfo.push(basePower.powerType);
+    if (basePower?.targetType) typeInfo.push(basePower.targetType);
+    if (effects?.damage?.type) {
+        const dmgType = effects.damage.type;
+        if (effects.damage.dot) {
+            typeInfo.push(`DoT (${dmgType})`);
+        } else {
+            typeInfo.push(dmgType);
+        }
+    }
+    if (typeInfo.length > 0) {
+        html += `<div class="info-power-type">${typeInfo.join(', ')}</div>`;
+    }
+
+    if (basePower?.description) {
+        html += `<div class="info-power-desc">${basePower.description}</div>`;
+    }
+    html += '</div>';
+
+    // Column 2+: Stats - collect all stats then output in groups of 5
+    const allStats = [];
+
+    // Core stats
+    if (effects?.damage) {
+        const dmgValue = typeof effects.damage === 'object' ? effects.damage.scale : effects.damage;
+        if (dmgValue) allStats.push({ label: 'Damage', value: dmgValue.toFixed(2), cls: 'stat-damage' });
+    }
+    if (effects?.accuracy) allStats.push({ label: 'Accuracy', value: (effects.accuracy * 100).toFixed(0) + '%', cls: 'stat-accuracy' });
+    if (effects?.recharge) allStats.push({ label: 'Recharge', value: effects.recharge.toFixed(1) + 's', cls: 'stat-recharge' });
+    if (effects?.endurance) allStats.push({ label: 'End Cost', value: effects.endurance.toFixed(1), cls: 'stat-endurance' });
+    if (effects?.range) allStats.push({ label: 'Range', value: effects.range + ' ft', cls: 'stat-range' });
+
+    // Defense stats
+    if (effects?.defense && typeof effects.defense === 'object') {
+        Object.entries(effects.defense).forEach(([type, value]) => {
+            const label = type.charAt(0).toUpperCase() + type.slice(1) + ' Def';
+            allStats.push({ label, value: '+' + (value * 100).toFixed(1) + '%', cls: 'stat-defense' });
+        });
+    }
+
+    // Resistance stats
+    if (effects?.resistance && typeof effects.resistance === 'object') {
+        Object.entries(effects.resistance).forEach(([type, value]) => {
+            const label = type.charAt(0).toUpperCase() + type.slice(1) + ' Res';
+            allStats.push({ label, value: '+' + (value * 100).toFixed(1) + '%', cls: 'stat-resistance' });
+        });
+    }
+
+    // Output stats in groups of 5 rows per column
+    const STATS_PER_COL = 5;
+    for (let i = 0; i < allStats.length; i += STATS_PER_COL) {
+        const chunk = allStats.slice(i, i + STATS_PER_COL);
+        html += '<div class="info-col">';
+        chunk.forEach(s => {
+            html += `<div class="info-stat-row"><span class="info-stat-label">${s.label}</span><span class="info-stat-value ${s.cls}">${s.value}</span></div>`;
+        });
+        html += '</div>';
+    }
+
+    // Enhancements slotted (if any)
+    if (enhancements && enhancements.length > 0) {
+        html += `<div class="info-col"><div class="info-col-header">Slotted (${enhancements.length})</div>`;
+        html += '<div class="info-enh-list">';
+        enhancements.forEach(enh => {
+            if (enh) {
+                const name = enh.pieceName || enh.aspect || enh.hamiType || enh.aspectName || 'Enh';
+                html += `<div class="info-enh-item">${name}</div>`;
+            }
+        });
+        html += '</div></div>';
+    }
+
+    html += '</div>';
+    return html;
+}
+
+/**
+ * Clear the info panel back to placeholder state
+ */
+function clearInfoPanel() {
+    const infoPanel = document.getElementById('infoPanelContent');
+    if (!infoPanel) return;
+
+    infoPanel.innerHTML = `
+        <div class="info-panel-placeholder">
+            <span>Hover over any power to view its details here</span>
+        </div>
+    `;
+}
+
+// Expose for global use
+window.updateInfoPanel = updateInfoPanel;
+window.clearInfoPanel = clearInfoPanel;
 
 // Override the old function names to use new implementations
 window.showSetPieceTooltip = showEnhancementPieceTooltip;
@@ -949,13 +1116,15 @@ window.showAvailablePowerTooltip = function(event, basePower) {
 function showCommonIOTooltip(event, aspectName) {
     const tooltip = document.getElementById('tooltip');
     if (!tooltip) return;
-    
+
+    const useInfoPanel = document.getElementById('useInfoPanelToggle')?.checked;
+
     const ioLevel = AppState.globalIOLevel || 50;
     const normalized = normalizeAspectName(aspectName);
     const schedule = normalized ? getAspectSchedule(normalized) : 'A';
     const enhValue = (typeof getIOValueAtLevel === 'function' ? getIOValueAtLevel(ioLevel, schedule) : 0.255) * 100;
     const colorClass = getAspectColorClass(aspectName);
-    
+
     let html = `<div class="tooltip-title">Common IO</div>`;
     html += `<div class="tooltip-section">`;
     html += `<div style="font-weight: 600; font-size: 12px; color: var(--accent);">${aspectName}</div>`;
@@ -966,10 +1135,18 @@ function showCommonIOTooltip(event, aspectName) {
     html += `<span class="${colorClass}" style="font-weight: 600;">${aspectName}: +${enhValue.toFixed(1)}%</span>`;
     html += `</div>`;
     html += `</div>`;
-    
-    tooltip.innerHTML = html;
-    positionTooltip(tooltip, event);
-    tooltip.classList.add('visible');
+
+    if (!useInfoPanel) {
+        tooltip.innerHTML = html;
+        positionTooltip(tooltip, event);
+        tooltip.classList.add('visible');
+    } else {
+        tooltip.classList.remove('visible');
+    }
+
+    if (typeof updateInfoPanel === 'function') {
+        updateInfoPanel(html, `Common IO - ${aspectName}`);
+    }
 }
 
 /**
@@ -992,29 +1169,39 @@ function showHamidonTooltip(event, hamiId) {
     
     const hami = hamiTypes[hamiId];
     if (!hami) return;
-    
+
     const tooltip = document.getElementById('tooltip');
     if (!tooltip) return;
-    
+
+    const useInfoPanel = document.getElementById('useInfoPanelToggle')?.checked;
+
     let html = `<div class="tooltip-title">Hamidon Origin Enhancement</div>`;
     html += `<div class="tooltip-section">`;
     html += `<div style="font-weight: 600; font-size: 12px; color: var(--accent);">${hami.name}</div>`;
     html += `</div>`;
     html += `<div class="tooltip-section" style="border-top: 1px solid var(--border); padding-top: 8px; margin-top: 8px;">`;
     html += `<div class="tooltip-label" style="margin-bottom: 6px;">Enhancement Values</div>`;
-    
+
     hami.aspects.forEach(aspect => {
         const colorClass = getAspectColorClass(aspect);
         html += `<div style="font-size: 11px; padding: 2px 0;">`;
         html += `<span class="${colorClass}" style="font-weight: 600;">${aspect}: +50.0%</span>`;
         html += `</div>`;
     });
-    
+
     html += `</div>`;
-    
-    tooltip.innerHTML = html;
-    positionTooltip(tooltip, event);
-    tooltip.classList.add('visible');
+
+    if (!useInfoPanel) {
+        tooltip.innerHTML = html;
+        positionTooltip(tooltip, event);
+        tooltip.classList.add('visible');
+    } else {
+        tooltip.classList.remove('visible');
+    }
+
+    if (typeof updateInfoPanel === 'function') {
+        updateInfoPanel(html, `Hamidon - ${hami.name}`);
+    }
 }
 
 /**
@@ -1051,11 +1238,13 @@ function showOriginTooltip(event, tier, aspectName) {
     // Determine which schedule to use based on aspect
     const scheduleBaspects = ['Defense', 'Resistance'];
     const tierValues = scheduleBaspects.includes(aspectName) ? scheduleB : scheduleA;
-    
+
+    const useInfoPanel = document.getElementById('useInfoPanelToggle')?.checked;
+
     const tierName = tierNames[tier] || 'Origin Enhancement';
     const enhValue = tierValues[tier] || 0;
     const colorClass = getAspectColorClass(aspectName);
-    
+
     let html = `<div class="tooltip-title">${tierName}</div>`;
     html += `<div class="tooltip-section">`;
     html += `<div style="font-weight: 600; font-size: 12px; color: var(--accent);">${aspectName}</div>`;
@@ -1066,8 +1255,16 @@ function showOriginTooltip(event, tier, aspectName) {
     html += `<span class="${colorClass}" style="font-weight: 600;">${aspectName}: +${enhValue.toFixed(1)}%</span>`;
     html += `</div>`;
     html += `</div>`;
-    
-    tooltip.innerHTML = html;
-    positionTooltip(tooltip, event);
-    tooltip.classList.add('visible');
+
+    if (!useInfoPanel) {
+        tooltip.innerHTML = html;
+        positionTooltip(tooltip, event);
+        tooltip.classList.add('visible');
+    } else {
+        tooltip.classList.remove('visible');
+    }
+
+    if (typeof updateInfoPanel === 'function') {
+        updateInfoPanel(html, `${tierName} - ${aspectName}`);
+    }
 }
