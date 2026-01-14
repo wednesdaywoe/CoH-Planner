@@ -843,13 +843,41 @@ function recalculateStats() {
         CharacterStats[key] = 0;
     });
     
+    // Mapping from individual defense/resistance stats to combined dashboard stats
+    const statToCombined = {
+        // Defense typed -> combined
+        'defSmashing': 'defSL',
+        'defLethal': 'defSL',
+        'defFire': 'defFC',
+        'defCold': 'defFC',
+        'defEnergy': 'defEN',
+        'defNegative': 'defEN',
+        // Resistance typed -> combined
+        'resSmashing': 'resSL',
+        'resLethal': 'resSL',
+        'resFire': 'resFC',
+        'resCold': 'resFC',
+        'resEnergy': 'resEN',
+        'resNegative': 'resEN'
+    };
+
+    // Helper to apply a stat value to CharacterStats
+    const applyStat = (stat, value) => {
+        // Check if it needs to be mapped to a combined stat
+        if (statToCombined[stat]) {
+            const combinedStat = statToCombined[stat];
+            CharacterStats[combinedStat] = (CharacterStats[combinedStat] || 0) + value;
+        } else if (CharacterStats.hasOwnProperty(stat)) {
+            CharacterStats[stat] += value;
+        }
+        // Note: Stats like resPsionic, resToxic, defPsionic, defToxic are already in CharacterStats
+    };
+
     // Use Rule of 5 system if available (aggregates bonuses properly)
     if (typeof getAggregatedSetBonuses === 'function') {
         const setBonuses = getAggregatedSetBonuses();
         Object.entries(setBonuses).forEach(([stat, value]) => {
-            if (CharacterStats.hasOwnProperty(stat)) {
-                CharacterStats[stat] += value;
-            }
+            applyStat(stat, value);
         });
         console.log('Stats recalculated with Rule of 5:', CharacterStats);
         console.log('Bonus tracking:', BonusTracking);
@@ -857,9 +885,7 @@ function recalculateStats() {
         // Fallback to old system
         const setBonuses = calculateSetBonuses();
         Object.entries(setBonuses).forEach(([stat, value]) => {
-            if (CharacterStats.hasOwnProperty(stat)) {
-                CharacterStats[stat] += value;
-            }
+            applyStat(stat, value);
         });
         console.log('Stats recalculated (old system):', CharacterStats);
     }
