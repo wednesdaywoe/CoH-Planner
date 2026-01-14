@@ -60,8 +60,8 @@
             </select>
 
             <div class="io-level-setting">
-                <label>Enh Level:</label>
-                <input type="number" min="10" max="53" value="50" id="globalIOLevel" oninput="updateGlobalIOLevel()">
+                <label>IO Level: <span id="ioLevelDisplay">50</span></label>
+                <input type="range" min="10" max="53" value="50" step="1" id="globalIOLevel" oninput="updateGlobalIOLevel()" class="level-slider">
             </div>
 
             <div class="level-info">

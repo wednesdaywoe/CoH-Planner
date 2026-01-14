@@ -667,6 +667,11 @@ function refreshUIAfterImport() {
     if (globalIOLevel) {
         globalIOLevel.value = Build.settings.globalIOLevel;
     }
+    const ioLevelDisplay = document.getElementById('ioLevelDisplay');
+    if (ioLevelDisplay) {
+        ioLevelDisplay.textContent = Build.settings.globalIOLevel;
+    }
+    AppState.globalIOLevel = Build.settings.globalIOLevel;
     
     // Update character level display
     const charLevelSpan = document.getElementById('charLevel');

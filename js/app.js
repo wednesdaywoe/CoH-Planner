@@ -119,8 +119,40 @@ function updateGlobalIOLevel() {
     input.value = value;
     AppState.globalIOLevel = value;
     Build.settings.globalIOLevel = value;
-    
-    // If Common IO is shown inline, consumer code can re-render as needed.
+
+    // Update display
+    const display = document.getElementById('ioLevelDisplay');
+    if (display) {
+        display.textContent = value;
+    }
+
+    // Recalculate stats since IO values changed
+    if (typeof recalculateStats === 'function') {
+        recalculateStats();
+    }
+
+    // Update all power slot displays to show new IO values
+    if (Build.primary && Build.primary.powers) {
+        Build.primary.powers.forEach(power => {
+            if (typeof updatePowerSlots === 'function') {
+                updatePowerSlots(power.name);
+            }
+        });
+    }
+    if (Build.secondary && Build.secondary.powers) {
+        Build.secondary.powers.forEach(power => {
+            if (typeof updatePowerSlots === 'function') {
+                updatePowerSlots(power.name);
+            }
+        });
+    }
+    Build.pools.forEach(pool => {
+        pool.powers.forEach(power => {
+            if (typeof updatePowerSlots === 'function') {
+                updatePowerSlots(power.name);
+            }
+        });
+    });
 }
 
 /**
