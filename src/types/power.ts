@@ -73,17 +73,15 @@ export interface MovementEffect {
 
 export interface PowerEffects {
   /** Base accuracy modifier */
-  accuracy: number;
+  accuracy?: number;
   /** Range in feet (0 for melee/self) */
   range?: number;
   /** Recharge time in seconds */
   recharge?: number;
-  /** Endurance cost */
-  endurance?: number;
+  /** Endurance cost (legacy: 'endurance', new: 'enduranceCost') */
+  enduranceCost?: number;
   /** Cast/activation time in seconds */
-  cast?: number;
-  /** Alternative name for cast time */
-  activationTime?: number;
+  castTime?: number;
   /** Effect area type */
   effectArea?: EffectArea;
   /** Radius for AoE powers */
@@ -92,12 +90,16 @@ export interface PowerEffects {
   arc?: number;
   /** Max targets for AoE */
   maxTargets?: number;
-  /** Direct damage (single type) */
+  /** Direct damage (single or multi-type) */
   damage?: DamageEffect | MultiDamageEffect;
   /** Damage over time */
-  dotDamage?: DotEffect;
+  dot?: DotEffect;
   /** Duration of buffs/debuffs */
   buffDuration?: number;
+  /** ToHit buff value */
+  tohitBuff?: number;
+  /** Damage buff value */
+  damageBuff?: number;
   /** Protection values granted */
   protection?: ProtectionEffects;
   /** Run speed effect */
@@ -134,9 +136,9 @@ export interface Power {
   /** Full description */
   description: string;
   /** Short help text shown in UI */
-  shortHelp: string;
+  shortHelp?: string;
   /** Icon filename */
-  icon: string;
+  icon?: string;
   /** Click, Toggle, Auto, or Passive */
   powerType: PowerType;
   /** Target type */

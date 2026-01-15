@@ -1,0 +1,281 @@
+/**
+ * Powerset data and accessor functions
+ * Migrated from legacy/js/data/powersets/
+ *
+ * The raw powerset data is imported from a separate file due to its size (~344 files).
+ * This module provides typed accessors and utility functions.
+ */
+
+import type {
+  Powerset,
+  Power,
+  IOSetCategory,
+  EnhancementStatType,
+  PowerType,
+  DamageType,
+  TargetType,
+  EffectArea,
+} from '@/types';
+import { POWERSETS_RAW } from './powersets-raw';
+
+// ============================================
+// POWERSET REGISTRY TYPE
+// ============================================
+
+export type PowersetRegistry = Record<string, Powerset>;
+
+// ============================================
+// RAW DATA TYPES (for conversion)
+// ============================================
+
+interface LegacyDamageEffect {
+  type: string;
+  scale: number;
+  table?: string;
+}
+
+interface LegacyMultiDamageEffect {
+  types: LegacyDamageEffect[];
+  scale: number;
+}
+
+interface LegacyDotEffect {
+  type: string;
+  scale: number;
+  ticks: number;
+}
+
+interface LegacyPowerEffects {
+  accuracy?: number;
+  range?: number;
+  recharge?: number;
+  endurance?: number;
+  cast?: number;
+  activationTime?: number;
+  damage?: LegacyDamageEffect | LegacyMultiDamageEffect;
+  dotDamage?: LegacyDotEffect;
+  buffDuration?: number;
+  tohitBuff?: number;
+  damageBuff?: number;
+  protection?: Record<string, number>;
+  runSpeed?: { scale: number; table?: string };
+  jumpHeight?: { scale: number; table?: string };
+  jumpSpeed?: { scale: number; table?: string };
+  effectArea?: string;
+  radius?: number;
+  [key: string]: unknown;
+}
+
+interface LegacyPower {
+  name: string;
+  fullName?: string;
+  rank?: number;
+  tier?: number;
+  available: number;
+  description: string;
+  shortHelp?: string;
+  icon: string;
+  powerType: string;
+  requires?: string;
+  targetType?: string;
+  effectArea?: string;
+  maxTargets?: number;
+  arc?: number;
+  maxSlots: number;
+  allowedEnhancements: string[];
+  allowedSetCategories: string[];
+  effects: LegacyPowerEffects;
+}
+
+interface LegacyPowerset {
+  id?: string;
+  name: string;
+  displayName?: string;
+  category?: string;
+  description: string;
+  icon: string;
+  requires?: string;
+  powers: LegacyPower[];
+}
+
+type LegacyPowersetRegistry = Record<string, LegacyPowerset>;
+
+// ============================================
+// DATA TRANSFORMATION
+// ============================================
+
+/**
+ * Transform legacy power to typed Power
+ */
+function transformPower(legacy: LegacyPower): Power {
+  return {
+    name: legacy.name,
+    available: legacy.available,
+    maxSlots: legacy.maxSlots,
+    allowedEnhancements: legacy.allowedEnhancements as EnhancementStatType[],
+    allowedSetCategories: legacy.allowedSetCategories as IOSetCategory[],
+    description: legacy.description,
+    powerType: legacy.powerType as PowerType,
+    effects: {
+      accuracy: legacy.effects.accuracy,
+      range: legacy.effects.range,
+      recharge: legacy.effects.recharge,
+      enduranceCost: legacy.effects.endurance,
+      castTime: legacy.effects.cast || legacy.effects.activationTime,
+      damage: legacy.effects.damage
+        ? 'type' in legacy.effects.damage
+          ? {
+              type: legacy.effects.damage.type as DamageType,
+              scale: legacy.effects.damage.scale,
+            }
+          : {
+              types: (legacy.effects.damage as LegacyMultiDamageEffect).types.map((t) => ({
+                type: t.type as DamageType,
+                scale: t.scale,
+              })),
+              scale: (legacy.effects.damage as LegacyMultiDamageEffect).scale,
+            }
+        : undefined,
+      dot: legacy.effects.dotDamage
+        ? {
+            type: legacy.effects.dotDamage.type as DamageType,
+            scale: legacy.effects.dotDamage.scale,
+            ticks: legacy.effects.dotDamage.ticks,
+          }
+        : undefined,
+      buffDuration: legacy.effects.buffDuration,
+    },
+    // Extended properties from legacy format
+    shortHelp: legacy.shortHelp,
+    icon: legacy.icon,
+    targetType: legacy.targetType as TargetType | undefined,
+    effectArea: legacy.effectArea as EffectArea | undefined,
+    maxTargets: legacy.maxTargets,
+    requires: legacy.requires,
+  };
+}
+
+/**
+ * Transform legacy powerset to typed Powerset
+ */
+function transformPowerset(id: string, legacy: LegacyPowerset): Powerset {
+  return {
+    id,
+    name: legacy.name,
+    description: legacy.description,
+    icon: legacy.icon,
+    powers: legacy.powers.map(transformPower),
+  };
+}
+
+/**
+ * Transform entire registry
+ */
+function transformRegistry(legacy: LegacyPowersetRegistry): PowersetRegistry {
+  const registry: PowersetRegistry = {};
+  for (const [id, powerset] of Object.entries(legacy)) {
+    registry[id] = transformPowerset(id, powerset);
+  }
+  return registry;
+}
+
+// ============================================
+// POWERSET REGISTRY
+// ============================================
+
+// Transform and cache the raw data at module load time
+const _powersets: PowersetRegistry = transformRegistry(
+  POWERSETS_RAW as unknown as LegacyPowersetRegistry
+);
+
+/**
+ * Get all powersets
+ */
+export function getAllPowersets(): PowersetRegistry {
+  return _powersets;
+}
+
+// ============================================
+// ACCESSOR FUNCTIONS
+// ============================================
+
+/**
+ * Get a powerset by ID (e.g., "blaster/fire-blast")
+ */
+export function getPowerset(id: string): Powerset | undefined {
+  return _powersets[id];
+}
+
+/**
+ * Get all powersets for an archetype category (e.g., "blaster")
+ */
+export function getPowersetsForArchetype(archetypeId: string): Powerset[] {
+  const prefix = `${archetypeId}/`;
+  return Object.entries(_powersets)
+    .filter(([id]) => id.startsWith(prefix))
+    .map(([, powerset]) => powerset);
+}
+
+/**
+ * Get a specific power from a powerset
+ */
+export function getPower(powersetId: string, powerName: string): Power | undefined {
+  const powerset = getPowerset(powersetId);
+  return powerset?.powers.find((p) => p.name === powerName);
+}
+
+/**
+ * Get powers available at or before a given level
+ */
+export function getPowersAvailableAtLevel(powersetId: string, level: number): Power[] {
+  const powerset = getPowerset(powersetId);
+  if (!powerset) return [];
+  return powerset.powers.filter((p) => p.available <= level && p.available >= 0);
+}
+
+/**
+ * Search powersets by name
+ */
+export function searchPowersets(query: string): Powerset[] {
+  const lowerQuery = query.toLowerCase();
+  return Object.values(_powersets).filter(
+    (ps) =>
+      ps.name.toLowerCase().includes(lowerQuery) ||
+      ps.description.toLowerCase().includes(lowerQuery)
+  );
+}
+
+/**
+ * Search powers across all powersets
+ */
+export function searchPowers(query: string): Array<{ power: Power; powersetId: string }> {
+  const lowerQuery = query.toLowerCase();
+  const results: Array<{ power: Power; powersetId: string }> = [];
+
+  for (const [id, powerset] of Object.entries(_powersets)) {
+    for (const power of powerset.powers) {
+      if (
+        power.name.toLowerCase().includes(lowerQuery) ||
+        power.description.toLowerCase().includes(lowerQuery)
+      ) {
+        results.push({ power, powersetId: id });
+      }
+    }
+  }
+
+  return results;
+}
+
+/**
+ * Get count of powersets by archetype
+ */
+export function getPowersetCountByArchetype(): Record<string, number> {
+  const counts: Record<string, number> = {};
+
+  for (const id of Object.keys(_powersets)) {
+    const archetype = id.split('/')[0];
+    counts[archetype] = (counts[archetype] || 0) + 1;
+  }
+
+  return counts;
+}

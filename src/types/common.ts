@@ -107,44 +107,45 @@ export type Faction = 'hero' | 'villain';
 // ============================================
 
 export type IOSetCategory =
-  // Standard categories
+  // Damage categories
   | 'Ranged Damage'
   | 'Melee Damage'
   | 'Ranged AoE Damage'
   | 'Melee AoE Damage'
-  | 'PBAoE Damage'
-  | 'Targeted AoE Damage'
   | 'Universal Damage Sets'
+  | 'Sniper Attacks'
+  | 'Pet Damage'
+  | 'Recharge Intensive Pets'
   // Defense/Resistance
-  | 'Defense'
-  | 'Resistance'
-  // Control
-  | 'Hold'
+  | 'Defense Sets'
+  | 'Resist Damage'
+  // Control (Mez)
+  | 'Holds'
   | 'Stuns'
   | 'Immobilize'
   | 'Sleep'
   | 'Confuse'
   | 'Fear'
-  // Support
+  | 'Knockback'
+  // Support/Debuff
   | 'Healing'
   | 'Endurance Modification'
-  | 'ToHit Buff'
-  | 'ToHit Debuff'
+  | 'To Hit Buff'
+  | 'To Hit Debuff'
   | 'Defense Debuff'
-  | 'Knockback'
-  | 'Slow'
-  | 'Taunt'
+  | 'Slow Movement'
+  | 'Threat Duration'
+  | 'Accurate Defense Debuff'
+  | 'Accurate Healing'
+  | 'Accurate To-Hit Debuff'
   // Travel
   | 'Running'
   | 'Running & Sprints'
-  | 'Jumping'
+  | 'Leaping'
+  | 'Leaping & Sprints'
   | 'Flight'
+  | 'Teleport'
   | 'Universal Travel'
-  | 'Teleportation'
-  // Pets
-  | 'Pet Damage'
-  | 'Pet Defense'
-  | 'Pet Resistance'
   // Archetype-specific
   | 'Blaster Archetype Sets'
   | 'Brute Archetype Sets'
@@ -156,21 +157,20 @@ export type IOSetCategory =
   | 'Scrapper Archetype Sets'
   | 'Stalker Archetype Sets'
   | 'Tanker Archetype Sets'
-  | 'Sentinel Archetype Sets';
+  | 'Sentinel Archetype Sets'
+  | 'Kheldian Archetype Sets'
+  | 'Soldiers of Arachnos Archetype Sets';
 
 // ============================================
 // IO SET RARITY
 // ============================================
 
 export type IOSetRarity =
-  | 'io-set'      // Standard IO sets
-  | 'uncommon'    // Uncommon IO sets
-  | 'rare'        // Rare IO sets
-  | 'very-rare'   // Very rare (including some ATOs)
-  | 'purple'      // Purple sets (very rare)
-  | 'pvp'         // PvP IO sets
-  | 'event'       // Winter/Event IOs
-  | 'archetype';  // Archetype-specific sets
+  | 'io-set'   // Standard IO sets
+  | 'purple'   // Purple sets (very rare level 50)
+  | 'ato'      // Archetype Origin sets (from Super Packs)
+  | 'pvp'      // PvP IO sets
+  | 'event';   // Winter/Event IOs
 
 // ============================================
 // ENHANCEMENT TIER (SO/DO/TO)
