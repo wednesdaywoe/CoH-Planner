@@ -13,7 +13,12 @@
     "type": "git",
     "url": "git+https://github.com/wednesdaywoe/CoH-Planner.git"
   },
-  "keywords": ["city-of-heroes", "coh", "build-planner", "mmorpg"],
+  "keywords": [
+    "city-of-heroes",
+    "coh",
+    "build-planner",
+    "mmorpg"
+  ],
   "author": "Wednesdaywoe",
   "license": "ISC",
   "bugs": {
@@ -25,6 +30,7 @@
     "react-dom": "^19.2.3"
   },
   "devDependencies": {
+    "@types/node": "^25.0.9",
     "@types/react": "^19.2.8",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^5.1.2",

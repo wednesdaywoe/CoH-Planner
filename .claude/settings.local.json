@@ -9,7 +9,11 @@
       "Bash(ls:*)",
       "Bash(grep:*)",
       "Bash(wc:*)",
-      "Bash(tree:*)"
+      "Bash(tree:*)",
+      "Bash(git push:*)",
+      "Bash(npm run lint)",
+      "Bash(npm install:*)",
+      "Bash(npm run build:*)"
     ]
   }
 }
