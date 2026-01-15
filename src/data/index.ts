@@ -11,6 +11,11 @@ export {
   getArchetype,
   getArchetypeIds,
   getArchetypesByFaction,
+  EPIC_ARCHETYPE_IDS,
+  STANDARD_ARCHETYPE_IDS,
+  isEpicArchetype,
+  getEpicArchetypes,
+  getStandardArchetypes,
 } from './archetypes';
 
 // Enhancement data (non-IO)

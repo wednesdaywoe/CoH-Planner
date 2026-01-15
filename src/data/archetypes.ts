@@ -653,6 +653,120 @@ export const ARCHETYPES: ArchetypeRegistry = {
       'stalker/willpower',
     ],
   },
+
+  // ============================================
+  // EPIC ARCHETYPES - KHELDIANS (Hero)
+  // ============================================
+
+  peacebringer: {
+    name: 'Peacebringer',
+    side: 'hero',
+    description:
+      'Kheldian shapeshifter with access to multiple forms. Can transform between human, nova (ranged), and dwarf (melee/tank) forms.',
+    inherent: {
+      name: 'Energy Flight',
+      description:
+        'Innate ability to fly. Also provides access to Nova and Dwarf transformation forms.',
+    },
+    stats: {
+      baseHP: 1017.4,
+      maxHP: 1338.6,
+      baseEndurance: 100,
+      baseRecovery: 1.67,
+      baseThreat: 1.0,
+      damageModifier: {
+        melee: 0.85,
+        ranged: 0.8,
+        aoe: 0.7,
+      },
+      buffDebuffModifier: 1.0,
+    },
+    primarySets: ['peacebringer/luminous-blast'],
+    secondarySets: ['peacebringer/luminous-aura'],
+  },
+
+  warshade: {
+    name: 'Warshade',
+    side: 'hero',
+    description:
+      'Kheldian shapeshifter that feeds on defeated enemies. Can summon pets from fallen foes and transform between forms.',
+    inherent: {
+      name: 'Shadow Step',
+      description:
+        'Innate teleportation ability. Also provides access to Nova and Dwarf transformation forms.',
+    },
+    stats: {
+      baseHP: 1017.4,
+      maxHP: 1338.6,
+      baseEndurance: 100,
+      baseRecovery: 1.67,
+      baseThreat: 1.0,
+      damageModifier: {
+        melee: 0.85,
+        ranged: 0.8,
+        aoe: 0.7,
+      },
+      buffDebuffModifier: 1.0,
+    },
+    primarySets: ['warshade/umbral-blast'],
+    secondarySets: ['warshade/umbral-aura'],
+  },
+
+  // ============================================
+  // EPIC ARCHETYPES - ARACHNOS (Villain)
+  // ============================================
+
+  'arachnos-soldier': {
+    name: 'Arachnos Soldier',
+    side: 'villain',
+    description:
+      'Versatile soldier with branching power choices. Can specialize as a Crab Spider (pets/support) or Bane Spider (stealth/melee).',
+    inherent: {
+      name: 'Conditioning',
+      description: 'Increased maximum HP and inherent resistance to status effects.',
+    },
+    stats: {
+      baseHP: 1204.8,
+      maxHP: 1606.4,
+      baseEndurance: 100,
+      baseRecovery: 1.67,
+      baseThreat: 3.0,
+      damageModifier: {
+        melee: 0.75,
+        ranged: 0.75,
+        aoe: 0.65,
+      },
+      buffDebuffModifier: 1.0,
+    },
+    primarySets: ['arachnos-soldier/soldier-training'],
+    secondarySets: ['arachnos-soldier/training-and-gadgets'],
+  },
+
+  'arachnos-widow': {
+    name: 'Arachnos Widow',
+    side: 'villain',
+    description:
+      'Versatile operative with branching power choices. Can specialize as a Fortunata (psychic powers) or Night Widow (melee assassin).',
+    inherent: {
+      name: 'Conditioning',
+      description: 'Increased maximum HP and inherent resistance to status effects.',
+    },
+    stats: {
+      baseHP: 1204.8,
+      maxHP: 1606.4,
+      baseEndurance: 100,
+      baseRecovery: 1.67,
+      baseThreat: 3.0,
+      damageModifier: {
+        melee: 0.85,
+        ranged: 0.65,
+        aoe: 0.7,
+      },
+      buffDebuffModifier: 1.0,
+    },
+    primarySets: ['arachnos-widow/widow-training'],
+    secondarySets: ['arachnos-widow/widow-teamwork'],
+  },
 };
 
 // ============================================
@@ -678,4 +792,52 @@ export function getArchetypeIds(): ArchetypeId[] {
  */
 export function getArchetypesByFaction(faction: 'hero' | 'villain'): Archetype[] {
   return Object.values(ARCHETYPES).filter((at) => at.side === faction);
+}
+
+/**
+ * Epic archetype IDs (Kheldians and Arachnos)
+ */
+export const EPIC_ARCHETYPE_IDS: ArchetypeId[] = [
+  'peacebringer',
+  'warshade',
+  'arachnos-soldier',
+  'arachnos-widow',
+];
+
+/**
+ * Standard archetype IDs (non-epic)
+ */
+export const STANDARD_ARCHETYPE_IDS: ArchetypeId[] = [
+  'blaster',
+  'controller',
+  'defender',
+  'scrapper',
+  'tanker',
+  'sentinel',
+  'brute',
+  'corruptor',
+  'dominator',
+  'mastermind',
+  'stalker',
+];
+
+/**
+ * Check if an archetype is an epic archetype
+ */
+export function isEpicArchetype(id: ArchetypeId): boolean {
+  return EPIC_ARCHETYPE_IDS.includes(id);
+}
+
+/**
+ * Get all epic archetypes
+ */
+export function getEpicArchetypes(): Archetype[] {
+  return EPIC_ARCHETYPE_IDS.map((id) => ARCHETYPES[id]);
+}
+
+/**
+ * Get all standard (non-epic) archetypes
+ */
+export function getStandardArchetypes(): Archetype[] {
+  return STANDARD_ARCHETYPE_IDS.map((id) => ARCHETYPES[id]);
 }

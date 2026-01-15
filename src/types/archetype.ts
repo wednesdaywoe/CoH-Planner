@@ -84,7 +84,13 @@ export type ArchetypeId =
   | 'corruptor'
   | 'dominator'
   | 'mastermind'
-  | 'stalker';
+  | 'stalker'
+  // Epic Archetypes - Kheldians (Hero)
+  | 'peacebringer'
+  | 'warshade'
+  // Epic Archetypes - Arachnos (Villain)
+  | 'arachnos-soldier'
+  | 'arachnos-widow';
 
 // ============================================
 // ARCHETYPE REGISTRY
