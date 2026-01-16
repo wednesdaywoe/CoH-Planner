@@ -22,3 +22,6 @@ export * from './stats';
 
 // Modal Components
 export * from './modals';
+
+// Info Components
+export * from './info';
