@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/wednesdaywoe/CoH-Planner#readme",
   "dependencies": {
+    "@tanstack/react-router": "^1.150.0",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
     "zustand": "^5.0.10"
