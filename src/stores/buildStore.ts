@@ -18,20 +18,18 @@ import type {
   Enhancement,
 } from '@/types';
 import { createEmptyBuild } from '@/types';
-import { getArchetype, getPowerset, getPowerPool } from '@/data';
-
-// ============================================
-// SLOT CONSTANTS
-// ============================================
-
-/** Maximum total enhancement slots available (67 base + accolade slots) */
-const MAX_TOTAL_SLOTS = 67;
-
-/** Maximum pools that can be selected */
-const MAX_POOLS = 4;
-
-/** Level at which Epic/Patron pools become available */
-const EPIC_POOL_LEVEL = 35;
+import {
+  getArchetype,
+  getPowerset,
+  getPowerPool,
+  TOTAL_SLOTS_AT_50,
+  MAX_POWER_POOLS,
+  EPIC_POOL_LEVEL,
+  getInherentPowers,
+  POWER_PICK_LEVELS,
+  getPowerPicksAtLevel,
+} from '@/data';
+import type { InherentPowerDef } from '@/data';
 
 // ============================================
 // POWER CATEGORY TYPE
@@ -224,6 +222,86 @@ function updateSetTracking(build: Build): Record<string, SetTracking> {
   return sets;
 }
 
+/**
+ * Convert an InherentPowerDef to a SelectedPower
+ */
+function createInherentSelectedPower(def: InherentPowerDef): SelectedPower {
+  return {
+    name: def.name,
+    fullName: def.fullName,
+    description: def.description,
+    icon: def.icon,
+    powerType: def.powerType,
+    powerSet: 'Inherent',
+    level: 1, // All inherents are granted at level 1
+    available: -1, // Mark as inherent (always available)
+    maxSlots: def.maxSlots,
+    // Cast as the proper types - inherent powers use simplified enhancement lists
+    allowedEnhancements: def.allowedEnhancements as SelectedPower['allowedEnhancements'],
+    allowedSetCategories: def.allowedSetCategories as SelectedPower['allowedSetCategories'],
+    slots: [null], // Start with one empty slot
+    effects: {}, // Inherent powers don't have combat effects to display
+  };
+}
+
+/**
+ * Get all inherent powers as SelectedPower objects
+ */
+function getInherentSelectedPowers(): SelectedPower[] {
+  return getInherentPowers().map(createInherentSelectedPower);
+}
+
+/**
+ * Count total selected powers (excluding inherents)
+ */
+function countSelectedPowers(build: Build): number {
+  return (
+    build.primary.powers.length +
+    build.secondary.powers.length +
+    build.pools.reduce((sum, pool) => sum + pool.powers.length, 0) +
+    (build.epicPool?.powers.length ?? 0)
+  );
+}
+
+/**
+ * Get the next level that grants a power pick after the current level
+ */
+function getNextPowerPickLevel(currentLevel: number): number {
+  for (const level of POWER_PICK_LEVELS) {
+    if (level > currentLevel) {
+      return level;
+    }
+  }
+  return 50; // Max level
+}
+
+/**
+ * Check if level should auto-advance based on power picks used
+ * Returns the new level if should advance, or current level if not
+ */
+function calculateAutoAdvanceLevel(build: Build): number {
+  // Level 1 special case: need 2 powers (1 primary + 1 secondary)
+  if (build.level === 1) {
+    const hasPrimary = build.primary.powers.length >= 1;
+    const hasSecondary = build.secondary.powers.length >= 1;
+    if (hasPrimary && hasSecondary) {
+      return getNextPowerPickLevel(build.level);
+    }
+    return build.level;
+  }
+
+  // For levels 2+, use standard power pick count
+  const totalPowers = countSelectedPowers(build);
+  const allowedPicks = getPowerPicksAtLevel(build.level);
+
+  // If we've used all power picks at this level, advance to next power pick level
+  if (totalPowers >= allowedPicks) {
+    return getNextPowerPickLevel(build.level);
+  }
+
+  return build.level;
+}
+
 // ============================================
 // STORE CREATION
 // ============================================
@@ -263,6 +341,7 @@ export const useBuildStore = create<BuildStore>()(
             secondary: { id: null, name: '', powers: [] },
             pools: [],
             epicPool: null,
+            inherents: [], // Clear inherents when archetype changes
           },
         }));
       },
@@ -276,6 +355,7 @@ export const useBuildStore = create<BuildStore>()(
             secondary: { id: null, name: '', powers: [] },
             pools: [],
             epicPool: null,
+            inherents: [], // Clear inherents
           },
         })),
 
@@ -284,32 +364,46 @@ export const useBuildStore = create<BuildStore>()(
         const powerset = getPowerset(powersetId);
         if (!powerset) return;
 
-        set((state) => ({
-          build: {
+        set((state) => {
+          const newBuild = {
             ...state.build,
             primary: {
               id: powersetId,
               name: powerset.name,
               powers: [], // Clear powers when powerset changes
             },
-          },
-        }));
+          };
+
+          // Auto-grant inherent powers if both powersets are now selected
+          if (newBuild.secondary.id && newBuild.inherents.length === 0) {
+            newBuild.inherents = getInherentSelectedPowers();
+          }
+
+          return { build: newBuild };
+        });
       },
 
       setSecondary: (powersetId) => {
         const powerset = getPowerset(powersetId);
         if (!powerset) return;
 
-        set((state) => ({
-          build: {
+        set((state) => {
+          const newBuild = {
             ...state.build,
             secondary: {
               id: powersetId,
               name: powerset.name,
               powers: [],
             },
-          },
-        }));
+          };
+
+          // Auto-grant inherent powers if both powersets are now selected
+          if (newBuild.primary.id && newBuild.inherents.length === 0) {
+            newBuild.inherents = getInherentSelectedPowers();
+          }
+
+          return { build: newBuild };
+        });
       },
 
       // Powers
@@ -354,6 +448,12 @@ export const useBuildStore = create<BuildStore>()(
             case 'inherent':
               newBuild.inherents = [...newBuild.inherents, power];
               break;
+          }
+
+          // Auto-advance level if all power picks for current level have been used
+          // Only auto-advance for primary/secondary/pool powers (not inherents)
+          if (category !== 'inherent') {
+            newBuild.level = calculateAutoAdvanceLevel(newBuild);
           }
 
           return { build: newBuild };
@@ -446,7 +546,7 @@ export const useBuildStore = create<BuildStore>()(
       // Pools
       addPool: (poolId) => {
         const state = get();
-        if (state.build.pools.length >= MAX_POOLS) return false;
+        if (state.build.pools.length >= MAX_POWER_POOLS) return false;
 
         const pool = getPowerPool(poolId);
         if (!pool) return false;
@@ -519,7 +619,7 @@ export const useBuildStore = create<BuildStore>()(
         if (power.slots.length >= power.maxSlots) return false;
 
         // Check total slot limit
-        if (countTotalSlots(state.build) >= MAX_TOTAL_SLOTS) return false;
+        if (countTotalSlots(state.build) >= TOTAL_SLOTS_AT_50) return false;
 
         set((s) => {
           const newBuild = { ...s.build };
@@ -810,7 +910,7 @@ export const useBuildStore = create<BuildStore>()(
       // Computed
       getTotalSlotsUsed: () => countTotalSlots(get().build),
 
-      getSlotsRemaining: () => MAX_TOTAL_SLOTS - countTotalSlots(get().build),
+      getSlotsRemaining: () => TOTAL_SLOTS_AT_50 - countTotalSlots(get().build),
 
       getActiveSetBonuses: () => {
         const bonuses: Array<{ setId: string; bonusIndex: number }> = [];
@@ -834,11 +934,11 @@ export const useBuildStore = create<BuildStore>()(
 
         return (
           found.power.slots.length < found.power.maxSlots &&
-          countTotalSlots(state.build) < MAX_TOTAL_SLOTS
+          countTotalSlots(state.build) < TOTAL_SLOTS_AT_50
         );
       },
 
-      canAddPool: () => get().build.pools.length < MAX_POOLS,
+      canAddPool: () => get().build.pools.length < MAX_POWER_POOLS,
 
       canSelectEpicPool: () => get().build.level >= EPIC_POOL_LEVEL,
 

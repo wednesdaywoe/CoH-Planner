@@ -149,7 +149,12 @@ function StatsSection({ title, children }: StatsSectionProps) {
       <h4 className="text-xs font-medium text-gray-500 uppercase tracking-wide mb-2">
         {title}
       </h4>
-      <div className="space-y-2">{children}</div>
+      <div
+        className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2"
+        // Responsive: 1 column on mobile, 2 columns on sm+ screens
+      >
+        {children}
+      </div>
     </div>
   );
 }

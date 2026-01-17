@@ -1,11 +1,10 @@
 /**
  * AvailablePowers component - shows powers available to select
+ * Renders as a section within the Available Powers column (not a full column itself)
  */
 
 import { useBuildStore, useUIStore } from '@/stores';
 import { getPowerset } from '@/data';
-import { PowerColumn, PowerColumnEmpty } from './PowerColumn';
-import { Tooltip } from '@/components/ui';
 import type { Power } from '@/types';
 
 interface AvailablePowersProps {
@@ -23,116 +22,183 @@ export function AvailablePowers({
 }: AvailablePowersProps) {
   const build = useBuildStore((s) => s.build);
   const setInfoPanelContent = useUIStore((s) => s.setInfoPanelContent);
+  const lockInfoPanel = useUIStore((s) => s.lockInfoPanel);
+  const infoPanelLocked = useUIStore((s) => s.infoPanel.locked);
 
-  if (!powersetId) {
-    return (
-      <PowerColumn title={category === 'primary' ? 'Primary Powers' : 'Secondary Powers'}>
-        <PowerColumnEmpty message="Select an archetype and powerset" />
-      </PowerColumn>
-    );
-  }
+  const archetypeId = build.archetype.id;
+  const categoryLabel = category === 'primary' ? 'Primary' : 'Secondary';
 
-  const powerset = getPowerset(powersetId);
-  if (!powerset) {
-    return (
-      <PowerColumn title={category === 'primary' ? 'Primary Powers' : 'Secondary Powers'}>
-        <PowerColumnEmpty message="Powerset not found" />
-      </PowerColumn>
-    );
-  }
+  // Both powersets must be selected before powers can be chosen
+  const bothPowersetsSelected = build.primary.id && build.secondary.id;
 
-  const availablePowers = powerset.powers.filter(
-    (p) => p.available <= build.level && p.available >= 0
-  );
+  const powerset = powersetId ? getPowerset(powersetId) : null;
+  // Show ALL powers, not just ones available at current level
+  // Powers not yet available will be shown as disabled
+  const allPowers = powerset ? powerset.powers : [];
   const selectedSet = new Set(selectedPowerNames);
 
+  // At level 1, special rules apply:
+  // - Only the first 2 powers (available=0) can be selected
+  // - Player must select exactly 1 power from primary and 1 from secondary
+  // - If first pick was from one category, second pick MUST be from the other
+  const isLevel1 = build.level === 1;
+  const currentCategoryPowerCount = selectedPowerNames.length;
+  const hasPickedPowerThisCategory = currentCategoryPowerCount > 0;
+
+  // Check if the OTHER category has a power selected (for level 1 blocking)
+  const otherCategoryHasPower = category === 'primary'
+    ? build.secondary.powers.length > 0
+    : build.primary.powers.length > 0;
+
+  // At level 1, if we already picked from THIS category but not the other,
+  // block further picks from this category until the other is selected
+  const isLevel1BlockedForSecondPick = isLevel1 && hasPickedPowerThisCategory && !otherCategoryHasPower;
+
   const handlePowerHover = (power: Power) => {
-    setInfoPanelContent({
-      type: 'power',
-      powerName: power.name,
-      powerSet: powersetId,
-    });
+    if (powersetId && !infoPanelLocked) {
+      setInfoPanelContent({
+        type: 'power',
+        powerName: power.name,
+        powerSet: powersetId,
+      });
+    }
   };
 
-  return (
-    <PowerColumn
-      title={powerset.name}
-      subtitle={`${category === 'primary' ? 'Primary' : 'Secondary'} Powerset`}
-    >
-      {availablePowers.length === 0 ? (
-        <PowerColumnEmpty message="No powers available at this level" />
-      ) : (
-        <div className="space-y-1">
-          {availablePowers.map((power) => {
-            const isSelected = selectedSet.has(power.name);
+  const handlePowerRightClick = (e: React.MouseEvent, power: Power) => {
+    e.preventDefault();
+    if (powersetId) {
+      lockInfoPanel({
+        type: 'power',
+        powerName: power.name,
+        powerSet: powersetId,
+      });
+    }
+  };
 
-            return (
-              <Tooltip
-                key={power.name}
-                content={<PowerTooltipContent power={power} />}
-                position="right"
-              >
-                <button
-                  onClick={() => !isSelected && onSelectPower(power)}
-                  onMouseEnter={() => handlePowerHover(power)}
-                  disabled={isSelected}
-                  className={`
-                    w-full flex items-center gap-2 p-2 rounded
-                    transition-colors text-left
-                    ${
-                      isSelected
-                        ? 'bg-blue-900/30 border border-blue-600/50 cursor-not-allowed'
-                        : 'bg-gray-800 border border-gray-700 hover:border-blue-500 cursor-pointer'
-                    }
-                  `}
-                >
-                  <img
-                    src={power.icon || '/img/Unknown.png'}
-                    alt=""
-                    className="w-6 h-6 rounded"
-                    onError={(e) => {
-                      (e.target as HTMLImageElement).src = '/img/Unknown.png';
-                    }}
-                  />
-                  <div className="min-w-0 flex-1">
-                    <div className="text-sm text-gray-200 truncate">{power.name}</div>
-                    <div className="text-xs text-gray-500">
-                      Lvl {power.available} • {power.powerType}
-                    </div>
-                  </div>
-                  {isSelected && (
-                    <span className="text-xs text-blue-400">Selected</span>
-                  )}
-                </button>
-              </Tooltip>
-            );
-          })}
+  // No archetype selected
+  if (!archetypeId) {
+    return (
+      <div className="mb-3">
+        <div className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-1">
+          {categoryLabel}
+        </div>
+        <div className="text-xs text-slate-500 italic py-2">
+          Select an archetype first
+        </div>
+      </div>
+    );
+  }
+
+  // Archetype selected but no powerset
+  if (!powersetId) {
+    return (
+      <div className="mb-3">
+        <div className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-1">
+          {categoryLabel}
+        </div>
+        <div className="text-xs text-slate-500 italic py-2">
+          Select a {category} powerset
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="mb-3">
+      {/* Section header with powerset name */}
+      <div className="flex items-center justify-between mb-1">
+        <div className="text-xs font-semibold text-blue-400 uppercase tracking-wide">
+          {powerset?.name || categoryLabel}
+        </div>
+      </div>
+
+      {/* Show message if both powersets not selected */}
+      {!bothPowersetsSelected && (
+        <div className="text-xs text-amber-500/70 italic py-1 mb-1">
+          Select both Primary and Secondary to choose powers
         </div>
       )}
-    </PowerColumn>
-  );
-}
 
-interface PowerTooltipContentProps {
-  power: Power;
-}
+      {/* Level 1 instruction */}
+      {bothPowersetsSelected && isLevel1 && !hasPickedPowerThisCategory && !otherCategoryHasPower && (
+        <div className="text-xs text-emerald-500/70 italic py-1 mb-1">
+          Pick 1 power from the first two
+        </div>
+      )}
+      {bothPowersetsSelected && isLevel1 && !hasPickedPowerThisCategory && otherCategoryHasPower && (
+        <div className="text-xs text-amber-400/80 italic py-1 mb-1">
+          Now pick your {categoryLabel.toLowerCase()} power
+        </div>
+      )}
+      {bothPowersetsSelected && isLevel1 && hasPickedPowerThisCategory && (
+        <div className="text-xs text-slate-500 italic py-1 mb-1">
+          ✓ {categoryLabel} power selected
+        </div>
+      )}
 
-function PowerTooltipContent({ power }: PowerTooltipContentProps) {
-  return (
-    <div className="max-w-xs">
-      <div className="font-medium text-white">{power.name}</div>
-      <div className="text-xs text-gray-400 mb-1">
-        Level {power.available} • {power.powerType}
-      </div>
-      <p className="text-sm text-gray-300">{power.description}</p>
-      {power.effects && (
-        <div className="mt-2 text-xs text-gray-400">
-          {power.effects.recharge && (
-            <div>Recharge: {power.effects.recharge}s</div>
-          )}
-          {power.effects.enduranceCost && (
-            <div>End Cost: {power.effects.enduranceCost}</div>
-          )}
+      {/* Power list */}
+      {allPowers.length === 0 ? (
+        <div className="text-xs text-slate-500 italic py-1">
+          No powers in this powerset
+        </div>
+      ) : (
+        <div className="space-y-0.5">
+          {allPowers.map((power, index) => {
+            const isSelected = selectedSet.has(power.name);
+            // available is 0-indexed: available=0 means level 1, available=1 means level 2
+            const isAvailable = power.available < build.level;
+
+            // Level 1 special restrictions:
+            // - Only first 2 powers can be selected (index 0 or 1)
+            // - Can only pick 1 power total from this category
+            // - If first pick was from this category, block until other category picks
+            const isLevel1Restricted = isLevel1 && (index > 1 || hasPickedPowerThisCategory || isLevel1BlockedForSecondPick);
+
+            // Block selection until both powersets are chosen
+            const isDisabled = isSelected || !isAvailable || !bothPowersetsSelected || isLevel1Restricted;
+
+            return (
+              <button
+                key={power.name}
+                onClick={() => !isDisabled && onSelectPower(power)}
+                onMouseEnter={() => handlePowerHover(power)}
+                onContextMenu={(e) => handlePowerRightClick(e, power)}
+                disabled={isDisabled}
+                title="Right-click to lock power info"
+                className={`
+                  w-full flex items-center gap-1.5 px-1.5 py-0.5 rounded-sm
+                  transition-colors text-left text-xs
+                  ${
+                    isSelected
+                      ? 'bg-blue-900/30 border border-blue-600/50 opacity-60'
+                      : !isAvailable
+                        ? 'bg-slate-800/50 border border-slate-700/50 opacity-40 cursor-not-allowed'
+                        : 'bg-slate-800 border border-slate-700 hover:border-blue-500 cursor-pointer'
+                  }
+                `}
+              >
+                <img
+                  src={power.icon || '/img/Unknown.png'}
+                  alt=""
+                  className="w-4 h-4 rounded-sm flex-shrink-0"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src = '/img/Unknown.png';
+                  }}
+                />
+                <span className="truncate flex-1 text-slate-200">
+                  {power.name}
+                </span>
+                <span
+                  className={`text-[10px] flex-shrink-0 ${
+                    isAvailable ? 'text-slate-500' : 'text-amber-500/70'
+                  }`}
+                  title={isAvailable ? `Available at level ${power.available + 1}` : `Requires level ${power.available + 1}`}
+                >
+                  L{power.available + 1}
+                </span>
+              </button>
+            );
+          })}
         </div>
       )}
     </div>

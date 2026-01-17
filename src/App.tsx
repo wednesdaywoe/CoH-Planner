@@ -2,6 +2,7 @@
  * App - Root application component with router
  */
 
+
 import { RouterProvider } from '@tanstack/react-router';
 import { router } from './router';
 

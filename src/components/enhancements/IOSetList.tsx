@@ -41,6 +41,7 @@ interface IOSetListItemProps {
 }
 
 function IOSetListItem({ set, isSelected, onClick }: IOSetListItemProps) {
+  const iconPath = set.icon ? `/img/Enhancements/${set.icon}` : '/img/Unknown.png';
   return (
     <button
       onClick={onClick}
@@ -55,7 +56,7 @@ function IOSetListItem({ set, isSelected, onClick }: IOSetListItemProps) {
       `}
     >
       <img
-        src={set.icon || '/img/Unknown.png'}
+        src={iconPath}
         alt=""
         className="w-8 h-8 rounded"
         onError={(e) => {

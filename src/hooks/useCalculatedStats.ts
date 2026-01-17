@@ -190,6 +190,11 @@ function applySetBonusToStats(
       stats.globalRecharge += value;
     }
 
+    // ToHit
+    if (lowerStat.includes('tohit') || lowerStat.includes('to hit')) {
+      stats.toHitBuff += value;
+    }
+
     // Recovery
     if (lowerStat.includes('recovery')) {
       stats.recoveryBuff += value;

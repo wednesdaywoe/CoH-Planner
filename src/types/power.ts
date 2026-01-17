@@ -45,7 +45,7 @@ export interface DotEffect {
 }
 
 // ============================================
-// PROTECTION EFFECTS
+// PROTECTION EFFECTS (mez protection magnitude)
 // ============================================
 
 export interface ProtectionEffects {
@@ -56,6 +56,55 @@ export interface ProtectionEffects {
   confuse?: number;
   fear?: number;
   knockback?: number;
+}
+
+// ============================================
+// DEFENSE/RESISTANCE BY DAMAGE TYPE
+// ============================================
+
+export interface DefenseByType {
+  smashing?: number;
+  lethal?: number;
+  fire?: number;
+  cold?: number;
+  energy?: number;
+  negative?: number;
+  psionic?: number;
+  toxic?: number;
+  melee?: number;
+  ranged?: number;
+  aoe?: number;
+}
+
+export interface ResistanceByType {
+  smashing?: number;
+  lethal?: number;
+  fire?: number;
+  cold?: number;
+  energy?: number;
+  negative?: number;
+  psionic?: number;
+  toxic?: number;
+}
+
+// ============================================
+// HEALING EFFECT
+// ============================================
+
+export interface HealingEffect {
+  scale: number;
+  perTarget?: boolean;
+}
+
+// ============================================
+// DEBUFF RESISTANCE
+// ============================================
+
+export interface DebuffResistance {
+  defense?: number;
+  recharge?: number;
+  movement?: number;
+  tohit?: number;
 }
 
 // ============================================
@@ -96,12 +145,70 @@ export interface PowerEffects {
   dot?: DotEffect;
   /** Duration of buffs/debuffs */
   buffDuration?: number;
+
+  // === BUFF EFFECTS ===
   /** ToHit buff value */
   tohitBuff?: number;
   /** Damage buff value */
   damageBuff?: number;
+  /** Defense buff by damage type */
+  defenseBuff?: number;
+
+  // === DEBUFF EFFECTS ===
+  /** ToHit debuff value */
+  tohitDebuff?: number;
+  /** Defense debuff value */
+  defenseDebuff?: number;
+  /** Resistance debuff value */
+  resistanceDebuff?: number;
+
+  // === DEFENSE & RESISTANCE (armor sets) ===
+  /** Defense values by damage type */
+  defense?: DefenseByType;
+  /** Resistance values by damage type */
+  resistance?: ResistanceByType;
+  /** Debuff resistance */
+  debuffResistance?: DebuffResistance;
+
+  // === HEALING ===
+  /** Healing effect */
+  healing?: HealingEffect;
+
+  // === MEZ EFFECTS (control/stuns) ===
+  /** Stun magnitude */
+  stun?: number;
+  /** Stun duration in seconds */
+  stunDuration?: number;
+  /** Hold magnitude */
+  hold?: number;
+  /** Hold duration in seconds */
+  holdDuration?: number;
+  /** Immobilize magnitude */
+  immobilize?: number;
+  /** Immobilize duration in seconds */
+  immobilizeDuration?: number;
+  /** Sleep magnitude */
+  sleep?: number;
+  /** Sleep duration in seconds */
+  sleepDuration?: number;
+  /** Fear magnitude */
+  fear?: number;
+  /** Fear duration in seconds */
+  fearDuration?: number;
+  /** Confuse magnitude */
+  confuse?: number;
+  /** Confuse duration in seconds */
+  confuseDuration?: number;
+  /** Knockback magnitude */
+  knockback?: number;
+  /** Knockback duration */
+  knockbackDuration?: number;
+
+  // === PROTECTION (mez protection for armors) ===
   /** Protection values granted */
   protection?: ProtectionEffects;
+
+  // === MOVEMENT ===
   /** Run speed effect */
   runSpeed?: MovementEffect;
   /** Jump height effect */

@@ -1,14 +1,15 @@
 /**
- * Header component - top bar with build name, archetype, and controls
+ * Header component - top bar with build name, archetype, powersets, and controls
+ * Matches the legacy app layout with archetype and powerset selectors in the header
  */
 
 import { useBuildStore, useUIStore } from '@/stores';
-import { getArchetype } from '@/data';
-import { Button, Select, Slider, Toggle } from '@/components/ui';
-import type { ArchetypeId } from '@/types';
+import { getPowersetsForArchetype, MAX_LEVEL } from '@/data';
+import { Button, Select, Slider } from '@/components/ui';
+import type { ArchetypeId, Powerset } from '@/types';
 
 const ARCHETYPE_OPTIONS = [
-  { value: '', label: 'Select Archetype' },
+  { value: '', label: 'Select Archetype...' },
   // Heroes
   { value: 'blaster', label: 'Blaster' },
   { value: 'controller', label: 'Controller' },
@@ -29,16 +30,135 @@ const ARCHETYPE_OPTIONS = [
   { value: 'arachnos-widow', label: 'Arachnos Widow' },
 ];
 
+// Support/buff/debuff powerset patterns (primary for Defender, secondary for most others)
+const SUPPORT_PATTERNS = [
+  'affinity',
+  'miasma',
+  'kinetics',
+  'radiation emission',
+  'cold domination',
+  'force field',
+  'empathy',
+  'pain domination',
+  'nature affinity',
+  'poison',
+  'sonic resonance',
+  'storm summoning',
+  'thermal radiation',
+  'time manipulation',
+  'traps',
+  'trick arrow',
+];
+
+// Armor/defense powerset patterns (primary for Tanker/Brute, secondary for Scrapper/Stalker)
+const ARMOR_PATTERNS = [
+  'aura',
+  'ninjitsu',
+  'regeneration',
+  'shield defense',
+  'super reflexes',
+  'willpower',
+  'bio armor',
+  'bio organic armor',
+  'dark armor',
+  'electric armor',
+  'energy aura',
+  'fiery aura',
+  'ice armor',
+  'invulnerability',
+  'radiation armor',
+  'stone armor',
+  'psionic armor',
+];
+
+// Manipulation patterns (always secondary)
+const MANIPULATION_PATTERNS = [
+  'manipulation',
+  'mastery',
+  'devices',
+  'martial combat',
+];
+
+/**
+ * Determine if a powerset is primary based on archetype
+ * - Defender: Support is PRIMARY, Blast is SECONDARY
+ * - Tanker: Armor is PRIMARY, Melee is SECONDARY
+ * - Brute: Melee is PRIMARY, Armor is SECONDARY
+ * - Scrapper/Stalker: Melee is PRIMARY, Armor is SECONDARY
+ * - Most others: Attack is PRIMARY, Support/Manipulation is SECONDARY
+ */
+function isPrimaryPowerset(powerset: Powerset, archetypeId: string | null): boolean {
+  const nameLower = powerset.name.toLowerCase();
+
+  // Check if it's a support set
+  const isSupport = SUPPORT_PATTERNS.some(pattern => nameLower.includes(pattern));
+
+  // Check if it's an armor set
+  const isArmor = ARMOR_PATTERNS.some(pattern => nameLower.includes(pattern));
+
+  // Check if it's a manipulation set (always secondary)
+  const isManipulation = MANIPULATION_PATTERNS.some(pattern => nameLower.includes(pattern));
+
+  // Special handling by archetype
+  switch (archetypeId) {
+    case 'defender':
+      // Defender: Support is PRIMARY, Blast is SECONDARY
+      return isSupport;
+
+    case 'tanker':
+      // Tanker: Armor is PRIMARY, Melee is SECONDARY
+      return isArmor;
+
+    case 'brute':
+    case 'scrapper':
+    case 'stalker':
+      // Melee is PRIMARY, Armor is SECONDARY
+      return !isArmor && !isManipulation;
+
+    default:
+      // Default: Attack/damage sets are primary, support/manipulation/armor are secondary
+      if (isManipulation || isSupport || isArmor) {
+        return false;
+      }
+      return true;
+  }
+}
+
 export function Header() {
   const build = useBuildStore((s) => s.build);
   const setArchetype = useBuildStore((s) => s.setArchetype);
   const setBuildName = useBuildStore((s) => s.setBuildName);
+  const setPrimary = useBuildStore((s) => s.setPrimary);
+  const setSecondary = useBuildStore((s) => s.setSecondary);
+
   const setLevel = useBuildStore((s) => s.setLevel);
+  const resetBuild = useBuildStore((s) => s.resetBuild);
 
   const globalIOLevel = useUIStore((s) => s.globalIOLevel);
   const setGlobalIOLevel = useUIStore((s) => s.setGlobalIOLevel);
-  const attunementEnabled = useUIStore((s) => s.attunementEnabled);
-  const toggleAttunement = useUIStore((s) => s.toggleAttunement);
+
+  const archetypeId = build.archetype.id;
+
+  // Get powerset options based on selected archetype
+  const allPowersets = archetypeId ? getPowersetsForArchetype(archetypeId) : [];
+  const primaryPowersets = allPowersets.filter((ps) => isPrimaryPowerset(ps, archetypeId));
+  const secondaryPowersets = allPowersets.filter((ps) => !isPrimaryPowerset(ps, archetypeId));
+
+  const primaryOptions = [
+    { value: '', label: 'Select Primary...' },
+    ...primaryPowersets.filter((ps) => ps.id).map((ps) => ({
+      value: ps.id as string,
+      label: ps.name,
+    })),
+  ];
+
+  const secondaryOptions = [
+    { value: '', label: 'Select Secondary...' },
+    ...secondaryPowersets.filter((ps) => ps.id).map((ps) => ({
+      value: ps.id as string,
+      label: ps.name,
+    })),
+  ];
 
   const handleArchetypeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const value = e.target.value;
@@ -47,81 +167,110 @@ export function Header() {
     }
   };
 
+  const handlePrimaryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setPrimary(e.target.value);
+  };
+
+  const handleSecondaryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setSecondary(e.target.value);
+  };
+
   return (
-    <header className="bg-gray-900 border-b border-gray-700 px-4 py-3">
-      <div className="flex items-center justify-between gap-4">
-        {/* Left section: Build name and archetype */}
-        <div className="flex items-center gap-4">
-          <input
-            type="text"
-            value={build.name}
-            onChange={(e) => setBuildName(e.target.value)}
-            placeholder="Build Name"
-            className="bg-gray-800 border border-gray-600 rounded px-3 py-1.5 text-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
+    <header className="bg-slate-800 border-b border-slate-700 px-4 py-2">
+      <div className="flex items-center gap-2 flex-wrap">
+        {/* Build name */}
+        <input
+          type="text"
+          id="build-name"
+          name="build-name"
+          value={build.name}
+          onChange={(e) => setBuildName(e.target.value)}
+          placeholder="Build Name"
+          className="bg-slate-700 border border-slate-600 rounded px-3 py-1.5 text-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 w-40 min-w-[120px]"
+        />
 
-          <Select
-            options={ARCHETYPE_OPTIONS}
-            value={build.archetype?.name ? getArchetypeIdFromName(build.archetype.name) : ''}
-            onChange={handleArchetypeChange}
-            className="w-44"
-          />
+        {/* Archetype selector */}
+        <Select
+          id="archetype-select"
+          name="archetype"
+          options={ARCHETYPE_OPTIONS}
+          value={archetypeId || ''}
+          onChange={handleArchetypeChange}
+          className="max-w-[200px] min-w-[125px]"
+        />
 
-          {build.archetype.id && (
-            <span className="text-gray-400 text-sm">
-              {getArchetype(build.archetype.id)?.side === 'hero' ? 'Hero' : 'Villain'}
-            </span>
-          )}
-        </div>
+        {/* Primary powerset selector */}
+        <Select
+          id="primary-select"
+          name="primary"
+          options={archetypeId ? primaryOptions : [{ value: '', label: 'Select Primary...' }]}
+          value={build.primary.id || ''}
+          onChange={handlePrimaryChange}
+          className="max-w-[200px] min-w-[125px]"
+          disabled={!archetypeId}
+        />
 
-        {/* Center section: Level */}
-        <div className="flex items-center gap-4">
-          <div className="flex items-center gap-2">
-            <span className="text-sm text-gray-400">Level:</span>
-            <span className="text-lg font-bold text-white">{build.level}</span>
-          </div>
+        {/* Secondary powerset selector */}
+        <Select
+          id="secondary-select"
+          name="secondary"
+          options={archetypeId ? secondaryOptions : [{ value: '', label: 'Select Secondary...' }]}
+          value={build.secondary.id || ''}
+          onChange={handleSecondaryChange}
+          className="max-w-[200px] min-w-[125px]"
+          disabled={!archetypeId}
+        />
+
+        {/* Level selector */}
+        <div className="flex items-center gap-1 bg-slate-700/50 px-2 py-1.5 rounded border border-slate-600">
+          <span className="text-xs text-slate-400 font-semibold uppercase">Level</span>
+          <span className="text-sm font-bold text-emerald-400 w-6">{build.level}</span>
           <Slider
             value={build.level}
             min={1}
-            max={50}
+            max={MAX_LEVEL}
             onChange={(e) => setLevel(Number(e.target.value))}
+            className="w-24"
             showValue={false}
-            className="w-32"
+            showRange={false}
           />
         </div>
 
-        {/* Right section: IO Level and settings */}
-        <div className="flex items-center gap-4">
-          <div className="flex items-center gap-2">
-            <span className="text-sm text-gray-400">IO Level:</span>
-            <Slider
-              value={globalIOLevel}
-              min={10}
-              max={50}
-              onChange={(e) => setGlobalIOLevel(Number(e.target.value))}
-              className="w-24"
-            />
-          </div>
-
-          <Toggle
-            checked={attunementEnabled}
-            onChange={toggleAttunement}
-            label="Attuned"
+        {/* IO Level slider */}
+        <div className="flex items-center gap-1 bg-slate-700/50 px-2 py-1.5 rounded border border-slate-600">
+          <span className="text-xs text-slate-400 font-semibold uppercase">IO</span>
+          <span className="text-sm font-bold text-blue-400 w-6">{globalIOLevel}</span>
+          <Slider
+            value={globalIOLevel}
+            min={10}
+            max={50}
+            onChange={(e) => setGlobalIOLevel(Number(e.target.value))}
+            className="w-20"
+            showValue={false}
+            showRange={false}
           />
-
-          <Button variant="secondary" size="sm">
-            Import/Export
-          </Button>
         </div>
+
+        {/* Import/Export/Reset */}
+        <Button variant="secondary" size="sm">
+          Export
+        </Button>
+        <Button variant="secondary" size="sm">
+          Import
+        </Button>
+        <Button
+          variant="secondary"
+          size="sm"
+          onClick={() => {
+            if (window.confirm('Are you sure you want to reset? This will clear your entire build.')) {
+              resetBuild();
+            }
+          }}
+          title="Reset build and start fresh"
+        >
+          New
+        </Button>
       </div>
     </header>
   );
-}
-
-/**
- * Helper to get archetype ID from display name
- * This is a workaround until we store the ID in the build
- */
-function getArchetypeIdFromName(name: string): string {
-  return name.toLowerCase().replace(/\s+/g, '-');
 }

@@ -15,6 +15,10 @@ import type {
   DamageType,
   TargetType,
   EffectArea,
+  DefenseByType,
+  ResistanceByType,
+  HealingEffect,
+  DebuffResistance,
 } from '@/types';
 import { POWERSETS_RAW } from './powersets-raw';
 
@@ -45,6 +49,11 @@ interface LegacyDotEffect {
   ticks: number;
 }
 
+interface LegacyHealingEffect {
+  scale: number;
+  perTarget?: boolean;
+}
+
 interface LegacyPowerEffects {
   accuracy?: number;
   range?: number;
@@ -55,9 +64,38 @@ interface LegacyPowerEffects {
   damage?: LegacyDamageEffect | LegacyMultiDamageEffect;
   dotDamage?: LegacyDotEffect;
   buffDuration?: number;
+  // Buffs
   tohitBuff?: number;
   damageBuff?: number;
+  defenseBuff?: number;
+  // Debuffs
+  tohitDebuff?: number;
+  defenseDebuff?: number;
+  resistanceDebuff?: number;
+  // Defense & Resistance (armor sets)
+  defense?: Record<string, number>;
+  resistance?: Record<string, number>;
+  debuffResistance?: Record<string, number>;
+  // Healing
+  healing?: LegacyHealingEffect;
+  // Mez effects
+  stun?: number;
+  stunDuration?: number;
+  hold?: number;
+  holdDuration?: number;
+  immobilize?: number;
+  immobilizeDuration?: number;
+  sleep?: number;
+  sleepDuration?: number;
+  fear?: number;
+  fearDuration?: number;
+  confuse?: number;
+  confuseDuration?: number;
+  knockback?: number;
+  knockbackDuration?: number;
+  // Mez protection
   protection?: Record<string, number>;
+  // Movement
   runSpeed?: { scale: number; table?: string };
   jumpHeight?: { scale: number; table?: string };
   jumpSpeed?: { scale: number; table?: string };
@@ -108,6 +146,8 @@ type LegacyPowersetRegistry = Record<string, LegacyPowerset>;
  * Transform legacy power to typed Power
  */
 function transformPower(legacy: LegacyPower): Power {
+  const effects = legacy.effects || {};
+
   return {
     name: legacy.name,
     available: legacy.available,
@@ -117,33 +157,86 @@ function transformPower(legacy: LegacyPower): Power {
     description: legacy.description,
     powerType: legacy.powerType as PowerType,
     effects: {
-      accuracy: legacy.effects.accuracy,
-      range: legacy.effects.range,
-      recharge: legacy.effects.recharge,
-      enduranceCost: legacy.effects.endurance,
-      castTime: legacy.effects.cast || legacy.effects.activationTime,
-      damage: legacy.effects.damage
-        ? 'type' in legacy.effects.damage
+      // Base stats
+      accuracy: effects.accuracy,
+      range: effects.range,
+      recharge: effects.recharge,
+      enduranceCost: effects.endurance,
+      castTime: effects.cast || effects.activationTime,
+      radius: effects.radius,
+
+      // Damage
+      damage: effects.damage
+        ? 'type' in effects.damage
           ? {
-              type: legacy.effects.damage.type as DamageType,
-              scale: legacy.effects.damage.scale,
+              type: effects.damage.type as DamageType,
+              scale: effects.damage.scale,
             }
           : {
-              types: (legacy.effects.damage as LegacyMultiDamageEffect).types.map((t) => ({
+              types: (effects.damage as LegacyMultiDamageEffect).types.map((t) => ({
                 type: t.type as DamageType,
                 scale: t.scale,
               })),
-              scale: (legacy.effects.damage as LegacyMultiDamageEffect).scale,
+              scale: (effects.damage as LegacyMultiDamageEffect).scale,
             }
         : undefined,
-      dot: legacy.effects.dotDamage
+      dot: effects.dotDamage
         ? {
-            type: legacy.effects.dotDamage.type as DamageType,
-            scale: legacy.effects.dotDamage.scale,
-            ticks: legacy.effects.dotDamage.ticks,
+            type: effects.dotDamage.type as DamageType,
+            scale: effects.dotDamage.scale,
+            ticks: effects.dotDamage.ticks,
           }
         : undefined,
-      buffDuration: legacy.effects.buffDuration,
+
+      // Buff duration
+      buffDuration: effects.buffDuration,
+
+      // Buffs
+      tohitBuff: effects.tohitBuff,
+      damageBuff: effects.damageBuff,
+      defenseBuff: effects.defenseBuff,
+
+      // Debuffs
+      tohitDebuff: effects.tohitDebuff,
+      defenseDebuff: effects.defenseDebuff,
+      resistanceDebuff: effects.resistanceDebuff,
+
+      // Defense & Resistance (armor sets)
+      defense: effects.defense as DefenseByType | undefined,
+      resistance: effects.resistance as ResistanceByType | undefined,
+      debuffResistance: effects.debuffResistance as DebuffResistance | undefined,
+
+      // Healing
+      healing: effects.healing as HealingEffect | undefined,
+
+      // Mez effects (control powers)
+      stun: effects.stun,
+      stunDuration: effects.stunDuration,
+      hold: effects.hold,
+      holdDuration: effects.holdDuration,
+      immobilize: effects.immobilize,
+      immobilizeDuration: effects.immobilizeDuration,
+      sleep: effects.sleep,
+      sleepDuration: effects.sleepDuration,
+      fear: effects.fear,
+      fearDuration: effects.fearDuration,
+      confuse: effects.confuse,
+      confuseDuration: effects.confuseDuration,
+      knockback: effects.knockback,
+      knockbackDuration: effects.knockbackDuration,
+
+      // Mez protection (armor powers)
+      protection: effects.protection
+        ? {
+            stun: effects.protection.stun,
+            hold: effects.protection.hold,
+            immobilize: effects.protection.immobilize,
+            sleep: effects.protection.sleep,
+            confuse: effects.protection.confuse,
+            fear: effects.protection.fear,
+            knockback: effects.protection.knockback,
+          }
+        : undefined,
     },
     // Extended properties from legacy format
     shortHelp: legacy.shortHelp,
@@ -226,11 +319,12 @@ export function getPower(powersetId: string, powerName: string): Power | undefin
 
 /**
  * Get powers available at or before a given level
+ * Note: available is 0-indexed (available=0 means level 1)
  */
 export function getPowersAvailableAtLevel(powersetId: string, level: number): Power[] {
   const powerset = getPowerset(powersetId);
   if (!powerset) return [];
-  return powerset.powers.filter((p) => p.available <= level && p.available >= 0);
+  return powerset.powers.filter((p) => p.available < level && p.available >= 0);
 }
 
 /**

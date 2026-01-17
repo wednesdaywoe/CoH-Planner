@@ -8,6 +8,7 @@ import { createRouter, createRootRoute, createRoute, Outlet } from '@tanstack/re
 import { MainLayout } from '@/components/layout/MainLayout';
 import { PlannerPage, BuildsPage, SettingsPage } from '@/pages';
 
+
 // Create root route
 const rootRoute = createRootRoute({
   component: () => (
@@ -38,8 +39,14 @@ const settingsRoute = createRoute({
   component: SettingsPage,
 });
 
+
+
 // Create route tree
-const routeTree = rootRoute.addChildren([indexRoute, buildsRoute, settingsRoute]);
+const routeTree = rootRoute.addChildren([
+  indexRoute,
+  buildsRoute,
+  settingsRoute,
+]);
 
 // Create router
 export const router = createRouter({

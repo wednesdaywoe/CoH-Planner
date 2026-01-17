@@ -79,3 +79,41 @@ export {
   getPoolsByCategory,
 } from './power-pools';
 export type { PowerPoolRegistry, PoolCategoryInfo } from './power-pools';
+
+// Level progression data and accessors
+export {
+  // Constants
+  MAX_LEVEL,
+  EPIC_POOL_LEVEL,
+  MAX_POWER_POOLS,
+  MAX_SLOTS_PER_POWER,
+  TOTAL_SLOTS_AT_50,
+  // Power picks
+  POWER_PICK_LEVELS,
+  isPowerPickLevel,
+  getPowerPicksAtLevel,
+  // Slot grants
+  SLOT_GRANTS,
+  getSlotsGrantedAtLevel,
+  getTotalSlotsAtLevel,
+  // Enhancement availability
+  ENHANCEMENT_AVAILABILITY,
+  isEnhancementAvailable,
+  // Pool requirements
+  POOL_TIER_REQUIREMENTS,
+  // Epic pools
+  EPIC_POOLS,
+  getEpicPools,
+  canAccessEpicPools,
+  // Incarnate
+  INCARNATE_LEVEL,
+  INCARNATE_SLOTS,
+  // Level info
+  getLevelInfo,
+  generateProgressionTable,
+  // Inherent powers
+  INHERENT_FITNESS_POWERS,
+  BASIC_INHERENT_POWERS,
+  getInherentPowers,
+} from './levels';
+export type { LevelInfo, InherentPowerDef } from './levels';

@@ -13,7 +13,15 @@
       "Bash(git push:*)",
       "Bash(npm run lint)",
       "Bash(npm install:*)",
-      "Bash(npm run build:*)"
+      "Bash(npm run build:*)",
+      "Bash(node scripts/convert-io-sets.js:*)",
+      "Bash(node scripts/convert-powers.js:*)",
+      "Bash(git -C \"c:\\\\Projects\\\\CoH-Planner\" log --oneline -20)",
+      "Bash(git -C \"c:\\\\Projects\\\\CoH-Planner\" log --all --oneline --grep=\"enhancement\" -i)",
+      "Bash(git -C \"c:\\\\Projects\\\\CoH-Planner\" show enhancement-icons-fix:legacy/js/icons.js)",
+      "Bash(git -C \"c:\\\\Projects\\\\CoH-Planner\" branch -a)",
+      "Bash(git -C \"c:\\\\Projects\\\\CoH-Planner\" show 2bafe53:legacy/js/icons.js)",
+      "Bash(npx tsc:*)"
     ]
   }
 }

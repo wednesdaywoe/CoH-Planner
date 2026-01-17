@@ -26,6 +26,10 @@ export function EnhancementCard({
   onClick,
   showDetails = false,
 }: EnhancementCardProps) {
+  // Construct full icon path - setIcon may be just a filename
+  const iconPath = setIcon
+    ? (setIcon.startsWith('/') ? setIcon : `/img/Enhancements/${setIcon}`)
+    : '/img/Unknown.png';
   return (
     <Tooltip
       content={<EnhancementTooltip piece={piece} setName={setName} level={level} isAttuned={isAttuned} />}
@@ -44,7 +48,7 @@ export function EnhancementCard({
         `}
       >
         <img
-          src={setIcon || '/img/Unknown.png'}
+          src={iconPath}
           alt=""
           className="w-10 h-10 rounded"
           onError={(e) => {
@@ -140,9 +144,14 @@ export function EnhancementIcon({ icon, name, size = 'md', className = '' }: Enh
     lg: 'w-10 h-10',
   };
 
+  // Icon may already have full path or just filename
+  const iconPath = icon
+    ? (icon.startsWith('/') ? icon : `/img/Enhancements/${icon}`)
+    : '/img/Unknown.png';
+
   return (
     <img
-      src={icon || '/img/Unknown.png'}
+      src={iconPath}
       alt={name}
       className={`rounded ${sizeClasses[size]} ${className}`}
       onError={(e) => {

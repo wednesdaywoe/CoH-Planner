@@ -7,12 +7,13 @@ import { forwardRef, type InputHTMLAttributes } from 'react';
 interface SliderProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'type'> {
   label?: string;
   showValue?: boolean;
+  showRange?: boolean;
   valueFormatter?: (value: number) => string;
 }
 
 export const Slider = forwardRef<HTMLInputElement, SliderProps>(
   (
-    { label, showValue = true, valueFormatter, className = '', value, min, max, ...props },
+    { label, showValue = true, showRange = true, valueFormatter, className = '', value, min, max, ...props },
     ref
   ) => {
     const displayValue = valueFormatter
@@ -57,7 +58,7 @@ export const Slider = forwardRef<HTMLInputElement, SliderProps>(
           `}
           {...props}
         />
-        {min !== undefined && max !== undefined && (
+        {showRange && min !== undefined && max !== undefined && (
           <div className="flex justify-between text-xs text-gray-500">
             <span>{min}</span>
             <span>{max}</span>

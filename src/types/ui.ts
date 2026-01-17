@@ -96,6 +96,12 @@ export interface InfoPanelState {
   enabled: boolean;
   /** Current content to display */
   content: InfoPanelContent | null;
+  /** Is the info panel locked to current content? */
+  locked: boolean;
+  /** Locked content (separate from hoverable content) */
+  lockedContent: InfoPanelContent | null;
+  /** Is power info tooltip enabled? */
+  tooltipEnabled: boolean;
 }
 
 export type InfoPanelContent =
@@ -165,6 +171,9 @@ export function createDefaultUIState(): UIState {
     infoPanel: {
       enabled: true,
       content: null,
+      locked: false,
+      lockedContent: null,
+      tooltipEnabled: false,
     },
     statsConfig: [],
     tooltip: {

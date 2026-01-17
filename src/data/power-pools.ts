@@ -185,11 +185,12 @@ export function getPoolPower(poolId: string, powerName: string): Power | undefin
 
 /**
  * Get powers available at or before a given level (including rank 1 and 2)
+ * Note: available is 0-indexed (available=0 means level 1)
  */
 export function getPoolPowersAvailableAtLevel(poolId: string, level: number): Power[] {
   const pool = getPowerPool(poolId);
   if (!pool) return [];
-  return pool.powers.filter((p) => p.available <= level && p.available >= 0);
+  return pool.powers.filter((p) => p.available < level && p.available >= 0);
 }
 
 /**
@@ -274,7 +275,7 @@ export const POOL_CATEGORIES: PoolCategoryInfo[] = [
   {
     id: 'combat',
     name: 'Combat',
-    pools: ['fighting', 'presence', 'concealment', 'force-of-will'],
+    pools: ['fighting', 'presence', 'invisibility', 'force_of_will'],
   },
   {
     id: 'support',

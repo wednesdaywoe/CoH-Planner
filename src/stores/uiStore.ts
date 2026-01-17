@@ -36,6 +36,9 @@ interface UIState {
   /** Origin enhancement picker state */
   originPicker: OriginPickerState;
 
+  /** Stats config modal open state */
+  statsConfigModalOpen: boolean;
+
   /** Global IO level for calculations */
   globalIOLevel: number;
 
@@ -92,6 +95,11 @@ interface UIActions {
   showEnhancementInfo: (enhancementId: string) => void;
   showSetInfo: (setId: string) => void;
   clearInfoPanel: () => void;
+  lockInfoPanel: (content: InfoPanelContent) => void;
+  unlockInfoPanel: () => void;
+  toggleInfoPanelLock: () => void;
+  setInfoPanelTooltipEnabled: (enabled: boolean) => void;
+  toggleInfoPanelTooltip: () => void;
 
   // Tooltip
   showTooltip: (content: TooltipContent, x: number, y: number) => void;
@@ -99,6 +107,8 @@ interface UIActions {
   moveTooltip: (x: number, y: number) => void;
 
   // Stats Config
+  openStatsConfigModal: () => void;
+  closeStatsConfigModal: () => void;
   setStatVisible: (stat: string, visible: boolean) => void;
   reorderStats: (stats: StatDisplayConfig[]) => void;
   resetStatsConfig: () => void;
@@ -139,17 +149,22 @@ const defaultTooltip: TooltipState = {
 const defaultInfoPanel: InfoPanelState = {
   enabled: true,
   content: null,
+  locked: false,
+  lockedContent: null,
+  tooltipEnabled: false,
 };
 
 const defaultStatsConfig: StatDisplayConfig[] = [
   { stat: 'damage', visible: true, order: 0 },
   { stat: 'accuracy', visible: true, order: 1 },
-  { stat: 'recharge', visible: true, order: 2 },
-  { stat: 'endurance', visible: true, order: 3 },
-  { stat: 'defense', visible: true, order: 4 },
-  { stat: 'resistance', visible: true, order: 5 },
-  { stat: 'health', visible: true, order: 6 },
-  { stat: 'recovery', visible: true, order: 7 },
+  { stat: 'tohit', visible: true, order: 2 },
+  { stat: 'recharge', visible: true, order: 3 },
+  { stat: 'endurance', visible: true, order: 4 },
+  { stat: 'defense', visible: true, order: 5 },
+  { stat: 'resistance', visible: true, order: 6 },
+  { stat: 'health', visible: true, order: 7 },
+  { stat: 'regeneration', visible: true, order: 8 },
+  { stat: 'recovery', visible: true, order: 9 },
 ];
 
 // ============================================
@@ -163,6 +178,7 @@ export const useUIStore = create<UIStore>()(
       enhancementPicker: defaultEnhancementPicker,
       genericPicker: defaultGenericPicker,
       originPicker: defaultOriginPicker,
+      statsConfigModalOpen: false,
       globalIOLevel: 50,
       attunementEnabled: false,
       hintsEnabled: true,
@@ -336,6 +352,61 @@ export const useUIStore = create<UIStore>()(
           },
         })),
 
+      lockInfoPanel: (content) =>
+        set((state) => ({
+          infoPanel: {
+            ...state.infoPanel,
+            locked: true,
+            lockedContent: content,
+          },
+        })),
+
+      unlockInfoPanel: () =>
+        set((state) => ({
+          infoPanel: {
+            ...state.infoPanel,
+            locked: false,
+            lockedContent: null,
+          },
+        })),
+
+      toggleInfoPanelLock: () =>
+        set((state) => {
+          if (state.infoPanel.locked) {
+            return {
+              infoPanel: {
+                ...state.infoPanel,
+                locked: false,
+                lockedContent: null,
+              },
+            };
+          }
+          // Lock with current content
+          return {
+            infoPanel: {
+              ...state.infoPanel,
+              locked: true,
+              lockedContent: state.infoPanel.content,
+            },
+          };
+        }),
+
+      setInfoPanelTooltipEnabled: (enabled) =>
+        set((state) => ({
+          infoPanel: {
+            ...state.infoPanel,
+            tooltipEnabled: enabled,
+          },
+        })),
+
+      toggleInfoPanelTooltip: () =>
+        set((state) => ({
+          infoPanel: {
+            ...state.infoPanel,
+            tooltipEnabled: !state.infoPanel.tooltipEnabled,
+          },
+        })),
+
       // Tooltip
       showTooltip: (content, x, y) =>
         set({
@@ -363,6 +434,12 @@ export const useUIStore = create<UIStore>()(
         })),
 
       // Stats Config
+      openStatsConfigModal: () =>
+        set({ statsConfigModalOpen: true }),
+
+      closeStatsConfigModal: () =>
+        set({ statsConfigModalOpen: false }),
+
       setStatVisible: (stat, visible) =>
         set((state) => ({
           statsConfig: state.statsConfig.map((s) =>
@@ -388,14 +465,13 @@ export const useUIStore = create<UIStore>()(
         globalIOLevel: state.globalIOLevel,
         attunementEnabled: state.attunementEnabled,
         hintsEnabled: state.hintsEnabled,
-        infoPanel: { enabled: state.infoPanel.enabled, content: null },
+        infoPanel: { enabled: state.infoPanel.enabled, content: null, locked: false, lockedContent: null, tooltipEnabled: state.infoPanel.tooltipEnabled },
         statsConfig: state.statsConfig,
         darkMode: state.darkMode,
         compactMode: state.compactMode,
       }),
-    }
-  )
-);
+    })
+  );
 
 // ============================================
 // SELECTOR HOOKS
