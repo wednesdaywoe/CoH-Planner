@@ -238,7 +238,18 @@ export const EPIC_POOLS: Readonly<Record<string, readonly string[]>> = {
   stalker: ['Mu Mastery', 'Soul Mastery', 'Mace Mastery', 'Leviathan Mastery'],
 
   // Praetorian/Neutral - Can choose Epic or Patron
-  sentinel: ['Bio Mastery', 'Dark Mastery', 'Electricity Mastery', 'Ice Mastery', 'Ninja Mastery'],
+  sentinel: [
+    'Dark Mastery',
+    'Electricity Mastery',
+    'Fire Mastery',
+    'Ice Mastery',
+    'Leviathan Mastery',
+    'Mace Mastery',
+    'Mu Mastery',
+    'Psionic Mastery',
+    'Soul Mastery',
+    'Weapon Mastery',
+  ],
 
   // Kheldian - No Epic pools (use inherent forms)
   peacebringer: [],
@@ -329,10 +340,14 @@ export interface InherentPowerDef {
   fullName: string;
   description: string;
   icon: string;
-  powerType: 'Auto' | 'Click';
+  powerType: 'Auto' | 'Click' | 'Toggle';
   maxSlots: number;
   allowedEnhancements: string[];
   allowedSetCategories: string[];
+  /** If true, this power cannot be removed by the user */
+  isLocked?: boolean;
+  /** Category for grouping (fitness, basic, prestige, archetype) */
+  category?: 'fitness' | 'basic' | 'prestige' | 'archetype';
 }
 
 /**
@@ -343,85 +358,198 @@ export const INHERENT_FITNESS_POWERS: readonly InherentPowerDef[] = [
     name: 'Swift',
     fullName: 'Inherent.Fitness.Swift',
     description: 'You can naturally run slightly faster than normal. This ability is always on and does not cost any Endurance.',
-    icon: 'fitness_quick.png',
+    icon: 'Fitness_Quick.png',
     powerType: 'Auto',
     maxSlots: 6,
     allowedEnhancements: ['Run Speed'],
     allowedSetCategories: ['Running'],
+    isLocked: true,
+    category: 'fitness',
   },
   {
     name: 'Hurdle',
     fullName: 'Inherent.Fitness.Hurdle',
     description: 'You can naturally jump higher than normal. This ability is always on and does not cost any Endurance.',
-    icon: 'fitness_hurdle.png',
+    icon: 'Fitness_Hurdle.png',
     powerType: 'Auto',
     maxSlots: 6,
     allowedEnhancements: ['Jump'],
     allowedSetCategories: ['Leaping'],
+    isLocked: true,
+    category: 'fitness',
   },
   {
     name: 'Health',
     fullName: 'Inherent.Fitness.Health',
     description: 'You heal slightly faster than a normal person. Your improved Health also grants you resistance to Sleep. This ability is always on and does not cost any Endurance.',
-    icon: 'fitness_health.png',
+    icon: 'Fitness_Health.png',
     powerType: 'Auto',
     maxSlots: 6,
     allowedEnhancements: ['Heal'],
     allowedSetCategories: ['Healing'],
+    isLocked: true,
+    category: 'fitness',
   },
   {
     name: 'Stamina',
     fullName: 'Inherent.Fitness.Stamina',
     description: 'You recover Endurance slightly more quickly than normal. This ability is always on and does not cost any Endurance.',
-    icon: 'fitness_stamina.png',
+    icon: 'Fitness_Stamina.png',
     powerType: 'Auto',
     maxSlots: 6,
     allowedEnhancements: ['EnduranceModification'],
     allowedSetCategories: ['Endurance Modification'],
+    isLocked: true,
+    category: 'fitness',
   },
 ] as const;
 
 /**
- * Basic inherent powers - Brawl and Rest
+ * Basic inherent powers - Brawl, Rest, and Sprint
  */
 export const BASIC_INHERENT_POWERS: readonly InherentPowerDef[] = [
   {
     name: 'Brawl',
     fullName: 'Inherent.Brawl',
     description: 'When all else fails, use your fists. Brawl attacks deal minor smashing damage but have a very fast recharge.',
-    icon: 'inherent_brawl.png',
+    icon: 'Inherent_Brawl.png',
     powerType: 'Click',
     maxSlots: 6,
     allowedEnhancements: ['Accuracy', 'Damage', 'Recharge', 'EnduranceReduction'],
     allowedSetCategories: ['Melee Damage'],
+    isLocked: true,
+    category: 'basic',
   },
   {
     name: 'Rest',
     fullName: 'Inherent.Rest',
     description: 'Rest to recover hit points and endurance. You are vulnerable while resting.',
-    icon: 'inherent_rest.png',
+    icon: 'Inherent_Rest.png',
     powerType: 'Click',
-    maxSlots: 1,
+    maxSlots: 4,
     allowedEnhancements: ['Recharge'],
     allowedSetCategories: [],
+    isLocked: true,
+    category: 'basic',
   },
   {
     name: 'Sprint',
     fullName: 'Inherent.Sprint',
     description: 'You can Sprint at a faster than normal rate, but you are not as quick as characters with Super Speed.',
-    icon: 'inherent_sprint.png',
-    powerType: 'Click',
+    icon: 'Inherent_Sprint.png',
+    powerType: 'Toggle',
     maxSlots: 4,
     allowedEnhancements: ['Run Speed', 'EnduranceReduction'],
     allowedSetCategories: ['Running', 'Running & Sprints', 'Universal Travel'],
+    isLocked: true,
+    category: 'basic',
+  },
+] as const;
+
+/**
+ * Prestige Sprint powers - travel powers available to all characters
+ */
+export const PRESTIGE_SPRINT_POWERS: readonly InherentPowerDef[] = [
+  {
+    name: 'Prestige Power Slide',
+    fullName: 'Inherent.Prestige.PowerSlide',
+    description: 'Activating this power will have your character slide across the ground, leaving behind a trail of sparks. This prestige power increases your run speed.',
+    icon: 'Inherent_AthleticRun.png',
+    powerType: 'Toggle',
+    maxSlots: 4,
+    allowedEnhancements: ['Run Speed', 'EnduranceReduction'],
+    allowedSetCategories: ['Running', 'Running & Sprints', 'Universal Travel'],
+    isLocked: true,
+    category: 'prestige',
+  },
+  {
+    name: 'Prestige Power Rush',
+    fullName: 'Inherent.Prestige.PowerRush',
+    description: 'Activating this power will give your character a burst of speed, leaving behind a colored trail. This prestige power increases your run speed.',
+    icon: 'Inherent_AthleticRun.png',
+    powerType: 'Toggle',
+    maxSlots: 4,
+    allowedEnhancements: ['Run Speed', 'EnduranceReduction'],
+    allowedSetCategories: ['Running', 'Running & Sprints', 'Universal Travel'],
+    isLocked: true,
+    category: 'prestige',
+  },
+  {
+    name: 'Prestige Power Surge',
+    fullName: 'Inherent.Prestige.PowerSurge',
+    description: 'Activating this power will surround your character with an electric field as you run. This prestige power increases your run speed.',
+    icon: 'Inherent_AthleticRun.png',
+    powerType: 'Toggle',
+    maxSlots: 4,
+    allowedEnhancements: ['Run Speed', 'EnduranceReduction'],
+    allowedSetCategories: ['Running', 'Running & Sprints', 'Universal Travel'],
+    isLocked: true,
+    category: 'prestige',
+  },
+  {
+    name: 'Prestige Power Dash',
+    fullName: 'Inherent.Prestige.PowerDash',
+    description: 'Activating this power will cause your character to dash forward leaving a colored afterimage trail. This prestige power increases your run speed.',
+    icon: 'Inherent_AthleticRun.png',
+    powerType: 'Toggle',
+    maxSlots: 4,
+    allowedEnhancements: ['Run Speed', 'EnduranceReduction'],
+    allowedSetCategories: ['Running', 'Running & Sprints', 'Universal Travel'],
+    isLocked: true,
+    category: 'prestige',
+  },
+  {
+    name: 'Prestige Power Quick',
+    fullName: 'Inherent.Prestige.PowerQuick',
+    description: 'Activating this power will cause your character to leave behind ghostly afterimages as you run. This prestige power increases your run speed.',
+    icon: 'Inherent_AthleticRun.png',
+    powerType: 'Toggle',
+    maxSlots: 4,
+    allowedEnhancements: ['Run Speed', 'EnduranceReduction'],
+    allowedSetCategories: ['Running', 'Running & Sprints', 'Universal Travel'],
+    isLocked: true,
+    category: 'prestige',
   },
 ] as const;
 
 /**
  * Get all inherent powers that should be auto-granted at level 1
+ * Note: Archetype inherent is added separately based on selected archetype
  */
 export function getInherentPowers(): InherentPowerDef[] {
-  return [...BASIC_INHERENT_POWERS, ...INHERENT_FITNESS_POWERS];
+  return [...BASIC_INHERENT_POWERS, ...INHERENT_FITNESS_POWERS, ...PRESTIGE_SPRINT_POWERS];
+}
+
+/**
+ * Get an inherent power definition by name
+ */
+export function getInherentPowerDef(name: string): InherentPowerDef | undefined {
+  const allInherents = getInherentPowers();
+  return allInherents.find((p) => p.name === name);
+}
+
+/**
+ * Create an archetype inherent power definition from an archetype's inherent
+ */
+export function createArchetypeInherentPower(
+  archetypeName: string,
+  inherent: { name: string; description: string }
+): InherentPowerDef {
+  // Generate icon name from archetype name (e.g., "Blaster" -> "inherent_blaster.png")
+  const iconName = `inherent_${archetypeName.toLowerCase().replace(/\s+/g, '_')}.png`;
+
+  return {
+    name: inherent.name,
+    fullName: `Inherent.${archetypeName}.${inherent.name.replace(/\s+/g, '')}`,
+    description: inherent.description,
+    icon: iconName,
+    powerType: 'Auto',
+    maxSlots: 0, // Archetype inherents cannot have slots
+    allowedEnhancements: [],
+    allowedSetCategories: [],
+    isLocked: true,
+    category: 'archetype',
+  };
 }
 
 // ============================================

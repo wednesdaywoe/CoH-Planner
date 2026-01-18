@@ -6,6 +6,10 @@ import path from 'path'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), tailwindcss()],
+  define: {
+    // Inject build timestamp for the WIP banner
+    __BUILD_TIME__: JSON.stringify(Date.now()),
+  },
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
@@ -14,8 +18,8 @@ export default defineConfig({
       // Plasmic/SSR aliases removed
     },
   },
-  // Serve legacy/img as /img for enhancement icons and other assets
-  publicDir: 'legacy',
+  // Serve public folder for static assets (img folder is inside public/)
+  publicDir: 'public',
   build: {
     outDir: 'dist',
   },

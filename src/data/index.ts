@@ -62,6 +62,8 @@ export {
   searchPowersets,
   searchPowers,
   getPowersetCountByArchetype,
+  getPowerIconPath,
+  resolvePowerIcon,
 } from './powersets';
 export type { PowersetRegistry } from './powersets';
 
@@ -79,6 +81,21 @@ export {
   getPoolsByCategory,
 } from './power-pools';
 export type { PowerPoolRegistry, PoolCategoryInfo } from './power-pools';
+
+// Epic/Patron Pool data and accessors
+export {
+  getAllEpicPools,
+  getEpicPool,
+  getEpicPoolIds,
+  getEpicPoolsForArchetype,
+  getEpicPoolByName,
+  getEpicPoolPower,
+  getEpicPoolPowersAvailableAtLevel,
+  searchEpicPools,
+  getEpicPoolCountByArchetype,
+  getEpicPoolPowerIconPath,
+} from './epic-pools';
+export type { EpicPool, EpicPoolRegistry } from './epic-pools';
 
 // Level progression data and accessors
 export {
@@ -114,6 +131,9 @@ export {
   // Inherent powers
   INHERENT_FITNESS_POWERS,
   BASIC_INHERENT_POWERS,
+  PRESTIGE_SPRINT_POWERS,
   getInherentPowers,
+  getInherentPowerDef,
+  createArchetypeInherentPower,
 } from './levels';
 export type { LevelInfo, InherentPowerDef } from './levels';

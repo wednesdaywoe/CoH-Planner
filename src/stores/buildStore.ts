@@ -22,10 +22,13 @@ import {
   getArchetype,
   getPowerset,
   getPowerPool,
+  getEpicPool,
   TOTAL_SLOTS_AT_50,
   MAX_POWER_POOLS,
   EPIC_POOL_LEVEL,
   getInherentPowers,
+  getInherentPowerDef,
+  createArchetypeInherentPower,
   POWER_PICK_LEVELS,
   getPowerPicksAtLevel,
 } from '@/data';
@@ -226,6 +229,9 @@ function updateSetTracking(build: Build): Record<string, SetTracking> {
  * Convert an InherentPowerDef to a SelectedPower
  */
 function createInherentSelectedPower(def: InherentPowerDef): SelectedPower {
+  // Archetype inherents have 0 maxSlots and should have no slots
+  const slots: (Enhancement | null)[] = def.maxSlots === 0 ? [] : [null];
+
   return {
     name: def.name,
     fullName: def.fullName,
@@ -239,16 +245,32 @@ function createInherentSelectedPower(def: InherentPowerDef): SelectedPower {
     // Cast as the proper types - inherent powers use simplified enhancement lists
     allowedEnhancements: def.allowedEnhancements as SelectedPower['allowedEnhancements'],
     allowedSetCategories: def.allowedSetCategories as SelectedPower['allowedSetCategories'],
-    slots: [null], // Start with one empty slot
+    slots,
     effects: {}, // Inherent powers don't have combat effects to display
+    isLocked: def.isLocked ?? true, // All inherent powers are locked by default
+    inherentCategory: def.category,
   };
 }
 
 /**
  * Get all inherent powers as SelectedPower objects
+ * @param archetypeName - The archetype name for the archetype-specific inherent
+ * @param archetypeInherent - The archetype's inherent power definition
  */
-function getInherentSelectedPowers(): SelectedPower[] {
-  return getInherentPowers().map(createInherentSelectedPower);
+function getInherentSelectedPowers(
+  archetypeName?: string,
+  archetypeInherent?: { name: string; description: string } | null
+): SelectedPower[] {
+  const powers = getInherentPowers().map(createInherentSelectedPower);
+
+  // Add archetype-specific inherent if provided
+  if (archetypeName && archetypeInherent) {
+    const atInherentDef = createArchetypeInherentPower(archetypeName, archetypeInherent);
+    // Insert archetype inherent at the beginning
+    powers.unshift(createInherentSelectedPower(atInherentDef));
+  }
+
+  return powers;
 }
 
 /**
@@ -376,7 +398,10 @@ export const useBuildStore = create<BuildStore>()(
 
           // Auto-grant inherent powers if both powersets are now selected
           if (newBuild.secondary.id && newBuild.inherents.length === 0) {
-            newBuild.inherents = getInherentSelectedPowers();
+            newBuild.inherents = getInherentSelectedPowers(
+              state.build.archetype.name || undefined,
+              state.build.archetype.inherent
+            );
           }
 
           return { build: newBuild };
@@ -399,7 +424,10 @@ export const useBuildStore = create<BuildStore>()(
 
           // Auto-grant inherent powers if both powersets are now selected
           if (newBuild.primary.id && newBuild.inherents.length === 0) {
-            newBuild.inherents = getInherentSelectedPowers();
+            newBuild.inherents = getInherentSelectedPowers(
+              state.build.archetype.name || undefined,
+              state.build.archetype.inherent
+            );
           }
 
           return { build: newBuild };
@@ -492,7 +520,10 @@ export const useBuildStore = create<BuildStore>()(
               }
               break;
             case 'inherent':
-              newBuild.inherents = newBuild.inherents.filter((p) => p.name !== powerName);
+              // Only allow removal of unlocked inherent powers
+              newBuild.inherents = newBuild.inherents.filter(
+                (p) => p.name !== powerName || p.isLocked
+              );
               break;
           }
 
@@ -592,7 +623,8 @@ export const useBuildStore = create<BuildStore>()(
           return;
         }
 
-        const pool = getPowerPool(poolId);
+        // Use the epic pool registry instead of regular power pools
+        const pool = getEpicPool(poolId);
         if (!pool) return;
 
         set((state) => ({
@@ -600,7 +632,7 @@ export const useBuildStore = create<BuildStore>()(
             ...state.build,
             epicPool: {
               id: poolId,
-              name: pool.name,
+              name: pool.displayName || pool.name,
               powers: [],
             },
           },
@@ -1034,6 +1066,32 @@ export const useBuildStore = create<BuildStore>()(
             ])
           );
           state.build.sets = sets;
+
+          // Migration: Grant inherent powers if missing but both powersets are selected
+          // This handles builds created before inherent powers were implemented
+          if (
+            state.build.inherents.length === 0 &&
+            state.build.primary.id &&
+            state.build.secondary.id
+          ) {
+            state.build.inherents = getInherentSelectedPowers(
+              state.build.archetype.name || undefined,
+              state.build.archetype.inherent
+            );
+          }
+
+          // Migration: Update existing inherent powers' maxSlots from current definitions
+          // This fixes powers like Rest that may have been saved with wrong maxSlots
+          if (state.build.inherents.length > 0) {
+            state.build.inherents = state.build.inherents.map((power) => {
+              const def = getInherentPowerDef(power.name);
+              if (def && power.maxSlots !== def.maxSlots) {
+                return { ...power, maxSlots: def.maxSlots };
+              }
+              return power;
+            });
+          }
+
           state.setHasHydrated(true);
         }
       },
