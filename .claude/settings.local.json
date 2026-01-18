@@ -21,7 +21,23 @@
       "Bash(git -C \"c:\\\\Projects\\\\CoH-Planner\" show enhancement-icons-fix:legacy/js/icons.js)",
       "Bash(git -C \"c:\\\\Projects\\\\CoH-Planner\" branch -a)",
       "Bash(git -C \"c:\\\\Projects\\\\CoH-Planner\" show 2bafe53:legacy/js/icons.js)",
-      "Bash(npx tsc:*)"
+      "Bash(npx tsc:*)",
+      "Bash(dir /s /b \"c:\\\\Projects\\\\CoH-Planner\\\\public\\\\img\\\\*HO*.png\")",
+      "Bash(node -e:*)",
+      "Bash(node process_recipes.js:*)",
+      "Bash(npm create:*)",
+      "Bash(dir \"C:\\\\Projects\\\\CoH-Planner\\\\img\\\\Enhancements\" /b)",
+      "Bash(if not exist public mkdir public)",
+      "Bash(xcopy:*)",
+      "Bash(while read f)",
+      "Bash(do echo \"$f\")",
+      "Bash(done)",
+      "Bash(node scripts/fix-icon-names.js:*)",
+      "Bash(node scripts/fix-icon-names.cjs:*)",
+      "Bash(for file in \"C:\\\\Projects\\\\legacy-CoH-Planner\\\\js\\\\data\\\\epics\\\\sentinel\"\"*.js; do echo \"=== $file ===\" && cat \"$file \")",
+      "Bash(node scripts/convert-epic-pools.js:*)",
+      "Bash(xargs:*)",
+      "Bash(do git add \"$f\")"
     ]
   }
 }

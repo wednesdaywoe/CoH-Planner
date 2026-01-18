@@ -32,3 +32,4 @@ npm-debug.log*
 
 # Local config
 .claude/
+nul

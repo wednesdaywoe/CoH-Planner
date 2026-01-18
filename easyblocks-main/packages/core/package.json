@@ -1,0 +1,68 @@
+{
+  "name": "@easyblocks/core",
+  "type": "module",
+  "version": "1.0.10",
+  "description": "No-code ecommerce builder for headless CMS",
+  "scripts": {
+    "dev": "NODE_ENV=development concurrently -n bundle,emit-declarations 'rollup -c rollup.config.js --watch' 'tsc --watch --preserveWatchOutput'",
+    "build": "npm run bundle && npm run emit-declarations",
+    "bundle": "NODE_ENV=production rollup -c rollup.config.js",
+    "emit-declarations": "tsc",
+    "bundle-declarations": "api-extractor run --local",
+    "test": "jest",
+    "check": "tsc && eslint --quiet src/"
+  },
+  "author": "Shopstory z o.o.",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/runtime": "^7.21.0",
+    "@stitches/core": "^1.2.8",
+    "js-xxhash": "^4.0.0",
+    "lodash": "^4.17.21",
+    "postcss-value-parser": "^3.3.0",
+    "react-textarea-autosize": ">=7.1",
+    "slate": "0.77.2",
+    "slate-react": "0.77.2",
+    "type-fest": "^3.0.0",
+    "zod": "^3.21.4"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/plugin-transform-runtime": "^7.15.0",
+    "@easyblocks/build-tools": "workspace:*",
+    "@easyblocks/reduce-css-calc": "workspace:*",
+    "@easyblocks/test-utils": "workspace:*",
+    "@easyblocks/utils": "workspace:*",
+    "@jest/types": "^26.6.2",
+    "@types/jest": "^26.0.20",
+    "@types/lodash": "^4.14.191",
+    "@types/react": "^18.2.20",
+    "@types/react-dom": "^18.2.7",
+    "jest": "^26.6.3"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0 || ^17.0.0-rc.1 || ^18.0.0",
+    "react-dom": "^16.8.0 || ^17.0.0-rc.1 || ^18.0.0"
+  },
+  "main": "./dist/cjs/index.cjs",
+  "module": "./dist/es/index.js",
+  "types": "./dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/es/index.js",
+      "require": "./dist/cjs/index.cjs"
+    },
+    "./_internals": {
+      "types": "./dist/types/_internals.d.ts",
+      "import": "./dist/es/_internals.js",
+      "require": "./dist/cjs/_internals.cjs"
+    }
+  },
+  "sideEffects": false,
+  "files": [
+    "dist/",
+    "package.json",
+    "LICENSE.md"
+  ]
+}
