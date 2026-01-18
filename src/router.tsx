@@ -52,6 +52,8 @@ const routeTree = rootRoute.addChildren([
 export const router = createRouter({
   routeTree,
   defaultPreload: 'intent',
+  // Use the base path from Vite for GitHub Pages deployment
+  basepath: import.meta.env.BASE_URL,
 });
 
 // Type declarations for type safety
