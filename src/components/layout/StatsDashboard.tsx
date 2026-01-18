@@ -1,14 +1,15 @@
 /**
  * StatsDashboard component - displays key stats in a horizontal bar
  * Stats shown are configurable via the StatsConfigModal
+ * Tooltips show detailed breakdowns of stat sources with Rule of 5 tracking
  */
 
 import { useMemo } from 'react';
-import { useCalculatedStats } from '@/hooks';
+import { useCalculatedStats, useCharacterCalculation } from '@/hooks';
 import { useBuildStore, useUIStore } from '@/stores';
 import { Tooltip } from '@/components/ui';
 import { StatsConfigModal } from '@/components/modals';
-import type { CalculatedStats } from '@/hooks/useCalculatedStats';
+import type { CalculatedStats, DashboardStatBreakdown } from '@/hooks/useCalculatedStats';
 
 // ============================================
 // STAT DEFINITIONS
@@ -22,6 +23,7 @@ interface StatDefinition {
   color: string;
   tooltip: string;
   showWhenZero?: boolean;
+  breakdownKey?: string; // Key to look up breakdown from calculation result
 }
 
 const STAT_DEFINITIONS: Record<string, StatDefinition> = {
@@ -34,6 +36,7 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     color: 'text-red-400',
     tooltip: 'Global damage from set bonuses',
     showWhenZero: true,
+    breakdownKey: 'damage',
   },
   accuracy: {
     id: 'accuracy',
@@ -43,6 +46,7 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     color: 'text-yellow-400',
     tooltip: 'Global accuracy from set bonuses',
     showWhenZero: true,
+    breakdownKey: 'accuracy',
   },
   tohit: {
     id: 'tohit',
@@ -52,6 +56,7 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     color: 'text-yellow-300',
     tooltip: 'ToHit buff from set bonuses',
     showWhenZero: true,
+    breakdownKey: 'tohit',
   },
   recharge: {
     id: 'recharge',
@@ -61,6 +66,7 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     color: 'text-blue-400',
     tooltip: 'Global recharge from set bonuses',
     showWhenZero: true,
+    breakdownKey: 'recharge',
   },
 
   // Defense
@@ -327,6 +333,7 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
 
 export function StatsDashboard() {
   const stats = useCalculatedStats();
+  const calcResult = useCharacterCalculation();
   const build = useBuildStore((s) => s.build);
   const statsConfig = useUIStore((s) => s.statsConfig);
   const statsConfigModalOpen = useUIStore((s) => s.statsConfigModalOpen);
@@ -334,6 +341,7 @@ export function StatsDashboard() {
   const closeStatsConfigModal = useUIStore((s) => s.closeStatsConfigModal);
 
   const maxHP = build.archetype?.stats?.maxHP || 0;
+  const breakdowns = calcResult.breakdown;
 
   // Calculate power and slot counts
   const currentPowerCount =
@@ -355,10 +363,11 @@ export function StatsDashboard() {
       .map((config) => {
         const def = STAT_DEFINITIONS[config.stat];
         const value = def.getValue(stats, maxHP);
-        return { ...def, value };
+        const breakdown = def.breakdownKey ? breakdowns.get(def.breakdownKey) : undefined;
+        return { ...def, value, breakdown };
       })
       .filter((stat) => stat.showWhenZero || Number(stat.value) !== 0);
-  }, [statsConfig, stats, maxHP]);
+  }, [statsConfig, stats, maxHP, breakdowns]);
 
   // Stat categories for grouping (should match config modal)
   const STAT_CATEGORIES = [
@@ -477,6 +486,7 @@ export function StatsDashboard() {
                         value={stat.format(stat.value)}
                         color={stat.color}
                         tooltip={stat.tooltip}
+                        breakdown={stat.breakdown}
                       />
                     ))}
                   </div>
@@ -495,6 +505,7 @@ export function StatsDashboard() {
                         value={stat.format(stat.value)}
                         color={stat.color}
                         tooltip={stat.tooltip}
+                        breakdown={stat.breakdown}
                       />
                     ))}
                   </div>
@@ -518,6 +529,7 @@ export function StatsDashboard() {
                         value={stat.format(stat.value)}
                         color={stat.color}
                         tooltip={stat.tooltip}
+                        breakdown={stat.breakdown}
                       />
                     ))}
                   </div>
@@ -556,20 +568,89 @@ interface StatItemProps {
   value: string;
   color?: string;
   tooltip?: string;
+  breakdown?: DashboardStatBreakdown;
   className?: string;
 }
 
-function StatItem({ label, value, color = 'text-gray-300', tooltip, className = '' }: StatItemProps) {
+function StatItem({ label, value, color = 'text-gray-300', tooltip, breakdown, className = '' }: StatItemProps) {
   const content = (
-    <div className={`flex items-center gap-1.5 ${className}`}>
+    <div className={`flex items-center justify-between cursor-help ${className}`}>
       <span className="text-xs text-gray-500 uppercase tracking-wide">{label}</span>
-      <span className={`text-sm font-medium ${color}`}>{value}</span>
+      <span className={`text-sm font-medium tabular-nums text-right ${color}`}>{value}</span>
     </div>
   );
 
-  if (tooltip) {
-    return <Tooltip content={tooltip}>{content}</Tooltip>;
-  }
+  // Build detailed tooltip content with breakdown
+  const tooltipContent = useMemo(() => {
+    if (!breakdown || breakdown.sources.length === 0) {
+      return tooltip || label;
+    }
 
-  return content;
+    // Group sources by type for display
+    const setBonusSources = breakdown.sources.filter(s => s.type === 'set-bonus');
+    const activePowerSources = breakdown.sources.filter(s => s.type === 'active-power');
+    const inherentSources = breakdown.sources.filter(s => s.type === 'inherent');
+
+    return (
+      <div className="space-y-2 max-w-[300px]">
+        <div className="font-semibold text-slate-200">{label}</div>
+        {tooltip && <div className="text-slate-400 text-[10px]">{tooltip}</div>}
+
+        {/* Set Bonuses */}
+        {setBonusSources.length > 0 && (
+          <div>
+            <div className="text-[9px] text-slate-400 uppercase mb-0.5">Set Bonuses</div>
+            {setBonusSources.map((source, i) => (
+              <div key={i} className="flex justify-between text-[10px]">
+                <span className={`${source.capped ? 'text-red-400' : 'text-slate-300'} truncate max-w-[200px]`}>
+                  {source.name}
+                  {source.capped && ' (capped)'}
+                </span>
+                <span className="text-green-400 ml-2">+{source.value.toFixed(1)}%</span>
+              </div>
+            ))}
+            {breakdown.cappedSources > 0 && (
+              <div className="text-[9px] text-red-400 mt-0.5">
+                Rule of 5: {breakdown.cappedSources} bonus(es) at cap
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* Active Powers */}
+        {activePowerSources.length > 0 && (
+          <div>
+            <div className="text-[9px] text-slate-400 uppercase mb-0.5">Active Powers</div>
+            {activePowerSources.map((source, i) => (
+              <div key={i} className="flex justify-between text-[10px]">
+                <span className="text-slate-300">{source.name}</span>
+                <span className="text-amber-400 ml-2">+{source.value.toFixed(1)}%</span>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {/* Inherent Powers */}
+        {inherentSources.length > 0 && (
+          <div>
+            <div className="text-[9px] text-slate-400 uppercase mb-0.5">Inherent Powers</div>
+            {inherentSources.map((source, i) => (
+              <div key={i} className="flex justify-between text-[10px]">
+                <span className="text-slate-300">{source.name}</span>
+                <span className="text-blue-400 ml-2">+{source.value.toFixed(1)}%</span>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {/* Total */}
+        <div className="border-t border-slate-600 pt-1 flex justify-between text-[11px] font-medium">
+          <span className="text-slate-300">Total</span>
+          <span className={color}>+{breakdown.total.toFixed(1)}%</span>
+        </div>
+      </div>
+    );
+  }, [breakdown, tooltip, label, color]);
+
+  return <Tooltip content={tooltipContent}>{content}</Tooltip>;
 }

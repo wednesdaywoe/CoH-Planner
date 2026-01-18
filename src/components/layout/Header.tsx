@@ -5,7 +5,7 @@
 
 import { useBuildStore, useUIStore } from '@/stores';
 import { getPowersetsForArchetype, MAX_LEVEL } from '@/data';
-import { Button, Select, Slider } from '@/components/ui';
+import { Button, Select, Slider, Toggle, Tooltip } from '@/components/ui';
 import type { ArchetypeId, Powerset } from '@/types';
 
 const ARCHETYPE_OPTIONS = [
@@ -136,6 +136,8 @@ export function Header() {
 
   const globalIOLevel = useUIStore((s) => s.globalIOLevel);
   const setGlobalIOLevel = useUIStore((s) => s.setGlobalIOLevel);
+  const exemplarMode = useUIStore((s) => s.exemplarMode);
+  const toggleExemplarMode = useUIStore((s) => s.toggleExemplarMode);
 
   const archetypeId = build.archetype.id;
 
@@ -220,6 +222,19 @@ export function Header() {
           className="max-w-[200px] min-w-[125px]"
           disabled={!archetypeId}
         />
+
+        {/* Exemplar Mode toggle */}
+        <Tooltip content="When enabled, set bonuses are suppressed based on build level (simulates exemplaring down)">
+          <div className="flex items-center bg-slate-700/50 px-2 py-1.5 rounded border border-slate-600">
+            <Toggle
+              id="exemplar-mode-toggle"
+              name="exemplarMode"
+              checked={exemplarMode}
+              onChange={toggleExemplarMode}
+              label="Exemplar"
+            />
+          </div>
+        </Tooltip>
 
         {/* Level selector */}
         <div className="flex items-center gap-1 bg-slate-700/50 px-2 py-1.5 rounded border border-slate-600">

@@ -170,7 +170,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sAbsoluteAmazement.png"
+    "icon": "sAbsoluteamazement.png"
   },
   "achilles_heel": {
     "name": "Achilles' Heel",
@@ -233,7 +233,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sAchillesHeel.png"
+    "icon": "sAchillesheel.png"
   },
   "adjusted_targeting": {
     "name": "Adjusted Targeting",
@@ -667,7 +667,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sAirBurst.png"
+    "icon": "sAirburst.png"
   },
   "analyze_weakness": {
     "name": "Analyze Weakness",
@@ -1380,7 +1380,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sVolleyFire.png"
+    "icon": "sVolleyfire.png"
   },
   "ascendency_of_the_dominator": {
     "name": "Ascendancy of the Dominator",
@@ -2044,7 +2044,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sBefuddlingAUra.png"
+    "icon": "sBefuddlingaura.png"
   },
   "blasters_wrath": {
     "name": "Blaster's Wrath",
@@ -2533,7 +2533,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sBloodMandate.png"
+    "icon": "sBloodmandate.png"
   },
   "bombardment": {
     "name": "Bombardment",
@@ -2732,7 +2732,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sBoneSnap.png"
+    "icon": "sBonesnap.png"
   },
   "brilliant_leadership": {
     "name": "Brilliant Leadership",
@@ -2863,7 +2863,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sBrilliantLeadership.png"
+    "icon": "sBrilliantleadership.png"
   },
   "bruising_blow": {
     "name": "Bruising Blow",
@@ -2925,7 +2925,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sBruisingBlow.png"
+    "icon": "sBruisingblow.png"
   },
   "brutes_fury": {
     "name": "Brute's Fury",
@@ -3457,7 +3457,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sCallOfTheSandman.png"
+    "icon": "sCallofthesandman.png"
   },
   "call_to_arms": {
     "name": "Call to Arms",
@@ -3741,7 +3741,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sCleavingBlow.png"
+    "icon": "sCleavingblow.png"
   },
   "cloud_senses": {
     "name": "Cloud Senses",
@@ -4243,7 +4243,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sCommandingPresence.png"
+    "icon": "sCommandingpresence.png"
   },
   "critical_strikes": {
     "name": "Critical Strikes",
@@ -4508,7 +4508,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sCrushingImpact.png"
+    "icon": "sCrushingimpact.png"
   },
   "cupids_crush": {
     "name": "Cupid's Crush",
@@ -4756,7 +4756,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sCurtailSpeed.png"
+    "icon": "sCurtailspeed.png"
   },
   "dampened_spirits": {
     "name": "Dampened Spirits",
@@ -4887,7 +4887,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sDampenedSpirits.png"
+    "icon": "sDampenedspirits.png"
   },
   "dark_watchers_despair": {
     "name": "Dark Watcher's Despair",
@@ -5146,7 +5146,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sDebilitativeAction.png"
+    "icon": "sDebilitativeaction.png"
   },
   "decimation": {
     "name": "Decimation",
@@ -5595,7 +5595,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sDeflatedEgo.png"
+    "icon": "sDeflatedego.png"
   },
   "detonation": {
     "name": "Detonation",
@@ -5938,7 +5938,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sDiscouragingWords.png"
+    "icon": "sDiscouragingwords.png"
   },
   "doctored_wounds": {
     "name": "Doctored Wounds",
@@ -6074,7 +6074,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sDoctoredWounds.png"
+    "icon": "sDoctoredwounds.png"
   },
   "dominating_grasp": {
     "name": "Dominating Grasp",
@@ -6501,7 +6501,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sEdictOfTheMaster.png"
+    "icon": "sEdictofthemaster.png"
   },
   "efficacy_adaptor": {
     "name": "Efficacy Adaptor",
@@ -6881,7 +6881,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sEnfeebledOperation.png"
+    "icon": "sEnfeebledoperation.png"
   },
   "entomb": {
     "name": "Entomb",
@@ -7125,7 +7125,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sEntropicChaos.png"
+    "icon": "sEntropicchaos.png"
   },
   "eradication": {
     "name": "Eradication",
@@ -7399,7 +7399,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sEssenceOfCurare.png"
+    "icon": "sEssenceofcurare.png"
   },
   "essence_transfer": {
     "name": "Essence Transfer",
@@ -7668,7 +7668,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sExecutionersContract.png"
+    "icon": "sExecutionerscontract.png"
   },
   "expedient_reinforcement": {
     "name": "Expedient Reinforcement",
@@ -7967,7 +7967,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sFarStrike.png"
+    "icon": "sFarstrike.png"
   },
   "exploit_weakness": {
     "name": "Exploit Weakness",
@@ -8054,7 +8054,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sExploitWeakness.png"
+    "icon": "sExploitweakness.png"
   },
   "exploited_vulnerability": {
     "name": "Exploited Vulnerability",
@@ -8185,7 +8185,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sExplosiveStrike.png"
+    "icon": "sExplosivestrike.png"
   },
   "extreme_measures": {
     "name": "Extreme Measures",
@@ -8321,7 +8321,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sExtremeMeasures.png"
+    "icon": "sExtrememeasures.png"
   },
   "far_strike": {
     "name": "Far Strike",
@@ -8388,7 +8388,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sFarStrike.png"
+    "icon": "sFarstrike.png"
   },
   "focused_smite": {
     "name": "Focused Smite",
@@ -8502,7 +8502,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sFocusedSmite.png"
+    "icon": "sFocusedsmite.png"
   },
   "force_feedback": {
     "name": "Force Feedback",
@@ -8632,7 +8632,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sForceFeedback.png"
+    "icon": "sForcefeedback.png"
   },
   "fortunata_hypnosis": {
     "name": "Fortunata Hypnosis",
@@ -8761,7 +8761,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sFortunateHyp.png"
+    "icon": "sFortunatehyp.png"
   },
   "freebird": {
     "name": "Freebird",
@@ -8818,7 +8818,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sFreeBird.png"
+    "icon": "sFreebird.png"
   },
   "frozen_blast": {
     "name": "Frozen Blast",
@@ -9121,7 +9121,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sFuryoftheGladiator.png"
+    "icon": "sFuryofthegladiator.png"
   },
   "gauntleted_fist": {
     "name": "Gauntleted Fist",
@@ -9540,7 +9540,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sGhostWidowsEmbrace.png"
+    "icon": "sGhostwidowsembrace.png"
   },
   "gift_of_the_ancients": {
     "name": "Gift of the Ancients",
@@ -9686,7 +9686,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sGiftOfTheAncients.png"
+    "icon": "sGiftoftheancients.png"
   },
   "gladiators_armor": {
     "name": "Gladiator's Armor",
@@ -9855,7 +9855,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sGladiatorsArmor.png"
+    "icon": "sGladiatorsarmor.png"
   },
   "gladiators_javelin": {
     "name": "Gladiator's Javelin",
@@ -10018,7 +10018,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sGladiatorsJavelin.png"
+    "icon": "sGladiatorsjavelin.png"
   },
   "gladiators_net": {
     "name": "Gladiator's Net",
@@ -10175,7 +10175,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sGladiatorsNet.png"
+    "icon": "sGladiatorsnet.png"
   },
   "gladiators_strike": {
     "name": "Gladiator's Strike",
@@ -10338,7 +10338,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sGladiatorsStrike.png"
+    "icon": "sGladiatorsstrike.png"
   },
   "glimpse_of_the_abyss": {
     "name": "Glimpse of the Abyss",
@@ -10463,7 +10463,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sGlimpseOfTheAbyss.png"
+    "icon": "sGlimpseoftheabyss.png"
   },
   "gravitational_anchor": {
     "name": "Gravitational Anchor",
@@ -10728,7 +10728,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sHarmonizedHealing.png"
+    "icon": "sHarmonizedhealing.png"
   },
   "hecatomb": {
     "name": "Hecatomb",
@@ -11158,7 +11158,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sFreeBird.png"
+    "icon": "sFreebird.png"
   },
   "ice_mistrals_torment": {
     "name": "Ice Mistral's Torment",
@@ -11285,7 +11285,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sSciroccosDervish.png"
+    "icon": "sSciroccosdervish.png"
   },
   "impeded_swiftness": {
     "name": "Impeded Swiftness",
@@ -11425,7 +11425,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sImpededSwiftness.png"
+    "icon": "sImpededswiftness.png"
   },
   "impervious_skin": {
     "name": "Impervious Skin",
@@ -11540,7 +11540,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sImperviousSkin.png"
+    "icon": "sImperviousskin.png"
   },
   "impervium_armor": {
     "name": "Impervium Armor",
@@ -11679,7 +11679,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sImperviumArmor.png"
+    "icon": "sImperviumarmor.png"
   },
   "induced_coma": {
     "name": "Induced Coma",
@@ -11804,7 +11804,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sInducedComa.png"
+    "icon": "sInducedcoma.png"
   },
   "jaunt": {
     "name": "Jaunt",
@@ -12027,7 +12027,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sJavelinVolley.png"
+    "icon": "sJavelinvolley.png"
   },
   "karma": {
     "name": "Karma",
@@ -12361,7 +12361,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sKineticCombat.png"
+    "icon": "sKineticcombat.png"
   },
   "kinetic_crash": {
     "name": "Kinetic Crash",
@@ -12490,7 +12490,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sKineticCrash.png"
+    "icon": "sKineticcrash.png"
   },
   "kismet": {
     "name": "Kismet",
@@ -12822,7 +12822,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sLethargicRepose.png"
+    "icon": "sLethargicrepose.png"
   },
   "lockdown": {
     "name": "Lockdown",
@@ -13100,7 +13100,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sLuckOfTheGambler.png"
+    "icon": "sLuckofthegambler.png"
   },
   "maelstroms_fury": {
     "name": "Maelstrom's Fury",
@@ -13193,7 +13193,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sMaelstromsFury.png"
+    "icon": "sMaelstromsfury.png"
   },
   "makos_bite": {
     "name": "Mako's Bite",
@@ -13455,7 +13455,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sMalaisesIllusions.png"
+    "icon": "sMalaisesillusions.png"
   },
   "malice_of_the_corruptor": {
     "name": "Malice of the Corruptor",
@@ -14135,7 +14135,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sMockingBeratement.png"
+    "icon": "sMockingberatement.png"
   },
   "multi_strike": {
     "name": "Multi-Strike",
@@ -14284,7 +14284,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sMultiStrike.png"
+    "icon": "sMultistrike.png"
   },
   "neuronic_shutdown": {
     "name": "Neuronic Shutdown",
@@ -14414,7 +14414,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sNeuronicShutdown.png"
+    "icon": "sNeuronicshutdown.png"
   },
   "nightmare": {
     "name": "Nightmare",
@@ -14681,7 +14681,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sNuminasConvalesence.png"
+    "icon": "sNuminasconvalesence.png"
   },
   "obliteration": {
     "name": "Obliteration",
@@ -15367,7 +15367,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sPacingOfTheTurtle.png"
+    "icon": "sPacingoftheturtle.png"
   },
   "panacea": {
     "name": "Panacea",
@@ -15763,7 +15763,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sPerfectZinger.png"
+    "icon": "sPerfectzinger.png"
   },
   "performance_shifter": {
     "name": "Performance Shifter",
@@ -15887,7 +15887,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sPerformanceSHift.png"
+    "icon": "sPerformanceShift.png"
   },
   "perplex": {
     "name": "Perplex",
@@ -16150,7 +16150,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sPositronsBlast.png"
+    "icon": "sPositronsblast.png"
   },
   "pounding_slugfest": {
     "name": "Pounding Slugfest",
@@ -16234,7 +16234,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sPoundingSlugfest.png"
+    "icon": "sPoundingslugfest.png"
   },
   "power_transfer": {
     "name": "Power Transfer",
@@ -16355,7 +16355,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sGiftOfTheAncients.png"
+    "icon": "sGiftoftheancients.png"
   },
   "preemptive_optimization": {
     "name": "Preemptive Optimization",
@@ -16698,7 +16698,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sPulverizingFisticuffs.png"
+    "icon": "sPulverizingfisticuffs.png"
   },
   "quickfoot": {
     "name": "Quickfoot",
@@ -17022,7 +17022,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sRazzleDazzle.png"
+    "icon": "sRazzledazzle.png"
   },
   "reactive_armor": {
     "name": "Reactive Armor",
@@ -17168,7 +17168,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sReactiveArmor.png"
+    "icon": "sReactivearmor.png"
   },
   "reactive_defenses": {
     "name": "Reactive Defenses",
@@ -17374,7 +17374,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sRectifiedReticle.png"
+    "icon": "sRectifiedreticle.png"
   },
   "red_fortune": {
     "name": "Red Fortune",
@@ -17510,7 +17510,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sRedFortune.png"
+    "icon": "sRedfortune.png"
   },
   "regenerative_tissue": {
     "name": "Regenerative Tissue",
@@ -17610,7 +17610,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sRegenerativeTissue.png"
+    "icon": "sRegenerativetissue.png"
   },
   "rooting_grasp": {
     "name": "Rooting Grasp",
@@ -17846,7 +17846,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sRopeADope.png"
+    "icon": "sRopeadope.png"
   },
   "ruin": {
     "name": "Ruin",
@@ -18165,7 +18165,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sSciroccosDervish.png"
+    "icon": "sSciroccosdervish.png"
   },
   "scourging_blast": {
     "name": "Scourging Blast",
@@ -18999,7 +18999,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sShieldWall.png"
+    "icon": "sShieldwall.png"
   },
   "siphon_insight": {
     "name": "Siphon Insight",
@@ -19222,7 +19222,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sSmashingHaymaker.png"
+    "icon": "sSmashinghaymaker.png"
   },
   "soaring": {
     "name": "Soaring",
@@ -20059,7 +20059,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sSteadfastProtection.png"
+    "icon": "sSteadfastprotection.png"
   },
   "sting_of_the_manticore": {
     "name": "Sting of the Manticore",
@@ -20191,7 +20191,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sStingOfTheManticore.png"
+    "icon": "sStingofthemanticore.png"
   },
   "stupefy": {
     "name": "Stupefy",
@@ -20440,7 +20440,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sForceFeedback.png"
+    "icon": "sForcefeedback.png"
   },
   "superior_ascendency_of_the_dominator": {
     "name": "Superior Ascendancy of the Dominator",
@@ -25027,7 +25027,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sTemperedReadiness.png"
+    "icon": "sTemperedreadiness.png"
   },
   "tempest": {
     "name": "Tempest",
@@ -25517,7 +25517,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sSpaceTimeManipulation.png"
+    "icon": "sSpacetimemanipulation.png"
   },
   "titanium_coating": {
     "name": "Titanium Coating",
@@ -25653,7 +25653,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sTitaniumCoating.png"
+    "icon": "sTitaniumcoating.png"
   },
   "touch_of_death": {
     "name": "Touch of Death",
@@ -25789,7 +25789,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sTouchOfDeath.png"
+    "icon": "sTouchofdeath.png"
   },
   "touch_of_lady_grey": {
     "name": "Touch of Lady Grey",
@@ -25908,7 +25908,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sTouchofLadyGray.png"
+    "icon": "sTouchofladygray.png"
   },
   "touch_of_the_nictus": {
     "name": "Touch of the Nictus",
@@ -26163,7 +26163,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sTrapOfTheHunter.png"
+    "icon": "sTrapofthehunter.png"
   },
   "triage": {
     "name": "Triage",
@@ -26309,7 +26309,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sTriumphantInsult.png"
+    "icon": "sTriumphantinsult.png"
   },
   "unbounded_leap": {
     "name": "Unbounded Leap",
@@ -26366,7 +26366,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sUnboundedLeap.png"
+    "icon": "sUnboundedleap.png"
   },
   "unbreakable_constraint": {
     "name": "Unbreakable Constraint",
@@ -26495,7 +26495,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sUnbreakableConstraint.png"
+    "icon": "sUnbreakableconstraint.png"
   },
   "unbreakable_guard": {
     "name": "Unbreakable Guard",
@@ -26858,7 +26858,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sUnquestioningLoyalty.png"
+    "icon": "sUnquestioningloyalty.png"
   },
   "unrelenting_fury": {
     "name": "Unrelenting Fury",
@@ -27143,7 +27143,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sUnspeakableTerror.png"
+    "icon": "sUnspeakableterror.png"
   },
   "vigilant_assault": {
     "name": "Vigilant Assault",
@@ -27335,7 +27335,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sVolleyFire.png"
+    "icon": "sVolleyfire.png"
   },
   "volley_of_velocity": {
     "name": "Volley of Velocity",

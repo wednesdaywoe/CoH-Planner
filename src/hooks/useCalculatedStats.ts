@@ -1,17 +1,34 @@
 /**
  * Calculated Stats Hooks
  *
- * These hooks compute derived statistics from the build state.
- * They handle enhancement values, set bonuses, and archetype modifiers.
+ * These hooks compute derived statistics from the build state using
+ * the unified calculation system that handles:
+ * - Set bonuses with Rule of 5
+ * - Active power buffs
+ * - Inherent power bonuses
+ * - Stat breakdown tracking for tooltips
  */
 
 import { useMemo } from 'react';
-import { useBuildStore } from '@/stores';
+import { useBuildStore, useUIStore } from '@/stores';
 import { getIOSet } from '@/data';
-import type { SetBonus, Build } from '@/types';
+import type { SetBonus } from '@/types';
+import {
+  calculateCharacterTotals,
+  type CharacterStats,
+  type CharacterCalculationResult,
+  type DashboardStatBreakdown,
+  type StatSource,
+} from '@/utils/calculations';
 
 // ============================================
-// STAT CATEGORIES
+// RE-EXPORT TYPES
+// ============================================
+
+export type { CharacterStats, DashboardStatBreakdown, StatSource };
+
+// ============================================
+// LEGACY INTERFACE (for backward compatibility)
 // ============================================
 
 export interface CalculatedStats {
@@ -84,234 +101,133 @@ export interface CalculatedStats {
 }
 
 // ============================================
-// DEFAULT STATS
-// ============================================
-
-const createDefaultStats = (): CalculatedStats => ({
-  damageBuff: 0,
-  accuracyBuff: 0,
-  toHitBuff: 0,
-  rechargeBuff: 0,
-  enduranceReduction: 0,
-  maxEndurance: 100,
-  recoveryBuff: 0,
-  defense: {
-    smashing: 0,
-    lethal: 0,
-    fire: 0,
-    cold: 0,
-    energy: 0,
-    negative: 0,
-    psionic: 0,
-    melee: 0,
-    ranged: 0,
-    aoe: 0,
-  },
-  resistance: {
-    smashing: 0,
-    lethal: 0,
-    fire: 0,
-    cold: 0,
-    energy: 0,
-    negative: 0,
-    psionic: 0,
-    toxic: 0,
-  },
-  maxHP: 0,
-  hpBuff: 0,
-  regenBuff: 0,
-  runSpeed: 0,
-  jumpHeight: 0,
-  flySpeed: 0,
-  mezResistance: {
-    hold: 0,
-    stun: 0,
-    immobilize: 0,
-    sleep: 0,
-    confuse: 0,
-    fear: 0,
-    knockback: 0,
-  },
-  globalRecharge: 0,
-  globalAccuracy: 0,
-  globalDamage: 0,
-});
-
-// ============================================
-// SET BONUS CALCULATION
+// CONVERSION HELPERS
 // ============================================
 
 /**
- * Calculate all active set bonuses from the build
+ * Convert new CharacterStats to legacy CalculatedStats format
  */
-function calculateSetBonuses(build: Build): Map<string, number> {
-  const bonusMap = new Map<string, number>();
+function convertToLegacyStats(
+  charStats: CharacterStats,
+  result: CharacterCalculationResult
+): CalculatedStats {
+  const global = result.globalBonuses;
 
-  for (const [setId, tracking] of Object.entries(build.sets)) {
-    const ioSet = getIOSet(setId);
-    if (!ioSet) continue;
-
-    // Get bonuses for the number of pieces slotted
-    for (const bonus of ioSet.bonuses) {
-      if (bonus.pieces <= tracking.count) {
-        for (const effect of bonus.effects) {
-          const currentValue = bonusMap.get(effect.stat) || 0;
-          bonusMap.set(effect.stat, currentValue + effect.value);
-        }
-      }
-    }
-  }
-
-  return bonusMap;
-}
-
-/**
- * Map set bonus stat names to our stat structure
- */
-function applySetBonusToStats(
-  stats: CalculatedStats,
-  bonuses: Map<string, number>
-): void {
-  for (const [stat, value] of bonuses) {
-    const lowerStat = stat.toLowerCase();
-
-    // Damage
-    if (lowerStat.includes('damage') && !lowerStat.includes('resistance')) {
-      stats.globalDamage += value;
-    }
-
-    // Accuracy
-    if (lowerStat.includes('accuracy')) {
-      stats.globalAccuracy += value;
-    }
-
-    // Recharge
-    if (lowerStat.includes('recharge') && !lowerStat.includes('debuff')) {
-      stats.globalRecharge += value;
-    }
-
-    // ToHit
-    if (lowerStat.includes('tohit') || lowerStat.includes('to hit')) {
-      stats.toHitBuff += value;
-    }
-
-    // Recovery
-    if (lowerStat.includes('recovery')) {
-      stats.recoveryBuff += value;
-    }
-
-    // Max HP
-    if (lowerStat.includes('hit points') || lowerStat.includes('max hp')) {
-      stats.hpBuff += value;
-    }
-
-    // Regeneration
-    if (lowerStat.includes('regeneration') || lowerStat.includes('regen')) {
-      stats.regenBuff += value;
-    }
-
-    // Max Endurance
-    if (lowerStat.includes('max endurance')) {
-      stats.maxEndurance += value;
-    }
+  return {
+    // Offense
+    damageBuff: charStats.damage,
+    accuracyBuff: charStats.accuracy,
+    toHitBuff: charStats.tohit,
+    rechargeBuff: charStats.recharge,
+    enduranceReduction: charStats.endrdx,
+    maxEndurance: 100 + global.maxEndurance,
+    recoveryBuff: charStats.recovery,
 
     // Defense
-    if (lowerStat.includes('defense')) {
-      if (lowerStat.includes('smashing') || lowerStat.includes('lethal')) {
-        stats.defense.smashing += value;
-        stats.defense.lethal += value;
-      }
-      if (lowerStat.includes('fire') || lowerStat.includes('cold')) {
-        stats.defense.fire += value;
-        stats.defense.cold += value;
-      }
-      if (lowerStat.includes('energy') || lowerStat.includes('negative')) {
-        stats.defense.energy += value;
-        stats.defense.negative += value;
-      }
-      if (lowerStat.includes('psionic')) {
-        stats.defense.psionic += value;
-      }
-      if (lowerStat.includes('melee')) {
-        stats.defense.melee += value;
-      }
-      if (lowerStat.includes('ranged')) {
-        stats.defense.ranged += value;
-      }
-      if (lowerStat.includes('aoe') || lowerStat.includes('area')) {
-        stats.defense.aoe += value;
-      }
-    }
+    defense: {
+      smashing: global.defSmashing,
+      lethal: global.defLethal,
+      fire: global.defFire,
+      cold: global.defCold,
+      energy: global.defEnergy,
+      negative: global.defNegative,
+      psionic: global.defPsionic,
+      melee: global.defMelee,
+      ranged: global.defRanged,
+      aoe: global.defAoE,
+    },
 
     // Resistance
-    if (lowerStat.includes('resistance') && !lowerStat.includes('mez')) {
-      if (lowerStat.includes('smashing') || lowerStat.includes('lethal')) {
-        stats.resistance.smashing += value;
-        stats.resistance.lethal += value;
-      }
-      if (lowerStat.includes('fire') || lowerStat.includes('cold')) {
-        stats.resistance.fire += value;
-        stats.resistance.cold += value;
-      }
-      if (lowerStat.includes('energy') || lowerStat.includes('negative')) {
-        stats.resistance.energy += value;
-        stats.resistance.negative += value;
-      }
-      if (lowerStat.includes('psionic')) {
-        stats.resistance.psionic += value;
-      }
-      if (lowerStat.includes('toxic')) {
-        stats.resistance.toxic += value;
-      }
-    }
+    resistance: {
+      smashing: global.resSmashing,
+      lethal: global.resLethal,
+      fire: global.resFire,
+      cold: global.resCold,
+      energy: global.resEnergy,
+      negative: global.resNegative,
+      psionic: global.resPsionic,
+      toxic: global.resToxic,
+    },
 
-    // Mez Resistance
-    if (lowerStat.includes('mez') && lowerStat.includes('resistance')) {
-      stats.mezResistance.hold += value;
-      stats.mezResistance.stun += value;
-      stats.mezResistance.immobilize += value;
-      stats.mezResistance.sleep += value;
-      stats.mezResistance.confuse += value;
-      stats.mezResistance.fear += value;
-    }
+    // Health
+    maxHP: global.maxHP,
+    hpBuff: global.maxHP,
+    regenBuff: charStats.regeneration,
 
     // Movement
-    if (lowerStat.includes('run speed') || lowerStat.includes('running')) {
-      stats.runSpeed += value;
-    }
-    if (lowerStat.includes('jump') || lowerStat.includes('jumping')) {
-      stats.jumpHeight += value;
-    }
-    if (lowerStat.includes('fly') || lowerStat.includes('flight')) {
-      stats.flySpeed += value;
-    }
-  }
+    runSpeed: charStats.runspeed,
+    jumpHeight: charStats.jumpheight,
+    flySpeed: charStats.flyspeed,
+
+    // Mez Resistance (all share mezResist for now)
+    mezResistance: {
+      hold: global.mezResist,
+      stun: global.mezResist,
+      immobilize: global.mezResist,
+      sleep: global.mezResist,
+      confuse: global.mezResist,
+      fear: global.mezResist,
+      knockback: global.mezResist,
+    },
+
+    // Global modifiers
+    globalRecharge: charStats.recharge,
+    globalAccuracy: charStats.accuracy,
+    globalDamage: charStats.damage,
+  };
 }
 
 // ============================================
-// MAIN HOOK
+// MAIN HOOKS
 // ============================================
 
 /**
- * Calculate all derived stats from the current build
+ * Full calculation result with breakdown data
+ */
+export function useCharacterCalculation(): CharacterCalculationResult {
+  const build = useBuildStore((state) => state.build);
+  const exemplarMode = useUIStore((state) => state.exemplarMode);
+
+  return useMemo(() => {
+    return calculateCharacterTotals(build, exemplarMode);
+  }, [build, exemplarMode]);
+}
+
+/**
+ * Calculate all derived stats from the current build (legacy format)
  */
 export function useCalculatedStats(): CalculatedStats {
   const build = useBuildStore((state) => state.build);
+  const exemplarMode = useUIStore((state) => state.exemplarMode);
 
   return useMemo(() => {
-    const stats = createDefaultStats();
+    const result = calculateCharacterTotals(build, exemplarMode);
+    return convertToLegacyStats(result.stats, result);
+  }, [build, exemplarMode]);
+}
 
-    // Apply archetype base stats
-    if (build.archetype.stats) {
-      stats.maxHP = build.archetype.stats.maxHP;
-    }
+/**
+ * Get character stats in new format
+ */
+export function useCharacterStats(): CharacterStats {
+  const result = useCharacterCalculation();
+  return result.stats;
+}
 
-    // Calculate set bonuses
-    const setBonuses = calculateSetBonuses(build);
-    applySetBonusToStats(stats, setBonuses);
+/**
+ * Get global bonuses that affect all powers
+ */
+export function useGlobalBonuses() {
+  const result = useCharacterCalculation();
+  return result.globalBonuses;
+}
 
-    return stats;
-  }, [build]);
+/**
+ * Get breakdown for a specific stat (for tooltips)
+ */
+export function useStatBreakdown(stat: string): DashboardStatBreakdown | undefined {
+  const result = useCharacterCalculation();
+  return result.breakdown.get(stat);
 }
 
 // ============================================
@@ -322,8 +238,8 @@ export function useCalculatedStats(): CalculatedStats {
  * Get just the global recharge bonus
  */
 export function useGlobalRecharge(): number {
-  const stats = useCalculatedStats();
-  return stats.globalRecharge;
+  const result = useCharacterCalculation();
+  return result.globalBonuses.recharge;
 }
 
 /**
@@ -346,11 +262,11 @@ export function useResistanceStats(): CalculatedStats['resistance'] {
  * Get HP-related stats
  */
 export function useHealthStats() {
-  const stats = useCalculatedStats();
+  const result = useCharacterCalculation();
   return {
-    maxHP: stats.maxHP,
-    hpBuff: stats.hpBuff,
-    regenBuff: stats.regenBuff,
+    maxHP: result.globalBonuses.maxHP,
+    hpBuff: result.globalBonuses.maxHP,
+    regenBuff: result.globalBonuses.regeneration,
   };
 }
 

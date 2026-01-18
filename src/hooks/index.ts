@@ -7,6 +7,10 @@
 
 export {
   useCalculatedStats,
+  useCharacterCalculation,
+  useCharacterStats,
+  useGlobalBonuses,
+  useStatBreakdown,
   useGlobalRecharge,
   useDefenseStats,
   useResistanceStats,
@@ -17,4 +21,9 @@ export {
   useActiveSetBonuses,
 } from './useCalculatedStats';
 
-export type { CalculatedStats } from './useCalculatedStats';
+export type {
+  CalculatedStats,
+  CharacterStats,
+  DashboardStatBreakdown,
+  StatSource,
+} from './useCalculatedStats';

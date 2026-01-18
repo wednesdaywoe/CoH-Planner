@@ -107,7 +107,8 @@ export interface InfoPanelState {
 export type InfoPanelContent =
   | { type: 'power'; powerName: string; powerSet: string }
   | { type: 'enhancement'; enhancementId: string }
-  | { type: 'set'; setId: string };
+  | { type: 'set'; setId: string }
+  | { type: 'slotted-enhancement'; powerName: string; slotIndex: number };
 
 // ============================================
 // GLOBAL UI STATE

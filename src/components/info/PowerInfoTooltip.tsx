@@ -1,14 +1,27 @@
 /**
- * PowerInfoTooltip - Floating tooltip that displays power info on hover
- * Shows all power stats EXCEPT the description (for compact display)
+ * PowerInfoTooltip - Floating tooltip that displays power or enhancement info on hover
+ * Shows all power stats with Base/Enhanced/Final values
  * Remains responsive to hover changes even when info panel is locked
  */
 
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback, useMemo } from 'react';
 import { createPortal } from 'react-dom';
 import { useUIStore, useBuildStore } from '@/stores';
-import { getPower, getPowerPool, getArchetype } from '@/data';
-import type { DefenseByType, ResistanceByType, ProtectionEffects, ArchetypeId } from '@/types';
+import { useGlobalBonuses } from '@/hooks/useCalculatedStats';
+import { getPower, getPowerPool, getArchetype, getIOSet, getPowerset, getInherentPowerDef } from '@/data';
+import type { Power } from '@/types';
+import {
+  calculatePowerEnhancementBonuses,
+  calculatePowerDamage,
+  type EnhancementBonuses,
+} from '@/utils/calculations';
+import {
+  IOSetIcon,
+  GenericIOIcon,
+  OriginEnhancementIcon,
+  SpecialEnhancementIcon,
+} from '@/components/enhancements/EnhancementIcon';
+import type { DefenseByType, ResistanceByType, ProtectionEffects, ArchetypeId, IOSetEnhancement, GenericIOEnhancement, OriginEnhancement, SpecialEnhancement, Enhancement, SelectedPower } from '@/types';
 
 // Base value for buff/debuff effects (per scale point at modifier 1.0)
 const BASE_BUFF_DEBUFF = 0.10;
@@ -85,36 +98,234 @@ interface PowerInfoContentProps {
   powerSet: string;
 }
 
+// Three-tier stat display component - aligned in columns
+function ThreeTierStatRow({
+  label,
+  base,
+  enhanced,
+  final,
+  format = 'number',
+  colorClass = 'text-slate-200'
+}: {
+  label: string;
+  base: number;
+  enhanced: number;
+  final: number;
+  format?: 'number' | 'percent' | 'seconds';
+  colorClass?: string;
+}) {
+  const formatValue = (v: number) => {
+    switch (format) {
+      case 'percent':
+        return `${(v * 100).toFixed(1)}%`;
+      case 'seconds':
+        return `${v.toFixed(2)}s`;
+      default:
+        return v.toFixed(2);
+    }
+  };
+
+  const hasEnhancement = Math.abs(enhanced - base) > 0.001;
+  const hasGlobal = Math.abs(final - enhanced) > 0.001;
+
+  return (
+    <div className="grid grid-cols-[3rem_1fr_1fr_1fr] gap-1 items-baseline text-[10px]">
+      <span className="text-slate-400">{label}</span>
+      <span className={colorClass}>{formatValue(base)}</span>
+      <span className={hasEnhancement ? 'text-green-400' : 'text-slate-600'}>
+        {hasEnhancement ? `→ ${formatValue(enhanced)}` : '—'}
+      </span>
+      <span className={hasGlobal ? 'text-amber-400' : 'text-slate-600'}>
+        {hasGlobal ? `→ ${formatValue(final)}` : '—'}
+      </span>
+    </div>
+  );
+}
+
+// Column headers for three-tier display
+function ThreeTierHeader() {
+  return (
+    <div className="grid grid-cols-[3rem_1fr_1fr_1fr] gap-1 text-[8px] text-slate-500 uppercase mb-0.5 border-b border-slate-700 pb-0.5">
+      <span>Stat</span>
+      <span>Base</span>
+      <span>Enhanced</span>
+      <span>Final</span>
+    </div>
+  );
+}
+
 function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
-  const archetypeId = useBuildStore((s) => s.build.archetype.id);
+  const build = useBuildStore((s) => s.build);
+  const archetypeId = build.archetype.id;
+  const globalBonuses = useGlobalBonuses();
 
-  // Try to get power from powerset first, then from pools
-  let power = getPower(powerSet, powerName);
+  // Try to get power from powerset first, then from pools, then from inherents
+  let basePower: Power | undefined = getPower(powerSet, powerName);
 
-  if (!power) {
+  if (!basePower) {
     const pool = getPowerPool(powerSet);
     if (pool) {
-      power = pool.powers.find((p) => p.name === powerName);
+      basePower = pool.powers.find((p) => p.name === powerName);
     }
   }
 
-  if (!power) {
+  // Handle inherent powers
+  if (!basePower && powerSet === 'Inherent') {
+    const inherentDef = getInherentPowerDef(powerName);
+    if (inherentDef) {
+      basePower = {
+        name: inherentDef.name,
+        fullName: inherentDef.fullName,
+        description: inherentDef.description,
+        icon: inherentDef.icon,
+        shortHelp: inherentDef.description,
+        powerType: inherentDef.powerType,
+        available: 0,
+        maxSlots: inherentDef.maxSlots,
+        allowedEnhancements: inherentDef.allowedEnhancements as Power['allowedEnhancements'],
+        allowedSetCategories: inherentDef.allowedSetCategories as Power['allowedSetCategories'],
+        effects: {},
+      };
+    } else {
+      // Try archetype inherent from build
+      const selectedInherent = build.inherents.find((p) => p.name === powerName);
+      if (selectedInherent) {
+        basePower = {
+          name: selectedInherent.name,
+          fullName: selectedInherent.fullName || `Inherent.${selectedInherent.name}`,
+          description: selectedInherent.description || '',
+          icon: selectedInherent.icon,
+          shortHelp: selectedInherent.description || '',
+          powerType: selectedInherent.powerType || 'Auto',
+          available: 0,
+          maxSlots: selectedInherent.maxSlots,
+          allowedEnhancements: (selectedInherent.allowedEnhancements || []) as Power['allowedEnhancements'],
+          allowedSetCategories: (selectedInherent.allowedSetCategories || []) as Power['allowedSetCategories'],
+          effects: selectedInherent.effects || {},
+        };
+      }
+    }
+  }
+
+  // Find the selected power from build to get its slots
+  const findSelectedPower = (): SelectedPower | null => {
+    const primary = build.primary.powers.find((p) => p.name === powerName);
+    if (primary) return primary;
+    const secondary = build.secondary.powers.find((p) => p.name === powerName);
+    if (secondary) return secondary;
+    for (const pool of build.pools) {
+      const poolPower = pool.powers.find((p) => p.name === powerName);
+      if (poolPower) return poolPower;
+    }
+    if (build.epicPool) {
+      const epic = build.epicPool.powers.find((p) => p.name === powerName);
+      if (epic) return epic;
+    }
+    // Check inherent powers
+    const inherent = build.inherents.find((p) => p.name === powerName);
+    if (inherent) return inherent;
+    return null;
+  };
+
+  const selectedPower = findSelectedPower();
+
+  // Calculate enhancement bonuses if power is slotted
+  const enhancementBonuses = useMemo<EnhancementBonuses>(() => {
+    if (!selectedPower?.slots) return {};
+    return calculatePowerEnhancementBonuses(
+      { name: selectedPower.name, slots: selectedPower.slots },
+      build.level,
+      getIOSet
+    );
+  }, [selectedPower, build.level]);
+
+  // Convert global bonuses to the format expected by power stats
+  const globalBonusesForCalc = useMemo(() => ({
+    damage: (globalBonuses.damage || 0) / 100,
+    accuracy: (globalBonuses.accuracy || 0) / 100,
+    recharge: (globalBonuses.recharge || 0) / 100,
+    endurance: (globalBonuses.endurance || 0) / 100,
+    range: (globalBonuses.range || 0) / 100,
+  }), [globalBonuses]);
+
+  // Get powerset for determining damage type
+  const powerset = getPowerset(powerSet);
+
+  // Calculate actual damage using archetype modifiers and level
+  const calculatedDamage = useMemo(() => {
+    if (!basePower?.effects?.damage) return null;
+
+    // Determine if this is a primary or secondary powerset
+    const isPrimary = powerSet === build.primary.id;
+    const isSecondary = powerSet === build.secondary.id;
+
+    // Get the powerset category to help determine melee vs ranged
+    const powersetCategory = isPrimary
+      ? powerset?.category?.toUpperCase()
+      : isSecondary
+        ? powerset?.category?.toUpperCase()
+        : undefined;
+
+    // Get powerset display name
+    const powersetName = powerset?.name || '';
+
+    return calculatePowerDamage(
+      basePower,
+      {
+        level: build.level,
+        archetypeId: archetypeId as ArchetypeId | undefined,
+        primaryName: powersetName,
+        primaryCategory: powersetCategory,
+      },
+      { damage: enhancementBonuses.damage || 0 },
+      globalBonusesForCalc.damage,
+      0 // active buffs
+    );
+  }, [basePower, build.level, archetypeId, enhancementBonuses.damage, globalBonusesForCalc.damage, powerSet, build.primary.id, build.secondary.id, powerset]);
+
+  if (!basePower) {
     return <div className="text-slate-500 text-[10px]">Power not found</div>;
   }
 
-  const effects = power.effects;
+  const effects = basePower.effects;
 
   // Get archetype modifier for buff/debuff calculations
   const archetype = archetypeId ? getArchetype(archetypeId as ArchetypeId) : null;
   const buffDebuffMod = archetype?.stats?.buffDebuffModifier ?? 1.0;
   const effectiveMod = getEffectiveBuffDebuffModifier(powerSet, buffDebuffMod);
 
-  // Check for damage
-  const hasDamage = effects?.damage && (
-    'type' in effects.damage
-      ? effects.damage.scale > 0
-      : effects.damage.types?.length > 0
-  );
+  // Calculate three-tier stats for key values
+  const calcThreeTier = (aspect: string, baseValue: number): { base: number; enhanced: number; final: number } => {
+    const enhBonus = enhancementBonuses[aspect] || 0;
+    const globalBonus = globalBonusesForCalc[aspect as keyof typeof globalBonusesForCalc] || 0;
+
+    let enhanced: number;
+    let final: number;
+
+    switch (aspect) {
+      case 'damage':
+      case 'accuracy':
+        // Multiplicative
+        enhanced = baseValue * (1 + enhBonus);
+        final = enhanced * (1 + globalBonus);
+        break;
+      case 'endurance':
+        // Reduction
+        enhanced = baseValue * Math.max(0, 1 - enhBonus);
+        final = enhanced * Math.max(0, 1 - globalBonus);
+        break;
+      case 'recharge':
+        // Division
+        enhanced = baseValue / Math.max(1, 1 + enhBonus);
+        final = enhanced / Math.max(1, 1 + globalBonus);
+        break;
+      default:
+        enhanced = baseValue * (1 + enhBonus);
+        final = enhanced * (1 + globalBonus);
+    }
+
+    return { base: baseValue, enhanced, final };
+  };
 
   // Check for mez effects
   const hasMez = effects?.stun || effects?.hold || effects?.immobilize ||
@@ -124,12 +335,15 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
   const hasBuffs = effects?.tohitBuff || effects?.damageBuff || effects?.defenseBuff;
   const hasDebuffs = effects?.tohitDebuff || effects?.defenseDebuff || effects?.resistanceDebuff;
 
+  // Check if power has any enhancements
+  const hasEnhancements = selectedPower && selectedPower.slots.some(s => s !== null);
+
   return (
-    <div className="space-y-1.5 max-w-[280px]">
+    <div className="space-y-1.5 max-w-[320px]">
       {/* Header */}
       <div className="flex items-center gap-2">
         <img
-          src={power.icon || '/img/Unknown.png'}
+          src={basePower.icon || '/img/Unknown.png'}
           alt=""
           className="w-6 h-6 rounded flex-shrink-0"
           onError={(e) => {
@@ -137,39 +351,55 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
           }}
         />
         <div className="min-w-0">
-          <h3 className="text-xs font-semibold text-blue-400 leading-tight">{power.name}</h3>
-          <span className="text-[9px] text-slate-400 capitalize">{power.powerType}</span>
+          <h3 className="text-xs font-semibold text-blue-400 leading-tight">{basePower.name}</h3>
+          <span className="text-[9px] text-slate-400 capitalize">{basePower.powerType}</span>
+          {hasEnhancements && (
+            <span className="text-[8px] text-green-500 ml-1">(enhanced)</span>
+          )}
         </div>
       </div>
 
       {/* Short Help */}
-      {power.shortHelp && (
+      {basePower.shortHelp && (
         <div className="text-[9px] text-amber-400/80 italic">
-          {power.shortHelp}
+          {basePower.shortHelp}
         </div>
       )}
 
-      {/* Base Stats - compact */}
-      {effects && (
-        <div className="grid grid-cols-2 gap-x-3 gap-y-0 text-[10px]">
+      {/* Enhanceable Stats with three-tier display */}
+      {effects && (effects.accuracy || effects.recharge || effects.enduranceCost) && (
+        <div className="bg-slate-800/50 rounded p-1.5">
+          <ThreeTierHeader />
           {effects.accuracy && (
-            <div className="flex justify-between">
-              <span className="text-slate-400">Acc</span>
-              <span className="text-yellow-400">{formatPercent(effects.accuracy)}</span>
-            </div>
+            <ThreeTierStatRow
+              label="Acc"
+              {...calcThreeTier('accuracy', effects.accuracy)}
+              format="percent"
+              colorClass="text-yellow-400"
+            />
           )}
           {effects.recharge && (
-            <div className="flex justify-between">
-              <span className="text-slate-400">Rech</span>
-              <span className="text-blue-400">{effects.recharge.toFixed(1)}s</span>
-            </div>
+            <ThreeTierStatRow
+              label="Rech"
+              {...calcThreeTier('recharge', effects.recharge)}
+              format="seconds"
+              colorClass="text-blue-400"
+            />
           )}
           {effects.enduranceCost && (
-            <div className="flex justify-between">
-              <span className="text-slate-400">End</span>
-              <span className="text-cyan-400">{effects.enduranceCost.toFixed(2)}</span>
-            </div>
+            <ThreeTierStatRow
+              label="End"
+              {...calcThreeTier('endurance', effects.enduranceCost)}
+              format="number"
+              colorClass="text-cyan-400"
+            />
           )}
+        </div>
+      )}
+
+      {/* Non-enhanceable stats in a compact grid */}
+      {effects && (effects.castTime || (effects.range !== undefined && effects.range > 0) || effects.radius || effects.buffDuration) && (
+        <div className="grid grid-cols-2 gap-x-4 gap-y-0.5 text-[10px]">
           {effects.castTime && (
             <div className="flex justify-between">
               <span className="text-slate-400">Cast</span>
@@ -190,25 +420,42 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
           )}
           {effects.buffDuration && (
             <div className="flex justify-between">
-              <span className="text-slate-400">Dur</span>
+              <span className="text-slate-400">Duration</span>
               <span className="text-slate-300">{effects.buffDuration.toFixed(1)}s</span>
             </div>
           )}
         </div>
       )}
 
-      {/* Damage */}
-      {hasDamage && effects?.damage && (
-        <div className="text-[10px]">
-          <span className="text-slate-400 text-[9px] uppercase">Damage: </span>
-          {'type' in effects.damage ? (
-            <span className="text-red-400">{effects.damage.type} {(effects.damage.scale ?? 0).toFixed(2)}</span>
-          ) : (
-            effects.damage.types?.map((d, i) => (
-              <span key={i} className="text-red-400">
-                {i > 0 && ' + '}{d.type} {(d.scale ?? 0).toFixed(2)}
-              </span>
-            ))
+      {/* Damage with three-tier display - using actual damage calculation */}
+      {calculatedDamage && (
+        <div className="bg-slate-800/50 rounded p-1.5">
+          <div className="grid grid-cols-[3rem_1fr_1fr_1fr] gap-1 text-[8px] text-slate-500 uppercase mb-0.5 border-b border-slate-700 pb-0.5">
+            <span>Type</span>
+            <span>Base</span>
+            <span>Enhanced</span>
+            <span>Final</span>
+          </div>
+          {(() => {
+            const hasEnh = Math.abs(calculatedDamage.enhanced - calculatedDamage.base) > 0.001;
+            const hasGlobal = Math.abs(calculatedDamage.final - calculatedDamage.enhanced) > 0.001;
+            return (
+              <div className="grid grid-cols-[3rem_1fr_1fr_1fr] gap-1 items-baseline text-[10px]">
+                <span className="text-red-400">{calculatedDamage.type}</span>
+                <span className="text-slate-200">{calculatedDamage.base.toFixed(1)}</span>
+                <span className={hasEnh ? 'text-green-400' : 'text-slate-600'}>
+                  {hasEnh ? `→ ${calculatedDamage.enhanced.toFixed(1)}` : '—'}
+                </span>
+                <span className={hasGlobal ? 'text-amber-400' : 'text-slate-600'}>
+                  {hasGlobal ? `→ ${calculatedDamage.final.toFixed(1)}` : '—'}
+                </span>
+              </div>
+            );
+          })()}
+          {calculatedDamage.unknown && (
+            <div className="text-[8px] text-slate-500 italic mt-0.5">
+              * Actual damage varies
+            </div>
           )}
         </div>
       )}
@@ -217,7 +464,9 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
       {effects?.dot && effects.dot.scale != null && (
         <div className="text-[10px]">
           <span className="text-slate-400 text-[9px] uppercase">DoT: </span>
-          <span className="text-orange-400">{effects.dot.type} {effects.dot.scale.toFixed(2)}/tick x {effects.dot.ticks}</span>
+          <span className="text-orange-400">
+            {effects.dot.type} {effects.dot.scale.toFixed(2)}/tick × {effects.dot.ticks} = {(effects.dot.scale * effects.dot.ticks).toFixed(2)} total
+          </span>
         </div>
       )}
 
@@ -285,8 +534,275 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
       {effects?.protection && (
         <ProtectionCompact protection={effects.protection} />
       )}
+
+      {/* Enhancement summary */}
+      {hasEnhancements && Object.keys(enhancementBonuses).length > 0 && (
+        <div className="border-t border-slate-700 pt-1 mt-1">
+          <span className="text-[8px] text-slate-500 uppercase">Enhancement Bonuses (after ED):</span>
+          <div className="flex flex-wrap gap-x-2 text-[9px]">
+            {Object.entries(enhancementBonuses).map(([aspect, value]) => (
+              <span key={aspect} className="text-green-400">
+                {aspect}: +{((value || 0) * 100).toFixed(1)}%
+              </span>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
+}
+
+// Enhancement info content for slotted enhancements
+interface EnhancementInfoContentProps {
+  powerName: string;
+  slotIndex: number;
+}
+
+function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfoContentProps) {
+  const build = useBuildStore((s) => s.build);
+
+  // Find the power and get the enhancement
+  const findEnhancement = (): Enhancement | null => {
+    // Check primary
+    const primaryPower = build.primary.powers.find((p) => p.name === powerName);
+    if (primaryPower && primaryPower.slots[slotIndex]) {
+      return primaryPower.slots[slotIndex];
+    }
+
+    // Check secondary
+    const secondaryPower = build.secondary.powers.find((p) => p.name === powerName);
+    if (secondaryPower && secondaryPower.slots[slotIndex]) {
+      return secondaryPower.slots[slotIndex];
+    }
+
+    // Check pools
+    for (const pool of build.pools) {
+      const poolPower = pool.powers.find((p) => p.name === powerName);
+      if (poolPower && poolPower.slots[slotIndex]) {
+        return poolPower.slots[slotIndex];
+      }
+    }
+
+    // Check epic pool
+    if (build.epicPool) {
+      const epicPower = build.epicPool.powers.find((p) => p.name === powerName);
+      if (epicPower && epicPower.slots[slotIndex]) {
+        return epicPower.slots[slotIndex];
+      }
+    }
+
+    return null;
+  };
+
+  // Count how many pieces of a set are slotted in this power
+  const countSetPiecesInPower = (setId: string): number => {
+    const findPower = () => {
+      const primary = build.primary.powers.find((p) => p.name === powerName);
+      if (primary) return primary;
+      const secondary = build.secondary.powers.find((p) => p.name === powerName);
+      if (secondary) return secondary;
+      for (const pool of build.pools) {
+        const poolPower = pool.powers.find((p) => p.name === powerName);
+        if (poolPower) return poolPower;
+      }
+      if (build.epicPool) {
+        return build.epicPool.powers.find((p) => p.name === powerName);
+      }
+      return null;
+    };
+
+    const power = findPower();
+    if (!power) return 0;
+
+    return power.slots.filter(
+      (s) => s && s.type === 'io-set' && (s as IOSetEnhancement).setId === setId
+    ).length;
+  };
+
+  const enhancement = findEnhancement();
+
+  if (!enhancement) {
+    return <div className="text-slate-500 text-[10px]">No enhancement</div>;
+  }
+
+  // IO Set Enhancement
+  if (enhancement.type === 'io-set') {
+    const ioEnh = enhancement as IOSetEnhancement;
+    const ioSet = getIOSet(ioEnh.setId);
+    const piecesSlotted = countSetPiecesInPower(ioEnh.setId);
+    // Extract icon filename from the full path if needed
+    const iconName = ioEnh.icon?.includes('/')
+      ? ioEnh.icon.split('/').pop() || 'Unknown.png'
+      : ioEnh.icon || 'Unknown.png';
+
+    return (
+      <div className="space-y-2 max-w-[300px]">
+        {/* Enhancement header */}
+        <div className="flex items-center gap-2">
+          <IOSetIcon
+            icon={iconName}
+            attuned={ioEnh.attuned}
+            size={24}
+            alt={enhancement.name}
+            className="flex-shrink-0"
+          />
+          <div className="min-w-0">
+            <h3 className="text-xs font-semibold text-blue-400 leading-tight">{enhancement.name}</h3>
+            <span className="text-[9px] text-slate-400">{ioEnh.setName}</span>
+          </div>
+        </div>
+
+        {/* Enhancement aspects */}
+        <div className="text-[10px]">
+          <span className="text-slate-400 text-[9px] uppercase">Enhances: </span>
+          <span className="text-green-400">{ioEnh.aspects.join(', ')}</span>
+        </div>
+
+        {/* Level info */}
+        <div className="text-[10px] flex gap-3">
+          {enhancement.level && (
+            <span className="text-slate-400">
+              Level: <span className="text-slate-200">{enhancement.level}</span>
+            </span>
+          )}
+          {enhancement.attuned && (
+            <span className="text-purple-400">Attuned</span>
+          )}
+          {ioEnh.isProc && (
+            <span className="text-amber-400">Proc</span>
+          )}
+          {ioEnh.isUnique && (
+            <span className="text-red-400">Unique</span>
+          )}
+        </div>
+
+        {/* Set Bonuses */}
+        {ioSet && ioSet.bonuses.length > 0 && (
+          <div className="border-t border-slate-700 pt-2">
+            <div className="text-[9px] text-slate-400 uppercase mb-1">
+              Set Bonuses ({piecesSlotted}/{ioSet.pieces.length} slotted)
+            </div>
+            <div className="space-y-1">
+              {ioSet.bonuses.map((bonus, idx) => {
+                const isActive = piecesSlotted >= bonus.pieces;
+                return (
+                  <div
+                    key={idx}
+                    className={`text-[10px] ${isActive ? 'text-green-400' : 'text-slate-500'}`}
+                  >
+                    <span className={`font-medium ${isActive ? 'text-green-500' : 'text-slate-600'}`}>
+                      {bonus.pieces}pc:
+                    </span>{' '}
+                    {bonus.effects.map((eff, i) => (
+                      <span key={i}>
+                        {i > 0 && ', '}
+                        {eff.desc}
+                      </span>
+                    ))}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        )}
+      </div>
+    );
+  }
+
+  // Generic IO Enhancement
+  if (enhancement.type === 'io-generic') {
+    const genericEnh = enhancement as GenericIOEnhancement;
+    return (
+      <div className="space-y-1.5 max-w-[250px]">
+        <div className="flex items-center gap-2">
+          <GenericIOIcon
+            stat={genericEnh.stat}
+            size={24}
+            alt={enhancement.name}
+            className="flex-shrink-0"
+          />
+          <div className="min-w-0">
+            <h3 className="text-xs font-semibold text-blue-400 leading-tight">{enhancement.name}</h3>
+            <span className="text-[9px] text-slate-400">Generic IO</span>
+          </div>
+        </div>
+        <div className="text-[10px]">
+          <span className="text-slate-400">Enhances: </span>
+          <span className="text-green-400">{genericEnh.stat}</span>
+          <span className="text-slate-400"> by </span>
+          <span className="text-green-400">{(genericEnh.value * 100).toFixed(1)}%</span>
+        </div>
+        {enhancement.level && (
+          <div className="text-[10px] text-slate-400">
+            Level: <span className="text-slate-200">{enhancement.level}</span>
+          </div>
+        )}
+      </div>
+    );
+  }
+
+  // Origin Enhancement (SO/DO/TO)
+  if (enhancement.type === 'origin') {
+    const originEnh = enhancement as OriginEnhancement;
+    return (
+      <div className="space-y-1.5 max-w-[250px]">
+        <div className="flex items-center gap-2">
+          <OriginEnhancementIcon
+            stat={originEnh.stat}
+            tier={originEnh.tier}
+            origin={originEnh.origin}
+            size={24}
+            alt={enhancement.name}
+            className="flex-shrink-0"
+          />
+          <div className="min-w-0">
+            <h3 className="text-xs font-semibold text-blue-400 leading-tight">{enhancement.name}</h3>
+            <span className="text-[9px] text-slate-400">{originEnh.tier}</span>
+          </div>
+        </div>
+        <div className="text-[10px]">
+          <span className="text-slate-400">Enhances: </span>
+          <span className="text-green-400">{originEnh.stat}</span>
+          <span className="text-slate-400"> by </span>
+          <span className="text-green-400">{(originEnh.value * 100).toFixed(1)}%</span>
+        </div>
+      </div>
+    );
+  }
+
+  // Special Enhancement (Hamidon, etc.)
+  if (enhancement.type === 'special') {
+    const specialEnh = enhancement as SpecialEnhancement;
+    // Extract icon filename from the full path if needed
+    const iconName = specialEnh.icon?.includes('/')
+      ? specialEnh.icon.split('/').pop() || 'Unknown.png'
+      : specialEnh.icon || 'Unknown.png';
+
+    return (
+      <div className="space-y-1.5 max-w-[250px]">
+        <div className="flex items-center gap-2">
+          <SpecialEnhancementIcon
+            icon={iconName}
+            size={24}
+            alt={enhancement.name}
+            className="flex-shrink-0"
+          />
+          <div className="min-w-0">
+            <h3 className="text-xs font-semibold text-purple-400 leading-tight">{enhancement.name}</h3>
+            <span className="text-[9px] text-slate-400 capitalize">{specialEnh.category}</span>
+          </div>
+        </div>
+        <div className="text-[10px]">
+          <span className="text-slate-400">Enhances: </span>
+          <span className="text-green-400">{specialEnh.aspects.join(', ')}</span>
+          <span className="text-slate-400"> by </span>
+          <span className="text-green-400">{(specialEnh.value * 100).toFixed(1)}%</span>
+        </div>
+      </div>
+    );
+  }
+
+  return <div className="text-slate-500 text-[10px]">Unknown enhancement type</div>;
 }
 
 export function PowerInfoTooltip() {
@@ -310,17 +826,22 @@ export function PowerInfoTooltip() {
     });
   }, []);
 
+  // Determine if we should show the tooltip
+  const shouldShow = tooltipEnabled && infoPanelContent && (
+    infoPanelContent.type === 'power' || infoPanelContent.type === 'slotted-enhancement'
+  );
+
   useEffect(() => {
-    if (tooltipEnabled && infoPanelContent?.type === 'power') {
+    if (shouldShow) {
       setVisible(true);
       window.addEventListener('mousemove', handleMouseMove);
       return () => window.removeEventListener('mousemove', handleMouseMove);
     } else {
       setVisible(false);
     }
-  }, [tooltipEnabled, infoPanelContent, handleMouseMove]);
+  }, [shouldShow, handleMouseMove]);
 
-  if (!visible || !infoPanelContent || infoPanelContent.type !== 'power') {
+  if (!visible || !infoPanelContent) {
     return null;
   }
 
@@ -333,10 +854,18 @@ export function PowerInfoTooltip() {
       }}
     >
       <div className="bg-slate-900/95 border border-slate-600 rounded-lg shadow-xl p-2">
-        <PowerInfoContent
-          powerName={infoPanelContent.powerName}
-          powerSet={infoPanelContent.powerSet}
-        />
+        {infoPanelContent.type === 'power' && (
+          <PowerInfoContent
+            powerName={infoPanelContent.powerName}
+            powerSet={infoPanelContent.powerSet}
+          />
+        )}
+        {infoPanelContent.type === 'slotted-enhancement' && (
+          <EnhancementInfoContent
+            powerName={infoPanelContent.powerName}
+            slotIndex={infoPanelContent.slotIndex}
+          />
+        )}
       </div>
     </div>,
     document.body

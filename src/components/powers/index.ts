@@ -8,3 +8,4 @@ export { PowerColumn, PowerColumnEmpty } from './PowerColumn';
 export { AvailablePowers } from './AvailablePowers';
 export { SelectedPowers } from './SelectedPowers';
 export { PoolPowers } from './PoolPowers';
+export { SlottedEnhancementIcon } from './SlottedEnhancementIcon';

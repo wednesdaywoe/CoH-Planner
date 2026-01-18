@@ -45,6 +45,9 @@ interface UIState {
   /** Attunement toggle */
   attunementEnabled: boolean;
 
+  /** Exemplar mode - when ON, respects build level for set bonus suppression */
+  exemplarMode: boolean;
+
   /** Hints/help visibility */
   hintsEnabled: boolean;
 
@@ -84,6 +87,7 @@ interface UIActions {
   // Settings
   setGlobalIOLevel: (level: number) => void;
   toggleAttunement: () => void;
+  toggleExemplarMode: () => void;
   toggleHints: () => void;
   toggleDarkMode: () => void;
   toggleCompactMode: () => void;
@@ -181,6 +185,7 @@ export const useUIStore = create<UIStore>()(
       statsConfigModalOpen: false,
       globalIOLevel: 50,
       attunementEnabled: false,
+      exemplarMode: false,
       hintsEnabled: true,
       infoPanel: defaultInfoPanel,
       statsConfig: defaultStatsConfig,
@@ -286,6 +291,11 @@ export const useUIStore = create<UIStore>()(
       toggleAttunement: () =>
         set((state) => ({
           attunementEnabled: !state.attunementEnabled,
+        })),
+
+      toggleExemplarMode: () =>
+        set((state) => ({
+          exemplarMode: !state.exemplarMode,
         })),
 
       toggleHints: () =>
@@ -464,6 +474,7 @@ export const useUIStore = create<UIStore>()(
       partialize: (state) => ({
         globalIOLevel: state.globalIOLevel,
         attunementEnabled: state.attunementEnabled,
+        exemplarMode: state.exemplarMode,
         hintsEnabled: state.hintsEnabled,
         infoPanel: { enabled: state.infoPanel.enabled, content: null, locked: false, lockedContent: null, tooltipEnabled: state.infoPanel.tooltipEnabled },
         statsConfig: state.statsConfig,
@@ -488,6 +499,9 @@ export const useGlobalIOLevel = () => useUIStore((state) => state.globalIOLevel)
 
 /** Select attunement setting */
 export const useAttunement = () => useUIStore((state) => state.attunementEnabled);
+
+/** Select exemplar mode setting */
+export const useExemplarMode = () => useUIStore((state) => state.exemplarMode);
 
 /** Select hints setting */
 export const useHintsEnabled = () => useUIStore((state) => state.hintsEnabled);

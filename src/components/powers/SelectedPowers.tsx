@@ -6,7 +6,9 @@
 import { useBuildStore, useUIStore } from '@/stores';
 import type { PowerCategory } from '@/stores';
 import type { SelectedPower } from '@/types';
+import { getPowerIconPath } from '@/data';
 import { DraggableSlotGhost } from './DraggableSlotGhost';
+import { SlottedEnhancementIcon } from './SlottedEnhancementIcon';
 
 interface SelectedPowersProps {
   category: 'primary' | 'secondary';
@@ -17,9 +19,13 @@ export function SelectedPowers({ category }: SelectedPowersProps) {
   const removePower = useBuildStore((s) => s.removePower);
   const addSlot = useBuildStore((s) => s.addSlot);
   const removeSlot = useBuildStore((s) => s.removeSlot);
+  const clearEnhancement = useBuildStore((s) => s.clearEnhancement);
   const setInfoPanelContent = useUIStore((s) => s.setInfoPanelContent);
+  const clearInfoPanel = useUIStore((s) => s.clearInfoPanel);
   const lockInfoPanel = useUIStore((s) => s.lockInfoPanel);
+  const unlockInfoPanel = useUIStore((s) => s.unlockInfoPanel);
   const infoPanelLocked = useUIStore((s) => s.infoPanel.locked);
+  const lockedContent = useUIStore((s) => s.infoPanel.lockedContent);
   const openEnhancementPicker = useUIStore((s) => s.openEnhancementPicker);
 
   const selection = category === 'primary' ? build.primary : build.secondary;
@@ -50,7 +56,8 @@ export function SelectedPowers({ category }: SelectedPowersProps) {
   };
 
   const handlePowerHover = (power: SelectedPower) => {
-    if (powersetId && !infoPanelLocked) {
+    // Always update hover content - tooltip uses this even when panel is locked
+    if (powersetId) {
       setInfoPanelContent({
         type: 'power',
         powerName: power.name,
@@ -59,9 +66,32 @@ export function SelectedPowers({ category }: SelectedPowersProps) {
     }
   };
 
+  const handlePowerLeave = () => {
+    // Clear content when leaving power area - hides the tooltip
+    clearInfoPanel();
+  };
+
+  const handleEnhancementHover = (powerName: string, slotIndex: number) => {
+    // Show enhancement info in tooltip
+    setInfoPanelContent({
+      type: 'slotted-enhancement',
+      powerName,
+      slotIndex,
+    });
+  };
+
+  const handleClearEnhancement = (powerName: string, slotIndex: number) => {
+    clearEnhancement(powerName, slotIndex);
+  };
+
   const handlePowerRightClick = (e: React.MouseEvent, power: SelectedPower) => {
     e.preventDefault();
-    if (powersetId) {
+    if (!powersetId) return;
+
+    // If already locked to this power, unlock; otherwise lock to this power
+    if (infoPanelLocked && lockedContent?.type === 'power' && lockedContent.powerName === power.name) {
+      unlockInfoPanel();
+    } else {
       lockInfoPanel({
         type: 'power',
         powerName: power.name,
@@ -80,20 +110,32 @@ export function SelectedPowers({ category }: SelectedPowersProps) {
 
   return (
     <div className="space-y-0.5">
-      {powers.map((power) => (
-        <SelectedPowerRow
-          key={power.name}
-          power={power}
-          powersetId={powersetId}
-          onRemove={() => handleRemove(power.name)}
-          onAddSlots={(count) => handleAddSlots(power.name, count)}
-          onRemoveSlot={(index) => handleRemoveSlot(power.name, index)}
-          onRemoveAllSlots={() => handleRemoveAllSlots(power.name, power.slots.length)}
-          onOpenPicker={(slotIndex) => openEnhancementPicker(power.name, powersetId, slotIndex)}
-          onHover={() => handlePowerHover(power)}
-          onRightClick={(e) => handlePowerRightClick(e, power)}
-        />
-      ))}
+      {powers.map((power) => {
+        // Check if this power is the one locked in the info panel
+        const isLocked = infoPanelLocked &&
+          lockedContent?.type === 'power' &&
+          lockedContent.powerName === power.name;
+
+        return (
+          <SelectedPowerRow
+            key={power.name}
+            power={power}
+            powersetId={powersetId}
+            powersetName={selection.name}
+            isLocked={isLocked}
+            onRemove={() => handleRemove(power.name)}
+            onAddSlots={(count) => handleAddSlots(power.name, count)}
+            onRemoveSlot={(index) => handleRemoveSlot(power.name, index)}
+            onRemoveAllSlots={() => handleRemoveAllSlots(power.name, power.slots.length)}
+            onClearEnhancement={(index) => handleClearEnhancement(power.name, index)}
+            onOpenPicker={(slotIndex) => openEnhancementPicker(power.name, powersetId, slotIndex)}
+            onHover={() => handlePowerHover(power)}
+            onLeave={handlePowerLeave}
+            onEnhancementHover={(index) => handleEnhancementHover(power.name, index)}
+            onRightClick={(e) => handlePowerRightClick(e, power)}
+          />
+        );
+      })}
     </div>
   );
 }
@@ -101,12 +143,17 @@ export function SelectedPowers({ category }: SelectedPowersProps) {
 interface SelectedPowerRowProps {
   power: SelectedPower;
   powersetId: string;
+  powersetName: string;
+  isLocked: boolean;
   onRemove: () => void;
   onAddSlots: (count: number) => void;
   onRemoveSlot: (slotIndex: number) => void;
   onRemoveAllSlots: () => void;
+  onClearEnhancement: (slotIndex: number) => void;
   onOpenPicker: (slotIndex: number) => void;
   onHover: () => void;
+  onLeave: () => void;
+  onEnhancementHover: (slotIndex: number) => void;
   onRightClick: (e: React.MouseEvent) => void;
 }
 
@@ -115,12 +162,17 @@ interface SelectedPowerRowProps {
  */
 function SelectedPowerRow({
   power,
+  powersetName,
+  isLocked,
   onRemove,
   onAddSlots,
   onRemoveSlot,
   onRemoveAllSlots,
+  onClearEnhancement,
   onOpenPicker,
   onHover,
+  onLeave,
+  onEnhancementHover,
   onRightClick,
 }: SelectedPowerRowProps) {
   const handleSlotClick = (index: number) => {
@@ -131,31 +183,51 @@ function SelectedPowerRow({
   const handleSlotRightClick = (e: React.MouseEvent, index: number, hasEnhancement: boolean) => {
     e.preventDefault();
 
+    // If slot has an enhancement, right-click removes the enhancement (not the slot)
+    if (hasEnhancement) {
+      onClearEnhancement(index);
+      return;
+    }
+
     // Shift+right-click on empty slot removes all slots (except first)
-    if (e.shiftKey && !hasEnhancement && power.slots.length > 1) {
+    if (e.shiftKey && power.slots.length > 1) {
       onRemoveAllSlots();
       return;
     }
 
-    // Regular right-click to remove slot (if not first slot)
+    // Regular right-click on empty slot removes the slot (if not first slot)
     if (index > 0) {
       onRemoveSlot(index);
     }
   };
 
+  const handleSlotMouseEnter = (index: number, hasEnhancement: boolean) => {
+    if (hasEnhancement) {
+      onEnhancementHover(index);
+    } else {
+      // When hovering empty slot, show power info
+      onHover();
+    }
+  };
+
   return (
     <div
-      className="flex items-center gap-1 px-1 py-0.5 bg-slate-800 border border-slate-700 rounded-sm hover:border-slate-600 group"
-      onMouseEnter={onHover}
+      className={`flex items-center gap-1 px-1 py-0.5 bg-slate-800 border rounded-sm group transition-colors ${
+        isLocked
+          ? 'border-amber-500 shadow-[0_0_4px_rgba(245,158,11,0.4)] bg-gradient-to-r from-amber-500/10 to-slate-800'
+          : 'border-slate-700 hover:border-slate-600'
+      }`}
+      onMouseLeave={onLeave}
     >
       {/* Power icon and name - right-click to lock info panel */}
       <div
         className="flex items-center gap-1 flex-1 min-w-0 cursor-default"
+        onMouseEnter={onHover}
         onContextMenu={onRightClick}
-        title="Right-click to lock power info"
+        title={isLocked ? 'Right-click to unlock power info' : 'Right-click to lock power info'}
       >
         <img
-          src={power.icon || '/img/Unknown.png'}
+          src={getPowerIconPath(powersetName, power.icon)}
           alt=""
           className="w-4 h-4 rounded-sm flex-shrink-0"
           onError={(e) => {
@@ -173,6 +245,7 @@ function SelectedPowerRow({
           <div
             key={index}
             onClick={() => handleSlotClick(index)}
+            onMouseEnter={() => handleSlotMouseEnter(index, !!slot)}
             onContextMenu={(e) => handleSlotRightClick(e, index, !!slot)}
             className={`
               w-5 h-5 rounded-full border flex items-center justify-center
@@ -185,19 +258,12 @@ function SelectedPowerRow({
             `}
             title={
               slot
-                ? `Slot ${index + 1}: ${slot.name || 'Enhancement'}${index > 0 ? ' (right-click to remove slot)' : ''}`
-                : `Empty slot ${index + 1} - click to add enhancement${index > 0 ? ', right-click to remove, shift+right-click to remove all' : ''}`
+                ? `${slot.name || 'Enhancement'} (right-click to remove enhancement)`
+                : `Empty slot ${index + 1} - click to add enhancement${index > 0 ? ', right-click to remove slot' : ''}`
             }
           >
             {slot ? (
-              <img
-                src={slot.icon || '/img/Unknown.png'}
-                alt=""
-                className="w-full h-full rounded-full"
-                onError={(e) => {
-                  (e.target as HTMLImageElement).src = '/img/Unknown.png';
-                }}
-              />
+              <SlottedEnhancementIcon enhancement={slot} size={20} />
             ) : (
               <span className="text-slate-400">+</span>
             )}

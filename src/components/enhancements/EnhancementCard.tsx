@@ -4,6 +4,7 @@
 
 import type { IOSetPiece } from '@/types';
 import { Badge, Tooltip } from '@/components/ui';
+import { IOSetIcon } from './EnhancementIcon';
 
 interface EnhancementCardProps {
   piece: IOSetPiece;
@@ -26,10 +27,6 @@ export function EnhancementCard({
   onClick,
   showDetails = false,
 }: EnhancementCardProps) {
-  // Construct full icon path - setIcon may be just a filename
-  const iconPath = setIcon
-    ? (setIcon.startsWith('/') ? setIcon : `/img/Enhancements/${setIcon}`)
-    : '/img/Unknown.png';
   return (
     <Tooltip
       content={<EnhancementTooltip piece={piece} setName={setName} level={level} isAttuned={isAttuned} />}
@@ -47,13 +44,11 @@ export function EnhancementCard({
           }
         `}
       >
-        <img
-          src={iconPath}
-          alt=""
-          className="w-10 h-10 rounded"
-          onError={(e) => {
-            (e.target as HTMLImageElement).src = '/img/Unknown.png';
-          }}
+        <IOSetIcon
+          icon={setIcon || 'Unknown.png'}
+          attuned={isAttuned}
+          size={40}
+          alt={piece.name}
         />
         <div className="flex-1 min-w-0">
           <div className="text-sm text-gray-200 truncate">{piece.name}</div>
@@ -127,36 +122,3 @@ function getAspectColor(stat: string): string {
   return 'text-gray-300';
 }
 
-/**
- * Compact enhancement display for slots
- */
-interface EnhancementIconProps {
-  icon?: string;
-  name: string;
-  size?: 'sm' | 'md' | 'lg';
-  className?: string;
-}
-
-export function EnhancementIcon({ icon, name, size = 'md', className = '' }: EnhancementIconProps) {
-  const sizeClasses = {
-    sm: 'w-6 h-6',
-    md: 'w-8 h-8',
-    lg: 'w-10 h-10',
-  };
-
-  // Icon may already have full path or just filename
-  const iconPath = icon
-    ? (icon.startsWith('/') ? icon : `/img/Enhancements/${icon}`)
-    : '/img/Unknown.png';
-
-  return (
-    <img
-      src={iconPath}
-      alt={name}
-      className={`rounded ${sizeClasses[size]} ${className}`}
-      onError={(e) => {
-        (e.target as HTMLImageElement).src = '/img/Unknown.png';
-      }}
-    />
-  );
-}

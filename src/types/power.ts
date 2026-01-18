@@ -305,4 +305,8 @@ export interface SelectedPower extends Power {
   level: number;
   /** Enhancement slots (null = empty slot) */
   slots: (Enhancement | null)[];
+  /** If true, this power cannot be removed by the user (inherent powers) */
+  isLocked?: boolean;
+  /** Category for inherent powers (fitness, basic, prestige, archetype) */
+  inherentCategory?: 'fitness' | 'basic' | 'prestige' | 'archetype';
 }

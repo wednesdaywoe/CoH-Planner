@@ -5,6 +5,7 @@
 import { useBuildStore, useUIStore } from '@/stores';
 import type { SelectedPower } from '@/types';
 import type { PowerCategory } from '@/stores';
+import { getPowerIconPath } from '@/data';
 import { PowerSlot } from './PowerSlot';
 import { Badge } from '@/components/ui';
 
@@ -12,6 +13,7 @@ interface PowerCardProps {
   power: SelectedPower;
   category: PowerCategory;
   powersetId: string;
+  powersetName: string;
   onRemove?: () => void;
   showLevel?: boolean;
 }
@@ -19,6 +21,7 @@ interface PowerCardProps {
 export function PowerCard({
   power,
   powersetId,
+  powersetName,
   onRemove,
   showLevel = true,
 }: PowerCardProps) {
@@ -60,7 +63,7 @@ export function PowerCard({
       <div className="flex items-center justify-between mb-2">
         <div className="flex items-center gap-2 min-w-0">
           <img
-            src={power.icon || '/img/Unknown.png'}
+            src={getPowerIconPath(powersetName, power.icon)}
             alt=""
             className="w-8 h-8 rounded flex-shrink-0"
             onError={(e) => {

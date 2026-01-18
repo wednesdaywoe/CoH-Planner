@@ -13,6 +13,7 @@ import { getIOSetsForPower, getPower, getPowerPool } from '@/data';
 import { COMMON_IO_TYPES, getCommonIOValueAtLevel, ORIGIN_TIERS, HAMIDON_ENHANCEMENTS } from '@/data/enhancements';
 import { Modal, ModalBody } from '@/components/modals';
 import { Tooltip, Toggle } from '@/components/ui';
+import { IOSetIcon, GenericIOIcon, OriginEnhancementIcon, SpecialEnhancementIcon } from './EnhancementIcon';
 import type { IOSet, IOSetPiece, EnhancementStatType, GenericIOEnhancement, OriginEnhancement, SpecialEnhancement, IOSetCategory } from '@/types';
 
 type EnhancementTypeFilter = 'io-sets' | 'generic' | 'special' | 'origin';
@@ -205,11 +206,19 @@ export function EnhancementPicker() {
   const hasArchetype = useMemo(() =>
     availableSets.some((set) => set.category === 'ato'), [availableSets]);
 
+  // Helper to check if a set is a "special" category (excluded from normal filters)
+  const isSpecialSet = (set: IOSet) =>
+    set.category === 'purple' ||
+    set.category === 'ato' ||
+    set.category === 'event' ||
+    set.type === 'Universal Damage Sets';
+
   // Filter sets based on sidebar selection
   const filteredSets = useMemo(() => {
     switch (sidebarFilter) {
       case 'all':
-        return availableSets;
+        // "All" only shows standard IO sets (uncommon/rare), excludes special categories
+        return availableSets.filter((set) => !isSpecialSet(set));
       case 'universal':
         return availableSets.filter((set) => set.type === 'Universal Damage Sets');
       case 'very-rare':
@@ -219,8 +228,8 @@ export function EnhancementPicker() {
       case 'archetype':
         return availableSets.filter((set) => set.category === 'ato');
       default:
-        // It's a category name
-        return availableSets.filter((set) => set.type === sidebarFilter);
+        // It's a category name - only show standard sets of that type
+        return availableSets.filter((set) => set.type === sidebarFilter && !isSpecialSet(set));
     }
   }, [availableSets, sidebarFilter]);
 
@@ -236,12 +245,13 @@ export function EnhancementPicker() {
   // Helper to create IO set enhancement object
   const createIOSetEnhancement = (set: IOSet, piece: IOSetPiece, pieceIndex: number) => {
     const setId = set.id || set.name;
-    const iconPath = set.icon ? `/img/Enhancements/${set.icon}` : '/img/Unknown.png';
+    // Just store the filename - EnhancementIcon handles path construction
+    const iconFilename = set.icon || 'Unknown.png';
     return {
       type: 'io-set' as const,
       id: `${setId}-${pieceIndex}`,
       name: piece.name,
-      icon: iconPath,
+      icon: iconFilename,
       setId: setId,
       setName: set.name,
       pieceNum: piece.num,
@@ -404,11 +414,14 @@ export function EnhancementPicker() {
   const handleSelectSpecial = (id: string, hami: typeof HAMIDON_ENHANCEMENTS[keyof typeof HAMIDON_ENHANCEMENTS]) => {
     if (!picker.currentPowerName) return;
 
+    // Capitalize the ID for the icon filename (nucleolus -> Nucleolus)
+    const capitalizedId = id.charAt(0).toUpperCase() + id.slice(1);
+
     const enhancement: SpecialEnhancement = {
       type: 'special',
       id: `hamidon-${id}`,
       name: hami.name,
-      icon: `/img/Enhancements/HO_${id}.png`,
+      icon: `HO${capitalizedId}.png`, // Just the filename, path handled by EnhancementIcon
       category: 'hamidon',
       aspects: hami.aspects.map(mapHamidonAspect),
       value: hami.value,
@@ -485,19 +498,19 @@ export function EnhancementPicker() {
           {/* Category sidebar - only for IO Sets */}
           {typeFilter === 'io-sets' && availableSets.length > 0 && (
             <div className="w-48 border-r border-gray-700 overflow-y-auto flex-shrink-0 bg-gray-900/30">
-              {/* All */}
+              {/* All (standard sets only) */}
               <SidebarButton
                 label="All"
-                count={availableSets.length}
+                count={availableSets.filter((s) => !isSpecialSet(s)).length}
                 isActive={sidebarFilter === 'all'}
                 onClick={() => setSidebarFilter('all')}
               />
 
-              {/* Primary category (the main one for this power) */}
+              {/* Primary category (the main one for this power, standard sets only) */}
               {primaryCategory && (
                 <SidebarButton
                   label={primaryCategory}
-                  count={availableSets.filter((s) => s.type === primaryCategory).length}
+                  count={availableSets.filter((s) => s.type === primaryCategory && !isSpecialSet(s)).length}
                   isActive={sidebarFilter === primaryCategory}
                   onClick={() => setSidebarFilter(primaryCategory)}
                   textColor="text-yellow-400"
@@ -691,7 +704,7 @@ function IOSetRow({
   dragStartIndex,
   dragEndIndex,
 }: IOSetRowProps) {
-  const iconPath = set.icon ? `/img/Enhancements/${set.icon}` : '/img/Unknown.png';
+  const attunementEnabled = useUIStore((s) => s.attunementEnabled);
 
   // Check if a piece is in the current drag selection
   const isPieceSelected = (pieceIndex: number) => {
@@ -730,13 +743,12 @@ function IOSetRow({
                     : 'border-gray-600 hover:border-blue-400 hover:scale-110'
                 }`}
               >
-                <img
-                  src={iconPath}
+                <IOSetIcon
+                  icon={set.icon || 'Unknown.png'}
+                  attuned={attunementEnabled}
+                  size={36}
                   alt={piece.name}
-                  className="w-full h-full rounded pointer-events-none"
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).src = '/img/Unknown.png';
-                  }}
+                  className="pointer-events-none"
                 />
               </button>
             </Tooltip>
@@ -776,16 +788,9 @@ function GenericIOContent({ availableIOs, ioValue, globalIOLevel, onSelect }: Ge
           <Tooltip key={stat} content={`${stat} IO (+${ioValue.toFixed(1)}%)`}>
             <button
               onClick={() => onSelect(stat)}
-              className="w-9 h-9 rounded border border-gray-600 hover:border-blue-400 hover:scale-110 transition-all bg-gray-900/50"
+              className="rounded border border-gray-600 hover:border-blue-400 hover:scale-110 transition-all bg-gray-900/50"
             >
-              <img
-                src={getGenericIOIcon(stat)}
-                alt={stat}
-                className="w-full h-full rounded"
-                onError={(e) => {
-                  (e.target as HTMLImageElement).src = '/img/Unknown.png';
-                }}
-              />
+              <GenericIOIcon stat={stat} size={36} alt={stat} />
             </button>
           </Tooltip>
         ))}
@@ -815,23 +820,20 @@ function SpecialContent({ availableHamidons, onSelect }: SpecialContentProps) {
         <span className="text-xs text-gray-500">+50% to two stats</span>
       </div>
       <div className="flex flex-wrap gap-1">
-        {availableHamidons.map(([id, hami]) => (
-          <Tooltip key={id} content={`${hami.name}: ${hami.aspects.join(' / ')} +${hami.value}%`}>
-            <button
-              onClick={() => onSelect(id, hami)}
-              className="w-9 h-9 rounded border border-purple-700 hover:border-purple-400 hover:scale-110 transition-all bg-gray-900/50"
-            >
-              <img
-                src={`/img/Enhancements/HO_${id}.png`}
-                alt={hami.name}
-                className="w-full h-full rounded"
-                onError={(e) => {
-                  (e.target as HTMLImageElement).src = '/img/Unknown.png';
-                }}
-              />
-            </button>
-          </Tooltip>
-        ))}
+        {availableHamidons.map(([id, hami]) => {
+          // Capitalize the ID for the icon filename (nucleolus -> Nucleolus)
+          const capitalizedId = id.charAt(0).toUpperCase() + id.slice(1);
+          return (
+            <Tooltip key={id} content={`${hami.name}: ${hami.aspects.join(' / ')} +${hami.value}%`}>
+              <button
+                onClick={() => onSelect(id, hami)}
+                className="rounded border border-purple-700 hover:border-purple-400 hover:scale-110 transition-all bg-gray-900/50"
+              >
+                <SpecialEnhancementIcon icon={`HO${capitalizedId}.png`} size={36} alt={hami.name} />
+              </button>
+            </Tooltip>
+          );
+        })}
       </div>
     </div>
   );
@@ -847,6 +849,8 @@ interface OriginContentProps {
 }
 
 function OriginContent({ availableTypes, onSelect }: OriginContentProps) {
+  const buildOrigin = useBuildStore((s) => s.build.settings.origin);
+
   if (availableTypes.length === 0) {
     return <div className="text-center text-gray-500 py-8">No origin enhancements available for this power</div>;
   }
@@ -866,15 +870,14 @@ function OriginContent({ availableTypes, onSelect }: OriginContentProps) {
               <Tooltip key={stat} content={`${stat} ${tier.short} (+${tier.value.toFixed(1)}%)`}>
                 <button
                   onClick={() => onSelect(stat, tier.short as 'TO' | 'DO' | 'SO')}
-                  className={`w-9 h-9 rounded border hover:scale-110 transition-all bg-gray-900/50 ${getTierBorderColor(tier.short)}`}
+                  className={`rounded border hover:scale-110 transition-all bg-gray-900/50 ${getTierBorderColor(tier.short)}`}
                 >
-                  <img
-                    src={getOriginIcon(stat, tier.short)}
+                  <OriginEnhancementIcon
+                    stat={stat}
+                    tier={tier.short as 'TO' | 'DO' | 'SO'}
+                    origin={buildOrigin}
+                    size={36}
                     alt={`${stat} ${tier.short}`}
-                    className="w-full h-full rounded"
-                    onError={(e) => {
-                      (e.target as HTMLImageElement).src = '/img/Unknown.png';
-                    }}
                   />
                 </button>
               </Tooltip>

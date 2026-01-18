@@ -4,6 +4,7 @@
 
 import type { Enhancement } from '@/types';
 import { Tooltip } from '@/components/ui';
+import { SlottedEnhancementIcon } from './SlottedEnhancementIcon';
 
 interface PowerSlotProps {
   enhancement: Enhancement | null;
@@ -62,14 +63,7 @@ export function PowerSlot({
           hover:ring-2 hover:ring-blue-500
         `}
       >
-        <img
-          src={getEnhancementIcon(enhancement)}
-          alt={enhancement.name}
-          className="w-full h-full object-cover"
-          onError={(e) => {
-            (e.target as HTMLImageElement).src = '/img/Unknown.png';
-          }}
-        />
+        <SlottedEnhancementIcon enhancement={enhancement} size={32} />
       </button>
     </Tooltip>
   );
@@ -112,11 +106,4 @@ function getEnhancementBorderColor(enhancement: Enhancement): string {
     default:
       return 'border-gray-600';
   }
-}
-
-function getEnhancementIcon(enhancement: Enhancement): string {
-  if (enhancement.icon) {
-    return enhancement.icon;
-  }
-  return '/img/Unknown.png';
 }

@@ -373,3 +373,50 @@ export function getPowersetCountByArchetype(): Record<string, number> {
 
   return counts;
 }
+
+// ============================================
+// POWER ICON UTILITIES
+// ============================================
+
+/**
+ * Convert a raw icon filename to proper CamelCase format
+ * e.g., "fireblast_fireblast.png" → "FireBlast_FireBlast.png"
+ */
+function toCamelCaseIcon(iconFilename: string): string {
+  // Split by underscore, capitalize each part, rejoin
+  return iconFilename
+    .split('_')
+    .map(part => {
+      // Handle the .png extension
+      if (part.endsWith('.png')) {
+        const name = part.slice(0, -4);
+        return name.charAt(0).toUpperCase() + name.slice(1) + '.png';
+      }
+      return part.charAt(0).toUpperCase() + part.slice(1);
+    })
+    .join('_');
+}
+
+/**
+ * Get the full icon path for a power
+ * @param powersetName The powerset display name (e.g., "Fire Blast", "Archery")
+ * @param iconFilename The raw icon filename from data (e.g., "fireblast_fireblast.png")
+ * @returns Full path like "/img/Powers/Fire Blast Powers Icons/FireBlast_FireBlast.png"
+ */
+export function getPowerIconPath(powersetName: string, iconFilename: string | undefined): string {
+  if (!iconFilename) {
+    return '/img/Unknown.png';
+  }
+
+  const folderName = `${powersetName} Powers Icons`;
+  const camelCaseIcon = toCamelCaseIcon(iconFilename);
+
+  return `/img/Powers/${folderName}/${camelCaseIcon}`;
+}
+
+/**
+ * Get power icon path from a Power object and its powerset
+ */
+export function resolvePowerIcon(power: Power, powerset: Powerset): string {
+  return getPowerIconPath(powerset.name, power.icon);
+}

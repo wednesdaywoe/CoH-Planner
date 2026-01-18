@@ -4,7 +4,7 @@
  */
 
 import { useBuildStore, useUIStore } from '@/stores';
-import { getPowerset } from '@/data';
+import { getPowerset, getPowerIconPath } from '@/data';
 import type { Power } from '@/types';
 
 interface AvailablePowersProps {
@@ -23,7 +23,9 @@ export function AvailablePowers({
   const build = useBuildStore((s) => s.build);
   const setInfoPanelContent = useUIStore((s) => s.setInfoPanelContent);
   const lockInfoPanel = useUIStore((s) => s.lockInfoPanel);
+  const unlockInfoPanel = useUIStore((s) => s.unlockInfoPanel);
   const infoPanelLocked = useUIStore((s) => s.infoPanel.locked);
+  const lockedContent = useUIStore((s) => s.infoPanel.lockedContent);
 
   const archetypeId = build.archetype.id;
   const categoryLabel = category === 'primary' ? 'Primary' : 'Secondary';
@@ -55,7 +57,8 @@ export function AvailablePowers({
   const isLevel1BlockedForSecondPick = isLevel1 && hasPickedPowerThisCategory && !otherCategoryHasPower;
 
   const handlePowerHover = (power: Power) => {
-    if (powersetId && !infoPanelLocked) {
+    // Always update hover content - tooltip uses this even when panel is locked
+    if (powersetId) {
       setInfoPanelContent({
         type: 'power',
         powerName: power.name,
@@ -66,13 +69,23 @@ export function AvailablePowers({
 
   const handlePowerRightClick = (e: React.MouseEvent, power: Power) => {
     e.preventDefault();
-    if (powersetId) {
+    if (!powersetId) return;
+
+    // If already locked to this power, unlock; otherwise lock to this power
+    if (infoPanelLocked && lockedContent?.type === 'power' && lockedContent.powerName === power.name) {
+      unlockInfoPanel();
+    } else {
       lockInfoPanel({
         type: 'power',
         powerName: power.name,
         powerSet: powersetId,
       });
     }
+  };
+
+  // Helper to check if a power is the currently locked one
+  const isPowerLocked = (powerName: string) => {
+    return infoPanelLocked && lockedContent?.type === 'power' && lockedContent.powerName === powerName;
   };
 
   // No archetype selected
@@ -156,6 +169,7 @@ export function AvailablePowers({
 
             // Block selection until both powersets are chosen
             const isDisabled = isSelected || !isAvailable || !bothPowersetsSelected || isLevel1Restricted;
+            const isLocked = isPowerLocked(power.name);
 
             return (
               <button
@@ -164,21 +178,23 @@ export function AvailablePowers({
                 onMouseEnter={() => handlePowerHover(power)}
                 onContextMenu={(e) => handlePowerRightClick(e, power)}
                 disabled={isDisabled}
-                title="Right-click to lock power info"
+                title={isLocked ? 'Right-click to unlock power info' : 'Right-click to lock power info'}
                 className={`
                   w-full flex items-center gap-1.5 px-1.5 py-0.5 rounded-sm
                   transition-colors text-left text-xs
                   ${
-                    isSelected
-                      ? 'bg-blue-900/30 border border-blue-600/50 opacity-60'
-                      : !isAvailable
-                        ? 'bg-slate-800/50 border border-slate-700/50 opacity-40 cursor-not-allowed'
-                        : 'bg-slate-800 border border-slate-700 hover:border-blue-500 cursor-pointer'
+                    isLocked
+                      ? 'border-amber-500 shadow-[0_0_4px_rgba(245,158,11,0.4)] bg-gradient-to-r from-amber-500/10 to-slate-800'
+                      : isSelected
+                        ? 'bg-blue-900/30 border border-blue-600/50 opacity-60'
+                        : !isAvailable
+                          ? 'bg-slate-800/50 border border-slate-700/50 opacity-40 cursor-not-allowed'
+                          : 'bg-slate-800 border border-slate-700 hover:border-blue-500 cursor-pointer'
                   }
                 `}
               >
                 <img
-                  src={power.icon || '/img/Unknown.png'}
+                  src={powerset ? getPowerIconPath(powerset.name, power.icon) : '/img/Unknown.png'}
                   alt=""
                   className="w-4 h-4 rounded-sm flex-shrink-0"
                   onError={(e) => {

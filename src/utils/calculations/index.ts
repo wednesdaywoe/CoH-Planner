@@ -92,3 +92,14 @@ export {
   type ActivePowerBonuses,
   type FormattedStat,
 } from './stats';
+
+// Character totals (unified calculation system)
+export {
+  calculateCharacterTotals,
+  getBreakdownForStat,
+  hasStatBonuses,
+  type GlobalBonuses as CharacterGlobalBonuses,
+  type StatSource,
+  type DashboardStatBreakdown,
+  type CharacterCalculationResult,
+} from './character-totals';
