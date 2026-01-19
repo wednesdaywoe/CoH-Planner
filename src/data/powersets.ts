@@ -380,29 +380,10 @@ export function getPowersetCountByArchetype(): Record<string, number> {
 // ============================================
 
 /**
- * Convert a raw icon filename to proper CamelCase format
- * e.g., "fireblast_fireblast.png" → "FireBlast_FireBlast.png"
- */
-function toCamelCaseIcon(iconFilename: string): string {
-  // Split by underscore, capitalize each part, rejoin
-  return iconFilename
-    .split('_')
-    .map(part => {
-      // Handle the .png extension
-      if (part.endsWith('.png')) {
-        const name = part.slice(0, -4);
-        return name.charAt(0).toUpperCase() + name.slice(1) + '.png';
-      }
-      return part.charAt(0).toUpperCase() + part.slice(1);
-    })
-    .join('_');
-}
-
-/**
  * Get the full icon path for a power
  * @param powersetName The powerset display name (e.g., "Fire Blast", "Archery")
  * @param iconFilename The raw icon filename from data (e.g., "fireblast_fireblast.png")
- * @returns Full path like "/CoH-Planner/img/Powers/Fire Blast Powers Icons/FireBlast_FireBlast.png"
+ * @returns Full path like "/CoH-Planner/img/Powers/Fire Blast Powers Icons/fireblast_fireblast.png"
  */
 export function getPowerIconPath(powersetName: string, iconFilename: string | undefined): string {
   if (!iconFilename) {
@@ -410,9 +391,10 @@ export function getPowerIconPath(powersetName: string, iconFilename: string | un
   }
 
   const folderName = `${powersetName} Powers Icons`;
-  const camelCaseIcon = toCamelCaseIcon(iconFilename);
+  // Icon files are stored in lowercase to match the data
+  const lowercaseIcon = iconFilename.toLowerCase();
 
-  return resolvePath(`/img/Powers/${folderName}/${camelCaseIcon}`);
+  return resolvePath(`/img/Powers/${folderName}/${lowercaseIcon}`);
 }
 
 /**

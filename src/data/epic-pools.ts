@@ -266,27 +266,18 @@ export function getEpicPoolCountByArchetype(): Record<string, number> {
 
 /**
  * Get the full icon path for an epic pool power
+ * @param poolName The pool display name (e.g., "Dark Mastery")
+ * @param iconFilename The raw icon filename from data (e.g., "darkmastery_darkobliteration.png")
+ * @returns Full path like "/CoH-Planner/img/Powers/Dark Mastery Powers Icons/darkmastery_darkobliteration.png"
  */
 export function getEpicPoolPowerIconPath(poolName: string, iconFilename: string | undefined): string {
   if (!iconFilename) {
     return resolvePath('/img/Unknown.png');
   }
 
-  // Epic pool power icons are typically in the Powers folder with their set name
-  // Convert to proper path format
   const folderName = `${poolName} Powers Icons`;
+  // Icon files are stored in lowercase to match the data
+  const lowercaseIcon = iconFilename.toLowerCase();
 
-  // Convert icon filename to CamelCase if needed
-  const camelCaseIcon = iconFilename
-    .split('_')
-    .map(part => {
-      if (part.endsWith('.png')) {
-        const name = part.slice(0, -4);
-        return name.charAt(0).toUpperCase() + name.slice(1) + '.png';
-      }
-      return part.charAt(0).toUpperCase() + part.slice(1);
-    })
-    .join('_');
-
-  return resolvePath(`/img/Powers/${folderName}/${camelCaseIcon}`);
+  return resolvePath(`/img/Powers/${folderName}/${lowercaseIcon}`);
 }
