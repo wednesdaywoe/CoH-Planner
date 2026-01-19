@@ -23,18 +23,17 @@ import type { Power, SelectedPower } from '@/types';
 /** Get the icon path for an inherent power based on its category */
 function getInherentIconPath(power: SelectedPower): string {
   const category = power.inherentCategory || 'basic';
+  // Icon files are stored in lowercase to match the data
+  const lowercaseIcon = power.icon?.toLowerCase() || 'unknown.png';
 
   switch (category) {
     case 'fitness':
-      return resolvePath(`/img/Powers/Fitness Powers Icons/${power.icon}`);
+      return resolvePath(`/img/Powers/Fitness Powers Icons/${lowercaseIcon}`);
     case 'prestige':
-      return resolvePath(`/img/Powers/Inherent Powers Icons/${power.icon}`);
     case 'archetype':
-      // Archetype inherents use Inherent Powers Icons folder
-      return resolvePath(`/img/Powers/Inherent Powers Icons/${power.icon}`);
     case 'basic':
     default:
-      return resolvePath(`/img/Powers/Inherent Powers Icons/${power.icon}`);
+      return resolvePath(`/img/Powers/Inherent Powers Icons/${lowercaseIcon}`);
   }
 }
 
