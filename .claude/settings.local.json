@@ -37,7 +37,9 @@
       "Bash(for file in \"C:\\\\Projects\\\\legacy-CoH-Planner\\\\js\\\\data\\\\epics\\\\sentinel\"\"*.js; do echo \"=== $file ===\" && cat \"$file \")",
       "Bash(node scripts/convert-epic-pools.js:*)",
       "Bash(xargs:*)",
-      "Bash(do git add \"$f\")"
+      "Bash(do git add \"$f\")",
+      "Bash(powershell -Command:*)",
+      "Bash(git config:*)"
     ]
   }
 }
