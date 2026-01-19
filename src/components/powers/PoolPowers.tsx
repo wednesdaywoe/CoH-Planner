@@ -29,8 +29,9 @@ function getInherentIconPath(power: SelectedPower): string {
   switch (category) {
     case 'fitness':
       return resolvePath(`/img/Powers/Fitness Powers Icons/${lowercaseIcon}`);
-    case 'prestige':
     case 'archetype':
+      return resolvePath(`/img/Powers/Archetype Inherent Powers icons/${lowercaseIcon}`);
+    case 'prestige':
     case 'basic':
     default:
       return resolvePath(`/img/Powers/Inherent Powers Icons/${lowercaseIcon}`);

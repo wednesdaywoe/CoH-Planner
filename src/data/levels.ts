@@ -535,8 +535,11 @@ export function createArchetypeInherentPower(
   archetypeName: string,
   inherent: { name: string; description: string }
 ): InherentPowerDef {
-  // Generate icon name from archetype name (e.g., "Blaster" -> "inherent_blaster.png")
-  const iconName = `inherent_${archetypeName.toLowerCase().replace(/\s+/g, '_')}.png`;
+  // Generate icon name from archetype and power name
+  // e.g., "Blaster" + "Defiance" -> "inherent_blaster_defiance.png"
+  const archetypeSlug = archetypeName.toLowerCase().replace(/[\s-]+/g, '');
+  const powerSlug = inherent.name.toLowerCase().replace(/[\s-]+/g, '');
+  const iconName = `inherent_${archetypeSlug}_${powerSlug}.png`;
 
   return {
     name: inherent.name,
