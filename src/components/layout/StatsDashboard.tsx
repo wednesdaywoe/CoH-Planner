@@ -450,7 +450,7 @@ export function StatsDashboard() {
           title="About Sidekick"
         >
           <img
-            src="/CoH-Planner/img/favicon-32x32.png"
+            src="img/favicon-32x32.png"
             alt="About"
             className="w-4 h-4 group-hover:scale-110 transition-transform"
           />
