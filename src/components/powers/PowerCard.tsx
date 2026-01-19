@@ -6,6 +6,7 @@ import { useBuildStore, useUIStore } from '@/stores';
 import type { SelectedPower } from '@/types';
 import type { PowerCategory } from '@/stores';
 import { getPowerIconPath } from '@/data';
+import { resolvePath } from '@/utils/paths';
 import { PowerSlot } from './PowerSlot';
 import { Badge } from '@/components/ui';
 
@@ -67,7 +68,7 @@ export function PowerCard({
             alt=""
             className="w-8 h-8 rounded flex-shrink-0"
             onError={(e) => {
-              (e.target as HTMLImageElement).src = '/img/Unknown.png';
+              (e.target as HTMLImageElement).src = resolvePath('/img/Unknown.png');
             }}
           />
           <div className="min-w-0">

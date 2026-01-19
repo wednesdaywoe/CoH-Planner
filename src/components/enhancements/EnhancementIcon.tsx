@@ -16,9 +16,10 @@
 
 import { useMemo } from 'react';
 import type { Origin } from '@/types';
+import { resolvePath } from '@/utils/paths';
 
 // Base path for enhancement images
-const IMG_BASE = '/img/Enhancements';
+const IMG_BASE = resolvePath('/img/Enhancements');
 
 export type EnhancementType = 'io-set' | 'io-generic' | 'origin' | 'special';
 export type OriginTier = 'TO' | 'DO' | 'SO';
@@ -171,7 +172,7 @@ export function EnhancementIcon({
         className="absolute inset-0 w-full h-full object-contain"
         onError={(e) => {
           // Fallback to a default image on error
-          (e.target as HTMLImageElement).src = '/img/Unknown.png';
+          (e.target as HTMLImageElement).src = resolvePath('/img/Unknown.png');
         }}
       />
       {/* Overlay frame */}

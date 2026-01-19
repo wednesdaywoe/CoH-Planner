@@ -11,6 +11,7 @@ import { useState, useMemo, useEffect, useRef } from 'react';
 import { useBuildStore, useUIStore } from '@/stores';
 import { getIOSetsForPower, getPower, getPowerPool } from '@/data';
 import { COMMON_IO_TYPES, getCommonIOValueAtLevel, ORIGIN_TIERS, HAMIDON_ENHANCEMENTS } from '@/data/enhancements';
+import { resolvePath } from '@/utils/paths';
 import { Modal, ModalBody } from '@/components/modals';
 import { Tooltip, Toggle } from '@/components/ui';
 import { IOSetIcon, GenericIOIcon, OriginEnhancementIcon, SpecialEnhancementIcon } from './EnhancementIcon';
@@ -927,32 +928,32 @@ function SetPieceTooltip({ set, piece }: SetPieceTooltipProps) {
 
 function getGenericIOIcon(stat: EnhancementStatType): string {
   const iconMap: Partial<Record<EnhancementStatType, string>> = {
-    'Damage': '/img/Enhancements/IO_Damage.png',
-    'Accuracy': '/img/Enhancements/IO_Accuracy.png',
-    'Recharge': '/img/Enhancements/IO_Recharge.png',
-    'EnduranceReduction': '/img/Enhancements/IO_Endurance.png',
-    'Range': '/img/Enhancements/IO_Range.png',
-    'Defense': '/img/Enhancements/IO_Defense.png',
-    'Resistance': '/img/Enhancements/IO_Resistance.png',
-    'Healing': '/img/Enhancements/IO_Healing.png',
-    'ToHit': '/img/Enhancements/IO_ToHit.png',
-    'Hold': '/img/Enhancements/IO_Hold.png',
-    'Stun': '/img/Enhancements/IO_Stun.png',
-    'Immobilize': '/img/Enhancements/IO_Immobilize.png',
-    'Sleep': '/img/Enhancements/IO_Sleep.png',
-    'Confuse': '/img/Enhancements/IO_Confuse.png',
-    'Fear': '/img/Enhancements/IO_Fear.png',
-    'Knockback': '/img/Enhancements/IO_Knockback.png',
-    'Run Speed': '/img/Enhancements/IO_RunSpeed.png',
-    'Jump': '/img/Enhancements/IO_Jump.png',
-    'Fly': '/img/Enhancements/IO_Fly.png',
+    'Damage': resolvePath('/img/Enhancements/IO_Damage.png'),
+    'Accuracy': resolvePath('/img/Enhancements/IO_Accuracy.png'),
+    'Recharge': resolvePath('/img/Enhancements/IO_Recharge.png'),
+    'EnduranceReduction': resolvePath('/img/Enhancements/IO_Endurance.png'),
+    'Range': resolvePath('/img/Enhancements/IO_Range.png'),
+    'Defense': resolvePath('/img/Enhancements/IO_Defense.png'),
+    'Resistance': resolvePath('/img/Enhancements/IO_Resistance.png'),
+    'Healing': resolvePath('/img/Enhancements/IO_Healing.png'),
+    'ToHit': resolvePath('/img/Enhancements/IO_ToHit.png'),
+    'Hold': resolvePath('/img/Enhancements/IO_Hold.png'),
+    'Stun': resolvePath('/img/Enhancements/IO_Stun.png'),
+    'Immobilize': resolvePath('/img/Enhancements/IO_Immobilize.png'),
+    'Sleep': resolvePath('/img/Enhancements/IO_Sleep.png'),
+    'Confuse': resolvePath('/img/Enhancements/IO_Confuse.png'),
+    'Fear': resolvePath('/img/Enhancements/IO_Fear.png'),
+    'Knockback': resolvePath('/img/Enhancements/IO_Knockback.png'),
+    'Run Speed': resolvePath('/img/Enhancements/IO_RunSpeed.png'),
+    'Jump': resolvePath('/img/Enhancements/IO_Jump.png'),
+    'Fly': resolvePath('/img/Enhancements/IO_Fly.png'),
   };
-  return iconMap[stat] || '/img/Unknown.png';
+  return iconMap[stat] || resolvePath('/img/Unknown.png');
 }
 
 function getOriginIcon(stat: EnhancementStatType, tier: string): string {
   const statPart = stat.replace(/\s+/g, '');
-  return `/img/Enhancements/${tier}_${statPart}.png`;
+  return resolvePath(`/img/Enhancements/${tier}_${statPart}.png`);
 }
 
 function mapHamidonAspect(aspect: string): EnhancementStatType {

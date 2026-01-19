@@ -7,6 +7,7 @@ import { useBuildStore, useUIStore } from '@/stores';
 import type { PowerCategory } from '@/stores';
 import type { SelectedPower } from '@/types';
 import { getPowerIconPath } from '@/data';
+import { resolvePath } from '@/utils/paths';
 import { DraggableSlotGhost } from './DraggableSlotGhost';
 import { SlottedEnhancementIcon } from './SlottedEnhancementIcon';
 
@@ -231,7 +232,7 @@ function SelectedPowerRow({
           alt=""
           className="w-4 h-4 rounded-sm flex-shrink-0"
           onError={(e) => {
-            (e.target as HTMLImageElement).src = '/img/Unknown.png';
+            (e.target as HTMLImageElement).src = resolvePath('/img/Unknown.png');
           }}
         />
         <span className="text-xs text-slate-200 truncate">

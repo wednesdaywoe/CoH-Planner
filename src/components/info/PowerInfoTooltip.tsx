@@ -9,6 +9,7 @@ import { createPortal } from 'react-dom';
 import { useUIStore, useBuildStore } from '@/stores';
 import { useGlobalBonuses } from '@/hooks/useCalculatedStats';
 import { getPower, getPowerPool, getArchetype, getIOSet, getPowerset, getInherentPowerDef } from '@/data';
+import { resolvePath } from '@/utils/paths';
 import type { Power } from '@/types';
 import {
   calculatePowerEnhancementBonuses,
@@ -343,11 +344,11 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
       {/* Header */}
       <div className="flex items-center gap-2">
         <img
-          src={basePower.icon || '/img/Unknown.png'}
+          src={basePower.icon || resolvePath('/img/Unknown.png')}
           alt=""
           className="w-6 h-6 rounded flex-shrink-0"
           onError={(e) => {
-            (e.target as HTMLImageElement).src = '/img/Unknown.png';
+            (e.target as HTMLImageElement).src = resolvePath('/img/Unknown.png');
           }}
         />
         <div className="min-w-0">

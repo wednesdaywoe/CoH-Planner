@@ -14,6 +14,7 @@ import type {
   DamageType,
 } from '@/types';
 import { EPIC_POOLS_RAW } from './epic-pools-raw';
+import { resolvePath } from '@/utils/paths';
 
 // ============================================
 // EPIC POOL TYPES
@@ -268,7 +269,7 @@ export function getEpicPoolCountByArchetype(): Record<string, number> {
  */
 export function getEpicPoolPowerIconPath(poolName: string, iconFilename: string | undefined): string {
   if (!iconFilename) {
-    return '/img/Unknown.png';
+    return resolvePath('/img/Unknown.png');
   }
 
   // Epic pool power icons are typically in the Powers folder with their set name
@@ -287,5 +288,5 @@ export function getEpicPoolPowerIconPath(poolName: string, iconFilename: string 
     })
     .join('_');
 
-  return `/img/Powers/${folderName}/${camelCaseIcon}`;
+  return resolvePath(`/img/Powers/${folderName}/${camelCaseIcon}`);
 }

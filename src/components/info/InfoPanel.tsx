@@ -9,6 +9,7 @@ import { useUIStore, useBuildStore } from '@/stores';
 import { getPower, getPowerPool, getArchetype, getIOSet, getPowerset, getPowerIconPath, getInherentPowerDef } from '@/data';
 import { useGlobalBonuses } from '@/hooks/useCalculatedStats';
 import { calculatePowerEnhancementBonuses, calculatePowerDamage, type EnhancementBonuses } from '@/utils/calculations';
+import { resolvePath } from '@/utils/paths';
 import type { DefenseByType, ResistanceByType, ProtectionEffects, ArchetypeId, SelectedPower, Power } from '@/types';
 
 // Base value for buff/debuff effects (per scale point at modifier 1.0)
@@ -426,7 +427,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
           alt=""
           className="w-8 h-8 rounded flex-shrink-0"
           onError={(e) => {
-            (e.target as HTMLImageElement).src = '/img/Unknown.png';
+            (e.target as HTMLImageElement).src = resolvePath('/img/Unknown.png');
           }}
         />
         <div className="min-w-0">

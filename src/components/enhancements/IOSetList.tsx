@@ -4,6 +4,7 @@
 
 import type { IOSet, IOSetRarity } from '@/types';
 import { RarityBadge } from '@/components/ui';
+import { resolvePath } from '@/utils/paths';
 
 interface IOSetListProps {
   sets: IOSet[];
@@ -41,7 +42,7 @@ interface IOSetListItemProps {
 }
 
 function IOSetListItem({ set, isSelected, onClick }: IOSetListItemProps) {
-  const iconPath = set.icon ? `/img/Enhancements/${set.icon}` : '/img/Unknown.png';
+  const iconPath = set.icon ? resolvePath(`/img/Enhancements/${set.icon}`) : resolvePath('/img/Unknown.png');
   return (
     <button
       onClick={onClick}
@@ -60,7 +61,7 @@ function IOSetListItem({ set, isSelected, onClick }: IOSetListItemProps) {
         alt=""
         className="w-8 h-8 rounded"
         onError={(e) => {
-          (e.target as HTMLImageElement).src = '/img/Unknown.png';
+          (e.target as HTMLImageElement).src = resolvePath('/img/Unknown.png');
         }}
       />
       <div className="flex-1 min-w-0">

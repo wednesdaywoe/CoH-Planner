@@ -21,6 +21,7 @@ import type {
   DebuffResistance,
 } from '@/types';
 import { POWERSETS_RAW } from './powersets-raw';
+import { resolvePath } from '@/utils/paths';
 
 // ============================================
 // POWERSET REGISTRY TYPE
@@ -401,17 +402,17 @@ function toCamelCaseIcon(iconFilename: string): string {
  * Get the full icon path for a power
  * @param powersetName The powerset display name (e.g., "Fire Blast", "Archery")
  * @param iconFilename The raw icon filename from data (e.g., "fireblast_fireblast.png")
- * @returns Full path like "/img/Powers/Fire Blast Powers Icons/FireBlast_FireBlast.png"
+ * @returns Full path like "/CoH-Planner/img/Powers/Fire Blast Powers Icons/FireBlast_FireBlast.png"
  */
 export function getPowerIconPath(powersetName: string, iconFilename: string | undefined): string {
   if (!iconFilename) {
-    return '/img/Unknown.png';
+    return resolvePath('/img/Unknown.png');
   }
 
   const folderName = `${powersetName} Powers Icons`;
   const camelCaseIcon = toCamelCaseIcon(iconFilename);
 
-  return `/img/Powers/${folderName}/${camelCaseIcon}`;
+  return resolvePath(`/img/Powers/${folderName}/${camelCaseIcon}`);
 }
 
 /**

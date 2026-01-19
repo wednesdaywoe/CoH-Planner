@@ -5,6 +5,7 @@
 
 import { useBuildStore, useUIStore } from '@/stores';
 import { getPowerset, getPowerIconPath } from '@/data';
+import { resolvePath } from '@/utils/paths';
 import type { Power } from '@/types';
 
 interface AvailablePowersProps {
@@ -194,11 +195,11 @@ export function AvailablePowers({
                 `}
               >
                 <img
-                  src={powerset ? getPowerIconPath(powerset.name, power.icon) : '/img/Unknown.png'}
+                  src={powerset ? getPowerIconPath(powerset.name, power.icon) : resolvePath('/img/Unknown.png')}
                   alt=""
                   className="w-4 h-4 rounded-sm flex-shrink-0"
                   onError={(e) => {
-                    (e.target as HTMLImageElement).src = '/img/Unknown.png';
+                    (e.target as HTMLImageElement).src = resolvePath('/img/Unknown.png');
                   }}
                 />
                 <span className="truncate flex-1 text-slate-200">

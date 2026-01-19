@@ -14,6 +14,7 @@ import {
   getEpicPoolPowerIconPath,
   EPIC_POOL_LEVEL,
 } from '@/data';
+import { resolvePath } from '@/utils/paths';
 import { Select } from '@/components/ui';
 import { DraggableSlotGhost } from './DraggableSlotGhost';
 import { SlottedEnhancementIcon } from './SlottedEnhancementIcon';
@@ -25,15 +26,15 @@ function getInherentIconPath(power: SelectedPower): string {
 
   switch (category) {
     case 'fitness':
-      return `/img/Powers/Fitness Powers Icons/${power.icon}`;
+      return resolvePath(`/img/Powers/Fitness Powers Icons/${power.icon}`);
     case 'prestige':
-      return `/img/Powers/Inherent Powers Icons/${power.icon}`;
+      return resolvePath(`/img/Powers/Inherent Powers Icons/${power.icon}`);
     case 'archetype':
       // Archetype inherents use Inherent Powers Icons folder
-      return `/img/Powers/Inherent Powers Icons/${power.icon}`;
+      return resolvePath(`/img/Powers/Inherent Powers Icons/${power.icon}`);
     case 'basic':
     default:
-      return `/img/Powers/Inherent Powers Icons/${power.icon}`;
+      return resolvePath(`/img/Powers/Inherent Powers Icons/${power.icon}`);
   }
 }
 
@@ -416,15 +417,15 @@ function PoolPowerGroup({
                         alt=""
                         className="w-4 h-4 rounded-sm flex-shrink-0"
                         onError={(e) => {
-                          (e.target as HTMLImageElement).src = '/img/Unknown.png';
+                          (e.target as HTMLImageElement).src = resolvePath('/img/Unknown.png');
                         }}
                       />
                       <span className="text-xs text-slate-200 truncate">
                         {power.name}
                       </span>
                     </div>
-                    {/* Enhancement slots */}
-                    <div className="flex gap-px">
+                    {/* Enhancement slots - fixed width container to prevent layout shift */}
+                    <div className="flex gap-px justify-start items-center flex-shrink-0" style={{ width: '120px' }}>
                       {power.slots.map((slot, index) => (
                         <div
                           key={index}
@@ -501,7 +502,7 @@ function PoolPowerGroup({
                       alt=""
                       className="w-3 h-3 rounded-sm"
                       onError={(e) => {
-                        (e.target as HTMLImageElement).src = '/img/Unknown.png';
+                        (e.target as HTMLImageElement).src = resolvePath('/img/Unknown.png');
                       }}
                     />
                     {power.name}
@@ -596,7 +597,7 @@ function InherentPowerGroup({
                     alt=""
                     className="w-4 h-4 rounded-sm flex-shrink-0"
                     onError={(e) => {
-                      (e.target as HTMLImageElement).src = '/img/Unknown.png';
+                      (e.target as HTMLImageElement).src = resolvePath('/img/Unknown.png');
                     }}
                   />
                   <span className="text-xs text-slate-400 truncate">
@@ -806,7 +807,7 @@ function EpicPoolSection({ level, archetypeId, epicPool }: EpicPoolSectionProps)
 
   // Get icon path for epic pool power
   const getEpicPowerIcon = (power: Power | SelectedPower) => {
-    if (!selectedPoolData) return '/img/Unknown.png';
+    if (!selectedPoolData) return resolvePath('/img/Unknown.png');
     return getEpicPoolPowerIconPath(selectedPoolData.name, power.icon);
   };
 
@@ -904,15 +905,15 @@ function EpicPoolSection({ level, archetypeId, epicPool }: EpicPoolSectionProps)
                             alt=""
                             className="w-4 h-4 rounded-sm flex-shrink-0"
                             onError={(e) => {
-                              (e.target as HTMLImageElement).src = '/img/Unknown.png';
+                              (e.target as HTMLImageElement).src = resolvePath('/img/Unknown.png');
                             }}
                           />
                           <span className="text-xs text-slate-200 truncate">
                             {power.name}
                           </span>
                         </div>
-                        {/* Enhancement slots */}
-                        <div className="flex gap-px">
+                        {/* Enhancement slots - fixed width container to prevent layout shift */}
+                        <div className="flex gap-px justify-start items-center flex-shrink-0" style={{ width: '120px' }}>
                           {power.slots.map((slot, index) => (
                             <div
                               key={index}
@@ -989,7 +990,7 @@ function EpicPoolSection({ level, archetypeId, epicPool }: EpicPoolSectionProps)
                           alt=""
                           className="w-3 h-3 rounded-sm"
                           onError={(e) => {
-                            (e.target as HTMLImageElement).src = '/img/Unknown.png';
+                            (e.target as HTMLImageElement).src = resolvePath('/img/Unknown.png');
                           }}
                         />
                         {power.name}
