@@ -2,7 +2,11 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/CoH-Planner/img/Unknown.png" />
+    <link rel="icon" type="image/svg+xml" href="/CoH-Planner/img/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/CoH-Planner/img/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="64x64" href="/CoH-Planner/img/favicon-64x64.png" />
+    <link rel="apple-touch-icon" sizes="256x256" href="/CoH-Planner/img/favicon-256x256.png" />
+    <link rel="manifest" href="/CoH-Planner/manifest.json" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>City of Heroes Planner</title>
     <!-- SPA redirect handler for GitHub Pages -->
@@ -33,6 +37,15 @@
     <div id="wip-banner" style="background: linear-gradient(135deg, #7a0353, #a70f74); color: white; padding: 12px 20px; text-align: center; font-size: 14px; font-weight: bold; border-bottom: 3px solid #cc4455; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);">
       <span style="margin-right: 8px;">⚠️ WORK IN PROGRESS - This application is incomplete and under active development - expect changes and bugs</span>
       <span style="margin-left: 8px;">🛠️ Last updated: <span id="last-updated">Loading...</span></span>
+    </div>
+    <div id="brand-banner" style="background: linear-gradient(135deg, #1a1a2e, #16213e); color: white; padding: 16px 20px; text-align: center; border-bottom: 2px solid #0f3460; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);">
+      <div style="display: flex; align-items: center; justify-content: center; gap: 16px;">
+        <img src="img/favicon.svg" alt="Sidekick Logo" style="width: 48px; height: 48px;" />
+        <div style="text-align: left;">
+          <div style="font-size: 28px; font-weight: bold; letter-spacing: 2px; color: #d045e9;">SIDEKICK</div>
+          <div style="font-size: 14px; color: #a8b2d1; font-weight: normal; letter-spacing: 0.5px;">A City of Heroes Character Planner for Everyone</div>
+        </div>
+      </div>
     </div>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>

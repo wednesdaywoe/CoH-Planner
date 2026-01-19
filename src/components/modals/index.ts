@@ -4,3 +4,4 @@
 
 export { Modal, ModalHeader, ModalBody, ModalFooter } from './Modal';
 export { StatsConfigModal } from './StatsConfigModal';
+export { AboutModal } from './AboutModal';

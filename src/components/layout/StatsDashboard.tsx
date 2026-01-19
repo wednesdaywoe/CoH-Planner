@@ -8,7 +8,7 @@ import { useMemo } from 'react';
 import { useCalculatedStats, useCharacterCalculation } from '@/hooks';
 import { useBuildStore, useUIStore } from '@/stores';
 import { Tooltip } from '@/components/ui';
-import { StatsConfigModal } from '@/components/modals';
+import { StatsConfigModal, AboutModal } from '@/components/modals';
 import type { CalculatedStats, DashboardStatBreakdown } from '@/hooks/useCalculatedStats';
 
 // ============================================
@@ -339,6 +339,9 @@ export function StatsDashboard() {
   const statsConfigModalOpen = useUIStore((s) => s.statsConfigModalOpen);
   const openStatsConfigModal = useUIStore((s) => s.openStatsConfigModal);
   const closeStatsConfigModal = useUIStore((s) => s.closeStatsConfigModal);
+  const aboutModalOpen = useUIStore((s) => s.aboutModalOpen);
+  const openAboutModal = useUIStore((s) => s.openAboutModal);
+  const closeAboutModal = useUIStore((s) => s.closeAboutModal);
 
   const maxHP = build.archetype?.stats?.maxHP || 0;
   const breakdowns = calcResult.breakdown;
@@ -434,7 +437,26 @@ export function StatsDashboard() {
 
   return (
     <>
-      <div className="bg-gray-900/50 border-b border-gray-800 px-4 py-2">
+      <div className="bg-gray-900/50 border-b border-gray-800 px-4 py-2 relative">
+        {/* About button - top right */}
+        <button
+          onClick={openAboutModal}
+          className="absolute top-2 right-4 z-10 flex items-center gap-1.5 px-3 py-2 text-xs font-semibold text-gray-200 bg-gray-800 hover:bg-gray-750 rounded-lg transition-all duration-300 group border-2 border-transparent"
+          style={{
+            backgroundImage: 'linear-gradient(rgb(31, 41, 55), rgb(31, 41, 55)), linear-gradient(135deg, rgb(37, 99, 235), rgb(147, 51, 234))',
+            backgroundOrigin: 'border-box',
+            backgroundClip: 'padding-box, border-box',
+          }}
+          title="About Sidekick"
+        >
+          <img
+            src="/CoH-Planner/img/favicon-32x32.png"
+            alt="About"
+            className="w-4 h-4 group-hover:scale-110 transition-transform"
+          />
+          <span>About</span>
+        </button>
+
         <div className="flex items-center gap-4">
           {/* Grouped stats - all panels in a single flex container with consistent gap */}
           <div className="flex-1 flex flex-wrap gap-4 items-start">
@@ -536,28 +558,32 @@ export function StatsDashboard() {
                 </div>
               ))}
           </div>
-
-          {/* Dashboard actions */}
-          <div className="flex items-center gap-2 flex-shrink-0">
-            <button
-              onClick={openStatsConfigModal}
-              className="flex items-center gap-1.5 px-2 py-1 text-xs text-gray-400 hover:text-gray-200 hover:bg-gray-800 rounded transition-colors"
-              title="Configure dashboard stats"
-            >
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-              </svg>
-              <span>Configure</span>
-            </button>
-          </div>
         </div>
+
+        {/* Configure button - bottom right */}
+        <button
+          onClick={openStatsConfigModal}
+          className="absolute bottom-2 right-4 z-10 flex items-center gap-1.5 px-2 py-1 text-xs text-gray-400 hover:text-gray-200 hover:bg-gray-800 rounded transition-colors"
+          title="Configure dashboard stats"
+        >
+          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+          </svg>
+          <span>Configure</span>
+        </button>
       </div>
 
       {/* Stats Config Modal */}
       <StatsConfigModal
         isOpen={statsConfigModalOpen}
         onClose={closeStatsConfigModal}
+      />
+
+      {/* About Modal */}
+      <AboutModal
+        isOpen={aboutModalOpen}
+        onClose={closeAboutModal}
       />
     </>
   );
