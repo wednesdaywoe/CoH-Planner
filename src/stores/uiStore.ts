@@ -42,6 +42,9 @@ interface UIState {
   /** Accolades modal open state */
   accoladesModalOpen: boolean;
 
+  /** About modal open state */
+  aboutModalOpen: boolean;
+
   /** Global IO level for calculations */
   globalIOLevel: number;
 
@@ -123,6 +126,10 @@ interface UIActions {
   // Accolades Modal
   openAccoladesModal: () => void;
   closeAccoladesModal: () => void;
+
+  // About Modal
+  openAboutModal: () => void;
+  closeAboutModal: () => void;
 }
 
 type UIStore = UIState & UIActions;
@@ -191,6 +198,7 @@ export const useUIStore = create<UIStore>()(
       originPicker: defaultOriginPicker,
       statsConfigModalOpen: false,
       accoladesModalOpen: false,
+      aboutModalOpen: false,
       globalIOLevel: 50,
       attunementEnabled: false,
       exemplarMode: false,
@@ -457,6 +465,13 @@ export const useUIStore = create<UIStore>()(
 
       closeStatsConfigModal: () =>
         set({ statsConfigModalOpen: false }),
+
+      // About Modal
+      openAboutModal: () =>
+        set({ aboutModalOpen: true }),
+
+      closeAboutModal: () =>
+        set({ aboutModalOpen: false }),
 
       setStatVisible: (stat, visible) =>
         set((state) => ({
