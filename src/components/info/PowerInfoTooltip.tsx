@@ -46,30 +46,53 @@ function formatPercent(value: number): string {
   return `${(value * 100).toFixed(1)}%`;
 }
 
-// Compact defense/resistance display
-function DefenseResistanceCompact({
+// Defense/Resistance with three-tier display (Base/Enhanced/Final)
+function DefenseResistanceThreeTier({
   label,
   values,
-  colorClass
+  enhancementBonus,
+  colorClass,
 }: {
   label: string;
   values: DefenseByType | ResistanceByType;
+  enhancementBonus: number;
   colorClass: string;
 }) {
   const entries = Object.entries(values).filter(([, v]) => v !== undefined && v !== 0);
   if (entries.length === 0) return null;
 
+  const hasEnhancement = enhancementBonus > 0.001;
+
   return (
-    <div className="mt-1">
-      <span className="text-slate-400 text-[9px] uppercase">{label}</span>
-      <div className="grid grid-cols-2 gap-x-2 gap-y-0 mt-0.5">
-        {entries.map(([type, value]) => (
-          <div key={type} className="flex justify-between">
-            <span className="text-slate-500 capitalize text-[9px]">{type}</span>
-            <span className={`${colorClass} text-[9px]`}>{formatPercent(value as number)}</span>
-          </div>
-        ))}
+    <div className="bg-slate-800/50 rounded p-1.5 mt-1">
+      <div className="grid grid-cols-[3.5rem_1fr_1fr_1fr] gap-1 text-[8px] text-slate-500 uppercase mb-0.5 border-b border-slate-700 pb-0.5">
+        <span>{label}</span>
+        <span>Base</span>
+        <span>Enhanced</span>
+        <span>Final</span>
       </div>
+      {entries.map(([type, baseValue]) => {
+        const base = baseValue as number;
+        // Defense and Resistance are multiplicative with enhancements
+        const enhanced = base * (1 + enhancementBonus);
+        const hasEnh = Math.abs(enhanced - base) > 0.001;
+
+        return (
+          <div key={type} className="grid grid-cols-[3.5rem_1fr_1fr_1fr] gap-1 items-baseline text-[10px]">
+            <span className="text-slate-400 capitalize text-[9px]">{type}</span>
+            <span className={colorClass}>{formatPercent(base)}</span>
+            <span className={hasEnh ? 'text-green-400' : 'text-slate-600'}>
+              {hasEnh ? `→ ${formatPercent(enhanced)}` : '—'}
+            </span>
+            <span className="text-slate-600">—</span>
+          </div>
+        );
+      })}
+      {hasEnhancement && (
+        <div className="text-[8px] text-green-500/70 mt-0.5">
+          +{(enhancementBonus * 100).toFixed(1)}% from enhancements
+        </div>
+      )}
     </div>
   );
 }
@@ -513,20 +536,22 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
         </div>
       )}
 
-      {/* Defense (armor sets) */}
+      {/* Defense (armor sets) - with three-tier display */}
       {effects?.defense && (
-        <DefenseResistanceCompact
+        <DefenseResistanceThreeTier
           label="Defense"
           values={effects.defense}
+          enhancementBonus={enhancementBonuses.defenseBuff || enhancementBonuses.defense || 0}
           colorClass="text-purple-400"
         />
       )}
 
-      {/* Resistance (armor sets) */}
+      {/* Resistance (armor sets) - with three-tier display */}
       {effects?.resistance && (
-        <DefenseResistanceCompact
+        <DefenseResistanceThreeTier
           label="Resistance"
           values={effects.resistance}
+          enhancementBonus={enhancementBonuses.resistance || 0}
           colorClass="text-orange-400"
         />
       )}

@@ -94,6 +94,18 @@ export interface CalculatedStats {
     knockback: number;
   };
 
+  // Debuff Resistance
+  debuffResistance: {
+    slow: number;
+    defense: number;
+    recharge: number;
+    endurance: number;
+    recovery: number;
+    tohit: number;
+    regeneration: number;
+    perception: number;
+  };
+
   // Global modifiers from set bonuses
   globalRecharge: number;
   globalAccuracy: number;
@@ -168,6 +180,18 @@ function convertToLegacyStats(
       confuse: global.mezResist,
       fear: global.mezResist,
       knockback: global.mezResist,
+    },
+
+    // Debuff Resistance
+    debuffResistance: {
+      slow: charStats.debuffResistSlow,
+      defense: charStats.debuffResistDefense,
+      recharge: charStats.debuffResistRecharge,
+      endurance: charStats.debuffResistEndurance,
+      recovery: charStats.debuffResistRecovery,
+      tohit: charStats.debuffResistToHit,
+      regeneration: charStats.debuffResistRegeneration,
+      perception: charStats.debuffResistPerception,
     },
 
     // Global modifiers

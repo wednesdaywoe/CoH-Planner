@@ -83,6 +83,15 @@ const CATEGORY_COLORS = {
     toggleOn: 'bg-teal-500 border-teal-400',
     toggleOff: 'border-teal-400/50',
   },
+  // Debuff Resistance - cyan
+  debuffResist: {
+    bg: 'bg-cyan-500',
+    border: 'border-cyan-400',
+    text: 'text-cyan-400',
+    headerBg: 'bg-cyan-900/40',
+    toggleOn: 'bg-cyan-500 border-cyan-400',
+    toggleOff: 'border-cyan-400/50',
+  },
 };
 
 type CategoryColorKey = keyof typeof CATEGORY_COLORS;
@@ -160,6 +169,20 @@ const STAT_CATEGORIES: {
       { stat: 'flyspeed', label: 'Fly Speed' },
       { stat: 'jumpspeed', label: 'Jump Speed' },
       { stat: 'jumpheight', label: 'Jump Height' },
+    ],
+  },
+  {
+    name: 'Debuff Resistance',
+    colorKey: 'debuffResist',
+    stats: [
+      { stat: 'debuff_slow', label: 'Slow Res' },
+      { stat: 'debuff_defense', label: 'Def Debuff Res' },
+      { stat: 'debuff_recharge', label: 'Rech Debuff Res' },
+      { stat: 'debuff_endurance', label: 'End Drain Res' },
+      { stat: 'debuff_recovery', label: 'Rec Debuff Res' },
+      { stat: 'debuff_tohit', label: 'ToHit Debuff Res' },
+      { stat: 'debuff_regen', label: 'Regen Debuff Res' },
+      { stat: 'debuff_perception', label: 'Percep Res' },
     ],
   },
 ];

@@ -201,6 +201,7 @@ const ASPECT_NAME_MAP: Record<string, string> = {
   'Defense Buff': 'defenseBuff',
   'Defense Debuff': 'defenseDebuff',
   'Resist Damage': 'resistance',
+  'Damage Resistance': 'resistance',
   Resistance: 'resistance',
   'ToHit Buff': 'tohit',
   'To Hit Buff': 'tohit',
@@ -251,6 +252,14 @@ const ED_THRESHOLDS: Record<EnhancementSchedule, { t1: number; t2: number; t3: n
 /**
  * Apply Enhancement Diversification to a bonus value
  * ED reduces effectiveness of enhancements beyond certain thresholds
+ *
+ * The formula applies diminishing returns in 4 tiers:
+ * - Tier 1 (0 to t1): 100% effective (no penalty)
+ * - Tier 2 (t1 to t2): 90% effective
+ * - Tier 3 (t2 to t3): 67% effective (2/3)
+ * - Tier 4 (beyond t3): 33% effective (1/3)
+ *
+ * These values match Homecoming/i25+ game behavior.
  */
 export function applyED(value: number, schedule: EnhancementSchedule = 'A'): number {
   const { t1, t2, t3 } = ED_THRESHOLDS[schedule];
@@ -262,14 +271,14 @@ export function applyED(value: number, schedule: EnhancementSchedule = 'A'): num
     // Slight penalty (90% effective)
     return t1 + (value - t1) * 0.9;
   } else if (value <= t3) {
-    // Moderate penalty (60% effective)
+    // Moderate penalty (67% effective)
     const tier2 = t1 + (t2 - t1) * 0.9;
-    return tier2 + (value - t2) * 0.6;
+    return tier2 + (value - t2) * (2 / 3);
   } else {
-    // Heavy penalty (15% effective)
+    // Heavy penalty (33% effective)
     const tier2 = t1 + (t2 - t1) * 0.9;
-    const tier3 = tier2 + (t3 - t2) * 0.6;
-    return tier3 + (value - t3) * 0.15;
+    const tier3 = tier2 + (t3 - t2) * (2 / 3);
+    return tier3 + (value - t3) * (1 / 3);
   }
 }
 

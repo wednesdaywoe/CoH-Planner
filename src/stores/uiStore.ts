@@ -39,6 +39,9 @@ interface UIState {
   /** Stats config modal open state */
   statsConfigModalOpen: boolean;
 
+  /** Accolades modal open state */
+  accoladesModalOpen: boolean;
+
   /** Global IO level for calculations */
   globalIOLevel: number;
 
@@ -116,6 +119,10 @@ interface UIActions {
   setStatVisible: (stat: string, visible: boolean) => void;
   reorderStats: (stats: StatDisplayConfig[]) => void;
   resetStatsConfig: () => void;
+
+  // Accolades Modal
+  openAccoladesModal: () => void;
+  closeAccoladesModal: () => void;
 }
 
 type UIStore = UIState & UIActions;
@@ -183,6 +190,7 @@ export const useUIStore = create<UIStore>()(
       genericPicker: defaultGenericPicker,
       originPicker: defaultOriginPicker,
       statsConfigModalOpen: false,
+      accoladesModalOpen: false,
       globalIOLevel: 50,
       attunementEnabled: false,
       exemplarMode: false,
@@ -466,6 +474,13 @@ export const useUIStore = create<UIStore>()(
         set({
           statsConfig: defaultStatsConfig,
         }),
+
+      // Accolades Modal
+      openAccoladesModal: () =>
+        set({ accoladesModalOpen: true }),
+
+      closeAccoladesModal: () =>
+        set({ accoladesModalOpen: false }),
     }),
     {
       name: 'coh-planner-ui',

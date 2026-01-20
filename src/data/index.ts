@@ -137,3 +137,6 @@ export {
   createArchetypeInherentPower,
 } from './levels';
 export type { LevelInfo, InherentPowerDef } from './levels';
+
+// Accolades data and accessors
+export { ACCOLADES, getAccolades, getAccolade } from './accolades';

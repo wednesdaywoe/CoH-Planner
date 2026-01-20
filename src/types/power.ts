@@ -103,8 +103,12 @@ export interface HealingEffect {
 export interface DebuffResistance {
   defense?: number;
   recharge?: number;
-  movement?: number;
+  movement?: number; // Also known as "Slow" resistance
   tohit?: number;
+  endurance?: number; // Endurance drain resistance
+  regeneration?: number; // Regeneration debuff resistance
+  recovery?: number; // Recovery debuff resistance
+  perception?: number; // Perception debuff resistance
 }
 
 // ============================================
@@ -309,4 +313,6 @@ export interface SelectedPower extends Power {
   isLocked?: boolean;
   /** Category for inherent powers (fitness, basic, prestige, archetype) */
   inherentCategory?: 'fitness' | 'basic' | 'prestige' | 'archetype';
+  /** If true, the power is toggled on and its effects apply to stats (for toggle/buff powers) */
+  isActive?: boolean;
 }

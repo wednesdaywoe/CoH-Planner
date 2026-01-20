@@ -431,10 +431,59 @@ export function EnhancementPicker() {
     closeEnhancementPicker();
   };
 
+  // Map from IO set categories to single enhancement types that should be allowed
+  // This supplements allowedEnhancements which may be incomplete in the source data
+  const SET_CATEGORY_TO_ENHANCEMENT: Record<string, EnhancementStatType[]> = {
+    // Damage categories
+    'Ranged Damage': ['Damage', 'Accuracy', 'Range'],
+    'Melee Damage': ['Damage', 'Accuracy'],
+    'Ranged AoE Damage': ['Damage', 'Accuracy', 'Range'],
+    'Melee AoE Damage': ['Damage', 'Accuracy'],
+    'Universal Damage Sets': ['Damage', 'Accuracy'],
+    'Sniper Attacks': ['Damage', 'Accuracy', 'Range'],
+    'Pet Damage': ['Damage', 'Accuracy'],
+    // Defense/Resistance
+    'Resist Damage': ['Resistance'],
+    'Defense Sets': ['Defense'],
+    // Control (Mez)
+    'Holds': ['Hold'],
+    'Stuns': ['Stun'],
+    'Immobilize': ['Immobilize'],
+    'Sleep': ['Sleep'],
+    'Confuse': ['Confuse'],
+    'Fear': ['Fear'],
+    'Knockback': ['Knockback'],
+    // Support/Debuff
+    'Healing': ['Healing'],
+    'To Hit Buff': ['ToHit'],
+    'To Hit Debuff': ['ToHit Debuff'],
+    'Slow Movement': ['Slow'],
+    'Threat Duration': ['Taunt'],
+    // Movement
+    'Running': ['Run Speed'],
+    'Jumping': ['Jump'],
+    'Flight': ['Fly'],
+  };
+
   // Get available generic IOs for this power
   const availableGenericIOs = useMemo(() => {
     if (!currentPower) return COMMON_IO_TYPES;
+
+    // Start with explicitly allowed enhancements
     const allowed = new Set(currentPower.allowedEnhancements);
+
+    // Add any enhancement types implied by allowed set categories
+    if (currentPower.allowedSetCategories) {
+      for (const category of currentPower.allowedSetCategories) {
+        const impliedTypes = SET_CATEGORY_TO_ENHANCEMENT[category];
+        if (impliedTypes) {
+          for (const type of impliedTypes) {
+            allowed.add(type);
+          }
+        }
+      }
+    }
+
     return COMMON_IO_TYPES.filter((type) => allowed.has(type));
   }, [currentPower]);
 
@@ -706,6 +755,7 @@ function IOSetRow({
   dragEndIndex,
 }: IOSetRowProps) {
   const attunementEnabled = useUIStore((s) => s.attunementEnabled);
+  const isUniqueEnhancementSlotted = useBuildStore((s) => s.isUniqueEnhancementSlotted);
 
   // Check if a piece is in the current drag selection
   const isPieceSelected = (pieceIndex: number) => {
@@ -713,6 +763,13 @@ function IOSetRow({
     const min = Math.min(dragStartIndex, dragEndIndex);
     const max = Math.max(dragStartIndex, dragEndIndex);
     return pieceIndex >= min && pieceIndex <= max;
+  };
+
+  // Check if a unique piece is already slotted
+  const isUniqueAlreadySlotted = (piece: IOSetPiece) => {
+    if (!piece.unique) return false;
+    const setId = set.id || set.name;
+    return isUniqueEnhancementSlotted(setId, piece.num);
   };
 
   return (
@@ -732,16 +789,27 @@ function IOSetRow({
       <div className="flex flex-wrap gap-1 select-none">
         {set.pieces.map((piece, pieceIndex) => {
           const selected = isPieceSelected(pieceIndex);
+          const isDisabled = isUniqueAlreadySlotted(piece);
           return (
-            <Tooltip key={pieceIndex} content={<SetPieceTooltip set={set} piece={piece} />}>
+            <Tooltip
+              key={pieceIndex}
+              content={
+                isDisabled
+                  ? <div className="text-orange-400">Unique enhancement already slotted in build</div>
+                  : <SetPieceTooltip set={set} piece={piece} />
+              }
+            >
               <button
-                onMouseDown={() => onPieceMouseDown(set, pieceIndex)}
-                onMouseEnter={() => onPieceMouseEnter(pieceIndex)}
-                onMouseUp={(e) => onPieceMouseUp(set, pieceIndex, e)}
+                onMouseDown={() => !isDisabled && onPieceMouseDown(set, pieceIndex)}
+                onMouseEnter={() => !isDisabled && onPieceMouseEnter(pieceIndex)}
+                onMouseUp={(e) => !isDisabled && onPieceMouseUp(set, pieceIndex, e)}
+                disabled={isDisabled}
                 className={`w-9 h-9 rounded border transition-all bg-gray-900/50 ${
-                  selected
-                    ? 'border-blue-400 scale-110 ring-2 ring-blue-400/50'
-                    : 'border-gray-600 hover:border-blue-400 hover:scale-110'
+                  isDisabled
+                    ? 'border-gray-700 opacity-40 cursor-not-allowed'
+                    : selected
+                      ? 'border-blue-400 scale-110 ring-2 ring-blue-400/50'
+                      : 'border-gray-600 hover:border-blue-400 hover:scale-110'
                 }`}
               >
                 <IOSetIcon

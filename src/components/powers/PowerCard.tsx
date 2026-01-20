@@ -8,7 +8,38 @@ import type { PowerCategory } from '@/stores';
 import { getPowerIconPath } from '@/data';
 import { resolvePath } from '@/utils/paths';
 import { PowerSlot } from './PowerSlot';
-import { Badge } from '@/components/ui';
+import { Badge, Tooltip } from '@/components/ui';
+
+/**
+ * Determine if a power should show a toggle switch for stat calculations.
+ * This includes:
+ * - Toggle powers (always toggleable)
+ * - Click powers that buff self (targetType: Self)
+ * - Click powers that are PBAoE and affect allies (buffs teammates AND user)
+ */
+function shouldShowToggle(power: SelectedPower): boolean {
+  const powerType = power.powerType?.toLowerCase();
+  const targetType = power.targetType?.toLowerCase();
+  const effectArea = power.effectArea?.toLowerCase();
+
+  // Toggle powers always show toggle
+  if (powerType === 'toggle') {
+    return true;
+  }
+
+  // Click powers that target self (self-buffs like Build Up, Aim)
+  if (powerType === 'click' && targetType === 'self') {
+    return true;
+  }
+
+  // Click powers that are PBAoE and target allies (like Accelerate Metabolism)
+  // These buff the user as well as nearby allies
+  if (powerType === 'click' && effectArea === 'pbaoe' && targetType === 'ally') {
+    return true;
+  }
+
+  return false;
+}
 
 interface PowerCardProps {
   power: SelectedPower;
@@ -28,10 +59,13 @@ export function PowerCard({
 }: PowerCardProps) {
   const addSlot = useBuildStore((s) => s.addSlot);
   const clearEnhancement = useBuildStore((s) => s.clearEnhancement);
+  const togglePowerActive = useBuildStore((s) => s.togglePowerActive);
   const openEnhancementPicker = useUIStore((s) => s.openEnhancementPicker);
   const setInfoPanelContent = useUIStore((s) => s.setInfoPanelContent);
 
   const canAddSlot = power.slots.length < power.maxSlots;
+  const showToggle = shouldShowToggle(power);
+  const isActive = power.isActive ?? false;
 
   const handleSlotClick = (slotIndex: number) => {
     openEnhancementPicker(power.name, powersetId, slotIndex);
@@ -115,9 +149,39 @@ export function PowerCard({
         )}
       </div>
 
-      {/* Slot count indicator */}
-      <div className="mt-2 text-xs text-gray-500">
-        {power.slots.length}/{power.maxSlots} slots
+      {/* Footer: slot count and toggle */}
+      <div className="mt-2 flex items-center justify-between">
+        <span className="text-xs text-gray-500">
+          {power.slots.length}/{power.maxSlots} slots
+        </span>
+        {showToggle && (
+          <Tooltip
+            content={
+              isActive
+                ? 'Power active - stats included in calculations'
+                : 'Power inactive - click to include in stat calculations'
+            }
+          >
+            <button
+              onClick={() => togglePowerActive(power.name)}
+              className={`
+                flex items-center gap-1 px-1.5 py-0.5 rounded text-xs font-medium transition-all
+                ${
+                  isActive
+                    ? 'bg-green-900/50 text-green-400 border border-green-700'
+                    : 'bg-gray-700/50 text-gray-500 border border-gray-600 hover:text-gray-300'
+                }
+              `}
+            >
+              <span
+                className={`w-2 h-2 rounded-full transition-colors ${
+                  isActive ? 'bg-green-400' : 'bg-gray-600'
+                }`}
+              />
+              {isActive ? 'ON' : 'OFF'}
+            </button>
+          </Tooltip>
+        )}
       </div>
     </div>
   );

@@ -12,7 +12,7 @@
  * - Global Bonuses → Dashboard Stats (with breakdown tracking)
  */
 
-import type { Build } from '@/types';
+import type { Build, Accolade, Enhancement } from '@/types';
 import { getIOSet } from '@/data';
 import {
   calculateSetBonuses,
@@ -25,6 +25,10 @@ import {
   createEmptyStats,
   type CharacterStats,
 } from './stats';
+import {
+  calculatePowerEnhancementBonuses,
+  type EnhancementBonuses,
+} from './enhancement-values';
 
 // ============================================
 // TYPES
@@ -73,6 +77,15 @@ export interface GlobalBonuses {
   flySpeed: number;
   // Mez Resistance
   mezResist: number;
+  // Debuff Resistance
+  debuffResistSlow: number;
+  debuffResistDefense: number;
+  debuffResistRecharge: number;
+  debuffResistEndurance: number;
+  debuffResistRecovery: number;
+  debuffResistToHit: number;
+  debuffResistRegeneration: number;
+  debuffResistPerception: number;
   // Special
   healOther: number;
   threatLevel: number;
@@ -84,7 +97,7 @@ export interface GlobalBonuses {
 export interface StatSource {
   name: string;
   value: number;
-  type: 'set-bonus' | 'active-power' | 'inherent' | 'enhancement';
+  type: 'set-bonus' | 'active-power' | 'inherent' | 'enhancement' | 'accolade';
   setId?: string;
   pieces?: number;
   capped?: boolean; // True if this instance hit the Rule of 5 cap
@@ -149,6 +162,14 @@ function createEmptyGlobalBonuses(): GlobalBonuses {
     jumpHeight: 0,
     flySpeed: 0,
     mezResist: 0,
+    debuffResistSlow: 0,
+    debuffResistDefense: 0,
+    debuffResistRecharge: 0,
+    debuffResistEndurance: 0,
+    debuffResistRecovery: 0,
+    debuffResistToHit: 0,
+    debuffResistRegeneration: 0,
+    debuffResistPerception: 0,
     healOther: 0,
     threatLevel: 0,
   };
@@ -309,6 +330,7 @@ interface ActivePowerEffect {
   damageBuff?: number;
   defense?: Record<string, number>;
   resistance?: Record<string, number>;
+  debuffResistance?: Record<string, number>;
   runSpeed?: number;
   flySpeed?: number;
   jumpHeight?: number;
@@ -323,24 +345,39 @@ interface PowerWithToggle {
   powerType?: string;
   isActive?: boolean;
   effects?: ActivePowerEffect;
+  slots?: (Enhancement | null)[];
 }
 
 /**
  * Apply bonuses from active toggle powers
+ * Enhancement bonuses are now factored in to boost the base power values
  */
 function applyActivePowerBonuses(
   powers: PowerWithToggle[],
   global: GlobalBonuses,
-  breakdown: Map<string, DashboardStatBreakdown>
+  breakdown: Map<string, DashboardStatBreakdown>,
+  buildLevel: number
 ): void {
   for (const power of powers) {
     if (!power.isActive || !power.effects) continue;
 
     const effects = power.effects;
 
+    // Calculate enhancement bonuses for this power
+    let enhBonuses: EnhancementBonuses = {};
+    if (power.slots && power.slots.length > 0) {
+      enhBonuses = calculatePowerEnhancementBonuses(
+        { name: power.name, slots: power.slots },
+        buildLevel,
+        getIOSet
+      );
+    }
+
     // ToHit buff (stored as decimal, convert to percentage)
+    // Enhanced by ToHit enhancements
     if (effects.tohitBuff !== undefined) {
-      const value = effects.tohitBuff * 100;
+      const enhMultiplier = 1 + (enhBonuses.tohit || 0);
+      const value = effects.tohitBuff * 100 * enhMultiplier;
       global.toHit += value;
       addToBreakdown(breakdown, 'toHit', {
         name: power.name,
@@ -350,8 +387,10 @@ function applyActivePowerBonuses(
     }
 
     // Damage buff
+    // Enhanced by Damage enhancements
     if (effects.damageBuff !== undefined) {
-      const value = effects.damageBuff * 100;
+      const enhMultiplier = 1 + (enhBonuses.damage || 0);
+      const value = effects.damageBuff * 100 * enhMultiplier;
       global.damage += value;
       addToBreakdown(breakdown, 'damage', {
         name: power.name,
@@ -361,10 +400,12 @@ function applyActivePowerBonuses(
     }
 
     // Defense from active powers
+    // Enhanced by Defense enhancements
     if (effects.defense && typeof effects.defense === 'object') {
       const def = effects.defense;
+      const enhMultiplier = 1 + (enhBonuses.defense || enhBonuses.defenseBuff || 0);
       for (const [type, value] of Object.entries(def)) {
-        const percentage = (value as number) * 100;
+        const percentage = (value as number) * 100 * enhMultiplier;
         const key = `def${capitalizeFirst(type)}` as keyof GlobalBonuses;
         if (key in global) {
           global[key] += percentage;
@@ -378,12 +419,44 @@ function applyActivePowerBonuses(
     }
 
     // Resistance from active powers
+    // Enhanced by Resistance enhancements
     if (effects.resistance && typeof effects.resistance === 'object') {
       const res = effects.resistance;
+      const enhMultiplier = 1 + (enhBonuses.resistance || 0);
       for (const [type, value] of Object.entries(res)) {
-        const percentage = (value as number) * 100;
+        const percentage = (value as number) * 100 * enhMultiplier;
         const key = `res${capitalizeFirst(type)}` as keyof GlobalBonuses;
         if (key in global) {
+          global[key] += percentage;
+          addToBreakdown(breakdown, key, {
+            name: power.name,
+            value: percentage,
+            type: 'active-power',
+          });
+        }
+      }
+    }
+
+    // Debuff Resistance from active powers
+    // Note: Debuff resistance typically cannot be enhanced
+    if (effects.debuffResistance && typeof effects.debuffResistance === 'object') {
+      const debuffRes = effects.debuffResistance;
+      // Map debuff resistance types to global bonus keys
+      const debuffResMapping: Record<string, keyof GlobalBonuses> = {
+        movement: 'debuffResistSlow',
+        defense: 'debuffResistDefense',
+        recharge: 'debuffResistRecharge',
+        endurance: 'debuffResistEndurance',
+        recovery: 'debuffResistRecovery',
+        tohit: 'debuffResistToHit',
+        regeneration: 'debuffResistRegeneration',
+        perception: 'debuffResistPerception',
+      };
+
+      for (const [type, value] of Object.entries(debuffRes)) {
+        const percentage = (value as number) * 100;
+        const key = debuffResMapping[type.toLowerCase()];
+        if (key && key in global) {
           global[key] += percentage;
           addToBreakdown(breakdown, key, {
             name: power.name,
@@ -457,6 +530,45 @@ function addToBreakdown(
 }
 
 // ============================================
+// ACCOLADE PROCESSING
+// ============================================
+
+/**
+ * Apply bonuses from accolades
+ * Accolades provide flat or percentage bonuses to HP and endurance
+ */
+function applyAccoladeBonuses(
+  accolades: Accolade[],
+  global: GlobalBonuses,
+  breakdown: Map<string, DashboardStatBreakdown>
+): void {
+  for (const accolade of accolades) {
+    for (const bonus of accolade.bonuses) {
+      // Map accolade stat names to our global bonus property names
+      const stat = bonus.stat.toLowerCase();
+
+      if (stat === 'maxhp') {
+        // HP bonuses from accolades are percentages
+        global.maxHP += bonus.value;
+        addToBreakdown(breakdown, 'maxhp', {
+          name: accolade.name,
+          value: bonus.value,
+          type: 'accolade',
+        });
+      } else if (stat === 'maxendurance') {
+        // Endurance bonuses from accolades are flat values
+        global.maxEndurance += bonus.value;
+        addToBreakdown(breakdown, 'maxend', {
+          name: accolade.name,
+          value: bonus.value,
+          type: 'accolade',
+        });
+      }
+    }
+  }
+}
+
+// ============================================
 // CONVERT TO CHARACTER STATS
 // ============================================
 
@@ -502,6 +614,16 @@ function convertToCharacterStats(global: GlobalBonuses): CharacterStats {
   stats.runspeed = global.runSpeed;
   stats.flyspeed = global.flySpeed;
   stats.jumpheight = global.jumpHeight;
+
+  // Debuff Resistance
+  stats.debuffResistSlow = global.debuffResistSlow;
+  stats.debuffResistDefense = global.debuffResistDefense;
+  stats.debuffResistRecharge = global.debuffResistRecharge;
+  stats.debuffResistEndurance = global.debuffResistEndurance;
+  stats.debuffResistRecovery = global.debuffResistRecovery;
+  stats.debuffResistToHit = global.debuffResistToHit;
+  stats.debuffResistRegeneration = global.debuffResistRegeneration;
+  stats.debuffResistPerception = global.debuffResistPerception;
 
   return stats;
 }
@@ -607,10 +729,15 @@ export function calculateCharacterTotals(
   // Note: Inherent powers would need to be added to the build state
   // For now, we skip this as they're not in the current build structure
 
-  // Step 6: Apply active toggle power bonuses
-  applyActivePowerBonuses(allPowers, globalBonuses, breakdown);
+  // Step 6: Apply active toggle power bonuses (with enhancement multipliers)
+  applyActivePowerBonuses(allPowers, globalBonuses, breakdown, effectiveLevel);
 
-  // Step 7: Convert to character stats format
+  // Step 7: Apply accolade bonuses
+  if (build.accolades && build.accolades.length > 0) {
+    applyAccoladeBonuses(build.accolades, globalBonuses, breakdown);
+  }
+
+  // Step 8: Convert to character stats format
   const stats = convertToCharacterStats(globalBonuses);
 
   // Update breakdown totals from final values

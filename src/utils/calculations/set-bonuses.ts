@@ -75,6 +75,35 @@ export interface BuildPowers {
 // ============================================
 
 /**
+ * Map of paired damage types in CoH
+ * When one type is applied, the paired type should also receive the bonus
+ * Example: damage_resistance_(lethal) also applies to smashing
+ */
+const PAIRED_STATS: Record<string, string> = {
+  // Resistance pairs
+  resSmashing: 'resLethal',
+  resLethal: 'resSmashing',
+  resFire: 'resCold',
+  resCold: 'resFire',
+  resEnergy: 'resNegative',
+  resNegative: 'resEnergy',
+  // Defense pairs
+  defSmashing: 'defLethal',
+  defLethal: 'defSmashing',
+  defFire: 'defCold',
+  defCold: 'defFire',
+  defEnergy: 'defNegative',
+  defNegative: 'defEnergy',
+};
+
+/**
+ * Get the paired stat for a given stat (if any)
+ */
+export function getPairedStat(stat: string): string | undefined {
+  return PAIRED_STATS[stat];
+}
+
+/**
  * Map of stat names from IO sets to internal stat keys
  */
 const STAT_NAME_MAP: Record<string, string | null> = {
@@ -103,6 +132,7 @@ const STAT_NAME_MAP: Record<string, string | null> = {
   'defense_(melee)': 'defMelee',
   'defense_(ranged)': 'defRanged',
   'defense_(aoe)': 'defAoE',
+  'defense_(area)': 'defAoE',
 
   // Defense - Typed
   SmashingDef: 'defSmashing',
@@ -348,6 +378,19 @@ export function collectAllSetBonuses(
               pieceCount: bonus.pieces,
               powerName: power.name,
             });
+
+            // Also apply to paired stat (e.g., S/L, F/C, E/N are paired)
+            const pairedStat = getPairedStat(stat);
+            if (pairedStat) {
+              bonuses.push({
+                stat: pairedStat,
+                value: effect.value,
+                source: `${set.name} (${bonus.pieces}pc in ${power.name})`,
+                setName: set.name,
+                pieceCount: bonus.pieces,
+                powerName: power.name,
+              });
+            }
           });
         }
         // Legacy format: direct stat/value on bonus object
@@ -362,6 +405,19 @@ export function collectAllSetBonuses(
               pieceCount: bonus.pieces,
               powerName: power.name,
             });
+
+            // Also apply to paired stat (e.g., S/L, F/C, E/N are paired)
+            const pairedStat = getPairedStat(stat);
+            if (pairedStat) {
+              bonuses.push({
+                stat: pairedStat,
+                value: bonus.value,
+                source: `${set.name} (${bonus.pieces}pc in ${power.name})`,
+                setName: set.name,
+                pieceCount: bonus.pieces,
+                powerName: power.name,
+              });
+            }
           }
         }
       });

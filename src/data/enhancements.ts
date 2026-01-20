@@ -107,6 +107,8 @@ export const COMMON_IO_TYPES: EnhancementStatType[] = [
   'Resistance',
   'Healing',
   'ToHit',
+  'ToHit Debuff',
+  'Slow',
   'Hold',
   'Stun',
   'Immobilize',
@@ -117,6 +119,7 @@ export const COMMON_IO_TYPES: EnhancementStatType[] = [
   'Run Speed',
   'Jump',
   'Fly',
+  'Taunt',
 ];
 
 // ============================================

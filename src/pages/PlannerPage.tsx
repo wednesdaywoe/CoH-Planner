@@ -48,7 +48,7 @@ export function PlannerPage() {
   };
 
   return (
-    <div className="grid grid-cols-5 gap-px bg-slate-700 flex-1 overflow-hidden">
+    <div className="grid gap-px bg-slate-700 flex-1 overflow-hidden" style={{ gridTemplateColumns: '0.8fr 1fr 1fr 1fr 1fr' }}>
       {/* Column 1: Available Powers (Primary + Secondary stacked) */}
       <div className="bg-slate-900 flex flex-col overflow-hidden">
         <div className="bg-slate-800 border-b border-slate-700 px-3 py-2">

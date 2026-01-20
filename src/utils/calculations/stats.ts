@@ -146,6 +146,16 @@ export interface CharacterStats {
   flyspeed: number;
   jumpspeed: number;
   jumpheight: number;
+
+  // Debuff Resistance
+  debuffResistSlow: number;
+  debuffResistDefense: number;
+  debuffResistRecharge: number;
+  debuffResistEndurance: number;
+  debuffResistRecovery: number;
+  debuffResistToHit: number;
+  debuffResistRegeneration: number;
+  debuffResistPerception: number;
 }
 
 /**
@@ -179,6 +189,14 @@ export function createEmptyStats(): CharacterStats {
     flyspeed: 0,
     jumpspeed: 0,
     jumpheight: 0,
+    debuffResistSlow: 0,
+    debuffResistDefense: 0,
+    debuffResistRecharge: 0,
+    debuffResistEndurance: 0,
+    debuffResistRecovery: 0,
+    debuffResistToHit: 0,
+    debuffResistRegeneration: 0,
+    debuffResistPerception: 0,
   };
 }
 

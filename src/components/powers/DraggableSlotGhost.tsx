@@ -17,8 +17,8 @@ interface DraggableSlotGhostProps {
 }
 
 const DRAG_THRESHOLD = 5; // Pixels before considering it a drag
-const PIXELS_PER_SLOT = 25; // Distance for each additional slot
-const GHOST_SLOT_SIZE = 20; // Size of ghost slot circles in pixels
+const PIXELS_PER_SLOT = 30; // Distance for each additional slot
+const GHOST_SLOT_SIZE = 24; // Size of ghost slot circles in pixels
 const GHOST_SLOT_GAP = 2; // Gap between ghost slots
 
 export function DraggableSlotGhost({
@@ -118,7 +118,7 @@ export function DraggableSlotGhost({
       ghostSlots.push(
         <div
           key={i}
-          className="w-5 h-5 rounded-full border-2 border-dashed border-blue-400 bg-blue-500/20 flex items-center justify-center animate-pulse"
+          className="w-6 h-6 rounded-full border-2 border-dashed border-blue-400 bg-blue-500/20 flex items-center justify-center animate-pulse"
           style={{
             position: 'absolute',
             // Position relative to button: (i-1) because first additional ghost is at position 0
@@ -128,7 +128,7 @@ export function DraggableSlotGhost({
             height: GHOST_SLOT_SIZE,
           }}
         >
-          <span className="text-[8px] font-semibold text-blue-300">{i + 1}</span>
+          <span className="text-[9px] font-semibold text-blue-300">{i + 1}</span>
         </div>
       );
     }
@@ -140,7 +140,7 @@ export function DraggableSlotGhost({
         ref={buttonRef}
         onMouseDown={handleMouseDown}
         className={`
-          w-5 h-5 rounded-full border flex items-center justify-center
+          w-6 h-6 rounded-full border flex items-center justify-center
           cursor-pointer transition-all select-none
           ${
             isDragging
@@ -155,7 +155,7 @@ export function DraggableSlotGhost({
         }
       >
         <span
-          className={`text-[8px] font-semibold ${isDragging ? 'text-blue-300' : 'text-slate-400'}`}
+          className={`text-[9px] font-semibold ${isDragging ? 'text-blue-300' : 'text-slate-400'}`}
         >
           {isDragging ? '1' : '+'}
         </span>

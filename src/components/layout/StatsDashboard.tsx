@@ -8,7 +8,7 @@ import { useMemo } from 'react';
 import { useCalculatedStats, useCharacterCalculation } from '@/hooks';
 import { useBuildStore, useUIStore } from '@/stores';
 import { Tooltip } from '@/components/ui';
-import { StatsConfigModal } from '@/components/modals';
+import { StatsConfigModal, AccoladesModal } from '@/components/modals';
 import type { CalculatedStats, DashboardStatBreakdown } from '@/hooks/useCalculatedStats';
 
 // ============================================
@@ -78,6 +78,7 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     color: 'text-purple-400',
     tooltip: 'Melee defense',
     showWhenZero: true,
+    breakdownKey: 'defMelee',
   },
   defense_ranged: {
     id: 'defense_ranged',
@@ -87,6 +88,7 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     color: 'text-purple-400',
     tooltip: 'Ranged defense',
     showWhenZero: true,
+    breakdownKey: 'defRanged',
   },
   defense_aoe: {
     id: 'defense_aoe',
@@ -96,6 +98,7 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     color: 'text-purple-400',
     tooltip: 'AoE defense',
     showWhenZero: true,
+    breakdownKey: 'defAoE',
   },
   defense_smashing: {
     id: 'defense_smashing',
@@ -105,6 +108,7 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     color: 'text-purple-400',
     tooltip: 'Smashing/Lethal defense',
     showWhenZero: true,
+    breakdownKey: 'defSmashing',
   },
   defense_fire: {
     id: 'defense_fire',
@@ -114,6 +118,7 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     color: 'text-purple-400',
     tooltip: 'Fire/Cold defense',
     showWhenZero: true,
+    breakdownKey: 'defFire',
   },
   defense_energy: {
     id: 'defense_energy',
@@ -123,6 +128,7 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     color: 'text-purple-400',
     tooltip: 'Energy/Negative defense',
     showWhenZero: true,
+    breakdownKey: 'defEnergy',
   },
   defense_psionic: {
     id: 'defense_psionic',
@@ -132,6 +138,7 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     color: 'text-purple-400',
     tooltip: 'Psionic defense',
     showWhenZero: true,
+    breakdownKey: 'defPsionic',
   },
   defense_toxic: {
     id: 'defense_toxic',
@@ -141,6 +148,7 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     color: 'text-purple-400',
     tooltip: 'Toxic defense',
     showWhenZero: true,
+    breakdownKey: 'defToxic',
   },
 
   // Resistance
@@ -152,6 +160,7 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     color: 'text-orange-400',
     tooltip: 'Smashing/Lethal resistance',
     showWhenZero: true,
+    breakdownKey: 'resSmashing',
   },
   resist_fire: {
     id: 'resist_fire',
@@ -161,6 +170,7 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     color: 'text-orange-400',
     tooltip: 'Fire/Cold resistance',
     showWhenZero: true,
+    breakdownKey: 'resFire',
   },
   resist_energy: {
     id: 'resist_energy',
@@ -170,6 +180,7 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     color: 'text-orange-400',
     tooltip: 'Energy/Negative resistance',
     showWhenZero: true,
+    breakdownKey: 'resEnergy',
   },
   resist_psionic: {
     id: 'resist_psionic',
@@ -179,6 +190,7 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     color: 'text-orange-400',
     tooltip: 'Psionic resistance',
     showWhenZero: true,
+    breakdownKey: 'resPsionic',
   },
   resist_toxic: {
     id: 'resist_toxic',
@@ -188,6 +200,7 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     color: 'text-orange-400',
     tooltip: 'Toxic resistance',
     showWhenZero: true,
+    breakdownKey: 'resToxic',
   },
 
   // Mez Resistance
@@ -257,6 +270,7 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     color: 'text-blue-400',
     tooltip: 'Maximum endurance',
     showWhenZero: true,
+    breakdownKey: 'maxend',
   },
   recovery: {
     id: 'recovery',
@@ -285,6 +299,7 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     color: 'text-green-400',
     tooltip: 'Maximum hit points',
     showWhenZero: true,
+    breakdownKey: 'maxhp',
   },
   regeneration: {
     id: 'regeneration',
@@ -329,6 +344,72 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     color: 'text-teal-400',
     tooltip: 'Jump height buff',
   },
+
+  // Debuff Resistance
+  debuff_slow: {
+    id: 'debuff_slow',
+    label: 'Slow Res',
+    getValue: (stats) => stats.debuffResistance.slow,
+    format: (v) => `${Number(v).toFixed(1)}%`,
+    color: 'text-cyan-400',
+    tooltip: 'Resistance to slow/movement debuffs',
+  },
+  debuff_defense: {
+    id: 'debuff_defense',
+    label: 'Def Debuff Res',
+    getValue: (stats) => stats.debuffResistance.defense,
+    format: (v) => `${Number(v).toFixed(1)}%`,
+    color: 'text-cyan-400',
+    tooltip: 'Resistance to defense debuffs',
+  },
+  debuff_recharge: {
+    id: 'debuff_recharge',
+    label: 'Rech Debuff Res',
+    getValue: (stats) => stats.debuffResistance.recharge,
+    format: (v) => `${Number(v).toFixed(1)}%`,
+    color: 'text-cyan-400',
+    tooltip: 'Resistance to recharge debuffs',
+  },
+  debuff_endurance: {
+    id: 'debuff_endurance',
+    label: 'End Drain Res',
+    getValue: (stats) => stats.debuffResistance.endurance,
+    format: (v) => `${Number(v).toFixed(1)}%`,
+    color: 'text-cyan-400',
+    tooltip: 'Resistance to endurance drain',
+  },
+  debuff_recovery: {
+    id: 'debuff_recovery',
+    label: 'Rec Debuff Res',
+    getValue: (stats) => stats.debuffResistance.recovery,
+    format: (v) => `${Number(v).toFixed(1)}%`,
+    color: 'text-cyan-400',
+    tooltip: 'Resistance to recovery debuffs',
+  },
+  debuff_tohit: {
+    id: 'debuff_tohit',
+    label: 'ToHit Debuff Res',
+    getValue: (stats) => stats.debuffResistance.tohit,
+    format: (v) => `${Number(v).toFixed(1)}%`,
+    color: 'text-cyan-400',
+    tooltip: 'Resistance to ToHit debuffs',
+  },
+  debuff_regen: {
+    id: 'debuff_regen',
+    label: 'Regen Debuff Res',
+    getValue: (stats) => stats.debuffResistance.regeneration,
+    format: (v) => `${Number(v).toFixed(1)}%`,
+    color: 'text-cyan-400',
+    tooltip: 'Resistance to regeneration debuffs',
+  },
+  debuff_perception: {
+    id: 'debuff_perception',
+    label: 'Percep Res',
+    getValue: (stats) => stats.debuffResistance.perception,
+    format: (v) => `${Number(v).toFixed(1)}%`,
+    color: 'text-cyan-400',
+    tooltip: 'Resistance to perception debuffs',
+  },
 };
 
 export function StatsDashboard() {
@@ -339,6 +420,9 @@ export function StatsDashboard() {
   const statsConfigModalOpen = useUIStore((s) => s.statsConfigModalOpen);
   const openStatsConfigModal = useUIStore((s) => s.openStatsConfigModal);
   const closeStatsConfigModal = useUIStore((s) => s.closeStatsConfigModal);
+  const accoladesModalOpen = useUIStore((s) => s.accoladesModalOpen);
+  const openAccoladesModal = useUIStore((s) => s.openAccoladesModal);
+  const closeAccoladesModal = useUIStore((s) => s.closeAccoladesModal);
 
   const maxHP = build.archetype?.stats?.maxHP || 0;
   const breakdowns = calcResult.breakdown;
@@ -422,6 +506,20 @@ export function StatsDashboard() {
       name: 'Movement',
       stats: ['runspeed', 'flyspeed', 'jumpspeed', 'jumpheight'],
       panelClass: '',
+    },
+    {
+      name: 'Debuff Resistance',
+      stats: [
+        'debuff_slow',
+        'debuff_defense',
+        'debuff_recharge',
+        'debuff_endurance',
+        'debuff_recovery',
+        'debuff_tohit',
+        'debuff_regen',
+        'debuff_perception',
+      ],
+      panelClass: 'h-[168px] min-h-[168px] max-h-[168px] overflow-hidden',
     },
   ];
 
@@ -538,7 +636,17 @@ export function StatsDashboard() {
           </div>
 
           {/* Dashboard actions */}
-          <div className="flex items-center gap-2 flex-shrink-0">
+          <div className="flex flex-col items-end gap-1 flex-shrink-0">
+            <button
+              onClick={openAccoladesModal}
+              className="flex items-center gap-1.5 px-2 py-1 text-xs text-gray-400 hover:text-amber-300 hover:bg-gray-800 rounded transition-colors"
+              title="Toggle accolade bonuses"
+            >
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+              </svg>
+              <span>Accolades</span>
+            </button>
             <button
               onClick={openStatsConfigModal}
               className="flex items-center gap-1.5 px-2 py-1 text-xs text-gray-400 hover:text-gray-200 hover:bg-gray-800 rounded transition-colors"
@@ -558,6 +666,12 @@ export function StatsDashboard() {
       <StatsConfigModal
         isOpen={statsConfigModalOpen}
         onClose={closeStatsConfigModal}
+      />
+
+      {/* Accolades Modal */}
+      <AccoladesModal
+        isOpen={accoladesModalOpen}
+        onClose={closeAccoladesModal}
       />
     </>
   );
@@ -590,6 +704,7 @@ function StatItem({ label, value, color = 'text-gray-300', tooltip, breakdown, c
     const setBonusSources = breakdown.sources.filter(s => s.type === 'set-bonus');
     const activePowerSources = breakdown.sources.filter(s => s.type === 'active-power');
     const inherentSources = breakdown.sources.filter(s => s.type === 'inherent');
+    const accoladeSources = breakdown.sources.filter(s => s.type === 'accolade');
 
     return (
       <div className="space-y-2 max-w-[300px]">
@@ -638,6 +753,19 @@ function StatItem({ label, value, color = 'text-gray-300', tooltip, breakdown, c
               <div key={i} className="flex justify-between text-[10px]">
                 <span className="text-slate-300">{source.name}</span>
                 <span className="text-blue-400 ml-2">+{source.value.toFixed(1)}%</span>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {/* Accolades */}
+        {accoladeSources.length > 0 && (
+          <div>
+            <div className="text-[9px] text-slate-400 uppercase mb-0.5">Accolades</div>
+            {accoladeSources.map((source, i) => (
+              <div key={i} className="flex justify-between text-[10px]">
+                <span className="text-slate-300">{source.name}</span>
+                <span className="text-amber-300 ml-2">+{source.value.toFixed(1)}</span>
               </div>
             ))}
           </div>

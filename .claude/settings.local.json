@@ -39,7 +39,9 @@
       "Bash(xargs:*)",
       "Bash(do git add \"$f\")",
       "Bash(powershell -Command:*)",
-      "Bash(git config:*)"
+      "Bash(git config:*)",
+      "Bash(timeout 5 npm run dev:*)",
+      "Bash(npx tsx:*)"
     ]
   }
 }

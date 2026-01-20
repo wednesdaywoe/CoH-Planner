@@ -496,27 +496,17 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           {
             "stat": "damage_resistance_(psionic)",
             "value": 4.5,
-            "desc": "+4% Psionic and Toxic"
+            "desc": "+4.5% Psionic Resistance"
+          },
+          {
+            "stat": "damage_resistance_(toxic)",
+            "value": 4.5,
+            "desc": "+4.5% Toxic Resistance"
           },
           {
             "stat": "mez_resistance_(all)",
             "value": 7.5,
-            "desc": "+8% Mez Resistance (All Resistance"
-          }
-        ]
-      },
-      {
-        "pieces": 6,
-        "effects": [
-          {
-            "stat": "damage_resistance_(psionic)",
-            "value": 5,
-            "desc": "+5.0% Damage Resistance (Psionic Damage"
-          },
-          {
-            "stat": "mez_resistance_(all)",
-            "value": 20,
-            "desc": "+20% Mez Resistance (All Resistance"
+            "desc": "+7.5% Mez Resistance (All)"
           }
         ]
       }
@@ -577,7 +567,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "+Res Mez(All)/+Res(Psionic)",
         "aspects": [],
         "proc": false,
-        "unique": false
+        "unique": true
       }
     ],
     "icon": "sAegis.png"

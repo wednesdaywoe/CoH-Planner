@@ -10,6 +10,32 @@ import { getPowerIconPath } from '@/data';
 import { resolvePath } from '@/utils/paths';
 import { DraggableSlotGhost } from './DraggableSlotGhost';
 import { SlottedEnhancementIcon } from './SlottedEnhancementIcon';
+import { Tooltip } from '@/components/ui';
+
+/**
+ * Determine if a power should show a toggle switch for stat calculations.
+ * - Toggle powers (always)
+ * - Click powers that target self (Build Up, Aim, Hasten, etc.)
+ */
+function shouldShowToggle(power: SelectedPower): boolean {
+  const powerType = power.powerType?.toLowerCase();
+  const targetType = power.targetType?.toLowerCase();
+  const shortHelp = power.shortHelp?.toLowerCase() || '';
+
+  // Toggle powers always show toggle
+  if (powerType === 'toggle') {
+    return true;
+  }
+
+  // Click powers that target self (self-buffs)
+  // Check both targetType field and shortHelp text (pool powers often lack targetType)
+  if (powerType === 'click') {
+    if (targetType === 'self') return true;
+    if (shortHelp.startsWith('self ') || shortHelp.includes('self +')) return true;
+  }
+
+  return false;
+}
 
 interface SelectedPowersProps {
   category: 'primary' | 'secondary';
@@ -21,6 +47,7 @@ export function SelectedPowers({ category }: SelectedPowersProps) {
   const addSlot = useBuildStore((s) => s.addSlot);
   const removeSlot = useBuildStore((s) => s.removeSlot);
   const clearEnhancement = useBuildStore((s) => s.clearEnhancement);
+  const togglePowerActive = useBuildStore((s) => s.togglePowerActive);
   const setInfoPanelContent = useUIStore((s) => s.setInfoPanelContent);
   const clearInfoPanel = useUIStore((s) => s.clearInfoPanel);
   const lockInfoPanel = useUIStore((s) => s.lockInfoPanel);
@@ -134,6 +161,7 @@ export function SelectedPowers({ category }: SelectedPowersProps) {
             onLeave={handlePowerLeave}
             onEnhancementHover={(index) => handleEnhancementHover(power.name, index)}
             onRightClick={(e) => handlePowerRightClick(e, power)}
+            onToggle={() => togglePowerActive(power.name)}
           />
         );
       })}
@@ -156,6 +184,7 @@ interface SelectedPowerRowProps {
   onLeave: () => void;
   onEnhancementHover: (slotIndex: number) => void;
   onRightClick: (e: React.MouseEvent) => void;
+  onToggle: () => void;
 }
 
 /**
@@ -175,7 +204,10 @@ function SelectedPowerRow({
   onLeave,
   onEnhancementHover,
   onRightClick,
+  onToggle,
 }: SelectedPowerRowProps) {
+  const showToggle = shouldShowToggle(power);
+  const isActive = power.isActive ?? false;
   const handleSlotClick = (index: number) => {
     // Open enhancement picker for any slot (empty or filled)
     onOpenPicker(index);
@@ -213,7 +245,7 @@ function SelectedPowerRow({
 
   return (
     <div
-      className={`flex items-center gap-1 px-1 py-0.5 bg-slate-800 border rounded-sm group transition-colors ${
+      className={`flex items-center gap-1.5 px-1.5 py-1 bg-slate-800 border rounded-sm group transition-colors ${
         isLocked
           ? 'border-amber-500 shadow-[0_0_4px_rgba(245,158,11,0.4)] bg-gradient-to-r from-amber-500/10 to-slate-800'
           : 'border-slate-700 hover:border-slate-600'
@@ -222,7 +254,7 @@ function SelectedPowerRow({
     >
       {/* Power icon and name - right-click to lock info panel */}
       <div
-        className="flex items-center gap-1 flex-1 min-w-0 cursor-default"
+        className="flex items-center gap-1.5 flex-1 min-w-0 cursor-default"
         onMouseEnter={onHover}
         onContextMenu={onRightClick}
         title={isLocked ? 'Right-click to unlock power info' : 'Right-click to lock power info'}
@@ -230,18 +262,18 @@ function SelectedPowerRow({
         <img
           src={getPowerIconPath(powersetName, power.icon)}
           alt=""
-          className="w-4 h-4 rounded-sm flex-shrink-0"
+          className="w-5 h-5 rounded-sm flex-shrink-0"
           onError={(e) => {
             (e.target as HTMLImageElement).src = resolvePath('/img/Unknown.png');
           }}
         />
-        <span className="text-xs text-slate-200 truncate">
+        <span className="text-sm text-slate-200 truncate">
           {power.name}
         </span>
       </div>
 
       {/* Enhancement slots - fixed width container to prevent layout shift */}
-      <div className="flex gap-px justify-start items-center flex-shrink-0" style={{ width: '154px' }}>
+      <div className="flex gap-0.5 justify-start items-center flex-shrink-0" style={{ width: '180px' }}>
         {power.slots.map((slot, index) => (
           <div
             key={index}
@@ -249,8 +281,8 @@ function SelectedPowerRow({
             onMouseEnter={() => handleSlotMouseEnter(index, !!slot)}
             onContextMenu={(e) => handleSlotRightClick(e, index, !!slot)}
             className={`
-              w-5 h-5 rounded-full border flex items-center justify-center
-              text-[8px] font-semibold cursor-pointer transition-transform hover:scale-110
+              w-6 h-6 rounded-full border flex items-center justify-center
+              text-[9px] font-semibold cursor-pointer transition-transform hover:scale-110
               ${
                 slot
                   ? 'border-transparent bg-transparent'
@@ -264,7 +296,7 @@ function SelectedPowerRow({
             }
           >
             {slot ? (
-              <SlottedEnhancementIcon enhancement={slot} size={20} />
+              <SlottedEnhancementIcon enhancement={slot} size={24} />
             ) : (
               <span className="text-slate-400">+</span>
             )}
@@ -279,6 +311,33 @@ function SelectedPowerRow({
           onAddSlots={onAddSlots}
         />
       </div>
+
+      {/* Toggle switch for buff/toggle powers */}
+      {showToggle && (
+        <Tooltip
+          content={
+            isActive
+              ? 'Power ON - stats included in calculations'
+              : 'Power OFF - click to include in stats'
+          }
+        >
+          <button
+            onClick={onToggle}
+            className={`
+              relative w-8 h-4 rounded-full transition-colors duration-200 flex-shrink-0
+              ${isActive ? 'bg-green-600' : 'bg-slate-600'}
+            `}
+          >
+            <span
+              className={`
+                absolute top-[2px] left-[2px] w-3 h-3 rounded-full bg-white shadow-sm
+                transition-transform duration-200
+                ${isActive ? 'translate-x-4' : 'translate-x-0'}
+              `}
+            />
+          </button>
+        </Tooltip>
+      )}
 
       {/* Remove button */}
       <button

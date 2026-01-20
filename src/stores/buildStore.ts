@@ -94,6 +94,9 @@ interface BuildActions {
   addAccolade: (accolade: Accolade) => void;
   removeAccolade: (accoladeId: string) => void;
 
+  // Power toggle (for stat calculations)
+  togglePowerActive: (powerName: string) => void;
+
   // Computed
   getTotalSlotsUsed: () => number;
   getSlotsRemaining: () => number;
@@ -101,6 +104,7 @@ interface BuildActions {
   canAddSlot: (powerName: string) => boolean;
   canAddPool: () => boolean;
   canSelectEpicPool: () => boolean;
+  isUniqueEnhancementSlotted: (setId: string, pieceNum: number) => boolean;
 
   // Import/Export
   exportBuild: () => string;
@@ -187,6 +191,46 @@ function countTotalSlots(build: Build): number {
   }
 
   return total;
+}
+
+/**
+ * Check if a unique enhancement is already slotted anywhere in the build
+ * @param build - The current build
+ * @param setId - The IO set ID
+ * @param pieceNum - The piece number within the set
+ * @returns true if the unique enhancement is already slotted
+ */
+function isUniqueEnhancementSlotted(build: Build, setId: string, pieceNum: number): boolean {
+  const checkSlots = (slots: (Enhancement | null)[]): boolean => {
+    return slots.some((enh) => {
+      if (!enh || enh.type !== 'io-set') return false;
+      const ioEnh = enh as { setId: string; pieceNum: number; isUnique?: boolean };
+      return ioEnh.setId === setId && ioEnh.pieceNum === pieceNum && ioEnh.isUnique;
+    });
+  };
+
+  // Check all power categories
+  for (const power of build.primary.powers) {
+    if (checkSlots(power.slots)) return true;
+  }
+  for (const power of build.secondary.powers) {
+    if (checkSlots(power.slots)) return true;
+  }
+  for (const pool of build.pools) {
+    for (const power of pool.powers) {
+      if (checkSlots(power.slots)) return true;
+    }
+  }
+  if (build.epicPool) {
+    for (const power of build.epicPool.powers) {
+      if (checkSlots(power.slots)) return true;
+    }
+  }
+  for (const power of build.inherents) {
+    if (checkSlots(power.slots)) return true;
+  }
+
+  return false;
 }
 
 /**
@@ -939,6 +983,39 @@ export const useBuildStore = create<BuildStore>()(
           },
         })),
 
+      // Power toggle (for stat calculations)
+      togglePowerActive: (powerName) =>
+        set((state) => {
+          const toggleInPowers = (powers: SelectedPower[]) =>
+            powers.map((p) =>
+              p.name === powerName ? { ...p, isActive: !p.isActive } : p
+            );
+
+          return {
+            build: {
+              ...state.build,
+              primary: {
+                ...state.build.primary,
+                powers: toggleInPowers(state.build.primary.powers),
+              },
+              secondary: {
+                ...state.build.secondary,
+                powers: toggleInPowers(state.build.secondary.powers),
+              },
+              pools: state.build.pools.map((pool) => ({
+                ...pool,
+                powers: toggleInPowers(pool.powers),
+              })),
+              epicPool: state.build.epicPool
+                ? {
+                    ...state.build.epicPool,
+                    powers: toggleInPowers(state.build.epicPool.powers),
+                  }
+                : null,
+            },
+          };
+        }),
+
       // Computed
       getTotalSlotsUsed: () => countTotalSlots(get().build),
 
@@ -973,6 +1050,9 @@ export const useBuildStore = create<BuildStore>()(
       canAddPool: () => get().build.pools.length < MAX_POWER_POOLS,
 
       canSelectEpicPool: () => get().build.level >= EPIC_POOL_LEVEL,
+
+      isUniqueEnhancementSlotted: (setId: string, pieceNum: number) =>
+        isUniqueEnhancementSlotted(get().build, setId, pieceNum),
 
       // Import/Export
       exportBuild: () => {

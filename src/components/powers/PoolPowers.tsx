@@ -15,10 +15,33 @@ import {
   EPIC_POOL_LEVEL,
 } from '@/data';
 import { resolvePath } from '@/utils/paths';
-import { Select } from '@/components/ui';
+import { Select, Tooltip } from '@/components/ui';
 import { DraggableSlotGhost } from './DraggableSlotGhost';
 import { SlottedEnhancementIcon } from './SlottedEnhancementIcon';
 import type { Power, SelectedPower } from '@/types';
+
+/**
+ * Determine if a power should show a toggle switch for stat calculations.
+ * - Toggle powers (always)
+ * - Click powers that target self (Build Up, Aim, Hasten, etc.)
+ */
+function shouldShowToggle(power: SelectedPower): boolean {
+  const powerType = power.powerType?.toLowerCase();
+  const targetType = power.targetType?.toLowerCase();
+  const shortHelp = power.shortHelp?.toLowerCase() || '';
+
+  // Toggle powers always show toggle
+  if (powerType === 'toggle') return true;
+
+  // Click powers that target self (self-buffs)
+  // Check both targetType field and shortHelp text (pool powers often lack targetType)
+  if (powerType === 'click') {
+    if (targetType === 'self') return true;
+    if (shortHelp.startsWith('self ') || shortHelp.includes('self +')) return true;
+  }
+
+  return false;
+}
 
 /** Get the icon path for an inherent power based on its category */
 function getInherentIconPath(power: SelectedPower): string {
@@ -47,6 +70,7 @@ export function PoolPowers() {
   const addSlot = useBuildStore((s) => s.addSlot);
   const removeSlot = useBuildStore((s) => s.removeSlot);
   const clearEnhancement = useBuildStore((s) => s.clearEnhancement);
+  const togglePowerActive = useBuildStore((s) => s.togglePowerActive);
   const setInfoPanelContent = useUIStore((s) => s.setInfoPanelContent);
   const clearInfoPanel = useUIStore((s) => s.clearInfoPanel);
   const lockInfoPanel = useUIStore((s) => s.lockInfoPanel);
@@ -228,6 +252,7 @@ export function PoolPowers() {
             onSelectPower={(power) => handleSelectPower(poolSelection.id, power)}
             onRemovePower={handleRemovePower}
             onPowerHover={(power) => handlePowerHover(power, poolSelection.id)}
+            onToggle={togglePowerActive}
             onPowerLeave={handlePowerLeave}
             onPowerRightClick={(e, power) => handlePowerRightClick(e, power, poolSelection.id)}
             onEnhancementHover={handleEnhancementHover}
@@ -331,6 +356,7 @@ interface PoolPowerGroupProps {
   onSelectPower: (power: Power) => void;
   onRemovePower: (powerName: string) => void;
   onPowerHover: (power: Power | SelectedPower) => void;
+  onToggle: (powerName: string) => void;
   onPowerLeave: () => void;
   onPowerRightClick: (e: React.MouseEvent, power: Power | SelectedPower) => void;
   onEnhancementHover: (powerName: string, slotIndex: number) => void;
@@ -349,6 +375,7 @@ function PoolPowerGroup({
   onSelectPower,
   onRemovePower,
   onPowerHover,
+  onToggle,
   onPowerLeave,
   onPowerRightClick,
   onEnhancementHover,
@@ -398,7 +425,7 @@ function PoolPowerGroup({
                 return (
                   <div
                     key={power.name}
-                    className={`flex items-center gap-1 px-1 py-0.5 bg-slate-800 border rounded-sm group transition-colors ${
+                    className={`flex items-center gap-1.5 px-1.5 py-1 bg-slate-800 border rounded-sm group transition-colors ${
                       isLocked
                         ? 'border-amber-500 shadow-[0_0_4px_rgba(245,158,11,0.4)] bg-gradient-to-r from-amber-500/10 to-slate-800'
                         : 'border-slate-700 hover:border-slate-600'
@@ -407,7 +434,7 @@ function PoolPowerGroup({
                   >
                     {/* Power icon and name */}
                     <div
-                      className="flex items-center gap-1 flex-1 min-w-0 cursor-default"
+                      className="flex items-center gap-1.5 flex-1 min-w-0 cursor-default"
                       onMouseEnter={() => onPowerHover(power)}
                       onContextMenu={(e) => onPowerRightClick(e, power)}
                       title={isLocked ? 'Right-click to unlock power info' : 'Right-click to lock power info'}
@@ -415,17 +442,17 @@ function PoolPowerGroup({
                       <img
                         src={getPowerIconPath(poolName, power.icon)}
                         alt=""
-                        className="w-4 h-4 rounded-sm flex-shrink-0"
+                        className="w-5 h-5 rounded-sm flex-shrink-0"
                         onError={(e) => {
                           (e.target as HTMLImageElement).src = resolvePath('/img/Unknown.png');
                         }}
                       />
-                      <span className="text-xs text-slate-200 truncate">
+                      <span className="text-sm text-slate-200 truncate">
                         {power.name}
                       </span>
                     </div>
                     {/* Enhancement slots - fixed width container to prevent layout shift */}
-                    <div className="flex gap-px justify-start items-center flex-shrink-0" style={{ width: '120px' }}>
+                    <div className="flex gap-0.5 justify-start items-center flex-shrink-0" style={{ width: '180px' }}>
                       {power.slots.map((slot, index) => (
                         <div
                           key={index}
@@ -442,8 +469,8 @@ function PoolPowerGroup({
                             }
                           }}
                           className={`
-                            w-4 h-4 rounded-full border flex items-center justify-center
-                            text-[7px] font-semibold cursor-pointer hover:scale-110 transition-transform
+                            w-6 h-6 rounded-full border flex items-center justify-center
+                            text-[9px] font-semibold cursor-pointer hover:scale-110 transition-transform
                             ${
                               slot
                                 ? 'border-transparent'
@@ -457,7 +484,7 @@ function PoolPowerGroup({
                           }
                         >
                           {slot ? (
-                            <SlottedEnhancementIcon enhancement={slot} size={16} />
+                            <SlottedEnhancementIcon enhancement={slot} size={24} />
                           ) : (
                             '+'
                           )}
@@ -471,6 +498,32 @@ function PoolPowerGroup({
                         onAddSlots={(count) => onAddSlots(power.name, count)}
                       />
                     </div>
+                    {/* Toggle switch for buff/toggle powers */}
+                    {shouldShowToggle(power) && (
+                      <Tooltip
+                        content={
+                          power.isActive
+                            ? 'Power ON - stats included'
+                            : 'Power OFF - click to include'
+                        }
+                      >
+                        <button
+                          onClick={() => onToggle(power.name)}
+                          className={`
+                            relative w-8 h-4 rounded-full transition-colors duration-200 flex-shrink-0
+                            ${power.isActive ? 'bg-green-600' : 'bg-slate-600'}
+                          `}
+                        >
+                          <span
+                            className={`
+                              absolute top-[2px] left-[2px] w-3 h-3 rounded-full bg-white shadow-sm
+                              transition-transform duration-200
+                              ${power.isActive ? 'translate-x-4' : 'translate-x-0'}
+                            `}
+                          />
+                        </button>
+                      </Tooltip>
+                    )}
                     <button
                       onClick={() => onRemovePower(power.name)}
                       className="text-slate-600 hover:text-red-400 text-xs opacity-0 group-hover:opacity-100 transition-opacity px-0.5"
@@ -487,20 +540,20 @@ function PoolPowerGroup({
           {/* Available powers */}
           {availablePowers.length > 0 && (
             <div className="border-t border-slate-700 pt-1 mt-1">
-              <div className="flex flex-wrap gap-0.5">
+              <div className="flex flex-wrap gap-1">
                 {availablePowers.map((power) => (
                   <button
                     key={power.name}
                     onClick={() => onSelectPower(power)}
                     onMouseEnter={() => onPowerHover(power)}
                     onContextMenu={(e) => onPowerRightClick(e, power)}
-                    className="flex items-center gap-1 px-1.5 py-0.5 bg-slate-700 border border-slate-600 rounded-sm text-[10px] text-slate-300 hover:border-blue-500 hover:bg-slate-600 transition-colors"
+                    className="flex items-center gap-1.5 px-2 py-1 bg-slate-700 border border-slate-600 rounded-sm text-xs text-slate-300 hover:border-blue-500 hover:bg-slate-600 transition-colors"
                     title="Right-click to lock power info"
                   >
                     <img
                       src={getPowerIconPath(poolName, power.icon)}
                       alt=""
-                      className="w-3 h-3 rounded-sm"
+                      className="w-4 h-4 rounded-sm"
                       onError={(e) => {
                         (e.target as HTMLImageElement).src = resolvePath('/img/Unknown.png');
                       }}
@@ -578,7 +631,7 @@ function InherentPowerGroup({
             return (
               <div
                 key={power.name}
-                className={`flex items-center gap-1 px-1 py-0.5 bg-slate-800/50 border rounded-sm transition-colors ${
+                className={`flex items-center gap-1.5 px-1.5 py-1 bg-slate-800/50 border rounded-sm transition-colors ${
                   isLocked
                     ? 'border-amber-500 shadow-[0_0_4px_rgba(245,158,11,0.4)] bg-gradient-to-r from-amber-500/10 to-slate-800/50'
                     : 'border-slate-700/50 hover:border-slate-600'
@@ -587,7 +640,7 @@ function InherentPowerGroup({
               >
                 {/* Power icon and name */}
                 <div
-                  className="flex items-center gap-1 flex-1 min-w-0 cursor-default"
+                  className="flex items-center gap-1.5 flex-1 min-w-0 cursor-default"
                   onMouseEnter={() => onPowerHover(power)}
                   onContextMenu={(e) => onPowerRightClick(e, power)}
                   title={isLocked ? 'Right-click to unlock power info' : 'Right-click to lock power info'}
@@ -595,23 +648,23 @@ function InherentPowerGroup({
                   <img
                     src={getInherentIconPath(power)}
                     alt=""
-                    className="w-4 h-4 rounded-sm flex-shrink-0"
+                    className="w-5 h-5 rounded-sm flex-shrink-0"
                     onError={(e) => {
                       (e.target as HTMLImageElement).src = resolvePath('/img/Unknown.png');
                     }}
                   />
-                  <span className="text-xs text-slate-400 truncate">
+                  <span className="text-sm text-slate-400 truncate">
                     {power.name}
                   </span>
                   {/* Auto indicator for auto powers */}
                   {power.powerType === 'Auto' && (
-                    <span className="text-[8px] text-slate-600 uppercase">(Auto)</span>
+                    <span className="text-[9px] text-slate-600 uppercase">(Auto)</span>
                   )}
                 </div>
 
                 {/* Enhancement slots - show if power has slots OR can have slots */}
                 {(hasSlots || power.maxSlots > 0) && (
-                  <div className="flex gap-px">
+                  <div className="flex gap-0.5">
                     {power.slots.map((slot, index) => (
                       <div
                         key={index}
@@ -628,8 +681,8 @@ function InherentPowerGroup({
                           }
                         }}
                         className={`
-                          w-4 h-4 rounded-full border flex items-center justify-center
-                          text-[7px] font-semibold cursor-pointer hover:scale-110 transition-transform
+                          w-6 h-6 rounded-full border flex items-center justify-center
+                          text-[9px] font-semibold cursor-pointer hover:scale-110 transition-transform
                           ${
                             slot
                               ? 'border-transparent'
@@ -643,7 +696,7 @@ function InherentPowerGroup({
                         }
                       >
                         {slot ? (
-                          <SlottedEnhancementIcon enhancement={slot} size={16} />
+                          <SlottedEnhancementIcon enhancement={slot} size={24} />
                         ) : (
                           '+'
                         )}
@@ -663,7 +716,7 @@ function InherentPowerGroup({
 
                 {/* No slots indicator for archetype inherents */}
                 {!hasSlots && power.maxSlots === 0 && (
-                  <span className="text-[8px] text-slate-600 italic">No slots</span>
+                  <span className="text-[9px] text-slate-600 italic">No slots</span>
                 )}
               </div>
             );
@@ -886,7 +939,7 @@ function EpicPoolSection({ level, archetypeId, epicPool }: EpicPoolSectionProps)
                     return (
                       <div
                         key={power.name}
-                        className={`flex items-center gap-1 px-1 py-0.5 bg-slate-800 border rounded-sm group transition-colors ${
+                        className={`flex items-center gap-1.5 px-1.5 py-1 bg-slate-800 border rounded-sm group transition-colors ${
                           isLocked
                             ? 'border-amber-500 shadow-[0_0_4px_rgba(245,158,11,0.4)] bg-gradient-to-r from-amber-500/10 to-slate-800'
                             : 'border-slate-700 hover:border-slate-600'
@@ -895,7 +948,7 @@ function EpicPoolSection({ level, archetypeId, epicPool }: EpicPoolSectionProps)
                       >
                         {/* Power icon and name */}
                         <div
-                          className="flex items-center gap-1 flex-1 min-w-0 cursor-default"
+                          className="flex items-center gap-1.5 flex-1 min-w-0 cursor-default"
                           onMouseEnter={() => handlePowerHover(power)}
                           onContextMenu={(e) => handlePowerRightClick(e, power)}
                           title={isLocked ? 'Right-click to unlock power info' : 'Right-click to lock power info'}
@@ -903,17 +956,17 @@ function EpicPoolSection({ level, archetypeId, epicPool }: EpicPoolSectionProps)
                           <img
                             src={getEpicPowerIcon(power)}
                             alt=""
-                            className="w-4 h-4 rounded-sm flex-shrink-0"
+                            className="w-5 h-5 rounded-sm flex-shrink-0"
                             onError={(e) => {
                               (e.target as HTMLImageElement).src = resolvePath('/img/Unknown.png');
                             }}
                           />
-                          <span className="text-xs text-slate-200 truncate">
+                          <span className="text-sm text-slate-200 truncate">
                             {power.name}
                           </span>
                         </div>
                         {/* Enhancement slots - fixed width container to prevent layout shift */}
-                        <div className="flex gap-px justify-start items-center flex-shrink-0" style={{ width: '120px' }}>
+                        <div className="flex gap-0.5 justify-start items-center flex-shrink-0" style={{ width: '180px' }}>
                           {power.slots.map((slot, index) => (
                             <div
                               key={index}
@@ -930,8 +983,8 @@ function EpicPoolSection({ level, archetypeId, epicPool }: EpicPoolSectionProps)
                                 }
                               }}
                               className={`
-                                w-4 h-4 rounded-full border flex items-center justify-center
-                                text-[7px] font-semibold cursor-pointer hover:scale-110 transition-transform
+                                w-6 h-6 rounded-full border flex items-center justify-center
+                                text-[9px] font-semibold cursor-pointer hover:scale-110 transition-transform
                                 ${
                                   slot
                                     ? 'border-transparent'
@@ -945,7 +998,7 @@ function EpicPoolSection({ level, archetypeId, epicPool }: EpicPoolSectionProps)
                               }
                             >
                               {slot ? (
-                                <SlottedEnhancementIcon enhancement={slot} size={16} />
+                                <SlottedEnhancementIcon enhancement={slot} size={24} />
                               ) : (
                                 '+'
                               )}
@@ -975,20 +1028,20 @@ function EpicPoolSection({ level, archetypeId, epicPool }: EpicPoolSectionProps)
               {/* Available powers */}
               {availablePowers.length > 0 && (
                 <div className={epicPool.powers.length > 0 ? 'border-t border-slate-700 pt-1 mt-1' : ''}>
-                  <div className="flex flex-wrap gap-0.5">
+                  <div className="flex flex-wrap gap-1">
                     {availablePowers.map((power) => (
                       <button
                         key={power.name}
                         onClick={() => handleSelectPower(power)}
                         onMouseEnter={() => handlePowerHover(power)}
                         onContextMenu={(e) => handlePowerRightClick(e, power)}
-                        className="flex items-center gap-1 px-1.5 py-0.5 bg-slate-700 border border-slate-600 rounded-sm text-[10px] text-slate-300 hover:border-purple-500 hover:bg-slate-600 transition-colors"
+                        className="flex items-center gap-1.5 px-2 py-1 bg-slate-700 border border-slate-600 rounded-sm text-xs text-slate-300 hover:border-purple-500 hover:bg-slate-600 transition-colors"
                         title="Right-click to lock power info"
                       >
                         <img
                           src={getEpicPowerIcon(power)}
                           alt=""
-                          className="w-3 h-3 rounded-sm"
+                          className="w-4 h-4 rounded-sm"
                           onError={(e) => {
                             (e.target as HTMLImageElement).src = resolvePath('/img/Unknown.png');
                           }}
