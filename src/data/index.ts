@@ -79,6 +79,9 @@ export {
   searchPowerPools,
   POOL_CATEGORIES,
   getPoolsByCategory,
+  arePoolsUnlocked,
+  isPowerAvailableInPool,
+  getAvailablePoolPowers,
 } from './power-pools';
 export type { PowerPoolRegistry, PoolCategoryInfo } from './power-pools';
 
@@ -94,6 +97,9 @@ export {
   searchEpicPools,
   getEpicPoolCountByArchetype,
   getEpicPoolPowerIconPath,
+  areEpicPoolsUnlocked,
+  isEpicPowerAvailable,
+  getAvailableEpicPoolPowers,
 } from './epic-pools';
 export type { EpicPool, EpicPoolRegistry } from './epic-pools';
 
@@ -102,6 +108,7 @@ export {
   // Constants
   MAX_LEVEL,
   EPIC_POOL_LEVEL,
+  POOL_UNLOCK_LEVEL,
   MAX_POWER_POOLS,
   MAX_SLOTS_PER_POWER,
   TOTAL_SLOTS_AT_50,
@@ -118,6 +125,8 @@ export {
   isEnhancementAvailable,
   // Pool requirements
   POOL_TIER_REQUIREMENTS,
+  EARLY_TRAVEL_POWERS,
+  EPIC_TIER_REQUIREMENTS,
   // Epic pools
   EPIC_POOLS,
   getEpicPools,

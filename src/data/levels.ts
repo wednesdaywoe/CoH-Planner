@@ -15,6 +15,9 @@ export const MAX_LEVEL = 50;
 /** Level at which Epic/Patron pools become available */
 export const EPIC_POOL_LEVEL = 35;
 
+/** Level at which regular Power Pools become available */
+export const POOL_UNLOCK_LEVEL = 4;
+
 /** Maximum number of power pools that can be selected */
 export const MAX_POWER_POOLS = 4;
 
@@ -193,25 +196,71 @@ export function isEnhancementAvailable(
 
 /**
  * Pool power tier requirements
+ * Note: Pool access itself requires level 4 (POOL_UNLOCK_LEVEL)
  */
 export const POOL_TIER_REQUIREMENTS = {
-  /** Tier 1-2 powers: Available at level 1 (pool access level) */
+  /** Tier 1-2 powers: Available at pool unlock level (level 4) */
   ENTRY: {
-    minLevel: 1,
-    requiredPowers: 0,
-    description: 'First two powers in a pool, available immediately',
-  },
-  /** Tier 3 power: Requires level 4+ and 1 power from the pool */
-  TIER_3: {
     minLevel: 4,
+    requiredPowers: 0,
+    description: 'First two powers in a pool, available at pool unlock',
+  },
+  /** Tier 3 power: Requires level 14+ and 1 power from the pool */
+  TIER_3: {
+    minLevel: 14,
     requiredPowers: 1,
-    description: 'Third power, requires 1 power from the pool',
+    description: 'Third power, requires level 14 and 1 power from the pool',
   },
   /** Tier 4-5 powers: Requires level 14+ and 2 powers from the pool */
   TIER_4_5: {
     minLevel: 14,
     requiredPowers: 2,
-    description: 'Fourth and fifth powers, require 2 powers from the pool',
+    description: 'Fourth and fifth powers, require level 14 and 2 powers from the pool',
+  },
+} as const;
+
+/**
+ * Travel powers that are available at level 4 despite being rank 3 powers
+ * These powers have available=4 in the data but require no prerequisites
+ */
+export const EARLY_TRAVEL_POWERS: readonly string[] = [
+  'Super Speed',
+  'Fly',
+  'Teleport',
+  'Super Jump',
+  'Infiltration',
+  'Speed of Sound',
+  'Mystic Flight',
+] as const;
+
+/**
+ * Epic/Patron pool power tier requirements
+ * Epic pools unlock at level 35 (EPIC_POOL_LEVEL)
+ */
+export const EPIC_TIER_REQUIREMENTS = {
+  /** Powers 1-2: Available at level 35 */
+  TIER_1_2: {
+    minLevel: 35,
+    requiredPowers: 0,
+    description: 'First two powers, available at epic pool unlock',
+  },
+  /** Power 3: Requires level 38+ and 1 power from the pool */
+  TIER_3: {
+    minLevel: 38,
+    requiredPowers: 1,
+    description: 'Third power, requires level 38 and 1 power from the pool',
+  },
+  /** Power 4: Requires level 41+ and 1 power from the pool */
+  TIER_4: {
+    minLevel: 41,
+    requiredPowers: 1,
+    description: 'Fourth power, requires level 41 and 1 power from the pool',
+  },
+  /** Power 5: Requires level 44+ and 2 powers from the pool */
+  TIER_5: {
+    minLevel: 44,
+    requiredPowers: 2,
+    description: 'Fifth power, requires level 44 and 2 powers from the pool',
   },
 } as const;
 

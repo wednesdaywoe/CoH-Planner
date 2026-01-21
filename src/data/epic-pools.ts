@@ -15,6 +15,7 @@ import type {
 } from '@/types';
 import { EPIC_POOLS_RAW } from './epic-pools-raw';
 import { resolvePath } from '@/utils/paths';
+import { EPIC_POOL_LEVEL, EPIC_TIER_REQUIREMENTS } from './levels';
 
 // ============================================
 // EPIC POOL TYPES
@@ -280,4 +281,86 @@ export function getEpicPoolPowerIconPath(poolName: string, iconFilename: string 
   const lowercaseIcon = iconFilename.toLowerCase();
 
   return resolvePath(`/img/Powers/${folderName}/${lowercaseIcon}`);
+}
+
+// ============================================
+// EPIC POWER AVAILABILITY CHECKING
+// ============================================
+
+/**
+ * Check if epic pools are available at the given level
+ */
+export function areEpicPoolsUnlocked(level: number): boolean {
+  return level >= EPIC_POOL_LEVEL;
+}
+
+/**
+ * Check if a specific epic pool power is available based on level and selected powers
+ *
+ * Rules:
+ * - Epic pools unlock at level 35
+ * - First two powers (rank 1-2) are available at level 35
+ * - Third power (rank 3) requires level 38 AND 1 power from the pool
+ * - Fourth power (rank 4) requires level 41 AND 1 power from the pool
+ * - Fifth power (rank 5) requires level 44 AND 2 powers from the pool
+ *
+ * @param power - The power to check
+ * @param level - Current character level
+ * @param selectedPowersInPool - Array of power names already selected from this pool
+ */
+export function isEpicPowerAvailable(
+  power: Power,
+  level: number,
+  selectedPowersInPool: string[]
+): boolean {
+  // Epic pools not available before level 35
+  if (level < EPIC_POOL_LEVEL) return false;
+
+  const rank = power.rank || 1;
+  const numSelectedPowers = selectedPowersInPool.length;
+
+  // Rank 1-2: Available at level 35 (epic pool unlock)
+  if (rank <= 2) {
+    return level >= EPIC_TIER_REQUIREMENTS.TIER_1_2.minLevel;
+  }
+
+  // Rank 3: Requires level 38 and 1 power from the pool
+  if (rank === 3) {
+    if (level < EPIC_TIER_REQUIREMENTS.TIER_3.minLevel) return false;
+    return numSelectedPowers >= EPIC_TIER_REQUIREMENTS.TIER_3.requiredPowers;
+  }
+
+  // Rank 4: Requires level 41 and 1 power from the pool
+  if (rank === 4) {
+    if (level < EPIC_TIER_REQUIREMENTS.TIER_4.minLevel) return false;
+    return numSelectedPowers >= EPIC_TIER_REQUIREMENTS.TIER_4.requiredPowers;
+  }
+
+  // Rank 5+: Requires level 44 and 2 powers from the pool
+  if (rank >= 5) {
+    if (level < EPIC_TIER_REQUIREMENTS.TIER_5.minLevel) return false;
+    return numSelectedPowers >= EPIC_TIER_REQUIREMENTS.TIER_5.requiredPowers;
+  }
+
+  return false;
+}
+
+/**
+ * Get all available powers from an epic pool based on level and already selected powers
+ * This filters out already selected powers and checks level/prerequisite requirements
+ */
+export function getAvailableEpicPoolPowers(
+  poolId: string,
+  level: number,
+  selectedPowersInPool: string[]
+): Power[] {
+  const pool = getEpicPool(poolId);
+  if (!pool) return [];
+
+  return pool.powers.filter((power) => {
+    // Skip already selected powers
+    if (selectedPowersInPool.includes(power.name)) return false;
+    // Check availability
+    return isEpicPowerAvailable(power, level, selectedPowersInPool);
+  });
 }

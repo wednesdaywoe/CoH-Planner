@@ -12,7 +12,11 @@ import {
   getEpicPoolsForArchetype,
   getEpicPool,
   getEpicPoolPowerIconPath,
-  EPIC_POOL_LEVEL,
+  POOL_UNLOCK_LEVEL,
+  arePoolsUnlocked,
+  getAvailablePoolPowers,
+  areEpicPoolsUnlocked,
+  getAvailableEpicPoolPowers,
 } from '@/data';
 import { resolvePath } from '@/utils/paths';
 import { Select, Tooltip } from '@/components/ui';
@@ -80,13 +84,16 @@ export function PoolPowers() {
 
   const pools = build.pools;
   const canAddPool = pools.length < 4;
+  const poolsUnlocked = arePoolsUnlocked(build.level);
 
-  // Get all available pools
+  // Get all available pools (only when pools are unlocked at level 4+)
   const allPools = getAllPowerPools();
   const selectedPoolIds = new Set(pools.map((p) => p.id));
-  const availablePoolOptions = Object.entries(allPools)
-    .filter(([id]) => !selectedPoolIds.has(id))
-    .map(([id, pool]) => ({ value: id, label: pool.name }));
+  const availablePoolOptions = poolsUnlocked
+    ? Object.entries(allPools)
+        .filter(([id]) => !selectedPoolIds.has(id))
+        .map(([id, pool]) => ({ value: id, label: pool.name }))
+    : [];
 
   const handleAddPool = (poolId: string) => {
     if (poolId) {
@@ -210,8 +217,15 @@ export function PoolPowers() {
 
   return (
     <div className="space-y-2">
-      {/* Add pool selector */}
-      {canAddPool && availablePoolOptions.length > 0 && (
+      {/* Pool unlock message - show when pools are locked */}
+      {!poolsUnlocked && (
+        <div className="text-[10px] text-slate-500 italic px-1 py-2 text-center bg-slate-800/30 rounded border border-slate-700/30">
+          Power Pools unlock at level {POOL_UNLOCK_LEVEL}. You are currently level {build.level}.
+        </div>
+      )}
+
+      {/* Add pool selector - only show when pools are unlocked */}
+      {poolsUnlocked && canAddPool && availablePoolOptions.length > 0 && (
         <Select
           id="add-pool-select"
           name="add-pool"
@@ -222,8 +236,8 @@ export function PoolPowers() {
         />
       )}
 
-      {/* Empty state - only show if no pools AND no inherents */}
-      {pools.length === 0 && build.inherents.length === 0 && (
+      {/* Empty state - only show if pools unlocked but no pools AND no inherents */}
+      {poolsUnlocked && pools.length === 0 && build.inherents.length === 0 && (
         <div className="text-xs text-slate-500 italic py-4 text-center">
           No power pools selected
         </div>
@@ -234,10 +248,12 @@ export function PoolPowers() {
         const pool = getPowerPool(poolSelection.id);
         if (!pool) return null;
 
-        const selectedPowerNames = new Set(poolSelection.powers.map((p) => p.name));
-        // available is 0-indexed: available=0 means level 1
-        const availablePowers = pool.powers.filter(
-          (p) => p.available >= 0 && p.available < build.level && !selectedPowerNames.has(p.name)
+        const selectedPowerNames = poolSelection.powers.map((p) => p.name);
+        // Use the new availability function that handles prerequisites and level requirements
+        const availablePowers = getAvailablePoolPowers(
+          poolSelection.id,
+          build.level,
+          selectedPowerNames
         );
 
         return (
@@ -755,8 +771,8 @@ function EpicPoolSection({ level, archetypeId, epicPool }: EpicPoolSectionProps)
   const lockedContent = useUIStore((s) => s.infoPanel.lockedContent);
   const openEnhancementPicker = useUIStore((s) => s.openEnhancementPicker);
 
-  // Check if epic pools are unlocked
-  const isUnlocked = level >= EPIC_POOL_LEVEL;
+  // Check if epic pools are unlocked (level 35+)
+  const isUnlocked = areEpicPoolsUnlocked(level);
 
   // Get available epic pools for this archetype from the data registry
   const availableEpicPoolData = useMemo(() => {
@@ -770,15 +786,13 @@ function EpicPoolSection({ level, archetypeId, epicPool }: EpicPoolSectionProps)
     return getEpicPool(epicPool.id);
   }, [epicPool?.id]);
 
-  // Get available powers from the selected epic pool
+  // Get available powers from the selected epic pool using new availability function
   const availablePowers = useMemo(() => {
-    if (!selectedPoolData) return [];
-    const selectedPowerNames = new Set(epicPool?.powers.map((p) => p.name) || []);
-    // Filter by level (available is 0-indexed, so available=34 means level 35)
-    return selectedPoolData.powers.filter(
-      (p) => p.available < level && !selectedPowerNames.has(p.name)
-    );
-  }, [selectedPoolData, epicPool?.powers, level]);
+    if (!epicPool?.id) return [];
+    const selectedPowerNames = epicPool?.powers.map((p) => p.name) || [];
+    // Use the new availability function that handles level and prerequisite requirements
+    return getAvailableEpicPoolPowers(epicPool.id, level, selectedPowerNames);
+  }, [epicPool?.id, epicPool?.powers, level]);
 
   // Handlers
   const handleSelectPool = (poolId: string) => {
@@ -864,8 +878,9 @@ function EpicPoolSection({ level, archetypeId, epicPool }: EpicPoolSectionProps)
     return getEpicPoolPowerIconPath(selectedPoolData.name, power.icon);
   };
 
-  // Don't show if no archetype selected
+  // Don't show if no archetype selected or if epic pools aren't unlocked yet
   if (!archetypeId) return null;
+  if (!isUnlocked) return null;
 
   // Build pool options for dropdown
   const poolOptions = [
@@ -893,9 +908,6 @@ function EpicPoolSection({ level, archetypeId, epicPool }: EpicPoolSectionProps)
           {epicPool && (
             <span className="text-[9px] text-slate-600">({epicPool.powers.length})</span>
           )}
-          {!isUnlocked && (
-            <span className="text-[9px] text-slate-600">(Lvl {EPIC_POOL_LEVEL})</span>
-          )}
         </div>
         {epicPool && (
           <button
@@ -914,11 +926,7 @@ function EpicPoolSection({ level, archetypeId, epicPool }: EpicPoolSectionProps)
       {/* Content */}
       {!collapsed && (
         <div className="mt-1">
-          {!isUnlocked ? (
-            <div className="text-[10px] text-slate-500 italic px-1">
-              Epic/Patron pools unlock at level {EPIC_POOL_LEVEL}. You are currently level {level}.
-            </div>
-          ) : !epicPool ? (
+          {!epicPool ? (
             // Show pool selector
             <Select
               id="epic-pool-select"

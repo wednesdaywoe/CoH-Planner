@@ -15,6 +15,7 @@ import type {
   DamageType,
 } from '@/types';
 import { POWER_POOLS_RAW } from './power-pools-raw';
+import { POOL_UNLOCK_LEVEL, EARLY_TRAVEL_POWERS } from './levels';
 
 // ============================================
 // POWER POOL REGISTRY TYPE
@@ -296,4 +297,98 @@ export function getPoolsByCategory(categoryId: string): PowerPool[] {
   const category = POOL_CATEGORIES.find((c) => c.id === categoryId);
   if (!category) return [];
   return category.pools.map((poolId) => _pools[poolId]).filter(Boolean) as PowerPool[];
+}
+
+// ============================================
+// POWER AVAILABILITY CHECKING
+// ============================================
+
+/**
+ * Check if power pools are available at the given level
+ */
+export function arePoolsUnlocked(level: number): boolean {
+  return level >= POOL_UNLOCK_LEVEL;
+}
+
+/**
+ * Check if a specific pool power is available based on level and selected powers
+ *
+ * Rules:
+ * - Pools unlock at level 4
+ * - First two powers (rank 1-2) are available immediately when pool unlocks
+ * - Travel powers (Super Speed, Fly, Teleport, Super Jump, Infiltration, Speed of Sound, Mystic Flight)
+ *   are available at level 4 despite being rank 3
+ * - Other rank 3 powers require level 14 AND 1 other power from the pool
+ * - Rank 4-5 powers require level 14 AND 2 other powers from the pool
+ *
+ * @param poolId - The pool ID
+ * @param power - The power to check
+ * @param level - Current character level
+ * @param selectedPowersInPool - Array of power names already selected from this pool
+ */
+export function isPowerAvailableInPool(
+  poolId: string,
+  power: Power,
+  level: number,
+  selectedPowersInPool: string[]
+): boolean {
+  // Pools not available before level 4
+  if (level < POOL_UNLOCK_LEVEL) return false;
+
+  // Powers with available=-1 are unlocked by owning another power (e.g., Afterburner requires Fly)
+  // These are handled by the requires field check
+  if (power.available < 0) {
+    // Check if prerequisites are met
+    return arePoolPrerequisitesMet(poolId, power.name, selectedPowersInPool);
+  }
+
+  const rank = power.rank || 1;
+  const numSelectedPowers = selectedPowersInPool.length;
+
+  // Rank 1-2: Available immediately at pool unlock (level 4)
+  if (rank <= 2) {
+    return true;
+  }
+
+  // Rank 3: Check if it's an early travel power
+  if (rank === 3) {
+    const isEarlyTravelPower = EARLY_TRAVEL_POWERS.includes(power.name);
+    if (isEarlyTravelPower) {
+      // Travel powers are available at level 4 with no prerequisites
+      return true;
+    }
+    // Non-travel rank 3 powers require level 14 and 1 power from the pool
+    if (level < 14) return false;
+    if (numSelectedPowers < 1) return false;
+    return arePoolPrerequisitesMet(poolId, power.name, selectedPowersInPool);
+  }
+
+  // Rank 4-5+: Require level 14 and 2 powers from the pool
+  if (rank >= 4) {
+    if (level < 14) return false;
+    if (numSelectedPowers < 2) return false;
+    return arePoolPrerequisitesMet(poolId, power.name, selectedPowersInPool);
+  }
+
+  return false;
+}
+
+/**
+ * Get all available powers from a pool based on level and already selected powers
+ * This filters out already selected powers and checks level/prerequisite requirements
+ */
+export function getAvailablePoolPowers(
+  poolId: string,
+  level: number,
+  selectedPowersInPool: string[]
+): Power[] {
+  const pool = getPowerPool(poolId);
+  if (!pool) return [];
+
+  return pool.powers.filter((power) => {
+    // Skip already selected powers
+    if (selectedPowersInPool.includes(power.name)) return false;
+    // Check availability
+    return isPowerAvailableInPool(poolId, power, level, selectedPowersInPool);
+  });
 }
