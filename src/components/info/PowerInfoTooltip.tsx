@@ -665,9 +665,23 @@ function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfoContent
       : ioEnh.icon || 'Unknown.png';
 
     // Calculate enhancement values for each aspect
-    const effectiveLevel = ioEnh.attuned ? build.level : (enhancement.level || 50);
+    // IO enhancement values are based on the IO's level, not character level
+    // Attuned enhancements always use level 50 values (they scale to stay effective, not to change values)
+    // Non-attuned use their slotted level, defaulting to 50
+    const effectiveLevel = enhancement.level || 50;
     const aspectCount = ioEnh.aspects.length;
-    const aspectModifier = aspectCount === 1 ? 1.0 : aspectCount === 2 ? 0.7 : 0.5;
+    // Multi-aspect modifier per Homecoming Wiki:
+    // 1 aspect: 100%, 2 aspects: 62.5% (5/8), 3 aspects: 50%, 4 aspects: 43.75%
+    const getAspectModifier = (count: number): number => {
+      switch (count) {
+        case 1: return 1.0;
+        case 2: return 0.625;  // 5/8
+        case 3: return 0.5;
+        case 4: return 0.4375;
+        default: return 0.4375; // 4+ aspects use same as 4
+      }
+    };
+    const aspectModifier = getAspectModifier(aspectCount);
 
     const calculateAspectValue = (aspect: string): number | null => {
       const normalized = normalizeAspectName(aspect);
@@ -712,7 +726,7 @@ function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfoContent
           })}
           {aspectCount > 1 && (
             <div className="text-[8px] text-slate-500 mt-1 italic">
-              {aspectCount === 2 ? '70%' : '50%'} per aspect ({aspectCount} aspects)
+              {aspectCount === 2 ? '62.5%' : aspectCount === 3 ? '50%' : '43.75%'} per aspect ({aspectCount} aspects)
             </div>
           )}
         </div>

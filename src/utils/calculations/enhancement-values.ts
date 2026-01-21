@@ -291,11 +291,25 @@ export interface ParsedBonuses {
 }
 
 /**
- * Parse IO set piece aspects into enhancement bonuses
- * Multi-aspect modifier (game balance):
+ * Get the multi-aspect modifier for IO set pieces
+ * Per Homecoming Wiki:
  * - 1 aspect: 100% of base value
- * - 2 aspects: 70% of base value per aspect
- * - 3+ aspects: 50% of base value per aspect
+ * - 2 aspects: 62.5% (5/8) of base value per aspect
+ * - 3 aspects: 50% of base value per aspect
+ * - 4 aspects: 43.75% of base value per aspect
+ */
+export function getMultiAspectModifier(aspectCount: number): number {
+  switch (aspectCount) {
+    case 1: return 1.0;
+    case 2: return 0.625;  // 5/8
+    case 3: return 0.5;
+    case 4:
+    default: return 0.4375;
+  }
+}
+
+/**
+ * Parse IO set piece aspects into enhancement bonuses
  */
 export function parseIOSetPieceValues(aspects: string[], level = 50): ParsedBonuses {
   if (!aspects || !Array.isArray(aspects)) {
@@ -303,15 +317,7 @@ export function parseIOSetPieceValues(aspects: string[], level = 50): ParsedBonu
   }
 
   const bonuses: ParsedBonuses = {};
-
-  // Multi-aspect modifier
-  const aspectCount = aspects.length;
-  let modifier = 1.0;
-  if (aspectCount === 2) {
-    modifier = 0.7;
-  } else if (aspectCount >= 3) {
-    modifier = 0.5;
-  }
+  const modifier = getMultiAspectModifier(aspects.length);
 
   // Each aspect gets the schedule's value modified by aspect count
   aspects.forEach((aspect) => {

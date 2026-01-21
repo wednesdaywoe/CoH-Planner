@@ -2,6 +2,9 @@
 	"folders": [
 		{
 			"path": "."
+		},
+		{
+			"path": "../legacy-CoH-Planner"
 		}
 	],
 	"settings": {}

@@ -84,10 +84,11 @@ interface EnhancementTooltipProps {
 
 /**
  * Calculate the enhancement value for each aspect
- * Multi-aspect modifier (game balance):
+ * Multi-aspect modifier per Homecoming Wiki:
  * - 1 aspect: 100% of base value
- * - 2 aspects: 70% of base value per aspect
- * - 3+ aspects: 50% of base value per aspect
+ * - 2 aspects: 62.5% (5/8) of base value per aspect
+ * - 3 aspects: 50% of base value per aspect
+ * - 4 aspects: 43.75% of base value per aspect
  */
 function calculateAspectValue(aspect: string, level: number, totalAspects: number): number | null {
   const normalized = normalizeAspectName(aspect);
@@ -96,12 +97,14 @@ function calculateAspectValue(aspect: string, level: number, totalAspects: numbe
   const schedule = getAspectSchedule(normalized);
   const baseValue = getIOValueAtLevel(level, schedule);
 
-  // Apply multi-aspect modifier
+  // Apply multi-aspect modifier per Homecoming Wiki
   let modifier = 1.0;
-  if (totalAspects === 2) {
-    modifier = 0.7;
-  } else if (totalAspects >= 3) {
-    modifier = 0.5;
+  switch (totalAspects) {
+    case 1: modifier = 1.0; break;
+    case 2: modifier = 0.625; break;  // 5/8
+    case 3: modifier = 0.5; break;
+    case 4:
+    default: modifier = 0.4375; break;
   }
 
   return baseValue * modifier;
@@ -144,7 +147,7 @@ function EnhancementTooltip({ piece, setName, level, isAttuned }: EnhancementToo
       {/* Multi-aspect note */}
       {aspectCount > 1 && (
         <div className="text-[10px] text-gray-500 mt-1 italic">
-          {aspectCount === 2 ? '70%' : '50%'} per aspect ({aspectCount} aspects)
+          {aspectCount === 2 ? '62.5%' : aspectCount === 3 ? '50%' : '43.75%'} per aspect ({aspectCount} aspects)
         </div>
       )}
 
