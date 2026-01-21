@@ -16,8 +16,10 @@ import type {
   Origin,
   ProgressionMode,
   Enhancement,
+  SelectedIncarnatePower,
+  IncarnateSlotId,
 } from '@/types';
-import { createEmptyBuild } from '@/types';
+import { createEmptyBuild, createEmptyIncarnateBuildState } from '@/types';
 import {
   getArchetype,
   getPowerset,
@@ -93,6 +95,11 @@ interface BuildActions {
   // Accolades
   addAccolade: (accolade: Accolade) => void;
   removeAccolade: (accoladeId: string) => void;
+
+  // Incarnates
+  setIncarnatePower: (slotId: IncarnateSlotId, power: SelectedIncarnatePower) => void;
+  clearIncarnatePower: (slotId: IncarnateSlotId) => void;
+  clearAllIncarnates: () => void;
 
   // Power toggle (for stat calculations)
   togglePowerActive: (powerName: string) => void;
@@ -983,6 +990,37 @@ export const useBuildStore = create<BuildStore>()(
           },
         })),
 
+      // Incarnates
+      setIncarnatePower: (slotId, power) =>
+        set((state) => ({
+          build: {
+            ...state.build,
+            incarnates: {
+              ...state.build.incarnates,
+              [slotId]: power,
+            },
+          },
+        })),
+
+      clearIncarnatePower: (slotId) =>
+        set((state) => ({
+          build: {
+            ...state.build,
+            incarnates: {
+              ...state.build.incarnates,
+              [slotId]: null,
+            },
+          },
+        })),
+
+      clearAllIncarnates: () =>
+        set((state) => ({
+          build: {
+            ...state.build,
+            incarnates: createEmptyIncarnateBuildState(),
+          },
+        })),
+
       // Power toggle (for stat calculations)
       togglePowerActive: (powerName) =>
         set((state) => {
@@ -1172,6 +1210,11 @@ export const useBuildStore = create<BuildStore>()(
             });
           }
 
+          // Migration: Initialize incarnates if missing (for builds created before incarnate system)
+          if (!state.build.incarnates) {
+            state.build.incarnates = createEmptyIncarnateBuildState();
+          }
+
           state.setHasHydrated(true);
         }
       },
@@ -1203,3 +1246,6 @@ export const useEpicPool = () => useBuildStore((state) => state.build.epicPool);
 
 /** Select build settings */
 export const useBuildSettings = () => useBuildStore((state) => state.build.settings);
+
+/** Select incarnate powers */
+export const useIncarnates = () => useBuildStore((state) => state.build.incarnates);

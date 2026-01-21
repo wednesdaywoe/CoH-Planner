@@ -9,6 +9,8 @@ import { useCalculatedStats, useCharacterCalculation } from '@/hooks';
 import { useBuildStore, useUIStore } from '@/stores';
 import { Tooltip } from '@/components/ui';
 import { StatsConfigModal, AccoladesModal, AboutModal } from '@/components/modals';
+import { IncarnateSlotGrid, IncarnateModal } from '@/components/incarnate';
+import { INCARNATE_REQUIRED_LEVEL, createEmptyIncarnateBuildState } from '@/types';
 import type { CalculatedStats, DashboardStatBreakdown } from '@/hooks/useCalculatedStats';
 
 // ============================================
@@ -426,6 +428,14 @@ export function StatsDashboard() {
   const aboutModalOpen = useUIStore((s) => s.aboutModalOpen);
   const openAboutModal = useUIStore((s) => s.openAboutModal);
   const closeAboutModal = useUIStore((s) => s.closeAboutModal);
+  const incarnateModalOpen = useUIStore((s) => s.incarnateModalOpen);
+  const openIncarnateModal = useUIStore((s) => s.openIncarnateModal);
+  const closeIncarnateModal = useUIStore((s) => s.closeIncarnateModal);
+
+  // Get incarnate state with fallback for old builds
+  const incarnatesRaw = build.incarnates;
+  const incarnates = incarnatesRaw || createEmptyIncarnateBuildState();
+  const isLevel50 = build.level >= INCARNATE_REQUIRED_LEVEL;
 
   const maxHP = build.archetype?.stats?.maxHP || 0;
   const breakdowns = calcResult.breakdown;
@@ -655,6 +665,21 @@ export function StatsDashboard() {
                   </div>
                 </div>
               ))}
+
+            {/* Incarnate Powers panel - 2x3 grid */}
+            <div className="min-w-[260px] max-w-[300px] bg-gray-800/70 rounded-lg px-3 py-2 border border-gray-700 h-[168px] min-h-[168px] max-h-[168px]">
+              <div className="text-xs font-semibold text-gray-400 mb-2 uppercase tracking-wide flex items-center justify-between">
+                <span>Incarnate</span>
+                {!isLevel50 && (
+                  <span className="text-[9px] text-gray-500 font-normal normal-case">Lv50</span>
+                )}
+              </div>
+              <IncarnateSlotGrid
+                incarnates={incarnates}
+                disabled={!isLevel50}
+                onSlotClick={openIncarnateModal}
+              />
+            </div>
           </div>
 
           {/* Dashboard actions */}
@@ -702,6 +727,12 @@ export function StatsDashboard() {
       <AboutModal
         isOpen={aboutModalOpen}
         onClose={closeAboutModal}
+      />
+
+      {/* Incarnate Modal */}
+      <IncarnateModal
+        isOpen={incarnateModalOpen}
+        onClose={closeIncarnateModal}
       />
     </>
   );

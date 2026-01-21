@@ -20,6 +20,7 @@ import type {
   EnhancementStatType,
   EnhancementTier,
   IOSetRarity,
+  IncarnateSlotId,
 } from '@/types';
 
 // ============================================
@@ -44,6 +45,12 @@ interface UIState {
 
   /** About modal open state */
   aboutModalOpen: boolean;
+
+  /** Incarnate modal open state */
+  incarnateModalOpen: boolean;
+
+  /** Currently selected incarnate slot for modal */
+  currentIncarnateSlot: IncarnateSlotId | null;
 
   /** Global IO level for calculations */
   globalIOLevel: number;
@@ -130,6 +137,11 @@ interface UIActions {
   // About Modal
   openAboutModal: () => void;
   closeAboutModal: () => void;
+
+  // Incarnate Modal
+  openIncarnateModal: (slotId?: IncarnateSlotId) => void;
+  closeIncarnateModal: () => void;
+  setCurrentIncarnateSlot: (slotId: IncarnateSlotId) => void;
 }
 
 type UIStore = UIState & UIActions;
@@ -199,6 +211,8 @@ export const useUIStore = create<UIStore>()(
       statsConfigModalOpen: false,
       accoladesModalOpen: false,
       aboutModalOpen: false,
+      incarnateModalOpen: false,
+      currentIncarnateSlot: null,
       globalIOLevel: 50,
       attunementEnabled: false,
       exemplarMode: false,
@@ -496,6 +510,23 @@ export const useUIStore = create<UIStore>()(
 
       closeAccoladesModal: () =>
         set({ accoladesModalOpen: false }),
+
+      // Incarnate Modal
+      openIncarnateModal: (slotId) =>
+        set({
+          incarnateModalOpen: true,
+          currentIncarnateSlot: slotId || 'alpha',
+        }),
+
+      closeIncarnateModal: () =>
+        set({
+          incarnateModalOpen: false,
+        }),
+
+      setCurrentIncarnateSlot: (slotId) =>
+        set({
+          currentIncarnateSlot: slotId,
+        }),
     }),
     {
       name: 'coh-planner-ui',
@@ -550,3 +581,10 @@ export const useVisibleStats = () =>
   useUIStore((state) =>
     state.statsConfig.filter((s) => s.visible).sort((a, b) => a.order - b.order)
   );
+
+/** Select incarnate modal state */
+export const useIncarnateModal = () =>
+  useUIStore((state) => ({
+    isOpen: state.incarnateModalOpen,
+    currentSlot: state.currentIncarnateSlot,
+  }));

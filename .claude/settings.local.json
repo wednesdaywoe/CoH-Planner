@@ -41,7 +41,9 @@
       "Bash(powershell -Command:*)",
       "Bash(git config:*)",
       "Bash(timeout 5 npm run dev:*)",
-      "Bash(npx tsx:*)"
+      "Bash(npx tsx:*)",
+      "Bash(dir \"c:\\\\Projects\\\\CoH-Planner\\\\public\\\\img\\\\Powers\" /b)",
+      "Bash(python3:*)"
     ]
   }
 }

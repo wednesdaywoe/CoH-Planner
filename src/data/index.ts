@@ -140,3 +140,16 @@ export type { LevelInfo, InherentPowerDef } from './levels';
 
 // Accolades data and accessors
 export { ACCOLADES, getAccolades, getAccolade } from './accolades';
+
+// Incarnate data and accessors
+export {
+  getAllIncarnateSlots,
+  getIncarnateSlot,
+  getIncarnateTrees,
+  getIncarnateTree,
+  getIncarnatePowersForTree,
+  getIncarnatePowersByTier,
+  getIncarnatePower,
+  getIncarnateIconPath,
+  getIncarnateSlotIconPath,
+} from './incarnates';

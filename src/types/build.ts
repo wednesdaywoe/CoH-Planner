@@ -5,6 +5,8 @@
 import type { Origin, ProgressionMode } from './common';
 import type { Archetype, ArchetypeId } from './archetype';
 import type { SelectedPower } from './power';
+import type { IncarnateBuildState } from './incarnate';
+import { createEmptyIncarnateBuildState } from './incarnate';
 
 // ============================================
 // POWERSET SELECTION
@@ -134,6 +136,9 @@ export interface Build {
 
   /** IO set tracking for bonus calculations */
   sets: Record<string, SetTracking>;
+
+  /** Incarnate powers (level 50+) */
+  incarnates: IncarnateBuildState;
 }
 
 // ============================================
@@ -171,6 +176,7 @@ export function createEmptyBuild(): Build {
       origin: 'Natural',
     },
     sets: {},
+    incarnates: createEmptyIncarnateBuildState(),
   };
 }
 

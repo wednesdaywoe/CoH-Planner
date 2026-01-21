@@ -96,3 +96,26 @@ export type {
   UIState,
 } from './ui';
 export { createDefaultUIState } from './ui';
+
+// Incarnate types
+export type {
+  IncarnateSlotId,
+  IncarnateTier,
+  IncarnateBranch,
+  IncarnateSlotDefinition,
+  IncarnateTree,
+  IncarnatePower,
+  SelectedIncarnatePower,
+  IncarnateBuildState,
+} from './incarnate';
+export {
+  INCARNATE_SLOT_ORDER,
+  INCARNATE_TIER_ORDER,
+  INCARNATE_REQUIRED_LEVEL,
+  INCARNATE_SLOT_COLORS,
+  INCARNATE_TIER_COLORS,
+  INCARNATE_TIER_NAMES,
+  createEmptyIncarnateBuildState,
+  inferTierFromPowerName,
+  inferBranchFromPowerName,
+} from './incarnate';
