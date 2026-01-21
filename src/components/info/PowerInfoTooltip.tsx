@@ -120,12 +120,18 @@ function ProtectionCompact({ protection }: { protection: ProtectionEffects }) {
   );
 }
 
-interface PowerInfoContentProps {
-  powerName: string;
-  powerSet: string;
+// Three-tier stat display with aligned columns (compact for tooltip)
+function ThreeTierHeader() {
+  return (
+    <div className="grid grid-cols-[4rem_1fr_1fr_1fr] gap-1 text-[8px] text-slate-500 uppercase mb-0.5 border-b border-slate-700 pb-0.5">
+      <span>Stat</span>
+      <span>Base</span>
+      <span>Enh</span>
+      <span>Final</span>
+    </div>
+  );
 }
 
-// Three-tier stat display component - aligned in columns
 function ThreeTierStatRow({
   label,
   base,
@@ -138,7 +144,7 @@ function ThreeTierStatRow({
   base: number;
   enhanced: number;
   final: number;
-  format?: 'number' | 'percent' | 'seconds';
+  format?: 'number' | 'percent' | 'seconds' | 'feet';
   colorClass?: string;
 }) {
   const formatValue = (v: number) => {
@@ -146,7 +152,9 @@ function ThreeTierStatRow({
       case 'percent':
         return `${(v * 100).toFixed(1)}%`;
       case 'seconds':
-        return `${v.toFixed(2)}s`;
+        return `${v.toFixed(1)}s`;
+      case 'feet':
+        return `${v.toFixed(0)}ft`;
       default:
         return v.toFixed(2);
     }
@@ -156,29 +164,22 @@ function ThreeTierStatRow({
   const hasGlobal = Math.abs(final - enhanced) > 0.001;
 
   return (
-    <div className="grid grid-cols-[3rem_1fr_1fr_1fr] gap-1 items-baseline text-[10px]">
-      <span className="text-slate-400">{label}</span>
+    <div className="grid grid-cols-[4rem_1fr_1fr_1fr] gap-1 items-baseline text-[10px]">
+      <span className={colorClass}>{label}</span>
       <span className={colorClass}>{formatValue(base)}</span>
       <span className={hasEnhancement ? 'text-green-400' : 'text-slate-600'}>
-        {hasEnhancement ? `→ ${formatValue(enhanced)}` : '—'}
+        {hasEnhancement ? formatValue(enhanced) : '—'}
       </span>
       <span className={hasGlobal ? 'text-amber-400' : 'text-slate-600'}>
-        {hasGlobal ? `→ ${formatValue(final)}` : '—'}
+        {hasGlobal ? formatValue(final) : '—'}
       </span>
     </div>
   );
 }
 
-// Column headers for three-tier display
-function ThreeTierHeader() {
-  return (
-    <div className="grid grid-cols-[3rem_1fr_1fr_1fr] gap-1 text-[8px] text-slate-500 uppercase mb-0.5 border-b border-slate-700 pb-0.5">
-      <span>Stat</span>
-      <span>Base</span>
-      <span>Enhanced</span>
-      <span>Final</span>
-    </div>
-  );
+interface PowerInfoContentProps {
+  powerName: string;
+  powerSet: string;
 }
 
 function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
@@ -332,19 +333,26 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
     switch (aspect) {
       case 'damage':
       case 'accuracy':
-        // Multiplicative
+      case 'tohitDebuff':
+      case 'defenseDebuff':
+      case 'heal':
+      case 'defense':
+      case 'resistance':
+      case 'tohit':
         enhanced = baseValue * (1 + enhBonus);
         final = enhanced * (1 + globalBonus);
         break;
       case 'endurance':
-        // Reduction
         enhanced = baseValue * Math.max(0, 1 - enhBonus);
         final = enhanced * Math.max(0, 1 - globalBonus);
         break;
       case 'recharge':
-        // Division
         enhanced = baseValue / Math.max(1, 1 + enhBonus);
         final = enhanced / Math.max(1, 1 + globalBonus);
+        break;
+      case 'range':
+        enhanced = baseValue * (1 + enhBonus);
+        final = enhanced * (1 + globalBonus);
         break;
       default:
         enhanced = baseValue * (1 + enhBonus);
@@ -357,10 +365,6 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
   // Check for mez effects
   const hasMez = effects?.stun || effects?.hold || effects?.immobilize ||
                  effects?.sleep || effects?.fear || effects?.confuse || effects?.knockback;
-
-  // Check for buffs/debuffs
-  const hasBuffs = effects?.tohitBuff || effects?.damageBuff || effects?.defenseBuff;
-  const hasDebuffs = effects?.tohitDebuff || effects?.defenseDebuff || effects?.resistanceDebuff;
 
   // Check if power has any enhancements
   const hasEnhancements = selectedPower && selectedPower.slots.some(s => s !== null);
@@ -393,64 +397,180 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
         </div>
       )}
 
-      {/* Enhanceable Stats with three-tier display */}
-      {effects && (effects.accuracy || effects.recharge || effects.enduranceCost) && (
+      {/* Consolidated Power Effects - single three-tier display */}
+      {(() => {
+        const allowed = new Set<string>(basePower?.allowedEnhancements || []);
+
+        // Check if we have ANY effects to show in the consolidated view
+        const hasAnyEffects = (
+          // Power execution stats
+          (allowed.has('EnduranceReduction') && effects?.enduranceCost) ||
+          (allowed.has('Recharge') && effects?.recharge) ||
+          (allowed.has('Accuracy') && effects?.accuracy) ||
+          (allowed.has('Range') && effects?.range && effects.range > 0) ||
+          // Debuffs
+          effects?.tohitDebuff || effects?.defenseDebuff || effects?.resistanceDebuff ||
+          // Buffs
+          effects?.tohitBuff || effects?.damageBuff || effects?.defenseBuff ||
+          effects?.rechargeBuff || effects?.speedBuff || effects?.recoveryBuff || effects?.enduranceBuff ||
+          // Healing
+          (effects?.healing && effects.healing.scale != null)
+        );
+
+        if (!hasAnyEffects) return null;
+
+        return (
         <div className="bg-slate-800/50 rounded p-1.5">
+          <div className="text-[8px] text-slate-500 uppercase mb-0.5">
+            Power Effects{effects?.buffDuration ? ` (${effects.buffDuration.toFixed(0)}s)` : ''}
+          </div>
           <ThreeTierHeader />
-          {effects.accuracy && (
-            <ThreeTierStatRow
-              label="Acc"
-              {...calcThreeTier('accuracy', effects.accuracy)}
-              format="percent"
-              colorClass="text-yellow-400"
-            />
-          )}
-          {effects.recharge && (
-            <ThreeTierStatRow
-              label="Rech"
-              {...calcThreeTier('recharge', effects.recharge)}
-              format="seconds"
-              colorClass="text-blue-400"
-            />
-          )}
-          {effects.enduranceCost && (
+
+          {/* Power execution stats */}
+          {allowed.has('EnduranceReduction') && effects?.enduranceCost && (
             <ThreeTierStatRow
               label="End"
               {...calcThreeTier('endurance', effects.enduranceCost)}
               format="number"
+              colorClass="text-blue-400"
+            />
+          )}
+          {allowed.has('Recharge') && effects?.recharge && (
+            <ThreeTierStatRow
+              label="Rech"
+              {...calcThreeTier('recharge', effects.recharge)}
+              format="seconds"
+              colorClass="text-slate-300"
+            />
+          )}
+          {allowed.has('Accuracy') && effects?.accuracy && (
+            <ThreeTierStatRow
+              label="Acc"
+              {...calcThreeTier('accuracy', effects.accuracy)}
+              format="percent"
+              colorClass="text-slate-300"
+            />
+          )}
+          {allowed.has('Range') && effects?.range !== undefined && effects.range > 0 && (
+            <ThreeTierStatRow
+              label="Range"
+              {...calcThreeTier('range', effects.range)}
+              format="feet"
+              colorClass="text-slate-300"
+            />
+          )}
+
+          {/* Healing */}
+          {effects?.healing && effects.healing.scale != null && (
+            <ThreeTierStatRow
+              label="Heal"
+              {...calcThreeTier('heal', effects.healing.scale)}
+              format="number"
+              colorClass="text-green-400"
+            />
+          )}
+
+          {/* Buffs */}
+          {effects?.tohitBuff && (
+            <ThreeTierStatRow
+              label="+ToHit"
+              {...calcThreeTier('tohit', calculateBuffDebuffValue(effects.tohitBuff, effectiveMod))}
+              format="percent"
+              colorClass="text-yellow-400"
+            />
+          )}
+          {effects?.damageBuff && (
+            <ThreeTierStatRow
+              label="+Dmg"
+              {...calcThreeTier('damage', calculateBuffDebuffValue(effects.damageBuff, effectiveMod))}
+              format="percent"
+              colorClass="text-red-400"
+            />
+          )}
+          {effects?.defenseBuff && (
+            <ThreeTierStatRow
+              label="+Def"
+              {...calcThreeTier('defense', calculateBuffDebuffValue(effects.defenseBuff, effectiveMod))}
+              format="percent"
+              colorClass="text-purple-400"
+            />
+          )}
+          {effects?.rechargeBuff && (
+            <ThreeTierStatRow
+              label="+Rech"
+              base={effects.rechargeBuff}
+              enhanced={effects.rechargeBuff}
+              final={effects.rechargeBuff}
+              format="percent"
               colorClass="text-cyan-400"
             />
           )}
-        </div>
-      )}
+          {effects?.speedBuff && (
+            <ThreeTierStatRow
+              label="+Spd"
+              base={effects.speedBuff}
+              enhanced={effects.speedBuff}
+              final={effects.speedBuff}
+              format="percent"
+              colorClass="text-cyan-400"
+            />
+          )}
+          {effects?.recoveryBuff && (
+            <ThreeTierStatRow
+              label="+Rec"
+              base={effects.recoveryBuff}
+              enhanced={effects.recoveryBuff}
+              final={effects.recoveryBuff}
+              format="percent"
+              colorClass="text-blue-400"
+            />
+          )}
+          {effects?.enduranceBuff && (
+            <ThreeTierStatRow
+              label="+End"
+              base={effects.enduranceBuff}
+              enhanced={effects.enduranceBuff}
+              final={effects.enduranceBuff}
+              format="percent"
+              colorClass="text-blue-400"
+            />
+          )}
 
-      {/* Non-enhanceable stats in a compact grid */}
-      {effects && (effects.castTime || (effects.range !== undefined && effects.range > 0) || effects.radius || effects.buffDuration) && (
-        <div className="grid grid-cols-2 gap-x-4 gap-y-0.5 text-[10px]">
-          {effects.castTime && (
-            <div className="flex justify-between">
-              <span className="text-slate-400">Cast</span>
-              <span className="text-slate-300">{effects.castTime.toFixed(2)}s</span>
-            </div>
+          {/* Debuffs */}
+          {effects?.tohitDebuff && (
+            <ThreeTierStatRow
+              label="-ToHit"
+              {...calcThreeTier('tohitDebuff', calculateBuffDebuffValue(effects.tohitDebuff, effectiveMod))}
+              format="percent"
+              colorClass="text-yellow-400"
+            />
           )}
-          {effects.range !== undefined && effects.range > 0 && (
-            <div className="flex justify-between">
-              <span className="text-slate-400">Range</span>
-              <span className="text-slate-300">{effects.range}ft</span>
-            </div>
+          {effects?.defenseDebuff && (
+            <ThreeTierStatRow
+              label="-Def"
+              {...calcThreeTier('defenseDebuff', calculateBuffDebuffValue(effects.defenseDebuff, effectiveMod))}
+              format="percent"
+              colorClass="text-purple-400"
+            />
           )}
-          {effects.radius && (
-            <div className="flex justify-between">
-              <span className="text-slate-400">Radius</span>
-              <span className="text-slate-300">{effects.radius}ft</span>
-            </div>
+          {effects?.resistanceDebuff && (
+            <ThreeTierStatRow
+              label="-Resist"
+              {...calcThreeTier('resistanceDebuff', calculateBuffDebuffValue(effects.resistanceDebuff, effectiveMod))}
+              format="percent"
+              colorClass="text-orange-400"
+            />
           )}
-          {effects.buffDuration && (
-            <div className="flex justify-between">
-              <span className="text-slate-400">Duration</span>
-              <span className="text-slate-300">{effects.buffDuration.toFixed(1)}s</span>
-            </div>
-          )}
+        </div>
+        );
+      })()}
+
+      {/* Fixed stats */}
+      {effects && (effects.castTime || effects.buffDuration || effects.radius) && (
+        <div className="text-[10px] text-slate-500">
+          {effects.castTime && <span>Cast {effects.castTime.toFixed(2)}s </span>}
+          {effects.buffDuration && <span>Dur {effects.buffDuration.toFixed(1)}s </span>}
+          {effects.radius && <span>Radius {effects.radius}ft </span>}
         </div>
       )}
 
@@ -497,14 +617,6 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
         </div>
       )}
 
-      {/* Healing */}
-      {effects?.healing && effects.healing.scale != null && (
-        <div className="text-[10px]">
-          <span className="text-slate-400 text-[9px] uppercase">Heal: </span>
-          <span className="text-green-400">{effects.healing.scale.toFixed(2)} scale</span>
-        </div>
-      )}
-
       {/* Mez Effects - inline */}
       {hasMez && (
         <div className="text-[10px]">
@@ -516,26 +628,6 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
           {effects?.fear && <span className="text-purple-400">Fear {effects.fear}{effects.fearDuration ? `(${effects.fearDuration.toFixed(1)}s)` : ''} </span>}
           {effects?.confuse && <span className="text-purple-400">Confuse {effects.confuse}{effects.confuseDuration ? `(${effects.confuseDuration.toFixed(1)}s)` : ''} </span>}
           {effects?.knockback && <span className="text-purple-400">KB {effects.knockback} </span>}
-        </div>
-      )}
-
-      {/* Buffs */}
-      {hasBuffs && (
-        <div className="text-[10px]">
-          <span className="text-slate-400 text-[9px] uppercase">Buffs: </span>
-          {effects?.tohitBuff && <span className="text-green-400">ToHit +{formatPercent(calculateBuffDebuffValue(effects.tohitBuff, effectiveMod))} </span>}
-          {effects?.damageBuff && <span className="text-green-400">Dmg +{formatPercent(calculateBuffDebuffValue(effects.damageBuff, effectiveMod))} </span>}
-          {effects?.defenseBuff && <span className="text-green-400">Def +{formatPercent(calculateBuffDebuffValue(effects.defenseBuff, effectiveMod))} </span>}
-        </div>
-      )}
-
-      {/* Debuffs */}
-      {hasDebuffs && (
-        <div className="text-[10px]">
-          <span className="text-slate-400 text-[9px] uppercase">Debuffs: </span>
-          {effects?.tohitDebuff && <span className="text-red-400">ToHit -{formatPercent(calculateBuffDebuffValue(effects.tohitDebuff, effectiveMod))} </span>}
-          {effects?.defenseDebuff && <span className="text-red-400">Def -{formatPercent(calculateBuffDebuffValue(effects.defenseDebuff, effectiveMod))} </span>}
-          {effects?.resistanceDebuff && <span className="text-red-400">Res -{formatPercent(calculateBuffDebuffValue(effects.resistanceDebuff, effectiveMod))} </span>}
         </div>
       )}
 

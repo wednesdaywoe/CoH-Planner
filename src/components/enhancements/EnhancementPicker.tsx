@@ -457,6 +457,7 @@ export function EnhancementPicker() {
     'Healing': ['Healing'],
     'To Hit Buff': ['ToHit'],
     'To Hit Debuff': ['ToHit Debuff'],
+    'Defense Debuff': ['Defense Debuff'],
     'Slow Movement': ['Slow'],
     'Threat Duration': ['Taunt'],
     // Movement

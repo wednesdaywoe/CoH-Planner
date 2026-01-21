@@ -151,12 +151,20 @@ export interface PowerEffects {
   buffDuration?: number;
 
   // === BUFF EFFECTS ===
-  /** ToHit buff value */
+  /** ToHit buff value (scale) */
   tohitBuff?: number;
-  /** Damage buff value */
+  /** Damage buff value (scale) */
   damageBuff?: number;
-  /** Defense buff by damage type */
+  /** Defense buff value (scale) */
   defenseBuff?: number;
+  /** Recharge buff value (percentage as decimal, e.g., 0.30 = 30%) */
+  rechargeBuff?: number;
+  /** Run/Fly speed buff value (percentage as decimal) */
+  speedBuff?: number;
+  /** Recovery buff value (percentage as decimal) */
+  recoveryBuff?: number;
+  /** Endurance buff value (flat value or scale) */
+  enduranceBuff?: number;
 
   // === DEBUFF EFFECTS ===
   /** ToHit debuff value */
