@@ -52,6 +52,9 @@ interface UIState {
   /** Currently selected incarnate slot for modal */
   currentIncarnateSlot: IncarnateSlotId | null;
 
+  /** Export/Import modal open state */
+  exportImportModalOpen: boolean;
+
   /** Global IO level for calculations */
   globalIOLevel: number;
 
@@ -142,6 +145,10 @@ interface UIActions {
   openIncarnateModal: (slotId?: IncarnateSlotId) => void;
   closeIncarnateModal: () => void;
   setCurrentIncarnateSlot: (slotId: IncarnateSlotId) => void;
+
+  // Export/Import Modal
+  openExportImportModal: () => void;
+  closeExportImportModal: () => void;
 }
 
 type UIStore = UIState & UIActions;
@@ -213,6 +220,7 @@ export const useUIStore = create<UIStore>()(
       aboutModalOpen: false,
       incarnateModalOpen: false,
       currentIncarnateSlot: null,
+      exportImportModalOpen: false,
       globalIOLevel: 50,
       attunementEnabled: false,
       exemplarMode: false,
@@ -527,6 +535,13 @@ export const useUIStore = create<UIStore>()(
         set({
           currentIncarnateSlot: slotId,
         }),
+
+      // Export/Import Modal
+      openExportImportModal: () =>
+        set({ exportImportModalOpen: true }),
+
+      closeExportImportModal: () =>
+        set({ exportImportModalOpen: false }),
     }),
     {
       name: 'coh-planner-ui',

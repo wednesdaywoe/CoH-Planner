@@ -8,7 +8,7 @@ import { useMemo } from 'react';
 import { useCalculatedStats, useCharacterCalculation } from '@/hooks';
 import { useBuildStore, useUIStore } from '@/stores';
 import { Tooltip } from '@/components/ui';
-import { StatsConfigModal, AccoladesModal, AboutModal } from '@/components/modals';
+import { StatsConfigModal, AccoladesModal, AboutModal, ExportImportModal } from '@/components/modals';
 import { IncarnateSlotGrid, IncarnateModal } from '@/components/incarnate';
 import { INCARNATE_REQUIRED_LEVEL, createEmptyIncarnateBuildState } from '@/types';
 import type { CalculatedStats, DashboardStatBreakdown } from '@/hooks/useCalculatedStats';
@@ -431,6 +431,8 @@ export function StatsDashboard() {
   const incarnateModalOpen = useUIStore((s) => s.incarnateModalOpen);
   const openIncarnateModal = useUIStore((s) => s.openIncarnateModal);
   const closeIncarnateModal = useUIStore((s) => s.closeIncarnateModal);
+  const exportImportModalOpen = useUIStore((s) => s.exportImportModalOpen);
+  const closeExportImportModal = useUIStore((s) => s.closeExportImportModal);
 
   // Get incarnate state with fallback for old builds
   const incarnatesRaw = build.incarnates;
@@ -733,6 +735,12 @@ export function StatsDashboard() {
       <IncarnateModal
         isOpen={incarnateModalOpen}
         onClose={closeIncarnateModal}
+      />
+
+      {/* Export/Import Modal */}
+      <ExportImportModal
+        isOpen={exportImportModalOpen}
+        onClose={closeExportImportModal}
       />
     </>
   );
