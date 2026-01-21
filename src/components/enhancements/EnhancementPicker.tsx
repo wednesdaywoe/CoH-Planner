@@ -980,10 +980,9 @@ function SetPieceTooltip({ set, piece }: SetPieceTooltipProps) {
       {set.bonuses.length > 0 && (
         <div className="text-xs text-gray-400 mt-2 border-t border-gray-600 pt-1">
           <div className="text-gray-500">Set Bonuses:</div>
-          {set.bonuses.slice(0, 3).map((b, i) => (
+          {set.bonuses.map((b, i) => (
             <div key={i}>{b.pieces}pc: {b.effects.map(e => `${e.stat} +${e.value}`).join(', ')}</div>
           ))}
-          {set.bonuses.length > 3 && <div className="text-gray-500">...and more</div>}
         </div>
       )}
     </div>

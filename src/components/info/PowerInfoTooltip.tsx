@@ -14,6 +14,9 @@ import type { Power } from '@/types';
 import {
   calculatePowerEnhancementBonuses,
   calculatePowerDamage,
+  normalizeAspectName,
+  getAspectSchedule,
+  getIOValueAtLevel,
   type EnhancementBonuses,
 } from '@/utils/calculations';
 import {
@@ -661,39 +664,68 @@ function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfoContent
       ? ioEnh.icon.split('/').pop() || 'Unknown.png'
       : ioEnh.icon || 'Unknown.png';
 
+    // Calculate enhancement values for each aspect
+    const effectiveLevel = ioEnh.attuned ? build.level : (enhancement.level || 50);
+    const aspectCount = ioEnh.aspects.length;
+    const aspectModifier = aspectCount === 1 ? 1.0 : aspectCount === 2 ? 0.7 : 0.5;
+
+    const calculateAspectValue = (aspect: string): number | null => {
+      const normalized = normalizeAspectName(aspect);
+      if (!normalized) return null;
+      const schedule = getAspectSchedule(normalized);
+      const baseValue = getIOValueAtLevel(effectiveLevel, schedule);
+      return baseValue * aspectModifier;
+    };
+
     return (
-      <div className="space-y-2 max-w-[300px]">
-        {/* Enhancement header */}
+      <div className="space-y-2 max-w-[320px]">
+        {/* Enhancement header with set name */}
         <div className="flex items-center gap-2">
           <IOSetIcon
             icon={iconName}
             attuned={ioEnh.attuned}
-            size={24}
+            size={28}
             alt={enhancement.name}
             className="flex-shrink-0"
           />
           <div className="min-w-0">
-            <h3 className="text-xs font-semibold text-blue-400 leading-tight">{enhancement.name}</h3>
-            <span className="text-[9px] text-slate-400">{ioEnh.setName}</span>
+            <h3 className="text-xs font-semibold text-yellow-400 leading-tight">{ioEnh.setName}</h3>
+            <span className="text-[10px] text-blue-400">{enhancement.name}</span>
           </div>
         </div>
 
-        {/* Enhancement aspects */}
-        <div className="text-[10px]">
-          <span className="text-slate-400 text-[9px] uppercase">Enhances: </span>
-          <span className="text-green-400">{ioEnh.aspects.join(', ')}</span>
+        {/* Enhances section with calculated values */}
+        <div className="bg-slate-800/50 rounded p-1.5">
+          <div className="text-[9px] text-slate-500 uppercase mb-1">Enhances:</div>
+          {ioEnh.aspects.map((aspect, i) => {
+            const value = calculateAspectValue(aspect);
+            return (
+              <div key={i} className="flex justify-between items-baseline text-[10px]">
+                <span className="text-slate-300">{aspect}</span>
+                {value !== null && (
+                  <span className="text-green-400 font-mono">
+                    +{(value * 100).toFixed(2)}%
+                  </span>
+                )}
+              </div>
+            );
+          })}
+          {aspectCount > 1 && (
+            <div className="text-[8px] text-slate-500 mt-1 italic">
+              {aspectCount === 2 ? '70%' : '50%'} per aspect ({aspectCount} aspects)
+            </div>
+          )}
         </div>
 
-        {/* Level info */}
+        {/* Level and flags */}
         <div className="text-[10px] flex gap-3">
-          {enhancement.level && (
-            <span className="text-slate-400">
-              Level: <span className="text-slate-200">{enhancement.level}</span>
-            </span>
-          )}
-          {enhancement.attuned && (
-            <span className="text-purple-400">Attuned</span>
-          )}
+          <span className="text-slate-400">
+            {ioEnh.attuned ? (
+              <span className="text-purple-400">Attuned (scales to Lvl {build.level})</span>
+            ) : (
+              <>Level: <span className="text-slate-200">{enhancement.level}</span></>
+            )}
+          </span>
           {ioEnh.isProc && (
             <span className="text-amber-400">Proc</span>
           )}
@@ -705,10 +737,10 @@ function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfoContent
         {/* Set Bonuses */}
         {ioSet && ioSet.bonuses.length > 0 && (
           <div className="border-t border-slate-700 pt-2">
-            <div className="text-[9px] text-slate-400 uppercase mb-1">
+            <div className="text-[9px] text-slate-500 uppercase mb-1">
               Set Bonuses ({piecesSlotted}/{ioSet.pieces.length} slotted)
             </div>
-            <div className="space-y-1">
+            <div className="space-y-0.5">
               {ioSet.bonuses.map((bonus, idx) => {
                 const isActive = piecesSlotted >= bonus.pieces;
                 return (
