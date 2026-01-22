@@ -30285,7 +30285,8 @@ export const POWERSETS_RAW = {
         "maxSlots": 6,
         "allowedEnhancements": [
           "EnduranceReduction",
-          "Recharge"
+          "Recharge",
+          "Heal"
         ],
         "allowedSetCategories": [
           "Healing"
@@ -30301,7 +30302,12 @@ export const POWERSETS_RAW = {
           "accuracy": 1,
           "recharge": 8,
           "endurance": 13,
-          "cast": 2.03
+          "cast": 2.03,
+          "healing": {
+            "scale": 7.5,
+            "perTarget": true
+          },
+          "radius": 25
         }
       },
       {
@@ -30364,8 +30370,10 @@ export const POWERSETS_RAW = {
           "endurance": 15.6,
           "cast": 2.03,
           "buffDuration": 120,
-          "stun": 1,
-          "stunDuration": 120
+          "damageBuff": 1.0,
+          "rechargeBuff": 0.30,
+          "speedBuff": 0.30,
+          "recoveryBuff": 0.30
         }
       },
       {
@@ -40079,7 +40087,8 @@ export const POWERSETS_RAW = {
         "maxSlots": 6,
         "allowedEnhancements": [
           "EnduranceReduction",
-          "Recharge"
+          "Recharge",
+          "Heal"
         ],
         "allowedSetCategories": [
           "Healing"
@@ -40095,7 +40104,12 @@ export const POWERSETS_RAW = {
           "accuracy": 1,
           "recharge": 8,
           "endurance": 13,
-          "cast": 2.03
+          "cast": 2.03,
+          "healing": {
+            "scale": 7.5,
+            "perTarget": true
+          },
+          "radius": 25
         }
       },
       {
@@ -40158,8 +40172,10 @@ export const POWERSETS_RAW = {
           "endurance": 15.6,
           "cast": 2.03,
           "buffDuration": 120,
-          "stun": 1,
-          "stunDuration": 120
+          "damageBuff": 1.0,
+          "rechargeBuff": 0.30,
+          "speedBuff": 0.30,
+          "recoveryBuff": 0.30
         }
       },
       {
@@ -50634,7 +50650,8 @@ export const POWERSETS_RAW = {
         "maxSlots": 6,
         "allowedEnhancements": [
           "EnduranceReduction",
-          "Recharge"
+          "Recharge",
+          "Heal"
         ],
         "allowedSetCategories": [
           "Healing"
@@ -50650,7 +50667,12 @@ export const POWERSETS_RAW = {
           "accuracy": 1,
           "recharge": 8,
           "endurance": 13,
-          "cast": 2.03
+          "cast": 2.03,
+          "healing": {
+            "scale": 7.5,
+            "perTarget": true
+          },
+          "radius": 25
         }
       },
       {
@@ -50713,8 +50735,10 @@ export const POWERSETS_RAW = {
           "endurance": 15.6,
           "cast": 2.03,
           "buffDuration": 120,
-          "stun": 1,
-          "stunDuration": 120
+          "damageBuff": 1.0,
+          "rechargeBuff": 0.30,
+          "speedBuff": 0.30,
+          "recoveryBuff": 0.30
         }
       },
       {
@@ -67492,7 +67516,8 @@ export const POWERSETS_RAW = {
         "maxSlots": 6,
         "allowedEnhancements": [
           "EnduranceReduction",
-          "Recharge"
+          "Recharge",
+          "Heal"
         ],
         "allowedSetCategories": [
           "Healing"
@@ -67508,7 +67533,12 @@ export const POWERSETS_RAW = {
           "accuracy": 1,
           "recharge": 8,
           "endurance": 16.25,
-          "cast": 2.03
+          "cast": 2.03,
+          "healing": {
+            "scale": 7.5,
+            "perTarget": true
+          },
+          "radius": 25
         }
       },
       {
@@ -67571,8 +67601,10 @@ export const POWERSETS_RAW = {
           "endurance": 19.5,
           "cast": 2.03,
           "buffDuration": 120,
-          "stun": 1,
-          "stunDuration": 120
+          "damageBuff": 1.0,
+          "rechargeBuff": 0.30,
+          "speedBuff": 0.30,
+          "recoveryBuff": 0.30
         }
       },
       {

@@ -20,13 +20,15 @@ export type EnhancementSchedule = 'A' | 'B' | 'C' | 'D';
 /**
  * Map aspect types to ED schedules
  *
- * Schedule A: Most aspects (33.33% SO) - Accuracy, Damage, EndRdx, etc.
- * Schedule B: Defense Buff, Range, Resist Damage, ToHit Buff/Debuff (20% SO)
- * Schedule C: Interrupt Time, Recharge (40% SO)
- * Schedule D: Knockback, Healing (60% SO)
+ * Schedule A (33.33% SO): Accuracy, Confusion, Damage, Defense Debuff, Endurance Modification,
+ *   Endurance Reduction, Fear, Fly, Healing, Hold Duration, Immobilization Duration, Jumping,
+ *   Recharge Time, Run Speed, Sleep, Slow, Stun, Taunt
+ * Schedule B (20% SO): Defense Buff, Range Increase, Resist Damage, To Hit Buff, To Hit Debuff
+ * Schedule C (40% SO): Interrupt Time
+ * Schedule D (60% SO): Knockback Distance
  */
 const ASPECT_SCHEDULE_MAP: Record<string, EnhancementSchedule> = {
-  // Schedule A
+  // Schedule A (33.33% SO)
   accuracy: 'A',
   confuse: 'A',
   damage: 'A',
@@ -35,30 +37,30 @@ const ASPECT_SCHEDULE_MAP: Record<string, EnhancementSchedule> = {
   enduranceMod: 'A',
   fear: 'A',
   fly: 'A',
+  heal: 'A',
   hold: 'A',
   immobilize: 'A',
   jump: 'A',
+  recharge: 'A',
   run: 'A',
   sleep: 'A',
   slow: 'A',
   stun: 'A',
   taunt: 'A',
-  tohitDebuff: 'A',
 
-  // Schedule B
+  // Schedule B (20% SO)
   defenseBuff: 'B',
   range: 'B',
   resistance: 'B',
   tohit: 'B',
   tohitBuff: 'B',
+  tohitDebuff: 'B',
 
-  // Schedule C
+  // Schedule C (40% SO)
   interrupt: 'C',
-  recharge: 'C',
 
-  // Schedule D
+  // Schedule D (60% SO)
   knockback: 'D',
-  heal: 'D',
 };
 
 /**

@@ -104,6 +104,7 @@ export const COMMON_IO_TYPES: EnhancementStatType[] = [
   'EnduranceReduction',
   'Range',
   'Defense',
+  'Defense Debuff',
   'Resistance',
   'Healing',
   'ToHit',

@@ -69,6 +69,10 @@ interface LegacyPowerEffects {
   tohitBuff?: number;
   damageBuff?: number;
   defenseBuff?: number;
+  rechargeBuff?: number;
+  speedBuff?: number;
+  recoveryBuff?: number;
+  enduranceBuff?: number;
   // Debuffs
   tohitDebuff?: number;
   defenseDebuff?: number;
@@ -196,6 +200,10 @@ function transformPower(legacy: LegacyPower): Power {
       tohitBuff: effects.tohitBuff,
       damageBuff: effects.damageBuff,
       defenseBuff: effects.defenseBuff,
+      rechargeBuff: effects.rechargeBuff,
+      speedBuff: effects.speedBuff,
+      recoveryBuff: effects.recoveryBuff,
+      enduranceBuff: effects.enduranceBuff,
 
       // Debuffs
       tohitDebuff: effects.tohitDebuff,

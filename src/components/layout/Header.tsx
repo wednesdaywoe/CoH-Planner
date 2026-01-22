@@ -138,6 +138,7 @@ export function Header() {
   const setGlobalIOLevel = useUIStore((s) => s.setGlobalIOLevel);
   const exemplarMode = useUIStore((s) => s.exemplarMode);
   const toggleExemplarMode = useUIStore((s) => s.toggleExemplarMode);
+  const openExportImportModal = useUIStore((s) => s.openExportImportModal);
 
   const archetypeId = build.archetype.id;
 
@@ -267,10 +268,20 @@ export function Header() {
         </div>
 
         {/* Import/Export/Reset */}
-        <Button variant="secondary" size="sm">
+        <Button
+          variant="secondary"
+          size="sm"
+          onClick={() => openExportImportModal()}
+          title="Export your build to a file"
+        >
           Export
         </Button>
-        <Button variant="secondary" size="sm">
+        <Button
+          variant="secondary"
+          size="sm"
+          onClick={() => openExportImportModal()}
+          title="Import a build from a file"
+        >
           Import
         </Button>
         <Button
