@@ -20,6 +20,14 @@ import type { IncarnateSlotId } from '@/types';
 
 /**
  * Enhancement bonuses from Alpha slot (boost power effectiveness)
+ *
+ * Alpha slot abilities provide enhancement bonuses that apply to ALL powers
+ * that accept that enhancement type. A portion of these bonuses bypass
+ * Enhancement Diversification (ED), with the ratio depending on rarity:
+ * - Common: 1/6 (~16.7%) bypasses ED
+ * - Uncommon Core/Radial: 1/3 (~33.3%) bypasses ED
+ * - Rare (Total/Partial): 1/2 (50%) bypasses ED
+ * - Very Rare (Paragon): 2/3 (~66.7%) bypasses ED
  */
 export interface AlphaEffects {
   // Enhancement bonuses (percentage as decimal, e.g., 0.45 = 45%)
@@ -48,6 +56,9 @@ export interface AlphaEffects {
   absorb?: number;
   // Special: Level shift
   levelShift?: number;
+  // ED bypass ratio (portion of bonus that bypasses Enhancement Diversification)
+  // Common: 1/6, Uncommon: 1/3, Rare: 1/2, VeryRare: 2/3
+  edBypass?: number;
 }
 
 /**
@@ -150,27 +161,32 @@ const ALPHA_EFFECTS: Record<string, AlphaEffects> = {
   'musculature_boost': {
     damage: 0.20,
     levelShift: 0,
+    edBypass: 1/6,  // Common: 1/6 bypasses ED
   },
   'musculature_core_boost': {
     damage: 0.25,
     immobilize: 0.20,
     levelShift: 0,
+    edBypass: 1/3,  // Uncommon: 1/3 bypasses ED
   },
   'musculature_radial_boost': {
     damage: 0.25,
     defenseDebuff: 0.20,
     levelShift: 0,
+    edBypass: 1/3,  // Uncommon: 1/3 bypasses ED
   },
   'musculature_total_core_revamp': {
     damage: 0.33,
     immobilize: 0.25,
     levelShift: 1,
+    edBypass: 1/2,  // Rare: 1/2 bypasses ED
   },
   'musculature_partial_core_revamp': {
     damage: 0.33,
     immobilize: 0.25,
     defenseDebuff: 0.20,
     levelShift: 1,
+    edBypass: 1/2,  // Rare: 1/2 bypasses ED
   },
   'musculature_partial_radial_revamp': {
     damage: 0.33,
@@ -178,6 +194,7 @@ const ALPHA_EFFECTS: Record<string, AlphaEffects> = {
     defenseDebuff: 0.25,
     toHitDebuff: 0.20,
     levelShift: 1,
+    edBypass: 1/2,  // Rare: 1/2 bypasses ED
   },
   'musculature_total_radial_revamp': {
     damage: 0.33,
@@ -185,12 +202,14 @@ const ALPHA_EFFECTS: Record<string, AlphaEffects> = {
     defenseDebuff: 0.25,
     enduranceReduction: 0.20,  // End modification
     levelShift: 1,
+    edBypass: 1/2,  // Rare: 1/2 bypasses ED
   },
   'musculature_core_paragon': {
     damage: 0.45,
     immobilize: 0.33,
     defenseDebuff: 0.33,
     levelShift: 1,
+    edBypass: 2/3,  // Very Rare: 2/3 bypasses ED
   },
   'musculature_radial_paragon': {
     damage: 0.45,
@@ -200,6 +219,7 @@ const ALPHA_EFFECTS: Record<string, AlphaEffects> = {
     enduranceReduction: 0.20,
     runSpeed: 0.20,
     levelShift: 1,
+    edBypass: 2/3,  // Very Rare: 2/3 bypasses ED
   },
 
   // ========== SPIRITUAL ==========
@@ -207,27 +227,32 @@ const ALPHA_EFFECTS: Record<string, AlphaEffects> = {
   'spiritual_boost': {
     recharge: 0.20,
     levelShift: 0,
+    edBypass: 1/6,  // Common: 1/6 bypasses ED
   },
   'spiritual_core_boost': {
     recharge: 0.25,
     stun: 0.20,
     levelShift: 0,
+    edBypass: 1/3,  // Uncommon: 1/3 bypasses ED
   },
   'spiritual_radial_boost': {
     recharge: 0.25,
     heal: 0.20,
     levelShift: 0,
+    edBypass: 1/3,  // Uncommon: 1/3 bypasses ED
   },
   'spiritual_total_core_revamp': {
     recharge: 0.33,
     stun: 0.25,
     levelShift: 1,
+    edBypass: 1/2,  // Rare: 1/2 bypasses ED
   },
   'spiritual_partial_core_revamp': {
     recharge: 0.33,
     stun: 0.25,
     heal: 0.20,
     levelShift: 1,
+    edBypass: 1/2,  // Rare: 1/2 bypasses ED
   },
   'spiritual_partial_radial_revamp': {
     recharge: 0.33,
@@ -235,6 +260,7 @@ const ALPHA_EFFECTS: Record<string, AlphaEffects> = {
     heal: 0.25,
     slow: 0.20,
     levelShift: 1,
+    edBypass: 1/2,  // Rare: 1/2 bypasses ED
   },
   'spiritual_total_radial_revamp': {
     recharge: 0.33,
@@ -242,12 +268,14 @@ const ALPHA_EFFECTS: Record<string, AlphaEffects> = {
     heal: 0.25,
     toHitBuff: 0.20,
     levelShift: 1,
+    edBypass: 1/2,  // Rare: 1/2 bypasses ED
   },
   'spiritual_core_paragon': {
     recharge: 0.45,
     stun: 0.33,
     heal: 0.33,
     levelShift: 1,
+    edBypass: 2/3,  // Very Rare: 2/3 bypasses ED
   },
   'spiritual_radial_paragon': {
     recharge: 0.45,
@@ -257,6 +285,7 @@ const ALPHA_EFFECTS: Record<string, AlphaEffects> = {
     slow: 0.20,
     toHitBuff: 0.20,
     levelShift: 1,
+    edBypass: 2/3,  // Very Rare: 2/3 bypasses ED
   },
 
   // ========== CARDIAC ==========
@@ -264,27 +293,32 @@ const ALPHA_EFFECTS: Record<string, AlphaEffects> = {
   'cardiac_boost': {
     enduranceReduction: 0.20,
     levelShift: 0,
+    edBypass: 1/6,  // Common: 1/6 bypasses ED
   },
   'cardiac_core_boost': {
     enduranceReduction: 0.25,
     range: 0.20,
     levelShift: 0,
+    edBypass: 1/3,  // Uncommon: 1/3 bypasses ED
   },
   'cardiac_radial_boost': {
     enduranceReduction: 0.25,
     resistance: 0.20,
     levelShift: 0,
+    edBypass: 1/3,  // Uncommon: 1/3 bypasses ED
   },
   'cardiac_total_core_revamp': {
     enduranceReduction: 0.33,
     range: 0.25,
     levelShift: 1,
+    edBypass: 1/2,  // Rare: 1/2 bypasses ED
   },
   'cardiac_partial_core_revamp': {
     enduranceReduction: 0.33,
     range: 0.25,
     resistance: 0.20,
     levelShift: 1,
+    edBypass: 1/2,  // Rare: 1/2 bypasses ED
   },
   'cardiac_partial_radial_revamp': {
     enduranceReduction: 0.33,
@@ -292,6 +326,7 @@ const ALPHA_EFFECTS: Record<string, AlphaEffects> = {
     resistance: 0.25,
     fear: 0.20,
     levelShift: 1,
+    edBypass: 1/2,  // Rare: 1/2 bypasses ED
   },
   'cardiac_total_radial_revamp': {
     enduranceReduction: 0.33,
@@ -299,12 +334,14 @@ const ALPHA_EFFECTS: Record<string, AlphaEffects> = {
     resistance: 0.25,
     sleep: 0.20,
     levelShift: 1,
+    edBypass: 1/2,  // Rare: 1/2 bypasses ED
   },
   'cardiac_core_paragon': {
     enduranceReduction: 0.45,
     range: 0.33,
     resistance: 0.33,
     levelShift: 1,
+    edBypass: 2/3,  // Very Rare: 2/3 bypasses ED
   },
   'cardiac_radial_paragon': {
     enduranceReduction: 0.45,
@@ -314,6 +351,7 @@ const ALPHA_EFFECTS: Record<string, AlphaEffects> = {
     fear: 0.20,
     absorb: 0.20,
     levelShift: 1,
+    edBypass: 2/3,  // Very Rare: 2/3 bypasses ED
   },
 
   // ========== NERVE ==========
@@ -321,27 +359,32 @@ const ALPHA_EFFECTS: Record<string, AlphaEffects> = {
   'nerve_boost': {
     accuracy: 0.20,
     levelShift: 0,
+    edBypass: 1/6,  // Common: 1/6 bypasses ED
   },
   'nerve_core_boost': {
     accuracy: 0.25,
     hold: 0.20,
     levelShift: 0,
+    edBypass: 1/3,  // Uncommon: 1/3 bypasses ED
   },
   'nerve_radial_boost': {
     accuracy: 0.25,
     defense: 0.20,
     levelShift: 0,
+    edBypass: 1/3,  // Uncommon: 1/3 bypasses ED
   },
   'nerve_total_core_revamp': {
     accuracy: 0.33,
     hold: 0.25,
     levelShift: 1,
+    edBypass: 1/2,  // Rare: 1/2 bypasses ED
   },
   'nerve_partial_core_revamp': {
     accuracy: 0.33,
     hold: 0.25,
     defense: 0.20,
     levelShift: 1,
+    edBypass: 1/2,  // Rare: 1/2 bypasses ED
   },
   'nerve_partial_radial_revamp': {
     accuracy: 0.33,
@@ -349,6 +392,7 @@ const ALPHA_EFFECTS: Record<string, AlphaEffects> = {
     defense: 0.25,
     taunt: 0.20,
     levelShift: 1,
+    edBypass: 1/2,  // Rare: 1/2 bypasses ED
   },
   'nerve_total_radial_revamp': {
     accuracy: 0.33,
@@ -356,12 +400,14 @@ const ALPHA_EFFECTS: Record<string, AlphaEffects> = {
     confuse: 0.20,
     defense: 0.25,
     levelShift: 1,
+    edBypass: 1/2,  // Rare: 1/2 bypasses ED
   },
   'nerve_core_paragon': {
     accuracy: 0.45,
     hold: 0.33,
     defense: 0.33,
     levelShift: 1,
+    edBypass: 2/3,  // Very Rare: 2/3 bypasses ED
   },
   'nerve_radial_paragon': {
     accuracy: 0.45,
@@ -371,6 +417,7 @@ const ALPHA_EFFECTS: Record<string, AlphaEffects> = {
     taunt: 0.20,
     flySpeed: 0.20,
     levelShift: 1,
+    edBypass: 2/3,  // Very Rare: 2/3 bypasses ED
   },
 
   // ========== AGILITY ==========
@@ -378,27 +425,32 @@ const ALPHA_EFFECTS: Record<string, AlphaEffects> = {
   'agility_boost': {
     enduranceReduction: 0.20,  // End Mod
     levelShift: 0,
+    edBypass: 1/6,  // Common: 1/6 bypasses ED
   },
   'agility_core_boost': {
     enduranceReduction: 0.25,
     recharge: 0.20,
     levelShift: 0,
+    edBypass: 1/3,  // Uncommon: 1/3 bypasses ED
   },
   'agility_radial_boost': {
     enduranceReduction: 0.25,
     defense: 0.20,
     levelShift: 0,
+    edBypass: 1/3,  // Uncommon: 1/3 bypasses ED
   },
   'agility_total_core_revamp': {
     enduranceReduction: 0.33,
     recharge: 0.25,
     levelShift: 1,
+    edBypass: 1/2,  // Rare: 1/2 bypasses ED
   },
   'agility_partial_core_revamp': {
     enduranceReduction: 0.33,
     recharge: 0.25,
     defense: 0.20,
     levelShift: 1,
+    edBypass: 1/2,  // Rare: 1/2 bypasses ED
   },
   'agility_partial_radial_revamp': {
     enduranceReduction: 0.33,
@@ -406,6 +458,7 @@ const ALPHA_EFFECTS: Record<string, AlphaEffects> = {
     defense: 0.25,
     runSpeed: 0.20,
     levelShift: 1,
+    edBypass: 1/2,  // Rare: 1/2 bypasses ED
   },
   'agility_total_radial_revamp': {
     enduranceReduction: 0.33,
@@ -413,12 +466,14 @@ const ALPHA_EFFECTS: Record<string, AlphaEffects> = {
     defense: 0.25,
     jumpSpeed: 0.20,
     levelShift: 1,
+    edBypass: 1/2,  // Rare: 1/2 bypasses ED
   },
   'agility_core_paragon': {
     enduranceReduction: 0.45,
     recharge: 0.33,
     defense: 0.33,
     levelShift: 1,
+    edBypass: 2/3,  // Very Rare: 2/3 bypasses ED
   },
   'agility_radial_paragon': {
     enduranceReduction: 0.45,
@@ -428,6 +483,7 @@ const ALPHA_EFFECTS: Record<string, AlphaEffects> = {
     runSpeed: 0.20,
     flySpeed: 0.20,
     levelShift: 1,
+    edBypass: 2/3,  // Very Rare: 2/3 bypasses ED
   },
 
   // ========== INTUITION ==========
@@ -435,27 +491,32 @@ const ALPHA_EFFECTS: Record<string, AlphaEffects> = {
   'intuition_boost': {
     hold: 0.20,
     levelShift: 0,
+    edBypass: 1/6,  // Common: 1/6 bypasses ED
   },
   'intuition_core_boost': {
     hold: 0.25,
     defenseDebuff: 0.20,
     levelShift: 0,
+    edBypass: 1/3,  // Uncommon: 1/3 bypasses ED
   },
   'intuition_radial_boost': {
     hold: 0.25,
     range: 0.20,
     levelShift: 0,
+    edBypass: 1/3,  // Uncommon: 1/3 bypasses ED
   },
   'intuition_total_core_revamp': {
     hold: 0.33,
     defenseDebuff: 0.25,
     levelShift: 1,
+    edBypass: 1/2,  // Rare: 1/2 bypasses ED
   },
   'intuition_partial_core_revamp': {
     hold: 0.33,
     defenseDebuff: 0.25,
     range: 0.20,
     levelShift: 1,
+    edBypass: 1/2,  // Rare: 1/2 bypasses ED
   },
   'intuition_partial_radial_revamp': {
     hold: 0.33,
@@ -463,6 +524,7 @@ const ALPHA_EFFECTS: Record<string, AlphaEffects> = {
     range: 0.25,
     damage: 0.20,
     levelShift: 1,
+    edBypass: 1/2,  // Rare: 1/2 bypasses ED
   },
   'intuition_total_radial_revamp': {
     hold: 0.33,
@@ -470,12 +532,14 @@ const ALPHA_EFFECTS: Record<string, AlphaEffects> = {
     range: 0.25,
     toHitDebuff: 0.20,
     levelShift: 1,
+    edBypass: 1/2,  // Rare: 1/2 bypasses ED
   },
   'intuition_core_paragon': {
     hold: 0.45,
     defenseDebuff: 0.33,
     range: 0.33,
     levelShift: 1,
+    edBypass: 2/3,  // Very Rare: 2/3 bypasses ED
   },
   'intuition_radial_paragon': {
     hold: 0.45,
@@ -485,6 +549,7 @@ const ALPHA_EFFECTS: Record<string, AlphaEffects> = {
     damage: 0.20,
     slow: 0.20,
     levelShift: 1,
+    edBypass: 2/3,  // Very Rare: 2/3 bypasses ED
   },
 
   // ========== RESILIENT ==========
@@ -492,27 +557,32 @@ const ALPHA_EFFECTS: Record<string, AlphaEffects> = {
   'resilient_boost': {
     resistance: 0.20,
     levelShift: 0,
+    edBypass: 1/6,  // Common: 1/6 bypasses ED
   },
   'resilient_core_boost': {
     resistance: 0.25,
     toHitBuff: 0.20,
     levelShift: 0,
+    edBypass: 1/3,  // Uncommon: 1/3 bypasses ED
   },
   'resilient_radial_boost': {
     resistance: 0.25,
     immobilize: 0.20,
     levelShift: 0,
+    edBypass: 1/3,  // Uncommon: 1/3 bypasses ED
   },
   'resilient_total_core_revamp': {
     resistance: 0.33,
     toHitBuff: 0.25,
     levelShift: 1,
+    edBypass: 1/2,  // Rare: 1/2 bypasses ED
   },
   'resilient_partial_core_revamp': {
     resistance: 0.33,
     toHitBuff: 0.25,
     immobilize: 0.20,
     levelShift: 1,
+    edBypass: 1/2,  // Rare: 1/2 bypasses ED
   },
   'resilient_partial_radial_revamp': {
     resistance: 0.33,
@@ -520,6 +590,7 @@ const ALPHA_EFFECTS: Record<string, AlphaEffects> = {
     immobilize: 0.25,
     stun: 0.20,
     levelShift: 1,
+    edBypass: 1/2,  // Rare: 1/2 bypasses ED
   },
   'resilient_total_radial_revamp': {
     resistance: 0.33,
@@ -527,12 +598,14 @@ const ALPHA_EFFECTS: Record<string, AlphaEffects> = {
     immobilize: 0.25,
     absorb: 0.20,
     levelShift: 1,
+    edBypass: 1/2,  // Rare: 1/2 bypasses ED
   },
   'resilient_core_paragon': {
     resistance: 0.45,
     toHitBuff: 0.33,
     immobilize: 0.33,
     levelShift: 1,
+    edBypass: 2/3,  // Very Rare: 2/3 bypasses ED
   },
   'resilient_radial_paragon': {
     resistance: 0.45,
@@ -542,6 +615,7 @@ const ALPHA_EFFECTS: Record<string, AlphaEffects> = {
     toHitBuff: 0.33,
     absorb: 0.20,
     levelShift: 1,
+    edBypass: 2/3,  // Very Rare: 2/3 bypasses ED
   },
 
   // ========== VIGOR ==========
@@ -549,27 +623,32 @@ const ALPHA_EFFECTS: Record<string, AlphaEffects> = {
   'vigor_boost': {
     heal: 0.20,
     levelShift: 0,
+    edBypass: 1/6,  // Common: 1/6 bypasses ED
   },
   'vigor_core_boost': {
     heal: 0.25,
     accuracy: 0.20,
     levelShift: 0,
+    edBypass: 1/3,  // Uncommon: 1/3 bypasses ED
   },
   'vigor_radial_boost': {
     heal: 0.25,
     enduranceReduction: 0.20,
     levelShift: 0,
+    edBypass: 1/3,  // Uncommon: 1/3 bypasses ED
   },
   'vigor_total_core_revamp': {
     heal: 0.33,
     accuracy: 0.25,
     levelShift: 1,
+    edBypass: 1/2,  // Rare: 1/2 bypasses ED
   },
   'vigor_partial_core_revamp': {
     heal: 0.33,
     accuracy: 0.25,
     enduranceReduction: 0.20,
     levelShift: 1,
+    edBypass: 1/2,  // Rare: 1/2 bypasses ED
   },
   'vigor_partial_radial_revamp': {
     heal: 0.33,
@@ -577,6 +656,7 @@ const ALPHA_EFFECTS: Record<string, AlphaEffects> = {
     enduranceReduction: 0.25,
     sleep: 0.20,
     levelShift: 1,
+    edBypass: 1/2,  // Rare: 1/2 bypasses ED
   },
   'vigor_total_radial_revamp': {
     heal: 0.33,
@@ -584,12 +664,14 @@ const ALPHA_EFFECTS: Record<string, AlphaEffects> = {
     enduranceReduction: 0.25,
     confuse: 0.20,
     levelShift: 1,
+    edBypass: 1/2,  // Rare: 1/2 bypasses ED
   },
   'vigor_core_paragon': {
     heal: 0.45,
     accuracy: 0.33,
     enduranceReduction: 0.33,
     levelShift: 1,
+    edBypass: 2/3,  // Very Rare: 2/3 bypasses ED
   },
   'vigor_radial_paragon': {
     heal: 0.45,
@@ -599,6 +681,7 @@ const ALPHA_EFFECTS: Record<string, AlphaEffects> = {
     sleep: 0.20,
     fear: 0.20,
     levelShift: 1,
+    edBypass: 2/3,  // Very Rare: 2/3 bypasses ED
   },
 };
 

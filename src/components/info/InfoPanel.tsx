@@ -989,53 +989,97 @@ function IncarnateInfo({ slotId, powerId }: IncarnateInfoProps) {
           <h4 className="text-[9px] font-semibold text-slate-500 uppercase tracking-wide mb-1">
             Enhancement Bonuses
           </h4>
+          <p className="text-[9px] text-slate-500 mb-1">
+            Applies to all powers that accept these enhancement types.
+          </p>
           <div className="bg-slate-800/50 rounded p-2 space-y-0.5">
+            {/* Header row for Alpha effects */}
+            <div className="grid grid-cols-[5rem_1fr_1fr] gap-1 text-[9px] text-slate-500 uppercase mb-0.5 border-b border-slate-700 pb-0.5">
+              <span>Aspect</span>
+              <span>Total</span>
+              <span>ED Bypass</span>
+            </div>
             {alphaEffects.damage !== undefined && (
-              <IncarnateEffectRow label="Damage" value={alphaEffects.damage} colorClass="text-red-400" />
+              <AlphaEffectRow label="Damage" value={alphaEffects.damage} edBypass={alphaEffects.edBypass} colorClass="text-red-400" />
             )}
             {alphaEffects.accuracy !== undefined && (
-              <IncarnateEffectRow label="Accuracy" value={alphaEffects.accuracy} colorClass="text-yellow-400" />
+              <AlphaEffectRow label="Accuracy" value={alphaEffects.accuracy} edBypass={alphaEffects.edBypass} colorClass="text-yellow-400" />
             )}
             {alphaEffects.recharge !== undefined && (
-              <IncarnateEffectRow label="Recharge" value={alphaEffects.recharge} colorClass="text-cyan-400" />
+              <AlphaEffectRow label="Recharge" value={alphaEffects.recharge} edBypass={alphaEffects.edBypass} colorClass="text-cyan-400" />
             )}
             {alphaEffects.enduranceReduction !== undefined && (
-              <IncarnateEffectRow label="End Reduction" value={alphaEffects.enduranceReduction} colorClass="text-blue-400" />
+              <AlphaEffectRow label="End Reduc" value={alphaEffects.enduranceReduction} edBypass={alphaEffects.edBypass} colorClass="text-blue-400" />
             )}
             {alphaEffects.heal !== undefined && (
-              <IncarnateEffectRow label="Heal" value={alphaEffects.heal} colorClass="text-green-400" />
+              <AlphaEffectRow label="Heal" value={alphaEffects.heal} edBypass={alphaEffects.edBypass} colorClass="text-green-400" />
             )}
             {alphaEffects.defense !== undefined && (
-              <IncarnateEffectRow label="Defense" value={alphaEffects.defense} colorClass="text-purple-400" />
+              <AlphaEffectRow label="Defense" value={alphaEffects.defense} edBypass={alphaEffects.edBypass} colorClass="text-purple-400" />
             )}
             {alphaEffects.resistance !== undefined && (
-              <IncarnateEffectRow label="Resistance" value={alphaEffects.resistance} colorClass="text-orange-400" />
+              <AlphaEffectRow label="Resistance" value={alphaEffects.resistance} edBypass={alphaEffects.edBypass} colorClass="text-orange-400" />
             )}
             {alphaEffects.range !== undefined && (
-              <IncarnateEffectRow label="Range" value={alphaEffects.range} colorClass="text-slate-300" />
+              <AlphaEffectRow label="Range" value={alphaEffects.range} edBypass={alphaEffects.edBypass} colorClass="text-slate-300" />
             )}
             {alphaEffects.hold !== undefined && (
-              <IncarnateEffectRow label="Hold" value={alphaEffects.hold} colorClass="text-purple-400" />
+              <AlphaEffectRow label="Hold" value={alphaEffects.hold} edBypass={alphaEffects.edBypass} colorClass="text-purple-400" />
             )}
             {alphaEffects.stun !== undefined && (
-              <IncarnateEffectRow label="Stun" value={alphaEffects.stun} colorClass="text-purple-400" />
+              <AlphaEffectRow label="Stun" value={alphaEffects.stun} edBypass={alphaEffects.edBypass} colorClass="text-purple-400" />
             )}
             {alphaEffects.immobilize !== undefined && (
-              <IncarnateEffectRow label="Immobilize" value={alphaEffects.immobilize} colorClass="text-purple-400" />
+              <AlphaEffectRow label="Immobilize" value={alphaEffects.immobilize} edBypass={alphaEffects.edBypass} colorClass="text-purple-400" />
+            )}
+            {alphaEffects.sleep !== undefined && (
+              <AlphaEffectRow label="Sleep" value={alphaEffects.sleep} edBypass={alphaEffects.edBypass} colorClass="text-purple-400" />
+            )}
+            {alphaEffects.fear !== undefined && (
+              <AlphaEffectRow label="Fear" value={alphaEffects.fear} edBypass={alphaEffects.edBypass} colorClass="text-purple-400" />
+            )}
+            {alphaEffects.confuse !== undefined && (
+              <AlphaEffectRow label="Confuse" value={alphaEffects.confuse} edBypass={alphaEffects.edBypass} colorClass="text-purple-400" />
+            )}
+            {alphaEffects.slow !== undefined && (
+              <AlphaEffectRow label="Slow" value={alphaEffects.slow} edBypass={alphaEffects.edBypass} colorClass="text-cyan-400" />
             )}
             {alphaEffects.toHitBuff !== undefined && (
-              <IncarnateEffectRow label="ToHit Buff" value={alphaEffects.toHitBuff} colorClass="text-yellow-400" />
+              <AlphaEffectRow label="ToHit Buff" value={alphaEffects.toHitBuff} edBypass={alphaEffects.edBypass} colorClass="text-yellow-400" />
             )}
             {alphaEffects.toHitDebuff !== undefined && (
-              <IncarnateEffectRow label="ToHit Debuff" value={alphaEffects.toHitDebuff} colorClass="text-yellow-400" />
+              <AlphaEffectRow label="ToHit Debuff" value={alphaEffects.toHitDebuff} edBypass={alphaEffects.edBypass} colorClass="text-yellow-400" />
             )}
             {alphaEffects.defenseDebuff !== undefined && (
-              <IncarnateEffectRow label="Defense Debuff" value={alphaEffects.defenseDebuff} colorClass="text-purple-400" />
+              <AlphaEffectRow label="Def Debuff" value={alphaEffects.defenseDebuff} edBypass={alphaEffects.edBypass} colorClass="text-purple-400" />
             )}
+            {alphaEffects.taunt !== undefined && (
+              <AlphaEffectRow label="Taunt" value={alphaEffects.taunt} edBypass={alphaEffects.edBypass} colorClass="text-slate-300" />
+            )}
+            {alphaEffects.runSpeed !== undefined && (
+              <AlphaEffectRow label="Run Speed" value={alphaEffects.runSpeed} edBypass={alphaEffects.edBypass} colorClass="text-cyan-400" />
+            )}
+            {alphaEffects.jumpSpeed !== undefined && (
+              <AlphaEffectRow label="Jump Speed" value={alphaEffects.jumpSpeed} edBypass={alphaEffects.edBypass} colorClass="text-cyan-400" />
+            )}
+            {alphaEffects.flySpeed !== undefined && (
+              <AlphaEffectRow label="Fly Speed" value={alphaEffects.flySpeed} edBypass={alphaEffects.edBypass} colorClass="text-cyan-400" />
+            )}
+            {alphaEffects.absorb !== undefined && (
+              <AlphaEffectRow label="Absorb" value={alphaEffects.absorb} edBypass={alphaEffects.edBypass} colorClass="text-blue-400" />
+            )}
+          </div>
+          {/* Level Shift and ED Bypass info */}
+          <div className="mt-1.5 space-y-0.5">
             {alphaEffects.levelShift !== undefined && alphaEffects.levelShift > 0 && (
               <div className="flex justify-between text-xs">
                 <span className="text-amber-400">Level Shift</span>
                 <span className="text-amber-400">+{alphaEffects.levelShift}</span>
+              </div>
+            )}
+            {alphaEffects.edBypass !== undefined && (
+              <div className="text-[9px] text-slate-500 mt-1">
+                ED Bypass: {(alphaEffects.edBypass * 100).toFixed(1)}% of bonuses ignore Enhancement Diversification
               </div>
             )}
           </div>
@@ -1204,6 +1248,33 @@ function IncarnateEffectRow({
     <div className="flex justify-between text-xs">
       <span className="text-slate-400">{label}</span>
       <span className={colorClass}>{formatEffectValue(value)}{suffix}</span>
+    </div>
+  );
+}
+
+/**
+ * Alpha effect row with ED bypass calculation
+ * Shows total bonus and the portion that bypasses ED
+ */
+function AlphaEffectRow({
+  label,
+  value,
+  edBypass,
+  colorClass,
+}: {
+  label: string;
+  value: number;
+  edBypass?: number;
+  colorClass: string;
+}) {
+  const bypassValue = edBypass !== undefined ? value * edBypass : 0;
+  return (
+    <div className="grid grid-cols-[5rem_1fr_1fr] gap-1 items-baseline text-xs">
+      <span className="text-slate-400">{label}</span>
+      <span className={colorClass}>{formatEffectValue(value)}</span>
+      <span className="text-green-400">
+        {edBypass !== undefined ? formatEffectValue(bypassValue) : '—'}
+      </span>
     </div>
   );
 }
