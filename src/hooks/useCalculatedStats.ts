@@ -211,10 +211,11 @@ function convertToLegacyStats(
 export function useCharacterCalculation(): CharacterCalculationResult {
   const build = useBuildStore((state) => state.build);
   const exemplarMode = useUIStore((state) => state.exemplarMode);
+  const incarnateActive = useUIStore((state) => state.incarnateActive);
 
   return useMemo(() => {
-    return calculateCharacterTotals(build, exemplarMode);
-  }, [build, exemplarMode]);
+    return calculateCharacterTotals(build, exemplarMode, incarnateActive);
+  }, [build, exemplarMode, incarnateActive]);
 }
 
 /**
@@ -223,11 +224,12 @@ export function useCharacterCalculation(): CharacterCalculationResult {
 export function useCalculatedStats(): CalculatedStats {
   const build = useBuildStore((state) => state.build);
   const exemplarMode = useUIStore((state) => state.exemplarMode);
+  const incarnateActive = useUIStore((state) => state.incarnateActive);
 
   return useMemo(() => {
-    const result = calculateCharacterTotals(build, exemplarMode);
+    const result = calculateCharacterTotals(build, exemplarMode, incarnateActive);
     return convertToLegacyStats(result.stats, result);
-  }, [build, exemplarMode]);
+  }, [build, exemplarMode, incarnateActive]);
 }
 
 /**

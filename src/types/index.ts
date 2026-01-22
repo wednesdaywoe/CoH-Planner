@@ -107,6 +107,8 @@ export type {
   IncarnatePower,
   SelectedIncarnatePower,
   IncarnateBuildState,
+  IncarnateActiveState,
+  ToggleableIncarnateSlot,
 } from './incarnate';
 export {
   INCARNATE_SLOT_ORDER,
@@ -116,6 +118,7 @@ export {
   INCARNATE_TIER_COLORS,
   INCARNATE_TIER_NAMES,
   createEmptyIncarnateBuildState,
+  createDefaultIncarnateActiveState,
   inferTierFromPowerName,
   inferBranchFromPowerName,
 } from './incarnate';

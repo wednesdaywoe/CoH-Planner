@@ -3,9 +3,11 @@
  * Displayed after the Stats Dashboard, only active for level 50 characters
  */
 
+import { useCallback } from 'react';
 import { useBuildStore, useUIStore } from '@/stores';
-import { getAllIncarnateSlots } from '@/data';
+import { getAllIncarnateSlots, isToggleableIncarnateSlot } from '@/data';
 import { INCARNATE_SLOT_ORDER, INCARNATE_REQUIRED_LEVEL, createEmptyIncarnateBuildState } from '@/types';
+import type { ToggleableIncarnateSlot, IncarnateSlotId } from '@/types';
 import { IncarnateSlotButton } from './IncarnateSlotButton';
 import { IncarnateModal } from './IncarnateModal';
 
@@ -15,6 +17,9 @@ export function IncarnatePanel() {
   const incarnateModalOpen = useUIStore((s) => s.incarnateModalOpen);
   const openIncarnateModal = useUIStore((s) => s.openIncarnateModal);
   const closeIncarnateModal = useUIStore((s) => s.closeIncarnateModal);
+  const incarnateActive = useUIStore((s) => s.incarnateActive);
+  const toggleIncarnateActive = useUIStore((s) => s.toggleIncarnateActive);
+  const setInfoPanelContent = useUIStore((s) => s.setInfoPanelContent);
 
   // Handle migration case where incarnates might be undefined for old builds
   const incarnates = incarnatesRaw || createEmptyIncarnateBuildState();
@@ -24,6 +29,18 @@ export function IncarnatePanel() {
 
   // Count filled slots (safely handle undefined incarnates)
   const filledSlotCount = INCARNATE_SLOT_ORDER.filter((id) => incarnates?.[id] !== null).length;
+
+  // Handle incarnate hover for info panel
+  const handleIncarnateHover = useCallback(
+    (slotId: IncarnateSlotId, powerId: string | null) => {
+      if (powerId) {
+        setInfoPanelContent({ type: 'incarnate', slotId, powerId });
+      } else {
+        setInfoPanelContent(null);
+      }
+    },
+    [setInfoPanelContent]
+  );
 
   return (
     <>
@@ -41,16 +58,25 @@ export function IncarnatePanel() {
 
           {/* Slot buttons */}
           <div className="flex-1 flex items-center justify-center gap-3">
-            {slots.map((slot) => (
-              <IncarnateSlotButton
-                key={slot.id}
-                slotId={slot.id}
-                slotName={slot.displayName}
-                selectedPower={incarnates?.[slot.id] || null}
-                disabled={!isLevel50}
-                onClick={() => openIncarnateModal(slot.id)}
-              />
-            ))}
+            {slots.map((slot) => {
+              const isToggleable = isToggleableIncarnateSlot(slot.id);
+              const isActive = isToggleable
+                ? incarnateActive[slot.id as ToggleableIncarnateSlot]
+                : true;
+              return (
+                <IncarnateSlotButton
+                  key={slot.id}
+                  slotId={slot.id}
+                  slotName={slot.displayName}
+                  selectedPower={incarnates?.[slot.id] || null}
+                  disabled={!isLevel50}
+                  isActive={isActive}
+                  onToggleActive={toggleIncarnateActive}
+                  onHover={handleIncarnateHover}
+                  onClick={() => openIncarnateModal(slot.id)}
+                />
+              );
+            })}
           </div>
 
           {/* Clear all button */}

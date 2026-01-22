@@ -21,7 +21,10 @@ import type {
   EnhancementTier,
   IOSetRarity,
   IncarnateSlotId,
+  IncarnateActiveState,
+  ToggleableIncarnateSlot,
 } from '@/types';
+import { createDefaultIncarnateActiveState } from '@/types';
 
 // ============================================
 // UI STORE INTERFACE
@@ -81,6 +84,9 @@ interface UIState {
 
   /** Compact mode (for future use) */
   compactMode: boolean;
+
+  /** Incarnate active state - which incarnate slots are active for stat calculations */
+  incarnateActive: IncarnateActiveState;
 }
 
 interface UIActions {
@@ -149,6 +155,11 @@ interface UIActions {
   // Export/Import Modal
   openExportImportModal: () => void;
   closeExportImportModal: () => void;
+
+  // Incarnate Active State
+  toggleIncarnateActive: (slotId: ToggleableIncarnateSlot) => void;
+  setIncarnateActive: (slotId: ToggleableIncarnateSlot, active: boolean) => void;
+  resetIncarnateActive: () => void;
 }
 
 type UIStore = UIState & UIActions;
@@ -230,6 +241,7 @@ export const useUIStore = create<UIStore>()(
       tooltip: defaultTooltip,
       darkMode: true,
       compactMode: false,
+      incarnateActive: createDefaultIncarnateActiveState(),
 
       // Enhancement Picker Modal
       openEnhancementPicker: (powerName, powerSet, slotIndex) =>
@@ -542,6 +554,26 @@ export const useUIStore = create<UIStore>()(
 
       closeExportImportModal: () =>
         set({ exportImportModalOpen: false }),
+
+      // Incarnate Active State
+      toggleIncarnateActive: (slotId) =>
+        set((state) => ({
+          incarnateActive: {
+            ...state.incarnateActive,
+            [slotId]: !state.incarnateActive[slotId],
+          },
+        })),
+
+      setIncarnateActive: (slotId, active) =>
+        set((state) => ({
+          incarnateActive: {
+            ...state.incarnateActive,
+            [slotId]: active,
+          },
+        })),
+
+      resetIncarnateActive: () =>
+        set({ incarnateActive: createDefaultIncarnateActiveState() }),
     }),
     {
       name: 'coh-planner-ui',
@@ -556,6 +588,7 @@ export const useUIStore = create<UIStore>()(
         statsConfig: state.statsConfig,
         darkMode: state.darkMode,
         compactMode: state.compactMode,
+        incarnateActive: state.incarnateActive,
       }),
     })
   );
@@ -603,3 +636,10 @@ export const useIncarnateModal = () =>
     isOpen: state.incarnateModalOpen,
     currentSlot: state.currentIncarnateSlot,
   }));
+
+/** Select incarnate active state */
+export const useIncarnateActive = () => useUIStore((state) => state.incarnateActive);
+
+/** Select if a specific incarnate slot is active */
+export const useIsIncarnateSlotActive = (slotId: ToggleableIncarnateSlot) =>
+  useUIStore((state) => state.incarnateActive[slotId]);

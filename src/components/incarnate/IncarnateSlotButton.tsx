@@ -2,15 +2,18 @@
  * IncarnateSlotButton component - displays a single incarnate slot
  */
 
-import type { IncarnateSlotId, SelectedIncarnatePower } from '@/types';
+import type { IncarnateSlotId, SelectedIncarnatePower, ToggleableIncarnateSlot } from '@/types';
 import { INCARNATE_SLOT_COLORS, INCARNATE_TIER_COLORS } from '@/types';
-import { getIncarnateSlotIconPath, getIncarnateIconPath } from '@/data';
+import { getIncarnateSlotIconPath, getIncarnateIconPath, isToggleableIncarnateSlot } from '@/data';
 
 interface IncarnateSlotButtonProps {
   slotId: IncarnateSlotId;
   slotName: string;
   selectedPower: SelectedIncarnatePower | null;
   disabled?: boolean;
+  isActive?: boolean;
+  onToggleActive?: (slotId: ToggleableIncarnateSlot) => void;
+  onHover?: (slotId: IncarnateSlotId, powerId: string | null) => void;
   onClick: () => void;
 }
 
@@ -19,20 +22,38 @@ export function IncarnateSlotButton({
   slotName,
   selectedPower,
   disabled = false,
+  isActive = true,
+  onToggleActive,
+  onHover,
   onClick,
 }: IncarnateSlotButtonProps) {
   const slotColor = INCARNATE_SLOT_COLORS[slotId];
   const tierColor = selectedPower ? INCARNATE_TIER_COLORS[selectedPower.tier] : slotColor;
+  const canToggle = isToggleableIncarnateSlot(slotId) && selectedPower !== null;
 
   // Get icon path
   const iconPath = selectedPower
     ? getIncarnateIconPath(slotId, selectedPower.icon)
     : getIncarnateSlotIconPath(slotId);
 
+  const handleMouseEnter = () => {
+    if (selectedPower && onHover) {
+      onHover(slotId, selectedPower.powerId);
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (onHover) {
+      onHover(slotId, null);
+    }
+  };
+
   return (
     <button
       onClick={onClick}
       disabled={disabled}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
       className={`
         relative flex flex-col items-center gap-1 p-2 rounded-lg
         transition-all duration-200 min-w-[80px]
@@ -89,6 +110,30 @@ export function IncarnateSlotButton({
           style={{ backgroundColor: tierColor }}
           title={selectedPower.tier.charAt(0).toUpperCase() + selectedPower.tier.slice(1)}
         />
+      )}
+
+      {/* Active toggle for toggleable slots */}
+      {canToggle && onToggleActive && (
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            onToggleActive(slotId as ToggleableIncarnateSlot);
+          }}
+          className={`
+            absolute -bottom-1 left-1/2 -translate-x-1/2
+            w-8 h-3 rounded-full transition-colors duration-200
+            ${isActive ? 'bg-green-500' : 'bg-gray-600'}
+          `}
+          title={isActive ? 'Active - click to disable' : 'Inactive - click to enable'}
+        >
+          <span
+            className={`
+              absolute top-0.5 w-2 h-2 rounded-full bg-white
+              transition-transform duration-200
+              ${isActive ? 'translate-x-5' : 'translate-x-0.5'}
+            `}
+          />
+        </button>
       )}
     </button>
   );

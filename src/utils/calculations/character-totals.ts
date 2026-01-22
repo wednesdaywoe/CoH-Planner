@@ -12,8 +12,8 @@
  * - Global Bonuses → Dashboard Stats (with breakdown tracking)
  */
 
-import type { Build, Accolade, Enhancement } from '@/types';
-import { getIOSet } from '@/data';
+import type { Build, Accolade, Enhancement, IncarnateActiveState, IncarnateBuildState } from '@/types';
+import { getIOSet, getAlphaEffects, getDestinyEffects, getHybridEffects } from '@/data';
 import {
   calculateSetBonuses,
   getStatBreakdown,
@@ -97,7 +97,7 @@ export interface GlobalBonuses {
 export interface StatSource {
   name: string;
   value: number;
-  type: 'set-bonus' | 'active-power' | 'inherent' | 'enhancement' | 'accolade';
+  type: 'set-bonus' | 'active-power' | 'inherent' | 'enhancement' | 'accolade' | 'incarnate';
   setId?: string;
   pieces?: number;
   capped?: boolean; // True if this instance hit the Rule of 5 cap
@@ -569,6 +569,271 @@ function applyAccoladeBonuses(
 }
 
 // ============================================
+// INCARNATE PROCESSING
+// ============================================
+
+/**
+ * Apply bonuses from incarnate powers
+ * Alpha provides enhancement bonuses, Destiny/Hybrid provide direct stat bonuses
+ * Interface is proc-based and doesn't provide direct stats
+ */
+function applyIncarnateBonuses(
+  incarnates: IncarnateBuildState | undefined,
+  incarnateActive: IncarnateActiveState | undefined,
+  global: GlobalBonuses,
+  breakdown: Map<string, DashboardStatBreakdown>
+): void {
+  if (!incarnates) return;
+
+  // Default to all active if no active state provided
+  const active = incarnateActive || {
+    alpha: true,
+    destiny: true,
+    hybrid: true,
+    interface: true,
+  };
+
+  // Alpha - Enhancement bonuses (boost all powers)
+  // These are not direct stat bonuses but enhancement values
+  // We track them separately for display but don't add to global bonuses
+  // because they're applied through the enhancement calculation pipeline
+  if (incarnates.alpha && active.alpha) {
+    const alphaEffects = getAlphaEffects(incarnates.alpha.powerId);
+    if (alphaEffects) {
+      // Alpha bonuses are enhancement bonuses, displayed in tooltip but not as direct stats
+      // The main stats that could be shown on dashboard are:
+      // - Level shift (not a % bonus, just informational)
+      // For now, we'll note that alpha is active but these bonuses apply to power effectiveness
+      // not to the character's base stats directly
+    }
+  }
+
+  // Destiny - Direct stat bonuses (defense, resistance, regen, recovery, etc.)
+  // Note: These are initial/peak values since effects diminish over time
+  if (incarnates.destiny && active.destiny) {
+    const destinyEffects = getDestinyEffects(incarnates.destiny.powerId);
+    if (destinyEffects) {
+      const powerName = incarnates.destiny.displayName;
+
+      // Defense All
+      if (destinyEffects.defenseAll !== undefined) {
+        const value = destinyEffects.defenseAll * 100;
+        // Apply to all defense types
+        global.defMelee += value;
+        global.defRanged += value;
+        global.defAoE += value;
+        global.defSmashing += value;
+        global.defLethal += value;
+        global.defFire += value;
+        global.defCold += value;
+        global.defEnergy += value;
+        global.defNegative += value;
+        global.defPsionic += value;
+        global.defToxic += value;
+
+        addToBreakdown(breakdown, 'defAll', {
+          name: powerName,
+          value,
+          type: 'incarnate',
+        });
+      }
+
+      // Resistance All
+      if (destinyEffects.resistanceAll !== undefined) {
+        const value = destinyEffects.resistanceAll * 100;
+        global.resSmashing += value;
+        global.resLethal += value;
+        global.resFire += value;
+        global.resCold += value;
+        global.resEnergy += value;
+        global.resNegative += value;
+        global.resPsionic += value;
+        global.resToxic += value;
+
+        addToBreakdown(breakdown, 'resAll', {
+          name: powerName,
+          value,
+          type: 'incarnate',
+        });
+      }
+
+      // Regeneration
+      if (destinyEffects.regeneration !== undefined) {
+        const value = destinyEffects.regeneration * 100;
+        global.regeneration += value;
+        addToBreakdown(breakdown, 'regeneration', {
+          name: powerName,
+          value,
+          type: 'incarnate',
+        });
+      }
+
+      // Recovery
+      if (destinyEffects.recovery !== undefined) {
+        const value = destinyEffects.recovery * 100;
+        global.recovery += value;
+        addToBreakdown(breakdown, 'recovery', {
+          name: powerName,
+          value,
+          type: 'incarnate',
+        });
+      }
+
+      // Damage
+      if (destinyEffects.damage !== undefined) {
+        const value = destinyEffects.damage * 100;
+        global.damage += value;
+        addToBreakdown(breakdown, 'damage', {
+          name: powerName,
+          value,
+          type: 'incarnate',
+        });
+      }
+
+      // ToHit
+      if (destinyEffects.toHit !== undefined) {
+        const value = destinyEffects.toHit * 100;
+        global.toHit += value;
+        addToBreakdown(breakdown, 'toHit', {
+          name: powerName,
+          value,
+          type: 'incarnate',
+        });
+      }
+
+      // Recharge
+      if (destinyEffects.recharge !== undefined) {
+        const value = destinyEffects.recharge * 100;
+        global.recharge += value;
+        addToBreakdown(breakdown, 'recharge', {
+          name: powerName,
+          value,
+          type: 'incarnate',
+        });
+      }
+
+      // Max HP
+      if (destinyEffects.maxHP !== undefined) {
+        const value = destinyEffects.maxHP * 100;
+        global.maxHP += value;
+        addToBreakdown(breakdown, 'maxHP', {
+          name: powerName,
+          value,
+          type: 'incarnate',
+        });
+      }
+
+      // Max Endurance
+      if (destinyEffects.maxEndurance !== undefined) {
+        const value = destinyEffects.maxEndurance * 100;
+        global.maxEndurance += value;
+        addToBreakdown(breakdown, 'maxEndurance', {
+          name: powerName,
+          value,
+          type: 'incarnate',
+        });
+      }
+    }
+  }
+
+  // Hybrid - Direct stat bonuses when toggled on
+  if (incarnates.hybrid && active.hybrid) {
+    const hybridEffects = getHybridEffects(incarnates.hybrid.powerId);
+    if (hybridEffects) {
+      const powerName = incarnates.hybrid.displayName;
+
+      // Damage
+      if (hybridEffects.damage !== undefined) {
+        const value = hybridEffects.damage * 100;
+        global.damage += value;
+        addToBreakdown(breakdown, 'damage', {
+          name: powerName,
+          value,
+          type: 'incarnate',
+        });
+      }
+
+      // Defense (Support tree)
+      if (hybridEffects.defense !== undefined) {
+        const value = hybridEffects.defense * 100;
+        global.defMelee += value;
+        global.defRanged += value;
+        global.defAoE += value;
+        addToBreakdown(breakdown, 'defAll', {
+          name: powerName,
+          value,
+          type: 'incarnate',
+        });
+      }
+
+      // Defense All (Melee tree)
+      if (hybridEffects.defenseAll !== undefined) {
+        const value = hybridEffects.defenseAll * 100;
+        global.defMelee += value;
+        global.defRanged += value;
+        global.defAoE += value;
+        global.defSmashing += value;
+        global.defLethal += value;
+        global.defFire += value;
+        global.defCold += value;
+        global.defEnergy += value;
+        global.defNegative += value;
+        global.defPsionic += value;
+        global.defToxic += value;
+        addToBreakdown(breakdown, 'defAll', {
+          name: powerName,
+          value,
+          type: 'incarnate',
+        });
+      }
+
+      // Resistance All (Melee tree)
+      if (hybridEffects.resistanceAll !== undefined) {
+        const value = hybridEffects.resistanceAll * 100;
+        global.resSmashing += value;
+        global.resLethal += value;
+        global.resFire += value;
+        global.resCold += value;
+        global.resEnergy += value;
+        global.resNegative += value;
+        global.resPsionic += value;
+        global.resToxic += value;
+        addToBreakdown(breakdown, 'resAll', {
+          name: powerName,
+          value,
+          type: 'incarnate',
+        });
+      }
+
+      // Regeneration (Melee tree)
+      if (hybridEffects.regeneration !== undefined) {
+        const value = hybridEffects.regeneration * 100;
+        global.regeneration += value;
+        addToBreakdown(breakdown, 'regeneration', {
+          name: powerName,
+          value,
+          type: 'incarnate',
+        });
+      }
+
+      // Accuracy (Support tree)
+      if (hybridEffects.accuracy !== undefined) {
+        const value = hybridEffects.accuracy * 100;
+        global.accuracy += value;
+        addToBreakdown(breakdown, 'accuracy', {
+          name: powerName,
+          value,
+          type: 'incarnate',
+        });
+      }
+    }
+  }
+
+  // Interface - These are proc effects that debuff enemies, not player stats
+  // We don't add them to global bonuses, but they could be displayed in tooltips
+}
+
+// ============================================
 // CONVERT TO CHARACTER STATS
 // ============================================
 
@@ -682,10 +947,12 @@ function buildToBuildPowers(build: Build): BuildPowers {
  * @param build - The current build state
  * @param exemplarMode - When true, respects build level for set bonus suppression.
  *                       When false (default), always calculates as if at level 50.
+ * @param incarnateActive - Which incarnate slots are active for stat calculations
  */
 export function calculateCharacterTotals(
   build: Build,
-  exemplarMode = false
+  exemplarMode = false,
+  incarnateActive?: IncarnateActiveState
 ): CharacterCalculationResult {
   const breakdown = new Map<string, DashboardStatBreakdown>();
   const globalBonuses = createEmptyGlobalBonuses();
@@ -737,7 +1004,10 @@ export function calculateCharacterTotals(
     applyAccoladeBonuses(build.accolades, globalBonuses, breakdown);
   }
 
-  // Step 8: Convert to character stats format
+  // Step 8: Apply incarnate bonuses
+  applyIncarnateBonuses(build.incarnates, incarnateActive, globalBonuses, breakdown);
+
+  // Step 9: Convert to character stats format
   const stats = convertToCharacterStats(globalBonuses);
 
   // Update breakdown totals from final values

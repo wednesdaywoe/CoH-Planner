@@ -6,11 +6,36 @@
 
 import { useMemo } from 'react';
 import { useUIStore, useBuildStore } from '@/stores';
-import { getPower, getPowerPool, getArchetype, getIOSet, getPowerset, getPowerIconPath, getInherentPowerDef } from '@/data';
+import {
+  getPower,
+  getPowerPool,
+  getArchetype,
+  getIOSet,
+  getPowerset,
+  getPowerIconPath,
+  getInherentPowerDef,
+  getIncarnateIconPath,
+  getAlphaEffects,
+  getDestinyEffects,
+  getHybridEffects,
+  getInterfaceEffects,
+  formatEffectValue,
+  isToggleableIncarnateSlot,
+} from '@/data';
 import { useGlobalBonuses } from '@/hooks/useCalculatedStats';
 import { calculatePowerEnhancementBonuses, calculatePowerDamage, type EnhancementBonuses } from '@/utils/calculations';
 import { resolvePath } from '@/utils/paths';
-import type { DefenseByType, ResistanceByType, ProtectionEffects, ArchetypeId, SelectedPower, Power } from '@/types';
+import type {
+  DefenseByType,
+  ResistanceByType,
+  ProtectionEffects,
+  ArchetypeId,
+  SelectedPower,
+  Power,
+  IncarnateSlotId,
+  ToggleableIncarnateSlot,
+} from '@/types';
+import { INCARNATE_SLOT_COLORS, INCARNATE_TIER_COLORS, INCARNATE_TIER_NAMES } from '@/types';
 
 // Base value for buff/debuff effects (per scale point at modifier 1.0)
 // Formula: scale × BASE × archetypeModifier
@@ -89,6 +114,10 @@ export function InfoPanel() {
 
       {content.type === 'enhancement' && (
         <EnhancementInfo enhancementId={content.enhancementId} />
+      )}
+
+      {content.type === 'incarnate' && (
+        <IncarnateInfo slotId={content.slotId as IncarnateSlotId} powerId={content.powerId} />
       )}
     </div>
   );
@@ -837,6 +866,309 @@ function EnhancementInfo({ enhancementId }: EnhancementInfoProps) {
   return (
     <div className="text-slate-500 text-xs">
       Enhancement: {enhancementId}
+    </div>
+  );
+}
+
+// ============================================
+// INCARNATE INFO
+// ============================================
+
+interface IncarnateInfoProps {
+  slotId: IncarnateSlotId;
+  powerId: string;
+}
+
+function IncarnateInfo({ slotId, powerId }: IncarnateInfoProps) {
+  const build = useBuildStore((s) => s.build);
+  const incarnateActive = useUIStore((s) => s.incarnateActive);
+
+  const selectedPower = build.incarnates?.[slotId];
+  if (!selectedPower) {
+    return (
+      <div className="text-slate-500 text-xs">
+        No incarnate power selected for this slot.
+      </div>
+    );
+  }
+
+  const slotColor = INCARNATE_SLOT_COLORS[slotId];
+  const tierColor = INCARNATE_TIER_COLORS[selectedPower.tier];
+  const tierName = INCARNATE_TIER_NAMES[selectedPower.tier];
+  const isToggleable = isToggleableIncarnateSlot(slotId);
+  const isActive = isToggleable ? incarnateActive[slotId as ToggleableIncarnateSlot] : false;
+  const iconPath = getIncarnateIconPath(slotId, selectedPower.icon);
+
+  // Get the effects based on slot type
+  const alphaEffects = slotId === 'alpha' ? getAlphaEffects(powerId) : null;
+  const destinyEffects = slotId === 'destiny' ? getDestinyEffects(powerId) : null;
+  const hybridEffects = slotId === 'hybrid' ? getHybridEffects(powerId) : null;
+  const interfaceEffects = slotId === 'interface' ? getInterfaceEffects(powerId) : null;
+
+  return (
+    <div className="space-y-2">
+      {/* Header */}
+      <div className="flex items-start gap-2">
+        <div
+          className="w-10 h-10 rounded-md overflow-hidden flex-shrink-0"
+          style={{
+            boxShadow: `0 0 6px ${tierColor}60`,
+            border: `2px solid ${tierColor}`,
+          }}
+        >
+          <img
+            src={iconPath}
+            alt={selectedPower.displayName}
+            className="w-full h-full object-cover"
+            onError={(e) => {
+              (e.target as HTMLImageElement).src = resolvePath('/img/Unknown.png');
+            }}
+          />
+        </div>
+        <div className="min-w-0 flex-1">
+          <h3 className="text-sm font-semibold leading-tight" style={{ color: slotColor }}>
+            {selectedPower.displayName}
+          </h3>
+          <div className="flex items-center gap-2 mt-0.5">
+            <span className="text-[10px] text-slate-400 capitalize">{slotId}</span>
+            <span className="text-[10px]" style={{ color: tierColor }}>
+              {tierName}
+            </span>
+          </div>
+          {isToggleable && (
+            <div className={`text-[9px] mt-0.5 ${isActive ? 'text-green-400' : 'text-gray-500'}`}>
+              {isActive ? 'Active - bonuses applied' : 'Inactive - bonuses not applied'}
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* Tree info */}
+      <div className="text-[10px] text-slate-400">
+        Tree: <span className="text-slate-300">{selectedPower.treeName}</span>
+      </div>
+
+      {/* Alpha Effects (Enhancement bonuses) */}
+      {alphaEffects && (
+        <div>
+          <h4 className="text-[9px] font-semibold text-slate-500 uppercase tracking-wide mb-1">
+            Enhancement Bonuses
+          </h4>
+          <div className="bg-slate-800/50 rounded p-2 space-y-0.5">
+            {alphaEffects.damage !== undefined && (
+              <IncarnateEffectRow label="Damage" value={alphaEffects.damage} colorClass="text-red-400" />
+            )}
+            {alphaEffects.accuracy !== undefined && (
+              <IncarnateEffectRow label="Accuracy" value={alphaEffects.accuracy} colorClass="text-yellow-400" />
+            )}
+            {alphaEffects.recharge !== undefined && (
+              <IncarnateEffectRow label="Recharge" value={alphaEffects.recharge} colorClass="text-cyan-400" />
+            )}
+            {alphaEffects.enduranceReduction !== undefined && (
+              <IncarnateEffectRow label="End Reduction" value={alphaEffects.enduranceReduction} colorClass="text-blue-400" />
+            )}
+            {alphaEffects.heal !== undefined && (
+              <IncarnateEffectRow label="Heal" value={alphaEffects.heal} colorClass="text-green-400" />
+            )}
+            {alphaEffects.defense !== undefined && (
+              <IncarnateEffectRow label="Defense" value={alphaEffects.defense} colorClass="text-purple-400" />
+            )}
+            {alphaEffects.resistance !== undefined && (
+              <IncarnateEffectRow label="Resistance" value={alphaEffects.resistance} colorClass="text-orange-400" />
+            )}
+            {alphaEffects.range !== undefined && (
+              <IncarnateEffectRow label="Range" value={alphaEffects.range} colorClass="text-slate-300" />
+            )}
+            {alphaEffects.hold !== undefined && (
+              <IncarnateEffectRow label="Hold" value={alphaEffects.hold} colorClass="text-purple-400" />
+            )}
+            {alphaEffects.stun !== undefined && (
+              <IncarnateEffectRow label="Stun" value={alphaEffects.stun} colorClass="text-purple-400" />
+            )}
+            {alphaEffects.immobilize !== undefined && (
+              <IncarnateEffectRow label="Immobilize" value={alphaEffects.immobilize} colorClass="text-purple-400" />
+            )}
+            {alphaEffects.toHitBuff !== undefined && (
+              <IncarnateEffectRow label="ToHit Buff" value={alphaEffects.toHitBuff} colorClass="text-yellow-400" />
+            )}
+            {alphaEffects.toHitDebuff !== undefined && (
+              <IncarnateEffectRow label="ToHit Debuff" value={alphaEffects.toHitDebuff} colorClass="text-yellow-400" />
+            )}
+            {alphaEffects.defenseDebuff !== undefined && (
+              <IncarnateEffectRow label="Defense Debuff" value={alphaEffects.defenseDebuff} colorClass="text-purple-400" />
+            )}
+            {alphaEffects.levelShift !== undefined && alphaEffects.levelShift > 0 && (
+              <div className="flex justify-between text-xs">
+                <span className="text-amber-400">Level Shift</span>
+                <span className="text-amber-400">+{alphaEffects.levelShift}</span>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* Destiny Effects (Direct stat bonuses) */}
+      {destinyEffects && (
+        <div>
+          <h4 className="text-[9px] font-semibold text-slate-500 uppercase tracking-wide mb-1">
+            Buff Effects <span className="text-slate-600 font-normal">(initial values)</span>
+          </h4>
+          <div className="bg-slate-800/50 rounded p-2 space-y-0.5">
+            {destinyEffects.defenseAll !== undefined && (
+              <IncarnateEffectRow label="Defense (All)" value={destinyEffects.defenseAll} colorClass="text-purple-400" />
+            )}
+            {destinyEffects.resistanceAll !== undefined && (
+              <IncarnateEffectRow label="Resistance (All)" value={destinyEffects.resistanceAll} colorClass="text-orange-400" />
+            )}
+            {destinyEffects.regeneration !== undefined && (
+              <IncarnateEffectRow label="Regeneration" value={destinyEffects.regeneration} colorClass="text-green-400" />
+            )}
+            {destinyEffects.recovery !== undefined && (
+              <IncarnateEffectRow label="Recovery" value={destinyEffects.recovery} colorClass="text-blue-400" />
+            )}
+            {destinyEffects.damage !== undefined && (
+              <IncarnateEffectRow label="Damage" value={destinyEffects.damage} colorClass="text-red-400" />
+            )}
+            {destinyEffects.toHit !== undefined && (
+              <IncarnateEffectRow label="ToHit" value={destinyEffects.toHit} colorClass="text-yellow-400" />
+            )}
+            {destinyEffects.recharge !== undefined && (
+              <IncarnateEffectRow label="Recharge" value={destinyEffects.recharge} colorClass="text-cyan-400" />
+            )}
+            {destinyEffects.healPercent !== undefined && (
+              <IncarnateEffectRow label="Heal" value={destinyEffects.healPercent} colorClass="text-green-400" />
+            )}
+            {destinyEffects.mezProtection !== undefined && (
+              <div className="flex justify-between text-xs">
+                <span className="text-purple-400">Mez Protection</span>
+                <span className="text-purple-400">Mag {destinyEffects.mezProtection}</span>
+              </div>
+            )}
+            {destinyEffects.levelShift !== undefined && destinyEffects.levelShift > 0 && (
+              <div className="flex justify-between text-xs">
+                <span className="text-amber-400">Level Shift</span>
+                <span className="text-amber-400">+{destinyEffects.levelShift}</span>
+              </div>
+            )}
+          </div>
+          {destinyEffects.initialDuration !== undefined && (
+            <div className="text-[9px] text-slate-500 mt-1">
+              Duration: {destinyEffects.initialDuration}s peak / {destinyEffects.totalDuration}s total
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* Hybrid Effects */}
+      {hybridEffects && (
+        <div>
+          <h4 className="text-[9px] font-semibold text-slate-500 uppercase tracking-wide mb-1">
+            Toggle Effects
+          </h4>
+          <div className="bg-slate-800/50 rounded p-2 space-y-0.5">
+            {hybridEffects.damage !== undefined && (
+              <IncarnateEffectRow label="Damage" value={hybridEffects.damage} colorClass="text-red-400" />
+            )}
+            {hybridEffects.damageProc !== undefined && (
+              <IncarnateEffectRow label="Damage Proc" value={hybridEffects.damageProc} colorClass="text-red-400" suffix=" chance" />
+            )}
+            {hybridEffects.doublehitChance !== undefined && (
+              <IncarnateEffectRow label="Double Hit" value={hybridEffects.doublehitChance} colorClass="text-red-400" suffix=" chance" />
+            )}
+            {hybridEffects.defense !== undefined && (
+              <IncarnateEffectRow label="Defense" value={hybridEffects.defense} colorClass="text-purple-400" />
+            )}
+            {hybridEffects.defenseAll !== undefined && (
+              <IncarnateEffectRow label="Defense (All)" value={hybridEffects.defenseAll} colorClass="text-purple-400" />
+            )}
+            {hybridEffects.resistanceAll !== undefined && (
+              <IncarnateEffectRow label="Resistance (All)" value={hybridEffects.resistanceAll} colorClass="text-orange-400" />
+            )}
+            {hybridEffects.regeneration !== undefined && (
+              <IncarnateEffectRow label="Regeneration" value={hybridEffects.regeneration} colorClass="text-green-400" />
+            )}
+            {hybridEffects.accuracy !== undefined && (
+              <IncarnateEffectRow label="Accuracy" value={hybridEffects.accuracy} colorClass="text-yellow-400" />
+            )}
+            {hybridEffects.statusProtection !== undefined && (
+              <div className="flex justify-between text-xs">
+                <span className="text-purple-400">Status Protection</span>
+                <span className="text-purple-400">Mag {hybridEffects.statusProtection}</span>
+              </div>
+            )}
+            {hybridEffects.mezMagnitudeBonus !== undefined && hybridEffects.mezMagnitudeBonus > 0 && (
+              <div className="flex justify-between text-xs">
+                <span className="text-purple-400">Mez Magnitude</span>
+                <span className="text-purple-400">+{hybridEffects.mezMagnitudeBonus}</span>
+              </div>
+            )}
+          </div>
+          {hybridEffects.duration !== undefined && (
+            <div className="text-[9px] text-slate-500 mt-1">
+              Duration: {hybridEffects.duration}s / Recharge: {hybridEffects.recharge}s
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* Interface Effects (Proc-based) */}
+      {interfaceEffects && (
+        <div>
+          <h4 className="text-[9px] font-semibold text-slate-500 uppercase tracking-wide mb-1">
+            Proc Effects
+          </h4>
+          <div className="bg-slate-800/50 rounded p-2 space-y-0.5">
+            {interfaceEffects.debuffType && (
+              <div className="flex justify-between text-xs">
+                <span className="text-slate-400">Debuff</span>
+                <span className="text-orange-400">{interfaceEffects.debuffType}</span>
+              </div>
+            )}
+            {interfaceEffects.debuffMagnitude !== undefined && (
+              <IncarnateEffectRow label="Magnitude" value={interfaceEffects.debuffMagnitude} colorClass="text-orange-400" />
+            )}
+            {interfaceEffects.dotType && (
+              <div className="flex justify-between text-xs">
+                <span className="text-slate-400">DoT Type</span>
+                <span className="text-red-400">{interfaceEffects.dotType}</span>
+              </div>
+            )}
+            {interfaceEffects.dotDamage !== undefined && (
+              <IncarnateEffectRow label="DoT Damage" value={interfaceEffects.dotDamage} colorClass="text-red-400" suffix=" scale" />
+            )}
+            {interfaceEffects.procChance !== undefined && (
+              <IncarnateEffectRow label="Proc Chance" value={interfaceEffects.procChance} colorClass="text-cyan-400" />
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* Judgement/Lore note - no stat effects */}
+      {(slotId === 'judgement' || slotId === 'lore') && (
+        <div className="text-[10px] text-slate-500 italic">
+          {slotId === 'judgement' && 'Judgement powers deal AoE damage when activated.'}
+          {slotId === 'lore' && 'Lore powers summon pets to fight alongside you.'}
+        </div>
+      )}
+    </div>
+  );
+}
+
+function IncarnateEffectRow({
+  label,
+  value,
+  colorClass,
+  suffix = '',
+}: {
+  label: string;
+  value: number;
+  colorClass: string;
+  suffix?: string;
+}) {
+  return (
+    <div className="flex justify-between text-xs">
+      <span className="text-slate-400">{label}</span>
+      <span className={colorClass}>{formatEffectValue(value)}{suffix}</span>
     </div>
   );
 }

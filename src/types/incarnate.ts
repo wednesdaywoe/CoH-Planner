@@ -101,6 +101,22 @@ export interface IncarnateBuildState {
   hybrid: SelectedIncarnatePower | null;
 }
 
+/**
+ * Active state for incarnate slots that provide stat bonuses
+ * Alpha, Destiny, Hybrid, Interface can be toggled on/off for dashboard calculations
+ */
+export interface IncarnateActiveState {
+  alpha: boolean;
+  destiny: boolean;
+  hybrid: boolean;
+  interface: boolean;
+}
+
+/**
+ * Slots that can be toggled for stat calculations
+ */
+export type ToggleableIncarnateSlot = 'alpha' | 'destiny' | 'hybrid' | 'interface';
+
 // ============================================
 // CONSTANTS
 // ============================================
@@ -179,6 +195,18 @@ export function createEmptyIncarnateBuildState(): IncarnateBuildState {
     destiny: null,
     lore: null,
     hybrid: null,
+  };
+}
+
+/**
+ * Create default incarnate active state (all enabled by default)
+ */
+export function createDefaultIncarnateActiveState(): IncarnateActiveState {
+  return {
+    alpha: true,
+    destiny: true,
+    hybrid: true,
+    interface: true,
   };
 }
 
