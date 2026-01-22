@@ -181,3 +181,10 @@ export type {
   InterfaceEffects,
   IncarnatePowerEffects,
 } from './incarnate-effects';
+
+// Support power effects (curated data for heals, buffs, debuffs)
+export {
+  SUPPORT_POWER_EFFECTS,
+  getSupportPowerEffects,
+  mergeWithSupportEffects,
+} from './support-power-effects';

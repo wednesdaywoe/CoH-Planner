@@ -21,6 +21,7 @@ import {
   getInterfaceEffects,
   formatEffectValue,
   isToggleableIncarnateSlot,
+  mergeWithSupportEffects,
 } from '@/data';
 import { useGlobalBonuses } from '@/hooks/useCalculatedStats';
 import { calculatePowerEnhancementBonuses, calculatePowerDamage, type EnhancementBonuses } from '@/utils/calculations';
@@ -380,7 +381,8 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
     return <div className="text-slate-500 text-xs">Power not found</div>;
   }
 
-  const effects = power.effects;
+  // Merge raw power effects with curated support power data
+  const effects = mergeWithSupportEffects(power.effects, powerSet, power.name);
 
   // Get archetype modifier for buff/debuff calculations
   const archetype = archetypeId ? getArchetype(archetypeId as ArchetypeId) : null;
@@ -507,6 +509,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
           (allowed.has('Range') && effects?.range && effects.range > 0) ||
           // Debuffs
           effects?.tohitDebuff || effects?.defenseDebuff || effects?.resistanceDebuff ||
+          effects?.damageDebuff || effects?.regenDebuff || effects?.recoveryDebuff || effects?.slow ||
           // Buffs
           effects?.tohitBuff || effects?.damageBuff || effects?.defenseBuff ||
           effects?.rechargeBuff || effects?.speedBuff || effects?.recoveryBuff || effects?.enduranceBuff ||
@@ -657,6 +660,38 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
                 {...calcThreeTier('resistanceDebuff', calculateBuffDebuffValue(effects.resistanceDebuff, effectiveMod))}
                 format="percent"
                 colorClass="text-orange-400"
+              />
+            )}
+            {effects?.damageDebuff && (
+              <ThreeTierStatRow
+                label="-Damage"
+                {...calcThreeTier('damageDebuff', calculateBuffDebuffValue(effects.damageDebuff, effectiveMod))}
+                format="percent"
+                colorClass="text-red-400"
+              />
+            )}
+            {effects?.regenDebuff && (
+              <ThreeTierStatRow
+                label="-Regen"
+                {...calcThreeTier('regenDebuff', calculateBuffDebuffValue(effects.regenDebuff, effectiveMod))}
+                format="percent"
+                colorClass="text-green-400"
+              />
+            )}
+            {effects?.recoveryDebuff && (
+              <ThreeTierStatRow
+                label="-Recovery"
+                {...calcThreeTier('recoveryDebuff', calculateBuffDebuffValue(effects.recoveryDebuff, effectiveMod))}
+                format="percent"
+                colorClass="text-blue-400"
+              />
+            )}
+            {effects?.slow && (
+              <ThreeTierStatRow
+                label="-Speed"
+                {...calcThreeTier('slow', effects.slow)}
+                format="percent"
+                colorClass="text-cyan-400"
               />
             )}
           </div>

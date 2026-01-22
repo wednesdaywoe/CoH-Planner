@@ -167,12 +167,20 @@ export interface PowerEffects {
   enduranceBuff?: number;
 
   // === DEBUFF EFFECTS ===
-  /** ToHit debuff value */
+  /** ToHit debuff value (scale) */
   tohitDebuff?: number;
-  /** Defense debuff value */
+  /** Defense debuff value (scale) */
   defenseDebuff?: number;
-  /** Resistance debuff value */
+  /** Resistance debuff value (scale) */
   resistanceDebuff?: number;
+  /** Damage debuff value (scale) - reduces enemy damage output */
+  damageDebuff?: number;
+  /** Regeneration debuff value (scale) */
+  regenDebuff?: number;
+  /** Recovery debuff value (scale) */
+  recoveryDebuff?: number;
+  /** Movement/speed debuff (slow) value (percentage as decimal, e.g., 0.50 = 50% slow) */
+  slow?: number;
 
   // === DEFENSE & RESISTANCE (armor sets) ===
   /** Defense values by damage type */
