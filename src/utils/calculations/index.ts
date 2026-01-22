@@ -98,6 +98,7 @@ export {
   calculateCharacterTotals,
   getBreakdownForStat,
   hasStatBonuses,
+  getAlphaEnhancementBonuses,
   type GlobalBonuses as CharacterGlobalBonuses,
   type StatSource,
   type DashboardStatBreakdown,

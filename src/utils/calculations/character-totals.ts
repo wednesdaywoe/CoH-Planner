@@ -351,19 +351,21 @@ interface PowerWithToggle {
 /**
  * Apply bonuses from active toggle powers
  * Enhancement bonuses are now factored in to boost the base power values
+ * Alpha incarnate bonuses are added to the enhancement bonuses for applicable aspects
  */
 function applyActivePowerBonuses(
   powers: PowerWithToggle[],
   global: GlobalBonuses,
   breakdown: Map<string, DashboardStatBreakdown>,
-  buildLevel: number
+  buildLevel: number,
+  alphaBonuses: EnhancementBonuses = {}
 ): void {
   for (const power of powers) {
     if (!power.isActive || !power.effects) continue;
 
     const effects = power.effects;
 
-    // Calculate enhancement bonuses for this power
+    // Calculate enhancement bonuses for this power from slotted enhancements
     let enhBonuses: EnhancementBonuses = {};
     if (power.slots && power.slots.length > 0) {
       enhBonuses = calculatePowerEnhancementBonuses(
@@ -371,6 +373,14 @@ function applyActivePowerBonuses(
         buildLevel,
         getIOSet
       );
+    }
+
+    // Add Alpha incarnate enhancement bonuses (these apply universally to all powers)
+    // Alpha bonuses are additive with slotted enhancement bonuses
+    for (const [aspect, value] of Object.entries(alphaBonuses)) {
+      if (value !== undefined) {
+        enhBonuses[aspect] = (enhBonuses[aspect] || 0) + value;
+      }
     }
 
     // ToHit buff (stored as decimal, convert to percentage)
@@ -573,6 +583,55 @@ function applyAccoladeBonuses(
 // ============================================
 
 /**
+ * Extract Alpha incarnate effects as enhancement bonuses
+ * These bonuses apply to ALL powers that accept the corresponding enhancement type
+ * Returns a map of enhancement aspect to bonus value (as decimal, e.g., 0.33 = 33%)
+ */
+export function getAlphaEnhancementBonuses(
+  incarnates: IncarnateBuildState | undefined,
+  incarnateActive: IncarnateActiveState | undefined
+): EnhancementBonuses {
+  if (!incarnates?.alpha) return {};
+
+  // Check if alpha is active
+  const active = incarnateActive || { alpha: true, destiny: true, hybrid: true, interface: true };
+  if (!active.alpha) return {};
+
+  const alphaEffects = getAlphaEffects(incarnates.alpha.powerId);
+  if (!alphaEffects) return {};
+
+  // Convert AlphaEffects to EnhancementBonuses format
+  const bonuses: EnhancementBonuses = {};
+
+  // Map alpha effect keys to enhancement bonus keys
+  if (alphaEffects.damage !== undefined) bonuses.damage = alphaEffects.damage;
+  if (alphaEffects.accuracy !== undefined) bonuses.accuracy = alphaEffects.accuracy;
+  if (alphaEffects.recharge !== undefined) bonuses.recharge = alphaEffects.recharge;
+  if (alphaEffects.enduranceReduction !== undefined) bonuses.endurance = alphaEffects.enduranceReduction;
+  if (alphaEffects.range !== undefined) bonuses.range = alphaEffects.range;
+  if (alphaEffects.heal !== undefined) bonuses.heal = alphaEffects.heal;
+  if (alphaEffects.defense !== undefined) bonuses.defense = alphaEffects.defense;
+  if (alphaEffects.resistance !== undefined) bonuses.resistance = alphaEffects.resistance;
+  if (alphaEffects.hold !== undefined) bonuses.hold = alphaEffects.hold;
+  if (alphaEffects.stun !== undefined) bonuses.stun = alphaEffects.stun;
+  if (alphaEffects.immobilize !== undefined) bonuses.immobilize = alphaEffects.immobilize;
+  if (alphaEffects.sleep !== undefined) bonuses.sleep = alphaEffects.sleep;
+  if (alphaEffects.fear !== undefined) bonuses.fear = alphaEffects.fear;
+  if (alphaEffects.confuse !== undefined) bonuses.confuse = alphaEffects.confuse;
+  if (alphaEffects.slow !== undefined) bonuses.slow = alphaEffects.slow;
+  if (alphaEffects.toHitDebuff !== undefined) bonuses.tohitDebuff = alphaEffects.toHitDebuff;
+  if (alphaEffects.defenseDebuff !== undefined) bonuses.defenseDebuff = alphaEffects.defenseDebuff;
+  if (alphaEffects.toHitBuff !== undefined) bonuses.tohit = alphaEffects.toHitBuff;
+  if (alphaEffects.taunt !== undefined) bonuses.taunt = alphaEffects.taunt;
+  if (alphaEffects.runSpeed !== undefined) bonuses.runSpeed = alphaEffects.runSpeed;
+  if (alphaEffects.jumpSpeed !== undefined) bonuses.jumpSpeed = alphaEffects.jumpSpeed;
+  if (alphaEffects.flySpeed !== undefined) bonuses.flySpeed = alphaEffects.flySpeed;
+  if (alphaEffects.absorb !== undefined) bonuses.absorb = alphaEffects.absorb;
+
+  return bonuses;
+}
+
+/**
  * Apply bonuses from incarnate powers
  * Alpha provides enhancement bonuses, Destiny/Hybrid provide direct stat bonuses
  * Interface is proc-based and doesn't provide direct stats
@@ -593,20 +652,9 @@ function applyIncarnateBonuses(
     interface: true,
   };
 
-  // Alpha - Enhancement bonuses (boost all powers)
-  // These are not direct stat bonuses but enhancement values
-  // We track them separately for display but don't add to global bonuses
-  // because they're applied through the enhancement calculation pipeline
-  if (incarnates.alpha && active.alpha) {
-    const alphaEffects = getAlphaEffects(incarnates.alpha.powerId);
-    if (alphaEffects) {
-      // Alpha bonuses are enhancement bonuses, displayed in tooltip but not as direct stats
-      // The main stats that could be shown on dashboard are:
-      // - Level shift (not a % bonus, just informational)
-      // For now, we'll note that alpha is active but these bonuses apply to power effectiveness
-      // not to the character's base stats directly
-    }
-  }
+  // Alpha - Enhancement bonuses are handled separately via getAlphaEnhancementBonuses()
+  // They are applied in applyActivePowerBonuses() to boost power effectiveness
+  // The dashboard doesn't show enhancement % directly, but the effect shows in toggle power stats
 
   // Destiny - Direct stat bonuses (defense, resistance, regen, recovery, etc.)
   // Note: These are initial/peak values since effects diminish over time
@@ -996,18 +1044,22 @@ export function calculateCharacterTotals(
   // Note: Inherent powers would need to be added to the build state
   // For now, we skip this as they're not in the current build structure
 
-  // Step 6: Apply active toggle power bonuses (with enhancement multipliers)
-  applyActivePowerBonuses(allPowers, globalBonuses, breakdown, effectiveLevel);
+  // Step 6: Get Alpha incarnate enhancement bonuses (apply to all powers)
+  const alphaBonuses = getAlphaEnhancementBonuses(build.incarnates, incarnateActive);
 
-  // Step 7: Apply accolade bonuses
+  // Step 7: Apply active toggle power bonuses (with enhancement multipliers + Alpha bonuses)
+  applyActivePowerBonuses(allPowers, globalBonuses, breakdown, effectiveLevel, alphaBonuses);
+
+  // Step 8: Apply accolade bonuses
   if (build.accolades && build.accolades.length > 0) {
     applyAccoladeBonuses(build.accolades, globalBonuses, breakdown);
   }
 
-  // Step 8: Apply incarnate bonuses
+  // Step 9: Apply incarnate bonuses (Destiny, Hybrid - direct stats)
+  // Note: Alpha bonuses were already applied in Step 7 as enhancement bonuses
   applyIncarnateBonuses(build.incarnates, incarnateActive, globalBonuses, breakdown);
 
-  // Step 9: Convert to character stats format
+  // Step 10: Convert to character stats format
   const stats = convertToCharacterStats(globalBonuses);
 
   // Update breakdown totals from final values

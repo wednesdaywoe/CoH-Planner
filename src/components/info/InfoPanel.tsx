@@ -24,7 +24,7 @@ import {
   mergeWithSupportEffects,
 } from '@/data';
 import { useGlobalBonuses } from '@/hooks/useCalculatedStats';
-import { calculatePowerEnhancementBonuses, calculatePowerDamage, type EnhancementBonuses } from '@/utils/calculations';
+import { calculatePowerEnhancementBonuses, calculatePowerDamage, getAlphaEnhancementBonuses, type EnhancementBonuses } from '@/utils/calculations';
 import { resolvePath } from '@/utils/paths';
 import type {
   DefenseByType,
@@ -243,6 +243,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
   const build = useBuildStore((s) => s.build);
   const archetypeId = build.archetype.id;
   const globalBonuses = useGlobalBonuses();
+  const incarnateActive = useUIStore((s) => s.incarnateActive);
 
   // Try to get power from powerset first, then from pools, then from inherents
   let power: Power | undefined = getPower(powerSet, powerName);
@@ -329,15 +330,32 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
 
   const selectedPower = findSelectedPower();
 
-  // Calculate enhancement bonuses if power is slotted
+  // Get Alpha incarnate enhancement bonuses (apply to all powers)
+  const alphaBonuses = useMemo<EnhancementBonuses>(() => {
+    return getAlphaEnhancementBonuses(build.incarnates, incarnateActive);
+  }, [build.incarnates, incarnateActive]);
+
+  // Calculate enhancement bonuses if power is slotted, plus Alpha bonuses
   const enhancementBonuses = useMemo<EnhancementBonuses>(() => {
-    if (!selectedPower?.slots) return {};
-    return calculatePowerEnhancementBonuses(
-      { name: selectedPower.name, slots: selectedPower.slots },
-      build.level,
-      getIOSet
-    );
-  }, [selectedPower, build.level]);
+    // Start with slotted enhancement bonuses
+    let bonuses: EnhancementBonuses = {};
+    if (selectedPower?.slots) {
+      bonuses = calculatePowerEnhancementBonuses(
+        { name: selectedPower.name, slots: selectedPower.slots },
+        build.level,
+        getIOSet
+      );
+    }
+
+    // Add Alpha incarnate bonuses (these apply universally to all powers)
+    for (const [aspect, value] of Object.entries(alphaBonuses)) {
+      if (value !== undefined) {
+        bonuses[aspect] = (bonuses[aspect] || 0) + value;
+      }
+    }
+
+    return bonuses;
+  }, [selectedPower, build.level, alphaBonuses]);
 
   // Convert global bonuses to the format expected by power stats
   const globalBonusesForCalc = useMemo(() => ({
