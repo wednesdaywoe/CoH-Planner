@@ -173,12 +173,10 @@ export function AvailablePowers({
             const isLocked = isPowerLocked(power.name);
 
             return (
-              <button
+              <div
                 key={power.name}
-                onClick={() => !isDisabled && onSelectPower(power)}
                 onMouseEnter={() => handlePowerHover(power)}
                 onContextMenu={(e) => handlePowerRightClick(e, power)}
-                disabled={isDisabled}
                 title={isLocked ? 'Right-click to unlock power info' : 'Right-click to lock power info'}
                 className={`
                   w-full flex items-center gap-1.5 px-1.5 py-0.5 rounded-sm
@@ -193,6 +191,15 @@ export function AvailablePowers({
                           : 'bg-slate-800 border border-slate-700 hover:border-blue-500 cursor-pointer'
                   }
                 `}
+                onClick={() => !isDisabled && onSelectPower(power)}
+                role="button"
+                tabIndex={isDisabled ? -1 : 0}
+                onKeyDown={(e) => {
+                  if (!isDisabled && (e.key === 'Enter' || e.key === ' ')) {
+                    e.preventDefault();
+                    onSelectPower(power);
+                  }
+                }}
               >
                 <img
                   src={powerset ? getPowerIconPath(powerset.name, power.icon) : resolvePath('/img/Unknown.png')}
@@ -213,7 +220,7 @@ export function AvailablePowers({
                 >
                   L{power.available + 1}
                 </span>
-              </button>
+              </div>
             );
           })}
         </div>

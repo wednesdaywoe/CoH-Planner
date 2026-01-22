@@ -85,11 +85,13 @@ export function SelectedPowers({ category }: SelectedPowersProps) {
 
   const handlePowerHover = (power: SelectedPower) => {
     // Always update hover content - tooltip uses this even when panel is locked
-    if (powersetId) {
+    // Use power.powerSet to ensure we look up from the correct powerset
+    const powerPowerSet = power.powerSet || powersetId;
+    if (powerPowerSet) {
       setInfoPanelContent({
         type: 'power',
         powerName: power.name,
-        powerSet: powersetId,
+        powerSet: powerPowerSet,
       });
     }
   };
@@ -114,7 +116,9 @@ export function SelectedPowers({ category }: SelectedPowersProps) {
 
   const handlePowerRightClick = (e: React.MouseEvent, power: SelectedPower) => {
     e.preventDefault();
-    if (!powersetId) return;
+    // Use power.powerSet to ensure we look up from the correct powerset
+    const powerPowerSet = power.powerSet || powersetId;
+    if (!powerPowerSet) return;
 
     // If already locked to this power, unlock; otherwise lock to this power
     if (infoPanelLocked && lockedContent?.type === 'power' && lockedContent.powerName === power.name) {
@@ -123,7 +127,7 @@ export function SelectedPowers({ category }: SelectedPowersProps) {
       lockInfoPanel({
         type: 'power',
         powerName: power.name,
-        powerSet: powersetId,
+        powerSet: powerPowerSet,
       });
     }
   };
