@@ -23,6 +23,7 @@ export function AvailablePowers({
 }: AvailablePowersProps) {
   const build = useBuildStore((s) => s.build);
   const setInfoPanelContent = useUIStore((s) => s.setInfoPanelContent);
+  const clearInfoPanel = useUIStore((s) => s.clearInfoPanel);
   const lockInfoPanel = useUIStore((s) => s.lockInfoPanel);
   const unlockInfoPanel = useUIStore((s) => s.unlockInfoPanel);
   const infoPanelLocked = useUIStore((s) => s.infoPanel.locked);
@@ -66,6 +67,11 @@ export function AvailablePowers({
         powerSet: powersetId,
       });
     }
+  };
+
+  const handlePowerLeave = () => {
+    // Clear info panel content when leaving a power
+    clearInfoPanel();
   };
 
   const handlePowerRightClick = (e: React.MouseEvent, power: Power) => {
@@ -176,6 +182,7 @@ export function AvailablePowers({
               <div
                 key={power.name}
                 onMouseEnter={() => handlePowerHover(power)}
+                onMouseLeave={handlePowerLeave}
                 onContextMenu={(e) => handlePowerRightClick(e, power)}
                 title={isLocked ? 'Right-click to unlock power info' : 'Right-click to lock power info'}
                 className={`
