@@ -402,6 +402,9 @@ function PoolPowerGroup({
   const [collapsed, setCollapsed] = useState(false);
   const openEnhancementPicker = useUIStore((s) => s.openEnhancementPicker);
 
+  // Sort selected powers by their position in the pool (available level)
+  const sortedPowers = [...selectedPowers].sort((a, b) => a.available - b.available);
+
   return (
     <div className="bg-slate-800/50 rounded p-1.5 border border-slate-700/50">
       {/* Pool header - clickable to collapse */}
@@ -433,10 +436,10 @@ function PoolPowerGroup({
       {/* Collapsible content */}
       {!collapsed && (
         <div className="mt-1">
-          {/* Selected powers */}
-          {selectedPowers.length > 0 && (
+          {/* Selected powers - sorted by pool position */}
+          {sortedPowers.length > 0 && (
             <div className="space-y-0.5 mb-1">
-              {selectedPowers.map((power) => {
+              {sortedPowers.map((power) => {
                 const isLocked = isPowerLocked(power.name);
                 return (
                   <div
@@ -620,6 +623,9 @@ function InherentPowerGroup({
   const [collapsed, setCollapsed] = useState(defaultCollapsed);
   const openEnhancementPicker = useUIStore((s) => s.openEnhancementPicker);
 
+  // Sort inherent powers by their position (available level)
+  const sortedPowers = [...powers].sort((a, b) => a.available - b.available);
+
   return (
     <div className="bg-slate-800/30 rounded p-1.5 border border-slate-700/50">
       {/* Group header - clickable to collapse */}
@@ -633,13 +639,13 @@ function InherentPowerGroup({
         <h4 className="text-[10px] font-semibold text-slate-500 uppercase tracking-wide">
           {title}
         </h4>
-        <span className="text-[9px] text-slate-600">({powers.length})</span>
+        <span className="text-[9px] text-slate-600">({sortedPowers.length})</span>
       </div>
 
-      {/* Collapsible powers list */}
+      {/* Collapsible powers list - sorted by position */}
       {!collapsed && (
         <div className="space-y-0.5 mt-1">
-          {powers.map((power) => {
+          {sortedPowers.map((power) => {
             const isLocked = isPowerLocked(power.name);
             const hasSlots = power.slots.length > 0;
             const canAddMoreSlots = power.maxSlots > power.slots.length;
@@ -939,10 +945,10 @@ function EpicPoolSection({ level, archetypeId, epicPool }: EpicPoolSectionProps)
           ) : (
             // Show selected pool powers
             <div className="space-y-1">
-              {/* Selected powers */}
+              {/* Selected powers - sorted by pool position */}
               {epicPool.powers.length > 0 && (
                 <div className="space-y-0.5">
-                  {epicPool.powers.map((power) => {
+                  {[...epicPool.powers].sort((a, b) => a.available - b.available).map((power) => {
                     const isLocked = isPowerLocked(power.name);
                     return (
                       <div

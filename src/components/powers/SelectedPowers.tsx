@@ -57,8 +57,12 @@ export function SelectedPowers({ category }: SelectedPowersProps) {
   const openEnhancementPicker = useUIStore((s) => s.openEnhancementPicker);
 
   const selection = category === 'primary' ? build.primary : build.secondary;
-  const powers = selection.powers;
   const powersetId = selection.id || '';
+
+  // Sort powers by their position in the powerset (available level)
+  // This ensures powers are displayed in the natural powerset order,
+  // regardless of the order they were selected
+  const powers = [...selection.powers].sort((a, b) => a.available - b.available);
 
   const handleRemove = (powerName: string) => {
     removePower(category as PowerCategory, powerName);

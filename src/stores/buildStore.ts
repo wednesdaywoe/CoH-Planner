@@ -117,6 +117,7 @@ interface BuildActions {
   exportBuild: () => string;
   importBuild: (json: string) => boolean;
   resetBuild: () => void;
+  clearPowers: () => void;
 
   // Hydration
   setHasHydrated: (value: boolean) => void;
@@ -1147,6 +1148,29 @@ export const useBuildStore = create<BuildStore>()(
       },
 
       resetBuild: () => set({ build: createEmptyBuild() }),
+
+      clearPowers: () =>
+        set((state) => ({
+          build: {
+            ...state.build,
+            // Keep archetype, primary/secondary powerset selections
+            // Clear all selected powers, pools, enhancements, etc.
+            primary: {
+              ...state.build.primary,
+              powers: [],
+            },
+            secondary: {
+              ...state.build.secondary,
+              powers: [],
+            },
+            pools: [],
+            epicPool: null,
+            accolades: [],
+            incarnates: createEmptyIncarnateBuildState(),
+            sets: {},
+            // Keep inherents (they're based on archetype, not user-selected powers)
+          },
+        })),
     }),
     {
       name: 'coh-planner-build',

@@ -133,6 +133,7 @@ export function Header() {
 
   const setLevel = useBuildStore((s) => s.setLevel);
   const resetBuild = useBuildStore((s) => s.resetBuild);
+  const clearPowers = useBuildStore((s) => s.clearPowers);
 
   const globalIOLevel = useUIStore((s) => s.globalIOLevel);
   const setGlobalIOLevel = useUIStore((s) => s.setGlobalIOLevel);
@@ -295,6 +296,18 @@ export function Header() {
           title="Reset build and start fresh"
         >
           New
+        </Button>
+        <Button
+          variant="secondary"
+          size="sm"
+          onClick={() => {
+            if (window.confirm('Clear all powers and enhancements? Archetype and powerset selections will be kept.')) {
+              clearPowers();
+            }
+          }}
+          title="Clear powers and slots, keep archetype and powersets"
+        >
+          Clear
         </Button>
       </div>
     </header>
