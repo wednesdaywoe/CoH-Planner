@@ -9,7 +9,7 @@
 
 import { useState, useMemo, useEffect, useRef } from 'react';
 import { useBuildStore, useUIStore } from '@/stores';
-import { getIOSetsForPower, getPower, getPowerPool } from '@/data';
+import { getIOSetsForPower, getPower, getPowerPool, getInherentPowerDef } from '@/data';
 import { COMMON_IO_TYPES, getCommonIOValueAtLevel, ORIGIN_TIERS, HAMIDON_ENHANCEMENTS } from '@/data/enhancements';
 import { resolvePath } from '@/utils/paths';
 import { Modal, ModalBody } from '@/components/modals';
@@ -135,8 +135,29 @@ export function EnhancementPicker() {
   // Get the current power definition
   const currentPower = useMemo(() => {
     if (!picker.currentPowerName || !picker.currentPowerSet) return null;
+
+    // Check for inherent powers first (Fitness, Basic, Prestige, Archetype inherents)
+    if (picker.currentPowerSet === 'Inherent') {
+      const inherentDef = getInherentPowerDef(picker.currentPowerName);
+      if (inherentDef) {
+        // Convert InherentPowerDef to a compatible Power-like object
+        return {
+          name: inherentDef.name,
+          icon: inherentDef.icon,
+          available: 0,
+          powerType: inherentDef.powerType || 'Auto',
+          maxSlots: inherentDef.maxSlots || 6,
+          allowedEnhancements: inherentDef.allowedEnhancements || [],
+          allowedSetCategories: inherentDef.allowedSetCategories || [],
+        };
+      }
+      return null;
+    }
+
+    // Try regular powerset
     let power = getPower(picker.currentPowerSet, picker.currentPowerName);
     if (!power) {
+      // Try power pool
       const pool = getPowerPool(picker.currentPowerSet);
       power = pool?.powers.find((p) => p.name === picker.currentPowerName);
     }
@@ -185,7 +206,7 @@ export function EnhancementPicker() {
   // Get available IO sets for the current power
   const availableSets = useMemo(() => {
     if (!currentPower) return [];
-    return getIOSetsForPower(currentPower.allowedSetCategories);
+    return getIOSetsForPower(currentPower.allowedSetCategories as IOSetCategory[]);
   }, [currentPower]);
 
   // Determine the primary category for this power (first in priority order)

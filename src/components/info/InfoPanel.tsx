@@ -777,6 +777,53 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
                 * Actual damage varies (pseudo-pet or redirect power)
               </div>
             )}
+            {/* DPS Calculation */}
+            {!calculatedDamage.unknown && effects?.recharge && effects?.castTime && (
+              (() => {
+                // Calculate enhanced recharge time
+                const rechargeStats = calcThreeTier('recharge', effects.recharge);
+                const castTime = effects.castTime;
+
+                // Cycle time = cast time + recharge time
+                const baseCycleTime = castTime + effects.recharge;
+                const finalCycleTime = castTime + rechargeStats.final;
+
+                // DPS = damage / cycle time
+                const baseDPS = calculatedDamage.base / baseCycleTime;
+                const finalDPS = calculatedDamage.final / finalCycleTime;
+
+                const dpsImproved = finalDPS > baseDPS * 1.01; // More than 1% improvement
+
+                return (
+                  <div className="mt-2 pt-2 border-t border-slate-700">
+                    <div className="grid grid-cols-2 gap-2 text-xs">
+                      <div>
+                        <span className="text-slate-500">Cycle Time</span>
+                        <div className="text-slate-300">
+                          {finalCycleTime.toFixed(2)}s
+                          {finalCycleTime < baseCycleTime - 0.01 && (
+                            <span className="text-green-400 text-[10px] ml-1">
+                              (was {baseCycleTime.toFixed(1)}s)
+                            </span>
+                          )}
+                        </div>
+                      </div>
+                      <div>
+                        <span className="text-slate-500">DPS</span>
+                        <div className={dpsImproved ? 'text-amber-400' : 'text-slate-300'}>
+                          {finalDPS.toFixed(2)}
+                          {dpsImproved && (
+                            <span className="text-green-400 text-[10px] ml-1">
+                              (+{((finalDPS / baseDPS - 1) * 100).toFixed(0)}%)
+                            </span>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })()
+            )}
           </div>
         </div>
       )}

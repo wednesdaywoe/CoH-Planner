@@ -188,3 +188,15 @@ export {
   getSupportPowerEffects,
   mergeWithSupportEffects,
 } from './support-power-effects';
+
+// Proc enhancement data
+export {
+  PROC_DATABASE,
+  getProcDataByName,
+  findProcData,
+  parseDamageRange,
+  parseDamageType,
+  parseBuffValue,
+  parseDuration,
+} from './proc-data';
+export type { ProcData, ProcType } from './proc-data';

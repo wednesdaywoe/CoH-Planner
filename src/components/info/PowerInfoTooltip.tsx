@@ -8,7 +8,7 @@ import { useEffect, useState, useCallback, useMemo } from 'react';
 import { createPortal } from 'react-dom';
 import { useUIStore, useBuildStore } from '@/stores';
 import { useGlobalBonuses } from '@/hooks/useCalculatedStats';
-import { getPower, getPowerPool, getArchetype, getIOSet, getPowerset, getInherentPowerDef } from '@/data';
+import { getPower, getPowerPool, getArchetype, getIOSet, getPowerset, getInherentPowerDef, findProcData, parseDamageRange, parseDamageType, parseDuration } from '@/data';
 import { resolvePath } from '@/utils/paths';
 import type { Power } from '@/types';
 import {
@@ -800,28 +800,166 @@ function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfoContent
           </div>
         </div>
 
-        {/* Enhances section with calculated values */}
-        <div className="bg-slate-800/50 rounded p-1.5">
-          <div className="text-[9px] text-slate-500 uppercase mb-1">Enhances:</div>
-          {ioEnh.aspects.map((aspect, i) => {
-            const value = calculateAspectValue(aspect);
-            return (
-              <div key={i} className="flex justify-between items-baseline text-[10px]">
-                <span className="text-slate-300">{aspect}</span>
-                {value !== null && (
-                  <span className="text-green-400 font-mono">
-                    +{(value * 100).toFixed(2)}%
-                  </span>
-                )}
+        {/* Proc Effect section - shown for proc enhancements */}
+        {ioEnh.isProc ? (
+          <div className="bg-amber-900/30 border border-amber-700/50 rounded p-1.5">
+            <div className="text-[9px] text-amber-400 uppercase mb-1 font-semibold">Proc Effect</div>
+            {/* Look up detailed proc data */}
+            {(() => {
+              const procData = findProcData(enhancement.name, ioEnh.setName);
+              const name = enhancement.name.toLowerCase();
+
+              // Determine category and color based on effect type
+              let effectColorClass = 'text-amber-200';
+              let categoryLabel = '';
+
+              if (name.includes('damage') || name.includes('dot')) {
+                effectColorClass = 'text-red-400';
+                categoryLabel = 'Damage';
+              } else if (name.includes('-tohit') || name.includes('-res') || name.includes('-recharge') || name.includes('-recovery') || name.includes('-def') || name.includes('-str')) {
+                effectColorClass = 'text-purple-400';
+                categoryLabel = 'Debuff';
+              } else if (name.includes('+tohit') || name.includes('+health') || name.includes('+end') || name.includes('build up') || name.includes('+rech') || name.includes('+def') || name.includes('+res') || name.includes('+absorb')) {
+                effectColorClass = 'text-green-400';
+                categoryLabel = 'Buff';
+              } else if (name.includes('stun') || name.includes('hold') || name.includes('sleep') || name.includes('immob') || name.includes('fear') || name.includes('confuse') || name.includes('knock') || name.includes('placate') || name.includes('disorient')) {
+                effectColorClass = 'text-cyan-400';
+                categoryLabel = 'Control';
+              } else if (name.includes('heal')) {
+                effectColorClass = 'text-emerald-400';
+                categoryLabel = 'Heal';
+              }
+
+              if (procData) {
+                // We have detailed proc data
+                const damageRange = parseDamageRange(procData.mechanics);
+                const damageType = parseDamageType(procData.mechanics);
+                const duration = parseDuration(procData.mechanics);
+
+                return (
+                  <div className="space-y-1">
+                    {/* Effect name and category */}
+                    <div className="flex items-center gap-2">
+                      <span className={`text-[10px] font-medium ${effectColorClass}`}>
+                        {procData.ioName}
+                      </span>
+                      {categoryLabel && (
+                        <span className={`text-[8px] px-1 py-0.5 rounded ${
+                          categoryLabel === 'Damage' ? 'bg-red-900/50 text-red-300' :
+                          categoryLabel === 'Debuff' ? 'bg-purple-900/50 text-purple-300' :
+                          categoryLabel === 'Buff' ? 'bg-green-900/50 text-green-300' :
+                          categoryLabel === 'Control' ? 'bg-cyan-900/50 text-cyan-300' :
+                          categoryLabel === 'Heal' ? 'bg-emerald-900/50 text-emerald-300' :
+                          'bg-slate-700 text-slate-300'
+                        }`}>
+                          {categoryLabel}
+                        </span>
+                      )}
+                    </div>
+
+                    {/* Detailed mechanics */}
+                    <div className="text-[9px] text-slate-300 bg-slate-800/50 rounded px-1.5 py-1">
+                      {procData.mechanics}
+                    </div>
+
+                    {/* PPM and Type info */}
+                    <div className="flex flex-wrap gap-x-3 gap-y-0.5 text-[9px]">
+                      {procData.ppm !== null && (
+                        <div>
+                          <span className="text-slate-500">PPM:</span>
+                          <span className="text-amber-300 ml-1 font-medium">{procData.ppm}</span>
+                        </div>
+                      )}
+                      <div>
+                        <span className="text-slate-500">Type:</span>
+                        <span className={`ml-1 ${
+                          procData.type === 'Proc120s' ? 'text-purple-400' :
+                          procData.type === 'Global' ? 'text-green-400' :
+                          'text-amber-300'
+                        }`}>
+                          {procData.type}
+                        </span>
+                      </div>
+                      {damageRange && damageType && (
+                        <div>
+                          <span className="text-slate-500">Dmg:</span>
+                          <span className="text-red-400 ml-1">{damageRange[0]}-{damageRange[1]} {damageType}</span>
+                        </div>
+                      )}
+                      {duration && (
+                        <div>
+                          <span className="text-slate-500">Dur:</span>
+                          <span className="text-cyan-300 ml-1">{duration}s</span>
+                        </div>
+                      )}
+                    </div>
+
+                    {/* PvP notes if any */}
+                    {procData.pvpNotes && (
+                      <div className="text-[8px] text-orange-400/80">
+                        PvP: {procData.pvpNotes}
+                      </div>
+                    )}
+                  </div>
+                );
+              } else {
+                // Fallback to basic display if no proc data found
+                let effectText = enhancement.name;
+                if (name.includes('chance for')) {
+                  effectText = enhancement.name.replace(/^Chance for /i, '');
+                } else if (name.includes('chance to')) {
+                  effectText = enhancement.name.replace(/^Chance to /i, '');
+                }
+
+                return (
+                  <>
+                    <div className="flex items-center gap-2">
+                      <span className={`text-[10px] ${effectColorClass}`}>{effectText}</span>
+                      {categoryLabel && (
+                        <span className={`text-[8px] px-1 py-0.5 rounded ${
+                          categoryLabel === 'Damage' ? 'bg-red-900/50 text-red-300' :
+                          categoryLabel === 'Debuff' ? 'bg-purple-900/50 text-purple-300' :
+                          categoryLabel === 'Buff' ? 'bg-green-900/50 text-green-300' :
+                          categoryLabel === 'Control' ? 'bg-cyan-900/50 text-cyan-300' :
+                          categoryLabel === 'Heal' ? 'bg-emerald-900/50 text-emerald-300' :
+                          'bg-slate-700 text-slate-300'
+                        }`}>
+                          {categoryLabel}
+                        </span>
+                      )}
+                    </div>
+                    <div className="text-[8px] text-slate-500 mt-1 italic">
+                      Proc effects trigger based on PPM (Procs Per Minute) formula
+                    </div>
+                  </>
+                );
+              }
+            })()}
+          </div>
+        ) : (
+          /* Enhances section with calculated values - for non-proc enhancements */
+          <div className="bg-slate-800/50 rounded p-1.5">
+            <div className="text-[9px] text-slate-500 uppercase mb-1">Enhances:</div>
+            {ioEnh.aspects.map((aspect, i) => {
+              const value = calculateAspectValue(aspect);
+              return (
+                <div key={i} className="flex justify-between items-baseline text-[10px]">
+                  <span className="text-slate-300">{aspect}</span>
+                  {value !== null && (
+                    <span className="text-green-400 font-mono">
+                      +{(value * 100).toFixed(2)}%
+                    </span>
+                  )}
+                </div>
+              );
+            })}
+            {aspectCount > 1 && (
+              <div className="text-[8px] text-slate-500 mt-1 italic">
+                {aspectCount === 2 ? '62.5%' : aspectCount === 3 ? '50%' : '43.75%'} per aspect ({aspectCount} aspects)
               </div>
-            );
-          })}
-          {aspectCount > 1 && (
-            <div className="text-[8px] text-slate-500 mt-1 italic">
-              {aspectCount === 2 ? '62.5%' : aspectCount === 3 ? '50%' : '43.75%'} per aspect ({aspectCount} aspects)
-            </div>
-          )}
-        </div>
+            )}
+          </div>
+        )}
 
         {/* Level and flags */}
         <div className="text-[10px] flex gap-3">
@@ -832,9 +970,6 @@ function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfoContent
               <>Level: <span className="text-slate-200">{enhancement.level}</span></>
             )}
           </span>
-          {ioEnh.isProc && (
-            <span className="text-amber-400">Proc</span>
-          )}
           {ioEnh.isUnique && (
             <span className="text-red-400">Unique</span>
           )}
