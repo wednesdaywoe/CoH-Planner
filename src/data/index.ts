@@ -226,5 +226,12 @@ export {
   getParentPower,
   isGrantedSubPower,
   getSiblingPowers,
+  // Auto-detection functions
+  parseRequiresField,
+  isAutoGrantedPower,
+  buildGrantedPowerMap,
+  getGrantedPowersForParent,
+  hasGrantedPowersSmart,
+  getGrantedPowerGroupSmart,
 } from './granted-powers';
 export type { GrantedPowerGroup } from './granted-powers';
