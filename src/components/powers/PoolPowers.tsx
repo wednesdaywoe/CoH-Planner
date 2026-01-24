@@ -17,6 +17,8 @@ import {
   getAvailablePoolPowers,
   areEpicPoolsUnlocked,
   getAvailableEpicPoolPowers,
+  hasGrantedPowers,
+  getGrantedPowerGroup,
 } from '@/data';
 import { resolvePath } from '@/utils/paths';
 import { Select, Tooltip } from '@/components/ui';
@@ -75,6 +77,7 @@ export function PoolPowers() {
   const removeSlot = useBuildStore((s) => s.removeSlot);
   const clearEnhancement = useBuildStore((s) => s.clearEnhancement);
   const togglePowerActive = useBuildStore((s) => s.togglePowerActive);
+  const setActiveSubPower = useBuildStore((s) => s.setActiveSubPower);
   const setInfoPanelContent = useUIStore((s) => s.setInfoPanelContent);
   const clearInfoPanel = useUIStore((s) => s.clearInfoPanel);
   const lockInfoPanel = useUIStore((s) => s.lockInfoPanel);
@@ -261,6 +264,7 @@ export function PoolPowers() {
             key={poolSelection.id}
             poolId={poolSelection.id}
             poolName={pool.name}
+            poolPowers={pool.powers}
             selectedPowers={poolSelection.powers}
             availablePowers={availablePowers}
             isPowerLocked={isPowerLocked}
@@ -269,6 +273,7 @@ export function PoolPowers() {
             onRemovePower={handleRemovePower}
             onPowerHover={(power) => handlePowerHover(power, poolSelection.id)}
             onToggle={togglePowerActive}
+            onSetActiveSubPower={setActiveSubPower}
             onPowerLeave={handlePowerLeave}
             onPowerRightClick={(e, power) => handlePowerRightClick(e, power, poolSelection.id)}
             onEnhancementHover={handleEnhancementHover}
@@ -365,6 +370,7 @@ export function PoolPowers() {
 interface PoolPowerGroupProps {
   poolId: string;
   poolName: string;
+  poolPowers: Power[];
   selectedPowers: SelectedPower[];
   availablePowers: Power[];
   isPowerLocked: (powerName: string) => boolean;
@@ -373,6 +379,7 @@ interface PoolPowerGroupProps {
   onRemovePower: (powerName: string) => void;
   onPowerHover: (power: Power | SelectedPower) => void;
   onToggle: (powerName: string) => void;
+  onSetActiveSubPower: (parentPowerName: string, subPowerName: string | null) => void;
   onPowerLeave: () => void;
   onPowerRightClick: (e: React.MouseEvent, power: Power | SelectedPower) => void;
   onEnhancementHover: (powerName: string, slotIndex: number) => void;
@@ -384,6 +391,7 @@ interface PoolPowerGroupProps {
 function PoolPowerGroup({
   poolId,
   poolName,
+  poolPowers,
   selectedPowers,
   availablePowers,
   isPowerLocked,
@@ -392,6 +400,7 @@ function PoolPowerGroup({
   onRemovePower,
   onPowerHover,
   onToggle,
+  onSetActiveSubPower,
   onPowerLeave,
   onPowerRightClick,
   onEnhancementHover,
@@ -404,6 +413,16 @@ function PoolPowerGroup({
 
   // Sort selected powers by their position in the pool (available level)
   const sortedPowers = [...selectedPowers].sort((a, b) => a.available - b.available);
+
+  // Get sub-powers for a parent power from pool powers
+  const getSubPowers = (parentPowerName: string): Power[] => {
+    if (!hasGrantedPowers(parentPowerName)) return [];
+    const group = getGrantedPowerGroup(parentPowerName);
+    if (!group) return [];
+
+    // Find sub-powers in the pool powers
+    return poolPowers.filter(p => group.grantedPowers.includes(p.name));
+  };
 
   return (
     <div className="bg-slate-800/50 rounded p-1.5 border border-slate-700/50">
@@ -441,10 +460,12 @@ function PoolPowerGroup({
             <div className="space-y-0.5 mb-1">
               {sortedPowers.map((power) => {
                 const isLocked = isPowerLocked(power.name);
+                const subPowers = getSubPowers(power.name);
+                const grantedGroup = getGrantedPowerGroup(power.name);
                 return (
-                  <div
-                    key={power.name}
-                    className={`flex items-center gap-1.5 px-1.5 py-1 bg-slate-800 border rounded-sm group transition-colors ${
+                  <div key={power.name}>
+                    <div
+                      className={`flex items-center gap-1.5 px-1.5 py-1 bg-slate-800 border rounded-sm group transition-colors ${
                       isLocked
                         ? 'border-amber-500 shadow-[0_0_4px_rgba(245,158,11,0.4)] bg-gradient-to-r from-amber-500/10 to-slate-800'
                         : 'border-slate-700 hover:border-slate-600'
@@ -552,6 +573,18 @@ function PoolPowerGroup({
                     >
                       ✕
                     </button>
+                    </div>
+
+                    {/* Granted sub-powers display */}
+                    {subPowers.length > 0 && (
+                      <GrantedPoolSubPowers
+                        subPowers={subPowers}
+                        poolName={poolName}
+                        isMutuallyExclusive={grantedGroup?.mutuallyExclusive ?? false}
+                        activeSubPower={power.activeSubPower}
+                        onSetActive={(subPowerName) => onSetActiveSubPower(power.name, subPowerName)}
+                      />
+                    )}
                   </div>
                 );
               })}
@@ -587,6 +620,116 @@ function PoolPowerGroup({
           )}
         </div>
       )}
+    </div>
+  );
+}
+
+// ============================================
+// GRANTED SUB-POWERS FOR POOLS COMPONENT
+// ============================================
+
+interface GrantedPoolSubPowersProps {
+  subPowers: Power[];
+  poolName: string;
+  isMutuallyExclusive: boolean;
+  activeSubPower?: string;
+  onSetActive: (subPowerName: string | null) => void;
+}
+
+/**
+ * Displays granted sub-powers below a parent power in a pool
+ * For non-mutually exclusive powers (like Fly → Afterburner), shows toggle-style selection
+ */
+function GrantedPoolSubPowers({
+  subPowers,
+  poolName,
+  isMutuallyExclusive,
+  activeSubPower,
+  onSetActive,
+}: GrantedPoolSubPowersProps) {
+  return (
+    <div className="ml-6 mt-0.5 space-y-0.5">
+      {subPowers.map((subPower) => {
+        const isActive = activeSubPower === subPower.name;
+
+        return (
+          <div
+            key={subPower.name}
+            className={`
+              flex items-center gap-1.5 px-1.5 py-0.5 rounded-sm
+              border transition-colors
+              ${isActive
+                ? 'bg-slate-700/50 border-green-600/50'
+                : 'bg-slate-800/50 border-slate-700/50 hover:border-slate-600'
+              }
+            `}
+          >
+            {/* Sub-power icon and name */}
+            <img
+              src={getPowerIconPath(poolName, subPower.icon)}
+              alt=""
+              className="w-4 h-4 rounded-sm flex-shrink-0"
+              onError={(e) => {
+                (e.target as HTMLImageElement).src = resolvePath('/img/Unknown.png');
+              }}
+            />
+            <span className={`text-xs truncate flex-1 ${isActive ? 'text-green-300' : 'text-slate-400'}`}>
+              {subPower.name}
+            </span>
+
+            {/* Toggle/Radio button for sub-power */}
+            {isMutuallyExclusive ? (
+              <Tooltip
+                content={
+                  isActive
+                    ? `${subPower.name} is active`
+                    : `Activate ${subPower.name}`
+                }
+              >
+                <button
+                  onClick={() => onSetActive(isActive ? null : subPower.name)}
+                  className={`
+                    w-4 h-4 rounded-full border-2 flex items-center justify-center
+                    transition-colors
+                    ${isActive
+                      ? 'border-green-500 bg-green-500'
+                      : 'border-slate-500 hover:border-green-400'
+                    }
+                  `}
+                >
+                  {isActive && (
+                    <span className="w-1.5 h-1.5 rounded-full bg-white" />
+                  )}
+                </button>
+              </Tooltip>
+            ) : (
+              <Tooltip
+                content={
+                  isActive
+                    ? `${subPower.name} ON`
+                    : `${subPower.name} OFF`
+                }
+              >
+                <button
+                  onClick={() => onSetActive(isActive ? null : subPower.name)}
+                  className={`
+                    relative w-6 h-3 rounded-full transition-colors duration-200
+                    ${isActive ? 'bg-green-600' : 'bg-slate-600'}
+                  `}
+                >
+                  <span
+                    className={`
+                      absolute top-[2px] left-[2px] w-2 h-2 rounded-full bg-white shadow-sm
+                      transition-transform duration-200
+                      ${isActive ? 'translate-x-3' : 'translate-x-0'}
+                    `}
+                  />
+                </button>
+              </Tooltip>
+            )}
+          </div>
+        );
+      })}
     </div>
   );
 }

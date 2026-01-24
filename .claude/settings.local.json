@@ -44,7 +44,9 @@
       "Bash(npx tsx:*)",
       "Bash(dir \"c:\\\\Projects\\\\CoH-Planner\\\\public\\\\img\\\\Powers\" /b)",
       "Bash(python3:*)",
-      "Bash(npm run dev:*)"
+      "Bash(npm run dev:*)",
+      "Bash(curl:*)",
+      "Bash(netstat:*)"
     ]
   }
 }
