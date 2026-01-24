@@ -36,9 +36,10 @@ export function AvailablePowers({
   const bothPowersetsSelected = build.primary.id && build.secondary.id;
 
   const powerset = powersetId ? getPowerset(powersetId) : null;
-  // Show ALL powers, not just ones available at current level
+  // Show ALL user-selectable powers, not just ones available at current level
   // Powers not yet available will be shown as disabled
-  const allPowers = powerset ? powerset.powers : [];
+  // Powers with available === -1 are auto-granted and should not be shown in selection
+  const allPowers = powerset ? powerset.powers.filter(p => p.available >= 0) : [];
   const selectedSet = new Set(selectedPowerNames);
 
   // At level 1, special rules apply:

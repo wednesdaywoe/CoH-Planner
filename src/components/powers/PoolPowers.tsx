@@ -517,32 +517,34 @@ function PoolPowerGroup({
                         onAddSlots={(count) => onAddSlots(power.name, count)}
                       />
                     </div>
-                    {/* Toggle switch for buff/toggle powers */}
-                    {shouldShowToggle(power) && (
-                      <Tooltip
-                        content={
-                          power.isActive
-                            ? 'Power ON - stats included'
-                            : 'Power OFF - click to include'
-                        }
-                      >
-                        <button
-                          onClick={() => onToggle(power.name)}
-                          className={`
-                            relative w-8 h-4 rounded-full transition-colors duration-200 flex-shrink-0
-                            ${power.isActive ? 'bg-green-600' : 'bg-slate-600'}
-                          `}
+                    {/* Toggle switch container - always reserve space to prevent layout shift */}
+                    <div className="w-8 flex-shrink-0">
+                      {shouldShowToggle(power) && (
+                        <Tooltip
+                          content={
+                            power.isActive
+                              ? 'Power ON - stats included'
+                              : 'Power OFF - click to include'
+                          }
                         >
-                          <span
+                          <button
+                            onClick={() => onToggle(power.name)}
                             className={`
-                              absolute top-[2px] left-[2px] w-3 h-3 rounded-full bg-white shadow-sm
-                              transition-transform duration-200
-                              ${power.isActive ? 'translate-x-4' : 'translate-x-0'}
+                              relative w-8 h-4 rounded-full transition-colors duration-200
+                              ${power.isActive ? 'bg-green-600' : 'bg-slate-600'}
                             `}
-                          />
-                        </button>
-                      </Tooltip>
-                    )}
+                          >
+                            <span
+                              className={`
+                                absolute top-[2px] left-[2px] w-3 h-3 rounded-full bg-white shadow-sm
+                                transition-transform duration-200
+                                ${power.isActive ? 'translate-x-4' : 'translate-x-0'}
+                              `}
+                            />
+                          </button>
+                        </Tooltip>
+                      )}
+                    </div>
                     <button
                       onClick={() => onRemovePower(power.name)}
                       className="text-slate-600 hover:text-red-400 text-xs opacity-0 group-hover:opacity-100 transition-opacity px-0.5"
@@ -684,62 +686,66 @@ function InherentPowerGroup({
                   )}
                 </div>
 
-                {/* Enhancement slots - show if power has slots OR can have slots */}
-                {(hasSlots || power.maxSlots > 0) && (
-                  <div className="flex gap-0.5">
-                    {power.slots.map((slot, index) => (
-                      <div
-                        key={index}
-                        onClick={() => openEnhancementPicker(power.name, 'Inherent', index)}
-                        onMouseEnter={() =>
-                          slot ? onEnhancementHover(power.name, index) : onPowerHover(power)
-                        }
-                        onContextMenu={(e) => {
-                          e.preventDefault();
-                          if (slot) {
-                            onClearEnhancement(power.name, index);
-                          } else if (index > 0) {
-                            onRemoveSlot(power.name, index);
+                {/* Enhancement slots - fixed width container to match other power rows */}
+                <div className="flex gap-0.5 justify-start items-center flex-shrink-0" style={{ width: '180px' }}>
+                  {(hasSlots || power.maxSlots > 0) && (
+                    <>
+                      {power.slots.map((slot, index) => (
+                        <div
+                          key={index}
+                          onClick={() => openEnhancementPicker(power.name, 'Inherent', index)}
+                          onMouseEnter={() =>
+                            slot ? onEnhancementHover(power.name, index) : onPowerHover(power)
                           }
-                        }}
-                        className={`
-                          w-6 h-6 rounded-full border flex items-center justify-center
-                          text-[9px] font-semibold cursor-pointer hover:scale-110 transition-transform
-                          ${
+                          onContextMenu={(e) => {
+                            e.preventDefault();
+                            if (slot) {
+                              onClearEnhancement(power.name, index);
+                            } else if (index > 0) {
+                              onRemoveSlot(power.name, index);
+                            }
+                          }}
+                          className={`
+                            w-6 h-6 rounded-full border flex items-center justify-center
+                            text-[9px] font-semibold cursor-pointer hover:scale-110 transition-transform
+                            ${
+                              slot
+                                ? 'border-transparent'
+                                : 'border-slate-600 bg-slate-700/50 text-slate-500 hover:border-blue-500'
+                            }
+                          `}
+                          title={
                             slot
-                              ? 'border-transparent'
-                              : 'border-slate-600 bg-slate-700/50 text-slate-500 hover:border-blue-500'
+                              ? `${slot.name || 'Enhancement'} (right-click to remove enhancement)`
+                              : `Empty slot${index > 0 ? ' (right-click to remove slot)' : ''}`
                           }
-                        `}
-                        title={
-                          slot
-                            ? `${slot.name || 'Enhancement'} (right-click to remove enhancement)`
-                            : `Empty slot${index > 0 ? ' (right-click to remove slot)' : ''}`
-                        }
-                      >
-                        {slot ? (
-                          <SlottedEnhancementIcon enhancement={slot} size={24} />
-                        ) : (
-                          '+'
-                        )}
-                      </div>
-                    ))}
-                    {/* Draggable ghost slot to add more */}
-                    {canAddMoreSlots && (
-                      <DraggableSlotGhost
-                        powerName={power.name}
-                        currentSlots={power.slots.length}
-                        maxSlots={power.maxSlots}
-                        onAddSlots={(count) => onAddSlots(power.name, count)}
-                      />
-                    )}
-                  </div>
-                )}
+                        >
+                          {slot ? (
+                            <SlottedEnhancementIcon enhancement={slot} size={24} />
+                          ) : (
+                            '+'
+                          )}
+                        </div>
+                      ))}
+                      {/* Draggable ghost slot to add more */}
+                      {canAddMoreSlots && (
+                        <DraggableSlotGhost
+                          powerName={power.name}
+                          currentSlots={power.slots.length}
+                          maxSlots={power.maxSlots}
+                          onAddSlots={(count) => onAddSlots(power.name, count)}
+                        />
+                      )}
+                    </>
+                  )}
+                  {/* No slots indicator for archetype inherents */}
+                  {!hasSlots && power.maxSlots === 0 && (
+                    <span className="text-[9px] text-slate-600 italic">No slots</span>
+                  )}
+                </div>
 
-                {/* No slots indicator for archetype inherents */}
-                {!hasSlots && power.maxSlots === 0 && (
-                  <span className="text-[9px] text-slate-600 italic">No slots</span>
-                )}
+                {/* Toggle space reservation to match other power rows */}
+                <div className="w-8 flex-shrink-0"></div>
               </div>
             );
           })}
@@ -1026,6 +1032,8 @@ function EpicPoolSection({ level, archetypeId, epicPool }: EpicPoolSectionProps)
                             onAddSlots={(count) => handleAddSlots(power.name, count)}
                           />
                         </div>
+                        {/* Toggle space reservation to match other power rows */}
+                        <div className="w-8 flex-shrink-0"></div>
                         <button
                           onClick={() => handleRemovePower(power.name)}
                           className="text-slate-600 hover:text-red-400 text-xs opacity-0 group-hover:opacity-100 transition-opacity px-0.5"

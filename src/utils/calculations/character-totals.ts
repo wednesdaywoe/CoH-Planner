@@ -12,8 +12,8 @@
  * - Global Bonuses → Dashboard Stats (with breakdown tracking)
  */
 
-import type { Build, Accolade, Enhancement, IncarnateActiveState, IncarnateBuildState } from '@/types';
-import { getIOSet, getAlphaEffects, getDestinyEffects, getHybridEffects } from '@/data';
+import type { Build, Accolade, Enhancement, IncarnateActiveState, IncarnateBuildState, IOSetEnhancement } from '@/types';
+import { getIOSet, getAlphaEffects, getDestinyEffects, getHybridEffects, findProcData, parseProcEffect, isProcAlwaysOn, calculateAutoToggleProcsPerMinute } from '@/data';
 import {
   calculateSetBonuses,
   getStatBreakdown,
@@ -97,7 +97,7 @@ export interface GlobalBonuses {
 export interface StatSource {
   name: string;
   value: number;
-  type: 'set-bonus' | 'active-power' | 'inherent' | 'enhancement' | 'accolade' | 'incarnate';
+  type: 'set-bonus' | 'active-power' | 'inherent' | 'enhancement' | 'accolade' | 'incarnate' | 'proc';
   setId?: string;
   pieces?: number;
   capped?: boolean; // True if this instance hit the Rule of 5 cap
@@ -540,6 +540,64 @@ function addToBreakdown(
 }
 
 // ============================================
+// FITNESS POWER PROCESSING
+// ============================================
+
+/**
+ * Base values for fitness inherent powers (unenhanced)
+ * These are the default values all characters receive
+ */
+const FITNESS_POWER_BASE_VALUES: Record<string, { stat: keyof GlobalBonuses; value: number; enhancementType: string }> = {
+  'Swift': { stat: 'runSpeed', value: 7.5, enhancementType: 'run' },
+  'Hurdle': { stat: 'jumpHeight', value: 7.5, enhancementType: 'jump' },
+  'Health': { stat: 'regeneration', value: 40, enhancementType: 'heal' },
+  'Stamina': { stat: 'recovery', value: 25, enhancementType: 'enduranceMod' },
+};
+
+/**
+ * Apply bonuses from inherent fitness powers
+ * Fitness powers provide base stats that can be enhanced with slotted enhancements
+ */
+function applyFitnessPowerBonuses(
+  build: Build,
+  global: GlobalBonuses,
+  breakdown: Map<string, DashboardStatBreakdown>,
+  globalIOLevel: number
+): void {
+  const fitnessPowers = (build.inherents || []).filter(
+    (p) => p.inherentCategory === 'fitness'
+  );
+
+  for (const power of fitnessPowers) {
+    const baseConfig = FITNESS_POWER_BASE_VALUES[power.name];
+    if (!baseConfig) continue;
+
+    // Calculate enhancement bonus for this power
+    const enhBonuses = calculatePowerEnhancementBonuses(
+      power,
+      globalIOLevel,
+      getIOSet
+    );
+
+    // Get the enhancement multiplier for this power's stat type
+    const enhMultiplier = 1 + (enhBonuses[baseConfig.enhancementType] || 0);
+
+    // Calculate final value: base * (1 + enhancement%)
+    const finalValue = baseConfig.value * enhMultiplier;
+
+    // Apply to global bonuses
+    global[baseConfig.stat] += finalValue;
+
+    // Track in breakdown
+    addToBreakdown(breakdown, baseConfig.stat, {
+      name: power.name,
+      value: finalValue,
+      type: 'inherent',
+    });
+  }
+}
+
+// ============================================
 // ACCOLADE PROCESSING
 // ============================================
 
@@ -547,6 +605,344 @@ function addToBreakdown(
  * Apply bonuses from accolades
  * Accolades provide flat or percentage bonuses to HP and endurance
  */
+// ============================================
+// PROC PROCESSING
+// ============================================
+
+interface SlottedProc {
+  procName: string;
+  setName: string;
+  powerName: string;
+  powerType: string;
+  isActive: boolean;
+}
+
+/** Minimal power interface for proc collection */
+interface PowerForProcScan {
+  name: string;
+  powerType?: string;
+  isActive?: boolean;
+  slots?: (Enhancement | null)[];
+}
+
+/**
+ * Collect all "always-on" procs from the build
+ * These are Global and Proc120s enhancements slotted in Auto or active Toggle powers
+ */
+function collectAlwaysOnProcs(build: Build): SlottedProc[] {
+  const procs: SlottedProc[] = [];
+
+  const processPower = (power: PowerForProcScan) => {
+    if (!power.slots) return;
+
+    const powerType = power.powerType?.toLowerCase() || '';
+    const isAlwaysActive = powerType === 'auto' || (powerType === 'toggle' && power.isActive);
+
+    for (const slot of power.slots) {
+      if (!slot || slot.type !== 'io-set') continue;
+      const ioSlot = slot as IOSetEnhancement;
+      if (!ioSlot.isProc) continue;
+
+      // Look up proc data
+      const procData = findProcData(ioSlot.name, ioSlot.setName);
+      if (!procData) continue;
+
+      // Only include if it's an always-on proc type
+      if (!isProcAlwaysOn(procData)) continue;
+
+      // For Global procs, they're always active regardless of power type
+      // For Proc120s, they need to be in an Auto or active Toggle power
+      if (procData.type === 'Global' || isAlwaysActive) {
+        procs.push({
+          procName: ioSlot.name,
+          setName: ioSlot.setName,
+          powerName: power.name,
+          powerType: powerType,
+          isActive: true,
+        });
+      }
+    }
+  };
+
+  // Process all power categories
+  for (const power of build.primary?.powers || []) {
+    processPower(power);
+  }
+  for (const power of build.secondary?.powers || []) {
+    processPower(power);
+  }
+  for (const pool of build.pools || []) {
+    for (const power of pool.powers) {
+      processPower(power);
+    }
+  }
+  if (build.epicPool) {
+    for (const power of build.epicPool.powers) {
+      processPower(power);
+    }
+  }
+  for (const power of build.inherents || []) {
+    processPower(power);
+  }
+
+  return procs;
+}
+
+/**
+ * Helper to apply a single proc effect category to global bonuses
+ */
+function applySingleProcEffect(
+  category: string,
+  value: number | undefined,
+  effectType: string | undefined,
+  sourceName: string,
+  global: GlobalBonuses,
+  breakdown: Map<string, DashboardStatBreakdown>
+): void {
+  if (value === undefined) return;
+
+  switch (category) {
+    case 'Recovery':
+      global.recovery += value;
+      addToBreakdown(breakdown, 'recovery', {
+        name: sourceName,
+        value,
+        type: 'proc',
+      });
+      break;
+
+    case 'Regeneration':
+      global.regeneration += value;
+      addToBreakdown(breakdown, 'regeneration', {
+        name: sourceName,
+        value,
+        type: 'proc',
+      });
+      break;
+
+    case 'Endurance':
+      // Endurance procs grant a % of max end - treat as recovery boost for calculations
+      // Note: This is a one-time grant when the proc fires, not a sustained buff
+      // For PPM procs like Performance Shifter, this doesn't apply to steady-state calculations
+      // But for Panacea's secondary effect in the combined parsing, we include it for display
+      global.recovery += value;
+      addToBreakdown(breakdown, 'recovery', {
+        name: `${sourceName} (+End)`,
+        value,
+        type: 'proc',
+      });
+      break;
+
+    case 'MaxHP':
+      global.maxHP += value;
+      addToBreakdown(breakdown, 'maxhp', {
+        name: sourceName,
+        value,
+        type: 'proc',
+      });
+      break;
+
+    case 'Defense':
+      // Apply to all defense types if effect type is "All"
+      if (effectType?.toLowerCase() === 'all') {
+        const defTypes: (keyof GlobalBonuses)[] = [
+          'defMelee', 'defRanged', 'defAoE',
+          'defSmashing', 'defLethal', 'defFire', 'defCold',
+          'defEnergy', 'defNegative', 'defPsionic', 'defToxic'
+        ];
+        for (const defType of defTypes) {
+          global[defType] += value;
+        }
+        addToBreakdown(breakdown, 'defall', {
+          name: sourceName,
+          value,
+          type: 'proc',
+        });
+      }
+      break;
+
+    case 'Resistance':
+      // Apply to all resistance types if effect type is "All"
+      if (effectType?.toLowerCase() === 'all') {
+        const resTypes: (keyof GlobalBonuses)[] = [
+          'resSmashing', 'resLethal', 'resFire', 'resCold',
+          'resEnergy', 'resNegative', 'resPsionic', 'resToxic'
+        ];
+        for (const resType of resTypes) {
+          global[resType] += value;
+        }
+        addToBreakdown(breakdown, 'resall', {
+          name: sourceName,
+          value,
+          type: 'proc',
+        });
+      }
+      break;
+
+    case 'ToHit':
+      global.toHit += value;
+      addToBreakdown(breakdown, 'toHit', {
+        name: sourceName,
+        value,
+        type: 'proc',
+      });
+      break;
+
+    case 'Recharge':
+      global.recharge += value;
+      addToBreakdown(breakdown, 'recharge', {
+        name: sourceName,
+        value,
+        type: 'proc',
+      });
+      break;
+
+    case 'RunSpeed':
+      global.runSpeed += value;
+      addToBreakdown(breakdown, 'runspeed', {
+        name: sourceName,
+        value,
+        type: 'proc',
+      });
+      break;
+
+    case 'KnockbackProtection':
+      // KB protection is a magnitude, not a percentage
+      // We could add a separate field for this if needed
+      break;
+
+    // Other categories (Damage, Control, Debuff, etc.) are not "always-on" stats
+    default:
+      break;
+  }
+}
+
+/**
+ * Apply bonuses from always-on procs (Global and Proc120s in Auto/Toggle powers)
+ */
+function applyProcBonuses(
+  build: Build,
+  global: GlobalBonuses,
+  breakdown: Map<string, DashboardStatBreakdown>
+): void {
+  const procs = collectAlwaysOnProcs(build);
+
+  for (const proc of procs) {
+    const procData = findProcData(proc.procName, proc.setName);
+    if (!procData) continue;
+
+    const effect = parseProcEffect(procData.mechanics);
+    const sourceName = `${proc.setName}: ${proc.procName}`;
+
+    // Apply primary effect
+    applySingleProcEffect(
+      effect.category,
+      effect.value,
+      effect.effectType,
+      sourceName,
+      global,
+      breakdown
+    );
+
+    // Apply secondary effect if present (e.g., Numina's Recovery+Regen, Panacea HP+End)
+    if (effect.secondaryCategory && effect.secondaryValue !== undefined) {
+      applySingleProcEffect(
+        effect.secondaryCategory,
+        effect.secondaryValue,
+        effect.secondaryEffectType,
+        sourceName,
+        global,
+        breakdown
+      );
+    }
+  }
+
+  // Also collect PPM procs from Auto/Toggle powers and calculate their effective contribution
+  applyPPMProcBonuses(build, global, breakdown);
+}
+
+/**
+ * Apply bonuses from PPM-based procs in Auto/Toggle powers
+ * These procs fire with a calculable frequency, contributing a rate-based bonus
+ */
+function applyPPMProcBonuses(
+  build: Build,
+  global: GlobalBonuses,
+  breakdown: Map<string, DashboardStatBreakdown>
+): void {
+  const BASE_RECOVERY_RATE = 1.667; // Base end/sec (100 end in 60 seconds)
+
+  const processPower = (power: PowerForProcScan) => {
+    if (!power.slots) return;
+
+    const powerType = power.powerType?.toLowerCase() || '';
+    const isAutoOrToggle = powerType === 'auto' || powerType === 'toggle';
+    const isActive = powerType === 'auto' || (powerType === 'toggle' && power.isActive);
+
+    // Only process active Auto/Toggle powers for PPM procs
+    if (!isAutoOrToggle || !isActive) return;
+
+    for (const slot of power.slots) {
+      if (!slot || slot.type !== 'io-set') continue;
+      const ioSlot = slot as IOSetEnhancement;
+      if (!ioSlot.isProc) continue;
+
+      const procData = findProcData(ioSlot.name, ioSlot.setName);
+      if (!procData) continue;
+
+      // Skip if not a PPM proc (Global and Proc120s are handled elsewhere)
+      if (procData.type !== 'Proc' || procData.ppm === null) continue;
+
+      const effect = parseProcEffect(procData.mechanics);
+      const procsPerMin = calculateAutoToggleProcsPerMinute(procData.ppm);
+      const sourceName = `${procData.setName}: ${ioSlot.name} (PPM)`;
+
+      // Calculate effective contributions based on effect category
+      if (effect.category === 'Endurance' && effect.value !== undefined) {
+        // Endurance proc: X% of max end per proc
+        // Convert to recovery equivalent: (value% × procsPerMin) / 60 / BASE_RECOVERY_RATE × 100
+        // This gives us an equivalent recovery buff percentage
+        const endPerSec = (effect.value * procsPerMin) / 60;
+        const recoveryEquivalent = (endPerSec / BASE_RECOVERY_RATE) * 100;
+        global.recovery += recoveryEquivalent;
+        addToBreakdown(breakdown, 'recovery', {
+          name: sourceName,
+          value: recoveryEquivalent,
+          type: 'proc',
+        });
+      }
+
+      // Note: Recovery and Regeneration procs are typically Proc120s (100% chance, 120s duration)
+      // and are handled by the always-on proc system. PPM-based recovery/regen procs are rare.
+    }
+  };
+
+  // Process all power categories
+  for (const power of build.primary?.powers || []) {
+    processPower(power);
+  }
+  for (const power of build.secondary?.powers || []) {
+    processPower(power);
+  }
+  for (const pool of build.pools || []) {
+    for (const power of pool.powers) {
+      processPower(power);
+    }
+  }
+  if (build.epicPool) {
+    for (const power of build.epicPool.powers) {
+      processPower(power);
+    }
+  }
+  for (const power of build.inherents || []) {
+    processPower(power);
+  }
+}
+
+// ============================================
+// ACCOLADE PROCESSING
+// ============================================
+
 function applyAccoladeBonuses(
   accolades: Accolade[],
   global: GlobalBonuses,
@@ -1040,15 +1436,17 @@ export function calculateCharacterTotals(
   // Step 4: Collect all powers
   const allPowers = collectAllPowers(build);
 
-  // Step 5: Apply inherent power bonuses (Fitness, etc.)
-  // Note: Inherent powers would need to be added to the build state
-  // For now, we skip this as they're not in the current build structure
+  // Step 5: Apply inherent power bonuses (Fitness powers)
+  applyFitnessPowerBonuses(build, globalBonuses, breakdown, effectiveLevel);
 
   // Step 6: Get Alpha incarnate enhancement bonuses (apply to all powers)
   const alphaBonuses = getAlphaEnhancementBonuses(build.incarnates, incarnateActive);
 
   // Step 7: Apply active toggle power bonuses (with enhancement multipliers + Alpha bonuses)
   applyActivePowerBonuses(allPowers, globalBonuses, breakdown, effectiveLevel, alphaBonuses);
+
+  // Step 7.5: Apply always-on proc bonuses (Global and Proc120s in Auto/Toggle powers)
+  applyProcBonuses(build, globalBonuses, breakdown);
 
   // Step 8: Apply accolade bonuses
   if (build.accolades && build.accolades.length > 0) {

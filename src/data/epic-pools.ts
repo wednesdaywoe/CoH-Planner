@@ -316,6 +316,11 @@ export function isEpicPowerAvailable(
   // Epic pools not available before level 35
   if (level < EPIC_POOL_LEVEL) return false;
 
+  // Powers with available=-1 are auto-granted powers that should never be shown in selection
+  if (power.available < 0) {
+    return false;
+  }
+
   const rank = power.rank || 1;
   const numSelectedPowers = selectedPowersInPool.length;
 

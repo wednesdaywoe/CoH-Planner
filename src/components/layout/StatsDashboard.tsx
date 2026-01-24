@@ -17,11 +17,19 @@ import type { CalculatedStats, DashboardStatBreakdown } from '@/hooks/useCalcula
 // STAT DEFINITIONS
 // ============================================
 
+/** Compound stat value for stats that show rate + percentage */
+interface CompoundStatValue {
+  perSec: number;
+  buff: number;
+}
+
+type StatValue = number | string | CompoundStatValue;
+
 interface StatDefinition {
   id: string;
   label: string;
-  getValue: (stats: CalculatedStats, maxHP: number) => number | string;
-  format: (value: number | string) => string;
+  getValue: (stats: CalculatedStats, maxHP: number) => StatValue;
+  format: (value: StatValue) => string;
   color: string;
   tooltip: string;
   showWhenZero?: boolean;
@@ -276,12 +284,24 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
   },
   recovery: {
     id: 'recovery',
-    label: 'Recovery',
-    getValue: (stats) => stats.recoveryBuff,
-    format: (v) => `+${Number(v).toFixed(1)}%`,
+    label: 'Rec',
+    // Return an object with both values for formatting
+    getValue: (stats) => {
+      const baseRecovery = 1.667; // 100 end in 60 seconds
+      const endPerSec = baseRecovery * (1 + stats.recoveryBuff / 100);
+      return { perSec: endPerSec, buff: stats.recoveryBuff };
+    },
+    format: (v) => {
+      if (typeof v === 'object' && v !== null && 'perSec' in v) {
+        const { perSec, buff } = v as { perSec: number; buff: number };
+        return `${perSec.toFixed(2)}/s (+${buff.toFixed(1)}%)`;
+      }
+      return `+${Number(v).toFixed(1)}%`;
+    },
     color: 'text-blue-300',
-    tooltip: 'Endurance recovery buff',
+    tooltip: 'Endurance recovery: base 1.67/sec',
     showWhenZero: true,
+    breakdownKey: 'recovery',
   },
   endreduction: {
     id: 'endreduction',
@@ -306,11 +326,24 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
   regeneration: {
     id: 'regeneration',
     label: 'Regen',
-    getValue: (stats) => stats.regenBuff,
-    format: (v) => `+${Number(v).toFixed(1)}%`,
+    // Return an object with both values for formatting
+    getValue: (stats, maxHP) => {
+      // Base regen: 100% HP in 240 seconds = maxHP/240 HP/sec
+      const baseRegenRate = maxHP / 240;
+      const hpPerSec = baseRegenRate * (1 + stats.regenBuff / 100);
+      return { perSec: hpPerSec, buff: stats.regenBuff };
+    },
+    format: (v) => {
+      if (typeof v === 'object' && v !== null && 'perSec' in v) {
+        const { perSec, buff } = v as { perSec: number; buff: number };
+        return `${perSec.toFixed(1)}/s (+${buff.toFixed(1)}%)`;
+      }
+      return `+${Number(v).toFixed(1)}%`;
+    },
     color: 'text-green-300',
-    tooltip: 'Regeneration buff',
+    tooltip: 'HP regeneration: base is 100% HP in 240s',
     showWhenZero: true,
+    breakdownKey: 'regeneration',
   },
 
   // Movement
@@ -774,6 +807,7 @@ function StatItem({ label, value, color = 'text-gray-300', tooltip, breakdown, c
     const activePowerSources = breakdown.sources.filter(s => s.type === 'active-power');
     const inherentSources = breakdown.sources.filter(s => s.type === 'inherent');
     const accoladeSources = breakdown.sources.filter(s => s.type === 'accolade');
+    const procSources = breakdown.sources.filter(s => s.type === 'proc');
 
     return (
       <div className="space-y-2 max-w-[300px]">
@@ -835,6 +869,19 @@ function StatItem({ label, value, color = 'text-gray-300', tooltip, breakdown, c
               <div key={i} className="flex justify-between text-[10px]">
                 <span className="text-slate-300">{source.name}</span>
                 <span className="text-amber-300 ml-2">+{source.value.toFixed(1)}</span>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {/* Procs */}
+        {procSources.length > 0 && (
+          <div>
+            <div className="text-[9px] text-slate-400 uppercase mb-0.5">Procs</div>
+            {procSources.map((source, i) => (
+              <div key={i} className="flex justify-between text-[10px]">
+                <span className="text-slate-300 truncate max-w-[200px]">{source.name}</span>
+                <span className="text-cyan-400 ml-2">+{source.value.toFixed(1)}%</span>
               </div>
             ))}
           </div>

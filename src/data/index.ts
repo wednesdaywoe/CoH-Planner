@@ -198,5 +198,33 @@ export {
   parseDamageType,
   parseBuffValue,
   parseDuration,
+  parseProcEffect,
+  getProcEffectLabel,
+  getProcEffectColor,
+  isProcAlwaysOn,
+  // PPM calculation functions
+  getPPMAreaFactor,
+  calculateProcChance,
+  calculateProcsPerMinute,
+  calculateProcDPS,
+  calculateBuffProcRate,
+  calculateAutoToggleProcChance,
+  calculateAutoToggleProcsPerMinute,
+  calculateProcStats,
+  AUTO_POWER_PSEUDO_RECHARGE,
+  TOGGLE_POWER_TICK_INTERVAL,
 } from './proc-data';
-export type { ProcData, ProcType } from './proc-data';
+export type { ProcData, ProcType, ProcEffectCategory, ParsedProcEffect, PowerProcCalcData } from './proc-data';
+
+// Granted powers (sub-powers granted by parent powers like Adaptation)
+export {
+  GRANTED_POWER_GROUPS,
+  hasGrantedPowers,
+  getGrantedPowerGroup,
+  getGrantedPowerNames,
+  arePowersMutuallyExclusive,
+  getParentPower,
+  isGrantedSubPower,
+  getSiblingPowers,
+} from './granted-powers';
+export type { GrantedPowerGroup } from './granted-powers';

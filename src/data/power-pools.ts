@@ -335,11 +335,11 @@ export function isPowerAvailableInPool(
   // Pools not available before level 4
   if (level < POOL_UNLOCK_LEVEL) return false;
 
-  // Powers with available=-1 are unlocked by owning another power (e.g., Afterburner requires Fly)
-  // These are handled by the requires field check
+  // Powers with available=-1 are auto-granted powers that should never be shown in selection
+  // They are automatically added to the build when their parent power is selected
+  // Examples: Afterburner (granted by Fly), Adaptation modes in Bio Organic Armor
   if (power.available < 0) {
-    // Check if prerequisites are met
-    return arePoolPrerequisitesMet(poolId, power.name, selectedPowersInPool);
+    return false;
   }
 
   const rank = power.rank || 1;

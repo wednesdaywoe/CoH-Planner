@@ -331,4 +331,6 @@ export interface SelectedPower extends Power {
   inherentCategory?: 'fitness' | 'basic' | 'prestige' | 'archetype';
   /** If true, the power is toggled on and its effects apply to stats (for toggle/buff powers) */
   isActive?: boolean;
+  /** For powers that grant mutually exclusive sub-powers (e.g., Adaptation), tracks which one is active */
+  activeSubPower?: string;
 }

@@ -8,7 +8,7 @@ import { useEffect, useState, useCallback, useMemo } from 'react';
 import { createPortal } from 'react-dom';
 import { useUIStore, useBuildStore } from '@/stores';
 import { useGlobalBonuses } from '@/hooks/useCalculatedStats';
-import { getPower, getPowerPool, getArchetype, getIOSet, getPowerset, getInherentPowerDef, findProcData, parseDamageRange, parseDamageType, parseDuration } from '@/data';
+import { getPower, getPowerPool, getArchetype, getIOSet, getPowerset, getInherentPowerDef, findProcData, parseProcEffect, getProcEffectLabel, getProcEffectColor, isProcAlwaysOn, calculateProcChance, calculateProcsPerMinute, calculateProcDPS, calculateAutoToggleProcChance, calculateAutoToggleProcsPerMinute } from '@/data';
 import { resolvePath } from '@/utils/paths';
 import type { Power } from '@/types';
 import {
@@ -182,6 +182,22 @@ interface PowerInfoContentProps {
   powerSet: string;
 }
 
+/** Get the full icon path for an inherent power based on its category */
+function getInherentIconFullPath(iconFilename: string, category?: string): string {
+  const lowercaseIcon = iconFilename?.toLowerCase() || 'unknown.png';
+
+  switch (category) {
+    case 'fitness':
+      return resolvePath(`/img/Powers/Fitness Powers Icons/${lowercaseIcon}`);
+    case 'archetype':
+      return resolvePath(`/img/Powers/Archetype Inherent Powers icons/${lowercaseIcon}`);
+    case 'prestige':
+    case 'basic':
+    default:
+      return resolvePath(`/img/Powers/Inherent Powers Icons/${lowercaseIcon}`);
+  }
+}
+
 function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
   const build = useBuildStore((s) => s.build);
   const archetypeId = build.archetype.id;
@@ -201,11 +217,13 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
   if (!basePower && powerSet === 'Inherent') {
     const inherentDef = getInherentPowerDef(powerName);
     if (inherentDef) {
+      // Resolve the full icon path based on category
+      const iconPath = getInherentIconFullPath(inherentDef.icon, inherentDef.category);
       basePower = {
         name: inherentDef.name,
         fullName: inherentDef.fullName,
         description: inherentDef.description,
-        icon: inherentDef.icon,
+        icon: iconPath,
         shortHelp: inherentDef.description,
         powerType: inherentDef.powerType,
         available: 0,
@@ -218,11 +236,13 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
       // Try archetype inherent from build
       const selectedInherent = build.inherents.find((p) => p.name === powerName);
       if (selectedInherent) {
+        // Resolve the full icon path based on inherent category
+        const iconPath = getInherentIconFullPath(selectedInherent.icon || 'unknown.png', selectedInherent.inherentCategory);
         basePower = {
           name: selectedInherent.name,
           fullName: selectedInherent.fullName || `Inherent.${selectedInherent.name}`,
           description: selectedInherent.description || '',
-          icon: selectedInherent.icon,
+          icon: iconPath,
           shortHelp: selectedInherent.description || '',
           powerType: selectedInherent.powerType || 'Auto',
           available: 0,
@@ -712,6 +732,12 @@ function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfoContent
       }
     }
 
+    // Check inherent powers (Fitness, Basic, Prestige)
+    const inherentPower = build.inherents.find((p) => p.name === powerName);
+    if (inherentPower && inherentPower.slots[slotIndex]) {
+      return inherentPower.slots[slotIndex];
+    }
+
     return null;
   };
 
@@ -727,8 +753,12 @@ function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfoContent
         if (poolPower) return poolPower;
       }
       if (build.epicPool) {
-        return build.epicPool.powers.find((p) => p.name === powerName);
+        const epicPower = build.epicPool.powers.find((p) => p.name === powerName);
+        if (epicPower) return epicPower;
       }
+      // Check inherent powers (Fitness, Basic, Prestige)
+      const inherentPower = build.inherents.find((p) => p.name === powerName);
+      if (inherentPower) return inherentPower;
       return null;
     };
 
@@ -807,52 +837,48 @@ function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfoContent
             {/* Look up detailed proc data */}
             {(() => {
               const procData = findProcData(enhancement.name, ioEnh.setName);
-              const name = enhancement.name.toLowerCase();
-
-              // Determine category and color based on effect type
-              let effectColorClass = 'text-amber-200';
-              let categoryLabel = '';
-
-              if (name.includes('damage') || name.includes('dot')) {
-                effectColorClass = 'text-red-400';
-                categoryLabel = 'Damage';
-              } else if (name.includes('-tohit') || name.includes('-res') || name.includes('-recharge') || name.includes('-recovery') || name.includes('-def') || name.includes('-str')) {
-                effectColorClass = 'text-purple-400';
-                categoryLabel = 'Debuff';
-              } else if (name.includes('+tohit') || name.includes('+health') || name.includes('+end') || name.includes('build up') || name.includes('+rech') || name.includes('+def') || name.includes('+res') || name.includes('+absorb')) {
-                effectColorClass = 'text-green-400';
-                categoryLabel = 'Buff';
-              } else if (name.includes('stun') || name.includes('hold') || name.includes('sleep') || name.includes('immob') || name.includes('fear') || name.includes('confuse') || name.includes('knock') || name.includes('placate') || name.includes('disorient')) {
-                effectColorClass = 'text-cyan-400';
-                categoryLabel = 'Control';
-              } else if (name.includes('heal')) {
-                effectColorClass = 'text-emerald-400';
-                categoryLabel = 'Heal';
-              }
 
               if (procData) {
-                // We have detailed proc data
-                const damageRange = parseDamageRange(procData.mechanics);
-                const damageType = parseDamageType(procData.mechanics);
-                const duration = parseDuration(procData.mechanics);
+                // Parse the mechanics into structured effect data
+                const effect = parseProcEffect(procData.mechanics);
+                const effectColorClass = getProcEffectColor(effect.category);
+                const categoryLabel = getProcEffectLabel(effect.category);
+                const isAlwaysOn = isProcAlwaysOn(procData);
+
+                // Get category-specific badge colors
+                const badgeColors = {
+                  'Damage': 'bg-red-900/50 text-red-300',
+                  'Endurance': 'bg-blue-900/50 text-blue-300',
+                  'Heal': 'bg-emerald-900/50 text-emerald-300',
+                  'Absorb': 'bg-cyan-900/50 text-cyan-300',
+                  'Resistance': 'bg-orange-900/50 text-orange-300',
+                  'Defense': 'bg-purple-900/50 text-purple-300',
+                  'ToHit': 'bg-yellow-900/50 text-yellow-300',
+                  'Regeneration': 'bg-green-900/50 text-green-300',
+                  'Recovery': 'bg-blue-900/50 text-blue-300',
+                  'Recharge': 'bg-amber-900/50 text-amber-300',
+                  'RunSpeed': 'bg-teal-900/50 text-teal-300',
+                  'MaxHP': 'bg-pink-900/50 text-pink-300',
+                  'KnockbackProtection': 'bg-slate-700 text-slate-300',
+                  'Stealth': 'bg-gray-700 text-gray-300',
+                  'Control': 'bg-indigo-900/50 text-indigo-300',
+                  'Debuff': 'bg-rose-900/50 text-rose-300',
+                  'Special': 'bg-slate-700 text-slate-300',
+                }[effect.category] || 'bg-slate-700 text-slate-300';
 
                 return (
                   <div className="space-y-1">
                     {/* Effect name and category */}
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-2 flex-wrap">
                       <span className={`text-[10px] font-medium ${effectColorClass}`}>
                         {procData.ioName}
                       </span>
-                      {categoryLabel && (
-                        <span className={`text-[8px] px-1 py-0.5 rounded ${
-                          categoryLabel === 'Damage' ? 'bg-red-900/50 text-red-300' :
-                          categoryLabel === 'Debuff' ? 'bg-purple-900/50 text-purple-300' :
-                          categoryLabel === 'Buff' ? 'bg-green-900/50 text-green-300' :
-                          categoryLabel === 'Control' ? 'bg-cyan-900/50 text-cyan-300' :
-                          categoryLabel === 'Heal' ? 'bg-emerald-900/50 text-emerald-300' :
-                          'bg-slate-700 text-slate-300'
-                        }`}>
-                          {categoryLabel}
+                      <span className={`text-[8px] px-1 py-0.5 rounded ${badgeColors}`}>
+                        {categoryLabel}
+                      </span>
+                      {isAlwaysOn && (
+                        <span className="text-[8px] px-1 py-0.5 rounded bg-green-900/50 text-green-300">
+                          Always On
                         </span>
                       )}
                     </div>
@@ -862,7 +888,7 @@ function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfoContent
                       {procData.mechanics}
                     </div>
 
-                    {/* PPM and Type info */}
+                    {/* Effect details based on category */}
                     <div className="flex flex-wrap gap-x-3 gap-y-0.5 text-[9px]">
                       {procData.ppm !== null && (
                         <div>
@@ -877,22 +903,227 @@ function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfoContent
                           procData.type === 'Global' ? 'text-green-400' :
                           'text-amber-300'
                         }`}>
-                          {procData.type}
+                          {procData.type === 'Proc120s' ? '100% (120s)' : procData.type}
                         </span>
                       </div>
-                      {damageRange && damageType && (
+                      {/* Show parsed effect values */}
+                      {effect.value !== undefined && effect.category === 'Damage' && effect.valueMax && (
                         <div>
                           <span className="text-slate-500">Dmg:</span>
-                          <span className="text-red-400 ml-1">{damageRange[0]}-{damageRange[1]} {damageType}</span>
+                          <span className="text-red-400 ml-1">{effect.value}-{effect.valueMax} {effect.effectType}</span>
                         </div>
                       )}
-                      {duration && (
+                      {effect.value !== undefined && effect.category !== 'Damage' && (
+                        <div>
+                          <span className="text-slate-500">Value:</span>
+                          <span className={`${effectColorClass} ml-1`}>
+                            {effect.category === 'KnockbackProtection' ? `Mag ${effect.value}` :
+                             effect.category === 'Stealth' ? `${effect.value} ft` :
+                             `${effect.value}%`}
+                            {effect.effectType ? ` ${effect.effectType}` : ''}
+                          </span>
+                        </div>
+                      )}
+                      {effect.duration && (
                         <div>
                           <span className="text-slate-500">Dur:</span>
-                          <span className="text-cyan-300 ml-1">{duration}s</span>
+                          <span className="text-cyan-300 ml-1">{effect.duration}s</span>
+                        </div>
+                      )}
+                      {/* Secondary effect (for combined procs like Numina's, Panacea) */}
+                      {effect.secondaryCategory && effect.secondaryValue !== undefined && (
+                        <div>
+                          <span className="text-slate-500">+{getProcEffectLabel(effect.secondaryCategory)}:</span>
+                          <span className={`${getProcEffectColor(effect.secondaryCategory)} ml-1`}>
+                            {effect.secondaryValue}%
+                            {effect.secondaryEffectType ? ` ${effect.secondaryEffectType}` : ''}
+                          </span>
                         </div>
                       )}
                     </div>
+
+                    {/* PPM Calculation - show for PPM-based procs */}
+                    {procData.ppm !== null && (() => {
+                      // Find the power this enhancement is slotted in
+                      const findPowerData = () => {
+                        // Check primary
+                        const primaryPower = build.primary.powers.find((p) => p.name === powerName);
+                        if (primaryPower && build.primary.id) {
+                          const basePower = getPower(build.primary.id, powerName);
+                          return { selected: primaryPower, base: basePower };
+                        }
+                        // Check secondary
+                        const secondaryPower = build.secondary.powers.find((p) => p.name === powerName);
+                        if (secondaryPower && build.secondary.id) {
+                          const basePower = getPower(build.secondary.id, powerName);
+                          return { selected: secondaryPower, base: basePower };
+                        }
+                        // Check pools
+                        for (const pool of build.pools) {
+                          const poolPower = pool.powers.find((p) => p.name === powerName);
+                          if (poolPower) {
+                            const poolData = getPowerPool(pool.id);
+                            const basePower = poolData?.powers.find((p) => p.name === powerName);
+                            return { selected: poolPower, base: basePower };
+                          }
+                        }
+                        // Check inherents
+                        const inherentPower = build.inherents.find((p) => p.name === powerName);
+                        if (inherentPower) {
+                          return { selected: inherentPower, base: null };
+                        }
+                        return null;
+                      };
+
+                      const powerData = findPowerData();
+                      if (!powerData) return null;
+
+                      const { selected, base } = powerData;
+                      const powerType = selected.powerType?.toLowerCase() || base?.powerType?.toLowerCase() || 'click';
+                      const isAutoOrToggle = powerType === 'auto' || powerType === 'toggle';
+
+                      // For Auto/Toggle powers, use special calculation
+                      if (isAutoOrToggle) {
+                        const procChance = calculateAutoToggleProcChance(procData.ppm);
+                        const procsPerMin = calculateAutoToggleProcsPerMinute(procData.ppm);
+
+                        return (
+                          <div className="mt-1 pt-1 border-t border-amber-700/30">
+                            <div className="text-[8px] text-amber-400/70 uppercase mb-0.5">PPM Calculation ({powerType})</div>
+                            <div className="flex flex-wrap gap-x-3 gap-y-0.5 text-[9px]">
+                              <div>
+                                <span className="text-slate-500">Chance/tick:</span>
+                                <span className="text-amber-300 ml-1">{(procChance * 100).toFixed(1)}%</span>
+                              </div>
+                              <div>
+                                <span className="text-slate-500">Procs/min:</span>
+                                <span className="text-green-400 ml-1">{procsPerMin.toFixed(2)}</span>
+                              </div>
+                              {effect.category === 'Damage' && effect.value !== undefined && effect.valueMax !== undefined && (
+                                <div>
+                                  <span className="text-slate-500">Avg DPS:</span>
+                                  <span className="text-red-400 ml-1">
+                                    {((procsPerMin * (effect.value + effect.valueMax) / 2) / 60).toFixed(1)}
+                                  </span>
+                                </div>
+                              )}
+                              {/* Endurance per second for endurance procs */}
+                              {effect.category === 'Endurance' && effect.value !== undefined && (
+                                <div>
+                                  <span className="text-slate-500">End/sec:</span>
+                                  <span className="text-blue-400 ml-1">
+                                    {((procsPerMin * effect.value) / 60).toFixed(2)}
+                                  </span>
+                                </div>
+                              )}
+                              {/* HP per second for heal procs */}
+                              {effect.category === 'Heal' && effect.value !== undefined && (
+                                <div>
+                                  <span className="text-slate-500">HP%/sec:</span>
+                                  <span className="text-green-400 ml-1">
+                                    {((procsPerMin * effect.value) / 60).toFixed(2)}%
+                                  </span>
+                                </div>
+                              )}
+                              {/* Recovery rate for recovery procs */}
+                              {effect.category === 'Recovery' && effect.value !== undefined && (
+                                <div>
+                                  <span className="text-slate-500">Rec%/sec:</span>
+                                  <span className="text-blue-300 ml-1">
+                                    {((procsPerMin * effect.value) / 60).toFixed(2)}%
+                                  </span>
+                                </div>
+                              )}
+                              {/* Regen rate for regeneration procs */}
+                              {effect.category === 'Regeneration' && effect.value !== undefined && (
+                                <div>
+                                  <span className="text-slate-500">Regen%/sec:</span>
+                                  <span className="text-green-300 ml-1">
+                                    {((procsPerMin * effect.value) / 60).toFixed(2)}%
+                                  </span>
+                                </div>
+                              )}
+                            </div>
+                            <div className="text-[7px] text-slate-500 mt-0.5 italic">
+                              Auto/Toggle: 10s pseudo-recharge, 6 checks/min
+                            </div>
+                          </div>
+                        );
+                      }
+
+                      // For Click powers, need recharge and cast time
+                      const recharge = base?.effects?.recharge || selected.effects?.recharge || 0;
+                      const castTime = base?.effects?.castTime || selected.effects?.castTime || 1;
+                      const radius = base?.effects?.radius || selected.effects?.radius || 0;
+
+                      if (recharge <= 0) return null; // Can't calculate without recharge
+
+                      const procChance = calculateProcChance(procData.ppm, recharge, castTime, radius);
+                      const procsPerMin = calculateProcsPerMinute(procData.ppm, recharge, castTime, radius, 0);
+
+                      return (
+                        <div className="mt-1 pt-1 border-t border-amber-700/30">
+                          <div className="text-[8px] text-amber-400/70 uppercase mb-0.5">PPM Calculation</div>
+                          <div className="flex flex-wrap gap-x-3 gap-y-0.5 text-[9px]">
+                            <div>
+                              <span className="text-slate-500">Chance:</span>
+                              <span className="text-amber-300 ml-1">{(procChance * 100).toFixed(1)}%</span>
+                            </div>
+                            <div>
+                              <span className="text-slate-500">Procs/min:</span>
+                              <span className="text-green-400 ml-1">{procsPerMin.toFixed(2)}</span>
+                            </div>
+                            {effect.category === 'Damage' && effect.value !== undefined && effect.valueMax !== undefined && (
+                              <div>
+                                <span className="text-slate-500">Avg DPS:</span>
+                                <span className="text-red-400 ml-1">
+                                  {calculateProcDPS(procData.ppm, effect.value, effect.valueMax, recharge, castTime, radius, 0).toFixed(1)}
+                                </span>
+                              </div>
+                            )}
+                            {/* Endurance per second for endurance procs */}
+                            {effect.category === 'Endurance' && effect.value !== undefined && (
+                              <div>
+                                <span className="text-slate-500">End/sec:</span>
+                                <span className="text-blue-400 ml-1">
+                                  {((procsPerMin * effect.value) / 60).toFixed(2)}
+                                </span>
+                              </div>
+                            )}
+                            {/* HP per second for heal procs */}
+                            {effect.category === 'Heal' && effect.value !== undefined && (
+                              <div>
+                                <span className="text-slate-500">HP%/sec:</span>
+                                <span className="text-green-400 ml-1">
+                                  {((procsPerMin * effect.value) / 60).toFixed(2)}%
+                                </span>
+                              </div>
+                            )}
+                            {/* Recovery rate for recovery procs */}
+                            {effect.category === 'Recovery' && effect.value !== undefined && (
+                              <div>
+                                <span className="text-slate-500">Rec%/sec:</span>
+                                <span className="text-blue-300 ml-1">
+                                  {((procsPerMin * effect.value) / 60).toFixed(2)}%
+                                </span>
+                              </div>
+                            )}
+                            {/* Regen rate for regeneration procs */}
+                            {effect.category === 'Regeneration' && effect.value !== undefined && (
+                              <div>
+                                <span className="text-slate-500">Regen%/sec:</span>
+                                <span className="text-green-300 ml-1">
+                                  {((procsPerMin * effect.value) / 60).toFixed(2)}%
+                                </span>
+                              </div>
+                            )}
+                          </div>
+                          <div className="text-[7px] text-slate-500 mt-0.5 italic">
+                            Base: {recharge.toFixed(1)}s rech, {castTime.toFixed(2)}s cast{radius > 0 ? `, ${radius}ft AoE` : ''}
+                          </div>
+                        </div>
+                      );
+                    })()}
 
                     {/* PvP notes if any */}
                     {procData.pvpNotes && (
@@ -904,6 +1135,7 @@ function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfoContent
                 );
               } else {
                 // Fallback to basic display if no proc data found
+                const name = enhancement.name.toLowerCase();
                 let effectText = enhancement.name;
                 if (name.includes('chance for')) {
                   effectText = enhancement.name.replace(/^Chance for /i, '');
@@ -914,19 +1146,7 @@ function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfoContent
                 return (
                   <>
                     <div className="flex items-center gap-2">
-                      <span className={`text-[10px] ${effectColorClass}`}>{effectText}</span>
-                      {categoryLabel && (
-                        <span className={`text-[8px] px-1 py-0.5 rounded ${
-                          categoryLabel === 'Damage' ? 'bg-red-900/50 text-red-300' :
-                          categoryLabel === 'Debuff' ? 'bg-purple-900/50 text-purple-300' :
-                          categoryLabel === 'Buff' ? 'bg-green-900/50 text-green-300' :
-                          categoryLabel === 'Control' ? 'bg-cyan-900/50 text-cyan-300' :
-                          categoryLabel === 'Heal' ? 'bg-emerald-900/50 text-emerald-300' :
-                          'bg-slate-700 text-slate-300'
-                        }`}>
-                          {categoryLabel}
-                        </span>
-                      )}
+                      <span className="text-[10px] text-amber-200">{effectText}</span>
                     </div>
                     <div className="text-[8px] text-slate-500 mt-1 italic">
                       Proc effects trigger based on PPM (Procs Per Minute) formula

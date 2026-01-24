@@ -6,6 +6,14 @@ import { useActiveSetBonuses } from '@/hooks';
 import { Tooltip, Badge } from '@/components/ui';
 import type { SetBonus } from '@/types';
 
+/** Format a number to at most 2 decimal places, removing trailing zeros */
+function formatBonusValue(value: number): string {
+  // Round to 2 decimal places to avoid floating point issues
+  const rounded = Math.round(value * 100) / 100;
+  // Convert to string, which automatically removes trailing zeros
+  return rounded.toString();
+}
+
 export function SetBonusDisplay() {
   const activeBonuses = useActiveSetBonuses();
 
@@ -67,7 +75,7 @@ function BonusRow({ bonus, isActive }: BonusRowProps) {
           <div className="mt-1 space-y-0.5">
             {bonus.effects.map((effect, i) => (
               <div key={i} className="text-sm">
-                {effect.stat}: +{effect.value}
+                {effect.stat}: +{formatBonusValue(effect.value)}
                 {typeof effect.value === 'number' && effect.value < 1 ? '' : '%'}
               </div>
             ))}
@@ -125,7 +133,7 @@ export function SetBonusSummary({
               className={`text-xs ${isActive ? 'text-green-400' : 'text-gray-500'}`}
             >
               <span className="font-medium">{bonus.pieces}pc:</span>{' '}
-              {bonus.effects.map((e) => `${e.stat} +${e.value}`).join(', ')}
+              {bonus.effects.map((e) => `${e.stat} +${formatBonusValue(e.value)}`).join(', ')}
             </div>
           );
         })}

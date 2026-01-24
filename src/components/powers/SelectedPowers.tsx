@@ -5,8 +5,8 @@
 
 import { useBuildStore, useUIStore } from '@/stores';
 import type { PowerCategory } from '@/stores';
-import type { SelectedPower } from '@/types';
-import { getPowerIconPath } from '@/data';
+import type { SelectedPower, Power } from '@/types';
+import { getPowerIconPath, getPowerset, hasGrantedPowers, getGrantedPowerGroup } from '@/data';
 import { resolvePath } from '@/utils/paths';
 import { DraggableSlotGhost } from './DraggableSlotGhost';
 import { SlottedEnhancementIcon } from './SlottedEnhancementIcon';
@@ -48,6 +48,7 @@ export function SelectedPowers({ category }: SelectedPowersProps) {
   const removeSlot = useBuildStore((s) => s.removeSlot);
   const clearEnhancement = useBuildStore((s) => s.clearEnhancement);
   const togglePowerActive = useBuildStore((s) => s.togglePowerActive);
+  const setActiveSubPower = useBuildStore((s) => s.setActiveSubPower);
   const setInfoPanelContent = useUIStore((s) => s.setInfoPanelContent);
   const clearInfoPanel = useUIStore((s) => s.clearInfoPanel);
   const lockInfoPanel = useUIStore((s) => s.lockInfoPanel);
@@ -144,6 +145,21 @@ export function SelectedPowers({ category }: SelectedPowersProps) {
     );
   }
 
+  // Get powerset to look up sub-powers
+  const powerset = getPowerset(powersetId);
+
+  // Get sub-powers for a parent power
+  const getSubPowers = (parentPowerName: string): Power[] => {
+    if (!powerset || !hasGrantedPowers(parentPowerName)) return [];
+    const group = getGrantedPowerGroup(parentPowerName);
+    if (!group) return [];
+
+    // Find sub-powers in the powerset
+    return powerset.powers.filter(p =>
+      group.grantedPowers.includes(p.name)
+    );
+  };
+
   return (
     <div className="space-y-0.5">
       {powers.map((power) => {
@@ -152,25 +168,42 @@ export function SelectedPowers({ category }: SelectedPowersProps) {
           lockedContent?.type === 'power' &&
           lockedContent.powerName === power.name;
 
+        // Check if this power grants sub-powers
+        const subPowers = getSubPowers(power.name);
+        const grantedGroup = getGrantedPowerGroup(power.name);
+
         return (
-          <SelectedPowerRow
-            key={power.name}
-            power={power}
-            powersetId={powersetId}
-            powersetName={selection.name}
-            isLocked={isLocked}
-            onRemove={() => handleRemove(power.name)}
-            onAddSlots={(count) => handleAddSlots(power.name, count)}
-            onRemoveSlot={(index) => handleRemoveSlot(power.name, index)}
-            onRemoveAllSlots={() => handleRemoveAllSlots(power.name, power.slots.length)}
-            onClearEnhancement={(index) => handleClearEnhancement(power.name, index)}
-            onOpenPicker={(slotIndex) => openEnhancementPicker(power.name, powersetId, slotIndex)}
-            onHover={() => handlePowerHover(power)}
-            onLeave={handlePowerLeave}
-            onEnhancementHover={(index) => handleEnhancementHover(power.name, index)}
-            onRightClick={(e) => handlePowerRightClick(e, power)}
-            onToggle={() => togglePowerActive(power.name)}
-          />
+          <div key={power.name}>
+            <SelectedPowerRow
+              power={power}
+              powersetId={powersetId}
+              powersetName={selection.name}
+              isLocked={isLocked}
+              onRemove={() => handleRemove(power.name)}
+              onAddSlots={(count) => handleAddSlots(power.name, count)}
+              onRemoveSlot={(index) => handleRemoveSlot(power.name, index)}
+              onRemoveAllSlots={() => handleRemoveAllSlots(power.name, power.slots.length)}
+              onClearEnhancement={(index) => handleClearEnhancement(power.name, index)}
+              onOpenPicker={(slotIndex) => openEnhancementPicker(power.name, powersetId, slotIndex)}
+              onHover={() => handlePowerHover(power)}
+              onLeave={handlePowerLeave}
+              onEnhancementHover={(index) => handleEnhancementHover(power.name, index)}
+              onRightClick={(e) => handlePowerRightClick(e, power)}
+              onToggle={() => togglePowerActive(power.name)}
+            />
+
+            {/* Granted sub-powers display */}
+            {subPowers.length > 0 && (
+              <GrantedSubPowers
+                subPowers={subPowers}
+                parentPower={power}
+                powersetName={selection.name}
+                isMutuallyExclusive={grantedGroup?.mutuallyExclusive ?? false}
+                activeSubPower={power.activeSubPower}
+                onSetActive={(subPowerName) => setActiveSubPower(power.name, subPowerName)}
+              />
+            )}
+          </div>
         );
       })}
     </div>
@@ -320,32 +353,34 @@ function SelectedPowerRow({
         />
       </div>
 
-      {/* Toggle switch for buff/toggle powers */}
-      {showToggle && (
-        <Tooltip
-          content={
-            isActive
-              ? 'Power ON - stats included in calculations'
-              : 'Power OFF - click to include in stats'
-          }
-        >
-          <button
-            onClick={onToggle}
-            className={`
-              relative w-8 h-4 rounded-full transition-colors duration-200 flex-shrink-0
-              ${isActive ? 'bg-green-600' : 'bg-slate-600'}
-            `}
+      {/* Toggle switch container - always reserve space to prevent layout shift */}
+      <div className="w-8 flex-shrink-0">
+        {showToggle && (
+          <Tooltip
+            content={
+              isActive
+                ? 'Power ON - stats included in calculations'
+                : 'Power OFF - click to include in stats'
+            }
           >
-            <span
+            <button
+              onClick={onToggle}
               className={`
-                absolute top-[2px] left-[2px] w-3 h-3 rounded-full bg-white shadow-sm
-                transition-transform duration-200
-                ${isActive ? 'translate-x-4' : 'translate-x-0'}
+                relative w-8 h-4 rounded-full transition-colors duration-200
+                ${isActive ? 'bg-green-600' : 'bg-slate-600'}
               `}
-            />
-          </button>
-        </Tooltip>
-      )}
+            >
+              <span
+                className={`
+                  absolute top-[2px] left-[2px] w-3 h-3 rounded-full bg-white shadow-sm
+                  transition-transform duration-200
+                  ${isActive ? 'translate-x-4' : 'translate-x-0'}
+                `}
+              />
+            </button>
+          </Tooltip>
+        )}
+      </div>
 
       {/* Remove button */}
       <button
@@ -355,6 +390,117 @@ function SelectedPowerRow({
       >
         ✕
       </button>
+    </div>
+  );
+}
+
+// ============================================
+// GRANTED SUB-POWERS COMPONENT
+// ============================================
+
+interface GrantedSubPowersProps {
+  subPowers: Power[];
+  parentPower: SelectedPower;
+  powersetName: string;
+  isMutuallyExclusive: boolean;
+  activeSubPower?: string;
+  onSetActive: (subPowerName: string | null) => void;
+}
+
+/**
+ * Displays granted sub-powers below a parent power
+ * For mutually exclusive powers (like Adaptation stances), shows radio-style selection
+ */
+function GrantedSubPowers({
+  subPowers,
+  powersetName,
+  isMutuallyExclusive,
+  activeSubPower,
+  onSetActive,
+}: GrantedSubPowersProps) {
+  return (
+    <div className="ml-6 mt-0.5 space-y-0.5">
+      {subPowers.map((subPower) => {
+        const isActive = activeSubPower === subPower.name;
+
+        return (
+          <div
+            key={subPower.name}
+            className={`
+              flex items-center gap-1.5 px-1.5 py-0.5 rounded-sm
+              border transition-colors
+              ${isActive
+                ? 'bg-slate-700/50 border-green-600/50'
+                : 'bg-slate-800/50 border-slate-700/50 hover:border-slate-600'
+              }
+            `}
+          >
+            {/* Sub-power icon and name */}
+            <img
+              src={getPowerIconPath(powersetName, subPower.icon)}
+              alt=""
+              className="w-4 h-4 rounded-sm flex-shrink-0"
+              onError={(e) => {
+                (e.target as HTMLImageElement).src = resolvePath('/img/Unknown.png');
+              }}
+            />
+            <span className={`text-xs truncate flex-1 ${isActive ? 'text-green-300' : 'text-slate-400'}`}>
+              {subPower.name}
+            </span>
+
+            {/* Toggle/Radio button for sub-power */}
+            {isMutuallyExclusive ? (
+              <Tooltip
+                content={
+                  isActive
+                    ? `${subPower.name} is active`
+                    : `Activate ${subPower.name}`
+                }
+              >
+                <button
+                  onClick={() => onSetActive(isActive ? null : subPower.name)}
+                  className={`
+                    w-4 h-4 rounded-full border-2 flex items-center justify-center
+                    transition-colors
+                    ${isActive
+                      ? 'border-green-500 bg-green-500'
+                      : 'border-slate-500 hover:border-green-400'
+                    }
+                  `}
+                >
+                  {isActive && (
+                    <span className="w-1.5 h-1.5 rounded-full bg-white" />
+                  )}
+                </button>
+              </Tooltip>
+            ) : (
+              <Tooltip
+                content={
+                  isActive
+                    ? `${subPower.name} ON`
+                    : `${subPower.name} OFF`
+                }
+              >
+                <button
+                  onClick={() => onSetActive(isActive ? null : subPower.name)}
+                  className={`
+                    relative w-6 h-3 rounded-full transition-colors duration-200
+                    ${isActive ? 'bg-green-600' : 'bg-slate-600'}
+                  `}
+                >
+                  <span
+                    className={`
+                      absolute top-[2px] left-[2px] w-2 h-2 rounded-full bg-white shadow-sm
+                      transition-transform duration-200
+                      ${isActive ? 'translate-x-3' : 'translate-x-0'}
+                    `}
+                  />
+                </button>
+              </Tooltip>
+            )}
+          </div>
+        );
+      })}
     </div>
   );
 }

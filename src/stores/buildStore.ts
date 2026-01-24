@@ -103,6 +103,8 @@ interface BuildActions {
 
   // Power toggle (for stat calculations)
   togglePowerActive: (powerName: string) => void;
+  /** Set the active sub-power for powers with mutually exclusive stances (e.g., Adaptation) */
+  setActiveSubPower: (parentPowerName: string, subPowerName: string | null) => void;
 
   // Computed
   getTotalSlotsUsed: () => number;
@@ -1049,6 +1051,41 @@ export const useBuildStore = create<BuildStore>()(
                 ? {
                     ...state.build.epicPool,
                     powers: toggleInPowers(state.build.epicPool.powers),
+                  }
+                : null,
+            },
+          };
+        }),
+
+      // Set active sub-power for powers with mutually exclusive stances
+      setActiveSubPower: (parentPowerName, subPowerName) =>
+        set((state) => {
+          const setSubPowerInPowers = (powers: SelectedPower[]) =>
+            powers.map((p) =>
+              p.name === parentPowerName
+                ? { ...p, activeSubPower: subPowerName ?? undefined }
+                : p
+            );
+
+          return {
+            build: {
+              ...state.build,
+              primary: {
+                ...state.build.primary,
+                powers: setSubPowerInPowers(state.build.primary.powers),
+              },
+              secondary: {
+                ...state.build.secondary,
+                powers: setSubPowerInPowers(state.build.secondary.powers),
+              },
+              pools: state.build.pools.map((pool) => ({
+                ...pool,
+                powers: setSubPowerInPowers(pool.powers),
+              })),
+              epicPool: state.build.epicPool
+                ? {
+                    ...state.build.epicPool,
+                    powers: setSubPowerInPowers(state.build.epicPool.powers),
                   }
                 : null,
             },

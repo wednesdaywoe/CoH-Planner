@@ -5,6 +5,49 @@
 
 export type ProcType = 'Proc' | 'Proc120s' | 'Global';
 
+/** Categorization of proc effects for display and calculation */
+export type ProcEffectCategory =
+  | 'Damage'
+  | 'Endurance'
+  | 'Heal'
+  | 'Absorb'
+  | 'Resistance'
+  | 'Defense'
+  | 'ToHit'
+  | 'Regeneration'
+  | 'Recovery'
+  | 'Recharge'
+  | 'RunSpeed'
+  | 'MaxHP'
+  | 'KnockbackProtection'
+  | 'Stealth'
+  | 'Control'
+  | 'Debuff'
+  | 'Special';
+
+/** Structured proc effect data */
+export interface ParsedProcEffect {
+  category: ProcEffectCategory;
+  /** Value (percentage or flat) */
+  value?: number;
+  /** Secondary value (for ranges like 7-72 damage) */
+  valueMax?: number;
+  /** Damage/effect type (Fire, Cold, All, etc.) */
+  effectType?: string;
+  /** Duration in seconds */
+  duration?: number;
+  /** Whether this is a buff to self vs debuff to foe */
+  isBuff: boolean;
+  /** Raw description */
+  description: string;
+  /** Secondary effect category (for combined effects like Numina's Recovery+Regen) */
+  secondaryCategory?: ProcEffectCategory;
+  /** Secondary effect value */
+  secondaryValue?: number;
+  /** Secondary effect type */
+  secondaryEffectType?: string;
+}
+
 export interface ProcData {
   /** Set category (e.g., "Ranged Damage", "Holds") */
   setCategory: string;
@@ -1318,4 +1361,569 @@ export function parseDuration(mechanics: string): number | null {
     return parseFloat(match[1]);
   }
   return null;
+}
+
+/**
+ * Parse proc mechanics string into structured effect data
+ */
+export function parseProcEffect(mechanics: string): ParsedProcEffect {
+  const durationRaw = parseDuration(mechanics);
+  const duration = durationRaw ?? undefined; // Convert null to undefined
+  const lowerMech = mechanics.toLowerCase();
+
+  // ============================================
+  // COMBINED EFFECTS (must check before individual effects)
+  // ============================================
+
+  // Numina's style: Buff(Recovery X% & Regeneration Y%)
+  const numinaMatch = mechanics.match(/Buff\s*\(\s*Recovery\s+(\d+(?:\.\d+)?)\s*%\s*&\s*Regeneration\s+(\d+(?:\.\d+)?)\s*%/i);
+  if (numinaMatch) {
+    return {
+      category: 'Recovery',
+      value: parseFloat(numinaMatch[1]),
+      secondaryCategory: 'Regeneration',
+      secondaryValue: parseFloat(numinaMatch[2]),
+      duration,
+      isBuff: true,
+      description: mechanics,
+    };
+  }
+
+  // Panacea style: Buff(Heal X%), Buff(Endurance Y%)
+  const panaceaHealMatch = mechanics.match(/Buff\s*\(\s*Heal\s+(\d+(?:\.\d+)?)\s*%/i);
+  const panaceaEndMatch = mechanics.match(/Buff\s*\(\s*Endurance\s+(\d+(?:\.\d+)?)\s*%/i);
+  if (panaceaHealMatch && panaceaEndMatch) {
+    // Has both heal and endurance - return combined
+    return {
+      category: 'Heal',
+      value: parseFloat(panaceaHealMatch[1]),
+      secondaryCategory: 'Endurance',
+      secondaryValue: parseFloat(panaceaEndMatch[1]),
+      duration,
+      isBuff: true,
+      description: mechanics,
+    };
+  }
+
+  // Winter's Gift style: Resist(-Speed X% & -Recharge Y%)
+  const winterGiftMatch = mechanics.match(/Resist\s*\(\s*-Speed\s+(\d+(?:\.\d+)?)\s*%\s*&\s*-Recharge\s+(\d+(?:\.\d+)?)\s*%/i);
+  if (winterGiftMatch) {
+    return {
+      category: 'RunSpeed',
+      effectType: 'Slow Resistance',
+      value: parseFloat(winterGiftMatch[1]),
+      secondaryCategory: 'Recharge',
+      secondaryEffectType: 'Recharge Resistance',
+      secondaryValue: parseFloat(winterGiftMatch[2]),
+      isBuff: true,
+      description: mechanics,
+    };
+  }
+
+  // ============================================
+  // SINGLE EFFECTS
+  // ============================================
+
+  // Damage procs
+  const damageMatch = mechanics.match(/Damage\s*\(\s*(\w+(?:\s+\w+)?)\s+(\d+)\s*-\s*(\d+)\s*\)/i);
+  if (damageMatch) {
+    return {
+      category: 'Damage',
+      effectType: damageMatch[1],
+      value: parseInt(damageMatch[2], 10),
+      valueMax: parseInt(damageMatch[3], 10),
+      isBuff: false,
+      description: mechanics,
+    };
+  }
+
+  // Endurance buff (includes Performance Shifter, Theft of Essence)
+  const endMatch = mechanics.match(/Buff\s*\(\s*Endurance\s+(\d+(?:\.\d+)?)\s*%/i);
+  if (endMatch) {
+    return {
+      category: 'Endurance',
+      value: parseFloat(endMatch[1]),
+      duration,
+      isBuff: true,
+      description: mechanics,
+    };
+  }
+
+  // HP/Heal buff (includes Panacea, Call of the Sandman)
+  const healMatch = mechanics.match(/Buff\s*\(\s*Heal\s+(\d+(?:\.\d+)?)\s*%/i);
+  if (healMatch) {
+    return {
+      category: 'Heal',
+      value: parseFloat(healMatch[1]),
+      duration,
+      isBuff: true,
+      description: mechanics,
+    };
+  }
+
+  // Max HP buff (Unbreakable Guard)
+  const maxHpMatch = mechanics.match(/Buff\s*\(\s*Maximum Hit Points\s+\+?(\d+(?:\.\d+)?)\s*%/i);
+  if (maxHpMatch) {
+    return {
+      category: 'MaxHP',
+      value: parseFloat(maxHpMatch[1]),
+      duration,
+      isBuff: true,
+      description: mechanics,
+    };
+  }
+
+  // Absorb buff (Entomb)
+  const absorbMatch = mechanics.match(/Buff\s*\(\s*Absorption\s+(\d+(?:\.\d+)?)\s*%/i);
+  if (absorbMatch) {
+    return {
+      category: 'Absorb',
+      value: parseFloat(absorbMatch[1]),
+      duration,
+      isBuff: true,
+      description: mechanics,
+    };
+  }
+
+  // Regeneration buff
+  const regenMatch = mechanics.match(/(?:Buff\s*\()?Regeneration\s+(\d+(?:\.\d+)?)\s*%/i);
+  if (regenMatch) {
+    return {
+      category: 'Regeneration',
+      value: parseFloat(regenMatch[1]),
+      duration,
+      isBuff: true,
+      description: mechanics,
+    };
+  }
+
+  // Recovery buff (Miracle, Numina's)
+  const recoveryMatch = mechanics.match(/Buff\s*\(\s*Recovery\s+(\d+(?:\.\d+)?)\s*%/i);
+  if (recoveryMatch) {
+    return {
+      category: 'Recovery',
+      value: parseFloat(recoveryMatch[1]),
+      duration,
+      isBuff: true,
+      description: mechanics,
+    };
+  }
+
+  // Recharge buff (Force Feedback, LotG)
+  const rechargeMatch = mechanics.match(/Buff\s*\(\s*Recharge\s+(\d+(?:\.\d+)?)\s*%/i);
+  if (rechargeMatch) {
+    return {
+      category: 'Recharge',
+      value: parseFloat(rechargeMatch[1]),
+      duration,
+      isBuff: true,
+      description: mechanics,
+    };
+  }
+
+  // Run Speed buff
+  const runSpeedMatch = mechanics.match(/Buff\s*\(\s*RunSpeed\s+(\d+(?:\.\d+)?)\s*%/i);
+  if (runSpeedMatch) {
+    return {
+      category: 'RunSpeed',
+      value: parseFloat(runSpeedMatch[1]),
+      duration,
+      isBuff: true,
+      description: mechanics,
+    };
+  }
+
+  // Defense buff (Steadfast, Gladiator's Armor)
+  const defenseMatch = mechanics.match(/Defense\s*\(\s*(\w+)\s+(\d+(?:\.\d+)?)\s*%\s*\)/i);
+  if (defenseMatch) {
+    return {
+      category: 'Defense',
+      effectType: defenseMatch[1],
+      value: parseFloat(defenseMatch[2]),
+      duration,
+      isBuff: true,
+      description: mechanics,
+    };
+  }
+
+  // Resistance buff (Shield Wall, Reactive Defenses, Might of the Tanker)
+  const resistMatch = mechanics.match(/Resistance\s*\(\s*(\w+)\s+(\d+(?:\.\d+)?)\s*%/i);
+  if (resistMatch) {
+    return {
+      category: 'Resistance',
+      effectType: resistMatch[1],
+      value: parseFloat(resistMatch[2]),
+      duration,
+      isBuff: true,
+      description: mechanics,
+    };
+  }
+
+  // ToHit buff (Kismet, Build Up)
+  const toHitMatch = mechanics.match(/(?:Buff\s*\()?ToHit\s+(\d+(?:\.\d+)?)\s*%/i);
+  if (toHitMatch) {
+    return {
+      category: 'ToHit',
+      value: parseFloat(toHitMatch[1]),
+      duration,
+      isBuff: true,
+      description: mechanics,
+    };
+  }
+
+  // Knockback Protection
+  const kbMatch = mechanics.match(/Protection\s*\(\s*Knockback\s+Mag\s+(\d+(?:\.\d+)?)\s*\)/i);
+  if (kbMatch) {
+    return {
+      category: 'KnockbackProtection',
+      value: parseFloat(kbMatch[1]),
+      isBuff: true,
+      description: mechanics,
+    };
+  }
+
+  // Stealth buff
+  const stealthMatch = mechanics.match(/Buff\s*\(\s*Stealth\s+(\d+(?:\.\d+)?)\s*ft/i);
+  if (stealthMatch) {
+    return {
+      category: 'Stealth',
+      value: parseFloat(stealthMatch[1]),
+      duration,
+      isBuff: true,
+      description: mechanics,
+    };
+  }
+
+  // Control effects (Hold, Stun, Immobilize, etc.)
+  if (lowerMech.includes('hold') || lowerMech.includes('disorient') ||
+      lowerMech.includes('immobilize') || lowerMech.includes('knockback') ||
+      lowerMech.includes('knockdown') || lowerMech.includes('confusion') ||
+      lowerMech.includes('placate') || lowerMech.includes('sleep')) {
+    return {
+      category: 'Control',
+      duration,
+      isBuff: false,
+      description: mechanics,
+    };
+  }
+
+  // Debuff effects (Foe -something)
+  if (lowerMech.includes('foe(') || lowerMech.includes('foe (')) {
+    return {
+      category: 'Debuff',
+      duration,
+      isBuff: false,
+      description: mechanics,
+    };
+  }
+
+  // Special/Other
+  return {
+    category: 'Special',
+    duration,
+    isBuff: true,
+    description: mechanics,
+  };
+}
+
+/**
+ * Get a user-friendly display name for proc effect category
+ */
+export function getProcEffectLabel(category: ProcEffectCategory): string {
+  switch (category) {
+    case 'Damage': return 'Damage';
+    case 'Endurance': return '+Endurance';
+    case 'Heal': return '+HP';
+    case 'Absorb': return '+Absorb';
+    case 'Resistance': return '+Resistance';
+    case 'Defense': return '+Defense';
+    case 'ToHit': return '+ToHit';
+    case 'Regeneration': return '+Regen';
+    case 'Recovery': return '+Recovery';
+    case 'Recharge': return '+Recharge';
+    case 'RunSpeed': return '+Run Speed';
+    case 'MaxHP': return '+Max HP';
+    case 'KnockbackProtection': return 'KB Protection';
+    case 'Stealth': return 'Stealth';
+    case 'Control': return 'Control';
+    case 'Debuff': return 'Debuff';
+    case 'Special': return 'Special';
+  }
+}
+
+/**
+ * Get CSS color class for proc effect category
+ */
+export function getProcEffectColor(category: ProcEffectCategory): string {
+  switch (category) {
+    case 'Damage': return 'text-red-400';
+    case 'Endurance': return 'text-blue-400';
+    case 'Heal': return 'text-green-400';
+    case 'Absorb': return 'text-cyan-400';
+    case 'Resistance': return 'text-orange-400';
+    case 'Defense': return 'text-purple-400';
+    case 'ToHit': return 'text-yellow-400';
+    case 'Regeneration': return 'text-green-300';
+    case 'Recovery': return 'text-blue-300';
+    case 'Recharge': return 'text-amber-400';
+    case 'RunSpeed': return 'text-teal-400';
+    case 'MaxHP': return 'text-pink-400';
+    case 'KnockbackProtection': return 'text-slate-300';
+    case 'Stealth': return 'text-gray-400';
+    case 'Control': return 'text-indigo-400';
+    case 'Debuff': return 'text-rose-400';
+    case 'Special': return 'text-slate-400';
+  }
+}
+
+/**
+ * Check if a proc provides a "always-on" benefit when slotted in an Auto or Toggle power
+ * These are Proc120s and Globals - they provide constant benefits while the power is active
+ */
+export function isProcAlwaysOn(procData: ProcData): boolean {
+  return procData.type === 'Global' || procData.type === 'Proc120s';
+}
+
+// ============================================
+// PPM CALCULATION FUNCTIONS
+// ============================================
+
+/**
+ * Area factor for PPM calculation based on power radius
+ * Formula: AreaFactor = max(0.25, 1.0 - radius × 0.011)
+ * - Single target (radius 0): 1.0
+ * - 15ft radius: 0.835
+ * - 25ft radius: 0.725
+ * - 40ft radius: 0.56
+ * - Capped at minimum 0.25 for very large AoE
+ */
+export function getPPMAreaFactor(radius: number): number {
+  if (radius <= 0) return 1.0;
+  return Math.max(0.25, 1.0 - radius * 0.011);
+}
+
+/**
+ * Calculate proc chance per activation using PPM formula
+ *
+ * @param ppm - Procs Per Minute value from the enhancement
+ * @param baseRecharge - Base (unenhanced) recharge time in seconds
+ * @param castTime - Activation/cast time in seconds
+ * @param radius - AoE radius in feet (0 for single target)
+ * @returns Proc chance as decimal (0-1, capped at 0.9)
+ *
+ * Formula: Proc% = PPM × (BaseRecharge + CastTime) / 60 × AreaFactor
+ * Note: Enhanced recharge does NOT affect proc chance - only base recharge matters
+ */
+export function calculateProcChance(
+  ppm: number,
+  baseRecharge: number,
+  castTime: number,
+  radius: number = 0
+): number {
+  const areaFactor = getPPMAreaFactor(radius);
+  const procChance = (ppm * (baseRecharge + castTime) / 60) * areaFactor;
+  // Proc chance is capped at 90%
+  return Math.min(0.9, procChance);
+}
+
+/**
+ * Calculate expected procs per minute based on power usage
+ *
+ * @param ppm - Procs Per Minute value
+ * @param baseRecharge - Base recharge time in seconds
+ * @param castTime - Cast time in seconds
+ * @param radius - AoE radius (0 for single target)
+ * @param enhancedRechargeBonus - Total recharge enhancement bonus as decimal (e.g., 0.95 for +95%)
+ * @returns Expected number of procs per minute
+ */
+export function calculateProcsPerMinute(
+  ppm: number,
+  baseRecharge: number,
+  castTime: number,
+  radius: number = 0,
+  enhancedRechargeBonus: number = 0
+): number {
+  const procChance = calculateProcChance(ppm, baseRecharge, castTime, radius);
+
+  // Calculate actual cycle time with enhanced recharge
+  // Enhanced recharge reduces recharge time: actualRecharge = baseRecharge / (1 + bonus)
+  const actualRecharge = baseRecharge / (1 + enhancedRechargeBonus);
+  const cycleTime = actualRecharge + castTime;
+
+  // Activations per minute
+  const activationsPerMinute = 60 / cycleTime;
+
+  return procChance * activationsPerMinute;
+}
+
+/**
+ * Calculate expected damage per second from a damage proc
+ *
+ * @param ppm - Procs Per Minute value
+ * @param minDamage - Minimum damage value
+ * @param maxDamage - Maximum damage value
+ * @param baseRecharge - Base recharge time in seconds
+ * @param castTime - Cast time in seconds
+ * @param radius - AoE radius (0 for single target)
+ * @param enhancedRechargeBonus - Recharge enhancement bonus as decimal
+ * @returns Expected DPS contribution from this proc
+ */
+export function calculateProcDPS(
+  ppm: number,
+  minDamage: number,
+  maxDamage: number,
+  baseRecharge: number,
+  castTime: number,
+  radius: number = 0,
+  enhancedRechargeBonus: number = 0
+): number {
+  const procsPerMinute = calculateProcsPerMinute(
+    ppm,
+    baseRecharge,
+    castTime,
+    radius,
+    enhancedRechargeBonus
+  );
+
+  // Average damage per proc (damage is uniformly distributed)
+  const avgDamage = (minDamage + maxDamage) / 2;
+
+  // DPS = (procs per minute × avg damage) / 60
+  return (procsPerMinute * avgDamage) / 60;
+}
+
+/**
+ * Calculate effective uptime for buff procs (like Performance Shifter's +End)
+ * For procs that fire periodically and grant a one-time benefit
+ *
+ * @param ppm - Procs Per Minute value
+ * @param baseRecharge - Base recharge time in seconds
+ * @param castTime - Cast time in seconds
+ * @param radius - AoE radius (0 for single target)
+ * @param enhancedRechargeBonus - Recharge enhancement bonus as decimal
+ * @returns Expected procs per minute (for one-shot buffs like +End)
+ */
+export function calculateBuffProcRate(
+  ppm: number,
+  baseRecharge: number,
+  castTime: number,
+  radius: number = 0,
+  enhancedRechargeBonus: number = 0
+): number {
+  return calculateProcsPerMinute(ppm, baseRecharge, castTime, radius, enhancedRechargeBonus);
+}
+
+/**
+ * Special case: Calculate proc rate for Auto powers
+ * Auto powers use a 10-second pseudo-recharge for PPM calculation
+ */
+export const AUTO_POWER_PSEUDO_RECHARGE = 10;
+
+/**
+ * Special case: Calculate proc rate for Toggle powers
+ * Toggles tick every 10 seconds for damage/effect application
+ * For PPM, they use 10-second pseudo-recharge
+ */
+export const TOGGLE_POWER_TICK_INTERVAL = 10;
+
+/**
+ * Calculate proc chance for Auto/Toggle powers
+ * These use a special 10-second pseudo-recharge time
+ *
+ * @param ppm - Procs Per Minute value
+ * @returns Proc chance per tick (every 10 seconds)
+ */
+export function calculateAutoToggleProcChance(ppm: number): number {
+  // Auto/Toggle powers: PPM × (10 + 0) / 60 = PPM × 10 / 60 = PPM / 6
+  const procChance = ppm * AUTO_POWER_PSEUDO_RECHARGE / 60;
+  return Math.min(0.9, procChance);
+}
+
+/**
+ * Calculate expected procs per minute for Auto/Toggle powers
+ *
+ * @param ppm - Procs Per Minute value
+ * @returns Expected procs per minute
+ */
+export function calculateAutoToggleProcsPerMinute(ppm: number): number {
+  const procChance = calculateAutoToggleProcChance(ppm);
+  // 6 ticks per minute (every 10 seconds)
+  return procChance * 6;
+}
+
+/**
+ * Interface for power data needed for proc calculations
+ */
+export interface PowerProcCalcData {
+  baseRecharge: number;
+  castTime: number;
+  radius?: number;
+  powerType: 'Click' | 'Toggle' | 'Auto';
+}
+
+/**
+ * Calculate comprehensive proc statistics for a power
+ */
+export function calculateProcStats(
+  procData: ProcData,
+  power: PowerProcCalcData,
+  enhancedRechargeBonus: number = 0
+): {
+  procChance: number;
+  procsPerMinute: number;
+  dps?: number;
+  effectPerMinute?: number;
+} | null {
+  if (procData.ppm === null) {
+    // Global or Proc120s - always on, no PPM calculation needed
+    return null;
+  }
+
+  const isAutoOrToggle = power.powerType === 'Auto' || power.powerType === 'Toggle';
+
+  let procChance: number;
+  let procsPerMinute: number;
+
+  if (isAutoOrToggle) {
+    procChance = calculateAutoToggleProcChance(procData.ppm);
+    procsPerMinute = calculateAutoToggleProcsPerMinute(procData.ppm);
+  } else {
+    procChance = calculateProcChance(
+      procData.ppm,
+      power.baseRecharge,
+      power.castTime,
+      power.radius || 0
+    );
+    procsPerMinute = calculateProcsPerMinute(
+      procData.ppm,
+      power.baseRecharge,
+      power.castTime,
+      power.radius || 0,
+      enhancedRechargeBonus
+    );
+  }
+
+  const result: {
+    procChance: number;
+    procsPerMinute: number;
+    dps?: number;
+    effectPerMinute?: number;
+  } = {
+    procChance,
+    procsPerMinute,
+  };
+
+  // Calculate DPS for damage procs
+  const effect = parseProcEffect(procData.mechanics);
+  if (effect.category === 'Damage' && effect.value !== undefined && effect.valueMax !== undefined) {
+    const avgDamage = (effect.value + effect.valueMax) / 2;
+    result.dps = (procsPerMinute * avgDamage) / 60;
+  }
+
+  // Calculate effect per minute for buff procs
+  if (effect.value !== undefined && effect.category !== 'Damage') {
+    result.effectPerMinute = procsPerMinute * effect.value;
+  }
+
+  return result;
 }

@@ -1003,7 +1003,7 @@ function SetPieceTooltip({ set, piece }: SetPieceTooltipProps) {
         <div className="text-xs text-gray-400 mt-2 border-t border-gray-600 pt-1">
           <div className="text-gray-500">Set Bonuses:</div>
           {set.bonuses.map((b, i) => (
-            <div key={i}>{b.pieces}pc: {b.effects.map(e => `${e.stat} +${e.value}`).join(', ')}</div>
+            <div key={i}>{b.pieces}pc: {b.effects.map(e => `${e.stat} +${formatBonusValue(e.value)}`).join(', ')}</div>
           ))}
         </div>
       )}
@@ -1014,6 +1014,12 @@ function SetPieceTooltip({ set, piece }: SetPieceTooltipProps) {
 // ============================================
 // HELPER FUNCTIONS
 // ============================================
+
+/** Format a number to at most 2 decimal places, removing trailing zeros */
+function formatBonusValue(value: number): string {
+  const rounded = Math.round(value * 100) / 100;
+  return rounded.toString();
+}
 
 function getGenericIOIcon(stat: EnhancementStatType): string {
   const iconMap: Partial<Record<EnhancementStatType, string>> = {
