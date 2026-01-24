@@ -226,6 +226,13 @@ export interface PowerDamageResult {
   type: string;
   /** Flag indicating scale is unknown (redirect/pseudo-pet powers) */
   unknown?: boolean;
+  /** Conditional Fiery Embrace damage (if detected) */
+  fieryEmbraceDamage?: {
+    base: number;
+    enhanced: number;
+    final: number;
+    type: 'Fire';
+  };
 }
 
 export interface DamageEffect {
@@ -255,6 +262,9 @@ export interface BuildContext {
   secondaryCategory?: string;
 }
 
+/** Threshold for detecting Fiery Embrace bonus damage (Fire must be less than this % of total) */
+const FIERY_EMBRACE_THRESHOLD = 0.20; // 20%
+
 /**
  * Calculate damage for a power from build
  */
@@ -274,14 +284,39 @@ export function calculatePowerDamage(
   // Extract scale - handle both old and new formats
   let scale: number;
   let damageTypeName: string;
+  let fieryEmbraceScale: number | null = null;
 
   if (typeof damageEffect === 'number') {
     scale = damageEffect;
     damageTypeName = 'Unknown';
   } else if (typeof damageEffect === 'object') {
     if (damageEffect.types) {
-      scale = damageEffect.scale || damageEffect.types.reduce((sum, t) => sum + t.scale, 0);
-      damageTypeName = damageEffect.types.map((t) => t.type).join('/');
+      const totalScale = damageEffect.scale || damageEffect.types.reduce((sum, t) => sum + t.scale, 0);
+
+      // Check for Fiery Embrace pattern: Fire is minority damage in a non-Fire power
+      const fireType = damageEffect.types.find(t => t.type === 'Fire');
+      const nonFireTypes = damageEffect.types.filter(t => t.type !== 'Fire');
+
+      if (fireType && nonFireTypes.length > 0) {
+        const fireRatio = fireType.scale / totalScale;
+        const dominantNonFire = nonFireTypes.reduce((max, t) => t.scale > max.scale ? t : max, nonFireTypes[0]);
+
+        // If Fire is < 20% of total AND there's a larger non-Fire type, it's Fiery Embrace
+        if (fireRatio < FIERY_EMBRACE_THRESHOLD && dominantNonFire.scale > fireType.scale) {
+          // Separate Fiery Embrace damage from primary damage
+          fieryEmbraceScale = fireType.scale;
+          scale = totalScale - fieryEmbraceScale;
+          damageTypeName = nonFireTypes.map(t => t.type).join('/');
+        } else {
+          // Fire is dominant or significant - treat normally
+          scale = totalScale;
+          damageTypeName = damageEffect.types.map((t) => t.type).join('/');
+        }
+      } else {
+        // No Fire type or no non-Fire types - treat normally
+        scale = totalScale;
+        damageTypeName = damageEffect.types.map((t) => t.type).join('/');
+      }
     } else {
       scale = damageEffect.scale;
       damageTypeName = damageEffect.type || 'Unknown';
@@ -352,12 +387,51 @@ export function calculatePowerDamage(
     damageBuffs: globalDamageBonus + activeBuffs,
   });
 
-  return {
+  const result: PowerDamageResult = {
     base: baseDamage,
     enhanced: enhancedDamage,
     final: finalDamage,
     type: damageTypeName,
   };
+
+  // Calculate Fiery Embrace damage separately if detected
+  if (fieryEmbraceScale !== null && fieryEmbraceScale > 0) {
+    const feBaseDamage = calculateActualDamage({
+      scale: fieryEmbraceScale,
+      damageType,
+      level,
+      archetypeId,
+      enhancementBonus: 0,
+      damageBuffs: 0,
+    });
+
+    const feEnhancedDamage = calculateActualDamage({
+      scale: fieryEmbraceScale,
+      damageType,
+      level,
+      archetypeId,
+      enhancementBonus,
+      damageBuffs: 0,
+    });
+
+    const feFinalDamage = calculateActualDamage({
+      scale: fieryEmbraceScale,
+      damageType,
+      level,
+      archetypeId,
+      enhancementBonus,
+      damageBuffs: globalDamageBonus + activeBuffs,
+    });
+
+    result.fieryEmbraceDamage = {
+      base: feBaseDamage,
+      enhanced: feEnhancedDamage,
+      final: feFinalDamage,
+      type: 'Fire',
+    };
+  }
+
+  return result;
 }
 
 /**

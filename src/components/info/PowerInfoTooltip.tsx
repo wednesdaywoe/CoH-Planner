@@ -203,6 +203,17 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
   const archetypeId = build.archetype.id;
   const globalBonuses = useGlobalBonuses();
 
+  // Check if Fiery Embrace is active in the build
+  const isFieryEmbraceActive = useMemo(() => {
+    // Check secondary powers for Fiery Embrace
+    const fieryEmbrace = build.secondary.powers.find(p => p.name === 'Fiery Embrace');
+    if (fieryEmbrace && fieryEmbrace.isActive) return true;
+    // Also check primary (some ATs might have it there)
+    const primaryFE = build.primary.powers.find(p => p.name === 'Fiery Embrace');
+    if (primaryFE && primaryFE.isActive) return true;
+    return false;
+  }, [build.secondary.powers, build.primary.powers]);
+
   // Try to get power from powerset first, then from pools, then from inherents
   let basePower: Power | undefined = getPower(powerSet, powerName);
 
@@ -603,6 +614,7 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
             <span>Enhanced</span>
             <span>Final</span>
           </div>
+          {/* Primary damage */}
           {(() => {
             const hasEnh = Math.abs(calculatedDamage.enhanced - calculatedDamage.base) > 0.001;
             const hasGlobal = Math.abs(calculatedDamage.final - calculatedDamage.enhanced) > 0.001;
@@ -617,6 +629,32 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
                   {hasGlobal ? `→ ${calculatedDamage.final.toFixed(1)}` : '—'}
                 </span>
               </div>
+            );
+          })()}
+          {/* Fiery Embrace conditional damage */}
+          {calculatedDamage.fieryEmbraceDamage && (() => {
+            const fe = calculatedDamage.fieryEmbraceDamage;
+            const hasEnh = Math.abs(fe.enhanced - fe.base) > 0.001;
+            const hasGlobal = Math.abs(fe.final - fe.enhanced) > 0.001;
+            const isActive = isFieryEmbraceActive;
+            return (
+              <>
+                <div className={`grid grid-cols-[3rem_1fr_1fr_1fr] gap-1 items-baseline text-[10px] mt-0.5 ${isActive ? '' : 'opacity-40'}`}>
+                  <span className={isActive ? 'text-orange-400' : 'text-slate-500'}>{fe.type}</span>
+                  <span className={isActive ? 'text-slate-300' : 'text-slate-500'}>{fe.base.toFixed(1)}</span>
+                  <span className={isActive ? (hasEnh ? 'text-green-400' : 'text-slate-600') : 'text-slate-600'}>
+                    {hasEnh ? `→ ${fe.enhanced.toFixed(1)}` : '—'}
+                  </span>
+                  <span className={isActive ? (hasGlobal ? 'text-amber-400' : 'text-slate-600') : 'text-slate-600'}>
+                    {hasGlobal ? `→ ${fe.final.toFixed(1)}` : '—'}
+                  </span>
+                </div>
+                <div className={`text-[8px] italic mt-0.5 ${isActive ? 'text-orange-400' : 'text-slate-500'}`}>
+                  {isActive
+                    ? '✓ Fiery Embrace active'
+                    : '* Fire damage only with Fiery Embrace active'}
+                </div>
+              </>
             );
           })()}
           {calculatedDamage.unknown && (
