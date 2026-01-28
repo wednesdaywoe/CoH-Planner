@@ -7,3 +7,4 @@ export { StatsConfigModal } from './StatsConfigModal';
 export { AccoladesModal } from './AccoladesModal';
 export { AboutModal } from './AboutModal';
 export { ExportImportModal } from './ExportImportModal';
+export { FeedbackModal } from './FeedbackModal';

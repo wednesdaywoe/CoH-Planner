@@ -58,6 +58,9 @@ interface UIState {
   /** Export/Import modal open state */
   exportImportModalOpen: boolean;
 
+  /** Feedback modal open state */
+  feedbackModalOpen: boolean;
+
   /** Global IO level for calculations */
   globalIOLevel: number;
 
@@ -156,6 +159,10 @@ interface UIActions {
   openExportImportModal: () => void;
   closeExportImportModal: () => void;
 
+  // Feedback Modal
+  openFeedbackModal: () => void;
+  closeFeedbackModal: () => void;
+
   // Incarnate Active State
   toggleIncarnateActive: (slotId: ToggleableIncarnateSlot) => void;
   setIncarnateActive: (slotId: ToggleableIncarnateSlot, active: boolean) => void;
@@ -232,6 +239,7 @@ export const useUIStore = create<UIStore>()(
       incarnateModalOpen: false,
       currentIncarnateSlot: null,
       exportImportModalOpen: false,
+      feedbackModalOpen: false,
       globalIOLevel: 50,
       attunementEnabled: false,
       exemplarMode: false,
@@ -554,6 +562,13 @@ export const useUIStore = create<UIStore>()(
 
       closeExportImportModal: () =>
         set({ exportImportModalOpen: false }),
+
+      // Feedback Modal
+      openFeedbackModal: () =>
+        set({ feedbackModalOpen: true }),
+
+      closeFeedbackModal: () =>
+        set({ feedbackModalOpen: false }),
 
       // Incarnate Active State
       toggleIncarnateActive: (slotId) =>
