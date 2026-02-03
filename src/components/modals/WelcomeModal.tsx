@@ -118,7 +118,7 @@ export function WelcomeModal({ isOpen, onClose }: WelcomeModalProps) {
             <p className="text-sm text-gray-300">
               Found a bug or have a suggestion? Use the{' '}
               <span className="text-purple-400 font-medium">Feedback/Bugs</span> button
-              in the bottom-right corner to let us know!
+              in the bottom-right corner to let me know! You can submit feedback anonymously.
             </p>
           </div>
         </div>
