@@ -14,12 +14,23 @@ interface WelcomeModalProps {
   onClose: () => void;
 }
 
+
 const KNOWN_ISSUES = [
   'Kheldians and Arachnos ATs are not implemented',
-  'Titan/Hydra/D-Sync Origin Enhancments are not implemented',
+  'Titan/Hydra/D-Sync Origin Enhancements are not implemented',
   'Archetype inherents are not implemented or do not factor into calculations',
   'Nothing is optimized for Mobile yet',
+];
 
+const RECENT_CHANGES = [
+  'Added magnitude display for control powers',
+  'Fixed Dominator primary/secondary powerset sorting',
+  'Fixed Electrical Affinity appearing in wrong dropdown for Defender',
+  'Fixed Beast Mastery appearing as secondary instead of primary for Mastermind',
+  'Renamed Shock Therapy to Electrical Affinity',
+  'Removed Wind Control',
+  'Removed Fitness from selectable power pools',
+  'Improved feedback form to accept enter (line breaks)',
 ];
 
 const TODO_ITEMS = [
@@ -47,6 +58,24 @@ export function WelcomeModal({ isOpen, onClose }: WelcomeModalProps) {
             This build planner is currently in <span className="text-amber-400 font-semibold">active development</span>.
             Some features may be incomplete or contain bugs.
           </p>
+
+          {/* Recent Changes */}
+          <div>
+            <h3 className="text-lg font-semibold text-green-400 mb-2 flex items-center gap-2">
+              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+              Recent Changes
+            </h3>
+            <ul className="space-y-1.5 text-sm text-gray-400">
+              {RECENT_CHANGES.map((change, idx) => (
+                <li key={idx} className="flex items-start gap-2">
+                  <span className="text-green-500 mt-0.5">•</span>
+                  <span>{change}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
 
           {/* Known Issues */}
           <div>
