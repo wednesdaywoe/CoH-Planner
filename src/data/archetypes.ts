@@ -101,7 +101,6 @@ export const ARCHETYPES: ArchetypeRegistry = {
       'controller/plant-control',
       'controller/pyrotechnic-control',
       'controller/symphony-control',
-      'controller/wind-control',
     ],
     secondarySets: [
       'controller/cold-domination',
@@ -525,7 +524,6 @@ export const ARCHETYPES: ArchetypeRegistry = {
       'dominator/plant-control',
       'dominator/pyrotechnic-control',
       'dominator/symphony-control',
-      'dominator/wind-control',
     ],
     secondarySets: [
       'dominator/arsenal-assault',

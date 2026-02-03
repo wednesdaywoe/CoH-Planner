@@ -72,9 +72,9 @@ const ARMOR_PATTERNS = [
 ];
 
 // Manipulation patterns (always secondary)
+// Note: 'mastery' removed - it incorrectly caught 'Beast Mastery' (Mastermind primary)
 const MANIPULATION_PATTERNS = [
   'manipulation',
-  'mastery',
   'devices',
   'martial combat',
 ];

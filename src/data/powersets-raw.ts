@@ -30565,9 +30565,9 @@ export const POWERSETS_RAW = {
     ]
   },
   "controller/shock-therapy": {
-    "name": "Shock Therapy",
+    "name": "Electric Affinity",
     "category": "Unknown",
-    "description": "Shock Therapy powerset",
+    "description": "Electric Affinity powerset",
     "icon": "shock-therapy_set.png",
     "powers": [
       {
@@ -40714,9 +40714,9 @@ export const POWERSETS_RAW = {
     ]
   },
   "corruptor/shock-therapy": {
-    "name": "Shock Therapy",
+    "name": "Electric Affinity",
     "category": "Unknown",
-    "description": "Shock Therapy powerset",
+    "description": "Electric Affinity powerset",
     "icon": "shock-therapy_set.png",
     "powers": [
       {
@@ -51277,9 +51277,9 @@ export const POWERSETS_RAW = {
     ]
   },
   "defender/shock-therapy": {
-    "name": "Shock Therapy",
+    "name": "Electric Affinity",
     "category": "Unknown",
-    "description": "Shock Therapy powerset",
+    "description": "Electric Affinity powerset",
     "icon": "shock-therapy_set.png",
     "powers": [
       {
@@ -68093,9 +68093,9 @@ export const POWERSETS_RAW = {
     ]
   },
   "mastermind/shock-therapy": {
-    "name": "Shock Therapy",
+    "name": "Electric Affinity",
     "category": "Unknown",
-    "description": "Shock Therapy powerset",
+    "description": "Electric Affinity powerset",
     "icon": "shock-therapy_set.png",
     "powers": [
       {
