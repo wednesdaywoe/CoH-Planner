@@ -35,12 +35,9 @@ export function DraggableSlotGhost({
   const hasMoved = useRef(false);
   const maxCanAdd = maxSlots - currentSlots;
 
-  const handleMouseDown = useCallback(
-    (e: React.MouseEvent) => {
-      if (e.button !== 0) return; // Only left mouse button
-      e.preventDefault();
-
-      startPosRef.current = { x: e.clientX, y: e.clientY };
+  const startDrag = useCallback(
+    (clientX: number, clientY: number) => {
+      startPosRef.current = { x: clientX, y: clientY };
       hasMoved.current = false;
       setIsDragging(true);
       setSlotsToAdd(1);
@@ -55,12 +52,30 @@ export function DraggableSlotGhost({
     []
   );
 
-  const handleMouseMove = useCallback(
-    (e: MouseEvent) => {
+  const handleMouseDown = useCallback(
+    (e: React.MouseEvent) => {
+      if (e.button !== 0) return; // Only left mouse button
+      e.preventDefault();
+      startDrag(e.clientX, e.clientY);
+    },
+    [startDrag]
+  );
+
+  const handleTouchStart = useCallback(
+    (e: React.TouchEvent) => {
+      e.preventDefault();
+      const touch = e.touches[0];
+      startDrag(touch.clientX, touch.clientY);
+    },
+    [startDrag]
+  );
+
+  const updateDrag = useCallback(
+    (clientX: number, clientY: number) => {
       if (!isDragging) return;
 
-      const deltaX = e.clientX - startPosRef.current.x;
-      const deltaY = e.clientY - startPosRef.current.y;
+      const deltaX = clientX - startPosRef.current.x;
+      const deltaY = clientY - startPosRef.current.y;
       const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
 
       // Check if we've moved enough to consider it a drag
@@ -76,10 +91,25 @@ export function DraggableSlotGhost({
     [isDragging, maxCanAdd]
   );
 
-  const handleMouseUp = useCallback(
+  const handleMouseMove = useCallback(
     (e: MouseEvent) => {
-      if (!isDragging) return;
+      updateDrag(e.clientX, e.clientY);
+    },
+    [updateDrag]
+  );
+
+  const handleTouchMove = useCallback(
+    (e: TouchEvent) => {
       e.preventDefault();
+      const touch = e.touches[0];
+      updateDrag(touch.clientX, touch.clientY);
+    },
+    [updateDrag]
+  );
+
+  const endDrag = useCallback(
+    () => {
+      if (!isDragging) return;
 
       // Add the calculated number of slots
       if (slotsToAdd > 0) {
@@ -93,18 +123,40 @@ export function DraggableSlotGhost({
     [isDragging, slotsToAdd, onAddSlots]
   );
 
-  // Attach document-level handlers when dragging
+  const handleMouseUp = useCallback(
+    (e: MouseEvent) => {
+      e.preventDefault();
+      endDrag();
+    },
+    [endDrag]
+  );
+
+  const handleTouchEnd = useCallback(
+    (e: TouchEvent) => {
+      e.preventDefault();
+      endDrag();
+    },
+    [endDrag]
+  );
+
+  // Attach document-level handlers when dragging (both mouse and touch)
   useEffect(() => {
     if (isDragging) {
       document.addEventListener('mousemove', handleMouseMove);
       document.addEventListener('mouseup', handleMouseUp);
+      document.addEventListener('touchmove', handleTouchMove, { passive: false });
+      document.addEventListener('touchend', handleTouchEnd);
+      document.addEventListener('touchcancel', handleTouchEnd);
 
       return () => {
         document.removeEventListener('mousemove', handleMouseMove);
         document.removeEventListener('mouseup', handleMouseUp);
+        document.removeEventListener('touchmove', handleTouchMove);
+        document.removeEventListener('touchend', handleTouchEnd);
+        document.removeEventListener('touchcancel', handleTouchEnd);
       };
     }
-  }, [isDragging, handleMouseMove, handleMouseUp]);
+  }, [isDragging, handleMouseMove, handleMouseUp, handleTouchMove, handleTouchEnd]);
 
   if (maxCanAdd <= 0) {
     return null;
@@ -139,6 +191,7 @@ export function DraggableSlotGhost({
       <div
         ref={buttonRef}
         onMouseDown={handleMouseDown}
+        onTouchStart={handleTouchStart}
         className={`
           w-6 h-6 rounded-full border flex items-center justify-center
           cursor-pointer transition-all select-none

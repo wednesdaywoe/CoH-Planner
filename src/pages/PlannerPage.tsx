@@ -48,9 +48,16 @@ export function PlannerPage() {
   };
 
   return (
-    <div className="grid gap-px bg-slate-700 flex-1 overflow-hidden" style={{ gridTemplateColumns: '0.8fr 1fr 1fr 1fr 1fr' }}>
+    <div
+      className="
+        grid gap-px bg-slate-700 flex-1 overflow-auto
+        grid-cols-1
+        md:grid-cols-2
+        lg:grid-cols-[0.8fr_1fr_1fr_1fr_1fr]
+      "
+    >
       {/* Column 1: Available Powers (Primary + Secondary stacked) */}
-      <div className="bg-slate-900 flex flex-col overflow-hidden">
+      <div className="bg-slate-900 flex flex-col overflow-hidden min-h-[300px] lg:min-h-0">
         <div className="bg-slate-800 border-b border-slate-700 px-3 py-2">
           <h2 className="text-xs font-semibold uppercase tracking-wide text-slate-400">
             Available Powers
@@ -76,7 +83,7 @@ export function PlannerPage() {
       </div>
 
       {/* Column 2: Selected Primary Powers */}
-      <div className="bg-slate-900 flex flex-col overflow-hidden">
+      <div className="bg-slate-900 flex flex-col overflow-hidden min-h-[300px] lg:min-h-0">
         <div className="bg-slate-800 border-b border-slate-700 px-3 py-2">
           <h2 className="text-xs font-semibold uppercase tracking-wide text-slate-400">
             Primary Powers
@@ -88,7 +95,7 @@ export function PlannerPage() {
       </div>
 
       {/* Column 3: Selected Secondary Powers */}
-      <div className="bg-slate-900 flex flex-col overflow-hidden">
+      <div className="bg-slate-900 flex flex-col overflow-hidden min-h-[300px] lg:min-h-0">
         <div className="bg-slate-800 border-b border-slate-700 px-3 py-2">
           <h2 className="text-xs font-semibold uppercase tracking-wide text-slate-400">
             Secondary Powers
@@ -100,7 +107,7 @@ export function PlannerPage() {
       </div>
 
       {/* Column 4: Pool Powers */}
-      <div className="bg-slate-900 flex flex-col overflow-hidden">
+      <div className="bg-slate-900 flex flex-col overflow-hidden min-h-[300px] lg:min-h-0">
         <div className="bg-slate-800 border-b border-slate-700 px-3 py-2">
           <h2 className="text-xs font-semibold uppercase tracking-wide text-slate-400">
             Pool Powers
@@ -111,8 +118,8 @@ export function PlannerPage() {
         </div>
       </div>
 
-      {/* Column 5: Info Panel */}
-      <div className="bg-slate-900 flex flex-col overflow-hidden">
+      {/* Column 5: Info Panel - hidden on mobile, shown on tablet+ */}
+      <div className="bg-slate-900 flex flex-col overflow-hidden min-h-[250px] lg:min-h-0 hidden md:flex">
         <div className="bg-slate-800 border-b border-slate-700 px-3 py-2 flex items-center justify-between">
           <h2 className="text-xs font-semibold uppercase tracking-wide text-slate-400">
             Power Info

@@ -7,7 +7,7 @@ import { Modal, ModalBody, ModalFooter } from './Modal';
 import { Button } from '@/components/ui';
 
 const STORAGE_KEY = 'coh-planner-welcome-dismissed';
-const CURRENT_VERSION = '0.1.1-alpha'; // Increment to show modal again after major updates
+const CURRENT_VERSION = '0.1.2-alpha'; // Increment to show modal again after major updates
 
 interface WelcomeModalProps {
   isOpen: boolean;
@@ -19,10 +19,11 @@ const KNOWN_ISSUES = [
   'Kheldians and Arachnos ATs are not implemented',
   'Titan/Hydra/D-Sync Origin Enhancements are not implemented',
   'Archetype inherents are not implemented or do not factor into calculations',
-  'Nothing is optimized for Mobile yet',
 ];
 
 const RECENT_CHANGES = [
+  'Added mobile-friendly responsive layout',
+  'Added touch support for slot and enhancement drag operations',
   'Added magnitude display for control powers',
   'Fixed Dominator primary/secondary powerset sorting',
   'Fixed Electrical Affinity appearing in wrong dropdown for Defender',
@@ -35,8 +36,8 @@ const RECENT_CHANGES = [
 
 const TODO_ITEMS = [
   'Add build sharing functionality',
-  'Mobile-friendly layout improvements',
   'Add data sets for Rebirth and Thunderspy',
+  "Improve mobile experience and layout",
 ];
 
 export function WelcomeModal({ isOpen, onClose }: WelcomeModalProps) {

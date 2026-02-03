@@ -380,9 +380,58 @@ export function EnhancementPicker() {
     setDragSet(null);
   };
 
-  // Global mouse up to cancel drag if released outside
+  // Touch handlers for mobile
+  const handlePieceTouchStart = (set: IOSet, pieceIndex: number, e: React.TouchEvent) => {
+    e.preventDefault();
+    setIsDragging(true);
+    setDragStartIndex(pieceIndex);
+    setDragEndIndex(pieceIndex);
+    setDragSet(set);
+  };
+
+  const handlePieceTouchMove = (e: React.TouchEvent) => {
+    if (!isDragging) return;
+    e.preventDefault();
+
+    const touch = e.touches[0];
+    const element = document.elementFromPoint(touch.clientX, touch.clientY);
+
+    // Find the piece button element and extract its index from data attribute
+    const pieceButton = element?.closest('[data-piece-index]') as HTMLElement | null;
+    if (pieceButton) {
+      const pieceIndex = parseInt(pieceButton.dataset.pieceIndex || '', 10);
+      if (!isNaN(pieceIndex)) {
+        setDragEndIndex(pieceIndex);
+      }
+    }
+  };
+
+  const handlePieceTouchEnd = (set: IOSet, e: React.TouchEvent) => {
+    e.preventDefault();
+
+    if (isDragging && dragStartIndex !== null && dragEndIndex !== null && dragSet?.id === set.id) {
+      const start = dragStartIndex;
+      const end = dragEndIndex;
+
+      // If it was just a tap (no drag), slot single piece
+      if (start === end) {
+        handleSelectSetPiece(set, set.pieces[start], start);
+      } else {
+        // It was a drag selection
+        handleDragSelect(set, start, end);
+      }
+    }
+
+    // Reset drag state
+    setIsDragging(false);
+    setDragStartIndex(null);
+    setDragEndIndex(null);
+    setDragSet(null);
+  };
+
+  // Global mouse/touch up to cancel drag if released outside
   useEffect(() => {
-    const handleGlobalMouseUp = () => {
+    const handleGlobalEnd = () => {
       if (isDragging) {
         setIsDragging(false);
         setDragStartIndex(null);
@@ -390,8 +439,14 @@ export function EnhancementPicker() {
         setDragSet(null);
       }
     };
-    window.addEventListener('mouseup', handleGlobalMouseUp);
-    return () => window.removeEventListener('mouseup', handleGlobalMouseUp);
+    window.addEventListener('mouseup', handleGlobalEnd);
+    window.addEventListener('touchend', handleGlobalEnd);
+    window.addEventListener('touchcancel', handleGlobalEnd);
+    return () => {
+      window.removeEventListener('mouseup', handleGlobalEnd);
+      window.removeEventListener('touchend', handleGlobalEnd);
+      window.removeEventListener('touchcancel', handleGlobalEnd);
+    };
   }, [isDragging]);
 
   // Handle selecting a generic IO
@@ -644,6 +699,9 @@ export function EnhancementPicker() {
                 onPieceMouseDown={handlePieceMouseDown}
                 onPieceMouseEnter={handlePieceMouseEnter}
                 onPieceMouseUp={handlePieceMouseUp}
+                onPieceTouchStart={handlePieceTouchStart}
+                onPieceTouchMove={handlePieceTouchMove}
+                onPieceTouchEnd={handlePieceTouchEnd}
                 isDragging={isDragging}
                 dragSet={dragSet}
                 dragStartIndex={dragStartIndex}
@@ -719,6 +777,9 @@ interface IOSetsContentProps {
   onPieceMouseDown: (set: IOSet, pieceIndex: number) => void;
   onPieceMouseEnter: (pieceIndex: number) => void;
   onPieceMouseUp: (set: IOSet, pieceIndex: number, e: React.MouseEvent) => void;
+  onPieceTouchStart: (set: IOSet, pieceIndex: number, e: React.TouchEvent) => void;
+  onPieceTouchMove: (e: React.TouchEvent) => void;
+  onPieceTouchEnd: (set: IOSet, e: React.TouchEvent) => void;
   isDragging: boolean;
   dragSet: IOSet | null;
   dragStartIndex: number | null;
@@ -730,6 +791,9 @@ function IOSetsContent({
   onPieceMouseDown,
   onPieceMouseEnter,
   onPieceMouseUp,
+  onPieceTouchStart,
+  onPieceTouchMove,
+  onPieceTouchEnd,
   isDragging,
   dragSet,
   dragStartIndex,
@@ -748,6 +812,9 @@ function IOSetsContent({
           onPieceMouseDown={onPieceMouseDown}
           onPieceMouseEnter={onPieceMouseEnter}
           onPieceMouseUp={onPieceMouseUp}
+          onPieceTouchStart={onPieceTouchStart}
+          onPieceTouchMove={onPieceTouchMove}
+          onPieceTouchEnd={onPieceTouchEnd}
           isDragging={isDragging && dragSet?.id === set.id}
           dragStartIndex={dragSet?.id === set.id ? dragStartIndex : null}
           dragEndIndex={dragSet?.id === set.id ? dragEndIndex : null}
@@ -762,6 +829,9 @@ interface IOSetRowProps {
   onPieceMouseDown: (set: IOSet, pieceIndex: number) => void;
   onPieceMouseEnter: (pieceIndex: number) => void;
   onPieceMouseUp: (set: IOSet, pieceIndex: number, e: React.MouseEvent) => void;
+  onPieceTouchStart: (set: IOSet, pieceIndex: number, e: React.TouchEvent) => void;
+  onPieceTouchMove: (e: React.TouchEvent) => void;
+  onPieceTouchEnd: (set: IOSet, e: React.TouchEvent) => void;
   isDragging: boolean;
   dragStartIndex: number | null;
   dragEndIndex: number | null;
@@ -772,6 +842,9 @@ function IOSetRow({
   onPieceMouseDown,
   onPieceMouseEnter,
   onPieceMouseUp,
+  onPieceTouchStart,
+  onPieceTouchMove,
+  onPieceTouchEnd,
   isDragging,
   dragStartIndex,
   dragEndIndex,
@@ -822,11 +895,15 @@ function IOSetRow({
               }
             >
               <button
+                data-piece-index={pieceIndex}
                 onMouseDown={() => !isDisabled && onPieceMouseDown(set, pieceIndex)}
                 onMouseEnter={() => !isDisabled && onPieceMouseEnter(pieceIndex)}
                 onMouseUp={(e) => !isDisabled && onPieceMouseUp(set, pieceIndex, e)}
+                onTouchStart={(e) => !isDisabled && onPieceTouchStart(set, pieceIndex, e)}
+                onTouchMove={(e) => !isDisabled && onPieceTouchMove(e)}
+                onTouchEnd={(e) => !isDisabled && onPieceTouchEnd(set, e)}
                 disabled={isDisabled}
-                className={`w-9 h-9 rounded border transition-all bg-gray-900/50 ${
+                className={`w-9 h-9 rounded border transition-all bg-gray-900/50 touch-none ${
                   isDisabled
                     ? 'border-gray-700 opacity-40 cursor-not-allowed'
                     : selected
