@@ -688,13 +688,13 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
       {hasMez && (
         <div className="text-[10px]">
           <span className="text-slate-400 text-[9px] uppercase">Mez: </span>
-          {effects?.stun && <span className="text-purple-400">Stun {effects.stun}{effects.stunDuration ? `(${effects.stunDuration.toFixed(1)}s)` : ''} </span>}
-          {effects?.hold && <span className="text-purple-400">Hold {effects.hold}{effects.holdDuration ? `(${effects.holdDuration.toFixed(1)}s)` : ''} </span>}
-          {effects?.immobilize && <span className="text-purple-400">Immob {effects.immobilize}{effects.immobilizeDuration ? `(${effects.immobilizeDuration.toFixed(1)}s)` : ''} </span>}
-          {effects?.sleep && <span className="text-purple-400">Sleep {effects.sleep}{effects.sleepDuration ? `(${effects.sleepDuration.toFixed(1)}s)` : ''} </span>}
-          {effects?.fear && <span className="text-purple-400">Fear {effects.fear}{effects.fearDuration ? `(${effects.fearDuration.toFixed(1)}s)` : ''} </span>}
-          {effects?.confuse && <span className="text-purple-400">Confuse {effects.confuse}{effects.confuseDuration ? `(${effects.confuseDuration.toFixed(1)}s)` : ''} </span>}
-          {effects?.knockback && <span className="text-purple-400">KB {effects.knockback} </span>}
+          {effects?.stun && <span className="text-purple-400">Stun Mag {effects.stun}{effects.stunDuration ? ` (${effects.stunDuration.toFixed(1)}s)` : ''} </span>}
+          {effects?.hold && <span className="text-purple-400">Hold Mag {effects.hold}{effects.holdDuration ? ` (${effects.holdDuration.toFixed(1)}s)` : ''} </span>}
+          {effects?.immobilize && <span className="text-purple-400">Immob Mag {effects.immobilize}{effects.immobilizeDuration ? ` (${effects.immobilizeDuration.toFixed(1)}s)` : ''} </span>}
+          {effects?.sleep && <span className="text-purple-400">Sleep Mag {effects.sleep}{effects.sleepDuration ? ` (${effects.sleepDuration.toFixed(1)}s)` : ''} </span>}
+          {effects?.fear && <span className="text-purple-400">Fear Mag {effects.fear}{effects.fearDuration ? ` (${effects.fearDuration.toFixed(1)}s)` : ''} </span>}
+          {effects?.confuse && <span className="text-purple-400">Confuse Mag {effects.confuse}{effects.confuseDuration ? ` (${effects.confuseDuration.toFixed(1)}s)` : ''} </span>}
+          {effects?.knockback && <span className="text-purple-400">KB Mag {effects.knockback} </span>}
         </div>
       )}
 

@@ -85,6 +85,7 @@ const MANIPULATION_PATTERNS = [
  * - Tanker: Armor is PRIMARY, Melee is SECONDARY
  * - Brute: Melee is PRIMARY, Armor is SECONDARY
  * - Scrapper/Stalker: Melee is PRIMARY, Armor is SECONDARY
+ * - Dominator: Control is PRIMARY, Assault is SECONDARY
  * - Most others: Attack is PRIMARY, Support/Manipulation is SECONDARY
  */
 function isPrimaryPowerset(powerset: Powerset, archetypeId: string | null): boolean {
@@ -98,6 +99,12 @@ function isPrimaryPowerset(powerset: Powerset, archetypeId: string | null): bool
 
   // Check if it's a manipulation set (always secondary)
   const isManipulation = MANIPULATION_PATTERNS.some(pattern => nameLower.includes(pattern));
+
+  // Check if it's a control set (for Dominator/Controller)
+  const isControl = nameLower.includes('control');
+
+  // Check if it's an assault set (for Dominator)
+  const isAssault = nameLower.includes('assault');
 
   // Special handling by archetype
   switch (archetypeId) {
@@ -114,6 +121,10 @@ function isPrimaryPowerset(powerset: Powerset, archetypeId: string | null): bool
     case 'stalker':
       // Melee is PRIMARY, Armor is SECONDARY
       return !isArmor && !isManipulation;
+
+    case 'dominator':
+      // Dominator: Control is PRIMARY, Assault is SECONDARY
+      return isControl && !isAssault;
 
     default:
       // Default: Attack/damage sets are primary, support/manipulation/armor are secondary

@@ -164,7 +164,9 @@ export default {
 
     // Truncate description to prevent abuse
     const description = payload.description.substring(0, 5000);
-    const subject = `[CoH Planner] ${payload.type}: ${description.substring(0, 60)}${description.length > 60 ? '...' : ''}`;
+    // Remove newlines from subject (email subjects must be single-line)
+    const subjectPreview = description.substring(0, 60).replace(/[\r\n]+/g, ' ').trim();
+    const subject = `[CoH Planner] ${payload.type}: ${subjectPreview}${description.length > 60 ? '...' : ''}`;
 
     try {
       const resendResponse = await fetch('https://api.resend.com/emails', {

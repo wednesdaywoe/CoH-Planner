@@ -286,7 +286,7 @@ export const POOL_CATEGORIES: PoolCategoryInfo[] = [
   {
     id: 'utility',
     name: 'Utility',
-    pools: ['fitness', 'sorcery', 'experimentation'],
+    pools: ['sorcery', 'experimentation'],
   },
 ];
 
