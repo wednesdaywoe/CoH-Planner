@@ -816,6 +816,7 @@ function StatItem({ label, value, color = 'text-gray-300', tooltip, breakdown, c
     const inherentSources = breakdown.sources.filter(s => s.type === 'inherent');
     const accoladeSources = breakdown.sources.filter(s => s.type === 'accolade');
     const procSources = breakdown.sources.filter(s => s.type === 'proc');
+    const incarnateSources = breakdown.sources.filter(s => s.type === 'incarnate');
 
     return (
       <div className="space-y-2 max-w-[300px]">
@@ -890,6 +891,19 @@ function StatItem({ label, value, color = 'text-gray-300', tooltip, breakdown, c
               <div key={i} className="flex justify-between text-[10px]">
                 <span className="text-slate-300 truncate max-w-[200px]">{source.name}</span>
                 <span className="text-cyan-400 ml-2">+{source.value.toFixed(1)}%</span>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {/* Incarnates */}
+        {incarnateSources.length > 0 && (
+          <div>
+            <div className="text-[9px] text-slate-400 uppercase mb-0.5">Incarnate Powers</div>
+            {incarnateSources.map((source, i) => (
+              <div key={i} className="flex justify-between text-[10px]">
+                <span className="text-slate-300 truncate max-w-[200px]">{source.name}</span>
+                <span className="text-purple-400 ml-2">+{source.value.toFixed(1)}%</span>
               </div>
             ))}
           </div>

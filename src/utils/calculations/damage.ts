@@ -537,15 +537,26 @@ export function formatDamage(damage: number): string {
 
 /**
  * Calculate buff/debuff value using archetype modifier
+ * Returns the percentage value (e.g., 12.5 for 12.5%)
+ *
+ * In City of Heroes, debuffs and buffs use different base scaling:
+ * - Debuffs (ToHit, Defense, Resistance debuffs): 5% per scale (multiplier 5)
+ * - Buffs (Damage, Defense, ToHit buffs): 10% per scale (multiplier 10)
  */
-export function calculateBuffDebuffValue(scale: number, archetypeId?: ArchetypeId): number {
-  if (!scale || !archetypeId) return scale * 10;
+export function calculateBuffDebuffValue(
+  scale: number,
+  archetypeId?: ArchetypeId,
+  category: 'buff' | 'debuff' = 'buff'
+): number {
+  const baseMultiplier = category === 'debuff' ? 5 : 10;
+
+  if (!scale || !archetypeId) return scale * baseMultiplier;
 
   const archetype = getArchetype(archetypeId);
-  if (!archetype) return scale * 10;
+  if (!archetype) return scale * baseMultiplier;
 
   const modifier = archetype.stats?.buffDebuffModifier || 1.0;
 
-  // Formula: scale * archetypeModifier * 10 = percentage value
-  return scale * modifier * 10;
+  // Formula: scale * archetypeModifier * baseMultiplier = percentage value
+  return scale * modifier * baseMultiplier;
 }

@@ -27,8 +27,16 @@ import {
 } from '@/components/enhancements/EnhancementIcon';
 import type { DefenseByType, ResistanceByType, ProtectionEffects, ArchetypeId, IOSetEnhancement, GenericIOEnhancement, OriginEnhancement, SpecialEnhancement, Enhancement, SelectedPower } from '@/types';
 
-// Base value for buff/debuff effects (per scale point at modifier 1.0)
-const BASE_BUFF_DEBUFF = 0.10;
+/**
+ * Base values for buff/debuff effects per scale point at modifier 1.0
+ * In City of Heroes, debuffs and buffs use different base scaling:
+ * - Debuffs (ToHit, Defense, Resistance debuffs): 5% per scale (0.05)
+ * - Buffs (Damage, Defense, ToHit buffs): 10% per scale (0.10)
+ */
+const BASE_DEBUFF = 0.05;  // 5% per scale for debuffs
+const BASE_BUFF = 0.10;    // 10% per scale for buffs
+
+type EffectCategory = 'buff' | 'debuff';
 
 function getEffectiveBuffDebuffModifier(powerSet: string, archetypeModifier: number): number {
   const powersetArchetype = powerSet.split('/')[0];
@@ -41,8 +49,9 @@ function getEffectiveBuffDebuffModifier(powerSet: string, archetypeModifier: num
   return 1.0;
 }
 
-function calculateBuffDebuffValue(scale: number, effectiveModifier: number): number {
-  return scale * BASE_BUFF_DEBUFF * effectiveModifier;
+function calculateBuffDebuffValue(scale: number, effectiveModifier: number, category: EffectCategory = 'buff'): number {
+  const baseValue = category === 'debuff' ? BASE_DEBUFF : BASE_BUFF;
+  return scale * baseValue * effectiveModifier;
 }
 
 function formatPercent(value: number): string {
@@ -501,11 +510,11 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
             />
           )}
 
-          {/* Buffs */}
+          {/* Buffs - use 'buff' category (10% base per scale) */}
           {effects?.tohitBuff && (
             <ThreeTierStatRow
               label="+ToHit"
-              {...calcThreeTier('tohit', calculateBuffDebuffValue(effects.tohitBuff, effectiveMod))}
+              {...calcThreeTier('tohit', calculateBuffDebuffValue(effects.tohitBuff, effectiveMod, 'buff'))}
               format="percent"
               colorClass="text-yellow-400"
             />
@@ -513,7 +522,7 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
           {effects?.damageBuff && (
             <ThreeTierStatRow
               label="+Dmg"
-              {...calcThreeTier('damage', calculateBuffDebuffValue(effects.damageBuff, effectiveMod))}
+              {...calcThreeTier('damage', calculateBuffDebuffValue(effects.damageBuff, effectiveMod, 'buff'))}
               format="percent"
               colorClass="text-red-400"
             />
@@ -521,7 +530,7 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
           {effects?.defenseBuff && (
             <ThreeTierStatRow
               label="+Def"
-              {...calcThreeTier('defense', calculateBuffDebuffValue(effects.defenseBuff, effectiveMod))}
+              {...calcThreeTier('defense', calculateBuffDebuffValue(effects.defenseBuff, effectiveMod, 'buff'))}
               format="percent"
               colorClass="text-purple-400"
             />
@@ -567,11 +576,11 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
             />
           )}
 
-          {/* Debuffs */}
+          {/* Debuffs - use 'debuff' category (5% base per scale) */}
           {effects?.tohitDebuff && (
             <ThreeTierStatRow
               label="-ToHit"
-              {...calcThreeTier('tohitDebuff', calculateBuffDebuffValue(effects.tohitDebuff, effectiveMod))}
+              {...calcThreeTier('tohitDebuff', calculateBuffDebuffValue(effects.tohitDebuff, effectiveMod, 'debuff'))}
               format="percent"
               colorClass="text-yellow-400"
             />
@@ -579,7 +588,7 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
           {effects?.defenseDebuff && (
             <ThreeTierStatRow
               label="-Def"
-              {...calcThreeTier('defenseDebuff', calculateBuffDebuffValue(effects.defenseDebuff, effectiveMod))}
+              {...calcThreeTier('defenseDebuff', calculateBuffDebuffValue(effects.defenseDebuff, effectiveMod, 'debuff'))}
               format="percent"
               colorClass="text-purple-400"
             />
@@ -587,7 +596,7 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
           {effects?.resistanceDebuff && (
             <ThreeTierStatRow
               label="-Resist"
-              {...calcThreeTier('resistanceDebuff', calculateBuffDebuffValue(effects.resistanceDebuff, effectiveMod))}
+              {...calcThreeTier('resistanceDebuff', calculateBuffDebuffValue(effects.resistanceDebuff, effectiveMod, 'debuff'))}
               format="percent"
               colorClass="text-orange-400"
             />

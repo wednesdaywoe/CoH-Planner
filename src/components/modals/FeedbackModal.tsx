@@ -40,7 +40,7 @@ const TYPE_CONFIG = {
 export function FeedbackModal({ isOpen, onClose }: FeedbackModalProps) {
   const [feedbackType, setFeedbackType] = useState<FeedbackType>('bug');
   const [description, setDescription] = useState('');
-  const [email, setEmail] = useState('');
+  const [globalName, setGlobalName] = useState('');
   const [status, setStatus] = useState<SubmitStatus>('idle');
   const [errorMessage, setErrorMessage] = useState('');
 
@@ -90,7 +90,7 @@ export function FeedbackModal({ isOpen, onClose }: FeedbackModalProps) {
     const payload = {
       type: feedbackType,
       description: description.trim(),
-      email: email.trim() || undefined,
+      globalName: globalName.trim() || undefined,
       buildContext: getBuildContext(),
       userAgent: navigator.userAgent,
       timestamp: new Date().toISOString(),
@@ -122,7 +122,7 @@ export function FeedbackModal({ isOpen, onClose }: FeedbackModalProps) {
   const handleClose = () => {
     setFeedbackType('bug');
     setDescription('');
-    setEmail('');
+    setGlobalName('');
     setStatus('idle');
     setErrorMessage('');
     onClose();
@@ -196,16 +196,16 @@ export function FeedbackModal({ isOpen, onClose }: FeedbackModalProps) {
               </p>
             </div>
 
-            {/* Email */}
+            {/* Global Name */}
             <div>
               <label className="block text-sm font-medium text-gray-300 mb-2">
-                Email <span className="text-gray-500 font-normal">(optional, for follow-up)</span>
+                In-game Global Name <span className="text-gray-500 font-normal">(optional)</span>
               </label>
               <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="you@example.com"
+                type="text"
+                value={globalName}
+                onChange={(e) => setGlobalName(e.target.value)}
+                placeholder="@YourName"
                 className="w-full bg-gray-800 border border-gray-600 rounded px-3 py-2 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
               />
             </div>

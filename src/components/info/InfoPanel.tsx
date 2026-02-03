@@ -38,11 +38,19 @@ import type {
 } from '@/types';
 import { INCARNATE_SLOT_COLORS, INCARNATE_TIER_COLORS, INCARNATE_TIER_NAMES } from '@/types';
 
-// Base value for buff/debuff effects (per scale point at modifier 1.0)
-// Formula: scale × BASE × archetypeModifier
-// Example: Defender (1.25 mod) with scale 2.5 = 2.5 × 0.10 × 1.25 = 31.25%
-// Example: Corruptor (1.0 mod for secondary) with scale 2.5 = 2.5 × 0.10 × 1.0 = 25%
-const BASE_BUFF_DEBUFF = 0.10; // 10% per scale point at modifier 1.0
+/**
+ * Base values for buff/debuff effects per scale point at modifier 1.0
+ * In City of Heroes, debuffs and buffs use different base scaling:
+ * - Debuffs (ToHit, Defense, Resistance debuffs): 5% per scale (0.05)
+ * - Buffs (Damage, Defense, ToHit buffs): 10% per scale (0.10)
+ *
+ * Example: Defender (1.25 mod) with defense debuff scale 2 = 2 × 0.05 × 1.25 = 12.5%
+ * Example: Defender (1.25 mod) with damage buff scale 2 = 2 × 0.10 × 1.25 = 25%
+ */
+const BASE_DEBUFF = 0.05;  // 5% per scale for debuffs
+const BASE_BUFF = 0.10;    // 10% per scale for buffs
+
+type EffectCategory = 'buff' | 'debuff';
 
 /**
  * Get the effective buff/debuff modifier for the powerset
@@ -74,9 +82,11 @@ function getEffectiveBuffDebuffModifier(powerSet: string, archetypeModifier: num
  */
 function calculateBuffDebuffValue(
   scale: number,
-  effectiveModifier: number
+  effectiveModifier: number,
+  category: EffectCategory = 'buff'
 ): number {
-  return scale * BASE_BUFF_DEBUFF * effectiveModifier;
+  const baseValue = category === 'debuff' ? BASE_DEBUFF : BASE_BUFF;
+  return scale * baseValue * effectiveModifier;
 }
 
 export function InfoPanel() {
@@ -589,11 +599,11 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
               />
             )}
 
-            {/* Buffs */}
+            {/* Buffs - use 'buff' category (10% base per scale) */}
             {effects?.tohitBuff && (
               <ThreeTierStatRow
                 label="+ToHit"
-                {...calcThreeTier('tohit', calculateBuffDebuffValue(effects.tohitBuff, effectiveMod))}
+                {...calcThreeTier('tohit', calculateBuffDebuffValue(effects.tohitBuff, effectiveMod, 'buff'))}
                 format="percent"
                 colorClass="text-yellow-400"
               />
@@ -601,7 +611,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
             {effects?.damageBuff && (
               <ThreeTierStatRow
                 label="+Damage"
-                {...calcThreeTier('damage', calculateBuffDebuffValue(effects.damageBuff, effectiveMod))}
+                {...calcThreeTier('damage', calculateBuffDebuffValue(effects.damageBuff, effectiveMod, 'buff'))}
                 format="percent"
                 colorClass="text-red-400"
               />
@@ -609,7 +619,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
             {effects?.defenseBuff && (
               <ThreeTierStatRow
                 label="+Defense"
-                {...calcThreeTier('defense', calculateBuffDebuffValue(effects.defenseBuff, effectiveMod))}
+                {...calcThreeTier('defense', calculateBuffDebuffValue(effects.defenseBuff, effectiveMod, 'buff'))}
                 format="percent"
                 colorClass="text-purple-400"
               />
@@ -655,11 +665,11 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
               />
             )}
 
-            {/* Debuffs */}
+            {/* Debuffs - use 'debuff' category (5% base per scale) */}
             {effects?.tohitDebuff && (
               <ThreeTierStatRow
                 label="-ToHit"
-                {...calcThreeTier('tohitDebuff', calculateBuffDebuffValue(effects.tohitDebuff, effectiveMod))}
+                {...calcThreeTier('tohitDebuff', calculateBuffDebuffValue(effects.tohitDebuff, effectiveMod, 'debuff'))}
                 format="percent"
                 colorClass="text-yellow-400"
               />
@@ -667,7 +677,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
             {effects?.defenseDebuff && (
               <ThreeTierStatRow
                 label="-Defense"
-                {...calcThreeTier('defenseDebuff', calculateBuffDebuffValue(effects.defenseDebuff, effectiveMod))}
+                {...calcThreeTier('defenseDebuff', calculateBuffDebuffValue(effects.defenseDebuff, effectiveMod, 'debuff'))}
                 format="percent"
                 colorClass="text-purple-400"
               />
@@ -675,7 +685,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
             {effects?.resistanceDebuff && (
               <ThreeTierStatRow
                 label="-Resist"
-                {...calcThreeTier('resistanceDebuff', calculateBuffDebuffValue(effects.resistanceDebuff, effectiveMod))}
+                {...calcThreeTier('resistanceDebuff', calculateBuffDebuffValue(effects.resistanceDebuff, effectiveMod, 'debuff'))}
                 format="percent"
                 colorClass="text-orange-400"
               />
@@ -683,7 +693,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
             {effects?.damageDebuff && (
               <ThreeTierStatRow
                 label="-Damage"
-                {...calcThreeTier('damageDebuff', calculateBuffDebuffValue(effects.damageDebuff, effectiveMod))}
+                {...calcThreeTier('damageDebuff', calculateBuffDebuffValue(effects.damageDebuff, effectiveMod, 'debuff'))}
                 format="percent"
                 colorClass="text-red-400"
               />
@@ -691,7 +701,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
             {effects?.regenDebuff && (
               <ThreeTierStatRow
                 label="-Regen"
-                {...calcThreeTier('regenDebuff', calculateBuffDebuffValue(effects.regenDebuff, effectiveMod))}
+                {...calcThreeTier('regenDebuff', calculateBuffDebuffValue(effects.regenDebuff, effectiveMod, 'debuff'))}
                 format="percent"
                 colorClass="text-green-400"
               />
@@ -699,7 +709,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
             {effects?.recoveryDebuff && (
               <ThreeTierStatRow
                 label="-Recovery"
-                {...calcThreeTier('recoveryDebuff', calculateBuffDebuffValue(effects.recoveryDebuff, effectiveMod))}
+                {...calcThreeTier('recoveryDebuff', calculateBuffDebuffValue(effects.recoveryDebuff, effectiveMod, 'debuff'))}
                 format="percent"
                 colorClass="text-blue-400"
               />
