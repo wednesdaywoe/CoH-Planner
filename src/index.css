@@ -1,0 +1,46 @@
+@import "tailwindcss";
+
+/* Custom stat color classes - matching the existing app's color scheme */
+@layer components {
+  .stat-damage { @apply text-red-400; }
+  .stat-accuracy { @apply text-yellow-400; }
+  .stat-tohit { @apply text-yellow-300; }
+  .stat-defense { @apply text-green-400; }
+  .stat-resistance { @apply text-purple-400; }
+  .stat-healing { @apply text-emerald-400; }
+  .stat-regeneration { @apply text-emerald-300; }
+  .stat-recovery { @apply text-cyan-400; }
+  .stat-endurance { @apply text-blue-400; }
+  .stat-recharge { @apply text-blue-300; }
+  .stat-range { @apply text-orange-400; }
+  .stat-speed { @apply text-amber-400; }
+  .stat-jump { @apply text-amber-300; }
+  .stat-fly { @apply text-sky-400; }
+  .stat-knockback { @apply text-pink-400; }
+  .stat-hold { @apply text-violet-400; }
+  .stat-stun { @apply text-violet-300; }
+  .stat-immobilize { @apply text-rose-400; }
+  .stat-sleep { @apply text-indigo-400; }
+  .stat-confuse { @apply text-fuchsia-400; }
+  .stat-fear { @apply text-slate-400; }
+}
+
+/* Custom animations */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 8px rgba(59, 130, 246, 0.4), 0 0 16px rgba(147, 51, 234, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 16px rgba(59, 130, 246, 0.6), 0 0 32px rgba(147, 51, 234, 0.5);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Base styles */
+body {
+  @apply bg-gray-900 text-gray-100;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+}
