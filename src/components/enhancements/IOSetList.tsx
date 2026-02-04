@@ -41,8 +41,22 @@ interface IOSetListItemProps {
   onClick: () => void;
 }
 
+/**
+ * Determine the subfolder for an IO set icon based on icon prefix
+ */
+function getIOSetFolder(icon: string): string {
+  if (icon.startsWith('AO_') || icon.startsWith('SAO_')) {
+    return 'Archetype';
+  }
+  if (icon.startsWith('EO_') || icon.startsWith('SEO_') || icon.startsWith('SEW_')) {
+    return 'Event';
+  }
+  return 'IO Sets';
+}
+
 function IOSetListItem({ set, isSelected, onClick }: IOSetListItemProps) {
-  const iconPath = set.icon ? resolvePath(`/img/Enhancements/${set.icon}`) : resolvePath('/img/Unknown.png');
+  const folder = set.icon ? getIOSetFolder(set.icon) : '';
+  const iconPath = set.icon ? resolvePath(`/img/Enhancements/${folder}/${set.icon}`) : resolvePath('/img/Unknown.png');
   return (
     <button
       onClick={onClick}

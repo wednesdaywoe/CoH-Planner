@@ -16345,7 +16345,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sGiftoftheancients.png"
+    "icon": "sPowerTransfer.png"
   },
   "preemptive_optimization": {
     "name": "Preemptive Optimization",
@@ -25315,7 +25315,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sQuickfoot.png"
+    "icon": "sThrust.png"
   },
   "thunderstrike": {
     "name": "Thunderstrike",

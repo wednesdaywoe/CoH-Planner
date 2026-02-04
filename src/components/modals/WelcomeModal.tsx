@@ -17,7 +17,6 @@ interface WelcomeModalProps {
 
 const KNOWN_ISSUES = [
     'Titan/Hydra/D-Sync Origin Enhancements are not implemented',
-    'Missing set icons (Thrust, Power Transfer)',
     'Set level caps (Touch of Death, Miracle) not enforced',
 ];
 
