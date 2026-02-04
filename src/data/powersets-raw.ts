@@ -11234,10 +11234,10 @@ export const POWERSETS_RAW = {
       }
     ]
   },
-  "brute/brawling": {
-    "name": "Brawling",
+  "brute/street_justice": {
+    "name": "Street Justice",
     "category": "Unknown",
-    "description": "Brawling powerset",
+    "description": "Street Justice powerset",
     "icon": "brawling_set.png",
     "powers": [
       {
@@ -71132,10 +71132,10 @@ export const POWERSETS_RAW = {
       }
     ]
   },
-  "scrapper/brawling": {
-    "name": "Brawling",
+  "scrapper/street_justice": {
+    "name": "Street Justice",
     "category": "Unknown",
-    "description": "Brawling powerset",
+    "description": "Street Justice powerset",
     "icon": "brawling_set.png",
     "powers": [
       {
@@ -94414,10 +94414,10 @@ export const POWERSETS_RAW = {
       }
     ]
   },
-  "stalker/brawling": {
-    "name": "Brawling",
+  "stalker/street_justice": {
+    "name": "Street Justice",
     "category": "Unknown",
-    "description": "Brawling powerset",
+    "description": "Street Justice powerset",
     "icon": "brawling_set.png",
     "powers": [
       {
@@ -105920,10 +105920,10 @@ export const POWERSETS_RAW = {
       }
     ]
   },
-  "tanker/brawling": {
-    "name": "Brawling",
+  "tanker/street_justice": {
+    "name": "Street Justice",
     "category": "Unknown",
-    "description": "Brawling powerset",
+    "description": "Street Justice powerset",
     "icon": "brawling_set.png",
     "powers": [
       {

@@ -205,7 +205,7 @@ export const ARCHETYPES: ArchetypeRegistry = {
     },
     primarySets: [
       'scrapper/battle-axe',
-      'scrapper/brawling',
+      'scrapper/street_justice',
       'scrapper/broad-sword',
       'scrapper/claws',
       'scrapper/dark-melee',
@@ -284,7 +284,7 @@ export const ARCHETYPES: ArchetypeRegistry = {
     ],
     secondarySets: [
       'tanker/battle-axe',
-      'tanker/brawling',
+      'tanker/street_justice',
       'tanker/broad-sword',
       'tanker/claws',
       'tanker/dark-melee',
@@ -391,7 +391,7 @@ export const ARCHETYPES: ArchetypeRegistry = {
     },
     primarySets: [
       'brute/battle-axe',
-      'brute/brawling',
+      'brute/street_justice',
       'brute/broad-sword',
       'brute/claws',
       'brute/dark-melee',
@@ -615,7 +615,7 @@ export const ARCHETYPES: ArchetypeRegistry = {
       buffDebuffModifier: 1.0,
     },
     primarySets: [
-      'stalker/brawling',
+      'stalker/street_justice',
       'stalker/broad-sword',
       'stalker/claws',
       'stalker/dark-melee',

@@ -21,6 +21,7 @@ const KNOWN_ISSUES = [
 ];
 
 const RECENT_CHANGES = [
+  'Fixed Street Justice naming issue',
   'First pass at adding Epic ATs, expect bugs',
   'First pass with Archetype inherent powers, expect bugs',
   'Battle Agility: Added missing defense: { ranged, aoe } values',
@@ -36,9 +37,6 @@ const RECENT_CHANGES = [
   'Fixed Electrical Affinity appearing in wrong dropdown for Defender',
   'Fixed Beast Mastery appearing as secondary instead of primary for Mastermind',
   'Renamed Shock Therapy to Electrical Affinity',
-  'Removed Wind Control',
-  'Removed Fitness from selectable power pools',
-  'Improved feedback form to accept enter (line breaks)',
 ];
 
 const TODO_ITEMS = [
