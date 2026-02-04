@@ -30,4 +30,13 @@ export {
   useTooltip,
   useStatsConfig,
   useVisibleStats,
+  useDominationActive,
+  useScourgeActive,
+  useFuryLevel,
+  useSupremacyActive,
+  useVigilanceTeamSize,
+  useCriticalHitsActive,
+  useStalkerHidden,
+  useStalkerTeamSize,
+  useContainmentActive,
 } from './uiStore';

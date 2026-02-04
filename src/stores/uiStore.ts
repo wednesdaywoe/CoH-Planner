@@ -23,6 +23,7 @@ import type {
   IncarnateSlotId,
   IncarnateActiveState,
   ToggleableIncarnateSlot,
+  ArchetypeBranchId,
 } from '@/types';
 import { createDefaultIncarnateActiveState } from '@/types';
 
@@ -90,6 +91,36 @@ interface UIState {
 
   /** Incarnate active state - which incarnate slots are active for stat calculations */
   incarnateActive: IncarnateActiveState;
+
+  /** Domination active state - for Dominators to see enhanced mez values */
+  dominationActive: boolean;
+
+  /** Scourge active state - for Corruptors to see average Scourge damage bonus */
+  scourgeActive: boolean;
+
+  /** Fury level for Brutes (0-100) */
+  furyLevel: number;
+
+  /** Supremacy active state - for Masterminds to see henchmen buffs */
+  supremacyActive: boolean;
+
+  /** Vigilance team size for Defenders (0 = solo, 1-7 = teammates) */
+  vigilanceTeamSize: number;
+
+  /** Critical Hits active state - for Scrappers to see average critical damage bonus */
+  criticalHitsActive: boolean;
+
+  /** Stalker Hidden state - whether attacking from Hide */
+  stalkerHidden: boolean;
+
+  /** Stalker team size for Assassination bonus (0 = solo, 1-7 = teammates) */
+  stalkerTeamSize: number;
+
+  /** Containment active state - for Controllers to see double damage vs controlled targets */
+  containmentActive: boolean;
+
+  /** Selected branch for Arachnos Epic ATs (Soldier: bane-spider/crab-spider, Widow: night-widow/fortunata) */
+  selectedBranch: ArchetypeBranchId | null;
 }
 
 interface UIActions {
@@ -167,6 +198,43 @@ interface UIActions {
   toggleIncarnateActive: (slotId: ToggleableIncarnateSlot) => void;
   setIncarnateActive: (slotId: ToggleableIncarnateSlot, active: boolean) => void;
   resetIncarnateActive: () => void;
+
+  // Domination Active State (Dominator inherent)
+  toggleDomination: () => void;
+  setDominationActive: (active: boolean) => void;
+
+  // Scourge Active State (Corruptor inherent)
+  toggleScourge: () => void;
+  setScourgeActive: (active: boolean) => void;
+
+  // Fury Level (Brute inherent) - slider 0-100
+  setFuryLevel: (level: number) => void;
+
+  // Supremacy Active State (Mastermind inherent)
+  toggleSupremacy: () => void;
+  setSupremacyActive: (active: boolean) => void;
+
+  // Vigilance Team Size (Defender inherent) - slider 0-7
+  setVigilanceTeamSize: (size: number) => void;
+
+  // Critical Hits Active State (Scrapper inherent)
+  toggleCriticalHits: () => void;
+  setCriticalHitsActive: (active: boolean) => void;
+
+  // Stalker Hidden State (Stalker inherent)
+  toggleStalkerHidden: () => void;
+  setStalkerHidden: (hidden: boolean) => void;
+
+  // Stalker Team Size (Stalker inherent) - slider 0-7
+  setStalkerTeamSize: (size: number) => void;
+
+  // Containment Active State (Controller inherent)
+  toggleContainment: () => void;
+  setContainmentActive: (active: boolean) => void;
+
+  // Arachnos Branch Selection (Epic ATs)
+  setSelectedBranch: (branch: ArchetypeBranchId | null) => void;
+  clearSelectedBranch: () => void;
 }
 
 type UIStore = UIState & UIActions;
@@ -250,6 +318,16 @@ export const useUIStore = create<UIStore>()(
       darkMode: true,
       compactMode: false,
       incarnateActive: createDefaultIncarnateActiveState(),
+      dominationActive: false,
+      scourgeActive: false,
+      furyLevel: 75, // Default to 75 fury (reasonable combat average)
+      supremacyActive: true, // Default to ON since henchmen are typically nearby
+      vigilanceTeamSize: 0, // Default to solo (0 teammates) for max damage bonus
+      criticalHitsActive: false, // Default to OFF (like Scourge)
+      stalkerHidden: false, // Default to not hidden (showing out-of-hide damage)
+      stalkerTeamSize: 0, // Default to solo (0 teammates)
+      containmentActive: false, // Default to OFF (like Critical Hits)
+      selectedBranch: null, // No branch selected by default
 
       // Enhancement Picker Modal
       openEnhancementPicker: (powerName, powerSet, slotIndex) =>
@@ -589,6 +667,79 @@ export const useUIStore = create<UIStore>()(
 
       resetIncarnateActive: () =>
         set({ incarnateActive: createDefaultIncarnateActiveState() }),
+
+      // Domination Active State
+      toggleDomination: () =>
+        set((state) => ({
+          dominationActive: !state.dominationActive,
+        })),
+
+      setDominationActive: (active) =>
+        set({ dominationActive: active }),
+
+      // Scourge Active State
+      toggleScourge: () =>
+        set((state) => ({
+          scourgeActive: !state.scourgeActive,
+        })),
+
+      setScourgeActive: (active) =>
+        set({ scourgeActive: active }),
+
+      // Fury Level (Brute)
+      setFuryLevel: (level) =>
+        set({ furyLevel: Math.max(0, Math.min(100, level)) }),
+
+      // Supremacy Active State (Mastermind)
+      toggleSupremacy: () =>
+        set((state) => ({
+          supremacyActive: !state.supremacyActive,
+        })),
+
+      setSupremacyActive: (active) =>
+        set({ supremacyActive: active }),
+
+      // Vigilance Team Size (Defender)
+      setVigilanceTeamSize: (size) =>
+        set({ vigilanceTeamSize: Math.max(0, Math.min(7, size)) }),
+
+      // Critical Hits Active State (Scrapper)
+      toggleCriticalHits: () =>
+        set((state) => ({
+          criticalHitsActive: !state.criticalHitsActive,
+        })),
+
+      setCriticalHitsActive: (active) =>
+        set({ criticalHitsActive: active }),
+
+      // Stalker Hidden State
+      toggleStalkerHidden: () =>
+        set((state) => ({
+          stalkerHidden: !state.stalkerHidden,
+        })),
+
+      setStalkerHidden: (hidden) =>
+        set({ stalkerHidden: hidden }),
+
+      // Stalker Team Size
+      setStalkerTeamSize: (size) =>
+        set({ stalkerTeamSize: Math.max(0, Math.min(7, size)) }),
+
+      // Containment Active State (Controller)
+      toggleContainment: () =>
+        set((state) => ({
+          containmentActive: !state.containmentActive,
+        })),
+
+      setContainmentActive: (active) =>
+        set({ containmentActive: active }),
+
+      // Arachnos Branch Selection
+      setSelectedBranch: (branch) =>
+        set({ selectedBranch: branch }),
+
+      clearSelectedBranch: () =>
+        set({ selectedBranch: null }),
     }),
     {
       name: 'coh-planner-ui',
@@ -604,6 +755,16 @@ export const useUIStore = create<UIStore>()(
         darkMode: state.darkMode,
         compactMode: state.compactMode,
         incarnateActive: state.incarnateActive,
+        dominationActive: state.dominationActive,
+        scourgeActive: state.scourgeActive,
+        furyLevel: state.furyLevel,
+        supremacyActive: state.supremacyActive,
+        vigilanceTeamSize: state.vigilanceTeamSize,
+        criticalHitsActive: state.criticalHitsActive,
+        stalkerHidden: state.stalkerHidden,
+        stalkerTeamSize: state.stalkerTeamSize,
+        containmentActive: state.containmentActive,
+        selectedBranch: state.selectedBranch,
       }),
     })
   );
@@ -658,3 +819,30 @@ export const useIncarnateActive = () => useUIStore((state) => state.incarnateAct
 /** Select if a specific incarnate slot is active */
 export const useIsIncarnateSlotActive = (slotId: ToggleableIncarnateSlot) =>
   useUIStore((state) => state.incarnateActive[slotId]);
+
+/** Select domination active state */
+export const useDominationActive = () => useUIStore((state) => state.dominationActive);
+
+/** Select scourge active state */
+export const useScourgeActive = () => useUIStore((state) => state.scourgeActive);
+
+/** Select fury level */
+export const useFuryLevel = () => useUIStore((state) => state.furyLevel);
+
+/** Select supremacy active state */
+export const useSupremacyActive = () => useUIStore((state) => state.supremacyActive);
+
+/** Select vigilance team size */
+export const useVigilanceTeamSize = () => useUIStore((state) => state.vigilanceTeamSize);
+
+/** Select critical hits active state */
+export const useCriticalHitsActive = () => useUIStore((state) => state.criticalHitsActive);
+
+/** Select stalker hidden state */
+export const useStalkerHidden = () => useUIStore((state) => state.stalkerHidden);
+
+/** Select stalker team size */
+export const useStalkerTeamSize = () => useUIStore((state) => state.stalkerTeamSize);
+
+/** Select containment active state */
+export const useContainmentActive = () => useUIStore((state) => state.containmentActive);

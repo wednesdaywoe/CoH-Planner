@@ -20501,6 +20501,7 @@ export const POWERSETS_RAW = {
         "tier": 1,
         "maxSlots": 6,
         "allowedEnhancements": [
+          "Defense",
           "EnduranceReduction",
           "Recharge"
         ],
@@ -20518,6 +20519,10 @@ export const POWERSETS_RAW = {
           "recharge": 4,
           "endurance": 0.104,
           "cast": 1.5,
+          "defense": {
+            "ranged": 0.135,
+            "aoe": 0.135
+          },
           "debuffResistance": {
             "defense": 0.1384
           },
@@ -20530,6 +20535,8 @@ export const POWERSETS_RAW = {
         "tier": 1,
         "maxSlots": 6,
         "allowedEnhancements": [
+          "Defense",
+          "Resistance",
           "EnduranceReduction",
           "Recharge"
         ],
@@ -20538,7 +20545,7 @@ export const POWERSETS_RAW = {
           "Resist Damage"
         ],
         "description": "Your mastery of the shield allows you to easily deflect melee attacks, and attacks that do get through your ironclad defenses tend to do less damage. While Deflection is active the user will gain defense to melee attacks and some minor resistance to lethal and smashing damage. Deflection also adds Psionic Defense and an Elusivity defense bonus to Psionic and Melee Attacks in PVP zones.<br><br><color #fcfc95>Recharge: Fast.</color>",
-        "shortHelp": "Toggle: Self +DEF(Melee), +Res(Lethal, Smashing)",
+        "shortHelp": "Toggle: Self +DEF(Melee, Psionic), +Res(Lethal, Smashing)",
         "icon": "shielddefense_activedefense.png",
         "powerType": "Toggle",
         "targetType": "Self",
@@ -20549,11 +20556,12 @@ export const POWERSETS_RAW = {
           "endurance": 0.104,
           "cast": 1.5,
           "defense": {
-            "psionic": 0.11249999999999999
+            "melee": 0.12,
+            "psionic": 0.1125
           },
           "resistance": {
-            "smashing": 0.11249999999999999,
-            "lethal": 0.11249999999999999
+            "smashing": 0.1125,
+            "lethal": 0.1125
           },
           "buffDuration": 0.75
         }
@@ -20564,10 +20572,8 @@ export const POWERSETS_RAW = {
         "tier": 2,
         "maxSlots": 6,
         "allowedEnhancements": [
-          "Damage",
-          "Accuracy",
-          "Recharge",
-          "EnduranceReduction"
+          "Resistance",
+          "Heal"
         ],
         "allowedSetCategories": [
           "Healing",
@@ -20581,41 +20587,13 @@ export const POWERSETS_RAW = {
         "effectArea": "SingleTarget",
         "effects": {
           "accuracy": 1,
-          "dotDamage": {
-            "types": [
-              {
-                "type": "Fire",
-                "scale": 1.5,
-                "ticks": 5
-              },
-              {
-                "type": "Cold",
-                "scale": 1.5,
-                "ticks": 5
-              },
-              {
-                "type": "Energy",
-                "scale": 1.5,
-                "ticks": 5
-              },
-              {
-                "type": "Negative",
-                "scale": 1.5,
-                "ticks": 5
-              },
-              {
-                "type": "Toxic",
-                "scale": 1.5,
-                "ticks": 5
-              }
-            ]
-          },
+          "maxHealth": 0.12,
           "resistance": {
-            "fire": 0.11249999999999999,
-            "cold": 0.11249999999999999,
-            "energy": 0.11249999999999999,
-            "negative": 0.11249999999999999,
-            "toxic": 0.11249999999999999
+            "fire": 0.1125,
+            "cold": 0.1125,
+            "energy": 0.1125,
+            "negative": 0.1125,
+            "toxic": 0.1125
           },
           "buffDuration": 10.25
         }
@@ -80958,6 +80936,7 @@ export const POWERSETS_RAW = {
         "tier": 1,
         "maxSlots": 6,
         "allowedEnhancements": [
+          "Defense",
           "EnduranceReduction",
           "Recharge"
         ],
@@ -80975,6 +80954,10 @@ export const POWERSETS_RAW = {
           "recharge": 4,
           "endurance": 0.104,
           "cast": 1.5,
+          "defense": {
+            "ranged": 0.12,
+            "aoe": 0.12
+          },
           "debuffResistance": {
             "defense": 0.1384
           },
@@ -80987,6 +80970,8 @@ export const POWERSETS_RAW = {
         "tier": 1,
         "maxSlots": 6,
         "allowedEnhancements": [
+          "Defense",
+          "Resistance",
           "EnduranceReduction",
           "Recharge"
         ],
@@ -80995,7 +80980,7 @@ export const POWERSETS_RAW = {
           "Resist Damage"
         ],
         "description": "Your mastery of the shield allows you to easily deflect melee attacks, and attacks that do get through your ironclad defenses tend to do less damage. While Deflection is active the user will gain defense to melee attacks and some minor resistance to lethal and smashing damage.<br><br><color #fcfc95>Recharge: Fast.</color>",
-        "shortHelp": "Toggle: Self +DEF(Melee), +Res(Lethal, Smashing)",
+        "shortHelp": "Toggle: Self +DEF(Melee, Psionic), +Res(Lethal, Smashing)",
         "icon": "shielddefense_activedefense.png",
         "powerType": "Toggle",
         "targetType": "Self",
@@ -81006,11 +80991,12 @@ export const POWERSETS_RAW = {
           "endurance": 0.104,
           "cast": 1.5,
           "defense": {
-            "psionic": 0.11249999999999999
+            "melee": 0.105,
+            "psionic": 0.1125
           },
           "resistance": {
-            "smashing": 0.11249999999999999,
-            "lethal": 0.11249999999999999
+            "smashing": 0.1125,
+            "lethal": 0.1125
           },
           "buffDuration": 0.75
         }
@@ -81021,10 +81007,8 @@ export const POWERSETS_RAW = {
         "tier": 2,
         "maxSlots": 6,
         "allowedEnhancements": [
-          "Damage",
-          "Accuracy",
-          "Recharge",
-          "EnduranceReduction"
+          "Resistance",
+          "Heal"
         ],
         "allowedSetCategories": [
           "Healing",
@@ -81038,41 +81022,13 @@ export const POWERSETS_RAW = {
         "effectArea": "SingleTarget",
         "effects": {
           "accuracy": 1,
-          "dotDamage": {
-            "types": [
-              {
-                "type": "Fire",
-                "scale": 1.5,
-                "ticks": 5
-              },
-              {
-                "type": "Cold",
-                "scale": 1.5,
-                "ticks": 5
-              },
-              {
-                "type": "Energy",
-                "scale": 1.5,
-                "ticks": 5
-              },
-              {
-                "type": "Negative",
-                "scale": 1.5,
-                "ticks": 5
-              },
-              {
-                "type": "Toxic",
-                "scale": 1.5,
-                "ticks": 5
-              }
-            ]
-          },
+          "maxHealth": 0.10,
           "resistance": {
-            "fire": 0.11249999999999999,
-            "cold": 0.11249999999999999,
-            "energy": 0.11249999999999999,
-            "negative": 0.11249999999999999,
-            "toxic": 0.11249999999999999
+            "fire": 0.1125,
+            "cold": 0.1125,
+            "energy": 0.1125,
+            "negative": 0.1125,
+            "toxic": 0.1125
           },
           "buffDuration": 10.25
         }
@@ -102961,6 +102917,8 @@ export const POWERSETS_RAW = {
         "tier": 1,
         "maxSlots": 6,
         "allowedEnhancements": [
+          "Defense",
+          "Resistance",
           "EnduranceReduction",
           "Recharge"
         ],
@@ -102969,7 +102927,7 @@ export const POWERSETS_RAW = {
           "Resist Damage"
         ],
         "description": "Your mastery of the shield allows you to easily deflect melee attacks, and attacks that do get through your ironclad defenses tend to do less damage. While Deflection is active the user will gain defense to melee attacks and some minor resistance to lethal and smashing damage.<br><br><color #fcfc95>Recharge: Fast.</color>",
-        "shortHelp": "Toggle: Self +DEF(Melee), +Res(Lethal, Smashing)",
+        "shortHelp": "Toggle: Self +DEF(Melee, Psionic), +Res(Lethal, Smashing)",
         "icon": "shielddefense_activedefense.png",
         "powerType": "Toggle",
         "targetType": "Self",
@@ -102980,11 +102938,12 @@ export const POWERSETS_RAW = {
           "endurance": 0.104,
           "cast": 1.5,
           "defense": {
-            "psionic": 0.11249999999999999
+            "melee": 0.105,
+            "psionic": 0.1125
           },
           "resistance": {
-            "smashing": 0.11249999999999999,
-            "lethal": 0.11249999999999999
+            "smashing": 0.1125,
+            "lethal": 0.1125
           },
           "buffDuration": 0.75
         }
@@ -103029,6 +102988,7 @@ export const POWERSETS_RAW = {
         "tier": 2,
         "maxSlots": 6,
         "allowedEnhancements": [
+          "Defense",
           "EnduranceReduction",
           "Recharge"
         ],
@@ -103046,6 +103006,10 @@ export const POWERSETS_RAW = {
           "recharge": 4,
           "endurance": 0.104,
           "cast": 1.5,
+          "defense": {
+            "ranged": 0.12,
+            "aoe": 0.12
+          },
           "debuffResistance": {
             "defense": 0.1384
           },
@@ -103058,10 +103022,8 @@ export const POWERSETS_RAW = {
         "tier": 3,
         "maxSlots": 6,
         "allowedEnhancements": [
-          "Damage",
-          "Accuracy",
-          "Recharge",
-          "EnduranceReduction"
+          "Resistance",
+          "Heal"
         ],
         "allowedSetCategories": [
           "Healing",
@@ -103075,41 +103037,13 @@ export const POWERSETS_RAW = {
         "effectArea": "SingleTarget",
         "effects": {
           "accuracy": 1,
-          "dotDamage": {
-            "types": [
-              {
-                "type": "Fire",
-                "scale": 1.5,
-                "ticks": 5
-              },
-              {
-                "type": "Cold",
-                "scale": 1.5,
-                "ticks": 5
-              },
-              {
-                "type": "Energy",
-                "scale": 1.5,
-                "ticks": 5
-              },
-              {
-                "type": "Negative",
-                "scale": 1.5,
-                "ticks": 5
-              },
-              {
-                "type": "Toxic",
-                "scale": 1.5,
-                "ticks": 5
-              }
-            ]
-          },
+          "maxHealth": 0.10,
           "resistance": {
-            "fire": 0.11249999999999999,
-            "cold": 0.11249999999999999,
-            "energy": 0.11249999999999999,
-            "negative": 0.11249999999999999,
-            "toxic": 0.11249999999999999
+            "fire": 0.1125,
+            "cold": 0.1125,
+            "energy": 0.1125,
+            "negative": 0.1125,
+            "toxic": 0.1125
           },
           "buffDuration": 10.25
         }
@@ -114943,6 +114877,7 @@ export const POWERSETS_RAW = {
         "tier": 1,
         "maxSlots": 6,
         "allowedEnhancements": [
+          "Defense",
           "EnduranceReduction",
           "Recharge"
         ],
@@ -114960,8 +114895,12 @@ export const POWERSETS_RAW = {
           "recharge": 4,
           "endurance": 0.104,
           "cast": 1.5,
+          "defense": {
+            "ranged": 0.18,
+            "aoe": 0.18
+          },
           "debuffResistance": {
-            "defense": 0.17300000000000001
+            "defense": 0.173
           },
           "buffDuration": 0.75
         }
@@ -114972,6 +114911,8 @@ export const POWERSETS_RAW = {
         "tier": 1,
         "maxSlots": 6,
         "allowedEnhancements": [
+          "Defense",
+          "Resistance",
           "EnduranceReduction",
           "Recharge"
         ],
@@ -114980,7 +114921,7 @@ export const POWERSETS_RAW = {
           "Resist Damage"
         ],
         "description": "Your mastery of the shield allows you to easily deflect melee attacks, and attacks that do get through your ironclad defenses tend to do less damage. While Deflection is active the user will gain defense to melee attacks and some minor resistance to lethal and smashing damage.<br><br><color #fcfc95>Recharge: Fast.</color>",
-        "shortHelp": "Toggle: Self +DEF(Melee), +Res(Lethal, Smashing)",
+        "shortHelp": "Toggle: Self +DEF(Melee, Psionic), +Res(Lethal, Smashing)",
         "icon": "shielddefense_activedefense.png",
         "powerType": "Toggle",
         "targetType": "Self",
@@ -114991,11 +114932,12 @@ export const POWERSETS_RAW = {
           "endurance": 0.104,
           "cast": 1.5,
           "defense": {
-            "psionic": 0.15000000000000002
+            "melee": 0.16,
+            "psionic": 0.15
           },
           "resistance": {
-            "smashing": 0.15000000000000002,
-            "lethal": 0.15000000000000002
+            "smashing": 0.15,
+            "lethal": 0.15
           },
           "buffDuration": 0.75
         }
@@ -115006,10 +114948,8 @@ export const POWERSETS_RAW = {
         "tier": 1,
         "maxSlots": 6,
         "allowedEnhancements": [
-          "Damage",
-          "Accuracy",
-          "Recharge",
-          "EnduranceReduction"
+          "Resistance",
+          "Heal"
         ],
         "allowedSetCategories": [
           "Healing",
@@ -115023,41 +114963,13 @@ export const POWERSETS_RAW = {
         "effectArea": "SingleTarget",
         "effects": {
           "accuracy": 1,
-          "dotDamage": {
-            "types": [
-              {
-                "type": "Fire",
-                "scale": 1.5,
-                "ticks": 5
-              },
-              {
-                "type": "Cold",
-                "scale": 1.5,
-                "ticks": 5
-              },
-              {
-                "type": "Energy",
-                "scale": 1.5,
-                "ticks": 5
-              },
-              {
-                "type": "Negative",
-                "scale": 1.5,
-                "ticks": 5
-              },
-              {
-                "type": "Toxic",
-                "scale": 1.5,
-                "ticks": 5
-              }
-            ]
-          },
+          "maxHealth": 0.15,
           "resistance": {
-            "fire": 0.15000000000000002,
-            "cold": 0.15000000000000002,
-            "energy": 0.15000000000000002,
-            "negative": 0.15000000000000002,
-            "toxic": 0.15000000000000002
+            "fire": 0.15,
+            "cold": 0.15,
+            "energy": 0.15,
+            "negative": 0.15,
+            "toxic": 0.15
           },
           "buffDuration": 10.25
         }

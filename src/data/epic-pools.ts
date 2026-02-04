@@ -198,8 +198,14 @@ export function getEpicPoolsForArchetype(archetypeId: string): EpicPool[] {
   // Normalize archetype ID (handle "arachnos-soldier" vs "arachnos_soldier")
   const normalizedId = archetypeId.toLowerCase().replace(/-/g, '_');
 
+  // Special case: Arachnos Widow shares patron pools with Arachnos Soldier
+  // In-game, both VEATs can access the same patron pools (Leviathan, Mace, Mu, Soul)
+  const archTypesToMatch = normalizedId === 'arachnos_widow'
+    ? ['arachnos_widow', 'arachnos_soldier']
+    : [normalizedId];
+
   return Object.values(_epicPools).filter(
-    (pool) => pool.archetype.toLowerCase() === normalizedId
+    (pool) => archTypesToMatch.includes(pool.archetype.toLowerCase())
   );
 }
 

@@ -46,7 +46,9 @@
       "Bash(python3:*)",
       "Bash(npm run dev:*)",
       "Bash(curl:*)",
-      "Bash(netstat:*)"
+      "Bash(netstat:*)",
+      "Bash(dir:*)",
+      "Bash(node scripts/convert-epic-powersets.js:*)"
     ]
   }
 }

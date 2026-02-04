@@ -21,7 +21,11 @@ import type {
   DebuffResistance,
 } from '@/types';
 import { POWERSETS_RAW } from './powersets-raw';
+import { EPIC_POWERSETS_RAW } from './epic-powersets-raw';
 import { resolvePath } from '@/utils/paths';
+
+// Merge standard and Epic Archetype powersets
+const ALL_POWERSETS_RAW = { ...POWERSETS_RAW, ...EPIC_POWERSETS_RAW };
 
 // ============================================
 // POWERSET REGISTRY TYPE
@@ -286,8 +290,9 @@ function transformRegistry(legacy: LegacyPowersetRegistry): PowersetRegistry {
 // ============================================
 
 // Transform and cache the raw data at module load time
+// Includes both standard archetypes and Epic Archetypes (Kheldians, Arachnos)
 const _powersets: PowersetRegistry = transformRegistry(
-  POWERSETS_RAW as unknown as LegacyPowersetRegistry
+  ALL_POWERSETS_RAW as unknown as LegacyPowersetRegistry
 );
 
 /**

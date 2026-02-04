@@ -16,7 +16,7 @@ export const ARCHETYPES: ArchetypeRegistry = {
     description: 'Ranged damage specialist with high offensive power but low defenses',
     inherent: {
       name: 'Defiance',
-      description: 'Build up damage bonus as health drops, attacks while mezzed',
+      description: 'Attacking grants stacking damage bonus. First two Primary and first Secondary power usable while mezzed.',
     },
     stats: {
       baseHP: 1204.8,
@@ -73,7 +73,7 @@ export const ARCHETYPES: ArchetypeRegistry = {
     description: 'Mezzes enemies and buffs/debuffs with strong team support',
     inherent: {
       name: 'Containment',
-      description: 'Deal double damage to controlled enemies',
+      description: 'Double damage vs Held, Immobilized, Slept, or Disoriented targets. Applied after enhancements.',
     },
     stats: {
       baseHP: 1017.4,
@@ -129,7 +129,7 @@ export const ARCHETYPES: ArchetypeRegistry = {
     description: 'Support specialist with powerful buffs, debuffs, and healing',
     inherent: {
       name: 'Vigilance',
-      description: 'Damage increases when team is wounded, endurance discount when solo',
+      description: 'Solo/small teams: +6-30% damage (scales with level). Endurance discount when teammates are injured. 3+ teammates = no damage bonus.',
     },
     stats: {
       baseHP: 1017.4,
@@ -188,7 +188,7 @@ export const ARCHETYPES: ArchetypeRegistry = {
     description: 'Melee damage dealer with good survivability through defense/resistance',
     inherent: {
       name: 'Critical Hit',
-      description: 'Chance for critical hits (higher chance vs minions/underlings)',
+      description: '5% crit chance vs minions (double damage), 10% vs lieutenants/bosses. Average +5-10% damage bonus.',
     },
     stats: {
       baseHP: 1338.6,
@@ -251,7 +251,7 @@ export const ARCHETYPES: ArchetypeRegistry = {
     description: 'Extremely tough with highest HP and strong defensive powers',
     inherent: {
       name: 'Gauntlet',
-      description: 'All attacks taunt enemies, AoE punch-voke effect',
+      description: 'PunchVoke: ST attacks taunt target + 4 nearby, AoE taunts all. +50% AoE radius/range, +50% cone arc. PBAoE hits bonus targets at 33% damage.',
     },
     stats: {
       baseHP: 1874.1,
@@ -314,7 +314,7 @@ export const ARCHETYPES: ArchetypeRegistry = {
     description: 'Homecoming exclusive: Ranged damage with built-in armor for survivability',
     inherent: {
       name: 'Opportunity',
-      description: 'Build up meter with attacks, consume for offensive/defensive stance',
+      description: 'Build meter by attacking. When full, T1/T2 attacks apply debuffs to enemy: -11.25% Def, -15% Res (all types), -15% Mez Res, -150ft Stealth.',
     },
     stats: {
       baseHP: 1204.8,
@@ -374,7 +374,7 @@ export const ARCHETYPES: ArchetypeRegistry = {
     description: 'High damage melee fighter that builds fury through combat',
     inherent: {
       name: 'Fury',
-      description: 'Build up damage bonus by attacking and being attacked',
+      description: 'Build fury (0-100) by attacking and being attacked. Each fury point grants +2% damage, up to +200% at max fury.',
     },
     stats: {
       baseHP: 1606.4,
@@ -437,7 +437,7 @@ export const ARCHETYPES: ArchetypeRegistry = {
     description: 'Ranged damage dealer with debuffs and support abilities',
     inherent: {
       name: 'Scourge',
-      description: 'Increased critical hit chance against low-health enemies',
+      description: 'Chance for double damage when enemies are below 50% HP. 2.5% per 1% below 50%, guaranteed at 10% HP. ~30% avg damage bonus.',
     },
     stats: {
       baseHP: 1017.4,
@@ -496,7 +496,7 @@ export const ARCHETYPES: ArchetypeRegistry = {
     description: 'Control specialist with strong offensive capabilities',
     inherent: {
       name: 'Domination',
-      description: 'Build meter to activate Domination for mag boost and endurance refill',
+      description: 'Build meter by attacking, activate at 90%+ for 2× mez magnitude, 1.5× mez duration, mez protection, and full endurance. Lasts 90s.',
     },
     stats: {
       baseHP: 1017.4,
@@ -548,7 +548,7 @@ export const ARCHETYPES: ArchetypeRegistry = {
     description: 'Pet commander with support abilities for minions',
     inherent: {
       name: 'Supremacy',
-      description: 'Pets gain bonuses to accuracy, damage, and resistance when near you',
+      description: 'Henchmen within 60ft gain +25% Damage and +10% ToHit. Bodyguard Mode (Defensive/Follow) splits damage: 66% to you, 33% to pets.',
     },
     stats: {
       baseHP: 695.7,
@@ -599,7 +599,7 @@ export const ARCHETYPES: ArchetypeRegistry = {
     description: 'Stealthy assassin with critical strikes from hide',
     inherent: {
       name: 'Assassination',
-      description: 'Massive critical strikes from hide, improved criticals',
+      description: 'From Hide: 100% critical (double damage). Outside: 10% base + 3% per teammate. Assassin\'s Focus grants up to +100% crit for Assassin\'s Strike.',
     },
     stats: {
       baseHP: 1204.8,
@@ -736,8 +736,20 @@ export const ARCHETYPES: ArchetypeRegistry = {
       },
       buffDebuffModifier: 1.0,
     },
-    primarySets: ['arachnos-soldier/soldier-training'],
+    primarySets: ['arachnos-soldier/arachnos-soldier'],
     secondarySets: ['arachnos-soldier/training-and-gadgets'],
+    branches: {
+      'bane-spider': {
+        name: 'Bane Spider',
+        level: 24,
+        secondarySet: 'arachnos-soldier/bane-spider-training',
+      },
+      'crab-spider': {
+        name: 'Crab Spider',
+        level: 24,
+        secondarySet: 'arachnos-soldier/crab-spider-training',
+      },
+    },
   },
 
   'arachnos-widow': {
@@ -763,7 +775,21 @@ export const ARCHETYPES: ArchetypeRegistry = {
       buffDebuffModifier: 1.0,
     },
     primarySets: ['arachnos-widow/widow-training'],
-    secondarySets: ['arachnos-widow/widow-teamwork'],
+    secondarySets: ['arachnos-widow/teamwork'],
+    branches: {
+      'night-widow': {
+        name: 'Night Widow',
+        level: 24,
+        primarySet: 'arachnos-widow/night-widow-training',
+        secondarySet: 'arachnos-widow/widow-teamwork',
+      },
+      fortunata: {
+        name: 'Fortunata',
+        level: 24,
+        primarySet: 'arachnos-widow/fortunata-training',
+        secondarySet: 'arachnos-widow/fortunata-teamwork',
+      },
+    },
   },
 };
 

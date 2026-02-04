@@ -47,6 +47,27 @@ export interface InherentPower {
 }
 
 // ============================================
+// ARCHETYPE BRANCHES (For Epic ATs like Arachnos)
+// ============================================
+
+export interface ArchetypeBranch {
+  /** Display name of the branch (e.g., "Bane Spider", "Fortunata") */
+  name: string;
+  /** Level at which this branch becomes available */
+  level: number;
+  /** Additional primary powerset for this branch (optional) */
+  primarySet?: string;
+  /** Additional secondary powerset for this branch */
+  secondarySet: string;
+}
+
+export type ArchetypeBranchId =
+  | 'bane-spider'
+  | 'crab-spider'
+  | 'night-widow'
+  | 'fortunata';
+
+// ============================================
 // ARCHETYPE DEFINITION
 // ============================================
 
@@ -65,6 +86,8 @@ export interface Archetype {
   primarySets: string[];
   /** Available secondary powerset IDs */
   secondarySets: string[];
+  /** Branching specializations (for Arachnos Epic ATs) */
+  branches?: Partial<Record<ArchetypeBranchId, ArchetypeBranch>>;
 }
 
 // ============================================

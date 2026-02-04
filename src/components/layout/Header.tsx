@@ -4,9 +4,10 @@
  */
 
 import { useBuildStore, useUIStore } from '@/stores';
-import { getPowersetsForArchetype, MAX_LEVEL } from '@/data';
+import { getPowersetsForArchetype, getPowerset, MAX_LEVEL, ARCHETYPES } from '@/data';
 import { Button, Select, Slider, Toggle, Tooltip } from '@/components/ui';
-import type { ArchetypeId, Powerset } from '@/types';
+import { calculateVigilanceDamageBonus, calculateAssassinationDamageBonus } from '@/utils/calculations';
+import type { ArchetypeId, ArchetypeBranchId, Powerset } from '@/types';
 
 const ARCHETYPE_OPTIONS = [
   { value: '', label: 'Select Archetype...' },
@@ -150,14 +151,71 @@ export function Header() {
   const setGlobalIOLevel = useUIStore((s) => s.setGlobalIOLevel);
   const exemplarMode = useUIStore((s) => s.exemplarMode);
   const toggleExemplarMode = useUIStore((s) => s.toggleExemplarMode);
+  const dominationActive = useUIStore((s) => s.dominationActive);
+  const toggleDomination = useUIStore((s) => s.toggleDomination);
+  const scourgeActive = useUIStore((s) => s.scourgeActive);
+  const toggleScourge = useUIStore((s) => s.toggleScourge);
+  const furyLevel = useUIStore((s) => s.furyLevel);
+  const setFuryLevel = useUIStore((s) => s.setFuryLevel);
+  const supremacyActive = useUIStore((s) => s.supremacyActive);
+  const toggleSupremacy = useUIStore((s) => s.toggleSupremacy);
+  const vigilanceTeamSize = useUIStore((s) => s.vigilanceTeamSize);
+  const setVigilanceTeamSize = useUIStore((s) => s.setVigilanceTeamSize);
+  const criticalHitsActive = useUIStore((s) => s.criticalHitsActive);
+  const toggleCriticalHits = useUIStore((s) => s.toggleCriticalHits);
+  const stalkerHidden = useUIStore((s) => s.stalkerHidden);
+  const toggleStalkerHidden = useUIStore((s) => s.toggleStalkerHidden);
+  const stalkerTeamSize = useUIStore((s) => s.stalkerTeamSize);
+  const setStalkerTeamSize = useUIStore((s) => s.setStalkerTeamSize);
+  const containmentActive = useUIStore((s) => s.containmentActive);
+  const toggleContainment = useUIStore((s) => s.toggleContainment);
   const openExportImportModal = useUIStore((s) => s.openExportImportModal);
+  const selectedBranch = useUIStore((s) => s.selectedBranch);
+  const setSelectedBranch = useUIStore((s) => s.setSelectedBranch);
 
   const archetypeId = build.archetype.id;
 
-  // Get powerset options based on selected archetype
+  // Get archetype definition to check for branches
+  const archetype = archetypeId ? ARCHETYPES[archetypeId] : null;
+  const hasBranches = archetype?.branches && Object.keys(archetype.branches).length > 0;
+
+  // Get base powersets for the archetype
   const allPowersets = archetypeId ? getPowersetsForArchetype(archetypeId) : [];
-  const primaryPowersets = allPowersets.filter((ps) => isPrimaryPowerset(ps, archetypeId));
-  const secondaryPowersets = allPowersets.filter((ps) => !isPrimaryPowerset(ps, archetypeId));
+
+  // For Epic ATs with branches, we need special handling
+  // Epic ATs have fixed primary/secondary, not filtered like standard ATs
+  const isEpicAT = ['peacebringer', 'warshade', 'arachnos-soldier', 'arachnos-widow'].includes(archetypeId || '');
+
+  // Get primary and secondary powersets
+  let primaryPowersets: Powerset[];
+  let secondaryPowersets: Powerset[];
+
+  if (isEpicAT && archetype) {
+    // Epic ATs: use explicitly defined sets
+    primaryPowersets = archetype.primarySets
+      .map(id => getPowerset(id))
+      .filter((ps): ps is Powerset => ps !== undefined);
+    secondaryPowersets = archetype.secondarySets
+      .map(id => getPowerset(id))
+      .filter((ps): ps is Powerset => ps !== undefined);
+
+    // If a branch is selected, add branch-specific powersets
+    if (selectedBranch && archetype.branches?.[selectedBranch]) {
+      const branch = archetype.branches[selectedBranch];
+      if (branch.primarySet) {
+        const branchPrimary = getPowerset(branch.primarySet);
+        if (branchPrimary) primaryPowersets.push(branchPrimary);
+      }
+      if (branch.secondarySet) {
+        const branchSecondary = getPowerset(branch.secondarySet);
+        if (branchSecondary) secondaryPowersets.push(branchSecondary);
+      }
+    }
+  } else {
+    // Standard ATs: filter by primary/secondary patterns
+    primaryPowersets = allPowersets.filter((ps) => isPrimaryPowerset(ps, archetypeId));
+    secondaryPowersets = allPowersets.filter((ps) => !isPrimaryPowerset(ps, archetypeId));
+  }
 
   const primaryOptions = [
     { value: '', label: 'Select Primary...' },
@@ -179,6 +237,15 @@ export function Header() {
     const value = e.target.value;
     if (value) {
       setArchetype(value as ArchetypeId);
+
+      // Auto-select powersets for Kheldians (only one option each)
+      if (value === 'peacebringer') {
+        setPrimary('peacebringer/luminous-blast');
+        setSecondary('peacebringer/luminous-aura');
+      } else if (value === 'warshade') {
+        setPrimary('warshade/umbral-blast');
+        setSecondary('warshade/umbral-aura');
+      }
     }
   };
 
@@ -236,6 +303,26 @@ export function Header() {
           disabled={!archetypeId}
         />
 
+        {/* Branch selector for Arachnos Epic ATs */}
+        {hasBranches && archetype?.branches && (
+          <Tooltip content="Choose your specialization path. At level 24, you can branch into a specialization that unlocks additional powers.">
+            <Select
+              id="branch-select"
+              name="branch"
+              options={[
+                { value: '', label: 'Select Branch...' },
+                ...Object.entries(archetype.branches).map(([branchId, branch]) => ({
+                  value: branchId,
+                  label: branch.name,
+                })),
+              ]}
+              value={selectedBranch || ''}
+              onChange={(e) => setSelectedBranch(e.target.value as ArchetypeBranchId || null)}
+              className="max-w-[180px] min-w-[125px]"
+            />
+          </Tooltip>
+        )}
+
         {/* Exemplar Mode toggle */}
         <Tooltip content="When enabled, set bonuses are suppressed based on build level (simulates exemplaring down)">
           <div className="flex items-center bg-slate-700/50 px-2 py-1.5 rounded border border-slate-600">
@@ -248,6 +335,201 @@ export function Header() {
             />
           </div>
         </Tooltip>
+
+        {/* Domination toggle - only for Dominators */}
+        {archetypeId === 'dominator' && (
+          <Tooltip content="Toggle Domination active state to see enhanced mez values (2× magnitude, 1.5× duration)">
+            <div className={`flex items-center px-2 py-1.5 rounded border ${
+              dominationActive
+                ? 'bg-pink-900/30 border-pink-700/50'
+                : 'bg-slate-700/50 border-slate-600'
+            }`}>
+              <Toggle
+                id="domination-toggle"
+                name="domination"
+                checked={dominationActive}
+                onChange={toggleDomination}
+                label="Domination"
+              />
+            </div>
+          </Tooltip>
+        )}
+
+        {/* Scourge toggle - only for Corruptors */}
+        {archetypeId === 'corruptor' && (
+          <Tooltip content="Toggle to show average Scourge damage bonus (+30% as multiplier). Scourge chance increases as enemy HP drops below 50%.">
+            <div className={`flex items-center px-2 py-1.5 rounded border ${
+              scourgeActive
+                ? 'bg-cyan-900/30 border-cyan-700/50'
+                : 'bg-slate-700/50 border-slate-600'
+            }`}>
+              <Toggle
+                id="scourge-toggle"
+                name="scourge"
+                checked={scourgeActive}
+                onChange={toggleScourge}
+                label="Scourge"
+              />
+            </div>
+          </Tooltip>
+        )}
+
+        {/* Fury slider - only for Brutes */}
+        {archetypeId === 'brute' && (
+          <Tooltip content={`Fury grants +${furyLevel * 2}% damage. Adjust to see damage at different fury levels.`}>
+            <div className={`flex items-center gap-1 px-2 py-1.5 rounded border ${
+              furyLevel > 0
+                ? 'bg-red-900/30 border-red-700/50'
+                : 'bg-slate-700/50 border-slate-600'
+            }`}>
+              <span className="text-xs text-red-400 font-semibold uppercase">Fury</span>
+              <span className="text-sm font-bold text-red-400 w-7">{furyLevel}</span>
+              <Slider
+                value={furyLevel}
+                min={0}
+                max={100}
+                onChange={(e) => setFuryLevel(Number(e.target.value))}
+                className="w-20"
+                showValue={false}
+                showRange={false}
+              />
+              <span className="text-[10px] text-red-300">+{furyLevel * 2}%</span>
+            </div>
+          </Tooltip>
+        )}
+
+        {/* Supremacy toggle - only for Masterminds */}
+        {archetypeId === 'mastermind' && (
+          <Tooltip content="Toggle to show Supremacy buffs (+25% Damage, +10% ToHit) for henchmen within 60ft. Also enables Bodyguard Mode info.">
+            <div className={`flex items-center px-2 py-1.5 rounded border ${
+              supremacyActive
+                ? 'bg-amber-900/30 border-amber-700/50'
+                : 'bg-slate-700/50 border-slate-600'
+            }`}>
+              <Toggle
+                id="supremacy-toggle"
+                name="supremacy"
+                checked={supremacyActive}
+                onChange={toggleSupremacy}
+                label="Supremacy"
+              />
+            </div>
+          </Tooltip>
+        )}
+
+        {/* Vigilance slider - only for Defenders */}
+        {archetypeId === 'defender' && (() => {
+          const damageBonus = calculateVigilanceDamageBonus(build.level, vigilanceTeamSize);
+          const teamLabel = vigilanceTeamSize === 0 ? 'Solo' : `+${vigilanceTeamSize}`;
+          return (
+            <Tooltip content={`Vigilance grants +${(damageBonus * 100).toFixed(0)}% damage based on team size. Solo = max bonus, 3+ teammates = no bonus.`}>
+              <div className={`flex items-center gap-1 px-2 py-1.5 rounded border ${
+                vigilanceTeamSize < 3
+                  ? 'bg-indigo-900/30 border-indigo-700/50'
+                  : 'bg-slate-700/50 border-slate-600'
+              }`}>
+                <span className="text-xs text-indigo-400 font-semibold uppercase">Team</span>
+                <span className="text-sm font-bold text-indigo-400 w-8">{teamLabel}</span>
+                <Slider
+                  value={vigilanceTeamSize}
+                  min={0}
+                  max={7}
+                  onChange={(e) => setVigilanceTeamSize(Number(e.target.value))}
+                  className="w-16"
+                  showValue={false}
+                  showRange={false}
+                />
+                <span className="text-[10px] text-indigo-300">+{(damageBonus * 100).toFixed(0)}%</span>
+              </div>
+            </Tooltip>
+          );
+        })()}
+
+        {/* Critical Hits toggle - only for Scrappers */}
+        {archetypeId === 'scrapper' && (
+          <Tooltip content="Toggle to show average Critical Hit damage bonus. 5% crit chance vs minions (+5% avg), 10% vs higher ranks (+10% avg). Critical hits deal double damage.">
+            <div className={`flex items-center px-2 py-1.5 rounded border ${
+              criticalHitsActive
+                ? 'bg-orange-900/30 border-orange-700/50'
+                : 'bg-slate-700/50 border-slate-600'
+            }`}>
+              <Toggle
+                id="critical-hits-toggle"
+                name="criticalHits"
+                checked={criticalHitsActive}
+                onChange={toggleCriticalHits}
+                label="Critical Hits"
+              />
+            </div>
+          </Tooltip>
+        )}
+
+        {/* Stalker Assassination controls */}
+        {archetypeId === 'stalker' && (() => {
+          const damageBonus = calculateAssassinationDamageBonus(stalkerHidden, stalkerTeamSize);
+          const teamLabel = stalkerTeamSize === 0 ? 'Solo' : `+${stalkerTeamSize}`;
+          return (
+            <>
+              {/* Hidden toggle */}
+              <Tooltip content={stalkerHidden
+                ? "Attacking from Hide: 100% critical chance (double damage)"
+                : "Not Hidden: 10% base crit + 3% per teammate. Toggle to see damage from Hide."
+              }>
+                <div className={`flex items-center px-2 py-1.5 rounded border ${
+                  stalkerHidden
+                    ? 'bg-purple-900/30 border-purple-700/50'
+                    : 'bg-slate-700/50 border-slate-600'
+                }`}>
+                  <Toggle
+                    id="stalker-hidden-toggle"
+                    name="stalkerHidden"
+                    checked={stalkerHidden}
+                    onChange={toggleStalkerHidden}
+                    label="Hidden"
+                  />
+                </div>
+              </Tooltip>
+              {/* Team size slider (only shows when not hidden) */}
+              {!stalkerHidden && (
+                <Tooltip content={`Assassination grants +${(damageBonus * 100).toFixed(0)}% avg damage. 10% base crit + 3% per teammate outside of hide.`}>
+                  <div className="flex items-center gap-1 px-2 py-1.5 rounded border bg-purple-900/30 border-purple-700/50">
+                    <span className="text-xs text-purple-400 font-semibold uppercase">Team</span>
+                    <span className="text-sm font-bold text-purple-400 w-8">{teamLabel}</span>
+                    <Slider
+                      value={stalkerTeamSize}
+                      min={0}
+                      max={7}
+                      onChange={(e) => setStalkerTeamSize(Number(e.target.value))}
+                      className="w-16"
+                      showValue={false}
+                      showRange={false}
+                    />
+                    <span className="text-[10px] text-purple-300">+{(damageBonus * 100).toFixed(0)}%</span>
+                  </div>
+                </Tooltip>
+              )}
+            </>
+          );
+        })()}
+
+        {/* Containment toggle - only for Controllers */}
+        {archetypeId === 'controller' && (
+          <Tooltip content="Toggle to show Containment damage bonus. Controllers deal double damage to Held, Immobilized, Slept, or Disoriented targets.">
+            <div className={`flex items-center px-2 py-1.5 rounded border ${
+              containmentActive
+                ? 'bg-cyan-900/30 border-cyan-700/50'
+                : 'bg-slate-700/50 border-slate-600'
+            }`}>
+              <Toggle
+                id="containment-toggle"
+                name="containment"
+                checked={containmentActive}
+                onChange={toggleContainment}
+                label="Containment"
+              />
+            </div>
+          </Tooltip>
+        )}
 
         {/* Level selector */}
         <div className="flex items-center gap-1 bg-slate-700/50 px-2 py-1.5 rounded border border-slate-600">

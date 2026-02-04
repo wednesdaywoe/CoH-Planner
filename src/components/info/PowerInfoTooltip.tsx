@@ -6,7 +6,7 @@
 
 import { useEffect, useState, useCallback, useMemo } from 'react';
 import { createPortal } from 'react-dom';
-import { useUIStore, useBuildStore } from '@/stores';
+import { useUIStore, useBuildStore, useDominationActive, useScourgeActive, useFuryLevel, useSupremacyActive, useVigilanceTeamSize, useCriticalHitsActive, useStalkerHidden, useStalkerTeamSize, useContainmentActive } from '@/stores';
 import { useGlobalBonuses } from '@/hooks/useCalculatedStats';
 import { getPower, getPowerPool, getArchetype, getIOSet, getPowerset, getInherentPowerDef, findProcData, parseProcEffect, getProcEffectLabel, getProcEffectColor, isProcAlwaysOn, calculateProcChance, calculateProcsPerMinute, calculateProcDPS, calculateAutoToggleProcChance, calculateAutoToggleProcsPerMinute } from '@/data';
 import { resolvePath } from '@/utils/paths';
@@ -17,6 +17,39 @@ import {
   normalizeAspectName,
   getAspectSchedule,
   getIOValueAtLevel,
+  calculateDefiance,
+  getDominationInfo,
+  calculateDominationMagnitude,
+  calculateDominationDuration,
+  isDominatorControlPower,
+  getScourgeInfo,
+  calculateScourgeDamage,
+  isCorruptorAttackPower,
+  getFuryInfo,
+  calculateFuryDamageBonus,
+  calculateFuryDamage,
+  isBruteAttackPower,
+  getSupremacyInfo,
+  getBodyguardInfo,
+  isMastermindPower,
+  getVigilanceInfo,
+  calculateVigilanceDamageBonus,
+  calculateVigilanceDamage,
+  isDefenderPower,
+  getOpportunityInfo,
+  isSentinelPower,
+  getCriticalHitInfo,
+  calculateCriticalHitDamage,
+  isScrapperAttackPower,
+  getAssassinationInfo,
+  calculateAssassinationDamageBonus,
+  calculateAssassinationDamage,
+  isStalkerAttackPower,
+  getGauntletInfo,
+  isTankerPower,
+  getContainmentInfo,
+  calculateContainmentDamage,
+  isControllerPower,
   type EnhancementBonuses,
 } from '@/utils/calculations';
 import {
@@ -211,6 +244,15 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
   const build = useBuildStore((s) => s.build);
   const archetypeId = build.archetype.id;
   const globalBonuses = useGlobalBonuses();
+  const dominationActive = useDominationActive();
+  const scourgeActive = useScourgeActive();
+  const furyLevel = useFuryLevel();
+  const supremacyActive = useSupremacyActive();
+  const vigilanceTeamSize = useVigilanceTeamSize();
+  const criticalHitsActive = useCriticalHitsActive();
+  const stalkerHidden = useStalkerHidden();
+  const stalkerTeamSize = useStalkerTeamSize();
+  const containmentActive = useContainmentActive();
 
   // Check if Fiery Embrace is active in the build
   const isFieryEmbraceActive = useMemo(() => {
@@ -615,18 +657,82 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
       )}
 
       {/* Damage with three-tier display - using actual damage calculation */}
-      {calculatedDamage && (
+      {calculatedDamage && (() => {
+        // Check if Scourge should be shown (Corruptor)
+        const isCorruptor = archetypeId === 'corruptor';
+        const isCorruptorPower = isCorruptorAttackPower(powerSet);
+        const showScourge = isCorruptor && isCorruptorPower && scourgeActive;
+        const scourgeInfo = getScourgeInfo();
+
+        // Check if Fury should be shown (Brute)
+        const isBrute = archetypeId === 'brute';
+        const isBrutePower = isBruteAttackPower(powerSet);
+        const showFury = isBrute && isBrutePower && furyLevel > 0;
+        const furyBonus = calculateFuryDamageBonus(furyLevel);
+
+        // Check if Vigilance should be shown (Defender)
+        const isDefender = archetypeId === 'defender';
+        const isDefenderAttackPower = isDefenderPower(powerSet);
+        const vigilanceBonus = calculateVigilanceDamageBonus(build.level, vigilanceTeamSize);
+        const showVigilance = isDefender && isDefenderAttackPower && vigilanceBonus > 0;
+
+        // Check if Critical Hits should be shown (Scrapper)
+        const isScrapper = archetypeId === 'scrapper';
+        const isScrapperPower = isScrapperAttackPower(powerSet);
+        const showCriticalHits = isScrapper && isScrapperPower && criticalHitsActive;
+        const critInfo = getCriticalHitInfo();
+
+        // Check if Assassination should be shown (Stalker)
+        const isStalker = archetypeId === 'stalker';
+        const isStalkerPower = isStalkerAttackPower(powerSet);
+        const assassinationBonus = calculateAssassinationDamageBonus(stalkerHidden, stalkerTeamSize);
+        const showAssassination = isStalker && isStalkerPower && assassinationBonus > 0;
+
+        // Check if Containment should be shown (Controller)
+        const isController = archetypeId === 'controller';
+        const isControllerAttackPower = isControllerPower(powerSet);
+        const showContainment = isController && isControllerAttackPower && containmentActive;
+
+        // Determine final column header
+        const finalColumnHeader = showScourge ? 'w/ Scourge' : showFury ? 'w/ Fury' : showVigilance ? 'w/ Vigilance' : showCriticalHits ? 'w/ Crit' : showAssassination ? (stalkerHidden ? 'w/ Crit' : 'w/ Assassin') : showContainment ? 'w/ Contain' : 'Final';
+
+        // Calculate final damage with inherent bonuses
+        const applyInherentBonus = (damage: number) => {
+          if (showScourge) return calculateScourgeDamage(damage);
+          if (showFury) return calculateFuryDamage(damage, furyLevel);
+          if (showVigilance) return calculateVigilanceDamage(damage, build.level, vigilanceTeamSize);
+          // For Critical Hits, use average vs higher rank targets (10% avg) as default display
+          if (showCriticalHits) return calculateCriticalHitDamage(damage, 'higher');
+          if (showAssassination) return calculateAssassinationDamage(damage, stalkerHidden, stalkerTeamSize);
+          // Containment doubles damage vs controlled targets
+          if (showContainment) return calculateContainmentDamage(damage, true);
+          return damage;
+        };
+
+        // Get color class for inherent-modified values
+        const getInherentColorClass = () => {
+          if (showScourge) return 'text-cyan-400';
+          if (showFury) return 'text-red-400';
+          if (showVigilance) return 'text-indigo-400';
+          if (showCriticalHits) return 'text-orange-400';
+          if (showAssassination) return 'text-purple-400';
+          if (showContainment) return 'text-cyan-400';
+          return 'text-amber-400';
+        };
+
+        return (
         <div className="bg-slate-800/50 rounded p-1.5">
           <div className="grid grid-cols-[3rem_1fr_1fr_1fr] gap-1 text-[8px] text-slate-500 uppercase mb-0.5 border-b border-slate-700 pb-0.5">
             <span>Type</span>
             <span>Base</span>
             <span>Enhanced</span>
-            <span>Final</span>
+            <span>{finalColumnHeader}</span>
           </div>
           {/* Primary damage */}
           {(() => {
             const hasEnh = Math.abs(calculatedDamage.enhanced - calculatedDamage.base) > 0.001;
-            const hasGlobal = Math.abs(calculatedDamage.final - calculatedDamage.enhanced) > 0.001;
+            const finalDamage = applyInherentBonus(calculatedDamage.final);
+            const hasGlobal = Math.abs(finalDamage - calculatedDamage.enhanced) > 0.001;
             return (
               <div className="grid grid-cols-[3rem_1fr_1fr_1fr] gap-1 items-baseline text-[10px]">
                 <span className="text-red-400">{calculatedDamage.type}</span>
@@ -634,8 +740,8 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
                 <span className={hasEnh ? 'text-green-400' : 'text-slate-600'}>
                   {hasEnh ? `→ ${calculatedDamage.enhanced.toFixed(1)}` : '—'}
                 </span>
-                <span className={hasGlobal ? 'text-amber-400' : 'text-slate-600'}>
-                  {hasGlobal ? `→ ${calculatedDamage.final.toFixed(1)}` : '—'}
+                <span className={hasGlobal ? getInherentColorClass() : 'text-slate-600'}>
+                  {hasGlobal ? `→ ${finalDamage.toFixed(1)}` : '—'}
                 </span>
               </div>
             );
@@ -644,7 +750,8 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
           {calculatedDamage.fieryEmbraceDamage && (() => {
             const fe = calculatedDamage.fieryEmbraceDamage;
             const hasEnh = Math.abs(fe.enhanced - fe.base) > 0.001;
-            const hasGlobal = Math.abs(fe.final - fe.enhanced) > 0.001;
+            const feFinal = applyInherentBonus(fe.final);
+            const hasGlobal = Math.abs(feFinal - fe.enhanced) > 0.001;
             const isActive = isFieryEmbraceActive;
             return (
               <>
@@ -654,8 +761,8 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
                   <span className={isActive ? (hasEnh ? 'text-green-400' : 'text-slate-600') : 'text-slate-600'}>
                     {hasEnh ? `→ ${fe.enhanced.toFixed(1)}` : '—'}
                   </span>
-                  <span className={isActive ? (hasGlobal ? 'text-amber-400' : 'text-slate-600') : 'text-slate-600'}>
-                    {hasGlobal ? `→ ${fe.final.toFixed(1)}` : '—'}
+                  <span className={isActive ? (hasGlobal ? getInherentColorClass() : 'text-slate-600') : 'text-slate-600'}>
+                    {hasGlobal ? `→ ${feFinal.toFixed(1)}` : '—'}
                   </span>
                 </div>
                 <div className={`text-[8px] italic mt-0.5 ${isActive ? 'text-orange-400' : 'text-slate-500'}`}>
@@ -666,13 +773,39 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
               </>
             );
           })()}
+          {showScourge && (
+            <div className="text-[8px] text-cyan-400 mt-0.5">
+              +{(scourgeInfo.averageDamageBonus * 100).toFixed(0)}% avg from Scourge (×1.{(scourgeInfo.averageDamageBonus * 100).toFixed(0)} multiplier)
+            </div>
+          )}
+          {showFury && (
+            <div className="text-[8px] text-red-400 mt-0.5">
+              +{(furyBonus * 100).toFixed(0)}% from Fury ({furyLevel}/100)
+            </div>
+          )}
+          {showVigilance && (
+            <div className="text-[8px] text-indigo-400 mt-0.5">
+              +{(vigilanceBonus * 100).toFixed(0)}% from Vigilance ({vigilanceTeamSize === 0 ? 'Solo' : `${vigilanceTeamSize} teammate${vigilanceTeamSize > 1 ? 's' : ''}`})
+            </div>
+          )}
+          {showCriticalHits && (
+            <div className="text-[8px] text-orange-400 mt-0.5">
+              +{(critInfo.averageBonusVsHigher * 100).toFixed(0)}% avg from Critical Hits (vs Lt+)
+            </div>
+          )}
+          {showAssassination && (
+            <div className="text-[8px] text-purple-400 mt-0.5">
+              +{(assassinationBonus * 100).toFixed(0)}% avg from Assassination ({stalkerHidden ? 'Hidden' : `${stalkerTeamSize === 0 ? 'Solo' : `${stalkerTeamSize} teammate${stalkerTeamSize > 1 ? 's' : ''}`}`})
+            </div>
+          )}
           {calculatedDamage.unknown && (
             <div className="text-[8px] text-slate-500 italic mt-0.5">
               * Actual damage varies
             </div>
           )}
         </div>
-      )}
+        );
+      })()}
 
       {/* DoT */}
       {effects?.dot && effects.dot.scale != null && (
@@ -685,18 +818,44 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
       )}
 
       {/* Mez Effects - inline */}
-      {hasMez && (
-        <div className="text-[10px]">
-          <span className="text-slate-400 text-[9px] uppercase">Mez: </span>
-          {effects?.stun && <span className="text-purple-400">Stun Mag {effects.stun}{effects.stunDuration ? ` (${effects.stunDuration.toFixed(1)}s)` : ''} </span>}
-          {effects?.hold && <span className="text-purple-400">Hold Mag {effects.hold}{effects.holdDuration ? ` (${effects.holdDuration.toFixed(1)}s)` : ''} </span>}
-          {effects?.immobilize && <span className="text-purple-400">Immob Mag {effects.immobilize}{effects.immobilizeDuration ? ` (${effects.immobilizeDuration.toFixed(1)}s)` : ''} </span>}
-          {effects?.sleep && <span className="text-purple-400">Sleep Mag {effects.sleep}{effects.sleepDuration ? ` (${effects.sleepDuration.toFixed(1)}s)` : ''} </span>}
-          {effects?.fear && <span className="text-purple-400">Fear Mag {effects.fear}{effects.fearDuration ? ` (${effects.fearDuration.toFixed(1)}s)` : ''} </span>}
-          {effects?.confuse && <span className="text-purple-400">Confuse Mag {effects.confuse}{effects.confuseDuration ? ` (${effects.confuseDuration.toFixed(1)}s)` : ''} </span>}
-          {effects?.knockback && <span className="text-purple-400">KB Mag {effects.knockback} </span>}
-        </div>
-      )}
+      {hasMez && (() => {
+        // Check if Domination bonuses should apply
+        const isDominator = archetypeId === 'dominator';
+        const isDominatorPower = isDominatorControlPower(powerSet);
+        const showDomination = isDominator && isDominatorPower && dominationActive;
+
+        // Helper to format mez with optional Domination enhancement
+        const formatMez = (type: string, baseMag: number, baseDur?: number) => {
+          const enhancedMag = showDomination ? calculateDominationMagnitude(baseMag) : baseMag;
+          const enhancedDur = showDomination && baseDur ? calculateDominationDuration(baseDur) : baseDur;
+
+          return (
+            <span key={type} className={showDomination ? 'text-pink-400' : 'text-purple-400'}>
+              {type} Mag {enhancedMag}
+              {enhancedDur ? ` (${enhancedDur.toFixed(1)}s)` : ''}
+              {showDomination && (
+                <span className="text-pink-300 text-[8px]"> [2×]</span>
+              )}
+              {' '}
+            </span>
+          );
+        };
+
+        return (
+          <div className="text-[10px]">
+            <span className="text-slate-400 text-[9px] uppercase">
+              Mez{showDomination && <span className="text-pink-400 ml-1">(Domination)</span>}:
+            </span>{' '}
+            {effects?.stun && formatMez('Stun', effects.stun, effects.stunDuration)}
+            {effects?.hold && formatMez('Hold', effects.hold, effects.holdDuration)}
+            {effects?.immobilize && formatMez('Immob', effects.immobilize, effects.immobilizeDuration)}
+            {effects?.sleep && formatMez('Sleep', effects.sleep, effects.sleepDuration)}
+            {effects?.fear && formatMez('Fear', effects.fear, effects.fearDuration)}
+            {effects?.confuse && formatMez('Confuse', effects.confuse, effects.confuseDuration)}
+            {effects?.knockback && <span className="text-purple-400">KB Mag {effects.knockback} </span>}
+          </div>
+        );
+      })()}
 
       {/* Defense (armor sets) - with three-tier display */}
       {effects?.defense && (
@@ -722,6 +881,472 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
       {effects?.protection && (
         <ProtectionCompact protection={effects.protection} />
       )}
+
+      {/* Blaster Defiance - show for Blaster primary/secondary attack powers */}
+      {(() => {
+        // Only show for Blaster archetype and blaster powersets
+        if (archetypeId !== 'blaster' || !powerSet.startsWith('blaster/')) return null;
+
+        const defianceInfo = calculateDefiance(effects, basePower.effectArea);
+        if (!defianceInfo || defianceInfo.damageBonus <= 0) return null;
+
+        return (
+          <div className="text-[10px] mt-1 bg-orange-900/20 rounded px-1.5 py-1 border border-orange-700/30">
+            <span className="text-orange-400 font-medium">Defiance: </span>
+            <span className="text-orange-300">+{defianceInfo.damageBonus.toFixed(1)}% dmg</span>
+            <span className="text-slate-400"> for </span>
+            <span className="text-orange-300">{defianceInfo.duration.toFixed(1)}s</span>
+          </div>
+        );
+      })()}
+
+      {/* Dominator Domination - show when viewing Dominator control powers */}
+      {(() => {
+        // Only show for Dominator archetype and dominator powersets with mez effects
+        if (archetypeId !== 'dominator' || !isDominatorControlPower(powerSet)) return null;
+        if (!hasMez) return null;
+
+        const dominationInfo = getDominationInfo();
+
+        return (
+          <div className={`text-[10px] mt-1 rounded px-1.5 py-1 border ${
+            dominationActive
+              ? 'bg-pink-900/30 border-pink-700/50'
+              : 'bg-slate-800/50 border-slate-700/30'
+          }`}>
+            <div className="flex items-center justify-between">
+              <span className={`font-medium ${dominationActive ? 'text-pink-400' : 'text-slate-400'}`}>
+                Domination
+              </span>
+              <span className={`text-[8px] px-1.5 py-0.5 rounded ${
+                dominationActive
+                  ? 'bg-pink-600/50 text-pink-200'
+                  : 'bg-slate-700 text-slate-400'
+              }`}>
+                {dominationActive ? 'ACTIVE' : 'Inactive'}
+              </span>
+            </div>
+            {dominationActive && (
+              <div className="mt-1 text-[9px]">
+                <span className="text-pink-300">×{dominationInfo.magnitudeMultiplier} Mag, </span>
+                <span className="text-pink-300">×{dominationInfo.durationMultiplier} Dur</span>
+                <span className="text-slate-500 ml-1">({dominationInfo.activeDuration}s)</span>
+              </div>
+            )}
+            {!dominationActive && (
+              <div className="text-[8px] text-slate-500 mt-0.5">
+                Enable via Settings to see enhanced values
+              </div>
+            )}
+          </div>
+        );
+      })()}
+
+      {/* Corruptor Scourge - show when viewing Corruptor attack powers */}
+      {(() => {
+        // Only show for Corruptor archetype and corruptor powersets with damage
+        if (archetypeId !== 'corruptor' || !isCorruptorAttackPower(powerSet)) return null;
+        if (!calculatedDamage) return null;
+
+        const scourgeInfo = getScourgeInfo();
+
+        return (
+          <div className={`text-[10px] mt-1 rounded px-1.5 py-1 border ${
+            scourgeActive
+              ? 'bg-cyan-900/30 border-cyan-700/50'
+              : 'bg-slate-800/50 border-slate-700/30'
+          }`}>
+            <div className="flex items-center justify-between">
+              <span className={`font-medium ${scourgeActive ? 'text-cyan-400' : 'text-slate-400'}`}>
+                Scourge
+              </span>
+              <span className={`text-[8px] px-1.5 py-0.5 rounded ${
+                scourgeActive
+                  ? 'bg-cyan-600/50 text-cyan-200'
+                  : 'bg-slate-700 text-slate-400'
+              }`}>
+                {scourgeActive ? 'SHOWING AVG' : 'Hidden'}
+              </span>
+            </div>
+            {scourgeActive && (
+              <div className="mt-1 text-[9px]">
+                <span className="text-cyan-300">+{(scourgeInfo.averageDamageBonus * 100).toFixed(0)}% avg dmg</span>
+                <span className="text-slate-500 ml-1">(×{(1 + scourgeInfo.averageDamageBonus).toFixed(2)} multiplier)</span>
+              </div>
+            )}
+            {!scourgeActive && (
+              <div className="text-[8px] text-slate-500 mt-0.5">
+                {scourgeInfo.chanceFormula}
+              </div>
+            )}
+          </div>
+        );
+      })()}
+
+      {/* Brute Fury - show when viewing Brute attack powers */}
+      {(() => {
+        // Only show for Brute archetype and brute powersets with damage
+        if (archetypeId !== 'brute' || !isBruteAttackPower(powerSet)) return null;
+        if (!calculatedDamage) return null;
+
+        const furyInfo = getFuryInfo();
+        const currentBonus = calculateFuryDamageBonus(furyLevel);
+
+        return (
+          <div className={`text-[10px] mt-1 rounded px-1.5 py-1 border ${
+            furyLevel > 0
+              ? 'bg-red-900/30 border-red-700/50'
+              : 'bg-slate-800/50 border-slate-700/30'
+          }`}>
+            <div className="flex items-center justify-between">
+              <span className={`font-medium ${furyLevel > 0 ? 'text-red-400' : 'text-slate-400'}`}>
+                Fury
+              </span>
+              <span className={`text-[8px] px-1.5 py-0.5 rounded ${
+                furyLevel > 0
+                  ? 'bg-red-600/50 text-red-200'
+                  : 'bg-slate-700 text-slate-400'
+              }`}>
+                {furyLevel}/{furyInfo.maxFury}
+              </span>
+            </div>
+            <div className="mt-1 text-[9px]">
+              <span className="text-red-300">+{(currentBonus * 100).toFixed(0)}% damage</span>
+              <span className="text-slate-500 ml-1">({furyInfo.damagePerFury * 100}% per fury)</span>
+            </div>
+          </div>
+        );
+      })()}
+
+      {/* Mastermind Supremacy - show when viewing Mastermind powers */}
+      {(() => {
+        // Only show for Mastermind archetype and mastermind powersets
+        if (archetypeId !== 'mastermind' || !isMastermindPower(powerSet)) return null;
+
+        const supremacyInfo = getSupremacyInfo();
+        const bodyguardInfo = getBodyguardInfo();
+
+        return (
+          <div className={`text-[10px] mt-1 rounded px-1.5 py-1 border ${
+            supremacyActive
+              ? 'bg-amber-900/30 border-amber-700/50'
+              : 'bg-slate-800/50 border-slate-700/30'
+          }`}>
+            <div className="flex items-center justify-between">
+              <span className={`font-medium ${supremacyActive ? 'text-amber-400' : 'text-slate-400'}`}>
+                Supremacy
+              </span>
+              <span className={`text-[8px] px-1.5 py-0.5 rounded ${
+                supremacyActive
+                  ? 'bg-amber-600/50 text-amber-200'
+                  : 'bg-slate-700 text-slate-400'
+              }`}>
+                {supremacyActive ? 'ACTIVE' : 'Inactive'}
+              </span>
+            </div>
+            {supremacyActive && (
+              <div className="mt-1 space-y-0.5">
+                <div className="text-[9px]">
+                  <span className="text-slate-500">Henchmen within {supremacyInfo.radius}ft:</span>
+                </div>
+                <div className="text-[9px] flex gap-3">
+                  <span className="text-amber-300">+{(supremacyInfo.damageBonus * 100).toFixed(0)}% Damage</span>
+                  <span className="text-yellow-300">+{(supremacyInfo.toHitBonus * 100).toFixed(0)}% ToHit</span>
+                </div>
+                <div className="text-[9px] mt-1 pt-1 border-t border-amber-700/30">
+                  <span className="text-slate-500">Bodyguard Mode:</span>
+                  <span className="text-amber-200 ml-1">
+                    {(bodyguardInfo.mastermindDamageShare * 100).toFixed(0)}% to MM, {(bodyguardInfo.henchmenDamageShare * 100).toFixed(0)}% to pets
+                  </span>
+                </div>
+              </div>
+            )}
+            {!supremacyActive && (
+              <div className="text-[8px] text-slate-500 mt-0.5">
+                Enable to see henchmen buff values
+              </div>
+            )}
+          </div>
+        );
+      })()}
+
+      {/* Defender Vigilance - show when viewing Defender powers */}
+      {(() => {
+        // Only show for Defender archetype and defender powersets with damage
+        if (archetypeId !== 'defender' || !isDefenderPower(powerSet)) return null;
+        if (!calculatedDamage) return null;
+
+        const vigilanceInfo = getVigilanceInfo();
+        const currentBonus = calculateVigilanceDamageBonus(build.level, vigilanceTeamSize);
+        const teamLabel = vigilanceTeamSize === 0 ? 'Solo' : `${vigilanceTeamSize} teammate${vigilanceTeamSize > 1 ? 's' : ''}`;
+
+        return (
+          <div className={`text-[10px] mt-1 rounded px-1.5 py-1 border ${
+            currentBonus > 0
+              ? 'bg-indigo-900/30 border-indigo-700/50'
+              : 'bg-slate-800/50 border-slate-700/30'
+          }`}>
+            <div className="flex items-center justify-between">
+              <span className={`font-medium ${currentBonus > 0 ? 'text-indigo-400' : 'text-slate-400'}`}>
+                Vigilance
+              </span>
+              <span className={`text-[8px] px-1.5 py-0.5 rounded ${
+                currentBonus > 0
+                  ? 'bg-indigo-600/50 text-indigo-200'
+                  : 'bg-slate-700 text-slate-400'
+              }`}>
+                {teamLabel}
+              </span>
+            </div>
+            <div className="mt-1 text-[9px]">
+              {currentBonus > 0 ? (
+                <span className="text-indigo-300">+{(currentBonus * 100).toFixed(0)}% damage</span>
+              ) : (
+                <span className="text-slate-500">No bonus (3+ teammates)</span>
+              )}
+              <span className="text-slate-500 ml-1">(max {(vigilanceInfo.maxSoloDamageBonus * 100).toFixed(0)}% solo at Lv20+)</span>
+            </div>
+          </div>
+        );
+      })()}
+
+      {/* Sentinel Opportunity - show when viewing Sentinel powers */}
+      {(() => {
+        // Only show for Sentinel archetype and sentinel powersets
+        if (archetypeId !== 'sentinel' || !isSentinelPower(powerSet)) return null;
+
+        const opportunityInfo = getOpportunityInfo();
+
+        return (
+          <div className="text-[10px] mt-1 rounded px-1.5 py-1 border bg-emerald-900/30 border-emerald-700/50">
+            <div className="flex items-center justify-between">
+              <span className="font-medium text-emerald-400">
+                Opportunity
+              </span>
+              <span className="text-[8px] px-1.5 py-0.5 rounded bg-emerald-600/50 text-emerald-200">
+                Enemy Debuff
+              </span>
+            </div>
+            <div className="mt-1 space-y-0.5 text-[9px]">
+              <div className="text-emerald-300">
+                -{(opportunityInfo.defenseDebuff * 100).toFixed(2)}% Defense
+              </div>
+              <div className="text-emerald-300">
+                -{(opportunityInfo.resistanceDebuff * 100).toFixed(0)}% Resistance (all damage types)
+              </div>
+              <div className="text-emerald-300">
+                -{(opportunityInfo.mezResistanceDebuff * 100).toFixed(0)}% Mez Resistance (longer durations)
+              </div>
+              <div className="text-emerald-300">
+                -{opportunityInfo.stealthReduction}ft Stealth
+              </div>
+            </div>
+            <div className="text-[8px] text-slate-500 mt-1 pt-1 border-t border-emerald-700/30">
+              Applied to enemy via T1 (Offensive) or T2 (Defensive) attack when meter is full
+            </div>
+          </div>
+        );
+      })()}
+
+      {/* Scrapper Critical Hits - show when viewing Scrapper attack powers */}
+      {(() => {
+        // Only show for Scrapper archetype and scrapper powersets with damage
+        if (archetypeId !== 'scrapper' || !isScrapperAttackPower(powerSet)) return null;
+        if (!calculatedDamage) return null;
+
+        const criticalHitInfo = getCriticalHitInfo();
+
+        return (
+          <div className={`text-[10px] mt-1 rounded px-1.5 py-1 border ${
+            criticalHitsActive
+              ? 'bg-orange-900/30 border-orange-700/50'
+              : 'bg-slate-800/50 border-slate-700/30'
+          }`}>
+            <div className="flex items-center justify-between">
+              <span className={`font-medium ${criticalHitsActive ? 'text-orange-400' : 'text-slate-400'}`}>
+                Critical Hits
+              </span>
+              <span className={`text-[8px] px-1.5 py-0.5 rounded ${
+                criticalHitsActive
+                  ? 'bg-orange-600/50 text-orange-200'
+                  : 'bg-slate-700 text-slate-400'
+              }`}>
+                {criticalHitsActive ? 'SHOWING AVG' : 'Hidden'}
+              </span>
+            </div>
+            {criticalHitsActive && (
+              <div className="mt-1 space-y-0.5 text-[9px]">
+                <div className="flex justify-between">
+                  <span className="text-slate-400">vs Minions:</span>
+                  <span className="text-orange-300">
+                    {(criticalHitInfo.chanceVsMinions * 100).toFixed(0)}% chance → +{(criticalHitInfo.averageBonusVsMinions * 100).toFixed(0)}% avg
+                  </span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-slate-400">vs Lt/Boss+:</span>
+                  <span className="text-orange-300">
+                    {(criticalHitInfo.chanceVsHigher * 100).toFixed(0)}% chance → +{(criticalHitInfo.averageBonusVsHigher * 100).toFixed(0)}% avg
+                  </span>
+                </div>
+                <div className="text-[8px] text-slate-500 mt-0.5">
+                  Critical hits deal ×{criticalHitInfo.damageMultiplier.toFixed(0)} damage
+                </div>
+              </div>
+            )}
+            {!criticalHitsActive && (
+              <div className="text-[8px] text-slate-500 mt-0.5">
+                5% crit vs minions, 10% vs higher ranks
+              </div>
+            )}
+          </div>
+        );
+      })()}
+
+      {/* Stalker Assassination - show when viewing Stalker attack powers */}
+      {(() => {
+        // Only show for Stalker archetype and stalker powersets with damage
+        if (archetypeId !== 'stalker' || !isStalkerAttackPower(powerSet)) return null;
+        if (!calculatedDamage) return null;
+
+        const assassinationInfo = getAssassinationInfo();
+        const currentBonus = calculateAssassinationDamageBonus(stalkerHidden, stalkerTeamSize);
+        const critChance = stalkerHidden ? 1.0 : assassinationInfo.baseCritChance + (stalkerTeamSize * assassinationInfo.critChancePerTeammate);
+
+        return (
+          <div className={`text-[10px] mt-1 rounded px-1.5 py-1 border ${
+            stalkerHidden
+              ? 'bg-purple-900/40 border-purple-600/60'
+              : currentBonus > 0
+                ? 'bg-purple-900/30 border-purple-700/50'
+                : 'bg-slate-800/50 border-slate-700/30'
+          }`}>
+            <div className="flex items-center justify-between">
+              <span className={`font-medium ${stalkerHidden || currentBonus > 0 ? 'text-purple-400' : 'text-slate-400'}`}>
+                Assassination
+              </span>
+              <span className={`text-[8px] px-1.5 py-0.5 rounded ${
+                stalkerHidden
+                  ? 'bg-purple-600/60 text-purple-100'
+                  : 'bg-purple-600/50 text-purple-200'
+              }`}>
+                {stalkerHidden ? 'FROM HIDE' : `${stalkerTeamSize === 0 ? 'Solo' : `+${stalkerTeamSize}`}`}
+              </span>
+            </div>
+            <div className="mt-1 space-y-0.5 text-[9px]">
+              {stalkerHidden ? (
+                <>
+                  <div className="flex justify-between">
+                    <span className="text-slate-400">From Hide:</span>
+                    <span className="text-purple-300 font-medium">100% critical chance</span>
+                  </div>
+                  <div className="text-[8px] text-purple-300/80 mt-0.5">
+                    +100% avg damage (guaranteed double damage)
+                  </div>
+                </>
+              ) : (
+                <>
+                  <div className="flex justify-between">
+                    <span className="text-slate-400">Base crit:</span>
+                    <span className="text-purple-300">{(assassinationInfo.baseCritChance * 100).toFixed(0)}%</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-slate-400">Team bonus:</span>
+                    <span className="text-purple-300">+{(stalkerTeamSize * assassinationInfo.critChancePerTeammate * 100).toFixed(0)}% ({stalkerTeamSize} × 3%)</span>
+                  </div>
+                  <div className="flex justify-between font-medium">
+                    <span className="text-slate-400">Total:</span>
+                    <span className="text-purple-300">{(critChance * 100).toFixed(0)}% → +{(currentBonus * 100).toFixed(0)}% avg</span>
+                  </div>
+                </>
+              )}
+            </div>
+            <div className="text-[8px] text-slate-500 mt-1 pt-1 border-t border-purple-700/30">
+              Assassin's Focus: Primary attacks can stack +33.3% crit (×3) for Assassin's Strike
+            </div>
+          </div>
+        );
+      })()}
+
+      {/* Tanker Gauntlet - show when viewing Tanker powers */}
+      {(() => {
+        // Only show for Tanker archetype and tanker powersets
+        if (archetypeId !== 'tanker' || !isTankerPower(powerSet)) return null;
+
+        const gauntletInfo = getGauntletInfo();
+
+        return (
+          <div className="text-[10px] mt-1 rounded px-1.5 py-1 border bg-yellow-900/30 border-yellow-700/50">
+            <div className="flex items-center justify-between">
+              <span className="font-medium text-yellow-400">
+                Gauntlet
+              </span>
+              <span className="text-[8px] px-1.5 py-0.5 rounded bg-yellow-600/50 text-yellow-200">
+                PunchVoke
+              </span>
+            </div>
+            <div className="mt-1 space-y-0.5 text-[9px]">
+              <div className="text-yellow-300">
+                +{(gauntletInfo.aoeRadiusBonus * 100).toFixed(0)}% AoE Radius/Range
+              </div>
+              <div className="text-yellow-300">
+                +{(gauntletInfo.coneArcBonus * 100).toFixed(0)}% Cone Arc
+              </div>
+              <div className="text-yellow-300">
+                ST attacks taunt target + {gauntletInfo.singleTargetTauntSplash} nearby
+              </div>
+              <div className="text-yellow-300">
+                AoE attacks taunt all affected
+              </div>
+            </div>
+            <div className="text-[8px] text-slate-500 mt-1 pt-1 border-t border-yellow-700/30">
+              PBAoE hits bonus targets at {(gauntletInfo.bonusTargetDamageMultiplier * 100).toFixed(0)}% damage
+            </div>
+          </div>
+        );
+      })()}
+
+      {/* Containment info panel - Controllers */}
+      {(() => {
+        // Only show for Controller archetype and controller powersets with damage
+        if (archetypeId !== 'controller' || !isControllerPower(powerSet)) return null;
+        if (!calculatedDamage) return null;
+
+        const containmentInfo = getContainmentInfo();
+
+        return (
+          <div className={`text-[10px] mt-1 rounded px-1.5 py-1 border ${
+            containmentActive
+              ? 'bg-cyan-900/40 border-cyan-600/60'
+              : 'bg-slate-800/50 border-slate-700/30'
+          }`}>
+            <div className="flex items-center justify-between">
+              <span className={`font-medium ${containmentActive ? 'text-cyan-400' : 'text-slate-400'}`}>
+                Containment
+              </span>
+              <span className={`text-[8px] px-1.5 py-0.5 rounded ${
+                containmentActive
+                  ? 'bg-cyan-600/50 text-cyan-200'
+                  : 'bg-slate-700/50 text-slate-400'
+              }`}>
+                {containmentActive ? 'Active' : 'Inactive'}
+              </span>
+            </div>
+            <div className="mt-1 space-y-0.5 text-[9px]">
+              <div className={containmentActive ? 'text-cyan-300' : 'text-slate-500'}>
+                {containmentInfo.description}
+              </div>
+              {containmentActive && (
+                <div className="text-cyan-200 font-medium">
+                  +{((containmentInfo.damageMultiplier - 1) * 100).toFixed(0)}% damage bonus
+                </div>
+              )}
+            </div>
+            <div className="text-[8px] text-slate-500 mt-1 pt-1 border-t border-cyan-700/30">
+              Toggle in header to show damage vs controlled targets
+            </div>
+          </div>
+        );
+      })()}
 
       {/* Enhancement summary */}
       {hasEnhancements && Object.keys(enhancementBonuses).length > 0 && (
@@ -1296,7 +1921,7 @@ function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfoContent
           <span className="text-slate-400">Enhances: </span>
           <span className="text-green-400">{genericEnh.stat}</span>
           <span className="text-slate-400"> by </span>
-          <span className="text-green-400">{(genericEnh.value * 100).toFixed(1)}%</span>
+          <span className="text-green-400">{genericEnh.value.toFixed(1)}%</span>
         </div>
         {enhancement.level && (
           <div className="text-[10px] text-slate-400">
@@ -1330,7 +1955,7 @@ function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfoContent
           <span className="text-slate-400">Enhances: </span>
           <span className="text-green-400">{originEnh.stat}</span>
           <span className="text-slate-400"> by </span>
-          <span className="text-green-400">{(originEnh.value * 100).toFixed(1)}%</span>
+          <span className="text-green-400">{originEnh.value.toFixed(1)}%</span>
         </div>
       </div>
     );

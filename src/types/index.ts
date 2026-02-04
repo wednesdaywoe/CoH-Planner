@@ -27,6 +27,8 @@ export type {
   DamageModifiers,
   ArchetypeStats,
   InherentPower,
+  ArchetypeBranch,
+  ArchetypeBranchId,
   Archetype,
   ArchetypeId,
   ArchetypeRegistry,
