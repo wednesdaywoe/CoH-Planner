@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CoH Power Data Editor</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #1a1a2e;
+      color: #eee;
+      margin: 0;
+      padding: 20px;
+      line-height: 1.5;
+    }
+    h1 { color: #4fc3f7; margin-bottom: 5px; }
+    h2 { color: #81c784; margin: 20px 0 10px; font-size: 1.1em; border-bottom: 1px solid #333; padding-bottom: 5px; }
+    .container { max-width: 900px; margin: 0 auto; }
+    .row { display: flex; gap: 15px; flex-wrap: wrap; margin-bottom: 10px; }
+    .field { flex: 1; min-width: 150px; }
+    .field.wide { min-width: 300px; }
+    label { display: block; font-size: 0.85em; color: #aaa; margin-bottom: 3px; }
+    input, select, textarea {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #444;
+      border-radius: 4px;
+      background: #2a2a4a;
+      color: #fff;
+      font-size: 14px;
+    }
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: #4fc3f7;
+    }
+    textarea { resize: vertical; min-height: 80px; font-family: monospace; }
+    .defense-grid, .resistance-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: 8px;
+    }
+    .defense-grid .field, .resistance-grid .field { min-width: unset; }
+    .checkbox-row { display: flex; align-items: center; gap: 8px; }
+    .checkbox-row input { width: auto; }
+    button {
+      padding: 12px 24px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .btn-primary { background: #4fc3f7; color: #000; }
+    .btn-primary:hover { background: #29b6f6; }
+    .btn-secondary { background: #444; color: #fff; }
+    .btn-secondary:hover { background: #555; }
+    .btn-copy { background: #81c784; color: #000; }
+    .btn-copy:hover { background: #66bb6a; }
+    .output-section { margin-top: 30px; }
+    #output {
+      background: #0d0d1a;
+      border: 1px solid #333;
+      border-radius: 4px;
+      padding: 15px;
+      font-family: 'Consolas', 'Monaco', monospace;
+      font-size: 13px;
+      white-space: pre-wrap;
+      overflow-x: auto;
+      max-height: 500px;
+      overflow-y: auto;
+    }
+    .actions { display: flex; gap: 10px; margin-top: 15px; }
+    .hint { font-size: 0.75em; color: #888; margin-top: 2px; }
+    .section { background: #252545; padding: 15px; border-radius: 8px; margin-bottom: 15px; }
+    .tabs { display: flex; gap: 5px; margin-bottom: 15px; }
+    .tab {
+      padding: 8px 16px;
+      background: #333;
+      border: none;
+      border-radius: 4px 4px 0 0;
+      color: #aaa;
+      cursor: pointer;
+    }
+    .tab.active { background: #4fc3f7; color: #000; }
+    .copied { position: fixed; top: 20px; right: 20px; background: #81c784; color: #000; padding: 10px 20px; border-radius: 4px; display: none; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>CoH Power Data Editor</h1>
+    <p style="color: #888; margin-bottom: 20px;">Enter power values and generate JSON for the data files</p>
+
+    <div class="section">
+      <h2>Basic Info</h2>
+      <div class="row">
+        <div class="field wide">
+          <label>Power Name</label>
+          <input type="text" id="name" placeholder="e.g., Combat Flight">
+        </div>
+        <div class="field">
+          <label>Power Type</label>
+          <select id="powerType">
+            <option value="Click">Click</option>
+            <option value="Toggle">Toggle</option>
+            <option value="Auto">Auto</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Target Type</label>
+          <select id="targetType">
+            <option value="Self">Self</option>
+            <option value="Enemy">Enemy</option>
+            <option value="Ally">Ally</option>
+            <option value="Location">Location</option>
+            <option value="None">None</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="field">
+          <label>Available (level - 1)</label>
+          <input type="number" id="available" placeholder="e.g., 0 for level 1">
+          <div class="hint">0 = level 1, 1 = level 2, etc.</div>
+        </div>
+        <div class="field">
+          <label>Tier</label>
+          <input type="number" id="tier" placeholder="1-9">
+        </div>
+        <div class="field">
+          <label>Max Slots</label>
+          <input type="number" id="maxSlots" value="6">
+        </div>
+      </div>
+      <div class="row">
+        <div class="field wide">
+          <label>Short Help</label>
+          <input type="text" id="shortHelp" placeholder="e.g., Toggle: Self Fly, +DEF">
+        </div>
+        <div class="field">
+          <label>Icon Filename</label>
+          <input type="text" id="icon" placeholder="e.g., power_icon.png">
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Base Effects</h2>
+      <div class="row">
+        <div class="field">
+          <label>Endurance Cost</label>
+          <input type="number" id="endurance" step="0.001" placeholder="e.g., 0.2">
+          <div class="hint">Per second for toggles</div>
+        </div>
+        <div class="field">
+          <label>Cast Time (s)</label>
+          <input type="number" id="cast" step="0.01" placeholder="e.g., 1.5">
+        </div>
+        <div class="field">
+          <label>Recharge (s)</label>
+          <input type="number" id="recharge" step="0.1" placeholder="e.g., 120">
+        </div>
+        <div class="field">
+          <label>Range (ft)</label>
+          <input type="number" id="range" step="1" placeholder="e.g., 80">
+        </div>
+      </div>
+      <div class="row">
+        <div class="field">
+          <label>Accuracy</label>
+          <input type="number" id="accuracy" step="0.01" value="1" placeholder="1.0 = 100%">
+        </div>
+        <div class="field">
+          <label>Radius (ft)</label>
+          <input type="number" id="radius" step="1" placeholder="AoE radius">
+        </div>
+        <div class="field">
+          <label>Arc (degrees)</label>
+          <input type="number" id="arc" step="1" placeholder="Cone arc">
+        </div>
+        <div class="field">
+          <label>Duration (s)</label>
+          <input type="number" id="duration" step="0.1" placeholder="Effect duration">
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Damage</h2>
+      <div class="row">
+        <div class="field">
+          <label>Damage Type</label>
+          <select id="damageType">
+            <option value="">None</option>
+            <option value="Smashing">Smashing</option>
+            <option value="Lethal">Lethal</option>
+            <option value="Fire">Fire</option>
+            <option value="Cold">Cold</option>
+            <option value="Energy">Energy</option>
+            <option value="Negative">Negative</option>
+            <option value="Psionic">Psionic</option>
+            <option value="Toxic">Toxic</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Damage Scale</label>
+          <input type="number" id="damageScale" step="0.001" placeholder="e.g., 1.0">
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Defense (enter as decimal, e.g., 0.0188 = 1.88%)</h2>
+      <div class="defense-grid">
+        <div class="field">
+          <label>All</label>
+          <input type="number" id="defAll" step="0.0001" placeholder="0.0188">
+        </div>
+        <div class="field">
+          <label>Melee</label>
+          <input type="number" id="defMelee" step="0.0001">
+        </div>
+        <div class="field">
+          <label>Ranged</label>
+          <input type="number" id="defRanged" step="0.0001">
+        </div>
+        <div class="field">
+          <label>AoE</label>
+          <input type="number" id="defAoE" step="0.0001">
+        </div>
+        <div class="field">
+          <label>Smashing</label>
+          <input type="number" id="defSmashing" step="0.0001">
+        </div>
+        <div class="field">
+          <label>Lethal</label>
+          <input type="number" id="defLethal" step="0.0001">
+        </div>
+        <div class="field">
+          <label>Fire</label>
+          <input type="number" id="defFire" step="0.0001">
+        </div>
+        <div class="field">
+          <label>Cold</label>
+          <input type="number" id="defCold" step="0.0001">
+        </div>
+        <div class="field">
+          <label>Energy</label>
+          <input type="number" id="defEnergy" step="0.0001">
+        </div>
+        <div class="field">
+          <label>Negative</label>
+          <input type="number" id="defNegative" step="0.0001">
+        </div>
+        <div class="field">
+          <label>Psionic</label>
+          <input type="number" id="defPsionic" step="0.0001">
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Resistance (enter as decimal, e.g., 0.15 = 15%)</h2>
+      <div class="resistance-grid">
+        <div class="field">
+          <label>All</label>
+          <input type="number" id="resAll" step="0.001">
+        </div>
+        <div class="field">
+          <label>Smashing</label>
+          <input type="number" id="resSmashing" step="0.001">
+        </div>
+        <div class="field">
+          <label>Lethal</label>
+          <input type="number" id="resLethal" step="0.001">
+        </div>
+        <div class="field">
+          <label>Fire</label>
+          <input type="number" id="resFire" step="0.001">
+        </div>
+        <div class="field">
+          <label>Cold</label>
+          <input type="number" id="resCold" step="0.001">
+        </div>
+        <div class="field">
+          <label>Energy</label>
+          <input type="number" id="resEnergy" step="0.001">
+        </div>
+        <div class="field">
+          <label>Negative</label>
+          <input type="number" id="resNegative" step="0.001">
+        </div>
+        <div class="field">
+          <label>Psionic</label>
+          <input type="number" id="resPsionic" step="0.001">
+        </div>
+        <div class="field">
+          <label>Toxic</label>
+          <input type="number" id="resToxic" step="0.001">
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Other Effects</h2>
+      <div class="row">
+        <div class="field">
+          <label>Heal (scale)</label>
+          <input type="number" id="heal" step="0.001">
+        </div>
+        <div class="field">
+          <label>Max Health %</label>
+          <input type="number" id="maxHealth" step="0.001" placeholder="e.g., 0.1 = 10%">
+        </div>
+        <div class="field">
+          <label>Recovery %</label>
+          <input type="number" id="recovery" step="0.001">
+        </div>
+        <div class="field">
+          <label>Regen %</label>
+          <input type="number" id="regen" step="0.001">
+        </div>
+      </div>
+      <div class="row">
+        <div class="field">
+          <label>Run Speed %</label>
+          <input type="number" id="runSpeed" step="0.01" placeholder="e.g., 0.5 = 50%">
+        </div>
+        <div class="field">
+          <label>Jump Height %</label>
+          <input type="number" id="jumpHeight" step="0.01">
+        </div>
+        <div class="field">
+          <label>Fly Speed %</label>
+          <input type="number" id="flySpeed" step="0.01" placeholder="e.g., 4.0 = 400%">
+        </div>
+        <div class="field">
+          <label>ToHit Buff %</label>
+          <input type="number" id="toHit" step="0.001">
+        </div>
+      </div>
+      <div class="row">
+        <div class="field">
+          <label>Stealth (ft)</label>
+          <input type="number" id="stealth" step="1">
+        </div>
+        <div class="field">
+          <label>Perception (ft)</label>
+          <input type="number" id="perception" step="1">
+        </div>
+        <div class="field">
+          <label>Threat Level</label>
+          <input type="number" id="threatLevel" step="0.1">
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Mez Effects</h2>
+      <div class="row">
+        <div class="field">
+          <label>Mez Type</label>
+          <select id="mezType">
+            <option value="">None</option>
+            <option value="Hold">Hold</option>
+            <option value="Stun">Stun</option>
+            <option value="Sleep">Sleep</option>
+            <option value="Immobilize">Immobilize</option>
+            <option value="Confuse">Confuse</option>
+            <option value="Fear">Fear</option>
+            <option value="Knockback">Knockback</option>
+            <option value="Knockdown">Knockdown</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Mez Mag</label>
+          <input type="number" id="mezMag" step="0.1">
+        </div>
+        <div class="field">
+          <label>Mez Duration (s)</label>
+          <input type="number" id="mezDuration" step="0.1">
+        </div>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button class="btn-primary" onclick="generateJSON()">Generate JSON</button>
+      <button class="btn-secondary" onclick="generateEffectsOnly()">Effects Only</button>
+      <button class="btn-secondary" onclick="clearForm()">Clear Form</button>
+    </div>
+
+    <div class="output-section">
+      <h2>Output</h2>
+      <div id="output">// JSON will appear here</div>
+      <div class="actions">
+        <button class="btn-copy" onclick="copyOutput()">Copy to Clipboard</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="copied" id="copied">Copied!</div>
+
+  <script>
+    function getValue(id) {
+      const el = document.getElementById(id);
+      if (!el) return null;
+      const val = el.value.trim();
+      if (val === '') return null;
+      if (el.type === 'number') return parseFloat(val);
+      return val;
+    }
+
+    function buildDefense() {
+      const def = {};
+      const types = ['All', 'Melee', 'Ranged', 'AoE', 'Smashing', 'Lethal', 'Fire', 'Cold', 'Energy', 'Negative', 'Psionic'];
+      types.forEach(t => {
+        const val = getValue('def' + t);
+        if (val !== null) def[t.toLowerCase()] = val;
+      });
+      return Object.keys(def).length > 0 ? def : null;
+    }
+
+    function buildResistance() {
+      const res = {};
+      const types = ['All', 'Smashing', 'Lethal', 'Fire', 'Cold', 'Energy', 'Negative', 'Psionic', 'Toxic'];
+      types.forEach(t => {
+        const val = getValue('res' + t);
+        if (val !== null) res[t.toLowerCase()] = val;
+      });
+      return Object.keys(res).length > 0 ? res : null;
+    }
+
+    function buildEffects() {
+      const effects = {};
+
+      // Base effects
+      const baseFields = ['accuracy', 'range', 'recharge', 'endurance', 'cast', 'radius', 'arc', 'duration'];
+      baseFields.forEach(f => {
+        const val = getValue(f);
+        if (val !== null) effects[f] = val;
+      });
+
+      // Damage
+      const damageType = getValue('damageType');
+      const damageScale = getValue('damageScale');
+      if (damageType && damageScale) {
+        effects.damage = { type: damageType, scale: damageScale };
+      }
+
+      // Defense
+      const defense = buildDefense();
+      if (defense) effects.defense = defense;
+
+      // Resistance
+      const resistance = buildResistance();
+      if (resistance) effects.resistance = resistance;
+
+      // Other effects
+      const otherFields = ['heal', 'maxHealth', 'recovery', 'regen', 'runSpeed', 'jumpHeight', 'flySpeed', 'toHit', 'stealth', 'perception', 'threatLevel'];
+      otherFields.forEach(f => {
+        const val = getValue(f);
+        if (val !== null) effects[f] = val;
+      });
+
+      // Mez
+      const mezType = getValue('mezType');
+      const mezMag = getValue('mezMag');
+      const mezDuration = getValue('mezDuration');
+      if (mezType) {
+        effects.mez = { type: mezType };
+        if (mezMag) effects.mez.mag = mezMag;
+        if (mezDuration) effects.mez.duration = mezDuration;
+      }
+
+      return effects;
+    }
+
+    function buildPower() {
+      const power = {};
+
+      const name = getValue('name');
+      if (name) power.name = name;
+
+      const available = getValue('available');
+      if (available !== null) power.available = available;
+
+      const tier = getValue('tier');
+      if (tier !== null) power.tier = tier;
+
+      const maxSlots = getValue('maxSlots');
+      if (maxSlots !== null) power.maxSlots = maxSlots;
+
+      const shortHelp = getValue('shortHelp');
+      if (shortHelp) power.shortHelp = shortHelp;
+
+      const icon = getValue('icon');
+      if (icon) power.icon = icon;
+
+      const powerType = getValue('powerType');
+      if (powerType) power.powerType = powerType;
+
+      const targetType = getValue('targetType');
+      if (targetType) power.targetType = targetType;
+
+      power.effects = buildEffects();
+
+      return power;
+    }
+
+    function generateJSON() {
+      const power = buildPower();
+      const output = JSON.stringify(power, null, 2);
+      document.getElementById('output').textContent = output;
+    }
+
+    function generateEffectsOnly() {
+      const effects = buildEffects();
+      const output = JSON.stringify(effects, null, 2);
+      document.getElementById('output').textContent = '"effects": ' + output;
+    }
+
+    function clearForm() {
+      document.querySelectorAll('input, select').forEach(el => {
+        if (el.type === 'number') {
+          el.value = el.id === 'accuracy' ? '1' : '';
+        } else if (el.tagName === 'SELECT') {
+          el.selectedIndex = 0;
+        } else {
+          el.value = '';
+        }
+      });
+      document.getElementById('output').textContent = '// JSON will appear here';
+    }
+
+    function copyOutput() {
+      const output = document.getElementById('output').textContent;
+      navigator.clipboard.writeText(output).then(() => {
+        const copied = document.getElementById('copied');
+        copied.style.display = 'block';
+        setTimeout(() => copied.style.display = 'none', 2000);
+      });
+    }
+  </script>
+</body>
+</html>

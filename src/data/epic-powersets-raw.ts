@@ -997,8 +997,12 @@ export const EPIC_POWERSETS_RAW = {
           "accuracy": 1,
           "range": 0,
           "recharge": 0,
-          "endurance": 0.0975,
-          "cast": 0
+          "endurance": 0.2,
+          "cast": 0.5,
+          "defense": {
+            "all": 0.0188
+          },
+          "flySpeed": 4.0
         }
       },
       {
