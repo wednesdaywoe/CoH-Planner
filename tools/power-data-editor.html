@@ -84,6 +84,27 @@
     }
     .tab.active { background: #4fc3f7; color: #000; }
     .copied { position: fixed; top: 20px; right: 20px; background: #81c784; color: #000; padding: 10px 20px; border-radius: 4px; display: none; }
+    .effect-list { margin-top: 10px; }
+    .effect-item {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      padding: 10px;
+      background: #1a1a3a;
+      border-radius: 4px;
+      margin-bottom: 8px;
+    }
+    .effect-item .field { flex: 1; min-width: 100px; }
+    .effect-item select, .effect-item input { margin-bottom: 0; }
+    .btn-small {
+      padding: 6px 12px;
+      font-size: 12px;
+    }
+    .btn-danger { background: #e57373; color: #000; }
+    .btn-danger:hover { background: #ef5350; }
+    .btn-add { background: #64b5f6; color: #000; }
+    .btn-add:hover { background: #42a5f5; }
+    .debuff-section h2 { color: #ef9a9a; }
   </style>
 </head>
 <body>
@@ -183,30 +204,19 @@
           <input type="number" id="duration" step="0.1" placeholder="Effect duration">
         </div>
       </div>
+      <div class="row">
+        <div class="field">
+          <label>Animation Time (s)</label>
+          <input type="number" id="animationTime" step="0.01" placeholder="e.g., 1.0">
+          <div class="hint">Full animation length</div>
+        </div>
+      </div>
     </div>
 
     <div class="section">
-      <h2>Damage</h2>
-      <div class="row">
-        <div class="field">
-          <label>Damage Type</label>
-          <select id="damageType">
-            <option value="">None</option>
-            <option value="Smashing">Smashing</option>
-            <option value="Lethal">Lethal</option>
-            <option value="Fire">Fire</option>
-            <option value="Cold">Cold</option>
-            <option value="Energy">Energy</option>
-            <option value="Negative">Negative</option>
-            <option value="Psionic">Psionic</option>
-            <option value="Toxic">Toxic</option>
-          </select>
-        </div>
-        <div class="field">
-          <label>Damage Scale</label>
-          <input type="number" id="damageScale" step="0.001" placeholder="e.g., 1.0">
-        </div>
-      </div>
+      <h2>Damage (add multiple for mixed damage types or DoT)</h2>
+      <div id="damageList" class="effect-list"></div>
+      <button class="btn-small btn-add" onclick="addDamageEffect()">+ Add Damage</button>
     </div>
 
     <div class="section">
@@ -355,32 +365,136 @@
       </div>
     </div>
 
-    <div class="section">
-      <h2>Mez Effects</h2>
+    <div class="section debuff-section">
+      <h2>Debuffs (enter as positive decimal, will be applied as negative)</h2>
       <div class="row">
         <div class="field">
-          <label>Mez Type</label>
-          <select id="mezType">
-            <option value="">None</option>
-            <option value="Hold">Hold</option>
-            <option value="Stun">Stun</option>
-            <option value="Sleep">Sleep</option>
-            <option value="Immobilize">Immobilize</option>
-            <option value="Confuse">Confuse</option>
-            <option value="Fear">Fear</option>
-            <option value="Knockback">Knockback</option>
-            <option value="Knockdown">Knockdown</option>
-          </select>
+          <label>ToHit Debuff %</label>
+          <input type="number" id="toHitDebuff" step="0.001" placeholder="e.g., 0.05 = -5%">
         </div>
         <div class="field">
-          <label>Mez Mag</label>
-          <input type="number" id="mezMag" step="0.1">
+          <label>Damage Debuff %</label>
+          <input type="number" id="damageDebuff" step="0.001">
         </div>
         <div class="field">
-          <label>Mez Duration (s)</label>
-          <input type="number" id="mezDuration" step="0.1">
+          <label>Recharge Debuff % (Slow)</label>
+          <input type="number" id="rechargeDebuff" step="0.001">
+        </div>
+        <div class="field">
+          <label>Debuff Duration (s)</label>
+          <input type="number" id="debuffDuration" step="0.1">
         </div>
       </div>
+      <div class="row">
+        <div class="field">
+          <label>Run Speed Debuff %</label>
+          <input type="number" id="runSpeedDebuff" step="0.01">
+        </div>
+        <div class="field">
+          <label>Fly Speed Debuff %</label>
+          <input type="number" id="flySpeedDebuff" step="0.01">
+        </div>
+        <div class="field">
+          <label>Jump Debuff %</label>
+          <input type="number" id="jumpDebuff" step="0.01">
+        </div>
+        <div class="field">
+          <label>Regen Debuff %</label>
+          <input type="number" id="regenDebuff" step="0.001">
+        </div>
+      </div>
+      <h3 style="color: #ef9a9a; font-size: 0.95em; margin: 15px 0 10px;">Defense Debuff</h3>
+      <div class="defense-grid">
+        <div class="field">
+          <label>All</label>
+          <input type="number" id="defDebuffAll" step="0.0001">
+        </div>
+        <div class="field">
+          <label>Melee</label>
+          <input type="number" id="defDebuffMelee" step="0.0001">
+        </div>
+        <div class="field">
+          <label>Ranged</label>
+          <input type="number" id="defDebuffRanged" step="0.0001">
+        </div>
+        <div class="field">
+          <label>AoE</label>
+          <input type="number" id="defDebuffAoE" step="0.0001">
+        </div>
+        <div class="field">
+          <label>Smashing</label>
+          <input type="number" id="defDebuffSmashing" step="0.0001">
+        </div>
+        <div class="field">
+          <label>Lethal</label>
+          <input type="number" id="defDebuffLethal" step="0.0001">
+        </div>
+        <div class="field">
+          <label>Fire</label>
+          <input type="number" id="defDebuffFire" step="0.0001">
+        </div>
+        <div class="field">
+          <label>Cold</label>
+          <input type="number" id="defDebuffCold" step="0.0001">
+        </div>
+        <div class="field">
+          <label>Energy</label>
+          <input type="number" id="defDebuffEnergy" step="0.0001">
+        </div>
+        <div class="field">
+          <label>Negative</label>
+          <input type="number" id="defDebuffNegative" step="0.0001">
+        </div>
+        <div class="field">
+          <label>Psionic</label>
+          <input type="number" id="defDebuffPsionic" step="0.0001">
+        </div>
+      </div>
+      <h3 style="color: #ef9a9a; font-size: 0.95em; margin: 15px 0 10px;">Resistance Debuff</h3>
+      <div class="resistance-grid">
+        <div class="field">
+          <label>All</label>
+          <input type="number" id="resDebuffAll" step="0.001">
+        </div>
+        <div class="field">
+          <label>Smashing</label>
+          <input type="number" id="resDebuffSmashing" step="0.001">
+        </div>
+        <div class="field">
+          <label>Lethal</label>
+          <input type="number" id="resDebuffLethal" step="0.001">
+        </div>
+        <div class="field">
+          <label>Fire</label>
+          <input type="number" id="resDebuffFire" step="0.001">
+        </div>
+        <div class="field">
+          <label>Cold</label>
+          <input type="number" id="resDebuffCold" step="0.001">
+        </div>
+        <div class="field">
+          <label>Energy</label>
+          <input type="number" id="resDebuffEnergy" step="0.001">
+        </div>
+        <div class="field">
+          <label>Negative</label>
+          <input type="number" id="resDebuffNegative" step="0.001">
+        </div>
+        <div class="field">
+          <label>Psionic</label>
+          <input type="number" id="resDebuffPsionic" step="0.001">
+        </div>
+        <div class="field">
+          <label>Toxic</label>
+          <input type="number" id="resDebuffToxic" step="0.001">
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Mez Effects (add multiple)</h2>
+      <div id="mezList" class="effect-list"></div>
+      <button class="btn-small btn-add" onclick="addMezEffect()">+ Add Mez Effect</button>
     </div>
 
     <div class="actions">
@@ -401,6 +515,9 @@
   <div class="copied" id="copied">Copied!</div>
 
   <script>
+    let mezCount = 0;
+    let damageCount = 0;
+
     function getValue(id) {
       const el = document.getElementById(id);
       if (!el) return null;
@@ -430,21 +547,207 @@
       return Object.keys(res).length > 0 ? res : null;
     }
 
+    function buildDefenseDebuff() {
+      const def = {};
+      const types = ['All', 'Melee', 'Ranged', 'AoE', 'Smashing', 'Lethal', 'Fire', 'Cold', 'Energy', 'Negative', 'Psionic'];
+      types.forEach(t => {
+        const val = getValue('defDebuff' + t);
+        if (val !== null) def[t.toLowerCase()] = val;
+      });
+      return Object.keys(def).length > 0 ? def : null;
+    }
+
+    function buildResistanceDebuff() {
+      const res = {};
+      const types = ['All', 'Smashing', 'Lethal', 'Fire', 'Cold', 'Energy', 'Negative', 'Psionic', 'Toxic'];
+      types.forEach(t => {
+        const val = getValue('resDebuff' + t);
+        if (val !== null) res[t.toLowerCase()] = val;
+      });
+      return Object.keys(res).length > 0 ? res : null;
+    }
+
+    function buildDebuffs() {
+      const debuffs = {};
+
+      // Simple debuffs
+      const debuffFields = ['toHitDebuff', 'damageDebuff', 'rechargeDebuff', 'runSpeedDebuff', 'flySpeedDebuff', 'jumpDebuff', 'regenDebuff'];
+      const debuffKeys = ['toHit', 'damage', 'recharge', 'runSpeed', 'flySpeed', 'jump', 'regen'];
+      debuffFields.forEach((f, i) => {
+        const val = getValue(f);
+        if (val !== null) debuffs[debuffKeys[i]] = val;
+      });
+
+      // Duration
+      const duration = getValue('debuffDuration');
+      if (duration !== null) debuffs.duration = duration;
+
+      // Defense debuff
+      const defDebuff = buildDefenseDebuff();
+      if (defDebuff) debuffs.defense = defDebuff;
+
+      // Resistance debuff
+      const resDebuff = buildResistanceDebuff();
+      if (resDebuff) debuffs.resistance = resDebuff;
+
+      return Object.keys(debuffs).length > 0 ? debuffs : null;
+    }
+
+    function addDamageEffect() {
+      const damageList = document.getElementById('damageList');
+      const id = damageCount++;
+      const div = document.createElement('div');
+      div.className = 'effect-item';
+      div.id = 'damage-' + id;
+      div.innerHTML = `
+        <div class="field">
+          <label>Type</label>
+          <select id="damageType-${id}">
+            <option value="Smashing">Smashing</option>
+            <option value="Lethal">Lethal</option>
+            <option value="Fire">Fire</option>
+            <option value="Cold">Cold</option>
+            <option value="Energy">Energy</option>
+            <option value="Negative">Negative</option>
+            <option value="Psionic">Psionic</option>
+            <option value="Toxic">Toxic</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Scale</label>
+          <input type="number" id="damageScale-${id}" step="0.001" placeholder="1.0">
+        </div>
+        <div class="field">
+          <label>Duration (s)</label>
+          <input type="number" id="damageDuration-${id}" step="0.1" placeholder="DoT duration">
+          <div class="hint">Leave empty for instant</div>
+        </div>
+        <div class="field">
+          <label>Ticks</label>
+          <input type="number" id="damageTicks-${id}" step="1" placeholder="# of ticks">
+          <div class="hint">For DoT only</div>
+        </div>
+        <button class="btn-small btn-danger" onclick="removeDamageEffect(${id})">×</button>
+      `;
+      damageList.appendChild(div);
+    }
+
+    function removeDamageEffect(id) {
+      const el = document.getElementById('damage-' + id);
+      if (el) el.remove();
+    }
+
+    function buildDamageEffects() {
+      const damageList = document.getElementById('damageList');
+      const items = damageList.querySelectorAll('.effect-item');
+      const damageEffects = [];
+
+      items.forEach(item => {
+        const id = item.id.replace('damage-', '');
+        const type = document.getElementById('damageType-' + id)?.value;
+        const scale = getValue('damageScale-' + id);
+        const duration = getValue('damageDuration-' + id);
+        const ticks = getValue('damageTicks-' + id);
+
+        if (type && scale !== null) {
+          const dmg = { type, scale };
+          if (duration !== null) dmg.duration = duration;
+          if (ticks !== null) dmg.ticks = ticks;
+          damageEffects.push(dmg);
+        }
+      });
+
+      return damageEffects.length > 0 ? damageEffects : null;
+    }
+
+    function addMezEffect() {
+      const mezList = document.getElementById('mezList');
+      const id = mezCount++;
+      const div = document.createElement('div');
+      div.className = 'effect-item';
+      div.id = 'mez-' + id;
+      div.innerHTML = `
+        <div class="field">
+          <label>Type</label>
+          <select id="mezType-${id}">
+            <option value="Hold">Hold</option>
+            <option value="Stun">Stun</option>
+            <option value="Sleep">Sleep</option>
+            <option value="Immobilize">Immobilize</option>
+            <option value="Confuse">Confuse</option>
+            <option value="Fear">Fear</option>
+            <option value="Terrorize">Terrorize</option>
+            <option value="Knockback">Knockback</option>
+            <option value="Knockdown">Knockdown</option>
+            <option value="Knockup">Knockup</option>
+            <option value="Repel">Repel</option>
+            <option value="Taunt">Taunt</option>
+            <option value="Placate">Placate</option>
+            <option value="Intangible">Intangible</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Mag</label>
+          <input type="number" id="mezMag-${id}" step="0.1" placeholder="3">
+        </div>
+        <div class="field">
+          <label>Duration (s)</label>
+          <input type="number" id="mezDuration-${id}" step="0.1" placeholder="8">
+        </div>
+        <div class="field">
+          <label>Chance %</label>
+          <input type="number" id="mezChance-${id}" step="0.01" placeholder="1.0 = 100%">
+          <div class="hint">Leave empty for 100%</div>
+        </div>
+        <button class="btn-small btn-danger" onclick="removeMezEffect(${id})">×</button>
+      `;
+      mezList.appendChild(div);
+    }
+
+    function removeMezEffect(id) {
+      const el = document.getElementById('mez-' + id);
+      if (el) el.remove();
+    }
+
+    function buildMezEffects() {
+      const mezList = document.getElementById('mezList');
+      const items = mezList.querySelectorAll('.effect-item');
+      const mezEffects = [];
+
+      items.forEach(item => {
+        const id = item.id.replace('mez-', '');
+        const type = document.getElementById('mezType-' + id)?.value;
+        const mag = getValue('mezMag-' + id);
+        const duration = getValue('mezDuration-' + id);
+        const chance = getValue('mezChance-' + id);
+
+        if (type) {
+          const mez = { type };
+          if (mag !== null) mez.mag = mag;
+          if (duration !== null) mez.duration = duration;
+          if (chance !== null && chance !== 1) mez.chance = chance;
+          mezEffects.push(mez);
+        }
+      });
+
+      return mezEffects.length > 0 ? mezEffects : null;
+    }
+
     function buildEffects() {
       const effects = {};
 
       // Base effects
-      const baseFields = ['accuracy', 'range', 'recharge', 'endurance', 'cast', 'radius', 'arc', 'duration'];
+      const baseFields = ['accuracy', 'range', 'recharge', 'endurance', 'cast', 'radius', 'arc', 'duration', 'animationTime'];
       baseFields.forEach(f => {
         const val = getValue(f);
         if (val !== null) effects[f] = val;
       });
 
-      // Damage
-      const damageType = getValue('damageType');
-      const damageScale = getValue('damageScale');
-      if (damageType && damageScale) {
-        effects.damage = { type: damageType, scale: damageScale };
+      // Damage (multiple)
+      const damageEffects = buildDamageEffects();
+      if (damageEffects) {
+        // If only one damage effect, use single object for backward compatibility
+        effects.damage = damageEffects.length === 1 ? damageEffects[0] : damageEffects;
       }
 
       // Defense
@@ -462,14 +765,15 @@
         if (val !== null) effects[f] = val;
       });
 
-      // Mez
-      const mezType = getValue('mezType');
-      const mezMag = getValue('mezMag');
-      const mezDuration = getValue('mezDuration');
-      if (mezType) {
-        effects.mez = { type: mezType };
-        if (mezMag) effects.mez.mag = mezMag;
-        if (mezDuration) effects.mez.duration = mezDuration;
+      // Debuffs
+      const debuffs = buildDebuffs();
+      if (debuffs) effects.debuffs = debuffs;
+
+      // Mez (multiple)
+      const mezEffects = buildMezEffects();
+      if (mezEffects) {
+        // If only one mez effect, use single object for backward compatibility
+        effects.mez = mezEffects.length === 1 ? mezEffects[0] : mezEffects;
       }
 
       return effects;
@@ -529,6 +833,11 @@
           el.value = '';
         }
       });
+      // Clear damage and mez effects lists
+      document.getElementById('damageList').innerHTML = '';
+      document.getElementById('mezList').innerHTML = '';
+      damageCount = 0;
+      mezCount = 0;
       document.getElementById('output').textContent = '// JSON will appear here';
     }
 
