@@ -21,7 +21,7 @@ const KNOWN_ISSUES = [
 ];
 
 const RECENT_CHANGES = [
-  'Mobile: Long-press on slots to remove enhancements or slots',
+  'Mobile: Touch and hold on slots to open action menu',
   'Mobile: Long-press on powers to view info',
   'Mobile: Improved dashboard and enhancement picker layouts',
   'Added chronological power view mode',
@@ -77,8 +77,7 @@ export function WelcomeModal({ isOpen, onClose }: WelcomeModalProps) {
                 <ul className="mt-1 space-y-1 ml-4">
                   <li><span className="text-gray-300">Tap</span> to select powers or enhancement slots</li>
                   <li><span className="text-gray-300">Long-press</span> on a power to view its info</li>
-                  <li><span className="text-gray-300">Long-press</span> on a filled slot to remove the enhancement</li>
-                  <li><span className="text-gray-300">Long-press</span> on an empty slot to remove it</li>
+                  <li><span className="text-gray-300">Touch and hold</span> on a slot for action menu (remove enhancement, remove slot, etc.)</li>
                   <li><span className="text-gray-300">Touch and drag</span> the + button to add multiple slots</li>
                 </ul>
               </div>

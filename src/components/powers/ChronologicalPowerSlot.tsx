@@ -5,7 +5,7 @@
  * Includes category color coding and all standard interactions.
  */
 
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { useBuildStore, useUIStore } from '@/stores';
 import type { PowerCategory as StorePowerCategory } from '@/stores';
 import type { Enhancement } from '@/types';
@@ -13,8 +13,8 @@ import { getPowerIconPath, getPowerset } from '@/data';
 import { resolvePath } from '@/utils/paths';
 import { DraggableSlotGhost } from './DraggableSlotGhost';
 import { SlottedEnhancementIcon } from './SlottedEnhancementIcon';
+import { SlotContextMenu } from './SlotContextMenu';
 import { Tooltip } from '@/components/ui';
-import { useLongPress } from '@/hooks';
 import type { CategorizedPower, PowerCategory } from './ChronologicalPowerView';
 
 // Category colors for left border
@@ -42,16 +42,17 @@ interface TouchableSlotCompactProps {
   canRemoveSlot: boolean;
   onClick: () => void;
   onMouseEnter: () => void;
-  onContextMenu: (e: React.MouseEvent) => void;
   onClearEnhancement: () => void;
   onRemoveSlot: () => void;
+  onClearAllEnhancements: () => void;
+  onRemoveAllSlots: () => void;
 }
 
 /**
  * Compact slot component with touch support for chronological view
- * - Long-press on filled slot removes enhancement
- * - Long-press on empty slot (not first) removes slot
- * - Tap on any slot opens enhancement picker
+ * - Long-press opens context menu with actions
+ * - Tap opens enhancement picker
+ * - Right-click (desktop) also shows context menu
  */
 function TouchableSlotCompact({
   slot,
@@ -59,91 +60,115 @@ function TouchableSlotCompact({
   canRemoveSlot,
   onClick,
   onMouseEnter,
-  onContextMenu,
   onClearEnhancement,
   onRemoveSlot,
+  onClearAllEnhancements,
+  onRemoveAllSlots,
 }: TouchableSlotCompactProps) {
-  // Track if we just did a long-press to prevent click from firing
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [menuPosition, setMenuPosition] = useState({ x: 0, y: 0 });
   const longPressTriggeredRef = useRef(false);
+  const timerRef = useRef<NodeJS.Timeout | null>(null);
 
-  const handleLongPressEnhancement = () => {
+  const openMenu = (x: number, y: number) => {
     longPressTriggeredRef.current = true;
-    onClearEnhancement();
-    // Reset after a short delay (longer than click event propagation)
-    setTimeout(() => {
-      longPressTriggeredRef.current = false;
-    }, 300);
-  };
-
-  const handleLongPressSlot = () => {
-    longPressTriggeredRef.current = true;
-    onRemoveSlot();
-    setTimeout(() => {
-      longPressTriggeredRef.current = false;
-    }, 300);
+    setMenuPosition({ x, y });
+    setMenuOpen(true);
   };
 
   const handleClick = () => {
-    // Skip if we just did a long-press (prevents modal from opening after removal)
-    if (longPressTriggeredRef.current) {
+    // Skip if we just opened the menu
+    if (longPressTriggeredRef.current || menuOpen) {
       return;
     }
     onClick();
   };
 
-  // Long-press to remove enhancement (for filled slots)
-  const filledSlotHandlers = useLongPress({
-    duration: 500,
-    onLongPress: handleLongPressEnhancement,
-    onTap: handleClick,
-  });
+  const handleContextMenu = (e: React.MouseEvent) => {
+    e.preventDefault();
+    openMenu(e.clientX, e.clientY);
+  };
 
-  // Long-press to remove slot (for empty slots that aren't the first)
-  const emptySlotHandlers = useLongPress({
-    duration: 500,
-    onLongPress: handleLongPressSlot,
-    onTap: handleClick,
-  });
+  const handleTouchStart = (e: React.TouchEvent) => {
+    e.preventDefault(); // Prevent iOS context menu and text selection
+    const touch = e.touches[0];
+    const posRef = { x: touch.clientX, y: touch.clientY + 10 };
 
-  // Select handlers based on slot state
-  // - Filled slot: long-press to remove enhancement, tap to open picker
-  // - Empty removable slot: long-press to remove slot, tap to add
-  // - First empty slot: just tap to add (no special touch handlers needed)
-  const touchHandlers = slot
-    ? filledSlotHandlers
-    : canRemoveSlot
-      ? emptySlotHandlers
-      : { onTouchStart: undefined, onTouchEnd: undefined, onTouchMove: undefined };
+    // Start timer for long-press
+    timerRef.current = setTimeout(() => {
+      openMenu(posRef.x - 90, posRef.y);
+    }, 400);
+  };
+
+  const handleTouchEnd = () => {
+    // Clear timer if touch ends before long-press
+    if (timerRef.current) {
+      clearTimeout(timerRef.current);
+      timerRef.current = null;
+    }
+
+    // If it wasn't a long-press, treat as tap
+    if (!longPressTriggeredRef.current && !menuOpen) {
+      onClick();
+    }
+    longPressTriggeredRef.current = false;
+  };
+
+  const handleTouchMove = () => {
+    // Cancel long-press if user moves finger
+    if (timerRef.current) {
+      clearTimeout(timerRef.current);
+      timerRef.current = null;
+    }
+  };
 
   return (
-    <div
-      onClick={handleClick} // Click handler that respects long-press state
-      onMouseEnter={onMouseEnter}
-      onContextMenu={onContextMenu}
-      {...touchHandlers}
-      className={`
-        w-5 h-5 rounded-full border flex items-center justify-center
-        text-[8px] font-semibold cursor-pointer transition-transform hover:scale-110
-        select-none touch-none
-        ${
+    <>
+      <div
+        onClick={handleClick}
+        onMouseEnter={onMouseEnter}
+        onContextMenu={handleContextMenu}
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+        onTouchMove={handleTouchMove}
+        onTouchCancel={handleTouchMove}
+        className={`
+          w-5 h-5 rounded-full border flex items-center justify-center
+          text-[8px] font-semibold cursor-pointer transition-transform hover:scale-110
+          select-none
+          ${
+            slot
+              ? 'border-transparent bg-transparent'
+              : 'border-slate-600 bg-slate-700/50 text-slate-500 hover:border-blue-500 hover:bg-slate-600'
+          }
+        `}
+        style={{ WebkitTouchCallout: 'none', WebkitUserSelect: 'none' }}
+        title={
           slot
-            ? 'border-transparent bg-transparent'
-            : 'border-slate-600 bg-slate-700/50 text-slate-500 hover:border-blue-500 hover:bg-slate-600'
+            ? `${slot.name || 'Enhancement'} - hold or right-click for options`
+            : `Slot ${index + 1} - tap to add, hold for options`
         }
-      `}
-      style={{ WebkitTouchCallout: 'none' }}
-      title={
-        slot
-          ? `${slot.name || 'Enhancement'} - long-press or right-click to remove`
-          : `Slot ${index + 1}${canRemoveSlot ? ' - long-press or right-click to remove' : ''}`
-      }
-    >
-      {slot ? (
-        <SlottedEnhancementIcon enhancement={slot} size={20} />
-      ) : (
-        <span className="text-slate-400">+</span>
-      )}
-    </div>
+      >
+        {slot ? (
+          <SlottedEnhancementIcon enhancement={slot} size={20} />
+        ) : (
+          <span className="text-slate-400">+</span>
+        )}
+      </div>
+
+      <SlotContextMenu
+        isOpen={menuOpen}
+        onClose={() => setMenuOpen(false)}
+        position={menuPosition}
+        hasFill={!!slot}
+        canRemoveSlot={canRemoveSlot}
+        onOpenPicker={onClick}
+        onClearEnhancement={onClearEnhancement}
+        onRemoveSlot={onRemoveSlot}
+        onClearAllEnhancements={onClearAllEnhancements}
+        onRemoveAllSlots={onRemoveAllSlots}
+      />
+    </>
   );
 }
 
@@ -252,25 +277,17 @@ export function ChronologicalPowerSlot({
     openEnhancementPicker(power.name, power.powerSet, index);
   };
 
-  const handleSlotRightClick = (
-    e: React.MouseEvent,
-    index: number,
-    hasEnhancement: boolean
-  ) => {
-    e.preventDefault();
-    if (hasEnhancement) {
-      clearEnhancement(power.name, index);
-      return;
+  const handleClearAllEnhancements = () => {
+    // Clear all enhancements from this power's slots
+    for (let i = 0; i < power.slots.length; i++) {
+      clearEnhancement(power.name, i);
     }
-    if (e.shiftKey && power.slots.length > 1) {
-      // Remove all slots except first
-      for (let i = power.slots.length - 1; i > 0; i--) {
-        removeSlot(power.name, i);
-      }
-      return;
-    }
-    if (index > 0) {
-      removeSlot(power.name, index);
+  };
+
+  const handleRemoveAllSlots = () => {
+    // Remove all slots except first
+    for (let i = power.slots.length - 1; i > 0; i--) {
+      removeSlot(power.name, i);
     }
   };
 
@@ -366,9 +383,10 @@ export function ChronologicalPowerSlot({
             onMouseEnter={() =>
               slot ? handleEnhancementHover(index) : handlePowerHover()
             }
-            onContextMenu={(e) => handleSlotRightClick(e, index, !!slot)}
             onClearEnhancement={() => clearEnhancement(power.name, index)}
             onRemoveSlot={() => removeSlot(power.name, index)}
+            onClearAllEnhancements={handleClearAllEnhancements}
+            onRemoveAllSlots={handleRemoveAllSlots}
           />
         ))}
 
