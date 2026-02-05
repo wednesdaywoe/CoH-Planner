@@ -296,7 +296,8 @@ export interface DamageEffect {
 export interface PowerWithDamage {
   name: string;
   /** Top-level damage definition (new format) */
-  damage?: DamageEffect | number;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  damage?: DamageEffect | number | any;
   effects?: {
     /** Legacy damage location - deprecated, use top-level damage */
     damage?: DamageEffect | number;
@@ -345,32 +346,36 @@ export function calculatePowerDamage(
     scale = damageEffect;
     damageTypeName = 'Unknown';
   } else if (typeof damageEffect === 'object') {
+    // Type helper for damage type entries
+    type DamageTypeEntry = { type: DamageType | string; scale: number; table?: string };
+
     if (damageEffect.types) {
-      const totalScale = damageEffect.scale || damageEffect.types.reduce((sum, t) => sum + t.scale, 0);
+      const types = damageEffect.types as DamageTypeEntry[];
+      const totalScale = damageEffect.scale || types.reduce((sum: number, t: DamageTypeEntry) => sum + t.scale, 0);
 
       // Check for Fiery Embrace pattern: Fire is minority damage in a non-Fire power
-      const fireType = damageEffect.types.find(t => t.type === 'Fire');
-      const nonFireTypes = damageEffect.types.filter(t => t.type !== 'Fire');
+      const fireType = types.find((t: DamageTypeEntry) => t.type === 'Fire');
+      const nonFireTypes = types.filter((t: DamageTypeEntry) => t.type !== 'Fire');
 
       if (fireType && nonFireTypes.length > 0) {
         const fireRatio = fireType.scale / totalScale;
-        const dominantNonFire = nonFireTypes.reduce((max, t) => t.scale > max.scale ? t : max, nonFireTypes[0]);
+        const dominantNonFire = nonFireTypes.reduce((max: DamageTypeEntry, t: DamageTypeEntry) => t.scale > max.scale ? t : max, nonFireTypes[0]);
 
         // If Fire is < 20% of total AND there's a larger non-Fire type, it's Fiery Embrace
         if (fireRatio < FIERY_EMBRACE_THRESHOLD && dominantNonFire.scale > fireType.scale) {
           // Separate Fiery Embrace damage from primary damage
           fieryEmbraceScale = fireType.scale;
-          scale = totalScale - fieryEmbraceScale;
-          damageTypeName = nonFireTypes.map(t => t.type).join('/');
+          scale = totalScale - (fieryEmbraceScale ?? 0);
+          damageTypeName = nonFireTypes.map((t: DamageTypeEntry) => t.type).join('/');
         } else {
           // Fire is dominant or significant - treat normally
           scale = totalScale;
-          damageTypeName = damageEffect.types.map((t) => t.type).join('/');
+          damageTypeName = types.map((t: DamageTypeEntry) => t.type).join('/');
         }
       } else {
         // No Fire type or no non-Fire types - treat normally
         scale = totalScale;
-        damageTypeName = damageEffect.types.map((t) => t.type).join('/');
+        damageTypeName = types.map((t: DamageTypeEntry) => t.type).join('/');
       }
     } else {
       scale = damageEffect.scale;

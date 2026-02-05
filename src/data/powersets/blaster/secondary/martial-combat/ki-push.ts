@@ -51,11 +51,10 @@ export const KiPush: Power = {
       "table": "Melee_Ones"
     },
     "knockback": {
-      "mag": 8.31,
-      "scale": 4
+      "scale": 4,
+      "table": "Melee_Ones"
     },
     "repel": {
-      "mag": 4,
       "scale": 2,
       "table": "Melee_Ones"
     }

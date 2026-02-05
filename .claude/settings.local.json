@@ -56,7 +56,8 @@
       "Bash(do echo \"=== $dir ===\" ls \"C:/Projects/Raw Data Homecoming/powers/$dir/\")",
       "Bash(node scripts/convert-all-powersets.cjs:*)",
       "Bash(node scripts/generate-powerset-index.cjs:*)",
-      "Bash(node scripts/convert-epic-powersets-to-modular.cjs:*)"
+      "Bash(node scripts/convert-epic-powersets-to-modular.cjs:*)",
+      "Bash(echo:*)"
     ]
   }
 }
