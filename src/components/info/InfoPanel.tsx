@@ -305,11 +305,14 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
   const getIconPath = (): string => {
     if (isInherent && selectedPower) {
       const category = selectedPower.inherentCategory || 'basic';
+      const lowercaseIcon = power.icon?.toLowerCase() || 'unknown.png';
       switch (category) {
         case 'fitness':
-          return `/img/Powers/Fitness Powers Icons/${power.icon}`;
+          return resolvePath(`/img/Powers/Fitness Powers Icons/${lowercaseIcon}`);
+        case 'archetype':
+          return resolvePath(`/img/Powers/Archetype Inherent Powers icons/${lowercaseIcon}`);
         default:
-          return `/img/Powers/Inherent Powers Icons/${power.icon}`;
+          return resolvePath(`/img/Powers/Inherent Powers Icons/${lowercaseIcon}`);
       }
     }
     return getPowerIconPath(powersetName, power.icon);

@@ -27,8 +27,8 @@ export const powerset: Powerset = {
   archetype: 'dominator',
   category: 'primary',
   powers: [
-    DarkGrasp,
     ShadowyBinds,
+    DarkGrasp,
     LivingShadows,
     Possess,
     FearsomeStare,

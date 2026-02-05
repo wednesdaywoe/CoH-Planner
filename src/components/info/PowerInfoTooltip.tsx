@@ -344,22 +344,14 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
   return (
     <div className="space-y-1.5 max-w-[320px]">
       {/* Header */}
-      <div className="flex items-center gap-2">
-        <img
-          src={basePower.icon || resolvePath('/img/Unknown.png')}
-          alt=""
-          className="w-6 h-6 rounded flex-shrink-0"
-          onError={(e) => {
-            (e.target as HTMLImageElement).src = resolvePath('/img/Unknown.png');
-          }}
-        />
-        <div className="min-w-0">
-          <h3 className="text-xs font-semibold text-blue-400 leading-tight">{basePower.name}</h3>
-          <span className="text-[9px] text-slate-400 capitalize">{basePower.powerType}</span>
+      <div>
+        <h3 className="text-xs font-semibold text-blue-400 leading-tight">
+          {basePower.name}
           {hasEnhancements && (
             <span className="text-[8px] text-green-500 ml-1">(enhanced)</span>
           )}
-        </div>
+        </h3>
+        <span className="text-[9px] text-slate-400 capitalize">{basePower.powerType}</span>
       </div>
 
       {/* Short Help */}
