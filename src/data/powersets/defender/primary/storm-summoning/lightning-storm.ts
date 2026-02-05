@@ -1,0 +1,48 @@
+/**
+ * Lightning Storm
+ * Create Storm: Ranged, High DMG(Energy), Foe -End
+ *
+ * Source: defender_buff/storm_summoning/lightning_storm.json
+ */
+
+import type { Power } from '@/types';
+
+export const LightningStorm: Power = {
+  "name": "Lightning Storm",
+  "internalName": "Lightning_Storm",
+  "available": 25,
+  "description": "You can create a massive Lightning Storm that will strike any foe that approaches you. Lightning from this storm can knock down and damage all nearby foes, and can even instill panic. Lightning bolts will continue to fall as long as the storm remains.Recharge: Long.",
+  "shortHelp": "Create Storm: Ranged, High DMG(Energy), Foe -End",
+  "icon": "stormsummoning_lightningstorm.png",
+  "powerType": "Click",
+  "targetType": "Self",
+  "effectArea": "SingleTarget",
+  "stats": {
+    "accuracy": 1.4,
+    "recharge": 90,
+    "endurance": 31.2,
+    "castTime": 2.03
+  },
+  "allowedEnhancements": [
+    "EnduranceReduction",
+    "Range",
+    "Recharge",
+    "Damage",
+    "Accuracy"
+  ],
+  "allowedSetCategories": [
+    "Defender Archetype Sets",
+    "Endurance Modification",
+    "Knockback",
+    "Ranged Damage",
+    "Universal Damage Sets"
+  ],
+  "maxSlots": 6,
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_LightningStorm",
+      "duration": 60
+    }
+  }
+};

@@ -71,12 +71,28 @@ export type PowerType = 'Click' | 'Toggle' | 'Auto' | 'Passive';
 
 export type TargetType =
   | 'Self'
+  | 'Foe'
   | 'Foe (Alive)'
   | 'Foe (Dead)'
+  | 'Friend'
   | 'Friend (Alive)'
   | 'Friend (Dead)'
+  | 'Ally'
+  | 'Ally (Alive)'
+  | 'Own Pet (Alive)'
+  | 'Teammate'
+  | 'Teammate (Alive)'
+  | 'Teammate (Dead)'
+  | 'DeadFoe'
+  | 'DeadOrAlive Teammate'
+  | 'Dead Teammate'
+  | 'Player Ally (Dead)'
+  | 'Leaguemate (Dead)'
   | 'Location'
-  | 'Any';
+  | 'Location (Teleport)'
+  | 'Teleport'
+  | 'Any'
+  | 'Any (Alive)';
 
 export type EffectArea =
   | 'SingleTarget'

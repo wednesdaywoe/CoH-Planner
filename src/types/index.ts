@@ -36,21 +36,33 @@ export type {
 
 // Power types
 export type {
+  ScaledEffect,
+  NumberOrScaled,
+  MezEffect,
+  NumberOrMez,
   DamageEffect,
   MultiDamageEffect,
   DotEffect,
   ProtectionEffects,
   DefenseByType,
   ResistanceByType,
+  ElusivityByType,
+  MovementByType,
+  StealthEffects,
+  SummonEffect,
   HealingEffect,
   DebuffResistance,
   MovementEffect,
+  PowerStats,
+  ScaledDamageEntry,
   PowerEffects,
   Power,
   Powerset,
   PowerPool,
   SelectedPower,
 } from './power';
+
+export { getScaleValue, isScaledEffect, isMezEffect } from './power';
 
 // Enhancement types
 export type {

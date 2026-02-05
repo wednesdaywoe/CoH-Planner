@@ -257,17 +257,6 @@ export function getSetBonusesAtCount(setId: string, pieceCount: number): SetBonu
 }
 
 /**
- * Search IO sets by name
- */
-export function searchIOSets(query: string): IOSet[] {
-  const lowerQuery = query.toLowerCase();
-  return Object.values(_ioSets).filter(
-    (set) =>
-      set.name.toLowerCase().includes(lowerQuery) || set.type.toLowerCase().includes(lowerQuery)
-  );
-}
-
-/**
  * Get all unique IO set types (for filtering UI)
  */
 export function getAllIOSetTypes(): string[] {
@@ -276,25 +265,6 @@ export function getAllIOSetTypes(): string[] {
     types.add(set.type);
   }
   return Array.from(types).sort();
-}
-
-/**
- * Get IO set count by rarity
- */
-export function getIOSetCountByRarity(): Record<IOSetRarity, number> {
-  const counts: Record<IOSetRarity, number> = {
-    'io-set': 0,
-    purple: 0,
-    ato: 0,
-    pvp: 0,
-    event: 0,
-  };
-
-  for (const set of Object.values(_ioSets)) {
-    counts[set.category]++;
-  }
-
-  return counts;
 }
 
 // ============================================

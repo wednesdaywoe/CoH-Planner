@@ -7,7 +7,7 @@ import { Modal, ModalBody, ModalFooter } from './Modal';
 import { Button } from '@/components/ui';
 
 const STORAGE_KEY = 'coh-planner-welcome-dismissed';
-const CURRENT_VERSION = '0.1.3-alpha'; // Increment to show modal again after major updates
+const CURRENT_VERSION = '0.2.0-alpha'; // Increment to show modal again after major updates
 
 interface WelcomeModalProps {
   isOpen: boolean;
@@ -21,22 +21,11 @@ const KNOWN_ISSUES = [
 ];
 
 const RECENT_CHANGES = [
-  'Fixed Street Justice naming issue',
-  'First pass at adding Epic ATs, expect bugs',
-  'First pass with Archetype inherent powers, expect bugs',
-  'Battle Agility: Added missing defense: { ranged, aoe } values',
-  'Deflection: Added missing melee defense (only had psionic), fixed allowedEnhancements',
-  'True Grit: Removed incorrect dotDamage, added maxHealth bonus, fixed allowedEnhancements',
-  'Generic IO Values: Level 50 shows correct 42.4%',
-  'Display Bug: Fixed 3560.0% tooltip display',
-  'Sprint Categories: Corrected to only accept Running & Sprints and Universal Travel',
-  'Added some UI support for mobile devices',
-  'Added touch support for slot and enhancement drag operations',
-  'Added magnitude display for control powers',
-  'Fixed Dominator primary/secondary powerset sorting',
-  'Fixed Electrical Affinity appearing in wrong dropdown for Defender',
-  'Fixed Beast Mastery appearing as secondary instead of primary for Mastermind',
-  'Renamed Shock Therapy to Electrical Affinity',
+  'Absolutely enormous database update, cleanup, and new data extraction pass',
+  'Updated infopanel to use a consolidated power effect registry system',
+  'Updated tooltip to stay in sync with infopanel',
+  'Added alternate view mode to see powers listed chronologically by acquisition level (toggle is at the top of power selection)',
+  'Added level acquisition info to powers in both modes',
 ];
 
 const TODO_ITEMS = [

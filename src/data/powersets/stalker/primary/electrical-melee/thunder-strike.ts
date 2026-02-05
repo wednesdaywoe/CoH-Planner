@@ -1,0 +1,49 @@
+/**
+ * Thunder Strike
+ * Melee (AoE), DMG(Energy), Foe Disorient, Knockback, -End
+ *
+ * Source: stalker_melee/electrical_melee/lightning_clap.json
+ */
+
+import type { Power } from '@/types';
+
+export const ThunderStrike: Power = {
+  "name": "Thunder Strike",
+  "internalName": "Lightning_Clap",
+  "available": 21,
+  "description": "A massive attack. You smash your foes with all the power of a lightning bolt. The pummeled victim takes tremendous damage and may be Disoriented. Any nearby foes may be knocked down and take some damage from the shockwave as well as have some endurance drained.",
+  "shortHelp": "Melee (AoE), DMG(Energy), Foe Disorient, Knockback, -End",
+  "icon": "electricmelee_targetedaoeheavydmg.png",
+  "powerType": "Click",
+  "effectArea": "AoE",
+  "stats": {
+    "accuracy": 1,
+    "range": 7,
+    "radius": 10,
+    "recharge": 20,
+    "endurance": 18.512,
+    "castTime": 2.53,
+    "maxTargets": 10
+  },
+  "allowedEnhancements": [
+    "EnduranceReduction",
+    "Stun",
+    "Recharge",
+    "Damage",
+    "Accuracy"
+  ],
+  "allowedSetCategories": [
+    "Knockback",
+    "Melee AoE Damage",
+    "Stalker Archetype Sets",
+    "Stuns",
+    "Universal Damage Sets"
+  ],
+  "maxSlots": 6,
+  "effects": {
+    "enduranceDrain": {
+      "scale": 0.07,
+      "table": "Melee_Ones"
+    }
+  }
+};

@@ -1,0 +1,32 @@
+/**
+ * Noxious Gas
+ * Ranged (Infect Henchman); Foe -RES, -DEF, -To Hit, -Res, +Special
+ *
+ * Source: mastermind_buff/poison/noxious_gas.json
+ */
+
+import type { Power } from '@/types';
+
+export const NoxiousGas: Power = {
+  "name": "Noxious Gas",
+  "internalName": "Noxious_Gas",
+  "available": 29,
+  "description": "You can infect one of your Henchmen, surrounding him with a Noxious Gas. All foes near the infected Henchmen will be overcome with the Noxious Gas. Their Defense, chance to hit, Damage and Damage resistance will all be reduced. Additionally, there is a chance than any affected humanoid enemy will become violently ill. Even the mightiest foe will stop dead in their tracks, and left helpless as they empty the contents of their stomach.Recharge: Very Long.",
+  "shortHelp": "Ranged (Infect Henchman); Foe -RES, -DEF, -To Hit, -Res, +Special",
+  "icon": "poison_noxiousgas.png",
+  "powerType": "Click",
+  "effectArea": "SingleTarget",
+  "stats": {
+    "accuracy": 1,
+    "range": 30,
+    "recharge": 300,
+    "endurance": 22.75,
+    "castTime": 2.07
+  },
+  "allowedEnhancements": [
+    "EnduranceReduction",
+    "Range",
+    "Recharge"
+  ],
+  "maxSlots": 6
+};

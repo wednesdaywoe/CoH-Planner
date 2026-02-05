@@ -39,4 +39,5 @@ export {
   useStalkerHidden,
   useStalkerTeamSize,
   useContainmentActive,
+  usePowerViewMode,
 } from './uiStore';

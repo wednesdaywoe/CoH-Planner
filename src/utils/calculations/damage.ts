@@ -9,8 +9,11 @@
  * - Active buffs
  */
 
-import type { DamageType, ArchetypeId } from '@/types';
+import type { DamageType, ArchetypeId, NumberOrScaled } from '@/types';
+import { getScaleValue } from '@/types';
 import { getArchetype } from '@/data';
+import { getTableValue } from '@/data/at-tables';
+import { normalizeTableName, normalizeArchetypeId } from './at-effects';
 
 // ============================================
 // DAMAGE TABLES
@@ -138,6 +141,53 @@ const DAMAGE_TABLES = {
 export type DamageTableType = 'melee' | 'ranged';
 
 // ============================================
+// AT_TABLE-BASED DAMAGE CALCULATION
+// ============================================
+
+/**
+ * Calculate damage using AT_TABLES (archetype-specific tables)
+ * This is the preferred method when the power specifies a table name
+ *
+ * @param scale - Power's damage scale
+ * @param tableName - Table name from power data (e.g., "Ranged_Damage", "Melee_Damage")
+ * @param archetypeId - Archetype ID
+ * @param level - Character level
+ * @param enhancementBonus - Enhancement bonus (0.95 = 95%)
+ * @param damageBuffs - Active damage buffs (0.50 = 50%)
+ * @returns Calculated damage or null if table not found
+ */
+export function calculateDamageWithATTable(
+  scale: number,
+  tableName: string,
+  archetypeId: ArchetypeId | string,
+  level: number = 50,
+  enhancementBonus: number = 0,
+  damageBuffs: number = 0
+): number | null {
+  if (!scale || scale === 0) return 0;
+
+  const normalizedAT = normalizeArchetypeId(archetypeId);
+  const normalizedTable = normalizeTableName(tableName);
+
+  const tableValue = getTableValue(normalizedAT, normalizedTable, level);
+  if (tableValue === undefined) {
+    // Table not found - fall back to null so caller can use generic calculation
+    return null;
+  }
+
+  // Damage tables store negative values, so we take absolute value
+  const baseDamagePerScale = Math.abs(tableValue);
+  const base = scale * baseDamagePerScale;
+  const enhanced = base * (1 + enhancementBonus);
+  const final = enhanced * (1 + damageBuffs);
+
+  // Return final if we have buffs, enhanced if we have enhancements, base otherwise
+  if (damageBuffs > 0) return final;
+  if (enhancementBonus > 0) return enhanced;
+  return base;
+}
+
+// ============================================
 // BASE DAMAGE LOOKUP
 // ============================================
 
@@ -238,12 +288,17 @@ export interface PowerDamageResult {
 export interface DamageEffect {
   type?: DamageType;
   scale: number;
-  types?: Array<{ type: DamageType; scale: number }>;
+  /** AT table name for damage calculation (e.g., "Ranged_Damage", "Melee_Damage") */
+  table?: string;
+  types?: Array<{ type: DamageType; scale: number; table?: string }>;
 }
 
 export interface PowerWithDamage {
   name: string;
+  /** Top-level damage definition (new format) */
+  damage?: DamageEffect | number;
   effects?: {
+    /** Legacy damage location - deprecated, use top-level damage */
     damage?: DamageEffect | number;
     dotDamage?: DamageEffect | string;
     range?: number;
@@ -275,11 +330,11 @@ export function calculatePowerDamage(
   globalDamageBonus = 0,
   activeBuffs = 0
 ): PowerDamageResult | null {
-  if (!basePower.effects?.damage) {
+  // Check top-level damage first (new format), then fall back to effects.damage (legacy)
+  const damageEffect = basePower.damage ?? basePower.effects?.damage;
+  if (!damageEffect) {
     return null;
   }
-
-  const damageEffect = basePower.effects.damage;
 
   // Extract scale - handle both old and new formats
   let scale: number;
@@ -355,37 +410,38 @@ export function calculatePowerDamage(
   const damageType = determineDamageType(basePower, buildContext);
 
   const { level, archetypeId } = buildContext;
-
-  // Base damage (no enhancements)
-  const baseDamage = calculateActualDamage({
-    scale,
-    damageType,
-    level,
-    archetypeId,
-    enhancementBonus: 0,
-    damageBuffs: 0,
-  });
-
-  // Enhanced damage (with slot enhancements)
   const enhancementBonus = enhancementBonuses.damage || 0;
-  const enhancedDamage = calculateActualDamage({
-    scale,
-    damageType,
-    level,
-    archetypeId,
-    enhancementBonus,
-    damageBuffs: 0,
-  });
 
-  // Final damage (with global buffs from active powers)
-  const finalDamage = calculateActualDamage({
-    scale,
-    damageType,
-    level,
-    archetypeId,
-    enhancementBonus,
-    damageBuffs: globalDamageBonus + activeBuffs,
-  });
+  // Check if we have a table specified and can use AT_TABLES
+  const tableName = typeof damageEffect === 'object' ? damageEffect.table : undefined;
+  const useATTables = tableName && archetypeId;
+
+  let baseDamage: number;
+  let enhancedDamage: number;
+  let finalDamage: number;
+
+  if (useATTables) {
+    // Use AT_TABLES for archetype-specific accurate damage
+    const atBase = calculateDamageWithATTable(scale, tableName, archetypeId, level, 0, 0);
+    const atEnhanced = calculateDamageWithATTable(scale, tableName, archetypeId, level, enhancementBonus, 0);
+    const atFinal = calculateDamageWithATTable(scale, tableName, archetypeId, level, enhancementBonus, globalDamageBonus + activeBuffs);
+
+    if (atBase !== null && atEnhanced !== null && atFinal !== null) {
+      baseDamage = atBase;
+      enhancedDamage = atEnhanced;
+      finalDamage = atFinal;
+    } else {
+      // Fallback to generic calculation if AT table not found
+      baseDamage = calculateActualDamage({ scale, damageType, level, archetypeId, enhancementBonus: 0, damageBuffs: 0 });
+      enhancedDamage = calculateActualDamage({ scale, damageType, level, archetypeId, enhancementBonus, damageBuffs: 0 });
+      finalDamage = calculateActualDamage({ scale, damageType, level, archetypeId, enhancementBonus, damageBuffs: globalDamageBonus + activeBuffs });
+    }
+  } else {
+    // Use generic damage tables (fallback for legacy data without table specified)
+    baseDamage = calculateActualDamage({ scale, damageType, level, archetypeId, enhancementBonus: 0, damageBuffs: 0 });
+    enhancedDamage = calculateActualDamage({ scale, damageType, level, archetypeId, enhancementBonus, damageBuffs: 0 });
+    finalDamage = calculateActualDamage({ scale, damageType, level, archetypeId, enhancementBonus, damageBuffs: globalDamageBonus + activeBuffs });
+  }
 
   const result: PowerDamageResult = {
     base: baseDamage,
@@ -396,32 +452,29 @@ export function calculatePowerDamage(
 
   // Calculate Fiery Embrace damage separately if detected
   if (fieryEmbraceScale !== null && fieryEmbraceScale > 0) {
-    const feBaseDamage = calculateActualDamage({
-      scale: fieryEmbraceScale,
-      damageType,
-      level,
-      archetypeId,
-      enhancementBonus: 0,
-      damageBuffs: 0,
-    });
+    let feBaseDamage: number;
+    let feEnhancedDamage: number;
+    let feFinalDamage: number;
 
-    const feEnhancedDamage = calculateActualDamage({
-      scale: fieryEmbraceScale,
-      damageType,
-      level,
-      archetypeId,
-      enhancementBonus,
-      damageBuffs: 0,
-    });
+    if (useATTables) {
+      const feBase = calculateDamageWithATTable(fieryEmbraceScale, tableName!, archetypeId!, level, 0, 0);
+      const feEnhanced = calculateDamageWithATTable(fieryEmbraceScale, tableName!, archetypeId!, level, enhancementBonus, 0);
+      const feFinal = calculateDamageWithATTable(fieryEmbraceScale, tableName!, archetypeId!, level, enhancementBonus, globalDamageBonus + activeBuffs);
 
-    const feFinalDamage = calculateActualDamage({
-      scale: fieryEmbraceScale,
-      damageType,
-      level,
-      archetypeId,
-      enhancementBonus,
-      damageBuffs: globalDamageBonus + activeBuffs,
-    });
+      if (feBase !== null && feEnhanced !== null && feFinal !== null) {
+        feBaseDamage = feBase;
+        feEnhancedDamage = feEnhanced;
+        feFinalDamage = feFinal;
+      } else {
+        feBaseDamage = calculateActualDamage({ scale: fieryEmbraceScale, damageType, level, archetypeId, enhancementBonus: 0, damageBuffs: 0 });
+        feEnhancedDamage = calculateActualDamage({ scale: fieryEmbraceScale, damageType, level, archetypeId, enhancementBonus, damageBuffs: 0 });
+        feFinalDamage = calculateActualDamage({ scale: fieryEmbraceScale, damageType, level, archetypeId, enhancementBonus, damageBuffs: globalDamageBonus + activeBuffs });
+      }
+    } else {
+      feBaseDamage = calculateActualDamage({ scale: fieryEmbraceScale, damageType, level, archetypeId, enhancementBonus: 0, damageBuffs: 0 });
+      feEnhancedDamage = calculateActualDamage({ scale: fieryEmbraceScale, damageType, level, archetypeId, enhancementBonus, damageBuffs: 0 });
+      feFinalDamage = calculateActualDamage({ scale: fieryEmbraceScale, damageType, level, archetypeId, enhancementBonus, damageBuffs: globalDamageBonus + activeBuffs });
+    }
 
     result.fieryEmbraceDamage = {
       base: feBaseDamage,
@@ -542,15 +595,21 @@ export function formatDamage(damage: number): string {
  * In City of Heroes, debuffs and buffs use different base scaling:
  * - Debuffs (ToHit, Defense, Resistance debuffs): 5% per scale (multiplier 5)
  * - Buffs (Damage, Defense, ToHit buffs): 10% per scale (multiplier 10)
+ *
+ * Accepts both number (legacy) and ScaledEffect (new format) as input.
  */
 export function calculateBuffDebuffValue(
-  scale: number,
+  scaleOrEffect: NumberOrScaled,
   archetypeId?: ArchetypeId,
   category: 'buff' | 'debuff' = 'buff'
 ): number {
+  // Extract scale from NumberOrScaled
+  const scale = getScaleValue(scaleOrEffect);
+  if (scale === undefined || scale === 0) return 0;
+
   const baseMultiplier = category === 'debuff' ? 5 : 10;
 
-  if (!scale || !archetypeId) return scale * baseMultiplier;
+  if (!archetypeId) return scale * baseMultiplier;
 
   const archetype = getArchetype(archetypeId);
   if (!archetype) return scale * baseMultiplier;
@@ -559,4 +618,94 @@ export function calculateBuffDebuffValue(
 
   // Formula: scale * archetypeModifier * baseMultiplier = percentage value
   return scale * modifier * baseMultiplier;
+}
+
+// ============================================
+// DOT (DAMAGE OVER TIME) CALCULATION
+// ============================================
+
+export interface DotDamageResult {
+  /** Base damage per tick without enhancements */
+  baseTick: number;
+  /** Enhanced damage per tick with slot enhancements */
+  enhancedTick: number;
+  /** Final damage per tick with global buffs */
+  finalTick: number;
+  /** Base total damage (all ticks) */
+  baseTotal: number;
+  /** Enhanced total damage (all ticks) */
+  enhancedTotal: number;
+  /** Final total damage (all ticks) */
+  finalTotal: number;
+  /** Damage type name */
+  type: string;
+  /** Number of ticks */
+  ticks: number;
+}
+
+export interface DotEffect {
+  type: string;
+  scale: number;
+  ticks: number;
+  /** Optional AT table name for damage calculation */
+  table?: string;
+}
+
+/**
+ * Calculate DoT damage for a power from build
+ * Returns three-tier values similar to direct damage
+ */
+export function calculateDotDamage(
+  dot: DotEffect,
+  buildContext: BuildContext,
+  enhancementBonuses: { damage?: number } = {},
+  globalDamageBonus = 0,
+  activeBuffs = 0,
+  isRanged = false
+): DotDamageResult {
+  const { level, archetypeId } = buildContext;
+  const damageType: DamageTableType = isRanged ? 'ranged' : 'melee';
+  const enhancementBonus = enhancementBonuses.damage || 0;
+
+  // Check if we can use AT_TABLES
+  const useATTables = dot.table && archetypeId;
+
+  let baseTick: number;
+  let enhancedTick: number;
+  let finalTick: number;
+
+  if (useATTables) {
+    // Use AT_TABLES for archetype-specific accurate damage
+    const atBase = calculateDamageWithATTable(dot.scale, dot.table!, archetypeId, level, 0, 0);
+    const atEnhanced = calculateDamageWithATTable(dot.scale, dot.table!, archetypeId, level, enhancementBonus, 0);
+    const atFinal = calculateDamageWithATTable(dot.scale, dot.table!, archetypeId, level, enhancementBonus, globalDamageBonus + activeBuffs);
+
+    if (atBase !== null && atEnhanced !== null && atFinal !== null) {
+      baseTick = atBase;
+      enhancedTick = atEnhanced;
+      finalTick = atFinal;
+    } else {
+      // Fallback to generic calculation
+      baseTick = calculateActualDamage({ scale: dot.scale, damageType, level, archetypeId, enhancementBonus: 0, damageBuffs: 0 });
+      enhancedTick = calculateActualDamage({ scale: dot.scale, damageType, level, archetypeId, enhancementBonus, damageBuffs: 0 });
+      finalTick = calculateActualDamage({ scale: dot.scale, damageType, level, archetypeId, enhancementBonus, damageBuffs: globalDamageBonus + activeBuffs });
+    }
+  } else {
+    // Use generic damage tables
+    baseTick = calculateActualDamage({ scale: dot.scale, damageType, level, archetypeId, enhancementBonus: 0, damageBuffs: 0 });
+    enhancedTick = calculateActualDamage({ scale: dot.scale, damageType, level, archetypeId, enhancementBonus, damageBuffs: 0 });
+    finalTick = calculateActualDamage({ scale: dot.scale, damageType, level, archetypeId, enhancementBonus, damageBuffs: globalDamageBonus + activeBuffs });
+  }
+
+  // Total damage = per tick × number of ticks
+  return {
+    baseTick,
+    enhancedTick,
+    finalTick,
+    baseTotal: baseTick * dot.ticks,
+    enhancedTotal: enhancedTick * dot.ticks,
+    finalTotal: finalTick * dot.ticks,
+    type: dot.type,
+    ticks: dot.ticks,
+  };
 }

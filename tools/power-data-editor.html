@@ -16,10 +16,12 @@
     }
     h1 { color: #4fc3f7; margin-bottom: 5px; }
     h2 { color: #81c784; margin: 20px 0 10px; font-size: 1.1em; border-bottom: 1px solid #333; padding-bottom: 5px; }
-    .container { max-width: 900px; margin: 0 auto; }
+    h3 { color: #90caf9; font-size: 0.95em; margin: 15px 0 10px; }
+    .container { max-width: 1000px; margin: 0 auto; }
     .row { display: flex; gap: 15px; flex-wrap: wrap; margin-bottom: 10px; }
     .field { flex: 1; min-width: 150px; }
     .field.wide { min-width: 300px; }
+    .field.full { min-width: 100%; flex-basis: 100%; }
     label { display: block; font-size: 0.85em; color: #aaa; margin-bottom: 3px; }
     input, select, textarea {
       width: 100%;
@@ -41,8 +43,9 @@
       gap: 8px;
     }
     .defense-grid .field, .resistance-grid .field { min-width: unset; }
-    .checkbox-row { display: flex; align-items: center; gap: 8px; }
+    .checkbox-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
     .checkbox-row input { width: auto; }
+    .checkbox-row label { display: inline; margin-right: 15px; color: #ddd; }
     button {
       padding: 12px 24px;
       border: none;
@@ -70,29 +73,20 @@
       max-height: 500px;
       overflow-y: auto;
     }
-    .actions { display: flex; gap: 10px; margin-top: 15px; }
+    .actions { display: flex; gap: 10px; margin-top: 15px; flex-wrap: wrap; }
     .hint { font-size: 0.75em; color: #888; margin-top: 2px; }
     .section { background: #252545; padding: 15px; border-radius: 8px; margin-bottom: 15px; }
-    .tabs { display: flex; gap: 5px; margin-bottom: 15px; }
-    .tab {
-      padding: 8px 16px;
-      background: #333;
-      border: none;
-      border-radius: 4px 4px 0 0;
-      color: #aaa;
-      cursor: pointer;
-    }
-    .tab.active { background: #4fc3f7; color: #000; }
     .copied { position: fixed; top: 20px; right: 20px; background: #81c784; color: #000; padding: 10px 20px; border-radius: 4px; display: none; }
     .effect-list { margin-top: 10px; }
     .effect-item {
       display: flex;
       gap: 10px;
-      align-items: center;
+      align-items: flex-end;
       padding: 10px;
       background: #1a1a3a;
       border-radius: 4px;
       margin-bottom: 8px;
+      flex-wrap: wrap;
     }
     .effect-item .field { flex: 1; min-width: 100px; }
     .effect-item select, .effect-item input { margin-bottom: 0; }
@@ -105,48 +99,75 @@
     .btn-add { background: #64b5f6; color: #000; }
     .btn-add:hover { background: #42a5f5; }
     .debuff-section h2 { color: #ef9a9a; }
+    .tag-list { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 5px; }
+    .tag {
+      background: #3a3a5a;
+      padding: 3px 8px;
+      border-radius: 3px;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .tag .remove { cursor: pointer; color: #e57373; }
+    .import-section { background: #1a3a2a; }
+    .import-section h2 { color: #a5d6a7; }
   </style>
 </head>
 <body>
   <div class="container">
     <h1>CoH Power Data Editor</h1>
-    <p style="color: #888; margin-bottom: 20px;">Enter power values and generate JSON for the data files</p>
+    <p style="color: #888; margin-bottom: 20px;">Enter power values and generate TypeScript for the data files</p>
+
+    <div class="section import-section">
+      <h2>Import Existing Power</h2>
+      <div class="row">
+        <div class="field full">
+          <label>Paste existing power JSON/TypeScript to edit</label>
+          <textarea id="importData" placeholder="Paste power data here..."></textarea>
+        </div>
+      </div>
+      <button class="btn-secondary" onclick="importPower()">Import Power Data</button>
+    </div>
 
     <div class="section">
       <h2>Basic Info</h2>
       <div class="row">
         <div class="field wide">
           <label>Power Name</label>
-          <input type="text" id="name" placeholder="e.g., Combat Flight">
+          <input type="text" id="name" placeholder="e.g., Ki Push">
         </div>
+        <div class="field">
+          <label>Internal Name</label>
+          <input type="text" id="internalName" placeholder="e.g., Ki_Push">
+          <div class="hint">Auto-generated from name if empty</div>
+        </div>
+      </div>
+      <div class="row">
         <div class="field">
           <label>Power Type</label>
           <select id="powerType">
             <option value="Click">Click</option>
             <option value="Toggle">Toggle</option>
             <option value="Auto">Auto</option>
+            <option value="Passive">Passive</option>
           </select>
         </div>
         <div class="field">
-          <label>Target Type</label>
-          <select id="targetType">
+          <label>Effect Area</label>
+          <select id="effectArea">
+            <option value="SingleTarget">Single Target</option>
+            <option value="Cone">Cone</option>
+            <option value="Sphere">Sphere (PBAoE)</option>
+            <option value="Location">Location (Targeted AoE)</option>
+            <option value="Chain">Chain</option>
             <option value="Self">Self</option>
-            <option value="Enemy">Enemy</option>
-            <option value="Ally">Ally</option>
-            <option value="Location">Location</option>
-            <option value="None">None</option>
           </select>
         </div>
-      </div>
-      <div class="row">
         <div class="field">
           <label>Available (level - 1)</label>
           <input type="number" id="available" placeholder="e.g., 0 for level 1">
           <div class="hint">0 = level 1, 1 = level 2, etc.</div>
-        </div>
-        <div class="field">
-          <label>Tier</label>
-          <input type="number" id="tier" placeholder="1-9">
         </div>
         <div class="field">
           <label>Max Slots</label>
@@ -156,41 +177,47 @@
       <div class="row">
         <div class="field wide">
           <label>Short Help</label>
-          <input type="text" id="shortHelp" placeholder="e.g., Toggle: Self Fly, +DEF">
+          <input type="text" id="shortHelp" placeholder="e.g., Melee, Light DMG(Smash), Foe Repel, KB">
         </div>
         <div class="field">
           <label>Icon Filename</label>
-          <input type="text" id="icon" placeholder="e.g., power_icon.png">
+          <input type="text" id="icon" placeholder="e.g., martialmanipulation_kipush.png">
+        </div>
+      </div>
+      <div class="row">
+        <div class="field full">
+          <label>Description</label>
+          <textarea id="description" placeholder="Power description text..."></textarea>
         </div>
       </div>
     </div>
 
     <div class="section">
-      <h2>Base Effects</h2>
+      <h2>Power Stats (stats object)</h2>
       <div class="row">
         <div class="field">
-          <label>Endurance Cost</label>
-          <input type="number" id="endurance" step="0.001" placeholder="e.g., 0.2">
-          <div class="hint">Per second for toggles</div>
-        </div>
-        <div class="field">
-          <label>Cast Time (s)</label>
-          <input type="number" id="cast" step="0.01" placeholder="e.g., 1.5">
-        </div>
-        <div class="field">
-          <label>Recharge (s)</label>
-          <input type="number" id="recharge" step="0.1" placeholder="e.g., 120">
+          <label>Accuracy (%)</label>
+          <input type="number" id="accuracy" step="0.1" value="75" placeholder="e.g., 75">
+          <div class="hint">Base to-hit chance (75% = standard)</div>
         </div>
         <div class="field">
           <label>Range (ft)</label>
-          <input type="number" id="range" step="1" placeholder="e.g., 80">
+          <input type="number" id="range" step="1" placeholder="e.g., 7 for melee, 80 for ranged">
+        </div>
+        <div class="field">
+          <label>Recharge (s)</label>
+          <input type="number" id="recharge" step="0.1" placeholder="e.g., 4">
+        </div>
+        <div class="field">
+          <label>Endurance Cost</label>
+          <input type="number" id="endurance" step="0.001" placeholder="e.g., 5.2">
+        </div>
+        <div class="field">
+          <label>Cast Time (s)</label>
+          <input type="number" id="castTime" step="0.01" placeholder="e.g., 0.83">
         </div>
       </div>
       <div class="row">
-        <div class="field">
-          <label>Accuracy</label>
-          <input type="number" id="accuracy" step="0.01" value="1" placeholder="1.0 = 100%">
-        </div>
         <div class="field">
           <label>Radius (ft)</label>
           <input type="number" id="radius" step="1" placeholder="AoE radius">
@@ -199,28 +226,168 @@
           <label>Arc (degrees)</label>
           <input type="number" id="arc" step="1" placeholder="Cone arc">
         </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Allowed Enhancements</h2>
+      <div class="checkbox-row">
+        <label><input type="checkbox" id="enhAccuracy" checked> Accuracy</label>
+        <label><input type="checkbox" id="enhDamage"> Damage</label>
+        <label><input type="checkbox" id="enhRecharge" checked> Recharge</label>
+        <label><input type="checkbox" id="enhEnduranceReduction" checked> Endurance Reduction</label>
+        <label><input type="checkbox" id="enhRange"> Range</label>
+        <label><input type="checkbox" id="enhDefenseDebuff"> Defense Debuff</label>
+        <label><input type="checkbox" id="enhToHitDebuff"> ToHit Debuff</label>
+        <label><input type="checkbox" id="enhHold"> Hold</label>
+        <label><input type="checkbox" id="enhStun"> Stun</label>
+        <label><input type="checkbox" id="enhImmobilize"> Immobilize</label>
+        <label><input type="checkbox" id="enhSleep"> Sleep</label>
+        <label><input type="checkbox" id="enhFear"> Fear</label>
+        <label><input type="checkbox" id="enhConfuse"> Confuse</label>
+        <label><input type="checkbox" id="enhKnockback"> Knockback</label>
+        <label><input type="checkbox" id="enhHeal"> Heal</label>
+        <label><input type="checkbox" id="enhDefense"> Defense</label>
+        <label><input type="checkbox" id="enhResistance"> Resistance</label>
+        <label><input type="checkbox" id="enhEnduranceModification"> Endurance Modification</label>
+        <label><input type="checkbox" id="enhSlow"> Slow</label>
+        <label><input type="checkbox" id="enhFlySpeed"> Fly Speed</label>
+        <label><input type="checkbox" id="enhRunSpeed"> Run Speed</label>
+        <label><input type="checkbox" id="enhJumpSpeed"> Jump Speed</label>
+        <label><input type="checkbox" id="enhTaunt"> Taunt</label>
+        <label><input type="checkbox" id="enhToHitBuff"> ToHit Buff</label>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Allowed Set Categories</h2>
+      <div class="checkbox-row">
+        <label><input type="checkbox" id="setMeleeDamage"> Melee Damage</label>
+        <label><input type="checkbox" id="setRangedDamage"> Ranged Damage</label>
+        <label><input type="checkbox" id="setUniversalDamageSets"> Universal Damage Sets</label>
+        <label><input type="checkbox" id="setBlasterArchetypeSets"> Blaster Archetype Sets</label>
+        <label><input type="checkbox" id="setKnockback"> Knockback</label>
+        <label><input type="checkbox" id="setDefenseDebuff"> Defense Debuff</label>
+        <label><input type="checkbox" id="setAccurateDefenseDebuff"> Accurate Defense Debuff</label>
+        <label><input type="checkbox" id="setToHitDebuff"> ToHit Debuff</label>
+        <label><input type="checkbox" id="setAccurateToHitDebuff"> Accurate ToHit Debuff</label>
+        <label><input type="checkbox" id="setHold"> Hold</label>
+        <label><input type="checkbox" id="setStun"> Stun</label>
+        <label><input type="checkbox" id="setImmobilize"> Immobilize</label>
+        <label><input type="checkbox" id="setSleep"> Sleep</label>
+        <label><input type="checkbox" id="setFear"> Fear</label>
+        <label><input type="checkbox" id="setConfuse"> Confuse</label>
+        <label><input type="checkbox" id="setHealing"> Healing</label>
+        <label><input type="checkbox" id="setDefense"> Defense</label>
+        <label><input type="checkbox" id="setResistance"> Resistance</label>
+        <label><input type="checkbox" id="setEnduranceModification"> Endurance Modification</label>
+        <label><input type="checkbox" id="setSlow"> Slow</label>
+        <label><input type="checkbox" id="setTaunt"> Taunt</label>
+        <label><input type="checkbox" id="setToHitBuff"> ToHit Buff</label>
+        <label><input type="checkbox" id="setPetRecharge"> Pet Recharge</label>
+        <label><input type="checkbox" id="setPetDamage"> Pet Damage</label>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Damage (add multiple for mixed damage types)</h2>
+      <div id="damageList" class="effect-list"></div>
+      <button class="btn-small btn-add" onclick="addDamageEffect()">+ Add Damage</button>
+      <div id="damagePreview" style="margin-top: 15px; padding: 10px; background: #1a3a2a; border-radius: 4px; display: none;">
+        <div style="font-size: 12px; color: #81c784; margin-bottom: 5px;">📊 Calculated Damage (Level 50 Blaster)</div>
+        <div id="damageCalcResult" style="font-family: monospace; color: #fff;"></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Mez / Control Effects</h2>
+      <div id="mezList" class="effect-list"></div>
+      <button class="btn-small btn-add" onclick="addMezEffect()">+ Add Mez Effect</button>
+    </div>
+
+    <div class="section">
+      <h2>Buff Effects (effects object)</h2>
+      <div class="row">
         <div class="field">
-          <label>Duration (s)</label>
-          <input type="number" id="duration" step="0.1" placeholder="Effect duration">
+          <label>Damage Buff (scale)</label>
+          <input type="number" id="damageBuff" step="0.001" placeholder="e.g., 0.055">
+          <div class="hint">Build Up style buff</div>
+        </div>
+        <div class="field">
+          <label>ToHit Buff (scale)</label>
+          <input type="number" id="tohitBuff" step="0.001">
+        </div>
+        <div class="field">
+          <label>Defense Buff (scale)</label>
+          <input type="number" id="defenseBuff" step="0.001">
+        </div>
+        <div class="field">
+          <label>Recharge Buff (scale)</label>
+          <input type="number" id="rechargeBuff" step="0.001">
         </div>
       </div>
       <div class="row">
         <div class="field">
-          <label>Animation Time (s)</label>
-          <input type="number" id="animationTime" step="0.01" placeholder="e.g., 1.0">
-          <div class="hint">Full animation length</div>
+          <label>Recovery Buff (scale)</label>
+          <input type="number" id="recoveryBuff" step="0.001">
+        </div>
+        <div class="field">
+          <label>Regen Buff (scale)</label>
+          <input type="number" id="regenBuff" step="0.001">
+        </div>
+        <div class="field">
+          <label>Speed Buff (scale)</label>
+          <input type="number" id="speedBuff" step="0.001">
+        </div>
+        <div class="field">
+          <label>Buff Duration (s)</label>
+          <input type="number" id="buffDuration" step="0.1" placeholder="Effect duration">
+        </div>
+      </div>
+    </div>
+
+    <div class="section debuff-section">
+      <h2>Debuff Effects</h2>
+      <div class="row">
+        <div class="field">
+          <label>ToHit Debuff (scale)</label>
+          <input type="number" id="tohitDebuff" step="0.001">
+        </div>
+        <div class="field">
+          <label>Defense Debuff (scale)</label>
+          <input type="number" id="defenseDebuff" step="0.001">
+        </div>
+        <div class="field">
+          <label>Resistance Debuff (scale)</label>
+          <input type="number" id="resistanceDebuff" step="0.001">
+        </div>
+        <div class="field">
+          <label>Damage Debuff (scale)</label>
+          <input type="number" id="damageDebuff" step="0.001">
+        </div>
+      </div>
+      <div class="row">
+        <div class="field">
+          <label>Regen Debuff (scale)</label>
+          <input type="number" id="regenDebuff" step="0.001">
+        </div>
+        <div class="field">
+          <label>Recovery Debuff (scale)</label>
+          <input type="number" id="recoveryDebuff" step="0.001">
+        </div>
+        <div class="field">
+          <label>Recharge Debuff (scale)</label>
+          <input type="number" id="rechargeDebuff" step="0.001">
+        </div>
+        <div class="field">
+          <label>Slow (scale)</label>
+          <input type="number" id="slow" step="0.001">
         </div>
       </div>
     </div>
 
     <div class="section">
-      <h2>Damage (add multiple for mixed damage types or DoT)</h2>
-      <div id="damageList" class="effect-list"></div>
-      <button class="btn-small btn-add" onclick="addDamageEffect()">+ Add Damage</button>
-    </div>
-
-    <div class="section">
-      <h2>Defense (enter as decimal, e.g., 0.0188 = 1.88%)</h2>
+      <h2>Defense (by type - enter as decimal, e.g., 0.0188 = 1.88%)</h2>
       <div class="defense-grid">
         <div class="field">
           <label>All</label>
@@ -270,7 +437,7 @@
     </div>
 
     <div class="section">
-      <h2>Resistance (enter as decimal, e.g., 0.15 = 15%)</h2>
+      <h2>Resistance (by type - enter as decimal, e.g., 0.15 = 15%)</h2>
       <div class="resistance-grid">
         <div class="field">
           <label>All</label>
@@ -319,193 +486,30 @@
           <input type="number" id="heal" step="0.001">
         </div>
         <div class="field">
-          <label>Max Health %</label>
-          <input type="number" id="maxHealth" step="0.001" placeholder="e.g., 0.1 = 10%">
+          <label>Heal Table</label>
+          <select id="healTable">
+            <option value="">-- Select --</option>
+            <option value="Ranged_Heal">Ranged_Heal</option>
+            <option value="Melee_Heal">Melee_Heal</option>
+          </select>
         </div>
         <div class="field">
-          <label>Recovery %</label>
-          <input type="number" id="recovery" step="0.001">
-        </div>
-        <div class="field">
-          <label>Regen %</label>
-          <input type="number" id="regen" step="0.001">
+          <label>Effect Duration (s)</label>
+          <input type="number" id="effectDuration" step="0.1">
+          <div class="hint">Duration for mez/debuff effects</div>
         </div>
       </div>
-      <div class="row">
-        <div class="field">
-          <label>Run Speed %</label>
-          <input type="number" id="runSpeed" step="0.01" placeholder="e.g., 0.5 = 50%">
-        </div>
-        <div class="field">
-          <label>Jump Height %</label>
-          <input type="number" id="jumpHeight" step="0.01">
-        </div>
-        <div class="field">
-          <label>Fly Speed %</label>
-          <input type="number" id="flySpeed" step="0.01" placeholder="e.g., 4.0 = 400%">
-        </div>
-        <div class="field">
-          <label>ToHit Buff %</label>
-          <input type="number" id="toHit" step="0.001">
-        </div>
-      </div>
-      <div class="row">
-        <div class="field">
-          <label>Stealth (ft)</label>
-          <input type="number" id="stealth" step="1">
-        </div>
-        <div class="field">
-          <label>Perception (ft)</label>
-          <input type="number" id="perception" step="1">
-        </div>
-        <div class="field">
-          <label>Threat Level</label>
-          <input type="number" id="threatLevel" step="0.1">
-        </div>
-      </div>
-    </div>
-
-    <div class="section debuff-section">
-      <h2>Debuffs (enter as positive decimal, will be applied as negative)</h2>
-      <div class="row">
-        <div class="field">
-          <label>ToHit Debuff %</label>
-          <input type="number" id="toHitDebuff" step="0.001" placeholder="e.g., 0.05 = -5%">
-        </div>
-        <div class="field">
-          <label>Damage Debuff %</label>
-          <input type="number" id="damageDebuff" step="0.001">
-        </div>
-        <div class="field">
-          <label>Recharge Debuff % (Slow)</label>
-          <input type="number" id="rechargeDebuff" step="0.001">
-        </div>
-        <div class="field">
-          <label>Debuff Duration (s)</label>
-          <input type="number" id="debuffDuration" step="0.1">
-        </div>
-      </div>
-      <div class="row">
-        <div class="field">
-          <label>Run Speed Debuff %</label>
-          <input type="number" id="runSpeedDebuff" step="0.01">
-        </div>
-        <div class="field">
-          <label>Fly Speed Debuff %</label>
-          <input type="number" id="flySpeedDebuff" step="0.01">
-        </div>
-        <div class="field">
-          <label>Jump Debuff %</label>
-          <input type="number" id="jumpDebuff" step="0.01">
-        </div>
-        <div class="field">
-          <label>Regen Debuff %</label>
-          <input type="number" id="regenDebuff" step="0.001">
-        </div>
-      </div>
-      <h3 style="color: #ef9a9a; font-size: 0.95em; margin: 15px 0 10px;">Defense Debuff</h3>
-      <div class="defense-grid">
-        <div class="field">
-          <label>All</label>
-          <input type="number" id="defDebuffAll" step="0.0001">
-        </div>
-        <div class="field">
-          <label>Melee</label>
-          <input type="number" id="defDebuffMelee" step="0.0001">
-        </div>
-        <div class="field">
-          <label>Ranged</label>
-          <input type="number" id="defDebuffRanged" step="0.0001">
-        </div>
-        <div class="field">
-          <label>AoE</label>
-          <input type="number" id="defDebuffAoE" step="0.0001">
-        </div>
-        <div class="field">
-          <label>Smashing</label>
-          <input type="number" id="defDebuffSmashing" step="0.0001">
-        </div>
-        <div class="field">
-          <label>Lethal</label>
-          <input type="number" id="defDebuffLethal" step="0.0001">
-        </div>
-        <div class="field">
-          <label>Fire</label>
-          <input type="number" id="defDebuffFire" step="0.0001">
-        </div>
-        <div class="field">
-          <label>Cold</label>
-          <input type="number" id="defDebuffCold" step="0.0001">
-        </div>
-        <div class="field">
-          <label>Energy</label>
-          <input type="number" id="defDebuffEnergy" step="0.0001">
-        </div>
-        <div class="field">
-          <label>Negative</label>
-          <input type="number" id="defDebuffNegative" step="0.0001">
-        </div>
-        <div class="field">
-          <label>Psionic</label>
-          <input type="number" id="defDebuffPsionic" step="0.0001">
-        </div>
-      </div>
-      <h3 style="color: #ef9a9a; font-size: 0.95em; margin: 15px 0 10px;">Resistance Debuff</h3>
-      <div class="resistance-grid">
-        <div class="field">
-          <label>All</label>
-          <input type="number" id="resDebuffAll" step="0.001">
-        </div>
-        <div class="field">
-          <label>Smashing</label>
-          <input type="number" id="resDebuffSmashing" step="0.001">
-        </div>
-        <div class="field">
-          <label>Lethal</label>
-          <input type="number" id="resDebuffLethal" step="0.001">
-        </div>
-        <div class="field">
-          <label>Fire</label>
-          <input type="number" id="resDebuffFire" step="0.001">
-        </div>
-        <div class="field">
-          <label>Cold</label>
-          <input type="number" id="resDebuffCold" step="0.001">
-        </div>
-        <div class="field">
-          <label>Energy</label>
-          <input type="number" id="resDebuffEnergy" step="0.001">
-        </div>
-        <div class="field">
-          <label>Negative</label>
-          <input type="number" id="resDebuffNegative" step="0.001">
-        </div>
-        <div class="field">
-          <label>Psionic</label>
-          <input type="number" id="resDebuffPsionic" step="0.001">
-        </div>
-        <div class="field">
-          <label>Toxic</label>
-          <input type="number" id="resDebuffToxic" step="0.001">
-        </div>
-      </div>
-    </div>
-
-    <div class="section">
-      <h2>Mez Effects (add multiple)</h2>
-      <div id="mezList" class="effect-list"></div>
-      <button class="btn-small btn-add" onclick="addMezEffect()">+ Add Mez Effect</button>
     </div>
 
     <div class="actions">
-      <button class="btn-primary" onclick="generateJSON()">Generate JSON</button>
+      <button class="btn-primary" onclick="generateTypeScript()">Generate TypeScript</button>
       <button class="btn-secondary" onclick="generateEffectsOnly()">Effects Only</button>
       <button class="btn-secondary" onclick="clearForm()">Clear Form</button>
     </div>
 
     <div class="output-section">
       <h2>Output</h2>
-      <div id="output">// JSON will appear here</div>
+      <div id="output">// TypeScript will appear here</div>
       <div class="actions">
         <button class="btn-copy" onclick="copyOutput()">Copy to Clipboard</button>
       </div>
@@ -518,6 +522,118 @@
     let mezCount = 0;
     let damageCount = 0;
 
+    // Level 50 damage table values (index 49) for Blaster
+    // Values are negative in source, we use absolute value
+    const DAMAGE_TABLES = {
+      'Melee_Damage': 55.6117,   // Blaster melee at level 50
+      'Ranged_Damage': 62.5631,  // Blaster ranged at level 50
+    };
+
+    // Calculate and display damage preview
+    function updateDamagePreview() {
+      const damageList = document.getElementById('damageList');
+      const items = damageList.querySelectorAll('.effect-item');
+      const preview = document.getElementById('damagePreview');
+      const result = document.getElementById('damageCalcResult');
+
+      if (items.length === 0) {
+        preview.style.display = 'none';
+        return;
+      }
+
+      let total = 0;
+      let breakdown = [];
+
+      items.forEach(item => {
+        const id = item.id.replace('damage-', '');
+        const type = document.getElementById('damageType-' + id)?.value;
+        const scale = parseFloat(document.getElementById('damageScale-' + id)?.value) || 0;
+        const table = document.getElementById('damageTable-' + id)?.value;
+        const duration = parseFloat(document.getElementById('damageDuration-' + id)?.value) || 0;
+        const tickRate = parseFloat(document.getElementById('damageTickRate-' + id)?.value) || 0;
+
+        if (type && scale > 0 && table) {
+          const tableValue = DAMAGE_TABLES[table] || 55.6;
+          let damage = scale * tableValue;
+
+          if (duration > 0 && tickRate > 0) {
+            // DoT: total damage over duration
+            const ticks = Math.floor(duration / tickRate);
+            const totalDoT = damage * ticks;
+            breakdown.push(`${type}: ${damage.toFixed(2)}/tick × ${ticks} ticks = ${totalDoT.toFixed(2)} (DoT over ${duration}s)`);
+            total += totalDoT;
+          } else {
+            breakdown.push(`${type}: ${scale} × ${tableValue.toFixed(2)} = ${damage.toFixed(2)}`);
+            total += damage;
+          }
+        }
+      });
+
+      if (breakdown.length > 0) {
+        preview.style.display = 'block';
+        result.innerHTML = breakdown.join('<br>') +
+          (breakdown.length > 1 ? `<br><strong>Total: ${total.toFixed(2)}</strong>` : '');
+      } else {
+        preview.style.display = 'none';
+      }
+    }
+
+    // Enhancement type mappings
+    const enhancementTypes = {
+      'enhAccuracy': 'Accuracy',
+      'enhDamage': 'Damage',
+      'enhRecharge': 'Recharge',
+      'enhEnduranceReduction': 'EnduranceReduction',
+      'enhRange': 'Range',
+      'enhDefenseDebuff': 'Defense Debuff',
+      'enhToHitDebuff': 'ToHit Debuff',
+      'enhHold': 'Hold',
+      'enhStun': 'Stun',
+      'enhImmobilize': 'Immobilize',
+      'enhSleep': 'Sleep',
+      'enhFear': 'Fear',
+      'enhConfuse': 'Confuse',
+      'enhKnockback': 'Knockback',
+      'enhHeal': 'Heal',
+      'enhDefense': 'Defense',
+      'enhResistance': 'Resistance',
+      'enhEnduranceModification': 'Endurance Modification',
+      'enhSlow': 'Slow',
+      'enhFlySpeed': 'Fly Speed',
+      'enhRunSpeed': 'Run Speed',
+      'enhJumpSpeed': 'Jump Speed',
+      'enhTaunt': 'Taunt',
+      'enhToHitBuff': 'ToHit Buff'
+    };
+
+    // Set category mappings
+    const setCategories = {
+      'setMeleeDamage': 'Melee Damage',
+      'setRangedDamage': 'Ranged Damage',
+      'setUniversalDamageSets': 'Universal Damage Sets',
+      'setBlasterArchetypeSets': 'Blaster Archetype Sets',
+      'setKnockback': 'Knockback',
+      'setDefenseDebuff': 'Defense Debuff',
+      'setAccurateDefenseDebuff': 'Accurate Defense Debuff',
+      'setToHitDebuff': 'ToHit Debuff',
+      'setAccurateToHitDebuff': 'Accurate ToHit Debuff',
+      'setHold': 'Hold',
+      'setStun': 'Stun',
+      'setImmobilize': 'Immobilize',
+      'setSleep': 'Sleep',
+      'setFear': 'Fear',
+      'setConfuse': 'Confuse',
+      'setHealing': 'Healing',
+      'setDefense': 'Defense',
+      'setResistance': 'Resistance',
+      'setEnduranceModification': 'Endurance Modification',
+      'setSlow': 'Slow',
+      'setTaunt': 'Taunt',
+      'setToHitBuff': 'ToHit Buff',
+      'setPetRecharge': 'Pet Recharge',
+      'setPetDamage': 'Pet Damage'
+    };
+
     function getValue(id) {
       const el = document.getElementById(id);
       if (!el) return null;
@@ -525,6 +641,32 @@
       if (val === '') return null;
       if (el.type === 'number') return parseFloat(val);
       return val;
+    }
+
+    function getCheckedValues(mapping) {
+      const values = [];
+      for (const [id, name] of Object.entries(mapping)) {
+        const el = document.getElementById(id);
+        if (el && el.checked) values.push(name);
+      }
+      return values;
+    }
+
+    function buildStats() {
+      const stats = {};
+      const fields = ['accuracy', 'range', 'recharge', 'endurance', 'castTime', 'radius', 'arc'];
+      fields.forEach(f => {
+        const val = getValue(f);
+        if (val !== null) {
+          // Convert accuracy from percentage to multiplier (75% = 1.0)
+          if (f === 'accuracy') {
+            stats[f] = val / 75;
+          } else {
+            stats[f] = val;
+          }
+        }
+      });
+      return Object.keys(stats).length > 0 ? stats : null;
     }
 
     function buildDefense() {
@@ -547,52 +689,6 @@
       return Object.keys(res).length > 0 ? res : null;
     }
 
-    function buildDefenseDebuff() {
-      const def = {};
-      const types = ['All', 'Melee', 'Ranged', 'AoE', 'Smashing', 'Lethal', 'Fire', 'Cold', 'Energy', 'Negative', 'Psionic'];
-      types.forEach(t => {
-        const val = getValue('defDebuff' + t);
-        if (val !== null) def[t.toLowerCase()] = val;
-      });
-      return Object.keys(def).length > 0 ? def : null;
-    }
-
-    function buildResistanceDebuff() {
-      const res = {};
-      const types = ['All', 'Smashing', 'Lethal', 'Fire', 'Cold', 'Energy', 'Negative', 'Psionic', 'Toxic'];
-      types.forEach(t => {
-        const val = getValue('resDebuff' + t);
-        if (val !== null) res[t.toLowerCase()] = val;
-      });
-      return Object.keys(res).length > 0 ? res : null;
-    }
-
-    function buildDebuffs() {
-      const debuffs = {};
-
-      // Simple debuffs
-      const debuffFields = ['toHitDebuff', 'damageDebuff', 'rechargeDebuff', 'runSpeedDebuff', 'flySpeedDebuff', 'jumpDebuff', 'regenDebuff'];
-      const debuffKeys = ['toHit', 'damage', 'recharge', 'runSpeed', 'flySpeed', 'jump', 'regen'];
-      debuffFields.forEach((f, i) => {
-        const val = getValue(f);
-        if (val !== null) debuffs[debuffKeys[i]] = val;
-      });
-
-      // Duration
-      const duration = getValue('debuffDuration');
-      if (duration !== null) debuffs.duration = duration;
-
-      // Defense debuff
-      const defDebuff = buildDefenseDebuff();
-      if (defDebuff) debuffs.defense = defDebuff;
-
-      // Resistance debuff
-      const resDebuff = buildResistanceDebuff();
-      if (resDebuff) debuffs.resistance = resDebuff;
-
-      return Object.keys(debuffs).length > 0 ? debuffs : null;
-    }
-
     function addDamageEffect() {
       const damageList = document.getElementById('damageList');
       const id = damageCount++;
@@ -602,7 +698,7 @@
       div.innerHTML = `
         <div class="field">
           <label>Type</label>
-          <select id="damageType-${id}">
+          <select id="damageType-${id}" onchange="updateDamagePreview()">
             <option value="Smashing">Smashing</option>
             <option value="Lethal">Lethal</option>
             <option value="Fire">Fire</option>
@@ -615,26 +711,33 @@
         </div>
         <div class="field">
           <label>Scale</label>
-          <input type="number" id="damageScale-${id}" step="0.001" placeholder="1.0">
+          <input type="number" id="damageScale-${id}" step="0.001" placeholder="1.0" oninput="updateDamagePreview()">
         </div>
         <div class="field">
-          <label>Duration (s)</label>
-          <input type="number" id="damageDuration-${id}" step="0.1" placeholder="DoT duration">
-          <div class="hint">Leave empty for instant</div>
+          <label>Table</label>
+          <select id="damageTable-${id}" onchange="updateDamagePreview()">
+            <option value="Melee_Damage">Melee_Damage</option>
+            <option value="Ranged_Damage">Ranged_Damage</option>
+          </select>
         </div>
         <div class="field">
-          <label>Ticks</label>
-          <input type="number" id="damageTicks-${id}" step="1" placeholder="# of ticks">
-          <div class="hint">For DoT only</div>
+          <label>Duration (DoT)</label>
+          <input type="number" id="damageDuration-${id}" step="0.1" placeholder="Leave empty for instant" oninput="updateDamagePreview()">
+        </div>
+        <div class="field">
+          <label>Tick Rate (DoT)</label>
+          <input type="number" id="damageTickRate-${id}" step="0.1" placeholder="e.g., 0.5" oninput="updateDamagePreview()">
         </div>
         <button class="btn-small btn-danger" onclick="removeDamageEffect(${id})">×</button>
       `;
       damageList.appendChild(div);
+      updateDamagePreview();
     }
 
     function removeDamageEffect(id) {
       const el = document.getElementById('damage-' + id);
       if (el) el.remove();
+      updateDamagePreview();
     }
 
     function buildDamageEffects() {
@@ -646,13 +749,14 @@
         const id = item.id.replace('damage-', '');
         const type = document.getElementById('damageType-' + id)?.value;
         const scale = getValue('damageScale-' + id);
+        const table = document.getElementById('damageTable-' + id)?.value;
         const duration = getValue('damageDuration-' + id);
-        const ticks = getValue('damageTicks-' + id);
+        const tickRate = getValue('damageTickRate-' + id);
 
         if (type && scale !== null) {
-          const dmg = { type, scale };
+          const dmg = { type, scale, table };
           if (duration !== null) dmg.duration = duration;
-          if (ticks !== null) dmg.ticks = ticks;
+          if (tickRate !== null) dmg.tickRate = tickRate;
           damageEffects.push(dmg);
         }
       });
@@ -670,34 +774,36 @@
         <div class="field">
           <label>Type</label>
           <select id="mezType-${id}">
-            <option value="Hold">Hold</option>
-            <option value="Stun">Stun</option>
-            <option value="Sleep">Sleep</option>
-            <option value="Immobilize">Immobilize</option>
-            <option value="Confuse">Confuse</option>
-            <option value="Fear">Fear</option>
-            <option value="Terrorize">Terrorize</option>
-            <option value="Knockback">Knockback</option>
-            <option value="Knockdown">Knockdown</option>
-            <option value="Knockup">Knockup</option>
-            <option value="Repel">Repel</option>
-            <option value="Taunt">Taunt</option>
-            <option value="Placate">Placate</option>
-            <option value="Intangible">Intangible</option>
+            <option value="hold">Hold</option>
+            <option value="stun">Stun</option>
+            <option value="sleep">Sleep</option>
+            <option value="immobilize">Immobilize</option>
+            <option value="confuse">Confuse</option>
+            <option value="fear">Fear</option>
+            <option value="knockback">Knockback</option>
+            <option value="knockup">Knockup</option>
+            <option value="repel">Repel</option>
+            <option value="taunt">Taunt</option>
+            <option value="placate">Placate</option>
           </select>
         </div>
         <div class="field">
-          <label>Mag</label>
-          <input type="number" id="mezMag-${id}" step="0.1" placeholder="3">
+          <label>Magnitude</label>
+          <input type="number" id="mezMag-${id}" step="0.1" placeholder="e.g., 3">
+          <div class="hint">Strength (Mag 3 = affects minions)</div>
         </div>
         <div class="field">
-          <label>Duration (s)</label>
-          <input type="number" id="mezDuration-${id}" step="0.1" placeholder="8">
+          <label>Duration Scale</label>
+          <input type="number" id="mezScale-${id}" step="0.001" placeholder="For duration calc">
+          <div class="hint">Used with table to calc duration</div>
         </div>
         <div class="field">
-          <label>Chance %</label>
-          <input type="number" id="mezChance-${id}" step="0.01" placeholder="1.0 = 100%">
-          <div class="hint">Leave empty for 100%</div>
+          <label>Duration Table</label>
+          <select id="mezTable-${id}">
+            <option value="">-- None (use effectDuration) --</option>
+            <option value="Melee_Ones">Melee_Ones</option>
+            <option value="Ranged_Ones">Ranged_Ones</option>
+          </select>
         </div>
         <button class="btn-small btn-danger" onclick="removeMezEffect(${id})">×</button>
       `;
@@ -712,43 +818,75 @@
     function buildMezEffects() {
       const mezList = document.getElementById('mezList');
       const items = mezList.querySelectorAll('.effect-item');
-      const mezEffects = [];
+      const mezEffects = {};
 
       items.forEach(item => {
         const id = item.id.replace('mez-', '');
         const type = document.getElementById('mezType-' + id)?.value;
         const mag = getValue('mezMag-' + id);
-        const duration = getValue('mezDuration-' + id);
-        const chance = getValue('mezChance-' + id);
+        const scale = getValue('mezScale-' + id);
+        const table = document.getElementById('mezTable-' + id)?.value;
 
         if (type) {
-          const mez = { type };
+          const mez = {};
           if (mag !== null) mez.mag = mag;
-          if (duration !== null) mez.duration = duration;
-          if (chance !== null && chance !== 1) mez.chance = chance;
-          mezEffects.push(mez);
+          if (scale !== null) mez.scale = scale;
+          if (table) mez.table = table;
+
+          // Only add if we have something
+          if (Object.keys(mez).length > 0) {
+            mezEffects[type] = mez;
+          }
         }
       });
 
-      return mezEffects.length > 0 ? mezEffects : null;
+      return Object.keys(mezEffects).length > 0 ? mezEffects : null;
     }
 
     function buildEffects() {
       const effects = {};
 
-      // Base effects
-      const baseFields = ['accuracy', 'range', 'recharge', 'endurance', 'cast', 'radius', 'arc', 'duration', 'animationTime'];
-      baseFields.forEach(f => {
-        const val = getValue(f);
-        if (val !== null) effects[f] = val;
-      });
-
-      // Damage (multiple)
-      const damageEffects = buildDamageEffects();
-      if (damageEffects) {
-        // If only one damage effect, use single object for backward compatibility
-        effects.damage = damageEffects.length === 1 ? damageEffects[0] : damageEffects;
+      // Buff effects
+      const buffFields = {
+        'damageBuff': 'damageBuff',
+        'tohitBuff': 'tohitBuff',
+        'defenseBuff': 'defenseBuff',
+        'rechargeBuff': 'rechargeBuff',
+        'recoveryBuff': 'recoveryBuff',
+        'regenBuff': 'regenBuff',
+        'speedBuff': 'speedBuff'
+      };
+      for (const [id, key] of Object.entries(buffFields)) {
+        const val = getValue(id);
+        if (val !== null) {
+          effects[key] = { scale: val, table: 'Melee_Ones' };
+        }
       }
+
+      // Debuff effects
+      const debuffFields = {
+        'tohitDebuff': 'tohitDebuff',
+        'defenseDebuff': 'defenseDebuff',
+        'resistanceDebuff': 'resistanceDebuff',
+        'damageDebuff': 'damageDebuff',
+        'regenDebuff': 'regenDebuff',
+        'recoveryDebuff': 'recoveryDebuff',
+        'rechargeDebuff': 'rechargeDebuff',
+        'slow': 'slow'
+      };
+      for (const [id, key] of Object.entries(debuffFields)) {
+        const val = getValue(id);
+        if (val !== null) {
+          effects[key] = { scale: val, table: 'Melee_Ones' };
+        }
+      }
+
+      // Duration
+      const buffDuration = getValue('buffDuration');
+      if (buffDuration !== null) effects.buffDuration = buffDuration;
+
+      const effectDuration = getValue('effectDuration');
+      if (effectDuration !== null) effects.effectDuration = effectDuration;
 
       // Defense
       const defense = buildDefense();
@@ -758,41 +896,41 @@
       const resistance = buildResistance();
       if (resistance) effects.resistance = resistance;
 
-      // Other effects
-      const otherFields = ['heal', 'maxHealth', 'recovery', 'regen', 'runSpeed', 'jumpHeight', 'flySpeed', 'toHit', 'stealth', 'perception', 'threatLevel'];
-      otherFields.forEach(f => {
-        const val = getValue(f);
-        if (val !== null) effects[f] = val;
-      });
-
-      // Debuffs
-      const debuffs = buildDebuffs();
-      if (debuffs) effects.debuffs = debuffs;
-
-      // Mez (multiple)
-      const mezEffects = buildMezEffects();
-      if (mezEffects) {
-        // If only one mez effect, use single object for backward compatibility
-        effects.mez = mezEffects.length === 1 ? mezEffects[0] : mezEffects;
+      // Heal
+      const heal = getValue('heal');
+      const healTable = getValue('healTable');
+      if (heal !== null) {
+        effects.healing = { scale: heal };
+        if (healTable) effects.healing.table = healTable;
       }
 
-      return effects;
+      // Mez effects (individual properties)
+      const mezEffects = buildMezEffects();
+      if (mezEffects) {
+        Object.assign(effects, mezEffects);
+      }
+
+      return Object.keys(effects).length > 0 ? effects : null;
     }
 
     function buildPower() {
       const power = {};
 
+      // Basic info
       const name = getValue('name');
       if (name) power.name = name;
+
+      let internalName = getValue('internalName');
+      if (!internalName && name) {
+        internalName = name.replace(/[^a-zA-Z0-9]/g, '_').replace(/_+/g, '_');
+      }
+      if (internalName) power.internalName = internalName;
 
       const available = getValue('available');
       if (available !== null) power.available = available;
 
-      const tier = getValue('tier');
-      if (tier !== null) power.tier = tier;
-
-      const maxSlots = getValue('maxSlots');
-      if (maxSlots !== null) power.maxSlots = maxSlots;
+      const description = getValue('description');
+      if (description) power.description = description;
 
       const shortHelp = getValue('shortHelp');
       if (shortHelp) power.shortHelp = shortHelp;
@@ -803,42 +941,206 @@
       const powerType = getValue('powerType');
       if (powerType) power.powerType = powerType;
 
-      const targetType = getValue('targetType');
-      if (targetType) power.targetType = targetType;
+      const effectArea = getValue('effectArea');
+      if (effectArea) power.effectArea = effectArea;
 
-      power.effects = buildEffects();
+      // Stats
+      const stats = buildStats();
+      if (stats) power.stats = stats;
+
+      // Allowed enhancements
+      const allowedEnhancements = getCheckedValues(enhancementTypes);
+      if (allowedEnhancements.length > 0) power.allowedEnhancements = allowedEnhancements;
+
+      // Allowed set categories
+      const allowedSetCategories = getCheckedValues(setCategories);
+      if (allowedSetCategories.length > 0) power.allowedSetCategories = allowedSetCategories;
+
+      const maxSlots = getValue('maxSlots');
+      if (maxSlots !== null) power.maxSlots = maxSlots;
+
+      // Damage
+      const damageEffects = buildDamageEffects();
+      if (damageEffects) {
+        power.damage = damageEffects.length === 1 ? damageEffects[0] : damageEffects;
+      }
+
+      // Effects
+      const effects = buildEffects();
+      if (effects) power.effects = effects;
 
       return power;
     }
 
-    function generateJSON() {
+    function toTsName(name) {
+      return name.replace(/[^a-zA-Z0-9]/g, '').replace(/^[0-9]/, '_$&');
+    }
+
+    function generateTypeScript() {
       const power = buildPower();
-      const output = JSON.stringify(power, null, 2);
+      const tsName = toTsName(power.name || 'PowerName');
+
+      let output = `/**\n * ${power.name || 'Power Name'}\n`;
+      if (power.shortHelp) output += ` * ${power.shortHelp}\n`;
+      output += ` */\n\n`;
+      output += `import type { Power } from '@/types';\n\n`;
+      output += `export const ${tsName}: Power = ${JSON.stringify(power, null, 2)};\n`;
+
       document.getElementById('output').textContent = output;
     }
 
     function generateEffectsOnly() {
       const effects = buildEffects();
-      const output = JSON.stringify(effects, null, 2);
-      document.getElementById('output').textContent = '"effects": ' + output;
+      const output = `"effects": ${JSON.stringify(effects, null, 2)}`;
+      document.getElementById('output').textContent = output;
     }
 
     function clearForm() {
-      document.querySelectorAll('input, select').forEach(el => {
-        if (el.type === 'number') {
-          el.value = el.id === 'accuracy' ? '1' : '';
-        } else if (el.tagName === 'SELECT') {
-          el.selectedIndex = 0;
+      document.querySelectorAll('input[type="text"], input[type="number"], textarea').forEach(el => {
+        if (el.id === 'accuracy') {
+          el.value = '75';
+        } else if (el.id === 'maxSlots') {
+          el.value = '6';
         } else {
           el.value = '';
         }
       });
-      // Clear damage and mez effects lists
+      document.querySelectorAll('select').forEach(el => {
+        el.selectedIndex = 0;
+      });
+      document.querySelectorAll('input[type="checkbox"]').forEach(el => {
+        el.checked = ['enhAccuracy', 'enhRecharge', 'enhEnduranceReduction'].includes(el.id);
+      });
       document.getElementById('damageList').innerHTML = '';
       document.getElementById('mezList').innerHTML = '';
       damageCount = 0;
       mezCount = 0;
-      document.getElementById('output').textContent = '// JSON will appear here';
+      document.getElementById('output').textContent = '// TypeScript will appear here';
+    }
+
+    function importPower() {
+      const importData = document.getElementById('importData').value.trim();
+      if (!importData) return;
+
+      try {
+        // Try to extract JSON from TypeScript export
+        let jsonStr = importData;
+        const match = importData.match(/:\s*Power\s*=\s*(\{[\s\S]*\});?\s*$/);
+        if (match) {
+          jsonStr = match[1];
+        }
+
+        const power = JSON.parse(jsonStr);
+
+        // Populate basic fields
+        if (power.name) document.getElementById('name').value = power.name;
+        if (power.internalName) document.getElementById('internalName').value = power.internalName;
+        if (power.available !== undefined) document.getElementById('available').value = power.available;
+        if (power.description) document.getElementById('description').value = power.description;
+        if (power.shortHelp) document.getElementById('shortHelp').value = power.shortHelp;
+        if (power.icon) document.getElementById('icon').value = power.icon;
+        if (power.powerType) document.getElementById('powerType').value = power.powerType;
+        if (power.effectArea) document.getElementById('effectArea').value = power.effectArea;
+        if (power.maxSlots) document.getElementById('maxSlots').value = power.maxSlots;
+
+        // Stats
+        if (power.stats) {
+          // Convert accuracy multiplier to percentage (1.0 = 75%)
+          if (power.stats.accuracy) document.getElementById('accuracy').value = power.stats.accuracy * 75;
+          if (power.stats.range) document.getElementById('range').value = power.stats.range;
+          if (power.stats.recharge) document.getElementById('recharge').value = power.stats.recharge;
+          if (power.stats.endurance) document.getElementById('endurance').value = power.stats.endurance;
+          if (power.stats.castTime) document.getElementById('castTime').value = power.stats.castTime;
+          if (power.stats.radius) document.getElementById('radius').value = power.stats.radius;
+          if (power.stats.arc) document.getElementById('arc').value = power.stats.arc;
+        }
+
+        // Allowed enhancements
+        if (power.allowedEnhancements) {
+          document.querySelectorAll('[id^="enh"]').forEach(el => el.checked = false);
+          const reverseEnhMap = {};
+          for (const [id, name] of Object.entries(enhancementTypes)) {
+            reverseEnhMap[name] = id;
+          }
+          power.allowedEnhancements.forEach(enh => {
+            const id = reverseEnhMap[enh];
+            if (id) document.getElementById(id).checked = true;
+          });
+        }
+
+        // Allowed set categories
+        if (power.allowedSetCategories) {
+          document.querySelectorAll('[id^="set"]').forEach(el => el.checked = false);
+          const reverseSetMap = {};
+          for (const [id, name] of Object.entries(setCategories)) {
+            reverseSetMap[name] = id;
+          }
+          power.allowedSetCategories.forEach(cat => {
+            const id = reverseSetMap[cat];
+            if (id) document.getElementById(id).checked = true;
+          });
+        }
+
+        // Damage
+        document.getElementById('damageList').innerHTML = '';
+        damageCount = 0;
+        if (power.damage) {
+          const damages = Array.isArray(power.damage) ? power.damage : [power.damage];
+          damages.forEach(dmg => {
+            addDamageEffect();
+            const id = damageCount - 1;
+            if (dmg.type) document.getElementById('damageType-' + id).value = dmg.type;
+            if (dmg.scale) document.getElementById('damageScale-' + id).value = dmg.scale;
+            if (dmg.table) document.getElementById('damageTable-' + id).value = dmg.table;
+            if (dmg.duration) document.getElementById('damageDuration-' + id).value = dmg.duration;
+            if (dmg.tickRate) document.getElementById('damageTickRate-' + id).value = dmg.tickRate;
+          });
+          updateDamagePreview();  // Update after all values are set
+        }
+
+        // Effects - mez
+        document.getElementById('mezList').innerHTML = '';
+        mezCount = 0;
+        if (power.effects) {
+          const mezTypes = ['hold', 'stun', 'sleep', 'immobilize', 'confuse', 'fear', 'knockback', 'knockup', 'repel', 'taunt', 'placate'];
+          mezTypes.forEach(type => {
+            if (power.effects[type]) {
+              addMezEffect();
+              const id = mezCount - 1;
+              document.getElementById('mezType-' + id).value = type;
+              const mez = power.effects[type];
+              if (mez.mag) document.getElementById('mezMag-' + id).value = mez.mag;
+              if (mez.scale) document.getElementById('mezScale-' + id).value = mez.scale;
+              if (mez.table) document.getElementById('mezTable-' + id).value = mez.table;
+            }
+          });
+
+          // Buff effects
+          if (power.effects.damageBuff?.scale) document.getElementById('damageBuff').value = power.effects.damageBuff.scale;
+          if (power.effects.tohitBuff?.scale) document.getElementById('tohitBuff').value = power.effects.tohitBuff.scale;
+          if (power.effects.defenseBuff?.scale) document.getElementById('defenseBuff').value = power.effects.defenseBuff.scale;
+          if (power.effects.rechargeBuff?.scale) document.getElementById('rechargeBuff').value = power.effects.rechargeBuff.scale;
+          if (power.effects.recoveryBuff?.scale) document.getElementById('recoveryBuff').value = power.effects.recoveryBuff.scale;
+          if (power.effects.regenBuff?.scale) document.getElementById('regenBuff').value = power.effects.regenBuff.scale;
+          if (power.effects.speedBuff?.scale) document.getElementById('speedBuff').value = power.effects.speedBuff.scale;
+          if (power.effects.buffDuration) document.getElementById('buffDuration').value = power.effects.buffDuration;
+
+          // Debuff effects
+          if (power.effects.tohitDebuff?.scale) document.getElementById('tohitDebuff').value = power.effects.tohitDebuff.scale;
+          if (power.effects.defenseDebuff?.scale) document.getElementById('defenseDebuff').value = power.effects.defenseDebuff.scale;
+          if (power.effects.resistanceDebuff?.scale) document.getElementById('resistanceDebuff').value = power.effects.resistanceDebuff.scale;
+          if (power.effects.damageDebuff?.scale) document.getElementById('damageDebuff').value = power.effects.damageDebuff.scale;
+          if (power.effects.regenDebuff?.scale) document.getElementById('regenDebuff').value = power.effects.regenDebuff.scale;
+          if (power.effects.recoveryDebuff?.scale) document.getElementById('recoveryDebuff').value = power.effects.recoveryDebuff.scale;
+          if (power.effects.rechargeDebuff?.scale) document.getElementById('rechargeDebuff').value = power.effects.rechargeDebuff.scale;
+          if (power.effects.slow?.scale) document.getElementById('slow').value = power.effects.slow.scale;
+          if (power.effects.effectDuration) document.getElementById('effectDuration').value = power.effects.effectDuration;
+        }
+
+        alert('Power imported successfully!');
+      } catch (e) {
+        alert('Error importing power: ' + e.message);
+      }
     }
 
     function copyOutput() {

@@ -48,7 +48,15 @@
       "Bash(curl:*)",
       "Bash(netstat:*)",
       "Bash(dir:*)",
-      "Bash(node scripts/convert-epic-powersets.js:*)"
+      "Bash(node scripts/convert-epic-powersets.js:*)",
+      "Bash(node scripts/convert-powerset.js:*)",
+      "Bash(node scripts/convert-powerset.cjs:*)",
+      "Bash(node scripts/extract-at-tables.cjs:*)",
+      "Bash(for dir in blaster_ranged blaster_support brute_defense brute_melee controller_buff controller_control corruptor_buff corruptor_ranged defender_buff defender_ranged dominator_assault dominator_control mastermind_buff mastermind_summon scrapper_defense scrapper_melee sentinel_defense sentinel_ranged stalker_defense stalker_melee tanker_defense tanker_melee)",
+      "Bash(do echo \"=== $dir ===\" ls \"C:/Projects/Raw Data Homecoming/powers/$dir/\")",
+      "Bash(node scripts/convert-all-powersets.cjs:*)",
+      "Bash(node scripts/generate-powerset-index.cjs:*)",
+      "Bash(node scripts/convert-epic-powersets-to-modular.cjs:*)"
     ]
   }
 }

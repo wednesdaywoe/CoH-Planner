@@ -1,0 +1,25 @@
+/**
+ * Adaptation
+ * Gain Efficient, Defensive and Offensive Adaptations
+ *
+ * Source: sentinel_defense/bio_organic_armor/adaptation.json
+ */
+
+import type { Power } from '@/types';
+
+export const Adaptation: Power = {
+  "name": "Adaptation",
+  "internalName": "Adaptation",
+  "available": 3,
+  "description": "By purchasing this power you gain access to three mutually exclusive toggle powers: Efficient Adaptation, Defensive Adaptation and Offensive Adaptation.While Offensive Adaptation is active you gain bonus damage from Hardened Carapace, additional To Hit from Environmental Adaptation, increased run and flight speeds from Athletic Regulation, small range buff from Genomic Evolution, and increased regeneration debuff from Parasitic Leech.While Defensive Adaptation is active you gain improved damage resistance from Hardened Carapace and Genomic Evolution, additional defense and increased Maximum HP from Environmental Adaptation, additional damage absorption from Ablative Carapace, gain run and fly speed debuff resistance from Athletic Regulation, and increased damage absorption and damage debuff from Parasitic Leech.While Efficient Adaptation is active Hardened Carapace will provide a moderate endurance discount, Inexhaustible and Parasitic Leech has increased Regeneration and Recovery, Ablative Carapace grants additional regeneration, Rebuild DNA grants a massive bonus to recovery, Athletic Regulation increases your run and flight speeds, and Genomic Evolution will increase your max endurance",
+  "shortHelp": "Gain Efficient, Defensive and Offensive Adaptations",
+  "icon": "bioorganicarmor_adaptation.png",
+  "powerType": "Auto",
+  "targetType": "Self",
+  "effectArea": "SingleTarget",
+  "stats": {
+    "accuracy": 1
+  },
+  "allowedEnhancements": [],
+  "maxSlots": 6
+};

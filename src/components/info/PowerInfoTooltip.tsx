@@ -19,8 +19,6 @@ import {
   getIOValueAtLevel,
   calculateDefiance,
   getDominationInfo,
-  calculateDominationMagnitude,
-  calculateDominationDuration,
   isDominatorControlPower,
   getScourgeInfo,
   calculateScourgeDamage,
@@ -58,166 +56,20 @@ import {
   OriginEnhancementIcon,
   SpecialEnhancementIcon,
 } from '@/components/enhancements/EnhancementIcon';
-import type { DefenseByType, ResistanceByType, ProtectionEffects, ArchetypeId, IOSetEnhancement, GenericIOEnhancement, OriginEnhancement, SpecialEnhancement, Enhancement, SelectedPower } from '@/types';
-
-/**
- * Base values for buff/debuff effects per scale point at modifier 1.0
- * In City of Heroes, debuffs and buffs use different base scaling:
- * - Debuffs (ToHit, Defense, Resistance debuffs): 5% per scale (0.05)
- * - Buffs (Damage, Defense, ToHit buffs): 10% per scale (0.10)
- */
-const BASE_DEBUFF = 0.05;  // 5% per scale for debuffs
-const BASE_BUFF = 0.10;    // 10% per scale for buffs
-
-type EffectCategory = 'buff' | 'debuff';
-
-function getEffectiveBuffDebuffModifier(powerSet: string, archetypeModifier: number): number {
-  const powersetArchetype = powerSet.split('/')[0];
-  if (powersetArchetype === 'defender' || powersetArchetype === 'controller') {
-    return archetypeModifier;
-  }
-  if (powersetArchetype === 'corruptor' || powersetArchetype === 'mastermind') {
-    return 1.0;
-  }
-  return 1.0;
-}
-
-function calculateBuffDebuffValue(scale: number, effectiveModifier: number, category: EffectCategory = 'buff'): number {
-  const baseValue = category === 'debuff' ? BASE_DEBUFF : BASE_BUFF;
-  return scale * baseValue * effectiveModifier;
-}
-
-function formatPercent(value: number): string {
-  return `${(value * 100).toFixed(1)}%`;
-}
-
-// Defense/Resistance with three-tier display (Base/Enhanced/Final)
-function DefenseResistanceThreeTier({
-  label,
-  values,
-  enhancementBonus,
-  colorClass,
-}: {
-  label: string;
-  values: DefenseByType | ResistanceByType;
-  enhancementBonus: number;
-  colorClass: string;
-}) {
-  const entries = Object.entries(values).filter(([, v]) => v !== undefined && v !== 0);
-  if (entries.length === 0) return null;
-
-  const hasEnhancement = enhancementBonus > 0.001;
-
-  return (
-    <div className="bg-slate-800/50 rounded p-1.5 mt-1">
-      <div className="grid grid-cols-[3.5rem_1fr_1fr_1fr] gap-1 text-[8px] text-slate-500 uppercase mb-0.5 border-b border-slate-700 pb-0.5">
-        <span>{label}</span>
-        <span>Base</span>
-        <span>Enhanced</span>
-        <span>Final</span>
-      </div>
-      {entries.map(([type, baseValue]) => {
-        const base = baseValue as number;
-        // Defense and Resistance are multiplicative with enhancements
-        const enhanced = base * (1 + enhancementBonus);
-        const hasEnh = Math.abs(enhanced - base) > 0.001;
-
-        return (
-          <div key={type} className="grid grid-cols-[3.5rem_1fr_1fr_1fr] gap-1 items-baseline text-[10px]">
-            <span className="text-slate-400 capitalize text-[9px]">{type}</span>
-            <span className={colorClass}>{formatPercent(base)}</span>
-            <span className={hasEnh ? 'text-green-400' : 'text-slate-600'}>
-              {hasEnh ? `→ ${formatPercent(enhanced)}` : '—'}
-            </span>
-            <span className="text-slate-600">—</span>
-          </div>
-        );
-      })}
-      {hasEnhancement && (
-        <div className="text-[8px] text-green-500/70 mt-0.5">
-          +{(enhancementBonus * 100).toFixed(1)}% from enhancements
-        </div>
-      )}
-    </div>
-  );
-}
-
-// Compact mez protection display
-function ProtectionCompact({ protection }: { protection: ProtectionEffects }) {
-  const entries = Object.entries(protection).filter(([, v]) => v !== undefined && v !== 0);
-  if (entries.length === 0) return null;
-
-  return (
-    <div className="mt-1">
-      <span className="text-slate-400 text-[9px] uppercase">Mez Protection</span>
-      <div className="grid grid-cols-2 gap-x-2 gap-y-0 mt-0.5">
-        {entries.map(([type, value]) => (
-          <div key={type} className="flex justify-between">
-            <span className="text-slate-500 capitalize text-[9px]">{type}</span>
-            <span className="text-purple-400 text-[9px]">Mag {(value as number).toFixed(1)}</span>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-// Three-tier stat display with aligned columns (compact for tooltip)
-function ThreeTierHeader() {
-  return (
-    <div className="grid grid-cols-[4rem_1fr_1fr_1fr] gap-1 text-[8px] text-slate-500 uppercase mb-0.5 border-b border-slate-700 pb-0.5">
-      <span>Stat</span>
-      <span>Base</span>
-      <span>Enh</span>
-      <span>Final</span>
-    </div>
-  );
-}
-
-function ThreeTierStatRow({
-  label,
-  base,
-  enhanced,
-  final,
-  format = 'number',
-  colorClass = 'text-slate-200'
-}: {
-  label: string;
-  base: number;
-  enhanced: number;
-  final: number;
-  format?: 'number' | 'percent' | 'seconds' | 'feet';
-  colorClass?: string;
-}) {
-  const formatValue = (v: number) => {
-    switch (format) {
-      case 'percent':
-        return `${(v * 100).toFixed(1)}%`;
-      case 'seconds':
-        return `${v.toFixed(1)}s`;
-      case 'feet':
-        return `${v.toFixed(0)}ft`;
-      default:
-        return v.toFixed(2);
-    }
-  };
-
-  const hasEnhancement = Math.abs(enhanced - base) > 0.001;
-  const hasGlobal = Math.abs(final - enhanced) > 0.001;
-
-  return (
-    <div className="grid grid-cols-[4rem_1fr_1fr_1fr] gap-1 items-baseline text-[10px]">
-      <span className={colorClass}>{label}</span>
-      <span className={colorClass}>{formatValue(base)}</span>
-      <span className={hasEnhancement ? 'text-green-400' : 'text-slate-600'}>
-        {hasEnhancement ? formatValue(enhanced) : '—'}
-      </span>
-      <span className={hasGlobal ? 'text-amber-400' : 'text-slate-600'}>
-        {hasGlobal ? formatValue(final) : '—'}
-      </span>
-    </div>
-  );
-}
+import type { ArchetypeId, IOSetEnhancement, GenericIOEnhancement, OriginEnhancement, SpecialEnhancement, Enhancement } from '@/types';
+import { EffectDisplay } from './EffectDisplay';
+import {
+  calculateResistancePercent,
+  isByTypeObject,
+  getEffectiveBuffDebuffModifier,
+  findSelectedPowerInBuild,
+  TYPE_LABELS_SHORT,
+} from './powerDisplayUtils';
+import {
+  DefenseResistanceThreeTier,
+  ProtectionDisplay,
+  RegistryEffectsDisplay,
+} from './SharedPowerComponents';
 
 interface PowerInfoContentProps {
   powerName: string;
@@ -318,26 +170,7 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
   }
 
   // Find the selected power from build to get its slots
-  const findSelectedPower = (): SelectedPower | null => {
-    const primary = build.primary.powers.find((p) => p.name === powerName);
-    if (primary) return primary;
-    const secondary = build.secondary.powers.find((p) => p.name === powerName);
-    if (secondary) return secondary;
-    for (const pool of build.pools) {
-      const poolPower = pool.powers.find((p) => p.name === powerName);
-      if (poolPower) return poolPower;
-    }
-    if (build.epicPool) {
-      const epic = build.epicPool.powers.find((p) => p.name === powerName);
-      if (epic) return epic;
-    }
-    // Check inherent powers
-    const inherent = build.inherents.find((p) => p.name === powerName);
-    if (inherent) return inherent;
-    return null;
-  };
-
-  const selectedPower = findSelectedPower();
+  const selectedPower = findSelectedPowerInBuild(powerName, build);
 
   // Calculate enhancement bonuses if power is slotted
   const enhancementBonuses = useMemo<EnhancementBonuses>(() => {
@@ -363,7 +196,7 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
 
   // Calculate actual damage using archetype modifiers and level
   const calculatedDamage = useMemo(() => {
-    if (!basePower?.effects?.damage) return null;
+    if (!basePower?.damage) return null;
 
     // Determine if this is a primary or secondary powerset
     const isPrimary = powerSet === build.primary.id;
@@ -397,52 +230,22 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
     return <div className="text-slate-500 text-[10px]">Power not found</div>;
   }
 
-  const effects = basePower.effects;
+  // Merge power.stats into effects for registry-driven display
+  // Map stats field names to registry-expected names
+  const effects = {
+    ...basePower.effects,
+    // Execution stats from power.stats
+    ...(basePower.stats?.endurance && { enduranceCost: basePower.stats.endurance }),
+    ...(basePower.stats?.recharge && { recharge: basePower.stats.recharge }),
+    ...(basePower.stats?.accuracy && { accuracy: basePower.stats.accuracy }),
+    ...(basePower.stats?.range && { range: basePower.stats.range }),
+    ...(basePower.stats?.castTime && { castTime: basePower.stats.castTime }),
+  };
 
   // Get archetype modifier for buff/debuff calculations
   const archetype = archetypeId ? getArchetype(archetypeId as ArchetypeId) : null;
   const buffDebuffMod = archetype?.stats?.buffDebuffModifier ?? 1.0;
   const effectiveMod = getEffectiveBuffDebuffModifier(powerSet, buffDebuffMod);
-
-  // Calculate three-tier stats for key values
-  const calcThreeTier = (aspect: string, baseValue: number): { base: number; enhanced: number; final: number } => {
-    const enhBonus = enhancementBonuses[aspect] || 0;
-    const globalBonus = globalBonusesForCalc[aspect as keyof typeof globalBonusesForCalc] || 0;
-
-    let enhanced: number;
-    let final: number;
-
-    switch (aspect) {
-      case 'damage':
-      case 'accuracy':
-      case 'tohitDebuff':
-      case 'defenseDebuff':
-      case 'heal':
-      case 'defense':
-      case 'resistance':
-      case 'tohit':
-        enhanced = baseValue * (1 + enhBonus);
-        final = enhanced * (1 + globalBonus);
-        break;
-      case 'endurance':
-        enhanced = baseValue * Math.max(0, 1 - enhBonus);
-        final = enhanced * Math.max(0, 1 - globalBonus);
-        break;
-      case 'recharge':
-        enhanced = baseValue / Math.max(1, 1 + enhBonus);
-        final = enhanced / Math.max(1, 1 + globalBonus);
-        break;
-      case 'range':
-        enhanced = baseValue * (1 + enhBonus);
-        final = enhanced * (1 + globalBonus);
-        break;
-      default:
-        enhanced = baseValue * (1 + enhBonus);
-        final = enhanced * (1 + globalBonus);
-    }
-
-    return { base: baseValue, enhanced, final };
-  };
 
   // Check for mez effects
   const hasMez = effects?.stun || effects?.hold || effects?.immobilize ||
@@ -450,6 +253,93 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
 
   // Check if power has any enhancements
   const hasEnhancements = selectedPower && selectedPower.slots.some(s => s !== null);
+
+  // Calculate archetype-specific damage bonuses
+  const damageDisplayInfo = useMemo(() => {
+    if (!calculatedDamage) return null;
+
+    // Check which archetype inherent applies
+    const isCorruptor = archetypeId === 'corruptor';
+    const isCorruptorPower = isCorruptorAttackPower(powerSet);
+    const showScourge = isCorruptor && isCorruptorPower && scourgeActive;
+
+    const isBrute = archetypeId === 'brute';
+    const isBrutePower = isBruteAttackPower(powerSet);
+    const showFury = isBrute && isBrutePower && furyLevel > 0;
+
+    const isDefender = archetypeId === 'defender';
+    const isDefenderAttackPower = isDefenderPower(powerSet);
+    const vigilanceBonus = calculateVigilanceDamageBonus(build.level, vigilanceTeamSize);
+    const showVigilance = isDefender && isDefenderAttackPower && vigilanceBonus > 0;
+
+    const isScrapper = archetypeId === 'scrapper';
+    const isScrapperPower = isScrapperAttackPower(powerSet);
+    const showCriticalHits = isScrapper && isScrapperPower && criticalHitsActive;
+
+    const isStalker = archetypeId === 'stalker';
+    const isStalkerPower = isStalkerAttackPower(powerSet);
+    const assassinationBonus = calculateAssassinationDamageBonus(stalkerHidden, stalkerTeamSize);
+    const showAssassination = isStalker && isStalkerPower && assassinationBonus > 0;
+
+    const isController = archetypeId === 'controller';
+    const isControllerAttackPower = isControllerPower(powerSet);
+    const showContainment = isController && isControllerAttackPower && containmentActive;
+
+    // Determine final column header
+    const finalColumnHeader = showScourge ? 'w/ Scourge'
+      : showFury ? 'w/ Fury'
+      : showVigilance ? 'w/ Vigilance'
+      : showCriticalHits ? 'w/ Crit'
+      : showAssassination ? (stalkerHidden ? 'w/ Crit' : 'w/ Assassin')
+      : showContainment ? 'w/ Contain'
+      : 'Final';
+
+    // Get color class for inherent-modified values
+    const finalColumnColor = showScourge ? 'text-cyan-400'
+      : showFury ? 'text-red-400'
+      : showVigilance ? 'text-indigo-400'
+      : showCriticalHits ? 'text-orange-400'
+      : showAssassination ? 'text-purple-400'
+      : showContainment ? 'text-cyan-400'
+      : 'text-amber-400';
+
+    // Function to apply inherent bonus
+    const applyInherentBonus = (damage: number) => {
+      if (showScourge) return calculateScourgeDamage(damage);
+      if (showFury) return calculateFuryDamage(damage, furyLevel);
+      if (showVigilance) return calculateVigilanceDamage(damage, build.level, vigilanceTeamSize);
+      if (showCriticalHits) return calculateCriticalHitDamage(damage, 'higher');
+      if (showAssassination) return calculateAssassinationDamage(damage, stalkerHidden, stalkerTeamSize);
+      if (showContainment) return calculateContainmentDamage(damage, true);
+      return damage;
+    };
+
+    // Get DoT info from power definition
+    const dmg = basePower?.damage;
+    const dotInfo = dmg && typeof dmg === 'object' && 'duration' in dmg
+      ? {
+          duration: (dmg as { duration?: number }).duration || 0,
+          tickRate: (dmg as { tickRate?: number }).tickRate,
+        }
+      : undefined;
+
+    return {
+      finalColumnHeader,
+      finalColumnColor,
+      applyInherentBonus,
+      dotInfo,
+      showScourge,
+      showFury,
+      showVigilance,
+      showCriticalHits,
+      showAssassination,
+      showContainment,
+      furyBonus: showFury ? calculateFuryDamageBonus(furyLevel) : 0,
+      vigilanceBonus,
+      assassinationBonus,
+    };
+  }, [calculatedDamage, archetypeId, powerSet, scourgeActive, furyLevel, vigilanceTeamSize,
+      criticalHitsActive, stalkerHidden, stalkerTeamSize, containmentActive, build.level, basePower?.damage]);
 
   return (
     <div className="space-y-1.5 max-w-[320px]">
@@ -479,335 +369,146 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
         </div>
       )}
 
-      {/* Consolidated Power Effects - single three-tier display */}
-      {(() => {
-        const allowed = new Set<string>(basePower?.allowedEnhancements || []);
-
-        // Check if we have ANY effects to show in the consolidated view
-        const hasAnyEffects = (
-          // Power execution stats
-          (allowed.has('EnduranceReduction') && effects?.enduranceCost) ||
-          (allowed.has('Recharge') && effects?.recharge) ||
-          (allowed.has('Accuracy') && effects?.accuracy) ||
-          (allowed.has('Range') && effects?.range && effects.range > 0) ||
-          // Debuffs
-          effects?.tohitDebuff || effects?.defenseDebuff || effects?.resistanceDebuff ||
-          // Buffs
-          effects?.tohitBuff || effects?.damageBuff || effects?.defenseBuff ||
-          effects?.rechargeBuff || effects?.speedBuff || effects?.recoveryBuff || effects?.enduranceBuff ||
-          // Healing
-          (effects?.healing && effects.healing.scale != null)
-        );
-
-        if (!hasAnyEffects) return null;
-
-        return (
-        <div className="bg-slate-800/50 rounded p-1.5">
-          <div className="text-[8px] text-slate-500 uppercase mb-0.5">
-            Power Effects{effects?.buffDuration ? ` (${effects.buffDuration.toFixed(0)}s)` : ''}
-          </div>
-          <ThreeTierHeader />
-
-          {/* Power execution stats */}
-          {allowed.has('EnduranceReduction') && effects?.enduranceCost && (
-            <ThreeTierStatRow
-              label="End"
-              {...calcThreeTier('endurance', effects.enduranceCost)}
-              format="number"
-              colorClass="text-blue-400"
-            />
+      {/* Summon/Pet Info */}
+      {effects?.summon && (
+        <div className="bg-indigo-900/30 rounded p-1 border border-indigo-500/30 text-[9px]">
+          <span className="text-indigo-400">
+            {effects.summon.isPseudoPet ? '⚡' : '🐾'}
+          </span>
+          <span className="text-slate-200 ml-1">
+            {effects.summon.displayName || effects.summon.entity || 'Entity'}
+          </span>
+          {effects.summon.duration && (
+            <span className="text-slate-400 ml-1">({effects.summon.duration}s)</span>
           )}
-          {allowed.has('Recharge') && effects?.recharge && (
-            <ThreeTierStatRow
-              label="Rech"
-              {...calcThreeTier('recharge', effects.recharge)}
-              format="seconds"
-              colorClass="text-slate-300"
-            />
-          )}
-          {allowed.has('Accuracy') && effects?.accuracy && (
-            <ThreeTierStatRow
-              label="Acc"
-              {...calcThreeTier('accuracy', effects.accuracy)}
-              format="percent"
-              colorClass="text-slate-300"
-            />
-          )}
-          {allowed.has('Range') && effects?.range !== undefined && effects.range > 0 && (
-            <ThreeTierStatRow
-              label="Range"
-              {...calcThreeTier('range', effects.range)}
-              format="feet"
-              colorClass="text-slate-300"
-            />
-          )}
-
-          {/* Healing */}
-          {effects?.healing && effects.healing.scale != null && (
-            <ThreeTierStatRow
-              label="Heal"
-              {...calcThreeTier('heal', effects.healing.scale)}
-              format="number"
-              colorClass="text-green-400"
-            />
-          )}
-
-          {/* Buffs - use 'buff' category (10% base per scale) */}
-          {effects?.tohitBuff && (
-            <ThreeTierStatRow
-              label="+ToHit"
-              {...calcThreeTier('tohit', calculateBuffDebuffValue(effects.tohitBuff, effectiveMod, 'buff'))}
-              format="percent"
-              colorClass="text-yellow-400"
-            />
-          )}
-          {effects?.damageBuff && (
-            <ThreeTierStatRow
-              label="+Dmg"
-              {...calcThreeTier('damage', calculateBuffDebuffValue(effects.damageBuff, effectiveMod, 'buff'))}
-              format="percent"
-              colorClass="text-red-400"
-            />
-          )}
-          {effects?.defenseBuff && (
-            <ThreeTierStatRow
-              label="+Def"
-              {...calcThreeTier('defense', calculateBuffDebuffValue(effects.defenseBuff, effectiveMod, 'buff'))}
-              format="percent"
-              colorClass="text-purple-400"
-            />
-          )}
-          {effects?.rechargeBuff && (
-            <ThreeTierStatRow
-              label="+Rech"
-              base={effects.rechargeBuff}
-              enhanced={effects.rechargeBuff}
-              final={effects.rechargeBuff}
-              format="percent"
-              colorClass="text-cyan-400"
-            />
-          )}
-          {effects?.speedBuff && (
-            <ThreeTierStatRow
-              label="+Spd"
-              base={effects.speedBuff}
-              enhanced={effects.speedBuff}
-              final={effects.speedBuff}
-              format="percent"
-              colorClass="text-cyan-400"
-            />
-          )}
-          {effects?.recoveryBuff && (
-            <ThreeTierStatRow
-              label="+Rec"
-              base={effects.recoveryBuff}
-              enhanced={effects.recoveryBuff}
-              final={effects.recoveryBuff}
-              format="percent"
-              colorClass="text-blue-400"
-            />
-          )}
-          {effects?.enduranceBuff && (
-            <ThreeTierStatRow
-              label="+End"
-              base={effects.enduranceBuff}
-              enhanced={effects.enduranceBuff}
-              final={effects.enduranceBuff}
-              format="percent"
-              colorClass="text-blue-400"
-            />
-          )}
-
-          {/* Debuffs - use 'debuff' category (5% base per scale) */}
-          {effects?.tohitDebuff && (
-            <ThreeTierStatRow
-              label="-ToHit"
-              {...calcThreeTier('tohitDebuff', calculateBuffDebuffValue(effects.tohitDebuff, effectiveMod, 'debuff'))}
-              format="percent"
-              colorClass="text-yellow-400"
-            />
-          )}
-          {effects?.defenseDebuff && (
-            <ThreeTierStatRow
-              label="-Def"
-              {...calcThreeTier('defenseDebuff', calculateBuffDebuffValue(effects.defenseDebuff, effectiveMod, 'debuff'))}
-              format="percent"
-              colorClass="text-purple-400"
-            />
-          )}
-          {effects?.resistanceDebuff && (
-            <ThreeTierStatRow
-              label="-Resist"
-              {...calcThreeTier('resistanceDebuff', calculateBuffDebuffValue(effects.resistanceDebuff, effectiveMod, 'debuff'))}
-              format="percent"
-              colorClass="text-orange-400"
-            />
-          )}
-        </div>
-        );
-      })()}
-
-      {/* Fixed stats */}
-      {effects && (effects.castTime || effects.buffDuration || effects.radius) && (
-        <div className="text-[10px] text-slate-500">
-          {effects.castTime && <span>Cast {effects.castTime.toFixed(2)}s </span>}
-          {effects.buffDuration && <span>Dur {effects.buffDuration.toFixed(1)}s </span>}
-          {effects.radius && <span>Radius {effects.radius}ft </span>}
         </div>
       )}
 
-      {/* Damage with three-tier display - using actual damage calculation */}
-      {calculatedDamage && (() => {
-        // Check if Scourge should be shown (Corruptor)
-        const isCorruptor = archetypeId === 'corruptor';
-        const isCorruptorPower = isCorruptorAttackPower(powerSet);
-        const showScourge = isCorruptor && isCorruptorPower && scourgeActive;
-        const scourgeInfo = getScourgeInfo();
+      {/* Consolidated Power Effects - registry-driven display */}
+      <RegistryEffectsDisplay
+        effects={effects}
+        allowedEnhancements={basePower?.allowedEnhancements || []}
+        enhancementBonuses={enhancementBonuses}
+        globalBonuses={globalBonusesForCalc}
+        buffDebuffMod={effectiveMod}
+        categories={['execution', 'buff', 'debuff', 'control']}
+        dominationActive={dominationActive}
+        compact={true}
+        header="Power Effects"
+        duration={effects?.buffDuration}
+        damage={calculatedDamage}
+        dotInfo={damageDisplayInfo?.dotInfo}
+        finalColumnHeader={damageDisplayInfo?.finalColumnHeader}
+        finalColumnColor={damageDisplayInfo?.finalColumnColor}
+        applyInherentBonus={damageDisplayInfo?.applyInherentBonus}
+      />
 
-        // Check if Fury should be shown (Brute)
-        const isBrute = archetypeId === 'brute';
-        const isBrutePower = isBruteAttackPower(powerSet);
-        const showFury = isBrute && isBrutePower && furyLevel > 0;
-        const furyBonus = calculateFuryDamageBonus(furyLevel);
-
-        // Check if Vigilance should be shown (Defender)
-        const isDefender = archetypeId === 'defender';
-        const isDefenderAttackPower = isDefenderPower(powerSet);
-        const vigilanceBonus = calculateVigilanceDamageBonus(build.level, vigilanceTeamSize);
-        const showVigilance = isDefender && isDefenderAttackPower && vigilanceBonus > 0;
-
-        // Check if Critical Hits should be shown (Scrapper)
-        const isScrapper = archetypeId === 'scrapper';
-        const isScrapperPower = isScrapperAttackPower(powerSet);
-        const showCriticalHits = isScrapper && isScrapperPower && criticalHitsActive;
-        const critInfo = getCriticalHitInfo();
-
-        // Check if Assassination should be shown (Stalker)
-        const isStalker = archetypeId === 'stalker';
-        const isStalkerPower = isStalkerAttackPower(powerSet);
-        const assassinationBonus = calculateAssassinationDamageBonus(stalkerHidden, stalkerTeamSize);
-        const showAssassination = isStalker && isStalkerPower && assassinationBonus > 0;
-
-        // Check if Containment should be shown (Controller)
-        const isController = archetypeId === 'controller';
-        const isControllerAttackPower = isControllerPower(powerSet);
-        const showContainment = isController && isControllerAttackPower && containmentActive;
-
-        // Determine final column header
-        const finalColumnHeader = showScourge ? 'w/ Scourge' : showFury ? 'w/ Fury' : showVigilance ? 'w/ Vigilance' : showCriticalHits ? 'w/ Crit' : showAssassination ? (stalkerHidden ? 'w/ Crit' : 'w/ Assassin') : showContainment ? 'w/ Contain' : 'Final';
-
-        // Calculate final damage with inherent bonuses
-        const applyInherentBonus = (damage: number) => {
-          if (showScourge) return calculateScourgeDamage(damage);
-          if (showFury) return calculateFuryDamage(damage, furyLevel);
-          if (showVigilance) return calculateVigilanceDamage(damage, build.level, vigilanceTeamSize);
-          // For Critical Hits, use average vs higher rank targets (10% avg) as default display
-          if (showCriticalHits) return calculateCriticalHitDamage(damage, 'higher');
-          if (showAssassination) return calculateAssassinationDamage(damage, stalkerHidden, stalkerTeamSize);
-          // Containment doubles damage vs controlled targets
-          if (showContainment) return calculateContainmentDamage(damage, true);
-          return damage;
-        };
-
-        // Get color class for inherent-modified values
-        const getInherentColorClass = () => {
-          if (showScourge) return 'text-cyan-400';
-          if (showFury) return 'text-red-400';
-          if (showVigilance) return 'text-indigo-400';
-          if (showCriticalHits) return 'text-orange-400';
-          if (showAssassination) return 'text-purple-400';
-          if (showContainment) return 'text-cyan-400';
-          return 'text-amber-400';
-        };
-
-        return (
-        <div className="bg-slate-800/50 rounded p-1.5">
-          <div className="grid grid-cols-[3rem_1fr_1fr_1fr] gap-1 text-[8px] text-slate-500 uppercase mb-0.5 border-b border-slate-700 pb-0.5">
-            <span>Type</span>
-            <span>Base</span>
-            <span>Enhanced</span>
-            <span>{finalColumnHeader}</span>
-          </div>
-          {/* Primary damage */}
-          {(() => {
-            const hasEnh = Math.abs(calculatedDamage.enhanced - calculatedDamage.base) > 0.001;
-            const finalDamage = applyInherentBonus(calculatedDamage.final);
-            const hasGlobal = Math.abs(finalDamage - calculatedDamage.enhanced) > 0.001;
+      {/* Resistance by Type (Armor Powers) */}
+      {effects?.resistance && isByTypeObject(effects.resistance) && (
+        <div className="bg-orange-900/20 rounded p-1 text-[9px]">
+          <span className="text-slate-500 uppercase">Resist: </span>
+          {Object.entries(effects.resistance).map(([type, value], i, arr) => {
+            const pct = calculateResistancePercent(value);
             return (
-              <div className="grid grid-cols-[3rem_1fr_1fr_1fr] gap-1 items-baseline text-[10px]">
-                <span className="text-red-400">{calculatedDamage.type}</span>
-                <span className="text-slate-200">{calculatedDamage.base.toFixed(1)}</span>
-                <span className={hasEnh ? 'text-green-400' : 'text-slate-600'}>
-                  {hasEnh ? `→ ${calculatedDamage.enhanced.toFixed(1)}` : '—'}
-                </span>
-                <span className={hasGlobal ? getInherentColorClass() : 'text-slate-600'}>
-                  {hasGlobal ? `→ ${finalDamage.toFixed(1)}` : '—'}
-                </span>
-              </div>
+              <span key={type} className="text-orange-400">
+                {TYPE_LABELS_SHORT[type] || type}:{(pct * 100).toFixed(0)}%{i < arr.length - 1 ? ' ' : ''}
+              </span>
             );
-          })()}
-          {/* Fiery Embrace conditional damage */}
-          {calculatedDamage.fieryEmbraceDamage && (() => {
+          })}
+        </div>
+      )}
+
+      {/* Defense by Type (Armor Powers) */}
+      {effects?.defense && isByTypeObject(effects.defense) && (
+        <div className="bg-purple-900/20 rounded p-1 text-[9px]">
+          <span className="text-slate-500 uppercase">Def: </span>
+          {Object.entries(effects.defense).map(([type, value], i, arr) => {
+            const pct = calculateResistancePercent(value);
+            return (
+              <span key={type} className="text-purple-400">
+                {TYPE_LABELS_SHORT[type] || type}:{(pct * 100).toFixed(1)}%{i < arr.length - 1 ? ' ' : ''}
+              </span>
+            );
+          })}
+        </div>
+      )}
+
+      {/* Elusivity */}
+      {effects?.elusivity && (
+        <div className="text-[9px] text-teal-400">
+          DDR: {isByTypeObject(effects.elusivity)
+            ? Object.entries(effects.elusivity).map(([type, v]) =>
+                `${TYPE_LABELS_SHORT[type] || type}:${(calculateResistancePercent(v) * 100).toFixed(0)}%`
+              ).join(' ')
+            : `${(calculateResistancePercent(effects.elusivity) * 100).toFixed(0)}%`
+          }
+        </div>
+      )}
+
+      {/* Movement Effects handled by EffectDisplay below */}
+
+      {/* Fiery Embrace conditional damage (shown separately since it's conditional) */}
+      {calculatedDamage?.fieryEmbraceDamage && damageDisplayInfo && (
+        <div className="bg-slate-800/50 rounded p-1.5">
+          {(() => {
             const fe = calculatedDamage.fieryEmbraceDamage;
             const hasEnh = Math.abs(fe.enhanced - fe.base) > 0.001;
-            const feFinal = applyInherentBonus(fe.final);
+            const feFinal = damageDisplayInfo.applyInherentBonus(fe.final);
             const hasGlobal = Math.abs(feFinal - fe.enhanced) > 0.001;
             const isActive = isFieryEmbraceActive;
             return (
               <>
-                <div className={`grid grid-cols-[3rem_1fr_1fr_1fr] gap-1 items-baseline text-[10px] mt-0.5 ${isActive ? '' : 'opacity-40'}`}>
+                <div className={`grid grid-cols-[3rem_1fr_1fr_1fr] gap-1 items-baseline text-[10px] ${isActive ? '' : 'opacity-40'}`}>
                   <span className={isActive ? 'text-orange-400' : 'text-slate-500'}>{fe.type}</span>
-                  <span className={isActive ? 'text-slate-300' : 'text-slate-500'}>{fe.base.toFixed(1)}</span>
+                  <span className={isActive ? 'text-slate-300' : 'text-slate-500'}>{fe.base.toFixed(2)}</span>
                   <span className={isActive ? (hasEnh ? 'text-green-400' : 'text-slate-600') : 'text-slate-600'}>
-                    {hasEnh ? `→ ${fe.enhanced.toFixed(1)}` : '—'}
+                    {hasEnh ? `→ ${fe.enhanced.toFixed(2)}` : '—'}
                   </span>
-                  <span className={isActive ? (hasGlobal ? getInherentColorClass() : 'text-slate-600') : 'text-slate-600'}>
-                    {hasGlobal ? `→ ${feFinal.toFixed(1)}` : '—'}
+                  <span className={isActive ? (hasGlobal ? damageDisplayInfo.finalColumnColor : 'text-slate-600') : 'text-slate-600'}>
+                    {hasGlobal ? `→ ${feFinal.toFixed(2)}` : '—'}
                   </span>
                 </div>
                 <div className={`text-[8px] italic mt-0.5 ${isActive ? 'text-orange-400' : 'text-slate-500'}`}>
-                  {isActive
-                    ? '✓ Fiery Embrace active'
-                    : '* Fire damage only with Fiery Embrace active'}
+                  {isActive ? '✓ Fiery Embrace active' : '* Fire damage only with Fiery Embrace active'}
                 </div>
               </>
             );
           })()}
-          {showScourge && (
-            <div className="text-[8px] text-cyan-400 mt-0.5">
-              +{(scourgeInfo.averageDamageBonus * 100).toFixed(0)}% avg from Scourge (×1.{(scourgeInfo.averageDamageBonus * 100).toFixed(0)} multiplier)
-            </div>
-          )}
-          {showFury && (
-            <div className="text-[8px] text-red-400 mt-0.5">
-              +{(furyBonus * 100).toFixed(0)}% from Fury ({furyLevel}/100)
-            </div>
-          )}
-          {showVigilance && (
-            <div className="text-[8px] text-indigo-400 mt-0.5">
-              +{(vigilanceBonus * 100).toFixed(0)}% from Vigilance ({vigilanceTeamSize === 0 ? 'Solo' : `${vigilanceTeamSize} teammate${vigilanceTeamSize > 1 ? 's' : ''}`})
-            </div>
-          )}
-          {showCriticalHits && (
-            <div className="text-[8px] text-orange-400 mt-0.5">
-              +{(critInfo.averageBonusVsHigher * 100).toFixed(0)}% avg from Critical Hits (vs Lt+)
-            </div>
-          )}
-          {showAssassination && (
-            <div className="text-[8px] text-purple-400 mt-0.5">
-              +{(assassinationBonus * 100).toFixed(0)}% avg from Assassination ({stalkerHidden ? 'Hidden' : `${stalkerTeamSize === 0 ? 'Solo' : `${stalkerTeamSize} teammate${stalkerTeamSize > 1 ? 's' : ''}`}`})
-            </div>
-          )}
-          {calculatedDamage.unknown && (
-            <div className="text-[8px] text-slate-500 italic mt-0.5">
-              * Actual damage varies
-            </div>
-          )}
         </div>
-        );
-      })()}
+      )}
 
-      {/* DoT */}
+      {/* Inherent damage bonus info (Scourge, Fury, etc.) */}
+      {damageDisplayInfo && calculatedDamage && (
+        <>
+          {damageDisplayInfo.showScourge && (
+            <div className="text-[8px] text-cyan-400">
+              +{(getScourgeInfo().averageDamageBonus * 100).toFixed(0)}% avg from Scourge
+            </div>
+          )}
+          {damageDisplayInfo.showFury && (
+            <div className="text-[8px] text-red-400">
+              +{(damageDisplayInfo.furyBonus * 100).toFixed(0)}% from Fury ({furyLevel}/100)
+            </div>
+          )}
+          {damageDisplayInfo.showVigilance && (
+            <div className="text-[8px] text-indigo-400">
+              +{(damageDisplayInfo.vigilanceBonus * 100).toFixed(0)}% from Vigilance ({vigilanceTeamSize === 0 ? 'Solo' : `${vigilanceTeamSize} teammates`})
+            </div>
+          )}
+          {damageDisplayInfo.showCriticalHits && (
+            <div className="text-[8px] text-orange-400">
+              +{(getCriticalHitInfo().averageBonusVsHigher * 100).toFixed(0)}% avg from Critical Hits (vs Lt+)
+            </div>
+          )}
+          {damageDisplayInfo.showAssassination && (
+            <div className="text-[8px] text-purple-400">
+              +{(damageDisplayInfo.assassinationBonus * 100).toFixed(0)}% avg from Assassination ({stalkerHidden ? 'Hidden' : 'Visible'})
+            </div>
+          )}
+        </>
+      )}
+
+      {/* DoT from effects.dot (secondary DoT) */}
       {effects?.dot && effects.dot.scale != null && (
         <div className="text-[10px]">
           <span className="text-slate-400 text-[9px] uppercase">DoT: </span>
@@ -816,46 +517,6 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
           </span>
         </div>
       )}
-
-      {/* Mez Effects - inline */}
-      {hasMez && (() => {
-        // Check if Domination bonuses should apply
-        const isDominator = archetypeId === 'dominator';
-        const isDominatorPower = isDominatorControlPower(powerSet);
-        const showDomination = isDominator && isDominatorPower && dominationActive;
-
-        // Helper to format mez with optional Domination enhancement
-        const formatMez = (type: string, baseMag: number, baseDur?: number) => {
-          const enhancedMag = showDomination ? calculateDominationMagnitude(baseMag) : baseMag;
-          const enhancedDur = showDomination && baseDur ? calculateDominationDuration(baseDur) : baseDur;
-
-          return (
-            <span key={type} className={showDomination ? 'text-pink-400' : 'text-purple-400'}>
-              {type} Mag {enhancedMag}
-              {enhancedDur ? ` (${enhancedDur.toFixed(1)}s)` : ''}
-              {showDomination && (
-                <span className="text-pink-300 text-[8px]"> [2×]</span>
-              )}
-              {' '}
-            </span>
-          );
-        };
-
-        return (
-          <div className="text-[10px]">
-            <span className="text-slate-400 text-[9px] uppercase">
-              Mez{showDomination && <span className="text-pink-400 ml-1">(Domination)</span>}:
-            </span>{' '}
-            {effects?.stun && formatMez('Stun', effects.stun, effects.stunDuration)}
-            {effects?.hold && formatMez('Hold', effects.hold, effects.holdDuration)}
-            {effects?.immobilize && formatMez('Immob', effects.immobilize, effects.immobilizeDuration)}
-            {effects?.sleep && formatMez('Sleep', effects.sleep, effects.sleepDuration)}
-            {effects?.fear && formatMez('Fear', effects.fear, effects.fearDuration)}
-            {effects?.confuse && formatMez('Confuse', effects.confuse, effects.confuseDuration)}
-            {effects?.knockback && <span className="text-purple-400">KB Mag {effects.knockback} </span>}
-          </div>
-        );
-      })()}
 
       {/* Defense (armor sets) - with three-tier display */}
       {effects?.defense && (
@@ -879,7 +540,21 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
 
       {/* Mez Protection (armor sets) */}
       {effects?.protection && (
-        <ProtectionCompact protection={effects.protection} />
+        <ProtectionDisplay protection={effects.protection} compact />
+      )}
+
+      {/* Registry-based effect display for movement and special effects (buff/debuff/control handled above) */}
+      {effects && (
+        <EffectDisplay
+          effects={effects}
+          archetypeId={archetypeId as ArchetypeId}
+          enhancementBonuses={enhancementBonuses}
+          categories={['movement', 'special']}
+          compact={true}
+          buffDebuffMod={effectiveMod}
+          dominationActive={dominationActive}
+          powersetId={powerSet}
+        />
       )}
 
       {/* Blaster Defiance - show for Blaster primary/secondary attack powers */}

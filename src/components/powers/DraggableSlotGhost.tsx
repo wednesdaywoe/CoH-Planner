@@ -9,12 +9,21 @@
 import { useState, useRef, useCallback, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 
+type SlotSize = 'xs' | 'sm' | 'md';
+
 interface DraggableSlotGhostProps {
   powerName: string; // Kept for potential future use (accessibility, debugging)
   currentSlots: number;
   maxSlots: number;
   onAddSlots: (count: number) => void;
+  size?: SlotSize;
 }
+
+const SIZE_CLASSES: Record<SlotSize, string> = {
+  xs: 'w-4 h-4 text-[6px]',
+  sm: 'w-5 h-5 text-[8px]',
+  md: 'w-6 h-6 text-[9px]',
+};
 
 const DRAG_THRESHOLD = 5; // Pixels before considering it a drag
 const PIXELS_PER_SLOT = 30; // Distance for each additional slot
@@ -26,7 +35,9 @@ export function DraggableSlotGhost({
   currentSlots,
   maxSlots,
   onAddSlots,
+  size = 'md',
 }: DraggableSlotGhostProps) {
+  const sizeClass = SIZE_CLASSES[size];
   const [isDragging, setIsDragging] = useState(false);
   const [slotsToAdd, setSlotsToAdd] = useState(1);
   const [ghostPosition, setGhostPosition] = useState({ x: 0, y: 0 });
@@ -193,7 +204,7 @@ export function DraggableSlotGhost({
         onMouseDown={handleMouseDown}
         onTouchStart={handleTouchStart}
         className={`
-          w-6 h-6 rounded-full border flex items-center justify-center
+          ${sizeClass} rounded-full border flex items-center justify-center
           cursor-pointer transition-all select-none
           ${
             isDragging
@@ -208,7 +219,7 @@ export function DraggableSlotGhost({
         }
       >
         <span
-          className={`text-[9px] font-semibold ${isDragging ? 'text-blue-300' : 'text-slate-400'}`}
+          className={`font-semibold ${isDragging ? 'text-blue-300' : 'text-slate-400'}`}
         >
           {isDragging ? '1' : '+'}
         </span>

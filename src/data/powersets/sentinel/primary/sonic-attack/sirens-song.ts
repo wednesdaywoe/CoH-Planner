@@ -1,0 +1,44 @@
+/**
+ * Sirens Song
+ * Ranged (Cone), Minor DMG(Energy), Foe Sleep
+ *
+ * Source: sentinel_ranged/sonic_attack/sirens_song.json
+ */
+
+import type { Power } from '@/types';
+
+export const SirensSong: Power = {
+  "name": "Sirens Song",
+  "internalName": "Sirens_Song",
+  "available": 17,
+  "description": "You send forth a subsonic pulse which causes your foes to fall unconscious and take energy damage. Your foes will remain unconscious for a good while, but will awaken if disturbed.Notes: The Sleep component of this power is Auto Hit against regular enemies, but a To Hit check is required against AVs and players, as well as to make secondary effects apply.",
+  "shortHelp": "Ranged (Cone), Minor DMG(Energy), Foe Sleep",
+  "icon": "sonicblast_sleep.png",
+  "powerType": "Click",
+  "effectArea": "Cone",
+  "stats": {
+    "accuracy": 1,
+    "range": 40,
+    "radius": 40,
+    "arc": 0.8727,
+    "recharge": 16,
+    "endurance": 15.184,
+    "castTime": 1.86,
+    "maxTargets": 10
+  },
+  "allowedEnhancements": [
+    "EnduranceReduction",
+    "Range",
+    "Sleep",
+    "Recharge",
+    "Damage",
+    "Accuracy"
+  ],
+  "allowedSetCategories": [
+    "Ranged AoE Damage",
+    "Sentinel Archetype Sets",
+    "Sleep",
+    "Universal Damage Sets"
+  ],
+  "maxSlots": 6
+};

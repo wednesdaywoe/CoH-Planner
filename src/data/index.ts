@@ -43,9 +43,7 @@ export {
   getIOSetsForPower,
   getIOSetPiece,
   getSetBonusesAtCount,
-  searchIOSets,
   getAllIOSetTypes,
-  getIOSetCountByRarity,
   IO_SET_TYPE_TO_CATEGORY,
   IO_SET_RARITIES,
   getIOSetRarityInfo,
@@ -59,9 +57,6 @@ export {
   getPowersetsForArchetype,
   getPower,
   getPowersAvailableAtLevel,
-  searchPowersets,
-  searchPowers,
-  getPowersetCountByArchetype,
   getPowerIconPath,
   resolvePowerIcon,
 } from './powersets';
@@ -76,7 +71,6 @@ export {
   getPoolPowersAvailableAtLevel,
   getPoolEntryPowers,
   arePoolPrerequisitesMet,
-  searchPowerPools,
   POOL_CATEGORIES,
   getPoolsByCategory,
   arePoolsUnlocked,
@@ -94,8 +88,6 @@ export {
   getEpicPoolByName,
   getEpicPoolPower,
   getEpicPoolPowersAvailableAtLevel,
-  searchEpicPools,
-  getEpicPoolCountByArchetype,
   getEpicPoolPowerIconPath,
   areEpicPoolsUnlocked,
   isEpicPowerAvailable,
@@ -235,3 +227,27 @@ export {
   getGrantedPowerGroupSmart,
 } from './granted-powers';
 export type { GrantedPowerGroup } from './granted-powers';
+
+// Effect registry for data-driven power effect display
+export {
+  EFFECT_REGISTRY,
+  CATEGORY_CONFIG,
+  groupEffectsByCategory,
+  isByTypeObject,
+  isMezEffect,
+  formatMezValue,
+  calculateEffectValue,
+  formatEffectValue as formatRegistryEffectValue,
+  getByTypeAbbreviations,
+  getByTypeFirstValue,
+  getRegisteredEffectKeys,
+  isRegisteredEffect,
+} from './effect-registry';
+export type {
+  EffectCategory,
+  EffectFormat,
+  EffectDisplayConfig,
+  CategoryDisplayConfig,
+  GroupedEffect,
+  GroupedEffects,
+} from './effect-registry';

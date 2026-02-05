@@ -1,0 +1,42 @@
+/**
+ * Warmth
+ * PBAoE, Team +Heal
+ *
+ * Source: mastermind_buff/thermal_radiation/warmth.json
+ */
+
+import type { Power } from '@/types';
+
+export const Warmth: Power = {
+  "name": "Warmth",
+  "internalName": "Warmth",
+  "available": 0,
+  "description": "You can use your Warmth to heal some of your wounds, and the wounds of your group. This power has a small radius, so your allies need to be near you if they wish to be affected.",
+  "shortHelp": "PBAoE, Team +Heal",
+  "icon": "thermalradiation_warmth.png",
+  "powerType": "Click",
+  "targetType": "Self",
+  "effectArea": "AoE",
+  "stats": {
+    "accuracy": 1,
+    "radius": 25,
+    "recharge": 8,
+    "endurance": 16.25,
+    "castTime": 2.03,
+    "maxTargets": 255
+  },
+  "allowedEnhancements": [
+    "EnduranceReduction",
+    "Recharge",
+    "Healing"
+  ],
+  "allowedSetCategories": [
+    "Healing"
+  ],
+  "maxSlots": 6,
+  "damage": {
+    "type": "Heal",
+    "scale": 0.88,
+    "table": "Ranged_Heal"
+  }
+};

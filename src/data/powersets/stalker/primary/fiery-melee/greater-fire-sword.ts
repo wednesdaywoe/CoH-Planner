@@ -1,0 +1,61 @@
+/**
+ * Greater Fire Sword
+ * Melee, DMG(Fire), -Defense
+ *
+ * Source: stalker_melee/fiery_melee/greater_fire_sword.json
+ */
+
+import type { Power } from '@/types';
+
+export const GreaterFireSword: Power = {
+  "name": "Greater Fire Sword",
+  "internalName": "Greater_Fire_Sword",
+  "available": 25,
+  "description": "Your mastery of fire allows you to create an enhanced Sword of Fire that can set foes ablaze and cut through their defenses. Successful attacks from the Greater Fire Sword will ignite your target, dealing damage over time.",
+  "shortHelp": "Melee, DMG(Fire), -Defense",
+  "icon": "fieryfray_greaterfiresword.png",
+  "powerType": "Click",
+  "effectArea": "SingleTarget",
+  "stats": {
+    "accuracy": 1.2,
+    "range": 7,
+    "recharge": 13,
+    "endurance": 12.688,
+    "castTime": 1.37
+  },
+  "allowedEnhancements": [
+    "EnduranceReduction",
+    "Recharge",
+    "Defense Debuff",
+    "Damage",
+    "Accuracy"
+  ],
+  "allowedSetCategories": [
+    "Accurate Defense Debuff",
+    "Defense Debuff",
+    "Melee Damage",
+    "Stalker Archetype Sets",
+    "Universal Damage Sets"
+  ],
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Fire",
+      "scale": 2.44,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.2,
+      "table": "Melee_Damage",
+      "duration": 2.1,
+      "tickRate": 0.5
+    }
+  ],
+  "effects": {
+    "defenseDebuff": {
+      "scale": 0.5,
+      "table": "Melee_Debuff_Def"
+    }
+  }
+};

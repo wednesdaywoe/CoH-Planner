@@ -121,6 +121,9 @@ interface UIState {
 
   /** Selected branch for Arachnos Epic ATs (Soldier: bane-spider/crab-spider, Widow: night-widow/fortunata) */
   selectedBranch: ArchetypeBranchId | null;
+
+  /** Power view mode: 'category' (default) or 'chronological' (Mids-style) */
+  powerViewMode: 'category' | 'chronological';
 }
 
 interface UIActions {
@@ -235,6 +238,10 @@ interface UIActions {
   // Arachnos Branch Selection (Epic ATs)
   setSelectedBranch: (branch: ArchetypeBranchId | null) => void;
   clearSelectedBranch: () => void;
+
+  // Power View Mode
+  setPowerViewMode: (mode: 'category' | 'chronological') => void;
+  togglePowerViewMode: () => void;
 }
 
 type UIStore = UIState & UIActions;
@@ -328,6 +335,7 @@ export const useUIStore = create<UIStore>()(
       stalkerTeamSize: 0, // Default to solo (0 teammates)
       containmentActive: false, // Default to OFF (like Critical Hits)
       selectedBranch: null, // No branch selected by default
+      powerViewMode: 'category', // Default to category-based view
 
       // Enhancement Picker Modal
       openEnhancementPicker: (powerName, powerSet, slotIndex) =>
@@ -740,6 +748,15 @@ export const useUIStore = create<UIStore>()(
 
       clearSelectedBranch: () =>
         set({ selectedBranch: null }),
+
+      // Power View Mode
+      setPowerViewMode: (mode) =>
+        set({ powerViewMode: mode }),
+
+      togglePowerViewMode: () =>
+        set((state) => ({
+          powerViewMode: state.powerViewMode === 'category' ? 'chronological' : 'category',
+        })),
     }),
     {
       name: 'coh-planner-ui',
@@ -765,6 +782,7 @@ export const useUIStore = create<UIStore>()(
         stalkerTeamSize: state.stalkerTeamSize,
         containmentActive: state.containmentActive,
         selectedBranch: state.selectedBranch,
+        powerViewMode: state.powerViewMode,
       }),
     })
   );
@@ -846,3 +864,6 @@ export const useStalkerTeamSize = () => useUIStore((state) => state.stalkerTeamS
 
 /** Select containment active state */
 export const useContainmentActive = () => useUIStore((state) => state.containmentActive);
+
+/** Select power view mode */
+export const usePowerViewMode = () => useUIStore((state) => state.powerViewMode);

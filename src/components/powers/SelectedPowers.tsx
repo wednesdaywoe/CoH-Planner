@@ -293,6 +293,11 @@ function SelectedPowerRow({
       }`}
       onMouseLeave={onLeave}
     >
+      {/* Level indicator */}
+      <div className="flex-shrink-0 w-6 text-center">
+        <span className="text-[10px] font-semibold text-slate-500">L{power.level}</span>
+      </div>
+
       {/* Power icon and name - right-click to lock info panel */}
       <div
         className="flex items-center gap-1.5 flex-1 min-w-0 cursor-default"

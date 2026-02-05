@@ -1,0 +1,51 @@
+/**
+ * Grave Knight
+ * Summon Grave Knight
+ *
+ * Source: mastermind_summon/necromancy/skeletal_warriors.json
+ */
+
+import type { Power } from '@/types';
+
+export const GraveKnight: Power = {
+  "name": "Grave Knight",
+  "internalName": "Skeletal_Warriors",
+  "available": 11,
+  "description": "You can summon one to two powerful Grave Knights (depending on your level) to do your bidding. Grave Knights come well equipped with several attack powers and can be empowered with even more.You may only have 2 Grave Knights under your control at any given time. If you attempt to summon more Grave Knights, you can only replace the ones you have lost in battle. If you already have two, the power will fail.Notes: Grave Knight is unaffected by Recharge Time changes.",
+  "shortHelp": "Summon Grave Knight",
+  "icon": "necromancy_summonskeletonwarrior.png",
+  "powerType": "Click",
+  "targetType": "Location",
+  "effectArea": "Location",
+  "stats": {
+    "accuracy": 1,
+    "range": 60,
+    "recharge": 10,
+    "endurance": 9.62,
+    "castTime": 1.07
+  },
+  "allowedEnhancements": [
+    "EnduranceReduction",
+    "ToHit Debuff",
+    "Defense Debuff",
+    "Damage",
+    "Accuracy"
+  ],
+  "allowedSetCategories": [
+    "Accurate Defense Debuff",
+    "Defense Debuff",
+    "Knockback",
+    "Mastermind Archetype Sets",
+    "Pet Damage",
+    "Recharge Intensive Pets",
+    "To Hit Debuff",
+    "Universal Damage Sets"
+  ],
+  "maxSlots": 6,
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "MastermindPets_Skeletal_Warrior"
+    }
+  }
+};

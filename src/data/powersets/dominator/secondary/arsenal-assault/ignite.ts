@@ -1,0 +1,45 @@
+/**
+ * Ignite
+ * Ranged, DoT(Fire)
+ *
+ * Source: dominator_assault/arsenal_assault/ignite.json
+ */
+
+import type { Power } from '@/types';
+
+export const Ignite: Power = {
+  "name": "Ignite",
+  "internalName": "Ignite",
+  "available": 29,
+  "description": "Sprays a target with accelerant from your flamethrower, igniting it and causing extreme damage over time. Also sets the location on fire if the target is grounded, inflicting damage to additional foes that step in the area.",
+  "shortHelp": "Ranged, DoT(Fire)",
+  "icon": "assaultweapons_dot.png",
+  "powerType": "Click",
+  "effectArea": "SingleTarget",
+  "stats": {
+    "accuracy": 1.15,
+    "range": 60,
+    "recharge": 12,
+    "endurance": 11.865,
+    "castTime": 2
+  },
+  "allowedEnhancements": [
+    "EnduranceReduction",
+    "Range",
+    "Recharge",
+    "Damage",
+    "Accuracy"
+  ],
+  "allowedSetCategories": [
+    "Ranged AoE Damage",
+    "Universal Damage Sets"
+  ],
+  "maxSlots": 6,
+  "damage": {
+    "type": "Fire",
+    "scale": 0.1254,
+    "table": "Ranged_Damage",
+    "duration": 5.5,
+    "tickRate": 0.25
+  }
+};

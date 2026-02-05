@@ -1,0 +1,77 @@
+/**
+ * Bitter Ice Blast
+ * Ranged, DMG(Cold), Foe -Recharge, -SPD, -To Hit
+ *
+ * Source: defender_ranged/ice_blast/bitter_ice_blast.json
+ */
+
+import type { Power } from '@/types';
+
+export const BitterIceBlast: Power = {
+  "name": "Bitter Ice Blast",
+  "internalName": "Bitter_Ice_Blast",
+  "available": 23,
+  "description": "A slower yet more powerful version of Ice Blast, Bitter Ice Blast deals much more damage and can also reduce your enemy's chance to hit. Like other Ice Blast powers, Bitter Ice Blast can Slow a target's movement and attack speed.",
+  "shortHelp": "Ranged, DMG(Cold), Foe -Recharge, -SPD, -To Hit",
+  "icon": "iceblast_bitterfrostblast.png",
+  "powerType": "Click",
+  "effectArea": "SingleTarget",
+  "stats": {
+    "accuracy": 1,
+    "range": 80,
+    "recharge": 12,
+    "endurance": 11.856,
+    "castTime": 1.07
+  },
+  "allowedEnhancements": [
+    "Slow",
+    "EnduranceReduction",
+    "Range",
+    "Recharge",
+    "ToHit Debuff",
+    "Damage",
+    "Accuracy"
+  ],
+  "allowedSetCategories": [
+    "Accurate To-Hit Debuff",
+    "Defender Archetype Sets",
+    "Ranged Damage",
+    "Slow Movement",
+    "To Hit Debuff",
+    "Universal Damage Sets"
+  ],
+  "maxSlots": 6,
+  "damage": {
+    "type": "Cold",
+    "scale": 2.28,
+    "table": "Ranged_Damage"
+  },
+  "effects": {
+    "tohitDebuff": {
+      "scale": 1,
+      "table": "Ranged_Debuff_ToHit"
+    },
+    "movement": {
+      "jumpHeight": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      },
+      "runSpeed": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      },
+      "flySpeed": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      }
+    },
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Ranged_Slow"
+    }
+  }
+};

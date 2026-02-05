@@ -472,6 +472,11 @@ function PoolPowerGroup({
                     }`}
                     onMouseLeave={onPowerLeave}
                   >
+                    {/* Level indicator */}
+                    <div className="flex-shrink-0 w-6 text-center">
+                      <span className="text-[10px] font-semibold text-slate-500">L{power.level}</span>
+                    </div>
+
                     {/* Power icon and name */}
                     <div
                       className="flex items-center gap-1.5 flex-1 min-w-0 cursor-default"
@@ -1109,6 +1114,10 @@ function EpicPoolSection({ level, archetypeId, epicPool }: EpicPoolSectionProps)
                         }`}
                         onMouseLeave={handlePowerLeave}
                       >
+                        {/* Level indicator */}
+                        <div className="flex-shrink-0 w-6 text-center">
+                          <span className="text-[10px] font-semibold text-slate-500">L{power.level}</span>
+                        </div>
                         {/* Power icon and name */}
                         <div
                           className="flex items-center gap-1.5 flex-1 min-w-0 cursor-default"

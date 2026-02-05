@@ -1,0 +1,49 @@
+/**
+ * Fly Trap
+ * Summon Fly Trap: Ranged Control Special
+ *
+ * Source: dominator_control/plant_control/fly_trap.json
+ */
+
+import type { Power } from '@/types';
+
+export const FlyTrap: Power = {
+  "name": "Fly Trap",
+  "internalName": "Fly_Trap",
+  "available": 25,
+  "description": "You can summon a giant carnivorous Fly Trap plant beast. Fly Trap may be an understatement, as this plant beast has a taste for flesh. The Fly Trap will viciously attack any nearby foes; biting, hurling poisonous Thorns and even casting its own Entangle Roots. The Fly Trap will fight by your side and can be healed and buffed like any teammate.",
+  "shortHelp": "Summon Fly Trap: Ranged Control Special",
+  "icon": "plantcontrol_venusflytrap.png",
+  "powerType": "Click",
+  "targetType": "Location",
+  "effectArea": "Location",
+  "stats": {
+    "accuracy": 1,
+    "range": 50,
+    "recharge": 240,
+    "endurance": 26,
+    "castTime": 1.17
+  },
+  "allowedEnhancements": [
+    "EnduranceReduction",
+    "Range",
+    "Recharge",
+    "Defense Debuff",
+    "Damage",
+    "Accuracy"
+  ],
+  "allowedSetCategories": [
+    "Accurate Defense Debuff",
+    "Defense Debuff",
+    "Pet Damage",
+    "Recharge Intensive Pets",
+    "Universal Damage Sets"
+  ],
+  "maxSlots": 6,
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_Fly_Trap"
+    }
+  }
+};

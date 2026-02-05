@@ -240,33 +240,6 @@ export function getEpicPoolPowersAvailableAtLevel(poolId: string, level: number)
   return pool.powers.filter((p) => p.available < level && p.available >= 0);
 }
 
-/**
- * Search epic pools by name or description
- */
-export function searchEpicPools(query: string): EpicPool[] {
-  const lowerQuery = query.toLowerCase();
-  return Object.values(_epicPools).filter(
-    (pool) =>
-      pool.name.toLowerCase().includes(lowerQuery) ||
-      pool.displayName.toLowerCase().includes(lowerQuery) ||
-      pool.description.toLowerCase().includes(lowerQuery)
-  );
-}
-
-/**
- * Get count of epic pools by archetype
- */
-export function getEpicPoolCountByArchetype(): Record<string, number> {
-  const counts: Record<string, number> = {};
-
-  for (const pool of Object.values(_epicPools)) {
-    const archetype = pool.archetype;
-    counts[archetype] = (counts[archetype] || 0) + 1;
-  }
-
-  return counts;
-}
-
 // ============================================
 // EPIC POOL ICON UTILITIES
 // ============================================

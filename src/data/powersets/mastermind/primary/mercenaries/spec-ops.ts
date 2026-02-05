@@ -1,0 +1,56 @@
+/**
+ * Spec Ops
+ * Summon Spec Ops
+ *
+ * Source: mastermind_summon/mercenaries/spec_ops.json
+ */
+
+import type { Power } from '@/types';
+
+export const SpecOps: Power = {
+  "name": "Spec Ops",
+  "internalName": "Spec_Ops",
+  "available": 11,
+  "description": "You can enlist one to two highly skilled Spec Ops Mercenary (depending on your level). Spec Ops weapons are highly accurate and long ranged, and they are adept in many different tactical weapons. Like all Henchmen, Spec Ops can be equipped with even deadlier munitions.You may only have 2 Spec Ops under your control at any given time. If you attempt to summon more Spec Ops, you can only replace the ones you have lost in battle. If you already have two, the power will fail.Notes: Spec Ops is unaffected by Recharge Time changes.",
+  "shortHelp": "Summon Spec Ops",
+  "icon": "paramilitary_enlistspecialforces.png",
+  "powerType": "Click",
+  "targetType": "Location",
+  "effectArea": "Location",
+  "stats": {
+    "accuracy": 1,
+    "range": 60,
+    "recharge": 10,
+    "endurance": 9.62,
+    "castTime": 2.03
+  },
+  "allowedEnhancements": [
+    "Hold",
+    "EnduranceReduction",
+    "Stun",
+    "ToHit Debuff",
+    "Defense Debuff",
+    "Damage",
+    "Accuracy"
+  ],
+  "allowedSetCategories": [
+    "Accurate Defense Debuff",
+    "Accurate To-Hit Debuff",
+    "Defense Debuff",
+    "Holds",
+    "Immobilize",
+    "Mastermind Archetype Sets",
+    "Pet Damage",
+    "Recharge Intensive Pets",
+    "Stuns",
+    "To Hit Debuff",
+    "Universal Damage Sets"
+  ],
+  "maxSlots": 6,
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "MastermindPets_Spec_Ops"
+    }
+  }
+};

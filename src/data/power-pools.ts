@@ -242,18 +242,6 @@ export function arePoolPrerequisitesMet(
   });
 }
 
-/**
- * Search power pools by name or description
- */
-export function searchPowerPools(query: string): PowerPool[] {
-  const lowerQuery = query.toLowerCase();
-  return Object.values(_pools).filter(
-    (pool) =>
-      pool.name.toLowerCase().includes(lowerQuery) ||
-      pool.description.toLowerCase().includes(lowerQuery)
-  );
-}
-
 // ============================================
 // POOL CATEGORY INFO
 // ============================================

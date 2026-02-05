@@ -257,19 +257,28 @@ export const SUPPORT_POWER_EFFECTS: Record<string, Partial<PowerEffects>> = {
   'corruptor/radiation-emission/Radiant Aura': {
     healing: { scale: 1.27, perTarget: true },
   },
+  'mastermind/radiation-emission/Radiant Aura': {
+    healing: { scale: 1.27, perTarget: true },
+  },
 
   // Radiation Infection - Toggle debuff aura
+  // Base: 29.25% ToHit/Defense debuff (scale 2.925 * 0.10)
+  // Defender (1.25): 36.56%, Controller (1.0): 29.25%, Corruptor (0.75): 21.94%
   'controller/radiation-emission/Radiation Infection': {
-    tohitDebuff: 2.0, // -20% base
-    defenseDebuff: 2.0, // -20% base
+    tohitDebuff: 2.925, // -29.25% base
+    defenseDebuff: 2.925, // -29.25% base
   },
   'defender/radiation-emission/Radiation Infection': {
-    tohitDebuff: 2.0,
-    defenseDebuff: 2.0,
+    tohitDebuff: 2.925,
+    defenseDebuff: 2.925,
   },
   'corruptor/radiation-emission/Radiation Infection': {
-    tohitDebuff: 2.0,
-    defenseDebuff: 2.0,
+    tohitDebuff: 2.925,
+    defenseDebuff: 2.925,
+  },
+  'mastermind/radiation-emission/Radiation Infection': {
+    tohitDebuff: 2.925,
+    defenseDebuff: 2.925,
   },
 
   // Enervating Field - Toggle resist debuff
@@ -282,6 +291,10 @@ export const SUPPORT_POWER_EFFECTS: Record<string, Partial<PowerEffects>> = {
     damageDebuff: 1.0,
   },
   'corruptor/radiation-emission/Enervating Field': {
+    resistanceDebuff: 3.0,
+    damageDebuff: 1.0,
+  },
+  'mastermind/radiation-emission/Enervating Field': {
     resistanceDebuff: 3.0,
     damageDebuff: 1.0,
   },
@@ -308,6 +321,13 @@ export const SUPPORT_POWER_EFFECTS: Record<string, Partial<PowerEffects>> = {
     rechargeBuff: 0.20,
     recoveryBuff: 0.25,
   },
+  'mastermind/radiation-emission/Accelerate Metabolism': {
+    damageBuff: 0.625,
+    tohitBuff: 0.625,
+    speedBuff: 0.20,
+    rechargeBuff: 0.20,
+    recoveryBuff: 0.25,
+  },
 
   // Lingering Radiation - AoE slow + regen debuff
   'controller/radiation-emission/Lingering Radiation': {
@@ -321,6 +341,11 @@ export const SUPPORT_POWER_EFFECTS: Record<string, Partial<PowerEffects>> = {
     rechargeBuff: -0.40,
   },
   'corruptor/radiation-emission/Lingering Radiation': {
+    slow: 0.50,
+    regenDebuff: 10.0,
+    rechargeBuff: -0.40,
+  },
+  'mastermind/radiation-emission/Lingering Radiation': {
     slow: 0.50,
     regenDebuff: 10.0,
     rechargeBuff: -0.40,

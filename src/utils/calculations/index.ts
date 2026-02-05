@@ -7,11 +7,13 @@ export {
   getBaseDamage,
   calculateActualDamage,
   calculatePowerDamage,
+  calculateDotDamage,
   formatDamage,
   calculateBuffDebuffValue,
   type DamageTableType,
   type DamageCalculationOptions,
   type PowerDamageResult,
+  type DotDamageResult,
   type DamageEffect,
   type PowerWithDamage,
   type BuildContext,
@@ -104,6 +106,28 @@ export {
   type DashboardStatBreakdown,
   type CharacterCalculationResult,
 } from './character-totals';
+
+// AT-based effect calculations (using Homecoming tables)
+export {
+  calculateScaledEffect,
+  calculateMultipleEffects,
+  calculateScaledDamage,
+  calculatePowerDamageFromScaled,
+  sumDamageResults,
+  calculateScaledHeal,
+  isScaledEffect,
+  normalizeTableName,
+  normalizeArchetypeId,
+  getArchetypeTableNames,
+  hasATTables,
+  compareATModifiers,
+  formatEffectValue,
+  formatDamageValue,
+  type ScaledEffect,
+  type ScaledDamage,
+  type EffectCalculationResult,
+  type DamageCalculationResult as ATDamageResult,
+} from './at-effects';
 
 // Archetype inherent calculations
 export {

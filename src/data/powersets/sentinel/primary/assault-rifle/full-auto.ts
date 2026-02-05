@@ -1,0 +1,58 @@
+/**
+ * Full Auto
+ * Ranged (Cone), DoT(Lethal), +Special
+ *
+ * Source: sentinel_ranged/assault_rifle/full_auto.json
+ */
+
+import type { Power } from '@/types';
+
+export const FullAuto: Power = {
+  "name": "Full Auto",
+  "internalName": "Full_Auto",
+  "available": 25,
+  "description": "Opens up your assault rifle on Full Auto to lay down a massive spray of bullets at your target. Although very slow to reload, damage from this attack is massive, shredding all targets within the cone of effect. There's a chance you may land a lucky shot for extra damage.Damage: Superior.Recharge: Long.",
+  "shortHelp": "Ranged (Cone), DoT(Lethal), +Special",
+  "icon": "assaultweapons_arfullauto.png",
+  "powerType": "Click",
+  "effectArea": "Cone",
+  "stats": {
+    "accuracy": 1.35,
+    "range": 40,
+    "radius": 40,
+    "arc": 1.5708,
+    "recharge": 90,
+    "endurance": 15.6,
+    "castTime": 2.5,
+    "maxTargets": 10
+  },
+  "allowedEnhancements": [
+    "EnduranceReduction",
+    "Range",
+    "Recharge",
+    "Damage",
+    "Accuracy"
+  ],
+  "allowedSetCategories": [
+    "Ranged AoE Damage",
+    "Sentinel Archetype Sets",
+    "Universal Damage Sets"
+  ],
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 0.2261,
+      "table": "Ranged_Damage",
+      "duration": 2,
+      "tickRate": 0.2
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.0935,
+      "table": "Ranged_Damage",
+      "duration": 2,
+      "tickRate": 0.2
+    }
+  ]
+};
