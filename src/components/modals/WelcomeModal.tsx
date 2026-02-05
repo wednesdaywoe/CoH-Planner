@@ -26,6 +26,17 @@ const RECENT_CHANGES = [
   'Updated tooltip to stay in sync with infopanel',
   'Added alternate view mode to see powers listed chronologically by acquisition level (toggle is at the top of power selection)',
   'Added level acquisition info to powers in both modes',
+  'Fixed Street Justice naming issue',
+  'First pass at adding Epic ATs, expect bugs',
+  'First pass with Archetype inherent powers, expect bugs',
+  'Battle Agility: Added missing defense: { ranged, aoe } values',
+  'Deflection: Added missing melee defense (only had psionic), fixed allowedEnhancements',
+  'True Grit: Removed incorrect dotDamage, added maxHealth bonus, fixed allowedEnhancements',
+  'Generic IO Values: Level 50 shows correct 42.4%',
+  'Display Bug: Fixed 3560.0% tooltip display',
+  'Sprint Categories: Corrected to only accept Running & Sprints and Universal Travel',
+  'Added some UI support for mobile devices',
+  'Added touch support for slot and enhancement drag operations',
 ];
 
 const TODO_ITEMS = [
@@ -51,7 +62,7 @@ export function WelcomeModal({ isOpen, onClose }: WelcomeModalProps) {
           {/* Introduction */}
           <p className="text-gray-300">
             This build planner is currently in <span className="text-amber-400 font-semibold">active development</span>.
-            Some features may be incomplete or contain bugs.
+            Some features may be incomplete or contain bugs. I'm Currently working a massive overhaul for data extraction to capture more properties and values accurately.'
           </p>
 
           {/* Recent Changes */}
