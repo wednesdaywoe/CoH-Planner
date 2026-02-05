@@ -11,7 +11,7 @@ import { resolvePath } from '@/utils/paths';
 import { DraggableSlotGhost } from './DraggableSlotGhost';
 import { SlottedEnhancementIcon } from './SlottedEnhancementIcon';
 import { Tooltip } from '@/components/ui';
-import { useLongPress, useSwipeToRemove } from '@/hooks';
+import { useLongPress } from '@/hooks';
 
 /**
  * Determine if a power should show a toggle switch for stat calculations.
@@ -228,8 +228,9 @@ interface TouchableSlotProps {
 
 /**
  * Slot component with touch support:
- * - Swipe on filled slot removes enhancement
+ * - Long-press on filled slot removes enhancement
  * - Long-press on empty slot (not first) removes slot
+ * - Tap on any slot opens enhancement picker
  */
 function TouchableSlot({
   slot,
@@ -241,30 +242,33 @@ function TouchableSlot({
   onClearEnhancement,
   onRemoveSlot,
 }: TouchableSlotProps) {
-  // Swipe to remove enhancement (only for filled slots)
-  const swipeHandlers = useSwipeToRemove({
-    threshold: 40,
-    onSwipe: onClearEnhancement,
-    enabled: !!slot,
+  // Long-press to remove enhancement (for filled slots)
+  const filledSlotHandlers = useLongPress({
+    duration: 500,
+    onLongPress: onClearEnhancement,
+    onTap: onClick,
   });
 
-  // Long-press to remove slot (only for empty slots that aren't the first)
-  const longPressHandlers = useLongPress({
+  // Long-press to remove slot (for empty slots that aren't the first)
+  const emptySlotHandlers = useLongPress({
     duration: 500,
     onLongPress: onRemoveSlot,
     onTap: onClick,
   });
 
-  // Combine handlers based on slot state
+  // Select handlers based on slot state
+  // - Filled slot: long-press to remove enhancement, tap to open picker
+  // - Empty removable slot: long-press to remove slot, tap to add
+  // - First empty slot: just tap to add (no special touch handlers needed)
   const touchHandlers = slot
-    ? swipeHandlers
+    ? filledSlotHandlers
     : canRemoveSlot
-      ? longPressHandlers
+      ? emptySlotHandlers
       : { onTouchStart: undefined, onTouchEnd: undefined, onTouchMove: undefined };
 
   return (
     <div
-      onClick={slot ? onClick : undefined} // For filled slots, regular click; for empty, handled by longPress
+      onClick={onClick} // Always allow click/tap to open enhancement picker
       onMouseEnter={onMouseEnter}
       onContextMenu={onContextMenu}
       {...touchHandlers}
@@ -279,7 +283,7 @@ function TouchableSlot({
       `}
       title={
         slot
-          ? `${slot.name || 'Enhancement'} - swipe or right-click to remove`
+          ? `${slot.name || 'Enhancement'} - long-press or right-click to remove`
           : `Empty slot ${index + 1} - tap to add${canRemoveSlot ? ', long-press or right-click to remove slot' : ''}`
       }
     >
