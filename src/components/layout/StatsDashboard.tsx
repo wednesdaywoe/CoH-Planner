@@ -585,11 +585,11 @@ export function StatsDashboard() {
 
   return (
     <>
-      <div className="bg-gray-900/50 border-b border-gray-800 px-4 py-2 relative">
+      <div className="bg-gray-900/50 border-b border-gray-800 px-2 sm:px-4 py-2 relative">
         {/* About button - top right */}
         <button
           onClick={openAboutModal}
-          className="absolute top-2 right-4 z-10 flex items-center gap-1.5 px-3 py-2 text-xs font-semibold text-gray-200 bg-gray-800 hover:bg-gray-750 rounded-lg transition-all duration-300 group border-2 border-transparent"
+          className="absolute top-2 right-2 sm:right-4 z-10 flex items-center gap-1.5 px-2 sm:px-3 py-1.5 sm:py-2 text-xs font-semibold text-gray-200 bg-gray-800 hover:bg-gray-750 rounded-lg transition-all duration-300 group border-2 border-transparent"
           style={{
             backgroundImage: 'linear-gradient(rgb(31, 41, 55), rgb(31, 41, 55)), linear-gradient(135deg, rgb(37, 99, 235), rgb(147, 51, 234))',
             backgroundOrigin: 'border-box',
@@ -602,19 +602,19 @@ export function StatsDashboard() {
             alt="About"
             className="w-4 h-4 group-hover:scale-110 transition-transform"
           />
-          <span>About</span>
+          <span className="hidden sm:inline">About</span>
         </button>
 
-        <div className="flex items-center gap-4">
-          {/* Grouped stats - all panels in a single flex container with consistent gap */}
-          <div className="flex-1 flex flex-wrap gap-4 items-start">
+        <div className="flex flex-col lg:flex-row items-stretch lg:items-center gap-2 lg:gap-4">
+          {/* Grouped stats - responsive grid layout */}
+          <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 lg:flex lg:flex-wrap gap-2 lg:gap-4 items-start">
             {/* Resources panel - Powers and Slots remaining */}
-            <div className="flex flex-col gap-2 min-w-[140px] max-w-[160px]">
-              <div className="bg-gray-800/70 rounded-lg px-3 py-2 border border-gray-700 h-[168px] min-h-[168px] max-h-[168px]">
+            <div className="flex flex-col gap-2 w-full sm:w-auto lg:min-w-[140px] lg:max-w-[160px]">
+              <div className="bg-gray-800/70 rounded-lg px-3 py-2 border border-gray-700 lg:h-[168px] lg:min-h-[168px] lg:max-h-[168px]">
                 <div className="text-xs font-semibold text-gray-400 mb-2 uppercase tracking-wide">Resources</div>
-                <div className="flex flex-col gap-3">
+                <div className="flex flex-row sm:flex-col gap-3 sm:gap-3">
                   <Tooltip content={`${24 - currentPowerCount} power picks remaining (${currentPowerCount} used)`}>
-                    <div className="flex items-center justify-between">
+                    <div className="flex items-center justify-between flex-1 sm:flex-auto">
                       <span className="text-xs text-gray-500 uppercase tracking-wide">Powers</span>
                       <span
                         className={`text-sm font-medium ${
@@ -626,7 +626,7 @@ export function StatsDashboard() {
                     </div>
                   </Tooltip>
                   <Tooltip content={`${67 - currentSlotCount} enhancement slots remaining (${currentSlotCount} used)`}>
-                    <div className="flex items-center justify-between">
+                    <div className="flex items-center justify-between flex-1 sm:flex-auto">
                       <span className="text-xs text-gray-500 uppercase tracking-wide">Slots</span>
                       <span
                         className={`text-sm font-medium ${
@@ -642,10 +642,10 @@ export function StatsDashboard() {
             </div>
 
             {/* Offense and Health & Endurance stacked vertically */}
-            <div className="flex flex-col gap-2 min-w-[300px] max-w-[360px]">
+            <div className="flex flex-col gap-2 w-full sm:w-auto lg:min-w-[300px] lg:max-w-[360px]">
               {groupedStats.find((g) => g.name === 'Offense') && (
                 <div
-                  className={`bg-gray-800/70 rounded-lg px-3 py-2 border border-gray-700 ${groupedStats.find((g) => g.name === 'Offense')?.panelClass}`}
+                  className={`bg-gray-800/70 rounded-lg px-3 py-2 border border-gray-700 ${groupedStats.find((g) => g.name === 'Offense')?.panelClass.replace(/h-\[80px\]|min-h-\[80px\]|max-h-\[100px\]/g, 'lg:$&')}`}
                 >
                   <div className="text-xs font-semibold text-gray-400 mb-1 uppercase tracking-wide">Offense</div>
                   <div className="grid grid-cols-2 gap-x-4 gap-y-1">
@@ -664,7 +664,7 @@ export function StatsDashboard() {
               )}
               {groupedStats.find((g) => g.name === 'Health & Endurance') && (
                 <div
-                  className={`bg-gray-800/70 rounded-lg px-3 py-2 border border-gray-700 ${groupedStats.find((g) => g.name === 'Health & Endurance')?.panelClass}`}
+                  className={`bg-gray-800/70 rounded-lg px-3 py-2 border border-gray-700 ${groupedStats.find((g) => g.name === 'Health & Endurance')?.panelClass.replace(/h-\[80px\]|min-h-\[80px\]|max-h-\[100px\]/g, 'lg:$&')}`}
                 >
                   <div className="text-xs font-semibold text-gray-400 mb-1 uppercase tracking-wide">Health & Endurance</div>
                   <div className="grid grid-cols-2 gap-x-4 gap-y-1">
@@ -688,7 +688,7 @@ export function StatsDashboard() {
               .map((group) => (
                 <div
                   key={group.name}
-                  className={`min-w-[300px] max-w-[360px] bg-gray-800/70 rounded-lg px-3 py-2 border border-gray-700 ${group.panelClass}`}
+                  className={`w-full sm:w-auto lg:min-w-[300px] lg:max-w-[360px] bg-gray-800/70 rounded-lg px-3 py-2 border border-gray-700 ${group.panelClass.replace(/h-\[\d+px\]|min-h-\[\d+px\]|max-h-\[\d+px\]/g, 'lg:$&')}`}
                 >
                   <div className="text-xs font-semibold text-gray-400 mb-1 uppercase tracking-wide">{group.name}</div>
                   <div className="grid grid-cols-2 gap-x-4 gap-y-1">
@@ -707,7 +707,7 @@ export function StatsDashboard() {
               ))}
 
             {/* Incarnate Powers panel - 2x3 grid */}
-            <div className="min-w-[260px] max-w-[300px] bg-gray-800/70 rounded-lg px-3 py-2 border border-gray-700 h-[168px] min-h-[168px] max-h-[168px]">
+            <div className="w-full sm:w-auto lg:min-w-[260px] lg:max-w-[300px] bg-gray-800/70 rounded-lg px-3 py-2 border border-gray-700 lg:h-[168px] lg:min-h-[168px] lg:max-h-[168px]">
               <div className="text-xs font-semibold text-gray-400 mb-2 uppercase tracking-wide flex items-center justify-between">
                 <span>Incarnate</span>
                 {!isLevel50 && (
@@ -722,8 +722,8 @@ export function StatsDashboard() {
             </div>
           </div>
 
-          {/* Dashboard actions */}
-          <div className="flex flex-col items-end gap-1 flex-shrink-0">
+          {/* Dashboard actions - horizontal on mobile, vertical on desktop */}
+          <div className="flex flex-row lg:flex-col items-center lg:items-end gap-2 lg:gap-1 flex-shrink-0 pt-2 lg:pt-0 border-t lg:border-t-0 border-gray-700">
             <button
               onClick={openAccoladesModal}
               className="flex items-center gap-1.5 px-2 py-1 text-xs text-gray-400 hover:text-amber-300 hover:bg-gray-800 rounded transition-colors"
@@ -734,13 +734,25 @@ export function StatsDashboard() {
               </svg>
               <span>Accolades</span>
             </button>
+            {/* Configure button - inline on mobile */}
+            <button
+              onClick={openStatsConfigModal}
+              className="flex lg:hidden items-center gap-1.5 px-2 py-1 text-xs text-gray-400 hover:text-gray-200 hover:bg-gray-800 rounded transition-colors"
+              title="Configure dashboard stats"
+            >
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+              <span>Configure</span>
+            </button>
           </div>
         </div>
 
-        {/* Configure button - bottom right */}
+        {/* Configure button - bottom right, desktop only */}
         <button
           onClick={openStatsConfigModal}
-          className="absolute bottom-2 right-4 z-10 flex items-center gap-1.5 px-2 py-1 text-xs text-gray-400 hover:text-gray-200 hover:bg-gray-800 rounded transition-colors"
+          className="hidden lg:flex absolute bottom-2 right-4 z-10 items-center gap-1.5 px-2 py-1 text-xs text-gray-400 hover:text-gray-200 hover:bg-gray-800 rounded transition-colors"
           title="Configure dashboard stats"
         >
           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">

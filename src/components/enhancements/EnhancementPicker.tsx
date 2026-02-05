@@ -583,10 +583,10 @@ export function EnhancementPicker() {
       size="xl"
     >
       <ModalBody className="p-0">
-        <div className="flex flex-col h-[70vh]">
+        <div className="flex flex-col h-[80vh] sm:h-[70vh]">
         {/* Type filter tabs at top */}
-        <div className="flex items-center justify-between border-b border-gray-700 bg-gray-900/50 flex-shrink-0">
-          <div className="flex">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between border-b border-gray-700 bg-gray-900/50 flex-shrink-0">
+          <div className="flex overflow-x-auto">
             {[
               { id: 'io-sets' as const, label: 'IO Sets' },
               { id: 'generic' as const, label: 'Generic IO' },
@@ -599,7 +599,7 @@ export function EnhancementPicker() {
                   setTypeFilter(tab.id);
                   setSidebarFilter('all');
                 }}
-                className={`px-4 py-2 text-sm font-medium transition-colors ${
+                className={`px-3 sm:px-4 py-2 text-xs sm:text-sm font-medium transition-colors whitespace-nowrap ${
                   typeFilter === tab.id
                     ? 'text-blue-400 border-b-2 border-blue-400 bg-gray-800/50'
                     : 'text-gray-400 hover:text-gray-200 hover:bg-gray-800/30'
@@ -610,7 +610,7 @@ export function EnhancementPicker() {
             ))}
           </div>
           {/* Attunement toggle */}
-          <div className="px-4">
+          <div className="px-3 sm:px-4 py-1.5 sm:py-0 border-t sm:border-t-0 border-gray-700">
             <Toggle
               id="attunement-toggle-picker"
               name="attunement"
@@ -621,10 +621,66 @@ export function EnhancementPicker() {
           </div>
         </div>
 
+        {/* Category filter - horizontal scrolling on mobile only */}
+        {typeFilter === 'io-sets' && availableSets.length > 0 && (
+          <div className="flex sm:hidden overflow-x-auto border-b border-gray-700 bg-gray-900/30 flex-shrink-0 gap-1 px-2 py-1.5">
+            <MobileCategoryButton
+              label="All"
+              count={availableSets.filter((s) => !isSpecialSet(s)).length}
+              isActive={sidebarFilter === 'all'}
+              onClick={() => setSidebarFilter('all')}
+            />
+            {primaryCategory && (
+              <MobileCategoryButton
+                label={primaryCategory.replace(' Damage', '').replace(' Sets', '')}
+                count={availableSets.filter((s) => s.type === primaryCategory && !isSpecialSet(s)).length}
+                isActive={sidebarFilter === primaryCategory}
+                onClick={() => setSidebarFilter(primaryCategory)}
+                textColor="text-yellow-400"
+              />
+            )}
+            {hasUniversal && (
+              <MobileCategoryButton
+                label="Universal"
+                count={availableSets.filter((s) => s.type === 'Universal Damage Sets').length}
+                isActive={sidebarFilter === 'universal'}
+                onClick={() => setSidebarFilter('universal')}
+              />
+            )}
+            {hasVeryRare && (
+              <MobileCategoryButton
+                label="Very Rare"
+                count={availableSets.filter((s) => s.category === 'purple').length}
+                isActive={sidebarFilter === 'very-rare'}
+                onClick={() => setSidebarFilter('very-rare')}
+                textColor="text-purple-400"
+              />
+            )}
+            {hasEvent && (
+              <MobileCategoryButton
+                label="Event"
+                count={availableSets.filter((s) => s.category === 'event').length}
+                isActive={sidebarFilter === 'event'}
+                onClick={() => setSidebarFilter('event')}
+                textColor="text-cyan-400"
+              />
+            )}
+            {hasArchetype && (
+              <MobileCategoryButton
+                label="ATO"
+                count={availableSets.filter((s) => s.category === 'ato').length}
+                isActive={sidebarFilter === 'archetype'}
+                onClick={() => setSidebarFilter('archetype')}
+                textColor="text-orange-400"
+              />
+            )}
+          </div>
+        )}
+
         <div className="flex flex-1 min-h-0">
-          {/* Category sidebar - only for IO Sets */}
+          {/* Category sidebar - desktop only */}
           {typeFilter === 'io-sets' && availableSets.length > 0 && (
-            <div className="w-48 border-r border-gray-700 overflow-y-auto flex-shrink-0 bg-gray-900/30">
+            <div className="hidden sm:block w-48 border-r border-gray-700 overflow-y-auto flex-shrink-0 bg-gray-900/30">
               {/* All (standard sets only) */}
               <SidebarButton
                 label="All"
@@ -690,7 +746,7 @@ export function EnhancementPicker() {
           )}
 
           {/* Main content area */}
-          <div className="flex-1 overflow-y-auto p-3">
+          <div className="flex-1 overflow-y-auto p-2 sm:p-3">
             {typeFilter === 'io-sets' && (
               <IOSetsContent
                 sets={filteredSets}
@@ -759,6 +815,33 @@ function SidebarButton({ label, count, isActive, onClick, textColor }: SidebarBu
         isActive
           ? 'bg-blue-900/30 text-blue-300 border-l-2 border-blue-400'
           : `${textColor || 'text-gray-400'} hover:bg-gray-800/50 hover:text-gray-200`
+      }`}
+    >
+      {label} ({count})
+    </button>
+  );
+}
+
+// ============================================
+// MOBILE CATEGORY BUTTON
+// ============================================
+
+interface MobileCategoryButtonProps {
+  label: string;
+  count: number;
+  isActive: boolean;
+  onClick: () => void;
+  textColor?: string;
+}
+
+function MobileCategoryButton({ label, count, isActive, onClick, textColor }: MobileCategoryButtonProps) {
+  return (
+    <button
+      onClick={onClick}
+      className={`px-2.5 py-1 text-xs font-medium rounded-full whitespace-nowrap transition-colors ${
+        isActive
+          ? 'bg-blue-600 text-white'
+          : `bg-gray-700 ${textColor || 'text-gray-300'} hover:bg-gray-600`
       }`}
     >
       {label} ({count})
@@ -870,14 +953,14 @@ function IOSetRow({
   return (
     <div className="bg-gray-800/40 rounded-lg p-2">
       {/* Set header */}
-      <div className="flex items-center gap-2 mb-2">
-        <span className={`text-sm font-medium ${getRarityColor(set.category)}`}>
+      <div className="flex items-center gap-1 sm:gap-2 mb-2 flex-wrap">
+        <span className={`text-xs sm:text-sm font-medium ${getRarityColor(set.category)}`}>
           {set.name}
         </span>
-        <span className="text-xs text-gray-500">
-          Lv {set.minLevel}-{set.maxLevel} • {set.pieces.length} pieces
+        <span className="text-[10px] sm:text-xs text-gray-500">
+          Lv {set.minLevel}-{set.maxLevel} • {set.pieces.length}pc
         </span>
-        <span className="text-xs text-gray-600 ml-auto">Shift+click to slot all</span>
+        <span className="hidden sm:inline text-xs text-gray-600 ml-auto">Shift+click to slot all</span>
       </div>
 
       {/* Pieces as icons */}

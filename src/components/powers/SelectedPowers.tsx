@@ -5,12 +5,13 @@
 
 import { useBuildStore, useUIStore } from '@/stores';
 import type { PowerCategory } from '@/stores';
-import type { SelectedPower, Power } from '@/types';
+import type { SelectedPower, Power, Enhancement } from '@/types';
 import { getPowerIconPath, getPowerset, hasGrantedPowers, getGrantedPowerGroup } from '@/data';
 import { resolvePath } from '@/utils/paths';
 import { DraggableSlotGhost } from './DraggableSlotGhost';
 import { SlottedEnhancementIcon } from './SlottedEnhancementIcon';
 import { Tooltip } from '@/components/ui';
+import { useLongPress, useSwipeToRemove } from '@/hooks';
 
 /**
  * Determine if a power should show a toggle switch for stat calculations.
@@ -210,6 +211,87 @@ export function SelectedPowers({ category }: SelectedPowersProps) {
   );
 }
 
+// ============================================
+// TOUCHABLE SLOT COMPONENT
+// ============================================
+
+interface TouchableSlotProps {
+  slot: Enhancement | null;
+  index: number;
+  canRemoveSlot: boolean;
+  onClick: () => void;
+  onMouseEnter: () => void;
+  onContextMenu: (e: React.MouseEvent) => void;
+  onClearEnhancement: () => void;
+  onRemoveSlot: () => void;
+}
+
+/**
+ * Slot component with touch support:
+ * - Swipe on filled slot removes enhancement
+ * - Long-press on empty slot (not first) removes slot
+ */
+function TouchableSlot({
+  slot,
+  index,
+  canRemoveSlot,
+  onClick,
+  onMouseEnter,
+  onContextMenu,
+  onClearEnhancement,
+  onRemoveSlot,
+}: TouchableSlotProps) {
+  // Swipe to remove enhancement (only for filled slots)
+  const swipeHandlers = useSwipeToRemove({
+    threshold: 40,
+    onSwipe: onClearEnhancement,
+    enabled: !!slot,
+  });
+
+  // Long-press to remove slot (only for empty slots that aren't the first)
+  const longPressHandlers = useLongPress({
+    duration: 500,
+    onLongPress: onRemoveSlot,
+    onTap: onClick,
+  });
+
+  // Combine handlers based on slot state
+  const touchHandlers = slot
+    ? swipeHandlers
+    : canRemoveSlot
+      ? longPressHandlers
+      : { onTouchStart: undefined, onTouchEnd: undefined, onTouchMove: undefined };
+
+  return (
+    <div
+      onClick={slot ? onClick : undefined} // For filled slots, regular click; for empty, handled by longPress
+      onMouseEnter={onMouseEnter}
+      onContextMenu={onContextMenu}
+      {...touchHandlers}
+      className={`
+        w-6 h-6 rounded-full border flex items-center justify-center
+        text-[9px] font-semibold cursor-pointer transition-transform hover:scale-110
+        ${
+          slot
+            ? 'border-transparent bg-transparent'
+            : 'border-slate-600 bg-slate-700/50 text-slate-500 hover:border-blue-500 hover:bg-slate-600'
+        }
+      `}
+      title={
+        slot
+          ? `${slot.name || 'Enhancement'} - swipe or right-click to remove`
+          : `Empty slot ${index + 1} - tap to add${canRemoveSlot ? ', long-press or right-click to remove slot' : ''}`
+      }
+    >
+      {slot ? (
+        <SlottedEnhancementIcon enhancement={slot} size={24} />
+      ) : (
+        <span className="text-slate-400">+</span>
+      )}
+    </div>
+  );
+}
+
 interface SelectedPowerRowProps {
   power: SelectedPower;
   powersetId: string;
@@ -321,32 +403,17 @@ function SelectedPowerRow({
       {/* Enhancement slots - fixed width container to prevent layout shift */}
       <div className="flex gap-0.5 justify-start items-center flex-shrink-0" style={{ width: '180px' }}>
         {power.slots.map((slot, index) => (
-          <div
+          <TouchableSlot
             key={index}
+            slot={slot}
+            index={index}
+            canRemoveSlot={index > 0}
             onClick={() => handleSlotClick(index)}
             onMouseEnter={() => handleSlotMouseEnter(index, !!slot)}
             onContextMenu={(e) => handleSlotRightClick(e, index, !!slot)}
-            className={`
-              w-6 h-6 rounded-full border flex items-center justify-center
-              text-[9px] font-semibold cursor-pointer transition-transform hover:scale-110
-              ${
-                slot
-                  ? 'border-transparent bg-transparent'
-                  : 'border-slate-600 bg-slate-700/50 text-slate-500 hover:border-blue-500 hover:bg-slate-600'
-              }
-            `}
-            title={
-              slot
-                ? `${slot.name || 'Enhancement'} (right-click to remove enhancement)`
-                : `Empty slot ${index + 1} - click to add enhancement${index > 0 ? ', right-click to remove slot' : ''}`
-            }
-          >
-            {slot ? (
-              <SlottedEnhancementIcon enhancement={slot} size={24} />
-            ) : (
-              <span className="text-slate-400">+</span>
-            )}
-          </div>
+            onClearEnhancement={() => onClearEnhancement(index)}
+            onRemoveSlot={() => onRemoveSlot(index)}
+          />
         ))}
 
         {/* Draggable ghost slot for adding more */}

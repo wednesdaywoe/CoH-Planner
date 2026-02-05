@@ -7,11 +7,13 @@
 
 import { useBuildStore, useUIStore } from '@/stores';
 import type { PowerCategory as StorePowerCategory } from '@/stores';
+import type { Enhancement } from '@/types';
 import { getPowerIconPath, getPowerset } from '@/data';
 import { resolvePath } from '@/utils/paths';
 import { DraggableSlotGhost } from './DraggableSlotGhost';
 import { SlottedEnhancementIcon } from './SlottedEnhancementIcon';
 import { Tooltip } from '@/components/ui';
+import { useLongPress, useSwipeToRemove } from '@/hooks';
 import type { CategorizedPower, PowerCategory } from './ChronologicalPowerView';
 
 // Category colors for left border
@@ -28,6 +30,82 @@ const CATEGORY_LABELS: Record<PowerCategory, string> = {
   pool: 'Pool',
   epic: 'Epic',
 };
+
+// ============================================
+// TOUCHABLE SLOT COMPONENT (compact version)
+// ============================================
+
+interface TouchableSlotCompactProps {
+  slot: Enhancement | null;
+  index: number;
+  canRemoveSlot: boolean;
+  onClick: () => void;
+  onMouseEnter: () => void;
+  onContextMenu: (e: React.MouseEvent) => void;
+  onClearEnhancement: () => void;
+  onRemoveSlot: () => void;
+}
+
+/**
+ * Compact slot component with touch support for chronological view
+ */
+function TouchableSlotCompact({
+  slot,
+  index,
+  canRemoveSlot,
+  onClick,
+  onMouseEnter,
+  onContextMenu,
+  onClearEnhancement,
+  onRemoveSlot,
+}: TouchableSlotCompactProps) {
+  const swipeHandlers = useSwipeToRemove({
+    threshold: 40,
+    onSwipe: onClearEnhancement,
+    enabled: !!slot,
+  });
+
+  const longPressHandlers = useLongPress({
+    duration: 500,
+    onLongPress: onRemoveSlot,
+    onTap: onClick,
+  });
+
+  const touchHandlers = slot
+    ? swipeHandlers
+    : canRemoveSlot
+      ? longPressHandlers
+      : { onTouchStart: undefined, onTouchEnd: undefined, onTouchMove: undefined };
+
+  return (
+    <div
+      onClick={slot ? onClick : undefined}
+      onMouseEnter={onMouseEnter}
+      onContextMenu={onContextMenu}
+      {...touchHandlers}
+      className={`
+        w-5 h-5 rounded-full border flex items-center justify-center
+        text-[8px] font-semibold cursor-pointer transition-transform hover:scale-110
+        ${
+          slot
+            ? 'border-transparent bg-transparent'
+            : 'border-slate-600 bg-slate-700/50 text-slate-500 hover:border-blue-500 hover:bg-slate-600'
+        }
+      `}
+      title={
+        slot
+          ? `${slot.name || 'Enhancement'} - swipe or right-click to remove`
+          : `Slot ${index + 1}${canRemoveSlot ? ' - long-press or right-click to remove' : ''}`
+      }
+    >
+      {slot ? (
+        <SlottedEnhancementIcon enhancement={slot} size={20} />
+      ) : (
+        <span className="text-slate-400">+</span>
+      )}
+    </div>
+  );
+}
 
 /**
  * Determine if a power should show a toggle switch for stat calculations.
@@ -239,34 +317,19 @@ export function ChronologicalPowerSlot({
         style={{ width: '140px' }}
       >
         {power.slots.slice(0, 6).map((slot, index) => (
-          <div
+          <TouchableSlotCompact
             key={index}
+            slot={slot}
+            index={index}
+            canRemoveSlot={index > 0}
             onClick={() => handleSlotClick(index)}
             onMouseEnter={() =>
               slot ? handleEnhancementHover(index) : handlePowerHover()
             }
             onContextMenu={(e) => handleSlotRightClick(e, index, !!slot)}
-            className={`
-              w-5 h-5 rounded-full border flex items-center justify-center
-              text-[8px] font-semibold cursor-pointer transition-transform hover:scale-110
-              ${
-                slot
-                  ? 'border-transparent bg-transparent'
-                  : 'border-slate-600 bg-slate-700/50 text-slate-500 hover:border-blue-500 hover:bg-slate-600'
-              }
-            `}
-            title={
-              slot
-                ? `${slot.name || 'Enhancement'} (right-click to remove)`
-                : `Slot ${index + 1}`
-            }
-          >
-            {slot ? (
-              <SlottedEnhancementIcon enhancement={slot} size={20} />
-            ) : (
-              <span className="text-slate-400">+</span>
-            )}
-          </div>
+            onClearEnhancement={() => clearEnhancement(power.name, index)}
+            onRemoveSlot={() => removeSlot(power.name, index)}
+          />
         ))}
 
         {/* Draggable ghost for adding slots */}

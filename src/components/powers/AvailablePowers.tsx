@@ -4,6 +4,7 @@
  */
 
 import { useBuildStore, useUIStore } from '@/stores';
+import { useLongPress } from '@/hooks';
 import { getPowerset, getPowerIconPath } from '@/data';
 import { resolvePath } from '@/utils/paths';
 import type { Power } from '@/types';
@@ -13,6 +14,98 @@ interface AvailablePowersProps {
   category: 'primary' | 'secondary';
   selectedPowerNames: string[];
   onSelectPower: (power: Power) => void;
+}
+
+interface PowerItemProps {
+  power: Power;
+  powersetId: string;
+  powersetName: string;
+  isSelected: boolean;
+  isAvailable: boolean;
+  isDisabled: boolean;
+  isLocked: boolean;
+  onSelect: () => void;
+  onHover: () => void;
+  onLeave: () => void;
+  onLockToggle: () => void;
+}
+
+function PowerItem({
+  power,
+  powersetId: _powersetId,
+  powersetName,
+  isSelected,
+  isAvailable,
+  isDisabled,
+  isLocked,
+  onSelect,
+  onHover,
+  onLeave,
+  onLockToggle,
+}: PowerItemProps) {
+  // Long-press handler for mobile - locks info panel
+  const longPressHandlers = useLongPress({
+    duration: 500,
+    onLongPress: onLockToggle,
+    onTap: isDisabled ? undefined : onSelect,
+  });
+
+  const handleRightClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    onLockToggle();
+  };
+
+  return (
+    <div
+      onMouseEnter={onHover}
+      onMouseLeave={onLeave}
+      onContextMenu={handleRightClick}
+      onClick={() => !isDisabled && onSelect()}
+      {...longPressHandlers}
+      title={isLocked ? 'Right-click or long-press to unlock' : 'Right-click or long-press for info'}
+      className={`
+        w-full flex items-center gap-1.5 px-1.5 py-0.5 rounded-sm
+        transition-colors text-left text-xs select-none
+        ${
+          isLocked
+            ? 'border-amber-500 shadow-[0_0_4px_rgba(245,158,11,0.4)] bg-gradient-to-r from-amber-500/10 to-slate-800'
+            : isSelected
+              ? 'bg-blue-900/30 border border-blue-600/50 opacity-60'
+              : !isAvailable
+                ? 'bg-slate-800/50 border border-slate-700/50 opacity-40 cursor-not-allowed'
+                : 'bg-slate-800 border border-slate-700 hover:border-blue-500 cursor-pointer'
+        }
+      `}
+      role="button"
+      tabIndex={isDisabled ? -1 : 0}
+      onKeyDown={(e) => {
+        if (!isDisabled && (e.key === 'Enter' || e.key === ' ')) {
+          e.preventDefault();
+          onSelect();
+        }
+      }}
+    >
+      <img
+        src={getPowerIconPath(powersetName, power.icon)}
+        alt=""
+        className="w-4 h-4 rounded-sm flex-shrink-0 pointer-events-none"
+        onError={(e) => {
+          (e.target as HTMLImageElement).src = resolvePath('/img/Unknown.png');
+        }}
+      />
+      <span className="truncate flex-1 text-slate-200 pointer-events-none">
+        {power.name}
+      </span>
+      <span
+        className={`text-[10px] flex-shrink-0 pointer-events-none ${
+          isAvailable ? 'text-slate-500' : 'text-amber-500/70'
+        }`}
+        title={isAvailable ? `Available at level ${power.available + 1}` : `Requires level ${power.available + 1}`}
+      >
+        L{power.available + 1}
+      </span>
+    </div>
+  );
 }
 
 export function AvailablePowers({
@@ -91,8 +184,7 @@ export function AvailablePowers({
     clearInfoPanel();
   };
 
-  const handlePowerRightClick = (e: React.MouseEvent, power: Power) => {
-    e.preventDefault();
+  const handleLockToggle = (power: Power) => {
     if (!powersetId) return;
 
     // If already locked to this power, unlock; otherwise lock to this power
@@ -169,7 +261,7 @@ export function AvailablePowers({
       )}
       {bothPowersetsSelected && isLevel1 && hasPickedPowerThisCategory && (
         <div className="text-xs text-slate-500 italic py-1 mb-1">
-          ✓ {categoryLabel} power selected
+          {categoryLabel} power selected
         </div>
       )}
 
@@ -196,55 +288,20 @@ export function AvailablePowers({
             const isLocked = isPowerLocked(power.name);
 
             return (
-              <div
+              <PowerItem
                 key={power.name}
-                onMouseEnter={() => handlePowerHover(power)}
-                onMouseLeave={handlePowerLeave}
-                onContextMenu={(e) => handlePowerRightClick(e, power)}
-                title={isLocked ? 'Right-click to unlock power info' : 'Right-click to lock power info'}
-                className={`
-                  w-full flex items-center gap-1.5 px-1.5 py-0.5 rounded-sm
-                  transition-colors text-left text-xs
-                  ${
-                    isLocked
-                      ? 'border-amber-500 shadow-[0_0_4px_rgba(245,158,11,0.4)] bg-gradient-to-r from-amber-500/10 to-slate-800'
-                      : isSelected
-                        ? 'bg-blue-900/30 border border-blue-600/50 opacity-60'
-                        : !isAvailable
-                          ? 'bg-slate-800/50 border border-slate-700/50 opacity-40 cursor-not-allowed'
-                          : 'bg-slate-800 border border-slate-700 hover:border-blue-500 cursor-pointer'
-                  }
-                `}
-                onClick={() => !isDisabled && onSelectPower(power)}
-                role="button"
-                tabIndex={isDisabled ? -1 : 0}
-                onKeyDown={(e) => {
-                  if (!isDisabled && (e.key === 'Enter' || e.key === ' ')) {
-                    e.preventDefault();
-                    onSelectPower(power);
-                  }
-                }}
-              >
-                <img
-                  src={powerset ? getPowerIconPath(powerset.name, power.icon) : resolvePath('/img/Unknown.png')}
-                  alt=""
-                  className="w-4 h-4 rounded-sm flex-shrink-0"
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).src = resolvePath('/img/Unknown.png');
-                  }}
-                />
-                <span className="truncate flex-1 text-slate-200">
-                  {power.name}
-                </span>
-                <span
-                  className={`text-[10px] flex-shrink-0 ${
-                    isAvailable ? 'text-slate-500' : 'text-amber-500/70'
-                  }`}
-                  title={isAvailable ? `Available at level ${power.available + 1}` : `Requires level ${power.available + 1}`}
-                >
-                  L{power.available + 1}
-                </span>
-              </div>
+                power={power}
+                powersetId={powersetId}
+                powersetName={powerset?.name || ''}
+                isSelected={isSelected}
+                isAvailable={isAvailable}
+                isDisabled={isDisabled}
+                isLocked={isLocked}
+                onSelect={() => onSelectPower(power)}
+                onHover={() => handlePowerHover(power)}
+                onLeave={handlePowerLeave}
+                onLockToggle={() => handleLockToggle(power)}
+              />
             );
           })}
         </div>

@@ -27,3 +27,6 @@ export type {
   DashboardStatBreakdown,
   StatSource,
 } from './useCalculatedStats';
+
+export { useLongPress } from './useLongPress';
+export { useSwipeToRemove } from './useSwipeToRemove';

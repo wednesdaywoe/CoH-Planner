@@ -16,33 +16,21 @@ interface WelcomeModalProps {
 
 
 const KNOWN_ISSUES = [
-    'Titan/Hydra/D-Sync Origin Enhancements are not implemented',
-    'Set level caps (Touch of Death, Miracle) not enforced',
+  'Titan/Hydra/D-Sync Origin Enhancements are not implemented',
+  'Set level caps (Touch of Death, Miracle) not enforced',
 ];
 
 const RECENT_CHANGES = [
-  'Absolutely enormous database update, cleanup, and new data extraction pass',
-  'Updated infopanel to use a consolidated power effect registry system',
-  'Updated tooltip to stay in sync with infopanel',
-  'Added alternate view mode to see powers listed chronologically by acquisition level (toggle is at the top of power selection)',
-  'Added level acquisition info to powers in both modes',
-  'Fixed Street Justice naming issue',
-  'First pass at adding Epic ATs, expect bugs',
-  'First pass with Archetype inherent powers, expect bugs',
-  'Battle Agility: Added missing defense: { ranged, aoe } values',
-  'Deflection: Added missing melee defense (only had psionic), fixed allowedEnhancements',
-  'True Grit: Removed incorrect dotDamage, added maxHealth bonus, fixed allowedEnhancements',
-  'Generic IO Values: Level 50 shows correct 42.4%',
-  'Display Bug: Fixed 3560.0% tooltip display',
-  'Sprint Categories: Corrected to only accept Running & Sprints and Universal Travel',
-  'Added some UI support for mobile devices',
-  'Added touch support for slot and enhancement drag operations',
+  'Mobile: Swipe on slots to remove enhancements, long-press to remove slots',
+  'Mobile: Long-press on powers to view info',
+  'Mobile: Improved dashboard and enhancement picker layouts',
+  'Added chronological power view mode',
 ];
 
 const TODO_ITEMS = [
   'Add build sharing functionality',
   'Add data sets for Rebirth and Thunderspy',
-  "Improve mobile experience and layout",
+  'Continue improving mobile experience',
 ];
 
 export function WelcomeModal({ isOpen, onClose }: WelcomeModalProps) {
@@ -58,29 +46,43 @@ export function WelcomeModal({ isOpen, onClose }: WelcomeModalProps) {
   return (
     <Modal isOpen={isOpen} onClose={handleClose} title="Welcome to CoH Planner" size="lg">
       <ModalBody>
-        <div className="space-y-6">
-          {/* Introduction */}
+        <div className="space-y-5">
+          {/* Welcome Message */}
           <p className="text-gray-300">
-            This build planner is currently in <span className="text-amber-400 font-semibold">active development</span>.
-            Some features may be incomplete or contain bugs. I'm Currently working a massive overhaul for data extraction to capture more properties and values accurately.'
+            Thank you for helping test <span className="text-[#D62BCE] font-semibold">Sidekick</span>! This build planner is in <span className="text-amber-400 font-semibold">active development</span>.
+            Please expect bugs and incomplete features.
           </p>
 
-          {/* Recent Changes */}
+          {/* How to Use */}
           <div>
-            <h3 className="text-lg font-semibold text-green-400 mb-2 flex items-center gap-2">
+            <h3 className="text-lg font-semibold text-cyan-400 mb-2 flex items-center gap-2">
               <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
-              Recent Changes
+              How to Use
             </h3>
-            <ul className="space-y-1.5 text-sm text-gray-400">
-              {RECENT_CHANGES.map((change, idx) => (
-                <li key={idx} className="flex items-start gap-2">
-                  <span className="text-green-500 mt-0.5">•</span>
-                  <span>{change}</span>
-                </li>
-              ))}
-            </ul>
+            <div className="space-y-3 text-sm text-gray-400">
+              <div>
+                <span className="text-cyan-300 font-medium">Desktop (Mouse):</span>
+                <ul className="mt-1 space-y-1 ml-4">
+                  <li><span className="text-gray-300">Hover</span> over powers to see details in the info panel</li>
+                  <li><span className="text-gray-300">Click</span> to select powers or enhancement slots</li>
+                  <li><span className="text-gray-300">Right-click</span> on a power to lock its info in the panel</li>
+                  <li><span className="text-gray-300">Right-click</span> on a slot to remove enhancement or slot</li>
+                  <li><span className="text-gray-300">Drag</span> the + button to add multiple slots at once</li>
+                </ul>
+              </div>
+              <div>
+                <span className="text-cyan-300 font-medium">Mobile (Touch):</span>
+                <ul className="mt-1 space-y-1 ml-4">
+                  <li><span className="text-gray-300">Tap</span> to select powers or enhancement slots</li>
+                  <li><span className="text-gray-300">Long-press</span> on a power to view its info</li>
+                  <li><span className="text-gray-300">Swipe</span> on a filled slot to remove the enhancement</li>
+                  <li><span className="text-gray-300">Long-press</span> on an empty slot to remove it</li>
+                  <li><span className="text-gray-300">Touch and drag</span> the + button to add multiple slots</li>
+                </ul>
+              </div>
+            </div>
           </div>
 
           {/* Known Issues */}
@@ -91,7 +93,7 @@ export function WelcomeModal({ isOpen, onClose }: WelcomeModalProps) {
               </svg>
               Known Issues
             </h3>
-            <ul className="space-y-1.5 text-sm text-gray-400">
+            <ul className="space-y-1 text-sm text-gray-400">
               {KNOWN_ISSUES.map((issue, idx) => (
                 <li key={idx} className="flex items-start gap-2">
                   <span className="text-red-500 mt-0.5">•</span>
@@ -101,15 +103,33 @@ export function WelcomeModal({ isOpen, onClose }: WelcomeModalProps) {
             </ul>
           </div>
 
-          {/* To-Do List */}
+          {/* Recent Updates */}
+          <div>
+            <h3 className="text-lg font-semibold text-green-400 mb-2 flex items-center gap-2">
+              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+              Recent Updates
+            </h3>
+            <ul className="space-y-1 text-sm text-gray-400">
+              {RECENT_CHANGES.map((change, idx) => (
+                <li key={idx} className="flex items-start gap-2">
+                  <span className="text-green-500 mt-0.5">•</span>
+                  <span>{change}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Planned Features / Todo */}
           <div>
             <h3 className="text-lg font-semibold text-blue-400 mb-2 flex items-center gap-2">
               <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
               </svg>
-              Planned Features
+              Todo
             </h3>
-            <ul className="space-y-1.5 text-sm text-gray-400">
+            <ul className="space-y-1 text-sm text-gray-400">
               {TODO_ITEMS.map((item, idx) => (
                 <li key={idx} className="flex items-start gap-2">
                   <span className="text-blue-500 mt-0.5">•</span>
@@ -124,7 +144,7 @@ export function WelcomeModal({ isOpen, onClose }: WelcomeModalProps) {
             <p className="text-sm text-gray-300">
               Found a bug or have a suggestion? Use the{' '}
               <span className="text-purple-400 font-medium">Feedback/Bugs</span> button
-              in the bottom-right corner to let me know! You can submit feedback anonymously.
+              in the bottom-right corner to let me know!
             </p>
           </div>
         </div>
