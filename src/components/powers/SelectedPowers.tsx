@@ -275,12 +275,14 @@ function TouchableSlot({
       className={`
         w-6 h-6 rounded-full border flex items-center justify-center
         text-[9px] font-semibold cursor-pointer transition-transform hover:scale-110
+        select-none touch-none
         ${
           slot
             ? 'border-transparent bg-transparent'
             : 'border-slate-600 bg-slate-700/50 text-slate-500 hover:border-blue-500 hover:bg-slate-600'
         }
       `}
+      style={{ WebkitTouchCallout: 'none' }}
       title={
         slot
           ? `${slot.name || 'Enhancement'} - long-press or right-click to remove`

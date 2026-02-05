@@ -44,6 +44,9 @@ export function useLongPress({
   }, []);
 
   const onTouchStart = useCallback((e: React.TouchEvent) => {
+    // Prevent iOS context menu (copy, share, etc.) from appearing
+    e.preventDefault();
+
     isLongPressRef.current = false;
     const touch = e.touches[0];
     startPosRef.current = { x: touch.clientX, y: touch.clientY };
