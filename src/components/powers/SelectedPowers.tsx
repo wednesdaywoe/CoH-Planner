@@ -238,9 +238,9 @@ interface TouchableSlotProps {
 
 /**
  * Slot component with touch support:
- * - Long-press opens context menu with actions
- * - Tap opens enhancement picker
- * - Right-click (desktop) also shows context menu
+ * - Desktop: Right-click directly removes enhancement/slot, Shift+right-click opens menu
+ * - Mobile: Touch-and-hold opens context menu
+ * - Tap/click opens enhancement picker
  */
 function TouchableSlot({
   slot,
@@ -272,11 +272,27 @@ function TouchableSlot({
     onClick();
   };
 
+  // Desktop right-click: direct action, or Shift+right-click for menu
   const handleContextMenu = (e: React.MouseEvent) => {
     e.preventDefault();
-    openMenu(e.clientX, e.clientY);
+
+    // Shift+right-click opens menu for bulk actions
+    if (e.shiftKey) {
+      openMenu(e.clientX, e.clientY);
+      return;
+    }
+
+    // Regular right-click: direct action
+    if (slot) {
+      // Has enhancement - remove it
+      onClearEnhancement();
+    } else if (canRemoveSlot) {
+      // Empty slot (not first) - remove the slot
+      onRemoveSlot();
+    }
   };
 
+  // Mobile: touch-and-hold opens context menu
   const handleTouchStart = (e: React.TouchEvent) => {
     e.preventDefault(); // Prevent iOS context menu and text selection
     const touch = e.touches[0];
@@ -333,8 +349,8 @@ function TouchableSlot({
         style={{ WebkitTouchCallout: 'none', WebkitUserSelect: 'none' }}
         title={
           slot
-            ? `${slot.name || 'Enhancement'} - hold or right-click for options`
-            : `Empty slot ${index + 1} - tap to add, hold for options`
+            ? `${slot.name || 'Enhancement'} - right-click to remove, Shift+right-click for menu`
+            : `Empty slot ${index + 1} - tap to add${canRemoveSlot ? ', right-click to remove' : ''}`
         }
       >
         {slot ? (

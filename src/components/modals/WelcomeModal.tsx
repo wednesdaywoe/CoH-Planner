@@ -66,18 +66,19 @@ export function WelcomeModal({ isOpen, onClose }: WelcomeModalProps) {
                 <span className="text-cyan-300 font-medium">Desktop (Mouse):</span>
                 <ul className="mt-1 space-y-1 ml-4">
                   <li><span className="text-gray-300">Hover</span> over powers to see details in the info panel</li>
-                  <li><span className="text-gray-300">Click</span> to select powers or enhancement slots</li>
+                  <li><span className="text-gray-300">Click</span> to select powers or open the enhancement picker</li>
                   <li><span className="text-gray-300">Right-click</span> on a power to lock its info in the panel</li>
-                  <li><span className="text-gray-300">Right-click</span> on a slot to remove enhancement or slot</li>
+                  <li><span className="text-gray-300">Right-click</span> on a slot to remove its enhancement (or remove the slot if empty)</li>
+                  <li><span className="text-gray-300">Shift + Right-click</span> on a slot for bulk actions menu</li>
                   <li><span className="text-gray-300">Drag</span> the + button to add multiple slots at once</li>
                 </ul>
               </div>
               <div>
                 <span className="text-cyan-300 font-medium">Mobile (Touch):</span>
                 <ul className="mt-1 space-y-1 ml-4">
-                  <li><span className="text-gray-300">Tap</span> to select powers or enhancement slots</li>
-                  <li><span className="text-gray-300">Long-press</span> on a power to view its info</li>
-                  <li><span className="text-gray-300">Touch and hold</span> on a slot for action menu (remove enhancement, remove slot, etc.)</li>
+                  <li><span className="text-gray-300">Tap</span> to select powers or open the enhancement picker</li>
+                  <li><span className="text-gray-300">Long-press</span> on a power to view its info in the panel</li>
+                  <li><span className="text-gray-300">Touch and hold</span> on a slot for action menu (add, remove, clear all)</li>
                   <li><span className="text-gray-300">Touch and drag</span> the + button to add multiple slots</li>
                 </ul>
               </div>
