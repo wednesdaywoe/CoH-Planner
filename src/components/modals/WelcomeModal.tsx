@@ -32,11 +32,6 @@ const RECENT_CHANGES = [
   'Sprint Categories: Corrected to only accept Running & Sprints and Universal Travel',
   'Added some UI support for mobile devices',
   'Added touch support for slot and enhancement drag operations',
-  'Added magnitude display for control powers',
-  'Fixed Dominator primary/secondary powerset sorting',
-  'Fixed Electrical Affinity appearing in wrong dropdown for Defender',
-  'Fixed Beast Mastery appearing as secondary instead of primary for Mastermind',
-  'Renamed Shock Therapy to Electrical Affinity',
 ];
 
 const TODO_ITEMS = [
@@ -62,7 +57,7 @@ export function WelcomeModal({ isOpen, onClose }: WelcomeModalProps) {
           {/* Introduction */}
           <p className="text-gray-300">
             This build planner is currently in <span className="text-amber-400 font-semibold">active development</span>.
-            Some features may be incomplete or contain bugs.
+            Some features may be incomplete or contain bugs. I'm Currently working a massive overhaul for data extraction to capture more properties and values accurately.'
           </p>
 
           {/* Recent Changes */}
