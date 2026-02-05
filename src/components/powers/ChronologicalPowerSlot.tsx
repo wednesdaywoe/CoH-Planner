@@ -5,6 +5,7 @@
  * Includes category color coding and all standard interactions.
  */
 
+import { useRef } from 'react';
 import { useBuildStore, useUIStore } from '@/stores';
 import type { PowerCategory as StorePowerCategory } from '@/stores';
 import type { Enhancement } from '@/types';
@@ -62,18 +63,46 @@ function TouchableSlotCompact({
   onClearEnhancement,
   onRemoveSlot,
 }: TouchableSlotCompactProps) {
+  // Track if we just did a long-press to prevent click from firing
+  const longPressTriggeredRef = useRef(false);
+
+  const handleLongPressEnhancement = () => {
+    longPressTriggeredRef.current = true;
+    onClearEnhancement();
+    // Reset after a short delay (longer than click event propagation)
+    setTimeout(() => {
+      longPressTriggeredRef.current = false;
+    }, 300);
+  };
+
+  const handleLongPressSlot = () => {
+    longPressTriggeredRef.current = true;
+    onRemoveSlot();
+    setTimeout(() => {
+      longPressTriggeredRef.current = false;
+    }, 300);
+  };
+
+  const handleClick = () => {
+    // Skip if we just did a long-press (prevents modal from opening after removal)
+    if (longPressTriggeredRef.current) {
+      return;
+    }
+    onClick();
+  };
+
   // Long-press to remove enhancement (for filled slots)
   const filledSlotHandlers = useLongPress({
     duration: 500,
-    onLongPress: onClearEnhancement,
-    onTap: onClick,
+    onLongPress: handleLongPressEnhancement,
+    onTap: handleClick,
   });
 
   // Long-press to remove slot (for empty slots that aren't the first)
   const emptySlotHandlers = useLongPress({
     duration: 500,
-    onLongPress: onRemoveSlot,
-    onTap: onClick,
+    onLongPress: handleLongPressSlot,
+    onTap: handleClick,
   });
 
   // Select handlers based on slot state
@@ -88,7 +117,7 @@ function TouchableSlotCompact({
 
   return (
     <div
-      onClick={onClick} // Always allow click/tap to open enhancement picker
+      onClick={handleClick} // Click handler that respects long-press state
       onMouseEnter={onMouseEnter}
       onContextMenu={onContextMenu}
       {...touchHandlers}
