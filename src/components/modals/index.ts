@@ -9,3 +9,4 @@ export { AboutModal } from './AboutModal';
 export { ExportImportModal } from './ExportImportModal';
 export { FeedbackModal } from './FeedbackModal';
 export { WelcomeModal, useWelcomeModal } from './WelcomeModal';
+export { PowerInfoModal } from './PowerInfoModal';

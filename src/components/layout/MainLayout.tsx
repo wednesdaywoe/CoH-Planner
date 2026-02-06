@@ -7,6 +7,7 @@ import { Header } from './Header';
 import { StatsDashboard } from './StatsDashboard';
 import { EnhancementPicker } from '@/components/enhancements/EnhancementPicker';
 import { PowerInfoTooltip } from '@/components/info';
+import { PowerInfoModal } from '@/components/modals';
 import { useUIStore } from '@/stores';
 
 interface MainLayoutProps {
@@ -20,12 +21,13 @@ export function MainLayout({ children }: MainLayoutProps) {
     <div className="min-h-screen bg-gray-950 text-gray-100 flex flex-col">
       <Header />
       <StatsDashboard />
-      <main className="flex-1 overflow-hidden">
+      <main className="flex-1 overflow-hidden relative">
         {children}
       </main>
 
       {/* Global modals */}
       <EnhancementPicker />
+      <PowerInfoModal />
 
       {/* Power info tooltip (follows mouse when enabled) */}
       <PowerInfoTooltip />

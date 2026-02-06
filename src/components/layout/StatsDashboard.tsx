@@ -706,8 +706,8 @@ export function StatsDashboard() {
                 </div>
               ))}
 
-            {/* Incarnate Powers panel - 2x3 grid */}
-            <div className="w-full sm:w-auto lg:min-w-[260px] lg:max-w-[300px] bg-gray-800/70 rounded-lg px-3 py-2 border border-gray-700 lg:h-[168px] lg:min-h-[168px] lg:max-h-[168px]">
+            {/* Incarnate Powers panel - 2x3 grid - hide on small/medium screens to prevent overlap with power tree */}
+            <div className="hidden lg:block w-full sm:w-auto lg:min-w-[260px] lg:max-w-[300px] bg-gray-800/70 rounded-lg px-3 py-2 border border-gray-700 lg:h-[168px] lg:min-h-[168px] lg:max-h-[168px]">
               <div className="text-xs font-semibold text-gray-400 mb-2 uppercase tracking-wide flex items-center justify-between">
                 <span>Incarnate</span>
                 {!isLevel50 && (
@@ -724,6 +724,22 @@ export function StatsDashboard() {
 
           {/* Dashboard actions - horizontal on mobile, vertical on desktop */}
           <div className="flex flex-row lg:flex-col items-center lg:items-end gap-2 lg:gap-1 flex-shrink-0 pt-2 lg:pt-0 border-t lg:border-t-0 border-gray-700">
+            {/* Incarnate button - only visible on mobile/tablet when incarnate panel is hidden */}
+            <button
+              onClick={openIncarnateModal}
+              className={`flex lg:hidden items-center gap-1.5 px-2 py-1 text-xs rounded transition-colors ${
+                !isLevel50
+                  ? 'text-gray-500 cursor-not-allowed opacity-50'
+                  : 'text-gray-400 hover:text-purple-300 hover:bg-gray-800'
+              }`}
+              title={isLevel50 ? "Select incarnate powers" : "Incarnate powers unlock at level 50"}
+              disabled={!isLevel50}
+            >
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+              </svg>
+              <span>Incarnate</span>
+            </button>
             <button
               onClick={openAccoladesModal}
               className="flex items-center gap-1.5 px-2 py-1 text-xs text-gray-400 hover:text-amber-300 hover:bg-gray-800 rounded transition-colors"

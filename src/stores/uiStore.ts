@@ -62,6 +62,9 @@ interface UIState {
   /** Feedback modal open state */
   feedbackModalOpen: boolean;
 
+  /** Power Info modal open state (mobile only) */
+  powerInfoModalOpen: boolean;
+
   /** Global IO level for calculations */
   globalIOLevel: number;
 
@@ -197,6 +200,10 @@ interface UIActions {
   openFeedbackModal: () => void;
   closeFeedbackModal: () => void;
 
+  // Power Info Modal (mobile only)
+  openPowerInfoModal: () => void;
+  closePowerInfoModal: () => void;
+
   // Incarnate Active State
   toggleIncarnateActive: (slotId: ToggleableIncarnateSlot) => void;
   setIncarnateActive: (slotId: ToggleableIncarnateSlot, active: boolean) => void;
@@ -315,6 +322,7 @@ export const useUIStore = create<UIStore>()(
       currentIncarnateSlot: null,
       exportImportModalOpen: false,
       feedbackModalOpen: false,
+      powerInfoModalOpen: false,
       globalIOLevel: 50,
       attunementEnabled: false,
       exemplarMode: false,
@@ -507,13 +515,18 @@ export const useUIStore = create<UIStore>()(
         })),
 
       lockInfoPanel: (content) =>
-        set((state) => ({
-          infoPanel: {
-            ...state.infoPanel,
-            locked: true,
-            lockedContent: content,
-          },
-        })),
+        set((state) => {
+          // On mobile (< 768px), also open the power info modal
+          const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+          return {
+            infoPanel: {
+              ...state.infoPanel,
+              locked: true,
+              lockedContent: content,
+            },
+            powerInfoModalOpen: isMobile || state.powerInfoModalOpen,
+          };
+        }),
 
       unlockInfoPanel: () =>
         set((state) => ({
@@ -526,6 +539,8 @@ export const useUIStore = create<UIStore>()(
 
       toggleInfoPanelLock: () =>
         set((state) => {
+          const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+
           if (state.infoPanel.locked) {
             return {
               infoPanel: {
@@ -533,6 +548,8 @@ export const useUIStore = create<UIStore>()(
                 locked: false,
                 lockedContent: null,
               },
+              // Close modal when unlocking on mobile
+              powerInfoModalOpen: isMobile ? false : state.powerInfoModalOpen,
             };
           }
           // Lock with current content
@@ -542,6 +559,8 @@ export const useUIStore = create<UIStore>()(
               locked: true,
               lockedContent: state.infoPanel.content,
             },
+            // Open modal when locking on mobile
+            powerInfoModalOpen: isMobile || state.powerInfoModalOpen,
           };
         }),
 
@@ -655,6 +674,13 @@ export const useUIStore = create<UIStore>()(
 
       closeFeedbackModal: () =>
         set({ feedbackModalOpen: false }),
+
+      // Power Info Modal (mobile only)
+      openPowerInfoModal: () =>
+        set({ powerInfoModalOpen: true }),
+
+      closePowerInfoModal: () =>
+        set({ powerInfoModalOpen: false }),
 
       // Incarnate Active State
       toggleIncarnateActive: (slotId) =>
