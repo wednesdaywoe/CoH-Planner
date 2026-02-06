@@ -516,8 +516,8 @@ export const useUIStore = create<UIStore>()(
 
       lockInfoPanel: (content) =>
         set((state) => {
-          // On mobile (< 768px), also open the power info modal
-          const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+          // On mobile/tablet (<= 1024px), also open the power info modal
+          const isMobile = typeof window !== 'undefined' && window.innerWidth <= 1024;
           return {
             infoPanel: {
               ...state.infoPanel,
@@ -539,7 +539,7 @@ export const useUIStore = create<UIStore>()(
 
       toggleInfoPanelLock: () =>
         set((state) => {
-          const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+          const isMobile = typeof window !== 'undefined' && window.innerWidth <= 1024;
 
           if (state.infoPanel.locked) {
             return {

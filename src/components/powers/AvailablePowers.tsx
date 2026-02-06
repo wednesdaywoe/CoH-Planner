@@ -199,6 +199,9 @@ export function AvailablePowers({
   };
 
   const handleLockToggle = (power: Power) => {
+    // DEBUG: Test if long press is working
+    alert(`Long press detected! Power: ${power.name}\nWidth: ${window.innerWidth}\nShould show modal: ${window.innerWidth <= 1024}`);
+
     if (!powersetId) return;
 
     // If already locked to this power, unlock; otherwise lock to this power

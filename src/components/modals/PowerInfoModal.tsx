@@ -12,6 +12,7 @@ export function PowerInfoModal() {
   const closePowerInfoModal = useUIStore((s) => s.closePowerInfoModal);
   const unlockInfoPanel = useUIStore((s) => s.unlockInfoPanel);
 
+
   const handleClose = () => {
     closePowerInfoModal();
     // Also unlock the info panel when closing the modal
