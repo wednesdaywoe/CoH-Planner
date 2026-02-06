@@ -5,6 +5,8 @@
 import type { IOSetPiece } from '@/types';
 import { Badge, Tooltip } from '@/components/ui';
 import { IOSetIcon } from './EnhancementIcon';
+import { useLongPress } from '@/hooks';
+import { useUIStore } from '@/stores';
 import {
   normalizeAspectName,
   getAspectSchedule,
@@ -20,6 +22,7 @@ interface EnhancementCardProps {
   isSelected?: boolean;
   onClick?: () => void;
   showDetails?: boolean;
+  enhancementId?: string;  // Added for info panel display
 }
 
 export function EnhancementCard({
@@ -31,7 +34,34 @@ export function EnhancementCard({
   isSelected = false,
   onClick,
   showDetails = false,
+  enhancementId,
 }: EnhancementCardProps) {
+  const showEnhancementInfo = useUIStore((s) => s.showEnhancementInfo);
+  const lockInfoPanel = useUIStore((s) => s.lockInfoPanel);
+
+  // Long-press handler for mobile - shows enhancement info
+  const handleLongPress = () => {
+    if (enhancementId) {
+      lockInfoPanel({
+        type: 'enhancement',
+        enhancementId,
+      });
+    }
+  };
+
+  const longPressHandlers = useLongPress({
+    duration: 500,
+    onLongPress: handleLongPress,
+    onTap: onClick,
+  });
+
+  // Hover handler for desktop
+  const handleMouseEnter = () => {
+    if (enhancementId) {
+      showEnhancementInfo(enhancementId);
+    }
+  };
+
   return (
     <Tooltip
       content={<EnhancementTooltip piece={piece} setName={setName} level={level} isAttuned={isAttuned} />}
@@ -39,15 +69,23 @@ export function EnhancementCard({
     >
       <button
         onClick={onClick}
+        onMouseEnter={handleMouseEnter}
+        {...longPressHandlers}
         className={`
           w-full flex items-center gap-3 p-2 rounded
-          transition-colors text-left
+          transition-colors text-left select-none
           ${
             isSelected
               ? 'bg-blue-900/30 border-2 border-blue-500'
               : 'bg-gray-800 border border-gray-700 hover:border-blue-500'
           }
         `}
+        style={{
+          WebkitUserSelect: 'none',
+          userSelect: 'none',
+          WebkitTouchCallout: 'none',
+          touchAction: 'manipulation',
+        }}
       >
         <IOSetIcon
           icon={setIcon || 'Unknown.png'}

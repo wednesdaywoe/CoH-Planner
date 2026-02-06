@@ -62,17 +62,24 @@ function IOSetListItem({ set, isSelected, onClick }: IOSetListItemProps) {
       onClick={onClick}
       className={`
         w-full flex items-center gap-3 p-2 rounded
-        transition-colors text-left
+        transition-colors text-left select-none
         ${
           isSelected
             ? 'bg-blue-900/30 border-2 border-blue-500'
             : 'bg-gray-800 border border-gray-700 hover:border-gray-600'
         }
       `}
+      style={{
+        WebkitUserSelect: 'none',
+        userSelect: 'none',
+        WebkitTouchCallout: 'none',
+        touchAction: 'manipulation',
+      }}
     >
       <img
         src={iconPath}
         alt=""
+        draggable={false}
         className="w-8 h-8 rounded"
         onError={(e) => {
           (e.target as HTMLImageElement).src = resolvePath('/img/Unknown.png');

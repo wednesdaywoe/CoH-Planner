@@ -55,12 +55,19 @@ function PowerItem({
     onLockToggle();
   };
 
+  // Desktop click handler (touch events are handled by longPressHandlers)
+  const handleClick = (e: React.MouseEvent) => {
+    if (!isDisabled) {
+      onSelect();
+    }
+  };
+
   return (
     <div
       onMouseEnter={onHover}
       onMouseLeave={onLeave}
       onContextMenu={handleRightClick}
-      onClick={() => !isDisabled && onSelect()}
+      onClick={handleClick}
       {...longPressHandlers}
       title={isLocked ? 'Right-click or long-press to unlock' : 'Right-click or long-press for info'}
       className={`
@@ -76,6 +83,12 @@ function PowerItem({
                 : 'bg-slate-800 border border-slate-700 hover:border-blue-500 cursor-pointer'
         }
       `}
+      style={{
+        WebkitUserSelect: 'none',
+        userSelect: 'none',
+        WebkitTouchCallout: 'none',
+        touchAction: 'manipulation',
+      }}
       role="button"
       tabIndex={isDisabled ? -1 : 0}
       onKeyDown={(e) => {
@@ -89,6 +102,7 @@ function PowerItem({
         src={getPowerIconPath(powersetName, power.icon)}
         alt=""
         className="w-4 h-4 rounded-sm flex-shrink-0 pointer-events-none"
+        draggable={false}
         onError={(e) => {
           (e.target as HTMLImageElement).src = resolvePath('/img/Unknown.png');
         }}

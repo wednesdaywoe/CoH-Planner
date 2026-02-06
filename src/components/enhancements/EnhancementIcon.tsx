@@ -169,6 +169,7 @@ export function EnhancementIcon({
       <img
         src={baseIconPath}
         alt={alt}
+        draggable={false}
         className="absolute inset-0 w-full h-full object-contain"
         onError={(e) => {
           // Fallback to a default image on error
@@ -180,6 +181,7 @@ export function EnhancementIcon({
         src={overlayPath}
         alt=""
         aria-hidden="true"
+        draggable={false}
         className="absolute inset-0 w-full h-full object-contain pointer-events-none"
         onError={(e) => {
           // Hide overlay if it fails to load
