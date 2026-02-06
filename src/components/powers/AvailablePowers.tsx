@@ -5,7 +5,7 @@
 
 import { useState } from 'react';
 import { useBuildStore, useUIStore } from '@/stores';
-import { useLongPress } from '@/hooks';
+
 import { getPowerset, getPowerIconPath } from '@/data';
 import { resolvePath } from '@/utils/paths';
 import type { Power } from '@/types';
@@ -51,7 +51,7 @@ function PowerItem({
     onLockToggle();
   };
 
-  const handleClick = (e: React.MouseEvent) => {
+  const handleClick = (_e: React.MouseEvent) => {
     if (!isDisabled) {
       onSelect();
     }
