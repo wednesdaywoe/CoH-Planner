@@ -100,16 +100,16 @@ export function IncarnateModal({ isOpen, onClose }: IncarnateModalProps) {
 
   return createPortal(
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+      className="fixed inset-0 z-50 flex items-center justify-center p-0 sm:p-4 bg-black/80 backdrop-blur-sm"
       onClick={handleBackdropClick}
       role="dialog"
       aria-modal="true"
       aria-label="Incarnate Power Selection"
     >
-      <div className="w-full max-w-5xl h-[85vh] bg-gray-900 rounded-lg shadow-xl border border-gray-700 flex flex-col animate-in fade-in zoom-in-95 duration-200">
+      <div className="w-full max-w-5xl h-full sm:h-[85vh] bg-gray-900 sm:rounded-lg shadow-xl border border-gray-700 flex flex-col animate-in fade-in zoom-in-95 duration-200">
         {/* Header with slot tabs */}
-        <div className="flex items-center justify-between border-b border-gray-700 px-2">
-          <div className="flex">
+        <div className="flex items-center justify-between border-b border-gray-700 px-1 sm:px-2">
+          <div className="flex flex-1 overflow-x-auto">
             {INCARNATE_SLOT_ORDER.map((slotId) => {
               const slot = slots.find((s) => s.id === slotId);
               if (!slot) return null;
@@ -123,7 +123,7 @@ export function IncarnateModal({ isOpen, onClose }: IncarnateModalProps) {
                   key={slotId}
                   onClick={() => setCurrentIncarnateSlot(slotId)}
                   className={`
-                    px-4 py-3 text-sm font-medium transition-colors relative
+                    px-2 sm:px-4 py-2 sm:py-3 text-xs sm:text-sm font-medium transition-colors relative whitespace-nowrap flex-shrink-0
                     ${isActive ? 'text-white' : 'text-gray-400 hover:text-gray-200'}
                   `}
                   style={{
@@ -133,7 +133,7 @@ export function IncarnateModal({ isOpen, onClose }: IncarnateModalProps) {
                   {slot.displayName}
                   {hasPower && (
                     <span
-                      className="absolute top-2 right-1 w-2 h-2 rounded-full"
+                      className="absolute top-1 sm:top-2 right-0.5 sm:right-1 w-2 h-2 rounded-full"
                       style={{ backgroundColor: slotColor }}
                     />
                   )}
@@ -156,12 +156,12 @@ export function IncarnateModal({ isOpen, onClose }: IncarnateModalProps) {
 
         {/* Content area */}
         <div className="flex-1 flex flex-col md:flex-row overflow-hidden">
-          {/* Tree sidebar - stacked on mobile, side-by-side on desktop */}
-          <div className="w-full md:w-48 border-b md:border-b-0 md:border-r border-gray-700 flex flex-col">
-            <div className="px-3 py-2 text-xs font-semibold text-gray-400 uppercase tracking-wide border-b border-gray-700">
+          {/* Tree sidebar - horizontal scrolling list on mobile, side column on desktop */}
+          <div className="w-full md:w-48 border-b md:border-b-0 md:border-r border-gray-700 flex flex-col flex-shrink-0">
+            <div className="hidden md:block px-3 py-2 text-xs font-semibold text-gray-400 uppercase tracking-wide border-b border-gray-700">
               Trees
             </div>
-            <div className="flex-1 overflow-y-auto p-2 max-h-32 md:max-h-none">
+            <div className="flex md:flex-col overflow-x-auto md:overflow-x-hidden md:overflow-y-auto p-1.5 md:p-2 gap-1 md:gap-0">
               {trees.map((tree) => {
                 const isSelected = tree.id === selectedTreeId;
                 const hasPowerFromTree = currentPower?.treeId === tree.id;
@@ -171,8 +171,8 @@ export function IncarnateModal({ isOpen, onClose }: IncarnateModalProps) {
                     key={tree.id}
                     onClick={() => setSelectedTreeId(tree.id)}
                     className={`
-                      w-full text-left px-3 py-2 rounded-lg mb-1
-                      transition-colors text-sm
+                      flex-shrink-0 md:flex-shrink text-left px-3 py-1.5 md:py-2 rounded-lg md:mb-1 md:w-full
+                      transition-colors text-xs md:text-sm whitespace-nowrap md:whitespace-normal
                       ${
                         isSelected
                           ? 'bg-gray-700 text-white'
@@ -180,17 +180,17 @@ export function IncarnateModal({ isOpen, onClose }: IncarnateModalProps) {
                       }
                     `}
                   >
-                    <div className="flex items-center justify-between">
+                    <div className="flex items-center justify-between gap-1.5">
                       <span>{tree.name}</span>
                       {hasPowerFromTree && (
                         <span
-                          className="w-2 h-2 rounded-full"
+                          className="w-2 h-2 rounded-full flex-shrink-0"
                           style={{ backgroundColor: INCARNATE_SLOT_COLORS[activeSlotId] }}
                         />
                       )}
                     </div>
                     {tree.description && (
-                      <div className="text-[10px] text-gray-500 mt-0.5">{tree.description}</div>
+                      <div className="hidden md:block text-[10px] text-gray-500 mt-0.5">{tree.description}</div>
                     )}
                   </button>
                 );
