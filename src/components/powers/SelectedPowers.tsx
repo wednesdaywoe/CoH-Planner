@@ -44,6 +44,7 @@ interface SelectedPowersProps {
 }
 
 export function SelectedPowers({ category }: SelectedPowersProps) {
+  const [collapsed, setCollapsed] = useState(false);
   const build = useBuildStore((s) => s.build);
   const removePower = useBuildStore((s) => s.removePower);
   const addSlot = useBuildStore((s) => s.addSlot);
@@ -170,52 +171,71 @@ export function SelectedPowers({ category }: SelectedPowersProps) {
   };
 
   return (
-    <div className="space-y-0.5">
-      {powers.map((power) => {
-        // Check if this power is the one locked in the info panel
-        const isLocked = infoPanelLocked &&
-          lockedContent?.type === 'power' &&
-          lockedContent.powerName === power.name;
+    <div>
+      {/* Collapsible header */}
+      <div
+        className="flex items-center gap-1 mb-1.5 cursor-pointer select-none"
+        onClick={() => setCollapsed(!collapsed)}
+      >
+        <span className={`text-[10px] text-slate-500 transition-transform ${collapsed ? '' : 'rotate-90'}`}>
+          ▶
+        </span>
+        <h4 className="text-[10px] font-semibold text-slate-400 uppercase tracking-wide">
+          {selection.name || (category === 'primary' ? 'Primary' : 'Secondary')}
+        </h4>
+        <span className="text-[9px] text-slate-600">({powers.length})</span>
+      </div>
 
-        // Check if this power grants sub-powers
-        const subPowers = getSubPowers(power.name);
-        const grantedGroup = getGrantedPowerGroup(power.name);
+      {/* Collapsible power list */}
+      {!collapsed && (
+        <div className="space-y-0.5">
+          {powers.map((power) => {
+            // Check if this power is the one locked in the info panel
+            const isLocked = infoPanelLocked &&
+              lockedContent?.type === 'power' &&
+              lockedContent.powerName === power.name;
 
-        return (
-          <div key={power.name}>
-            <SelectedPowerRow
-              power={power}
-              powersetId={powersetId}
-              powersetName={selection.name}
-              isLocked={isLocked}
-              onRemove={() => handleRemove(power.name)}
-              onAddSlots={(count) => handleAddSlots(power.name, count)}
-              onRemoveSlot={(index) => handleRemoveSlot(power.name, index)}
-              onRemoveAllSlots={() => handleRemoveAllSlots(power.name, power.slots.length)}
-              onClearEnhancement={(index) => handleClearEnhancement(power.name, index)}
-              onClearAllEnhancements={() => handleClearAllEnhancements(power.name, power.slots.length)}
-              onOpenPicker={(slotIndex) => openEnhancementPicker(power.name, powersetId, slotIndex)}
-              onHover={() => handlePowerHover(power)}
-              onLeave={handlePowerLeave}
-              onEnhancementHover={(index) => handleEnhancementHover(power.name, index)}
-              onRightClick={(e) => handlePowerRightClick(e, power)}
-              onToggle={() => togglePowerActive(power.name)}
-            />
+            // Check if this power grants sub-powers
+            const subPowers = getSubPowers(power.name);
+            const grantedGroup = getGrantedPowerGroup(power.name);
 
-            {/* Granted sub-powers display */}
-            {subPowers.length > 0 && (
-              <GrantedSubPowers
-                subPowers={subPowers}
-                parentPower={power}
-                powersetName={selection.name}
-                isMutuallyExclusive={grantedGroup?.mutuallyExclusive ?? false}
-                activeSubPower={power.activeSubPower}
-                onSetActive={(subPowerName) => setActiveSubPower(power.name, subPowerName)}
-              />
-            )}
-          </div>
-        );
-      })}
+            return (
+              <div key={power.name}>
+                <SelectedPowerRow
+                  power={power}
+                  powersetId={powersetId}
+                  powersetName={selection.name}
+                  isLocked={isLocked}
+                  onRemove={() => handleRemove(power.name)}
+                  onAddSlots={(count) => handleAddSlots(power.name, count)}
+                  onRemoveSlot={(index) => handleRemoveSlot(power.name, index)}
+                  onRemoveAllSlots={() => handleRemoveAllSlots(power.name, power.slots.length)}
+                  onClearEnhancement={(index) => handleClearEnhancement(power.name, index)}
+                  onClearAllEnhancements={() => handleClearAllEnhancements(power.name, power.slots.length)}
+                  onOpenPicker={(slotIndex) => openEnhancementPicker(power.name, powersetId, slotIndex)}
+                  onHover={() => handlePowerHover(power)}
+                  onLeave={handlePowerLeave}
+                  onEnhancementHover={(index) => handleEnhancementHover(power.name, index)}
+                  onRightClick={(e) => handlePowerRightClick(e, power)}
+                  onToggle={() => togglePowerActive(power.name)}
+                />
+
+                {/* Granted sub-powers display */}
+                {subPowers.length > 0 && (
+                  <GrantedSubPowers
+                    subPowers={subPowers}
+                    parentPower={power}
+                    powersetName={selection.name}
+                    isMutuallyExclusive={grantedGroup?.mutuallyExclusive ?? false}
+                    activeSubPower={power.activeSubPower}
+                    onSetActive={(subPowerName) => setActiveSubPower(power.name, subPowerName)}
+                  />
+                )}
+              </div>
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 }

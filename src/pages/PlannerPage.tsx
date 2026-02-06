@@ -4,9 +4,9 @@
  * Two view modes:
  * 1. Category View (default) - Layout matches the legacy app:
  *    Column 1: Available Powers (Primary + Secondary stacked)
- *    Column 2: Selected Primary Powers
- *    Column 3: Selected Secondary Powers
- *    Column 4: Pool Powers
+ *    Column 2: Pool Powers
+ *    Column 3: Selected Primary Powers
+ *    Column 4: Selected Secondary Powers
  *    Column 5: Info Panel
  *
  * 2. Chronological View (Mids-style) - Powers displayed by level taken:
@@ -164,7 +164,19 @@ export function PlannerPage() {
         </div>
       </div>
 
-      {/* Column 2: Selected Primary Powers */}
+      {/* Column 2: Pool Powers */}
+      <div className="bg-slate-900 flex flex-col overflow-hidden min-h-[300px] lg:min-h-0">
+        <div className="bg-slate-800 border-b border-slate-700 px-3 py-2">
+          <h2 className="text-xs font-semibold uppercase tracking-wide text-slate-400">
+            Pool Powers
+          </h2>
+        </div>
+        <div className="flex-1 overflow-y-auto p-2">
+          <PoolPowers />
+        </div>
+      </div>
+
+      {/* Column 3: Selected Primary Powers */}
       <div className="bg-slate-900 flex flex-col overflow-hidden min-h-[300px] lg:min-h-0">
         <div className="bg-slate-800 border-b border-slate-700 px-3 py-2">
           <h2 className="text-xs font-semibold uppercase tracking-wide text-slate-400">
@@ -176,7 +188,7 @@ export function PlannerPage() {
         </div>
       </div>
 
-      {/* Column 3: Selected Secondary Powers */}
+      {/* Column 4: Selected Secondary Powers */}
       <div className="bg-slate-900 flex flex-col overflow-hidden min-h-[300px] lg:min-h-0">
         <div className="bg-slate-800 border-b border-slate-700 px-3 py-2">
           <h2 className="text-xs font-semibold uppercase tracking-wide text-slate-400">
@@ -185,18 +197,6 @@ export function PlannerPage() {
         </div>
         <div className="flex-1 overflow-y-auto p-2">
           <SelectedPowers category="secondary" />
-        </div>
-      </div>
-
-      {/* Column 4: Pool Powers */}
-      <div className="bg-slate-900 flex flex-col overflow-hidden min-h-[300px] lg:min-h-0">
-        <div className="bg-slate-800 border-b border-slate-700 px-3 py-2">
-          <h2 className="text-xs font-semibold uppercase tracking-wide text-slate-400">
-            Pool Powers
-          </h2>
-        </div>
-        <div className="flex-1 overflow-y-auto p-2">
-          <PoolPowers />
         </div>
       </div>
 

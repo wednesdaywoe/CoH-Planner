@@ -987,8 +987,8 @@ function IOSetRow({
         <span className="hidden sm:inline text-xs text-gray-600 ml-auto">Shift+click to slot all</span>
       </div>
 
-      {/* Pieces as icons */}
-      <div className="flex flex-wrap gap-1 select-none">
+      {/* Pieces as icons - Desktop view */}
+      <div className="hidden lg:flex flex-wrap gap-1 select-none">
         {set.pieces.map((piece, pieceIndex) => {
           const selected = isPieceSelected(pieceIndex);
           const isDisabled = isUniqueAlreadySlotted(piece);
@@ -1027,6 +1027,66 @@ function IOSetRow({
                 />
               </button>
             </Tooltip>
+          );
+        })}
+      </div>
+
+      {/* Pieces as list - Mobile view */}
+      <div className="lg:hidden space-y-1 select-none">
+        {set.pieces.map((piece, pieceIndex) => {
+          const selected = isPieceSelected(pieceIndex);
+          const isDisabled = isUniqueAlreadySlotted(piece);
+          return (
+            <button
+              key={pieceIndex}
+              data-piece-index={pieceIndex}
+              onTouchStart={(e) => !isDisabled && onPieceTouchStart(set, pieceIndex, e)}
+              onTouchMove={(e) => !isDisabled && onPieceTouchMove(e)}
+              onTouchEnd={(e) => !isDisabled && onPieceTouchEnd(set, e)}
+              disabled={isDisabled}
+              className={`w-full flex items-center gap-2 p-2 rounded border transition-all touch-none ${
+                isDisabled
+                  ? 'border-gray-700 opacity-40 cursor-not-allowed bg-gray-900/30'
+                  : selected
+                    ? 'border-blue-400 bg-blue-900/20'
+                    : 'border-gray-600 bg-gray-900/50 active:bg-blue-900/10'
+              }`}
+              style={{
+                WebkitUserSelect: 'none',
+                userSelect: 'none',
+                WebkitTouchCallout: 'none',
+                touchAction: 'manipulation',
+              }}
+            >
+              {/* Icon on left */}
+              <div className="flex-shrink-0">
+                <IOSetIcon
+                  icon={set.icon || 'Unknown.png'}
+                  attuned={attunementEnabled}
+                  size={40}
+                  alt={piece.name}
+                  className="pointer-events-none"
+                />
+              </div>
+
+              {/* Info on right */}
+              <div className="flex-1 text-left min-w-0">
+                <div className="text-sm font-medium text-gray-200 truncate">
+                  {piece.name}
+                </div>
+                <div className="text-xs text-gray-400">
+                  {piece.aspects.join(', ')}
+                </div>
+                {piece.proc && (
+                  <div className="text-xs text-green-400">Proc Effect</div>
+                )}
+                {piece.unique && (
+                  <div className="text-xs text-orange-400">
+                    {isDisabled ? 'Already slotted' : 'Unique'}
+                  </div>
+                )}
+              </div>
+            </button>
           );
         })}
       </div>

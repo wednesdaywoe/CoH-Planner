@@ -3,6 +3,7 @@
  * Renders as a section within the Available Powers column (not a full column itself)
  */
 
+import { useState } from 'react';
 import { useBuildStore, useUIStore } from '@/stores';
 import { useLongPress } from '@/hooks';
 import { getPowerset, getPowerIconPath } from '@/data';
@@ -28,6 +29,7 @@ interface PowerItemProps {
   onHover: () => void;
   onLeave: () => void;
   onLockToggle: () => void;
+  onShowInfo: (e?: React.MouseEvent) => void;
 }
 
 function PowerItem({
@@ -42,20 +44,13 @@ function PowerItem({
   onHover,
   onLeave,
   onLockToggle,
+  onShowInfo,
 }: PowerItemProps) {
-  // Long-press handler for mobile - locks info panel
-  const longPressHandlers = useLongPress({
-    duration: 500,
-    onLongPress: onLockToggle,
-    onTap: isDisabled ? undefined : onSelect,
-  });
-
   const handleRightClick = (e: React.MouseEvent) => {
     e.preventDefault();
     onLockToggle();
   };
 
-  // Desktop click handler (touch events are handled by longPressHandlers)
   const handleClick = (e: React.MouseEvent) => {
     if (!isDisabled) {
       onSelect();
@@ -68,8 +63,7 @@ function PowerItem({
       onMouseLeave={onLeave}
       onContextMenu={handleRightClick}
       onClick={handleClick}
-      {...longPressHandlers}
-      title={isLocked ? 'Right-click or long-press to unlock' : 'Right-click or long-press for info'}
+      title={isLocked ? 'Right-click to unlock' : 'Right-click for info'}
       className={`
         w-full flex items-center gap-1.5 px-1.5 py-0.5 rounded-sm
         transition-colors text-left text-xs select-none
@@ -118,6 +112,17 @@ function PowerItem({
       >
         L{power.available + 1}
       </span>
+      {/* Mobile info button - only visible on small screens */}
+      <button
+        onClick={onShowInfo}
+        className="lg:hidden flex-shrink-0 w-5 h-5 flex items-center justify-center rounded hover:bg-blue-600/20 transition-colors"
+        title="View power info"
+        aria-label="View power info"
+      >
+        <svg className="w-3.5 h-3.5 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      </button>
     </div>
   );
 }
@@ -128,6 +133,7 @@ export function AvailablePowers({
   selectedPowerNames,
   onSelectPower,
 }: AvailablePowersProps) {
+  const [collapsed, setCollapsed] = useState(false);
   const build = useBuildStore((s) => s.build);
   const setInfoPanelContent = useUIStore((s) => s.setInfoPanelContent);
   const clearInfoPanel = useUIStore((s) => s.clearInfoPanel);
@@ -198,10 +204,20 @@ export function AvailablePowers({
     clearInfoPanel();
   };
 
-  const handleLockToggle = (power: Power) => {
-    // DEBUG: Test if long press is working
-    alert(`Long press detected! Power: ${power.name}\nWidth: ${window.innerWidth}\nShould show modal: ${window.innerWidth <= 1024}`);
+  const handleShowInfo = (power: Power, e?: React.MouseEvent) => {
+    if (e) {
+      e.stopPropagation(); // Prevent power selection when clicking info button
+    }
+    if (!powersetId) return;
 
+    lockInfoPanel({
+      type: 'power',
+      powerName: power.name,
+      powerSet: powersetId,
+    });
+  };
+
+  const handleLockToggle = (power: Power) => {
     if (!powersetId) return;
 
     // If already locked to this power, unlock; otherwise lock to this power
@@ -251,77 +267,92 @@ export function AvailablePowers({
 
   return (
     <div className="mb-3">
-      {/* Section header with powerset name */}
-      <div className="flex items-center justify-between mb-1">
-        <div className="text-xs font-semibold text-blue-400 uppercase tracking-wide">
-          {powerset?.name || categoryLabel}
+      {/* Section header with powerset name - clickable to collapse */}
+      <div
+        className="flex items-center justify-between mb-1 cursor-pointer select-none"
+        onClick={() => setCollapsed(!collapsed)}
+      >
+        <div className="flex items-center gap-1">
+          <span className={`text-[10px] text-slate-500 transition-transform ${collapsed ? '' : 'rotate-90'}`}>
+            ▶
+          </span>
+          <div className="text-xs font-semibold text-blue-400 uppercase tracking-wide">
+            {powerset?.name || categoryLabel}
+          </div>
+          <span className="text-[9px] text-slate-600">({selectedPowerNames.length})</span>
         </div>
       </div>
 
-      {/* Show message if both powersets not selected */}
-      {!bothPowersetsSelected && (
-        <div className="text-xs text-amber-500/70 italic py-1 mb-1">
-          Select both Primary and Secondary to choose powers
-        </div>
-      )}
+      {/* Collapsible content */}
+      {!collapsed && (
+        <>
+          {/* Show message if both powersets not selected */}
+          {!bothPowersetsSelected && (
+            <div className="text-xs text-amber-500/70 italic py-1 mb-1">
+              Select both Primary and Secondary to choose powers
+            </div>
+          )}
 
-      {/* Level 1 instruction */}
-      {bothPowersetsSelected && isLevel1 && !hasPickedPowerThisCategory && !otherCategoryHasPower && (
-        <div className="text-xs text-emerald-500/70 italic py-1 mb-1">
-          Pick 1 power from the first two
-        </div>
-      )}
-      {bothPowersetsSelected && isLevel1 && !hasPickedPowerThisCategory && otherCategoryHasPower && (
-        <div className="text-xs text-amber-400/80 italic py-1 mb-1">
-          Now pick your {categoryLabel.toLowerCase()} power
-        </div>
-      )}
-      {bothPowersetsSelected && isLevel1 && hasPickedPowerThisCategory && (
-        <div className="text-xs text-slate-500 italic py-1 mb-1">
-          {categoryLabel} power selected
-        </div>
-      )}
+          {/* Level 1 instruction */}
+          {bothPowersetsSelected && isLevel1 && !hasPickedPowerThisCategory && !otherCategoryHasPower && (
+            <div className="text-xs text-emerald-500/70 italic py-1 mb-1">
+              Pick 1 power from the first two
+            </div>
+          )}
+          {bothPowersetsSelected && isLevel1 && !hasPickedPowerThisCategory && otherCategoryHasPower && (
+            <div className="text-xs text-amber-400/80 italic py-1 mb-1">
+              Now pick your {categoryLabel.toLowerCase()} power
+            </div>
+          )}
+          {bothPowersetsSelected && isLevel1 && hasPickedPowerThisCategory && (
+            <div className="text-xs text-slate-500 italic py-1 mb-1">
+              {categoryLabel} power selected
+            </div>
+          )}
 
-      {/* Power list */}
-      {allPowers.length === 0 ? (
-        <div className="text-xs text-slate-500 italic py-1">
-          No powers in this powerset
-        </div>
-      ) : (
-        <div className="space-y-0.5">
-          {allPowers.map((power, index) => {
-            const isSelected = selectedSet.has(power.name);
-            // available is 0-indexed: available=0 means level 1, available=1 means level 2
-            const isAvailable = power.available < build.level;
+          {/* Power list */}
+          {allPowers.length === 0 ? (
+            <div className="text-xs text-slate-500 italic py-1">
+              No powers in this powerset
+            </div>
+          ) : (
+            <div className="space-y-0.5">
+              {allPowers.map((power, index) => {
+                const isSelected = selectedSet.has(power.name);
+                // available is 0-indexed: available=0 means level 1, available=1 means level 2
+                const isAvailable = power.available < build.level;
 
-            // Level 1 special restrictions:
-            // - Only first 2 powers can be selected (index 0 or 1)
-            // - Can only pick 1 power total from this category
-            // - If first pick was from this category, block until other category picks
-            const isLevel1Restricted = isLevel1 && (index > 1 || hasPickedPowerThisCategory || isLevel1BlockedForSecondPick);
+                // Level 1 special restrictions:
+                // - Only first 2 powers can be selected (index 0 or 1)
+                // - Can only pick 1 power total from this category
+                // - If first pick was from this category, block until other category picks
+                const isLevel1Restricted = isLevel1 && (index > 1 || hasPickedPowerThisCategory || isLevel1BlockedForSecondPick);
 
-            // Block selection until both powersets are chosen
-            const isDisabled = isSelected || !isAvailable || !bothPowersetsSelected || isLevel1Restricted;
-            const isLocked = isPowerLocked(power.name);
+                // Block selection until both powersets are chosen
+                const isDisabled = isSelected || !isAvailable || !bothPowersetsSelected || isLevel1Restricted;
+                const isLocked = isPowerLocked(power.name);
 
-            return (
-              <PowerItem
-                key={power.name}
-                power={power}
-                powersetId={powersetId}
-                powersetName={powerset?.name || ''}
-                isSelected={isSelected}
-                isAvailable={isAvailable}
-                isDisabled={isDisabled}
-                isLocked={isLocked}
-                onSelect={() => onSelectPower(power)}
-                onHover={() => handlePowerHover(power)}
-                onLeave={handlePowerLeave}
-                onLockToggle={() => handleLockToggle(power)}
-              />
-            );
-          })}
-        </div>
+                return (
+                  <PowerItem
+                    key={power.name}
+                    power={power}
+                    powersetId={powersetId}
+                    powersetName={powerset?.name || ''}
+                    isSelected={isSelected}
+                    isAvailable={isAvailable}
+                    isDisabled={isDisabled}
+                    isLocked={isLocked}
+                    onSelect={() => onSelectPower(power)}
+                    onHover={() => handlePowerHover(power)}
+                    onLeave={handlePowerLeave}
+                    onLockToggle={() => handleLockToggle(power)}
+                    onShowInfo={(e) => handleShowInfo(power, e)}
+                  />
+                );
+              })}
+            </div>
+          )}
+        </>
       )}
     </div>
   );
