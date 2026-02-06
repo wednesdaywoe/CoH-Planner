@@ -20,7 +20,9 @@ export const Precognition: Power = {
   "stats": {
     "accuracy": 1
   },
-  "allowedEnhancements": [],
+  "allowedEnhancements": [
+    "Defense"
+  ],
   "allowedSetCategories": [
     "Defense Sets"
   ],

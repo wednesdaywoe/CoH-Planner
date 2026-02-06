@@ -27,8 +27,8 @@ export const powerset: Powerset = {
   archetype: 'corruptor',
   category: 'primary',
   powers: [
-    SnapShot,
     AimedShot,
+    SnapShot,
     FistfulofArrows,
     BlazingArrow,
     Aim,

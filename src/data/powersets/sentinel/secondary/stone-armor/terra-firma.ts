@@ -21,7 +21,9 @@ export const TerraFirma: Power = {
     "accuracy": 1,
     "recharge": 4
   },
-  "allowedEnhancements": [],
+  "allowedEnhancements": [
+    "ToHit"
+  ],
   "allowedSetCategories": [
     "To Hit Buff"
   ],

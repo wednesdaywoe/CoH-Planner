@@ -1,6 +1,8 @@
 /**
  * Ki Push
  * Melee, Light DMG(Smash), Foe Repel, KB
+ *
+ * Source: blaster_support/martial_manipulation/ki_push.json
  */
 
 import type { Power } from '@/types';
@@ -22,16 +24,16 @@ export const KiPush: Power = {
     "castTime": 0.83
   },
   "allowedEnhancements": [
-    "Accuracy",
-    "Damage",
+    "EnduranceReduction",
     "Recharge",
-    "EnduranceReduction"
+    "Damage",
+    "Accuracy"
   ],
   "allowedSetCategories": [
-    "Melee Damage",
-    "Universal Damage Sets",
     "Blaster Archetype Sets",
-    "Knockback"
+    "Knockback",
+    "Melee Damage",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {
@@ -40,22 +42,22 @@ export const KiPush: Power = {
     "table": "Melee_Damage"
   },
   "effects": {
-    "damageBuff": {
-      "scale": 0.055,
-      "table": "Melee_Ones"
-    },
-    "effectDuration": 2,
-    "hold": {
-      "mag": 4,
-      "scale": 2,
-      "table": "Melee_Ones"
-    },
-    "knockback": {
+    "repel": {
       "scale": 4,
       "table": "Melee_Ones"
     },
-    "repel": {
-      "scale": 2,
+    "hold": {
+      "mag": 1,
+      "scale": 4,
+      "table": "Melee_Ones"
+    },
+    "effectDuration": 2,
+    "knockback": {
+      "scale": 4,
+      "table": "Melee_Knockback"
+    },
+    "damageBuff": {
+      "scale": 0.055,
       "table": "Melee_Ones"
     }
   }

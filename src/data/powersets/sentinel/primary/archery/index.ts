@@ -27,8 +27,8 @@ export const powerset: Powerset = {
   archetype: 'sentinel',
   category: 'primary',
   powers: [
-    SnapShot,
     AimedShot,
+    SnapShot,
     FistfulofArrows,
     StunningShot,
     Aim,

@@ -20,7 +20,10 @@ export const Enduring: Power = {
   "stats": {
     "accuracy": 1
   },
-  "allowedEnhancements": [],
+  "allowedEnhancements": [
+    "Defense",
+    "EnduranceReduction"
+  ],
   "allowedSetCategories": [
     "Defense Sets",
     "Endurance Modification"

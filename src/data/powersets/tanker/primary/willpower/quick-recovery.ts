@@ -20,7 +20,9 @@ export const QuickRecovery: Power = {
   "stats": {
     "accuracy": 1
   },
-  "allowedEnhancements": [],
+  "allowedEnhancements": [
+    "EnduranceReduction"
+  ],
   "allowedSetCategories": [
     "Endurance Modification"
   ],

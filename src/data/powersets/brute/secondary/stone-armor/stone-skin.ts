@@ -20,7 +20,10 @@ export const StoneSkin: Power = {
   "stats": {
     "accuracy": 1
   },
-  "allowedEnhancements": [],
+  "allowedEnhancements": [
+    "Defense",
+    "Resistance"
+  ],
   "allowedSetCategories": [
     "Defense Sets",
     "Resist Damage"

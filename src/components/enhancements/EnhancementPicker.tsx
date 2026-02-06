@@ -517,7 +517,7 @@ export function EnhancementPicker() {
     'Melee AoE Damage': ['Damage', 'Accuracy'],
     'Universal Damage Sets': ['Damage', 'Accuracy'],
     'Sniper Attacks': ['Damage', 'Accuracy', 'Range'],
-    'Pet Damage': ['Damage', 'Accuracy'],
+    'Pet Damage': ['Damage', 'Accuracy', 'Recharge'],
     // Defense/Resistance
     'Resist Damage': ['Resistance'],
     'Defense Sets': ['Defense'],
@@ -534,12 +534,36 @@ export function EnhancementPicker() {
     'To Hit Buff': ['ToHit'],
     'To Hit Debuff': ['ToHit Debuff'],
     'Defense Debuff': ['Defense Debuff'],
+    'Accurate Healing': ['Healing', 'Accuracy'],
+    'Accurate To-Hit Debuff': ['ToHit Debuff', 'Accuracy'],
+    'Accurate Defense Debuff': ['Defense Debuff', 'Accuracy'],
     'Slow Movement': ['Slow'],
     'Threat Duration': ['Taunt'],
+    'Endurance Modification': ['EnduranceReduction'],
     // Movement
     'Running': ['Run Speed'],
-    'Jumping': ['Jump'],
+    'Running & Sprints': ['Run Speed'],
+    'Leaping': ['Jump'],
+    'Leaping & Sprints': ['Jump'],
     'Flight': ['Fly'],
+    'Teleport': ['Range'],
+    'Universal Travel': ['Run Speed', 'Jump', 'Fly'],
+    // Pet sets
+    'Recharge Intensive Pets': ['Damage', 'Accuracy', 'Recharge'],
+    // Archetype sets - most contain damage-oriented enhancements
+    'Blaster Archetype Sets': ['Damage', 'Accuracy', 'Recharge', 'EnduranceReduction'],
+    'Brute Archetype Sets': ['Damage', 'Accuracy', 'Recharge', 'EnduranceReduction'],
+    'Controller Archetype Sets': ['Hold', 'Confuse', 'Accuracy', 'Recharge', 'EnduranceReduction'],
+    'Corruptor Archetype Sets': ['Damage', 'Accuracy', 'Recharge', 'EnduranceReduction'],
+    'Defender Archetype Sets': ['Healing', 'Defense', 'Recharge', 'EnduranceReduction'],
+    'Dominator Archetype Sets': ['Hold', 'Accuracy', 'Damage', 'Recharge', 'EnduranceReduction'],
+    'Mastermind Archetype Sets': ['Damage', 'Accuracy', 'Recharge', 'EnduranceReduction'],
+    'Scrapper Archetype Sets': ['Damage', 'Accuracy', 'Recharge', 'EnduranceReduction'],
+    'Stalker Archetype Sets': ['Damage', 'Accuracy', 'Recharge', 'EnduranceReduction'],
+    'Tanker Archetype Sets': ['Defense', 'Resistance', 'Recharge', 'EnduranceReduction'],
+    'Sentinel Archetype Sets': ['Damage', 'Accuracy', 'Recharge', 'EnduranceReduction'],
+    'Kheldian Archetype Sets': ['Damage', 'Accuracy', 'Recharge', 'EnduranceReduction'],
+    'Soldiers of Arachnos Archetype Sets': ['Damage', 'Accuracy', 'Recharge', 'EnduranceReduction'],
   };
 
   // Get available generic IOs for this power

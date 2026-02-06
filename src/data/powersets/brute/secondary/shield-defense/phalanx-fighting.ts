@@ -22,7 +22,9 @@ export const PhalanxFighting: Power = {
     "radius": 8,
     "maxTargets": 3
   },
-  "allowedEnhancements": [],
+  "allowedEnhancements": [
+    "Defense"
+  ],
   "allowedSetCategories": [
     "Defense Sets"
   ],

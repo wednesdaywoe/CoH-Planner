@@ -65,6 +65,71 @@ function mapEnhancementType(type) {
   return mapped || type;
 }
 
+// Map IO set categories to enhancement types that should be allowed
+// Used to infer allowedEnhancements when raw data doesn't provide them
+const SET_CATEGORY_TO_ENHANCEMENT = {
+  // Damage categories
+  'Ranged Damage': ['Damage', 'Accuracy', 'Range'],
+  'Melee Damage': ['Damage', 'Accuracy'],
+  'Ranged AoE Damage': ['Damage', 'Accuracy', 'Range'],
+  'Melee AoE Damage': ['Damage', 'Accuracy'],
+  'Universal Damage Sets': ['Damage', 'Accuracy'],
+  'Sniper Attacks': ['Damage', 'Accuracy', 'Range'],
+  'Pet Damage': ['Damage', 'Accuracy', 'Recharge'],
+  'PBAoE Damage': ['Damage', 'Accuracy'],
+  'Targeted AoE Damage': ['Damage', 'Accuracy', 'Range'],
+  // Defense/Resistance
+  'Resist Damage': ['Resistance'],
+  'Defense Sets': ['Defense'],
+  // Control (Mez)
+  'Holds': ['Hold'],
+  'Hold': ['Hold'],
+  'Stuns': ['Stun'],
+  'Immobilize': ['Immobilize'],
+  'Sleep': ['Sleep'],
+  'Confuse': ['Confuse'],
+  'Fear': ['Fear'],
+  'Knockback': ['Knockback'],
+  // Support/Debuff
+  'Healing': ['Healing'],
+  'To Hit Buff': ['ToHit'],
+  'To Hit Debuff': ['ToHit Debuff'],
+  'Defense Debuff': ['Defense Debuff'],
+  'Accurate Healing': ['Healing', 'Accuracy'],
+  'Accurate To-Hit Debuff': ['ToHit Debuff', 'Accuracy'],
+  'Accurate Defense Debuff': ['Defense Debuff', 'Accuracy'],
+  'Slow Movement': ['Slow'],
+  'Threat Duration': ['Taunt'],
+  'Taunt': ['Taunt'],
+  'Endurance Modification': ['EnduranceReduction'],
+  // Movement
+  'Running': ['Run Speed'],
+  'Running & Sprints': ['Run Speed'],
+  'Leaping': ['Jump'],
+  'Jumping': ['Jump'],
+  'Leaping & Sprints': ['Jump'],
+  'Flight': ['Fly'],
+  'Teleport': ['Range'],
+  'Universal Travel': ['Run Speed', 'Jump', 'Fly'],
+  'Travel': ['Run Speed', 'Jump', 'Fly'],
+  // Pet sets
+  'Recharge Intensive Pets': ['Damage', 'Accuracy', 'Recharge'],
+  // Archetype sets
+  'Blaster Archetype Sets': ['Damage', 'Accuracy', 'Recharge', 'EnduranceReduction'],
+  'Brute Archetype Sets': ['Damage', 'Accuracy', 'Recharge', 'EnduranceReduction'],
+  'Controller Archetype Sets': ['Hold', 'Confuse', 'Accuracy', 'Recharge', 'EnduranceReduction'],
+  'Corruptor Archetype Sets': ['Damage', 'Accuracy', 'Recharge', 'EnduranceReduction'],
+  'Defender Archetype Sets': ['Healing', 'Defense', 'Recharge', 'EnduranceReduction'],
+  'Dominator Archetype Sets': ['Hold', 'Accuracy', 'Damage', 'Recharge', 'EnduranceReduction'],
+  'Mastermind Archetype Sets': ['Damage', 'Accuracy', 'Recharge', 'EnduranceReduction'],
+  'Scrapper Archetype Sets': ['Damage', 'Accuracy', 'Recharge', 'EnduranceReduction'],
+  'Stalker Archetype Sets': ['Damage', 'Accuracy', 'Recharge', 'EnduranceReduction'],
+  'Tanker Archetype Sets': ['Defense', 'Resistance', 'Recharge', 'EnduranceReduction'],
+  'Sentinel Archetype Sets': ['Damage', 'Accuracy', 'Recharge', 'EnduranceReduction'],
+  'Kheldian Archetype Sets': ['Damage', 'Accuracy', 'Recharge', 'EnduranceReduction'],
+  'Soldiers of Arachnos Archetype Sets': ['Damage', 'Accuracy', 'Recharge', 'EnduranceReduction'],
+};
+
 // Read and parse the raw data file
 const rawFilePath = './src/data/epic-powersets-raw.ts';
 const rawContent = fs.readFileSync(rawFilePath, 'utf-8');
@@ -147,6 +212,20 @@ function convertPower(legacyPower) {
     allowedEnhancements: (legacyPower.allowedEnhancements || []).map(mapEnhancementType).filter(Boolean),
     allowedSetCategories: legacyPower.allowedSetCategories || [],
   };
+
+  // If allowedEnhancements is empty but we have set categories, infer enhancements from categories
+  if (power.allowedEnhancements.length === 0 && power.allowedSetCategories.length > 0) {
+    const inferredEnhancements = new Set();
+
+    for (const category of power.allowedSetCategories) {
+      const enhancements = SET_CATEGORY_TO_ENHANCEMENT[category];
+      if (enhancements) {
+        enhancements.forEach(e => inferredEnhancements.add(e));
+      }
+    }
+
+    power.allowedEnhancements = Array.from(inferredEnhancements).sort();
+  }
 
   // Stats
   power.stats = {};

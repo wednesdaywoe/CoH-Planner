@@ -27,8 +27,8 @@ export const powerset: Powerset = {
   archetype: 'defender',
   category: 'secondary',
   powers: [
-    SnapShot,
     AimedShot,
+    SnapShot,
     FistfulofArrows,
     BlazingArrow,
     Aim,

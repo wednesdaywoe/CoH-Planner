@@ -21,6 +21,7 @@ const KNOWN_ISSUES = [
 ];
 
 const RECENT_CHANGES = [
+  'Regenerated data to find allowed enhancements',
   'Mobile: Touch and hold on slots to open action menu',
   'Mobile: Long-press on powers to view info',
   'Mobile: Improved dashboard and enhancement picker layouts',

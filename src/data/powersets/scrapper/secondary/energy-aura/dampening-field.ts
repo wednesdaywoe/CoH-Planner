@@ -20,7 +20,9 @@ export const DampeningField: Power = {
   "stats": {
     "accuracy": 1
   },
-  "allowedEnhancements": [],
+  "allowedEnhancements": [
+    "Resistance"
+  ],
   "allowedSetCategories": [
     "Resist Damage"
   ],

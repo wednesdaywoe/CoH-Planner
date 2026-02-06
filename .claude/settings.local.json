@@ -58,7 +58,8 @@
       "Bash(node scripts/generate-powerset-index.cjs:*)",
       "Bash(node scripts/convert-epic-powersets-to-modular.cjs:*)",
       "Bash(echo:*)",
-      "Bash(npm run type-check:*)"
+      "Bash(npm run type-check:*)",
+      "Bash(tee:*)"
     ]
   }
 }
