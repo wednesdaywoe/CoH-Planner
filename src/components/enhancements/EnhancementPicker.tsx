@@ -206,7 +206,7 @@ export function EnhancementPicker() {
   // Get available IO sets for the current power
   const availableSets = useMemo(() => {
     if (!currentPower) return [];
-    return getIOSetsForPower(currentPower.allowedSetCategories as IOSetCategory[]);
+    return getIOSetsForPower((currentPower.allowedSetCategories || []) as IOSetCategory[]);
   }, [currentPower]);
 
   // Determine the primary category for this power (first in priority order)

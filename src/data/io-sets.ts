@@ -231,7 +231,8 @@ export function getIOSetsForCategory(category: IOSetCategory): IOSet[] {
 /**
  * Get all IO sets that match any of the allowed categories for a power
  */
-export function getIOSetsForPower(allowedCategories: IOSetCategory[]): IOSet[] {
+export function getIOSetsForPower(allowedCategories: IOSetCategory[] = []): IOSet[] {
+  if (!allowedCategories || allowedCategories.length === 0) return [];
   return Object.values(_ioSets).filter((set) => {
     const mappedCategory = IO_SET_TYPE_TO_CATEGORY[set.type];
     return mappedCategory && allowedCategories.includes(mappedCategory);
