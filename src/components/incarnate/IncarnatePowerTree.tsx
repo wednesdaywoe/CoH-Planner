@@ -180,7 +180,7 @@ function TreeRow({ tier, slots, slotId, selectedPowerId, onPowerClick }: TreeRow
       </div>
 
       {/* 5-column grid */}
-      <div className="grid grid-cols-5 gap-2" style={{ width: '420px' }}>
+      <div className="grid grid-cols-5 gap-1 sm:gap-2 w-full max-w-[420px]">
         {slots.map((power, index) => (
           <div key={index} className="flex justify-center">
             {power ? (
@@ -191,7 +191,7 @@ function TreeRow({ tier, slots, slotId, selectedPowerId, onPowerClick }: TreeRow
                 onClick={() => onPowerClick(power)}
               />
             ) : (
-              <div className="w-[76px] h-[76px]" /> // Empty placeholder
+              <div className="w-[56px] h-[56px] sm:w-[76px] sm:h-[76px]" /> // Empty placeholder
             )}
           </div>
         ))}
@@ -241,8 +241,8 @@ function PowerButton({ slotId, power, isSelected, onClick }: PowerButtonProps) {
       <button
         onClick={onClick}
         className={`
-          relative flex flex-col items-center gap-1 p-1.5 rounded-lg
-          transition-all duration-200 w-[76px]
+          relative flex flex-col items-center gap-0.5 sm:gap-1 p-1 sm:p-1.5 rounded-lg
+          transition-all duration-200 w-[56px] sm:w-[76px]
           ${
             isSelected
               ? 'bg-gray-700/70 ring-2 ring-offset-1 ring-offset-gray-900'
@@ -257,7 +257,7 @@ function PowerButton({ slotId, power, isSelected, onClick }: PowerButtonProps) {
         }}
       >
         {/* Icon */}
-        <div className="w-10 h-10 rounded-md overflow-hidden">
+        <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-md overflow-hidden">
           <img
             src={iconPath}
             alt={power.displayName}
@@ -270,7 +270,7 @@ function PowerButton({ slotId, power, isSelected, onClick }: PowerButtonProps) {
 
         {/* Power name */}
         <div className="text-center">
-          <div className="text-[8px] text-gray-300 leading-tight truncate max-w-[68px]">
+          <div className="text-[7px] sm:text-[8px] text-gray-300 leading-tight truncate max-w-[48px] sm:max-w-[68px]">
             {shortName}
           </div>
         </div>

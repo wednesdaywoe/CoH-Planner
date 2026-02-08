@@ -6,7 +6,7 @@
  * 2. Portal-based positioning for complex tooltips
  */
 
-import { useState, useRef, type ReactNode, type CSSProperties } from 'react';
+import { useState, useRef, useCallback, type ReactNode, type CSSProperties } from 'react';
 import { createPortal } from 'react-dom';
 
 export type TooltipPosition = 'top' | 'bottom' | 'left' | 'right';
@@ -30,6 +30,7 @@ export function Tooltip({
   const [coords, setCoords] = useState({ x: 0, y: 0 });
   const timeoutRef = useRef<number | null>(null);
   const triggerRef = useRef<HTMLDivElement>(null);
+  const tooltipRef = useRef<HTMLDivElement>(null);
 
   const showTooltip = () => {
     timeoutRef.current = window.setTimeout(() => {
@@ -49,6 +50,25 @@ export function Tooltip({
     }
     setIsVisible(false);
   };
+
+  // Clamp tooltip to viewport after it renders
+  const clampToViewport = useCallback((node: HTMLDivElement | null) => {
+    if (!node) return;
+    (tooltipRef as React.MutableRefObject<HTMLDivElement | null>).current = node;
+    const rect = node.getBoundingClientRect();
+    const padding = 8;
+    const vw = window.innerWidth;
+
+    if (rect.left < padding) {
+      node.style.left = `${padding}px`;
+      node.style.transform = node.style.transform.replace('translateX(-50%)', 'translateX(0)');
+      node.style.transform = node.style.transform.replace('translate(-50%,', 'translate(0,');
+    } else if (rect.right > vw - padding) {
+      node.style.left = `${vw - padding}px`;
+      node.style.transform = node.style.transform.replace('translateX(-50%)', 'translateX(-100%)');
+      node.style.transform = node.style.transform.replace('translate(-50%,', 'translate(-100%,');
+    }
+  }, []);
 
   const getTooltipStyle = (): CSSProperties => {
     const baseStyle: CSSProperties = {
@@ -105,6 +125,7 @@ export function Tooltip({
       {isVisible &&
         createPortal(
           <div
+            ref={clampToViewport}
             role="tooltip"
             style={getTooltipStyle()}
             className={`

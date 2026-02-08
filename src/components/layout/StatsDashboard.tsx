@@ -726,7 +726,7 @@ export function StatsDashboard() {
           <div className="flex flex-row lg:flex-col items-center lg:items-end gap-2 lg:gap-1 flex-shrink-0 pt-2 lg:pt-0 border-t lg:border-t-0 border-gray-700">
             {/* Incarnate button - only visible on mobile/tablet when incarnate panel is hidden */}
             <button
-              onClick={openIncarnateModal}
+              onClick={() => openIncarnateModal()}
               className={`flex lg:hidden items-center gap-1.5 px-2 py-1 text-xs rounded transition-colors ${
                 !isLevel50
                   ? 'text-gray-500 cursor-not-allowed opacity-50'
