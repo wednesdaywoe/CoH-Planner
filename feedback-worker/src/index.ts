@@ -25,7 +25,7 @@ interface BuildContext {
 interface FeedbackPayload {
   type: 'bug' | 'suggestion' | 'other';
   description: string;
-  email?: string;
+  globalName?: string;
   buildContext?: BuildContext;
   userAgent: string;
   timestamp: string;
@@ -86,10 +86,10 @@ function buildEmailHtml(payload: FeedbackPayload): string {
   }
 
   let contactHtml = '';
-  if (payload.email) {
+  if (payload.globalName) {
     contactHtml = `
-      <h3 style="color: #94a3b8; margin-top: 16px;">Contact Email</h3>
-      <p><a href="mailto:${escapeHtml(payload.email)}" style="color: #60a5fa;">${escapeHtml(payload.email)}</a></p>`;
+      <h3 style="color: #94a3b8; margin-top: 16px;">Global Name</h3>
+      <p style="color: #60a5fa;">${escapeHtml(payload.globalName)}</p>`;
   }
 
   return `
@@ -180,7 +180,6 @@ export default {
           to: env.FEEDBACK_EMAIL,
           subject,
           html: buildEmailHtml({ ...payload, description }),
-          reply_to: payload.email || undefined,
         }),
       });
 

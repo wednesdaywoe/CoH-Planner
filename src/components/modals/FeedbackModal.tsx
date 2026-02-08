@@ -90,7 +90,7 @@ export function FeedbackModal({ isOpen, onClose }: FeedbackModalProps) {
     const payload = {
       type: feedbackType,
       description: description.trim(),
-      email: globalName.trim() || undefined, // Using 'email' field for worker compatibility, but contains global name
+      globalName: globalName.trim() || undefined,
       buildContext: getBuildContext(),
       userAgent: navigator.userAgent,
       timestamp: new Date().toISOString(),
