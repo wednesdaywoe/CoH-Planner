@@ -11,6 +11,7 @@ import type {
   SelectedPower,
 } from '@/types';
 import { getScaleValue } from '@/types';
+import type { CharacterGlobalBonuses } from '@/utils/calculations';
 
 // ============================================
 // TABLE BASE VALUES
@@ -189,59 +190,84 @@ export interface ThreeTierValues {
 }
 
 /**
- * Calculate three-tier stats (Base/Enhanced/Final) for key values
+ * Calculate three-tier stats (Base/Enhanced/Final) for key values.
+ *
+ * This is the single source of truth for three-tier math. All display
+ * components (InfoPanel, PowerInfoTooltip, EffectDisplay, SharedPowerComponents)
+ * should delegate to this function rather than implementing their own formulas.
+ *
+ * Formulas by aspect type:
+ * - Reductions (endurance, recharge): base / (1 + bonus) — lower is better
+ * - Multiplicative (everything else): base * (1 + bonus) — higher is better
  */
 export function calcThreeTier(
   aspect: string,
   baseValue: number,
   enhancementBonuses: Record<string, number | undefined>,
-  globalBonuses: Record<string, number>
+  globalBonuses: Record<string, number | undefined>
 ): ThreeTierValues {
   const enhBonus = enhancementBonuses[aspect] || 0;
-  const globalBonus = globalBonuses[aspect as keyof typeof globalBonuses] || 0;
+  const globalBonus = globalBonuses[aspect] || 0;
 
   let enhanced: number;
   let final: number;
 
-  switch (aspect) {
-    case 'damage':
-    case 'accuracy':
-    case 'tohitDebuff':
-    case 'defenseDebuff':
-    case 'heal':
-    case 'defense':
-    case 'resistance':
-    case 'tohit':
-    case 'damageDebuff':
-    case 'regenDebuff':
-    case 'recoveryDebuff':
-    case 'resistanceDebuff':
-      // Multiplicative
-      enhanced = baseValue * (1 + enhBonus);
-      final = enhanced * (1 + globalBonus);
-      break;
-    case 'endurance':
-      // Reduction
-      enhanced = baseValue * Math.max(0, 1 - enhBonus);
-      final = enhanced * Math.max(0, 1 - globalBonus);
-      break;
-    case 'recharge':
-      // Division
-      enhanced = baseValue / Math.max(1, 1 + enhBonus);
-      final = enhanced / Math.max(1, 1 + globalBonus);
-      break;
-    case 'range':
-    case 'slow':
-      // Range is multiplicative
-      enhanced = baseValue * (1 + enhBonus);
-      final = enhanced * (1 + globalBonus);
-      break;
-    default:
-      enhanced = baseValue * (1 + enhBonus);
-      final = enhanced * (1 + globalBonus);
+  if (aspect === 'endurance' || aspect === 'recharge') {
+    // Divisive reduction: base / (1 + bonus) — matches CoH game formula
+    enhanced = baseValue / Math.max(1, 1 + enhBonus);
+    final = enhanced / Math.max(1, 1 + globalBonus);
+  } else {
+    // Multiplicative: base * (1 + bonus)
+    enhanced = baseValue * (1 + enhBonus);
+    final = enhanced * (1 + globalBonus);
   }
 
   return { base: baseValue, enhanced, final };
+}
+
+// ============================================
+// GLOBAL BONUS CONVERSION
+// ============================================
+
+/**
+ * Maps enhancement aspect keys to their corresponding CharacterGlobalBonuses field names.
+ * Only aspects where a global bonus directly modifies a power's output are included.
+ *
+ * This is the single source of truth for bridging the dashboard's global stats
+ * (percentage values, e.g. 50 = +50%) with the per-power three-tier calculation
+ * (decimal multipliers, e.g. 0.5 = +50%).
+ *
+ * Add new entries here when the dashboard gains a global bonus that should affect
+ * per-power calculations (e.g. a new global heal bonus).
+ */
+const GLOBAL_BONUS_ASPECT_MAP: [string, keyof CharacterGlobalBonuses][] = [
+  ['damage', 'damage'],
+  ['accuracy', 'accuracy'],
+  ['recharge', 'recharge'],
+  ['endurance', 'endurance'],
+  ['range', 'range'],
+  ['tohit', 'toHit'],
+  ['heal', 'healOther'],
+];
+
+/**
+ * Convert CharacterGlobalBonuses (percentage values from the dashboard calculation)
+ * to enhancement-aspect-keyed decimal multipliers for three-tier power display.
+ *
+ * Used by InfoPanel, PowerInfoTooltip, and EffectDisplay to ensure consistent
+ * global bonus application across all power display surfaces.
+ */
+export function convertGlobalBonusesToAspects(
+  globalBonuses: CharacterGlobalBonuses
+): Record<string, number> {
+  const result: Record<string, number> = {};
+  for (const [aspect, field] of GLOBAL_BONUS_ASPECT_MAP) {
+    const value = globalBonuses[field];
+    if (value) {
+      result[aspect] = value / 100;
+    }
+  }
+  return result;
 }
 
 /**
@@ -273,6 +299,71 @@ export function findSelectedPowerInBuild(
   const inherent = build.inherents.find((p) => p.name === powerName);
   if (inherent) return inherent;
   return null;
+}
+
+// ============================================
+// BY-TYPE EXPANSION HELPERS
+// ============================================
+
+/**
+ * Mez protection type labels for expanded protection rows
+ */
+const MEZ_LABELS: Record<string, string> = {
+  stun: 'Stun', hold: 'Hold', immobilize: 'Immob',
+  sleep: 'Sleep', confuse: 'Confuse', fear: 'Fear', knockback: 'KB',
+};
+
+/**
+ * Expand a by-type object (DefenseByType, ResistanceByType, ElusivityByType)
+ * into individual type entries with calculated percentage values.
+ *
+ * If all values are the same, returns a single summary entry with label "Def (All)".
+ * Otherwise returns per-type entries like "Def: Smash", "Def: Lethal".
+ */
+export function expandByTypeEntries(
+  obj: Record<string, unknown>,
+  labelPrefix: string
+): Array<{ typeKey: string; typeLabel: string; basePercent: number }> {
+  const entries = Object.entries(obj).filter(([, v]) => v !== undefined && v !== 0);
+  if (entries.length === 0) return [];
+
+  const resolved = entries.map(([typeKey, value]) => ({
+    typeKey,
+    basePercent: calculateResistancePercent(value as NumberOrScaled) * 100,
+  }));
+
+  const percentValues = resolved.map(r => r.basePercent);
+  if (allValuesSame(percentValues) && resolved.length > 1) {
+    return [{
+      typeKey: '_all',
+      typeLabel: `${labelPrefix} (All)`,
+      basePercent: resolved[0].basePercent,
+    }];
+  }
+
+  return resolved.map(({ typeKey, basePercent }) => ({
+    typeKey,
+    typeLabel: `${labelPrefix}: ${TYPE_LABELS_FULL[typeKey] || typeKey}`,
+    basePercent,
+  }));
+}
+
+/**
+ * Expand ProtectionEffects into individual mez type entries.
+ * Returns entries like "Prot: Stun", "Prot: Hold" with magnitude values.
+ */
+export function expandProtectionEntries(
+  protection: Record<string, number>,
+  labelPrefix: string
+): Array<{ typeKey: string; typeLabel: string; magnitude: number }> {
+  const entries = Object.entries(protection).filter(([, v]) => v !== undefined && v !== 0);
+  if (entries.length === 0) return [];
+
+  return entries.map(([typeKey, value]) => ({
+    typeKey,
+    typeLabel: `${labelPrefix}: ${MEZ_LABELS[typeKey] || typeKey}`,
+    magnitude: value,
+  }));
 }
 
 /**

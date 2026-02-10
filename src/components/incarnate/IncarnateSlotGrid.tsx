@@ -2,18 +2,20 @@
  * IncarnateSlotGrid component - 2x3 grid of incarnate slots for embedding in StatsDashboard
  */
 
-import type { IncarnateSlotId, SelectedIncarnatePower } from '@/types';
-import { INCARNATE_SLOT_COLORS, INCARNATE_TIER_COLORS, INCARNATE_SLOT_ORDER } from '@/types';
-import { getIncarnateIconPath, getAllIncarnateSlots } from '@/data';
+import type { IncarnateSlotId, SelectedIncarnatePower, IncarnateActiveState, ToggleableIncarnateSlot } from '@/types';
+import { INCARNATE_SLOT_ORDER } from '@/types';
+import { getIncarnateIconPath, getAllIncarnateSlots, getSlotColor, getTierColor, isSlotToggleable } from '@/data';
 import { Tooltip } from '@/components/ui';
 
 interface IncarnateSlotGridProps {
   incarnates: Record<IncarnateSlotId, SelectedIncarnatePower | null>;
   disabled: boolean;
   onSlotClick: (slotId: IncarnateSlotId) => void;
+  incarnateActive: IncarnateActiveState;
+  onToggleActive: (slotId: ToggleableIncarnateSlot) => void;
 }
 
-export function IncarnateSlotGrid({ incarnates, disabled, onSlotClick }: IncarnateSlotGridProps) {
+export function IncarnateSlotGrid({ incarnates, disabled, onSlotClick, incarnateActive, onToggleActive }: IncarnateSlotGridProps) {
   const slots = getAllIncarnateSlots();
 
   return (
@@ -32,6 +34,8 @@ export function IncarnateSlotGrid({ incarnates, disabled, onSlotClick }: Incarna
             selectedPower={selectedPower}
             disabled={disabled}
             onClick={() => onSlotClick(slotId)}
+            isActive={slotId in incarnateActive ? incarnateActive[slotId as keyof IncarnateActiveState] : true}
+            onToggleActive={onToggleActive}
           />
         );
       })}
@@ -45,6 +49,8 @@ interface IncarnateSlotMiniProps {
   selectedPower: SelectedIncarnatePower | null;
   disabled: boolean;
   onClick: () => void;
+  isActive?: boolean;
+  onToggleActive?: (slotId: ToggleableIncarnateSlot) => void;
 }
 
 function IncarnateSlotMini({
@@ -53,9 +59,12 @@ function IncarnateSlotMini({
   selectedPower,
   disabled,
   onClick,
+  isActive = true,
+  onToggleActive,
 }: IncarnateSlotMiniProps) {
-  const slotColor = INCARNATE_SLOT_COLORS[slotId];
-  const tierColor = selectedPower ? INCARNATE_TIER_COLORS[selectedPower.tier] : slotColor;
+  const slotColor = getSlotColor(slotId);
+  const tierColor = selectedPower ? getTierColor(selectedPower.tier) : slotColor;
+  const canToggle = isSlotToggleable(slotId) && selectedPower !== null;
 
   const iconPath = selectedPower ? getIncarnateIconPath(slotId, selectedPower.icon) : null;
 
@@ -144,6 +153,30 @@ function IncarnateSlotMini({
             className="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full"
             style={{ backgroundColor: tierColor }}
           />
+        )}
+
+        {/* Active toggle for toggleable slots */}
+        {canToggle && onToggleActive && (
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              onToggleActive(slotId as ToggleableIncarnateSlot);
+            }}
+            className={`
+              absolute -bottom-0.5 -right-0.5
+              w-6 h-2.5 rounded-full transition-colors duration-200
+              ${isActive ? 'bg-green-500' : 'bg-gray-600'}
+            `}
+            title={isActive ? 'Active - click to disable' : 'Inactive - click to enable'}
+          >
+            <span
+              className={`
+                absolute top-0.5 w-1.5 h-1.5 rounded-full bg-white
+                transition-transform duration-200
+                ${isActive ? 'translate-x-3.5' : 'translate-x-0.5'}
+              `}
+            />
+          </button>
         )}
       </button>
     </Tooltip>

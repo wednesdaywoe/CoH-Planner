@@ -50,6 +50,8 @@ export interface EffectDisplayConfig {
   priority?: number;
   /** Whether this effect can have "by type" variants (defense, resistance) */
   canBeByType?: boolean;
+  /** Whether by-type variants should expand into individual rows (vs abbreviated summary) */
+  expandByType?: boolean;
   /** Custom render key if different from effect key */
   renderAs?: string;
   /** Base value to multiply by (e.g., accuracy is multiplier × 75% base to-hit) */
@@ -450,6 +452,42 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
     format: 'percent',
     enhancementAspect: 'heal',
     priority: 2,
+  },
+
+  // === ARMOR & PROTECTION ===
+  defense: {
+    label: 'Def',
+    category: 'protection',
+    colorClass: 'text-purple-400',
+    format: 'percent',
+    enhancementAspect: 'defense',
+    expandByType: true,
+    priority: 1,
+  },
+  resistance: {
+    label: 'Res',
+    category: 'protection',
+    colorClass: 'text-orange-400',
+    format: 'percent',
+    enhancementAspect: 'resistance',
+    expandByType: true,
+    priority: 2,
+  },
+  elusivity: {
+    label: 'DDR',
+    category: 'protection',
+    colorClass: 'text-teal-400',
+    format: 'percent',
+    expandByType: true,
+    priority: 3,
+  },
+  protection: {
+    label: 'Prot',
+    category: 'protection',
+    colorClass: 'text-yellow-400',
+    format: 'mag',
+    expandByType: true,
+    priority: 4,
   },
 };
 

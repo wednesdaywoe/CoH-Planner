@@ -9,8 +9,14 @@
  */
 
 import type { IncarnateSlotId, IncarnatePower, IncarnateTier } from '@/types';
-import { INCARNATE_TIER_COLORS, INCARNATE_TIER_NAMES } from '@/types';
-import { getIncarnateIconPath } from '@/data';
+import {
+  getIncarnateIconPath,
+  getTierColor,
+  getTierDisplayName,
+  abbreviatePowerName,
+  resolveTreeRow,
+  STANDARD_TREE_LAYOUT,
+} from '@/data';
 import { Tooltip } from '@/components/ui';
 
 interface IncarnatePowerTreeProps {
@@ -36,12 +42,15 @@ export function IncarnatePowerTree({
   const powersByTierAndBranch = powers.reduce(
     (acc, power) => {
       if (!acc[power.tier]) {
-        acc[power.tier] = { core: [], radial: [], base: [] };
+        acc[power.tier] = {};
+      }
+      if (!acc[power.tier][power.branch]) {
+        acc[power.tier][power.branch] = [];
       }
       acc[power.tier][power.branch].push(power);
       return acc;
     },
-    {} as Record<IncarnateTier, { core: IncarnatePower[]; radial: IncarnatePower[]; base: IncarnatePower[] }>
+    {} as Record<string, Record<string, IncarnatePower[]>>
   );
 
   const handlePowerClick = (power: IncarnatePower) => {
@@ -52,30 +61,6 @@ export function IncarnatePowerTree({
     }
   };
 
-  // Get powers for each tier
-  const veryRare = powersByTierAndBranch['veryrare'] || { core: [], radial: [], base: [] };
-  const rare = powersByTierAndBranch['rare'] || { core: [], radial: [], base: [] };
-  const uncommon = powersByTierAndBranch['uncommon'] || { core: [], radial: [], base: [] };
-  const common = powersByTierAndBranch['common'] || { core: [], radial: [], base: [] };
-
-  // For rare tier, separate Total and Partial
-  const rareCorePowers = rare.core;
-  const rareRadialPowers = rare.radial;
-
-  // Sort rare powers: Total first, then Partial
-  const sortRarePowers = (powers: IncarnatePower[]) => {
-    return [...powers].sort((a, b) => {
-      const aIsTotal = a.displayName.toLowerCase().includes('total');
-      const bIsTotal = b.displayName.toLowerCase().includes('total');
-      if (aIsTotal && !bIsTotal) return -1;
-      if (!aIsTotal && bIsTotal) return 1;
-      return 0;
-    });
-  };
-
-  const sortedRareCore = sortRarePowers(rareCorePowers);
-  const sortedRareRadial = sortRarePowers(rareRadialPowers);
-
   return (
     <div className="flex flex-col gap-2">
       {/* Tree header */}
@@ -83,75 +68,25 @@ export function IncarnatePowerTree({
         <h3 className="text-lg font-semibold text-gray-200">{treeName}</h3>
       </div>
 
-      {/* 5-column tree grid */}
+      {/* 5-column tree grid - driven by STANDARD_TREE_LAYOUT */}
       <div className="flex flex-col items-center gap-2 py-4">
-        {/* Row 4: Very Rare - columns 1 and 5 */}
-        {(veryRare.core.length > 0 || veryRare.radial.length > 0) && (
-          <TreeRow
-            tier="veryrare"
-            slots={[
-              veryRare.core[0] || null,
-              null,
-              null,
-              null,
-              veryRare.radial[0] || null,
-            ]}
-            slotId={slotId}
-            selectedPowerId={selectedPowerId}
-            onPowerClick={handlePowerClick}
-          />
-        )}
+        {STANDARD_TREE_LAYOUT.rows.map(({ tier, layout }) => {
+          const resolvedPowers = resolveTreeRow(layout, powersByTierAndBranch);
+          const hasAnyPower = resolvedPowers.some((p) => p !== null);
+          if (!hasAnyPower) return null;
 
-        {/* Row 3: Rare - columns 1-2 (core) and 4-5 (radial) */}
-        {(sortedRareCore.length > 0 || sortedRareRadial.length > 0) && (
-          <TreeRow
-            tier="rare"
-            slots={[
-              sortedRareCore[0] || null,
-              sortedRareCore[1] || null,
-              null,
-              sortedRareRadial[1] || null,
-              sortedRareRadial[0] || null,
-            ]}
-            slotId={slotId}
-            selectedPowerId={selectedPowerId}
-            onPowerClick={handlePowerClick}
-          />
-        )}
-
-        {/* Row 2: Uncommon - columns 2 and 4 */}
-        {(uncommon.core.length > 0 || uncommon.radial.length > 0) && (
-          <TreeRow
-            tier="uncommon"
-            slots={[
-              null,
-              uncommon.core[0] || null,
-              null,
-              uncommon.radial[0] || null,
-              null,
-            ]}
-            slotId={slotId}
-            selectedPowerId={selectedPowerId}
-            onPowerClick={handlePowerClick}
-          />
-        )}
-
-        {/* Row 1: Common - column 3 (center) */}
-        {(common.base.length > 0 || common.core.length > 0 || common.radial.length > 0) && (
-          <TreeRow
-            tier="common"
-            slots={[
-              null,
-              null,
-              common.base[0] || common.core[0] || common.radial[0] || null,
-              null,
-              null,
-            ]}
-            slotId={slotId}
-            selectedPowerId={selectedPowerId}
-            onPowerClick={handlePowerClick}
-          />
-        )}
+          return (
+            <TreeRow
+              key={tier}
+              tier={tier}
+              slots={resolvedPowers}
+              slotId={slotId}
+              treeName={treeName}
+              selectedPowerId={selectedPowerId}
+              onPowerClick={handlePowerClick}
+            />
+          );
+        })}
       </div>
     </div>
   );
@@ -161,13 +96,14 @@ interface TreeRowProps {
   tier: IncarnateTier;
   slots: (IncarnatePower | null)[];
   slotId: IncarnateSlotId;
+  treeName: string;
   selectedPowerId: string | null;
   onPowerClick: (power: IncarnatePower) => void;
 }
 
-function TreeRow({ tier, slots, slotId, selectedPowerId, onPowerClick }: TreeRowProps) {
-  const tierColor = INCARNATE_TIER_COLORS[tier];
-  const tierName = INCARNATE_TIER_NAMES[tier];
+function TreeRow({ tier, slots, slotId, treeName, selectedPowerId, onPowerClick }: TreeRowProps) {
+  const tierColor = getTierColor(tier);
+  const tierName = getTierDisplayName(tier);
 
   return (
     <div className="flex flex-col items-center gap-1">
@@ -187,6 +123,7 @@ function TreeRow({ tier, slots, slotId, selectedPowerId, onPowerClick }: TreeRow
               <PowerButton
                 slotId={slotId}
                 power={power}
+                treeName={treeName}
                 isSelected={selectedPowerId === power.id || selectedPowerId === power.fullName}
                 onClick={() => onPowerClick(power)}
               />
@@ -203,29 +140,22 @@ function TreeRow({ tier, slots, slotId, selectedPowerId, onPowerClick }: TreeRow
 interface PowerButtonProps {
   slotId: IncarnateSlotId;
   power: IncarnatePower;
+  treeName: string;
   isSelected: boolean;
   onClick: () => void;
 }
 
-function PowerButton({ slotId, power, isSelected, onClick }: PowerButtonProps) {
-  const tierColor = INCARNATE_TIER_COLORS[power.tier];
+function PowerButton({ slotId, power, treeName, isSelected, onClick }: PowerButtonProps) {
+  const tierColor = getTierColor(power.tier);
   const iconPath = getIncarnateIconPath(slotId, power.icon);
-
-  // Create a shortened display name
-  const shortName = power.displayName
-    .replace(power.treeId.charAt(0).toUpperCase() + power.treeId.slice(1) + ' ', '')
-    .replace('Core ', 'C.')
-    .replace('Radial ', 'R.')
-    .replace('Total ', 'T.')
-    .replace('Partial ', 'P.');
-
+  const shortName = abbreviatePowerName(power.displayName, treeName);
   const branchLabel = power.branch === 'base' ? 'Base' : power.branch === 'core' ? 'Core' : 'Radial';
 
   const tooltipContent = (
     <div className="max-w-[280px]">
       <div className="font-semibold text-white">{power.displayName}</div>
       <div className="text-xs mt-1" style={{ color: tierColor }}>
-        {INCARNATE_TIER_NAMES[power.tier]} - {branchLabel}
+        {getTierDisplayName(power.tier)} - {branchLabel}
       </div>
       {power.shortHelp && (
         <div className="text-xs text-gray-400 mt-2">{power.shortHelp}</div>

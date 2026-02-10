@@ -49,6 +49,7 @@ const ASPECT_SCHEDULE_MAP: Record<string, EnhancementSchedule> = {
   taunt: 'A',
 
   // Schedule B (20% SO)
+  defense: 'B',
   defenseBuff: 'B',
   range: 'B',
   resistance: 'B',
@@ -190,6 +191,9 @@ const ASPECT_NAME_MAP: Record<string, string> = {
   KB: 'knockback',
   Slow: 'slow',
 
+  // EnhancementStatType values (used by generic IOs, origin enhancements, and specials)
+  EnduranceReduction: 'endurance',
+
   // Full names
   Accuracy: 'accuracy',
   Damage: 'damage',
@@ -197,6 +201,7 @@ const ASPECT_NAME_MAP: Record<string, string> = {
   Endurance: 'endurance',
   'End Reduction': 'endurance',
   'Endurance Discount': 'endurance',
+  'Endurance Reduction': 'endurance',
   'Endurance Modification': 'enduranceMod',
   Healing: 'heal',
   Defense: 'defense',

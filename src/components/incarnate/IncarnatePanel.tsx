@@ -5,7 +5,7 @@
 
 import { useCallback } from 'react';
 import { useBuildStore, useUIStore } from '@/stores';
-import { getAllIncarnateSlots, isToggleableIncarnateSlot } from '@/data';
+import { getAllIncarnateSlots, isSlotToggleable } from '@/data';
 import { INCARNATE_SLOT_ORDER, INCARNATE_REQUIRED_LEVEL, createEmptyIncarnateBuildState } from '@/types';
 import type { ToggleableIncarnateSlot, IncarnateSlotId } from '@/types';
 import { IncarnateSlotButton } from './IncarnateSlotButton';
@@ -59,7 +59,7 @@ export function IncarnatePanel() {
           {/* Slot buttons */}
           <div className="flex-1 flex items-center justify-center gap-3">
             {slots.map((slot) => {
-              const isToggleable = isToggleableIncarnateSlot(slot.id);
+              const isToggleable = isSlotToggleable(slot.id);
               const isActive = isToggleable
                 ? incarnateActive[slot.id as ToggleableIncarnateSlot]
                 : true;

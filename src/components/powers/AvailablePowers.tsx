@@ -10,6 +10,96 @@ import { getPowerset, getPowerIconPath } from '@/data';
 import { resolvePath } from '@/utils/paths';
 import type { Power } from '@/types';
 
+// ============================================
+// REQUIRES EXPRESSION EVALUATOR
+// ============================================
+
+interface RequiresContext {
+  /** Display names of all selected powers (primary + secondary) */
+  selectedPowerDisplayNames: Set<string>;
+  /** Internal names of all selected powers (e.g., "Dark_Regeneration") */
+  selectedPowerInternalNames: Set<string>;
+  /** Powerset slugs of all selected powersets (e.g., "shield-defense", "dark-armor") */
+  selectedPowersetSlugs: Set<string>;
+}
+
+/**
+ * Evaluate a single atom (non-compound) requires expression.
+ * Returns true if the condition is met.
+ */
+function evaluateAtom(atom: string, ctx: RequiresContext): boolean {
+  const trimmed = atom.trim();
+
+  // Access level checks → always true for planner
+  if (trimmed.includes('char>accesslevel')) return true;
+
+  // No dots → simple display name prerequisite (e.g., "Dark Nova")
+  if (!trimmed.includes('.')) {
+    return ctx.selectedPowerDisplayNames.has(trimmed);
+  }
+
+  const parts = trimmed.split('.');
+
+  // 3 segments: AT_Category.Powerset_Name.Power_Internal_Name
+  // e.g., "Tanker_Defense.Dark_Armor.Obscure_Sustenance"
+  if (parts.length === 3) {
+    return ctx.selectedPowerInternalNames.has(parts[2]);
+  }
+
+  // 2 segments: AT_Category.Powerset_Name
+  // e.g., "Tanker_Defense.Shield_Defense" or "Brute_Melee.Claws"
+  if (parts.length === 2) {
+    const slug = parts[1].toLowerCase().replace(/_/g, '-');
+    return ctx.selectedPowersetSlugs.has(slug);
+  }
+
+  return false;
+}
+
+/**
+ * Evaluate a power requires expression against the current build.
+ *
+ * Patterns found in data:
+ * - "Power Name" → requires power by display name
+ * - "AT.Set.Power" → requires power by internal name (3 segments)
+ * - "AT.Set" → requires powerset to be selected (2 segments)
+ * - "!expr" → negation (must NOT have)
+ * - "!(a || b || c)" → none of the listed items can be present
+ * - "a && b" → both conditions must be true
+ * - "char>accesslevel >= 0" → always true
+ */
+function evaluateRequires(requires: string, ctx: RequiresContext): boolean {
+  const expr = requires.trim();
+
+  // Handle AND: "expr1 && expr2 && ..."
+  if (expr.includes('&&')) {
+    return expr.split('&&').every(part => evaluateRequires(part.trim(), ctx));
+  }
+
+  // Handle negated group: !(a || b || c)
+  if (expr.startsWith('!(') && expr.endsWith(')')) {
+    const inner = expr.slice(2, -1);
+    return inner.split('||').every(part => !evaluateAtom(part.trim(), ctx));
+  }
+
+  // Handle parenthesized group: (a || b || c) or (expr)
+  if (expr.startsWith('(') && expr.endsWith(')')) {
+    const inner = expr.slice(1, -1);
+    if (inner.includes('||')) {
+      return inner.split('||').some(part => evaluateAtom(part.trim(), ctx));
+    }
+    return evaluateRequires(inner, ctx);
+  }
+
+  // Handle simple negation: !atom
+  if (expr.startsWith('!')) {
+    return !evaluateAtom(expr.slice(1), ctx);
+  }
+
+  // Simple atom
+  return evaluateAtom(expr, ctx);
+}
+
 interface AvailablePowersProps {
   powersetId: string | null;
   category: 'primary' | 'secondary';
@@ -150,22 +240,61 @@ export function AvailablePowers({
 
   const powerset = powersetId ? getPowerset(powersetId) : null;
 
-  // Build a set of all selected power names in the build (primary + secondary)
+  // Build context for requires expression evaluation
   const allSelectedPowerNames = new Set([
     ...build.primary.powers.map(p => p.name),
     ...build.secondary.powers.map(p => p.name),
   ]);
 
+  const requiresContext: RequiresContext = (() => {
+    const selectedPowerInternalNames = new Set<string>();
+    const selectedPowersetSlugs = new Set<string>();
+
+    // Collect internal names from selected powers
+    for (const p of build.primary.powers) {
+      if (p.internalName) selectedPowerInternalNames.add(p.internalName);
+    }
+    for (const p of build.secondary.powers) {
+      if (p.internalName) selectedPowerInternalNames.add(p.internalName);
+    }
+
+    // Collect powerset slugs (e.g., "shield-defense" from "tanker/shield-defense")
+    if (build.primary.id) {
+      const slug = build.primary.id.split('/')[1];
+      if (slug) selectedPowersetSlugs.add(slug);
+    }
+    if (build.secondary.id) {
+      const slug = build.secondary.id.split('/')[1];
+      if (slug) selectedPowersetSlugs.add(slug);
+    }
+    for (const pool of build.pools) {
+      if (pool.id) {
+        const slug = pool.id.split('/')[1];
+        if (slug) selectedPowersetSlugs.add(slug);
+      }
+    }
+    if (build.epicPool?.id) {
+      const slug = build.epicPool.id.split('/')[1];
+      if (slug) selectedPowersetSlugs.add(slug);
+    }
+
+    return {
+      selectedPowerDisplayNames: allSelectedPowerNames,
+      selectedPowerInternalNames,
+      selectedPowersetSlugs,
+    };
+  })();
+
   // Show ALL user-selectable powers, not just ones available at current level
   // Powers not yet available will be shown as disabled
   // Powers with available === -1 are auto-granted and should not be shown in selection
-  // Powers with requires field are hidden until their prerequisite is taken
+  // Powers with requires field are hidden when their constraint isn't satisfied
   const allPowers = powerset
     ? powerset.powers.filter(p => {
         // Filter out auto-granted powers
         if (p.available < 0) return false;
-        // Filter out powers whose prerequisite isn't met
-        if (p.requires && !allSelectedPowerNames.has(p.requires)) return false;
+        // Evaluate requires expression (handles negation, internal names, powersets)
+        if (p.requires && !evaluateRequires(p.requires, requiresContext)) return false;
         return true;
       })
     : [];

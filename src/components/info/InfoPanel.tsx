@@ -20,7 +20,7 @@ import {
   getHybridEffects,
   getInterfaceEffects,
   formatEffectValue,
-  isToggleableIncarnateSlot,
+  isSlotToggleable,
   mergeWithSupportEffects,
 } from '@/data';
 import { useGlobalBonuses } from '@/hooks/useCalculatedStats';
@@ -33,18 +33,14 @@ import type {
   IncarnateSlotId,
   ToggleableIncarnateSlot,
 } from '@/types';
-import { INCARNATE_SLOT_COLORS, INCARNATE_TIER_COLORS, INCARNATE_TIER_NAMES } from '@/types';
+import { getSlotColor, getTierColor, getTierDisplayName } from '@/data';
 import {
-  calculateResistancePercent,
-  isByTypeObject,
   getEffectiveBuffDebuffModifier,
   calcThreeTier as calcThreeTierUtil,
+  convertGlobalBonusesToAspects,
   findSelectedPowerInBuild,
-  TYPE_LABELS_FULL,
 } from './powerDisplayUtils';
 import {
-  DefenseResistanceDisplay,
-  ProtectionDisplay,
   RegistryEffectsDisplay,
 } from './SharedPowerComponents';
 
@@ -198,14 +194,11 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
     return bonuses;
   }, [selectedPower, build.level, alphaBonuses]);
 
-  // Convert global bonuses to the format expected by power stats
-  const globalBonusesForCalc = useMemo(() => ({
-    damage: (globalBonuses.damage || 0) / 100,
-    accuracy: (globalBonuses.accuracy || 0) / 100,
-    recharge: (globalBonuses.recharge || 0) / 100,
-    endurance: (globalBonuses.endurance || 0) / 100,
-    range: (globalBonuses.range || 0) / 100,
-  }), [globalBonuses]);
+  // Convert global bonuses to enhancement-aspect-keyed decimals for three-tier display
+  const globalBonusesForCalc = useMemo(
+    () => convertGlobalBonusesToAspects(globalBonuses),
+    [globalBonuses]
+  );
 
   // Calculate actual damage using archetype modifiers and level
   const calculatedDamage = useMemo(() => {
@@ -389,73 +382,11 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
         enhancementBonuses={enhancementBonuses}
         globalBonuses={globalBonusesForCalc}
         buffDebuffMod={effectiveMod}
-        categories={['execution', 'buff', 'debuff', 'control']}
+        categories={['execution', 'buff', 'debuff', 'control', 'protection']}
         dominationActive={dominationActive}
         header="Power Effects"
         duration={effects?.buffDuration}
       />
-
-      {/* Resistance/Defense by Type (Armor Powers) */}
-      {effects?.resistance && isByTypeObject(effects.resistance) && (
-        <div>
-          <h4 className="text-[9px] font-semibold text-slate-500 uppercase tracking-wide mb-1">Resistance</h4>
-          <div className="bg-orange-900/20 rounded p-2 grid grid-cols-4 gap-1 text-[10px]">
-            {Object.entries(effects.resistance).map(([type, value]) => {
-              const pct = calculateResistancePercent(value);
-              return (
-                <div key={type} className="text-center">
-                  <div className="text-slate-400">{TYPE_LABELS_FULL[type] || type}</div>
-                  <div className="text-orange-400 font-medium">{(pct * 100).toFixed(1)}%</div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      )}
-
-      {/* Defense by Type (Armor Powers) */}
-      {effects?.defense && isByTypeObject(effects.defense) && (
-        <div>
-          <h4 className="text-[9px] font-semibold text-slate-500 uppercase tracking-wide mb-1">Defense</h4>
-          <div className="bg-purple-900/20 rounded p-2 grid grid-cols-4 gap-1 text-[10px]">
-            {Object.entries(effects.defense).map(([type, value]) => {
-              const pct = calculateResistancePercent(value);
-              return (
-                <div key={type} className="text-center">
-                  <div className="text-slate-400">{TYPE_LABELS_FULL[type] || type}</div>
-                  <div className="text-purple-400 font-medium">{(pct * 100).toFixed(1)}%</div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      )}
-
-      {/* Elusivity (Defense Debuff Resistance) */}
-      {effects?.elusivity && (
-        <div>
-          <h4 className="text-[9px] font-semibold text-slate-500 uppercase tracking-wide mb-1">Defense Debuff Resistance</h4>
-          <div className="bg-teal-900/20 rounded p-2 text-[10px]">
-            {isByTypeObject(effects.elusivity) ? (
-              <div className="grid grid-cols-4 gap-1">
-                {Object.entries(effects.elusivity).map(([type, value]) => {
-                  const pct = calculateResistancePercent(value);
-                  return (
-                    <div key={type} className="text-center">
-                      <div className="text-slate-400">{TYPE_LABELS_FULL[type] || type}</div>
-                      <div className="text-teal-400 font-medium">{(pct * 100).toFixed(1)}%</div>
-                    </div>
-                  );
-                })}
-              </div>
-            ) : (
-              <div className="text-teal-400">{(calculateResistancePercent(effects.elusivity) * 100).toFixed(1)}%</div>
-            )}
-          </div>
-        </div>
-      )}
-
-      {/* Movement/Special effects handled by EffectDisplay below */}
 
       {/* Damage with three-tier display - using actual damage calculation */}
       {calculatedDamage && (
@@ -607,29 +538,6 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
         </div>
       )}
 
-      {/* Defense (armor sets) */}
-      {effects?.defense && (
-        <DefenseResistanceDisplay
-          label="Defense"
-          values={effects.defense}
-          colorClass="text-purple-400"
-        />
-      )}
-
-      {/* Resistance (armor sets) */}
-      {effects?.resistance && (
-        <DefenseResistanceDisplay
-          label="Resistance"
-          values={effects.resistance}
-          colorClass="text-orange-400"
-        />
-      )}
-
-      {/* Mez Protection (armor sets) */}
-      {effects?.protection && (
-        <ProtectionDisplay protection={effects.protection} />
-      )}
-
       {/* Registry-based effect display for movement and special effects (control/buff/debuff handled above) */}
       {effects && (
         <EffectDisplay
@@ -700,10 +608,10 @@ function IncarnateInfo({ slotId, powerId }: IncarnateInfoProps) {
     );
   }
 
-  const slotColor = INCARNATE_SLOT_COLORS[slotId];
-  const tierColor = INCARNATE_TIER_COLORS[selectedPower.tier];
-  const tierName = INCARNATE_TIER_NAMES[selectedPower.tier];
-  const isToggleable = isToggleableIncarnateSlot(slotId);
+  const slotColor = getSlotColor(slotId);
+  const tierColor = getTierColor(selectedPower.tier);
+  const tierName = getTierDisplayName(selectedPower.tier);
+  const isToggleable = isSlotToggleable(slotId);
   const isActive = isToggleable ? incarnateActive[slotId as ToggleableIncarnateSlot] : false;
   const iconPath = getIncarnateIconPath(slotId, selectedPower.icon);
 

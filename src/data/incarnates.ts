@@ -15,10 +15,14 @@ import type {
 } from '@/types';
 import {
   INCARNATE_SLOT_ORDER,
-  INCARNATE_SLOT_COLORS,
   inferTierFromPowerName,
   inferBranchFromPowerName,
 } from '@/types';
+import {
+  getSlotColor,
+  getSlotIconFolder,
+  getTreeDescription,
+} from './incarnate-registry';
 
 // ============================================
 // RAW DATA IMPORTS
@@ -52,90 +56,6 @@ const RAW_SLOT_INDICES: Record<IncarnateSlotId, RawSlotIndex> = {
   hybrid: hybridIndex as RawSlotIndex,
 };
 
-// ============================================
-// TREE DESCRIPTIONS
-// ============================================
-
-const TREE_DESCRIPTIONS: Record<string, Record<string, string>> = {
-  alpha: {
-    cardiac: 'Endurance Cost Reduction, Max Health, Endurance',
-    nerve: 'Accuracy, Hold Duration, Slow',
-    musculature: 'Damage, Immobilization Duration, Defense Debuff',
-    spiritual: 'Recharge, Healing, Fear Duration',
-    agility: 'Endurance Modification, Defense, Recharge Reduction',
-    intuition: 'Range, Confusion Duration, Taunt',
-    resilient: 'Mez Resistance, Defense, Healing',
-    vigor: 'Recovery, Healing, Endurance Modification',
-  },
-  judgement: {
-    cryonic: 'Cold damage AoE with Hold',
-    ion: 'Energy damage AoE with Endurance drain',
-    mighty: 'Smashing damage PBAoE with Knockback',
-    pyronic: 'Fire damage Cone with DoT',
-    vorpal: 'Lethal damage Cone with -Defense',
-    void: 'Negative damage Sphere with -ToHit',
-  },
-  interface: {
-    diamagnetic: '-ToHit and -Regen debuffs',
-    gravitic: '-Speed debuffs',
-    paralytic: 'Hold effects',
-    reactive: 'DoT and -Resistance debuffs',
-    cognitive: 'Confuse effects',
-    degenerative: '-Max HP and Toxic DoT',
-    spectral: '-Defense debuffs',
-    preemptive: 'Slow debuffs and -Recharge',
-  },
-  destiny: {
-    ageless: 'Recovery and +Recharge buff',
-    barrier: 'Defense and Resistance buff',
-    clarion: 'Mez protection',
-    incandescence: 'Damage and ToHit buff',
-    rebirth: 'Healing and Regeneration buff',
-  },
-  lore: {
-    arachnos: 'Arachnos faction pets',
-    banished: 'Banished Pantheon pets',
-    carnival: 'Carnival of Shadows pets',
-    cimeroran: 'Cimeroran pets',
-    clockwork: 'Clockwork pets',
-    demons: 'Demon pets',
-    drones: 'Drone pets',
-    elementals: 'Elemental pets',
-    idf: 'Imperial Defense Force pets',
-    knives: 'Knives of Artemis pets',
-    lights: 'Nictus/Warshade pets',
-    longbow: 'Longbow faction pets',
-    nemesis: 'Nemesis faction pets',
-    phantoms: 'Phantom pets',
-    rikti: 'Rikti faction pets',
-    rularuu: 'Rularuu pets',
-    seers: 'Seer pets',
-    talons: 'Talons of Vengeance pets',
-    tsoo: 'Tsoo faction pets',
-    vanguard: 'Vanguard faction pets',
-    warworks: 'War Works faction pets',
-  },
-  hybrid: {
-    assault: 'Damage and critical hit chance',
-    control: 'Control magnitude and duration',
-    melee: 'Melee damage and survival',
-    ranged: 'Ranged damage',
-    support: 'Buff/Debuff effectiveness',
-  },
-};
-
-// ============================================
-// ICON PATH FOLDERS
-// ============================================
-
-const SLOT_ICON_FOLDERS: Record<IncarnateSlotId, string> = {
-  alpha: 'Incarnate Alpha Powers Icons',
-  judgement: 'Incarnate Judgement Powers Icons',
-  interface: 'Incarnate Interface Powers Icons',
-  destiny: 'Incarnate Destiny Powers Icons',
-  lore: 'Incarnate Lore Powers Icons',
-  hybrid: 'Incarnate Hybrid Powers Icons',
-};
 
 // ============================================
 // DATA PROCESSING
@@ -204,13 +124,11 @@ function buildSlotDefinition(slotId: IncarnateSlotId): IncarnateSlotDefinition {
 
   // Build trees from the map
   const trees: IncarnateTree[] = [];
-  const descriptions = TREE_DESCRIPTIONS[slotId] || {};
-
   for (const [treeId, powers] of treeMap) {
     trees.push({
       id: treeId,
       name: treeId.charAt(0).toUpperCase() + treeId.slice(1),
-      description: descriptions[treeId] || '',
+      description: getTreeDescription(slotId, treeId),
       powers: powers.sort((a, b) => {
         // Sort by tier, then by branch
         const tierOrder = ['common', 'uncommon', 'rare', 'veryrare'];
@@ -231,7 +149,7 @@ function buildSlotDefinition(slotId: IncarnateSlotId): IncarnateSlotDefinition {
     name: raw.name,
     displayName: raw.display_name,
     icon: raw.icon,
-    color: INCARNATE_SLOT_COLORS[slotId],
+    color: getSlotColor(slotId),
     trees,
   };
 }
@@ -328,7 +246,7 @@ export function getIncarnatePower(
  * Get the icon path for an incarnate power icon
  */
 export function getIncarnateIconPath(slotId: IncarnateSlotId, icon: string): string {
-  const folder = SLOT_ICON_FOLDERS[slotId];
+  const folder = getSlotIconFolder(slotId);
   // Convert to lowercase for file matching
   const lowerIcon = icon.toLowerCase();
   return resolvePath(`/img/Powers/${folder}/${lowerIcon}`);
@@ -338,7 +256,7 @@ export function getIncarnateIconPath(slotId: IncarnateSlotId, icon: string): str
  * Get the slot icon path (uses the blank/empty slot icon)
  */
 export function getIncarnateSlotIconPath(slotId: IncarnateSlotId): string {
-  const folder = SLOT_ICON_FOLDERS[slotId];
+  const folder = getSlotIconFolder(slotId);
   // Use the blank icon as the slot placeholder
   return resolvePath(`/img/Powers/${folder}/incarnate_${slotId}_blank.png`);
 }

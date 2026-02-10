@@ -16,6 +16,7 @@
 
 import { useMemo } from 'react';
 import type { Origin } from '@/types';
+import { STAT_ICON_MAP } from '@/data';
 import { resolvePath } from '@/utils/paths';
 
 // Base path for enhancement images
@@ -235,37 +236,8 @@ interface GenericIOIconProps {
   alt?: string;
 }
 
-// Map stat names to generic icon filenames
-const STAT_TO_GENERIC_ICON: Record<string, string> = {
-  Accuracy: 'Acc.png',
-  Damage: 'Damage.png',
-  Recharge: 'Recharge.png',
-  EnduranceReduction: 'EndRdx.png',
-  Range: 'Range.png',
-  Defense: 'Defbuff.png',
-  Resistance: 'DamRes.png',
-  Healing: 'Heal.png',
-  ToHit: 'Acc.png', // ToHit uses Accuracy icon
-  Hold: 'Hold.png',
-  Stun: 'Hold.png', // Stun uses Hold icon
-  Immobilize: 'Immob.png',
-  Sleep: 'Hold.png', // Sleep uses Hold icon
-  Confuse: 'Confuse.png',
-  Fear: 'Fear.png',
-  Knockback: 'Knockback.png',
-  'Run Speed': 'Run.png',
-  Jump: 'Jump.png',
-  Fly: 'Fly.png',
-  'ToHit Debuff': 'DefDebuff.png',
-  'Defense Debuff': 'DefDebuff.png',
-  EnduranceModification: 'EndMod.png',
-  Interrupt: 'Interrupt.png',
-  Slow: 'Slow.png',
-  Intangible: 'Intan.png',
-};
-
 export function GenericIOIcon({ stat, size = 36, className, alt }: GenericIOIconProps) {
-  const icon = STAT_TO_GENERIC_ICON[stat] || 'Damage.png';
+  const icon = STAT_ICON_MAP[stat] || 'Damage.png';
   return (
     <EnhancementIcon
       type="io-generic"
@@ -303,7 +275,7 @@ export function OriginEnhancementIcon({
   className,
   alt,
 }: OriginEnhancementIconProps) {
-  const icon = STAT_TO_GENERIC_ICON[stat] || 'Damage.png';
+  const icon = STAT_ICON_MAP[stat] || 'Damage.png';
   return (
     <EnhancementIcon
       type="origin"

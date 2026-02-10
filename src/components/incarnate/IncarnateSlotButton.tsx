@@ -3,8 +3,7 @@
  */
 
 import type { IncarnateSlotId, SelectedIncarnatePower, ToggleableIncarnateSlot } from '@/types';
-import { INCARNATE_SLOT_COLORS, INCARNATE_TIER_COLORS } from '@/types';
-import { getIncarnateSlotIconPath, getIncarnateIconPath, isToggleableIncarnateSlot } from '@/data';
+import { getIncarnateSlotIconPath, getIncarnateIconPath, getSlotColor, getTierColor, isSlotToggleable } from '@/data';
 
 interface IncarnateSlotButtonProps {
   slotId: IncarnateSlotId;
@@ -27,9 +26,9 @@ export function IncarnateSlotButton({
   onHover,
   onClick,
 }: IncarnateSlotButtonProps) {
-  const slotColor = INCARNATE_SLOT_COLORS[slotId];
-  const tierColor = selectedPower ? INCARNATE_TIER_COLORS[selectedPower.tier] : slotColor;
-  const canToggle = isToggleableIncarnateSlot(slotId) && selectedPower !== null;
+  const slotColor = getSlotColor(slotId);
+  const tierColor = selectedPower ? getTierColor(selectedPower.tier) : slotColor;
+  const canToggle = isSlotToggleable(slotId) && selectedPower !== null;
 
   // Get icon path
   const iconPath = selectedPower

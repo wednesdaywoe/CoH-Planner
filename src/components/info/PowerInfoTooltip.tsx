@@ -48,6 +48,7 @@ import {
   getContainmentInfo,
   calculateContainmentDamage,
   isControllerPower,
+  getAlphaEnhancementBonuses,
   type EnhancementBonuses,
 } from '@/utils/calculations';
 import {
@@ -59,15 +60,11 @@ import {
 import type { ArchetypeId, IOSetEnhancement, GenericIOEnhancement, OriginEnhancement, SpecialEnhancement, Enhancement } from '@/types';
 import { EffectDisplay } from './EffectDisplay';
 import {
-  calculateResistancePercent,
-  isByTypeObject,
   getEffectiveBuffDebuffModifier,
+  convertGlobalBonusesToAspects,
   findSelectedPowerInBuild,
-  TYPE_LABELS_SHORT,
 } from './powerDisplayUtils';
 import {
-  DefenseResistanceThreeTier,
-  ProtectionDisplay,
   RegistryEffectsDisplay,
 } from './SharedPowerComponents';
 
@@ -96,6 +93,7 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
   const build = useBuildStore((s) => s.build);
   const archetypeId = build.archetype.id;
   const globalBonuses = useGlobalBonuses();
+  const incarnateActive = useUIStore((s) => s.incarnateActive);
   const dominationActive = useDominationActive();
   const scourgeActive = useScourgeActive();
   const furyLevel = useFuryLevel();
@@ -172,24 +170,37 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
   // Find the selected power from build to get its slots
   const selectedPower = findSelectedPowerInBuild(powerName, build);
 
-  // Calculate enhancement bonuses if power is slotted
-  const enhancementBonuses = useMemo<EnhancementBonuses>(() => {
-    if (!selectedPower?.slots) return {};
-    return calculatePowerEnhancementBonuses(
-      { name: selectedPower.name, slots: selectedPower.slots },
-      build.level,
-      getIOSet
-    );
-  }, [selectedPower, build.level]);
+  // Get Alpha incarnate enhancement bonuses (apply to all powers)
+  const alphaBonuses = useMemo<EnhancementBonuses>(() => {
+    return getAlphaEnhancementBonuses(build.incarnates, incarnateActive);
+  }, [build.incarnates, incarnateActive]);
 
-  // Convert global bonuses to the format expected by power stats
-  const globalBonusesForCalc = useMemo(() => ({
-    damage: (globalBonuses.damage || 0) / 100,
-    accuracy: (globalBonuses.accuracy || 0) / 100,
-    recharge: (globalBonuses.recharge || 0) / 100,
-    endurance: (globalBonuses.endurance || 0) / 100,
-    range: (globalBonuses.range || 0) / 100,
-  }), [globalBonuses]);
+  // Calculate enhancement bonuses if power is slotted, plus Alpha bonuses
+  const enhancementBonuses = useMemo<EnhancementBonuses>(() => {
+    let bonuses: EnhancementBonuses = {};
+    if (selectedPower?.slots) {
+      bonuses = calculatePowerEnhancementBonuses(
+        { name: selectedPower.name, slots: selectedPower.slots },
+        build.level,
+        getIOSet
+      );
+    }
+
+    // Add Alpha incarnate bonuses (these apply universally to all powers)
+    for (const [aspect, value] of Object.entries(alphaBonuses)) {
+      if (value !== undefined) {
+        bonuses[aspect] = (bonuses[aspect] || 0) + value;
+      }
+    }
+
+    return bonuses;
+  }, [selectedPower, build.level, alphaBonuses]);
+
+  // Convert global bonuses to enhancement-aspect-keyed decimals for three-tier display
+  const globalBonusesForCalc = useMemo(
+    () => convertGlobalBonusesToAspects(globalBonuses),
+    [globalBonuses]
+  );
 
   // Get powerset for determining damage type
   const powerset = getPowerset(powerSet);
@@ -383,7 +394,7 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
         enhancementBonuses={enhancementBonuses}
         globalBonuses={globalBonusesForCalc}
         buffDebuffMod={effectiveMod}
-        categories={['execution', 'buff', 'debuff', 'control']}
+        categories={['execution', 'buff', 'debuff', 'control', 'protection']}
         dominationActive={dominationActive}
         compact={true}
         header="Power Effects"
@@ -394,50 +405,6 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
         finalColumnColor={damageDisplayInfo?.finalColumnColor}
         applyInherentBonus={damageDisplayInfo?.applyInherentBonus}
       />
-
-      {/* Resistance by Type (Armor Powers) */}
-      {effects?.resistance && isByTypeObject(effects.resistance) && (
-        <div className="bg-orange-900/20 rounded p-1 text-[9px]">
-          <span className="text-slate-500 uppercase">Resist: </span>
-          {Object.entries(effects.resistance).map(([type, value], i, arr) => {
-            const pct = calculateResistancePercent(value);
-            return (
-              <span key={type} className="text-orange-400">
-                {TYPE_LABELS_SHORT[type] || type}:{(pct * 100).toFixed(0)}%{i < arr.length - 1 ? ' ' : ''}
-              </span>
-            );
-          })}
-        </div>
-      )}
-
-      {/* Defense by Type (Armor Powers) */}
-      {effects?.defense && isByTypeObject(effects.defense) && (
-        <div className="bg-purple-900/20 rounded p-1 text-[9px]">
-          <span className="text-slate-500 uppercase">Def: </span>
-          {Object.entries(effects.defense).map(([type, value], i, arr) => {
-            const pct = calculateResistancePercent(value);
-            return (
-              <span key={type} className="text-purple-400">
-                {TYPE_LABELS_SHORT[type] || type}:{(pct * 100).toFixed(1)}%{i < arr.length - 1 ? ' ' : ''}
-              </span>
-            );
-          })}
-        </div>
-      )}
-
-      {/* Elusivity */}
-      {effects?.elusivity && (
-        <div className="text-[9px] text-teal-400">
-          DDR: {isByTypeObject(effects.elusivity)
-            ? Object.entries(effects.elusivity).map(([type, v]) =>
-                `${TYPE_LABELS_SHORT[type] || type}:${(calculateResistancePercent(v) * 100).toFixed(0)}%`
-              ).join(' ')
-            : `${(calculateResistancePercent(effects.elusivity) * 100).toFixed(0)}%`
-          }
-        </div>
-      )}
-
-      {/* Movement Effects handled by EffectDisplay below */}
 
       {/* Fiery Embrace conditional damage (shown separately since it's conditional) */}
       {calculatedDamage?.fieryEmbraceDamage && damageDisplayInfo && (
@@ -508,31 +475,6 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
             {effects.dot.type} {effects.dot.scale.toFixed(2)}/tick × {effects.dot.ticks} = {(effects.dot.scale * effects.dot.ticks).toFixed(2)} total
           </span>
         </div>
-      )}
-
-      {/* Defense (armor sets) - with three-tier display */}
-      {effects?.defense && (
-        <DefenseResistanceThreeTier
-          label="Defense"
-          values={effects.defense}
-          enhancementBonus={enhancementBonuses.defenseBuff || enhancementBonuses.defense || 0}
-          colorClass="text-purple-400"
-        />
-      )}
-
-      {/* Resistance (armor sets) - with three-tier display */}
-      {effects?.resistance && (
-        <DefenseResistanceThreeTier
-          label="Resistance"
-          values={effects.resistance}
-          enhancementBonus={enhancementBonuses.resistance || 0}
-          colorClass="text-orange-400"
-        />
-      )}
-
-      {/* Mez Protection (armor sets) */}
-      {effects?.protection && (
-        <ProtectionDisplay protection={effects.protection} compact />
       )}
 
       {/* Registry-based effect display for movement and special effects (buff/debuff/control handled above) */}

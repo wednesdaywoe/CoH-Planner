@@ -3,9 +3,16 @@
  * Used by both PowerInfoTooltip (compact) and InfoPanel (expanded).
  */
 
-import type { DefenseByType, ResistanceByType, ProtectionEffects, PowerEffects, NumberOrScaled } from '@/types';
+import type { PowerEffects, NumberOrScaled } from '@/types';
 import { getScaleValue } from '@/types';
-import { formatPercent, calculateBuffDebuffValue } from './powerDisplayUtils';
+import {
+  calculateBuffDebuffValue,
+  calculateResistancePercent,
+  calcThreeTier,
+  expandByTypeEntries,
+  expandProtectionEntries,
+} from './powerDisplayUtils';
+import type { ThreeTierValues } from './powerDisplayUtils';
 import type { PowerDamageResult } from '@/utils/calculations';
 import {
   EFFECT_REGISTRY,
@@ -57,10 +64,14 @@ interface ThreeTierStatRowProps {
   colorClass?: string;
   /** Use compact sizing for tooltips */
   compact?: boolean;
+  /** Whether this stat can be enhanced. When true, always shows values; when false, shows "—" for Enhanced/Final */
+  enhanceable?: boolean;
 }
 
 /**
- * Single row in a three-tier stat display
+ * Single row in a three-tier stat display.
+ * Enhanceable stats always show values in all three columns (even when identical).
+ * Non-enhanceable stats show "—" for Enhanced and Final.
  */
 export function ThreeTierStatRow({
   label,
@@ -70,6 +81,7 @@ export function ThreeTierStatRow({
   format = 'number',
   colorClass = 'text-slate-200',
   compact = false,
+  enhanceable = true,
 }: ThreeTierStatRowProps) {
   const formatValue = (v: number) => {
     switch (format) {
@@ -95,144 +107,21 @@ export function ThreeTierStatRow({
   return (
     <div className={`grid ${gridCols} gap-1 items-baseline ${fontSize}`}>
       <span className={colorClass}>{label}</span>
-      <span className={colorClass}>{formatValue(base)}</span>
-      <span className={hasEnhancement ? 'text-green-400' : 'text-slate-600'}>
-        {hasEnhancement ? (compact ? `→ ${formatValue(enhanced)}` : formatValue(enhanced)) : '—'}
-      </span>
-      <span className={hasGlobal ? 'text-amber-400' : 'text-slate-600'}>
-        {hasGlobal ? (compact ? `→ ${formatValue(final)}` : formatValue(final)) : '—'}
-      </span>
-    </div>
-  );
-}
-
-// ============================================
-// DEFENSE/RESISTANCE DISPLAY COMPONENTS
-// ============================================
-
-interface DefenseResistanceDisplayProps {
-  label: string;
-  values: DefenseByType | ResistanceByType;
-  colorClass: string;
-  /** Use compact sizing for tooltips */
-  compact?: boolean;
-}
-
-/**
- * Display defense or resistance values by type
- */
-export function DefenseResistanceDisplay({
-  label,
-  values,
-  colorClass,
-  compact = false,
-}: DefenseResistanceDisplayProps) {
-  const entries = Object.entries(values).filter(([, v]) => v !== undefined && v !== 0);
-  if (entries.length === 0) return null;
-
-  const fontSize = compact ? 'text-[9px]' : 'text-[10px]';
-  const labelFontSize = compact ? 'text-[9px]' : 'text-[10px]';
-
-  return (
-    <div className="mt-1">
-      <span className={`text-slate-400 ${labelFontSize} uppercase`}>{label}</span>
-      <div className="grid grid-cols-2 gap-x-2 gap-y-0.5 mt-0.5">
-        {entries.map(([type, value]) => (
-          <div key={type} className="flex justify-between">
-            <span className={`text-slate-500 capitalize ${fontSize}`}>{type}</span>
-            <span className={`${colorClass} ${fontSize}`}>{formatPercent(value as number)}</span>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-interface DefenseResistanceThreeTierProps {
-  label: string;
-  values: DefenseByType | ResistanceByType;
-  enhancementBonus: number;
-  colorClass: string;
-}
-
-/**
- * Defense/Resistance with three-tier display (Base/Enhanced/Final)
- */
-export function DefenseResistanceThreeTier({
-  label,
-  values,
-  enhancementBonus,
-  colorClass,
-}: DefenseResistanceThreeTierProps) {
-  const entries = Object.entries(values).filter(([, v]) => v !== undefined && v !== 0);
-  if (entries.length === 0) return null;
-
-  const hasEnhancement = enhancementBonus > 0.001;
-
-  return (
-    <div className="bg-slate-800/50 rounded p-1.5 mt-1">
-      <div className="grid grid-cols-[3.5rem_1fr_1fr_1fr] gap-1 text-[8px] text-slate-500 uppercase mb-0.5 border-b border-slate-700 pb-0.5">
-        <span>{label}</span>
-        <span>Base</span>
-        <span>Enhanced</span>
-        <span>Final</span>
-      </div>
-      {entries.map(([type, baseValue]) => {
-        const base = baseValue as number;
-        // Defense and Resistance are multiplicative with enhancements
-        const enhanced = base * (1 + enhancementBonus);
-        const hasEnh = Math.abs(enhanced - base) > 0.001;
-
-        return (
-          <div key={type} className="grid grid-cols-[3.5rem_1fr_1fr_1fr] gap-1 items-baseline text-[10px]">
-            <span className="text-slate-400 capitalize text-[9px]">{type}</span>
-            <span className={colorClass}>{formatPercent(base)}</span>
-            <span className={hasEnh ? 'text-green-400' : 'text-slate-600'}>
-              {hasEnh ? `→ ${formatPercent(enhanced)}` : '—'}
-            </span>
-            <span className="text-slate-600">—</span>
-          </div>
-        );
-      })}
-      {hasEnhancement && (
-        <div className="text-[8px] text-green-500/70 mt-0.5">
-          +{(enhancementBonus * 100).toFixed(1)}% from enhancements
-        </div>
+      <span className="text-slate-200">{formatValue(base)}</span>
+      {enhanceable ? (
+        <span className={hasEnhancement ? 'text-green-400' : 'text-slate-400'}>
+          {formatValue(enhanced)}
+        </span>
+      ) : (
+        <span className="text-slate-600">—</span>
       )}
-    </div>
-  );
-}
-
-// ============================================
-// PROTECTION DISPLAY COMPONENTS
-// ============================================
-
-interface ProtectionDisplayProps {
-  protection: ProtectionEffects;
-  /** Use compact sizing for tooltips */
-  compact?: boolean;
-}
-
-/**
- * Display mez protection values
- */
-export function ProtectionDisplay({ protection, compact = false }: ProtectionDisplayProps) {
-  const entries = Object.entries(protection).filter(([, v]) => v !== undefined && v !== 0);
-  if (entries.length === 0) return null;
-
-  const fontSize = compact ? 'text-[9px]' : 'text-[10px]';
-
-  return (
-    <div className="mt-1">
-      <span className={`text-slate-400 ${fontSize} uppercase`}>Mez Protection</span>
-      <div className="grid grid-cols-2 gap-x-2 gap-y-0 mt-0.5">
-        {entries.map(([type, value]) => (
-          <div key={type} className="flex justify-between">
-            <span className={`text-slate-500 capitalize ${fontSize}`}>{type}</span>
-            <span className={`text-purple-400 ${fontSize}`}>Mag {(value as number).toFixed(1)}</span>
-          </div>
-        ))}
-      </div>
+      {enhanceable ? (
+        <span className={hasGlobal ? 'text-amber-400' : 'text-slate-400'}>
+          {formatValue(final)}
+        </span>
+      ) : (
+        <span className="text-slate-600">—</span>
+      )}
     </div>
   );
 }
@@ -280,7 +169,8 @@ interface DamageRowProps {
 }
 
 /**
- * Single row in damage display
+ * Single row in damage display.
+ * Damage is always enhanceable — always shows values in all three columns.
  */
 export function DamageRow({
   type,
@@ -304,11 +194,11 @@ export function DamageRow({
     <div className={`grid ${gridCols} gap-1 items-baseline ${fontSize} ${dimmed ? 'opacity-40' : ''}`}>
       <span className={dimmed ? 'text-slate-500' : typeColorClass}>{type}</span>
       <span className={dimmed ? 'text-slate-500' : 'text-slate-200'}>{base.toFixed(1)}</span>
-      <span className={dimmed ? 'text-slate-600' : (hasEnh ? 'text-green-400' : 'text-slate-600')}>
-        {hasEnh ? `→ ${enhanced.toFixed(1)}` : '—'}
+      <span className={dimmed ? 'text-slate-600' : (hasEnh ? 'text-green-400' : 'text-slate-400')}>
+        {enhanced.toFixed(1)}
       </span>
-      <span className={dimmed ? 'text-slate-600' : (hasGlobal ? finalColorClass : 'text-slate-600')}>
-        {hasGlobal ? `→ ${final.toFixed(1)}` : '—'}
+      <span className={dimmed ? 'text-slate-600' : (hasGlobal ? finalColorClass : 'text-slate-400')}>
+        {final.toFixed(1)}
       </span>
     </div>
   );
@@ -350,14 +240,9 @@ interface RegistryEffectsDisplayProps {
   applyInherentBonus?: (value: number) => number;
 }
 
-interface ThreeTierValues {
-  base: number;
-  enhanced: number;
-  final: number;
-}
-
 /**
- * Calculate three-tier values for an effect
+ * Calculate three-tier values for an effect using its registry config.
+ * Delegates to the shared calcThreeTier in powerDisplayUtils.
  */
 function calcEffectThreeTier(
   config: EffectDisplayConfig,
@@ -366,26 +251,8 @@ function calcEffectThreeTier(
   globalBonuses: Record<string, number | undefined>
 ): ThreeTierValues {
   const aspect = config.enhancementAspect;
-  const enhBonus = aspect ? (enhancementBonuses[aspect] || 0) : 0;
-  const globalBonus = aspect ? (globalBonuses[aspect] || 0) : 0;
-
-  // For recharge/endurance, reduction means lower is better
-  const isReduction = aspect === 'endurance' || aspect === 'recharge';
-
-  let enhanced: number;
-  let final: number;
-
-  if (isReduction) {
-    // Reduction: base / (1 + bonus)
-    enhanced = baseValue / (1 + enhBonus);
-    final = enhanced / (1 + globalBonus);
-  } else {
-    // Standard: base * (1 + bonus)
-    enhanced = baseValue * (1 + enhBonus);
-    final = enhanced * (1 + globalBonus);
-  }
-
-  return { base: baseValue, enhanced, final };
+  if (!aspect) return { base: baseValue, enhanced: baseValue, final: baseValue };
+  return calcThreeTier(aspect, baseValue, enhancementBonuses, globalBonuses);
 }
 
 /**
@@ -486,6 +353,7 @@ export function RegistryEffectsDisplay({
     baseValue: number;
     tiers: ThreeTierValues;
     byTypeLabel?: string;
+    expandedLabel?: string;
   }> = [];
 
   for (const group of filteredGroups) {
@@ -501,6 +369,58 @@ export function RegistryEffectsDisplay({
       // Skip damageBuff (handled by Defiance section for Blasters)
       if (key === 'damageBuff') continue;
 
+      // Handle expandByType effects (defense, resistance, elusivity, protection)
+      if (config.expandByType && typeof value === 'object' && value !== null) {
+        // Protection: expand mez magnitudes
+        if (key === 'protection') {
+          const protEntries = expandProtectionEntries(
+            value as Record<string, number>,
+            config.label
+          );
+          for (const entry of protEntries) {
+            displayableEffects.push({
+              effect: { key: `${key}_${entry.typeKey}`, value: entry.magnitude, config },
+              baseValue: entry.magnitude,
+              tiers: { base: entry.magnitude, enhanced: entry.magnitude, final: entry.magnitude },
+              expandedLabel: entry.typeLabel,
+            });
+          }
+          continue;
+        }
+
+        // Defense, resistance, elusivity: expand by damage/defense type
+        if (isByTypeObject(value)) {
+          const byTypeEntries = expandByTypeEntries(
+            value as Record<string, unknown>,
+            config.label
+          );
+          for (const entry of byTypeEntries) {
+            if (entry.basePercent === 0) continue;
+            const tiers = calcEffectThreeTier(config, entry.basePercent, enhancementBonuses, globalBonuses);
+            displayableEffects.push({
+              effect: { key: `${key}_${entry.typeKey}`, value: entry.basePercent, config },
+              baseValue: entry.basePercent,
+              tiers,
+              expandedLabel: entry.typeLabel,
+            });
+          }
+          continue;
+        }
+
+        // Scalar elusivity (not by-type)
+        if (key === 'elusivity') {
+          const pct = calculateResistancePercent(value as NumberOrScaled) * 100;
+          if (pct === 0) continue;
+          displayableEffects.push({
+            effect: { key, value, config },
+            baseValue: pct,
+            tiers: { base: pct, enhanced: pct, final: pct },
+            expandedLabel: 'DDR',
+          });
+          continue;
+        }
+      }
+
       // Get base value
       const baseValue = getEffectBaseValue(value, config, buffDebuffMod);
       if (baseValue === null || baseValue === 0) continue;
@@ -511,7 +431,7 @@ export function RegistryEffectsDisplay({
       // Calculate three-tier values
       const tiers = calcEffectThreeTier(config, baseValue, enhancementBonuses, globalBonuses);
 
-      // Get by-type label if applicable
+      // Get by-type label if applicable (abbreviated summary for buff/debuff by-type)
       let byTypeLabel: string | undefined;
       if (config.canBeByType && isByTypeObject(value)) {
         byTypeLabel = getByTypeAbbreviations(value as Record<string, unknown>);
@@ -569,7 +489,7 @@ export function RegistryEffectsDisplay({
           <span>{finalColumnHeader}</span>
         </div>
 
-        {/* Damage row(s) - rendered first */}
+        {/* Damage row(s) - rendered first (damage is always enhanceable) */}
         {damage && (() => {
           const hasEnh = Math.abs(damage.enhanced - damage.base) > 0.001;
           const finalDamage = applyInherentBonus ? applyInherentBonus(damage.final) : damage.final;
@@ -580,11 +500,11 @@ export function RegistryEffectsDisplay({
               <div className={`grid ${gridCols} gap-1 items-baseline ${fontSize}`}>
                 <span className="text-red-400">{damage.type}</span>
                 <span className="text-slate-200">{damage.base.toFixed(2)}</span>
-                <span className={hasEnh ? 'text-green-400' : 'text-slate-600'}>
-                  {hasEnh ? (compact ? `→ ${damage.enhanced.toFixed(2)}` : damage.enhanced.toFixed(2)) : '—'}
+                <span className={hasEnh ? 'text-green-400' : 'text-slate-400'}>
+                  {damage.enhanced.toFixed(2)}
                 </span>
-                <span className={hasFinal ? finalColumnColor : 'text-slate-600'}>
-                  {hasFinal ? (compact ? `→ ${finalDamage.toFixed(2)}` : finalDamage.toFixed(2)) : '—'}
+                <span className={hasFinal ? finalColumnColor : 'text-slate-400'}>
+                  {finalDamage.toFixed(2)}
                 </span>
               </div>
               {/* DoT indicator */}
@@ -604,18 +524,19 @@ export function RegistryEffectsDisplay({
         })()}
 
       {/* Effects */}
-      {displayableEffects.map(({ effect, tiers, byTypeLabel }) => {
+      {displayableEffects.map(({ effect, tiers, byTypeLabel, expandedLabel }) => {
         const { key, config } = effect;
+        const enhanceable = !!config.enhancementAspect;
         const hasEnh = Math.abs(tiers.enhanced - tiers.base) > 0.001;
         const hasFinal = Math.abs(tiers.final - tiers.enhanced) > 0.001;
 
-        // Build label
-        let label = config.label;
-        if (byTypeLabel) {
+        // Build label — expanded label takes precedence
+        let label = expandedLabel || config.label;
+        if (!expandedLabel && byTypeLabel) {
           label = `${config.label} (${byTypeLabel})`;
         }
 
-        // Handle mez effects (magnitude format)
+        // Handle mez effects (magnitude format) — not enhanceable, show "—"
         if (config.format === 'mag') {
           const mag = dominationActive && config.category === 'control' ? tiers.base * 2 : tiers.base;
           const colorClass = dominationActive && config.category === 'control' ? 'text-pink-400' : config.colorClass;
@@ -623,7 +544,7 @@ export function RegistryEffectsDisplay({
           return (
             <div key={key} className={`grid ${gridCols} gap-1 items-baseline ${fontSize}`}>
               <span className={colorClass}>{label}</span>
-              <span className={colorClass}>
+              <span className="text-slate-200">
                 Mag {mag}
                 {dominationActive && config.category === 'control' && (
                   <span className="text-pink-300 text-[8px] ml-1">[2×]</span>
@@ -653,13 +574,21 @@ export function RegistryEffectsDisplay({
         return (
           <div key={key} className={`grid ${gridCols} gap-1 items-baseline ${fontSize}`}>
             <span className={config.colorClass}>{label}</span>
-            <span className={config.colorClass}>{formatValue(tiers.base)}</span>
-            <span className={hasEnh ? 'text-green-400' : 'text-slate-600'}>
-              {hasEnh ? (compact ? `→ ${formatValue(tiers.enhanced)}` : formatValue(tiers.enhanced)) : '—'}
-            </span>
-            <span className={hasFinal ? 'text-amber-400' : 'text-slate-600'}>
-              {hasFinal ? (compact ? `→ ${formatValue(tiers.final)}` : formatValue(tiers.final)) : '—'}
-            </span>
+            <span className="text-slate-200">{formatValue(tiers.base)}</span>
+            {enhanceable ? (
+              <span className={hasEnh ? 'text-green-400' : 'text-slate-400'}>
+                {formatValue(tiers.enhanced)}
+              </span>
+            ) : (
+              <span className="text-slate-600">—</span>
+            )}
+            {enhanceable ? (
+              <span className={hasFinal ? 'text-amber-400' : 'text-slate-400'}>
+                {formatValue(tiers.final)}
+              </span>
+            ) : (
+              <span className="text-slate-600">—</span>
+            )}
           </div>
         );
       })}

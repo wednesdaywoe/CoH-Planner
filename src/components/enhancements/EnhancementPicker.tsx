@@ -9,13 +9,18 @@
 
 import { useState, useMemo, useEffect, useRef } from 'react';
 import { useBuildStore, useUIStore } from '@/stores';
-import { getIOSetsForPower, getPower, getPowerPool, getInherentPowerDef } from '@/data';
-import { COMMON_IO_TYPES, getCommonIOValueAtLevel, ORIGIN_TIERS, HAMIDON_ENHANCEMENTS } from '@/data/enhancements';
-import { resolvePath } from '@/utils/paths';
+import {
+  getIOSetsForPower, getPower, getPowerPool, getInherentPowerDef,
+  getCommonIOValueAtLevel, ORIGIN_TIERS,
+  sortCategoriesByPriority,
+  createIOSetEnhancement, createGenericIOEnhancement, createSpecialEnhancement, createOriginEnhancement,
+  getAvailableGenericIOs, getAvailableHamidons,
+  getRarityColor, getTierTextColor, getTierBorderColor,
+} from '@/data';
 import { Modal, ModalBody } from '@/components/modals';
 import { Tooltip, Toggle } from '@/components/ui';
 import { IOSetIcon, GenericIOIcon, OriginEnhancementIcon, SpecialEnhancementIcon } from './EnhancementIcon';
-import type { IOSet, IOSetPiece, EnhancementStatType, GenericIOEnhancement, OriginEnhancement, SpecialEnhancement, IOSetCategory } from '@/types';
+import type { IOSet, IOSetPiece, EnhancementStatType, HamidonEnhancementDef, IOSetCategory } from '@/types';
 
 type EnhancementTypeFilter = 'io-sets' | 'generic' | 'special' | 'origin';
 
@@ -27,90 +32,6 @@ type SidebarFilter =
   | 'event'
   | 'archetype'
   | string; // Category name like "Ranged Damage"
-
-// ============================================
-// CATEGORY PRIORITY MAPPING
-// ============================================
-
-/**
- * Maps power's allowedSetCategories to a priority-sorted list.
- * The first category in this list that matches a power's allowed categories
- * should be shown first. This handles the case where a power like "Smite"
- * accepts both Melee Damage and ToHit Debuff sets - Melee Damage should appear first.
- */
-const CATEGORY_PRIORITY: IOSetCategory[] = [
-  // Primary damage categories (most common expectation)
-  'Ranged Damage',
-  'Melee Damage',
-  'Ranged AoE Damage',
-  'Melee AoE Damage',
-  'Sniper Attacks',
-  'Pet Damage',
-  'Recharge Intensive Pets',
-  // Defense/Resistance (for defensive powers)
-  'Defense Sets',
-  'Resist Damage',
-  // Control (for mez powers)
-  'Holds',
-  'Stuns',
-  'Immobilize',
-  'Sleep',
-  'Confuse',
-  'Fear',
-  'Knockback',
-  // Support primary categories
-  'Healing',
-  'To Hit Buff',
-  // Debuff categories (often secondary effects)
-  'To Hit Debuff',
-  'Defense Debuff',
-  'Accurate To-Hit Debuff',
-  'Accurate Defense Debuff',
-  'Slow Movement',
-  // Other support
-  'Endurance Modification',
-  'Threat Duration',
-  'Accurate Healing',
-  // Travel (usually specific travel powers)
-  'Running',
-  'Running & Sprints',
-  'Leaping',
-  'Leaping & Sprints',
-  'Flight',
-  'Teleport',
-  'Universal Travel',
-  // Universal sets (lowest priority - always available)
-  'Universal Damage Sets',
-  // Archetype sets (usually shown separately)
-  'Blaster Archetype Sets',
-  'Brute Archetype Sets',
-  'Controller Archetype Sets',
-  'Corruptor Archetype Sets',
-  'Defender Archetype Sets',
-  'Dominator Archetype Sets',
-  'Mastermind Archetype Sets',
-  'Scrapper Archetype Sets',
-  'Stalker Archetype Sets',
-  'Tanker Archetype Sets',
-  'Sentinel Archetype Sets',
-  'Kheldian Archetype Sets',
-  'Soldiers of Arachnos Archetype Sets',
-];
-
-/**
- * Sort categories by priority for the sidebar display.
- * Categories that appear earlier in CATEGORY_PRIORITY are shown first.
- */
-function sortCategoriesByPriority(categories: string[]): string[] {
-  return categories.sort((a, b) => {
-    const aIndex = CATEGORY_PRIORITY.indexOf(a as IOSetCategory);
-    const bIndex = CATEGORY_PRIORITY.indexOf(b as IOSetCategory);
-    // If not found in priority list, put at the end
-    const aPriority = aIndex === -1 ? 999 : aIndex;
-    const bPriority = bIndex === -1 ? 999 : bIndex;
-    return aPriority - bPriority;
-  });
-}
 
 export function EnhancementPicker() {
   const picker = useUIStore((s) => s.enhancementPicker);
@@ -264,31 +185,14 @@ export function EnhancementPicker() {
     prevIsOpen.current = picker.isOpen;
   }, [picker.isOpen, primaryCategory]);
 
-  // Helper to create IO set enhancement object
-  const createIOSetEnhancement = (set: IOSet, piece: IOSetPiece, pieceIndex: number) => {
-    const setId = set.id || set.name;
-    // Just store the filename - EnhancementIcon handles path construction
-    const iconFilename = set.icon || 'Unknown.png';
-    return {
-      type: 'io-set' as const,
-      id: `${setId}-${pieceIndex}`,
-      name: piece.name,
-      icon: iconFilename,
-      setId: setId,
-      setName: set.name,
-      pieceNum: piece.num,
-      level: attunementEnabled ? undefined : globalIOLevel,
-      attuned: attunementEnabled,
-      aspects: piece.aspects as EnhancementStatType[],
-      isProc: piece.proc,
-      isUnique: piece.unique,
-    };
-  };
+  // Helper to create IO set enhancement via registry factory
+  const makeIOSetEnhancement = (set: IOSet, piece: IOSetPiece, pieceIndex: number) =>
+    createIOSetEnhancement(set, piece, pieceIndex, { attuned: attunementEnabled, level: globalIOLevel });
 
   // Handle selecting an IO set piece (single click)
   const handleSelectSetPiece = (set: IOSet, piece: IOSetPiece, pieceIndex: number) => {
     if (!picker.currentPowerName) return;
-    setEnhancement(picker.currentPowerName, picker.currentSlotIndex, createIOSetEnhancement(set, piece, pieceIndex));
+    setEnhancement(picker.currentPowerName, picker.currentSlotIndex, makeIOSetEnhancement(set, piece, pieceIndex));
     closeEnhancementPicker();
   };
 
@@ -306,7 +210,7 @@ export function EnhancementPicker() {
         setEnhancement(
           picker.currentPowerName!,
           slotsToFill[pieceIndex],
-          createIOSetEnhancement(set, piece, pieceIndex)
+          makeIOSetEnhancement(set, piece, pieceIndex)
         );
       }
     });
@@ -333,7 +237,7 @@ export function EnhancementPicker() {
         setEnhancement(
           picker.currentPowerName!,
           slotsToFill[idx],
-          createIOSetEnhancement(set, piece, pieceIndex)
+          makeIOSetEnhancement(set, piece, pieceIndex)
         );
       }
     });
@@ -452,150 +356,27 @@ export function EnhancementPicker() {
   // Handle selecting a generic IO
   const handleSelectGenericIO = (stat: EnhancementStatType) => {
     if (!picker.currentPowerName) return;
-    const value = getCommonIOValueAtLevel(globalIOLevel);
-
-    const enhancement: GenericIOEnhancement = {
-      type: 'io-generic',
-      id: `generic-io-${stat}-${globalIOLevel}`,
-      name: `${stat} IO`,
-      icon: getGenericIOIcon(stat),
-      level: globalIOLevel,
-      stat,
-      value,
-    };
-    setEnhancement(picker.currentPowerName, picker.currentSlotIndex, enhancement);
+    setEnhancement(picker.currentPowerName, picker.currentSlotIndex, createGenericIOEnhancement(stat, globalIOLevel));
     closeEnhancementPicker();
   };
 
   // Handle selecting an origin enhancement
   const handleSelectOrigin = (stat: EnhancementStatType, tier: 'TO' | 'DO' | 'SO') => {
     if (!picker.currentPowerName) return;
-    const tierInfo = ORIGIN_TIERS.find((t) => t.short === tier);
-    const value = tierInfo?.value ?? 0;
-
-    const enhancement: OriginEnhancement = {
-      type: 'origin',
-      id: `origin-${tier}-${stat}`,
-      name: `${stat} ${tier}`,
-      icon: getOriginIcon(stat, tier),
-      tier,
-      origin: tier === 'SO' ? buildOrigin : undefined,
-      stat,
-      value,
-    };
-    setEnhancement(picker.currentPowerName, picker.currentSlotIndex, enhancement);
+    setEnhancement(picker.currentPowerName, picker.currentSlotIndex, createOriginEnhancement(stat, tier, buildOrigin));
     closeEnhancementPicker();
   };
 
   // Handle selecting a special (Hamidon) enhancement
-  const handleSelectSpecial = (id: string, hami: typeof HAMIDON_ENHANCEMENTS[keyof typeof HAMIDON_ENHANCEMENTS]) => {
+  const handleSelectSpecial = (id: string, hami: HamidonEnhancementDef) => {
     if (!picker.currentPowerName) return;
-
-    // Capitalize the ID for the icon filename (nucleolus -> Nucleolus)
-    const capitalizedId = id.charAt(0).toUpperCase() + id.slice(1);
-
-    const enhancement: SpecialEnhancement = {
-      type: 'special',
-      id: `hamidon-${id}`,
-      name: hami.name,
-      icon: `HO${capitalizedId}.png`, // Just the filename, path handled by EnhancementIcon
-      category: 'hamidon',
-      aspects: hami.aspects.map(mapHamidonAspect),
-      value: hami.value,
-    };
-    setEnhancement(picker.currentPowerName, picker.currentSlotIndex, enhancement);
+    setEnhancement(picker.currentPowerName, picker.currentSlotIndex, createSpecialEnhancement(id, hami));
     closeEnhancementPicker();
   };
 
-  // Map from IO set categories to single enhancement types that should be allowed
-  // This supplements allowedEnhancements which may be incomplete in the source data
-  const SET_CATEGORY_TO_ENHANCEMENT: Record<string, EnhancementStatType[]> = {
-    // Damage categories
-    'Ranged Damage': ['Damage', 'Accuracy', 'Range'],
-    'Melee Damage': ['Damage', 'Accuracy'],
-    'Ranged AoE Damage': ['Damage', 'Accuracy', 'Range'],
-    'Melee AoE Damage': ['Damage', 'Accuracy'],
-    'Universal Damage Sets': ['Damage', 'Accuracy'],
-    'Sniper Attacks': ['Damage', 'Accuracy', 'Range'],
-    'Pet Damage': ['Damage', 'Accuracy', 'Recharge'],
-    // Defense/Resistance
-    'Resist Damage': ['Resistance'],
-    'Defense Sets': ['Defense'],
-    // Control (Mez)
-    'Holds': ['Hold'],
-    'Stuns': ['Stun'],
-    'Immobilize': ['Immobilize'],
-    'Sleep': ['Sleep'],
-    'Confuse': ['Confuse'],
-    'Fear': ['Fear'],
-    'Knockback': ['Knockback'],
-    // Support/Debuff
-    'Healing': ['Healing'],
-    'To Hit Buff': ['ToHit'],
-    'To Hit Debuff': ['ToHit Debuff'],
-    'Defense Debuff': ['Defense Debuff'],
-    'Accurate Healing': ['Healing', 'Accuracy'],
-    'Accurate To-Hit Debuff': ['ToHit Debuff', 'Accuracy'],
-    'Accurate Defense Debuff': ['Defense Debuff', 'Accuracy'],
-    'Slow Movement': ['Slow'],
-    'Threat Duration': ['Taunt'],
-    'Endurance Modification': ['EnduranceReduction'],
-    // Movement
-    'Running': ['Run Speed'],
-    'Running & Sprints': ['Run Speed'],
-    'Leaping': ['Jump'],
-    'Leaping & Sprints': ['Jump'],
-    'Flight': ['Fly'],
-    'Teleport': ['Range'],
-    'Universal Travel': ['Run Speed', 'Jump', 'Fly'],
-    // Pet sets
-    'Recharge Intensive Pets': ['Damage', 'Accuracy', 'Recharge'],
-    // Archetype sets - most contain damage-oriented enhancements
-    'Blaster Archetype Sets': ['Damage', 'Accuracy', 'Recharge', 'EnduranceReduction'],
-    'Brute Archetype Sets': ['Damage', 'Accuracy', 'Recharge', 'EnduranceReduction'],
-    'Controller Archetype Sets': ['Hold', 'Confuse', 'Accuracy', 'Recharge', 'EnduranceReduction'],
-    'Corruptor Archetype Sets': ['Damage', 'Accuracy', 'Recharge', 'EnduranceReduction'],
-    'Defender Archetype Sets': ['Healing', 'Defense', 'Recharge', 'EnduranceReduction'],
-    'Dominator Archetype Sets': ['Hold', 'Accuracy', 'Damage', 'Recharge', 'EnduranceReduction'],
-    'Mastermind Archetype Sets': ['Damage', 'Accuracy', 'Recharge', 'EnduranceReduction'],
-    'Scrapper Archetype Sets': ['Damage', 'Accuracy', 'Recharge', 'EnduranceReduction'],
-    'Stalker Archetype Sets': ['Damage', 'Accuracy', 'Recharge', 'EnduranceReduction'],
-    'Tanker Archetype Sets': ['Defense', 'Resistance', 'Recharge', 'EnduranceReduction'],
-    'Sentinel Archetype Sets': ['Damage', 'Accuracy', 'Recharge', 'EnduranceReduction'],
-    'Kheldian Archetype Sets': ['Damage', 'Accuracy', 'Recharge', 'EnduranceReduction'],
-    'Soldiers of Arachnos Archetype Sets': ['Damage', 'Accuracy', 'Recharge', 'EnduranceReduction'],
-  };
-
-  // Get available generic IOs for this power
-  const availableGenericIOs = useMemo(() => {
-    if (!currentPower) return COMMON_IO_TYPES;
-
-    // Start with explicitly allowed enhancements
-    const allowed = new Set(currentPower.allowedEnhancements);
-
-    // Add any enhancement types implied by allowed set categories
-    if (currentPower.allowedSetCategories) {
-      for (const category of currentPower.allowedSetCategories) {
-        const impliedTypes = SET_CATEGORY_TO_ENHANCEMENT[category];
-        if (impliedTypes) {
-          for (const type of impliedTypes) {
-            allowed.add(type);
-          }
-        }
-      }
-    }
-
-    return COMMON_IO_TYPES.filter((type) => allowed.has(type));
-  }, [currentPower]);
-
-  // Get available Hamidon enhancements
-  const availableHamidons = useMemo(() => {
-    if (!currentPower) return Object.entries(HAMIDON_ENHANCEMENTS);
-    const allowed = new Set(currentPower.allowedEnhancements);
-    return Object.entries(HAMIDON_ENHANCEMENTS).filter(([, hami]) => {
-      return hami.aspects.some((aspect) => allowed.has(mapHamidonAspect(aspect)));
-    });
-  }, [currentPower]);
+  // Get available generic IOs and Hamidon enhancements for this power (via registry)
+  const availableGenericIOs = useMemo(() => getAvailableGenericIOs(currentPower ?? null), [currentPower]);
+  const availableHamidons = useMemo(() => getAvailableHamidons(currentPower ?? null), [currentPower]);
 
   const ioValue = getCommonIOValueAtLevel(globalIOLevel);
 
@@ -1139,8 +920,8 @@ function GenericIOContent({ availableIOs, ioValue, globalIOLevel, onSelect }: Ge
 // ============================================
 
 interface SpecialContentProps {
-  availableHamidons: [string, typeof HAMIDON_ENHANCEMENTS[keyof typeof HAMIDON_ENHANCEMENTS]][];
-  onSelect: (id: string, hami: typeof HAMIDON_ENHANCEMENTS[keyof typeof HAMIDON_ENHANCEMENTS]) => void;
+  availableHamidons: [string, HamidonEnhancementDef][];
+  onSelect: (id: string, hami: HamidonEnhancementDef) => void;
 }
 
 function SpecialContent({ availableHamidons, onSelect }: SpecialContentProps) {
@@ -1265,77 +1046,3 @@ function formatBonusValue(value: number): string {
   return rounded.toString();
 }
 
-function getGenericIOIcon(stat: EnhancementStatType): string {
-  const iconMap: Partial<Record<EnhancementStatType, string>> = {
-    'Damage': resolvePath('/img/Enhancements/IO_Damage.png'),
-    'Accuracy': resolvePath('/img/Enhancements/IO_Accuracy.png'),
-    'Recharge': resolvePath('/img/Enhancements/IO_Recharge.png'),
-    'EnduranceReduction': resolvePath('/img/Enhancements/IO_Endurance.png'),
-    'Range': resolvePath('/img/Enhancements/IO_Range.png'),
-    'Defense': resolvePath('/img/Enhancements/IO_Defense.png'),
-    'Resistance': resolvePath('/img/Enhancements/IO_Resistance.png'),
-    'Healing': resolvePath('/img/Enhancements/IO_Healing.png'),
-    'ToHit': resolvePath('/img/Enhancements/IO_ToHit.png'),
-    'Hold': resolvePath('/img/Enhancements/IO_Hold.png'),
-    'Stun': resolvePath('/img/Enhancements/IO_Stun.png'),
-    'Immobilize': resolvePath('/img/Enhancements/IO_Immobilize.png'),
-    'Sleep': resolvePath('/img/Enhancements/IO_Sleep.png'),
-    'Confuse': resolvePath('/img/Enhancements/IO_Confuse.png'),
-    'Fear': resolvePath('/img/Enhancements/IO_Fear.png'),
-    'Knockback': resolvePath('/img/Enhancements/IO_Knockback.png'),
-    'Run Speed': resolvePath('/img/Enhancements/IO_RunSpeed.png'),
-    'Jump': resolvePath('/img/Enhancements/IO_Jump.png'),
-    'Fly': resolvePath('/img/Enhancements/IO_Fly.png'),
-  };
-  return iconMap[stat] || resolvePath('/img/Unknown.png');
-}
-
-function getOriginIcon(stat: EnhancementStatType, tier: string): string {
-  const statPart = stat.replace(/\s+/g, '');
-  return resolvePath(`/img/Enhancements/${tier}_${statPart}.png`);
-}
-
-function mapHamidonAspect(aspect: string): EnhancementStatType {
-  const mapping: Record<string, EnhancementStatType> = {
-    'Damage': 'Damage',
-    'Accuracy': 'Accuracy',
-    'Range': 'Range',
-    'ToHit Debuff': 'ToHit Debuff',
-    'Defense Debuff': 'Defense Debuff',
-    'Recharge': 'Recharge',
-    'Mez Duration': 'Hold',
-    'Resistance': 'Resistance',
-    'Endurance': 'EnduranceReduction',
-    'Healing': 'Healing',
-    'Defense': 'Defense',
-  };
-  return mapping[aspect] || 'Damage';
-}
-
-function getRarityColor(category: string): string {
-  switch (category) {
-    case 'purple': return 'text-purple-400';
-    case 'ato': return 'text-yellow-400';
-    case 'pvp': return 'text-red-400';
-    case 'event': return 'text-cyan-400';
-    default: return 'text-gray-200';
-  }
-}
-
-function getTierTextColor(tier: string): string {
-  switch (tier) {
-    case 'TO': return 'text-gray-400';
-    case 'DO': return 'text-yellow-400';
-    case 'SO': return 'text-orange-400';
-    default: return 'text-gray-300';
-  }
-}
-
-function getTierBorderColor(tier: string): string {
-  switch (tier) {
-    case 'TO': return 'border-gray-600 hover:border-gray-400';
-    case 'DO': return 'border-yellow-700 hover:border-yellow-400';
-    case 'SO': return 'border-orange-700 hover:border-orange-400';
-    default: return 'border-gray-600 hover:border-gray-400';
-  }
-}

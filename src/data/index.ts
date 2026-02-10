@@ -34,6 +34,37 @@ export {
 } from './enhancements';
 export type { DualOriginCombo, EnhancementCategory } from './enhancements';
 
+// Enhancement registry (centralized mappings, factory functions, query functions)
+export {
+  // Stat icons
+  STAT_ICON_MAP,
+  getStatIconFilename,
+  getGenericIOIconPath,
+  getOriginIconPath,
+  // Hamidon mappings
+  HAMIDON_ASPECT_MAP,
+  mapHamidonAspect,
+  // Category mappings
+  SET_CATEGORY_TO_ENHANCEMENT,
+  getEnhancementTypesForCategory,
+  CATEGORY_PRIORITY,
+  sortCategoriesByPriority,
+  // Display config
+  RARITY_DISPLAY,
+  getRarityColor,
+  TIER_DISPLAY,
+  getTierTextColor,
+  getTierBorderColor,
+  // Factory functions
+  createIOSetEnhancement,
+  createGenericIOEnhancement,
+  createSpecialEnhancement,
+  createOriginEnhancement,
+  // Query functions
+  getAvailableGenericIOs,
+  getAvailableHamidons,
+} from './enhancement-registry';
+
 // IO Set data and accessors
 export {
   getAllIOSets,
@@ -155,6 +186,45 @@ export {
   getIncarnateSlotIconPath,
 } from './incarnates';
 
+// Incarnate registry (centralized slot/tier metadata, layout config, display helpers)
+export {
+  // Slot config
+  INCARNATE_SLOT_REGISTRY,
+  getSlotConfig,
+  getSlotColor,
+  getSlotIconFolder,
+  isSlotToggleable,
+  getToggleableSlotIds,
+  // Tier config
+  INCARNATE_TIER_REGISTRY,
+  getTierConfig,
+  getTierColor,
+  getTierDisplayName,
+  // Tree descriptions
+  TREE_DESCRIPTIONS,
+  getTreeDescription,
+  // Tree layout
+  STANDARD_TREE_LAYOUT,
+  resolveTreeRow,
+  // Display helpers
+  RARE_SORT_KEYWORDS,
+  NAME_ABBREVIATION_RULES,
+  abbreviatePowerName,
+  sortRarePowers,
+  // Backward-compatible derived constants
+  INCARNATE_SLOT_COLORS,
+  INCARNATE_TIER_COLORS,
+  INCARNATE_TIER_NAMES,
+} from './incarnate-registry';
+export type {
+  IncarnateEffectType,
+  IncarnateSlotConfig,
+  IncarnateTierConfig,
+  TreeSlotDescriptor,
+  TreeRowLayout,
+  TreeLayoutConfig,
+} from './incarnate-registry';
+
 // Incarnate effects data
 export {
   getAlphaEffects,
@@ -162,7 +232,6 @@ export {
   getHybridEffects,
   getInterfaceEffects,
   getIncarnateEffects,
-  isToggleableIncarnateSlot,
   formatEffectPercent,
   formatEffectValue,
 } from './incarnate-effects';

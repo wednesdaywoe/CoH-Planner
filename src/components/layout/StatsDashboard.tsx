@@ -464,6 +464,8 @@ export function StatsDashboard() {
   const incarnateModalOpen = useUIStore((s) => s.incarnateModalOpen);
   const openIncarnateModal = useUIStore((s) => s.openIncarnateModal);
   const closeIncarnateModal = useUIStore((s) => s.closeIncarnateModal);
+  const incarnateActive = useUIStore((s) => s.incarnateActive);
+  const toggleIncarnateActive = useUIStore((s) => s.toggleIncarnateActive);
   const exportImportModalOpen = useUIStore((s) => s.exportImportModalOpen);
   const closeExportImportModal = useUIStore((s) => s.closeExportImportModal);
   const feedbackModalOpen = useUIStore((s) => s.feedbackModalOpen);
@@ -718,6 +720,8 @@ export function StatsDashboard() {
                 incarnates={incarnates}
                 disabled={!isLevel50}
                 onSlotClick={openIncarnateModal}
+                incarnateActive={incarnateActive}
+                onToggleActive={toggleIncarnateActive}
               />
             </div>
           </div>

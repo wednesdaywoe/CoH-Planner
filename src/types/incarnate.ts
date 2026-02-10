@@ -148,38 +148,6 @@ export const INCARNATE_TIER_ORDER: IncarnateTier[] = [
  */
 export const INCARNATE_REQUIRED_LEVEL = 50;
 
-/**
- * Slot display colors
- */
-export const INCARNATE_SLOT_COLORS: Record<IncarnateSlotId, string> = {
-  alpha: '#60A5FA',      // Blue
-  judgement: '#F59E0B',  // Amber
-  interface: '#10B981',  // Emerald
-  destiny: '#8B5CF6',    // Violet
-  lore: '#EC4899',       // Pink
-  hybrid: '#06B6D4',     // Cyan
-};
-
-/**
- * Tier display colors (border/glow) - matches in-game colors
- */
-export const INCARNATE_TIER_COLORS: Record<IncarnateTier, string> = {
-  common: '#FFFFFF',     // White
-  uncommon: '#FBBF24',   // Yellow
-  rare: '#F97316',       // Orange
-  veryrare: '#A855F7',   // Purple
-};
-
-/**
- * Tier display names
- */
-export const INCARNATE_TIER_NAMES: Record<IncarnateTier, string> = {
-  common: 'Common',
-  uncommon: 'Uncommon',
-  rare: 'Rare',
-  veryrare: 'Very Rare',
-};
-
 // ============================================
 // UTILITY FUNCTIONS
 // ============================================

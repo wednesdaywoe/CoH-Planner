@@ -25,6 +25,8 @@ import {
   calculateDominationMagnitude,
   isDominatorControlPower,
 } from '@/utils/calculations';
+import { calcThreeTier } from './powerDisplayUtils';
+import type { ThreeTierValues } from './powerDisplayUtils';
 
 // ============================================
 // TYPES
@@ -49,12 +51,6 @@ interface EffectDisplayProps {
   powersetId?: string;
 }
 
-interface ThreeTierValues {
-  base: number;
-  enhanced: number;
-  final: number;
-}
-
 // ============================================
 // HELPER COMPONENTS
 // ============================================
@@ -66,6 +62,8 @@ interface EffectRowProps {
   enhancedValue?: string;
   finalValue?: string;
   showThreeTier?: boolean;
+  /** Whether this stat can be enhanced. When true, always shows values; when false, shows "—" */
+  enhanceable?: boolean;
   suffix?: string;
 }
 
@@ -76,6 +74,7 @@ function EffectRow({
   enhancedValue,
   finalValue,
   showThreeTier = false,
+  enhanceable = true,
   suffix = '',
 }: EffectRowProps) {
   if (showThreeTier) {
@@ -86,12 +85,20 @@ function EffectRow({
       <div className="grid grid-cols-[5rem_1fr_1fr_1fr] gap-1 items-baseline text-xs">
         <span className={colorClass}>{label}</span>
         <span className="text-slate-200">{baseValue}{suffix}</span>
-        <span className={hasEnh ? 'text-green-400' : 'text-slate-600'}>
-          {hasEnh ? `→ ${enhancedValue}${suffix}` : '—'}
-        </span>
-        <span className={hasFinal ? 'text-amber-400' : 'text-slate-600'}>
-          {hasFinal ? `→ ${finalValue}${suffix}` : '—'}
-        </span>
+        {enhanceable ? (
+          <span className={hasEnh ? 'text-green-400' : 'text-slate-400'}>
+            {(enhancedValue ?? baseValue)}{suffix}
+          </span>
+        ) : (
+          <span className="text-slate-600">—</span>
+        )}
+        {enhanceable ? (
+          <span className={hasFinal ? 'text-amber-400' : 'text-slate-400'}>
+            {(finalValue ?? enhancedValue ?? baseValue)}{suffix}
+          </span>
+        ) : (
+          <span className="text-slate-600">—</span>
+        )}
       </div>
     );
   }
@@ -99,7 +106,7 @@ function EffectRow({
   return (
     <div className="flex justify-between text-xs py-0.5">
       <span className={colorClass}>{label}</span>
-      <span className={colorClass}>{baseValue}{suffix}</span>
+      <span className="text-slate-200">{baseValue}{suffix}</span>
     </div>
   );
 }
@@ -139,7 +146,7 @@ function MezEffectRow({ label, colorClass, value, showThreeTier, showDomination 
     return (
       <div className="grid grid-cols-[5rem_1fr_1fr_1fr] gap-1 items-baseline text-xs">
         <span className={displayColorClass}>{label}</span>
-        <span className={displayColorClass}>
+        <span className="text-slate-200">
           {text}
           {showDomination && <span className="text-pink-300 text-[8px] ml-1">[2×]</span>}
         </span>
@@ -152,7 +159,7 @@ function MezEffectRow({ label, colorClass, value, showThreeTier, showDomination 
   return (
     <div className="flex justify-between text-xs py-0.5">
       <span className={displayColorClass}>{label}</span>
-      <span className={displayColorClass}>
+      <span className="text-slate-200">
         {text}
         {showDomination && <span className="text-pink-300 text-[8px] ml-1">[2×]</span>}
       </span>
@@ -196,19 +203,14 @@ export function EffectDisplay({
     return groups;
   }, [effects, categories]);
 
-  // Calculate three-tier values for an effect
-  const calcThreeTier = (
+  // Calculate three-tier values for an effect using shared formula
+  const calcThreeTierForEffect = (
     config: EffectDisplayConfig,
     baseValue: number
   ): ThreeTierValues => {
     const aspect = config.enhancementAspect;
-    const enhBonus = aspect ? (enhancementBonuses[aspect] || 0) : 0;
-    const globalBonus = aspect ? (globalBonuses[aspect] || 0) : 0;
-
-    const enhanced = baseValue * (1 + enhBonus);
-    const final = enhanced * (1 + globalBonus);
-
-    return { base: baseValue, enhanced, final };
+    if (!aspect) return { base: baseValue, enhanced: baseValue, final: baseValue };
+    return calcThreeTier(aspect, baseValue, enhancementBonuses, globalBonuses);
   };
 
   // Render a single effect based on its config
@@ -244,8 +246,8 @@ export function EffectDisplay({
         baseValue = (getScaleValue(firstValue) ?? 0) * 100 * buffDebuffMod;
       }
 
-      if (showThreeTier && config.enhancementAspect) {
-        const tiers = calcThreeTier(config, baseValue);
+      if (showThreeTier) {
+        const tiers = calcThreeTierForEffect(config, baseValue);
         return (
           <EffectRow
             key={key}
@@ -255,6 +257,7 @@ export function EffectDisplay({
             enhancedValue={tiers.enhanced.toFixed(1)}
             finalValue={tiers.final.toFixed(1)}
             showThreeTier={true}
+            enhanceable={!!config.enhancementAspect}
             suffix="%"
           />
         );
@@ -286,9 +289,9 @@ export function EffectDisplay({
       baseValue = getScaleValue(value as NumberOrScaled) ?? 0;
     }
 
-    // Three-tier display for enhanceable effects
-    if (showThreeTier && config.enhancementAspect) {
-      const tiers = calcThreeTier(config, baseValue);
+    // Three-tier display
+    if (showThreeTier) {
+      const tiers = calcThreeTierForEffect(config, baseValue);
       const suffix = config.format === 'percent' ? '%' : '';
 
       return (
@@ -300,6 +303,7 @@ export function EffectDisplay({
           enhancedValue={tiers.enhanced.toFixed(1)}
           finalValue={tiers.final.toFixed(1)}
           showThreeTier={true}
+          enhanceable={!!config.enhancementAspect}
           suffix={suffix}
         />
       );

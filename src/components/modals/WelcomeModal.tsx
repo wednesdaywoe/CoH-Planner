@@ -21,11 +21,8 @@ const KNOWN_ISSUES = [
 ];
 
 const RECENT_CHANGES = [
-  'Regenerated data to find allowed enhancements',
-  'Mobile: Touch and hold on slots to open action menu',
-  'Mobile: Long-press on powers to view info',
-  'Mobile: Improved dashboard and enhancement picker layouts',
-  'Added chronological power view mode',
+  'Refactor of enhancement, incarnate data, infopanel, and dashboard to be more modular and maintainable',
+  'Should see enhancment data calculated in the info panel now',
 ];
 
 const TODO_ITEMS = [

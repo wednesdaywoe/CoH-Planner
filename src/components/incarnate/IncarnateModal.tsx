@@ -8,7 +8,8 @@ import { createPortal } from 'react-dom';
 import { useBuildStore, useUIStore } from '@/stores';
 import { getAllIncarnateSlots, getIncarnateTrees } from '@/data';
 import type { IncarnatePower, SelectedIncarnatePower } from '@/types';
-import { INCARNATE_SLOT_ORDER, INCARNATE_SLOT_COLORS } from '@/types';
+import { INCARNATE_SLOT_ORDER } from '@/types';
+import { getSlotColor } from '@/data';
 import { IncarnatePowerTree } from './IncarnatePowerTree';
 
 interface IncarnateModalProps {
@@ -116,7 +117,7 @@ export function IncarnateModal({ isOpen, onClose }: IncarnateModalProps) {
 
               const isActive = slotId === activeSlotId;
               const hasPower = incarnates[slotId] !== null;
-              const slotColor = INCARNATE_SLOT_COLORS[slotId];
+              const slotColor = getSlotColor(slotId);
 
               return (
                 <button
@@ -185,7 +186,7 @@ export function IncarnateModal({ isOpen, onClose }: IncarnateModalProps) {
                       {hasPowerFromTree && (
                         <span
                           className="w-2 h-2 rounded-full flex-shrink-0"
-                          style={{ backgroundColor: INCARNATE_SLOT_COLORS[activeSlotId] }}
+                          style={{ backgroundColor: getSlotColor(activeSlotId) }}
                         />
                       )}
                     </div>
@@ -204,7 +205,7 @@ export function IncarnateModal({ isOpen, onClose }: IncarnateModalProps) {
             {currentPower && (
               <div
                 className="px-4 py-2 flex items-center justify-between border-b border-gray-700"
-                style={{ backgroundColor: `${INCARNATE_SLOT_COLORS[activeSlotId]}15` }}
+                style={{ backgroundColor: `${getSlotColor(activeSlotId)}15` }}
               >
                 <div className="flex items-center gap-2">
                   <span className="text-sm text-gray-400">Current:</span>

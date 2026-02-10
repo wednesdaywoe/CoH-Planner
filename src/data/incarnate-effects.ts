@@ -1615,13 +1615,6 @@ export function getIncarnateEffects(
 }
 
 /**
- * Check if an incarnate slot provides toggleable stat bonuses
- */
-export function isToggleableIncarnateSlot(slotId: IncarnateSlotId): boolean {
-  return ['alpha', 'destiny', 'hybrid', 'interface'].includes(slotId);
-}
-
-/**
  * Format effect value as percentage string
  */
 export function formatEffectPercent(value: number): string {
