@@ -1,6 +1,6 @@
 /**
  * Chain Lightning
- * Ranged Chain, DoT(Energy), Foe -End
+ * Ranged Chain, DMG(Energy), Foe -End
  *
  * Source: blaster_ranged/storm_blast/chain_lightning.json
  */
@@ -11,8 +11,8 @@ export const ChainLightning: Power = {
   "name": "Chain Lightning",
   "internalName": "Chain_Lightning",
   "available": 17,
-  "description": "Calls a bolt of lightning from the clouds to strike your target, which then chains outward to additional enemies. Creatures unfortunate enough to be struck will be dealt Energy damage and be sapped of some endurance.While in a Storm Cell, the main target of Chain Lightning will experience additional endurance drain over time.",
-  "shortHelp": "Ranged Chain, DoT(Energy), Foe -End",
+  "description": "Calls a bolt of lightning from the clouds to strike your target, which then chains outward to additional enemies. The chain effect auto-hits for application across targets, though the power still requires a successful hit check. Creatures struck will be dealt Energy damage and be sapped of some endurance.",
+  "shortHelp": "Ranged Chain, DMG(Energy), Foe -End",
   "icon": "stormblast_chainlightning.png",
   "powerType": "Click",
   "effectArea": "Chain",
@@ -44,13 +44,6 @@ export const ChainLightning: Power = {
       "type": "Energy",
       "scale": 1,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.04,
-      "table": "Ranged_Damage",
-      "duration": 2.2,
-      "tickRate": 0.6
     }
   ],
   "effects": {

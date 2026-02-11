@@ -48,7 +48,7 @@ export const CategoryFive: Power = {
         "Redirects.Storm_Blast.Nukenado_Pulse",
         "Redirects.Storm_Blast.Nukenado_SelfDestruct"
       ],
-      "duration": 25
+      "duration": 17
     }
   }
 };

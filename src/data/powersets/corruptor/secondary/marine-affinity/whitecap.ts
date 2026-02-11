@@ -19,9 +19,9 @@ export const Whitecap: Power = {
   "stats": {
     "accuracy": 1,
     "range": 80,
-    "recharge": 30,
-    "endurance": 18,
-    "castTime": 2
+    "recharge": 15,
+    "endurance": 14.352,
+    "castTime": 1.5
   },
   "allowedEnhancements": [
     "EnduranceReduction",

@@ -20,10 +20,10 @@ export const StormCell: Power = {
   "stats": {
     "accuracy": 1,
     "range": 40,
-    "radius": 25,
-    "recharge": 60,
+    "radius": 35,
+    "recharge": 15,
     "endurance": 15.6,
-    "castTime": 2.03
+    "castTime": 1.17
   },
   "allowedEnhancements": [
     "EnduranceReduction",

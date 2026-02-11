@@ -21,8 +21,8 @@ export const JacobsLadder: Power = {
     "range": 7,
     "radius": 7,
     "arc": 0.8727,
-    "recharge": 8,
-    "endurance": 8.528,
+    "recharge": 9,
+    "endurance": 9.36,
     "castTime": 1.67,
     "maxTargets": 5
   },
@@ -43,7 +43,7 @@ export const JacobsLadder: Power = {
   "maxSlots": 6,
   "damage": {
     "type": "Energy",
-    "scale": 1.5,
+    "scale": 1.5233,
     "table": "Melee_Damage"
   },
   "effects": {

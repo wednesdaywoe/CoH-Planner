@@ -1,6 +1,6 @@
 /**
  * Lightning Clap
- * PBAoE, Foe Disorient, Knockback
+ * PBAoE, DMG(Energy), Foe Disorient, Knockback
  *
  * Source: scrapper_melee/electrical_melee/lightning_clap.json
  */
@@ -11,16 +11,16 @@ export const LightningClap: Power = {
   "name": "Lightning Clap",
   "internalName": "Lightning_Clap",
   "available": 21,
-  "description": "You can clap your hands together to release a violent Lightning Clap. The Lightning Clap can knock down most nearby foes, Disorienting many of them. Lightning Clap deals no damage.",
-  "shortHelp": "PBAoE, Foe Disorient, Knockback",
+  "description": "You can clap your hands together to release a violent Lightning Clap. The Lightning Clap can knock down most nearby foes, Disorienting many of them. Lightning Clap deals moderate Energy damage.",
+  "shortHelp": "PBAoE, DMG(Energy), Foe Disorient, Knockback",
   "icon": "electricmelee_pbaoestun.png",
   "powerType": "Click",
-  "targetType": "Self",
+  "targetType": "Foe",
   "effectArea": "AoE",
   "stats": {
-    "accuracy": 0.8,
+    "accuracy": 1,
     "radius": 15,
-    "recharge": 30,
+    "recharge": 15,
     "endurance": 13,
     "castTime": 1.23,
     "maxTargets": 10
@@ -29,14 +29,22 @@ export const LightningClap: Power = {
     "EnduranceReduction",
     "Stun",
     "Recharge",
+    "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
     "Knockback",
+    "Melee AoE Damage",
     "Scrapper Archetype Sets",
-    "Stuns"
+    "Stuns",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Energy",
+    "scale": 2.76,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "stun": {
       "mag": 2,

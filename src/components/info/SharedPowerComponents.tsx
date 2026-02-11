@@ -218,6 +218,10 @@ interface RegistryEffectsDisplayProps {
   globalBonuses?: Record<string, number | undefined>;
   /** Buff/debuff modifier from archetype */
   buffDebuffMod?: number;
+  /** Archetype ID for AT-specific table lookups (resistance, etc.) */
+  archetypeId?: string;
+  /** Character level for AT-specific table lookups */
+  level?: number;
   /** Categories to include (default: execution, buff, debuff) */
   categories?: EffectCategory[];
   /** Use compact sizing for tooltips */
@@ -309,6 +313,8 @@ export function RegistryEffectsDisplay({
   enhancementBonuses = {},
   globalBonuses = {},
   buffDebuffMod = 1.0,
+  archetypeId,
+  level,
   categories = ['execution', 'buff', 'debuff'],
   compact = false,
   dominationActive = false,
@@ -392,7 +398,9 @@ export function RegistryEffectsDisplay({
         if (isByTypeObject(value)) {
           const byTypeEntries = expandByTypeEntries(
             value as Record<string, unknown>,
-            config.label
+            config.label,
+            archetypeId,
+            level
           );
           for (const entry of byTypeEntries) {
             if (entry.basePercent === 0) continue;
@@ -409,7 +417,7 @@ export function RegistryEffectsDisplay({
 
         // Scalar elusivity (not by-type)
         if (key === 'elusivity') {
-          const pct = calculateResistancePercent(value as NumberOrScaled) * 100;
+          const pct = calculateResistancePercent(value as NumberOrScaled, archetypeId, level) * 100;
           if (pct === 0) continue;
           displayableEffects.push({
             effect: { key, value, config },

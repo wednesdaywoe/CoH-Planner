@@ -38,7 +38,8 @@ export const Fallout: Power = {
     "Defense Debuff",
     "Ranged AoE Damage",
     "To Hit Debuff",
-    "Universal Damage Sets"
+    "Universal Damage Sets",
+    "Mastermind Archetype Sets"
   ],
   "maxSlots": 6,
   "effects": {

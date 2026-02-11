@@ -19,9 +19,9 @@ export const Impale: Power = {
   "stats": {
     "accuracy": 1,
     "range": 40,
-    "recharge": 8,
-    "endurance": 8.528,
-    "castTime": 2.43
+    "recharge": 10,
+    "endurance": 10.192,
+    "castTime": 2.23
   },
   "allowedEnhancements": [
     "Slow",
@@ -48,9 +48,9 @@ export const Impale: Power = {
     },
     {
       "type": "Toxic",
-      "scale": 0.1,
+      "scale": 0.2,
       "table": "Melee_Damage",
-      "duration": 4.1,
+      "duration": 15.1,
       "tickRate": 1
     },
     {
@@ -92,6 +92,10 @@ export const Impale: Power = {
     "rechargeDebuff": {
       "scale": 0.1,
       "table": "Melee_Slow"
+    },
+    "regenDebuff": {
+      "scale": 1,
+      "table": "Melee_Ones"
     }
   }
 };

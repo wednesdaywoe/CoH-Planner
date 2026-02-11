@@ -19,7 +19,7 @@ export const BlackHole: Power = {
   "stats": {
     "accuracy": 1,
     "range": 50,
-    "radius": 25,
+    "radius": 30,
     "recharge": 120,
     "endurance": 13,
     "castTime": 1.03,

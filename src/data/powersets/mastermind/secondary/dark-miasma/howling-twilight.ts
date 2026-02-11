@@ -19,10 +19,10 @@ export const HowlingTwilight: Power = {
   "stats": {
     "accuracy": 1,
     "range": 80,
-    "radius": 15,
+    "radius": 40,
     "recharge": 180,
-    "endurance": 32.5,
-    "castTime": 3.17,
+    "endurance": 13,
+    "castTime": 1.83,
     "maxTargets": 16
   },
   "allowedEnhancements": [
@@ -37,7 +37,8 @@ export const HowlingTwilight: Power = {
     "Ranged AoE Damage",
     "Slow Movement",
     "Stuns",
-    "Universal Damage Sets"
+    "Universal Damage Sets",
+    "Mastermind Archetype Sets"
   ],
   "maxSlots": 6,
   "damage": {

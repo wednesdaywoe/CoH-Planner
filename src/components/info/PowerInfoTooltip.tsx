@@ -394,6 +394,8 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
         enhancementBonuses={enhancementBonuses}
         globalBonuses={globalBonusesForCalc}
         buffDebuffMod={effectiveMod}
+        archetypeId={archetypeId ?? undefined}
+        level={build.level}
         categories={['execution', 'buff', 'debuff', 'control', 'protection']}
         dominationActive={dominationActive}
         compact={true}

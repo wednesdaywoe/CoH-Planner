@@ -20,11 +20,11 @@ export const HeadSplitter: Power = {
     "accuracy": 1.05,
     "range": 10,
     "radius": 10,
-    "arc": 0.3491,
+    "arc": 1.5708,
     "recharge": 14,
     "endurance": 13.52,
     "castTime": 2.33,
-    "maxTargets": 5
+    "maxTargets": 3
   },
   "allowedEnhancements": [
     "EnduranceReduction",

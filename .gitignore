@@ -33,3 +33,6 @@ npm-debug.log*
 # Local config
 .claude/
 nul
+
+# Raw Data
+raw_data_homecoming-raw_data_homecoming-20251209_7415/

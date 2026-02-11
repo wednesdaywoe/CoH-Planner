@@ -15,13 +15,14 @@ export const FocusedBurst: Power = {
   "shortHelp": "Ranged, DMG(Smash/Energy), Foe Knockdown",
   "icon": "kineticattack_focusedburst.png",
   "powerType": "Click",
-  "effectArea": "SingleTarget",
+  "effectArea": "Chain",
   "stats": {
     "accuracy": 1,
     "range": 40,
     "recharge": 8,
     "endurance": 8.528,
-    "castTime": 2
+    "castTime": 2,
+    "maxTargets": 5
   },
   "allowedEnhancements": [
     "EnduranceReduction",
@@ -40,18 +41,18 @@ export const FocusedBurst: Power = {
   "damage": [
     {
       "type": "Smashing",
-      "scale": 1.23,
+      "scale": 0.41,
       "table": "Melee_Damage"
     },
     {
       "type": "Energy",
-      "scale": 0.41,
+      "scale": 1.23,
       "table": "Melee_Damage"
     }
   ],
   "effects": {
     "damageDebuff": {
-      "scale": 0.75,
+      "scale": 0.7,
       "table": "Melee_Debuff_Dam"
     }
   }

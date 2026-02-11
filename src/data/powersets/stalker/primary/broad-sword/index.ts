@@ -12,6 +12,7 @@ import type { Powerset } from '@/types';
 import { Hack as Hack } from './hack';
 import { Slash as Slash } from './slash';
 import { Slice as Slice } from './slice';
+import { BoomerangSlice as BoomerangSlice } from './boomerang-slice';
 import { AssassinsSlash as AssassinsSlash } from './assassin-s-slash';
 import { BuildUp as BuildUp } from './build-up';
 import { Placate as Placate } from './placate';
@@ -30,6 +31,7 @@ export const powerset: Powerset = {
     Hack,
     Slash,
     Slice,
+    BoomerangSlice,
     AssassinsSlash,
     BuildUp,
     Placate,

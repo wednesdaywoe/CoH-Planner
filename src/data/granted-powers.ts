@@ -61,6 +61,16 @@ export const GRANTED_POWER_GROUPS: Record<string, GrantedPowerGroup> = {
   },
 
   // ============================================
+  // BROAD SWORD - Slice variants
+  // ============================================
+  'Slice': {
+    parentPower: 'Slice',
+    grantedPowers: ['Boomerang Slice'],
+    mutuallyExclusive: true,
+    description: 'Broad Sword cone variants - choose Slice or Boomerang Slice',
+  },
+
+  // ============================================
   // STAFF FIGHTING - Form stances
   // ============================================
   'Form of the Body': {

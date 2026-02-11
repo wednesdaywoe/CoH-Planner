@@ -18,10 +18,10 @@ export const Mutation: Power = {
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
-    "range": 15,
-    "recharge": 180,
-    "endurance": 26,
-    "castTime": 3.2
+    "range": 60,
+    "recharge": 120,
+    "endurance": 5.2,
+    "castTime": 1.83
   },
   "allowedEnhancements": [
     "EnduranceReduction",

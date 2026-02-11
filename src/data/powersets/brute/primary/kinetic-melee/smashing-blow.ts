@@ -41,12 +41,12 @@ export const SmashingBlow: Power = {
   "damage": [
     {
       "type": "Smashing",
-      "scale": 1,
+      "scale": 0.48,
       "table": "Melee_Damage"
     },
     {
       "type": "Energy",
-      "scale": 0.48,
+      "scale": 1,
       "table": "Melee_Damage"
     },
     {
@@ -62,7 +62,7 @@ export const SmashingBlow: Power = {
       "table": "Melee_Stun"
     },
     "damageDebuff": {
-      "scale": 0.85,
+      "scale": 0.7,
       "table": "Melee_Debuff_Dam"
     }
   }

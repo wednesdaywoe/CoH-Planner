@@ -20,10 +20,10 @@ export const BreathofFire: Power = {
     "accuracy": 1.2,
     "range": 15,
     "radius": 15,
-    "arc": 0.5236,
+    "arc": 2.0944,
     "recharge": 10,
     "endurance": 10.192,
-    "castTime": 2.67,
+    "castTime": 2.4,
     "maxTargets": 10
   },
   "allowedEnhancements": [

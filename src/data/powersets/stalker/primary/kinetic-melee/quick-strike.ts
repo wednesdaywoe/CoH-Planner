@@ -39,18 +39,18 @@ export const QuickStrike: Power = {
   "damage": [
     {
       "type": "Smashing",
-      "scale": 0.63,
+      "scale": 0.21,
       "table": "Melee_Damage"
     },
     {
       "type": "Energy",
-      "scale": 0.21,
+      "scale": 0.63,
       "table": "Melee_Damage"
     }
   ],
   "effects": {
     "damageDebuff": {
-      "scale": 0.75,
+      "scale": 0.7,
       "table": "Melee_Debuff_Dam"
     }
   }

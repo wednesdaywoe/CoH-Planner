@@ -18,9 +18,9 @@ export const PowerofthePhoenix: Power = {
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
-    "range": 15,
+    "range": 60,
     "recharge": 300,
-    "endurance": 49.4,
+    "endurance": 10.4,
     "castTime": 1.67
   },
   "allowedEnhancements": [

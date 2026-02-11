@@ -34,5 +34,10 @@ export const AssassinsIceSword: Power = {
     "Stalker Archetype Sets",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Cold",
+    "scale": 8.5,
+    "table": "Melee_Damage"
+  }
 };

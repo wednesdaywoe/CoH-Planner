@@ -21,7 +21,7 @@ export const Defibrillate: Power = {
     "accuracy": 1,
     "range": 7,
     "recharge": 120,
-    "endurance": 32.5,
+    "endurance": 13,
     "castTime": 3.3
   },
   "allowedEnhancements": [

@@ -34,7 +34,8 @@ export const ShiftingTides: Power = {
   "allowedSetCategories": [
     "Ranged AoE Damage",
     "To Hit Buff",
-    "Universal Damage Sets"
+    "Universal Damage Sets",
+    "Mastermind Archetype Sets"
   ],
   "maxSlots": 6,
   "damage": {

@@ -40,12 +40,12 @@ export const BodyBlow: Power = {
   "damage": [
     {
       "type": "Smashing",
-      "scale": 0.87,
+      "scale": 0.29,
       "table": "Melee_Damage"
     },
     {
       "type": "Energy",
-      "scale": 0.29,
+      "scale": 0.87,
       "table": "Melee_Damage"
     },
     {
@@ -71,7 +71,7 @@ export const BodyBlow: Power = {
       "table": "Melee_Stun"
     },
     "damageDebuff": {
-      "scale": 0.75,
+      "scale": 0.7,
       "table": "Melee_Debuff_Dam"
     }
   }

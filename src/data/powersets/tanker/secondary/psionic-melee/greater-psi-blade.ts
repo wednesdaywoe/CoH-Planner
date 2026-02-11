@@ -51,7 +51,7 @@ export const GreaterPsiBlade: Power = {
     },
     {
       "type": "Psionic",
-      "scale": 1.38,
+      "scale": 1.656,
       "table": "Melee_Damage"
     },
     {
@@ -66,7 +66,7 @@ export const GreaterPsiBlade: Power = {
       "table": "Melee_Slow"
     },
     "hold": {
-      "mag": 3,
+      "mag": 1,
       "scale": 12,
       "table": "Melee_Stun"
     }

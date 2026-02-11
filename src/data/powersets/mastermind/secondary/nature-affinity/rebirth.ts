@@ -21,7 +21,7 @@ export const Rebirth: Power = {
     "accuracy": 1,
     "range": 45,
     "recharge": 180,
-    "endurance": 32.5,
+    "endurance": 16.25,
     "castTime": 3
   },
   "allowedEnhancements": [

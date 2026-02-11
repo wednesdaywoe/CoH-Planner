@@ -7,7 +7,7 @@ import { Modal, ModalBody, ModalFooter } from './Modal';
 import { Button } from '@/components/ui';
 
 const STORAGE_KEY = 'coh-planner-welcome-dismissed';
-const CURRENT_VERSION = '0.2.0-alpha'; // Increment to show modal again after major updates
+const CURRENT_VERSION = '0.3.0-alpha'; // Increment to show modal again after major updates
 
 interface WelcomeModalProps {
   isOpen: boolean;
@@ -21,6 +21,7 @@ const KNOWN_ISSUES = [
 ];
 
 const RECENT_CHANGES = [
+  "Update to incorporate power updates in Issue 28, Page 3, Panel 2",
   'Refactor of enhancement, incarnate data, infopanel, and dashboard to be more modular and maintainable',
   'Should see enhancment data calculated in the info panel now',
 ];

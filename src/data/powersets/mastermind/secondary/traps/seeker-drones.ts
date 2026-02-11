@@ -39,7 +39,8 @@ export const SeekerDrones: Power = {
     "Ranged AoE Damage",
     "Stuns",
     "To Hit Debuff",
-    "Universal Damage Sets"
+    "Universal Damage Sets",
+    "Mastermind Archetype Sets"
   ],
   "maxSlots": 6,
   "effects": {

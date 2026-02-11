@@ -34,7 +34,8 @@ export const LightningStorm: Power = {
     "Endurance Modification",
     "Knockback",
     "Ranged Damage",
-    "Universal Damage Sets"
+    "Universal Damage Sets",
+    "Mastermind Archetype Sets"
   ],
   "maxSlots": 6,
   "effects": {

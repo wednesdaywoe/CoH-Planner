@@ -21,7 +21,7 @@ export const ConcentratedStrike: Power = {
     "range": 7,
     "recharge": 20,
     "endurance": 18.512,
-    "castTime": 2.83
+    "castTime": 2.67
   },
   "allowedEnhancements": [
     "EnduranceReduction",
@@ -40,12 +40,12 @@ export const ConcentratedStrike: Power = {
   "damage": [
     {
       "type": "Smashing",
-      "scale": 1,
+      "scale": 2.56,
       "table": "Melee_Damage"
     },
     {
       "type": "Energy",
-      "scale": 2.56,
+      "scale": 1,
       "table": "Melee_Damage"
     },
     {
@@ -61,7 +61,7 @@ export const ConcentratedStrike: Power = {
       "table": "Melee_Immobilize"
     },
     "damageDebuff": {
-      "scale": 0.75,
+      "scale": 0.7,
       "table": "Melee_Debuff_Dam"
     }
   }

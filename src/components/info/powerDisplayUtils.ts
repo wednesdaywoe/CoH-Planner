@@ -12,6 +12,7 @@ import type {
 } from '@/types';
 import { getScaleValue } from '@/types';
 import type { CharacterGlobalBonuses } from '@/utils/calculations';
+import { getTableValue } from '@/data/at-tables';
 
 // ============================================
 // TABLE BASE VALUES
@@ -47,22 +48,30 @@ export const BASE_BUFF = 0.10;    // 10% per scale for buffs
 export type EffectCategory = 'buff' | 'debuff';
 
 /**
- * Get the base value for a table name
+ * Get the base value for a table name.
+ * If archetype and level are provided, uses AT-specific tables first.
  */
-export function getTableBaseValue(tableName: string | undefined): number {
+export function getTableBaseValue(tableName: string | undefined, archetype?: string, level?: number): number {
   if (!tableName) return TABLE_BASE_VALUES['default'];
   const key = tableName.toLowerCase();
+
+  // Try AT-specific table first
+  if (archetype) {
+    const atValue = getTableValue(archetype, key, level ?? 50);
+    if (atValue !== undefined) return atValue;
+  }
+
   return TABLE_BASE_VALUES[key] ?? TABLE_BASE_VALUES['default'];
 }
 
 /**
  * Calculate the final percentage value for a resistance/defense effect
- * Formula: scale × table_base_value
+ * Formula: scale × table_base_value (AT-specific when archetype provided)
  */
-export function calculateResistancePercent(effect: NumberOrScaled | undefined): number {
+export function calculateResistancePercent(effect: NumberOrScaled | undefined, archetype?: string, level?: number): number {
   if (!effect) return 0;
   if (typeof effect === 'number') return effect;
-  const baseValue = getTableBaseValue(effect.table);
+  const baseValue = getTableBaseValue(effect.table, archetype, level);
   return effect.scale * baseValue;
 }
 
@@ -322,14 +331,16 @@ const MEZ_LABELS: Record<string, string> = {
  */
 export function expandByTypeEntries(
   obj: Record<string, unknown>,
-  labelPrefix: string
+  labelPrefix: string,
+  archetype?: string,
+  level?: number
 ): Array<{ typeKey: string; typeLabel: string; basePercent: number }> {
   const entries = Object.entries(obj).filter(([, v]) => v !== undefined && v !== 0);
   if (entries.length === 0) return [];
 
   const resolved = entries.map(([typeKey, value]) => ({
     typeKey,
-    basePercent: calculateResistancePercent(value as NumberOrScaled) * 100,
+    basePercent: calculateResistancePercent(value as NumberOrScaled, archetype, level) * 100,
   }));
 
   const percentValues = resolved.map(r => r.basePercent);

@@ -382,6 +382,8 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
         enhancementBonuses={enhancementBonuses}
         globalBonuses={globalBonusesForCalc}
         buffDebuffMod={effectiveMod}
+        archetypeId={archetypeId ?? undefined}
+        level={build.level}
         categories={['execution', 'buff', 'debuff', 'control', 'protection']}
         dominationActive={dominationActive}
         header="Power Effects"

@@ -21,7 +21,7 @@ export const Brine: Power = {
     "range": 80,
     "recharge": 60,
     "endurance": 7,
-    "castTime": 2.07
+    "castTime": 1.33
   },
   "allowedEnhancements": [
     "EnduranceReduction",

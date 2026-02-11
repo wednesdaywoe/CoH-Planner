@@ -19,9 +19,9 @@ export const Lunge: Power = {
   "stats": {
     "accuracy": 1,
     "range": 7,
-    "recharge": 6,
-    "endurance": 6.864,
-    "castTime": 1.63
+    "recharge": 5,
+    "endurance": 6.032,
+    "castTime": 1.33
   },
   "allowedEnhancements": [
     "Slow",
@@ -40,14 +40,14 @@ export const Lunge: Power = {
   "damage": [
     {
       "type": "Lethal",
-      "scale": 1.32,
+      "scale": 1.08,
       "table": "Melee_Damage"
     },
     {
       "type": "Toxic",
       "scale": 0.1,
       "table": "Melee_Damage",
-      "duration": 3.1,
+      "duration": 6.1,
       "tickRate": 1
     }
   ],

@@ -32,7 +32,8 @@ export const TripMine: Power = {
   "allowedSetCategories": [
     "Knockback",
     "Melee AoE Damage",
-    "Universal Damage Sets"
+    "Universal Damage Sets",
+    "Mastermind Archetype Sets"
   ],
   "maxSlots": 6,
   "effects": {

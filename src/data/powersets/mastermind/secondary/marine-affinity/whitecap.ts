@@ -19,9 +19,9 @@ export const Whitecap: Power = {
   "stats": {
     "accuracy": 1,
     "range": 80,
-    "recharge": 30,
+    "recharge": 15,
     "endurance": 22.5,
-    "castTime": 2
+    "castTime": 1.5
   },
   "allowedEnhancements": [
     "EnduranceReduction",
@@ -33,7 +33,8 @@ export const Whitecap: Power = {
   "allowedSetCategories": [
     "Knockback",
     "Melee AoE Damage",
-    "Universal Damage Sets"
+    "Universal Damage Sets",
+    "Mastermind Archetype Sets"
   ],
   "maxSlots": 6,
   "effects": {

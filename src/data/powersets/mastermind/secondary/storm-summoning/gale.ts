@@ -36,7 +36,8 @@ export const Gale: Power = {
   "allowedSetCategories": [
     "Knockback",
     "Ranged AoE Damage",
-    "Universal Damage Sets"
+    "Universal Damage Sets",
+    "Mastermind Archetype Sets"
   ],
   "maxSlots": 6,
   "damage": {
