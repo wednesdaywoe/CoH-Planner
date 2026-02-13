@@ -220,6 +220,21 @@ export function arePoolPrerequisitesMet(
   // No requires means no prerequisites
   if (!power.requires || power.requires === '') return true;
 
+  // Build a mapping from fullName to display name for this pool
+  // This handles cases where internal names differ from display names
+  // (e.g., Pool.Flight.Combat_Flight -> "Hover", not "Combat Flight")
+  const pool = _pools[poolId];
+  const fullNameToDisplayName: Record<string, string> = {};
+  if (pool) {
+    for (const p of pool.powers) {
+      if (p.fullName) {
+        const internalParts = p.fullName.split('.');
+        const internalName = internalParts[internalParts.length - 1].replace(/_/g, ' ');
+        fullNameToDisplayName[internalName] = p.name;
+      }
+    }
+  }
+
   // Parse the requires expression
   // Format: "Pool.Speed.Flurry && Pool.Speed.Hasten || Pool.Speed.Flurry && Pool.Speed.Super_Speed"
   const requiresExpr = power.requires;
@@ -236,7 +251,9 @@ export function arePoolPrerequisitesMet(
     return andConditions.every((andCond) => {
       // Extract power name from full name (e.g., "Pool.Speed.Hasten" -> "Hasten")
       const parts = andCond.split('.');
-      const reqPowerName = parts[parts.length - 1].replace(/_/g, ' ');
+      const internalName = parts[parts.length - 1].replace(/_/g, ' ');
+      // Resolve to display name if available, otherwise use the internal name
+      const reqPowerName = fullNameToDisplayName[internalName] || internalName;
       return selectedPowers.includes(reqPowerName);
     });
   });

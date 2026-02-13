@@ -9672,8 +9672,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "aspects": [
           "Defense"
         ],
-        "proc": false,
-        "unique": false
+        "proc": true,
+        "unique": true
       }
     ],
     "icon": "sGiftoftheancients.png"
@@ -13086,8 +13086,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "aspects": [
           "Defense"
         ],
-        "proc": false,
-        "unique": false
+        "proc": true,
+        "unique": true
       }
     ],
     "icon": "sLuckofthegambler.png"

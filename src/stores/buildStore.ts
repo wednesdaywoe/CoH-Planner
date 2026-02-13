@@ -25,7 +25,7 @@ import {
   getPowerset,
   getPowerPool,
   getEpicPool,
-  TOTAL_SLOTS_AT_50,
+  getTotalSlotsAtLevel,
   MAX_POWER_POOLS,
   EPIC_POOL_LEVEL,
   getInherentPowers,
@@ -704,8 +704,9 @@ export const useBuildStore = create<BuildStore>()(
         // Check if power can have more slots
         if (power.slots.length >= power.maxSlots) return false;
 
-        // Check total slot limit
-        if (countTotalSlots(state.build) >= TOTAL_SLOTS_AT_50) return false;
+        // Check total slot limit (level-aware)
+        const slotLimit = getTotalSlotsAtLevel(state.build.level);
+        if (countTotalSlots(state.build) >= slotLimit) return false;
 
         set((s) => {
           const newBuild = { ...s.build };
@@ -1095,7 +1096,7 @@ export const useBuildStore = create<BuildStore>()(
       // Computed
       getTotalSlotsUsed: () => countTotalSlots(get().build),
 
-      getSlotsRemaining: () => TOTAL_SLOTS_AT_50 - countTotalSlots(get().build),
+      getSlotsRemaining: () => getTotalSlotsAtLevel(get().build.level) - countTotalSlots(get().build),
 
       getActiveSetBonuses: () => {
         const bonuses: Array<{ setId: string; bonusIndex: number }> = [];
@@ -1119,7 +1120,7 @@ export const useBuildStore = create<BuildStore>()(
 
         return (
           found.power.slots.length < found.power.maxSlots &&
-          countTotalSlots(state.build) < TOTAL_SLOTS_AT_50
+          countTotalSlots(state.build) < getTotalSlotsAtLevel(state.build.level)
         );
       },
 

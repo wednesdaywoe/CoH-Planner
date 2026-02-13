@@ -328,6 +328,7 @@ function buildStatBreakdown(
 interface ActivePowerEffect {
   tohitBuff?: number;
   damageBuff?: number;
+  rechargeBuff?: number | { scale: number };
   defense?: Record<string, number>;
   resistance?: Record<string, number>;
   debuffResistance?: Record<string, number>;
@@ -502,6 +503,19 @@ function applyActivePowerBonuses(
       const value = extractScaleValue(effects.jumpHeight) * 100;
       global.jumpHeight += value;
       addToBreakdown(breakdown, 'jumpHeight', {
+        name: power.name,
+        value,
+        type: 'active-power',
+      });
+    }
+
+    // Recharge buff
+    // Enhanced by Recharge enhancements
+    if (effects.rechargeBuff !== undefined) {
+      const enhMultiplier = 1 + (enhBonuses.recharge || 0);
+      const value = extractScaleValue(effects.rechargeBuff) * 100 * enhMultiplier;
+      global.recharge += value;
+      addToBreakdown(breakdown, 'recharge', {
         name: power.name,
         value,
         type: 'active-power',

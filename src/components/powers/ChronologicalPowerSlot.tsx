@@ -174,7 +174,10 @@ function TouchableSlotCompact({
 
       <SlotContextMenu
         isOpen={menuOpen}
-        onClose={() => setMenuOpen(false)}
+        onClose={() => {
+          setMenuOpen(false);
+          longPressTriggeredRef.current = false;
+        }}
         position={menuPosition}
         hasFill={!!slot}
         canRemoveSlot={canRemoveSlot}

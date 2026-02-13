@@ -22,8 +22,11 @@ const KNOWN_ISSUES = [
 
 const RECENT_CHANGES = [
   "Update to incorporate power updates in Issue 28, Page 3, Panel 2",
-  'Refactor of enhancement, incarnate data, infopanel, and dashboard to be more modular and maintainable',
-  'Should see enhancment data calculated in the info panel now',
+  'Fix: Toggle/Auto powers with recharge buffs (Chronoshift, etc.) now properly apply to global recharge stats',
+  'Fix: Luck of the Gambler and Gift of the Ancients global procs now correctly apply their bonuses',
+  'Fix: Flight pool powers (Group Fly, Evasive Maneuvers) now unlock after selecting two of the first three powers',
+  'Fix: Enhancement picker can now be reopened via left-click after using the context menu on a slot',
+  'Fix: Enhancement slot limits are now level-aware instead of always using the level 50 cap',
 ];
 
 const TODO_ITEMS = [

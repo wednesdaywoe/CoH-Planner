@@ -1311,6 +1311,15 @@ export function findProcData(enhancementName: string, setName?: string): ProcDat
     }
   }
 
+  // Fallback: match by set name (handles name mismatches like LotG "Defense/+Recharge" vs "Buff Recharge")
+  if (setName) {
+    for (const data of Object.values(PROC_DATABASE)) {
+      if (data.setName === setName) {
+        return data;
+      }
+    }
+  }
+
   return undefined;
 }
 
