@@ -383,7 +383,21 @@ export function Header() {
                 : 'bg-slate-700/50 border-slate-600'
             }`}>
               <span className="text-xs text-red-400 font-semibold uppercase">Fury</span>
-              <span className="text-sm font-bold text-red-400 w-7">{furyLevel}</span>
+              <button
+                onClick={() => setFuryLevel(Math.max(0, furyLevel - 1))}
+                disabled={furyLevel <= 0}
+                className="text-slate-400 hover:text-red-400 disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-0.5"
+              >
+                &minus;
+              </button>
+              <span className="text-sm font-bold text-red-400 w-7 text-center">{furyLevel}</span>
+              <button
+                onClick={() => setFuryLevel(Math.min(100, furyLevel + 1))}
+                disabled={furyLevel >= 100}
+                className="text-slate-400 hover:text-red-400 disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-0.5"
+              >
+                +
+              </button>
               <Slider
                 value={furyLevel}
                 min={0}
@@ -429,7 +443,21 @@ export function Header() {
                   : 'bg-slate-700/50 border-slate-600'
               }`}>
                 <span className="text-xs text-indigo-400 font-semibold uppercase">Team</span>
-                <span className="text-sm font-bold text-indigo-400 w-8">{teamLabel}</span>
+                <button
+                  onClick={() => setVigilanceTeamSize(Math.max(0, vigilanceTeamSize - 1))}
+                  disabled={vigilanceTeamSize <= 0}
+                  className="text-slate-400 hover:text-indigo-400 disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-0.5"
+                >
+                  &minus;
+                </button>
+                <span className="text-sm font-bold text-indigo-400 w-8 text-center">{teamLabel}</span>
+                <button
+                  onClick={() => setVigilanceTeamSize(Math.min(7, vigilanceTeamSize + 1))}
+                  disabled={vigilanceTeamSize >= 7}
+                  className="text-slate-400 hover:text-indigo-400 disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-0.5"
+                >
+                  +
+                </button>
                 <Slider
                   value={vigilanceTeamSize}
                   min={0}
@@ -494,7 +522,21 @@ export function Header() {
                 <Tooltip content={`Assassination grants +${(damageBonus * 100).toFixed(0)}% avg damage. 10% base crit + 3% per teammate outside of hide.`}>
                   <div className="flex items-center gap-1 px-2 py-1.5 rounded border bg-purple-900/30 border-purple-700/50">
                     <span className="text-xs text-purple-400 font-semibold uppercase">Team</span>
-                    <span className="text-sm font-bold text-purple-400 w-8">{teamLabel}</span>
+                    <button
+                      onClick={() => setStalkerTeamSize(Math.max(0, stalkerTeamSize - 1))}
+                      disabled={stalkerTeamSize <= 0}
+                      className="text-slate-400 hover:text-purple-400 disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-0.5"
+                    >
+                      &minus;
+                    </button>
+                    <span className="text-sm font-bold text-purple-400 w-8 text-center">{teamLabel}</span>
+                    <button
+                      onClick={() => setStalkerTeamSize(Math.min(7, stalkerTeamSize + 1))}
+                      disabled={stalkerTeamSize >= 7}
+                      className="text-slate-400 hover:text-purple-400 disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-0.5"
+                    >
+                      +
+                    </button>
                     <Slider
                       value={stalkerTeamSize}
                       min={0}
@@ -534,7 +576,21 @@ export function Header() {
         {/* Level selector */}
         <div className="flex items-center gap-1 bg-slate-700/50 px-2 py-1.5 rounded border border-slate-600">
           <span className="text-xs text-slate-400 font-semibold uppercase">Level</span>
-          <span className="text-sm font-bold text-emerald-400 w-6">{build.level}</span>
+          <button
+            onClick={() => setLevel(build.level - 1)}
+            disabled={build.level <= 1}
+            className="text-slate-400 hover:text-emerald-400 disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-0.5"
+          >
+            &minus;
+          </button>
+          <span className="text-sm font-bold text-emerald-400 w-6 text-center">{build.level}</span>
+          <button
+            onClick={() => setLevel(build.level + 1)}
+            disabled={build.level >= MAX_LEVEL}
+            className="text-slate-400 hover:text-emerald-400 disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-0.5"
+          >
+            +
+          </button>
           <Slider
             value={build.level}
             min={1}
@@ -549,7 +605,21 @@ export function Header() {
         {/* IO Level slider */}
         <div className="flex items-center gap-1 bg-slate-700/50 px-2 py-1.5 rounded border border-slate-600">
           <span className="text-xs text-slate-400 font-semibold uppercase">IO</span>
-          <span className="text-sm font-bold text-blue-400 w-6">{globalIOLevel}</span>
+          <button
+            onClick={() => setGlobalIOLevel(globalIOLevel - 1)}
+            disabled={globalIOLevel <= 10}
+            className="text-slate-400 hover:text-blue-400 disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-0.5"
+          >
+            &minus;
+          </button>
+          <span className="text-sm font-bold text-blue-400 w-6 text-center">{globalIOLevel}</span>
+          <button
+            onClick={() => setGlobalIOLevel(globalIOLevel + 1)}
+            disabled={globalIOLevel >= 50}
+            className="text-slate-400 hover:text-blue-400 disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-0.5"
+          >
+            +
+          </button>
           <Slider
             value={globalIOLevel}
             min={10}

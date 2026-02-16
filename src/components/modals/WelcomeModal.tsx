@@ -7,7 +7,7 @@ import { Modal, ModalBody, ModalFooter } from './Modal';
 import { Button } from '@/components/ui';
 
 const STORAGE_KEY = 'coh-planner-welcome-dismissed';
-const CURRENT_VERSION = '0.3.0-alpha'; // Increment to show modal again after major updates
+const CURRENT_VERSION = '0.3.1-alpha'; // Increment to show modal again after major updates
 
 interface WelcomeModalProps {
   isOpen: boolean;
