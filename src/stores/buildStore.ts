@@ -166,6 +166,14 @@ function findPower(
 }
 
 /**
+ * Count inherent power base slots (1 free slot per slottable inherent).
+ * These are auto-granted and not part of the level-based SLOT_GRANTS budget.
+ */
+function countInherentBaseSlots(build: Build): number {
+  return build.inherents.filter((p) => p.maxSlots > 0).length;
+}
+
+/**
  * Count total slots used across all powers
  */
 function countTotalSlots(build: Build): number {
@@ -705,7 +713,9 @@ export const useBuildStore = create<BuildStore>()(
         if (power.slots.length >= power.maxSlots) return false;
 
         // Check total slot limit (level-aware)
-        const slotLimit = getTotalSlotsAtLevel(state.build.level);
+        // Add inherent base slots to the limit since SLOT_GRANTS only covers
+        // progression-based slots, not auto-granted inherent power slots
+        const slotLimit = getTotalSlotsAtLevel(state.build.level) + countInherentBaseSlots(state.build);
         if (countTotalSlots(state.build) >= slotLimit) return false;
 
         set((s) => {
@@ -1096,7 +1106,10 @@ export const useBuildStore = create<BuildStore>()(
       // Computed
       getTotalSlotsUsed: () => countTotalSlots(get().build),
 
-      getSlotsRemaining: () => getTotalSlotsAtLevel(get().build.level) - countTotalSlots(get().build),
+      getSlotsRemaining: () => {
+        const build = get().build;
+        return getTotalSlotsAtLevel(build.level) + countInherentBaseSlots(build) - countTotalSlots(build);
+      },
 
       getActiveSetBonuses: () => {
         const bonuses: Array<{ setId: string; bonusIndex: number }> = [];
@@ -1120,7 +1133,7 @@ export const useBuildStore = create<BuildStore>()(
 
         return (
           found.power.slots.length < found.power.maxSlots &&
-          countTotalSlots(state.build) < getTotalSlotsAtLevel(state.build.level)
+          countTotalSlots(state.build) < getTotalSlotsAtLevel(state.build.level) + countInherentBaseSlots(state.build)
         );
       },
 
