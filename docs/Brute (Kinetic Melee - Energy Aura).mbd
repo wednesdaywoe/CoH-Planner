@@ -21,7 +21,7 @@
     "Pool.Speed",
     "Epic.Energy_Mastery_Brute"
   ],
-  "LastPower": 26,
+  "LastPower": 25,
   "PowerEntries": [
     {
       "PowerName": "Brute_Melee.Kinetic_Attack.Quick_Strike",
