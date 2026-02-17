@@ -5,6 +5,7 @@
 import { useState, useEffect } from 'react';
 import { Modal, ModalBody, ModalFooter } from './Modal';
 import { Button } from '@/components/ui';
+import { useUIStore } from '@/stores';
 
 const STORAGE_KEY = 'coh-planner-welcome-dismissed';
 const CURRENT_VERSION = '0.3.1-alpha'; // Increment to show modal again after major updates
@@ -14,29 +15,9 @@ interface WelcomeModalProps {
   onClose: () => void;
 }
 
-
-const KNOWN_ISSUES = [
-  'Titan/Hydra/D-Sync Origin Enhancements are not implemented',
-  'Set level caps (Touch of Death, Miracle) not enforced',
-];
-
-const RECENT_CHANGES = [
-  "Update to incorporate power updates in Issue 28, Page 3, Panel 2",
-  'Fix: Toggle/Auto powers with recharge buffs (Chronoshift, etc.) now properly apply to global recharge stats',
-  'Fix: Luck of the Gambler and Gift of the Ancients global procs now correctly apply their bonuses',
-  'Fix: Flight pool powers (Group Fly, Evasive Maneuvers) now unlock after selecting two of the first three powers',
-  'Fix: Enhancement picker can now be reopened via left-click after using the context menu on a slot',
-  'Fix: Enhancement slot limits are now level-aware instead of always using the level 50 cap',
-];
-
-const TODO_ITEMS = [
-  'Add build sharing functionality',
-  'Add data sets for Rebirth and Thunderspy',
-  'Continue improving mobile experience',
-];
-
 export function WelcomeModal({ isOpen, onClose }: WelcomeModalProps) {
   const [dontShowAgain, setDontShowAgain] = useState(false);
+  const openKnownIssuesModal = useUIStore((s) => s.openKnownIssuesModal);
 
   const handleClose = () => {
     if (dontShowAgain) {
@@ -87,64 +68,24 @@ export function WelcomeModal({ isOpen, onClose }: WelcomeModalProps) {
             </div>
           </div>
 
-          {/* Known Issues */}
-          <div>
-            <h3 className="text-lg font-semibold text-red-400 mb-2 flex items-center gap-2">
-              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-              </svg>
-              Known Issues
-            </h3>
-            <ul className="space-y-1 text-sm text-gray-400">
-              {KNOWN_ISSUES.map((issue, idx) => (
-                <li key={idx} className="flex items-start gap-2">
-                  <span className="text-red-500 mt-0.5">•</span>
-                  <span>{issue}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Recent Updates */}
-          <div>
-            <h3 className="text-lg font-semibold text-green-400 mb-2 flex items-center gap-2">
-              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-              </svg>
-              Recent Updates
-            </h3>
-            <ul className="space-y-1 text-sm text-gray-400">
-              {RECENT_CHANGES.map((change, idx) => (
-                <li key={idx} className="flex items-start gap-2">
-                  <span className="text-green-500 mt-0.5">•</span>
-                  <span>{change}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Planned Features / Todo */}
-          <div>
-            <h3 className="text-lg font-semibold text-blue-400 mb-2 flex items-center gap-2">
-              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
-              </svg>
-              Todo
-            </h3>
-            <ul className="space-y-1 text-sm text-gray-400">
-              {TODO_ITEMS.map((item, idx) => (
-                <li key={idx} className="flex items-start gap-2">
-                  <span className="text-blue-500 mt-0.5">•</span>
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Feedback note */}
-          <div className="bg-gray-800 rounded-lg p-3 border border-gray-700">
+          {/* Links */}
+          <div className="bg-gray-800 rounded-lg p-3 border border-gray-700 space-y-2">
             <p className="text-sm text-gray-300">
-              Found a bug or have a suggestion? Use the{' '}
+              Check the{' '}
+              <button
+                type="button"
+                onClick={() => {
+                  handleClose();
+                  openKnownIssuesModal();
+                }}
+                className="text-cyan-400 underline hover:text-cyan-300 font-medium"
+              >
+                Known Issues & Roadmap
+              </button>
+              {' '}for tracked bugs and planned features.
+            </p>
+            <p className="text-sm text-gray-300">
+              Found something new? Use the{' '}
               <span className="text-purple-400 font-medium">Feedback/Bugs</span> button
               in the bottom-right corner to let me know!
             </p>

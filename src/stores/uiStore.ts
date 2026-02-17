@@ -62,6 +62,9 @@ interface UIState {
   /** Feedback modal open state */
   feedbackModalOpen: boolean;
 
+  /** Known Issues modal open state */
+  knownIssuesModalOpen: boolean;
+
   /** Power Info modal open state (mobile only) */
   powerInfoModalOpen: boolean;
 
@@ -200,6 +203,10 @@ interface UIActions {
   openFeedbackModal: () => void;
   closeFeedbackModal: () => void;
 
+  // Known Issues Modal
+  openKnownIssuesModal: () => void;
+  closeKnownIssuesModal: () => void;
+
   // Power Info Modal (mobile only)
   openPowerInfoModal: () => void;
   closePowerInfoModal: () => void;
@@ -322,6 +329,7 @@ export const useUIStore = create<UIStore>()(
       currentIncarnateSlot: null,
       exportImportModalOpen: false,
       feedbackModalOpen: false,
+      knownIssuesModalOpen: false,
       powerInfoModalOpen: false,
       globalIOLevel: 50,
       attunementEnabled: false,
@@ -674,6 +682,13 @@ export const useUIStore = create<UIStore>()(
 
       closeFeedbackModal: () =>
         set({ feedbackModalOpen: false }),
+
+      // Known Issues Modal
+      openKnownIssuesModal: () =>
+        set({ knownIssuesModalOpen: true }),
+
+      closeKnownIssuesModal: () =>
+        set({ knownIssuesModalOpen: false }),
 
       // Power Info Modal (mobile only)
       openPowerInfoModal: () =>

@@ -7,6 +7,7 @@ import { useState } from 'react';
 import { Modal, ModalBody, ModalFooter, ModalHeader } from './Modal';
 import { Button } from '../ui/Button';
 import { useBuildStore } from '@/stores/buildStore';
+import { useUIStore } from '@/stores/uiStore';
 
 // Worker endpoint URL - update this after deploying the Cloudflare Worker
 const FEEDBACK_API_URL = 'https://coh-planner-feedback.wedswoe.workers.dev';
@@ -43,6 +44,7 @@ export function FeedbackModal({ isOpen, onClose }: FeedbackModalProps) {
   const [globalName, setGlobalName] = useState('');
   const [status, setStatus] = useState<SubmitStatus>('idle');
   const [errorMessage, setErrorMessage] = useState('');
+  const openKnownIssuesModal = useUIStore((s) => s.openKnownIssuesModal);
 
   const build = useBuildStore((s) => s.build);
 
@@ -176,6 +178,29 @@ export function FeedbackModal({ isOpen, onClose }: FeedbackModalProps) {
                 )}
               </div>
             </div>
+
+            {/* Known issues prompt for bug reports */}
+            {feedbackType === 'bug' && (
+              <div className="bg-amber-900/20 border border-amber-700/50 rounded p-3 flex items-start gap-2">
+                <svg className="w-4 h-4 text-amber-400 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <p className="text-sm text-amber-200/80">
+                  Please{' '}
+                  <button
+                    type="button"
+                    onClick={() => {
+                      handleClose();
+                      openKnownIssuesModal();
+                    }}
+                    className="text-amber-300 underline hover:text-amber-200 font-medium"
+                  >
+                    check Known Issues
+                  </button>
+                  {' '}before submitting to avoid duplicates.
+                </p>
+              </div>
+            )}
 
             {/* Description */}
             <div>

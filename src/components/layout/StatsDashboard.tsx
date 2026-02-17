@@ -8,7 +8,7 @@ import { useMemo } from 'react';
 import { useCalculatedStats, useCharacterCalculation } from '@/hooks';
 import { useBuildStore, useUIStore } from '@/stores';
 import { Tooltip } from '@/components/ui';
-import { StatsConfigModal, AccoladesModal, AboutModal, ExportImportModal, FeedbackModal, WelcomeModal, useWelcomeModal } from '@/components/modals';
+import { StatsConfigModal, AccoladesModal, AboutModal, ExportImportModal, FeedbackModal, KnownIssuesModal, WelcomeModal, useWelcomeModal } from '@/components/modals';
 import { IncarnateSlotGrid, IncarnateModal } from '@/components/incarnate';
 import { INCARNATE_REQUIRED_LEVEL, createEmptyIncarnateBuildState } from '@/types';
 import type { CalculatedStats, DashboardStatBreakdown } from '@/hooks/useCalculatedStats';
@@ -470,6 +470,8 @@ export function StatsDashboard() {
   const closeExportImportModal = useUIStore((s) => s.closeExportImportModal);
   const feedbackModalOpen = useUIStore((s) => s.feedbackModalOpen);
   const closeFeedbackModal = useUIStore((s) => s.closeFeedbackModal);
+  const knownIssuesModalOpen = useUIStore((s) => s.knownIssuesModalOpen);
+  const closeKnownIssuesModal = useUIStore((s) => s.closeKnownIssuesModal);
 
   // Welcome modal (auto-shows on first visit)
   const [welcomeModalOpen, closeWelcomeModal] = useWelcomeModal();
@@ -817,6 +819,12 @@ export function StatsDashboard() {
       <FeedbackModal
         isOpen={feedbackModalOpen}
         onClose={closeFeedbackModal}
+      />
+
+      {/* Known Issues Modal */}
+      <KnownIssuesModal
+        isOpen={knownIssuesModalOpen}
+        onClose={closeKnownIssuesModal}
       />
 
       {/* Welcome Modal (auto-shows on first visit) */}
