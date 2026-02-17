@@ -14,6 +14,9 @@
 
 import type { Build, Accolade, Enhancement, IncarnateActiveState, IncarnateBuildState, IOSetEnhancement } from '@/types';
 import { getIOSet, getAlphaEffects, getDestinyEffects, getHybridEffects, findProcData, parseProcEffect, isProcAlwaysOn, calculateAutoToggleProcsPerMinute } from '@/data';
+import { getTableValue } from '@/data/at-tables';
+import { getPowerPool } from '@/data/power-pools';
+import { getEpicPool } from '@/data/epic-pools';
 import {
   calculateSetBonuses,
   getStatBreakdown,
@@ -299,18 +302,28 @@ function buildStatBreakdown(
   let total = 0;
 
   for (const item of breakdownItems) {
-    // Each item represents a unique value with potentially multiple sources
+    // Counted sources (first 5) — these are active and NOT capped
     for (const sourceName of item.sources) {
-      const source: StatSource = {
+      sources.push({
         name: sourceName,
         value: item.value,
         type: 'set-bonus',
-        capped: item.capped,
-      };
-      sources.push(source);
+        capped: false,
+      });
     }
+
+    // Rejected sources (6th+) — these exceeded the Rule of 5 and are NOT counted
+    for (const sourceName of item.rejectedSources) {
+      sources.push({
+        name: sourceName,
+        value: item.value,
+        type: 'set-bonus',
+        capped: true,
+      });
+      cappedCount++;
+    }
+
     total += item.total;
-    if (item.capped) cappedCount++;
   }
 
   return {
@@ -325,20 +338,22 @@ function buildStatBreakdown(
 // ACTIVE POWER PROCESSING
 // ============================================
 
+type ScalarOrScaled = number | { scale: number; table?: string };
+
 interface ActivePowerEffect {
   tohitBuff?: number;
   damageBuff?: number;
-  rechargeBuff?: number | { scale: number };
-  defense?: Record<string, number>;
-  resistance?: Record<string, number>;
-  debuffResistance?: Record<string, number>;
+  rechargeBuff?: ScalarOrScaled;
+  defense?: Record<string, ScalarOrScaled>;
+  resistance?: Record<string, ScalarOrScaled>;
+  debuffResistance?: Record<string, ScalarOrScaled>;
   runSpeed?: number;
   flySpeed?: number;
   jumpHeight?: number;
-  regeneration?: number | { scale: number };
-  recovery?: number | { scale: number };
-  maxEndurance?: number | { scale: number };
-  maxHealth?: number | { scale: number };
+  regeneration?: ScalarOrScaled;
+  recovery?: ScalarOrScaled;
+  maxEndurance?: ScalarOrScaled;
+  maxHealth?: ScalarOrScaled;
 }
 
 interface PowerWithToggle {
@@ -359,6 +374,7 @@ function applyActivePowerBonuses(
   global: GlobalBonuses,
   breakdown: Map<string, DashboardStatBreakdown>,
   buildLevel: number,
+  archetypeId: string,
   alphaBonuses: EnhancementBonuses = {}
 ): void {
   for (const power of powers) {
@@ -388,7 +404,7 @@ function applyActivePowerBonuses(
     // Enhanced by ToHit enhancements
     if (effects.tohitBuff !== undefined) {
       const enhMultiplier = 1 + (enhBonuses.tohit || 0);
-      const value = effects.tohitBuff * 100 * enhMultiplier;
+      const value = resolveScaledEffect(effects.tohitBuff as ScalarOrScaled, archetypeId, buildLevel) * 100 * enhMultiplier;
       global.toHit += value;
       addToBreakdown(breakdown, 'toHit', {
         name: power.name,
@@ -401,7 +417,7 @@ function applyActivePowerBonuses(
     // Enhanced by Damage enhancements
     if (effects.damageBuff !== undefined) {
       const enhMultiplier = 1 + (enhBonuses.damage || 0);
-      const value = effects.damageBuff * 100 * enhMultiplier;
+      const value = resolveScaledEffect(effects.damageBuff as ScalarOrScaled, archetypeId, buildLevel) * 100 * enhMultiplier;
       global.damage += value;
       addToBreakdown(breakdown, 'damage', {
         name: power.name,
@@ -416,7 +432,7 @@ function applyActivePowerBonuses(
       const def = effects.defense;
       const enhMultiplier = 1 + (enhBonuses.defense || enhBonuses.defenseBuff || 0);
       for (const [type, value] of Object.entries(def)) {
-        const percentage = (value as number) * 100 * enhMultiplier;
+        const percentage = resolveScaledEffect(value, archetypeId, buildLevel) * 100 * enhMultiplier;
         const key = `def${capitalizeFirst(type)}` as keyof GlobalBonuses;
         if (key in global) {
           global[key] += percentage;
@@ -435,7 +451,7 @@ function applyActivePowerBonuses(
       const res = effects.resistance;
       const enhMultiplier = 1 + (enhBonuses.resistance || 0);
       for (const [type, value] of Object.entries(res)) {
-        const percentage = (value as number) * 100 * enhMultiplier;
+        const percentage = resolveScaledEffect(value, archetypeId, buildLevel) * 100 * enhMultiplier;
         const key = `res${capitalizeFirst(type)}` as keyof GlobalBonuses;
         if (key in global) {
           global[key] += percentage;
@@ -465,7 +481,7 @@ function applyActivePowerBonuses(
       };
 
       for (const [type, value] of Object.entries(debuffRes)) {
-        const percentage = (value as number) * 100;
+        const percentage = resolveScaledEffect(value, archetypeId, buildLevel) * 100;
         const key = debuffResMapping[type.toLowerCase()];
         if (key && key in global) {
           global[key] += percentage;
@@ -524,10 +540,33 @@ function applyActivePowerBonuses(
   }
 }
 
-function extractScaleValue(effect: number | { scale: number } | undefined): number {
+function extractScaleValue(effect: ScalarOrScaled | undefined): number {
   if (effect === undefined) return 0;
   if (typeof effect === 'number') return effect;
   return effect.scale || 0;
+}
+
+/**
+ * Resolve a ScaledEffect to its actual decimal value using AT tables.
+ * For { scale: 3, table: "Melee_Res_Dmg" } with archetype "tanker" at level 50:
+ *   → 3 × 0.10 = 0.30 (30% resistance)
+ * For plain numbers, returns as-is.
+ */
+function resolveScaledEffect(
+  effect: ScalarOrScaled | undefined,
+  archetypeId: string,
+  level: number
+): number {
+  if (effect === undefined) return 0;
+  if (typeof effect === 'number') return effect;
+  if (effect.table) {
+    const tableValue = getTableValue(archetypeId, effect.table.toLowerCase(), level);
+    if (tableValue !== undefined) {
+      return effect.scale * tableValue;
+    }
+  }
+  // Fallback: use a default multiplier of 0.10 for resistance/defense tables
+  return effect.scale * 0.10;
 }
 
 function capitalizeFirst(str: string): string {
@@ -1371,17 +1410,30 @@ function collectAllPowers(build: Build): PowerWithToggle[] {
     powers.push(power as unknown as PowerWithToggle);
   }
 
-  // Pool powers
+  // Pool powers — enrich with current definition effects
+  // Stored powers may have stale effects if pool data was updated after they were saved
   for (const pool of build.pools) {
+    const poolDef = getPowerPool(pool.id);
     for (const power of pool.powers) {
-      powers.push(power as unknown as PowerWithToggle);
+      const currentDef = poolDef?.powers.find((p) => p.name === power.name);
+      if (currentDef?.effects) {
+        powers.push({ ...power, effects: currentDef.effects } as unknown as PowerWithToggle);
+      } else {
+        powers.push(power as unknown as PowerWithToggle);
+      }
     }
   }
 
-  // Epic pool
+  // Epic pool — enrich with current definition effects
   if (build.epicPool) {
+    const epicDef = getEpicPool(build.epicPool.id);
     for (const power of build.epicPool.powers) {
-      powers.push(power as unknown as PowerWithToggle);
+      const currentDef = epicDef?.powers.find((p) => p.name === power.name);
+      if (currentDef?.effects) {
+        powers.push({ ...power, effects: currentDef.effects } as unknown as PowerWithToggle);
+      } else {
+        powers.push(power as unknown as PowerWithToggle);
+      }
     }
   }
 
@@ -1457,7 +1509,7 @@ export function calculateCharacterTotals(
   const alphaBonuses = getAlphaEnhancementBonuses(build.incarnates, incarnateActive);
 
   // Step 7: Apply active toggle power bonuses (with enhancement multipliers + Alpha bonuses)
-  applyActivePowerBonuses(allPowers, globalBonuses, breakdown, effectiveLevel, alphaBonuses);
+  applyActivePowerBonuses(allPowers, globalBonuses, breakdown, effectiveLevel, build.archetype.id || '', alphaBonuses);
 
   // Step 7.5: Apply always-on proc bonuses (Global and Proc120s in Auto/Toggle powers)
   applyProcBonuses(build, globalBonuses, breakdown);

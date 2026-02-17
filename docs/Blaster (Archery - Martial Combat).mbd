@@ -1,0 +1,1535 @@
+{
+  "BuiltWith": {
+    "App": "Mids Reborn",
+    "Version": "3.7.15.1",
+    "Database": "Homecoming",
+    "DatabaseVersion": "2025.11.1232"
+  },
+  "Level": "49",
+  "Class": "Class_Blaster",
+  "Origin": "Magic",
+  "Alignment": "Hero",
+  "Name": "",
+  "Comment": "",
+  "PowerSets": [
+    "Blaster_Ranged.Archery",
+    "Blaster_Support.Martial_Manipulation",
+    "",
+    "Pool.Speed",
+    "Pool.Fighting",
+    "Pool.Invisibility",
+    "Pool.Teleportation",
+    "Epic.Munitions_Mastery"
+  ],
+  "LastPower": 25,
+  "PowerEntries": [
+    {
+      "PowerName": "Blaster_Ranged.Archery.Aimed_Shot",
+      "Level": 1,
+      "StatInclude": true,
+      "ProcInclude": false,
+      "VariableValue": 0,
+      "InherentSlotsUsed": 0,
+      "SubPowerEntries": [],
+      "SlotEntries": [
+        {
+          "Level": 1,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Superior_Attuned_Superior_Blasters_Wrath_A",
+            "Grade": "None",
+            "IoLevel": 49,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        },
+        {
+          "Level": 3,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Superior_Attuned_Superior_Blasters_Wrath_B",
+            "Grade": "None",
+            "IoLevel": 49,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        },
+        {
+          "Level": 3,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Superior_Attuned_Superior_Blasters_Wrath_C",
+            "Grade": "None",
+            "IoLevel": 49,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        },
+        {
+          "Level": 5,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Crafted_Salvo_A",
+            "Grade": "None",
+            "IoLevel": 24,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        },
+        {
+          "Level": 5,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Crafted_Salvo_B",
+            "Grade": "None",
+            "IoLevel": 24,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        },
+        {
+          "Level": 7,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Crafted_Salvo_C",
+            "Grade": "None",
+            "IoLevel": 24,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        }
+      ]
+    },
+    {
+      "PowerName": "Blaster_Support.Martial_Manipulation.Storm_Kick",
+      "Level": 1,
+      "StatInclude": true,
+      "ProcInclude": false,
+      "VariableValue": 0,
+      "InherentSlotsUsed": 0,
+      "SubPowerEntries": [],
+      "SlotEntries": [
+        {
+          "Level": 1,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Superior_Attuned_Blistering_Cold_A",
+            "Grade": "None",
+            "IoLevel": 49,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        },
+        {
+          "Level": 34,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Superior_Attuned_Blistering_Cold_B",
+            "Grade": "None",
+            "IoLevel": 49,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        },
+        {
+          "Level": 36,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Superior_Attuned_Blistering_Cold_C",
+            "Grade": "None",
+            "IoLevel": 49,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        },
+        {
+          "Level": 36,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Superior_Attuned_Blistering_Cold_D",
+            "Grade": "None",
+            "IoLevel": 49,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        },
+        {
+          "Level": 37,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Superior_Attuned_Blistering_Cold_E",
+            "Grade": "None",
+            "IoLevel": 49,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        },
+        {
+          "Level": 37,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Crafted_Force_Feedback_F",
+            "Grade": "None",
+            "IoLevel": 49,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        }
+      ]
+    },
+    {
+      "PowerName": "Blaster_Ranged.Archery.Fistful_of_Arrows",
+      "Level": 2,
+      "StatInclude": true,
+      "ProcInclude": false,
+      "VariableValue": 0,
+      "InherentSlotsUsed": 0,
+      "SubPowerEntries": [],
+      "SlotEntries": [
+        {
+          "Level": 2,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Crafted_Positrons_Blast_A",
+            "Grade": "None",
+            "IoLevel": 49,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        },
+        {
+          "Level": 46,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Crafted_Positrons_Blast_B",
+            "Grade": "None",
+            "IoLevel": 49,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        },
+        {
+          "Level": 47,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Crafted_Positrons_Blast_C",
+            "Grade": "None",
+            "IoLevel": 49,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        },
+        {
+          "Level": 47,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Crafted_Positrons_Blast_D",
+            "Grade": "None",
+            "IoLevel": 49,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        },
+        {
+          "Level": 48,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Crafted_Positrons_Blast_E",
+            "Grade": "None",
+            "IoLevel": 49,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        },
+        {
+          "Level": 48,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Crafted_Positrons_Blast_F",
+            "Grade": "None",
+            "IoLevel": 49,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        }
+      ]
+    },
+    {
+      "PowerName": "Blaster_Support.Martial_Manipulation.Reach_for_the_Limit",
+      "Level": 4,
+      "StatInclude": true,
+      "ProcInclude": false,
+      "VariableValue": 0,
+      "InherentSlotsUsed": 0,
+      "SubPowerEntries": [],
+      "SlotEntries": []
+    },
+    {
+      "PowerName": "Blaster_Ranged.Archery.Blazing_Arrow",
+      "Level": 6,
+      "StatInclude": true,
+      "ProcInclude": false,
+      "VariableValue": 0,
+      "InherentSlotsUsed": 0,
+      "SubPowerEntries": [],
+      "SlotEntries": [
+        {
+          "Level": 6,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Superior_Attuned_Superior_Blasters_Wrath_D",
+            "Grade": "None",
+            "IoLevel": 49,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        },
+        {
+          "Level": 7,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Superior_Attuned_Superior_Blasters_Wrath_E",
+            "Grade": "None",
+            "IoLevel": 49,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        },
+        {
+          "Level": 9,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Superior_Attuned_Superior_Blasters_Wrath_F",
+            "Grade": "None",
+            "IoLevel": 49,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        },
+        {
+          "Level": 9,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Crafted_Salvo_A",
+            "Grade": "None",
+            "IoLevel": 24,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        },
+        {
+          "Level": 34,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Crafted_Salvo_B",
+            "Grade": "None",
+            "IoLevel": 24,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        },
+        {
+          "Level": 34,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Crafted_Salvo_C",
+            "Grade": "None",
+            "IoLevel": 24,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        }
+      ]
+    },
+    {
+      "PowerName": "Blaster_Ranged.Archery.Aim",
+      "Level": 8,
+      "StatInclude": true,
+      "ProcInclude": false,
+      "VariableValue": 0,
+      "InherentSlotsUsed": 0,
+      "SubPowerEntries": [],
+      "SlotEntries": [
+        {
+          "Level": 8,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Crafted_Gaussians_Synchronized_FireControl_F",
+            "Grade": "None",
+            "IoLevel": 49,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        }
+      ]
+    },
+    {
+      "PowerName": "Blaster_Support.Martial_Manipulation.Burst_of_Speed",
+      "Level": 10,
+      "StatInclude": true,
+      "ProcInclude": false,
+      "VariableValue": 0,
+      "InherentSlotsUsed": 0,
+      "SubPowerEntries": [],
+      "SlotEntries": [
+        {
+          "Level": 10,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Crafted_Obliteration_A",
+            "Grade": "None",
+            "IoLevel": 49,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        },
+        {
+          "Level": 11,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Crafted_Obliteration_B",
+            "Grade": "None",
+            "IoLevel": 49,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        },
+        {
+          "Level": 11,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Crafted_Obliteration_C",
+            "Grade": "None",
+            "IoLevel": 49,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        },
+        {
+          "Level": 13,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Crafted_Obliteration_E",
+            "Grade": "None",
+            "IoLevel": 49,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        },
+        {
+          "Level": 13,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Crafted_Obliteration_F",
+            "Grade": "None",
+            "IoLevel": 49,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        },
+        {
+          "Level": 15,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Crafted_Obliteration_D",
+            "Grade": "None",
+            "IoLevel": 49,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        }
+      ]
+    },
+    {
+      "PowerName": "Blaster_Ranged.Archery.Explosive_Arrow",
+      "Level": 12,
+      "StatInclude": true,
+      "ProcInclude": false,
+      "VariableValue": 0,
+      "InherentSlotsUsed": 0,
+      "SubPowerEntries": [],
+      "SlotEntries": [
+        {
+          "Level": 12,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Crafted_Bombardment_A",
+            "Grade": "None",
+            "IoLevel": 49,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        },
+        {
+          "Level": 17,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Crafted_Bombardment_D",
+            "Grade": "None",
+            "IoLevel": 49,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        },
+        {
+          "Level": 17,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Crafted_Ragnarok_C",
+            "Grade": "None",
+            "IoLevel": 49,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        },
+        {
+          "Level": 19,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Crafted_Ragnarok_B",
+            "Grade": "None",
+            "IoLevel": 49,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        },
+        {
+          "Level": 19,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Crafted_Force_Feedback_F",
+            "Grade": "None",
+            "IoLevel": 49,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        },
+        {
+          "Level": 21,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Crafted_Sudden_Acceleration_F",
+            "Grade": "None",
+            "IoLevel": 49,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        }
+      ]
+    },
+    {
+      "PowerName": "Pool.Speed.Hasten",
+      "Level": 14,
+      "StatInclude": true,
+      "ProcInclude": false,
+      "VariableValue": 0,
+      "InherentSlotsUsed": 0,
+      "SubPowerEntries": [],
+      "SlotEntries": [
+        {
+          "Level": 14,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Crafted_Recharge",
+            "Grade": "None",
+            "IoLevel": 49,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        },
+        {
+          "Level": 15,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Crafted_Recharge",
+            "Grade": "None",
+            "IoLevel": 49,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        }
+      ]
+    },
+    {
+      "PowerName": "Blaster_Support.Martial_Manipulation.Dragons_Tail",
+      "Level": 16,
+      "StatInclude": true,
+      "ProcInclude": false,
+      "VariableValue": 0,
+      "InherentSlotsUsed": 0,
+      "SubPowerEntries": [],
+      "SlotEntries": [
+        {
+          "Level": 16,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Crafted_Armageddon_A",
+            "Grade": "None",
+            "IoLevel": 49,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        },
+        {
+          "Level": 37,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Crafted_Armageddon_B",
+            "Grade": "None",
+            "IoLevel": 49,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        },
+        {
+          "Level": 40,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Crafted_Armageddon_C",
+            "Grade": "None",
+            "IoLevel": 49,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        },
+        {
+          "Level": 40,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Crafted_Armageddon_D",
+            "Grade": "None",
+            "IoLevel": 49,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        },
+        {
+          "Level": 40,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Crafted_Armageddon_F",
+            "Grade": "None",
+            "IoLevel": 49,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        },
+        {
+          "Level": 42,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Crafted_Force_Feedback_F",
+            "Grade": "None",
+            "IoLevel": 49,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        }
+      ]
+    },
+    {
+      "PowerName": "Blaster_Ranged.Archery.Ranged_Shot",
+      "Level": 18,
+      "StatInclude": true,
+      "ProcInclude": false,
+      "VariableValue": 0,
+      "InherentSlotsUsed": 0,
+      "SubPowerEntries": [],
+      "SlotEntries": [
+        {
+          "Level": 18,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Crafted_Experienced_Marksman_D",
+            "Grade": "None",
+            "IoLevel": 49,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        },
+        {
+          "Level": 21,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Crafted_Experienced_Marksman_E",
+            "Grade": "None",
+            "IoLevel": 49,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        },
+        {
+          "Level": 23,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Crafted_Apocalypse_B",
+            "Grade": "None",
+            "IoLevel": 49,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        },
+        {
+          "Level": 25,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Crafted_Apocalypse_C",
+            "Grade": "None",
+            "IoLevel": 49,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        },
+        {
+          "Level": 25,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Crafted_Apocalypse_F",
+            "Grade": "None",
+            "IoLevel": 49,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        }
+      ]
+    },
+    {
+      "PowerName": "Blaster_Support.Martial_Manipulation.Reaction_Time",
+      "Level": 20,
+      "StatInclude": true,
+      "ProcInclude": false,
+      "VariableValue": 0,
+      "InherentSlotsUsed": 0,
+      "SubPowerEntries": [],
+      "SlotEntries": [
+        {
+          "Level": 20,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Crafted_Numinas_Convalesence_A",
+            "Grade": "None",
+            "IoLevel": 49,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        },
+        {
+          "Level": 36,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Crafted_Numinas_Convalesence_D",
+            "Grade": "None",
+            "IoLevel": 49,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        },
+        {
+          "Level": 43,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Crafted_Numinas_Convalesence_B",
+            "Grade": "None",
+            "IoLevel": 49,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        },
+        {
+          "Level": 43,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Crafted_Numinas_Convalesence_C",
+            "Grade": "None",
+            "IoLevel": 49,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        },
+        {
+          "Level": 43,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Crafted_Performance_Shifter_F",
+            "Grade": "None",
+            "IoLevel": 49,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        }
+      ]
+    },
+    {
+      "PowerName": "Pool.Fighting.Boxing",
+      "Level": 22,
+      "StatInclude": false,
+      "ProcInclude": false,
+      "VariableValue": 0,
+      "InherentSlotsUsed": 0,
+      "SubPowerEntries": [],
+      "SlotEntries": [
+        {
+          "Level": 22,
+          "IsInherent": false,
+          "Enhancement": null,
+          "FlippedEnhancement": null
+        }
+      ]
+    },
+    {
+      "PowerName": "Blaster_Support.Martial_Manipulation.Inner_Will",
+      "Level": 24,
+      "StatInclude": true,
+      "ProcInclude": false,
+      "VariableValue": 0,
+      "InherentSlotsUsed": 0,
+      "SubPowerEntries": [],
+      "SlotEntries": [
+        {
+          "Level": 24,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Crafted_Numinas_Convalesence_A",
+            "Grade": "None",
+            "IoLevel": 49,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        },
+        {
+          "Level": 45,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Crafted_Numinas_Convalesence_B",
+            "Grade": "None",
+            "IoLevel": 49,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        },
+        {
+          "Level": 45,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Crafted_Numinas_Convalesence_C",
+            "Grade": "None",
+            "IoLevel": 49,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        },
+        {
+          "Level": 45,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Crafted_Numinas_Convalesence_D",
+            "Grade": "None",
+            "IoLevel": 49,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        }
+      ]
+    },
+    {
+      "PowerName": "Blaster_Ranged.Archery.Rain_of_Arrows",
+      "Level": 26,
+      "StatInclude": true,
+      "ProcInclude": false,
+      "VariableValue": 0,
+      "InherentSlotsUsed": 0,
+      "SubPowerEntries": [],
+      "SlotEntries": [
+        {
+          "Level": 26,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Crafted_Bombardment_C",
+            "Grade": "None",
+            "IoLevel": 49,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        },
+        {
+          "Level": 27,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Crafted_Bombardment_D",
+            "Grade": "None",
+            "IoLevel": 49,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        },
+        {
+          "Level": 27,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Superior_Attuned_Frozen_Blast_A",
+            "Grade": "None",
+            "IoLevel": 49,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        },
+        {
+          "Level": 29,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Superior_Attuned_Frozen_Blast_B",
+            "Grade": "None",
+            "IoLevel": 49,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        },
+        {
+          "Level": 29,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Superior_Attuned_Frozen_Blast_D",
+            "Grade": "None",
+            "IoLevel": 49,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        },
+        {
+          "Level": 31,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Crafted_Bombardment_F",
+            "Grade": "None",
+            "IoLevel": 49,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        }
+      ]
+    },
+    {
+      "PowerName": "Pool.Invisibility.Invisibility",
+      "Level": 28,
+      "StatInclude": true,
+      "ProcInclude": false,
+      "VariableValue": 0,
+      "InherentSlotsUsed": 0,
+      "SubPowerEntries": [],
+      "SlotEntries": [
+        {
+          "Level": 28,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Crafted_Luck_of_the_Gambler_F",
+            "Grade": "None",
+            "IoLevel": 49,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        },
+        {
+          "Level": 46,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Crafted_Shield_Wall_F",
+            "Grade": "None",
+            "IoLevel": 49,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        }
+      ]
+    },
+    {
+      "PowerName": "Blaster_Support.Martial_Manipulation.Eagles_Claw",
+      "Level": 30,
+      "StatInclude": true,
+      "ProcInclude": false,
+      "VariableValue": 0,
+      "InherentSlotsUsed": 0,
+      "SubPowerEntries": [],
+      "SlotEntries": [
+        {
+          "Level": 30,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Crafted_Kinetic_Combat_A",
+            "Grade": "None",
+            "IoLevel": 34,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        },
+        {
+          "Level": 31,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Crafted_Kinetic_Combat_B",
+            "Grade": "None",
+            "IoLevel": 34,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        },
+        {
+          "Level": 31,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Crafted_Kinetic_Combat_C",
+            "Grade": "None",
+            "IoLevel": 34,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        },
+        {
+          "Level": 33,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Crafted_Kinetic_Combat_D",
+            "Grade": "None",
+            "IoLevel": 34,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        },
+        {
+          "Level": 33,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Crafted_Hecatomb_F",
+            "Grade": "None",
+            "IoLevel": 49,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        },
+        {
+          "Level": 33,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Crafted_Hecatomb_C",
+            "Grade": "None",
+            "IoLevel": 49,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        }
+      ]
+    },
+    {
+      "PowerName": "Pool.Fighting.Tough",
+      "Level": 32,
+      "StatInclude": true,
+      "ProcInclude": false,
+      "VariableValue": 0,
+      "InherentSlotsUsed": 0,
+      "SubPowerEntries": [],
+      "SlotEntries": [
+        {
+          "Level": 32,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Crafted_Steadfast_Protection_C",
+            "Grade": "None",
+            "IoLevel": 29,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        }
+      ]
+    },
+    {
+      "PowerName": "Pool.Fighting.Weave",
+      "Level": 35,
+      "StatInclude": true,
+      "ProcInclude": false,
+      "VariableValue": 0,
+      "InherentSlotsUsed": 0,
+      "SubPowerEntries": [],
+      "SlotEntries": [
+        {
+          "Level": 35,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Crafted_Luck_of_the_Gambler_F",
+            "Grade": "None",
+            "IoLevel": 49,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        },
+        {
+          "Level": 49,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Crafted_Luck_of_the_Gambler_E",
+            "Grade": "None",
+            "IoLevel": 49,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        }
+      ]
+    },
+    {
+      "PowerName": "Pool.Teleportation.Teleport_Foe",
+      "Level": 38,
+      "StatInclude": true,
+      "ProcInclude": false,
+      "VariableValue": 0,
+      "InherentSlotsUsed": 0,
+      "SubPowerEntries": [],
+      "SlotEntries": [
+        {
+          "Level": 38,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Crafted_Warp_A",
+            "Grade": "None",
+            "IoLevel": 49,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        },
+        {
+          "Level": 39,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Crafted_Warp_B",
+            "Grade": "None",
+            "IoLevel": 49,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        },
+        {
+          "Level": 39,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Crafted_Warp_C",
+            "Grade": "None",
+            "IoLevel": 49,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        },
+        {
+          "Level": 39,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Crafted_Warp_D",
+            "Grade": "None",
+            "IoLevel": 49,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        }
+      ]
+    },
+    {
+      "PowerName": "Epic.Munitions_Mastery.Body_Armor",
+      "Level": 41,
+      "StatInclude": true,
+      "ProcInclude": false,
+      "VariableValue": 0,
+      "InherentSlotsUsed": 0,
+      "SubPowerEntries": [],
+      "SlotEntries": [
+        {
+          "Level": 41,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Crafted_Gladiators_Armor_F",
+            "Grade": "None",
+            "IoLevel": 49,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        },
+        {
+          "Level": 42,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Crafted_Steadfast_Protection_B",
+            "Grade": "None",
+            "IoLevel": 29,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        },
+        {
+          "Level": 42,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Crafted_Steadfast_Protection_C",
+            "Grade": "None",
+            "IoLevel": 29,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        }
+      ]
+    },
+    {
+      "PowerName": "Epic.Munitions_Mastery.Surveillance",
+      "Level": 44,
+      "StatInclude": true,
+      "ProcInclude": false,
+      "VariableValue": 0,
+      "InherentSlotsUsed": 0,
+      "SubPowerEntries": [],
+      "SlotEntries": [
+        {
+          "Level": 44,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Crafted_Accuracy",
+            "Grade": "None",
+            "IoLevel": 49,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        }
+      ]
+    },
+    {
+      "PowerName": "Epic.Munitions_Mastery.LRM_Rocket",
+      "Level": 47,
+      "StatInclude": true,
+      "ProcInclude": false,
+      "VariableValue": 0,
+      "InherentSlotsUsed": 0,
+      "SubPowerEntries": [],
+      "SlotEntries": [
+        {
+          "Level": 47,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Crafted_Bombardment_A",
+            "Grade": "None",
+            "IoLevel": 49,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        },
+        {
+          "Level": 48,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Crafted_Bombardment_B",
+            "Grade": "None",
+            "IoLevel": 49,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        }
+      ]
+    },
+    {
+      "PowerName": "Pool.Invisibility.Stealth",
+      "Level": 49,
+      "StatInclude": true,
+      "ProcInclude": false,
+      "VariableValue": 0,
+      "InherentSlotsUsed": 0,
+      "SubPowerEntries": [],
+      "SlotEntries": [
+        {
+          "Level": 49,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Crafted_Luck_of_the_Gambler_F",
+            "Grade": "None",
+            "IoLevel": 49,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        }
+      ]
+    },
+    {
+      "PowerName": "Inherent.Inherent.Defiance",
+      "Level": 1,
+      "StatInclude": true,
+      "ProcInclude": false,
+      "VariableValue": 0,
+      "InherentSlotsUsed": 0,
+      "SubPowerEntries": [],
+      "SlotEntries": []
+    },
+    {
+      "PowerName": "Inherent.Inherent.Brawl",
+      "Level": 1,
+      "StatInclude": false,
+      "ProcInclude": false,
+      "VariableValue": 0,
+      "InherentSlotsUsed": 0,
+      "SubPowerEntries": [],
+      "SlotEntries": [
+        {
+          "Level": 1,
+          "IsInherent": false,
+          "Enhancement": null,
+          "FlippedEnhancement": null
+        }
+      ]
+    },
+    {
+      "PowerName": "Inherent.Inherent.Sprint",
+      "Level": 1,
+      "StatInclude": false,
+      "ProcInclude": false,
+      "VariableValue": 0,
+      "InherentSlotsUsed": 0,
+      "SubPowerEntries": [],
+      "SlotEntries": [
+        {
+          "Level": 1,
+          "IsInherent": false,
+          "Enhancement": null,
+          "FlippedEnhancement": null
+        }
+      ]
+    },
+    {
+      "PowerName": "Inherent.Inherent.Rest",
+      "Level": 2,
+      "StatInclude": false,
+      "ProcInclude": false,
+      "VariableValue": 0,
+      "InherentSlotsUsed": 0,
+      "SubPowerEntries": [],
+      "SlotEntries": [
+        {
+          "Level": 2,
+          "IsInherent": false,
+          "Enhancement": null,
+          "FlippedEnhancement": null
+        }
+      ]
+    },
+    {
+      "PowerName": "Inherent.Fitness.Swift",
+      "Level": 1,
+      "StatInclude": true,
+      "ProcInclude": false,
+      "VariableValue": 0,
+      "InherentSlotsUsed": 0,
+      "SubPowerEntries": [],
+      "SlotEntries": [
+        {
+          "Level": 1,
+          "IsInherent": false,
+          "Enhancement": null,
+          "FlippedEnhancement": null
+        }
+      ]
+    },
+    {
+      "PowerName": "Inherent.Fitness.Hurdle",
+      "Level": 1,
+      "StatInclude": true,
+      "ProcInclude": false,
+      "VariableValue": 0,
+      "InherentSlotsUsed": 0,
+      "SubPowerEntries": [],
+      "SlotEntries": [
+        {
+          "Level": 1,
+          "IsInherent": false,
+          "Enhancement": null,
+          "FlippedEnhancement": null
+        }
+      ]
+    },
+    {
+      "PowerName": "Inherent.Fitness.Health",
+      "Level": 1,
+      "StatInclude": true,
+      "ProcInclude": false,
+      "VariableValue": 0,
+      "InherentSlotsUsed": 0,
+      "SubPowerEntries": [],
+      "SlotEntries": [
+        {
+          "Level": 1,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Crafted_Panacea_F",
+            "Grade": "None",
+            "IoLevel": 49,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        },
+        {
+          "Level": 46,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Crafted_Miracle_F",
+            "Grade": "None",
+            "IoLevel": 39,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        },
+        {
+          "Level": 49,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Crafted_Numinas_Convalesence_F",
+            "Grade": "None",
+            "IoLevel": 49,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        }
+      ]
+    },
+    {
+      "PowerName": "Inherent.Fitness.Stamina",
+      "Level": 1,
+      "StatInclude": true,
+      "ProcInclude": false,
+      "VariableValue": 0,
+      "InherentSlotsUsed": 0,
+      "SubPowerEntries": [],
+      "SlotEntries": [
+        {
+          "Level": 1,
+          "IsInherent": false,
+          "Enhancement": {
+            "Uid": "Crafted_Performance_Shifter_F",
+            "Grade": "None",
+            "IoLevel": 49,
+            "RelativeLevel": "Even",
+            "Obtained": false
+          },
+          "FlippedEnhancement": null
+        }
+      ]
+    },
+    {
+      "PowerName": "Inherent.Inherent.Special_Set_Bonuses",
+      "Level": 1,
+      "StatInclude": true,
+      "ProcInclude": false,
+      "VariableValue": 0,
+      "InherentSlotsUsed": 0,
+      "SubPowerEntries": [],
+      "SlotEntries": []
+    },
+    {
+      "PowerName": "Inherent.Inherent.Fast_Snipe",
+      "Level": 49,
+      "StatInclude": false,
+      "ProcInclude": false,
+      "VariableValue": 0,
+      "InherentSlotsUsed": 0,
+      "SubPowerEntries": [],
+      "SlotEntries": []
+    },
+    {
+      "PowerName": "Incarnate.Destiny.Clarion_Partial_Radial_Invocation",
+      "Level": 50,
+      "StatInclude": false,
+      "ProcInclude": false,
+      "VariableValue": 0,
+      "InherentSlotsUsed": 0,
+      "SubPowerEntries": [],
+      "SlotEntries": []
+    }
+  ]
+}

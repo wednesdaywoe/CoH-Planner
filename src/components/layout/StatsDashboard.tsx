@@ -877,17 +877,18 @@ function StatItem({ label, value, color = 'text-gray-300', tooltip, breakdown, c
           <div>
             <div className="text-[9px] text-slate-400 uppercase mb-0.5">Set Bonuses</div>
             {setBonusSources.map((source, i) => (
-              <div key={i} className="flex justify-between text-[10px]">
-                <span className={`${source.capped ? 'text-red-400' : 'text-slate-300'} truncate max-w-[200px]`}>
+              <div key={i} className={`flex justify-between text-[10px] ${source.capped ? 'opacity-70' : ''}`}>
+                <span className={`${source.capped ? 'text-red-400 line-through' : 'text-slate-300'} truncate max-w-[200px]`}>
                   {source.name}
-                  {source.capped && ' (capped)'}
                 </span>
-                <span className="text-green-400 ml-2">+{source.value.toFixed(1)}%</span>
+                <span className={`ml-2 ${source.capped ? 'text-red-400 line-through' : 'text-green-400'}`}>
+                  +{source.value.toFixed(1)}%
+                </span>
               </div>
             ))}
             {breakdown.cappedSources > 0 && (
               <div className="text-[9px] text-red-400 mt-0.5">
-                Rule of 5: {breakdown.cappedSources} bonus(es) at cap
+                Rule of 5: {breakdown.cappedSources} bonus{breakdown.cappedSources > 1 ? 'es' : ''} not counted
               </div>
             )}
           </div>

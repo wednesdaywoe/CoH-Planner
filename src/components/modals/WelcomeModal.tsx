@@ -3,12 +3,18 @@
  */
 
 import { useState, useEffect } from 'react';
-import { Modal, ModalBody, ModalFooter } from './Modal';
+import { Modal, ModalHeader, ModalBody, ModalFooter } from './Modal';
 import { Button } from '@/components/ui';
 import { useUIStore } from '@/stores';
+import { BUILD_TIME } from '@/buildTime';
+
+const LAST_UPDATED = (() => {
+  const date = new Date(BUILD_TIME);
+  return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+})();
 
 const STORAGE_KEY = 'coh-planner-welcome-dismissed';
-const CURRENT_VERSION = '0.3.1-alpha'; // Increment to show modal again after major updates
+const CURRENT_VERSION = '0.3.2-alpha'; // Increment to show modal again after major updates
 
 interface WelcomeModalProps {
   isOpen: boolean;
@@ -27,7 +33,22 @@ export function WelcomeModal({ isOpen, onClose }: WelcomeModalProps) {
   };
 
   return (
-    <Modal isOpen={isOpen} onClose={handleClose} title="Welcome to CoH Planner" size="lg">
+    <Modal isOpen={isOpen} onClose={handleClose} showCloseButton={false} size="lg">
+      <ModalHeader className="flex items-center justify-between">
+        <h2 className="text-lg font-medium text-gray-100">Welcome to Sidekick</h2>
+        <div className="flex items-center gap-3">
+          <span className="text-xs text-slate-500 whitespace-nowrap">Updated {LAST_UPDATED}</span>
+          <button
+            onClick={handleClose}
+            className="p-1 text-gray-400 hover:text-white transition-colors rounded hover:bg-gray-700"
+            aria-label="Close modal"
+          >
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      </ModalHeader>
       <ModalBody>
         <div className="space-y-5">
           {/* Welcome Message */}

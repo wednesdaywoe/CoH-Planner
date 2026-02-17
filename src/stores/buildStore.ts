@@ -26,13 +26,13 @@ import {
   getPowerPool,
   getEpicPool,
   getTotalSlotsAtLevel,
+  getPowerPicksAtLevel,
   MAX_POWER_POOLS,
   EPIC_POOL_LEVEL,
   getInherentPowers,
   getInherentPowerDef,
   createArchetypeInherentPower,
   POWER_PICK_LEVELS,
-  getPowerPicksAtLevel,
 } from '@/data';
 import type { InherentPowerDef } from '@/data';
 
@@ -118,6 +118,7 @@ interface BuildActions {
   // Import/Export
   exportBuild: () => string;
   importBuild: (json: string) => boolean;
+  importMidsBuild: (build: Build) => void;
   resetBuild: () => void;
   clearPowers: () => void;
 
@@ -166,15 +167,38 @@ function findPower(
 }
 
 /**
- * Count inherent power base slots (1 free slot per slottable inherent).
- * These are auto-granted and not part of the level-based SLOT_GRANTS budget.
+ * Count placed (additional) slots that count against the slot budget.
+ * Excludes the free first slot on each power and all inherent power slots entirely.
  */
-function countInherentBaseSlots(build: Build): number {
-  return build.inherents.filter((p) => p.maxSlots > 0).length;
+function countPlacedSlots(build: Build): number {
+  let total = 0;
+
+  const countExtra = (powers: SelectedPower[]) => {
+    for (const power of powers) {
+      total += Math.max(0, power.slots.length - 1);
+    }
+  };
+
+  countExtra(build.primary.powers);
+  countExtra(build.secondary.powers);
+  for (const pool of build.pools) countExtra(pool.powers);
+  if (build.epicPool) countExtra(build.epicPool.powers);
+  // Inherent powers are entirely excluded from the slot budget
+
+  return total;
 }
 
 /**
- * Count total slots used across all powers
+ * Get the number of placeable slots available at a given level.
+ * This is the total slot grants minus the free slots from power picks.
+ */
+function getPlacedSlotLimit(level: number): number {
+  return getTotalSlotsAtLevel(level) - getPowerPicksAtLevel(level);
+}
+
+/**
+ * Count total slots used across all powers (including free and inherent).
+ * Used for display purposes, not budget checks.
  */
 function countTotalSlots(build: Build): number {
   let total = 0;
@@ -712,11 +736,10 @@ export const useBuildStore = create<BuildStore>()(
         // Check if power can have more slots
         if (power.slots.length >= power.maxSlots) return false;
 
-        // Check total slot limit (level-aware)
-        // Add inherent base slots to the limit since SLOT_GRANTS only covers
-        // progression-based slots, not auto-granted inherent power slots
-        const slotLimit = getTotalSlotsAtLevel(state.build.level) + countInherentBaseSlots(state.build);
-        if (countTotalSlots(state.build) >= slotLimit) return false;
+        // Check total placed slot limit (level-aware)
+        // Only count additional slots beyond each power's free first slot.
+        // Inherent power slots are excluded entirely from the budget.
+        if (countPlacedSlots(state.build) >= getPlacedSlotLimit(state.build.level)) return false;
 
         set((s) => {
           const newBuild = { ...s.build };
@@ -1108,7 +1131,7 @@ export const useBuildStore = create<BuildStore>()(
 
       getSlotsRemaining: () => {
         const build = get().build;
-        return getTotalSlotsAtLevel(build.level) + countInherentBaseSlots(build) - countTotalSlots(build);
+        return getPlacedSlotLimit(build.level) - countPlacedSlots(build);
       },
 
       getActiveSetBonuses: () => {
@@ -1133,7 +1156,7 @@ export const useBuildStore = create<BuildStore>()(
 
         return (
           found.power.slots.length < found.power.maxSlots &&
-          countTotalSlots(state.build) < getTotalSlotsAtLevel(state.build.level) + countInherentBaseSlots(state.build)
+          countPlacedSlots(state.build) < getPlacedSlotLimit(state.build.level)
         );
       },
 
@@ -1196,6 +1219,10 @@ export const useBuildStore = create<BuildStore>()(
           console.error('Failed to import build:', e);
           return false;
         }
+      },
+
+      importMidsBuild: (build) => {
+        set({ build });
       },
 
       resetBuild: () => set({ build: createEmptyBuild() }),
@@ -1288,6 +1315,42 @@ export const useBuildStore = create<BuildStore>()(
           // Migration: Initialize incarnates if missing (for builds created before incarnate system)
           if (!state.build.incarnates) {
             state.build.incarnates = createEmptyIncarnateBuildState();
+          }
+
+          // Migration: Refresh pool power effects from current definitions
+          // Stored powers may have stale/missing effects if pool data was updated
+          if (state.build.pools.length > 0) {
+            state.build.pools = state.build.pools.map((pool) => {
+              const poolDef = getPowerPool(pool.id);
+              if (!poolDef) return pool;
+              return {
+                ...pool,
+                powers: pool.powers.map((power) => {
+                  const currentDef = poolDef.powers.find((p) => p.name === power.name);
+                  if (currentDef?.effects) {
+                    return { ...power, effects: currentDef.effects };
+                  }
+                  return power;
+                }),
+              };
+            });
+          }
+
+          // Migration: Refresh epic pool power effects from current definitions
+          if (state.build.epicPool && state.build.epicPool.powers.length > 0) {
+            const epicDef = getEpicPool(state.build.epicPool.id);
+            if (epicDef) {
+              state.build.epicPool = {
+                ...state.build.epicPool,
+                powers: state.build.epicPool.powers.map((power) => {
+                  const currentDef = epicDef.powers.find((p) => p.name === power.name);
+                  if (currentDef?.effects) {
+                    return { ...power, effects: currentDef.effects };
+                  }
+                  return power;
+                }),
+              };
+            }
           }
 
           state.setHasHydrated(true);

@@ -9,6 +9,7 @@
 import type {
   PowerPool,
   Power,
+  PowerEffects,
   IOSetCategory,
   EnhancementStatType,
   PowerType,
@@ -109,6 +110,9 @@ function transformPoolPower(legacy: LegacyPoolPower): Power {
           }
         : undefined,
       protection: legacy.effects.protection,
+      resistance: legacy.effects.resistance as PowerEffects['resistance'],
+      defense: (legacy.effects as any).defense as PowerEffects['defense'],
+      rechargeBuff: (legacy.effects as any).rechargeBuff as PowerEffects['rechargeBuff'],
       runSpeed: legacy.effects.runSpeed,
       jumpHeight: legacy.effects.jumpHeight,
       jumpSpeed: legacy.effects.jumpSpeed,

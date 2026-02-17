@@ -28,6 +28,7 @@ export interface BonusSource {
 export interface ValueTracking {
   count: number;
   sources: string[];
+  rejectedSources: string[];
   capped: boolean;
   value: number;
 }
@@ -46,6 +47,7 @@ export interface StatBreakdownItem {
   value: number;
   count: number;
   sources: string[];
+  rejectedSources: string[];
   capped: boolean;
   total: number;
 }
@@ -251,6 +253,7 @@ export function trackBonus(
     tracking[stat][valueKey] = {
       count: 0,
       sources: [],
+      rejectedSources: [],
       capped: false,
       value,
     };
@@ -265,6 +268,7 @@ export function trackBonus(
     return true;
   } else {
     valueTracking.capped = true;
+    valueTracking.rejectedSources.push(source);
     return false;
   }
 }
@@ -497,6 +501,7 @@ export function getStatBreakdown(tracking: BonusTracking, stat: string): StatBre
       value: vt.value,
       count: vt.count,
       sources: vt.sources,
+      rejectedSources: vt.rejectedSources,
       capped: vt.capped,
       total: vt.value * vt.count,
     });

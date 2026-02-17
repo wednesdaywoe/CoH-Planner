@@ -8,6 +8,12 @@ import { getPowersetsForArchetype, getPowerset, MAX_LEVEL, ARCHETYPES } from '@/
 import { Button, Select, Slider, Toggle, Tooltip } from '@/components/ui';
 import { calculateVigilanceDamageBonus, calculateAssassinationDamageBonus } from '@/utils/calculations';
 import type { ArchetypeId, ArchetypeBranchId, Powerset } from '@/types';
+import { BUILD_TIME } from '@/buildTime';
+
+const LAST_UPDATED = (() => {
+  const date = new Date(BUILD_TIME);
+  return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+})();
 
 const ARCHETYPE_OPTIONS = [
   { value: '', label: 'Select Archetype...' },
@@ -672,6 +678,11 @@ export function Header() {
         >
           Clear
         </Button>
+
+        {/* Last updated */}
+        <span className="text-xs text-slate-500 ml-auto whitespace-nowrap">
+          Updated {LAST_UPDATED}
+        </span>
       </div>
     </header>
   );

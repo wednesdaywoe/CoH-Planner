@@ -17,6 +17,7 @@ function StatusBadge({ status }: { status: TrackerItem['status'] }) {
     'fixed': { label: 'Fixed', className: 'bg-green-900/50 text-green-300 border-green-700/50' },
     'planned': { label: 'Planned', className: 'bg-blue-900/50 text-blue-300 border-blue-700/50' },
     'in-progress': { label: 'In Progress', className: 'bg-amber-900/50 text-amber-300 border-amber-700/50' },
+    'new': { label: 'New', className: 'bg-purple-900/50 text-purple-300 border-purple-700/50' },
   };
   const { label, className } = config[status];
   return (
@@ -79,7 +80,7 @@ export function KnownIssuesModal({ isOpen, onClose }: KnownIssuesModalProps) {
 
           {/* Recent Fixes */}
           <TrackerSection
-            title="Recent Fixes"
+            title="Recent Changes"
             color="text-green-400"
             items={RECENT_CHANGES}
             icon={

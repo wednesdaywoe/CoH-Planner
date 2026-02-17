@@ -1,18 +1,20 @@
 /**
- * ExportImportModal component - handles build export and import
+ * ExportImportModal component - handles build export, import, and Mids Reborn import
  */
 
 import { useState, useRef } from 'react';
 import { Modal, ModalBody, ModalFooter, ModalHeader } from './Modal';
 import { Button } from '../ui/Button';
 import { useBuildStore } from '@/stores/buildStore';
+import { importMidsBuild } from '@/utils/mids-import';
+import type { MidsImportResult } from '@/utils/mids-import';
 
 interface ExportImportModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
-type TabType = 'export' | 'import';
+type TabType = 'export' | 'import' | 'mids';
 
 export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
   const [activeTab, setActiveTab] = useState<TabType>('export');
@@ -22,7 +24,14 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
   const [importSuccess, setImportSuccess] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  const { exportBuild, importBuild, build } = useBuildStore();
+  // Mids import state
+  const [midsText, setMidsText] = useState('');
+  const [midsResult, setMidsResult] = useState<MidsImportResult | null>(null);
+  const [midsError, setMidsError] = useState<string | null>(null);
+  const [showWarnings, setShowWarnings] = useState(false);
+  const midsFileInputRef = useRef<HTMLInputElement>(null);
+
+  const { exportBuild, importBuild, importMidsBuild: applyMidsBuild, build } = useBuildStore();
 
   const handleExport = () => {
     const exportData = JSON.parse(exportBuild());
@@ -117,12 +126,72 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
     reader.readAsText(file);
   };
 
+  // ============================================
+  // MIDS IMPORT HANDLERS
+  // ============================================
+
+  const parseMidsContent = (content: string) => {
+    setMidsError(null);
+    setMidsResult(null);
+    setShowWarnings(false);
+
+    if (!content.trim()) {
+      setMidsError('No data to import');
+      return;
+    }
+
+    try {
+      const result = importMidsBuild(content);
+      if (result.success) {
+        setMidsResult(result);
+      } else {
+        const msg = result.warnings.length > 0
+          ? result.warnings[0].message
+          : 'Failed to parse .mbd file';
+        setMidsError(msg);
+      }
+    } catch (e) {
+      setMidsError('Failed to parse .mbd file. Make sure it is valid Mids Reborn JSON.');
+    }
+  };
+
+  const handleMidsParseFromText = () => {
+    parseMidsContent(midsText);
+  };
+
+  const handleMidsFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const content = e.target?.result as string;
+      setMidsText(content);
+      parseMidsContent(content);
+    };
+    reader.onerror = () => {
+      setMidsError('Failed to read file');
+    };
+    reader.readAsText(file);
+  };
+
+  const handleMidsApply = () => {
+    if (!midsResult?.build) return;
+    applyMidsBuild(midsResult.build);
+    handleClose();
+  };
+
   const handleClose = () => {
     setBuildAlias('');
     setImportText('');
     setImportError(null);
     setImportSuccess(false);
+    setMidsText('');
+    setMidsResult(null);
+    setMidsError(null);
+    setShowWarnings(false);
     setActiveTab('export');
+    if (midsFileInputRef.current) midsFileInputRef.current.value = '';
     onClose();
   };
 
@@ -138,7 +207,7 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
             }`}
             onClick={() => setActiveTab('export')}
           >
-            Export Build
+            Export
           </button>
           <button
             className={`px-4 py-2 font-semibold transition-colors ${
@@ -148,7 +217,17 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
             }`}
             onClick={() => setActiveTab('import')}
           >
-            Import Build
+            Import
+          </button>
+          <button
+            className={`px-4 py-2 font-semibold transition-colors ${
+              activeTab === 'mids'
+                ? 'text-amber-400 border-b-2 border-amber-400'
+                : 'text-gray-400 hover:text-gray-300'
+            }`}
+            onClick={() => setActiveTab('mids')}
+          >
+            Mids Import
           </button>
         </div>
       </ModalHeader>
@@ -193,7 +272,7 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
               <p>Your build will be saved as a JSON file that you can share or backup.</p>
             </div>
           </div>
-        ) : (
+        ) : activeTab === 'import' ? (
           <div className="space-y-4">
             <div>
               <label className="block text-sm font-medium text-gray-300 mb-2">
@@ -252,6 +331,144 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
               <p>Importing will replace your current build. Make sure to export your current build first if you want to keep it.</p>
             </div>
           </div>
+        ) : (
+          /* Mids Import Tab */
+          <div className="space-y-4">
+            <div className="bg-amber-900/20 border border-amber-700/50 rounded p-3 text-sm text-amber-300">
+              <p>Import a build from <span className="font-semibold">Mids Reborn</span> (.mbd file). Upload the file or paste its contents below.</p>
+            </div>
+
+            {/* File upload */}
+            <div>
+              <label className="block text-sm font-medium text-gray-300 mb-2">
+                Upload .mbd File
+              </label>
+              <input
+                ref={midsFileInputRef}
+                type="file"
+                accept=".mbd,.json"
+                onChange={handleMidsFileUpload}
+                className="w-full text-sm text-gray-400
+                  file:mr-4 file:py-2 file:px-4
+                  file:rounded file:border-0
+                  file:text-sm file:font-semibold
+                  file:bg-amber-600 file:text-white
+                  hover:file:bg-amber-700
+                  file:cursor-pointer cursor-pointer"
+              />
+            </div>
+
+            {/* OR divider */}
+            <div className="relative">
+              <div className="absolute inset-0 flex items-center">
+                <div className="w-full border-t border-gray-600"></div>
+              </div>
+              <div className="relative flex justify-center text-sm">
+                <span className="px-2 bg-gray-900 text-gray-500">OR</span>
+              </div>
+            </div>
+
+            {/* Paste area */}
+            <div>
+              <label className="block text-sm font-medium text-gray-300 mb-2">
+                Paste .mbd Contents
+              </label>
+              <textarea
+                value={midsText}
+                onChange={(e) => { setMidsText(e.target.value); setMidsResult(null); setMidsError(null); }}
+                placeholder="Paste .mbd JSON here..."
+                className="w-full h-32 bg-gray-800 border border-gray-600 rounded px-3 py-2 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-amber-500 font-mono text-sm"
+              />
+            </div>
+
+            {/* Error */}
+            {midsError && (
+              <div className="bg-red-900/20 border border-red-700/50 rounded p-3 text-sm text-red-300">
+                {midsError}
+              </div>
+            )}
+
+            {/* Results */}
+            {midsResult && midsResult.success && (
+              <div className="space-y-3">
+                {/* Summary */}
+                <div className="bg-green-900/20 border border-green-700/50 rounded p-3 text-sm text-green-300">
+                  <p className="font-semibold mb-2">Parse Successful</p>
+                  <div className="grid grid-cols-2 gap-x-4 gap-y-1 text-xs">
+                    <span>Archetype:</span>
+                    <span className="text-white">{midsResult.build?.archetype.name}</span>
+                    <span>Primary:</span>
+                    <span className="text-white">{midsResult.build?.primary.name || 'None'}</span>
+                    <span>Secondary:</span>
+                    <span className="text-white">{midsResult.build?.secondary.name || 'None'}</span>
+                    <span>Level:</span>
+                    <span className="text-white">{midsResult.build?.level}</span>
+                    <span>Powers:</span>
+                    <span className="text-white">
+                      {midsResult.summary.powersImported} imported
+                      {midsResult.summary.powersFailed > 0 && (
+                        <span className="text-red-400"> / {midsResult.summary.powersFailed} failed</span>
+                      )}
+                    </span>
+                    <span>Enhancements:</span>
+                    <span className="text-white">
+                      {midsResult.summary.enhancementsImported} imported
+                      {midsResult.summary.enhancementsFailed > 0 && (
+                        <span className="text-red-400"> / {midsResult.summary.enhancementsFailed} failed</span>
+                      )}
+                    </span>
+                    <span>Pools:</span>
+                    <span className="text-white">
+                      {midsResult.build?.pools.map((p) => p.name).join(', ') || 'None'}
+                    </span>
+                    {midsResult.build?.epicPool && (
+                      <>
+                        <span>Epic/Patron:</span>
+                        <span className="text-white">{midsResult.build.epicPool.name}</span>
+                      </>
+                    )}
+                  </div>
+                </div>
+
+                {/* Warnings */}
+                {midsResult.warnings.length > 0 && (
+                  <div className="bg-yellow-900/20 border border-yellow-700/50 rounded p-3 text-sm">
+                    <button
+                      type="button"
+                      onClick={() => setShowWarnings(!showWarnings)}
+                      className="flex items-center gap-1 text-yellow-300 hover:text-yellow-200 font-medium text-sm w-full"
+                    >
+                      <svg
+                        className={`w-4 h-4 transition-transform ${showWarnings ? 'rotate-90' : ''}`}
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                      {midsResult.warnings.length} warning{midsResult.warnings.length !== 1 ? 's' : ''}
+                    </button>
+                    {showWarnings && (
+                      <ul className="mt-2 space-y-1 text-xs text-yellow-200 max-h-40 overflow-y-auto">
+                        {midsResult.warnings.map((w, i) => (
+                          <li key={i} className="flex gap-2">
+                            <span className="text-yellow-500 shrink-0">[{w.type}]</span>
+                            <span>{w.message}{w.midsName ? `: ${w.midsName}` : ''}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                )}
+
+                {/* Warning about replacing build */}
+                <div className="bg-yellow-900/20 border border-yellow-700/50 rounded p-3 text-sm text-yellow-300">
+                  <p className="font-semibold mb-1">Warning:</p>
+                  <p>Applying this import will replace your current build.</p>
+                </div>
+              </div>
+            )}
+          </div>
         )}
       </ModalBody>
 
@@ -264,7 +481,7 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
             <Button variant="primary" onClick={handleExport}>
               Download Build
             </Button>
-          ) : (
+          ) : activeTab === 'import' ? (
             <Button
               variant="primary"
               onClick={handleImportFromText}
@@ -272,6 +489,21 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
             >
               Import from Text
             </Button>
+          ) : (
+            /* Mids tab buttons */
+            midsResult?.success ? (
+              <Button variant="primary" onClick={handleMidsApply}>
+                Apply Build
+              </Button>
+            ) : (
+              <Button
+                variant="primary"
+                onClick={handleMidsParseFromText}
+                disabled={!midsText.trim()}
+              >
+                Parse .mbd
+              </Button>
+            )
           )}
         </div>
       </ModalFooter>
