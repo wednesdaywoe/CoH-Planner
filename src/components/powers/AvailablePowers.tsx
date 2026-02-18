@@ -107,7 +107,7 @@ interface AvailablePowersProps {
   onSelectPower: (power: Power) => void;
 }
 
-interface PowerItemProps {
+export interface PowerItemProps {
   power: Power;
   powersetId: string;
   powersetName: string;
@@ -122,7 +122,7 @@ interface PowerItemProps {
   onShowInfo: (e?: React.MouseEvent) => void;
 }
 
-function PowerItem({
+export function PowerItem({
   power,
   powersetId: _powersetId,
   powersetName,

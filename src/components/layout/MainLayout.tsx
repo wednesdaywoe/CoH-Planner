@@ -56,6 +56,26 @@ export function MainLayout({ children }: MainLayoutProps) {
           </svg>
           Feedback/Bugs
         </button>
+        <button
+          onClick={() => {
+            // Trigger the hidden BMC widget button to open its donation modal
+            const bmcBtn = document.getElementById('bmc-wbtn');
+            if (bmcBtn) {
+              bmcBtn.style.display = 'block';
+              bmcBtn.click();
+              bmcBtn.style.display = 'none';
+            } else {
+              window.open('https://buymeacoffee.com/Wednesdaywoe', '_blank');
+            }
+          }}
+          className="flex items-center gap-1.5 px-3 py-2 bg-slate-700 hover:bg-slate-600 text-slate-300 hover:text-white rounded-full shadow-lg transition-colors text-sm border border-purple-500"
+          title="Buy me a coffee!"
+        >
+          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 18h10a2 2 0 002-2V8H5v8a2 2 0 002 2zM17 8h2a2 2 0 010 4h-2M8 2v3M12 2v3" />
+          </svg>
+          Buy me a coffee
+        </button>
       </div>
     </div>
   );

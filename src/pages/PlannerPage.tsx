@@ -2,21 +2,22 @@
  * PlannerPage - Main build planner interface
  *
  * Two view modes:
- * 1. Category View (default) - Layout matches the legacy app:
- *    Column 1: Available Powers (Primary + Secondary stacked)
- *    Column 2: Pool Powers
- *    Column 3: Selected Primary Powers
- *    Column 4: Selected Secondary Powers
+ * 1. Category View (default):
+ *    Column 1: Available Powers (Primary + Secondary + Pool/Epic selection)
+ *    Column 2: Selected Primary Powers
+ *    Column 3: Selected Secondary Powers
+ *    Column 4: Pool/Epic/Inherent Powers (selected, with slots)
  *    Column 5: Info Panel
  *
  * 2. Chronological View (Mids-style) - Powers displayed by level taken:
- *    Column 1: Available Powers
+ *    Column 1: Available Powers (Primary + Secondary + Pool/Epic selection)
  *    Columns 2-4: Chronological Power Grid (3 columns x 8+ rows)
  *    Column 5: Info Panel
  */
 
 import { useBuildStore, useUIStore, usePowerViewMode } from '@/stores';
 import { AvailablePowers } from '@/components/powers/AvailablePowers';
+import { AvailablePoolPowers } from '@/components/powers/AvailablePoolPowers';
 import { SelectedPowers } from '@/components/powers/SelectedPowers';
 import { PoolPowers } from '@/components/powers/PoolPowers';
 import { ChronologicalPowerView } from '@/components/powers/ChronologicalPowerView';
@@ -67,7 +68,7 @@ export function PlannerPage() {
           lg:grid-cols-[0.8fr_2fr_1fr]
         "
       >
-        {/* Column 1: Available Powers (Primary + Secondary stacked) */}
+        {/* Column 1: Available Powers (Primary + Secondary + Pool/Epic) */}
         <div className="bg-slate-900 flex flex-col overflow-hidden min-h-[300px] lg:min-h-0">
           <div className="bg-slate-800 border-b border-slate-700 px-3 py-2 flex items-center justify-between">
             <h2 className="text-xs font-semibold uppercase tracking-wide text-slate-400">
@@ -76,7 +77,6 @@ export function PlannerPage() {
             <ViewModeToggle />
           </div>
           <div className="flex-1 overflow-y-auto p-2 space-y-3">
-            {/* Primary Available Powers */}
             <AvailablePowers
               category="primary"
               powersetId={primaryPowersetId}
@@ -84,13 +84,14 @@ export function PlannerPage() {
               onSelectPower={handleSelectPrimaryPower}
             />
 
-            {/* Secondary Available Powers */}
             <AvailablePowers
               category="secondary"
               powersetId={secondaryPowersetId}
               selectedPowerNames={secondarySelectedNames}
               onSelectPower={handleSelectSecondaryPower}
             />
+
+            <AvailablePoolPowers />
           </div>
         </div>
 
@@ -137,7 +138,7 @@ export function PlannerPage() {
         lg:grid-cols-[0.8fr_1fr_1fr_1fr_1fr]
       "
     >
-      {/* Column 1: Available Powers (Primary + Secondary stacked) */}
+      {/* Column 1: Available Powers (Primary + Secondary + Pool/Epic selection) */}
       <div className="bg-slate-900 flex flex-col overflow-hidden min-h-[300px] lg:min-h-0">
         <div className="bg-slate-800 border-b border-slate-700 px-3 py-2 flex items-center justify-between">
           <h2 className="text-xs font-semibold uppercase tracking-wide text-slate-400">
@@ -146,7 +147,6 @@ export function PlannerPage() {
           <ViewModeToggle />
         </div>
         <div className="flex-1 overflow-y-auto p-2 space-y-3">
-          {/* Primary Available Powers */}
           <AvailablePowers
             category="primary"
             powersetId={primaryPowersetId}
@@ -154,29 +154,18 @@ export function PlannerPage() {
             onSelectPower={handleSelectPrimaryPower}
           />
 
-          {/* Secondary Available Powers */}
           <AvailablePowers
             category="secondary"
             powersetId={secondaryPowersetId}
             selectedPowerNames={secondarySelectedNames}
             onSelectPower={handleSelectSecondaryPower}
           />
+
+          <AvailablePoolPowers />
         </div>
       </div>
 
-      {/* Column 2: Pool Powers */}
-      <div className="bg-slate-900 flex flex-col overflow-hidden min-h-[300px] lg:min-h-0">
-        <div className="bg-slate-800 border-b border-slate-700 px-3 py-2">
-          <h2 className="text-xs font-semibold uppercase tracking-wide text-slate-400">
-            Pool Powers
-          </h2>
-        </div>
-        <div className="flex-1 overflow-y-auto p-2">
-          <PoolPowers />
-        </div>
-      </div>
-
-      {/* Column 3: Selected Primary Powers */}
+      {/* Column 2: Selected Primary Powers */}
       <div className="bg-slate-900 flex flex-col overflow-hidden min-h-[300px] lg:min-h-0">
         <div className="bg-slate-800 border-b border-slate-700 px-3 py-2">
           <h2 className="text-xs font-semibold uppercase tracking-wide text-slate-400">
@@ -188,7 +177,7 @@ export function PlannerPage() {
         </div>
       </div>
 
-      {/* Column 4: Selected Secondary Powers */}
+      {/* Column 3: Selected Secondary Powers */}
       <div className="bg-slate-900 flex flex-col overflow-hidden min-h-[300px] lg:min-h-0">
         <div className="bg-slate-800 border-b border-slate-700 px-3 py-2">
           <h2 className="text-xs font-semibold uppercase tracking-wide text-slate-400">
@@ -197,6 +186,18 @@ export function PlannerPage() {
         </div>
         <div className="flex-1 overflow-y-auto p-2">
           <SelectedPowers category="secondary" />
+        </div>
+      </div>
+
+      {/* Column 4: Pool/Epic/Inherent Powers (selected, with slots) */}
+      <div className="bg-slate-900 flex flex-col overflow-hidden min-h-[300px] lg:min-h-0">
+        <div className="bg-slate-800 border-b border-slate-700 px-3 py-2">
+          <h2 className="text-xs font-semibold uppercase tracking-wide text-slate-400">
+            Pool Powers
+          </h2>
+        </div>
+        <div className="flex-1 overflow-y-auto p-2">
+          <PoolPowers />
         </div>
       </div>
 
