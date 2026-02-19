@@ -123,6 +123,16 @@ export type {
   IncarnateBuildState,
   IncarnateActiveState,
   ToggleableIncarnateSlot,
+  // Crafting types
+  SalvageId,
+  SalvageRarity,
+  SalvageRequirement,
+  CraftingVariantKey,
+  CraftingVariant,
+  TierRecipe,
+  CraftingConversions,
+  CraftingChecklistKey,
+  CraftingChecklistState,
 } from './incarnate';
 export {
   INCARNATE_SLOT_ORDER,
@@ -132,4 +142,7 @@ export {
   createDefaultIncarnateActiveState,
   inferTierFromPowerName,
   inferBranchFromPowerName,
+  // Crafting utilities
+  createEmptyCraftingChecklistState,
+  craftingKey,
 } from './incarnate';

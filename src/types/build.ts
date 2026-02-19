@@ -5,8 +5,8 @@
 import type { Origin, ProgressionMode } from './common';
 import type { Archetype, ArchetypeId } from './archetype';
 import type { SelectedPower } from './power';
-import type { IncarnateBuildState } from './incarnate';
-import { createEmptyIncarnateBuildState } from './incarnate';
+import type { IncarnateBuildState, CraftingChecklistState } from './incarnate';
+import { createEmptyIncarnateBuildState, createEmptyCraftingChecklistState } from './incarnate';
 
 // ============================================
 // POWERSET SELECTION
@@ -139,6 +139,9 @@ export interface Build {
 
   /** Incarnate powers (level 50+) */
   incarnates: IncarnateBuildState;
+
+  /** Incarnate crafting checklist progress */
+  craftingChecklist: CraftingChecklistState;
 }
 
 // ============================================
@@ -177,6 +180,7 @@ export function createEmptyBuild(): Build {
     },
     sets: {},
     incarnates: createEmptyIncarnateBuildState(),
+    craftingChecklist: createEmptyCraftingChecklistState(),
   };
 }
 

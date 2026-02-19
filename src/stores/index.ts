@@ -15,6 +15,7 @@ export {
   usePools,
   useEpicPool,
   useBuildSettings,
+  useCraftingChecklist,
 } from './buildStore';
 export type { PowerCategory } from './buildStore';
 

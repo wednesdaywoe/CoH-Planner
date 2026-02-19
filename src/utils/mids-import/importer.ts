@@ -306,6 +306,7 @@ export function importMidsBuild(jsonString: string): MidsImportResult {
     },
     sets: {},
     incarnates: createEmptyIncarnateBuildState(),
+    craftingChecklist: {},
   };
 
   // 13. Recompute set tracking

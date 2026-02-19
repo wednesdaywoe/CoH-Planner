@@ -118,6 +118,106 @@ export interface IncarnateActiveState {
 export type ToggleableIncarnateSlot = 'alpha' | 'destiny' | 'hybrid' | 'interface';
 
 // ============================================
+// CRAFTING TYPES
+// ============================================
+
+/**
+ * Salvage item IDs (PascalCase identifiers matching game data)
+ */
+export type SalvageId =
+  // Common (20 threads each)
+  | 'ArcaneCantrip' | 'BiomorphicGoo' | 'DetailedReports' | 'EnchantedSand'
+  | 'GenomicAnalysis' | 'MeditationTechniques' | 'NanotechGrowthMedium' | 'SuperchargedCapacitor'
+  // Uncommon (60 threads each)
+  | 'CytoliticInfusion' | 'DimensionalPocket' | 'GluonCompound' | 'WornSpellbook'
+  // Rare (8 empyrean each)
+  | 'AncientTexts' | 'ExoticIsotope' | 'SemiConsciousEnergy' | 'SuperconductiveMembrane'
+  // Very Rare (30 empyrean each)
+  | 'FavoroftheWell' | 'ForbiddenTechnique' | 'InfiniteTessellation'
+  | 'LivingRelic' | 'SelfEvolvingAlloy' | 'ThaumicResonator';
+
+/**
+ * Rarity for incarnate salvage components
+ */
+export type SalvageRarity = 'common' | 'uncommon' | 'rare' | 'very-rare';
+
+/**
+ * A single salvage requirement (quantity + item)
+ */
+export interface SalvageRequirement {
+  salvageId: SalvageId;
+  quantity: number;
+}
+
+/**
+ * Crafting variant key within a tier
+ * T1: core only. T2: core/radial. T3: core/core_2/radial/radial_2. T4: core/radial.
+ */
+export type CraftingVariantKey = 'core' | 'radial' | 'core_2' | 'radial_2';
+
+/**
+ * Component requirements for one variant of one tier
+ */
+export interface CraftingVariant {
+  name: string;
+  salvage: SalvageRequirement[];
+  prerequisites: string[];
+}
+
+/**
+ * Recipe costs for one tier (currencies + incarnate components)
+ */
+export interface TierRecipe {
+  threads: number;
+  empyrean: number;
+  /** Alpha-only: Incarnate Shard cost */
+  shards: number;
+  /** Alpha-only T3: Notice of the Well count */
+  noticeOfWell: number;
+  /** Incarnate Component descriptions (e.g., "3x Common Alpha Component") */
+  incarnateComponents: string[];
+  /** Prerequisite tier keys (e.g., ["t1"], ["t2"], ["t3_core","t3_radial"]) */
+  requires: string[];
+}
+
+/**
+ * Currency conversion rates
+ */
+export interface CraftingConversions {
+  empyreanToThreads: number;
+  shardsToThreads: number;
+  noticeOfWellToEmpyrean: number;
+  favorOfWellToEmpyrean: number;
+}
+
+/**
+ * Composite key for a checklist item.
+ * Format: "{slotId}:{treeId}:{tier}:{variant}:{item}"
+ */
+export type CraftingChecklistKey = string;
+
+/**
+ * Crafting checklist state: maps composite keys to checked status
+ */
+export type CraftingChecklistState = Record<CraftingChecklistKey, boolean>;
+
+/**
+ * Create empty crafting checklist state
+ */
+export function createEmptyCraftingChecklistState(): CraftingChecklistState {
+  return {};
+}
+
+/**
+ * Build a consistent checklist key
+ */
+export function craftingKey(
+  slotId: string, treeId: string, tier: number, variant: string, item: string
+): CraftingChecklistKey {
+  return `${slotId}:${treeId}:${tier}:${variant}:${item}`;
+}
+
+// ============================================
 // CONSTANTS
 // ============================================
 

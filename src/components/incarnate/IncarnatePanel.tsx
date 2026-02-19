@@ -10,6 +10,7 @@ import { INCARNATE_SLOT_ORDER, INCARNATE_REQUIRED_LEVEL, createEmptyIncarnateBui
 import type { ToggleableIncarnateSlot, IncarnateSlotId } from '@/types';
 import { IncarnateSlotButton } from './IncarnateSlotButton';
 import { IncarnateModal } from './IncarnateModal';
+import { IncarnateCraftingModal } from './IncarnateCraftingModal';
 
 export function IncarnatePanel() {
   const build = useBuildStore((s) => s.build);
@@ -20,6 +21,9 @@ export function IncarnatePanel() {
   const incarnateActive = useUIStore((s) => s.incarnateActive);
   const toggleIncarnateActive = useUIStore((s) => s.toggleIncarnateActive);
   const setInfoPanelContent = useUIStore((s) => s.setInfoPanelContent);
+  const incarnateCraftingModalOpen = useUIStore((s) => s.incarnateCraftingModalOpen);
+  const openIncarnateCraftingModal = useUIStore((s) => s.openIncarnateCraftingModal);
+  const closeIncarnateCraftingModal = useUIStore((s) => s.closeIncarnateCraftingModal);
 
   // Handle migration case where incarnates might be undefined for old builds
   const incarnates = incarnatesRaw || createEmptyIncarnateBuildState();
@@ -79,24 +83,36 @@ export function IncarnatePanel() {
             })}
           </div>
 
-          {/* Clear all button */}
-          {isLevel50 && filledSlotCount > 0 && (
-            <button
-              onClick={() => {
-                const store = useBuildStore.getState();
-                store.clearAllIncarnates();
-              }}
-              className="text-xs text-gray-500 hover:text-red-400 transition-colors px-2 py-1"
-              title="Clear all incarnate powers"
-            >
-              Clear All
-            </button>
+          {/* Action buttons */}
+          {isLevel50 && (
+            <div className="flex items-center gap-1">
+              <button
+                onClick={openIncarnateCraftingModal}
+                className="text-xs text-gray-500 hover:text-blue-400 transition-colors px-2 py-1"
+                title="Incarnate Crafting Checklist"
+              >
+                Crafting
+              </button>
+              {filledSlotCount > 0 && (
+                <button
+                  onClick={() => {
+                    const store = useBuildStore.getState();
+                    store.clearAllIncarnates();
+                  }}
+                  className="text-xs text-gray-500 hover:text-red-400 transition-colors px-2 py-1"
+                  title="Clear all incarnate powers"
+                >
+                  Clear All
+                </button>
+              )}
+            </div>
           )}
         </div>
       </div>
 
-      {/* Modal */}
+      {/* Modals */}
       <IncarnateModal isOpen={incarnateModalOpen} onClose={closeIncarnateModal} />
+      <IncarnateCraftingModal isOpen={incarnateCraftingModalOpen} onClose={closeIncarnateCraftingModal} />
     </>
   );
 }

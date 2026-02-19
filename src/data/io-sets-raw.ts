@@ -13087,7 +13087,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Defense"
         ],
         "proc": true,
-        "unique": true
+        "unique": false
       }
     ],
     "icon": "sLuckofthegambler.png"

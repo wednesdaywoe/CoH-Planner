@@ -20,7 +20,9 @@ import { getEpicPool } from '@/data/epic-pools';
 import {
   calculateSetBonuses,
   getStatBreakdown,
+  trackBonus,
   type AggregatedBonuses,
+  type BonusTracking,
   type StatBreakdownItem,
   type BuildPowers,
 } from './set-bonuses';
@@ -873,12 +875,26 @@ function applySingleProcEffect(
 }
 
 /**
- * Apply bonuses from always-on procs (Global and Proc120s in Auto/Toggle powers)
+ * Maps proc effect categories to the stat key used in Rule of 5 tracking.
+ * Null means the category does not contribute a trackable stat bonus.
+ */
+const PROC_CATEGORY_TO_STAT: Record<string, string | null> = {
+  Recovery:          'recovery',
+  Regeneration:      'regeneration',
+  Endurance:         'recovery',   // Treated as recovery in calculations
+  Recharge:          'recharge',
+  RunSpeed:          'runspeed',
+};
+
+/**
+ * Apply bonuses from always-on procs (Global and Proc120s in Auto/Toggle powers).
+ * Rule of 5 is enforced by sharing the same BonusTracking as set bonuses.
  */
 function applyProcBonuses(
   build: Build,
   global: GlobalBonuses,
-  breakdown: Map<string, DashboardStatBreakdown>
+  breakdown: Map<string, DashboardStatBreakdown>,
+  tracking: BonusTracking
 ): void {
   const procs = collectAlwaysOnProcs(build);
 
@@ -889,26 +905,46 @@ function applyProcBonuses(
     const effect = parseProcEffect(procData.mechanics);
     const sourceName = `${proc.setName}: ${proc.procName}`;
 
-    // Apply primary effect
-    applySingleProcEffect(
-      effect.category,
-      effect.value,
-      effect.effectType,
-      sourceName,
-      global,
-      breakdown
-    );
+    // Apply primary effect — check Rule of 5 first
+    if (effect.value !== undefined) {
+      const stat = effect.category ? PROC_CATEGORY_TO_STAT[effect.category] : undefined;
+      const allowed = stat === undefined
+        ? true  // No stat mapping: not subject to Rule of 5 (e.g., KB protection)
+        : stat === null
+          ? false // Explicitly excluded
+          : trackBonus(tracking, stat, effect.value, sourceName);
 
-    // Apply secondary effect if present (e.g., Numina's Recovery+Regen, Panacea HP+End)
+      if (allowed) {
+        applySingleProcEffect(
+          effect.category,
+          effect.value,
+          effect.effectType,
+          sourceName,
+          global,
+          breakdown
+        );
+      }
+    }
+
+    // Apply secondary effect if present — check Rule of 5 independently
     if (effect.secondaryCategory && effect.secondaryValue !== undefined) {
-      applySingleProcEffect(
-        effect.secondaryCategory,
-        effect.secondaryValue,
-        effect.secondaryEffectType,
-        sourceName,
-        global,
-        breakdown
-      );
+      const stat = PROC_CATEGORY_TO_STAT[effect.secondaryCategory];
+      const allowed = stat === undefined
+        ? true
+        : stat === null
+          ? false
+          : trackBonus(tracking, stat, effect.secondaryValue, sourceName);
+
+      if (allowed) {
+        applySingleProcEffect(
+          effect.secondaryCategory,
+          effect.secondaryValue,
+          effect.secondaryEffectType,
+          sourceName,
+          global,
+          breakdown
+        );
+      }
     }
   }
 
@@ -1514,7 +1550,8 @@ export function calculateCharacterTotals(
   applyActivePowerBonuses(allPowers, globalBonuses, breakdown, effectiveLevel, build.archetype.id || '', alphaBonuses);
 
   // Step 7.5: Apply always-on proc bonuses (Global and Proc120s in Auto/Toggle powers)
-  applyProcBonuses(build, globalBonuses, breakdown);
+  // Pass the same tracking object so proc bonuses share the Rule of 5 budget with set bonuses
+  applyProcBonuses(build, globalBonuses, breakdown, tracking);
 
   // Step 8: Apply accolade bonuses
   if (build.accolades && build.accolades.length > 0) {

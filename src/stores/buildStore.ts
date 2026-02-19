@@ -18,8 +18,9 @@ import type {
   Enhancement,
   SelectedIncarnatePower,
   IncarnateSlotId,
+  CraftingChecklistKey,
 } from '@/types';
-import { createEmptyBuild, createEmptyIncarnateBuildState } from '@/types';
+import { createEmptyBuild, createEmptyIncarnateBuildState, createEmptyCraftingChecklistState } from '@/types';
 import {
   getArchetype,
   getPowerset,
@@ -100,6 +101,12 @@ interface BuildActions {
   setIncarnatePower: (slotId: IncarnateSlotId, power: SelectedIncarnatePower) => void;
   clearIncarnatePower: (slotId: IncarnateSlotId) => void;
   clearAllIncarnates: () => void;
+
+  // Incarnate Crafting Checklist
+  toggleCraftingCheckItem: (key: CraftingChecklistKey) => void;
+  setCraftingCheckItem: (key: CraftingChecklistKey, checked: boolean) => void;
+  clearCraftingChecklist: () => void;
+  clearCraftingChecklistForSlot: (slotId: IncarnateSlotId) => void;
 
   // Power toggle (for stat calculations)
   togglePowerActive: (powerName: string) => void;
@@ -1058,6 +1065,47 @@ export const useBuildStore = create<BuildStore>()(
           },
         })),
 
+      // Incarnate Crafting Checklist
+      toggleCraftingCheckItem: (key) =>
+        set((state) => ({
+          build: {
+            ...state.build,
+            craftingChecklist: {
+              ...state.build.craftingChecklist,
+              [key]: !state.build.craftingChecklist[key],
+            },
+          },
+        })),
+
+      setCraftingCheckItem: (key, checked) =>
+        set((state) => ({
+          build: {
+            ...state.build,
+            craftingChecklist: {
+              ...state.build.craftingChecklist,
+              [key]: checked,
+            },
+          },
+        })),
+
+      clearCraftingChecklist: () =>
+        set((state) => ({
+          build: {
+            ...state.build,
+            craftingChecklist: createEmptyCraftingChecklistState(),
+          },
+        })),
+
+      clearCraftingChecklistForSlot: (slotId) =>
+        set((state) => {
+          const filtered = Object.fromEntries(
+            Object.entries(state.build.craftingChecklist).filter(
+              ([key]) => !key.startsWith(`${slotId}:`)
+            )
+          );
+          return { build: { ...state.build, craftingChecklist: filtered } };
+        }),
+
       // Power toggle (for stat calculations)
       togglePowerActive: (powerName) =>
         set((state) => {
@@ -1245,6 +1293,7 @@ export const useBuildStore = create<BuildStore>()(
             epicPool: null,
             accolades: [],
             incarnates: createEmptyIncarnateBuildState(),
+            craftingChecklist: createEmptyCraftingChecklistState(),
             sets: {},
             // Keep inherents (they're based on archetype, not user-selected powers)
           },
@@ -1317,6 +1366,11 @@ export const useBuildStore = create<BuildStore>()(
             state.build.incarnates = createEmptyIncarnateBuildState();
           }
 
+          // Migration: Initialize crafting checklist if missing
+          if (!state.build.craftingChecklist) {
+            state.build.craftingChecklist = createEmptyCraftingChecklistState();
+          }
+
           // Migration: Refresh pool power effects from current definitions
           // Stored powers may have stale/missing effects if pool data was updated
           if (state.build.pools.length > 0) {
@@ -1387,3 +1441,6 @@ export const useBuildSettings = () => useBuildStore((state) => state.build.setti
 
 /** Select incarnate powers */
 export const useIncarnates = () => useBuildStore((state) => state.build.incarnates);
+
+/** Select crafting checklist state */
+export const useCraftingChecklist = () => useBuildStore((state) => state.build.craftingChecklist);

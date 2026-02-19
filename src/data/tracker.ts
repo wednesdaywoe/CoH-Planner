@@ -25,11 +25,11 @@ export const KNOWN_BUGS: TrackerItem[] = [
 // ============================================
 
 export const RECENT_CHANGES: TrackerItem[] = [
-  { text: 'New: First pass at importing builds from Mids Reborn! (.mbd files) Use the Export/Import modal, expect bugs :3', status: 'new' },
+  { text: 'Update to fix Luck of the Gambler proc uniqueness, and apply Rule of 5 correctly', status: 'fixed' },
   { text: 'Update to incorporate power updates in Issue 28, Page 3, Panel 2', status: 'fixed' },
-  { text: 'Fix: Toggle/Auto powers with recharge buffs (Chronoshift, etc.) now properly apply to global recharge stats', status: 'fixed' },
-  { text: 'Fix: Luck of the Gambler and Gift of the Ancients global procs now correctly apply their bonuses', status: 'fixed' },
-  { text: 'Fix: More powers should start passing their active information to the dashboard (Hasten, Combat Jumping, etc)', status: 'fixed' },
+  { text: 'New: Added modal for incarnate recipe calculator', status: 'new' },
+  { text: 'New: First pass at importing builds from Mids Reborn! (.mbd files) Use the Export/Import modal, expect bugs :3', status: 'new' },
+
 
 ];
 

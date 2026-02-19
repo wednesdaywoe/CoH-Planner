@@ -53,6 +53,9 @@ interface UIState {
   /** Incarnate modal open state */
   incarnateModalOpen: boolean;
 
+  /** Incarnate crafting modal open state */
+  incarnateCraftingModalOpen: boolean;
+
   /** Currently selected incarnate slot for modal */
   currentIncarnateSlot: IncarnateSlotId | null;
 
@@ -195,6 +198,10 @@ interface UIActions {
   closeIncarnateModal: () => void;
   setCurrentIncarnateSlot: (slotId: IncarnateSlotId) => void;
 
+  // Incarnate Crafting Modal
+  openIncarnateCraftingModal: () => void;
+  closeIncarnateCraftingModal: () => void;
+
   // Export/Import Modal
   openExportImportModal: () => void;
   closeExportImportModal: () => void;
@@ -326,6 +333,7 @@ export const useUIStore = create<UIStore>()(
       accoladesModalOpen: false,
       aboutModalOpen: false,
       incarnateModalOpen: false,
+      incarnateCraftingModalOpen: false,
       currentIncarnateSlot: null,
       exportImportModalOpen: false,
       feedbackModalOpen: false,
@@ -668,6 +676,13 @@ export const useUIStore = create<UIStore>()(
         set({
           currentIncarnateSlot: slotId,
         }),
+
+      // Incarnate Crafting Modal
+      openIncarnateCraftingModal: () =>
+        set({ incarnateCraftingModalOpen: true }),
+
+      closeIncarnateCraftingModal: () =>
+        set({ incarnateCraftingModalOpen: false }),
 
       // Export/Import Modal
       openExportImportModal: () =>

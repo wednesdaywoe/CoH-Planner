@@ -243,6 +243,36 @@ export type {
   IncarnatePowerEffects,
 } from './incarnate-effects';
 
+// Incarnate salvage registry
+export {
+  SALVAGE_REGISTRY,
+  SALVAGE_RARITY_COLORS,
+  getSalvageDefinition,
+  getSalvageDisplayName,
+  getSalvageRarity,
+  getSalvageRarityColor,
+  getSalvageCost,
+  parseSalvageString,
+} from './incarnate-salvage';
+export type { SalvageDefinition } from './incarnate-salvage';
+
+// Incarnate crafting recipes
+export {
+  INCARNATE_RECIPES,
+  CRAFTING_CONVERSIONS,
+  getTierRecipe,
+  calculateCumulativeCost,
+} from './incarnate-recipes';
+
+// Incarnate crafting components
+export {
+  LORE_TREE_NAME_MAP,
+  getComponentTreeKey,
+  getTreeComponents,
+  getVariantComponents,
+  getCumulativeSalvage,
+} from './incarnate-components';
+
 // Support power effects (curated data for heals, buffs, debuffs)
 export {
   SUPPORT_POWER_EFFECTS,
