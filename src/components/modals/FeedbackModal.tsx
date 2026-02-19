@@ -23,12 +23,18 @@ type SubmitStatus = 'idle' | 'sending' | 'success' | 'error';
 const TYPE_CONFIG = {
   bug: {
     label: 'Bug Report',
-    placeholder: 'Describe the bug. What happened? What did you expect to happen?',
+    placeholder:
+      'Please include:\n' +
+      '1. What you were doing (e.g. "Imported a Claws/Dark Scrapper .mbd file")\n' +
+      '2. What went wrong (e.g. "S/L Res totals show 0% despite having Dark Embrace toggled on")\n' +
+      '3. What you expected (e.g. "Should show ~25% S/L Res from Dark Embrace")',
     color: 'red',
   },
   suggestion: {
     label: 'Suggestion',
-    placeholder: 'What feature or improvement would you like to see?',
+    placeholder:
+      'Describe the feature or improvement you\'d like to see.\n' +
+      'What problem would it solve? How would you use it?',
     color: 'blue',
   },
   other: {
@@ -42,11 +48,14 @@ export function FeedbackModal({ isOpen, onClose }: FeedbackModalProps) {
   const [feedbackType, setFeedbackType] = useState<FeedbackType>('bug');
   const [description, setDescription] = useState('');
   const [globalName, setGlobalName] = useState('');
+  const [includeSnapshot, setIncludeSnapshot] = useState(true);
+  const [snapshotCopied, setSnapshotCopied] = useState(false);
   const [status, setStatus] = useState<SubmitStatus>('idle');
   const [errorMessage, setErrorMessage] = useState('');
   const openKnownIssuesModal = useUIStore((s) => s.openKnownIssuesModal);
 
   const build = useBuildStore((s) => s.build);
+  const exportBuild = useBuildStore((s) => s.exportBuild);
 
   const getBuildContext = () => {
     // Count total powers and slots across all sets
@@ -94,6 +103,7 @@ export function FeedbackModal({ isOpen, onClose }: FeedbackModalProps) {
       description: description.trim(),
       globalName: globalName.trim() || undefined,
       buildContext: getBuildContext(),
+      buildSnapshot: includeSnapshot ? exportBuild() : undefined,
       userAgent: navigator.userAgent,
       timestamp: new Date().toISOString(),
     };
@@ -125,9 +135,29 @@ export function FeedbackModal({ isOpen, onClose }: FeedbackModalProps) {
     setFeedbackType('bug');
     setDescription('');
     setGlobalName('');
+    setIncludeSnapshot(true);
+    setSnapshotCopied(false);
     setStatus('idle');
     setErrorMessage('');
     onClose();
+  };
+
+  const handleCopySnapshot = async () => {
+    try {
+      await navigator.clipboard.writeText(exportBuild());
+      setSnapshotCopied(true);
+      setTimeout(() => setSnapshotCopied(false), 2000);
+    } catch {
+      // Fallback for browsers that don't support clipboard API
+      const textarea = document.createElement('textarea');
+      textarea.value = exportBuild();
+      document.body.appendChild(textarea);
+      textarea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textarea);
+      setSnapshotCopied(true);
+      setTimeout(() => setSnapshotCopied(false), 2000);
+    }
   };
 
   const config = TYPE_CONFIG[feedbackType];
@@ -179,26 +209,46 @@ export function FeedbackModal({ isOpen, onClose }: FeedbackModalProps) {
               </div>
             </div>
 
-            {/* Known issues prompt for bug reports */}
+            {/* Guidance tips per feedback type */}
             {feedbackType === 'bug' && (
-              <div className="bg-amber-900/20 border border-amber-700/50 rounded p-3 flex items-start gap-2">
-                <svg className="w-4 h-4 text-amber-400 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                <p className="text-sm text-amber-200/80">
-                  Please{' '}
-                  <button
-                    type="button"
-                    onClick={() => {
-                      handleClose();
-                      openKnownIssuesModal();
-                    }}
-                    className="text-amber-300 underline hover:text-amber-200 font-medium"
-                  >
-                    check Known Issues
-                  </button>
-                  {' '}before submitting to avoid duplicates.
-                </p>
+              <div className="space-y-2">
+                <div className="bg-amber-900/20 border border-amber-700/50 rounded p-3 flex items-start gap-2">
+                  <svg className="w-4 h-4 text-amber-400 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <p className="text-sm text-amber-200/80">
+                    Please{' '}
+                    <button
+                      type="button"
+                      onClick={() => {
+                        handleClose();
+                        openKnownIssuesModal();
+                      }}
+                      className="text-amber-300 underline hover:text-amber-200 font-medium"
+                    >
+                      check Known Issues
+                    </button>
+                    {' '}before submitting to avoid duplicates.
+                  </p>
+                </div>
+                <div className="bg-slate-800/50 border border-slate-700/50 rounded p-3">
+                  <p className="text-xs font-medium text-slate-400 mb-1.5">Tips for a helpful bug report:</p>
+                  <ul className="text-xs text-slate-500 space-y-0.5 list-disc list-inside">
+                    <li>Describe what you were doing when the bug occurred</li>
+                    <li>Note what happened vs. what you expected</li>
+                    <li>Pease ensure the build snapshot below is enabled, it will help me reproduce the issue</li>
+                  </ul>
+                </div>
+              </div>
+            )}
+            {feedbackType === 'suggestion' && (
+              <div className="bg-blue-900/15 border border-blue-700/40 rounded p-3">
+                <p className="text-xs font-medium text-blue-400 mb-1.5">Tips for a great suggestion:</p>
+                <ul className="text-xs text-blue-400/70 space-y-0.5 list-disc list-inside">
+                  <li>Describe the problem or gap you've noticed</li>
+                  <li>Explain how the feature would help your workflow</li>
+                  <li>If possible, reference how other tools handle it</li>
+                </ul>
               </div>
             )}
 
@@ -235,10 +285,39 @@ export function FeedbackModal({ isOpen, onClose }: FeedbackModalProps) {
               />
             </div>
 
-            {/* Build context (collapsed info) */}
-            <div className="bg-gray-800 border border-gray-600 rounded p-3">
-              <p className="text-xs text-gray-500 mb-1">
-                The following build info will be included with your report:
+            {/* Build snapshot */}
+            <div className="bg-gray-800 border border-gray-600 rounded p-3 space-y-2">
+              <div className="flex items-center justify-between">
+                <label className="flex items-center gap-2 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={includeSnapshot}
+                    onChange={(e) => setIncludeSnapshot(e.target.checked)}
+                    className="w-3.5 h-3.5 rounded border-gray-500 bg-gray-700 text-blue-500 focus:ring-blue-500 focus:ring-offset-0"
+                  />
+                  <span className="text-xs font-medium text-gray-300">
+                    Include build snapshot
+                  </span>
+                </label>
+                <button
+                  type="button"
+                  onClick={handleCopySnapshot}
+                  className="text-xs text-blue-400 hover:text-blue-300 transition-colors flex items-center gap-1"
+                >
+                  <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    {snapshotCopied ? (
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    ) : (
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                    )}
+                  </svg>
+                  {snapshotCopied ? 'Copied!' : 'Copy snapshot'}
+                </button>
+              </div>
+              <p className="text-xs text-gray-500">
+                {includeSnapshot
+                  ? 'Your full build (powers, slots, enhancements) will be attached to help reproduce issues.'
+                  : 'Only basic build info (archetype, powersets) will be included.'}
               </p>
               <div className="text-xs text-gray-400 space-y-0.5">
                 <p>

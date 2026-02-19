@@ -345,6 +345,7 @@ interface ActivePowerEffect {
   damageBuff?: number;
   rechargeBuff?: ScalarOrScaled;
   defense?: Record<string, ScalarOrScaled>;
+  defenseBuff?: Record<string, ScalarOrScaled>;
   resistance?: Record<string, ScalarOrScaled>;
   debuffResistance?: Record<string, ScalarOrScaled>;
   runSpeed?: number;
@@ -428,10 +429,11 @@ function applyActivePowerBonuses(
 
     // Defense from active powers
     // Enhanced by Defense enhancements
-    if (effects.defense && typeof effects.defense === 'object') {
-      const def = effects.defense;
+    // Power data uses either "defense" or "defenseBuff" key for defense effects
+    const defenseEffects = effects.defense || effects.defenseBuff;
+    if (defenseEffects && typeof defenseEffects === 'object') {
       const enhMultiplier = 1 + (enhBonuses.defense || enhBonuses.defenseBuff || 0);
-      for (const [type, value] of Object.entries(def)) {
+      for (const [type, value] of Object.entries(defenseEffects)) {
         const percentage = resolveScaledEffect(value, archetypeId, buildLevel) * 100 * enhMultiplier;
         const key = `def${capitalizeFirst(type)}` as keyof GlobalBonuses;
         if (key in global) {

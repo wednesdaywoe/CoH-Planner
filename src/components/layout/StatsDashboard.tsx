@@ -490,11 +490,13 @@ export function StatsDashboard() {
     build.secondary.powers.length +
     build.pools.reduce((sum, pool) => sum + pool.powers.length, 0) +
     (build.epicPool?.powers.length ?? 0);
+  // Count only EXTRA slots beyond the free first slot each power gets
+  // In CoH, each power pick comes with 1 free slot; the 67 budget is for additional placed slots
   const currentSlotCount =
-    build.primary.powers.reduce((sum, p) => sum + p.slots.length, 0) +
-    build.secondary.powers.reduce((sum, p) => sum + p.slots.length, 0) +
-    build.pools.reduce((sum, pool) => sum + pool.powers.reduce((s, p) => s + p.slots.length, 0), 0) +
-    (build.epicPool?.powers.reduce((sum, p) => sum + p.slots.length, 0) ?? 0);
+    build.primary.powers.reduce((sum, p) => sum + Math.max(0, p.slots.length - 1), 0) +
+    build.secondary.powers.reduce((sum, p) => sum + Math.max(0, p.slots.length - 1), 0) +
+    build.pools.reduce((sum, pool) => sum + pool.powers.reduce((s, p) => s + Math.max(0, p.slots.length - 1), 0), 0) +
+    (build.epicPool?.powers.reduce((sum, p) => sum + Math.max(0, p.slots.length - 1), 0) ?? 0);
 
   // Get visible stats based on config
   const visibleStats = useMemo(() => {
