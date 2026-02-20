@@ -25,6 +25,7 @@ import {
   calculateDominationMagnitude,
   isDominatorControlPower,
 } from '@/utils/calculations';
+import { getTableValue } from '@/data/at-tables';
 import { calcThreeTier } from './powerDisplayUtils';
 import type { ThreeTierValues } from './powerDisplayUtils';
 
@@ -118,28 +119,42 @@ interface MezEffectRowProps {
   showThreeTier?: boolean;
   /** Whether Domination bonus applies */
   showDomination?: boolean;
+  /** Archetype ID for AT-specific magnitude calculation */
+  archetypeId?: string;
 }
 
 /**
- * Get magnitude from a mez value (handles both number and MezEffect object)
+ * Get magnitude from a mez value (handles both number and MezEffect object).
+ * For mez protection effects (using res_boolean tables), calculates the actual
+ * magnitude from scale × AT table value instead of using the raw mag field.
  */
-function getMezMagnitude(value: NumberOrMez): number {
+function getMezMagnitude(value: NumberOrMez, archetypeId?: string): number {
   if (typeof value === 'number') return value;
-  if (isMezEffect(value)) return value.mag;
+  if (isMezEffect(value)) {
+    // Mez protection effects use res_boolean tables — magnitude = abs(scale) × tableValue
+    if (archetypeId && value.table.toLowerCase().includes('res_boolean')) {
+      const tableValue = getTableValue(archetypeId, value.table, 50);
+      if (tableValue !== undefined) {
+        return Math.abs(value.scale) * tableValue;
+      }
+    }
+    return value.mag;
+  }
   return 0;
 }
 
 /**
  * Format mez value for display, with optional Domination bonus
  */
-function formatMezDisplay(value: NumberOrMez, showDomination: boolean): { text: string; magnitude: number } {
-  const baseMag = getMezMagnitude(value);
+function formatMezDisplay(value: NumberOrMez, showDomination: boolean, archetypeId?: string): { text: string; magnitude: number } {
+  const baseMag = getMezMagnitude(value, archetypeId);
   const displayMag = showDomination ? calculateDominationMagnitude(baseMag) : baseMag;
-  return { text: `Mag ${displayMag}`, magnitude: displayMag };
+  const formatted = Number.isInteger(displayMag) ? displayMag.toString() : displayMag.toFixed(1);
+  return { text: `Mag ${formatted}`, magnitude: displayMag };
 }
 
-function MezEffectRow({ label, colorClass, value, showThreeTier, showDomination = false }: MezEffectRowProps) {
-  const { text } = formatMezDisplay(value as NumberOrMez, showDomination);
+function MezEffectRow({ label, colorClass, value, showThreeTier, showDomination = false, archetypeId }: MezEffectRowProps) {
+  const { text } = formatMezDisplay(value as NumberOrMez, showDomination, archetypeId);
   const displayColorClass = showDomination ? 'text-pink-400' : colorClass;
 
   if (showThreeTier) {
@@ -227,6 +242,7 @@ export function EffectDisplay({
           value={value}
           showThreeTier={showThreeTier}
           showDomination={showDomination && config.category === 'control'}
+          archetypeId={archetypeId}
         />
       );
     }

@@ -332,9 +332,23 @@ export function calculatePowerDamage(
   activeBuffs = 0
 ): PowerDamageResult | null {
   // Check top-level damage first (new format), then fall back to effects.damage (legacy)
-  const damageEffect = basePower.damage ?? basePower.effects?.damage;
+  let damageEffect = basePower.damage ?? basePower.effects?.damage;
   if (!damageEffect) {
     return null;
+  }
+
+  // Normalize array format: [{ type, scale, table }, ...] → { types: [...], scale, table }
+  // Filter out Heal entries (those are handled separately as healing effects)
+  if (Array.isArray(damageEffect)) {
+    type ArrayEntry = { type: string; scale: number; table?: string };
+    const damageEntries = (damageEffect as ArrayEntry[]).filter(e => e.type !== 'Heal');
+    if (damageEntries.length === 0) return null;
+
+    damageEffect = {
+      types: damageEntries,
+      scale: damageEntries.reduce((sum: number, e: ArrayEntry) => sum + e.scale, 0),
+      table: damageEntries[0].table,
+    };
   }
 
   // Extract scale - handle both old and new formats

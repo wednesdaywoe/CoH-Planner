@@ -349,6 +349,8 @@ export interface InherentPowerDef {
   isLocked?: boolean;
   /** Category for grouping (fitness, basic, prestige, archetype) */
   category?: 'fitness' | 'basic' | 'prestige' | 'archetype';
+  /** Power effects for tooltip display */
+  effects?: Record<string, unknown>;
 }
 
 /**
@@ -366,6 +368,10 @@ export const INHERENT_FITNESS_POWERS: readonly InherentPowerDef[] = [
     allowedSetCategories: ['Running'],
     isLocked: true,
     category: 'fitness',
+    effects: {
+      runSpeed: { scale: 0.1, table: 'Melee_SpeedRunning' },
+      flySpeed: { scale: 0.1, table: 'Melee_SpeedFlying' },
+    },
   },
   {
     name: 'Hurdle',
@@ -378,6 +384,10 @@ export const INHERENT_FITNESS_POWERS: readonly InherentPowerDef[] = [
     allowedSetCategories: ['Leaping'],
     isLocked: true,
     category: 'fitness',
+    effects: {
+      jumpHeight: { scale: 0.06, table: 'Melee_Leap' },
+      jumpSpeed: { scale: 0.5, table: 'Melee_SpeedJumping' },
+    },
   },
   {
     name: 'Health',
@@ -390,6 +400,9 @@ export const INHERENT_FITNESS_POWERS: readonly InherentPowerDef[] = [
     allowedSetCategories: ['Healing'],
     isLocked: true,
     category: 'fitness',
+    effects: {
+      regeneration: { scale: 0.4, table: 'Melee_Ones' },
+    },
   },
   {
     name: 'Stamina',
@@ -402,6 +415,9 @@ export const INHERENT_FITNESS_POWERS: readonly InherentPowerDef[] = [
     allowedSetCategories: ['Endurance Modification'],
     isLocked: true,
     category: 'fitness',
+    effects: {
+      recovery: { scale: 0.25, table: 'Melee_Ones' },
+    },
   },
 ] as const;
 
@@ -444,6 +460,10 @@ export const BASIC_INHERENT_POWERS: readonly InherentPowerDef[] = [
     allowedSetCategories: ['Running & Sprints', 'Universal Travel'],
     isLocked: true,
     category: 'basic',
+    effects: {
+      endurance: 0.13,
+      runSpeed: { scale: 0.5, table: 'Melee_SpeedRunning' },
+    },
   },
 ] as const;
 

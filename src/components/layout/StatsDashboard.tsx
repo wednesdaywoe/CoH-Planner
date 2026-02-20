@@ -520,12 +520,10 @@ export function StatsDashboard() {
     {
       name: 'Offense',
       stats: ['damage', 'accuracy', 'tohit', 'recharge'],
-      panelClass: 'h-[80px] min-h-[80px] max-h-[100px] overflow-hidden',
     },
     {
       name: 'Health & Endurance',
       stats: ['health', 'regeneration', 'maxend', 'recovery'],
-      panelClass: 'h-[80px] min-h-[80px] max-h-[100px] overflow-hidden',
     },
     {
       name: 'Defense',
@@ -539,7 +537,6 @@ export function StatsDashboard() {
         'defense_psionic',
         'defense_toxic',
       ],
-      panelClass: 'h-[168px] min-h-[168px] max-h-[168px] overflow-hidden',
     },
     {
       name: 'Resistance & Mez',
@@ -557,17 +554,14 @@ export function StatsDashboard() {
         'mez_fear',
         'mez_kb',
       ],
-      panelClass: 'h-[168px] min-h-[168px] max-h-[168px] overflow-hidden',
     },
     {
       name: 'Endurance',
       stats: ['endreduction'],
-      panelClass: '',
     },
     {
       name: 'Movement',
       stats: ['runspeed', 'flyspeed', 'jumpspeed', 'jumpheight'],
-      panelClass: '',
     },
     {
       name: 'Debuff Resistance',
@@ -581,7 +575,6 @@ export function StatsDashboard() {
         'debuff_regen',
         'debuff_perception',
       ],
-      panelClass: 'h-[168px] min-h-[168px] max-h-[168px] overflow-hidden',
     },
   ];
 
@@ -589,134 +582,68 @@ export function StatsDashboard() {
   const groupedStats = STAT_CATEGORIES.map((cat) => ({
     name: cat.name,
     stats: visibleStats.filter((s) => cat.stats.includes(s.id)),
-    panelClass: cat.panelClass || '',
   })).filter((cat) => cat.stats.length > 0);
 
   return (
     <>
-      <div className="bg-gray-900/50 border-b border-gray-800 px-2 sm:px-4 py-2 relative">
-        {/* About button - top right */}
-        <button
-          onClick={openAboutModal}
-          className="absolute top-2 right-2 sm:right-4 z-10 flex items-center gap-1.5 px-2 sm:px-3 py-1.5 sm:py-2 text-xs font-semibold text-gray-200 bg-gray-800 hover:bg-gray-750 rounded-lg transition-all duration-300 group border-2 border-transparent"
-          style={{
-            backgroundImage: 'linear-gradient(rgb(31, 41, 55), rgb(31, 41, 55)), linear-gradient(135deg, rgb(37, 99, 235), rgb(147, 51, 234))',
-            backgroundOrigin: 'border-box',
-            backgroundClip: 'padding-box, border-box',
-          }}
-          title="About Sidekick"
-        >
-          <img
-            src="img/favicon-32x32.png"
-            alt="About"
-            className="w-4 h-4 group-hover:scale-110 transition-transform"
-          />
-          <span className="hidden sm:inline">About</span>
-        </button>
-
-        <div className="flex flex-col lg:flex-row items-stretch lg:items-center gap-2 lg:gap-4">
-          {/* Grouped stats - responsive grid layout */}
-          <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 lg:flex lg:flex-wrap gap-2 lg:gap-4 items-start">
+      <div className="bg-gray-900/50 border-b border-gray-800 px-2 sm:px-4 py-2">
+        {/* Grouped stats - CSS columns layout with break-inside:avoid per group */}
+        <div style={{ columns: '240px', columnGap: '0.5rem' }}>
             {/* Resources panel - Powers and Slots remaining */}
-            <div className="flex flex-col gap-2 w-full sm:w-auto lg:min-w-[140px] lg:max-w-[160px]">
-              <div className="bg-gray-800/70 rounded-lg px-3 py-2 border border-gray-700 lg:h-[168px] lg:min-h-[168px] lg:max-h-[168px]">
-                <div className="text-xs font-semibold text-gray-400 mb-2 uppercase tracking-wide">Resources</div>
-                <div className="flex flex-row sm:flex-col gap-3 sm:gap-3">
-                  <Tooltip content={`${24 - currentPowerCount} power picks remaining (${currentPowerCount} used)`}>
-                    <div className="flex items-center justify-between flex-1 sm:flex-auto">
-                      <span className="text-xs text-gray-500 uppercase tracking-wide">Powers</span>
-                      <span
-                        className={`text-sm font-medium ${
-                          currentPowerCount > 24 ? 'text-red-400' : 24 - currentPowerCount <= 3 ? 'text-yellow-400' : 'text-emerald-400'
-                        }`}
-                      >
-                        {24 - currentPowerCount}/24
-                      </span>
-                    </div>
-                  </Tooltip>
-                  <Tooltip content={`${67 - currentSlotCount} enhancement slots remaining (${currentSlotCount} used)`}>
-                    <div className="flex items-center justify-between flex-1 sm:flex-auto">
-                      <span className="text-xs text-gray-500 uppercase tracking-wide">Slots</span>
-                      <span
-                        className={`text-sm font-medium ${
-                          currentSlotCount > 67 ? 'text-red-400' : 67 - currentSlotCount <= 5 ? 'text-yellow-400' : 'text-emerald-400'
-                        }`}
-                      >
-                        {67 - currentSlotCount}/67
-                      </span>
-                    </div>
-                  </Tooltip>
-                </div>
+            <div className="bg-gray-800/70 rounded-lg px-3 py-2 border border-gray-700 mb-2 break-inside-avoid">
+              <div className="text-xs font-semibold text-gray-400 mb-2 uppercase tracking-wide">Resources</div>
+              <div className="flex flex-col gap-3">
+                <Tooltip content={`${24 - currentPowerCount} power picks remaining (${currentPowerCount} used)`}>
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs text-gray-500 uppercase tracking-wide">Powers</span>
+                    <span
+                      className={`text-sm font-medium ${
+                        currentPowerCount > 24 ? 'text-red-400' : 24 - currentPowerCount <= 3 ? 'text-yellow-400' : 'text-emerald-400'
+                      }`}
+                    >
+                      {24 - currentPowerCount}/24
+                    </span>
+                  </div>
+                </Tooltip>
+                <Tooltip content={`${67 - currentSlotCount} enhancement slots remaining (${currentSlotCount} used)`}>
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs text-gray-500 uppercase tracking-wide">Slots</span>
+                    <span
+                      className={`text-sm font-medium ${
+                        currentSlotCount > 67 ? 'text-red-400' : 67 - currentSlotCount <= 5 ? 'text-yellow-400' : 'text-emerald-400'
+                      }`}
+                    >
+                      {67 - currentSlotCount}/67
+                    </span>
+                  </div>
+                </Tooltip>
               </div>
             </div>
 
-            {/* Offense and Health & Endurance stacked vertically */}
-            <div className="flex flex-col gap-2 w-full sm:w-auto lg:min-w-[300px] lg:max-w-[360px]">
-              {groupedStats.find((g) => g.name === 'Offense') && (
-                <div
-                  className={`bg-gray-800/70 rounded-lg px-3 py-2 border border-gray-700 ${groupedStats.find((g) => g.name === 'Offense')?.panelClass.replace(/h-\[80px\]|min-h-\[80px\]|max-h-\[100px\]/g, 'lg:$&')}`}
-                >
-                  <div className="text-xs font-semibold text-gray-400 mb-1 uppercase tracking-wide">Offense</div>
-                  <div className="grid grid-cols-2 gap-x-4 gap-y-1">
-                    {groupedStats.find((g) => g.name === 'Offense')?.stats.map((stat) => (
-                      <StatItem
-                        key={stat.id}
-                        label={stat.label}
-                        value={stat.format(stat.value)}
-                        color={stat.color}
-                        tooltip={stat.tooltip}
-                        breakdown={stat.breakdown}
-                      />
-                    ))}
-                  </div>
+            {/* All stat group panels - column items that won't break across columns */}
+            {groupedStats.map((group) => (
+              <div
+                key={group.name}
+                className="bg-gray-800/70 rounded-lg px-3 py-2 border border-gray-700 mb-2 break-inside-avoid"
+              >
+                <div className="text-xs font-semibold text-gray-400 mb-1 uppercase tracking-wide">{group.name}</div>
+                <div className="grid grid-cols-2 gap-x-4 gap-y-1">
+                  {group.stats.map((stat) => (
+                    <StatItem
+                      key={stat.id}
+                      label={stat.label}
+                      value={stat.format(stat.value)}
+                      color={stat.color}
+                      tooltip={stat.tooltip}
+                      breakdown={stat.breakdown}
+                    />
+                  ))}
                 </div>
-              )}
-              {groupedStats.find((g) => g.name === 'Health & Endurance') && (
-                <div
-                  className={`bg-gray-800/70 rounded-lg px-3 py-2 border border-gray-700 ${groupedStats.find((g) => g.name === 'Health & Endurance')?.panelClass.replace(/h-\[80px\]|min-h-\[80px\]|max-h-\[100px\]/g, 'lg:$&')}`}
-                >
-                  <div className="text-xs font-semibold text-gray-400 mb-1 uppercase tracking-wide">Health & Endurance</div>
-                  <div className="grid grid-cols-2 gap-x-4 gap-y-1">
-                    {groupedStats.find((g) => g.name === 'Health & Endurance')?.stats.map((stat) => (
-                      <StatItem
-                        key={stat.id}
-                        label={stat.label}
-                        value={stat.format(stat.value)}
-                        color={stat.color}
-                        tooltip={stat.tooltip}
-                        breakdown={stat.breakdown}
-                      />
-                    ))}
-                  </div>
-                </div>
-              )}
-            </div>
-            {/* The rest of the panels */}
-            {groupedStats
-              .filter((g) => g.name !== 'Offense' && g.name !== 'Health & Endurance')
-              .map((group) => (
-                <div
-                  key={group.name}
-                  className={`w-full sm:w-auto lg:min-w-[300px] lg:max-w-[360px] bg-gray-800/70 rounded-lg px-3 py-2 border border-gray-700 ${group.panelClass.replace(/h-\[\d+px\]|min-h-\[\d+px\]|max-h-\[\d+px\]/g, 'lg:$&')}`}
-                >
-                  <div className="text-xs font-semibold text-gray-400 mb-1 uppercase tracking-wide">{group.name}</div>
-                  <div className="grid grid-cols-2 gap-x-4 gap-y-1">
-                    {group.stats.map((stat) => (
-                      <StatItem
-                        key={stat.id}
-                        label={stat.label}
-                        value={stat.format(stat.value)}
-                        color={stat.color}
-                        tooltip={stat.tooltip}
-                        breakdown={stat.breakdown}
-                      />
-                    ))}
-                  </div>
-                </div>
-              ))}
+              </div>
+            ))}
 
-            {/* Incarnate Powers panel - 2x3 grid - hide on small/medium screens to prevent overlap with power tree */}
-            <div className="hidden lg:block w-full sm:w-auto lg:min-w-[260px] lg:max-w-[300px] bg-gray-800/70 rounded-lg px-3 py-2 border border-gray-700 lg:h-[168px] lg:min-h-[168px] lg:max-h-[168px]">
+            {/* Incarnate Powers panel - hide on very small screens */}
+            <div className="hidden md:block bg-gray-800/70 rounded-lg px-3 py-2 border border-gray-700 mb-2 break-inside-avoid">
               <div className="text-xs font-semibold text-gray-400 mb-2 uppercase tracking-wide flex items-center justify-between">
                 <span>Incarnate</span>
                 {isLevel50 ? (
@@ -741,74 +668,73 @@ export function StatsDashboard() {
             </div>
           </div>
 
-          {/* Dashboard actions - horizontal on mobile, vertical on desktop */}
-          <div className="flex flex-row lg:flex-col items-center lg:items-end gap-2 lg:gap-1 flex-shrink-0 pt-2 lg:pt-0 border-t lg:border-t-0 border-gray-700">
-            {/* Incarnate button - only visible on mobile/tablet when incarnate panel is hidden */}
+        {/* Dashboard action bar */}
+        <div className="flex items-center gap-1 pt-1 mt-1 border-t border-gray-800 flex-wrap">
+          {/* Incarnate button - only visible when incarnate panel is hidden (small screens) */}
+          <button
+            onClick={() => openIncarnateModal()}
+            className={`flex md:hidden items-center gap-1.5 px-2 py-1 text-xs rounded transition-colors ${
+              !isLevel50
+                ? 'text-gray-500 cursor-not-allowed opacity-50'
+                : 'text-gray-400 hover:text-purple-300 hover:bg-gray-800'
+            }`}
+            title={isLevel50 ? "Select incarnate powers" : "Incarnate powers unlock at level 50"}
+            disabled={!isLevel50}
+          >
+            <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+            </svg>
+            <span>Incarnate</span>
+          </button>
+          {/* Crafting button - only visible when incarnate panel is hidden (small screens) */}
+          {isLevel50 && (
             <button
-              onClick={() => openIncarnateModal()}
-              className={`flex lg:hidden items-center gap-1.5 px-2 py-1 text-xs rounded transition-colors ${
-                !isLevel50
-                  ? 'text-gray-500 cursor-not-allowed opacity-50'
-                  : 'text-gray-400 hover:text-purple-300 hover:bg-gray-800'
-              }`}
-              title={isLevel50 ? "Select incarnate powers" : "Incarnate powers unlock at level 50"}
-              disabled={!isLevel50}
+              onClick={openIncarnateCraftingModal}
+              className="flex md:hidden items-center gap-1.5 px-2 py-1 text-xs text-blue-400 hover:text-blue-300 hover:bg-gray-800 rounded transition-colors"
+              title="Incarnate Crafting Checklist"
             >
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+              <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
               </svg>
-              <span>Incarnate</span>
+              <span>Crafting</span>
             </button>
-            {/* Crafting button - mobile/tablet, only at level 50 */}
-            {isLevel50 && (
-              <button
-                onClick={openIncarnateCraftingModal}
-                className="flex lg:hidden items-center gap-1.5 px-2 py-1 text-xs text-blue-400 hover:text-blue-300 hover:bg-gray-800 rounded transition-colors"
-                title="Incarnate Crafting Checklist"
-              >
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
-                </svg>
-                <span>Crafting</span>
-              </button>
-            )}
-            <button
-              onClick={openAccoladesModal}
-              className="flex items-center gap-1.5 px-2 py-1 text-xs text-gray-400 hover:text-amber-300 hover:bg-gray-800 rounded transition-colors"
-              title="Toggle accolade bonuses"
-            >
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-              </svg>
-              <span>Accolades</span>
-            </button>
-            {/* Configure button - inline on mobile */}
-            <button
-              onClick={openStatsConfigModal}
-              className="flex lg:hidden items-center gap-1.5 px-2 py-1 text-xs text-gray-400 hover:text-gray-200 hover:bg-gray-800 rounded transition-colors"
-              title="Configure dashboard stats"
-            >
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-              </svg>
-              <span>Configure</span>
-            </button>
-          </div>
+          )}
+          <button
+            onClick={openAccoladesModal}
+            className="flex items-center gap-1.5 px-2 py-1 text-xs text-gray-400 hover:text-amber-300 hover:bg-gray-800 rounded transition-colors"
+            title="Toggle accolade bonuses"
+          >
+            <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+            </svg>
+            <span>Accolades</span>
+          </button>
+          <button
+            onClick={openStatsConfigModal}
+            className="flex items-center gap-1.5 px-2 py-1 text-xs text-gray-400 hover:text-gray-200 hover:bg-gray-800 rounded transition-colors"
+            title="Configure dashboard stats"
+          >
+            <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+            <span>Configure</span>
+          </button>
+          {/* Spacer pushes About to the right */}
+          <div className="flex-1" />
+          <button
+            onClick={openAboutModal}
+            className="flex items-center gap-1.5 px-2 py-1 text-xs text-gray-400 hover:text-gray-200 hover:bg-gray-800 rounded transition-colors group"
+            title="About Sidekick"
+          >
+            <img
+              src="img/favicon-32x32.png"
+              alt="About"
+              className="w-3.5 h-3.5 group-hover:scale-110 transition-transform"
+            />
+            <span>About</span>
+          </button>
         </div>
-
-        {/* Configure button - bottom right, desktop only */}
-        <button
-          onClick={openStatsConfigModal}
-          className="hidden lg:flex absolute bottom-2 right-4 z-10 items-center gap-1.5 px-2 py-1 text-xs text-gray-400 hover:text-gray-200 hover:bg-gray-800 rounded transition-colors"
-          title="Configure dashboard stats"
-        >
-          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-          </svg>
-          <span>Configure</span>
-        </button>
       </div>
 
       {/* Stats Config Modal */}

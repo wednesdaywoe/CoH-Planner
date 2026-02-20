@@ -54,6 +54,12 @@ const RELEVANT_TABLES = [
   'ranged_heal',
   'melee_heal',
 
+  // Resistance tables (damage and mez)
+  'ranged_res_dmg',
+  'melee_res_dmg',
+  'ranged_res_boolean',
+  'melee_res_boolean',
+
   // Other
   'ranged_resistance',
   'melee_resistance',
@@ -61,6 +67,8 @@ const RELEVANT_TABLES = [
   'ranged_recharge',
   'ranged_speed',
   'ranged_perception',
+  'melee_ones',
+  'ranged_ones',
 
   // PvP tables (if present)
   'ranged_pvpdamage',

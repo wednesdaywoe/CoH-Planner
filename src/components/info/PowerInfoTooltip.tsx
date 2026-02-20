@@ -34,8 +34,6 @@ import {
   calculateVigilanceDamageBonus,
   calculateVigilanceDamage,
   isDefenderPower,
-  getOpportunityInfo,
-  isSentinelPower,
   getCriticalHitInfo,
   calculateCriticalHitDamage,
   isScrapperAttackPower,
@@ -142,7 +140,7 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
         maxSlots: inherentDef.maxSlots,
         allowedEnhancements: inherentDef.allowedEnhancements as Power['allowedEnhancements'],
         allowedSetCategories: inherentDef.allowedSetCategories as Power['allowedSetCategories'],
-        effects: {},
+        effects: (inherentDef.effects ?? {}) as Power['effects'],
       };
     } else {
       // Try archetype inherent from build
@@ -241,17 +239,42 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
     return <div className="text-slate-500 text-[10px]">Power not found</div>;
   }
 
-  // Merge power.stats into effects for registry-driven display
-  // Map stats field names to registry-expected names
-  const effects = {
-    ...basePower.effects,
-    // Execution stats from power.stats
-    ...(basePower.stats?.endurance && { enduranceCost: basePower.stats.endurance }),
-    ...(basePower.stats?.recharge && { recharge: basePower.stats.recharge }),
-    ...(basePower.stats?.accuracy && { accuracy: basePower.stats.accuracy }),
-    ...(basePower.stats?.range && { range: basePower.stats.range }),
-    ...(basePower.stats?.castTime && { castTime: basePower.stats.castTime }),
-  };
+  // Extract healing from damage arrays (e.g., Life Drain, Dark Regeneration)
+  // Powers can define healing as { type: "Heal", scale, table } entries in the damage array
+  const healFromDamageArray = useMemo(() => {
+    if (!Array.isArray(basePower?.damage)) return undefined;
+    const healEntry = (basePower.damage as Array<{ type: string; scale: number; table?: string }>)
+      .find(e => e.type === 'Heal');
+    if (!healEntry) return undefined;
+    return { scale: healEntry.scale, table: healEntry.table };
+  }, [basePower?.damage]);
+
+  // Merge power.stats and normalize effect keys for registry-driven display
+  // Pool/inherent powers use different keys than the registry expects
+  const rawEffects = basePower.effects ?? {};
+  const raw = rawEffects as Record<string, unknown>;
+
+  // Build additional mappings for keys that differ between data formats
+  const extraEffects: Record<string, unknown> = {};
+  // Execution stats from power.stats
+  if (basePower.stats?.endurance) extraEffects.enduranceCost = basePower.stats.endurance;
+  if (basePower.stats?.recharge) extraEffects.recharge = basePower.stats.recharge;
+  if (basePower.stats?.accuracy) extraEffects.accuracy = basePower.stats.accuracy;
+  if (basePower.stats?.range) extraEffects.range = basePower.stats.range;
+  if (basePower.stats?.castTime) extraEffects.castTime = basePower.stats.castTime;
+  // Map pool/inherent effect keys to registry names
+  if (raw.flySpeed && !rawEffects.fly) extraEffects.fly = raw.flySpeed;
+  if (rawEffects.runSpeed) extraEffects.runSpeed = rawEffects.runSpeed;
+  if (rawEffects.jumpSpeed) extraEffects.jumpSpeed = rawEffects.jumpSpeed;
+  if (rawEffects.jumpHeight) extraEffects.jumpHeight = rawEffects.jumpHeight;
+  if (raw.regeneration && !rawEffects.regenBuff) extraEffects.regenBuff = raw.regeneration;
+  if (raw.recovery && !rawEffects.recoveryBuff) extraEffects.recoveryBuff = raw.recovery;
+  // Pool powers may have endurance inside effects instead of stats
+  if (raw.endurance && !rawEffects.enduranceCost && !basePower.stats?.endurance) extraEffects.enduranceCost = raw.endurance;
+  // Inject healing extracted from damage array
+  if (healFromDamageArray && !rawEffects.healing) extraEffects.healing = healFromDamageArray;
+
+  const effects = { ...rawEffects, ...extraEffects } as typeof rawEffects;
 
   // Get archetype modifier for buff/debuff calculations
   const archetype = archetypeId ? getArchetype(archetypeId as ArchetypeId) : null;
@@ -721,43 +744,6 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
         );
       })()}
 
-      {/* Sentinel Opportunity - show when viewing Sentinel powers */}
-      {(() => {
-        // Only show for Sentinel archetype and sentinel powersets
-        if (archetypeId !== 'sentinel' || !isSentinelPower(powerSet)) return null;
-
-        const opportunityInfo = getOpportunityInfo();
-
-        return (
-          <div className="text-[10px] mt-1 rounded px-1.5 py-1 border bg-emerald-900/30 border-emerald-700/50">
-            <div className="flex items-center justify-between">
-              <span className="font-medium text-emerald-400">
-                Opportunity
-              </span>
-              <span className="text-[8px] px-1.5 py-0.5 rounded bg-emerald-600/50 text-emerald-200">
-                Enemy Debuff
-              </span>
-            </div>
-            <div className="mt-1 space-y-0.5 text-[9px]">
-              <div className="text-emerald-300">
-                -{(opportunityInfo.defenseDebuff * 100).toFixed(2)}% Defense
-              </div>
-              <div className="text-emerald-300">
-                -{(opportunityInfo.resistanceDebuff * 100).toFixed(0)}% Resistance (all damage types)
-              </div>
-              <div className="text-emerald-300">
-                -{(opportunityInfo.mezResistanceDebuff * 100).toFixed(0)}% Mez Resistance (longer durations)
-              </div>
-              <div className="text-emerald-300">
-                -{opportunityInfo.stealthReduction}ft Stealth
-              </div>
-            </div>
-            <div className="text-[8px] text-slate-500 mt-1 pt-1 border-t border-emerald-700/30">
-              Applied to enemy via T1 (Offensive) or T2 (Defensive) attack when meter is full
-            </div>
-          </div>
-        );
-      })()}
 
       {/* Scrapper Critical Hits - show when viewing Scrapper attack powers */}
       {(() => {

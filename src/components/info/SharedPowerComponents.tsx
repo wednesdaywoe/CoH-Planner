@@ -26,6 +26,7 @@ import {
   type EffectDisplayConfig,
   type GroupedEffect,
 } from '@/data/effect-registry';
+import { getTableValue } from '@/data/at-tables';
 
 // ============================================
 // THREE-TIER DISPLAY COMPONENTS
@@ -265,7 +266,8 @@ function calcEffectThreeTier(
 function getEffectBaseValue(
   value: unknown,
   config: EffectDisplayConfig,
-  buffDebuffMod: number
+  buffDebuffMod: number,
+  archetypeId?: string
 ): number | null {
   // Handle by-type objects - get first value
   if (config.canBeByType && isByTypeObject(value)) {
@@ -277,7 +279,14 @@ function getEffectBaseValue(
   // Handle mez effects (magnitude)
   if (config.format === 'mag') {
     if (typeof value === 'number') return value;
-    if (isMezEffect(value)) return value.mag;
+    if (isMezEffect(value)) {
+      // Mez protection effects use res_boolean tables — calculate from scale × tableValue
+      if (archetypeId && value.table.toLowerCase().includes('res_boolean')) {
+        const tableVal = getTableValue(archetypeId, value.table, 50);
+        if (tableVal !== undefined) return Math.abs(value.scale) * tableVal;
+      }
+      return value.mag;
+    }
     return null;
   }
 
@@ -430,7 +439,7 @@ export function RegistryEffectsDisplay({
       }
 
       // Get base value
-      const baseValue = getEffectBaseValue(value, config, buffDebuffMod);
+      const baseValue = getEffectBaseValue(value, config, buffDebuffMod, archetypeId);
       if (baseValue === null || baseValue === 0) continue;
 
       // Special handling for range (skip if 0 or negative)
@@ -546,14 +555,15 @@ export function RegistryEffectsDisplay({
 
         // Handle mez effects (magnitude format) — not enhanceable, show "—"
         if (config.format === 'mag') {
-          const mag = dominationActive && config.category === 'control' ? tiers.base * 2 : tiers.base;
+          const rawMag = dominationActive && config.category === 'control' ? tiers.base * 2 : tiers.base;
+          const magStr = Number.isInteger(rawMag) ? rawMag.toString() : rawMag.toFixed(1);
           const colorClass = dominationActive && config.category === 'control' ? 'text-pink-400' : config.colorClass;
 
           return (
             <div key={key} className={`grid ${gridCols} gap-1 items-baseline ${fontSize}`}>
               <span className={colorClass}>{label}</span>
               <span className="text-slate-200">
-                Mag {mag}
+                Mag {magStr}
                 {dominationActive && config.category === 'control' && (
                   <span className="text-pink-300 text-[8px] ml-1">[2×]</span>
                 )}
