@@ -9,7 +9,7 @@ import { useCalculatedStats, useCharacterCalculation } from '@/hooks';
 import { useBuildStore, useUIStore } from '@/stores';
 import { Tooltip } from '@/components/ui';
 import { StatsConfigModal, AccoladesModal, AboutModal, ExportImportModal, FeedbackModal, KnownIssuesModal, WelcomeModal, useWelcomeModal } from '@/components/modals';
-import { IncarnateSlotGrid, IncarnateModal } from '@/components/incarnate';
+import { IncarnateSlotGrid, IncarnateModal, IncarnateCraftingModal } from '@/components/incarnate';
 import { INCARNATE_REQUIRED_LEVEL, createEmptyIncarnateBuildState } from '@/types';
 import type { CalculatedStats, DashboardStatBreakdown } from '@/hooks/useCalculatedStats';
 
@@ -464,6 +464,9 @@ export function StatsDashboard() {
   const incarnateModalOpen = useUIStore((s) => s.incarnateModalOpen);
   const openIncarnateModal = useUIStore((s) => s.openIncarnateModal);
   const closeIncarnateModal = useUIStore((s) => s.closeIncarnateModal);
+  const incarnateCraftingModalOpen = useUIStore((s) => s.incarnateCraftingModalOpen);
+  const openIncarnateCraftingModal = useUIStore((s) => s.openIncarnateCraftingModal);
+  const closeIncarnateCraftingModal = useUIStore((s) => s.closeIncarnateCraftingModal);
   const incarnateActive = useUIStore((s) => s.incarnateActive);
   const toggleIncarnateActive = useUIStore((s) => s.toggleIncarnateActive);
   const exportImportModalOpen = useUIStore((s) => s.exportImportModalOpen);
@@ -716,7 +719,15 @@ export function StatsDashboard() {
             <div className="hidden lg:block w-full sm:w-auto lg:min-w-[260px] lg:max-w-[300px] bg-gray-800/70 rounded-lg px-3 py-2 border border-gray-700 lg:h-[168px] lg:min-h-[168px] lg:max-h-[168px]">
               <div className="text-xs font-semibold text-gray-400 mb-2 uppercase tracking-wide flex items-center justify-between">
                 <span>Incarnate</span>
-                {!isLevel50 && (
+                {isLevel50 ? (
+                  <button
+                    onClick={openIncarnateCraftingModal}
+                    className="text-[10px] text-blue-400 hover:text-blue-300 border border-blue-800 hover:border-blue-600 bg-blue-900/30 hover:bg-blue-900/50 transition-colors px-1.5 py-0.5 rounded font-normal normal-case"
+                    title="Incarnate Crafting Checklist"
+                  >
+                    Crafting
+                  </button>
+                ) : (
                   <span className="text-[9px] text-gray-500 font-normal normal-case">Lv50</span>
                 )}
               </div>
@@ -748,6 +759,19 @@ export function StatsDashboard() {
               </svg>
               <span>Incarnate</span>
             </button>
+            {/* Crafting button - mobile/tablet, only at level 50 */}
+            {isLevel50 && (
+              <button
+                onClick={openIncarnateCraftingModal}
+                className="flex lg:hidden items-center gap-1.5 px-2 py-1 text-xs text-blue-400 hover:text-blue-300 hover:bg-gray-800 rounded transition-colors"
+                title="Incarnate Crafting Checklist"
+              >
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+                </svg>
+                <span>Crafting</span>
+              </button>
+            )}
             <button
               onClick={openAccoladesModal}
               className="flex items-center gap-1.5 px-2 py-1 text-xs text-gray-400 hover:text-amber-300 hover:bg-gray-800 rounded transition-colors"
@@ -809,6 +833,12 @@ export function StatsDashboard() {
       <IncarnateModal
         isOpen={incarnateModalOpen}
         onClose={closeIncarnateModal}
+      />
+
+      {/* Incarnate Crafting Modal */}
+      <IncarnateCraftingModal
+        isOpen={incarnateCraftingModalOpen}
+        onClose={closeIncarnateCraftingModal}
       />
 
       {/* Export/Import Modal */}

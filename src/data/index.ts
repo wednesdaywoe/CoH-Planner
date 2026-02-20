@@ -151,8 +151,6 @@ export {
   EARLY_TRAVEL_POWERS,
   EPIC_TIER_REQUIREMENTS,
   // Epic pools
-  EPIC_POOLS,
-  getEpicPools,
   canAccessEpicPools,
   // Incarnate
   INCARNATE_LEVEL,

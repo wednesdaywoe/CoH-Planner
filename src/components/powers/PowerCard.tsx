@@ -8,7 +8,7 @@ import type { PowerCategory } from '@/stores';
 import { getPowerIconPath } from '@/data';
 import { resolvePath } from '@/utils/paths';
 import { PowerSlot } from './PowerSlot';
-import { Badge, Tooltip } from '@/components/ui';
+import { Tooltip } from '@/components/ui';
 
 /**
  * Determine if a power should show a toggle switch for stat calculations.
@@ -91,69 +91,57 @@ export function PowerCard({
 
   return (
     <div
-      className="bg-gray-800 rounded-lg p-3 border border-gray-700 hover:border-gray-600 transition-colors"
+      className="bg-gray-800 rounded-lg px-3 py-2 border border-gray-700 hover:border-gray-600 transition-colors"
       onMouseEnter={handlePowerHover}
     >
-      {/* Power header */}
-      <div className="flex items-center justify-between mb-2">
-        <div className="flex items-center gap-2 min-w-0">
-          <img
-            src={getPowerIconPath(powersetName, power.icon)}
-            alt=""
-            className="w-8 h-8 rounded flex-shrink-0"
-            onError={(e) => {
-              (e.target as HTMLImageElement).src = resolvePath('/img/Unknown.png');
-            }}
-          />
-          <div className="min-w-0">
-            <h4 className="text-sm font-medium text-white truncate">{power.name}</h4>
-            <div className="flex items-center gap-1.5">
-              {showLevel && (
-                <span className="text-xs text-gray-400">Lvl {power.level}</span>
-              )}
-              <PowerTypeBadge powerType={power.powerType} />
-            </div>
-          </div>
-        </div>
+      {/* Row 1: Level · Icon · Name | X button */}
+      <div className="flex items-center gap-2 mb-1.5">
+        {showLevel && (
+          <span className="text-xs text-gray-500 w-6 text-right flex-shrink-0">{power.level}</span>
+        )}
+        <img
+          src={getPowerIconPath(powersetName, power.icon)}
+          alt=""
+          className="w-6 h-6 rounded flex-shrink-0"
+          onError={(e) => {
+            (e.target as HTMLImageElement).src = resolvePath('/img/Unknown.png');
+          }}
+        />
+        <h4 className="text-sm font-medium text-white truncate flex-1 min-w-0">{power.name}</h4>
         {onRemove && (
           <button
             onClick={onRemove}
-            className="text-gray-500 hover:text-red-500 transition-colors p-1"
+            className="text-gray-600 hover:text-red-500 transition-colors flex-shrink-0 -mr-1"
             title="Remove power"
           >
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
         )}
       </div>
 
-      {/* Enhancement slots */}
-      <div className="flex gap-1 flex-wrap">
-        {power.slots.map((slot, index) => (
-          <PowerSlot
-            key={index}
-            enhancement={slot}
-            slotIndex={index}
-            onClick={() => handleSlotClick(index)}
-            onRightClick={() => handleSlotRightClick(index)}
-          />
-        ))}
-        {canAddSlot && (
-          <PowerSlot
-            enhancement={null}
-            slotIndex={power.slots.length}
-            onClick={handleAddSlot}
-            isAddButton
-          />
-        )}
-      </div>
-
-      {/* Footer: slot count and toggle */}
-      <div className="mt-2 flex items-center justify-between">
-        <span className="text-xs text-gray-500">
-          {power.slots.length}/{power.maxSlots} slots
-        </span>
+      {/* Row 2: Enhancement slots (left) | Toggle (right) */}
+      <div className="flex items-center gap-1">
+        <div className="flex gap-1 flex-wrap flex-1">
+          {power.slots.map((slot, index) => (
+            <PowerSlot
+              key={index}
+              enhancement={slot}
+              slotIndex={index}
+              onClick={() => handleSlotClick(index)}
+              onRightClick={() => handleSlotRightClick(index)}
+            />
+          ))}
+          {canAddSlot && (
+            <PowerSlot
+              enhancement={null}
+              slotIndex={power.slots.length}
+              onClick={handleAddSlot}
+              isAddButton
+            />
+          )}
+        </div>
         {showToggle && (
           <Tooltip
             content={
@@ -165,7 +153,7 @@ export function PowerCard({
             <button
               onClick={() => togglePowerActive(power.name)}
               className={`
-                flex items-center gap-1 px-1.5 py-0.5 rounded text-xs font-medium transition-all
+                flex-shrink-0 flex items-center gap-1 px-1.5 py-0.5 rounded text-xs font-medium transition-all
                 ${
                   isActive
                     ? 'bg-green-900/50 text-green-400 border border-green-700'
@@ -187,47 +175,3 @@ export function PowerCard({
   );
 }
 
-interface PowerTypeBadgeProps {
-  powerType: string;
-}
-
-function PowerTypeBadge({ powerType }: PowerTypeBadgeProps) {
-  const variant = getTypeVariant(powerType);
-  const label = getTypeLabel(powerType);
-
-  return (
-    <Badge variant={variant} size="sm">
-      {label}
-    </Badge>
-  );
-}
-
-function getTypeVariant(powerType: string): 'default' | 'primary' | 'success' | 'warning' | 'purple' {
-  switch (powerType.toLowerCase()) {
-    case 'click':
-      return 'primary';
-    case 'toggle':
-      return 'warning';
-    case 'auto':
-      return 'success';
-    case 'passive':
-      return 'purple';
-    default:
-      return 'default';
-  }
-}
-
-function getTypeLabel(powerType: string): string {
-  switch (powerType.toLowerCase()) {
-    case 'click':
-      return 'Click';
-    case 'toggle':
-      return 'Toggle';
-    case 'auto':
-      return 'Auto';
-    case 'passive':
-      return 'Passive';
-    default:
-      return powerType;
-  }
-}

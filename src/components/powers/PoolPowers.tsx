@@ -376,118 +376,88 @@ function PoolPowerGroup({
               return (
                 <div key={power.name}>
                   <div
-                    className={`flex items-center gap-1.5 px-1.5 py-1 bg-slate-800 border rounded-sm group transition-colors ${
+                    className={`flex flex-col px-1.5 py-1 bg-slate-800 border rounded-sm group transition-colors ${
                     isLocked
                       ? 'border-amber-500 shadow-[0_0_4px_rgba(245,158,11,0.4)] bg-gradient-to-r from-amber-500/10 to-slate-800'
                       : 'border-slate-700 hover:border-slate-600'
                   }`}
                   onMouseLeave={onPowerLeave}
                 >
-                  {/* Level indicator */}
-                  <div className="flex-shrink-0 w-6 text-center">
-                    <span className="text-[10px] font-semibold text-slate-500">L{power.level}</span>
-                  </div>
-
-                  {/* Power icon and name */}
-                  <div
-                    className="flex items-center gap-1.5 flex-1 min-w-0 cursor-default"
-                    onMouseEnter={() => onPowerHover(power)}
-                    onContextMenu={(e) => onPowerRightClick(e, power)}
-                    title={isLocked ? 'Right-click to unlock power info' : 'Right-click to lock power info'}
-                  >
+                  {/* Row 1: Level · Icon · Name | X button */}
+                  <div className="flex items-center min-w-0">
+                    <span className="text-[10px] font-semibold text-slate-500 w-5 text-right flex-shrink-0 mr-2">L{power.level}</span>
                     <img
                       src={getPowerIconPath(poolName, power.icon)}
                       alt=""
-                      className="w-5 h-5 rounded-sm flex-shrink-0"
+                      className="w-4 h-4 rounded-sm flex-shrink-0 mr-1"
                       onError={(e) => {
                         (e.target as HTMLImageElement).src = resolvePath('/img/Unknown.png');
                       }}
                     />
-                    <span className="text-sm text-slate-200 truncate">
+                    <span
+                      className="text-xs text-slate-200 truncate flex-1 min-w-0 cursor-default"
+                      onMouseEnter={() => onPowerHover(power)}
+                      onContextMenu={(e) => onPowerRightClick(e, power)}
+                      title={isLocked ? 'Right-click to unlock power info' : 'Right-click to lock power info'}
+                    >
                       {power.name}
                     </span>
+                    <button
+                      onClick={() => onRemovePower(power.name)}
+                      className="text-slate-600 hover:text-red-400 text-[10px] opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0 leading-none"
+                      title="Remove power"
+                    >
+                      ✕
+                    </button>
                   </div>
-                  {/* Enhancement slots */}
-                  <div className="flex gap-0.5 justify-start items-center flex-shrink-0" style={{ width: '180px' }}>
-                    {power.slots.map((slot, index) => (
-                      <div
-                        key={index}
-                        onClick={() => openEnhancementPicker(power.name, poolId, index)}
-                        onMouseEnter={() =>
-                          slot ? onEnhancementHover(power.name, index) : onPowerHover(power)
-                        }
-                        onContextMenu={(e) => {
-                          e.preventDefault();
-                          if (slot) {
-                            onClearEnhancement(power.name, index);
-                          } else if (index > 0) {
-                            onRemoveSlot(power.name, index);
+
+                  {/* Row 2: Enhancement slots (left) | Toggle (right) */}
+                  <div className="flex items-center mt-0.5">
+                    <div className="w-7 flex-shrink-0" />
+                    <div className="flex gap-0.5 items-center flex-1">
+                      {power.slots.map((slot, index) => (
+                        <div
+                          key={index}
+                          onClick={() => openEnhancementPicker(power.name, poolId, index)}
+                          onMouseEnter={() =>
+                            slot ? onEnhancementHover(power.name, index) : onPowerHover(power)
                           }
-                        }}
-                        className={`
-                          w-6 h-6 rounded-full border flex items-center justify-center
-                          text-[9px] font-semibold cursor-pointer hover:scale-110 transition-transform
-                          ${
-                            slot
-                              ? 'border-transparent'
-                              : 'border-slate-600 bg-slate-700/50 text-slate-500 hover:border-blue-500'
-                          }
-                        `}
-                        title={
-                          slot
-                            ? `${slot.name || 'Enhancement'} (right-click to remove enhancement)`
-                            : `Empty slot${index > 0 ? ' (right-click to remove slot)' : ''}`
-                        }
-                      >
-                        {slot ? (
-                          <SlottedEnhancementIcon enhancement={slot} size={24} />
-                        ) : (
-                          '+'
-                        )}
-                      </div>
-                    ))}
-                    <DraggableSlotGhost
-                      powerName={power.name}
-                      currentSlots={power.slots.length}
-                      maxSlots={power.maxSlots}
-                      onAddSlots={(count) => onAddSlots(power.name, count)}
-                    />
-                  </div>
-                  {/* Toggle switch */}
-                  <div className="w-8 flex-shrink-0">
+                          onContextMenu={(e) => {
+                            e.preventDefault();
+                            if (slot) {
+                              onClearEnhancement(power.name, index);
+                            } else if (index > 0) {
+                              onRemoveSlot(power.name, index);
+                            }
+                          }}
+                          className={`
+                            w-6 h-6 rounded-full border flex items-center justify-center
+                            text-[9px] font-semibold cursor-pointer hover:scale-110 transition-transform
+                            ${slot ? 'border-transparent' : 'border-slate-600 bg-slate-700/50 text-slate-500 hover:border-blue-500'}
+                          `}
+                          title={slot ? `${slot.name || 'Enhancement'} (right-click to remove)` : `Empty slot${index > 0 ? ' (right-click to remove slot)' : ''}`}
+                        >
+                          {slot ? <SlottedEnhancementIcon enhancement={slot} size={24} /> : '+'}
+                        </div>
+                      ))}
+                      <DraggableSlotGhost
+                        powerName={power.name}
+                        currentSlots={power.slots.length}
+                        maxSlots={power.maxSlots}
+                        onAddSlots={(count) => onAddSlots(power.name, count)}
+                      />
+                    </div>
                     {shouldShowToggle(power) && (
-                      <Tooltip
-                        content={
-                          power.isActive
-                            ? 'Power ON - stats included'
-                            : 'Power OFF - click to include'
-                        }
-                      >
+                      <Tooltip content={power.isActive ? 'Power ON - stats included' : 'Power OFF - click to include'}>
                         <button
                           onClick={() => onToggle(power.name)}
-                          className={`
-                            relative w-8 h-4 rounded-full transition-colors duration-200
-                            ${power.isActive ? 'bg-green-600' : 'bg-slate-600'}
-                          `}
+                          className={`flex-shrink-0 relative w-8 h-4 rounded-full transition-colors duration-200 ${power.isActive ? 'bg-green-600' : 'bg-slate-600'}`}
                         >
-                          <span
-                            className={`
-                              absolute top-[2px] left-[2px] w-3 h-3 rounded-full bg-white shadow-sm
-                              transition-transform duration-200
-                              ${power.isActive ? 'translate-x-4' : 'translate-x-0'}
-                            `}
-                          />
+                          <span className={`absolute top-[2px] left-[2px] w-3 h-3 rounded-full bg-white shadow-sm transition-transform duration-200 ${power.isActive ? 'translate-x-4' : 'translate-x-0'}`} />
                         </button>
                       </Tooltip>
                     )}
                   </div>
-                  <button
-                    onClick={() => onRemovePower(power.name)}
-                    className="text-slate-600 hover:text-red-400 text-xs opacity-0 group-hover:opacity-100 transition-opacity px-0.5"
-                    title="Remove power"
-                  >
-                    ✕
-                  </button>
                   </div>
 
                   {/* Granted sub-powers display */}
@@ -715,91 +685,78 @@ function EpicPoolSelectedPowers({ epicPool, isPowerLocked }: EpicPoolSelectedPow
             return (
               <div
                 key={power.name}
-                className={`flex items-center gap-1.5 px-1.5 py-1 bg-slate-800 border rounded-sm group transition-colors ${
+                className={`flex flex-col px-1.5 py-1 bg-slate-800 border rounded-sm group transition-colors ${
                   isLocked
                     ? 'border-amber-500 shadow-[0_0_4px_rgba(245,158,11,0.4)] bg-gradient-to-r from-amber-500/10 to-slate-800'
                     : 'border-slate-700 hover:border-slate-600'
                 }`}
                 onMouseLeave={handlePowerLeave}
               >
-                {/* Level indicator */}
-                <div className="flex-shrink-0 w-6 text-center">
-                  <span className="text-[10px] font-semibold text-slate-500">L{power.level}</span>
-                </div>
-                {/* Power icon and name */}
-                <div
-                  className="flex items-center gap-1.5 flex-1 min-w-0 cursor-default"
-                  onMouseEnter={() => handlePowerHover(power)}
-                  onContextMenu={(e) => handlePowerRightClick(e, power)}
-                  title={isLocked ? 'Right-click to unlock power info' : 'Right-click to lock power info'}
-                >
+                {/* Row 1: Level · Icon · Name | X button */}
+                <div className="flex items-center min-w-0">
+                  <span className="text-[10px] font-semibold text-slate-500 w-5 text-right flex-shrink-0 mr-2">L{power.level}</span>
                   <img
                     src={getEpicPowerIcon(power)}
                     alt=""
-                    className="w-5 h-5 rounded-sm flex-shrink-0"
+                    className="w-4 h-4 rounded-sm flex-shrink-0 mr-1"
                     onError={(e) => {
                       (e.target as HTMLImageElement).src = resolvePath('/img/Unknown.png');
                     }}
                   />
-                  <span className="text-sm text-slate-200 truncate">
+                  <span
+                    className="text-xs text-slate-200 truncate flex-1 min-w-0 cursor-default"
+                    onMouseEnter={() => handlePowerHover(power)}
+                    onContextMenu={(e) => handlePowerRightClick(e, power)}
+                    title={isLocked ? 'Right-click to unlock power info' : 'Right-click to lock power info'}
+                  >
                     {power.name}
                   </span>
+                  <button
+                    onClick={() => removePower('epic', power.name)}
+                    className="text-slate-600 hover:text-red-400 text-[10px] opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0 leading-none"
+                    title="Remove power"
+                  >
+                    ✕
+                  </button>
                 </div>
-                {/* Enhancement slots */}
-                <div className="flex gap-0.5 justify-start items-center flex-shrink-0" style={{ width: '180px' }}>
-                  {power.slots.map((slot, index) => (
-                    <div
-                      key={index}
-                      onClick={() => openEnhancementPicker(power.name, epicPool.id, index)}
-                      onMouseEnter={() =>
-                        slot ? handleEnhancementHover(power.name, index) : handlePowerHover(power)
-                      }
-                      onContextMenu={(e) => {
-                        e.preventDefault();
-                        if (slot) {
-                          handleClearEnhancement(power.name, index);
-                        } else if (index > 0) {
-                          handleRemoveSlot(power.name, index);
+
+                {/* Row 2: Enhancement slots */}
+                <div className="flex items-center mt-0.5">
+                  <div className="w-7 flex-shrink-0" />
+                  <div className="flex gap-0.5 items-center flex-1">
+                    {power.slots.map((slot, index) => (
+                      <div
+                        key={index}
+                        onClick={() => openEnhancementPicker(power.name, epicPool.id, index)}
+                        onMouseEnter={() =>
+                          slot ? handleEnhancementHover(power.name, index) : handlePowerHover(power)
                         }
-                      }}
-                      className={`
-                        w-6 h-6 rounded-full border flex items-center justify-center
-                        text-[9px] font-semibold cursor-pointer hover:scale-110 transition-transform
-                        ${
-                          slot
-                            ? 'border-transparent'
-                            : 'border-slate-600 bg-slate-700/50 text-slate-500 hover:border-purple-500'
-                        }
-                      `}
-                      title={
-                        slot
-                          ? `${slot.name || 'Enhancement'} (right-click to remove enhancement)`
-                          : `Empty slot${index > 0 ? ' (right-click to remove slot)' : ''}`
-                      }
-                    >
-                      {slot ? (
-                        <SlottedEnhancementIcon enhancement={slot} size={24} />
-                      ) : (
-                        '+'
-                      )}
-                    </div>
-                  ))}
-                  <DraggableSlotGhost
-                    powerName={power.name}
-                    currentSlots={power.slots.length}
-                    maxSlots={power.maxSlots}
-                    onAddSlots={(count) => handleAddSlots(power.name, count)}
-                  />
+                        onContextMenu={(e) => {
+                          e.preventDefault();
+                          if (slot) {
+                            handleClearEnhancement(power.name, index);
+                          } else if (index > 0) {
+                            handleRemoveSlot(power.name, index);
+                          }
+                        }}
+                        className={`
+                          w-6 h-6 rounded-full border flex items-center justify-center
+                          text-[9px] font-semibold cursor-pointer hover:scale-110 transition-transform
+                          ${slot ? 'border-transparent' : 'border-slate-600 bg-slate-700/50 text-slate-500 hover:border-purple-500'}
+                        `}
+                        title={slot ? `${slot.name || 'Enhancement'} (right-click to remove)` : `Empty slot${index > 0 ? ' (right-click to remove slot)' : ''}`}
+                      >
+                        {slot ? <SlottedEnhancementIcon enhancement={slot} size={24} /> : '+'}
+                      </div>
+                    ))}
+                    <DraggableSlotGhost
+                      powerName={power.name}
+                      currentSlots={power.slots.length}
+                      maxSlots={power.maxSlots}
+                      onAddSlots={(count) => handleAddSlots(power.name, count)}
+                    />
+                  </div>
                 </div>
-                {/* Toggle space reservation */}
-                <div className="w-8 flex-shrink-0"></div>
-                <button
-                  onClick={() => removePower('epic', power.name)}
-                  className="text-slate-600 hover:text-red-400 text-xs opacity-0 group-hover:opacity-100 transition-opacity px-0.5"
-                  title="Remove power"
-                >
-                  ✕
-                </button>
               </div>
             );
           })}
@@ -870,15 +827,16 @@ function InherentPowerGroup({
             return (
               <div
                 key={power.name}
-                className={`flex items-center gap-1.5 px-1.5 py-1 bg-slate-800/50 border rounded-sm transition-colors ${
+                className={`flex flex-col px-1.5 py-1 bg-slate-800/50 border rounded-sm transition-colors ${
                   isLocked
                     ? 'border-amber-500 shadow-[0_0_4px_rgba(245,158,11,0.4)] bg-gradient-to-r from-amber-500/10 to-slate-800/50'
                     : 'border-slate-700/50 hover:border-slate-600'
                 }`}
                 onMouseLeave={onPowerLeave}
               >
+                {/* Row 1: icon + name */}
                 <div
-                  className="flex items-center gap-1.5 flex-1 min-w-0 cursor-default"
+                  className="flex items-center min-w-0 cursor-default"
                   onMouseEnter={() => onPowerHover(power)}
                   onContextMenu={(e) => onPowerRightClick(e, power)}
                   title={isLocked ? 'Right-click to unlock power info' : 'Right-click to lock power info'}
@@ -886,75 +844,78 @@ function InherentPowerGroup({
                   <img
                     src={getInherentIconPath(power)}
                     alt=""
-                    className="w-5 h-5 rounded-sm flex-shrink-0"
+                    className="w-4 h-4 rounded-sm flex-shrink-0 mr-1"
                     onError={(e) => {
                       (e.target as HTMLImageElement).src = resolvePath('/img/Unknown.png');
                     }}
                   />
-                  <span className="text-sm text-slate-400 truncate">
+                  <span className="text-xs text-slate-400 truncate flex-1 min-w-0">
                     {power.name}
                   </span>
                   {power.powerType === 'Auto' && (
-                    <span className="text-[9px] text-slate-600 uppercase">(Auto)</span>
+                    <span className="text-[9px] text-slate-600 uppercase flex-shrink-0">(Auto)</span>
                   )}
                 </div>
 
-                <div className="flex gap-0.5 justify-start items-center flex-shrink-0" style={{ width: '180px' }}>
-                  {(hasSlots || power.maxSlots > 0) && (
-                    <>
-                      {power.slots.map((slot, index) => (
-                        <div
-                          key={index}
-                          onClick={() => openEnhancementPicker(power.name, 'Inherent', index)}
-                          onMouseEnter={() =>
-                            slot ? onEnhancementHover(power.name, index) : onPowerHover(power)
-                          }
-                          onContextMenu={(e) => {
-                            e.preventDefault();
-                            if (slot) {
-                              onClearEnhancement(power.name, index);
-                            } else if (index > 0) {
-                              onRemoveSlot(power.name, index);
+                {/* Row 2: slots (indented to align under icon) */}
+                <div className="flex items-center mt-0.5">
+                  <div className="w-5 flex-shrink-0" />{/* aligns under icon */}
+                  <div className="flex gap-0.5 items-center">
+                    {(hasSlots || power.maxSlots > 0) && (
+                      <>
+                        {power.slots.map((slot, index) => (
+                          <div
+                            key={index}
+                            onClick={() => openEnhancementPicker(power.name, 'Inherent', index)}
+                            onMouseEnter={() =>
+                              slot ? onEnhancementHover(power.name, index) : onPowerHover(power)
                             }
-                          }}
-                          className={`
-                            w-6 h-6 rounded-full border flex items-center justify-center
-                            text-[9px] font-semibold cursor-pointer hover:scale-110 transition-transform
-                            ${
+                            onContextMenu={(e) => {
+                              e.preventDefault();
+                              if (slot) {
+                                onClearEnhancement(power.name, index);
+                              } else if (index > 0) {
+                                onRemoveSlot(power.name, index);
+                              }
+                            }}
+                            className={`
+                              w-5 h-5 rounded-full border flex items-center justify-center
+                              text-[8px] font-semibold cursor-pointer hover:scale-110 transition-transform
+                              ${
+                                slot
+                                  ? 'border-transparent'
+                                  : 'border-slate-600 bg-slate-700/50 text-slate-500 hover:border-blue-500'
+                              }
+                            `}
+                            title={
                               slot
-                                ? 'border-transparent'
-                                : 'border-slate-600 bg-slate-700/50 text-slate-500 hover:border-blue-500'
+                                ? `${slot.name || 'Enhancement'} (right-click to remove enhancement)`
+                                : `Empty slot${index > 0 ? ' (right-click to remove slot)' : ''}`
                             }
-                          `}
-                          title={
-                            slot
-                              ? `${slot.name || 'Enhancement'} (right-click to remove enhancement)`
-                              : `Empty slot${index > 0 ? ' (right-click to remove slot)' : ''}`
-                          }
-                        >
-                          {slot ? (
-                            <SlottedEnhancementIcon enhancement={slot} size={24} />
-                          ) : (
-                            '+'
-                          )}
-                        </div>
-                      ))}
-                      {canAddMoreSlots && (
-                        <DraggableSlotGhost
-                          powerName={power.name}
-                          currentSlots={power.slots.length}
-                          maxSlots={power.maxSlots}
-                          onAddSlots={(count) => onAddSlots(power.name, count)}
-                        />
-                      )}
-                    </>
-                  )}
-                  {!hasSlots && power.maxSlots === 0 && (
-                    <span className="text-[9px] text-slate-600 italic">No slots</span>
-                  )}
+                          >
+                            {slot ? (
+                              <SlottedEnhancementIcon enhancement={slot} size={20} />
+                            ) : (
+                              <span className="text-slate-400">+</span>
+                            )}
+                          </div>
+                        ))}
+                        {canAddMoreSlots && (
+                          <DraggableSlotGhost
+                            powerName={power.name}
+                            currentSlots={power.slots.length}
+                            maxSlots={power.maxSlots}
+                            onAddSlots={(count) => onAddSlots(power.name, count)}
+                            size="sm"
+                          />
+                        )}
+                      </>
+                    )}
+                    {!hasSlots && power.maxSlots === 0 && (
+                      <span className="text-[9px] text-slate-600 italic">No slots</span>
+                    )}
+                  </div>
                 </div>
-
-                <div className="w-8 flex-shrink-0"></div>
               </div>
             );
           })}

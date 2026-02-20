@@ -8,7 +8,6 @@
 import { useMemo } from 'react';
 import { useBuildStore } from '@/stores';
 import type { SelectedPower } from '@/types';
-import { POWER_PICK_LEVELS } from '@/data/levels';
 import { ChronologicalPowerSlot } from './ChronologicalPowerSlot';
 import { ChronologicalInherentsSection } from './ChronologicalInherentsSection';
 
@@ -145,16 +144,6 @@ function useChronologicalPowers() {
       });
     });
 
-    // Handle level 50 slot
-    const level50Powers = powersByLevel.get(50);
-    if (level50Powers) {
-      const power = level50Powers.find((p) => !usedPowers.has(p.name));
-      if (power) {
-        usedPowers.add(power.name);
-        slotAssignments.set('50-0', power);
-      }
-    }
-
     return {
       slotAssignments,
       powersByLevel,
@@ -217,15 +206,6 @@ export function ChronologicalPowerView() {
           ))}
         </div>
 
-        {/* Level 50 slot - outside the main grid */}
-        {POWER_PICK_LEVELS.includes(50) && (
-          <div className="p-1 border-t border-slate-700">
-            <ChronologicalPowerSlot
-              level={50}
-              power={slotAssignments.get('50-0') || null}
-            />
-          </div>
-        )}
       </div>
 
       {/* Inherent powers section */}

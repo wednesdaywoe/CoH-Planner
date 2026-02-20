@@ -60,8 +60,6 @@ export function CraftingTierSection({
   const threadsKey = craftingKey(slotId, treeId, tier, '_', 'threads');
   const empyreanKey = craftingKey(slotId, treeId, tier, '_', 'empyrean');
   const shardsKey = craftingKey(slotId, treeId, tier, '_', 'shards');
-  const noticeKey = craftingKey(slotId, treeId, tier, '_', 'noticeOfWell');
-
   // Variant ordering
   const variantOrder: CraftingVariantKey[] = ['core', 'core_2', 'radial', 'radial_2'];
   const activeVariants = variantOrder.filter((v) => variants[v]);
@@ -104,15 +102,6 @@ export function CraftingTierSection({
             onToggle={onToggleCheck}
           />
         )}
-        {tierRecipe.noticeOfWell > 0 && (
-          <CurrencyRow
-            label={`${tierRecipe.noticeOfWell} Notice of the Well`}
-            checkKey={noticeKey}
-            isChecked={isChecked(noticeKey)}
-            onToggle={onToggleCheck}
-          />
-        )}
-
         {/* Incarnate component rows */}
         {tierRecipe.incarnateComponents.map((comp, i) => {
           const compKey = craftingKey(slotId, treeId, tier, '_', `comp:${i}`);

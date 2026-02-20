@@ -258,7 +258,7 @@ export function ChronologicalPowerSlot({
   if (!power) {
     // Render empty slot placeholder
     return (
-      <div className="h-[52px] flex items-center gap-2 px-2 py-1 bg-slate-800/50 border border-dashed border-slate-700 rounded">
+      <div className="min-h-[46px] flex items-center gap-2 px-2 py-1 bg-slate-800/50 border border-dashed border-slate-700 rounded">
         <div className="flex-shrink-0 w-8 text-center">
           <span className="text-xs font-semibold text-slate-500">L{level}</span>
         </div>
@@ -354,7 +354,7 @@ export function ChronologicalPowerSlot({
   return (
     <div
       className={`
-        h-[52px] flex items-center gap-1.5 px-1.5 py-1 bg-slate-800 border rounded group transition-colors
+        min-h-[46px] flex flex-col px-1.5 py-1 bg-slate-800 border rounded group transition-colors
         border-l-4 ${CATEGORY_COLORS[power.category]}
         ${
           isLocked
@@ -364,71 +364,69 @@ export function ChronologicalPowerSlot({
       `}
       onMouseLeave={handlePowerLeave}
     >
-      {/* Level indicator */}
-      <div className="flex-shrink-0 w-6 text-center">
-        <span className="text-[10px] font-semibold text-slate-500">L{level}</span>
-      </div>
-
-      {/* Power icon and name */}
-      <div
-        className="flex items-center gap-1 flex-1 min-w-0 cursor-default"
-        onMouseEnter={handlePowerHover}
-        onContextMenu={handleRightClick}
-        title={`${CATEGORY_LABELS[power.category]}: ${power.name}`}
-      >
+      {/* Row 1: Level · Icon · Name | X button */}
+      <div className="flex items-center min-w-0">
+        <span className="text-[10px] font-semibold text-slate-500 w-5 text-right flex-shrink-0 mr-2">L{level}</span>
         <img
           src={getPowerIconPath(powersetName, power.icon)}
           alt=""
-          className="w-5 h-5 rounded-sm flex-shrink-0"
+          className="w-4 h-4 rounded-sm flex-shrink-0 mr-1"
           onError={(e) => {
             (e.target as HTMLImageElement).src = resolvePath('/img/Unknown.png');
           }}
         />
-        <span className="text-xs text-slate-200 truncate">{power.name}</span>
+        <span
+          className="text-xs text-slate-200 truncate flex-1 min-w-0 cursor-default"
+          onMouseEnter={handlePowerHover}
+          onContextMenu={handleRightClick}
+          title={`${CATEGORY_LABELS[power.category]}: ${power.name}`}
+        >
+          {power.name}
+        </span>
+        <button
+          onClick={handleRemove}
+          className="text-slate-600 hover:text-red-400 text-[10px] opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0 leading-none"
+          title="Remove power"
+        >
+          ✕
+        </button>
       </div>
 
-      {/* Enhancement slots - compact display, aligned left */}
-      <div
-        className="flex gap-0.5 justify-start items-center flex-shrink-0"
-        style={{ width: '140px' }}
-      >
-        {power.slots.slice(0, 6).map((slot, index) => (
-          <TouchableSlotCompact
-            key={index}
-            slot={slot}
-            index={index}
-            canRemoveSlot={index > 0}
-            onClick={() => handleSlotClick(index)}
-            onMouseEnter={() =>
-              slot ? handleEnhancementHover(index) : handlePowerHover()
-            }
-            onClearEnhancement={() => clearEnhancement(power.name, index)}
-            onRemoveSlot={() => removeSlot(power.name, index)}
-            onClearAllEnhancements={handleClearAllEnhancements}
-            onRemoveAllSlots={handleRemoveAllSlots}
+      {/* Row 2: Enhancement slots (left) | Toggle (right) */}
+      <div className="flex items-center mt-0.5">
+        <div className="w-7 flex-shrink-0" />{/* aligns under icon */}
+        <div className="flex gap-0.5 items-center flex-1">
+          {power.slots.slice(0, 6).map((slot, index) => (
+            <TouchableSlotCompact
+              key={index}
+              slot={slot}
+              index={index}
+              canRemoveSlot={index > 0}
+              onClick={() => handleSlotClick(index)}
+              onMouseEnter={() =>
+                slot ? handleEnhancementHover(index) : handlePowerHover()
+              }
+              onClearEnhancement={() => clearEnhancement(power.name, index)}
+              onRemoveSlot={() => removeSlot(power.name, index)}
+              onClearAllEnhancements={handleClearAllEnhancements}
+              onRemoveAllSlots={handleRemoveAllSlots}
+            />
+          ))}
+          <DraggableSlotGhost
+            powerName={power.name}
+            currentSlots={power.slots.length}
+            maxSlots={power.maxSlots}
+            onAddSlots={handleAddSlots}
+            size="sm"
           />
-        ))}
+        </div>
 
-        {/* Draggable ghost for adding slots */}
-        <DraggableSlotGhost
-          powerName={power.name}
-          currentSlots={power.slots.length}
-          maxSlots={power.maxSlots}
-          onAddSlots={handleAddSlots}
-          size="sm"
-        />
-      </div>
-
-      {/* Toggle switch - compact */}
-      <div className="w-6 flex-shrink-0">
         {showToggle && (
-          <Tooltip
-            content={isActive ? 'Power ON' : 'Power OFF'}
-          >
+          <Tooltip content={isActive ? 'Power ON' : 'Power OFF'}>
             <button
               onClick={() => togglePowerActive(power.name)}
               className={`
-                relative w-6 h-3 rounded-full transition-colors duration-200
+                flex-shrink-0 relative w-6 h-3 rounded-full transition-colors duration-200
                 ${isActive ? 'bg-green-600' : 'bg-slate-600'}
               `}
             >
@@ -443,15 +441,6 @@ export function ChronologicalPowerSlot({
           </Tooltip>
         )}
       </div>
-
-      {/* Remove button */}
-      <button
-        onClick={handleRemove}
-        className="text-slate-600 hover:text-red-400 text-xs opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0"
-        title="Remove power"
-      >
-        ✕
-      </button>
     </div>
   );
 }

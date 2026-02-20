@@ -13,40 +13,40 @@ import type { IncarnateSlotId, TierRecipe, CraftingConversions } from '@/types';
 
 export const INCARNATE_RECIPES: Record<IncarnateSlotId, Record<number, TierRecipe>> = {
   alpha: {
-    1: { threads: 20,  empyrean: 0,  shards: 12, noticeOfWell: 0, incarnateComponents: ['3x Common Alpha Component'],                                     requires: [] },
-    2: { threads: 60,  empyrean: 0,  shards: 32, noticeOfWell: 0, incarnateComponents: ['1x Uncommon Alpha Component', '2x Common Alpha Component'],       requires: ['t1'] },
-    3: { threads: 100, empyrean: 8,  shards: 0,  noticeOfWell: 1, incarnateComponents: ['1x Rare Alpha Component'],                                        requires: ['t2'] },
-    4: { threads: 600, empyrean: 60, shards: 0,  noticeOfWell: 0, incarnateComponents: ['2x Very Rare Alpha Component'],                                   requires: ['t3_core', 't3_radial'] },
+    1: { threads: 20,  empyrean: 0,  shards: 12, incarnateComponents: ['3x Common Alpha Component'],                               requires: [] },
+    2: { threads: 60,  empyrean: 0,  shards: 32, incarnateComponents: ['1x Uncommon Alpha Component', '2x Common Alpha Component'], requires: ['t1'] },
+    3: { threads: 100, empyrean: 8,  shards: 0,  incarnateComponents: ['1x Rare Alpha Component'],                                 requires: ['t2'] },
+    4: { threads: 600, empyrean: 60, shards: 0,  incarnateComponents: ['2x Very Rare Alpha Component'],                            requires: ['t3_core', 't3_radial'] },
   },
   judgement: {
-    1: { threads: 60,  empyrean: 0,  shards: 0, noticeOfWell: 0, incarnateComponents: ['1x Common Incarnate Component'],   requires: [] },
-    2: { threads: 240, empyrean: 0,  shards: 0, noticeOfWell: 0, incarnateComponents: ['4x Uncommon Incarnate Component'], requires: ['t1'] },
-    3: { threads: 100, empyrean: 8,  shards: 0, noticeOfWell: 0, incarnateComponents: ['1x Rare Incarnate Component'],     requires: ['t2'] },
-    4: { threads: 300, empyrean: 30, shards: 0, noticeOfWell: 0, incarnateComponents: ['1x Very Rare Incarnate Component'], requires: ['t3_core', 't3_radial'] },
+    1: { threads: 60,  empyrean: 0,  shards: 0, incarnateComponents: ['1x Common Incarnate Component'],    requires: [] },
+    2: { threads: 240, empyrean: 0,  shards: 0, incarnateComponents: ['4x Uncommon Incarnate Component'],  requires: ['t1'] },
+    3: { threads: 100, empyrean: 8,  shards: 0, incarnateComponents: ['1x Rare Incarnate Component'],      requires: ['t2'] },
+    4: { threads: 300, empyrean: 30, shards: 0, incarnateComponents: ['1x Very Rare Incarnate Component'], requires: ['t3_core', 't3_radial'] },
   },
   interface: {
-    1: { threads: 60,  empyrean: 0,  shards: 0, noticeOfWell: 0, incarnateComponents: ['1x Common Incarnate Component'],   requires: [] },
-    2: { threads: 240, empyrean: 0,  shards: 0, noticeOfWell: 0, incarnateComponents: ['4x Uncommon Incarnate Component'], requires: ['t1'] },
-    3: { threads: 100, empyrean: 8,  shards: 0, noticeOfWell: 0, incarnateComponents: ['1x Rare Incarnate Component'],     requires: ['t2'] },
-    4: { threads: 300, empyrean: 30, shards: 0, noticeOfWell: 0, incarnateComponents: ['1x Very Rare Incarnate Component'], requires: ['t3_core', 't3_radial'] },
+    1: { threads: 60,  empyrean: 0,  shards: 0, incarnateComponents: ['1x Common Incarnate Component'],    requires: [] },
+    2: { threads: 240, empyrean: 0,  shards: 0, incarnateComponents: ['4x Uncommon Incarnate Component'],  requires: ['t1'] },
+    3: { threads: 100, empyrean: 8,  shards: 0, incarnateComponents: ['1x Rare Incarnate Component'],      requires: ['t2'] },
+    4: { threads: 300, empyrean: 30, shards: 0, incarnateComponents: ['1x Very Rare Incarnate Component'], requires: ['t3_core', 't3_radial'] },
   },
   destiny: {
-    1: { threads: 60,  empyrean: 0,  shards: 0, noticeOfWell: 0, incarnateComponents: ['1x Common Incarnate Component'],   requires: [] },
-    2: { threads: 240, empyrean: 0,  shards: 0, noticeOfWell: 0, incarnateComponents: ['4x Uncommon Incarnate Component'], requires: ['t1'] },
-    3: { threads: 100, empyrean: 8,  shards: 0, noticeOfWell: 0, incarnateComponents: ['1x Rare Incarnate Component'],     requires: ['t2'] },
-    4: { threads: 300, empyrean: 30, shards: 0, noticeOfWell: 0, incarnateComponents: ['1x Very Rare Incarnate Component'], requires: ['t3_core', 't3_radial'] },
+    1: { threads: 60,  empyrean: 0,  shards: 0, incarnateComponents: ['1x Common Incarnate Component'],    requires: [] },
+    2: { threads: 240, empyrean: 0,  shards: 0, incarnateComponents: ['4x Uncommon Incarnate Component'],  requires: ['t1'] },
+    3: { threads: 100, empyrean: 8,  shards: 0, incarnateComponents: ['1x Rare Incarnate Component'],      requires: ['t2'] },
+    4: { threads: 300, empyrean: 30, shards: 0, incarnateComponents: ['1x Very Rare Incarnate Component'], requires: ['t3_core', 't3_radial'] },
   },
   lore: {
-    1: { threads: 60,  empyrean: 0,  shards: 0, noticeOfWell: 0, incarnateComponents: ['1x Common Incarnate Component'],   requires: [] },
-    2: { threads: 240, empyrean: 0,  shards: 0, noticeOfWell: 0, incarnateComponents: ['4x Uncommon Incarnate Component'], requires: ['t1'] },
-    3: { threads: 100, empyrean: 8,  shards: 0, noticeOfWell: 0, incarnateComponents: ['1x Rare Incarnate Component'],     requires: ['t2'] },
-    4: { threads: 300, empyrean: 30, shards: 0, noticeOfWell: 0, incarnateComponents: ['1x Very Rare Incarnate Component'], requires: ['t3_core', 't3_radial'] },
+    1: { threads: 60,  empyrean: 0,  shards: 0, incarnateComponents: ['1x Common Incarnate Component'],    requires: [] },
+    2: { threads: 240, empyrean: 0,  shards: 0, incarnateComponents: ['4x Uncommon Incarnate Component'],  requires: ['t1'] },
+    3: { threads: 100, empyrean: 8,  shards: 0, incarnateComponents: ['1x Rare Incarnate Component'],      requires: ['t2'] },
+    4: { threads: 300, empyrean: 30, shards: 0, incarnateComponents: ['1x Very Rare Incarnate Component'], requires: ['t3_core', 't3_radial'] },
   },
   hybrid: {
-    1: { threads: 60,  empyrean: 0,  shards: 0, noticeOfWell: 0, incarnateComponents: ['1x Common Incarnate Component'],   requires: [] },
-    2: { threads: 240, empyrean: 0,  shards: 0, noticeOfWell: 0, incarnateComponents: ['4x Uncommon Incarnate Component'], requires: ['t1'] },
-    3: { threads: 100, empyrean: 8,  shards: 0, noticeOfWell: 0, incarnateComponents: ['1x Rare Incarnate Component'],     requires: ['t2'] },
-    4: { threads: 300, empyrean: 30, shards: 0, noticeOfWell: 0, incarnateComponents: ['1x Very Rare Incarnate Component'], requires: ['t3_core', 't3_radial'] },
+    1: { threads: 60,  empyrean: 0,  shards: 0, incarnateComponents: ['1x Common Incarnate Component'],    requires: [] },
+    2: { threads: 240, empyrean: 0,  shards: 0, incarnateComponents: ['4x Uncommon Incarnate Component'],  requires: ['t1'] },
+    3: { threads: 100, empyrean: 8,  shards: 0, incarnateComponents: ['1x Rare Incarnate Component'],      requires: ['t2'] },
+    4: { threads: 300, empyrean: 30, shards: 0, incarnateComponents: ['1x Very Rare Incarnate Component'], requires: ['t3_core', 't3_radial'] },
   },
 };
 
@@ -57,7 +57,6 @@ export const INCARNATE_RECIPES: Record<IncarnateSlotId, Record<number, TierRecip
 export const CRAFTING_CONVERSIONS: CraftingConversions = {
   empyreanToThreads: 20,
   shardsToThreads: 5,
-  noticeOfWellToEmpyrean: 1,
   favorOfWellToEmpyrean: 2.5,
 };
 
@@ -74,10 +73,10 @@ export function getTierRecipe(slotId: IncarnateSlotId, tier: number): TierRecipe
  * For T4: automatically doubles T3 cost (both variants required).
  */
 export function calculateCumulativeCost(slotId: IncarnateSlotId, tier: number): {
-  threads: number; empyrean: number; shards: number; noticeOfWell: number; incarnateComponents: string[];
+  threads: number; empyrean: number; shards: number; incarnateComponents: string[];
 } {
   const recipes = INCARNATE_RECIPES[slotId];
-  let threads = 0, empyrean = 0, shards = 0, noticeOfWell = 0;
+  let threads = 0, empyrean = 0, shards = 0;
   const incarnateComponents: string[] = [];
 
   for (let t = 1; t <= Math.min(tier, 4); t++) {
@@ -86,7 +85,6 @@ export function calculateCumulativeCost(slotId: IncarnateSlotId, tier: number): 
     threads += recipe.threads;
     empyrean += recipe.empyrean;
     shards += recipe.shards;
-    noticeOfWell += recipe.noticeOfWell;
     incarnateComponents.push(...recipe.incarnateComponents);
   }
 
@@ -100,5 +98,5 @@ export function calculateCumulativeCost(slotId: IncarnateSlotId, tier: number): 
     }
   }
 
-  return { threads, empyrean, shards, noticeOfWell, incarnateComponents };
+  return { threads, empyrean, shards, incarnateComponents };
 }

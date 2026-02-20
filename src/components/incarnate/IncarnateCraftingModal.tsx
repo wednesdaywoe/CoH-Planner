@@ -1,22 +1,48 @@
 /**
- * IncarnateCraftingModal - Dedicated modal for incarnate crafting checklist
- * Shows crafting requirements per slot/tree with persistent checkboxes
+ * IncarnateCraftingModal - Shows crafting requirements for the player's selected incarnate powers.
+ * Only displays tiers up to the selected power's tier, filtered to the relevant core/radial branch.
  */
 
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { useBuildStore, useUIStore } from '@/stores';
 import {
   getAllIncarnateSlots,
-  getIncarnateTrees,
   getSlotColor,
   getTreeComponents,
   getTierRecipe,
 } from '@/data';
-import { INCARNATE_SLOT_ORDER } from '@/types';
-import type { IncarnateSlotId } from '@/types';
+import { INCARNATE_SLOT_ORDER, inferBranchFromPowerName } from '@/types';
+import type { IncarnateSlotId, IncarnateBranch, CraftingVariantKey, CraftingVariant } from '@/types';
 import { CraftingTierSection } from './CraftingTierSection';
 import { CraftingCostSummary } from './CraftingCostSummary';
+
+const TIER_NUMBER: Record<string, number> = {
+  common: 1,
+  uncommon: 2,
+  rare: 3,
+  veryrare: 4,
+};
+
+/** Filter variant map to only the branch-relevant keys */
+function branchVariants(
+  variants: Partial<Record<CraftingVariantKey, CraftingVariant>>,
+  branch: IncarnateBranch,
+  tier: number
+): Partial<Record<CraftingVariantKey, CraftingVariant>> {
+  // T1 has no branch choice yet — show all variants
+  if (tier === 1 || branch === 'base') return variants;
+
+  const keys: CraftingVariantKey[] = branch === 'core'
+    ? ['core', 'core_2']
+    : ['radial', 'radial_2'];
+
+  const filtered: Partial<Record<CraftingVariantKey, CraftingVariant>> = {};
+  for (const k of keys) {
+    if (variants[k]) filtered[k] = variants[k];
+  }
+  return filtered;
+}
 
 interface IncarnateCraftingModalProps {
   isOpen: boolean;
@@ -26,42 +52,22 @@ interface IncarnateCraftingModalProps {
 export function IncarnateCraftingModal({ isOpen, onClose }: IncarnateCraftingModalProps) {
   const currentSlot = useUIStore((s) => s.currentIncarnateSlot);
   const setCurrentIncarnateSlot = useUIStore((s) => s.setCurrentIncarnateSlot);
+  const openIncarnateModal = useUIStore((s) => s.openIncarnateModal);
   const incarnates = useBuildStore((s) => s.build.incarnates);
   const craftingChecklist = useBuildStore((s) => s.build.craftingChecklist);
   const toggleCraftingCheckItem = useBuildStore((s) => s.toggleCraftingCheckItem);
   const clearCraftingChecklistForSlot = useBuildStore((s) => s.clearCraftingChecklistForSlot);
 
-  const [selectedTreeId, setSelectedTreeId] = useState<string | null>(null);
-
   const slots = getAllIncarnateSlots();
   const activeSlotId: IncarnateSlotId = currentSlot || 'alpha';
-  const trees = getIncarnateTrees(activeSlotId);
-
-  // Get currently selected power for this slot
   const currentPower = incarnates[activeSlotId];
-
-  // Auto-select tree when slot changes or modal opens
-  useEffect(() => {
-    if (isOpen && trees.length > 0) {
-      if (currentPower) {
-        setSelectedTreeId(currentPower.treeId);
-      } else {
-        setSelectedTreeId(trees[0].id);
-      }
-    }
-  }, [isOpen, activeSlotId, trees, currentPower]);
 
   // Handle escape key
   useEffect(() => {
     if (!isOpen) return;
-
-    const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose();
-    };
-
+    const handleEscape = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose(); };
     document.addEventListener('keydown', handleEscape);
     document.body.style.overflow = 'hidden';
-
     return () => {
       document.removeEventListener('keydown', handleEscape);
       document.body.style.overflow = '';
@@ -70,26 +76,16 @@ export function IncarnateCraftingModal({ isOpen, onClose }: IncarnateCraftingMod
 
   if (!isOpen) return null;
 
-  const selectedTree = trees.find((t) => t.id === selectedTreeId);
-
-  // Get crafting data for selected tree — use display name for lookup (matches component data keys)
-  const treeName = selectedTree?.name || '';
+  // Derive crafting parameters from selected power
+  const targetTier = currentPower ? (TIER_NUMBER[currentPower.tier] ?? 4) : 0;
+  const treeName = currentPower?.treeName || '';
+  const branch: IncarnateBranch = currentPower
+    ? inferBranchFromPowerName(currentPower.displayName)
+    : 'base';
   const treeComponents = treeName ? getTreeComponents(activeSlotId, treeName) : null;
-
-  // Determine the highest tier the selected power is at (for summary)
-  const selectedTier = currentPower
-    ? currentPower.tier === 'veryrare' ? 4
-    : currentPower.tier === 'rare' ? 3
-    : currentPower.tier === 'uncommon' ? 2
-    : 1
-    : 4; // Default to showing all tiers
 
   const handleBackdropClick = (e: React.MouseEvent) => {
     if (e.target === e.currentTarget) onClose();
-  };
-
-  const handleClearSlotChecklist = () => {
-    clearCraftingChecklistForSlot(activeSlotId);
   };
 
   return createPortal(
@@ -100,14 +96,13 @@ export function IncarnateCraftingModal({ isOpen, onClose }: IncarnateCraftingMod
       aria-modal="true"
       aria-label="Incarnate Crafting Checklist"
     >
-      <div className="w-full max-w-4xl h-full sm:h-[85vh] bg-gray-900 sm:rounded-lg shadow-xl border border-gray-700 flex flex-col animate-in fade-in zoom-in-95 duration-200">
-        {/* Header with slot tabs */}
+      <div className="w-full max-w-2xl h-full sm:h-[85vh] bg-gray-900 sm:rounded-lg shadow-xl border border-gray-700 flex flex-col animate-in fade-in zoom-in-95 duration-200">
+        {/* Header: slot tabs + close */}
         <div className="flex items-center justify-between border-b border-gray-700 px-1 sm:px-2">
           <div className="flex flex-1 overflow-x-auto">
             {INCARNATE_SLOT_ORDER.map((slotId) => {
               const slot = slots.find((s) => s.id === slotId);
               if (!slot) return null;
-
               const isActive = slotId === activeSlotId;
               const hasPower = incarnates[slotId] !== null;
               const slotColor = getSlotColor(slotId);
@@ -120,9 +115,7 @@ export function IncarnateCraftingModal({ isOpen, onClose }: IncarnateCraftingMod
                     px-2 sm:px-4 py-2 sm:py-3 text-xs sm:text-sm font-medium transition-colors relative whitespace-nowrap flex-shrink-0
                     ${isActive ? 'text-white' : 'text-gray-400 hover:text-gray-200'}
                   `}
-                  style={{
-                    borderBottom: isActive ? `3px solid ${slotColor}` : '3px solid transparent',
-                  }}
+                  style={{ borderBottom: isActive ? `3px solid ${slotColor}` : '3px solid transparent' }}
                 >
                   {slot.displayName}
                   {hasPower && (
@@ -135,8 +128,6 @@ export function IncarnateCraftingModal({ isOpen, onClose }: IncarnateCraftingMod
               );
             })}
           </div>
-
-          {/* Close button */}
           <button
             onClick={onClose}
             className="p-2 text-gray-400 hover:text-white transition-colors rounded hover:bg-gray-700"
@@ -148,106 +139,69 @@ export function IncarnateCraftingModal({ isOpen, onClose }: IncarnateCraftingMod
           </button>
         </div>
 
-        {/* Content area */}
-        <div className="flex-1 flex flex-col md:flex-row overflow-hidden">
-          {/* Tree sidebar */}
-          <div className="w-full md:w-44 border-b md:border-b-0 md:border-r border-gray-700 flex flex-col flex-shrink-0">
-            <div className="hidden md:block px-3 py-2 text-xs font-semibold text-gray-400 uppercase tracking-wide border-b border-gray-700">
-              Trees
+        {/* Content */}
+        <div className="flex-1 overflow-y-auto">
+          {!currentPower ? (
+            /* No power selected */
+            <div className="flex flex-col items-center justify-center h-full gap-3 text-center px-6">
+              <p className="text-gray-400 text-sm">No power selected for this slot.</p>
+              <button
+                onClick={() => { onClose(); openIncarnateModal(activeSlotId); }}
+                className="px-4 py-2 text-sm font-medium text-blue-400 border border-blue-700 hover:border-blue-500 hover:bg-blue-900/30 rounded-lg transition-colors"
+              >
+                Select a Power
+              </button>
             </div>
-            <div className="flex md:flex-col overflow-x-auto md:overflow-x-hidden md:overflow-y-auto p-1.5 md:p-2 gap-1 md:gap-0">
-              {trees.map((tree) => {
-                const isSelected = tree.id === selectedTreeId;
-                const hasPowerFromTree = currentPower?.treeId === tree.id;
+          ) : (
+            /* Power selected — show crafting path */
+            <div className="p-4 space-y-3">
+              {/* Selected power header */}
+              <div
+                className="px-3 py-2 rounded-lg flex items-center gap-2"
+                style={{ backgroundColor: `${getSlotColor(activeSlotId)}15`, border: `1px solid ${getSlotColor(activeSlotId)}40` }}
+              >
+                <span className="text-xs text-gray-400">Crafting path to:</span>
+                <span className="text-sm font-semibold text-white">{currentPower.displayName}</span>
+              </div>
+
+              {/* Tier sections — only up to the selected tier */}
+              {[1, 2, 3, 4].filter((t) => t <= targetTier).map((tier) => {
+                const tierRecipe = getTierRecipe(activeSlotId, tier);
+                const allVariants = treeComponents?.[tier];
+                if (!tierRecipe || !allVariants) return null;
+
+                const filteredVariants = branchVariants(allVariants, branch, tier);
 
                 return (
-                  <button
-                    key={tree.id}
-                    onClick={() => setSelectedTreeId(tree.id)}
-                    className={`
-                      flex-shrink-0 md:flex-shrink text-left px-3 py-1.5 md:py-2 rounded-lg md:mb-1 md:w-full
-                      transition-colors text-xs md:text-sm whitespace-nowrap md:whitespace-normal
-                      ${isSelected
-                        ? 'bg-gray-700 text-white'
-                        : 'text-gray-300 hover:bg-gray-800 hover:text-white'}
-                    `}
-                  >
-                    <div className="flex items-center justify-between gap-1.5">
-                      <span>{tree.name}</span>
-                      {hasPowerFromTree && (
-                        <span
-                          className="w-2 h-2 rounded-full flex-shrink-0"
-                          style={{ backgroundColor: getSlotColor(activeSlotId) }}
-                        />
-                      )}
-                    </div>
-                  </button>
+                  <CraftingTierSection
+                    key={tier}
+                    slotId={activeSlotId}
+                    treeId={currentPower.treeId}
+                    tier={tier}
+                    tierRecipe={tierRecipe}
+                    variants={filteredVariants}
+                    checklist={craftingChecklist}
+                    onToggleCheck={toggleCraftingCheckItem}
+                  />
                 );
               })}
+
+              {/* Cost summary */}
+              <CraftingCostSummary
+                slotId={activeSlotId}
+                targetTier={targetTier}
+                checklist={craftingChecklist}
+              />
             </div>
-          </div>
-
-          {/* Main content - crafting checklist */}
-          <div className="flex-1 flex flex-col overflow-hidden">
-            {/* Current power info */}
-            {currentPower && currentPower.treeId === selectedTreeId && (
-              <div
-                className="px-4 py-2 flex items-center gap-2 border-b border-gray-700"
-                style={{ backgroundColor: `${getSlotColor(activeSlotId)}15` }}
-              >
-                <span className="text-sm text-gray-400">Selected:</span>
-                <span className="text-sm font-medium text-white">{currentPower.displayName}</span>
-              </div>
-            )}
-
-            {/* Checklist */}
-            <div className="flex-1 overflow-y-auto p-4">
-              {selectedTree && treeComponents ? (
-                <div className="space-y-3">
-                  {[1, 2, 3, 4].map((tier) => {
-                    const tierRecipe = getTierRecipe(activeSlotId, tier);
-                    const variants = treeComponents[tier];
-                    if (!tierRecipe || !variants) return null;
-
-                    return (
-                      <CraftingTierSection
-                        key={tier}
-                        slotId={activeSlotId}
-                        treeId={selectedTreeId!}
-                        tier={tier}
-                        tierRecipe={tierRecipe}
-                        variants={variants}
-                        checklist={craftingChecklist}
-                        onToggleCheck={toggleCraftingCheckItem}
-                      />
-                    );
-                  })}
-
-                  {/* Cost summary */}
-                  <CraftingCostSummary
-                    slotId={activeSlotId}
-                    targetTier={selectedTier}
-                    checklist={craftingChecklist}
-                  />
-                </div>
-              ) : selectedTree ? (
-                <div className="flex items-center justify-center h-full text-gray-500 text-sm">
-                  No crafting data available for {selectedTree.name}
-                </div>
-              ) : (
-                <div className="flex items-center justify-center h-full text-gray-500 text-sm">
-                  Select a tree from the sidebar
-                </div>
-              )}
-            </div>
-          </div>
+          )}
         </div>
 
         {/* Footer */}
         <div className="px-4 py-3 border-t border-gray-700 flex justify-between gap-2">
           <button
-            onClick={handleClearSlotChecklist}
-            className="px-3 py-1.5 text-xs font-medium text-red-400 hover:text-red-300 transition-colors rounded-lg hover:bg-gray-800"
+            onClick={() => clearCraftingChecklistForSlot(activeSlotId)}
+            className="px-3 py-1.5 text-xs font-medium text-red-400 hover:text-red-300 transition-colors rounded-lg hover:bg-gray-800 disabled:opacity-30 disabled:cursor-not-allowed"
+            disabled={!currentPower}
           >
             Clear Checklist
           </button>

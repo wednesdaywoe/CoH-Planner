@@ -266,7 +266,7 @@ function InherentGroup({
             <div
               key={power.name}
               className={`
-                flex items-center gap-1 px-1.5 py-1 bg-slate-800/50 border rounded-sm transition-colors
+                flex flex-col px-1.5 py-1 bg-slate-800/50 border rounded-sm transition-colors
                 ${
                   isLocked
                     ? 'border-amber-500 shadow-[0_0_4px_rgba(245,158,11,0.4)] bg-gradient-to-r from-amber-500/10 to-slate-800/50'
@@ -275,16 +275,16 @@ function InherentGroup({
               `}
               onMouseLeave={onPowerLeave}
             >
-              {/* Power icon and name */}
+              {/* Row 1: icon + name */}
               <div
-                className="flex items-center gap-1 flex-1 min-w-0 cursor-default"
+                className="flex items-center min-w-0 cursor-default"
                 onMouseEnter={() => onPowerHover(power)}
                 onContextMenu={(e) => onPowerRightClick(e, power)}
               >
                 <img
                   src={getInherentIconPath(power)}
                   alt=""
-                  className="w-4 h-4 rounded-sm flex-shrink-0"
+                  className="w-4 h-4 rounded-sm flex-shrink-0 mr-1"
                   onError={(e) => {
                     (e.target as HTMLImageElement).src = resolvePath('/img/Unknown.png');
                   }}
@@ -292,44 +292,47 @@ function InherentGroup({
                 <span className="text-xs text-slate-400 truncate">{power.name}</span>
               </div>
 
-              {/* Enhancement slots - compact */}
+              {/* Row 2: slots (indented to align under icon) */}
               {(hasSlots || power.maxSlots > 0) && (
-                <div className="flex gap-0.5 items-center flex-shrink-0">
-                  {power.slots.map((slot, index) => (
-                    <div
-                      key={index}
-                      onClick={() => onSlotClick(power.name, index)}
-                      onMouseEnter={() =>
-                        slot ? onEnhancementHover(power.name, index) : onPowerHover(power)
-                      }
-                      onContextMenu={(e) => onSlotRightClick(e, power, index, !!slot)}
-                      className={`
-                        w-4 h-4 rounded-full border flex items-center justify-center
-                        text-[7px] cursor-pointer hover:scale-110 transition-transform
-                        ${
-                          slot
-                            ? 'border-transparent'
-                            : 'border-slate-600 bg-slate-700/50 hover:border-blue-500'
+                <div className="flex items-center mt-0.5">
+                  <div className="w-5 flex-shrink-0" />{/* aligns under icon */}
+                  <div className="flex gap-0.5 items-center">
+                    {power.slots.map((slot, index) => (
+                      <div
+                        key={index}
+                        onClick={() => onSlotClick(power.name, index)}
+                        onMouseEnter={() =>
+                          slot ? onEnhancementHover(power.name, index) : onPowerHover(power)
                         }
-                      `}
-                    >
-                      {slot ? (
-                        <SlottedEnhancementIcon enhancement={slot} size={16} />
-                      ) : (
-                        <span className="text-slate-400">+</span>
-                      )}
-                    </div>
-                  ))}
+                        onContextMenu={(e) => onSlotRightClick(e, power, index, !!slot)}
+                        className={`
+                          w-4 h-4 rounded-full border flex items-center justify-center
+                          text-[7px] cursor-pointer hover:scale-110 transition-transform
+                          ${
+                            slot
+                              ? 'border-transparent'
+                              : 'border-slate-600 bg-slate-700/50 hover:border-blue-500'
+                          }
+                        `}
+                      >
+                        {slot ? (
+                          <SlottedEnhancementIcon enhancement={slot} size={16} />
+                        ) : (
+                          <span className="text-slate-400">+</span>
+                        )}
+                      </div>
+                    ))}
 
-                  {power.maxSlots > power.slots.length && (
-                    <DraggableSlotGhost
-                      powerName={power.name}
-                      currentSlots={power.slots.length}
-                      maxSlots={power.maxSlots}
-                      onAddSlots={(count) => onAddSlots(power.name, count)}
-                      size="xs"
-                    />
-                  )}
+                    {power.maxSlots > power.slots.length && (
+                      <DraggableSlotGhost
+                        powerName={power.name}
+                        currentSlots={power.slots.length}
+                        maxSlots={power.maxSlots}
+                        onAddSlots={(count) => onAddSlots(power.name, count)}
+                        size="xs"
+                      />
+                    )}
+                  </div>
                 </div>
               )}
             </div>

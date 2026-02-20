@@ -34,7 +34,6 @@ export function CraftingCostSummary({
         <SummaryRow label="Threads" value={costs.threads} />
         {costs.empyrean > 0 && <SummaryRow label="Empyrean" value={costs.empyrean} />}
         {costs.shards > 0 && <SummaryRow label="Shards" value={costs.shards} />}
-        {costs.noticeOfWell > 0 && <SummaryRow label="Notice of the Well" value={costs.noticeOfWell} />}
 
         {/* Progress */}
         {totalCount > 0 && (

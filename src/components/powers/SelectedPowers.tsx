@@ -456,66 +456,67 @@ function SelectedPowerRow({
 
   return (
     <div
-      className={`flex items-center gap-1.5 px-1.5 py-1 bg-slate-800 border rounded-sm group transition-colors ${
+      className={`flex flex-col px-1.5 py-1 bg-slate-800 border rounded-sm group transition-colors ${
         isLocked
           ? 'border-amber-500 shadow-[0_0_4px_rgba(245,158,11,0.4)] bg-gradient-to-r from-amber-500/10 to-slate-800'
           : 'border-slate-700 hover:border-slate-600'
       }`}
       onMouseLeave={onLeave}
     >
-      {/* Level indicator */}
-      <div className="flex-shrink-0 w-6 text-center">
-        <span className="text-[10px] font-semibold text-slate-500">L{power.level}</span>
-      </div>
-
-      {/* Power icon and name - right-click to lock info panel */}
-      <div
-        className="flex items-center gap-1.5 flex-1 min-w-0 cursor-default"
-        onMouseEnter={onHover}
-        onContextMenu={onRightClick}
-        title={isLocked ? 'Right-click to unlock power info' : 'Right-click to lock power info'}
-      >
+      {/* Row 1: Level · Icon · Name | X button */}
+      <div className="flex items-center min-w-0">
+        <span className="text-[10px] font-semibold text-slate-500 w-5 text-right flex-shrink-0 mr-2">L{power.level}</span>
         <img
           src={getPowerIconPath(powersetName, power.icon)}
           alt=""
-          className="w-5 h-5 rounded-sm flex-shrink-0"
+          className="w-4 h-4 rounded-sm flex-shrink-0 mr-1"
           onError={(e) => {
             (e.target as HTMLImageElement).src = resolvePath('/img/Unknown.png');
           }}
         />
-        <span className="text-sm text-slate-200 truncate">
+        <span
+          className="text-xs text-slate-200 truncate flex-1 min-w-0 cursor-default"
+          onMouseEnter={onHover}
+          onContextMenu={onRightClick}
+          title={isLocked ? 'Right-click to unlock power info' : 'Right-click to lock power info'}
+        >
           {power.name}
         </span>
+        <button
+          onClick={onRemove}
+          className="text-slate-600 hover:text-red-400 text-[10px] opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0 leading-none"
+          title="Remove power"
+        >
+          ✕
+        </button>
       </div>
 
-      {/* Enhancement slots - fixed width container to prevent layout shift */}
-      <div className="flex gap-0.5 justify-start items-center flex-shrink-0" style={{ width: '180px' }}>
-        {power.slots.map((slot, index) => (
-          <TouchableSlot
-            key={index}
-            slot={slot}
-            index={index}
-            canRemoveSlot={index > 0}
-            onClick={() => handleSlotClick(index)}
-            onMouseEnter={() => handleSlotMouseEnter(index, !!slot)}
-            onClearEnhancement={() => onClearEnhancement(index)}
-            onRemoveSlot={() => onRemoveSlot(index)}
-            onClearAllEnhancements={onClearAllEnhancements}
-            onRemoveAllSlots={onRemoveAllSlots}
+      {/* Row 2: Enhancement slots (left) | Toggle (right) */}
+      <div className="flex items-center mt-0.5">
+        <div className="w-7 flex-shrink-0" />{/* aligns under icon */}
+        <div className="flex gap-0.5 items-center flex-1">
+          {power.slots.map((slot, index) => (
+            <TouchableSlot
+              key={index}
+              slot={slot}
+              index={index}
+              canRemoveSlot={index > 0}
+              onClick={() => handleSlotClick(index)}
+              onMouseEnter={() => handleSlotMouseEnter(index, !!slot)}
+              onClearEnhancement={() => onClearEnhancement(index)}
+              onRemoveSlot={() => onRemoveSlot(index)}
+              onClearAllEnhancements={onClearAllEnhancements}
+              onRemoveAllSlots={onRemoveAllSlots}
+            />
+          ))}
+          <DraggableSlotGhost
+            powerName={power.name}
+            currentSlots={power.slots.length}
+            maxSlots={power.maxSlots}
+            onAddSlots={onAddSlots}
           />
-        ))}
+        </div>
 
-        {/* Draggable ghost slot for adding more */}
-        <DraggableSlotGhost
-          powerName={power.name}
-          currentSlots={power.slots.length}
-          maxSlots={power.maxSlots}
-          onAddSlots={onAddSlots}
-        />
-      </div>
-
-      {/* Toggle switch container - always reserve space to prevent layout shift */}
-      <div className="w-8 flex-shrink-0">
         {showToggle && (
           <Tooltip
             content={
@@ -527,7 +528,7 @@ function SelectedPowerRow({
             <button
               onClick={onToggle}
               className={`
-                relative w-8 h-4 rounded-full transition-colors duration-200
+                flex-shrink-0 relative w-8 h-4 rounded-full transition-colors duration-200
                 ${isActive ? 'bg-green-600' : 'bg-slate-600'}
               `}
             >
@@ -542,15 +543,6 @@ function SelectedPowerRow({
           </Tooltip>
         )}
       </div>
-
-      {/* Remove button */}
-      <button
-        onClick={onRemove}
-        className="text-slate-600 hover:text-red-400 text-xs opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0 px-1"
-        title="Remove power"
-      >
-        ✕
-      </button>
     </div>
   );
 }

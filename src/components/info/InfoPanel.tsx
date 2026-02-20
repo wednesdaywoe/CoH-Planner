@@ -9,6 +9,7 @@ import { useUIStore, useBuildStore, useDominationActive } from '@/stores';
 import {
   getPower,
   getPowerPool,
+  getEpicPool,
   getArchetype,
   getIOSet,
   getPowerset,
@@ -117,7 +118,16 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
     if (!power) {
       power = pool.powers.find((p) => p.name === powerName);
     }
-  } else if (powerSet === 'Inherent') {
+  } else {
+    const epicPool = getEpicPool(powerSet);
+    if (epicPool) {
+      powersetName = epicPool.displayName || epicPool.name;
+      if (!power) {
+        power = epicPool.powers.find((p) => p.name === powerName);
+      }
+    }
+  }
+  if (powerSet === 'Inherent') {
     // Handle inherent powers
     isInherent = true;
     powersetName = 'Inherent';

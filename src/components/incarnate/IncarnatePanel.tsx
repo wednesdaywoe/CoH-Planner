@@ -88,7 +88,7 @@ export function IncarnatePanel() {
             <div className="flex items-center gap-1">
               <button
                 onClick={openIncarnateCraftingModal}
-                className="text-xs text-gray-500 hover:text-blue-400 transition-colors px-2 py-1"
+                className="text-xs text-blue-400 hover:text-blue-300 border border-blue-800 hover:border-blue-600 bg-blue-900/30 hover:bg-blue-900/50 transition-colors px-2 py-1 rounded"
                 title="Incarnate Crafting Checklist"
               >
                 Crafting

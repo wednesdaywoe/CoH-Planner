@@ -37,7 +37,7 @@ export const TOTAL_SLOTS_AT_50 = 67;
  * Total: 24 power picks (including level 1)
  */
 export const POWER_PICK_LEVELS: readonly number[] = [
-  1, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 35, 38, 41, 44, 47, 49, 50,
+  1, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 35, 38, 41, 44, 47, 49,
 ] as const;
 
 /**
@@ -64,7 +64,7 @@ export function getPowerPicksAtLevel(level: number): number {
  *
  * Level 1: 2 slots (first power gets 1 slot automatically, plus 1 additional)
  * Levels 2-21 (even): 2 slots each
- * Levels 22-50 (even): 3 slots each (except level 50 = 1 slot)
+ * Levels 22-50 (even): 3 slots each
  */
 export const SLOT_GRANTS: Readonly<Record<number, number>> = {
   1: 2,
@@ -92,7 +92,7 @@ export const SLOT_GRANTS: Readonly<Record<number, number>> = {
   44: 3,
   46: 3,
   48: 3,
-  50: 1,
+  50: 3,
 } as const;
 
 /**
@@ -267,54 +267,6 @@ export const EPIC_TIER_REQUIREMENTS = {
 // ============================================
 // EPIC/PATRON POOLS
 // ============================================
-
-/**
- * Epic/Patron Ancillary Power Pools by archetype
- */
-export const EPIC_POOLS: Readonly<Record<string, readonly string[]>> = {
-  // Hero Archetypes - Epic Power Pools
-  blaster: ['Cold Mastery', 'Electricity Mastery', 'Fire Mastery', 'Force Mastery', 'Munitions Mastery'],
-  controller: ['Fire Mastery', 'Ice Mastery', 'Primal Forces Mastery', 'Psionic Mastery', 'Stone Mastery'],
-  defender: ['Dark Mastery', 'Electricity Mastery', 'Power Mastery', 'Psionic Mastery'],
-  scrapper: ['Body Mastery', 'Darkness Mastery', 'Weapon Mastery', 'Shield Mastery'],
-  tanker: ['Energy Mastery', 'Pyre Mastery', 'Arctic Mastery', 'Earth Mastery'],
-
-  // Villain Archetypes - Patron Power Pools
-  brute: ['Mu Mastery', 'Soul Mastery', 'Mace Mastery', 'Leviathan Mastery'],
-  corruptor: ['Mu Mastery', 'Soul Mastery', 'Mace Mastery', 'Leviathan Mastery'],
-  dominator: ['Mu Mastery', 'Soul Mastery', 'Mace Mastery', 'Leviathan Mastery'],
-  mastermind: ['Mu Mastery', 'Soul Mastery', 'Mace Mastery', 'Leviathan Mastery'],
-  stalker: ['Mu Mastery', 'Soul Mastery', 'Mace Mastery', 'Leviathan Mastery'],
-
-  // Praetorian/Neutral - Can choose Epic or Patron
-  sentinel: [
-    'Dark Mastery',
-    'Electricity Mastery',
-    'Fire Mastery',
-    'Ice Mastery',
-    'Leviathan Mastery',
-    'Mace Mastery',
-    'Mu Mastery',
-    'Psionic Mastery',
-    'Soul Mastery',
-    'Weapon Mastery',
-  ],
-
-  // Kheldian - No Epic pools (use inherent forms)
-  peacebringer: [],
-  warshade: [],
-
-  // Soldiers of Arachnos - Special Epic pools
-  arachnos_soldier: ['Mace Mastery', 'Mu Mastery', 'Soul Mastery', 'Leviathan Mastery'],
-  arachnos_widow: ['Mu Mastery', 'Soul Mastery', 'Mace Mastery', 'Leviathan Mastery'],
-} as const;
-
-/**
- * Get available Epic/Patron pools for an archetype
- */
-export function getEpicPools(archetypeId: string): readonly string[] {
-  return EPIC_POOLS[archetypeId.toLowerCase()] ?? [];
-}
 
 /**
  * Check if a character can access Epic/Patron pools
