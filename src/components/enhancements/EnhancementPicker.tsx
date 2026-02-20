@@ -21,6 +21,7 @@ import { Modal, ModalBody } from '@/components/modals';
 import { Tooltip, Toggle } from '@/components/ui';
 import { IOSetIcon, GenericIOIcon, OriginEnhancementIcon, SpecialEnhancementIcon } from './EnhancementIcon';
 import type { IOSet, IOSetPiece, EnhancementStatType, HamidonEnhancementDef, IOSetCategory } from '@/types';
+import { getSetTrackedMatches } from '@/data/set-bonus-index';
 
 type EnhancementTypeFilter = 'io-sets' | 'generic' | 'special' | 'origin';
 
@@ -739,6 +740,14 @@ function IOSetRow({
 }: IOSetRowProps) {
   const attunementEnabled = useUIStore((s) => s.attunementEnabled);
   const isUniqueEnhancementSlotted = useBuildStore((s) => s.isUniqueEnhancementSlotted);
+  const trackedStats = useUIStore((s) => s.trackedStats);
+
+  // Check if this set provides any tracked stat bonuses
+  const hasTrackedMatch = useMemo(() => {
+    if (trackedStats.length === 0) return false;
+    const matches = getSetTrackedMatches(set, trackedStats);
+    return matches.size > 0;
+  }, [set, trackedStats]);
 
   // Check if a piece is in the current drag selection
   const isPieceSelected = (pieceIndex: number) => {
@@ -756,7 +765,11 @@ function IOSetRow({
   };
 
   return (
-    <div className="bg-gray-800/40 rounded-lg p-2">
+    <div className={`rounded-lg p-2 ${
+      hasTrackedMatch
+        ? 'bg-blue-900/20 border-l-2 border-l-blue-500/70'
+        : 'bg-gray-800/40'
+    }`}>
       {/* Set header */}
       <div className="flex items-center gap-1 sm:gap-2 mb-2 flex-wrap">
         <span className={`text-xs sm:text-sm font-medium ${getRarityColor(set.category)}`}>

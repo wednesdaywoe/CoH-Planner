@@ -348,14 +348,33 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
       return damage;
     };
 
-    // Get DoT info from power definition
+    // Get DoT info from power definition (single object or array format)
     const dmg = basePower?.damage;
-    const dotInfo = dmg && typeof dmg === 'object' && 'duration' in dmg
-      ? {
+    const dotInfo = (() => {
+      if (!dmg || typeof dmg !== 'object') return undefined;
+      // Single object with duration/tickRate
+      if (!Array.isArray(dmg) && 'duration' in dmg) {
+        return {
           duration: (dmg as { duration?: number }).duration || 0,
           tickRate: (dmg as { tickRate?: number }).tickRate,
+        };
+      }
+      // Array format: only if ALL entries share the same duration/tickRate
+      if (Array.isArray(dmg)) {
+        type DmgEntry = { duration?: number; tickRate?: number };
+        const entries = dmg as DmgEntry[];
+        const dotEntries = entries.filter(e => e.duration && e.duration > 0);
+        if (dotEntries.length > 0 && dotEntries.length === entries.length) {
+          const dur = dotEntries[0].duration!;
+          const rate = dotEntries[0].tickRate;
+          const allSame = dotEntries.every(e => e.duration === dur && e.tickRate === rate);
+          if (allSame) {
+            return { duration: dur, tickRate: rate };
+          }
         }
-      : undefined;
+      }
+      return undefined;
+    })();
 
     return {
       finalColumnHeader,

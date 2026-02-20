@@ -8,7 +8,7 @@ import { useMemo } from 'react';
 import { useCalculatedStats, useCharacterCalculation } from '@/hooks';
 import { useBuildStore, useUIStore } from '@/stores';
 import { Tooltip } from '@/components/ui';
-import { StatsConfigModal, AccoladesModal, AboutModal, ExportImportModal, FeedbackModal, KnownIssuesModal, WelcomeModal, useWelcomeModal } from '@/components/modals';
+import { StatsConfigModal, AccoladesModal, AboutModal, ExportImportModal, FeedbackModal, KnownIssuesModal, WelcomeModal, useWelcomeModal, SetBonusLookupModal } from '@/components/modals';
 import { IncarnateSlotGrid, IncarnateModal, IncarnateCraftingModal } from '@/components/incarnate';
 import { INCARNATE_REQUIRED_LEVEL, createEmptyIncarnateBuildState } from '@/types';
 import type { CalculatedStats, DashboardStatBreakdown } from '@/hooks/useCalculatedStats';
@@ -82,7 +82,7 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
   // Defense
   defense_melee: {
     id: 'defense_melee',
-    label: 'Melee Def',
+    label: 'Melee',
     getValue: (stats) => stats.defense.melee,
     format: (v) => `${Number(v).toFixed(1)}%`,
     color: 'text-purple-400',
@@ -92,7 +92,7 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
   },
   defense_ranged: {
     id: 'defense_ranged',
-    label: 'Ranged Def',
+    label: 'Ranged',
     getValue: (stats) => stats.defense.ranged,
     format: (v) => `${Number(v).toFixed(1)}%`,
     color: 'text-purple-400',
@@ -102,7 +102,7 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
   },
   defense_aoe: {
     id: 'defense_aoe',
-    label: 'AoE Def',
+    label: 'AoE',
     getValue: (stats) => stats.defense.aoe,
     format: (v) => `${Number(v).toFixed(1)}%`,
     color: 'text-purple-400',
@@ -112,7 +112,7 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
   },
   defense_smashing: {
     id: 'defense_smashing',
-    label: 'S/L Def',
+    label: 'S/L',
     getValue: (stats) => Math.max(stats.defense.smashing, stats.defense.lethal),
     format: (v) => `${Number(v).toFixed(1)}%`,
     color: 'text-purple-400',
@@ -122,7 +122,7 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
   },
   defense_fire: {
     id: 'defense_fire',
-    label: 'F/C Def',
+    label: 'F/C',
     getValue: (stats) => Math.max(stats.defense.fire, stats.defense.cold),
     format: (v) => `${Number(v).toFixed(1)}%`,
     color: 'text-purple-400',
@@ -132,7 +132,7 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
   },
   defense_energy: {
     id: 'defense_energy',
-    label: 'E/N Def',
+    label: 'E/N',
     getValue: (stats) => Math.max(stats.defense.energy, stats.defense.negative),
     format: (v) => `${Number(v).toFixed(1)}%`,
     color: 'text-purple-400',
@@ -142,7 +142,7 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
   },
   defense_psionic: {
     id: 'defense_psionic',
-    label: 'Psi Def',
+    label: 'Psionic',
     getValue: (stats) => stats.defense.psionic,
     format: (v) => `${Number(v).toFixed(1)}%`,
     color: 'text-purple-400',
@@ -152,7 +152,7 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
   },
   defense_toxic: {
     id: 'defense_toxic',
-    label: 'Toxic Def',
+    label: 'Toxic',
     getValue: () => 0, // Toxic defense is rare
     format: (v) => `${Number(v).toFixed(1)}%`,
     color: 'text-purple-400',
@@ -164,7 +164,7 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
   // Resistance
   resist_smashing: {
     id: 'resist_smashing',
-    label: 'S/L Res',
+    label: 'S/L',
     getValue: (stats) => Math.max(stats.resistance.smashing, stats.resistance.lethal),
     format: (v) => `${Number(v).toFixed(1)}%`,
     color: 'text-orange-400',
@@ -174,7 +174,7 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
   },
   resist_fire: {
     id: 'resist_fire',
-    label: 'F/C Res',
+    label: 'F/C',
     getValue: (stats) => Math.max(stats.resistance.fire, stats.resistance.cold),
     format: (v) => `${Number(v).toFixed(1)}%`,
     color: 'text-orange-400',
@@ -184,7 +184,7 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
   },
   resist_energy: {
     id: 'resist_energy',
-    label: 'E/N Res',
+    label: 'E/N',
     getValue: (stats) => Math.max(stats.resistance.energy, stats.resistance.negative),
     format: (v) => `${Number(v).toFixed(1)}%`,
     color: 'text-orange-400',
@@ -194,7 +194,7 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
   },
   resist_psionic: {
     id: 'resist_psionic',
-    label: 'Psi Res',
+    label: 'Psionic',
     getValue: (stats) => stats.resistance.psionic,
     format: (v) => `${Number(v).toFixed(1)}%`,
     color: 'text-orange-400',
@@ -204,7 +204,7 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
   },
   resist_toxic: {
     id: 'resist_toxic',
-    label: 'Toxic Res',
+    label: 'Toxic',
     getValue: (stats) => stats.resistance.toxic,
     format: (v) => `${Number(v).toFixed(1)}%`,
     color: 'text-orange-400',
@@ -461,6 +461,9 @@ export function StatsDashboard() {
   const aboutModalOpen = useUIStore((s) => s.aboutModalOpen);
   const openAboutModal = useUIStore((s) => s.openAboutModal);
   const closeAboutModal = useUIStore((s) => s.closeAboutModal);
+  const setBonusLookupModalOpen = useUIStore((s) => s.setBonusLookupModalOpen);
+  const openSetBonusLookupModal = useUIStore((s) => s.openSetBonusLookupModal);
+  const closeSetBonusLookupModal = useUIStore((s) => s.closeSetBonusLookupModal);
   const incarnateModalOpen = useUIStore((s) => s.incarnateModalOpen);
   const openIncarnateModal = useUIStore((s) => s.openIncarnateModal);
   const closeIncarnateModal = useUIStore((s) => s.closeIncarnateModal);
@@ -475,6 +478,8 @@ export function StatsDashboard() {
   const closeFeedbackModal = useUIStore((s) => s.closeFeedbackModal);
   const knownIssuesModalOpen = useUIStore((s) => s.knownIssuesModalOpen);
   const closeKnownIssuesModal = useUIStore((s) => s.closeKnownIssuesModal);
+  const trackedStats = useUIStore((s) => s.trackedStats);
+  const toggleTrackedStat = useUIStore((s) => s.toggleTrackedStat);
 
   // Welcome modal (auto-shows on first visit)
   const [welcomeModalOpen, closeWelcomeModal] = useWelcomeModal();
@@ -518,12 +523,12 @@ export function StatsDashboard() {
   // Stat categories for grouping (should match config modal)
   const STAT_CATEGORIES = [
     {
-      name: 'Offense',
-      stats: ['damage', 'accuracy', 'tohit', 'recharge'],
-    },
-    {
-      name: 'Health & Endurance',
-      stats: ['health', 'regeneration', 'maxend', 'recovery'],
+      name: 'General',
+      stats: [
+        'damage', 'accuracy', 'tohit', 'recharge',
+        'health', 'regeneration', 'maxend', 'recovery', 'endreduction',
+        'runspeed', 'flyspeed', 'jumpspeed', 'jumpheight',
+      ],
     },
     {
       name: 'Defense',
@@ -556,14 +561,6 @@ export function StatsDashboard() {
       ],
     },
     {
-      name: 'Endurance',
-      stats: ['endreduction'],
-    },
-    {
-      name: 'Movement',
-      stats: ['runspeed', 'flyspeed', 'jumpspeed', 'jumpheight'],
-    },
-    {
       name: 'Debuff Resistance',
       stats: [
         'debuff_slow',
@@ -587,44 +584,13 @@ export function StatsDashboard() {
   return (
     <>
       <div className="bg-gray-900/50 border-b border-gray-800 px-2 sm:px-4 py-2">
-        {/* Grouped stats - CSS columns layout with break-inside:avoid per group */}
-        <div style={{ columns: '240px', columnGap: '0.5rem' }}>
-            {/* Resources panel - Powers and Slots remaining */}
-            <div className="bg-gray-800/70 rounded-lg px-3 py-2 border border-gray-700 mb-2 break-inside-avoid">
-              <div className="text-xs font-semibold text-gray-400 mb-2 uppercase tracking-wide">Resources</div>
-              <div className="flex flex-col gap-3">
-                <Tooltip content={`${24 - currentPowerCount} power picks remaining (${currentPowerCount} used)`}>
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs text-gray-500 uppercase tracking-wide">Powers</span>
-                    <span
-                      className={`text-sm font-medium ${
-                        currentPowerCount > 24 ? 'text-red-400' : 24 - currentPowerCount <= 3 ? 'text-yellow-400' : 'text-emerald-400'
-                      }`}
-                    >
-                      {24 - currentPowerCount}/24
-                    </span>
-                  </div>
-                </Tooltip>
-                <Tooltip content={`${67 - currentSlotCount} enhancement slots remaining (${currentSlotCount} used)`}>
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs text-gray-500 uppercase tracking-wide">Slots</span>
-                    <span
-                      className={`text-sm font-medium ${
-                        currentSlotCount > 67 ? 'text-red-400' : 67 - currentSlotCount <= 5 ? 'text-yellow-400' : 'text-emerald-400'
-                      }`}
-                    >
-                      {67 - currentSlotCount}/67
-                    </span>
-                  </div>
-                </Tooltip>
-              </div>
-            </div>
-
-            {/* All stat group panels - column items that won't break across columns */}
+        {/* Grouped stats - CSS Grid auto-fill layout with vertical stretch */}
+        <div className="grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-2 items-stretch">
+            {/* All stat group panels */}
             {groupedStats.map((group) => (
               <div
                 key={group.name}
-                className="bg-gray-800/70 rounded-lg px-3 py-2 border border-gray-700 mb-2 break-inside-avoid"
+                className="bg-gray-800/70 rounded-lg px-3 py-2 border border-gray-700"
               >
                 <div className="text-xs font-semibold text-gray-400 mb-1 uppercase tracking-wide">{group.name}</div>
                 <div className="grid grid-cols-2 gap-x-4 gap-y-1">
@@ -636,6 +602,8 @@ export function StatsDashboard() {
                       color={stat.color}
                       tooltip={stat.tooltip}
                       breakdown={stat.breakdown}
+                      tracked={stat.breakdownKey ? trackedStats.includes(stat.breakdownKey) : false}
+                      onTrack={stat.breakdownKey ? () => toggleTrackedStat(stat.breakdownKey!) : undefined}
                     />
                   ))}
                 </div>
@@ -643,7 +611,7 @@ export function StatsDashboard() {
             ))}
 
             {/* Incarnate Powers panel - hide on very small screens */}
-            <div className="hidden md:block bg-gray-800/70 rounded-lg px-3 py-2 border border-gray-700 mb-2 break-inside-avoid">
+            <div className="hidden md:flex flex-col bg-gray-800/70 rounded-lg px-3 py-2 border border-gray-700">
               <div className="text-xs font-semibold text-gray-400 mb-2 uppercase tracking-wide flex items-center justify-between">
                 <span>Incarnate</span>
                 {isLevel50 ? (
@@ -670,6 +638,22 @@ export function StatsDashboard() {
 
         {/* Dashboard action bar */}
         <div className="flex items-center gap-1 pt-1 mt-1 border-t border-gray-800 flex-wrap">
+          {/* Resources: Powers and Slots remaining */}
+          <Tooltip content={`${24 - currentPowerCount} power picks remaining (${currentPowerCount} used)`}>
+            <span className={`text-xs tabular-nums font-medium px-1.5 ${
+              currentPowerCount > 24 ? 'text-red-400' : 24 - currentPowerCount <= 3 ? 'text-yellow-400' : 'text-emerald-400'
+            }`}>
+              Pwr {24 - currentPowerCount}/24
+            </span>
+          </Tooltip>
+          <Tooltip content={`${67 - currentSlotCount} enhancement slots remaining (${currentSlotCount} used)`}>
+            <span className={`text-xs tabular-nums font-medium px-1.5 ${
+              currentSlotCount > 67 ? 'text-red-400' : 67 - currentSlotCount <= 5 ? 'text-yellow-400' : 'text-emerald-400'
+            }`}>
+              Slot {67 - currentSlotCount}/67
+            </span>
+          </Tooltip>
+          <div className="w-px h-4 bg-gray-700 mx-0.5" />
           {/* Incarnate button - only visible when incarnate panel is hidden (small screens) */}
           <button
             onClick={() => openIncarnateModal()}
@@ -708,6 +692,16 @@ export function StatsDashboard() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
             </svg>
             <span>Accolades</span>
+          </button>
+          <button
+            onClick={openSetBonusLookupModal}
+            className="flex items-center gap-1.5 px-2 py-1 text-xs text-gray-400 hover:text-green-300 hover:bg-gray-800 rounded transition-colors"
+            title="Look up set bonuses by stat"
+          >
+            <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+            <span>Set Bonuses</span>
           </button>
           <button
             onClick={openStatsConfigModal}
@@ -753,6 +747,12 @@ export function StatsDashboard() {
       <AboutModal
         isOpen={aboutModalOpen}
         onClose={closeAboutModal}
+      />
+
+      {/* Set Bonus Lookup Modal */}
+      <SetBonusLookupModal
+        isOpen={setBonusLookupModalOpen}
+        onClose={closeSetBonusLookupModal}
       />
 
       {/* Incarnate Modal */}
@@ -801,12 +801,19 @@ interface StatItemProps {
   tooltip?: string;
   breakdown?: DashboardStatBreakdown;
   className?: string;
+  tracked?: boolean;
+  onTrack?: () => void;
 }
 
-function StatItem({ label, value, color = 'text-gray-300', tooltip, breakdown, className = '' }: StatItemProps) {
+function StatItem({ label, value, color = 'text-gray-300', tooltip, breakdown, className = '', tracked, onTrack }: StatItemProps) {
   const content = (
-    <div className={`flex items-center justify-between cursor-help ${className}`}>
-      <span className="text-xs text-gray-500 uppercase tracking-wide">{label}</span>
+    <div
+      className={`flex items-baseline justify-between ${onTrack ? 'cursor-pointer' : 'cursor-help'} ${
+        tracked ? 'ring-1 ring-blue-500/60 rounded px-1 -mx-1' : ''
+      } ${className}`}
+      onClick={onTrack}
+    >
+      <span className="text-xs text-gray-500 uppercase tracking-wide shrink-0">{label}</span>
       <span className={`text-sm font-medium tabular-nums text-right ${color}`}>{value}</span>
     </div>
   );

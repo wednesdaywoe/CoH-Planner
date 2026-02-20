@@ -68,6 +68,9 @@ interface UIState {
   /** Known Issues modal open state */
   knownIssuesModalOpen: boolean;
 
+  /** Set Bonus Lookup modal open state */
+  setBonusLookupModalOpen: boolean;
+
   /** Power Info modal open state (mobile only) */
   powerInfoModalOpen: boolean;
 
@@ -133,6 +136,9 @@ interface UIState {
 
   /** Power view mode: 'category' (default) or 'chronological' (Mids-style) */
   powerViewMode: 'category' | 'chronological';
+
+  /** Tracked stats — breakdownKey values for stats the user wants to chase via set bonuses */
+  trackedStats: string[];
 }
 
 interface UIActions {
@@ -214,6 +220,10 @@ interface UIActions {
   openKnownIssuesModal: () => void;
   closeKnownIssuesModal: () => void;
 
+  // Set Bonus Lookup Modal
+  openSetBonusLookupModal: () => void;
+  closeSetBonusLookupModal: () => void;
+
   // Power Info Modal (mobile only)
   openPowerInfoModal: () => void;
   closePowerInfoModal: () => void;
@@ -263,6 +273,10 @@ interface UIActions {
   // Power View Mode
   setPowerViewMode: (mode: 'category' | 'chronological') => void;
   togglePowerViewMode: () => void;
+
+  // Tracked Stats
+  toggleTrackedStat: (breakdownKey: string) => void;
+  clearTrackedStats: () => void;
 }
 
 type UIStore = UIState & UIActions;
@@ -338,6 +352,7 @@ export const useUIStore = create<UIStore>()(
       exportImportModalOpen: false,
       feedbackModalOpen: false,
       knownIssuesModalOpen: false,
+      setBonusLookupModalOpen: false,
       powerInfoModalOpen: false,
       globalIOLevel: 50,
       attunementEnabled: false,
@@ -360,6 +375,7 @@ export const useUIStore = create<UIStore>()(
       containmentActive: false, // Default to OFF (like Critical Hits)
       selectedBranch: null, // No branch selected by default
       powerViewMode: 'category', // Default to category-based view
+      trackedStats: [], // No tracked stats by default
 
       // Enhancement Picker Modal
       openEnhancementPicker: (powerName, powerSet, slotIndex) =>
@@ -705,6 +721,13 @@ export const useUIStore = create<UIStore>()(
       closeKnownIssuesModal: () =>
         set({ knownIssuesModalOpen: false }),
 
+      // Set Bonus Lookup Modal
+      openSetBonusLookupModal: () =>
+        set({ setBonusLookupModalOpen: true }),
+
+      closeSetBonusLookupModal: () =>
+        set({ setBonusLookupModalOpen: false }),
+
       // Power Info Modal (mobile only)
       openPowerInfoModal: () =>
         set({ powerInfoModalOpen: true }),
@@ -813,6 +836,15 @@ export const useUIStore = create<UIStore>()(
         set((state) => ({
           powerViewMode: state.powerViewMode === 'category' ? 'chronological' : 'category',
         })),
+
+      // Tracked Stats
+      toggleTrackedStat: (breakdownKey) =>
+        set((state) => ({
+          trackedStats: state.trackedStats.includes(breakdownKey)
+            ? state.trackedStats.filter((k) => k !== breakdownKey)
+            : [...state.trackedStats, breakdownKey],
+        })),
+      clearTrackedStats: () => set({ trackedStats: [] }),
     }),
     {
       name: 'coh-planner-ui',
@@ -839,6 +871,7 @@ export const useUIStore = create<UIStore>()(
         containmentActive: state.containmentActive,
         selectedBranch: state.selectedBranch,
         powerViewMode: state.powerViewMode,
+        trackedStats: state.trackedStats,
       }),
     })
   );

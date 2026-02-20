@@ -14,10 +14,6 @@ export interface TrackerItem {
 
 export const KNOWN_BUGS: TrackerItem[] = [
   { text: 'Titan/Hydra/D-Sync Origin Enhancements are not implemented', status: 'known-bug' },
-  { text: 'Set level caps (Touch of Death, Miracle) not enforced', status: 'known-bug' },
-  { text: 'Free first slot on powers may incorrectly subtract from the 67 maximum placed slots', status: 'known-bug' },
-  { text: 'Slots placed in inherent powers do not subtract from the 67 maximum', status: 'known-bug' },
-  { text: 'Incarnate power toggle graphic is slightly misaligned', status: 'known-bug' },
 ];
 
 // ============================================
@@ -25,9 +21,11 @@ export const KNOWN_BUGS: TrackerItem[] = [
 // ============================================
 
 export const RECENT_CHANGES: TrackerItem[] = [
-  { text: 'Update to fix Luck of the Gambler proc uniqueness, and apply Rule of 5 correctly', status: 'fixed' },
+  { text: 'Update to address missing data from power pools', status: 'fixed' },
   { text: 'Update to incorporate power updates in Issue 28, Page 3, Panel 2', status: 'fixed' },
   { text: 'New: Added modal for incarnate recipe calculator', status: 'new' },
+  { text: 'New: Added modal for set bonus finder', status: 'new' }, 
+  { text: 'New: Added dashboard feature: stat tracking! Left click a stat to track it; tracked stats will highlight sets that provide bonuses for that stat', status: 'new' },
   { text: 'New: First pass at importing builds from Mids Reborn! (.mbd files) Use the Export/Import modal, expect bugs :3', status: 'new' },
 
 

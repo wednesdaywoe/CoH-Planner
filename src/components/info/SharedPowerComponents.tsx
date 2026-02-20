@@ -511,11 +511,20 @@ export function RegistryEffectsDisplay({
           const hasEnh = Math.abs(damage.enhanced - damage.base) > 0.001;
           const finalDamage = applyInherentBonus ? applyInherentBonus(damage.final) : damage.final;
           const hasFinal = Math.abs(finalDamage - damage.enhanced) > 0.001;
+          const isDot = dotInfo && dotInfo.duration > 0 && dotInfo.tickRate;
+
+          // Calculate DoT totals
+          const numTicks = isDot ? Math.floor(dotInfo.duration / dotInfo.tickRate!) + 1 : 0;
+          const totalBase = damage.base * numTicks;
+          const totalEnhanced = damage.enhanced * numTicks;
+          const totalFinal = finalDamage * numTicks;
+          const hasTotalEnh = numTicks > 0 && Math.abs(totalEnhanced - totalBase) > 0.001;
+          const hasTotalFinal = numTicks > 0 && Math.abs(totalFinal - totalEnhanced) > 0.001;
 
           return (
             <>
               <div className={`grid ${gridCols} gap-1 items-baseline ${fontSize}`}>
-                <span className="text-red-400">{damage.type}</span>
+                <span className="text-red-400">{isDot ? `${damage.type}/tick` : damage.type}</span>
                 <span className="text-slate-200">{damage.base.toFixed(2)}</span>
                 <span className={hasEnh ? 'text-green-400' : 'text-slate-400'}>
                   {damage.enhanced.toFixed(2)}
@@ -524,11 +533,23 @@ export function RegistryEffectsDisplay({
                   {finalDamage.toFixed(2)}
                 </span>
               </div>
-              {/* DoT indicator */}
-              {dotInfo && dotInfo.duration > 0 && (
-                <div className={`${compact ? 'text-[8px]' : 'text-[9px]'} text-orange-400 italic mt-0.5 ml-1`}>
-                  DoT: {dotInfo.duration}s{dotInfo.tickRate ? `, ${dotInfo.tickRate}s ticks` : ''}
-                </div>
+              {/* DoT total damage row */}
+              {isDot && (
+                <>
+                  <div className={`grid ${gridCols} gap-1 items-baseline ${fontSize}`}>
+                    <span className="text-orange-400">Total</span>
+                    <span className="text-slate-200">{totalBase.toFixed(2)}</span>
+                    <span className={hasTotalEnh ? 'text-green-400' : 'text-slate-400'}>
+                      {totalEnhanced.toFixed(2)}
+                    </span>
+                    <span className={hasTotalFinal ? finalColumnColor : 'text-slate-400'}>
+                      {totalFinal.toFixed(2)}
+                    </span>
+                  </div>
+                  <div className={`${compact ? 'text-[8px]' : 'text-[9px]'} text-orange-400/70 italic mt-0.5 ml-1`}>
+                    {numTicks} ticks over {dotInfo.duration}s ({dotInfo.tickRate}s/tick)
+                  </div>
+                </>
               )}
               {/* Unknown damage indicator */}
               {damage.unknown && (

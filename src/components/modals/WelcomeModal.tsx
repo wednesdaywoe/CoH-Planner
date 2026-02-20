@@ -14,7 +14,7 @@ const LAST_UPDATED = (() => {
 })();
 
 const STORAGE_KEY = 'coh-planner-welcome-dismissed';
-const CURRENT_VERSION = '0.3.3-alpha'; // Increment to show modal again after major updates
+const CURRENT_VERSION = '0.3.5-alpha'; // Increment to show modal again after major updates
 
 interface WelcomeModalProps {
   isOpen: boolean;
@@ -67,7 +67,7 @@ export function WelcomeModal({ isOpen, onClose }: WelcomeModalProps) {
             </h3>
             <div className="space-y-3 text-sm text-gray-400">
               <div>
-                <span className="text-cyan-300 font-medium">Desktop (Mouse):</span>
+                <span className="text-cyan-300 font-medium">Desktop:</span>
                 <ul className="mt-1 space-y-1 ml-4">
                   <li><span className="text-gray-300">Hover</span> over powers to see details in the info panel</li>
                   <li><span className="text-gray-300">Click</span> to select powers or open the enhancement picker</li>
@@ -78,13 +78,22 @@ export function WelcomeModal({ isOpen, onClose }: WelcomeModalProps) {
                 </ul>
               </div>
               <div>
-                <span className="text-cyan-300 font-medium">Mobile (Touch):</span>
+                <span className="text-cyan-300 font-medium">Mobile:</span>
                 <ul className="mt-1 space-y-1 ml-4">
                   <li><span className="text-gray-300">Tap</span> to select powers or open the enhancement picker</li>
                   <li><span className="text-gray-300">Long-press</span> on a power to view its info in the panel</li>
                   <li><span className="text-gray-300">Touch and hold</span> on a slot for action menu (add, remove, clear all)</li>
                   <li><span className="text-gray-300">Touch and drag</span> the + button to add multiple slots</li>
                 </ul>
+              </div>
+              <div>
+                <span className="text-cyan-300 font-medium">Special Features:</span>
+                <ul className="mt-1 space-y-1 ml-4">
+                  <li><span className="text-gray-300">Stat Tracking:</span> Select a stat in the dashboard to track it. This highlights IO Sets that provide a bonus for that stat</li>
+                  <li><span className="text-gray-300">Set Bonus Finder:</span> Use to find sets that provide bonuses for specific stats.</li>
+                  <li><span className="text-gray-300">Incarnate Component Calculator:</span> Calculate the components needed for your incarnate powers (available at level 50)</li>
+                </ul>
+                
               </div>
             </div>
           </div>

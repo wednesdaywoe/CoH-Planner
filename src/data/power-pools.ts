@@ -98,24 +98,40 @@ function transformPoolPower(legacy: LegacyPoolPower): Power {
     powerType: legacy.powerType as PowerType,
     requires: legacy.requires,
     effects: {
+      // Base stats
       accuracy: legacy.effects.accuracy,
       range: legacy.effects.range,
       recharge: legacy.effects.recharge,
       enduranceCost: legacy.effects.endurance,
       castTime: legacy.effects.activationTime,
+      // Damage
       damage: legacy.effects.damage
         ? {
             type: legacy.effects.damage.type as DamageType,
             scale: legacy.effects.damage.scale,
           }
         : undefined,
+      // Mez protection/resistance
       protection: legacy.effects.protection,
       resistance: legacy.effects.resistance as PowerEffects['resistance'],
+      // Defense (typed)
       defense: (legacy.effects as any).defense as PowerEffects['defense'],
+      // Buffs
+      tohitBuff: (legacy.effects as any).tohitBuff as PowerEffects['tohitBuff'],
+      damageBuff: (legacy.effects as any).damageBuff as PowerEffects['damageBuff'],
       rechargeBuff: (legacy.effects as any).rechargeBuff as PowerEffects['rechargeBuff'],
+      recoveryBuff: (legacy.effects as any).recoveryBuff as PowerEffects['recoveryBuff'],
+      regenBuff: (legacy.effects as any).regenBuff as PowerEffects['regenBuff'],
+      maxHPBuff: (legacy.effects as any).maxHPBuff as PowerEffects['maxHPBuff'],
+      perceptionBuff: (legacy.effects as any).perceptionBuff as PowerEffects['perceptionBuff'],
+      defenseBuff: (legacy.effects as any).defenseBuff as PowerEffects['defenseBuff'],
+      // Movement
       runSpeed: legacy.effects.runSpeed,
+      flySpeed: (legacy.effects as any).flySpeed as PowerEffects['flySpeed'],
       jumpHeight: legacy.effects.jumpHeight,
       jumpSpeed: legacy.effects.jumpSpeed,
+      // Healing
+      healing: (legacy.effects as any).healing as PowerEffects['healing'],
     },
   };
 }
