@@ -21,13 +21,12 @@ export const KNOWN_BUGS: TrackerItem[] = [
 // ============================================
 
 export const RECENT_CHANGES: TrackerItem[] = [
+  { text: 'fix: Fixed wonky slot counting', status: 'fixed' },
   { text: 'New: PvP IO set bonuses now split into PvE and PvP sections — PvP-only effects shown separately and excluded from stat calculations', status: 'new' },
   { text: 'New: Tracked stats now highlight matching bonus effects in enhancement picker tooltips', status: 'new' },
   { text: 'New: Added Controls button to the dashboard bar — quick reference for all desktop and mobile interactions', status: 'new' },
   { text: 'New: Added Titan Origin, Hydra Origin, and D-Sync Origin enhancements to the enhancement picker', status: 'new' },
   { text: 'Fix: Corrected Hamidon Origin enhancement data — per-aspect values now match game data', status: 'fixed' },
-  { text: 'Fix: DoT powers now show per-tick and total damage in the info panel', status: 'fixed' },
-  { text: 'Fix: Shadow Dweller and other auto powers now display correct defense, resistance, and regen values', status: 'fixed' },
   { text: 'Update to address missing data from power pools', status: 'fixed' },
   { text: 'Update to incorporate power updates in Issue 28, Page 3, Panel 2', status: 'fixed' },
   { text: 'New: Added modal for incarnate recipe calculator', status: 'new' },

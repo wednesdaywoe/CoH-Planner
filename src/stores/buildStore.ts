@@ -198,10 +198,11 @@ function countPlacedSlots(build: Build): number {
 
 /**
  * Get the number of placeable slots available at a given level.
- * This is the total slot grants minus the free slots from power picks.
+ * This is the total slot grants (67 at level 50).
+ * Free first slots from powers are separate and don't count against this budget.
  */
 function getPlacedSlotLimit(level: number): number {
-  return getTotalSlotsAtLevel(level) - getPowerPicksAtLevel(level);
+  return getTotalSlotsAtLevel(level);
 }
 
 /**

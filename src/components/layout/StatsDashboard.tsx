@@ -532,13 +532,15 @@ export function StatsDashboard() {
     build.secondary.powers.length +
     build.pools.reduce((sum, pool) => sum + pool.powers.length, 0) +
     (build.epicPool?.powers.length ?? 0);
-  // Count ALL enhancement slots (including the free first slot each power gets)
-  // The 67 budget is for total slots across all non-inherent powers
+  // Count placed (additional) slots only — excludes the free first slot each power gets.
+  // The 67 budget is for manually placed slots; free first slots are separate.
+  const countExtra = (powers: { slots: unknown[] }[]) =>
+    powers.reduce((sum, p) => sum + Math.max(0, p.slots.length - 1), 0);
   const currentSlotCount =
-    build.primary.powers.reduce((sum, p) => sum + p.slots.length, 0) +
-    build.secondary.powers.reduce((sum, p) => sum + p.slots.length, 0) +
-    build.pools.reduce((sum, pool) => sum + pool.powers.reduce((s, p) => s + p.slots.length, 0), 0) +
-    (build.epicPool?.powers.reduce((sum, p) => sum + p.slots.length, 0) ?? 0);
+    countExtra(build.primary.powers) +
+    countExtra(build.secondary.powers) +
+    build.pools.reduce((sum, pool) => sum + countExtra(pool.powers), 0) +
+    (build.epicPool ? countExtra(build.epicPool.powers) : 0);
 
   // Get visible stats based on config
   const visibleStats = useMemo(() => {

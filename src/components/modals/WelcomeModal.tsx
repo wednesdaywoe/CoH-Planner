@@ -14,7 +14,7 @@ const LAST_UPDATED = (() => {
 })();
 
 const STORAGE_KEY = 'coh-planner-welcome-dismissed';
-const CURRENT_VERSION = '0.4.0-alpha'; // Increment to show modal again after major updates
+const CURRENT_VERSION = '0.4.1-alpha'; // Increment to show modal again after major updates
 
 interface WelcomeModalProps {
   isOpen: boolean;

@@ -329,11 +329,13 @@ export function createSpecialEnhancement(
 ): SpecialEnhancement {
   const capitalizedId = id.charAt(0).toUpperCase() + id.slice(1);
   const prefix = SPECIAL_ICON_PREFIX[category];
+  // D-Sync enhancements all share a single icon
+  const icon = category === 'd-sync' ? 'DSO_all.png' : `${prefix}${capitalizedId}.png`;
   return {
     type: 'special',
     id: `${category}-${id}`,
     name: def.name,
-    icon: `${prefix}${capitalizedId}.png`,
+    icon,
     category,
     aspects: def.aspects.map(a => ({ stat: a.stat as EnhancementStatType, value: a.value })),
   };
