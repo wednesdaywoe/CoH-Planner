@@ -92,10 +92,57 @@ type LegacyEpicPoolRegistry = Record<string, LegacyEpicPool>;
 // DATA TRANSFORMATION
 // ============================================
 
+/** Map shortHelp "Foe X" labels to effect keys */
+const FOE_MEZ_MAP: Record<string, string> = {
+  hold: 'hold',
+  stun: 'stun',
+  immobilize: 'immobilize',
+  sleep: 'sleep',
+  fear: 'fear',
+  confuse: 'confuse',
+  knockback: 'knockback',
+  knockdown: 'knockback',
+  knockup: 'knockup',
+};
+
+/**
+ * Detect offensive mez types from shortHelp (e.g., "Foe Immobilize", "Foe Hold")
+ */
+function detectOffensiveMez(shortHelp?: string): Set<string> {
+  const result = new Set<string>();
+  if (!shortHelp) return result;
+  const matches = shortHelp.matchAll(/Foe\s+(Hold|Stun|Immobilize|Sleep|Fear|Confuse|Knockback|Knockdown|Knockup)/gi);
+  for (const m of matches) {
+    const key = FOE_MEZ_MAP[m[1].toLowerCase()];
+    if (key) result.add(key);
+  }
+  return result;
+}
+
 /**
  * Transform legacy epic power to typed Power
  */
 function transformEpicPower(legacy: LegacyEpicPower): Power {
+  // Detect offensive mez from shortHelp and separate from true protection
+  const offensiveMez = detectOffensiveMez(legacy.shortHelp);
+  const rawProtection = legacy.effects.protection;
+
+  // Split protection into real protection vs. offensive mez effects
+  let realProtection: Record<string, number> | undefined;
+  const mezEffects: Record<string, number> = {};
+
+  if (rawProtection) {
+    const realEntries: Record<string, number> = {};
+    for (const [key, val] of Object.entries(rawProtection)) {
+      if (offensiveMez.has(key)) {
+        mezEffects[key] = val;
+      } else {
+        realEntries[key] = val;
+      }
+    }
+    realProtection = Object.keys(realEntries).length > 0 ? realEntries : undefined;
+  }
+
   return {
     name: legacy.name,
     fullName: legacy.fullName,
@@ -122,8 +169,10 @@ function transformEpicPower(legacy: LegacyEpicPower): Power {
             scale: legacy.effects.damage.scale,
           }
         : undefined,
-      protection: legacy.effects.protection,
+      protection: realProtection,
       resistance: legacy.effects.resistance as Record<string, number> | undefined,
+      // Offensive mez effects extracted from protection
+      ...mezEffects,
     },
   };
 }

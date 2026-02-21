@@ -1143,7 +1143,7 @@ function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfoContent
                 const isAlwaysOn = isProcAlwaysOn(procData);
 
                 // Get category-specific badge colors
-                const badgeColors = {
+                const BADGE_COLORS: Record<string, string> = {
                   'Damage': 'bg-red-900/50 text-red-300',
                   'Endurance': 'bg-blue-900/50 text-blue-300',
                   'Heal': 'bg-emerald-900/50 text-emerald-300',
@@ -1161,7 +1161,11 @@ function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfoContent
                   'Control': 'bg-indigo-900/50 text-indigo-300',
                   'Debuff': 'bg-rose-900/50 text-rose-300',
                   'Special': 'bg-slate-700 text-slate-300',
-                }[effect.category] || 'bg-slate-700 text-slate-300';
+                };
+                const badgeColors = BADGE_COLORS[effect.category] || 'bg-slate-700 text-slate-300';
+                const secondaryBadgeColors = effect.secondaryCategory
+                  ? BADGE_COLORS[effect.secondaryCategory] || 'bg-slate-700 text-slate-300'
+                  : undefined;
 
                 return (
                   <div className="space-y-1">
@@ -1173,6 +1177,11 @@ function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfoContent
                       <span className={`text-[8px] px-1 py-0.5 rounded ${badgeColors}`}>
                         {categoryLabel}
                       </span>
+                      {effect.secondaryCategory && secondaryBadgeColors && (
+                        <span className={`text-[8px] px-1 py-0.5 rounded ${secondaryBadgeColors}`}>
+                          {getProcEffectLabel(effect.secondaryCategory)}
+                        </span>
+                      )}
                       {isAlwaysOn && (
                         <span className="text-[8px] px-1 py-0.5 rounded bg-green-900/50 text-green-300">
                           Always On

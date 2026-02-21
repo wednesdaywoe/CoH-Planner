@@ -852,6 +852,17 @@ function applySingleProcEffect(
       });
       break;
 
+    case 'Heal':
+      // Heal procs grant a % of max HP per proc — treat as effective regeneration
+      // For always-on procs (Proc120s), the heal fires every 10s, so it's a sustained regen contribution
+      global.regeneration += value;
+      addToBreakdown(breakdown, 'regeneration', {
+        name: `${sourceName} (+HP)`,
+        value,
+        type: 'proc',
+      });
+      break;
+
     case 'MaxHP':
       global.maxHP += value;
       addToBreakdown(breakdown, 'maxhp', {
@@ -961,7 +972,8 @@ function applySingleProcEffect(
 const PROC_CATEGORY_TO_STAT: Record<string, string | null> = {
   Recovery:          'recovery',
   Regeneration:      'regeneration',
-  Endurance:         'recovery',   // Treated as recovery in calculations
+  Heal:              'regeneration', // Heal procs contribute to effective regen rate
+  Endurance:         'recovery',     // Treated as recovery in calculations
   Recharge:          'recharge',
   RunSpeed:          'runspeed',
 };
@@ -1003,6 +1015,14 @@ function applyProcBonuses(
           global,
           breakdown
         );
+      } else if (stat) {
+        // Rule of 5 rejected — add a capped entry so it appears in the tooltip
+        addToBreakdown(breakdown, stat, {
+          name: sourceName,
+          value: effect.value,
+          type: 'proc',
+          capped: true,
+        });
       }
     }
 
@@ -1024,6 +1044,14 @@ function applyProcBonuses(
           global,
           breakdown
         );
+      } else if (stat) {
+        // Rule of 5 rejected — add a capped entry so it appears in the tooltip
+        addToBreakdown(breakdown, stat, {
+          name: sourceName,
+          value: effect.secondaryValue,
+          type: 'proc',
+          capped: true,
+        });
       }
     }
   }
@@ -1068,23 +1096,57 @@ function applyPPMProcBonuses(
       const procsPerMin = calculateAutoToggleProcsPerMinute(procData.ppm);
       const sourceName = `${procData.setName}: ${ioSlot.name} (PPM)`;
 
-      // Calculate effective contributions based on effect category
-      if (effect.category === 'Endurance' && effect.value !== undefined) {
-        // Endurance proc: X% of max end per proc
-        // Convert to recovery equivalent: (value% × procsPerMin) / 60 / BASE_RECOVERY_RATE × 100
-        // This gives us an equivalent recovery buff percentage
-        const endPerSec = (effect.value * procsPerMin) / 60;
-        const recoveryEquivalent = (endPerSec / BASE_RECOVERY_RATE) * 100;
-        global.recovery += recoveryEquivalent;
-        addToBreakdown(breakdown, 'recovery', {
-          name: sourceName,
-          value: recoveryEquivalent,
-          type: 'proc',
-        });
-      }
+      // Helper to apply a single PPM effect contribution
+      const applyPPMEffect = (category: string | undefined, value: number | undefined, suffix?: string) => {
+        if (!category || value === undefined) return;
+        const label = suffix ? `${sourceName} (${suffix})` : sourceName;
 
-      // Note: Recovery and Regeneration procs are typically Proc120s (100% chance, 120s duration)
-      // and are handled by the always-on proc system. PPM-based recovery/regen procs are rare.
+        switch (category) {
+          case 'Endurance': {
+            // Endurance proc: X% of max end per proc
+            // Convert to recovery equivalent: (value% × procsPerMin) / 60 / BASE_RECOVERY_RATE × 100
+            const endPerSec = (value * procsPerMin) / 60;
+            const recoveryEquivalent = (endPerSec / BASE_RECOVERY_RATE) * 100;
+            global.recovery += recoveryEquivalent;
+            addToBreakdown(breakdown, 'recovery', { name: label, value: recoveryEquivalent, type: 'proc' });
+            break;
+          }
+          case 'Heal': {
+            // Heal proc: X% of max HP per proc
+            // Convert to effective regen %: (value% × procsPerMin) / 60 → %HP/sec, then scale to regen%
+            // At base, regen = ~100% max HP per 240s = 0.417%/sec
+            // So effective regen contribution = (value% × procsPerMin) / 60 / 0.417 × 100
+            const hpPerSec = (value * procsPerMin) / 60;
+            const BASE_REGEN_RATE = 100 / 240; // ~0.417 %HP/sec at base
+            const regenEquivalent = (hpPerSec / BASE_REGEN_RATE) * 100;
+            global.regeneration += regenEquivalent;
+            addToBreakdown(breakdown, 'regeneration', { name: `${label} (+HP)`, value: regenEquivalent, type: 'proc' });
+            break;
+          }
+          case 'Recovery': {
+            const recoveryVal = (value * procsPerMin) / 60;
+            const recoveryPct = (recoveryVal / BASE_RECOVERY_RATE) * 100;
+            global.recovery += recoveryPct;
+            addToBreakdown(breakdown, 'recovery', { name: label, value: recoveryPct, type: 'proc' });
+            break;
+          }
+          case 'Regeneration': {
+            const regenVal = (value * procsPerMin) / 60;
+            const BASE_REGEN_RATE2 = 100 / 240;
+            const regenPct = (regenVal / BASE_REGEN_RATE2) * 100;
+            global.regeneration += regenPct;
+            addToBreakdown(breakdown, 'regeneration', { name: label, value: regenPct, type: 'proc' });
+            break;
+          }
+          // Other PPM categories (Damage, Control, etc.) don't contribute to dashboard stats
+        }
+      };
+
+      // Apply primary effect
+      applyPPMEffect(effect.category, effect.value);
+
+      // Apply secondary effect (e.g., Panacea's +HP primary + +End secondary)
+      applyPPMEffect(effect.secondaryCategory, effect.secondaryValue, effect.secondaryCategory);
     }
   };
 
@@ -1645,9 +1707,9 @@ export function calculateCharacterTotals(
   // Step 10: Convert to character stats format
   const stats = convertToCharacterStats(globalBonuses);
 
-  // Update breakdown totals from final values
+  // Update breakdown totals from final values (exclude capped/Rule-of-5 sources)
   for (const [, bd] of breakdown) {
-    bd.total = bd.sources.reduce((sum, s) => sum + s.value, 0);
+    bd.total = bd.sources.reduce((sum, s) => s.capped ? sum : sum + s.value, 0);
   }
 
   return {

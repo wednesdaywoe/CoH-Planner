@@ -111,6 +111,13 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
     format: 'duration',
     priority: 6,
   },
+  effectDuration: {
+    label: 'Effect Dur',
+    category: 'execution',
+    colorClass: 'text-slate-500',
+    format: 'duration',
+    priority: 6.5,
+  },
   radius: {
     label: 'Radius',
     category: 'execution',

@@ -74,9 +74,9 @@ function getOverlayPath(
       if (icon?.startsWith('SAO_') || icon?.startsWith('SEO_') || icon?.startsWith('SEW_')) {
         return `${overlayBase}/superior.png`;
       }
-      // Regular archetype sets get gold frame
+      // Regular archetype sets get attuned frame
       if (icon?.startsWith('AO_')) {
-        return `${overlayBase}/Class.png`;
+        return `${overlayBase}/attuned.png`;
       }
       return attuned ? `${overlayBase}/attuned.png` : `${overlayBase}/IO.png`;
 

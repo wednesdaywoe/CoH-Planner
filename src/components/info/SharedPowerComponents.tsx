@@ -563,7 +563,7 @@ export function RegistryEffectsDisplay({
 
       {/* Effects */}
       {displayableEffects.map(({ effect, tiers, byTypeLabel, expandedLabel }) => {
-        const { key, config } = effect;
+        const { key, value: rawValue, config } = effect;
         const enhanceable = !!config.enhancementAspect;
         const hasEnh = Math.abs(tiers.enhanced - tiers.base) > 0.001;
         const hasFinal = Math.abs(tiers.final - tiers.enhanced) > 0.001;
@@ -580,11 +580,19 @@ export function RegistryEffectsDisplay({
           const magStr = Number.isInteger(rawMag) ? rawMag.toString() : rawMag.toFixed(1);
           const colorClass = dominationActive && config.category === 'control' ? 'text-pink-400' : config.colorClass;
 
+          // Extract duration from MezEffect if available
+          const mezDuration = rawValue && typeof rawValue === 'object' && 'scale' in (rawValue as Record<string, unknown>)
+            ? (rawValue as { scale?: number }).scale
+            : undefined;
+
           return (
             <div key={key} className={`grid ${gridCols} gap-1 items-baseline ${fontSize}`}>
               <span className={colorClass}>{label}</span>
               <span className="text-slate-200">
                 Mag {magStr}
+                {mezDuration != null && mezDuration > 0 && (
+                  <span className="text-slate-400 ml-1">({mezDuration.toFixed(1)}s)</span>
+                )}
                 {dominationActive && config.category === 'control' && (
                   <span className="text-pink-300 text-[8px] ml-1">[2×]</span>
                 )}

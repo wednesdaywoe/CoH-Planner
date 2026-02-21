@@ -287,27 +287,27 @@ export function Header() {
           className="max-w-[200px] min-w-[125px]"
         />
 
-        {/* Primary powerset selector */}
-        <Select
-          id="primary-select"
-          name="primary"
-          options={archetypeId ? primaryOptions : [{ value: '', label: 'Select Primary...' }]}
-          value={build.primary.id || ''}
-          onChange={handlePrimaryChange}
-          className="max-w-[200px] min-w-[125px]"
-          disabled={!archetypeId}
-        />
-
-        {/* Secondary powerset selector */}
-        <Select
-          id="secondary-select"
-          name="secondary"
-          options={archetypeId ? secondaryOptions : [{ value: '', label: 'Select Secondary...' }]}
-          value={build.secondary.id || ''}
-          onChange={handleSecondaryChange}
-          className="max-w-[200px] min-w-[125px]"
-          disabled={!archetypeId}
-        />
+        {/* Primary & Secondary powerset selectors */}
+        <div className="flex items-center gap-2">
+          <Select
+            id="primary-select"
+            name="primary"
+            options={archetypeId ? primaryOptions : [{ value: '', label: 'Select Primary...' }]}
+            value={build.primary.id || ''}
+            onChange={handlePrimaryChange}
+            className="max-w-[200px] min-w-[125px]"
+            disabled={!archetypeId}
+          />
+          <Select
+            id="secondary-select"
+            name="secondary"
+            options={archetypeId ? secondaryOptions : [{ value: '', label: 'Select Secondary...' }]}
+            value={build.secondary.id || ''}
+            onChange={handleSecondaryChange}
+            className="max-w-[200px] min-w-[125px]"
+            disabled={!archetypeId}
+          />
+        </div>
 
         {/* Branch selector for Arachnos Epic ATs */}
         {hasBranches && archetype?.branches && (
@@ -579,105 +579,107 @@ export function Header() {
           </Tooltip>
         )}
 
-        {/* Level selector */}
-        <div className="flex items-center gap-1 bg-slate-700/50 px-2 py-1.5 rounded border border-slate-600">
-          <span className="text-xs text-slate-400 font-semibold uppercase">Level</span>
-          <button
-            onClick={() => setLevel(build.level - 1)}
-            disabled={build.level <= 1}
-            className="text-slate-400 hover:text-emerald-400 disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-0.5"
-          >
-            &minus;
-          </button>
-          <span className="text-sm font-bold text-emerald-400 w-6 text-center">{build.level}</span>
-          <button
-            onClick={() => setLevel(build.level + 1)}
-            disabled={build.level >= MAX_LEVEL}
-            className="text-slate-400 hover:text-emerald-400 disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-0.5"
-          >
-            +
-          </button>
-          <Slider
-            value={build.level}
-            min={1}
-            max={MAX_LEVEL}
-            onChange={(e) => setLevel(Number(e.target.value))}
-            className="w-24"
-            showValue={false}
-            showRange={false}
-          />
+        {/* Level & IO sliders */}
+        <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1 bg-slate-700/50 px-2 py-1.5 rounded border border-slate-600">
+            <span className="text-xs text-slate-400 font-semibold uppercase">Level</span>
+            <button
+              onClick={() => setLevel(build.level - 1)}
+              disabled={build.level <= 1}
+              className="text-slate-400 hover:text-emerald-400 disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-0.5"
+            >
+              &minus;
+            </button>
+            <span className="text-sm font-bold text-emerald-400 w-6 text-center">{build.level}</span>
+            <button
+              onClick={() => setLevel(build.level + 1)}
+              disabled={build.level >= MAX_LEVEL}
+              className="text-slate-400 hover:text-emerald-400 disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-0.5"
+            >
+              +
+            </button>
+            <Slider
+              value={build.level}
+              min={1}
+              max={MAX_LEVEL}
+              onChange={(e) => setLevel(Number(e.target.value))}
+              className="w-24"
+              showValue={false}
+              showRange={false}
+            />
+          </div>
+          <div className="flex items-center gap-1 bg-slate-700/50 px-2 py-1.5 rounded border border-slate-600">
+            <span className="text-xs text-slate-400 font-semibold uppercase">IO</span>
+            <button
+              onClick={() => setGlobalIOLevel(globalIOLevel - 1)}
+              disabled={globalIOLevel <= 10}
+              className="text-slate-400 hover:text-blue-400 disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-0.5"
+            >
+              &minus;
+            </button>
+            <span className="text-sm font-bold text-blue-400 w-6 text-center">{globalIOLevel}</span>
+            <button
+              onClick={() => setGlobalIOLevel(globalIOLevel + 1)}
+              disabled={globalIOLevel >= 50}
+              className="text-slate-400 hover:text-blue-400 disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-0.5"
+            >
+              +
+            </button>
+            <Slider
+              value={globalIOLevel}
+              min={10}
+              max={50}
+              onChange={(e) => setGlobalIOLevel(Number(e.target.value))}
+              className="w-20"
+              showValue={false}
+              showRange={false}
+            />
+          </div>
         </div>
 
-        {/* IO Level slider */}
-        <div className="flex items-center gap-1 bg-slate-700/50 px-2 py-1.5 rounded border border-slate-600">
-          <span className="text-xs text-slate-400 font-semibold uppercase">IO</span>
-          <button
-            onClick={() => setGlobalIOLevel(globalIOLevel - 1)}
-            disabled={globalIOLevel <= 10}
-            className="text-slate-400 hover:text-blue-400 disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-0.5"
+        {/* Export, Import, New, Clear */}
+        <div className="flex items-center gap-2">
+          <Button
+            variant="secondary"
+            size="sm"
+            onClick={() => openExportImportModal()}
+            title="Export your build to a file"
           >
-            &minus;
-          </button>
-          <span className="text-sm font-bold text-blue-400 w-6 text-center">{globalIOLevel}</span>
-          <button
-            onClick={() => setGlobalIOLevel(globalIOLevel + 1)}
-            disabled={globalIOLevel >= 50}
-            className="text-slate-400 hover:text-blue-400 disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-0.5"
+            Export
+          </Button>
+          <Button
+            variant="secondary"
+            size="sm"
+            onClick={() => openExportImportModal()}
+            title="Import a build from a file"
           >
-            +
-          </button>
-          <Slider
-            value={globalIOLevel}
-            min={10}
-            max={50}
-            onChange={(e) => setGlobalIOLevel(Number(e.target.value))}
-            className="w-20"
-            showValue={false}
-            showRange={false}
-          />
+            Import
+          </Button>
+          <Button
+            variant="secondary"
+            size="sm"
+            onClick={() => {
+              if (window.confirm('Are you sure you want to reset? This will clear your entire build.')) {
+                resetBuild();
+              }
+            }}
+            title="Reset build and start fresh"
+          >
+            New
+          </Button>
+          <Button
+            variant="secondary"
+            size="sm"
+            onClick={() => {
+              if (window.confirm('Clear all powers and enhancements? Archetype and powerset selections will be kept.')) {
+                clearPowers();
+              }
+            }}
+            title="Clear powers and slots, keep archetype and powersets"
+          >
+            Clear
+          </Button>
         </div>
-
-        {/* Import/Export/Reset */}
-        <Button
-          variant="secondary"
-          size="sm"
-          onClick={() => openExportImportModal()}
-          title="Export your build to a file"
-        >
-          Export
-        </Button>
-        <Button
-          variant="secondary"
-          size="sm"
-          onClick={() => openExportImportModal()}
-          title="Import a build from a file"
-        >
-          Import
-        </Button>
-        <Button
-          variant="secondary"
-          size="sm"
-          onClick={() => {
-            if (window.confirm('Are you sure you want to reset? This will clear your entire build.')) {
-              resetBuild();
-            }
-          }}
-          title="Reset build and start fresh"
-        >
-          New
-        </Button>
-        <Button
-          variant="secondary"
-          size="sm"
-          onClick={() => {
-            if (window.confirm('Clear all powers and enhancements? Archetype and powerset selections will be kept.')) {
-              clearPowers();
-            }
-          }}
-          title="Clear powers and slots, keep archetype and powersets"
-        >
-          Clear
-        </Button>
 
         {/* Last updated */}
         <span className="text-xs text-slate-500 ml-auto whitespace-nowrap">
