@@ -27,7 +27,7 @@ export function Tooltip({
   className = '',
 }: TooltipProps) {
   const [isVisible, setIsVisible] = useState(false);
-  const [coords, setCoords] = useState({ x: 0, y: 0 });
+  const [coords, setCoords] = useState({ x: 0, y: 0, triggerTop: 0, triggerBottom: 0 });
   const timeoutRef = useRef<number | null>(null);
   const triggerRef = useRef<HTMLDivElement>(null);
   const tooltipRef = useRef<HTMLDivElement>(null);
@@ -38,7 +38,7 @@ export function Tooltip({
         const rect = triggerRef.current.getBoundingClientRect();
         const x = rect.left + rect.width / 2;
         const y = position === 'bottom' ? rect.bottom : rect.top;
-        setCoords({ x, y });
+        setCoords({ x, y, triggerTop: rect.top, triggerBottom: rect.bottom });
       }
       setIsVisible(true);
     }, delay);
@@ -58,7 +58,9 @@ export function Tooltip({
     const rect = node.getBoundingClientRect();
     const padding = 8;
     const vw = window.innerWidth;
+    const vh = window.innerHeight;
 
+    // Horizontal clamping
     if (rect.left < padding) {
       node.style.left = `${padding}px`;
       node.style.transform = node.style.transform.replace('translateX(-50%)', 'translateX(0)');
@@ -68,7 +70,22 @@ export function Tooltip({
       node.style.transform = node.style.transform.replace('translateX(-50%)', 'translateX(-100%)');
       node.style.transform = node.style.transform.replace('translate(-50%,', 'translate(-100%,');
     }
-  }, []);
+
+    // Vertical clamping — flip tooltip if it overflows top or bottom
+    if (position === 'top' && rect.top < padding) {
+      // Flip to below the trigger
+      node.style.top = `${coords.triggerBottom + 8}px`;
+      node.style.transform = node.style.transform
+        .replace('translateY(-100%)', 'translateY(0)')
+        .replace('translate(-50%, -100%)', 'translate(-50%, 0)');
+    } else if (position === 'bottom' && rect.bottom > vh - padding) {
+      // Flip to above the trigger
+      node.style.top = `${coords.triggerTop - 8}px`;
+      node.style.transform = node.style.transform
+        .replace('translateY(0)', 'translateY(-100%)')
+        .replace('translate(-50%, 0)', 'translate(-50%, -100%)');
+    }
+  }, [position, coords.triggerTop, coords.triggerBottom]);
 
   const getTooltipStyle = (): CSSProperties => {
     const baseStyle: CSSProperties = {

@@ -1044,8 +1044,12 @@ function applySingleProcEffect(
       break;
 
     case 'KnockbackProtection':
-      // KB protection is a magnitude, not a percentage
-      // We could add a separate field for this if needed
+      global.protKnockback += value;
+      addToBreakdown(breakdown, 'protKnockback', {
+        name: sourceName,
+        value,
+        type: 'proc',
+      });
       break;
 
     // Other categories (Damage, Control, Debuff, etc.) are not "always-on" stats
