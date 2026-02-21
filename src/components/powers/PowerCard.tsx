@@ -11,10 +11,22 @@ import { PowerSlot } from './PowerSlot';
 import { Tooltip } from '@/components/ui';
 
 /**
+ * Check if a power has a Heal-type damage entry (one-shot heals/drains).
+ * Powers like Dark Regeneration, Dull Pain, Life Drain have these.
+ */
+function hasHealingDamage(power: SelectedPower): boolean {
+  if (!power.damage) return false;
+  if (Array.isArray(power.damage)) {
+    return power.damage.some((d) => d.type === 'Heal');
+  }
+  return (power.damage as { type?: string }).type === 'Heal';
+}
+
+/**
  * Determine if a power should show a toggle switch for stat calculations.
  * This includes:
  * - Toggle powers (always toggleable)
- * - Click powers that buff self (targetType: Self)
+ * - Click powers that buff self (targetType: Self), excluding one-shot heals
  * - Click powers that are PBAoE and affect allies (buffs teammates AND user)
  */
 function shouldShowToggle(power: SelectedPower): boolean {
@@ -28,8 +40,9 @@ function shouldShowToggle(power: SelectedPower): boolean {
   }
 
   // Click powers that target self (self-buffs like Build Up, Aim)
+  // Exclude one-shot heals/drains (Dark Regeneration, Dull Pain, etc.)
   if (powerType === 'click' && targetType === 'self') {
-    return true;
+    return !hasHealingDamage(power);
   }
 
   // Click powers that are PBAoE and target allies (like Accelerate Metabolism)

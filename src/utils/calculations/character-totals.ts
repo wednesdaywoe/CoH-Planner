@@ -21,8 +21,8 @@ import {
   calculateSetBonuses,
   getStatBreakdown,
   trackBonus,
+  createBonusTracking,
   type AggregatedBonuses,
-  type BonusTracking,
   type StatBreakdownItem,
   type BuildPowers,
 } from './set-bonuses';
@@ -82,6 +82,14 @@ export interface GlobalBonuses {
   flySpeed: number;
   // Mez Resistance
   mezResist: number;
+  // Mez Protection (magnitude points)
+  protHold: number;
+  protStun: number;
+  protImmobilize: number;
+  protSleep: number;
+  protConfuse: number;
+  protFear: number;
+  protKnockback: number;
   // Debuff Resistance
   debuffResistSlow: number;
   debuffResistDefense: number;
@@ -167,6 +175,13 @@ function createEmptyGlobalBonuses(): GlobalBonuses {
     jumpHeight: 0,
     flySpeed: 0,
     mezResist: 0,
+    protHold: 0,
+    protStun: 0,
+    protImmobilize: 0,
+    protSleep: 0,
+    protConfuse: 0,
+    protFear: 0,
+    protKnockback: 0,
     debuffResistSlow: 0,
     debuffResistDefense: 0,
     debuffResistRecharge: 0,
@@ -246,6 +261,9 @@ const STAT_TO_GLOBAL: Record<string, keyof GlobalBonuses> = {
   mezresist: 'mezResist',
   healother: 'healOther',
   threatlevel: 'threatLevel',
+
+  // Mez Protection (from IO set bonuses — value is stored as %, divide by 100 for mag)
+  kbprotection: 'protKnockback',
 };
 
 /**
@@ -287,7 +305,9 @@ function applySetBonusesToGlobal(
       // Direct mapping
       const key = STAT_TO_GLOBAL[normalizedStat];
       if (key && key in global) {
-        global[key] += value;
+        // IO set KB protection is stored as percentage (400 = Mag 4.0)
+        const scale = normalizedStat === 'kbprotection' ? 0.01 : 1;
+        global[key] += value * scale;
       }
     }
   }
@@ -342,6 +362,8 @@ function buildStatBreakdown(
 
 type ScalarOrScaled = number | { scale: number; table?: string };
 
+type MezScaled = { mag?: number; scale: number; table: string };
+
 interface ActivePowerEffect {
   tohitBuff?: number;
   damageBuff?: number;
@@ -361,6 +383,16 @@ interface ActivePowerEffect {
   recoveryBuff?: ScalarOrScaled;
   maxHPBuff?: ScalarOrScaled;
   maxEndBuff?: ScalarOrScaled;
+  // Mez protection (pool/epic style — direct magnitudes)
+  protection?: Record<string, number>;
+  // Mez effects that may be protection when using Res_Boolean tables
+  hold?: number | MezScaled;
+  stun?: number | MezScaled;
+  immobilize?: number | MezScaled;
+  sleep?: number | MezScaled;
+  confuse?: number | MezScaled;
+  fear?: number | MezScaled;
+  knockback?: number | MezScaled;
 }
 
 interface PowerWithToggle {
@@ -598,6 +630,63 @@ function applyActivePowerBonuses(
         value,
         type: 'active-power',
       });
+    }
+
+    // Mez Protection from pool/epic powers (effects.protection = { hold: 1, stun: 1, ... })
+    if (effects.protection && typeof effects.protection === 'object') {
+      const protMapping: Record<string, keyof GlobalBonuses> = {
+        hold: 'protHold',
+        stun: 'protStun',
+        immobilize: 'protImmobilize',
+        sleep: 'protSleep',
+        confuse: 'protConfuse',
+        fear: 'protFear',
+        knockback: 'protKnockback',
+        knockup: 'protKnockback', // knockup maps to KB protection
+      };
+      for (const [type, mag] of Object.entries(effects.protection)) {
+        const key = protMapping[type.toLowerCase()];
+        if (key && key in global) {
+          global[key] += mag;
+          addToBreakdown(breakdown, key, {
+            name: power.name,
+            value: mag,
+            type: 'active-power',
+          });
+        }
+      }
+    }
+
+    // Mez Protection from curated armor powers (effects.hold/stun/etc. with Res_Boolean tables)
+    // When mez effects use Res_Boolean tables, they represent protection, not offensive mez
+    const mezProtTypes: Array<{ field: keyof ActivePowerEffect; key: keyof GlobalBonuses }> = [
+      { field: 'hold', key: 'protHold' },
+      { field: 'stun', key: 'protStun' },
+      { field: 'immobilize', key: 'protImmobilize' },
+      { field: 'sleep', key: 'protSleep' },
+      { field: 'confuse', key: 'protConfuse' },
+      { field: 'fear', key: 'protFear' },
+      { field: 'knockback', key: 'protKnockback' },
+    ];
+
+    for (const { field, key } of mezProtTypes) {
+      const mezVal = effects[field];
+      if (mezVal === undefined || typeof mezVal === 'number') continue;
+      const mez = mezVal as MezScaled;
+      if (!mez.table) continue;
+      // Only Res_Boolean tables are protection magnitudes
+      if (mez.table.toLowerCase().includes('res_boolean')) {
+        const tableValue = getTableValue(archetypeId, mez.table.toLowerCase(), buildLevel);
+        if (tableValue !== undefined) {
+          const mag = Math.abs(mez.scale) * tableValue;
+          global[key] += mag;
+          addToBreakdown(breakdown, key, {
+            name: power.name,
+            value: mag,
+            type: 'active-power',
+          });
+        }
+      }
     }
   }
 }
@@ -986,8 +1075,10 @@ function applyProcBonuses(
   build: Build,
   global: GlobalBonuses,
   breakdown: Map<string, DashboardStatBreakdown>,
-  tracking: BonusTracking
 ): void {
+  // Procs use their own Rule of 5 tracking, separate from set bonuses.
+  // In CoH, unique IO procs (e.g., LotG +Recharge) and set bonuses have independent stacking limits.
+  const tracking = createBonusTracking();
   const procs = collectAlwaysOnProcs(build);
 
   for (const proc of procs) {
@@ -1692,8 +1783,8 @@ export function calculateCharacterTotals(
   applyActivePowerBonuses(allPowers, globalBonuses, breakdown, effectiveLevel, build.archetype.id || '', alphaBonuses);
 
   // Step 7.5: Apply always-on proc bonuses (Global and Proc120s in Auto/Toggle powers)
-  // Pass the same tracking object so proc bonuses share the Rule of 5 budget with set bonuses
-  applyProcBonuses(build, globalBonuses, breakdown, tracking);
+  // Procs have their own Rule of 5 tracking, separate from set bonuses
+  applyProcBonuses(build, globalBonuses, breakdown);
 
   // Step 8: Apply accolade bonuses
   if (build.accolades && build.accolades.length > 0) {

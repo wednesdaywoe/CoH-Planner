@@ -1502,34 +1502,67 @@ function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfoContent
         </div>
 
         {/* Set Bonuses */}
-        {ioSet && ioSet.bonuses.length > 0 && (
-          <div className="border-t border-slate-700 pt-2">
-            <div className="text-[9px] text-slate-500 uppercase mb-1">
-              Set Bonuses ({piecesSlotted}/{ioSet.pieces.length} slotted)
-            </div>
-            <div className="space-y-0.5">
-              {ioSet.bonuses.map((bonus, idx) => {
-                const isActive = piecesSlotted >= bonus.pieces;
-                return (
-                  <div
-                    key={idx}
-                    className={`text-[10px] ${isActive ? 'text-green-400' : 'text-slate-500'}`}
-                  >
-                    <span className={`font-medium ${isActive ? 'text-green-500' : 'text-slate-600'}`}>
-                      {bonus.pieces}pc:
-                    </span>{' '}
-                    {bonus.effects.map((eff, i) => (
-                      <span key={i}>
-                        {i > 0 && ', '}
-                        {eff.desc}
-                      </span>
-                    ))}
+        {ioSet && ioSet.bonuses.length > 0 && (() => {
+          const hasPvPEffects = ioSet.category === 'pvp' && ioSet.bonuses.some(b => b.effects.some(e => e.pvp));
+          return (
+            <div className="border-t border-slate-700 pt-2">
+              <div className="text-[9px] text-slate-500 uppercase mb-1">
+                Set Bonuses ({piecesSlotted}/{ioSet.pieces.length} slotted)
+              </div>
+              <div className="space-y-0.5">
+                {ioSet.bonuses.map((bonus, idx) => {
+                  const pveEffects = hasPvPEffects ? bonus.effects.filter(e => !e.pvp) : bonus.effects;
+                  if (pveEffects.length === 0) return null;
+                  const isActive = piecesSlotted >= bonus.pieces;
+                  return (
+                    <div
+                      key={idx}
+                      className={`text-[10px] ${isActive ? 'text-green-400' : 'text-slate-500'}`}
+                    >
+                      <span className={`font-medium ${isActive ? 'text-green-500' : 'text-slate-600'}`}>
+                        {bonus.pieces}pc:
+                      </span>{' '}
+                      {pveEffects.map((eff, i) => (
+                        <span key={i}>
+                          {i > 0 && ', '}
+                          {eff.desc}
+                        </span>
+                      ))}
+                    </div>
+                  );
+                })}
+              </div>
+              {hasPvPEffects && (
+                <>
+                  <div className="text-[9px] text-red-400/70 uppercase mt-2 mb-0.5">PvP Only</div>
+                  <div className="space-y-0.5">
+                    {ioSet.bonuses.map((bonus, idx) => {
+                      const pvpEffects = bonus.effects.filter(e => e.pvp);
+                      if (pvpEffects.length === 0) return null;
+                      const isActive = piecesSlotted >= bonus.pieces;
+                      return (
+                        <div
+                          key={idx}
+                          className={`text-[10px] ${isActive ? 'text-red-400/60' : 'text-slate-600'}`}
+                        >
+                          <span className={`font-medium ${isActive ? 'text-red-400/70' : 'text-slate-700'}`}>
+                            {bonus.pieces}pc:
+                          </span>{' '}
+                          {pvpEffects.map((eff, i) => (
+                            <span key={i}>
+                              {i > 0 && ', '}
+                              {eff.desc}
+                            </span>
+                          ))}
+                        </div>
+                      );
+                    })}
                   </div>
-                );
-              })}
+                </>
+              )}
             </div>
-          </div>
-        )}
+          );
+        })()}
       </div>
     );
   }

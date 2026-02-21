@@ -51,10 +51,13 @@ export function isPowerPickLevel(level: number): boolean {
 }
 
 /**
- * Get the number of power picks available at a given level
+ * Get the number of power picks available at a given level.
+ * Level 1 grants 2 picks (primary + secondary) but is a single entry in
+ * POWER_PICK_LEVELS, so we add 1 to account for the bonus pick.
  */
 export function getPowerPicksAtLevel(level: number): number {
-  return POWER_PICK_LEVELS.filter((l) => l <= level).length;
+  const entries = POWER_PICK_LEVELS.filter((l) => l <= level).length;
+  return level >= 1 ? entries + 1 : entries;
 }
 
 // ============================================

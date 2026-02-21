@@ -3573,10 +3573,19 @@ export function getTableValue(
 ): number | undefined {
   const at = AT_TABLES[archetype];
   if (!at) return undefined;
-  
-  const table = at.tables[tableName.toLowerCase()];
+
+  const key = tableName.toLowerCase();
+  let table = at.tables[key];
+
+  // Power data uses suffixed names (e.g., "Ranged_HealSelf") that map to
+  // base table names (e.g., "ranged_heal"). Strip common suffixes to match.
+  if (!table) {
+    const stripped = key.replace(/self$|other$|target$/, '');
+    table = at.tables[stripped];
+  }
+
   if (!table) return undefined;
-  
+
   // Level 1 = index 0
   const index = Math.max(0, Math.min(53, level - 1));
   return table[index];

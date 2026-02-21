@@ -67,19 +67,37 @@ interface BonusRowProps {
 }
 
 function BonusRow({ bonus, isActive }: BonusRowProps) {
+  const pveEffects = bonus.effects.filter(e => !e.pvp);
+  const pvpEffects = bonus.effects.filter(e => e.pvp);
+
   return (
     <Tooltip
       content={
         <div>
           <div className="font-medium">Requires {bonus.pieces} pieces</div>
-          <div className="mt-1 space-y-0.5">
-            {bonus.effects.map((effect, i) => (
-              <div key={i} className="text-sm">
-                {effect.stat}: +{formatBonusValue(effect.value)}
-                {typeof effect.value === 'number' && effect.value < 1 ? '' : '%'}
+          {pveEffects.length > 0 && (
+            <div className="mt-1 space-y-0.5">
+              {pveEffects.map((effect, i) => (
+                <div key={i} className="text-sm">
+                  {effect.stat}: +{formatBonusValue(effect.value)}
+                  {typeof effect.value === 'number' && effect.value < 1 ? '' : '%'}
+                </div>
+              ))}
+            </div>
+          )}
+          {pvpEffects.length > 0 && (
+            <>
+              <div className="text-[10px] text-red-400/70 uppercase mt-1.5 mb-0.5">PvP Only</div>
+              <div className="space-y-0.5">
+                {pvpEffects.map((effect, i) => (
+                  <div key={i} className="text-sm text-red-400/60">
+                    {effect.stat}: +{formatBonusValue(effect.value)}
+                    {typeof effect.value === 'number' && effect.value < 1 ? '' : '%'}
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
+            </>
+          )}
         </div>
       }
     >
@@ -94,7 +112,7 @@ function BonusRow({ bonus, isActive }: BonusRowProps) {
           {bonus.pieces}pc:
         </span>
         <span className="truncate ml-2">
-          {bonus.effects.map((e) => e.stat).join(', ')}
+          {pveEffects.map((e) => e.stat).join(', ')}
         </span>
       </div>
     </Tooltip>
@@ -127,13 +145,22 @@ export function SetBonusSummary({
       <div className="space-y-1">
         {bonuses.map((bonus, index) => {
           const isActive = bonus.pieces <= slottedPieces;
+          const pveEffects = bonus.effects.filter(e => !e.pvp);
+          const pvpEffects = bonus.effects.filter(e => e.pvp);
           return (
-            <div
-              key={index}
-              className={`text-xs ${isActive ? 'text-green-400' : 'text-gray-500'}`}
-            >
-              <span className="font-medium">{bonus.pieces}pc:</span>{' '}
-              {bonus.effects.map((e) => `${e.stat} +${formatBonusValue(e.value)}`).join(', ')}
+            <div key={index}>
+              {pveEffects.length > 0 && (
+                <div className={`text-xs ${isActive ? 'text-green-400' : 'text-gray-500'}`}>
+                  <span className="font-medium">{bonus.pieces}pc:</span>{' '}
+                  {pveEffects.map((e) => `${e.stat} +${formatBonusValue(e.value)}`).join(', ')}
+                </div>
+              )}
+              {pvpEffects.length > 0 && (
+                <div className={`text-xs ${isActive ? 'text-red-400/60' : 'text-gray-600'}`}>
+                  <span className="font-medium">{bonus.pieces}pc <span className="text-[9px] uppercase">(PvP)</span>:</span>{' '}
+                  {pvpEffects.map((e) => `${e.stat} +${formatBonusValue(e.value)}`).join(', ')}
+                </div>
+              )}
             </div>
           );
         })}

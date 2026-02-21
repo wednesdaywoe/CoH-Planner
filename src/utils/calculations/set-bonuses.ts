@@ -58,7 +58,7 @@ export interface IOSet {
   maxLevel?: number;
   bonuses: Array<{
     pieces: number;
-    effects?: Array<{ stat: string; value: number }>;
+    effects?: Array<{ stat: string; value: number; pvp?: boolean }>;
     stat?: string;
     value?: number;
   }>;
@@ -202,9 +202,12 @@ const STAT_NAME_MAP: Record<string, string | null> = {
   JumpHeight: 'jumpheight',
   jump_height: 'jumpheight',
 
-  // Ignored stats (mez resistance not tracked)
-  'mez_resistance_(all)': null,
-  MezRes: null,
+  // Mez Resistance
+  'mez_resistance_(all)': 'mezresist',
+  MezRes: 'mezresist',
+
+  // Mez Protection (from IO set unique bonuses)
+  'knockback_protection': 'kbprotection',
 };
 
 /**
@@ -363,6 +366,9 @@ export function collectAllSetBonuses(
         // Handle bonuses with effects array
         if (bonus.effects && Array.isArray(bonus.effects)) {
           bonus.effects.forEach((effect) => {
+            // Skip PvP-only effects — they don't apply in PvE
+            if (effect.pvp) return;
+
             const stat = normalizeStatName(effect.stat);
             if (stat === undefined) {
               // Unknown stat - not in our mapping

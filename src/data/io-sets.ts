@@ -121,6 +121,7 @@ interface LegacySetBonusEffect {
   stat: string;
   value: number;
   desc: string;
+  pvp?: boolean;
 }
 
 interface LegacySetBonus {
@@ -162,6 +163,7 @@ function transformIOSet(id: string, legacy: LegacyIOSet): IOSet {
         stat: e.stat,
         value: e.value,
         desc: e.desc,
+        ...(e.pvp && { pvp: true }),
       })),
     })),
     pieces: legacy.pieces.map((p) => ({

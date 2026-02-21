@@ -21,6 +21,8 @@ export const KNOWN_BUGS: TrackerItem[] = [
 // ============================================
 
 export const RECENT_CHANGES: TrackerItem[] = [
+  { text: 'New: PvP IO set bonuses now split into PvE and PvP sections — PvP-only effects shown separately and excluded from stat calculations', status: 'new' },
+  { text: 'New: Tracked stats now highlight matching bonus effects in enhancement picker tooltips', status: 'new' },
   { text: 'New: Added Controls button to the dashboard bar — quick reference for all desktop and mobile interactions', status: 'new' },
   { text: 'New: Added Titan Origin, Hydra Origin, and D-Sync Origin enhancements to the enhancement picker', status: 'new' },
   { text: 'Fix: Corrected Hamidon Origin enhancement data — per-aspect values now match game data', status: 'fixed' },

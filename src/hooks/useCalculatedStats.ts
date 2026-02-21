@@ -94,6 +94,17 @@ export interface CalculatedStats {
     knockback: number;
   };
 
+  // Mez Protection (magnitude points)
+  mezProtection: {
+    hold: number;
+    stun: number;
+    immobilize: number;
+    sleep: number;
+    confuse: number;
+    fear: number;
+    knockback: number;
+  };
+
   // Debuff Resistance
   debuffResistance: {
     slow: number;
@@ -180,6 +191,17 @@ function convertToLegacyStats(
       confuse: global.mezResist,
       fear: global.mezResist,
       knockback: global.mezResist,
+    },
+
+    // Mez Protection (per-type magnitude from active powers + IO sets)
+    mezProtection: {
+      hold: global.protHold,
+      stun: global.protStun,
+      immobilize: global.protImmobilize,
+      sleep: global.protSleep,
+      confuse: global.protConfuse,
+      fear: global.protFear,
+      knockback: global.protKnockback,
     },
 
     // Debuff Resistance

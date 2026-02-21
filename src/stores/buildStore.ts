@@ -538,6 +538,11 @@ export const useBuildStore = create<BuildStore>()(
             return state;
           }
 
+          // Default toggle/auto powers to active
+          if ((power.powerType === 'Toggle' || power.powerType === 'Auto') && power.isActive === undefined) {
+            power = { ...power, isActive: true };
+          }
+
           const newBuild = { ...state.build };
 
           switch (category) {

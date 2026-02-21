@@ -123,6 +123,8 @@ export interface SetBonusEffect {
   value: number;
   /** Description text */
   desc: string;
+  /** True if this effect only applies in PvP zones */
+  pvp?: boolean;
 }
 
 export interface SetBonus {

@@ -1,12 +1,13 @@
 /**
- * SetBonusLookupModal - Mids-style set bonus lookup
+ * SetBonusLookupModal - Set Bonus Finder
  *
  * Cascading filters: Effect → Type → Strength
  * Optional "My Powers Only" toggle filters to sets the user can actually slot.
- * Results table: Set Name, Level Range, Set Type, Pieces Required
+ * Results table: Set Name, Level Range, Set Type, Value, Pieces Required
+ * Sortable column headers.
  */
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useCallback } from 'react';
 import { Modal } from './Modal';
 import { useBuild } from '@/stores/buildStore';
 import { IO_SET_TYPE_TO_CATEGORY } from '@/data/io-sets';
@@ -18,6 +19,13 @@ import {
   searchBonusLookup,
   type LookupEntry,
 } from '@/data/set-bonus-index';
+
+// ============================================
+// SORT TYPES
+// ============================================
+
+type SortColumn = 'setName' | 'levelRange' | 'setType' | 'value' | 'pieces';
+type SortDirection = 'asc' | 'desc' | null; // null = unsorted (default order)
 
 // ============================================
 // SUB-COMPONENTS
@@ -49,6 +57,13 @@ function FilterSelect({ label, value, onChange, options, disabled, placeholder }
       </select>
     </div>
   );
+}
+
+function SortArrow({ column, sortColumn, sortDir }: { column: SortColumn; sortColumn: SortColumn; sortDir: SortDirection }) {
+  if (column !== sortColumn || sortDir === null) {
+    return <span className="text-gray-700 ml-0.5">{'\u2195'}</span>;
+  }
+  return <span className="text-blue-400 ml-0.5">{sortDir === 'asc' ? '\u2191' : '\u2193'}</span>;
 }
 
 // ============================================
@@ -83,6 +98,39 @@ function useSlottableSetCategories(): Set<IOSetCategory> {
 }
 
 // ============================================
+// SORT HELPERS
+// ============================================
+
+/** Parse "10-30" → 10 (min level) for sorting */
+function parseLevelMin(range: string): number {
+  const match = range.match(/^(\d+)/);
+  return match ? parseInt(match[1], 10) : 0;
+}
+
+function compareLookupEntries(a: LookupEntry, b: LookupEntry, column: SortColumn, dir: SortDirection): number {
+  let cmp = 0;
+  switch (column) {
+    case 'setName':
+      cmp = a.setName.localeCompare(b.setName);
+      break;
+    case 'levelRange':
+      cmp = parseLevelMin(a.levelRange) - parseLevelMin(b.levelRange);
+      break;
+    case 'setType':
+      cmp = a.setType.localeCompare(b.setType);
+      break;
+    case 'value':
+      cmp = a.value - b.value;
+      break;
+    case 'pieces':
+      cmp = a.piecesRequired - b.piecesRequired;
+      break;
+  }
+  if (dir === null) return 0;
+  return dir === 'asc' ? cmp : -cmp;
+}
+
+// ============================================
 // MAIN COMPONENT
 // ============================================
 
@@ -96,6 +144,8 @@ export function SetBonusLookupModal({ isOpen, onClose }: SetBonusLookupModalProp
   const [selectedType, setSelectedType] = useState('');
   const [selectedStrength, setSelectedStrength] = useState('');
   const [myPowersOnly, setMyPowersOnly] = useState(false);
+  const [sortColumn, setSortColumn] = useState<SortColumn>('value');
+  const [sortDir, setSortDir] = useState<SortDirection>(null);
 
   const slottableCategories = useSlottableSetCategories();
 
@@ -133,6 +183,12 @@ export function SetBonusLookupModal({ isOpen, onClose }: SetBonusLookupModalProp
     return entries;
   }, [selectedEffect, selectedType, selectedStrength, myPowersOnly, slottableCategories]);
 
+  // Sorted results (null direction = unsorted / default order)
+  const sortedResults = useMemo(() => {
+    if (sortDir === null) return results;
+    return [...results].sort((a, b) => compareLookupEntries(a, b, sortColumn, sortDir));
+  }, [results, sortColumn, sortDir]);
+
   // Handlers for cascading resets
   const handleEffectChange = (value: string) => {
     setSelectedEffect(value);
@@ -149,6 +205,22 @@ export function SetBonusLookupModal({ isOpen, onClose }: SetBonusLookupModalProp
     setSelectedStrength(value);
   };
 
+  const handleSort = useCallback((column: SortColumn) => {
+    const defaultDir = column === 'value' || column === 'pieces' ? 'desc' : 'asc';
+    const oppositeDir = defaultDir === 'desc' ? 'asc' : 'desc';
+
+    setSortColumn(prev => {
+      if (prev === column) {
+        // Cycle: default → opposite → unsorted → default ...
+        setSortDir(d => d === defaultDir ? oppositeDir : d === oppositeDir ? null : defaultDir);
+        return column;
+      }
+      // New column: start at its default direction
+      setSortDir(defaultDir);
+      return column;
+    });
+  }, []);
+
   // Format strength values for display (truncate to 2 decimal places)
   const strengthOptions = useMemo(() =>
     strengths.map(v => ({
@@ -159,7 +231,7 @@ export function SetBonusLookupModal({ isOpen, onClose }: SetBonusLookupModalProp
   );
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose} title="Set Bonus Lookup" size="full">
+    <Modal isOpen={isOpen} onClose={onClose} title="Set Bonus Finder" size="full">
       <div className="flex flex-col h-[75vh]">
         {/* Filter section */}
         <div className="px-4 pt-3 pb-3 space-y-2 border-b border-gray-700">
@@ -199,11 +271,22 @@ export function SetBonusLookupModal({ isOpen, onClose }: SetBonusLookupModalProp
 
         {/* Results header */}
         {selectedEffect && (
-          <div className="grid grid-cols-[1fr_90px_1fr_80px] gap-2 px-4 py-2 border-b border-gray-700 text-[11px] text-gray-500 uppercase tracking-wide">
-            <span>Set Name</span>
-            <span>Level Range</span>
-            <span>Set Type</span>
-            <span className="text-right">Pieces</span>
+          <div className="grid grid-cols-[1fr_90px_1fr_70px_60px] gap-2 px-4 py-2 border-b border-gray-700 text-[11px] text-gray-500 uppercase tracking-wide">
+            <button className="flex items-center text-left hover:text-gray-300 transition-colors" onClick={() => handleSort('setName')}>
+              Set Name<SortArrow column="setName" sortColumn={sortColumn} sortDir={sortDir} />
+            </button>
+            <button className="flex items-center text-left hover:text-gray-300 transition-colors" onClick={() => handleSort('levelRange')}>
+              Level<SortArrow column="levelRange" sortColumn={sortColumn} sortDir={sortDir} />
+            </button>
+            <button className="flex items-center text-left hover:text-gray-300 transition-colors" onClick={() => handleSort('setType')}>
+              Set Type<SortArrow column="setType" sortColumn={sortColumn} sortDir={sortDir} />
+            </button>
+            <button className="flex items-center justify-end hover:text-gray-300 transition-colors" onClick={() => handleSort('value')}>
+              <SortArrow column="value" sortColumn={sortColumn} sortDir={sortDir} />Value
+            </button>
+            <button className="flex items-center justify-end hover:text-gray-300 transition-colors" onClick={() => handleSort('pieces')}>
+              <SortArrow column="pieces" sortColumn={sortColumn} sortDir={sortDir} />Pieces
+            </button>
           </div>
         )}
 
@@ -213,13 +296,13 @@ export function SetBonusLookupModal({ isOpen, onClose }: SetBonusLookupModalProp
             <div className="flex items-center justify-center h-32 text-gray-500 text-sm">
               Select an effect to search
             </div>
-          ) : results.length === 0 ? (
+          ) : sortedResults.length === 0 ? (
             <div className="flex items-center justify-center h-32 text-gray-500 text-sm">
               No matching set bonuses found
             </div>
           ) : (
             <div>
-              {results.map((entry, i) => (
+              {sortedResults.map((entry, i) => (
                 <ResultRow
                   key={`${entry.setId}-${entry.piecesRequired}-${entry.effectType}-${i}`}
                   entry={entry}
@@ -233,7 +316,7 @@ export function SetBonusLookupModal({ isOpen, onClose }: SetBonusLookupModalProp
         {/* Footer with result count */}
         {selectedEffect && (
           <div className="px-4 py-2 border-t border-gray-700 text-xs text-gray-500">
-            {results.length} result{results.length !== 1 ? 's' : ''}
+            {sortedResults.length} result{sortedResults.length !== 1 ? 's' : ''}
           </div>
         )}
       </div>
@@ -254,14 +337,15 @@ function canSlot(entry: LookupEntry, slottableCategories: Set<IOSetCategory>): b
 function ResultRow({ entry, dimmed }: { entry: LookupEntry; dimmed: boolean }) {
   return (
     <div
-      className={`grid grid-cols-[1fr_90px_1fr_80px] gap-2 px-4 py-1.5 hover:bg-gray-800/50 text-sm border-b border-gray-800/30 ${
+      className={`grid grid-cols-[1fr_90px_1fr_70px_60px] gap-2 px-4 py-1.5 hover:bg-gray-800/50 text-sm border-b border-gray-800/30 ${
         dimmed ? 'opacity-40' : ''
       }`}
     >
       <span className="text-gray-200 truncate">{entry.setName}</span>
       <span className="text-gray-400">{entry.levelRange}</span>
       <span className="text-gray-400 truncate">{entry.setType}</span>
-      <span className="text-green-400 text-right">{entry.piecesRequired}</span>
+      <span className="text-cyan-400 text-right tabular-nums">{parseFloat(entry.value.toFixed(2))}%</span>
+      <span className="text-green-400 text-right tabular-nums">{entry.piecesRequired}</span>
     </div>
   );
 }

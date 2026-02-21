@@ -458,15 +458,23 @@ export function RegistryEffectsDisplay({
     }
   }
 
-  // Handle healing separately (needs scale-based display)
+  // Handle healing separately (resolve AT table for actual HP values)
   const healing = effects?.healing;
   if (healing && typeof healing === 'object' && 'scale' in healing && healing.scale != null) {
     const healConfig = EFFECT_REGISTRY['healing'];
     if (healConfig && categories.includes(healConfig.category as EffectCategory)) {
-      const tiers = calcEffectThreeTier(healConfig, healing.scale, enhancementBonuses, globalBonuses);
+      // Resolve AT table to get actual HP healed instead of raw scale
+      let baseHealHP = healing.scale;
+      if (healing.table && archetypeId) {
+        const tableVal = getTableValue(archetypeId, healing.table, level ?? 50);
+        if (tableVal !== undefined) {
+          baseHealHP = healing.scale * tableVal;
+        }
+      }
+      const tiers = calcEffectThreeTier(healConfig, baseHealHP, enhancementBonuses, globalBonuses);
       displayableEffects.push({
         effect: { key: 'healing', value: healing, config: healConfig },
-        baseValue: healing.scale,
+        baseValue: baseHealHP,
         tiers,
       });
     }

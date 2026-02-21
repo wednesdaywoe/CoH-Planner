@@ -27,6 +27,7 @@ export interface LookupEntry {
   value: number;
   desc: string;
   levelRange: string;
+  pvp?: boolean;           // True if this bonus only applies in PvP zones
 }
 
 // ============================================
@@ -175,6 +176,7 @@ function buildLookupIndex(): LookupEntry[] {
           value: fx.value,
           desc: fx.desc,
           levelRange,
+          ...(fx.pvp && { pvp: true }),
         });
       }
     }
@@ -294,6 +296,7 @@ export function getSetTrackedMatches(
   const matched = new Set<string>();
   for (const bonus of ioSet.bonuses) {
     for (const fx of bonus.effects) {
+      if (fx.pvp) continue; // PvP-only effects don't count for PvE stat tracking
       const normalized = normalizeStatName(fx.stat);
       if (normalized && targetMap.has(normalized)) {
         matched.add(targetMap.get(normalized)!);

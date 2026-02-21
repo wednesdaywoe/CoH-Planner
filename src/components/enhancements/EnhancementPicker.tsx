@@ -18,7 +18,8 @@ import {
   getRarityColor, getTierTextColor, getTierBorderColor,
   findProcData, parseProcEffect, getProcEffectLabel, getProcEffectColor, isProcAlwaysOn,
 } from '@/data';
-import { normalizeAspectName, getAspectSchedule, getIOValueAtLevel } from '@/utils/calculations';
+import { normalizeAspectName, getAspectSchedule, getIOValueAtLevel, normalizeStatName } from '@/utils/calculations';
+import { getPairedStat } from '@/utils/calculations/set-bonuses';
 import { Modal, ModalBody } from '@/components/modals';
 import { Tooltip, Toggle } from '@/components/ui';
 import { IOSetIcon, GenericIOIcon, OriginEnhancementIcon, SpecialEnhancementIcon } from './EnhancementIcon';
@@ -1176,6 +1177,19 @@ function SetPieceTooltip({ set, piece }: SetPieceTooltipProps) {
   const attunementEnabled = useUIStore((s) => s.attunementEnabled);
   const build = useBuildStore((s) => s.build);
   const picker = useUIStore((s) => s.enhancementPicker);
+  const trackedStats = useUIStore((s) => s.trackedStats);
+
+  // Build a set of normalized stat keys that are being tracked (including paired stats)
+  const trackedNormalized = useMemo(() => {
+    if (trackedStats.length === 0) return new Set<string>();
+    const set = new Set<string>();
+    for (const key of trackedStats) {
+      set.add(key);
+      const pair = getPairedStat(key);
+      if (pair) set.add(pair);
+    }
+    return set;
+  }, [trackedStats]);
 
   // Count how many pieces of this set are already slotted in the current power
   const setId = set.id || set.name;
@@ -1377,34 +1391,75 @@ function SetPieceTooltip({ set, piece }: SetPieceTooltipProps) {
       </div>
 
       {/* Set Bonuses */}
-      {set.bonuses.length > 0 && (
-        <div className="border-t border-slate-700 pt-2">
-          <div className="text-[9px] text-slate-500 uppercase mb-1">
-            Set Bonuses ({piecesInPower}/{set.pieces.length} slotted)
-          </div>
-          <div className="space-y-0.5">
-            {set.bonuses.map((bonus, idx) => {
-              const isActive = piecesInPower >= bonus.pieces;
-              return (
-                <div
-                  key={idx}
-                  className={`text-[10px] ${isActive ? 'text-green-400' : 'text-slate-500'}`}
-                >
-                  <span className={`font-medium ${isActive ? 'text-green-500' : 'text-slate-600'}`}>
-                    {bonus.pieces}pc:
-                  </span>{' '}
-                  {bonus.effects.map((eff, i) => (
-                    <span key={i}>
-                      {i > 0 && ', '}
-                      {eff.desc}
-                    </span>
-                  ))}
+      {set.bonuses.length > 0 && (() => {
+        const isPvPSet = set.category === 'pvp';
+        const hasPvPEffects = isPvPSet && set.bonuses.some(b => b.effects.some(e => e.pvp));
+
+        return (
+          <div className="border-t border-slate-700 pt-2">
+            <div className="text-[9px] text-slate-500 uppercase mb-1">
+              Set Bonuses ({piecesInPower}/{set.pieces.length} slotted)
+            </div>
+            {/* PvE bonuses (or all bonuses for non-PvP sets) */}
+            <div className="space-y-0.5">
+              {set.bonuses.map((bonus, idx) => {
+                const pveEffects = hasPvPEffects ? bonus.effects.filter(e => !e.pvp) : bonus.effects;
+                if (pveEffects.length === 0) return null;
+                const isActive = piecesInPower >= bonus.pieces;
+                return (
+                  <div
+                    key={idx}
+                    className={`text-[10px] ${isActive ? 'text-green-400' : 'text-slate-500'}`}
+                  >
+                    <span className={`font-medium ${isActive ? 'text-green-500' : 'text-slate-600'}`}>
+                      {bonus.pieces}pc:
+                    </span>{' '}
+                    {pveEffects.map((eff, i) => {
+                      const normalized = normalizeStatName(eff.stat);
+                      const isTracked = normalized ? trackedNormalized.has(normalized) : false;
+                      return (
+                        <span key={i} className={isTracked ? 'text-blue-300 font-semibold' : ''}>
+                          {i > 0 && ', '}
+                          {eff.desc}
+                        </span>
+                      );
+                    })}
+                  </div>
+                );
+              })}
+            </div>
+            {/* PvP-only bonuses section */}
+            {hasPvPEffects && (
+              <>
+                <div className="text-[9px] text-red-400/70 uppercase mt-2 mb-0.5">PvP Only</div>
+                <div className="space-y-0.5">
+                  {set.bonuses.map((bonus, idx) => {
+                    const pvpEffects = bonus.effects.filter(e => e.pvp);
+                    if (pvpEffects.length === 0) return null;
+                    const isActive = piecesInPower >= bonus.pieces;
+                    return (
+                      <div
+                        key={idx}
+                        className={`text-[10px] ${isActive ? 'text-red-400/60' : 'text-slate-600'}`}
+                      >
+                        <span className={`font-medium ${isActive ? 'text-red-400/70' : 'text-slate-700'}`}>
+                          {bonus.pieces}pc:
+                        </span>{' '}
+                        {pvpEffects.map((eff, i) => (
+                          <span key={i}>
+                            {i > 0 && ', '}
+                            {eff.desc}
+                          </span>
+                        ))}
+                      </div>
+                    );
+                  })}
                 </div>
-              );
-            })}
+              </>
+            )}
           </div>
-        </div>
-      )}
+        );
+      })()}
     </div>
   );
 }

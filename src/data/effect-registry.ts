@@ -479,9 +479,9 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
   },
   healing: {
     label: 'Heal',
-    category: 'special',
+    category: 'execution',
     colorClass: 'text-green-400',
-    format: 'percent',
+    format: 'value',
     enhancementAspect: 'heal',
     priority: 2,
   },

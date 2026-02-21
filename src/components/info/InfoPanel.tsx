@@ -274,6 +274,16 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
   // Merge raw power effects with curated support power data
   const baseEffects = mergeWithSupportEffects(power.effects, powerSet, power.name);
 
+  // Extract healing from damage array (e.g., Life Drain has { type: "Heal", scale, table })
+  let healFromDamage: { scale: number; table?: string } | undefined;
+  if (Array.isArray(power.damage) && !baseEffects?.healing) {
+    const healEntry = (power.damage as Array<{ type: string; scale: number; table?: string }>)
+      .find(e => e.type === 'Heal');
+    if (healEntry) {
+      healFromDamage = { scale: healEntry.scale, table: healEntry.table };
+    }
+  }
+
   // Merge power.stats into effects for registry-driven display
   // Map stats field names to registry-expected names
   const effects = {
@@ -284,6 +294,8 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
     ...(power.stats?.accuracy && { accuracy: power.stats.accuracy }),
     ...(power.stats?.range && { range: power.stats.range }),
     ...(power.stats?.castTime && { castTime: power.stats.castTime }),
+    // Healing from damage array
+    ...(healFromDamage && { healing: healFromDamage }),
   };
 
   // Get archetype modifier for buff/debuff calculations

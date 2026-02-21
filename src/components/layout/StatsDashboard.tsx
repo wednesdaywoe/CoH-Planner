@@ -23,7 +23,13 @@ interface CompoundStatValue {
   buff: number;
 }
 
-type StatValue = number | string | CompoundStatValue;
+/** Mez stat value carrying both protection and resistance */
+interface MezStatValue {
+  protection: number; // magnitude points
+  resistance: number; // percentage
+}
+
+type StatValue = number | string | CompoundStatValue | MezStatValue;
 
 interface StatDefinition {
   id: string;
@@ -34,6 +40,17 @@ interface StatDefinition {
   tooltip: string;
   showWhenZero?: boolean;
   breakdownKey?: string; // Key to look up breakdown from calculation result
+}
+
+/** Format mez stat showing protection (Mag) and resistance (%) */
+function formatMezStat(v: StatValue): string {
+  if (typeof v === 'object' && v !== null && 'protection' in v) {
+    const mez = v as MezStatValue;
+    const prot = mez.protection > 0 ? mez.protection.toFixed(1) : '0';
+    if (mez.resistance > 0) return `${prot} (${mez.resistance.toFixed(1)}% Res)`;
+    return prot;
+  }
+  return String(v);
 }
 
 const STAT_DEFINITIONS: Record<string, StatDefinition> = {
@@ -213,62 +230,76 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     breakdownKey: 'resToxic',
   },
 
-  // Mez Resistance
+  // Mez Protection & Resistance
   mez_hold: {
     id: 'mez_hold',
-    label: 'Hold Res',
-    getValue: (stats) => stats.mezResistance.hold,
-    format: (v) => `${Number(v).toFixed(2)}%`,
+    label: 'Hold',
+    getValue: (stats) => ({ protection: stats.mezProtection.hold, resistance: stats.mezResistance.hold }),
+    format: formatMezStat,
     color: 'text-orange-300',
-    tooltip: 'Hold resistance',
+    tooltip: 'Hold protection (Mag) and resistance (%)',
+    showWhenZero: true,
+    breakdownKey: 'protHold',
   },
   mez_stun: {
     id: 'mez_stun',
-    label: 'Stun Res',
-    getValue: (stats) => stats.mezResistance.stun,
-    format: (v) => `${Number(v).toFixed(2)}%`,
+    label: 'Stun',
+    getValue: (stats) => ({ protection: stats.mezProtection.stun, resistance: stats.mezResistance.stun }),
+    format: formatMezStat,
     color: 'text-orange-300',
-    tooltip: 'Stun resistance',
+    tooltip: 'Stun protection (Mag) and resistance (%)',
+    showWhenZero: true,
+    breakdownKey: 'protStun',
   },
   mez_immob: {
     id: 'mez_immob',
-    label: 'Immob Res',
-    getValue: (stats) => stats.mezResistance.immobilize,
-    format: (v) => `${Number(v).toFixed(2)}%`,
+    label: 'Immob',
+    getValue: (stats) => ({ protection: stats.mezProtection.immobilize, resistance: stats.mezResistance.immobilize }),
+    format: formatMezStat,
     color: 'text-orange-300',
-    tooltip: 'Immobilize resistance',
+    tooltip: 'Immobilize protection (Mag) and resistance (%)',
+    showWhenZero: true,
+    breakdownKey: 'protImmobilize',
   },
   mez_sleep: {
     id: 'mez_sleep',
-    label: 'Sleep Res',
-    getValue: (stats) => stats.mezResistance.sleep,
-    format: (v) => `${Number(v).toFixed(2)}%`,
+    label: 'Sleep',
+    getValue: (stats) => ({ protection: stats.mezProtection.sleep, resistance: stats.mezResistance.sleep }),
+    format: formatMezStat,
     color: 'text-orange-300',
-    tooltip: 'Sleep resistance',
+    tooltip: 'Sleep protection (Mag) and resistance (%)',
+    showWhenZero: true,
+    breakdownKey: 'protSleep',
   },
   mez_confuse: {
     id: 'mez_confuse',
-    label: 'Confuse Res',
-    getValue: (stats) => stats.mezResistance.confuse,
-    format: (v) => `${Number(v).toFixed(2)}%`,
+    label: 'Confuse',
+    getValue: (stats) => ({ protection: stats.mezProtection.confuse, resistance: stats.mezResistance.confuse }),
+    format: formatMezStat,
     color: 'text-orange-300',
-    tooltip: 'Confuse resistance',
+    tooltip: 'Confuse protection (Mag) and resistance (%)',
+    showWhenZero: true,
+    breakdownKey: 'protConfuse',
   },
   mez_fear: {
     id: 'mez_fear',
-    label: 'Fear Res',
-    getValue: (stats) => stats.mezResistance.fear,
-    format: (v) => `${Number(v).toFixed(2)}%`,
+    label: 'Fear',
+    getValue: (stats) => ({ protection: stats.mezProtection.fear, resistance: stats.mezResistance.fear }),
+    format: formatMezStat,
     color: 'text-orange-300',
-    tooltip: 'Fear resistance',
+    tooltip: 'Fear protection (Mag) and resistance (%)',
+    showWhenZero: true,
+    breakdownKey: 'protFear',
   },
   mez_kb: {
     id: 'mez_kb',
-    label: 'KB Res',
-    getValue: (stats) => stats.mezResistance.knockback,
-    format: (v) => `${Number(v).toFixed(2)}%`,
+    label: 'KB',
+    getValue: (stats) => ({ protection: stats.mezProtection.knockback, resistance: stats.mezResistance.knockback }),
+    format: formatMezStat,
     color: 'text-orange-300',
-    tooltip: 'Knockback resistance',
+    tooltip: 'Knockback protection (Mag) and resistance (%)',
+    showWhenZero: true,
+    breakdownKey: 'protKnockback',
   },
 
   // Endurance
@@ -501,13 +532,13 @@ export function StatsDashboard() {
     build.secondary.powers.length +
     build.pools.reduce((sum, pool) => sum + pool.powers.length, 0) +
     (build.epicPool?.powers.length ?? 0);
-  // Count only EXTRA slots beyond the free first slot each power gets
-  // In CoH, each power pick comes with 1 free slot; the 67 budget is for additional placed slots
+  // Count ALL enhancement slots (including the free first slot each power gets)
+  // The 67 budget is for total slots across all non-inherent powers
   const currentSlotCount =
-    build.primary.powers.reduce((sum, p) => sum + Math.max(0, p.slots.length - 1), 0) +
-    build.secondary.powers.reduce((sum, p) => sum + Math.max(0, p.slots.length - 1), 0) +
-    build.pools.reduce((sum, pool) => sum + pool.powers.reduce((s, p) => s + Math.max(0, p.slots.length - 1), 0), 0) +
-    (build.epicPool?.powers.reduce((sum, p) => sum + Math.max(0, p.slots.length - 1), 0) ?? 0);
+    build.primary.powers.reduce((sum, p) => sum + p.slots.length, 0) +
+    build.secondary.powers.reduce((sum, p) => sum + p.slots.length, 0) +
+    build.pools.reduce((sum, pool) => sum + pool.powers.reduce((s, p) => s + p.slots.length, 0), 0) +
+    (build.epicPool?.powers.reduce((sum, p) => sum + p.slots.length, 0) ?? 0);
 
   // Get visible stats based on config
   const visibleStats = useMemo(() => {
@@ -520,7 +551,15 @@ export function StatsDashboard() {
         const breakdown = def.breakdownKey ? breakdowns.get(def.breakdownKey) : undefined;
         return { ...def, value, breakdown };
       })
-      .filter((stat) => stat.showWhenZero || Number(stat.value) !== 0);
+      .filter((stat) => {
+        if (stat.showWhenZero) return true;
+        const v = stat.value;
+        // MezStatValue: show if either protection or resistance is non-zero
+        if (typeof v === 'object' && v !== null && 'protection' in v) {
+          return v.protection !== 0 || v.resistance !== 0;
+        }
+        return Number(v) !== 0;
+      });
   }, [statsConfig, stats, maxHP, breakdowns]);
 
   // Stat categories for grouping (should match config modal)
@@ -649,11 +688,11 @@ export function StatsDashboard() {
               Pwr {24 - currentPowerCount}/24
             </span>
           </Tooltip>
-          <Tooltip content={`${67 - currentSlotCount} enhancement slots remaining (${currentSlotCount} used)`}>
+          <Tooltip content={`${Math.max(0, 67 - currentSlotCount)} enhancement slots remaining (${currentSlotCount} used)`}>
             <span className={`text-xs tabular-nums font-medium px-1.5 ${
               currentSlotCount > 67 ? 'text-red-400' : 67 - currentSlotCount <= 5 ? 'text-yellow-400' : 'text-emerald-400'
             }`}>
-              Slot {67 - currentSlotCount}/67
+              Slot {Math.max(0, 67 - currentSlotCount)}/67
             </span>
           </Tooltip>
           <div className="w-px h-4 bg-gray-700 mx-0.5" />

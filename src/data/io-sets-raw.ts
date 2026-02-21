@@ -22,6 +22,7 @@ interface LegacySetBonusEffect {
   stat: string;
   value: number;
   desc: string;
+  pvp?: boolean;
 }
 
 interface LegacySetBonus {
@@ -7813,12 +7814,14 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           {
             "stat": "damage_resistance_(lethal)",
             "value": 2.25,
-            "desc": "+2% Lethal and Smashing"
+            "desc": "+2% Lethal and Smashing",
+            "pvp": true
           },
           {
             "stat": "mez_resistance_(all)",
             "value": 3.75,
-            "desc": "+4% Mez Resistance (All Resistance"
+            "desc": "+4% Mez Resistance (All Resistance",
+            "pvp": true
           }
         ]
       },
@@ -7833,7 +7836,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           {
             "stat": "regeneration",
             "value": 10,
-            "desc": "+10.0% Regeneration"
+            "desc": "+10.0% Regeneration",
+            "pvp": true
           }
         ]
       },
@@ -7848,7 +7852,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           {
             "stat": "accuracy",
             "value": 9,
-            "desc": "+9% Accuracy"
+            "desc": "+9% Accuracy",
+            "pvp": true
           }
         ]
       },
@@ -7863,7 +7868,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           {
             "stat": "recharge",
             "value": 7.5,
-            "desc": "+8% Recharge"
+            "desc": "+8% Recharge",
+            "pvp": true
           }
         ]
       },
@@ -7883,7 +7889,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           {
             "stat": "recovery",
             "value": 3,
-            "desc": "+3.0% Recovery"
+            "desc": "+3.0% Recovery",
+            "pvp": true
           }
         ]
       },
@@ -8973,7 +8980,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           {
             "stat": "+res(recharge_debuff)",
             "value": 10,
-            "desc": "+10% +Res(Recharge Debuff) and Slow Resistance"
+            "desc": "+10% +Res(Recharge Debuff) and Slow Resistance",
+            "pvp": true
           }
         ]
       },
@@ -8988,7 +8996,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           {
             "stat": "knockback_resistance",
             "value": 1000,
-            "desc": "+1000% Knockback Resistance Resistance"
+            "desc": "+1000% Knockback Resistance Resistance",
+            "pvp": true
           }
         ]
       },
@@ -9003,12 +9012,14 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           {
             "stat": "defense_(cold)",
             "value": 3.1300000000000003,
-            "desc": "+3% Cold and Fire"
+            "desc": "+3% Cold and Fire",
+            "pvp": true
           },
           {
             "stat": "defense_(area)",
             "value": 1.5599999999999998,
-            "desc": "+1.56% Area Defense"
+            "desc": "+1.56% Area Defense",
+            "pvp": true
           }
         ]
       },
@@ -9028,7 +9039,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           {
             "stat": "maximum_hitpoints",
             "value": 2.25,
-            "desc": "+2.2% Maximum HitPoints"
+            "desc": "+2.2% Maximum HitPoints",
+            "pvp": true
           }
         ]
       },
@@ -9043,7 +9055,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           {
             "stat": "recharge",
             "value": 7.5,
-            "desc": "+8% Recharge"
+            "desc": "+8% Recharge",
+            "pvp": true
           }
         ]
       }
@@ -9696,7 +9709,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           {
             "stat": "maximum_endurance",
             "value": 225,
-            "desc": "+225.0% Maximum Endurance"
+            "desc": "+225.0% Maximum Endurance",
+            "pvp": true
           }
         ]
       },
@@ -9711,7 +9725,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           {
             "stat": "knockback_resistance",
             "value": 1000,
-            "desc": "+1000% Knockback Resistance Resistance"
+            "desc": "+1000% Knockback Resistance Resistance",
+            "pvp": true
           }
         ]
       },
@@ -9731,12 +9746,14 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           {
             "stat": "damage_resistance_(lethal)",
             "value": 3,
-            "desc": "+3% Lethal and Smashing"
+            "desc": "+3% Lethal and Smashing",
+            "pvp": true
           },
           {
             "stat": "mez_resistance_(all)",
             "value": 5,
-            "desc": "+5% Mez Resistance (All Resistance"
+            "desc": "+5% Mez Resistance (All Resistance",
+            "pvp": true
           }
         ]
       },
@@ -9751,7 +9768,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           {
             "stat": "+res(recharge_debuff)",
             "value": 10,
-            "desc": "+10% +Res(Recharge Debuff) and Slow Resistance"
+            "desc": "+10% +Res(Recharge Debuff) and Slow Resistance",
+            "pvp": true
           }
         ]
       },
@@ -9771,7 +9789,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           {
             "stat": "recharge",
             "value": 7.5,
-            "desc": "+8% Recharge"
+            "desc": "+8% Recharge",
+            "pvp": true
           }
         ]
       },
@@ -9865,7 +9884,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           {
             "stat": "range",
             "value": 7.5,
-            "desc": "+7.5% Range"
+            "desc": "+7.5% Range",
+            "pvp": true
           }
         ]
       },
@@ -9880,12 +9900,14 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           {
             "stat": "damage_resistance_(lethal)",
             "value": 2.25,
-            "desc": "+2% Lethal and Smashing"
+            "desc": "+2% Lethal and Smashing",
+            "pvp": true
           },
           {
             "stat": "mez_resistance_(all)",
             "value": 3.75,
-            "desc": "+4% Mez Resistance (All Resistance"
+            "desc": "+4% Mez Resistance (All Resistance",
+            "pvp": true
           }
         ]
       },
@@ -9900,12 +9922,14 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           {
             "stat": "defense_(energy)",
             "value": 3.1300000000000003,
-            "desc": "+3% Energy and Negative Energy"
+            "desc": "+3% Energy and Negative Energy",
+            "pvp": true
           },
           {
             "stat": "defense_(ranged)",
             "value": 1.5599999999999998,
-            "desc": "+1.56% Ranged Defense"
+            "desc": "+1.56% Ranged Defense",
+            "pvp": true
           }
         ]
       },
@@ -9920,12 +9944,14 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           {
             "stat": "damage_resistance_(energy)",
             "value": 4.5,
-            "desc": "+4% Energy and Negative Energy"
+            "desc": "+4% Energy and Negative Energy",
+            "pvp": true
           },
           {
             "stat": "mez_resistance_(all)",
             "value": 7.5,
-            "desc": "+8% Mez Resistance (All Resistance"
+            "desc": "+8% Mez Resistance (All Resistance",
+            "pvp": true
           }
         ]
       },
@@ -9940,7 +9966,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           {
             "stat": "recharge",
             "value": 7.5,
-            "desc": "+8% Recharge"
+            "desc": "+8% Recharge",
+            "pvp": true
           }
         ]
       }
@@ -10028,12 +10055,14 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           {
             "stat": "damage_resistance_(cold)",
             "value": 2.25,
-            "desc": "+2% Cold and Fire"
+            "desc": "+2% Cold and Fire",
+            "pvp": true
           },
           {
             "stat": "mez_resistance_(all)",
             "value": 3.75,
-            "desc": "+4% Mez Resistance (All Resistance"
+            "desc": "+4% Mez Resistance (All Resistance",
+            "pvp": true
           }
         ]
       },
@@ -10048,7 +10077,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           {
             "stat": "range",
             "value": 10,
-            "desc": "+10.0% Range"
+            "desc": "+10.0% Range",
+            "pvp": true
           }
         ]
       },
@@ -10063,7 +10093,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           {
             "stat": "+res(recharge_debuff)",
             "value": 10,
-            "desc": "+10% +Res(Recharge Debuff) and Slow Resistance"
+            "desc": "+10% +Res(Recharge Debuff) and Slow Resistance",
+            "pvp": true
           }
         ]
       },
@@ -10078,7 +10109,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           {
             "stat": "maximum_hitpoints",
             "value": 2.25,
-            "desc": "+2.2% Maximum HitPoints"
+            "desc": "+2.2% Maximum HitPoints",
+            "pvp": true
           }
         ]
       },
@@ -10098,7 +10130,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           {
             "stat": "recovery",
             "value": 3,
-            "desc": "+3.0% Recovery"
+            "desc": "+3.0% Recovery",
+            "pvp": true
           }
         ]
       }
@@ -10185,7 +10218,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           {
             "stat": "maximum_endurance",
             "value": 225,
-            "desc": "+225.0% Maximum Endurance"
+            "desc": "+225.0% Maximum Endurance",
+            "pvp": true
           }
         ]
       },
@@ -10200,12 +10234,14 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           {
             "stat": "damage_resistance_(energy)",
             "value": 2.25,
-            "desc": "+2% Energy and Negative Energy"
+            "desc": "+2% Energy and Negative Energy",
+            "pvp": true
           },
           {
             "stat": "mez_resistance_(all)",
             "value": 3.75,
-            "desc": "+4% Mez Resistance (All Resistance"
+            "desc": "+4% Mez Resistance (All Resistance",
+            "pvp": true
           }
         ]
       },
@@ -10220,12 +10256,14 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           {
             "stat": "defense_(lethal)",
             "value": 3.1300000000000003,
-            "desc": "+3% Lethal and Smashing"
+            "desc": "+3% Lethal and Smashing",
+            "pvp": true
           },
           {
             "stat": "defense_(melee)",
             "value": 1.5599999999999998,
-            "desc": "+1.56% Melee Defense"
+            "desc": "+1.56% Melee Defense",
+            "pvp": true
           }
         ]
       },
@@ -10245,7 +10283,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           {
             "stat": "knockback_resistance",
             "value": 1000,
-            "desc": "+1000% Knockback Resistance Resistance"
+            "desc": "+1000% Knockback Resistance Resistance",
+            "pvp": true
           }
         ]
       },
@@ -10260,7 +10299,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           {
             "stat": "recharge",
             "value": 7.5,
-            "desc": "+8% Recharge"
+            "desc": "+8% Recharge",
+            "pvp": true
           }
         ]
       }
@@ -11874,7 +11914,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           {
             "stat": "range",
             "value": 7.5,
-            "desc": "+7.5% Range"
+            "desc": "+7.5% Range",
+            "pvp": true
           }
         ]
       },
@@ -11889,12 +11930,14 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           {
             "stat": "damage_resistance_(lethal)",
             "value": 2.25,
-            "desc": "+2% Lethal and Smashing"
+            "desc": "+2% Lethal and Smashing",
+            "pvp": true
           },
           {
             "stat": "mez_resistance_(all)",
             "value": 3.75,
-            "desc": "+4% Mez Resistance (All Resistance"
+            "desc": "+4% Mez Resistance (All Resistance",
+            "pvp": true
           }
         ]
       },
@@ -11909,12 +11952,14 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           {
             "stat": "defense_(energy)",
             "value": 3.1300000000000003,
-            "desc": "+3% Energy and Negative Energy"
+            "desc": "+3% Energy and Negative Energy",
+            "pvp": true
           },
           {
             "stat": "defense_(ranged)",
             "value": 1.5599999999999998,
-            "desc": "+1.56% Ranged Defense"
+            "desc": "+1.56% Ranged Defense",
+            "pvp": true
           }
         ]
       },
@@ -11929,12 +11974,14 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           {
             "stat": "damage_resistance_(cold)",
             "value": 3.75,
-            "desc": "+4% Cold and Fire"
+            "desc": "+4% Cold and Fire",
+            "pvp": true
           },
           {
             "stat": "mez_resistance_(all)",
             "value": 6.25,
-            "desc": "+6% Mez Resistance (All Resistance"
+            "desc": "+6% Mez Resistance (All Resistance",
+            "pvp": true
           }
         ]
       },
@@ -11949,7 +11996,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           {
             "stat": "recharge",
             "value": 7.5,
-            "desc": "+8% Recharge"
+            "desc": "+8% Recharge",
+            "pvp": true
           }
         ]
       }
@@ -15377,12 +15425,14 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           {
             "stat": "damage_resistance_(lethal)",
             "value": 2.25,
-            "desc": "+2% Lethal and Smashing"
+            "desc": "+2% Lethal and Smashing",
+            "pvp": true
           },
           {
             "stat": "mez_resistance_(all)",
             "value": 3.75,
-            "desc": "+4% Mez Resistance (All Resistance"
+            "desc": "+4% Mez Resistance (All Resistance",
+            "pvp": true
           }
         ]
       },
@@ -15397,7 +15447,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           {
             "stat": "knockback_resistance",
             "value": 1000,
-            "desc": "+1000% Knockback Resistance Resistance"
+            "desc": "+1000% Knockback Resistance Resistance",
+            "pvp": true
           }
         ]
       },
@@ -15412,12 +15463,14 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           {
             "stat": "damage_resistance_(cold)",
             "value": 3,
-            "desc": "+3% Cold and Fire"
+            "desc": "+3% Cold and Fire",
+            "pvp": true
           },
           {
             "stat": "mez_resistance_(all)",
             "value": 5,
-            "desc": "+5% Mez Resistance (All Resistance"
+            "desc": "+5% Mez Resistance (All Resistance",
+            "pvp": true
           }
         ]
       },
@@ -15432,7 +15485,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           {
             "stat": "range",
             "value": 7.5,
-            "desc": "+7.5% Range"
+            "desc": "+7.5% Range",
+            "pvp": true
           }
         ]
       },
@@ -15447,12 +15501,14 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           {
             "stat": "defense_(melee)",
             "value": 3.1300000000000003,
-            "desc": "+3.13% Melee Defense"
+            "desc": "+3.13% Melee Defense",
+            "pvp": true
           },
           {
             "stat": "defense_(lethal)",
             "value": 1.5599999999999998,
-            "desc": "+2% Lethal and Smashing"
+            "desc": "+2% Lethal and Smashing",
+            "pvp": true
           }
         ]
       }
@@ -18840,7 +18896,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           {
             "stat": "recovery",
             "value": 2.5,
-            "desc": "+2.5% Recovery"
+            "desc": "+2.5% Recovery",
+            "pvp": true
           }
         ]
       },
@@ -18855,7 +18912,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           {
             "stat": "knockback_resistance",
             "value": 1000,
-            "desc": "+1000% Knockback Resistance Resistance"
+            "desc": "+1000% Knockback Resistance Resistance",
+            "pvp": true
           }
         ]
       },
@@ -18875,12 +18933,14 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           {
             "stat": "damage_resistance_(lethal)",
             "value": 3.75,
-            "desc": "+4% Lethal and Smashing"
+            "desc": "+4% Lethal and Smashing",
+            "pvp": true
           },
           {
             "stat": "mez_resistance_(all)",
             "value": 6.25,
-            "desc": "+6% Mez Resistance (All Resistance"
+            "desc": "+6% Mez Resistance (All Resistance",
+            "pvp": true
           }
         ]
       },
@@ -18895,7 +18955,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           {
             "stat": "+res(recharge_debuff)",
             "value": 10,
-            "desc": "+10% +Res(Recharge Debuff) and Slow Resistance"
+            "desc": "+10% +Res(Recharge Debuff) and Slow Resistance",
+            "pvp": true
           }
         ]
       },
@@ -18915,7 +18976,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           {
             "stat": "recharge",
             "value": 7.5,
-            "desc": "+8% Recharge"
+            "desc": "+8% Recharge",
+            "pvp": true
           }
         ]
       },
