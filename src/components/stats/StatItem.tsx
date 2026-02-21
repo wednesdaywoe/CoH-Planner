@@ -104,7 +104,7 @@ function StatBreakdown({ label, total, unit, breakdown, cap }: StatBreakdownProp
 
 function formatValue(value: number, unit: string): string {
   if (unit === '%') {
-    return `${value.toFixed(1)}%`;
+    return `${value.toFixed(2)}%`;
   }
   if (unit === 's') {
     return `${value.toFixed(2)}s`;
@@ -157,7 +157,7 @@ export function StatBar({ label, value, max, category, className = '' }: StatBar
       <div className="flex items-center justify-between mb-1">
         <span className="text-xs text-gray-400">{label}</span>
         <span className="text-xs text-gray-300">
-          {value.toFixed(1)}% / {max}%
+          {value.toFixed(2)}% / {max}%
         </span>
       </div>
       <div className="h-2 bg-gray-700 rounded overflow-hidden">

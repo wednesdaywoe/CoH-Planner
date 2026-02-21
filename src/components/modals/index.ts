@@ -12,3 +12,4 @@ export { KnownIssuesModal } from './KnownIssuesModal';
 export { WelcomeModal, useWelcomeModal } from './WelcomeModal';
 export { PowerInfoModal } from './PowerInfoModal';
 export { SetBonusLookupModal } from './SetBonusLookupModal';
+export { ControlsModal } from './ControlsModal';

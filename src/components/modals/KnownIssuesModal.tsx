@@ -27,6 +27,20 @@ function StatusBadge({ status }: { status: TrackerItem['status'] }) {
   );
 }
 
+/** Replace [missing-icon] markers in tracker text with inline images */
+function renderTrackerText(text: string): React.ReactNode {
+  const marker = '[missing-icon]';
+  const idx = text.indexOf(marker);
+  if (idx === -1) return text;
+  return (
+    <>
+      {text.slice(0, idx)}
+      <img src="img/Unknown.png" alt="missing icon" className="inline-block h-5 w-5 align-text-bottom" />
+      {text.slice(idx + marker.length)}
+    </>
+  );
+}
+
 function TrackerSection({
   title,
   icon,
@@ -49,7 +63,7 @@ function TrackerSection({
         {items.map((item, idx) => (
           <li key={idx} className="flex items-start gap-2 text-sm text-gray-400">
             <StatusBadge status={item.status} />
-            <span>{item.text}</span>
+            <span>{renderTrackerText(item.text)}</span>
           </li>
         ))}
       </ul>

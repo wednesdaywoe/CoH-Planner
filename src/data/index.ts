@@ -21,6 +21,9 @@ export {
 // Enhancement data (non-IO)
 export {
   HAMIDON_ENHANCEMENTS,
+  TITAN_ENHANCEMENTS,
+  HYDRA_ENHANCEMENTS,
+  DSYNC_ENHANCEMENTS,
   calculateCommonIOValue,
   getCommonIOValueAtLevel,
   COMMON_IO_TYPES,
@@ -41,9 +44,6 @@ export {
   getStatIconFilename,
   getGenericIOIconPath,
   getOriginIconPath,
-  // Hamidon mappings
-  HAMIDON_ASPECT_MAP,
-  mapHamidonAspect,
   // Category mappings
   SET_CATEGORY_TO_ENHANCEMENT,
   getEnhancementTypesForCategory,
@@ -63,6 +63,9 @@ export {
   // Query functions
   getAvailableGenericIOs,
   getAvailableHamidons,
+  getAvailableTitans,
+  getAvailableHydras,
+  getAvailableDSyncs,
 } from './enhancement-registry';
 
 // IO Set data and accessors

@@ -8,7 +8,7 @@ import { useMemo } from 'react';
 import { useCalculatedStats, useCharacterCalculation } from '@/hooks';
 import { useBuildStore, useUIStore } from '@/stores';
 import { Tooltip } from '@/components/ui';
-import { StatsConfigModal, AccoladesModal, AboutModal, ExportImportModal, FeedbackModal, KnownIssuesModal, WelcomeModal, useWelcomeModal, SetBonusLookupModal } from '@/components/modals';
+import { StatsConfigModal, AccoladesModal, AboutModal, ExportImportModal, FeedbackModal, KnownIssuesModal, WelcomeModal, useWelcomeModal, SetBonusLookupModal, ControlsModal } from '@/components/modals';
 import { IncarnateSlotGrid, IncarnateModal, IncarnateCraftingModal } from '@/components/incarnate';
 import { INCARNATE_REQUIRED_LEVEL, createEmptyIncarnateBuildState } from '@/types';
 import type { CalculatedStats, DashboardStatBreakdown } from '@/hooks/useCalculatedStats';
@@ -42,7 +42,7 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'damage',
     label: 'Damage',
     getValue: (stats) => stats.globalDamage,
-    format: (v) => `+${Number(v).toFixed(1)}%`,
+    format: (v) => `+${Number(v).toFixed(2)}%`,
     color: 'text-red-400',
     tooltip: 'Global damage from set bonuses',
     showWhenZero: true,
@@ -52,7 +52,7 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'accuracy',
     label: 'Accuracy',
     getValue: (stats) => stats.globalAccuracy,
-    format: (v) => `+${Number(v).toFixed(1)}%`,
+    format: (v) => `+${Number(v).toFixed(2)}%`,
     color: 'text-yellow-400',
     tooltip: 'Global accuracy from set bonuses',
     showWhenZero: true,
@@ -62,7 +62,7 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'tohit',
     label: 'ToHit',
     getValue: (stats) => stats.toHitBuff,
-    format: (v) => `+${Number(v).toFixed(1)}%`,
+    format: (v) => `+${Number(v).toFixed(2)}%`,
     color: 'text-yellow-300',
     tooltip: 'ToHit buff from set bonuses',
     showWhenZero: true,
@@ -72,7 +72,7 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'recharge',
     label: 'Recharge',
     getValue: (stats) => stats.globalRecharge,
-    format: (v) => `+${Number(v).toFixed(1)}%`,
+    format: (v) => `+${Number(v).toFixed(2)}%`,
     color: 'text-blue-400',
     tooltip: 'Global recharge from set bonuses',
     showWhenZero: true,
@@ -84,7 +84,7 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'defense_melee',
     label: 'Melee',
     getValue: (stats) => stats.defense.melee,
-    format: (v) => `${Number(v).toFixed(1)}%`,
+    format: (v) => `${Number(v).toFixed(2)}%`,
     color: 'text-purple-400',
     tooltip: 'Melee defense',
     showWhenZero: true,
@@ -94,7 +94,7 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'defense_ranged',
     label: 'Ranged',
     getValue: (stats) => stats.defense.ranged,
-    format: (v) => `${Number(v).toFixed(1)}%`,
+    format: (v) => `${Number(v).toFixed(2)}%`,
     color: 'text-purple-400',
     tooltip: 'Ranged defense',
     showWhenZero: true,
@@ -104,7 +104,7 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'defense_aoe',
     label: 'AoE',
     getValue: (stats) => stats.defense.aoe,
-    format: (v) => `${Number(v).toFixed(1)}%`,
+    format: (v) => `${Number(v).toFixed(2)}%`,
     color: 'text-purple-400',
     tooltip: 'AoE defense',
     showWhenZero: true,
@@ -114,7 +114,7 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'defense_smashing',
     label: 'S/L',
     getValue: (stats) => Math.max(stats.defense.smashing, stats.defense.lethal),
-    format: (v) => `${Number(v).toFixed(1)}%`,
+    format: (v) => `${Number(v).toFixed(2)}%`,
     color: 'text-purple-400',
     tooltip: 'Smashing/Lethal defense',
     showWhenZero: true,
@@ -124,7 +124,7 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'defense_fire',
     label: 'F/C',
     getValue: (stats) => Math.max(stats.defense.fire, stats.defense.cold),
-    format: (v) => `${Number(v).toFixed(1)}%`,
+    format: (v) => `${Number(v).toFixed(2)}%`,
     color: 'text-purple-400',
     tooltip: 'Fire/Cold defense',
     showWhenZero: true,
@@ -134,7 +134,7 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'defense_energy',
     label: 'E/N',
     getValue: (stats) => Math.max(stats.defense.energy, stats.defense.negative),
-    format: (v) => `${Number(v).toFixed(1)}%`,
+    format: (v) => `${Number(v).toFixed(2)}%`,
     color: 'text-purple-400',
     tooltip: 'Energy/Negative defense',
     showWhenZero: true,
@@ -144,7 +144,7 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'defense_psionic',
     label: 'Psionic',
     getValue: (stats) => stats.defense.psionic,
-    format: (v) => `${Number(v).toFixed(1)}%`,
+    format: (v) => `${Number(v).toFixed(2)}%`,
     color: 'text-purple-400',
     tooltip: 'Psionic defense',
     showWhenZero: true,
@@ -154,7 +154,7 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'defense_toxic',
     label: 'Toxic',
     getValue: () => 0, // Toxic defense is rare
-    format: (v) => `${Number(v).toFixed(1)}%`,
+    format: (v) => `${Number(v).toFixed(2)}%`,
     color: 'text-purple-400',
     tooltip: 'Toxic defense',
     showWhenZero: true,
@@ -166,7 +166,7 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'resist_smashing',
     label: 'S/L',
     getValue: (stats) => Math.max(stats.resistance.smashing, stats.resistance.lethal),
-    format: (v) => `${Number(v).toFixed(1)}%`,
+    format: (v) => `${Number(v).toFixed(2)}%`,
     color: 'text-orange-400',
     tooltip: 'Smashing/Lethal resistance',
     showWhenZero: true,
@@ -176,7 +176,7 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'resist_fire',
     label: 'F/C',
     getValue: (stats) => Math.max(stats.resistance.fire, stats.resistance.cold),
-    format: (v) => `${Number(v).toFixed(1)}%`,
+    format: (v) => `${Number(v).toFixed(2)}%`,
     color: 'text-orange-400',
     tooltip: 'Fire/Cold resistance',
     showWhenZero: true,
@@ -186,7 +186,7 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'resist_energy',
     label: 'E/N',
     getValue: (stats) => Math.max(stats.resistance.energy, stats.resistance.negative),
-    format: (v) => `${Number(v).toFixed(1)}%`,
+    format: (v) => `${Number(v).toFixed(2)}%`,
     color: 'text-orange-400',
     tooltip: 'Energy/Negative resistance',
     showWhenZero: true,
@@ -196,7 +196,7 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'resist_psionic',
     label: 'Psionic',
     getValue: (stats) => stats.resistance.psionic,
-    format: (v) => `${Number(v).toFixed(1)}%`,
+    format: (v) => `${Number(v).toFixed(2)}%`,
     color: 'text-orange-400',
     tooltip: 'Psionic resistance',
     showWhenZero: true,
@@ -206,7 +206,7 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'resist_toxic',
     label: 'Toxic',
     getValue: (stats) => stats.resistance.toxic,
-    format: (v) => `${Number(v).toFixed(1)}%`,
+    format: (v) => `${Number(v).toFixed(2)}%`,
     color: 'text-orange-400',
     tooltip: 'Toxic resistance',
     showWhenZero: true,
@@ -218,7 +218,7 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'mez_hold',
     label: 'Hold Res',
     getValue: (stats) => stats.mezResistance.hold,
-    format: (v) => `${Number(v).toFixed(1)}%`,
+    format: (v) => `${Number(v).toFixed(2)}%`,
     color: 'text-orange-300',
     tooltip: 'Hold resistance',
   },
@@ -226,7 +226,7 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'mez_stun',
     label: 'Stun Res',
     getValue: (stats) => stats.mezResistance.stun,
-    format: (v) => `${Number(v).toFixed(1)}%`,
+    format: (v) => `${Number(v).toFixed(2)}%`,
     color: 'text-orange-300',
     tooltip: 'Stun resistance',
   },
@@ -234,7 +234,7 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'mez_immob',
     label: 'Immob Res',
     getValue: (stats) => stats.mezResistance.immobilize,
-    format: (v) => `${Number(v).toFixed(1)}%`,
+    format: (v) => `${Number(v).toFixed(2)}%`,
     color: 'text-orange-300',
     tooltip: 'Immobilize resistance',
   },
@@ -242,7 +242,7 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'mez_sleep',
     label: 'Sleep Res',
     getValue: (stats) => stats.mezResistance.sleep,
-    format: (v) => `${Number(v).toFixed(1)}%`,
+    format: (v) => `${Number(v).toFixed(2)}%`,
     color: 'text-orange-300',
     tooltip: 'Sleep resistance',
   },
@@ -250,7 +250,7 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'mez_confuse',
     label: 'Confuse Res',
     getValue: (stats) => stats.mezResistance.confuse,
-    format: (v) => `${Number(v).toFixed(1)}%`,
+    format: (v) => `${Number(v).toFixed(2)}%`,
     color: 'text-orange-300',
     tooltip: 'Confuse resistance',
   },
@@ -258,7 +258,7 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'mez_fear',
     label: 'Fear Res',
     getValue: (stats) => stats.mezResistance.fear,
-    format: (v) => `${Number(v).toFixed(1)}%`,
+    format: (v) => `${Number(v).toFixed(2)}%`,
     color: 'text-orange-300',
     tooltip: 'Fear resistance',
   },
@@ -266,7 +266,7 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'mez_kb',
     label: 'KB Res',
     getValue: (stats) => stats.mezResistance.knockback,
-    format: (v) => `${Number(v).toFixed(1)}%`,
+    format: (v) => `${Number(v).toFixed(2)}%`,
     color: 'text-orange-300',
     tooltip: 'Knockback resistance',
   },
@@ -294,9 +294,9 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     format: (v) => {
       if (typeof v === 'object' && v !== null && 'perSec' in v) {
         const { perSec, buff } = v as { perSec: number; buff: number };
-        return `${perSec.toFixed(2)}/s (+${buff.toFixed(1)}%)`;
+        return `${perSec.toFixed(2)}/s (+${buff.toFixed(2)}%)`;
       }
-      return `+${Number(v).toFixed(1)}%`;
+      return `+${Number(v).toFixed(2)}%`;
     },
     color: 'text-blue-300',
     tooltip: 'Endurance recovery: base 1.67/sec',
@@ -307,7 +307,7 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'endreduction',
     label: 'End Red',
     getValue: (stats) => stats.enduranceReduction,
-    format: (v) => `+${Number(v).toFixed(1)}%`,
+    format: (v) => `+${Number(v).toFixed(2)}%`,
     color: 'text-blue-300',
     tooltip: 'Endurance reduction',
   },
@@ -336,9 +336,9 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     format: (v) => {
       if (typeof v === 'object' && v !== null && 'perSec' in v) {
         const { perSec, buff } = v as { perSec: number; buff: number };
-        return `${perSec.toFixed(1)}/s (+${buff.toFixed(1)}%)`;
+        return `${perSec.toFixed(2)}/s (+${buff.toFixed(2)}%)`;
       }
-      return `+${Number(v).toFixed(1)}%`;
+      return `+${Number(v).toFixed(2)}%`;
     },
     color: 'text-green-300',
     tooltip: 'HP regeneration: base is 100% HP in 240s',
@@ -351,7 +351,7 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'runspeed',
     label: 'Run',
     getValue: (stats) => stats.runSpeed,
-    format: (v) => `+${Number(v).toFixed(1)}%`,
+    format: (v) => `+${Number(v).toFixed(2)}%`,
     color: 'text-teal-400',
     tooltip: 'Run speed buff',
   },
@@ -359,7 +359,7 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'flyspeed',
     label: 'Fly',
     getValue: (stats) => stats.flySpeed,
-    format: (v) => `+${Number(v).toFixed(1)}%`,
+    format: (v) => `+${Number(v).toFixed(2)}%`,
     color: 'text-teal-400',
     tooltip: 'Fly speed buff',
   },
@@ -367,7 +367,7 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'jumpspeed',
     label: 'Jump Spd',
     getValue: (stats) => stats.jumpHeight, // Using jumpHeight for now
-    format: (v) => `+${Number(v).toFixed(1)}%`,
+    format: (v) => `+${Number(v).toFixed(2)}%`,
     color: 'text-teal-400',
     tooltip: 'Jump speed buff',
   },
@@ -375,7 +375,7 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'jumpheight',
     label: 'Jump Ht',
     getValue: (stats) => stats.jumpHeight,
-    format: (v) => `+${Number(v).toFixed(1)}%`,
+    format: (v) => `+${Number(v).toFixed(2)}%`,
     color: 'text-teal-400',
     tooltip: 'Jump height buff',
   },
@@ -385,7 +385,7 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'debuff_slow',
     label: 'Slow Res',
     getValue: (stats) => stats.debuffResistance.slow,
-    format: (v) => `${Number(v).toFixed(1)}%`,
+    format: (v) => `${Number(v).toFixed(2)}%`,
     color: 'text-cyan-400',
     tooltip: 'Resistance to slow/movement debuffs',
   },
@@ -393,7 +393,7 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'debuff_defense',
     label: 'Def Debuff Res',
     getValue: (stats) => stats.debuffResistance.defense,
-    format: (v) => `${Number(v).toFixed(1)}%`,
+    format: (v) => `${Number(v).toFixed(2)}%`,
     color: 'text-cyan-400',
     tooltip: 'Resistance to defense debuffs',
   },
@@ -401,7 +401,7 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'debuff_recharge',
     label: 'Rech Debuff Res',
     getValue: (stats) => stats.debuffResistance.recharge,
-    format: (v) => `${Number(v).toFixed(1)}%`,
+    format: (v) => `${Number(v).toFixed(2)}%`,
     color: 'text-cyan-400',
     tooltip: 'Resistance to recharge debuffs',
   },
@@ -409,7 +409,7 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'debuff_endurance',
     label: 'End Drain Res',
     getValue: (stats) => stats.debuffResistance.endurance,
-    format: (v) => `${Number(v).toFixed(1)}%`,
+    format: (v) => `${Number(v).toFixed(2)}%`,
     color: 'text-cyan-400',
     tooltip: 'Resistance to endurance drain',
   },
@@ -417,7 +417,7 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'debuff_recovery',
     label: 'Rec Debuff Res',
     getValue: (stats) => stats.debuffResistance.recovery,
-    format: (v) => `${Number(v).toFixed(1)}%`,
+    format: (v) => `${Number(v).toFixed(2)}%`,
     color: 'text-cyan-400',
     tooltip: 'Resistance to recovery debuffs',
   },
@@ -425,7 +425,7 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'debuff_tohit',
     label: 'ToHit Debuff Res',
     getValue: (stats) => stats.debuffResistance.tohit,
-    format: (v) => `${Number(v).toFixed(1)}%`,
+    format: (v) => `${Number(v).toFixed(2)}%`,
     color: 'text-cyan-400',
     tooltip: 'Resistance to ToHit debuffs',
   },
@@ -433,7 +433,7 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'debuff_regen',
     label: 'Regen Debuff Res',
     getValue: (stats) => stats.debuffResistance.regeneration,
-    format: (v) => `${Number(v).toFixed(1)}%`,
+    format: (v) => `${Number(v).toFixed(2)}%`,
     color: 'text-cyan-400',
     tooltip: 'Resistance to regeneration debuffs',
   },
@@ -441,7 +441,7 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'debuff_perception',
     label: 'Percep Res',
     getValue: (stats) => stats.debuffResistance.perception,
-    format: (v) => `${Number(v).toFixed(1)}%`,
+    format: (v) => `${Number(v).toFixed(2)}%`,
     color: 'text-cyan-400',
     tooltip: 'Resistance to perception debuffs',
   },
@@ -478,6 +478,9 @@ export function StatsDashboard() {
   const closeFeedbackModal = useUIStore((s) => s.closeFeedbackModal);
   const knownIssuesModalOpen = useUIStore((s) => s.knownIssuesModalOpen);
   const closeKnownIssuesModal = useUIStore((s) => s.closeKnownIssuesModal);
+  const controlsModalOpen = useUIStore((s) => s.controlsModalOpen);
+  const openControlsModal = useUIStore((s) => s.openControlsModal);
+  const closeControlsModal = useUIStore((s) => s.closeControlsModal);
   const trackedStats = useUIStore((s) => s.trackedStats);
   const toggleTrackedStat = useUIStore((s) => s.toggleTrackedStat);
 
@@ -714,6 +717,16 @@ export function StatsDashboard() {
             </svg>
             <span>Configure</span>
           </button>
+          <button
+            onClick={openControlsModal}
+            className="flex items-center gap-1.5 px-2 py-1 text-xs text-gray-400 hover:text-cyan-300 hover:bg-gray-800 rounded transition-colors"
+            title="View control hints"
+          >
+            <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span>Controls</span>
+          </button>
           {/* Spacer pushes About to the right */}
           <div className="flex-1" />
           <button
@@ -785,6 +798,12 @@ export function StatsDashboard() {
         onClose={closeKnownIssuesModal}
       />
 
+      {/* Controls Modal */}
+      <ControlsModal
+        isOpen={controlsModalOpen}
+        onClose={closeControlsModal}
+      />
+
       {/* Welcome Modal (auto-shows on first visit) */}
       <WelcomeModal
         isOpen={welcomeModalOpen}
@@ -847,7 +866,7 @@ function StatItem({ label, value, color = 'text-gray-300', tooltip, breakdown, c
                   {source.name}
                 </span>
                 <span className={`ml-2 ${source.capped ? 'text-red-400 line-through' : 'text-green-400'}`}>
-                  +{source.value.toFixed(1)}%
+                  +{source.value.toFixed(2)}%
                 </span>
               </div>
             ))}
@@ -866,7 +885,7 @@ function StatItem({ label, value, color = 'text-gray-300', tooltip, breakdown, c
             {activePowerSources.map((source, i) => (
               <div key={i} className="flex justify-between text-[10px]">
                 <span className="text-slate-300">{source.name}</span>
-                <span className="text-amber-400 ml-2">+{source.value.toFixed(1)}%</span>
+                <span className="text-amber-400 ml-2">+{source.value.toFixed(2)}%</span>
               </div>
             ))}
           </div>
@@ -879,7 +898,7 @@ function StatItem({ label, value, color = 'text-gray-300', tooltip, breakdown, c
             {inherentSources.map((source, i) => (
               <div key={i} className="flex justify-between text-[10px]">
                 <span className="text-slate-300">{source.name}</span>
-                <span className="text-blue-400 ml-2">+{source.value.toFixed(1)}%</span>
+                <span className="text-blue-400 ml-2">+{source.value.toFixed(2)}%</span>
               </div>
             ))}
           </div>
@@ -892,7 +911,7 @@ function StatItem({ label, value, color = 'text-gray-300', tooltip, breakdown, c
             {accoladeSources.map((source, i) => (
               <div key={i} className="flex justify-between text-[10px]">
                 <span className="text-slate-300">{source.name}</span>
-                <span className="text-amber-300 ml-2">+{source.value.toFixed(1)}</span>
+                <span className="text-amber-300 ml-2">+{source.value.toFixed(2)}</span>
               </div>
             ))}
           </div>
@@ -905,7 +924,7 @@ function StatItem({ label, value, color = 'text-gray-300', tooltip, breakdown, c
             {procSources.map((source, i) => (
               <div key={i} className="flex justify-between text-[10px]">
                 <span className="text-slate-300 truncate max-w-[200px]">{source.name}</span>
-                <span className="text-cyan-400 ml-2">+{source.value.toFixed(1)}%</span>
+                <span className="text-cyan-400 ml-2">+{source.value.toFixed(2)}%</span>
               </div>
             ))}
           </div>
@@ -918,7 +937,7 @@ function StatItem({ label, value, color = 'text-gray-300', tooltip, breakdown, c
             {incarnateSources.map((source, i) => (
               <div key={i} className="flex justify-between text-[10px]">
                 <span className="text-slate-300 truncate max-w-[200px]">{source.name}</span>
-                <span className="text-purple-400 ml-2">+{source.value.toFixed(1)}%</span>
+                <span className="text-purple-400 ml-2">+{source.value.toFixed(2)}%</span>
               </div>
             ))}
           </div>
@@ -927,7 +946,7 @@ function StatItem({ label, value, color = 'text-gray-300', tooltip, breakdown, c
         {/* Total */}
         <div className="border-t border-slate-600 pt-1 flex justify-between text-[11px] font-medium">
           <span className="text-slate-300">Total</span>
-          <span className={color}>+{breakdown.total.toFixed(1)}%</span>
+          <span className={color}>+{breakdown.total.toFixed(2)}%</span>
         </div>
       </div>
     );

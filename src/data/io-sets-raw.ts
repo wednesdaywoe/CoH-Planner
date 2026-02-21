@@ -566,7 +566,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "num": 6,
         "name": "+Res Mez(All)/+Res(Psionic)",
         "aspects": [],
-        "proc": false,
+        "proc": true,
         "unique": true
       }
     ],
@@ -2238,7 +2238,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "num": 3,
         "name": "Knockback Protection",
         "aspects": [],
-        "proc": false,
+        "proc": true,
         "unique": false
       }
     ],
@@ -3578,7 +3578,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "num": 6,
         "name": "+Def(All)",
         "aspects": [],
-        "proc": false,
+        "proc": true,
         "unique": false
       }
     ],
@@ -4229,7 +4229,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "num": 5,
         "name": "+Resist Threat",
         "aspects": [],
-        "proc": false,
+        "proc": true,
         "unique": false
       }
     ],
@@ -6487,7 +6487,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "num": 6,
         "name": "+Def(All)",
         "aspects": [],
-        "proc": false,
+        "proc": true,
         "unique": false
       }
     ],
@@ -7789,7 +7789,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "num": 6,
         "name": "+Res(All)",
         "aspects": [],
-        "proc": false,
+        "proc": true,
         "unique": false
       }
     ],
@@ -9841,7 +9841,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "num": 6,
         "name": "+Def(All)",
         "aspects": [],
-        "proc": false,
+        "proc": true,
         "unique": false
       }
     ],
@@ -12087,7 +12087,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "num": 3,
         "name": "Knockback Protection",
         "aspects": [],
-        "proc": false,
+        "proc": true,
         "unique": false
       }
     ],
@@ -17287,7 +17287,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "num": 6,
         "name": "+Res(All)",
         "aspects": [],
-        "proc": false,
+        "proc": true,
         "unique": false
       }
     ],
@@ -17360,7 +17360,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "num": 3,
         "name": "+Perception",
         "aspects": [],
-        "proc": false,
+        "proc": true,
         "unique": false
       }
     ],
@@ -18985,7 +18985,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "num": 6,
         "name": "+Res(All)",
         "aspects": [],
-        "proc": false,
+        "proc": true,
         "unique": false
       }
     ],
@@ -19530,7 +19530,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "num": 6,
         "name": "+Res(All)",
         "aspects": [],
-        "proc": false,
+        "proc": true,
         "unique": false
       }
     ],
@@ -20038,14 +20038,14 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "aspects": [
           "Damage Resistance"
         ],
-        "proc": false,
+        "proc": true,
         "unique": false
       },
       {
         "num": 3,
         "name": "Knockback Protection",
         "aspects": [],
-        "proc": false,
+        "proc": true,
         "unique": false
       }
     ],
@@ -26630,11 +26630,11 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "num": 6,
         "name": "+Max HitPoints",
         "aspects": [],
-        "proc": false,
+        "proc": true,
         "unique": false
       }
     ],
-    "icon": "UnbreakableGuard.png"
+    "icon": "sUnbreakableGuard.png"
   },
   "undermined_defenses": {
     "name": "Undermined Defenses",
@@ -27834,7 +27834,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "num": 3,
         "name": "+Res(Recharge Debuff)/+Res(Slow)",
         "aspects": [],
-        "proc": false,
+        "proc": true,
         "unique": false
       }
     ],

@@ -1610,9 +1610,9 @@ function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfoContent
         </div>
         <div className="text-[10px]">
           <span className="text-slate-400">Enhances: </span>
-          <span className="text-green-400">{specialEnh.aspects.join(', ')}</span>
-          <span className="text-slate-400"> by </span>
-          <span className="text-green-400">{(specialEnh.value * 100).toFixed(1)}%</span>
+          <span className="text-green-400">
+            {specialEnh.aspects.map(a => `${a.stat} +${a.value.toFixed(1)}%`).join(', ')}
+          </span>
         </div>
       </div>
     );

@@ -1068,6 +1068,18 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     pool: "A-rare",
     unique: ""
   },
+  "Aegis: Psionic and Mez Resistance": {
+    setCategory: "Resist Damage",
+    setName: "Aegis",
+    ioName: "Psionic and Mez Resistance",
+    ppm: null,
+    mechanics: "Resistance(Psionic 5%)",
+    pvpNotes: "",
+    type: "Global",
+    levelRange: "20--40",
+    pool: "",
+    unique: "Unique"
+  },
   "Resist Speed and Recharge Debuffs": {
     setCategory: "Universal Travel",
     setName: "Winter's Gift",

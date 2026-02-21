@@ -357,6 +357,10 @@ interface ActivePowerEffect {
   recovery?: ScalarOrScaled;
   maxEndurance?: ScalarOrScaled;
   maxHealth?: ScalarOrScaled;
+  regenBuff?: ScalarOrScaled;
+  recoveryBuff?: ScalarOrScaled;
+  maxHPBuff?: ScalarOrScaled;
+  maxEndBuff?: ScalarOrScaled;
 }
 
 interface PowerWithToggle {
@@ -381,7 +385,9 @@ function applyActivePowerBonuses(
   alphaBonuses: EnhancementBonuses = {}
 ): void {
   for (const power of powers) {
-    if (!power.isActive || !power.effects) continue;
+    // Auto powers are always active; others require explicit isActive toggle
+    const isAuto = power.powerType?.toLowerCase() === 'auto';
+    if (!(isAuto || power.isActive) || !power.effects) continue;
 
     const effects = power.effects;
 
@@ -541,6 +547,58 @@ function applyActivePowerBonuses(
         type: 'active-power',
       });
     }
+
+    // Regeneration buff
+    // Enhanced by Healing enhancements
+    if (effects.regenBuff !== undefined) {
+      const enhMultiplier = 1 + (enhBonuses.heal || 0);
+      const value = resolveScaledEffect(effects.regenBuff, archetypeId, buildLevel) * 100 * enhMultiplier;
+      global.regeneration += value;
+      addToBreakdown(breakdown, 'regeneration', {
+        name: power.name,
+        value,
+        type: 'active-power',
+      });
+    }
+
+    // Recovery buff
+    // Enhanced by Endurance Modification enhancements
+    if (effects.recoveryBuff !== undefined) {
+      const enhMultiplier = 1 + (enhBonuses.enduranceMod || 0);
+      const value = resolveScaledEffect(effects.recoveryBuff, archetypeId, buildLevel) * 100 * enhMultiplier;
+      global.recovery += value;
+      addToBreakdown(breakdown, 'recovery', {
+        name: power.name,
+        value,
+        type: 'active-power',
+      });
+    }
+
+    // Max HP buff
+    // Enhanced by Healing enhancements
+    if (effects.maxHPBuff !== undefined) {
+      const enhMultiplier = 1 + (enhBonuses.heal || 0);
+      const value = resolveScaledEffect(effects.maxHPBuff, archetypeId, buildLevel) * 100 * enhMultiplier;
+      global.maxHP += value;
+      addToBreakdown(breakdown, 'maxHP', {
+        name: power.name,
+        value,
+        type: 'active-power',
+      });
+    }
+
+    // Max Endurance buff
+    // Enhanced by Endurance Modification enhancements
+    if (effects.maxEndBuff !== undefined) {
+      const enhMultiplier = 1 + (enhBonuses.enduranceMod || 0);
+      const value = resolveScaledEffect(effects.maxEndBuff, archetypeId, buildLevel) * 100 * enhMultiplier;
+      global.maxEndurance += value;
+      addToBreakdown(breakdown, 'maxEndurance', {
+        name: power.name,
+        value,
+        type: 'active-power',
+      });
+    }
   }
 }
 
@@ -564,6 +622,10 @@ function resolveScaledEffect(
   if (effect === undefined) return 0;
   if (typeof effect === 'number') return effect;
   if (effect.table) {
+    // "Ones" tables (Melee_Ones, Ranged_Ones) are constant 1.0 for all ATs
+    if (effect.table.toLowerCase().endsWith('_ones')) {
+      return effect.scale * 1.0;
+    }
     const tableValue = getTableValue(archetypeId, effect.table.toLowerCase(), level);
     if (tableValue !== undefined) {
       return effect.scale * tableValue;
@@ -818,9 +880,9 @@ function applySingleProcEffect(
       }
       break;
 
-    case 'Resistance':
-      // Apply to all resistance types if effect type is "All"
-      if (effectType?.toLowerCase() === 'all') {
+    case 'Resistance': {
+      const resLower = effectType?.toLowerCase() || '';
+      if (resLower === 'all') {
         const resTypes: (keyof GlobalBonuses)[] = [
           'resSmashing', 'resLethal', 'resFire', 'resCold',
           'resEnergy', 'resNegative', 'resPsionic', 'resToxic'
@@ -833,8 +895,26 @@ function applySingleProcEffect(
           value,
           type: 'proc',
         });
+      } else {
+        // Specific resistance type (e.g., "Psionic", "Fire")
+        const specificResMap: Record<string, keyof GlobalBonuses> = {
+          smashing: 'resSmashing', lethal: 'resLethal',
+          fire: 'resFire', cold: 'resCold',
+          energy: 'resEnergy', negative: 'resNegative',
+          psionic: 'resPsionic', toxic: 'resToxic',
+        };
+        const resKey = specificResMap[resLower];
+        if (resKey) {
+          global[resKey] += value;
+          addToBreakdown(breakdown, resKey as string, {
+            name: sourceName,
+            value,
+            type: 'proc',
+          });
+        }
       }
       break;
+    }
 
     case 'ToHit':
       global.toHit += value;

@@ -315,9 +315,9 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
     category: 'buff',
     colorClass: 'text-purple-400',
     format: 'percent',
-    calculation: 'buff',
     enhancementAspect: 'defense',
     canBeByType: true,
+    expandByType: true,
     priority: 3,
   },
   rechargeBuff: {

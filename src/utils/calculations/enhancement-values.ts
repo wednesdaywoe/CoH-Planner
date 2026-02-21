@@ -410,13 +410,12 @@ export function calculatePowerEnhancementBonuses(
         rawBonuses[normalized] = (rawBonuses[normalized] || 0) + value;
       }
     } else if (slot.type === 'special') {
-      // Special enhancements (Hamidon, Titan, etc.) - use their value
+      // Special enhancements (Hamidon, Titan, etc.) - each aspect has its own value
       if (slot.aspects) {
-        const value = slot.value ? slot.value / 100 : 0.5;
-        slot.aspects.forEach((aspectName: string) => {
-          const normalized = normalizeAspectName(aspectName);
+        slot.aspects.forEach((aspect: { stat: string; value: number }) => {
+          const normalized = normalizeAspectName(aspect.stat);
           if (normalized) {
-            rawBonuses[normalized] = (rawBonuses[normalized] || 0) + value;
+            rawBonuses[normalized] = (rawBonuses[normalized] || 0) + aspect.value / 100;
           }
         });
       }

@@ -20,9 +20,9 @@ import type {
   GenericIOEnhancement,
   SpecialEnhancement,
   OriginEnhancement,
-  HamidonEnhancementDef,
+  SpecialEnhancementDef,
 } from '@/types';
-import { HAMIDON_ENHANCEMENTS, COMMON_IO_TYPES, ORIGIN_TIERS, getCommonIOValueAtLevel } from './enhancements';
+import { HAMIDON_ENHANCEMENTS, TITAN_ENHANCEMENTS, HYDRA_ENHANCEMENTS, DSYNC_ENHANCEMENTS, COMMON_IO_TYPES, ORIGIN_TIERS, getCommonIOValueAtLevel } from './enhancements';
 import { resolvePath } from '@/utils/paths';
 
 // ============================================
@@ -61,6 +61,7 @@ export const STAT_ICON_MAP: Record<string, string> = {
   Slow: 'Slow.png',
   Intangible: 'Intan.png',
   Taunt: 'Hold.png',
+  Absorb: 'Heal.png',
 };
 
 /** Get icon filename for a stat type */
@@ -79,33 +80,6 @@ export function getGenericIOIconPath(stat: EnhancementStatType): string {
 export function getOriginIconPath(stat: EnhancementStatType, tier: string): string {
   const statPart = stat.replace(/\s+/g, '');
   return resolvePath(`/img/Enhancements/${tier}_${statPart}.png`);
-}
-
-// ============================================
-// HAMIDON ASPECT MAPPING
-// ============================================
-
-/**
- * Maps Hamidon enhancement aspect names to EnhancementStatType.
- * Some aspects use different naming than the standard stat types.
- */
-export const HAMIDON_ASPECT_MAP: Record<string, EnhancementStatType> = {
-  'Damage': 'Damage',
-  'Accuracy': 'Accuracy',
-  'Range': 'Range',
-  'ToHit Debuff': 'ToHit Debuff',
-  'Defense Debuff': 'Defense Debuff',
-  'Recharge': 'Recharge',
-  'Mez Duration': 'Hold',
-  'Resistance': 'Resistance',
-  'Endurance': 'EnduranceReduction',
-  'Healing': 'Healing',
-  'Defense': 'Defense',
-};
-
-/** Map a Hamidon aspect string to an EnhancementStatType */
-export function mapHamidonAspect(aspect: string): EnhancementStatType {
-  return HAMIDON_ASPECT_MAP[aspect] || 'Damage';
 }
 
 // ============================================
@@ -339,20 +313,29 @@ export function createGenericIOEnhancement(
   };
 }
 
-/** Create a Special (Hamidon) Enhancement object */
+/** Icon prefix for each special enhancement category */
+const SPECIAL_ICON_PREFIX: Record<SpecialEnhancement['category'], string> = {
+  hamidon: 'HO',
+  titan: 'TN',
+  hydra: 'HY',
+  'd-sync': 'DS',
+};
+
+/** Create a Special Enhancement object (Hamidon, Titan, Hydra, or D-Sync) */
 export function createSpecialEnhancement(
   id: string,
-  hami: HamidonEnhancementDef,
+  def: SpecialEnhancementDef,
+  category: SpecialEnhancement['category'] = 'hamidon',
 ): SpecialEnhancement {
   const capitalizedId = id.charAt(0).toUpperCase() + id.slice(1);
+  const prefix = SPECIAL_ICON_PREFIX[category];
   return {
     type: 'special',
-    id: `hamidon-${id}`,
-    name: hami.name,
-    icon: `HO${capitalizedId}.png`,
-    category: 'hamidon',
-    aspects: hami.aspects.map(mapHamidonAspect),
-    value: hami.value,
+    id: `${category}-${id}`,
+    name: def.name,
+    icon: `${prefix}${capitalizedId}.png`,
+    category,
+    aspects: def.aspects.map(a => ({ stat: a.stat as EnhancementStatType, value: a.value })),
   };
 }
 
@@ -406,18 +389,46 @@ export function getAvailableGenericIOs(
 }
 
 /**
- * Get available Hamidon enhancements for a power.
- * Filters by whether any of the Hamidon's aspects match
- * the power's allowed enhancement types.
+ * Filter a special enhancement registry by power compatibility.
+ * Returns entries where at least one aspect matches the power's allowed enhancement types.
  */
-export function getAvailableHamidons(
+function filterSpecialEnhancements(
+  registry: Record<string, SpecialEnhancementDef>,
   power: { allowedEnhancements: string[] } | null,
-): [string, HamidonEnhancementDef][] {
-  const entries = Object.entries(HAMIDON_ENHANCEMENTS);
+): [string, SpecialEnhancementDef][] {
+  const entries = Object.entries(registry);
   if (!power) return entries;
 
   const allowed = new Set(power.allowedEnhancements);
-  return entries.filter(([, hami]) => {
-    return hami.aspects.some((aspect) => allowed.has(mapHamidonAspect(aspect)));
+  return entries.filter(([, def]) => {
+    return def.aspects.some((a) => allowed.has(a.stat));
   });
+}
+
+/** Get available Hamidon enhancements for a power */
+export function getAvailableHamidons(
+  power: { allowedEnhancements: string[] } | null,
+): [string, SpecialEnhancementDef][] {
+  return filterSpecialEnhancements(HAMIDON_ENHANCEMENTS, power);
+}
+
+/** Get available Titan enhancements for a power */
+export function getAvailableTitans(
+  power: { allowedEnhancements: string[] } | null,
+): [string, SpecialEnhancementDef][] {
+  return filterSpecialEnhancements(TITAN_ENHANCEMENTS, power);
+}
+
+/** Get available Hydra enhancements for a power */
+export function getAvailableHydras(
+  power: { allowedEnhancements: string[] } | null,
+): [string, SpecialEnhancementDef][] {
+  return filterSpecialEnhancements(HYDRA_ENHANCEMENTS, power);
+}
+
+/** Get available D-Sync enhancements for a power */
+export function getAvailableDSyncs(
+  power: { allowedEnhancements: string[] } | null,
+): [string, SpecialEnhancementDef][] {
+  return filterSpecialEnhancements(DSYNC_ENHANCEMENTS, power);
 }

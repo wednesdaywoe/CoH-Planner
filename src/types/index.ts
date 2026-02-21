@@ -80,6 +80,8 @@ export type {
   IOSetRegistry,
   HamidonEnhancementDef,
   HamidonRegistry,
+  SpecialEnhancementDef,
+  SpecialEnhancementRegistry,
 } from './enhancement';
 
 // Build types

@@ -80,10 +80,8 @@ export interface SpecialEnhancement extends BaseEnhancement {
   type: 'special';
   /** Category (hamidon, titan, hydra, etc.) */
   category: 'hamidon' | 'titan' | 'hydra' | 'd-sync';
-  /** Multiple aspects this enhances */
-  aspects: EnhancementStatType[];
-  /** Value for each aspect */
-  value: number;
+  /** Aspects this enhances, each with its own value (percentage) */
+  aspects: Array<{ stat: EnhancementStatType; value: number }>;
 }
 
 // ============================================
@@ -178,10 +176,14 @@ export type IOSetRegistry = Record<string, IOSet>;
 // HAMIDON ENHANCEMENT DEFINITION
 // ============================================
 
-export interface HamidonEnhancementDef {
+export interface SpecialEnhancementDef {
   name: string;
-  aspects: string[];
-  value: number;
+  aspects: Array<{ stat: string; value: number }>;
 }
 
-export type HamidonRegistry = Record<string, HamidonEnhancementDef>;
+/** @deprecated Use SpecialEnhancementDef */
+export type HamidonEnhancementDef = SpecialEnhancementDef;
+/** @deprecated Use SpecialEnhancementRegistry */
+export type HamidonRegistry = Record<string, SpecialEnhancementDef>;
+
+export type SpecialEnhancementRegistry = Record<string, SpecialEnhancementDef>;

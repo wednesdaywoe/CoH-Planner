@@ -68,6 +68,9 @@ interface UIState {
   /** Known Issues modal open state */
   knownIssuesModalOpen: boolean;
 
+  /** Controls modal open state */
+  controlsModalOpen: boolean;
+
   /** Set Bonus Lookup modal open state */
   setBonusLookupModalOpen: boolean;
 
@@ -220,6 +223,10 @@ interface UIActions {
   openKnownIssuesModal: () => void;
   closeKnownIssuesModal: () => void;
 
+  // Controls Modal
+  openControlsModal: () => void;
+  closeControlsModal: () => void;
+
   // Set Bonus Lookup Modal
   openSetBonusLookupModal: () => void;
   closeSetBonusLookupModal: () => void;
@@ -352,6 +359,7 @@ export const useUIStore = create<UIStore>()(
       exportImportModalOpen: false,
       feedbackModalOpen: false,
       knownIssuesModalOpen: false,
+      controlsModalOpen: false,
       setBonusLookupModalOpen: false,
       powerInfoModalOpen: false,
       globalIOLevel: 50,
@@ -720,6 +728,13 @@ export const useUIStore = create<UIStore>()(
 
       closeKnownIssuesModal: () =>
         set({ knownIssuesModalOpen: false }),
+
+      // Controls Modal
+      openControlsModal: () =>
+        set({ controlsModalOpen: true }),
+
+      closeControlsModal: () =>
+        set({ controlsModalOpen: false }),
 
       // Set Bonus Lookup Modal
       openSetBonusLookupModal: () =>

@@ -25,7 +25,7 @@ import {
   mergeWithSupportEffects,
 } from '@/data';
 import { useGlobalBonuses } from '@/hooks/useCalculatedStats';
-import { calculatePowerEnhancementBonuses, calculatePowerDamage, calculateDotDamage, getAlphaEnhancementBonuses, type EnhancementBonuses, type DotDamageResult } from '@/utils/calculations';
+import { calculatePowerEnhancementBonuses, calculatePowerDamage, getAlphaEnhancementBonuses, type EnhancementBonuses } from '@/utils/calculations';
 import { EffectDisplay } from './EffectDisplay';
 import { resolvePath } from '@/utils/paths';
 import type {
@@ -239,37 +239,33 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
     );
   }, [power, build.level, archetypeId, powersetName, enhancementBonuses.damage, globalBonusesForCalc.damage, powerSet, build.primary.id, build.secondary.id, powerset?.category]);
 
-  // Calculate DoT damage using same methodology as direct damage
-  const calculatedDot = useMemo((): DotDamageResult | null => {
-    if (!power?.effects?.dot) return null;
-    const dot = power.effects.dot;
-    if (!dot.scale || !dot.ticks) return null;
-
-    // Determine if ranged based on powerset category
-    const isPrimary = powerSet === build.primary.id;
-    const isSecondary = powerSet === build.secondary.id;
-    const powersetCategory = isPrimary
-      ? powerset?.category?.toUpperCase()
-      : isSecondary
-        ? powerset?.category?.toUpperCase()
-        : undefined;
-    const isRanged = !!(powersetCategory?.includes('RANGED') ||
-      power.shortHelp?.toLowerCase().includes('ranged') ||
-      (power.effects?.range && power.effects.range > 20));
-
-    return calculateDotDamage(
-      { type: dot.type, scale: dot.scale, ticks: dot.ticks },
-      {
-        level: build.level,
-        archetypeId: archetypeId as ArchetypeId | undefined,
-        primaryName: powersetName,
-      },
-      { damage: enhancementBonuses.damage || 0 },
-      globalBonusesForCalc.damage,
-      0,
-      isRanged
-    );
-  }, [power, build.level, archetypeId, powersetName, enhancementBonuses.damage, globalBonusesForCalc.damage, powerSet, build.primary.id, build.secondary.id, powerset?.category]);
+  // Extract DoT info from power.damage (duration/tickRate fields)
+  const dotInfo = useMemo(() => {
+    const dmg = power?.damage;
+    if (!dmg || typeof dmg !== 'object') return undefined;
+    // Single object with duration/tickRate
+    if (!Array.isArray(dmg) && 'duration' in dmg) {
+      return {
+        duration: (dmg as { duration?: number }).duration || 0,
+        tickRate: (dmg as { tickRate?: number }).tickRate,
+      };
+    }
+    // Array format: only if ALL entries share the same duration/tickRate
+    if (Array.isArray(dmg)) {
+      type DmgEntry = { duration?: number; tickRate?: number };
+      const entries = dmg as DmgEntry[];
+      const dotEntries = entries.filter(e => e.duration && e.duration > 0);
+      if (dotEntries.length > 0 && dotEntries.length === entries.length) {
+        const dur = dotEntries[0].duration!;
+        const rate = dotEntries[0].tickRate;
+        const allSame = dotEntries.every(e => e.duration === dur && e.tickRate === rate);
+        if (allSame) {
+          return { duration: dur, tickRate: rate };
+        }
+      }
+    }
+    return undefined;
+  }, [power?.damage]);
 
   if (!power) {
     return <div className="text-slate-500 text-xs">Power not found</div>;
@@ -405,20 +401,6 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
         <div>
           <h4 className="text-[9px] font-semibold text-slate-500 uppercase tracking-wide mb-1">
             Damage <span className="text-slate-600 font-normal">(Lvl {build.level})</span>
-            {/* DoT indicator */}
-            {(() => {
-              const dmg = power?.damage;
-              const duration = dmg && typeof dmg === 'object' && 'duration' in dmg ? (dmg as { duration?: number }).duration : undefined;
-              const tickRate = dmg && typeof dmg === 'object' && 'tickRate' in dmg ? (dmg as { tickRate?: number }).tickRate : undefined;
-              if (duration) {
-                return (
-                  <span className="text-orange-400 font-normal ml-1">
-                    (DoT: {duration}s{tickRate ? `, ${tickRate}s ticks` : ''})
-                  </span>
-                );
-              }
-              return null;
-            })()}
           </h4>
           <div className="bg-slate-800/50 rounded p-2">
             <div className="grid grid-cols-[4rem_1fr_1fr_1fr] gap-1 text-[9px] text-slate-500 uppercase mb-0.5 border-b border-slate-700 pb-0.5">
@@ -430,17 +412,43 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
             {(() => {
               const hasEnh = Math.abs(calculatedDamage.enhanced - calculatedDamage.base) > 0.001;
               const hasGlobal = Math.abs(calculatedDamage.final - calculatedDamage.enhanced) > 0.001;
+              const isDot = dotInfo && dotInfo.duration > 0 && dotInfo.tickRate;
+              const numTicks = isDot ? Math.floor(dotInfo.duration / dotInfo.tickRate!) + 1 : 0;
+              const totalBase = calculatedDamage.base * numTicks;
+              const totalEnhanced = calculatedDamage.enhanced * numTicks;
+              const totalFinal = calculatedDamage.final * numTicks;
+              const hasTotalEnh = numTicks > 0 && Math.abs(totalEnhanced - totalBase) > 0.001;
+              const hasTotalGlobal = numTicks > 0 && Math.abs(totalFinal - totalEnhanced) > 0.001;
               return (
-                <div className="grid grid-cols-[4rem_1fr_1fr_1fr] gap-1 items-baseline text-xs">
-                  <span className="text-red-400">{calculatedDamage.type}</span>
-                  <span className="text-slate-200">{calculatedDamage.base.toFixed(2)}</span>
-                  <span className={hasEnh ? 'text-green-400' : 'text-slate-600'}>
-                    {hasEnh ? `→ ${calculatedDamage.enhanced.toFixed(2)}` : '—'}
-                  </span>
-                  <span className={hasGlobal ? 'text-amber-400' : 'text-slate-600'}>
-                    {hasGlobal ? `→ ${calculatedDamage.final.toFixed(2)}` : '—'}
-                  </span>
-                </div>
+                <>
+                  <div className="grid grid-cols-[4rem_1fr_1fr_1fr] gap-1 items-baseline text-xs">
+                    <span className="text-red-400">{isDot ? `${calculatedDamage.type}/tick` : calculatedDamage.type}</span>
+                    <span className="text-slate-200">{calculatedDamage.base.toFixed(2)}</span>
+                    <span className={hasEnh ? 'text-green-400' : 'text-slate-600'}>
+                      {hasEnh ? `→ ${calculatedDamage.enhanced.toFixed(2)}` : '—'}
+                    </span>
+                    <span className={hasGlobal ? 'text-amber-400' : 'text-slate-600'}>
+                      {hasGlobal ? `→ ${calculatedDamage.final.toFixed(2)}` : '—'}
+                    </span>
+                  </div>
+                  {isDot && (
+                    <>
+                      <div className="grid grid-cols-[4rem_1fr_1fr_1fr] gap-1 items-baseline text-xs mt-1 pt-1 border-t border-slate-700/50">
+                        <span className="text-orange-400">Total</span>
+                        <span className="text-slate-200">{totalBase.toFixed(2)}</span>
+                        <span className={hasTotalEnh ? 'text-green-400' : 'text-slate-600'}>
+                          {hasTotalEnh ? `→ ${totalEnhanced.toFixed(2)}` : '—'}
+                        </span>
+                        <span className={hasTotalGlobal ? 'text-amber-400' : 'text-slate-600'}>
+                          {hasTotalGlobal ? `→ ${totalFinal.toFixed(2)}` : '—'}
+                        </span>
+                      </div>
+                      <div className="text-[9px] text-orange-400/70 italic mt-0.5 ml-1">
+                        {numTicks} ticks over {dotInfo.duration}s ({dotInfo.tickRate}s/tick)
+                      </div>
+                    </>
+                  )}
+                </>
               );
             })()}
             {calculatedDamage.unknown && (
@@ -495,57 +503,6 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
                 );
               })()
             )}
-          </div>
-        </div>
-      )}
-
-      {/* DoT with three-tier display */}
-      {calculatedDot && (
-        <div>
-          <h4 className="text-[9px] font-semibold text-slate-500 uppercase tracking-wide mb-1">
-            Damage Over Time <span className="text-slate-600 font-normal">({calculatedDot.ticks} ticks)</span>
-          </h4>
-          <div className="bg-slate-800/50 rounded p-2">
-            <div className="grid grid-cols-[4rem_1fr_1fr_1fr] gap-1 text-[9px] text-slate-500 uppercase mb-0.5 border-b border-slate-700 pb-0.5">
-              <span>Type</span>
-              <span>Base</span>
-              <span>Enhanced</span>
-              <span>Final</span>
-            </div>
-            {/* Per-tick damage */}
-            {(() => {
-              const hasEnh = Math.abs(calculatedDot.enhancedTick - calculatedDot.baseTick) > 0.001;
-              const hasGlobal = Math.abs(calculatedDot.finalTick - calculatedDot.enhancedTick) > 0.001;
-              return (
-                <div className="grid grid-cols-[4rem_1fr_1fr_1fr] gap-1 items-baseline text-xs">
-                  <span className="text-orange-400">{calculatedDot.type}/tick</span>
-                  <span className="text-slate-200">{calculatedDot.baseTick.toFixed(1)}</span>
-                  <span className={hasEnh ? 'text-green-400' : 'text-slate-600'}>
-                    {hasEnh ? `→ ${calculatedDot.enhancedTick.toFixed(1)}` : '—'}
-                  </span>
-                  <span className={hasGlobal ? 'text-amber-400' : 'text-slate-600'}>
-                    {hasGlobal ? `→ ${calculatedDot.finalTick.toFixed(1)}` : '—'}
-                  </span>
-                </div>
-              );
-            })()}
-            {/* Total damage */}
-            {(() => {
-              const hasEnh = Math.abs(calculatedDot.enhancedTotal - calculatedDot.baseTotal) > 0.001;
-              const hasGlobal = Math.abs(calculatedDot.finalTotal - calculatedDot.enhancedTotal) > 0.001;
-              return (
-                <div className="grid grid-cols-[4rem_1fr_1fr_1fr] gap-1 items-baseline text-xs mt-1 pt-1 border-t border-slate-700/50">
-                  <span className="text-orange-300">Total</span>
-                  <span className="text-slate-200">{calculatedDot.baseTotal.toFixed(1)}</span>
-                  <span className={hasEnh ? 'text-green-400' : 'text-slate-600'}>
-                    {hasEnh ? `→ ${calculatedDot.enhancedTotal.toFixed(1)}` : '—'}
-                  </span>
-                  <span className={hasGlobal ? 'text-amber-400' : 'text-slate-600'}>
-                    {hasGlobal ? `→ ${calculatedDot.finalTotal.toFixed(1)}` : '—'}
-                  </span>
-                </div>
-              );
-            })()}
           </div>
         </div>
       )}

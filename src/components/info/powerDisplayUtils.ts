@@ -55,6 +55,9 @@ export function getTableBaseValue(tableName: string | undefined, archetype?: str
   if (!tableName) return TABLE_BASE_VALUES['default'];
   const key = tableName.toLowerCase();
 
+  // "Ones" tables (Melee_Ones, Ranged_Ones) are constant 1.0 for all ATs
+  if (key.endsWith('_ones')) return 1.0;
+
   // Try AT-specific table first
   if (archetype) {
     const atValue = getTableValue(archetype, key, level ?? 50);

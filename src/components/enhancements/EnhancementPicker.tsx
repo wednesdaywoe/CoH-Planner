@@ -14,13 +14,15 @@ import {
   getCommonIOValueAtLevel, ORIGIN_TIERS,
   sortCategoriesByPriority,
   createIOSetEnhancement, createGenericIOEnhancement, createSpecialEnhancement, createOriginEnhancement,
-  getAvailableGenericIOs, getAvailableHamidons,
+  getAvailableGenericIOs, getAvailableHamidons, getAvailableTitans, getAvailableHydras, getAvailableDSyncs,
   getRarityColor, getTierTextColor, getTierBorderColor,
+  findProcData, parseProcEffect, getProcEffectLabel, getProcEffectColor, isProcAlwaysOn,
 } from '@/data';
+import { normalizeAspectName, getAspectSchedule, getIOValueAtLevel } from '@/utils/calculations';
 import { Modal, ModalBody } from '@/components/modals';
 import { Tooltip, Toggle } from '@/components/ui';
 import { IOSetIcon, GenericIOIcon, OriginEnhancementIcon, SpecialEnhancementIcon } from './EnhancementIcon';
-import type { IOSet, IOSetPiece, EnhancementStatType, HamidonEnhancementDef, IOSetCategory } from '@/types';
+import type { IOSet, IOSetPiece, EnhancementStatType, SpecialEnhancementDef, IOSetCategory, SpecialEnhancement } from '@/types';
 import { getSetTrackedMatches } from '@/data/set-bonus-index';
 
 type EnhancementTypeFilter = 'io-sets' | 'generic' | 'special' | 'origin';
@@ -53,6 +55,9 @@ export function EnhancementPicker() {
   const [dragStartIndex, setDragStartIndex] = useState<number | null>(null);
   const [dragEndIndex, setDragEndIndex] = useState<number | null>(null);
   const [dragSet, setDragSet] = useState<IOSet | null>(null);
+
+  // Shift+Click multi-select state: setId → Set of piece indices
+  const [shiftSelected, setShiftSelected] = useState<Map<string, Set<number>>>(new Map());
 
   // Get the current power definition
   const currentPower = useMemo(() => {
@@ -187,11 +192,21 @@ export function EnhancementPicker() {
     }
   }, [availableSets, sidebarFilter]);
 
-  // Auto-select primary category when modal opens
+  // Check if a specific set piece is already slotted in the current power
+  const isPieceInCurrentPower = (setId: string, pieceNum: number) => {
+    return currentPowerSlots.some((enh) => {
+      if (!enh || typeof enh !== 'object') return false;
+      const ioEnh = enh as { type?: string; setId?: string; pieceNum?: number };
+      return ioEnh.type === 'io-set' && ioEnh.setId === setId && ioEnh.pieceNum === pieceNum;
+    });
+  };
+
+  // Auto-select primary category when modal opens; clear shift-selection
   const prevIsOpen = useRef(false);
   useEffect(() => {
-    if (picker.isOpen && !prevIsOpen.current && primaryCategory) {
-      setSidebarFilter(primaryCategory);
+    if (picker.isOpen && !prevIsOpen.current) {
+      if (primaryCategory) setSidebarFilter(primaryCategory);
+      setShiftSelected(new Map());
     }
     prevIsOpen.current = picker.isOpen;
   }, [picker.isOpen, primaryCategory]);
@@ -207,26 +222,65 @@ export function EnhancementPicker() {
     closeEnhancementPicker();
   };
 
-  // Handle shift+click to slot entire set (or as many pieces as will fit)
-  const handleSlotEntireSet = (set: IOSet) => {
+  // Handle slotting all shift-selected pieces (across sets)
+  const handleSlotMultiSelect = () => {
     if (!picker.currentPowerName) return;
 
-    // Get empty slots starting from current slot
-    const slotsToFill = emptySlotIndices.slice(0, set.pieces.length);
-    if (slotsToFill.length === 0) return;
+    // Gather all selected pieces in order
+    const allPieces: { set: IOSet; piece: IOSetPiece; pieceIndex: number }[] = [];
+    for (const [setId, indices] of shiftSelected) {
+      const set = availableSets.find((s) => (s.id || s.name) === setId);
+      if (!set) continue;
+      for (const idx of Array.from(indices).sort((a, b) => a - b)) {
+        if (set.pieces[idx]) {
+          allPieces.push({ set, piece: set.pieces[idx], pieceIndex: idx });
+        }
+      }
+    }
 
-    // Fill slots with set pieces
-    set.pieces.forEach((piece, pieceIndex) => {
-      if (pieceIndex < slotsToFill.length) {
+    if (allPieces.length === 0) return;
+
+    // Fill empty slots with selected pieces
+    const slotsToFill = emptySlotIndices.slice(0, allPieces.length);
+    allPieces.forEach(({ set, piece, pieceIndex }, idx) => {
+      if (idx < slotsToFill.length) {
         setEnhancement(
           picker.currentPowerName!,
-          slotsToFill[pieceIndex],
+          slotsToFill[idx],
           makeIOSetEnhancement(set, piece, pieceIndex)
         );
       }
     });
 
+    setShiftSelected(new Map());
     closeEnhancementPicker();
+  };
+
+  // Toggle a piece in the shift-selection
+  const toggleShiftSelect = (set: IOSet, pieceIndex: number) => {
+    const setId = set.id || set.name;
+    setShiftSelected((prev) => {
+      const next = new Map(prev);
+      const indices = new Set(next.get(setId) || []);
+      if (indices.has(pieceIndex)) {
+        indices.delete(pieceIndex);
+        if (indices.size === 0) next.delete(setId);
+        else next.set(setId, indices);
+      } else {
+        indices.add(pieceIndex);
+        next.set(setId, indices);
+      }
+      return next;
+    });
+  };
+
+  // Check if any pieces are shift-selected
+  const hasShiftSelection = shiftSelected.size > 0;
+
+  // Check if a piece is shift-selected
+  const isShiftSelected = (set: IOSet, pieceIndex: number) => {
+    const setId = set.id || set.name;
+    return shiftSelected.get(setId)?.has(pieceIndex) || false;
   };
 
   // Handle drag selection - slot selected range of pieces
@@ -257,7 +311,9 @@ export function EnhancementPicker() {
   };
 
   // Drag handlers
-  const handlePieceMouseDown = (set: IOSet, pieceIndex: number) => {
+  const handlePieceMouseDown = (set: IOSet, pieceIndex: number, e: React.MouseEvent) => {
+    // Don't start drag on shift+click (that's multi-select)
+    if (e.shiftKey) return;
     setIsDragging(true);
     setDragStartIndex(pieceIndex);
     setDragEndIndex(pieceIndex);
@@ -271,19 +327,36 @@ export function EnhancementPicker() {
   };
 
   const handlePieceMouseUp = (set: IOSet, pieceIndex: number, e: React.MouseEvent) => {
+    // Shift+Click: toggle in multi-select
+    if (e.shiftKey) {
+      toggleShiftSelect(set, pieceIndex);
+      // Reset drag state in case
+      setIsDragging(false);
+      setDragStartIndex(null);
+      setDragEndIndex(null);
+      setDragSet(null);
+      return;
+    }
+
+    // Regular click on a shift-selected piece: slot all selected
+    if (hasShiftSelection && isShiftSelected(set, pieceIndex)) {
+      handleSlotMultiSelect();
+      setIsDragging(false);
+      setDragStartIndex(null);
+      setDragEndIndex(null);
+      setDragSet(null);
+      return;
+    }
+
     if (isDragging && dragStartIndex !== null && dragSet?.id === set.id) {
       const start = dragStartIndex;
       const end = pieceIndex;
 
-      // If it was just a click (no drag), check for shift
       if (start === end) {
-        if (e.shiftKey) {
-          handleSlotEntireSet(set);
-        } else {
-          handleSelectSetPiece(set, set.pieces[pieceIndex], pieceIndex);
-        }
+        // Single click — slot this piece
+        handleSelectSetPiece(set, set.pieces[pieceIndex], pieceIndex);
       } else {
-        // It was a drag selection
+        // Drag selection
         handleDragSelect(set, start, end);
       }
     }
@@ -374,16 +447,19 @@ export function EnhancementPicker() {
     closeEnhancementPicker();
   };
 
-  // Handle selecting a special (Hamidon) enhancement
-  const handleSelectSpecial = (id: string, hami: HamidonEnhancementDef) => {
+  // Handle selecting a special enhancement (Hamidon, Titan, Hydra, D-Sync)
+  const handleSelectSpecial = (id: string, def: SpecialEnhancementDef, category: SpecialEnhancement['category']) => {
     if (!picker.currentPowerName) return;
-    setEnhancement(picker.currentPowerName, picker.currentSlotIndex, createSpecialEnhancement(id, hami));
+    setEnhancement(picker.currentPowerName, picker.currentSlotIndex, createSpecialEnhancement(id, def, category));
     closeEnhancementPicker();
   };
 
-  // Get available generic IOs and Hamidon enhancements for this power (via registry)
+  // Get available generic IOs and special enhancements for this power (via registry)
   const availableGenericIOs = useMemo(() => getAvailableGenericIOs(currentPower ?? null), [currentPower]);
   const availableHamidons = useMemo(() => getAvailableHamidons(currentPower ?? null), [currentPower]);
+  const availableTitans = useMemo(() => getAvailableTitans(currentPower ?? null), [currentPower]);
+  const availableHydras = useMemo(() => getAvailableHydras(currentPower ?? null), [currentPower]);
+  const availableDSyncs = useMemo(() => getAvailableDSyncs(currentPower ?? null), [currentPower]);
 
   const ioValue = getCommonIOValueAtLevel(globalIOLevel);
 
@@ -576,6 +652,9 @@ export function EnhancementPicker() {
                 dragSet={dragSet}
                 dragStartIndex={dragStartIndex}
                 dragEndIndex={dragEndIndex}
+                isPieceInCurrentPower={isPieceInCurrentPower}
+                isShiftSelected={isShiftSelected}
+                hasShiftSelection={hasShiftSelection}
               />
             )}
 
@@ -591,6 +670,9 @@ export function EnhancementPicker() {
             {typeFilter === 'special' && (
               <SpecialContent
                 availableHamidons={availableHamidons}
+                availableTitans={availableTitans}
+                availableHydras={availableHydras}
+                availableDSyncs={availableDSyncs}
                 onSelect={handleSelectSpecial}
               />
             )}
@@ -671,7 +753,7 @@ interface IOSetsContentProps {
   sets: IOSet[];
   globalIOLevel: number;
   attunementEnabled: boolean;
-  onPieceMouseDown: (set: IOSet, pieceIndex: number) => void;
+  onPieceMouseDown: (set: IOSet, pieceIndex: number, e: React.MouseEvent) => void;
   onPieceMouseEnter: (pieceIndex: number) => void;
   onPieceMouseUp: (set: IOSet, pieceIndex: number, e: React.MouseEvent) => void;
   onPieceTouchStart: (set: IOSet, pieceIndex: number, e: React.TouchEvent) => void;
@@ -681,6 +763,9 @@ interface IOSetsContentProps {
   dragSet: IOSet | null;
   dragStartIndex: number | null;
   dragEndIndex: number | null;
+  isPieceInCurrentPower: (setId: string, pieceNum: number) => boolean;
+  isShiftSelected: (set: IOSet, pieceIndex: number) => boolean;
+  hasShiftSelection: boolean;
 }
 
 function IOSetsContent({
@@ -695,6 +780,9 @@ function IOSetsContent({
   dragSet,
   dragStartIndex,
   dragEndIndex,
+  isPieceInCurrentPower,
+  isShiftSelected,
+  hasShiftSelection,
 }: IOSetsContentProps) {
   if (sets.length === 0) {
     return <div className="text-center text-gray-500 py-8">No IO sets available for this power</div>;
@@ -715,6 +803,9 @@ function IOSetsContent({
           isDragging={isDragging && dragSet?.id === set.id}
           dragStartIndex={dragSet?.id === set.id ? dragStartIndex : null}
           dragEndIndex={dragSet?.id === set.id ? dragEndIndex : null}
+          isPieceInCurrentPower={isPieceInCurrentPower}
+          isShiftSelected={isShiftSelected}
+          hasShiftSelection={hasShiftSelection}
         />
       ))}
     </div>
@@ -723,7 +814,7 @@ function IOSetsContent({
 
 interface IOSetRowProps {
   set: IOSet;
-  onPieceMouseDown: (set: IOSet, pieceIndex: number) => void;
+  onPieceMouseDown: (set: IOSet, pieceIndex: number, e: React.MouseEvent) => void;
   onPieceMouseEnter: (pieceIndex: number) => void;
   onPieceMouseUp: (set: IOSet, pieceIndex: number, e: React.MouseEvent) => void;
   onPieceTouchStart: (set: IOSet, pieceIndex: number, e: React.TouchEvent) => void;
@@ -732,6 +823,9 @@ interface IOSetRowProps {
   isDragging: boolean;
   dragStartIndex: number | null;
   dragEndIndex: number | null;
+  isPieceInCurrentPower: (setId: string, pieceNum: number) => boolean;
+  isShiftSelected: (set: IOSet, pieceIndex: number) => boolean;
+  hasShiftSelection: boolean;
 }
 
 function IOSetRow({
@@ -745,6 +839,9 @@ function IOSetRow({
   isDragging,
   dragStartIndex,
   dragEndIndex,
+  isPieceInCurrentPower,
+  isShiftSelected,
+  hasShiftSelection,
 }: IOSetRowProps) {
   const attunementEnabled = useUIStore((s) => s.attunementEnabled);
   const isUniqueEnhancementSlotted = useBuildStore((s) => s.isUniqueEnhancementSlotted);
@@ -765,12 +862,17 @@ function IOSetRow({
     return pieceIndex >= min && pieceIndex <= max;
   };
 
-  // Check if a piece is already slotted (unique pieces, or any piece from purple/event/ato sets)
-  const isAlreadySlotted = (piece: IOSetPiece) => {
-    const isSpecialRarity = set.category === 'purple' || set.category === 'event' || set.category === 'ato';
-    if (!piece.unique && !isSpecialRarity) return false;
+  // Check if a piece is disabled (already slotted in this power, or unique/special already in build)
+  const isPieceDisabled = (piece: IOSetPiece) => {
     const setId = set.id || set.name;
-    return isUniqueEnhancementSlotted(setId, piece.num);
+    // Always prevent duplicate of the same piece in the same power
+    if (isPieceInCurrentPower(setId, piece.num)) return 'Already in this power';
+    // Unique pieces and special rarity sets: prevent across entire build
+    const isSpecialRarity = set.category === 'purple' || set.category === 'event' || set.category === 'ato';
+    if ((piece.unique || isSpecialRarity) && isUniqueEnhancementSlotted(setId, piece.num)) {
+      return 'Already slotted in build';
+    }
+    return null;
   };
 
   return (
@@ -787,26 +889,30 @@ function IOSetRow({
         <span className="text-[10px] sm:text-xs text-gray-500">
           Lv {set.minLevel}-{set.maxLevel} • {set.pieces.length}pc
         </span>
-        <span className="hidden sm:inline text-xs text-gray-600 ml-auto">Shift+click to slot all</span>
+        <span className="hidden sm:inline text-xs text-gray-600 ml-auto">
+          {hasShiftSelection ? 'Click selected to slot all' : 'Shift+click to multi-select'}
+        </span>
       </div>
 
       {/* Pieces as icons - Desktop view */}
       <div className="hidden lg:flex flex-wrap gap-1 select-none">
         {set.pieces.map((piece, pieceIndex) => {
-          const selected = isPieceSelected(pieceIndex);
-          const isDisabled = isAlreadySlotted(piece);
+          const dragSelected = isPieceSelected(pieceIndex);
+          const shiftSel = isShiftSelected(set, pieceIndex);
+          const disabledReason = isPieceDisabled(piece);
+          const isDisabled = !!disabledReason;
           return (
             <Tooltip
               key={pieceIndex}
               content={
                 isDisabled
-                  ? <div className="text-orange-400">Already slotted in build</div>
+                  ? <div className="text-orange-400">{disabledReason}</div>
                   : <SetPieceTooltip set={set} piece={piece} />
               }
             >
               <button
                 data-piece-index={pieceIndex}
-                onMouseDown={() => !isDisabled && onPieceMouseDown(set, pieceIndex)}
+                onMouseDown={(e) => !isDisabled && onPieceMouseDown(set, pieceIndex, e)}
                 onMouseEnter={() => !isDisabled && onPieceMouseEnter(pieceIndex)}
                 onMouseUp={(e) => !isDisabled && onPieceMouseUp(set, pieceIndex, e)}
                 onTouchStart={(e) => !isDisabled && onPieceTouchStart(set, pieceIndex, e)}
@@ -816,9 +922,11 @@ function IOSetRow({
                 className={`w-9 h-9 rounded border transition-all bg-gray-900/50 touch-none ${
                   isDisabled
                     ? 'border-gray-700 opacity-40 cursor-not-allowed'
-                    : selected
-                      ? 'border-blue-400 scale-110 ring-2 ring-blue-400/50'
-                      : 'border-gray-600 hover:border-blue-400 hover:scale-110'
+                    : shiftSel
+                      ? 'border-green-400 scale-110 ring-2 ring-green-400/50'
+                      : dragSelected
+                        ? 'border-blue-400 scale-110 ring-2 ring-blue-400/50'
+                        : 'border-gray-600 hover:border-blue-400 hover:scale-110'
                 }`}
               >
                 <IOSetIcon
@@ -838,7 +946,8 @@ function IOSetRow({
       <div className="lg:hidden space-y-1 select-none">
         {set.pieces.map((piece, pieceIndex) => {
           const selected = isPieceSelected(pieceIndex);
-          const isDisabled = isAlreadySlotted(piece);
+          const disabledReason = isPieceDisabled(piece);
+          const isDisabled = !!disabledReason;
           return (
             <button
               key={pieceIndex}
@@ -883,9 +992,9 @@ function IOSetRow({
                 {piece.proc && (
                   <div className="text-xs text-green-400">Proc Effect</div>
                 )}
-                {piece.unique && (
+                {(piece.unique || disabledReason) && (
                   <div className="text-xs text-orange-400">
-                    {isDisabled ? 'Already slotted' : 'Unique'}
+                    {disabledReason || 'Unique'}
                   </div>
                 )}
               </div>
@@ -942,37 +1051,63 @@ function GenericIOContent({ availableIOs, ioValue, globalIOLevel, onSelect }: Ge
 // ============================================
 
 interface SpecialContentProps {
-  availableHamidons: [string, HamidonEnhancementDef][];
-  onSelect: (id: string, hami: HamidonEnhancementDef) => void;
+  availableHamidons: [string, SpecialEnhancementDef][];
+  availableTitans: [string, SpecialEnhancementDef][];
+  availableHydras: [string, SpecialEnhancementDef][];
+  availableDSyncs: [string, SpecialEnhancementDef][];
+  onSelect: (id: string, def: SpecialEnhancementDef, category: SpecialEnhancement['category']) => void;
 }
 
-function SpecialContent({ availableHamidons, onSelect }: SpecialContentProps) {
-  if (availableHamidons.length === 0) {
+const SPECIAL_SECTIONS: Array<{
+  category: SpecialEnhancement['category'];
+  label: string;
+  color: string;
+  borderColor: string;
+  iconPrefix: string;
+  key: 'availableHamidons' | 'availableTitans' | 'availableHydras' | 'availableDSyncs';
+}> = [
+  { category: 'hamidon', label: 'Hamidon Origin', color: 'text-purple-400', borderColor: 'border-purple-700 hover:border-purple-400', iconPrefix: 'HO', key: 'availableHamidons' },
+  { category: 'titan', label: 'Titan Origin', color: 'text-amber-400', borderColor: 'border-amber-700 hover:border-amber-400', iconPrefix: 'TN', key: 'availableTitans' },
+  { category: 'hydra', label: 'Hydra Origin', color: 'text-cyan-400', borderColor: 'border-cyan-700 hover:border-cyan-400', iconPrefix: 'HY', key: 'availableHydras' },
+  { category: 'd-sync', label: 'D-Sync Origin', color: 'text-green-400', borderColor: 'border-green-700 hover:border-green-400', iconPrefix: 'DS', key: 'availableDSyncs' },
+];
+
+function SpecialContent(props: SpecialContentProps) {
+  const { onSelect } = props;
+  const totalAvailable = props.availableHamidons.length + props.availableTitans.length + props.availableHydras.length + props.availableDSyncs.length;
+
+  if (totalAvailable === 0) {
     return <div className="text-center text-gray-500 py-8">No special enhancements available for this power</div>;
   }
 
   return (
-    <div className="bg-gray-800/40 rounded-lg p-2">
-      <div className="flex items-center gap-2 mb-2">
-        <span className="text-sm font-medium text-purple-400">Hamidon Origin</span>
-        <span className="text-xs text-gray-500">+50% to two stats</span>
-      </div>
-      <div className="flex flex-wrap gap-1">
-        {availableHamidons.map(([id, hami]) => {
-          // Capitalize the ID for the icon filename (nucleolus -> Nucleolus)
-          const capitalizedId = id.charAt(0).toUpperCase() + id.slice(1);
-          return (
-            <Tooltip key={id} content={`${hami.name}: ${hami.aspects.join(' / ')} +${hami.value}%`}>
-              <button
-                onClick={() => onSelect(id, hami)}
-                className="rounded border border-purple-700 hover:border-purple-400 hover:scale-110 transition-all bg-gray-900/50"
-              >
-                <SpecialEnhancementIcon icon={`HO${capitalizedId}.png`} size={36} alt={hami.name} />
-              </button>
-            </Tooltip>
-          );
-        })}
-      </div>
+    <div className="space-y-3">
+      {SPECIAL_SECTIONS.map(section => {
+        const entries = props[section.key];
+        if (entries.length === 0) return null;
+        return (
+          <div key={section.category} className="bg-gray-800/40 rounded-lg p-2">
+            <div className="flex items-center gap-2 mb-2">
+              <span className={`text-sm font-medium ${section.color}`}>{section.label}</span>
+            </div>
+            <div className="flex flex-wrap gap-1">
+              {entries.map(([id, def]) => {
+                const capitalizedId = id.charAt(0).toUpperCase() + id.slice(1);
+                return (
+                  <Tooltip key={id} content={`${def.name}: ${def.aspects.map(a => `${a.stat} +${a.value}%`).join(', ')}`}>
+                    <button
+                      onClick={() => onSelect(id, def, section.category)}
+                      className={`rounded border ${section.borderColor} hover:scale-110 transition-all bg-gray-900/50`}
+                    >
+                      <SpecialEnhancementIcon icon={`${section.iconPrefix}${capitalizedId}.png`} size={36} alt={def.name} />
+                    </button>
+                  </Tooltip>
+                );
+              })}
+            </div>
+          </div>
+        );
+      })}
     </div>
   );
 }
@@ -1037,21 +1172,237 @@ interface SetPieceTooltipProps {
 }
 
 function SetPieceTooltip({ set, piece }: SetPieceTooltipProps) {
+  const globalIOLevel = useUIStore((s) => s.globalIOLevel);
+  const attunementEnabled = useUIStore((s) => s.attunementEnabled);
+  const build = useBuildStore((s) => s.build);
+  const picker = useUIStore((s) => s.enhancementPicker);
+
+  // Count how many pieces of this set are already slotted in the current power
+  const setId = set.id || set.name;
+  const piecesInPower = useMemo(() => {
+    if (!picker.currentPowerName) return 0;
+    const findPower = (powers: { name: string; slots: (unknown | null)[] }[]) =>
+      powers.find(p => p.name === picker.currentPowerName);
+
+    const power = findPower(build.primary.powers)
+      || findPower(build.secondary.powers)
+      || build.pools.reduce<{ name: string; slots: (unknown | null)[] } | undefined>(
+        (found, pool) => found || findPower(pool.powers), undefined)
+      || (build.epicPool ? findPower(build.epicPool.powers) : undefined)
+      || findPower(build.inherents);
+
+    if (!power) return 0;
+    return power.slots.filter(s => {
+      if (!s || typeof s !== 'object') return false;
+      const ioEnh = s as { type?: string; setId?: string };
+      return ioEnh.type === 'io-set' && ioEnh.setId === setId;
+    }).length;
+  }, [build, picker.currentPowerName, setId]);
+
+  // Calculate aspect values at the effective level
+  const effectiveLevel = attunementEnabled ? 50 : globalIOLevel;
+  const aspectCount = piece.aspects.filter(a => normalizeAspectName(a) !== null).length || piece.aspects.length;
+  const getAspectModifier = (count: number): number => {
+    switch (count) {
+      case 1: return 1.0;
+      case 2: return 0.625;
+      case 3: return 0.5;
+      case 4: return 0.4375;
+      default: return 0.4375;
+    }
+  };
+  const aspectModifier = getAspectModifier(aspectCount);
+
+  const calculateAspectValue = (aspect: string): number | null => {
+    const normalized = normalizeAspectName(aspect);
+    if (!normalized) return null;
+    const schedule = getAspectSchedule(normalized);
+    const baseValue = getIOValueAtLevel(effectiveLevel, schedule);
+    return baseValue * aspectModifier;
+  };
+
   return (
-    <div className="max-w-xs">
-      <div className="font-medium text-yellow-400">{piece.name}</div>
-      <div className="text-sm text-gray-300">{set.name}</div>
-      <div className="text-xs text-gray-400 mt-1">
-        Level {set.minLevel}-{set.maxLevel} • {piece.aspects.join(', ')}
+    <div className="space-y-2 max-w-[320px]">
+      {/* Enhancement header with set name */}
+      <div className="flex items-center gap-2">
+        <IOSetIcon
+          icon={set.icon || 'Unknown.png'}
+          attuned={attunementEnabled}
+          size={28}
+          alt={piece.name}
+          className="flex-shrink-0"
+        />
+        <div className="min-w-0">
+          <h3 className="text-xs font-semibold text-yellow-400 leading-tight">{set.name}</h3>
+          <span className="text-[10px] text-blue-400">{piece.name}</span>
+        </div>
       </div>
-      {piece.proc && <div className="text-xs text-green-400 mt-1">Proc Effect</div>}
-      {piece.unique && <div className="text-xs text-orange-400">Unique</div>}
+
+      {/* Proc Effect section */}
+      {piece.proc ? (
+        <div className="bg-amber-900/30 border border-amber-700/50 rounded p-1.5">
+          <div className="text-[9px] text-amber-400 uppercase mb-1 font-semibold">Proc Effect</div>
+          {(() => {
+            const procData = findProcData(piece.name, set.name);
+            if (procData) {
+              const effect = parseProcEffect(procData.mechanics);
+              const effectColorClass = getProcEffectColor(effect.category);
+              const categoryLabel = getProcEffectLabel(effect.category);
+              const isAlwaysOn = isProcAlwaysOn(procData);
+
+              const badgeColors: Record<string, string> = {
+                'Damage': 'bg-red-900/50 text-red-300',
+                'Endurance': 'bg-blue-900/50 text-blue-300',
+                'Heal': 'bg-emerald-900/50 text-emerald-300',
+                'Absorb': 'bg-cyan-900/50 text-cyan-300',
+                'Resistance': 'bg-orange-900/50 text-orange-300',
+                'Defense': 'bg-purple-900/50 text-purple-300',
+                'ToHit': 'bg-yellow-900/50 text-yellow-300',
+                'Regeneration': 'bg-green-900/50 text-green-300',
+                'Recovery': 'bg-blue-900/50 text-blue-300',
+                'Recharge': 'bg-amber-900/50 text-amber-300',
+                'RunSpeed': 'bg-teal-900/50 text-teal-300',
+                'MaxHP': 'bg-pink-900/50 text-pink-300',
+                'KnockbackProtection': 'bg-slate-700 text-slate-300',
+                'Stealth': 'bg-gray-700 text-gray-300',
+                'Control': 'bg-indigo-900/50 text-indigo-300',
+                'Debuff': 'bg-rose-900/50 text-rose-300',
+                'Special': 'bg-slate-700 text-slate-300',
+              };
+
+              return (
+                <div className="space-y-1">
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <span className={`text-[10px] font-medium ${effectColorClass}`}>
+                      {procData.ioName}
+                    </span>
+                    <span className={`text-[8px] px-1 py-0.5 rounded ${badgeColors[effect.category] || 'bg-slate-700 text-slate-300'}`}>
+                      {categoryLabel}
+                    </span>
+                    {isAlwaysOn && (
+                      <span className="text-[8px] px-1 py-0.5 rounded bg-green-900/50 text-green-300">
+                        Always On
+                      </span>
+                    )}
+                  </div>
+                  <div className="text-[9px] text-slate-300 bg-slate-800/50 rounded px-1.5 py-1">
+                    {procData.mechanics}
+                  </div>
+                  <div className="flex flex-wrap gap-x-3 gap-y-0.5 text-[9px]">
+                    {procData.ppm !== null && (
+                      <div>
+                        <span className="text-slate-500">PPM:</span>
+                        <span className="text-amber-300 ml-1 font-medium">{procData.ppm}</span>
+                      </div>
+                    )}
+                    <div>
+                      <span className="text-slate-500">Type:</span>
+                      <span className={`ml-1 ${
+                        procData.type === 'Proc120s' ? 'text-purple-400' :
+                        procData.type === 'Global' ? 'text-green-400' :
+                        'text-amber-300'
+                      }`}>
+                        {procData.type === 'Proc120s' ? '100% (120s)' : procData.type}
+                      </span>
+                    </div>
+                    {effect.value !== undefined && effect.category === 'Damage' && effect.valueMax && (
+                      <div>
+                        <span className="text-slate-500">Dmg:</span>
+                        <span className="text-red-400 ml-1">{effect.value}-{effect.valueMax} {effect.effectType}</span>
+                      </div>
+                    )}
+                    {effect.value !== undefined && effect.category !== 'Damage' && (
+                      <div>
+                        <span className="text-slate-500">Value:</span>
+                        <span className={`${effectColorClass} ml-1`}>
+                          {effect.category === 'KnockbackProtection' ? `Mag ${effect.value}` :
+                           effect.category === 'Stealth' ? `${effect.value} ft` :
+                           `${effect.value}%`}
+                          {effect.effectType ? ` ${effect.effectType}` : ''}
+                        </span>
+                      </div>
+                    )}
+                    {effect.secondaryCategory && effect.secondaryValue !== undefined && (
+                      <div>
+                        <span className="text-slate-500">+{getProcEffectLabel(effect.secondaryCategory)}:</span>
+                        <span className={`${getProcEffectColor(effect.secondaryCategory)} ml-1`}>
+                          {effect.secondaryValue}%
+                          {effect.secondaryEffectType ? ` ${effect.secondaryEffectType}` : ''}
+                        </span>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              );
+            }
+            return <div className="text-[10px] text-amber-200">{piece.name}</div>;
+          })()}
+        </div>
+      ) : (
+        /* Enhances section with calculated values */
+        <div className="bg-slate-800/50 rounded p-1.5">
+          <div className="text-[9px] text-slate-500 uppercase mb-1">Enhances:</div>
+          {piece.aspects.map((aspect, i) => {
+            const value = calculateAspectValue(aspect);
+            return (
+              <div key={i} className="flex justify-between items-baseline text-[10px]">
+                <span className="text-slate-300">{aspect}</span>
+                {value !== null && (
+                  <span className="text-green-400 font-mono">
+                    +{(value * 100).toFixed(2)}%
+                  </span>
+                )}
+              </div>
+            );
+          })}
+          {aspectCount > 1 && (
+            <div className="text-[8px] text-slate-500 mt-1 italic">
+              {aspectCount === 2 ? '62.5%' : aspectCount === 3 ? '50%' : '43.75%'} per aspect ({aspectCount} aspects)
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* Level and flags */}
+      <div className="text-[10px] flex gap-3">
+        <span className="text-slate-400">
+          {attunementEnabled ? (
+            <span className="text-purple-400">Attuned</span>
+          ) : (
+            <>Level: <span className="text-slate-200">{globalIOLevel}</span></>
+          )}
+        </span>
+        <span className="text-slate-400">Range: {set.minLevel}-{set.maxLevel}</span>
+        {piece.unique && <span className="text-red-400">Unique</span>}
+      </div>
+
+      {/* Set Bonuses */}
       {set.bonuses.length > 0 && (
-        <div className="text-xs text-gray-400 mt-2 border-t border-gray-600 pt-1">
-          <div className="text-gray-500">Set Bonuses:</div>
-          {set.bonuses.map((b, i) => (
-            <div key={i}>{b.pieces}pc: {b.effects.map(e => `${e.stat} +${formatBonusValue(e.value)}`).join(', ')}</div>
-          ))}
+        <div className="border-t border-slate-700 pt-2">
+          <div className="text-[9px] text-slate-500 uppercase mb-1">
+            Set Bonuses ({piecesInPower}/{set.pieces.length} slotted)
+          </div>
+          <div className="space-y-0.5">
+            {set.bonuses.map((bonus, idx) => {
+              const isActive = piecesInPower >= bonus.pieces;
+              return (
+                <div
+                  key={idx}
+                  className={`text-[10px] ${isActive ? 'text-green-400' : 'text-slate-500'}`}
+                >
+                  <span className={`font-medium ${isActive ? 'text-green-500' : 'text-slate-600'}`}>
+                    {bonus.pieces}pc:
+                  </span>{' '}
+                  {bonus.effects.map((eff, i) => (
+                    <span key={i}>
+                      {i > 0 && ', '}
+                      {eff.desc}
+                    </span>
+                  ))}
+                </div>
+              );
+            })}
+          </div>
         </div>
       )}
     </div>
@@ -1062,9 +1413,5 @@ function SetPieceTooltip({ set, piece }: SetPieceTooltipProps) {
 // HELPER FUNCTIONS
 // ============================================
 
-/** Format a number to at most 2 decimal places, removing trailing zeros */
-function formatBonusValue(value: number): string {
-  const rounded = Math.round(value * 100) / 100;
-  return `${rounded}%`;
-}
+
 

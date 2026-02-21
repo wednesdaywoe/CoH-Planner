@@ -61,7 +61,9 @@ export type EnhancementStatType =
   | 'Mez Duration'
   | 'Taunt'
   | 'Slow'
-  | 'Intangible';
+  | 'Intangible'
+  | 'EnduranceModification'
+  | 'Absorb';
 
 // ============================================
 // POWER TYPES

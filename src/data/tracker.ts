@@ -13,7 +13,7 @@ export interface TrackerItem {
 // ============================================
 
 export const KNOWN_BUGS: TrackerItem[] = [
-  { text: 'Titan/Hydra/D-Sync Origin Enhancements are not implemented', status: 'known-bug' },
+  { text: 'Some icons may be missing; if you see a [missing-icon] icon, it means the icon is missing. Please report it using the feedback tool', status: 'known-bug' },
 ];
 
 // ============================================
@@ -21,14 +21,17 @@ export const KNOWN_BUGS: TrackerItem[] = [
 // ============================================
 
 export const RECENT_CHANGES: TrackerItem[] = [
+  { text: 'New: Added Controls button to the dashboard bar — quick reference for all desktop and mobile interactions', status: 'new' },
+  { text: 'New: Added Titan Origin, Hydra Origin, and D-Sync Origin enhancements to the enhancement picker', status: 'new' },
+  { text: 'Fix: Corrected Hamidon Origin enhancement data — per-aspect values now match game data', status: 'fixed' },
+  { text: 'Fix: DoT powers now show per-tick and total damage in the info panel', status: 'fixed' },
+  { text: 'Fix: Shadow Dweller and other auto powers now display correct defense, resistance, and regen values', status: 'fixed' },
   { text: 'Update to address missing data from power pools', status: 'fixed' },
   { text: 'Update to incorporate power updates in Issue 28, Page 3, Panel 2', status: 'fixed' },
   { text: 'New: Added modal for incarnate recipe calculator', status: 'new' },
-  { text: 'New: Added modal for set bonus finder', status: 'new' }, 
+  { text: 'New: Added modal for set bonus finder', status: 'new' },
   { text: 'New: Added dashboard feature: stat tracking! Left click a stat to track it; tracked stats will highlight sets that provide bonuses for that stat', status: 'new' },
   { text: 'New: First pass at importing builds from Mids Reborn! (.mbd files) Use the Export/Import modal, expect bugs :3', status: 'new' },
-
-
 ];
 
 // ============================================
