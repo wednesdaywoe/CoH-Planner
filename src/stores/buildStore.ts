@@ -29,6 +29,7 @@ import {
   getTotalSlotsAtLevel,
   getPowerPicksAtLevel,
   MAX_POWER_POOLS,
+  MAX_POWER_PICKS,
   EPIC_POOL_LEVEL,
   getInherentPowers,
   getInherentPowerDef,
@@ -243,18 +244,20 @@ function countTotalSlots(build: Build): number {
 }
 
 /**
- * Check if a unique enhancement is already slotted anywhere in the build
+ * Check if a unique enhancement is already slotted anywhere in the build.
+ * Also treats all pieces from purple, event, and archetype (ATO) sets as unique,
+ * since the game enforces single-copy rules for these rarities.
  * @param build - The current build
  * @param setId - The IO set ID
  * @param pieceNum - The piece number within the set
- * @returns true if the unique enhancement is already slotted
+ * @returns true if the enhancement is already slotted
  */
 function isUniqueEnhancementSlotted(build: Build, setId: string, pieceNum: number): boolean {
   const checkSlots = (slots: (Enhancement | null)[]): boolean => {
     return slots.some((enh) => {
       if (!enh || enh.type !== 'io-set') return false;
-      const ioEnh = enh as { setId: string; pieceNum: number; isUnique?: boolean };
-      return ioEnh.setId === setId && ioEnh.pieceNum === pieceNum && ioEnh.isUnique;
+      const ioEnh = enh as { setId: string; pieceNum: number };
+      return ioEnh.setId === setId && ioEnh.pieceNum === pieceNum;
     });
   };
 
@@ -530,6 +533,11 @@ export const useBuildStore = create<BuildStore>()(
       // Powers
       addPower: (category, power) => {
         set((state) => {
+          // Enforce 24-power limit (inherents don't count)
+          if (category !== 'inherent' && countSelectedPowers(state.build) >= MAX_POWER_PICKS) {
+            return state;
+          }
+
           const newBuild = { ...state.build };
 
           switch (category) {

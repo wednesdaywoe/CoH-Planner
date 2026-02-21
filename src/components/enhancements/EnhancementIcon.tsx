@@ -62,13 +62,22 @@ function getOverlayPath(
   type: EnhancementType,
   attuned?: boolean,
   tier?: OriginTier,
-  origin?: Origin
+  origin?: Origin,
+  icon?: string
 ): string {
   const overlayBase = `${IMG_BASE}/Overlay`;
 
   switch (type) {
     case 'io-set':
     case 'io-generic':
+      // Superior archetype/event sets get purple frame
+      if (icon?.startsWith('SAO_') || icon?.startsWith('SEO_') || icon?.startsWith('SEW_')) {
+        return `${overlayBase}/superior.png`;
+      }
+      // Regular archetype sets get gold frame
+      if (icon?.startsWith('AO_')) {
+        return `${overlayBase}/Class.png`;
+      }
       return attuned ? `${overlayBase}/attuned.png` : `${overlayBase}/IO.png`;
 
     case 'origin':
@@ -157,8 +166,8 @@ export function EnhancementIcon({
   );
 
   const overlayPath = useMemo(
-    () => getOverlayPath(type, attuned, tier, origin),
-    [type, attuned, tier, origin]
+    () => getOverlayPath(type, attuned, tier, origin, icon),
+    [type, attuned, tier, origin, icon]
   );
 
   return (

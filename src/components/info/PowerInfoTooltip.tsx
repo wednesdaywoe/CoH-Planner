@@ -8,7 +8,7 @@ import { useEffect, useState, useCallback, useMemo } from 'react';
 import { createPortal } from 'react-dom';
 import { useUIStore, useBuildStore, useDominationActive, useScourgeActive, useFuryLevel, useSupremacyActive, useVigilanceTeamSize, useCriticalHitsActive, useStalkerHidden, useStalkerTeamSize, useContainmentActive } from '@/stores';
 import { useGlobalBonuses } from '@/hooks/useCalculatedStats';
-import { getPower, getPowerPool, getArchetype, getIOSet, getPowerset, getInherentPowerDef, findProcData, parseProcEffect, getProcEffectLabel, getProcEffectColor, isProcAlwaysOn, calculateProcChance, calculateProcsPerMinute, calculateProcDPS, calculateAutoToggleProcChance, calculateAutoToggleProcsPerMinute } from '@/data';
+import { getPower, getPowerPool, getEpicPool, getArchetype, getIOSet, getPowerset, getInherentPowerDef, findProcData, parseProcEffect, getProcEffectLabel, getProcEffectColor, isProcAlwaysOn, calculateProcChance, calculateProcsPerMinute, calculateProcDPS, calculateAutoToggleProcChance, calculateAutoToggleProcsPerMinute } from '@/data';
 import { resolvePath } from '@/utils/paths';
 import type { Power } from '@/types';
 import {
@@ -120,6 +120,14 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
     const pool = getPowerPool(powerSet);
     if (pool) {
       basePower = pool.powers.find((p) => p.name === powerName);
+    }
+  }
+
+  // Check epic pools
+  if (!basePower) {
+    const epicPool = getEpicPool(powerSet);
+    if (epicPool) {
+      basePower = epicPool.powers.find((p) => p.name === powerName);
     }
   }
 
@@ -235,10 +243,6 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
     );
   }, [basePower, build.level, archetypeId, enhancementBonuses.damage, globalBonusesForCalc.damage, powerSet, build.primary.id, build.secondary.id, powerset]);
 
-  if (!basePower) {
-    return <div className="text-slate-500 text-[10px]">Power not found</div>;
-  }
-
   // Extract healing from damage arrays (e.g., Life Drain, Dark Regeneration)
   // Powers can define healing as { type: "Heal", scale, table } entries in the damage array
   const healFromDamageArray = useMemo(() => {
@@ -248,45 +252,6 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
     if (!healEntry) return undefined;
     return { scale: healEntry.scale, table: healEntry.table };
   }, [basePower?.damage]);
-
-  // Merge power.stats and normalize effect keys for registry-driven display
-  // Pool/inherent powers use different keys than the registry expects
-  const rawEffects = basePower.effects ?? {};
-  const raw = rawEffects as Record<string, unknown>;
-
-  // Build additional mappings for keys that differ between data formats
-  const extraEffects: Record<string, unknown> = {};
-  // Execution stats from power.stats
-  if (basePower.stats?.endurance) extraEffects.enduranceCost = basePower.stats.endurance;
-  if (basePower.stats?.recharge) extraEffects.recharge = basePower.stats.recharge;
-  if (basePower.stats?.accuracy) extraEffects.accuracy = basePower.stats.accuracy;
-  if (basePower.stats?.range) extraEffects.range = basePower.stats.range;
-  if (basePower.stats?.castTime) extraEffects.castTime = basePower.stats.castTime;
-  // Map pool/inherent effect keys to registry names
-  if (raw.flySpeed && !rawEffects.fly) extraEffects.fly = raw.flySpeed;
-  if (rawEffects.runSpeed) extraEffects.runSpeed = rawEffects.runSpeed;
-  if (rawEffects.jumpSpeed) extraEffects.jumpSpeed = rawEffects.jumpSpeed;
-  if (rawEffects.jumpHeight) extraEffects.jumpHeight = rawEffects.jumpHeight;
-  if (raw.regeneration && !rawEffects.regenBuff) extraEffects.regenBuff = raw.regeneration;
-  if (raw.recovery && !rawEffects.recoveryBuff) extraEffects.recoveryBuff = raw.recovery;
-  // Pool powers may have endurance inside effects instead of stats
-  if (raw.endurance && !rawEffects.enduranceCost && !basePower.stats?.endurance) extraEffects.enduranceCost = raw.endurance;
-  // Inject healing extracted from damage array
-  if (healFromDamageArray && !rawEffects.healing) extraEffects.healing = healFromDamageArray;
-
-  const effects = { ...rawEffects, ...extraEffects } as typeof rawEffects;
-
-  // Get archetype modifier for buff/debuff calculations
-  const archetype = archetypeId ? getArchetype(archetypeId as ArchetypeId) : null;
-  const buffDebuffMod = archetype?.stats?.buffDebuffModifier ?? 1.0;
-  const effectiveMod = getEffectiveBuffDebuffModifier(powerSet, buffDebuffMod);
-
-  // Check for mez effects
-  const hasMez = effects?.stun || effects?.hold || effects?.immobilize ||
-                 effects?.sleep || effects?.fear || effects?.confuse || effects?.knockback;
-
-  // Check if power has any enhancements
-  const hasEnhancements = selectedPower && selectedPower.slots.some(s => s !== null);
 
   // Calculate archetype-specific damage bonuses
   const damageDisplayInfo = useMemo(() => {
@@ -393,6 +358,50 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
     };
   }, [calculatedDamage, archetypeId, powerSet, scourgeActive, furyLevel, vigilanceTeamSize,
       criticalHitsActive, stalkerHidden, stalkerTeamSize, containmentActive, build.level, basePower?.damage]);
+
+  // All hooks are above this point — safe to early return
+  if (!basePower) {
+    return <div className="text-slate-500 text-[10px]">Power not found</div>;
+  }
+
+  // Merge power.stats and normalize effect keys for registry-driven display
+  // Pool/inherent powers use different keys than the registry expects
+  const rawEffects = basePower.effects ?? {};
+  const raw = rawEffects as Record<string, unknown>;
+
+  // Build additional mappings for keys that differ between data formats
+  const extraEffects: Record<string, unknown> = {};
+  // Execution stats from power.stats
+  if (basePower.stats?.endurance) extraEffects.enduranceCost = basePower.stats.endurance;
+  if (basePower.stats?.recharge) extraEffects.recharge = basePower.stats.recharge;
+  if (basePower.stats?.accuracy) extraEffects.accuracy = basePower.stats.accuracy;
+  if (basePower.stats?.range) extraEffects.range = basePower.stats.range;
+  if (basePower.stats?.castTime) extraEffects.castTime = basePower.stats.castTime;
+  // Map pool/inherent effect keys to registry names
+  if (raw.flySpeed && !rawEffects.fly) extraEffects.fly = raw.flySpeed;
+  if (rawEffects.runSpeed) extraEffects.runSpeed = rawEffects.runSpeed;
+  if (rawEffects.jumpSpeed) extraEffects.jumpSpeed = rawEffects.jumpSpeed;
+  if (rawEffects.jumpHeight) extraEffects.jumpHeight = rawEffects.jumpHeight;
+  if (raw.regeneration && !rawEffects.regenBuff) extraEffects.regenBuff = raw.regeneration;
+  if (raw.recovery && !rawEffects.recoveryBuff) extraEffects.recoveryBuff = raw.recovery;
+  // Pool powers may have endurance inside effects instead of stats
+  if (raw.endurance && !rawEffects.enduranceCost && !basePower.stats?.endurance) extraEffects.enduranceCost = raw.endurance;
+  // Inject healing extracted from damage array
+  if (healFromDamageArray && !rawEffects.healing) extraEffects.healing = healFromDamageArray;
+
+  const effects = { ...rawEffects, ...extraEffects } as typeof rawEffects;
+
+  // Get archetype modifier for buff/debuff calculations
+  const archetype = archetypeId ? getArchetype(archetypeId as ArchetypeId) : null;
+  const buffDebuffMod = archetype?.stats?.buffDebuffModifier ?? 1.0;
+  const effectiveMod = getEffectiveBuffDebuffModifier(powerSet, buffDebuffMod);
+
+  // Check for mez effects
+  const hasMez = effects?.stun || effects?.hold || effects?.immobilize ||
+                 effects?.sleep || effects?.fear || effects?.confuse || effects?.knockback;
+
+  // Check if power has any enhancements
+  const hasEnhancements = selectedPower && selectedPower.slots.some(s => s !== null);
 
   return (
     <div className="space-y-1.5 max-w-[320px]">

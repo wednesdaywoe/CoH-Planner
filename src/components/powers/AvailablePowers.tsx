@@ -6,7 +6,7 @@
 import { useState } from 'react';
 import { useBuildStore, useUIStore } from '@/stores';
 
-import { getPowerset, getPowerIconPath } from '@/data';
+import { getPowerset, getPowerIconPath, MAX_POWER_PICKS } from '@/data';
 import { resolvePath } from '@/utils/paths';
 import type { Power } from '@/types';
 
@@ -238,6 +238,13 @@ export function AvailablePowers({
   // Both powersets must be selected before powers can be chosen
   const bothPowersetsSelected = build.primary.id && build.secondary.id;
 
+  // Check if 24-power limit has been reached
+  const powerLimitReached =
+    build.primary.powers.length +
+    build.secondary.powers.length +
+    build.pools.reduce((sum: number, pool: { powers: unknown[] }) => sum + pool.powers.length, 0) +
+    (build.epicPool?.powers.length ?? 0) >= MAX_POWER_PICKS;
+
   const powerset = powersetId ? getPowerset(powersetId) : null;
 
   // Build context for requires expression evaluation
@@ -457,8 +464,8 @@ export function AvailablePowers({
                 // - If first pick was from this category, block until other category picks
                 const isLevel1Restricted = isLevel1 && (index > 1 || hasPickedPowerThisCategory || isLevel1BlockedForSecondPick);
 
-                // Block selection until both powersets are chosen
-                const isDisabled = isSelected || !isAvailable || !bothPowersetsSelected || isLevel1Restricted;
+                // Block selection until both powersets are chosen, or if 24 powers taken
+                const isDisabled = isSelected || !isAvailable || !bothPowersetsSelected || isLevel1Restricted || powerLimitReached;
                 const isLocked = isPowerLocked(power.name);
 
                 return (

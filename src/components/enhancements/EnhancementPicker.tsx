@@ -10,7 +10,7 @@
 import { useState, useMemo, useEffect, useRef } from 'react';
 import { useBuildStore, useUIStore } from '@/stores';
 import {
-  getIOSetsForPower, getPower, getPowerPool, getInherentPowerDef,
+  getIOSetsForPower, getPower, getPowerPool, getEpicPool, getInherentPowerDef,
   getCommonIOValueAtLevel, ORIGIN_TIERS,
   sortCategoriesByPriority,
   createIOSetEnhancement, createGenericIOEnhancement, createSpecialEnhancement, createOriginEnhancement,
@@ -83,6 +83,11 @@ export function EnhancementPicker() {
       const pool = getPowerPool(picker.currentPowerSet);
       power = pool?.powers.find((p) => p.name === picker.currentPowerName);
     }
+    if (!power) {
+      // Try epic/patron pool
+      const epicPool = getEpicPool(picker.currentPowerSet);
+      power = epicPool?.powers.find((p) => p.name === picker.currentPowerName);
+    }
     return power;
   }, [picker.currentPowerName, picker.currentPowerSet]);
 
@@ -131,14 +136,19 @@ export function EnhancementPicker() {
     return getIOSetsForPower((currentPower.allowedSetCategories || []) as IOSetCategory[]);
   }, [currentPower]);
 
-  // Determine the primary category for this power (first in priority order)
-  const primaryCategory = useMemo(() => {
+  // Derive all standard set categories from the available sets, sorted by priority
+  const standardCategories = useMemo(() => {
     const cats = new Set<string>();
-    availableSets.forEach((set) => cats.add(set.type));
-    const sorted = sortCategoriesByPriority(Array.from(cats));
-    // Return first non-universal category, or first if all are universal
-    return sorted.find(c => c !== 'Universal Damage Sets') || sorted[0] || null;
+    for (const set of availableSets) {
+      if (set.category === 'io-set' && set.type !== 'Universal Damage Sets') {
+        cats.add(set.type);
+      }
+    }
+    return sortCategoriesByPriority(Array.from(cats));
   }, [availableSets]);
+
+  // Primary category is the first standard one (used for auto-select on open)
+  const primaryCategory = standardCategories[0] || null;
 
   // Check which special groups have sets available
   const hasUniversal = useMemo(() =>
@@ -285,53 +295,49 @@ export function EnhancementPicker() {
     setDragSet(null);
   };
 
-  // Touch handlers for mobile
-  const handlePieceTouchStart = (set: IOSet, pieceIndex: number, e: React.TouchEvent) => {
-    e.preventDefault();
-    setIsDragging(true);
-    setDragStartIndex(pieceIndex);
-    setDragEndIndex(pieceIndex);
-    setDragSet(set);
+  // Touch handlers for mobile — allow native scroll, only select on short stationary taps
+  const touchStartPos = useRef<{ x: number; y: number } | null>(null);
+  const touchMoved = useRef(false);
+  const TOUCH_MOVE_THRESHOLD = 10; // px — beyond this it's a scroll, not a tap
+
+  const handlePieceTouchStart = (_set: IOSet, _pieceIndex: number, e: React.TouchEvent) => {
+    // Don't preventDefault — let the browser handle scroll
+    const touch = e.touches[0];
+    touchStartPos.current = { x: touch.clientX, y: touch.clientY };
+    touchMoved.current = false;
   };
 
   const handlePieceTouchMove = (e: React.TouchEvent) => {
-    if (!isDragging) return;
-    e.preventDefault();
-
+    if (!touchStartPos.current) return;
+    // Check if finger moved beyond threshold (scrolling)
     const touch = e.touches[0];
-    const element = document.elementFromPoint(touch.clientX, touch.clientY);
-
-    // Find the piece button element and extract its index from data attribute
-    const pieceButton = element?.closest('[data-piece-index]') as HTMLElement | null;
-    if (pieceButton) {
-      const pieceIndex = parseInt(pieceButton.dataset.pieceIndex || '', 10);
-      if (!isNaN(pieceIndex)) {
-        setDragEndIndex(pieceIndex);
-      }
+    const dx = Math.abs(touch.clientX - touchStartPos.current.x);
+    const dy = Math.abs(touch.clientY - touchStartPos.current.y);
+    if (dx > TOUCH_MOVE_THRESHOLD || dy > TOUCH_MOVE_THRESHOLD) {
+      touchMoved.current = true;
     }
   };
 
   const handlePieceTouchEnd = (set: IOSet, e: React.TouchEvent) => {
-    e.preventDefault();
-
-    if (isDragging && dragStartIndex !== null && dragEndIndex !== null && dragSet?.id === set.id) {
-      const start = dragStartIndex;
-      const end = dragEndIndex;
-
-      // If it was just a tap (no drag), slot single piece
-      if (start === end) {
-        handleSelectSetPiece(set, set.pieces[start], start);
-      } else {
-        // It was a drag selection
-        handleDragSelect(set, start, end);
-      }
+    // If the finger moved significantly, it was a scroll — don't select
+    if (touchMoved.current) {
+      touchStartPos.current = null;
+      return;
     }
 
-    // Reset drag state
-    setIsDragging(false);
-    setDragStartIndex(null);
-    setDragEndIndex(null);
-    setDragSet(null);
+    // It was a stationary tap — select the piece
+    e.preventDefault(); // Prevent ghost click only on actual taps
+    touchStartPos.current = null;
+
+    // Find which piece was tapped from the touch target
+    const target = e.target as HTMLElement;
+    const pieceButton = target.closest('[data-piece-index]') as HTMLElement | null;
+    if (pieceButton) {
+      const pieceIndex = parseInt(pieceButton.dataset.pieceIndex || '', 10);
+      if (!isNaN(pieceIndex) && set.pieces[pieceIndex]) {
+        handleSelectSetPiece(set, set.pieces[pieceIndex], pieceIndex);
+      }
+    }
   };
 
   // Global mouse/touch up to cancel drag if released outside
@@ -436,15 +442,16 @@ export function EnhancementPicker() {
               isActive={sidebarFilter === 'all'}
               onClick={() => setSidebarFilter('all')}
             />
-            {primaryCategory && (
+            {standardCategories.map((cat) => (
               <MobileCategoryButton
-                label={primaryCategory.replace(' Damage', '').replace(' Sets', '')}
-                count={availableSets.filter((s) => s.type === primaryCategory && !isSpecialSet(s)).length}
-                isActive={sidebarFilter === primaryCategory}
-                onClick={() => setSidebarFilter(primaryCategory)}
-                textColor="text-yellow-400"
+                key={cat}
+                label={cat.replace(' Damage', '').replace(' Sets', '')}
+                count={availableSets.filter((s) => s.type === cat && !isSpecialSet(s)).length}
+                isActive={sidebarFilter === cat}
+                onClick={() => setSidebarFilter(cat)}
+                textColor={cat === primaryCategory ? 'text-yellow-400' : undefined}
               />
-            )}
+            ))}
             {hasUniversal && (
               <MobileCategoryButton
                 label="Universal"
@@ -495,16 +502,17 @@ export function EnhancementPicker() {
                 onClick={() => setSidebarFilter('all')}
               />
 
-              {/* Primary category (the main one for this power, standard sets only) */}
-              {primaryCategory && (
+              {/* Standard set categories (data-driven from power's allowed sets) */}
+              {standardCategories.map((cat) => (
                 <SidebarButton
-                  label={primaryCategory}
-                  count={availableSets.filter((s) => s.type === primaryCategory && !isSpecialSet(s)).length}
-                  isActive={sidebarFilter === primaryCategory}
-                  onClick={() => setSidebarFilter(primaryCategory)}
-                  textColor="text-yellow-400"
+                  key={cat}
+                  label={cat}
+                  count={availableSets.filter((s) => s.type === cat && !isSpecialSet(s)).length}
+                  isActive={sidebarFilter === cat}
+                  onClick={() => setSidebarFilter(cat)}
+                  textColor={cat === primaryCategory ? 'text-yellow-400' : undefined}
                 />
-              )}
+              ))}
 
               {/* Universal Damage */}
               {hasUniversal && (
@@ -757,9 +765,10 @@ function IOSetRow({
     return pieceIndex >= min && pieceIndex <= max;
   };
 
-  // Check if a unique piece is already slotted
-  const isUniqueAlreadySlotted = (piece: IOSetPiece) => {
-    if (!piece.unique) return false;
+  // Check if a piece is already slotted (unique pieces, or any piece from purple/event/ato sets)
+  const isAlreadySlotted = (piece: IOSetPiece) => {
+    const isSpecialRarity = set.category === 'purple' || set.category === 'event' || set.category === 'ato';
+    if (!piece.unique && !isSpecialRarity) return false;
     const setId = set.id || set.name;
     return isUniqueEnhancementSlotted(setId, piece.num);
   };
@@ -785,13 +794,13 @@ function IOSetRow({
       <div className="hidden lg:flex flex-wrap gap-1 select-none">
         {set.pieces.map((piece, pieceIndex) => {
           const selected = isPieceSelected(pieceIndex);
-          const isDisabled = isUniqueAlreadySlotted(piece);
+          const isDisabled = isAlreadySlotted(piece);
           return (
             <Tooltip
               key={pieceIndex}
               content={
                 isDisabled
-                  ? <div className="text-orange-400">Unique enhancement already slotted in build</div>
+                  ? <div className="text-orange-400">Already slotted in build</div>
                   : <SetPieceTooltip set={set} piece={piece} />
               }
             >
@@ -829,7 +838,7 @@ function IOSetRow({
       <div className="lg:hidden space-y-1 select-none">
         {set.pieces.map((piece, pieceIndex) => {
           const selected = isPieceSelected(pieceIndex);
-          const isDisabled = isUniqueAlreadySlotted(piece);
+          const isDisabled = isAlreadySlotted(piece);
           return (
             <button
               key={pieceIndex}
@@ -838,7 +847,7 @@ function IOSetRow({
               onTouchMove={(e) => !isDisabled && onPieceTouchMove(e)}
               onTouchEnd={(e) => !isDisabled && onPieceTouchEnd(set, e)}
               disabled={isDisabled}
-              className={`w-full flex items-center gap-2 p-2 rounded border transition-all touch-none ${
+              className={`w-full flex items-center gap-2 p-2 rounded border transition-all ${
                 isDisabled
                   ? 'border-gray-700 opacity-40 cursor-not-allowed bg-gray-900/30'
                   : selected
@@ -849,7 +858,7 @@ function IOSetRow({
                 WebkitUserSelect: 'none',
                 userSelect: 'none',
                 WebkitTouchCallout: 'none',
-                touchAction: 'manipulation',
+                touchAction: 'pan-y',
               }}
             >
               {/* Icon on left */}
@@ -1056,6 +1065,6 @@ function SetPieceTooltip({ set, piece }: SetPieceTooltipProps) {
 /** Format a number to at most 2 decimal places, removing trailing zeros */
 function formatBonusValue(value: number): string {
   const rounded = Math.round(value * 100) / 100;
-  return rounded.toString();
+  return `${rounded}%`;
 }
 

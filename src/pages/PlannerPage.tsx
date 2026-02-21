@@ -24,6 +24,7 @@ import { ChronologicalPowerView } from '@/components/powers/ChronologicalPowerVi
 import { InfoPanel } from '@/components/info/InfoPanel';
 import { Toggle } from '@/components/ui';
 import { ViewModeToggle } from '@/components/ui/ViewModeToggle';
+import { MAX_POWER_PICKS } from '@/data';
 import type { Power } from '@/types';
 
 export function PlannerPage() {
@@ -32,6 +33,14 @@ export function PlannerPage() {
   const tooltipEnabled = useUIStore((s) => s.infoPanel.tooltipEnabled);
   const toggleInfoPanelTooltip = useUIStore((s) => s.toggleInfoPanelTooltip);
   const powerViewMode = usePowerViewMode();
+
+  // Check if 24-power limit reached
+  const totalPowers =
+    build.primary.powers.length +
+    build.secondary.powers.length +
+    build.pools.reduce((sum, pool) => sum + pool.powers.length, 0) +
+    (build.epicPool?.powers.length ?? 0);
+  const powerLimitReached = totalPowers >= MAX_POWER_PICKS;
 
   // Get powerset IDs and selected power names
   const primaryPowersetId = build.primary.id;
@@ -76,7 +85,12 @@ export function PlannerPage() {
             </h2>
             <ViewModeToggle />
           </div>
-          <div className="flex-1 overflow-y-auto p-2 space-y-3">
+          <div className={`flex-1 overflow-y-auto p-2 space-y-3 relative ${powerLimitReached ? 'opacity-40 pointer-events-none' : ''}`}>
+            {powerLimitReached && (
+              <div className="sticky top-0 z-10 text-center text-xs text-amber-400 bg-slate-900/90 py-1.5 rounded border border-amber-500/30 mb-2 pointer-events-auto">
+                All {MAX_POWER_PICKS} powers selected
+              </div>
+            )}
             <AvailablePowers
               category="primary"
               powersetId={primaryPowersetId}
@@ -146,7 +160,12 @@ export function PlannerPage() {
           </h2>
           <ViewModeToggle />
         </div>
-        <div className="flex-1 overflow-y-auto p-2 space-y-3">
+        <div className={`flex-1 overflow-y-auto p-2 space-y-3 relative ${powerLimitReached ? 'opacity-40 pointer-events-none' : ''}`}>
+          {powerLimitReached && (
+            <div className="sticky top-0 z-10 text-center text-xs text-amber-400 bg-slate-900/90 py-1.5 rounded border border-amber-500/30 mb-2 pointer-events-auto">
+              All {MAX_POWER_PICKS} powers selected
+            </div>
+          )}
           <AvailablePowers
             category="primary"
             powersetId={primaryPowersetId}

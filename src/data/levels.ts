@@ -34,11 +34,14 @@ export const TOTAL_SLOTS_AT_50 = 67;
 /**
  * Levels at which new powers can be selected.
  * Players get a power pick at each of these levels.
- * Total: 24 power picks (including level 1)
+ * Total: 24 power picks (level 1 grants 2 picks: primary + secondary)
  */
 export const POWER_PICK_LEVELS: readonly number[] = [
   1, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 35, 38, 41, 44, 47, 49,
 ] as const;
+
+/** Maximum selectable powers (23 pick levels, with level 1 granting 2 picks) */
+export const MAX_POWER_PICKS = POWER_PICK_LEVELS.length + 1; // 24
 
 /**
  * Check if a level grants a power pick

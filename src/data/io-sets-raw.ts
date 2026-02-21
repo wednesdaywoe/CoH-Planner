@@ -920,7 +920,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "Annihilation.png"
+    "icon": "sAnnihilation.png"
   },
   "annoyance": {
     "name": "Annoyance",
@@ -2655,7 +2655,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sDetonation.png"
+    "icon": "sBombardment.png"
   },
   "bonesnap": {
     "name": "Bonesnap",
@@ -9405,7 +9405,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sSynchronizedfirecontrol.png"
+    "icon": "sGaussianSF.png"
   },
   "ghost_widows_embrace": {
     "name": "Ghost Widow's Embrace",
@@ -14932,7 +14932,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "Damage.png"
+    "icon": "AO_Sentinel2.png"
   },
   "overpowering_presence": {
     "name": "Overpowering Presence",
@@ -18554,7 +18554,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "Damage.png"
+    "icon": "AO_Sentinel1.png"
   },
   "serendipity": {
     "name": "Serendipity",
@@ -23345,7 +23345,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "SAO_Defender2.png"
+    "icon": "SAO_Sentinel2.png"
   },
   "superior_overpowering_presence": {
     "name": "Superior Overpowering Presence",
@@ -23903,7 +23903,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "SAO_Defender1.png"
+    "icon": "SAO_Sentinel1.png"
   },
   "superior_spiders_bite": {
     "name": "Superior Spider's Bite",

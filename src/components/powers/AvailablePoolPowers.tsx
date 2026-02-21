@@ -16,6 +16,7 @@ import {
   isPowerAvailableInPool,
   areEpicPoolsUnlocked,
   isEpicPowerAvailable,
+  MAX_POWER_PICKS,
 } from '@/data';
 import { resolvePath } from '@/utils/paths';
 import { Select } from '@/components/ui';
@@ -39,6 +40,13 @@ export function AvailablePoolPowers() {
   const epicUnlocked = areEpicPoolsUnlocked(build.level);
   const pools = build.pools;
   const canAddPool = pools.length < 4;
+
+  // Check if 24-power limit has been reached
+  const powerLimitReached =
+    build.primary.powers.length +
+    build.secondary.powers.length +
+    build.pools.reduce((sum: number, pool: { powers: unknown[] }) => sum + pool.powers.length, 0) +
+    (build.epicPool?.powers.length ?? 0) >= MAX_POWER_PICKS;
 
   // Available pools for dropdown
   const allPools = getAllPowerPools();
@@ -176,6 +184,7 @@ export function AvailablePoolPowers() {
                 checkAvailability={(power) =>
                   isPowerAvailableInPool(poolSelection.id, power, build.level, selectedPowerNames)
                 }
+                powerLimitReached={powerLimitReached}
               />
             );
           })}
@@ -216,6 +225,7 @@ export function AvailablePoolPowers() {
               onPowerLeave={handlePowerLeave}
               onLockToggle={(power) => handleLockToggle(power, build.epicPool!.id)}
               onShowInfo={(power, e) => handleShowInfo(power, build.epicPool!.id, e)}
+              powerLimitReached={powerLimitReached}
             />
           )}
         </>
@@ -243,6 +253,7 @@ interface AvailablePoolSectionProps {
   onShowInfo: (power: Power, e?: React.MouseEvent) => void;
   color: 'blue' | 'purple';
   checkAvailability: (power: Power) => boolean;
+  powerLimitReached?: boolean;
 }
 
 function AvailablePoolSection({
@@ -259,6 +270,7 @@ function AvailablePoolSection({
   onShowInfo,
   color,
   checkAvailability,
+  powerLimitReached,
 }: AvailablePoolSectionProps) {
   const [collapsed, setCollapsed] = useState(false);
 
@@ -301,7 +313,7 @@ function AvailablePoolSection({
           {visiblePowers.map((power) => {
             const isSelected = selectedPowerNames.has(power.name);
             const isAvailable = !isSelected && checkAvailability(power);
-            const isDisabled = isSelected || !isAvailable;
+            const isDisabled = isSelected || !isAvailable || !!powerLimitReached;
             const isLocked = isPowerLocked(power.name);
 
             return (
@@ -342,6 +354,7 @@ interface AvailableEpicPoolSectionProps {
   onPowerLeave: () => void;
   onLockToggle: (power: Power) => void;
   onShowInfo: (power: Power, e?: React.MouseEvent) => void;
+  powerLimitReached?: boolean;
 }
 
 function AvailableEpicPoolSection({
@@ -354,6 +367,7 @@ function AvailableEpicPoolSection({
   onPowerLeave,
   onLockToggle,
   onShowInfo,
+  powerLimitReached,
 }: AvailableEpicPoolSectionProps) {
   const [collapsed, setCollapsed] = useState(false);
 
@@ -402,7 +416,7 @@ function AvailableEpicPoolSection({
             const isSelected = selectedPowerNames.has(power.name);
             const selectedNames = epicPool.powers.map((p) => p.name);
             const isAvailable = !isSelected && isEpicPowerAvailable(power, level, selectedNames);
-            const isDisabled = isSelected || !isAvailable;
+            const isDisabled = isSelected || !isAvailable || !!powerLimitReached;
             const isLocked = isPowerLocked(power.name);
 
             return (
