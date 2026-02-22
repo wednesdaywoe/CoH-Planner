@@ -251,9 +251,17 @@ export function ChronologicalPowerSlot({
   const lockedContent = useUIStore((s) => s.infoPanel.lockedContent);
   const openEnhancementPicker = useUIStore((s) => s.openEnhancementPicker);
 
-  // Get the powerset for icon lookup
-  const powerset = power?.powerSet ? getPowerset(power.powerSet) : null;
-  const powersetName = powerset?.name || '';
+  // Get the powerset display name for icon lookup
+  // Primary/secondary: look up from powerset registry
+  // Pool/epic: use the poolName already carried on CategorizedPower
+  const powersetName = (() => {
+    if (!power) return '';
+    if (power.category === 'pool' || power.category === 'epic') {
+      return power.poolName || '';
+    }
+    const powerset = power.powerSet ? getPowerset(power.powerSet) : null;
+    return powerset?.name || '';
+  })();
 
   if (!power) {
     // Render empty slot placeholder

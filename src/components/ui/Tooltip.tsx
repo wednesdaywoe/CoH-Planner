@@ -6,7 +6,7 @@
  * 2. Portal-based positioning for complex tooltips
  */
 
-import { useState, useRef, useCallback, type ReactNode, type CSSProperties } from 'react';
+import { useState, useRef, useCallback, useEffect, type ReactNode, type CSSProperties } from 'react';
 import { createPortal } from 'react-dom';
 
 export type TooltipPosition = 'top' | 'bottom' | 'left' | 'right';
@@ -32,8 +32,13 @@ export function Tooltip({
   const triggerRef = useRef<HTMLDivElement>(null);
   const tooltipRef = useRef<HTMLDivElement>(null);
 
-  const showTooltip = () => {
+  const showTooltip = useCallback(() => {
+    // Clear any pending timeout to prevent stale callbacks
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
     timeoutRef.current = window.setTimeout(() => {
+      timeoutRef.current = null;
       if (triggerRef.current) {
         const rect = triggerRef.current.getBoundingClientRect();
         const x = rect.left + rect.width / 2;
@@ -42,14 +47,24 @@ export function Tooltip({
       }
       setIsVisible(true);
     }, delay);
-  };
+  }, [position, delay]);
 
-  const hideTooltip = () => {
+  const hideTooltip = useCallback(() => {
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current);
+      timeoutRef.current = null;
     }
     setIsVisible(false);
-  };
+  }, []);
+
+  // Cleanup on unmount
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, []);
 
   // Clamp tooltip to viewport after it renders
   const clampToViewport = useCallback((node: HTMLDivElement | null) => {
