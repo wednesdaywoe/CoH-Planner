@@ -14,7 +14,7 @@ export interface TrackerItem {
 
 export const KNOWN_BUGS: TrackerItem[] = [
   { text: 'Incarnate Data is not currently wired up; coming soon! ', status: 'known-bug' },
-  { text: 'Some icons may be missing; if you see a [missing-icon] icon, it means the icon is missing. Please report it using the feedback tool', status: 'known-bug' },
+  { text: 'If you see a [missing-icon] icon, it means the icon is missing. Please report it using the feedback tool', status: 'known-bug' },
 ];
 
 // ============================================
