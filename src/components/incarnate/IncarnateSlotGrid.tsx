@@ -6,6 +6,7 @@ import type { IncarnateSlotId, SelectedIncarnatePower, IncarnateActiveState, Tog
 import { INCARNATE_SLOT_ORDER } from '@/types';
 import { getIncarnateIconPath, getAllIncarnateSlots, getSlotColor, getTierColor, isSlotToggleable } from '@/data';
 import { Tooltip } from '@/components/ui';
+import { IncarnateEffectsTooltip } from './IncarnateEffectsTooltip';
 
 interface IncarnateSlotGridProps {
   incarnates: Record<IncarnateSlotId, SelectedIncarnatePower | null>;
@@ -69,12 +70,13 @@ function IncarnateSlotMini({
   const iconPath = selectedPower ? getIncarnateIconPath(slotId, selectedPower.icon) : null;
 
   const tooltipContent = selectedPower ? (
-    <div>
+    <div className="max-w-[300px]">
       <div className="font-semibold text-white">{selectedPower.displayName}</div>
       <div className="text-xs text-gray-400">{selectedPower.treeName}</div>
       <div className="text-xs mt-1" style={{ color: tierColor }}>
         {selectedPower.tier.charAt(0).toUpperCase() + selectedPower.tier.slice(1)}
       </div>
+      <IncarnateEffectsTooltip slotId={slotId} powerId={selectedPower.powerId} />
     </div>
   ) : (
     <div>
