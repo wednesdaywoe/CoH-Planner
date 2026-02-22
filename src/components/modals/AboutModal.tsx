@@ -22,7 +22,7 @@ interface Contributor {
 
 const CONTRIBUTORS: Contributor[] = [
   {
-    alias: 'Wednesdaywoe',
+    alias: '@wednesdaywoe',
     characters: [
       { name: 'Toxa', server: 'Justice' },
       { name: 'Miss Ultimate', server: 'Virtue' },
@@ -93,6 +93,17 @@ export function AboutModal({ isOpen, onClose }: AboutModalProps) {
                   })()}
                 </div>
               ))}
+          </div>
+
+          {/* Personal note */}
+          <div className="max-w-md mx-auto mt-10 px-4 text-center">
+            <p className="text-sm text-gray-400 leading-relaxed italic">
+              I'm 100% not the right person for this job, but I got tired of waiting for someone else to make it. So here we are. I also make videos about City of Heroes and other things at{' '}
+              <a href="https://www.youtube.com/@wednesdaywoeplays" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 underline">
+                @wednesdaywoeplays
+              </a>
+            </p>
+            <p className="text-sm text-gray-500 mt-2">—WW</p>
           </div>
         </div>
       </ModalBody>

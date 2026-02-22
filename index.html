@@ -50,26 +50,71 @@
       <img src="img/sidekick-banner.svg" alt="Sidekick Banner" style="display: block; margin: 0 auto; max-width: 100%; height: 60px;" />
     </div>
     <div id="root">
-      <!-- Loading screen - replaced when React mounts -->
-      <div id="loading-screen" style="
+      <!-- Static landing page — crawled by search engines, replaced when React mounts -->
+      <div id="landing-page" style="
+        background: #0f172a;
+        color: #e2e8f0;
+        font-family: system-ui, -apple-system, sans-serif;
+        min-height: calc(100vh - 60px);
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
-        min-height: calc(100vh - 120px);
-        background: #0f172a;
-        color: #94a3b8;
-        font-family: system-ui, -apple-system, sans-serif;
       ">
+        <!-- Hero -->
+        <div style="text-align: center; padding: 48px 24px 32px; max-width: 640px;">
+          <img src="/img/sidekick_large.png" alt="Sidekick - City of Heroes Build Planner" width="120" height="120" style="margin: 0 auto 24px; display: block; border-radius: 16px;" />
+          <h1 style="font-size: 32px; font-weight: 700; margin: 0 0 12px; color: #fff; line-height: 1.2;">Plan Your City of Heroes Builds</h1>
+          <p style="font-size: 18px; color: #94a3b8; margin: 0 0 32px; line-height: 1.5;">A <strong style="color: #67e8f9;">City of Heroes</strong> build planner for Homecoming and beyond.</p>
+          <!-- Loading indicator -->
+          <div style="display: flex; align-items: center; justify-content: center; gap: 12px; color: #64748b; font-size: 14px;">
+            <div style="width: 20px; height: 20px; border: 2px solid #1e293b; border-top-color: #3b82f6; border-radius: 50%; animation: spin 1s linear infinite;"></div>
+            <span>Loading planner...</span>
+          </div>
+        </div>
+
+        <!-- Feature cards -->
         <div style="
-          width: 48px;
-          height: 48px;
-          border: 3px solid #1e293b;
-          border-top-color: #3b82f6;
-          border-radius: 50%;
-          animation: spin 1s linear infinite;
-        "></div>
-        <p style="margin-top: 16px; font-size: 14px;">Loading Sidekick - City of Heroes Character Planner</p>
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 16px;
+          padding: 0 24px 48px;
+          max-width: 960px;
+          width: 100%;
+          box-sizing: border-box;
+        ">
+          <!-- Build -->
+          <div style="background: #1e293b; border: 1px solid #334155; border-radius: 12px; padding: 20px; border-top: 3px solid #22d3ee;">
+            <h2 style="font-size: 16px; font-weight: 600; color: #22d3ee; margin: 0 0 8px;">Build</h2>
+            <p style="font-size: 13px; color: #94a3b8; margin: 0; line-height: 1.5;">Plan your build! Choose your archetype and powersets, quickly add slots with click and drag, and easily add enhancements with multi-select. You can even import your Mids Reborn build files!</p>
+          </div>
+          <!-- Find Set Bonuses -->
+          <div style="background: #1e293b; border: 1px solid #334155; border-radius: 12px; padding: 20px; border-top: 3px solid #a78bfa;">
+            <h2 style="font-size: 16px; font-weight: 600; color: #a78bfa; margin: 0 0 8px;">Find Set Bonuses</h2>
+            <p style="font-size: 13px; color: #94a3b8; margin: 0; line-height: 1.5;">Built-in stat tracking highlights sets that have the IO set bonuses you want, and the Set Bonus Finder can sort and filter sets to only show you the sets that your build can accept.</p>
+          </div>
+          <!-- Incarnate Component Calculator -->
+          <div style="background: #1e293b; border: 1px solid #334155; border-radius: 12px; padding: 20px; border-top: 3px solid #34d399;">
+            <h2 style="font-size: 16px; font-weight: 600; color: #34d399; margin: 0 0 8px;">Incarnate Component Calculator</h2>
+            <p style="font-size: 13px; color: #94a3b8; margin: 0; line-height: 1.5;">Just finished a BAF and you're not sure which component to pick? The Incarnate Component Calculator keeps a handy checklist of all the components needed to craft the Incarnate Powers you selected.</p>
+          </div>
+        </div>
+
+        <!-- SEO text -->
+        <div style="max-width: 720px; padding: 0 24px 48px; text-align: center;">
+          <p style="font-size: 13px; color: #475569; line-height: 1.6; margin: 0;">
+            Sidekick is a free City of Heroes character build planner that currently supports City of Heroes Homecoming, but with plans to add datasets for Rebirth and Thunderspy.
+            Supports all Homecoming archetypes and powersets. Blasters, Tankers, Scrappers, Defenders, Controllers, Masterminds, Brutes, Stalkers, Corruptors, Dominators, Sentinels.
+            Full support for invention origin (IO) enhancement sets, incarnate abilities, set bonus calculations, and Mids Reborn build imports.
+          </p>
+        </div>
+
+        <noscript>
+          <div style="max-width: 720px; padding: 24px; text-align: center; color: #94a3b8;">
+            <h2 style="color: #fff; font-size: 20px;">City of Heroes Build Planner</h2>
+            <p>Sidekick requires JavaScript to run. Please enable JavaScript in your browser to use the build planner.</p>
+            <p>Features include: power selection for all archetypes, IO set enhancement slotting with set bonus tracking, real-time stat calculations (defense, resistance, recharge, HP), full incarnate system support (Alpha, Judgement, Interface, Destiny, Lore, Hybrid), and Mids Reborn .mbd file import.</p>
+          </div>
+        </noscript>
       </div>
     </div>
     <script type="module" src="/src/main.tsx"></script>
