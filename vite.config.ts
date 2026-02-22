@@ -5,8 +5,8 @@ import path from 'path'
 
 // https://vite.dev/config/
 export default defineConfig({
-  // Base path for GitHub Pages deployment (repo name)
-  base: '/CoH-Planner/',
+  // Base path — '/' for custom domain (coh-sidekick.com)
+  base: '/',
   plugins: [react(), tailwindcss()],
   define: {
     // Inject build timestamp for the WIP banner
