@@ -233,6 +233,8 @@ export {
   getDestinyEffects,
   getHybridEffects,
   getInterfaceEffects,
+  getJudgementEffects,
+  getLoreEffects,
   getIncarnateEffects,
   formatEffectPercent,
   formatEffectValue,
@@ -242,6 +244,8 @@ export type {
   DestinyEffects,
   HybridEffects,
   InterfaceEffects,
+  JudgementEffects,
+  LoreEffects,
   IncarnatePowerEffects,
 } from './incarnate-effects';
 

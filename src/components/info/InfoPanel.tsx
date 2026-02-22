@@ -20,6 +20,8 @@ import {
   getDestinyEffects,
   getHybridEffects,
   getInterfaceEffects,
+  getJudgementEffects,
+  getLoreEffects,
   formatEffectValue,
   isSlotToggleable,
   mergeWithSupportEffects,
@@ -601,6 +603,8 @@ function IncarnateInfo({ slotId, powerId }: IncarnateInfoProps) {
   const destinyEffects = slotId === 'destiny' ? getDestinyEffects(powerId) : null;
   const hybridEffects = slotId === 'hybrid' ? getHybridEffects(powerId) : null;
   const interfaceEffects = slotId === 'interface' ? getInterfaceEffects(powerId) : null;
+  const judgementEffects = slotId === 'judgement' ? getJudgementEffects(powerId) : null;
+  const loreEffects = slotId === 'lore' ? getLoreEffects(powerId) : null;
 
   return (
     <div className="space-y-2">
@@ -884,11 +888,99 @@ function IncarnateInfo({ slotId, powerId }: IncarnateInfoProps) {
         </div>
       )}
 
-      {/* Judgement/Lore note - no stat effects */}
-      {(slotId === 'judgement' || slotId === 'lore') && (
-        <div className="text-[10px] text-slate-500 italic">
-          {slotId === 'judgement' && 'Judgement powers deal AoE damage when activated.'}
-          {slotId === 'lore' && 'Lore powers summon pets to fight alongside you.'}
+      {/* Judgement Effects (Click attack) */}
+      {judgementEffects && (
+        <div>
+          <h4 className="text-[9px] font-semibold text-slate-500 uppercase tracking-wide mb-1">
+            Attack Details
+          </h4>
+          <div className="bg-slate-800/50 rounded p-2 space-y-0.5">
+            <div className="flex justify-between text-xs">
+              <span className="text-slate-400">Damage Type</span>
+              <span className="text-red-400">{judgementEffects.damageType}</span>
+            </div>
+            <div className="flex justify-between text-xs">
+              <span className="text-slate-400">Effect Area</span>
+              <span className="text-cyan-400">{judgementEffects.effectArea}</span>
+            </div>
+            {judgementEffects.range > 0 && (
+              <div className="flex justify-between text-xs">
+                <span className="text-slate-400">Range</span>
+                <span className="text-slate-300">{judgementEffects.range} ft</span>
+              </div>
+            )}
+            {judgementEffects.radius > 0 && (
+              <div className="flex justify-between text-xs">
+                <span className="text-slate-400">Radius</span>
+                <span className="text-slate-300">{judgementEffects.radius} ft</span>
+              </div>
+            )}
+            {judgementEffects.arc > 0 && (
+              <div className="flex justify-between text-xs">
+                <span className="text-slate-400">Arc</span>
+                <span className="text-slate-300">{judgementEffects.arc}&deg;</span>
+              </div>
+            )}
+            {judgementEffects.maxTargets > 0 && (
+              <div className="flex justify-between text-xs">
+                <span className="text-slate-400">Max Targets</span>
+                <span className="text-slate-300">{judgementEffects.maxTargets}</span>
+              </div>
+            )}
+            <div className="flex justify-between text-xs">
+              <span className="text-slate-400">Activation</span>
+              <span className="text-slate-300">{judgementEffects.activationTime}s</span>
+            </div>
+            <div className="flex justify-between text-xs">
+              <span className="text-slate-400">Recharge</span>
+              <span className="text-slate-300">{judgementEffects.rechargeTime}s</span>
+            </div>
+          </div>
+          {judgementEffects.secondaryEffects.length > 0 && (
+            <div className="mt-1">
+              <div className="text-[9px] text-slate-500 mb-0.5">Secondary Effects:</div>
+              <div className="flex flex-wrap gap-1">
+                {judgementEffects.secondaryEffects.map((effect, i) => (
+                  <span key={i} className="text-[9px] px-1.5 py-0.5 bg-slate-700/50 rounded text-amber-400">
+                    {effect}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* Lore Effects (Pet summon) */}
+      {loreEffects && (
+        <div>
+          <h4 className="text-[9px] font-semibold text-slate-500 uppercase tracking-wide mb-1">
+            Summon Details
+          </h4>
+          <div className="bg-slate-800/50 rounded p-2 space-y-0.5">
+            <div className="flex justify-between text-xs">
+              <span className="text-slate-400">Faction</span>
+              <span className="text-cyan-400">{loreEffects.faction}</span>
+            </div>
+            <div className="text-xs mt-1">
+              <span className="text-slate-400">Pets:</span>
+              <div className="flex flex-wrap gap-1 mt-0.5">
+                {loreEffects.pets.map((pet, i) => (
+                  <span key={i} className="text-[9px] px-1.5 py-0.5 bg-slate-700/50 rounded text-green-400">
+                    {pet}
+                  </span>
+                ))}
+              </div>
+            </div>
+            <div className="flex justify-between text-xs mt-1">
+              <span className="text-slate-400">Duration</span>
+              <span className="text-slate-300">{loreEffects.duration}s ({Math.round(loreEffects.duration / 60)}m)</span>
+            </div>
+            <div className="flex justify-between text-xs">
+              <span className="text-slate-400">Recharge</span>
+              <span className="text-slate-300">{loreEffects.rechargeTime}s ({Math.round(loreEffects.rechargeTime / 60)}m)</span>
+            </div>
+          </div>
         </div>
       )}
     </div>

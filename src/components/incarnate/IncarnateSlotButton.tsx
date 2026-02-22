@@ -113,26 +113,28 @@ export function IncarnateSlotButton({
 
       {/* Active toggle for toggleable slots */}
       {canToggle && onToggleActive && (
-        <button
+        <div
+          role="switch"
+          aria-checked={isActive}
           onClick={(e) => {
             e.stopPropagation();
             onToggleActive(slotId as ToggleableIncarnateSlot);
           }}
           className={`
-            absolute -bottom-1 left-1/2 -translate-x-1/2
-            w-8 h-3 rounded-full transition-colors duration-200
+            w-7 h-3.5 rounded-full cursor-pointer relative
+            transition-colors duration-200
             ${isActive ? 'bg-green-500' : 'bg-gray-600'}
           `}
           title={isActive ? 'Active - click to disable' : 'Inactive - click to enable'}
         >
           <span
             className={`
-              absolute top-0.5 w-2 h-2 rounded-full bg-white
+              absolute top-[3px] left-[3px] w-2 h-2 rounded-full bg-white shadow-sm
               transition-transform duration-200
-              ${isActive ? 'translate-x-5' : 'translate-x-0.5'}
+              ${isActive ? 'translate-x-[14px]' : 'translate-x-0'}
             `}
           />
-        </button>
+        </div>
       )}
     </button>
   );

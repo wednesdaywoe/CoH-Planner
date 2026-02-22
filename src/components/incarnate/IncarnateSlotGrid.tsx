@@ -157,26 +157,29 @@ function IncarnateSlotMini({
 
         {/* Active toggle for toggleable slots */}
         {canToggle && onToggleActive && (
-          <button
+          <div
+            role="switch"
+            aria-checked={isActive}
             onClick={(e) => {
               e.stopPropagation();
               onToggleActive(slotId as ToggleableIncarnateSlot);
             }}
             className={`
-              absolute -bottom-0.5 -right-0.5
-              w-6 h-2.5 rounded-full transition-colors duration-200
+              absolute bottom-[3px] right-[3px]
+              w-5 h-2.5 rounded-full cursor-pointer relative
+              transition-colors duration-200
               ${isActive ? 'bg-green-500' : 'bg-gray-600'}
             `}
             title={isActive ? 'Active - click to disable' : 'Inactive - click to enable'}
           >
             <span
               className={`
-                absolute top-0.5 w-1.5 h-1.5 rounded-full bg-white
+                absolute top-[2px] left-[2px] w-1.5 h-1.5 rounded-full bg-white shadow-sm
                 transition-transform duration-200
-                ${isActive ? 'translate-x-3.5' : 'translate-x-0.5'}
+                ${isActive ? 'translate-x-[10px]' : 'translate-x-0'}
               `}
             />
-          </button>
+          </div>
         )}
       </button>
     </Tooltip>

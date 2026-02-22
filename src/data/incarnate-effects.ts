@@ -139,6 +139,32 @@ export interface InterfaceEffects {
 }
 
 /**
+ * Judgement click attack effects (for display, not dashboard stats)
+ */
+export interface JudgementEffects {
+  damageType: string;        // e.g., "Cold", "Energy", "Smashing", "Fire", "Negative Energy"
+  effectArea: string;        // e.g., "Cone", "Chain", "PBAoE", "Targeted AoE", "Self Cone"
+  range: number;             // in feet
+  radius: number;            // in feet (0 for chain)
+  arc: number;               // in degrees (0 for non-cones)
+  maxTargets: number;        // 0 for chain powers
+  activationTime: number;    // seconds
+  rechargeTime: number;      // seconds (always 90)
+  damageScale: number;       // usually 4.0
+  secondaryEffects: string[];  // descriptive strings for display
+}
+
+/**
+ * Lore pet summoning effects (for display, not dashboard stats)
+ */
+export interface LoreEffects {
+  faction: string;           // display name e.g., "Arachnos"
+  pets: string[];            // e.g., ['Boss', 'Support (Protected)']
+  duration: number;          // pet duration in seconds
+  rechargeTime: number;      // seconds (900 or 600)
+}
+
+/**
  * Combined incarnate power effects
  */
 export interface IncarnatePowerEffects {
@@ -149,6 +175,8 @@ export interface IncarnatePowerEffects {
   destiny?: DestinyEffects;
   hybrid?: HybridEffects;
   interface?: InterfaceEffects;
+  judgement?: JudgementEffects;
+  lore?: LoreEffects;
 }
 
 // ============================================
@@ -1545,6 +1573,361 @@ const INTERFACE_EFFECTS: Record<string, InterfaceEffects> = {
 };
 
 // ============================================
+// JUDGEMENT EFFECTS DATA
+// ============================================
+
+const JUDGEMENT_EFFECTS: Record<string, JudgementEffects> = {
+  // ========== CRYONIC ==========
+  // Ranged Cone, Cold damage
+  'cryonic_judgement': {
+    damageType: 'Cold', effectArea: 'Cone', range: 80, radius: 80, arc: 30,
+    maxTargets: 16, activationTime: 2, rechargeTime: 90, damageScale: 4.0,
+    secondaryEffects: [],
+  },
+  'cryonic_core_judgement': {
+    damageType: 'Cold', effectArea: 'Cone', range: 80, radius: 80, arc: 30,
+    maxTargets: 16, activationTime: 2, rechargeTime: 90, damageScale: 4.0,
+    secondaryEffects: ['Judgement Critical (20% chance)'],
+  },
+  'cryonic_radial_judgement': {
+    damageType: 'Cold', effectArea: 'Cone', range: 80, radius: 80, arc: 30,
+    maxTargets: 16, activationTime: 2, rechargeTime: 90, damageScale: 4.0,
+    secondaryEffects: ['-Speed', '-Recharge'],
+  },
+  'cryonic_total_core_judgement': {
+    damageType: 'Cold', effectArea: 'Cone', range: 80, radius: 80, arc: 30,
+    maxTargets: 24, activationTime: 2, rechargeTime: 90, damageScale: 4.0,
+    secondaryEffects: ['Judgement Critical (20% chance)'],
+  },
+  'cryonic_partial_core_judgement': {
+    damageType: 'Cold', effectArea: 'Cone', range: 80, radius: 80, arc: 30,
+    maxTargets: 24, activationTime: 2, rechargeTime: 90, damageScale: 4.0,
+    secondaryEffects: ['Judgement Critical (20% chance)', '-Speed', '-Recharge'],
+  },
+  'cryonic_partial_radial_judgement': {
+    damageType: 'Cold', effectArea: 'Cone', range: 120, radius: 120, arc: 45,
+    maxTargets: 32, activationTime: 2, rechargeTime: 90, damageScale: 4.0,
+    secondaryEffects: ['-Speed', '-Recharge'],
+  },
+  'cryonic_total_radial_judgement': {
+    damageType: 'Cold', effectArea: 'Cone', range: 80, radius: 80, arc: 30,
+    maxTargets: 24, activationTime: 2, rechargeTime: 90, damageScale: 4.0,
+    secondaryEffects: ['-Speed', '-Recharge', 'Hold (25% chance)'],
+  },
+  'cryonic_core_final_judgement': {
+    damageType: 'Cold', effectArea: 'Cone', range: 120, radius: 120, arc: 45,
+    maxTargets: 32, activationTime: 2, rechargeTime: 90, damageScale: 4.0,
+    secondaryEffects: ['Judgement Critical (20% chance)'],
+  },
+  'cryonic_radial_final_judgement': {
+    damageType: 'Cold', effectArea: 'Cone', range: 120, radius: 120, arc: 45,
+    maxTargets: 32, activationTime: 2, rechargeTime: 90, damageScale: 4.0,
+    secondaryEffects: ['-Speed', '-Recharge', 'Hold (25% chance)'],
+  },
+
+  // ========== ION ==========
+  // Chain Ranged AoE, Energy damage
+  'ion_judgement': {
+    damageType: 'Energy', effectArea: 'Chain', range: 80, radius: 0, arc: 0,
+    maxTargets: 0, activationTime: 2.5, rechargeTime: 90, damageScale: 4.0,
+    secondaryEffects: [],
+  },
+  'ion_core_judgement': {
+    damageType: 'Energy', effectArea: 'Chain', range: 80, radius: 0, arc: 0,
+    maxTargets: 0, activationTime: 2.5, rechargeTime: 90, damageScale: 4.0,
+    secondaryEffects: ['Judgement Critical (20% chance)'],
+  },
+  'ion_radial_judgement': {
+    damageType: 'Energy', effectArea: 'Chain', range: 80, radius: 0, arc: 0,
+    maxTargets: 0, activationTime: 2.5, rechargeTime: 90, damageScale: 4.0,
+    secondaryEffects: ['-Endurance', '-Recovery'],
+  },
+  'ion_total_core_judgement': {
+    damageType: 'Energy', effectArea: 'Chain', range: 80, radius: 0, arc: 0,
+    maxTargets: 0, activationTime: 2.5, rechargeTime: 90, damageScale: 4.0,
+    secondaryEffects: ['Judgement Critical (20% chance)'],
+  },
+  'ion_partial_core_judgement': {
+    damageType: 'Energy', effectArea: 'Chain', range: 80, radius: 0, arc: 0,
+    maxTargets: 0, activationTime: 2.5, rechargeTime: 90, damageScale: 4.0,
+    secondaryEffects: ['Judgement Critical (20% chance)', '-Endurance', '-Recovery'],
+  },
+  'ion_partial_radial_judgement': {
+    damageType: 'Energy', effectArea: 'Chain', range: 80, radius: 0, arc: 0,
+    maxTargets: 0, activationTime: 2.5, rechargeTime: 90, damageScale: 4.0,
+    secondaryEffects: ['-Endurance', '-Recovery'],
+  },
+  'ion_total_radial_judgement': {
+    damageType: 'Energy', effectArea: 'Chain', range: 80, radius: 0, arc: 0,
+    maxTargets: 0, activationTime: 2.5, rechargeTime: 90, damageScale: 4.0,
+    secondaryEffects: ['-Endurance', '-Recovery', 'Hold (25% chance)'],
+  },
+  'ion_core_final_judgement': {
+    damageType: 'Energy', effectArea: 'Chain', range: 80, radius: 0, arc: 0,
+    maxTargets: 0, activationTime: 2.5, rechargeTime: 90, damageScale: 4.0,
+    secondaryEffects: ['Judgement Critical (20% chance)'],
+  },
+  'ion_radial_final_judgement': {
+    damageType: 'Energy', effectArea: 'Chain', range: 80, radius: 0, arc: 0,
+    maxTargets: 0, activationTime: 2.5, rechargeTime: 90, damageScale: 4.0,
+    secondaryEffects: ['-Endurance', '-Recovery', 'Hold (25% chance)'],
+  },
+
+  // ========== MIGHTY ==========
+  // PBAoE, Smashing damage
+  'mighty_judgement': {
+    damageType: 'Smashing', effectArea: 'PBAoE', range: 0, radius: 30, arc: 0,
+    maxTargets: 16, activationTime: 2.93, rechargeTime: 90, damageScale: 4.0,
+    secondaryEffects: [],
+  },
+  'mighty_core_judgement': {
+    damageType: 'Smashing', effectArea: 'PBAoE', range: 0, radius: 30, arc: 0,
+    maxTargets: 16, activationTime: 2.93, rechargeTime: 90, damageScale: 4.0,
+    secondaryEffects: ['Judgement Critical (20% chance)'],
+  },
+  'mighty_radial_judgement': {
+    damageType: 'Smashing', effectArea: 'PBAoE', range: 0, radius: 30, arc: 0,
+    maxTargets: 16, activationTime: 2.93, rechargeTime: 90, damageScale: 4.0,
+    secondaryEffects: ['Knockup (50% chance)'],
+  },
+  'mighty_total_core_judgement': {
+    damageType: 'Smashing', effectArea: 'PBAoE', range: 0, radius: 30, arc: 0,
+    maxTargets: 16, activationTime: 2.93, rechargeTime: 90, damageScale: 4.0,
+    secondaryEffects: ['Judgement Critical (20% chance)'],
+  },
+  'mighty_partial_core_judgement': {
+    damageType: 'Smashing', effectArea: 'PBAoE', range: 0, radius: 50, arc: 0,
+    maxTargets: 24, activationTime: 2.93, rechargeTime: 90, damageScale: 4.0,
+    secondaryEffects: ['Judgement Critical (20% chance)'],
+  },
+  'mighty_partial_radial_judgement': {
+    damageType: 'Smashing', effectArea: 'PBAoE', range: 0, radius: 50, arc: 0,
+    maxTargets: 32, activationTime: 2.93, rechargeTime: 90, damageScale: 4.0,
+    secondaryEffects: ['Knockup (50% chance)'],
+  },
+  'mighty_total_radial_judgement': {
+    damageType: 'Smashing', effectArea: 'PBAoE', range: 0, radius: 30, arc: 0,
+    maxTargets: 16, activationTime: 2.93, rechargeTime: 90, damageScale: 4.0,
+    secondaryEffects: ['Knockup'],
+  },
+  'mighty_core_final_judgement': {
+    damageType: 'Smashing', effectArea: 'PBAoE', range: 0, radius: 50, arc: 0,
+    maxTargets: 24, activationTime: 2.93, rechargeTime: 90, damageScale: 4.0,
+    secondaryEffects: ['Judgement Critical (20% chance)'],
+  },
+  'mighty_radial_final_judgement': {
+    damageType: 'Smashing', effectArea: 'PBAoE', range: 0, radius: 50, arc: 0,
+    maxTargets: 32, activationTime: 2.93, rechargeTime: 90, damageScale: 4.0,
+    secondaryEffects: ['Knockup'],
+  },
+
+  // ========== PYRONIC ==========
+  // Targeted Ranged AoE, Fire damage
+  'pyronic_judgement': {
+    damageType: 'Fire', effectArea: 'Targeted AoE', range: 80, radius: 25, arc: 0,
+    maxTargets: 16, activationTime: 1, rechargeTime: 90, damageScale: 4.0,
+    secondaryEffects: [],
+  },
+  'pyronic_core_judgement': {
+    damageType: 'Fire', effectArea: 'Targeted AoE', range: 80, radius: 25, arc: 0,
+    maxTargets: 16, activationTime: 1, rechargeTime: 90, damageScale: 4.0,
+    secondaryEffects: ['DoT (Fire)'],
+  },
+  'pyronic_radial_judgement': {
+    damageType: 'Fire', effectArea: 'Targeted AoE', range: 80, radius: 40, arc: 0,
+    maxTargets: 24, activationTime: 1, rechargeTime: 90, damageScale: 4.0,
+    secondaryEffects: [],
+  },
+  'pyronic_total_core_judgement': {
+    damageType: 'Fire', effectArea: 'Targeted AoE', range: 80, radius: 25, arc: 0,
+    maxTargets: 16, activationTime: 1, rechargeTime: 90, damageScale: 3.5,
+    secondaryEffects: ['Superior DoT (Fire)'],
+  },
+  'pyronic_partial_core_judgement': {
+    damageType: 'Fire', effectArea: 'Targeted AoE', range: 80, radius: 25, arc: 0,
+    maxTargets: 16, activationTime: 1, rechargeTime: 90, damageScale: 4.0,
+    secondaryEffects: ['DoT (Fire)'],
+  },
+  'pyronic_partial_radial_judgement': {
+    damageType: 'Fire', effectArea: 'Targeted AoE', range: 80, radius: 40, arc: 0,
+    maxTargets: 32, activationTime: 1, rechargeTime: 90, damageScale: 4.0,
+    secondaryEffects: [],
+  },
+  'pyronic_total_radial_judgement': {
+    damageType: 'Fire', effectArea: 'Targeted AoE', range: 80, radius: 40, arc: 0,
+    maxTargets: 24, activationTime: 1, rechargeTime: 90, damageScale: 4.0,
+    secondaryEffects: ['Stun (25% chance)'],
+  },
+  'pyronic_core_final_judgement': {
+    damageType: 'Fire', effectArea: 'Targeted AoE', range: 80, radius: 40, arc: 0,
+    maxTargets: 24, activationTime: 1, rechargeTime: 90, damageScale: 4.0,
+    secondaryEffects: ['DoT (Fire)'],
+  },
+  'pyronic_radial_final_judgement': {
+    damageType: 'Fire', effectArea: 'Targeted AoE', range: 80, radius: 40, arc: 0,
+    maxTargets: 32, activationTime: 1, rechargeTime: 90, damageScale: 4.0,
+    secondaryEffects: ['Stun (25% chance)'],
+  },
+
+  // ========== VOID ==========
+  // PBAoE, Negative Energy damage
+  'void_judgement': {
+    damageType: 'Negative Energy', effectArea: 'PBAoE', range: 0, radius: 30, arc: 0,
+    maxTargets: 16, activationTime: 2, rechargeTime: 90, damageScale: 4.0,
+    secondaryEffects: [],
+  },
+  'void_core_judgement': {
+    damageType: 'Negative Energy', effectArea: 'PBAoE', range: 0, radius: 30, arc: 0,
+    maxTargets: 16, activationTime: 2, rechargeTime: 90, damageScale: 4.0,
+    secondaryEffects: ['Judgement Critical (20% chance)'],
+  },
+  'void_radial_judgement': {
+    damageType: 'Negative Energy', effectArea: 'PBAoE', range: 0, radius: 30, arc: 0,
+    maxTargets: 16, activationTime: 2, rechargeTime: 90, damageScale: 4.0,
+    secondaryEffects: ['-Damage'],
+  },
+  'void_total_core_judgement': {
+    damageType: 'Negative Energy', effectArea: 'PBAoE', range: 0, radius: 30, arc: 0,
+    maxTargets: 16, activationTime: 2, rechargeTime: 90, damageScale: 4.0,
+    secondaryEffects: ['Judgement Critical (20% chance)'],
+  },
+  'void_partial_core_judgement': {
+    damageType: 'Negative Energy', effectArea: 'PBAoE', range: 0, radius: 30, arc: 0,
+    maxTargets: 16, activationTime: 2, rechargeTime: 90, damageScale: 4.0,
+    secondaryEffects: ['Judgement Critical (20% chance)', 'Knockback'],
+  },
+  'void_partial_radial_judgement': {
+    damageType: 'Negative Energy', effectArea: 'PBAoE', range: 0, radius: 30, arc: 0,
+    maxTargets: 16, activationTime: 2, rechargeTime: 90, damageScale: 4.0,
+    secondaryEffects: ['-Damage', 'Knockback'],
+  },
+  'void_total_radial_judgement': {
+    damageType: 'Negative Energy', effectArea: 'PBAoE', range: 0, radius: 50, arc: 0,
+    maxTargets: 24, activationTime: 2, rechargeTime: 90, damageScale: 4.0,
+    secondaryEffects: ['-Damage'],
+  },
+  'void_core_final_judgement': {
+    damageType: 'Negative Energy', effectArea: 'PBAoE', range: 0, radius: 50, arc: 0,
+    maxTargets: 24, activationTime: 2, rechargeTime: 90, damageScale: 4.0,
+    secondaryEffects: ['Judgement Critical (20% chance)'],
+  },
+  'void_radial_final_judgement': {
+    damageType: 'Negative Energy', effectArea: 'PBAoE', range: 0, radius: 50, arc: 0,
+    maxTargets: 32, activationTime: 2, rechargeTime: 90, damageScale: 4.0,
+    secondaryEffects: ['-Damage'],
+  },
+
+  // ========== VORPAL ==========
+  // Self-Targeted Cone, Smashing damage (+ Lethal DoT on core path)
+  'vorpal_judgement': {
+    damageType: 'Smashing', effectArea: 'Self Cone', range: 80, radius: 80, arc: 80,
+    maxTargets: 20, activationTime: 2.5, rechargeTime: 90, damageScale: 4.0,
+    secondaryEffects: [],
+  },
+  'vorpal_core_judgement': {
+    damageType: 'Smashing', effectArea: 'Self Cone', range: 80, radius: 80, arc: 80,
+    maxTargets: 20, activationTime: 2.5, rechargeTime: 90, damageScale: 4.0,
+    secondaryEffects: ['DoT (Lethal)'],
+  },
+  'vorpal_radial_judgement': {
+    damageType: 'Smashing', effectArea: 'Self Cone', range: 80, radius: 80, arc: 120,
+    maxTargets: 30, activationTime: 2.5, rechargeTime: 90, damageScale: 4.0,
+    secondaryEffects: [],
+  },
+  'vorpal_total_core_judgement': {
+    damageType: 'Smashing', effectArea: 'Self Cone', range: 120, radius: 120, arc: 80,
+    maxTargets: 20, activationTime: 2.5, rechargeTime: 90, damageScale: 3.5,
+    secondaryEffects: ['Superior DoT (Lethal)'],
+  },
+  'vorpal_partial_core_judgement': {
+    damageType: 'Smashing', effectArea: 'Self Cone', range: 120, radius: 120, arc: 80,
+    maxTargets: 20, activationTime: 2.5, rechargeTime: 90, damageScale: 4.0,
+    secondaryEffects: ['DoT (Lethal)'],
+  },
+  'vorpal_partial_radial_judgement': {
+    damageType: 'Smashing', effectArea: 'Self Cone', range: 80, radius: 80, arc: 120,
+    maxTargets: 40, activationTime: 2.5, rechargeTime: 90, damageScale: 4.0,
+    secondaryEffects: [],
+  },
+  'vorpal_total_radial_judgement': {
+    damageType: 'Smashing', effectArea: 'Self Cone', range: 80, radius: 80, arc: 120,
+    maxTargets: 30, activationTime: 2.5, rechargeTime: 90, damageScale: 4.0,
+    secondaryEffects: ['Self +Defense (All)'],
+  },
+  'vorpal_core_final_judgement': {
+    damageType: 'Smashing', effectArea: 'Self Cone', range: 120, radius: 120, arc: 120,
+    maxTargets: 30, activationTime: 2.5, rechargeTime: 90, damageScale: 4.0,
+    secondaryEffects: ['DoT (Lethal)'],
+  },
+  'vorpal_radial_final_judgement': {
+    damageType: 'Smashing', effectArea: 'Self Cone', range: 120, radius: 120, arc: 120,
+    maxTargets: 40, activationTime: 2.5, rechargeTime: 90, damageScale: 4.0,
+    secondaryEffects: ['Self +Defense (All)'],
+  },
+};
+
+// ============================================
+// LORE EFFECTS DATA
+// ============================================
+
+// All 21 factions share identical tier structures — only faction name and entity names differ.
+// Generated programmatically to avoid 189 manual entries.
+
+const LORE_FACTION_NAMES: Record<string, string> = {
+  'arachnos': 'Arachnos',
+  'banished_pantheon': 'Banished Pantheon',
+  'carnival': 'Carnival',
+  'cimeroran': 'Cimeroran',
+  'clockwork': 'Clockwork',
+  'demons': 'Demons',
+  'idf': 'IDF',
+  'knives_of_vengeance': 'Knives of Vengeance',
+  'longbow': 'Longbow',
+  'nemesis': 'Nemesis',
+  'phantom': 'Phantom',
+  'polar_lights': 'Polar Lights',
+  'rikti': 'Rikti',
+  'robotic_drones': 'Robotic Drones',
+  'rularuu': 'Rularuu',
+  'seers': 'Seers',
+  'storm_elemental': 'Storm Elemental',
+  'talons_of_vengeance': 'Talons of Vengeance',
+  'tsoo': 'Tsoo',
+  'vanguard': 'Vanguard',
+  'warworks': 'Warworks',
+};
+
+// Tier templates: suffix, pets summoned, duration (s), recharge (s)
+const LORE_TIER_TEMPLATES: { suffix: string; pets: string[]; duration: number; recharge: number }[] = [
+  // T1 Common
+  { suffix: '_ally', pets: ['Lieutenant'], duration: 300, recharge: 900 },
+  // T2 Uncommon
+  { suffix: '_core_ally', pets: ['Boss'], duration: 300, recharge: 900 },
+  { suffix: '_radial_ally', pets: ['Lieutenant', 'Support'], duration: 300, recharge: 900 },
+  // T3 Rare
+  { suffix: '_total_core_improved_ally', pets: ['Boss', 'Lieutenant'], duration: 300, recharge: 900 },
+  { suffix: '_partial_core_improved_ally', pets: ['Boss', 'Support'], duration: 300, recharge: 900 },
+  { suffix: '_partial_radial_improved_ally', pets: ['Lieutenant', 'Support (Attacks)'], duration: 300, recharge: 600 },
+  { suffix: '_total_radial_improved_ally', pets: ['Lieutenant', 'Support (Protected)'], duration: 300, recharge: 900 },
+  // T4 Very Rare
+  { suffix: '_core_superior_ally', pets: ['Boss (Buffed)', 'Lieutenant (Buffed)'], duration: 300, recharge: 900 },
+  { suffix: '_radial_superior_ally', pets: ['Boss', 'Support (Protected)'], duration: 200, recharge: 600 },
+];
+
+// Generate all lore effects from faction × tier templates
+const LORE_EFFECTS: Record<string, LoreEffects> = {};
+for (const [factionKey, factionName] of Object.entries(LORE_FACTION_NAMES)) {
+  for (const template of LORE_TIER_TEMPLATES) {
+    LORE_EFFECTS[`${factionKey}${template.suffix}`] = {
+      faction: factionName,
+      pets: template.pets,
+      duration: template.duration,
+      rechargeTime: template.recharge,
+    };
+  }
+}
+
+// ============================================
 // LOOKUP FUNCTIONS
 // ============================================
 
@@ -1594,12 +1977,28 @@ export function getInterfaceEffects(powerId: string): InterfaceEffects | null {
 }
 
 /**
+ * Get Judgement effects for a power
+ */
+export function getJudgementEffects(powerId: string): JudgementEffects | null {
+  const normalized = normalizePowerId(powerId);
+  return JUDGEMENT_EFFECTS[normalized] || null;
+}
+
+/**
+ * Get Lore effects for a power
+ */
+export function getLoreEffects(powerId: string): LoreEffects | null {
+  const normalized = normalizePowerId(powerId);
+  return LORE_EFFECTS[normalized] || null;
+}
+
+/**
  * Get effects for any incarnate power based on its slot
  */
 export function getIncarnateEffects(
   slotId: IncarnateSlotId,
   powerId: string
-): AlphaEffects | DestinyEffects | HybridEffects | InterfaceEffects | null {
+): AlphaEffects | DestinyEffects | HybridEffects | InterfaceEffects | JudgementEffects | LoreEffects | null {
   switch (slotId) {
     case 'alpha':
       return getAlphaEffects(powerId);
@@ -1609,6 +2008,10 @@ export function getIncarnateEffects(
       return getHybridEffects(powerId);
     case 'interface':
       return getInterfaceEffects(powerId);
+    case 'judgement':
+      return getJudgementEffects(powerId);
+    case 'lore':
+      return getLoreEffects(powerId);
     default:
       return null;
   }
