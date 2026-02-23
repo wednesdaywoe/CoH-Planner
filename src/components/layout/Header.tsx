@@ -15,6 +15,12 @@ const LAST_UPDATED = (() => {
   return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
 })();
 
+const SERVER_OPTIONS = [
+  { value: 'homecoming', label: 'Homecoming' },
+  { value: 'rebirth', label: 'Rebirth (Coming Soon)', disabled: true },
+  { value: 'thunderspy', label: 'Thunderspy (Coming Soon)', disabled: true },
+];
+
 const ARCHETYPE_OPTIONS = [
   { value: '', label: 'Select Archetype...' },
   // Heroes
@@ -176,6 +182,17 @@ export function Header() {
           placeholder="Build Name"
           className="bg-slate-700 border border-slate-600 rounded px-3 py-1.5 text-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 w-40 min-w-[120px]"
         />
+
+        {/* Server/Dataset selector */}
+        <Tooltip content="Select your server dataset. Rebirth and Thunderspy support is planned for a future update.">
+          <Select
+            id="server-select"
+            name="server"
+            options={SERVER_OPTIONS}
+            value="homecoming"
+            className="max-w-[180px] min-w-[120px]"
+          />
+        </Tooltip>
 
         {/* Archetype selector */}
         <Select
