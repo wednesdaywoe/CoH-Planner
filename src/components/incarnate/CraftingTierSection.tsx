@@ -1,10 +1,9 @@
 /**
- * CraftingTierSection - Renders one tier's crafting checklist
+ * CraftingTierSection - Renders one tier's crafting checklist (salvage only)
  */
 
 import type {
   IncarnateSlotId,
-  TierRecipe,
   CraftingVariantKey,
   CraftingVariant,
   CraftingChecklistKey,
@@ -34,7 +33,6 @@ interface CraftingTierSectionProps {
   slotId: IncarnateSlotId;
   treeId: string;
   tier: number;
-  tierRecipe: TierRecipe;
   variants: Partial<Record<CraftingVariantKey, CraftingVariant>>;
   checklist: CraftingChecklistState;
   onToggleCheck: (key: CraftingChecklistKey) => void;
@@ -44,7 +42,6 @@ export function CraftingTierSection({
   slotId,
   treeId,
   tier,
-  tierRecipe,
   variants,
   checklist,
   onToggleCheck,
@@ -56,10 +53,6 @@ export function CraftingTierSection({
   // Helper to check if a key is checked
   const isChecked = (key: string) => !!checklist[key];
 
-  // Currency keys
-  const threadsKey = craftingKey(slotId, treeId, tier, '_', 'threads');
-  const empyreanKey = craftingKey(slotId, treeId, tier, '_', 'empyrean');
-  const shardsKey = craftingKey(slotId, treeId, tier, '_', 'shards');
   // Variant ordering
   const variantOrder: CraftingVariantKey[] = ['core', 'core_2', 'radial', 'radial_2'];
   const activeVariants = variantOrder.filter((v) => variants[v]);
@@ -77,45 +70,6 @@ export function CraftingTierSection({
       </div>
 
       <div className="px-3 py-2 space-y-1">
-        {/* Currency rows */}
-        {tierRecipe.threads > 0 && (
-          <CurrencyRow
-            label={`${tierRecipe.threads} Threads`}
-            checkKey={threadsKey}
-            isChecked={isChecked(threadsKey)}
-            onToggle={onToggleCheck}
-          />
-        )}
-        {tierRecipe.empyrean > 0 && (
-          <CurrencyRow
-            label={`${tierRecipe.empyrean} Empyrean Merits`}
-            checkKey={empyreanKey}
-            isChecked={isChecked(empyreanKey)}
-            onToggle={onToggleCheck}
-          />
-        )}
-        {tierRecipe.shards > 0 && (
-          <CurrencyRow
-            label={`${tierRecipe.shards} Shards`}
-            checkKey={shardsKey}
-            isChecked={isChecked(shardsKey)}
-            onToggle={onToggleCheck}
-          />
-        )}
-        {/* Incarnate component rows */}
-        {tierRecipe.incarnateComponents.map((comp, i) => {
-          const compKey = craftingKey(slotId, treeId, tier, '_', `comp:${i}`);
-          return (
-            <CurrencyRow
-              key={compKey}
-              label={comp}
-              checkKey={compKey}
-              isChecked={isChecked(compKey)}
-              onToggle={onToggleCheck}
-            />
-          );
-        })}
-
         {/* Salvage per variant */}
         {activeVariants.map((variantKey) => {
           const variant = variants[variantKey]!;
@@ -146,32 +100,5 @@ export function CraftingTierSection({
         })}
       </div>
     </div>
-  );
-}
-
-/** Simple currency/component row with checkbox */
-function CurrencyRow({
-  label,
-  checkKey,
-  isChecked,
-  onToggle,
-}: {
-  label: string;
-  checkKey: CraftingChecklistKey;
-  isChecked: boolean;
-  onToggle: (key: CraftingChecklistKey) => void;
-}) {
-  return (
-    <label className={`flex items-center gap-2 px-2 py-1 rounded cursor-pointer hover:bg-gray-800/50 transition-colors ${isChecked ? 'opacity-60' : ''}`}>
-      <input
-        type="checkbox"
-        checked={isChecked}
-        onChange={() => onToggle(checkKey)}
-        className="w-3.5 h-3.5 rounded border-gray-600 bg-gray-800 text-blue-500 focus:ring-blue-500 focus:ring-offset-0 cursor-pointer"
-      />
-      <span className={`text-xs text-gray-300 ${isChecked ? 'line-through' : ''}`}>
-        {label}
-      </span>
-    </label>
   );
 }

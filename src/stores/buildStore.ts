@@ -109,6 +109,11 @@ interface BuildActions {
   clearCraftingChecklist: () => void;
   clearCraftingChecklistForSlot: (slotId: IncarnateSlotId) => void;
 
+  // Shopping List
+  acquireShoppingItem: (salvageId: string) => void;
+  unacquireShoppingItem: (salvageId: string) => void;
+  clearShoppingListAcquired: () => void;
+
   // Power toggle (for stat calculations)
   togglePowerActive: (powerName: string) => void;
   /** Set the active sub-power for powers with mutually exclusive stances (e.g., Adaptation) */
@@ -1122,6 +1127,38 @@ export const useBuildStore = create<BuildStore>()(
           return { build: { ...state.build, craftingChecklist: filtered } };
         }),
 
+      // Shopping List
+      acquireShoppingItem: (salvageId) =>
+        set((state) => ({
+          build: {
+            ...state.build,
+            shoppingListAcquired: {
+              ...state.build.shoppingListAcquired,
+              [salvageId]: (state.build.shoppingListAcquired[salvageId] || 0) + 1,
+            },
+          },
+        })),
+
+      unacquireShoppingItem: (salvageId) =>
+        set((state) => {
+          const current = state.build.shoppingListAcquired[salvageId] || 0;
+          if (current <= 0) return state;
+          return {
+            build: {
+              ...state.build,
+              shoppingListAcquired: {
+                ...state.build.shoppingListAcquired,
+                [salvageId]: current - 1,
+              },
+            },
+          };
+        }),
+
+      clearShoppingListAcquired: () =>
+        set((state) => ({
+          build: { ...state.build, shoppingListAcquired: {} },
+        })),
+
       // Power toggle (for stat calculations)
       togglePowerActive: (powerName) =>
         set((state) => {
@@ -1385,6 +1422,11 @@ export const useBuildStore = create<BuildStore>()(
           // Migration: Initialize crafting checklist if missing
           if (!state.build.craftingChecklist) {
             state.build.craftingChecklist = createEmptyCraftingChecklistState();
+          }
+
+          // Migration: Initialize shopping list acquired if missing
+          if (!state.build.shoppingListAcquired) {
+            state.build.shoppingListAcquired = {};
           }
 
           // Migration: Refresh primary/secondary power effects from current definitions

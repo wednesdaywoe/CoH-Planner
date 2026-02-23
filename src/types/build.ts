@@ -142,6 +142,9 @@ export interface Build {
 
   /** Incarnate crafting checklist progress */
   craftingChecklist: CraftingChecklistState;
+
+  /** Shopping list: count of salvage items marked as acquired across all incarnate slots */
+  shoppingListAcquired: Record<string, number>;
 }
 
 // ============================================
@@ -181,6 +184,7 @@ export function createEmptyBuild(): Build {
     sets: {},
     incarnates: createEmptyIncarnateBuildState(),
     craftingChecklist: createEmptyCraftingChecklistState(),
+    shoppingListAcquired: {},
   };
 }
 
