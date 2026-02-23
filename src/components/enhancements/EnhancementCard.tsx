@@ -2,6 +2,7 @@
  * EnhancementCard component - displays an enhancement with its details
  */
 
+import { useMemo } from 'react';
 import type { IOSetPiece } from '@/types';
 import { Badge, Tooltip } from '@/components/ui';
 import { IOSetIcon } from './EnhancementIcon';
@@ -12,6 +13,7 @@ import {
   getAspectSchedule,
   getIOValueAtLevel,
 } from '@/utils/calculations';
+import { getEnhancementOutline } from '@/utils/enhancement-outline';
 
 interface EnhancementCardProps {
   piece: IOSetPiece;
@@ -55,6 +57,14 @@ export function EnhancementCard({
     onTap: onClick,
   });
 
+  const outline = useMemo(() =>
+    getEnhancementOutline(
+      { name: piece.name, proc: piece.proc, unique: piece.unique },
+      setName,
+    ),
+    [piece.name, piece.proc, piece.unique, setName],
+  );
+
   // Hover handler for desktop
   const handleMouseEnter = () => {
     if (enhancementId) {
@@ -87,12 +97,24 @@ export function EnhancementCard({
           touchAction: 'manipulation',
         }}
       >
-        <IOSetIcon
-          icon={setIcon || 'Unknown.png'}
-          attuned={isAttuned}
-          size={40}
-          alt={piece.name}
-        />
+        <div className="relative flex-shrink-0">
+          <IOSetIcon
+            icon={setIcon || 'Unknown.png'}
+            attuned={isAttuned}
+            size={40}
+            alt={piece.name}
+          />
+          {outline.show && (
+            <div
+              className="absolute -top-0.5 right-0.5 w-2 h-2 rounded-full border border-gray-900 pointer-events-none"
+              style={{
+                background: outline.secondaryColor
+                  ? `linear-gradient(135deg, ${outline.color} 50%, ${outline.secondaryColor} 50%)`
+                  : outline.color,
+              }}
+            />
+          )}
+        </div>
         <div className="flex-1 min-w-0">
           <div className="text-sm text-gray-200 truncate">{piece.name}</div>
           <div className="flex items-center gap-2">

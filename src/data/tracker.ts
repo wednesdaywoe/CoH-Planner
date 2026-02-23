@@ -22,7 +22,9 @@ export const KNOWN_BUGS: TrackerItem[] = [
 // ============================================
 
 export const RECENT_CHANGES: TrackerItem[] = [
-  { text: 'fix: Fixed wonky slot counting', status: 'fixed' },
+  { text: 'New: Added highlight indicator for unique and proc enhancements', status: 'new' },
+  { text: 'fix: Fixed some missing enhancement icons', status: 'fixed' },
+  { text: 'fix: Fixed wonky slot counting (again)', status: 'fixed' },
   { text: 'New: PvP IO set bonuses now split into PvE and PvP sections — PvP-only effects shown separately and excluded from stat calculations', status: 'new' },
   { text: 'New: Tracked stats now highlight matching bonus effects in enhancement picker tooltips', status: 'new' },
   { text: 'New: Added Controls button to the dashboard bar — quick reference for all desktop and mobile interactions', status: 'new' },

@@ -10,7 +10,7 @@
 import { useState, useMemo, useEffect, useRef } from 'react';
 import { useBuildStore, useUIStore } from '@/stores';
 import {
-  getIOSetsForPower, getPower, getPowerPool, getEpicPool, getInherentPowerDef,
+  getIOSetsForPower, getAllIOSets, getPower, getPowerPool, getEpicPool, getInherentPowerDef,
   getCommonIOValueAtLevel, ORIGIN_TIERS,
   sortCategoriesByPriority,
   createIOSetEnhancement, createGenericIOEnhancement, createSpecialEnhancement, createOriginEnhancement,
@@ -25,8 +25,9 @@ import { Tooltip, Toggle } from '@/components/ui';
 import { IOSetIcon, GenericIOIcon, OriginEnhancementIcon, SpecialEnhancementIcon } from './EnhancementIcon';
 import type { IOSet, IOSetPiece, EnhancementStatType, SpecialEnhancementDef, IOSetCategory, SpecialEnhancement } from '@/types';
 import { getSetTrackedMatches } from '@/data/set-bonus-index';
+import { getEnhancementOutline } from '@/utils/enhancement-outline';
 
-type EnhancementTypeFilter = 'io-sets' | 'generic' | 'special' | 'origin';
+type EnhancementTypeFilter = 'io-sets' | 'generic' | 'special' | 'origin' | 'debug';
 
 // Sidebar filter can be 'all', a category name, or a special group
 type SidebarFilter =
@@ -469,7 +470,7 @@ export function EnhancementPicker() {
       isOpen={picker.isOpen}
       onClose={closeEnhancementPicker}
       title={`Select Enhancement for ${picker.currentPowerName || 'Power'}`}
-      size="xl"
+      size="full"
     >
       <ModalBody className="p-0">
         <div className="flex flex-col h-[80vh] sm:h-[70vh]">
@@ -481,6 +482,7 @@ export function EnhancementPicker() {
               { id: 'generic' as const, label: 'Generic IO' },
               { id: 'special' as const, label: 'Special' },
               { id: 'origin' as const, label: 'Origin' },
+              { id: 'debug' as const, label: 'Debug: All Sets' },
             ].map((tab) => (
               <button
                 key={tab.id}
@@ -684,6 +686,10 @@ export function EnhancementPicker() {
                 onSelect={handleSelectOrigin}
               />
             )}
+
+            {typeFilter === 'debug' && (
+              <DebugAllSetsContent />
+            )}
           </div>
         </div>
         </div>
@@ -855,6 +861,17 @@ function IOSetRow({
     return matches.size > 0;
   }, [set, trackedStats]);
 
+  // Compute proc/unique outlines for all pieces
+  const pieceOutlines = useMemo(() =>
+    set.pieces.map((piece) =>
+      getEnhancementOutline(
+        { name: piece.name, proc: piece.proc, unique: piece.unique },
+        set.name,
+      )
+    ),
+    [set.pieces, set.name],
+  );
+
   // Check if a piece is in the current drag selection
   const isPieceSelected = (pieceIndex: number) => {
     if (!isDragging || dragStartIndex === null || dragEndIndex === null) return false;
@@ -920,7 +937,7 @@ function IOSetRow({
                 onTouchMove={(e) => !isDisabled && onPieceTouchMove(e)}
                 onTouchEnd={(e) => !isDisabled && onPieceTouchEnd(set, e)}
                 disabled={isDisabled}
-                className={`w-9 h-9 rounded border transition-all bg-gray-900/50 touch-none ${
+                className={`relative w-9 h-9 rounded border transition-all bg-gray-900/50 touch-none ${
                   isDisabled
                     ? 'border-gray-700 opacity-40 cursor-not-allowed'
                     : shiftSel
@@ -937,6 +954,16 @@ function IOSetRow({
                   alt={piece.name}
                   className="pointer-events-none"
                 />
+                {pieceOutlines[pieceIndex].show && (
+                  <div
+                    className="absolute -top-1 right-0 w-2 h-2 rounded-full border border-gray-900 pointer-events-none z-10"
+                    style={{
+                      background: pieceOutlines[pieceIndex].secondaryColor
+                        ? `linear-gradient(135deg, ${pieceOutlines[pieceIndex].color} 50%, ${pieceOutlines[pieceIndex].secondaryColor} 50%)`
+                        : pieceOutlines[pieceIndex].color,
+                    }}
+                  />
+                )}
               </button>
             </Tooltip>
           );
@@ -972,7 +999,7 @@ function IOSetRow({
               }}
             >
               {/* Icon on left */}
-              <div className="flex-shrink-0">
+              <div className="relative flex-shrink-0">
                 <IOSetIcon
                   icon={set.icon || 'Unknown.png'}
                   attuned={attunementEnabled}
@@ -980,6 +1007,16 @@ function IOSetRow({
                   alt={piece.name}
                   className="pointer-events-none"
                 />
+                {pieceOutlines[pieceIndex].show && (
+                  <div
+                    className="absolute -top-0.5 right-0.5 w-2 h-2 rounded-full border border-gray-900 pointer-events-none"
+                    style={{
+                      background: pieceOutlines[pieceIndex].secondaryColor
+                        ? `linear-gradient(135deg, ${pieceOutlines[pieceIndex].color} 50%, ${pieceOutlines[pieceIndex].secondaryColor} 50%)`
+                        : pieceOutlines[pieceIndex].color,
+                    }}
+                  />
+                )}
               </div>
 
               {/* Info on right */}
@@ -991,7 +1028,7 @@ function IOSetRow({
                   {piece.aspects.join(', ')}
                 </div>
                 {piece.proc && (
-                  <div className="text-xs text-green-400">Proc Effect</div>
+                  <div className="text-xs" style={{ color: pieceOutlines[pieceIndex].color }}>Proc Effect</div>
                 )}
                 {(piece.unique || disabledReason) && (
                   <div className="text-xs text-orange-400">
@@ -1460,6 +1497,74 @@ function SetPieceTooltip({ set, piece }: SetPieceTooltipProps) {
           </div>
         );
       })()}
+    </div>
+  );
+}
+
+// ============================================
+// DEBUG: ALL SETS VIEW
+// ============================================
+
+function DebugAllSetsContent() {
+  const allSets = useMemo(() => Object.values(getAllIOSets()), []);
+
+  // Group by category
+  const grouped = useMemo(() => {
+    const groups: Record<string, IOSet[]> = {};
+    for (const set of allSets) {
+      const key = set.category || 'unknown';
+      if (!groups[key]) groups[key] = [];
+      groups[key].push(set);
+    }
+    // Sort sets within each group alphabetically
+    for (const key of Object.keys(groups)) {
+      groups[key].sort((a, b) => a.name.localeCompare(b.name));
+    }
+    return groups;
+  }, [allSets]);
+
+  const categoryOrder = ['io-set', 'uncommon', 'rare', 'purple', 'ato', 'event', 'universal', 'unknown'];
+  const categoryLabels: Record<string, string> = {
+    'io-set': 'IO Sets',
+    'uncommon': 'Uncommon',
+    'rare': 'Rare',
+    'purple': 'Very Rare (Purple)',
+    'ato': 'Archetype (ATO)',
+    'event': 'Event',
+    'universal': 'Universal',
+    'unknown': 'Unknown Category',
+  };
+
+  return (
+    <div className="space-y-4">
+      <div className="text-xs text-gray-500 bg-gray-800/50 rounded p-2">
+        Debug view — showing all {allSets.length} IO sets. Scroll to visually check icons.
+      </div>
+      {categoryOrder.map((cat) => {
+        const sets = grouped[cat];
+        if (!sets || sets.length === 0) return null;
+        return (
+          <div key={cat}>
+            <div className="text-sm font-semibold text-gray-300 mb-2 sticky top-0 bg-gray-900 py-1 z-10">
+              {categoryLabels[cat] || cat} ({sets.length})
+            </div>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2">
+              {sets.map((set) => (
+                <div
+                  key={set.id || set.name}
+                  className="flex items-center gap-2 p-1.5 rounded bg-gray-800/40 border border-gray-700/50"
+                >
+                  <IOSetIcon icon={set.icon} size={32} alt={set.name} />
+                  <div className="min-w-0 flex-1">
+                    <div className="text-xs text-gray-200 truncate">{set.name}</div>
+                    <div className="text-[10px] text-gray-500 truncate">{set.type}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        );
+      })}
     </div>
   );
 }

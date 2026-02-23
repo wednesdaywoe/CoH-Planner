@@ -58,7 +58,7 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
   // Offense
   damage: {
     id: 'damage',
-    label: 'Damage',
+    label: 'Dmg',
     getValue: (stats) => stats.globalDamage,
     format: (v) => `+${Number(v).toFixed(2)}%`,
     color: 'text-red-400',
@@ -68,7 +68,7 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
   },
   accuracy: {
     id: 'accuracy',
-    label: 'Accuracy',
+    label: 'Acc',
     getValue: (stats) => stats.globalAccuracy,
     format: (v) => `+${Number(v).toFixed(2)}%`,
     color: 'text-yellow-400',
@@ -88,7 +88,7 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
   },
   recharge: {
     id: 'recharge',
-    label: 'Recharge',
+    label: 'Rech',
     getValue: (stats) => stats.globalRecharge,
     format: (v) => `+${Number(v).toFixed(2)}%`,
     color: 'text-blue-400',
@@ -160,7 +160,7 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
   },
   defense_psionic: {
     id: 'defense_psionic',
-    label: 'Psionic',
+    label: 'Psi',
     getValue: (stats) => stats.defense.psionic,
     format: (v) => `${Number(v).toFixed(2)}%`,
     color: 'text-purple-400',
@@ -212,7 +212,7 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
   },
   resist_psionic: {
     id: 'resist_psionic',
-    label: 'Psionic',
+    label: 'Psi',
     getValue: (stats) => stats.resistance.psionic,
     format: (v) => `${Number(v).toFixed(2)}%`,
     color: 'text-orange-400',
@@ -313,7 +313,7 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
   // Endurance
   maxend: {
     id: 'maxend',
-    label: 'Max End',
+    label: 'End',
     getValue: (stats) => stats.maxEndurance,
     format: (v) => `${Number(v).toFixed(0)}`,
     color: 'text-blue-400',
@@ -364,7 +364,7 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
   },
   regeneration: {
     id: 'regeneration',
-    label: 'Regen',
+    label: 'Regn',
     // Return an object with both values for formatting
     getValue: (stats, maxHP) => {
       // Base regen: 100% HP in 240 seconds = maxHP/240 HP/sec
@@ -637,17 +637,17 @@ export function StatsDashboard() {
 
   return (
     <>
-      <div className="bg-gray-900/50 border-b border-gray-800 px-2 sm:px-4 py-2">
+      <div className="bg-gray-900/50 border-b border-gray-800 px-2 sm:px-4 py-2 overflow-hidden">
         {/* Grouped stats - CSS Grid auto-fill layout with vertical stretch */}
-        <div className="grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-2 items-stretch">
+        <div className="grid grid-cols-[repeat(auto-fit,minmax(160px,1fr))] gap-2 items-stretch">
             {/* All stat group panels */}
             {groupedStats.map((group) => (
               <div
                 key={group.name}
-                className="bg-gray-800/70 rounded-lg px-3 py-2 border border-gray-700"
+                className="bg-gray-800/70 rounded-lg px-3 py-2 border border-gray-700 overflow-hidden min-w-0"
               >
-                <div className="text-xs font-semibold text-gray-400 mb-1 uppercase tracking-wide">{group.name}</div>
-                <div className="grid grid-cols-2 gap-x-4 gap-y-1">
+                <div className="text-xs font-semibold text-gray-400 mb-1 uppercase tracking-wide truncate">{group.name}</div>
+                <div className="grid grid-cols-2 gap-x-2 gap-y-1">
                   {group.stats.map((stat) => (
                     <StatItem
                       key={stat.id}
@@ -723,7 +723,7 @@ export function StatsDashboard() {
             <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
             </svg>
-            <span>Incarnate</span>
+            <span className="hidden sm:inline">Incarnate</span>
           </button>
           {/* Crafting button - only visible when incarnate panel is hidden (small screens) */}
           {isLevel50 && (
@@ -735,7 +735,7 @@ export function StatsDashboard() {
               <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
               </svg>
-              <span>Crafting</span>
+              <span className="hidden sm:inline">Crafting</span>
             </button>
           )}
           <button
@@ -746,7 +746,7 @@ export function StatsDashboard() {
             <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
             </svg>
-            <span>Accolades</span>
+            <span className="hidden sm:inline">Accolades</span>
           </button>
           <button
             onClick={openSetBonusLookupModal}
@@ -756,7 +756,7 @@ export function StatsDashboard() {
             <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
-            <span>Set Bonuses</span>
+            <span className="hidden sm:inline">Set Bonuses</span>
           </button>
           <button
             onClick={openStatsConfigModal}
@@ -767,7 +767,7 @@ export function StatsDashboard() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
             </svg>
-            <span>Configure</span>
+            <span className="hidden sm:inline">Configure</span>
           </button>
           <button
             onClick={openControlsModal}
@@ -777,7 +777,7 @@ export function StatsDashboard() {
             <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
-            <span>Controls</span>
+            <span className="hidden sm:inline">Controls</span>
           </button>
           {/* Spacer pushes About to the right */}
           <div className="flex-1" />
@@ -791,7 +791,7 @@ export function StatsDashboard() {
               alt="About"
               className="w-3.5 h-3.5 group-hover:scale-110 transition-transform"
             />
-            <span>About</span>
+            <span className="hidden sm:inline">About</span>
           </button>
         </div>
       </div>
@@ -880,13 +880,13 @@ interface StatItemProps {
 function StatItem({ label, value, color = 'text-gray-300', tooltip, breakdown, breakdownUnit = '%', className = '', tracked, onTrack }: StatItemProps) {
   const content = (
     <div
-      className={`flex items-baseline justify-between ${onTrack ? 'cursor-pointer' : 'cursor-help'} ${
+      className={`flex items-baseline justify-between gap-1 min-w-0 overflow-hidden ${onTrack ? 'cursor-pointer' : 'cursor-help'} ${
         tracked ? 'ring-1 ring-blue-500/60 rounded px-1 -mx-1' : ''
       } ${className}`}
       onClick={onTrack}
     >
       <span className="text-xs text-gray-500 uppercase tracking-wide shrink-0">{label}</span>
-      <span className={`text-sm font-medium tabular-nums text-right ${color}`}>{value}</span>
+      <span className={`text-sm font-medium tabular-nums text-right truncate ${color}`}>{value}</span>
     </div>
   );
 

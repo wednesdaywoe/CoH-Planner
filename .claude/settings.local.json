@@ -82,7 +82,8 @@
       "Bash(/tmp/simulate_lookup.txt:*)",
       "Bash(cat:*)",
       "Bash(/tmp/final_analysis.md:*)",
-      "Bash(/tmp/FINDINGS.md:*)"
+      "Bash(/tmp/FINDINGS.md:*)",
+      "Bash(node check-icons.mjs:*)"
     ]
   }
 }

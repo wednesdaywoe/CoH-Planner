@@ -48,8 +48,11 @@ function getIOSetFolder(icon: string): string {
   if (icon.startsWith('AO_') || icon.startsWith('SAO_')) {
     return 'Archetype';
   }
-  if (icon.startsWith('EO_') || icon.startsWith('SEO_') || icon.startsWith('SEW_')) {
+  if (icon.startsWith('EO_') || icon.startsWith('SEO_')) {
     return 'Event';
+  }
+  if (icon.startsWith('UD_')) {
+    return 'Universal';
   }
   return 'IO Sets';
 }

@@ -71,7 +71,7 @@ function getOverlayPath(
     case 'io-set':
     case 'io-generic':
       // Superior archetype/event sets get purple frame
-      if (icon?.startsWith('SAO_') || icon?.startsWith('SEO_') || icon?.startsWith('SEW_')) {
+      if (icon?.startsWith('SAO_') || icon?.startsWith('SEO_')) {
         return `${overlayBase}/superior.png`;
       }
       // Regular archetype sets get attuned frame
@@ -104,15 +104,18 @@ function getOverlayPath(
  * - SAO_ = Superior Archetype Origin (in Archetype folder)
  * - EO_ = Event Origin (in Event folder)
  * - SEO_ = Superior Event Origin (in Event folder)
- * - SEW_ = Superior Event Winter (in Event folder)
+ * - UD_ = Universal Damage (in Universal folder)
  * - All others = IO Sets folder
  */
 function getIOSetFolder(icon: string): string {
   if (icon.startsWith('AO_') || icon.startsWith('SAO_')) {
     return 'Archetype';
   }
-  if (icon.startsWith('EO_') || icon.startsWith('SEO_') || icon.startsWith('SEW_')) {
+  if (icon.startsWith('EO_') || icon.startsWith('SEO_')) {
     return 'Event';
+  }
+  if (icon.startsWith('UD_')) {
+    return 'Universal';
   }
   return 'IO Sets';
 }

@@ -2383,7 +2383,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "EO_BlisteringCold.png"
+    "icon": "EO_Blistering_Cold.png"
   },
   "blood_mandate": {
     "name": "Blood Mandate",
@@ -4634,7 +4634,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "SEW_Cupids_Crush.png"
+    "icon": "UD_Cupids_Crush.png"
   },
   "curtail_speed": {
     "name": "Curtail Speed",
@@ -8955,7 +8955,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sFrozen_Blast.png"
+    "icon": "EO_Frozen_Blast.png"
   },
   "fury_of_the_gladiator": {
     "name": "Fury of the Gladiator",
@@ -15270,7 +15270,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sOverwhelming.png"
+    "icon": "UD_Overwhelming_Force.png"
   },
   "pacing_of_the_turtle": {
     "name": "Pacing of the Turtle",
@@ -17347,7 +17347,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "ReactiveDefenses.png"
+    "icon": "sReactiveDefenses.png"
   },
   "rectified_reticle": {
     "name": "Rectified Reticle",
@@ -21186,7 +21186,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "EO_BlisteringCold.png"
+    "icon": "SEO_Blistering_Cold.png"
   },
   "superior_brutes_fury": {
     "name": "Superior Brute's Fury",
@@ -22557,7 +22557,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sFrozen_Blast.png"
+    "icon": "SEO_Frozen_Blast.png"
   },
   "superior_gauntleted_fist": {
     "name": "Superior Gauntleted Fist",
