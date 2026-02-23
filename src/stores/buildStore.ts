@@ -176,7 +176,9 @@ function findPower(
 
 /**
  * Count placed (additional) slots that count against the slot budget.
- * Excludes the free first slot on each power and all inherent power slots entirely.
+ * Excludes the free first slot on each power.
+ * Includes inherent power slots (they count against the budget in-game).
+ * Inherents with maxSlots=0 (archetype inherents) have no slots so they contribute 0.
  */
 function countPlacedSlots(build: Build): number {
   let total = 0;
@@ -191,7 +193,7 @@ function countPlacedSlots(build: Build): number {
   countExtra(build.secondary.powers);
   for (const pool of build.pools) countExtra(pool.powers);
   if (build.epicPool) countExtra(build.epicPool.powers);
-  // Inherent powers are entirely excluded from the slot budget
+  countExtra(build.inherents);
 
   return total;
 }
@@ -1383,6 +1385,39 @@ export const useBuildStore = create<BuildStore>()(
           // Migration: Initialize crafting checklist if missing
           if (!state.build.craftingChecklist) {
             state.build.craftingChecklist = createEmptyCraftingChecklistState();
+          }
+
+          // Migration: Refresh primary/secondary power effects from current definitions
+          // Stored powers may have stale/missing effects if powerset data was updated
+          if (state.build.primary.id && state.build.primary.powers.length > 0) {
+            const primaryDef = getPowerset(state.build.primary.id);
+            if (primaryDef) {
+              state.build.primary = {
+                ...state.build.primary,
+                powers: state.build.primary.powers.map((power) => {
+                  const currentDef = primaryDef.powers.find((p) => p.name === power.name);
+                  if (currentDef?.effects) {
+                    return { ...power, effects: currentDef.effects };
+                  }
+                  return power;
+                }),
+              };
+            }
+          }
+          if (state.build.secondary.id && state.build.secondary.powers.length > 0) {
+            const secondaryDef = getPowerset(state.build.secondary.id);
+            if (secondaryDef) {
+              state.build.secondary = {
+                ...state.build.secondary,
+                powers: state.build.secondary.powers.map((power) => {
+                  const currentDef = secondaryDef.powers.find((p) => p.name === power.name);
+                  if (currentDef?.effects) {
+                    return { ...power, effects: currentDef.effects };
+                  }
+                  return power;
+                }),
+              };
+            }
           }
 
           // Migration: Refresh pool power effects from current definitions

@@ -40,6 +40,7 @@ interface StatDefinition {
   tooltip: string;
   showWhenZero?: boolean;
   breakdownKey?: string; // Key to look up breakdown from calculation result
+  breakdownUnit?: string; // Unit for breakdown values (default: '%'). Use 'Mag' for mez protection.
 }
 
 /** Format mez stat showing protection (Mag) and resistance (%) */
@@ -240,6 +241,7 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     tooltip: 'Hold protection (Mag) and resistance (%)',
     showWhenZero: true,
     breakdownKey: 'protHold',
+    breakdownUnit: 'Mag',
   },
   mez_stun: {
     id: 'mez_stun',
@@ -250,6 +252,7 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     tooltip: 'Stun protection (Mag) and resistance (%)',
     showWhenZero: true,
     breakdownKey: 'protStun',
+    breakdownUnit: 'Mag',
   },
   mez_immob: {
     id: 'mez_immob',
@@ -260,6 +263,7 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     tooltip: 'Immobilize protection (Mag) and resistance (%)',
     showWhenZero: true,
     breakdownKey: 'protImmobilize',
+    breakdownUnit: 'Mag',
   },
   mez_sleep: {
     id: 'mez_sleep',
@@ -270,6 +274,7 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     tooltip: 'Sleep protection (Mag) and resistance (%)',
     showWhenZero: true,
     breakdownKey: 'protSleep',
+    breakdownUnit: 'Mag',
   },
   mez_confuse: {
     id: 'mez_confuse',
@@ -280,6 +285,7 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     tooltip: 'Confuse protection (Mag) and resistance (%)',
     showWhenZero: true,
     breakdownKey: 'protConfuse',
+    breakdownUnit: 'Mag',
   },
   mez_fear: {
     id: 'mez_fear',
@@ -290,6 +296,7 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     tooltip: 'Fear protection (Mag) and resistance (%)',
     showWhenZero: true,
     breakdownKey: 'protFear',
+    breakdownUnit: 'Mag',
   },
   mez_kb: {
     id: 'mez_kb',
@@ -300,6 +307,7 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     tooltip: 'Knockback protection (Mag) and resistance (%)',
     showWhenZero: true,
     breakdownKey: 'protKnockback',
+    breakdownUnit: 'Mag',
   },
 
   // Endurance
@@ -534,13 +542,15 @@ export function StatsDashboard() {
     (build.epicPool?.powers.length ?? 0);
   // Count placed (additional) slots only — excludes the free first slot each power gets.
   // The 67 budget is for manually placed slots; free first slots are separate.
+  // Includes inherent power slots (they count against the budget in-game).
   const countExtra = (powers: { slots: unknown[] }[]) =>
     powers.reduce((sum, p) => sum + Math.max(0, p.slots.length - 1), 0);
   const currentSlotCount =
     countExtra(build.primary.powers) +
     countExtra(build.secondary.powers) +
     build.pools.reduce((sum, pool) => sum + countExtra(pool.powers), 0) +
-    (build.epicPool ? countExtra(build.epicPool.powers) : 0);
+    (build.epicPool ? countExtra(build.epicPool.powers) : 0) +
+    countExtra(build.inherents);
 
   // Get visible stats based on config
   const visibleStats = useMemo(() => {
@@ -551,7 +561,7 @@ export function StatsDashboard() {
         const def = STAT_DEFINITIONS[config.stat];
         const value = def.getValue(stats, maxHP);
         const breakdown = def.breakdownKey ? breakdowns.get(def.breakdownKey) : undefined;
-        return { ...def, value, breakdown };
+        return { ...def, value, breakdown, breakdownUnit: def.breakdownUnit };
       })
       .filter((stat) => {
         if (stat.showWhenZero) return true;
@@ -646,6 +656,7 @@ export function StatsDashboard() {
                       color={stat.color}
                       tooltip={stat.tooltip}
                       breakdown={stat.breakdown}
+                      breakdownUnit={stat.breakdownUnit}
                       tracked={stat.breakdownKey ? trackedStats.includes(stat.breakdownKey) : false}
                       onTrack={stat.breakdownKey ? () => toggleTrackedStat(stat.breakdownKey!) : undefined}
                     />
@@ -860,12 +871,13 @@ interface StatItemProps {
   color?: string;
   tooltip?: string;
   breakdown?: DashboardStatBreakdown;
+  breakdownUnit?: string;
   className?: string;
   tracked?: boolean;
   onTrack?: () => void;
 }
 
-function StatItem({ label, value, color = 'text-gray-300', tooltip, breakdown, className = '', tracked, onTrack }: StatItemProps) {
+function StatItem({ label, value, color = 'text-gray-300', tooltip, breakdown, breakdownUnit = '%', className = '', tracked, onTrack }: StatItemProps) {
   const content = (
     <div
       className={`flex items-baseline justify-between ${onTrack ? 'cursor-pointer' : 'cursor-help'} ${
@@ -907,7 +919,7 @@ function StatItem({ label, value, color = 'text-gray-300', tooltip, breakdown, c
                   {source.name}
                 </span>
                 <span className={`ml-2 ${source.capped ? 'text-orange-400 line-through' : 'text-green-400'}`}>
-                  +{source.value.toFixed(2)}%
+                  +{source.value.toFixed(2)}{breakdownUnit}
                 </span>
               </div>
             ))}
@@ -921,7 +933,7 @@ function StatItem({ label, value, color = 'text-gray-300', tooltip, breakdown, c
             {activePowerSources.map((source, i) => (
               <div key={i} className="flex justify-between text-[10px]">
                 <span className="text-slate-300">{source.name}</span>
-                <span className="text-amber-400 ml-2">+{source.value.toFixed(2)}%</span>
+                <span className="text-amber-400 ml-2">+{source.value.toFixed(2)}{breakdownUnit}</span>
               </div>
             ))}
           </div>
@@ -934,7 +946,7 @@ function StatItem({ label, value, color = 'text-gray-300', tooltip, breakdown, c
             {inherentSources.map((source, i) => (
               <div key={i} className="flex justify-between text-[10px]">
                 <span className="text-slate-300">{source.name}</span>
-                <span className="text-blue-400 ml-2">+{source.value.toFixed(2)}%</span>
+                <span className="text-blue-400 ml-2">+{source.value.toFixed(2)}{breakdownUnit}</span>
               </div>
             ))}
           </div>
@@ -960,7 +972,7 @@ function StatItem({ label, value, color = 'text-gray-300', tooltip, breakdown, c
             {procSources.map((source, i) => (
               <div key={i} className={`flex justify-between text-[10px] ${source.capped ? 'opacity-70' : ''}`}>
                 <span className={`${source.capped ? 'text-orange-400 line-through' : 'text-slate-300'} truncate max-w-[200px]`}>{source.name}</span>
-                <span className={`ml-2 ${source.capped ? 'text-orange-400 line-through' : 'text-cyan-400'}`}>+{source.value.toFixed(2)}%</span>
+                <span className={`ml-2 ${source.capped ? 'text-orange-400 line-through' : 'text-cyan-400'}`}>+{source.value.toFixed(2)}{breakdownUnit}</span>
               </div>
             ))}
           </div>
@@ -973,7 +985,7 @@ function StatItem({ label, value, color = 'text-gray-300', tooltip, breakdown, c
             {incarnateSources.map((source, i) => (
               <div key={i} className="flex justify-between text-[10px]">
                 <span className="text-slate-300 truncate max-w-[200px]">{source.name}</span>
-                <span className="text-purple-400 ml-2">+{source.value.toFixed(2)}%</span>
+                <span className="text-purple-400 ml-2">+{source.value.toFixed(2)}{breakdownUnit}</span>
               </div>
             ))}
           </div>
@@ -982,11 +994,11 @@ function StatItem({ label, value, color = 'text-gray-300', tooltip, breakdown, c
         {/* Total */}
         <div className="border-t border-slate-600 pt-1 flex justify-between text-[11px] font-medium">
           <span className="text-slate-300">Total</span>
-          <span className={color}>+{breakdown.total.toFixed(2)}%</span>
+          <span className={color}>+{breakdown.total.toFixed(2)}{breakdownUnit}</span>
         </div>
       </div>
     );
-  }, [breakdown, tooltip, label, color]);
+  }, [breakdown, tooltip, label, color, breakdownUnit]);
 
   return <Tooltip content={tooltipContent}>{content}</Tooltip>;
 }
