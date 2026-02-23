@@ -27,6 +27,7 @@ const CONTRIBUTORS: Contributor[] = [
       { name: 'Toxa', server: 'Justice' },
       { name: 'Miss Ultimate', server: 'Virtue' },
       { name: 'Lady Nightstar', server: 'Everlasting' },
+      { name: 'Stormsiren', server: 'Everlasting' },
       { name: 'Charnel', server: 'Excelsior' },
       { name: 'Immashtu', server: 'Excelsior' },
       { name: 'Safeword?', server: 'Excelsior' },
