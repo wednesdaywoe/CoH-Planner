@@ -11,7 +11,7 @@ export const DarkRegeneration: Power = {
   "name": "Dark Regeneration",
   "internalName": "Dark_Regeneration",
   "available": 15,
-  "description": "You can tap the dark essence of the Netherworld to drain a small amount of life from all enemies nearby, thus healing yourself. The more foes affected, the more you will be healed.This power is mutually exclusive from Obscure Sustenance.",
+  "description": "You can tap the dark essence of the Netherworld to drain a small amount of life from all enemies nearby, thus healing yourself. The more foes affected, the more you will be healed. This power is mutually exclusive from Obscure Sustenance. NOTE: This power is bugged on Homecoming—it does not accept Accurate Healing enhancements although it should.",
   "shortHelp": "PBAoE DMG(Negative), Self +HP",
   "icon": "darkarmor_darkregeneration.png",
   "powerType": "Click",

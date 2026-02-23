@@ -391,7 +391,11 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
           Description
         </h4>
         <p className="text-xs text-slate-300 leading-relaxed"
-          dangerouslySetInnerHTML={{ __html: power.description.replace(/<br\s*\/?>/gi, ' ').replace(/<[^>]+>/g, '') }}
+          dangerouslySetInnerHTML={{ __html: power.description
+            .replace(/<br\s*\/?>/gi, ' ')
+            .replace(/<[^>]+>/g, '')
+            .replace(/NOTE:\s*(.*?)(?:\.|$)/g, '<span class="block mt-1 text-amber-400 font-semibold">NOTE: $1.</span>')
+          }}
         />
       </div>
 

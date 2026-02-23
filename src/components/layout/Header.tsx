@@ -543,17 +543,9 @@ export function Header() {
             variant="secondary"
             size="sm"
             onClick={() => openExportImportModal()}
-            title="Export your build to a file"
+            title="Export or import a build"
           >
-            Export
-          </Button>
-          <Button
-            variant="secondary"
-            size="sm"
-            onClick={() => openExportImportModal()}
-            title="Import a build from a file"
-          >
-            Import
+            Export / Import
           </Button>
           <Button
             variant="secondary"
