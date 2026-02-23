@@ -35,6 +35,7 @@ import {
   getInherentPowerDef,
   createArchetypeInherentPower,
   POWER_PICK_LEVELS,
+  getIOSet,
 } from '@/data';
 import type { InherentPowerDef } from '@/data';
 
@@ -1495,6 +1496,65 @@ export const useBuildStore = create<BuildStore>()(
                   return power;
                 }),
               };
+            }
+          }
+
+          // Migration: Restore missing IO set enhancement icons from current data
+          // Fixes enhancements that may have lost their icon field in localStorage
+          const fixEnhancementIcons = (powers: SelectedPower[]) => {
+            let anyChanged = false;
+            const fixed = powers.map((power) => {
+              let powerChanged = false;
+              const slots = power.slots.map((slot) => {
+                if (slot && slot.type === 'io-set') {
+                  const enh = slot as Enhancement & { setId?: string; icon?: string };
+                  if (!enh.icon || enh.icon === 'Unknown.png') {
+                    const ioSet = enh.setId ? getIOSet(enh.setId) : null;
+                    if (ioSet?.icon) {
+                      powerChanged = true;
+                      return { ...enh, icon: ioSet.icon };
+                    }
+                  }
+                }
+                return slot;
+              });
+              if (powerChanged) {
+                anyChanged = true;
+                return { ...power, slots };
+              }
+              return power;
+            });
+            return anyChanged ? fixed : powers;
+          };
+
+          if (state.build.primary.powers.length > 0) {
+            const fixed = fixEnhancementIcons(state.build.primary.powers);
+            if (fixed !== state.build.primary.powers) {
+              state.build.primary = { ...state.build.primary, powers: fixed };
+            }
+          }
+          if (state.build.secondary.powers.length > 0) {
+            const fixed = fixEnhancementIcons(state.build.secondary.powers);
+            if (fixed !== state.build.secondary.powers) {
+              state.build.secondary = { ...state.build.secondary, powers: fixed };
+            }
+          }
+          if (state.build.pools.length > 0) {
+            state.build.pools = state.build.pools.map((pool) => {
+              const fixed = fixEnhancementIcons(pool.powers);
+              return fixed !== pool.powers ? { ...pool, powers: fixed } : pool;
+            });
+          }
+          if (state.build.epicPool && state.build.epicPool.powers.length > 0) {
+            const fixed = fixEnhancementIcons(state.build.epicPool.powers);
+            if (fixed !== state.build.epicPool.powers) {
+              state.build.epicPool = { ...state.build.epicPool, powers: fixed };
+            }
+          }
+          if (state.build.inherents && state.build.inherents.length > 0) {
+            const fixed = fixEnhancementIcons(state.build.inherents);
+            if (fixed !== state.build.inherents) {
+              state.build.inherents = fixed;
             }
           }
 

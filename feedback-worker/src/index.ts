@@ -32,6 +32,7 @@ interface FeedbackPayload {
 }
 
 const ALLOWED_ORIGINS = [
+  'https://coh-sidekick.com',
   'https://wednesdaywoe.github.io',
   'http://localhost:3000',
 ];
