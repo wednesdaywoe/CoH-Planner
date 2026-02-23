@@ -5,207 +5,20 @@
  * Includes category color coding and all standard interactions.
  */
 
-import { useRef, useState } from 'react';
 import { useBuildStore, useUIStore } from '@/stores';
 import type { PowerCategory as StorePowerCategory } from '@/stores';
-import type { Enhancement } from '@/types';
 import { getPowerIconPath, getPowerset } from '@/data';
-import { resolvePath } from '@/utils/paths';
-import { DraggableSlotGhost } from './DraggableSlotGhost';
-import { SlottedEnhancementIcon } from './SlottedEnhancementIcon';
-import { SlotContextMenu } from './SlotContextMenu';
-import { Tooltip } from '@/components/ui';
+import { PowerRow } from './PowerRow';
+import { shouldShowToggle } from './power-row-utils';
 import type { CategorizedPower, PowerCategory } from './ChronologicalPowerView';
 
 // Category colors for left border
 const CATEGORY_COLORS: Record<PowerCategory, string> = {
-  primary: 'border-l-yellow-500',
-  secondary: 'border-l-blue-500',
-  pool: 'border-l-green-500',
-  epic: 'border-l-purple-500',
+  primary: 'border-l-4 border-l-yellow-500',
+  secondary: 'border-l-4 border-l-blue-500',
+  pool: 'border-l-4 border-l-green-500',
+  epic: 'border-l-4 border-l-purple-500',
 };
-
-const CATEGORY_LABELS: Record<PowerCategory, string> = {
-  primary: 'Primary',
-  secondary: 'Secondary',
-  pool: 'Pool',
-  epic: 'Epic',
-};
-
-// ============================================
-// TOUCHABLE SLOT COMPONENT (compact version)
-// ============================================
-
-interface TouchableSlotCompactProps {
-  slot: Enhancement | null;
-  index: number;
-  canRemoveSlot: boolean;
-  onClick: () => void;
-  onMouseEnter: () => void;
-  onClearEnhancement: () => void;
-  onRemoveSlot: () => void;
-  onClearAllEnhancements: () => void;
-  onRemoveAllSlots: () => void;
-}
-
-/**
- * Compact slot component with touch support for chronological view
- * - Desktop: Right-click directly removes enhancement/slot, Shift+right-click opens menu
- * - Mobile: Touch-and-hold opens context menu
- * - Tap/click opens enhancement picker
- */
-function TouchableSlotCompact({
-  slot,
-  index,
-  canRemoveSlot,
-  onClick,
-  onMouseEnter,
-  onClearEnhancement,
-  onRemoveSlot,
-  onClearAllEnhancements,
-  onRemoveAllSlots,
-}: TouchableSlotCompactProps) {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [menuPosition, setMenuPosition] = useState({ x: 0, y: 0 });
-  const longPressTriggeredRef = useRef(false);
-  const timerRef = useRef<NodeJS.Timeout | null>(null);
-
-  const openMenu = (x: number, y: number) => {
-    longPressTriggeredRef.current = true;
-    setMenuPosition({ x, y });
-    setMenuOpen(true);
-  };
-
-  const handleClick = () => {
-    // Skip if we just opened the menu
-    if (longPressTriggeredRef.current || menuOpen) {
-      return;
-    }
-    onClick();
-  };
-
-  // Desktop right-click: direct action, or Shift+right-click for menu
-  const handleContextMenu = (e: React.MouseEvent) => {
-    e.preventDefault();
-
-    // Shift+right-click opens menu for bulk actions
-    if (e.shiftKey) {
-      openMenu(e.clientX, e.clientY);
-      return;
-    }
-
-    // Regular right-click: direct action
-    if (slot) {
-      // Has enhancement - remove it
-      onClearEnhancement();
-    } else if (canRemoveSlot) {
-      // Empty slot (not first) - remove the slot
-      onRemoveSlot();
-    }
-  };
-
-  // Mobile: touch-and-hold opens context menu
-  const handleTouchStart = (e: React.TouchEvent) => {
-    e.preventDefault(); // Prevent iOS context menu and text selection
-    const touch = e.touches[0];
-    const posRef = { x: touch.clientX, y: touch.clientY + 10 };
-
-    // Start timer for long-press
-    timerRef.current = setTimeout(() => {
-      openMenu(posRef.x - 90, posRef.y);
-    }, 400);
-  };
-
-  const handleTouchEnd = () => {
-    // Clear timer if touch ends before long-press
-    if (timerRef.current) {
-      clearTimeout(timerRef.current);
-      timerRef.current = null;
-    }
-
-    // If it wasn't a long-press, treat as tap
-    if (!longPressTriggeredRef.current && !menuOpen) {
-      onClick();
-    }
-    longPressTriggeredRef.current = false;
-  };
-
-  const handleTouchMove = () => {
-    // Cancel long-press if user moves finger
-    if (timerRef.current) {
-      clearTimeout(timerRef.current);
-      timerRef.current = null;
-    }
-  };
-
-  return (
-    <>
-      <div
-        onClick={handleClick}
-        onMouseEnter={onMouseEnter}
-        onContextMenu={handleContextMenu}
-        onTouchStart={handleTouchStart}
-        onTouchEnd={handleTouchEnd}
-        onTouchMove={handleTouchMove}
-        onTouchCancel={handleTouchMove}
-        className={`
-          w-5 h-5 rounded-full border flex items-center justify-center
-          text-[8px] font-semibold cursor-pointer transition-transform hover:scale-110
-          select-none
-          ${
-            slot
-              ? 'border-transparent bg-transparent'
-              : 'border-slate-600 bg-slate-700/50 text-slate-500 hover:border-blue-500 hover:bg-slate-600'
-          }
-        `}
-        style={{ WebkitTouchCallout: 'none', WebkitUserSelect: 'none' }}
-        title={
-          slot
-            ? `${slot.name || 'Enhancement'} - right-click to remove, Shift+right-click for menu`
-            : `Slot ${index + 1} - tap to add${canRemoveSlot ? ', right-click to remove' : ''}`
-        }
-      >
-        {slot ? (
-          <SlottedEnhancementIcon enhancement={slot} size={20} />
-        ) : (
-          <span className="text-slate-400">+</span>
-        )}
-      </div>
-
-      <SlotContextMenu
-        isOpen={menuOpen}
-        onClose={() => {
-          setMenuOpen(false);
-          longPressTriggeredRef.current = false;
-        }}
-        position={menuPosition}
-        hasFill={!!slot}
-        canRemoveSlot={canRemoveSlot}
-        onOpenPicker={onClick}
-        onClearEnhancement={onClearEnhancement}
-        onRemoveSlot={onRemoveSlot}
-        onClearAllEnhancements={onClearAllEnhancements}
-        onRemoveAllSlots={onRemoveAllSlots}
-      />
-    </>
-  );
-}
-
-/**
- * Determine if a power should show a toggle switch for stat calculations.
- */
-function shouldShowToggle(power: CategorizedPower): boolean {
-  const powerType = power.powerType?.toLowerCase();
-  const targetType = power.targetType?.toLowerCase();
-  const shortHelp = power.shortHelp?.toLowerCase() || '';
-
-  if (powerType === 'toggle') return true;
-  if (powerType === 'click') {
-    if (targetType === 'self') return true;
-    if (shortHelp.startsWith('self ') || shortHelp.includes('self +')) return true;
-  }
-  return false;
-}
 
 /**
  * Map chronological category to store category for removal
@@ -286,9 +99,6 @@ export function ChronologicalPowerSlot({
     lockedContent?.type === 'power' &&
     lockedContent.powerName === power.name;
 
-  const showToggle = shouldShowToggle(power);
-  const isActive = power.isActive ?? false;
-
   const handleRemove = () => {
     const storeCategory = mapCategoryToStoreCategory(power.category);
     removePower(storeCategory, power.name);
@@ -300,19 +110,13 @@ export function ChronologicalPowerSlot({
     }
   };
 
-  const handleSlotClick = (index: number) => {
-    openEnhancementPicker(power.name, power.powerSet, index);
-  };
-
   const handleClearAllEnhancements = () => {
-    // Clear all enhancements from this power's slots
     for (let i = 0; i < power.slots.length; i++) {
       clearEnhancement(power.name, i);
     }
   };
 
   const handleRemoveAllSlots = () => {
-    // Remove all slots except first
     for (let i = power.slots.length - 1; i > 0; i--) {
       removeSlot(power.name, i);
     }
@@ -360,96 +164,31 @@ export function ChronologicalPowerSlot({
   };
 
   return (
-    <div
-      className={`
-        min-h-[46px] flex flex-col px-1.5 py-1 bg-slate-800 border rounded group transition-colors
-        border-l-4 ${CATEGORY_COLORS[power.category]}
-        ${
-          isLocked
-            ? 'border-amber-500 border-l-amber-500 shadow-[0_0_4px_rgba(245,158,11,0.4)] bg-gradient-to-r from-amber-500/10 to-slate-800'
-            : 'border-slate-700 hover:border-slate-600'
-        }
-      `}
-      onMouseLeave={handlePowerLeave}
-    >
-      {/* Row 1: Level · Icon · Name | X button */}
-      <div className="flex items-center min-w-0">
-        <span className="text-[10px] font-semibold text-slate-500 w-5 text-right flex-shrink-0 mr-2">L{level}</span>
-        <img
-          src={getPowerIconPath(powersetName, power.icon)}
-          alt=""
-          className="w-4 h-4 rounded-sm flex-shrink-0 mr-1"
-          onError={(e) => {
-            (e.target as HTMLImageElement).src = resolvePath('/img/Unknown.png');
-          }}
-        />
-        <span
-          className="text-xs text-slate-200 truncate flex-1 min-w-0 cursor-default"
-          onMouseEnter={handlePowerHover}
-          onContextMenu={handleRightClick}
-          title={`${CATEGORY_LABELS[power.category]}: ${power.name}`}
-        >
-          {power.name}
-        </span>
-        <button
-          onClick={handleRemove}
-          className="text-slate-600 hover:text-red-400 text-[10px] opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0 leading-none"
-          title="Remove power"
-        >
-          ✕
-        </button>
-      </div>
-
-      {/* Row 2: Enhancement slots (left) | Toggle (right) */}
-      <div className="flex items-center mt-0.5">
-        <div className="w-7 flex-shrink-0" />{/* aligns under icon */}
-        <div className="flex gap-0.5 items-center flex-1">
-          {power.slots.slice(0, 6).map((slot, index) => (
-            <TouchableSlotCompact
-              key={index}
-              slot={slot}
-              index={index}
-              canRemoveSlot={index > 0}
-              onClick={() => handleSlotClick(index)}
-              onMouseEnter={() =>
-                slot ? handleEnhancementHover(index) : handlePowerHover()
-              }
-              onClearEnhancement={() => clearEnhancement(power.name, index)}
-              onRemoveSlot={() => removeSlot(power.name, index)}
-              onClearAllEnhancements={handleClearAllEnhancements}
-              onRemoveAllSlots={handleRemoveAllSlots}
-            />
-          ))}
-          <DraggableSlotGhost
-            powerName={power.name}
-            currentSlots={power.slots.length}
-            maxSlots={power.maxSlots}
-            onAddSlots={handleAddSlots}
-            size="sm"
-          />
-        </div>
-
-        {showToggle && (
-          <Tooltip content={isActive ? 'Power ON' : 'Power OFF'}>
-            <button
-              onClick={() => togglePowerActive(power.name)}
-              className={`
-                flex-shrink-0 relative w-6 h-3 rounded-full transition-colors duration-200
-                ${isActive ? 'bg-green-600' : 'bg-slate-600'}
-              `}
-            >
-              <span
-                className={`
-                  absolute top-[2px] left-[2px] w-2 h-2 rounded-full bg-white shadow-sm
-                  transition-transform duration-200
-                  ${isActive ? 'translate-x-3' : 'translate-x-0'}
-                `}
-              />
-            </button>
-          </Tooltip>
-        )}
-      </div>
-    </div>
+    <PowerRow
+      name={power.name}
+      iconSrc={getPowerIconPath(powersetName, power.icon)}
+      size="lg"
+      stackedLayout
+      level={level}
+      isLocked={isLocked}
+      categoryBorder={CATEGORY_COLORS[power.category]}
+      toggleSize={shouldShowToggle(power) ? 'md' : undefined}
+      isActive={power.isActive ?? false}
+      onToggle={() => togglePowerActive(power.name)}
+      slots={power.slots}
+      maxSlots={power.maxSlots}
+      onRemove={handleRemove}
+      onAddSlots={handleAddSlots}
+      onRemoveSlot={(index) => removeSlot(power.name, index)}
+      onRemoveAllSlots={handleRemoveAllSlots}
+      onClearEnhancement={(index) => clearEnhancement(power.name, index)}
+      onClearAllEnhancements={handleClearAllEnhancements}
+      onOpenPicker={(slotIndex) => openEnhancementPicker(power.name, power.powerSet, slotIndex)}
+      onHover={handlePowerHover}
+      onLeave={handlePowerLeave}
+      onEnhancementHover={handleEnhancementHover}
+      onRightClick={handleRightClick}
+    />
   );
 }
 

@@ -3,41 +3,15 @@
  * Renders inline within a column (column headers are in PlannerPage)
  */
 
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import { useBuildStore, useUIStore } from '@/stores';
 import type { PowerCategory } from '@/stores';
-import type { SelectedPower, Power, Enhancement } from '@/types';
+import type { SelectedPower, Power } from '@/types';
 import { getPowerIconPath, getPowerset, hasGrantedPowers, getGrantedPowerGroup } from '@/data';
 import { resolvePath } from '@/utils/paths';
-import { DraggableSlotGhost } from './DraggableSlotGhost';
-import { SlottedEnhancementIcon } from './SlottedEnhancementIcon';
-import { SlotContextMenu } from './SlotContextMenu';
 import { Tooltip } from '@/components/ui';
-
-/**
- * Determine if a power should show a toggle switch for stat calculations.
- * - Toggle powers (always)
- * - Click powers that target self (Build Up, Aim, Hasten, etc.)
- */
-function shouldShowToggle(power: SelectedPower): boolean {
-  const powerType = power.powerType?.toLowerCase();
-  const targetType = power.targetType?.toLowerCase();
-  const shortHelp = power.shortHelp?.toLowerCase() || '';
-
-  // Toggle powers always show toggle
-  if (powerType === 'toggle') {
-    return true;
-  }
-
-  // Click powers that target self (self-buffs)
-  // Check both targetType field and shortHelp text (pool powers often lack targetType)
-  if (powerType === 'click') {
-    if (targetType === 'self') return true;
-    if (shortHelp.startsWith('self ') || shortHelp.includes('self +')) return true;
-  }
-
-  return false;
-}
+import { PowerRow } from './PowerRow';
+import { shouldShowToggle } from './power-row-utils';
 
 interface SelectedPowersProps {
   category: 'primary' | 'secondary';
@@ -64,8 +38,6 @@ export function SelectedPowers({ category }: SelectedPowersProps) {
   const powersetId = selection.id || '';
 
   // Sort powers by their position in the powerset (available level)
-  // This ensures powers are displayed in the natural powerset order,
-  // regardless of the order they were selected
   const powers = [...selection.powers].sort((a, b) => a.available - b.available);
 
   const handleRemove = (powerName: string) => {
@@ -73,7 +45,6 @@ export function SelectedPowers({ category }: SelectedPowersProps) {
   };
 
   const handleAddSlots = (powerName: string, count: number) => {
-    // Add multiple slots
     for (let i = 0; i < count; i++) {
       addSlot(powerName);
     }
@@ -84,16 +55,12 @@ export function SelectedPowers({ category }: SelectedPowersProps) {
   };
 
   const handleRemoveAllSlots = (powerName: string, totalSlots: number) => {
-    // Remove all slots except the first one (which is free)
-    // Remove from the end to avoid index shifting issues
     for (let i = totalSlots - 1; i > 0; i--) {
       removeSlot(powerName, i);
     }
   };
 
   const handlePowerHover = (power: SelectedPower) => {
-    // Always update hover content - tooltip uses this even when panel is locked
-    // Use power.powerSet to ensure we look up from the correct powerset
     const powerPowerSet = power.powerSet || powersetId;
     if (powerPowerSet) {
       setInfoPanelContent({
@@ -105,12 +72,10 @@ export function SelectedPowers({ category }: SelectedPowersProps) {
   };
 
   const handlePowerLeave = () => {
-    // Clear content when leaving power area - hides the tooltip
     clearInfoPanel();
   };
 
   const handleEnhancementHover = (powerName: string, slotIndex: number) => {
-    // Show enhancement info in tooltip
     setInfoPanelContent({
       type: 'slotted-enhancement',
       powerName,
@@ -123,7 +88,6 @@ export function SelectedPowers({ category }: SelectedPowersProps) {
   };
 
   const handleClearAllEnhancements = (powerName: string, totalSlots: number) => {
-    // Clear all enhancements from this power's slots
     for (let i = 0; i < totalSlots; i++) {
       clearEnhancement(powerName, i);
     }
@@ -131,11 +95,9 @@ export function SelectedPowers({ category }: SelectedPowersProps) {
 
   const handlePowerRightClick = (e: React.MouseEvent, power: SelectedPower) => {
     e.preventDefault();
-    // Use power.powerSet to ensure we look up from the correct powerset
     const powerPowerSet = power.powerSet || powersetId;
     if (!powerPowerSet) return;
 
-    // If already locked to this power, unlock; otherwise lock to this power
     if (infoPanelLocked && lockedContent?.type === 'power' && lockedContent.powerName === power.name) {
       unlockInfoPanel();
     } else {
@@ -158,13 +120,10 @@ export function SelectedPowers({ category }: SelectedPowersProps) {
   // Get powerset to look up sub-powers
   const powerset = getPowerset(powersetId);
 
-  // Get sub-powers for a parent power
   const getSubPowers = (parentPowerName: string): Power[] => {
     if (!powerset || !hasGrantedPowers(parentPowerName)) return [];
     const group = getGrantedPowerGroup(parentPowerName);
     if (!group) return [];
-
-    // Find sub-powers in the powerset
     return powerset.powers.filter(p =>
       group.grantedPowers.includes(p.name)
     );
@@ -190,22 +149,27 @@ export function SelectedPowers({ category }: SelectedPowersProps) {
       {!collapsed && (
         <div className="space-y-0.5">
           {powers.map((power) => {
-            // Check if this power is the one locked in the info panel
             const isLocked = infoPanelLocked &&
               lockedContent?.type === 'power' &&
               lockedContent.powerName === power.name;
 
-            // Check if this power grants sub-powers
             const subPowers = getSubPowers(power.name);
             const grantedGroup = getGrantedPowerGroup(power.name);
 
             return (
               <div key={power.name}>
-                <SelectedPowerRow
-                  power={power}
-                  powersetId={powersetId}
-                  powersetName={selection.name}
+                <PowerRow
+                  name={power.name}
+                  iconSrc={getPowerIconPath(selection.name, power.icon)}
+                  size="lg"
+                  stackedLayout
+                  level={power.level}
                   isLocked={isLocked}
+                  toggleSize={shouldShowToggle(power) ? 'md' : undefined}
+                  isActive={power.isActive ?? false}
+                  onToggle={() => togglePowerActive(power.name)}
+                  slots={power.slots}
+                  maxSlots={power.maxSlots}
                   onRemove={() => handleRemove(power.name)}
                   onAddSlots={(count) => handleAddSlots(power.name, count)}
                   onRemoveSlot={(index) => handleRemoveSlot(power.name, index)}
@@ -217,7 +181,6 @@ export function SelectedPowers({ category }: SelectedPowersProps) {
                   onLeave={handlePowerLeave}
                   onEnhancementHover={(index) => handleEnhancementHover(power.name, index)}
                   onRightClick={(e) => handlePowerRightClick(e, power)}
-                  onToggle={() => togglePowerActive(power.name)}
                 />
 
                 {/* Granted sub-powers display */}
@@ -236,313 +199,6 @@ export function SelectedPowers({ category }: SelectedPowersProps) {
           })}
         </div>
       )}
-    </div>
-  );
-}
-
-// ============================================
-// TOUCHABLE SLOT COMPONENT
-// ============================================
-
-interface TouchableSlotProps {
-  slot: Enhancement | null;
-  index: number;
-  canRemoveSlot: boolean;
-  onClick: () => void;
-  onMouseEnter: () => void;
-  onClearEnhancement: () => void;
-  onRemoveSlot: () => void;
-  onClearAllEnhancements: () => void;
-  onRemoveAllSlots: () => void;
-}
-
-/**
- * Slot component with touch support:
- * - Desktop: Right-click directly removes enhancement/slot, Shift+right-click opens menu
- * - Mobile: Touch-and-hold opens context menu
- * - Tap/click opens enhancement picker
- */
-function TouchableSlot({
-  slot,
-  index,
-  canRemoveSlot,
-  onClick,
-  onMouseEnter,
-  onClearEnhancement,
-  onRemoveSlot,
-  onClearAllEnhancements,
-  onRemoveAllSlots,
-}: TouchableSlotProps) {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [menuPosition, setMenuPosition] = useState({ x: 0, y: 0 });
-  const longPressTriggeredRef = useRef(false);
-  const timerRef = useRef<NodeJS.Timeout | null>(null);
-
-  const openMenu = (x: number, y: number) => {
-    longPressTriggeredRef.current = true;
-    setMenuPosition({ x, y });
-    setMenuOpen(true);
-  };
-
-  const handleClick = () => {
-    // Skip if we just opened the menu
-    if (longPressTriggeredRef.current || menuOpen) {
-      return;
-    }
-    onClick();
-  };
-
-  // Desktop right-click: direct action, or Shift+right-click for menu
-  const handleContextMenu = (e: React.MouseEvent) => {
-    e.preventDefault();
-
-    // Shift+right-click opens menu for bulk actions
-    if (e.shiftKey) {
-      openMenu(e.clientX, e.clientY);
-      return;
-    }
-
-    // Regular right-click: direct action
-    if (slot) {
-      // Has enhancement - remove it
-      onClearEnhancement();
-    } else if (canRemoveSlot) {
-      // Empty slot (not first) - remove the slot
-      onRemoveSlot();
-    }
-  };
-
-  // Mobile: touch-and-hold opens context menu
-  const handleTouchStart = (e: React.TouchEvent) => {
-    e.preventDefault(); // Prevent iOS context menu and text selection
-    const touch = e.touches[0];
-    const posRef = { x: touch.clientX, y: touch.clientY + 10 };
-
-    // Start timer for long-press
-    timerRef.current = setTimeout(() => {
-      openMenu(posRef.x - 90, posRef.y);
-    }, 400);
-  };
-
-  const handleTouchEnd = () => {
-    // Clear timer if touch ends before long-press
-    if (timerRef.current) {
-      clearTimeout(timerRef.current);
-      timerRef.current = null;
-    }
-
-    // If it wasn't a long-press, treat as tap
-    if (!longPressTriggeredRef.current && !menuOpen) {
-      onClick();
-    }
-    longPressTriggeredRef.current = false;
-  };
-
-  const handleTouchMove = () => {
-    // Cancel long-press if user moves finger
-    if (timerRef.current) {
-      clearTimeout(timerRef.current);
-      timerRef.current = null;
-    }
-  };
-
-  return (
-    <>
-      <div
-        onClick={handleClick}
-        onMouseEnter={onMouseEnter}
-        onContextMenu={handleContextMenu}
-        onTouchStart={handleTouchStart}
-        onTouchEnd={handleTouchEnd}
-        onTouchMove={handleTouchMove}
-        onTouchCancel={handleTouchMove}
-        className={`
-          w-6 h-6 rounded-full border flex items-center justify-center
-          text-[9px] font-semibold cursor-pointer transition-transform hover:scale-110
-          select-none
-          ${
-            slot
-              ? 'border-transparent bg-transparent'
-              : 'border-slate-600 bg-slate-700/50 text-slate-500 hover:border-blue-500 hover:bg-slate-600'
-          }
-        `}
-        style={{ WebkitTouchCallout: 'none', WebkitUserSelect: 'none' }}
-        title={
-          slot
-            ? `${slot.name || 'Enhancement'} - right-click to remove, Shift+right-click for menu`
-            : `Empty slot ${index + 1} - tap to add${canRemoveSlot ? ', right-click to remove' : ''}`
-        }
-      >
-        {slot ? (
-          <SlottedEnhancementIcon enhancement={slot} size={24} />
-        ) : (
-          <span className="text-slate-400">+</span>
-        )}
-      </div>
-
-      <SlotContextMenu
-        isOpen={menuOpen}
-        onClose={() => {
-          setMenuOpen(false);
-          longPressTriggeredRef.current = false;
-        }}
-        position={menuPosition}
-        hasFill={!!slot}
-        canRemoveSlot={canRemoveSlot}
-        onOpenPicker={onClick}
-        onClearEnhancement={onClearEnhancement}
-        onRemoveSlot={onRemoveSlot}
-        onClearAllEnhancements={onClearAllEnhancements}
-        onRemoveAllSlots={onRemoveAllSlots}
-      />
-    </>
-  );
-}
-
-interface SelectedPowerRowProps {
-  power: SelectedPower;
-  powersetId: string;
-  powersetName: string;
-  isLocked: boolean;
-  onRemove: () => void;
-  onAddSlots: (count: number) => void;
-  onRemoveSlot: (slotIndex: number) => void;
-  onRemoveAllSlots: () => void;
-  onClearEnhancement: (slotIndex: number) => void;
-  onClearAllEnhancements: () => void;
-  onOpenPicker: (slotIndex: number) => void;
-  onHover: () => void;
-  onLeave: () => void;
-  onEnhancementHover: (slotIndex: number) => void;
-  onRightClick: (e: React.MouseEvent) => void;
-  onToggle: () => void;
-}
-
-/**
- * Compact power row with enhancement slots inline
- */
-function SelectedPowerRow({
-  power,
-  powersetName,
-  isLocked,
-  onRemove,
-  onAddSlots,
-  onRemoveSlot,
-  onRemoveAllSlots,
-  onClearEnhancement,
-  onClearAllEnhancements,
-  onOpenPicker,
-  onHover,
-  onLeave,
-  onEnhancementHover,
-  onRightClick,
-  onToggle,
-}: SelectedPowerRowProps) {
-  const showToggle = shouldShowToggle(power);
-  const isActive = power.isActive ?? false;
-  const handleSlotClick = (index: number) => {
-    // Open enhancement picker for any slot (empty or filled)
-    onOpenPicker(index);
-  };
-
-  const handleSlotMouseEnter = (index: number, hasEnhancement: boolean) => {
-    if (hasEnhancement) {
-      onEnhancementHover(index);
-    } else {
-      // When hovering empty slot, show power info
-      onHover();
-    }
-  };
-
-  return (
-    <div
-      className={`flex flex-col px-1.5 py-1 bg-slate-800 border rounded-sm group transition-colors ${
-        isLocked
-          ? 'border-amber-500 shadow-[0_0_4px_rgba(245,158,11,0.4)] bg-gradient-to-r from-amber-500/10 to-slate-800'
-          : 'border-slate-700 hover:border-slate-600'
-      }`}
-      onMouseLeave={onLeave}
-    >
-      {/* Row 1: Level · Icon · Name | X button */}
-      <div className="flex items-center min-w-0">
-        <span className="text-[10px] font-semibold text-slate-500 w-5 text-right flex-shrink-0 mr-2">L{power.level}</span>
-        <img
-          src={getPowerIconPath(powersetName, power.icon)}
-          alt=""
-          className="w-4 h-4 rounded-sm flex-shrink-0 mr-1"
-          onError={(e) => {
-            (e.target as HTMLImageElement).src = resolvePath('/img/Unknown.png');
-          }}
-        />
-        <span
-          className="text-xs text-slate-200 truncate flex-1 min-w-0 cursor-default"
-          onMouseEnter={onHover}
-          onContextMenu={onRightClick}
-          title={isLocked ? 'Right-click to unlock power info' : 'Right-click to lock power info'}
-        >
-          {power.name}
-        </span>
-        <button
-          onClick={onRemove}
-          className="text-slate-600 hover:text-red-400 text-[10px] opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0 leading-none"
-          title="Remove power"
-        >
-          ✕
-        </button>
-      </div>
-
-      {/* Row 2: Enhancement slots (left) | Toggle (right) */}
-      <div className="flex items-center mt-0.5">
-        <div className="w-7 flex-shrink-0" />{/* aligns under icon */}
-        <div className="flex gap-0.5 items-center flex-1">
-          {power.slots.map((slot, index) => (
-            <TouchableSlot
-              key={index}
-              slot={slot}
-              index={index}
-              canRemoveSlot={index > 0}
-              onClick={() => handleSlotClick(index)}
-              onMouseEnter={() => handleSlotMouseEnter(index, !!slot)}
-              onClearEnhancement={() => onClearEnhancement(index)}
-              onRemoveSlot={() => onRemoveSlot(index)}
-              onClearAllEnhancements={onClearAllEnhancements}
-              onRemoveAllSlots={onRemoveAllSlots}
-            />
-          ))}
-          <DraggableSlotGhost
-            powerName={power.name}
-            currentSlots={power.slots.length}
-            maxSlots={power.maxSlots}
-            onAddSlots={onAddSlots}
-          />
-        </div>
-
-        {showToggle && (
-          <Tooltip
-            content={
-              isActive
-                ? 'Power ON - stats included in calculations'
-                : 'Power OFF - click to include in stats'
-            }
-          >
-            <button
-              onClick={onToggle}
-              className={`
-                flex-shrink-0 relative w-8 h-4 rounded-full transition-colors duration-200
-                ${isActive ? 'bg-green-600' : 'bg-slate-600'}
-              `}
-            >
-              <span
-                className={`
-                  absolute top-[2px] left-[2px] w-3 h-3 rounded-full bg-white shadow-sm
-                  transition-transform duration-200
-                  ${isActive ? 'translate-x-4' : 'translate-x-0'}
-                `}
-              />
-            </button>
-          </Tooltip>
-        )}
-      </div>
     </div>
   );
 }

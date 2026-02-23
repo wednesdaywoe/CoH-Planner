@@ -6,27 +6,9 @@
 
 import { useMemo, useState } from 'react';
 import { useBuildStore, useUIStore } from '@/stores';
-import { resolvePath } from '@/utils/paths';
-import { DraggableSlotGhost } from './DraggableSlotGhost';
-import { SlottedEnhancementIcon } from './SlottedEnhancementIcon';
+import { PowerRow } from './PowerRow';
+import { getInherentIconPath } from './power-row-utils';
 import type { SelectedPower } from '@/types';
-
-/** Get the icon path for an inherent power based on its category */
-function getInherentIconPath(power: SelectedPower): string {
-  const category = power.inherentCategory || 'basic';
-  const lowercaseIcon = power.icon?.toLowerCase() || 'unknown.png';
-
-  switch (category) {
-    case 'fitness':
-      return resolvePath(`/img/Powers/Fitness Powers Icons/${lowercaseIcon}`);
-    case 'archetype':
-      return resolvePath(`/img/Powers/Archetype Inherent Powers icons/${lowercaseIcon}`);
-    case 'prestige':
-    case 'basic':
-    default:
-      return resolvePath(`/img/Powers/Inherent Powers Icons/${lowercaseIcon}`);
-  }
-}
 
 interface ChronologicalInherentsSectionProps {
   inherents: SelectedPower[];
@@ -43,7 +25,6 @@ export function ChronologicalInherentsSection({ inherents }: ChronologicalInhere
   const unlockInfoPanel = useUIStore((s) => s.unlockInfoPanel);
   const infoPanelLocked = useUIStore((s) => s.infoPanel.locked);
   const lockedContent = useUIStore((s) => s.infoPanel.lockedContent);
-  const openEnhancementPicker = useUIStore((s) => s.openEnhancementPicker);
 
   // Group inherent powers by category
   const inherentGroups = useMemo(() => {
@@ -102,29 +83,29 @@ export function ChronologicalInherentsSection({ inherents }: ChronologicalInhere
     });
   };
 
-  const handleSlotClick = (powerName: string, slotIndex: number) => {
-    openEnhancementPicker(powerName, 'Inherent', slotIndex);
-  };
-
-  const handleSlotRightClick = (
-    e: React.MouseEvent,
-    power: SelectedPower,
-    index: number,
-    hasEnhancement: boolean
-  ) => {
-    e.preventDefault();
-    if (hasEnhancement) {
-      clearEnhancement(power.name, index);
-      return;
-    }
-    if (index > 0) {
-      removeSlot(power.name, index);
-    }
-  };
-
   const handleAddSlots = (powerName: string, count: number) => {
     for (let i = 0; i < count; i++) {
       addSlot(powerName);
+    }
+  };
+
+  const handleRemoveSlot = (powerName: string, slotIndex: number) => {
+    removeSlot(powerName, slotIndex);
+  };
+
+  const handleRemoveAllSlots = (powerName: string, totalSlots: number) => {
+    for (let i = totalSlots - 1; i > 0; i--) {
+      removeSlot(powerName, i);
+    }
+  };
+
+  const handleClearEnhancement = (powerName: string, slotIndex: number) => {
+    clearEnhancement(powerName, slotIndex);
+  };
+
+  const handleClearAllEnhancements = (powerName: string, totalSlots: number) => {
+    for (let i = 0; i < totalSlots; i++) {
+      clearEnhancement(powerName, i);
     }
   };
 
@@ -177,9 +158,11 @@ export function ChronologicalInherentsSection({ inherents }: ChronologicalInhere
               onPowerLeave={handlePowerLeave}
               onPowerRightClick={handlePowerRightClick}
               onEnhancementHover={handleEnhancementHover}
-              onSlotClick={handleSlotClick}
-              onSlotRightClick={handleSlotRightClick}
+              onClearEnhancement={handleClearEnhancement}
               onAddSlots={handleAddSlots}
+              onRemoveSlot={handleRemoveSlot}
+              onRemoveAllSlots={handleRemoveAllSlots}
+              onClearAllEnhancements={handleClearAllEnhancements}
             />
           )}
 
@@ -193,9 +176,11 @@ export function ChronologicalInherentsSection({ inherents }: ChronologicalInhere
               onPowerLeave={handlePowerLeave}
               onPowerRightClick={handlePowerRightClick}
               onEnhancementHover={handleEnhancementHover}
-              onSlotClick={handleSlotClick}
-              onSlotRightClick={handleSlotRightClick}
+              onClearEnhancement={handleClearEnhancement}
               onAddSlots={handleAddSlots}
+              onRemoveSlot={handleRemoveSlot}
+              onRemoveAllSlots={handleRemoveAllSlots}
+              onClearAllEnhancements={handleClearAllEnhancements}
             />
           )}
 
@@ -209,9 +194,11 @@ export function ChronologicalInherentsSection({ inherents }: ChronologicalInhere
               onPowerLeave={handlePowerLeave}
               onPowerRightClick={handlePowerRightClick}
               onEnhancementHover={handleEnhancementHover}
-              onSlotClick={handleSlotClick}
-              onSlotRightClick={handleSlotRightClick}
+              onClearEnhancement={handleClearEnhancement}
               onAddSlots={handleAddSlots}
+              onRemoveSlot={handleRemoveSlot}
+              onRemoveAllSlots={handleRemoveAllSlots}
+              onClearAllEnhancements={handleClearAllEnhancements}
             />
           )}
         </div>
@@ -228,14 +215,11 @@ interface InherentGroupProps {
   onPowerLeave: () => void;
   onPowerRightClick: (e: React.MouseEvent, power: SelectedPower) => void;
   onEnhancementHover: (powerName: string, slotIndex: number) => void;
-  onSlotClick: (powerName: string, slotIndex: number) => void;
-  onSlotRightClick: (
-    e: React.MouseEvent,
-    power: SelectedPower,
-    index: number,
-    hasEnhancement: boolean
-  ) => void;
+  onClearEnhancement: (powerName: string, slotIndex: number) => void;
   onAddSlots: (powerName: string, count: number) => void;
+  onRemoveSlot: (powerName: string, slotIndex: number) => void;
+  onRemoveAllSlots: (powerName: string, totalSlots: number) => void;
+  onClearAllEnhancements: (powerName: string, totalSlots: number) => void;
 }
 
 function InherentGroup({
@@ -246,10 +230,13 @@ function InherentGroup({
   onPowerLeave,
   onPowerRightClick,
   onEnhancementHover,
-  onSlotClick,
-  onSlotRightClick,
+  onClearEnhancement,
   onAddSlots,
+  onRemoveSlot,
+  onRemoveAllSlots,
+  onClearAllEnhancements,
 }: InherentGroupProps) {
+  const openEnhancementPicker = useUIStore((s) => s.openEnhancementPicker);
   const sortedPowers = [...powers].sort((a, b) => a.available - b.available);
 
   return (
@@ -260,82 +247,29 @@ function InherentGroup({
       <div className="grid grid-cols-2 gap-1">
         {sortedPowers.map((power) => {
           const isLocked = isPowerLocked(power.name);
-          const hasSlots = power.slots.length > 0;
 
           return (
-            <div
+            <PowerRow
               key={power.name}
-              className={`
-                flex flex-col px-1.5 py-1 bg-slate-800/50 border rounded-sm transition-colors
-                ${
-                  isLocked
-                    ? 'border-amber-500 shadow-[0_0_4px_rgba(245,158,11,0.4)] bg-gradient-to-r from-amber-500/10 to-slate-800/50'
-                    : 'border-slate-700/50 hover:border-slate-600'
-                }
-              `}
-              onMouseLeave={onPowerLeave}
-            >
-              {/* Row 1: icon + name */}
-              <div
-                className="flex items-center min-w-0 cursor-default"
-                onMouseEnter={() => onPowerHover(power)}
-                onContextMenu={(e) => onPowerRightClick(e, power)}
-              >
-                <img
-                  src={getInherentIconPath(power)}
-                  alt=""
-                  className="w-4 h-4 rounded-sm flex-shrink-0 mr-1"
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).src = resolvePath('/img/Unknown.png');
-                  }}
-                />
-                <span className="text-xs text-slate-400 truncate">{power.name}</span>
-              </div>
-
-              {/* Row 2: slots (indented to align under icon) */}
-              {(hasSlots || power.maxSlots > 0) && (
-                <div className="flex items-center mt-0.5">
-                  <div className="w-5 flex-shrink-0" />{/* aligns under icon */}
-                  <div className="flex gap-0.5 items-center">
-                    {power.slots.map((slot, index) => (
-                      <div
-                        key={index}
-                        onClick={() => onSlotClick(power.name, index)}
-                        onMouseEnter={() =>
-                          slot ? onEnhancementHover(power.name, index) : onPowerHover(power)
-                        }
-                        onContextMenu={(e) => onSlotRightClick(e, power, index, !!slot)}
-                        className={`
-                          w-4 h-4 rounded-full border flex items-center justify-center
-                          text-[7px] cursor-pointer hover:scale-110 transition-transform
-                          ${
-                            slot
-                              ? 'border-transparent'
-                              : 'border-slate-600 bg-slate-700/50 hover:border-blue-500'
-                          }
-                        `}
-                      >
-                        {slot ? (
-                          <SlottedEnhancementIcon enhancement={slot} size={16} />
-                        ) : (
-                          <span className="text-slate-400">+</span>
-                        )}
-                      </div>
-                    ))}
-
-                    {power.maxSlots > power.slots.length && (
-                      <DraggableSlotGhost
-                        powerName={power.name}
-                        currentSlots={power.slots.length}
-                        maxSlots={power.maxSlots}
-                        onAddSlots={(count) => onAddSlots(power.name, count)}
-                        size="xs"
-                      />
-                    )}
-                  </div>
-                </div>
-              )}
-            </div>
+              name={power.name}
+              iconSrc={getInherentIconPath(power)}
+              size="xs"
+              muted
+              showRemove={false}
+              isLocked={isLocked}
+              slots={power.slots}
+              maxSlots={power.maxSlots}
+              onAddSlots={(count) => onAddSlots(power.name, count)}
+              onRemoveSlot={(index) => onRemoveSlot(power.name, index)}
+              onRemoveAllSlots={() => onRemoveAllSlots(power.name, power.slots.length)}
+              onClearEnhancement={(index) => onClearEnhancement(power.name, index)}
+              onClearAllEnhancements={() => onClearAllEnhancements(power.name, power.slots.length)}
+              onOpenPicker={(slotIndex) => openEnhancementPicker(power.name, 'Inherent', slotIndex)}
+              onHover={() => onPowerHover(power)}
+              onLeave={onPowerLeave}
+              onEnhancementHover={(index) => onEnhancementHover(power.name, index)}
+              onRightClick={(e) => onPowerRightClick(e, power)}
+            />
           );
         })}
       </div>
