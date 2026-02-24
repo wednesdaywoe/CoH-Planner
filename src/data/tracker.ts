@@ -22,7 +22,7 @@ export const KNOWN_BUGS: TrackerItem[] = [
 // ============================================
 
 export const RECENT_CHANGES: TrackerItem[] = [
-  { text: 'fix: Fixed missing effects across 395 powers :3', status: 'fixed' },
+  { text: 'fix: Fixed missing effects across 395 powers 😓', status: 'fixed' },
   { text: 'New: Added highlight indicator for unique and proc enhancements', status: 'new' },
   { text: 'fix: Fixed some missing enhancement icons', status: 'fixed' },
   { text: 'fix: Fixed wonky slot counting (again)', status: 'fixed' },
