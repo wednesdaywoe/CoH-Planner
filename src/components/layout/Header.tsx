@@ -3,9 +3,11 @@
  * Matches the legacy app layout with archetype and powerset selectors in the header
  */
 
+import { useState } from 'react';
 import { useBuildStore, useUIStore } from '@/stores';
 import { getPowersetsForArchetype, getPowerset, MAX_LEVEL, ARCHETYPES } from '@/data';
 import { Button, Select, Slider, Toggle, Tooltip } from '@/components/ui';
+import { ConfirmModal } from '@/components/modals/ConfirmModal';
 import { calculateVigilanceDamageBonus, calculateAssassinationDamageBonus } from '@/utils/calculations';
 import type { ArchetypeId, ArchetypeBranchId, Powerset } from '@/types';
 import { BUILD_TIME } from '@/buildTime';
@@ -84,6 +86,8 @@ export function Header() {
   const openExportImportModal = useUIStore((s) => s.openExportImportModal);
   const selectedBranch = useUIStore((s) => s.selectedBranch);
   const setSelectedBranch = useUIStore((s) => s.setSelectedBranch);
+
+  const [confirmAction, setConfirmAction] = useState<'new' | 'clear' | null>(null);
 
   const archetypeId = build.archetype.id;
 
@@ -567,11 +571,7 @@ export function Header() {
           <Button
             variant="secondary"
             size="sm"
-            onClick={() => {
-              if (window.confirm('Are you sure you want to reset? This will clear your entire build.')) {
-                resetBuild();
-              }
-            }}
+            onClick={() => setConfirmAction('new')}
             title="Reset build and start fresh"
           >
             New
@@ -579,11 +579,7 @@ export function Header() {
           <Button
             variant="secondary"
             size="sm"
-            onClick={() => {
-              if (window.confirm('Clear all powers and enhancements? Archetype and powerset selections will be kept.')) {
-                clearPowers();
-              }
-            }}
+            onClick={() => setConfirmAction('clear')}
             title="Clear powers and slots, keep archetype and powersets"
           >
             Clear
@@ -595,6 +591,23 @@ export function Header() {
           Updated {LAST_UPDATED}
         </span>
       </div>
+      {/* Confirmation modals (replaces window.confirm for mobile compatibility) */}
+      <ConfirmModal
+        isOpen={confirmAction === 'new'}
+        title="New Build"
+        message="Are you sure you want to reset? This will clear your entire build."
+        confirmLabel="Reset"
+        onConfirm={() => { resetBuild(); setConfirmAction(null); }}
+        onCancel={() => setConfirmAction(null)}
+      />
+      <ConfirmModal
+        isOpen={confirmAction === 'clear'}
+        title="Clear Powers"
+        message="Clear all powers and enhancements? Archetype and powerset selections will be kept."
+        confirmLabel="Clear"
+        onConfirm={() => { clearPowers(); setConfirmAction(null); }}
+        onCancel={() => setConfirmAction(null)}
+      />
     </header>
   );
 }
