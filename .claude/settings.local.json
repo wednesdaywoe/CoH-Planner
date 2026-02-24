@@ -86,7 +86,8 @@
       "Bash(node check-icons.mjs:*)",
       "Bash(du:*)",
       "Bash(head -80 /Users/brian/Library/CloudStorage/Dropbox/GitHub/CoH-Planner/src/data/powersets/blaster/epic/*/index.ts)",
-      "Bash(node /tmp/check_missing.js)"
+      "Bash(node /tmp/check_missing.js)",
+      "Bash(node /tmp/fix-mez-effects.js /Users/brian/Library/CloudStorage/Dropbox/GitHub/CoH-Planner)"
     ]
   }
 }

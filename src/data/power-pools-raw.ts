@@ -282,9 +282,7 @@ export const POWER_POOLS_RAW = {
             "scale": -0.05,
             "table": "Melee_Ones"
           },
-          "protection": {
-            "stun": 2
-          }
+          "stun": 2
         }
       },
       {
@@ -325,9 +323,7 @@ export const POWER_POOLS_RAW = {
             "scale": -0.05,
             "table": "Melee_Ones"
           },
-          "protection": {
-            "knockback": 0.67
-          }
+          "knockback": 0.67
         }
       },
       {
@@ -469,10 +465,8 @@ export const POWER_POOLS_RAW = {
             "scale": 1.4628,
             "table": "Melee_PvPDamage"
           },
-          "protection": {
-            "knockback": 1,
-            "stun": 2
-          }
+          "knockback": 1,
+          "stun": 2
         }
       }
     ]
@@ -678,9 +672,7 @@ export const POWER_POOLS_RAW = {
             "scale": 1.61,
             "table": "Melee_PvPDamage"
           },
-          "protection": {
-            "knockup": 1
-          }
+          "knockup": 1
         }
       },
       {
@@ -925,9 +917,7 @@ export const POWER_POOLS_RAW = {
             "scale": 2.049,
             "table": "Ranged_PvPDamage"
           },
-          "protection": {
-            "knockback": 0.67
-          }
+          "knockback": 0.67
         }
       },
       {
@@ -1034,9 +1024,7 @@ export const POWER_POOLS_RAW = {
             "scale": 0.4194,
             "table": "Ranged_PvPDamage"
           },
-          "protection": {
-            "knockback": 0.67
-          }
+          "knockback": 0.67
         }
       },
       {
@@ -1565,9 +1553,7 @@ export const POWER_POOLS_RAW = {
             "scale": 1.562,
             "table": "Melee_PvPDamage"
           },
-          "protection": {
-            "knockback": 0.67
-          }
+          "knockback": 0.67
         }
       },
       {
@@ -1741,9 +1727,7 @@ export const POWER_POOLS_RAW = {
             "scale": 4.82,
             "table": "Melee_PvPDamage"
           },
-          "protection": {
-            "knockback": 0.67
-          }
+          "knockback": 0.67
         }
       }
     ]
@@ -2172,9 +2156,7 @@ export const POWER_POOLS_RAW = {
             "scale": 1.891,
             "table": "Ranged_PvPDamage"
           },
-          "protection": {
-            "knockback": 0.67
-          }
+          "knockback": 0.67
         }
       },
       {
@@ -2394,9 +2376,7 @@ export const POWER_POOLS_RAW = {
             "scale": 2.669,
             "table": "Melee_PvPDamage"
           },
-          "protection": {
-            "stun": 2
-          }
+          "stun": 2
         }
       },
       {
@@ -2508,9 +2488,7 @@ export const POWER_POOLS_RAW = {
             "scale": -0.3,
             "table": "Melee_Ones"
           },
-          "protection": {
-            "knockback": 2.42
-          }
+          "knockback": 2.42
         }
       },
       {

@@ -55,9 +55,7 @@ export const EPIC_POOLS_RAW = {
             "scale": 1.0694,
             "table": "Ranged_PvPDamage"
           },
-          "protection": {
-            "knockback": 1
-          }
+          "knockback": 1
         }
       },
       {
@@ -180,9 +178,7 @@ export const EPIC_POOLS_RAW = {
             "scale": 0.1813,
             "table": "Ranged_PvPDamage"
           },
-          "protection": {
-            "knockback": 1
-          },
+          "knockback": 1,
           "resistance": {
             "smashing": {
               "scale": -1.5,
@@ -1015,9 +1011,7 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "Cone",
           "radius": 50,
           "arc": 0.7854,
-          "protection": {
-            "fear": 3
-          }
+          "fear": 3
         }
       },
       {
@@ -1048,9 +1042,7 @@ export const EPIC_POOLS_RAW = {
           "endurance": 10.66,
           "activationTime": 2.33,
           "effectArea": "SingleTarget",
-          "protection": {
-            "confuse": 3
-          }
+          "confuse": 3
         }
       },
       {
@@ -1314,9 +1306,7 @@ export const EPIC_POOLS_RAW = {
           "endurance": 10.66,
           "activationTime": 2,
           "effectArea": "SingleTarget",
-          "protection": {
-            "hold": 3
-          },
+          "hold": 3,
           "damage": {
             "type": "Toxic",
             "scale": 0.345,
@@ -1560,9 +1550,7 @@ export const EPIC_POOLS_RAW = {
           "endurance": 10.66,
           "activationTime": 2.17,
           "effectArea": "SingleTarget",
-          "protection": {
-            "hold": 3
-          },
+          "hold": 3,
           "damage": {
             "type": "Energy",
             "scale": 0.4113,
@@ -1646,9 +1634,7 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 2.37,
           "effectArea": "AoE",
           "radius": 25,
-          "protection": {
-            "sleep": 3
-          },
+          "sleep": 3,
           "damage": {
             "type": "Cold",
             "scale": 0.5957,
@@ -1774,9 +1760,9 @@ export const EPIC_POOLS_RAW = {
             "table": "Melee_Ones"
           },
           "resistance": {},
+          "knockup": 1,
+          "knockback": 1,
           "protection": {
-            "knockup": 1,
-            "knockback": 1,
             "immobilize": 1000
           }
         }
@@ -1866,9 +1852,7 @@ export const EPIC_POOLS_RAW = {
           "endurance": 10.66,
           "activationTime": 2,
           "effectArea": "SingleTarget",
-          "protection": {
-            "hold": 3
-          },
+          "hold": 3,
           "damage": {
             "type": "Energy",
             "scale": 0.552,
@@ -2028,9 +2012,7 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 2.93,
           "effectArea": "AoE",
           "radius": 40,
-          "protection": {
-            "stun": 3
-          },
+          "stun": 3,
           "regeneration": {
             "scale": -30,
             "table": "Ranged_Res_Boolean"
@@ -2121,9 +2103,7 @@ export const EPIC_POOLS_RAW = {
           "endurance": 10.66,
           "activationTime": 1.07,
           "effectArea": "SingleTarget",
-          "protection": {
-            "hold": 3
-          },
+          "hold": 3,
           "damage": {
             "type": "Fire",
             "scale": 0.4218,
@@ -2499,9 +2479,7 @@ export const EPIC_POOLS_RAW = {
             "scale": 0.7818,
             "table": "Ranged_Damage"
           },
-          "protection": {
-            "knockback": 1
-          }
+          "knockback": 1
         }
       },
       {
@@ -2667,9 +2645,7 @@ export const EPIC_POOLS_RAW = {
           "endurance": 10.66,
           "activationTime": 1.67,
           "effectArea": "SingleTarget",
-          "protection": {
-            "hold": 3
-          },
+          "hold": 3,
           "damage": {
             "type": "Cold",
             "scale": 2.529,
@@ -2710,9 +2686,7 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1.87,
           "effectArea": "AoE",
           "radius": 15,
-          "protection": {
-            "sleep": 3
-          },
+          "sleep": 3,
           "damage": {
             "type": "Smashing",
             "scale": 0.1,
@@ -2870,9 +2844,7 @@ export const EPIC_POOLS_RAW = {
             "scale": 0.063,
             "table": "Ranged_Damage"
           },
-          "protection": {
-            "knockback": 1
-          }
+          "knockback": 1
         }
       },
       {
@@ -2995,9 +2967,7 @@ export const EPIC_POOLS_RAW = {
             "scale": 0.045,
             "table": "Ranged_Damage"
           },
-          "protection": {
-            "knockback": 1
-          },
+          "knockback": 1,
           "resistance": {
             "smashing": {
               "scale": -1.5,
@@ -3847,9 +3817,7 @@ export const EPIC_POOLS_RAW = {
             "scale": 0.432,
             "table": "Melee_Damage"
           },
-          "protection": {
-            "knockback": 1
-          }
+          "knockback": 1
         }
       }
     ]
@@ -4002,9 +3970,7 @@ export const EPIC_POOLS_RAW = {
             "scale": 0.8471,
             "table": "Melee_PvPDamage"
           },
-          "protection": {
-            "knockback": 1
-          }
+          "knockback": 1
         }
       },
       {
@@ -4618,9 +4584,9 @@ export const EPIC_POOLS_RAW = {
             "table": "Melee_Ones"
           },
           "resistance": {},
+          "knockup": 1,
+          "knockback": 1,
           "protection": {
-            "knockup": 1,
-            "knockback": 1,
             "immobilize": 1000
           }
         }
@@ -4784,9 +4750,7 @@ export const EPIC_POOLS_RAW = {
             "scale": 1.889,
             "table": "Ranged_PvPDamage"
           },
-          "protection": {
-            "knockback": 1
-          }
+          "knockback": 1
         }
       },
       {
@@ -4911,9 +4875,7 @@ export const EPIC_POOLS_RAW = {
             "scale": 0.8861,
             "table": "Ranged_PvPDamage"
           },
-          "protection": {
-            "knockback": 1
-          }
+          "knockback": 1
         }
       },
       {
@@ -5012,13 +4974,11 @@ export const EPIC_POOLS_RAW = {
           "endurance": 19.5,
           "activationTime": 0.73,
           "effectArea": "SingleTarget",
-          "protection": {
-            "confuse": 1,
-            "fear": 1,
-            "hold": 1,
-            "stun": 1,
-            "sleep": 1
-          },
+          "confuse": 1,
+          "fear": 1,
+          "hold": 1,
+          "stun": 1,
+          "sleep": 1,
           "resistance": {}
         }
       },
@@ -5113,9 +5073,7 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1.67,
           "effectArea": "AoE",
           "radius": 8,
-          "protection": {
-            "confuse": 1
-          },
+          "confuse": 1,
           "damage": {
             "type": "Psionic",
             "scale": 0.12,
@@ -5316,9 +5274,7 @@ export const EPIC_POOLS_RAW = {
             "scale": 2.57,
             "table": "Melee_PvPDamage"
           },
-          "protection": {
-            "hold": 4
-          }
+          "hold": 4
         }
       },
       {
@@ -5440,9 +5396,7 @@ export const EPIC_POOLS_RAW = {
           "endurance": 10.66,
           "activationTime": 1.07,
           "effectArea": "SingleTarget",
-          "protection": {
-            "hold": 3
-          },
+          "hold": 3,
           "damage": {
             "type": "Fire",
             "scale": 0.4218,
@@ -5737,9 +5691,9 @@ export const EPIC_POOLS_RAW = {
             "table": "Melee_Ones"
           },
           "resistance": {},
+          "knockup": 1,
+          "knockback": 1,
           "protection": {
-            "knockup": 1,
-            "knockback": 1,
             "immobilize": 1000
           }
         }
@@ -5775,9 +5729,7 @@ export const EPIC_POOLS_RAW = {
           "endurance": 10.66,
           "activationTime": 1.87,
           "effectArea": "SingleTarget",
-          "protection": {
-            "hold": 3
-          },
+          "hold": 3,
           "damage": {
             "type": "Lethal",
             "scale": 0.2604,
@@ -5967,9 +5919,7 @@ export const EPIC_POOLS_RAW = {
           "endurance": 10.66,
           "activationTime": 2,
           "effectArea": "SingleTarget",
-          "protection": {
-            "hold": 3
-          },
+          "hold": 3,
           "damage": {
             "type": "Toxic",
             "scale": 0.345,
@@ -6152,9 +6102,7 @@ export const EPIC_POOLS_RAW = {
           "endurance": 10.66,
           "activationTime": 2.17,
           "effectArea": "SingleTarget",
-          "protection": {
-            "hold": 3
-          },
+          "hold": 3,
           "damage": {
             "type": "Energy",
             "scale": 0.4113,
@@ -6283,9 +6231,7 @@ export const EPIC_POOLS_RAW = {
           "endurance": 10.66,
           "activationTime": 2.17,
           "effectArea": "SingleTarget",
-          "protection": {
-            "hold": 3
-          },
+          "hold": 3,
           "damage": {
             "type": "Negative",
             "scale": 0.2879,
@@ -6490,9 +6436,7 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1.17,
           "effectArea": "AoE",
           "radius": 12,
-          "protection": {
-            "stun": 2
-          },
+          "stun": 2,
           "damage": {
             "type": "Special",
             "scale": 0.1521,
@@ -6633,9 +6577,9 @@ export const EPIC_POOLS_RAW = {
             "scale": 3,
             "table": "Melee_Heal"
           },
+          "stun": 30,
           "protection": {
-            "immobilize": 50,
-            "stun": 30
+            "immobilize": 50
           }
         }
       },
@@ -6756,9 +6700,7 @@ export const EPIC_POOLS_RAW = {
           "endurance": 10.66,
           "activationTime": 1.07,
           "effectArea": "SingleTarget",
-          "protection": {
-            "hold": 3
-          },
+          "hold": 3,
           "damage": {
             "type": "Fire",
             "scale": 0.4218,
@@ -6992,9 +6934,7 @@ export const EPIC_POOLS_RAW = {
             "scale": 0.2,
             "table": "Ranged_Damage"
           },
-          "protection": {
-            "sleep": 4
-          }
+          "sleep": 4
         }
       },
       {
@@ -7284,9 +7224,7 @@ export const EPIC_POOLS_RAW = {
           "endurance": 10.66,
           "activationTime": 2,
           "effectArea": "SingleTarget",
-          "protection": {
-            "hold": 3
-          },
+          "hold": 3,
           "damage": {
             "type": "Energy",
             "scale": 0.552,
@@ -7546,9 +7484,7 @@ export const EPIC_POOLS_RAW = {
             "scale": 3.771,
             "table": "Melee_PvPDamage"
           },
-          "protection": {
-            "stun": 3
-          }
+          "stun": 3
         }
       }
     ]
@@ -7594,9 +7530,7 @@ export const EPIC_POOLS_RAW = {
           "endurance": 10.66,
           "activationTime": 1.1,
           "effectArea": "SingleTarget",
-          "protection": {
-            "hold": 3
-          },
+          "hold": 3,
           "damage": {
             "type": "Psionic",
             "scale": 2.13,
@@ -7633,9 +7567,7 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 2.03,
           "effectArea": "AoE",
           "radius": 25,
-          "protection": {
-            "sleep": 3
-          }
+          "sleep": 3
         }
       },
       {
@@ -7729,9 +7661,7 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1.67,
           "effectArea": "AoE",
           "radius": 8,
-          "protection": {
-            "confuse": 2
-          },
+          "confuse": 2,
           "damage": {
             "type": "Psionic",
             "scale": 0.12,
@@ -7943,9 +7873,7 @@ export const EPIC_POOLS_RAW = {
             "scale": 0.8471,
             "table": "Melee_PvPDamage"
           },
-          "protection": {
-            "knockback": 1
-          }
+          "knockback": 1
         }
       },
       {
@@ -8109,9 +8037,9 @@ export const EPIC_POOLS_RAW = {
             "table": "Melee_Ones"
           },
           "resistance": {},
+          "knockup": 1,
+          "knockback": 1,
           "protection": {
-            "knockup": 1,
-            "knockback": 1,
             "immobilize": 1000
           }
         }
@@ -9262,9 +9190,9 @@ export const EPIC_POOLS_RAW = {
             "table": "Melee_Ones"
           },
           "resistance": {},
+          "knockup": 1,
+          "knockback": 1,
           "protection": {
-            "knockup": 1,
-            "knockback": 1,
             "immobilize": 1000
           }
         }
@@ -9428,9 +9356,7 @@ export const EPIC_POOLS_RAW = {
             "scale": 3,
             "table": "Melee_Damage"
           },
-          "protection": {
-            "stun": 3
-          }
+          "stun": 3
         }
       },
       {
@@ -9555,9 +9481,7 @@ export const EPIC_POOLS_RAW = {
             "scale": 0.8861,
             "table": "Ranged_PvPDamage"
           },
-          "protection": {
-            "knockback": 1
-          }
+          "knockback": 1
         }
       },
       {
@@ -9596,9 +9520,7 @@ export const EPIC_POOLS_RAW = {
             "scale": 0.6797,
             "table": "Ranged_PvPDamage"
           },
-          "protection": {
-            "knockback": 1
-          }
+          "knockback": 1
         }
       }
     ]
@@ -9668,13 +9590,11 @@ export const EPIC_POOLS_RAW = {
           "endurance": 19.5,
           "activationTime": 0.73,
           "effectArea": "SingleTarget",
-          "protection": {
-            "confuse": 1,
-            "fear": 1,
-            "hold": 1,
-            "stun": 1,
-            "sleep": 1
-          },
+          "confuse": 1,
+          "fear": 1,
+          "hold": 1,
+          "stun": 1,
+          "sleep": 1,
           "resistance": {}
         }
       },
@@ -9899,9 +9819,7 @@ export const EPIC_POOLS_RAW = {
           "endurance": 10.66,
           "activationTime": 2.17,
           "effectArea": "SingleTarget",
-          "protection": {
-            "hold": 3
-          },
+          "hold": 3,
           "damage": {
             "type": "Energy",
             "scale": 0.4113,
@@ -10037,9 +9955,7 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 2.93,
           "effectArea": "AoE",
           "radius": 25,
-          "protection": {
-            "stun": 3
-          },
+          "stun": 3,
           "regeneration": {
             "scale": -30,
             "table": "Ranged_Res_Boolean"
@@ -10132,9 +10048,7 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 2.37,
           "effectArea": "AoE",
           "radius": 25,
-          "protection": {
-            "sleep": 3
-          },
+          "sleep": 3,
           "damage": {
             "type": "Cold",
             "scale": 1.1914,
@@ -10260,9 +10174,9 @@ export const EPIC_POOLS_RAW = {
             "table": "Melee_Ones"
           },
           "resistance": {},
+          "knockup": 1,
+          "knockback": 1,
           "protection": {
-            "knockup": 1,
-            "knockback": 1,
             "immobilize": 1000
           }
         }
@@ -10375,9 +10289,7 @@ export const EPIC_POOLS_RAW = {
             "scale": 0.3778,
             "table": "Ranged_PvPDamage"
           },
-          "protection": {
-            "knockback": 1
-          }
+          "knockback": 1
         }
       },
       {
@@ -10417,9 +10329,7 @@ export const EPIC_POOLS_RAW = {
             "scale": 0.6203,
             "table": "Ranged_PvPDamage"
           },
-          "protection": {
-            "knockback": 1
-          }
+          "knockback": 1
         }
       },
       {
@@ -10458,10 +10368,8 @@ export const EPIC_POOLS_RAW = {
             "scale": 0.6797,
             "table": "Ranged_PvPDamage"
           },
-          "protection": {
-            "knockback": 1,
-            "stun": 2
-          }
+          "knockback": 1,
+          "stun": 2
         }
       },
       {
@@ -10675,9 +10583,7 @@ export const EPIC_POOLS_RAW = {
           "endurance": 10.66,
           "activationTime": 1.07,
           "effectArea": "SingleTarget",
-          "protection": {
-            "hold": 3
-          },
+          "hold": 3,
           "damage": {
             "type": "Fire",
             "scale": 0.4218,
@@ -10868,9 +10774,7 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1.07,
           "effectArea": "AoE",
           "radius": 20,
-          "protection": {
-            "stun": 3
-          }
+          "stun": 3
         }
       },
       {
@@ -10901,9 +10805,7 @@ export const EPIC_POOLS_RAW = {
           "endurance": 10.66,
           "activationTime": 2.33,
           "effectArea": "SingleTarget",
-          "protection": {
-            "confuse": 3
-          }
+          "confuse": 3
         }
       },
       {
@@ -11077,10 +10979,8 @@ export const EPIC_POOLS_RAW = {
             "scale": 3.561,
             "table": "Melee_PvPDamage"
           },
-          "protection": {
-            "hold": 3,
-            "knockup": 1
-          }
+          "hold": 3,
+          "knockup": 1
         }
       },
       {
@@ -11175,9 +11075,7 @@ export const EPIC_POOLS_RAW = {
           "endurance": 10.66,
           "activationTime": 1.87,
           "effectArea": "SingleTarget",
-          "protection": {
-            "hold": 3
-          },
+          "hold": 3,
           "damage": {
             "type": "Lethal",
             "scale": 0.2604,
@@ -11367,9 +11265,7 @@ export const EPIC_POOLS_RAW = {
           "endurance": 10.66,
           "activationTime": 2,
           "effectArea": "SingleTarget",
-          "protection": {
-            "hold": 3
-          },
+          "hold": 3,
           "damage": {
             "type": "Toxic",
             "scale": 0.345,
@@ -11610,9 +11506,7 @@ export const EPIC_POOLS_RAW = {
           "endurance": 10.66,
           "activationTime": 2.17,
           "effectArea": "SingleTarget",
-          "protection": {
-            "hold": 3
-          },
+          "hold": 3,
           "damage": {
             "type": "Energy",
             "scale": 0.4113,
@@ -11763,9 +11657,7 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1.17,
           "effectArea": "AoE",
           "radius": 12,
-          "protection": {
-            "stun": 2
-          },
+          "stun": 2,
           "damage": {
             "type": "Special",
             "scale": 0.1,
@@ -11847,9 +11739,7 @@ export const EPIC_POOLS_RAW = {
           "endurance": 10.66,
           "activationTime": 2.17,
           "effectArea": "SingleTarget",
-          "protection": {
-            "hold": 3
-          },
+          "hold": 3,
           "damage": {
             "type": "Negative",
             "scale": 0.2879,
@@ -11941,9 +11831,7 @@ export const EPIC_POOLS_RAW = {
           "endurance": 10.66,
           "activationTime": 1.07,
           "effectArea": "SingleTarget",
-          "protection": {
-            "hold": 3
-          },
+          "hold": 3,
           "damage": {
             "type": "Fire",
             "scale": 0.4218,
@@ -12260,9 +12148,7 @@ export const EPIC_POOLS_RAW = {
             "scale": 0.432,
             "table": "Melee_Damage"
           },
-          "protection": {
-            "knockback": 1
-          }
+          "knockback": 1
         }
       }
     ]
@@ -12316,9 +12202,7 @@ export const EPIC_POOLS_RAW = {
             "scale": 0.4533,
             "table": "Melee_Damage"
           },
-          "protection": {
-            "knockback": 1
-          }
+          "knockback": 1
         }
       },
       {
@@ -12352,9 +12236,7 @@ export const EPIC_POOLS_RAW = {
           "endurance": 10.66,
           "activationTime": 1.67,
           "effectArea": "SingleTarget",
-          "protection": {
-            "hold": 3
-          },
+          "hold": 3,
           "damage": {
             "type": "Negative",
             "scale": 2.529,
@@ -13169,9 +13051,7 @@ export const EPIC_POOLS_RAW = {
           "endurance": 10.66,
           "activationTime": 2.07,
           "effectArea": "SingleTarget",
-          "protection": {
-            "hold": 4
-          },
+          "hold": 4,
           "damage": {
             "type": "Negative",
             "scale": 2.809,
@@ -13343,10 +13223,8 @@ export const EPIC_POOLS_RAW = {
             "scale": 2.57,
             "table": "Melee_PvPDamage"
           },
-          "protection": {
-            "sleep": 3,
-            "knockback": 1
-          },
+          "sleep": 3,
+          "knockback": 1,
           "recovery": {
             "scale": -1,
             "table": "Melee_Ones"
@@ -13385,9 +13263,7 @@ export const EPIC_POOLS_RAW = {
           "endurance": 10.66,
           "activationTime": 2.07,
           "effectArea": "SingleTarget",
-          "protection": {
-            "stun": 4
-          },
+          "stun": 4,
           "damage": {
             "type": "Energy",
             "scale": 2.489,
@@ -13591,9 +13467,7 @@ export const EPIC_POOLS_RAW = {
           "endurance": 10.66,
           "activationTime": 1.07,
           "effectArea": "SingleTarget",
-          "protection": {
-            "hold": 3
-          },
+          "hold": 3,
           "damage": {
             "type": "Fire",
             "scale": 0.4218,
@@ -13792,11 +13666,9 @@ export const EPIC_POOLS_RAW = {
           "endurance": 10.66,
           "activationTime": 1.87,
           "effectArea": "SingleTarget",
-          "protection": {
-            "hold": 3,
-            "knockup": 1,
-            "knockback": 1
-          },
+          "hold": 3,
+          "knockup": 1,
+          "knockback": 1,
           "damage": {
             "type": "Cold",
             "scale": 2.669,
@@ -13840,9 +13712,7 @@ export const EPIC_POOLS_RAW = {
             "scale": 1.388,
             "table": "Melee_PvPDamage"
           },
-          "protection": {
-            "sleep": 2
-          }
+          "sleep": 2
         }
       },
       {
@@ -13964,10 +13834,8 @@ export const EPIC_POOLS_RAW = {
             "scale": 3.561,
             "table": "Melee_PvPDamage"
           },
-          "protection": {
-            "hold": 3,
-            "knockup": 1
-          }
+          "hold": 3,
+          "knockup": 1
         }
       },
       {
@@ -14001,9 +13869,7 @@ export const EPIC_POOLS_RAW = {
           "endurance": 10.66,
           "activationTime": 1.87,
           "effectArea": "SingleTarget",
-          "protection": {
-            "hold": 3
-          },
+          "hold": 3,
           "damage": {
             "type": "Lethal",
             "scale": 0.2604,
@@ -14050,9 +13916,7 @@ export const EPIC_POOLS_RAW = {
             "scale": 0.1208,
             "table": "Ranged_PvPDamage"
           },
-          "protection": {
-            "knockback": 1
-          },
+          "knockback": 1,
           "resistance": {
             "smashing": {
               "scale": -1.5,
@@ -14216,9 +14080,7 @@ export const EPIC_POOLS_RAW = {
             "scale": 2.09,
             "table": "Melee_PvPDamage"
           },
-          "protection": {
-            "stun": 2
-          }
+          "stun": 2
         }
       },
       {
@@ -14253,9 +14115,7 @@ export const EPIC_POOLS_RAW = {
           "endurance": 10.66,
           "activationTime": 2,
           "effectArea": "SingleTarget",
-          "protection": {
-            "hold": 3
-          },
+          "hold": 3,
           "damage": {
             "type": "Toxic",
             "scale": 0.345,
@@ -14454,9 +14314,7 @@ export const EPIC_POOLS_RAW = {
           "endurance": 10.66,
           "activationTime": 2.17,
           "effectArea": "SingleTarget",
-          "protection": {
-            "hold": 3
-          },
+          "hold": 3,
           "damage": {
             "type": "Energy",
             "scale": 0.4113,
@@ -14671,9 +14529,7 @@ export const EPIC_POOLS_RAW = {
           "endurance": 10.66,
           "activationTime": 1.5,
           "effectArea": "SingleTarget",
-          "protection": {
-            "hold": 3
-          },
+          "hold": 3,
           "damage": {
             "type": "Toxic",
             "scale": 0.6025,
@@ -14797,9 +14653,7 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 2.03,
           "effectArea": "AoE",
           "radius": 25,
-          "protection": {
-            "sleep": 4
-          }
+          "sleep": 4
         }
       },
       {
@@ -14868,9 +14722,7 @@ export const EPIC_POOLS_RAW = {
           "endurance": 10.66,
           "activationTime": 1.1,
           "effectArea": "SingleTarget",
-          "protection": {
-            "hold": 4
-          },
+          "hold": 4,
           "damage": {
             "type": "Psionic",
             "scale": 2.13,
@@ -14912,9 +14764,7 @@ export const EPIC_POOLS_RAW = {
             "scale": 0.7935,
             "table": "Melee_PvPDamage"
           },
-          "protection": {
-            "stun": 2
-          }
+          "stun": 2
         }
       },
       {
@@ -15075,9 +14925,7 @@ export const EPIC_POOLS_RAW = {
           "endurance": 10.66,
           "activationTime": 2.17,
           "effectArea": "SingleTarget",
-          "protection": {
-            "hold": 3
-          },
+          "hold": 3,
           "damage": {
             "type": "Negative",
             "scale": 0.2879,
@@ -15315,9 +15163,7 @@ export const EPIC_POOLS_RAW = {
             "scale": 0.958,
             "table": "Melee_InherentDamage"
           },
-          "protection": {
-            "knockback": 1
-          }
+          "knockback": 1
         }
       }
     ]
@@ -15367,9 +15213,7 @@ export const EPIC_POOLS_RAW = {
             "scale": 1.0694,
             "table": "Melee_PvPDamage"
           },
-          "protection": {
-            "knockback": 1
-          }
+          "knockback": 1
         }
       },
       {
@@ -15441,9 +15285,9 @@ export const EPIC_POOLS_RAW = {
             "table": "Melee_Ones"
           },
           "resistance": {},
+          "knockup": 1,
+          "knockback": 1,
           "protection": {
-            "knockup": 1,
-            "knockback": 1,
             "immobilize": 1000
           }
         }
@@ -15479,9 +15323,7 @@ export const EPIC_POOLS_RAW = {
           "endurance": 10.66,
           "activationTime": 1.87,
           "effectArea": "SingleTarget",
-          "protection": {
-            "hold": 3
-          },
+          "hold": 3,
           "damage": {
             "type": "Lethal",
             "scale": 0.2604,
@@ -15678,9 +15520,7 @@ export const EPIC_POOLS_RAW = {
           "endurance": 10.66,
           "activationTime": 2,
           "effectArea": "SingleTarget",
-          "protection": {
-            "hold": 3
-          },
+          "hold": 3,
           "damage": {
             "type": "Toxic",
             "scale": 0.345,
@@ -15886,9 +15726,7 @@ export const EPIC_POOLS_RAW = {
           "endurance": 10.66,
           "activationTime": 2.17,
           "effectArea": "SingleTarget",
-          "protection": {
-            "hold": 3
-          },
+          "hold": 3,
           "damage": {
             "type": "Energy",
             "scale": 0.4113,
@@ -16080,9 +15918,7 @@ export const EPIC_POOLS_RAW = {
           "endurance": 10.66,
           "activationTime": 2.17,
           "effectArea": "SingleTarget",
-          "protection": {
-            "hold": 3
-          },
+          "hold": 3,
           "damage": {
             "type": "Fire",
             "scale": 0.0495,
@@ -16396,11 +16232,9 @@ export const EPIC_POOLS_RAW = {
           "endurance": 10.66,
           "activationTime": 1.87,
           "effectArea": "SingleTarget",
-          "protection": {
-            "hold": 3,
-            "knockup": 1,
-            "knockback": 1
-          },
+          "hold": 3,
+          "knockup": 1,
+          "knockback": 1,
           "damage": {
             "type": "Fire",
             "scale": 0.45,
@@ -16594,9 +16428,7 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1.07,
           "effectArea": "AoE",
           "radius": 30,
-          "protection": {
-            "sleep": 3
-          },
+          "sleep": 3,
           "defense": {
             "all": {
               "scale": 2,
@@ -16636,9 +16468,7 @@ export const EPIC_POOLS_RAW = {
           "endurance": 10.66,
           "activationTime": 2.07,
           "effectArea": "SingleTarget",
-          "protection": {
-            "hold": 3
-          },
+          "hold": 3,
           "damage": {
             "type": "Smashing",
             "scale": 2.809,
@@ -16889,9 +16719,7 @@ export const EPIC_POOLS_RAW = {
             "scale": 0.432,
             "table": "Melee_Damage"
           },
-          "protection": {
-            "knockback": 1
-          }
+          "knockback": 1
         }
       }
     ]
@@ -16978,9 +16806,7 @@ export const EPIC_POOLS_RAW = {
           "endurance": 10.66,
           "activationTime": 1.07,
           "effectArea": "SingleTarget",
-          "protection": {
-            "hold": 3
-          },
+          "hold": 3,
           "damage": {
             "type": "Fire",
             "scale": 0.045,
@@ -17218,9 +17044,7 @@ export const EPIC_POOLS_RAW = {
           "endurance": 10.66,
           "activationTime": 1.67,
           "effectArea": "SingleTarget",
-          "protection": {
-            "hold": 3
-          },
+          "hold": 3,
           "damage": {
             "type": "Negative",
             "scale": 2.529,
@@ -17383,9 +17207,7 @@ export const EPIC_POOLS_RAW = {
             "scale": 1.809,
             "table": "Ranged_PvPDamage"
           },
-          "protection": {
-            "sleep": 4
-          }
+          "sleep": 4
         }
       },
       {
@@ -17419,9 +17241,7 @@ export const EPIC_POOLS_RAW = {
           "endurance": 10.66,
           "activationTime": 1.1,
           "effectArea": "SingleTarget",
-          "protection": {
-            "hold": 4
-          },
+          "hold": 4,
           "damage": {
             "type": "Psionic",
             "scale": 2.13,
