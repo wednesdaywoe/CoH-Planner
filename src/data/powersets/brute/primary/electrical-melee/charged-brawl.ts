@@ -63,6 +63,11 @@ export const ChargedBrawl: Power = {
     "enduranceGain": {
       "scale": 2.184,
       "table": "Melee_Ones"
+    },
+    "sleep": {
+      "mag": 2,
+      "scale": 6,
+      "table": "Melee_Sleep"
     }
   }
 };

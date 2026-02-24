@@ -41,6 +41,22 @@ export const ConfoundingChant: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Psionic",
+      "scale": 0.125,
+      "table": "Ranged_Damage",
+      "duration": 19.75,
+      "tickRate": 1
+    },
+    {
+      "type": "Psionic",
+      "scale": 0.125,
+      "table": "Ranged_Damage",
+      "duration": 34.75,
+      "tickRate": 1
+    }
+  ],
   "effects": {
     "stun": {
       "mag": 3,

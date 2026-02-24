@@ -48,5 +48,11 @@ export const PowerBolt: Power = {
       "scale": 0.8,
       "table": "Ranged_Damage"
     }
-  ]
+  ],
+  "effects": {
+    "knockback": {
+      "scale": 0.7,
+      "table": "Ranged_Knockback"
+    }
+  }
 };

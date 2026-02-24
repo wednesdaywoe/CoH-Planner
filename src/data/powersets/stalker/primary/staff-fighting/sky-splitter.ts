@@ -37,5 +37,80 @@ export const SkySplitter: Power = {
     "Stuns",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 1.38,
+      "table": "Melee_Damage",
+      "duration": 1.9,
+      "tickRate": 1
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.656,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 2.76,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 2.76,
+      "table": "Melee_InherentDamage"
+    }
+  ],
+  "effects": {
+    "stun": {
+      "mag": 3,
+      "scale": 5,
+      "table": "Melee_Stun"
+    },
+    "knockup": {
+      "scale": 0.67,
+      "table": "Melee_Ones"
+    },
+    "slow": {
+      "fly": {
+        "scale": 1.6,
+        "table": "Melee_Ones"
+      }
+    },
+    "resistance": {
+      "smashing": {
+        "scale": 1.33,
+        "table": "Melee_Res_Dmg"
+      },
+      "lethal": {
+        "scale": 1.33,
+        "table": "Melee_Res_Dmg"
+      },
+      "fire": {
+        "scale": 1.33,
+        "table": "Melee_Res_Dmg"
+      },
+      "cold": {
+        "scale": 1.33,
+        "table": "Melee_Res_Dmg"
+      },
+      "energy": {
+        "scale": 1.33,
+        "table": "Melee_Res_Dmg"
+      },
+      "negative": {
+        "scale": 1.33,
+        "table": "Melee_Res_Dmg"
+      },
+      "psionic": {
+        "scale": 1.33,
+        "table": "Melee_Res_Dmg"
+      },
+      "toxic": {
+        "scale": 1.33,
+        "table": "Melee_Res_Dmg"
+      }
+    }
+  }
 };

@@ -34,5 +34,17 @@ export const RadioactiveCloud: Power = {
   "allowedSetCategories": [
     "Holds"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "hold": {
+      "mag": 2,
+      "scale": 8,
+      "table": "Melee_Immobilize"
+    },
+    "immobilize": {
+      "mag": 2,
+      "scale": 8,
+      "table": "Ranged_Immobilize"
+    }
+  }
 };

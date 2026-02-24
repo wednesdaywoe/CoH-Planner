@@ -36,5 +36,82 @@ export const PowerSurge: Power = {
     "Holds",
     "Resist Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "resistance": {
+      "smashing": {
+        "scale": 2.5,
+        "table": "Melee_Res_Dmg"
+      },
+      "lethal": {
+        "scale": 2.5,
+        "table": "Melee_Res_Dmg"
+      },
+      "fire": {
+        "scale": 2.5,
+        "table": "Melee_Res_Dmg"
+      },
+      "cold": {
+        "scale": 2.5,
+        "table": "Melee_Res_Dmg"
+      },
+      "toxic": {
+        "scale": 2.5,
+        "table": "Melee_Res_Dmg"
+      },
+      "energy": {
+        "scale": 3,
+        "table": "Melee_Res_Dmg"
+      },
+      "negative": {
+        "scale": 2,
+        "table": "Melee_Res_Dmg"
+      }
+    },
+    "recoveryBuff": {
+      "scale": 4,
+      "table": "Melee_Res_Boolean"
+    },
+    "regenBuff": {
+      "scale": 4,
+      "table": "Melee_Ones"
+    },
+    "knockup": {
+      "scale": 1,
+      "table": "Melee_Ones"
+    },
+    "knockback": {
+      "scale": 1,
+      "table": "Melee_Ones"
+    },
+    "repel": {
+      "scale": 1,
+      "table": "Melee_Ones"
+    },
+    "enduranceGain": {
+      "scale": 4,
+      "table": "Melee_Res_Boolean"
+    },
+    "hold": {
+      "mag": 1,
+      "scale": 50,
+      "table": "Melee_Res_Boolean"
+    },
+    "immobilize": {
+      "mag": 1,
+      "scale": 50,
+      "table": "Melee_Res_Boolean"
+    },
+    "stun": {
+      "mag": 1,
+      "scale": 50,
+      "table": "Melee_Res_Boolean"
+    },
+    "sleep": {
+      "mag": 1,
+      "scale": 50,
+      "table": "Melee_Res_Boolean"
+    },
+    "effectDuration": 30
+  }
 };

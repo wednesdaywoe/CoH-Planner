@@ -39,5 +39,31 @@ export const ElectronShackles: Power = {
     "Ranged Damage",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Energy",
+    "scale": 0.115,
+    "table": "Ranged_Damage",
+    "duration": 4.75,
+    "tickRate": 0.5
+  },
+  "effects": {
+    "immobilize": {
+      "mag": 3,
+      "scale": 15,
+      "table": "Ranged_Immobilize"
+    },
+    "knockup": {
+      "scale": 100,
+      "table": "Ranged_Ones"
+    },
+    "knockback": {
+      "scale": 100,
+      "table": "Ranged_Ones"
+    },
+    "defenseDebuff": {
+      "scale": 1.5,
+      "table": "Ranged_Debuff_Def"
+    }
+  }
 };

@@ -41,10 +41,47 @@ export const CrushingUppercut: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 3.18,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 3.339,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 3.5616,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 3.975,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 1.431,
+      "table": "Melee_Damage"
+    }
+  ],
   "effects": {
     "knockup": {
       "scale": 3,
       "table": "Melee_Knockback"
+    },
+    "stun": {
+      "mag": 3,
+      "scale": 7.5,
+      "table": "Melee_Stun"
+    },
+    "hold": {
+      "mag": 3,
+      "scale": 10.5,
+      "table": "Melee_Stun"
     }
   }
 };

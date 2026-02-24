@@ -50,5 +50,11 @@ export const MercurialBlow: Power = {
       "table": "Melee_InherentDamage"
     }
   ],
-  "requires": "!Stalker_Defense.Shield_Defense"
+  "requires": "!Stalker_Defense.Shield_Defense",
+  "effects": {
+    "defenseDebuff": {
+      "scale": 1,
+      "table": "Melee_Debuff_Def"
+    }
+  }
 };

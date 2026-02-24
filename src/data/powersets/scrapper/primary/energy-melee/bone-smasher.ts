@@ -53,5 +53,12 @@ export const BoneSmasher: Power = {
       "scale": 0.738,
       "table": "Melee_Damage"
     }
-  ]
+  ],
+  "effects": {
+    "stun": {
+      "mag": 3,
+      "scale": 8,
+      "table": "Melee_Stun"
+    }
+  }
 };

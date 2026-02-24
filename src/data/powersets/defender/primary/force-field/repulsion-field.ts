@@ -32,5 +32,15 @@ export const RepulsionField: Power = {
   "allowedSetCategories": [
     "Knockback"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "knockback": {
+      "scale": 3,
+      "table": "Ranged_Knockback"
+    },
+    "repel": {
+      "scale": 10,
+      "table": "Ranged_Ones"
+    }
+  }
 };

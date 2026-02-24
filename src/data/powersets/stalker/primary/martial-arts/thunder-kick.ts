@@ -41,5 +41,12 @@ export const ThunderKick: Power = {
     "type": "Smashing",
     "scale": 0.84,
     "table": "Melee_Damage"
+  },
+  "effects": {
+    "stun": {
+      "mag": 2,
+      "scale": 6,
+      "table": "Melee_Stun"
+    }
   }
 };

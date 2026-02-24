@@ -48,6 +48,20 @@ export const BlindingPowder: Power = {
     "damageBuff": {
       "scale": 0,
       "table": "Ranged_Ones"
+    },
+    "sleep": {
+      "mag": 3,
+      "scale": 10,
+      "table": "Melee_Sleep"
+    },
+    "confuse": {
+      "mag": 3,
+      "scale": 8,
+      "table": "Melee_Immobilize"
+    },
+    "perceptionDebuff": {
+      "scale": 0.9,
+      "table": "Melee_Ones"
     }
   }
 };

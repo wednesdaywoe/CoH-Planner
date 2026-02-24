@@ -57,6 +57,14 @@ export const BallLightning: Power = {
     "enduranceDrain": {
       "scale": 0.07,
       "table": "Ranged_EndDrain"
+    },
+    "enduranceGain": {
+      "scale": 3.79,
+      "table": "Ranged_EndDrain"
+    },
+    "recoveryDebuff": {
+      "scale": 0.4,
+      "table": "Ranged_EndDrain"
     }
   }
 };

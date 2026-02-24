@@ -38,5 +38,24 @@ export const PreciseStrike: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "requires": "!Brute_Defense.Shield_Defense"
+  "requires": "!Brute_Defense.Shield_Defense",
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 1.32,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.594,
+      "table": "Melee_Damage"
+    }
+  ],
+  "effects": {
+    "stun": {
+      "mag": 2,
+      "scale": 5,
+      "table": "Melee_Stun"
+    }
+  }
 };

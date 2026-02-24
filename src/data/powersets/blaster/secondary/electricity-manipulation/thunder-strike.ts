@@ -40,6 +40,18 @@ export const ThunderStrike: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Energy",
+      "scale": 2.98,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.42,
+      "table": "Melee_Damage"
+    }
+  ],
   "effects": {
     "enduranceDrain": {
       "scale": 0.07,
@@ -47,6 +59,19 @@ export const ThunderStrike: Power = {
     },
     "damageBuff": {
       "scale": 0.078,
+      "table": "Melee_Ones"
+    },
+    "recoveryDebuff": {
+      "scale": 1,
+      "table": "Melee_Ones"
+    },
+    "stun": {
+      "mag": 3,
+      "scale": 5,
+      "table": "Melee_Stun"
+    },
+    "knockback": {
+      "scale": 0.64,
       "table": "Melee_Ones"
     }
   }

@@ -53,6 +53,11 @@ export const ConcentratedStrike: Power = {
     "damageDebuff": {
       "scale": 0.7,
       "table": "Melee_Debuff_Dam"
+    },
+    "stun": {
+      "mag": 3,
+      "scale": 10,
+      "table": "Melee_Immobilize"
     }
   }
 };

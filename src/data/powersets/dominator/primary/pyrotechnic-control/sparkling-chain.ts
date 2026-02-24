@@ -38,5 +38,38 @@ export const SparklingChain: Power = {
     "Ranged AoE Damage",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Fire",
+      "scale": 0.055,
+      "table": "Ranged_Damage",
+      "duration": 5.2,
+      "tickRate": 2
+    },
+    {
+      "type": "Energy",
+      "scale": 0.055,
+      "table": "Ranged_Damage",
+      "duration": 5.2,
+      "tickRate": 2
+    }
+  ],
+  "effects": {
+    "immobilize": {
+      "mag": 3,
+      "scale": 15,
+      "table": "Ranged_Immobilize"
+    },
+    "knockback": {
+      "scale": 100,
+      "table": "Ranged_Ones"
+    },
+    "slow": {
+      "fly": {
+        "scale": 1.6,
+        "table": "Ranged_Ones"
+      }
+    }
+  }
 };

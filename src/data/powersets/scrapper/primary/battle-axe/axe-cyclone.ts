@@ -47,6 +47,10 @@ export const AxeCyclone: Power = {
     "repel": {
       "scale": 2,
       "table": "Ones"
+    },
+    "knockback": {
+      "scale": 0.67,
+      "table": "Melee_Ones"
     }
   }
 };

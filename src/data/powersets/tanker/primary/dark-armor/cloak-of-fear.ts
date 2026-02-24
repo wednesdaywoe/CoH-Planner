@@ -52,6 +52,14 @@ export const CloakofFear: Power = {
     "damageDebuff": {
       "scale": 2,
       "table": "Melee_Debuff_Dam"
+    },
+    "knockup": {
+      "scale": 1,
+      "table": "Melee_Ones"
+    },
+    "knockback": {
+      "scale": 1,
+      "table": "Melee_Ones"
     }
   },
   "maxSlots": 6

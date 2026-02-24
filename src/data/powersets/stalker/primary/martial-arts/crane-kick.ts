@@ -40,5 +40,11 @@ export const CraneKick: Power = {
     "type": "Smashing",
     "scale": 1.96,
     "table": "Melee_Damage"
+  },
+  "effects": {
+    "knockback": {
+      "scale": 3,
+      "table": "Melee_Knockback"
+    }
   }
 };

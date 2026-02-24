@@ -31,5 +31,17 @@ export const BlackHole: Power = {
     "Recharge",
     "Accuracy"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "repel": {
+      "scale": 1,
+      "table": "Melee_Ones"
+    },
+    "immobilize": {
+      "mag": 1,
+      "scale": 3,
+      "table": "Ranged_Ones"
+    },
+    "effectDuration": 30
+  }
 };

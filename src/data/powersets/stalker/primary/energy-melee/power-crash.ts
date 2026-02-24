@@ -51,5 +51,12 @@ export const PowerCrash: Power = {
       "scale": 1.132,
       "table": "Melee_Damage"
     }
-  ]
+  ],
+  "effects": {
+    "stun": {
+      "mag": 3,
+      "scale": 5,
+      "table": "Melee_Stun"
+    }
+  }
 };

@@ -50,5 +50,11 @@ export const Hailstones: Power = {
       "duration": 1,
       "tickRate": 0.3
     }
-  ]
+  ],
+  "effects": {
+    "knockback": {
+      "scale": 0.67,
+      "table": "Ranged_Ones"
+    }
+  }
 };

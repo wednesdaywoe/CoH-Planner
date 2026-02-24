@@ -42,5 +42,16 @@ export const SeismicMallet: Power = {
     "type": "Smashing",
     "scale": 2.92,
     "table": "Melee_Damage"
+  },
+  "effects": {
+    "knockback": {
+      "scale": 0.67,
+      "table": "Melee_Ones"
+    },
+    "hold": {
+      "mag": 3,
+      "scale": 8,
+      "table": "Melee_Immobilize"
+    }
   }
 };

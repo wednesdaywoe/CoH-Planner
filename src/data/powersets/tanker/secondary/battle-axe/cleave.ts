@@ -43,5 +43,11 @@ export const Cleave: Power = {
     "type": "Lethal",
     "scale": 2.7601,
     "table": "Melee_Damage"
+  },
+  "effects": {
+    "knockback": {
+      "scale": 0.67,
+      "table": "Melee_Ones"
+    }
   }
 };

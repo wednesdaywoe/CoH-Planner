@@ -46,6 +46,14 @@ export const LightningBolt: Power = {
     "enduranceDrain": {
       "scale": 0.1,
       "table": "Ranged_EndDrain"
+    },
+    "enduranceGain": {
+      "scale": 4.265,
+      "table": "Ranged_EndDrain"
+    },
+    "recoveryDebuff": {
+      "scale": 0.4,
+      "table": "Ranged_EndDrain"
     }
   }
 };

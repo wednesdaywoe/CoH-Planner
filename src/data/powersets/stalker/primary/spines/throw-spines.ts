@@ -77,6 +77,11 @@ export const ThrowSpines: Power = {
     "rechargeDebuff": {
       "scale": 0.2,
       "table": "Melee_Slow"
+    },
+    "immobilize": {
+      "mag": 0.67,
+      "scale": 10,
+      "table": "Melee_Immobilize"
     }
   }
 };

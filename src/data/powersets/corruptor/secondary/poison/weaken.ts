@@ -45,6 +45,67 @@ export const Weaken: Power = {
     "tohitDebuff": {
       "scale": 0.75,
       "table": "Ranged_Debuff_ToHit"
-    }
+    },
+    "enduranceDrain": {
+      "scale": 0.25,
+      "table": "Ranged_Stun"
+    },
+    "slow": {
+      "runSpeed": {
+        "scale": 0.25,
+        "table": "Ranged_Stun"
+      },
+      "flySpeed": {
+        "scale": 0.25,
+        "table": "Ranged_Stun"
+      }
+    },
+    "confuse": {
+      "mag": 1,
+      "scale": 0.5,
+      "table": "Ranged_Stun"
+    },
+    "fear": {
+      "mag": 1,
+      "scale": 0.5,
+      "table": "Ranged_Stun"
+    },
+    "hold": {
+      "mag": 1,
+      "scale": 0.5,
+      "table": "Ranged_Stun"
+    },
+    "immobilize": {
+      "mag": 1,
+      "scale": 0.5,
+      "table": "Ranged_Stun"
+    },
+    "stun": {
+      "mag": 1,
+      "scale": 0.5,
+      "table": "Ranged_Stun"
+    },
+    "sleep": {
+      "mag": 1,
+      "scale": 0.5,
+      "table": "Ranged_Stun"
+    },
+    "knockup": {
+      "scale": 0.25,
+      "table": "Ranged_Stun"
+    },
+    "knockback": {
+      "scale": 0.25,
+      "table": "Ranged_Stun"
+    },
+    "repel": {
+      "scale": 0.25,
+      "table": "Ranged_Stun"
+    },
+    "defenseDebuff": {
+      "scale": 0.25,
+      "table": "Ranged_Stun"
+    },
+    "effectDuration": 30
   }
 };

@@ -44,5 +44,32 @@ export const ScrambleMinds: Power = {
     "type": "Psionic",
     "scale": 1,
     "table": "Ranged_Damage"
+  },
+  "effects": {
+    "stun": {
+      "mag": 3,
+      "scale": 10,
+      "table": "Ranged_Stun"
+    },
+    "sleep": {
+      "mag": 3,
+      "scale": 10,
+      "table": "Ranged_Stun"
+    },
+    "immobilize": {
+      "mag": 3,
+      "scale": 10,
+      "table": "Ranged_Stun"
+    },
+    "fear": {
+      "mag": 3,
+      "scale": 10,
+      "table": "Ranged_Stun"
+    },
+    "hold": {
+      "mag": 3,
+      "scale": 8,
+      "table": "Ranged_Immobilize"
+    }
   }
 };

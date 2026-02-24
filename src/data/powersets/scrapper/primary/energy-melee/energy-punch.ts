@@ -53,5 +53,12 @@ export const EnergyPunch: Power = {
       "scale": 0.522,
       "table": "Melee_Damage"
     }
-  ]
+  ],
+  "effects": {
+    "stun": {
+      "mag": 2,
+      "scale": 5,
+      "table": "Melee_Stun"
+    }
+  }
 };

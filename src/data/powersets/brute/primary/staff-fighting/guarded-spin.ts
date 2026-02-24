@@ -40,6 +40,22 @@ export const GuardedSpin: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 0.2417,
+      "table": "Melee_Damage",
+      "duration": 1.5,
+      "tickRate": 0.3
+    },
+    {
+      "type": "Fire",
+      "scale": 0.1043,
+      "table": "Melee_Damage",
+      "duration": 1.5,
+      "tickRate": 0.3
+    }
+  ],
   "effects": {
     "defenseBuff": {
       "melee": {

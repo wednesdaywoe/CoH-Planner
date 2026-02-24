@@ -42,5 +42,12 @@ export const WillDomination: Power = {
     "type": "Psionic",
     "scale": 1.96,
     "table": "Ranged_Damage"
+  },
+  "effects": {
+    "sleep": {
+      "mag": 3,
+      "scale": 8,
+      "table": "Ranged_Sleep"
+    }
   }
 };

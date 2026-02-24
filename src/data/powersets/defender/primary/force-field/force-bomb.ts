@@ -84,6 +84,11 @@ export const ForceBomb: Power = {
         "scale": 1.5,
         "table": "Ranged_Debuff_Res_Dmg"
       }
+    },
+    "stun": {
+      "mag": 2,
+      "scale": 8,
+      "table": "Ranged_Stun"
     }
   }
 };

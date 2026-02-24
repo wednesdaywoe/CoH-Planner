@@ -37,5 +37,12 @@ export const SeedsofConfusion: Power = {
     "Confuse",
     "Controller Archetype Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "confuse": {
+      "mag": 3,
+      "scale": 8,
+      "table": "Ranged_Stun"
+    }
+  }
 };

@@ -39,10 +39,26 @@ export const AxeCyclone: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 1,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.45,
+      "table": "Melee_Damage"
+    }
+  ],
   "effects": {
     "repel": {
       "scale": 2,
       "table": "Ones"
+    },
+    "knockback": {
+      "scale": 0.67,
+      "table": "Melee_Ones"
     }
   }
 };

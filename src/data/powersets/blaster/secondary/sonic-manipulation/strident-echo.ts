@@ -52,5 +52,12 @@ export const StridentEcho: Power = {
       "duration": 2.1,
       "tickRate": 0.4
     }
-  ]
+  ],
+  "effects": {
+    "hold": {
+      "mag": 3,
+      "scale": 5,
+      "table": "Melee_Immobilize"
+    }
+  }
 };

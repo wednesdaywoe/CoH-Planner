@@ -30,5 +30,71 @@ export const MaskPresence: Power = {
   "allowedSetCategories": [
     "Defense Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "damageBuff": {
+      "scale": 4,
+      "table": "Melee_Buff_Dmg"
+    },
+    "defenseBuff": {
+      "ranged": {
+        "scale": 1,
+        "table": "Melee_Buff_Def"
+      },
+      "melee": {
+        "scale": 1,
+        "table": "Melee_Buff_Def"
+      },
+      "aoe": {
+        "scale": 1,
+        "table": "Melee_Buff_Def"
+      },
+      "smashing": {
+        "scale": 1,
+        "table": "Melee_Buff_Def"
+      },
+      "lethal": {
+        "scale": 1,
+        "table": "Melee_Buff_Def"
+      },
+      "fire": {
+        "scale": 1,
+        "table": "Melee_Buff_Def"
+      },
+      "cold": {
+        "scale": 1,
+        "table": "Melee_Buff_Def"
+      },
+      "energy": {
+        "scale": 1,
+        "table": "Melee_Buff_Def"
+      },
+      "negative": {
+        "scale": 1,
+        "table": "Melee_Buff_Def"
+      },
+      "psionic": {
+        "scale": 1,
+        "table": "Melee_Buff_Def"
+      },
+      "toxic": {
+        "scale": 1,
+        "table": "Melee_Buff_Def"
+      }
+    },
+    "stealth": {
+      "stealthPvE": {
+        "scale": 35.5,
+        "table": "Melee_Ones"
+      },
+      "stealthPvP": {
+        "scale": 390,
+        "table": "Melee_Ones"
+      },
+      "translucency": {
+        "scale": 0.15,
+        "table": "Melee_Ones"
+      }
+    }
+  }
 };

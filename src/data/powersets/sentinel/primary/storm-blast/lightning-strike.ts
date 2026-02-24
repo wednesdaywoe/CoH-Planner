@@ -46,6 +46,11 @@ export const LightningStrike: Power = {
     "enduranceDrain": {
       "scale": 0.1,
       "table": "Ranged_EndDrain"
+    },
+    "stun": {
+      "mag": 3,
+      "scale": 2,
+      "table": "Ranged_Stun"
     }
   }
 };

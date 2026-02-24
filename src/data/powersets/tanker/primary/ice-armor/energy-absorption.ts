@@ -34,5 +34,37 @@ export const EnergyAbsorption: Power = {
     "Endurance Modification",
     "Threat Duration"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "movement": {
+      "runSpeed": {
+        "scale": 0.2,
+        "table": "Melee_Ones"
+      },
+      "flySpeed": {
+        "scale": 0.2,
+        "table": "Melee_Ones"
+      },
+      "jumpSpeed": {
+        "scale": 0.2,
+        "table": "Melee_Ones"
+      },
+      "jumpHeight": {
+        "scale": 0.2,
+        "table": "Melee_Ones"
+      }
+    },
+    "rechargeBuff": {
+      "scale": 0.2,
+      "table": "Melee_Ones"
+    },
+    "enduranceGain": {
+      "scale": 15,
+      "table": "Melee_Ones"
+    },
+    "enduranceDrain": {
+      "scale": 0.35,
+      "table": "Melee_Ones"
+    }
+  }
 };

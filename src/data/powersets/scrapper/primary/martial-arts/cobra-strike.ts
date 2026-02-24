@@ -48,5 +48,12 @@ export const CobraStrike: Power = {
       "scale": 0.882,
       "table": "Melee_Damage"
     }
-  ]
+  ],
+  "effects": {
+    "stun": {
+      "mag": 3,
+      "scale": 10,
+      "table": "Melee_Stun"
+    }
+  }
 };

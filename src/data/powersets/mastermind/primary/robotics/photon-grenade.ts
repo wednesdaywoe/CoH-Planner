@@ -48,6 +48,11 @@ export const PhotonGrenade: Power = {
     "regenDebuff": {
       "scale": 2,
       "table": "Ranged_Ones"
+    },
+    "stun": {
+      "mag": 2,
+      "scale": 4,
+      "table": "Ranged_Stun"
     }
   }
 };

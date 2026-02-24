@@ -44,5 +44,15 @@ export const Chop: Power = {
     "type": "Lethal",
     "scale": 1.64,
     "table": "Melee_Damage"
+  },
+  "effects": {
+    "knockback": {
+      "scale": 0.67,
+      "table": "Melee_Ones"
+    },
+    "defenseDebuff": {
+      "scale": 1,
+      "table": "Melee_Debuff_Def"
+    }
   }
 };

@@ -55,5 +55,12 @@ export const WhirlingHands: Power = {
       "scale": 0.5318,
       "table": "Melee_Damage"
     }
-  ]
+  ],
+  "effects": {
+    "stun": {
+      "mag": 2,
+      "scale": 5,
+      "table": "Melee_Stun"
+    }
+  }
 };

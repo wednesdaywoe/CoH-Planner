@@ -53,6 +53,67 @@ export const BoneSmasher: Power = {
     "regenDebuff": {
       "scale": 0.5,
       "table": "Melee_Ones"
-    }
+    },
+    "stun": {
+      "mag": 3,
+      "scale": 8,
+      "table": "Melee_Stun"
+    },
+    "damageDebuff": {
+      "scale": 0.25,
+      "table": "Melee_Stun"
+    },
+    "absorb": {
+      "scale": 0.25,
+      "table": "Melee_Stun"
+    },
+    "enduranceDrain": {
+      "scale": 0.25,
+      "table": "Melee_Stun"
+    },
+    "slow": {
+      "runSpeed": {
+        "scale": 0.25,
+        "table": "Melee_Stun"
+      },
+      "flySpeed": {
+        "scale": 0.25,
+        "table": "Melee_Stun"
+      }
+    },
+    "confuse": {
+      "mag": 1,
+      "scale": 0.25,
+      "table": "Melee_Stun"
+    },
+    "fear": {
+      "mag": 1,
+      "scale": 0.25,
+      "table": "Melee_Stun"
+    },
+    "hold": {
+      "mag": 1,
+      "scale": 0.25,
+      "table": "Melee_Stun"
+    },
+    "immobilize": {
+      "mag": 1,
+      "scale": 0.25,
+      "table": "Melee_Stun"
+    },
+    "sleep": {
+      "mag": 1,
+      "scale": 0.25,
+      "table": "Melee_Stun"
+    },
+    "defenseDebuff": {
+      "scale": 0.25,
+      "table": "Melee_Stun"
+    },
+    "tohitDebuff": {
+      "scale": 0.25,
+      "table": "Melee_Stun"
+    },
+    "effectDuration": 15
   }
 };

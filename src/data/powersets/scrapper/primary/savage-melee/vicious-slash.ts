@@ -47,5 +47,11 @@ export const ViciousSlash: Power = {
       "scale": 0.81,
       "table": "Melee_Damage"
     }
-  ]
+  ],
+  "effects": {
+    "knockback": {
+      "scale": 0.67,
+      "table": "Melee_Ones"
+    }
+  }
 };

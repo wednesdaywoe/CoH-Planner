@@ -40,5 +40,56 @@ export const InnocuousStrikes: Power = {
     "Slow Movement",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 0.332,
+      "table": "Melee_Damage",
+      "duration": 1.7,
+      "tickRate": 0.4
+    },
+    {
+      "type": "Fire",
+      "scale": 0.1494,
+      "table": "Melee_Damage",
+      "duration": 1.7,
+      "tickRate": 0.4
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.66,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.66,
+      "table": "Melee_InherentDamage"
+    }
+  ],
+  "effects": {
+    "movement": {
+      "runSpeed": {
+        "scale": 0.15,
+        "table": "Melee_Slow"
+      },
+      "flySpeed": {
+        "scale": 0.15,
+        "table": "Melee_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.15,
+        "table": "Melee_Slow"
+      },
+      "jumpHeight": {
+        "scale": 0.15,
+        "table": "Melee_Slow"
+      }
+    },
+    "immobilize": {
+      "mag": 3,
+      "scale": 10,
+      "table": "Melee_Immobilize"
+    }
+  }
 };

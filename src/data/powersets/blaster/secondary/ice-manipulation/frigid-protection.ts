@@ -62,6 +62,12 @@ export const FrigidProtection: Power = {
     "damageDebuff": {
       "scale": 2,
       "table": "Melee_Debuff_Dam"
+    },
+    "slow": {
+      "runSpeed": {
+        "scale": 1,
+        "table": "Melee_SpeedRunning"
+      }
     }
   }
 };

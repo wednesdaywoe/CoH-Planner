@@ -32,5 +32,26 @@ export const IcyBastion: Power = {
     "Healing",
     "Resist Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "regenBuff": {
+      "scale": 6,
+      "table": "Melee_Ones"
+    },
+    "recoveryBuff": {
+      "scale": 2,
+      "table": "Melee_Ones"
+    },
+    "slow": {
+      "fly": {
+        "scale": 10000,
+        "table": "Melee_Ones"
+      }
+    },
+    "immobilize": {
+      "mag": 1000,
+      "scale": 0.75,
+      "table": "Melee_Ones"
+    }
+  }
 };

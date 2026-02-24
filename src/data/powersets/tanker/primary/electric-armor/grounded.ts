@@ -26,5 +26,51 @@ export const Grounded: Power = {
   "allowedSetCategories": [
     "Resist Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "resistance": {
+      "smashing": {
+        "scale": 0.8,
+        "table": "Melee_Res_Dmg"
+      },
+      "lethal": {
+        "scale": 0.8,
+        "table": "Melee_Res_Dmg"
+      },
+      "fire": {
+        "scale": 0.8,
+        "table": "Melee_Res_Dmg"
+      },
+      "cold": {
+        "scale": 0.8,
+        "table": "Melee_Res_Dmg"
+      },
+      "energy": {
+        "scale": 1.25,
+        "table": "Melee_Res_Dmg"
+      },
+      "negative": {
+        "scale": 1,
+        "table": "Melee_Res_Dmg"
+      }
+    },
+    "enduranceGain": {
+      "scale": 2,
+      "table": "Melee_Res_Boolean"
+    },
+    "knockup": {
+      "scale": 6,
+      "table": "Melee_Knockback"
+    },
+    "knockback": {
+      "scale": 6,
+      "table": "Melee_Knockback"
+    },
+    "immobilize": {
+      "mag": 1,
+      "scale": 6,
+      "table": "Melee_Ones"
+    },
+    "effectDuration": 1
+  }
 };

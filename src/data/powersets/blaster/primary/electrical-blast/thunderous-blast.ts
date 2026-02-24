@@ -59,6 +59,10 @@ export const ThunderousBlast: Power = {
     "recoveryDebuff": {
       "scale": 1,
       "table": "Ranged_Ones"
+    },
+    "enduranceGain": {
+      "scale": 6.93,
+      "table": "Ranged_EndDrain"
     }
   }
 };

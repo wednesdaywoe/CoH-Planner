@@ -51,6 +51,10 @@ export const HeadSplitter: Power = {
     "defenseDebuff": {
       "scale": 1,
       "table": "Melee_Debuff_Def"
+    },
+    "knockback": {
+      "scale": 0.67,
+      "table": "Melee_Ones"
     }
   }
 };

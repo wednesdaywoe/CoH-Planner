@@ -76,6 +76,58 @@ export const IceArrow: Power = {
     "knockback": {
       "scale": 100,
       "table": "Ranged_Ones"
-    }
+    },
+    "absorb": {
+      "scale": 0.45,
+      "table": "Ranged_Special"
+    },
+    "enduranceDrain": {
+      "scale": 0.45,
+      "table": "Ranged_Special"
+    },
+    "slow": {
+      "runSpeed": {
+        "scale": 0.45,
+        "table": "Ranged_Special"
+      },
+      "flySpeed": {
+        "scale": 0.45,
+        "table": "Ranged_Special"
+      }
+    },
+    "confuse": {
+      "mag": 1,
+      "scale": 0.45,
+      "table": "Ranged_Special"
+    },
+    "fear": {
+      "mag": 1,
+      "scale": 0.45,
+      "table": "Ranged_Special"
+    },
+    "immobilize": {
+      "mag": 1,
+      "scale": 0.45,
+      "table": "Ranged_Special"
+    },
+    "stun": {
+      "mag": 1,
+      "scale": 0.45,
+      "table": "Ranged_Special"
+    },
+    "sleep": {
+      "mag": 1,
+      "scale": 0.45,
+      "table": "Ranged_Special"
+    },
+    "defenseDebuff": {
+      "scale": 0.45,
+      "table": "Ranged_Special"
+    },
+    "tohitDebuff": {
+      "scale": 0.45,
+      "table": "Ranged_Special"
+    },
+    "effectDuration": 60
   }
 };

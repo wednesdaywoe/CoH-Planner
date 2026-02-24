@@ -30,5 +30,52 @@ export const ImpenetrableMind: Power = {
   "allowedSetCategories": [
     "Resist Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "resistance": {
+      "psionic": {
+        "scale": 1,
+        "table": "Melee_Res_Dmg"
+      }
+    },
+    "confuse": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "fear": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "hold": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "immobilize": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "stun": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "sleep": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "knockup": {
+      "scale": 1,
+      "table": "Melee_Ones"
+    },
+    "knockback": {
+      "scale": 1,
+      "table": "Melee_Ones"
+    },
+    "effectDuration": 0.75
+  }
 };

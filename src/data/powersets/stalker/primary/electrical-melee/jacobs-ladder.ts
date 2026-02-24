@@ -54,6 +54,11 @@ export const JacobsLadder: Power = {
     "recoveryDebuff": {
       "scale": 1,
       "table": "Melee_Ones"
+    },
+    "sleep": {
+      "mag": 2,
+      "scale": 6,
+      "table": "Melee_Sleep"
     }
   }
 };

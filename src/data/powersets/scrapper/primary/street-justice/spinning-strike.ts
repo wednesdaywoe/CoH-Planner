@@ -37,5 +37,61 @@ export const SpinningStrike: Power = {
     "Scrapper Archetype Sets",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 0.77,
+      "table": "Melee_Damage",
+      "duration": 0.45,
+      "tickRate": 0.4
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.8085,
+      "table": "Melee_Damage",
+      "duration": 0.45,
+      "tickRate": 0.4
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.8624,
+      "table": "Melee_Damage",
+      "duration": 0.45,
+      "tickRate": 0.4
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.9625,
+      "table": "Melee_Damage",
+      "duration": 0.45,
+      "tickRate": 0.4
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.54,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.54,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.693,
+      "table": "Melee_Damage"
+    }
+  ],
+  "effects": {
+    "knockback": {
+      "scale": 0.67,
+      "table": "Melee_Ones"
+    },
+    "fear": {
+      "mag": 3,
+      "scale": 6,
+      "table": "Melee_Fear"
+    }
+  }
 };

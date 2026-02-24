@@ -55,6 +55,10 @@ export const RadioactiveSmash: Power = {
     "defenseDebuff": {
       "scale": 1.5,
       "table": "Melee_Debuff_Def"
+    },
+    "knockback": {
+      "scale": 0.67,
+      "table": "Melee_Ones"
     }
   }
 };

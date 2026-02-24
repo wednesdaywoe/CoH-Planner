@@ -44,5 +44,12 @@ export const FlashFreeze: Power = {
     "type": "Cold",
     "scale": 0.2,
     "table": "Ranged_Damage"
+  },
+  "effects": {
+    "sleep": {
+      "mag": 3,
+      "scale": 12,
+      "table": "Ranged_Sleep"
+    }
   }
 };

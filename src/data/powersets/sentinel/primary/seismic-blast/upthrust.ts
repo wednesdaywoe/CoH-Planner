@@ -67,6 +67,10 @@ export const Upthrust: Power = {
         "scale": 1,
         "table": "Ranged_Slow"
       }
+    },
+    "knockback": {
+      "scale": 0.33,
+      "table": "Ranged_Ones"
     }
   }
 };

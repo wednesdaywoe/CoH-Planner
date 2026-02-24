@@ -44,5 +44,15 @@ export const JetStream: Power = {
     "type": "Smashing",
     "scale": 0.8,
     "table": "Ranged_Damage"
+  },
+  "effects": {
+    "repel": {
+      "scale": 4,
+      "table": "Melee_Ones"
+    },
+    "knockback": {
+      "scale": 0.67,
+      "table": "Ranged_Ones"
+    }
   }
 };

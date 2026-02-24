@@ -41,5 +41,28 @@ export const AtomSmasher: Power = {
     "Stuns",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Energy",
+      "scale": 0.388,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Toxic",
+      "scale": 1.164,
+      "table": "Melee_Damage"
+    }
+  ],
+  "effects": {
+    "stun": {
+      "mag": 2,
+      "scale": 6,
+      "table": "Melee_Immobilize"
+    },
+    "defenseDebuff": {
+      "scale": 1.2,
+      "table": "Melee_Debuff_Def"
+    }
+  }
 };

@@ -83,6 +83,11 @@ export const ForceBomb: Power = {
     "knockback": {
       "scale": 9,
       "table": "Ranged_Ones"
+    },
+    "stun": {
+      "mag": 2,
+      "scale": 8,
+      "table": "Ranged_Stun"
     }
   }
 };

@@ -45,6 +45,19 @@ export const BlindingPowder: Power = {
       "mag": 2,
       "scale": 10,
       "table": "Melee_Sleep"
+    },
+    "confuse": {
+      "mag": 2,
+      "scale": 20,
+      "table": "Melee_Immobilize"
+    },
+    "perceptionDebuff": {
+      "scale": 0.9,
+      "table": "Melee_Ones"
+    },
+    "tohitDebuff": {
+      "scale": 1,
+      "table": "Melee_DeBuff_ToHit"
     }
   }
 };

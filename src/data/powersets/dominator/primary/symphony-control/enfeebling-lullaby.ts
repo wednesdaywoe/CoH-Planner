@@ -50,6 +50,11 @@ export const EnfeeblingLullaby: Power = {
     "damageDebuff": {
       "scale": 2,
       "table": "Melee_Debuff_Dam"
+    },
+    "sleep": {
+      "mag": 3,
+      "scale": 12,
+      "table": "Ranged_Sleep"
     }
   }
 };

@@ -41,5 +41,12 @@ export const Buttstroke: Power = {
     "type": "Smashing",
     "scale": 1.64,
     "table": "Melee_Damage"
+  },
+  "effects": {
+    "stun": {
+      "mag": 3,
+      "scale": 8,
+      "table": "Melee_Stun"
+    }
   }
 };

@@ -48,5 +48,12 @@ export const Earsplitter: Power = {
       "scale": 1.78,
       "table": "Melee_Damage"
     }
-  ]
+  ],
+  "effects": {
+    "hold": {
+      "mag": 3,
+      "scale": 5,
+      "table": "Melee_Immobilize"
+    }
+  }
 };

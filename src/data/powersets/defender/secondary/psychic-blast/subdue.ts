@@ -41,5 +41,12 @@ export const Subdue: Power = {
     "type": "Psionic",
     "scale": 1,
     "table": "Ranged_Damage"
+  },
+  "effects": {
+    "immobilize": {
+      "mag": 3,
+      "scale": 6,
+      "table": "Ranged_Immobilize"
+    }
   }
 };

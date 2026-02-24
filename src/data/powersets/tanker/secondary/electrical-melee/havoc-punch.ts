@@ -63,6 +63,11 @@ export const HavocPunch: Power = {
     "enduranceDrain": {
       "scale": 0.1,
       "table": "Melee_Ones"
+    },
+    "sleep": {
+      "mag": 2,
+      "scale": 8,
+      "table": "Melee_Sleep"
     }
   }
 };

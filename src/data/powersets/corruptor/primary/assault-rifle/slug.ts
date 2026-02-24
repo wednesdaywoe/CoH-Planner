@@ -41,5 +41,11 @@ export const Slug: Power = {
     "type": "Lethal",
     "scale": 1.64,
     "table": "Ranged_Damage"
+  },
+  "effects": {
+    "knockback": {
+      "scale": 0.75,
+      "table": "Ranged_Knockback"
+    }
   }
 };

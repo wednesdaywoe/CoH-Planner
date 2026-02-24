@@ -48,5 +48,11 @@ export const TelekineticBlast: Power = {
       "scale": 1,
       "table": "Ranged_Damage"
     }
-  ]
+  ],
+  "effects": {
+    "knockback": {
+      "scale": 4,
+      "table": "Ranged_Knockback"
+    }
+  }
 };

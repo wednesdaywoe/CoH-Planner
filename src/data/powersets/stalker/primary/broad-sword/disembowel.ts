@@ -48,6 +48,10 @@ export const Disembowel: Power = {
     "defenseDebuff": {
       "scale": 1,
       "table": "Melee_Debuff_Def"
+    },
+    "knockup": {
+      "scale": 2,
+      "table": "Melee_Knockback"
     }
   }
 };

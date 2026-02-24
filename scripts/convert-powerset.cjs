@@ -915,13 +915,34 @@ export default powerset;
   return { powerset: indexJson, powers, outputDir };
 }
 
-// Main execution
-const args = process.argv.slice(2);
-if (args.length < 2) {
-  console.log('Usage: node scripts/convert-powerset.js <category> <powerset>');
-  console.log('Example: node scripts/convert-powerset.js defender_buff radiation_emission');
-  console.log('\nAvailable categories:', Object.keys(CATEGORY_MAP).join(', '));
-  process.exit(1);
-}
+// Export for reuse by other scripts (e.g., audit-powerset-effects.cjs)
+module.exports = {
+  extractEffects,
+  extractDamage,
+  CATEGORY_MAP,
+  DAMAGE_TYPES,
+  DEFENSE_POSITIONS,
+  ELUSIVITY_TYPES,
+  MEZ_TYPES,
+  KNOCKBACK_TYPES,
+  MOVEMENT_TYPES,
+  RESOURCE_TYPES,
+  COMBAT_MODIFIERS,
+  STEALTH_TYPES,
+  CONTROL_TYPES,
+  SPECIAL_ATTRIBS,
+  RAW_DATA_PATH,
+};
 
-convertPowerset(args[0], args[1]);
+// Main execution (only when run directly)
+if (require.main === module) {
+  const args = process.argv.slice(2);
+  if (args.length < 2) {
+    console.log('Usage: node scripts/convert-powerset.js <category> <powerset>');
+    console.log('Example: node scripts/convert-powerset.js defender_buff radiation_emission');
+    console.log('\nAvailable categories:', Object.keys(CATEGORY_MAP).join(', '));
+    process.exit(1);
+  }
+
+  convertPowerset(args[0], args[1]);
+}

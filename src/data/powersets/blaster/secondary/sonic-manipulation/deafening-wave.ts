@@ -50,5 +50,12 @@ export const DeafeningWave: Power = {
       "scale": 0.5477,
       "table": "Melee_Damage"
     }
-  ]
+  ],
+  "effects": {
+    "hold": {
+      "mag": 2,
+      "scale": 5,
+      "table": "Melee_Immobilize"
+    }
+  }
 };

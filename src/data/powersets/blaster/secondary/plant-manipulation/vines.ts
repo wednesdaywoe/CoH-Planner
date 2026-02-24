@@ -41,6 +41,16 @@ export const Vines: Power = {
     "damageBuff": {
       "scale": 0,
       "table": "Ranged_Ones"
+    },
+    "hold": {
+      "mag": 2,
+      "scale": 8,
+      "table": "Ranged_Immobilize"
+    },
+    "immobilize": {
+      "mag": 3,
+      "scale": 15,
+      "table": "Ranged_Immobilize"
     }
   }
 };

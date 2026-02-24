@@ -36,5 +36,12 @@ export const SporeBurst: Power = {
     "Controller Archetype Sets",
     "Sleep"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "sleep": {
+      "mag": 3,
+      "scale": 12,
+      "table": "Ranged_Sleep"
+    }
+  }
 };

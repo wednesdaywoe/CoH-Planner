@@ -46,6 +46,14 @@ export const ChargedBolts: Power = {
     "enduranceDrain": {
       "scale": 0.07,
       "table": "Ranged_EndDrain"
+    },
+    "enduranceGain": {
+      "scale": 2.6,
+      "table": "Ranged_EndDrain"
+    },
+    "recoveryDebuff": {
+      "scale": 0.4,
+      "table": "Ranged_EndDrain"
     }
   }
 };

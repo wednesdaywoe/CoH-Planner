@@ -36,5 +36,19 @@ export const PowerSink: Power = {
     "Endurance Modification",
     "Healing"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "enduranceGain": {
+      "scale": 15,
+      "table": "Melee_Ones"
+    },
+    "regenBuff": {
+      "scale": 0.175,
+      "table": "Melee_Ones"
+    },
+    "enduranceDrain": {
+      "scale": 0.35,
+      "table": "Melee_Ones"
+    }
+  }
 };

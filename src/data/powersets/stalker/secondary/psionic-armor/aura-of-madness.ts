@@ -40,5 +40,93 @@ export const AuraofMadness: Power = {
     "Sleep",
     "Stuns"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Special",
+      "scale": -0.05,
+      "table": "Melee_HealSelf"
+    },
+    {
+      "type": "Psionic",
+      "scale": 0.05,
+      "table": "Melee_Damage",
+      "duration": 3.75,
+      "tickRate": 1
+    }
+  ],
+  "effects": {
+    "regenDebuff": {
+      "scale": 0.75,
+      "table": "Melee_Ones"
+    },
+    "resistanceDebuff": {
+      "smashing": {
+        "scale": 1,
+        "table": "Melee_Debuff_Def"
+      },
+      "lethal": {
+        "scale": 1,
+        "table": "Melee_Debuff_Def"
+      },
+      "fire": {
+        "scale": 1,
+        "table": "Melee_Debuff_Def"
+      },
+      "cold": {
+        "scale": 1,
+        "table": "Melee_Debuff_Def"
+      },
+      "energy": {
+        "scale": 1,
+        "table": "Melee_Debuff_Def"
+      },
+      "negative": {
+        "scale": 1,
+        "table": "Melee_Debuff_Def"
+      },
+      "psionic": {
+        "scale": 1,
+        "table": "Melee_Debuff_Def"
+      },
+      "toxic": {
+        "scale": 1,
+        "table": "Melee_Debuff_Def"
+      }
+    },
+    "defenseDebuff": {
+      "scale": 1,
+      "table": "Melee_Debuff_Def"
+    },
+    "tohitDebuff": {
+      "scale": 1,
+      "table": "Melee_DeBuff_ToHit"
+    },
+    "confuse": {
+      "mag": 2,
+      "scale": 2,
+      "table": "Melee_Ones"
+    },
+    "stun": {
+      "mag": 2,
+      "scale": 2,
+      "table": "Melee_Ones"
+    },
+    "sleep": {
+      "mag": 2,
+      "scale": 2,
+      "table": "Melee_Ones"
+    },
+    "hold": {
+      "mag": 2,
+      "scale": 2,
+      "table": "Melee_Ones"
+    },
+    "fear": {
+      "mag": 2,
+      "scale": 2,
+      "table": "Melee_Ones"
+    },
+    "effectDuration": 4
+  }
 };

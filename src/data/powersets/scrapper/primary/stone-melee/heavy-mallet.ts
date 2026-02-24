@@ -40,5 +40,11 @@ export const HeavyMallet: Power = {
     "type": "Smashing",
     "scale": 2.28,
     "table": "Melee_Damage"
+  },
+  "effects": {
+    "knockback": {
+      "scale": 0.67,
+      "table": "Melee_Ones"
+    }
   }
 };

@@ -30,5 +30,41 @@ export const StaticShield: Power = {
   "allowedSetCategories": [
     "Resist Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "enduranceGain": {
+      "scale": 3,
+      "table": "Melee_Res_Boolean"
+    },
+    "recoveryBuff": {
+      "scale": 3,
+      "table": "Melee_Res_Boolean"
+    },
+    "hold": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "stun": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "sleep": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "resistance": {
+      "psionic": {
+        "scale": 3.5,
+        "table": "Melee_Res_Dmg"
+      },
+      "toxic": {
+        "scale": 2,
+        "table": "Melee_Res_Dmg"
+      }
+    },
+    "effectDuration": 0.75
+  }
 };

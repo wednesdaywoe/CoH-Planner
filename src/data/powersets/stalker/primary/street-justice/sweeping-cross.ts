@@ -39,5 +39,48 @@ export const SweepingCross: Power = {
     "Stuns",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 1.336,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.5162,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.6173,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.805,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.444,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.444,
+      "table": "Melee_InherentDamage"
+    }
+  ],
+  "effects": {
+    "stun": {
+      "mag": 3,
+      "scale": 6,
+      "table": "Melee_Stun"
+    },
+    "knockback": {
+      "scale": 0.67,
+      "table": "Melee_Ones"
+    }
+  }
 };

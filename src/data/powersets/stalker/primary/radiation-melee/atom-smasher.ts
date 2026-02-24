@@ -58,6 +58,11 @@ export const AtomSmasher: Power = {
     "defenseDebuff": {
       "scale": 1.2,
       "table": "Melee_Debuff_Def"
+    },
+    "stun": {
+      "mag": 2,
+      "scale": 6,
+      "table": "Melee_Immobilize"
     }
   }
 };

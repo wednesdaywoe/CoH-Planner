@@ -49,5 +49,10 @@ export const GreaterFireSword: Power = {
       "tickRate": 0.5
     }
   ],
-
+  "effects": {
+    "defenseDebuff": {
+      "scale": 0.5,
+      "table": "Melee_Debuff_Def"
+    }
+  }
 };

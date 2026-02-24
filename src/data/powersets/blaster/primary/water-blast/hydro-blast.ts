@@ -69,6 +69,10 @@ export const HydroBlast: Power = {
         "scale": 0.2,
         "table": "Ranged_Slow"
       }
+    },
+    "knockback": {
+      "scale": 0.67,
+      "table": "Ranged_Ones"
     }
   }
 };

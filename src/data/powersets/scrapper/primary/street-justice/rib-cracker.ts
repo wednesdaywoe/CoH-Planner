@@ -34,5 +34,67 @@ export const RibCracker: Power = {
     "Scrapper Archetype Sets",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 1.32,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.32,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.32,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.594,
+      "table": "Melee_Damage"
+    }
+  ],
+  "effects": {
+    "damageDebuff": {
+      "scale": 1.5,
+      "table": "Melee_Debuff_Dam"
+    },
+    "resistanceDebuff": {
+      "smashing": {
+        "scale": 1,
+        "table": "Melee_Debuff_Res_Dmg"
+      },
+      "lethal": {
+        "scale": 1,
+        "table": "Melee_Debuff_Res_Dmg"
+      },
+      "fire": {
+        "scale": 1,
+        "table": "Melee_Debuff_Res_Dmg"
+      },
+      "cold": {
+        "scale": 1,
+        "table": "Melee_Debuff_Res_Dmg"
+      },
+      "energy": {
+        "scale": 1,
+        "table": "Melee_Debuff_Res_Dmg"
+      },
+      "negative": {
+        "scale": 1,
+        "table": "Melee_Debuff_Res_Dmg"
+      },
+      "psionic": {
+        "scale": 1,
+        "table": "Melee_Debuff_Res_Dmg"
+      },
+      "toxic": {
+        "scale": 1,
+        "table": "Melee_Debuff_Res_Dmg"
+      }
+    }
+  }
 };

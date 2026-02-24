@@ -50,6 +50,20 @@ export const Telekinesis: Power = {
     "knockback": {
       "scale": 100,
       "table": "Ranged_Ones"
+    },
+    "repel": {
+      "scale": 1,
+      "table": "Melee_Ones"
+    },
+    "movement": {
+      "fly": {
+        "scale": 1,
+        "table": "Melee_Ones"
+      },
+      "flySpeed": {
+        "scale": 1.1788,
+        "table": "Melee_SpeedFlying"
+      }
     }
   }
 };

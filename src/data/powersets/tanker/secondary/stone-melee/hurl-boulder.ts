@@ -49,6 +49,10 @@ export const HurlBoulder: Power = {
         "scale": 1.6,
         "table": "Melee_Ones"
       }
+    },
+    "knockback": {
+      "scale": 3,
+      "table": "Melee_Knockback"
     }
   }
 };
