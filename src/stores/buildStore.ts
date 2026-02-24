@@ -547,6 +547,13 @@ export const useBuildStore = create<BuildStore>()(
             return state;
           }
 
+          // Always use the CURRENT store level, not the potentially stale level
+          // passed from the component closure. This prevents two powers getting
+          // the same level when the user clicks rapidly between renders.
+          if (category !== 'inherent') {
+            power = { ...power, level: state.build.level };
+          }
+
           // Default toggle/auto powers to active
           if ((power.powerType === 'Toggle' || power.powerType === 'Auto') && power.isActive === undefined) {
             power = { ...power, isActive: true };
