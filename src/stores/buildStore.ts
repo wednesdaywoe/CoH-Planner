@@ -391,42 +391,29 @@ function countSelectedPowers(build: Build): number {
 }
 
 /**
- * Get the next level that grants a power pick after the current level
+ * Calculate the correct build level based on the current number of selected powers.
+ * Works bidirectionally — advances when powers are added, rewinds when removed.
  */
-function getNextPowerPickLevel(currentLevel: number): number {
+function calculateCorrectLevel(build: Build): number {
+  const totalPowers = countSelectedPowers(build);
+
+  // Level 1 special: need both a primary and secondary power before advancing
+  const hasPrimary = build.primary.powers.length >= 1;
+  const hasSecondary = build.secondary.powers.length >= 1;
+  if (!hasPrimary || !hasSecondary) {
+    return 1;
+  }
+
+  // Find the first power pick level where available picks exceed current count.
+  // That level still has an open slot, so the cursor belongs there.
   for (const level of POWER_PICK_LEVELS) {
-    if (level > currentLevel) {
+    if (getPowerPicksAtLevel(level) > totalPowers) {
       return level;
     }
   }
-  return 50; // Max level
-}
 
-/**
- * Check if level should auto-advance based on power picks used
- * Returns the new level if should advance, or current level if not
- */
-function calculateAutoAdvanceLevel(build: Build): number {
-  // Level 1 special case: need 2 powers (1 primary + 1 secondary)
-  if (build.level === 1) {
-    const hasPrimary = build.primary.powers.length >= 1;
-    const hasSecondary = build.secondary.powers.length >= 1;
-    if (hasPrimary && hasSecondary) {
-      return getNextPowerPickLevel(build.level);
-    }
-    return build.level;
-  }
-
-  // For levels 2+, use standard power pick count
-  const totalPowers = countSelectedPowers(build);
-  const allowedPicks = getPowerPicksAtLevel(build.level);
-
-  // If we've used all power picks at this level, advance to next power pick level
-  if (totalPowers >= allowedPicks) {
-    return getNextPowerPickLevel(build.level);
-  }
-
-  return build.level;
+  // All 24 picks used — stay at the last pick level
+  return POWER_PICK_LEVELS[POWER_PICK_LEVELS.length - 1];
 }
 
 // ============================================
@@ -603,7 +590,7 @@ export const useBuildStore = create<BuildStore>()(
           // Auto-advance level if all power picks for current level have been used
           // Only auto-advance for primary/secondary/pool powers (not inherents)
           if (category !== 'inherent') {
-            newBuild.level = calculateAutoAdvanceLevel(newBuild);
+            newBuild.level = calculateCorrectLevel(newBuild);
           }
 
           return { build: newBuild };
@@ -647,6 +634,11 @@ export const useBuildStore = create<BuildStore>()(
                 (p) => p.name !== powerName || p.isLocked
               );
               break;
+          }
+
+          // Recalculate level — rewind to the freed-up power pick slot
+          if (category !== 'inherent') {
+            newBuild.level = calculateCorrectLevel(newBuild);
           }
 
           // Update set tracking
