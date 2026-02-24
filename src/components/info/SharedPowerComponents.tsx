@@ -13,7 +13,7 @@ import {
   expandProtectionEntries,
 } from './powerDisplayUtils';
 import type { ThreeTierValues } from './powerDisplayUtils';
-import type { PowerDamageResult } from '@/utils/calculations';
+import { abbreviateDamageType, type PowerDamageResult } from '@/utils/calculations';
 import {
   EFFECT_REGISTRY,
   CATEGORY_CONFIG,
@@ -532,7 +532,7 @@ export function RegistryEffectsDisplay({
           return (
             <>
               <div className={`grid ${gridCols} gap-1 items-baseline ${fontSize}`}>
-                <span className="text-red-400">{isDot ? `${damage.type}/tick` : damage.type}</span>
+                <span className="text-red-400">{isDot ? `${abbreviateDamageType(damage.type)}/tick` : abbreviateDamageType(damage.type)}</span>
                 <span className="text-slate-200">{damage.base.toFixed(2)}</span>
                 <span className={hasEnh ? 'text-green-400' : 'text-slate-400'}>
                   {damage.enhanced.toFixed(2)}

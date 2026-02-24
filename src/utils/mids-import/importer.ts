@@ -594,19 +594,10 @@ function createInherentSelectedPower(def: InherentPowerDef): SelectedPower {
   const slots: (Enhancement | null)[] = def.maxSlots === 0 ? [] : [null];
 
   return {
-    name: def.name,
-    fullName: def.fullName,
-    description: def.description,
-    icon: def.icon,
-    powerType: def.powerType,
+    ...def,
     powerSet: 'Inherent',
     level: 1,
-    available: -1,
-    maxSlots: def.maxSlots,
-    allowedEnhancements: def.allowedEnhancements as SelectedPower['allowedEnhancements'],
-    allowedSetCategories: def.allowedSetCategories as SelectedPower['allowedSetCategories'],
     slots,
-    effects: {},
     isLocked: def.isLocked ?? true,
     inherentCategory: def.category,
   };

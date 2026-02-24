@@ -7,14 +7,10 @@
 import { useMemo } from 'react';
 import { useUIStore, useBuildStore, useDominationActive } from '@/stores';
 import {
-  getPower,
-  getPowerPool,
-  getEpicPool,
+  lookupPower,
   getArchetype,
   getIOSet,
-  getPowerset,
   getPowerIconPath,
-  getInherentPowerDef,
   getIncarnateIconPath,
   getAlphaEffects,
   getDestinyEffects,
@@ -27,8 +23,7 @@ import {
   mergeWithSupportEffects,
 } from '@/data';
 import { useGlobalBonuses } from '@/hooks/useCalculatedStats';
-import { calculatePowerEnhancementBonuses, calculatePowerDamage, getAlphaEnhancementBonuses, type EnhancementBonuses } from '@/utils/calculations';
-import { EffectDisplay } from './EffectDisplay';
+import { calculatePowerEnhancementBonuses, calculatePowerDamage, getAlphaEnhancementBonuses, abbreviateDamageType, type EnhancementBonuses } from '@/utils/calculations';
 import { resolvePath } from '@/utils/paths';
 import type {
   ArchetypeId,
@@ -104,74 +99,21 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
   const incarnateActive = useUIStore((s) => s.incarnateActive);
   const dominationActive = useDominationActive();
 
-  // Try to get power from powerset first, then from pools, then from inherents
-  let power: Power | undefined = getPower(powerSet, powerName);
-  let powersetName = '';
-  let isInherent = false;
+  // Unified power lookup across all categories
+  const result = lookupPower(powerSet, powerName);
+  let power: Power | undefined = result?.power;
+  let powersetName = result?.powersetName || '';
+  let isInherent = result?.isInherent || false;
 
-  // Get the powerset/pool to get its display name
-  const powerset = getPowerset(powerSet);
-  const pool = getPowerPool(powerSet);
-
-  if (powerset) {
-    powersetName = powerset.name;
-  } else if (pool) {
-    powersetName = pool.name;
-    if (!power) {
-      power = pool.powers.find((p) => p.name === powerName);
-    }
-  } else {
-    const epicPool = getEpicPool(powerSet);
-    if (epicPool) {
-      powersetName = epicPool.displayName || epicPool.name;
-      if (!power) {
-        power = epicPool.powers.find((p) => p.name === powerName);
-      }
-    }
-  }
-  if (powerSet === 'Inherent') {
-    // Handle inherent powers
+  // Archetype inherent fallback (dynamically created, not in static data)
+  if (!power && powerSet === 'Inherent') {
     isInherent = true;
     powersetName = 'Inherent';
-
-    // First try to get from the inherent power definitions
-    const inherentDef = getInherentPowerDef(powerName);
-    if (inherentDef) {
-      // Convert InherentPowerDef to a Power-like object for display
-      power = {
-        name: inherentDef.name,
-        fullName: inherentDef.fullName,
-        description: inherentDef.description,
-        icon: inherentDef.icon,
-        shortHelp: inherentDef.description,
-        powerType: inherentDef.powerType,
-        available: 0,
-        maxSlots: inherentDef.maxSlots,
-        allowedEnhancements: inherentDef.allowedEnhancements as Power['allowedEnhancements'],
-        allowedSetCategories: inherentDef.allowedSetCategories as Power['allowedSetCategories'],
-        effects: (inherentDef.effects ?? {}) as Power['effects'],
-      };
-    } else {
-      // Try archetype inherent - look it up from build.inherents
-      const selectedInherent = build.inherents.find((p) => p.name === powerName);
-      if (selectedInherent) {
-        power = {
-          name: selectedInherent.name,
-          fullName: selectedInherent.fullName || `Inherent.${selectedInherent.name}`,
-          description: selectedInherent.description || '',
-          icon: selectedInherent.icon,
-          shortHelp: selectedInherent.description || '',
-          powerType: selectedInherent.powerType || 'Auto',
-          available: 0,
-          maxSlots: selectedInherent.maxSlots,
-          allowedEnhancements: (selectedInherent.allowedEnhancements || []) as Power['allowedEnhancements'],
-          allowedSetCategories: (selectedInherent.allowedSetCategories || []) as Power['allowedSetCategories'],
-          effects: selectedInherent.effects || {},
-        };
-        // Use archetype name for archetype inherents
-        if (selectedInherent.inherentCategory === 'archetype') {
-          powersetName = `${build.archetype.name} Inherent`;
-        }
+    const selectedInherent = build.inherents.find((p) => p.name === powerName);
+    if (selectedInherent) {
+      power = selectedInherent;
+      if (selectedInherent.inherentCategory === 'archetype') {
+        powersetName = `${build.archetype.name} Inherent`;
       }
     }
   }
@@ -220,12 +162,8 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
     const isPrimary = powerSet === build.primary.id;
     const isSecondary = powerSet === build.secondary.id;
 
-    // Get the powerset category to help determine melee vs ranged
-    const powersetCategory = isPrimary
-      ? powerset?.category?.toUpperCase()
-      : isSecondary
-        ? powerset?.category?.toUpperCase()
-        : undefined;
+    // Derive the powerset category for melee vs ranged determination
+    const powersetCategory = isPrimary ? 'PRIMARY' : isSecondary ? 'SECONDARY' : undefined;
 
     return calculatePowerDamage(
       power,
@@ -239,7 +177,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
       globalBonusesForCalc.damage,
       0 // active buffs (from powers like Build Up) - not tracked yet
     );
-  }, [power, build.level, archetypeId, powersetName, enhancementBonuses.damage, globalBonusesForCalc.damage, powerSet, build.primary.id, build.secondary.id, powerset?.category]);
+  }, [power, build.level, archetypeId, powersetName, enhancementBonuses.damage, globalBonusesForCalc.damage, powerSet, build.primary.id, build.secondary.id]);
 
   // Extract DoT info from power.damage (duration/tickRate fields)
   const dotInfo = useMemo(() => {
@@ -408,7 +346,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
         buffDebuffMod={effectiveMod}
         archetypeId={archetypeId ?? undefined}
         level={build.level}
-        categories={['execution', 'buff', 'debuff', 'control', 'protection']}
+        categories={['execution', 'buff', 'debuff', 'control', 'protection', 'movement']}
         dominationActive={dominationActive}
         header="Power Effects"
         duration={effects?.buffDuration}
@@ -440,7 +378,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
               return (
                 <>
                   <div className="grid grid-cols-[4rem_1fr_1fr_1fr] gap-1 items-baseline text-xs">
-                    <span className="text-red-400">{isDot ? `${calculatedDamage.type}/tick` : calculatedDamage.type}</span>
+                    <span className="text-red-400">{isDot ? `${abbreviateDamageType(calculatedDamage.type)}/tick` : abbreviateDamageType(calculatedDamage.type)}</span>
                     <span className="text-slate-200">{calculatedDamage.base.toFixed(2)}</span>
                     <span className={hasEnh ? 'text-green-400' : 'text-slate-600'}>
                       {hasEnh ? `→ ${calculatedDamage.enhanced.toFixed(2)}` : '—'}
@@ -523,21 +461,6 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
             )}
           </div>
         </div>
-      )}
-
-      {/* Registry-based effect display for movement and special effects (control/buff/debuff handled above) */}
-      {effects && (
-        <EffectDisplay
-          effects={effects}
-          archetypeId={archetypeId as ArchetypeId | undefined}
-          enhancementBonuses={enhancementBonuses}
-          globalBonuses={globalBonusesForCalc}
-          categories={['movement', 'special']}
-          showThreeTier={true}
-          buffDebuffMod={effectiveMod}
-          dominationActive={dominationActive}
-          powersetId={powerSet}
-        />
       )}
 
       {/* Enhancement Bonuses Summary */}

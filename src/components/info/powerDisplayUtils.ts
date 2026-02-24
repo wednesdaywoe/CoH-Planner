@@ -209,7 +209,7 @@ export interface ThreeTierValues {
  * Calculate three-tier stats (Base/Enhanced/Final) for key values.
  *
  * This is the single source of truth for three-tier math. All display
- * components (InfoPanel, PowerInfoTooltip, EffectDisplay, SharedPowerComponents)
+ * components (InfoPanel, PowerInfoTooltip, SharedPowerComponents)
  * should delegate to this function rather than implementing their own formulas.
  *
  * Formulas by aspect type:
@@ -270,7 +270,7 @@ const GLOBAL_BONUS_ASPECT_MAP: [string, keyof CharacterGlobalBonuses][] = [
  * Convert CharacterGlobalBonuses (percentage values from the dashboard calculation)
  * to enhancement-aspect-keyed decimal multipliers for three-tier power display.
  *
- * Used by InfoPanel, PowerInfoTooltip, and EffectDisplay to ensure consistent
+ * Used by InfoPanel and PowerInfoTooltip to ensure consistent
  * global bonus application across all power display surfaces.
  */
 export function convertGlobalBonusesToAspects(
@@ -382,40 +382,4 @@ export function expandProtectionEntries(
     typeLabel: `${labelPrefix}: ${MEZ_LABELS[typeKey] || typeKey}`,
     magnitude: value,
   }));
-}
-
-/**
- * Check if power has any effects to show in the consolidated view
- */
-export function hasDisplayableEffects(
-  effects: Record<string, unknown> | undefined,
-  allowedEnhancements: string[]
-): boolean {
-  if (!effects) return false;
-  const allowed = new Set(allowedEnhancements);
-
-  return !!(
-    // Power execution stats
-    (allowed.has('EnduranceReduction') && effects?.enduranceCost) ||
-    (allowed.has('Recharge') && effects?.recharge) ||
-    (allowed.has('Accuracy') && effects?.accuracy) ||
-    (allowed.has('Range') && effects?.range && (effects.range as number) > 0) ||
-    // Debuffs
-    effects?.tohitDebuff || effects?.defenseDebuff || effects?.resistanceDebuff ||
-    effects?.damageDebuff || effects?.regenDebuff || effects?.recoveryDebuff || effects?.slow ||
-    // Buffs
-    effects?.tohitBuff || effects?.damageBuff || effects?.defenseBuff ||
-    effects?.rechargeBuff || effects?.speedBuff || effects?.recoveryBuff || effects?.enduranceBuff ||
-    // Healing
-    (effects?.healing && (effects.healing as { scale?: number }).scale != null) ||
-    // Mez effects
-    effects?.stun || effects?.hold || effects?.immobilize ||
-    effects?.sleep || effects?.fear || effects?.confuse ||
-    effects?.knockback || effects?.knockup ||
-    // Defense/Resistance (armor powers)
-    effects?.resistance || effects?.defense || effects?.elusivity ||
-    effects?.debuffResistance ||
-    // Movement
-    effects?.movement
-  );
 }

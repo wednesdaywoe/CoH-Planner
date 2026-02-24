@@ -5,6 +5,8 @@
  * This centralizes level requirements that were previously scattered across the codebase.
  */
 
+import type { Power } from '@/types';
+
 // ============================================
 // CONSTANTS
 // ============================================
@@ -342,33 +344,25 @@ export const INCARNATE_SLOTS = {
  * Inherent powers that all characters receive automatically.
  * These include fitness powers (became inherent in Issue 19) and basic powers.
  */
-export interface InherentPowerDef {
-  name: string;
-  fullName: string;
-  description: string;
-  icon: string;
-  powerType: 'Auto' | 'Click' | 'Toggle';
-  maxSlots: number;
-  allowedEnhancements: string[];
-  allowedSetCategories: string[];
+export interface InherentPowerDef extends Power {
   /** If true, this power cannot be removed by the user */
   isLocked?: boolean;
   /** Category for grouping (fitness, basic, prestige, archetype) */
   category?: 'fitness' | 'basic' | 'prestige' | 'archetype';
-  /** Power effects for tooltip display */
-  effects?: Record<string, unknown>;
 }
 
 /**
  * Inherent Fitness powers - all characters receive these at level 1
  */
-export const INHERENT_FITNESS_POWERS: readonly InherentPowerDef[] = [
+export const INHERENT_FITNESS_POWERS: InherentPowerDef[] = [
   {
     name: 'Swift',
     fullName: 'Inherent.Fitness.Swift',
     description: 'You can naturally run slightly faster than normal. This ability is always on and does not cost any Endurance.',
+    shortHelp: 'Auto: Self +Speed',
     icon: 'Fitness_Quick.png',
     powerType: 'Auto',
+    available: -1,
     maxSlots: 6,
     allowedEnhancements: ['Run Speed'],
     allowedSetCategories: ['Running'],
@@ -383,8 +377,10 @@ export const INHERENT_FITNESS_POWERS: readonly InherentPowerDef[] = [
     name: 'Hurdle',
     fullName: 'Inherent.Fitness.Hurdle',
     description: 'You can naturally jump higher than normal. This ability is always on and does not cost any Endurance.',
+    shortHelp: 'Auto: Self +Jump',
     icon: 'Fitness_Hurdle.png',
     powerType: 'Auto',
+    available: -1,
     maxSlots: 6,
     allowedEnhancements: ['Jump'],
     allowedSetCategories: ['Leaping'],
@@ -399,145 +395,209 @@ export const INHERENT_FITNESS_POWERS: readonly InherentPowerDef[] = [
     name: 'Health',
     fullName: 'Inherent.Fitness.Health',
     description: 'You heal slightly faster than a normal person. Your improved Health also grants you resistance to Sleep. This ability is always on and does not cost any Endurance.',
+    shortHelp: 'Auto: Self +Regeneration, Res(Sleep)',
     icon: 'Fitness_Health.png',
     powerType: 'Auto',
+    available: -1,
     maxSlots: 6,
-    allowedEnhancements: ['Heal'],
+    allowedEnhancements: ['Healing'],
     allowedSetCategories: ['Healing'],
     isLocked: true,
     category: 'fitness',
     effects: {
-      regeneration: { scale: 0.4, table: 'Melee_Ones' },
+      regenBuff: { scale: 0.4, table: 'Melee_Ones' },
     },
   },
   {
     name: 'Stamina',
     fullName: 'Inherent.Fitness.Stamina',
     description: 'You recover Endurance slightly more quickly than normal. This ability is always on and does not cost any Endurance.',
+    shortHelp: 'Auto: Self +Recovery',
     icon: 'Fitness_Stamina.png',
     powerType: 'Auto',
+    available: -1,
     maxSlots: 6,
     allowedEnhancements: ['EnduranceModification'],
     allowedSetCategories: ['Endurance Modification'],
     isLocked: true,
     category: 'fitness',
     effects: {
-      recovery: { scale: 0.25, table: 'Melee_Ones' },
+      recoveryBuff: { scale: 0.25, table: 'Melee_Ones' },
     },
   },
-] as const;
+];
 
 /**
  * Basic inherent powers - Brawl, Rest, and Sprint
  */
-export const BASIC_INHERENT_POWERS: readonly InherentPowerDef[] = [
+export const BASIC_INHERENT_POWERS: InherentPowerDef[] = [
   {
     name: 'Brawl',
     fullName: 'Inherent.Brawl',
     description: 'When all else fails, use your fists. Brawl attacks deal minor smashing damage but have a very fast recharge.',
+    shortHelp: 'Melee, DMG(Smashing)',
     icon: 'Inherent_Brawl.png',
     powerType: 'Click',
+    targetType: 'Foe',
+    effectArea: 'SingleTarget',
+    available: -1,
     maxSlots: 6,
     allowedEnhancements: ['Accuracy', 'Damage', 'Recharge', 'EnduranceReduction'],
     allowedSetCategories: ['Melee Damage'],
     isLocked: true,
     category: 'basic',
+    stats: {
+      accuracy: 1,
+      range: 7,
+      recharge: 4,
+      endurance: 5.2,
+      castTime: 1.0,
+    },
+    damage: [
+      { type: 'Smashing', scale: 0.6267, table: 'Melee_Damage' },
+    ],
   },
   {
     name: 'Rest',
     fullName: 'Inherent.Rest',
     description: 'Rest to recover hit points and endurance. You are vulnerable while resting.',
+    shortHelp: 'Self +Regen, +Recovery',
     icon: 'Inherent_Rest.png',
     powerType: 'Click',
+    targetType: 'Self',
+    available: -1,
     maxSlots: 4,
     allowedEnhancements: ['Recharge'],
     allowedSetCategories: [],
     isLocked: true,
     category: 'basic',
+    stats: {
+      recharge: 300,
+      castTime: 2.0,
+    },
+    effects: {
+      recharge: 300,
+      castTime: 2.0,
+      regenBuff: { scale: 4.0, table: 'Melee_Ones' },
+      recoveryBuff: { scale: 4.0, table: 'Melee_Ones' },
+      buffDuration: 30,
+    },
   },
   {
     name: 'Sprint',
     fullName: 'Inherent.Sprint',
     description: 'You can Sprint at a faster than normal rate, but you are not as quick as characters with Super Speed.',
+    shortHelp: 'Toggle: Self +Speed',
     icon: 'Inherent_Sprint.png',
     powerType: 'Toggle',
+    available: -1,
     maxSlots: 4,
     allowedEnhancements: ['Run Speed', 'EnduranceReduction'],
     allowedSetCategories: ['Running & Sprints', 'Universal Travel'],
     isLocked: true,
     category: 'basic',
     effects: {
-      endurance: 0.13,
+      enduranceCost: 0.13,
       runSpeed: { scale: 0.5, table: 'Melee_SpeedRunning' },
     },
   },
-] as const;
+];
 
 /**
  * Prestige Sprint powers - travel powers available to all characters
  */
-export const PRESTIGE_SPRINT_POWERS: readonly InherentPowerDef[] = [
+export const PRESTIGE_SPRINT_POWERS: InherentPowerDef[] = [
   {
     name: 'Prestige Power Slide',
     fullName: 'Inherent.Prestige.PowerSlide',
     description: 'Activating this power will have your character slide across the ground, leaving behind a trail of sparks. This prestige power increases your run speed.',
+    shortHelp: 'Toggle: Self +Speed',
     icon: 'Inherent_AthleticRun.png',
     powerType: 'Toggle',
+    available: -1,
     maxSlots: 4,
     allowedEnhancements: ['Run Speed', 'EnduranceReduction'],
     allowedSetCategories: ['Running & Sprints', 'Universal Travel'],
     isLocked: true,
     category: 'prestige',
+    effects: {
+      enduranceCost: 0.13,
+      runSpeed: { scale: 0.5, table: 'Melee_SpeedRunning' },
+    },
   },
   {
     name: 'Prestige Power Rush',
     fullName: 'Inherent.Prestige.PowerRush',
     description: 'Activating this power will give your character a burst of speed, leaving behind a colored trail. This prestige power increases your run speed.',
+    shortHelp: 'Toggle: Self +Speed',
     icon: 'Inherent_AthleticRun.png',
     powerType: 'Toggle',
+    available: -1,
     maxSlots: 4,
     allowedEnhancements: ['Run Speed', 'EnduranceReduction'],
     allowedSetCategories: ['Running & Sprints', 'Universal Travel'],
     isLocked: true,
     category: 'prestige',
+    effects: {
+      enduranceCost: 0.13,
+      runSpeed: { scale: 0.5, table: 'Melee_SpeedRunning' },
+    },
   },
   {
     name: 'Prestige Power Surge',
     fullName: 'Inherent.Prestige.PowerSurge',
     description: 'Activating this power will surround your character with an electric field as you run. This prestige power increases your run speed.',
+    shortHelp: 'Toggle: Self +Speed',
     icon: 'Inherent_AthleticRun.png',
     powerType: 'Toggle',
+    available: -1,
     maxSlots: 4,
     allowedEnhancements: ['Run Speed', 'EnduranceReduction'],
     allowedSetCategories: ['Running & Sprints', 'Universal Travel'],
     isLocked: true,
     category: 'prestige',
+    effects: {
+      enduranceCost: 0.13,
+      runSpeed: { scale: 0.5, table: 'Melee_SpeedRunning' },
+    },
   },
   {
     name: 'Prestige Power Dash',
     fullName: 'Inherent.Prestige.PowerDash',
     description: 'Activating this power will cause your character to dash forward leaving a colored afterimage trail. This prestige power increases your run speed.',
+    shortHelp: 'Toggle: Self +Speed',
     icon: 'Inherent_AthleticRun.png',
     powerType: 'Toggle',
+    available: -1,
     maxSlots: 4,
     allowedEnhancements: ['Run Speed', 'EnduranceReduction'],
     allowedSetCategories: ['Running & Sprints', 'Universal Travel'],
     isLocked: true,
     category: 'prestige',
+    effects: {
+      enduranceCost: 0.13,
+      runSpeed: { scale: 0.5, table: 'Melee_SpeedRunning' },
+    },
   },
   {
     name: 'Prestige Power Quick',
     fullName: 'Inherent.Prestige.PowerQuick',
     description: 'Activating this power will cause your character to leave behind ghostly afterimages as you run. This prestige power increases your run speed.',
+    shortHelp: 'Toggle: Self +Speed',
     icon: 'Inherent_AthleticRun.png',
     powerType: 'Toggle',
+    available: -1,
     maxSlots: 4,
     allowedEnhancements: ['Run Speed', 'EnduranceReduction'],
     allowedSetCategories: ['Running & Sprints', 'Universal Travel'],
     isLocked: true,
     category: 'prestige',
+    effects: {
+      enduranceCost: 0.13,
+      runSpeed: { scale: 0.5, table: 'Melee_SpeedRunning' },
+    },
   },
-] as const;
+];
 
 /**
  * Get all inherent powers that should be auto-granted at level 1
@@ -574,6 +634,7 @@ export function createArchetypeInherentPower(
     description: inherent.description,
     icon: iconName,
     powerType: 'Auto',
+    available: -1,
     maxSlots: 0, // Archetype inherents cannot have slots
     allowedEnhancements: [],
     allowedSetCategories: [],

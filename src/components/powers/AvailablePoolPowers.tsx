@@ -18,7 +18,6 @@ import {
   isEpicPowerAvailable,
   MAX_POWER_PICKS,
 } from '@/data';
-import { resolvePath } from '@/utils/paths';
 import { Select } from '@/components/ui';
 import { PowerItem } from './AvailablePowers';
 import type { Power } from '@/types';
@@ -377,10 +376,6 @@ function AvailableEpicPoolSection({
   const selectedPowerNames = new Set(epicPool.powers.map((p) => p.name));
   const visiblePowers = poolData.powers.filter((p) => p.available >= 0);
 
-  const getIconPath = (power: Power) => {
-    return getEpicPoolPowerIconPath(poolData.name, power.icon);
-  };
-
   return (
     <div className="mb-3">
       {/* Section header */}
@@ -420,81 +415,23 @@ function AvailableEpicPoolSection({
             const isLocked = isPowerLocked(power.name);
 
             return (
-              <div
+              <PowerItem
                 key={power.name}
-                onMouseEnter={() => onPowerHover(power)}
-                onMouseLeave={onPowerLeave}
-                onContextMenu={(e) => {
-                  e.preventDefault();
-                  onLockToggle(power);
-                }}
-                onClick={() => {
-                  if (!isDisabled) onSelectPower(power);
-                }}
-                title={isLocked ? 'Right-click to unlock' : 'Right-click for info'}
-                className={`
-                  w-full flex items-center gap-1.5 px-1.5 py-0.5 rounded-sm
-                  transition-colors text-left text-xs select-none
-                  ${
-                    isLocked
-                      ? 'border-amber-500 shadow-[0_0_4px_rgba(245,158,11,0.4)] bg-gradient-to-r from-amber-500/10 to-slate-800'
-                      : isSelected
-                        ? 'bg-blue-900/30 border border-blue-600/50 opacity-60'
-                        : !isAvailable
-                          ? 'bg-slate-800/50 border border-slate-700/50 opacity-40 cursor-not-allowed'
-                          : 'bg-slate-800 border border-slate-700 hover:border-purple-500 cursor-pointer'
-                  }
-                `}
-                style={{
-                  WebkitUserSelect: 'none',
-                  userSelect: 'none',
-                  WebkitTouchCallout: 'none',
-                  touchAction: 'manipulation',
-                }}
-                role="button"
-                tabIndex={isDisabled ? -1 : 0}
-                onKeyDown={(e) => {
-                  if (!isDisabled && (e.key === 'Enter' || e.key === ' ')) {
-                    e.preventDefault();
-                    onSelectPower(power);
-                  }
-                }}
-              >
-                <img
-                  src={getIconPath(power)}
-                  alt=""
-                  className="w-4 h-4 rounded-sm flex-shrink-0 pointer-events-none"
-                  draggable={false}
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).src = resolvePath('/img/Unknown.png');
-                  }}
-                />
-                <span className="truncate flex-1 text-slate-200 pointer-events-none">
-                  {power.name}
-                </span>
-                <span
-                  className={`text-[10px] flex-shrink-0 pointer-events-none ${
-                    isAvailable ? 'text-slate-500' : 'text-amber-500/70'
-                  }`}
-                  title={isAvailable ? `Available at level ${power.available + 1}` : `Requires level ${power.available + 1}`}
-                >
-                  L{power.available + 1}
-                </span>
-                {/* Mobile info button */}
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    onShowInfo(power, e);
-                  }}
-                  className="lg:hidden flex-shrink-0 w-5 h-5 flex items-center justify-center rounded hover:bg-purple-600/20 transition-colors"
-                  title="View power info"
-                  aria-label="View power info"
-                >
-                  <svg className="w-3.5 h-3.5 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </button>
-              </div>
+                power={power}
+                powersetId={epicPool.id}
+                powersetName={poolData.name}
+                iconSrc={getEpicPoolPowerIconPath(poolData.name, power.icon)}
+                accentColor="purple"
+                isSelected={isSelected}
+                isAvailable={isAvailable}
+                isDisabled={isDisabled}
+                isLocked={isLocked}
+                onSelect={() => onSelectPower(power)}
+                onHover={() => onPowerHover(power)}
+                onLeave={onPowerLeave}
+                onLockToggle={() => onLockToggle(power)}
+                onShowInfo={(e) => onShowInfo(power, e)}
+              />
             );
           })}
         </div>

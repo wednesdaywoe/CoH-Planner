@@ -111,6 +111,10 @@ export interface PowerItemProps {
   power: Power;
   powersetId: string;
   powersetName: string;
+  /** Pre-resolved icon path (overrides default getPowerIconPath) */
+  iconSrc?: string;
+  /** Accent color for hover border */
+  accentColor?: 'blue' | 'purple';
   isSelected: boolean;
   isAvailable: boolean;
   isDisabled: boolean;
@@ -126,6 +130,8 @@ export function PowerItem({
   power,
   powersetId: _powersetId,
   powersetName,
+  iconSrc,
+  accentColor = 'blue',
   isSelected,
   isAvailable,
   isDisabled,
@@ -147,6 +153,16 @@ export function PowerItem({
     }
   };
 
+  const hoverBorderClass = accentColor === 'purple'
+    ? 'hover:border-purple-500'
+    : 'hover:border-blue-500';
+  const infoBtnBgClass = accentColor === 'purple'
+    ? 'hover:bg-purple-600/20'
+    : 'hover:bg-blue-600/20';
+  const infoBtnTextClass = accentColor === 'purple'
+    ? 'text-purple-400'
+    : 'text-blue-400';
+
   return (
     <div
       onMouseEnter={onHover}
@@ -155,7 +171,7 @@ export function PowerItem({
       onClick={handleClick}
       title={isLocked ? 'Right-click to unlock' : 'Right-click for info'}
       className={`
-        w-full flex items-center gap-1.5 px-1.5 py-0.5 rounded-sm
+        w-full flex items-center gap-1.5 px-1.5 py-1 rounded-sm
         transition-colors text-left text-xs select-none
         ${
           isLocked
@@ -164,7 +180,7 @@ export function PowerItem({
               ? 'bg-blue-900/30 border border-blue-600/50 opacity-60'
               : !isAvailable
                 ? 'bg-slate-800/50 border border-slate-700/50 opacity-40 cursor-not-allowed'
-                : 'bg-slate-800 border border-slate-700 hover:border-blue-500 cursor-pointer'
+                : `bg-slate-800 border border-slate-700 ${hoverBorderClass} cursor-pointer`
         }
       `}
       style={{
@@ -182,34 +198,38 @@ export function PowerItem({
         }
       }}
     >
-      <img
-        src={getPowerIconPath(powersetName, power.icon)}
-        alt=""
-        className="w-4 h-4 rounded-sm flex-shrink-0 pointer-events-none"
-        draggable={false}
-        onError={(e) => {
-          (e.target as HTMLImageElement).src = resolvePath('/img/Unknown.png');
-        }}
-      />
+      {/* Left column: Level on top, icon underneath */}
+      <div className="flex flex-col items-center flex-shrink-0">
+        <span
+          className={`text-[10px] font-semibold leading-tight pointer-events-none ${
+            isAvailable ? 'text-slate-500' : 'text-amber-500/70'
+          }`}
+          title={isAvailable ? `Available at level ${power.available + 1}` : `Requires level ${power.available + 1}`}
+        >
+          L{power.available + 1}
+        </span>
+        <img
+          src={iconSrc || getPowerIconPath(powersetName, power.icon)}
+          alt=""
+          className="w-6 h-6 rounded-sm mt-0.5 pointer-events-none"
+          draggable={false}
+          onError={(e) => {
+            (e.target as HTMLImageElement).src = resolvePath('/img/Unknown.png');
+          }}
+        />
+      </div>
+      {/* Power name */}
       <span className="truncate flex-1 text-slate-200 pointer-events-none">
         {power.name}
-      </span>
-      <span
-        className={`text-[10px] flex-shrink-0 pointer-events-none ${
-          isAvailable ? 'text-slate-500' : 'text-amber-500/70'
-        }`}
-        title={isAvailable ? `Available at level ${power.available + 1}` : `Requires level ${power.available + 1}`}
-      >
-        L{power.available + 1}
       </span>
       {/* Mobile info button - only visible on small screens */}
       <button
         onClick={onShowInfo}
-        className="lg:hidden flex-shrink-0 w-5 h-5 flex items-center justify-center rounded hover:bg-blue-600/20 transition-colors"
+        className={`lg:hidden flex-shrink-0 w-5 h-5 flex items-center justify-center rounded ${infoBtnBgClass} transition-colors`}
         title="View power info"
         aria-label="View power info"
       >
-        <svg className="w-3.5 h-3.5 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg className={`w-3.5 h-3.5 ${infoBtnTextClass}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
       </button>

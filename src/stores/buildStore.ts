@@ -331,6 +331,59 @@ function updateSetTracking(build: Build): Record<string, SetTracking> {
 }
 
 /**
+ * Apply a power array updater to the correct category in a build.
+ * Eliminates the repeated switch-on-PowerCategory pattern.
+ */
+function applyPowerUpdate(
+  build: Build,
+  category: PowerCategory,
+  updater: (powers: SelectedPower[]) => SelectedPower[]
+): Build {
+  const newBuild = { ...build };
+
+  switch (category) {
+    case 'primary':
+      newBuild.primary = { ...newBuild.primary, powers: updater(newBuild.primary.powers) };
+      break;
+    case 'secondary':
+      newBuild.secondary = { ...newBuild.secondary, powers: updater(newBuild.secondary.powers) };
+      break;
+    case 'pool':
+      newBuild.pools = newBuild.pools.map(pool => ({ ...pool, powers: updater(pool.powers) }));
+      break;
+    case 'epic':
+      if (newBuild.epicPool) {
+        newBuild.epicPool = { ...newBuild.epicPool, powers: updater(newBuild.epicPool.powers) };
+      }
+      break;
+    case 'inherent':
+      newBuild.inherents = updater(newBuild.inherents);
+      break;
+  }
+
+  return newBuild;
+}
+
+/**
+ * Apply a power array updater to ALL non-inherent categories.
+ * Used for operations like togglePowerActive that apply across the whole build.
+ */
+function applyToAllPowers(
+  build: Build,
+  updater: (powers: SelectedPower[]) => SelectedPower[]
+): Build {
+  return {
+    ...build,
+    primary: { ...build.primary, powers: updater(build.primary.powers) },
+    secondary: { ...build.secondary, powers: updater(build.secondary.powers) },
+    pools: build.pools.map(pool => ({ ...pool, powers: updater(pool.powers) })),
+    epicPool: build.epicPool
+      ? { ...build.epicPool, powers: updater(build.epicPool.powers) }
+      : null,
+  };
+}
+
+/**
  * Convert an InherentPowerDef to a SelectedPower
  */
 function createInherentSelectedPower(def: InherentPowerDef): SelectedPower {
@@ -338,20 +391,10 @@ function createInherentSelectedPower(def: InherentPowerDef): SelectedPower {
   const slots: (Enhancement | null)[] = def.maxSlots === 0 ? [] : [null];
 
   return {
-    name: def.name,
-    fullName: def.fullName,
-    description: def.description,
-    icon: def.icon,
-    powerType: def.powerType,
+    ...def,
     powerSet: 'Inherent',
     level: 1, // All inherents are granted at level 1
-    available: -1, // Mark as inherent (always available)
-    maxSlots: def.maxSlots,
-    // Cast as the proper types - inherent powers use simplified enhancement lists
-    allowedEnhancements: def.allowedEnhancements as SelectedPower['allowedEnhancements'],
-    allowedSetCategories: def.allowedSetCategories as SelectedPower['allowedSetCategories'],
     slots,
-    effects: {}, // Inherent powers don't have combat effects to display
     isLocked: def.isLocked ?? true, // All inherent powers are locked by default
     inherentCategory: def.category,
   };
@@ -546,45 +589,22 @@ export const useBuildStore = create<BuildStore>()(
             power = { ...power, isActive: true };
           }
 
-          const newBuild = { ...state.build };
-
-          switch (category) {
-            case 'primary':
-              newBuild.primary = {
-                ...newBuild.primary,
-                powers: [...newBuild.primary.powers, power],
+          // Pool case: must target the specific pool by ID
+          let newBuild: Build;
+          if (category === 'pool') {
+            newBuild = { ...state.build };
+            const poolIndex = newBuild.pools.findIndex((p) =>
+              p.id === power.powerSet || power.powerSet.includes(p.id)
+            );
+            if (poolIndex >= 0) {
+              newBuild.pools = [...newBuild.pools];
+              newBuild.pools[poolIndex] = {
+                ...newBuild.pools[poolIndex],
+                powers: [...newBuild.pools[poolIndex].powers, power],
               };
-              break;
-            case 'secondary':
-              newBuild.secondary = {
-                ...newBuild.secondary,
-                powers: [...newBuild.secondary.powers, power],
-              };
-              break;
-            case 'pool':
-              // Find which pool this power belongs to
-              const poolIndex = newBuild.pools.findIndex((p) =>
-                p.id === power.powerSet || power.powerSet.includes(p.id)
-              );
-              if (poolIndex >= 0) {
-                newBuild.pools = [...newBuild.pools];
-                newBuild.pools[poolIndex] = {
-                  ...newBuild.pools[poolIndex],
-                  powers: [...newBuild.pools[poolIndex].powers, power],
-                };
-              }
-              break;
-            case 'epic':
-              if (newBuild.epicPool) {
-                newBuild.epicPool = {
-                  ...newBuild.epicPool,
-                  powers: [...newBuild.epicPool.powers, power],
-                };
-              }
-              break;
-            case 'inherent':
-              newBuild.inherents = [...newBuild.inherents, power];
-              break;
+            }
+          } else {
+            newBuild = applyPowerUpdate(state.build, category, (powers) => [...powers, power]);
           }
 
           // Auto-advance level if all power picks for current level have been used
@@ -599,93 +619,29 @@ export const useBuildStore = create<BuildStore>()(
 
       removePower: (category, powerName) => {
         set((state) => {
-          const newBuild = { ...state.build };
+          // Inherent: only allow removal of unlocked powers
+          const updater = category === 'inherent'
+            ? (powers: SelectedPower[]) => powers.filter((p) => p.name !== powerName || p.isLocked)
+            : (powers: SelectedPower[]) => powers.filter((p) => p.name !== powerName);
 
-          switch (category) {
-            case 'primary':
-              newBuild.primary = {
-                ...newBuild.primary,
-                powers: newBuild.primary.powers.filter((p) => p.name !== powerName),
-              };
-              break;
-            case 'secondary':
-              newBuild.secondary = {
-                ...newBuild.secondary,
-                powers: newBuild.secondary.powers.filter((p) => p.name !== powerName),
-              };
-              break;
-            case 'pool':
-              newBuild.pools = newBuild.pools.map((pool) => ({
-                ...pool,
-                powers: pool.powers.filter((p) => p.name !== powerName),
-              }));
-              break;
-            case 'epic':
-              if (newBuild.epicPool) {
-                newBuild.epicPool = {
-                  ...newBuild.epicPool,
-                  powers: newBuild.epicPool.powers.filter((p) => p.name !== powerName),
-                };
-              }
-              break;
-            case 'inherent':
-              // Only allow removal of unlocked inherent powers
-              newBuild.inherents = newBuild.inherents.filter(
-                (p) => p.name !== powerName || p.isLocked
-              );
-              break;
-          }
+          const newBuild = applyPowerUpdate(state.build, category, updater);
 
           // Recalculate level — rewind to the freed-up power pick slot
           if (category !== 'inherent') {
             newBuild.level = calculateCorrectLevel(newBuild);
           }
 
-          // Update set tracking
           newBuild.sets = updateSetTracking(newBuild);
-
           return { build: newBuild };
         });
       },
 
       movePowerLevel: (category, powerName, newLevel) => {
-        set((state) => {
-          const newBuild = { ...state.build };
-
-          const updatePowerLevel = (powers: SelectedPower[]) =>
-            powers.map((p) => (p.name === powerName ? { ...p, level: newLevel } : p));
-
-          switch (category) {
-            case 'primary':
-              newBuild.primary = {
-                ...newBuild.primary,
-                powers: updatePowerLevel(newBuild.primary.powers),
-              };
-              break;
-            case 'secondary':
-              newBuild.secondary = {
-                ...newBuild.secondary,
-                powers: updatePowerLevel(newBuild.secondary.powers),
-              };
-              break;
-            case 'pool':
-              newBuild.pools = newBuild.pools.map((pool) => ({
-                ...pool,
-                powers: updatePowerLevel(pool.powers),
-              }));
-              break;
-            case 'epic':
-              if (newBuild.epicPool) {
-                newBuild.epicPool = {
-                  ...newBuild.epicPool,
-                  powers: updatePowerLevel(newBuild.epicPool.powers),
-                };
-              }
-              break;
-          }
-
-          return { build: newBuild };
-        });
+        set((state) => ({
+          build: applyPowerUpdate(state.build, category, (powers) =>
+            powers.map((p) => (p.name === powerName ? { ...p, level: newLevel } : p))
+          ),
+        }));
       },
 
       // Pools
@@ -769,48 +725,13 @@ export const useBuildStore = create<BuildStore>()(
         // Inherent power slots are excluded entirely from the budget.
         if (countPlacedSlots(state.build) >= getPlacedSlotLimit(state.build.level)) return false;
 
-        set((s) => {
-          const newBuild = { ...s.build };
-
-          const addSlotToPower = (powers: SelectedPower[]) =>
+        set((s) => ({
+          build: applyPowerUpdate(s.build, category, (powers) =>
             powers.map((p) =>
               p.name === powerName ? { ...p, slots: [...p.slots, null] } : p
-            );
-
-          switch (category) {
-            case 'primary':
-              newBuild.primary = {
-                ...newBuild.primary,
-                powers: addSlotToPower(newBuild.primary.powers),
-              };
-              break;
-            case 'secondary':
-              newBuild.secondary = {
-                ...newBuild.secondary,
-                powers: addSlotToPower(newBuild.secondary.powers),
-              };
-              break;
-            case 'pool':
-              newBuild.pools = newBuild.pools.map((pool) => ({
-                ...pool,
-                powers: addSlotToPower(pool.powers),
-              }));
-              break;
-            case 'epic':
-              if (newBuild.epicPool) {
-                newBuild.epicPool = {
-                  ...newBuild.epicPool,
-                  powers: addSlotToPower(newBuild.epicPool.powers),
-                };
-              }
-              break;
-            case 'inherent':
-              newBuild.inherents = addSlotToPower(newBuild.inherents);
-              break;
-          }
-
-          return { build: newBuild };
-        });
+            )
+          ),
+        }));
 
         return true;
       },
@@ -829,50 +750,14 @@ export const useBuildStore = create<BuildStore>()(
         if (slotIndex >= power.slots.length) return false;
 
         set((s) => {
-          const newBuild = { ...s.build };
-
-          const removeSlotFromPower = (powers: SelectedPower[]) =>
+          const newBuild = applyPowerUpdate(s.build, category, (powers) =>
             powers.map((p) =>
               p.name === powerName
                 ? { ...p, slots: p.slots.filter((_, i) => i !== slotIndex) }
                 : p
-            );
-
-          switch (category) {
-            case 'primary':
-              newBuild.primary = {
-                ...newBuild.primary,
-                powers: removeSlotFromPower(newBuild.primary.powers),
-              };
-              break;
-            case 'secondary':
-              newBuild.secondary = {
-                ...newBuild.secondary,
-                powers: removeSlotFromPower(newBuild.secondary.powers),
-              };
-              break;
-            case 'pool':
-              newBuild.pools = newBuild.pools.map((pool) => ({
-                ...pool,
-                powers: removeSlotFromPower(pool.powers),
-              }));
-              break;
-            case 'epic':
-              if (newBuild.epicPool) {
-                newBuild.epicPool = {
-                  ...newBuild.epicPool,
-                  powers: removeSlotFromPower(newBuild.epicPool.powers),
-                };
-              }
-              break;
-            case 'inherent':
-              newBuild.inherents = removeSlotFromPower(newBuild.inherents);
-              break;
-          }
-
-          // Update set tracking
+            )
+          );
           newBuild.sets = updateSetTracking(newBuild);
-
           return { build: newBuild };
         });
 
@@ -888,53 +773,14 @@ export const useBuildStore = create<BuildStore>()(
         const { category } = found;
 
         set((s) => {
-          const newBuild = { ...s.build };
-
-          const setEnhInPower = (powers: SelectedPower[]) =>
+          const newBuild = applyPowerUpdate(s.build, category, (powers) =>
             powers.map((p) =>
               p.name === powerName
-                ? {
-                    ...p,
-                    slots: p.slots.map((slot, i) => (i === slotIndex ? enhancement : slot)),
-                  }
+                ? { ...p, slots: p.slots.map((slot, i) => (i === slotIndex ? enhancement : slot)) }
                 : p
-            );
-
-          switch (category) {
-            case 'primary':
-              newBuild.primary = {
-                ...newBuild.primary,
-                powers: setEnhInPower(newBuild.primary.powers),
-              };
-              break;
-            case 'secondary':
-              newBuild.secondary = {
-                ...newBuild.secondary,
-                powers: setEnhInPower(newBuild.secondary.powers),
-              };
-              break;
-            case 'pool':
-              newBuild.pools = newBuild.pools.map((pool) => ({
-                ...pool,
-                powers: setEnhInPower(pool.powers),
-              }));
-              break;
-            case 'epic':
-              if (newBuild.epicPool) {
-                newBuild.epicPool = {
-                  ...newBuild.epicPool,
-                  powers: setEnhInPower(newBuild.epicPool.powers),
-                };
-              }
-              break;
-            case 'inherent':
-              newBuild.inherents = setEnhInPower(newBuild.inherents);
-              break;
-          }
-
-          // Update set tracking
+            )
+          );
           newBuild.sets = updateSetTracking(newBuild);
-
           return { build: newBuild };
         });
       },
@@ -951,48 +797,12 @@ export const useBuildStore = create<BuildStore>()(
         const { category } = found;
 
         set((s) => {
-          const newBuild = { ...s.build };
-
-          const clearEnhsInPower = (powers: SelectedPower[]) =>
+          const newBuild = applyPowerUpdate(s.build, category, (powers) =>
             powers.map((p) =>
               p.name === powerName ? { ...p, slots: p.slots.map(() => null) } : p
-            );
-
-          switch (category) {
-            case 'primary':
-              newBuild.primary = {
-                ...newBuild.primary,
-                powers: clearEnhsInPower(newBuild.primary.powers),
-              };
-              break;
-            case 'secondary':
-              newBuild.secondary = {
-                ...newBuild.secondary,
-                powers: clearEnhsInPower(newBuild.secondary.powers),
-              };
-              break;
-            case 'pool':
-              newBuild.pools = newBuild.pools.map((pool) => ({
-                ...pool,
-                powers: clearEnhsInPower(pool.powers),
-              }));
-              break;
-            case 'epic':
-              if (newBuild.epicPool) {
-                newBuild.epicPool = {
-                  ...newBuild.epicPool,
-                  powers: clearEnhsInPower(newBuild.epicPool.powers),
-                };
-              }
-              break;
-            case 'inherent':
-              newBuild.inherents = clearEnhsInPower(newBuild.inherents);
-              break;
-          }
-
-          // Update set tracking
+            )
+          );
           newBuild.sets = updateSetTracking(newBuild);
-
           return { build: newBuild };
         });
       },
@@ -1161,71 +971,25 @@ export const useBuildStore = create<BuildStore>()(
 
       // Power toggle (for stat calculations)
       togglePowerActive: (powerName) =>
-        set((state) => {
-          const toggleInPowers = (powers: SelectedPower[]) =>
+        set((state) => ({
+          build: applyToAllPowers(state.build, (powers) =>
             powers.map((p) =>
               p.name === powerName ? { ...p, isActive: !p.isActive } : p
-            );
-
-          return {
-            build: {
-              ...state.build,
-              primary: {
-                ...state.build.primary,
-                powers: toggleInPowers(state.build.primary.powers),
-              },
-              secondary: {
-                ...state.build.secondary,
-                powers: toggleInPowers(state.build.secondary.powers),
-              },
-              pools: state.build.pools.map((pool) => ({
-                ...pool,
-                powers: toggleInPowers(pool.powers),
-              })),
-              epicPool: state.build.epicPool
-                ? {
-                    ...state.build.epicPool,
-                    powers: toggleInPowers(state.build.epicPool.powers),
-                  }
-                : null,
-            },
-          };
-        }),
+            )
+          ),
+        })),
 
       // Set active sub-power for powers with mutually exclusive stances
       setActiveSubPower: (parentPowerName, subPowerName) =>
-        set((state) => {
-          const setSubPowerInPowers = (powers: SelectedPower[]) =>
+        set((state) => ({
+          build: applyToAllPowers(state.build, (powers) =>
             powers.map((p) =>
               p.name === parentPowerName
                 ? { ...p, activeSubPower: subPowerName ?? undefined }
                 : p
-            );
-
-          return {
-            build: {
-              ...state.build,
-              primary: {
-                ...state.build.primary,
-                powers: setSubPowerInPowers(state.build.primary.powers),
-              },
-              secondary: {
-                ...state.build.secondary,
-                powers: setSubPowerInPowers(state.build.secondary.powers),
-              },
-              pools: state.build.pools.map((pool) => ({
-                ...pool,
-                powers: setSubPowerInPowers(pool.powers),
-              })),
-              epicPool: state.build.epicPool
-                ? {
-                    ...state.build.epicPool,
-                    powers: setSubPowerInPowers(state.build.epicPool.powers),
-                  }
-                : null,
-            },
-          };
-        }),
+            )
+          ),
+        })),
 
       // Computed
       getTotalSlotsUsed: () => countTotalSlots(get().build),

@@ -506,6 +506,28 @@ export function calculatePowerDamage(
   return result;
 }
 
+const DAMAGE_TYPE_ABBREV: Record<string, string> = {
+  Smashing: 'Smash',
+  Lethal: 'Lethal',
+  Negative: 'Neg',
+  Energy: 'Eng',
+  Toxic: 'Tox',
+  Psionic: 'Psy',
+  Fire: 'Fire',
+  Cold: 'Cold',
+};
+
+/**
+ * Abbreviate a damage type string for compact display.
+ * Handles joined types like "Smashing/Lethal" → "Smash/Lethal"
+ */
+export function abbreviateDamageType(type: string): string {
+  return type
+    .split('/')
+    .map(t => DAMAGE_TYPE_ABBREV[t.trim()] ?? t.trim())
+    .join('/');
+}
+
 /**
  * Infer damage type from power/powerset name
  */

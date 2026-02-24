@@ -13,7 +13,7 @@ export interface TrackerItem {
 // ============================================
 
 export const KNOWN_BUGS: TrackerItem[] = [
-  { text: 'Lore pet stats (individual pet abilities) are not yet parsed from raw data', status: 'known-bug' },
+  { text: 'Pets and Lore pet stats (individual pet abilities) are not yet parsed from raw data', status: 'known-bug' },
   { text: 'If you see a [missing-icon] icon, it means the icon is missing. Please report it using the feedback tool', status: 'known-bug' },
 ];
 
@@ -22,10 +22,10 @@ export const KNOWN_BUGS: TrackerItem[] = [
 // ============================================
 
 export const RECENT_CHANGES: TrackerItem[] = [
+  { text: 'Massive cleanup of powers data structure, should expose more power effects to the infopanel', status: 'fixed' },
   { text: 'fix: Fixed missing effects across 395 powers 😓', status: 'fixed' },
   { text: 'New: Added highlight indicator for unique and proc enhancements', status: 'new' },
   { text: 'fix: Fixed some missing enhancement icons', status: 'fixed' },
-  { text: 'fix: Fixed wonky slot counting (again)', status: 'fixed' },
   { text: 'New: Tracked stats now highlight matching bonus effects in enhancement picker tooltips', status: 'new' },
   { text: 'New: Added Controls button to the dashboard bar — quick reference for all desktop and mobile interactions', status: 'new' },
   { text: 'Update to incorporate power updates in Issue 28, Page 3, Panel 2', status: 'fixed' },

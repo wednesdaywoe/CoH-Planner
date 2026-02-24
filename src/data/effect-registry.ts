@@ -430,6 +430,14 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
     enhancementAspect: 'fly',
     priority: 1,
   },
+  flySpeed: {
+    label: 'Fly Speed',
+    category: 'movement',
+    colorClass: 'text-sky-400',
+    format: 'value',
+    enhancementAspect: 'fly',
+    priority: 1,
+  },
   runSpeed: {
     label: 'Run Speed',
     category: 'movement',

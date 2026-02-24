@@ -8,7 +8,7 @@ import { useEffect, useState, useCallback, useMemo } from 'react';
 import { createPortal } from 'react-dom';
 import { useUIStore, useBuildStore, useDominationActive, useScourgeActive, useFuryLevel, useSupremacyActive, useVigilanceTeamSize, useCriticalHitsActive, useStalkerHidden, useStalkerTeamSize, useContainmentActive } from '@/stores';
 import { useGlobalBonuses } from '@/hooks/useCalculatedStats';
-import { getPower, getPowerPool, getEpicPool, getArchetype, getIOSet, getPowerset, getInherentPowerDef, findProcData, parseProcEffect, getProcEffectLabel, getProcEffectColor, isProcAlwaysOn, calculateProcChance, calculateProcsPerMinute, calculateProcDPS, calculateAutoToggleProcChance, calculateAutoToggleProcsPerMinute } from '@/data';
+import { lookupPower, getPower, getPowerPool, getArchetype, getIOSet, getPowerset, getInherentPowerDef, findProcData, parseProcEffect, getProcEffectLabel, getProcEffectColor, isProcAlwaysOn, calculateProcChance, calculateProcsPerMinute, calculateProcDPS, calculateAutoToggleProcChance, calculateAutoToggleProcsPerMinute } from '@/data';
 import { resolvePath } from '@/utils/paths';
 import type { Power } from '@/types';
 import {
@@ -56,7 +56,6 @@ import {
   SpecialEnhancementIcon,
 } from '@/components/enhancements/EnhancementIcon';
 import type { ArchetypeId, IOSetEnhancement, GenericIOEnhancement, OriginEnhancement, SpecialEnhancement, Enhancement } from '@/types';
-import { EffectDisplay } from './EffectDisplay';
 import {
   getEffectiveBuffDebuffModifier,
   convertGlobalBonusesToAspects,
@@ -113,63 +112,23 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
     return false;
   }, [build.secondary.powers, build.primary.powers]);
 
-  // Try to get power from powerset first, then from pools, then from inherents
-  let basePower: Power | undefined = getPower(powerSet, powerName);
+  // Unified power lookup across all categories
+  const lookupResult = lookupPower(powerSet, powerName);
+  let basePower: Power | undefined = lookupResult?.power;
 
-  if (!basePower) {
-    const pool = getPowerPool(powerSet);
-    if (pool) {
-      basePower = pool.powers.find((p) => p.name === powerName);
-    }
-  }
-
-  // Check epic pools
-  if (!basePower) {
-    const epicPool = getEpicPool(powerSet);
-    if (epicPool) {
-      basePower = epicPool.powers.find((p) => p.name === powerName);
-    }
-  }
-
-  // Handle inherent powers
-  if (!basePower && powerSet === 'Inherent') {
+  // Resolve inherent icon paths (inherents store filename, need full path)
+  if (lookupResult?.isInherent && basePower) {
     const inherentDef = getInherentPowerDef(powerName);
-    if (inherentDef) {
-      // Resolve the full icon path based on category
-      const iconPath = getInherentIconFullPath(inherentDef.icon, inherentDef.category);
-      basePower = {
-        name: inherentDef.name,
-        fullName: inherentDef.fullName,
-        description: inherentDef.description,
-        icon: iconPath,
-        shortHelp: inherentDef.description,
-        powerType: inherentDef.powerType,
-        available: 0,
-        maxSlots: inherentDef.maxSlots,
-        allowedEnhancements: inherentDef.allowedEnhancements as Power['allowedEnhancements'],
-        allowedSetCategories: inherentDef.allowedSetCategories as Power['allowedSetCategories'],
-        effects: (inherentDef.effects ?? {}) as Power['effects'],
-      };
-    } else {
-      // Try archetype inherent from build
-      const selectedInherent = build.inherents.find((p) => p.name === powerName);
-      if (selectedInherent) {
-        // Resolve the full icon path based on inherent category
-        const iconPath = getInherentIconFullPath(selectedInherent.icon || 'unknown.png', selectedInherent.inherentCategory);
-        basePower = {
-          name: selectedInherent.name,
-          fullName: selectedInherent.fullName || `Inherent.${selectedInherent.name}`,
-          description: selectedInherent.description || '',
-          icon: iconPath,
-          shortHelp: selectedInherent.description || '',
-          powerType: selectedInherent.powerType || 'Auto',
-          available: 0,
-          maxSlots: selectedInherent.maxSlots,
-          allowedEnhancements: (selectedInherent.allowedEnhancements || []) as Power['allowedEnhancements'],
-          allowedSetCategories: (selectedInherent.allowedSetCategories || []) as Power['allowedSetCategories'],
-          effects: selectedInherent.effects || {},
-        };
-      }
+    const iconPath = getInherentIconFullPath(basePower.icon || 'unknown.png', inherentDef?.category);
+    basePower = { ...basePower, icon: iconPath };
+  }
+
+  // Archetype inherent fallback (dynamically created, not in static data)
+  if (!basePower && powerSet === 'Inherent') {
+    const selectedInherent = build.inherents.find((p) => p.name === powerName);
+    if (selectedInherent) {
+      const iconPath = getInherentIconFullPath(selectedInherent.icon || 'unknown.png', selectedInherent.inherentCategory);
+      basePower = { ...selectedInherent, icon: iconPath };
     }
   }
 
@@ -447,7 +406,7 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
         buffDebuffMod={effectiveMod}
         archetypeId={archetypeId ?? undefined}
         level={build.level}
-        categories={['execution', 'buff', 'debuff', 'control', 'protection']}
+        categories={['execution', 'buff', 'debuff', 'control', 'protection', 'movement']}
         dominationActive={dominationActive}
         compact={true}
         header="Power Effects"
@@ -528,20 +487,6 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
             {effects.dot.type} {effects.dot.scale.toFixed(2)}/tick × {effects.dot.ticks} = {(effects.dot.scale * effects.dot.ticks).toFixed(2)} total
           </span>
         </div>
-      )}
-
-      {/* Registry-based effect display for movement and special effects (buff/debuff/control handled above) */}
-      {effects && (
-        <EffectDisplay
-          effects={effects}
-          archetypeId={archetypeId as ArchetypeId}
-          enhancementBonuses={enhancementBonuses}
-          categories={['movement', 'special']}
-          compact={true}
-          buffDebuffMod={effectiveMod}
-          dominationActive={dominationActive}
-          powersetId={powerSet}
-        />
       )}
 
       {/* Blaster Defiance - show for Blaster primary/secondary attack powers */}

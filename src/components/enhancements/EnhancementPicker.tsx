@@ -10,7 +10,7 @@
 import { useState, useMemo, useEffect, useRef } from 'react';
 import { useBuildStore, useUIStore } from '@/stores';
 import {
-  getIOSetsForPower, getAllIOSets, getPower, getPowerPool, getEpicPool, getInherentPowerDef,
+  getIOSetsForPower, getAllIOSets, lookupPower,
   getCommonIOValueAtLevel, ORIGIN_TIERS,
   sortCategoriesByPriority,
   createIOSetEnhancement, createGenericIOEnhancement, createSpecialEnhancement, createOriginEnhancement,
@@ -61,41 +61,10 @@ export function EnhancementPicker() {
   // Shift+Click multi-select state: setId → Set of piece indices
   const [shiftSelected, setShiftSelected] = useState<Map<string, Set<number>>>(new Map());
 
-  // Get the current power definition
+  // Get the current power definition (unified lookup across all categories)
   const currentPower = useMemo(() => {
     if (!picker.currentPowerName || !picker.currentPowerSet) return null;
-
-    // Check for inherent powers first (Fitness, Basic, Prestige, Archetype inherents)
-    if (picker.currentPowerSet === 'Inherent') {
-      const inherentDef = getInherentPowerDef(picker.currentPowerName);
-      if (inherentDef) {
-        // Convert InherentPowerDef to a compatible Power-like object
-        return {
-          name: inherentDef.name,
-          icon: inherentDef.icon,
-          available: 0,
-          powerType: inherentDef.powerType || 'Auto',
-          maxSlots: inherentDef.maxSlots || 6,
-          allowedEnhancements: inherentDef.allowedEnhancements || [],
-          allowedSetCategories: inherentDef.allowedSetCategories || [],
-        };
-      }
-      return null;
-    }
-
-    // Try regular powerset
-    let power = getPower(picker.currentPowerSet, picker.currentPowerName);
-    if (!power) {
-      // Try power pool
-      const pool = getPowerPool(picker.currentPowerSet);
-      power = pool?.powers.find((p) => p.name === picker.currentPowerName);
-    }
-    if (!power) {
-      // Try epic/patron pool
-      const epicPool = getEpicPool(picker.currentPowerSet);
-      power = epicPool?.powers.find((p) => p.name === picker.currentPowerName);
-    }
-    return power;
+    return lookupPower(picker.currentPowerSet, picker.currentPowerName)?.power ?? null;
   }, [picker.currentPowerName, picker.currentPowerSet]);
 
   // Get the current power's slots from the build

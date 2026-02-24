@@ -333,6 +333,10 @@ export {
 } from './granted-powers';
 export type { GrantedPowerGroup } from './granted-powers';
 
+// Unified power lookup
+export { lookupPower } from './power-lookup';
+export type { PowerLookupResult } from './power-lookup';
+
 // Effect registry for data-driven power effect display
 export {
   EFFECT_REGISTRY,

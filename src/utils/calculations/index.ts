@@ -10,6 +10,7 @@ export {
   calculateDotDamage,
   formatDamage,
   calculateBuffDebuffValue,
+  abbreviateDamageType,
   type DamageTableType,
   type DamageCalculationOptions,
   type PowerDamageResult,

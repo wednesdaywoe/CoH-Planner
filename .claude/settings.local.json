@@ -84,7 +84,8 @@
       "Bash(/tmp/final_analysis.md:*)",
       "Bash(/tmp/FINDINGS.md:*)",
       "Bash(node check-icons.mjs:*)",
-      "Bash(du:*)"
+      "Bash(du:*)",
+      "Bash(head -80 /Users/brian/Library/CloudStorage/Dropbox/GitHub/CoH-Planner/src/data/powersets/blaster/epic/*/index.ts)"
     ]
   }
 }
