@@ -79,8 +79,7 @@ function BonusRow({ bonus, isActive }: BonusRowProps) {
             <div className="mt-1 space-y-0.5">
               {pveEffects.map((effect, i) => (
                 <div key={i} className="text-sm">
-                  {effect.stat}: +{formatBonusValue(effect.value)}
-                  {typeof effect.value === 'number' && effect.value < 1 ? '' : '%'}
+                  {effect.stat}: +{formatBonusValue(effect.value)}%
                 </div>
               ))}
             </div>
@@ -91,8 +90,7 @@ function BonusRow({ bonus, isActive }: BonusRowProps) {
               <div className="space-y-0.5">
                 {pvpEffects.map((effect, i) => (
                   <div key={i} className="text-sm text-red-400/60">
-                    {effect.stat}: +{formatBonusValue(effect.value)}
-                    {typeof effect.value === 'number' && effect.value < 1 ? '' : '%'}
+                    {effect.stat}: +{formatBonusValue(effect.value)}%
                   </div>
                 ))}
               </div>

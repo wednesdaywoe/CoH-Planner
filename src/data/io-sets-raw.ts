@@ -802,8 +802,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "maximum_endurance",
-            "value": 135,
-            "desc": "+135.0% Maximum Endurance"
+            "value": 1.35,
+            "desc": "+1.35% Maximum Endurance"
           }
         ]
       },
@@ -3357,8 +3357,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "maximum_endurance",
-            "value": 225,
-            "desc": "+225.0% Maximum Endurance"
+            "value": 2.25,
+            "desc": "+2.25% Maximum Endurance"
           }
         ]
       },
@@ -3761,8 +3761,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "maximum_endurance",
-            "value": 225,
-            "desc": "+225.0% Maximum Endurance"
+            "value": 2.25,
+            "desc": "+2.25% Maximum Endurance"
           }
         ]
       },
@@ -4159,8 +4159,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "maximum_endurance",
-            "value": 135,
-            "desc": "+135.0% Maximum Endurance"
+            "value": 1.35,
+            "desc": "+1.35% Maximum Endurance"
           }
         ]
       },
@@ -4771,8 +4771,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "maximum_endurance",
-            "value": 180,
-            "desc": "+180.0% Maximum Endurance"
+            "value": 1.8,
+            "desc": "+1.8% Maximum Endurance"
           }
         ]
       },
@@ -5176,8 +5176,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "maximum_endurance",
-            "value": 225,
-            "desc": "+225.0% Maximum Endurance"
+            "value": 2.25,
+            "desc": "+2.25% Maximum Endurance"
           }
         ]
       },
@@ -5422,8 +5422,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "maximum_endurance",
-            "value": 225,
-            "desc": "+225.0% Maximum Endurance"
+            "value": 2.25,
+            "desc": "+2.25% Maximum Endurance"
           }
         ]
       },
@@ -7050,8 +7050,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "maximum_endurance",
-            "value": 225,
-            "desc": "+225.0% Maximum Endurance"
+            "value": 2.25,
+            "desc": "+2.25% Maximum Endurance"
           }
         ]
       },
@@ -7130,8 +7130,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "maximum_endurance",
-            "value": 180,
-            "desc": "+180.0% Maximum Endurance"
+            "value": 1.8,
+            "desc": "+1.8% Maximum Endurance"
           }
         ]
       },
@@ -7862,8 +7862,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "maximum_endurance",
-            "value": 225,
-            "desc": "+225.0% Maximum Endurance"
+            "value": 2.25,
+            "desc": "+2.25% Maximum Endurance"
           },
           {
             "stat": "recharge",
@@ -8429,8 +8429,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "maximum_endurance",
-            "value": 135,
-            "desc": "+135.0% Maximum Endurance"
+            "value": 1.35,
+            "desc": "+1.35% Maximum Endurance"
           }
         ]
       },
@@ -9138,8 +9138,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "maximum_endurance",
-            "value": 180,
-            "desc": "+180.0% Maximum Endurance"
+            "value": 1.8,
+            "desc": "+1.8% Maximum Endurance"
           }
         ]
       },
@@ -9452,8 +9452,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "maximum_endurance",
-            "value": 225,
-            "desc": "+225.0% Maximum Endurance"
+            "value": 2.25,
+            "desc": "+2.25% Maximum Endurance"
           }
         ]
       },
@@ -9582,8 +9582,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "maximum_endurance",
-            "value": 180,
-            "desc": "+180.0% Maximum Endurance"
+            "value": 1.8,
+            "desc": "+1.8% Maximum Endurance"
           }
         ]
       },
@@ -9708,8 +9708,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           },
           {
             "stat": "maximum_endurance",
-            "value": 225,
-            "desc": "+225.0% Maximum Endurance",
+            "value": 2.25,
+            "desc": "+2.25% Maximum Endurance",
             "pvp": true
           }
         ]
@@ -10071,8 +10071,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "maximum_endurance",
-            "value": 225,
-            "desc": "+225.0% Maximum Endurance"
+            "value": 2.25,
+            "desc": "+2.25% Maximum Endurance"
           },
           {
             "stat": "range",
@@ -10217,8 +10217,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           },
           {
             "stat": "maximum_endurance",
-            "value": 225,
-            "desc": "+225.0% Maximum Endurance",
+            "value": 2.25,
+            "desc": "+2.25% Maximum Endurance",
             "pvp": true
           }
         ]
@@ -11604,8 +11604,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "maximum_endurance",
-            "value": 225,
-            "desc": "+225.0% Maximum Endurance"
+            "value": 2.25,
+            "desc": "+2.25% Maximum Endurance"
           }
         ]
       },
@@ -12079,8 +12079,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "maximum_endurance",
-            "value": 135,
-            "desc": "+135.0% Maximum Endurance"
+            "value": 1.35,
+            "desc": "+1.35% Maximum Endurance"
           }
         ]
       },
@@ -12672,8 +12672,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "maximum_endurance",
-            "value": 270,
-            "desc": "+270.0% Maximum Endurance"
+            "value": 2.7,
+            "desc": "+2.7% Maximum Endurance"
           }
         ]
       }
@@ -14051,8 +14051,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "maximum_endurance",
-            "value": 180,
-            "desc": "+180.0% Maximum Endurance"
+            "value": 1.8,
+            "desc": "+1.8% Maximum Endurance"
           }
         ]
       },
@@ -14874,8 +14874,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "maximum_endurance",
-            "value": 225,
-            "desc": "+225.0% Maximum Endurance"
+            "value": 2.25,
+            "desc": "+2.25% Maximum Endurance"
           }
         ]
       },
@@ -15611,8 +15611,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "maximum_endurance",
-            "value": 90,
-            "desc": "+90.0% Maximum Endurance"
+            "value": 0.9,
+            "desc": "+0.9% Maximum Endurance"
           }
         ]
       },
@@ -16304,8 +16304,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "maximum_endurance",
-            "value": 135,
-            "desc": "+135.0% Maximum Endurance"
+            "value": 1.35,
+            "desc": "+1.35% Maximum Endurance"
           }
         ]
       },
@@ -16415,8 +16415,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "maximum_endurance",
-            "value": 180,
-            "desc": "+180.0% Maximum Endurance"
+            "value": 1.8,
+            "desc": "+1.8% Maximum Endurance"
           }
         ]
       },
@@ -18225,8 +18225,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "maximum_endurance",
-            "value": 180,
-            "desc": "+180.0% Maximum Endurance"
+            "value": 1.8,
+            "desc": "+1.8% Maximum Endurance"
           }
         ]
       },
@@ -19655,8 +19655,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "maximum_endurance",
-            "value": 315,
-            "desc": "+315.0% Maximum Endurance"
+            "value": 3.15,
+            "desc": "+3.15% Maximum Endurance"
           }
         ]
       },
@@ -20392,8 +20392,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "maximum_endurance",
-            "value": 225,
-            "desc": "+225.0% Maximum Endurance"
+            "value": 2.25,
+            "desc": "+2.25% Maximum Endurance"
           }
         ]
       },
@@ -21748,8 +21748,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "maximum_endurance",
-            "value": 360,
-            "desc": "+360.0% Maximum Endurance"
+            "value": 3.6,
+            "desc": "+3.6% Maximum Endurance"
           }
         ]
       },
@@ -22571,8 +22571,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "maximum_endurance",
-            "value": 360,
-            "desc": "+360.0% Maximum Endurance"
+            "value": 3.6,
+            "desc": "+3.6% Maximum Endurance"
           }
         ]
       },
@@ -23301,8 +23301,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "maximum_endurance",
-            "value": 360,
-            "desc": "+360.0% Maximum Endurance"
+            "value": 3.6,
+            "desc": "+3.6% Maximum Endurance"
           }
         ]
       },
@@ -23580,8 +23580,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "maximum_endurance",
-            "value": 360,
-            "desc": "+360.0% Maximum Endurance"
+            "value": 3.6,
+            "desc": "+3.6% Maximum Endurance"
           }
         ]
       },
@@ -24024,8 +24024,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "maximum_endurance",
-            "value": 360,
-            "desc": "+360.0% Maximum Endurance"
+            "value": 3.6,
+            "desc": "+3.6% Maximum Endurance"
           }
         ]
       },
@@ -24403,8 +24403,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "maximum_endurance",
-            "value": 360,
-            "desc": "+360.0% Maximum Endurance"
+            "value": 3.6,
+            "desc": "+3.6% Maximum Endurance"
           }
         ]
       },
@@ -24984,8 +24984,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "maximum_endurance",
-            "value": 90,
-            "desc": "+90.0% Maximum Endurance"
+            "value": 0.9,
+            "desc": "+0.9% Maximum Endurance"
           }
         ]
       },
@@ -25192,8 +25192,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "maximum_endurance",
-            "value": 180,
-            "desc": "+180.0% Maximum Endurance"
+            "value": 1.8,
+            "desc": "+1.8% Maximum Endurance"
           }
         ]
       },
@@ -26004,8 +26004,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "maximum_endurance",
-            "value": 225,
-            "desc": "+225.0% Maximum Endurance"
+            "value": 2.25,
+            "desc": "+2.25% Maximum Endurance"
           }
         ]
       },
@@ -26720,8 +26720,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "maximum_endurance",
-            "value": 180,
-            "desc": "+180.0% Maximum Endurance"
+            "value": 1.8,
+            "desc": "+1.8% Maximum Endurance"
           }
         ]
       },
@@ -26861,8 +26861,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "maximum_endurance",
-            "value": 90,
-            "desc": "+90.0% Maximum Endurance"
+            "value": 0.9,
+            "desc": "+0.9% Maximum Endurance"
           }
         ]
       }
@@ -27209,8 +27209,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "maximum_endurance",
-            "value": 180,
-            "desc": "+180.0% Maximum Endurance"
+            "value": 1.8,
+            "desc": "+1.8% Maximum Endurance"
           }
         ]
       },

@@ -149,7 +149,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
         maxSlots: inherentDef.maxSlots,
         allowedEnhancements: inherentDef.allowedEnhancements as Power['allowedEnhancements'],
         allowedSetCategories: inherentDef.allowedSetCategories as Power['allowedSetCategories'],
-        effects: {},
+        effects: (inherentDef.effects ?? {}) as Power['effects'],
       };
     } else {
       // Try archetype inherent - look it up from build.inherents
