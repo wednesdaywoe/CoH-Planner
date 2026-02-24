@@ -19,10 +19,14 @@ export interface DamageModifiers {
 // ============================================
 
 export interface ArchetypeStats {
-  /** Base HP at level 1 */
+  /** Base HP at level 50 (attrib_max.hit_points[49]) */
   baseHP: number;
-  /** Maximum HP at level 50 */
+  /** HP cap at level 50 (attrib_max_max.hit_points[49]) */
   maxHP: number;
+  /** Base HP per level, index 0 = level 1 through index 49 = level 50 */
+  hpTable: number[];
+  /** HP cap per level, index 0 = level 1 through index 49 = level 50 */
+  hpCapTable: number[];
   /** Base endurance pool */
   baseEndurance: number;
   /** Base endurance recovery rate */

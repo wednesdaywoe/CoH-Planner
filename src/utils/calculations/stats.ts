@@ -205,19 +205,16 @@ export function createEmptyStats(): CharacterStats {
 // ============================================
 
 /**
- * Get baseline endurance for current archetype and level
+ * Get baseline endurance for current archetype and level.
+ * Endurance is flat 100 at all levels (confirmed from attrib_max.endurance in raw data).
  */
-export function getBaselineEndurance(archetypeId: ArchetypeId | undefined, level: number): number {
+export function getBaselineEndurance(archetypeId: ArchetypeId | undefined, _level: number): number {
   if (!archetypeId) return 100;
 
   const archetype = getArchetype(archetypeId);
   if (!archetype) return 100;
 
-  const baseEnd = archetype.stats?.baseEndurance || 100;
-
-  // Endurance scales slightly with level (~1% per level after level 1)
-  const levelMultiplier = 1 + (level - 1) * 0.01;
-  return baseEnd * levelMultiplier;
+  return archetype.stats?.baseEndurance || 100;
 }
 
 /**
@@ -244,32 +241,39 @@ export interface BaselineHealth {
 
 /**
  * Get baseline health for current archetype and level.
- * Archetype baseHP/maxHP values are the level 50 values.
- * HP scales with level using CoH's approximate formula: (level + 9) / 59,
- * which yields ~17% at level 1 and 100% at level 50.
+ * Uses per-level HP lookup tables from the raw game data (attrib_max / attrib_max_max).
  */
 export function getBaselineHealth(
   archetypeId: ArchetypeId | undefined,
   level: number
 ): BaselineHealth {
   if (!archetypeId) {
-    return { baseHealth: 1204.8, maxHealth: 1606.4 };
+    return { baseHealth: 1204.7588, maxHealth: 2088.2485 };
   }
 
   const archetype = getArchetype(archetypeId);
   if (!archetype) {
-    return { baseHealth: 1204.8, maxHealth: 1606.4 };
+    return { baseHealth: 1204.7588, maxHealth: 2088.2485 };
   }
 
-  const baseHP = archetype.stats?.baseHP || 1204.8;
-  const maxHP = archetype.stats?.maxHP || 1606.4;
+  const stats = archetype.stats;
+  const hpTable = stats?.hpTable;
+  const hpCapTable = stats?.hpCapTable;
 
-  // Archetype HP values are level 50 values. Scale down for lower levels.
-  const levelMultiplier = Math.min(1, (level + 9) / 59);
+  // Clamp level to 1-50 range, convert to 0-indexed
+  const idx = Math.max(0, Math.min(49, level - 1));
 
+  if (hpTable && hpCapTable && hpTable.length > idx && hpCapTable.length > idx) {
+    return {
+      baseHealth: hpTable[idx],
+      maxHealth: hpCapTable[idx],
+    };
+  }
+
+  // Fallback to level 50 scalar values if tables are missing
   return {
-    baseHealth: baseHP * levelMultiplier,
-    maxHealth: maxHP * levelMultiplier,
+    baseHealth: stats?.baseHP || 1204.7588,
+    maxHealth: stats?.maxHP || 2088.2485,
   };
 }
 
