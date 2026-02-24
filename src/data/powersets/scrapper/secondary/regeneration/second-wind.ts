@@ -32,5 +32,12 @@ export const SecondWind: Power = {
     "Endurance Modification",
     "Healing"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "maxHPBuff": {
+      "scale": 1.0,
+      "table": "Melee_HealSelf"
+    },
+    "buffDuration": 120
+  }
 };

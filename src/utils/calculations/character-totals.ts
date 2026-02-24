@@ -414,7 +414,8 @@ function applyActivePowerBonuses(
   breakdown: Map<string, DashboardStatBreakdown>,
   buildLevel: number,
   archetypeId: string,
-  alphaBonuses: EnhancementBonuses = {}
+  alphaBonuses: EnhancementBonuses = {},
+  baseMaxHP: number = 0
 ): void {
   for (const power of powers) {
     // Auto powers are always active; others require explicit isActive toggle
@@ -608,9 +609,20 @@ function applyActivePowerBonuses(
 
     // Max HP buff
     // Enhanced by Healing enhancements
+    // Heal tables (e.g., Melee_HealSelf) return absolute HP values, not percentages.
+    // Convert to percentage of base max HP when a heal table is used.
     if (effects.maxHPBuff !== undefined) {
       const enhMultiplier = 1 + (enhBonuses.heal || 0);
-      const value = resolveScaledEffect(effects.maxHPBuff, archetypeId, buildLevel) * 100 * enhMultiplier;
+      const resolved = resolveScaledEffect(effects.maxHPBuff, archetypeId, buildLevel);
+      const isHealTable = typeof effects.maxHPBuff === 'object' && effects.maxHPBuff.table &&
+        effects.maxHPBuff.table.toLowerCase().includes('heal');
+      let value: number;
+      if (isHealTable && baseMaxHP > 0) {
+        // Absolute HP from heal table → convert to percentage of base max HP
+        value = (resolved / baseMaxHP) * 100 * enhMultiplier;
+      } else {
+        value = resolved * 100 * enhMultiplier;
+      }
       global.maxHP += value;
       addToBreakdown(breakdown, 'maxHP', {
         name: power.name,
@@ -1724,6 +1736,7 @@ function buildToBuildPowers(build: Build): BuildPowers {
     secondary: { powers: build.secondary.powers },
     pools: build.pools.map((pool) => ({ powers: pool.powers })),
     epicPool: build.epicPool ? { powers: build.epicPool.powers } : undefined,
+    inherents: build.inherents,
   };
 }
 
@@ -1784,7 +1797,8 @@ export function calculateCharacterTotals(
   const alphaBonuses = getAlphaEnhancementBonuses(build.incarnates, incarnateActive);
 
   // Step 7: Apply active toggle power bonuses (with enhancement multipliers + Alpha bonuses)
-  applyActivePowerBonuses(allPowers, globalBonuses, breakdown, effectiveLevel, build.archetype.id || '', alphaBonuses);
+  const baseMaxHP = build.archetype?.stats?.maxHP || 0;
+  applyActivePowerBonuses(allPowers, globalBonuses, breakdown, effectiveLevel, build.archetype.id || '', alphaBonuses, baseMaxHP);
 
   // Step 7.5: Apply always-on proc bonuses (Global and Proc120s in Auto/Toggle powers)
   // Procs have their own Rule of 5 tracking, separate from set bonuses

@@ -458,6 +458,11 @@ export function collectAllSetBonuses(
     buildPowers.epicPool.powers.forEach(processPower);
   }
 
+  // Process inherent powers (Fitness, etc.)
+  if (buildPowers.inherents) {
+    buildPowers.inherents.forEach(processPower);
+  }
+
   return bonuses;
 }
 

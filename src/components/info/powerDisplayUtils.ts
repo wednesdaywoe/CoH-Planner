@@ -181,6 +181,10 @@ export const TYPE_LABELS_FULL: Record<string, string> = {
   smashing: 'Smash', lethal: 'Lethal', fire: 'Fire', cold: 'Cold',
   energy: 'Energy', negative: 'Neg', psionic: 'Psi', toxic: 'Toxic',
   melee: 'Melee', ranged: 'Ranged', aoe: 'AoE',
+  // Debuff resistance stat types
+  defense: 'Defense', endurance: 'End', tohit: 'ToHit',
+  movement: 'Slow', regeneration: 'Regen', recovery: 'Recovery',
+  recharge: 'Recharge', perception: 'Percep',
 };
 
 /**
@@ -410,6 +414,7 @@ export function hasDisplayableEffects(
     effects?.knockback || effects?.knockup ||
     // Defense/Resistance (armor powers)
     effects?.resistance || effects?.defense || effects?.elusivity ||
+    effects?.debuffResistance ||
     // Movement
     effects?.movement
   );

@@ -32,5 +32,16 @@ export const ReactiveRegeneration: Power = {
     "Healing"
   ],
   "maxSlots": 6,
-  "requires": "!Scrapper_Defense.Regeneration.Instant_Healing"
+  "requires": "!Scrapper_Defense.Regeneration.Instant_Healing",
+  "effects": {
+    "regenBuff": {
+      "scale": 2.0,
+      "table": "Melee_Ones"
+    },
+    "debuffResistance": {
+      "regeneration": 0.2,
+      "endurance": 0.2,
+      "recovery": 0.2
+    }
+  }
 };

@@ -521,6 +521,15 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
     expandByType: true,
     priority: 4,
   },
+  debuffResistance: {
+    label: 'Debuff Res',
+    category: 'protection',
+    colorClass: 'text-cyan-400',
+    format: 'percent',
+    canBeByType: true,
+    expandByType: true,
+    priority: 5,
+  },
 };
 
 // ============================================

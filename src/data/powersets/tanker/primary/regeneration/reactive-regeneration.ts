@@ -31,5 +31,16 @@ export const ReactiveRegeneration: Power = {
   "allowedSetCategories": [
     "Healing"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "regenBuff": {
+      "scale": 2.0,
+      "table": "Melee_Ones"
+    },
+    "debuffResistance": {
+      "regeneration": 0.2,
+      "endurance": 0.2,
+      "recovery": 0.2
+    }
+  }
 };

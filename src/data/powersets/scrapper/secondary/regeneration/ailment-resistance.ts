@@ -39,49 +39,14 @@ export const AilmentResistance: Power = {
         "table": "Melee_Ones"
       }
     },
-    "elusivity": {
-      "all": {
-        "scale": 0.2,
-        "table": "Melee_Ones"
-      }
-    },
-    "enduranceGain": {
-      "scale": 0.2,
-      "table": "Melee_Ones"
-    },
-    "tohitBuff": {
-      "scale": 0.2,
-      "table": "Melee_Ones"
-    },
-    "movement": {
-      "runSpeed": {
-        "scale": 0.2,
-        "table": "Melee_Ones"
-      },
-      "flySpeed": {
-        "scale": 0.2,
-        "table": "Melee_Ones"
-      },
-      "jumpSpeed": {
-        "scale": 0.2,
-        "table": "Melee_Ones"
-      }
-    },
-    "regenBuff": {
-      "scale": 0.2,
-      "table": "Melee_Ones"
-    },
-    "recoveryBuff": {
-      "scale": 0.2,
-      "table": "Melee_Ones"
-    },
-    "rangeBuff": {
-      "scale": 0.2,
-      "table": "Melee_Ones"
-    },
-    "rechargeBuff": {
-      "scale": 0.2,
-      "table": "Melee_Ones"
+    "debuffResistance": {
+      "defense": 0.2,
+      "endurance": 0.2,
+      "tohit": 0.2,
+      "movement": 0.2,
+      "regeneration": 0.2,
+      "recovery": 0.2,
+      "recharge": 0.2
     }
   }
 };
