@@ -1,3 +1,0 @@
-# Introduction
-
-Easyblocks Quickstart project.
