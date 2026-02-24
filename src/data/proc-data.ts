@@ -1130,6 +1130,18 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     pool: "B",
     unique: "Unique"
   },
+  "Impervious Skin: +Regeneration/+Res Mez(All)": {
+    setCategory: "Resist Damage",
+    setName: "Impervious Skin",
+    ioName: "+Regeneration/+Res Mez(All)",
+    ppm: null,
+    mechanics: "Buff(Regeneration 25%) for 120s",
+    pvpNotes: "",
+    type: "Proc120s",
+    levelRange: "10--30",
+    pool: "B",
+    unique: "Unique"
+  },
   "Buff Stealth": {
     setCategory: "Running",
     setName: "Celerity",

@@ -34,7 +34,7 @@ type StatValue = number | string | CompoundStatValue | MezStatValue;
 interface StatDefinition {
   id: string;
   label: string;
-  getValue: (stats: CalculatedStats, maxHP: number) => StatValue;
+  getValue: (stats: CalculatedStats, baseHP: number, maxHPCap: number) => StatValue;
   format: (value: StatValue) => string;
   color: string;
   tooltip: string;
@@ -355,7 +355,11 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
   health: {
     id: 'health',
     label: 'HP',
-    getValue: (stats, maxHP) => maxHP > 0 ? Math.floor(maxHP * (1 + stats.hpBuff / 100)) : 0,
+    getValue: (stats, baseHP, maxHPCap) => {
+      if (baseHP <= 0) return 0;
+      const buffedHP = baseHP * (1 + stats.hpBuff / 100);
+      return Math.floor(maxHPCap > 0 ? Math.min(buffedHP, maxHPCap) : buffedHP);
+    },
     format: (v) => `${v}`,
     color: 'text-green-400',
     tooltip: 'Maximum hit points',
@@ -366,9 +370,13 @@ const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'regeneration',
     label: 'Regn',
     // Return an object with both values for formatting
-    getValue: (stats, maxHP) => {
-      // Base regen: 100% HP in 240 seconds = maxHP/240 HP/sec
-      const baseRegenRate = maxHP / 240;
+    getValue: (stats, baseHP, maxHPCap) => {
+      if (baseHP <= 0) return { perSec: 0, buff: stats.regenBuff };
+      // Actual max HP (base + buffs, capped)
+      const buffedHP = baseHP * (1 + stats.hpBuff / 100);
+      const actualHP = maxHPCap > 0 ? Math.min(buffedHP, maxHPCap) : buffedHP;
+      // Base regen: 100% HP in 240 seconds = actualHP/240 HP/sec
+      const baseRegenRate = actualHP / 240;
       const hpPerSec = baseRegenRate * (1 + stats.regenBuff / 100);
       return { perSec: hpPerSec, buff: stats.regenBuff };
     },
@@ -531,7 +539,8 @@ export function StatsDashboard() {
   const incarnates = incarnatesRaw || createEmptyIncarnateBuildState();
   const isLevel50 = build.level >= INCARNATE_REQUIRED_LEVEL;
 
-  const maxHP = build.archetype?.stats?.maxHP || 0;
+  const baseHP = build.archetype?.stats?.baseHP || 0;
+  const maxHPCap = build.archetype?.stats?.maxHP || 0;
   const breakdowns = calcResult.breakdown;
 
   // Calculate power and slot counts
@@ -559,7 +568,7 @@ export function StatsDashboard() {
       .sort((a, b) => a.order - b.order)
       .map((config) => {
         const def = STAT_DEFINITIONS[config.stat];
-        const value = def.getValue(stats, maxHP);
+        const value = def.getValue(stats, baseHP, maxHPCap);
         const breakdown = def.breakdownKey ? breakdowns.get(def.breakdownKey) : undefined;
         return { ...def, value, breakdown, breakdownUnit: def.breakdownUnit };
       })
@@ -572,7 +581,7 @@ export function StatsDashboard() {
         }
         return Number(v) !== 0;
       });
-  }, [statsConfig, stats, maxHP, breakdowns]);
+  }, [statsConfig, stats, baseHP, maxHPCap, breakdowns]);
 
   // Stat categories for grouping (should match config modal)
   const STAT_CATEGORIES = [
