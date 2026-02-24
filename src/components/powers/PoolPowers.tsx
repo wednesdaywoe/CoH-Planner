@@ -715,7 +715,8 @@ function InherentPowerGroup({
                 key={power.name}
                 name={power.name}
                 iconSrc={getInherentIconPath(power)}
-                size="sm"
+                size="lg"
+                stackedLayout
                 muted
                 showRemove={false}
                 showAutoLabel={power.powerType === 'Auto'}

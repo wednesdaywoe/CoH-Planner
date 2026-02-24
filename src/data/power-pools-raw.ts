@@ -281,6 +281,9 @@ export const POWER_POOLS_RAW = {
           "recovery": {
             "scale": -0.05,
             "table": "Melee_Ones"
+          },
+          "protection": {
+            "stun": 2
           }
         }
       },
@@ -321,6 +324,9 @@ export const POWER_POOLS_RAW = {
           "recovery": {
             "scale": -0.05,
             "table": "Melee_Ones"
+          },
+          "protection": {
+            "knockback": 0.67
           }
         }
       },
@@ -918,6 +924,9 @@ export const POWER_POOLS_RAW = {
             "type": "Psionic",
             "scale": 2.049,
             "table": "Ranged_PvPDamage"
+          },
+          "protection": {
+            "knockback": 0.67
           }
         }
       },
@@ -1024,6 +1033,9 @@ export const POWER_POOLS_RAW = {
             "type": "Psionic",
             "scale": 0.4194,
             "table": "Ranged_PvPDamage"
+          },
+          "protection": {
+            "knockback": 0.67
           }
         }
       },
@@ -1554,7 +1566,7 @@ export const POWER_POOLS_RAW = {
             "table": "Melee_PvPDamage"
           },
           "protection": {
-            "knockup": 1
+            "knockback": 0.67
           }
         }
       },
@@ -1728,6 +1740,9 @@ export const POWER_POOLS_RAW = {
             "type": "Smashing",
             "scale": 4.82,
             "table": "Melee_PvPDamage"
+          },
+          "protection": {
+            "knockback": 0.67
           }
         }
       }
@@ -2156,6 +2171,9 @@ export const POWER_POOLS_RAW = {
             "type": "Energy",
             "scale": 1.891,
             "table": "Ranged_PvPDamage"
+          },
+          "protection": {
+            "knockback": 0.67
           }
         }
       },
@@ -2489,6 +2507,9 @@ export const POWER_POOLS_RAW = {
           "runSpeed": {
             "scale": -0.3,
             "table": "Melee_Ones"
+          },
+          "protection": {
+            "knockback": 2.42
           }
         }
       },

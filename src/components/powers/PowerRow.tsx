@@ -220,14 +220,14 @@ export function PowerRow({
       >
         <div className="flex min-w-0">
           {/* Left column: Level on top, icon underneath */}
-          <div className="flex flex-col items-center justify-between flex-shrink-0 mr-1">
+          <div className={`flex flex-col items-center flex-shrink-0 mr-1 ${level !== undefined ? 'justify-between' : 'justify-center'}`}>
             {level !== undefined && (
               <span className="text-[10px] font-semibold text-slate-500 leading-tight">L{level}</span>
             )}
             <img
               src={iconSrc}
               alt=""
-              className={`${iconClass} rounded-sm mt-0.5`}
+              className={`${iconClass} rounded-sm ${level !== undefined ? 'mt-0.5' : ''}`}
               onError={(e) => {
                 (e.target as HTMLImageElement).src = resolvePath('/img/Unknown.png');
               }}
