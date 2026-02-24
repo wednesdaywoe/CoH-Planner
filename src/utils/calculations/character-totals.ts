@@ -28,6 +28,7 @@ import {
 } from './set-bonuses';
 import {
   createEmptyStats,
+  getBaselineHealth,
   type CharacterStats,
 } from './stats';
 import {
@@ -1797,7 +1798,7 @@ export function calculateCharacterTotals(
   const alphaBonuses = getAlphaEnhancementBonuses(build.incarnates, incarnateActive);
 
   // Step 7: Apply active toggle power bonuses (with enhancement multipliers + Alpha bonuses)
-  const baseMaxHP = build.archetype?.stats?.baseHP || 0;
+  const baseMaxHP = getBaselineHealth(build.archetype?.id ?? undefined, effectiveLevel).baseHealth;
   applyActivePowerBonuses(allPowers, globalBonuses, breakdown, effectiveLevel, build.archetype.id || '', alphaBonuses, baseMaxHP);
 
   // Step 7.5: Apply always-on proc bonuses (Global and Proc120s in Auto/Toggle powers)

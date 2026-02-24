@@ -7,6 +7,7 @@
 import { useMemo } from 'react';
 import { useCalculatedStats, useCharacterCalculation } from '@/hooks';
 import { useBuildStore, useUIStore } from '@/stores';
+import { getBaselineHealth } from '@/utils/calculations/stats';
 import { Tooltip } from '@/components/ui';
 import { StatsConfigModal, AccoladesModal, AboutModal, ExportImportModal, FeedbackModal, KnownIssuesModal, WelcomeModal, useWelcomeModal, SetBonusLookupModal, ControlsModal } from '@/components/modals';
 import { IncarnateSlotGrid, IncarnateModal, IncarnateCraftingModal } from '@/components/incarnate';
@@ -539,8 +540,9 @@ export function StatsDashboard() {
   const incarnates = incarnatesRaw || createEmptyIncarnateBuildState();
   const isLevel50 = build.level >= INCARNATE_REQUIRED_LEVEL;
 
-  const baseHP = build.archetype?.stats?.baseHP || 0;
-  const maxHPCap = build.archetype?.stats?.maxHP || 0;
+  const health = getBaselineHealth(build.archetype?.id ?? undefined, build.level);
+  const baseHP = health.baseHealth;
+  const maxHPCap = health.maxHealth;
   const breakdowns = calcResult.breakdown;
 
   // Calculate power and slot counts

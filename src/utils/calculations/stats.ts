@@ -243,7 +243,10 @@ export interface BaselineHealth {
 }
 
 /**
- * Get baseline health for current archetype and level
+ * Get baseline health for current archetype and level.
+ * Archetype baseHP/maxHP values are the level 50 values.
+ * HP scales with level using CoH's approximate formula: (level + 9) / 59,
+ * which yields ~17% at level 1 and 100% at level 50.
  */
 export function getBaselineHealth(
   archetypeId: ArchetypeId | undefined,
@@ -261,8 +264,8 @@ export function getBaselineHealth(
   const baseHP = archetype.stats?.baseHP || 1204.8;
   const maxHP = archetype.stats?.maxHP || 1606.4;
 
-  // HP scales with level (~1.5% per level after level 1)
-  const levelMultiplier = 1 + (level - 1) * 0.015;
+  // Archetype HP values are level 50 values. Scale down for lower levels.
+  const levelMultiplier = Math.min(1, (level + 9) / 59);
 
   return {
     baseHealth: baseHP * levelMultiplier,
@@ -525,15 +528,17 @@ export function formatStatValue(
 
     if (statId === 'maxhp') {
       const health = getBaselineHealth(archetypeId, level);
-      absValue = health.maxHealth * (1 + value / 100);
+      const buffedHP = health.baseHealth * (1 + value / 100);
+      absValue = Math.min(buffedHP, health.maxHealth);
     } else if (statId === 'maxend') {
       const baselineMaxEnd = getBaselineEndurance(archetypeId, level);
       absValue = baselineMaxEnd * (1 + value / 100);
     } else if (statId === 'regeneration') {
       const health = getBaselineHealth(archetypeId, level);
-      const maxHealth = health.maxHealth * (1 + (stats.maxhp || 0) / 100);
+      const buffedHP = health.baseHealth * (1 + (stats.maxhp || 0) / 100);
+      const actualHP = Math.min(buffedHP, health.maxHealth);
       const baseRegenRate = 0.05; // 5% per 12 seconds
-      const baseRegenPerSecond = (maxHealth * baseRegenRate) / 12;
+      const baseRegenPerSecond = (actualHP * baseRegenRate) / 12;
       absValue = baseRegenPerSecond * (1 + value / 100);
     } else if (statId === 'recovery') {
       const baselineRecovery = getBaselineRecovery(archetypeId, level);
