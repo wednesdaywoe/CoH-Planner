@@ -204,31 +204,31 @@ const ALPHA_EFFECTS: Record<string, AlphaEffects> = {
     edBypass: 1/3,  // Uncommon: 1/3 bypasses ED
   },
   'musculature_total_core_revamp': {
-    damage: 0.33,
-    immobilize: 0.25,
+    damage: 0.45,
+    immobilize: 0.33,
     levelShift: 1,
     edBypass: 1/2,  // Rare: 1/2 bypasses ED
   },
   'musculature_partial_core_revamp': {
     damage: 0.33,
-    immobilize: 0.25,
-    defenseDebuff: 0.20,
+    immobilize: 0.33,
+    defenseDebuff: 0.33,
     levelShift: 1,
     edBypass: 1/2,  // Rare: 1/2 bypasses ED
   },
   'musculature_partial_radial_revamp': {
     damage: 0.33,
-    immobilize: 0.20,
-    defenseDebuff: 0.25,
+    immobilize: 0.165,
+    defenseDebuff: 0.33,
     toHitDebuff: 0.20,
     levelShift: 1,
     edBypass: 1/2,  // Rare: 1/2 bypasses ED
   },
   'musculature_total_radial_revamp': {
     damage: 0.33,
-    immobilize: 0.20,
-    defenseDebuff: 0.25,
-    enduranceReduction: 0.20,  // End modification
+    immobilize: 0.165,
+    defenseDebuff: 0.33,
+    enduranceReduction: 0.33,
     levelShift: 1,
     edBypass: 1/2,  // Rare: 1/2 bypasses ED
   },
@@ -270,30 +270,30 @@ const ALPHA_EFFECTS: Record<string, AlphaEffects> = {
     edBypass: 1/3,  // Uncommon: 1/3 bypasses ED
   },
   'spiritual_total_core_revamp': {
-    recharge: 0.33,
-    stun: 0.25,
+    recharge: 0.45,
+    stun: 0.33,
     levelShift: 1,
     edBypass: 1/2,  // Rare: 1/2 bypasses ED
   },
   'spiritual_partial_core_revamp': {
     recharge: 0.33,
-    stun: 0.25,
-    heal: 0.20,
+    stun: 0.33,
+    heal: 0.33,
     levelShift: 1,
     edBypass: 1/2,  // Rare: 1/2 bypasses ED
   },
   'spiritual_partial_radial_revamp': {
     recharge: 0.33,
-    stun: 0.20,
-    heal: 0.25,
-    slow: 0.20,
+    stun: 0.165,
+    heal: 0.33,
+    slow: 0.33,
     levelShift: 1,
     edBypass: 1/2,  // Rare: 1/2 bypasses ED
   },
   'spiritual_total_radial_revamp': {
     recharge: 0.33,
-    stun: 0.20,
-    heal: 0.25,
+    stun: 0.165,
+    heal: 0.33,
     toHitBuff: 0.20,
     levelShift: 1,
     edBypass: 1/2,  // Rare: 1/2 bypasses ED
@@ -336,31 +336,31 @@ const ALPHA_EFFECTS: Record<string, AlphaEffects> = {
     edBypass: 1/3,  // Uncommon: 1/3 bypasses ED
   },
   'cardiac_total_core_revamp': {
-    enduranceReduction: 0.33,
-    range: 0.25,
+    enduranceReduction: 0.45,
+    range: 0.20,
     levelShift: 1,
     edBypass: 1/2,  // Rare: 1/2 bypasses ED
   },
   'cardiac_partial_core_revamp': {
     enduranceReduction: 0.33,
-    range: 0.25,
+    range: 0.20,
     resistance: 0.20,
     levelShift: 1,
     edBypass: 1/2,  // Rare: 1/2 bypasses ED
   },
   'cardiac_partial_radial_revamp': {
     enduranceReduction: 0.33,
-    range: 0.20,
-    resistance: 0.25,
-    fear: 0.20,
+    range: 0.10,
+    resistance: 0.20,
+    fear: 0.33,
     levelShift: 1,
     edBypass: 1/2,  // Rare: 1/2 bypasses ED
   },
   'cardiac_total_radial_revamp': {
     enduranceReduction: 0.33,
-    range: 0.20,
-    resistance: 0.25,
-    sleep: 0.20,
+    range: 0.10,
+    resistance: 0.20,
+    sleep: 0.33,
     levelShift: 1,
     edBypass: 1/2,  // Rare: 1/2 bypasses ED
   },
@@ -402,31 +402,31 @@ const ALPHA_EFFECTS: Record<string, AlphaEffects> = {
     edBypass: 1/3,  // Uncommon: 1/3 bypasses ED
   },
   'nerve_total_core_revamp': {
-    accuracy: 0.33,
-    hold: 0.25,
+    accuracy: 0.45,
+    hold: 0.33,
     levelShift: 1,
     edBypass: 1/2,  // Rare: 1/2 bypasses ED
   },
   'nerve_partial_core_revamp': {
     accuracy: 0.33,
-    hold: 0.25,
+    hold: 0.33,
     defense: 0.20,
     levelShift: 1,
     edBypass: 1/2,  // Rare: 1/2 bypasses ED
   },
   'nerve_partial_radial_revamp': {
     accuracy: 0.33,
-    hold: 0.20,
-    defense: 0.25,
-    taunt: 0.20,
+    hold: 0.165,
+    defense: 0.20,
+    taunt: 0.33,
     levelShift: 1,
     edBypass: 1/2,  // Rare: 1/2 bypasses ED
   },
   'nerve_total_radial_revamp': {
     accuracy: 0.33,
-    hold: 0.20,
-    confuse: 0.20,
-    defense: 0.25,
+    hold: 0.165,
+    defense: 0.20,
+    confuse: 0.33,
     levelShift: 1,
     edBypass: 1/2,  // Rare: 1/2 bypasses ED
   },
@@ -468,31 +468,31 @@ const ALPHA_EFFECTS: Record<string, AlphaEffects> = {
     edBypass: 1/3,  // Uncommon: 1/3 bypasses ED
   },
   'agility_total_core_revamp': {
-    enduranceReduction: 0.33,
-    recharge: 0.25,
+    enduranceReduction: 0.45,
+    recharge: 0.33,
     levelShift: 1,
     edBypass: 1/2,  // Rare: 1/2 bypasses ED
   },
   'agility_partial_core_revamp': {
     enduranceReduction: 0.33,
-    recharge: 0.25,
+    recharge: 0.33,
     defense: 0.20,
     levelShift: 1,
     edBypass: 1/2,  // Rare: 1/2 bypasses ED
   },
   'agility_partial_radial_revamp': {
     enduranceReduction: 0.33,
-    recharge: 0.20,
-    defense: 0.25,
-    runSpeed: 0.20,
+    recharge: 0.165,
+    defense: 0.20,
+    runSpeed: 0.33,
     levelShift: 1,
     edBypass: 1/2,  // Rare: 1/2 bypasses ED
   },
   'agility_total_radial_revamp': {
     enduranceReduction: 0.33,
-    recharge: 0.20,
-    defense: 0.25,
-    jumpSpeed: 0.20,
+    recharge: 0.165,
+    defense: 0.20,
+    jumpSpeed: 0.33,
     levelShift: 1,
     edBypass: 1/2,  // Rare: 1/2 bypasses ED
   },
@@ -534,30 +534,30 @@ const ALPHA_EFFECTS: Record<string, AlphaEffects> = {
     edBypass: 1/3,  // Uncommon: 1/3 bypasses ED
   },
   'intuition_total_core_revamp': {
-    hold: 0.33,
-    defenseDebuff: 0.25,
+    hold: 0.45,
+    defenseDebuff: 0.33,
     levelShift: 1,
     edBypass: 1/2,  // Rare: 1/2 bypasses ED
   },
   'intuition_partial_core_revamp': {
     hold: 0.33,
-    defenseDebuff: 0.25,
+    defenseDebuff: 0.33,
     range: 0.20,
     levelShift: 1,
     edBypass: 1/2,  // Rare: 1/2 bypasses ED
   },
   'intuition_partial_radial_revamp': {
     hold: 0.33,
-    defenseDebuff: 0.20,
-    range: 0.25,
-    damage: 0.20,
+    defenseDebuff: 0.165,
+    range: 0.20,
+    damage: 0.33,
     levelShift: 1,
     edBypass: 1/2,  // Rare: 1/2 bypasses ED
   },
   'intuition_total_radial_revamp': {
     hold: 0.33,
-    defenseDebuff: 0.20,
-    range: 0.25,
+    defenseDebuff: 0.165,
+    range: 0.20,
     toHitDebuff: 0.20,
     levelShift: 1,
     edBypass: 1/2,  // Rare: 1/2 bypasses ED
@@ -601,30 +601,30 @@ const ALPHA_EFFECTS: Record<string, AlphaEffects> = {
   },
   'resilient_total_core_revamp': {
     resistance: 0.33,
-    toHitBuff: 0.25,
+    toHitBuff: 0.20,
     levelShift: 1,
     edBypass: 1/2,  // Rare: 1/2 bypasses ED
   },
   'resilient_partial_core_revamp': {
-    resistance: 0.33,
-    toHitBuff: 0.25,
-    immobilize: 0.20,
+    resistance: 0.20,
+    toHitBuff: 0.20,
+    immobilize: 0.33,
     levelShift: 1,
     edBypass: 1/2,  // Rare: 1/2 bypasses ED
   },
   'resilient_partial_radial_revamp': {
-    resistance: 0.33,
-    toHitBuff: 0.20,
-    immobilize: 0.25,
-    stun: 0.20,
+    resistance: 0.20,
+    toHitBuff: 0.10,
+    immobilize: 0.33,
+    stun: 0.33,
     levelShift: 1,
     edBypass: 1/2,  // Rare: 1/2 bypasses ED
   },
   'resilient_total_radial_revamp': {
-    resistance: 0.33,
-    toHitBuff: 0.20,
-    immobilize: 0.25,
-    absorb: 0.20,
+    resistance: 0.20,
+    toHitBuff: 0.10,
+    immobilize: 0.33,
+    absorb: 0.33,
     levelShift: 1,
     edBypass: 1/2,  // Rare: 1/2 bypasses ED
   },
@@ -666,31 +666,31 @@ const ALPHA_EFFECTS: Record<string, AlphaEffects> = {
     edBypass: 1/3,  // Uncommon: 1/3 bypasses ED
   },
   'vigor_total_core_revamp': {
-    heal: 0.33,
-    accuracy: 0.25,
+    heal: 0.45,
+    accuracy: 0.33,
     levelShift: 1,
     edBypass: 1/2,  // Rare: 1/2 bypasses ED
   },
   'vigor_partial_core_revamp': {
     heal: 0.33,
-    accuracy: 0.25,
-    enduranceReduction: 0.20,
+    accuracy: 0.33,
+    enduranceReduction: 0.33,
     levelShift: 1,
     edBypass: 1/2,  // Rare: 1/2 bypasses ED
   },
   'vigor_partial_radial_revamp': {
     heal: 0.33,
-    accuracy: 0.20,
-    enduranceReduction: 0.25,
-    sleep: 0.20,
+    accuracy: 0.165,
+    enduranceReduction: 0.33,
+    sleep: 0.33,
     levelShift: 1,
     edBypass: 1/2,  // Rare: 1/2 bypasses ED
   },
   'vigor_total_radial_revamp': {
     heal: 0.33,
-    accuracy: 0.20,
-    enduranceReduction: 0.25,
-    confuse: 0.20,
+    accuracy: 0.165,
+    enduranceReduction: 0.33,
+    confuse: 0.33,
     levelShift: 1,
     edBypass: 1/2,  // Rare: 1/2 bypasses ED
   },
