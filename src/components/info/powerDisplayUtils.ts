@@ -185,6 +185,8 @@ export const TYPE_LABELS_FULL: Record<string, string> = {
   defense: 'Defense', endurance: 'End', tohit: 'ToHit',
   movement: 'Slow', regeneration: 'Regen', recovery: 'Recovery',
   recharge: 'Recharge', perception: 'Percep',
+  // Resistance subtypes
+  heal: 'Heal',
 };
 
 /**

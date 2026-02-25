@@ -6,7 +6,7 @@
 import { useState } from 'react';
 import { useUIStore } from '@/stores';
 import { Modal, ModalBody, ModalFooter } from './Modal';
-import { Button } from '@/components/ui';
+import { Button, Toggle } from '@/components/ui';
 import type { StatDisplayConfig } from '@/types';
 
 // Color schemes for each category (matching legacy app)
@@ -200,6 +200,8 @@ export function StatsConfigModal({ isOpen, onClose }: StatsConfigModalProps) {
   const setStatVisible = useUIStore((s) => s.setStatVisible);
   const reorderStats = useUIStore((s) => s.reorderStats);
   const resetStatsConfig = useUIStore((s) => s.resetStatsConfig);
+  const includeProcsInStats = useUIStore((s) => s.includeProcsInStats);
+  const toggleIncludeProcsInStats = useUIStore((s) => s.toggleIncludeProcsInStats);
 
   // Local state for editing before applying
   const [localConfig, setLocalConfig] = useState<StatDisplayConfig[]>(() => {
@@ -295,14 +297,23 @@ export function StatsConfigModal({ isOpen, onClose }: StatsConfigModalProps) {
           </p>
         </div>
 
-        {/* Toggle all buttons */}
-        <div className="px-4 py-2 border-b border-gray-700 flex gap-2">
+        {/* Toggle all buttons + Procs toggle */}
+        <div className="px-4 py-2 border-b border-gray-700 flex items-center gap-2">
           <Button variant="ghost" size="sm" onClick={toggleAll}>
             Toggle All
           </Button>
           <Button variant="ghost" size="sm" onClick={handleReset}>
             Reset to Defaults
           </Button>
+          <div className="ml-auto flex items-center bg-slate-700/50 px-2 py-1.5 rounded border border-slate-600">
+            <Toggle
+              id="include-procs-toggle"
+              name="includeProcs"
+              checked={includeProcsInStats}
+              onChange={toggleIncludeProcsInStats}
+              label="Include Procs"
+            />
+          </div>
         </div>
 
         {/* Category sections */}

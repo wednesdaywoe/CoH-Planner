@@ -6,7 +6,7 @@
 
 import { createRouter, createRootRoute, createRoute, Outlet } from '@tanstack/react-router';
 import { MainLayout } from '@/components/layout/MainLayout';
-import { PlannerPage, BuildsPage, SettingsPage } from '@/pages';
+import { PlannerPage, BuildsPage, BuildDetailPage, SettingsPage } from '@/pages';
 
 
 // Create root route
@@ -32,6 +32,13 @@ const buildsRoute = createRoute({
   component: BuildsPage,
 });
 
+// Build detail route (shared build preview)
+const buildDetailRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/builds/$id',
+  component: BuildDetailPage,
+});
+
 // Settings route
 const settingsRoute = createRoute({
   getParentRoute: () => rootRoute,
@@ -45,6 +52,7 @@ const settingsRoute = createRoute({
 const routeTree = rootRoute.addChildren([
   indexRoute,
   buildsRoute,
+  buildDetailRoute,
   settingsRoute,
 ]);
 

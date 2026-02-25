@@ -337,6 +337,11 @@ export function calculatePowerDamage(
     return null;
   }
 
+  // Skip single-object Heal entries (handled separately as healing effects)
+  if (!Array.isArray(damageEffect) && typeof damageEffect === 'object' && 'type' in damageEffect && damageEffect.type === 'Heal') {
+    return null;
+  }
+
   // Normalize array format: [{ type, scale, table }, ...] → { types: [...], scale, table }
   // Filter out Heal entries (those are handled separately as healing effects)
   if (Array.isArray(damageEffect)) {

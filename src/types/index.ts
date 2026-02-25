@@ -98,6 +98,14 @@ export type {
 } from './build';
 export { createEmptyBuild } from './build';
 
+// Shared build types
+export type {
+  SharedBuild,
+  ShareBuildInput,
+  SearchFilters,
+  SearchResult,
+} from './shared';
+
 // UI types
 export type {
   ModalView,

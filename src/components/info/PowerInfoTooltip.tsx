@@ -203,14 +203,24 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
     );
   }, [basePower, build.level, archetypeId, enhancementBonuses.damage, globalBonusesForCalc.damage, powerSet, build.primary.id, build.secondary.id, powerset]);
 
-  // Extract healing from damage arrays (e.g., Life Drain, Dark Regeneration)
-  // Powers can define healing as { type: "Heal", scale, table } entries in the damage array
+  // Extract healing from damage field (e.g., Life Drain, Dark Regeneration, Reconstruction)
+  // Powers can define healing as { type: "Heal", scale, table } either as a single object or array entry
   const healFromDamageArray = useMemo(() => {
-    if (!Array.isArray(basePower?.damage)) return undefined;
-    const healEntry = (basePower.damage as Array<{ type: string; scale: number; table?: string }>)
-      .find(e => e.type === 'Heal');
-    if (!healEntry) return undefined;
-    return { scale: healEntry.scale, table: healEntry.table };
+    const dmg = basePower?.damage;
+    if (!dmg) return undefined;
+    // Single object: { type: "Heal", scale, table }
+    if (!Array.isArray(dmg) && typeof dmg === 'object' && 'type' in dmg && (dmg as { type: string }).type === 'Heal') {
+      const entry = dmg as { scale: number; table?: string };
+      return { scale: entry.scale, table: entry.table };
+    }
+    // Array: find Heal entry
+    if (Array.isArray(dmg)) {
+      const healEntry = (dmg as Array<{ type: string; scale: number; table?: string }>)
+        .find(e => e.type === 'Heal');
+      if (!healEntry) return undefined;
+      return { scale: healEntry.scale, table: healEntry.table };
+    }
+    return undefined;
   }, [basePower?.damage]);
 
   // Calculate aggregate pet damage (supports multi-entity summons)

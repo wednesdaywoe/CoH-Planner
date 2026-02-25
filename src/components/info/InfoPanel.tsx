@@ -217,13 +217,20 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
   // Merge raw power effects with curated support power data
   const baseEffects = mergeWithSupportEffects(power.effects, powerSet, power.name);
 
-  // Extract healing from damage array (e.g., Life Drain has { type: "Heal", scale, table })
+  // Extract healing from damage field (e.g., Life Drain, Reconstruction)
+  // Handles both single object { type: "Heal", scale, table } and array entries
   let healFromDamage: { scale: number; table?: string } | undefined;
-  if (Array.isArray(power.damage) && !baseEffects?.healing) {
-    const healEntry = (power.damage as Array<{ type: string; scale: number; table?: string }>)
-      .find(e => e.type === 'Heal');
-    if (healEntry) {
-      healFromDamage = { scale: healEntry.scale, table: healEntry.table };
+  if (!baseEffects?.healing) {
+    const dmg = power.damage;
+    if (!Array.isArray(dmg) && typeof dmg === 'object' && dmg && 'type' in dmg && (dmg as { type: string }).type === 'Heal') {
+      const entry = dmg as { scale: number; table?: string };
+      healFromDamage = { scale: entry.scale, table: entry.table };
+    } else if (Array.isArray(dmg)) {
+      const healEntry = (dmg as Array<{ type: string; scale: number; table?: string }>)
+        .find(e => e.type === 'Heal');
+      if (healEntry) {
+        healFromDamage = { scale: healEntry.scale, table: healEntry.table };
+      }
     }
   }
 

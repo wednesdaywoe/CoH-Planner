@@ -21,11 +21,11 @@ export const KNOWN_BUGS: TrackerItem[] = [
 // ============================================
 
 export const RECENT_CHANGES: TrackerItem[] = [
+  { text: 'Implemented public build sharing, no account or registration required', status: 'new' },
   { text: 'Finally added support for pets and pseudopet powers', status: 'new' },
   { text: 'Undock feature added to Info Panel, allowing it to be moved and resized', status: 'new' },  
   { text: 'Added Procs toggle to dashboard', status: 'new' },
   { text: 'Fixed incorrect ED calculation', status: 'fixed' },
-  { text: 'Massive cleanup of powers data structure, should expose more power effects to the infopanel', status: 'fixed' },
   { text: 'Fixed missing effects across 395 powers 😓', status: 'fixed' },
   { text: 'Added highlight indicator for unique and proc enhancements', status: 'new' },
   { text: 'Tracked stats now highlight matching bonus effects in enhancement picker tooltips', status: 'new' },

@@ -8,13 +8,15 @@ import { Button } from '../ui/Button';
 import { useBuildStore } from '@/stores/buildStore';
 import { importMidsBuild } from '@/utils/mids-import';
 import type { MidsImportResult } from '@/utils/mids-import';
+import { shareBuild, isShareEnabled } from '@/services/sharedBuilds';
+import type { BuildExport } from '@/types/build';
 
 interface ExportImportModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
-type TabType = 'export' | 'import' | 'mids';
+type TabType = 'export' | 'import' | 'mids' | 'share';
 
 export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
   const [activeTab, setActiveTab] = useState<TabType>('export');
@@ -30,6 +32,16 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
   const [midsError, setMidsError] = useState<string | null>(null);
   const [showWarnings, setShowWarnings] = useState(false);
   const midsFileInputRef = useRef<HTMLInputElement>(null);
+
+  // Share state
+  const [shareDescription, setShareDescription] = useState('');
+  const [shareAuthor, setShareAuthor] = useState('');
+  const [shareServer, setShareServer] = useState('');
+  const [shareTags, setShareTags] = useState('');
+  const [shareLoading, setShareLoading] = useState(false);
+  const [shareError, setShareError] = useState<string | null>(null);
+  const [shareUrl, setShareUrl] = useState<string | null>(null);
+  const [shareCopied, setShareCopied] = useState(false);
 
   const { exportBuild, importBuild, importMidsBuild: applyMidsBuild, build } = useBuildStore();
 
@@ -181,6 +193,46 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
     handleClose();
   };
 
+  const handleShare = async () => {
+    setShareError(null);
+    setShareLoading(true);
+    setShareUrl(null);
+
+    try {
+      const exportData = JSON.parse(exportBuild()) as BuildExport;
+      const tags = shareTags
+        .split(',')
+        .map((t) => t.trim())
+        .filter(Boolean);
+
+      const result = await shareBuild({
+        name: build.name || 'Untitled Build',
+        description: shareDescription,
+        author_name: shareAuthor,
+        server: shareServer,
+        tags,
+        build_json: exportData,
+      });
+
+      setShareUrl(result.url);
+    } catch (e) {
+      setShareError(e instanceof Error ? e.message : 'Failed to share build');
+    } finally {
+      setShareLoading(false);
+    }
+  };
+
+  const handleCopyShareUrl = async () => {
+    if (!shareUrl) return;
+    try {
+      await navigator.clipboard.writeText(shareUrl);
+      setShareCopied(true);
+      setTimeout(() => setShareCopied(false), 2000);
+    } catch {
+      // Fallback: select the text in the input
+    }
+  };
+
   const handleClose = () => {
     setBuildAlias('');
     setImportText('');
@@ -190,6 +242,14 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
     setMidsResult(null);
     setMidsError(null);
     setShowWarnings(false);
+    setShareDescription('');
+    setShareAuthor('');
+    setShareServer('');
+    setShareTags('');
+    setShareError(null);
+    setShareUrl(null);
+    setShareLoading(false);
+    setShareCopied(false);
     setActiveTab('export');
     if (midsFileInputRef.current) midsFileInputRef.current.value = '';
     onClose();
@@ -229,6 +289,18 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
           >
             Mids Import
           </button>
+          {isShareEnabled() && (
+            <button
+              className={`px-4 py-2 font-semibold transition-colors ${
+                activeTab === 'share'
+                  ? 'text-green-400 border-b-2 border-green-400'
+                  : 'text-gray-400 hover:text-gray-300'
+              }`}
+              onClick={() => setActiveTab('share')}
+            >
+              Share
+            </button>
+          )}
         </div>
       </ModalHeader>
 
@@ -331,7 +403,7 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
               <p>Importing will replace your current build. Make sure to export your current build first if you want to keep it.</p>
             </div>
           </div>
-        ) : (
+        ) : activeTab === 'mids' ? (
           /* Mids Import Tab */
           <div className="space-y-4">
             <div className="bg-amber-900/20 border border-amber-700/50 rounded p-3 text-sm text-amber-300">
@@ -469,6 +541,121 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
               </div>
             )}
           </div>
+        ) : (
+          /* Share Tab */
+          <div className="space-y-4">
+            {shareUrl ? (
+              /* Success state */
+              <div className="space-y-4">
+                <div className="bg-green-900/20 border border-green-700/50 rounded p-4 text-sm text-green-300">
+                  <p className="font-semibold mb-2">Build shared successfully!</p>
+                  <p className="text-xs text-green-400 mb-3">Anyone with this link can view your build:</p>
+                  <div className="flex gap-2">
+                    <input
+                      type="text"
+                      readOnly
+                      value={shareUrl}
+                      className="flex-1 bg-gray-800 border border-gray-600 rounded px-3 py-2 text-white text-sm font-mono"
+                      onFocus={(e) => e.target.select()}
+                    />
+                    <Button
+                      variant={shareCopied ? 'secondary' : 'primary'}
+                      size="sm"
+                      onClick={handleCopyShareUrl}
+                    >
+                      {shareCopied ? 'Copied!' : 'Copy'}
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              /* Share form */
+              <>
+                <div className="bg-gray-800 border border-gray-600 rounded p-4 space-y-2">
+                  <h3 className="font-semibold text-gray-300">Build to Share:</h3>
+                  <div className="text-sm text-gray-400 space-y-1">
+                    <p><span className="text-gray-500">Name:</span> {build.name || 'Unnamed Build'}</p>
+                    <p><span className="text-gray-500">Archetype:</span> {build.archetype.name || 'None'}</p>
+                    <p><span className="text-gray-500">Level:</span> {build.level}</p>
+                    {build.primary.name && (
+                      <p><span className="text-gray-500">Primary:</span> {build.primary.name}</p>
+                    )}
+                    {build.secondary.name && (
+                      <p><span className="text-gray-500">Secondary:</span> {build.secondary.name}</p>
+                    )}
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-300 mb-1">
+                    Description <span className="text-gray-500">(optional)</span>
+                  </label>
+                  <textarea
+                    value={shareDescription}
+                    onChange={(e) => setShareDescription(e.target.value)}
+                    placeholder="Describe your build — what it's for, how to play it, etc."
+                    className="w-full h-24 bg-gray-800 border border-gray-600 rounded px-3 py-2 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-green-500 text-sm"
+                    maxLength={500}
+                  />
+                  <p className="text-xs text-gray-500 mt-1">{shareDescription.length}/500</p>
+                </div>
+
+                <div className="grid grid-cols-2 gap-3">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-300 mb-1">
+                      Author Name <span className="text-gray-500">(optional)</span>
+                    </label>
+                    <input
+                      type="text"
+                      value={shareAuthor}
+                      onChange={(e) => setShareAuthor(e.target.value)}
+                      placeholder="Your global name"
+                      className="w-full bg-gray-800 border border-gray-600 rounded px-3 py-2 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-green-500 text-sm"
+                      maxLength={50}
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-300 mb-1">
+                      Server <span className="text-gray-500">(optional)</span>
+                    </label>
+                    <input
+                      type="text"
+                      value={shareServer}
+                      onChange={(e) => setShareServer(e.target.value)}
+                      placeholder="e.g., Homecoming"
+                      className="w-full bg-gray-800 border border-gray-600 rounded px-3 py-2 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-green-500 text-sm"
+                      maxLength={50}
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-300 mb-1">
+                    Tags <span className="text-gray-500">(optional, comma-separated)</span>
+                  </label>
+                  <input
+                    type="text"
+                    value={shareTags}
+                    onChange={(e) => setShareTags(e.target.value)}
+                    placeholder="e.g., PvP, farming, budget, softcap"
+                    className="w-full bg-gray-800 border border-gray-600 rounded px-3 py-2 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-green-500 text-sm"
+                    maxLength={200}
+                  />
+                </div>
+
+                {shareError && (
+                  <div className="bg-red-900/20 border border-red-700/50 rounded p-3 text-sm text-red-300">
+                    {shareError}
+                  </div>
+                )}
+
+                <div className="bg-green-900/20 border border-green-700/50 rounded p-3 text-sm text-green-300">
+                  <p className="font-semibold mb-1">Share Info:</p>
+                  <p>Your build will be shared publicly. Anyone with the link can view it. No account required.</p>
+                </div>
+              </>
+            )}
+          </div>
         )}
       </ModalBody>
 
@@ -489,6 +676,17 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
             >
               Import from Text
             </Button>
+          ) : activeTab === 'share' ? (
+            !shareUrl && (
+              <Button
+                variant="primary"
+                onClick={handleShare}
+                isLoading={shareLoading}
+                disabled={shareLoading || !build.archetype.id}
+              >
+                Share Build
+              </Button>
+            )
           ) : (
             /* Mids tab buttons */
             midsResult?.success ? (

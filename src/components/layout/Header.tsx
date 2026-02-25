@@ -4,6 +4,7 @@
  */
 
 import { useState } from 'react';
+import { useNavigate } from '@tanstack/react-router';
 import { useBuildStore, useUIStore } from '@/stores';
 import { getPowersetsForArchetype, getPowerset, MAX_LEVEL, ARCHETYPES } from '@/data';
 import { Button, Select, Slider, Toggle, Tooltip } from '@/components/ui';
@@ -87,6 +88,7 @@ export function Header() {
   const selectedBranch = useUIStore((s) => s.selectedBranch);
   const setSelectedBranch = useUIStore((s) => s.setSelectedBranch);
 
+  const navigate = useNavigate();
   const [confirmAction, setConfirmAction] = useState<'new' | 'clear' | null>(null);
 
   const archetypeId = build.archetype.id;
@@ -560,6 +562,14 @@ export function Header() {
 
         {/* Export, Import, New, Clear */}
         <div className="flex items-center gap-2">
+          <Button
+            variant="secondary"
+            size="sm"
+            onClick={() => navigate({ to: '/builds' })}
+            title="Browse shared builds from the community"
+          >
+            Shared Builds
+          </Button>
           <Button
             variant="secondary"
             size="sm"

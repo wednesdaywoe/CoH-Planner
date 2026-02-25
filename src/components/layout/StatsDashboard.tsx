@@ -8,7 +8,7 @@ import { useMemo } from 'react';
 import { useCalculatedStats, useCharacterCalculation } from '@/hooks';
 import { useBuildStore, useUIStore } from '@/stores';
 import { getBaselineHealth } from '@/utils/calculations/stats';
-import { Tooltip, Toggle } from '@/components/ui';
+import { Tooltip } from '@/components/ui';
 import { StatsConfigModal, AccoladesModal, AboutModal, ExportImportModal, FeedbackModal, KnownIssuesModal, WelcomeModal, useWelcomeModal, SetBonusLookupModal, ControlsModal } from '@/components/modals';
 import { IncarnateSlotGrid, IncarnateModal, IncarnateCraftingModal } from '@/components/incarnate';
 import { INCARNATE_REQUIRED_LEVEL, createEmptyIncarnateBuildState } from '@/types';
@@ -531,9 +531,6 @@ export function StatsDashboard() {
   const closeControlsModal = useUIStore((s) => s.closeControlsModal);
   const trackedStats = useUIStore((s) => s.trackedStats);
   const toggleTrackedStat = useUIStore((s) => s.toggleTrackedStat);
-  const includeProcsInStats = useUIStore((s) => s.includeProcsInStats);
-  const toggleIncludeProcsInStats = useUIStore((s) => s.toggleIncludeProcsInStats);
-
   // Welcome modal (auto-shows on first visit)
   const [welcomeModalOpen, closeWelcomeModal] = useWelcomeModal();
 
@@ -771,15 +768,6 @@ export function StatsDashboard() {
             </svg>
             <span className="hidden sm:inline">Set Bonuses</span>
           </button>
-          <div className="flex items-center bg-slate-700/50 px-2 py-1.5 rounded border border-slate-600">
-            <Toggle
-              id="include-procs-toggle"
-              name="includeProcs"
-              checked={includeProcsInStats}
-              onChange={toggleIncludeProcsInStats}
-              label="Procs"
-            />
-          </div>
           <button
             onClick={openStatsConfigModal}
             className="flex items-center gap-1.5 px-2 py-1 text-xs text-gray-400 hover:text-gray-200 hover:bg-gray-800 rounded transition-colors"

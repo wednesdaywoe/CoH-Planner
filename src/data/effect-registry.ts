@@ -571,7 +571,14 @@ export const CATEGORY_CONFIG: Record<EffectCategory, CategoryDisplayConfig> = {
 export function isByTypeObject(value: unknown): value is Record<string, unknown> {
   if (typeof value !== 'object' || value === null) return false;
   const keys = Object.keys(value);
-  const typeKeys = ['smashing', 'lethal', 'fire', 'cold', 'energy', 'negative', 'psionic', 'toxic', 'melee', 'ranged', 'aoe', 'run', 'fly', 'jump'];
+  const typeKeys = [
+    'smashing', 'lethal', 'fire', 'cold', 'energy', 'negative', 'psionic', 'toxic',
+    'melee', 'ranged', 'aoe', 'run', 'fly', 'jump',
+    // Debuff resistance stat types
+    'defense', 'endurance', 'tohit', 'movement', 'regeneration', 'recovery', 'recharge', 'range', 'perception',
+    // Resistance subtypes
+    'heal',
+  ];
   return keys.some(k => typeKeys.includes(k.toLowerCase()));
 }
 
