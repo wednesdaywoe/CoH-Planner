@@ -4,7 +4,7 @@
  */
 
 import { useState } from 'react';
-import { useNavigate } from '@tanstack/react-router';
+import { useNavigate, useLocation } from '@tanstack/react-router';
 import { useBuildStore, useUIStore } from '@/stores';
 import { getPowersetsForArchetype, getPowerset, MAX_LEVEL, ARCHETYPES } from '@/data';
 import { Button, Select, Slider, Toggle, Tooltip } from '@/components/ui';
@@ -89,6 +89,8 @@ export function Header() {
   const setSelectedBranch = useUIStore((s) => s.setSelectedBranch);
 
   const navigate = useNavigate();
+  const location = useLocation();
+  const isOnBuildsPage = location.pathname.startsWith('/builds');
   const [confirmAction, setConfirmAction] = useState<'new' | 'clear' | null>(null);
 
   const archetypeId = build.archetype.id;
@@ -565,10 +567,10 @@ export function Header() {
           <Button
             variant="secondary"
             size="sm"
-            onClick={() => navigate({ to: '/builds' })}
-            title="Browse shared builds from the community"
+            onClick={() => navigate({ to: isOnBuildsPage ? '/' : '/builds' })}
+            title={isOnBuildsPage ? 'Return to the build planner' : 'Browse shared builds from the community'}
           >
-            Shared Builds
+            {isOnBuildsPage ? 'Back to Planner' : 'Shared Builds'}
           </Button>
           <Button
             variant="secondary"

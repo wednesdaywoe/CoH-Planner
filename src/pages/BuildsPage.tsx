@@ -3,6 +3,7 @@
  */
 
 import { useState, useEffect, useCallback } from 'react';
+import { useNavigate } from '@tanstack/react-router';
 import { BuildCard } from '@/components/shared/BuildCard';
 import { BuildFilters } from '@/components/shared/BuildFilters';
 import { searchSharedBuilds, isShareEnabled } from '@/services/sharedBuilds';
@@ -58,8 +59,21 @@ export function BuildsPage() {
     );
   }
 
+  const navigate = useNavigate();
+
   return (
-    <div className="max-w-6xl mx-auto p-6">
+    <div className="max-w-6xl mx-auto p-6 relative">
+      {/* Close button */}
+      <button
+        onClick={() => navigate({ to: '/' })}
+        className="absolute top-4 right-4 p-1.5 text-gray-400 hover:text-white hover:bg-gray-800 rounded transition-colors"
+        title="Back to Planner"
+      >
+        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+
       <div className="mb-6">
         <h1 className="text-2xl font-bold text-white mb-2">Shared Builds</h1>
         <p className="text-gray-400 text-sm">
