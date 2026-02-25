@@ -11,7 +11,7 @@ export const SummonWolves: Power = {
   "name": "Summon Wolves",
   "internalName": "Summon_Wolves",
   "available": 0,
-  "description": "Calls forth one to three Wolves to do your bidding. The third one summoned will be an Alpha Wolf, which grants some leadership bonuses to the pack. Wolves have no ranged attacks, but can quickly close in on their prey.You may only have 3 Wolves under your control at any given time. If you attempt to call more Wolves, you can only replace the ones you have lost in battle. If you already have three, the power will fail.Wolf attacks have a chance to build a charge of Pack Mentality. Pack Mentality is a Damage buff aura that radiates from the Mastermind and can stack up to 10 times.Notes: Summon Wolves is unaffected by Recharge Time changes.Recharge: Fast.",
+  "description": "Calls forth one to three Wolves to do your bidding. The third one summoned will be an Alpha Wolf, which grants some leadership bonuses to the pack. Wolves have no ranged attacks, but can quickly close in on their prey.You may only have 3 Wolves under your control at any given time. If you attempt to call more Wolves, you can only replace the ones you have lost in battle. If you already have three, the power will fail.Wolf attacks have a chance to build a charge of Pack Mentality. Pack Mentality is a Damage buff aura that radiates from the Mastermind and can stack up to 10 times.",
   "shortHelp": "Summon Wolves",
   "icon": "beastmastery_summonwolves.png",
   "powerType": "Click",
@@ -26,7 +26,6 @@ export const SummonWolves: Power = {
   },
   "allowedEnhancements": [
     "EnduranceReduction",
-    "Healing",
     "ToHit Debuff",
     "Defense Debuff",
     "Damage",
@@ -51,7 +50,17 @@ export const SummonWolves: Power = {
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "entity": "MastermindPets_Howler_Wolf_Alpha"
+      "copyBoosts": true,
+      "entities": [
+        {
+          "entity": "MastermindPets_Howler_Wolf",
+          "count": 2
+        },
+        {
+          "entity": "MastermindPets_Howler_Wolf_Alpha",
+          "count": 1
+        }
+      ]
     }
   }
 };

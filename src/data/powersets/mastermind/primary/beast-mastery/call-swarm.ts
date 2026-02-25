@@ -11,7 +11,7 @@ export const CallSwarm: Power = {
   "name": "Call Swarm",
   "internalName": "Call_Swarm",
   "available": 0,
-  "description": "You summon a swarm of stinging insects to harass your foe causing Light Lethal damage over time and reducing both their movement speed and defense. This power has a moderate chance at granting your pets a stack of Pack Mentality.Damage: Light.Recharge: Very Fast.",
+  "description": "You summon a swarm of stinging insects to harass your foe causing Light Lethal damage over time and reducing both their movement speed and defense. This power has a moderate chance at granting your pets a stack of Pack Mentality.Apex Predator:Using this power will grant you and your summoned beasts an Accuracy and HP buff for 30 seconds. This does not stack from the same power.",
   "shortHelp": "Ranged, Light DoT(Lethal), Foe -Defense, -Speed",
   "icon": "beastmastery_callswarm.png",
   "powerType": "Click",

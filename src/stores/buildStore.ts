@@ -607,10 +607,11 @@ export const useBuildStore = create<BuildStore>()(
             newBuild = applyPowerUpdate(state.build, category, (powers) => [...powers, power]);
           }
 
-          // Auto-advance level if all power picks for current level have been used
-          // Only auto-advance for primary/secondary/pool powers (not inherents)
+          // Auto-advance level if all power picks for current level have been used.
+          // Only auto-advance for primary/secondary/pool powers (not inherents).
+          // Never decrease — respect user's manually-set level.
           if (category !== 'inherent') {
-            newBuild.level = calculateCorrectLevel(newBuild);
+            newBuild.level = Math.max(state.build.level, calculateCorrectLevel(newBuild));
           }
 
           return { build: newBuild };

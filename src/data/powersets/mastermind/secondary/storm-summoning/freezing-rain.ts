@@ -38,8 +38,7 @@ export const FreezingRain: Power = {
     "Defense Debuff",
     "Ranged AoE Damage",
     "Slow Movement",
-    "Universal Damage Sets",
-    "Mastermind Archetype Sets"
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "effects": {
@@ -50,7 +49,8 @@ export const FreezingRain: Power = {
         "Pets.Freezing_Rain.FreezingRain",
         "Pets.Freezing_Rain.Avoid"
       ],
-      "duration": 15
+      "duration": 15,
+      "copyBoosts": true
     }
   }
 };

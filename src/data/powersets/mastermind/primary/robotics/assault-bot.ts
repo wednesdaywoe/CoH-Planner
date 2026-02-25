@@ -11,7 +11,7 @@ export const AssaultBot: Power = {
   "name": "Assault Bot",
   "internalName": "Assault_Bot",
   "available": 21,
-  "description": "Builds one massive Assault Bot. Simply put, the Assault Bot is a killing machine. There is nothing subtle about its weaponry.You may only have 1 Assault Bot under your control at any given time. If you attempt to summon another Assault Bot, the power will fail.Notes: Assault Bot is unaffected by Recharge Time changes.",
+  "description": "Builds one massive Assault Bot. Simply put, the Assault Bot is a killing machine. There is nothing subtle about its weaponry.",
   "shortHelp": "Summon Assault Bot",
   "icon": "robotics_assembleassaultmech.png",
   "powerType": "Click",
@@ -42,7 +42,8 @@ export const AssaultBot: Power = {
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "entity": "MastermindPets_Assault_Bot"
+      "entity": "MastermindPets_Assault_Bot",
+      "copyBoosts": true
     }
   }
 };

@@ -9,7 +9,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const RAW_DATA_PATH = 'C:/Projects/Raw Data Homecoming';
+const RAW_DATA_PATH = path.join(__dirname, '../raw_data_homecoming-20251209_7415');
 const OUTPUT_PATH = './src/data/powersets';
 
 // Map raw category names to our folder structure
@@ -453,31 +453,37 @@ function extractEffects(templates) {
         const params = template.params;
         if (params && params.type === 'EntCreate') {
           const isPseudoPet = template.flags?.some(f => f.includes('PseudoPet')) || false;
-          const entityInfo = {
-            isPseudoPet,
-          };
+          const hasCopyBoosts = template.flags?.some(f => f.includes('CopyBoosts')) || false;
 
-          // Entity definition (null for pseudopets)
-          if (params.entity_def) {
-            entityInfo.entity = params.entity_def;
+          if (!effects.summon) {
+            // First entity encountered
+            const entityInfo = { isPseudoPet };
+            if (params.entity_def) entityInfo.entity = params.entity_def;
+            if (params.display_name) entityInfo.displayName = params.display_name;
+            if (params.redirects?.length > 0) entityInfo.powers = params.redirects;
+            if (duration) entityInfo.duration = duration;
+            if (hasCopyBoosts) entityInfo.copyBoosts = true;
+            effects.summon = entityInfo;
+          } else if (effects.summon.entities) {
+            // Already tracking multiple entity types - add or increment
+            const existing = effects.summon.entities.find(e => e.entity === params.entity_def);
+            if (existing) {
+              existing.count++;
+            } else {
+              effects.summon.entities.push({ entity: params.entity_def, count: 1 });
+            }
+          } else if (effects.summon.entity === params.entity_def) {
+            // Same entity_def appearing again = multiple entities summoned
+            effects.summon.entityCount = (effects.summon.entityCount || 1) + 1;
+          } else if (params.entity_def && !isPseudoPet && effects.summon.entity) {
+            // Different entity_def for a real pet - start multi-entity tracking
+            effects.summon.entities = [
+              { entity: effects.summon.entity, count: effects.summon.entityCount || 1 },
+              { entity: params.entity_def, count: 1 },
+            ];
+            delete effects.summon.entity;
+            delete effects.summon.entityCount;
           }
-
-          // Display name
-          if (params.display_name) {
-            entityInfo.displayName = params.display_name;
-          }
-
-          // Redirect powers (where the actual effects come from)
-          if (params.redirects && params.redirects.length > 0) {
-            entityInfo.powers = params.redirects;
-          }
-
-          // Duration of the pet/pseudopet
-          if (duration) {
-            entityInfo.duration = duration;
-          }
-
-          effects.summon = entityInfo;
         }
         continue;
       }

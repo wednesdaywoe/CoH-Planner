@@ -102,6 +102,8 @@ export interface InfoPanelState {
   lockedContent: InfoPanelContent | null;
   /** Is power info tooltip enabled? */
   tooltipEnabled: boolean;
+  /** Is the info panel undocked into a separate window? */
+  undocked: boolean;
 }
 
 export type InfoPanelContent =
@@ -176,6 +178,7 @@ export function createDefaultUIState(): UIState {
       locked: false,
       lockedContent: null,
       tooltipEnabled: false,
+      undocked: false,
     },
     statsConfig: [],
     tooltip: {

@@ -87,7 +87,14 @@
       "Bash(du:*)",
       "Bash(head -80 /Users/brian/Library/CloudStorage/Dropbox/GitHub/CoH-Planner/src/data/powersets/blaster/epic/*/index.ts)",
       "Bash(node /tmp/check_missing.js)",
-      "Bash(node /tmp/fix-mez-effects.js /Users/brian/Library/CloudStorage/Dropbox/GitHub/CoH-Planner)"
+      "Bash(node /tmp/fix-mez-effects.js /Users/brian/Library/CloudStorage/Dropbox/GitHub/CoH-Planner)",
+      "Bash(find \"/Users/brian/Library/CloudStorage/Dropbox/GitHub/CoH-Planner/raw_data_homecoming-20251209_7415/entities\" -name \"pets_*.json\" -exec grep -h '\"\"character_class_name\"\"' {} ;)",
+      "Bash(find \"/Users/brian/Library/CloudStorage/Dropbox/GitHub/CoH-Planner/raw_data_homecoming-20251209_7415/entities\" -name \"pets_*.json\" -exec grep -l '\"\"group_description\"\": \"\"Lore\"\"' {} ;)",
+      "Bash(find \"/Users/brian/Library/CloudStorage/Dropbox/GitHub/CoH-Planner/raw_data_homecoming-20251209_7415/entities\" -name \"pets_*.json\" -exec grep -h '\"\"group_description\"\"' {} ;)",
+      "Bash(find \"/Users/brian/Library/CloudStorage/Dropbox/GitHub/CoH-Planner/raw_data_homecoming-20251209_7415/entities\" -name \"pets_*.json\" -exec grep -l '\"\"group_description\"\": \"\"Robotics\"\"' {} ;)",
+      "Bash(find /Users/brian/Library/CloudStorage/Dropbox/GitHub/CoH-Planner/raw_data_homecoming-20251209_7415/powers/pets -name \"*.json\" -type f -exec grep -h '\"\"attrib\"\":' {} ;)",
+      "Bash(for ps in beast_mastery demon_summoning mercenaries necromancy ninjas robotics thugs)",
+      "Bash(do echo \"=== $ps ===\")"
     ]
   }
 }

@@ -40,7 +40,9 @@ export const Gremlins: Power = {
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "entity": "Pets_Gremlin"
+      "entity": "Pets_Gremlin",
+      "copyBoosts": true,
+      "entityCount": 2
     }
   }
 };

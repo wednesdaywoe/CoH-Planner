@@ -20,7 +20,7 @@ export const KujiInZen: Power = {
     "accuracy": 1,
     "range": 50,
     "radius": 30,
-    "recharge": 10,
+    "recharge": 0.5,
     "endurance": 11.375,
     "castTime": 2.37,
     "maxTargets": 16
@@ -28,7 +28,6 @@ export const KujiInZen: Power = {
   "allowedEnhancements": [
     "EnduranceReduction",
     "Range",
-    "Recharge",
     "Healing"
   ],
   "allowedSetCategories": [

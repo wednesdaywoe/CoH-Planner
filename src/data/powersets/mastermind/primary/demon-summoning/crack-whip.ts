@@ -11,7 +11,7 @@ export const CrackWhip: Power = {
   "name": "Crack Whip",
   "internalName": "Crack_Whip",
   "available": 7,
-  "description": "You channel hellfire into your whip and make an impressive sweep causing high fire damage to enemies within a wide cone and also cause some toxic damage over time. Whip Crack has a larger range than most melee cones. Targets that are struck will also have their resistance to damage reduced for a short time, may suffer toxic damage over time and may be knocked down.Damage: Moderate.Recharge: Slow.",
+  "description": "You channel hellfire into your whip and make an impressive sweep causing high fire damage to enemies within a wide cone and also cause some toxic damage over time. Whip Crack has a larger range than most melee cones. Targets that are struck will also have their resistance to damage reduced for a short time, may suffer toxic damage over time and may be knocked down.",
   "shortHelp": "Short Ranged (Cone), Moderate DMG(Fire), Foe -Res, Knockdown, DoT(Toxic)",
   "icon": "demonsummoning_crackwhip.png",
   "powerType": "Click",
@@ -21,8 +21,8 @@ export const CrackWhip: Power = {
     "range": 30,
     "radius": 30,
     "arc": 0.5236,
-    "recharge": 15,
-    "endurance": 17.94,
+    "recharge": 11,
+    "endurance": 13.78,
     "castTime": 2.33,
     "maxTargets": 10
   },
@@ -38,57 +38,46 @@ export const CrackWhip: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Fire",
-      "scale": 1.13,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Toxic",
-      "scale": 0.222,
-      "table": "Ranged_Damage",
-      "duration": 2.1,
-      "tickRate": 1
-    }
-  ],
+  "damage": {
+    "type": "Toxic",
+    "scale": 0.222,
+    "table": "Ranged_Damage",
+    "duration": 2.1,
+    "tickRate": 1
+  },
   "effects": {
-    "knockback": {
-      "scale": 0.64,
-      "table": "Ranged_Ones"
-    },
     "resistanceDebuff": {
       "smashing": {
         "scale": 1.25,
-        "table": "Ranged_Res_Dmg"
+        "table": "Ranged_Debuff_Res_Dmg"
       },
       "lethal": {
         "scale": 1.25,
-        "table": "Ranged_Res_Dmg"
+        "table": "Ranged_Debuff_Res_Dmg"
       },
       "fire": {
         "scale": 1.25,
-        "table": "Ranged_Res_Dmg"
+        "table": "Ranged_Debuff_Res_Dmg"
       },
       "cold": {
         "scale": 1.25,
-        "table": "Ranged_Res_Dmg"
+        "table": "Ranged_Debuff_Res_Dmg"
       },
       "energy": {
         "scale": 1.25,
-        "table": "Ranged_Res_Dmg"
+        "table": "Ranged_Debuff_Res_Dmg"
       },
       "negative": {
         "scale": 1.25,
-        "table": "Ranged_Res_Dmg"
+        "table": "Ranged_Debuff_Res_Dmg"
       },
       "psionic": {
         "scale": 1.25,
-        "table": "Ranged_Res_Dmg"
+        "table": "Ranged_Debuff_Res_Dmg"
       },
       "toxic": {
         "scale": 1.25,
-        "table": "Ranged_Res_Dmg"
+        "table": "Ranged_Debuff_Res_Dmg"
       }
     }
   }

@@ -11,7 +11,7 @@ export const DarkBlast: Power = {
   "name": "Dark Blast",
   "internalName": "Dark_Blast",
   "available": 0,
-  "description": "A long range blast of dark energy. Deals moderate Negative Energy damage and reduces the target's chance to hit.Spectral Forces:Activating this power has a chance to summon a Specter to your side! Specters slowly fade away over 90 seconds, even faster when attacking. They cannot be healed, regenerate, upgraded, or commanded, but provide a good distraction. Enhancements in this power will also enhance the stats of summoned Specters. You may only have 1 Specter active per Necromancy attack.",
+  "description": "A long range blast of dark energy. Deals moderate Negative Energy damage and reduces the target's chance to hit.Spectral Forces:Activating this power has a chance to summon a Specter to your side! Specters fade away over 30 seconds. They cannot be healed, regenerate, upgraded, or commanded, but provide a good distraction. Enhancements in this power will also enhance the stats of summoned Specters. You may only have 1 Specter active per Necromancy attack.",
   "shortHelp": "Ranged, DMG(Negative), Foe -To Hit",
   "icon": "necromancy_darkblast.png",
   "powerType": "Click",

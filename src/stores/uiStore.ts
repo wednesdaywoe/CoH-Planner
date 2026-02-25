@@ -185,6 +185,8 @@ interface UIActions {
   toggleInfoPanelLock: () => void;
   setInfoPanelTooltipEnabled: (enabled: boolean) => void;
   toggleInfoPanelTooltip: () => void;
+  undockInfoPanel: () => void;
+  dockInfoPanel: () => void;
 
   // Tooltip
   showTooltip: (content: TooltipContent, x: number, y: number) => void;
@@ -328,6 +330,7 @@ const defaultInfoPanel: InfoPanelState = {
   locked: false,
   lockedContent: null,
   tooltipEnabled: false,
+  undocked: false,
 };
 
 const defaultStatsConfig: StatDisplayConfig[] = [
@@ -630,6 +633,22 @@ export const useUIStore = create<UIStore>()(
           },
         })),
 
+      undockInfoPanel: () =>
+        set((state) => ({
+          infoPanel: {
+            ...state.infoPanel,
+            undocked: true,
+          },
+        })),
+
+      dockInfoPanel: () =>
+        set((state) => ({
+          infoPanel: {
+            ...state.infoPanel,
+            undocked: false,
+          },
+        })),
+
       // Tooltip
       showTooltip: (content, x, y) =>
         set({
@@ -881,7 +900,7 @@ export const useUIStore = create<UIStore>()(
         exemplarMode: state.exemplarMode,
         includeProcsInStats: state.includeProcsInStats,
         hintsEnabled: state.hintsEnabled,
-        infoPanel: { enabled: state.infoPanel.enabled, content: null, locked: false, lockedContent: null, tooltipEnabled: state.infoPanel.tooltipEnabled },
+        infoPanel: { enabled: state.infoPanel.enabled, content: null, locked: false, lockedContent: null, tooltipEnabled: state.infoPanel.tooltipEnabled, undocked: false },
         statsConfig: state.statsConfig,
         darkMode: state.darkMode,
         compactMode: state.compactMode,

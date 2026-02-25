@@ -11,7 +11,7 @@ export const BattleDrones: Power = {
   "name": "Battle Drones",
   "internalName": "Battle_Drones",
   "available": 0,
-  "description": "Construct one to three Battle Drones (depending on your level) to do your bidding. Drones start out with only basic weaponry, but can be upgraded with heavier energy weapons. Drones can Super Leap.You may only have 3 Drones under your control at any given time. If you attempt to construct more Drones, you can only replace the ones you have lost in battle. If you already have three, the power will fail.Notes: Battle Drones is unaffected by Recharge Time changes.",
+  "description": "Construct one to three Battle Drones (depending on your level) to do your bidding. Drones start out with only basic weaponry, but can be upgraded with heavier energy weapons. Drones can Super Leap.You may only have 3 Drones under your control at any given time. If you attempt to construct more Drones, you can only replace the ones you have lost in battle. If you already have three, the power will fail.",
   "shortHelp": "Summon Battle Drones",
   "icon": "robotics_buildrobotarmy.png",
   "powerType": "Click",
@@ -40,7 +40,9 @@ export const BattleDrones: Power = {
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "entity": "MastermindPets_Droid"
+      "entity": "MastermindPets_Droid",
+      "copyBoosts": true,
+      "entityCount": 3
     }
   }
 };

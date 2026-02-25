@@ -20,15 +20,14 @@ export const EquipMercenary: Power = {
     "accuracy": 1,
     "range": 50,
     "radius": 30,
-    "recharge": 6,
+    "recharge": 0.5,
     "endurance": 11.375,
     "castTime": 1.3,
     "maxTargets": 16
   },
   "allowedEnhancements": [
     "EnduranceReduction",
-    "Range",
-    "Recharge"
+    "Range"
   ],
   "allowedSetCategories": [
     "Resist Damage"

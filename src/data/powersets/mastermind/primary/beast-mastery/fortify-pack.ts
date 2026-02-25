@@ -11,7 +11,7 @@ export const FortifyPack: Power = {
   "name": "Fortify Pack",
   "internalName": "Fortify_Pack",
   "available": 17,
-  "description": "You command your beasts to fight more defensively. Using Fortify Pack will prevent your pets from benefiting from Pack Mentality for 60 seconds. The number of charges of Pack Mentality you own when activating this power will determine the potency of the Defense and Regeneration buff that will be granted to your pack. Additionally, simply owning this power grants your beast pets attacks a chance to critically hit that scales with the amount of Pack Mentality owned by the Mastermind.Recharge: Long.",
+  "description": "You command your beasts to fight more defensively. The number of charges of Pack Mentality you own when activating this power will determine the potency of the Defense and Regeneration buff that will be granted to your pack.",
   "shortHelp": "PBAoE, Pets +Defense, +Regeneration, consumes all charges of Pack Mentality",
   "icon": "beastmastery_fortifypack.png",
   "powerType": "Click",

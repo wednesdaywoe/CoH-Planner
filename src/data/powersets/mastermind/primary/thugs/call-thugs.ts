@@ -11,7 +11,7 @@ export const CallThugs: Power = {
   "name": "Call Thugs",
   "internalName": "Call_Thugs",
   "available": 0,
-  "description": "Calls forth one to three Thugs (depending on your level) to do your bidding. The third Thug you gain will be an Arsonist. Thugs use Dual Pistols and can be taught additional pistol attacks.You may only have 3 Thugs under your control at any given time. If you attempt to call more Thugs, you can only replace the ones you have lost in battle. If you already have three, the power will fail.Notes: Call Thugs is unaffected by Recharge Time changes.Recharge: Fast.",
+  "description": "Calls forth one to three Thugs (depending on your level) to do your bidding. The third Thug you gain will be an Arsonist. Thugs use Dual Pistols and can be taught additional pistol attacks.You may only have 3 Thugs under your control at any given time. If you attempt to call more Thugs, you can only replace the ones you have lost in battle. If you already have three, the power will fail.",
   "shortHelp": "Summon Punks",
   "icon": "thugs_hireposse.png",
   "powerType": "Click",
@@ -40,7 +40,17 @@ export const CallThugs: Power = {
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "entity": "MastermindPets_Thug_Arsonist"
+      "copyBoosts": true,
+      "entities": [
+        {
+          "entity": "MastermindPets_Thug",
+          "count": 2
+        },
+        {
+          "entity": "MastermindPets_Thug_Arsonist",
+          "count": 1
+        }
+      ]
     }
   }
 };

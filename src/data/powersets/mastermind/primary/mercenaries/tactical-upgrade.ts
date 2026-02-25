@@ -20,15 +20,14 @@ export const TacticalUpgrade: Power = {
     "accuracy": 1,
     "range": 50,
     "radius": 30,
-    "recharge": 10,
+    "recharge": 0.5,
     "endurance": 11.375,
     "castTime": 2.03,
     "maxTargets": 16
   },
   "allowedEnhancements": [
     "EnduranceReduction",
-    "Range",
-    "Recharge"
+    "Range"
   ],
   "allowedSetCategories": [
     "Defense Sets"

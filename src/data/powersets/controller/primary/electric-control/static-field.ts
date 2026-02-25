@@ -46,7 +46,8 @@ export const StaticField: Power = {
       "powers": [
         "Pets.Static_Field_Controller.Static_Field"
       ],
-      "duration": 25
+      "duration": 25,
+      "copyBoosts": true
     }
   }
 };

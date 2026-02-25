@@ -33,19 +33,5 @@ export const ConductiveAura: Power = {
     "Endurance Modification",
     "Healing"
   ],
-  "maxSlots": 6,
-  "effects": {
-    "enduranceDrain": {
-      "scale": 0.1,
-      "table": "Ranged_Ones"
-    },
-    "regenBuff": {
-      "scale": 0.05,
-      "table": "Ranged_Ones"
-    },
-    "recoveryBuff": {
-      "scale": 0.0313,
-      "table": "Ranged_Ones"
-    }
-  }
+  "maxSlots": 6
 };

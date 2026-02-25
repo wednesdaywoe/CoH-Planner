@@ -46,12 +46,5 @@ export const SoulExtraction: Power = {
     "To Hit Debuff",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "isPseudoPet": false,
-      "entity": "MastermindPets_Ghost_Minion",
-      "duration": 30
-    }
-  }
+  "maxSlots": 6
 };

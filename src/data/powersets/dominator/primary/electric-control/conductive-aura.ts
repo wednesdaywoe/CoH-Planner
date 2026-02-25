@@ -38,14 +38,6 @@ export const ConductiveAura: Power = {
     "enduranceDrain": {
       "scale": 0.1,
       "table": "Ranged_Ones"
-    },
-    "regenBuff": {
-      "scale": 0.05,
-      "table": "Ranged_Ones"
-    },
-    "recoveryBuff": {
-      "scale": 0.0313,
-      "table": "Ranged_Ones"
     }
   }
 };

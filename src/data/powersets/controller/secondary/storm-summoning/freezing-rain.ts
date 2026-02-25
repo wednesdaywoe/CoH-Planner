@@ -49,7 +49,8 @@ export const FreezingRain: Power = {
         "Pets.Freezing_Rain.FreezingRain",
         "Pets.Freezing_Rain.Avoid"
       ],
-      "duration": 15
+      "duration": 15,
+      "copyBoosts": true
     }
   }
 };

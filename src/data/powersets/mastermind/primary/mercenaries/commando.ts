@@ -11,7 +11,7 @@ export const Commando: Power = {
   "name": "Commando",
   "internalName": "Commando",
   "available": 21,
-  "description": "Enlists one highly trained Commando. The Commando is a seasoned professional who favors heavy assault weapons. He is simply a one man army that can leave a wake of destruction in his path. In addition to standard Soldier resistance, the Commandos experience also makes him resistant to Fear and his rugged advanced training makes him slightly resistant to Fire, Cold and Toxic Damage.You may only have 1 Commando under your control at any given time. If you attempt to summon another Commando, the power will fail.Notes: Commando is unaffected by Recharge Time changes.",
+  "description": "Enlists one highly trained Commando. The Commando is a seasoned professional who favors heavy assault weapons. He is simply a one man army that can leave a wake of destruction in his path. In addition to standard Soldier resistance, the Commandos experience also makes him resistant to Fear and his rugged advanced training makes him slightly resistant to Fire, Cold and Toxic Damage.",
   "shortHelp": "Summon Commando",
   "icon": "paramilitary_supersoldier.png",
   "powerType": "Click",
@@ -43,7 +43,8 @@ export const Commando: Power = {
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "entity": "MastermindPets_Commando"
+      "entity": "MastermindPets_Commando",
+      "copyBoosts": true
     }
   }
 };

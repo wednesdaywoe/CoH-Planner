@@ -11,7 +11,7 @@ export const Serum: Power = {
   "name": "Serum",
   "internalName": "Serum",
   "available": 17,
-  "description": "You can use a special Serum to turn your Mercenaries into a virtually Unstoppable killing machines for a short time. The Serum, will increase their Damage, chance to hit, Endurance Recovery, and Damage Resistance to all damage except Psionics. They will also be virtually immune to controlling effects including Disorient, Sleep, Hold, Immobilize and Knockback. The effects will start to slowly fade away over 60 seconds.Recharge: Very Long.",
+  "description": "You can use a special Serum to turn your Mercenaries into a virtually Unstoppable killing machines for a short time. The Serum, will increase their Damage, chance to hit, Endurance Recovery, and Damage Resistance to all damage except Psionics. They will also be virtually immune to controlling effects including Disorient, Sleep, Hold, Immobilize and Knockback. The effects will start to slowly fade away over 60 seconds.",
   "shortHelp": "Buff Mercenaries +DMG, +RES(All except Psionic), +To Hit, +Recovery",
   "icon": "paramilitary_serum.png",
   "powerType": "Click",

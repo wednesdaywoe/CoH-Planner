@@ -11,7 +11,7 @@ export const Soldiers: Power = {
   "name": "Soldiers",
   "internalName": "Soldiers",
   "available": 0,
-  "description": "Calls forth one to three Mercenary Soldiers (depending on your level) to do your bidding. The third Soldier you gain will be a Medic. All Soldiers use Sub Machine Guns, but these can be upgraded.You may only have 3 Soldiers under your control at any given time. If you attempt to call more Soldiers, you can only replace the ones you have lost in battle. If you already have three, the power will fail.Notes: Soldiers is unaffected by Recharge Time changes.",
+  "description": "Calls forth one to three Mercenary Soldiers (depending on your level) to do your bidding. The third Soldier you gain will be a Medic. All Soldiers use Sub Machine Guns, but these can be upgraded.You may only have 3 Soldiers under your control at any given time. If you attempt to call more Soldiers, you can only replace the ones you have lost in battle. If you already have three, the power will fail.",
   "shortHelp": "Summon Soldier",
   "icon": "paramilitary_draftarmy.png",
   "powerType": "Click",
@@ -45,7 +45,17 @@ export const Soldiers: Power = {
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "entity": "MastermindPets_Medic"
+      "copyBoosts": true,
+      "entities": [
+        {
+          "entity": "MastermindPets_Soldier",
+          "count": 2
+        },
+        {
+          "entity": "MastermindPets_Medic",
+          "count": 1
+        }
+      ]
     }
   }
 };

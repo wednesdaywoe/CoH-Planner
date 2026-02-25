@@ -8,7 +8,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const RAW_DATA_PATH = 'C:/Projects/Raw Data Homecoming/tables';
+const RAW_DATA_PATH = path.join(__dirname, '../raw_data_homecoming-20251209_7415/tables');
 const OUTPUT_PATH = path.join(__dirname, '../src/data/at-tables.ts');
 
 // Archetypes we care about for player characters
@@ -28,6 +28,22 @@ const PLAYER_ARCHETYPES = [
   'warshade',
   'arachnos_soldier',
   'arachnos_widow'
+];
+
+// Pet character classes that need damage tables
+const PET_CLASSES = [
+  'minion_pets',
+  'minion_controllerpets',
+  'henchman_minion',
+  'henchman_minion_small',
+  'henchman_boss',
+  'henchman_lt',
+  'boss_heavypet',
+  'minion_turret',
+  'minion_monument',
+  'boss_praetoriangrunt_pet',
+  'lt_praetoriangrunt_pet',
+  'minion_praetoriansmall',
 ];
 
 // Tables we need for power calculations
@@ -111,7 +127,42 @@ function extractTables() {
   return allTables;
 }
 
-function generateTypeScript(tables) {
+function extractPetTables() {
+  const petTables = {};
+
+  for (const petClass of PET_CLASSES) {
+    const filePath = path.join(RAW_DATA_PATH, `${petClass}.json`);
+
+    if (!fs.existsSync(filePath)) {
+      console.warn(`Warning: ${petClass}.json not found`);
+      continue;
+    }
+
+    console.log(`Processing pet class ${petClass}...`);
+    const data = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
+
+    petTables[petClass] = { tables: {} };
+
+    if (data.named_tables) {
+      for (const tableName of Object.keys(data.named_tables)) {
+        const normalizedName = tableName.toLowerCase();
+        if (RELEVANT_TABLES.some(t => normalizedName === t.toLowerCase())) {
+          petTables[petClass].tables[normalizedName] = data.named_tables[tableName];
+        }
+      }
+    }
+
+    const tableCount = Object.keys(petTables[petClass].tables).length;
+    if (tableCount === 0) {
+      delete petTables[petClass];
+      console.warn(`  No relevant tables found, skipping`);
+    }
+  }
+
+  return petTables;
+}
+
+function generateTypeScript(tables, petTables) {
   const lines = [];
 
   lines.push(`/**`);
@@ -125,6 +176,10 @@ function generateTypeScript(tables) {
   lines.push(`export interface ATTableData {`);
   lines.push(`  primaryCategory: string;`);
   lines.push(`  secondaryCategory: string;`);
+  lines.push(`  tables: Record<string, number[]>;`);
+  lines.push(`}`);
+  lines.push(``);
+  lines.push(`export interface PetTableData {`);
   lines.push(`  tables: Record<string, number[]>;`);
   lines.push(`}`);
   lines.push(``);
@@ -161,7 +216,16 @@ function generateTypeScript(tables) {
   lines.push(`  const at = AT_TABLES[archetype];`);
   lines.push(`  if (!at) return undefined;`);
   lines.push(`  `);
-  lines.push(`  const table = at.tables[tableName.toLowerCase()];`);
+  lines.push(`  const key = tableName.toLowerCase();`);
+  lines.push(`  let table = at.tables[key];`);
+  lines.push(`  `);
+  lines.push(`  // Power data uses suffixed names (e.g., "Ranged_HealSelf") that map to`);
+  lines.push(`  // base table names (e.g., "ranged_heal"). Strip common suffixes to match.`);
+  lines.push(`  if (!table) {`);
+  lines.push(`    const stripped = key.replace(/self$|other$|target$/, '');`);
+  lines.push(`    table = at.tables[stripped];`);
+  lines.push(`  }`);
+  lines.push(`  `);
   lines.push(`  if (!table) return undefined;`);
   lines.push(`  `);
   lines.push(`  // Level 1 = index 0`);
@@ -186,6 +250,59 @@ function generateTypeScript(tables) {
   lines.push(`  return scale * tableValue;`);
   lines.push(`}`);
   lines.push(``);
+
+  // Generate PET_TABLES
+  if (petTables && Object.keys(petTables).length > 0) {
+    lines.push(`// ============================================`);
+    lines.push(`// PET CLASS TABLES`);
+    lines.push(`// ============================================`);
+    lines.push(``);
+    lines.push(`export const PET_TABLES: Record<string, PetTableData> = {`);
+
+    for (const [petClass, petData] of Object.entries(petTables)) {
+      lines.push(`  '${petClass}': {`);
+      lines.push(`    tables: {`);
+
+      for (const [tableName, values] of Object.entries(petData.tables)) {
+        const formattedValues = formatArray(values);
+        lines.push(`      '${tableName}': ${formattedValues},`);
+      }
+
+      lines.push(`    },`);
+      lines.push(`  },`);
+    }
+
+    lines.push(`};`);
+    lines.push(``);
+
+    // Add pet table helper
+    lines.push(`/**`);
+    lines.push(` * Get a table value for a specific pet class and level`);
+    lines.push(` */`);
+    lines.push(`export function getPetTableValue(`);
+    lines.push(`  petClass: string,`);
+    lines.push(`  tableName: string,`);
+    lines.push(`  level: number`);
+    lines.push(`): number | undefined {`);
+    lines.push(`  const pet = PET_TABLES[petClass];`);
+    lines.push(`  if (!pet) return undefined;`);
+    lines.push(`  `);
+    lines.push(`  const key = tableName.toLowerCase();`);
+    lines.push(`  let table = pet.tables[key];`);
+    lines.push(`  `);
+    lines.push(`  // Strip common suffixes like getTableValue does`);
+    lines.push(`  if (!table) {`);
+    lines.push(`    const stripped = key.replace(/self$|other$|target$/, '');`);
+    lines.push(`    table = pet.tables[stripped];`);
+    lines.push(`  }`);
+    lines.push(`  `);
+    lines.push(`  if (!table) return undefined;`);
+    lines.push(`  `);
+    lines.push(`  const index = Math.max(0, Math.min(table.length - 1, level - 1));`);
+    lines.push(`  return table[index];`);
+    lines.push(`}`);
+    lines.push(``);
+  }
 
   return lines.join('\n');
 }
@@ -213,15 +330,24 @@ function formatArray(arr) {
 console.log('Extracting AT modifier tables...\n');
 const tables = extractTables();
 
+console.log('\nExtracting pet class tables...\n');
+const petTables = extractPetTables();
+
 console.log('\nGenerating TypeScript file...');
-const tsContent = generateTypeScript(tables);
+const tsContent = generateTypeScript(tables, petTables);
 
 fs.writeFileSync(OUTPUT_PATH, tsContent);
 console.log(`\nWrote ${OUTPUT_PATH}`);
 
 // Print summary
-console.log('\nSummary:');
+console.log('\nPlayer Archetypes:');
 for (const [at, data] of Object.entries(tables)) {
   const tableCount = Object.keys(data.tables).length;
   console.log(`  ${at}: ${tableCount} tables`);
+}
+
+console.log('\nPet Classes:');
+for (const [petClass, data] of Object.entries(petTables)) {
+  const tableCount = Object.keys(data.tables).length;
+  console.log(`  ${petClass}: ${tableCount} tables`);
 }

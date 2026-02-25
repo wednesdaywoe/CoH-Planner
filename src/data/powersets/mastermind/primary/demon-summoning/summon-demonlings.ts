@@ -11,7 +11,7 @@ export const SummonDemonlings: Power = {
   "name": "Summon Demonlings",
   "internalName": "Summon_Demonlings",
   "available": 0,
-  "description": "Call forth up to three demonlings (depending on your level) to do your bidding. The first demonling is adept at manipulating fire, the second blasts your foes with cold attacks and the third is able to wield hellfire to deal fire/toxic damage.You may only have three demonlings under your command at any given time. If you attempt to summon more demonlings, you can only replace those that have been lost in battle. If you already have your maximum allowed amount, the power will fail.Notes: Summon Demonlings is unaffected by Recharge Time changes.Recharge: Fast.",
+  "description": "Call forth up to three demonlings (depending on your level) to do your bidding. The first demonling is adept at manipulating fire, the second blasts your foes with cold attacks and the third is able to wield hellfire to deal fire/toxic damage.You may only have three demonlings under your command at any given time. If you attempt to summon more demonlings, you can only replace those that have been lost in battle. If you already have your maximum allowed amount, the power will fail.",
   "shortHelp": "Summon Demonlings",
   "icon": "demonsummoning_summondemonlings.png",
   "powerType": "Click",
@@ -41,7 +41,21 @@ export const SummonDemonlings: Power = {
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "entity": "MastermindPets_Hellfire_Demonling"
+      "copyBoosts": true,
+      "entities": [
+        {
+          "entity": "MastermindPets_Fiery_Demonling",
+          "count": 1
+        },
+        {
+          "entity": "MastermindPets_Cold_Demonling",
+          "count": 1
+        },
+        {
+          "entity": "MastermindPets_Hellfire_Demonling",
+          "count": 1
+        }
+      ]
     }
   }
 };

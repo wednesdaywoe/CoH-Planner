@@ -11,7 +11,7 @@ export const Corruption: Power = {
   "name": "Corruption",
   "internalName": "Corruption",
   "available": 0,
-  "description": "You lash out with your whip, firing a bolt of hellfire and corrupting your victim's very living essence. This attack deals minor fire damage, causes minor toxic damage over time, and reduces their damage resistance for a short time.Damage: Light.Recharge: Fast.",
+  "description": "You lash out with your whip, firing a bolt of hellfire and corrupting your victim's very living essence. This attack deals minor fire damage, causes minor toxic damage over time, and reduces their damage resistance for a short time.",
   "shortHelp": "Ranged, Light DMG(Fire), Foe Minor DoT (Toxic), -Res",
   "icon": "demonsummoning_corruption.png",
   "powerType": "Click",
@@ -19,8 +19,8 @@ export const Corruption: Power = {
   "stats": {
     "accuracy": 1,
     "range": 80,
-    "recharge": 4,
-    "endurance": 6.5,
+    "recharge": 3,
+    "endurance": 5.46,
     "castTime": 1.23
   },
   "allowedEnhancements": [
@@ -53,35 +53,35 @@ export const Corruption: Power = {
     "resistanceDebuff": {
       "smashing": {
         "scale": 1.25,
-        "table": "Ranged_Res_Dmg"
+        "table": "Ranged_Debuff_Res_Dmg"
       },
       "lethal": {
         "scale": 1.25,
-        "table": "Ranged_Res_Dmg"
+        "table": "Ranged_Debuff_Res_Dmg"
       },
       "fire": {
         "scale": 1.25,
-        "table": "Ranged_Res_Dmg"
+        "table": "Ranged_Debuff_Res_Dmg"
       },
       "cold": {
         "scale": 1.25,
-        "table": "Ranged_Res_Dmg"
+        "table": "Ranged_Debuff_Res_Dmg"
       },
       "energy": {
         "scale": 1.25,
-        "table": "Ranged_Res_Dmg"
+        "table": "Ranged_Debuff_Res_Dmg"
       },
       "negative": {
         "scale": 1.25,
-        "table": "Ranged_Res_Dmg"
+        "table": "Ranged_Debuff_Res_Dmg"
       },
       "psionic": {
         "scale": 1.25,
-        "table": "Ranged_Res_Dmg"
+        "table": "Ranged_Debuff_Res_Dmg"
       },
       "toxic": {
         "scale": 1.25,
-        "table": "Ranged_Res_Dmg"
+        "table": "Ranged_Debuff_Res_Dmg"
       }
     }
   }

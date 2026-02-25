@@ -11,7 +11,7 @@ export const SummonDemons: Power = {
   "name": "Summon Demons",
   "internalName": "Summon_Demons",
   "available": 11,
-  "description": "Summons forth one to two Demons (depending on your level) to do your bidding. One is cloaked in hellfire and has skin as hard as stone while the other manipulates flame.You may only have 2 Demons under your control at any given time. If you attempt to call more Demons, you can only replace the ones you have lost in battle. If you already have your maximum allowed number, the power will fail.Notes: Summon Demons is unaffected by Recharge Time changes.Recharge: Moderate.",
+  "description": "Summons forth one to two Demons (depending on your level) to do your bidding. One is cloaked in hellfire and has skin as hard as stone while the other manipulates flame.You may only have 2 Demons under your control at any given time. If you attempt to call more Demons, you can only replace the ones you have lost in battle. If you already have your maximum allowed number, the power will fail.",
   "shortHelp": "Summon Demons",
   "icon": "demonsummoning_summondemons.png",
   "powerType": "Click",
@@ -26,12 +26,10 @@ export const SummonDemons: Power = {
   },
   "allowedEnhancements": [
     "EnduranceReduction",
-    "Healing",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Healing",
     "Knockback",
     "Mastermind Archetype Sets",
     "Pet Damage",
@@ -43,7 +41,17 @@ export const SummonDemons: Power = {
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "entity": "MastermindPets_Hellfire_Gargoyle"
+      "copyBoosts": true,
+      "entities": [
+        {
+          "entity": "MastermindPets_Ember_Demon",
+          "count": 1
+        },
+        {
+          "entity": "MastermindPets_Hellfire_Gargoyle",
+          "count": 1
+        }
+      ]
     }
   }
 };

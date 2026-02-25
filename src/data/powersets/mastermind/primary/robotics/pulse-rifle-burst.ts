@@ -45,10 +45,6 @@ export const PulseRifleBurst: Power = {
     "regenDebuff": {
       "scale": 2,
       "table": "Ranged_Ones"
-    },
-    "knockback": {
-      "scale": 1.5,
-      "table": "Ranged_Knockback"
     }
   }
 };

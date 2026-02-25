@@ -49,6 +49,7 @@ import {
   getAlphaEnhancementBonuses,
   type EnhancementBonuses,
 } from '@/utils/calculations';
+import { calculatePetDamage, shouldApplyEnhancements, type PetDamageResult } from '@/utils/calculations/pet-damage';
 import {
   IOSetIcon,
   GenericIOIcon,
@@ -211,6 +212,39 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
     if (!healEntry) return undefined;
     return { scale: healEntry.scale, table: healEntry.table };
   }, [basePower?.damage]);
+
+  // Calculate aggregate pet damage (supports multi-entity summons)
+  const petDamageAggregate = useMemo<{ results: PetDamageResult[]; base: number; enhanced: number; final: number } | null>(() => {
+    const summon = basePower?.effects?.summon;
+    if (!summon) return null;
+
+    // Build entity list
+    const entityList: { entityName: string; count: number }[] = [];
+    if (summon.entities) {
+      for (const e of summon.entities) entityList.push({ entityName: e.entity, count: e.count });
+    } else if (summon.entity) {
+      entityList.push({ entityName: summon.entity, count: summon.entityCount || 1 });
+    }
+    if (entityList.length === 0) return null;
+
+    const globalDmgBonus = globalBonusesForCalc.damage || 0;
+    const results: PetDamageResult[] = [];
+    let base = 0, enhanced = 0, final_ = 0;
+
+    for (const e of entityList) {
+      const applyEnh = shouldApplyEnhancements(e.entityName, summon.copyBoosts);
+      const enhBonus = applyEnh ? (enhancementBonuses.damage || 0) : 0;
+      const result = calculatePetDamage(e.entityName, build.level, e.count, summon.duration, enhBonus, applyEnh, globalDmgBonus);
+      if (result) {
+        results.push(result);
+        base += result.aggregateDpsBase;
+        enhanced += result.aggregateDpsEnhanced;
+        final_ += result.aggregateDpsFinal;
+      }
+    }
+
+    return results.length > 0 ? { results, base, enhanced, final: final_ } : null;
+  }, [basePower?.effects?.summon, build.level, enhancementBonuses.damage, globalBonusesForCalc.damage]);
 
   // Calculate archetype-specific damage bonuses
   const damageDisplayInfo = useMemo(() => {
@@ -382,17 +416,63 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
         </div>
       )}
 
-      {/* Summon/Pet Info */}
+      {/* Summon/Pet Info with DPS and Effects */}
       {effects?.summon && (
         <div className="bg-indigo-900/30 rounded p-1 border border-indigo-500/30 text-[9px]">
-          <span className="text-indigo-400">
-            {effects.summon.isPseudoPet ? '⚡' : '🐾'}
-          </span>
-          <span className="text-slate-200 ml-1">
-            {effects.summon.displayName || effects.summon.entity || 'Entity'}
-          </span>
-          {effects.summon.duration && (
-            <span className="text-slate-400 ml-1">({effects.summon.duration}s)</span>
+          {/* Entity labels */}
+          {effects.summon.entities ? (
+            // Multi-entity: show each entity type
+            effects.summon.entities.map((e) => {
+              const displayName = e.entity.replace(/^(Pets_|MastermindPets_)/i, '').replace(/_/g, ' ');
+              return (
+                <div key={e.entity} className="flex items-center gap-1">
+                  <span className="text-indigo-400">🐾</span>
+                  <span className="text-slate-200">{displayName}{e.count > 1 ? ` x${e.count}` : ''}</span>
+                </div>
+              );
+            })
+          ) : (
+            // Single entity
+            <div className="flex items-center gap-1">
+              <span className="text-indigo-400">
+                {effects.summon.isPseudoPet ? '⚡' : '🐾'}
+              </span>
+              <span className="text-slate-200">
+                {effects.summon.displayName || effects.summon.entity || 'Entity'}
+                {(effects.summon.entityCount && effects.summon.entityCount > 1) ? ` x${effects.summon.entityCount}` : ''}
+              </span>
+              {effects.summon.duration && (
+                <span className="text-slate-400">({effects.summon.duration}s)</span>
+              )}
+            </div>
+          )}
+          {petDamageAggregate && petDamageAggregate.base > 0 && (
+            <div className="flex items-center gap-1 mt-0.5 ml-3">
+              <span className="text-slate-400">{petDamageAggregate.results.length > 1 ? 'Total DPS:' : 'DPS:'}</span>
+              <span className="text-red-400">{petDamageAggregate.base.toFixed(1)}</span>
+              {petDamageAggregate.enhanced !== petDamageAggregate.base && (
+                <span className="text-green-400">→ {petDamageAggregate.enhanced.toFixed(1)}</span>
+              )}
+              {petDamageAggregate.final !== petDamageAggregate.enhanced && (
+                <span className="text-amber-400">→ {petDamageAggregate.final.toFixed(1)}</span>
+              )}
+            </div>
+          )}
+          {petDamageAggregate && petDamageAggregate.results.some(r => r.allEffects.length > 0) && (
+            <div className="flex flex-wrap gap-0.5 mt-0.5 ml-3">
+              {/* Collect unique effects across all entities */}
+              {Array.from(new Map(
+                petDamageAggregate.results.flatMap(r => r.allEffects).map(eff => [eff.type, eff])
+              ).values()).map((eff) => {
+                const valLabel = eff.value !== undefined ? ` ${eff.value.toFixed(1)}` : '';
+                const chanceLabel = eff.chance && eff.chance < 1 ? ` ${(eff.chance * 100).toFixed(0)}%` : '';
+                return (
+                  <span key={eff.type} className="text-[8px] text-purple-300 bg-purple-900/30 px-0.5 rounded">
+                    {eff.type}{valLabel}{chanceLabel}
+                  </span>
+                );
+              })}
+            </div>
           )}
         </div>
       )}

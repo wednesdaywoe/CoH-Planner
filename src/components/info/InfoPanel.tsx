@@ -4,7 +4,7 @@
  * Shows Base/Enhanced/Final values for enhanceable stats
  */
 
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { useUIStore, useBuildStore, useDominationActive } from '@/stores';
 import {
   lookupPower,
@@ -24,12 +24,15 @@ import {
 } from '@/data';
 import { useGlobalBonuses } from '@/hooks/useCalculatedStats';
 import { calculatePowerEnhancementBonuses, calculatePowerDamage, getAlphaEnhancementBonuses, abbreviateDamageType, type EnhancementBonuses } from '@/utils/calculations';
+import { calculatePetDamage, shouldApplyEnhancements, type PetDamageResult, type PetAbilityDamage } from '@/utils/calculations/pet-damage';
+import { PET_ENTITIES, type PetAbility } from '@/data/pet-entities';
 import { resolvePath } from '@/utils/paths';
 import type {
   ArchetypeId,
   Power,
   IncarnateSlotId,
   ToggleableIncarnateSlot,
+  SummonEffect,
 } from '@/types';
 import { getSlotColor, getTierColor, getTierDisplayName } from '@/data';
 import {
@@ -299,43 +302,15 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
         </div>
       )}
 
-      {/* Summon/Pet Info */}
+      {/* Summon/Pet Info with DPS */}
       {effects?.summon && (
-        <div className="bg-indigo-900/30 rounded p-2 border border-indigo-500/30">
-          <div className="flex items-center gap-2">
-            <span className="text-indigo-400 text-xs font-medium">
-              {effects.summon.isPseudoPet ? '⚡ Creates' : '🐾 Summons'}
-            </span>
-            <span className="text-slate-200 text-xs">
-              {effects.summon.displayName || effects.summon.entity || 'Entity'}
-            </span>
-          </div>
-          {effects.summon.duration && (
-            <div className="text-[10px] text-slate-400 mt-0.5">
-              Duration: {effects.summon.duration}s
-            </div>
-          )}
-          {effects.summon.powers && effects.summon.powers.length > 0 && (
-            <div className="text-[10px] text-slate-500 mt-0.5">
-              Powers: {effects.summon.powers.map(p => p.split('.').pop()).join(', ')}
-            </div>
-          )}
-        </div>
-      )}
-
-      {/* Description */}
-      <div>
-        <h4 className="text-[9px] font-semibold text-slate-500 uppercase tracking-wide mb-0.5">
-          Description
-        </h4>
-        <p className="text-xs text-slate-300 leading-relaxed"
-          dangerouslySetInnerHTML={{ __html: power.description
-            .replace(/<br\s*\/?>/gi, ' ')
-            .replace(/<[^>]+>/g, '')
-            .replace(/NOTE:\s*(.*?)(?:\.|$)/g, '<span class="block mt-1 text-amber-400 font-semibold">NOTE: $1.</span>')
-          }}
+        <PetDamageDisplay
+          summon={effects.summon}
+          level={build.level}
+          enhancementDamageBonus={enhancementBonuses.damage || 0}
+          globalDamageBonus={globalBonusesForCalc.damage || 0}
         />
-      </div>
+      )}
 
       {/* Registry-driven Power Effects display */}
       <RegistryEffectsDisplay
@@ -479,6 +454,20 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
           </div>
         </div>
       )}
+
+      {/* Description (at bottom - least important info) */}
+      <div className="border-t border-slate-700 pt-2 mt-2">
+        <h4 className="text-[9px] font-semibold text-slate-500 uppercase tracking-wide mb-0.5">
+          Description
+        </h4>
+        <p className="text-xs text-slate-300 leading-relaxed"
+          dangerouslySetInnerHTML={{ __html: power.description
+            .replace(/<br\s*\/?>/gi, ' ')
+            .replace(/<[^>]+>/g, '')
+            .replace(/NOTE:\s*(.*?)(?:\.|$)/g, '<span class="block mt-1 text-amber-400 font-semibold">NOTE: $1.</span>')
+          }}
+        />
+      </div>
     </div>
   );
 }
@@ -956,6 +945,462 @@ function AlphaEffectRow({
       <span className="text-green-400">
         {edBypass !== undefined ? formatEffectValue(bypassValue) : '—'}
       </span>
+    </div>
+  );
+}
+
+// ============================================
+// PET DAMAGE DISPLAY
+// ============================================
+
+interface PetDamageDisplayProps {
+  summon: SummonEffect;
+  level: number;
+  enhancementDamageBonus: number;
+  globalDamageBonus: number;
+}
+
+/** Effect type display info */
+const EFFECT_DISPLAY: Record<string, { label: string; color: string }> = {
+  Heal: { label: 'Heal', color: 'text-green-400' },
+  Sleep: { label: 'Sleep', color: 'text-purple-400' },
+  Hold: { label: 'Hold', color: 'text-purple-400' },
+  Stun: { label: 'Stun', color: 'text-purple-400' },
+  Fear: { label: 'Fear', color: 'text-purple-400' },
+  Confuse: { label: 'Confuse', color: 'text-purple-400' },
+  Immobilize: { label: 'Immobilize', color: 'text-purple-400' },
+  Knockback: { label: 'Knockback', color: 'text-cyan-400' },
+  Knockup: { label: 'Knockup', color: 'text-cyan-400' },
+  Taunt: { label: 'Taunt', color: 'text-yellow-400' },
+  EndDrain: { label: '-End', color: 'text-blue-400' },
+  RecoveryDebuff: { label: '-Recovery', color: 'text-blue-400' },
+  ToHitDebuff: { label: '-ToHit', color: 'text-orange-400' },
+  DefenseDebuff: { label: '-Defense', color: 'text-orange-400' },
+  Slow: { label: 'Slow', color: 'text-teal-400' },
+};
+
+/** Expandable row for a single pet ability with damage */
+function PetAbilityRow({ ad }: { ad: PetAbilityDamage }) {
+  const [open, setOpen] = useState(false);
+  const ability = ad.ability;
+  const abilityHasEnh = ad.damagePerHitEnhanced !== ad.damagePerHit;
+  const abilityHasBuff = ad.damagePerHitFinal !== ad.damagePerHitEnhanced;
+
+  return (
+    <div>
+      <div
+        className="grid grid-cols-[1fr_3rem_3rem_3rem_3rem] gap-0.5 text-[9px] items-baseline cursor-pointer select-none hover:bg-slate-800/40 rounded px-0.5"
+        onClick={() => setOpen(!open)}
+      >
+        <span className="text-slate-300 truncate flex items-center gap-0.5">
+          <span className="text-[8px] text-slate-600">{open ? '▼' : '▶'}</span>
+          {ability.displayName}
+          {ability.type === 'Auto' && <span className="text-slate-500 text-[7px]">auto</span>}
+        </span>
+        <span className="text-red-400 text-right">{ad.damagePerHit.toFixed(1)}</span>
+        <span className={`text-right ${abilityHasEnh ? 'text-green-400' : 'text-slate-600'}`}>
+          {abilityHasEnh ? ad.damagePerHitEnhanced.toFixed(1) : '—'}
+        </span>
+        <span className={`text-right ${abilityHasBuff ? 'text-amber-400' : 'text-slate-600'}`}>
+          {abilityHasBuff ? ad.damagePerHitFinal.toFixed(1) : '—'}
+        </span>
+        <span className="text-slate-400 text-right">{ad.dpsFinal.toFixed(1)}</span>
+      </div>
+      {open && <PetAbilityDetails ability={ability} cycleTime={ad.cycleTime} damageByType={ad.damageByType} />}
+    </div>
+  );
+}
+
+/** Expandable row for a pet ability with effects only (no damage) */
+function PetEffectAbilityRow({ ability }: { ability: PetAbility }) {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <div>
+      <div
+        className="grid grid-cols-[1fr_3rem_3rem_3rem_3rem] gap-0.5 text-[9px] items-baseline cursor-pointer select-none hover:bg-slate-800/40 rounded px-0.5"
+        onClick={() => setOpen(!open)}
+      >
+        <span className="text-slate-300 truncate flex items-center gap-0.5">
+          <span className="text-[8px] text-slate-600">{open ? '▼' : '▶'}</span>
+          {ability.displayName}
+          {ability.type === 'Auto' && <span className="text-slate-500 text-[7px]">auto</span>}
+        </span>
+        <span className="text-slate-600 text-right col-span-3">
+          {ability.effects?.map(e => {
+            const d = EFFECT_DISPLAY[e.type];
+            return d?.label || e.type;
+          }).join(', ')}
+        </span>
+        <span className="text-slate-600 text-right">—</span>
+      </div>
+      {open && <PetAbilityDetails ability={ability} />}
+    </div>
+  );
+}
+
+/** Detail panel shown when a pet ability row is expanded */
+function PetAbilityDetails({ ability, cycleTime, damageByType }: {
+  ability: PetAbility;
+  cycleTime?: number;
+  damageByType?: { type: string; base: number; enhanced: number; final: number }[];
+}) {
+  const stats: { label: string; value: string }[] = [];
+
+  if (ability.type !== 'Auto' || !ability.activatePeriod) {
+    if (ability.castTime) stats.push({ label: 'Cast', value: `${ability.castTime}s` });
+    if (ability.recharge) stats.push({ label: 'Recharge', value: `${ability.recharge}s` });
+  }
+  if (ability.activatePeriod) stats.push({ label: 'Period', value: `${ability.activatePeriod}s` });
+  if (cycleTime) stats.push({ label: 'Cycle', value: `${cycleTime.toFixed(2)}s` });
+  if (ability.effectArea && ability.effectArea !== 'Character') {
+    stats.push({ label: 'Area', value: ability.effectArea });
+  }
+  if (ability.range) stats.push({ label: 'Range', value: `${ability.range}ft` });
+  if (ability.radius) stats.push({ label: 'Radius', value: `${ability.radius}ft` });
+  if (ability.maxTargets && ability.maxTargets > 1) stats.push({ label: 'Max Targets', value: `${ability.maxTargets}` });
+  if (ability.attackTypes?.length) stats.push({ label: 'Attack', value: ability.attackTypes.join(', ') });
+
+  return (
+    <div className="ml-3 mb-1 mt-0.5 pl-2 border-l border-slate-700/50">
+      {/* Stats grid */}
+      {stats.length > 0 && (
+        <div className="grid grid-cols-2 gap-x-3 gap-y-0 text-[9px]">
+          {stats.map((s) => (
+            <div key={s.label} className="flex justify-between">
+              <span className="text-slate-500">{s.label}</span>
+              <span className="text-slate-300">{s.value}</span>
+            </div>
+          ))}
+        </div>
+      )}
+      {/* Damage type breakdown */}
+      {damageByType && damageByType.length > 0 && (
+        <div className="mt-0.5">
+          {damageByType.map((d) => (
+            <div key={d.type} className="flex items-center gap-2 text-[9px]">
+              <span className="text-red-400 w-12">{abbreviateDamageType(d.type)}</span>
+              <span className="text-slate-300">{d.base.toFixed(1)}</span>
+              {d.enhanced !== d.base && <span className="text-green-400">→ {d.enhanced.toFixed(1)}</span>}
+              {d.final !== d.enhanced && <span className="text-amber-400">→ {d.final.toFixed(1)}</span>}
+            </div>
+          ))}
+        </div>
+      )}
+      {/* Effects */}
+      {ability.effects && ability.effects.length > 0 && (
+        <div className="flex flex-wrap gap-1 mt-0.5">
+          {ability.effects.map((eff, i) => {
+            const display = EFFECT_DISPLAY[eff.type] || { label: eff.type, color: 'text-slate-400' };
+            const magLabel = eff.magnitude ? ` ${eff.magnitude}` : '';
+            const chanceLabel = eff.chance && eff.chance < 1 ? ` ${(eff.chance * 100).toFixed(0)}%` : '';
+            return (
+              <span key={`${eff.type}-${i}`} className={`text-[8px] px-1 py-0.5 rounded bg-slate-800/60 ${display.color}`}>
+                {display.label}{magLabel}{chanceLabel}
+              </span>
+            );
+          })}
+        </div>
+      )}
+    </div>
+  );
+}
+
+/** Single entity DPS display (used inside PetDamageDisplay) */
+function SingleEntityDisplay({
+  petDamage,
+  entityCount,
+  label,
+  showHeader,
+  isPseudoPet,
+  duration,
+}: {
+  petDamage: PetDamageResult | null;
+  entityCount: number;
+  label: string;
+  showHeader: boolean;
+  isPseudoPet: boolean;
+  duration?: number;
+}) {
+  const [expanded, setExpanded] = useState(false);
+  const [effectsExpanded, setEffectsExpanded] = useState(false);
+
+  const durationLabel = duration ? `${duration}s` : 'permanent';
+  const countLabel = entityCount > 1 ? ` x${entityCount}` : '';
+
+  const hasDamage = petDamage && petDamage.aggregateDpsBase > 0;
+  const hasEnh = petDamage && petDamage.aggregateDpsEnhanced !== petDamage.aggregateDpsBase;
+  const hasBuff = petDamage && petDamage.aggregateDpsFinal !== petDamage.aggregateDpsEnhanced;
+  const hasEffects = petDamage && petDamage.allEffects.length > 0;
+  const hasContent = hasDamage || hasEffects;
+
+  return (
+    <div>
+      {/* Entity header */}
+      {showHeader && (
+        <div className="flex items-center gap-2">
+          <span className="text-indigo-400 text-xs font-medium">
+            {isPseudoPet ? '⚡ Creates' : '🐾 Summons'}
+          </span>
+          <span className="text-slate-200 text-xs">
+            {label}{countLabel}
+          </span>
+          <span className="text-slate-500 text-[10px]">({durationLabel})</span>
+        </div>
+      )}
+
+      {/* Pet DPS + Effects */}
+      {hasContent && (
+        <div className="mt-1">
+          {hasDamage && (
+            <>
+              <div
+                className="flex items-center gap-1 cursor-pointer select-none"
+                onClick={() => setExpanded(!expanded)}
+              >
+                <span className="text-[9px] text-slate-500">{expanded ? '▼' : '▶'}</span>
+                <span className="text-[10px] text-slate-400 font-medium">
+                  {entityCount > 1 ? 'Total' : 'Pet'} DPS:
+                </span>
+                <span className="text-[10px] text-red-400 font-medium">
+                  {petDamage!.aggregateDpsBase.toFixed(1)}
+                </span>
+                {hasEnh && (
+                  <span className="text-[10px] text-green-400">
+                    → {petDamage!.aggregateDpsEnhanced.toFixed(1)}
+                  </span>
+                )}
+                {hasBuff && (
+                  <span className="text-[10px] text-amber-400">
+                    → {petDamage!.aggregateDpsFinal.toFixed(1)}
+                  </span>
+                )}
+              </div>
+
+              {entityCount > 1 && (
+                <div className="text-[9px] text-slate-500 ml-3">
+                  Per pet: {petDamage!.totalDpsBase.toFixed(1)}
+                  {hasEnh && ` → ${petDamage!.totalDpsEnhanced.toFixed(1)}`}
+                  {hasBuff && ` → ${petDamage!.totalDpsFinal.toFixed(1)}`}
+                </div>
+              )}
+            </>
+          )}
+
+          {/* Expanded ability breakdown */}
+          {expanded && (
+            <div className="mt-1.5 ml-1 space-y-0">
+              <div className="grid grid-cols-[1fr_3rem_3rem_3rem_3rem] gap-0.5 text-[8px] text-slate-500 font-medium border-b border-slate-700/50 pb-0.5 mb-0.5">
+                <span>Ability</span>
+                <span className="text-right">Base</span>
+                <span className="text-right">Enh</span>
+                <span className="text-right">Final</span>
+                <span className="text-right">DPS</span>
+              </div>
+              {petDamage!.abilities.map((ad) => (
+                <PetAbilityRow key={ad.ability.name} ad={ad} />
+              ))}
+              {petDamage!.effectOnlyAbilities.map((ability) => (
+                <PetEffectAbilityRow key={ability.name} ability={ability} />
+              ))}
+            </div>
+          )}
+
+          {/* Effects expandable section */}
+          {hasEffects && (
+            <div className="mt-1">
+              <div
+                className="flex items-center gap-1 cursor-pointer select-none"
+                onClick={() => setEffectsExpanded(!effectsExpanded)}
+              >
+                <span className="text-[9px] text-slate-500">{effectsExpanded ? '▼' : '▶'}</span>
+                <span className="text-[10px] text-slate-400 font-medium">Effects</span>
+              </div>
+              {effectsExpanded && (
+                <div className="mt-0.5 ml-3 space-y-0">
+                  {petDamage!.allEffects.map((eff) => {
+                    const display = EFFECT_DISPLAY[eff.type] || { label: eff.type, color: 'text-slate-400' };
+                    const chanceLabel = eff.chance && eff.chance < 1 ? ` (${(eff.chance * 100).toFixed(0)}%)` : '';
+                    return (
+                      <div key={eff.type} className="grid grid-cols-[1fr_auto] gap-2 text-[9px] py-0.5">
+                        <span className={display.color}>
+                          {display.label}{chanceLabel}
+                        </span>
+                        <span className="text-slate-300 text-right tabular-nums">
+                          {eff.value !== undefined ? eff.value.toFixed(1) : '—'}
+                        </span>
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
+          )}
+        </div>
+      )}
+    </div>
+  );
+}
+
+function PetDamageDisplay({ summon, level, enhancementDamageBonus, globalDamageBonus }: PetDamageDisplayProps) {
+  const [upgradeTier, setUpgradeTier] = useState(0);
+
+  // Build entity list from either entities array or single entity
+  const entityList = useMemo(() => {
+    if (summon.entities) {
+      return summon.entities.map(e => ({ entityName: e.entity, count: e.count }));
+    }
+    if (summon.entity) {
+      return [{ entityName: summon.entity, count: summon.entityCount || 1 }];
+    }
+    return [];
+  }, [summon.entities, summon.entity, summon.entityCount]);
+
+  // Check max upgrade tier available across all entities
+  const maxUpgradeTier = useMemo(() => {
+    let max = 0;
+    for (const e of entityList) {
+      const entity = PET_ENTITIES[e.entityName];
+      if (entity?.upgradeTiers) {
+        for (const t of entity.upgradeTiers) {
+          if (t.tier === 2) max = Math.max(max, 1);
+          if (t.tier === 3) max = Math.max(max, 2);
+        }
+      }
+    }
+    return max;
+  }, [entityList]);
+
+  // Calculate pet damage for each entity
+  const petResults = useMemo(() => {
+    return entityList.map(e => {
+      const applyEnh = shouldApplyEnhancements(e.entityName, summon.copyBoosts);
+      const enhBonus = applyEnh ? enhancementDamageBonus : 0;
+      return {
+        entityName: e.entityName,
+        count: e.count,
+        result: calculatePetDamage(
+          e.entityName, level, e.count, summon.duration,
+          enhBonus, applyEnh, globalDamageBonus, upgradeTier
+        ),
+      };
+    });
+  }, [entityList, level, enhancementDamageBonus, globalDamageBonus, upgradeTier, summon.copyBoosts, summon.duration]);
+
+  // Aggregate totals across all entities
+  const totals = useMemo(() => {
+    let base = 0, enhanced = 0, final_ = 0;
+    for (const r of petResults) {
+      if (r.result) {
+        base += r.result.aggregateDpsBase;
+        enhanced += r.result.aggregateDpsEnhanced;
+        final_ += r.result.aggregateDpsFinal;
+      }
+    }
+    return { base, enhanced, final: final_ };
+  }, [petResults]);
+
+  const isMultiEntity = entityList.length > 1;
+  const isSingleEntity = entityList.length === 1;
+  const hasDamage = totals.base > 0;
+  const hasEnh = totals.enhanced !== totals.base;
+  const hasBuff = totals.final !== totals.enhanced;
+  const durationLabel = summon.duration ? `${summon.duration}s` : 'permanent';
+
+  return (
+    <div className="bg-indigo-900/30 rounded p-2 border border-indigo-500/30">
+      {/* Upgrade Toggles */}
+      {maxUpgradeTier > 0 && (
+        <div className="flex items-center gap-3 mb-2 pb-1.5 border-b border-indigo-500/20">
+          <span className="text-[10px] text-indigo-400 font-medium">Upgrades:</span>
+          <label className="flex items-center gap-1 cursor-pointer">
+            <input
+              type="checkbox"
+              checked={upgradeTier >= 1}
+              onChange={(e) => setUpgradeTier(e.target.checked ? Math.max(upgradeTier, 1) : 0)}
+              className="w-3 h-3 accent-indigo-500"
+            />
+            <span className={`text-[10px] ${upgradeTier >= 1 ? 'text-indigo-300' : 'text-slate-500'}`}>
+              Upgrade 1
+            </span>
+          </label>
+          {maxUpgradeTier >= 2 && (
+            <label className="flex items-center gap-1 cursor-pointer">
+              <input
+                type="checkbox"
+                checked={upgradeTier >= 2}
+                onChange={(e) => setUpgradeTier(e.target.checked ? 2 : 1)}
+                className="w-3 h-3 accent-indigo-500"
+                disabled={upgradeTier < 1}
+              />
+              <span className={`text-[10px] ${upgradeTier >= 2 ? 'text-indigo-300' : 'text-slate-500'}`}>
+                Upgrade 2
+              </span>
+            </label>
+          )}
+        </div>
+      )}
+
+      {/* Single entity display (same as before) */}
+      {isSingleEntity && (
+        <SingleEntityDisplay
+          petDamage={petResults[0]?.result ?? null}
+          entityCount={entityList[0].count}
+          label={petResults[0]?.result?.displayName || summon.displayName || summon.entity || 'Entity'}
+          showHeader={true}
+          isPseudoPet={summon.isPseudoPet}
+          duration={summon.duration}
+        />
+      )}
+
+      {/* Multi-entity display */}
+      {isMultiEntity && (
+        <div className="space-y-2">
+          {petResults.map((pr) => (
+            <SingleEntityDisplay
+              key={pr.entityName}
+              petDamage={pr.result}
+              entityCount={pr.count}
+              label={pr.result?.displayName || pr.entityName.replace(/^(Pets_|MastermindPets_)/i, '').replace(/_/g, ' ')}
+              showHeader={true}
+              isPseudoPet={summon.isPseudoPet}
+              duration={summon.duration}
+            />
+          ))}
+
+          {/* Aggregate total across all entity types */}
+          {hasDamage && (
+            <div className="border-t border-indigo-500/30 pt-1.5 mt-1.5">
+              <div className="flex items-center gap-1">
+                <span className="text-[10px] text-slate-400 font-medium">Total Henchmen DPS:</span>
+                <span className="text-[10px] text-red-400 font-medium">{totals.base.toFixed(1)}</span>
+                {hasEnh && <span className="text-[10px] text-green-400">→ {totals.enhanced.toFixed(1)}</span>}
+                {hasBuff && <span className="text-[10px] text-amber-400">→ {totals.final.toFixed(1)}</span>}
+              </div>
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* No entity display (pseudopets with no data) */}
+      {entityList.length === 0 && (
+        <div className="flex items-center gap-2">
+          <span className="text-indigo-400 text-xs font-medium">
+            {summon.isPseudoPet ? '⚡ Creates' : '🐾 Summons'}
+          </span>
+          <span className="text-slate-200 text-xs">
+            {summon.displayName || 'Entity'}
+          </span>
+          <span className="text-slate-500 text-[10px]">({durationLabel})</span>
+        </div>
+      )}
+
+      {/* Fallback: show powers list if no pet data at all */}
+      {entityList.length === 0 && summon.powers && summon.powers.length > 0 && (
+        <div className="text-[10px] text-slate-500 mt-0.5">
+          Powers: {summon.powers.map(p => p.split('.').pop()).join(', ')}
+        </div>
+      )}
     </div>
   );
 }

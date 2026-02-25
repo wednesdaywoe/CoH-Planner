@@ -11,7 +11,7 @@ export const Oni: Power = {
   "name": "Oni",
   "internalName": "Oni",
   "available": 21,
-  "description": "Summons an ancient and powerful Oni. An Oni is a powerful human-like demon warrior. The Oni is a formidable creature who possesses the skill of a warrior and the powers of wind and fire.You may only have 1 Oni under your control at any given time. If you attempt to summon another Oni, the power will fail.Notes: Oni is unaffected by Recharge Time changes.",
+  "description": "Summons an ancient and powerful Oni. An Oni is a powerful human-like demon warrior. The Oni is a formidable creature who possesses the skill of a warrior and the powers of wind and fire.",
   "shortHelp": "Summon Oni",
   "icon": "ninjas_calloni.png",
   "powerType": "Click",
@@ -43,7 +43,8 @@ export const Oni: Power = {
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "entity": "MastermindPets_Oni"
+      "entity": "MastermindPets_Oni",
+      "copyBoosts": true
     }
   }
 };

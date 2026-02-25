@@ -199,7 +199,7 @@ export interface StealthEffects {
 export interface SummonEffect {
   /** True if this is a pseudopet (invisible location-based effect) */
   isPseudoPet: boolean;
-  /** Entity definition name (for real pets) */
+  /** Entity definition name (for real pets) - key into PET_ENTITIES */
   entity?: string;
   /** Display name of the summoned entity */
   displayName?: string;
@@ -207,6 +207,12 @@ export interface SummonEffect {
   powers?: string[];
   /** Duration of the summon in seconds */
   duration?: number;
+  /** Number of entities summoned (e.g., Gremlins = 2) */
+  entityCount?: number;
+  /** True if the summon template has CopyBoosts flag (pet inherits caster's enhancements) */
+  copyBoosts?: boolean;
+  /** Multi-entity summons (e.g., Mastermind henchmen with different entity types) */
+  entities?: { entity: string; count: number }[];
 }
 
 // ============================================

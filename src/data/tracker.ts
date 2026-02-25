@@ -13,7 +13,6 @@ export interface TrackerItem {
 // ============================================
 
 export const KNOWN_BUGS: TrackerItem[] = [
-  { text: 'Pets and Lore pet stats (individual pet abilities) are not yet parsed from raw data', status: 'known-bug' },
   { text: 'If you see a [missing-icon] icon, it means the icon is missing. Please report it using the feedback tool', status: 'known-bug' },
 ];
 
@@ -22,6 +21,8 @@ export const KNOWN_BUGS: TrackerItem[] = [
 // ============================================
 
 export const RECENT_CHANGES: TrackerItem[] = [
+  { text: 'New: Finally added support for pets and pseudopet powers', status: 'new' },
+  { text: 'New: Undock feature added to Info Panel, allowing it to be moved and resized', status: 'new' },  
   { text: 'New: Added Procs toggle to dashboard', status: 'new' },
   { text: 'fix: Fixed incorrect ED calculation', status: 'fixed' },
   { text: 'Massive cleanup of powers data structure, should expose more power effects to the infopanel', status: 'fixed' },

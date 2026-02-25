@@ -11,7 +11,7 @@ export const HellonEarth: Power = {
   "name": "Hell on Earth",
   "internalName": "Hell_on_Earth",
   "available": 17,
-  "description": "A dark blessing is placed upon a selected Demon henchman which will increase its damage and chance to hit for 90 seconds. While this is in effect living hellfire may spawn every 15 seconds at the affected Demon henchman's location. The creatures summoned will have a very weak tie to the material plane and will return to Abyss after a short time.Recharge: Very Long.",
+  "description": "A dark blessing is placed upon a selected Demon henchman which will increase its damage and chance to hit for 90 seconds. While this is in effect living hellfire may spawn every 15 seconds at the affected Demon henchman's location. The creatures summoned will have a very weak tie to the material plane and will return to Abyss after a short time.",
   "shortHelp": "Ranged, Pet +Dmg, +To Hit, Summon Living Hellfire",
   "icon": "demonsummoning_hellonearth.png",
   "powerType": "Click",
@@ -48,7 +48,9 @@ export const HellonEarth: Power = {
     },
     "summon": {
       "isPseudoPet": false,
-      "entity": "Pets_Living_Hellfire"
+      "entity": "Pets_Living_Hellfire",
+      "copyBoosts": true,
+      "entityCount": 10
     }
   }
 };

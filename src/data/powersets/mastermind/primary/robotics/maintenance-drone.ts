@@ -37,7 +37,8 @@ export const MaintenanceDrone: Power = {
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "entity": "MastermindPets_Maintenance_Bot"
+      "entity": "MastermindPets_Maintenance_Bot",
+      "copyBoosts": true
     }
   }
 };
