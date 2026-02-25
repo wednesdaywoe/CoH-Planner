@@ -21,19 +21,19 @@ export const KNOWN_BUGS: TrackerItem[] = [
 // ============================================
 
 export const RECENT_CHANGES: TrackerItem[] = [
-  { text: 'New: Finally added support for pets and pseudopet powers', status: 'new' },
-  { text: 'New: Undock feature added to Info Panel, allowing it to be moved and resized', status: 'new' },  
-  { text: 'New: Added Procs toggle to dashboard', status: 'new' },
-  { text: 'fix: Fixed incorrect ED calculation', status: 'fixed' },
+  { text: 'Finally added support for pets and pseudopet powers', status: 'new' },
+  { text: 'Undock feature added to Info Panel, allowing it to be moved and resized', status: 'new' },  
+  { text: 'Added Procs toggle to dashboard', status: 'new' },
+  { text: 'Fixed incorrect ED calculation', status: 'fixed' },
   { text: 'Massive cleanup of powers data structure, should expose more power effects to the infopanel', status: 'fixed' },
-  { text: 'fix: Fixed missing effects across 395 powers 😓', status: 'fixed' },
-  { text: 'New: Added highlight indicator for unique and proc enhancements', status: 'new' },
-  { text: 'New: Tracked stats now highlight matching bonus effects in enhancement picker tooltips', status: 'new' },
+  { text: 'Fixed missing effects across 395 powers 😓', status: 'fixed' },
+  { text: 'Added highlight indicator for unique and proc enhancements', status: 'new' },
+  { text: 'Tracked stats now highlight matching bonus effects in enhancement picker tooltips', status: 'new' },
   { text: 'Update to incorporate power updates in Issue 28, Page 3, Panel 2', status: 'fixed' },
-  { text: 'New: Added modal for incarnate recipe calculator', status: 'new' },
-  { text: 'New: Added modal for set bonus finder', status: 'new' },
-  { text: 'New: Added dashboard feature: stat tracking! Left click a stat to track it; tracked stats will highlight sets that provide bonuses for that stat', status: 'new' },
-  { text: 'New: First pass at importing builds from Mids Reborn! (.mbd files) Use the Export/Import modal, expect bugs :3', status: 'new' },
+  { text: 'Added modal for incarnate recipe calculator', status: 'new' },
+  { text: 'Added modal for set bonus finder', status: 'new' },
+  { text: 'Added dashboard feature: stat tracking! Left click a stat to track it; tracked stats will highlight sets that provide bonuses for that stat', status: 'new' },
+  { text: 'First pass at importing builds from Mids Reborn! (.mbd files) Use the Export/Import modal, expect bugs :3', status: 'new' },
 ];
 
 // ============================================
