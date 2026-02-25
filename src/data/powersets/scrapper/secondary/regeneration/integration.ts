@@ -63,7 +63,11 @@ export const Integration: Power = {
       "table": "Melee_Res_Boolean"
     },
     "regenBuff": {
-      "scale": 1.5,
+      "scale": 1.0,
+      "table": "Melee_Ones"
+    },
+    "regenBuffUnenhanced": {
+      "scale": 0.5,
       "table": "Melee_Ones"
     }
   }

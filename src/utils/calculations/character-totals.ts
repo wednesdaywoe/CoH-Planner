@@ -381,6 +381,7 @@ interface ActivePowerEffect {
   maxEndurance?: ScalarOrScaled;
   maxHealth?: ScalarOrScaled;
   regenBuff?: ScalarOrScaled;
+  regenBuffUnenhanced?: ScalarOrScaled;
   recoveryBuff?: ScalarOrScaled;
   maxHPBuff?: ScalarOrScaled;
   maxEndBuff?: ScalarOrScaled;
@@ -587,6 +588,20 @@ function applyActivePowerBonuses(
     if (effects.regenBuff !== undefined) {
       const enhMultiplier = 1 + (enhBonuses.heal || 0);
       const value = resolveScaledEffect(effects.regenBuff, archetypeId, buildLevel) * 100 * enhMultiplier;
+      // If the power also has an unenhanced portion, combine into one breakdown entry
+      const unenhValue = effects.regenBuffUnenhanced !== undefined
+        ? resolveScaledEffect(effects.regenBuffUnenhanced, archetypeId, buildLevel) * 100
+        : 0;
+      const totalValue = value + unenhValue;
+      global.regeneration += totalValue;
+      addToBreakdown(breakdown, 'regeneration', {
+        name: power.name,
+        value: totalValue,
+        type: 'active-power',
+      });
+    } else if (effects.regenBuffUnenhanced !== undefined) {
+      // Power only has unenhanceable regen (no enhanceable portion)
+      const value = resolveScaledEffect(effects.regenBuffUnenhanced, archetypeId, buildLevel) * 100;
       global.regeneration += value;
       addToBreakdown(breakdown, 'regeneration', {
         name: power.name,
@@ -1741,17 +1756,24 @@ function buildToBuildPowers(build: Build): BuildPowers {
   };
 }
 
+export interface CalculationOptions {
+  /** Include proc bonuses in stat calculations (default: true) */
+  includeProcs?: boolean;
+}
+
 /**
  * Main calculation function - calculates all character stats
  * @param build - The current build state
  * @param exemplarMode - When true, respects build level for set bonus suppression.
  *                       When false (default), always calculates as if at level 50.
  * @param incarnateActive - Which incarnate slots are active for stat calculations
+ * @param options - Additional calculation options
  */
 export function calculateCharacterTotals(
   build: Build,
   exemplarMode = false,
-  incarnateActive?: IncarnateActiveState
+  incarnateActive?: IncarnateActiveState,
+  options?: CalculationOptions
 ): CharacterCalculationResult {
   const breakdown = new Map<string, DashboardStatBreakdown>();
   const globalBonuses = createEmptyGlobalBonuses();
@@ -1803,7 +1825,9 @@ export function calculateCharacterTotals(
 
   // Step 7.5: Apply always-on proc bonuses (Global and Proc120s in Auto/Toggle powers)
   // Procs have their own Rule of 5 tracking, separate from set bonuses
-  applyProcBonuses(build, globalBonuses, breakdown);
+  if (options?.includeProcs !== false) {
+    applyProcBonuses(build, globalBonuses, breakdown);
+  }
 
   // Step 8: Apply accolade bonuses
   if (build.accolades && build.accolades.length > 0) {

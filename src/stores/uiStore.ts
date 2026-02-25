@@ -86,6 +86,9 @@ interface UIState {
   /** Exemplar mode - when ON, respects build level for set bonus suppression */
   exemplarMode: boolean;
 
+  /** Include proc bonuses in dashboard stat calculations */
+  includeProcsInStats: boolean;
+
   /** Hints/help visibility */
   hintsEnabled: boolean;
 
@@ -165,6 +168,7 @@ interface UIActions {
   setGlobalIOLevel: (level: number) => void;
   toggleAttunement: () => void;
   toggleExemplarMode: () => void;
+  toggleIncludeProcsInStats: () => void;
   toggleHints: () => void;
   toggleDarkMode: () => void;
   toggleCompactMode: () => void;
@@ -365,6 +369,7 @@ export const useUIStore = create<UIStore>()(
       globalIOLevel: 50,
       attunementEnabled: false,
       exemplarMode: false,
+      includeProcsInStats: true,
       hintsEnabled: true,
       infoPanel: defaultInfoPanel,
       statsConfig: defaultStatsConfig,
@@ -488,6 +493,11 @@ export const useUIStore = create<UIStore>()(
       toggleExemplarMode: () =>
         set((state) => ({
           exemplarMode: !state.exemplarMode,
+        })),
+
+      toggleIncludeProcsInStats: () =>
+        set((state) => ({
+          includeProcsInStats: !state.includeProcsInStats,
         })),
 
       toggleHints: () =>
@@ -869,6 +879,7 @@ export const useUIStore = create<UIStore>()(
         globalIOLevel: state.globalIOLevel,
         attunementEnabled: state.attunementEnabled,
         exemplarMode: state.exemplarMode,
+        includeProcsInStats: state.includeProcsInStats,
         hintsEnabled: state.hintsEnabled,
         infoPanel: { enabled: state.infoPanel.enabled, content: null, locked: false, lockedContent: null, tooltipEnabled: state.infoPanel.tooltipEnabled },
         statsConfig: state.statsConfig,

@@ -286,6 +286,8 @@ export interface PowerEffects {
   recoveryBuff?: NumberOrScaled;
   /** Regeneration buff value */
   regenBuff?: NumberOrScaled;
+  /** Regeneration buff value (unenhanceable — IgnoreStrength) */
+  regenBuffUnenhanced?: NumberOrScaled;
   /** Run/Fly speed buff value (percentage as decimal) */
   speedBuff?: NumberOrScaled;
   /** Endurance buff value (flat value or scale) */

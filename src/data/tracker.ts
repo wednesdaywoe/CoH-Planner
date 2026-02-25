@@ -22,12 +22,12 @@ export const KNOWN_BUGS: TrackerItem[] = [
 // ============================================
 
 export const RECENT_CHANGES: TrackerItem[] = [
+  { text: 'New: Added Procs toggle to dashboard', status: 'new' },
+  { text: 'fix: Fixed incorrect ED calculation', status: 'fixed' },
   { text: 'Massive cleanup of powers data structure, should expose more power effects to the infopanel', status: 'fixed' },
   { text: 'fix: Fixed missing effects across 395 powers 😓', status: 'fixed' },
   { text: 'New: Added highlight indicator for unique and proc enhancements', status: 'new' },
-  { text: 'fix: Fixed some missing enhancement icons', status: 'fixed' },
   { text: 'New: Tracked stats now highlight matching bonus effects in enhancement picker tooltips', status: 'new' },
-  { text: 'New: Added Controls button to the dashboard bar — quick reference for all desktop and mobile interactions', status: 'new' },
   { text: 'Update to incorporate power updates in Issue 28, Page 3, Panel 2', status: 'fixed' },
   { text: 'New: Added modal for incarnate recipe calculator', status: 'new' },
   { text: 'New: Added modal for set bonus finder', status: 'new' },

@@ -234,10 +234,13 @@ export function useCharacterCalculation(): CharacterCalculationResult {
   const build = useBuildStore((state) => state.build);
   const exemplarMode = useUIStore((state) => state.exemplarMode);
   const incarnateActive = useUIStore((state) => state.incarnateActive);
+  const includeProcsInStats = useUIStore((state) => state.includeProcsInStats);
 
   return useMemo(() => {
-    return calculateCharacterTotals(build, exemplarMode, incarnateActive);
-  }, [build, exemplarMode, incarnateActive]);
+    return calculateCharacterTotals(build, exemplarMode, incarnateActive, {
+      includeProcs: includeProcsInStats,
+    });
+  }, [build, exemplarMode, incarnateActive, includeProcsInStats]);
 }
 
 /**
@@ -247,11 +250,14 @@ export function useCalculatedStats(): CalculatedStats {
   const build = useBuildStore((state) => state.build);
   const exemplarMode = useUIStore((state) => state.exemplarMode);
   const incarnateActive = useUIStore((state) => state.incarnateActive);
+  const includeProcsInStats = useUIStore((state) => state.includeProcsInStats);
 
   return useMemo(() => {
-    const result = calculateCharacterTotals(build, exemplarMode, incarnateActive);
+    const result = calculateCharacterTotals(build, exemplarMode, incarnateActive, {
+      includeProcs: includeProcsInStats,
+    });
     return convertToLegacyStats(result.stats, result);
-  }, [build, exemplarMode, incarnateActive]);
+  }, [build, exemplarMode, incarnateActive, includeProcsInStats]);
 }
 
 /**
