@@ -14,7 +14,7 @@ const LAST_UPDATED = (() => {
 })();
 
 const STORAGE_KEY = 'coh-planner-welcome-dismissed';
-const CURRENT_VERSION = '0.5.0-alpha'; // Increment to show modal again after major updates
+const CURRENT_VERSION = '0.5.1-alpha'; // Increment to show modal again after major updates
 
 interface WelcomeModalProps {
   isOpen: boolean;
@@ -37,7 +37,7 @@ export function WelcomeModal({ isOpen, onClose }: WelcomeModalProps) {
       <ModalHeader className="flex items-center justify-between">
         <h2 className="text-lg font-medium text-gray-100">Welcome to Sidekick</h2>
         <div className="flex items-center gap-3">
-          <span className="text-xs text-slate-500 whitespace-nowrap">Updated {LAST_UPDATED}</span>
+          <span className="text-xs text-slate-500 whitespace-nowrap">v{CURRENT_VERSION} — Updated {LAST_UPDATED}</span>
           <button
             onClick={handleClose}
             className="p-1 text-gray-400 hover:text-white transition-colors rounded hover:bg-gray-700"
