@@ -3,7 +3,7 @@
  */
 
 import { useMemo } from 'react';
-import type { IOSetPiece } from '@/types';
+import type { IOSetPiece, IOSetRarity } from '@/types';
 import { Badge, Tooltip } from '@/components/ui';
 import { IOSetIcon } from './EnhancementIcon';
 import { useLongPress } from '@/hooks';
@@ -19,6 +19,7 @@ interface EnhancementCardProps {
   piece: IOSetPiece;
   setName: string;
   setIcon?: string;
+  category?: IOSetRarity;
   level: number;
   isAttuned?: boolean;
   isSelected?: boolean;
@@ -32,6 +33,7 @@ export function EnhancementCard({
   piece,
   setName,
   setIcon,
+  category,
   level,
   isAttuned = false,
   isSelected = false,
@@ -103,6 +105,7 @@ export function EnhancementCard({
           <IOSetIcon
             icon={setIcon || 'Unknown.png'}
             attuned={isAttuned}
+            category={category}
             size={40}
             alt={piece.name}
           />

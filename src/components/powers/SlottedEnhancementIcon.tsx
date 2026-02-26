@@ -10,6 +10,7 @@ import {
   SpecialEnhancementIcon,
 } from '@/components/enhancements/EnhancementIcon';
 import { getEnhancementOutline } from '@/utils/enhancement-outline';
+import { getIOSet } from '@/data';
 
 interface SlottedEnhancementIconProps {
   enhancement: Enhancement;
@@ -49,6 +50,9 @@ export function SlottedEnhancementIcon({ enhancement, size = 20 }: SlottedEnhanc
         ? ioSet.icon.split('/').pop() || 'Unknown.png'
         : ioSet.icon || 'Unknown.png';
 
+      // Look up set category for rarity-based frame selection
+      const set = getIOSet(ioSet.setId);
+
       const outline = getEnhancementOutline(
         { name: ioSet.name, proc: ioSet.isProc, unique: ioSet.isUnique },
         ioSet.setName,
@@ -60,6 +64,7 @@ export function SlottedEnhancementIcon({ enhancement, size = 20 }: SlottedEnhanc
           <IOSetIcon
             icon={iconName}
             attuned={ioSet.attuned}
+            category={set?.category}
             size={size}
             alt={enhancement.name}
           />

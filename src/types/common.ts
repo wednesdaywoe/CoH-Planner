@@ -184,11 +184,12 @@ export type IOSetCategory =
 // ============================================
 
 export type IOSetRarity =
-  | 'io-set'   // Standard IO sets
-  | 'purple'   // Purple sets (very rare level 50)
-  | 'ato'      // Archetype Origin sets (from Super Packs)
-  | 'pvp'      // PvP IO sets
-  | 'event';   // Winter/Event IOs
+  | 'uncommon'  // Uncommon IO sets
+  | 'rare'      // Rare IO sets
+  | 'purple'    // Purple sets (very rare level 50)
+  | 'ato'       // Archetype Origin sets (from Super Packs)
+  | 'pvp'       // PvP IO sets
+  | 'event';    // Winter/Event IOs
 
 // ============================================
 // ENHANCEMENT TIER (SO/DO/TO)

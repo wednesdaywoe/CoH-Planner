@@ -118,7 +118,7 @@ export function EnhancementPicker() {
   const standardCategories = useMemo(() => {
     const cats = new Set<string>();
     for (const set of availableSets) {
-      if (set.category === 'io-set' && set.type !== 'Universal Damage Sets') {
+      if ((set.category === 'uncommon' || set.category === 'rare') && set.type !== 'Universal Damage Sets') {
         cats.add(set.type);
       }
     }
@@ -137,12 +137,15 @@ export function EnhancementPicker() {
     availableSets.some((set) => set.category === 'event'), [availableSets]);
   const hasArchetype = useMemo(() =>
     availableSets.some((set) => set.category === 'ato'), [availableSets]);
+  const hasPvP = useMemo(() =>
+    availableSets.some((set) => set.category === 'pvp'), [availableSets]);
 
   // Helper to check if a set is a "special" category (excluded from normal filters)
   const isSpecialSet = (set: IOSet) =>
     set.category === 'purple' ||
     set.category === 'ato' ||
     set.category === 'event' ||
+    set.category === 'pvp' ||
     set.type === 'Universal Damage Sets';
 
   // Filter sets based on sidebar selection
@@ -159,6 +162,8 @@ export function EnhancementPicker() {
         return availableSets.filter((set) => set.category === 'event');
       case 'archetype':
         return availableSets.filter((set) => set.category === 'ato');
+      case 'pvp':
+        return availableSets.filter((set) => set.category === 'pvp');
       default:
         // It's a category name - only show standard sets of that type
         return availableSets.filter((set) => set.type === sidebarFilter && !isSpecialSet(set));
@@ -553,6 +558,15 @@ export function EnhancementPicker() {
                 textColor="text-orange-400"
               />
             )}
+            {hasPvP && (
+              <MobileCategoryButton
+                label="PvP"
+                count={availableSets.filter((s) => s.category === 'pvp').length}
+                isActive={sidebarFilter === 'pvp'}
+                onClick={() => setSidebarFilter('pvp')}
+                textColor="text-red-400"
+              />
+            )}
           </div>
         )}
 
@@ -620,6 +634,17 @@ export function EnhancementPicker() {
                   isActive={sidebarFilter === 'archetype'}
                   onClick={() => setSidebarFilter('archetype')}
                   textColor="text-orange-400"
+                />
+              )}
+
+              {/* PvP */}
+              {hasPvP && (
+                <SidebarButton
+                  label="PvP"
+                  count={availableSets.filter((s) => s.category === 'pvp').length}
+                  isActive={sidebarFilter === 'pvp'}
+                  onClick={() => setSidebarFilter('pvp')}
+                  textColor="text-red-400"
                 />
               )}
             </div>
@@ -924,7 +949,7 @@ function IOSetRow({
                 onTouchMove={(e) => !isDisabled && onPieceTouchMove(e)}
                 onTouchEnd={(e) => !isDisabled && onPieceTouchEnd(set, e)}
                 disabled={isDisabled}
-                className={`relative w-9 h-9 rounded border transition-all bg-gray-900/50 touch-none ${
+                className={`relative w-[30px] h-[30px] rounded border transition-all bg-gray-900/50 touch-none ${
                   isDisabled
                     ? 'border-gray-700 opacity-40 cursor-not-allowed'
                     : shiftSel
@@ -937,7 +962,8 @@ function IOSetRow({
                 <IOSetIcon
                   icon={set.icon || 'Unknown.png'}
                   attuned={attunementEnabled}
-                  size={36}
+                  category={set.category}
+                  size={30}
                   alt={piece.name}
                   className="pointer-events-none"
                 />
@@ -990,7 +1016,8 @@ function IOSetRow({
                 <IOSetIcon
                   icon={set.icon || 'Unknown.png'}
                   attuned={attunementEnabled}
-                  size={40}
+                  category={set.category}
+                  size={30}
                   alt={piece.name}
                   className="pointer-events-none"
                 />
@@ -1062,7 +1089,7 @@ function GenericIOContent({ availableIOs, ioValue, globalIOLevel, onSelect }: Ge
               onClick={() => onSelect(stat)}
               className="rounded border border-gray-600 hover:border-blue-400 hover:scale-110 transition-all bg-gray-900/50"
             >
-              <GenericIOIcon stat={stat} size={36} alt={stat} />
+              <GenericIOIcon stat={stat} size={30} alt={stat} />
             </button>
           </Tooltip>
         ))}
@@ -1124,7 +1151,7 @@ function SpecialContent(props: SpecialContentProps) {
                       onClick={() => onSelect(id, def, section.category)}
                       className={`rounded border ${section.borderColor} hover:scale-110 transition-all bg-gray-900/50`}
                     >
-                      <SpecialEnhancementIcon icon={`${section.iconPrefix}${capitalizedId}.png`} size={36} alt={def.name} />
+                      <SpecialEnhancementIcon icon={`${section.iconPrefix}${capitalizedId}.png`} size={30} alt={def.name} />
                     </button>
                   </Tooltip>
                 );
@@ -1174,7 +1201,7 @@ function OriginContent({ availableTypes, onSelect }: OriginContentProps) {
                     stat={stat}
                     tier={tier.short as 'TO' | 'DO' | 'SO'}
                     origin={buildOrigin}
-                    size={36}
+                    size={30}
                     alt={`${stat} ${tier.short}`}
                   />
                 </button>
@@ -1270,6 +1297,7 @@ function SetPieceTooltip({ set, piece }: SetPieceTooltipProps) {
         <IOSetIcon
           icon={set.icon || 'Unknown.png'}
           attuned={attunementEnabled}
+          category={set.category}
           size={28}
           alt={piece.name}
           className="flex-shrink-0"
@@ -1515,12 +1543,12 @@ function DebugAllSetsContent() {
     return groups;
   }, [allSets]);
 
-  const categoryOrder = ['io-set', 'uncommon', 'rare', 'purple', 'ato', 'event', 'universal', 'unknown'];
+  const categoryOrder = ['uncommon', 'rare', 'purple', 'pvp', 'ato', 'event', 'universal', 'unknown'];
   const categoryLabels: Record<string, string> = {
-    'io-set': 'IO Sets',
     'uncommon': 'Uncommon',
     'rare': 'Rare',
     'purple': 'Very Rare (Purple)',
+    'pvp': 'PvP',
     'ato': 'Archetype (ATO)',
     'event': 'Event',
     'universal': 'Universal',
@@ -1546,7 +1574,7 @@ function DebugAllSetsContent() {
                   key={set.id || set.name}
                   className="flex items-center gap-2 p-1.5 rounded bg-gray-800/40 border border-gray-700/50"
                 >
-                  <IOSetIcon icon={set.icon} size={32} alt={set.name} />
+                  <IOSetIcon icon={set.icon} category={set.category} size={32} alt={set.name} />
                   <div className="min-w-0 flex-1">
                     <div className="text-xs text-gray-200 truncate">{set.name}</div>
                     <div className="text-[10px] text-gray-500 truncate">{set.type}</div>

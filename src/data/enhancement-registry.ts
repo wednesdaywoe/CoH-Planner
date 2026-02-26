@@ -241,6 +241,8 @@ export function sortCategoriesByPriority(categories: string[]): string[] {
 
 /** Display config for IO set rarity categories */
 export const RARITY_DISPLAY: Record<string, { color: string }> = {
+  uncommon: { color: 'text-yellow-400' },
+  rare: { color: 'text-orange-300' },
   purple: { color: 'text-purple-400' },
   ato: { color: 'text-yellow-400' },
   pvp: { color: 'text-red-400' },

@@ -61,10 +61,11 @@ export function Badge({
 /**
  * Rarity badge for IO sets
  */
-export type IOSetRarityType = 'io-set' | 'purple' | 'ato' | 'pvp' | 'event';
+export type IOSetRarityType = 'uncommon' | 'rare' | 'purple' | 'ato' | 'pvp' | 'event';
 
 const rarityClasses: Record<IOSetRarityType, string> = {
-  'io-set': 'bg-yellow-600/20 text-yellow-400 border-yellow-600/30',
+  uncommon: 'bg-yellow-600/20 text-yellow-400 border-yellow-600/30',
+  rare: 'bg-orange-600/20 text-orange-300 border-orange-600/30',
   purple: 'bg-purple-600/20 text-purple-400 border-purple-600/30',
   ato: 'bg-orange-600/20 text-orange-400 border-orange-600/30',
   pvp: 'bg-red-600/20 text-red-400 border-red-600/30',
@@ -72,7 +73,8 @@ const rarityClasses: Record<IOSetRarityType, string> = {
 };
 
 const rarityLabels: Record<IOSetRarityType, string> = {
-  'io-set': 'IO Set',
+  uncommon: 'Uncommon',
+  rare: 'Rare',
   purple: 'Purple',
   ato: 'ATO',
   pvp: 'PvP',

@@ -353,7 +353,10 @@ export function expandByTypeEntries(
   }));
 
   const percentValues = resolved.map(r => r.basePercent);
-  if (allValuesSame(percentValues) && resolved.length > 1) {
+  const ALL_PRIMARY_DAMAGE_TYPES = ['smashing', 'lethal', 'fire', 'cold', 'energy', 'negative', 'psionic', 'toxic'];
+  const typeKeys = new Set(resolved.map(r => r.typeKey));
+  const coversAllPrimary = ALL_PRIMARY_DAMAGE_TYPES.every(t => typeKeys.has(t));
+  if (allValuesSame(percentValues) && coversAllPrimary) {
     return [{
       typeKey: '_all',
       typeLabel: `${labelPrefix} (All)`,

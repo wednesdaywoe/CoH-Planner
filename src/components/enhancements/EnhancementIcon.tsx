@@ -3,19 +3,22 @@
  *
  * Enhancement icons consist of two parts:
  * 1. Base icon - the core enhancement image
- * 2. Overlay - a frame that indicates the enhancement type/origin
+ * 2. Overlay - a frame that indicates the enhancement type/rarity
  *
- * Overlay types:
- * - IO.png: Standard IO sets and Generic IOs
- * - attuned.png: Attuned IO sets
- * - Training.png: Training Origin enhancements (TO)
- * - {Origin}DO.png: Dual Origin enhancements (MagDO, MutDO, NatDO, SciDO, TechDO)
- * - {Origin}SO.png: Single Origin enhancements (MagSO, MutSO, NatSO, SciSO, TechSO)
- * - HO.png: Hamidon Origin enhancements
+ * Overlay frames use e_frame_ prefix naming with rarity-based variants:
+ * - e_frame_IO.png: Generic IOs (common)
+ * - e_frame_uncommon.png / e_frame_attuned_uncommon.png: Uncommon IO sets
+ * - e_frame_rare.png / e_frame_attuned_rare.png: Rare IO sets
+ * - e_frame_superior.png / e_frame_attuned_superior.png: Purple/very rare sets
+ * - e_frame_pvp.png / e_frame_attuned_pvp.png: PvP sets
+ * - e_frame_class.png: Archetype (ATO) and Event sets
+ * - e_frame_TO.png: Training Origin enhancements
+ * - e_frame_{Org}DO.png / e_frame_{Org}SO.png: Dual/Single Origin enhancements
+ * - e_frame_HO.png: Hamidon Origin enhancements
  */
 
 import { useMemo } from 'react';
-import type { Origin } from '@/types';
+import type { Origin, IOSetRarity } from '@/types';
 import { STAT_ICON_MAP } from '@/data';
 import { resolvePath } from '@/utils/paths';
 
@@ -32,6 +35,8 @@ interface EnhancementIconProps {
   icon: string;
   /** Whether the enhancement is attuned (for IO sets) */
   attuned?: boolean;
+  /** IO set rarity category (for frame selection) */
+  category?: IOSetRarity;
   /** Origin tier for origin enhancements */
   tier?: OriginTier;
   /** Character origin for DO/SO enhancements */
@@ -56,45 +61,73 @@ const ORIGIN_TO_PREFIX: Record<string, string> = {
 };
 
 /**
- * Get the overlay image path based on enhancement type and properties
+ * Get the overlay image path based on enhancement type, rarity, and properties
  */
 function getOverlayPath(
   type: EnhancementType,
   attuned?: boolean,
   tier?: OriginTier,
   origin?: Origin,
-  icon?: string
+  icon?: string,
+  category?: IOSetRarity
 ): string {
   const overlayBase = `${IMG_BASE}/Overlay`;
 
   switch (type) {
-    case 'io-set':
-    case 'io-generic':
-      // Superior archetype/event sets get purple frame
+    case 'io-set': {
+      // Superior archetype/event sets get superior frame
       if (icon?.startsWith('SAO_') || icon?.startsWith('SEO_')) {
-        return `${overlayBase}/superior.png`;
+        return `${overlayBase}/e_frame_superior.png`;
       }
-      // Regular archetype sets get attuned frame
-      if (icon?.startsWith('AO_')) {
-        return `${overlayBase}/attuned.png`;
+      // Regular archetype/event sets get class frame
+      if (icon?.startsWith('AO_') || icon?.startsWith('EO_')) {
+        return `${overlayBase}/e_frame_class.png`;
       }
-      return attuned ? `${overlayBase}/attuned.png` : `${overlayBase}/IO.png`;
+      // Rarity-based frames
+      switch (category) {
+        case 'uncommon':
+          return attuned
+            ? `${overlayBase}/e_frame_attuned_uncommon.png`
+            : `${overlayBase}/e_frame_uncommon.png`;
+        case 'rare':
+          return attuned
+            ? `${overlayBase}/e_frame_attuned_rare.png`
+            : `${overlayBase}/e_frame_rare.png`;
+        case 'purple':
+          return attuned
+            ? `${overlayBase}/e_frame_attuned_superior.png`
+            : `${overlayBase}/e_frame_superior.png`;
+        case 'pvp':
+          return attuned
+            ? `${overlayBase}/e_frame_attuned_pvp.png`
+            : `${overlayBase}/e_frame_pvp.png`;
+        case 'ato':
+          return `${overlayBase}/e_frame_class.png`;
+        case 'event':
+          return `${overlayBase}/e_frame_class.png`;
+        default:
+          return `${overlayBase}/e_frame_IO.png`;
+      }
+    }
+
+    case 'io-generic':
+      return `${overlayBase}/e_frame_IO.png`;
 
     case 'origin':
       if (tier === 'TO') {
-        return `${overlayBase}/Training.png`;
+        return `${overlayBase}/e_frame_TO.png`;
       }
       if (tier === 'DO' || tier === 'SO') {
         const prefix = origin ? ORIGIN_TO_PREFIX[origin] || 'Nat' : 'Nat';
-        return `${overlayBase}/${prefix}${tier}.png`;
+        return `${overlayBase}/e_frame_${prefix}${tier}.png`;
       }
-      return `${overlayBase}/IO.png`; // fallback
+      return `${overlayBase}/e_frame_IO.png`; // fallback
 
     case 'special':
-      return `${overlayBase}/HO.png`;
+      return `${overlayBase}/e_frame_HO.png`;
 
     default:
-      return `${overlayBase}/IO.png`;
+      return `${overlayBase}/e_frame_IO.png`;
   }
 }
 
@@ -157,6 +190,7 @@ export function EnhancementIcon({
   type,
   icon,
   attuned = false,
+  category,
   tier,
   origin,
   size = 36,
@@ -169,8 +203,8 @@ export function EnhancementIcon({
   );
 
   const overlayPath = useMemo(
-    () => getOverlayPath(type, attuned, tier, origin, icon),
-    [type, attuned, tier, origin, icon]
+    () => getOverlayPath(type, attuned, tier, origin, icon, category),
+    [type, attuned, tier, origin, icon, category]
   );
 
   return (
@@ -213,6 +247,8 @@ interface IOSetIconProps {
   icon: string;
   /** Whether attuned */
   attuned?: boolean;
+  /** IO set rarity category */
+  category?: IOSetRarity;
   /** Size in pixels */
   size?: number;
   /** Additional classes */
@@ -221,12 +257,13 @@ interface IOSetIconProps {
   alt?: string;
 }
 
-export function IOSetIcon({ icon, attuned, size = 36, className, alt }: IOSetIconProps) {
+export function IOSetIcon({ icon, attuned, category, size = 36, className, alt }: IOSetIconProps) {
   return (
     <EnhancementIcon
       type="io-set"
       icon={icon}
       attuned={attuned}
+      category={category}
       size={size}
       className={className}
       alt={alt}

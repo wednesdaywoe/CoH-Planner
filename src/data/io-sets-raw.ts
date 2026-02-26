@@ -6,7 +6,7 @@
  * Run: node scripts/convert-io-sets.js
  *
  * Total sets: 227
- * Categories: {"purple":10,"io-set":146,"ato":52,"event":10,"pvp":9}
+ * Categories: {"uncommon":63,"rare":83,"purple":10,"ato":52,"event":10,"pvp":9}
  */
 
 // Type definition for legacy format (used by io-sets.ts transformer)
@@ -175,7 +175,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "achilles_heel": {
     "name": "Achilles' Heel",
-    "category": "io-set",
+    "category": "rare",
     "type": "Defense Debuff",
     "minLevel": 10,
     "maxLevel": 20,
@@ -238,7 +238,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "adjusted_targeting": {
     "name": "Adjusted Targeting",
-    "category": "io-set",
+    "category": "uncommon",
     "type": "To Hit Buff",
     "minLevel": 21,
     "maxLevel": 50,
@@ -369,7 +369,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "adrenal_adjustment": {
     "name": "Adrenal Adjustment",
-    "category": "io-set",
+    "category": "uncommon",
     "type": "Endurance Modification",
     "minLevel": 10,
     "maxLevel": 20,
@@ -431,7 +431,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "aegis": {
     "name": "Aegis",
-    "category": "io-set",
+    "category": "rare",
     "type": "Resist Damage",
     "minLevel": 25,
     "maxLevel": 50,
@@ -575,7 +575,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "air_burst": {
     "name": "Air Burst",
-    "category": "io-set",
+    "category": "uncommon",
     "type": "Ranged AoE Damage",
     "minLevel": 10,
     "maxLevel": 50,
@@ -662,7 +662,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "analyze_weakness": {
     "name": "Analyze Weakness",
-    "category": "io-set",
+    "category": "rare",
     "type": "Accurate Defense Debuff",
     "minLevel": 30,
     "maxLevel": 50,
@@ -792,7 +792,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "annihilation": {
     "name": "Annihilation",
-    "category": "io-set",
+    "category": "rare",
     "type": "Ranged AoE Damage",
     "minLevel": 20,
     "maxLevel": 50,
@@ -925,7 +925,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "annoyance": {
     "name": "Annoyance",
-    "category": "io-set",
+    "category": "uncommon",
     "type": "Threat Duration",
     "minLevel": 10,
     "maxLevel": 20,
@@ -1240,7 +1240,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "artillery": {
     "name": "Artillery",
-    "category": "io-set",
+    "category": "uncommon",
     "type": "Ranged AoE Damage",
     "minLevel": 30,
     "maxLevel": 50,
@@ -1799,7 +1799,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "basilisks_gaze": {
     "name": "Basilisk's Gaze",
-    "category": "io-set",
+    "category": "rare",
     "type": "Holds",
     "minLevel": 10,
     "maxLevel": 30,
@@ -1931,7 +1931,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "befuddling_aura": {
     "name": "Befuddling Aura",
-    "category": "io-set",
+    "category": "uncommon",
     "type": "Confuse",
     "minLevel": 10,
     "maxLevel": 30,
@@ -2169,7 +2169,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "blessing_of_the_zephyr": {
     "name": "Blessing of the Zephyr",
-    "category": "io-set",
+    "category": "rare",
     "type": "Universal Travel",
     "minLevel": 10,
     "maxLevel": 50,
@@ -2387,7 +2387,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "blood_mandate": {
     "name": "Blood Mandate",
-    "category": "io-set",
+    "category": "uncommon",
     "type": "Pet Damage",
     "minLevel": 25,
     "maxLevel": 50,
@@ -2528,7 +2528,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "bombardment": {
     "name": "Bombardment",
-    "category": "io-set",
+    "category": "rare",
     "type": "Ranged AoE Damage",
     "minLevel": 30,
     "maxLevel": 50,
@@ -2660,7 +2660,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "bonesnap": {
     "name": "Bonesnap",
-    "category": "io-set",
+    "category": "uncommon",
     "type": "Melee Damage",
     "minLevel": 10,
     "maxLevel": 25,
@@ -2727,7 +2727,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "brilliant_leadership": {
     "name": "Brilliant Leadership",
-    "category": "io-set",
+    "category": "uncommon",
     "type": "Pet Damage",
     "minLevel": 15,
     "maxLevel": 40,
@@ -2858,7 +2858,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "bruising_blow": {
     "name": "Bruising Blow",
-    "category": "io-set",
+    "category": "uncommon",
     "type": "Melee Damage",
     "minLevel": 15,
     "maxLevel": 30,
@@ -3059,7 +3059,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "cacophany": {
     "name": "Cacophony",
-    "category": "io-set",
+    "category": "rare",
     "type": "Confuse",
     "minLevel": 10,
     "maxLevel": 30,
@@ -3194,7 +3194,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "calibrated_accuracy": {
     "name": "Calibrated Accuracy",
-    "category": "io-set",
+    "category": "uncommon",
     "type": "Sniper Attacks",
     "minLevel": 20,
     "maxLevel": 50,
@@ -3327,7 +3327,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "call_of_the_sandman": {
     "name": "Call of the Sandman",
-    "category": "io-set",
+    "category": "rare",
     "type": "Sleep",
     "minLevel": 20,
     "maxLevel": 50,
@@ -3452,7 +3452,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "call_to_arms": {
     "name": "Call to Arms",
-    "category": "io-set",
+    "category": "rare",
     "type": "Recharge Intensive Pets",
     "minLevel": 10,
     "maxLevel": 30,
@@ -3587,7 +3587,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "celerity": {
     "name": "Celerity",
-    "category": "io-set",
+    "category": "rare",
     "type": "Running & Sprints",
     "minLevel": 15,
     "maxLevel": 50,
@@ -3649,7 +3649,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "cleaving_blow": {
     "name": "Cleaving Blow",
-    "category": "io-set",
+    "category": "uncommon",
     "type": "Melee AoE Damage",
     "minLevel": 10,
     "maxLevel": 50,
@@ -3736,7 +3736,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "cloud_senses": {
     "name": "Cloud Senses",
-    "category": "io-set",
+    "category": "rare",
     "type": "Accurate To-Hit Debuff",
     "minLevel": 10,
     "maxLevel": 30,
@@ -4129,7 +4129,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "commanding_presence": {
     "name": "Commanding Presence",
-    "category": "io-set",
+    "category": "rare",
     "type": "Pet Damage",
     "minLevel": 10,
     "maxLevel": 30,
@@ -4368,7 +4368,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "crushing_impact": {
     "name": "Crushing Impact",
-    "category": "io-set",
+    "category": "uncommon",
     "type": "Melee Damage",
     "minLevel": 30,
     "maxLevel": 50,
@@ -4503,7 +4503,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "cupids_crush": {
     "name": "Cupid's Crush",
-    "category": "io-set",
+    "category": "uncommon",
     "type": "Universal Damage Sets",
     "minLevel": 10,
     "maxLevel": 50,
@@ -4638,7 +4638,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "curtail_speed": {
     "name": "Curtail Speed",
-    "category": "io-set",
+    "category": "uncommon",
     "type": "Slow Movement",
     "minLevel": 10,
     "maxLevel": 30,
@@ -4751,7 +4751,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "dampened_spirits": {
     "name": "Dampened Spirits",
-    "category": "io-set",
+    "category": "uncommon",
     "type": "To Hit Debuff",
     "minLevel": 21,
     "maxLevel": 50,
@@ -4882,7 +4882,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "dark_watchers_despair": {
     "name": "Dark Watcher's Despair",
-    "category": "io-set",
+    "category": "rare",
     "type": "To Hit Debuff",
     "minLevel": 21,
     "maxLevel": 50,
@@ -5006,7 +5006,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "debiliative_action": {
     "name": "Debilitative Action",
-    "category": "io-set",
+    "category": "rare",
     "type": "Immobilize",
     "minLevel": 10,
     "maxLevel": 30,
@@ -5141,7 +5141,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "decimation": {
     "name": "Decimation",
-    "category": "io-set",
+    "category": "rare",
     "type": "Ranged Damage",
     "minLevel": 25,
     "maxLevel": 40,
@@ -5532,7 +5532,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "deflated_ego": {
     "name": "Deflated Ego",
-    "category": "io-set",
+    "category": "rare",
     "type": "To Hit Debuff",
     "minLevel": 10,
     "maxLevel": 20,
@@ -5590,7 +5590,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "detonation": {
     "name": "Detonation",
-    "category": "io-set",
+    "category": "uncommon",
     "type": "Ranged AoE Damage",
     "minLevel": 20,
     "maxLevel": 50,
@@ -5734,7 +5734,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "devastation": {
     "name": "Devastation",
-    "category": "io-set",
+    "category": "rare",
     "type": "Ranged Damage",
     "minLevel": 30,
     "maxLevel": 50,
@@ -5861,7 +5861,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "discouraging_words": {
     "name": "Discouraging Words",
-    "category": "io-set",
+    "category": "uncommon",
     "type": "To Hit Debuff",
     "minLevel": 10,
     "maxLevel": 20,
@@ -5933,7 +5933,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "doctored_wounds": {
     "name": "Doctored Wounds",
-    "category": "io-set",
+    "category": "uncommon",
     "type": "Healing",
     "minLevel": 30,
     "maxLevel": 50,
@@ -6358,7 +6358,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "edict_of_the_master": {
     "name": "Edict of the Master",
-    "category": "io-set",
+    "category": "rare",
     "type": "Pet Damage",
     "minLevel": 15,
     "maxLevel": 40,
@@ -6496,7 +6496,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "efficacy_adaptor": {
     "name": "Efficacy Adaptor",
-    "category": "io-set",
+    "category": "uncommon",
     "type": "Endurance Modification",
     "minLevel": 21,
     "maxLevel": 50,
@@ -6618,7 +6618,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "encouraged_accuracy": {
     "name": "Encouraged Accuracy",
-    "category": "io-set",
+    "category": "uncommon",
     "type": "To Hit Buff",
     "minLevel": 10,
     "maxLevel": 20,
@@ -6680,7 +6680,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "energy_manipulator": {
     "name": "Energy Manipulator",
-    "category": "io-set",
+    "category": "rare",
     "type": "Endurance Modification",
     "minLevel": 10,
     "maxLevel": 20,
@@ -6738,7 +6738,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "enfeebled_operation": {
     "name": "Enfeebled Operation",
-    "category": "io-set",
+    "category": "uncommon",
     "type": "Immobilize",
     "minLevel": 20,
     "maxLevel": 50,
@@ -7015,7 +7015,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "entropic_chaos": {
     "name": "Entropic Chaos",
-    "category": "io-set",
+    "category": "rare",
     "type": "Ranged Damage",
     "minLevel": 20,
     "maxLevel": 35,
@@ -7120,7 +7120,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "eradication": {
     "name": "Eradication",
-    "category": "io-set",
+    "category": "rare",
     "type": "Melee AoE Damage",
     "minLevel": 10,
     "maxLevel": 30,
@@ -7251,7 +7251,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "essence_of_curare": {
     "name": "Essence of Curare",
-    "category": "io-set",
+    "category": "uncommon",
     "type": "Holds",
     "minLevel": 20,
     "maxLevel": 50,
@@ -7529,7 +7529,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "executioners_contract": {
     "name": "Executioner's Contract",
-    "category": "io-set",
+    "category": "rare",
     "type": "Sniper Attacks",
     "minLevel": 20,
     "maxLevel": 50,
@@ -7663,7 +7663,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "expedient_reinforcement": {
     "name": "Expedient Reinforcement",
-    "category": "io-set",
+    "category": "rare",
     "type": "Recharge Intensive Pets",
     "minLevel": 30,
     "maxLevel": 50,
@@ -7968,7 +7968,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "exploit_weakness": {
     "name": "Exploit Weakness",
-    "category": "io-set",
+    "category": "uncommon",
     "type": "Sniper Attacks",
     "minLevel": 10,
     "maxLevel": 50,
@@ -8055,7 +8055,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "exploited_vulnerability": {
     "name": "Exploited Vulnerability",
-    "category": "io-set",
+    "category": "uncommon",
     "type": "Defense Debuff",
     "minLevel": 10,
     "maxLevel": 20,
@@ -8122,7 +8122,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "explosive_strike": {
     "name": "Explosive Strike",
-    "category": "io-set",
+    "category": "rare",
     "type": "Knockback",
     "minLevel": 10,
     "maxLevel": 20,
@@ -8186,7 +8186,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "extreme_measures": {
     "name": "Extreme Measures",
-    "category": "io-set",
+    "category": "uncommon",
     "type": "Sniper Attacks",
     "minLevel": 35,
     "maxLevel": 50,
@@ -8322,7 +8322,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "far_strike": {
     "name": "Far Strike",
-    "category": "io-set",
+    "category": "uncommon",
     "type": "Ranged Damage",
     "minLevel": 10,
     "maxLevel": 25,
@@ -8389,7 +8389,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "focused_smite": {
     "name": "Focused Smite",
-    "category": "io-set",
+    "category": "uncommon",
     "type": "Melee Damage",
     "minLevel": 25,
     "maxLevel": 40,
@@ -8503,7 +8503,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "force_feedback": {
     "name": "Force Feedback",
-    "category": "io-set",
+    "category": "rare",
     "type": "Knockback",
     "minLevel": 21,
     "maxLevel": 50,
@@ -8762,7 +8762,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "freebird": {
     "name": "Freebird",
-    "category": "io-set",
+    "category": "rare",
     "type": "Flight",
     "minLevel": 15,
     "maxLevel": 50,
@@ -9278,7 +9278,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "gaussians_synchronized_fire-control": {
     "name": "Gaussian's Synchronized Fire-Control",
-    "category": "io-set",
+    "category": "rare",
     "type": "To Hit Buff",
     "minLevel": 21,
     "maxLevel": 50,
@@ -9422,7 +9422,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "ghost_widows_embrace": {
     "name": "Ghost Widow's Embrace",
-    "category": "io-set",
+    "category": "rare",
     "type": "Holds",
     "minLevel": 20,
     "maxLevel": 50,
@@ -9547,7 +9547,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "gift_of_the_ancients": {
     "name": "Gift of the Ancients",
-    "category": "io-set",
+    "category": "rare",
     "type": "Defense Sets",
     "minLevel": 15,
     "maxLevel": 40,
@@ -10372,7 +10372,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "glimpse_of_the_abyss": {
     "name": "Glimpse of the Abyss",
-    "category": "io-set",
+    "category": "rare",
     "type": "Fear",
     "minLevel": 20,
     "maxLevel": 50,
@@ -10626,7 +10626,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "harmonized_healing": {
     "name": "Harmonized Healing",
-    "category": "io-set",
+    "category": "uncommon",
     "type": "Healing",
     "minLevel": 20,
     "maxLevel": 40,
@@ -10891,7 +10891,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "hibernation": {
     "name": "Hibernation",
-    "category": "io-set",
+    "category": "uncommon",
     "type": "Sleep",
     "minLevel": 10,
     "maxLevel": 30,
@@ -10999,7 +10999,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "horror": {
     "name": "Horror",
-    "category": "io-set",
+    "category": "uncommon",
     "type": "Fear",
     "minLevel": 10,
     "maxLevel": 30,
@@ -11107,7 +11107,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "hypersonic": {
     "name": "Hypersonic",
-    "category": "io-set",
+    "category": "rare",
     "type": "Flight",
     "minLevel": 15,
     "maxLevel": 50,
@@ -11192,7 +11192,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "ice_mistrals_torment": {
     "name": "Ice Mistral's Torment",
-    "category": "io-set",
+    "category": "rare",
     "type": "Slow Movement",
     "minLevel": 20,
     "maxLevel": 50,
@@ -11319,7 +11319,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "impeded_swiftness": {
     "name": "Impeded Swiftness",
-    "category": "io-set",
+    "category": "rare",
     "type": "Slow Movement",
     "minLevel": 10,
     "maxLevel": 30,
@@ -11459,7 +11459,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "impervious_skin": {
     "name": "Impervious Skin",
-    "category": "io-set",
+    "category": "rare",
     "type": "Resist Damage",
     "minLevel": 10,
     "maxLevel": 30,
@@ -11574,7 +11574,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "impervium_armor": {
     "name": "Impervium Armor",
-    "category": "io-set",
+    "category": "rare",
     "type": "Resist Damage",
     "minLevel": 15,
     "maxLevel": 40,
@@ -11713,7 +11713,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "induced_coma": {
     "name": "Induced Coma",
-    "category": "io-set",
+    "category": "rare",
     "type": "Sleep",
     "minLevel": 10,
     "maxLevel": 30,
@@ -11838,7 +11838,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "jaunt": {
     "name": "Jaunt",
-    "category": "io-set",
+    "category": "uncommon",
     "type": "Teleport",
     "minLevel": 15,
     "maxLevel": 50,
@@ -12069,7 +12069,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "karma": {
     "name": "Karma",
-    "category": "io-set",
+    "category": "uncommon",
     "type": "Defense Sets",
     "minLevel": 10,
     "maxLevel": 30,
@@ -12293,7 +12293,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "kinetic_combat": {
     "name": "Kinetic Combat",
-    "category": "io-set",
+    "category": "rare",
     "type": "Melee Damage",
     "minLevel": 20,
     "maxLevel": 35,
@@ -12403,7 +12403,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "kinetic_crash": {
     "name": "Kinetic Crash",
-    "category": "io-set",
+    "category": "uncommon",
     "type": "Knockback",
     "minLevel": 21,
     "maxLevel": 50,
@@ -12532,7 +12532,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "kismet": {
     "name": "Kismet",
-    "category": "io-set",
+    "category": "rare",
     "type": "Defense Sets",
     "minLevel": 10,
     "maxLevel": 30,
@@ -12637,7 +12637,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "launch": {
     "name": "Launch",
-    "category": "io-set",
+    "category": "rare",
     "type": "Leaping",
     "minLevel": 15,
     "maxLevel": 50,
@@ -12721,7 +12721,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "lethargic_repose": {
     "name": "Lethargic Repose",
-    "category": "io-set",
+    "category": "uncommon",
     "type": "Sleep",
     "minLevel": 20,
     "maxLevel": 50,
@@ -12864,7 +12864,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "lockdown": {
     "name": "Lockdown",
-    "category": "io-set",
+    "category": "rare",
     "type": "Holds",
     "minLevel": 30,
     "maxLevel": 50,
@@ -13001,7 +13001,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "luck_of_the_gambler": {
     "name": "Luck of the Gambler",
-    "category": "io-set",
+    "category": "rare",
     "type": "Defense Sets",
     "minLevel": 25,
     "maxLevel": 50,
@@ -13142,7 +13142,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "maelstroms_fury": {
     "name": "Maelstrom's Fury",
-    "category": "io-set",
+    "category": "uncommon",
     "type": "Ranged Damage",
     "minLevel": 20,
     "maxLevel": 35,
@@ -13235,7 +13235,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "makos_bite": {
     "name": "Mako's Bite",
-    "category": "io-set",
+    "category": "rare",
     "type": "Melee Damage",
     "minLevel": 30,
     "maxLevel": 50,
@@ -13372,7 +13372,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "malaises_illusions": {
     "name": "Malaise's Illusions",
-    "category": "io-set",
+    "category": "rare",
     "type": "Confuse",
     "minLevel": 20,
     "maxLevel": 50,
@@ -13917,7 +13917,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "miracle": {
     "name": "Miracle",
-    "category": "io-set",
+    "category": "rare",
     "type": "Healing",
     "minLevel": 20,
     "maxLevel": 40,
@@ -14041,7 +14041,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "mocking_beratement": {
     "name": "Mocking Beratement",
-    "category": "io-set",
+    "category": "uncommon",
     "type": "Threat Duration",
     "minLevel": 21,
     "maxLevel": 50,
@@ -14177,7 +14177,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "multi_strike": {
     "name": "Multi-Strike",
-    "category": "io-set",
+    "category": "uncommon",
     "type": "Melee AoE Damage",
     "minLevel": 20,
     "maxLevel": 50,
@@ -14326,7 +14326,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "neuronic_shutdown": {
     "name": "Neuronic Shutdown",
-    "category": "io-set",
+    "category": "rare",
     "type": "Holds",
     "minLevel": 10,
     "maxLevel": 30,
@@ -14456,7 +14456,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "nightmare": {
     "name": "Nightmare",
-    "category": "io-set",
+    "category": "uncommon",
     "type": "Fear",
     "minLevel": 20,
     "maxLevel": 50,
@@ -14594,7 +14594,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "numinas_convalesence": {
     "name": "Numina's Convalescence",
-    "category": "io-set",
+    "category": "rare",
     "type": "Healing",
     "minLevel": 30,
     "maxLevel": 50,
@@ -14723,7 +14723,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "obliteration": {
     "name": "Obliteration",
-    "category": "io-set",
+    "category": "rare",
     "type": "Melee AoE Damage",
     "minLevel": 30,
     "maxLevel": 50,
@@ -15143,7 +15143,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "overwhelming_force": {
     "name": "Overwhelming Force",
-    "category": "io-set",
+    "category": "uncommon",
     "type": "Universal Damage Sets",
     "minLevel": 10,
     "maxLevel": 50,
@@ -15274,7 +15274,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "pacing_of_the_turtle": {
     "name": "Pacing of the Turtle",
-    "category": "io-set",
+    "category": "rare",
     "type": "Slow Movement",
     "minLevel": 20,
     "maxLevel": 50,
@@ -15576,7 +15576,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "paralytic": {
     "name": "Paralytic",
-    "category": "io-set",
+    "category": "uncommon",
     "type": "Holds",
     "minLevel": 10,
     "maxLevel": 30,
@@ -15684,7 +15684,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "perfect_zinger": {
     "name": "Perfect Zinger",
-    "category": "io-set",
+    "category": "rare",
     "type": "Threat Duration",
     "minLevel": 21,
     "maxLevel": 50,
@@ -15813,7 +15813,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "performance_shifter": {
     "name": "Performance Shifter",
-    "category": "io-set",
+    "category": "rare",
     "type": "Endurance Modification",
     "minLevel": 21,
     "maxLevel": 50,
@@ -15937,7 +15937,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "perplex": {
     "name": "Perplex",
-    "category": "io-set",
+    "category": "uncommon",
     "type": "Confuse",
     "minLevel": 20,
     "maxLevel": 50,
@@ -16070,7 +16070,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "positrons_blast": {
     "name": "Positron's Blast",
-    "category": "io-set",
+    "category": "rare",
     "type": "Ranged AoE Damage",
     "minLevel": 20,
     "maxLevel": 50,
@@ -16200,7 +16200,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "pounding_slugfest": {
     "name": "Pounding Slugfest",
-    "category": "io-set",
+    "category": "rare",
     "type": "Melee Damage",
     "minLevel": 15,
     "maxLevel": 30,
@@ -16284,7 +16284,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "power_transfer": {
     "name": "Power Transfer",
-    "category": "io-set",
+    "category": "rare",
     "type": "Endurance Modification",
     "minLevel": 21,
     "maxLevel": 50,
@@ -16405,7 +16405,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "preemptive_optimization": {
     "name": "Preemptive Optimization",
-    "category": "io-set",
+    "category": "uncommon",
     "type": "Endurance Modification",
     "minLevel": 21,
     "maxLevel": 50,
@@ -16540,7 +16540,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "preventive_medicine": {
     "name": "Preventive Medicine",
-    "category": "io-set",
+    "category": "rare",
     "type": "Healing",
     "minLevel": 20,
     "maxLevel": 50,
@@ -16673,7 +16673,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "pulverizing_fisticuffs": {
     "name": "Pulverizing Fisticuffs",
-    "category": "io-set",
+    "category": "rare",
     "type": "Melee Damage",
     "minLevel": 10,
     "maxLevel": 25,
@@ -16748,7 +16748,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "quickfoot": {
     "name": "Quickfoot",
-    "category": "io-set",
+    "category": "uncommon",
     "type": "Running & Sprints",
     "minLevel": 15,
     "maxLevel": 50,
@@ -16942,7 +16942,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "razzle_dazzle": {
     "name": "Razzle Dazzle",
-    "category": "io-set",
+    "category": "rare",
     "type": "Stuns",
     "minLevel": 10,
     "maxLevel": 30,
@@ -17072,7 +17072,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "reactive_armor": {
     "name": "Reactive Armor",
-    "category": "io-set",
+    "category": "uncommon",
     "type": "Resist Damage",
     "minLevel": 15,
     "maxLevel": 40,
@@ -17218,7 +17218,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "reactive_defenses": {
     "name": "Reactive Defenses",
-    "category": "io-set",
+    "category": "rare",
     "type": "Defense Sets",
     "minLevel": 20,
     "maxLevel": 50,
@@ -17351,7 +17351,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "rectified_reticle": {
     "name": "Rectified Reticle",
-    "category": "io-set",
+    "category": "rare",
     "type": "To Hit Buff",
     "minLevel": 10,
     "maxLevel": 20,
@@ -17424,7 +17424,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "red_fortune": {
     "name": "Red Fortune",
-    "category": "io-set",
+    "category": "uncommon",
     "type": "Defense Sets",
     "minLevel": 25,
     "maxLevel": 50,
@@ -17560,7 +17560,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "regenerative_tissue": {
     "name": "Regenerative Tissue",
-    "category": "io-set",
+    "category": "rare",
     "type": "Healing",
     "minLevel": 10,
     "maxLevel": 30,
@@ -17660,7 +17660,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "rooting_grasp": {
     "name": "Rooting Grasp",
-    "category": "io-set",
+    "category": "uncommon",
     "type": "Immobilize",
     "minLevel": 10,
     "maxLevel": 30,
@@ -17763,7 +17763,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "rope_a_dope": {
     "name": "Rope A Dope",
-    "category": "io-set",
+    "category": "uncommon",
     "type": "Stuns",
     "minLevel": 20,
     "maxLevel": 50,
@@ -17896,7 +17896,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "ruin": {
     "name": "Ruin",
-    "category": "io-set",
+    "category": "uncommon",
     "type": "Ranged Damage",
     "minLevel": 25,
     "maxLevel": 40,
@@ -18010,7 +18010,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "salvo": {
     "name": "Salvo",
-    "category": "io-set",
+    "category": "rare",
     "type": "Ranged Damage",
     "minLevel": 10,
     "maxLevel": 25,
@@ -18085,7 +18085,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "sciroccos_dervish": {
     "name": "Scirocco's Dervish",
-    "category": "io-set",
+    "category": "rare",
     "type": "Melee AoE Damage",
     "minLevel": 20,
     "maxLevel": 50,
@@ -18614,7 +18614,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "serendipity": {
     "name": "Serendipity",
-    "category": "io-set",
+    "category": "uncommon",
     "type": "Defense Sets",
     "minLevel": 15,
     "maxLevel": 40,
@@ -18745,7 +18745,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "shield_breaker": {
     "name": "Shield Breaker",
-    "category": "io-set",
+    "category": "rare",
     "type": "Accurate Defense Debuff",
     "minLevel": 10,
     "maxLevel": 30,
@@ -19055,7 +19055,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "siphon_insight": {
     "name": "Siphon Insight",
-    "category": "io-set",
+    "category": "rare",
     "type": "Accurate To-Hit Debuff",
     "minLevel": 30,
     "maxLevel": 50,
@@ -19185,7 +19185,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "smashing_haymaker": {
     "name": "Smashing Haymaker",
-    "category": "io-set",
+    "category": "uncommon",
     "type": "Melee Damage",
     "minLevel": 20,
     "maxLevel": 35,
@@ -19278,7 +19278,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "soaring": {
     "name": "Soaring",
-    "category": "io-set",
+    "category": "uncommon",
     "type": "Flight",
     "minLevel": 15,
     "maxLevel": 50,
@@ -19462,7 +19462,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "sovereign_right": {
     "name": "Sovereign Right",
-    "category": "io-set",
+    "category": "rare",
     "type": "Pet Damage",
     "minLevel": 25,
     "maxLevel": 50,
@@ -19734,7 +19734,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "springfoot": {
     "name": "Springfoot",
-    "category": "io-set",
+    "category": "uncommon",
     "type": "Leaping & Sprints",
     "minLevel": 15,
     "maxLevel": 50,
@@ -19794,7 +19794,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "stagger": {
     "name": "Stagger",
-    "category": "io-set",
+    "category": "uncommon",
     "type": "Stuns",
     "minLevel": 10,
     "maxLevel": 30,
@@ -20037,7 +20037,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "steadfast_protection": {
     "name": "Steadfast Protection",
-    "category": "io-set",
+    "category": "uncommon",
     "type": "Resist Damage",
     "minLevel": 10,
     "maxLevel": 30,
@@ -20115,7 +20115,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "sting_of_the_manticore": {
     "name": "Sting of the Manticore",
-    "category": "io-set",
+    "category": "rare",
     "type": "Sniper Attacks",
     "minLevel": 35,
     "maxLevel": 50,
@@ -20247,7 +20247,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "stupefy": {
     "name": "Stupefy",
-    "category": "io-set",
+    "category": "rare",
     "type": "Stuns",
     "minLevel": 20,
     "maxLevel": 50,
@@ -20372,7 +20372,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "sudden_acceleration": {
     "name": "Sudden Acceleration",
-    "category": "io-set",
+    "category": "rare",
     "type": "Knockback",
     "minLevel": 21,
     "maxLevel": 50,
@@ -24817,7 +24817,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "synapses_shock": {
     "name": "Synapse's Shock",
-    "category": "io-set",
+    "category": "rare",
     "type": "Endurance Modification",
     "minLevel": 21,
     "maxLevel": 50,
@@ -24954,7 +24954,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "tempered_readiness": {
     "name": "Tempered Readiness",
-    "category": "io-set",
+    "category": "uncommon",
     "type": "Slow Movement",
     "minLevel": 20,
     "maxLevel": 50,
@@ -25083,7 +25083,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "tempest": {
     "name": "Tempest",
-    "category": "io-set",
+    "category": "rare",
     "type": "Ranged Damage",
     "minLevel": 15,
     "maxLevel": 30,
@@ -25172,7 +25172,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "theft_of_essence": {
     "name": "Theft of Essence",
-    "category": "io-set",
+    "category": "rare",
     "type": "Accurate Healing",
     "minLevel": 10,
     "maxLevel": 30,
@@ -25297,7 +25297,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "thrust": {
     "name": "Thrust",
-    "category": "io-set",
+    "category": "rare",
     "type": "Running",
     "minLevel": 15,
     "maxLevel": 50,
@@ -25381,7 +25381,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "thunderstrike": {
     "name": "Thunderstrike",
-    "category": "io-set",
+    "category": "uncommon",
     "type": "Ranged Damage",
     "minLevel": 30,
     "maxLevel": 50,
@@ -25516,7 +25516,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "timespace_manipulation": {
     "name": "Time & Space Manipulation",
-    "category": "io-set",
+    "category": "rare",
     "type": "Teleport",
     "minLevel": 15,
     "maxLevel": 50,
@@ -25573,7 +25573,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "titanium_coating": {
     "name": "Titanium Coating",
-    "category": "io-set",
+    "category": "uncommon",
     "type": "Resist Damage",
     "minLevel": 25,
     "maxLevel": 50,
@@ -25709,7 +25709,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "touch_of_death": {
     "name": "Touch of Death",
-    "category": "io-set",
+    "category": "rare",
     "type": "Melee Damage",
     "minLevel": 25,
     "maxLevel": 40,
@@ -25845,7 +25845,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "touch_of_lady_grey": {
     "name": "Touch of Lady Grey",
-    "category": "io-set",
+    "category": "rare",
     "type": "Defense Debuff",
     "minLevel": 21,
     "maxLevel": 50,
@@ -25964,7 +25964,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "touch_of_the_nictus": {
     "name": "Touch of the Nictus",
-    "category": "io-set",
+    "category": "rare",
     "type": "Accurate Healing",
     "minLevel": 30,
     "maxLevel": 50,
@@ -26089,7 +26089,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "trap_of_the_hunter": {
     "name": "Trap of the Hunter",
-    "category": "io-set",
+    "category": "rare",
     "type": "Immobilize",
     "minLevel": 20,
     "maxLevel": 50,
@@ -26219,7 +26219,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "triage": {
     "name": "Triage",
-    "category": "io-set",
+    "category": "uncommon",
     "type": "Healing",
     "minLevel": 10,
     "maxLevel": 30,
@@ -26302,7 +26302,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "triumphant_insult": {
     "name": "Triumphant Insult",
-    "category": "io-set",
+    "category": "rare",
     "type": "Threat Duration",
     "minLevel": 10,
     "maxLevel": 20,
@@ -26365,7 +26365,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "unbounded_leap": {
     "name": "Unbounded Leap",
-    "category": "io-set",
+    "category": "rare",
     "type": "Leaping & Sprints",
     "minLevel": 15,
     "maxLevel": 50,
@@ -26551,7 +26551,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "unbreakable_guard": {
     "name": "Unbreakable Guard",
-    "category": "io-set",
+    "category": "rare",
     "type": "Resist Damage",
     "minLevel": 20,
     "maxLevel": 50,
@@ -26700,7 +26700,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "undermined_defenses": {
     "name": "Undermined Defenses",
-    "category": "io-set",
+    "category": "uncommon",
     "type": "Defense Debuff",
     "minLevel": 21,
     "maxLevel": 50,
@@ -26826,7 +26826,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "unquestioning_loyalty": {
     "name": "Unquestioning Loyalty",
-    "category": "io-set",
+    "category": "uncommon",
     "type": "Pet Damage",
     "minLevel": 10,
     "maxLevel": 30,
@@ -27069,7 +27069,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "unspeakable_terror": {
     "name": "Unspeakable Terror",
-    "category": "io-set",
+    "category": "rare",
     "type": "Fear",
     "minLevel": 10,
     "maxLevel": 30,
@@ -27329,7 +27329,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "volley_fire": {
     "name": "Volley Fire",
-    "category": "io-set",
+    "category": "uncommon",
     "type": "Ranged Damage",
     "minLevel": 15,
     "maxLevel": 30,
@@ -27391,7 +27391,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "volley_of_velocity": {
     "name": "Volley of Velocity",
-    "category": "io-set",
+    "category": "uncommon",
     "type": "Knockback",
     "minLevel": 10,
     "maxLevel": 20,
@@ -27453,7 +27453,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "warp": {
     "name": "Warp",
-    "category": "io-set",
+    "category": "rare",
     "type": "Teleport",
     "minLevel": 15,
     "maxLevel": 50,
@@ -27831,7 +27831,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "winters_gift": {
     "name": "Winter's Gift",
-    "category": "io-set",
+    "category": "rare",
     "type": "Universal Travel",
     "minLevel": 10,
     "maxLevel": 50,

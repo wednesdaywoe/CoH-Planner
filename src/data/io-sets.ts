@@ -24,7 +24,8 @@ import { IO_SETS_RAW } from './io-sets-raw';
  * Maps legacy category strings to typed IOSetRarity
  */
 const CATEGORY_MAP: Record<string, IOSetRarity> = {
-  'io-set': 'io-set',
+  uncommon: 'uncommon',
+  rare: 'rare',
   purple: 'purple',
   ato: 'ato',
   pvp: 'pvp',
@@ -153,7 +154,7 @@ function transformIOSet(id: string, legacy: LegacyIOSet): IOSet {
   return {
     id,
     name: legacy.name,
-    category: (CATEGORY_MAP[legacy.category] || 'io-set') as IOSetRarity,
+    category: (CATEGORY_MAP[legacy.category] || 'uncommon') as IOSetRarity,
     type: legacy.type,
     minLevel: legacy.minLevel,
     maxLevel: legacy.maxLevel,
@@ -283,10 +284,16 @@ export interface IOSetRarityInfo {
 
 export const IO_SET_RARITIES: IOSetRarityInfo[] = [
   {
-    id: 'io-set',
-    name: 'Standard',
-    description: 'Standard invention sets available from invention salvage',
+    id: 'uncommon',
+    name: 'Uncommon',
+    description: 'Uncommon invention sets available from invention salvage',
     color: 'text-yellow-400',
+  },
+  {
+    id: 'rare',
+    name: 'Rare',
+    description: 'Rare invention sets with better bonuses',
+    color: 'text-orange-300',
   },
   {
     id: 'purple',

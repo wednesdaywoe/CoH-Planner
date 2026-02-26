@@ -1154,6 +1154,7 @@ function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfoContent
           <IOSetIcon
             icon={iconName}
             attuned={ioEnh.attuned}
+            category={ioSet?.category}
             size={28}
             alt={enhancement.name}
             className="flex-shrink-0"
