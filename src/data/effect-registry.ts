@@ -249,7 +249,7 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
     category: 'debuff',
     colorClass: 'text-green-400',
     format: 'percent',
-    calculation: 'debuff',
+    baseMultiplier: 100,
     priority: 5,
   },
   recoveryDebuff: {
@@ -257,7 +257,7 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
     category: 'debuff',
     colorClass: 'text-blue-400',
     format: 'percent',
-    calculation: 'debuff',
+    baseMultiplier: 100,
     priority: 6,
   },
   rechargeDebuff: {
@@ -341,7 +341,7 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
     category: 'buff',
     colorClass: 'text-blue-400',
     format: 'percent',
-    calculation: 'buff',
+    baseMultiplier: 100,
     priority: 5,
   },
   regenBuff: {
@@ -349,7 +349,7 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
     category: 'buff',
     colorClass: 'text-green-400',
     format: 'percent',
-    calculation: 'buff',
+    baseMultiplier: 100,
     priority: 6,
   },
   speedBuff: {
