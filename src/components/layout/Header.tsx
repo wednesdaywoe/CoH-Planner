@@ -11,7 +11,7 @@ import { Button, Select, Slider, Toggle, Tooltip } from '@/components/ui';
 import { ConfirmModal } from '@/components/modals/ConfirmModal';
 import { calculateVigilanceDamageBonus, calculateAssassinationDamageBonus } from '@/utils/calculations';
 import type { ArchetypeId, ArchetypeBranchId, Powerset } from '@/types';
-import { BUILD_TIME } from '@/buildTime';
+import { BUILD_TIME, APP_VERSION } from '@/buildTime';
 
 const LAST_UPDATED = (() => {
   const date = new Date(BUILD_TIME);
@@ -598,9 +598,9 @@ export function Header() {
           </Button>
         </div>
 
-        {/* Last updated */}
+        {/* Version and last updated */}
         <span className="text-xs text-slate-500 ml-auto whitespace-nowrap">
-          Updated {LAST_UPDATED}
+          v{APP_VERSION} — Updated {LAST_UPDATED}
         </span>
       </div>
       {/* Confirmation modals (replaces window.confirm for mobile compatibility) */}

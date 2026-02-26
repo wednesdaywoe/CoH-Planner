@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react';
 import { Modal, ModalHeader, ModalBody, ModalFooter } from './Modal';
 import { Button } from '@/components/ui';
 import { useUIStore } from '@/stores';
-import { BUILD_TIME } from '@/buildTime';
+import { BUILD_TIME, APP_VERSION } from '@/buildTime';
 
 const LAST_UPDATED = (() => {
   const date = new Date(BUILD_TIME);
@@ -14,7 +14,6 @@ const LAST_UPDATED = (() => {
 })();
 
 const STORAGE_KEY = 'coh-planner-welcome-dismissed';
-const CURRENT_VERSION = '0.5.1-alpha'; // Increment to show modal again after major updates
 
 interface WelcomeModalProps {
   isOpen: boolean;
@@ -27,7 +26,7 @@ export function WelcomeModal({ isOpen, onClose }: WelcomeModalProps) {
 
   const handleClose = () => {
     if (dontShowAgain) {
-      localStorage.setItem(STORAGE_KEY, CURRENT_VERSION);
+      localStorage.setItem(STORAGE_KEY, APP_VERSION);
     }
     onClose();
   };
@@ -37,7 +36,7 @@ export function WelcomeModal({ isOpen, onClose }: WelcomeModalProps) {
       <ModalHeader className="flex items-center justify-between">
         <h2 className="text-lg font-medium text-gray-100">Welcome to Sidekick</h2>
         <div className="flex items-center gap-3">
-          <span className="text-xs text-slate-500 whitespace-nowrap">v{CURRENT_VERSION} — Updated {LAST_UPDATED}</span>
+          <span className="text-xs text-slate-500 whitespace-nowrap">v{APP_VERSION} — Updated {LAST_UPDATED}</span>
           <button
             onClick={handleClose}
             className="p-1 text-gray-400 hover:text-white transition-colors rounded hover:bg-gray-700"
@@ -150,7 +149,7 @@ export function useWelcomeModal(): [boolean, () => void] {
 
   useEffect(() => {
     const dismissed = localStorage.getItem(STORAGE_KEY);
-    if (dismissed !== CURRENT_VERSION) {
+    if (dismissed !== APP_VERSION) {
       // Small delay to let the app render first
       const timer = setTimeout(() => setIsOpen(true), 500);
       return () => clearTimeout(timer);
