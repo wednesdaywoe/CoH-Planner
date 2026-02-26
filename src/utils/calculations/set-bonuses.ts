@@ -208,6 +208,14 @@ const STAT_NAME_MAP: Record<string, string | null> = {
 
   // Mez Protection (from IO set unique bonuses)
   'knockback_protection': 'kbprotection',
+
+  // Range (not tracked in dashboard, but valid set bonus)
+  range: null,
+  Range: null,
+
+  // Debuff Resistance (slow/recharge debuff resistance — not tracked in dashboard)
+  '+res(recharge_debuff)': null,
+  '+res(slow)': null,
 };
 
 /**

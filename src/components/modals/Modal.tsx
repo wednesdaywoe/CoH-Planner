@@ -2,7 +2,7 @@
  * Modal component - generic modal wrapper with backdrop
  */
 
-import { useEffect, useCallback, type ReactNode } from 'react';
+import { useEffect, useCallback, useRef, type ReactNode } from 'react';
 import { createPortal } from 'react-dom';
 
 interface ModalProps {
@@ -55,10 +55,18 @@ export function Modal({
     };
   }, [isOpen, handleEscape]);
 
+  // Track where mousedown started to avoid closing when dragging from inside modal to backdrop
+  const mouseDownTargetRef = useRef<EventTarget | null>(null);
+
   if (!isOpen) return null;
 
+  const handleMouseDown = (e: React.MouseEvent) => {
+    mouseDownTargetRef.current = e.target;
+  };
+
   const handleBackdropClick = (e: React.MouseEvent) => {
-    if (closeOnBackdrop && e.target === e.currentTarget) {
+    // Only close if both mousedown and mouseup happened on the backdrop itself
+    if (closeOnBackdrop && e.target === e.currentTarget && mouseDownTargetRef.current === e.currentTarget) {
       onClose();
     }
   };
@@ -66,6 +74,7 @@ export function Modal({
   return createPortal(
     <div
       className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm"
+      onMouseDown={handleMouseDown}
       onClick={handleBackdropClick}
       role="dialog"
       aria-modal="true"
