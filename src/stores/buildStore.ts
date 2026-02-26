@@ -1263,8 +1263,8 @@ export const useBuildStore = create<BuildStore>()(
             }
           }
 
-          // Migration: Restore missing IO set enhancement icons from current data
-          // Fixes enhancements that may have lost their icon field in localStorage
+          // Migration: Sync IO set enhancement icons from current data
+          // Fixes enhancements with stale or missing icon names from older builds
           const fixEnhancementIcons = (powers: SelectedPower[]) => {
             let anyChanged = false;
             const fixed = powers.map((power) => {
@@ -1272,12 +1272,10 @@ export const useBuildStore = create<BuildStore>()(
               const slots = power.slots.map((slot) => {
                 if (slot && slot.type === 'io-set') {
                   const enh = slot as Enhancement & { setId?: string; icon?: string };
-                  if (!enh.icon || enh.icon === 'Unknown.png') {
-                    const ioSet = enh.setId ? getIOSet(enh.setId) : null;
-                    if (ioSet?.icon) {
-                      powerChanged = true;
-                      return { ...enh, icon: ioSet.icon };
-                    }
+                  const ioSet = enh.setId ? getIOSet(enh.setId) : null;
+                  if (ioSet?.icon && enh.icon !== ioSet.icon) {
+                    powerChanged = true;
+                    return { ...enh, icon: ioSet.icon };
                   }
                 }
                 return slot;
