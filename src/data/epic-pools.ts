@@ -294,6 +294,17 @@ export function getEpicPoolPowersAvailableAtLevel(poolId: string, level: number)
 // ============================================
 
 /**
+ * Map icon filename prefixes to their actual source folders when they differ
+ * from the pool-name-based folder. Some epic/patron pools (especially Sentinel
+ * variants) reuse icons from other power categories.
+ */
+const ICON_PREFIX_FOLDER_MAP: [string, string][] = [
+  ['arachnos_patron_', 'Arachnos Patron Powers Icons'],
+  ['ninjatools_', 'Ninja Tool Mastery Powers Icons'],
+  ['mentalcontrol_', 'Mind Control Powers Icons'],
+];
+
+/**
  * Get the full icon path for an epic pool power
  * @param poolName The pool display name (e.g., "Dark Mastery")
  * @param iconFilename The raw icon filename from data (e.g., "darkmastery_darkobliteration.png")
@@ -304,10 +315,16 @@ export function getEpicPoolPowerIconPath(poolName: string, iconFilename: string 
     return resolvePath('/img/Unknown.png');
   }
 
-  const folderName = `${poolName} Powers Icons`;
-  // Icon files are stored in lowercase to match the data
   const lowercaseIcon = iconFilename.toLowerCase();
 
+  // Check if the icon belongs to a different folder than the pool name suggests
+  for (const [prefix, folder] of ICON_PREFIX_FOLDER_MAP) {
+    if (lowercaseIcon.startsWith(prefix)) {
+      return resolvePath(`/img/Powers/${folder}/${lowercaseIcon}`);
+    }
+  }
+
+  const folderName = `${poolName} Powers Icons`;
   return resolvePath(`/img/Powers/${folderName}/${lowercaseIcon}`);
 }
 
