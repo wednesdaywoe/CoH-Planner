@@ -1137,12 +1137,14 @@ function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfoContent
     };
     const aspectModifier = getAspectModifier(aspectCount);
 
+    const boostMultiplier = 1 + (enhancement.boost || 0) * 0.05;
+
     const calculateAspectValue = (aspect: string): number | null => {
       const normalized = normalizeAspectName(aspect);
       if (!normalized) return null;
       const schedule = getAspectSchedule(normalized);
       const baseValue = getIOValueAtLevel(effectiveLevel, schedule);
-      return baseValue * aspectModifier;
+      return baseValue * aspectModifier * boostMultiplier;
     };
 
     return (
@@ -1534,6 +1536,9 @@ function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfoContent
           {ioEnh.isUnique && (
             <span className="text-red-400">Unique</span>
           )}
+          {enhancement.boost && enhancement.boost > 0 && (
+            <span className="text-green-400">+{enhancement.boost} Boosted</span>
+          )}
         </div>
 
         {/* Set Bonuses */}
@@ -1623,13 +1628,20 @@ function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfoContent
           <span className="text-slate-400">Enhances: </span>
           <span className="text-green-400">{genericEnh.stat}</span>
           <span className="text-slate-400"> by </span>
-          <span className="text-green-400">{genericEnh.value.toFixed(1)}%</span>
+          <span className="text-green-400">
+            {(genericEnh.value * (1 + (enhancement.boost || 0) * 0.05)).toFixed(1)}%
+          </span>
         </div>
-        {enhancement.level && (
-          <div className="text-[10px] text-slate-400">
-            Level: <span className="text-slate-200">{enhancement.level}</span>
-          </div>
-        )}
+        <div className="text-[10px] flex gap-3">
+          {enhancement.level && (
+            <span className="text-slate-400">
+              Level: <span className="text-slate-200">{enhancement.level}</span>
+            </span>
+          )}
+          {enhancement.boost && enhancement.boost > 0 && (
+            <span className="text-green-400">+{enhancement.boost} Boosted</span>
+          )}
+        </div>
       </div>
     );
   }
@@ -1657,8 +1669,13 @@ function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfoContent
           <span className="text-slate-400">Enhances: </span>
           <span className="text-green-400">{originEnh.stat}</span>
           <span className="text-slate-400"> by </span>
-          <span className="text-green-400">{originEnh.value.toFixed(1)}%</span>
+          <span className="text-green-400">
+            {(originEnh.value * (1 + (enhancement.boost || 0) * 0.05)).toFixed(1)}%
+          </span>
         </div>
+        {enhancement.boost && enhancement.boost > 0 && (
+          <div className="text-[10px] text-green-400">+{enhancement.boost} Boosted</div>
+        )}
       </div>
     );
   }
@@ -1688,9 +1705,15 @@ function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfoContent
         <div className="text-[10px]">
           <span className="text-slate-400">Enhances: </span>
           <span className="text-green-400">
-            {specialEnh.aspects.map(a => `${a.stat} +${a.value.toFixed(1)}%`).join(', ')}
+            {specialEnh.aspects.map(a => {
+              const boosted = a.value * (1 + (enhancement.boost || 0) * 0.05);
+              return `${a.stat} +${boosted.toFixed(1)}%`;
+            }).join(', ')}
           </span>
         </div>
+        {enhancement.boost && enhancement.boost > 0 && (
+          <div className="text-[10px] text-green-400">+{enhancement.boost} Boosted</div>
+        )}
       </div>
     );
   }

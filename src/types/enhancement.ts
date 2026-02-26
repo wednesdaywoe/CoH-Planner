@@ -36,6 +36,8 @@ export interface BaseEnhancement {
   level?: number;
   /** Whether it's attuned (level-agnostic) */
   attuned?: boolean;
+  /** Level boost from Enhancement Boosters (0-5, each adds 5% multiplier) */
+  boost?: number;
   /** Timestamp when added (for ordering) */
   addedAt?: number;
 }

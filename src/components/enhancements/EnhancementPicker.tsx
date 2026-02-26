@@ -43,6 +43,8 @@ export function EnhancementPicker() {
   const globalIOLevel = useUIStore((s) => s.globalIOLevel);
   const attunementEnabled = useUIStore((s) => s.attunementEnabled);
   const toggleAttunement = useUIStore((s) => s.toggleAttunement);
+  const globalBoostLevel = useUIStore((s) => s.globalBoostLevel);
+  const setGlobalBoostLevel = useUIStore((s) => s.setGlobalBoostLevel);
   const closeEnhancementPicker = useUIStore((s) => s.closeEnhancementPicker);
   const setEnhancement = useBuildStore((s) => s.setEnhancement);
   const buildOrigin = useBuildStore((s) => s.build.settings.origin);
@@ -184,7 +186,7 @@ export function EnhancementPicker() {
 
   // Helper to create IO set enhancement via registry factory
   const makeIOSetEnhancement = (set: IOSet, piece: IOSetPiece, pieceIndex: number) =>
-    createIOSetEnhancement(set, piece, pieceIndex, { attuned: attunementEnabled, level: globalIOLevel });
+    createIOSetEnhancement(set, piece, pieceIndex, { attuned: attunementEnabled, level: globalIOLevel, boost: globalBoostLevel });
 
   // Handle selecting an IO set piece (single click)
   const handleSelectSetPiece = (set: IOSet, piece: IOSetPiece, pieceIndex: number) => {
@@ -407,21 +409,21 @@ export function EnhancementPicker() {
   // Handle selecting a generic IO
   const handleSelectGenericIO = (stat: EnhancementStatType) => {
     if (!picker.currentPowerName) return;
-    setEnhancement(picker.currentPowerName, picker.currentSlotIndex, createGenericIOEnhancement(stat, globalIOLevel));
+    setEnhancement(picker.currentPowerName, picker.currentSlotIndex, createGenericIOEnhancement(stat, globalIOLevel, globalBoostLevel));
     closeEnhancementPicker();
   };
 
   // Handle selecting an origin enhancement
   const handleSelectOrigin = (stat: EnhancementStatType, tier: 'TO' | 'DO' | 'SO') => {
     if (!picker.currentPowerName) return;
-    setEnhancement(picker.currentPowerName, picker.currentSlotIndex, createOriginEnhancement(stat, tier, buildOrigin));
+    setEnhancement(picker.currentPowerName, picker.currentSlotIndex, createOriginEnhancement(stat, tier, buildOrigin, globalBoostLevel));
     closeEnhancementPicker();
   };
 
   // Handle selecting a special enhancement (Hamidon, Titan, Hydra, D-Sync)
   const handleSelectSpecial = (id: string, def: SpecialEnhancementDef, category: SpecialEnhancement['category']) => {
     if (!picker.currentPowerName) return;
-    setEnhancement(picker.currentPowerName, picker.currentSlotIndex, createSpecialEnhancement(id, def, category));
+    setEnhancement(picker.currentPowerName, picker.currentSlotIndex, createSpecialEnhancement(id, def, category, globalBoostLevel));
     closeEnhancementPicker();
   };
 
@@ -469,8 +471,8 @@ export function EnhancementPicker() {
               </button>
             ))}
           </div>
-          {/* Attunement toggle */}
-          <div className="px-3 sm:px-4 py-1.5 sm:py-0 border-t sm:border-t-0 border-gray-700">
+          {/* Attunement toggle + Boost dial */}
+          <div className="px-3 sm:px-4 py-1.5 sm:py-0 border-t sm:border-t-0 border-gray-700 flex items-center gap-4">
             <Toggle
               id="attunement-toggle-picker"
               name="attunement"
@@ -478,6 +480,22 @@ export function EnhancementPicker() {
               onChange={toggleAttunement}
               label="Attuned"
             />
+            <div className="flex items-center gap-1.5">
+              <span className="text-xs text-gray-400">Boost</span>
+              <button
+                onClick={() => setGlobalBoostLevel(globalBoostLevel - 1)}
+                className="w-5 h-5 rounded text-xs bg-gray-700 hover:bg-gray-600 text-gray-300 flex items-center justify-center disabled:opacity-30 disabled:cursor-not-allowed"
+                disabled={globalBoostLevel === 0}
+              >-</button>
+              <span className={`text-sm font-mono w-6 text-center ${globalBoostLevel > 0 ? 'text-green-400' : 'text-gray-500'}`}>
+                +{globalBoostLevel}
+              </span>
+              <button
+                onClick={() => setGlobalBoostLevel(globalBoostLevel + 1)}
+                className="w-5 h-5 rounded text-xs bg-gray-700 hover:bg-gray-600 text-gray-300 flex items-center justify-center disabled:opacity-30 disabled:cursor-not-allowed"
+                disabled={globalBoostLevel === 5}
+              >+</button>
+            </div>
           </div>
         </div>
 
@@ -1181,6 +1199,7 @@ interface SetPieceTooltipProps {
 function SetPieceTooltip({ set, piece }: SetPieceTooltipProps) {
   const globalIOLevel = useUIStore((s) => s.globalIOLevel);
   const attunementEnabled = useUIStore((s) => s.attunementEnabled);
+  const globalBoostLevel = useUIStore((s) => s.globalBoostLevel);
   const build = useBuildStore((s) => s.build);
   const picker = useUIStore((s) => s.enhancementPicker);
   const trackedStats = useUIStore((s) => s.trackedStats);
@@ -1233,12 +1252,15 @@ function SetPieceTooltip({ set, piece }: SetPieceTooltipProps) {
   };
   const aspectModifier = getAspectModifier(aspectCount);
 
+  // Boost multiplier for non-proc pieces
+  const boostMultiplier = (!piece.proc && globalBoostLevel > 0) ? 1 + globalBoostLevel * 0.05 : 1;
+
   const calculateAspectValue = (aspect: string): number | null => {
     const normalized = normalizeAspectName(aspect);
     if (!normalized) return null;
     const schedule = getAspectSchedule(normalized);
     const baseValue = getIOValueAtLevel(effectiveLevel, schedule);
-    return baseValue * aspectModifier;
+    return baseValue * aspectModifier * boostMultiplier;
   };
 
   return (
@@ -1393,6 +1415,7 @@ function SetPieceTooltip({ set, piece }: SetPieceTooltipProps) {
           )}
         </span>
         <span className="text-slate-400">Range: {set.minLevel}-{set.maxLevel}</span>
+        {!piece.proc && globalBoostLevel > 0 && <span className="text-green-400">+{globalBoostLevel} Boosted</span>}
         {piece.unique && <span className="text-red-400">Unique</span>}
       </div>
 

@@ -25,6 +25,7 @@ interface EnhancementCardProps {
   onClick?: () => void;
   showDetails?: boolean;
   enhancementId?: string;  // Added for info panel display
+  boost?: number;
 }
 
 export function EnhancementCard({
@@ -37,6 +38,7 @@ export function EnhancementCard({
   onClick,
   showDetails = false,
   enhancementId,
+  boost = 0,
 }: EnhancementCardProps) {
   const showEnhancementInfo = useUIStore((s) => s.showEnhancementInfo);
   const lockInfoPanel = useUIStore((s) => s.lockInfoPanel);
@@ -74,7 +76,7 @@ export function EnhancementCard({
 
   return (
     <Tooltip
-      content={<EnhancementTooltip piece={piece} setName={setName} level={level} isAttuned={isAttuned} />}
+      content={<EnhancementTooltip piece={piece} setName={setName} level={level} isAttuned={isAttuned} boost={boost} />}
       position="right"
     >
       <button
@@ -140,6 +142,7 @@ interface EnhancementTooltipProps {
   setName: string;
   level: number;
   isAttuned: boolean;
+  boost?: number;
 }
 
 /**
@@ -174,29 +177,32 @@ function formatEnhValue(value: number): string {
   return `${(value * 100).toFixed(2)}%`;
 }
 
-function EnhancementTooltip({ piece, setName, level, isAttuned }: EnhancementTooltipProps) {
+function EnhancementTooltip({ piece, setName, level, isAttuned, boost = 0 }: EnhancementTooltipProps) {
   // For attuned, use level 50 for display purposes
   const effectiveLevel = isAttuned ? 50 : level;
   const aspectCount = piece.aspects.length;
+  const boostMultiplier = 1 + boost * 0.05;
 
   return (
     <div className="min-w-[220px]">
       <div className="font-medium text-white">{piece.name}</div>
       <div className="text-sm text-yellow-400">{setName}</div>
-      <div className="text-xs text-gray-400 mb-2">
-        {isAttuned ? 'Attuned (scales to level)' : `Level ${level}`}
+      <div className="text-xs text-gray-400 mb-2 flex items-center gap-2">
+        <span>{isAttuned ? 'Attuned (scales to level)' : `Level ${level}`}</span>
+        {boost > 0 && <span className="text-green-400">+{boost} Boosted</span>}
       </div>
 
       {/* Aspects with calculated values */}
       <div className="space-y-1">
         {piece.aspects.map((aspect, i) => {
           const value = calculateAspectValue(aspect, effectiveLevel, aspectCount);
+          const boostedValue = value !== null && boost > 0 ? value * boostMultiplier : null;
           return (
             <div key={i} className="text-sm flex justify-between items-baseline gap-2">
               <span className={getAspectColor(aspect)}>{aspect}</span>
               {value !== null && (
                 <span className="text-green-400 font-mono text-xs">
-                  +{formatEnhValue(value)}
+                  +{formatEnhValue(boostedValue ?? value)}
                 </span>
               )}
             </div>

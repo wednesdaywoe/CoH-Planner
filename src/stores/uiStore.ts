@@ -83,6 +83,9 @@ interface UIState {
   /** Attunement toggle */
   attunementEnabled: boolean;
 
+  /** Global enhancement boost level (0-5) */
+  globalBoostLevel: number;
+
   /** Exemplar mode - when ON, respects build level for set bonus suppression */
   exemplarMode: boolean;
 
@@ -167,6 +170,7 @@ interface UIActions {
   // Settings
   setGlobalIOLevel: (level: number) => void;
   toggleAttunement: () => void;
+  setGlobalBoostLevel: (level: number) => void;
   toggleExemplarMode: () => void;
   toggleIncludeProcsInStats: () => void;
   toggleHints: () => void;
@@ -371,6 +375,7 @@ export const useUIStore = create<UIStore>()(
       powerInfoModalOpen: false,
       globalIOLevel: 50,
       attunementEnabled: false,
+      globalBoostLevel: 0,
       exemplarMode: false,
       includeProcsInStats: true,
       hintsEnabled: true,
@@ -492,6 +497,11 @@ export const useUIStore = create<UIStore>()(
         set((state) => ({
           attunementEnabled: !state.attunementEnabled,
         })),
+
+      setGlobalBoostLevel: (level) =>
+        set({
+          globalBoostLevel: Math.max(0, Math.min(5, level)),
+        }),
 
       toggleExemplarMode: () =>
         set((state) => ({
@@ -897,6 +907,7 @@ export const useUIStore = create<UIStore>()(
       partialize: (state) => ({
         globalIOLevel: state.globalIOLevel,
         attunementEnabled: state.attunementEnabled,
+        globalBoostLevel: state.globalBoostLevel,
         exemplarMode: state.exemplarMode,
         includeProcsInStats: state.includeProcsInStats,
         hintsEnabled: state.hintsEnabled,

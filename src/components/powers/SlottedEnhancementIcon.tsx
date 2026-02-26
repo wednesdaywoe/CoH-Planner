@@ -17,9 +17,30 @@ interface SlottedEnhancementIconProps {
 }
 
 /**
+ * Boost level badge overlay - small circle with the boost number
+ */
+function BoostBadge({ boost, size }: { boost: number; size: number }) {
+  if (!boost || boost <= 0) return null;
+  const badgeSize = size <= 16 ? 8 : size <= 20 ? 10 : 12;
+  const fontSize = size <= 16 ? 5 : size <= 20 ? 6 : 7;
+  return (
+    <div
+      className="absolute -bottom-0.5 -left-0.5 rounded-full bg-green-600 border border-gray-900 flex items-center justify-center pointer-events-none z-10"
+      style={{ width: badgeSize, height: badgeSize }}
+    >
+      <span className="text-white font-bold leading-none" style={{ fontSize }}>
+        {boost}
+      </span>
+    </div>
+  );
+}
+
+/**
  * Renders the appropriate enhancement icon based on type
  */
 export function SlottedEnhancementIcon({ enhancement, size = 20 }: SlottedEnhancementIconProps) {
+  const boost = enhancement.boost || 0;
+
   switch (enhancement.type) {
     case 'io-set': {
       const ioSet = enhancement as IOSetEnhancement;
@@ -54,29 +75,36 @@ export function SlottedEnhancementIcon({ enhancement, size = 20 }: SlottedEnhanc
               }}
             />
           )}
+          <BoostBadge boost={boost} size={size} />
         </div>
       );
     }
     case 'io-generic': {
       const generic = enhancement as GenericIOEnhancement;
       return (
-        <GenericIOIcon
-          stat={generic.stat}
-          size={size}
-          alt={enhancement.name}
-        />
+        <div className="relative">
+          <GenericIOIcon
+            stat={generic.stat}
+            size={size}
+            alt={enhancement.name}
+          />
+          <BoostBadge boost={boost} size={size} />
+        </div>
       );
     }
     case 'origin': {
       const origin = enhancement as OriginEnhancement;
       return (
-        <OriginEnhancementIcon
-          stat={origin.stat}
-          tier={origin.tier}
-          origin={origin.origin}
-          size={size}
-          alt={enhancement.name}
-        />
+        <div className="relative">
+          <OriginEnhancementIcon
+            stat={origin.stat}
+            tier={origin.tier}
+            origin={origin.origin}
+            size={size}
+            alt={enhancement.name}
+          />
+          <BoostBadge boost={boost} size={size} />
+        </div>
       );
     }
     case 'special': {
@@ -86,11 +114,14 @@ export function SlottedEnhancementIcon({ enhancement, size = 20 }: SlottedEnhanc
         ? special.icon.split('/').pop() || 'Unknown.png'
         : special.icon || 'Unknown.png';
       return (
-        <SpecialEnhancementIcon
-          icon={iconName}
-          size={size}
-          alt={enhancement.name}
-        />
+        <div className="relative">
+          <SpecialEnhancementIcon
+            icon={iconName}
+            size={size}
+            alt={enhancement.name}
+          />
+          <BoostBadge boost={boost} size={size} />
+        </div>
       );
     }
     default:

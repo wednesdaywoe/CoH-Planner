@@ -15,6 +15,7 @@ import {
   getAllIOSets,
   createIOSetEnhancement,
   createGenericIOEnhancement,
+  createOriginEnhancement,
 } from '@/data';
 import type { MidsImportWarning } from './types';
 
@@ -411,14 +412,30 @@ export interface EnhancementMapResult {
  * @param uid - e.g., "Superior_Attuned_Superior_Brutes_Fury_A" or "Crafted_Damage"
  * @param ioLevel - the IoLevel from the .mbd file (0-based)
  * @param relativeLevel - "Even", "Superior", etc.
+ * @param grade - "IO", "SO", "DO", "TO", etc.
  */
 export function mapEnhancementUid(
   uid: string,
   ioLevel: number,
   relativeLevel: string,
+  grade?: string,
 ): EnhancementMapResult {
   // The ioLevel in .mbd is 0-based (49 = level 50)
   const level = Math.min(Math.max(ioLevel + 1, 1), 53);
+
+  // Check for origin enhancements (SO/DO/TO)
+  if (grade === 'SO' || grade === 'DO' || grade === 'TO') {
+    const stat = MIDS_STAT_MAP[uid] ?? uid;
+    try {
+      const enh = createOriginEnhancement(stat as any, grade);
+      return { enhancement: enh, warning: null };
+    } catch {
+      return {
+        enhancement: null,
+        warning: { type: 'enhancement', midsName: uid, message: `Unknown origin enhancement stat: ${uid}` },
+      };
+    }
+  }
 
   // Check for generic IOs: "Crafted_Damage", "Crafted_Accuracy", etc.
   if (uid.startsWith('Crafted_')) {

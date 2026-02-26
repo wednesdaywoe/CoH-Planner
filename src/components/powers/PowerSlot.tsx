@@ -80,12 +80,20 @@ function EnhancementTooltip({ enhancement }: EnhancementTooltipProps) {
       {enhancement.type === 'io-set' && (
         <div className="text-sm text-yellow-400">{enhancement.setName}</div>
       )}
-      {enhancement.level && (
-        <div className="text-xs text-gray-400">
-          Level {enhancement.level}
-          {enhancement.attuned && ' (Attuned)'}
-        </div>
-      )}
+      <div className="text-xs text-gray-400 flex items-center gap-2">
+        {enhancement.level && (
+          <span>
+            Level {enhancement.level}
+            {enhancement.attuned && ' (Attuned)'}
+          </span>
+        )}
+        {enhancement.attuned && !enhancement.level && (
+          <span>Attuned</span>
+        )}
+        {enhancement.boost && enhancement.boost > 0 && (
+          <span className="text-green-400">+{enhancement.boost} Boosted</span>
+        )}
+      </div>
       <div className="text-xs text-gray-500 mt-1">
         Right-click to remove
       </div>

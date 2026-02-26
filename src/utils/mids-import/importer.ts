@@ -558,6 +558,7 @@ function buildSelectedPower(
       slotEntry.Enhancement.Uid,
       slotEntry.Enhancement.IoLevel,
       slotEntry.Enhancement.RelativeLevel,
+      slotEntry.Enhancement.Grade,
     );
 
     if (warning) {

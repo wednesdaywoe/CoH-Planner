@@ -386,6 +386,9 @@ export function calculatePowerEnhancementBonuses(
   power.slots.forEach((slot) => {
     if (!slot) return;
 
+    // Boost multiplier: each boost level adds 5% to enhancement value
+    const boostMultiplier = 1 + (slot.boost || 0) * 0.05;
+
     if (slot.type === 'io-set' && getIOSet) {
       // IO Set piece
       const set = getIOSet(slot.setId);
@@ -398,7 +401,7 @@ export function calculatePowerEnhancementBonuses(
       const bonuses = parseIOSetPieceValues(piece.aspects, ioLevel);
 
       Object.entries(bonuses).forEach(([aspect, value]) => {
-        rawBonuses[aspect] = (rawBonuses[aspect] || 0) + value;
+        rawBonuses[aspect] = (rawBonuses[aspect] || 0) + value * boostMultiplier;
       });
     } else if (slot.type === 'io-generic') {
       // Common IO
@@ -407,7 +410,7 @@ export function calculatePowerEnhancementBonuses(
       if (normalized) {
         const schedule = getAspectSchedule(normalized);
         const value = getIOValueAtLevel(slot.level || globalIOLevel, schedule);
-        rawBonuses[normalized] = (rawBonuses[normalized] || 0) + value;
+        rawBonuses[normalized] = (rawBonuses[normalized] || 0) + value * boostMultiplier;
       }
     } else if (slot.type === 'special') {
       // Special enhancements (Hamidon, Titan, etc.) - each aspect has its own value
@@ -415,7 +418,7 @@ export function calculatePowerEnhancementBonuses(
         slot.aspects.forEach((aspect: { stat: string; value: number }) => {
           const normalized = normalizeAspectName(aspect.stat);
           if (normalized) {
-            rawBonuses[normalized] = (rawBonuses[normalized] || 0) + aspect.value / 100;
+            rawBonuses[normalized] = (rawBonuses[normalized] || 0) + (aspect.value / 100) * boostMultiplier;
           }
         });
       }
@@ -424,7 +427,7 @@ export function calculatePowerEnhancementBonuses(
       const aspect = slot.stat as string;
       const normalized = normalizeAspectName(aspect);
       if (normalized && slot.value) {
-        rawBonuses[normalized] = (rawBonuses[normalized] || 0) + slot.value / 100;
+        rawBonuses[normalized] = (rawBonuses[normalized] || 0) + (slot.value / 100) * boostMultiplier;
       }
     }
   });

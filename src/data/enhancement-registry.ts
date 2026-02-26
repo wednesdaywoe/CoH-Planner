@@ -278,9 +278,11 @@ export function createIOSetEnhancement(
   set: IOSet,
   piece: IOSetPiece,
   pieceIndex: number,
-  options: { attuned: boolean; level: number },
+  options: { attuned: boolean; level: number; boost?: number },
 ): IOSetEnhancement {
   const setId = set.id || set.name;
+  // Procs don't get boosted
+  const boost = (options.boost && options.boost > 0 && !piece.proc) ? options.boost : undefined;
   return {
     type: 'io-set',
     id: `${setId}-${pieceIndex}`,
@@ -291,6 +293,7 @@ export function createIOSetEnhancement(
     pieceNum: piece.num,
     level: options.attuned ? undefined : options.level,
     attuned: options.attuned,
+    boost,
     aspects: piece.aspects as EnhancementStatType[],
     isProc: piece.proc,
     isUnique: piece.unique,
@@ -301,6 +304,7 @@ export function createIOSetEnhancement(
 export function createGenericIOEnhancement(
   stat: EnhancementStatType,
   level: number,
+  boost?: number,
 ): GenericIOEnhancement {
   return {
     type: 'io-generic',
@@ -308,6 +312,7 @@ export function createGenericIOEnhancement(
     name: `${stat} IO`,
     icon: getGenericIOIconPath(stat),
     level,
+    boost: (boost && boost > 0) ? boost : undefined,
     stat,
     value: getCommonIOValueAtLevel(level),
   };
@@ -326,17 +331,21 @@ export function createSpecialEnhancement(
   id: string,
   def: SpecialEnhancementDef,
   category: SpecialEnhancement['category'] = 'hamidon',
+  boost?: number,
 ): SpecialEnhancement {
   const capitalizedId = id.charAt(0).toUpperCase() + id.slice(1);
   const prefix = SPECIAL_ICON_PREFIX[category];
   // D-Sync enhancements all share a single icon
   const icon = category === 'd-sync' ? 'DSO_all.png' : `${prefix}${capitalizedId}.png`;
+  // Special enhancements cap at +3 boost
+  const cappedBoost = (boost && boost > 0) ? Math.min(boost, 3) : undefined;
   return {
     type: 'special',
     id: `${category}-${id}`,
     name: def.name,
     icon,
     category,
+    boost: cappedBoost,
     aspects: def.aspects.map(a => ({ stat: a.stat as EnhancementStatType, value: a.value })),
   };
 }
@@ -346,8 +355,11 @@ export function createOriginEnhancement(
   stat: EnhancementStatType,
   tier: 'TO' | 'DO' | 'SO',
   origin?: string,
+  boost?: number,
 ): OriginEnhancement {
   const tierInfo = ORIGIN_TIERS.find((t) => t.short === tier);
+  // Origin enhancements cap at +3 boost
+  const cappedBoost = (boost && boost > 0) ? Math.min(boost, 3) : undefined;
   return {
     type: 'origin',
     id: `origin-${tier}-${stat}`,
@@ -355,6 +367,7 @@ export function createOriginEnhancement(
     icon: getOriginIconPath(stat, tier),
     tier,
     origin: tier === 'SO' ? (origin as OriginEnhancement['origin']) : undefined,
+    boost: cappedBoost,
     stat,
     value: tierInfo?.value ?? 0,
   };
