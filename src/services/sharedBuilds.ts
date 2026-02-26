@@ -40,7 +40,11 @@ export async function shareBuild(input: ShareBuildInput): Promise<{ id: string; 
     },
   });
 
-  if (error) throw new Error(error.message || 'Failed to share build');
+  if (error) {
+    // Supabase client wraps non-2xx as a generic error — try to extract the real message
+    const msg = data?.error || error.message || 'Failed to share build';
+    throw new Error(msg);
+  }
   if (data?.error) throw new Error(data.error);
 
   return {
