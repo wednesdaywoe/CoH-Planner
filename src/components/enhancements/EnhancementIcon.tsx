@@ -75,13 +75,13 @@ function getOverlayPath(
 
   switch (type) {
     case 'io-set': {
-      // Superior archetype/event sets get superior frame
+      // Superior archetype/event sets get attuned superior frame
       if (icon?.startsWith('SAO_') || icon?.startsWith('SEO_')) {
-        return `${overlayBase}/e_frame_superior.png`;
+        return `${overlayBase}/e_frame_attuned_superior.png`;
       }
-      // Regular archetype/event sets get class frame
+      // Regular archetype/event sets get attuned rare frame
       if (icon?.startsWith('AO_') || icon?.startsWith('EO_')) {
-        return `${overlayBase}/e_frame_class.png`;
+        return `${overlayBase}/e_frame_attuned_rare.png`;
       }
       // Rarity-based frames
       switch (category) {
@@ -102,9 +102,9 @@ function getOverlayPath(
             ? `${overlayBase}/e_frame_attuned_pvp.png`
             : `${overlayBase}/e_frame_pvp.png`;
         case 'ato':
-          return `${overlayBase}/e_frame_class.png`;
+          return `${overlayBase}/e_frame_attuned_rare.png`;
         case 'event':
-          return `${overlayBase}/e_frame_class.png`;
+          return `${overlayBase}/e_frame_attuned_rare.png`;
         default:
           return `${overlayBase}/e_frame_IO.png`;
       }

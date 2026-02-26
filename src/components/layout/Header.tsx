@@ -10,7 +10,7 @@ import { getPowersetsForArchetype, getPowerset, MAX_LEVEL, ARCHETYPES } from '@/
 import { Button, Select, Slider, Toggle, Tooltip } from '@/components/ui';
 import { ConfirmModal } from '@/components/modals/ConfirmModal';
 import { calculateVigilanceDamageBonus, calculateAssassinationDamageBonus } from '@/utils/calculations';
-import type { ArchetypeId, ArchetypeBranchId, Powerset } from '@/types';
+import type { ArchetypeId, ArchetypeBranchId, Origin, Powerset } from '@/types';
 import { BUILD_TIME, APP_VERSION } from '@/buildTime';
 
 const LAST_UPDATED = (() => {
@@ -22,6 +22,14 @@ const SERVER_OPTIONS = [
   { value: 'homecoming', label: 'Homecoming' },
   { value: 'rebirth', label: 'Rebirth (Coming Soon)', disabled: true },
   { value: 'thunderspy', label: 'Thunderspy (Coming Soon)', disabled: true },
+];
+
+const ORIGIN_OPTIONS = [
+  { value: 'Magic', label: 'Magic' },
+  { value: 'Mutation', label: 'Mutation' },
+  { value: 'Natural', label: 'Natural' },
+  { value: 'Science', label: 'Science' },
+  { value: 'Technology', label: 'Technology' },
 ];
 
 const ARCHETYPE_OPTIONS = [
@@ -57,6 +65,7 @@ export function Header() {
   const setBuildName = useBuildStore((s) => s.setBuildName);
   const setPrimary = useBuildStore((s) => s.setPrimary);
   const setSecondary = useBuildStore((s) => s.setSecondary);
+  const setOrigin = useBuildStore((s) => s.setOrigin);
 
   const setLevel = useBuildStore((s) => s.setLevel);
   const resetBuild = useBuildStore((s) => s.resetBuild);
@@ -253,6 +262,16 @@ export function Header() {
             />
           </Tooltip>
         )}
+
+        {/* Origin selector */}
+        <Select
+          id="origin-select"
+          name="origin"
+          options={ORIGIN_OPTIONS}
+          value={build.settings.origin}
+          onChange={(e) => setOrigin(e.target.value as Origin)}
+          className="max-w-[140px] min-w-[100px]"
+        />
 
         {/* Exemplar Mode toggle */}
         <Tooltip content="When enabled, set bonuses are suppressed based on build level (simulates exemplaring down)">
