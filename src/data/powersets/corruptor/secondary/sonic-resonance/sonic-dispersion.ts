@@ -26,6 +26,7 @@ export const SonicDispersion: Power = {
     "maxTargets": 255
   },
   "allowedEnhancements": [
+    "Resistance",
     "EnduranceReduction",
     "Recharge"
   ],

@@ -27,6 +27,7 @@ export const SerpentsReach: Power = {
     "EnduranceReduction",
     "Range",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],

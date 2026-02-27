@@ -25,6 +25,7 @@ export const Painbringer: Power = {
     "castTime": 2.27
   },
   "allowedEnhancements": [
+    "EnduranceModification",
     "EnduranceReduction",
     "Range",
     "Recharge",

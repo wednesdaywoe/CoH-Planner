@@ -2,7 +2,7 @@
  * Dark Nova Blast
  * Ranged, Light DMG(Negative), Foe Knockback, -Recharge, -SPD
  *
- * Source: warshade/umbral-blast
+ * Source: warshade_offensive/umbral_blast/dark_nova_blast.json
  */
 
 import type { Power } from '@/types';
@@ -40,5 +40,38 @@ export const DarkNovaBlast: Power = {
     "castTime": 1.5
   },
   "targetType": "Foe (Alive)",
-  "requires": "Dark Nova"
+  "requires": "Dark Nova",
+  "damage": {
+    "type": "Negative",
+    "scale": 1,
+    "table": "Ranged_InherentDamage"
+  },
+  "effects": {
+    "movement": {
+      "jumpHeight": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      },
+      "runSpeed": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      },
+      "flySpeed": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      }
+    },
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Ranged_Slow"
+    },
+    "knockback": {
+      "scale": 1,
+      "table": "Ranged_Knockback"
+    }
+  }
 };

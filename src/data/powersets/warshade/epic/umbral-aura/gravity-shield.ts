@@ -2,7 +2,7 @@
  * Gravity Shield
  * Toggle: Self +Res(Smash, Lethal)
  *
- * Source: warshade/umbral-aura
+ * Source: warshade_defensive/umbral_aura/gravity_shield.json
  */
 
 import type { Power } from '@/types';
@@ -30,5 +30,17 @@ export const GravityShield: Power = {
     "endurance": 0.13,
     "castTime": 0.67
   },
-  "targetType": "Self"
+  "targetType": "Self",
+  "effects": {
+    "resistance": {
+      "smashing": {
+        "scale": 3,
+        "table": "Melee_Res_Dmg"
+      },
+      "lethal": {
+        "scale": 3,
+        "table": "Melee_Res_Dmg"
+      }
+    }
+  }
 };

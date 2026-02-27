@@ -24,6 +24,7 @@ export const PreciseStrike: Power = {
     "castTime": 1.13
   },
   "allowedEnhancements": [
+    "Taunt",
     "EnduranceReduction",
     "Stun",
     "Recharge",

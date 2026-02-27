@@ -2,7 +2,7 @@
  * Essence Boost
  * Self Heal, +Max HP, Res (Toxic)
  *
- * Source: peacebringer/luminous-aura
+ * Source: peacebringer_defensive/luminous_aura/essence_boost.json
  */
 
 import type { Power } from '@/types';
@@ -32,5 +32,22 @@ export const EssenceBoost: Power = {
     "endurance": 10.4,
     "castTime": 0.73
   },
-  "targetType": "Self"
+  "targetType": "Self",
+  "damage": {
+    "type": "Heal",
+    "scale": 4,
+    "table": "Melee_HealSelf"
+  },
+  "effects": {
+    "maxHPBuff": {
+      "scale": 2,
+      "table": "Melee_HealSelf"
+    },
+    "resistance": {
+      "toxic": {
+        "scale": 2,
+        "table": "Melee_Res_Dmg"
+      }
+    }
+  }
 };

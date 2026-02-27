@@ -30,6 +30,7 @@ export const Buckshot: Power = {
     "EnduranceReduction",
     "Range",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],

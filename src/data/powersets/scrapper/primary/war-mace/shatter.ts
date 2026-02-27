@@ -29,6 +29,7 @@ export const Shatter: Power = {
   "allowedEnhancements": [
     "EnduranceReduction",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],

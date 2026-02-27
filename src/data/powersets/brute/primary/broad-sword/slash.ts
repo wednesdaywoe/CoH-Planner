@@ -24,6 +24,7 @@ export const Slash: Power = {
     "castTime": 1.1
   },
   "allowedEnhancements": [
+    "Taunt",
     "EnduranceReduction",
     "Recharge",
     "Defense Debuff",

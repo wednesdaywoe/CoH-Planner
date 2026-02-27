@@ -26,6 +26,7 @@ export const GraveKnight: Power = {
   },
   "allowedEnhancements": [
     "EnduranceReduction",
+    "Knockback",
     "ToHit Debuff",
     "Defense Debuff",
     "Damage",

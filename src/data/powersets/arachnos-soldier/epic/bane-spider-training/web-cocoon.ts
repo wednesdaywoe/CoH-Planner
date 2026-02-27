@@ -2,7 +2,7 @@
  * Web Cocoon
  * Ranged, Foe Hold, -Recharge, -Fly, -Jump, Slow
  *
- * Source: arachnos-soldier/bane-spider-training
+ * Source: training_gadgets/bane_spider_training/web_cocoon.json
  */
 
 import type { Power } from '@/types';
@@ -35,5 +35,36 @@ export const WebCocoon: Power = {
     "endurance": 10.66,
     "castTime": 1.67
   },
-  "targetType": "Foe (Alive)"
+  "targetType": "Foe (Alive)",
+  "effects": {
+    "hold": {
+      "mag": 3,
+      "scale": 10,
+      "table": "Ranged_Immobilize"
+    },
+    "slow": {
+      "jumpHeight": {
+        "scale": 500,
+        "table": "Ranged_Ones"
+      },
+      "fly": {
+        "scale": 10,
+        "table": "Ranged_Ones"
+      }
+    },
+    "rechargeDebuff": {
+      "scale": 0.5,
+      "table": "Ranged_Slow"
+    },
+    "movement": {
+      "runSpeed": {
+        "scale": 0.5,
+        "table": "Ranged_Slow"
+      },
+      "flySpeed": {
+        "scale": 0.5,
+        "table": "Ranged_Slow"
+      }
+    }
+  }
 };

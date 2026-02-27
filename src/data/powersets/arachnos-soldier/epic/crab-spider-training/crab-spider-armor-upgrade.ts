@@ -2,7 +2,7 @@
  * Crab Spider Armor Upgrade
  * Auto: Self +RES(Smash, Lethal, Psionic, Status Effects)
  *
- * Source: arachnos-soldier/crab-spider-training
+ * Source: training_gadgets/crab_spider_training/crab_spider_armor.json
  */
 
 import type { Power } from '@/types';
@@ -25,5 +25,52 @@ export const CrabSpiderArmorUpgrade: Power = {
   "stats": {
     "accuracy": 1
   },
-  "targetType": "Self"
+  "targetType": "Self",
+  "effects": {
+    "resistance": {
+      "smashing": {
+        "scale": 0.3,
+        "table": "Melee_Res_Dmg"
+      },
+      "lethal": {
+        "scale": 0.3,
+        "table": "Melee_Res_Dmg"
+      },
+      "psionic": {
+        "scale": 0.2,
+        "table": "Melee_Res_Dmg"
+      }
+    },
+    "confuse": {
+      "mag": 1,
+      "scale": 4,
+      "table": "Melee_Ones"
+    },
+    "fear": {
+      "mag": 1,
+      "scale": 4,
+      "table": "Melee_Ones"
+    },
+    "hold": {
+      "mag": 1,
+      "scale": 4,
+      "table": "Melee_Ones"
+    },
+    "immobilize": {
+      "mag": 1,
+      "scale": 4,
+      "table": "Melee_Ones"
+    },
+    "stun": {
+      "mag": 1,
+      "scale": 4,
+      "table": "Melee_Ones"
+    },
+    "sleep": {
+      "mag": 1,
+      "scale": 4,
+      "table": "Melee_Ones"
+    },
+    "effectDuration": 10.25
+  }
 };

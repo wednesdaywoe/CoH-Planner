@@ -28,6 +28,7 @@ export const Frost: Power = {
   },
   "allowedEnhancements": [
     "Slow",
+    "Taunt",
     "EnduranceReduction",
     "Range",
     "Recharge",

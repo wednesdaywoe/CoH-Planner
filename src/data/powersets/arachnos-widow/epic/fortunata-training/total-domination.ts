@@ -2,7 +2,7 @@
  * Total Domination
  * Ranged (Targeted AoE), Foe Hold
  *
- * Source: arachnos-widow/fortunata-training
+ * Source: widow_training/fortunata_training/frt_total_domination.json
  */
 
 import type { Power } from '@/types';
@@ -36,5 +36,12 @@ export const TotalDomination: Power = {
     "radius": 20,
     "maxTargets": 12
   },
-  "targetType": "Foe (Alive)"
+  "targetType": "Foe (Alive)",
+  "effects": {
+    "hold": {
+      "mag": 3,
+      "scale": 12,
+      "table": "Ranged_Immobilize"
+    }
+  }
 };

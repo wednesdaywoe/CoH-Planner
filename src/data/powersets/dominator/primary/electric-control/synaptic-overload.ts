@@ -26,6 +26,7 @@ export const SynapticOverload: Power = {
     "maxTargets": 16
   },
   "allowedEnhancements": [
+    "EnduranceModification",
     "EnduranceReduction",
     "Range",
     "Recharge",

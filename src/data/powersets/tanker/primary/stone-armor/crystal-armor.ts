@@ -24,8 +24,10 @@ export const CrystalArmor: Power = {
     "castTime": 1
   },
   "allowedEnhancements": [
+    "EnduranceModification",
     "EnduranceReduction",
-    "Recharge"
+    "Recharge",
+    "Defense"
   ],
   "allowedSetCategories": [
     "Defense Sets",

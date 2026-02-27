@@ -28,6 +28,8 @@ export const Phantasm: Power = {
     "EnduranceReduction",
     "Range",
     "Recharge",
+    "Knockback",
+    "Fly",
     "Damage",
     "Accuracy"
   ],

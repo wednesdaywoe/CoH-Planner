@@ -26,8 +26,10 @@ export const MoistureAbsorption: Power = {
     "maxTargets": 5
   },
   "allowedEnhancements": [
+    "EnduranceModification",
     "EnduranceReduction",
-    "Recharge"
+    "Recharge",
+    "Defense"
   ],
   "allowedSetCategories": [
     "Defense Sets",

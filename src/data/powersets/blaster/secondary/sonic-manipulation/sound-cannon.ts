@@ -31,6 +31,7 @@ export const SoundCannon: Power = {
     "Range",
     "Stun",
     "Recharge",
+    "Knockback",
     "Accuracy"
   ],
   "allowedSetCategories": [

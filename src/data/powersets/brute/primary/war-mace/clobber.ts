@@ -24,6 +24,7 @@ export const Clobber: Power = {
     "castTime": 1.23
   },
   "allowedEnhancements": [
+    "Taunt",
     "EnduranceReduction",
     "Stun",
     "Recharge",

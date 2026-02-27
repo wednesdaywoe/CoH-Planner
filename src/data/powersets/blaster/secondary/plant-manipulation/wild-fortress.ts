@@ -23,6 +23,8 @@ export const WildFortress: Power = {
     "castTime": 2.27
   },
   "allowedEnhancements": [
+    "Resistance",
+    "EnduranceModification",
     "Recharge",
     "Healing"
   ],

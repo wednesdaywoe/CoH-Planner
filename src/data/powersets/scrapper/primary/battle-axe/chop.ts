@@ -26,6 +26,7 @@ export const Chop: Power = {
   "allowedEnhancements": [
     "EnduranceReduction",
     "Recharge",
+    "Knockback",
     "Defense Debuff",
     "Damage",
     "Accuracy"

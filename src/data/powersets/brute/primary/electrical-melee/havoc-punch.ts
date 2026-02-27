@@ -24,6 +24,8 @@ export const HavocPunch: Power = {
     "castTime": 1.5
   },
   "allowedEnhancements": [
+    "EnduranceModification",
+    "Taunt",
     "EnduranceReduction",
     "Sleep",
     "Recharge",

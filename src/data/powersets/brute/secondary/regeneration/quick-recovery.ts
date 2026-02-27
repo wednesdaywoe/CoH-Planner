@@ -21,7 +21,7 @@ export const QuickRecovery: Power = {
     "accuracy": 1
   },
   "allowedEnhancements": [
-    "EnduranceReduction"
+    "EnduranceModification"
   ],
   "allowedSetCategories": [
     "Endurance Modification"

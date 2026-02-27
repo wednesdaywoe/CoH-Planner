@@ -27,6 +27,7 @@ export const PowerBolt: Power = {
     "EnduranceReduction",
     "Range",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],

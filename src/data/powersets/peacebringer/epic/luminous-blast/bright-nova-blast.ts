@@ -2,7 +2,7 @@
  * Bright Nova Blast
  * Ranged, Light DMG(Energy), Foe -DEF, Knockback
  *
- * Source: peacebringer/luminous-blast
+ * Source: peacebringer_offensive/luminous_blast/bright_nova_blast.json
  */
 
 import type { Power } from '@/types';
@@ -41,5 +41,20 @@ export const BrightNovaBlast: Power = {
     "castTime": 1.5
   },
   "targetType": "Foe (Alive)",
-  "requires": "Bright Nova"
+  "requires": "Bright Nova",
+  "damage": {
+    "type": "Energy",
+    "scale": 1,
+    "table": "Ranged_InherentDamage"
+  },
+  "effects": {
+    "knockback": {
+      "scale": 1,
+      "table": "Ranged_Knockback"
+    },
+    "defenseDebuff": {
+      "scale": 2,
+      "table": "Ranged_Debuff_Def"
+    }
+  }
 };

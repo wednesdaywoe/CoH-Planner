@@ -27,6 +27,7 @@ export const ChargedShot: Power = {
     "EnduranceReduction",
     "Range",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],

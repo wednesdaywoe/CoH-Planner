@@ -24,6 +24,7 @@ export const ImpenetrableMind: Power = {
     "castTime": 0.73
   },
   "allowedEnhancements": [
+    "Resistance",
     "EnduranceReduction",
     "Recharge"
   ],

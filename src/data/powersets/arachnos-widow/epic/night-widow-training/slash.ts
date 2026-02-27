@@ -2,7 +2,7 @@
  * Slash
  * Melee, DMG(Lethal), DoT(Toxic), -Recharge, -SPD
  *
- * Source: arachnos-widow/night-widow-training
+ * Source: widow_training/night_widow_training/nw_slash.json
  */
 
 import type { Power } from '@/types';
@@ -34,5 +34,50 @@ export const Slash: Power = {
     "endurance": 14.272,
     "castTime": 1.33
   },
-  "targetType": "Foe (Alive)"
+  "targetType": "Foe (Alive)",
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 1.3723,
+      "table": "Melee_Damage",
+      "duration": 0.6,
+      "tickRate": 0.4
+    },
+    {
+      "type": "Lethal",
+      "scale": 2.7446,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Toxic",
+      "scale": 0.1,
+      "table": "Melee_Damage",
+      "duration": 3.1,
+      "tickRate": 1
+    }
+  ],
+  "effects": {
+    "movement": {
+      "runSpeed": {
+        "scale": 0.4,
+        "table": "Melee_Slow"
+      },
+      "flySpeed": {
+        "scale": 0.4,
+        "table": "Melee_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.4,
+        "table": "Melee_Slow"
+      },
+      "jumpHeight": {
+        "scale": 0.4,
+        "table": "Melee_Slow"
+      }
+    },
+    "rechargeDebuff": {
+      "scale": 0.4,
+      "table": "Melee_Slow"
+    }
+  }
 };

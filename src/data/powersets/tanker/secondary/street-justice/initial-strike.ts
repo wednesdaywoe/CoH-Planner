@@ -24,6 +24,7 @@ export const InitialStrike: Power = {
     "castTime": 0.8
   },
   "allowedEnhancements": [
+    "Taunt",
     "EnduranceReduction",
     "Stun",
     "Recharge",

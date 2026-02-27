@@ -2,7 +2,7 @@
  * Essence Drain
  * Melee, Light DMG(Negative), Foe -Recharge, -SPD; Self +HP
  *
- * Source: warshade/umbral-blast
+ * Source: warshade_offensive/umbral_blast/essence_drain.json
  */
 
 import type { Power } from '@/types';
@@ -39,5 +39,41 @@ export const EssenceDrain: Power = {
     "endurance": 15.6,
     "castTime": 1.93
   },
-  "targetType": "Foe (Alive)"
+  "targetType": "Foe (Alive)",
+  "damage": [
+    {
+      "type": "Negative",
+      "scale": 1,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Heal",
+      "scale": 1,
+      "table": "Melee_HealSelf"
+    }
+  ],
+  "effects": {
+    "movement": {
+      "jumpHeight": {
+        "scale": 0.2,
+        "table": "Melee_Slow"
+      },
+      "runSpeed": {
+        "scale": 0.2,
+        "table": "Melee_Slow"
+      },
+      "flySpeed": {
+        "scale": 0.2,
+        "table": "Melee_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.2,
+        "table": "Melee_Slow"
+      }
+    },
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Melee_Slow"
+    }
+  }
 };

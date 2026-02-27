@@ -24,6 +24,7 @@ export const Bash: Power = {
     "castTime": 1.33
   },
   "allowedEnhancements": [
+    "Taunt",
     "EnduranceReduction",
     "Stun",
     "Recharge",

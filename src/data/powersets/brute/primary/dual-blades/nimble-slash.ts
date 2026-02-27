@@ -24,6 +24,7 @@ export const NimbleSlash: Power = {
     "castTime": 1.03
   },
   "allowedEnhancements": [
+    "Taunt",
     "EnduranceReduction",
     "Recharge",
     "Damage",

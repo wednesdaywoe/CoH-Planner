@@ -186,7 +186,7 @@ export function BuildDetailPage() {
       </div>
 
       {/* Load into Planner */}
-      <div className="bg-gray-800 border border-gray-700 rounded-lg p-4">
+      <div className="bg-gray-800 border border-gray-700 rounded-lg p-4 mb-20">
         {!loadConfirm ? (
           <div className="flex items-center justify-between">
             <p className="text-sm text-gray-400">Want to use this build?</p>

@@ -26,6 +26,7 @@ export const KiPush: Power = {
   "allowedEnhancements": [
     "EnduranceReduction",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],

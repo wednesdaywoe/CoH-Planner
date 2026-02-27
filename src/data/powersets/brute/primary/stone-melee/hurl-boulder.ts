@@ -24,9 +24,11 @@ export const HurlBoulder: Power = {
     "castTime": 2.5
   },
   "allowedEnhancements": [
+    "Taunt",
     "EnduranceReduction",
     "Range",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],

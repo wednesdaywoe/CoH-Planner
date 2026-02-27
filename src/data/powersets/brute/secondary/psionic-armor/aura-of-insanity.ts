@@ -26,6 +26,7 @@ export const AuraofInsanity: Power = {
   },
   "allowedEnhancements": [
     "Hold",
+    "Taunt",
     "Stun",
     "Sleep",
     "Recharge",
@@ -35,6 +36,7 @@ export const AuraofInsanity: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Brute Archetype Sets",
     "Confuse",
     "Fear",
     "Holds",

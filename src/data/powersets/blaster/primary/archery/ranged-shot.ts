@@ -24,6 +24,7 @@ export const RangedShot: Power = {
     "castTime": 1.67
   },
   "allowedEnhancements": [
+    "Interrupt",
     "EnduranceReduction",
     "Range",
     "Recharge",

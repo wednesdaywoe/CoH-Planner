@@ -4574,7 +4574,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": false,
-        "unique": false
+        "unique": true
       },
       {
         "num": 2,
@@ -4585,7 +4585,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": false,
-        "unique": false
+        "unique": true
       },
       {
         "num": 3,
@@ -4597,7 +4597,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "PowerChanceMod"
         ],
         "proc": false,
-        "unique": false
+        "unique": true
       },
       {
         "num": 4,
@@ -4609,7 +4609,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": false,
-        "unique": false
+        "unique": true
       },
       {
         "num": 5,
@@ -4622,7 +4622,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": false,
-        "unique": false
+        "unique": true
       },
       {
         "num": 6,
@@ -4631,7 +4631,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Damage"
         ],
         "proc": true,
-        "unique": false
+        "unique": true
       }
     ],
     "icon": "UD_Cupids_Crush.png"
@@ -15213,7 +15213,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Damage"
         ],
         "proc": false,
-        "unique": false
+        "unique": true
       },
       {
         "num": 2,
@@ -15223,7 +15223,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": false,
-        "unique": false
+        "unique": true
       },
       {
         "num": 3,
@@ -15234,7 +15234,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Endurance"
         ],
         "proc": false,
-        "unique": false
+        "unique": true
       },
       {
         "num": 4,
@@ -15245,7 +15245,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": false,
-        "unique": false
+        "unique": true
       },
       {
         "num": 5,
@@ -15257,7 +15257,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": false,
-        "unique": false
+        "unique": true
       },
       {
         "num": 6,
@@ -15267,7 +15267,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "KnockToKnockDown"
         ],
         "proc": true,
-        "unique": false
+        "unique": true
       }
     ],
     "icon": "UD_Overwhelming_Force.png"

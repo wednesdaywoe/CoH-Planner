@@ -27,6 +27,7 @@ export const StonePrison: Power = {
     "EnduranceReduction",
     "Range",
     "Recharge",
+    "Immobilize",
     "Damage",
     "Accuracy"
   ],

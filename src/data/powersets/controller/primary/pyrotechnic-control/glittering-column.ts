@@ -25,6 +25,7 @@ export const GlitteringColumn: Power = {
     "castTime": 1.17
   },
   "allowedEnhancements": [
+    "Taunt",
     "EnduranceReduction",
     "Range",
     "Recharge",

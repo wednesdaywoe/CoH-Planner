@@ -2,7 +2,7 @@
  * Bayonet
  * Melee, Moderate DMG(Lethal), DoT(Lethal)
  *
- * Source: arachnos-soldier/arachnos-soldier
+ * Source: arachnos_soldiers/arachnos_soldier/bayonet.json
  */
 
 import type { Power } from '@/types';
@@ -16,8 +16,17 @@ export const Bayonet: Power = {
   "powerType": "Click",
   "effectArea": "SingleTarget",
   "maxSlots": 6,
-  "allowedEnhancements": [],
-  "allowedSetCategories": [],
+  "allowedEnhancements": [
+    "EnduranceReduction",
+    "Recharge",
+    "Damage",
+    "Accuracy"
+  ],
+  "allowedSetCategories": [
+    "Melee Damage",
+    "Soldiers of Arachnos Archetype Sets",
+    "Universal Damage Sets"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 7,
@@ -25,5 +34,24 @@ export const Bayonet: Power = {
     "endurance": 8.528,
     "castTime": 1.67
   },
-  "targetType": "Foe (Alive)"
+  "targetType": "Foe (Alive)",
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 1.44,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.44,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.12,
+      "table": "Melee_Damage",
+      "duration": 5.1,
+      "tickRate": 1
+    }
+  ]
 };

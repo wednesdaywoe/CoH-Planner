@@ -2,7 +2,7 @@
  * White Dwarf Antagonize
  * Ranged (Targeted AoE), Foe Taunt
  *
- * Source: peacebringer/luminous-aura
+ * Source: peacebringer_defensive/luminous_aura/white_dwarf_antagonize.json
  */
 
 import type { Power } from '@/types';
@@ -34,5 +34,11 @@ export const WhiteDwarfAntagonize: Power = {
     "maxTargets": 5
   },
   "targetType": "Foe (Alive)",
-  "requires": "White Dwarf"
+  "requires": "White Dwarf",
+  "effects": {
+    "rangeBuff": {
+      "scale": 0.75,
+      "table": "Melee_Ones"
+    }
+  }
 };

@@ -25,6 +25,7 @@ export const DisruptionArrow: Power = {
     "castTime": 1.16
   },
   "allowedEnhancements": [
+    "EnduranceModification",
     "EnduranceReduction",
     "Range",
     "Recharge"

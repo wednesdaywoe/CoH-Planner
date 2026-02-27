@@ -26,6 +26,7 @@ export const ParasiticAura: Power = {
     "maxTargets": 10
   },
   "allowedEnhancements": [
+    "EnduranceModification",
     "EnduranceReduction",
     "Recharge",
     "Healing",

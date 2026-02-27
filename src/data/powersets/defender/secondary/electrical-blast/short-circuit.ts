@@ -26,6 +26,7 @@ export const ShortCircuit: Power = {
     "maxTargets": 16
   },
   "allowedEnhancements": [
+    "EnduranceModification",
     "EnduranceReduction",
     "Recharge",
     "Damage",

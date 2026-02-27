@@ -27,6 +27,7 @@ export const SeismicMallet: Power = {
     "Hold",
     "EnduranceReduction",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],

@@ -23,6 +23,8 @@ export const SoundBarrier: Power = {
     "castTime": 2.7
   },
   "allowedEnhancements": [
+    "Resistance",
+    "EnduranceModification",
     "Recharge",
     "Healing"
   ],

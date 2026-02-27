@@ -28,6 +28,7 @@ export const AxeCyclone: Power = {
   "allowedEnhancements": [
     "EnduranceReduction",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],

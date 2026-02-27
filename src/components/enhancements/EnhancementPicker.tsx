@@ -993,6 +993,9 @@ function IOSetRow({
             <button
               key={pieceIndex}
               data-piece-index={pieceIndex}
+              onMouseDown={(e) => !isDisabled && onPieceMouseDown(set, pieceIndex, e)}
+              onMouseEnter={() => !isDisabled && onPieceMouseEnter(pieceIndex)}
+              onMouseUp={(e) => !isDisabled && onPieceMouseUp(set, pieceIndex, e)}
               onTouchStart={(e) => !isDisabled && onPieceTouchStart(set, pieceIndex, e)}
               onTouchMove={(e) => !isDisabled && onPieceTouchMove(e)}
               onTouchEnd={(e) => !isDisabled && onPieceTouchEnd(set, e)}

@@ -24,10 +24,12 @@ export const Fault: Power = {
     "castTime": 2.1
   },
   "allowedEnhancements": [
+    "Taunt",
     "EnduranceReduction",
     "Range",
     "Stun",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],

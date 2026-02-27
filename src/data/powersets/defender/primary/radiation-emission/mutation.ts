@@ -24,6 +24,7 @@ export const Mutation: Power = {
     "castTime": 1.83
   },
   "allowedEnhancements": [
+    "EnduranceModification",
     "EnduranceReduction",
     "Range",
     "Recharge"

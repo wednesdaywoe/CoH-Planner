@@ -28,8 +28,10 @@ export const InnocuousStrikes: Power = {
   },
   "allowedEnhancements": [
     "Slow",
+    "Taunt",
     "EnduranceReduction",
     "Recharge",
+    "Immobilize",
     "Damage",
     "Accuracy"
   ],

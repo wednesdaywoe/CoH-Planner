@@ -24,8 +24,10 @@ export const Swoop: Power = {
     "castTime": 1.37
   },
   "allowedEnhancements": [
+    "Taunt",
     "EnduranceReduction",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],

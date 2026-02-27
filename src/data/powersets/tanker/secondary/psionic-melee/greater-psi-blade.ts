@@ -25,6 +25,7 @@ export const GreaterPsiBlade: Power = {
   },
   "allowedEnhancements": [
     "Hold",
+    "Taunt",
     "EnduranceReduction",
     "Recharge",
     "Damage",

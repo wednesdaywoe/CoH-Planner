@@ -26,6 +26,7 @@ export const MementoMori: Power = {
     "maxTargets": 10
   },
   "allowedEnhancements": [
+    "EnduranceModification",
     "Recharge",
     "Healing",
     "Fear"

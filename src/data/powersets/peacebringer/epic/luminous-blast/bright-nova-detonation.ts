@@ -2,7 +2,7 @@
  * Bright Nova Detonation
  * Ranged (Targeted AoE), Light DMG(Smash/Energy), Foe -DEF, Knockback
  *
- * Source: peacebringer/luminous-blast
+ * Source: peacebringer_offensive/luminous_blast/bright_nova_detonation.json
  */
 
 import type { Power } from '@/types';
@@ -43,5 +43,27 @@ export const BrightNovaDetonation: Power = {
     "maxTargets": 16
   },
   "targetType": "Foe (Alive)",
-  "requires": "Bright Nova"
+  "requires": "Bright Nova",
+  "damage": [
+    {
+      "type": "Energy",
+      "scale": 0.6,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.3,
+      "table": "Ranged_InherentDamage"
+    }
+  ],
+  "effects": {
+    "knockback": {
+      "scale": 2,
+      "table": "Ranged_Knockback"
+    },
+    "defenseDebuff": {
+      "scale": 1,
+      "table": "Ranged_Debuff_Def"
+    }
+  }
 };

@@ -25,6 +25,7 @@ export const ShinBreaker: Power = {
   },
   "allowedEnhancements": [
     "Slow",
+    "Taunt",
     "EnduranceReduction",
     "Recharge",
     "Defense Debuff",

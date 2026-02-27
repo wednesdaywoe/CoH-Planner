@@ -26,6 +26,7 @@ export const Cremate: Power = {
   "allowedEnhancements": [
     "EnduranceReduction",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],

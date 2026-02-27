@@ -30,6 +30,7 @@ export const TenebrousTentacles: Power = {
     "EnduranceReduction",
     "Range",
     "Recharge",
+    "Immobilize",
     "ToHit Debuff",
     "Damage",
     "Accuracy"

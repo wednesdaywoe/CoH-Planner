@@ -27,6 +27,8 @@ export const Lich: Power = {
   "allowedEnhancements": [
     "Hold",
     "EnduranceReduction",
+    "Knockback",
+    "Immobilize",
     "Fear",
     "ToHit Debuff",
     "Damage",

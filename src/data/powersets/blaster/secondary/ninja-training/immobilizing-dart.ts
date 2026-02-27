@@ -27,6 +27,7 @@ export const ImmobilizingDart: Power = {
     "EnduranceReduction",
     "Range",
     "Recharge",
+    "Immobilize",
     "Damage",
     "Accuracy"
   ],

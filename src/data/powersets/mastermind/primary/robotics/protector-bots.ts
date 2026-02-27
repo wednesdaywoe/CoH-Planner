@@ -27,8 +27,10 @@ export const ProtectorBots: Power = {
   "allowedEnhancements": [
     "EnduranceReduction",
     "Stun",
+    "Knockback",
     "ToHit Debuff",
     "Damage",
+    "Defense",
     "Accuracy"
   ],
   "allowedSetCategories": [

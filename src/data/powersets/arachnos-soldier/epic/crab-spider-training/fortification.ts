@@ -2,7 +2,7 @@
  * Fortification
  * Toggle: Self +Res(Disorient, Hold, Immobilize, Sleep, All DMG but Psionics)
  *
- * Source: arachnos-soldier/crab-spider-training
+ * Source: training_gadgets/crab_spider_training/fortification.json
  */
 
 import type { Power } from '@/types';
@@ -30,5 +30,58 @@ export const Fortification: Power = {
     "endurance": 0.104,
     "castTime": 2.33
   },
-  "targetType": "Self"
+  "targetType": "Self",
+  "effects": {
+    "resistance": {
+      "smashing": {
+        "scale": 1.5,
+        "table": "Melee_Res_Dmg"
+      },
+      "lethal": {
+        "scale": 1.5,
+        "table": "Melee_Res_Dmg"
+      },
+      "fire": {
+        "scale": 2.5,
+        "table": "Melee_Res_Dmg"
+      },
+      "cold": {
+        "scale": 2.5,
+        "table": "Melee_Res_Dmg"
+      },
+      "energy": {
+        "scale": 2.5,
+        "table": "Melee_Res_Dmg"
+      },
+      "negative": {
+        "scale": 2.5,
+        "table": "Melee_Res_Dmg"
+      },
+      "toxic": {
+        "scale": 2.5,
+        "table": "Melee_Res_Dmg"
+      }
+    },
+    "hold": {
+      "mag": 1,
+      "scale": 24,
+      "table": "Melee_Res_Boolean"
+    },
+    "immobilize": {
+      "mag": 1,
+      "scale": 24,
+      "table": "Melee_Res_Boolean"
+    },
+    "stun": {
+      "mag": 1,
+      "scale": 24,
+      "table": "Melee_Res_Boolean"
+    },
+    "sleep": {
+      "mag": 1,
+      "scale": 24,
+      "table": "Melee_Res_Boolean"
+    },
+    "effectDuration": 0.75
+  }
 };

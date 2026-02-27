@@ -29,6 +29,7 @@ export const SoulDrain: Power = {
     "EnduranceReduction",
     "Recharge",
     "Damage",
+    "ToHit",
     "Accuracy"
   ],
   "allowedSetCategories": [

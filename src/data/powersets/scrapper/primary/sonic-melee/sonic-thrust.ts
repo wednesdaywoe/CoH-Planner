@@ -26,6 +26,7 @@ export const SonicThrust: Power = {
   "allowedEnhancements": [
     "EnduranceReduction",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],
@@ -40,5 +41,51 @@ export const SonicThrust: Power = {
     "type": "Energy",
     "scale": 0.76,
     "table": "Melee_Damage"
+  },
+  "effects": {
+    "elusivity": {
+      "all": {
+        "scale": 0.8,
+        "table": "Melee_Debuff_Res_Dmg"
+      }
+    },
+    "enduranceDrain": {
+      "scale": 0.8,
+      "table": "Melee_Debuff_Res_Dmg"
+    },
+    "tohitDebuff": {
+      "scale": 0.8,
+      "table": "Melee_Debuff_Res_Dmg"
+    },
+    "slow": {
+      "runSpeed": {
+        "scale": 0.8,
+        "table": "Melee_Debuff_Res_Dmg"
+      },
+      "flySpeed": {
+        "scale": 0.8,
+        "table": "Melee_Debuff_Res_Dmg"
+      },
+      "jumpSpeed": {
+        "scale": 0.8,
+        "table": "Melee_Debuff_Res_Dmg"
+      }
+    },
+    "regenDebuff": {
+      "scale": 0.8,
+      "table": "Melee_Debuff_Res_Dmg"
+    },
+    "recoveryDebuff": {
+      "scale": 0.8,
+      "table": "Melee_Debuff_Res_Dmg"
+    },
+    "rechargeDebuff": {
+      "scale": 0.8,
+      "table": "Melee_Debuff_Res_Dmg"
+    },
+    "knockback": {
+      "scale": 0.67,
+      "table": "Melee_Ones"
+    }
   }
 };

@@ -23,6 +23,7 @@ export const MetabolicAcceleration: Power = {
     "castTime": 0.73
   },
   "allowedEnhancements": [
+    "EnduranceModification",
     "Recharge",
     "Healing"
   ],

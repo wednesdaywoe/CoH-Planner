@@ -24,6 +24,7 @@ export const RendArmor: Power = {
     "castTime": 2.3
   },
   "allowedEnhancements": [
+    "Taunt",
     "EnduranceReduction",
     "Recharge",
     "Defense Debuff",

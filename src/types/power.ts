@@ -488,6 +488,14 @@ export interface Power {
   maxTargets?: number;
   /** Prerequisite power(s) - logical expression */
   requires?: string;
+  /**
+   * If set, this power is a mechanic (non-standard) power:
+   * - 'childToggle': Auto-granted child toggle (ammo types, stance forms, adaptations)
+   * - 'parentMechanic': Pickable parent that grants child toggles (Swap Ammo, Staff Mastery)
+   * - 'hiddenPassive': Hidden intrinsic passive (Seismic Shockwaves)
+   * - 'hiddenAuto': Completely hidden auto-power (Phoenix Rising)
+   */
+  mechanicType?: 'childToggle' | 'parentMechanic' | 'hiddenPassive' | 'hiddenAuto';
   /** Base stats for this power (new format) */
   stats?: PowerStats;
   /** Damage entries with scale and table (new format) - can be array or single entry */

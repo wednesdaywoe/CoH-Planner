@@ -2,7 +2,7 @@
  * Tactical Training: Assault
  * Toggle: PBAoE, Team +DMG, Res(Taunt, Placate)
  *
- * Source: arachnos-soldier/training-and-gadgets
+ * Source: training_gadgets/training_and_gadgets/tactical_training:_assault.json
  */
 
 import type { Power } from '@/types';
@@ -29,5 +29,11 @@ export const TacticalTrainingAssault: Power = {
     "radius": 60,
     "maxTargets": 255
   },
-  "targetType": "Self"
+  "targetType": "Self",
+  "effects": {
+    "damageBuff": {
+      "scale": 1.5,
+      "table": "Ranged_Buff_Dmg"
+    }
+  }
 };

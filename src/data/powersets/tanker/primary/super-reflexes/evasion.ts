@@ -26,8 +26,10 @@ export const Evasion: Power = {
     "maxTargets": 10
   },
   "allowedEnhancements": [
+    "Taunt",
     "EnduranceReduction",
-    "Recharge"
+    "Recharge",
+    "Defense"
   ],
   "allowedSetCategories": [
     "Defense Sets",

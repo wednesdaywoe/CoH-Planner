@@ -24,6 +24,7 @@ export const AlphaBarrier: Power = {
     "castTime": 0.67
   },
   "allowedEnhancements": [
+    "Resistance",
     "EnduranceReduction",
     "Recharge"
   ],

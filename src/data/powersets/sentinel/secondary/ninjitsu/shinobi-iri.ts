@@ -24,7 +24,8 @@ export const ShinobiIri: Power = {
   },
   "allowedEnhancements": [
     "EnduranceReduction",
-    "Recharge"
+    "Recharge",
+    "Defense"
   ],
   "allowedSetCategories": [
     "Defense Sets"

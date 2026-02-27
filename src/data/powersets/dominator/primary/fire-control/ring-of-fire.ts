@@ -27,6 +27,7 @@ export const RingofFire: Power = {
     "EnduranceReduction",
     "Range",
     "Recharge",
+    "Immobilize",
     "Damage",
     "Accuracy"
   ],

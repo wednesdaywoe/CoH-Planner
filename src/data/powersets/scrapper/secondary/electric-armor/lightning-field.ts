@@ -26,6 +26,7 @@ export const LightningField: Power = {
     "maxTargets": 10
   },
   "allowedEnhancements": [
+    "EnduranceModification",
     "EnduranceReduction",
     "Recharge",
     "Damage",

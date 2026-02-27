@@ -30,6 +30,7 @@ export const Shockwave: Power = {
     "EnduranceReduction",
     "Range",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],

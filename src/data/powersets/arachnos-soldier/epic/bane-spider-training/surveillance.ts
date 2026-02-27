@@ -2,7 +2,7 @@
  * Surveillance
  * Ranged Foe -DEF, -RES (All)
  *
- * Source: arachnos-soldier/bane-spider-training
+ * Source: training_gadgets/bane_spider_training/surveillance.json
  */
 
 import type { Power } from '@/types';
@@ -33,5 +33,45 @@ export const Surveillance: Power = {
     "endurance": 10.66,
     "castTime": 1.5
   },
-  "targetType": "Foe (Alive)"
+  "targetType": "Foe (Alive)",
+  "effects": {
+    "resistanceDebuff": {
+      "smashing": {
+        "scale": 2,
+        "table": "Melee_Res_Dmg"
+      },
+      "lethal": {
+        "scale": 2,
+        "table": "Melee_Res_Dmg"
+      },
+      "fire": {
+        "scale": 2,
+        "table": "Melee_Res_Dmg"
+      },
+      "cold": {
+        "scale": 2,
+        "table": "Melee_Res_Dmg"
+      },
+      "energy": {
+        "scale": 2,
+        "table": "Melee_Res_Dmg"
+      },
+      "negative": {
+        "scale": 2,
+        "table": "Melee_Res_Dmg"
+      },
+      "psionic": {
+        "scale": 2,
+        "table": "Melee_Res_Dmg"
+      },
+      "toxic": {
+        "scale": 2,
+        "table": "Melee_Res_Dmg"
+      }
+    },
+    "defenseDebuff": {
+      "scale": 2,
+      "table": "Melee_Debuff_Def"
+    }
+  }
 };

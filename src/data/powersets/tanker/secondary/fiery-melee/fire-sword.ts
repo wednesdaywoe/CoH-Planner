@@ -24,6 +24,7 @@ export const FireSword: Power = {
     "castTime": 1.33
   },
   "allowedEnhancements": [
+    "Taunt",
     "EnduranceReduction",
     "Recharge",
     "Defense Debuff",

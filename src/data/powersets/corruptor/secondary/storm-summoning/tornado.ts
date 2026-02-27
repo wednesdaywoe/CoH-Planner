@@ -29,6 +29,7 @@ export const Tornado: Power = {
     "Range",
     "Stun",
     "Recharge",
+    "Knockback",
     "Defense Debuff",
     "Damage"
   ],

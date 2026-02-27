@@ -27,6 +27,7 @@ export const FollowUp: Power = {
     "EnduranceReduction",
     "Recharge",
     "Damage",
+    "ToHit",
     "Accuracy"
   ],
   "allowedSetCategories": [

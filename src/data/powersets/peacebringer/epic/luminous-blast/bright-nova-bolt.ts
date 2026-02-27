@@ -2,7 +2,7 @@
  * Bright Nova Bolt
  * Ranged, Minor DMG(Energy), Foe -DEF
  *
- * Source: peacebringer/luminous-blast
+ * Source: peacebringer_offensive/luminous_blast/bright_nova_bolt.json
  */
 
 import type { Power } from '@/types';
@@ -39,5 +39,16 @@ export const BrightNovaBolt: Power = {
     "castTime": 1.5
   },
   "targetType": "Foe (Alive)",
-  "requires": "Bright Nova"
+  "requires": "Bright Nova",
+  "damage": {
+    "type": "Energy",
+    "scale": 0.6,
+    "table": "Ranged_InherentDamage"
+  },
+  "effects": {
+    "defenseDebuff": {
+      "scale": 1,
+      "table": "Ranged_Debuff_Def"
+    }
+  }
 };

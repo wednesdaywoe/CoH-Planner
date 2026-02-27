@@ -26,6 +26,7 @@ export const ChainLightning: Power = {
     "maxTargets": 16
   },
   "allowedEnhancements": [
+    "EnduranceModification",
     "EnduranceReduction",
     "Range",
     "Recharge",

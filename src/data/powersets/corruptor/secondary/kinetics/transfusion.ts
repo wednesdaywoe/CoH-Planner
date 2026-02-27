@@ -24,6 +24,7 @@ export const Transfusion: Power = {
     "castTime": 1.17
   },
   "allowedEnhancements": [
+    "EnduranceModification",
     "EnduranceReduction",
     "Range",
     "Recharge",

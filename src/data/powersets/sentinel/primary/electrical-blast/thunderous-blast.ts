@@ -26,6 +26,7 @@ export const ThunderousBlast: Power = {
     "maxTargets": 10
   },
   "allowedEnhancements": [
+    "EnduranceModification",
     "EnduranceReduction",
     "Range",
     "Recharge",

@@ -27,8 +27,10 @@ export const SpeedBoost: Power = {
     "maxTargets": 255
   },
   "allowedEnhancements": [
+    "EnduranceModification",
     "EnduranceReduction",
     "Range",
+    "Run Speed",
     "Recharge"
   ],
   "allowedSetCategories": [

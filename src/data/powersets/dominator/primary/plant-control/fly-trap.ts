@@ -28,6 +28,7 @@ export const FlyTrap: Power = {
     "EnduranceReduction",
     "Range",
     "Recharge",
+    "Immobilize",
     "Defense Debuff",
     "Damage",
     "Accuracy"

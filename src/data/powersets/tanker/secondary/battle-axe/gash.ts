@@ -24,8 +24,10 @@ export const Gash: Power = {
     "castTime": 1.27
   },
   "allowedEnhancements": [
+    "Taunt",
     "EnduranceReduction",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],

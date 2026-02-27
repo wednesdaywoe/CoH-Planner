@@ -29,6 +29,7 @@ export const FireCages: Power = {
     "EnduranceReduction",
     "Range",
     "Recharge",
+    "Immobilize",
     "Damage",
     "Accuracy"
   ],

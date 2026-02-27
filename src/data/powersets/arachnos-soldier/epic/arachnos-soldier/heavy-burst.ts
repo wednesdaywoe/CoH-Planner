@@ -2,7 +2,7 @@
  * Heavy Burst
  * Ranged Cone, Moderate DMG(Lethal), Foe -DEF
  *
- * Source: arachnos-soldier/arachnos-soldier
+ * Source: arachnos_soldiers/arachnos_soldier/heavy_burst.json
  */
 
 import type { Power } from '@/types';
@@ -16,8 +16,21 @@ export const HeavyBurst: Power = {
   "powerType": "Click",
   "effectArea": "Cone",
   "maxSlots": 6,
-  "allowedEnhancements": [],
-  "allowedSetCategories": [],
+  "allowedEnhancements": [
+    "EnduranceReduction",
+    "Range",
+    "Recharge",
+    "Defense Debuff",
+    "Damage",
+    "Accuracy"
+  ],
+  "allowedSetCategories": [
+    "Accurate Defense Debuff",
+    "Defense Debuff",
+    "Ranged AoE Damage",
+    "Soldiers of Arachnos Archetype Sets",
+    "Universal Damage Sets"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 50,
@@ -25,6 +38,7 @@ export const HeavyBurst: Power = {
     "endurance": 11.856,
     "castTime": 2.5,
     "radius": 50,
+    "arc": 0.5236,
     "maxTargets": 10
   },
   "targetType": "Foe (Alive)"

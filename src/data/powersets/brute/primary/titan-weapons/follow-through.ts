@@ -24,9 +24,11 @@ export const FollowThrough: Power = {
     "castTime": 1.1
   },
   "allowedEnhancements": [
+    "Taunt",
     "EnduranceReduction",
     "Stun",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],

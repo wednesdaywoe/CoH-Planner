@@ -24,6 +24,7 @@ export const CrushingBlow: Power = {
     "castTime": 2
   },
   "allowedEnhancements": [
+    "Taunt",
     "EnduranceReduction",
     "Recharge",
     "Defense Debuff",

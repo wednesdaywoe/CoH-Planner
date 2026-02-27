@@ -24,6 +24,7 @@ export const Hemorrhage: Power = {
     "castTime": 2
   },
   "allowedEnhancements": [
+    "Taunt",
     "EnduranceReduction",
     "Recharge",
     "Damage",

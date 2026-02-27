@@ -24,6 +24,7 @@ export const Rime: Power = {
     "castTime": 0.73
   },
   "allowedEnhancements": [
+    "Resistance",
     "EnduranceReduction",
     "Recharge",
     "Healing"

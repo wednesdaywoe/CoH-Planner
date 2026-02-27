@@ -23,6 +23,7 @@ export const Confront: Power = {
     "castTime": 2
   },
   "allowedEnhancements": [
+    "Taunt",
     "Range",
     "Recharge",
     "Accuracy"

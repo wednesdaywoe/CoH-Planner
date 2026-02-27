@@ -27,9 +27,11 @@ export const Shockwave: Power = {
     "maxTargets": 10
   },
   "allowedEnhancements": [
+    "Taunt",
     "EnduranceReduction",
     "Range",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],

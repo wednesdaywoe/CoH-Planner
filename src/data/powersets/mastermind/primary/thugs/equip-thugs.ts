@@ -28,7 +28,8 @@ export const EquipThugs: Power = {
   "allowedEnhancements": [
     "EnduranceReduction",
     "Range",
-    "Recharge"
+    "Recharge",
+    "ToHit"
   ],
   "allowedSetCategories": [
     "To Hit Buff"

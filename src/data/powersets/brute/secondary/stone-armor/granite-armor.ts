@@ -24,8 +24,10 @@ export const GraniteArmor: Power = {
     "castTime": 0.73
   },
   "allowedEnhancements": [
+    "Resistance",
     "EnduranceReduction",
-    "Recharge"
+    "Recharge",
+    "Defense"
   ],
   "allowedSetCategories": [
     "Defense Sets",

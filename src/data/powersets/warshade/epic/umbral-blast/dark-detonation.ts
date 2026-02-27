@@ -2,7 +2,7 @@
  * Dark Detonation
  * Ranged (Targeted AoE), Light DMG(Negative), Foe Knockback, -Recharge, -SPD
  *
- * Source: warshade/umbral-blast
+ * Source: warshade_offensive/umbral_blast/dark_matter_detonation.json
  */
 
 import type { Power } from '@/types';
@@ -41,5 +41,38 @@ export const DarkDetonation: Power = {
     "radius": 15,
     "maxTargets": 16
   },
-  "targetType": "Foe (Alive)"
+  "targetType": "Foe (Alive)",
+  "damage": {
+    "type": "Negative",
+    "scale": 0.9,
+    "table": "Ranged_Damage"
+  },
+  "effects": {
+    "knockback": {
+      "scale": 2,
+      "table": "Ranged_Knockback"
+    },
+    "movement": {
+      "jumpHeight": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      },
+      "runSpeed": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      },
+      "flySpeed": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      }
+    },
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Ranged_Slow"
+    }
+  }
 };

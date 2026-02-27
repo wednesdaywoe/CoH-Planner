@@ -2,7 +2,7 @@
  * Quasar
  * PBAoE, Extreme DMG(Negative), Foe -Recharge, -SPD, Knockback
  *
- * Source: warshade/umbral-blast
+ * Source: warshade_offensive/umbral_blast/quasar.json
  */
 
 import type { Power } from '@/types';
@@ -39,5 +39,38 @@ export const Quasar: Power = {
     "radius": 25,
     "maxTargets": 16
   },
-  "targetType": "Self"
+  "targetType": "Self",
+  "damage": {
+    "type": "Negative",
+    "scale": 4,
+    "table": "Ranged_Damage"
+  },
+  "effects": {
+    "knockback": {
+      "scale": 10,
+      "table": "Ranged_Knockback"
+    },
+    "movement": {
+      "jumpHeight": {
+        "scale": 0.3,
+        "table": "Ranged_Slow"
+      },
+      "runSpeed": {
+        "scale": 0.3,
+        "table": "Ranged_Slow"
+      },
+      "flySpeed": {
+        "scale": 0.3,
+        "table": "Ranged_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.3,
+        "table": "Ranged_Slow"
+      }
+    },
+    "rechargeDebuff": {
+      "scale": 0.3,
+      "table": "Ranged_Slow"
+    }
+  }
 };

@@ -26,8 +26,10 @@ export const WhirlingSmash: Power = {
     "maxTargets": 10
   },
   "allowedEnhancements": [
+    "Taunt",
     "EnduranceReduction",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],

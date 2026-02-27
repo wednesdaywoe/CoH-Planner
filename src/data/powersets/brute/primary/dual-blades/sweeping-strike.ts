@@ -27,6 +27,7 @@ export const SweepingStrike: Power = {
     "maxTargets": 5
   },
   "allowedEnhancements": [
+    "Taunt",
     "EnduranceReduction",
     "Recharge",
     "Damage",

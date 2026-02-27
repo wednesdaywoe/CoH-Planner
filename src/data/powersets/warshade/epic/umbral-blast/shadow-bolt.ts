@@ -2,7 +2,7 @@
  * Shadow Bolt
  * Ranged, Minor DMG(Negative), Foe -Recharge, -SPD
  *
- * Source: warshade/umbral-blast
+ * Source: warshade_offensive/umbral_blast/shadow_bolt.json
  */
 
 import type { Power } from '@/types';

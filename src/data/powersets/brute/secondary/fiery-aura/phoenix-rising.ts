@@ -23,6 +23,7 @@ export const PhoenixRising: Power = {
     "castTime": 2
   },
   "allowedEnhancements": [
+    "EnduranceModification",
     "Stun",
     "Recharge",
     "Healing",

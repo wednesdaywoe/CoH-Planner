@@ -26,6 +26,7 @@ export const Consume: Power = {
     "maxTargets": 10
   },
   "allowedEnhancements": [
+    "EnduranceModification",
     "EnduranceReduction",
     "Recharge",
     "Healing",

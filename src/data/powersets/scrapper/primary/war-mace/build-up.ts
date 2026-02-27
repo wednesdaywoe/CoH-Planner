@@ -25,7 +25,8 @@ export const BuildUp: Power = {
   },
   "allowedEnhancements": [
     "EnduranceReduction",
-    "Recharge"
+    "Recharge",
+    "ToHit"
   ],
   "allowedSetCategories": [
     "Scrapper Archetype Sets",

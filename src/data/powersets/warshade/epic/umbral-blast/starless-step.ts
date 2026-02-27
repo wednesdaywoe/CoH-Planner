@@ -2,7 +2,7 @@
  * Starless Step
  * Ranged (Location), Self Teleport, ToHit
  *
- * Source: warshade/umbral-blast
+ * Source: warshade_offensive/umbral_blast/starless_step.json
  */
 
 import type { Power } from '@/types';
@@ -34,5 +34,11 @@ export const StarlessStep: Power = {
     "endurance": 5.5714,
     "castTime": 0.67
   },
-  "targetType": "Location (Teleport)"
+  "targetType": "Location (Teleport)",
+  "effects": {
+    "tohitBuff": {
+      "scale": 1,
+      "table": "Melee_Buff_ToHit"
+    }
+  }
 };

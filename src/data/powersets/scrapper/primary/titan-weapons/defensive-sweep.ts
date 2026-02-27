@@ -30,6 +30,7 @@ export const DefensiveSweep: Power = {
     "EnduranceReduction",
     "Recharge",
     "Damage",
+    "Defense",
     "Accuracy"
   ],
   "allowedSetCategories": [

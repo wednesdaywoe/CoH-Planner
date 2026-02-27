@@ -2,7 +2,7 @@
  * Tactical Training: Maneuvers
  * PBAoE, Team +DEF(All)
  *
- * Source: arachnos-soldier/training-and-gadgets
+ * Source: training_gadgets/training_and_gadgets/tactical_training:_maneuvers.json
  */
 
 import type { Power } from '@/types';
@@ -32,5 +32,53 @@ export const TacticalTrainingManeuvers: Power = {
     "radius": 60,
     "maxTargets": 255
   },
-  "targetType": "Self"
+  "targetType": "Self",
+  "effects": {
+    "defenseBuff": {
+      "ranged": {
+        "scale": 1,
+        "table": "Ranged_Buff_Def"
+      },
+      "melee": {
+        "scale": 1,
+        "table": "Ranged_Buff_Def"
+      },
+      "aoe": {
+        "scale": 1,
+        "table": "Ranged_Buff_Def"
+      },
+      "smashing": {
+        "scale": 1,
+        "table": "Ranged_Buff_Def"
+      },
+      "lethal": {
+        "scale": 1,
+        "table": "Ranged_Buff_Def"
+      },
+      "fire": {
+        "scale": 1,
+        "table": "Ranged_Buff_Def"
+      },
+      "cold": {
+        "scale": 1,
+        "table": "Ranged_Buff_Def"
+      },
+      "energy": {
+        "scale": 1,
+        "table": "Ranged_Buff_Def"
+      },
+      "negative": {
+        "scale": 1,
+        "table": "Ranged_Buff_Def"
+      },
+      "psionic": {
+        "scale": 1,
+        "table": "Ranged_Buff_Def"
+      },
+      "toxic": {
+        "scale": 1,
+        "table": "Ranged_Buff_Def"
+      }
+    }
+  }
 };

@@ -26,6 +26,7 @@ export const BattleDrones: Power = {
   },
   "allowedEnhancements": [
     "EnduranceReduction",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],

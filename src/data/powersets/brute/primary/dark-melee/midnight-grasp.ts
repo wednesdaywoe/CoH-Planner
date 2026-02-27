@@ -24,8 +24,10 @@ export const MidnightGrasp: Power = {
     "castTime": 2.07
   },
   "allowedEnhancements": [
+    "Taunt",
     "EnduranceReduction",
     "Recharge",
+    "Immobilize",
     "ToHit Debuff",
     "Damage",
     "Accuracy"

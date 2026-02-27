@@ -26,6 +26,8 @@ export const SummonWolves: Power = {
   },
   "allowedEnhancements": [
     "EnduranceReduction",
+    "Run Speed",
+    "Knockback",
     "ToHit Debuff",
     "Defense Debuff",
     "Damage",

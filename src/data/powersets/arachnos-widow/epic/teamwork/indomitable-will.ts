@@ -2,7 +2,7 @@
  * Indomitable Will
  * Toggle: Self Res (Psionics, Disorient, Hold, Immobilize, Sleep, Fear, Confuse, Repel, Knockback).
  *
- * Source: arachnos-widow/teamwork
+ * Source: teamwork/teamwork/indomitable_will.json
  */
 
 import type { Power } from '@/types';
@@ -30,5 +30,56 @@ export const IndomitableWill: Power = {
     "endurance": 0.104,
     "castTime": 0.73
   },
-  "targetType": "Self"
+  "targetType": "Self",
+  "effects": {
+    "confuse": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "fear": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "hold": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "stun": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "sleep": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "resistance": {
+      "psionic": {
+        "scale": 1,
+        "table": "Melee_Res_Dmg"
+      }
+    },
+    "immobilize": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "knockup": {
+      "scale": 10,
+      "table": "Melee_Ones"
+    },
+    "knockback": {
+      "scale": 10,
+      "table": "Melee_Ones"
+    },
+    "repel": {
+      "scale": 10,
+      "table": "Melee_Ones"
+    },
+    "effectDuration": 0.75
+  }
 };

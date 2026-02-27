@@ -24,6 +24,7 @@ export const ProtonTherapy: Power = {
     "castTime": 1.03
   },
   "allowedEnhancements": [
+    "EnduranceModification",
     "EnduranceReduction",
     "Recharge",
     "Healing"

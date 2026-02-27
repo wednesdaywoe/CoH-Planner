@@ -28,6 +28,7 @@ export const ToxicWebGrenade: Power = {
     "EnduranceReduction",
     "Range",
     "Recharge",
+    "Immobilize",
     "Damage",
     "Accuracy"
   ],

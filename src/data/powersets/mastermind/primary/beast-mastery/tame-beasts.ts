@@ -26,6 +26,7 @@ export const TameBeasts: Power = {
     "maxTargets": 16
   },
   "allowedEnhancements": [
+    "Resistance",
     "EnduranceReduction",
     "Range",
     "Healing"

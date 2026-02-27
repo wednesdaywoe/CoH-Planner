@@ -24,6 +24,8 @@ export const KujiInToh: Power = {
     "castTime": 1
   },
   "allowedEnhancements": [
+    "Resistance",
+    "EnduranceModification",
     "EnduranceReduction",
     "Recharge",
     "Healing"

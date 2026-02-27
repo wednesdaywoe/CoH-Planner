@@ -2,7 +2,7 @@
  * Nebulous Form
  * Toggle: Self Intangible, +Jump
  *
- * Source: warshade/umbral-aura
+ * Source: warshade_defensive/umbral_aura/nebulous_form.json
  */
 
 import type { Power } from '@/types';
@@ -31,5 +31,39 @@ export const NebulousForm: Power = {
     "recharge": 60,
     "endurance": 0.325
   },
-  "targetType": "Self"
+  "targetType": "Self",
+  "effects": {
+    "stealth": {
+      "translucency": {
+        "scale": 0.1,
+        "table": "Melee_Ones"
+      },
+      "stealthPvE": {
+        "scale": 20,
+        "table": "Melee_Ones"
+      },
+      "stealthPvP": {
+        "scale": 222,
+        "table": "Melee_Ones"
+      }
+    },
+    "movement": {
+      "jumpHeight": {
+        "scale": 0.5,
+        "table": "Melee_Leap"
+      },
+      "jumpSpeed": {
+        "scale": 0.5,
+        "table": "Melee_SpeedJumping"
+      },
+      "movementControl": {
+        "scale": 10,
+        "table": "Melee_Ones"
+      },
+      "movementFriction": {
+        "scale": 2,
+        "table": "Melee_Ones"
+      }
+    }
+  }
 };

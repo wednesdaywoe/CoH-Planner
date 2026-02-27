@@ -25,7 +25,8 @@ export const PersonalForceField: Power = {
   },
   "allowedEnhancements": [
     "EnduranceReduction",
-    "Recharge"
+    "Recharge",
+    "Defense"
   ],
   "allowedSetCategories": [
     "Defense Sets"

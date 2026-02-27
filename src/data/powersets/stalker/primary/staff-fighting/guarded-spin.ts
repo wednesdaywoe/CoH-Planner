@@ -30,6 +30,7 @@ export const GuardedSpin: Power = {
     "EnduranceReduction",
     "Recharge",
     "Damage",
+    "Defense",
     "Accuracy"
   ],
   "allowedSetCategories": [

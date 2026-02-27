@@ -27,6 +27,7 @@ export const ChillingEmbrace: Power = {
   },
   "allowedEnhancements": [
     "Slow",
+    "Taunt",
     "EnduranceReduction",
     "Recharge"
   ],

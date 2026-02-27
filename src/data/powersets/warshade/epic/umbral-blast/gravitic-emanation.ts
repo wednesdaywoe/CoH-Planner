@@ -2,7 +2,7 @@
  * Gravitic Emanation
  * Ranged (Cone), Minor DMG(Negative), Foe Disorient, Knockback, -Recharge, -SPD
  *
- * Source: warshade/umbral-blast
+ * Source: warshade_offensive/umbral_blast/gravitic_emanation.json
  */
 
 import type { Power } from '@/types';
@@ -41,7 +41,46 @@ export const GraviticEmanation: Power = {
     "endurance": 14.352,
     "castTime": 1,
     "radius": 40,
+    "arc": 0.7854,
     "maxTargets": 10
   },
-  "targetType": "Foe (Alive)"
+  "targetType": "Foe (Alive)",
+  "damage": {
+    "type": "Negative",
+    "scale": 0.4,
+    "table": "Ranged_Damage"
+  },
+  "effects": {
+    "knockback": {
+      "scale": 5,
+      "table": "Ranged_Knockback"
+    },
+    "stun": {
+      "mag": 3,
+      "scale": 10,
+      "table": "Ranged_Stun"
+    },
+    "movement": {
+      "jumpHeight": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      },
+      "runSpeed": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      },
+      "flySpeed": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      }
+    },
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Ranged_Slow"
+    }
+  }
 };

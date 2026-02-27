@@ -29,6 +29,7 @@ export const SonicClap: Power = {
     "EnduranceReduction",
     "Stun",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],
@@ -44,5 +45,16 @@ export const SonicClap: Power = {
     "type": "Energy",
     "scale": 0.78,
     "table": "Melee_Damage"
+  },
+  "effects": {
+    "knockback": {
+      "scale": 0.65,
+      "table": "Melee_Ones"
+    },
+    "stun": {
+      "mag": 2,
+      "scale": 8,
+      "table": "Melee_Fear"
+    }
   }
 };

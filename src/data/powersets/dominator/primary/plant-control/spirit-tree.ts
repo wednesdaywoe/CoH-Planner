@@ -25,6 +25,7 @@ export const SpiritTree: Power = {
     "castTime": 1.67
   },
   "allowedEnhancements": [
+    "Taunt",
     "EnduranceReduction",
     "Range",
     "Recharge",

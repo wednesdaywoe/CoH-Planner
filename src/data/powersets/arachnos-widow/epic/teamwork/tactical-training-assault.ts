@@ -2,7 +2,7 @@
  * Tactical Training: Assault
  * Toggle: PBAoE, Team +DMG, Res(Taunt, Placate)
  *
- * Source: arachnos-widow/teamwork
+ * Source: teamwork/teamwork/tactical_training:_assault.json
  */
 
 import type { Power } from '@/types';
@@ -29,5 +29,11 @@ export const TacticalTrainingAssault: Power = {
     "radius": 80,
     "maxTargets": 255
   },
-  "targetType": "Self"
+  "targetType": "Self",
+  "effects": {
+    "damageBuff": {
+      "scale": 1.5,
+      "table": "Ranged_Buff_Dmg"
+    }
+  }
 };

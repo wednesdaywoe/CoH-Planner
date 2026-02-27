@@ -25,8 +25,10 @@ export const KnockoutBlow: Power = {
   },
   "allowedEnhancements": [
     "Hold",
+    "Taunt",
     "EnduranceReduction",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],

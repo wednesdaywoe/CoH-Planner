@@ -2,7 +2,7 @@
  * Stygian Return
  * Self Rez, Special
  *
- * Source: warshade/umbral-aura
+ * Source: warshade_defensive/umbral_aura/stygian_return.json
  */
 
 import type { Power } from '@/types';
@@ -34,5 +34,30 @@ export const StygianReturn: Power = {
     "radius": 25,
     "maxTargets": 10
   },
-  "targetType": "Self"
+  "targetType": "Self",
+  "damage": [
+    {
+      "type": "Negative",
+      "scale": 1,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Heal",
+      "scale": 3,
+      "table": "Melee_Heal",
+      "duration": 0.5,
+      "tickRate": 1
+    }
+  ],
+  "effects": {
+    "enduranceGain": {
+      "scale": 30,
+      "table": "Melee_Ones"
+    },
+    "immobilize": {
+      "mag": 50,
+      "scale": 4,
+      "table": "Melee_Ones"
+    }
+  }
 };

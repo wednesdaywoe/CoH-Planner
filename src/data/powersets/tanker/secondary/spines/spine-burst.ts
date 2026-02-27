@@ -27,6 +27,7 @@ export const SpineBurst: Power = {
   },
   "allowedEnhancements": [
     "Slow",
+    "Taunt",
     "EnduranceReduction",
     "Recharge",
     "Damage",

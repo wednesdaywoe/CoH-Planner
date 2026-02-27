@@ -26,9 +26,11 @@ export const ThunderStrike: Power = {
     "maxTargets": 10
   },
   "allowedEnhancements": [
+    "Taunt",
     "EnduranceReduction",
     "Stun",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],

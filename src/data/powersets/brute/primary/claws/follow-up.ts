@@ -24,9 +24,11 @@ export const FollowUp: Power = {
     "castTime": 0.83
   },
   "allowedEnhancements": [
+    "Taunt",
     "EnduranceReduction",
     "Recharge",
     "Damage",
+    "ToHit",
     "Accuracy"
   ],
   "allowedSetCategories": [

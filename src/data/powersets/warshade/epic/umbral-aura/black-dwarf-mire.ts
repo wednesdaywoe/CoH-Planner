@@ -2,7 +2,7 @@
  * Black Dwarf Mire
  * PBAoE, Light DMG(Negative), Foe -Recharge, -SPD; Self +DMG, +ACC
  *
- * Source: warshade/umbral-aura
+ * Source: warshade_defensive/umbral_aura/black_dwarf_mire.json
  */
 
 import type { Power } from '@/types';
@@ -38,5 +38,42 @@ export const BlackDwarfMire: Power = {
     "maxTargets": 10
   },
   "targetType": "Self",
-  "requires": "Black Dwarf"
+  "requires": "Black Dwarf",
+  "damage": {
+    "type": "Negative",
+    "scale": 1,
+    "table": "Melee_InherentDamage"
+  },
+  "effects": {
+    "movement": {
+      "jumpHeight": {
+        "scale": 0.2,
+        "table": "Melee_Slow"
+      },
+      "runSpeed": {
+        "scale": 0.2,
+        "table": "Melee_Slow"
+      },
+      "flySpeed": {
+        "scale": 0.2,
+        "table": "Melee_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.2,
+        "table": "Melee_Slow"
+      }
+    },
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Melee_Slow"
+    },
+    "tohitBuff": {
+      "scale": 0.5,
+      "table": "Melee_Buff_ToHit"
+    },
+    "damageBuff": {
+      "scale": 1.25,
+      "table": "Melee_Buff_Dmg"
+    }
+  }
 };

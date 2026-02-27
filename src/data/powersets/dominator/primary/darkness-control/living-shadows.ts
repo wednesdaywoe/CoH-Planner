@@ -30,6 +30,7 @@ export const LivingShadows: Power = {
     "EnduranceReduction",
     "Range",
     "Recharge",
+    "Immobilize",
     "ToHit Debuff",
     "Damage",
     "Accuracy"

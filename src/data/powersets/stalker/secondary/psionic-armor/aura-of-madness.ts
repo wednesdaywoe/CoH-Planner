@@ -127,6 +127,10 @@ export const AuraofMadness: Power = {
       "scale": 2,
       "table": "Melee_Ones"
     },
-    "effectDuration": 4
+    "effectDuration": 4,
+    "damageDebuff": {
+      "scale": 1.995,
+      "table": "Melee_Debuff_Dam"
+    }
   }
 };

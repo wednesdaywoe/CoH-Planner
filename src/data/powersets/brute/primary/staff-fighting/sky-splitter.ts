@@ -24,9 +24,11 @@ export const SkySplitter: Power = {
     "castTime": 2.83
   },
   "allowedEnhancements": [
+    "Taunt",
     "EnduranceReduction",
     "Stun",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],

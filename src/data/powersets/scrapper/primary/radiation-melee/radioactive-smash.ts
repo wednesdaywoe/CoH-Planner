@@ -26,6 +26,7 @@ export const RadioactiveSmash: Power = {
   "allowedEnhancements": [
     "EnduranceReduction",
     "Recharge",
+    "Knockback",
     "Defense Debuff",
     "Damage",
     "Accuracy"

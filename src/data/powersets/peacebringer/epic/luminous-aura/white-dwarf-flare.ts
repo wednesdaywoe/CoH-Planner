@@ -2,7 +2,7 @@
  * White Dwarf Flare
  * PBAoE Melee, Light DMG(Energy), Foe -DEF, Knockback
  *
- * Source: peacebringer/luminous-aura
+ * Source: peacebringer_defensive/luminous_aura/white_dwarf_flare.json
  */
 
 import type { Power } from '@/types';
@@ -41,5 +41,20 @@ export const WhiteDwarfFlare: Power = {
     "maxTargets": 10
   },
   "targetType": "Self",
-  "requires": "White Dwarf"
+  "requires": "White Dwarf",
+  "damage": {
+    "type": "Energy",
+    "scale": 0.9,
+    "table": "Melee_InherentDamage"
+  },
+  "effects": {
+    "knockback": {
+      "scale": 0.67,
+      "table": "Melee_Ones"
+    },
+    "defenseDebuff": {
+      "scale": 2,
+      "table": "Melee_Debuff_Def"
+    }
+  }
 };

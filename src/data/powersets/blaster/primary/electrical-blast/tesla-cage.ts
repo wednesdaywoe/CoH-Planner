@@ -26,6 +26,7 @@ export const TeslaCage: Power = {
     "maxTargets": 1
   },
   "allowedEnhancements": [
+    "EnduranceModification",
     "Hold",
     "EnduranceReduction",
     "Range",

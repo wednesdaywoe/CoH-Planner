@@ -29,6 +29,8 @@ export const CarrionCreepers: Power = {
     "EnduranceReduction",
     "Range",
     "Recharge",
+    "Knockback",
+    "Immobilize",
     "Damage",
     "Accuracy"
   ],

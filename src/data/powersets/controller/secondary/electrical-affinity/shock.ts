@@ -24,6 +24,7 @@ export const Shock: Power = {
     "castTime": 2
   },
   "allowedEnhancements": [
+    "EnduranceModification",
     "EnduranceReduction",
     "Range",
     "Recharge",

@@ -24,9 +24,11 @@ export const SniperRifle: Power = {
     "castTime": 1.17
   },
   "allowedEnhancements": [
+    "Interrupt",
     "EnduranceReduction",
     "Range",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],

@@ -27,6 +27,7 @@ export const SummonDireWolf: Power = {
   "allowedEnhancements": [
     "Slow",
     "EnduranceReduction",
+    "Run Speed",
     "Fear",
     "Damage",
     "Accuracy"

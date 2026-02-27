@@ -27,6 +27,7 @@ export const AssaultBot: Power = {
   "allowedEnhancements": [
     "EnduranceReduction",
     "Stun",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],

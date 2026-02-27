@@ -26,6 +26,7 @@ export const CallThugs: Power = {
   },
   "allowedEnhancements": [
     "EnduranceReduction",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],

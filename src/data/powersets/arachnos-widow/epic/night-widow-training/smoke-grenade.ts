@@ -2,7 +2,7 @@
  * Smoke Grenade
  * Ranged (Target AoE), Foe -Perception, -To Hit
  *
- * Source: arachnos-widow/night-widow-training
+ * Source: widow_training/night_widow_training/nw_smoke_grenade.json
  */
 
 import type { Power } from '@/types';
@@ -33,5 +33,15 @@ export const SmokeGrenade: Power = {
     "radius": 35,
     "maxTargets": 16
   },
-  "targetType": "Foe (Alive)"
+  "targetType": "Foe (Alive)",
+  "effects": {
+    "perceptionDebuff": {
+      "scale": 0.9,
+      "table": "Melee_Ones"
+    },
+    "tohitDebuff": {
+      "scale": 0.5,
+      "table": "Melee_DeBuff_ToHit"
+    }
+  }
 };

@@ -24,6 +24,7 @@ export const SiphonLife: Power = {
     "castTime": 1.93
   },
   "allowedEnhancements": [
+    "Taunt",
     "EnduranceReduction",
     "Recharge",
     "Healing",

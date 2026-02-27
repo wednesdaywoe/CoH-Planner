@@ -24,6 +24,7 @@ export const PowerSlice: Power = {
     "castTime": 1.4
   },
   "allowedEnhancements": [
+    "Taunt",
     "EnduranceReduction",
     "Recharge",
     "Damage",

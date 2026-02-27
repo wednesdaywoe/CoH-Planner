@@ -2,7 +2,7 @@
  * Wide Area Web Grenade
  * Ranged (Targeted AoE), Immobilize, -Fly, -Recharge
  *
- * Source: arachnos-soldier/arachnos-soldier
+ * Source: arachnos_soldiers/arachnos_soldier/ws_wide_area_web_grenade.json
  */
 
 import type { Power } from '@/types';
@@ -16,8 +16,16 @@ export const WideAreaWebGrenade: Power = {
   "powerType": "Click",
   "effectArea": "AoE",
   "maxSlots": 6,
-  "allowedEnhancements": [],
-  "allowedSetCategories": [],
+  "allowedEnhancements": [
+    "EnduranceReduction",
+    "Range",
+    "Recharge",
+    "Immobilize",
+    "Accuracy"
+  ],
+  "allowedSetCategories": [
+    "Immobilize"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,

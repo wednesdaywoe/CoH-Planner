@@ -26,6 +26,7 @@ export const SmokeFlash: Power = {
     "maxTargets": 10
   },
   "allowedEnhancements": [
+    "Taunt",
     "Recharge",
     "Accuracy"
   ],

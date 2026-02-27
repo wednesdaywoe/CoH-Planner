@@ -21,6 +21,7 @@ export const Inexhaustible: Power = {
     "accuracy": 1
   },
   "allowedEnhancements": [
+    "EnduranceModification",
     "Healing"
   ],
   "allowedSetCategories": [

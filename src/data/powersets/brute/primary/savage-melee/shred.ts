@@ -27,6 +27,7 @@ export const Shred: Power = {
     "maxTargets": 5
   },
   "allowedEnhancements": [
+    "Taunt",
     "EnduranceReduction",
     "Recharge",
     "Defense Debuff",

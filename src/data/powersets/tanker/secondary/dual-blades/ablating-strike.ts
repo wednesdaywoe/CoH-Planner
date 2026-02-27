@@ -24,6 +24,7 @@ export const AblatingStrike: Power = {
     "castTime": 1.03
   },
   "allowedEnhancements": [
+    "Taunt",
     "EnduranceReduction",
     "Recharge",
     "Defense Debuff",

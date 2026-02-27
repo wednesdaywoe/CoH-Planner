@@ -30,6 +30,7 @@ export const UmbralTorrent: Power = {
     "EnduranceReduction",
     "Range",
     "Recharge",
+    "Knockback",
     "ToHit Debuff",
     "Damage",
     "Accuracy"

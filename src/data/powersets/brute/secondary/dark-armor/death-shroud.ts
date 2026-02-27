@@ -26,6 +26,7 @@ export const DeathShroud: Power = {
     "maxTargets": 10
   },
   "allowedEnhancements": [
+    "Taunt",
     "EnduranceReduction",
     "Recharge",
     "Damage",

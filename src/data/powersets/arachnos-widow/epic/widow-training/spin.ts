@@ -2,7 +2,7 @@
  * Spin
  * PBAoE Melee, DMG(Lethal), DoT(Toxic), -Recharge, -SPD
  *
- * Source: arachnos-widow/widow-training
+ * Source: widow_training/widow_training/spin.json
  */
 
 import type { Power } from '@/types';
@@ -35,5 +35,48 @@ export const Spin: Power = {
     "radius": 8,
     "maxTargets": 10
   },
-  "targetType": "Self"
+  "targetType": "Self",
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 1.3506,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.9004,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Toxic",
+      "scale": 0.1,
+      "table": "Melee_Damage",
+      "duration": 3.1,
+      "tickRate": 1
+    }
+  ],
+  "effects": {
+    "movement": {
+      "runSpeed": {
+        "scale": 0.2,
+        "table": "Melee_Slow"
+      },
+      "flySpeed": {
+        "scale": 0.2,
+        "table": "Melee_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.2,
+        "table": "Melee_Slow"
+      },
+      "jumpHeight": {
+        "scale": 0.2,
+        "table": "Melee_Slow"
+      }
+    },
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Melee_Slow"
+    }
+  }
 };

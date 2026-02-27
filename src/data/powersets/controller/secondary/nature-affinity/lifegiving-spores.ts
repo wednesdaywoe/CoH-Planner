@@ -25,6 +25,7 @@ export const LifegivingSpores: Power = {
     "castTime": 2.33
   },
   "allowedEnhancements": [
+    "EnduranceModification",
     "EnduranceReduction",
     "Range",
     "Recharge",

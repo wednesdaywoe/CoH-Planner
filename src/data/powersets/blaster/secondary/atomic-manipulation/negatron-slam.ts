@@ -26,6 +26,7 @@ export const NegatronSlam: Power = {
   "allowedEnhancements": [
     "EnduranceReduction",
     "Recharge",
+    "Knockback",
     "Defense Debuff",
     "Damage",
     "Accuracy"

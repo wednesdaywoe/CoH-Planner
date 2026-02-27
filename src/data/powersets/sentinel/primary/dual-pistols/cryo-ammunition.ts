@@ -23,7 +23,8 @@ export const CryoAmmunition: Power = {
     "castTime": 0.63
   },
   "allowedEnhancements": [],
-  "maxSlots": 6,
+  "maxSlots": 0,
+  "mechanicType": "childToggle",
   "effects": {
     "rangeBuff": {
       "scale": 0.333,

@@ -25,6 +25,7 @@ export const FaradayCage: Power = {
     "castTime": 1.07
   },
   "allowedEnhancements": [
+    "Resistance",
     "EnduranceReduction",
     "Recharge"
   ],

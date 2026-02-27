@@ -26,6 +26,7 @@ export const EnchantUndead: Power = {
     "maxTargets": 16
   },
   "allowedEnhancements": [
+    "Resistance",
     "EnduranceReduction",
     "Range"
   ],

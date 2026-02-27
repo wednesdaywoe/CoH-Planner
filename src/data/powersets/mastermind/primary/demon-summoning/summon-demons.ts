@@ -26,6 +26,7 @@ export const SummonDemons: Power = {
   },
   "allowedEnhancements": [
     "EnduranceReduction",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],

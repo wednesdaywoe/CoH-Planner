@@ -24,6 +24,8 @@ export const Meltdown: Power = {
     "castTime": 2.93
   },
   "allowedEnhancements": [
+    "Resistance",
+    "EnduranceModification",
     "EnduranceReduction",
     "Recharge"
   ],

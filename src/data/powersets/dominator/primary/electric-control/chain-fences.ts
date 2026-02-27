@@ -26,9 +26,11 @@ export const ChainFences: Power = {
     "maxTargets": 16
   },
   "allowedEnhancements": [
+    "EnduranceModification",
     "EnduranceReduction",
     "Range",
     "Recharge",
+    "Immobilize",
     "Damage",
     "Accuracy"
   ],

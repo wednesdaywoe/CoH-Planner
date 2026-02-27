@@ -23,7 +23,8 @@ export const Hide: Power = {
     "castTime": 0.73
   },
   "allowedEnhancements": [
-    "Recharge"
+    "Recharge",
+    "Defense"
   ],
   "allowedSetCategories": [
     "Defense Sets"

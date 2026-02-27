@@ -27,6 +27,7 @@ export const ElectronShackles: Power = {
     "EnduranceReduction",
     "Range",
     "Recharge",
+    "Immobilize",
     "Defense Debuff",
     "Damage",
     "Accuracy"

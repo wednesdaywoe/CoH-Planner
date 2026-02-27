@@ -2,7 +2,7 @@
  * Tactical Training: Vengeance
  * Ranged (Targeted AoE), Teammates +DMG, +To Hit, +DEF(All), Res(Effects)
  *
- * Source: arachnos-widow/fortunata-teamwork
+ * Source: teamwork/fortunata_teamwork/frt_tactical_training:_vengeance.json
  */
 
 import type { Power } from '@/types';
@@ -35,5 +35,109 @@ export const TacticalTrainingVengeance: Power = {
     "radius": 100,
     "maxTargets": 255
   },
-  "targetType": "Leaguemate (Dead)"
+  "targetType": "Leaguemate (Dead)",
+  "damage": {
+    "type": "Heal",
+    "scale": 1,
+    "table": "Melee_Heal"
+  },
+  "effects": {
+    "defenseBuff": {
+      "ranged": {
+        "scale": 2.5,
+        "table": "Melee_Buff_Def"
+      },
+      "melee": {
+        "scale": 2.5,
+        "table": "Melee_Buff_Def"
+      },
+      "aoe": {
+        "scale": 2.5,
+        "table": "Melee_Buff_Def"
+      },
+      "smashing": {
+        "scale": 2.5,
+        "table": "Melee_Buff_Def"
+      },
+      "lethal": {
+        "scale": 2.5,
+        "table": "Melee_Buff_Def"
+      },
+      "fire": {
+        "scale": 2.5,
+        "table": "Melee_Buff_Def"
+      },
+      "cold": {
+        "scale": 2.5,
+        "table": "Melee_Buff_Def"
+      },
+      "energy": {
+        "scale": 2.5,
+        "table": "Melee_Buff_Def"
+      },
+      "negative": {
+        "scale": 2.5,
+        "table": "Melee_Buff_Def"
+      },
+      "psionic": {
+        "scale": 2.5,
+        "table": "Melee_Buff_Def"
+      },
+      "toxic": {
+        "scale": 2.5,
+        "table": "Melee_Buff_Def"
+      }
+    },
+    "tohitBuff": {
+      "scale": 3.5,
+      "table": "Melee_Buff_ToHit"
+    },
+    "confuse": {
+      "mag": 1,
+      "scale": 2,
+      "table": "Melee_Res_Boolean"
+    },
+    "fear": {
+      "mag": 1,
+      "scale": 2,
+      "table": "Melee_Res_Boolean"
+    },
+    "hold": {
+      "mag": 1,
+      "scale": 2,
+      "table": "Melee_Res_Boolean"
+    },
+    "immobilize": {
+      "mag": 1,
+      "scale": 2,
+      "table": "Melee_Res_Boolean"
+    },
+    "stun": {
+      "mag": 1,
+      "scale": 2,
+      "table": "Melee_Res_Boolean"
+    },
+    "sleep": {
+      "mag": 1,
+      "scale": 2,
+      "table": "Melee_Res_Boolean"
+    },
+    "knockup": {
+      "scale": 100,
+      "table": "Melee_Ones"
+    },
+    "knockback": {
+      "scale": 100,
+      "table": "Melee_Ones"
+    },
+    "repel": {
+      "scale": 10,
+      "table": "Melee_Ones"
+    },
+    "damageBuff": {
+      "scale": 3.5,
+      "table": "Melee_Buff_Dmg"
+    },
+    "effectDuration": 120
+  }
 };

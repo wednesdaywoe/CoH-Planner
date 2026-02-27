@@ -30,6 +30,7 @@ export const Telekinesis: Power = {
     "EnduranceReduction",
     "Range",
     "Recharge",
+    "Immobilize",
     "Accuracy"
   ],
   "allowedSetCategories": [

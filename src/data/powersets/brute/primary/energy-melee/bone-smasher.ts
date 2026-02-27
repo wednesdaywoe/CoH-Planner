@@ -24,6 +24,7 @@ export const BoneSmasher: Power = {
     "castTime": 1.27
   },
   "allowedEnhancements": [
+    "Taunt",
     "EnduranceReduction",
     "Stun",
     "Recharge",

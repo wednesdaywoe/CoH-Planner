@@ -2,7 +2,7 @@
  * Follow Up
  * Melee, DMG(Lethal), Self +DMG
  *
- * Source: arachnos-widow/widow-training
+ * Source: widow_training/widow_training/follow_up.json
  */
 
 import type { Power } from '@/types';
@@ -36,5 +36,27 @@ export const FollowUp: Power = {
     "endurance": 7.8,
     "castTime": 0.83
   },
-  "targetType": "Foe (Alive)"
+  "targetType": "Foe (Alive)",
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 0.912,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.608,
+      "table": "Melee_InherentDamage"
+    }
+  ],
+  "effects": {
+    "tohitBuff": {
+      "scale": 1,
+      "table": "Melee_Buff_ToHit"
+    },
+    "damageBuff": {
+      "scale": 3,
+      "table": "Melee_Buff_Dmg"
+    }
+  }
 };

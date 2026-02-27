@@ -23,6 +23,7 @@ export const FormoftheBody: Power = {
     "castTime": 0.63
   },
   "allowedEnhancements": [],
-  "maxSlots": 6,
+  "maxSlots": 0,
+  "mechanicType": "childToggle",
   "requires": "Brute_Melee.Staff_Fighting.Staff_Mastery"
 };

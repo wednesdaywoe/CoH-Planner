@@ -24,6 +24,7 @@ export const EnergyPunch: Power = {
     "castTime": 0.83
   },
   "allowedEnhancements": [
+    "Taunt",
     "EnduranceReduction",
     "Stun",
     "Recharge",

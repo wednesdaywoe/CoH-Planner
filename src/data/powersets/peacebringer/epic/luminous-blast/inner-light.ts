@@ -2,7 +2,7 @@
  * Inner Light
  * Self +DMG, +To Hit
  *
- * Source: peacebringer/luminous-blast
+ * Source: peacebringer_offensive/luminous_blast/build_up.json
  */
 
 import type { Power } from '@/types';
@@ -30,5 +30,15 @@ export const InnerLight: Power = {
     "endurance": 5.2,
     "castTime": 1.17
   },
-  "targetType": "Self"
+  "targetType": "Self",
+  "effects": {
+    "tohitBuff": {
+      "scale": 0.77,
+      "table": "Melee_Buff_ToHit"
+    },
+    "damageBuff": {
+      "scale": 3.2,
+      "table": "Melee_Buff_Dmg"
+    }
+  }
 };

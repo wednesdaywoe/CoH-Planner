@@ -2,7 +2,7 @@
  * Inky Aspect
  * PBAoE, Foe Disorient, Self -HP
  *
- * Source: warshade/umbral-aura
+ * Source: warshade_defensive/umbral_aura/inky_aspect.json
  */
 
 import type { Power } from '@/types';
@@ -33,5 +33,17 @@ export const InkyAspect: Power = {
     "radius": 8,
     "maxTargets": 10
   },
-  "targetType": "Self"
+  "targetType": "Self",
+  "damage": {
+    "type": "Special",
+    "scale": 0.1,
+    "table": "Melee_Damage"
+  },
+  "effects": {
+    "stun": {
+      "mag": 2,
+      "scale": 6,
+      "table": "Melee_Stun"
+    }
+  }
 };

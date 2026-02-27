@@ -2,7 +2,7 @@
  * Placate
  * Ranged, Foe Placate, Self Stealth/Hide
  *
- * Source: arachnos-widow/widow-teamwork
+ * Source: teamwork/widow_teamwork/placate.json
  */
 
 import type { Power } from '@/types';
@@ -34,5 +34,21 @@ export const Placate: Power = {
     "radius": 15,
     "maxTargets": 5
   },
-  "targetType": "Foe (Alive)"
+  "targetType": "Foe (Alive)",
+  "effects": {
+    "stealth": {
+      "stealthPvE": {
+        "scale": 150,
+        "table": "Melee_Ones"
+      },
+      "stealthPvP": {
+        "scale": 380,
+        "table": "Melee_Ones"
+      },
+      "translucency": {
+        "scale": 0.2,
+        "table": "Melee_Ones"
+      }
+    }
+  }
 };

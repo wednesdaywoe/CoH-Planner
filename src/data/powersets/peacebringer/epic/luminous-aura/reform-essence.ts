@@ -2,7 +2,7 @@
  * Reform Essence
  * Self Heal
  *
- * Source: peacebringer/luminous-aura
+ * Source: peacebringer_defensive/luminous_aura/reform_essence.json
  */
 
 import type { Power } from '@/types';
@@ -30,5 +30,10 @@ export const ReformEssence: Power = {
     "endurance": 10.4,
     "castTime": 0.73
   },
-  "targetType": "Self"
+  "targetType": "Self",
+  "damage": {
+    "type": "Heal",
+    "scale": 2.5,
+    "table": "Melee_HealSelf"
+  }
 };

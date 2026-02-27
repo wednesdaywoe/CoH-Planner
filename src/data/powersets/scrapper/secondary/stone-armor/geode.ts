@@ -24,6 +24,7 @@ export const Geode: Power = {
     "castTime": 0.07
   },
   "allowedEnhancements": [
+    "EnduranceModification",
     "EnduranceReduction",
     "Recharge",
     "Healing"

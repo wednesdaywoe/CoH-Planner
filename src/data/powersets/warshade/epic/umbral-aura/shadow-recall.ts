@@ -2,7 +2,7 @@
  * Shadow Recall
  * Teleport Teamate or Foe
  *
- * Source: warshade/umbral-aura
+ * Source: warshade_defensive/umbral_aura/shadow_recall.json
  */
 
 import type { Power } from '@/types';
@@ -17,6 +17,7 @@ export const ShadowRecall: Power = {
   "effectArea": "SingleTarget",
   "maxSlots": 6,
   "allowedEnhancements": [
+    "Interrupt",
     "EnduranceReduction",
     "Range",
     "Recharge",

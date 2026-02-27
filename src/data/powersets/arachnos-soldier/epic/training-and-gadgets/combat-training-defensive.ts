@@ -2,7 +2,7 @@
  * Combat Training: Defensive
  * Auto: Self +DEF(Ranged)
  *
- * Source: arachnos-soldier/training-and-gadgets
+ * Source: training_gadgets/training_and_gadgets/combat_training:_defensive.json
  */
 
 import type { Power } from '@/types';
@@ -26,5 +26,13 @@ export const CombatTrainingDefensive: Power = {
     "accuracy": 1,
     "recharge": 4
   },
-  "targetType": "Self"
+  "targetType": "Self",
+  "effects": {
+    "defenseBuff": {
+      "ranged": {
+        "scale": 0.75,
+        "table": "Melee_Buff_Def"
+      }
+    }
+  }
 };

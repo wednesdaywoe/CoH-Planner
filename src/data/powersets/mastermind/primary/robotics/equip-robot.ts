@@ -26,6 +26,7 @@ export const EquipRobot: Power = {
     "maxTargets": 16
   },
   "allowedEnhancements": [
+    "Resistance",
     "EnduranceReduction",
     "Range"
   ],

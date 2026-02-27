@@ -24,6 +24,7 @@ export const GamblersCut: Power = {
     "castTime": 0.67
   },
   "allowedEnhancements": [
+    "Taunt",
     "EnduranceReduction",
     "Recharge",
     "Defense Debuff",

@@ -25,6 +25,7 @@ export const SoulAbsorption: Power = {
     "maxTargets": 16
   },
   "allowedEnhancements": [
+    "EnduranceModification",
     "EnduranceReduction",
     "Recharge",
     "Healing",

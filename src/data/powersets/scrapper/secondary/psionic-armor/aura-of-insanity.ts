@@ -39,6 +39,7 @@ export const AuraofInsanity: Power = {
     "Fear",
     "Holds",
     "Melee AoE Damage",
+    "Scrapper Archetype Sets",
     "Sleep",
     "Stuns",
     "Universal Damage Sets"

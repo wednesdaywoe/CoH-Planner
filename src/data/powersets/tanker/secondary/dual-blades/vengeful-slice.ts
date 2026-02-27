@@ -24,8 +24,10 @@ export const VengefulSlice: Power = {
     "castTime": 2.43
   },
   "allowedEnhancements": [
+    "Taunt",
     "EnduranceReduction",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],

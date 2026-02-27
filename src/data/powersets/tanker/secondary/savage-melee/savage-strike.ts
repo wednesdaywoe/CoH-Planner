@@ -24,6 +24,7 @@ export const SavageStrike: Power = {
     "castTime": 0.8
   },
   "allowedEnhancements": [
+    "Taunt",
     "EnduranceReduction",
     "Recharge",
     "Damage",

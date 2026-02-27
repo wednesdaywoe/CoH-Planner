@@ -30,6 +30,7 @@ export const Torrent: Power = {
     "EnduranceReduction",
     "Range",
     "Recharge",
+    "Knockback",
     "ToHit Debuff",
     "Damage",
     "Accuracy"

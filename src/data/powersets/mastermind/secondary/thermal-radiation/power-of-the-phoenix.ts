@@ -24,6 +24,7 @@ export const PowerofthePhoenix: Power = {
     "castTime": 1.67
   },
   "allowedEnhancements": [
+    "EnduranceModification",
     "EnduranceReduction",
     "Stun",
     "Recharge",

@@ -76,6 +76,17 @@ const BOOST_TYPE_MAP = {
   'Enhance Jump': 'Jump',
   'Enhance Intangible Duration': 'Intangible',
   'Enhance Taunt': 'Taunt',
+  // Additional mappings found via audit (variant raw names)
+  'Enhance Threat Duration': 'Taunt',
+  'Enhance KnockBack': 'Knockback',
+  'Enhance Endurance Modification': 'EnduranceModification',
+  'Enhance Damage Resistance': 'Resistance',
+  'Enhance Defense': 'Defense',
+  'Enhance ToHit Buffs': 'ToHit',
+  'Enhance Immobilization': 'Immobilize',
+  'Reduce Interrupt Time': 'Interrupt',
+  'Enhance Running Speed': 'Run Speed',
+  'Enhance Flying Speed': 'Fly',
 };
 
 // IO Set category mapping
@@ -344,6 +355,37 @@ function getDamageType(attrib) {
  */
 function isDefensePosition(attrib) {
   return attrib && DEFENSE_POSITIONS[attrib.toLowerCase()] !== undefined;
+}
+
+/**
+ * Recursively collect all templates from an effects array, including child_effects.
+ * Filters out PVP_ONLY effects and effects with chance=0 (conditional procs).
+ *
+ * @param {Array} effects - Array of effect objects
+ * @returns {Array} - Flat array of all template objects
+ */
+function collectAllTemplates(effects) {
+  const templates = [];
+
+  for (const effect of effects) {
+    // Skip PVP-only effects
+    if (effect.is_pvp === 'PVP_ONLY') continue;
+
+    // Skip effects with chance=0 (conditional procs that don't normally fire)
+    if (effect.chance === 0 || effect.chance === 0.0) continue;
+
+    // Collect templates from this level
+    if (effect.templates && effect.templates.length > 0) {
+      templates.push(...effect.templates);
+    }
+
+    // Recurse into child_effects
+    if (effect.child_effects && effect.child_effects.length > 0) {
+      templates.push(...collectAllTemplates(effect.child_effects));
+    }
+  }
+
+  return templates;
 }
 
 /**
@@ -783,12 +825,9 @@ function convertPower(powerJson, availableLevel) {
   power.maxSlots = powerJson.max_boosts || 6;
 
   // Extract effects from templates
-  // Filter for PvE effects (PVE_ONLY or EITHER), exclude PVP_ONLY
+  // Recursively collect from child_effects too (many powers nest effects there)
   if (powerJson.effects?.length) {
-    const pveEffects = powerJson.effects.filter(e =>
-      e.is_pvp !== 'PVP_ONLY'
-    );
-    const allTemplates = pveEffects.flatMap(e => e.templates || []);
+    const allTemplates = collectAllTemplates(powerJson.effects);
 
     const damage = extractDamage(allTemplates);
     if (damage) power.damage = damage;
@@ -800,6 +839,25 @@ function convertPower(powerJson, availableLevel) {
   // Requirements
   if (powerJson.requires) {
     power.requires = powerJson.requires;
+  }
+
+  // Mechanic power type detection
+  const showInManage = powerJson.show_in_manage !== false; // defaults to true
+  const maxBoosts = powerJson.max_boosts || 0;
+  const autoIssue = powerJson.auto_issue === true;
+  const showInInventory = powerJson.show_in_inventory || 'Show';
+  const showInInfo = powerJson.show_in_info !== false; // defaults to true
+
+  if (!showInManage && maxBoosts === 0) {
+    if (autoIssue && availableLevel === -1) {
+      power.mechanicType = 'childToggle';
+    } else if (showInInventory === 'Never' && !showInInfo) {
+      power.mechanicType = 'hiddenAuto';
+    } else {
+      power.mechanicType = 'hiddenPassive';
+    }
+  } else if (maxBoosts === 0 && availableLevel >= 0 && (!showInManage || powerJson.type === 'Auto')) {
+    power.mechanicType = 'parentMechanic';
   }
 
   return power;
@@ -926,6 +984,8 @@ module.exports = {
   extractEffects,
   extractDamage,
   CATEGORY_MAP,
+  BOOST_TYPE_MAP,
+  SET_CATEGORY_MAP,
   DAMAGE_TYPES,
   DEFENSE_POSITIONS,
   ELUSIVITY_TYPES,
@@ -938,6 +998,7 @@ module.exports = {
   CONTROL_TYPES,
   SPECIAL_ATTRIBS,
   RAW_DATA_PATH,
+  collectAllTemplates,
 };
 
 // Main execution (only when run directly)

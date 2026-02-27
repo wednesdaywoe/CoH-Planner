@@ -27,6 +27,7 @@ export const FollowThrough: Power = {
     "EnduranceReduction",
     "Stun",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],

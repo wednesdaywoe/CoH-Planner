@@ -24,6 +24,7 @@ export const AssassinsStrike: Power = {
     "castTime": 3
   },
   "allowedEnhancements": [
+    "Interrupt",
     "EnduranceReduction",
     "Recharge",
     "Damage",

@@ -24,6 +24,7 @@ export const MercurialBlow: Power = {
     "castTime": 1
   },
   "allowedEnhancements": [
+    "Taunt",
     "EnduranceReduction",
     "Recharge",
     "Defense Debuff",

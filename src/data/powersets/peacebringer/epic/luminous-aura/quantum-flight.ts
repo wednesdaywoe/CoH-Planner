@@ -2,7 +2,7 @@
  * Quantum Flight
  * Toggle: Self Fly, Intangible
  *
- * Source: peacebringer/luminous-aura
+ * Source: peacebringer_defensive/luminous_aura/quantum_flight.json
  */
 
 import type { Power } from '@/types';
@@ -26,5 +26,39 @@ export const QuantumFlight: Power = {
     "recharge": 60,
     "endurance": 0.325
   },
-  "targetType": "Self"
+  "targetType": "Self",
+  "effects": {
+    "movement": {
+      "fly": {
+        "scale": 1,
+        "table": "Melee_Ones"
+      },
+      "flySpeed": {
+        "scale": 5,
+        "table": "Melee_SpeedFlying"
+      },
+      "movementControl": {
+        "scale": 3,
+        "table": "Melee_Control"
+      },
+      "movementFriction": {
+        "scale": 3,
+        "table": "Melee_Friction"
+      }
+    },
+    "stealth": {
+      "translucency": {
+        "scale": 0.1,
+        "table": "Melee_Ones"
+      },
+      "stealthPvE": {
+        "scale": 20,
+        "table": "Melee_Ones"
+      },
+      "stealthPvP": {
+        "scale": 222,
+        "table": "Melee_Ones"
+      }
+    }
+  }
 };

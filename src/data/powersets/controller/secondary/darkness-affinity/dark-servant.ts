@@ -28,6 +28,7 @@ export const DarkServant: Power = {
     "Hold",
     "EnduranceReduction",
     "Recharge",
+    "Immobilize",
     "Healing",
     "ToHit Debuff",
     "Accuracy"

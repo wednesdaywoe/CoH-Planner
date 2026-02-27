@@ -2,7 +2,7 @@
  * Aura of Confusion
  * PBAoE, Foe Confuse
  *
- * Source: arachnos-widow/fortunata-teamwork
+ * Source: teamwork/fortunata_teamwork/aura_of_confusion.json
  */
 
 import type { Power } from '@/types';
@@ -34,5 +34,12 @@ export const AuraofConfusion: Power = {
     "radius": 25,
     "maxTargets": 16
   },
-  "targetType": "Self"
+  "targetType": "Self",
+  "effects": {
+    "confuse": {
+      "mag": 3,
+      "scale": 20,
+      "table": "Ranged_Immobilize"
+    }
+  }
 };

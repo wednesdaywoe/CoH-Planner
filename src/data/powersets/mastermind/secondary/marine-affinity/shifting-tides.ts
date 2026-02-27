@@ -29,7 +29,8 @@ export const ShiftingTides: Power = {
   "allowedEnhancements": [
     "EnduranceReduction",
     "Recharge",
-    "Damage"
+    "Damage",
+    "ToHit"
   ],
   "allowedSetCategories": [
     "Ranged AoE Damage",

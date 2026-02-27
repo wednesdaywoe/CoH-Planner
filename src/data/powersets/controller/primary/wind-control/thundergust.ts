@@ -29,6 +29,7 @@ export const Thundergust: Power = {
   "allowedEnhancements": [
     "EnduranceReduction",
     "Recharge",
+    "Knockback",
     "ToHit Debuff",
     "Damage",
     "Accuracy"

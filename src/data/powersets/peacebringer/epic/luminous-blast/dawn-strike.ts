@@ -2,7 +2,7 @@
  * Dawn Strike
  * PBAoE, Extreme DMG(Energy), Foe -DEF, Knockback
  *
- * Source: peacebringer/luminous-blast
+ * Source: peacebringer_offensive/luminous_blast/dawn_strike.json
  */
 
 import type { Power } from '@/types';
@@ -40,5 +40,20 @@ export const DawnStrike: Power = {
     "radius": 25,
     "maxTargets": 16
   },
-  "targetType": "Self"
+  "targetType": "Self",
+  "damage": {
+    "type": "Energy",
+    "scale": 4,
+    "table": "Ranged_Damage"
+  },
+  "effects": {
+    "knockback": {
+      "scale": 10,
+      "table": "Ranged_Knockback"
+    },
+    "defenseDebuff": {
+      "scale": 2,
+      "table": "Ranged_Debuff_Def"
+    }
+  }
 };

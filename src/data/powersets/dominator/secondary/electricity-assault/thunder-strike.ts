@@ -27,6 +27,7 @@ export const ThunderStrike: Power = {
     "EnduranceReduction",
     "Stun",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],

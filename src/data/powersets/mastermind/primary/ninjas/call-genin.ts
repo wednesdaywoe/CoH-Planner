@@ -27,6 +27,8 @@ export const CallGenin: Power = {
   "allowedEnhancements": [
     "EnduranceReduction",
     "Stun",
+    "Run Speed",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],

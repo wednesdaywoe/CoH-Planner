@@ -26,8 +26,10 @@ export const ArcticFog: Power = {
     "maxTargets": 255
   },
   "allowedEnhancements": [
+    "Resistance",
     "EnduranceReduction",
-    "Recharge"
+    "Recharge",
+    "Defense"
   ],
   "allowedSetCategories": [
     "Defense Sets",

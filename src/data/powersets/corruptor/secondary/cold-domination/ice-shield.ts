@@ -27,9 +27,11 @@ export const IceShield: Power = {
     "maxTargets": 255
   },
   "allowedEnhancements": [
+    "Resistance",
     "EnduranceReduction",
     "Range",
-    "Recharge"
+    "Recharge",
+    "Defense"
   ],
   "allowedSetCategories": [
     "Defense Sets",

@@ -27,6 +27,7 @@ export const Parry: Power = {
     "EnduranceReduction",
     "Recharge",
     "Damage",
+    "Defense",
     "Accuracy"
   ],
   "allowedSetCategories": [

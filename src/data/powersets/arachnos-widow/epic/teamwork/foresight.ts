@@ -2,7 +2,7 @@
  * Foresight
  * Auto: Self Res (Disorient, Hold, Immobilize, Sleep, Fear, Confuse, Psionics, Special), +Def (all)
  *
- * Source: arachnos-widow/teamwork
+ * Source: teamwork/teamwork/foresight.json
  */
 
 import type { Power } from '@/types';
@@ -27,5 +27,88 @@ export const Foresight: Power = {
   "stats": {
     "accuracy": 1
   },
-  "targetType": "Self"
+  "targetType": "Self",
+  "effects": {
+    "resistance": {
+      "psionic": {
+        "scale": 0.2,
+        "table": "Melee_Ones"
+      },
+      "smashing": {
+        "scale": 0,
+        "table": "Melee_Ones"
+      },
+      "lethal": {
+        "scale": 0,
+        "table": "Melee_Ones"
+      },
+      "fire": {
+        "scale": 0,
+        "table": "Melee_Ones"
+      },
+      "cold": {
+        "scale": 0,
+        "table": "Melee_Ones"
+      },
+      "energy": {
+        "scale": 0,
+        "table": "Melee_Ones"
+      },
+      "negative": {
+        "scale": 0,
+        "table": "Melee_Ones"
+      }
+    },
+    "confuse": {
+      "mag": 1,
+      "scale": 0.25,
+      "table": "Melee_Ones"
+    },
+    "fear": {
+      "mag": 1,
+      "scale": 0.25,
+      "table": "Melee_Ones"
+    },
+    "hold": {
+      "mag": 1,
+      "scale": 0.25,
+      "table": "Melee_Ones"
+    },
+    "immobilize": {
+      "mag": 1,
+      "scale": 0.25,
+      "table": "Melee_Ones"
+    },
+    "stun": {
+      "mag": 1,
+      "scale": 0.25,
+      "table": "Melee_Ones"
+    },
+    "sleep": {
+      "mag": 1,
+      "scale": 0.25,
+      "table": "Melee_Ones"
+    },
+    "elusivity": {
+      "all": {
+        "scale": 0.5,
+        "table": "Melee_Res_Boolean"
+      }
+    },
+    "defenseBuff": {
+      "ranged": {
+        "scale": 0.75,
+        "table": "Melee_Buff_Def"
+      },
+      "melee": {
+        "scale": 0.75,
+        "table": "Melee_Buff_Def"
+      },
+      "aoe": {
+        "scale": 0.75,
+        "table": "Melee_Buff_Def"
+      }
+    },
+    "effectDuration": 0.75
+  }
 };

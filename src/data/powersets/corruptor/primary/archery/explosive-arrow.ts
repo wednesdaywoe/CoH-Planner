@@ -29,6 +29,7 @@ export const ExplosiveArrow: Power = {
     "EnduranceReduction",
     "Range",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],

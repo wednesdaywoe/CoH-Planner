@@ -23,8 +23,10 @@ export const FieldOperative: Power = {
     "castTime": 0.73
   },
   "allowedEnhancements": [
+    "EnduranceModification",
     "Recharge",
-    "Healing"
+    "Healing",
+    "Defense"
   ],
   "allowedSetCategories": [
     "Defense Sets",

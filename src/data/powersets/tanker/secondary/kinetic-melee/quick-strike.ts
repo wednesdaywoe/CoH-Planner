@@ -24,8 +24,10 @@ export const QuickStrike: Power = {
     "castTime": 0.83
   },
   "allowedEnhancements": [
+    "Taunt",
     "EnduranceReduction",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],

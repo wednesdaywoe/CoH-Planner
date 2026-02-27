@@ -2,7 +2,7 @@
  * Mind Link
  * PBAoE Team +To Hit, +DEF (All), +RES (Psionic)
  *
- * Source: arachnos-widow/widow-teamwork
+ * Source: teamwork/widow_teamwork/nw_mind_link.json
  */
 
 import type { Power } from '@/types';
@@ -32,5 +32,63 @@ export const MindLink: Power = {
     "radius": 35,
     "maxTargets": 255
   },
-  "targetType": "Self"
+  "targetType": "Self",
+  "effects": {
+    "tohitBuff": {
+      "scale": 0.5,
+      "table": "Melee_Buff_ToHit"
+    },
+    "resistance": {
+      "psionic": {
+        "scale": 3,
+        "table": "Melee_Res_Dmg"
+      }
+    },
+    "defenseBuff": {
+      "ranged": {
+        "scale": 1,
+        "table": "Melee_Buff_Def"
+      },
+      "melee": {
+        "scale": 1,
+        "table": "Melee_Buff_Def"
+      },
+      "aoe": {
+        "scale": 1,
+        "table": "Melee_Buff_Def"
+      },
+      "smashing": {
+        "scale": 1,
+        "table": "Melee_Buff_Def"
+      },
+      "lethal": {
+        "scale": 1,
+        "table": "Melee_Buff_Def"
+      },
+      "fire": {
+        "scale": 1,
+        "table": "Melee_Buff_Def"
+      },
+      "cold": {
+        "scale": 1,
+        "table": "Melee_Buff_Def"
+      },
+      "energy": {
+        "scale": 1,
+        "table": "Melee_Buff_Def"
+      },
+      "negative": {
+        "scale": 1,
+        "table": "Melee_Buff_Def"
+      },
+      "psionic": {
+        "scale": 1,
+        "table": "Melee_Buff_Def"
+      },
+      "toxic": {
+        "scale": 1,
+        "table": "Melee_Buff_Def"
+      }
+    }
+  }
 };

@@ -30,6 +30,7 @@ export const ElectronHaze: Power = {
     "EnduranceReduction",
     "Range",
     "Recharge",
+    "Knockback",
     "Defense Debuff",
     "Damage",
     "Accuracy"

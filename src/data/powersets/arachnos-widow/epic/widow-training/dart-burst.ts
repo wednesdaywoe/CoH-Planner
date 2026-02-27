@@ -2,7 +2,7 @@
  * Dart Burst
  * Ranged Cone, DMG(Lethal), DoT(Toxic), -Regeneration
  *
- * Source: arachnos-widow/widow-training
+ * Source: widow_training/widow_training/dart_burst.json
  */
 
 import type { Power } from '@/types';
@@ -35,7 +35,30 @@ export const DartBurst: Power = {
     "endurance": 9.746,
     "castTime": 2,
     "radius": 50,
+    "arc": 0.5236,
     "maxTargets": 10
   },
-  "targetType": "Foe (Alive)"
+  "targetType": "Foe (Alive)",
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 0.255,
+      "table": "Ranged_Damage",
+      "duration": 0.8,
+      "tickRate": 0.33
+    },
+    {
+      "type": "Toxic",
+      "scale": 0.11,
+      "table": "Ranged_Damage",
+      "duration": 5,
+      "tickRate": 1
+    }
+  ],
+  "effects": {
+    "regenDebuff": {
+      "scale": 0.25,
+      "table": "Ranged_Ones"
+    }
+  }
 };

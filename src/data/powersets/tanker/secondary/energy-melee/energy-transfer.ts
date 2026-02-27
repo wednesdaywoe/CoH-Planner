@@ -23,6 +23,7 @@ export const EnergyTransfer: Power = {
     "castTime": 2.67
   },
   "allowedEnhancements": [
+    "Taunt",
     "Stun",
     "Recharge",
     "Damage",

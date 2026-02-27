@@ -26,8 +26,10 @@ export const Pendulum: Power = {
     "maxTargets": 5
   },
   "allowedEnhancements": [
+    "Taunt",
     "EnduranceReduction",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],

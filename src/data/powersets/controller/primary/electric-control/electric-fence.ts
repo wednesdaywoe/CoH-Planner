@@ -24,9 +24,11 @@ export const ElectricFence: Power = {
     "castTime": 1.67
   },
   "allowedEnhancements": [
+    "EnduranceModification",
     "EnduranceReduction",
     "Range",
     "Recharge",
+    "Immobilize",
     "Damage",
     "Accuracy"
   ],

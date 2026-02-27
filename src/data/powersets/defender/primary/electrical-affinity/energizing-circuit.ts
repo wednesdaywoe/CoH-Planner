@@ -27,6 +27,7 @@ export const EnergizingCircuit: Power = {
     "maxTargets": 5
   },
   "allowedEnhancements": [
+    "EnduranceModification",
     "EnduranceReduction",
     "Range",
     "Recharge"

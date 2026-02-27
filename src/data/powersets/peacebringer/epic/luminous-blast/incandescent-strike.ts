@@ -2,7 +2,7 @@
  * Incandescent Strike
  * Melee, Extreme DMG(Energy/Smash), Foe -DEF, -Fly, Hold
  *
- * Source: peacebringer/luminous-blast
+ * Source: peacebringer_offensive/luminous_blast/incandescent_strike.json
  */
 
 import type { Power } from '@/types';
@@ -41,5 +41,38 @@ export const IncandescentStrike: Power = {
     "endurance": 18.512,
     "castTime": 3.3
   },
-  "targetType": "Foe (Alive)"
+  "targetType": "Foe (Alive)",
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 1.56,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 2,
+      "table": "Melee_Damage"
+    }
+  ],
+  "effects": {
+    "hold": {
+      "mag": 3,
+      "scale": 10,
+      "table": "Melee_Immobilize"
+    },
+    "knockback": {
+      "scale": 0.67,
+      "table": "Melee_Ones"
+    },
+    "slow": {
+      "fly": {
+        "scale": 1,
+        "table": "Melee_Ones"
+      }
+    },
+    "defenseDebuff": {
+      "scale": 1,
+      "table": "Melee_Debuff_Def"
+    }
+  }
 };

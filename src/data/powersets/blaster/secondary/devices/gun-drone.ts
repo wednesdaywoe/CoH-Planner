@@ -24,6 +24,7 @@ export const GunDrone: Power = {
     "castTime": 1
   },
   "allowedEnhancements": [
+    "Taunt",
     "EnduranceReduction",
     "Recharge",
     "Damage",

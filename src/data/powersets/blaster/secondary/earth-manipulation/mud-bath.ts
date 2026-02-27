@@ -25,6 +25,7 @@ export const MudBath: Power = {
     "maxTargets": 10
   },
   "allowedEnhancements": [
+    "EnduranceModification",
     "Slow",
     "Recharge",
     "Healing"

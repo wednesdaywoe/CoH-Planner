@@ -27,6 +27,7 @@ export const SweepingCross: Power = {
     "maxTargets": 5
   },
   "allowedEnhancements": [
+    "Taunt",
     "EnduranceReduction",
     "Stun",
     "Recharge",

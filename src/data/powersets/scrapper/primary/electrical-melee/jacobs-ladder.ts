@@ -27,6 +27,7 @@ export const JacobsLadder: Power = {
     "maxTargets": 5
   },
   "allowedEnhancements": [
+    "EnduranceModification",
     "EnduranceReduction",
     "Sleep",
     "Recharge",

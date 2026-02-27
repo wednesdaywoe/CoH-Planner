@@ -24,6 +24,7 @@ export const PsychicWall: Power = {
     "castTime": 0.67
   },
   "allowedEnhancements": [
+    "Resistance",
     "EnduranceReduction",
     "Recharge"
   ],

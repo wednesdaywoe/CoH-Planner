@@ -27,6 +27,7 @@ export const Eviscerate: Power = {
     "maxTargets": 5
   },
   "allowedEnhancements": [
+    "Taunt",
     "EnduranceReduction",
     "Recharge",
     "Damage",

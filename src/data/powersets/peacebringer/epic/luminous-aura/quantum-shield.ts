@@ -2,7 +2,7 @@
  * Quantum Shield
  * Toggle: Self +Res(Energy, Negative)
  *
- * Source: peacebringer/luminous-aura
+ * Source: peacebringer_defensive/luminous_aura/quantum_shield.json
  */
 
 import type { Power } from '@/types';
@@ -30,5 +30,17 @@ export const QuantumShield: Power = {
     "endurance": 0.13,
     "castTime": 0.73
   },
-  "targetType": "Self"
+  "targetType": "Self",
+  "effects": {
+    "resistance": {
+      "energy": {
+        "scale": 3,
+        "table": "Melee_Res_Dmg"
+      },
+      "negative": {
+        "scale": 3,
+        "table": "Melee_Res_Dmg"
+      }
+    }
+  }
 };

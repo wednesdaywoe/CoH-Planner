@@ -24,6 +24,7 @@ export const BrimstoneArmor: Power = {
     "castTime": 0.73
   },
   "allowedEnhancements": [
+    "Resistance",
     "EnduranceReduction",
     "Recharge"
   ],

@@ -24,6 +24,7 @@ export const ChargedBolts: Power = {
     "castTime": 1
   },
   "allowedEnhancements": [
+    "EnduranceModification",
     "EnduranceReduction",
     "Range",
     "Recharge",

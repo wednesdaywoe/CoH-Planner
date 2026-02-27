@@ -26,6 +26,7 @@ export const Beheader: Power = {
   "allowedEnhancements": [
     "EnduranceReduction",
     "Recharge",
+    "Knockback",
     "Defense Debuff",
     "Damage",
     "Accuracy"

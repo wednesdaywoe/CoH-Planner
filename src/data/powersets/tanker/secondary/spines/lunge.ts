@@ -25,6 +25,7 @@ export const Lunge: Power = {
   },
   "allowedEnhancements": [
     "Slow",
+    "Taunt",
     "EnduranceReduction",
     "Recharge",
     "Damage",

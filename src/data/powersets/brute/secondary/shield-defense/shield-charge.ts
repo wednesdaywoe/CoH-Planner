@@ -24,9 +24,11 @@ export const ShieldCharge: Power = {
     "castTime": 1.5
   },
   "allowedEnhancements": [
+    "Taunt",
     "EnduranceReduction",
     "Range",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],

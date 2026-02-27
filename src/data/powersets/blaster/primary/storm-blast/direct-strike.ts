@@ -24,6 +24,8 @@ export const DirectStrike: Power = {
     "castTime": 1.33
   },
   "allowedEnhancements": [
+    "EnduranceModification",
+    "Interrupt",
     "EnduranceReduction",
     "Range",
     "Recharge",

@@ -25,6 +25,7 @@ export const TouchoftheBeyond: Power = {
     "castTime": 1.17
   },
   "allowedEnhancements": [
+    "EnduranceModification",
     "EnduranceReduction",
     "Recharge",
     "Healing",

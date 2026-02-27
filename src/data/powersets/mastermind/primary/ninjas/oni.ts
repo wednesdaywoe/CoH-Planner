@@ -27,6 +27,8 @@ export const Oni: Power = {
   "allowedEnhancements": [
     "Hold",
     "EnduranceReduction",
+    "Knockback",
+    "Immobilize",
     "Damage",
     "Accuracy"
   ],

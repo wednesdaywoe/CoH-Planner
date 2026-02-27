@@ -21,7 +21,8 @@ export const ShadowDweller: Power = {
     "accuracy": 1
   },
   "allowedEnhancements": [
-    "Healing"
+    "Healing",
+    "Defense"
   ],
   "allowedSetCategories": [
     "Defense Sets",

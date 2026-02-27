@@ -28,6 +28,7 @@ export const ThrowSpines: Power = {
   },
   "allowedEnhancements": [
     "Slow",
+    "Taunt",
     "EnduranceReduction",
     "Range",
     "Recharge",

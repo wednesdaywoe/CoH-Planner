@@ -2,7 +2,7 @@
  * Bright Nova Scatter
  * Ranged (Cone), Light DMG(Energy), Foe -DEF
  *
- * Source: peacebringer/luminous-blast
+ * Source: peacebringer_offensive/luminous_blast/bright_nova_scatter.json
  */
 
 import type { Power } from '@/types';
@@ -38,8 +38,20 @@ export const BrightNovaScatter: Power = {
     "endurance": 11.856,
     "castTime": 1.5,
     "radius": 60,
+    "arc": 0.7854,
     "maxTargets": 10
   },
   "targetType": "Foe (Alive)",
-  "requires": "Bright Nova"
+  "requires": "Bright Nova",
+  "damage": {
+    "type": "Energy",
+    "scale": 0.99,
+    "table": "Ranged_InherentDamage"
+  },
+  "effects": {
+    "defenseDebuff": {
+      "scale": 1,
+      "table": "Ranged_Debuff_Def"
+    }
+  }
 };

@@ -26,6 +26,8 @@ export const DarkConsumption: Power = {
     "maxTargets": 10
   },
   "allowedEnhancements": [
+    "EnduranceModification",
+    "Taunt",
     "EnduranceReduction",
     "Recharge",
     "Damage",

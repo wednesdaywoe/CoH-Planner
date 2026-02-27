@@ -26,8 +26,11 @@ export const ImposePresence: Power = {
     "maxTargets": 10
   },
   "allowedEnhancements": [
+    "Taunt",
     "EnduranceReduction",
-    "Recharge"
+    "Recharge",
+    "ToHit",
+    "Defense"
   ],
   "allowedSetCategories": [
     "Defense Sets",

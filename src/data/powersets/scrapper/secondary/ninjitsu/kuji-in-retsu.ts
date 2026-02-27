@@ -24,8 +24,11 @@ export const KujiInRetsu: Power = {
     "castTime": 1.83
   },
   "allowedEnhancements": [
+    "EnduranceModification",
     "EnduranceReduction",
-    "Recharge"
+    "Run Speed",
+    "Recharge",
+    "Defense"
   ],
   "allowedSetCategories": [
     "Defense Sets",

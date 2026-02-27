@@ -28,6 +28,7 @@ export const UmbraBeast: Power = {
     "EnduranceReduction",
     "Range",
     "Recharge",
+    "Immobilize",
     "Fear",
     "ToHit Debuff",
     "Damage",

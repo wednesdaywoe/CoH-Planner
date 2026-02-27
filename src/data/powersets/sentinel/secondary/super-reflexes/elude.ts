@@ -24,8 +24,11 @@ export const Elude: Power = {
     "castTime": 2
   },
   "allowedEnhancements": [
+    "EnduranceModification",
     "EnduranceReduction",
-    "Recharge"
+    "Run Speed",
+    "Recharge",
+    "Defense"
   ],
   "allowedSetCategories": [
     "Defense Sets",

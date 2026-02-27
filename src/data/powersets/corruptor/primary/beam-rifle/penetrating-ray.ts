@@ -24,9 +24,11 @@ export const PenetratingRay: Power = {
     "castTime": 1.67
   },
   "allowedEnhancements": [
+    "Interrupt",
     "EnduranceReduction",
     "Range",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],

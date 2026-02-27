@@ -28,6 +28,7 @@ export const HellonEarth: Power = {
     "Range",
     "Recharge",
     "Damage",
+    "ToHit",
     "Accuracy"
   ],
   "allowedSetCategories": [

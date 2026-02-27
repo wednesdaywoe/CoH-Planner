@@ -283,8 +283,8 @@ export function createIOSetEnhancement(
   options: { attuned: boolean; level: number; boost?: number },
 ): IOSetEnhancement {
   const setId = set.id || set.name;
-  // Procs don't get boosted
-  const boost = (options.boost && options.boost > 0 && !piece.proc) ? options.boost : undefined;
+  // Procs don't get boosted, and attuned enhancements can't be boosted
+  const boost = (options.boost && options.boost > 0 && !piece.proc && !options.attuned) ? options.boost : undefined;
   return {
     type: 'io-set',
     id: `${setId}-${pieceIndex}`,

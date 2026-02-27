@@ -29,6 +29,7 @@ export const AnimateStone: Power = {
     "Range",
     "Stun",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],

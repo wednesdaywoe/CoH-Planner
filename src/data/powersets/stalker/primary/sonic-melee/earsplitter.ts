@@ -41,5 +41,52 @@ export const Earsplitter: Power = {
     "type": "Energy",
     "scale": 2.6,
     "table": "Melee_Damage"
+  },
+  "effects": {
+    "elusivity": {
+      "all": {
+        "scale": 0.8,
+        "table": "Ranged_Debuff_Res_Dmg"
+      }
+    },
+    "enduranceDrain": {
+      "scale": 0.8,
+      "table": "Ranged_Debuff_Res_Dmg"
+    },
+    "tohitDebuff": {
+      "scale": 0.8,
+      "table": "Ranged_Debuff_Res_Dmg"
+    },
+    "slow": {
+      "runSpeed": {
+        "scale": 0.8,
+        "table": "Ranged_Debuff_Res_Dmg"
+      },
+      "flySpeed": {
+        "scale": 0.8,
+        "table": "Ranged_Debuff_Res_Dmg"
+      },
+      "jumpSpeed": {
+        "scale": 0.8,
+        "table": "Ranged_Debuff_Res_Dmg"
+      }
+    },
+    "regenDebuff": {
+      "scale": 0.8,
+      "table": "Ranged_Debuff_Res_Dmg"
+    },
+    "recoveryDebuff": {
+      "scale": 0.8,
+      "table": "Ranged_Debuff_Res_Dmg"
+    },
+    "rechargeDebuff": {
+      "scale": 0.8,
+      "table": "Ranged_Debuff_Res_Dmg"
+    },
+    "hold": {
+      "mag": 3,
+      "scale": 5,
+      "table": "Melee_Immobilize"
+    }
   }
 };

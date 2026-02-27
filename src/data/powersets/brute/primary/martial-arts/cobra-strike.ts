@@ -24,6 +24,7 @@ export const CobraStrike: Power = {
     "castTime": 1.67
   },
   "allowedEnhancements": [
+    "Taunt",
     "EnduranceReduction",
     "Stun",
     "Recharge",

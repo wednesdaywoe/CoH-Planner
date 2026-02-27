@@ -25,6 +25,7 @@ export const IceSword: Power = {
   },
   "allowedEnhancements": [
     "Slow",
+    "Taunt",
     "EnduranceReduction",
     "Recharge",
     "Damage",

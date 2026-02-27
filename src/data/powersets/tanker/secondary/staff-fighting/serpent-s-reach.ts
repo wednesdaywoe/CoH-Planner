@@ -24,9 +24,11 @@ export const SerpentsReach: Power = {
     "castTime": 1.77
   },
   "allowedEnhancements": [
+    "Taunt",
     "EnduranceReduction",
     "Range",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],

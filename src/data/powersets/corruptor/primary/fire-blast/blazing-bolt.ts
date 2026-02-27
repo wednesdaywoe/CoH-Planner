@@ -24,6 +24,7 @@ export const BlazingBolt: Power = {
     "castTime": 1.67
   },
   "allowedEnhancements": [
+    "Interrupt",
     "EnduranceReduction",
     "Range",
     "Recharge",

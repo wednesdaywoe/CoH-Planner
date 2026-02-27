@@ -2,7 +2,7 @@
  * Pulsar
  * PBAoE, Foe Disorient
  *
- * Source: peacebringer/luminous-blast
+ * Source: peacebringer_offensive/luminous_blast/pulsar.json
  */
 
 import type { Power } from '@/types';
@@ -33,5 +33,12 @@ export const Pulsar: Power = {
     "radius": 20,
     "maxTargets": 10
   },
-  "targetType": "Self"
+  "targetType": "Self",
+  "effects": {
+    "stun": {
+      "mag": 2,
+      "scale": 10,
+      "table": "Ranged_Stun"
+    }
+  }
 };

@@ -28,6 +28,7 @@ export const ExecutionersShot: Power = {
     "EnduranceReduction",
     "Range",
     "Recharge",
+    "Knockback",
     "Defense Debuff",
     "Damage",
     "Accuracy"

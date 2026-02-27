@@ -25,6 +25,7 @@ export const DragonsRoar: Power = {
     "maxTargets": 5
   },
   "allowedEnhancements": [
+    "Taunt",
     "Range",
     "Recharge",
     "Accuracy"

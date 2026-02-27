@@ -27,7 +27,8 @@ export const RepulsionField: Power = {
   },
   "allowedEnhancements": [
     "EnduranceReduction",
-    "Recharge"
+    "Recharge",
+    "Knockback"
   ],
   "allowedSetCategories": [
     "Knockback"

@@ -23,6 +23,7 @@ export const Resurgence: Power = {
     "castTime": 1.5
   },
   "allowedEnhancements": [
+    "EnduranceModification",
     "EnduranceReduction",
     "Recharge"
   ],

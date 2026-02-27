@@ -28,7 +28,8 @@ export const UpgradeEquipment: Power = {
   "allowedEnhancements": [
     "EnduranceReduction",
     "Range",
-    "Recharge"
+    "Recharge",
+    "Defense"
   ],
   "allowedSetCategories": [
     "Defense Sets"

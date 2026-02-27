@@ -2,7 +2,7 @@
  * Scramble Thoughts
  * Ranged, DoT(Psionic), Foe Disorient
  *
- * Source: arachnos-widow/fortunata-training
+ * Source: widow_training/fortunata_training/frt_scramble_thoughts.json
  */
 
 import type { Power } from '@/types';
@@ -36,5 +36,19 @@ export const ScrambleThoughts: Power = {
     "endurance": 10.4,
     "castTime": 2
   },
-  "targetType": "Foe (Alive)"
+  "targetType": "Foe (Alive)",
+  "damage": {
+    "type": "Psionic",
+    "scale": 0.25,
+    "table": "Ranged_Damage",
+    "duration": 4.1,
+    "tickRate": 1
+  },
+  "effects": {
+    "stun": {
+      "mag": 4,
+      "scale": 10,
+      "table": "Ranged_Stun"
+    }
+  }
 };

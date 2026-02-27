@@ -25,6 +25,7 @@ export const ReactionTime: Power = {
     "maxTargets": 10
   },
   "allowedEnhancements": [
+    "EnduranceModification",
     "Slow",
     "Recharge",
     "Healing"

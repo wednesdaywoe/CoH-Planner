@@ -2,7 +2,7 @@
  * Glowing Touch
  * Ally Heal
  *
- * Source: peacebringer/luminous-blast
+ * Source: peacebringer_offensive/luminous_blast/glowing_touch.json
  */
 
 import type { Power } from '@/types';
@@ -32,5 +32,10 @@ export const GlowingTouch: Power = {
     "endurance": 13,
     "castTime": 2.27
   },
-  "targetType": "Ally (Alive)"
+  "targetType": "Ally (Alive)",
+  "damage": {
+    "type": "Heal",
+    "scale": 1.96,
+    "table": "Ranged_Heal"
+  }
 };

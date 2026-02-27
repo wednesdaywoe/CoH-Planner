@@ -2,7 +2,7 @@
  * Gravity Well
  * Melee, Extreme DMG(Negative), Foe Hold -Recharge, -SPD
  *
- * Source: warshade/umbral-blast
+ * Source: warshade_offensive/umbral_blast/gravity_well.json
  */
 
 import type { Power } from '@/types';
@@ -38,5 +38,48 @@ export const GravityWell: Power = {
     "endurance": 18.512,
     "castTime": 2.07
   },
-  "targetType": "Foe (Alive)"
+  "targetType": "Foe (Alive)",
+  "damage": [
+    {
+      "type": "Negative",
+      "scale": 1.56,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.33,
+      "table": "Melee_Damage",
+      "duration": 2.75,
+      "tickRate": 0.5
+    }
+  ],
+  "effects": {
+    "hold": {
+      "mag": 3,
+      "scale": 10,
+      "table": "Melee_Immobilize"
+    },
+    "movement": {
+      "jumpHeight": {
+        "scale": 0.3,
+        "table": "Melee_Slow"
+      },
+      "runSpeed": {
+        "scale": 0.3,
+        "table": "Melee_Slow"
+      },
+      "flySpeed": {
+        "scale": 0.3,
+        "table": "Melee_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.3,
+        "table": "Melee_Slow"
+      }
+    },
+    "rechargeDebuff": {
+      "scale": 0.3,
+      "table": "Melee_Slow"
+    }
+  }
 };

@@ -2,7 +2,7 @@
  * Glinting Eye
  * Ranged, Moderate DMG(Energy), Foe -DEF
  *
- * Source: peacebringer/luminous-blast
+ * Source: peacebringer_offensive/luminous_blast/glinting_eye.json
  */
 
 import type { Power } from '@/types';

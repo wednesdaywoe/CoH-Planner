@@ -28,6 +28,7 @@ export const EntanglingArrow: Power = {
     "EnduranceReduction",
     "Range",
     "Recharge",
+    "Immobilize",
     "Accuracy"
   ],
   "allowedSetCategories": [

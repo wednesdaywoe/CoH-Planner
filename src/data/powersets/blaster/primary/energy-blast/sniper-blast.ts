@@ -24,9 +24,11 @@ export const SniperBlast: Power = {
     "castTime": 1.33
   },
   "allowedEnhancements": [
+    "Interrupt",
     "EnduranceReduction",
     "Range",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],

@@ -2,7 +2,7 @@
  * Call Reinforcements
  * Call Reinforcements: Ranged Moderate DMG(Lethal)
  *
- * Source: arachnos-soldier/training-and-gadgets
+ * Source: training_gadgets/training_and_gadgets/call_reinforcements.json
  */
 
 import type { Power } from '@/types';
@@ -17,7 +17,7 @@ export const CallReinforcements: Power = {
   "effectArea": "Location",
   "maxSlots": 6,
   "allowedEnhancements": [
-    "EnduranceReduction",
+    "EnduranceModification",
     "Hold",
     "EnduranceReduction",
     "Range",
@@ -38,5 +38,14 @@ export const CallReinforcements: Power = {
     "endurance": 26,
     "castTime": 2.03
   },
-  "targetType": "Location"
+  "targetType": "Location",
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_Patron_Powers_Arachnobot_Disrupter",
+      "duration": 240,
+      "copyBoosts": true,
+      "entityCount": 2
+    }
+  }
 };

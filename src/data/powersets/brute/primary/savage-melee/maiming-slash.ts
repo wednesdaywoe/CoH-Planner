@@ -25,6 +25,7 @@ export const MaimingSlash: Power = {
   },
   "allowedEnhancements": [
     "Slow",
+    "Taunt",
     "EnduranceReduction",
     "Recharge",
     "Damage",

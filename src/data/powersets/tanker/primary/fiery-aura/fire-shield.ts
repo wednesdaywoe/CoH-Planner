@@ -24,6 +24,7 @@ export const FireShield: Power = {
     "castTime": 1.67
   },
   "allowedEnhancements": [
+    "Resistance",
     "EnduranceReduction",
     "Recharge"
   ],

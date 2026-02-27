@@ -21,6 +21,7 @@ export const HighPainTolerance: Power = {
     "accuracy": 1
   },
   "allowedEnhancements": [
+    "Resistance",
     "Healing"
   ],
   "allowedSetCategories": [

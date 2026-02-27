@@ -2,7 +2,7 @@
  * Proton Scatter
  * Ranged (Cone), Light DMG(Energy), Foe -DEF
  *
- * Source: peacebringer/luminous-blast
+ * Source: peacebringer_offensive/luminous_blast/proton_scatter.json
  */
 
 import type { Power } from '@/types';
@@ -38,7 +38,19 @@ export const ProtonScatter: Power = {
     "endurance": 11.856,
     "castTime": 2.17,
     "radius": 40,
+    "arc": 0.7854,
     "maxTargets": 10
   },
-  "targetType": "Foe (Alive)"
+  "targetType": "Foe (Alive)",
+  "damage": {
+    "type": "Energy",
+    "scale": 0.99,
+    "table": "Ranged_Damage"
+  },
+  "effects": {
+    "defenseDebuff": {
+      "scale": 1,
+      "table": "Ranged_Debuff_Def"
+    }
+  }
 };

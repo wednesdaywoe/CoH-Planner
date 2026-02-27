@@ -2,7 +2,7 @@
  * Shadow Blast
  * Ranged, Moderate DMG(Negative), Foe Knockback, -Recharge, -SPD
  *
- * Source: warshade/umbral-blast
+ * Source: warshade_offensive/umbral_blast/shadow_blast.json
  */
 
 import type { Power } from '@/types';
@@ -39,5 +39,38 @@ export const ShadowBlast: Power = {
     "endurance": 8.528,
     "castTime": 1.67
   },
-  "targetType": "Foe (Alive)"
+  "targetType": "Foe (Alive)",
+  "damage": {
+    "type": "Negative",
+    "scale": 1.64,
+    "table": "Ranged_Damage"
+  },
+  "effects": {
+    "movement": {
+      "jumpHeight": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      },
+      "runSpeed": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      },
+      "flySpeed": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      }
+    },
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Ranged_Slow"
+    },
+    "knockback": {
+      "scale": 1,
+      "table": "Ranged_Knockback"
+    }
+  }
 };

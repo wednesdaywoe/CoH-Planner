@@ -28,6 +28,7 @@ export const Fault: Power = {
     "Range",
     "Stun",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],

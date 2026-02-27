@@ -2,7 +2,7 @@
  * Conserve Energy
  * Self Endurance Discount
  *
- * Source: peacebringer/luminous-aura
+ * Source: peacebringer_defensive/luminous_aura/conserve_energy.json
  */
 
 import type { Power } from '@/types';
@@ -27,5 +27,11 @@ export const ConserveEnergy: Power = {
     "endurance": 7.8,
     "castTime": 1.17
   },
-  "targetType": "Self"
+  "targetType": "Self",
+  "effects": {
+    "enduranceDiscount": {
+      "scale": 1,
+      "table": "Melee_Stun"
+    }
+  }
 };

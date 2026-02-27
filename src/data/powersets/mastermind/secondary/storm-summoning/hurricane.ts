@@ -28,6 +28,7 @@ export const Hurricane: Power = {
   "allowedEnhancements": [
     "EnduranceReduction",
     "Recharge",
+    "Knockback",
     "ToHit Debuff"
   ],
   "allowedSetCategories": [

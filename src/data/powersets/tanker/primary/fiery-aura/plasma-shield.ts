@@ -24,6 +24,7 @@ export const PlasmaShield: Power = {
     "castTime": 3
   },
   "allowedEnhancements": [
+    "Resistance",
     "EnduranceReduction",
     "Recharge"
   ],

@@ -26,6 +26,8 @@ export const ElixirofLife: Power = {
     "maxTargets": 5
   },
   "allowedEnhancements": [
+    "Resistance",
+    "EnduranceModification",
     "EnduranceReduction",
     "Range",
     "Recharge"

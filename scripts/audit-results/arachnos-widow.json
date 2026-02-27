@@ -1,0 +1,35 @@
+{
+  "archetype": "arachnos-widow",
+  "generatedAt": "2026-02-27T17:08:18.349Z",
+  "summary": {
+    "total": 44,
+    "matched": 0,
+    "unmatched": 44,
+    "critical": 0,
+    "warning": 0,
+    "info": 0,
+    "pass": 0,
+    "dimensions": {
+      "enhancements": {
+        "critical": 0,
+        "warning": 0
+      },
+      "setCategories": {
+        "critical": 0,
+        "warning": 0
+      },
+      "maxSlots": {
+        "warning": 0
+      },
+      "stats": {
+        "warning": 0
+      },
+      "effects": {
+        "critical": 0,
+        "warning": 0
+      }
+    }
+  },
+  "powers": [],
+  "byPowerset": {}
+}

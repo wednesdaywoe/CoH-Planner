@@ -24,8 +24,10 @@ export const Beheader: Power = {
     "castTime": 1
   },
   "allowedEnhancements": [
+    "Taunt",
     "EnduranceReduction",
     "Recharge",
+    "Knockback",
     "Defense Debuff",
     "Damage",
     "Accuracy"

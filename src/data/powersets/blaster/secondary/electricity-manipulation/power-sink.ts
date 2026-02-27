@@ -26,6 +26,7 @@ export const PowerSink: Power = {
     "maxTargets": 10
   },
   "allowedEnhancements": [
+    "EnduranceModification",
     "EnduranceReduction",
     "Recharge"
   ],

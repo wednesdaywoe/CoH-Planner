@@ -24,6 +24,7 @@ export const StingoftheWasp: Power = {
     "castTime": 1.17
   },
   "allowedEnhancements": [
+    "Taunt",
     "EnduranceReduction",
     "Recharge",
     "Defense Debuff",

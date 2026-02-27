@@ -13,7 +13,6 @@ import type {
   IOSetCategory,
   EnhancementStatType,
   PowerType,
-  DamageType,
 } from '@/types';
 import { POWER_POOLS_RAW } from './power-pools-raw';
 import { POOL_UNLOCK_LEVEL, EARLY_TRAVEL_POWERS } from './levels';
@@ -29,6 +28,7 @@ export type PowerPoolRegistry = Record<string, PowerPool>;
 // ============================================
 
 interface LegacyPoolPowerEffects {
+  // Stats (renamed during transformation)
   accuracy?: number;
   range?: number;
   recharge?: number;
@@ -36,15 +36,9 @@ interface LegacyPoolPowerEffects {
   activationTime?: number;
   effectArea?: string;
   radius?: number;
-  damage?: {
-    type: string;
-    scale: number;
-    table?: string;
-  };
-  protection?: Record<string, number>;
-  runSpeed?: { scale: number; table?: string };
-  jumpHeight?: { scale: number; table?: string };
-  jumpSpeed?: { scale: number; table?: string };
+  arc?: number;
+  maxTargets?: number;
+  // All other effect fields pass through directly
   [key: string]: unknown;
 }
 
@@ -84,6 +78,20 @@ type LegacyPowerPoolRegistry = Record<string, LegacyPowerPool>;
  * Transform legacy pool power to typed Power
  */
 function transformPoolPower(legacy: LegacyPoolPower): Power {
+  // Destructure stats that need renaming, spread the rest through directly
+  const {
+    endurance,
+    activationTime,
+    accuracy,
+    range,
+    recharge,
+    effectArea,
+    radius,
+    arc,
+    maxTargets,
+    ...effectFields
+  } = legacy.effects;
+
   return {
     name: legacy.name,
     fullName: legacy.fullName,
@@ -98,41 +106,20 @@ function transformPoolPower(legacy: LegacyPoolPower): Power {
     powerType: legacy.powerType as PowerType,
     requires: legacy.requires,
     effects: {
-      // Base stats
-      accuracy: legacy.effects.accuracy,
-      range: legacy.effects.range,
-      recharge: legacy.effects.recharge,
-      enduranceCost: legacy.effects.endurance,
-      castTime: legacy.effects.activationTime,
-      // Damage
-      damage: legacy.effects.damage
-        ? {
-            type: legacy.effects.damage.type as DamageType,
-            scale: legacy.effects.damage.scale,
-          }
-        : undefined,
-      // Mez protection/resistance
-      protection: legacy.effects.protection,
-      resistance: legacy.effects.resistance as PowerEffects['resistance'],
-      // Defense (typed)
-      defense: (legacy.effects as any).defense as PowerEffects['defense'],
-      // Buffs
-      tohitBuff: (legacy.effects as any).tohitBuff as PowerEffects['tohitBuff'],
-      damageBuff: (legacy.effects as any).damageBuff as PowerEffects['damageBuff'],
-      rechargeBuff: (legacy.effects as any).rechargeBuff as PowerEffects['rechargeBuff'],
-      recoveryBuff: (legacy.effects as any).recoveryBuff as PowerEffects['recoveryBuff'],
-      regenBuff: (legacy.effects as any).regenBuff as PowerEffects['regenBuff'],
-      maxHPBuff: (legacy.effects as any).maxHPBuff as PowerEffects['maxHPBuff'],
-      perceptionBuff: (legacy.effects as any).perceptionBuff as PowerEffects['perceptionBuff'],
-      defenseBuff: (legacy.effects as any).defenseBuff as PowerEffects['defenseBuff'],
-      // Movement
-      runSpeed: legacy.effects.runSpeed,
-      flySpeed: (legacy.effects as any).flySpeed as PowerEffects['flySpeed'],
-      jumpHeight: legacy.effects.jumpHeight,
-      jumpSpeed: legacy.effects.jumpSpeed,
-      // Healing
-      healing: (legacy.effects as any).healing as PowerEffects['healing'],
-    },
+      // Stats (renamed from legacy format)
+      accuracy,
+      range,
+      recharge,
+      enduranceCost: endurance,
+      castTime: activationTime,
+      effectArea: effectArea as PowerEffects['effectArea'],
+      radius,
+      arc,
+      maxTargets,
+      // All other effects pass through directly (damage, buffs, debuffs,
+      // mez, movement, stealth, summon, resistance, defense, etc.)
+      ...effectFields,
+    } as PowerEffects,
   };
 }
 

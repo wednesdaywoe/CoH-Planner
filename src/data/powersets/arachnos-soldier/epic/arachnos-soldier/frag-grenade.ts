@@ -2,7 +2,7 @@
  * Frag Grenade
  * Ranged(Targeted AoE), Moderate DMG (Lethal/Fire), Foe Knockback
  *
- * Source: arachnos-soldier/arachnos-soldier
+ * Source: arachnos_soldiers/arachnos_soldier/frag_grenade.json
  */
 
 import type { Power } from '@/types';
@@ -16,8 +16,20 @@ export const FragGrenade: Power = {
   "powerType": "Click",
   "effectArea": "AoE",
   "maxSlots": 6,
-  "allowedEnhancements": [],
-  "allowedSetCategories": [],
+  "allowedEnhancements": [
+    "EnduranceReduction",
+    "Range",
+    "Recharge",
+    "Knockback",
+    "Damage",
+    "Accuracy"
+  ],
+  "allowedSetCategories": [
+    "Knockback",
+    "Ranged AoE Damage",
+    "Soldiers of Arachnos Archetype Sets",
+    "Universal Damage Sets"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,

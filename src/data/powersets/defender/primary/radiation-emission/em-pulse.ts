@@ -26,6 +26,7 @@ export const EMPulse: Power = {
     "maxTargets": 16
   },
   "allowedEnhancements": [
+    "EnduranceModification",
     "Hold",
     "EnduranceReduction",
     "Recharge",

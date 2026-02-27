@@ -27,14 +27,14 @@ export const Cloudburst: Power = {
     "EnduranceReduction",
     "Range",
     "Recharge",
-    "Slow",
-    "ToHit Debuff",
     "Damage",
-    "Accuracy"
+    "Accuracy",
+    "Slow",
+    "ToHit Debuff"
   ],
   "allowedSetCategories": [
-    "Blaster Archetype Sets",
     "Accurate To-Hit Debuff",
+    "Blaster Archetype Sets",
     "Ranged Damage",
     "Slow Movement",
     "To Hit Debuff",

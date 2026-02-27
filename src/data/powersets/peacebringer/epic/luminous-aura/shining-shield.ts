@@ -2,7 +2,7 @@
  * Shining Shield
  * Toggle: Self +Res(Smash, Lethal)
  *
- * Source: peacebringer/luminous-aura
+ * Source: peacebringer_defensive/luminous_aura/shining_shield.json
  */
 
 import type { Power } from '@/types';
@@ -30,5 +30,17 @@ export const ShiningShield: Power = {
     "endurance": 0.13,
     "castTime": 0.67
   },
-  "targetType": "Self"
+  "targetType": "Self",
+  "effects": {
+    "resistance": {
+      "smashing": {
+        "scale": 3,
+        "table": "Melee_Res_Dmg"
+      },
+      "lethal": {
+        "scale": 3,
+        "table": "Melee_Res_Dmg"
+      }
+    }
+  }
 };

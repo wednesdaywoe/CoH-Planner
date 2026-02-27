@@ -24,8 +24,10 @@ export const Chop: Power = {
     "castTime": 1.2
   },
   "allowedEnhancements": [
+    "Taunt",
     "EnduranceReduction",
     "Recharge",
+    "Knockback",
     "Defense Debuff",
     "Damage",
     "Accuracy"

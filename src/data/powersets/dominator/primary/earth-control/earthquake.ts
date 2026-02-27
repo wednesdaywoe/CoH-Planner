@@ -28,6 +28,7 @@ export const Earthquake: Power = {
     "EnduranceReduction",
     "Range",
     "Recharge",
+    "Knockback",
     "ToHit Debuff",
     "Defense Debuff"
   ],

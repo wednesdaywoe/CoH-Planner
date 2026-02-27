@@ -2,7 +2,7 @@
  * Shadow Slip
  * Melee (PBAoE), Foe Teleport
  *
- * Source: warshade/umbral-aura
+ * Source: warshade_defensive/umbral_aura/shadow_slip.json
  */
 
 import type { Power } from '@/types';
@@ -17,6 +17,7 @@ export const ShadowSlip: Power = {
   "effectArea": "AoE",
   "maxSlots": 6,
   "allowedEnhancements": [
+    "Interrupt",
     "EnduranceReduction",
     "Recharge",
     "Accuracy"

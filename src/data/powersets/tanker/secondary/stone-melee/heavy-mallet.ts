@@ -24,8 +24,10 @@ export const HeavyMallet: Power = {
     "castTime": 1.63
   },
   "allowedEnhancements": [
+    "Taunt",
     "EnduranceReduction",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],

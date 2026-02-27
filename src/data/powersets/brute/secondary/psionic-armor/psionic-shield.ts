@@ -24,6 +24,7 @@ export const PsionicShield: Power = {
     "castTime": 1.17
   },
   "allowedEnhancements": [
+    "Resistance",
     "EnduranceReduction",
     "Recharge"
   ],

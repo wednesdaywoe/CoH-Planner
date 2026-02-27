@@ -26,6 +26,8 @@ export const ConsumePsyche: Power = {
     "maxTargets": 10
   },
   "allowedEnhancements": [
+    "EnduranceModification",
+    "Taunt",
     "EnduranceReduction",
     "Recharge",
     "Healing"

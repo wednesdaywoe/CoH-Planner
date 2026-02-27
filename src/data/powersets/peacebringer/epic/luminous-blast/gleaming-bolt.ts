@@ -2,7 +2,7 @@
  * Gleaming Bolt
  * Ranged, Minor DMG(Energy), Foe -DEF
  *
- * Source: peacebringer/luminous-blast
+ * Source: peacebringer_offensive/luminous_blast/gleaming_bolt.json
  */
 
 import type { Power } from '@/types';

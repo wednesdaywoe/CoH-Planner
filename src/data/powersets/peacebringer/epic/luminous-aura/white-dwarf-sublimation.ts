@@ -2,7 +2,7 @@
  * White Dwarf Sublimation
  * Self Heal
  *
- * Source: peacebringer/luminous-aura
+ * Source: peacebringer_defensive/luminous_aura/white_dwarf_sublimation.json
  */
 
 import type { Power } from '@/types';
@@ -31,5 +31,10 @@ export const WhiteDwarfSublimation: Power = {
     "castTime": 0.73
   },
   "targetType": "Self",
-  "requires": "White Dwarf"
+  "requires": "White Dwarf",
+  "damage": {
+    "type": "Heal",
+    "scale": 4.375,
+    "table": "Melee_HealSelf"
+  }
 };

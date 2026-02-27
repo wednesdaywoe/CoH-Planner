@@ -24,6 +24,7 @@ export const RadiationSiphon: Power = {
     "castTime": 2.23
   },
   "allowedEnhancements": [
+    "Taunt",
     "EnduranceReduction",
     "Recharge",
     "Healing",

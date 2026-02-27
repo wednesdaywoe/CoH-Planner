@@ -2,7 +2,7 @@
  * Thermal Shield
  * Toggle: Self +Res(Fire, Cold)
  *
- * Source: peacebringer/luminous-aura
+ * Source: peacebringer_defensive/luminous_aura/thermal_shield.json
  */
 
 import type { Power } from '@/types';
@@ -30,5 +30,17 @@ export const ThermalShield: Power = {
     "endurance": 0.13,
     "castTime": 0.67
   },
-  "targetType": "Self"
+  "targetType": "Self",
+  "effects": {
+    "resistance": {
+      "fire": {
+        "scale": 3,
+        "table": "Melee_Res_Dmg"
+      },
+      "cold": {
+        "scale": 3,
+        "table": "Melee_Res_Dmg"
+      }
+    }
+  }
 };

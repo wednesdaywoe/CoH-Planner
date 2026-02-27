@@ -25,6 +25,7 @@ export const CauterizingAura: Power = {
     "maxTargets": 10
   },
   "allowedEnhancements": [
+    "EnduranceModification",
     "Recharge",
     "Healing",
     "Damage",

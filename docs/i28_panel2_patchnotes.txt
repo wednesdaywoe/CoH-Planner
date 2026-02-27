@@ -1,0 +1,468 @@
+Powers
+General Adjustments -
+Set Bonuses
+	•	Global bonuses now show up on their own section under the player powers list, instead of being grouped with other Set Bonuses.
+ 
+Aura Radius Increases
+ 
+	•	Increased the radius of the following powers:
+	◦	Bio Armor > Evolving Armor
+	◦	Bio Armor > Genetic Corruption
+	◦	Dark Armor > Cloak of Fear
+	◦	Dark Armor > Oppressive Gloom
+	◦	Earth Assault > Mud Pots (damage restricted to 8ft)
+	◦	Earth Manipulation > Mud Bath
+	◦	Energy Aura > Entropy Shield
+	◦	Energy Aura > Repulse
+	◦	Ice Armor > Chilling Embrace
+	◦	Icy Assault > Chilling Embrace (damage restricted to 8ft)
+	◦	Invulnerability > Invincibility
+	◦	Mental Manipulation > World of Confusion (damage restricted to 8ft)
+	◦	Psionic Armor > Impose Presence
+	◦	Psionic Mastery > World of Confusion (damage restricted to 8ft)
+	◦	Radiation Armor > Beta Decay
+	◦	Regeneration > Integration (Brute/Tankers taunt aura)
+	◦	Shield Defense > Against All Odds
+	◦	Stone Armor > Mud Pots (damage restricted to 8ft)
+	◦	Umbral Aura > Inky Aspect
+	◦	Willpower > Rise to the Challenge
+	◦	(Tanker versions of any above power that was already at 12ft had no alterations)
+ 
+Endurance Cost Changes
+	•	Reduced Mastermind primary (only personal attacks) and secondary power end costs to match other AT endurance modifiers.
+	•	Reduced all Epic Pool endurance costs
+	•	Reduced the endurance cost of all ally rez powers in support sets
+	•	Reduced the endurance cost of the following Pool powers:
+	◦	Fighting > Boxing
+	◦	Fighting > Kick
+	◦	Fighting > Cross Punch
+	◦	Flight > Air Superiority
+	◦	Leaping > Jump Kick
+	◦	Super Speed > Flurry
+ 
+Ally Rez Powers in support sets
+	•	Dark Miasma/Affinity > Howling Twilight
+	◦	Endurance cost reduced from 26 end to 10.4 end
+	◦	Cast time reduced from 3.17s to 1.83
+	◦	Range increased from 15ft to 40ft
+	◦	Power now grants a 15s stealth effect on the revived ally [PvE only]
+	•	Empathy > Resurrect
+	◦	Recharge reduced from 180s to 120s
+	◦	Endurance cost reduced from 26 end to 5.2 end
+	◦	Cast time reduced from 3.2s to 1.83
+	◦	Range increased from 15ft to 60ft
+	◦	Power now grants a 15s stealth effect on the revived ally [PvE only]
+	•	Elecrical Affinity > Defibrillate
+	◦	Endurance cost reduced from 26 end to 10.4 end.
+	◦	Power now grants a 15s stealth effect on the revived ally [PvE only]
+	•	Nature Affinity > Rebirth
+	◦	Endurance cost on defeated targets reduced from 26 end to 13 end
+	◦	Power now grants a 15s stealth effect on the revived ally [PvE only]
+	•	Pain Domination > Conduit of Pain
+	◦	Recharge reduced from 180s to 120s
+	◦	Endurance cost reduced from 26 end to 5.2 end
+	◦	Cast time reduced from 3.2s to 1.83
+	◦	Range increased from 15ft to 60ft
+	◦	Power now grants a 15s stealth effect on the revived ally [PvE only]
+	•	Poison > Elixir of Life
+	◦	Recharge reduced from 180s to 120s
+	◦	Endurance cost reduced from 26 end to 5.2 end
+	◦	Power is now TAoE and can rez up to 5 targets in as 15ft radius of the target
+	◦	Power now grants a 15s stealth effect on the revived ally [PvE only]
+	•	Radiation Emission > Mutation
+	◦	Recharge reduced from 180s to 120s
+	◦	Endurance cost reduced from 26 end to 5.2 end
+	◦	Cast time reduced from 3.2s to 1.83
+	◦	Range increased from 15ft to 60ft
+	◦	Power now grants a 15s stealth effect on the revived ally [PvE only]
+	•	Thermal Radiation > Power of the Phoenix
+	◦	Endurance cost reduced from 49.4 end to 10.4 end
+	◦	Range increased from 15ft to 60ft
+	◦	Power now grants a 15s stealth effect on the revived ally [PvE only]
+ 
+Archetype Adjustments -
+ 
+Brutes
+	•	Resist and Defense modifiers increased from 75% to 85%
+	•	PvP base resistances lowered from 10% to 0%
+	•	Max HP increased from 1499.2554 to 1601.719
+ 
+Sentinels
+	•	Addressed an issue where Sentinel opportunity was not properly applying to pets.
+	•	Self Resist and Defense modifiers increased from 70% to 75%
+	•	Sentinel Meter now only builds while in combat
+	•	Vulnerability is now as chain that can affect up to 5 targets
+	•	Opportunity now grants a perception buff based on meter buildup, with a max of +40% at full meter.
+	•	Opportunity now grants a critical chance on all primary attacks based on meter buildup, with a max chance of +40% at full meter, 5% with empty meter.
+	•	Critical damage is 40% the strength of base power damage.
+	•	Sentinel Nukes have limited crit potential
+	◦	Crits can expand 40% of the bonus center damage to the full area of the power.
+	◦	Foes hit by the center damage wont take additional crit damage.
+ 
+Stalker
+	•	Assassination:
+	◦	Scale increased from scale 7 to scale 8.5 in PvE
+ 
+Masterminds
+	•	Henchmen Summoning
+	◦	Henchmen are now summoned with a temporary high stealth and defense buff
+	◦	These buffs last for up to 15s or until the henchmen engages in combat.
+	◦	This effect is PvE only.
+	•	Teleportation
+	◦	The T1 power now can teleport henchmen to the designated ground location.
+	◦	Henchmen will only be teleported if they are outside supremacy range and have not attacked in the last 5 seconds.
+	◦	This will not replace living henchmen, only teleport them.
+	•	Set Bonus Share
+	◦	Has been increased from 40% to 50%
+	•	Supremacy
+	◦	Supremacy +AoE Def/+Res/+Regen effects lowered to 10%/10%/100% respectively.
+	◦	Now grants a +10% Res(ALL) and AoE Defense to henchmen within range.
+	◦	Now grants a +100% regen buff to henchmen within range.
+	◦	While within Supremacy range, henchmen will have a generic ToHit buff vfx on them.
+	◦	All henchmen within Supremacy range should now always have the same ToHit chance.
+	◦	Henchmen that leave supremacy range (60ft) and are not engaged in combat will receive a high stealth buff and perception debuffs as well as movement speed buffs. These will all cancel if they attack, are attacked or enter Supremacy range. This effect is PvE only.
+	•	Mastermind ATOs:
+	◦	These powers are now treated as damage sets. As such, in addition to summon powers, they are now slottable on:
+	▪	All primary personal attacks
+	▪	Cold Domination > Sleet
+	▪	Dark Miasma > Howling Twilight
+	▪	Force Field > Force Bolt
+	▪	Force Field > Repulsion Bomb
+	▪	Marine Affinity > Shifting Tides
+	▪	Marine Affinity > Whitecap
+	▪	Poison > Poison Trap
+	▪	Radiation Emission > Fallout
+	▪	Storm Summoning > Freezing Rain
+	▪	Storm Summoning > Gale
+	▪	Storm Summoning > Lightning Storm
+	▪	Storm Summoning > Tornado
+	▪	Traps > Acid Mortar
+	▪	Traps > Caltrops
+	▪	Traps > Seeker Drones
+	▪	Traps > Trip Mine
+	▪	Trick Arrow > Acid Arrow
+ 
+Melee Powerset Adjustments -
+Broad Sword
+	•	Slash
+	◦	Cast time lowered from 1.33s to 1.1s
+	•	Slice
+	◦	This power now applies a -9% res debuff on targets for 15 seconds
+	◦	After 15s from last use, this power can inflict a Rending Slice on the main target hitting for an additional 0.8431lethal damage
+	◦	-Defense debuff lowered from -7.5% to -3.75%,
+	◦	Cast time lowered from 2.00s to 1.83s
+	◦	Mutually exclusive option to Boomerang Slice
+	◦	Damage from 1.23 to 1.2346
+	◦	Stalker Only
+	▪	Target cap increased from 5 to 10 targets
+	•	Boomerang Slice
+	◦	A new mutually exclusive option to slice. It has a narrower area but longer reach than Slice. 
+	◦	This power now applies a -9% res debuff on targets for 15 seconds
+	◦	After 15s from last use, this power can inflict a Rending Slice on all targets hitting for an additional 3 ticks of scale 0.23 dot lethal damage
+	◦	This power has similar stats with area, range and animation being the major differences. 
+	◦	1.83 cast time, 8s recharge, 30ft range, 30 degree arc with scale 0.877 damage.
+	•	Whirling Sword
+	◦	Recharge increased from 14s to 20s
+	◦	Radius increased from 8ft to 10ft on Scrappers, 12ft to 15ft on Tankers
+	◦	Endurance cost increased from 13.52 to 18.512
+	◦	Damage scale increased from 1.18 to 1.4218
+	•	Disembowel
+	◦	Cast time reduced from 1.8s to 1.5s
+	•	Head Splitter:
+	◦	This power now can hit up to 2 additional foes in a 90 degree arc for 33% damage.
+	◦	Target cap adjusted to 3 on all ATs
+ 
+Electrical Melee
+ 
+	•	Jacob's Ladder
+	◦	Recharge increased from 8s to 9s
+	◦	Endurance cost increased from 8.528 to 9.36
+	◦	Damage scale increased from scale 1.5 to 1.5233
+	◦	(Previous recharge/endurance were too low for its damage
+	•	Chain Induction
+	◦	This power is now a true chain
+	◦	Attack type changed from Melee_Attack to AoE_Attack
+	◦	No longer accepts Melee Enhancement sets
+	◦	Now accepts Melee AoE Enhancement sets
+	◦	[Stalker] Stealth crit can only trigger on the main target, remains at 100% chance
+	•	Lightning Clap
+	◦	Power is now a foe targeted attack
+	◦	Power now inflicts scale 2.76 energy damage against it's main target only
+	◦	Power can now only proc on the primary target only
+	◦	Recharge lowered from 30s to 15s
+	◦	Accuracy increased from 0.8 to 1.0
+	◦	Power now accepts Damage Enhancements and sets
+	◦	Chance to stun and knockback lowered from 100% to 80%
+	•	Lightning Rod
+	◦	The center of this power has been expanded to 5ft, but can only hit a maximum of one target
+	◦	Scrappers and Stalkers can now crit for scale 3.2015 if they hit with the centermost portion of the power.
+	◦	Is now a true pseudopet on all archetypes
+ 
+Kinetic Melee
+	•	All Powers
+	◦	-Damage debuffs now effect all damage types (it did not decrease Toxic or Psychic damage)
+	◦	-Damage debuffs are normalized to scale 0.7 for all ATs and powers except for Burst
+	◦	Burst -Damage debuff is scale 1.2
+	◦	-Damage durations increased:
+	▪	Quick Strike, Repulsing Torrent - 6s
+	▪	Body Blow - 8s
+	▪	Smashing Blow, Focused Burst - 10s
+	▪	Concentrated Strike - 12s
+	▪	Burst - 15s
+	◦	-Damage debuffs now show -Damage fx
+	◦	KB values decreased by 50% (ex: Scale 0.67kb -> 0.4467kb)
+	◦	Swapped damage type ratio so Energy is higher and Smashing lower to match En defense type
+	◦	fixed Stalker powers not having the same damage scale ratio of Sm/En damage as other ATs
+	◦	fixed Brute Fiery Embrace damage in Concentrated Strike
+	•	Power Siphon
+	◦	Cast time lowered from 1.93s to 1.17s
+	◦	Recharge lowered from 120s to 90s
+	◦	ToHit and Power Siphon Mode duration lowered from 20s to 15s
+	◦	Stack duration increased from 10s to 15s
+	◦	Power now grants one stack of Siphon at activation
+	◦	Each stack now grants +10% damage (down from +25%), now also increases Toxic and Psychic damage
+	◦	Base powers strength now goes up by +10% per owned stack
+	◦	This increases all the base stats of the power before any other boosts
+	▪	This includes Damage, Mez Duration, Debuffs, and Knockback scale of Kinetic Melee powers
+	◦	This multiplies against the buffed base damage
+	▪	For example, at 5 stacks a 100 damage attack becomes 150 and then is boosted by +50% to 225
+	•	Repulsing Torrent
+	◦	Range decreased from 40ft to 30ft, lowering it's area factor
+	◦	Total damage scale increased from scale 1.1 to 1.29
+	◦	Knockback scale lowered from 3 to 1
+	◦	Now inflicts scale 0.7 -Dam debuff for 6s
+	◦	Now grants a Power Siphon Stack
+	•	Focused Burst
+	◦	Is now able to chain on hit to up to 4 extra targets, richocheting kinetic energy!
+	◦	Tankers can hit up to 10 total targets due to Overcap like with 5-target cones
+	◦	The 1st target takes full damage, with each extra target taking 25% less up to a minimum of 25%
+	•	Burst
+	◦	Cast time lowered from 2.67 to 2.53
+	◦	Now deals damage over time during the start of animation, then a stronger final hit
+	◦	Total damage scale unchanged
+	◦	[Stalkers] Stealth crit rate lowered to 50%
+	•	Concentrated Strike
+	◦	Now can grant 2 stacks of Siphon, one at the start as you begin to drain the target and one at the final hit
+	◦	Now deals 1/3 of it's damage over time during the start of the animation
+	◦	Total damage scale unchanged
+	◦	Stun chance increased from 60% to 100%
+	◦	Cast time lowered from 2.83 to 2.67
+	◦	[Stalkers/Scrappers] Now deals 3 scale 1.1867 ticks on crit, fully matching the total base damage over time
+	◦	[Stalkers] No longer recharges Build Up on crit
+	◦	[Scrappers] No longer has a chance to recharge Power Siphon
+ 
+Psionic Melee
+	•	Insight
+	◦	No longer has a lockout
+	◦	Insight DoTs have been standardized to guarantee their average damage each time they are applied:
+	▪	Mental Strike - Insight DoT changed from 80% chance of 0.084 x4 over 3.1s > 100% chance of 0.0661 x3 over 2.1s
+	▪	Psi Blade - Insight DoT changed from 80% chance of 0.2285 x4 over 3.1s > 100% chance of 0.1799 x3 over 2.1s
+	▪	Telekinetic Blow - Insight DoT changed from 80% chance of 0.18 x4 over 3.1s > 100% chance of 0.1417 x3 over 2.1s
+	▪	Psi Blade Sweep - Insight DoT changed from 80% chance of 0.236 x4 over 3.1s > 100% chance of 0.1858 x3 over 2.1s
+	▪	Mass Levitate - Insight DoT changed from 80% chance of 0.142 x4 over 3.1s > 100% chance of 0.1118 x3 over 2.1s
+	•	Boggle
+	◦	Cast time reduced from 2s to 1s
+	◦	Now has a highlight ring if you do not have any targets you have Boggled.
+	◦	FX now lasts 15 seconds to indicate the effect being active
+	◦	Chances to proc Insight on powers increased from 2x to 3x
+	◦	Ex: Mental Strike's 8.9% goes from 17.78% to 26.67% vs a Boggled target
+	•	Greater Psi Blade
+	◦	Now has a highlight ring when you have Insight.
+	◦	Insight Strike damage increased from scale 1.38 > 1.656
+	◦	Insight Strike no longer changes the Mag 3 hold portion to Scale 12.
+	◦	Instead, it now adds an additional Scale 8, Mag 1 hold that stacks with the base hold
+	•	Mass Levitate
+	◦	Delay for dealing damage reduced from 2s to 1.5s to better match when targets impact the ground
+ 
+Sonic Melee
+	•	Strident Echo / Sonic Thrust:
+	◦	Increased these power's bonus against Attuned targets from 15s to 25s
+	•	Sonic Clap:
+	◦	This power now triggers a dot around up to 5 targets around an attuned target (attuned target must be in the area of effect and be hit by the base power)
+	◦	Highlight ring in this power means you have an Attuned target, but the power has not managed to apply its splash dot on any foes in the last 15s.
+	•	Deafening Wave:
+	◦	This power now triggers a dot around up to 5 targets around an attuned target (attuned target must be in the area of effect and be hit by the base power)
+	◦	Highlight ring in this power means you have an Attuned target but the power has not managed to apply it's splash dot on any foes in the last 15s
+	•	Earsplitter
+	◦	Increased this power's bonus against Attuned targets from +10% to +20%
+ 
+Spines
+	•	Barb Swipe
+	◦	DoT duration increased from 2.1 to 3.1 (3 -> 4 total ticks)
+	•	Lunge
+	◦	On hit, gain +15% to Spine Poison for 15s (replaces self)
+	◦	Spine Poison increases the odds of Spines DoT of continuing per tick. While active, this increases the odds from 80% to 95%
+	◦	When Spine Poison is not active, a highlight ring will appear around Lunge
+	◦	Cast time lowered from 1.63s to 1.33s
+	◦	Recharge lowered from 6s to 5s
+	◦	Lethal Damage Scale lowered from 1.32 to 1.08
+	◦	End Cost lowered from 6.864 to 6.032
+	◦	DoT duration increased from 3.1 to 6.1 (4 -> 7 total ticks)
+	•	Impale
+	◦	Now deals -100% Regen debuff for 15s (replaces self)
+	◦	Cast time reduced from 2.43 to 2.23
+	◦	Recharge increased from 8s to 10s
+	◦	Endurance cost increased from 8.528 to 10.192
+	◦	DoT now lasts for 15.1s (16 total ticks) at 80% chance
+	◦	DoT starts at scale 0.2, and decays to scale 0.05 by the last tick.
+	◦	Combined, this is a possible total of Scale 3.64 damage
+	•	Spine Burst
+	◦	Cast time lowered from 3s to 1.67s
+	◦	Recharge lowered from 16s to 10s
+	◦	Endurance cost lowered from 15.184 to 10.192
+	◦	Lethal damage scale lowered from 0.9 to 0.6
+	◦	DoT duration increased from 3.1s to 6.1s (4 -> 7 total ticks)
+	•	Ripper
+	◦	DoT duration increased from 4.1s to 7.1s (5 -> 8 total ticks)
+	•	Throw Spines
+	◦	DoT duration increased from 4.1s to 7.1s (5 -> 8 total ticks)
+ 
+ Fiery Melee
+	•	Breath of Fire (Brutes, Scrappers, Stalkers)
+	◦	Arc increase from 30 degrees to 120 degrees
+	◦	Cast time reduced from 2.67s to 2.4s
+	◦	FX has been adjusted to reflect new area
+	◦	Hits 10 targets
+	•	Fiery Breath (Tankers)
+	◦	Cast time lowered from 2.67s to 2.5s
+	◦	Damage scale increased from 2 ticks of scale 0.68 to 0.7116
+	◦	If the main target is within melee range (7ft), they will take 4 ticks of 0.7116 instead of 2
+	•	Fire Sword
+	◦	Now has a No Swords theme
+	•	Fire Sword Circle
+	◦	Now has a No Swords theme
+	•	Greater Fire Sword
+	◦	No longer applies a -defense debuff
+	◦	No longer accepts Defense debuff sets
+	◦	Now has a No Swords theme
+ 
+ Storm Blast
+	•	Storm Brewing
+	◦	Now is a separate temporary power that can stack up to 5 times on the player, instead of being tied directly to the power used.
+	◦	Each stack increases the odds of Lightning Procs from attacks by 1%
+	◦	The High Winds proc is now tied to Storm Brewing and lasts 10 seconds at a time
+	•	Intensify 
+	◦	Now grants 5 Storm Brewing stacks
+	•	Storm Cell
+	◦	Is now immobile
+	◦	Cast Time reduced from 2.03s to 1.17s
+	◦	Recharge reduced from 60s to 15s
+	◦	Radius increased from 25ft to 35ft
+	◦	While High Winds is active, Storm Cell will cast Automatic Lightning in addition to the Lightning Procs granted by attacking with Storm Blast powers
+	•	Storm Cell - Automatic Lightning
+	◦	These procs are now an aura power granted to the Storm Cell as long as High Winds is active
+	◦	Can proc every 1s on any target in a Storm Cell
+	◦	After hitting a target, up to 2 additional nearby targets can be struck with a 20% chance of occurring for each
+	◦	The main target cannot be hit again for 1-3s by the proc, but can be struck by chained procs of nearby targets
+	◦	Each tick, there is a 20% chance of casting a Strong Lightning Proc instead that hits as hard as the normal Lightning Proc
+	•	Storm Cell - Lightning Procs
+	◦	Target cap set to 3 at all times, from up to 4 dependent on Storm Brewing
+	◦	Damage scale increased from 0.5 to 1.0
+	◦	Proc rate per power changes:
+	▪	Gust - 20%
+	▪	Hailstones, Jet Stream - 30%
+	▪	Direct Strike (Fast), Chain Lightning - 40%
+	▪	Cloudburst - 50%
+	▪	Direct Strike (Slow) - 80%
+	◦	Can only occur every 2 seconds from the same caster, no longer locked out on the target for multiple casters
+	◦	These Lightning Procs can stack with Automatic Lightning
+	•	Storm Cell - Lightning Lockout
+	◦	Damage and Endurance Drain are no longer subject to any sort of Lockout
+	◦	All versions of Lightning now have a 33% chance to either inflict Knockdown or a brief mag 3 Stun
+	◦	If either effect is procced, the target is immune from other strikes inflicting these effects for 5 seconds
+	•	Category Five
+	◦	Duration shortened from 30s to 20s
+	▪	Sentinel duration shortened from 20s to 15s
+	◦	Radius of DoT, Lightning, and StormCell check increased from 30ft to 40ft
+	▪	Sentinel radius increased from 30ft to 35ft
+	◦	DoT rate reduced from 5 times per second to 3 times per second
+	◦	Category Five Eye
+	▪	Delay reduced from 3s to 2s for summoning the Cyclone for crowd control effects
+	▪	Duration shortened from 25s to 17s
+	▪	Sentinel duration shortened from 15s to 10s
+	▪	Radius reduced from 30ft to 25ft (damage scale unchanged)
+	▪	Sentinel Radius reduced from 25ft to 20ft (damage scale unchanged)
+	▪	DoT rate increased from 2 times per second to 3 times per second and starts immediately
+	◦	Category Five lightning
+	▪	Now automatically strikes every 0.67 seconds, and has a 25% chance to trigger per target on up to 5 targets
+	▪	Damage reduced from Scale 1.0 to Scale 0.5
+	▪	Shares the lightning lockout properties with Storm Cell lightning for secondary mez effects
+	▪	Damage and Endurance Drain are not subject to Lockout
+	•	Category Five (Sentinels)
+	◦	Addressed implementation issues with Category Five in sentinels
+	◦	This increases the damage done in the outer rim and decreases max damage on the standard 10ft center radius.
+	•	Chain Lightning
+	◦	This power no longer deals additional DoT.
+	◦	It is also now an auto-hit for applying it’s chain across enemies.
+	◦	The power still needs to pass a ToHit check in order to actually hit enemies, but it is no longer subject to critical failure.
+	•	Cloudburst
+	◦	Now accepts Slow and ToHit debuff enhancement
+ 
+ 
+Marine Affinity
+	•	White Cap
+	◦	Changed to location teleport power instead of targeted teleport due to extremely unreliable teleport mechanics
+	◦	Recharge lowered from 30s to 15s
+	◦	Endurance cost reduced from 18 to 14.352
+	◦	Cast time reduced from 2s to 1.5s
+	•	Brine
+	◦	Cast time reduced from 2s to 1.33s
+	•	Shoal Rush
+	◦	Cast time lowered from 2.17s to 1.33s
+	•	Soothing Wave
+	◦	-Dam debuff lowered from scale 1.2 to 0.75, is now resistable
+	•	Tide Pool
+	◦	-Dam Debuff lowered from scale 2.4 to 1.5, is now resistable
+	•	Tide Pool Frenzy
+	◦	-Dam Debuff lowered from scale 1.2 to 0.75, is now resistable
+	•	Tide Pool Frenzy
+	◦	Individual targets can only be knocked down once every 4 seconds
+	•	Shifting Tides
+	◦	Can now only trigger damage 4 times per second on the same enemy
+ 
+Summoning Powerset Adjustments -
+Beast Mastery
+	•	Lick Wounds
+	◦	This power has been changed from Scale 1.33 Ranged_Heal to scale 2 HealSelf (20% self heal)
+	◦	Power now available to Howler Wolves as part of the Tame Beast upgrade
+	•	Howl (all versions)
+	◦	Cast time reduced from 3.67s to 1.67s
+	•	Maiming Bite (all versions)
+	◦	Cast time reduced from 2.47s to 1.9s
+	•	Dire Wolf > Freezing Roar
+	◦	Cast time reduced from 2.83 to 1.9s
+	•	Dire Wolf > Terrible Roar
+	◦	Cast time reduced from 3.67 to 1.67
+	◦	Dire Wolf should use this power a more often now
+ 
+Other Powerset Adjustments -
+ 
+Dual Pistols
+ 
+Swap Ammo now changes 100% of the set's damage to the element of the active ammo type. Note that attack type will always remain Lethal.
+ 
+Please scrutinize powers as much as possible for any discrepancies. 
+ 
+Pyrotechnic Control
+	•	Glittering Column
+	◦	Explosion component is now an auto power
+	•	Hypnotizing Lights
+	◦	Damage/Confuse procs should now only trigger of the confuse/damage sub-power
+ 
+Dark Miasma
+	•	Black Hole
+	◦	Due to potential harassment against some enemy groups, now only the main target of the power will be Phased, should it be immune to repel effects.
+	◦	Radius increased from 20ft to 30ft
+ 
+Epic - Dark Mastery
+	•	Black Hole
+	◦	Due to potential harassment against some enemy groups, now only the main target of the power will be Phased, should it be immune to repel effects.
+	◦	Radius increased from 10ft to 20ft
+ 
+Bug Fixes
+	•	Fixed a visual issue with ToHit buffs showing a small white square inside players who are stealthed.
+	•	Fixed incorrect PvP damage scalers of Blaster Atomic Manipultion > Positron Cell and Sonic Manipulation > Echo Chamber.
+	•	 Fixed the power icon for Confront on Scrapper's Kinetic Melee using the AoE border.
+	•	 Fixed the power icons for Hack and Slash being incorrectly reversed (Hack is the bigger hit).
+	•	Fixed a bug where multiple powers were not ignoring buffs despite applying resistance buffs
+	◦	Following powers are affected:

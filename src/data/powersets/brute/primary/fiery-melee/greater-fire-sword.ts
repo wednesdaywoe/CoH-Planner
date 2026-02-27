@@ -24,13 +24,17 @@ export const GreaterFireSword: Power = {
     "castTime": 1.37
   },
   "allowedEnhancements": [
+    "Taunt",
     "EnduranceReduction",
     "Recharge",
+    "Defense Debuff",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Accurate Defense Debuff",
     "Brute Archetype Sets",
+    "Defense Debuff",
     "Melee Damage",
     "Threat Duration",
     "Universal Damage Sets"

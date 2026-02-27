@@ -24,6 +24,7 @@ export const TotalFocus: Power = {
     "castTime": 2.53
   },
   "allowedEnhancements": [
+    "Taunt",
     "EnduranceReduction",
     "Stun",
     "Recharge",

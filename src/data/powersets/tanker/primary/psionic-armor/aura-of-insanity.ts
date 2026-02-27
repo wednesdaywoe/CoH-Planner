@@ -26,6 +26,7 @@ export const AuraofInsanity: Power = {
   },
   "allowedEnhancements": [
     "Hold",
+    "Taunt",
     "Stun",
     "Sleep",
     "Recharge",
@@ -41,6 +42,7 @@ export const AuraofInsanity: Power = {
     "Melee AoE Damage",
     "Sleep",
     "Stuns",
+    "Tanker Archetype Sets",
     "Threat Duration",
     "Universal Damage Sets"
   ],

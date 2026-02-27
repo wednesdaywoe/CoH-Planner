@@ -29,6 +29,7 @@ export const HailofBullets: Power = {
     "Slow",
     "EnduranceReduction",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],

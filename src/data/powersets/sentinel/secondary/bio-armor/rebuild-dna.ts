@@ -24,6 +24,7 @@ export const RebuildDNA: Power = {
     "castTime": 0.73
   },
   "allowedEnhancements": [
+    "EnduranceModification",
     "EnduranceReduction",
     "Recharge",
     "Healing"

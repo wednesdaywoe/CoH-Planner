@@ -27,6 +27,7 @@ export const TelekineticBlast: Power = {
     "EnduranceReduction",
     "Range",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],

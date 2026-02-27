@@ -26,6 +26,7 @@ export const CloakofFear: Power = {
     "maxTargets": 10
   },
   "allowedEnhancements": [
+    "Taunt",
     "EnduranceReduction",
     "Recharge",
     "Fear",

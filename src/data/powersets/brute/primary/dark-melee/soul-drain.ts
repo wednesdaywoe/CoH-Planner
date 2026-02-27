@@ -26,9 +26,11 @@ export const SoulDrain: Power = {
     "maxTargets": 10
   },
   "allowedEnhancements": [
+    "Taunt",
     "EnduranceReduction",
     "Recharge",
     "Damage",
+    "ToHit",
     "Accuracy"
   ],
   "allowedSetCategories": [

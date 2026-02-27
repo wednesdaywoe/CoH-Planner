@@ -29,6 +29,8 @@ export const Singularity: Power = {
     "EnduranceReduction",
     "Range",
     "Recharge",
+    "Knockback",
+    "Immobilize",
     "Damage",
     "Accuracy"
   ],

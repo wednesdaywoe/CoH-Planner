@@ -24,8 +24,10 @@ export const Jawbreaker: Power = {
     "castTime": 1.83
   },
   "allowedEnhancements": [
+    "Taunt",
     "EnduranceReduction",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],

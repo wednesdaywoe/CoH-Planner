@@ -2,7 +2,7 @@
  * Absorption
  * Auto: Self +Res (Energy,Negative)
  *
- * Source: warshade/umbral-aura
+ * Source: warshade_defensive/umbral_aura/absorption.json
  */
 
 import type { Power } from '@/types';
@@ -25,5 +25,17 @@ export const Absorption: Power = {
   "stats": {
     "accuracy": 1
   },
-  "targetType": "Self"
+  "targetType": "Self",
+  "effects": {
+    "resistance": {
+      "energy": {
+        "scale": 1.5,
+        "table": "Melee_Res_Dmg"
+      },
+      "negative": {
+        "scale": 1.5,
+        "table": "Melee_Res_Dmg"
+      }
+    }
+  }
 };

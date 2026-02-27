@@ -2,7 +2,7 @@
  * Summon Spiderlings
  * Summon Spiderlings: Ranged Moderate DMG(Lethal)
  *
- * Source: arachnos-soldier/crab-spider-training
+ * Source: training_gadgets/crab_spider_training/summon_spiderlings.json
  */
 
 import type { Power } from '@/types';
@@ -36,5 +36,14 @@ export const SummonSpiderlings: Power = {
     "endurance": 26,
     "castTime": 2.03
   },
-  "targetType": "Location"
+  "targetType": "Location",
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_Patron_Powers_Arachnobot_Spiderling",
+      "duration": 240,
+      "copyBoosts": true,
+      "entityCount": 3
+    }
+  }
 };

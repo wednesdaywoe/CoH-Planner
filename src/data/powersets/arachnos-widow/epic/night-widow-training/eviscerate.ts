@@ -2,7 +2,7 @@
  * Eviscerate
  * Melee (Cone), DMG(Lethal), DoT(Toxic), -Recharge, -SPD
  *
- * Source: arachnos-widow/night-widow-training
+ * Source: widow_training/night_widow_training/nw_eviscerate.json
  */
 
 import type { Power } from '@/types';
@@ -34,7 +34,51 @@ export const Eviscerate: Power = {
     "endurance": 13.548,
     "castTime": 2.33,
     "radius": 7,
+    "arc": 1.5708,
     "maxTargets": 5
   },
-  "targetType": "Foe (Alive)"
+  "targetType": "Foe (Alive)",
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 2.076,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 2.076,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Toxic",
+      "scale": 0.1,
+      "table": "Melee_Damage",
+      "duration": 3.1,
+      "tickRate": 1
+    }
+  ],
+  "effects": {
+    "movement": {
+      "runSpeed": {
+        "scale": 0.4,
+        "table": "Melee_Slow"
+      },
+      "flySpeed": {
+        "scale": 0.4,
+        "table": "Melee_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.4,
+        "table": "Melee_Slow"
+      },
+      "jumpHeight": {
+        "scale": 0.4,
+        "table": "Melee_Slow"
+      }
+    },
+    "rechargeDebuff": {
+      "scale": 0.4,
+      "table": "Melee_Slow"
+    }
+  }
 };

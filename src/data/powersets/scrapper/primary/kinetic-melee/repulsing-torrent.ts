@@ -30,6 +30,7 @@ export const RepulsingTorrent: Power = {
     "EnduranceReduction",
     "Range",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],

@@ -27,6 +27,7 @@ export const SummonLions: Power = {
   "allowedEnhancements": [
     "EnduranceReduction",
     "Stun",
+    "Run Speed",
     "Damage",
     "Accuracy"
   ],

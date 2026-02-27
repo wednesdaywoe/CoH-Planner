@@ -31,6 +31,7 @@ export const Geyser: Power = {
     "Range",
     "Stun",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],

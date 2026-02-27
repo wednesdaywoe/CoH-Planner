@@ -2,7 +2,7 @@
  * Serum
  * Self Heal, +Max HP
  *
- * Source: arachnos-soldier/crab-spider-training
+ * Source: training_gadgets/crab_spider_training/serum.json
  */
 
 import type { Power } from '@/types';
@@ -30,5 +30,16 @@ export const Serum: Power = {
     "endurance": 10.4,
     "castTime": 1.3
   },
-  "targetType": "Self"
+  "targetType": "Self",
+  "damage": {
+    "type": "Heal",
+    "scale": 4,
+    "table": "Melee_HealSelf"
+  },
+  "effects": {
+    "maxHPBuff": {
+      "scale": 2,
+      "table": "Melee_HealSelf"
+    }
+  }
 };

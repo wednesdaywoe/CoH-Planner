@@ -2,7 +2,7 @@
  * Dominate
  * Ranged, DMG(Psionic), Foe Hold
  *
- * Source: arachnos-widow/fortunata-training
+ * Source: widow_training/fortunata_training/frt_dominate.json
  */
 
 import type { Power } from '@/types';
@@ -37,5 +37,17 @@ export const Dominate: Power = {
     "endurance": 7.216,
     "castTime": 1.1
   },
-  "targetType": "Foe (Alive)"
+  "targetType": "Foe (Alive)",
+  "damage": {
+    "type": "Psionic",
+    "scale": 1.3877,
+    "table": "Ranged_Damage"
+  },
+  "effects": {
+    "hold": {
+      "mag": 3,
+      "scale": 12,
+      "table": "Ranged_Immobilize"
+    }
+  }
 };

@@ -2,7 +2,7 @@
  * Confuse
  * Ranged, Target Confuse
  *
- * Source: arachnos-widow/fortunata-teamwork
+ * Source: teamwork/fortunata_teamwork/confuse.json
  */
 
 import type { Power } from '@/types';
@@ -33,5 +33,12 @@ export const Confuse: Power = {
     "endurance": 8.528,
     "castTime": 2
   },
-  "targetType": "Foe (Alive)"
+  "targetType": "Foe (Alive)",
+  "effects": {
+    "confuse": {
+      "mag": 3,
+      "scale": 20,
+      "table": "Ranged_Immobilize"
+    }
+  }
 };

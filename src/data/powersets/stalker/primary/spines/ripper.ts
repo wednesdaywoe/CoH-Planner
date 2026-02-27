@@ -30,6 +30,7 @@ export const Ripper: Power = {
     "Slow",
     "EnduranceReduction",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],

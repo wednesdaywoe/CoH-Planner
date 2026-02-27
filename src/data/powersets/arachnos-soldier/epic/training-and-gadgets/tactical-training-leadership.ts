@@ -2,7 +2,7 @@
  * Tactical Training: Leadership
  * Toggle: PBAoE, Team +To Hit, Res(Confuse, Fear), +Perception
  *
- * Source: arachnos-soldier/training-and-gadgets
+ * Source: training_gadgets/training_and_gadgets/tactical_training:_leadership.json
  */
 
 import type { Power } from '@/types';
@@ -32,5 +32,26 @@ export const TacticalTrainingLeadership: Power = {
     "radius": 60,
     "maxTargets": 255
   },
-  "targetType": "Self"
+  "targetType": "Self",
+  "effects": {
+    "tohitBuff": {
+      "scale": 1,
+      "table": "Ranged_Buff_ToHit"
+    },
+    "perceptionBuff": {
+      "scale": 2,
+      "table": "Ranged_Res_Boolean"
+    },
+    "confuse": {
+      "mag": 1,
+      "scale": 1.75,
+      "table": "Ranged_Res_Boolean"
+    },
+    "fear": {
+      "mag": 1,
+      "scale": 1.75,
+      "table": "Ranged_Res_Boolean"
+    },
+    "effectDuration": 2.25
+  }
 };

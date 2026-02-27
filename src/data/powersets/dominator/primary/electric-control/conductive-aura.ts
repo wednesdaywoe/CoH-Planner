@@ -25,6 +25,7 @@ export const ConductiveAura: Power = {
     "maxTargets": 16
   },
   "allowedEnhancements": [
+    "EnduranceModification",
     "Recharge",
     "Healing",
     "Accuracy"

@@ -29,7 +29,8 @@ export const EmpoweringCircuit: Power = {
   "allowedEnhancements": [
     "EnduranceReduction",
     "Range",
-    "Recharge"
+    "Recharge",
+    "ToHit"
   ],
   "allowedSetCategories": [
     "To Hit Buff"

@@ -25,6 +25,7 @@ export const Discharge: Power = {
     "castTime": 2.03
   },
   "allowedEnhancements": [
+    "EnduranceModification",
     "EnduranceReduction",
     "Recharge",
     "Accuracy"

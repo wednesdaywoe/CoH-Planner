@@ -24,8 +24,10 @@ export const Cremate: Power = {
     "castTime": 1.5
   },
   "allowedEnhancements": [
+    "Taunt",
     "EnduranceReduction",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],

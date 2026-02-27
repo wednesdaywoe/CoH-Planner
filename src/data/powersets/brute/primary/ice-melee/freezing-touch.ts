@@ -25,6 +25,7 @@ export const FreezingTouch: Power = {
   },
   "allowedEnhancements": [
     "Hold",
+    "Taunt",
     "EnduranceReduction",
     "Recharge",
     "Damage",

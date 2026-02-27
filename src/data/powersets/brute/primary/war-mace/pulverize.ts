@@ -24,6 +24,7 @@ export const Pulverize: Power = {
     "castTime": 1.5
   },
   "allowedEnhancements": [
+    "Taunt",
     "EnduranceReduction",
     "Stun",
     "Recharge",

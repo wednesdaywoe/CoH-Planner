@@ -2,7 +2,7 @@
  * Stygian Circle
  * PBAoE Self +HP (Special), +End
  *
- * Source: warshade/umbral-aura
+ * Source: warshade_defensive/umbral_aura/stygian_circle.json
  */
 
 import type { Power } from '@/types';
@@ -17,7 +17,7 @@ export const StygianCircle: Power = {
   "effectArea": "AoE",
   "maxSlots": 6,
   "allowedEnhancements": [
-    "EnduranceReduction",
+    "EnduranceModification",
     "EnduranceReduction",
     "Recharge",
     "Healing"
@@ -34,5 +34,33 @@ export const StygianCircle: Power = {
     "radius": 20,
     "maxTargets": 10
   },
-  "targetType": "Self"
+  "targetType": "Self",
+  "damage": [
+    {
+      "type": "Heal",
+      "scale": 2,
+      "table": "Melee_HealSelf"
+    },
+    {
+      "type": "Heal",
+      "scale": 3,
+      "table": "Melee_HealSelf"
+    },
+    {
+      "type": "Heal",
+      "scale": 4,
+      "table": "Melee_HealSelf"
+    },
+    {
+      "type": "Heal",
+      "scale": 5,
+      "table": "Melee_HealSelf"
+    }
+  ],
+  "effects": {
+    "enduranceGain": {
+      "scale": 20,
+      "table": "Melee_Ones"
+    }
+  }
 };

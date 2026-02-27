@@ -2,7 +2,7 @@
  * White Dwarf Step
  * Ranged (Location), Self Teleport
  *
- * Source: peacebringer/luminous-aura
+ * Source: peacebringer_defensive/luminous_aura/white_dwarf_step.json
  */
 
 import type { Power } from '@/types';
@@ -31,5 +31,25 @@ export const WhiteDwarfStep: Power = {
     "castTime": 1.67
   },
   "targetType": "Location (Teleport)",
-  "requires": "White Dwarf"
+  "requires": "White Dwarf",
+  "effects": {
+    "movement": {
+      "fly": {
+        "scale": 1,
+        "table": "Melee_Ones"
+      },
+      "flySpeed": {
+        "scale": 500,
+        "table": "Melee_SpeedFlying"
+      },
+      "movementControl": {
+        "scale": 8,
+        "table": "Melee_Ones"
+      },
+      "movementFriction": {
+        "scale": 8,
+        "table": "Melee_Ones"
+      }
+    }
+  }
 };

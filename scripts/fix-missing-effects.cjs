@@ -15,6 +15,7 @@ const path = require('path');
 const {
   extractEffects,
   extractDamage,
+  collectAllTemplates,
   RAW_DATA_PATH,
 } = require('./convert-powerset.cjs');
 
@@ -28,22 +29,8 @@ const powersetFilterIdx = args.indexOf('--powerset');
 const powersetFilter = powersetFilterIdx >= 0 ? args[powersetFilterIdx + 1] : null;
 
 // ============================================
-// EFFECT EXTRACTION (same as audit)
+// FILE HELPERS
 // ============================================
-
-function collectAllTemplates(effects) {
-  const templates = [];
-  for (const effect of effects) {
-    if (effect.is_pvp === 'PVP_ONLY') continue;
-    if (effect.templates && effect.templates.length > 0) {
-      templates.push(...effect.templates);
-    }
-    if (effect.child_effects && effect.child_effects.length > 0) {
-      templates.push(...collectAllTemplates(effect.child_effects));
-    }
-  }
-  return templates;
-}
 
 function extractSourceComment(tsContent) {
   const match = tsContent.match(/\*\s*Source:\s*(.+\.json)\s*$/m);

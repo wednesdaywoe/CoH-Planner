@@ -24,6 +24,7 @@ export const Incinerate: Power = {
     "castTime": 1.67
   },
   "allowedEnhancements": [
+    "Taunt",
     "EnduranceReduction",
     "Recharge",
     "Damage",

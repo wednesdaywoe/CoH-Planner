@@ -8,10 +8,10 @@
 
 import type {
   Power,
+  PowerEffects,
   IOSetCategory,
   EnhancementStatType,
   PowerType,
-  DamageType,
 } from '@/types';
 import { EPIC_POOLS_RAW } from './epic-pools-raw';
 import { resolvePath } from '@/utils/paths';
@@ -39,6 +39,7 @@ export type EpicPoolRegistry = Record<string, EpicPool>;
 // ============================================
 
 interface LegacyEpicPowerEffects {
+  // Stats (renamed during transformation)
   accuracy?: number;
   range?: number;
   recharge?: number;
@@ -47,14 +48,8 @@ interface LegacyEpicPowerEffects {
   effectArea?: string;
   radius?: number;
   arc?: number;
-  damage?: {
-    type: string;
-    scale: number;
-    table?: string;
-  };
-  protection?: Record<string, number>;
-  resistance?: Record<string, number>;
-  recovery?: { scale: number; table?: string };
+  maxTargets?: number;
+  // All other effect fields pass through directly
   [key: string]: unknown;
 }
 
@@ -92,56 +87,23 @@ type LegacyEpicPoolRegistry = Record<string, LegacyEpicPool>;
 // DATA TRANSFORMATION
 // ============================================
 
-/** Map shortHelp "Foe X" labels to effect keys */
-const FOE_MEZ_MAP: Record<string, string> = {
-  hold: 'hold',
-  stun: 'stun',
-  immobilize: 'immobilize',
-  sleep: 'sleep',
-  fear: 'fear',
-  confuse: 'confuse',
-  knockback: 'knockback',
-  knockdown: 'knockback',
-  knockup: 'knockup',
-};
-
-/**
- * Detect offensive mez types from shortHelp (e.g., "Foe Immobilize", "Foe Hold")
- */
-function detectOffensiveMez(shortHelp?: string): Set<string> {
-  const result = new Set<string>();
-  if (!shortHelp) return result;
-  const matches = shortHelp.matchAll(/Foe\s+(Hold|Stun|Immobilize|Sleep|Fear|Confuse|Knockback|Knockdown|Knockup)/gi);
-  for (const m of matches) {
-    const key = FOE_MEZ_MAP[m[1].toLowerCase()];
-    if (key) result.add(key);
-  }
-  return result;
-}
-
 /**
  * Transform legacy epic power to typed Power
  */
 function transformEpicPower(legacy: LegacyEpicPower): Power {
-  // Detect offensive mez from shortHelp and separate from true protection
-  const offensiveMez = detectOffensiveMez(legacy.shortHelp);
-  const rawProtection = legacy.effects.protection;
-
-  // Split protection into real protection vs. offensive mez effects
-  let realProtection: Record<string, number> | undefined;
-  const mezEffects: Record<string, number> = {};
-
-  if (rawProtection) {
-    const realEntries: Record<string, number> = {};
-    for (const [key, val] of Object.entries(rawProtection)) {
-      if (offensiveMez.has(key)) {
-        mezEffects[key] = val;
-      } else {
-        realEntries[key] = val;
-      }
-    }
-    realProtection = Object.keys(realEntries).length > 0 ? realEntries : undefined;
-  }
+  // Destructure stats that need renaming, spread the rest through directly
+  const {
+    endurance,
+    activationTime,
+    accuracy,
+    range,
+    recharge,
+    effectArea,
+    radius,
+    arc,
+    maxTargets,
+    ...effectFields
+  } = legacy.effects;
 
   return {
     name: legacy.name,
@@ -157,23 +119,20 @@ function transformEpicPower(legacy: LegacyEpicPower): Power {
     powerType: legacy.powerType as PowerType,
     requires: legacy.requires,
     effects: {
-      accuracy: legacy.effects.accuracy,
-      range: legacy.effects.range,
-      recharge: legacy.effects.recharge,
-      enduranceCost: legacy.effects.endurance,
-      castTime: legacy.effects.activationTime,
-      radius: legacy.effects.radius,
-      damage: legacy.effects.damage
-        ? {
-            type: legacy.effects.damage.type as DamageType,
-            scale: legacy.effects.damage.scale,
-          }
-        : undefined,
-      protection: realProtection,
-      resistance: legacy.effects.resistance as Record<string, number> | undefined,
-      // Offensive mez effects extracted from protection
-      ...mezEffects,
-    },
+      // Stats (renamed from legacy format)
+      accuracy,
+      range,
+      recharge,
+      enduranceCost: endurance,
+      castTime: activationTime,
+      effectArea: effectArea as PowerEffects['effectArea'],
+      radius,
+      arc,
+      maxTargets,
+      // All other effects pass through directly (damage, buffs, debuffs,
+      // mez, protection, resistance, movement, stealth, summon, etc.)
+      ...effectFields,
+    } as PowerEffects,
   };
 }
 

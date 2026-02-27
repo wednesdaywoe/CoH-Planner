@@ -27,6 +27,7 @@ export const BlindingFeint: Power = {
     "EnduranceReduction",
     "Recharge",
     "Damage",
+    "ToHit",
     "Accuracy"
   ],
   "allowedSetCategories": [

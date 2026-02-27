@@ -29,6 +29,7 @@ export const ForceofThunder: Power = {
     "EnduranceReduction",
     "Stun",
     "Recharge",
+    "Knockback",
     "Accuracy"
   ],
   "allowedSetCategories": [

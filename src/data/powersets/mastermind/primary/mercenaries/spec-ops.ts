@@ -28,6 +28,7 @@ export const SpecOps: Power = {
     "Hold",
     "EnduranceReduction",
     "Stun",
+    "Immobilize",
     "ToHit Debuff",
     "Defense Debuff",
     "Damage",

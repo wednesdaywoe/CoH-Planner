@@ -27,6 +27,7 @@ export const SonicBarrier: Power = {
     "maxTargets": 255
   },
   "allowedEnhancements": [
+    "Resistance",
     "EnduranceReduction",
     "Range",
     "Recharge"

@@ -20,7 +20,10 @@ export const Quickness: Power = {
   "stats": {
     "accuracy": 1
   },
-  "allowedEnhancements": [],
+  "allowedEnhancements": [
+    "Run Speed",
+    "Fly"
+  ],
   "maxSlots": 6,
   "effects": {
     "rechargeBuff": {

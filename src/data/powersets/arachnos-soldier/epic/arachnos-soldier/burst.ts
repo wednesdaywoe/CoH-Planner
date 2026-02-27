@@ -2,7 +2,7 @@
  * Burst
  * Ranged, Moderate DMG(Lethal), Foe -DEF
  *
- * Source: arachnos-soldier/arachnos-soldier
+ * Source: arachnos_soldiers/arachnos_soldier/burst.json
  */
 
 import type { Power } from '@/types';
@@ -16,8 +16,21 @@ export const Burst: Power = {
   "powerType": "Click",
   "effectArea": "SingleTarget",
   "maxSlots": 6,
-  "allowedEnhancements": [],
-  "allowedSetCategories": [],
+  "allowedEnhancements": [
+    "EnduranceReduction",
+    "Range",
+    "Recharge",
+    "Defense Debuff",
+    "Damage",
+    "Accuracy"
+  ],
+  "allowedSetCategories": [
+    "Accurate Defense Debuff",
+    "Defense Debuff",
+    "Ranged Damage",
+    "Soldiers of Arachnos Archetype Sets",
+    "Universal Damage Sets"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,

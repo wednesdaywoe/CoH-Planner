@@ -24,6 +24,7 @@ export const ZappingBolt: Power = {
     "castTime": 1
   },
   "allowedEnhancements": [
+    "EnduranceModification",
     "EnduranceReduction",
     "Range",
     "Recharge",

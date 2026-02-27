@@ -2,7 +2,7 @@
  * Build Up
  * Self +DMG, +To Hit
  *
- * Source: arachnos-widow/night-widow-training
+ * Source: widow_training/night_widow_training/build_up.json
  */
 
 import type { Power } from '@/types';
@@ -30,5 +30,15 @@ export const BuildUp: Power = {
     "endurance": 5.2,
     "castTime": 0.73
   },
-  "targetType": "Self"
+  "targetType": "Self",
+  "effects": {
+    "tohitBuff": {
+      "scale": 2,
+      "table": "Melee_Buff_ToHit"
+    },
+    "damageBuff": {
+      "scale": 8,
+      "table": "Melee_Buff_Dmg"
+    }
+  }
 };

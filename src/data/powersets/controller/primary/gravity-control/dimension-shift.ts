@@ -27,7 +27,8 @@ export const DimensionShift: Power = {
   "allowedEnhancements": [
     "EnduranceReduction",
     "Range",
-    "Recharge"
+    "Recharge",
+    "Immobilize"
   ],
   "allowedSetCategories": [
     "Controller Archetype Sets",

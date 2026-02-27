@@ -24,9 +24,11 @@ export const Overload: Power = {
     "castTime": 3
   },
   "allowedEnhancements": [
+    "EnduranceModification",
     "EnduranceReduction",
     "Recharge",
-    "Healing"
+    "Healing",
+    "Defense"
   ],
   "allowedSetCategories": [
     "Defense Sets",

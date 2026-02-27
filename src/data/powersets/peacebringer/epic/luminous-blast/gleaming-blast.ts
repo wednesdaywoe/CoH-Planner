@@ -2,7 +2,7 @@
  * Gleaming Blast
  * Ranged, Moderate DMG(Energy), Foe -DEF, Knockback
  *
- * Source: peacebringer/luminous-blast
+ * Source: peacebringer_offensive/luminous_blast/gleaming_blast.json
  */
 
 import type { Power } from '@/types';
@@ -40,5 +40,20 @@ export const GleamingBlast: Power = {
     "endurance": 8.528,
     "castTime": 1.67
   },
-  "targetType": "Foe (Alive)"
+  "targetType": "Foe (Alive)",
+  "damage": {
+    "type": "Energy",
+    "scale": 1.64,
+    "table": "Ranged_Damage"
+  },
+  "effects": {
+    "knockback": {
+      "scale": 1,
+      "table": "Ranged_Knockback"
+    },
+    "defenseDebuff": {
+      "scale": 2,
+      "table": "Ranged_Debuff_Def"
+    }
+  }
 };

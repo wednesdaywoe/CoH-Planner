@@ -24,8 +24,10 @@ export const Punch: Power = {
     "castTime": 1.2
   },
   "allowedEnhancements": [
+    "Taunt",
     "EnduranceReduction",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],

@@ -27,8 +27,10 @@ export const HeadSplitter: Power = {
     "maxTargets": 3
   },
   "allowedEnhancements": [
+    "Taunt",
     "EnduranceReduction",
     "Recharge",
+    "Knockback",
     "Defense Debuff",
     "Damage",
     "Accuracy"

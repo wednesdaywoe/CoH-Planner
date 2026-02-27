@@ -24,6 +24,7 @@ export const MentalStrike: Power = {
     "castTime": 1
   },
   "allowedEnhancements": [
+    "Taunt",
     "EnduranceReduction",
     "Recharge",
     "Damage",

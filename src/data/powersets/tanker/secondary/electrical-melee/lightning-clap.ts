@@ -26,10 +26,11 @@ export const LightningClap: Power = {
     "maxTargets": 10
   },
   "allowedEnhancements": [
+    "Taunt",
     "EnduranceReduction",
     "Stun",
     "Recharge",
-    "Damage",
+    "Knockback",
     "Accuracy"
   ],
   "allowedSetCategories": [

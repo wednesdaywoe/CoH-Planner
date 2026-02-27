@@ -27,6 +27,7 @@ export const EMPArrow: Power = {
     "maxTargets": 16
   },
   "allowedEnhancements": [
+    "EnduranceModification",
     "Hold",
     "EnduranceReduction",
     "Range",

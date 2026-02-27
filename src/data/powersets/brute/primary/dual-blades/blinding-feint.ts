@@ -24,9 +24,11 @@ export const BlindingFeint: Power = {
     "castTime": 1.2
   },
   "allowedEnhancements": [
+    "Taunt",
     "EnduranceReduction",
     "Recharge",
     "Damage",
+    "ToHit",
     "Accuracy"
   ],
   "allowedSetCategories": [

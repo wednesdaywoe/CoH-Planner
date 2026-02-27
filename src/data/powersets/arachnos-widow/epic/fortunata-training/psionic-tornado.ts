@@ -2,7 +2,7 @@
  * Psionic Tornado
  * Ranged (Targeted AoE), DoT(Psionic), Foe Knockback
  *
- * Source: arachnos-widow/fortunata-training
+ * Source: widow_training/fortunata_training/frt_psionic_lance.json
  */
 
 import type { Power } from '@/types';
@@ -39,5 +39,22 @@ export const PsionicTornado: Power = {
     "radius": 20,
     "maxTargets": 12
   },
-  "targetType": "Foe (Alive)"
+  "targetType": "Foe (Alive)",
+  "damage": {
+    "type": "Psionic",
+    "scale": 0.2034,
+    "table": "Ranged_Damage",
+    "duration": 4.1,
+    "tickRate": 1
+  },
+  "effects": {
+    "knockup": {
+      "scale": 1.4,
+      "table": "Ranged_Ones"
+    },
+    "rechargeDebuff": {
+      "scale": 0.3,
+      "table": "Ranged_Slow"
+    }
+  }
 };

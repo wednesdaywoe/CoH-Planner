@@ -23,6 +23,7 @@ export const EagleEye: Power = {
     "castTime": 1.17
   },
   "allowedEnhancements": [
+    "EnduranceModification",
     "Recharge",
     "Healing"
   ],

@@ -23,7 +23,8 @@ export const SeismicShockwaves: Power = {
     "maxTargets": 1
   },
   "allowedEnhancements": [],
-  "maxSlots": 6,
+  "maxSlots": 0,
+  "mechanicType": "hiddenPassive",
   "effects": {
     "knockback": {
       "scale": 0.67,

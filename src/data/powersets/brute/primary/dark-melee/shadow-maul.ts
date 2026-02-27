@@ -27,6 +27,7 @@ export const ShadowMaul: Power = {
     "maxTargets": 5
   },
   "allowedEnhancements": [
+    "Taunt",
     "EnduranceReduction",
     "Recharge",
     "ToHit Debuff",

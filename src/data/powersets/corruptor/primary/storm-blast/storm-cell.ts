@@ -26,9 +26,11 @@ export const StormCell: Power = {
     "castTime": 1.17
   },
   "allowedEnhancements": [
+    "EnduranceModification",
     "EnduranceReduction",
     "Range",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],

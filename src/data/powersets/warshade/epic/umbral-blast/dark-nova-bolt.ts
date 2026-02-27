@@ -2,7 +2,7 @@
  * Dark Nova Bolt
  * Ranged, Minor DMG(Negative), Foe -Recharge, -SPD
  *
- * Source: warshade/umbral-blast
+ * Source: warshade_offensive/umbral_blast/dark_nova_bolt.json
  */
 
 import type { Power } from '@/types';
@@ -38,5 +38,34 @@ export const DarkNovaBolt: Power = {
     "castTime": 1.5
   },
   "targetType": "Foe (Alive)",
-  "requires": "Dark Nova"
+  "requires": "Dark Nova",
+  "damage": {
+    "type": "Negative",
+    "scale": 0.6,
+    "table": "Ranged_InherentDamage"
+  },
+  "effects": {
+    "movement": {
+      "jumpHeight": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      },
+      "runSpeed": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      },
+      "flySpeed": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      }
+    },
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Ranged_Slow"
+    }
+  }
 };

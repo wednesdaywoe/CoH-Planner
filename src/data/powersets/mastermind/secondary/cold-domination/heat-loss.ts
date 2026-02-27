@@ -24,6 +24,7 @@ export const HeatLoss: Power = {
     "castTime": 2.17
   },
   "allowedEnhancements": [
+    "EnduranceModification",
     "Slow",
     "EnduranceReduction",
     "Range",

@@ -30,6 +30,7 @@ export const Wormhole: Power = {
     "Range",
     "Stun",
     "Recharge",
+    "Knockback",
     "Accuracy"
   ],
   "allowedSetCategories": [

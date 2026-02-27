@@ -26,9 +26,12 @@ export const CallJounin: Power = {
   },
   "allowedEnhancements": [
     "Slow",
+    "Taunt",
     "EnduranceReduction",
     "Stun",
     "Sleep",
+    "Run Speed",
+    "Knockback",
     "ToHit Debuff",
     "Defense Debuff",
     "Damage",

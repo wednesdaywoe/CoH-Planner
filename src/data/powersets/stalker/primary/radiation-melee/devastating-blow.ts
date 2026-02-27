@@ -24,6 +24,7 @@ export const DevastatingBlow: Power = {
     "castTime": 2.67
   },
   "allowedEnhancements": [
+    "Taunt",
     "EnduranceReduction",
     "Stun",
     "Recharge",

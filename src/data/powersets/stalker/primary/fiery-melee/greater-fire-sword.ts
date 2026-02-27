@@ -26,10 +26,13 @@ export const GreaterFireSword: Power = {
   "allowedEnhancements": [
     "EnduranceReduction",
     "Recharge",
+    "Defense Debuff",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Accurate Defense Debuff",
+    "Defense Debuff",
     "Melee Damage",
     "Stalker Archetype Sets",
     "Universal Damage Sets"

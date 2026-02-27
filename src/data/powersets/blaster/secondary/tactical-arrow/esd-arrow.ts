@@ -26,6 +26,7 @@ export const ESDArrow: Power = {
     "maxTargets": 10
   },
   "allowedEnhancements": [
+    "EnduranceModification",
     "Hold",
     "EnduranceReduction",
     "Range",

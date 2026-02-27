@@ -2,7 +2,7 @@
  * Shadow Cloak
  * Toggle: Self Stealth, +DEF, +Perception, Res (Immobilize)
  *
- * Source: warshade/umbral-aura
+ * Source: warshade_defensive/umbral_aura/shadow_cloak.json
  */
 
 import type { Power } from '@/types';
@@ -30,5 +30,77 @@ export const ShadowCloak: Power = {
     "endurance": 0.13,
     "castTime": 1.17
   },
-  "targetType": "Self"
+  "targetType": "Self",
+  "effects": {
+    "defenseBuff": {
+      "ranged": {
+        "scale": 0.5,
+        "table": "Melee_Buff_Def"
+      },
+      "melee": {
+        "scale": 0.5,
+        "table": "Melee_Buff_Def"
+      },
+      "aoe": {
+        "scale": 0.5,
+        "table": "Melee_Buff_Def"
+      },
+      "smashing": {
+        "scale": 0.5,
+        "table": "Melee_Buff_Def"
+      },
+      "lethal": {
+        "scale": 0.5,
+        "table": "Melee_Buff_Def"
+      },
+      "fire": {
+        "scale": 0.5,
+        "table": "Melee_Buff_Def"
+      },
+      "cold": {
+        "scale": 0.5,
+        "table": "Melee_Buff_Def"
+      },
+      "energy": {
+        "scale": 0.5,
+        "table": "Melee_Buff_Def"
+      },
+      "negative": {
+        "scale": 0.5,
+        "table": "Melee_Buff_Def"
+      },
+      "psionic": {
+        "scale": 0.5,
+        "table": "Melee_Buff_Def"
+      },
+      "toxic": {
+        "scale": 0.5,
+        "table": "Melee_Buff_Def"
+      }
+    },
+    "perceptionBuff": {
+      "scale": 0.6,
+      "table": "Melee_Ones"
+    },
+    "immobilize": {
+      "mag": 1,
+      "scale": 10,
+      "table": "Melee_Res_Boolean"
+    },
+    "stealth": {
+      "translucency": {
+        "scale": 0,
+        "table": "Melee_Ones"
+      },
+      "stealthPvP": {
+        "scale": 390,
+        "table": "Melee_Ones"
+      },
+      "stealthPvE": {
+        "scale": 35.5,
+        "table": "Melee_Ones"
+      }
+    },
+    "effectDuration": 0.75
+  }
 };

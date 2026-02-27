@@ -2,7 +2,7 @@
  * Light Form
  * Self, +Res(Disorient, Sleep, Hold, Immobilize, Knockback, Repel, All DMG but Psionics)
  *
- * Source: peacebringer/luminous-aura
+ * Source: peacebringer_defensive/luminous_aura/light_form.json
  */
 
 import type { Power } from '@/types';
@@ -18,7 +18,7 @@ export const LightForm: Power = {
   "maxSlots": 6,
   "allowedEnhancements": [
     "Resistance",
-    "EnduranceReduction",
+    "EnduranceModification",
     "EnduranceReduction",
     "Recharge"
   ],
@@ -32,5 +32,90 @@ export const LightForm: Power = {
     "endurance": 2.6,
     "castTime": 1.67
   },
-  "targetType": "Self"
+  "targetType": "Self",
+  "damage": [
+    {
+      "type": "Special",
+      "scale": -0.5,
+      "table": "Melee_Ones"
+    },
+    {
+      "type": "Special",
+      "scale": 1,
+      "table": "Melee_Ones"
+    }
+  ],
+  "effects": {
+    "resistance": {
+      "smashing": {
+        "scale": 7,
+        "table": "Melee_Res_Dmg"
+      },
+      "lethal": {
+        "scale": 7,
+        "table": "Melee_Res_Dmg"
+      },
+      "fire": {
+        "scale": 7,
+        "table": "Melee_Res_Dmg"
+      },
+      "cold": {
+        "scale": 7,
+        "table": "Melee_Res_Dmg"
+      },
+      "energy": {
+        "scale": 7,
+        "table": "Melee_Res_Dmg"
+      },
+      "negative": {
+        "scale": 7,
+        "table": "Melee_Res_Dmg"
+      },
+      "toxic": {
+        "scale": 7,
+        "table": "Melee_Res_Dmg"
+      }
+    },
+    "recoveryBuff": {
+      "scale": 0.3,
+      "table": "Melee_Ones"
+    },
+    "knockup": {
+      "scale": 100,
+      "table": "Melee_Ones"
+    },
+    "knockback": {
+      "scale": 100,
+      "table": "Melee_Ones"
+    },
+    "repel": {
+      "scale": 10,
+      "table": "Melee_Ones"
+    },
+    "enduranceDrain": {
+      "scale": 0.5,
+      "table": "Melee_Ones"
+    },
+    "hold": {
+      "mag": 1,
+      "scale": 10,
+      "table": "Melee_Res_Boolean"
+    },
+    "immobilize": {
+      "mag": 1,
+      "scale": 10,
+      "table": "Melee_Res_Boolean"
+    },
+    "stun": {
+      "mag": 1,
+      "scale": 10,
+      "table": "Melee_Res_Boolean"
+    },
+    "sleep": {
+      "mag": 1,
+      "scale": 10,
+      "table": "Melee_Res_Boolean"
+    },
+    "effectDuration": 90
+  }
 };

@@ -29,7 +29,7 @@ export const LightningClap: Power = {
     "EnduranceReduction",
     "Stun",
     "Recharge",
-    "Damage",
+    "Knockback",
     "Accuracy"
   ],
   "allowedSetCategories": [

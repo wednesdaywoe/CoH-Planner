@@ -24,7 +24,9 @@ export const Shinobi: Power = {
   },
   "allowedEnhancements": [
     "EnduranceReduction",
-    "Recharge"
+    "Recharge",
+    "ToHit",
+    "Defense"
   ],
   "allowedSetCategories": [
     "Defense Sets",

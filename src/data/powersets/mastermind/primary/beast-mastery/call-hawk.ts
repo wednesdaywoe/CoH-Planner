@@ -27,6 +27,7 @@ export const CallHawk: Power = {
     "EnduranceReduction",
     "Range",
     "Recharge",
+    "Knockback",
     "ToHit Debuff",
     "Damage",
     "Accuracy"

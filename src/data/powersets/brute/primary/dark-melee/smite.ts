@@ -24,6 +24,7 @@ export const Smite: Power = {
     "castTime": 0.97
   },
   "allowedEnhancements": [
+    "Taunt",
     "EnduranceReduction",
     "Recharge",
     "ToHit Debuff",

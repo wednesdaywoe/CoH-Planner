@@ -2,7 +2,7 @@
  * Black Dwarf Step
  * Ranged (Location), Self Teleport
  *
- * Source: warshade/umbral-aura
+ * Source: warshade_defensive/umbral_aura/black_dwarf_step.json
  */
 
 import type { Power } from '@/types';
@@ -31,5 +31,25 @@ export const BlackDwarfStep: Power = {
     "castTime": 1.67
   },
   "targetType": "Location (Teleport)",
-  "requires": "Black Dwarf"
+  "requires": "Black Dwarf",
+  "effects": {
+    "movement": {
+      "fly": {
+        "scale": 1,
+        "table": "Melee_Ones"
+      },
+      "flySpeed": {
+        "scale": 500,
+        "table": "Melee_SpeedFlying"
+      },
+      "movementControl": {
+        "scale": 8,
+        "table": "Melee_Ones"
+      },
+      "movementFriction": {
+        "scale": 8,
+        "table": "Melee_Ones"
+      }
+    }
+  }
 };

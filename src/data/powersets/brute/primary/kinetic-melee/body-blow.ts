@@ -24,6 +24,7 @@ export const BodyBlow: Power = {
     "castTime": 1.07
   },
   "allowedEnhancements": [
+    "Taunt",
     "EnduranceReduction",
     "Stun",
     "Recharge",

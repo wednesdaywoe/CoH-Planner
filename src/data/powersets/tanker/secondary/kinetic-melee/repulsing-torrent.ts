@@ -27,9 +27,11 @@ export const RepulsingTorrent: Power = {
     "maxTargets": 16
   },
   "allowedEnhancements": [
+    "Taunt",
     "EnduranceReduction",
     "Range",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],

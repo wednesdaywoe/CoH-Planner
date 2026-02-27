@@ -2,7 +2,7 @@
  * Psychic Scream
  * Ranged (Cone), DMG(Psionic), Foe -Recharge
  *
- * Source: arachnos-widow/fortunata-training
+ * Source: widow_training/fortunata_training/frt_psychic_scream.json
  */
 
 import type { Power } from '@/types';
@@ -35,7 +35,19 @@ export const PsychicScream: Power = {
     "endurance": 13.55,
     "castTime": 2,
     "radius": 60,
+    "arc": 0.5236,
     "maxTargets": 12
   },
-  "targetType": "Foe (Alive)"
+  "targetType": "Foe (Alive)",
+  "damage": {
+    "type": "Psionic",
+    "scale": 0.951,
+    "table": "Ranged_Damage"
+  },
+  "effects": {
+    "rechargeDebuff": {
+      "scale": 0.5,
+      "table": "Ranged_Slow"
+    }
+  }
 };

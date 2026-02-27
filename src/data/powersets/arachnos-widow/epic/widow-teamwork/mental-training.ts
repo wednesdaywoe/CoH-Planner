@@ -2,7 +2,7 @@
  * Mental Training
  * Auto: Self +Recharge, +SPD, Res (Slow)
  *
- * Source: arachnos-widow/widow-teamwork
+ * Source: teamwork/widow_teamwork/mental_training.json
  */
 
 import type { Power } from '@/types';
@@ -24,5 +24,21 @@ export const MentalTraining: Power = {
   "stats": {
     "accuracy": 1
   },
-  "targetType": "Self"
+  "targetType": "Self",
+  "effects": {
+    "rechargeBuff": {
+      "scale": 0.4,
+      "table": "Melee_Ones"
+    },
+    "movement": {
+      "runSpeed": {
+        "scale": 0.4,
+        "table": "Melee_Ones"
+      },
+      "flySpeed": {
+        "scale": 0.1,
+        "table": "Melee_SpeedFlying"
+      }
+    }
+  }
 };

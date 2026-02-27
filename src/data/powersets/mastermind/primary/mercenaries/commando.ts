@@ -26,6 +26,7 @@ export const Commando: Power = {
   },
   "allowedEnhancements": [
     "EnduranceReduction",
+    "Knockback",
     "Defense Debuff",
     "Damage",
     "Accuracy"

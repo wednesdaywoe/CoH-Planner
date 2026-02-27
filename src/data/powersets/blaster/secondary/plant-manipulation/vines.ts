@@ -30,6 +30,7 @@ export const Vines: Power = {
     "EnduranceReduction",
     "Range",
     "Recharge",
+    "Immobilize",
     "Accuracy"
   ],
   "allowedSetCategories": [

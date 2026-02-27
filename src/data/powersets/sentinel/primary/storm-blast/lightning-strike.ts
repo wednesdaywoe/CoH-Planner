@@ -24,6 +24,7 @@ export const LightningStrike: Power = {
     "castTime": 1.33
   },
   "allowedEnhancements": [
+    "EnduranceModification",
     "EnduranceReduction",
     "Range",
     "Recharge",

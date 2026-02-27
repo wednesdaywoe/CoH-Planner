@@ -26,8 +26,9 @@ export const ToroidalBubble: Power = {
     "maxTargets": 255
   },
   "allowedEnhancements": [
-    "EnduranceReduction",
+    "Resistance",
     "EnduranceModification",
+    "EnduranceReduction",
     "Recharge",
     "Jump"
   ],

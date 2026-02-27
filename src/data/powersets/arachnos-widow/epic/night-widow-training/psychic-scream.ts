@@ -2,7 +2,7 @@
  * Psychic Scream
  * Ranged (Cone), DMG(Psionic), Foe -Recharge
  *
- * Source: arachnos-widow/night-widow-training
+ * Source: widow_training/night_widow_training/nw_psychic_scream.json
  */
 
 import type { Power } from '@/types';
@@ -35,7 +35,19 @@ export const PsychicScream: Power = {
     "endurance": 21.157,
     "castTime": 2,
     "radius": 50,
+    "arc": 0.7854,
     "maxTargets": 12
   },
-  "targetType": "Foe (Alive)"
+  "targetType": "Foe (Alive)",
+  "damage": {
+    "type": "Psionic",
+    "scale": 1.4931,
+    "table": "Ranged_Damage"
+  },
+  "effects": {
+    "rechargeDebuff": {
+      "scale": 0.5,
+      "table": "Ranged_Slow"
+    }
+  }
 };

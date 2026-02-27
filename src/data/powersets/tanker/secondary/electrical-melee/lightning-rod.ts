@@ -24,9 +24,11 @@ export const LightningRod: Power = {
     "castTime": 2.57
   },
   "allowedEnhancements": [
+    "Taunt",
     "EnduranceReduction",
     "Range",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],

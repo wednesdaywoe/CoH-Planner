@@ -2,7 +2,7 @@
  * Photon Seekers
  * Summon Drones: Ranged Special, High DMG(Energy)
  *
- * Source: peacebringer/luminous-blast
+ * Source: peacebringer_offensive/luminous_blast/photon_seekers.json
  */
 
 import type { Power } from '@/types';
@@ -36,5 +36,26 @@ export const PhotonSeekers: Power = {
     "endurance": 31.2,
     "castTime": 2.03
   },
-  "targetType": "Self"
+  "targetType": "Self",
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "duration": 60,
+      "copyBoosts": true,
+      "entities": [
+        {
+          "entity": "Pets_LightDrone1",
+          "count": 1
+        },
+        {
+          "entity": "Pets_LightDrone2",
+          "count": 1
+        },
+        {
+          "entity": "Pets_LightDrone3",
+          "count": 1
+        }
+      ]
+    }
+  }
 };

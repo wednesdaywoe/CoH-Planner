@@ -26,6 +26,7 @@ export const Soldiers: Power = {
   },
   "allowedEnhancements": [
     "EnduranceReduction",
+    "Knockback",
     "Healing",
     "Defense Debuff",
     "Damage",

@@ -2,7 +2,7 @@
  * Black Dwarf Smite
  * Melee, Light DMG(Negative/Smash), Foe -Recharge, -SPD, -Fly, Disorient
  *
- * Source: warshade/umbral-aura
+ * Source: warshade_defensive/umbral_aura/black_dwarf_smite.json
  */
 
 import type { Power } from '@/types';
@@ -41,5 +41,56 @@ export const BlackDwarfSmite: Power = {
     "castTime": 1.5
   },
   "targetType": "Foe (Alive)",
-  "requires": "Black Dwarf"
+  "requires": "Black Dwarf",
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 0.32,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Negative",
+      "scale": 1,
+      "table": "Melee_InherentDamage"
+    }
+  ],
+  "effects": {
+    "stun": {
+      "mag": 2,
+      "scale": 6,
+      "table": "Melee_Immobilize"
+    },
+    "knockback": {
+      "scale": 0.67,
+      "table": "Melee_Ones"
+    },
+    "slow": {
+      "fly": {
+        "scale": 1.6,
+        "table": "Melee_Ones"
+      }
+    },
+    "movement": {
+      "jumpHeight": {
+        "scale": 0.2,
+        "table": "Melee_Slow"
+      },
+      "runSpeed": {
+        "scale": 0.2,
+        "table": "Melee_Slow"
+      },
+      "flySpeed": {
+        "scale": 0.2,
+        "table": "Melee_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.2,
+        "table": "Melee_Slow"
+      }
+    },
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Melee_Slow"
+    }
+  }
 };

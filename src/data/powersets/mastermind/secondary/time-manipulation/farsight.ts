@@ -27,7 +27,9 @@ export const Farsight: Power = {
   },
   "allowedEnhancements": [
     "EnduranceReduction",
-    "Recharge"
+    "Recharge",
+    "ToHit",
+    "Defense"
   ],
   "allowedSetCategories": [
     "Defense Sets",

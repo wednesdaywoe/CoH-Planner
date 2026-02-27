@@ -26,7 +26,9 @@ export const AccelerateMetabolism: Power = {
     "maxTargets": 255
   },
   "allowedEnhancements": [
+    "EnduranceModification",
     "EnduranceReduction",
+    "Run Speed",
     "Recharge"
   ],
   "allowedSetCategories": [

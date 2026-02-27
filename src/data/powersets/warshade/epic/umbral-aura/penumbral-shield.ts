@@ -2,7 +2,7 @@
  * Penumbral Shield
  * Toggle: Self +Res(Fire, Cold, Toxic)
  *
- * Source: warshade/umbral-aura
+ * Source: warshade_defensive/umbral_aura/penumbral_shield.json
  */
 
 import type { Power } from '@/types';
@@ -30,5 +30,21 @@ export const PenumbralShield: Power = {
     "endurance": 0.13,
     "castTime": 0.67
   },
-  "targetType": "Self"
+  "targetType": "Self",
+  "effects": {
+    "resistance": {
+      "fire": {
+        "scale": 3,
+        "table": "Melee_Res_Dmg"
+      },
+      "cold": {
+        "scale": 3,
+        "table": "Melee_Res_Dmg"
+      },
+      "toxic": {
+        "scale": 2,
+        "table": "Melee_Res_Dmg"
+      }
+    }
+  }
 };

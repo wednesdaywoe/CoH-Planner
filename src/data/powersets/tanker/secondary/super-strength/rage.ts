@@ -26,7 +26,8 @@ export const Rage: Power = {
   },
   "allowedEnhancements": [
     "EnduranceReduction",
-    "Recharge"
+    "Recharge",
+    "ToHit"
   ],
   "allowedSetCategories": [
     "To Hit Buff"

@@ -2,7 +2,7 @@
  * Incandescence
  * Auto: Self +Res (Energy, Negative)
  *
- * Source: peacebringer/luminous-aura
+ * Source: peacebringer_defensive/luminous_aura/incandescence.json
  */
 
 import type { Power } from '@/types';
@@ -25,5 +25,17 @@ export const Incandescence: Power = {
   "stats": {
     "accuracy": 1
   },
-  "targetType": "Self"
+  "targetType": "Self",
+  "effects": {
+    "resistance": {
+      "energy": {
+        "scale": 1.5,
+        "table": "Melee_Res_Dmg"
+      },
+      "negative": {
+        "scale": 1.5,
+        "table": "Melee_Res_Dmg"
+      }
+    }
+  }
 };

@@ -28,7 +28,8 @@ export const FortifyPack: Power = {
   "allowedEnhancements": [
     "EnduranceReduction",
     "Recharge",
-    "Healing"
+    "Healing",
+    "Defense"
   ],
   "allowedSetCategories": [
     "Defense Sets",

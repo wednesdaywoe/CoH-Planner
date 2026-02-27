@@ -25,6 +25,7 @@ export const SeismicSmash: Power = {
   },
   "allowedEnhancements": [
     "Hold",
+    "Taunt",
     "EnduranceReduction",
     "Recharge",
     "Damage",

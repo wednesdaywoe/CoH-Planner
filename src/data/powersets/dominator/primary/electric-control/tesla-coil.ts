@@ -24,6 +24,7 @@ export const TeslaCoil: Power = {
     "castTime": 1.67
   },
   "allowedEnhancements": [
+    "EnduranceModification",
     "Hold",
     "EnduranceReduction",
     "Range",

@@ -2,7 +2,7 @@
  * Mental Blast
  * Ranged, DMG(Psionic), Target -Recharge
  *
- * Source: arachnos-widow/night-widow-training
+ * Source: widow_training/night_widow_training/nw_mental_blast.json
  */
 
 import type { Power } from '@/types';
@@ -35,5 +35,16 @@ export const MentalBlast: Power = {
     "endurance": 7.232,
     "castTime": 1.67
   },
-  "targetType": "Foe (Alive)"
+  "targetType": "Foe (Alive)",
+  "damage": {
+    "type": "Psionic",
+    "scale": 1.3908,
+    "table": "Ranged_Damage"
+  },
+  "effects": {
+    "rechargeDebuff": {
+      "scale": 0.3,
+      "table": "Ranged_Slow"
+    }
+  }
 };

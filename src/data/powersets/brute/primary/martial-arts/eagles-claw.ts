@@ -24,6 +24,7 @@ export const EaglesClaw: Power = {
     "castTime": 2.53
   },
   "allowedEnhancements": [
+    "Taunt",
     "EnduranceReduction",
     "Stun",
     "Recharge",

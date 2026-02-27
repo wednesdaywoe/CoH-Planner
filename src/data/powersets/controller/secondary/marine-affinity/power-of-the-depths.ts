@@ -26,6 +26,7 @@ export const PoweroftheDepths: Power = {
     "maxTargets": 255
   },
   "allowedEnhancements": [
+    "EnduranceModification",
     "EnduranceReduction",
     "Recharge",
     "Healing"

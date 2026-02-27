@@ -24,9 +24,11 @@ export const Overload: Power = {
     "castTime": 3
   },
   "allowedEnhancements": [
+    "EnduranceModification",
     "EnduranceReduction",
     "Recharge",
-    "Healing"
+    "Healing",
+    "Defense"
   ],
   "allowedSetCategories": [
     "Defense Sets",
@@ -81,6 +83,14 @@ export const Overload: Power = {
     },
     "recoveryBuff": {
       "scale": 1,
+      "table": "Melee_Ones"
+    },
+    "enduranceDrain": {
+      "scale": 1,
+      "table": "Melee_Ones"
+    },
+    "recoveryDebuff": {
+      "scale": 100,
       "table": "Melee_Ones"
     }
   }

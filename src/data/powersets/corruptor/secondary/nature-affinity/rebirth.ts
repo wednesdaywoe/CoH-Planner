@@ -25,6 +25,7 @@ export const Rebirth: Power = {
     "castTime": 3
   },
   "allowedEnhancements": [
+    "EnduranceModification",
     "EnduranceReduction",
     "Range",
     "Recharge",

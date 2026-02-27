@@ -24,6 +24,8 @@ export const ChargedBrawl: Power = {
     "castTime": 0.83
   },
   "allowedEnhancements": [
+    "EnduranceModification",
+    "Taunt",
     "EnduranceReduction",
     "Sleep",
     "Recharge",

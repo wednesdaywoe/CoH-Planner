@@ -24,8 +24,10 @@ export const StoneMallet: Power = {
     "castTime": 1.61
   },
   "allowedEnhancements": [
+    "Taunt",
     "EnduranceReduction",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],

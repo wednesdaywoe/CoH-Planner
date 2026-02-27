@@ -24,8 +24,10 @@ export const Deflection: Power = {
     "castTime": 1.5
   },
   "allowedEnhancements": [
+    "Resistance",
     "EnduranceReduction",
-    "Recharge"
+    "Recharge",
+    "Defense"
   ],
   "allowedSetCategories": [
     "Defense Sets",

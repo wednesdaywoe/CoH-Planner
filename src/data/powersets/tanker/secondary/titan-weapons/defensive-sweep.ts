@@ -27,9 +27,11 @@ export const DefensiveSweep: Power = {
     "maxTargets": 5
   },
   "allowedEnhancements": [
+    "Taunt",
     "EnduranceReduction",
     "Recharge",
     "Damage",
+    "Defense",
     "Accuracy"
   ],
   "allowedSetCategories": [

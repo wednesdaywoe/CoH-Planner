@@ -30,6 +30,7 @@ export const EnergyTorrent: Power = {
     "EnduranceReduction",
     "Range",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],

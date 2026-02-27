@@ -2,7 +2,7 @@
  * Tactical Training: Maneuvers
  * PBAoE, Team +DEF(All)
  *
- * Source: arachnos-widow/teamwork
+ * Source: teamwork/teamwork/tactical_training:_maneuvers.json
  */
 
 import type { Power } from '@/types';
@@ -32,5 +32,53 @@ export const TacticalTrainingManeuvers: Power = {
     "radius": 80,
     "maxTargets": 255
   },
-  "targetType": "Self"
+  "targetType": "Self",
+  "effects": {
+    "defenseBuff": {
+      "ranged": {
+        "scale": 0.5,
+        "table": "Ranged_Buff_Def"
+      },
+      "melee": {
+        "scale": 0.5,
+        "table": "Ranged_Buff_Def"
+      },
+      "aoe": {
+        "scale": 0.5,
+        "table": "Ranged_Buff_Def"
+      },
+      "smashing": {
+        "scale": 0.5,
+        "table": "Ranged_Buff_Def"
+      },
+      "lethal": {
+        "scale": 0.5,
+        "table": "Ranged_Buff_Def"
+      },
+      "fire": {
+        "scale": 0.5,
+        "table": "Ranged_Buff_Def"
+      },
+      "cold": {
+        "scale": 0.5,
+        "table": "Ranged_Buff_Def"
+      },
+      "energy": {
+        "scale": 0.5,
+        "table": "Ranged_Buff_Def"
+      },
+      "negative": {
+        "scale": 0.5,
+        "table": "Ranged_Buff_Def"
+      },
+      "psionic": {
+        "scale": 0.5,
+        "table": "Ranged_Buff_Def"
+      },
+      "toxic": {
+        "scale": 0.5,
+        "table": "Ranged_Buff_Def"
+      }
+    }
+  }
 };

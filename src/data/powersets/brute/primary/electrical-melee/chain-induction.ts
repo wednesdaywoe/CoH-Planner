@@ -24,6 +24,8 @@ export const ChainInduction: Power = {
     "castTime": 1
   },
   "allowedEnhancements": [
+    "EnduranceModification",
+    "Taunt",
     "EnduranceReduction",
     "Recharge",
     "Damage",
@@ -32,7 +34,7 @@ export const ChainInduction: Power = {
   "allowedSetCategories": [
     "Brute Archetype Sets",
     "Endurance Modification",
-    "Melee AoE Damage",
+    "Melee Damage",
     "Threat Duration",
     "Universal Damage Sets"
   ],

@@ -27,6 +27,7 @@ export const ParasiticLeech: Power = {
     "maxTargets": 5
   },
   "allowedEnhancements": [
+    "EnduranceModification",
     "Recharge",
     "Healing",
     "Accuracy"

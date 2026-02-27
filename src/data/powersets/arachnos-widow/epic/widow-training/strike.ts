@@ -2,7 +2,7 @@
  * Strike
  * Melee, DMG(Lethal), DoT(Toxic), -Recharge, -SPD
  *
- * Source: arachnos-widow/widow-training
+ * Source: widow_training/widow_training/strike.json
  */
 
 import type { Power } from '@/types';
@@ -30,9 +30,52 @@ export const Strike: Power = {
   "stats": {
     "accuracy": 1,
     "range": 7,
-    "recharge": 8,
-    "endurance": 7.474,
-    "castTime": 1.17
+    "recharge": 12,
+    "endurance": 9.485,
+    "castTime": 0.83
   },
-  "targetType": "Foe (Alive)"
+  "targetType": "Foe (Alive)",
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 1.824,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.216,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Toxic",
+      "scale": 0.1,
+      "table": "Melee_Damage",
+      "duration": 3.1,
+      "tickRate": 1
+    }
+  ],
+  "effects": {
+    "movement": {
+      "runSpeed": {
+        "scale": 0.3,
+        "table": "Melee_Slow"
+      },
+      "flySpeed": {
+        "scale": 0.3,
+        "table": "Melee_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.3,
+        "table": "Melee_Slow"
+      },
+      "jumpHeight": {
+        "scale": 0.3,
+        "table": "Melee_Slow"
+      }
+    },
+    "rechargeDebuff": {
+      "scale": 0.3,
+      "table": "Melee_Slow"
+    }
+  }
 };

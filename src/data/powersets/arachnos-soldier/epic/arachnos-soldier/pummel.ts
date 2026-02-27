@@ -2,7 +2,7 @@
  * Pummel
  * Melee, Minor DMG(Smash)
  *
- * Source: arachnos-soldier/arachnos-soldier
+ * Source: arachnos_soldiers/arachnos_soldier/pummel.json
  */
 
 import type { Power } from '@/types';
@@ -16,8 +16,19 @@ export const Pummel: Power = {
   "powerType": "Click",
   "effectArea": "SingleTarget",
   "maxSlots": 6,
-  "allowedEnhancements": [],
-  "allowedSetCategories": [],
+  "allowedEnhancements": [
+    "EnduranceReduction",
+    "Stun",
+    "Recharge",
+    "Damage",
+    "Accuracy"
+  ],
+  "allowedSetCategories": [
+    "Melee Damage",
+    "Soldiers of Arachnos Archetype Sets",
+    "Stuns",
+    "Universal Damage Sets"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 7,
@@ -25,5 +36,24 @@ export const Pummel: Power = {
     "endurance": 5.2,
     "castTime": 1.17
   },
-  "targetType": "Foe (Alive)"
+  "targetType": "Foe (Alive)",
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 1,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1,
+      "table": "Melee_InherentDamage"
+    }
+  ],
+  "effects": {
+    "stun": {
+      "mag": 3,
+      "scale": 6,
+      "table": "Melee_Stun"
+    }
+  }
 };

@@ -24,6 +24,7 @@ export const SmashingBlow: Power = {
     "castTime": 1.2
   },
   "allowedEnhancements": [
+    "Taunt",
     "EnduranceReduction",
     "Stun",
     "Recharge",

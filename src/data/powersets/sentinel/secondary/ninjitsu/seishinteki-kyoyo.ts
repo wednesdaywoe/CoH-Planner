@@ -23,6 +23,7 @@ export const SeishintekiKyoyo: Power = {
     "castTime": 1.83
   },
   "allowedEnhancements": [
+    "EnduranceModification",
     "Recharge"
   ],
   "allowedSetCategories": [

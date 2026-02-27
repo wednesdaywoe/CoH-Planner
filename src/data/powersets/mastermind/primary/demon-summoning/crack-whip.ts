@@ -29,6 +29,7 @@ export const CrackWhip: Power = {
   "allowedEnhancements": [
     "EnduranceReduction",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],
@@ -79,6 +80,10 @@ export const CrackWhip: Power = {
         "scale": 1.25,
         "table": "Ranged_Debuff_Res_Dmg"
       }
+    },
+    "knockback": {
+      "scale": 0.64,
+      "table": "Ranged_Ones"
     }
   }
 };

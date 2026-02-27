@@ -26,6 +26,7 @@ export const SoulTransfer: Power = {
     "maxTargets": 10
   },
   "allowedEnhancements": [
+    "EnduranceModification",
     "Stun",
     "Recharge",
     "Healing",

@@ -24,6 +24,7 @@ export const PsiBlade: Power = {
     "castTime": 1.33
   },
   "allowedEnhancements": [
+    "Taunt",
     "EnduranceReduction",
     "Recharge",
     "Damage",

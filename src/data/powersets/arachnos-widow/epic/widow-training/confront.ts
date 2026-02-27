@@ -2,7 +2,7 @@
  * Confront
  * Ranged, Foe Taunt
  *
- * Source: arachnos-widow/widow-training
+ * Source: widow_training/widow_training/confront.json
  */
 
 import type { Power } from '@/types';
@@ -31,5 +31,11 @@ export const Confront: Power = {
     "recharge": 3,
     "castTime": 1.67
   },
-  "targetType": "Foe (Alive)"
+  "targetType": "Foe (Alive)",
+  "effects": {
+    "rangeBuff": {
+      "scale": 0.75,
+      "table": "Melee_Ones"
+    }
+  }
 };

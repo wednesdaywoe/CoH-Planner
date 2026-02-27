@@ -27,7 +27,8 @@ export const TrainNinjas: Power = {
   },
   "allowedEnhancements": [
     "EnduranceReduction",
-    "Range"
+    "Range",
+    "Defense"
   ],
   "allowedSetCategories": [
     "Defense Sets"

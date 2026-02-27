@@ -24,6 +24,7 @@ export const AssassinsFrenzy: Power = {
     "castTime": 3
   },
   "allowedEnhancements": [
+    "Interrupt",
     "EnduranceReduction",
     "Recharge",
     "Damage",

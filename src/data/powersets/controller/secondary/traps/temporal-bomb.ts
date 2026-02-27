@@ -21,9 +21,11 @@ export const TemporalBomb: Power = {
     "accuracy": 2
   },
   "allowedEnhancements": [
+    "EnduranceModification",
     "Slow",
     "EnduranceReduction",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],

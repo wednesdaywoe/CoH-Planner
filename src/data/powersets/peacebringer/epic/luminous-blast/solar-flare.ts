@@ -2,7 +2,7 @@
  * Solar Flare
  * PBAoE Melee, Moderate DMG(Energy), Foe -DEF, Knockback
  *
- * Source: peacebringer/luminous-blast
+ * Source: peacebringer_offensive/luminous_blast/solar_flare.json
  */
 
 import type { Power } from '@/types';
@@ -40,5 +40,20 @@ export const SolarFlare: Power = {
     "radius": 15,
     "maxTargets": 10
   },
-  "targetType": "Self"
+  "targetType": "Self",
+  "damage": {
+    "type": "Energy",
+    "scale": 1.42,
+    "table": "Melee_Damage"
+  },
+  "effects": {
+    "knockback": {
+      "scale": 2,
+      "table": "Melee_Knockback"
+    },
+    "defenseDebuff": {
+      "scale": 2,
+      "table": "Melee_Debuff_Def"
+    }
+  }
 };

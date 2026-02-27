@@ -27,6 +27,7 @@ export const CripplingAxeKick: Power = {
     "Slow",
     "EnduranceReduction",
     "Recharge",
+    "Immobilize",
     "Defense Debuff",
     "Damage",
     "Accuracy"

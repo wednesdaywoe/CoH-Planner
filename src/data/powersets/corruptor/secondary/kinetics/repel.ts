@@ -27,7 +27,8 @@ export const Repel: Power = {
   },
   "allowedEnhancements": [
     "EnduranceReduction",
-    "Recharge"
+    "Recharge",
+    "Knockback"
   ],
   "allowedSetCategories": [
     "Knockback"

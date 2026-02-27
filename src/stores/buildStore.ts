@@ -627,10 +627,8 @@ export const useBuildStore = create<BuildStore>()(
 
           const newBuild = applyPowerUpdate(state.build, category, updater);
 
-          // Recalculate level — rewind to the freed-up power pick slot
-          if (category !== 'inherent') {
-            newBuild.level = calculateCorrectLevel(newBuild);
-          }
+          // Keep the user's current level — don't rewind on removal
+          // (addPower auto-advances but removePower should never lower it)
 
           newBuild.sets = updateSetTracking(newBuild);
           return { build: newBuild };

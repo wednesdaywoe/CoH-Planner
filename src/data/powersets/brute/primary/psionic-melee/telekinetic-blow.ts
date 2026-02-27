@@ -24,8 +24,10 @@ export const TelekineticBlow: Power = {
     "castTime": 1.47
   },
   "allowedEnhancements": [
+    "Taunt",
     "EnduranceReduction",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],

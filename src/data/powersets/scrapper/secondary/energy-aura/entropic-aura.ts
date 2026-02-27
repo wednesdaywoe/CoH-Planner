@@ -26,6 +26,7 @@ export const EntropicAura: Power = {
     "maxTargets": 10
   },
   "allowedEnhancements": [
+    "Taunt",
     "EnduranceReduction",
     "Recharge"
   ],

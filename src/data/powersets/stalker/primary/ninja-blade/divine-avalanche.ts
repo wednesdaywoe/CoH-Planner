@@ -27,6 +27,7 @@ export const DivineAvalanche: Power = {
     "EnduranceReduction",
     "Recharge",
     "Damage",
+    "Defense",
     "Accuracy"
   ],
   "allowedSetCategories": [

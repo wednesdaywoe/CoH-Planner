@@ -24,6 +24,7 @@ export const Strike: Power = {
     "castTime": 1.17
   },
   "allowedEnhancements": [
+    "Taunt",
     "EnduranceReduction",
     "Recharge",
     "Damage",

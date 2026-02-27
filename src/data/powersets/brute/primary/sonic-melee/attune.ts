@@ -24,6 +24,7 @@ export const Attune: Power = {
     "castTime": 1
   },
   "allowedEnhancements": [
+    "Taunt",
     "EnduranceReduction",
     "Recharge",
     "Damage",
@@ -35,5 +36,12 @@ export const Attune: Power = {
     "Threat Duration",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Energy",
+    "scale": 0.25,
+    "table": "Melee_Damage",
+    "duration": 1.75,
+    "tickRate": 2
+  }
 };

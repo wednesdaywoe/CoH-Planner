@@ -9,16 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { ReachfortheLimit as ReachfortheLimit } from './reach-for-the-limit';
-import { KiPush as KiPush } from './ki-push';
-import { StormKick as StormKick } from './storm-kick';
-import { ReachfortheLimit as ReachfortheLimit2 } from './reach-for-the-limit';
-import { BurstofSpeed as BurstofSpeed } from './burst-of-speed';
-import { DragonsTail as DragonsTail } from './dragon-s-tail';
-import { ReactionTime as ReactionTime } from './reaction-time';
-import { InnerWill as InnerWill } from './inner-will';
-import { ThrowSand as ThrowSand } from './throw-sand';
-import { EaglesClaw as EaglesClaw } from './eagles-claw';
+import { ReachfortheLimit } from './reach-for-the-limit';
+import { KiPush } from './ki-push';
+import { StormKick } from './storm-kick';
+import { BurstofSpeed } from './burst-of-speed';
+import { DragonsTail } from './dragon-s-tail';
+import { ReactionTime } from './reaction-time';
+import { InnerWill } from './inner-will';
+import { ThrowSand } from './throw-sand';
+import { EaglesClaw } from './eagles-claw';
 
 export const powerset: Powerset = {
   id: 'blaster/martial-combat',
@@ -28,10 +27,9 @@ export const powerset: Powerset = {
   archetype: 'blaster',
   category: 'secondary',
   powers: [
-    ReachfortheLimit,
     KiPush,
     StormKick,
-    ReachfortheLimit2,
+    ReachfortheLimit,
     BurstofSpeed,
     DragonsTail,
     ReactionTime,

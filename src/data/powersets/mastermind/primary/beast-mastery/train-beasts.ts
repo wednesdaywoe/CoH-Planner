@@ -27,7 +27,8 @@ export const TrainBeasts: Power = {
   },
   "allowedEnhancements": [
     "EnduranceReduction",
-    "Range"
+    "Range",
+    "ToHit"
   ],
   "allowedSetCategories": [
     "To Hit Buff"

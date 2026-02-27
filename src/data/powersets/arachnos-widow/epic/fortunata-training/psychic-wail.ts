@@ -2,7 +2,7 @@
  * Psychic Wail
  * PBAoE, DMG(Psionic), Foe Disorient -Recharge
  *
- * Source: arachnos-widow/fortunata-training
+ * Source: widow_training/fortunata_training/frt_psychic_wail.json
  */
 
 import type { Power } from '@/types';
@@ -37,5 +37,21 @@ export const PsychicWail: Power = {
     "radius": 25,
     "maxTargets": 16
   },
-  "targetType": "Self"
+  "targetType": "Self",
+  "damage": {
+    "type": "Psionic",
+    "scale": 4,
+    "table": "Ranged_Damage"
+  },
+  "effects": {
+    "stun": {
+      "mag": 3,
+      "scale": 10,
+      "table": "Ranged_Stun"
+    },
+    "rechargeDebuff": {
+      "scale": 0.7,
+      "table": "Ranged_Slow"
+    }
+  }
 };

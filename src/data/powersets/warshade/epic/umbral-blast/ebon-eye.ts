@@ -2,7 +2,7 @@
  * Ebon Eye
  * Ranged, Moderate DMG(Negative), Foe -Recharge, -SPD
  *
- * Source: warshade/umbral-blast
+ * Source: warshade_offensive/umbral_blast/ebon_eye.json
  */
 
 import type { Power } from '@/types';

@@ -2,7 +2,7 @@
  * Restore Essence
  * Self Rez
  *
- * Source: peacebringer/luminous-aura
+ * Source: peacebringer_defensive/luminous_aura/restore_essence.json
  */
 
 import type { Power } from '@/types';
@@ -28,5 +28,23 @@ export const RestoreEssence: Power = {
     "recharge": 300,
     "castTime": 1.5
   },
-  "targetType": "Self"
+  "targetType": "Self",
+  "damage": {
+    "type": "Heal",
+    "scale": 7.5,
+    "table": "Melee_HealSelf",
+    "duration": 0.5,
+    "tickRate": 1
+  },
+  "effects": {
+    "enduranceGain": {
+      "scale": 50,
+      "table": "Melee_Ones"
+    },
+    "immobilize": {
+      "mag": 50,
+      "scale": 4,
+      "table": "Melee_Ones"
+    }
+  }
 };

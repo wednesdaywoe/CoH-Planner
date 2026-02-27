@@ -24,6 +24,7 @@ export const TeslaCage: Power = {
     "castTime": 1.67
   },
   "allowedEnhancements": [
+    "EnduranceModification",
     "Hold",
     "EnduranceReduction",
     "Range",

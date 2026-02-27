@@ -2,7 +2,7 @@
  * Dark Extraction
  * Summon Essence: Ranged Moderate DMG (Negative)
  *
- * Source: warshade/umbral-blast
+ * Source: warshade_offensive/umbral_blast/dark_extraction.json
  */
 
 import type { Power } from '@/types';
@@ -37,5 +37,12 @@ export const DarkExtraction: Power = {
     "endurance": 26,
     "castTime": 3.2
   },
-  "targetType": "Foe (Dead)"
+  "targetType": "Foe (Dead)",
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_Warshade_Extraction",
+      "copyBoosts": true
+    }
+  }
 };

@@ -2,7 +2,7 @@
  * Black Dwarf Strike
  * Melee, Light DMG(Smash/Negative), Foe -Recharge, -SPD, Knockback
  *
- * Source: warshade/umbral-aura
+ * Source: warshade_defensive/umbral_aura/black_dwarf_strike.json
  */
 
 import type { Power } from '@/types';
@@ -39,5 +39,45 @@ export const BlackDwarfStrike: Power = {
     "castTime": 1.2
   },
   "targetType": "Foe (Alive)",
-  "requires": "Black Dwarf"
+  "requires": "Black Dwarf",
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 0.34,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Negative",
+      "scale": 0.5,
+      "table": "Melee_InherentDamage"
+    }
+  ],
+  "effects": {
+    "knockback": {
+      "scale": 0.67,
+      "table": "Melee_Ones"
+    },
+    "movement": {
+      "jumpHeight": {
+        "scale": 0.2,
+        "table": "Melee_Slow"
+      },
+      "runSpeed": {
+        "scale": 0.2,
+        "table": "Melee_Slow"
+      },
+      "flySpeed": {
+        "scale": 0.2,
+        "table": "Melee_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.2,
+        "table": "Melee_Slow"
+      }
+    },
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Melee_Slow"
+    }
+  }
 };

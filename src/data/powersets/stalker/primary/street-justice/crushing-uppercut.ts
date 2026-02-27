@@ -28,6 +28,7 @@ export const CrushingUppercut: Power = {
     "EnduranceReduction",
     "Stun",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],

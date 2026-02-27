@@ -21,6 +21,7 @@ export const PowerArmor: Power = {
     "accuracy": 1
   },
   "allowedEnhancements": [
+    "Resistance",
     "Healing"
   ],
   "allowedSetCategories": [

@@ -25,6 +25,7 @@ export const Placate: Power = {
     "maxTargets": 5
   },
   "allowedEnhancements": [
+    "Taunt",
     "Range",
     "Recharge"
   ],

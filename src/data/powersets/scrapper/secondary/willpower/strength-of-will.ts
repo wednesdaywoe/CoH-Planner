@@ -24,6 +24,7 @@ export const StrengthofWill: Power = {
     "castTime": 3.1
   },
   "allowedEnhancements": [
+    "Resistance",
     "EnduranceReduction"
   ],
   "allowedSetCategories": [

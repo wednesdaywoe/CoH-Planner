@@ -23,6 +23,8 @@ export const IcyBastion: Power = {
     "endurance": 0.1085
   },
   "allowedEnhancements": [
+    "Resistance",
+    "EnduranceModification",
     "EnduranceReduction",
     "Recharge",
     "Healing"

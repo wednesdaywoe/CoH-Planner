@@ -24,8 +24,11 @@ export const Gymnastics: Power = {
   },
   "allowedEnhancements": [
     "EnduranceReduction",
+    "Run Speed",
     "Recharge",
-    "Jump"
+    "Jump",
+    "Fly",
+    "Defense"
   ],
   "allowedSetCategories": [
     "Defense Sets",

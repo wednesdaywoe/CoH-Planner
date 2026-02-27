@@ -25,6 +25,7 @@ export const Thaw: Power = {
     "castTime": 2.17
   },
   "allowedEnhancements": [
+    "Resistance",
     "EnduranceReduction",
     "Range",
     "Recharge"

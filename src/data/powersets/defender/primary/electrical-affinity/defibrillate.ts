@@ -25,6 +25,7 @@ export const Defibrillate: Power = {
     "castTime": 3.3
   },
   "allowedEnhancements": [
+    "EnduranceModification",
     "EnduranceReduction",
     "Sleep",
     "Recharge",

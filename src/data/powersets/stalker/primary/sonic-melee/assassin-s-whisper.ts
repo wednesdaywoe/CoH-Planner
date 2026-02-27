@@ -24,6 +24,7 @@ export const AssassinsWhisper: Power = {
     "castTime": 1.77
   },
   "allowedEnhancements": [
+    "Interrupt",
     "EnduranceReduction",
     "Sleep",
     "Recharge",

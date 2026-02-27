@@ -27,10 +27,10 @@ export const Cloudburst: Power = {
     "EnduranceReduction",
     "Range",
     "Recharge",
-    "Slow",
-    "ToHit Debuff",
     "Damage",
-    "Accuracy"
+    "Accuracy",
+    "Slow",
+    "ToHit Debuff"
   ],
   "allowedSetCategories": [
     "Corruptor Archetype Sets",

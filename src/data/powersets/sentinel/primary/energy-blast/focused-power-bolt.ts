@@ -27,6 +27,7 @@ export const FocusedPowerBolt: Power = {
     "EnduranceReduction",
     "Range",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],

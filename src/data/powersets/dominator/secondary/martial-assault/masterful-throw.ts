@@ -24,6 +24,7 @@ export const MasterfulThrow: Power = {
     "castTime": 1.33
   },
   "allowedEnhancements": [
+    "Interrupt",
     "EnduranceReduction",
     "Range",
     "Recharge",

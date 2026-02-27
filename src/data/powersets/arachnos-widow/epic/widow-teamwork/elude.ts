@@ -2,7 +2,7 @@
  * Elude
  * Self +DEF, + SPD, +Recovery, Res(DeBuff DEF), +Special
  *
- * Source: arachnos-widow/widow-teamwork
+ * Source: teamwork/widow_teamwork/elude.json
  */
 
 import type { Power } from '@/types';
@@ -17,7 +17,7 @@ export const Elude: Power = {
   "effectArea": "SingleTarget",
   "maxSlots": 6,
   "allowedEnhancements": [
-    "EnduranceReduction",
+    "EnduranceModification",
     "EnduranceReduction",
     "Run Speed",
     "Recharge",
@@ -36,5 +36,49 @@ export const Elude: Power = {
     "endurance": 2.6,
     "castTime": 2
   },
-  "targetType": "Self"
+  "targetType": "Self",
+  "effects": {
+    "defenseBuff": {
+      "ranged": {
+        "scale": 6,
+        "table": "Melee_Buff_Def"
+      },
+      "melee": {
+        "scale": 6,
+        "table": "Melee_Buff_Def"
+      },
+      "aoe": {
+        "scale": 6,
+        "table": "Melee_Buff_Def"
+      }
+    },
+    "recoveryBuff": {
+      "scale": 1,
+      "table": "Melee_Ones"
+    },
+    "movement": {
+      "jumpHeight": {
+        "scale": 2,
+        "table": "Melee_Ones"
+      },
+      "runSpeed": {
+        "scale": 0.5,
+        "table": "Melee_SpeedRunning"
+      }
+    },
+    "elusivity": {
+      "all": {
+        "scale": 1,
+        "table": "Melee_Res_Boolean"
+      }
+    },
+    "recoveryDebuff": {
+      "scale": 100,
+      "table": "Melee_Ones"
+    },
+    "enduranceDrain": {
+      "scale": 1,
+      "table": "Melee_Ones"
+    }
+  }
 };

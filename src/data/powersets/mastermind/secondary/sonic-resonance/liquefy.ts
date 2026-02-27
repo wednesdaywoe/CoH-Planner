@@ -29,6 +29,7 @@ export const Liquefy: Power = {
     "EnduranceReduction",
     "Range",
     "Recharge",
+    "Knockback",
     "ToHit Debuff",
     "Defense Debuff",
     "Damage"

@@ -25,6 +25,7 @@ export const ConductiveAura: Power = {
     "maxTargets": 16
   },
   "allowedEnhancements": [
+    "EnduranceModification",
     "Recharge",
     "Healing",
     "Accuracy"
@@ -33,5 +34,11 @@ export const ConductiveAura: Power = {
     "Endurance Modification",
     "Healing"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "enduranceDrain": {
+      "scale": 0.1,
+      "table": "Ranged_Ones"
+    }
+  }
 };

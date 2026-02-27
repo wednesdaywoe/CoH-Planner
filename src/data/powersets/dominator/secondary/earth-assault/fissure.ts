@@ -30,6 +30,7 @@ export const Fissure: Power = {
     "Range",
     "Stun",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],

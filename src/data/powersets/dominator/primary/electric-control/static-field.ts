@@ -25,6 +25,7 @@ export const StaticField: Power = {
     "castTime": 2.03
   },
   "allowedEnhancements": [
+    "EnduranceModification",
     "Slow",
     "EnduranceReduction",
     "Range",

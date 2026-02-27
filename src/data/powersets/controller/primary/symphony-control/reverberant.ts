@@ -31,6 +31,7 @@ export const Reverberant: Power = {
     "Stun",
     "Sleep",
     "Recharge",
+    "Immobilize",
     "Fear",
     "Damage",
     "Confuse",

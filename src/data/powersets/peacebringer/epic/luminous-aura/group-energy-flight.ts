@@ -2,7 +2,7 @@
  * Group Energy Flight
  * Toggle: Team Fly
  *
- * Source: peacebringer/luminous-aura
+ * Source: peacebringer_defensive/luminous_aura/group_energy_flight.json
  */
 
 import type { Power } from '@/types';
@@ -31,5 +31,25 @@ export const GroupEnergyFlight: Power = {
     "radius": 60,
     "maxTargets": 255
   },
-  "targetType": "Self"
+  "targetType": "Self",
+  "effects": {
+    "movement": {
+      "fly": {
+        "scale": 0.1,
+        "table": "Melee_Ones"
+      },
+      "flySpeed": {
+        "scale": 0.5,
+        "table": "Melee_SpeedFlying"
+      },
+      "movementControl": {
+        "scale": 10,
+        "table": "Melee_Control"
+      },
+      "movementFriction": {
+        "scale": 10,
+        "table": "Melee_Friction"
+      }
+    }
+  }
 };

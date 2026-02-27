@@ -2,7 +2,7 @@
  * Pain Tolerance
  * Auto: Self Res (All DMG but Psi), +MaxHealth
  *
- * Source: arachnos-widow/widow-teamwork
+ * Source: teamwork/widow_teamwork/pain_tolerance.json
  */
 
 import type { Power } from '@/types';
@@ -27,5 +27,41 @@ export const PainTolerance: Power = {
   "stats": {
     "accuracy": 1
   },
-  "targetType": "Self"
+  "targetType": "Self",
+  "effects": {
+    "resistance": {
+      "smashing": {
+        "scale": 0.5,
+        "table": "Melee_Res_Dmg"
+      },
+      "lethal": {
+        "scale": 0.5,
+        "table": "Melee_Res_Dmg"
+      },
+      "fire": {
+        "scale": 0.5,
+        "table": "Melee_Res_Dmg"
+      },
+      "cold": {
+        "scale": 0.5,
+        "table": "Melee_Res_Dmg"
+      },
+      "energy": {
+        "scale": 0.5,
+        "table": "Melee_Res_Dmg"
+      },
+      "negative": {
+        "scale": 0.5,
+        "table": "Melee_Res_Dmg"
+      },
+      "toxic": {
+        "scale": 0.5,
+        "table": "Melee_Res_Dmg"
+      }
+    },
+    "maxHPBuff": {
+      "scale": 1.5,
+      "table": "Melee_HealSelf"
+    }
+  }
 };

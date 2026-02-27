@@ -2,7 +2,7 @@
  * Subdue
  * Ranged, DMG(Psionic), Foe Immobilize
  *
- * Source: arachnos-widow/fortunata-training
+ * Source: widow_training/fortunata_training/frt_subdue.json
  */
 
 import type { Power } from '@/types';
@@ -37,5 +37,17 @@ export const Subdue: Power = {
     "endurance": 8.986,
     "castTime": 1.67
   },
-  "targetType": "Foe (Alive)"
+  "targetType": "Foe (Alive)",
+  "damage": {
+    "type": "Psionic",
+    "scale": 1.728,
+    "table": "Ranged_Damage"
+  },
+  "effects": {
+    "immobilize": {
+      "mag": 3,
+      "scale": 6,
+      "table": "Ranged_Immobilize"
+    }
+  }
 };

@@ -2,7 +2,7 @@
  * Black Dwarf Antagonize
  * Ranged (Targeted AoE), Foe Taunt
  *
- * Source: warshade/umbral-aura
+ * Source: warshade_defensive/umbral_aura/black_dwarf_antagonize.json
  */
 
 import type { Power } from '@/types';
@@ -34,5 +34,11 @@ export const BlackDwarfAntagonize: Power = {
     "maxTargets": 5
   },
   "targetType": "Foe (Alive)",
-  "requires": "Black Dwarf"
+  "requires": "Black Dwarf",
+  "effects": {
+    "rangeBuff": {
+      "scale": 0.75,
+      "table": "Melee_Ones"
+    }
+  }
 };

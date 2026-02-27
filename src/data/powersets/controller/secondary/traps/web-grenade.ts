@@ -28,6 +28,7 @@ export const WebGrenade: Power = {
     "EnduranceReduction",
     "Range",
     "Recharge",
+    "Immobilize",
     "Accuracy"
   ],
   "allowedSetCategories": [

@@ -2,7 +2,7 @@
  * Poison Dart
  * Ranged, DMG(Lethal), DoT(Toxic), -Regeneration
  *
- * Source: arachnos-widow/widow-training
+ * Source: widow_training/widow_training/poison_dart.json
  */
 
 import type { Power } from '@/types';
@@ -35,5 +35,25 @@ export const PoisonDart: Power = {
     "endurance": 5.2,
     "castTime": 1.5
   },
-  "targetType": "Foe (Alive)"
+  "targetType": "Foe (Alive)",
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 1,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Toxic",
+      "scale": 0.1,
+      "table": "Ranged_Damage",
+      "duration": 2.1,
+      "tickRate": 1
+    }
+  ],
+  "effects": {
+    "regenDebuff": {
+      "scale": 0.25,
+      "table": "Ranged_Ones"
+    }
+  }
 };

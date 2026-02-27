@@ -2,7 +2,7 @@
  * Venom Grenade
  * Ranged(Targeted AoE), DoT(Toxic), -Res(All)
  *
- * Source: arachnos-soldier/arachnos-soldier
+ * Source: arachnos_soldiers/arachnos_soldier/venom_grenade.json
  */
 
 import type { Power } from '@/types';
@@ -16,8 +16,18 @@ export const VenomGrenade: Power = {
   "powerType": "Click",
   "effectArea": "AoE",
   "maxSlots": 6,
-  "allowedEnhancements": [],
-  "allowedSetCategories": [],
+  "allowedEnhancements": [
+    "EnduranceReduction",
+    "Range",
+    "Recharge",
+    "Damage",
+    "Accuracy"
+  ],
+  "allowedSetCategories": [
+    "Ranged AoE Damage",
+    "Soldiers of Arachnos Archetype Sets",
+    "Universal Damage Sets"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,

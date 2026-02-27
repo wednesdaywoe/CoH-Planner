@@ -26,6 +26,7 @@ export const BetaDecay: Power = {
     "maxTargets": 10
   },
   "allowedEnhancements": [
+    "Taunt",
     "EnduranceReduction",
     "Recharge",
     "ToHit Debuff",

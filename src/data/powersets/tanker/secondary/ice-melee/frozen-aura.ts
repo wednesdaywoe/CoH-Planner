@@ -26,6 +26,7 @@ export const FrozenAura: Power = {
     "maxTargets": 10
   },
   "allowedEnhancements": [
+    "Taunt",
     "EnduranceReduction",
     "Sleep",
     "Recharge",

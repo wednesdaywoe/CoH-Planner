@@ -23,7 +23,8 @@ export const OffensiveAdaptation: Power = {
     "castTime": 0.67
   },
   "allowedEnhancements": [],
-  "maxSlots": 6,
+  "maxSlots": 0,
+  "mechanicType": "childToggle",
   "effects": {
     "resistanceDebuff": {
       "smashing": {

@@ -24,9 +24,12 @@ export const Serum: Power = {
     "castTime": 1.3
   },
   "allowedEnhancements": [
+    "Resistance",
+    "EnduranceModification",
     "EnduranceReduction",
     "Range",
-    "Recharge"
+    "Recharge",
+    "ToHit"
   ],
   "allowedSetCategories": [
     "Endurance Modification",

@@ -30,6 +30,7 @@ export const ForceBomb: Power = {
     "Range",
     "Stun",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],

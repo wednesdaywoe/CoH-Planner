@@ -2,7 +2,7 @@
  * Orbiting Death
  * Toggle: PBAoE Minor DoT(Negative)
  *
- * Source: warshade/umbral-aura
+ * Source: warshade_defensive/umbral_aura/orbiting_death.json
  */
 
 import type { Power } from '@/types';
@@ -35,5 +35,12 @@ export const OrbitingDeath: Power = {
     "radius": 20,
     "maxTargets": 10
   },
-  "targetType": "Self"
+  "targetType": "Self",
+  "damage": {
+    "type": "Negative",
+    "scale": 0.17,
+    "table": "Melee_Damage",
+    "duration": 2.5,
+    "tickRate": 3
+  }
 };

@@ -26,6 +26,7 @@ export const GroundZero: Power = {
     "maxTargets": 10
   },
   "allowedEnhancements": [
+    "Taunt",
     "EnduranceReduction",
     "Recharge",
     "Healing",

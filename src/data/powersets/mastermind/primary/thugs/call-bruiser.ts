@@ -28,6 +28,7 @@ export const CallBruiser: Power = {
     "Hold",
     "EnduranceReduction",
     "Stun",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],

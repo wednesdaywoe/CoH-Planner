@@ -27,6 +27,7 @@ export const SpectralWall: Power = {
     "EnduranceReduction",
     "Range",
     "Recharge",
+    "Immobilize",
     "ToHit Debuff",
     "Damage",
     "Accuracy"

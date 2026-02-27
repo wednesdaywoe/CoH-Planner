@@ -24,8 +24,10 @@ export const SoaringDragon: Power = {
     "castTime": 1.33
   },
   "allowedEnhancements": [
+    "Taunt",
     "EnduranceReduction",
     "Recharge",
+    "Knockback",
     "Defense Debuff",
     "Damage",
     "Accuracy"

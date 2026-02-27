@@ -28,7 +28,8 @@ export const BarrierReef: Power = {
     "EnduranceReduction",
     "Range",
     "Recharge",
-    "Healing"
+    "Healing",
+    "Defense"
   ],
   "allowedSetCategories": [
     "Defense Sets",

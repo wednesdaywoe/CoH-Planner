@@ -24,8 +24,10 @@ export const CraneKick: Power = {
     "castTime": 1.67
   },
   "allowedEnhancements": [
+    "Taunt",
     "EnduranceReduction",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],

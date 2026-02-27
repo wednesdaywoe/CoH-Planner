@@ -26,6 +26,7 @@ export const RecoveryAura: Power = {
     "maxTargets": 255
   },
   "allowedEnhancements": [
+    "EnduranceModification",
     "EnduranceReduction",
     "Recharge"
   ],

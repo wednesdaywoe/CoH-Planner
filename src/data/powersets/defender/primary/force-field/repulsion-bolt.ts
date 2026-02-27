@@ -27,6 +27,7 @@ export const RepulsionBolt: Power = {
     "EnduranceReduction",
     "Range",
     "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],

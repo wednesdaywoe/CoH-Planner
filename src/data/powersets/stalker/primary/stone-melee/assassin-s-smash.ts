@@ -24,6 +24,7 @@ export const AssassinsSmash: Power = {
     "castTime": 3.17
   },
   "allowedEnhancements": [
+    "Interrupt",
     "EnduranceReduction",
     "Recharge",
     "Damage",

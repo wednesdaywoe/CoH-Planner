@@ -43,5 +43,52 @@ export const StridentEcho: Power = {
     "table": "Melee_Damage",
     "duration": 2.1,
     "tickRate": 0.4
+  },
+  "effects": {
+    "elusivity": {
+      "all": {
+        "scale": 0.8,
+        "table": "Melee_Debuff_Res_Dmg"
+      }
+    },
+    "enduranceDrain": {
+      "scale": 0.8,
+      "table": "Melee_Debuff_Res_Dmg"
+    },
+    "tohitDebuff": {
+      "scale": 0.8,
+      "table": "Melee_Debuff_Res_Dmg"
+    },
+    "slow": {
+      "runSpeed": {
+        "scale": 0.8,
+        "table": "Melee_Debuff_Res_Dmg"
+      },
+      "flySpeed": {
+        "scale": 0.8,
+        "table": "Melee_Debuff_Res_Dmg"
+      },
+      "jumpSpeed": {
+        "scale": 0.8,
+        "table": "Melee_Debuff_Res_Dmg"
+      }
+    },
+    "regenDebuff": {
+      "scale": 0.8,
+      "table": "Melee_Debuff_Res_Dmg"
+    },
+    "recoveryDebuff": {
+      "scale": 0.8,
+      "table": "Melee_Debuff_Res_Dmg"
+    },
+    "rechargeDebuff": {
+      "scale": 0.8,
+      "table": "Melee_Debuff_Res_Dmg"
+    },
+    "hold": {
+      "mag": 3,
+      "scale": 5,
+      "table": "Melee_Immobilize"
+    }
   }
 };

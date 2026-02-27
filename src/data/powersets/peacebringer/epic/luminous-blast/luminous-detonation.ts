@@ -2,7 +2,7 @@
  * Luminous Detonation
  * Ranged (Targeted AoE), Light DMG(Energy), Foe -DEF, Knockback
  *
- * Source: peacebringer/luminous-blast
+ * Source: peacebringer_offensive/luminous_blast/luminous_detonation.json
  */
 
 import type { Power } from '@/types';
@@ -42,5 +42,20 @@ export const LuminousDetonation: Power = {
     "radius": 15,
     "maxTargets": 16
   },
-  "targetType": "Foe (Alive)"
+  "targetType": "Foe (Alive)",
+  "damage": {
+    "type": "Energy",
+    "scale": 0.9,
+    "table": "Ranged_Damage"
+  },
+  "effects": {
+    "knockback": {
+      "scale": 2,
+      "table": "Ranged_Knockback"
+    },
+    "defenseDebuff": {
+      "scale": 1,
+      "table": "Ranged_Debuff_Def"
+    }
+  }
 };

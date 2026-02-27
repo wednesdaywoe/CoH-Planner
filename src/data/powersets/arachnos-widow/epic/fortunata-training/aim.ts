@@ -2,7 +2,7 @@
  * Aim
  * Self +To Hit, +DMG
  *
- * Source: arachnos-widow/fortunata-training
+ * Source: widow_training/fortunata_training/frt_aim.json
  */
 
 import type { Power } from '@/types';
@@ -30,5 +30,15 @@ export const Aim: Power = {
     "endurance": 5.2,
     "castTime": 1.17
   },
-  "targetType": "Self"
+  "targetType": "Self",
+  "effects": {
+    "tohitBuff": {
+      "scale": 5,
+      "table": "Melee_Buff_ToHit"
+    },
+    "damageBuff": {
+      "scale": 5,
+      "table": "Melee_Buff_Dmg"
+    }
+  }
 };

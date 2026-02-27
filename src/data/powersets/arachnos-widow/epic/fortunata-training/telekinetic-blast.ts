@@ -2,7 +2,7 @@
  * Telekinetic Blast
  * Ranged, DMG(Smash/Psionic), Foe Knockback
  *
- * Source: arachnos-widow/fortunata-training
+ * Source: widow_training/fortunata_training/frt_telekinetic_blast.json
  */
 
 import type { Power } from '@/types';
@@ -37,5 +37,23 @@ export const TelekineticBlast: Power = {
     "endurance": 5.491,
     "castTime": 1
   },
-  "targetType": "Foe (Alive)"
+  "targetType": "Foe (Alive)",
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 0.264,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 0.792,
+      "table": "Ranged_Damage"
+    }
+  ],
+  "effects": {
+    "knockback": {
+      "scale": 4,
+      "table": "Ranged_Knockback"
+    }
+  }
 };

@@ -2,7 +2,7 @@
  * Twilight Shield
  * Toggle: Self +Res(Energy, Negative)
  *
- * Source: warshade/umbral-aura
+ * Source: warshade_defensive/umbral_aura/twilight_shield.json
  */
 
 import type { Power } from '@/types';
@@ -30,5 +30,17 @@ export const TwilightShield: Power = {
     "endurance": 0.13,
     "castTime": 0.73
   },
-  "targetType": "Self"
+  "targetType": "Self",
+  "effects": {
+    "resistance": {
+      "energy": {
+        "scale": 3,
+        "table": "Melee_Res_Dmg"
+      },
+      "negative": {
+        "scale": 3,
+        "table": "Melee_Res_Dmg"
+      }
+    }
+  }
 };

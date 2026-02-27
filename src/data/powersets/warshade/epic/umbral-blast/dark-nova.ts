@@ -2,7 +2,7 @@
  * Dark Nova
  * Toggle: Shapeshift, Special
  *
- * Source: warshade/umbral-blast
+ * Source: warshade_offensive/umbral_blast/dark_nova.json
  */
 
 import type { Power } from '@/types';
@@ -17,7 +17,7 @@ export const DarkNova: Power = {
   "effectArea": "SingleTarget",
   "maxSlots": 6,
   "allowedEnhancements": [
-    "EnduranceReduction",
+    "EnduranceModification",
     "EnduranceReduction",
     "Recharge",
     "Fly",
@@ -34,5 +34,47 @@ export const DarkNova: Power = {
     "recharge": 1,
     "endurance": 0.13
   },
-  "targetType": "Self"
+  "targetType": "Self",
+  "effects": {
+    "movement": {
+      "fly": {
+        "scale": 4,
+        "table": "Melee_Ones"
+      },
+      "flySpeed": {
+        "scale": 1.5,
+        "table": "Melee_SpeedFlying"
+      },
+      "movementControl": {
+        "scale": 2,
+        "table": "Melee_Control"
+      },
+      "movementFriction": {
+        "scale": 2,
+        "table": "Melee_Friction"
+      }
+    },
+    "recoveryBuff": {
+      "scale": 0.15,
+      "table": "Melee_Ones"
+    },
+    "tohitBuff": {
+      "scale": 1,
+      "table": "Melee_Buff_ToHit"
+    },
+    "damageBuff": {
+      "scale": 5,
+      "table": "Melee_Buff_Dmg"
+    },
+    "resistance": {
+      "energy": {
+        "scale": 0.15,
+        "table": "Melee_Ones"
+      },
+      "negative": {
+        "scale": 0.15,
+        "table": "Melee_Ones"
+      }
+    }
+  }
 };

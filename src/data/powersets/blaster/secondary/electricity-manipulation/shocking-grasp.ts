@@ -24,6 +24,7 @@ export const ShockingGrasp: Power = {
     "castTime": 1
   },
   "allowedEnhancements": [
+    "EnduranceModification",
     "Hold",
     "EnduranceReduction",
     "Recharge",
