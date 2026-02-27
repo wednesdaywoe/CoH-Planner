@@ -27,6 +27,7 @@ export const ToroidalBubble: Power = {
   },
   "allowedEnhancements": [
     "EnduranceReduction",
+    "EnduranceModification",
     "Recharge",
     "Jump"
   ],

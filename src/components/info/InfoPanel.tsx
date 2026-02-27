@@ -5,7 +5,7 @@
  */
 
 import { useMemo, useState } from 'react';
-import { useUIStore, useBuildStore, useDominationActive } from '@/stores';
+import { useUIStore, useBuildStore, useDominationActive, useScourgeActive, useFuryLevel, useContainmentActive, useCriticalHitsActive, useStalkerHidden, useStalkerTeamSize } from '@/stores';
 import {
   lookupPower,
   getArchetype,
@@ -23,7 +23,7 @@ import {
   mergeWithSupportEffects,
 } from '@/data';
 import { useGlobalBonuses } from '@/hooks/useCalculatedStats';
-import { calculatePowerEnhancementBonuses, calculatePowerDamage, getAlphaEnhancementBonuses, abbreviateDamageType, type EnhancementBonuses } from '@/utils/calculations';
+import { calculatePowerEnhancementBonuses, calculatePowerDamage, getAlphaEnhancementBonuses, abbreviateDamageType, type EnhancementBonuses, isControllerPower, isCorruptorAttackPower, isBruteAttackPower, isScrapperAttackPower, isStalkerAttackPower, calculateContainmentDamage, calculateScourgeDamage, calculateFuryDamage, calculateFuryDamageBonus, calculateCriticalHitDamage, calculateAssassinationDamage, calculateAssassinationDamageBonus, getContainmentInfo, getScourgeInfo, getCriticalHitInfo, getFuryInfo } from '@/utils/calculations';
 import { calculatePetDamage, shouldApplyEnhancements, type PetDamageResult, type PetAbilityDamage } from '@/utils/calculations/pet-damage';
 import { PET_ENTITIES, type PetAbility } from '@/data/pet-entities';
 import { resolvePath } from '@/utils/paths';
@@ -101,6 +101,12 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
   const globalBonuses = useGlobalBonuses();
   const incarnateActive = useUIStore((s) => s.incarnateActive);
   const dominationActive = useDominationActive();
+  const scourgeActive = useScourgeActive();
+  const furyLevel = useFuryLevel();
+  const containmentActive = useContainmentActive();
+  const criticalHitsActive = useCriticalHitsActive();
+  const stalkerHidden = useStalkerHidden();
+  const stalkerTeamSize = useStalkerTeamSize();
 
   // Unified power lookup across all categories
   const result = lookupPower(powerSet, powerName);
@@ -209,6 +215,52 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
     }
     return undefined;
   }, [power?.damage]);
+
+  // Calculate archetype inherent damage bonus info (Containment, Scourge, Fury, etc.)
+  const inherentInfo = useMemo(() => {
+    if (!calculatedDamage) return null;
+
+    const isController = archetypeId === 'controller';
+    const isCorruptor = archetypeId === 'corruptor';
+    const isBrute = archetypeId === 'brute';
+    const isScrapper = archetypeId === 'scrapper';
+    const isStalker = archetypeId === 'stalker';
+
+    const showContainment = isController && isControllerPower(powerSet) && containmentActive;
+    const showScourge = isCorruptor && isCorruptorAttackPower(powerSet) && scourgeActive;
+    const showFury = isBrute && isBruteAttackPower(powerSet) && furyLevel > 0;
+    const showCriticalHits = isScrapper && isScrapperAttackPower(powerSet) && criticalHitsActive;
+    const showAssassination = isStalker && isStalkerAttackPower(powerSet) && (stalkerHidden || stalkerTeamSize > 0);
+
+    const hasInherent = showContainment || showScourge || showFury || showCriticalHits || showAssassination;
+    if (!hasInherent) return null;
+
+    const header = showScourge ? 'w/ Scourge'
+      : showFury ? 'w/ Fury'
+      : showCriticalHits ? 'w/ Crit'
+      : showAssassination ? (stalkerHidden ? 'w/ Crit' : 'w/ Assassin')
+      : showContainment ? 'w/ Contain'
+      : 'Final';
+
+    const color = showScourge ? 'text-cyan-400'
+      : showFury ? 'text-red-400'
+      : showCriticalHits ? 'text-orange-400'
+      : showAssassination ? 'text-purple-400'
+      : showContainment ? 'text-cyan-400'
+      : 'text-amber-400';
+
+    const applyBonus = (damage: number) => {
+      if (showScourge) return calculateScourgeDamage(damage);
+      if (showFury) return calculateFuryDamage(damage, furyLevel);
+      if (showCriticalHits) return calculateCriticalHitDamage(damage, 'higher');
+      if (showAssassination) return calculateAssassinationDamage(damage, stalkerHidden, stalkerTeamSize);
+      if (showContainment) return calculateContainmentDamage(damage, true);
+      return damage;
+    };
+
+    return { header, color, applyBonus, showContainment };
+  }, [calculatedDamage, archetypeId, powerSet, containmentActive, scourgeActive, furyLevel,
+      criticalHitsActive, stalkerHidden, stalkerTeamSize]);
 
   if (!power) {
     return <div className="text-slate-500 text-xs">Power not found</div>;
@@ -341,13 +393,8 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
             Damage <span className="text-slate-600 font-normal">(Lvl {build.level})</span>
           </h4>
           <div className="bg-slate-800/50 rounded p-2">
-            <div className="grid grid-cols-[4rem_1fr_1fr_1fr] gap-1 text-[9px] text-slate-500 uppercase mb-0.5 border-b border-slate-700 pb-0.5">
-              <span>Type</span>
-              <span>Base</span>
-              <span>Enhanced</span>
-              <span>Final</span>
-            </div>
             {(() => {
+              const gridCols = inherentInfo ? 'grid-cols-[4rem_1fr_1fr_1fr_1fr]' : 'grid-cols-[4rem_1fr_1fr_1fr]';
               const hasEnh = Math.abs(calculatedDamage.enhanced - calculatedDamage.base) > 0.001;
               const hasGlobal = Math.abs(calculatedDamage.final - calculatedDamage.enhanced) > 0.001;
               const isDot = dotInfo && dotInfo.duration > 0 && dotInfo.tickRate;
@@ -357,9 +404,20 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
               const totalFinal = calculatedDamage.final * numTicks;
               const hasTotalEnh = numTicks > 0 && Math.abs(totalEnhanced - totalBase) > 0.001;
               const hasTotalGlobal = numTicks > 0 && Math.abs(totalFinal - totalEnhanced) > 0.001;
+              const inherentFinal = inherentInfo ? inherentInfo.applyBonus(calculatedDamage.final) : calculatedDamage.final;
+              const hasInherentDiff = inherentInfo != null && Math.abs(inherentFinal - calculatedDamage.final) > 0.001;
+              const totalInherent = inherentFinal * numTicks;
+              const hasTotalInherent = numTicks > 0 && inherentInfo != null && Math.abs(totalInherent - totalFinal) > 0.001;
               return (
                 <>
-                  <div className="grid grid-cols-[4rem_1fr_1fr_1fr] gap-1 items-baseline text-xs">
+                  <div className={`grid ${gridCols} gap-1 text-[9px] text-slate-500 uppercase mb-0.5 border-b border-slate-700 pb-0.5`}>
+                    <span>Type</span>
+                    <span>Base</span>
+                    <span>Enhanced</span>
+                    <span>Final</span>
+                    {inherentInfo && <span className={inherentInfo.color}>{inherentInfo.header}</span>}
+                  </div>
+                  <div className={`grid ${gridCols} gap-1 items-baseline text-xs`}>
                     <span className="text-red-400">{isDot ? `${abbreviateDamageType(calculatedDamage.type)}/tick` : abbreviateDamageType(calculatedDamage.type)}</span>
                     <span className="text-slate-200">{calculatedDamage.base.toFixed(2)}</span>
                     <span className={hasEnh ? 'text-green-400' : 'text-slate-600'}>
@@ -368,10 +426,15 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
                     <span className={hasGlobal ? 'text-amber-400' : 'text-slate-600'}>
                       {hasGlobal ? `→ ${calculatedDamage.final.toFixed(2)}` : '—'}
                     </span>
+                    {inherentInfo && (
+                      <span className={hasInherentDiff ? inherentInfo.color : 'text-slate-600'}>
+                        {hasInherentDiff ? `→ ${inherentFinal.toFixed(2)}` : '—'}
+                      </span>
+                    )}
                   </div>
                   {isDot && (
                     <>
-                      <div className="grid grid-cols-[4rem_1fr_1fr_1fr] gap-1 items-baseline text-xs mt-1 pt-1 border-t border-slate-700/50">
+                      <div className={`grid ${gridCols} gap-1 items-baseline text-xs mt-1 pt-1 border-t border-slate-700/50`}>
                         <span className="text-orange-400">Total</span>
                         <span className="text-slate-200">{totalBase.toFixed(2)}</span>
                         <span className={hasTotalEnh ? 'text-green-400' : 'text-slate-600'}>
@@ -380,6 +443,11 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
                         <span className={hasTotalGlobal ? 'text-amber-400' : 'text-slate-600'}>
                           {hasTotalGlobal ? `→ ${totalFinal.toFixed(2)}` : '—'}
                         </span>
+                        {inherentInfo && (
+                          <span className={hasTotalInherent ? inherentInfo.color : 'text-slate-600'}>
+                            {hasTotalInherent ? `→ ${totalInherent.toFixed(2)}` : '—'}
+                          </span>
+                        )}
                       </div>
                       <div className="text-[9px] text-orange-400/70 italic mt-0.5 ml-1">
                         {numTicks} ticks over {dotInfo.duration}s ({dotInfo.tickRate}s/tick)
@@ -443,6 +511,185 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
             )}
           </div>
         </div>
+      )}
+
+      {/* Inherent AT damage bonus info panels */}
+      {inherentInfo && calculatedDamage && (
+        <>
+          {/* Scourge (Corruptor) */}
+          {archetypeId === 'corruptor' && isCorruptorAttackPower(powerSet) && (() => {
+            const scourgeInfo = getScourgeInfo();
+            return (
+              <div className={`text-[10px] rounded px-2 py-1.5 border ${
+                scourgeActive
+                  ? 'bg-cyan-900/30 border-cyan-700/50'
+                  : 'bg-slate-800/50 border-slate-700/30'
+              }`}>
+                <div className="flex items-center justify-between">
+                  <span className={`font-medium ${scourgeActive ? 'text-cyan-400' : 'text-slate-400'}`}>
+                    Scourge
+                  </span>
+                  <span className={`text-[8px] px-1.5 py-0.5 rounded ${
+                    scourgeActive ? 'bg-cyan-600/50 text-cyan-200' : 'bg-slate-700 text-slate-400'
+                  }`}>
+                    {scourgeActive ? 'SHOWING AVG' : 'Hidden'}
+                  </span>
+                </div>
+                {scourgeActive && (
+                  <div className="mt-1 text-[9px]">
+                    <span className="text-cyan-300">+{(scourgeInfo.averageDamageBonus * 100).toFixed(0)}% avg dmg</span>
+                    <span className="text-slate-500 ml-1">(×{(1 + scourgeInfo.averageDamageBonus).toFixed(2)} multiplier)</span>
+                  </div>
+                )}
+                {!scourgeActive && (
+                  <div className="text-[8px] text-slate-500 mt-0.5">
+                    {scourgeInfo.chanceFormula}
+                  </div>
+                )}
+              </div>
+            );
+          })()}
+
+          {/* Fury (Brute) */}
+          {archetypeId === 'brute' && isBruteAttackPower(powerSet) && (() => {
+            const furyInfo = getFuryInfo();
+            const currentBonus = calculateFuryDamageBonus(furyLevel);
+            return (
+              <div className={`text-[10px] rounded px-2 py-1.5 border ${
+                furyLevel > 0
+                  ? 'bg-red-900/30 border-red-700/50'
+                  : 'bg-slate-800/50 border-slate-700/30'
+              }`}>
+                <div className="flex items-center justify-between">
+                  <span className={`font-medium ${furyLevel > 0 ? 'text-red-400' : 'text-slate-400'}`}>
+                    Fury
+                  </span>
+                  <span className={`text-[8px] px-1.5 py-0.5 rounded ${
+                    furyLevel > 0 ? 'bg-red-600/50 text-red-200' : 'bg-slate-700 text-slate-400'
+                  }`}>
+                    {furyLevel}/{furyInfo.maxFury}
+                  </span>
+                </div>
+                <div className="mt-1 text-[9px]">
+                  <span className="text-red-300">+{(currentBonus * 100).toFixed(0)}% damage</span>
+                  <span className="text-slate-500 ml-1">({furyInfo.damagePerFury * 100}% per fury)</span>
+                </div>
+              </div>
+            );
+          })()}
+
+          {/* Critical Hits (Scrapper) */}
+          {archetypeId === 'scrapper' && isScrapperAttackPower(powerSet) && (() => {
+            const criticalHitInfo = getCriticalHitInfo();
+            return (
+              <div className={`text-[10px] rounded px-2 py-1.5 border ${
+                criticalHitsActive
+                  ? 'bg-orange-900/30 border-orange-700/50'
+                  : 'bg-slate-800/50 border-slate-700/30'
+              }`}>
+                <div className="flex items-center justify-between">
+                  <span className={`font-medium ${criticalHitsActive ? 'text-orange-400' : 'text-slate-400'}`}>
+                    Critical Hits
+                  </span>
+                  <span className={`text-[8px] px-1.5 py-0.5 rounded ${
+                    criticalHitsActive ? 'bg-orange-600/50 text-orange-200' : 'bg-slate-700 text-slate-400'
+                  }`}>
+                    {criticalHitsActive ? 'SHOWING AVG' : 'Hidden'}
+                  </span>
+                </div>
+                {criticalHitsActive && (
+                  <div className="mt-1 space-y-0.5 text-[9px]">
+                    <div className="flex justify-between">
+                      <span className="text-slate-400">vs Minions:</span>
+                      <span className="text-orange-300">
+                        {(criticalHitInfo.chanceVsMinions * 100).toFixed(0)}% → +{(criticalHitInfo.averageBonusVsMinions * 100).toFixed(0)}% avg
+                      </span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-slate-400">vs Lt/Boss+:</span>
+                      <span className="text-orange-300">
+                        {(criticalHitInfo.chanceVsHigher * 100).toFixed(0)}% → +{(criticalHitInfo.averageBonusVsHigher * 100).toFixed(0)}% avg
+                      </span>
+                    </div>
+                  </div>
+                )}
+                {!criticalHitsActive && (
+                  <div className="text-[8px] text-slate-500 mt-0.5">
+                    5% crit vs minions, 10% vs higher ranks
+                  </div>
+                )}
+              </div>
+            );
+          })()}
+
+          {/* Assassination (Stalker) */}
+          {archetypeId === 'stalker' && isStalkerAttackPower(powerSet) && (() => {
+            const currentBonus = calculateAssassinationDamageBonus(stalkerHidden, stalkerTeamSize);
+            return (
+              <div className={`text-[10px] rounded px-2 py-1.5 border ${
+                stalkerHidden
+                  ? 'bg-purple-900/40 border-purple-600/60'
+                  : currentBonus > 0
+                    ? 'bg-purple-900/30 border-purple-700/50'
+                    : 'bg-slate-800/50 border-slate-700/30'
+              }`}>
+                <div className="flex items-center justify-between">
+                  <span className={`font-medium ${stalkerHidden || currentBonus > 0 ? 'text-purple-400' : 'text-slate-400'}`}>
+                    Assassination
+                  </span>
+                  <span className={`text-[8px] px-1.5 py-0.5 rounded ${
+                    stalkerHidden ? 'bg-purple-600/60 text-purple-100' : 'bg-purple-600/50 text-purple-200'
+                  }`}>
+                    {stalkerHidden ? 'FROM HIDE' : `${stalkerTeamSize === 0 ? 'Solo' : `+${stalkerTeamSize}`}`}
+                  </span>
+                </div>
+                <div className="mt-1 text-[9px]">
+                  {stalkerHidden ? (
+                    <span className="text-purple-300 font-medium">100% critical — +100% avg damage</span>
+                  ) : (
+                    <span className="text-purple-300">+{(currentBonus * 100).toFixed(0)}% avg from Assassination</span>
+                  )}
+                </div>
+              </div>
+            );
+          })()}
+
+          {/* Containment (Controller) */}
+          {archetypeId === 'controller' && isControllerPower(powerSet) && (() => {
+            const containmentInfo = getContainmentInfo();
+            return (
+              <div className={`text-[10px] rounded px-2 py-1.5 border ${
+                containmentActive
+                  ? 'bg-cyan-900/40 border-cyan-600/60'
+                  : 'bg-slate-800/50 border-slate-700/30'
+              }`}>
+                <div className="flex items-center justify-between">
+                  <span className={`font-medium ${containmentActive ? 'text-cyan-400' : 'text-slate-400'}`}>
+                    Containment
+                  </span>
+                  <span className={`text-[8px] px-1.5 py-0.5 rounded ${
+                    containmentActive ? 'bg-cyan-600/50 text-cyan-200' : 'bg-slate-700/50 text-slate-400'
+                  }`}>
+                    {containmentActive ? 'Active' : 'Inactive'}
+                  </span>
+                </div>
+                <div className="mt-1 space-y-0.5 text-[9px]">
+                  <div className={containmentActive ? 'text-cyan-300' : 'text-slate-500'}>
+                    {containmentInfo.description}
+                  </div>
+                  {containmentActive && (
+                    <div className="text-cyan-200 font-medium">
+                      +{((containmentInfo.damageMultiplier - 1) * 100).toFixed(0)}% damage bonus
+                    </div>
+                  )}
+                </div>
+                <div className="text-[8px] text-slate-500 mt-1 pt-1 border-t border-cyan-700/30">
+                  Toggle in header to show damage vs controlled targets
+                </div>
+              </div>
+            );
+          })()}
+        </>
       )}
 
       {/* Enhancement Bonuses Summary */}

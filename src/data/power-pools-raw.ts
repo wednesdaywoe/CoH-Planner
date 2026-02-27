@@ -490,8 +490,8 @@ export const POWER_POOLS_RAW = {
         "powerType": "Auto",
         "requires": "!Inherent.Fitness.Swift",
         "maxSlots": 6,
-        "allowedEnhancements": [],
-        "allowedSetCategories": [],
+        "allowedEnhancements": ["Run Speed", "Fly"],
+        "allowedSetCategories": ["Running", "Flight"],
         "effects": {
           "accuracy": 1,
           "effectArea": "SingleTarget",

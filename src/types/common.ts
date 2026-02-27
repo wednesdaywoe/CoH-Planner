@@ -63,6 +63,7 @@ export type EnhancementStatType =
   | 'Slow'
   | 'Intangible'
   | 'EnduranceModification'
+  | 'Interrupt'
   | 'Absorb';
 
 // ============================================

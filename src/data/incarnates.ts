@@ -62,12 +62,36 @@ const RAW_SLOT_INDICES: Record<IncarnateSlotId, RawSlotIndex> = {
 // ============================================
 
 /**
+ * Lore pet names where the tree ID doesn't match the first word of the power name.
+ * Maps the multi-word prefix (lowercase) to the correct tree ID used in icon filenames.
+ */
+const LORE_NAME_PREFIX_TO_TREE: Record<string, string> = {
+  'polar_lights': 'lights',
+  'robotic_drones': 'drones',
+  'storm_elemental': 'elementals',
+  'phantom': 'phantoms',
+  'banished_pantheon': 'banished',
+  'knives_of_vengeance': 'knives',
+  'talons_of_vengeance': 'talons',
+};
+
+/**
  * Parse a power full name to extract tree and power info
  * e.g., "Incarnate.Alpha.Musculature_Core_Paragon" -> { tree: "musculature", name: "Core Paragon" }
  */
 function parsePowerName(fullName: string): { tree: string; powerName: string } {
   const parts = fullName.split('.');
   const lastPart = parts[parts.length - 1]; // e.g., "Musculature_Core_Paragon"
+  const lowerPart = lastPart.toLowerCase();
+
+  // Check multi-word prefixes first (for lore pets like Polar_Lights, Robotic_Drones, etc.)
+  for (const [prefix, treeId] of Object.entries(LORE_NAME_PREFIX_TO_TREE)) {
+    if (lowerPart.startsWith(prefix + '_')) {
+      const powerName = lastPart.slice(prefix.length + 1);
+      return { tree: treeId, powerName };
+    }
+  }
+
   const underscoreParts = lastPart.split('_');
   const tree = underscoreParts[0].toLowerCase();
   const powerName = underscoreParts.slice(1).join('_');

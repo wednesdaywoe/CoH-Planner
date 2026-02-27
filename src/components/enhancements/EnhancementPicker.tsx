@@ -1474,10 +1474,12 @@ function SetPieceTooltip({ set, piece }: SetPieceTooltipProps) {
                     {pveEffects.map((eff, i) => {
                       const normalized = normalizeStatName(eff.stat);
                       const isTracked = normalized ? trackedNormalized.has(normalized) : false;
+                      // Use eff.value for accurate display instead of pre-rounded eff.desc
+                      const formatted = eff.desc.replace(/^\+[\d.]+%/, `+${eff.value}%`);
                       return (
                         <span key={i} className={isTracked ? 'text-blue-300 font-semibold' : ''}>
                           {i > 0 && ', '}
-                          {eff.desc}
+                          {formatted}
                         </span>
                       );
                     })}
@@ -1502,12 +1504,15 @@ function SetPieceTooltip({ set, piece }: SetPieceTooltipProps) {
                         <span className={`font-medium ${isActive ? 'text-red-400/70' : 'text-slate-700'}`}>
                           {bonus.pieces}pc:
                         </span>{' '}
-                        {pvpEffects.map((eff, i) => (
-                          <span key={i}>
-                            {i > 0 && ', '}
-                            {eff.desc}
-                          </span>
-                        ))}
+                        {pvpEffects.map((eff, i) => {
+                          const formatted = eff.desc.replace(/^\+[\d.]+%/, `+${eff.value}%`);
+                          return (
+                            <span key={i}>
+                              {i > 0 && ', '}
+                              {formatted}
+                            </span>
+                          );
+                        })}
                       </div>
                     );
                   })}
