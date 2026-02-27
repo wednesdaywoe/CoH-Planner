@@ -573,7 +573,7 @@ export function isByTypeObject(value: unknown): value is Record<string, unknown>
   const keys = Object.keys(value);
   const typeKeys = [
     'smashing', 'lethal', 'fire', 'cold', 'energy', 'negative', 'psionic', 'toxic',
-    'melee', 'ranged', 'aoe', 'run', 'fly', 'jump',
+    'melee', 'ranged', 'aoe', 'all', 'run', 'fly', 'jump',
     // Debuff resistance stat types
     'defense', 'endurance', 'tohit', 'movement', 'regeneration', 'recovery', 'recharge', 'range', 'perception',
     // Resistance subtypes

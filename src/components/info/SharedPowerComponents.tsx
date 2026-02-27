@@ -3,6 +3,7 @@
  * Used by both PowerInfoTooltip (compact) and InfoPanel (expanded).
  */
 
+import { useState } from 'react';
 import type { PowerEffects, NumberOrScaled } from '@/types';
 import { getScaleValue } from '@/types';
 import {
@@ -206,6 +207,197 @@ export function DamageRow({
 }
 
 // ============================================
+// COLLAPSIBLE EFFECT GROUP
+// ============================================
+
+/** Minimum number of expanded entries to trigger collapsible behavior */
+const COLLAPSE_THRESHOLD = 4;
+
+interface DisplayableEffect {
+  effect: GroupedEffect;
+  baseValue: number;
+  tiers: ThreeTierValues;
+  byTypeLabel?: string;
+  expandedLabel?: string;
+}
+
+/** A group of effects that share the same base config from expandByType */
+type EffectGroup = {
+  type: 'single';
+  item: DisplayableEffect;
+} | {
+  type: 'group';
+  label: string;
+  colorClass: string;
+  items: DisplayableEffect[];
+}
+
+/** Collapsible wrapper for a group of expanded effects (e.g., 7 debuff resistance types) */
+function CollapsibleEffectGroup({
+  label,
+  colorClass,
+  items,
+  gridCols,
+  fontSize,
+  compact,
+  dominationActive,
+  finalColumnColor,
+}: {
+  label: string;
+  colorClass: string;
+  items: DisplayableEffect[];
+  gridCols: string;
+  fontSize: string;
+  compact: boolean;
+  dominationActive: boolean;
+  finalColumnColor: string;
+}) {
+  const [collapsed, setCollapsed] = useState(true);
+
+  // Check if all values are the same for a compact summary
+  const allSameBase = items.every(i => Math.abs(i.tiers.base - items[0].tiers.base) < 0.01);
+  const summaryValue = allSameBase ? items[0].tiers.base : null;
+
+  const formatValue = (v: number, config: EffectDisplayConfig) => {
+    switch (config.format) {
+      case 'percent':
+        return `${v.toFixed(1)}%`;
+      case 'duration':
+        return compact ? `${v.toFixed(1)}s` : `${v.toFixed(2)}s`;
+      case 'value':
+        if (config.label === 'Range' || config.label === 'Radius') return `${v.toFixed(0)}ft`;
+        return v.toFixed(2);
+      default:
+        return v.toFixed(2);
+    }
+  };
+
+  // For mixed values, show min-max range
+  const minBase = Math.min(...items.map(i => i.tiers.base));
+  const maxBase = Math.max(...items.map(i => i.tiers.base));
+
+  return (
+    <>
+      {/* Clickable summary row */}
+      <div
+        className={`grid ${gridCols} gap-1 items-baseline ${fontSize} cursor-pointer select-none hover:bg-slate-700/30 -mx-0.5 px-0.5 rounded`}
+        onClick={() => setCollapsed(!collapsed)}
+      >
+        <span className={colorClass}>
+          <span className={`inline-block text-[8px] mr-0.5 transition-transform ${collapsed ? '' : 'rotate-90'}`}>▶</span>
+          {label} ({items.length})
+        </span>
+        {summaryValue !== null ? (
+          <>
+            <span className="text-slate-200">{formatValue(summaryValue, items[0].effect.config)}</span>
+            <span className="text-slate-600">—</span>
+            <span className="text-slate-600">—</span>
+          </>
+        ) : (
+          <>
+            <span className="text-slate-200">{formatValue(minBase, items[0].effect.config)} – {formatValue(maxBase, items[0].effect.config)}</span>
+            <span className="text-slate-600">—</span>
+            <span className="text-slate-600">—</span>
+          </>
+        )}
+      </div>
+
+      {/* Expanded entries */}
+      {!collapsed && items.map(({ effect, tiers, expandedLabel: elabel }) => {
+        const { key, value: rawValue, config } = effect;
+        const enhanceable = !!config.enhancementAspect;
+        const hasEnh = Math.abs(tiers.enhanced - tiers.base) > 0.001;
+        const hasFinal = Math.abs(tiers.final - tiers.enhanced) > 0.001;
+        const itemLabel = elabel || config.label;
+
+        if (config.format === 'mag') {
+          const rawMag = dominationActive && config.category === 'control' ? tiers.base * 2 : tiers.base;
+          const magStr = Number.isInteger(rawMag) ? rawMag.toString() : rawMag.toFixed(1);
+          const magColorClass = dominationActive && config.category === 'control' ? 'text-pink-400' : config.colorClass;
+          const mezDuration = rawValue && typeof rawValue === 'object' && 'scale' in (rawValue as Record<string, unknown>)
+            ? (rawValue as { scale?: number }).scale : undefined;
+          return (
+            <div key={key} className={`grid ${gridCols} gap-1 items-baseline ${fontSize} ml-2`}>
+              <span className={magColorClass}>{itemLabel}</span>
+              <span className="text-slate-200">
+                Mag {magStr}
+                {mezDuration != null && mezDuration > 0 && (
+                  <span className="text-slate-400 ml-1">({mezDuration.toFixed(1)}s)</span>
+                )}
+              </span>
+              <span className="text-slate-600">—</span>
+              <span className="text-slate-600">—</span>
+            </div>
+          );
+        }
+
+        return (
+          <div key={key} className={`grid ${gridCols} gap-1 items-baseline ${fontSize} ml-2`}>
+            <span className={config.colorClass}>{itemLabel}</span>
+            <span className="text-slate-200">{formatValue(tiers.base, config)}</span>
+            {enhanceable ? (
+              <span className={hasEnh ? 'text-green-400' : 'text-slate-400'}>
+                {formatValue(tiers.enhanced, config)}
+              </span>
+            ) : (
+              <span className="text-slate-600">—</span>
+            )}
+            {enhanceable ? (
+              <span className={hasFinal ? finalColumnColor : 'text-slate-400'}>
+                {formatValue(tiers.final, config)}
+              </span>
+            ) : (
+              <span className="text-slate-600">—</span>
+            )}
+          </div>
+        );
+      })}
+    </>
+  );
+}
+
+/**
+ * Group consecutive expanded effects that share the same config into collapsible groups.
+ * Effects with expandedLabel from the same config become a group if there are >= COLLAPSE_THRESHOLD entries.
+ */
+function groupEffectsForDisplay(effects: DisplayableEffect[]): EffectGroup[] {
+  const result: EffectGroup[] = [];
+  let i = 0;
+
+  while (i < effects.length) {
+    const current = effects[i];
+
+    // Check if this starts a group of expanded effects
+    if (current.expandedLabel) {
+      const config = current.effect.config;
+      const groupItems: DisplayableEffect[] = [current];
+
+      // Collect consecutive effects with the same config
+      let j = i + 1;
+      while (j < effects.length && effects[j].expandedLabel && effects[j].effect.config === config) {
+        groupItems.push(effects[j]);
+        j++;
+      }
+
+      if (groupItems.length >= COLLAPSE_THRESHOLD) {
+        result.push({ type: 'group', label: config.label, colorClass: config.colorClass, items: groupItems });
+      } else {
+        // Too few to collapse, render individually
+        for (const item of groupItems) {
+          result.push({ type: 'single', item });
+        }
+      }
+      i = j;
+    } else {
+      result.push({ type: 'single', item: current });
+      i++;
+    }
+  }
+
+  return result;
+}
+
+// ============================================
 // REGISTRY-DRIVEN EFFECTS DISPLAY
 // ============================================
 
@@ -363,13 +555,7 @@ export function RegistryEffectsDisplay({
   const filteredGroups = groupedEffects.filter(g => categories.includes(g.category));
 
   // Collect all displayable effects
-  const displayableEffects: Array<{
-    effect: GroupedEffect;
-    baseValue: number;
-    tiers: ThreeTierValues;
-    byTypeLabel?: string;
-    expandedLabel?: string;
-  }> = [];
+  const displayableEffects: DisplayableEffect[] = [];
 
   for (const group of filteredGroups) {
     for (const effect of group.effects) {
@@ -569,8 +755,25 @@ export function RegistryEffectsDisplay({
           );
         })()}
 
-      {/* Effects */}
-      {displayableEffects.map(({ effect, tiers, byTypeLabel, expandedLabel }) => {
+      {/* Effects — with collapsible groups for long expanded-by-type lists */}
+      {groupEffectsForDisplay(displayableEffects).map((group, groupIdx) => {
+        if (group.type === 'group') {
+          return (
+            <CollapsibleEffectGroup
+              key={`group-${groupIdx}`}
+              label={group.label}
+              colorClass={group.colorClass}
+              items={group.items}
+              gridCols={gridCols}
+              fontSize={fontSize}
+              compact={compact}
+              dominationActive={dominationActive}
+              finalColumnColor={finalColumnColor}
+            />
+          );
+        }
+
+        const { effect, tiers, byTypeLabel, expandedLabel } = group.item;
         const { key, value: rawValue, config } = effect;
         const enhanceable = !!config.enhancementAspect;
         const hasEnh = Math.abs(tiers.enhanced - tiers.base) > 0.001;

@@ -198,26 +198,25 @@ export function PowerItem({
         }
       }}
     >
-      {/* Left column: Level on top, icon underneath */}
-      <div className="flex flex-col items-center flex-shrink-0">
-        <span
-          className={`text-[10px] font-semibold leading-tight pointer-events-none ${
-            isAvailable ? 'text-slate-500' : 'text-amber-500/70'
-          }`}
-          title={isAvailable ? `Available at level ${power.available + 1}` : `Requires level ${power.available + 1}`}
-        >
-          L{power.available + 1}
-        </span>
-        <img
-          src={iconSrc || getPowerIconPath(powersetName, power.icon)}
-          alt=""
-          className="w-6 h-6 rounded-sm mt-0.5 pointer-events-none"
-          draggable={false}
-          onError={(e) => {
-            (e.target as HTMLImageElement).src = resolvePath('/img/Unknown.png');
-          }}
-        />
-      </div>
+      {/* Level badge */}
+      <span
+        className={`text-[10px] font-semibold flex-shrink-0 w-5 text-right pointer-events-none ${
+          isAvailable ? 'text-slate-500' : 'text-amber-500/70'
+        }`}
+        title={isAvailable ? `Available at level ${power.available + 1}` : `Requires level ${power.available + 1}`}
+      >
+        {power.available + 1}
+      </span>
+      {/* Power icon */}
+      <img
+        src={iconSrc || getPowerIconPath(powersetName, power.icon)}
+        alt=""
+        className="w-4 h-4 rounded-sm flex-shrink-0 pointer-events-none"
+        draggable={false}
+        onError={(e) => {
+          (e.target as HTMLImageElement).src = resolvePath('/img/Unknown.png');
+        }}
+      />
       {/* Power name */}
       <span className="truncate flex-1 text-slate-200 pointer-events-none">
         {power.name}

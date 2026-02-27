@@ -180,7 +180,7 @@ export const TYPE_LABELS_SHORT: Record<string, string> = {
 export const TYPE_LABELS_FULL: Record<string, string> = {
   smashing: 'Smash', lethal: 'Lethal', fire: 'Fire', cold: 'Cold',
   energy: 'Energy', negative: 'Neg', psionic: 'Psi', toxic: 'Toxic',
-  melee: 'Melee', ranged: 'Ranged', aoe: 'AoE',
+  melee: 'Melee', ranged: 'Ranged', aoe: 'AoE', all: 'All',
   // Debuff resistance stat types
   defense: 'Defense', endurance: 'End', tohit: 'ToHit',
   movement: 'Slow', regeneration: 'Regen', recovery: 'Recovery',
@@ -355,7 +355,8 @@ export function expandByTypeEntries(
   const percentValues = resolved.map(r => r.basePercent);
   const ALL_PRIMARY_DAMAGE_TYPES = ['smashing', 'lethal', 'fire', 'cold', 'energy', 'negative', 'psionic', 'toxic'];
   const typeKeys = new Set(resolved.map(r => r.typeKey));
-  const coversAllPrimary = ALL_PRIMARY_DAMAGE_TYPES.every(t => typeKeys.has(t));
+  const hasAllKey = typeKeys.has('all');
+  const coversAllPrimary = hasAllKey || ALL_PRIMARY_DAMAGE_TYPES.every(t => typeKeys.has(t));
   if (allValuesSame(percentValues) && coversAllPrimary) {
     return [{
       typeKey: '_all',

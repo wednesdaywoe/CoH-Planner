@@ -577,11 +577,13 @@ export const useBuildStore = create<BuildStore>()(
             return state;
           }
 
-          // Always use the CURRENT store level, not the potentially stale level
-          // passed from the component closure. This prevents two powers getting
-          // the same level when the user clicks rapidly between renders.
+          // Assign the correct power pick level based on how many powers are already
+          // selected. This ensures powers always get valid pick levels (1, 2, 4, 6, ...)
+          // regardless of the display level the user has set via the slider.
+          // The display level (build.level) may be set to 50 for planning, but
+          // powers must get sequential pick levels for the chronological view to work.
           if (category !== 'inherent') {
-            power = { ...power, level: state.build.level };
+            power = { ...power, level: calculateCorrectLevel(state.build) };
           }
 
           // Default toggle/auto powers to active
@@ -1315,6 +1317,107 @@ export const useBuildStore = create<BuildStore>()(
             const fixed = fixEnhancementIcons(state.build.inherents);
             if (fixed !== state.build.inherents) {
               state.build.inherents = fixed;
+            }
+          }
+
+          // Migration: Fix power pick levels that don't match valid power pick levels.
+          // Older builds may have all powers at the display level (e.g., 50) instead of
+          // the correct sequential pick levels (1, 1, 2, 4, 6, ...).
+          // This reassigns levels based on category order and selection sequence.
+          {
+            const allPowers: { power: SelectedPower; category: string; index: number }[] = [];
+            state.build.primary.powers.forEach((p, i) => allPowers.push({ power: p, category: 'primary', index: i }));
+            state.build.secondary.powers.forEach((p, i) => allPowers.push({ power: p, category: 'secondary', index: i }));
+            state.build.pools.forEach((pool) => pool.powers.forEach((p, i) => allPowers.push({ power: p, category: 'pool', index: i })));
+            if (state.build.epicPool) {
+              state.build.epicPool.powers.forEach((p, i) => allPowers.push({ power: p, category: 'epic', index: i }));
+            }
+
+            // Check if any non-inherent power has a level that isn't a valid pick level
+            const pickLevelSet = new Set(POWER_PICK_LEVELS);
+            const hasInvalidLevels = allPowers.some((entry) => !pickLevelSet.has(entry.power.level));
+
+            if (hasInvalidLevels && allPowers.length > 0) {
+              // Level 1 is special: one primary + one secondary. Pull those out first
+              // to guarantee they get level 1, regardless of how many of each exist.
+              const firstPrimaryIdx = allPowers.findIndex((e) => e.category === 'primary');
+              const firstSecondaryIdx = allPowers.findIndex((e) => e.category === 'secondary');
+
+              const level1Powers: typeof allPowers = [];
+              const restPowers: typeof allPowers = [];
+
+              allPowers.forEach((entry, idx) => {
+                if (idx === firstPrimaryIdx || idx === firstSecondaryIdx) {
+                  level1Powers.push(entry);
+                } else {
+                  restPowers.push(entry);
+                }
+              });
+
+              // Sort level 1 powers: primary before secondary
+              level1Powers.sort((a, b) => {
+                const order = { primary: 0, secondary: 1, pool: 2, epic: 3 };
+                return (order[a.category as keyof typeof order] ?? 9) -
+                       (order[b.category as keyof typeof order] ?? 9);
+              });
+
+              // Sort remaining powers by their original level, then by category
+              const categoryOrder = { primary: 0, secondary: 1, pool: 2, epic: 3 };
+              restPowers.sort((a, b) => {
+                if (a.power.level !== b.power.level) return a.power.level - b.power.level;
+                return (categoryOrder[a.category as keyof typeof categoryOrder] ?? 9) -
+                       (categoryOrder[b.category as keyof typeof categoryOrder] ?? 9);
+              });
+
+              // Recombine: level 1 powers first, then the rest
+              const sorted = [...level1Powers, ...restPowers];
+
+              // Assign correct pick levels sequentially
+              // Level 1 gets 2 picks (primary + secondary), remaining levels get 1 each
+              const pickSlots = [1, 1, ...POWER_PICK_LEVELS.slice(1)]; // [1, 1, 2, 4, 6, 8, ...]
+              let anyChanged = false;
+              sorted.forEach((entry, idx) => {
+                const correctLevel = idx < pickSlots.length ? pickSlots[idx] : POWER_PICK_LEVELS[POWER_PICK_LEVELS.length - 1];
+                if (entry.power.level !== correctLevel) {
+                  entry.power = { ...entry.power, level: correctLevel };
+                  anyChanged = true;
+                }
+              });
+
+              // Use sorted array for write-back
+              allPowers.length = 0;
+              allPowers.push(...sorted);
+
+              if (anyChanged) {
+                // Write fixed levels back to the build
+                const fixedPrimary = allPowers.filter((e) => e.category === 'primary').map((e) => e.power);
+                const fixedSecondary = allPowers.filter((e) => e.category === 'secondary').map((e) => e.power);
+
+                if (fixedPrimary.length > 0) {
+                  state.build.primary = { ...state.build.primary, powers: fixedPrimary };
+                }
+                if (fixedSecondary.length > 0) {
+                  state.build.secondary = { ...state.build.secondary, powers: fixedSecondary };
+                }
+
+                // Fix pool powers — need to maintain pool grouping
+                const fixedPoolPowers = allPowers.filter((e) => e.category === 'pool').map((e) => e.power);
+                if (fixedPoolPowers.length > 0) {
+                  let poolPowerIdx = 0;
+                  state.build.pools = state.build.pools.map((pool) => {
+                    const count = pool.powers.length;
+                    const fixedPowers = fixedPoolPowers.slice(poolPowerIdx, poolPowerIdx + count);
+                    poolPowerIdx += count;
+                    return { ...pool, powers: fixedPowers };
+                  });
+                }
+
+                // Fix epic powers
+                const fixedEpic = allPowers.filter((e) => e.category === 'epic').map((e) => e.power);
+                if (fixedEpic.length > 0 && state.build.epicPool) {
+                  state.build.epicPool = { ...state.build.epicPool, powers: fixedEpic };
+                }
+              }
             }
           }
 
