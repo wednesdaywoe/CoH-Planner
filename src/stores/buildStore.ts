@@ -36,6 +36,7 @@ import {
   createArchetypeInherentPower,
   POWER_PICK_LEVELS,
   getIOSet,
+  GRANTED_POWER_GROUPS,
 } from '@/data';
 import type { InherentPowerDef } from '@/data';
 
@@ -422,14 +423,17 @@ function getInherentSelectedPowers(
 }
 
 /**
- * Count total selected powers (excluding inherents)
+ * Count total selected powers (excluding inherents and auto-granted form sub-powers)
  */
 function countSelectedPowers(build: Build): number {
+  const countNonGranted = (powers: SelectedPower[]) =>
+    powers.filter(p => !p.isAutoGranted).length;
+
   return (
-    build.primary.powers.length +
-    build.secondary.powers.length +
-    build.pools.reduce((sum, pool) => sum + pool.powers.length, 0) +
-    (build.epicPool?.powers.length ?? 0)
+    countNonGranted(build.primary.powers) +
+    countNonGranted(build.secondary.powers) +
+    build.pools.reduce((sum, pool) => sum + countNonGranted(pool.powers), 0) +
+    (build.epicPool ? countNonGranted(build.epicPool.powers) : 0)
   );
 }
 
@@ -609,6 +613,32 @@ export const useBuildStore = create<BuildStore>()(
             newBuild = applyPowerUpdate(state.build, category, (powers) => [...powers, power]);
           }
 
+          // Auto-grant slottable sub-powers when a form power is added (e.g., Kheldian forms)
+          const formGroup = GRANTED_POWER_GROUPS[power.name];
+          if (formGroup?.slottable && formGroup.grantedPowers.length > 0) {
+            // Find the powerset definition to get full sub-power data
+            const powersetId = power.powerSet;
+            const powersetDef = powersetId ? getPowerset(powersetId) : null;
+            if (powersetDef) {
+              const subPowerDefs = powersetDef.powers.filter(p =>
+                formGroup.grantedPowers.includes(p.name)
+              );
+              for (const subPowerDef of subPowerDefs) {
+                const subPower: SelectedPower = {
+                  ...subPowerDef,
+                  powerSet: powersetId,
+                  level: power.level,
+                  slots: [null],
+                  isAutoGranted: true,
+                  grantedByPower: power.name,
+                  isActive: (subPowerDef.powerType === 'Toggle' || subPowerDef.powerType === 'Auto') ? true : undefined,
+                };
+                // Add sub-power to the same category
+                newBuild = applyPowerUpdate(newBuild, category, (powers) => [...powers, subPower]);
+              }
+            }
+          }
+
           // Auto-advance level if all power picks for current level have been used.
           // Only auto-advance for primary/secondary/pool powers (not inherents).
           // Never decrease — respect user's manually-set level.
@@ -627,7 +657,16 @@ export const useBuildStore = create<BuildStore>()(
             ? (powers: SelectedPower[]) => powers.filter((p) => p.name !== powerName || p.isLocked)
             : (powers: SelectedPower[]) => powers.filter((p) => p.name !== powerName);
 
-          const newBuild = applyPowerUpdate(state.build, category, updater);
+          let newBuild = applyPowerUpdate(state.build, category, updater);
+
+          // Also remove auto-granted sub-powers when removing a form power
+          const formGroup = GRANTED_POWER_GROUPS[powerName];
+          if (formGroup?.slottable && formGroup.grantedPowers.length > 0) {
+            const subPowerNames = new Set(formGroup.grantedPowers);
+            newBuild = applyPowerUpdate(newBuild, category, (powers) =>
+              powers.filter((p) => !subPowerNames.has(p.name))
+            );
+          }
 
           // Keep the user's current level — don't rewind on removal
           // (addPower auto-advances but removePower should never lower it)
@@ -1326,11 +1365,12 @@ export const useBuildStore = create<BuildStore>()(
           // This reassigns levels based on category order and selection sequence.
           {
             const allPowers: { power: SelectedPower; category: string; index: number }[] = [];
-            state.build.primary.powers.forEach((p, i) => allPowers.push({ power: p, category: 'primary', index: i }));
-            state.build.secondary.powers.forEach((p, i) => allPowers.push({ power: p, category: 'secondary', index: i }));
-            state.build.pools.forEach((pool) => pool.powers.forEach((p, i) => allPowers.push({ power: p, category: 'pool', index: i })));
+            // Exclude auto-granted form sub-powers from level migration
+            state.build.primary.powers.filter(p => !p.isAutoGranted).forEach((p, i) => allPowers.push({ power: p, category: 'primary', index: i }));
+            state.build.secondary.powers.filter(p => !p.isAutoGranted).forEach((p, i) => allPowers.push({ power: p, category: 'secondary', index: i }));
+            state.build.pools.forEach((pool) => pool.powers.filter(p => !p.isAutoGranted).forEach((p, i) => allPowers.push({ power: p, category: 'pool', index: i })));
             if (state.build.epicPool) {
-              state.build.epicPool.powers.forEach((p, i) => allPowers.push({ power: p, category: 'epic', index: i }));
+              state.build.epicPool.powers.filter(p => !p.isAutoGranted).forEach((p, i) => allPowers.push({ power: p, category: 'epic', index: i }));
             }
 
             // Check if any non-inherent power has a level that isn't a valid pick level

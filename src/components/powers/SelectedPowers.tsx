@@ -7,7 +7,7 @@ import { useState } from 'react';
 import { useBuildStore, useUIStore } from '@/stores';
 import type { PowerCategory } from '@/stores';
 import type { SelectedPower, Power } from '@/types';
-import { getPowerIconPath, getPowerset, hasGrantedPowers, getGrantedPowerGroup } from '@/data';
+import { getPowerIconPath, getPowerset, hasGrantedPowers, getGrantedPowerGroup, GRANTED_POWER_GROUPS } from '@/data';
 import { resolvePath } from '@/utils/paths';
 import { Tooltip } from '@/components/ui';
 import { PowerRow } from './PowerRow';
@@ -38,7 +38,10 @@ export function SelectedPowers({ category }: SelectedPowersProps) {
   const powersetId = selection.id || '';
 
   // Sort powers by their position in the powerset (available level)
-  const powers = [...selection.powers].sort((a, b) => a.available - b.available);
+  // Exclude auto-granted sub-powers from the main list (they render under their parent)
+  const powers = [...selection.powers]
+    .filter(p => !p.isAutoGranted)
+    .sort((a, b) => a.available - b.available);
 
   const handleRemove = (powerName: string) => {
     removePower(category as PowerCategory, powerName);
@@ -123,9 +126,18 @@ export function SelectedPowers({ category }: SelectedPowersProps) {
   const getSubPowers = (parentPowerName: string): Power[] => {
     if (!powerset || !hasGrantedPowers(parentPowerName)) return [];
     const group = getGrantedPowerGroup(parentPowerName);
-    if (!group) return [];
+    if (!group || group.slottable) return []; // Slottable sub-powers are rendered differently
     return powerset.powers.filter(p =>
       group.grantedPowers.includes(p.name)
+    );
+  };
+
+  /** Get slottable sub-powers from the build (form sub-powers like Bright Nova Bolt) */
+  const getSlottableSubPowers = (parentPowerName: string): SelectedPower[] => {
+    const group = GRANTED_POWER_GROUPS[parentPowerName];
+    if (!group?.slottable) return [];
+    return selection.powers.filter(p =>
+      p.isAutoGranted && p.grantedByPower === parentPowerName
     );
   };
 
@@ -155,6 +167,7 @@ export function SelectedPowers({ category }: SelectedPowersProps) {
 
             const subPowers = getSubPowers(power.name);
             const grantedGroup = getGrantedPowerGroup(power.name);
+            const slottableSubPowers = getSlottableSubPowers(power.name);
 
             return (
               <div key={power.name}>
@@ -183,7 +196,7 @@ export function SelectedPowers({ category }: SelectedPowersProps) {
                   onRightClick={(e) => handlePowerRightClick(e, power)}
                 />
 
-                {/* Granted sub-powers display */}
+                {/* Granted sub-powers display (simple toggles) */}
                 {subPowers.length > 0 && (
                   <GrantedSubPowers
                     subPowers={subPowers}
@@ -193,6 +206,42 @@ export function SelectedPowers({ category }: SelectedPowersProps) {
                     activeSubPower={power.activeSubPower}
                     onSetActive={(subPowerName) => setActiveSubPower(power.name, subPowerName)}
                   />
+                )}
+
+                {/* Slottable form sub-powers (full PowerRow with slots) */}
+                {slottableSubPowers.length > 0 && (
+                  <div className="ml-4 mt-0.5 space-y-0.5 border-l-2 border-slate-700/50 pl-1">
+                    {slottableSubPowers.map((subPower) => {
+                      const subIsLocked = infoPanelLocked &&
+                        lockedContent?.type === 'power' &&
+                        lockedContent.powerName === subPower.name;
+
+                      return (
+                        <PowerRow
+                          key={subPower.name}
+                          name={subPower.name}
+                          iconSrc={getPowerIconPath(selection.name, subPower.icon)}
+                          size="lg"
+                          stackedLayout
+                          isLocked={subIsLocked}
+                          showRemove={false}
+                          showAutoLabel
+                          slots={subPower.slots}
+                          maxSlots={subPower.maxSlots}
+                          onAddSlots={(count) => handleAddSlots(subPower.name, count)}
+                          onRemoveSlot={(index) => handleRemoveSlot(subPower.name, index)}
+                          onRemoveAllSlots={() => handleRemoveAllSlots(subPower.name, subPower.slots.length)}
+                          onClearEnhancement={(index) => handleClearEnhancement(subPower.name, index)}
+                          onClearAllEnhancements={() => handleClearAllEnhancements(subPower.name, subPower.slots.length)}
+                          onOpenPicker={(slotIndex) => openEnhancementPicker(subPower.name, powersetId, slotIndex)}
+                          onHover={() => handlePowerHover(subPower)}
+                          onLeave={handlePowerLeave}
+                          onEnhancementHover={(index) => handleEnhancementHover(subPower.name, index)}
+                          onRightClick={(e) => handlePowerRightClick(e, subPower)}
+                        />
+                      );
+                    })}
+                  </div>
                 )}
               </div>
             );

@@ -40,12 +40,14 @@ export function AvailablePoolPowers() {
   const pools = build.pools;
   const canAddPool = pools.length < 4;
 
-  // Check if 24-power limit has been reached
+  // Check if 24-power limit has been reached (exclude auto-granted form sub-powers)
+  const countNonGranted = (powers: { isAutoGranted?: boolean }[]) =>
+    powers.filter(p => !p.isAutoGranted).length;
   const powerLimitReached =
-    build.primary.powers.length +
-    build.secondary.powers.length +
-    build.pools.reduce((sum: number, pool: { powers: unknown[] }) => sum + pool.powers.length, 0) +
-    (build.epicPool?.powers.length ?? 0) >= MAX_POWER_PICKS;
+    countNonGranted(build.primary.powers) +
+    countNonGranted(build.secondary.powers) +
+    build.pools.reduce((sum: number, pool: { powers: { isAutoGranted?: boolean }[] }) => sum + countNonGranted(pool.powers), 0) +
+    (build.epicPool ? countNonGranted(build.epicPool.powers) : 0) >= MAX_POWER_PICKS;
 
   // Available pools for dropdown
   const allPools = getAllPowerPools();

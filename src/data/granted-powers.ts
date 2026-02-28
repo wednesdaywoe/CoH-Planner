@@ -25,6 +25,8 @@ export interface GrantedPowerGroup {
   mutuallyExclusive: boolean;
   /** Description of the granted powers group */
   description?: string;
+  /** If true, sub-powers accept enhancement slots and are added as full SelectedPower entries (e.g., Kheldian form sub-powers) */
+  slottable?: boolean;
 }
 
 // ============================================
@@ -154,6 +156,46 @@ export const GRANTED_POWER_GROUPS: Record<string, GrantedPowerGroup> = {
     grantedPowers: ['Takeoff'],
     mutuallyExclusive: false,
     description: 'Takeoff ground pound available with Mighty Leap',
+  },
+
+  // ============================================
+  // KHELDIAN FORM POWERS (slottable sub-powers)
+  // ============================================
+
+  // Peacebringer - Bright Nova (offensive form, level 3)
+  'Bright Nova': {
+    parentPower: 'Bright Nova',
+    grantedPowers: ['Bright Nova Bolt', 'Bright Nova Blast', 'Bright Nova Scatter', 'Bright Nova Detonation'],
+    mutuallyExclusive: false,
+    slottable: true,
+    description: 'Bright Nova form attack powers',
+  },
+
+  // Peacebringer - White Dwarf (defensive form, level 19)
+  'White Dwarf': {
+    parentPower: 'White Dwarf',
+    grantedPowers: ['White Dwarf Strike', 'White Dwarf Smite', 'White Dwarf Flare', 'White Dwarf Sublimation', 'White Dwarf Step', 'White Dwarf Antagonize'],
+    mutuallyExclusive: false,
+    slottable: true,
+    description: 'White Dwarf form powers',
+  },
+
+  // Warshade - Dark Nova (offensive form, level 3)
+  'Dark Nova': {
+    parentPower: 'Dark Nova',
+    grantedPowers: ['Dark Nova Bolt', 'Dark Nova Blast', 'Dark Nova Emanation', 'Dark Nova Detonation'],
+    mutuallyExclusive: false,
+    slottable: true,
+    description: 'Dark Nova form attack powers',
+  },
+
+  // Warshade - Black Dwarf (defensive form, level 19)
+  'Black Dwarf': {
+    parentPower: 'Black Dwarf',
+    grantedPowers: ['Black Dwarf Strike', 'Black Dwarf Smite', 'Black Dwarf Drain', 'Black Dwarf Mire', 'Black Dwarf Step', 'Black Dwarf Antagonize'],
+    mutuallyExclusive: false,
+    slottable: true,
+    description: 'Black Dwarf form powers',
   },
 };
 

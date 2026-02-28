@@ -6,9 +6,19 @@
 import { useState } from 'react';
 import { useBuildStore, useUIStore } from '@/stores';
 
-import { getPowerset, getPowerIconPath, MAX_POWER_PICKS } from '@/data';
+import { getPowerset, getPowerIconPath, MAX_POWER_PICKS, GRANTED_POWER_GROUPS } from '@/data';
 import { resolvePath } from '@/utils/paths';
 import type { Power } from '@/types';
+
+/**
+ * Set of all power names that are slottable form sub-powers (auto-granted, not manually selectable).
+ * Built once from GRANTED_POWER_GROUPS entries with slottable: true.
+ */
+const FORM_SUB_POWER_NAMES = new Set(
+  Object.values(GRANTED_POWER_GROUPS)
+    .filter(g => g.slottable)
+    .flatMap(g => g.grantedPowers)
+);
 
 // ============================================
 // REQUIRES EXPRESSION EVALUATOR
@@ -257,12 +267,14 @@ export function AvailablePowers({
   // Both powersets must be selected before powers can be chosen
   const bothPowersetsSelected = build.primary.id && build.secondary.id;
 
-  // Check if 24-power limit has been reached
+  // Check if 24-power limit has been reached (exclude auto-granted form sub-powers)
+  const countNonGranted = (powers: { isAutoGranted?: boolean }[]) =>
+    powers.filter(p => !p.isAutoGranted).length;
   const powerLimitReached =
-    build.primary.powers.length +
-    build.secondary.powers.length +
-    build.pools.reduce((sum: number, pool: { powers: unknown[] }) => sum + pool.powers.length, 0) +
-    (build.epicPool?.powers.length ?? 0) >= MAX_POWER_PICKS;
+    countNonGranted(build.primary.powers) +
+    countNonGranted(build.secondary.powers) +
+    build.pools.reduce((sum: number, pool: { powers: { isAutoGranted?: boolean }[] }) => sum + countNonGranted(pool.powers), 0) +
+    (build.epicPool ? countNonGranted(build.epicPool.powers) : 0) >= MAX_POWER_PICKS;
 
   const powerset = powersetId ? getPowerset(powersetId) : null;
 
@@ -315,10 +327,13 @@ export function AvailablePowers({
   // Powers not yet available will be shown as disabled
   // Powers with available === -1 are auto-granted and should not be shown in selection
   // Powers with requires field are hidden when their constraint isn't satisfied
+  // Form sub-powers (Kheldian Nova/Dwarf attacks) are auto-granted and hidden
   const allPowers = powerset
     ? powerset.powers.filter(p => {
         // Filter out auto-granted powers
         if (p.available < 0) return false;
+        // Filter out form sub-powers (auto-granted when parent form is selected)
+        if (FORM_SUB_POWER_NAMES.has(p.name)) return false;
         // Evaluate requires expression (handles negation, internal names, powersets)
         if (p.requires && !evaluateRequires(p.requires, requiresContext)) return false;
         return true;

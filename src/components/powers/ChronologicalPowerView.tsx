@@ -44,16 +44,16 @@ function useChronologicalPowers() {
   return useMemo(() => {
     const allPowers: CategorizedPower[] = [];
 
-    // Collect primary powers
-    build.primary.powers.forEach((p) => {
+    // Collect primary powers (exclude auto-granted form sub-powers)
+    build.primary.powers.filter(p => !p.isAutoGranted).forEach((p) => {
       allPowers.push({
         ...p,
         category: 'primary',
       });
     });
 
-    // Collect secondary powers
-    build.secondary.powers.forEach((p) => {
+    // Collect secondary powers (exclude auto-granted form sub-powers)
+    build.secondary.powers.filter(p => !p.isAutoGranted).forEach((p) => {
       allPowers.push({
         ...p,
         category: 'secondary',

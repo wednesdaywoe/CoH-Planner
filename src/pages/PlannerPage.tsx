@@ -52,12 +52,14 @@ export function PlannerPage() {
   const undockInfoPanel = useUIStore((s) => s.undockInfoPanel);
   const powerViewMode = usePowerViewMode();
 
-  // Check if 24-power limit reached
+  // Check if 24-power limit reached (exclude auto-granted form sub-powers)
+  const countNonGranted = (powers: { isAutoGranted?: boolean }[]) =>
+    powers.filter(p => !p.isAutoGranted).length;
   const totalPowers =
-    build.primary.powers.length +
-    build.secondary.powers.length +
-    build.pools.reduce((sum, pool) => sum + pool.powers.length, 0) +
-    (build.epicPool?.powers.length ?? 0);
+    countNonGranted(build.primary.powers) +
+    countNonGranted(build.secondary.powers) +
+    build.pools.reduce((sum, pool) => sum + countNonGranted(pool.powers), 0) +
+    (build.epicPool ? countNonGranted(build.epicPool.powers) : 0);
   const powerLimitReached = totalPowers >= MAX_POWER_PICKS;
 
   // Get powerset IDs and selected power names

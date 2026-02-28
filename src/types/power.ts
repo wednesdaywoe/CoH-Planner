@@ -559,4 +559,8 @@ export interface SelectedPower extends Power {
   isActive?: boolean;
   /** For powers that grant mutually exclusive sub-powers (e.g., Adaptation), tracks which one is active */
   activeSubPower?: string;
+  /** If true, this power was auto-granted by a parent form power (e.g., Kheldian form sub-powers) and does not count against the 24-power limit */
+  isAutoGranted?: boolean;
+  /** Name of the parent power that granted this power (e.g., "Bright Nova" for Bright Nova Bolt) */
+  grantedByPower?: string;
 }
