@@ -188,34 +188,6 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
     );
   }, [power, build.level, archetypeId, powersetName, enhancementBonuses.damage, globalBonusesForCalc.damage, powerSet, build.primary.id, build.secondary.id]);
 
-  // Extract DoT info from power.damage (duration/tickRate fields)
-  const dotInfo = useMemo(() => {
-    const dmg = power?.damage;
-    if (!dmg || typeof dmg !== 'object') return undefined;
-    // Single object with duration/tickRate
-    if (!Array.isArray(dmg) && 'duration' in dmg) {
-      return {
-        duration: (dmg as { duration?: number }).duration || 0,
-        tickRate: (dmg as { tickRate?: number }).tickRate,
-      };
-    }
-    // Array format: only if ALL entries share the same duration/tickRate
-    if (Array.isArray(dmg)) {
-      type DmgEntry = { duration?: number; tickRate?: number };
-      const entries = dmg as DmgEntry[];
-      const dotEntries = entries.filter(e => e.duration && e.duration > 0);
-      if (dotEntries.length > 0 && dotEntries.length === entries.length) {
-        const dur = dotEntries[0].duration!;
-        const rate = dotEntries[0].tickRate;
-        const allSame = dotEntries.every(e => e.duration === dur && e.tickRate === rate);
-        if (allSame) {
-          return { duration: dur, tickRate: rate };
-        }
-      }
-    }
-    return undefined;
-  }, [power?.damage]);
-
   // Calculate archetype inherent damage bonus info (Containment, Scourge, Fury, etc.)
   const inherentInfo = useMemo(() => {
     if (!calculatedDamage) return null;
@@ -395,19 +367,25 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
           <div className="bg-slate-800/50 rounded p-2">
             {(() => {
               const gridCols = inherentInfo ? 'grid-cols-[4rem_1fr_1fr_1fr_1fr]' : 'grid-cols-[4rem_1fr_1fr_1fr]';
+              const dot = calculatedDamage.dotDamage;
+              // Mixed = direct damage is different from DoT (both exist separately)
+              const hasDirectDamage = dot ? Math.abs(calculatedDamage.base - dot.base) > 0.001 : true;
+              const isPureDot = dot && !hasDirectDamage;
+
               const hasEnh = Math.abs(calculatedDamage.enhanced - calculatedDamage.base) > 0.001;
               const hasGlobal = Math.abs(calculatedDamage.final - calculatedDamage.enhanced) > 0.001;
-              const isDot = dotInfo && dotInfo.duration > 0 && dotInfo.tickRate;
-              const numTicks = isDot ? Math.floor(dotInfo.duration / dotInfo.tickRate!) + 1 : 0;
-              const totalBase = calculatedDamage.base * numTicks;
-              const totalEnhanced = calculatedDamage.enhanced * numTicks;
-              const totalFinal = calculatedDamage.final * numTicks;
-              const hasTotalEnh = numTicks > 0 && Math.abs(totalEnhanced - totalBase) > 0.001;
-              const hasTotalGlobal = numTicks > 0 && Math.abs(totalFinal - totalEnhanced) > 0.001;
               const inherentFinal = inherentInfo ? inherentInfo.applyBonus(calculatedDamage.final) : calculatedDamage.final;
               const hasInherentDiff = inherentInfo != null && Math.abs(inherentFinal - calculatedDamage.final) > 0.001;
-              const totalInherent = inherentFinal * numTicks;
-              const hasTotalInherent = numTicks > 0 && inherentInfo != null && Math.abs(totalInherent - totalFinal) > 0.001;
+
+              // DoT per-tick values (for inherent bonus on DoT)
+              const dotInherentFinal = dot && inherentInfo ? inherentInfo.applyBonus(dot.final) : dot?.final ?? 0;
+
+              // DoT totals
+              const dotTotalBase = dot ? dot.base * dot.ticks : 0;
+              const dotTotalEnhanced = dot ? dot.enhanced * dot.ticks : 0;
+              const dotTotalFinal = dot ? dot.final * dot.ticks : 0;
+              const dotTotalInherent = dot && inherentInfo ? dotInherentFinal * dot.ticks : dotTotalFinal;
+
               return (
                 <>
                   <div className={`grid ${gridCols} gap-1 text-[9px] text-slate-500 uppercase mb-0.5 border-b border-slate-700 pb-0.5`}>
@@ -417,8 +395,10 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
                     <span>Final</span>
                     {inherentInfo && <span className={inherentInfo.color}>{inherentInfo.header}</span>}
                   </div>
+
+                  {/* Direct damage row (or per-tick for pure DoT) */}
                   <div className={`grid ${gridCols} gap-1 items-baseline text-xs`}>
-                    <span className="text-red-400">{isDot ? `${abbreviateDamageType(calculatedDamage.type)}/tick` : abbreviateDamageType(calculatedDamage.type)}</span>
+                    <span className="text-red-400">{isPureDot ? `${abbreviateDamageType(calculatedDamage.type)}/tick` : abbreviateDamageType(calculatedDamage.type)}</span>
                     <span className="text-slate-200">{calculatedDamage.base.toFixed(2)}</span>
                     <span className={hasEnh ? 'text-green-400' : 'text-slate-600'}>
                       {hasEnh ? `→ ${calculatedDamage.enhanced.toFixed(2)}` : '—'}
@@ -432,28 +412,59 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
                       </span>
                     )}
                   </div>
-                  {isDot && (
-                    <>
-                      <div className={`grid ${gridCols} gap-1 items-baseline text-xs mt-1 pt-1 border-t border-slate-700/50`}>
-                        <span className="text-orange-400">Total</span>
-                        <span className="text-slate-200">{totalBase.toFixed(2)}</span>
-                        <span className={hasTotalEnh ? 'text-green-400' : 'text-slate-600'}>
-                          {hasTotalEnh ? `→ ${totalEnhanced.toFixed(2)}` : '—'}
+
+                  {/* DoT per-tick row (only for mixed direct+DoT powers) */}
+                  {dot && hasDirectDamage && (() => {
+                    const dotHasEnh = Math.abs(dot.enhanced - dot.base) > 0.001;
+                    const dotHasGlobal = Math.abs(dot.final - dot.enhanced) > 0.001;
+                    const dotHasInherent = inherentInfo != null && Math.abs(dotInherentFinal - dot.final) > 0.001;
+                    return (
+                      <div className={`grid ${gridCols} gap-1 items-baseline text-xs`}>
+                        <span className="text-red-400">{abbreviateDamageType(dot.type)}/tick</span>
+                        <span className="text-slate-200">{dot.base.toFixed(2)}</span>
+                        <span className={dotHasEnh ? 'text-green-400' : 'text-slate-600'}>
+                          {dotHasEnh ? `→ ${dot.enhanced.toFixed(2)}` : '—'}
                         </span>
-                        <span className={hasTotalGlobal ? 'text-amber-400' : 'text-slate-600'}>
-                          {hasTotalGlobal ? `→ ${totalFinal.toFixed(2)}` : '—'}
+                        <span className={dotHasGlobal ? 'text-amber-400' : 'text-slate-600'}>
+                          {dotHasGlobal ? `→ ${dot.final.toFixed(2)}` : '—'}
                         </span>
                         {inherentInfo && (
-                          <span className={hasTotalInherent ? inherentInfo.color : 'text-slate-600'}>
-                            {hasTotalInherent ? `→ ${totalInherent.toFixed(2)}` : '—'}
+                          <span className={dotHasInherent ? inherentInfo.color : 'text-slate-600'}>
+                            {dotHasInherent ? `→ ${dotInherentFinal.toFixed(2)}` : '—'}
                           </span>
                         )}
                       </div>
-                      <div className="text-[9px] text-orange-400/70 italic mt-0.5 ml-1">
-                        {numTicks} ticks over {dotInfo.duration}s ({dotInfo.tickRate}s/tick)
-                      </div>
-                    </>
-                  )}
+                    );
+                  })()}
+
+                  {/* DoT total row */}
+                  {dot && (() => {
+                    const hasTotalEnh = Math.abs(dotTotalEnhanced - dotTotalBase) > 0.001;
+                    const hasTotalGlobal = Math.abs(dotTotalFinal - dotTotalEnhanced) > 0.001;
+                    const hasTotalInherent = inherentInfo != null && Math.abs(dotTotalInherent - dotTotalFinal) > 0.001;
+                    return (
+                      <>
+                        <div className={`grid ${gridCols} gap-1 items-baseline text-xs mt-1 pt-1 border-t border-slate-700/50`}>
+                          <span className="text-orange-400">DoT</span>
+                          <span className="text-slate-200">{dotTotalBase.toFixed(2)}</span>
+                          <span className={hasTotalEnh ? 'text-green-400' : 'text-slate-600'}>
+                            {hasTotalEnh ? `→ ${dotTotalEnhanced.toFixed(2)}` : '—'}
+                          </span>
+                          <span className={hasTotalGlobal ? 'text-amber-400' : 'text-slate-600'}>
+                            {hasTotalGlobal ? `→ ${dotTotalFinal.toFixed(2)}` : '—'}
+                          </span>
+                          {inherentInfo && (
+                            <span className={hasTotalInherent ? inherentInfo.color : 'text-slate-600'}>
+                              {hasTotalInherent ? `→ ${dotTotalInherent.toFixed(2)}` : '—'}
+                            </span>
+                          )}
+                        </div>
+                        <div className="text-[9px] text-orange-400/70 italic mt-0.5 ml-1">
+                          {dot.ticks} ticks over {dot.duration}s ({dot.tickRate}s/tick)
+                        </div>
+                      </>
+                    );
+                  })()}
                 </>
               );
             })()}
@@ -473,9 +484,11 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
                 const baseCycleTime = castTime + effects.recharge;
                 const finalCycleTime = castTime + rechargeStats.final;
 
-                // DPS = damage / cycle time
-                const baseDPS = calculatedDamage.base / baseCycleTime;
-                const finalDPS = calculatedDamage.final / finalCycleTime;
+                // DPS = total damage (direct + DoT total) / cycle time
+                const dotTotalBase = calculatedDamage.dotDamage ? calculatedDamage.dotDamage.base * calculatedDamage.dotDamage.ticks : 0;
+                const dotTotalFinal = calculatedDamage.dotDamage ? calculatedDamage.dotDamage.final * calculatedDamage.dotDamage.ticks : 0;
+                const baseDPS = (calculatedDamage.base + dotTotalBase) / baseCycleTime;
+                const finalDPS = (calculatedDamage.final + dotTotalFinal) / finalCycleTime;
 
                 const dpsImproved = finalDPS > baseDPS * 1.01; // More than 1% improvement
 

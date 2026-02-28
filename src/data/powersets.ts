@@ -1,7 +1,7 @@
 /**
  * Powerset data and accessor functions
  *
- * All powersets (358 total: 344 standard + 14 Epic AT) are loaded from the modular format.
+ * All powersets (362 total: 348 standard + 14 Epic AT) are loaded from the modular format.
  */
 
 import type { Powerset, Power } from '@/types';

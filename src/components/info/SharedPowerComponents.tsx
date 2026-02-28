@@ -425,10 +425,8 @@ interface RegistryEffectsDisplayProps {
   header?: string;
   /** Optional duration to show in header */
   duration?: number;
-  /** Calculated damage data (optional) */
+  /** Calculated damage data (optional, includes dotDamage for DoT) */
   damage?: PowerDamageResult | null;
-  /** DoT info from power definition */
-  dotInfo?: { duration: number; tickRate?: number };
   /** Custom final column header (e.g., "w/ Scourge", "w/ Fury") */
   finalColumnHeader?: string;
   /** Color class for final column values (e.g., "text-cyan-400" for Scourge) */
@@ -522,7 +520,6 @@ export function RegistryEffectsDisplay({
   header,
   duration,
   damage,
-  dotInfo,
   finalColumnHeader = 'Final',
   finalColumnColor = 'text-amber-400',
   applyInherentBonus,
@@ -702,23 +699,27 @@ export function RegistryEffectsDisplay({
 
         {/* Damage row(s) - rendered first (damage is always enhanceable) */}
         {damage && (() => {
+          const dot = damage.dotDamage;
+          const hasDirectDamage = dot ? Math.abs(damage.base - dot.base) > 0.001 : true;
+          const isPureDot = dot && !hasDirectDamage;
+
           const hasEnh = Math.abs(damage.enhanced - damage.base) > 0.001;
           const finalDamage = applyInherentBonus ? applyInherentBonus(damage.final) : damage.final;
           const hasFinal = Math.abs(finalDamage - damage.enhanced) > 0.001;
-          const isDot = dotInfo && dotInfo.duration > 0 && dotInfo.tickRate;
 
-          // Calculate DoT totals
-          const numTicks = isDot ? Math.floor(dotInfo.duration / dotInfo.tickRate!) + 1 : 0;
-          const totalBase = damage.base * numTicks;
-          const totalEnhanced = damage.enhanced * numTicks;
-          const totalFinal = finalDamage * numTicks;
-          const hasTotalEnh = numTicks > 0 && Math.abs(totalEnhanced - totalBase) > 0.001;
-          const hasTotalFinal = numTicks > 0 && Math.abs(totalFinal - totalEnhanced) > 0.001;
+          // DoT per-tick final (with inherent bonus)
+          const dotFinalDamage = dot && applyInherentBonus ? applyInherentBonus(dot.final) : dot?.final ?? 0;
+
+          // DoT totals
+          const dotTotalBase = dot ? dot.base * dot.ticks : 0;
+          const dotTotalEnhanced = dot ? dot.enhanced * dot.ticks : 0;
+          const dotTotalFinal = dot ? dotFinalDamage * dot.ticks : 0;
 
           return (
             <>
+              {/* Direct damage row (or per-tick for pure DoT) */}
               <div className={`grid ${gridCols} gap-1 items-baseline ${fontSize}`}>
-                <span className="text-red-400">{isDot ? `${abbreviateDamageType(damage.type)}/tick` : abbreviateDamageType(damage.type)}</span>
+                <span className="text-red-400">{isPureDot ? `${abbreviateDamageType(damage.type)}/tick` : abbreviateDamageType(damage.type)}</span>
                 <span className="text-slate-200">{damage.base.toFixed(2)}</span>
                 <span className={hasEnh ? 'text-green-400' : 'text-slate-400'}>
                   {damage.enhanced.toFixed(2)}
@@ -727,24 +728,48 @@ export function RegistryEffectsDisplay({
                   {finalDamage.toFixed(2)}
                 </span>
               </div>
-              {/* DoT total damage row */}
-              {isDot && (
-                <>
+
+              {/* DoT per-tick row (only for mixed direct+DoT) */}
+              {dot && hasDirectDamage && (() => {
+                const dotHasEnh = Math.abs(dot.enhanced - dot.base) > 0.001;
+                const dotHasFinal = Math.abs(dotFinalDamage - dot.enhanced) > 0.001;
+                return (
                   <div className={`grid ${gridCols} gap-1 items-baseline ${fontSize}`}>
-                    <span className="text-orange-400">Total</span>
-                    <span className="text-slate-200">{totalBase.toFixed(2)}</span>
-                    <span className={hasTotalEnh ? 'text-green-400' : 'text-slate-400'}>
-                      {totalEnhanced.toFixed(2)}
+                    <span className="text-red-400">{abbreviateDamageType(dot.type)}/tick</span>
+                    <span className="text-slate-200">{dot.base.toFixed(2)}</span>
+                    <span className={dotHasEnh ? 'text-green-400' : 'text-slate-400'}>
+                      {dot.enhanced.toFixed(2)}
                     </span>
-                    <span className={hasTotalFinal ? finalColumnColor : 'text-slate-400'}>
-                      {totalFinal.toFixed(2)}
+                    <span className={dotHasFinal ? finalColumnColor : 'text-slate-400'}>
+                      {dotFinalDamage.toFixed(2)}
                     </span>
                   </div>
-                  <div className={`${compact ? 'text-[8px]' : 'text-[9px]'} text-orange-400/70 italic mt-0.5 ml-1`}>
-                    {numTicks} ticks over {dotInfo.duration}s ({dotInfo.tickRate}s/tick)
-                  </div>
-                </>
-              )}
+                );
+              })()}
+
+              {/* DoT total row */}
+              {dot && (() => {
+                const hasTotalEnh = Math.abs(dotTotalEnhanced - dotTotalBase) > 0.001;
+                const hasTotalFinal = Math.abs(dotTotalFinal - dotTotalEnhanced) > 0.001;
+                return (
+                  <>
+                    <div className={`grid ${gridCols} gap-1 items-baseline ${fontSize}`}>
+                      <span className="text-orange-400">DoT</span>
+                      <span className="text-slate-200">{dotTotalBase.toFixed(2)}</span>
+                      <span className={hasTotalEnh ? 'text-green-400' : 'text-slate-400'}>
+                        {dotTotalEnhanced.toFixed(2)}
+                      </span>
+                      <span className={hasTotalFinal ? finalColumnColor : 'text-slate-400'}>
+                        {dotTotalFinal.toFixed(2)}
+                      </span>
+                    </div>
+                    <div className={`${compact ? 'text-[8px]' : 'text-[9px]'} text-orange-400/70 italic mt-0.5 ml-1`}>
+                      {dot.ticks} ticks over {dot.duration}s ({dot.tickRate}s/tick)
+                    </div>
+                  </>
+                );
+              })()}
+
               {/* Unknown damage indicator */}
               {damage.unknown && (
                 <div className={`${compact ? 'text-[8px]' : 'text-[9px]'} text-slate-500 italic mt-0.5 ml-1`}>

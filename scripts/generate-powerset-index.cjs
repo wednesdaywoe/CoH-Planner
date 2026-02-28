@@ -33,7 +33,7 @@ function getPowersets() {
   const powersets = [];
 
   for (const archetype of archetypes) {
-    for (const type of ['primary', 'secondary']) {
+    for (const type of ['primary', 'secondary', 'epic']) {
       const typePath = path.join(POWERSETS_PATH, archetype, type);
       if (!fs.existsSync(typePath)) continue;
 

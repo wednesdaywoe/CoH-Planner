@@ -283,6 +283,16 @@ export interface PowerDamageResult {
     final: number;
     type: 'Fire';
   };
+  /** Separate DoT damage component (per-tick values + timing info) */
+  dotDamage?: {
+    base: number;
+    enhanced: number;
+    final: number;
+    type: string;
+    duration: number;
+    tickRate: number;
+    ticks: number;
+  };
 }
 
 export interface DamageEffect {
@@ -344,16 +354,46 @@ export function calculatePowerDamage(
 
   // Normalize array format: [{ type, scale, table }, ...] → { types: [...], scale, table }
   // Filter out Heal entries (those are handled separately as healing effects)
+  // Separate direct damage from DoT damage (entries with duration/tickRate)
+  type DotEntry = { type: string; scale: number; table?: string; duration: number; tickRate: number };
+  let pendingDotEntries: DotEntry[] = [];
+  let isPureDot = false;
+
   if (Array.isArray(damageEffect)) {
-    type ArrayEntry = { type: string; scale: number; table?: string };
+    type ArrayEntry = { type: string; scale: number; table?: string; duration?: number; tickRate?: number };
     const damageEntries = (damageEffect as ArrayEntry[]).filter(e => e.type !== 'Heal');
     if (damageEntries.length === 0) return null;
 
-    damageEffect = {
-      types: damageEntries,
-      scale: damageEntries.reduce((sum: number, e: ArrayEntry) => sum + e.scale, 0),
-      table: damageEntries[0].table,
-    };
+    const directEntries = damageEntries.filter(e => !e.duration || e.duration <= 0);
+    const dotEntries = damageEntries.filter(
+      (e): e is ArrayEntry & { duration: number; tickRate: number } =>
+        !!e.duration && e.duration > 0 && !!e.tickRate && e.tickRate > 0
+    );
+
+    if (directEntries.length > 0) {
+      // Mixed or direct-only: use direct entries for the main result
+      damageEffect = {
+        types: directEntries,
+        scale: directEntries.reduce((sum: number, e: ArrayEntry) => sum + e.scale, 0),
+        table: directEntries[0].table,
+      };
+      pendingDotEntries = dotEntries;
+    } else if (dotEntries.length > 0) {
+      // Pure DoT power (no direct damage) — use DoT entries for the main result
+      isPureDot = true;
+      damageEffect = {
+        types: dotEntries,
+        scale: dotEntries.reduce((sum: number, e: ArrayEntry) => sum + e.scale, 0),
+        table: dotEntries[0].table,
+      };
+      pendingDotEntries = dotEntries;
+    } else {
+      damageEffect = {
+        types: damageEntries,
+        scale: damageEntries.reduce((sum: number, e: ArrayEntry) => sum + e.scale, 0),
+        table: damageEntries[0].table,
+      };
+    }
   }
 
   // Extract scale - handle both old and new formats
@@ -508,23 +548,82 @@ export function calculatePowerDamage(
     };
   }
 
+  // Calculate DoT damage separately when present
+  if (pendingDotEntries.length > 0) {
+    const dotDuration = pendingDotEntries[0].duration;
+    const dotTickRate = pendingDotEntries[0].tickRate;
+    const dotTicks = Math.floor(dotDuration / dotTickRate) + 1;
+    const dotTypeName = [...new Set(pendingDotEntries.map(e => e.type))].join('/');
+
+    if (isPureDot) {
+      // Pure DoT: main result already has per-tick values, just add timing metadata
+      result.dotDamage = {
+        base: result.base,
+        enhanced: result.enhanced,
+        final: result.final,
+        type: dotTypeName,
+        duration: dotDuration,
+        tickRate: dotTickRate,
+        ticks: dotTicks,
+      };
+    } else {
+      // Mixed: calculate DoT per-tick damage separately
+      const dotScale = pendingDotEntries.reduce((sum, e) => sum + e.scale, 0);
+      const dotTable = pendingDotEntries[0].table;
+
+      let dotBase: number;
+      let dotEnhanced: number;
+      let dotFinal: number;
+
+      if (dotTable && archetypeId) {
+        const db = calculateDamageWithATTable(dotScale, dotTable, archetypeId, level, 0, 0);
+        const de = calculateDamageWithATTable(dotScale, dotTable, archetypeId, level, enhancementBonus, 0);
+        const df = calculateDamageWithATTable(dotScale, dotTable, archetypeId, level, enhancementBonus, globalDamageBonus + activeBuffs);
+
+        if (db !== null && de !== null && df !== null) {
+          dotBase = db;
+          dotEnhanced = de;
+          dotFinal = df;
+        } else {
+          dotBase = calculateActualDamage({ scale: dotScale, damageType, level, archetypeId, enhancementBonus: 0, damageBuffs: 0 });
+          dotEnhanced = calculateActualDamage({ scale: dotScale, damageType, level, archetypeId, enhancementBonus, damageBuffs: 0 });
+          dotFinal = calculateActualDamage({ scale: dotScale, damageType, level, archetypeId, enhancementBonus, damageBuffs: globalDamageBonus + activeBuffs });
+        }
+      } else {
+        dotBase = calculateActualDamage({ scale: dotScale, damageType, level, archetypeId, enhancementBonus: 0, damageBuffs: 0 });
+        dotEnhanced = calculateActualDamage({ scale: dotScale, damageType, level, archetypeId, enhancementBonus, damageBuffs: 0 });
+        dotFinal = calculateActualDamage({ scale: dotScale, damageType, level, archetypeId, enhancementBonus, damageBuffs: globalDamageBonus + activeBuffs });
+      }
+
+      result.dotDamage = {
+        base: dotBase,
+        enhanced: dotEnhanced,
+        final: dotFinal,
+        type: dotTypeName,
+        duration: dotDuration,
+        tickRate: dotTickRate,
+        ticks: dotTicks,
+      };
+    }
+  }
+
   return result;
 }
 
 const DAMAGE_TYPE_ABBREV: Record<string, string> = {
-  Smashing: 'Smash',
-  Lethal: 'Lethal',
-  Negative: 'Neg',
-  Energy: 'Eng',
-  Toxic: 'Tox',
-  Psionic: 'Psy',
-  Fire: 'Fire',
-  Cold: 'Cold',
+  Smashing: 'S',
+  Lethal: 'L',
+  Fire: 'F',
+  Cold: 'C',
+  Energy: 'E',
+  Negative: 'N',
+  Psionic: 'P',
+  Toxic: 'T',
 };
 
 /**
  * Abbreviate a damage type string for compact display.
- * Handles joined types like "Smashing/Lethal" → "Smash/Lethal"
+ * Handles joined types like "Smashing/Lethal" → "S/L"
  */
 export function abbreviateDamageType(type: string): string {
   return type

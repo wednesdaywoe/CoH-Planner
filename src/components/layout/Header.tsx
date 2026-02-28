@@ -167,13 +167,19 @@ export function Header() {
     if (value) {
       setArchetype(value as ArchetypeId);
 
-      // Auto-select powersets for Kheldians (only one option each)
+      // Auto-select powersets for Epic ATs (each has exactly one base primary + secondary)
       if (value === 'peacebringer') {
         setPrimary('peacebringer/luminous-blast');
         setSecondary('peacebringer/luminous-aura');
       } else if (value === 'warshade') {
         setPrimary('warshade/umbral-blast');
         setSecondary('warshade/umbral-aura');
+      } else if (value === 'arachnos-soldier') {
+        setPrimary('arachnos-soldier/arachnos-soldier');
+        setSecondary('arachnos-soldier/training-and-gadgets');
+      } else if (value === 'arachnos-widow') {
+        setPrimary('arachnos-widow/widow-training');
+        setSecondary('arachnos-widow/teamwork');
       }
     }
   };
