@@ -807,19 +807,10 @@ function convertPower(powerJson, availableLevel) {
       .filter(Boolean);
   }
 
-  // If allowedEnhancements is empty but we have set categories, infer enhancements from categories
-  if (power.allowedEnhancements.length === 0 && power.allowedSetCategories?.length > 0) {
-    const inferredEnhancements = new Set();
-
-    for (const category of power.allowedSetCategories) {
-      const enhancements = SET_CATEGORY_TO_ENHANCEMENT[category];
-      if (enhancements) {
-        enhancements.forEach(e => inferredEnhancements.add(e));
-      }
-    }
-
-    power.allowedEnhancements = Array.from(inferredEnhancements).sort();
-  }
+  // NOTE: Do NOT infer allowedEnhancements from set categories.
+  // The raw data's boosts_allowed is the authoritative source.
+  // If boosts_allowed is empty, the power genuinely accepts no generic IOs.
+  // allowedSetCategories only determines which IO SETS can be slotted.
 
   // Max slots
   power.maxSlots = powerJson.max_boosts || 6;

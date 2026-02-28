@@ -103,16 +103,9 @@ function fixFile(tsFilePath) {
   // Deduplicate
   expectedEnhancements = [...new Set(expectedEnhancements)];
 
-  // If empty but has set categories, infer from categories (same logic as convert-powerset)
-  if (expectedEnhancements.length === 0 && rawJson.allowed_boostset_cats?.length > 0) {
-    const inferredSet = new Set();
-    for (const rawCat of rawJson.allowed_boostset_cats) {
-      const cat = SET_CATEGORY_MAP[rawCat] || rawCat;
-      const enhs = SET_CATEGORY_TO_ENHANCEMENT[cat];
-      if (enhs) enhs.forEach(e => inferredSet.add(e));
-    }
-    expectedEnhancements = Array.from(inferredSet).sort();
-  }
+  // NOTE: Do NOT infer from set categories.
+  // boosts_allowed is the authoritative source for generic IO types.
+  // If empty, the power genuinely accepts no generic IOs.
 
   // Find existing allowedEnhancements in TS
   const enhRegex = /"allowedEnhancements"\s*:\s*\[([^\]]*)\]/s;

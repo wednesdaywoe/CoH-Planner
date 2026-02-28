@@ -213,19 +213,9 @@ function convertPower(legacyPower) {
     allowedSetCategories: legacyPower.allowedSetCategories || [],
   };
 
-  // If allowedEnhancements is empty but we have set categories, infer enhancements from categories
-  if (power.allowedEnhancements.length === 0 && power.allowedSetCategories.length > 0) {
-    const inferredEnhancements = new Set();
-
-    for (const category of power.allowedSetCategories) {
-      const enhancements = SET_CATEGORY_TO_ENHANCEMENT[category];
-      if (enhancements) {
-        enhancements.forEach(e => inferredEnhancements.add(e));
-      }
-    }
-
-    power.allowedEnhancements = Array.from(inferredEnhancements).sort();
-  }
+  // NOTE: Do NOT infer allowedEnhancements from set categories.
+  // The source data's allowedEnhancements is authoritative.
+  // allowedSetCategories only determines which IO SETS can be slotted.
 
   // Stats
   power.stats = {};

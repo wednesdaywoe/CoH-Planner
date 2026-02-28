@@ -88,8 +88,9 @@ export function getOriginIconPath(stat: EnhancementStatType, tier: string): stri
 
 /**
  * Maps IO set categories to the single enhancement types they imply.
- * Used to supplement a power's allowedEnhancements (which may be incomplete)
- * with types inferred from its allowedSetCategories.
+ * NOTE: This mapping is NOT used at runtime for filtering available enhancements.
+ * The authoritative source is each power's allowedEnhancements (from Homecoming's boosts_allowed).
+ * This mapping is only used by build scripts as a last-resort fallback.
  */
 export const SET_CATEGORY_TO_ENHANCEMENT: Record<string, EnhancementStatType[]> = {
   // Damage categories
@@ -386,27 +387,15 @@ export function createOriginEnhancement(
 
 /**
  * Get available generic IO types for a power.
- * Combines explicitly allowed enhancement types with types
- * inferred from the power's allowedSetCategories.
+ * Uses only the power's allowedEnhancements (from Homecoming's boosts_allowed)
+ * which is the authoritative source for what generic IOs can be slotted.
  */
 export function getAvailableGenericIOs(
-  power: { allowedEnhancements: string[]; allowedSetCategories?: string[] } | null,
+  power: { allowedEnhancements: string[] } | null,
 ): EnhancementStatType[] {
   if (!power) return COMMON_IO_TYPES;
 
   const allowed = new Set(power.allowedEnhancements);
-
-  if (power.allowedSetCategories) {
-    for (const category of power.allowedSetCategories) {
-      const impliedTypes = SET_CATEGORY_TO_ENHANCEMENT[category];
-      if (impliedTypes) {
-        for (const type of impliedTypes) {
-          allowed.add(type);
-        }
-      }
-    }
-  }
-
   return COMMON_IO_TYPES.filter((type) => allowed.has(type));
 }
 
