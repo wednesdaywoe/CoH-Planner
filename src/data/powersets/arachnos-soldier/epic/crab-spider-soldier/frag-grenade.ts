@@ -1,0 +1,43 @@
+/**
+ * Frag Grenade
+ * Ranged(Targeted AoE), Moderate DMG(Lethal/Fire), Foe Knockback
+ *
+ * Source: redirects/arachnos_soldier/crab_frag_grenade.json
+ */
+
+import type { Power } from '@/types';
+
+export const FragGrenade: Power = {
+  "name": "Frag Grenade",
+  "available": 17,
+  "description": "Launches a Frag Grenade at long range from your Crab Spider backpack. The explosion from this grenade affects all within the blast and can knock them back. Damage: Moderate",
+  "shortHelp": "Ranged(Targeted AoE), Moderate DMG(Lethal/Fire), Foe Knockback",
+  "icon": "crabspider_fraggrenade.png",
+  "powerType": "Click",
+  "effectArea": "AoE",
+  "maxSlots": 6,
+  "allowedEnhancements": [
+    "EnduranceReduction",
+    "Range",
+    "Recharge",
+    "Knockback",
+    "Damage",
+    "Accuracy"
+  ],
+  "allowedSetCategories": [
+    "Knockback",
+    "Ranged AoE Damage",
+    "Soldiers of Arachnos Archetype Sets",
+    "Universal Damage Sets"
+  ],
+  "stats": {
+    "accuracy": 1,
+    "range": 80,
+    "recharge": 16,
+    "endurance": 15.184,
+    "castTime": 1.67,
+    "radius": 10,
+    "maxTargets": 10
+  },
+  "targetType": "Foe (Alive)"
+};

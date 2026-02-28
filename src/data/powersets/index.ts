@@ -13,7 +13,9 @@ import type { Powerset } from '@/types';
 // ARACHNOS-SOLDIER POWERSETS
 // ============================================
 import { powerset as arachnosSoldierArachnosSoldier } from './arachnos-soldier/epic/arachnos-soldier';
+import { powerset as arachnosSoldierBaneSpiderSoldier } from './arachnos-soldier/epic/bane-spider-soldier';
 import { powerset as arachnosSoldierBaneSpiderTraining } from './arachnos-soldier/epic/bane-spider-training';
+import { powerset as arachnosSoldierCrabSpiderSoldier } from './arachnos-soldier/epic/crab-spider-soldier';
 import { powerset as arachnosSoldierCrabSpiderTraining } from './arachnos-soldier/epic/crab-spider-training';
 import { powerset as arachnosSoldierTrainingAndGadgets } from './arachnos-soldier/epic/training-and-gadgets';
 
@@ -438,7 +440,9 @@ import { powerset as warshadeUmbralBlast } from './warshade/epic/umbral-blast';
 const ALL_MODULAR_POWERSETS: Powerset[] = [
   // Arachnos-soldier
   arachnosSoldierArachnosSoldier,
+  arachnosSoldierBaneSpiderSoldier,
   arachnosSoldierBaneSpiderTraining,
+  arachnosSoldierCrabSpiderSoldier,
   arachnosSoldierCrabSpiderTraining,
   arachnosSoldierTrainingAndGadgets,
 

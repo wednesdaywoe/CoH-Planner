@@ -961,11 +961,13 @@ export const ARCHETYPES: ArchetypeRegistry = {
       'bane-spider': {
         name: 'Bane Spider',
         level: 24,
+        primarySet: 'arachnos-soldier/bane-spider-soldier',
         secondarySet: 'arachnos-soldier/bane-spider-training',
       },
       'crab-spider': {
         name: 'Crab Spider',
         level: 24,
+        primarySet: 'arachnos-soldier/crab-spider-soldier',
         secondarySet: 'arachnos-soldier/crab-spider-training',
       },
     },

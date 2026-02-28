@@ -128,18 +128,8 @@ export function Header() {
       .map(id => getPowerset(id))
       .filter((ps): ps is Powerset => ps !== undefined);
 
-    // If a branch is selected, add branch-specific powersets
-    if (selectedBranch && archetype.branches?.[selectedBranch]) {
-      const branch = archetype.branches[selectedBranch];
-      if (branch.primarySet) {
-        const branchPrimary = getPowerset(branch.primarySet);
-        if (branchPrimary) primaryPowersets.push(branchPrimary);
-      }
-      if (branch.secondarySet) {
-        const branchSecondary = getPowerset(branch.secondarySet);
-        if (branchSecondary) secondaryPowersets.push(branchSecondary);
-      }
-    }
+    // Branch powersets are rendered as combined sections in PlannerPage,
+    // not as additional dropdown options. See AvailablePowers rendering.
   } else {
     // Standard ATs: filter by primary/secondary patterns
     primaryPowersets = allPowersets.filter((ps) => isPrimaryPowerset(ps));

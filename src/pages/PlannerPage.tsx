@@ -25,7 +25,7 @@ import { InfoPanel } from '@/components/info/InfoPanel';
 import { PopOutInfoPanel } from '@/components/info/PopOutInfoPanel';
 import { Toggle } from '@/components/ui';
 import { ViewModeToggle } from '@/components/ui/ViewModeToggle';
-import { MAX_POWER_PICKS } from '@/data';
+import { MAX_POWER_PICKS, getArchetype } from '@/data';
 import type { Power } from '@/types';
 
 /** Undock button icon (box with arrow pointing out) */
@@ -86,6 +86,31 @@ export function PlannerPage() {
     });
   };
 
+  // Derive branch powerset IDs for VEAT combined display
+  const selectedBranch = useUIStore((s) => s.selectedBranch);
+  const archetype = build.archetype.id ? getArchetype(build.archetype.id) : null;
+  const branchDef = selectedBranch && archetype?.branches?.[selectedBranch] || null;
+  const branchPrimaryId = branchDef?.primarySet || null;
+  const branchSecondaryId = branchDef?.secondarySet || null;
+
+  const handleSelectBranchPrimaryPower = (power: Power) => {
+    addPower('primary', {
+      ...power,
+      powerSet: branchPrimaryId || '',
+      level: build.level,
+      slots: [null],
+    });
+  };
+
+  const handleSelectBranchSecondaryPower = (power: Power) => {
+    addPower('secondary', {
+      ...power,
+      powerSet: branchSecondaryId || '',
+      level: build.level,
+      slots: [null],
+    });
+  };
+
   /** Info Panel column header with tooltip toggle and undock button */
   const infoPanelHeader = (
     <div className="bg-slate-800 border-b border-slate-700 px-3 py-2 flex items-center justify-between">
@@ -136,6 +161,14 @@ export function PlannerPage() {
                 selectedPowerNames={primarySelectedNames}
                 onSelectPower={handleSelectPrimaryPower}
               />
+              {branchPrimaryId && (
+                <AvailablePowers
+                  category="primary"
+                  powersetId={branchPrimaryId}
+                  selectedPowerNames={primarySelectedNames}
+                  onSelectPower={handleSelectBranchPrimaryPower}
+                />
+              )}
 
               <AvailablePowers
                 category="secondary"
@@ -143,6 +176,14 @@ export function PlannerPage() {
                 selectedPowerNames={secondarySelectedNames}
                 onSelectPower={handleSelectSecondaryPower}
               />
+              {branchSecondaryId && (
+                <AvailablePowers
+                  category="secondary"
+                  powersetId={branchSecondaryId}
+                  selectedPowerNames={secondarySelectedNames}
+                  onSelectPower={handleSelectBranchSecondaryPower}
+                />
+              )}
 
               <AvailablePoolPowers />
             </div>
@@ -208,6 +249,14 @@ export function PlannerPage() {
               selectedPowerNames={primarySelectedNames}
               onSelectPower={handleSelectPrimaryPower}
             />
+            {branchPrimaryId && (
+              <AvailablePowers
+                category="primary"
+                powersetId={branchPrimaryId}
+                selectedPowerNames={primarySelectedNames}
+                onSelectPower={handleSelectBranchPrimaryPower}
+              />
+            )}
 
             <AvailablePowers
               category="secondary"
@@ -215,6 +264,14 @@ export function PlannerPage() {
               selectedPowerNames={secondarySelectedNames}
               onSelectPower={handleSelectSecondaryPower}
             />
+            {branchSecondaryId && (
+              <AvailablePowers
+                category="secondary"
+                powersetId={branchSecondaryId}
+                selectedPowerNames={secondarySelectedNames}
+                onSelectPower={handleSelectBranchSecondaryPower}
+              />
+            )}
 
             <AvailablePoolPowers />
           </div>
