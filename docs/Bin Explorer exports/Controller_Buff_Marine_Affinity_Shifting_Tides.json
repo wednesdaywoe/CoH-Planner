@@ -1,0 +1,23 @@
+{
+  "full_name": "Controller_Buff.Marine_Affinity.Shifting_Tides",
+  "display_name": "Shifting_Tides",
+  "category": "Controller_Buff",
+  "powerset": "Marine_Affinity",
+  "power_name": "Shifting_Tides",
+  "icon": "MarineAffinity_ShiftingTides.tga",
+  "effect_area": 2,
+  "max_targets_hit": 16,
+  "range": 80,
+  "radius": 25,
+  "activate_period": 1.17,
+  "interrupt_time": 1.17,
+  "recharge_time": 15,
+  "endurance_cost": 0.078,
+  "boosts_allowed": [
+    "Buff_ToHit",
+    "Damage",
+    "EnduranceDiscount",
+    "Recharge"
+  ],
+  "effect_area_name": "Sphere"
+}

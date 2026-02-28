@@ -1113,6 +1113,11 @@ interface SpecialContentProps {
   onSelect: (id: string, def: SpecialEnhancementDef, category: SpecialEnhancement['category']) => void;
 }
 
+/** Overrides for compound-word IDs whose simple capitalize doesn't match the icon filename */
+const SPECIAL_ICON_OVERRIDES: Record<string, string> = {
+  antiproton: 'AntiProton',
+};
+
 const SPECIAL_SECTIONS: Array<{
   category: SpecialEnhancement['category'];
   label: string;
@@ -1147,14 +1152,17 @@ function SpecialContent(props: SpecialContentProps) {
             </div>
             <div className="flex flex-wrap gap-1">
               {entries.map(([id, def]) => {
-                const capitalizedId = id.charAt(0).toUpperCase() + id.slice(1);
+                // D-Sync enhancements all share a single icon; others use prefix + capitalized ID
+                const iconName = section.category === 'd-sync'
+                  ? 'DSO_all.png'
+                  : `${section.iconPrefix}${SPECIAL_ICON_OVERRIDES[id] ?? (id.charAt(0).toUpperCase() + id.slice(1))}.png`;
                 return (
                   <Tooltip key={id} content={`${def.name}: ${def.aspects.map(a => `${a.stat} +${a.value}%`).join(', ')}`}>
                     <button
                       onClick={() => onSelect(id, def, section.category)}
                       className={`rounded border ${section.borderColor} hover:scale-110 transition-all bg-gray-900/50`}
                     >
-                      <SpecialEnhancementIcon icon={`${section.iconPrefix}${capitalizedId}.png`} size={30} alt={def.name} />
+                      <SpecialEnhancementIcon icon={iconName} size={30} alt={def.name} />
                     </button>
                   </Tooltip>
                 );

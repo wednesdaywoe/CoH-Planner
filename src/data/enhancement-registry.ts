@@ -328,6 +328,11 @@ const SPECIAL_ICON_PREFIX: Record<SpecialEnhancement['category'], string> = {
   'd-sync': 'DS',
 };
 
+/** Overrides for compound-word IDs whose simple capitalize doesn't match the icon filename */
+const SPECIAL_ICON_NAME_OVERRIDES: Record<string, string> = {
+  antiproton: 'AntiProton',
+};
+
 /** Create a Special Enhancement object (Hamidon, Titan, Hydra, or D-Sync) */
 export function createSpecialEnhancement(
   id: string,
@@ -335,7 +340,7 @@ export function createSpecialEnhancement(
   category: SpecialEnhancement['category'] = 'hamidon',
   boost?: number,
 ): SpecialEnhancement {
-  const capitalizedId = id.charAt(0).toUpperCase() + id.slice(1);
+  const capitalizedId = SPECIAL_ICON_NAME_OVERRIDES[id] ?? (id.charAt(0).toUpperCase() + id.slice(1));
   const prefix = SPECIAL_ICON_PREFIX[category];
   // D-Sync enhancements all share a single icon
   const icon = category === 'd-sync' ? 'DSO_all.png' : `${prefix}${capitalizedId}.png`;
