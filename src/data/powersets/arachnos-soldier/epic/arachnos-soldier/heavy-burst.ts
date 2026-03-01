@@ -41,5 +41,18 @@ export const HeavyBurst: Power = {
     "arc": 0.5236,
     "maxTargets": 10
   },
-  "targetType": "Foe (Alive)"
+  "targetType": "Foe (Alive)",
+  "damage": {
+    "type": "Lethal",
+    "scale": 0.1557,
+    "table": "Ranged_Damage",
+    "duration": 2,
+    "tickRate": 0.3
+  },
+  "effects": {
+    "defenseDebuff": {
+      "scale": 1,
+      "table": "Ranged_Debuff_Def"
+    }
+  }
 };

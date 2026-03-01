@@ -35,5 +35,26 @@ export const WideAreaWebGrenade: Power = {
     "radius": 25,
     "maxTargets": 16
   },
-  "targetType": "Foe (Alive)"
+  "targetType": "Foe (Alive)",
+  "effects": {
+    "immobilize": {
+      "mag": 3,
+      "scale": 15,
+      "table": "Ranged_Immobilize"
+    },
+    "movement": {
+      "runSpeed": {
+        "scale": 0.5,
+        "table": "Ranged_Slow"
+      },
+      "flySpeed": {
+        "scale": 0.5,
+        "table": "Ranged_Slow"
+      }
+    },
+    "rechargeDebuff": {
+      "scale": 0.5,
+      "table": "Ranged_Slow"
+    }
+  }
 };

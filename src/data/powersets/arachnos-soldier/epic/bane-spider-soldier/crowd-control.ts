@@ -50,5 +50,11 @@ export const CrowdControl: Power = {
       "duration": 4.1,
       "tickRate": 1
     }
-  ]
+  ],
+  "effects": {
+    "knockback": {
+      "scale": 0.67,
+      "table": "Melee_Knockback"
+    }
+  }
 };

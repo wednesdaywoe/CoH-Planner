@@ -38,5 +38,18 @@ export const Burst: Power = {
     "endurance": 8.528,
     "castTime": 1
   },
-  "targetType": "Foe (Alive)"
+  "targetType": "Foe (Alive)",
+  "damage": {
+    "type": "Lethal",
+    "scale": 0.5467,
+    "table": "Ranged_Damage",
+    "duration": 0.7,
+    "tickRate": 0.3
+  },
+  "effects": {
+    "defenseDebuff": {
+      "scale": 1,
+      "table": "Ranged_Debuff_Def"
+    }
+  }
 };

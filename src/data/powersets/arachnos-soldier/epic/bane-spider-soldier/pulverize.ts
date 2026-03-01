@@ -48,5 +48,12 @@ export const Pulverize: Power = {
       "duration": 4.1,
       "tickRate": 1
     }
-  ]
+  ],
+  "effects": {
+    "stun": {
+      "mag": 2,
+      "scale": 8,
+      "table": "Melee_Stun"
+    }
+  }
 };

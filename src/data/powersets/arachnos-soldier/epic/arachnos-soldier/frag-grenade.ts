@@ -39,5 +39,23 @@ export const FragGrenade: Power = {
     "radius": 10,
     "maxTargets": 10
   },
-  "targetType": "Foe (Alive)"
+  "targetType": "Foe (Alive)",
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 0.5,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.67,
+      "table": "Ranged_Damage"
+    }
+  ],
+  "effects": {
+    "knockback": {
+      "scale": 0.75,
+      "table": "Ranged_Knockback"
+    }
+  }
 };

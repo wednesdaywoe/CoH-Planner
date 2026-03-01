@@ -49,5 +49,12 @@ export const OmegaManeuver: Power = {
       "scale": 1.5,
       "table": "Ranged_Damage"
     }
-  ]
+  ],
+  "effects": {
+    "stun": {
+      "mag": 3,
+      "scale": 10,
+      "table": "Ranged_Stun"
+    }
+  }
 };

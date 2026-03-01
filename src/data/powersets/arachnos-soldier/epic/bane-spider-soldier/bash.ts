@@ -48,5 +48,12 @@ export const Bash: Power = {
       "duration": 2.1,
       "tickRate": 1
     }
-  ]
+  ],
+  "effects": {
+    "stun": {
+      "mag": 2,
+      "scale": 6,
+      "table": "Melee_Stun"
+    }
+  }
 };
