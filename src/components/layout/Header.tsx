@@ -9,7 +9,7 @@ import { useBuildStore, useUIStore } from '@/stores';
 import { getPowersetsForArchetype, getPowerset, MAX_LEVEL, ARCHETYPES } from '@/data';
 import { Button, Select, Slider, Toggle, Tooltip } from '@/components/ui';
 import { ConfirmModal } from '@/components/modals/ConfirmModal';
-import { calculateVigilanceDamageBonus, calculateAssassinationDamageBonus } from '@/utils/calculations';
+import { calculateVigilanceDamageBonus, calculateAssassinationDamageBonus, calculateOpportunityCritChance, calculateOpportunityCritBonus } from '@/utils/calculations';
 import type { ArchetypeId, ArchetypeBranchId, Origin, Powerset } from '@/types';
 import { BUILD_TIME, APP_VERSION } from '@/buildTime';
 
@@ -90,9 +90,15 @@ export function Header() {
   const stalkerHidden = useUIStore((s) => s.stalkerHidden);
   const toggleStalkerHidden = useUIStore((s) => s.toggleStalkerHidden);
   const stalkerTeamSize = useUIStore((s) => s.stalkerTeamSize);
+  const stalkerCritActive = useUIStore((s) => s.stalkerCritActive);
+  const toggleStalkerCrit = useUIStore((s) => s.toggleStalkerCrit);
   const setStalkerTeamSize = useUIStore((s) => s.setStalkerTeamSize);
   const containmentActive = useUIStore((s) => s.containmentActive);
   const toggleContainment = useUIStore((s) => s.toggleContainment);
+  const opportunityLevel = useUIStore((s) => s.opportunityLevel);
+  const setOpportunityLevel = useUIStore((s) => s.setOpportunityLevel);
+  const sentinelCritActive = useUIStore((s) => s.sentinelCritActive);
+  const toggleSentinelCrit = useUIStore((s) => s.toggleSentinelCrit);
   const openExportImportModal = useUIStore((s) => s.openExportImportModal);
   const selectedBranch = useUIStore((s) => s.selectedBranch);
   const setSelectedBranch = useUIStore((s) => s.setSelectedBranch);
@@ -215,6 +221,7 @@ export function Header() {
           value={archetypeId || ''}
           onChange={handleArchetypeChange}
           className="max-w-[200px] min-w-[125px]"
+          highlight={!archetypeId}
         />
 
         {/* Primary & Secondary powerset selectors */}
@@ -227,6 +234,7 @@ export function Header() {
             onChange={handlePrimaryChange}
             className="max-w-[200px] min-w-[125px]"
             disabled={!archetypeId}
+            highlight={!!archetypeId && !build.primary.id}
           />
           <Select
             id="secondary-select"
@@ -236,6 +244,7 @@ export function Header() {
             onChange={handleSecondaryChange}
             className="max-w-[200px] min-w-[125px]"
             disabled={!archetypeId}
+            highlight={!!archetypeId && !build.secondary.id}
           />
         </div>
 
@@ -306,7 +315,7 @@ export function Header() {
           <Tooltip content="Toggle to show average Scourge damage bonus (+30% as multiplier). Scourge chance increases as enemy HP drops below 50%.">
             <div className={`flex items-center px-2 py-1.5 rounded border ${
               scourgeActive
-                ? 'bg-cyan-900/30 border-cyan-700/50'
+                ? 'bg-sk-magenta/10 border-sk-magenta/30'
                 : 'bg-slate-700/50 border-slate-600'
             }`}>
               <Toggle
@@ -325,22 +334,22 @@ export function Header() {
           <Tooltip content={`Fury grants +${furyLevel * 2}% damage. Adjust to see damage at different fury levels.`}>
             <div className={`flex items-center gap-1 px-2 py-1.5 rounded border ${
               furyLevel > 0
-                ? 'bg-red-900/30 border-red-700/50'
+                ? 'bg-sk-magenta/10 border-sk-magenta/30'
                 : 'bg-slate-700/50 border-slate-600'
             }`}>
-              <span className="text-xs text-red-400 font-semibold uppercase">Fury</span>
+              <span className="text-xs text-sk-magenta font-semibold uppercase">Fury</span>
               <button
                 onClick={() => setFuryLevel(Math.max(0, furyLevel - 1))}
                 disabled={furyLevel <= 0}
-                className="text-slate-400 hover:text-red-400 disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-0.5"
+                className="text-slate-400 hover:text-sk-magenta disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-0.5"
               >
                 &minus;
               </button>
-              <span className="text-sm font-bold text-red-400 w-7 text-center">{furyLevel}</span>
+              <span className="text-sm font-bold text-sk-magenta w-7 text-center">{furyLevel}</span>
               <button
                 onClick={() => setFuryLevel(Math.min(100, furyLevel + 1))}
                 disabled={furyLevel >= 100}
-                className="text-slate-400 hover:text-red-400 disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-0.5"
+                className="text-slate-400 hover:text-sk-magenta disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-0.5"
               >
                 +
               </button>
@@ -353,7 +362,7 @@ export function Header() {
                 showValue={false}
                 showRange={false}
               />
-              <span className="text-[10px] text-red-300">+{furyLevel * 2}%</span>
+              <span className="text-[10px] text-sk-magenta/70">+{furyLevel * 2}%</span>
             </div>
           </Tooltip>
         )}
@@ -363,7 +372,7 @@ export function Header() {
           <Tooltip content="Toggle to show Supremacy buffs (+25% Damage, +10% ToHit) for henchmen within 60ft. Also enables Bodyguard Mode info.">
             <div className={`flex items-center px-2 py-1.5 rounded border ${
               supremacyActive
-                ? 'bg-amber-900/30 border-amber-700/50'
+                ? 'bg-sk-magenta/10 border-sk-magenta/30'
                 : 'bg-slate-700/50 border-slate-600'
             }`}>
               <Toggle
@@ -385,22 +394,22 @@ export function Header() {
             <Tooltip content={`Vigilance grants +${(damageBonus * 100).toFixed(0)}% damage based on team size. Solo = max bonus, 3+ teammates = no bonus.`}>
               <div className={`flex items-center gap-1 px-2 py-1.5 rounded border ${
                 vigilanceTeamSize < 3
-                  ? 'bg-indigo-900/30 border-indigo-700/50'
+                  ? 'bg-sk-magenta/10 border-sk-magenta/30'
                   : 'bg-slate-700/50 border-slate-600'
               }`}>
-                <span className="text-xs text-indigo-400 font-semibold uppercase">Team</span>
+                <span className="text-xs text-sk-magenta font-semibold uppercase">Team</span>
                 <button
                   onClick={() => setVigilanceTeamSize(Math.max(0, vigilanceTeamSize - 1))}
                   disabled={vigilanceTeamSize <= 0}
-                  className="text-slate-400 hover:text-indigo-400 disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-0.5"
+                  className="text-slate-400 hover:text-sk-magenta disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-0.5"
                 >
                   &minus;
                 </button>
-                <span className="text-sm font-bold text-indigo-400 w-8 text-center">{teamLabel}</span>
+                <span className="text-sm font-bold text-sk-magenta w-8 text-center">{teamLabel}</span>
                 <button
                   onClick={() => setVigilanceTeamSize(Math.min(7, vigilanceTeamSize + 1))}
                   disabled={vigilanceTeamSize >= 7}
-                  className="text-slate-400 hover:text-indigo-400 disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-0.5"
+                  className="text-slate-400 hover:text-sk-magenta disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-0.5"
                 >
                   +
                 </button>
@@ -413,7 +422,7 @@ export function Header() {
                   showValue={false}
                   showRange={false}
                 />
-                <span className="text-[10px] text-indigo-300">+{(damageBonus * 100).toFixed(0)}%</span>
+                <span className="text-[10px] text-sk-magenta/70">+{(damageBonus * 100).toFixed(0)}%</span>
               </div>
             </Tooltip>
           );
@@ -424,7 +433,7 @@ export function Header() {
           <Tooltip content="Toggle to show average Critical Hit damage bonus. 5% crit chance vs minions (+5% avg), 10% vs higher ranks (+10% avg). Critical hits deal double damage.">
             <div className={`flex items-center px-2 py-1.5 rounded border ${
               criticalHitsActive
-                ? 'bg-orange-900/30 border-orange-700/50'
+                ? 'bg-sk-magenta/10 border-sk-magenta/30'
                 : 'bg-slate-700/50 border-slate-600'
             }`}>
               <Toggle
@@ -451,7 +460,7 @@ export function Header() {
               }>
                 <div className={`flex items-center px-2 py-1.5 rounded border ${
                   stalkerHidden
-                    ? 'bg-purple-900/30 border-purple-700/50'
+                    ? 'bg-sk-magenta/10 border-sk-magenta/30'
                     : 'bg-slate-700/50 border-slate-600'
                 }`}>
                   <Toggle
@@ -466,20 +475,20 @@ export function Header() {
               {/* Team size slider (only shows when not hidden) */}
               {!stalkerHidden && (
                 <Tooltip content={`Assassination grants +${(damageBonus * 100).toFixed(0)}% avg damage. 10% base crit + 3% per teammate outside of hide.`}>
-                  <div className="flex items-center gap-1 px-2 py-1.5 rounded border bg-purple-900/30 border-purple-700/50">
-                    <span className="text-xs text-purple-400 font-semibold uppercase">Team</span>
+                  <div className="flex items-center gap-1 px-2 py-1.5 rounded border bg-sk-magenta/10 border-sk-magenta/30">
+                    <span className="text-xs text-sk-magenta font-semibold uppercase">Team</span>
                     <button
                       onClick={() => setStalkerTeamSize(Math.max(0, stalkerTeamSize - 1))}
                       disabled={stalkerTeamSize <= 0}
-                      className="text-slate-400 hover:text-purple-400 disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-0.5"
+                      className="text-slate-400 hover:text-sk-magenta disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-0.5"
                     >
                       &minus;
                     </button>
-                    <span className="text-sm font-bold text-purple-400 w-8 text-center">{teamLabel}</span>
+                    <span className="text-sm font-bold text-sk-magenta w-8 text-center">{teamLabel}</span>
                     <button
                       onClick={() => setStalkerTeamSize(Math.min(7, stalkerTeamSize + 1))}
                       disabled={stalkerTeamSize >= 7}
-                      className="text-slate-400 hover:text-purple-400 disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-0.5"
+                      className="text-slate-400 hover:text-sk-magenta disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-0.5"
                     >
                       +
                     </button>
@@ -492,10 +501,26 @@ export function Header() {
                       showValue={false}
                       showRange={false}
                     />
-                    <span className="text-[10px] text-purple-300">+{(damageBonus * 100).toFixed(0)}%</span>
+                    <span className="text-[10px] text-sk-magenta/70">+{(damageBonus * 100).toFixed(0)}%</span>
                   </div>
                 </Tooltip>
               )}
+              {/* Crit toggle */}
+              <Tooltip content={`Toggle to show average Assassination critical damage bonus (+${(damageBonus * 100).toFixed(0)}% avg).`}>
+                <div className={`flex items-center px-2 py-1.5 rounded border ${
+                  stalkerCritActive
+                    ? 'bg-sk-magenta/10 border-sk-magenta/30'
+                    : 'bg-slate-700/50 border-slate-600'
+                }`}>
+                  <Toggle
+                    id="stalker-crit-toggle"
+                    name="stalkerCrit"
+                    checked={stalkerCritActive}
+                    onChange={toggleStalkerCrit}
+                    label="Crits"
+                  />
+                </div>
+              </Tooltip>
             </>
           );
         })()}
@@ -505,7 +530,7 @@ export function Header() {
           <Tooltip content="Toggle to show Containment damage bonus. Controllers deal double damage to Held, Immobilized, Slept, or Disoriented targets.">
             <div className={`flex items-center px-2 py-1.5 rounded border ${
               containmentActive
-                ? 'bg-cyan-900/30 border-cyan-700/50'
+                ? 'bg-sk-magenta/10 border-sk-magenta/30'
                 : 'bg-slate-700/50 border-slate-600'
             }`}>
               <Toggle
@@ -518,6 +543,65 @@ export function Header() {
             </div>
           </Tooltip>
         )}
+
+        {/* Sentinel Opportunity meter + Crit toggle */}
+        {archetypeId === 'sentinel' && (() => {
+          const critChance = calculateOpportunityCritChance(opportunityLevel);
+          const critBonus = calculateOpportunityCritBonus(opportunityLevel);
+          return (
+            <>
+              <Tooltip content={`Opportunity meter controls critical hit chance on primary attacks. Current: ${(critChance * 100).toFixed(0)}% crit chance, +${(critBonus * 100).toFixed(1)}% avg damage.`}>
+                <div className={`flex items-center gap-1 px-2 py-1.5 rounded border ${
+                  opportunityLevel > 0
+                    ? 'bg-sk-magenta/10 border-sk-magenta/30'
+                    : 'bg-slate-700/50 border-slate-600'
+                }`}>
+                  <span className="text-xs text-sk-magenta font-semibold uppercase">Opp</span>
+                  <button
+                    onClick={() => setOpportunityLevel(Math.max(0, opportunityLevel - 1))}
+                    disabled={opportunityLevel <= 0}
+                    className="text-slate-400 hover:text-sk-magenta disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-0.5"
+                  >
+                    &minus;
+                  </button>
+                  <span className="text-sm font-bold text-sk-magenta w-7 text-center">{opportunityLevel}</span>
+                  <button
+                    onClick={() => setOpportunityLevel(Math.min(100, opportunityLevel + 1))}
+                    disabled={opportunityLevel >= 100}
+                    className="text-slate-400 hover:text-sk-magenta disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-0.5"
+                  >
+                    +
+                  </button>
+                  <Slider
+                    value={opportunityLevel}
+                    min={0}
+                    max={100}
+                    onChange={(e) => setOpportunityLevel(Number(e.target.value))}
+                    className="w-20"
+                    showValue={false}
+                    showRange={false}
+                  />
+                  <span className="text-[10px] text-sk-magenta/70">{(critChance * 100).toFixed(0)}% crit</span>
+                </div>
+              </Tooltip>
+              <Tooltip content={`Toggle to show average Opportunity critical damage bonus (+${(critBonus * 100).toFixed(1)}% avg). Crits deal 40% bonus damage.`}>
+                <div className={`flex items-center px-2 py-1.5 rounded border ${
+                  sentinelCritActive
+                    ? 'bg-sk-magenta/10 border-sk-magenta/30'
+                    : 'bg-slate-700/50 border-slate-600'
+                }`}>
+                  <Toggle
+                    id="sentinel-crit-toggle"
+                    name="sentinelCrit"
+                    checked={sentinelCritActive}
+                    onChange={toggleSentinelCrit}
+                    label="Crits"
+                  />
+                </div>
+              </Tooltip>
+            </>
+          );
+        })()}
 
         {/* Level & IO sliders */}
         <div className="flex items-center gap-2">

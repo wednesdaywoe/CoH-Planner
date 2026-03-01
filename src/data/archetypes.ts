@@ -515,7 +515,7 @@ export const ARCHETYPES: ArchetypeRegistry = {
     description: 'Homecoming exclusive: Ranged damage with built-in armor for survivability',
     inherent: {
       name: 'Opportunity',
-      description: 'Build meter by attacking. When full, T1/T2 attacks apply debuffs to enemy: -11.25% Def, -15% Res (all types), -15% Mez Res, -150ft Stealth.',
+      description: 'Build meter by attacking in combat. Grants scaling critical hit chance on primary attacks (5% at empty, 40% at full meter). Crits deal 40% bonus damage. Vulnerability applies -15% Res, -11.25% Def, -150ft Stealth to targets.',
     },
     stats: {
       baseHP: 1204.7588,

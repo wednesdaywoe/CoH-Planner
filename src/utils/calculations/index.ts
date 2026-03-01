@@ -191,4 +191,10 @@ export {
   type GauntletInfo,
   type ContainmentInfo,
   type ContainmentMezType,
+  type OpportunityCritInfo,
+  getOpportunityCritInfo,
+  calculateOpportunityCritChance,
+  calculateOpportunityCritBonus,
+  calculateOpportunityCritDamage,
+  isSentinelAttackPower,
 } from './inherents';

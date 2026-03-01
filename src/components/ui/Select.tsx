@@ -13,20 +13,23 @@ export interface SelectOption {
 interface SelectProps extends Omit<SelectHTMLAttributes<HTMLSelectElement>, 'children'> {
   options: SelectOption[];
   placeholder?: string;
+  /** When true, shows a SKMagenta border to prompt user selection */
+  highlight?: boolean;
 }
 
 export const Select = forwardRef<HTMLSelectElement, SelectProps>(
-  ({ options, placeholder, className = '', ...props }, ref) => {
+  ({ options, placeholder, highlight = false, className = '', ...props }, ref) => {
     return (
       <select
         ref={ref}
         className={`
           block w-full px-3 py-1.5
           bg-gray-800 text-gray-200
-          border border-gray-600 rounded
+          border rounded
           text-sm
           focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent
           disabled:opacity-50 disabled:cursor-not-allowed
+          ${highlight ? 'border-sk-magenta' : 'border-gray-600'}
           ${className}
         `}
         {...props}

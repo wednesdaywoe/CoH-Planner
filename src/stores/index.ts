@@ -39,6 +39,9 @@ export {
   useCriticalHitsActive,
   useStalkerHidden,
   useStalkerTeamSize,
+  useStalkerCritActive,
   useContainmentActive,
+  useOpportunityLevel,
+  useSentinelCritActive,
   usePowerViewMode,
 } from './uiStore';

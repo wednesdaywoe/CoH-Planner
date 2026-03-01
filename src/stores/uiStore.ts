@@ -137,8 +137,17 @@ interface UIState {
   /** Stalker team size for Assassination bonus (0 = solo, 1-7 = teammates) */
   stalkerTeamSize: number;
 
+  /** Stalker critical hits active state - show average crit damage bonus */
+  stalkerCritActive: boolean;
+
   /** Containment active state - for Controllers to see double damage vs controlled targets */
   containmentActive: boolean;
+
+  /** Opportunity meter level for Sentinels (0-100) */
+  opportunityLevel: number;
+
+  /** Sentinel critical hits active state */
+  sentinelCritActive: boolean;
 
   /** Selected branch for Arachnos Epic ATs (Soldier: bane-spider/crab-spider, Widow: night-widow/fortunata) */
   selectedBranch: ArchetypeBranchId | null;
@@ -279,9 +288,19 @@ interface UIActions {
   // Stalker Team Size (Stalker inherent) - slider 0-7
   setStalkerTeamSize: (size: number) => void;
 
+  // Stalker Crit Active State (Stalker inherent)
+  toggleStalkerCrit: () => void;
+
   // Containment Active State (Controller inherent)
   toggleContainment: () => void;
   setContainmentActive: (active: boolean) => void;
+
+  // Opportunity Level (Sentinel inherent) - slider 0-100
+  setOpportunityLevel: (level: number) => void;
+
+  // Sentinel Critical Hits Active State (Sentinel inherent)
+  toggleSentinelCrit: () => void;
+  setSentinelCritActive: (active: boolean) => void;
 
   // Arachnos Branch Selection (Epic ATs)
   setSelectedBranch: (branch: ArchetypeBranchId | null) => void;
@@ -393,7 +412,10 @@ export const useUIStore = create<UIStore>()(
       criticalHitsActive: false, // Default to OFF (like Scourge)
       stalkerHidden: false, // Default to not hidden (showing out-of-hide damage)
       stalkerTeamSize: 0, // Default to solo (0 teammates)
+      stalkerCritActive: false, // Default to OFF (like Critical Hits)
       containmentActive: false, // Default to OFF (like Critical Hits)
+      opportunityLevel: 50, // Default to 50 (reasonable mid-combat average)
+      sentinelCritActive: false, // Default to OFF (like Critical Hits)
       selectedBranch: null, // No branch selected by default
       powerViewMode: 'category', // Default to category-based view
       trackedStats: [], // No tracked stats by default
@@ -866,6 +888,12 @@ export const useUIStore = create<UIStore>()(
       setStalkerTeamSize: (size) =>
         set({ stalkerTeamSize: Math.max(0, Math.min(7, size)) }),
 
+      // Stalker Crit Active State
+      toggleStalkerCrit: () =>
+        set((state) => ({
+          stalkerCritActive: !state.stalkerCritActive,
+        })),
+
       // Containment Active State (Controller)
       toggleContainment: () =>
         set((state) => ({
@@ -874,6 +902,19 @@ export const useUIStore = create<UIStore>()(
 
       setContainmentActive: (active) =>
         set({ containmentActive: active }),
+
+      // Opportunity Level (Sentinel)
+      setOpportunityLevel: (level) =>
+        set({ opportunityLevel: Math.max(0, Math.min(100, level)) }),
+
+      // Sentinel Critical Hits
+      toggleSentinelCrit: () =>
+        set((state) => ({
+          sentinelCritActive: !state.sentinelCritActive,
+        })),
+
+      setSentinelCritActive: (active) =>
+        set({ sentinelCritActive: active }),
 
       // Arachnos Branch Selection
       setSelectedBranch: (branch) =>
@@ -1007,8 +1048,17 @@ export const useStalkerHidden = () => useUIStore((state) => state.stalkerHidden)
 /** Select stalker team size */
 export const useStalkerTeamSize = () => useUIStore((state) => state.stalkerTeamSize);
 
+/** Select stalker crit active state */
+export const useStalkerCritActive = () => useUIStore((state) => state.stalkerCritActive);
+
 /** Select containment active state */
 export const useContainmentActive = () => useUIStore((state) => state.containmentActive);
+
+/** Select opportunity meter level */
+export const useOpportunityLevel = () => useUIStore((state) => state.opportunityLevel);
+
+/** Select sentinel crit active state */
+export const useSentinelCritActive = () => useUIStore((state) => state.sentinelCritActive);
 
 /** Select power view mode */
 export const usePowerViewMode = () => useUIStore((state) => state.powerViewMode);

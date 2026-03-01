@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+@theme {
+  --color-sk-magenta: #D62BCE;
+}
+
 /* Custom stat color classes - matching the existing app's color scheme */
 @layer components {
   .stat-damage { @apply text-red-400; }
