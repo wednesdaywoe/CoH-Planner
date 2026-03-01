@@ -314,7 +314,7 @@ function CollapsibleEffectGroup({
           const rawMag = dominationActive && config.category === 'control' ? tiers.base * 2 : tiers.base;
           const magStr = Number.isInteger(rawMag) ? rawMag.toString() : rawMag.toFixed(1);
           const magColorClass = dominationActive && config.category === 'control' ? 'text-pink-400' : config.colorClass;
-          const mezDuration = rawValue && typeof rawValue === 'object' && 'scale' in (rawValue as Record<string, unknown>)
+          const mezDuration = rawValue && typeof rawValue === 'object' && 'mag' in (rawValue as Record<string, unknown>) && 'scale' in (rawValue as Record<string, unknown>)
             ? (rawValue as { scale?: number }).scale : undefined;
           return (
             <div key={key} className={`grid ${gridCols} gap-1 items-baseline ${fontSize} ml-2`}>
@@ -477,6 +477,9 @@ function getEffectBaseValue(
       }
       return value.mag;
     }
+    // ScaledEffect without mag (knockback, knockup, repel) — scale IS the magnitude
+    const scaled = getScaleValue(value as NumberOrScaled);
+    if (scaled !== undefined) return scaled;
     return null;
   }
 
@@ -816,8 +819,8 @@ export function RegistryEffectsDisplay({
           const magStr = Number.isInteger(rawMag) ? rawMag.toString() : rawMag.toFixed(1);
           const colorClass = dominationActive && config.category === 'control' ? 'text-pink-400' : config.colorClass;
 
-          // Extract duration from MezEffect if available
-          const mezDuration = rawValue && typeof rawValue === 'object' && 'scale' in (rawValue as Record<string, unknown>)
+          // Extract duration from MezEffect if available (require mag to distinguish from ScaledEffect)
+          const mezDuration = rawValue && typeof rawValue === 'object' && 'mag' in (rawValue as Record<string, unknown>) && 'scale' in (rawValue as Record<string, unknown>)
             ? (rawValue as { scale?: number }).scale
             : undefined;
 
