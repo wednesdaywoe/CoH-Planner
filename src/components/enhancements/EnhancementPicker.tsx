@@ -36,6 +36,7 @@ type SidebarFilter =
   | 'very-rare'
   | 'event'
   | 'archetype'
+  | 'procs'
   | string; // Category name like "Ranged Damage"
 
 export function EnhancementPicker() {
@@ -139,6 +140,8 @@ export function EnhancementPicker() {
     availableSets.some((set) => set.category === 'ato'), [availableSets]);
   const hasPvP = useMemo(() =>
     availableSets.some((set) => set.category === 'pvp'), [availableSets]);
+  const hasProcs = useMemo(() =>
+    availableSets.some((set) => set.pieces.some((p) => p.proc)), [availableSets]);
 
   // Helper to check if a set is a "special" category (excluded from normal filters)
   const isSpecialSet = (set: IOSet) =>
@@ -164,10 +167,28 @@ export function EnhancementPicker() {
         return availableSets.filter((set) => set.category === 'ato');
       case 'pvp':
         return availableSets.filter((set) => set.category === 'pvp');
+      case 'procs':
+        return availableSets.filter((set) =>
+          set.pieces.some((p) => p.proc)
+        );
       default:
         // It's a category name - only show standard sets of that type
         return availableSets.filter((set) => set.type === sidebarFilter && !isSpecialSet(set));
     }
+  }, [availableSets, sidebarFilter]);
+
+  // Flat list of individual proc pieces for the Procs filter
+  const procPieces = useMemo(() => {
+    if (sidebarFilter !== 'procs') return [];
+    const pieces: { set: IOSet; piece: IOSetPiece; pieceIndex: number }[] = [];
+    for (const set of availableSets) {
+      set.pieces.forEach((piece, idx) => {
+        if (piece.proc) {
+          pieces.push({ set, piece, pieceIndex: idx });
+        }
+      });
+    }
+    return pieces;
   }, [availableSets, sidebarFilter]);
 
   // Check if a specific set piece is already slotted in the current power
@@ -567,6 +588,15 @@ export function EnhancementPicker() {
                 textColor="text-red-400"
               />
             )}
+            {hasProcs && (
+              <MobileCategoryButton
+                label="Procs"
+                count={availableSets.reduce((n, s) => n + s.pieces.filter((p) => p.proc).length, 0)}
+                isActive={sidebarFilter === 'procs'}
+                onClick={() => setSidebarFilter('procs')}
+                textColor="text-amber-400"
+              />
+            )}
           </div>
         )}
 
@@ -647,12 +677,31 @@ export function EnhancementPicker() {
                   textColor="text-red-400"
                 />
               )}
+
+              {/* Procs */}
+              {hasProcs && (
+                <SidebarButton
+                  label="Procs"
+                  count={availableSets.reduce((n, s) => n + s.pieces.filter((p) => p.proc).length, 0)}
+                  isActive={sidebarFilter === 'procs'}
+                  onClick={() => setSidebarFilter('procs')}
+                  textColor="text-amber-400"
+                />
+              )}
             </div>
           )}
 
           {/* Main content area */}
           <div className="flex-1 overflow-y-auto p-2 sm:p-3">
-            {typeFilter === 'io-sets' && (
+            {typeFilter === 'io-sets' && sidebarFilter === 'procs' && (
+              <ProcsContent
+                pieces={procPieces}
+                attunementEnabled={attunementEnabled}
+                isPieceInCurrentPower={isPieceInCurrentPower}
+                onSelect={handleSelectSetPiece}
+              />
+            )}
+            {typeFilter === 'io-sets' && sidebarFilter !== 'procs' && (
               <IOSetsContent
                 sets={filteredSets}
                 globalIOLevel={globalIOLevel}
@@ -827,6 +876,116 @@ function IOSetsContent({
           hasShiftSelection={hasShiftSelection}
         />
       ))}
+    </div>
+  );
+}
+
+// ============================================
+// PROCS FLAT LIST
+// ============================================
+
+interface ProcsContentProps {
+  pieces: { set: IOSet; piece: IOSetPiece; pieceIndex: number }[];
+  attunementEnabled: boolean;
+  isPieceInCurrentPower: (setId: string, pieceNum: number) => boolean;
+  onSelect: (set: IOSet, piece: IOSetPiece, pieceIndex: number) => void;
+}
+
+function ProcsContent({
+  pieces,
+  attunementEnabled,
+  isPieceInCurrentPower,
+  onSelect,
+}: ProcsContentProps) {
+  const isUniqueEnhancementSlotted = useBuildStore((s) => s.isUniqueEnhancementSlotted);
+
+  if (pieces.length === 0) {
+    return <div className="text-center text-gray-500 py-8">No procs available for this power</div>;
+  }
+
+  return (
+    <div className="space-y-1">
+      {pieces.map(({ set, piece, pieceIndex }) => {
+        const setId = set.id || set.name;
+        const outline = getEnhancementOutline(
+          { name: piece.name, proc: piece.proc, unique: piece.unique },
+          set.name,
+        );
+
+        // Check disabled state
+        let disabledReason: string | null = null;
+        if (isPieceInCurrentPower(setId, piece.num)) {
+          disabledReason = 'Already in this power';
+        } else {
+          const isSpecialRarity = set.category === 'purple' || set.category === 'event' || set.category === 'ato';
+          if ((piece.unique || isSpecialRarity) && isUniqueEnhancementSlotted(setId, piece.num)) {
+            disabledReason = 'Already slotted in build';
+          }
+        }
+        const isDisabled = !!disabledReason;
+
+        // Get proc effect info
+        const procData = findProcData(piece.name, set.name);
+        const procEffect = procData ? parseProcEffect(procData.mechanics) : null;
+        const procLabel = procEffect ? getProcEffectLabel(procEffect.category) : null;
+        const procColor = procEffect ? getProcEffectColor(procEffect.category) : outline.color;
+
+        return (
+          <button
+            key={`${setId}-${piece.num}`}
+            onClick={() => !isDisabled && onSelect(set, piece, pieceIndex)}
+            disabled={isDisabled}
+            className={`w-full flex items-center gap-2 p-2 rounded border transition-all ${
+              isDisabled
+                ? 'border-gray-700 opacity-40 cursor-not-allowed bg-gray-900/30'
+                : 'border-gray-600 bg-gray-800/40 hover:border-blue-400 hover:bg-blue-900/10'
+            }`}
+          >
+            {/* Set icon */}
+            <div className="relative flex-shrink-0">
+              <IOSetIcon
+                icon={set.icon || 'Unknown.png'}
+                attuned={attunementEnabled}
+                category={set.category}
+                size={30}
+                alt={piece.name}
+                className="pointer-events-none"
+              />
+              {outline.show && (
+                <div
+                  className="absolute -top-0.5 right-0.5 w-2 h-2 rounded-full border border-gray-900 pointer-events-none"
+                  style={{
+                    background: outline.secondaryColor
+                      ? `linear-gradient(135deg, ${outline.color} 50%, ${outline.secondaryColor} 50%)`
+                      : outline.color,
+                  }}
+                />
+              )}
+            </div>
+
+            {/* Piece info */}
+            <div className="flex-1 text-left min-w-0">
+              <div className="text-sm font-medium text-gray-200 truncate">
+                {piece.name}
+              </div>
+              <div className="text-xs text-gray-500 truncate">
+                {set.name}
+                <span className="text-gray-600"> · Lv {set.minLevel}-{set.maxLevel}</span>
+              </div>
+            </div>
+
+            {/* Proc badge */}
+            <div className="flex-shrink-0 text-right">
+              <span className="text-xs font-medium" style={{ color: procColor }}>
+                {procLabel || 'Proc'}
+              </span>
+              {disabledReason && (
+                <div className="text-xs text-orange-400">{disabledReason}</div>
+              )}
+            </div>
+          </button>
+        );
+      })}
     </div>
   );
 }
