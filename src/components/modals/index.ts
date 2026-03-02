@@ -14,3 +14,4 @@ export { PowerInfoModal } from './PowerInfoModal';
 export { SetBonusLookupModal } from './SetBonusLookupModal';
 export { ControlsModal } from './ControlsModal';
 export { ConfirmModal } from './ConfirmModal';
+export { CompareSlottingModal } from './CompareSlottingModal';

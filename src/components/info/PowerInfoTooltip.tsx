@@ -8,7 +8,7 @@ import { useEffect, useState, useCallback, useMemo } from 'react';
 import { createPortal } from 'react-dom';
 import { useUIStore, useBuildStore, useDominationActive, useScourgeActive, useFuryLevel, useSupremacyActive, useVigilanceTeamSize, useCriticalHitsActive, useStalkerHidden, useStalkerTeamSize, useStalkerCritActive, useContainmentActive, useOpportunityLevel, useSentinelCritActive } from '@/stores';
 import { useGlobalBonuses } from '@/hooks/useCalculatedStats';
-import { lookupPower, getPower, getPowerPool, getArchetype, getIOSet, getPowerset, getInherentPowerDef, findProcData, parseProcEffect, getProcEffectLabel, getProcEffectColor, isProcAlwaysOn, calculateProcChance, calculateProcsPerMinute, calculateProcDPS, calculateAutoToggleProcChance, calculateAutoToggleProcsPerMinute } from '@/data';
+import { lookupPower, getPower, getPowerPool, getArchetype, getIOSet, getPowerset, getInherentPowerDef, findProcData, parseProcEffect, getProcEffectLabel, getProcEffectColor, isProcAlwaysOn, interpolateProcDamage, calculateProcChance, calculateProcsPerMinute, calculateProcDPS, calculateAutoToggleProcChance, calculateAutoToggleProcsPerMinute } from '@/data';
 import { resolvePath } from '@/utils/paths';
 import type { Power } from '@/types';
 import {
@@ -1272,7 +1272,9 @@ function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfoContent
                       {effect.value !== undefined && effect.category === 'Damage' && effect.valueMax && (
                         <div>
                           <span className="text-slate-500">Dmg:</span>
-                          <span className="text-red-400 ml-1">{effect.value}-{effect.valueMax} {effect.effectType}</span>
+                          <span className="text-red-400 ml-1">
+                            {interpolateProcDamage(effect.value, effect.valueMax, procData.levelRange, effectiveLevel)} {effect.effectType}
+                          </span>
                         </div>
                       )}
                       {effect.value !== undefined && effect.category !== 'Damage' && (
@@ -1363,9 +1365,9 @@ function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfoContent
                               </div>
                               {effect.category === 'Damage' && effect.value !== undefined && effect.valueMax !== undefined && (
                                 <div>
-                                  <span className="text-slate-500">Avg DPS:</span>
+                                  <span className="text-slate-500">DPS:</span>
                                   <span className="text-red-400 ml-1">
-                                    {((procsPerMin * (effect.value + effect.valueMax) / 2) / 60).toFixed(1)}
+                                    {((procsPerMin * interpolateProcDamage(effect.value, effect.valueMax, procData.levelRange, effectiveLevel)) / 60).toFixed(1)}
                                   </span>
                                 </div>
                               )}
@@ -1435,14 +1437,17 @@ function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfoContent
                               <span className="text-slate-500">Procs/min:</span>
                               <span className="text-green-400 ml-1">{procsPerMin.toFixed(2)}</span>
                             </div>
-                            {effect.category === 'Damage' && effect.value !== undefined && effect.valueMax !== undefined && (
-                              <div>
-                                <span className="text-slate-500">Avg DPS:</span>
-                                <span className="text-red-400 ml-1">
-                                  {calculateProcDPS(procData.ppm, effect.value, effect.valueMax, recharge, castTime, radius, 0).toFixed(1)}
-                                </span>
-                              </div>
-                            )}
+                            {effect.category === 'Damage' && effect.value !== undefined && effect.valueMax !== undefined && (() => {
+                              const dmgAtLevel = interpolateProcDamage(effect.value, effect.valueMax, procData.levelRange, effectiveLevel);
+                              return (
+                                <div>
+                                  <span className="text-slate-500">DPS:</span>
+                                  <span className="text-red-400 ml-1">
+                                    {calculateProcDPS(procData.ppm, dmgAtLevel, dmgAtLevel, recharge, castTime, radius, 0).toFixed(1)}
+                                  </span>
+                                </div>
+                              );
+                            })()}
                             {/* Endurance per second for endurance procs */}
                             {effect.category === 'Endurance' && effect.value !== undefined && (
                               <div>

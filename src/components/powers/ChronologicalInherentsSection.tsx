@@ -237,6 +237,7 @@ function InherentGroup({
   onClearAllEnhancements,
 }: InherentGroupProps) {
   const openEnhancementPicker = useUIStore((s) => s.openEnhancementPicker);
+  const openCompareSlotting = useUIStore((s) => s.openCompareSlotting);
   const sortedPowers = [...powers].sort((a, b) => a.available - b.available);
 
   return (
@@ -269,6 +270,7 @@ function InherentGroup({
               onLeave={onPowerLeave}
               onEnhancementHover={(index) => onEnhancementHover(power.name, index)}
               onRightClick={(e) => onPowerRightClick(e, power)}
+              onCompareSlotting={() => openCompareSlotting(power.name, 'Inherent')}
             />
           );
         })}

@@ -19,6 +19,7 @@ export interface SlotContextMenuProps {
   onRemoveSlot: () => void;
   onClearAllEnhancements: () => void;
   onRemoveAllSlots: () => void;
+  onCompareSlotting?: () => void;
 }
 
 export function SlotContextMenu({
@@ -32,6 +33,7 @@ export function SlotContextMenu({
   onRemoveSlot,
   onClearAllEnhancements,
   onRemoveAllSlots,
+  onCompareSlotting,
 }: SlotContextMenuProps) {
   const menuRef = useRef<HTMLDivElement>(null);
   const [backdropActive, setBackdropActive] = useState(false);
@@ -172,6 +174,22 @@ export function SlotContextMenu({
 
         {/* Divider for bulk actions */}
         <div className="border-t border-slate-600 my-1" />
+
+        {/* Compare slotting */}
+        {onCompareSlotting && (
+          <button
+            onClick={() => handleAction(onCompareSlotting)}
+            onTouchEnd={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              handleAction(onCompareSlotting);
+            }}
+            className="w-full px-3 py-2 text-left text-sm text-slate-200 hover:bg-slate-700 active:bg-slate-600 flex items-center gap-2"
+          >
+            <span className="text-cyan-400">&#x2696;</span>
+            Compare Slotting
+          </button>
+        )}
 
         {/* Bulk actions */}
         <button

@@ -62,9 +62,10 @@ export const DarkConsumption: Power = {
     }
   ],
   "effects": {
-    "enduranceGain": {
-      "scale": 25,
-      "table": "Melee_Ones"
+      "enduranceGain": {
+        "scale": 25,
+        "table": "Melee_Ones",
+        "perTarget": 25
+      }
     }
-  }
 };

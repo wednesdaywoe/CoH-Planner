@@ -33,6 +33,7 @@ export function SelectedPowers({ category }: SelectedPowersProps) {
   const infoPanelLocked = useUIStore((s) => s.infoPanel.locked);
   const lockedContent = useUIStore((s) => s.infoPanel.lockedContent);
   const openEnhancementPicker = useUIStore((s) => s.openEnhancementPicker);
+  const openCompareSlotting = useUIStore((s) => s.openCompareSlotting);
 
   const selection = category === 'primary' ? build.primary : build.secondary;
   const powersetId = selection.id || '';
@@ -194,6 +195,7 @@ export function SelectedPowers({ category }: SelectedPowersProps) {
                   onLeave={handlePowerLeave}
                   onEnhancementHover={(index) => handleEnhancementHover(power.name, index)}
                   onRightClick={(e) => handlePowerRightClick(e, power)}
+                  onCompareSlotting={() => openCompareSlotting(power.name, power.powerSet || powersetId)}
                 />
 
                 {/* Granted sub-powers display (simple toggles) */}
@@ -238,6 +240,7 @@ export function SelectedPowers({ category }: SelectedPowersProps) {
                           onLeave={handlePowerLeave}
                           onEnhancementHover={(index) => handleEnhancementHover(subPower.name, index)}
                           onRightClick={(e) => handlePowerRightClick(e, subPower)}
+                          onCompareSlotting={() => openCompareSlotting(subPower.name, subPower.powerSet || powersetId)}
                         />
                       );
                     })}

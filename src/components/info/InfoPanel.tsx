@@ -30,6 +30,7 @@ import { resolvePath } from '@/utils/paths';
 import type {
   ArchetypeId,
   Power,
+  PowerEffects,
   IncarnateSlotId,
   ToggleableIncarnateSlot,
   SummonEffect,
@@ -89,6 +90,75 @@ export function InfoPanel() {
       )}
     </div>
   );
+}
+
+/**
+ * Check if a value (or by-type sub-values) has a perTarget field.
+ */
+function hasPerTargetField(value: unknown): boolean {
+  if (typeof value !== 'object' || value === null) return false;
+  if ('perTarget' in value) return true;
+  // Check by-type sub-objects (defenseBuff, resistance, etc.)
+  for (const subVal of Object.values(value as Record<string, unknown>)) {
+    if (typeof subVal === 'object' && subVal !== null && 'perTarget' in subVal) return true;
+  }
+  return false;
+}
+
+/**
+ * Data-driven detection: show per-target slider when effects have perTarget metadata.
+ */
+function getPerTargetBuffInfo(power: Power): { maxTargets: number } | null {
+  const maxTargets = power.stats?.maxTargets;
+  if (!maxTargets || maxTargets <= 1 || maxTargets === 255) return null;
+  if (!power.effects) return null;
+
+  const hasPerTarget = Object.values(power.effects).some(v => hasPerTargetField(v));
+  if (!hasPerTarget) return null;
+  return { maxTargets };
+}
+
+/**
+ * Adjust ScaledEffect scale values for per-target stacking.
+ * At N targets: effective_scale = scale + perTarget × (N - 1)
+ * Recursively handles by-type objects (defenseBuff, resistance).
+ */
+function adjustScaledValue(value: unknown, targetsHit: number): unknown {
+  if (typeof value !== 'object' || value === null) return value;
+  if ('scale' in value && 'perTarget' in value) {
+    const se = value as { scale: number; table: string; perTarget?: number };
+    if (se.perTarget && targetsHit > 1) {
+      return { ...se, scale: se.scale + se.perTarget * (targetsHit - 1) };
+    }
+    return value;
+  }
+  // By-type object — recurse into sub-entries
+  const result: Record<string, unknown> = {};
+  let changed = false;
+  for (const [k, v] of Object.entries(value as Record<string, unknown>)) {
+    const adjusted = adjustScaledValue(v, targetsHit);
+    result[k] = adjusted;
+    if (adjusted !== v) changed = true;
+  }
+  return changed ? result : value;
+}
+
+/**
+ * Create an adjusted copy of effects with per-target scale values multiplied.
+ */
+function adjustEffectsForTargets(
+  effects: PowerEffects,
+  targetsHit: number
+): PowerEffects {
+  if (targetsHit <= 1) return effects;
+  const adjusted: Record<string, unknown> = {};
+  let changed = false;
+  for (const [key, value] of Object.entries(effects)) {
+    const adj = adjustScaledValue(value, targetsHit);
+    adjusted[key] = adj;
+    if (adj !== value) changed = true;
+  }
+  return (changed ? adjusted : effects) as PowerEffects;
 }
 
 interface PowerInfoProps {
@@ -188,7 +258,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
       },
       { damage: enhancementBonuses.damage || 0 },
       globalBonusesForCalc.damage,
-      0 // active buffs (from powers like Build Up) - not tracked yet
+      0
     );
   }, [power, build.level, archetypeId, powersetName, enhancementBonuses.damage, globalBonusesForCalc.damage, powerSet, build.primary.id, build.secondary.id]);
 
@@ -242,6 +312,11 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
     return { header, color, applyBonus, showContainment };
   }, [calculatedDamage, archetypeId, powerSet, containmentActive, scourgeActive, furyLevel,
       criticalHitsActive, stalkerHidden, stalkerTeamSize, stalkerCritActive, sentinelCritActive, opportunityLevel]);
+
+  // Per-target buff scaling (stored in UI store so it persists across power switches)
+  const perTargetInfo = useMemo(() => power ? getPerTargetBuffInfo(power) : null, [power]);
+  const targetsHit = useUIStore((s) => s.targetsHitValues[powerName] ?? 0);
+  const setTargetsHit = useUIStore((s) => s.setTargetsHit);
 
   if (!power) {
     return <div className="text-slate-500 text-xs">Power not found</div>;
@@ -352,9 +427,36 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
         />
       )}
 
+      {/* Per-target buff slider */}
+      {perTargetInfo && (() => {
+        // Disable slider when Toggle/Auto power is toggled off
+        const isToggleOff = selectedPower &&
+          (selectedPower.powerType === 'Toggle' || selectedPower.powerType === 'Auto') &&
+          selectedPower.isActive === false;
+        const effectiveTargets = isToggleOff ? 0 : targetsHit;
+
+        return (
+          <div className={`flex items-center gap-2 bg-slate-800/50 rounded px-2 py-1.5 ${isToggleOff ? 'opacity-50' : ''}`}>
+            <span className="text-[10px] text-slate-400 whitespace-nowrap">Targets Hit</span>
+            <input
+              type="range"
+              min={0}
+              max={perTargetInfo.maxTargets}
+              value={effectiveTargets}
+              onChange={(e) => setTargetsHit(powerName, Number(e.target.value))}
+              disabled={!!isToggleOff}
+              className="flex-1 h-1 accent-blue-500 cursor-pointer disabled:opacity-50"
+            />
+            <span className="text-[10px] text-slate-200 font-mono w-10 text-right">
+              {effectiveTargets === 0 ? 'Off' : `${effectiveTargets} / ${perTargetInfo.maxTargets}`}
+            </span>
+          </div>
+        );
+      })()}
+
       {/* Registry-driven Power Effects display */}
       <RegistryEffectsDisplay
-        effects={effects}
+        effects={perTargetInfo && targetsHit > 1 ? adjustEffectsForTargets(effects, targetsHit) : effects}
         allowedEnhancements={power?.allowedEnhancements || []}
         enhancementBonuses={enhancementBonuses}
         globalBonuses={globalBonusesForCalc}

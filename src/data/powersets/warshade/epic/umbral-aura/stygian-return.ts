@@ -50,14 +50,15 @@ export const StygianReturn: Power = {
     }
   ],
   "effects": {
-    "enduranceGain": {
-      "scale": 30,
-      "table": "Melee_Ones"
-    },
-    "immobilize": {
-      "mag": 50,
-      "scale": 4,
-      "table": "Melee_Ones"
+      "enduranceGain": {
+        "scale": 30,
+        "table": "Melee_Ones",
+        "perTarget": 30
+      },
+      "immobilize": {
+        "mag": 50,
+        "scale": 4,
+        "table": "Melee_Ones"
+      }
     }
-  }
 };

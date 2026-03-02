@@ -362,8 +362,20 @@ function buildStatBreakdown(
 // ============================================
 
 type ScalarOrScaled = number | { scale: number; table?: string };
-
 type MezScaled = { mag?: number; scale: number; table: string };
+
+/**
+ * Adjust a scaled effect for per-target stacking.
+ * If the effect has a perTarget field and targetsHit > 1, adjusts the scale.
+ * Returns the original value for non-per-target effects.
+ */
+function adjustForPerTarget(value: ScalarOrScaled, targetsHit?: number): ScalarOrScaled {
+  if (!targetsHit || targetsHit <= 1) return value;
+  if (typeof value !== 'object' || value === null) return value;
+  const obj = value as { scale: number; table?: string; perTarget?: number };
+  if (!obj.perTarget) return value;
+  return { ...value, scale: value.scale + obj.perTarget * (targetsHit - 1) };
+}
 
 interface ActivePowerEffect {
   tohitBuff?: number;
@@ -417,7 +429,8 @@ function applyActivePowerBonuses(
   buildLevel: number,
   archetypeId: string,
   alphaBonuses: EnhancementBonuses = {},
-  baseMaxHP: number = 0
+  baseMaxHP: number = 0,
+  targetsHitValues: Record<string, number> = {}
 ): void {
   for (const power of powers) {
     // Auto powers are always active; others require explicit isActive toggle
@@ -448,7 +461,8 @@ function applyActivePowerBonuses(
     // Enhanced by ToHit enhancements
     if (effects.tohitBuff !== undefined) {
       const enhMultiplier = 1 + (enhBonuses.tohit || 0);
-      const value = resolveScaledEffect(effects.tohitBuff as ScalarOrScaled, archetypeId, buildLevel) * 100 * enhMultiplier;
+      const adjustedBuff = adjustForPerTarget(effects.tohitBuff as ScalarOrScaled, targetsHitValues[power.name]);
+      const value = resolveScaledEffect(adjustedBuff, archetypeId, buildLevel) * 100 * enhMultiplier;
       global.toHit += value;
       addToBreakdown(breakdown, 'toHit', {
         name: power.name,
@@ -461,7 +475,8 @@ function applyActivePowerBonuses(
     // Enhanced by Damage enhancements
     if (effects.damageBuff !== undefined) {
       const enhMultiplier = 1 + (enhBonuses.damage || 0);
-      const value = resolveScaledEffect(effects.damageBuff as ScalarOrScaled, archetypeId, buildLevel) * 100 * enhMultiplier;
+      const adjustedBuff = adjustForPerTarget(effects.damageBuff as ScalarOrScaled, targetsHitValues[power.name]);
+      const value = resolveScaledEffect(adjustedBuff, archetypeId, buildLevel) * 100 * enhMultiplier;
       global.damage += value;
       addToBreakdown(breakdown, 'damage', {
         name: power.name,
@@ -477,7 +492,8 @@ function applyActivePowerBonuses(
     if (defenseEffects && typeof defenseEffects === 'object') {
       const enhMultiplier = 1 + (enhBonuses.defense || enhBonuses.defenseBuff || 0);
       for (const [type, value] of Object.entries(defenseEffects)) {
-        const percentage = resolveScaledEffect(value, archetypeId, buildLevel) * 100 * enhMultiplier;
+        const adjustedDef = adjustForPerTarget(value, targetsHitValues[power.name]);
+        const percentage = resolveScaledEffect(adjustedDef, archetypeId, buildLevel) * 100 * enhMultiplier;
         const key = `def${capitalizeFirst(type)}` as keyof GlobalBonuses;
         if (key in global) {
           global[key] += percentage;
@@ -587,10 +603,14 @@ function applyActivePowerBonuses(
     // Enhanced by Healing enhancements
     if (effects.regenBuff !== undefined) {
       const enhMultiplier = 1 + (enhBonuses.heal || 0);
-      const value = resolveScaledEffect(effects.regenBuff, archetypeId, buildLevel) * 100 * enhMultiplier;
+      const adjustedRegen = adjustForPerTarget(effects.regenBuff as ScalarOrScaled, targetsHitValues[power.name]);
+      const value = resolveScaledEffect(adjustedRegen, archetypeId, buildLevel) * 100 * enhMultiplier;
       // If the power also has an unenhanced portion, combine into one breakdown entry
-      const unenhValue = effects.regenBuffUnenhanced !== undefined
-        ? resolveScaledEffect(effects.regenBuffUnenhanced, archetypeId, buildLevel) * 100
+      const adjustedRegenUnenh = effects.regenBuffUnenhanced !== undefined
+        ? adjustForPerTarget(effects.regenBuffUnenhanced as ScalarOrScaled, targetsHitValues[power.name])
+        : undefined;
+      const unenhValue = adjustedRegenUnenh !== undefined
+        ? resolveScaledEffect(adjustedRegenUnenh, archetypeId, buildLevel) * 100
         : 0;
       const totalValue = value + unenhValue;
       global.regeneration += totalValue;
@@ -601,7 +621,8 @@ function applyActivePowerBonuses(
       });
     } else if (effects.regenBuffUnenhanced !== undefined) {
       // Power only has unenhanceable regen (no enhanceable portion)
-      const value = resolveScaledEffect(effects.regenBuffUnenhanced, archetypeId, buildLevel) * 100;
+      const adjustedUnenhOnly = adjustForPerTarget(effects.regenBuffUnenhanced as ScalarOrScaled, targetsHitValues[power.name]);
+      const value = resolveScaledEffect(adjustedUnenhOnly, archetypeId, buildLevel) * 100;
       global.regeneration += value;
       addToBreakdown(breakdown, 'regeneration', {
         name: power.name,
@@ -614,7 +635,8 @@ function applyActivePowerBonuses(
     // Enhanced by Endurance Modification enhancements
     if (effects.recoveryBuff !== undefined) {
       const enhMultiplier = 1 + (enhBonuses.enduranceMod || 0);
-      const value = resolveScaledEffect(effects.recoveryBuff, archetypeId, buildLevel) * 100 * enhMultiplier;
+      const adjustedRecovery = adjustForPerTarget(effects.recoveryBuff as ScalarOrScaled, targetsHitValues[power.name]);
+      const value = resolveScaledEffect(adjustedRecovery, archetypeId, buildLevel) * 100 * enhMultiplier;
       global.recovery += value;
       addToBreakdown(breakdown, 'recovery', {
         name: power.name,
@@ -1759,6 +1781,8 @@ function buildToBuildPowers(build: Build): BuildPowers {
 export interface CalculationOptions {
   /** Include proc bonuses in stat calculations (default: true) */
   includeProcs?: boolean;
+  /** Per-target slider values keyed by power name (0 = inactive, 1+ = targets hit) */
+  targetsHitValues?: Record<string, number>;
 }
 
 /**
@@ -1821,7 +1845,7 @@ export function calculateCharacterTotals(
 
   // Step 7: Apply active toggle power bonuses (with enhancement multipliers + Alpha bonuses)
   const baseMaxHP = getBaselineHealth(build.archetype?.id ?? undefined, effectiveLevel).baseHealth;
-  applyActivePowerBonuses(allPowers, globalBonuses, breakdown, effectiveLevel, build.archetype.id || '', alphaBonuses, baseMaxHP);
+  applyActivePowerBonuses(allPowers, globalBonuses, breakdown, effectiveLevel, build.archetype.id || '', alphaBonuses, baseMaxHP, options?.targetsHitValues ?? {});
 
   // Step 7.5: Apply always-on proc bonuses (Global and Proc120s in Auto/Toggle powers)
   // Procs have their own Rule of 5 tracking, separate from set bonuses

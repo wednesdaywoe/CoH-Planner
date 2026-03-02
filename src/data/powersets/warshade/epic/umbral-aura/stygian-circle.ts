@@ -58,9 +58,10 @@ export const StygianCircle: Power = {
     }
   ],
   "effects": {
-    "enduranceGain": {
-      "scale": 20,
-      "table": "Melee_Ones"
+      "enduranceGain": {
+        "scale": 20,
+        "table": "Melee_Ones",
+        "perTarget": 20
+      }
     }
-  }
 };

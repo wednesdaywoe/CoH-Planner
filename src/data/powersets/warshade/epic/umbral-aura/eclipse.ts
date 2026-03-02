@@ -37,51 +37,60 @@ export const Eclipse: Power = {
   },
   "targetType": "Self",
   "effects": {
-    "enduranceDrain": {
-      "scale": 0.33,
-      "table": "Melee_Ones"
-    },
-    "recoveryDebuff": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
-    "enduranceGain": {
-      "scale": 25,
-      "table": "Melee_Ones"
-    },
-    "resistance": {
-      "smashing": {
-        "scale": 1.5,
-        "table": "Melee_Res_Dmg"
+      "enduranceDrain": {
+        "scale": 0.33,
+        "table": "Melee_Ones"
       },
-      "lethal": {
-        "scale": 1.5,
-        "table": "Melee_Res_Dmg"
+      "recoveryDebuff": {
+        "scale": 1,
+        "table": "Melee_Ones"
       },
-      "fire": {
-        "scale": 1.5,
-        "table": "Melee_Res_Dmg"
+      "enduranceGain": {
+        "scale": 25,
+        "table": "Melee_Ones",
+        "perTarget": 25
       },
-      "cold": {
-        "scale": 1.5,
-        "table": "Melee_Res_Dmg"
-      },
-      "energy": {
-        "scale": 1.5,
-        "table": "Melee_Res_Dmg"
-      },
-      "negative": {
-        "scale": 1.5,
-        "table": "Melee_Res_Dmg"
-      },
-      "psionic": {
-        "scale": 1.5,
-        "table": "Melee_Res_Dmg"
-      },
-      "toxic": {
-        "scale": 1.5,
-        "table": "Melee_Res_Dmg"
+      "resistance": {
+        "smashing": {
+          "scale": 1.5,
+          "table": "Melee_Res_Dmg",
+          "perTarget": 1.5
+        },
+        "lethal": {
+          "scale": 1.5,
+          "table": "Melee_Res_Dmg",
+          "perTarget": 1.5
+        },
+        "fire": {
+          "scale": 1.5,
+          "table": "Melee_Res_Dmg",
+          "perTarget": 1.5
+        },
+        "cold": {
+          "scale": 1.5,
+          "table": "Melee_Res_Dmg",
+          "perTarget": 1.5
+        },
+        "energy": {
+          "scale": 1.5,
+          "table": "Melee_Res_Dmg",
+          "perTarget": 1.5
+        },
+        "negative": {
+          "scale": 1.5,
+          "table": "Melee_Res_Dmg",
+          "perTarget": 1.5
+        },
+        "psionic": {
+          "scale": 1.5,
+          "table": "Melee_Res_Dmg",
+          "perTarget": 1.5
+        },
+        "toxic": {
+          "scale": 1.5,
+          "table": "Melee_Res_Dmg",
+          "perTarget": 1.5
+        }
       }
     }
-  }
 };

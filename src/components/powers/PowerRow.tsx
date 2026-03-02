@@ -67,6 +67,7 @@ interface PowerRowProps {
   onLeave?: () => void;
   onEnhancementHover?: (slotIndex: number) => void;
   onRightClick?: (e: React.MouseEvent) => void;
+  onCompareSlotting?: () => void;
 }
 
 export function PowerRow({
@@ -96,6 +97,7 @@ export function PowerRow({
   onLeave,
   onEnhancementHover,
   onRightClick,
+  onCompareSlotting,
 }: PowerRowProps) {
   const slotSize = SLOT_SIZE_MAP[size];
   const ghostSize = GHOST_SIZE_MAP[size];
@@ -167,6 +169,7 @@ export function PowerRow({
           onRemoveSlot={() => onRemoveSlot?.(index)}
           onClearAllEnhancements={() => onClearAllEnhancements?.()}
           onRemoveAllSlots={() => onRemoveAllSlots?.()}
+          onCompareSlotting={onCompareSlotting}
         />
       ))}
       {onAddSlots && (

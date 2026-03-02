@@ -24,6 +24,7 @@ import type {
   IncarnateActiveState,
   ToggleableIncarnateSlot,
   ArchetypeBranchId,
+  Enhancement,
 } from '@/types';
 import { createDefaultIncarnateActiveState } from '@/types';
 
@@ -152,16 +153,23 @@ interface UIState {
   /** Selected branch for Arachnos Epic ATs (Soldier: bane-spider/crab-spider, Widow: night-widow/fortunata) */
   selectedBranch: ArchetypeBranchId | null;
 
+  /** Compare Slotting modal */
+  compareSlottingOpen: boolean;
+  compareSlottingPower: { powerName: string; powerSet: string } | null;
+
   /** Power view mode: 'category' (default) or 'chronological' (Mids-style) */
   powerViewMode: 'category' | 'chronological';
 
   /** Tracked stats — breakdownKey values for stats the user wants to chase via set bonuses */
   trackedStats: string[];
+
+  /** Per-target slider values keyed by power name (0 = buff inactive, 1+ = targets hit) */
+  targetsHitValues: Record<string, number>;
 }
 
 interface UIActions {
   // Enhancement Picker Modal
-  openEnhancementPicker: (powerName: string, powerSet: string, slotIndex: number) => void;
+  openEnhancementPicker: (powerName: string, powerSet: string, slotIndex: number, overrideSelect?: (slotIndex: number, enhancement: Enhancement) => void, virtualSlots?: (Enhancement | null)[]) => void;
   closeEnhancementPicker: () => void;
   setPickerView: (view: ModalView) => void;
   pushPickerView: (view: ModalView) => void;
@@ -306,6 +314,10 @@ interface UIActions {
   setSelectedBranch: (branch: ArchetypeBranchId | null) => void;
   clearSelectedBranch: () => void;
 
+  // Compare Slotting Modal
+  openCompareSlotting: (powerName: string, powerSet: string) => void;
+  closeCompareSlotting: () => void;
+
   // Power View Mode
   setPowerViewMode: (mode: 'category' | 'chronological') => void;
   togglePowerViewMode: () => void;
@@ -313,6 +325,9 @@ interface UIActions {
   // Tracked Stats
   toggleTrackedStat: (breakdownKey: string) => void;
   clearTrackedStats: () => void;
+
+  // Per-target slider
+  setTargetsHit: (powerName: string, value: number) => void;
 }
 
 type UIStore = UIState & UIActions;
@@ -330,6 +345,8 @@ const defaultEnhancementPicker: EnhancementPickerState = {
   currentSlotIndex: 0,
   currentCategory: null,
   selectedSetId: null,
+  onOverrideSelect: null,
+  virtualSlots: null,
 };
 
 const defaultGenericPicker: GenericPickerState = {
@@ -417,11 +434,14 @@ export const useUIStore = create<UIStore>()(
       opportunityLevel: 50, // Default to 50 (reasonable mid-combat average)
       sentinelCritActive: false, // Default to OFF (like Critical Hits)
       selectedBranch: null, // No branch selected by default
+      compareSlottingOpen: false,
+      compareSlottingPower: null,
       powerViewMode: 'category', // Default to category-based view
       trackedStats: [], // No tracked stats by default
+      targetsHitValues: {}, // No per-target overrides by default
 
       // Enhancement Picker Modal
-      openEnhancementPicker: (powerName, powerSet, slotIndex) =>
+      openEnhancementPicker: (powerName, powerSet, slotIndex, overrideSelect, virtualSlots) =>
         set({
           enhancementPicker: {
             ...defaultEnhancementPicker,
@@ -429,6 +449,8 @@ export const useUIStore = create<UIStore>()(
             currentPowerName: powerName,
             currentPowerSet: powerSet,
             currentSlotIndex: slotIndex,
+            onOverrideSelect: overrideSelect ?? null,
+            virtualSlots: virtualSlots ?? null,
           },
         }),
 
@@ -923,6 +945,13 @@ export const useUIStore = create<UIStore>()(
       clearSelectedBranch: () =>
         set({ selectedBranch: null }),
 
+      // Compare Slotting Modal
+      openCompareSlotting: (powerName, powerSet) =>
+        set({ compareSlottingOpen: true, compareSlottingPower: { powerName, powerSet } }),
+
+      closeCompareSlotting: () =>
+        set({ compareSlottingOpen: false, compareSlottingPower: null }),
+
       // Power View Mode
       setPowerViewMode: (mode) =>
         set({ powerViewMode: mode }),
@@ -940,6 +969,12 @@ export const useUIStore = create<UIStore>()(
             : [...state.trackedStats, breakdownKey],
         })),
       clearTrackedStats: () => set({ trackedStats: [] }),
+
+      // Per-target slider
+      setTargetsHit: (powerName, value) =>
+        set((state) => ({
+          targetsHitValues: { ...state.targetsHitValues, [powerName]: value },
+        })),
     }),
     {
       name: 'coh-planner-ui',
@@ -1062,3 +1097,7 @@ export const useSentinelCritActive = () => useUIStore((state) => state.sentinelC
 
 /** Select power view mode */
 export const usePowerViewMode = () => useUIStore((state) => state.powerViewMode);
+
+/** Select targets-hit value for a specific power */
+export const useTargetsHit = (powerName: string) =>
+  useUIStore((state) => state.targetsHitValues[powerName] ?? 0);

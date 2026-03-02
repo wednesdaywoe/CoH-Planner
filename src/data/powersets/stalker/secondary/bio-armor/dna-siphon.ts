@@ -67,21 +67,24 @@ export const DNASiphon: Power = {
     }
   ],
   "effects": {
-    "enduranceGain": {
-      "scale": 5,
-      "table": "Melee_Ones"
-    },
-    "regenBuff": {
-      "scale": 0.06,
-      "table": "Melee_Ones"
-    },
-    "recoveryBuff": {
-      "scale": 0.0938,
-      "table": "Melee_Ones"
-    },
-    "regenDebuff": {
-      "scale": 1.33,
-      "table": "Melee_Ones"
+      "enduranceGain": {
+        "scale": 5,
+        "table": "Melee_Ones",
+        "perTarget": 5
+      },
+      "regenBuff": {
+        "scale": 0.26,
+        "table": "Melee_Ones",
+        "perTarget": 0.26
+      },
+      "recoveryBuff": {
+        "scale": 0.2188,
+        "table": "Melee_Ones",
+        "perTarget": 0.2188
+      },
+      "regenDebuff": {
+        "scale": 1.33,
+        "table": "Melee_Ones"
+      }
     }
-  }
 };

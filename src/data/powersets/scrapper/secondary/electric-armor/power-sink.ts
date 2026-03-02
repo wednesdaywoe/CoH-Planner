@@ -37,17 +37,19 @@ export const PowerSink: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "enduranceGain": {
-      "scale": 15,
-      "table": "Melee_Ones"
-    },
-    "regenBuff": {
-      "scale": 0.175,
-      "table": "Melee_Ones"
-    },
-    "enduranceDrain": {
-      "scale": 0.35,
-      "table": "Melee_Ones"
+      "enduranceGain": {
+        "scale": 15,
+        "table": "Melee_Ones",
+        "perTarget": 15
+      },
+      "regenBuff": {
+        "scale": 0.35,
+        "table": "Melee_Ones",
+        "perTarget": 0.175
+      },
+      "enduranceDrain": {
+        "scale": 0.35,
+        "table": "Melee_Ones"
+      }
     }
-  }
 };

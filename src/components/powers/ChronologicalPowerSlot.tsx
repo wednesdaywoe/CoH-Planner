@@ -63,6 +63,7 @@ export function ChronologicalPowerSlot({
   const infoPanelLocked = useUIStore((s) => s.infoPanel.locked);
   const lockedContent = useUIStore((s) => s.infoPanel.lockedContent);
   const openEnhancementPicker = useUIStore((s) => s.openEnhancementPicker);
+  const openCompareSlotting = useUIStore((s) => s.openCompareSlotting);
 
   // Get the powerset display name for icon lookup
   // Primary/secondary: look up from powerset registry
@@ -195,6 +196,7 @@ export function ChronologicalPowerSlot({
       onLeave={handlePowerLeave}
       onEnhancementHover={handleEnhancementHover}
       onRightClick={handleRightClick}
+      onCompareSlotting={() => openCompareSlotting(power.name, power.powerSet)}
     />
   );
 }

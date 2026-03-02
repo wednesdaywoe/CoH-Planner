@@ -16,14 +16,14 @@ import {
   createIOSetEnhancement, createGenericIOEnhancement, createSpecialEnhancement, createOriginEnhancement,
   getAvailableGenericIOs, getAvailableHamidons, getAvailableTitans, getAvailableHydras, getAvailableDSyncs,
   getRarityColor, getTierTextColor, getTierBorderColor,
-  findProcData, parseProcEffect, getProcEffectLabel, getProcEffectColor, isProcAlwaysOn,
+  findProcData, parseProcEffect, getProcEffectLabel, getProcEffectColor, isProcAlwaysOn, interpolateProcDamage,
 } from '@/data';
 import { normalizeAspectName, getAspectSchedule, getIOValueAtLevel, normalizeStatName } from '@/utils/calculations';
 import { getPairedStat } from '@/utils/calculations/set-bonuses';
 import { Modal, ModalBody } from '@/components/modals';
 import { Tooltip, Toggle } from '@/components/ui';
 import { IOSetIcon, GenericIOIcon, OriginEnhancementIcon, SpecialEnhancementIcon } from './EnhancementIcon';
-import type { IOSet, IOSetPiece, EnhancementStatType, SpecialEnhancementDef, IOSetCategory, SpecialEnhancement } from '@/types';
+import type { IOSet, IOSetPiece, EnhancementStatType, SpecialEnhancementDef, IOSetCategory, SpecialEnhancement, Enhancement } from '@/types';
 import { getSetTrackedMatches } from '@/data/set-bonus-index';
 import { getEnhancementOutline } from '@/utils/enhancement-outline';
 
@@ -99,15 +99,17 @@ export function EnhancementPicker() {
   }, [picker.currentPowerName, build]);
 
   // Get indices of empty slots (starting from currentSlotIndex)
+  // When virtualSlots is set (compare modal), use those instead of the build's slots
   const emptySlotIndices = useMemo(() => {
+    const slots = picker.virtualSlots ?? currentPowerSlots;
     const indices: number[] = [];
-    for (let i = picker.currentSlotIndex; i < currentPowerSlots.length; i++) {
-      if (!currentPowerSlots[i]) {
+    for (let i = picker.currentSlotIndex; i < slots.length; i++) {
+      if (!slots[i]) {
         indices.push(i);
       }
     }
     return indices;
-  }, [currentPowerSlots, picker.currentSlotIndex]);
+  }, [currentPowerSlots, picker.currentSlotIndex, picker.virtualSlots]);
 
   // Get available IO sets for the current power
   const availableSets = useMemo(() => {
@@ -214,10 +216,19 @@ export function EnhancementPicker() {
   const makeIOSetEnhancement = (set: IOSet, piece: IOSetPiece, pieceIndex: number) =>
     createIOSetEnhancement(set, piece, pieceIndex, { attuned: attunementEnabled, level: globalIOLevel, boost: globalBoostLevel });
 
+  // Unified placement: routes to override handler (Compare Slotting) or build store
+  const placeEnhancement = (powerName: string, slotIndex: number, enhancement: Enhancement) => {
+    if (picker.onOverrideSelect) {
+      picker.onOverrideSelect(slotIndex, enhancement);
+    } else {
+      setEnhancement(powerName, slotIndex, enhancement);
+    }
+  };
+
   // Handle selecting an IO set piece (single click)
   const handleSelectSetPiece = (set: IOSet, piece: IOSetPiece, pieceIndex: number) => {
     if (!picker.currentPowerName) return;
-    setEnhancement(picker.currentPowerName, picker.currentSlotIndex, makeIOSetEnhancement(set, piece, pieceIndex));
+    placeEnhancement(picker.currentPowerName, picker.currentSlotIndex, makeIOSetEnhancement(set, piece, pieceIndex));
     closeEnhancementPicker();
   };
 
@@ -243,7 +254,7 @@ export function EnhancementPicker() {
     const slotsToFill = emptySlotIndices.slice(0, allPieces.length);
     allPieces.forEach(({ set, piece, pieceIndex }, idx) => {
       if (idx < slotsToFill.length) {
-        setEnhancement(
+        placeEnhancement(
           picker.currentPowerName!,
           slotsToFill[idx],
           makeIOSetEnhancement(set, piece, pieceIndex)
@@ -298,7 +309,7 @@ export function EnhancementPicker() {
     selectedPieces.forEach((piece, idx) => {
       const pieceIndex = minIndex + idx;
       if (idx < slotsToFill.length) {
-        setEnhancement(
+        placeEnhancement(
           picker.currentPowerName!,
           slotsToFill[idx],
           makeIOSetEnhancement(set, piece, pieceIndex)
@@ -435,21 +446,21 @@ export function EnhancementPicker() {
   // Handle selecting a generic IO
   const handleSelectGenericIO = (stat: EnhancementStatType) => {
     if (!picker.currentPowerName) return;
-    setEnhancement(picker.currentPowerName, picker.currentSlotIndex, createGenericIOEnhancement(stat, globalIOLevel, globalBoostLevel));
+    placeEnhancement(picker.currentPowerName, picker.currentSlotIndex, createGenericIOEnhancement(stat, globalIOLevel, globalBoostLevel));
     closeEnhancementPicker();
   };
 
   // Handle selecting an origin enhancement
   const handleSelectOrigin = (stat: EnhancementStatType, tier: 'TO' | 'DO' | 'SO') => {
     if (!picker.currentPowerName) return;
-    setEnhancement(picker.currentPowerName, picker.currentSlotIndex, createOriginEnhancement(stat, tier, buildOrigin, globalBoostLevel));
+    placeEnhancement(picker.currentPowerName, picker.currentSlotIndex, createOriginEnhancement(stat, tier, buildOrigin, globalBoostLevel));
     closeEnhancementPicker();
   };
 
   // Handle selecting a special enhancement (Hamidon, Titan, Hydra, D-Sync)
   const handleSelectSpecial = (id: string, def: SpecialEnhancementDef, category: SpecialEnhancement['category']) => {
     if (!picker.currentPowerName) return;
-    setEnhancement(picker.currentPowerName, picker.currentSlotIndex, createSpecialEnhancement(id, def, category, globalBoostLevel));
+    placeEnhancement(picker.currentPowerName, picker.currentSlotIndex, createSpecialEnhancement(id, def, category, globalBoostLevel));
     closeEnhancementPicker();
   };
 
@@ -1548,7 +1559,9 @@ function SetPieceTooltip({ set, piece }: SetPieceTooltipProps) {
                     {effect.value !== undefined && effect.category === 'Damage' && effect.valueMax && (
                       <div>
                         <span className="text-slate-500">Dmg:</span>
-                        <span className="text-red-400 ml-1">{effect.value}-{effect.valueMax} {effect.effectType}</span>
+                        <span className="text-red-400 ml-1">
+                          {interpolateProcDamage(effect.value, effect.valueMax, procData.levelRange, globalIOLevel)} {effect.effectType}
+                        </span>
                       </div>
                     )}
                     {effect.value !== undefined && effect.category !== 'Damage' && (

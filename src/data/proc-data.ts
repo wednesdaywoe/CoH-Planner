@@ -1801,6 +1801,33 @@ export function calculateProcsPerMinute(
  * @param enhancedRechargeBonus - Recharge enhancement bonus as decimal
  * @returns Expected DPS contribution from this proc
  */
+/**
+ * Interpolate proc damage at a specific IO level
+ * Proc damage scales linearly across the IO set's level range
+ */
+export function interpolateProcDamage(
+  minDmg: number,
+  maxDmg: number,
+  levelRange: string,
+  currentLevel: number
+): number {
+  const parts = levelRange.split('--');
+  if (parts.length === 1) {
+    // Single level (e.g. "50") — always max damage
+    return maxDmg;
+  }
+
+  const minLevel = parseInt(parts[0], 10);
+  const maxLevel = parseInt(parts[1], 10);
+
+  if (isNaN(minLevel) || isNaN(maxLevel) || maxLevel <= minLevel) {
+    return maxDmg;
+  }
+
+  const clamped = Math.max(minLevel, Math.min(maxLevel, currentLevel));
+  return Math.round(minDmg + (maxDmg - minDmg) * (clamped - minLevel) / (maxLevel - minLevel));
+}
+
 export function calculateProcDPS(
   ppm: number,
   minDamage: number,

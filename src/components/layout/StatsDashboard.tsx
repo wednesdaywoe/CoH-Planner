@@ -10,7 +10,7 @@ import { useBuildStore, useUIStore } from '@/stores';
 import { getBaselineHealth } from '@/utils/calculations/stats';
 import { Tooltip } from '@/components/ui';
 import { STAT_COLORS } from '@/data/stat-colors';
-import { StatsConfigModal, AccoladesModal, AboutModal, ExportImportModal, FeedbackModal, KnownIssuesModal, WelcomeModal, useWelcomeModal, SetBonusLookupModal, ControlsModal } from '@/components/modals';
+import { StatsConfigModal, AccoladesModal, AboutModal, ExportImportModal, FeedbackModal, KnownIssuesModal, WelcomeModal, useWelcomeModal, SetBonusLookupModal, ControlsModal, CompareSlottingModal } from '@/components/modals';
 import { IncarnateSlotGrid, IncarnateModal, IncarnateCraftingModal } from '@/components/incarnate';
 import { INCARNATE_REQUIRED_LEVEL, createEmptyIncarnateBuildState } from '@/types';
 import type { CalculatedStats, DashboardStatBreakdown } from '@/hooks/useCalculatedStats';
@@ -874,6 +874,9 @@ export function StatsDashboard() {
         isOpen={welcomeModalOpen}
         onClose={closeWelcomeModal}
       />
+
+      {/* Compare Slotting Modal */}
+      <CompareSlottingModal />
     </>
   );
 }

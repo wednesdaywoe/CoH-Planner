@@ -21,6 +21,9 @@ export interface ScaledEffect {
   scale: number;
   /** AT table name (e.g., "Ranged_Debuff_ToHit") */
   table: string;
+  /** Per-target scale increment for AoE per-target stacking buffs.
+   *  At N targets: effective_scale = scale + perTarget × (N - 1) */
+  perTarget?: number;
 }
 
 /** Helper type for effects that can be number OR scaled */

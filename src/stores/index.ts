@@ -44,4 +44,5 @@ export {
   useOpportunityLevel,
   useSentinelCritActive,
   usePowerViewMode,
+  useTargetsHit,
 } from './uiStore';

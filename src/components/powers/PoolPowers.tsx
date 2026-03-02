@@ -322,6 +322,7 @@ function PoolPowerGroup({
 }: PoolPowerGroupProps) {
   const [collapsed, setCollapsed] = useState(false);
   const openEnhancementPicker = useUIStore((s) => s.openEnhancementPicker);
+  const openCompareSlotting = useUIStore((s) => s.openCompareSlotting);
 
   // Sort selected powers by their position in the pool (available level)
   const sortedPowers = [...selectedPowers].sort((a, b) => a.available - b.available);
@@ -383,6 +384,7 @@ function PoolPowerGroup({
                   onLeave={onPowerLeave}
                   onEnhancementHover={(index) => onEnhancementHover(power.name, index)}
                   onRightClick={(e) => onPowerRightClick(e, power)}
+                  onCompareSlotting={() => openCompareSlotting(power.name, poolId)}
                 />
 
                 {/* Granted sub-powers display */}
@@ -531,6 +533,7 @@ function EpicPoolSelectedPowers({ epicPool, isPowerLocked }: EpicPoolSelectedPow
   const infoPanelLocked = useUIStore((s) => s.infoPanel.locked);
   const lockedContent = useUIStore((s) => s.infoPanel.lockedContent);
   const openEnhancementPicker = useUIStore((s) => s.openEnhancementPicker);
+  const openCompareSlotting = useUIStore((s) => s.openCompareSlotting);
 
   const selectedPoolData = useMemo(() => getEpicPool(epicPool.id), [epicPool.id]);
 
@@ -641,6 +644,7 @@ function EpicPoolSelectedPowers({ epicPool, isPowerLocked }: EpicPoolSelectedPow
                 onLeave={handlePowerLeave}
                 onEnhancementHover={(index) => handleEnhancementHover(power.name, index)}
                 onRightClick={(e) => handlePowerRightClick(e, power)}
+                onCompareSlotting={() => openCompareSlotting(power.name, epicPool.id)}
               />
             );
           })}
@@ -687,6 +691,7 @@ function InherentPowerGroup({
 }: InherentPowerGroupProps) {
   const [collapsed, setCollapsed] = useState(defaultCollapsed);
   const openEnhancementPicker = useUIStore((s) => s.openEnhancementPicker);
+  const openCompareSlotting = useUIStore((s) => s.openCompareSlotting);
 
   const sortedPowers = [...powers].sort((a, b) => a.available - b.available);
 
@@ -733,6 +738,7 @@ function InherentPowerGroup({
                 onLeave={onPowerLeave}
                 onEnhancementHover={(index) => onEnhancementHover(power.name, index)}
                 onRightClick={(e) => onPowerRightClick(e, power)}
+                onCompareSlotting={() => openCompareSlotting(power.name, 'Inherent')}
               />
             );
           })}

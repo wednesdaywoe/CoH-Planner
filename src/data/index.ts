@@ -299,6 +299,7 @@ export {
   getProcEffectLabel,
   getProcEffectColor,
   isProcAlwaysOn,
+  interpolateProcDamage,
   // PPM calculation functions
   getPPMAreaFactor,
   calculateProcChance,

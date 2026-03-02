@@ -30,6 +30,7 @@ interface TouchableSlotProps {
   onRemoveSlot: () => void;
   onClearAllEnhancements: () => void;
   onRemoveAllSlots: () => void;
+  onCompareSlotting?: () => void;
 }
 
 export function TouchableSlot({
@@ -43,6 +44,7 @@ export function TouchableSlot({
   onRemoveSlot,
   onClearAllEnhancements,
   onRemoveAllSlots,
+  onCompareSlotting,
 }: TouchableSlotProps) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [menuPosition, setMenuPosition] = useState({ x: 0, y: 0 });
@@ -150,6 +152,7 @@ export function TouchableSlot({
         onRemoveSlot={onRemoveSlot}
         onClearAllEnhancements={onClearAllEnhancements}
         onRemoveAllSlots={onRemoveAllSlots}
+        onCompareSlotting={onCompareSlotting}
       />
     </>
   );

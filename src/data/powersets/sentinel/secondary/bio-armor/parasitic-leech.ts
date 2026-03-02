@@ -39,25 +39,28 @@ export const ParasiticLeech: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "recoveryBuff": {
-      "scale": 0.129,
-      "table": "Melee_Ones"
-    },
-    "regenBuff": {
-      "scale": 0.214,
-      "table": "Melee_Ones"
-    },
-    "absorb": {
-      "scale": 0.043,
-      "table": "Melee_Ones"
-    },
-    "regenDebuff": {
-      "scale": 1.3,
-      "table": "Melee_Ones"
-    },
-    "damageDebuff": {
-      "scale": 2.66,
-      "table": "Melee_Debuff_Dam"
+      "recoveryBuff": {
+        "scale": 0.558,
+        "table": "Melee_Ones",
+        "perTarget": 0.558
+      },
+      "regenBuff": {
+        "scale": 0.9279999999999999,
+        "table": "Melee_Ones",
+        "perTarget": 0.9279999999999999
+      },
+      "absorb": {
+        "scale": 0.186,
+        "table": "Melee_Ones",
+        "perTarget": 0.186
+      },
+      "regenDebuff": {
+        "scale": 1.3,
+        "table": "Melee_Ones"
+      },
+      "damageDebuff": {
+        "scale": 2.66,
+        "table": "Melee_Debuff_Dam"
+      }
     }
-  }
 };

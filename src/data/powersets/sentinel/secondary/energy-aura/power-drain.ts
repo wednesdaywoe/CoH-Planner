@@ -35,17 +35,18 @@ export const PowerDrain: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "enduranceDrain": {
-      "scale": 0.33,
-      "table": "Melee_Ones"
-    },
-    "recoveryDebuff": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
-    "enduranceGain": {
-      "scale": 25,
-      "table": "Melee_Ones"
+      "enduranceDrain": {
+        "scale": 0.33,
+        "table": "Melee_Ones"
+      },
+      "recoveryDebuff": {
+        "scale": 1,
+        "table": "Melee_Ones"
+      },
+      "enduranceGain": {
+        "scale": 25,
+        "table": "Melee_Ones",
+        "perTarget": 25
+      }
     }
-  }
 };

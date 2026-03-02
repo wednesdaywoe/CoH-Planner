@@ -54,13 +54,15 @@ export const Consume: Power = {
     }
   ],
   "effects": {
-    "enduranceGain": {
-      "scale": 20,
-      "table": "Melee_Ones"
-    },
-    "recoveryBuff": {
-      "scale": 0.05,
-      "table": "Melee_Ones"
+      "enduranceGain": {
+        "scale": 20,
+        "table": "Melee_Ones",
+        "perTarget": 20
+      },
+      "recoveryBuff": {
+        "scale": 0.05,
+        "table": "Melee_Ones",
+        "perTarget": 0.05
+      }
     }
-  }
 };

@@ -394,6 +394,13 @@ export function calculatePowerDamage(
         table: damageEntries[0].table,
       };
     }
+  } else if (typeof damageEffect === 'object' && 'duration' in damageEffect && 'tickRate' in damageEffect) {
+    // Single-object DoT (e.g. Gloom, Abyssal Gaze): { type, scale, table, duration, tickRate }
+    const de = damageEffect as { type: string; scale: number; table?: string; duration: number; tickRate: number };
+    if (de.duration > 0 && de.tickRate > 0) {
+      isPureDot = true;
+      pendingDotEntries = [de];
+    }
   }
 
   // Extract scale - handle both old and new formats

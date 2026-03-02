@@ -582,8 +582,11 @@ export function RegistryEffectsDisplay({
       // Skip healing (handled separately with scale display)
       if (key === 'healing') continue;
 
-      // Skip damageBuff (handled by Defiance section for Blasters)
-      if (key === 'damageBuff') continue;
+      // Skip damageBuff unless it has perTarget metadata (per-target stacking like Soul Drain)
+      if (key === 'damageBuff') {
+        const dmgBuff = effects?.damageBuff;
+        if (!(typeof dmgBuff === 'object' && dmgBuff !== null && 'perTarget' in dmgBuff)) continue;
+      }
 
       // Handle expandByType effects (defense, resistance, elusivity, protection)
       if (config.expandByType && typeof value === 'object' && value !== null) {

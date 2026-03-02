@@ -3,6 +3,7 @@
  */
 
 import type { EnhancementStatType, EnhancementTier, IOSetRarity } from './common';
+import type { Enhancement } from './enhancement';
 
 // ============================================
 // ENHANCEMENT PICKER MODAL VIEWS
@@ -37,6 +38,10 @@ export interface EnhancementPickerState {
   currentCategory: IOSetRarity | 'all' | null;
   /** Selected IO set (when viewing details) */
   selectedSetId: string | null;
+  /** Optional override for enhancement selection (used by Compare Slotting modal) */
+  onOverrideSelect: ((slotIndex: number, enhancement: Enhancement) => void) | null;
+  /** Virtual slots used for empty-slot detection when override is active (e.g. compare modal) */
+  virtualSlots: (Enhancement | null)[] | null;
 }
 
 // ============================================
@@ -161,6 +166,8 @@ export function createDefaultUIState(): UIState {
       currentSlotIndex: 0,
       currentCategory: null,
       selectedSetId: null,
+      onOverrideSelect: null,
+      virtualSlots: null,
     },
     genericPicker: {
       selectedType: 'Damage',

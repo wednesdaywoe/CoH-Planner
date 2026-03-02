@@ -45,35 +45,37 @@ export const BlackDwarfMire: Power = {
     "table": "Melee_InherentDamage"
   },
   "effects": {
-    "movement": {
-      "jumpHeight": {
+      "movement": {
+        "jumpHeight": {
+          "scale": 0.2,
+          "table": "Melee_Slow"
+        },
+        "runSpeed": {
+          "scale": 0.2,
+          "table": "Melee_Slow"
+        },
+        "flySpeed": {
+          "scale": 0.2,
+          "table": "Melee_Slow"
+        },
+        "jumpSpeed": {
+          "scale": 0.2,
+          "table": "Melee_Slow"
+        }
+      },
+      "rechargeDebuff": {
         "scale": 0.2,
         "table": "Melee_Slow"
       },
-      "runSpeed": {
-        "scale": 0.2,
-        "table": "Melee_Slow"
+      "tohitBuff": {
+        "scale": 0.5,
+        "table": "Melee_Buff_ToHit",
+        "perTarget": 0.5
       },
-      "flySpeed": {
-        "scale": 0.2,
-        "table": "Melee_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.2,
-        "table": "Melee_Slow"
+      "damageBuff": {
+        "scale": 1.25,
+        "table": "Melee_Buff_Dmg",
+        "perTarget": 1.25
       }
-    },
-    "rechargeDebuff": {
-      "scale": 0.2,
-      "table": "Melee_Slow"
-    },
-    "tohitBuff": {
-      "scale": 0.5,
-      "table": "Melee_Buff_ToHit"
-    },
-    "damageBuff": {
-      "scale": 1.25,
-      "table": "Melee_Buff_Dmg"
     }
-  }
 };

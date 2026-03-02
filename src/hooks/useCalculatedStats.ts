@@ -235,12 +235,14 @@ export function useCharacterCalculation(): CharacterCalculationResult {
   const exemplarMode = useUIStore((state) => state.exemplarMode);
   const incarnateActive = useUIStore((state) => state.incarnateActive);
   const includeProcsInStats = useUIStore((state) => state.includeProcsInStats);
+  const targetsHitValues = useUIStore((state) => state.targetsHitValues);
 
   return useMemo(() => {
     return calculateCharacterTotals(build, exemplarMode, incarnateActive, {
       includeProcs: includeProcsInStats,
+      targetsHitValues,
     });
-  }, [build, exemplarMode, incarnateActive, includeProcsInStats]);
+  }, [build, exemplarMode, incarnateActive, includeProcsInStats, targetsHitValues]);
 }
 
 /**
@@ -251,13 +253,15 @@ export function useCalculatedStats(): CalculatedStats {
   const exemplarMode = useUIStore((state) => state.exemplarMode);
   const incarnateActive = useUIStore((state) => state.incarnateActive);
   const includeProcsInStats = useUIStore((state) => state.includeProcsInStats);
+  const targetsHitValues = useUIStore((state) => state.targetsHitValues);
 
   return useMemo(() => {
     const result = calculateCharacterTotals(build, exemplarMode, incarnateActive, {
       includeProcs: includeProcsInStats,
+      targetsHitValues,
     });
     return convertToLegacyStats(result.stats, result);
-  }, [build, exemplarMode, incarnateActive, includeProcsInStats]);
+  }, [build, exemplarMode, incarnateActive, includeProcsInStats, targetsHitValues]);
 }
 
 /**
