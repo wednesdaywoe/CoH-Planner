@@ -530,7 +530,7 @@ export const ARCHETYPES: ArchetypeRegistry = {
         ranged: 0.95,
         aoe: 0.8,
       },
-      buffDebuffModifier: 1.0,
+      buffDebuffModifier: 1.4,
     },
     primarySets: [
       'sentinel/archery',

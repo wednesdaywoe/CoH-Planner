@@ -23,7 +23,7 @@ export const KNOWN_BUGS: TrackerItem[] = [
 
 export const RECENT_CHANGES: TrackerItem[] = [
   { text: 'Absolutely ginormous powerset audit for missing effects and allowedEnhancments 😓🤞', status: 'fixed' },
-  { text: 'Fixed duplicate Reach for the Limit in Martial Combat', status: 'fixed' },
+  { text: 'Removed legacy modifer values that were causing incorrect calculations', status: 'fixed' },
   { text: 'Fixed level slider reverting when removing a power at level 50', status: 'fixed' },
   { text: 'Fixed Overwhelming Force pieces not marked as unique', status: 'fixed' },
   { text: 'Fixed attuned enhancements allowing level boosting', status: 'fixed' },

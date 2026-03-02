@@ -9,6 +9,7 @@
 import type { ArchetypeId, NumberOrScaled, NumberOrMez, MezEffect } from '@/types';
 import { getScaleValue } from '@/types';
 import { calculateBuffDebuffValue } from '@/utils/calculations';
+import { getTableValue } from '@/data/at-tables';
 
 // ============================================
 // TYPES
@@ -615,6 +616,14 @@ export function calculateEffectValue(
   archetypeId?: ArchetypeId
 ): number {
   if (config.calculation === 'buff' || config.calculation === 'debuff') {
+    // Use AT table directly when available (accurate per-AT values)
+    if (archetypeId && typeof value === 'object' && value !== null && 'table' in value && 'scale' in value) {
+      const tableVal = getTableValue(archetypeId, (value as { scale: number; table: string }).table, 50);
+      if (tableVal !== undefined) {
+        return Math.abs((value as { scale: number; table: string }).scale * tableVal);
+      }
+    }
+    // Fallback to legacy formula for plain number scales
     return calculateBuffDebuffValue(value, archetypeId, config.calculation);
   }
   return getScaleValue(value) ?? 0;

@@ -485,8 +485,16 @@ function getEffectBaseValue(
 
   // Handle buff/debuff calculation - returns decimal, multiply by 100 for percent display
   if (config.calculation === 'buff' || config.calculation === 'debuff') {
-    const result = calculateBuffDebuffValue(value as NumberOrScaled, buffDebuffMod, config.calculation);
-    // Buff/debuff values are displayed as percentages, so multiply by 100
+    // Use AT table directly when available (accurate per-AT values)
+    const scaled = value as NumberOrScaled;
+    if (archetypeId && typeof scaled === 'object' && scaled !== null && 'table' in scaled && 'scale' in scaled) {
+      const tableVal = getTableValue(archetypeId, (scaled as { scale: number; table: string }).table, 50);
+      if (tableVal !== undefined) {
+        return Math.abs((scaled as { scale: number; table: string }).scale * tableVal) * 100;
+      }
+    }
+    // Fallback to legacy formula for plain number scales
+    const result = calculateBuffDebuffValue(scaled, buffDebuffMod, config.calculation);
     return result * 100;
   }
 
@@ -497,6 +505,13 @@ function getEffectBaseValue(
   // For percent format, multiply by baseMultiplier (default 100)
   // Accuracy uses 75 (base to-hit rate), other percents use 100
   if (config.format === 'percent') {
+    // Use AT table directly when available (accurate per-AT values)
+    if (archetypeId && typeof value === 'object' && value !== null && 'table' in value && 'scale' in value) {
+      const tableVal = getTableValue(archetypeId, (value as { scale: number; table: string }).table, 50);
+      if (tableVal !== undefined) {
+        return Math.abs((value as { scale: number; table: string }).scale * tableVal) * 100;
+      }
+    }
     const multiplier = config.baseMultiplier ?? 100;
     return scaled * multiplier * buffDebuffMod;
   }
