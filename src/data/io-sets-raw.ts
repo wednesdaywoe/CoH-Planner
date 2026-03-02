@@ -16665,11 +16665,11 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "num": 6,
         "name": "+Absorb/Chance for +Absorb",
         "aspects": [],
-        "proc": false,
+        "proc": true,
         "unique": false
       }
     ],
-    "icon": "PreventiveMedicine.png"
+    "icon": "sPreventiveMedicine.png"
   },
   "pulverizing_fisticuffs": {
     "name": "Pulverizing Fisticuffs",

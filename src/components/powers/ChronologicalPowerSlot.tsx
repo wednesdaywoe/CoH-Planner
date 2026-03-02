@@ -7,7 +7,7 @@
 
 import { useBuildStore, useUIStore } from '@/stores';
 import type { PowerCategory as StorePowerCategory } from '@/stores';
-import { getPowerIconPath, getPowerset } from '@/data';
+import { getPowerIconPath, getEpicPoolPowerIconPath, getPowerset } from '@/data';
 import { PowerRow } from './PowerRow';
 import { shouldShowToggle } from './power-row-utils';
 import type { CategorizedPower, PowerCategory } from './ChronologicalPowerView';
@@ -75,6 +75,13 @@ export function ChronologicalPowerSlot({
     const powerset = power.powerSet ? getPowerset(power.powerSet) : null;
     return powerset?.name || '';
   })();
+
+  // Epic pool powers need a different icon resolver that handles prefix-to-folder mapping
+  const iconSrc = power
+    ? power.category === 'epic'
+      ? getEpicPoolPowerIconPath(powersetName, power.icon)
+      : getPowerIconPath(powersetName, power.icon)
+    : '';
 
   if (!power) {
     // Render empty slot placeholder
@@ -166,7 +173,7 @@ export function ChronologicalPowerSlot({
   return (
     <PowerRow
       name={power.name}
-      iconSrc={getPowerIconPath(powersetName, power.icon)}
+      iconSrc={iconSrc}
       size="lg"
       stackedLayout
       level={level}
