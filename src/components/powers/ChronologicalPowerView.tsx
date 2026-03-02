@@ -191,8 +191,8 @@ export function ChronologicalPowerView() {
 
   return (
     <div className="flex flex-col h-full bg-slate-900">
-      {/* Main 3-column grid - stacks on mobile/tablet, 3 columns on desktop */}
       <div className="flex-1 overflow-auto">
+        {/* Main 3-column grid - stacks on mobile/tablet, 3 columns on desktop */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-slate-700 min-h-0">
           {ALL_COLUMNS.map((column) => (
             <div key={column.index} className="bg-slate-900">
@@ -206,10 +206,9 @@ export function ChronologicalPowerView() {
           ))}
         </div>
 
+        {/* Inherent powers section - inside scroll area to flow naturally after grid */}
+        <ChronologicalInherentsSection inherents={inherents} />
       </div>
-
-      {/* Inherent powers section */}
-      <ChronologicalInherentsSection inherents={inherents} />
     </div>
   );
 }

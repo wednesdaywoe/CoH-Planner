@@ -459,8 +459,8 @@ function calculateCorrectLevel(build: Build): number {
     }
   }
 
-  // All 24 picks used — stay at the last pick level
-  return POWER_PICK_LEVELS[POWER_PICK_LEVELS.length - 1];
+  // All 24 picks used — advance to max level so final slots are unlocked
+  return 50;
 }
 
 // ============================================
