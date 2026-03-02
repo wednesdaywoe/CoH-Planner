@@ -64,6 +64,7 @@ import {
   getEffectiveBuffDebuffModifier,
   convertGlobalBonusesToAspects,
   findSelectedPowerInBuild,
+  getDamageCap,
 } from './powerDisplayUtils';
 import {
   RegistryEffectsDisplay,
@@ -493,6 +494,32 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
         finalColumnColor={damageDisplayInfo?.finalColumnColor}
         applyInherentBonus={damageDisplayInfo?.applyInherentBonus}
       />
+
+      {/* Damage bar - overlaid base/enhanced/final relative to AT cap */}
+      {calculatedDamage && !calculatedDamage.unknown && (() => {
+        const damageCap = getDamageCap(archetypeId ?? '');
+        const maxDamage = calculatedDamage.base * damageCap;
+        const basePercent = Math.min((calculatedDamage.base / maxDamage) * 100, 100);
+        const enhPercent = Math.min((calculatedDamage.enhanced / maxDamage) * 100, 100);
+        const finalPercent = Math.min((calculatedDamage.final / maxDamage) * 100, 100);
+
+        return (
+          <div className="relative h-2 bg-slate-700/30 rounded overflow-hidden" title={`Damage cap: ${(damageCap * 100).toFixed(0)}%`}>
+            <div
+              className="absolute inset-y-0 left-0 bg-amber-500 rounded-l transition-all duration-300"
+              style={{ width: `${finalPercent}%` }}
+            />
+            <div
+              className="absolute inset-y-0 left-0 bg-green-500 rounded-l transition-all duration-300"
+              style={{ width: `${enhPercent}%` }}
+            />
+            <div
+              className="absolute inset-y-0 left-0 bg-slate-400 rounded-l transition-all duration-300"
+              style={{ width: `${basePercent}%` }}
+            />
+          </div>
+        );
+      })()}
 
       {/* Fiery Embrace conditional damage (shown separately since it's conditional) */}
       {calculatedDamage?.fieryEmbraceDamage && damageDisplayInfo && (

@@ -40,6 +40,7 @@ import {
   calcThreeTier as calcThreeTierUtil,
   convertGlobalBonusesToAspects,
   findSelectedPowerInBuild,
+  getDamageCap,
 } from './powerDisplayUtils';
 import {
   RegistryEffectsDisplay,
@@ -474,6 +475,34 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
                     );
                   })()}
                 </>
+              );
+            })()}
+            {/* Damage bar - overlaid base/enhanced/final relative to AT cap */}
+            {!calculatedDamage.unknown && (() => {
+              const damageCap = getDamageCap(archetypeId ?? '');
+              const maxDamage = calculatedDamage.base * damageCap;
+              const basePercent = Math.min((calculatedDamage.base / maxDamage) * 100, 100);
+              const enhPercent = Math.min((calculatedDamage.enhanced / maxDamage) * 100, 100);
+              const finalPercent = Math.min((calculatedDamage.final / maxDamage) * 100, 100);
+
+              return (
+                <div className="relative h-2.5 bg-slate-700/30 rounded overflow-hidden mt-2" title={`Damage cap: ${(damageCap * 100).toFixed(0)}%`}>
+                  {/* Final (back layer) */}
+                  <div
+                    className="absolute inset-y-0 left-0 bg-amber-500 rounded-l transition-all duration-300"
+                    style={{ width: `${finalPercent}%` }}
+                  />
+                  {/* Enhanced (middle layer) */}
+                  <div
+                    className="absolute inset-y-0 left-0 bg-green-500 rounded-l transition-all duration-300"
+                    style={{ width: `${enhPercent}%` }}
+                  />
+                  {/* Base (front layer) */}
+                  <div
+                    className="absolute inset-y-0 left-0 bg-slate-400 rounded-l transition-all duration-300"
+                    style={{ width: `${basePercent}%` }}
+                  />
+                </div>
               );
             })()}
             {calculatedDamage.unknown && (
