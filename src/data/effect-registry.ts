@@ -10,6 +10,7 @@ import type { ArchetypeId, NumberOrScaled, NumberOrMez, MezEffect } from '@/type
 import { getScaleValue } from '@/types';
 import { calculateBuffDebuffValue } from '@/utils/calculations';
 import { getTableValue } from '@/data/at-tables';
+import { STAT_COLORS } from './stat-colors';
 
 // ============================================
 // TYPES
@@ -68,7 +69,7 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
   enduranceCost: {
     label: 'Endurance',
     category: 'execution',
-    colorClass: 'text-blue-400',
+    colorClass: STAT_COLORS.endurance,
     format: 'value',
     enhancementAspect: 'endurance',
     priority: 1,
@@ -76,7 +77,7 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
   recharge: {
     label: 'Recharge',
     category: 'execution',
-    colorClass: 'text-slate-300',
+    colorClass: STAT_COLORS.recharge,
     format: 'duration',
     enhancementAspect: 'recharge',
     priority: 2,
@@ -84,7 +85,7 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
   accuracy: {
     label: 'Accuracy',
     category: 'execution',
-    colorClass: 'text-slate-300',
+    colorClass: STAT_COLORS.accuracy,
     format: 'percent',
     enhancementAspect: 'accuracy',
     priority: 3,
@@ -93,7 +94,7 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
   range: {
     label: 'Range',
     category: 'execution',
-    colorClass: 'text-slate-300',
+    colorClass: STAT_COLORS.range,
     format: 'value',
     enhancementAspect: 'range',
     priority: 4,
@@ -101,116 +102,116 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
   castTime: {
     label: 'Cast Time',
     category: 'execution',
-    colorClass: 'text-slate-500',
+    colorClass: STAT_COLORS.castTime,
     format: 'duration',
     priority: 5,
   },
   buffDuration: {
     label: 'Duration',
     category: 'execution',
-    colorClass: 'text-slate-500',
+    colorClass: STAT_COLORS.buffDuration,
     format: 'duration',
     priority: 6,
   },
   effectDuration: {
     label: 'Effect Dur',
     category: 'execution',
-    colorClass: 'text-slate-500',
+    colorClass: STAT_COLORS.effectDuration,
     format: 'duration',
     priority: 6.5,
   },
   radius: {
     label: 'Radius',
     category: 'execution',
-    colorClass: 'text-slate-500',
+    colorClass: STAT_COLORS.radius,
     format: 'value',
     priority: 7,
   },
 
-  // === CONTROL (Mez Effects) ===
+  // === CONTROL (Mez Effects — all pink) ===
   hold: {
     label: 'Hold',
     category: 'control',
-    colorClass: 'text-purple-400',
+    colorClass: STAT_COLORS.hold,
     format: 'mag',
     priority: 1,
   },
   stun: {
     label: 'Stun',
     category: 'control',
-    colorClass: 'text-yellow-400',
+    colorClass: STAT_COLORS.stun,
     format: 'mag',
     priority: 2,
   },
   immobilize: {
     label: 'Immobilize',
     category: 'control',
-    colorClass: 'text-green-400',
+    colorClass: STAT_COLORS.immobilize,
     format: 'mag',
     priority: 3,
   },
   sleep: {
     label: 'Sleep',
     category: 'control',
-    colorClass: 'text-blue-400',
+    colorClass: STAT_COLORS.sleep,
     format: 'mag',
     priority: 4,
   },
   fear: {
     label: 'Fear',
     category: 'control',
-    colorClass: 'text-orange-400',
+    colorClass: STAT_COLORS.fear,
     format: 'mag',
     priority: 5,
   },
   confuse: {
     label: 'Confuse',
     category: 'control',
-    colorClass: 'text-pink-400',
+    colorClass: STAT_COLORS.confuse,
     format: 'mag',
     priority: 6,
   },
   taunt: {
     label: 'Taunt',
     category: 'control',
-    colorClass: 'text-red-400',
+    colorClass: STAT_COLORS.taunt,
     format: 'mag',
     priority: 7,
   },
   placate: {
     label: 'Placate',
     category: 'control',
-    colorClass: 'text-slate-300',
+    colorClass: STAT_COLORS.placate,
     format: 'mag',
     priority: 8,
   },
   knockback: {
     label: 'Knockback',
     category: 'control',
-    colorClass: 'text-slate-300',
+    colorClass: STAT_COLORS.knockback,
     format: 'mag',
     priority: 10,
   },
   knockup: {
     label: 'Knockup',
     category: 'control',
-    colorClass: 'text-slate-300',
+    colorClass: STAT_COLORS.knockup,
     format: 'mag',
     priority: 11,
   },
   repel: {
     label: 'Repel',
     category: 'control',
-    colorClass: 'text-slate-300',
+    colorClass: STAT_COLORS.repel,
     format: 'mag',
     priority: 12,
   },
 
-  // === DEBUFFS ===
+  // === DEBUFFS (dimmed versions of buff colors) ===
   tohitDebuff: {
     label: '-ToHit',
     category: 'debuff',
-    colorClass: 'text-yellow-400',
+    colorClass: STAT_COLORS.tohitDebuff,
     format: 'percent',
     calculation: 'debuff',
     enhancementAspect: 'tohitDebuff',
@@ -219,7 +220,7 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
   defenseDebuff: {
     label: '-Defense',
     category: 'debuff',
-    colorClass: 'text-purple-400',
+    colorClass: STAT_COLORS.defenseDebuff,
     format: 'percent',
     calculation: 'debuff',
     enhancementAspect: 'defenseDebuff',
@@ -229,7 +230,7 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
   resistanceDebuff: {
     label: '-Resist',
     category: 'debuff',
-    colorClass: 'text-orange-400',
+    colorClass: STAT_COLORS.resistanceDebuff,
     format: 'percent',
     calculation: 'debuff',
     enhancementAspect: 'resistanceDebuff',
@@ -239,7 +240,7 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
   damageDebuff: {
     label: '-Damage',
     category: 'debuff',
-    colorClass: 'text-red-400',
+    colorClass: STAT_COLORS.damageDebuff,
     format: 'percent',
     calculation: 'debuff',
     enhancementAspect: 'damageDebuff',
@@ -248,7 +249,7 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
   regenDebuff: {
     label: '-Regen',
     category: 'debuff',
-    colorClass: 'text-green-400',
+    colorClass: STAT_COLORS.regenDebuff,
     format: 'percent',
     baseMultiplier: 100,
     priority: 5,
@@ -256,7 +257,7 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
   recoveryDebuff: {
     label: '-Recovery',
     category: 'debuff',
-    colorClass: 'text-blue-400',
+    colorClass: STAT_COLORS.recoveryDebuff,
     format: 'percent',
     baseMultiplier: 100,
     priority: 6,
@@ -264,7 +265,7 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
   rechargeDebuff: {
     label: '-Recharge',
     category: 'debuff',
-    colorClass: 'text-cyan-400',
+    colorClass: STAT_COLORS.rechargeDebuff,
     format: 'percent',
     calculation: 'debuff',
     priority: 7,
@@ -272,7 +273,7 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
   slow: {
     label: '-Speed',
     category: 'debuff',
-    colorClass: 'text-cyan-400',
+    colorClass: STAT_COLORS.slow,
     format: 'percent',
     canBeByType: true,
     priority: 8,
@@ -280,21 +281,21 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
   enduranceDrain: {
     label: '-End Drain',
     category: 'debuff',
-    colorClass: 'text-blue-400',
+    colorClass: STAT_COLORS.enduranceDrain,
     format: 'percent',
     priority: 9,
   },
   threatDebuff: {
     label: '-Threat',
     category: 'debuff',
-    colorClass: 'text-slate-400',
+    colorClass: STAT_COLORS.threatDebuff,
     format: 'percent',
     priority: 10,
   },
   perceptionDebuff: {
     label: '-Perception',
     category: 'debuff',
-    colorClass: 'text-slate-400',
+    colorClass: STAT_COLORS.perceptionDebuff,
     format: 'percent',
     priority: 11,
   },
@@ -303,7 +304,7 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
   tohitBuff: {
     label: '+ToHit',
     category: 'buff',
-    colorClass: 'text-yellow-400',
+    colorClass: STAT_COLORS.tohit,
     format: 'percent',
     calculation: 'buff',
     enhancementAspect: 'tohit',
@@ -312,7 +313,7 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
   damageBuff: {
     label: '+Damage',
     category: 'buff',
-    colorClass: 'text-red-400',
+    colorClass: STAT_COLORS.damage,
     format: 'percent',
     calculation: 'buff',
     enhancementAspect: 'damage',
@@ -321,7 +322,7 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
   defenseBuff: {
     label: '+Defense',
     category: 'buff',
-    colorClass: 'text-purple-400',
+    colorClass: STAT_COLORS.defense,
     format: 'percent',
     enhancementAspect: 'defense',
     canBeByType: true,
@@ -331,7 +332,7 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
   rechargeBuff: {
     label: '+Recharge',
     category: 'buff',
-    colorClass: 'text-cyan-400',
+    colorClass: STAT_COLORS.rechargeBuff,
     format: 'percent',
     calculation: 'buff',
     enhancementAspect: 'recharge',
@@ -340,7 +341,7 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
   recoveryBuff: {
     label: '+Recovery',
     category: 'buff',
-    colorClass: 'text-blue-400',
+    colorClass: STAT_COLORS.recoveryBuff,
     format: 'percent',
     baseMultiplier: 100,
     priority: 5,
@@ -348,7 +349,7 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
   regenBuff: {
     label: '+Regen',
     category: 'buff',
-    colorClass: 'text-green-400',
+    colorClass: STAT_COLORS.regen,
     format: 'percent',
     baseMultiplier: 100,
     priority: 6,
@@ -356,7 +357,7 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
   speedBuff: {
     label: '+Speed',
     category: 'buff',
-    colorClass: 'text-cyan-400',
+    colorClass: STAT_COLORS.speed,
     format: 'percent',
     calculation: 'buff',
     priority: 7,
@@ -364,7 +365,7 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
   maxHPBuff: {
     label: '+Max HP',
     category: 'buff',
-    colorClass: 'text-green-400',
+    colorClass: STAT_COLORS.maxHP,
     format: 'percent',
     calculation: 'buff',
     priority: 8,
@@ -372,7 +373,7 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
   maxEndBuff: {
     label: '+Max End',
     category: 'buff',
-    colorClass: 'text-blue-400',
+    colorClass: STAT_COLORS.maxEnd,
     format: 'percent',
     calculation: 'buff',
     priority: 9,
@@ -380,7 +381,7 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
   rangeBuff: {
     label: '+Range',
     category: 'buff',
-    colorClass: 'text-orange-400',
+    colorClass: STAT_COLORS.rangeBuff,
     format: 'percent',
     calculation: 'buff',
     priority: 10,
@@ -388,7 +389,7 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
   enduranceDiscount: {
     label: '-End Cost',
     category: 'buff',
-    colorClass: 'text-blue-400',
+    colorClass: STAT_COLORS.enduranceDiscount,
     format: 'percent',
     calculation: 'buff',
     priority: 11,
@@ -396,37 +397,37 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
   enduranceGain: {
     label: '+End Gain',
     category: 'buff',
-    colorClass: 'text-blue-400',
+    colorClass: STAT_COLORS.enduranceGain,
     format: 'percent',
     priority: 12,
   },
   threatBuff: {
     label: '+Threat',
     category: 'buff',
-    colorClass: 'text-red-400',
+    colorClass: STAT_COLORS.threat,
     format: 'percent',
     priority: 13,
   },
   perceptionBuff: {
     label: '+Perception',
     category: 'buff',
-    colorClass: 'text-slate-300',
+    colorClass: STAT_COLORS.perception,
     format: 'percent',
     priority: 14,
   },
   absorb: {
     label: 'Absorb',
     category: 'buff',
-    colorClass: 'text-cyan-400',
+    colorClass: STAT_COLORS.absorb,
     format: 'value',
     priority: 15,
   },
 
-  // === MOVEMENT ===
+  // === MOVEMENT (all teal) ===
   fly: {
     label: 'Fly',
     category: 'movement',
-    colorClass: 'text-sky-400',
+    colorClass: STAT_COLORS.fly,
     format: 'value',
     enhancementAspect: 'fly',
     priority: 1,
@@ -434,7 +435,7 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
   flySpeed: {
     label: 'Fly Speed',
     category: 'movement',
-    colorClass: 'text-sky-400',
+    colorClass: STAT_COLORS.flySpeed,
     format: 'value',
     enhancementAspect: 'fly',
     priority: 1,
@@ -442,7 +443,7 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
   runSpeed: {
     label: 'Run Speed',
     category: 'movement',
-    colorClass: 'text-cyan-400',
+    colorClass: STAT_COLORS.runSpeed,
     format: 'value',
     enhancementAspect: 'runSpeed',
     priority: 2,
@@ -450,7 +451,7 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
   jumpSpeed: {
     label: 'Jump Speed',
     category: 'movement',
-    colorClass: 'text-green-400',
+    colorClass: STAT_COLORS.jumpSpeed,
     format: 'value',
     enhancementAspect: 'jumpSpeed',
     priority: 3,
@@ -458,7 +459,7 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
   jumpHeight: {
     label: 'Jump Height',
     category: 'movement',
-    colorClass: 'text-green-400',
+    colorClass: STAT_COLORS.jumpHeight,
     format: 'value',
     enhancementAspect: 'jumpHeight',
     priority: 4,
@@ -466,14 +467,14 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
   teleport: {
     label: 'Teleport',
     category: 'movement',
-    colorClass: 'text-purple-400',
+    colorClass: STAT_COLORS.teleport,
     format: 'value',
     priority: 5,
   },
   untouchable: {
     label: 'Intangible',
     category: 'movement',
-    colorClass: 'text-slate-300',
+    colorClass: STAT_COLORS.untouchable,
     format: 'duration',
     priority: 6,
   },
@@ -482,14 +483,14 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
   summon: {
     label: 'Summon',
     category: 'special',
-    colorClass: 'text-amber-400',
+    colorClass: STAT_COLORS.summon,
     format: 'custom',
     priority: 1,
   },
   healing: {
     label: 'Heal',
     category: 'execution',
-    colorClass: 'text-green-400',
+    colorClass: STAT_COLORS.healing,
     format: 'value',
     enhancementAspect: 'heal',
     priority: 2,
@@ -499,7 +500,7 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
   defense: {
     label: 'Def',
     category: 'protection',
-    colorClass: 'text-purple-400',
+    colorClass: STAT_COLORS.defense,
     format: 'percent',
     enhancementAspect: 'defense',
     expandByType: true,
@@ -508,7 +509,7 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
   resistance: {
     label: 'Res',
     category: 'protection',
-    colorClass: 'text-orange-400',
+    colorClass: STAT_COLORS.resistance,
     format: 'percent',
     enhancementAspect: 'resistance',
     expandByType: true,
@@ -517,7 +518,7 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
   elusivity: {
     label: 'DDR',
     category: 'protection',
-    colorClass: 'text-teal-400',
+    colorClass: STAT_COLORS.elusivity,
     format: 'percent',
     expandByType: true,
     priority: 3,
@@ -525,7 +526,7 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
   protection: {
     label: 'Prot',
     category: 'protection',
-    colorClass: 'text-yellow-400',
+    colorClass: STAT_COLORS.protection,
     format: 'mag',
     expandByType: true,
     priority: 4,
@@ -533,7 +534,7 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
   debuffResistance: {
     label: 'Debuff Res',
     category: 'protection',
-    colorClass: 'text-cyan-400',
+    colorClass: STAT_COLORS.debuffResistance,
     format: 'percent',
     canBeByType: true,
     expandByType: true,

@@ -337,6 +337,9 @@ export type { GrantedPowerGroup } from './granted-powers';
 export { lookupPower } from './power-lookup';
 export type { PowerLookupResult } from './power-lookup';
 
+// Stat/effect color palette (single source of truth)
+export { STAT_COLORS } from './stat-colors';
+
 // Effect registry for data-driven power effect display
 export {
   EFFECT_REGISTRY,
