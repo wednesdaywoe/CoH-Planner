@@ -36,7 +36,10 @@ const ALL_COLUMNS = [
 ];
 
 /**
- * Hook to collect, organize, and pre-assign all selected powers to slots
+ * Hook to collect, organize, and pre-assign all selected powers to slots.
+ * Sorts all powers by level then assigns sequentially to the 24 slots,
+ * so even if stored levels have gaps or duplicates (from remove/re-add),
+ * every power gets a slot.
  */
 function useChronologicalPowers() {
   const build = useBuildStore((s) => s.build);
@@ -46,107 +49,54 @@ function useChronologicalPowers() {
 
     // Collect primary powers (exclude auto-granted form sub-powers)
     build.primary.powers.filter(p => !p.isAutoGranted).forEach((p) => {
-      allPowers.push({
-        ...p,
-        category: 'primary',
-      });
+      allPowers.push({ ...p, category: 'primary' });
     });
 
     // Collect secondary powers (exclude auto-granted form sub-powers)
     build.secondary.powers.filter(p => !p.isAutoGranted).forEach((p) => {
-      allPowers.push({
-        ...p,
-        category: 'secondary',
-      });
+      allPowers.push({ ...p, category: 'secondary' });
     });
 
     // Collect pool powers
     build.pools.forEach((pool) => {
       pool.powers.forEach((p) => {
-        allPowers.push({
-          ...p,
-          category: 'pool',
-          poolName: pool.name,
-        });
+        allPowers.push({ ...p, category: 'pool', poolName: pool.name });
       });
     });
 
     // Collect epic/patron powers
     if (build.epicPool) {
       build.epicPool.powers.forEach((p) => {
-        allPowers.push({
-          ...p,
-          category: 'epic',
-          poolName: build.epicPool?.name,
-        });
+        allPowers.push({ ...p, category: 'epic', poolName: build.epicPool?.name });
       });
     }
 
-    // Group powers by level
-    const powersByLevel = new Map<number, CategorizedPower[]>();
-
-    allPowers.forEach((power) => {
-      const level = power.level;
-      if (!powersByLevel.has(level)) {
-        powersByLevel.set(level, []);
-      }
-      powersByLevel.get(level)!.push(power);
+    // Sort all powers by level, then by category for ties (primary before secondary)
+    const categoryOrder: PowerCategory[] = ['primary', 'secondary', 'pool', 'epic'];
+    allPowers.sort((a, b) => {
+      if (a.level !== b.level) return a.level - b.level;
+      return categoryOrder.indexOf(a.category) - categoryOrder.indexOf(b.category);
     });
 
-    // Sort powers at each level by category (primary first, then secondary)
-    powersByLevel.forEach((powers) => {
-      powers.sort((a, b) => {
-        const order: PowerCategory[] = ['primary', 'secondary', 'pool', 'epic'];
-        return order.indexOf(a.category) - order.indexOf(b.category);
-      });
-    });
-
-    // Pre-compute slot assignments (no mutation during render)
+    // Build the flat list of all 24 slot keys in order
     const slotAssignments = new Map<SlotKey, CategorizedPower>();
-    const usedPowers = new Set<string>();
-
-    // Helper to assign power to slot
-    const assignPowerToSlot = (
-      columnIndex: number,
-      slotIndex: number,
-      level: number,
-      categoryFilter?: PowerCategory
-    ) => {
-      const powers = powersByLevel.get(level);
-      if (!powers || powers.length === 0) return;
-
-      let power: CategorizedPower | undefined;
-      if (categoryFilter) {
-        power = powers.find((p) => p.category === categoryFilter && !usedPowers.has(p.name));
-      } else {
-        power = powers.find((p) => !usedPowers.has(p.name));
-      }
-
-      if (power) {
-        usedPowers.add(power.name);
-        slotAssignments.set(`${columnIndex}-${slotIndex}`, power);
-      }
-    };
-
-    // Process each column
+    const allSlots: { columnIndex: number; slotIndex: number }[] = [];
     ALL_COLUMNS.forEach((column) => {
-      column.levels.forEach((level, slotIndex) => {
-        if (level === 1) {
-          // Level 1: first slot is primary, second slot is secondary
-          if (slotIndex === 0) {
-            assignPowerToSlot(column.index, slotIndex, level, 'primary');
-          } else if (slotIndex === 1) {
-            assignPowerToSlot(column.index, slotIndex, level, 'secondary');
-          }
-        } else {
-          assignPowerToSlot(column.index, slotIndex, level);
-        }
+      column.levels.forEach((_level, slotIndex) => {
+        allSlots.push({ columnIndex: column.index, slotIndex });
       });
+    });
+
+    // Assign sorted powers sequentially to slots
+    allPowers.forEach((power, idx) => {
+      if (idx < allSlots.length) {
+        const slot = allSlots[idx];
+        slotAssignments.set(`${slot.columnIndex}-${slot.slotIndex}`, power);
+      }
     });
 
     return {
       slotAssignments,
-      powersByLevel,
       inherents: build.inherents,
       totalPowers: allPowers.length,
     };

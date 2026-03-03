@@ -316,15 +316,27 @@ export function getMultiAspectModifier(aspectCount: number): number {
 }
 
 /**
+ * Get the rarity-based enhancement multiplier for IO sets.
+ * Purple (Very Rare) and Superior sets get 25% higher enhancement values.
+ */
+export function getSetRarityMultiplier(category?: string, name?: string): number {
+  if (category === 'purple') return 1.25;
+  if (name?.startsWith('Superior')) return 1.25;
+  return 1.0;
+}
+
+/**
  * Parse IO set piece aspects into enhancement bonuses
  */
-export function parseIOSetPieceValues(aspects: string[], level = 50): ParsedBonuses {
+export function parseIOSetPieceValues(aspects: string[], level = 50, isProc = false): ParsedBonuses {
   if (!aspects || !Array.isArray(aspects)) {
     return {};
   }
 
   const bonuses: ParsedBonuses = {};
-  const modifier = getMultiAspectModifier(aspects.length);
+  // Proc effects count as 3 additional aspects for the multi-aspect modifier
+  const effectiveAspectCount = isProc ? aspects.length + 3 : aspects.length;
+  const modifier = getMultiAspectModifier(effectiveAspectCount);
 
   // Each aspect gets the schedule's value modified by aspect count
   aspects.forEach((aspect) => {
@@ -374,7 +386,7 @@ export interface EnhancementBonuses {
 export function calculatePowerEnhancementBonuses(
   power: PowerWithSlots,
   globalIOLevel = 50,
-  getIOSet?: (setId: string) => { pieces: Array<{ num: number; aspects?: string[] }>; maxLevel: number } | undefined
+  getIOSet?: (setId: string) => { pieces: Array<{ num: number; aspects?: string[]; proc?: boolean }>; maxLevel: number; category?: string; name?: string } | undefined
 ): EnhancementBonuses {
   if (!power?.slots) {
     return {};
@@ -397,11 +409,14 @@ export function calculatePowerEnhancementBonuses(
       const piece = set.pieces.find((p) => p.num === slot.pieceNum);
       if (!piece?.aspects) return;
 
-      const ioLevel = Math.min(globalIOLevel, set.maxLevel);
-      const bonuses = parseIOSetPieceValues(piece.aspects, ioLevel);
+      // maxLevel <= 1 indicates an attuned set (ATO/Event) that scales with player level
+      const ioLevel = set.maxLevel <= 1 ? globalIOLevel : Math.min(globalIOLevel, set.maxLevel);
+      // Purple and Superior sets get 25% higher enhancement values
+      const rarityMultiplier = getSetRarityMultiplier(set.category, set.name);
+      const bonuses = parseIOSetPieceValues(piece.aspects, ioLevel, piece.proc);
 
       Object.entries(bonuses).forEach(([aspect, value]) => {
-        rawBonuses[aspect] = (rawBonuses[aspect] || 0) + value * boostMultiplier;
+        rawBonuses[aspect] = (rawBonuses[aspect] || 0) + value * rarityMultiplier * boostMultiplier;
       });
     } else if (slot.type === 'io-generic') {
       // Common IO

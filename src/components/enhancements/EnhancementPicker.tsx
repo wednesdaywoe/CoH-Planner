@@ -18,7 +18,7 @@ import {
   getRarityColor, getTierTextColor, getTierBorderColor,
   findProcData, parseProcEffect, getProcEffectLabel, getProcEffectColor, isProcAlwaysOn, interpolateProcDamage,
 } from '@/data';
-import { normalizeAspectName, getAspectSchedule, getIOValueAtLevel, normalizeStatName } from '@/utils/calculations';
+import { normalizeAspectName, getAspectSchedule, getIOValueAtLevel, normalizeStatName, getSetRarityMultiplier } from '@/utils/calculations';
 import { getPairedStat } from '@/utils/calculations/set-bonuses';
 import { Modal, ModalBody } from '@/components/modals';
 import { Tooltip, Toggle } from '@/components/ui';
@@ -1448,7 +1448,9 @@ function SetPieceTooltip({ set, piece }: SetPieceTooltipProps) {
 
   // Calculate aspect values at the effective level
   const effectiveLevel = attunementEnabled ? 50 : globalIOLevel;
-  const aspectCount = piece.aspects.filter(a => normalizeAspectName(a) !== null).length || piece.aspects.length;
+  const rawAspectCount = piece.aspects.filter(a => normalizeAspectName(a) !== null).length || piece.aspects.length;
+  // Proc effects count as 3 additional aspects for the multi-aspect modifier
+  const aspectCount = piece.proc ? rawAspectCount + 3 : rawAspectCount;
   const getAspectModifier = (count: number): number => {
     switch (count) {
       case 1: return 1.0;
@@ -1463,12 +1465,15 @@ function SetPieceTooltip({ set, piece }: SetPieceTooltipProps) {
   // Boost multiplier for non-proc pieces
   const boostMultiplier = (!piece.proc && globalBoostLevel > 0) ? 1 + globalBoostLevel * 0.05 : 1;
 
+  // Purple and Superior sets get 25% higher enhancement values
+  const rarityMultiplier = getSetRarityMultiplier(set.category, set.name);
+
   const calculateAspectValue = (aspect: string): number | null => {
     const normalized = normalizeAspectName(aspect);
     if (!normalized) return null;
     const schedule = getAspectSchedule(normalized);
     const baseValue = getIOValueAtLevel(effectiveLevel, schedule);
-    return baseValue * aspectModifier * boostMultiplier;
+    return baseValue * aspectModifier * rarityMultiplier * boostMultiplier;
   };
 
   return (
@@ -1658,7 +1663,8 @@ function SetPieceTooltip({ set, piece }: SetPieceTooltipProps) {
                       const normalized = normalizeStatName(eff.stat);
                       const isTracked = normalized ? trackedNormalized.has(normalized) : false;
                       // Use eff.value for accurate display instead of pre-rounded eff.desc
-                      const formatted = eff.desc.replace(/^\+[\d.]+%/, `+${eff.value}%`);
+                      const displayValue = parseFloat(eff.value.toFixed(2));
+                      const formatted = eff.desc.replace(/^\+[\d.]+%/, `+${displayValue}%`);
                       return (
                         <span key={i} className={isTracked ? 'text-blue-300 font-semibold' : ''}>
                           {i > 0 && ', '}
@@ -1688,7 +1694,8 @@ function SetPieceTooltip({ set, piece }: SetPieceTooltipProps) {
                           {bonus.pieces}pc:
                         </span>{' '}
                         {pvpEffects.map((eff, i) => {
-                          const formatted = eff.desc.replace(/^\+[\d.]+%/, `+${eff.value}%`);
+                          const displayValue = parseFloat(eff.value.toFixed(2));
+                          const formatted = eff.desc.replace(/^\+[\d.]+%/, `+${displayValue}%`);
                           return (
                             <span key={i}>
                               {i > 0 && ', '}

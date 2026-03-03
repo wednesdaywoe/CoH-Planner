@@ -27,6 +27,7 @@ export {
   normalizeAspectName,
   applyED,
   parseIOSetPieceValues,
+  getSetRarityMultiplier,
   calculatePowerEnhancementBonuses,
   calculateCommonIOValue,
   formatEnhancementValue,

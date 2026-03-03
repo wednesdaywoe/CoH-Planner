@@ -27,7 +27,6 @@ import {
   getPowerPool,
   getEpicPool,
   getTotalSlotsAtLevel,
-  getPowerPicksAtLevel,
   MAX_POWER_POOLS,
   MAX_POWER_PICKS,
   EPIC_POOL_LEVEL,
@@ -438,12 +437,26 @@ function countSelectedPowers(build: Build): number {
 }
 
 /**
+ * Collect the set of pick levels already occupied by existing powers.
+ */
+function getOccupiedLevels(build: Build): Set<number> {
+  const occupied = new Set<number>();
+  const collectNonGranted = (powers: SelectedPower[]) =>
+    powers.filter(p => !p.isAutoGranted).forEach(p => occupied.add(p.level));
+
+  collectNonGranted(build.primary.powers);
+  collectNonGranted(build.secondary.powers);
+  build.pools.forEach((pool) => collectNonGranted(pool.powers));
+  if (build.epicPool) collectNonGranted(build.epicPool.powers);
+  return occupied;
+}
+
+/**
  * Calculate the correct build level based on the current number of selected powers.
  * Works bidirectionally — advances when powers are added, rewinds when removed.
+ * Checks which pick levels are actually occupied to avoid assigning duplicates.
  */
 function calculateCorrectLevel(build: Build): number {
-  const totalPowers = countSelectedPowers(build);
-
   // Level 1 special: need both a primary and secondary power before advancing
   const hasPrimary = build.primary.powers.length >= 1;
   const hasSecondary = build.secondary.powers.length >= 1;
@@ -451,10 +464,21 @@ function calculateCorrectLevel(build: Build): number {
     return 1;
   }
 
-  // Find the first power pick level where available picks exceed current count.
-  // That level still has an open slot, so the cursor belongs there.
+  // Check which pick levels already have a power assigned
+  const occupied = getOccupiedLevels(build);
+
+  // Level 1 gets two picks — only consider it "full" if both primary and secondary exist
+  const level1Count = [
+    ...build.primary.powers.filter(p => !p.isAutoGranted),
+    ...build.secondary.powers.filter(p => !p.isAutoGranted),
+  ].filter(p => p.level === 1).length;
+
+  // Find the first unoccupied pick level
+  // Level 1 is special: it needs 2 powers, so only skip it if both slots are filled
   for (const level of POWER_PICK_LEVELS) {
-    if (getPowerPicksAtLevel(level) > totalPowers) {
+    if (level === 1) {
+      if (level1Count < 2) return 1;
+    } else if (!occupied.has(level)) {
       return level;
     }
   }
