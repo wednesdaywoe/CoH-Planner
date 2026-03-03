@@ -145,7 +145,7 @@ export function PowerRow({
       {onCompareSlotting && (
         <button
           onClick={onCompareSlotting}
-          className="text-slate-600 hover:text-cyan-400 text-[10px] opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0 leading-none"
+          className="text-sk-magenta/60 hover:text-sk-magenta text-[10px] opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0 leading-none mr-1"
           title="Compare Slotting"
         >
           ⚖
