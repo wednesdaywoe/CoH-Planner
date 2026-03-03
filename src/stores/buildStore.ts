@@ -147,6 +147,133 @@ type BuildStore = BuildState & BuildActions;
 // ============================================
 
 /**
+ * Sync power definitions (effects, icons) and enhancement icons from current data.
+ * Fixes stale data in builds saved before power/enhancement updates.
+ * Called on both localStorage rehydration and build import.
+ */
+function syncBuildDefinitions(build: Build): void {
+  // Helper: sync power effects + icons from a powerset definition
+  const syncPowers = (powers: SelectedPower[], defPowers: readonly Pick<SelectedPower, 'name' | 'effects' | 'icon'>[]): SelectedPower[] => {
+    let anyChanged = false;
+    const synced = powers.map((power) => {
+      const currentDef = defPowers.find((p) => p.name === power.name);
+      if (!currentDef) return power;
+      const needsEffects = currentDef.effects && currentDef.effects !== power.effects;
+      const needsIcon = currentDef.icon && currentDef.icon !== power.icon;
+      if (needsEffects || needsIcon) {
+        anyChanged = true;
+        return {
+          ...power,
+          ...(needsEffects ? { effects: currentDef.effects } : {}),
+          ...(needsIcon ? { icon: currentDef.icon } : {}),
+        };
+      }
+      return power;
+    });
+    return anyChanged ? synced : powers;
+  };
+
+  // Sync primary powers
+  if (build.primary.id && build.primary.powers.length > 0) {
+    const def = getPowerset(build.primary.id);
+    if (def) {
+      const fixed = syncPowers(build.primary.powers, def.powers);
+      if (fixed !== build.primary.powers) {
+        build.primary = { ...build.primary, powers: fixed };
+      }
+    }
+  }
+
+  // Sync secondary powers
+  if (build.secondary.id && build.secondary.powers.length > 0) {
+    const def = getPowerset(build.secondary.id);
+    if (def) {
+      const fixed = syncPowers(build.secondary.powers, def.powers);
+      if (fixed !== build.secondary.powers) {
+        build.secondary = { ...build.secondary, powers: fixed };
+      }
+    }
+  }
+
+  // Sync pool powers
+  if (build.pools.length > 0) {
+    build.pools = build.pools.map((pool) => {
+      const def = getPowerPool(pool.id);
+      if (!def) return pool;
+      const fixed = syncPowers(pool.powers, def.powers);
+      return fixed !== pool.powers ? { ...pool, powers: fixed } : pool;
+    });
+  }
+
+  // Sync epic pool powers
+  if (build.epicPool && build.epicPool.powers.length > 0) {
+    const def = getEpicPool(build.epicPool.id);
+    if (def) {
+      const fixed = syncPowers(build.epicPool.powers, def.powers);
+      if (fixed !== build.epicPool.powers) {
+        build.epicPool = { ...build.epicPool, powers: fixed };
+      }
+    }
+  }
+
+  // Fix IO set enhancement icons from current data
+  const fixEnhancementIcons = (powers: SelectedPower[]) => {
+    let anyChanged = false;
+    const fixed = powers.map((power) => {
+      let powerChanged = false;
+      const slots = power.slots.map((slot) => {
+        if (slot && slot.type === 'io-set') {
+          const enh = slot as Enhancement & { setId?: string; icon?: string };
+          const ioSet = enh.setId ? getIOSet(enh.setId) : null;
+          if (ioSet?.icon && enh.icon !== ioSet.icon) {
+            powerChanged = true;
+            return { ...enh, icon: ioSet.icon };
+          }
+        }
+        return slot;
+      });
+      if (powerChanged) {
+        anyChanged = true;
+        return { ...power, slots };
+      }
+      return power;
+    });
+    return anyChanged ? fixed : powers;
+  };
+
+  if (build.primary.powers.length > 0) {
+    const fixed = fixEnhancementIcons(build.primary.powers);
+    if (fixed !== build.primary.powers) {
+      build.primary = { ...build.primary, powers: fixed };
+    }
+  }
+  if (build.secondary.powers.length > 0) {
+    const fixed = fixEnhancementIcons(build.secondary.powers);
+    if (fixed !== build.secondary.powers) {
+      build.secondary = { ...build.secondary, powers: fixed };
+    }
+  }
+  if (build.pools.length > 0) {
+    build.pools = build.pools.map((pool) => {
+      const fixed = fixEnhancementIcons(pool.powers);
+      return fixed !== pool.powers ? { ...pool, powers: fixed } : pool;
+    });
+  }
+  if (build.epicPool && build.epicPool.powers.length > 0) {
+    const fixed = fixEnhancementIcons(build.epicPool.powers);
+    if (fixed !== build.epicPool.powers) {
+      build.epicPool = { ...build.epicPool, powers: fixed };
+    }
+  }
+  if (build.inherents && build.inherents.length > 0) {
+    const fixed = fixEnhancementIcons(build.inherents);
+    if (fixed !== build.inherents) {
+      build.inherents = fixed;
+    }
+  }
+}
+
+/**
  * Find a power across all categories
  */
 function findPower(
@@ -1142,6 +1269,10 @@ export const useBuildStore = create<BuildStore>()(
             ),
           };
 
+          // Sync power definitions (effects, icons) and enhancement icons
+          // from current data — fixes stale data from older exports/shares
+          syncBuildDefinitions(build);
+
           set({ build });
           return true;
         } catch (e) {
@@ -1257,131 +1388,9 @@ export const useBuildStore = create<BuildStore>()(
             state.build.shoppingListAcquired = {};
           }
 
-          // Migration: Refresh primary/secondary power effects from current definitions
-          // Stored powers may have stale/missing effects if powerset data was updated
-          if (state.build.primary.id && state.build.primary.powers.length > 0) {
-            const primaryDef = getPowerset(state.build.primary.id);
-            if (primaryDef) {
-              state.build.primary = {
-                ...state.build.primary,
-                powers: state.build.primary.powers.map((power) => {
-                  const currentDef = primaryDef.powers.find((p) => p.name === power.name);
-                  if (currentDef?.effects) {
-                    return { ...power, effects: currentDef.effects };
-                  }
-                  return power;
-                }),
-              };
-            }
-          }
-          if (state.build.secondary.id && state.build.secondary.powers.length > 0) {
-            const secondaryDef = getPowerset(state.build.secondary.id);
-            if (secondaryDef) {
-              state.build.secondary = {
-                ...state.build.secondary,
-                powers: state.build.secondary.powers.map((power) => {
-                  const currentDef = secondaryDef.powers.find((p) => p.name === power.name);
-                  if (currentDef?.effects) {
-                    return { ...power, effects: currentDef.effects };
-                  }
-                  return power;
-                }),
-              };
-            }
-          }
-
-          // Migration: Refresh pool power effects from current definitions
-          // Stored powers may have stale/missing effects if pool data was updated
-          if (state.build.pools.length > 0) {
-            state.build.pools = state.build.pools.map((pool) => {
-              const poolDef = getPowerPool(pool.id);
-              if (!poolDef) return pool;
-              return {
-                ...pool,
-                powers: pool.powers.map((power) => {
-                  const currentDef = poolDef.powers.find((p) => p.name === power.name);
-                  if (currentDef?.effects) {
-                    return { ...power, effects: currentDef.effects };
-                  }
-                  return power;
-                }),
-              };
-            });
-          }
-
-          // Migration: Refresh epic pool power effects from current definitions
-          if (state.build.epicPool && state.build.epicPool.powers.length > 0) {
-            const epicDef = getEpicPool(state.build.epicPool.id);
-            if (epicDef) {
-              state.build.epicPool = {
-                ...state.build.epicPool,
-                powers: state.build.epicPool.powers.map((power) => {
-                  const currentDef = epicDef.powers.find((p) => p.name === power.name);
-                  if (currentDef?.effects) {
-                    return { ...power, effects: currentDef.effects };
-                  }
-                  return power;
-                }),
-              };
-            }
-          }
-
-          // Migration: Sync IO set enhancement icons from current data
-          // Fixes enhancements with stale or missing icon names from older builds
-          const fixEnhancementIcons = (powers: SelectedPower[]) => {
-            let anyChanged = false;
-            const fixed = powers.map((power) => {
-              let powerChanged = false;
-              const slots = power.slots.map((slot) => {
-                if (slot && slot.type === 'io-set') {
-                  const enh = slot as Enhancement & { setId?: string; icon?: string };
-                  const ioSet = enh.setId ? getIOSet(enh.setId) : null;
-                  if (ioSet?.icon && enh.icon !== ioSet.icon) {
-                    powerChanged = true;
-                    return { ...enh, icon: ioSet.icon };
-                  }
-                }
-                return slot;
-              });
-              if (powerChanged) {
-                anyChanged = true;
-                return { ...power, slots };
-              }
-              return power;
-            });
-            return anyChanged ? fixed : powers;
-          };
-
-          if (state.build.primary.powers.length > 0) {
-            const fixed = fixEnhancementIcons(state.build.primary.powers);
-            if (fixed !== state.build.primary.powers) {
-              state.build.primary = { ...state.build.primary, powers: fixed };
-            }
-          }
-          if (state.build.secondary.powers.length > 0) {
-            const fixed = fixEnhancementIcons(state.build.secondary.powers);
-            if (fixed !== state.build.secondary.powers) {
-              state.build.secondary = { ...state.build.secondary, powers: fixed };
-            }
-          }
-          if (state.build.pools.length > 0) {
-            state.build.pools = state.build.pools.map((pool) => {
-              const fixed = fixEnhancementIcons(pool.powers);
-              return fixed !== pool.powers ? { ...pool, powers: fixed } : pool;
-            });
-          }
-          if (state.build.epicPool && state.build.epicPool.powers.length > 0) {
-            const fixed = fixEnhancementIcons(state.build.epicPool.powers);
-            if (fixed !== state.build.epicPool.powers) {
-              state.build.epicPool = { ...state.build.epicPool, powers: fixed };
-            }
-          }
-          if (state.build.inherents && state.build.inherents.length > 0) {
-            const fixed = fixEnhancementIcons(state.build.inherents);
-            if (fixed !== state.build.inherents) {
-              state.build.inherents = fixed;
-            }
-          }
+          // Migration: Sync power definitions (effects, icons) and enhancement icons
+          // from current data — fixes stale data from older builds
+          syncBuildDefinitions(state.build);
 
           // Migration: Fix power pick levels that don't match valid power pick levels.
           // Older builds may have all powers at the display level (e.g., 50) instead of

@@ -142,6 +142,15 @@ export function PowerRow({
       {showAutoLabel && (
         <span className="text-[9px] text-slate-500 ml-1 flex-shrink-0">(Auto)</span>
       )}
+      {onCompareSlotting && (
+        <button
+          onClick={onCompareSlotting}
+          className="text-slate-600 hover:text-cyan-400 text-[10px] opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0 leading-none"
+          title="Compare Slotting"
+        >
+          ⚖
+        </button>
+      )}
       {showRemove && onRemove && (
         <button
           onClick={onRemove}
@@ -279,6 +288,15 @@ export function PowerRow({
         </span>
         {showAutoLabel && (
           <span className="text-[9px] text-slate-500 ml-1 flex-shrink-0">(Auto)</span>
+        )}
+        {onCompareSlotting && (
+          <button
+            onClick={onCompareSlotting}
+            className="text-slate-600 hover:text-cyan-400 text-[10px] opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0 leading-none"
+            title="Compare Slotting"
+          >
+            ⚖
+          </button>
         )}
         {showRemove && onRemove && (
           <button

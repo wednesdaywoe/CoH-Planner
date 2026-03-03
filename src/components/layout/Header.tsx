@@ -677,7 +677,7 @@ export function Header() {
             onClick={() => openExportImportModal()}
             title="Export or import a build"
           >
-            Export / Import
+            Save / Load / Share
           </Button>
           <Button
             variant="secondary"
