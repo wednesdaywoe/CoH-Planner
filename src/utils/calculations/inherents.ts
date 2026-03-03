@@ -708,66 +708,33 @@ export function isScrapperAttackPower(powersetId: string): boolean {
 // ============================================
 
 /**
- * Opportunity grants Sentinels scaling critical hit chance on primary attacks
- * based on their Opportunity meter level.
+ * Opportunity grants Sentinels a flat +40% critical damage bonus on primary attacks.
  *
- * Mechanics:
- * - Meter builds during combat (5 × (castTime + 0.132) per attack activation)
- * - Crit chance scales from 5% at empty meter to 40% at full meter
- * - Critical hits deal 40% bonus damage (NOT double like Scrapper)
- * - Sentinel nukes have limited crit potential (not modeled here)
+ * The in-game power info displays Opportunity Crit as a guaranteed +40% bonus
+ * damage component, matching "Critical damage is 40% the strength of base
+ * power damage" from the i27p5 patch notes.
+ *
+ * Note: Sentinel nukes have limited crit potential (not modeled here).
  */
 
-export interface OpportunityCritInfo {
-  /** Minimum crit chance at empty meter (5%) */
-  minCritChance: number;
-  /** Maximum crit chance at full meter (40%) */
-  maxCritChance: number;
-  /** Damage multiplier on critical (0.40 = 40% extra damage) */
-  critDamageMultiplier: number;
+/** Flat Opportunity crit damage bonus (40% extra damage) */
+export const OPPORTUNITY_CRIT_MULTIPLIER = 0.40;
+
+/**
+ * Get Opportunity Critical Hit damage bonus
+ * @returns Damage bonus as decimal (0.40 = 40% extra damage)
+ */
+export function getOpportunityCritBonus(): number {
+  return OPPORTUNITY_CRIT_MULTIPLIER;
 }
 
 /**
- * Get Opportunity Critical Hit stats (constant values)
- */
-export function getOpportunityCritInfo(): OpportunityCritInfo {
-  return {
-    minCritChance: 0.05,
-    maxCritChance: 0.40,
-    critDamageMultiplier: 0.40,
-  };
-}
-
-/**
- * Calculate critical hit chance from Opportunity meter level
- * @param meterLevel - Current meter level (0-100)
- * @returns Critical hit chance (0.05-0.40)
- */
-export function calculateOpportunityCritChance(meterLevel: number): number {
-  const info = getOpportunityCritInfo();
-  const clamped = Math.max(0, Math.min(100, meterLevel));
-  return info.minCritChance + (clamped / 100) * (info.maxCritChance - info.minCritChance);
-}
-
-/**
- * Calculate average critical hit damage bonus from Opportunity meter
- * @param meterLevel - Current meter level (0-100)
- * @returns Average damage bonus as decimal (e.g., 0.16 = 16% at full meter)
- */
-export function calculateOpportunityCritBonus(meterLevel: number): number {
-  const critChance = calculateOpportunityCritChance(meterLevel);
-  const info = getOpportunityCritInfo();
-  return critChance * info.critDamageMultiplier;
-}
-
-/**
- * Calculate damage with average Opportunity crit bonus applied
+ * Calculate damage with Opportunity crit bonus applied
  * @param baseDamage - The damage after enhancements and buffs
- * @param meterLevel - Current Opportunity meter level (0-100)
- * @returns Damage with average Opportunity crit bonus applied
+ * @returns Damage with flat 40% Opportunity crit bonus applied
  */
-export function calculateOpportunityCritDamage(baseDamage: number, meterLevel: number): number {
-  return baseDamage * (1 + calculateOpportunityCritBonus(meterLevel));
+export function calculateOpportunityCritDamage(baseDamage: number): number {
+  return baseDamage * (1 + OPPORTUNITY_CRIT_MULTIPLIER);
 }
 
 /**

@@ -90,7 +90,7 @@ export function ThreeTierStatRow({
       case 'percent':
         return `${(v * 100).toFixed(1)}%`;
       case 'seconds':
-        return compact ? `${v.toFixed(1)}s` : `${v.toFixed(2)}s`;
+        return `${v.toFixed(2)}s`;
       case 'feet':
         return `${v.toFixed(0)}ft`;
       default:
@@ -239,7 +239,6 @@ function CollapsibleEffectGroup({
   items,
   gridCols,
   fontSize,
-  compact,
   dominationActive,
   finalColumnColor,
 }: {
@@ -248,7 +247,6 @@ function CollapsibleEffectGroup({
   items: DisplayableEffect[];
   gridCols: string;
   fontSize: string;
-  compact: boolean;
   dominationActive: boolean;
   finalColumnColor: string;
 }) {
@@ -263,7 +261,7 @@ function CollapsibleEffectGroup({
       case 'percent':
         return `${v.toFixed(1)}%`;
       case 'duration':
-        return compact ? `${v.toFixed(1)}s` : `${v.toFixed(2)}s`;
+        return `${v.toFixed(2)}s`;
       case 'value':
         if (config.label === 'Range' || config.label === 'Radius') return `${v.toFixed(0)}ft`;
         return v.toFixed(2);
@@ -812,7 +810,6 @@ export function RegistryEffectsDisplay({
               items={group.items}
               gridCols={gridCols}
               fontSize={fontSize}
-              compact={compact}
               dominationActive={dominationActive}
               finalColumnColor={finalColumnColor}
             />
@@ -866,7 +863,7 @@ export function RegistryEffectsDisplay({
             case 'percent':
               return `${(v).toFixed(1)}%`;
             case 'duration':
-              return compact ? `${v.toFixed(1)}s` : `${v.toFixed(2)}s`;
+              return `${v.toFixed(2)}s`;
             case 'value':
               if (config.label === 'Range' || config.label === 'Radius') return `${v.toFixed(0)}ft`;
               return v.toFixed(2);

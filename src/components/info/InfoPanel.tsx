@@ -5,7 +5,7 @@
  */
 
 import { useMemo, useState } from 'react';
-import { useUIStore, useBuildStore, useDominationActive, useScourgeActive, useFuryLevel, useContainmentActive, useCriticalHitsActive, useStalkerHidden, useStalkerTeamSize, useStalkerCritActive, useOpportunityLevel, useSentinelCritActive } from '@/stores';
+import { useUIStore, useBuildStore, useDominationActive, useScourgeActive, useFuryLevel, useContainmentActive, useCriticalHitsActive, useStalkerHidden, useStalkerTeamSize, useStalkerCritActive, useSentinelCritActive } from '@/stores';
 import {
   lookupPower,
   getArchetype,
@@ -179,7 +179,6 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
   const stalkerHidden = useStalkerHidden();
   const stalkerTeamSize = useStalkerTeamSize();
   const stalkerCritActive = useStalkerCritActive();
-  const opportunityLevel = useOpportunityLevel();
   const sentinelCritActive = useSentinelCritActive();
 
   // Unified power lookup across all categories
@@ -305,13 +304,13 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
       if (showCriticalHits) return calculateCriticalHitDamage(damage, 'higher');
       if (showAssassination) return calculateAssassinationDamage(damage, stalkerHidden, stalkerTeamSize);
       if (showContainment) return calculateContainmentDamage(damage, true);
-      if (showOpportunityCrit) return calculateOpportunityCritDamage(damage, opportunityLevel);
+      if (showOpportunityCrit) return calculateOpportunityCritDamage(damage);
       return damage;
     };
 
     return { header, color, applyBonus, showContainment };
   }, [calculatedDamage, archetypeId, powerSet, containmentActive, scourgeActive, furyLevel,
-      criticalHitsActive, stalkerHidden, stalkerTeamSize, stalkerCritActive, sentinelCritActive, opportunityLevel]);
+      criticalHitsActive, stalkerHidden, stalkerTeamSize, stalkerCritActive, sentinelCritActive]);
 
   // Per-target buff scaling (stored in UI store so it persists across power switches)
   const perTargetInfo = useMemo(() => power ? getPerTargetBuffInfo(power) : null, [power]);

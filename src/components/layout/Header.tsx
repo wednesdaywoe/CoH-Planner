@@ -9,7 +9,7 @@ import { useBuildStore, useUIStore } from '@/stores';
 import { getPowersetsForArchetype, getPowerset, MAX_LEVEL, ARCHETYPES } from '@/data';
 import { Button, Select, Slider, Toggle, Tooltip } from '@/components/ui';
 import { ConfirmModal } from '@/components/modals/ConfirmModal';
-import { calculateVigilanceDamageBonus, calculateAssassinationDamageBonus, calculateOpportunityCritChance, calculateOpportunityCritBonus } from '@/utils/calculations';
+import { calculateVigilanceDamageBonus, calculateAssassinationDamageBonus, OPPORTUNITY_CRIT_MULTIPLIER } from '@/utils/calculations';
 import type { ArchetypeId, ArchetypeBranchId, Origin, Powerset } from '@/types';
 import { BUILD_TIME, APP_VERSION } from '@/buildTime';
 
@@ -95,8 +95,6 @@ export function Header() {
   const setStalkerTeamSize = useUIStore((s) => s.setStalkerTeamSize);
   const containmentActive = useUIStore((s) => s.containmentActive);
   const toggleContainment = useUIStore((s) => s.toggleContainment);
-  const opportunityLevel = useUIStore((s) => s.opportunityLevel);
-  const setOpportunityLevel = useUIStore((s) => s.setOpportunityLevel);
   const sentinelCritActive = useUIStore((s) => s.sentinelCritActive);
   const toggleSentinelCrit = useUIStore((s) => s.toggleSentinelCrit);
   const openExportImportModal = useUIStore((s) => s.openExportImportModal);
@@ -544,64 +542,24 @@ export function Header() {
           </Tooltip>
         )}
 
-        {/* Sentinel Opportunity meter + Crit toggle */}
-        {archetypeId === 'sentinel' && (() => {
-          const critChance = calculateOpportunityCritChance(opportunityLevel);
-          const critBonus = calculateOpportunityCritBonus(opportunityLevel);
-          return (
-            <>
-              <Tooltip content={`Opportunity meter controls critical hit chance on primary attacks. Current: ${(critChance * 100).toFixed(0)}% crit chance, +${(critBonus * 100).toFixed(1)}% avg damage.`}>
-                <div className={`flex items-center gap-1 px-2 py-1.5 rounded border ${
-                  opportunityLevel > 0
-                    ? 'bg-sk-magenta/10 border-sk-magenta/30'
-                    : 'bg-slate-700/50 border-slate-600'
-                }`}>
-                  <span className="text-xs text-sk-magenta font-semibold uppercase">Opp</span>
-                  <button
-                    onClick={() => setOpportunityLevel(Math.max(0, opportunityLevel - 1))}
-                    disabled={opportunityLevel <= 0}
-                    className="text-slate-400 hover:text-sk-magenta disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-0.5"
-                  >
-                    &minus;
-                  </button>
-                  <span className="text-sm font-bold text-sk-magenta w-7 text-center">{opportunityLevel}</span>
-                  <button
-                    onClick={() => setOpportunityLevel(Math.min(100, opportunityLevel + 1))}
-                    disabled={opportunityLevel >= 100}
-                    className="text-slate-400 hover:text-sk-magenta disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-0.5"
-                  >
-                    +
-                  </button>
-                  <Slider
-                    value={opportunityLevel}
-                    min={0}
-                    max={100}
-                    onChange={(e) => setOpportunityLevel(Number(e.target.value))}
-                    className="w-20"
-                    showValue={false}
-                    showRange={false}
-                  />
-                  <span className="text-[10px] text-sk-magenta/70">{(critChance * 100).toFixed(0)}% crit</span>
-                </div>
-              </Tooltip>
-              <Tooltip content={`Toggle to show average Opportunity critical damage bonus (+${(critBonus * 100).toFixed(1)}% avg). Crits deal 40% bonus damage.`}>
-                <div className={`flex items-center px-2 py-1.5 rounded border ${
-                  sentinelCritActive
-                    ? 'bg-sk-magenta/10 border-sk-magenta/30'
-                    : 'bg-slate-700/50 border-slate-600'
-                }`}>
-                  <Toggle
-                    id="sentinel-crit-toggle"
-                    name="sentinelCrit"
-                    checked={sentinelCritActive}
-                    onChange={toggleSentinelCrit}
-                    label="Crits"
-                  />
-                </div>
-              </Tooltip>
-            </>
-          );
-        })()}
+        {/* Sentinel Opportunity Crit toggle */}
+        {archetypeId === 'sentinel' && (
+          <Tooltip content={`Toggle to show Opportunity critical damage bonus (+${(OPPORTUNITY_CRIT_MULTIPLIER * 100).toFixed(0)}%). Crits deal ${(OPPORTUNITY_CRIT_MULTIPLIER * 100).toFixed(0)}% bonus damage.`}>
+            <div className={`flex items-center px-2 py-1.5 rounded border ${
+              sentinelCritActive
+                ? 'bg-sk-magenta/10 border-sk-magenta/30'
+                : 'bg-slate-700/50 border-slate-600'
+            }`}>
+              <Toggle
+                id="sentinel-crit-toggle"
+                name="sentinelCrit"
+                checked={sentinelCritActive}
+                onChange={toggleSentinelCrit}
+                label="Opportunity Crit"
+              />
+            </div>
+          </Tooltip>
+        )}
 
         {/* Level & IO sliders */}
         <div className="flex items-center gap-2">

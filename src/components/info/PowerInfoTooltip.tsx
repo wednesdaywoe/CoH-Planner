@@ -6,7 +6,7 @@
 
 import { useEffect, useState, useCallback, useMemo } from 'react';
 import { createPortal } from 'react-dom';
-import { useUIStore, useBuildStore, useDominationActive, useScourgeActive, useFuryLevel, useSupremacyActive, useVigilanceTeamSize, useCriticalHitsActive, useStalkerHidden, useStalkerTeamSize, useStalkerCritActive, useContainmentActive, useOpportunityLevel, useSentinelCritActive } from '@/stores';
+import { useUIStore, useBuildStore, useDominationActive, useScourgeActive, useFuryLevel, useSupremacyActive, useVigilanceTeamSize, useCriticalHitsActive, useStalkerHidden, useStalkerTeamSize, useStalkerCritActive, useContainmentActive, useSentinelCritActive } from '@/stores';
 import { useGlobalBonuses } from '@/hooks/useCalculatedStats';
 import { lookupPower, getPower, getPowerPool, getArchetype, getIOSet, getPowerset, getInherentPowerDef, findProcData, parseProcEffect, getProcEffectLabel, getProcEffectColor, isProcAlwaysOn, interpolateProcDamage, calculateProcChance, calculateProcsPerMinute, calculateProcDPS, calculateAutoToggleProcChance, calculateAutoToggleProcsPerMinute } from '@/data';
 import { resolvePath } from '@/utils/paths';
@@ -49,7 +49,7 @@ import {
   getContainmentInfo,
   calculateContainmentDamage,
   isControllerPower,
-  calculateOpportunityCritBonus,
+  getOpportunityCritBonus,
   calculateOpportunityCritDamage,
   isSentinelAttackPower,
   getAlphaEnhancementBonuses,
@@ -109,7 +109,6 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
   const stalkerTeamSize = useStalkerTeamSize();
   const stalkerCritActive = useStalkerCritActive();
   const containmentActive = useContainmentActive();
-  const opportunityLevel = useOpportunityLevel();
   const sentinelCritActive = useSentinelCritActive();
 
   // Check if Fiery Embrace is active in the build
@@ -329,7 +328,7 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
       if (showCriticalHits) return calculateCriticalHitDamage(damage, 'higher');
       if (showAssassination) return calculateAssassinationDamage(damage, stalkerHidden, stalkerTeamSize);
       if (showContainment) return calculateContainmentDamage(damage, true);
-      if (showOpportunityCrit) return calculateOpportunityCritDamage(damage, opportunityLevel);
+      if (showOpportunityCrit) return calculateOpportunityCritDamage(damage);
       return damage;
     };
 
@@ -347,11 +346,11 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
       furyBonus: showFury ? calculateFuryDamageBonus(furyLevel) : 0,
       vigilanceBonus,
       assassinationBonus,
-      opportunityCritBonus: showOpportunityCrit ? calculateOpportunityCritBonus(opportunityLevel) : 0,
+      opportunityCritBonus: showOpportunityCrit ? getOpportunityCritBonus() : 0,
     };
   }, [calculatedDamage, archetypeId, powerSet, scourgeActive, furyLevel, vigilanceTeamSize,
       criticalHitsActive, stalkerHidden, stalkerTeamSize, stalkerCritActive, containmentActive,
-      sentinelCritActive, opportunityLevel, build.level]);
+      sentinelCritActive, build.level]);
 
   // All hooks are above this point — safe to early return
   if (!basePower) {
@@ -584,7 +583,7 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
           )}
           {damageDisplayInfo.showOpportunityCrit && (
             <div className="text-[8px] text-sk-magenta">
-              +{(damageDisplayInfo.opportunityCritBonus * 100).toFixed(1)}% avg from Opportunity Crits ({opportunityLevel}/100)
+              +{(damageDisplayInfo.opportunityCritBonus * 100).toFixed(0)}% from Opportunity Crit
             </div>
           )}
         </>
