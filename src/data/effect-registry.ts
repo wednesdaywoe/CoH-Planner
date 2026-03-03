@@ -285,6 +285,13 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
     format: 'percent',
     priority: 9,
   },
+  enduranceCrash: {
+    label: '-End (Crash)',
+    category: 'debuff',
+    colorClass: STAT_COLORS.enduranceDrain,
+    format: 'value',
+    priority: 9,
+  },
   threatDebuff: {
     label: '-Threat',
     category: 'debuff',

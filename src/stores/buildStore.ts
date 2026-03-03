@@ -216,6 +216,14 @@ function syncBuildDefinitions(build: Build): void {
     }
   }
 
+  // Sync inherent power icons (handles PascalCase -> lowercase migration)
+  if (build.inherents.length > 0) {
+    const fixed = syncPowers(build.inherents, getInherentPowers());
+    if (fixed !== build.inherents) {
+      build.inherents = fixed;
+    }
+  }
+
   // Fix IO set enhancement icons from current data
   const fixEnhancementIcons = (powers: SelectedPower[]) => {
     let anyChanged = false;

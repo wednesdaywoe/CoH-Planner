@@ -38,8 +38,6 @@ export interface IncarnateSlotConfig {
   displayName: string;
   /** UI theme color (hex) */
   color: string;
-  /** Icon folder name under /img/Powers/ */
-  iconFolder: string;
   /** Whether this slot provides toggleable stat bonuses for the dashboard */
   isToggleable: boolean;
   /** What kind of effect this slot provides */
@@ -53,8 +51,7 @@ export const INCARNATE_SLOT_REGISTRY: Record<IncarnateSlotId, IncarnateSlotConfi
     id: 'alpha',
     displayName: 'Alpha',
     color: '#60A5FA',
-    iconFolder: 'Incarnate Alpha Powers Icons',
-    isToggleable: true,
+isToggleable: true,
     effectType: 'enhancement',
     description: 'Enhancement bonuses that boost all powers',
   },
@@ -62,8 +59,7 @@ export const INCARNATE_SLOT_REGISTRY: Record<IncarnateSlotId, IncarnateSlotConfi
     id: 'judgement',
     displayName: 'Judgement',
     color: '#F59E0B',
-    iconFolder: 'Incarnate Judgement Powers Icons',
-    isToggleable: false,
+isToggleable: false,
     effectType: 'click_aoe',
     description: 'Powerful AoE attack',
   },
@@ -71,8 +67,7 @@ export const INCARNATE_SLOT_REGISTRY: Record<IncarnateSlotId, IncarnateSlotConfi
     id: 'interface',
     displayName: 'Interface',
     color: '#10B981',
-    iconFolder: 'Incarnate Interface Powers Icons',
-    isToggleable: true,
+isToggleable: true,
     effectType: 'proc_debuff',
     description: 'Proc-based debuffs on attacks',
   },
@@ -80,8 +75,7 @@ export const INCARNATE_SLOT_REGISTRY: Record<IncarnateSlotId, IncarnateSlotConfi
     id: 'destiny',
     displayName: 'Destiny',
     color: '#8B5CF6',
-    iconFolder: 'Incarnate Destiny Powers Icons',
-    isToggleable: true,
+isToggleable: true,
     effectType: 'click_buff',
     description: 'Powerful team buff',
   },
@@ -89,8 +83,7 @@ export const INCARNATE_SLOT_REGISTRY: Record<IncarnateSlotId, IncarnateSlotConfi
     id: 'lore',
     displayName: 'Lore',
     color: '#EC4899',
-    iconFolder: 'Incarnate Lore Powers Icons',
-    isToggleable: false,
+isToggleable: false,
     effectType: 'summon',
     description: 'Summon faction-themed pets',
   },
@@ -98,8 +91,7 @@ export const INCARNATE_SLOT_REGISTRY: Record<IncarnateSlotId, IncarnateSlotConfi
     id: 'hybrid',
     displayName: 'Hybrid',
     color: '#06B6D4',
-    iconFolder: 'Incarnate Hybrid Powers Icons',
-    isToggleable: true,
+isToggleable: true,
     effectType: 'toggle',
     description: 'Toggle power with stat bonuses',
   },
@@ -372,11 +364,6 @@ export function isSlotToggleable(slotId: IncarnateSlotId): boolean {
 /** Get all toggleable slot IDs */
 export function getToggleableSlotIds(): IncarnateSlotId[] {
   return INCARNATE_SLOT_ORDER.filter((id) => INCARNATE_SLOT_REGISTRY[id].isToggleable);
-}
-
-/** Get the icon folder for a slot */
-export function getSlotIconFolder(slotId: IncarnateSlotId): string {
-  return INCARNATE_SLOT_REGISTRY[slotId].iconFolder;
 }
 
 /** Get the tree description for a specific tree within a slot */

@@ -45,6 +45,10 @@ export const Transfusion: Power = {
     "regenDebuff": {
       "scale": 0.5,
       "table": "Ranged_Ones"
+    },
+    "healing": {
+      "scale": 1.69,
+      "perTarget": true
     }
   }
 };

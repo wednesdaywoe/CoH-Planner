@@ -44,6 +44,10 @@ export const LifegivingSpores: Power = {
         "Pets.ResistAll.ResistAll",
         "Pets.Lifegiving_Spores.Lifegiving_Spores"
       ]
+    },
+    "healing": {
+      "scale": 0.42,
+      "perTarget": true
     }
   }
 };

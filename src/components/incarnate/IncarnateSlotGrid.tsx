@@ -4,7 +4,7 @@
 
 import type { IncarnateSlotId, SelectedIncarnatePower, IncarnateActiveState, ToggleableIncarnateSlot } from '@/types';
 import { INCARNATE_SLOT_ORDER } from '@/types';
-import { getIncarnateIconPath, getAllIncarnateSlots, getSlotColor, getTierColor, isSlotToggleable } from '@/data';
+import { getPowerIconPath, getAllIncarnateSlots, getSlotColor, getTierColor, isSlotToggleable } from '@/data';
 import { Tooltip } from '@/components/ui';
 import { IncarnateEffectsTooltip } from './IncarnateEffectsTooltip';
 
@@ -67,7 +67,7 @@ function IncarnateSlotMini({
   const tierColor = selectedPower ? getTierColor(selectedPower.tier) : slotColor;
   const canToggle = isSlotToggleable(slotId) && selectedPower !== null;
 
-  const iconPath = selectedPower ? getIncarnateIconPath(slotId, selectedPower.icon) : null;
+  const iconPath = selectedPower ? getPowerIconPath(selectedPower.icon) : null;
 
   const tooltipContent = selectedPower ? (
     <div className="max-w-[300px]">

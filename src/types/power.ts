@@ -333,6 +333,8 @@ export interface PowerEffects {
   recoveryDebuff?: NumberOrScaled;
   /** Endurance drain */
   enduranceDrain?: NumberOrScaled;
+  /** Endurance crash (flat endurance point loss after delay) */
+  enduranceCrash?: number;
   /** Threat level debuff */
   threatDebuff?: NumberOrScaled;
   /** Perception debuff */

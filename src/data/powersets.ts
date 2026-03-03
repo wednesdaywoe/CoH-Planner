@@ -6,7 +6,6 @@
 
 import type { Powerset, Power } from '@/types';
 import { MODULAR_POWERSETS } from './powersets/index';
-import { resolvePath } from '@/utils/paths';
 
 // ============================================
 // POWERSET REGISTRY TYPE
@@ -71,27 +70,3 @@ export function getPowersAvailableAtLevel(powersetId: string, level: number): Po
 // POWER ICON UTILITIES
 // ============================================
 
-/**
- * Get the full icon path for a power
- * @param powersetName The powerset display name (e.g., "Fire Blast", "Archery")
- * @param iconFilename The raw icon filename from data (e.g., "fireblast_fireblast.png")
- * @returns Full path like "/CoH-Planner/img/Powers/Fire Blast Powers Icons/fireblast_fireblast.png"
- */
-export function getPowerIconPath(powersetName: string, iconFilename: string | undefined): string {
-  if (!iconFilename) {
-    return resolvePath('/img/Unknown.png');
-  }
-
-  const folderName = `${powersetName} Powers Icons`;
-  // Icon files are stored in lowercase to match the data
-  const lowercaseIcon = iconFilename.toLowerCase();
-
-  return resolvePath(`/img/Powers/${folderName}/${lowercaseIcon}`);
-}
-
-/**
- * Get power icon path from a Power object and its powerset
- */
-export function resolvePowerIcon(power: Power, powerset: Powerset): string {
-  return getPowerIconPath(powerset.name, power.icon);
-}

@@ -3540,10 +3540,7 @@ export const POWER_POOLS_RAW = {
             "scale": 0.7,
             "table": "Melee_Ones"
           },
-          "enduranceDrain": {
-            "scale": 15,
-            "table": "Melee_Ones"
-          }
+          "enduranceCrash": 15
         }
       },
       {

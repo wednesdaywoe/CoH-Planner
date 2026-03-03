@@ -8,14 +8,14 @@
 
 import { useState, useMemo, useCallback, useEffect } from 'react';
 import { useBuildStore, useUIStore } from '@/stores';
-import { lookupPower, getIOSet, getPowerIconPath, getPowerset } from '@/data';
+import { lookupPower, getIOSet, getPowerIconPath } from '@/data';
 import { getArchetype } from '@/data';
 import { calculatePowerEnhancementBonuses } from '@/utils/calculations/enhancement-values';
 import { calculatePowerDamage } from '@/utils/calculations/damage';
 import { getAlphaEnhancementBonuses } from '@/utils/calculations/character-totals';
 import { useGlobalBonuses } from '@/hooks';
 import { convertGlobalBonusesToAspects, getEffectiveBuffDebuffModifier, findSelectedPowerInBuild } from '@/components/info/powerDisplayUtils';
-import { mergeWithSupportEffects } from '@/data/support-power-effects';
+
 import { RegistryEffectsDisplay } from '@/components/info/SharedPowerComponents';
 import { SlottedEnhancementIcon } from '@/components/powers/SlottedEnhancementIcon';
 import { resolvePath } from '@/utils/paths';
@@ -48,10 +48,11 @@ export function CompareSlottingModal() {
   const [appliedCopyId, setAppliedCopyId] = useState<number | null>(null);
 
   // Resolve the power definition
-  const power = useMemo(() => {
+  const lookupResult = useMemo(() => {
     if (!compareTarget) return null;
-    return lookupPower(compareTarget.powerSet, compareTarget.powerName)?.power ?? null;
+    return lookupPower(compareTarget.powerSet, compareTarget.powerName) ?? null;
   }, [compareTarget]);
+  const power = lookupResult?.power ?? null;
 
   // Find the current build slotting
   const selectedPower = useMemo(() => {
@@ -93,7 +94,7 @@ export function CompareSlottingModal() {
   // Build merged effects for RegistryEffectsDisplay
   const mergedEffects = useMemo(() => {
     if (!power || !compareTarget) return {};
-    const baseEffects = mergeWithSupportEffects(power.effects, compareTarget.powerSet, power.name);
+    const baseEffects = power.effects;
 
     // Extract healing from damage field (e.g. Life Drain)
     let healFromDamage: { scale: number; table?: string } | undefined;
@@ -143,21 +144,19 @@ export function CompareSlottingModal() {
     const isPrimary = compareTarget.powerSet === build.primary.id;
     const isSecondary = compareTarget.powerSet === build.secondary.id;
     const powersetCategory = isPrimary ? 'PRIMARY' : isSecondary ? 'SECONDARY' : undefined;
-    const powerset = getPowerset(compareTarget.powerSet);
-
     return calculatePowerDamage(
       power,
       {
         level: build.level,
         archetypeId: archetypeId as ArchetypeId | undefined,
-        primaryName: powerset?.name || '',
+        primaryName: lookupResult?.powersetName || '',
         primaryCategory: powersetCategory,
       },
       { damage: enhBonuses.damage || 0 },
       globalBonusesForCalc.damage ?? 0,
       0
     );
-  }, [power, compareTarget, build.level, archetypeId, globalBonusesForCalc.damage, build.primary.id, build.secondary.id]);
+  }, [power, compareTarget, build.level, archetypeId, globalBonusesForCalc.damage, build.primary.id, build.secondary.id, lookupResult]);
 
   // The copy being displayed in the info panel (hovered or first)
   const activeCopy = hoveredCopyId !== null
@@ -174,14 +173,7 @@ export function CompareSlottingModal() {
     [computeDamage, activeEnhBonuses]
   );
 
-  // Powerset display name for icons
-  const powersetName = useMemo(() => {
-    if (!compareTarget) return '';
-    const powerset = getPowerset(compareTarget.powerSet);
-    return powerset?.name || '';
-  }, [compareTarget]);
-
-  const iconSrc = power ? getPowerIconPath(powersetName, power.icon) : '';
+  const iconSrc = power ? getPowerIconPath(power.icon) : '';
 
   // Handler: open picker for a comparison copy slot
   const handleSlotClick = useCallback((copyId: number, slotIndex: number) => {

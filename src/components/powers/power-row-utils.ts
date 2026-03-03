@@ -1,11 +1,8 @@
 /**
  * Shared utilities for power row rendering
- * Consolidates shouldShowToggle, hasHealingDamage, and getInherentIconPath
+ * Consolidates shouldShowToggle and hasHealingDamage
  * that were previously duplicated across multiple components.
  */
-
-import type { SelectedPower } from '@/types';
-import { resolvePath } from '@/utils/paths';
 
 /**
  * Check if a power has a Heal-type damage entry (one-shot heals/drains).
@@ -44,21 +41,4 @@ export function shouldShowToggle(power: {
   }
 
   return false;
-}
-
-/** Get the icon path for an inherent power based on its category */
-export function getInherentIconPath(power: SelectedPower): string {
-  const category = power.inherentCategory || 'basic';
-  const lowercaseIcon = power.icon?.toLowerCase() || 'unknown.png';
-
-  switch (category) {
-    case 'fitness':
-      return resolvePath(`/img/Powers/Fitness Powers Icons/${lowercaseIcon}`);
-    case 'archetype':
-      return resolvePath(`/img/Powers/Archetype Inherent Powers icons/${lowercaseIcon}`);
-    case 'prestige':
-    case 'basic':
-    default:
-      return resolvePath(`/img/Powers/Inherent Powers Icons/${lowercaseIcon}`);
-  }
 }

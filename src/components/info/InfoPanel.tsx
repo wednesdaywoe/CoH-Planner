@@ -11,7 +11,6 @@ import {
   getArchetype,
   getIOSet,
   getPowerIconPath,
-  getIncarnateIconPath,
   getAlphaEffects,
   getDestinyEffects,
   getHybridEffects,
@@ -20,7 +19,6 @@ import {
   getLoreEffects,
   formatEffectValue,
   isSlotToggleable,
-  mergeWithSupportEffects,
 } from '@/data';
 import { useGlobalBonuses } from '@/hooks/useCalculatedStats';
 import { calculatePowerEnhancementBonuses, calculatePowerDamage, getAlphaEnhancementBonuses, abbreviateDamageType, type EnhancementBonuses, isControllerPower, isCorruptorAttackPower, isBruteAttackPower, isScrapperAttackPower, isStalkerAttackPower, isSentinelAttackPower, calculateContainmentDamage, calculateScourgeDamage, calculateFuryDamage, calculateFuryDamageBonus, calculateCriticalHitDamage, calculateAssassinationDamage, calculateAssassinationDamageBonus, calculateOpportunityCritDamage, getContainmentInfo, getScourgeInfo, getCriticalHitInfo, getFuryInfo } from '@/utils/calculations';
@@ -185,11 +183,9 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
   const result = lookupPower(powerSet, powerName);
   let power: Power | undefined = result?.power;
   let powersetName = result?.powersetName || '';
-  let isInherent = result?.isInherent || false;
 
   // Archetype inherent fallback (dynamically created, not in static data)
   if (!power && powerSet === 'Inherent') {
-    isInherent = true;
     powersetName = 'Inherent';
     const selectedInherent = build.inherents.find((p) => p.name === powerName);
     if (selectedInherent) {
@@ -321,8 +317,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
     return <div className="text-slate-500 text-xs">Power not found</div>;
   }
 
-  // Merge raw power effects with curated support power data
-  const baseEffects = mergeWithSupportEffects(power.effects, powerSet, power.name);
+  const baseEffects = power.effects;
 
   // Extract healing from damage field (e.g., Life Drain, Reconstruction)
   // Handles both single object { type: "Heal", scale, table } and array entries
@@ -369,22 +364,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
   // Check if power has any enhancements
   const hasEnhancements = selectedPower && selectedPower.slots.some(s => s !== null);
 
-  // Get the correct icon path based on power type
-  const getIconPath = (): string => {
-    if (isInherent && selectedPower) {
-      const category = selectedPower.inherentCategory || 'basic';
-      const lowercaseIcon = power.icon?.toLowerCase() || 'unknown.png';
-      switch (category) {
-        case 'fitness':
-          return resolvePath(`/img/Powers/Fitness Powers Icons/${lowercaseIcon}`);
-        case 'archetype':
-          return resolvePath(`/img/Powers/Archetype Inherent Powers icons/${lowercaseIcon}`);
-        default:
-          return resolvePath(`/img/Powers/Inherent Powers Icons/${lowercaseIcon}`);
-      }
-    }
-    return getPowerIconPath(powersetName, power.icon);
-  };
+  const getIconPath = (): string => getPowerIconPath(power.icon);
 
   return (
     <div className="space-y-2">
@@ -917,7 +897,7 @@ function IncarnateInfo({ slotId, powerId }: IncarnateInfoProps) {
   const tierName = getTierDisplayName(selectedPower.tier);
   const isToggleable = isSlotToggleable(slotId);
   const isActive = isToggleable ? incarnateActive[slotId as ToggleableIncarnateSlot] : false;
-  const iconPath = getIncarnateIconPath(slotId, selectedPower.icon);
+  const iconPath = getPowerIconPath(selectedPower.icon);
 
   // Get the effects based on slot type
   const alphaEffects = slotId === 'alpha' ? getAlphaEffects(powerId) : null;

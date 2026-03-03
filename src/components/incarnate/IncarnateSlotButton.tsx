@@ -3,7 +3,7 @@
  */
 
 import type { IncarnateSlotId, SelectedIncarnatePower, ToggleableIncarnateSlot } from '@/types';
-import { getIncarnateSlotIconPath, getIncarnateIconPath, getSlotColor, getTierColor, isSlotToggleable } from '@/data';
+import { getIncarnateSlotIconPath, getPowerIconPath, getSlotColor, getTierColor, isSlotToggleable } from '@/data';
 
 interface IncarnateSlotButtonProps {
   slotId: IncarnateSlotId;
@@ -32,7 +32,7 @@ export function IncarnateSlotButton({
 
   // Get icon path
   const iconPath = selectedPower
-    ? getIncarnateIconPath(slotId, selectedPower.icon)
+    ? getPowerIconPath(selectedPower.icon)
     : getIncarnateSlotIconPath(slotId);
 
   const handleMouseEnter = () => {

@@ -1303,13 +1303,6 @@ export const PROC_DATABASE: Record<string, ProcData> = {
 };
 
 /**
- * Look up proc data by enhancement name (exact match)
- */
-export function getProcDataByName(name: string): ProcData | undefined {
-  return PROC_DATABASE[name];
-}
-
-/**
  * Look up proc data with fuzzy matching
  * First tries exact match, then tries to find by IO name alone
  */
@@ -1348,46 +1341,9 @@ export function findProcData(enhancementName: string, setName?: string): ProcDat
 }
 
 /**
- * Parse damage range from mechanics string
- * Returns [min, max] or null if not a damage proc
- */
-export function parseDamageRange(mechanics: string): [number, number] | null {
-  // Match patterns like "Damage(Fire 10-107)" or "Damage(Energy 7 - 72)"
-  const match = mechanics.match(/Damage\s*\(\s*\w+\s+(\d+)\s*-\s*(\d+)\s*\)/i);
-  if (match) {
-    return [parseInt(match[1], 10), parseInt(match[2], 10)];
-  }
-  return null;
-}
-
-/**
- * Parse damage type from mechanics string
- */
-export function parseDamageType(mechanics: string): string | null {
-  const match = mechanics.match(/Damage\s*\(\s*(\w+(?:\s+\w+)?)\s+\d+/i);
-  if (match) {
-    return match[1];
-  }
-  return null;
-}
-
-/**
- * Parse buff value from mechanics string
- * Returns the percentage value or null
- */
-export function parseBuffValue(mechanics: string): number | null {
-  // Match patterns like "Buff(Recharge 100%)" or "Buff(Heal 5%)"
-  const match = mechanics.match(/Buff\s*\([^)]*?(\d+(?:\.\d+)?)\s*%/i);
-  if (match) {
-    return parseFloat(match[1]);
-  }
-  return null;
-}
-
-/**
  * Parse duration from mechanics string
  */
-export function parseDuration(mechanics: string): number | null {
+function parseDuration(mechanics: string): number | null {
   // Match patterns like "for 10s" or "for 120s"
   const match = mechanics.match(/for\s+(\d+(?:\.\d+)?)\s*s/i);
   if (match) {
@@ -1853,38 +1809,10 @@ export function calculateProcDPS(
 }
 
 /**
- * Calculate effective uptime for buff procs (like Performance Shifter's +End)
- * For procs that fire periodically and grant a one-time benefit
- *
- * @param ppm - Procs Per Minute value
- * @param baseRecharge - Base recharge time in seconds
- * @param castTime - Cast time in seconds
- * @param radius - AoE radius (0 for single target)
- * @param enhancedRechargeBonus - Recharge enhancement bonus as decimal
- * @returns Expected procs per minute (for one-shot buffs like +End)
- */
-export function calculateBuffProcRate(
-  ppm: number,
-  baseRecharge: number,
-  castTime: number,
-  radius: number = 0,
-  enhancedRechargeBonus: number = 0
-): number {
-  return calculateProcsPerMinute(ppm, baseRecharge, castTime, radius, enhancedRechargeBonus);
-}
-
-/**
  * Special case: Calculate proc rate for Auto powers
  * Auto powers use a 10-second pseudo-recharge for PPM calculation
  */
 export const AUTO_POWER_PSEUDO_RECHARGE = 10;
-
-/**
- * Special case: Calculate proc rate for Toggle powers
- * Toggles tick every 10 seconds for damage/effect application
- * For PPM, they use 10-second pseudo-recharge
- */
-export const TOGGLE_POWER_TICK_INTERVAL = 10;
 
 /**
  * Calculate proc chance for Auto/Toggle powers

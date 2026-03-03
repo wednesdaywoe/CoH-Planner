@@ -14,7 +14,6 @@ import type {
   PowerType,
 } from '@/types';
 import { EPIC_POOLS_RAW } from './epic-pools-raw';
-import { resolvePath } from '@/utils/paths';
 import { EPIC_POOL_LEVEL, EPIC_TIER_REQUIREMENTS } from './levels';
 
 // ============================================
@@ -191,13 +190,6 @@ export function getEpicPool(id: string): EpicPool | undefined {
 }
 
 /**
- * Get all epic pool IDs
- */
-export function getEpicPoolIds(): string[] {
-  return Object.keys(_epicPools);
-}
-
-/**
  * Get epic pools for a specific archetype
  * @param archetypeId - The archetype ID (e.g., "sentinel", "blaster")
  * @returns Array of epic pools available to that archetype
@@ -215,76 +207,6 @@ export function getEpicPoolsForArchetype(archetypeId: string): EpicPool[] {
   return Object.values(_epicPools).filter(
     (pool) => archTypesToMatch.includes(pool.archetype.toLowerCase())
   );
-}
-
-/**
- * Get epic pool by archetype and pool name
- * @param archetypeId - The archetype ID
- * @param poolName - The pool display name (e.g., "Dark Mastery")
- */
-export function getEpicPoolByName(archetypeId: string, poolName: string): EpicPool | undefined {
-  const pools = getEpicPoolsForArchetype(archetypeId);
-  return pools.find(
-    (p) => p.name.toLowerCase() === poolName.toLowerCase() ||
-           p.displayName.toLowerCase() === poolName.toLowerCase()
-  );
-}
-
-/**
- * Get a specific power from an epic pool
- */
-export function getEpicPoolPower(poolId: string, powerName: string): Power | undefined {
-  const pool = getEpicPool(poolId);
-  return pool?.powers.find((p) => p.name === powerName);
-}
-
-/**
- * Get powers available at or before a given level from an epic pool
- * Note: available is 0-indexed (available=34 means level 35)
- */
-export function getEpicPoolPowersAvailableAtLevel(poolId: string, level: number): Power[] {
-  const pool = getEpicPool(poolId);
-  if (!pool) return [];
-  return pool.powers.filter((p) => p.available < level && p.available >= 0);
-}
-
-// ============================================
-// EPIC POOL ICON UTILITIES
-// ============================================
-
-/**
- * Map icon filename prefixes to their actual source folders when they differ
- * from the pool-name-based folder. Some epic/patron pools (especially Sentinel
- * variants) reuse icons from other power categories.
- */
-const ICON_PREFIX_FOLDER_MAP: [string, string][] = [
-  ['arachnos_patron_', 'Arachnos Patron Powers Icons'],
-  ['ninjatools_', 'Ninja Tool Mastery Powers Icons'],
-  ['mentalcontrol_', 'Mind Control Powers Icons'],
-];
-
-/**
- * Get the full icon path for an epic pool power
- * @param poolName The pool display name (e.g., "Dark Mastery")
- * @param iconFilename The raw icon filename from data (e.g., "darkmastery_darkobliteration.png")
- * @returns Full path like "/CoH-Planner/img/Powers/Dark Mastery Powers Icons/darkmastery_darkobliteration.png"
- */
-export function getEpicPoolPowerIconPath(poolName: string, iconFilename: string | undefined): string {
-  if (!iconFilename) {
-    return resolvePath('/img/Unknown.png');
-  }
-
-  const lowercaseIcon = iconFilename.toLowerCase();
-
-  // Check if the icon belongs to a different folder than the pool name suggests
-  for (const [prefix, folder] of ICON_PREFIX_FOLDER_MAP) {
-    if (lowercaseIcon.startsWith(prefix)) {
-      return resolvePath(`/img/Powers/${folder}/${lowercaseIcon}`);
-    }
-  }
-
-  const folderName = `${poolName} Powers Icons`;
-  return resolvePath(`/img/Powers/${folderName}/${lowercaseIcon}`);
 }
 
 // ============================================
@@ -354,22 +276,3 @@ export function isEpicPowerAvailable(
   return false;
 }
 
-/**
- * Get all available powers from an epic pool based on level and already selected powers
- * This filters out already selected powers and checks level/prerequisite requirements
- */
-export function getAvailableEpicPoolPowers(
-  poolId: string,
-  level: number,
-  selectedPowersInPool: string[]
-): Power[] {
-  const pool = getEpicPool(poolId);
-  if (!pool) return [];
-
-  return pool.powers.filter((power) => {
-    // Skip already selected powers
-    if (selectedPowersInPool.includes(power.name)) return false;
-    // Check availability
-    return isEpicPowerAvailable(power, level, selectedPowersInPool);
-  });
-}

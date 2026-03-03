@@ -91,9 +91,10 @@ export {
   getPowersetsForArchetype,
   getPower,
   getPowersAvailableAtLevel,
-  getPowerIconPath,
-  resolvePowerIcon,
 } from './powersets';
+
+// Unified power icon path resolution (flat /img/powers/ folder)
+export { getPowerIconPath } from '@/utils/power-icons';
 export type { PowersetRegistry } from './powersets';
 
 // Power Pool data and accessors
@@ -117,15 +118,9 @@ export type { PowerPoolRegistry, PoolCategoryInfo } from './power-pools';
 export {
   getAllEpicPools,
   getEpicPool,
-  getEpicPoolIds,
   getEpicPoolsForArchetype,
-  getEpicPoolByName,
-  getEpicPoolPower,
-  getEpicPoolPowersAvailableAtLevel,
-  getEpicPoolPowerIconPath,
   areEpicPoolsUnlocked,
   isEpicPowerAvailable,
-  getAvailableEpicPoolPowers,
 } from './epic-pools';
 export type { EpicPool, EpicPoolRegistry } from './epic-pools';
 
@@ -184,7 +179,6 @@ export {
   getIncarnatePowersForTree,
   getIncarnatePowersByTier,
   getIncarnatePower,
-  getIncarnateIconPath,
   getIncarnateSlotIconPath,
 } from './incarnates';
 
@@ -194,7 +188,6 @@ export {
   INCARNATE_SLOT_REGISTRY,
   getSlotConfig,
   getSlotColor,
-  getSlotIconFolder,
   isSlotToggleable,
   getToggleableSlotIds,
   // Tier config
@@ -279,22 +272,10 @@ export {
   getCumulativeSalvage,
 } from './incarnate-components';
 
-// Support power effects (curated data for heals, buffs, debuffs)
-export {
-  SUPPORT_POWER_EFFECTS,
-  getSupportPowerEffects,
-  mergeWithSupportEffects,
-} from './support-power-effects';
-
 // Proc enhancement data
 export {
   PROC_DATABASE,
-  getProcDataByName,
   findProcData,
-  parseDamageRange,
-  parseDamageType,
-  parseBuffValue,
-  parseDuration,
   parseProcEffect,
   getProcEffectLabel,
   getProcEffectColor,
@@ -305,12 +286,10 @@ export {
   calculateProcChance,
   calculateProcsPerMinute,
   calculateProcDPS,
-  calculateBuffProcRate,
   calculateAutoToggleProcChance,
   calculateAutoToggleProcsPerMinute,
   calculateProcStats,
   AUTO_POWER_PSEUDO_RECHARGE,
-  TOGGLE_POWER_TICK_INTERVAL,
 } from './proc-data';
 export type { ProcData, ProcType, ProcEffectCategory, ParsedProcEffect, PowerProcCalcData } from './proc-data';
 
@@ -319,18 +298,6 @@ export {
   GRANTED_POWER_GROUPS,
   hasGrantedPowers,
   getGrantedPowerGroup,
-  getGrantedPowerNames,
-  arePowersMutuallyExclusive,
-  getParentPower,
-  isGrantedSubPower,
-  getSiblingPowers,
-  // Auto-detection functions
-  parseRequiresField,
-  isAutoGrantedPower,
-  buildGrantedPowerMap,
-  getGrantedPowersForParent,
-  hasGrantedPowersSmart,
-  getGrantedPowerGroupSmart,
 } from './granted-powers';
 export type { GrantedPowerGroup } from './granted-powers';
 

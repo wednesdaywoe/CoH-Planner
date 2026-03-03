@@ -10,7 +10,7 @@ import {
   getPowerPool,
   getEpicPoolsForArchetype,
   getEpicPool,
-  getEpicPoolPowerIconPath,
+  getPowerIconPath,
   POOL_UNLOCK_LEVEL,
   arePoolsUnlocked,
   isPowerAvailableInPool,
@@ -422,7 +422,7 @@ function AvailableEpicPoolSection({
                 power={power}
                 powersetId={epicPool.id}
                 powersetName={poolData.name}
-                iconSrc={getEpicPoolPowerIconPath(poolData.name, power.icon)}
+                iconSrc={getPowerIconPath(power.icon)}
                 accentColor="purple"
                 isSelected={isSelected}
                 isAvailable={isAvailable}

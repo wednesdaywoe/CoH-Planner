@@ -9,15 +9,13 @@ import { useBuildStore, useUIStore } from '@/stores';
 import {
   getPowerPool,
   getPowerIconPath,
-  getEpicPool,
-  getEpicPoolPowerIconPath,
   hasGrantedPowers,
   getGrantedPowerGroup,
 } from '@/data';
 import { resolvePath } from '@/utils/paths';
 import { Tooltip } from '@/components/ui';
 import { PowerRow } from './PowerRow';
-import { shouldShowToggle, getInherentIconPath } from './power-row-utils';
+import { shouldShowToggle } from './power-row-utils';
 import type { Power, SelectedPower } from '@/types';
 
 export function PoolPowers() {
@@ -363,7 +361,7 @@ function PoolPowerGroup({
               <div key={power.name}>
                 <PowerRow
                   name={power.name}
-                  iconSrc={getPowerIconPath(poolName, power.icon)}
+                  iconSrc={getPowerIconPath(power.icon)}
                   size="lg"
                   stackedLayout
                   level={power.level}
@@ -420,7 +418,7 @@ interface GrantedPoolSubPowersProps {
 
 function GrantedPoolSubPowers({
   subPowers,
-  poolName,
+  poolName: _poolName,
   isMutuallyExclusive,
   activeSubPower,
   onSetActive,
@@ -443,7 +441,7 @@ function GrantedPoolSubPowers({
             `}
           >
             <img
-              src={getPowerIconPath(poolName, subPower.icon)}
+              src={getPowerIconPath(subPower.icon)}
               alt=""
               className="w-4 h-4 rounded-sm flex-shrink-0"
               onError={(e) => {
@@ -535,11 +533,8 @@ function EpicPoolSelectedPowers({ epicPool, isPowerLocked }: EpicPoolSelectedPow
   const openEnhancementPicker = useUIStore((s) => s.openEnhancementPicker);
   const openCompareSlotting = useUIStore((s) => s.openCompareSlotting);
 
-  const selectedPoolData = useMemo(() => getEpicPool(epicPool.id), [epicPool.id]);
-
   const getEpicPowerIcon = (power: Power | SelectedPower) => {
-    if (!selectedPoolData) return resolvePath('/img/Unknown.png');
-    return getEpicPoolPowerIconPath(selectedPoolData.name, power.icon);
+    return getPowerIconPath(power.icon);
   };
 
   const handlePowerHover = (power: Power | SelectedPower) => {
@@ -719,7 +714,7 @@ function InherentPowerGroup({
               <PowerRow
                 key={power.name}
                 name={power.name}
-                iconSrc={getInherentIconPath(power)}
+                iconSrc={getPowerIconPath(power.icon)}
                 size="lg"
                 stackedLayout
                 muted

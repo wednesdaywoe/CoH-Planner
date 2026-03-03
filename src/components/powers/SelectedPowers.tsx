@@ -174,7 +174,7 @@ export function SelectedPowers({ category }: SelectedPowersProps) {
               <div key={power.name}>
                 <PowerRow
                   name={power.name}
-                  iconSrc={getPowerIconPath(selection.name, power.icon)}
+                  iconSrc={getPowerIconPath(power.icon)}
                   size="lg"
                   stackedLayout
                   level={power.level}
@@ -222,7 +222,7 @@ export function SelectedPowers({ category }: SelectedPowersProps) {
                         <PowerRow
                           key={subPower.name}
                           name={subPower.name}
-                          iconSrc={getPowerIconPath(selection.name, subPower.icon)}
+                          iconSrc={getPowerIconPath(subPower.icon)}
                           size="lg"
                           stackedLayout
                           isLocked={subIsLocked}
@@ -274,7 +274,7 @@ interface GrantedSubPowersProps {
  */
 function GrantedSubPowers({
   subPowers,
-  powersetName,
+  powersetName: _powersetName,
   isMutuallyExclusive,
   activeSubPower,
   onSetActive,
@@ -298,7 +298,7 @@ function GrantedSubPowers({
           >
             {/* Sub-power icon and name */}
             <img
-              src={getPowerIconPath(powersetName, subPower.icon)}
+              src={getPowerIconPath(subPower.icon)}
               alt=""
               className="w-4 h-4 rounded-sm flex-shrink-0"
               onError={(e) => {

@@ -139,7 +139,7 @@ export interface PowerItemProps {
 export function PowerItem({
   power,
   powersetId: _powersetId,
-  powersetName,
+  powersetName: _powersetName,
   iconSrc,
   accentColor = 'blue',
   isSelected,
@@ -219,7 +219,7 @@ export function PowerItem({
       </span>
       {/* Power icon */}
       <img
-        src={iconSrc || getPowerIconPath(powersetName, power.icon)}
+        src={iconSrc || getPowerIconPath(power.icon)}
         alt=""
         className="w-4 h-4 rounded-sm flex-shrink-0 pointer-events-none"
         draggable={false}

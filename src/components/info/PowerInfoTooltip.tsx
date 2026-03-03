@@ -8,8 +8,7 @@ import { useEffect, useState, useCallback, useMemo } from 'react';
 import { createPortal } from 'react-dom';
 import { useUIStore, useBuildStore, useDominationActive, useScourgeActive, useFuryLevel, useSupremacyActive, useVigilanceTeamSize, useCriticalHitsActive, useStalkerHidden, useStalkerTeamSize, useStalkerCritActive, useContainmentActive, useSentinelCritActive } from '@/stores';
 import { useGlobalBonuses } from '@/hooks/useCalculatedStats';
-import { lookupPower, getPower, getPowerPool, getArchetype, getIOSet, getPowerset, getInherentPowerDef, findProcData, parseProcEffect, getProcEffectLabel, getProcEffectColor, isProcAlwaysOn, interpolateProcDamage, calculateProcChance, calculateProcsPerMinute, calculateProcDPS, calculateAutoToggleProcChance, calculateAutoToggleProcsPerMinute } from '@/data';
-import { resolvePath } from '@/utils/paths';
+import { lookupPower, getPower, getPowerPool, getArchetype, getIOSet, getPowerset, findProcData, parseProcEffect, getProcEffectLabel, getProcEffectColor, isProcAlwaysOn, interpolateProcDamage, calculateProcChance, calculateProcsPerMinute, calculateProcDPS, calculateAutoToggleProcChance, calculateAutoToggleProcsPerMinute } from '@/data';
 import type { Power } from '@/types';
 import {
   calculatePowerEnhancementBonuses,
@@ -78,22 +77,6 @@ interface PowerInfoContentProps {
   powerSet: string;
 }
 
-/** Get the full icon path for an inherent power based on its category */
-function getInherentIconFullPath(iconFilename: string, category?: string): string {
-  const lowercaseIcon = iconFilename?.toLowerCase() || 'unknown.png';
-
-  switch (category) {
-    case 'fitness':
-      return resolvePath(`/img/Powers/Fitness Powers Icons/${lowercaseIcon}`);
-    case 'archetype':
-      return resolvePath(`/img/Powers/Archetype Inherent Powers icons/${lowercaseIcon}`);
-    case 'prestige':
-    case 'basic':
-    default:
-      return resolvePath(`/img/Powers/Inherent Powers Icons/${lowercaseIcon}`);
-  }
-}
-
 function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
   const build = useBuildStore((s) => s.build);
   const archetypeId = build.archetype.id;
@@ -126,19 +109,11 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
   const lookupResult = lookupPower(powerSet, powerName);
   let basePower: Power | undefined = lookupResult?.power;
 
-  // Resolve inherent icon paths (inherents store filename, need full path)
-  if (lookupResult?.isInherent && basePower) {
-    const inherentDef = getInherentPowerDef(powerName);
-    const iconPath = getInherentIconFullPath(basePower.icon || 'unknown.png', inherentDef?.category);
-    basePower = { ...basePower, icon: iconPath };
-  }
-
   // Archetype inherent fallback (dynamically created, not in static data)
   if (!basePower && powerSet === 'Inherent') {
     const selectedInherent = build.inherents.find((p) => p.name === powerName);
     if (selectedInherent) {
-      const iconPath = getInherentIconFullPath(selectedInherent.icon || 'unknown.png', selectedInherent.inherentCategory);
-      basePower = { ...selectedInherent, icon: iconPath };
+      basePower = { ...selectedInherent };
     }
   }
 

@@ -7,7 +7,7 @@
 import { useMemo, useState } from 'react';
 import { useBuildStore, useUIStore } from '@/stores';
 import { PowerRow } from './PowerRow';
-import { getInherentIconPath } from './power-row-utils';
+import { getPowerIconPath } from '@/data';
 import type { SelectedPower } from '@/types';
 
 interface ChronologicalInherentsSectionProps {
@@ -253,7 +253,7 @@ function InherentGroup({
             <PowerRow
               key={power.name}
               name={power.name}
-              iconSrc={getInherentIconPath(power)}
+              iconSrc={getPowerIconPath(power.icon)}
               size="xs"
               muted
               showRemove={false}

@@ -10,7 +10,7 @@
 
 import type { IncarnateSlotId, IncarnatePower, IncarnateTier } from '@/types';
 import {
-  getIncarnateIconPath,
+  getPowerIconPath,
   getTierColor,
   getTierDisplayName,
   abbreviatePowerName,
@@ -148,7 +148,7 @@ interface PowerButtonProps {
 
 function PowerButton({ slotId, power, treeName, isSelected, onClick }: PowerButtonProps) {
   const tierColor = getTierColor(power.tier);
-  const iconPath = getIncarnateIconPath(slotId, power.icon);
+  const iconPath = getPowerIconPath(power.icon);
   const shortName = abbreviatePowerName(power.displayName, treeName);
   const branchLabel = power.branch === 'base' ? 'Base' : power.branch === 'core' ? 'Core' : 'Radial';
 

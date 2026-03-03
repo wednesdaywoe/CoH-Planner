@@ -5,7 +5,7 @@
  * Data is loaded from the raw JSON files in incarnate_raw_data/
  */
 
-import { resolvePath } from '@/utils/paths';
+import { getPowerIconPath } from '@/utils/power-icons';
 import type {
   IncarnateSlotId,
   IncarnateTier,
@@ -20,7 +20,6 @@ import {
 } from '@/types';
 import {
   getSlotColor,
-  getSlotIconFolder,
   getTreeDescription,
 } from './incarnate-registry';
 
@@ -267,20 +266,8 @@ export function getIncarnatePower(
 }
 
 /**
- * Get the icon path for an incarnate power icon
- */
-export function getIncarnateIconPath(slotId: IncarnateSlotId, icon: string): string {
-  const folder = getSlotIconFolder(slotId);
-  // Convert to lowercase for file matching
-  const lowerIcon = icon.toLowerCase();
-  return resolvePath(`/img/Powers/${folder}/${lowerIcon}`);
-}
-
-/**
  * Get the slot icon path (uses the blank/empty slot icon)
  */
 export function getIncarnateSlotIconPath(slotId: IncarnateSlotId): string {
-  const folder = getSlotIconFolder(slotId);
-  // Use the blank icon as the slot placeholder
-  return resolvePath(`/img/Powers/${folder}/incarnate_${slotId}_blank.png`);
+  return getPowerIconPath(`incarnate_${slotId}_blank.png`);
 }

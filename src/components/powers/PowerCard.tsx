@@ -66,7 +66,7 @@ interface PowerCardProps {
 export function PowerCard({
   power,
   powersetId,
-  powersetName,
+  powersetName: _powersetName,
   onRemove,
   showLevel = true,
 }: PowerCardProps) {
@@ -113,7 +113,7 @@ export function PowerCard({
           <span className="text-xs text-gray-500 w-6 text-right flex-shrink-0">{power.level}</span>
         )}
         <img
-          src={getPowerIconPath(powersetName, power.icon)}
+          src={getPowerIconPath(power.icon)}
           alt=""
           className="w-6 h-6 rounded flex-shrink-0"
           onError={(e) => {
