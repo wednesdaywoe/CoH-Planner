@@ -749,6 +749,11 @@ export const useBuildStore = create<BuildStore>()(
             power = { ...power, level: calculateCorrectLevel(state.build) };
           }
 
+          // Powers with maxSlots=0 cannot accept enhancement slots (e.g., Reach for the Limit)
+          if (power.maxSlots === 0 && power.slots.length > 0) {
+            power = { ...power, slots: [] };
+          }
+
           // Default toggle/auto powers to active
           if ((power.powerType === 'Toggle' || power.powerType === 'Auto') && power.isActive === undefined) {
             power = { ...power, isActive: true };
