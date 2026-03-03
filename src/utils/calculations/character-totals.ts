@@ -33,6 +33,8 @@ import {
 } from './stats';
 import {
   calculatePowerEnhancementBonuses,
+  BASE_RECOVERY_RATE,
+  BASE_REGEN_RATE,
   type EnhancementBonuses,
 } from './enhancement-values';
 
@@ -771,6 +773,9 @@ function resolveScaledEffect(
     }
   }
   // Fallback: use a default multiplier of 0.10 for resistance/defense tables
+  if (effect.table) {
+    console.warn(`[character-totals] AT table not found: "${effect.table}" for archetype "${archetypeId}" — using fallback 0.10`);
+  }
   return effect.scale * 0.10;
 }
 
@@ -802,14 +807,40 @@ function addToBreakdown(
 // ============================================
 
 /**
- * Base values for fitness inherent powers (unenhanced)
- * These are the default values all characters receive
+ * Fitness power effects derived from INHERENT_FITNESS_POWERS scale data (levels.ts).
+ * Each value = scale × 100 (percentage buff).
+ *
+ * Movement effects (runSpeed, flySpeed, jumpHeight) display as scale × 100 because
+ * the speed tables (Melee_SpeedRunning, Melee_Leap, etc.) convert to ft/s for the
+ * game physics engine, not for display. Buff effects (regenBuff, recoveryBuff) use
+ * Melee_Ones tables (value 1.0), so scale × 1.0 × 100 = scale × 100 as well.
+ *
+ *   Swift:   runSpeed  { scale: 0.1,  table: 'Melee_SpeedRunning' } → 10%
+ *            flySpeed  { scale: 0.1,  table: 'Melee_SpeedFlying' }  → 10%
+ *   Hurdle:  jumpHeight { scale: 0.06, table: 'Melee_Leap' }        → 6%
+ *   Health:  regenBuff  { scale: 0.4,  table: 'Melee_Ones' }        → 40%
+ *   Stamina: recoveryBuff { scale: 0.25, table: 'Melee_Ones' }      → 25%
  */
-const FITNESS_POWER_BASE_VALUES: Record<string, { stat: keyof GlobalBonuses; value: number; enhancementType: string }> = {
-  'Swift': { stat: 'runSpeed', value: 7.5, enhancementType: 'run' },
-  'Hurdle': { stat: 'jumpHeight', value: 7.5, enhancementType: 'jump' },
-  'Health': { stat: 'regeneration', value: 40, enhancementType: 'heal' },
-  'Stamina': { stat: 'recovery', value: 25, enhancementType: 'enduranceMod' },
+interface FitnessEffect {
+  stat: keyof GlobalBonuses;
+  value: number;
+  enhancementType: string;
+}
+
+const FITNESS_POWER_EFFECTS: Record<string, FitnessEffect[]> = {
+  'Swift': [
+    { stat: 'runSpeed', value: 10, enhancementType: 'run' },
+    { stat: 'flySpeed', value: 10, enhancementType: 'fly' },
+  ],
+  'Hurdle': [
+    { stat: 'jumpHeight', value: 6, enhancementType: 'jump' },
+  ],
+  'Health': [
+    { stat: 'regeneration', value: 40, enhancementType: 'heal' },
+  ],
+  'Stamina': [
+    { stat: 'recovery', value: 25, enhancementType: 'enduranceMod' },
+  ],
 };
 
 /**
@@ -827,8 +858,8 @@ function applyFitnessPowerBonuses(
   );
 
   for (const power of fitnessPowers) {
-    const baseConfig = FITNESS_POWER_BASE_VALUES[power.name];
-    if (!baseConfig) continue;
+    const effects = FITNESS_POWER_EFFECTS[power.name];
+    if (!effects) continue;
 
     // Calculate enhancement bonus for this power
     const enhBonuses = calculatePowerEnhancementBonuses(
@@ -837,21 +868,23 @@ function applyFitnessPowerBonuses(
       getIOSet
     );
 
-    // Get the enhancement multiplier for this power's stat type
-    const enhMultiplier = 1 + (enhBonuses[baseConfig.enhancementType] || 0);
+    for (const effect of effects) {
+      // Get the enhancement multiplier for this effect's type
+      const enhMultiplier = 1 + (enhBonuses[effect.enhancementType] || 0);
 
-    // Calculate final value: base * (1 + enhancement%)
-    const finalValue = baseConfig.value * enhMultiplier;
+      // Calculate final value: base * (1 + enhancement%)
+      const finalValue = effect.value * enhMultiplier;
 
-    // Apply to global bonuses
-    global[baseConfig.stat] += finalValue;
+      // Apply to global bonuses
+      global[effect.stat] += finalValue;
 
-    // Track in breakdown
-    addToBreakdown(breakdown, baseConfig.stat, {
-      name: power.name,
-      value: finalValue,
-      type: 'inherent',
-    });
+      // Track in breakdown
+      addToBreakdown(breakdown, effect.stat, {
+        name: power.name,
+        value: finalValue,
+        type: 'inherent',
+      });
+    }
   }
 }
 
@@ -1214,7 +1247,7 @@ function applyPPMProcBonuses(
   global: GlobalBonuses,
   breakdown: Map<string, DashboardStatBreakdown>
 ): void {
-  const BASE_RECOVERY_RATE = 1.667; // Base end/sec (100 end in 60 seconds)
+  // BASE_RECOVERY_RATE imported from enhancement-values.ts
 
   const processPower = (power: PowerForProcScan) => {
     if (!power.slots) return;
@@ -1262,7 +1295,6 @@ function applyPPMProcBonuses(
             // At base, regen = ~100% max HP per 240s = 0.417%/sec
             // So effective regen contribution = (value% × procsPerMin) / 60 / 0.417 × 100
             const hpPerSec = (value * procsPerMin) / 60;
-            const BASE_REGEN_RATE = 100 / 240; // ~0.417 %HP/sec at base
             const regenEquivalent = (hpPerSec / BASE_REGEN_RATE) * 100;
             global.regeneration += regenEquivalent;
             addToBreakdown(breakdown, 'regeneration', { name: `${label} (+HP)`, value: regenEquivalent, type: 'proc' });
@@ -1277,8 +1309,7 @@ function applyPPMProcBonuses(
           }
           case 'Regeneration': {
             const regenVal = (value * procsPerMin) / 60;
-            const BASE_REGEN_RATE2 = 100 / 240;
-            const regenPct = (regenVal / BASE_REGEN_RATE2) * 100;
+            const regenPct = (regenVal / BASE_REGEN_RATE) * 100;
             global.regeneration += regenPct;
             addToBreakdown(breakdown, 'regeneration', { name: label, value: regenPct, type: 'proc' });
             break;

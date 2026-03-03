@@ -17,6 +17,9 @@ import {
   normalizeAspectName,
   getAspectSchedule,
   getIOValueAtLevel,
+  BOOST_MULTIPLIER_PER_LEVEL,
+  getMultiAspectModifier,
+  getSetRarityMultiplier,
   calculateDefiance,
   getDominationInfo,
   isDominatorControlPower,
@@ -1141,28 +1144,21 @@ function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfoContent
     // Attuned enhancements always use level 50 values (they scale to stay effective, not to change values)
     // Non-attuned use their slotted level, defaulting to 50
     const effectiveLevel = enhancement.level || 50;
-    const aspectCount = ioEnh.aspects.length;
-    // Multi-aspect modifier per Homecoming Wiki:
-    // 1 aspect: 100%, 2 aspects: 62.5% (5/8), 3 aspects: 50%, 4 aspects: 43.75%
-    const getAspectModifier = (count: number): number => {
-      switch (count) {
-        case 1: return 1.0;
-        case 2: return 0.625;  // 5/8
-        case 3: return 0.5;
-        case 4: return 0.4375;
-        default: return 0.4375; // 4+ aspects use same as 4
-      }
-    };
-    const aspectModifier = getAspectModifier(aspectCount);
+    const rawAspectCount = ioEnh.aspects.filter(a => normalizeAspectName(a) !== null).length || ioEnh.aspects.length;
+    // Proc effects count as 3 additional aspects for the multi-aspect modifier
+    const effectiveAspectCount = ioEnh.isProc ? rawAspectCount + 3 : rawAspectCount;
+    const aspectModifier = getMultiAspectModifier(effectiveAspectCount);
+    // Purple and Superior sets get 25% higher enhancement values
+    const rarityMultiplier = getSetRarityMultiplier(ioSet?.category, ioSet?.name);
 
-    const boostMultiplier = 1 + (enhancement.boost || 0) * 0.05;
+    const boostMultiplier = 1 + (enhancement.boost || 0) * BOOST_MULTIPLIER_PER_LEVEL;
 
     const calculateAspectValue = (aspect: string): number | null => {
       const normalized = normalizeAspectName(aspect);
       if (!normalized) return null;
       const schedule = getAspectSchedule(normalized);
       const baseValue = getIOValueAtLevel(effectiveLevel, schedule);
-      return baseValue * aspectModifier * boostMultiplier;
+      return baseValue * aspectModifier * rarityMultiplier * boostMultiplier;
     };
 
     return (
@@ -1540,9 +1536,9 @@ function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfoContent
                 </div>
               );
             })}
-            {aspectCount > 1 && (
+            {effectiveAspectCount > 1 && (
               <div className="text-[8px] text-slate-500 mt-1 italic">
-                {aspectCount === 2 ? '62.5%' : aspectCount === 3 ? '50%' : '43.75%'} per aspect ({aspectCount} aspects)
+                {(aspectModifier * 100).toFixed(1)}% per aspect ({rawAspectCount} aspect{rawAspectCount !== 1 ? 's' : ''}{ioEnh.isProc ? ' + proc' : ''})
               </div>
             )}
           </div>
@@ -1653,7 +1649,7 @@ function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfoContent
           <span className="text-green-400">{genericEnh.stat}</span>
           <span className="text-slate-400"> by </span>
           <span className="text-green-400">
-            {(genericEnh.value * (1 + (enhancement.boost || 0) * 0.05)).toFixed(1)}%
+            {(genericEnh.value * (1 + (enhancement.boost || 0) * BOOST_MULTIPLIER_PER_LEVEL)).toFixed(1)}%
           </span>
         </div>
         <div className="text-[10px] flex gap-3">
@@ -1694,7 +1690,7 @@ function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfoContent
           <span className="text-green-400">{originEnh.stat}</span>
           <span className="text-slate-400"> by </span>
           <span className="text-green-400">
-            {(originEnh.value * (1 + (enhancement.boost || 0) * 0.05)).toFixed(1)}%
+            {(originEnh.value * (1 + (enhancement.boost || 0) * BOOST_MULTIPLIER_PER_LEVEL)).toFixed(1)}%
           </span>
         </div>
         {enhancement.boost && enhancement.boost > 0 && (
@@ -1730,7 +1726,7 @@ function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfoContent
           <span className="text-slate-400">Enhances: </span>
           <span className="text-green-400">
             {specialEnh.aspects.map(a => {
-              const boosted = a.value * (1 + (enhancement.boost || 0) * 0.05);
+              const boosted = a.value * (1 + (enhancement.boost || 0) * BOOST_MULTIPLIER_PER_LEVEL);
               return `${a.stat} +${boosted.toFixed(1)}%`;
             }).join(', ')}
           </span>

@@ -37,6 +37,12 @@ export interface ArchetypeStats {
   damageModifier: DamageModifiers;
   /** Buff/debuff effectiveness modifier */
   buffDebuffModifier: number;
+  /** Total damage strength multiplier cap (e.g., 4.0 = 400%) */
+  damageCap: number;
+  /** Defense cap as decimal (e.g., 0.45 = 45%) */
+  defenseCap: number;
+  /** Resistance cap as decimal (e.g., 0.75 = 75%) */
+  resistanceCap: number;
 }
 
 // ============================================

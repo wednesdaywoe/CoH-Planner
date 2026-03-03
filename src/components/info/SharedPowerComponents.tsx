@@ -14,7 +14,7 @@ import {
   expandProtectionEntries,
 } from './powerDisplayUtils';
 import type { ThreeTierValues } from './powerDisplayUtils';
-import { abbreviateDamageType, type PowerDamageResult } from '@/utils/calculations';
+import { abbreviateDamageType, calculateDominationMagnitude, type PowerDamageResult } from '@/utils/calculations';
 import {
   EFFECT_REGISTRY,
   CATEGORY_CONFIG,
@@ -311,7 +311,7 @@ function CollapsibleEffectGroup({
         const itemLabel = elabel || config.label;
 
         if (config.format === 'mag') {
-          const rawMag = dominationActive && config.category === 'control' ? tiers.base * 2 : tiers.base;
+          const rawMag = dominationActive && config.category === 'control' ? calculateDominationMagnitude(tiers.base) : tiers.base;
           const magStr = Number.isInteger(rawMag) ? rawMag.toString() : rawMag.toFixed(1);
           const magColorClass = dominationActive && config.category === 'control' ? 'text-pink-400' : config.colorClass;
           const mezDuration = rawValue && typeof rawValue === 'object' && 'mag' in (rawValue as Record<string, unknown>) && 'scale' in (rawValue as Record<string, unknown>)
@@ -833,7 +833,7 @@ export function RegistryEffectsDisplay({
 
         // Handle mez effects (magnitude format) — not enhanceable, show "—"
         if (config.format === 'mag') {
-          const rawMag = dominationActive && config.category === 'control' ? tiers.base * 2 : tiers.base;
+          const rawMag = dominationActive && config.category === 'control' ? calculateDominationMagnitude(tiers.base) : tiers.base;
           const magStr = Number.isInteger(rawMag) ? rawMag.toString() : rawMag.toFixed(1);
           const colorClass = dominationActive && config.category === 'control' ? 'text-pink-400' : config.colorClass;
 

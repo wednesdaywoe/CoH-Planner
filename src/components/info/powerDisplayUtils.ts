@@ -14,20 +14,22 @@ import type {
 import { getScaleValue } from '@/types';
 import type { CharacterGlobalBonuses } from '@/utils/calculations';
 import { getTableValue } from '@/data/at-tables';
+import { getArchetype } from '@/data/archetypes';
 
 // ============================================
-// ARCHETYPE DAMAGE CAPS
-// Total damage strength multiplier caps per AT
+// ARCHETYPE CAPS (sourced from archetypes.ts)
 // ============================================
-
-const ARCHETYPE_DAMAGE_CAPS: Partial<Record<ArchetypeId, number>> = {
-  blaster: 5.0,  // 500%
-  brute: 7.0,    // 700% (Homecoming)
-};
-const DEFAULT_DAMAGE_CAP = 4.0; // 400% for all other ATs
 
 export function getDamageCap(archetypeId: string): number {
-  return ARCHETYPE_DAMAGE_CAPS[archetypeId as ArchetypeId] ?? DEFAULT_DAMAGE_CAP;
+  return getArchetype(archetypeId as ArchetypeId)?.stats.damageCap ?? 4.0;
+}
+
+export function getDefenseCap(archetypeId: string): number {
+  return getArchetype(archetypeId as ArchetypeId)?.stats.defenseCap ?? 0.45;
+}
+
+export function getResistanceCap(archetypeId: string): number {
+  return getArchetype(archetypeId as ArchetypeId)?.stats.resistanceCap ?? 0.75;
 }
 
 // ============================================

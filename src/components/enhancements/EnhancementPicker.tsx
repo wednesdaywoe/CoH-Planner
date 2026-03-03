@@ -18,7 +18,7 @@ import {
   getRarityColor, getTierTextColor, getTierBorderColor,
   findProcData, parseProcEffect, getProcEffectLabel, getProcEffectColor, isProcAlwaysOn, interpolateProcDamage,
 } from '@/data';
-import { normalizeAspectName, getAspectSchedule, getIOValueAtLevel, normalizeStatName, getSetRarityMultiplier } from '@/utils/calculations';
+import { normalizeAspectName, getAspectSchedule, getIOValueAtLevel, normalizeStatName, getSetRarityMultiplier, BOOST_MULTIPLIER_PER_LEVEL } from '@/utils/calculations';
 import { getPairedStat } from '@/utils/calculations/set-bonuses';
 import { Modal, ModalBody } from '@/components/modals';
 import { Tooltip, Toggle } from '@/components/ui';
@@ -1463,7 +1463,7 @@ function SetPieceTooltip({ set, piece }: SetPieceTooltipProps) {
   const aspectModifier = getAspectModifier(aspectCount);
 
   // Boost multiplier for non-proc pieces
-  const boostMultiplier = (!piece.proc && globalBoostLevel > 0) ? 1 + globalBoostLevel * 0.05 : 1;
+  const boostMultiplier = (!piece.proc && globalBoostLevel > 0) ? 1 + globalBoostLevel * BOOST_MULTIPLIER_PER_LEVEL : 1;
 
   // Purple and Superior sets get 25% higher enhancement values
   const rarityMultiplier = getSetRarityMultiplier(set.category, set.name);

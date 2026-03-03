@@ -23,7 +23,7 @@ export const powerset: Powerset = {
   id: 'sentinel/psionic-armor',
   name: 'Psionic Armor',
   description: 'You use your psionic powers to shield yourself reducing incoming damage, as well as steal your foes own psyche and use it against them, be it by empowering your own regenerative powers, weakening their defenses or completely subduing their will.',
-  icon: 'dark_armor_set.png',
+  icon: 'psionicarmor_psionicshield.png',
   archetype: 'sentinel',
   category: 'secondary',
   powers: [

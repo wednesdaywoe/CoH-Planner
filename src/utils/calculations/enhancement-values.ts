@@ -8,6 +8,19 @@
 import type { Enhancement, EnhancementStatType } from '@/types';
 
 // ============================================
+// SHARED CONSTANTS
+// ============================================
+
+/** Each boost level adds 5% to enhancement value */
+export const BOOST_MULTIPLIER_PER_LEVEL = 0.05;
+
+/** Base endurance recovery rate: 100 endurance in 60 seconds */
+export const BASE_RECOVERY_RATE = 1.667;
+
+/** Base regeneration rate: 100% max HP per 240 seconds */
+export const BASE_REGEN_RATE = 100 / 240;
+
+// ============================================
 // ENHANCEMENT SCHEDULES
 // ============================================
 
@@ -399,7 +412,7 @@ export function calculatePowerEnhancementBonuses(
     if (!slot) return;
 
     // Boost multiplier: each boost level adds 5% to enhancement value
-    const boostMultiplier = 1 + (slot.boost || 0) * 0.05;
+    const boostMultiplier = 1 + (slot.boost || 0) * BOOST_MULTIPLIER_PER_LEVEL;
 
     if (slot.type === 'io-set' && getIOSet) {
       // IO Set piece

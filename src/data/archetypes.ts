@@ -223,6 +223,9 @@ export const ARCHETYPES: ArchetypeRegistry = {
         aoe: 1.0,
       },
       buffDebuffModifier: 0.625,
+      damageCap: 5.0,       // 500%
+      defenseCap: 0.45,     // 45%
+      resistanceCap: 0.75,  // 75%
     },
     primarySets: [
       'blaster/archery',
@@ -282,6 +285,9 @@ export const ARCHETYPES: ArchetypeRegistry = {
         aoe: 0.5,
       },
       buffDebuffModifier: 1.0,
+      damageCap: 4.0,       // 400%
+      defenseCap: 0.45,     // 45%
+      resistanceCap: 0.75,  // 75%
     },
     primarySets: [
       'controller/arsenal-control',
@@ -340,6 +346,9 @@ export const ARCHETYPES: ArchetypeRegistry = {
         aoe: 0.5,
       },
       buffDebuffModifier: 1.25,
+      damageCap: 4.0,       // 400%
+      defenseCap: 0.45,     // 45%
+      resistanceCap: 0.75,  // 75%
     },
     primarySets: [
       'defender/cold-domination',
@@ -401,6 +410,9 @@ export const ARCHETYPES: ArchetypeRegistry = {
         aoe: 0.8,
       },
       buffDebuffModifier: 1.0,
+      damageCap: 4.0,       // 400%
+      defenseCap: 0.45,     // 45%
+      resistanceCap: 0.90,  // 90%
     },
     primarySets: [
       'scrapper/battle-axe',
@@ -466,6 +478,9 @@ export const ARCHETYPES: ArchetypeRegistry = {
         aoe: 0.7,
       },
       buffDebuffModifier: 1.0,
+      damageCap: 4.0,       // 400%
+      defenseCap: 0.45,     // 45%
+      resistanceCap: 0.90,  // 90%
     },
     primarySets: [
       'tanker/bio-organic-armor',
@@ -531,6 +546,9 @@ export const ARCHETYPES: ArchetypeRegistry = {
         aoe: 0.8,
       },
       buffDebuffModifier: 1.4,
+      damageCap: 4.0,       // 400%
+      defenseCap: 0.45,     // 45%
+      resistanceCap: 0.80,  // 80% (Homecoming)
     },
     primarySets: [
       'sentinel/archery',
@@ -593,6 +611,9 @@ export const ARCHETYPES: ArchetypeRegistry = {
         aoe: 0.65,
       },
       buffDebuffModifier: 1.0,
+      damageCap: 7.0,       // 700% (Homecoming)
+      defenseCap: 0.45,     // 45%
+      resistanceCap: 0.90,  // 90%
     },
     primarySets: [
       'brute/battle-axe',
@@ -658,6 +679,9 @@ export const ARCHETYPES: ArchetypeRegistry = {
         aoe: 0.6,
       },
       buffDebuffModifier: 0.75,
+      damageCap: 4.0,       // 400%
+      defenseCap: 0.45,     // 45%
+      resistanceCap: 0.75,  // 75%
     },
     primarySets: [
       'corruptor/archery',
@@ -719,6 +743,9 @@ export const ARCHETYPES: ArchetypeRegistry = {
         aoe: 0.65,
       },
       buffDebuffModifier: 0.9,
+      damageCap: 4.0,       // 400%
+      defenseCap: 0.45,     // 45%
+      resistanceCap: 0.75,  // 75%
     },
     primarySets: [
       'dominator/arsenal-control',
@@ -773,6 +800,9 @@ export const ARCHETYPES: ArchetypeRegistry = {
         aoe: 0.5,
       },
       buffDebuffModifier: 0.75,
+      damageCap: 4.0,       // 400%
+      defenseCap: 0.45,     // 45%
+      resistanceCap: 0.75,  // 75%
     },
     primarySets: [
       'mastermind/beast-mastery',
@@ -826,6 +856,9 @@ export const ARCHETYPES: ArchetypeRegistry = {
         aoe: 0.7,
       },
       buffDebuffModifier: 1.0,
+      damageCap: 4.0,       // 400%
+      defenseCap: 0.45,     // 45%
+      resistanceCap: 0.90,  // 90%
     },
     primarySets: [
       'stalker/street_justice',
@@ -893,6 +926,9 @@ export const ARCHETYPES: ArchetypeRegistry = {
         aoe: 0.7,
       },
       buffDebuffModifier: 1.0,
+      damageCap: 4.0,       // 400%
+      defenseCap: 0.45,     // 45%
+      resistanceCap: 0.85,  // 85%
     },
     primarySets: ['peacebringer/luminous-blast'],
     secondarySets: ['peacebringer/luminous-aura'],
@@ -922,6 +958,9 @@ export const ARCHETYPES: ArchetypeRegistry = {
         aoe: 0.7,
       },
       buffDebuffModifier: 1.0,
+      damageCap: 4.0,       // 400%
+      defenseCap: 0.45,     // 45%
+      resistanceCap: 0.85,  // 85%
     },
     primarySets: ['warshade/umbral-blast'],
     secondarySets: ['warshade/umbral-aura'],
@@ -954,6 +993,9 @@ export const ARCHETYPES: ArchetypeRegistry = {
         aoe: 0.65,
       },
       buffDebuffModifier: 1.0,
+      damageCap: 4.0,       // 400%
+      defenseCap: 0.45,     // 45%
+      resistanceCap: 0.90,  // 90%
     },
     primarySets: ['arachnos-soldier/arachnos-soldier'],
     secondarySets: ['arachnos-soldier/training-and-gadgets'],
@@ -996,6 +1038,9 @@ export const ARCHETYPES: ArchetypeRegistry = {
         aoe: 0.7,
       },
       buffDebuffModifier: 1.0,
+      damageCap: 4.0,       // 400%
+      defenseCap: 0.45,     // 45%
+      resistanceCap: 0.90,  // 90%
     },
     primarySets: ['arachnos-widow/widow-training'],
     secondarySets: ['arachnos-widow/teamwork'],

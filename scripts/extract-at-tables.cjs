@@ -8,7 +8,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const RAW_DATA_PATH = path.join(__dirname, '../raw_data_homecoming-20251209_7415/tables');
+const RAW_DATA_PATH = path.join(__dirname, '../raw_data_homecoming-raw_data_homecoming-20251209_7415/tables');
 const OUTPUT_PATH = path.join(__dirname, '../src/data/at-tables.ts');
 
 // Archetypes we care about for player characters
@@ -75,6 +75,16 @@ const RELEVANT_TABLES = [
   'melee_res_dmg',
   'ranged_res_boolean',
   'melee_res_boolean',
+
+  // Speed/movement tables (used by travel powers and fitness)
+  'melee_speedrunning',
+  'ranged_speedrunning',
+  'melee_speedflying',
+  'ranged_speedflying',
+  'melee_leap',
+  'ranged_leap',
+  'melee_speedjumping',
+  'ranged_speedjumping',
 
   // Other
   'ranged_resistance',
