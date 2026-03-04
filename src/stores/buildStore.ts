@@ -31,6 +31,7 @@ import {
   EPIC_POOL_LEVEL,
   getInherentPowers,
   getInherentPowerDef,
+  getArchetypeInherentPowers,
   createArchetypeInherentPower,
   POWER_PICK_LEVELS,
   getIOSet,
@@ -491,11 +492,13 @@ function applyToAllPowers(
 function createInherentSelectedPower(def: InherentPowerDef): SelectedPower {
   // Archetype inherents have 0 maxSlots and should have no slots
   const slots: (Enhancement | null)[] = def.maxSlots === 0 ? [] : [null];
+  // Use available level + 1 for display (available is 0-indexed), default to level 1
+  const level = (def.available != null && def.available > 0) ? def.available + 1 : 1;
 
   return {
     ...def,
     powerSet: 'Inherent',
-    level: 1, // All inherents are granted at level 1
+    level,
     slots,
     isLocked: def.isLocked ?? true, // All inherent powers are locked by default
     inherentCategory: def.category,
@@ -504,10 +507,12 @@ function createInherentSelectedPower(def: InherentPowerDef): SelectedPower {
 
 /**
  * Get all inherent powers as SelectedPower objects
+ * @param archetypeId - The archetype ID for archetype-specific inherents (e.g. 'peacebringer')
  * @param archetypeName - The archetype name for the archetype-specific inherent
  * @param archetypeInherent - The archetype's inherent power definition
  */
 function getInherentSelectedPowers(
+  archetypeId?: string | null,
   archetypeName?: string,
   archetypeInherent?: { name: string; description: string } | null
 ): SelectedPower[] {
@@ -518,6 +523,12 @@ function getInherentSelectedPowers(
     const atInherentDef = createArchetypeInherentPower(archetypeName, archetypeInherent);
     // Insert archetype inherent at the beginning
     powers.unshift(createInherentSelectedPower(atInherentDef));
+  }
+
+  // Add archetype-specific inherent powers (e.g. Kheldian travel powers)
+  const extraInherents = getArchetypeInherentPowers(archetypeId || undefined);
+  for (const def of extraInherents) {
+    powers.push(createInherentSelectedPower(def));
   }
 
   return powers;
@@ -664,6 +675,7 @@ export const useBuildStore = create<BuildStore>()(
           // Auto-grant inherent powers if both powersets are now selected
           if (newBuild.secondary.id && newBuild.inherents.length === 0) {
             newBuild.inherents = getInherentSelectedPowers(
+              state.build.archetype.id,
               state.build.archetype.name || undefined,
               state.build.archetype.inherent
             );
@@ -690,6 +702,7 @@ export const useBuildStore = create<BuildStore>()(
           // Auto-grant inherent powers if both powersets are now selected
           if (newBuild.primary.id && newBuild.inherents.length === 0) {
             newBuild.inherents = getInherentSelectedPowers(
+              state.build.archetype.id,
               state.build.archetype.name || undefined,
               state.build.archetype.inherent
             );
@@ -1336,6 +1349,7 @@ export const useBuildStore = create<BuildStore>()(
             state.build.secondary.id
           ) {
             state.build.inherents = getInherentSelectedPowers(
+              state.build.archetype.id,
               state.build.archetype.name || undefined,
               state.build.archetype.inherent
             );

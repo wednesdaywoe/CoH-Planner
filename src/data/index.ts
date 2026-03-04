@@ -163,6 +163,7 @@ export {
   PRESTIGE_SPRINT_POWERS,
   getInherentPowers,
   getInherentPowerDef,
+  getArchetypeInherentPowers,
   createArchetypeInherentPower,
 } from './levels';
 export type { LevelInfo, InherentPowerDef } from './levels';

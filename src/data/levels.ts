@@ -599,8 +599,151 @@ export const PRESTIGE_SPRINT_POWERS: InherentPowerDef[] = [
   },
 ];
 
+// ============================================
+// KHELDIAN INHERENT POWERS
+// ============================================
+
 /**
- * Get all inherent powers that should be auto-granted at level 1
+ * Peacebringer-specific inherent travel powers
+ */
+const PEACEBRINGER_INHERENT_POWERS: InherentPowerDef[] = [
+  {
+    name: 'Energy Flight',
+    fullName: 'Inherent.Inherent.Energy Flight',
+    description:
+      'Energy Flight allows you to travel large distances quickly. If you attack a target while this power is on, your flight speed will be temporarily reduced. Your Energy Flight speed increases with your Level.',
+    shortHelp: 'Toggle: Self Fly',
+    icon: 'inherentpeacebringer_energyflight.png',
+    powerType: 'Toggle',
+    targetType: 'Self',
+    effectArea: 'SingleTarget',
+    available: -1, // Level 1
+    maxSlots: 6,
+    allowedEnhancements: ['EnduranceReduction', 'Fly'],
+    allowedSetCategories: ['Flight', 'Universal Travel'],
+    isLocked: true,
+    category: 'basic',
+    stats: {
+      endurance: 0.2275,
+    },
+    effects: {
+      movement: {
+        fly: { scale: 1.0, table: 'Melee_Ones' },
+        flySpeed: { scale: 1.1, table: 'Melee_SpeedFlying' },
+      },
+    },
+  },
+  {
+    name: 'Combat Flight',
+    fullName: 'Inherent.Inherent.Combat Flight',
+    description:
+      'For hovering and aerial combat. This power is much slower than Energy Flight, but provides some Defense, offers good air control, costs little Endurance, and has none of the penalties associated with Energy Flight.',
+    shortHelp: 'Toggle: Self Fly, +DEF',
+    icon: 'luminousaura_combatflight.png',
+    powerType: 'Toggle',
+    targetType: 'Self',
+    effectArea: 'SingleTarget',
+    available: 9, // Level 10
+    maxSlots: 6,
+    allowedEnhancements: ['EnduranceReduction', 'Fly', 'Defense'],
+    allowedSetCategories: ['Defense Sets', 'Flight', 'Universal Travel'],
+    isLocked: true,
+    category: 'basic',
+    stats: {
+      endurance: 0.0975,
+      castTime: 0.5,
+    },
+    effects: {
+      movement: {
+        fly: { scale: 0.1, table: 'Melee_Ones' },
+      },
+      defenseBuff: {
+        ranged: { scale: 0.25, table: 'Melee_Buff_Def' },
+        melee: { scale: 0.25, table: 'Melee_Buff_Def' },
+        aoe: { scale: 0.25, table: 'Melee_Buff_Def' },
+        smashing: { scale: 0.25, table: 'Melee_Buff_Def' },
+        lethal: { scale: 0.25, table: 'Melee_Buff_Def' },
+        fire: { scale: 0.25, table: 'Melee_Buff_Def' },
+        cold: { scale: 0.25, table: 'Melee_Buff_Def' },
+        energy: { scale: 0.25, table: 'Melee_Buff_Def' },
+        negative: { scale: 0.25, table: 'Melee_Buff_Def' },
+        psionic: { scale: 0.25, table: 'Melee_Buff_Def' },
+        toxic: { scale: 0.25, table: 'Melee_Buff_Def' },
+      },
+    },
+  },
+];
+
+/**
+ * Warshade-specific inherent travel powers
+ */
+const WARSHADE_INHERENT_POWERS: InherentPowerDef[] = [
+  {
+    name: 'Shadow Step',
+    fullName: 'Inherent.Inherent.Shadow Step',
+    description:
+      'You can Teleport long distances. Once at your destination, you will be stuck in between dimensions for up to 15s. While in this state, you will not be affected by gravity, and be able to execute additional teleportation jumps at a discounted endurance cost.',
+    shortHelp: 'Ranged (Location), Self Teleport',
+    icon: 'inherentwarshade_shadowstep.png',
+    powerType: 'Click',
+    targetType: 'Location (Teleport)',
+    effectArea: 'Location',
+    available: -1, // Level 1
+    maxSlots: 6,
+    allowedEnhancements: ['EnduranceReduction', 'Range'],
+    allowedSetCategories: ['Teleport', 'Universal Travel'],
+    isLocked: true,
+    category: 'basic',
+    stats: {
+      range: 300,
+      endurance: 13.0,
+      castTime: 1.67,
+    },
+  },
+  {
+    name: 'Shadow Recall',
+    fullName: 'Inherent.Inherent.Shadow Recall',
+    description:
+      'You can Teleport a single foe or ally directly next to yourself. A successful hit must be made in order to Teleport the foes. Some powerful foes cannot be Teleported.',
+    shortHelp: 'Teleport Teammate or Foe',
+    icon: 'umbralaura_shadowrecall.png',
+    powerType: 'Click',
+    targetType: 'Any (Alive)',
+    effectArea: 'SingleTarget',
+    available: 9, // Level 10
+    maxSlots: 6,
+    allowedEnhancements: ['Interrupt', 'EnduranceReduction', 'Range', 'Recharge', 'Accuracy'],
+    allowedSetCategories: ['Teleport', 'Universal Travel'],
+    isLocked: true,
+    category: 'basic',
+    stats: {
+      accuracy: 1,
+      range: 10000,
+      recharge: 6,
+      endurance: 15.0,
+      castTime: 5.93,
+    },
+  },
+];
+
+/**
+ * Map of archetype IDs to their extra inherent powers
+ */
+const ARCHETYPE_INHERENT_POWERS: Record<string, InherentPowerDef[]> = {
+  peacebringer: PEACEBRINGER_INHERENT_POWERS,
+  warshade: WARSHADE_INHERENT_POWERS,
+};
+
+/**
+ * Get archetype-specific inherent powers (e.g. Kheldian travel powers)
+ */
+export function getArchetypeInherentPowers(archetypeId?: string): InherentPowerDef[] {
+  if (!archetypeId) return [];
+  return ARCHETYPE_INHERENT_POWERS[archetypeId] || [];
+}
+
+/**
+ * Get all inherent powers that should be auto-granted
  * Note: Archetype inherent is added separately based on selected archetype
  */
 export function getInherentPowers(): InherentPowerDef[] {
