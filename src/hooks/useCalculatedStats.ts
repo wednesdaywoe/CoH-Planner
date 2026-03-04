@@ -130,7 +130,7 @@ export interface CalculatedStats {
 /**
  * Convert new CharacterStats to legacy CalculatedStats format
  */
-function convertToLegacyStats(
+export function convertToLegacyStats(
   charStats: CharacterStats,
   result: CharacterCalculationResult
 ): CalculatedStats {

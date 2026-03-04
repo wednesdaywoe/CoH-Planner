@@ -6,21 +6,26 @@
  * chosen configuration to their build.
  */
 
-import { useState, useMemo, useCallback, useEffect } from 'react';
+import React, { useState, useMemo, useCallback, useEffect } from 'react';
 import { useBuildStore, useUIStore } from '@/stores';
 import { lookupPower, getIOSet, getPowerIconPath } from '@/data';
 import { getArchetype } from '@/data';
 import { calculatePowerEnhancementBonuses } from '@/utils/calculations/enhancement-values';
 import { calculatePowerDamage } from '@/utils/calculations/damage';
-import { getAlphaEnhancementBonuses } from '@/utils/calculations/character-totals';
-import { useGlobalBonuses } from '@/hooks';
+import { getAlphaEnhancementBonuses, calculateCharacterTotals } from '@/utils/calculations/character-totals';
+import { computeSetTracking } from '@/utils/calculations/set-tracking';
+import { getBaselineHealth } from '@/utils/calculations/stats';
+import { useGlobalBonuses, useCharacterCalculation, convertToLegacyStats } from '@/hooks';
 import { convertGlobalBonusesToAspects, getEffectiveBuffDebuffModifier, findSelectedPowerInBuild } from '@/components/info/powerDisplayUtils';
+import { STAT_DEFINITIONS } from '@/data/stat-definitions';
+import type { StatValue } from '@/data/stat-definitions';
 
 import { RegistryEffectsDisplay } from '@/components/info/SharedPowerComponents';
+import { SetBonusSummary } from '@/components/enhancements/SetBonusDisplay';
 import { SlottedEnhancementIcon } from '@/components/powers/SlottedEnhancementIcon';
 import { resolvePath } from '@/utils/paths';
 import { Modal, ModalBody } from './Modal';
-import type { Enhancement, ArchetypeId } from '@/types';
+import type { Enhancement, ArchetypeId, SetBonus } from '@/types';
 import type { EnhancementBonuses } from '@/utils/calculations/enhancement-values';
 
 interface ComparisonCopy {
@@ -174,6 +179,118 @@ export function CompareSlottingModal() {
   );
 
   const iconSrc = power ? getPowerIconPath(power.icon) : '';
+
+  // ============================================
+  // SET BONUSES for active copy
+  // ============================================
+  const activeSetBonuses = useMemo(() => {
+    if (!activeCopy) return [];
+
+    // Group slotted IO-set enhancements by setId
+    const setsInPower: Record<string, Set<number>> = {};
+    for (const slot of activeCopy.slots) {
+      if (!slot || slot.type !== 'io-set') continue;
+      const { setId, pieceNum } = slot as Enhancement & { setId: string; pieceNum: number };
+      if (!setsInPower[setId]) setsInPower[setId] = new Set();
+      setsInPower[setId].add(pieceNum);
+    }
+
+    const results: Array<{
+      setId: string;
+      setName: string;
+      totalPieces: number;
+      slottedPieces: number;
+      bonuses: SetBonus[];
+    }> = [];
+
+    for (const [setId, pieces] of Object.entries(setsInPower)) {
+      const ioSet = getIOSet(setId);
+      if (!ioSet) continue;
+      const slottedPieces = pieces.size;
+      if (slottedPieces < 2) continue; // Need at least 2 pieces for any bonus
+      results.push({
+        setId,
+        setName: ioSet.name,
+        totalPieces: ioSet.pieces.length,
+        slottedPieces,
+        bonuses: ioSet.bonuses,
+      });
+    }
+
+    return results;
+  }, [activeCopy]);
+
+  // ============================================
+  // DASHBOARD STATS: hypothetical build calculation
+  // ============================================
+  const statsConfig = useUIStore((s) => s.statsConfig);
+  const exemplarMode = useUIStore((s) => s.exemplarMode);
+  const includeProcsInStats = useUIStore((s) => s.includeProcsInStats);
+  const targetsHitValues = useUIStore((s) => s.targetsHitValues);
+
+  const currentCalcResult = useCharacterCalculation();
+
+  const health = useMemo(
+    () => getBaselineHealth(build.archetype?.id ?? undefined, build.level),
+    [build.archetype?.id, build.level]
+  );
+  const baseHP = health.baseHealth;
+  const maxHPCap = health.maxHealth;
+
+  // Current stats in legacy format (for STAT_DEFINITIONS getValue)
+  const currentLegacyStats = useMemo(
+    () => convertToLegacyStats(currentCalcResult.stats, currentCalcResult),
+    [currentCalcResult]
+  );
+
+  // Visible dashboard stat IDs (filtered to those that exist in STAT_DEFINITIONS)
+  const visibleStatIds = useMemo(() =>
+    statsConfig
+      .filter((c) => c.visible && STAT_DEFINITIONS[c.stat])
+      .sort((a, b) => a.order - b.order)
+      .map((c) => c.stat),
+    [statsConfig]
+  );
+
+  // Hypothetical stats: what happens if we apply activeCopy's slots to the build
+  const hypotheticalLegacyStats = useMemo(() => {
+    if (!activeCopy || !compareTarget || visibleStatIds.length === 0) return null;
+
+    // Clone the build with the target power's slots replaced
+    const replacePower = <T extends { name: string; slots: (Enhancement | null)[] }>(p: T): T =>
+      p.name === compareTarget.powerName ? { ...p, slots: [...activeCopy.slots] } : p;
+
+    const hypoBuild = {
+      ...build,
+      primary: { ...build.primary, powers: build.primary.powers.map(replacePower) },
+      secondary: { ...build.secondary, powers: build.secondary.powers.map(replacePower) },
+      pools: build.pools.map(pool => ({ ...pool, powers: pool.powers.map(replacePower) })),
+      epicPool: build.epicPool
+        ? { ...build.epicPool, powers: build.epicPool.powers.map(replacePower) }
+        : null,
+      inherents: build.inherents.map(replacePower),
+      sets: {} as typeof build.sets, // placeholder, computed below
+    };
+    hypoBuild.sets = computeSetTracking(hypoBuild);
+
+    const hypoResult = calculateCharacterTotals(hypoBuild, exemplarMode, incarnateActive, {
+      includeProcs: includeProcsInStats,
+      targetsHitValues,
+    });
+
+    return convertToLegacyStats(hypoResult.stats, hypoResult);
+  }, [activeCopy, compareTarget, visibleStatIds.length, build, exemplarMode, incarnateActive, includeProcsInStats, targetsHitValues]);
+
+  // Helper: extract numeric value from a StatValue for delta computation
+  const getNumericValue = useCallback((v: StatValue): number => {
+    if (typeof v === 'number') return v;
+    if (typeof v === 'string') return parseFloat(v) || 0;
+    if (typeof v === 'object' && v !== null) {
+      if ('protection' in v) return v.protection; // MezStatValue: compare protection
+      if ('buff' in v) return v.buff; // CompoundStatValue: compare buff %
+    }
+    return 0;
+  }, []);
 
   // Handler: open picker for a comparison copy slot
   const handleSlotClick = useCallback((copyId: number, slotIndex: number) => {
@@ -360,7 +477,7 @@ export function CompareSlottingModal() {
           </div>
 
           {/* Right panel: Stats display */}
-          <div className="w-[320px] flex-shrink-0 overflow-y-auto max-h-[70vh] bg-slate-900/50 rounded-lg border border-slate-700 p-3">
+          <div className="w-[320px] flex-shrink-0 overflow-y-auto h-[70vh] bg-slate-900/50 rounded-lg border border-slate-700 p-3">
             <div className="text-[10px] text-slate-500 uppercase tracking-wide mb-2">
               {hoveredCopyId !== null
                 ? `Showing: ${copies.findIndex(c => c.id === hoveredCopyId) === 0 ? 'Current' : `Copy ${copies.findIndex(c => c.id === hoveredCopyId)}`}`
@@ -379,6 +496,63 @@ export function CompareSlottingModal() {
               damage={activeDamage}
               duration={mergedEffects?.buffDuration as number | undefined}
             />
+
+            {/* Dashboard Stats Impact section */}
+            {visibleStatIds.length > 0 && hypotheticalLegacyStats && (
+              <div className="mt-3 pt-3 border-t border-slate-700">
+                <div className="text-[10px] text-slate-500 uppercase tracking-wide mb-1">
+                  Stats Impact
+                </div>
+                <div className="grid grid-cols-[auto_1fr_auto_1fr_auto] gap-x-2 gap-y-0.5 items-center tabular-nums text-[10px]">
+                  {visibleStatIds.map((statId) => {
+                    const def = STAT_DEFINITIONS[statId];
+                    if (!def) return null;
+
+                    const currentValue = def.getValue(currentLegacyStats, baseHP, maxHPCap);
+                    const hypoValue = def.getValue(hypotheticalLegacyStats, baseHP, maxHPCap);
+                    const currentNum = getNumericValue(currentValue);
+                    const hypoNum = getNumericValue(hypoValue);
+                    const delta = hypoNum - currentNum;
+
+                    return (
+                      <React.Fragment key={statId}>
+                        <span className="text-slate-400 text-xs">{def.label}</span>
+                        <span className="text-slate-500 text-right">{def.format(currentValue)}</span>
+                        <span className="text-slate-600">&rarr;</span>
+                        <span className="text-slate-200 text-right">{def.format(hypoValue)}</span>
+                        <span className={`text-right font-medium ${
+                          Math.abs(delta) < 0.005 ? 'text-slate-600' :
+                          delta > 0 ? 'text-green-400' : 'text-red-400'
+                        }`}>
+                          {Math.abs(delta) < 0.005 ? '—' : `${delta > 0 ? '+' : ''}${delta.toFixed(2)}`}
+                        </span>
+                      </React.Fragment>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+
+            {/* Set Bonuses section */}
+            {activeSetBonuses.length > 0 && (
+              <div className="mt-3 pt-3 border-t border-slate-700">
+                <div className="text-[10px] text-slate-500 uppercase tracking-wide mb-2">
+                  Set Bonuses
+                </div>
+                <div className="space-y-2">
+                  {activeSetBonuses.map((item) => (
+                    <SetBonusSummary
+                      key={item.setId}
+                      setId={item.setId}
+                      setName={item.setName}
+                      totalPieces={item.totalPieces}
+                      slottedPieces={item.slottedPieces}
+                      bonuses={item.bonuses}
+                    />
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </ModalBody>

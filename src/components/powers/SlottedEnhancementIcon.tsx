@@ -45,13 +45,13 @@ export function SlottedEnhancementIcon({ enhancement, size = 20 }: SlottedEnhanc
   switch (enhancement.type) {
     case 'io-set': {
       const ioSet = enhancement as IOSetEnhancement;
-      // Extract icon filename from the full path if needed
-      const iconName = ioSet.icon?.includes('/')
-        ? ioSet.icon.split('/').pop() || 'Unknown.png'
-        : ioSet.icon || 'Unknown.png';
-
-      // Look up set category for rarity-based frame selection
+      // Look up set for authoritative icon and category
       const set = getIOSet(ioSet.setId);
+      const rawIcon = set?.icon || ioSet.icon || 'Unknown.png';
+      // Extract icon filename from the full path if needed
+      const iconName = rawIcon.includes('/')
+        ? rawIcon.split('/').pop() || 'Unknown.png'
+        : rawIcon;
 
       const outline = getEnhancementOutline(
         { name: ioSet.name, proc: ioSet.isProc, unique: ioSet.isUnique },

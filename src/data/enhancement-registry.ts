@@ -77,9 +77,11 @@ export function getGenericIOIconPath(stat: EnhancementStatType): string {
 }
 
 /** Get the full resolved path for an origin enhancement icon */
-export function getOriginIconPath(stat: EnhancementStatType, tier: string): string {
-  const statPart = stat.replace(/\s+/g, '');
-  return resolvePath(`/img/Enhancements/${tier}_${statPart}.png`);
+export function getOriginIconPath(stat: EnhancementStatType, _tier: string): string {
+  // Origin enhancements use the same base icons as generic IOs (tier is handled by overlay frames)
+  const filename = STAT_ICON_MAP[stat];
+  if (!filename) return resolvePath('/img/Unknown.png');
+  return resolvePath(`/img/Enhancements/Generic/${filename}`);
 }
 
 // ============================================

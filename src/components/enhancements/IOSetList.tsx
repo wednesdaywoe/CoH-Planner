@@ -4,6 +4,7 @@
 
 import type { IOSet, IOSetRarity } from '@/types';
 import { RarityBadge } from '@/components/ui';
+import { getIOSetFolder } from '@/components/enhancements/EnhancementIcon';
 import { resolvePath } from '@/utils/paths';
 
 interface IOSetListProps {
@@ -39,22 +40,6 @@ interface IOSetListItemProps {
   set: IOSet;
   isSelected: boolean;
   onClick: () => void;
-}
-
-/**
- * Determine the subfolder for an IO set icon based on icon prefix
- */
-function getIOSetFolder(icon: string): string {
-  if (icon.startsWith('AO_') || icon.startsWith('SAO_')) {
-    return 'Archetype';
-  }
-  if (icon.startsWith('EO_') || icon.startsWith('SEO_')) {
-    return 'Event';
-  }
-  if (icon.startsWith('UD_')) {
-    return 'Universal';
-  }
-  return 'IO Sets';
 }
 
 function IOSetListItem({ set, isSelected, onClick }: IOSetListItemProps) {

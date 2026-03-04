@@ -20372,6 +20372,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
   },
   "sudden_acceleration": {
     "name": "Sudden Acceleration",
+    "icon": "sSuddenAcceleration.png",
     "category": "rare",
     "type": "Knockback",
     "minLevel": 21,
@@ -20491,8 +20492,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "proc": false,
         "unique": false
       }
-    ],
-    "icon": "sForcefeedback.png"
+    ]
   },
   "superior_ascendency_of_the_dominator": {
     "name": "Superior Ascendancy of the Dominator",

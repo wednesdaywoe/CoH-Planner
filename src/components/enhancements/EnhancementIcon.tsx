@@ -140,7 +140,7 @@ function getOverlayPath(
  * - UD_ = Universal Damage (in Universal folder)
  * - All others = IO Sets folder
  */
-function getIOSetFolder(icon: string): string {
+export function getIOSetFolder(icon: string): string {
   if (icon.startsWith('AO_') || icon.startsWith('SAO_')) {
     return 'Archetype';
   }

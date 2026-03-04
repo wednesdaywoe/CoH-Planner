@@ -1108,10 +1108,11 @@ function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfoContent
     const ioEnh = enhancement as IOSetEnhancement;
     const ioSet = getIOSet(ioEnh.setId);
     const piecesSlotted = countSetPiecesInPower(ioEnh.setId);
-    // Extract icon filename from the full path if needed
-    const iconName = ioEnh.icon?.includes('/')
-      ? ioEnh.icon.split('/').pop() || 'Unknown.png'
-      : ioEnh.icon || 'Unknown.png';
+    // Use set data icon (authoritative) with fallback to stored icon
+    const rawIcon = ioSet?.icon || ioEnh.icon || 'Unknown.png';
+    const iconName = rawIcon.includes('/')
+      ? rawIcon.split('/').pop() || 'Unknown.png'
+      : rawIcon;
 
     // Calculate enhancement values for each aspect
     // IO enhancement values are based on the IO's level, not character level

@@ -10,7 +10,6 @@ import { persist, createJSONStorage } from 'zustand/middleware';
 import type {
   Build,
   SelectedPower,
-  SetTracking,
   Accolade,
   ArchetypeId,
   Origin,
@@ -38,6 +37,7 @@ import {
   GRANTED_POWER_GROUPS,
 } from '@/data';
 import type { InherentPowerDef } from '@/data';
+import { computeSetTracking } from '@/utils/calculations/set-tracking';
 
 // ============================================
 // POWER CATEGORY TYPE
@@ -429,41 +429,8 @@ function isUniqueEnhancementSlotted(build: Build, setId: string, pieceNum: numbe
   return false;
 }
 
-/**
- * Update IO set tracking when an enhancement changes
- */
-function updateSetTracking(build: Build): Record<string, SetTracking> {
-  const sets: Record<string, SetTracking> = {};
-
-  const processSlots = (slots: (Enhancement | null)[]) => {
-    for (const enh of slots) {
-      if (enh && enh.type === 'io-set') {
-        const setId = (enh as { setId: string }).setId;
-        const pieceNum = (enh as { pieceNum: number }).pieceNum;
-
-        if (!sets[setId]) {
-          sets[setId] = { count: 0, pieces: new Set() };
-        }
-
-        if (!sets[setId].pieces.has(pieceNum)) {
-          sets[setId].pieces.add(pieceNum);
-          sets[setId].count++;
-        }
-      }
-    }
-  };
-
-  // Process all power categories
-  build.primary.powers.forEach((p) => processSlots(p.slots));
-  build.secondary.powers.forEach((p) => processSlots(p.slots));
-  build.pools.forEach((pool) => pool.powers.forEach((p) => processSlots(p.slots)));
-  if (build.epicPool) {
-    build.epicPool.powers.forEach((p) => processSlots(p.slots));
-  }
-  build.inherents.forEach((p) => processSlots(p.slots));
-
-  return sets;
-}
+// Set tracking extracted to src/utils/calculations/set-tracking.ts
+const updateSetTracking = computeSetTracking;
 
 /**
  * Apply a power array updater to the correct category in a build.

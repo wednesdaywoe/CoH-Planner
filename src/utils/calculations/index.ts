@@ -79,6 +79,9 @@ export {
   type BuildPowers,
 } from './set-bonuses';
 
+// Set tracking (shared between buildStore and compare modal)
+export { computeSetTracking } from './set-tracking';
+
 // Character stats
 export {
   STAT_CATEGORIES,
