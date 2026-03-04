@@ -378,60 +378,75 @@ export function EnhancementPicker() {
     setDragSet(null);
   };
 
-  // Touch handlers for mobile — tap to select, long-press to multi-select
+  // Touch handlers — tap to select, drag across pieces to select range, long-press for multi-select
   const touchStartPos = useRef<{ x: number; y: number } | null>(null);
-  const touchMoved = useRef(false);
   const touchStartTime = useRef(0);
-  const TOUCH_MOVE_THRESHOLD = 10; // px — beyond this it's a scroll, not a tap
+  const touchDragging = useRef(false);
   const LONG_PRESS_DURATION = 400; // ms — hold longer than this for multi-select
 
-  const handlePieceTouchStart = (_set: IOSet, _pieceIndex: number, e: React.TouchEvent) => {
-    // Don't preventDefault — let the browser handle scroll
+  const handlePieceTouchStart = (set: IOSet, pieceIndex: number, e: React.TouchEvent) => {
     const touch = e.touches[0];
     touchStartPos.current = { x: touch.clientX, y: touch.clientY };
-    touchMoved.current = false;
     touchStartTime.current = Date.now();
+    touchDragging.current = false;
+    // Start drag tracking (reuse mouse drag state)
+    setIsDragging(true);
+    setDragStartIndex(pieceIndex);
+    setDragEndIndex(pieceIndex);
+    setDragSet(set);
   };
 
   const handlePieceTouchMove = (e: React.TouchEvent) => {
-    if (!touchStartPos.current) return;
-    // Check if finger moved beyond threshold (scrolling)
+    if (!isDragging || dragStartIndex === null || !dragSet) return;
     const touch = e.touches[0];
-    const dx = Math.abs(touch.clientX - touchStartPos.current.x);
-    const dy = Math.abs(touch.clientY - touchStartPos.current.y);
-    if (dx > TOUCH_MOVE_THRESHOLD || dy > TOUCH_MOVE_THRESHOLD) {
-      touchMoved.current = true;
+    // Use elementFromPoint to find which piece is under the finger
+    const el = document.elementFromPoint(touch.clientX, touch.clientY);
+    if (el) {
+      const pieceButton = (el as HTMLElement).closest('[data-piece-index]') as HTMLElement | null;
+      if (pieceButton) {
+        const idx = parseInt(pieceButton.dataset.pieceIndex || '', 10);
+        if (!isNaN(idx) && idx !== dragEndIndex) {
+          touchDragging.current = true;
+          setDragEndIndex(idx);
+          e.preventDefault(); // Prevent scrolling during active drag selection
+        }
+      }
     }
   };
 
   const handlePieceTouchEnd = (set: IOSet, e: React.TouchEvent) => {
-    // If the finger moved significantly, it was a scroll — don't select
-    if (touchMoved.current) {
+    if (!isDragging || dragStartIndex === null) {
       touchStartPos.current = null;
       return;
     }
 
-    // It was a stationary tap — select the piece
-    e.preventDefault(); // Prevent ghost click only on actual taps
-    touchStartPos.current = null;
+    e.preventDefault(); // Prevent ghost click
 
-    // Find which piece was tapped from the touch target
-    const target = e.target as HTMLElement;
-    const pieceButton = target.closest('[data-piece-index]') as HTMLElement | null;
-    if (pieceButton) {
-      const pieceIndex = parseInt(pieceButton.dataset.pieceIndex || '', 10);
-      if (!isNaN(pieceIndex) && set.pieces[pieceIndex]) {
-        const elapsed = Date.now() - touchStartTime.current;
-        if (elapsed >= LONG_PRESS_DURATION) {
-          // Long press → toggle multi-select (mobile equivalent of shift+click)
-          toggleShiftSelect(set, pieceIndex);
-        } else if (hasShiftSelection && isShiftSelected(set, pieceIndex)) {
-          // Tap on a selected piece → slot all multi-selected pieces
-          handleSlotMultiSelect();
-        } else {
-          // Short tap → slot single piece immediately
-          handleSelectSetPiece(set, set.pieces[pieceIndex], pieceIndex);
-        }
+    const startIdx = dragStartIndex;
+    const endIdx = dragEndIndex ?? startIdx;
+
+    // Reset drag state
+    touchStartPos.current = null;
+    setIsDragging(false);
+    setDragStartIndex(null);
+    setDragEndIndex(null);
+    setDragSet(null);
+
+    if (touchDragging.current && startIdx !== endIdx) {
+      // Drag selection — select range of pieces
+      handleDragSelect(set, startIdx, endIdx);
+    } else {
+      // Stationary tap — check for long-press or single select
+      const elapsed = Date.now() - touchStartTime.current;
+      if (elapsed >= LONG_PRESS_DURATION) {
+        // Long press → toggle multi-select (mobile equivalent of shift+click)
+        toggleShiftSelect(set, startIdx);
+      } else if (hasShiftSelection && isShiftSelected(set, startIdx)) {
+        // Tap on a selected piece → slot all multi-selected pieces
+        handleSlotMultiSelect();
+      } else if (set.pieces[startIdx]) {
+        // Short tap → slot single piece immediately
+        handleSelectSetPiece(set, set.pieces[startIdx], startIdx);
       }
     }
   };
@@ -1110,8 +1125,8 @@ function IOSetRow({
         </span>
       </div>
 
-      {/* Pieces as icons - Desktop view */}
-      <div className="hidden lg:flex flex-wrap gap-1 select-none">
+      {/* Pieces as icons — shown on all screen sizes, supports touch-drag */}
+      <div className="flex flex-wrap gap-1.5 sm:gap-1 select-none">
         {set.pieces.map((piece, pieceIndex) => {
           const dragSelected = isPieceSelected(pieceIndex);
           const shiftSel = isShiftSelected(set, pieceIndex);
@@ -1135,7 +1150,7 @@ function IOSetRow({
                 onTouchMove={(e) => !isDisabled && onPieceTouchMove(e)}
                 onTouchEnd={(e) => !isDisabled && onPieceTouchEnd(set, e)}
                 disabled={isDisabled}
-                className={`relative w-[30px] h-[30px] rounded border transition-all bg-gray-900/50 touch-none ${
+                className={`relative w-10 h-10 sm:w-[30px] sm:h-[30px] rounded border transition-all bg-gray-900/50 ${
                   isDisabled
                     ? 'border-gray-700 opacity-40 cursor-not-allowed'
                     : shiftSel
@@ -1144,6 +1159,7 @@ function IOSetRow({
                         ? 'border-blue-400 scale-110 ring-2 ring-blue-400/50'
                         : 'border-gray-600 hover:border-blue-400 hover:scale-110'
                 }`}
+                style={{ touchAction: 'pan-y' }}
               >
                 <IOSetIcon
                   icon={set.icon || 'Unknown.png'}
@@ -1169,8 +1185,8 @@ function IOSetRow({
         })}
       </div>
 
-      {/* Pieces as list - Mobile view */}
-      <div className="lg:hidden space-y-1 select-none">
+      {/* Pieces as list - Mobile view (piece names + stats) */}
+      <div className="lg:hidden space-y-1 select-none mt-1">
         {set.pieces.map((piece, pieceIndex) => {
           const selected = isPieceSelected(pieceIndex);
           const shiftSel = isShiftSelected(set, pieceIndex);
