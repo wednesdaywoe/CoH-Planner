@@ -1185,8 +1185,8 @@ function IOSetRow({
         })}
       </div>
 
-      {/* Pieces as list - Mobile view (piece names + stats) */}
-      <div className="lg:hidden space-y-1 select-none mt-1">
+      {/* Pieces as list - Hidden (icon grid above handles all screens) */}
+      <div className="hidden space-y-1 select-none mt-1">
         {set.pieces.map((piece, pieceIndex) => {
           const selected = isPieceSelected(pieceIndex);
           const shiftSel = isShiftSelected(set, pieceIndex);
