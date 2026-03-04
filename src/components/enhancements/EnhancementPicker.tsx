@@ -378,16 +378,19 @@ export function EnhancementPicker() {
     setDragSet(null);
   };
 
-  // Touch handlers for mobile — allow native scroll, only select on short stationary taps
+  // Touch handlers for mobile — tap to select, long-press to multi-select
   const touchStartPos = useRef<{ x: number; y: number } | null>(null);
   const touchMoved = useRef(false);
+  const touchStartTime = useRef(0);
   const TOUCH_MOVE_THRESHOLD = 10; // px — beyond this it's a scroll, not a tap
+  const LONG_PRESS_DURATION = 400; // ms — hold longer than this for multi-select
 
   const handlePieceTouchStart = (_set: IOSet, _pieceIndex: number, e: React.TouchEvent) => {
     // Don't preventDefault — let the browser handle scroll
     const touch = e.touches[0];
     touchStartPos.current = { x: touch.clientX, y: touch.clientY };
     touchMoved.current = false;
+    touchStartTime.current = Date.now();
   };
 
   const handlePieceTouchMove = (e: React.TouchEvent) => {
@@ -418,7 +421,17 @@ export function EnhancementPicker() {
     if (pieceButton) {
       const pieceIndex = parseInt(pieceButton.dataset.pieceIndex || '', 10);
       if (!isNaN(pieceIndex) && set.pieces[pieceIndex]) {
-        handleSelectSetPiece(set, set.pieces[pieceIndex], pieceIndex);
+        const elapsed = Date.now() - touchStartTime.current;
+        if (elapsed >= LONG_PRESS_DURATION) {
+          // Long press → toggle multi-select (mobile equivalent of shift+click)
+          toggleShiftSelect(set, pieceIndex);
+        } else if (hasShiftSelection && isShiftSelected(set, pieceIndex)) {
+          // Tap on a selected piece → slot all multi-selected pieces
+          handleSlotMultiSelect();
+        } else {
+          // Short tap → slot single piece immediately
+          handleSelectSetPiece(set, set.pieces[pieceIndex], pieceIndex);
+        }
       }
     }
   };
@@ -1090,7 +1103,10 @@ function IOSetRow({
           Lv {set.minLevel}-{set.maxLevel} • {set.pieces.length}pc
         </span>
         <span className="hidden sm:inline text-xs text-gray-600 ml-auto">
-          {hasShiftSelection ? 'Click selected to slot all' : 'Shift+click to multi-select'}
+          {hasShiftSelection ? 'Tap selected to slot all' : 'Shift+click or long-press to multi-select'}
+        </span>
+        <span className="sm:hidden text-[10px] text-gray-600 ml-auto">
+          {hasShiftSelection ? 'Tap selected to slot all' : 'Hold to multi-select'}
         </span>
       </div>
 
@@ -1157,6 +1173,7 @@ function IOSetRow({
       <div className="lg:hidden space-y-1 select-none">
         {set.pieces.map((piece, pieceIndex) => {
           const selected = isPieceSelected(pieceIndex);
+          const shiftSel = isShiftSelected(set, pieceIndex);
           const disabledReason = isPieceDisabled(piece);
           const isDisabled = !!disabledReason;
           return (
@@ -1173,9 +1190,11 @@ function IOSetRow({
               className={`w-full flex items-center gap-2 p-2 rounded border transition-all ${
                 isDisabled
                   ? 'border-gray-700 opacity-40 cursor-not-allowed bg-gray-900/30'
-                  : selected
-                    ? 'border-blue-400 bg-blue-900/20'
-                    : 'border-gray-600 bg-gray-900/50 active:bg-blue-900/10'
+                  : shiftSel
+                    ? 'border-green-400 bg-green-900/20 ring-1 ring-green-400/50'
+                    : selected
+                      ? 'border-blue-400 bg-blue-900/20'
+                      : 'border-gray-600 bg-gray-900/50 active:bg-blue-900/10'
               }`}
               style={{
                 WebkitUserSelect: 'none',

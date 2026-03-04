@@ -117,6 +117,14 @@ export function ChronologicalInherentsSection({ inherents }: ChronologicalInhere
     );
   };
 
+  const handleInfoClick = (power: SelectedPower) => {
+    if (isPowerLocked(power.name)) {
+      unlockInfoPanel();
+    } else {
+      lockInfoPanel({ type: 'power', powerName: power.name, powerSet: 'Inherent' });
+    }
+  };
+
   // Count total inherents (excluding prestige)
   const totalCount =
     inherentGroups.fitness.length +
@@ -163,6 +171,7 @@ export function ChronologicalInherentsSection({ inherents }: ChronologicalInhere
               onRemoveSlot={handleRemoveSlot}
               onRemoveAllSlots={handleRemoveAllSlots}
               onClearAllEnhancements={handleClearAllEnhancements}
+              onInfoClick={handleInfoClick}
             />
           )}
 
@@ -181,6 +190,7 @@ export function ChronologicalInherentsSection({ inherents }: ChronologicalInhere
               onRemoveSlot={handleRemoveSlot}
               onRemoveAllSlots={handleRemoveAllSlots}
               onClearAllEnhancements={handleClearAllEnhancements}
+              onInfoClick={handleInfoClick}
             />
           )}
 
@@ -199,6 +209,7 @@ export function ChronologicalInherentsSection({ inherents }: ChronologicalInhere
               onRemoveSlot={handleRemoveSlot}
               onRemoveAllSlots={handleRemoveAllSlots}
               onClearAllEnhancements={handleClearAllEnhancements}
+              onInfoClick={handleInfoClick}
             />
           )}
         </div>
@@ -220,6 +231,7 @@ interface InherentGroupProps {
   onRemoveSlot: (powerName: string, slotIndex: number) => void;
   onRemoveAllSlots: (powerName: string, totalSlots: number) => void;
   onClearAllEnhancements: (powerName: string, totalSlots: number) => void;
+  onInfoClick: (power: SelectedPower) => void;
 }
 
 function InherentGroup({
@@ -235,6 +247,7 @@ function InherentGroup({
   onRemoveSlot,
   onRemoveAllSlots,
   onClearAllEnhancements,
+  onInfoClick,
 }: InherentGroupProps) {
   const openEnhancementPicker = useUIStore((s) => s.openEnhancementPicker);
   const openCompareSlotting = useUIStore((s) => s.openCompareSlotting);
@@ -271,6 +284,7 @@ function InherentGroup({
               onEnhancementHover={(index) => onEnhancementHover(power.name, index)}
               onRightClick={(e) => onPowerRightClick(e, power)}
               onCompareSlotting={() => openCompareSlotting(power.name, 'Inherent')}
+              onInfoClick={() => onInfoClick(power)}
             />
           );
         })}

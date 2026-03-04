@@ -196,6 +196,16 @@ export function SelectedPowers({ category }: SelectedPowersProps) {
                   onEnhancementHover={(index) => handleEnhancementHover(power.name, index)}
                   onRightClick={(e) => handlePowerRightClick(e, power)}
                   onCompareSlotting={() => openCompareSlotting(power.name, power.powerSet || powersetId)}
+                  onInfoClick={() => {
+                    const ps = power.powerSet || powersetId;
+                    if (ps) {
+                      if (isLocked) {
+                        unlockInfoPanel();
+                      } else {
+                        lockInfoPanel({ type: 'power', powerName: power.name, powerSet: ps });
+                      }
+                    }
+                  }}
                 />
 
                 {/* Granted sub-powers display (simple toggles) */}
@@ -241,6 +251,16 @@ export function SelectedPowers({ category }: SelectedPowersProps) {
                           onEnhancementHover={(index) => handleEnhancementHover(subPower.name, index)}
                           onRightClick={(e) => handlePowerRightClick(e, subPower)}
                           onCompareSlotting={() => openCompareSlotting(subPower.name, subPower.powerSet || powersetId)}
+                          onInfoClick={() => {
+                            const ps = subPower.powerSet || powersetId;
+                            if (ps) {
+                              if (subIsLocked) {
+                                unlockInfoPanel();
+                              } else {
+                                lockInfoPanel({ type: 'power', powerName: subPower.name, powerSet: ps });
+                              }
+                            }
+                          }}
                         />
                       );
                     })}

@@ -180,6 +180,19 @@ export function ChronologicalPowerSlot({
       onEnhancementHover={handleEnhancementHover}
       onRightClick={handleRightClick}
       onCompareSlotting={() => openCompareSlotting(power.name, power.powerSet)}
+      onInfoClick={() => {
+        if (power.powerSet) {
+          if (isLocked) {
+            unlockInfoPanel();
+          } else {
+            lockInfoPanel({
+              type: 'power',
+              powerName: power.name,
+              powerSet: power.powerSet,
+            });
+          }
+        }
+      }}
     />
   );
 }

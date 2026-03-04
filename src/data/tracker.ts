@@ -21,6 +21,7 @@ export const KNOWN_BUGS: TrackerItem[] = [
 // ============================================
 
 export const RECENT_CHANGES: TrackerItem[] = [
+  { text: 'Added .mnu export for Brainstorm Popmenu', status: 'new' },
   { text: 'Added new slotting comparison tool: SHIFT-Right Click on a slot to access it', status: 'new' },
   { text: 'Added target slider to powers where appropriate', status: 'fixed' },
   { text: 'Implemented public build sharing, no account or registration required', status: 'new' },

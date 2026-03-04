@@ -184,6 +184,13 @@ export function PoolPowers() {
             onRemoveSlot={handleRemoveSlot}
             onRemoveAllSlots={handleRemoveAllSlots}
             onClearAllEnhancements={handleClearAllEnhancements}
+            onInfoClick={(power) => {
+              if (isPowerLocked(power.name)) {
+                unlockInfoPanel();
+              } else {
+                lockInfoPanel({ type: 'power', powerName: power.name, powerSet: poolSelection.id });
+              }
+            }}
           />
         );
       })}
@@ -213,6 +220,13 @@ export function PoolPowers() {
               onRemoveSlot={handleRemoveSlot}
               onRemoveAllSlots={handleRemoveAllSlots}
               onClearAllEnhancements={handleClearAllEnhancements}
+              onInfoClick={(power) => {
+                if (isPowerLocked(power.name)) {
+                  unlockInfoPanel();
+                } else {
+                  lockInfoPanel({ type: 'power', powerName: power.name, powerSet: 'Inherent' });
+                }
+              }}
             />
           )}
 
@@ -230,6 +244,13 @@ export function PoolPowers() {
               onRemoveSlot={handleRemoveSlot}
               onRemoveAllSlots={handleRemoveAllSlots}
               onClearAllEnhancements={handleClearAllEnhancements}
+              onInfoClick={(power) => {
+                if (isPowerLocked(power.name)) {
+                  unlockInfoPanel();
+                } else {
+                  lockInfoPanel({ type: 'power', powerName: power.name, powerSet: 'Inherent' });
+                }
+              }}
               defaultCollapsed
             />
           )}
@@ -248,6 +269,13 @@ export function PoolPowers() {
               onRemoveSlot={handleRemoveSlot}
               onRemoveAllSlots={handleRemoveAllSlots}
               onClearAllEnhancements={handleClearAllEnhancements}
+              onInfoClick={(power) => {
+                if (isPowerLocked(power.name)) {
+                  unlockInfoPanel();
+                } else {
+                  lockInfoPanel({ type: 'power', powerName: power.name, powerSet: 'Inherent' });
+                }
+              }}
               defaultCollapsed
             />
           )}
@@ -266,6 +294,13 @@ export function PoolPowers() {
               onRemoveSlot={handleRemoveSlot}
               onRemoveAllSlots={handleRemoveAllSlots}
               onClearAllEnhancements={handleClearAllEnhancements}
+              onInfoClick={(power) => {
+                if (isPowerLocked(power.name)) {
+                  unlockInfoPanel();
+                } else {
+                  lockInfoPanel({ type: 'power', powerName: power.name, powerSet: 'Inherent' });
+                }
+              }}
               defaultCollapsed
             />
           )}
@@ -297,6 +332,7 @@ interface PoolPowerGroupProps {
   onRemoveSlot: (powerName: string, slotIndex: number) => void;
   onRemoveAllSlots: (powerName: string, totalSlots: number) => void;
   onClearAllEnhancements: (powerName: string, totalSlots: number) => void;
+  onInfoClick: (power: Power | SelectedPower) => void;
 }
 
 function PoolPowerGroup({
@@ -317,6 +353,7 @@ function PoolPowerGroup({
   onRemoveSlot,
   onRemoveAllSlots,
   onClearAllEnhancements,
+  onInfoClick,
 }: PoolPowerGroupProps) {
   const [collapsed, setCollapsed] = useState(false);
   const openEnhancementPicker = useUIStore((s) => s.openEnhancementPicker);
@@ -383,6 +420,7 @@ function PoolPowerGroup({
                   onEnhancementHover={(index) => onEnhancementHover(power.name, index)}
                   onRightClick={(e) => onPowerRightClick(e, power)}
                   onCompareSlotting={() => openCompareSlotting(power.name, poolId)}
+                  onInfoClick={() => onInfoClick(power)}
                 />
 
                 {/* Granted sub-powers display */}
@@ -640,6 +678,13 @@ function EpicPoolSelectedPowers({ epicPool, isPowerLocked }: EpicPoolSelectedPow
                 onEnhancementHover={(index) => handleEnhancementHover(power.name, index)}
                 onRightClick={(e) => handlePowerRightClick(e, power)}
                 onCompareSlotting={() => openCompareSlotting(power.name, epicPool.id)}
+                onInfoClick={() => {
+                  if (isLocked) {
+                    unlockInfoPanel();
+                  } else {
+                    lockInfoPanel({ type: 'power', powerName: power.name, powerSet: epicPool.id });
+                  }
+                }}
               />
             );
           })}
@@ -666,6 +711,7 @@ interface InherentPowerGroupProps {
   onRemoveSlot: (powerName: string, slotIndex: number) => void;
   onRemoveAllSlots: (powerName: string, totalSlots: number) => void;
   onClearAllEnhancements: (powerName: string, totalSlots: number) => void;
+  onInfoClick: (power: SelectedPower) => void;
   defaultCollapsed?: boolean;
 }
 
@@ -682,6 +728,7 @@ function InherentPowerGroup({
   onRemoveSlot,
   onRemoveAllSlots,
   onClearAllEnhancements,
+  onInfoClick,
   defaultCollapsed = false,
 }: InherentPowerGroupProps) {
   const [collapsed, setCollapsed] = useState(defaultCollapsed);
@@ -734,6 +781,7 @@ function InherentPowerGroup({
                 onEnhancementHover={(index) => onEnhancementHover(power.name, index)}
                 onRightClick={(e) => onPowerRightClick(e, power)}
                 onCompareSlotting={() => openCompareSlotting(power.name, 'Inherent')}
+                onInfoClick={() => onInfoClick(power)}
               />
             );
           })}
