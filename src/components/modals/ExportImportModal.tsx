@@ -8,15 +8,16 @@ import { Button } from '../ui/Button';
 import { useBuildStore } from '@/stores/buildStore';
 import { importMidsBuild } from '@/utils/mids-import';
 import type { MidsImportResult } from '@/utils/mids-import';
-import { shareBuild, isShareEnabled } from '@/services/sharedBuilds';
+import { shareBuild } from '@/services/sharedBuilds';
 import type { BuildExport } from '@/types/build';
+import { generatePopmenu } from '@/utils/export-popmenu';
 
 interface ExportImportModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
-type TabType = 'export' | 'import' | 'mids' | 'share';
+type TabType = 'export' | 'import' | 'mids' | 'share' | 'popmenu';
 
 export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
   const [activeTab, setActiveTab] = useState<TabType>('export');
@@ -42,6 +43,11 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
   const [shareError, setShareError] = useState<string | null>(null);
   const [shareUrl, setShareUrl] = useState<string | null>(null);
   const [shareCopied, setShareCopied] = useState(false);
+
+  // Popmenu state
+  const [popmenuName, setPopmenuName] = useState('');
+  const [popmenuStatus, setPopmenuStatus] = useState<string | null>(null);
+  const [popmenuError, setPopmenuError] = useState<string | null>(null);
 
   const { exportBuild, importBuild, importMidsBuild: applyMidsBuild, build } = useBuildStore();
 
@@ -233,6 +239,48 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
     }
   };
 
+  const handlePopmenuSave = async () => {
+    const name = popmenuName || build.name?.replace(/[^a-zA-Z0-9]/g, '_') || 'MyBuild';
+    const content = generatePopmenu(build, name);
+
+    // Try File System Access API (Chromium browsers) — save picker
+    if ('showSaveFilePicker' in window) {
+      try {
+        setPopmenuStatus(null);
+        setPopmenuError(null);
+
+        const handle = await (window as any).showSaveFilePicker({
+          suggestedName: `${name}.mnu`,
+          types: [{
+            description: 'Popmenu file',
+            accept: { 'text/plain': ['.mnu'] },
+          }],
+        });
+
+        const writable = await handle.createWritable();
+        await writable.write(content);
+        await writable.close();
+
+        setPopmenuStatus(`Saved ${name}.mnu`);
+      } catch (e: any) {
+        if (e?.name === 'AbortError') return; // User cancelled picker
+        setPopmenuError(`Failed to save: ${e?.message || 'Unknown error'}`);
+      }
+      return;
+    }
+
+    // Fallback: regular download
+    const blob = new Blob([content], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `${name}.mnu`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  };
+
   const handleClose = () => {
     setBuildAlias('');
     setImportText('');
@@ -250,6 +298,9 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
     setShareUrl(null);
     setShareLoading(false);
     setShareCopied(false);
+    setPopmenuName('');
+    setPopmenuStatus(null);
+    setPopmenuError(null);
     setActiveTab('export');
     if (midsFileInputRef.current) midsFileInputRef.current.value = '';
     onClose();
@@ -267,7 +318,7 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
             }`}
             onClick={() => setActiveTab('export')}
           >
-            Export
+            Save
           </button>
           <button
             className={`px-4 py-2 font-semibold transition-colors ${
@@ -277,7 +328,7 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
             }`}
             onClick={() => setActiveTab('import')}
           >
-            Import
+            Load
           </button>
           <button
             className={`px-4 py-2 font-semibold transition-colors ${
@@ -289,18 +340,26 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
           >
             Mids Import
           </button>
-          {isShareEnabled() && (
-            <button
-              className={`px-4 py-2 font-semibold transition-colors ${
-                activeTab === 'share'
-                  ? 'text-green-400 border-b-2 border-green-400'
-                  : 'text-gray-400 hover:text-gray-300'
-              }`}
-              onClick={() => setActiveTab('share')}
-            >
-              Share
-            </button>
-          )}
+          <button
+            className={`px-4 py-2 font-semibold transition-colors ${
+              activeTab === 'share'
+                ? 'text-green-400 border-b-2 border-green-400'
+                : 'text-gray-400 hover:text-gray-300'
+            }`}
+            onClick={() => setActiveTab('share')}
+          >
+            Share Build
+          </button>
+          <button
+            className={`px-4 py-2 font-semibold transition-colors ${
+              activeTab === 'popmenu'
+                ? 'text-emerald-400 border-b-2 border-emerald-400'
+                : 'text-gray-400 hover:text-gray-300'
+            }`}
+            onClick={() => setActiveTab('popmenu')}
+          >
+            Popmenu
+          </button>
         </div>
       </ModalHeader>
 
@@ -541,6 +600,52 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
               </div>
             )}
           </div>
+        ) : activeTab === 'popmenu' ? (
+          /* Popmenu Tab */
+          <div className="space-y-4">
+            <div className="bg-emerald-900/20 border border-emerald-700/50 rounded p-3 text-sm text-emerald-300">
+              <p>Generate a <span className="font-semibold">.mnu</span> popmenu file for the test server. Save it to:<br /><span className="text-sk-magenta font-semibold">Homecoming/data/texts/English/Menus/</span><br />Then use <span className="text-sk-magenta font-semibold">/popmenu {popmenuName || 'YourMenuName'}</span> in-game to grant enhancements.</p>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-300 mb-1">
+                Menu Name
+              </label>
+              <input
+                type="text"
+                value={popmenuName}
+                onChange={(e) => setPopmenuName(e.target.value)}
+                placeholder={build.name?.replace(/[^a-zA-Z0-9]/g, '_') || 'MyBuild'}
+                className="w-full bg-gray-800 border border-gray-600 rounded px-3 py-2 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 text-sm"
+                maxLength={50}
+              />
+              <p className="text-xs text-gray-500 mt-1">
+                Used with /popmenu command in-game (no spaces)
+              </p>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-300 mb-1">
+                Preview
+              </label>
+              <textarea
+                readOnly
+                value={generatePopmenu(build, popmenuName || build.name?.replace(/[^a-zA-Z0-9]/g, '_') || 'MyBuild')}
+                className="w-full h-48 bg-gray-800 border border-gray-600 rounded px-3 py-2 text-gray-300 font-mono text-xs focus:outline-none"
+              />
+            </div>
+
+            {popmenuStatus && (
+              <div className="bg-green-900/20 border border-green-700/50 rounded p-3 text-sm text-green-300">
+                {popmenuStatus}
+              </div>
+            )}
+            {popmenuError && (
+              <div className="bg-red-900/20 border border-red-700/50 rounded p-3 text-sm text-red-300">
+                {popmenuError}
+              </div>
+            )}
+          </div>
         ) : (
           /* Share Tab */
           <div className="space-y-4">
@@ -675,6 +780,10 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
               disabled={!importText.trim() || importSuccess}
             >
               Import from Text
+            </Button>
+          ) : activeTab === 'popmenu' ? (
+            <Button variant="primary" onClick={handlePopmenuSave}>
+              Save .mnu
             </Button>
           ) : activeTab === 'share' ? (
             !shareUrl && (
