@@ -147,10 +147,12 @@ export function PowerRow({
       {onInfoClick && (
         <button
           onClick={onInfoClick}
-          className="text-slate-500 hover:text-blue-400 text-[10px] opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity flex-shrink-0 leading-none mr-1"
+          className="text-slate-500 hover:text-blue-400 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity flex-shrink-0 leading-none mr-0.5"
           title="Power info"
         >
-          ℹ
+          <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
         </button>
       )}
       {onCompareSlotting && (

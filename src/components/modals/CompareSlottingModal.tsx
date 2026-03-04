@@ -373,9 +373,88 @@ export function CompareSlottingModal() {
       size="full"
     >
       <ModalBody>
-        <div className="flex gap-4 min-h-[400px]">
-          {/* Left panel: Comparison copies */}
-          <div className="flex-1 space-y-2 overflow-y-auto max-h-[70vh] pr-1">
+        <div className="flex flex-col md:flex-row gap-4 min-h-0 md:min-h-[400px]">
+          {/* Stats panel - shown first on mobile (top), right side on desktop */}
+          <div className="w-full md:w-[320px] flex-shrink-0 overflow-y-auto max-h-[40vh] md:max-h-none md:h-[70vh] bg-slate-900/50 rounded-lg border border-slate-700 p-3 order-1 md:order-2">
+            <div className="text-[10px] text-slate-500 uppercase tracking-wide mb-2">
+              {hoveredCopyId !== null
+                ? `Showing: ${copies.findIndex(c => c.id === hoveredCopyId) === 0 ? 'Current' : `Copy ${copies.findIndex(c => c.id === hoveredCopyId)}`}`
+                : 'Showing: Current'
+              }
+            </div>
+            <RegistryEffectsDisplay
+              effects={mergedEffects}
+              allowedEnhancements={power.allowedEnhancements}
+              enhancementBonuses={activeEnhBonuses}
+              globalBonuses={globalBonusesForCalc}
+              buffDebuffMod={effectiveMod}
+              archetypeId={archetypeId ?? undefined}
+              level={build.level}
+              categories={['execution', 'buff', 'debuff', 'control', 'protection', 'movement']}
+              damage={activeDamage}
+              duration={mergedEffects?.buffDuration as number | undefined}
+            />
+
+            {/* Dashboard Stats Impact section */}
+            {visibleStatIds.length > 0 && hypotheticalLegacyStats && (
+              <div className="mt-3 pt-3 border-t border-slate-700">
+                <div className="text-[10px] text-slate-500 uppercase tracking-wide mb-1">
+                  Stats Impact
+                </div>
+                <div className="grid grid-cols-[auto_1fr_auto_1fr_auto] gap-x-2 gap-y-0.5 items-center tabular-nums text-[10px]">
+                  {visibleStatIds.map((statId) => {
+                    const def = STAT_DEFINITIONS[statId];
+                    if (!def) return null;
+
+                    const currentValue = def.getValue(currentLegacyStats, baseHP, maxHPCap);
+                    const hypoValue = def.getValue(hypotheticalLegacyStats, baseHP, maxHPCap);
+                    const currentNum = getNumericValue(currentValue);
+                    const hypoNum = getNumericValue(hypoValue);
+                    const delta = hypoNum - currentNum;
+
+                    return (
+                      <React.Fragment key={statId}>
+                        <span className="text-slate-400 text-xs">{def.label}</span>
+                        <span className="text-slate-500 text-right">{def.format(currentValue)}</span>
+                        <span className="text-slate-600">&rarr;</span>
+                        <span className="text-slate-200 text-right">{def.format(hypoValue)}</span>
+                        <span className={`text-right font-medium ${
+                          Math.abs(delta) < 0.005 ? 'text-slate-600' :
+                          delta > 0 ? 'text-green-400' : 'text-red-400'
+                        }`}>
+                          {Math.abs(delta) < 0.005 ? '—' : `${delta > 0 ? '+' : ''}${delta.toFixed(2)}`}
+                        </span>
+                      </React.Fragment>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+
+            {/* Set Bonuses section */}
+            {activeSetBonuses.length > 0 && (
+              <div className="mt-3 pt-3 border-t border-slate-700">
+                <div className="text-[10px] text-slate-500 uppercase tracking-wide mb-2">
+                  Set Bonuses
+                </div>
+                <div className="space-y-2">
+                  {activeSetBonuses.map((item) => (
+                    <SetBonusSummary
+                      key={item.setId}
+                      setId={item.setId}
+                      setName={item.setName}
+                      totalPieces={item.totalPieces}
+                      slottedPieces={item.slottedPieces}
+                      bonuses={item.bonuses}
+                    />
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Comparison copies panel - below stats on mobile, left side on desktop */}
+          <div className="flex-1 space-y-2 overflow-y-auto max-h-[50vh] md:max-h-[70vh] pr-1 order-2 md:order-1">
             {copies.map((copy, idx) => (
               <div
                 key={copy.id}
@@ -476,84 +555,6 @@ export function CompareSlottingModal() {
             </button>
           </div>
 
-          {/* Right panel: Stats display */}
-          <div className="w-[320px] flex-shrink-0 overflow-y-auto h-[70vh] bg-slate-900/50 rounded-lg border border-slate-700 p-3">
-            <div className="text-[10px] text-slate-500 uppercase tracking-wide mb-2">
-              {hoveredCopyId !== null
-                ? `Showing: ${copies.findIndex(c => c.id === hoveredCopyId) === 0 ? 'Current' : `Copy ${copies.findIndex(c => c.id === hoveredCopyId)}`}`
-                : 'Showing: Current'
-              }
-            </div>
-            <RegistryEffectsDisplay
-              effects={mergedEffects}
-              allowedEnhancements={power.allowedEnhancements}
-              enhancementBonuses={activeEnhBonuses}
-              globalBonuses={globalBonusesForCalc}
-              buffDebuffMod={effectiveMod}
-              archetypeId={archetypeId ?? undefined}
-              level={build.level}
-              categories={['execution', 'buff', 'debuff', 'control', 'protection', 'movement']}
-              damage={activeDamage}
-              duration={mergedEffects?.buffDuration as number | undefined}
-            />
-
-            {/* Dashboard Stats Impact section */}
-            {visibleStatIds.length > 0 && hypotheticalLegacyStats && (
-              <div className="mt-3 pt-3 border-t border-slate-700">
-                <div className="text-[10px] text-slate-500 uppercase tracking-wide mb-1">
-                  Stats Impact
-                </div>
-                <div className="grid grid-cols-[auto_1fr_auto_1fr_auto] gap-x-2 gap-y-0.5 items-center tabular-nums text-[10px]">
-                  {visibleStatIds.map((statId) => {
-                    const def = STAT_DEFINITIONS[statId];
-                    if (!def) return null;
-
-                    const currentValue = def.getValue(currentLegacyStats, baseHP, maxHPCap);
-                    const hypoValue = def.getValue(hypotheticalLegacyStats, baseHP, maxHPCap);
-                    const currentNum = getNumericValue(currentValue);
-                    const hypoNum = getNumericValue(hypoValue);
-                    const delta = hypoNum - currentNum;
-
-                    return (
-                      <React.Fragment key={statId}>
-                        <span className="text-slate-400 text-xs">{def.label}</span>
-                        <span className="text-slate-500 text-right">{def.format(currentValue)}</span>
-                        <span className="text-slate-600">&rarr;</span>
-                        <span className="text-slate-200 text-right">{def.format(hypoValue)}</span>
-                        <span className={`text-right font-medium ${
-                          Math.abs(delta) < 0.005 ? 'text-slate-600' :
-                          delta > 0 ? 'text-green-400' : 'text-red-400'
-                        }`}>
-                          {Math.abs(delta) < 0.005 ? '—' : `${delta > 0 ? '+' : ''}${delta.toFixed(2)}`}
-                        </span>
-                      </React.Fragment>
-                    );
-                  })}
-                </div>
-              </div>
-            )}
-
-            {/* Set Bonuses section */}
-            {activeSetBonuses.length > 0 && (
-              <div className="mt-3 pt-3 border-t border-slate-700">
-                <div className="text-[10px] text-slate-500 uppercase tracking-wide mb-2">
-                  Set Bonuses
-                </div>
-                <div className="space-y-2">
-                  {activeSetBonuses.map((item) => (
-                    <SetBonusSummary
-                      key={item.setId}
-                      setId={item.setId}
-                      setName={item.setName}
-                      totalPieces={item.totalPieces}
-                      slottedPieces={item.slottedPieces}
-                      bonuses={item.bonuses}
-                    />
-                  ))}
-                </div>
-              </div>
-            )}
-          </div>
         </div>
       </ModalBody>
     </Modal>
