@@ -47,6 +47,97 @@ const HYBRID_LABELS: Record<string, string> = {
 };
 
 // ============================================
+// STRUCTURED EFFECT DATA (for panel layouts)
+// ============================================
+
+export interface EffectEntry {
+  label: string;
+  value: string;
+}
+
+export interface EffectData {
+  header: string;
+  entries: EffectEntry[];
+  footer?: string;
+  tags?: string[];
+}
+
+/** Extract structured effect data for any incarnate slot/power */
+export function getIncarnateEffectData(slotId: IncarnateSlotId, powerId: string): EffectData | null {
+  switch (slotId) {
+    case 'alpha': {
+      const fx = getAlphaEffects(powerId);
+      if (!fx) return null;
+      const entries: EffectEntry[] = (Object.entries(fx) as [string, number][])
+        .filter(([k]) => k !== 'levelShift' && k !== 'edBypass')
+        .map(([k, v]) => ({ label: ALPHA_LABELS[k] || k, value: formatEffectValue(v) }));
+      if (fx.levelShift !== undefined && fx.levelShift > 0)
+        entries.push({ label: 'Level Shift', value: `+${fx.levelShift}` });
+      return entries.length > 0 ? { header: 'Enhancement Bonuses', entries } : null;
+    }
+    case 'destiny': {
+      const fx = getDestinyEffects(powerId);
+      if (!fx) return null;
+      const entries: EffectEntry[] = (Object.entries(fx) as [string, number][])
+        .filter(([k]) => k !== 'levelShift' && k !== 'initialDuration' && k !== 'totalDuration')
+        .map(([k, v]) => ({ label: DESTINY_LABELS[k] || k, value: k === 'mezProtection' ? `Mag ${v}` : formatEffectValue(v) }));
+      if (fx.levelShift !== undefined && fx.levelShift > 0)
+        entries.push({ label: 'Level Shift', value: `+${fx.levelShift}` });
+      const footer = fx.totalDuration !== undefined ? `Duration: ${fx.totalDuration}s (peak ${fx.initialDuration}s)` : undefined;
+      return { header: 'Stat Bonuses', entries, footer };
+    }
+    case 'hybrid': {
+      const fx = getHybridEffects(powerId);
+      if (!fx) return null;
+      const entries: EffectEntry[] = (Object.entries(fx) as [string, number][])
+        .filter(([k]) => k !== 'duration' && k !== 'recharge')
+        .map(([k, v]) => ({
+          label: HYBRID_LABELS[k] || k,
+          value: k === 'statusProtection' ? `Mag ${v}` : k === 'mezMagnitudeBonus' ? `+${v} Mag` : formatEffectValue(v),
+        }));
+      const footer = fx.duration !== undefined ? `${fx.duration}s duration / ${fx.recharge}s recharge` : undefined;
+      return { header: 'Toggle Bonuses', entries, footer };
+    }
+    case 'interface': {
+      const fx = getInterfaceEffects(powerId);
+      if (!fx) return null;
+      const entries: EffectEntry[] = [];
+      if (fx.debuffType) entries.push({ label: fx.debuffType, value: formatEffectValue(-(fx.debuffMagnitude || 0)) });
+      if (fx.dotType) entries.push({ label: `DoT (${fx.dotType})`, value: `${((fx.dotDamage || 0) * 100).toFixed(0)}% base` });
+      if (fx.procChance !== undefined) entries.push({ label: 'Proc Chance', value: `${(fx.procChance * 100).toFixed(0)}%` });
+      return { header: 'Proc Effects', entries };
+    }
+    case 'judgement': {
+      const fx = getJudgementEffects(powerId);
+      if (!fx) return null;
+      const entries: EffectEntry[] = [
+        { label: 'Damage', value: fx.damageType },
+        { label: 'Area', value: fx.effectArea },
+      ];
+      if (fx.range > 0) entries.push({ label: 'Range', value: `${fx.range}ft` });
+      if (fx.radius > 0) entries.push({ label: 'Radius', value: `${fx.radius}ft` });
+      if (fx.arc > 0) entries.push({ label: 'Arc', value: `${fx.arc}\u00B0` });
+      if (fx.maxTargets > 0) entries.push({ label: 'Max Targets', value: `${fx.maxTargets}` });
+      entries.push({ label: 'Recharge', value: `${fx.rechargeTime}s` });
+      const tags = fx.secondaryEffects.length > 0 ? fx.secondaryEffects : undefined;
+      return { header: 'Attack', entries, tags };
+    }
+    case 'lore': {
+      const fx = getLoreEffects(powerId);
+      if (!fx) return null;
+      const entries: EffectEntry[] = [
+        { label: 'Faction', value: fx.faction },
+        { label: 'Duration', value: `${Math.round(fx.duration / 60)}min` },
+        { label: 'Recharge', value: `${Math.round(fx.rechargeTime / 60)}min` },
+      ];
+      return { header: 'Summon Pets', entries, tags: fx.pets };
+    }
+    default:
+      return null;
+  }
+}
+
+// ============================================
 // IncarnateEffectsTooltip
 // ============================================
 

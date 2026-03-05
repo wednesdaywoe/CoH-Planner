@@ -16,7 +16,7 @@ import type { IncarnateSlotId, IncarnateBranch, SalvageId } from '@/types';
 import { CraftingTierSection } from './CraftingTierSection';
 import { CraftingCostSummary } from './CraftingCostSummary';
 import { ShoppingListView } from './ShoppingListView';
-import { TIER_NUMBER, branchVariants, aggregateSalvage } from './crafting-utils';
+import { TIER_NUMBER, branchVariants, aggregateSalvage, inferT3VariantKey } from './crafting-utils';
 
 type ActiveView = 'per-slot' | 'shopping-list';
 
@@ -61,14 +61,15 @@ export function IncarnateCraftingModal({ isOpen, onClose }: IncarnateCraftingMod
   const branch: IncarnateBranch = currentPower
     ? inferBranchFromPowerName(currentPower.displayName)
     : 'base';
+  const t3VariantKey = currentPower ? inferT3VariantKey(currentPower.displayName, branch) : null;
   const treeComponents = treeName ? getTreeComponents(activeSlotId, treeName) : null;
 
   // Aggregate salvage for per-slot summary
   const nodeOnlySalvage = treeComponents && targetTier > 0
-    ? aggregateSalvage(treeComponents, branch, targetTier, targetTier)
+    ? aggregateSalvage(treeComponents, branch, targetTier, targetTier, t3VariantKey)
     : new Map<SalvageId, number>();
   const fullPathSalvage = treeComponents && targetTier > 0
-    ? aggregateSalvage(treeComponents, branch, 1, targetTier)
+    ? aggregateSalvage(treeComponents, branch, 1, targetTier, t3VariantKey)
     : new Map<SalvageId, number>();
 
   const handleBackdropClick = (e: React.MouseEvent) => {
@@ -183,7 +184,7 @@ export function IncarnateCraftingModal({ isOpen, onClose }: IncarnateCraftingMod
                 const allVariants = treeComponents?.[tier];
                 if (!allVariants) return null;
 
-                const filteredVariants = branchVariants(allVariants, branch, tier);
+                const filteredVariants = branchVariants(allVariants, branch, tier, t3VariantKey);
 
                 return (
                   <CraftingTierSection

@@ -10,9 +10,11 @@ import type {
   CraftingChecklistState,
 } from '@/types';
 import { craftingKey } from '@/types';
-import { getTierColor, getTierDisplayName } from '@/data';
+import { getTierColor, getTierDisplayName, getSalvageRarity, getSalvageDisplayName } from '@/data';
 import type { IncarnateTier } from '@/types';
 import { CraftingSalvageRow } from './CraftingSalvageRow';
+
+const RARITY_SORT: Record<string, number> = { 'common': 0, 'uncommon': 1, 'rare': 2, 'very-rare': 3 };
 
 const TIER_TO_RARITY: Record<number, IncarnateTier> = {
   1: 'common',
@@ -81,7 +83,12 @@ export function CraftingTierSection({
                   {VARIANT_LABELS[variantKey] || variantKey}
                 </div>
               )}
-              {variant.salvage.map((salvage, idx) => {
+              {[...variant.salvage].sort((a, b) => {
+                const ra = RARITY_SORT[getSalvageRarity(a.salvageId)] ?? 99;
+                const rb = RARITY_SORT[getSalvageRarity(b.salvageId)] ?? 99;
+                if (ra !== rb) return ra - rb;
+                return getSalvageDisplayName(a.salvageId).localeCompare(getSalvageDisplayName(b.salvageId));
+              }).map((salvage, idx) => {
                 const salvageKey = craftingKey(
                   slotId, treeId, tier, variantKey, `salvage:${salvage.salvageId}:${idx}`
                 );

@@ -201,26 +201,6 @@ export function IncarnateModal({ isOpen, onClose }: IncarnateModalProps) {
 
           {/* Main content - power tree */}
           <div className="flex-1 flex flex-col overflow-hidden">
-            {/* Current selection info */}
-            {currentPower && (
-              <div
-                className="px-4 py-2 flex items-center justify-between border-b border-gray-700"
-                style={{ backgroundColor: `${getSlotColor(activeSlotId)}15` }}
-              >
-                <div className="flex items-center gap-2">
-                  <span className="text-sm text-gray-400">Current:</span>
-                  <span className="text-sm font-medium text-white">{currentPower.displayName}</span>
-                  <span className="text-xs text-gray-500">({currentPower.treeName})</span>
-                </div>
-                <button
-                  onClick={handleClearPower}
-                  className="text-xs text-red-400 hover:text-red-300 transition-colors px-2 py-1"
-                >
-                  Clear
-                </button>
-              </div>
-            )}
-
             {/* Power tree display */}
             <div className="flex-1 overflow-y-auto p-4">
               {selectedTree ? (
@@ -242,7 +222,17 @@ export function IncarnateModal({ isOpen, onClose }: IncarnateModalProps) {
         </div>
 
         {/* Footer */}
-        <div className="px-4 py-3 border-t border-gray-700 flex justify-end gap-2">
+        <div className="px-4 py-3 border-t border-gray-700 flex justify-between gap-2">
+          {currentPower ? (
+            <button
+              onClick={handleClearPower}
+              className="px-3 py-1.5 text-xs font-medium text-red-400 hover:text-red-300 transition-colors rounded-lg hover:bg-gray-800"
+            >
+              Clear Selection
+            </button>
+          ) : (
+            <div />
+          )}
           <button
             onClick={onClose}
             className="px-4 py-2 text-sm font-medium text-gray-300 hover:text-white transition-colors rounded-lg hover:bg-gray-700"

@@ -14,7 +14,7 @@ import {
   getSalvageRarity,
   getSalvageCost,
 } from '@/data';
-import { TIER_NUMBER, aggregateSalvage } from './crafting-utils';
+import { TIER_NUMBER, aggregateSalvage, inferT3VariantKey } from './crafting-utils';
 
 const RARITY_SORT: Record<string, number> = {
   'common': 0,
@@ -42,7 +42,8 @@ export function ShoppingListView() {
       const treeComponents = getTreeComponents(slotId, power.treeName);
       if (!treeComponents || targetTier <= 0) continue;
 
-      const slotSalvage = aggregateSalvage(treeComponents, branch, 1, targetTier);
+      const t3Key = inferT3VariantKey(power.displayName, branch);
+      const slotSalvage = aggregateSalvage(treeComponents, branch, 1, targetTier, t3Key);
       for (const [id, qty] of slotSalvage) {
         totals.set(id, (totals.get(id) || 0) + qty);
       }
