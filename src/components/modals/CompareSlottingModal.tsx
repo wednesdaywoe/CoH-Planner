@@ -128,20 +128,24 @@ export function CompareSlottingModal() {
     };
   }, [power, compareTarget]);
 
+  const exemplarMode = useUIStore((s) => s.exemplarMode);
+  const exemplarLevel = useUIStore((s) => s.exemplarLevel);
+
   // Compute enhancement bonuses for a set of slots
   const computeBonuses = useCallback((slots: (Enhancement | null)[]) => {
     if (!power) return {};
     const bonuses = calculatePowerEnhancementBonuses(
       { name: power.name, slots },
       build.level,
-      getIOSet
+      getIOSet,
+      exemplarMode ? exemplarLevel : undefined
     );
     // Merge alpha bonuses
     for (const [aspect, value] of Object.entries(alphaBonuses)) {
       if (value !== undefined) bonuses[aspect] = (bonuses[aspect] || 0) + value;
     }
     return bonuses;
-  }, [power, build.level, alphaBonuses]);
+  }, [power, build.level, alphaBonuses, exemplarMode, exemplarLevel]);
 
   // Compute damage for a set of slots
   const computeDamage = useCallback((enhBonuses: EnhancementBonuses) => {
@@ -224,7 +228,6 @@ export function CompareSlottingModal() {
   // DASHBOARD STATS: hypothetical build calculation
   // ============================================
   const statsConfig = useUIStore((s) => s.statsConfig);
-  const exemplarMode = useUIStore((s) => s.exemplarMode);
   const includeProcsInStats = useUIStore((s) => s.includeProcsInStats);
   const targetsHitValues = useUIStore((s) => s.targetsHitValues);
 

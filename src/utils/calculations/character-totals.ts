@@ -432,7 +432,8 @@ function applyActivePowerBonuses(
   archetypeId: string,
   alphaBonuses: EnhancementBonuses = {},
   baseMaxHP: number = 0,
-  targetsHitValues: Record<string, number> = {}
+  targetsHitValues: Record<string, number> = {},
+  exemplarLevel?: number
 ): void {
   for (const power of powers) {
     // Auto powers are always active; others require explicit isActive toggle
@@ -447,7 +448,8 @@ function applyActivePowerBonuses(
       enhBonuses = calculatePowerEnhancementBonuses(
         { name: power.name, slots: power.slots },
         buildLevel,
-        getIOSet
+        getIOSet,
+        exemplarLevel
       );
     }
 
@@ -851,7 +853,8 @@ function applyFitnessPowerBonuses(
   build: Build,
   global: GlobalBonuses,
   breakdown: Map<string, DashboardStatBreakdown>,
-  globalIOLevel: number
+  globalIOLevel: number,
+  exemplarLevel?: number
 ): void {
   const fitnessPowers = (build.inherents || []).filter(
     (p) => p.inherentCategory === 'fitness'
@@ -865,7 +868,8 @@ function applyFitnessPowerBonuses(
     const enhBonuses = calculatePowerEnhancementBonuses(
       power,
       globalIOLevel,
-      getIOSet
+      getIOSet,
+      exemplarLevel
     );
 
     for (const effect of effects) {
@@ -1814,6 +1818,8 @@ export interface CalculationOptions {
   includeProcs?: boolean;
   /** Per-target slider values keyed by power name (0 = inactive, 1+ = targets hit) */
   targetsHitValues?: Record<string, number>;
+  /** Exemplar level for enhancement scaling (undefined = no scaling) */
+  exemplarLevel?: number;
 }
 
 /**
@@ -1834,13 +1840,14 @@ export function calculateCharacterTotals(
   const globalBonuses = createEmptyGlobalBonuses();
 
   // Step 1: Calculate set bonuses with Rule of 5
-  // In exemplar mode, use build level; otherwise always use 50
-  const effectiveLevel = exemplarMode ? build.level : 50;
+  // In exemplar mode, use exemplar level; otherwise always use 50
+  const exemplarLevel = options?.exemplarLevel;
+  const effectiveLevel = exemplarMode ? (exemplarLevel ?? build.level) : 50;
   const buildPowers = buildToBuildPowers(build);
   const { bonuses: setBonusAggregated, tracking } = calculateSetBonuses(
     buildPowers,
     getIOSet,
-    build.exemplarLevel ?? undefined,
+    exemplarMode ? effectiveLevel : undefined,
     effectiveLevel
   );
 
@@ -1869,14 +1876,14 @@ export function calculateCharacterTotals(
   const allPowers = collectAllPowers(build);
 
   // Step 5: Apply inherent power bonuses (Fitness powers)
-  applyFitnessPowerBonuses(build, globalBonuses, breakdown, effectiveLevel);
+  applyFitnessPowerBonuses(build, globalBonuses, breakdown, effectiveLevel, exemplarLevel);
 
   // Step 6: Get Alpha incarnate enhancement bonuses (apply to all powers)
   const alphaBonuses = getAlphaEnhancementBonuses(build.incarnates, incarnateActive);
 
   // Step 7: Apply active toggle power bonuses (with enhancement multipliers + Alpha bonuses)
   const baseMaxHP = getBaselineHealth(build.archetype?.id ?? undefined, effectiveLevel).baseHealth;
-  applyActivePowerBonuses(allPowers, globalBonuses, breakdown, effectiveLevel, build.archetype.id || '', alphaBonuses, baseMaxHP, options?.targetsHitValues ?? {});
+  applyActivePowerBonuses(allPowers, globalBonuses, breakdown, effectiveLevel, build.archetype.id || '', alphaBonuses, baseMaxHP, options?.targetsHitValues ?? {}, exemplarLevel);
 
   // Step 7.5: Apply always-on proc bonuses (Global and Proc120s in Auto/Toggle powers)
   // Procs have their own Rule of 5 tracking, separate from set bonuses

@@ -125,6 +125,9 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
     return getAlphaEnhancementBonuses(build.incarnates, incarnateActive);
   }, [build.incarnates, incarnateActive]);
 
+  const exemplarMode = useUIStore((s) => s.exemplarMode);
+  const exemplarLevel = useUIStore((s) => s.exemplarLevel);
+
   // Calculate enhancement bonuses if power is slotted, plus Alpha bonuses
   const enhancementBonuses = useMemo<EnhancementBonuses>(() => {
     let bonuses: EnhancementBonuses = {};
@@ -132,7 +135,8 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
       bonuses = calculatePowerEnhancementBonuses(
         { name: selectedPower.name, slots: selectedPower.slots },
         build.level,
-        getIOSet
+        getIOSet,
+        exemplarMode ? exemplarLevel : undefined
       );
     }
 
@@ -144,7 +148,7 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
     }
 
     return bonuses;
-  }, [selectedPower, build.level, alphaBonuses]);
+  }, [selectedPower, build.level, alphaBonuses, exemplarMode, exemplarLevel]);
 
   // Convert global bonuses to enhancement-aspect-keyed decimals for three-tier display
   const globalBonusesForCalc = useMemo(

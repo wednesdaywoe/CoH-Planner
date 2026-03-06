@@ -54,6 +54,7 @@ export interface StatBreakdownItem {
 
 export interface IOSet {
   name: string;
+  category?: string;
   minLevel?: number;
   maxLevel?: number;
   bonuses: Array<{
@@ -63,6 +64,12 @@ export interface IOSet {
     value?: number;
   }>;
 }
+
+/**
+ * Categories of IO sets whose set bonuses are immune to exemplar suppression.
+ * Purple, ATO, PvP, and Winter/Event sets keep their bonuses at any exemplar level.
+ */
+const EXEMPLAR_IMMUNE_CATEGORIES = new Set(['purple', 'ato', 'pvp', 'event']);
 
 export interface BuildPowers {
   primary?: { powers: SelectedPower[] };
@@ -336,17 +343,21 @@ export function collectAllSetBonuses(
       const set = getIOSet(setId);
 
       // Check if this IO's set bonuses are suppressed by exemplar level
+      // Purple, ATO, PvP, and Event sets are immune to exemplar suppression
       let bonusesActive = true;
+      const isImmune = set?.category ? EXEMPLAR_IMMUNE_CATEGORIES.has(set.category) : false;
 
-      if (enhancement.attuned) {
-        // Attuned: bonuses active down to (set minLevel - 3)
-        const setMinLevel = set?.minLevel || 1;
-        const minBonusLevel = setMinLevel - 3;
-        bonusesActive = effectiveLevel >= minBonusLevel;
-      } else {
-        // Non-attuned: bonuses active if exemplar level >= (IO level - 3)
-        const ioLevel = enhancement.level || 50;
-        bonusesActive = effectiveLevel >= ioLevel - 3;
+      if (!isImmune) {
+        if (enhancement.attuned) {
+          // Attuned: bonuses active down to (set minLevel - 3)
+          const setMinLevel = set?.minLevel || 1;
+          const minBonusLevel = setMinLevel - 3;
+          bonusesActive = effectiveLevel >= minBonusLevel;
+        } else {
+          // Non-attuned: bonuses active if exemplar level >= (IO level - 3)
+          const ioLevel = enhancement.level || 50;
+          bonusesActive = effectiveLevel >= ioLevel - 3;
+        }
       }
 
       if (bonusesActive) {

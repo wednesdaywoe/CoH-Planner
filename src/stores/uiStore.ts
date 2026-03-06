@@ -90,6 +90,9 @@ interface UIState {
   /** Exemplar mode - when ON, respects build level for set bonus suppression */
   exemplarMode: boolean;
 
+  /** Exemplar level - the level to exemplar down to (1-50, default: 50) */
+  exemplarLevel: number;
+
   /** Include proc bonuses in dashboard stat calculations */
   includeProcsInStats: boolean;
 
@@ -189,6 +192,7 @@ interface UIActions {
   toggleAttunement: () => void;
   setGlobalBoostLevel: (level: number) => void;
   toggleExemplarMode: () => void;
+  setExemplarLevel: (level: number) => void;
   toggleIncludeProcsInStats: () => void;
   toggleHints: () => void;
   toggleDarkMode: () => void;
@@ -413,6 +417,7 @@ export const useUIStore = create<UIStore>()(
       attunementEnabled: false,
       globalBoostLevel: 0,
       exemplarMode: false,
+      exemplarLevel: 50,
       includeProcsInStats: true,
       hintsEnabled: true,
       infoPanel: defaultInfoPanel,
@@ -551,6 +556,11 @@ export const useUIStore = create<UIStore>()(
         set((state) => ({
           exemplarMode: !state.exemplarMode,
         })),
+
+      setExemplarLevel: (level) =>
+        set({
+          exemplarLevel: Math.max(1, Math.min(50, level)),
+        }),
 
       toggleIncludeProcsInStats: () =>
         set((state) => ({
@@ -985,6 +995,7 @@ export const useUIStore = create<UIStore>()(
         attunementEnabled: state.attunementEnabled,
         globalBoostLevel: state.globalBoostLevel,
         exemplarMode: state.exemplarMode,
+        exemplarLevel: state.exemplarLevel,
         includeProcsInStats: state.includeProcsInStats,
         hintsEnabled: state.hintsEnabled,
         infoPanel: { enabled: state.infoPanel.enabled, content: null, locked: false, lockedContent: null, tooltipEnabled: state.infoPanel.tooltipEnabled, undocked: false },
@@ -1026,6 +1037,9 @@ export const useAttunement = () => useUIStore((state) => state.attunementEnabled
 
 /** Select exemplar mode setting */
 export const useExemplarMode = () => useUIStore((state) => state.exemplarMode);
+
+/** Select exemplar level */
+export const useExemplarLevel = () => useUIStore((state) => state.exemplarLevel);
 
 /** Select hints setting */
 export const useHintsEnabled = () => useUIStore((state) => state.hintsEnabled);

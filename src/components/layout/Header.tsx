@@ -71,10 +71,10 @@ export function Header() {
   const resetBuild = useBuildStore((s) => s.resetBuild);
   const clearPowers = useBuildStore((s) => s.clearPowers);
 
-  const globalIOLevel = useUIStore((s) => s.globalIOLevel);
-  const setGlobalIOLevel = useUIStore((s) => s.setGlobalIOLevel);
   const exemplarMode = useUIStore((s) => s.exemplarMode);
   const toggleExemplarMode = useUIStore((s) => s.toggleExemplarMode);
+  const exemplarLevel = useUIStore((s) => s.exemplarLevel);
+  const setExemplarLevel = useUIStore((s) => s.setExemplarLevel);
   const dominationActive = useUIStore((s) => s.dominationActive);
   const toggleDomination = useUIStore((s) => s.toggleDomination);
   const scourgeActive = useUIStore((s) => s.scourgeActive);
@@ -590,33 +590,35 @@ export function Header() {
               showRange={false}
             />
           </div>
-          <div className="flex items-center gap-1 bg-slate-700/50 px-2 py-1.5 rounded border border-slate-600">
-            <span className="text-xs text-slate-400 font-semibold uppercase">IO</span>
-            <button
-              onClick={() => setGlobalIOLevel(globalIOLevel - 1)}
-              disabled={globalIOLevel <= 10}
-              className="text-slate-400 hover:text-blue-400 disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-0.5"
-            >
-              &minus;
-            </button>
-            <span className="text-sm font-bold text-blue-400 w-6 text-center">{globalIOLevel}</span>
-            <button
-              onClick={() => setGlobalIOLevel(globalIOLevel + 1)}
-              disabled={globalIOLevel >= 50}
-              className="text-slate-400 hover:text-blue-400 disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-0.5"
-            >
-              +
-            </button>
-            <Slider
-              value={globalIOLevel}
-              min={10}
-              max={50}
-              onChange={(e) => setGlobalIOLevel(Number(e.target.value))}
-              className="w-20"
-              showValue={false}
-              showRange={false}
-            />
-          </div>
+          {exemplarMode && (
+            <div className="flex items-center gap-1 bg-slate-700/50 px-2 py-1.5 rounded border border-amber-600/50">
+              <span className="text-xs text-amber-400 font-semibold uppercase">Exemplar</span>
+              <button
+                onClick={() => setExemplarLevel(exemplarLevel - 1)}
+                disabled={exemplarLevel <= 1}
+                className="text-slate-400 hover:text-amber-400 disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-0.5"
+              >
+                &minus;
+              </button>
+              <span className="text-sm font-bold text-amber-400 w-6 text-center">{exemplarLevel}</span>
+              <button
+                onClick={() => setExemplarLevel(exemplarLevel + 1)}
+                disabled={exemplarLevel >= 50}
+                className="text-slate-400 hover:text-amber-400 disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-0.5"
+              >
+                +
+              </button>
+              <Slider
+                value={exemplarLevel}
+                min={1}
+                max={50}
+                onChange={(e) => setExemplarLevel(Number(e.target.value))}
+                className="w-20"
+                showValue={false}
+                showRange={false}
+              />
+            </div>
+          )}
         </div>
 
         {/* Export, Import, New, Clear */}

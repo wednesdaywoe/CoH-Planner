@@ -21,6 +21,71 @@ export const BASE_RECOVERY_RATE = 1.667;
 export const BASE_REGEN_RATE = 100 / 240;
 
 // ============================================
+// EXEMPLAR SCALING TABLE
+// ============================================
+
+/**
+ * Level-based scaling factors for exemplar system
+ * When exemplared down, enhancement values are scaled by:
+ *   scaledValue = rawValue × (TABLE[exemplarLevel] / TABLE[ioLevel])
+ * Levels 32-50 are all 1.0 (no scaling at or above 32)
+ */
+export const EXEMPLAR_SCALING_TABLE: Record<number, number> = {
+  1: 0.022, 2: 0.045, 3: 0.068, 4: 0.092, 5: 0.116,
+  6: 0.141, 7: 0.166, 8: 0.192, 9: 0.219, 10: 0.246,
+  11: 0.274, 12: 0.302, 13: 0.331, 14: 0.361, 15: 0.391,
+  16: 0.422, 17: 0.454, 18: 0.486, 19: 0.519, 20: 0.553,
+  21: 0.587, 22: 0.623, 23: 0.659, 24: 0.696, 25: 0.733,
+  26: 0.772, 27: 0.811, 28: 0.852, 29: 0.893, 30: 0.935,
+  31: 0.978,
+};
+// Levels 32-50 = 1.0
+for (let i = 32; i <= 50; i++) EXEMPLAR_SCALING_TABLE[i] = 1.0;
+
+/**
+ * Apply exemplar scaling to an enhancement value.
+ *
+ * @param rawValue - The unscaled enhancement value (decimal, e.g. 0.424)
+ * @param ioLevel - The true IO level (the level the enhancement was created at)
+ * @param exemplarLevel - The level the character is exemplared to
+ * @param schedule - The ED schedule (used to skip procs which have schedule "None")
+ * @returns The scaled value, respecting minor bonus thresholds and the 41.5% cap
+ */
+export function applyExemplarScaling(
+  rawValue: number,
+  ioLevel: number,
+  exemplarLevel: number,
+  isProc = false
+): number {
+  // Procs are never scaled
+  if (isProc) return rawValue;
+
+  // No scaling needed if at or above IO level
+  if (exemplarLevel >= ioLevel) return rawValue;
+
+  const rawPercent = rawValue * 100;
+
+  // Minor Bonus Thresholds — exempt small bonuses from scaling
+  if (rawPercent <= 5) return rawValue; // ≤5% never reduced
+  if (rawPercent <= 10 && exemplarLevel >= 11) return rawValue; // ≤10% exempt if exemplar ≥ 11
+  if (rawPercent <= 20 && exemplarLevel >= 21) return rawValue; // ≤20% exempt if exemplar ≥ 21
+
+  // Calculate scaling factor
+  const exemplarFactor = EXEMPLAR_SCALING_TABLE[Math.max(1, Math.min(50, exemplarLevel))] ?? 1.0;
+  const ioFactor = EXEMPLAR_SCALING_TABLE[Math.max(1, Math.min(50, ioLevel))] ?? 1.0;
+  const scalingRatio = ioFactor > 0 ? exemplarFactor / ioFactor : 1.0;
+
+  let scaledValue = rawValue * scalingRatio;
+
+  // Maximum Bonus Cap: 41.5% if exemplar ≤ 45
+  if (exemplarLevel <= 45) {
+    scaledValue = Math.min(scaledValue, 0.415);
+  }
+
+  return scaledValue;
+}
+
+// ============================================
 // ENHANCEMENT SCHEDULES
 // ============================================
 
@@ -399,7 +464,8 @@ export interface EnhancementBonuses {
 export function calculatePowerEnhancementBonuses(
   power: PowerWithSlots,
   globalIOLevel = 50,
-  getIOSet?: (setId: string) => { pieces: Array<{ num: number; aspects?: string[]; proc?: boolean }>; maxLevel: number; category?: string; name?: string } | undefined
+  getIOSet?: (setId: string) => { pieces: Array<{ num: number; aspects?: string[]; proc?: boolean }>; maxLevel: number; category?: string; name?: string } | undefined,
+  exemplarLevel?: number
 ): EnhancementBonuses {
   if (!power?.slots) {
     return {};
@@ -423,22 +489,42 @@ export function calculatePowerEnhancementBonuses(
       if (!piece?.aspects) return;
 
       // maxLevel <= 1 indicates an attuned set (ATO/Event) that scales with player level
-      const ioLevel = set.maxLevel <= 1 ? globalIOLevel : Math.min(globalIOLevel, set.maxLevel);
+      // When exemplared, attuned IOs compute at exemplar level (they auto-scale)
+      // Non-attuned IOs compute at their fixed level, then get scaled
+      const isAttuned = set.maxLevel <= 1;
+      let ioLevel: number;
+      if (isAttuned) {
+        // Attuned: use exemplar level if exemplaring, otherwise globalIOLevel (typically 50)
+        ioLevel = exemplarLevel ?? globalIOLevel;
+      } else {
+        // Non-attuned: capped by set's max level
+        ioLevel = Math.min(globalIOLevel, set.maxLevel);
+      }
       // Purple and Superior sets get 25% higher enhancement values
       const rarityMultiplier = getSetRarityMultiplier(set.category, set.name);
       const bonuses = parseIOSetPieceValues(piece.aspects, ioLevel, piece.proc);
 
       Object.entries(bonuses).forEach(([aspect, value]) => {
-        rawBonuses[aspect] = (rawBonuses[aspect] || 0) + value * rarityMultiplier * boostMultiplier;
+        let scaledValue = value * rarityMultiplier * boostMultiplier;
+        // Apply exemplar scaling for non-attuned IOs (attuned already computed at exemplar level)
+        if (exemplarLevel !== undefined && !isAttuned && !piece.proc) {
+          scaledValue = applyExemplarScaling(scaledValue, ioLevel, exemplarLevel);
+        }
+        rawBonuses[aspect] = (rawBonuses[aspect] || 0) + scaledValue;
       });
     } else if (slot.type === 'io-generic') {
-      // Common IO
+      // Common IO (non-attuned, fixed level)
       const aspect = slot.stat as string;
       const normalized = normalizeAspectName(aspect);
       if (normalized) {
         const schedule = getAspectSchedule(normalized);
-        const value = getIOValueAtLevel(slot.level || globalIOLevel, schedule);
-        rawBonuses[normalized] = (rawBonuses[normalized] || 0) + value * boostMultiplier;
+        const genericIOLevel = slot.level || globalIOLevel;
+        let value = getIOValueAtLevel(genericIOLevel, schedule) * boostMultiplier;
+        // Apply exemplar scaling for generic IOs
+        if (exemplarLevel !== undefined) {
+          value = applyExemplarScaling(value, genericIOLevel, exemplarLevel);
+        }
+        rawBonuses[normalized] = (rawBonuses[normalized] || 0) + value;
       }
     } else if (slot.type === 'special') {
       // Special enhancements (Hamidon, Titan, etc.) - each aspect has its own value

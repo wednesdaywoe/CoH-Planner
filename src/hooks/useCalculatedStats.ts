@@ -233,6 +233,7 @@ export function convertToLegacyStats(
 export function useCharacterCalculation(): CharacterCalculationResult {
   const build = useBuildStore((state) => state.build);
   const exemplarMode = useUIStore((state) => state.exemplarMode);
+  const exemplarLevel = useUIStore((state) => state.exemplarLevel);
   const incarnateActive = useUIStore((state) => state.incarnateActive);
   const includeProcsInStats = useUIStore((state) => state.includeProcsInStats);
   const targetsHitValues = useUIStore((state) => state.targetsHitValues);
@@ -241,8 +242,9 @@ export function useCharacterCalculation(): CharacterCalculationResult {
     return calculateCharacterTotals(build, exemplarMode, incarnateActive, {
       includeProcs: includeProcsInStats,
       targetsHitValues,
+      exemplarLevel: exemplarMode ? exemplarLevel : undefined,
     });
-  }, [build, exemplarMode, incarnateActive, includeProcsInStats, targetsHitValues]);
+  }, [build, exemplarMode, exemplarLevel, incarnateActive, includeProcsInStats, targetsHitValues]);
 }
 
 /**
@@ -251,6 +253,7 @@ export function useCharacterCalculation(): CharacterCalculationResult {
 export function useCalculatedStats(): CalculatedStats {
   const build = useBuildStore((state) => state.build);
   const exemplarMode = useUIStore((state) => state.exemplarMode);
+  const exemplarLevel = useUIStore((state) => state.exemplarLevel);
   const incarnateActive = useUIStore((state) => state.incarnateActive);
   const includeProcsInStats = useUIStore((state) => state.includeProcsInStats);
   const targetsHitValues = useUIStore((state) => state.targetsHitValues);
@@ -259,9 +262,10 @@ export function useCalculatedStats(): CalculatedStats {
     const result = calculateCharacterTotals(build, exemplarMode, incarnateActive, {
       includeProcs: includeProcsInStats,
       targetsHitValues,
+      exemplarLevel: exemplarMode ? exemplarLevel : undefined,
     });
     return convertToLegacyStats(result.stats, result);
-  }, [build, exemplarMode, incarnateActive, includeProcsInStats, targetsHitValues]);
+  }, [build, exemplarMode, exemplarLevel, incarnateActive, includeProcsInStats, targetsHitValues]);
 }
 
 /**
