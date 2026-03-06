@@ -53,13 +53,8 @@ export const ThrowSpines: Power = {
       "type": "Toxic",
       "scale": 0.1,
       "table": "Melee_Damage",
-      "duration": 7.1,
+      "duration": 4.1,
       "tickRate": 1
-    },
-    {
-      "type": "Fire",
-      "scale": 0.4905,
-      "table": "Melee_Damage"
     }
   ],
   "effects": {

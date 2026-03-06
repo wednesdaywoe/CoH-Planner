@@ -21,8 +21,8 @@ export const StoneSkin: Power = {
     "accuracy": 1
   },
   "allowedEnhancements": [
-    "Defense",
-    "Resistance"
+    "Resistance",
+    "Defense"
   ],
   "allowedSetCategories": [
     "Defense Sets",

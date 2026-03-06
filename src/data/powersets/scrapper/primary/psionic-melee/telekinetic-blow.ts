@@ -50,9 +50,9 @@ export const TelekineticBlow: Power = {
     },
     {
       "type": "Psionic",
-      "scale": 0.1417,
+      "scale": 0.18,
       "table": "Melee_Damage",
-      "duration": 2.1,
+      "duration": 3.1,
       "tickRate": 1
     },
     {
@@ -64,11 +64,6 @@ export const TelekineticBlow: Power = {
       "type": "Psionic",
       "scale": 1.8,
       "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.81,
-      "table": "Melee_Damage"
     }
   ],
   "effects": {

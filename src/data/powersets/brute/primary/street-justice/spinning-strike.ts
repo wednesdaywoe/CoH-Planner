@@ -69,11 +69,6 @@ export const SpinningStrike: Power = {
       "table": "Melee_Damage",
       "duration": 0.45,
       "tickRate": 0.4
-    },
-    {
-      "type": "Fire",
-      "scale": 0.3465,
-      "table": "Melee_Damage"
     }
   ],
   "effects": {

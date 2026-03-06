@@ -21,7 +21,7 @@ export const Disembowel: Power = {
     "range": 7,
     "recharge": 10,
     "endurance": 10.192,
-    "castTime": 1.5
+    "castTime": 1.8
   },
   "allowedEnhancements": [
     "Taunt",
@@ -42,18 +42,11 @@ export const Disembowel: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Lethal",
-      "scale": 1.96,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.882,
-      "table": "Melee_Damage"
-    }
-  ],
+  "damage": {
+    "type": "Lethal",
+    "scale": 1.96,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "knockup": {
       "scale": 2,

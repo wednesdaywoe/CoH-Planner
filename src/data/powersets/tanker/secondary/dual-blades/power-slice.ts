@@ -37,21 +37,12 @@ export const PowerSlice: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Lethal",
-      "scale": 0.3867,
-      "table": "Melee_Damage",
-      "duration": 1,
-      "tickRate": 0.4
-    },
-    {
-      "type": "Fire",
-      "scale": 0.174,
-      "table": "Melee_Damage",
-      "duration": 1,
-      "tickRate": 0.4
-    }
-  ],
+  "damage": {
+    "type": "Lethal",
+    "scale": 0.3867,
+    "table": "Melee_Damage",
+    "duration": 1,
+    "tickRate": 0.4
+  },
   "requires": "!Tanker_Defense.Shield_Defense"
 };

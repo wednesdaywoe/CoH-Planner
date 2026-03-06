@@ -291,6 +291,7 @@ export function CompareSlottingModal() {
     if (typeof v === 'object' && v !== null) {
       if ('protection' in v) return v.protection; // MezStatValue: compare protection
       if ('buff' in v) return v.buff; // CompoundStatValue: compare buff %
+      if ('first' in v) return Math.max((v as { first: number; second: number }).first, (v as { first: number; second: number }).second); // PairedStatValue: use max for comparison
     }
     return 0;
   }, []);

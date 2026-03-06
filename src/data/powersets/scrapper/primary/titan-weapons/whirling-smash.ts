@@ -54,11 +54,6 @@ export const WhirlingSmash: Power = {
       "type": "Smashing",
       "scale": 1.04,
       "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.468,
-      "table": "Melee_Damage"
     }
   ],
   "effects": {

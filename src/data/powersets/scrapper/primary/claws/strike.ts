@@ -50,11 +50,6 @@ export const Strike: Power = {
       "type": "Lethal",
       "scale": 1.08,
       "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.486,
-      "table": "Melee_Damage"
     }
   ],
   "requires": "!Scrapper_Defense.Shield_Defense"

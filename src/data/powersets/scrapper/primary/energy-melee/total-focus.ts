@@ -49,9 +49,9 @@ export const TotalFocus: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Fire",
-      "scale": 1.602,
-      "table": "Melee_Damage"
+      "type": "Energy",
+      "scale": 1,
+      "table": "Melee_InherentDamage"
     }
   ],
   "effects": {

@@ -43,6 +43,14 @@ export const Geode: Power = {
       "scale": 3,
       "table": "Melee_Ones"
     },
+    "summon": {
+      "isPseudoPet": false,
+      "displayName": "Geode",
+      "powers": [
+        "Redirects.Stone_Armor.Geode",
+        "Redirects.Stone_Armor.Geode_Scaling"
+      ]
+    },
     "knockup": {
       "scale": 10,
       "table": "Melee_Ones"
@@ -68,14 +76,6 @@ export const Geode: Power = {
     "taunt": {
       "scale": 999,
       "table": "Melee_Ones"
-    },
-    "summon": {
-      "isPseudoPet": false,
-      "displayName": "Geode",
-      "powers": [
-        "Redirects.Stone_Armor.Geode",
-        "Redirects.Stone_Armor.Geode_Scaling"
-      ]
     }
   }
 };

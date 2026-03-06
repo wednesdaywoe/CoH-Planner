@@ -49,13 +49,6 @@ export const GuardedSpin: Power = {
       "tickRate": 0.3
     },
     {
-      "type": "Fire",
-      "scale": 0.0961,
-      "table": "Melee_Damage",
-      "duration": 1.5,
-      "tickRate": 0.3
-    },
-    {
       "type": "Smashing",
       "scale": 1.39,
       "table": "Melee_InherentDamage"
@@ -67,17 +60,15 @@ export const GuardedSpin: Power = {
     }
   ],
   "effects": {
-      "defenseBuff": {
-        "melee": {
-          "scale": 1.5,
-          "table": "Melee_Buff_Def",
-          "perTarget": 1.5
-        },
-        "lethal": {
-          "scale": 1.5,
-          "table": "Melee_Buff_Def",
-          "perTarget": 1.5
-        }
+    "defenseBuff": {
+      "melee": {
+        "scale": 1.5,
+        "table": "Melee_Buff_Def"
+      },
+      "lethal": {
+        "scale": 1.5,
+        "table": "Melee_Buff_Def"
       }
     }
+  }
 };

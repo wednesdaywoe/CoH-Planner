@@ -61,11 +61,6 @@ export const SiphonLife: Power = {
       "type": "Negative",
       "scale": 1.96,
       "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.882,
-      "table": "Melee_Damage"
     }
   ],
   "effects": {

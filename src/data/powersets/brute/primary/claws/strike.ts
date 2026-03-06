@@ -37,17 +37,10 @@ export const Strike: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Lethal",
-      "scale": 1.24,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.558,
-      "table": "Melee_Damage"
-    }
-  ],
+  "damage": {
+    "type": "Lethal",
+    "scale": 1.24,
+    "table": "Melee_Damage"
+  },
   "requires": "!Brute_Defense.Shield_Defense && !Brute_Defense.Stone_Armor"
 };

@@ -21,7 +21,7 @@ export const Disembowel: Power = {
     "range": 7,
     "recharge": 10,
     "endurance": 10.192,
-    "castTime": 1.5
+    "castTime": 1.8
   },
   "allowedEnhancements": [
     "EnduranceReduction",
@@ -55,11 +55,6 @@ export const Disembowel: Power = {
       "type": "Lethal",
       "scale": 1.96,
       "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.882,
-      "table": "Melee_Damage"
     }
   ],
   "effects": {

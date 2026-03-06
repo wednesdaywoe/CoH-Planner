@@ -39,11 +39,6 @@ export const HandClap: Power = {
     "Threat Duration"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Fire",
-    "scale": 0.4871,
-    "table": "Melee_Damage"
-  },
   "effects": {
     "stun": {
       "mag": 2,

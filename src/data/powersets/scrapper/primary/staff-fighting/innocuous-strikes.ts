@@ -51,13 +51,6 @@ export const InnocuousStrikes: Power = {
       "tickRate": 0.4
     },
     {
-      "type": "Fire",
-      "scale": 0.1494,
-      "table": "Melee_Damage",
-      "duration": 1.7,
-      "tickRate": 0.4
-    },
-    {
       "type": "Smashing",
       "scale": 1.66,
       "table": "Melee_InherentDamage"

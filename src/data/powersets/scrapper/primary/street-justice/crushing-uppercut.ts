@@ -68,11 +68,6 @@ export const CrushingUppercut: Power = {
       "table": "Melee_InherentDamage"
     },
     {
-      "type": "Fire",
-      "scale": 1.431,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Smashing",
       "scale": 3.18,
       "table": "Melee_InherentDamage"

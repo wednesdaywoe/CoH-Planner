@@ -63,13 +63,6 @@ export const SkySplitter: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Fire",
-      "scale": 0.621,
-      "table": "Melee_Damage",
-      "duration": 1.9,
-      "tickRate": 1
-    },
-    {
       "type": "Smashing",
       "scale": 2.76,
       "table": "Melee_InherentDamage"

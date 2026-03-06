@@ -20,11 +20,11 @@ export const HeadSplitter: Power = {
     "accuracy": 1.05,
     "range": 10,
     "radius": 10,
-    "arc": 1.5708,
+    "arc": 0.3491,
     "recharge": 14,
     "endurance": 13.52,
     "castTime": 2.33,
-    "maxTargets": 3
+    "maxTargets": 5
   },
   "allowedEnhancements": [
     "EnduranceReduction",
@@ -53,11 +53,6 @@ export const HeadSplitter: Power = {
       "type": "Lethal",
       "scale": 2.6,
       "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Fire",
-      "scale": 1.17,
-      "table": "Melee_Damage"
     }
   ],
   "effects": {

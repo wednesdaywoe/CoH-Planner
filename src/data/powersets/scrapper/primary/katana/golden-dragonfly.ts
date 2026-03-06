@@ -53,11 +53,6 @@ export const GoldenDragonfly: Power = {
       "type": "Lethal",
       "scale": 2.28,
       "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Fire",
-      "scale": 1.026,
-      "table": "Melee_Damage"
     }
   ],
   "effects": {

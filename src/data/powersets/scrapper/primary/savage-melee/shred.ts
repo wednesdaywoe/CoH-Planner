@@ -50,11 +50,21 @@ export const Shred: Power = {
       "tickRate": 0.35
     },
     {
-      "type": "Fire",
-      "scale": 0.0946,
+      "type": "Lethal",
+      "scale": 1.2615,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.2615,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.211,
       "table": "Melee_Damage",
-      "duration": 2,
-      "tickRate": 0.35
+      "duration": 3.1,
+      "tickRate": 1
     }
   ],
   "effects": {

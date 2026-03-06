@@ -44,11 +44,21 @@ export const SavageStrike: Power = {
       "tickRate": 0.35
     },
     {
-      "type": "Fire",
-      "scale": 0.171,
+      "type": "Lethal",
+      "scale": 0.76,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.76,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.137,
       "table": "Melee_Damage",
-      "duration": 0.4,
-      "tickRate": 0.35
+      "duration": 3.1,
+      "tickRate": 1
     }
   ]
 };

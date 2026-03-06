@@ -45,18 +45,11 @@ export const GoldenDragonfly: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Lethal",
-      "scale": 2.2799,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 1.0261,
-      "table": "Melee_Damage"
-    }
-  ],
+  "damage": {
+    "type": "Lethal",
+    "scale": 2.2799,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "defenseDebuff": {
       "scale": 1,

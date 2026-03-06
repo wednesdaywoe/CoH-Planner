@@ -22,7 +22,7 @@ export const Burst: Power = {
     "radius": 12,
     "recharge": 15,
     "endurance": 14.352,
-    "castTime": 2.53,
+    "castTime": 2.67,
     "maxTargets": 10
   },
   "allowedEnhancements": [
@@ -44,27 +44,22 @@ export const Burst: Power = {
   "damage": [
     {
       "type": "Smashing",
-      "scale": 0.5,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
       "scale": 0.75,
       "table": "Melee_Damage"
     },
     {
-      "type": "Fire",
-      "scale": 0.5625,
+      "type": "Energy",
+      "scale": 0.5,
       "table": "Melee_Damage"
     }
   ],
   "effects": {
     "knockback": {
-      "scale": 0.335,
+      "scale": 0.67,
       "table": "Melee_Ones"
     },
     "damageDebuff": {
-      "scale": 1.2,
+      "scale": 1.7,
       "table": "Melee_Debuff_Dam"
     }
   }

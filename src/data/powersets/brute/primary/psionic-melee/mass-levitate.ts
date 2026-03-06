@@ -49,15 +49,10 @@ export const MassLevitate: Power = {
     },
     {
       "type": "Psionic",
-      "scale": 0.1118,
+      "scale": 0.142,
       "table": "Melee_Damage",
-      "duration": 2.1,
+      "duration": 3.1,
       "tickRate": 1
-    },
-    {
-      "type": "Fire",
-      "scale": 0.639,
-      "table": "Melee_Damage"
     }
   ],
   "effects": {

@@ -21,7 +21,7 @@ export const Slash: Power = {
     "range": 7,
     "recharge": 4,
     "endurance": 5.2,
-    "castTime": 1.1
+    "castTime": 1.33
   },
   "allowedEnhancements": [
     "Taunt",
@@ -40,18 +40,11 @@ export const Slash: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Lethal",
-      "scale": 1,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.45,
-      "table": "Melee_Damage"
-    }
-  ],
+  "damage": {
+    "type": "Lethal",
+    "scale": 1,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "defenseDebuff": {
       "scale": 1,

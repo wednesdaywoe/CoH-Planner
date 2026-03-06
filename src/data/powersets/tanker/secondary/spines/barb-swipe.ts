@@ -49,13 +49,8 @@ export const BarbSwipe: Power = {
       "type": "Toxic",
       "scale": 0.1,
       "table": "Melee_Damage",
-      "duration": 3.1,
+      "duration": 2.1,
       "tickRate": 1
-    },
-    {
-      "type": "Fire",
-      "scale": 0.378,
-      "table": "Melee_Damage"
     }
   ],
   "effects": {

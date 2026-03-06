@@ -19,7 +19,7 @@ export const DarkConsumption: Power = {
   "effectArea": "AoE",
   "stats": {
     "accuracy": 1,
-    "radius": 15,
+    "radius": 10,
     "recharge": 180,
     "endurance": 0.52,
     "castTime": 1.03,
@@ -41,23 +41,15 @@ export const DarkConsumption: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Negative",
-      "scale": 0.6154,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.2769,
-      "table": "Melee_Damage"
-    }
-  ],
+  "damage": {
+    "type": "Negative",
+    "scale": 0.6154,
+    "table": "Melee_Damage"
+  },
   "effects": {
-      "enduranceGain": {
-        "scale": 25,
-        "table": "Melee_Ones",
-        "perTarget": 25
-      }
+    "enduranceGain": {
+      "scale": 25,
+      "table": "Melee_Ones"
     }
+  }
 };

@@ -54,6 +54,14 @@ export const IcyBastion: Power = {
       "mag": 1000,
       "scale": 0.75,
       "table": "Melee_Ones"
+    },
+    "untouchable": {
+      "scale": 0.75,
+      "table": "Melee_Ones"
+    },
+    "onlyAffectsSelf": {
+      "scale": 0.75,
+      "table": "Melee_Ones"
     }
   }
 };

@@ -35,11 +35,23 @@ export const Incinerate: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Fire",
-    "scale": 0.25,
-    "table": "Melee_Damage",
-    "duration": 4.6,
-    "tickRate": 0.5
-  }
+  "damage": [
+    {
+      "type": "Fire",
+      "scale": 0.25,
+      "table": "Melee_Damage",
+      "duration": 4.6,
+      "tickRate": 0.5
+    },
+    {
+      "type": "Fire",
+      "scale": 2.5,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Fire",
+      "scale": 2.5,
+      "table": "Melee_InherentDamage"
+    }
+  ]
 };

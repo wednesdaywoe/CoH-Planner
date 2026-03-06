@@ -18,8 +18,8 @@ export const RepulsingTorrent: Power = {
   "effectArea": "Cone",
   "stats": {
     "accuracy": 1,
-    "range": 30,
-    "radius": 30,
+    "range": 40,
+    "radius": 40,
     "arc": 0.7854,
     "recharge": 12,
     "endurance": 11.856,
@@ -44,12 +44,12 @@ export const RepulsingTorrent: Power = {
   "damage": [
     {
       "type": "Smashing",
-      "scale": 0.3225,
+      "scale": 0.825,
       "table": "Melee_Damage"
     },
     {
       "type": "Energy",
-      "scale": 0.9675,
+      "scale": 0.275,
       "table": "Melee_Damage"
     },
     {
@@ -61,21 +61,12 @@ export const RepulsingTorrent: Power = {
       "type": "Energy",
       "scale": 0.8,
       "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.495,
-      "table": "Melee_Damage"
     }
   ],
   "effects": {
     "knockback": {
-      "scale": 1,
+      "scale": 3,
       "table": "Melee_Knockback"
-    },
-    "damageDebuff": {
-      "scale": 0.7,
-      "table": "Melee_Debuff_Dam"
     }
   }
 };

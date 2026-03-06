@@ -50,15 +50,10 @@ export const PsiBlade: Power = {
     },
     {
       "type": "Psionic",
-      "scale": 0.1799,
+      "scale": 0.2285,
       "table": "Melee_Damage",
-      "duration": 2.1,
+      "duration": 3.1,
       "tickRate": 1
-    },
-    {
-      "type": "Fire",
-      "scale": 0.513,
-      "table": "Melee_Damage"
     }
   ],
   "effects": {

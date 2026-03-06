@@ -23,7 +23,7 @@ export const FormoftheMind: Power = {
     "castTime": 0.63
   },
   "allowedEnhancements": [],
-  "maxSlots": 0,
-  "mechanicType": "childToggle",
-  "requires": "Scrapper_Melee.Staff_Fighting.Staff_Mastery"
+  "maxSlots": 6,
+  "requires": "Scrapper_Melee.Staff_Fighting.Staff_Mastery",
+  "mechanicType": "childToggle"
 };

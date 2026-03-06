@@ -55,13 +55,6 @@ export const AblatingStrike: Power = {
       "type": "Lethal",
       "scale": 1.32,
       "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.3883,
-      "table": "Melee_Damage",
-      "duration": 1,
-      "tickRate": 0.4
     }
   ],
   "effects": {

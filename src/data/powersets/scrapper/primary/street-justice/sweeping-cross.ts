@@ -70,11 +70,6 @@ export const SweepingCross: Power = {
       "type": "Smashing",
       "scale": 1.444,
       "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.6012,
-      "table": "Melee_Damage"
     }
   ],
   "effects": {

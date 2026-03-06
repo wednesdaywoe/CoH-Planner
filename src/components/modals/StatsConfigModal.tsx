@@ -92,6 +92,33 @@ const CATEGORY_COLORS = {
     toggleOn: 'bg-cyan-500 border-cyan-400',
     toggleOff: 'border-cyan-400/50',
   },
+  // Mez/Status - pink
+  mez: {
+    bg: 'bg-pink-500',
+    border: 'border-pink-400',
+    text: 'text-pink-400',
+    headerBg: 'bg-pink-900/40',
+    toggleOn: 'bg-pink-500 border-pink-400',
+    toggleOff: 'border-pink-400/50',
+  },
+  // Stealth/Perception - indigo
+  stealth: {
+    bg: 'bg-indigo-500',
+    border: 'border-indigo-400',
+    text: 'text-indigo-400',
+    headerBg: 'bg-indigo-900/40',
+    toggleOn: 'bg-indigo-500 border-indigo-400',
+    toggleOff: 'border-indigo-400/50',
+  },
+  // Incarnate - amber
+  incarnate: {
+    bg: 'bg-amber-500',
+    border: 'border-amber-400',
+    text: 'text-amber-400',
+    headerBg: 'bg-amber-900/40',
+    toggleOn: 'bg-amber-500 border-amber-400',
+    toggleOff: 'border-amber-400/50',
+  },
 };
 
 type CategoryColorKey = keyof typeof CATEGORY_COLORS;
@@ -104,12 +131,46 @@ const STAT_CATEGORIES: {
 }[] = [
   {
     name: 'Offense',
-    colorKey: 'damage', // Default for the category header
+    colorKey: 'damage',
     stats: [
       { stat: 'damage', label: 'Damage', colorOverride: 'damage' },
       { stat: 'accuracy', label: 'Accuracy', colorOverride: 'accuracy' },
       { stat: 'tohit', label: 'To-Hit', colorOverride: 'accuracy' },
       { stat: 'recharge', label: 'Recharge', colorOverride: 'recharge' },
+      { stat: 'endreduction', label: 'End Reduction', colorOverride: 'endurance' },
+      { stat: 'range_bonus', label: 'Range' },
+      { stat: 'heal_other', label: 'Heal Other', colorOverride: 'health' },
+      { stat: 'threat_level', label: 'Threat', colorOverride: 'resistance' },
+    ],
+  },
+  {
+    name: 'Health & Endurance',
+    colorKey: 'health',
+    stats: [
+      { stat: 'health', label: 'Max HP' },
+      { stat: 'regeneration', label: 'Regeneration' },
+      { stat: 'maxend', label: 'Max End', colorOverride: 'endurance' },
+      { stat: 'recovery', label: 'Recovery', colorOverride: 'endurance' },
+      { stat: 'level_shift', label: 'Level Shift', colorOverride: 'incarnate' },
+    ],
+  },
+  {
+    name: 'Movement',
+    colorKey: 'movement',
+    stats: [
+      { stat: 'runspeed', label: 'Run Speed' },
+      { stat: 'flyspeed', label: 'Fly Speed' },
+      { stat: 'jumpspeed', label: 'Jump Speed' },
+      { stat: 'jumpheight', label: 'Jump Height' },
+    ],
+  },
+  {
+    name: 'Stealth & Perception',
+    colorKey: 'stealth',
+    stats: [
+      { stat: 'stealth_pve', label: 'Stealth (PvE)' },
+      { stat: 'stealth_pvp', label: 'Stealth (PvP)' },
+      { stat: 'perception_bonus', label: 'Perception' },
     ],
   },
   {
@@ -127,7 +188,7 @@ const STAT_CATEGORIES: {
     ],
   },
   {
-    name: 'Resistance & Mez',
+    name: 'Resistance',
     colorKey: 'resistance',
     stats: [
       { stat: 'resist_smashing', label: 'S/L Res' },
@@ -135,6 +196,12 @@ const STAT_CATEGORIES: {
       { stat: 'resist_energy', label: 'E/N Res' },
       { stat: 'resist_psionic', label: 'Psi Res' },
       { stat: 'resist_toxic', label: 'Toxic Res' },
+    ],
+  },
+  {
+    name: 'Status Protection',
+    colorKey: 'mez',
+    stats: [
       { stat: 'mez_hold', label: 'Hold' },
       { stat: 'mez_stun', label: 'Stun' },
       { stat: 'mez_immob', label: 'Immob' },
@@ -142,33 +209,16 @@ const STAT_CATEGORIES: {
       { stat: 'mez_confuse', label: 'Confuse' },
       { stat: 'mez_fear', label: 'Fear' },
       { stat: 'mez_kb', label: 'KB' },
+      { stat: 'prot_repel', label: 'Repel' },
+      { stat: 'prot_teleport', label: 'Teleport' },
     ],
   },
   {
-    name: 'Endurance',
-    colorKey: 'endurance',
+    name: 'Status Resistance',
+    colorKey: 'mez',
     stats: [
-      { stat: 'maxend', label: 'Max End' },
-      { stat: 'recovery', label: 'Recovery' },
-      { stat: 'endreduction', label: 'End Reduction' },
-    ],
-  },
-  {
-    name: 'Health',
-    colorKey: 'health',
-    stats: [
-      { stat: 'health', label: 'Max HP' },
-      { stat: 'regeneration', label: 'Regeneration' },
-    ],
-  },
-  {
-    name: 'Movement',
-    colorKey: 'movement',
-    stats: [
-      { stat: 'runspeed', label: 'Run Speed' },
-      { stat: 'flyspeed', label: 'Fly Speed' },
-      { stat: 'jumpspeed', label: 'Jump Speed' },
-      { stat: 'jumpheight', label: 'Jump Height' },
+      { stat: 'mezres_taunt', label: 'Taunt' },
+      { stat: 'mezres_placate', label: 'Placate' },
     ],
   },
   {

@@ -48,11 +48,6 @@ export const ThunderStrike: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Fire",
-      "scale": 1.2084,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Energy",
       "scale": 2.6849,
       "table": "Melee_InherentDamage"
@@ -65,11 +60,6 @@ export const ThunderStrike: Power = {
     {
       "type": "Energy",
       "scale": 0.3784,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.1703,
       "table": "Melee_Damage"
     },
     {

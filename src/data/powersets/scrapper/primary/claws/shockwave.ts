@@ -56,11 +56,6 @@ export const Shockwave: Power = {
       "type": "Lethal",
       "scale": 1.05,
       "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.4725,
-      "table": "Melee_Damage"
     }
   ],
   "effects": {

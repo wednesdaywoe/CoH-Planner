@@ -47,11 +47,6 @@ export const Shatter: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Fire",
-      "scale": 1.026,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Smashing",
       "scale": 2.28,
       "table": "Melee_InherentDamage"

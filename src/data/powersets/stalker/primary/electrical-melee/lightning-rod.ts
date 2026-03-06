@@ -46,7 +46,8 @@ export const LightningRod: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "Pets_Lightning_Rod_Stalker",
-      "duration": 4
+      "duration": 4,
+      "copyBoosts": true
     }
   }
 };

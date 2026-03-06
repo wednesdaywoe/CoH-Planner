@@ -105,6 +105,18 @@ export interface GlobalBonuses {
   // Special
   healOther: number;
   threatLevel: number;
+  // Stealth
+  stealthRadiusPvE: number;
+  stealthRadiusPvP: number;
+  perceptionRadius: number;
+  // Additional mez protection
+  protRepel: number;
+  protTeleport: number;
+  // Additional mez resistance
+  mezResistTaunt: number;
+  mezResistPlacate: number;
+  // Incarnate
+  levelShift: number;
 }
 
 /**
@@ -195,6 +207,14 @@ function createEmptyGlobalBonuses(): GlobalBonuses {
     debuffResistPerception: 0,
     healOther: 0,
     threatLevel: 0,
+    stealthRadiusPvE: 0,
+    stealthRadiusPvP: 0,
+    perceptionRadius: 0,
+    protRepel: 0,
+    protTeleport: 0,
+    mezResistTaunt: 0,
+    mezResistPlacate: 0,
+    levelShift: 0,
   };
 }
 
@@ -409,6 +429,18 @@ interface ActivePowerEffect {
   confuse?: number | MezScaled;
   fear?: number | MezScaled;
   knockback?: number | MezScaled;
+  // Additional status effects
+  repel?: ScalarOrScaled;
+  teleport?: ScalarOrScaled;
+  taunt?: number | MezScaled;
+  placate?: number | MezScaled;
+  // Stealth
+  stealth?: {
+    stealthPvE?: ScalarOrScaled;
+    stealthPvP?: ScalarOrScaled;
+  };
+  // Perception
+  perceptionBuff?: ScalarOrScaled;
 }
 
 interface PowerWithToggle {
@@ -740,6 +772,111 @@ function applyActivePowerBonuses(
             type: 'active-power',
           });
         }
+      }
+    }
+
+    // Repel Protection (e.g., Increase Density)
+    if (effects.repel !== undefined) {
+      const mag = Math.abs(resolveScaledEffect(effects.repel, archetypeId, buildLevel));
+      if (mag > 0) {
+        global.protRepel += mag;
+        addToBreakdown(breakdown, 'protRepel', {
+          name: power.name,
+          value: mag,
+          type: 'active-power',
+        });
+      }
+    }
+
+    // Teleport Protection (e.g., Increase Density)
+    if (effects.teleport !== undefined) {
+      const val = resolveScaledEffect(effects.teleport, archetypeId, buildLevel) * 100;
+      if (val > 0) {
+        global.protTeleport += val;
+        addToBreakdown(breakdown, 'protTeleport', {
+          name: power.name,
+          value: val,
+          type: 'active-power',
+        });
+      }
+    }
+
+    // Taunt Resistance (e.g., Leadership: Assault)
+    if (effects.taunt !== undefined) {
+      const mezVal = effects.taunt;
+      if (typeof mezVal !== 'number') {
+        const mez = mezVal as MezScaled;
+        if (mez.table && mez.table.toLowerCase().includes('res_boolean')) {
+          const tableValue = getTableValue(archetypeId, mez.table.toLowerCase(), buildLevel);
+          if (tableValue !== undefined) {
+            const mag = Math.abs(mez.scale) * tableValue * 100;
+            global.mezResistTaunt += mag;
+            addToBreakdown(breakdown, 'mezResistTaunt', {
+              name: power.name,
+              value: mag,
+              type: 'active-power',
+            });
+          }
+        }
+      }
+    }
+
+    // Placate Resistance (e.g., Leadership: Assault)
+    if (effects.placate !== undefined) {
+      const mezVal = effects.placate;
+      if (typeof mezVal !== 'number') {
+        const mez = mezVal as MezScaled;
+        if (mez.table && mez.table.toLowerCase().includes('res_boolean')) {
+          const tableValue = getTableValue(archetypeId, mez.table.toLowerCase(), buildLevel);
+          if (tableValue !== undefined) {
+            const mag = Math.abs(mez.scale) * tableValue * 100;
+            global.mezResistPlacate += mag;
+            addToBreakdown(breakdown, 'mezResistPlacate', {
+              name: power.name,
+              value: mag,
+              type: 'active-power',
+            });
+          }
+        }
+      }
+    }
+
+    // Stealth Radius
+    if (effects.stealth) {
+      if (effects.stealth.stealthPvE !== undefined) {
+        const val = resolveScaledEffect(effects.stealth.stealthPvE, archetypeId, buildLevel);
+        if (val > 0) {
+          global.stealthRadiusPvE += val;
+          addToBreakdown(breakdown, 'stealthRadiusPvE', {
+            name: power.name,
+            value: val,
+            type: 'active-power',
+          });
+        }
+      }
+      if (effects.stealth.stealthPvP !== undefined) {
+        const val = resolveScaledEffect(effects.stealth.stealthPvP, archetypeId, buildLevel);
+        if (val > 0) {
+          global.stealthRadiusPvP += val;
+          addToBreakdown(breakdown, 'stealthRadiusPvP', {
+            name: power.name,
+            value: val,
+            type: 'active-power',
+          });
+        }
+      }
+    }
+
+    // Perception Buff
+    if (effects.perceptionBuff !== undefined) {
+      const val = resolveScaledEffect(effects.perceptionBuff, archetypeId, buildLevel) * 100;
+      if (val > 0) {
+        global.perceptionRadius += val;
+        addToBreakdown(breakdown, 'perceptionRadius', {
+          name: power.name,
+          value: val,
+          type: 'active-power',
+        });
       }
     }
   }
@@ -1688,6 +1825,30 @@ function applyIncarnateBonuses(
 
   // Interface - These are proc effects that debuff enemies, not player stats
   // We don't add them to global bonuses, but they could be displayed in tooltips
+
+  // Level Shift from incarnate slots (Alpha and Destiny)
+  if (incarnates.alpha && active.alpha) {
+    const alphaEffects = getAlphaEffects(incarnates.alpha.powerId);
+    if (alphaEffects?.levelShift) {
+      global.levelShift += alphaEffects.levelShift;
+      addToBreakdown(breakdown, 'levelShift', {
+        name: incarnates.alpha.displayName,
+        value: alphaEffects.levelShift,
+        type: 'incarnate',
+      });
+    }
+  }
+  if (incarnates.destiny && active.destiny) {
+    const destinyEffects = getDestinyEffects(incarnates.destiny.powerId);
+    if (destinyEffects?.levelShift) {
+      global.levelShift += destinyEffects.levelShift;
+      addToBreakdown(breakdown, 'levelShift', {
+        name: incarnates.destiny.displayName,
+        value: destinyEffects.levelShift,
+        type: 'incarnate',
+      });
+    }
+  }
 }
 
 // ============================================

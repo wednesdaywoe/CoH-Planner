@@ -25,7 +25,13 @@ export interface MezStatValue {
   resistance: number; // percentage
 }
 
-export type StatValue = number | string | CompoundStatValue | MezStatValue;
+/** Paired stat value for S/L, F/C, E/N when the two values differ */
+export interface PairedStatValue {
+  first: number;
+  second: number;
+}
+
+export type StatValue = number | string | CompoundStatValue | MezStatValue | PairedStatValue;
 
 export interface StatDefinition {
   id: string;
@@ -42,6 +48,21 @@ export interface StatDefinition {
 // ============================================
 // HELPERS
 // ============================================
+
+/** Return PairedStatValue if values differ, otherwise just the number */
+function pairedValue(a: number, b: number): StatValue {
+  if (a === b) return a;
+  return { first: a, second: b } as PairedStatValue;
+}
+
+/** Format a paired or simple percentage stat */
+function formatPairedPercent(v: StatValue): string {
+  if (typeof v === 'object' && v !== null && 'first' in v) {
+    const p = v as PairedStatValue;
+    return `${p.first.toFixed(2)}%/${p.second.toFixed(2)}%`;
+  }
+  return `${Number(v).toFixed(2)}%`;
+}
 
 /** Format mez stat showing protection (Mag) and resistance (%) */
 function formatMezStat(v: StatValue): string {
@@ -135,8 +156,8 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
   defense_smashing: {
     id: 'defense_smashing',
     label: 'S/L',
-    getValue: (stats) => Math.max(stats.defense.smashing, stats.defense.lethal),
-    format: (v) => `${Number(v).toFixed(2)}%`,
+    getValue: (stats) => pairedValue(stats.defense.smashing, stats.defense.lethal),
+    format: formatPairedPercent,
     color: STAT_COLORS.defense,
     tooltip: 'Smashing/Lethal defense',
     showWhenZero: true,
@@ -145,8 +166,8 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
   defense_fire: {
     id: 'defense_fire',
     label: 'F/C',
-    getValue: (stats) => Math.max(stats.defense.fire, stats.defense.cold),
-    format: (v) => `${Number(v).toFixed(2)}%`,
+    getValue: (stats) => pairedValue(stats.defense.fire, stats.defense.cold),
+    format: formatPairedPercent,
     color: STAT_COLORS.defense,
     tooltip: 'Fire/Cold defense',
     showWhenZero: true,
@@ -155,8 +176,8 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
   defense_energy: {
     id: 'defense_energy',
     label: 'E/N',
-    getValue: (stats) => Math.max(stats.defense.energy, stats.defense.negative),
-    format: (v) => `${Number(v).toFixed(2)}%`,
+    getValue: (stats) => pairedValue(stats.defense.energy, stats.defense.negative),
+    format: formatPairedPercent,
     color: STAT_COLORS.defense,
     tooltip: 'Energy/Negative defense',
     showWhenZero: true,
@@ -187,8 +208,8 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
   resist_smashing: {
     id: 'resist_smashing',
     label: 'S/L',
-    getValue: (stats) => Math.max(stats.resistance.smashing, stats.resistance.lethal),
-    format: (v) => `${Number(v).toFixed(2)}%`,
+    getValue: (stats) => pairedValue(stats.resistance.smashing, stats.resistance.lethal),
+    format: formatPairedPercent,
     color: STAT_COLORS.resistance,
     tooltip: 'Smashing/Lethal resistance',
     showWhenZero: true,
@@ -197,8 +218,8 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
   resist_fire: {
     id: 'resist_fire',
     label: 'F/C',
-    getValue: (stats) => Math.max(stats.resistance.fire, stats.resistance.cold),
-    format: (v) => `${Number(v).toFixed(2)}%`,
+    getValue: (stats) => pairedValue(stats.resistance.fire, stats.resistance.cold),
+    format: formatPairedPercent,
     color: STAT_COLORS.resistance,
     tooltip: 'Fire/Cold resistance',
     showWhenZero: true,
@@ -207,8 +228,8 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
   resist_energy: {
     id: 'resist_energy',
     label: 'E/N',
-    getValue: (stats) => Math.max(stats.resistance.energy, stats.resistance.negative),
-    format: (v) => `${Number(v).toFixed(2)}%`,
+    getValue: (stats) => pairedValue(stats.resistance.energy, stats.resistance.negative),
+    format: formatPairedPercent,
     color: STAT_COLORS.resistance,
     tooltip: 'Energy/Negative resistance',
     showWhenZero: true,
@@ -492,5 +513,440 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     format: (v) => `${Number(v).toFixed(2)}%`,
     color: STAT_COLORS.debuffResistance,
     tooltip: 'Resistance to perception debuffs',
+  },
+
+  // ============================================
+  // INDIVIDUAL DEFENSE (for Detailed Totals)
+  // ============================================
+  def_smashing: {
+    id: 'def_smashing',
+    label: 'Smashing',
+    getValue: (stats) => stats.defense.smashing,
+    format: (v) => `${Number(v).toFixed(2)}%`,
+    color: STAT_COLORS.defense,
+    tooltip: 'Smashing defense',
+    showWhenZero: true,
+    breakdownKey: 'defSmashing',
+  },
+  def_lethal: {
+    id: 'def_lethal',
+    label: 'Lethal',
+    getValue: (stats) => stats.defense.lethal,
+    format: (v) => `${Number(v).toFixed(2)}%`,
+    color: STAT_COLORS.defense,
+    tooltip: 'Lethal defense',
+    showWhenZero: true,
+    breakdownKey: 'defLethal',
+  },
+  def_fire: {
+    id: 'def_fire',
+    label: 'Fire',
+    getValue: (stats) => stats.defense.fire,
+    format: (v) => `${Number(v).toFixed(2)}%`,
+    color: STAT_COLORS.defense,
+    tooltip: 'Fire defense',
+    showWhenZero: true,
+    breakdownKey: 'defFire',
+  },
+  def_cold: {
+    id: 'def_cold',
+    label: 'Cold',
+    getValue: (stats) => stats.defense.cold,
+    format: (v) => `${Number(v).toFixed(2)}%`,
+    color: STAT_COLORS.defense,
+    tooltip: 'Cold defense',
+    showWhenZero: true,
+    breakdownKey: 'defCold',
+  },
+  def_energy: {
+    id: 'def_energy',
+    label: 'Energy',
+    getValue: (stats) => stats.defense.energy,
+    format: (v) => `${Number(v).toFixed(2)}%`,
+    color: STAT_COLORS.defense,
+    tooltip: 'Energy defense',
+    showWhenZero: true,
+    breakdownKey: 'defEnergy',
+  },
+  def_negative: {
+    id: 'def_negative',
+    label: 'Negative',
+    getValue: (stats) => stats.defense.negative,
+    format: (v) => `${Number(v).toFixed(2)}%`,
+    color: STAT_COLORS.defense,
+    tooltip: 'Negative energy defense',
+    showWhenZero: true,
+    breakdownKey: 'defNegative',
+  },
+  def_psionic: {
+    id: 'def_psionic',
+    label: 'Psionic',
+    getValue: (stats) => stats.defense.psionic,
+    format: (v) => `${Number(v).toFixed(2)}%`,
+    color: STAT_COLORS.defense,
+    tooltip: 'Psionic defense',
+    showWhenZero: true,
+    breakdownKey: 'defPsionic',
+  },
+  def_toxic: {
+    id: 'def_toxic',
+    label: 'Toxic',
+    getValue: () => 0,
+    format: (v) => `${Number(v).toFixed(2)}%`,
+    color: STAT_COLORS.defense,
+    tooltip: 'Toxic defense',
+    showWhenZero: true,
+    breakdownKey: 'defToxic',
+  },
+
+  // ============================================
+  // INDIVIDUAL RESISTANCE (for Detailed Totals)
+  // ============================================
+  res_smashing: {
+    id: 'res_smashing',
+    label: 'Smashing',
+    getValue: (stats) => stats.resistance.smashing,
+    format: (v) => `${Number(v).toFixed(2)}%`,
+    color: STAT_COLORS.resistance,
+    tooltip: 'Smashing resistance',
+    showWhenZero: true,
+    breakdownKey: 'resSmashing',
+  },
+  res_lethal: {
+    id: 'res_lethal',
+    label: 'Lethal',
+    getValue: (stats) => stats.resistance.lethal,
+    format: (v) => `${Number(v).toFixed(2)}%`,
+    color: STAT_COLORS.resistance,
+    tooltip: 'Lethal resistance',
+    showWhenZero: true,
+    breakdownKey: 'resLethal',
+  },
+  res_fire: {
+    id: 'res_fire',
+    label: 'Fire',
+    getValue: (stats) => stats.resistance.fire,
+    format: (v) => `${Number(v).toFixed(2)}%`,
+    color: STAT_COLORS.resistance,
+    tooltip: 'Fire resistance',
+    showWhenZero: true,
+    breakdownKey: 'resFire',
+  },
+  res_cold: {
+    id: 'res_cold',
+    label: 'Cold',
+    getValue: (stats) => stats.resistance.cold,
+    format: (v) => `${Number(v).toFixed(2)}%`,
+    color: STAT_COLORS.resistance,
+    tooltip: 'Cold resistance',
+    showWhenZero: true,
+    breakdownKey: 'resCold',
+  },
+  res_energy: {
+    id: 'res_energy',
+    label: 'Energy',
+    getValue: (stats) => stats.resistance.energy,
+    format: (v) => `${Number(v).toFixed(2)}%`,
+    color: STAT_COLORS.resistance,
+    tooltip: 'Energy resistance',
+    showWhenZero: true,
+    breakdownKey: 'resEnergy',
+  },
+  res_negative: {
+    id: 'res_negative',
+    label: 'Negative',
+    getValue: (stats) => stats.resistance.negative,
+    format: (v) => `${Number(v).toFixed(2)}%`,
+    color: STAT_COLORS.resistance,
+    tooltip: 'Negative energy resistance',
+    showWhenZero: true,
+    breakdownKey: 'resNegative',
+  },
+  res_psionic: {
+    id: 'res_psionic',
+    label: 'Psionic',
+    getValue: (stats) => stats.resistance.psionic,
+    format: (v) => `${Number(v).toFixed(2)}%`,
+    color: STAT_COLORS.resistance,
+    tooltip: 'Psionic resistance',
+    showWhenZero: true,
+    breakdownKey: 'resPsionic',
+  },
+  res_toxic: {
+    id: 'res_toxic',
+    label: 'Toxic',
+    getValue: (stats) => stats.resistance.toxic,
+    format: (v) => `${Number(v).toFixed(2)}%`,
+    color: STAT_COLORS.resistance,
+    tooltip: 'Toxic resistance',
+    showWhenZero: true,
+    breakdownKey: 'resToxic',
+  },
+
+  // ============================================
+  // SEPARATE MEZ PROTECTION (magnitude only)
+  // ============================================
+  prot_hold: {
+    id: 'prot_hold',
+    label: 'Hold',
+    getValue: (stats) => stats.mezProtection.hold,
+    format: (v) => `Mag ${Number(v).toFixed(1)}`,
+    color: STAT_COLORS.hold,
+    tooltip: 'Hold protection magnitude',
+    showWhenZero: true,
+    breakdownKey: 'protHold',
+    breakdownUnit: 'Mag',
+  },
+  prot_stun: {
+    id: 'prot_stun',
+    label: 'Stun',
+    getValue: (stats) => stats.mezProtection.stun,
+    format: (v) => `Mag ${Number(v).toFixed(1)}`,
+    color: STAT_COLORS.stun,
+    tooltip: 'Stun protection magnitude',
+    showWhenZero: true,
+    breakdownKey: 'protStun',
+    breakdownUnit: 'Mag',
+  },
+  prot_immob: {
+    id: 'prot_immob',
+    label: 'Immobilize',
+    getValue: (stats) => stats.mezProtection.immobilize,
+    format: (v) => `Mag ${Number(v).toFixed(1)}`,
+    color: STAT_COLORS.immobilize,
+    tooltip: 'Immobilize protection magnitude',
+    showWhenZero: true,
+    breakdownKey: 'protImmobilize',
+    breakdownUnit: 'Mag',
+  },
+  prot_sleep: {
+    id: 'prot_sleep',
+    label: 'Sleep',
+    getValue: (stats) => stats.mezProtection.sleep,
+    format: (v) => `Mag ${Number(v).toFixed(1)}`,
+    color: STAT_COLORS.sleep,
+    tooltip: 'Sleep protection magnitude',
+    showWhenZero: true,
+    breakdownKey: 'protSleep',
+    breakdownUnit: 'Mag',
+  },
+  prot_confuse: {
+    id: 'prot_confuse',
+    label: 'Confuse',
+    getValue: (stats) => stats.mezProtection.confuse,
+    format: (v) => `Mag ${Number(v).toFixed(1)}`,
+    color: STAT_COLORS.confuse,
+    tooltip: 'Confuse protection magnitude',
+    showWhenZero: true,
+    breakdownKey: 'protConfuse',
+    breakdownUnit: 'Mag',
+  },
+  prot_fear: {
+    id: 'prot_fear',
+    label: 'Fear',
+    getValue: (stats) => stats.mezProtection.fear,
+    format: (v) => `Mag ${Number(v).toFixed(1)}`,
+    color: STAT_COLORS.fear,
+    tooltip: 'Fear/Terrorize protection magnitude',
+    showWhenZero: true,
+    breakdownKey: 'protFear',
+    breakdownUnit: 'Mag',
+  },
+  prot_kb: {
+    id: 'prot_kb',
+    label: 'Knockback',
+    getValue: (stats) => stats.mezProtection.knockback,
+    format: (v) => `Mag ${Number(v).toFixed(1)}`,
+    color: STAT_COLORS.knockback,
+    tooltip: 'Knockback protection magnitude',
+    showWhenZero: true,
+    breakdownKey: 'protKnockback',
+    breakdownUnit: 'Mag',
+  },
+
+  // ============================================
+  // SEPARATE MEZ RESISTANCE (% only)
+  // ============================================
+  mezres_hold: {
+    id: 'mezres_hold',
+    label: 'Hold',
+    getValue: (stats) => stats.mezResistance.hold,
+    format: (v) => `${Number(v).toFixed(2)}%`,
+    color: STAT_COLORS.hold,
+    tooltip: 'Hold resistance',
+    breakdownKey: 'mezResist',
+  },
+  mezres_stun: {
+    id: 'mezres_stun',
+    label: 'Stun',
+    getValue: (stats) => stats.mezResistance.stun,
+    format: (v) => `${Number(v).toFixed(2)}%`,
+    color: STAT_COLORS.stun,
+    tooltip: 'Stun resistance',
+    breakdownKey: 'mezResist',
+  },
+  mezres_immob: {
+    id: 'mezres_immob',
+    label: 'Immobilize',
+    getValue: (stats) => stats.mezResistance.immobilize,
+    format: (v) => `${Number(v).toFixed(2)}%`,
+    color: STAT_COLORS.immobilize,
+    tooltip: 'Immobilize resistance',
+    breakdownKey: 'mezResist',
+  },
+  mezres_sleep: {
+    id: 'mezres_sleep',
+    label: 'Sleep',
+    getValue: (stats) => stats.mezResistance.sleep,
+    format: (v) => `${Number(v).toFixed(2)}%`,
+    color: STAT_COLORS.sleep,
+    tooltip: 'Sleep resistance',
+    breakdownKey: 'mezResist',
+  },
+  mezres_confuse: {
+    id: 'mezres_confuse',
+    label: 'Confuse',
+    getValue: (stats) => stats.mezResistance.confuse,
+    format: (v) => `${Number(v).toFixed(2)}%`,
+    color: STAT_COLORS.confuse,
+    tooltip: 'Confuse resistance',
+    breakdownKey: 'mezResist',
+  },
+  mezres_fear: {
+    id: 'mezres_fear',
+    label: 'Fear',
+    getValue: (stats) => stats.mezResistance.fear,
+    format: (v) => `${Number(v).toFixed(2)}%`,
+    color: STAT_COLORS.fear,
+    tooltip: 'Fear/Terrorize resistance',
+    breakdownKey: 'mezResist',
+  },
+  mezres_kb: {
+    id: 'mezres_kb',
+    label: 'Knockback',
+    getValue: (stats) => stats.mezResistance.knockback,
+    format: (v) => `${Number(v).toFixed(2)}%`,
+    color: STAT_COLORS.knockback,
+    tooltip: 'Knockback resistance',
+    breakdownKey: 'mezResist',
+  },
+
+  // ============================================
+  // ADDITIONAL STATS (for Detailed Totals)
+  // ============================================
+  range_bonus: {
+    id: 'range_bonus',
+    label: 'Range',
+    getValue: () => 0, // Range bonus requires globalBonuses, handled via override in DetailedTotalsModal
+    format: (v) => `+${Number(v).toFixed(2)}%`,
+    color: STAT_COLORS.accuracy,
+    tooltip: 'Range bonus from set bonuses',
+    breakdownKey: 'range',
+  },
+  heal_other: {
+    id: 'heal_other',
+    label: 'Heal Other',
+    getValue: () => 0, // Requires globalBonuses, handled via override
+    format: (v) => `+${Number(v).toFixed(2)}%`,
+    color: STAT_COLORS.health,
+    tooltip: 'Healing bonus for heals cast on others',
+    breakdownKey: 'healOther',
+  },
+  threat_level: {
+    id: 'threat_level',
+    label: 'Threat',
+    getValue: () => 0, // Requires globalBonuses, handled via override
+    format: (v) => `+${Number(v).toFixed(2)}%`,
+    color: STAT_COLORS.resistance,
+    tooltip: 'Threat level modifier',
+    breakdownKey: 'threatLevel',
+  },
+
+  // ============================================
+  // STEALTH & PERCEPTION
+  // ============================================
+  stealth_pve: {
+    id: 'stealth_pve',
+    label: 'Stealth (PvE)',
+    getValue: () => 0, // Requires globalBonuses
+    format: (v) => `${Number(v).toFixed(0)} ft`,
+    color: STAT_COLORS.defense,
+    tooltip: 'Stealth radius in PvE (feet)',
+    breakdownKey: 'stealthRadiusPvE',
+    breakdownUnit: ' ft',
+  },
+  stealth_pvp: {
+    id: 'stealth_pvp',
+    label: 'Stealth (PvP)',
+    getValue: () => 0, // Requires globalBonuses
+    format: (v) => `${Number(v).toFixed(0)} ft`,
+    color: STAT_COLORS.defense,
+    tooltip: 'Stealth radius in PvP (feet)',
+    breakdownKey: 'stealthRadiusPvP',
+    breakdownUnit: ' ft',
+  },
+  perception_bonus: {
+    id: 'perception_bonus',
+    label: 'Perception',
+    getValue: () => 0, // Requires globalBonuses
+    format: (v) => `+${Number(v).toFixed(2)}%`,
+    color: STAT_COLORS.accuracy,
+    tooltip: 'Perception radius bonus',
+    breakdownKey: 'perceptionRadius',
+  },
+
+  // ============================================
+  // ADDITIONAL STATUS PROTECTION/RESISTANCE
+  // ============================================
+  prot_repel: {
+    id: 'prot_repel',
+    label: 'Repel',
+    getValue: () => 0, // Requires globalBonuses
+    format: (v) => `Mag ${Number(v).toFixed(1)}`,
+    color: STAT_COLORS.knockback,
+    tooltip: 'Repel protection magnitude',
+    breakdownKey: 'protRepel',
+    breakdownUnit: 'Mag',
+  },
+  prot_teleport: {
+    id: 'prot_teleport',
+    label: 'Teleport',
+    getValue: () => 0, // Requires globalBonuses
+    format: (v) => `${Number(v).toFixed(0)}%`,
+    color: STAT_COLORS.defense,
+    tooltip: 'Teleport protection',
+    breakdownKey: 'protTeleport',
+  },
+  mezres_taunt: {
+    id: 'mezres_taunt',
+    label: 'Taunt',
+    getValue: () => 0, // Requires globalBonuses
+    format: (v) => `${Number(v).toFixed(2)}%`,
+    color: STAT_COLORS.hold,
+    tooltip: 'Taunt resistance',
+    breakdownKey: 'mezResistTaunt',
+  },
+  mezres_placate: {
+    id: 'mezres_placate',
+    label: 'Placate',
+    getValue: () => 0, // Requires globalBonuses
+    format: (v) => `${Number(v).toFixed(2)}%`,
+    color: STAT_COLORS.confuse,
+    tooltip: 'Placate resistance',
+    breakdownKey: 'mezResistPlacate',
+  },
+
+  // ============================================
+  // INCARNATE
+  // ============================================
+  level_shift: {
+    id: 'level_shift',
+    label: 'Level Shift',
+    getValue: () => 0, // Requires globalBonuses
+    format: (v) => Number(v) > 0 ? `+${Number(v)}` : '0',
+    color: 'text-amber-400',
+    tooltip: 'Incarnate level shift (from Alpha/Destiny)',
+    breakdownKey: 'levelShift',
+    breakdownUnit: '',
   },
 };

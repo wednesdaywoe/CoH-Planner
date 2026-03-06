@@ -39,20 +39,13 @@ export const InitialStrike: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 0.42,
-      "table": "Melee_Damage",
-      "duration": 0.4,
-      "tickRate": 0.33
-    },
-    {
-      "type": "Fire",
-      "scale": 0.378,
-      "table": "Melee_Damage"
-    }
-  ],
+  "damage": {
+    "type": "Smashing",
+    "scale": 0.42,
+    "table": "Melee_Damage",
+    "duration": 0.4,
+    "tickRate": 0.33
+  },
   "effects": {
     "stun": {
       "mag": 2,

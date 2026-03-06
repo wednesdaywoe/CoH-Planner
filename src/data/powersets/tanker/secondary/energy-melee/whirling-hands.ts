@@ -51,11 +51,6 @@ export const WhirlingHands: Power = {
       "type": "Smashing",
       "scale": 0.6855,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.5318,
-      "table": "Melee_Damage"
     }
   ],
   "effects": {

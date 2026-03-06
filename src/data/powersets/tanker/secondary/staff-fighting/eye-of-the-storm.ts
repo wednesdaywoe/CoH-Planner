@@ -63,13 +63,6 @@ export const EyeoftheStorm: Power = {
       "type": "Energy",
       "scale": 0.492,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.0923,
-      "table": "Melee_Damage",
-      "duration": 2.3,
-      "tickRate": 0.4
     }
   ],
   "effects": {

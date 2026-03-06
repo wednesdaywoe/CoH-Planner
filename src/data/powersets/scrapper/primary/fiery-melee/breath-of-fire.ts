@@ -20,10 +20,10 @@ export const BreathofFire: Power = {
     "accuracy": 1.2,
     "range": 15,
     "radius": 15,
-    "arc": 2.0944,
+    "arc": 0.5236,
     "recharge": 10,
     "endurance": 10.192,
-    "castTime": 2.4,
+    "castTime": 2.67,
     "maxTargets": 10
   },
   "allowedEnhancements": [
@@ -50,6 +50,23 @@ export const BreathofFire: Power = {
     {
       "type": "Fire",
       "scale": 0.1,
+      "table": "Melee_Damage",
+      "duration": 3.1,
+      "tickRate": 1
+    },
+    {
+      "type": "Fire",
+      "scale": 1.281,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Fire",
+      "scale": 1.281,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.045,
       "table": "Melee_Damage",
       "duration": 3.1,
       "tickRate": 1

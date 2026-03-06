@@ -72,6 +72,9 @@ interface UIState {
   /** Controls modal open state */
   controlsModalOpen: boolean;
 
+  /** Detailed Totals modal open state */
+  detailedTotalsModalOpen: boolean;
+
   /** Set Bonus Lookup modal open state */
   setBonusLookupModalOpen: boolean;
 
@@ -258,6 +261,10 @@ interface UIActions {
   openControlsModal: () => void;
   closeControlsModal: () => void;
 
+  // Detailed Totals Modal
+  openDetailedTotalsModal: () => void;
+  closeDetailedTotalsModal: () => void;
+
   // Set Bonus Lookup Modal
   openSetBonusLookupModal: () => void;
   closeSetBonusLookupModal: () => void;
@@ -411,6 +418,7 @@ export const useUIStore = create<UIStore>()(
       feedbackModalOpen: false,
       knownIssuesModalOpen: false,
       controlsModalOpen: false,
+      detailedTotalsModalOpen: false,
       setBonusLookupModalOpen: false,
       powerInfoModalOpen: false,
       globalIOLevel: 50,
@@ -828,6 +836,13 @@ export const useUIStore = create<UIStore>()(
 
       closeControlsModal: () =>
         set({ controlsModalOpen: false }),
+
+      // Detailed Totals Modal
+      openDetailedTotalsModal: () =>
+        set({ detailedTotalsModalOpen: true }),
+
+      closeDetailedTotalsModal: () =>
+        set({ detailedTotalsModalOpen: false }),
 
       // Set Bonus Lookup Modal
       openSetBonusLookupModal: () =>

@@ -45,8 +45,9 @@ export const LightningRod: Power = {
     },
     "summon": {
       "isPseudoPet": false,
-      "entity": "Pets_Embraced_Lightning_Rod_Scrapper",
-      "duration": 4
+      "entity": "Pets_Lightning_Rod_Scrapper",
+      "duration": 4,
+      "copyBoosts": true
     }
   }
 };

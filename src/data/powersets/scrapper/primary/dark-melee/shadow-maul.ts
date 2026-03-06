@@ -65,13 +65,6 @@ export const ShadowMaul: Power = {
       "type": "Negative",
       "scale": 1.6183,
       "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.1821,
-      "table": "Melee_Damage",
-      "duration": 2,
-      "tickRate": 0.625
     }
   ],
   "effects": {

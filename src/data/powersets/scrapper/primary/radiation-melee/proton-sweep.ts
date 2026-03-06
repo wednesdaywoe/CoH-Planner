@@ -24,7 +24,7 @@ export const ProtonSweep: Power = {
     "recharge": 8,
     "endurance": 8.528,
     "castTime": 1.67,
-    "maxTargets": 10
+    "maxTargets": 5
   },
   "allowedEnhancements": [
     "EnduranceReduction",
@@ -53,13 +53,6 @@ export const ProtonSweep: Power = {
     {
       "type": "Toxic",
       "scale": 0.2681,
-      "table": "Melee_Damage",
-      "duration": 3.1,
-      "tickRate": 1
-    },
-    {
-      "type": "Fire",
-      "scale": 0.1609,
       "table": "Melee_Damage",
       "duration": 3.1,
       "tickRate": 1

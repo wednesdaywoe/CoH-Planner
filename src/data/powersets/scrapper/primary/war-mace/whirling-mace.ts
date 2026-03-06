@@ -46,11 +46,6 @@ export const WhirlingMace: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Fire",
-      "scale": 0.504,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Smashing",
       "scale": 1.12,
       "table": "Melee_InherentDamage"

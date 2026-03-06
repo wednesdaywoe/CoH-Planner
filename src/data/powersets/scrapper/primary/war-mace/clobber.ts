@@ -44,11 +44,6 @@ export const Clobber: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Fire",
-      "scale": 1.314,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Smashing",
       "scale": 2.92,
       "table": "Melee_InherentDamage"

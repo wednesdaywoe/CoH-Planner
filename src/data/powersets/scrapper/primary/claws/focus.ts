@@ -53,11 +53,6 @@ export const Focus: Power = {
       "type": "Lethal",
       "scale": 1.39,
       "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.6255,
-      "table": "Melee_Damage"
     }
   ],
   "effects": {

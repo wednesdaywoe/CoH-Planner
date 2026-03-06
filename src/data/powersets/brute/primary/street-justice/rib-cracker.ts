@@ -37,18 +37,11 @@ export const RibCracker: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 1.32,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.594,
-      "table": "Melee_Damage"
-    }
-  ],
+  "damage": {
+    "type": "Smashing",
+    "scale": 1.32,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "damageDebuff": {
       "scale": 1.5,

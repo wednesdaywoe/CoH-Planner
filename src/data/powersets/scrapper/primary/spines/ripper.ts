@@ -52,7 +52,7 @@ export const Ripper: Power = {
       "type": "Toxic",
       "scale": 0.2,
       "table": "Melee_Damage",
-      "duration": 7.1,
+      "duration": 4.1,
       "tickRate": 1
     },
     {
@@ -64,11 +64,6 @@ export const Ripper: Power = {
       "type": "Lethal",
       "scale": 1.7,
       "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.765,
-      "table": "Melee_Damage"
     }
   ],
   "effects": {

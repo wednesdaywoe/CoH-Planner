@@ -21,7 +21,7 @@ export const Boggle: Power = {
     "range": 40,
     "recharge": 20,
     "endurance": 7.8,
-    "castTime": 1
+    "castTime": 2
   },
   "allowedEnhancements": [
     "EnduranceReduction",

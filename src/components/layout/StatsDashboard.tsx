@@ -9,12 +9,28 @@ import { useCalculatedStats, useCharacterCalculation } from '@/hooks';
 import { useBuildStore, useUIStore } from '@/stores';
 import { getBaselineHealth } from '@/utils/calculations/stats';
 import { Tooltip } from '@/components/ui';
-import { StatsConfigModal, AccoladesModal, AboutModal, ExportImportModal, FeedbackModal, KnownIssuesModal, WelcomeModal, useWelcomeModal, SetBonusLookupModal, ControlsModal, CompareSlottingModal } from '@/components/modals';
+import { StatsConfigModal, AccoladesModal, AboutModal, ExportImportModal, FeedbackModal, KnownIssuesModal, WelcomeModal, useWelcomeModal, SetBonusLookupModal, ControlsModal, CompareSlottingModal, DetailedTotalsModal } from '@/components/modals';
 import { IncarnateSlotGrid, IncarnateModal, IncarnateCraftingModal } from '@/components/incarnate';
 import { INCARNATE_REQUIRED_LEVEL, createEmptyIncarnateBuildState } from '@/types';
 import type { DashboardStatBreakdown } from '@/hooks/useCalculatedStats';
 import { STAT_DEFINITIONS } from '@/data/stat-definitions';
 import type { StatDefinition, StatValue, CompoundStatValue, MezStatValue } from '@/data/stat-definitions';
+import type { GlobalBonuses } from '@/utils/calculations/character-totals';
+
+// Stats that need globalBonuses values instead of CalculatedStats
+const GLOBAL_BONUS_OVERRIDES: Record<string, keyof GlobalBonuses> = {
+  range_bonus: 'range',
+  heal_other: 'healOther',
+  threat_level: 'threatLevel',
+  stealth_pve: 'stealthRadiusPvE',
+  stealth_pvp: 'stealthRadiusPvP',
+  perception_bonus: 'perceptionRadius',
+  prot_repel: 'protRepel',
+  prot_teleport: 'protTeleport',
+  mezres_taunt: 'mezResistTaunt',
+  mezres_placate: 'mezResistPlacate',
+  level_shift: 'levelShift',
+};
 
 // Re-export for any consumers that imported from here
 export { STAT_DEFINITIONS };
@@ -54,6 +70,9 @@ export function StatsDashboard() {
   const controlsModalOpen = useUIStore((s) => s.controlsModalOpen);
   const openControlsModal = useUIStore((s) => s.openControlsModal);
   const closeControlsModal = useUIStore((s) => s.closeControlsModal);
+  const detailedTotalsModalOpen = useUIStore((s) => s.detailedTotalsModalOpen);
+  const openDetailedTotalsModal = useUIStore((s) => s.openDetailedTotalsModal);
+  const closeDetailedTotalsModal = useUIStore((s) => s.closeDetailedTotalsModal);
   const trackedStats = useUIStore((s) => s.trackedStats);
   const toggleTrackedStat = useUIStore((s) => s.toggleTrackedStat);
   // Welcome modal (auto-shows on first visit)
@@ -68,6 +87,7 @@ export function StatsDashboard() {
   const baseHP = health.baseHealth;
   const maxHPCap = health.maxHealth;
   const breakdowns = calcResult.breakdown;
+  const globalBonuses = calcResult.globalBonuses;
 
   // Calculate power and slot counts (exclude auto-granted form sub-powers)
   const countNonGranted = (powers: { isAutoGranted?: boolean }[]) =>
@@ -96,7 +116,10 @@ export function StatsDashboard() {
       .sort((a, b) => a.order - b.order)
       .map((config) => {
         const def = STAT_DEFINITIONS[config.stat];
-        const value = def.getValue(stats, baseHP, maxHPCap);
+        const globalKey = GLOBAL_BONUS_OVERRIDES[config.stat];
+        const value = globalKey
+          ? globalBonuses[globalKey]
+          : def.getValue(stats, baseHP, maxHPCap);
         const breakdown = def.breakdownKey ? breakdowns.get(def.breakdownKey) : undefined;
         return { ...def, value, breakdown, breakdownUnit: def.breakdownUnit };
       })
@@ -107,61 +130,68 @@ export function StatsDashboard() {
         if (typeof v === 'object' && v !== null && 'protection' in v) {
           return v.protection !== 0 || v.resistance !== 0;
         }
+        // PairedStatValue: show if either value is non-zero
+        if (typeof v === 'object' && v !== null && 'first' in v) {
+          return v.first !== 0 || v.second !== 0;
+        }
         return Number(v) !== 0;
       });
-  }, [statsConfig, stats, baseHP, maxHPCap, breakdowns]);
+  }, [statsConfig, stats, baseHP, maxHPCap, breakdowns, globalBonuses]);
 
   // Stat categories for grouping (should match config modal)
   const STAT_CATEGORIES = [
     {
-      name: 'General',
+      name: 'Offense',
       stats: [
-        'damage', 'accuracy', 'tohit', 'recharge',
-        'health', 'regeneration', 'maxend', 'recovery', 'endreduction',
-        'runspeed', 'flyspeed', 'jumpspeed', 'jumpheight',
+        'damage', 'accuracy', 'tohit', 'recharge', 'endreduction',
+        'range_bonus', 'heal_other', 'threat_level',
       ],
+    },
+    {
+      name: 'Health & Endurance',
+      stats: ['health', 'regeneration', 'maxend', 'recovery', 'level_shift'],
+    },
+    {
+      name: 'Movement',
+      stats: ['runspeed', 'flyspeed', 'jumpspeed', 'jumpheight'],
+    },
+    {
+      name: 'Stealth & Perception',
+      stats: ['stealth_pve', 'stealth_pvp', 'perception_bonus'],
     },
     {
       name: 'Defense',
       stats: [
-        'defense_melee',
-        'defense_ranged',
-        'defense_aoe',
-        'defense_smashing',
-        'defense_fire',
-        'defense_energy',
-        'defense_psionic',
-        'defense_toxic',
+        'defense_melee', 'defense_ranged', 'defense_aoe',
+        'defense_smashing', 'defense_fire', 'defense_energy',
+        'defense_psionic', 'defense_toxic',
       ],
     },
     {
-      name: 'Resistance & Mez',
+      name: 'Resistance',
       stats: [
-        'resist_smashing',
-        'resist_fire',
-        'resist_energy',
-        'resist_psionic',
-        'resist_toxic',
-        'mez_hold',
-        'mez_stun',
-        'mez_immob',
-        'mez_sleep',
-        'mez_confuse',
-        'mez_fear',
-        'mez_kb',
+        'resist_smashing', 'resist_fire', 'resist_energy',
+        'resist_psionic', 'resist_toxic',
       ],
+    },
+    {
+      name: 'Status Protection',
+      stats: [
+        'mez_hold', 'mez_stun', 'mez_immob', 'mez_sleep',
+        'mez_confuse', 'mez_fear', 'mez_kb',
+        'prot_repel', 'prot_teleport',
+      ],
+    },
+    {
+      name: 'Status Resistance',
+      stats: ['mezres_taunt', 'mezres_placate'],
     },
     {
       name: 'Debuff Resistance',
       stats: [
-        'debuff_slow',
-        'debuff_defense',
-        'debuff_recharge',
-        'debuff_endurance',
-        'debuff_recovery',
-        'debuff_tohit',
-        'debuff_regen',
-        'debuff_perception',
+        'debuff_slow', 'debuff_defense', 'debuff_recharge',
+        'debuff_endurance', 'debuff_recovery', 'debuff_tohit',
+        'debuff_regen', 'debuff_perception',
       ],
     },
   ];
@@ -296,6 +326,16 @@ export function StatsDashboard() {
             <span className="hidden sm:inline">Set Bonus Finder</span>
           </button>
           <button
+            onClick={openDetailedTotalsModal}
+            className="flex items-center gap-1.5 px-2 py-1 text-xs text-gray-400 hover:text-blue-300 hover:bg-gray-800 rounded transition-colors"
+            title="View detailed character totals"
+          >
+            <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+            <span className="hidden sm:inline">Totals</span>
+          </button>
+          <button
             onClick={openStatsConfigModal}
             className="flex items-center gap-1.5 px-2 py-1 text-xs text-gray-400 hover:text-gray-200 hover:bg-gray-800 rounded transition-colors"
             title="Configure dashboard stats"
@@ -391,6 +431,12 @@ export function StatsDashboard() {
       <ControlsModal
         isOpen={controlsModalOpen}
         onClose={closeControlsModal}
+      />
+
+      {/* Detailed Totals Modal */}
+      <DetailedTotalsModal
+        isOpen={detailedTotalsModalOpen}
+        onClose={closeDetailedTotalsModal}
       />
 
       {/* Welcome Modal (auto-shows on first visit) */}

@@ -58,13 +58,6 @@ export const Frost: Power = {
       "type": "Cold",
       "scale": 1.404,
       "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.1215,
-      "table": "Melee_Damage",
-      "duration": 1.1,
-      "tickRate": 0.2
     }
   ],
   "effects": {

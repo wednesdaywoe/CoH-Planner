@@ -42,9 +42,14 @@ export const StormKick: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Fire",
-      "scale": 0.594,
-      "table": "Melee_Damage"
+      "type": "Smashing",
+      "scale": 1.32,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.32,
+      "table": "Melee_InherentDamage"
     }
   ]
 };

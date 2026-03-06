@@ -37,11 +37,23 @@ export const ChainInduction: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Energy",
-    "scale": 1.32,
-    "table": "Melee_Damage"
-  },
+  "damage": [
+    {
+      "type": "Energy",
+      "scale": 1.32,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.32,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.32,
+      "table": "Melee_InherentDamage"
+    }
+  ],
   "effects": {
     "enduranceDrain": {
       "scale": 0.1,
@@ -50,7 +62,8 @@ export const ChainInduction: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "Pets_Chain_Induction_Jump1",
-      "duration": 1
+      "duration": 1,
+      "copyBoosts": true
     },
     "recoveryDebuff": {
       "scale": 1,

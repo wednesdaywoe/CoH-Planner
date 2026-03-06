@@ -49,11 +49,6 @@ export const EnergyPunch: Power = {
       "type": "Smashing",
       "scale": 0.348,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.522,
-      "table": "Melee_Damage"
     }
   ],
   "effects": {

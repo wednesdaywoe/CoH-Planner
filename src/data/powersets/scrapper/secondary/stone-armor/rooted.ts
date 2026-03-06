@@ -83,22 +83,6 @@ export const Rooted: Power = {
     "regenBuff": {
       "scale": 1,
       "table": "Melee_Ones"
-    },
-    "movement": {
-      "jumpSpeed": {
-        "scale": 0.5,
-        "table": "Melee_Ones"
-      }
-    },
-    "slow": {
-      "runSpeed": {
-        "scale": 0.9,
-        "table": "Melee_Ones"
-      },
-      "fly": {
-        "scale": 10,
-        "table": "Melee_Ones"
-      }
     }
   }
 };

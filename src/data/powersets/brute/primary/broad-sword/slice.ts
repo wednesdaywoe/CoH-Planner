@@ -1,6 +1,6 @@
 /**
  * Slice
- * Melee (Cone), DMG(Lethal), Foe -DEF, -Res
+ * Melee (Cone), DMG(Lethal), Foe -DEF
  *
  * Source: brute_melee/broad_sword/slice.json
  */
@@ -12,7 +12,7 @@ export const Slice: Power = {
   "internalName": "Slice",
   "available": 1,
   "description": "You Slice your sword in a wide arc, attacking all enemies in front of you. Slice does less damage than Hack but can hit multiple foes and reduce their defense.",
-  "shortHelp": "Melee (Cone), DMG(Lethal), Foe -DEF, -Res",
+  "shortHelp": "Melee (Cone), DMG(Lethal), Foe -DEF",
   "icon": "sword_slice.png",
   "powerType": "Click",
   "effectArea": "Cone",
@@ -23,7 +23,7 @@ export const Slice: Power = {
     "arc": 2.2689,
     "recharge": 8,
     "endurance": 8.528,
-    "castTime": 1.83,
+    "castTime": 2,
     "maxTargets": 5
   },
   "allowedEnhancements": [
@@ -43,26 +43,15 @@ export const Slice: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Lethal",
-      "scale": 1.2346,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.5535,
-      "table": "Melee_Damage"
-    }
-  ],
+  "damage": {
+    "type": "Lethal",
+    "scale": 1.23,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "defenseDebuff": {
-      "scale": 0.5,
+      "scale": 1,
       "table": "Melee_Debuff_Def"
-    },
-    "resistanceDebuff": {
-      "scale": 1.2,
-      "table": "Melee_Debuff_Res_Dmg"
     }
   }
 };

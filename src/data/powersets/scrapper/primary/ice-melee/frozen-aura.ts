@@ -69,11 +69,6 @@ export const FrozenAura: Power = {
       "type": "Cold",
       "scale": 1.424,
       "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.6408,
-      "table": "Melee_Damage"
     }
   ],
   "effects": {

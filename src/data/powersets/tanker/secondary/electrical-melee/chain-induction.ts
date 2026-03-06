@@ -52,7 +52,8 @@ export const ChainInduction: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "Pets_Chain_Induction_Jump1_Scrapper",
-      "duration": 1
+      "duration": 1,
+      "copyBoosts": true
     },
     "recoveryDebuff": {
       "scale": 1,

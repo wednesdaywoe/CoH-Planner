@@ -50,11 +50,6 @@ export const ContaminatedStrike: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Fire",
-      "scale": 0.378,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Smashing",
       "scale": 0.21,
       "table": "Melee_Damage"

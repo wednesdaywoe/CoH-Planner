@@ -47,11 +47,6 @@ export const CrowdControl: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Fire",
-      "scale": 0.7245,
-      "table": "Melee_Damage"
-    },
-    {
       "type": "Smashing",
       "scale": 1.61,
       "table": "Melee_InherentDamage"

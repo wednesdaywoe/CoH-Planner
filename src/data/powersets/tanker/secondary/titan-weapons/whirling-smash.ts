@@ -41,18 +41,11 @@ export const WhirlingSmash: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 1.04,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.6727,
-      "table": "Melee_Damage"
-    }
-  ],
+  "damage": {
+    "type": "Smashing",
+    "scale": 1.04,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "knockback": {
       "scale": 0.67,

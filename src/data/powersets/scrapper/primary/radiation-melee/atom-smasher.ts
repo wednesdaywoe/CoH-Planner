@@ -23,7 +23,7 @@ export const AtomSmasher: Power = {
     "recharge": 22,
     "endurance": 20.176,
     "castTime": 2.93,
-    "maxTargets": 16
+    "maxTargets": 10
   },
   "allowedEnhancements": [
     "EnduranceReduction",
@@ -51,11 +51,6 @@ export const AtomSmasher: Power = {
     {
       "type": "Toxic",
       "scale": 1.1625,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.6975,
       "table": "Melee_Damage"
     },
     {

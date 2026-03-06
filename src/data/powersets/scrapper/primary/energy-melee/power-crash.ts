@@ -52,9 +52,14 @@ export const PowerCrash: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Fire",
-      "scale": 0.5415,
-      "table": "Melee_Damage"
+      "type": "Energy",
+      "scale": 1.2032,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.2032,
+      "table": "Melee_InherentDamage"
     }
   ],
   "effects": {

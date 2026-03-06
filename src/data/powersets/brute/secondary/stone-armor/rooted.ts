@@ -83,22 +83,6 @@ export const Rooted: Power = {
         "scale": 0.4,
         "table": "Melee_Res_Boolean"
       }
-    },
-    "movement": {
-      "jumpSpeed": {
-        "scale": 0.5,
-        "table": "Melee_Ones"
-      }
-    },
-    "slow": {
-      "runSpeed": {
-        "scale": 0.9,
-        "table": "Melee_Ones"
-      },
-      "fly": {
-        "scale": 10,
-        "table": "Melee_Ones"
-      }
     }
   }
 };

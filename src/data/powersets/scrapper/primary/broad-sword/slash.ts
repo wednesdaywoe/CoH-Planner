@@ -21,7 +21,7 @@ export const Slash: Power = {
     "range": 7,
     "recharge": 4,
     "endurance": 5.2,
-    "castTime": 1.1
+    "castTime": 1.33
   },
   "allowedEnhancements": [
     "EnduranceReduction",
@@ -53,11 +53,6 @@ export const Slash: Power = {
       "type": "Lethal",
       "scale": 1,
       "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.45,
-      "table": "Melee_Damage"
     }
   ],
   "effects": {

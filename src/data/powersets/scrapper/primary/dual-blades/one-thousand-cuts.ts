@@ -62,18 +62,6 @@ export const OneThousandCuts: Power = {
       "type": "Lethal",
       "scale": 2.21,
       "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.068,
-      "table": "Melee_Damage",
-      "duration": 2.05,
-      "tickRate": 0.2
-    },
-    {
-      "type": "Fire",
-      "scale": 0.315,
-      "table": "Melee_Damage"
     }
   ],
   "effects": {

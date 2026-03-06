@@ -19,9 +19,9 @@ export const PowerSiphon: Power = {
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1.2,
-    "recharge": 90,
+    "recharge": 120,
     "endurance": 5.2,
-    "castTime": 1.17
+    "castTime": 1.93
   },
   "allowedEnhancements": [
     "EnduranceReduction",

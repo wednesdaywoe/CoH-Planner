@@ -60,11 +60,6 @@ export const RadiationSiphon: Power = {
       "table": "Melee_HealSelf",
       "duration": 2.1,
       "tickRate": 1
-    },
-    {
-      "type": "Fire",
-      "scale": 0.882,
-      "table": "Melee_Damage"
     }
   ],
   "effects": {

@@ -52,18 +52,6 @@ export const SweepingStrike: Power = {
       "table": "Melee_Damage",
       "duration": 4.1,
       "tickRate": 1
-    },
-    {
-      "type": "Fire",
-      "scale": 0.765,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.0899,
-      "table": "Melee_Damage",
-      "duration": 4.1,
-      "tickRate": 1
     }
   ]
 };

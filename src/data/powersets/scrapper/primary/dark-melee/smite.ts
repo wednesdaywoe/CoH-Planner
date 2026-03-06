@@ -58,11 +58,6 @@ export const Smite: Power = {
       "type": "Negative",
       "scale": 1.32,
       "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.594,
-      "table": "Melee_Damage"
     }
   ],
   "effects": {
