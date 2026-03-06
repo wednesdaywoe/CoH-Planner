@@ -276,19 +276,6 @@ export function Header() {
           className="max-w-[140px] min-w-[100px]"
         />
 
-        {/* Exemplar Mode toggle */}
-        <Tooltip content="When enabled, set bonuses are suppressed based on build level (simulates exemplaring down)">
-          <div className="flex items-center bg-slate-700/50 px-2 py-1.5 rounded border border-slate-600">
-            <Toggle
-              id="exemplar-mode-toggle"
-              name="exemplarMode"
-              checked={exemplarMode}
-              onChange={toggleExemplarMode}
-              label="Exemplar"
-            />
-          </div>
-        </Tooltip>
-
         {/* Domination toggle - only for Dominators */}
         {archetypeId === 'dominator' && (
           <Tooltip content="Toggle Domination active state to see enhanced mez values (2× magnitude, 1.5× duration)">
@@ -590,6 +577,19 @@ export function Header() {
               showRange={false}
             />
           </div>
+          <Tooltip content="When enabled, set bonuses are suppressed based on build level (simulates exemplaring down)">
+            <div className={`flex items-center px-2 py-1.5 rounded border ${
+              exemplarMode ? 'bg-amber-900/20 border-amber-600/50' : 'bg-slate-700/50 border-slate-600'
+            }`}>
+              <Toggle
+                id="exemplar-mode-toggle"
+                name="exemplarMode"
+                checked={exemplarMode}
+                onChange={toggleExemplarMode}
+                label="Exemplar"
+              />
+            </div>
+          </Tooltip>
           {exemplarMode && (
             <div className="flex items-center gap-1 bg-slate-700/50 px-2 py-1.5 rounded border border-amber-600/50">
               <span className="text-xs text-amber-400 font-semibold uppercase">Exemplar</span>
