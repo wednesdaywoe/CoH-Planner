@@ -908,9 +908,9 @@ export const ARCHETYPES: ArchetypeRegistry = {
     description:
       'Kheldian shapeshifter with access to multiple forms. Can transform between human, nova (ranged), and dwarf (melee/tank) forms.',
     inherent: {
-      name: 'Energy Flight',
+      name: 'Cosmic Balance',
       description:
-        'Innate ability to fly. Also provides access to Nova and Dwarf transformation forms.',
+        'Peacebringers bring balance to their team. Damage increases per nearby Tanker/Mastermind/Corruptor/Defender. Damage Resistance increases per nearby Scrapper/Sentinel/Brute/Stalker/Blaster. Control protection per nearby Controller/Dominator. Slow resistance per nearby Kheldian/Arachnos teammate.',
     },
     stats: {
       baseHP: 1070.8967,
@@ -940,9 +940,9 @@ export const ARCHETYPES: ArchetypeRegistry = {
     description:
       'Kheldian shapeshifter that feeds on defeated enemies. Can summon pets from fallen foes and transform between forms.',
     inherent: {
-      name: 'Shadow Step',
+      name: 'Dark Sustenance',
       description:
-        'Innate teleportation ability. Also provides access to Nova and Dwarf transformation forms.',
+        'Warshades draw on the power of their teammates. Damage Resistance increases per nearby Tanker/Mastermind/Corruptor/Defender. Damage increases per nearby Scrapper/Sentinel/Stalker/Brute/Blaster. Control protection per nearby Controller/Dominator. Slow resistance per nearby Kheldian/Arachnos teammate.',
     },
     stats: {
       baseHP: 1070.8967,
