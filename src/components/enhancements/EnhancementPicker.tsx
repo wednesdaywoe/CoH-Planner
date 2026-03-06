@@ -29,6 +29,25 @@ import { getEnhancementOutline } from '@/utils/enhancement-outline';
 
 type EnhancementTypeFilter = 'io-sets' | 'generic' | 'special' | 'origin' | 'debug';
 
+/** Map archetype IDs to their ATO set category names */
+const ARCHETYPE_ATO_CATEGORY: Record<string, IOSetCategory> = {
+  blaster: 'Blaster Archetype Sets' as IOSetCategory,
+  brute: 'Brute Archetype Sets' as IOSetCategory,
+  controller: 'Controller Archetype Sets' as IOSetCategory,
+  corruptor: 'Corruptor Archetype Sets' as IOSetCategory,
+  defender: 'Defender Archetype Sets' as IOSetCategory,
+  dominator: 'Dominator Archetype Sets' as IOSetCategory,
+  mastermind: 'Mastermind Archetype Sets' as IOSetCategory,
+  scrapper: 'Scrapper Archetype Sets' as IOSetCategory,
+  stalker: 'Stalker Archetype Sets' as IOSetCategory,
+  tanker: 'Tanker Archetype Sets' as IOSetCategory,
+  sentinel: 'Sentinel Archetype Sets' as IOSetCategory,
+  peacebringer: 'Kheldian Archetype Sets' as IOSetCategory,
+  warshade: 'Kheldian Archetype Sets' as IOSetCategory,
+  'arachnos-soldier': 'Soldiers of Arachnos Archetype Sets' as IOSetCategory,
+  'arachnos-widow': 'Soldiers of Arachnos Archetype Sets' as IOSetCategory,
+};
+
 // Sidebar filter can be 'all', a category name, or a special group
 type SidebarFilter =
   | 'all'
@@ -111,11 +130,27 @@ export function EnhancementPicker() {
     return indices;
   }, [currentPowerSlots, picker.currentSlotIndex, picker.virtualSlots]);
 
-  // Get available IO sets for the current power
+  // Determine if the current power is from a primary or secondary powerset (for ATO eligibility)
+  const isPrimaryOrSecondary = useMemo(() => {
+    if (!picker.currentPowerName) return false;
+    const inPrimary = build.primary.powers.some(p => p.name === picker.currentPowerName);
+    if (inPrimary) return true;
+    return build.secondary.powers.some(p => p.name === picker.currentPowerName);
+  }, [picker.currentPowerName, build.primary.powers, build.secondary.powers]);
+
+  // Get available IO sets for the current power, injecting ATO category for primary/secondary powers
   const availableSets = useMemo(() => {
     if (!currentPower) return [];
-    return getIOSetsForPower((currentPower.allowedSetCategories || []) as IOSetCategory[]);
-  }, [currentPower]);
+    const categories = [...(currentPower.allowedSetCategories || [])] as IOSetCategory[];
+    // Inject archetype ATO category for primary/secondary powers
+    if (isPrimaryOrSecondary && build.archetype.id) {
+      const atoCategory = ARCHETYPE_ATO_CATEGORY[build.archetype.id];
+      if (atoCategory && !categories.includes(atoCategory)) {
+        categories.push(atoCategory);
+      }
+    }
+    return getIOSetsForPower(categories);
+  }, [currentPower, isPrimaryOrSecondary, build.archetype.id]);
 
   // Derive all standard set categories from the available sets, sorted by priority
   const standardCategories = useMemo(() => {

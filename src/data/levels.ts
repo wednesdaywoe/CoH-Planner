@@ -467,7 +467,7 @@ export const BASIC_INHERENT_POWERS: InherentPowerDef[] = [
     targetType: 'Self',
     available: -1,
     maxSlots: 4,
-    allowedEnhancements: ['Recharge', 'Interrupt', 'Healing', 'EnduranceModification'],
+    allowedEnhancements: ['Interrupt', 'Healing', 'EnduranceModification'],
     allowedSetCategories: [],
     isLocked: true,
     category: 'basic',
