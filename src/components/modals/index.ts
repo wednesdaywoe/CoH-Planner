@@ -16,3 +16,4 @@ export { ControlsModal } from './ControlsModal';
 export { ConfirmModal } from './ConfirmModal';
 export { CompareSlottingModal } from './CompareSlottingModal';
 export { DetailedTotalsModal } from './DetailedTotalsModal';
+export { PowersetCompareModal } from './PowersetCompareModal';

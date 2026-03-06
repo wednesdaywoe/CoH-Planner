@@ -75,6 +75,9 @@ interface UIState {
   /** Detailed Totals modal open state */
   detailedTotalsModalOpen: boolean;
 
+  /** Powerset Compare modal open state */
+  powersetCompareModalOpen: boolean;
+
   /** Set Bonus Lookup modal open state */
   setBonusLookupModalOpen: boolean;
 
@@ -265,6 +268,10 @@ interface UIActions {
   openDetailedTotalsModal: () => void;
   closeDetailedTotalsModal: () => void;
 
+  // Powerset Compare Modal
+  openPowersetCompareModal: () => void;
+  closePowersetCompareModal: () => void;
+
   // Set Bonus Lookup Modal
   openSetBonusLookupModal: () => void;
   closeSetBonusLookupModal: () => void;
@@ -419,6 +426,7 @@ export const useUIStore = create<UIStore>()(
       knownIssuesModalOpen: false,
       controlsModalOpen: false,
       detailedTotalsModalOpen: false,
+      powersetCompareModalOpen: false,
       setBonusLookupModalOpen: false,
       powerInfoModalOpen: false,
       globalIOLevel: 50,
@@ -843,6 +851,13 @@ export const useUIStore = create<UIStore>()(
 
       closeDetailedTotalsModal: () =>
         set({ detailedTotalsModalOpen: false }),
+
+      // Powerset Compare Modal
+      openPowersetCompareModal: () =>
+        set({ powersetCompareModalOpen: true }),
+
+      closePowersetCompareModal: () =>
+        set({ powersetCompareModalOpen: false }),
 
       // Set Bonus Lookup Modal
       openSetBonusLookupModal: () =>
