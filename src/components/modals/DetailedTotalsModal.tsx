@@ -435,31 +435,33 @@ export function DetailedTotalsModal({ isOpen, onClose }: DetailedTotalsModalProp
           {/* Current build tab */}
           <button
             onClick={() => setActiveTab(0)}
-            className={`px-3 py-1.5 text-xs rounded-t font-medium transition-colors ${
+            className={`px-3 py-1.5 text-xs rounded-t font-medium transition-colors max-w-[180px] truncate ${
               activeTab === 0
                 ? 'bg-slate-700 text-emerald-400 border border-slate-600 border-b-transparent'
                 : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800'
             }`}
+            title={build.name || 'Current Build'}
           >
             {build.name || 'Current Build'}
           </button>
 
           {/* Loaded build tabs */}
           {loadedBuilds.map((lb, i) => (
-            <div key={i} className="flex items-center">
+            <div key={i} className="flex items-center max-w-[200px]">
               <button
                 onClick={() => setActiveTab(i + 1)}
-                className={`px-3 py-1.5 text-xs rounded-t font-medium transition-colors ${
+                className={`px-3 py-1.5 text-xs rounded-t font-medium transition-colors truncate min-w-0 ${
                   activeTab === i + 1
                     ? 'bg-slate-700 text-amber-400 border border-slate-600 border-b-transparent'
                     : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800'
                 }`}
+                title={lb.name}
               >
                 {lb.name}
               </button>
               <button
                 onClick={() => handleRemoveTab(i)}
-                className="text-slate-500 hover:text-red-400 text-xs px-1 -ml-0.5"
+                className="text-slate-500 hover:text-red-400 text-xs px-1 flex-shrink-0"
                 title="Remove this build"
               >
                 ✕
@@ -488,13 +490,14 @@ export function DetailedTotalsModal({ isOpen, onClose }: DetailedTotalsModalProp
           <div className="text-xs text-red-400 mb-2">{loadError}</div>
         )}
 
-        {/* Active build header */}
-        {activeTab > 0 && loadedBuilds[activeTab - 1] && (
-          <div className="text-xs text-slate-500 mb-2">
-            {loadedBuilds[activeTab - 1].build.archetype?.name ?? 'Unknown'} —{' '}
-            Level {loadedBuilds[activeTab - 1].build.level}
-          </div>
-        )}
+        {/* Active build info */}
+        <div className="text-xs text-slate-500 mb-2">
+          {activeTab === 0
+            ? `${build.archetype?.name ?? 'Unknown'} — Level ${build.level}`
+            : loadedBuilds[activeTab - 1]
+              ? `${loadedBuilds[activeTab - 1].build.archetype?.name ?? 'Unknown'} — Level ${loadedBuilds[activeTab - 1].build.level}`
+              : ''}
+        </div>
 
         {/* Stat grid for the active tab */}
         {activeStats ? (
