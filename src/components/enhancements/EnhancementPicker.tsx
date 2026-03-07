@@ -772,7 +772,13 @@ export function EnhancementPicker() {
                 pieces={procPieces}
                 attunementEnabled={attunementEnabled}
                 isPieceInCurrentPower={isPieceInCurrentPower}
-                onSelect={handleSelectSetPiece}
+                onPieceMouseDown={handlePieceMouseDown}
+                onPieceMouseUp={handlePieceMouseUp}
+                onPieceTouchStart={handlePieceTouchStart}
+                onPieceTouchMove={handlePieceTouchMove}
+                onPieceTouchEnd={handlePieceTouchEnd}
+                isShiftSelected={isShiftSelected}
+                hasShiftSelection={hasShiftSelection}
               />
             )}
             {typeFilter === 'io-sets' && sidebarFilter !== 'procs' && (
@@ -962,14 +968,26 @@ interface ProcsContentProps {
   pieces: { set: IOSet; piece: IOSetPiece; pieceIndex: number }[];
   attunementEnabled: boolean;
   isPieceInCurrentPower: (setId: string, pieceNum: number) => boolean;
-  onSelect: (set: IOSet, piece: IOSetPiece, pieceIndex: number) => void;
+  onPieceMouseDown: (set: IOSet, pieceIndex: number, e: React.MouseEvent) => void;
+  onPieceMouseUp: (set: IOSet, pieceIndex: number, e: React.MouseEvent) => void;
+  onPieceTouchStart: (set: IOSet, pieceIndex: number, e: React.TouchEvent) => void;
+  onPieceTouchMove: (e: React.TouchEvent) => void;
+  onPieceTouchEnd: (set: IOSet, e: React.TouchEvent) => void;
+  isShiftSelected: (set: IOSet, pieceIndex: number) => boolean;
+  hasShiftSelection: boolean;
 }
 
 function ProcsContent({
   pieces,
   attunementEnabled,
   isPieceInCurrentPower,
-  onSelect,
+  onPieceMouseDown,
+  onPieceMouseUp,
+  onPieceTouchStart,
+  onPieceTouchMove,
+  onPieceTouchEnd,
+  isShiftSelected,
+  hasShiftSelection,
 }: ProcsContentProps) {
   const isUniqueEnhancementSlotted = useBuildStore((s) => s.isUniqueEnhancementSlotted);
 
@@ -979,6 +997,14 @@ function ProcsContent({
 
   return (
     <div className="space-y-1">
+      <div className="text-right px-1 mb-1">
+        <span className="hidden sm:inline text-xs text-gray-600">
+          {hasShiftSelection ? 'Click selected to slot all' : 'Shift+click to multi-select'}
+        </span>
+        <span className="sm:hidden text-[10px] text-gray-600">
+          {hasShiftSelection ? 'Tap selected to slot all' : 'Hold to multi-select'}
+        </span>
+      </div>
       {pieces.map(({ set, piece, pieceIndex }) => {
         const setId = set.id || set.name;
         const outline = getEnhancementOutline(
@@ -1004,16 +1030,25 @@ function ProcsContent({
         const procLabel = procEffect ? getProcEffectLabel(procEffect.category) : null;
         const procColor = procEffect ? getProcEffectColor(procEffect.category) : outline.color;
 
+        const shiftSel = isShiftSelected(set, pieceIndex);
+
         return (
           <button
             key={`${setId}-${piece.num}`}
-            onClick={() => !isDisabled && onSelect(set, piece, pieceIndex)}
+            onMouseDown={(e) => !isDisabled && onPieceMouseDown(set, pieceIndex, e)}
+            onMouseUp={(e) => !isDisabled && onPieceMouseUp(set, pieceIndex, e)}
+            onTouchStart={(e) => !isDisabled && onPieceTouchStart(set, pieceIndex, e)}
+            onTouchMove={(e) => !isDisabled && onPieceTouchMove(e)}
+            onTouchEnd={(e) => !isDisabled && onPieceTouchEnd(set, e)}
             disabled={isDisabled}
             className={`w-full flex items-center gap-2 p-2 rounded border transition-all ${
               isDisabled
                 ? 'border-gray-700 opacity-40 cursor-not-allowed bg-gray-900/30'
-                : 'border-gray-600 bg-gray-800/40 hover:border-blue-400 hover:bg-blue-900/10'
+                : shiftSel
+                  ? 'border-green-400 bg-green-900/20 ring-1 ring-green-400/50'
+                  : 'border-gray-600 bg-gray-800/40 hover:border-blue-400 hover:bg-blue-900/10'
             }`}
+            style={{ touchAction: 'pan-y' }}
           >
             {/* Set icon */}
             <div className="relative flex-shrink-0">
