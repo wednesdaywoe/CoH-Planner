@@ -38,6 +38,45 @@ try {
 
 console.log(`Found ${Object.keys(ioSets).length} IO sets`);
 
+// Patch unique flags from raw Homecoming data
+// The legacy data often has unique:false for pieces that have unique_group constraints
+const rawDir = path.join(__dirname, '../raw_data_homecoming-raw_data_homecoming-20251209_7415/boost_sets');
+if (fs.existsSync(rawDir)) {
+  console.log('Patching unique flags from raw Homecoming data...');
+  let patchCount = 0;
+  const rawFiles = fs.readdirSync(rawDir).filter(f => f.endsWith('.json'));
+  for (const file of rawFiles) {
+    const data = JSON.parse(fs.readFileSync(path.join(rawDir, file), 'utf-8'));
+    const boostInfos = data.computed?.boost_infos;
+    if (!boostInfos || !data.boost_lists) continue;
+
+    const setKey = file.replace('.json', '');
+    const set = ioSets[setKey];
+    if (!set) continue;
+
+    // Map boost key -> piece num (1-based)
+    const boostToPieceNum = {};
+    for (let i = 0; i < data.boost_lists.length; i++) {
+      for (const entry of data.boost_lists[i]) {
+        const parts = entry.split('.');
+        if (parts.length >= 2) boostToPieceNum[parts[1].toLowerCase()] = i + 1;
+      }
+    }
+
+    for (const [key, info] of Object.entries(boostInfos)) {
+      if (key.startsWith('crafted_') && info.unique_group?.length > 0) {
+        const pieceNum = boostToPieceNum[key];
+        const piece = set.pieces?.find(p => p.num === pieceNum);
+        if (piece && !piece.unique) {
+          piece.unique = true;
+          patchCount++;
+        }
+      }
+    }
+  }
+  console.log(`  Patched ${patchCount} pieces with unique flag`);
+}
+
 // Count by category
 const categories = {};
 for (const set of Object.values(ioSets)) {

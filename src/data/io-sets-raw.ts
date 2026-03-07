@@ -120,7 +120,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Stun"
         ],
         "proc": false,
-        "unique": false
+        "unique": true
       },
       {
         "num": 2,
@@ -130,7 +130,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Stun"
         ],
         "proc": false,
-        "unique": false
+        "unique": true
       },
       {
         "num": 3,
@@ -141,7 +141,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Stun"
         ],
         "proc": false,
-        "unique": false
+        "unique": true
       },
       {
         "num": 4,
@@ -151,7 +151,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": false,
-        "unique": false
+        "unique": true
       },
       {
         "num": 5,
@@ -161,14 +161,14 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Stun"
         ],
         "proc": false,
-        "unique": false
+        "unique": true
       },
       {
         "num": 6,
         "name": "Chance for -ToHit",
         "aspects": [],
         "proc": true,
-        "unique": false
+        "unique": true
       }
     ],
     "icon": "sAbsoluteamazement.png"
@@ -1056,7 +1056,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Damage"
         ],
         "proc": false,
-        "unique": false
+        "unique": true
       },
       {
         "num": 2,
@@ -1066,7 +1066,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": false,
-        "unique": false
+        "unique": true
       },
       {
         "num": 3,
@@ -1077,7 +1077,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": false,
-        "unique": false
+        "unique": true
       },
       {
         "num": 4,
@@ -1087,7 +1087,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": false,
-        "unique": false
+        "unique": true
       },
       {
         "num": 5,
@@ -1097,14 +1097,14 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Endurance"
         ],
         "proc": false,
-        "unique": false
+        "unique": true
       },
       {
         "num": 6,
         "name": "Chance for Negative Energy Damage",
         "aspects": [],
         "proc": true,
-        "unique": false
+        "unique": true
       }
     ],
     "icon": "sApocalypse.png"
@@ -1185,7 +1185,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Damage"
         ],
         "proc": false,
-        "unique": false
+        "unique": true
       },
       {
         "num": 2,
@@ -1195,7 +1195,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": false,
-        "unique": false
+        "unique": true
       },
       {
         "num": 3,
@@ -1206,7 +1206,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": false,
-        "unique": false
+        "unique": true
       },
       {
         "num": 4,
@@ -1216,7 +1216,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": false,
-        "unique": false
+        "unique": true
       },
       {
         "num": 5,
@@ -1226,14 +1226,14 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Endurance"
         ],
         "proc": false,
-        "unique": false
+        "unique": true
       },
       {
         "num": 6,
         "name": "Chance for Fire Damage",
         "aspects": [],
         "proc": true,
-        "unique": false
+        "unique": true
       }
     ],
     "icon": "sArmageddon.png"
@@ -3445,7 +3445,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Chance for +Health",
         "aspects": [],
         "proc": true,
-        "unique": false
+        "unique": true
       }
     ],
     "icon": "sCallofthesandman.png"
@@ -3580,7 +3580,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "+Def(All)",
         "aspects": [],
         "proc": true,
-        "unique": false
+        "unique": true
       }
     ],
     "icon": "CallToArms.png"
@@ -3642,7 +3642,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "+Stealth",
         "aspects": [],
         "proc": true,
-        "unique": false
+        "unique": true
       }
     ],
     "icon": "sCelerity.png"
@@ -3935,7 +3935,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Confuse"
         ],
         "proc": false,
-        "unique": false
+        "unique": true
       },
       {
         "num": 2,
@@ -3945,7 +3945,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": false,
-        "unique": false
+        "unique": true
       },
       {
         "num": 3,
@@ -3956,7 +3956,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": false,
-        "unique": false
+        "unique": true
       },
       {
         "num": 4,
@@ -3966,7 +3966,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": false,
-        "unique": false
+        "unique": true
       },
       {
         "num": 5,
@@ -3976,14 +3976,14 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Endurance"
         ],
         "proc": false,
-        "unique": false
+        "unique": true
       },
       {
         "num": 6,
         "name": "Chance for -Str(Execute_Power)",
         "aspects": [],
         "proc": true,
-        "unique": false
+        "unique": true
       }
     ],
     "icon": "sCoercivePersuasion.png"
@@ -5265,7 +5265,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Chance for Build Up",
         "aspects": [],
         "proc": true,
-        "unique": false
+        "unique": true
       }
     ],
     "icon": "sDecimation.png"
@@ -6489,7 +6489,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "+Def(All)",
         "aspects": [],
         "proc": true,
-        "unique": false
+        "unique": true
       }
     ],
     "icon": "sEdictofthemaster.png"
@@ -7791,7 +7791,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "+Res(All)",
         "aspects": [],
         "proc": true,
-        "unique": false
+        "unique": true
       }
     ],
     "icon": "ExpedientReinforcement.png"
@@ -7961,7 +7961,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Range"
         ],
         "proc": false,
-        "unique": false
+        "unique": true
       }
     ],
     "icon": "sFarstrike.png"
@@ -8707,7 +8707,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Sleep"
         ],
         "proc": false,
-        "unique": false
+        "unique": true
       },
       {
         "num": 2,
@@ -8717,7 +8717,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Sleep"
         ],
         "proc": false,
-        "unique": false
+        "unique": true
       },
       {
         "num": 3,
@@ -8728,7 +8728,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Sleep"
         ],
         "proc": false,
-        "unique": false
+        "unique": true
       },
       {
         "num": 4,
@@ -8738,7 +8738,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": false,
-        "unique": false
+        "unique": true
       },
       {
         "num": 5,
@@ -8748,14 +8748,14 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Sleep"
         ],
         "proc": false,
-        "unique": false
+        "unique": true
       },
       {
         "num": 6,
         "name": "Chance for Placate",
         "aspects": [],
         "proc": true,
-        "unique": false
+        "unique": true
       }
     ],
     "icon": "sFortunatehyp.png"
@@ -8812,7 +8812,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "+Stealth",
         "aspects": [],
         "proc": true,
-        "unique": false
+        "unique": true
       }
     ],
     "icon": "sFreebird.png"
@@ -9121,7 +9121,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Chance for -Res(All)",
         "aspects": [],
         "proc": true,
-        "unique": false
+        "unique": true
       }
     ],
     "icon": "sFuryofthegladiator.png"
@@ -9415,7 +9415,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Chance for Build Up",
         "aspects": [],
         "proc": true,
-        "unique": false
+        "unique": true
       }
     ],
     "icon": "sGaussianSF.png"
@@ -9861,7 +9861,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "+Def(All)",
         "aspects": [],
         "proc": true,
-        "unique": false
+        "unique": true
       }
     ],
     "icon": "sGladiatorsarmor.png"
@@ -10571,7 +10571,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Immobilize"
         ],
         "proc": false,
-        "unique": false
+        "unique": true
       },
       {
         "num": 2,
@@ -10581,7 +10581,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": false,
-        "unique": false
+        "unique": true
       },
       {
         "num": 3,
@@ -10592,7 +10592,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": false,
-        "unique": false
+        "unique": true
       },
       {
         "num": 4,
@@ -10602,7 +10602,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": false,
-        "unique": false
+        "unique": true
       },
       {
         "num": 5,
@@ -10612,14 +10612,14 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Immobilize"
         ],
         "proc": false,
-        "unique": false
+        "unique": true
       },
       {
         "num": 6,
         "name": "Chance for Hold",
         "aspects": [],
         "proc": true,
-        "unique": false
+        "unique": true
       }
     ],
     "icon": "sGravAnchor.png"
@@ -10836,7 +10836,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Damage"
         ],
         "proc": false,
-        "unique": false
+        "unique": true
       },
       {
         "num": 2,
@@ -10846,7 +10846,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": false,
-        "unique": false
+        "unique": true
       },
       {
         "num": 3,
@@ -10857,7 +10857,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": false,
-        "unique": false
+        "unique": true
       },
       {
         "num": 4,
@@ -10867,7 +10867,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": false,
-        "unique": false
+        "unique": true
       },
       {
         "num": 5,
@@ -10877,14 +10877,14 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Endurance"
         ],
         "proc": false,
-        "unique": false
+        "unique": true
       },
       {
         "num": 6,
         "name": "Chance for Negative Energy Damage",
         "aspects": [],
         "proc": true,
-        "unique": false
+        "unique": true
       }
     ],
     "icon": "sHecatomb.png"
@@ -11185,7 +11185,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "+Fly Magnitude"
         ],
         "proc": false,
-        "unique": false
+        "unique": true
       }
     ],
     "icon": "sFreebird.png"
@@ -12630,7 +12630,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "+ToHit",
         "aspects": [],
         "proc": true,
-        "unique": false
+        "unique": true
       }
     ],
     "icon": "sKismet.png"
@@ -12714,7 +12714,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Jump"
         ],
         "proc": true,
-        "unique": false
+        "unique": true
       }
     ],
     "icon": "sSpringfoot.png"
@@ -14034,7 +14034,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "+Recovery",
         "aspects": [],
         "proc": true,
-        "unique": false
+        "unique": true
       }
     ],
     "icon": "sMiracle.png"
@@ -14716,7 +14716,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "+Recovery/+Regeneration",
         "aspects": [],
         "proc": true,
-        "unique": false
+        "unique": true
       }
     ],
     "icon": "sNuminasconvalesence.png"
@@ -15569,7 +15569,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "Chance for +Endurance/Chance for +Health",
         "aspects": [],
         "proc": true,
-        "unique": false
+        "unique": true
       }
     ],
     "icon": "sPanacea.png"
@@ -16666,7 +16666,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "+Absorb/Chance for +Absorb",
         "aspects": [],
         "proc": true,
-        "unique": false
+        "unique": true
       }
     ],
     "icon": "sPreventiveMedicine.png"
@@ -16887,7 +16887,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Damage"
         ],
         "proc": false,
-        "unique": false
+        "unique": true
       },
       {
         "num": 2,
@@ -16897,7 +16897,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": false,
-        "unique": false
+        "unique": true
       },
       {
         "num": 3,
@@ -16908,7 +16908,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": false,
-        "unique": false
+        "unique": true
       },
       {
         "num": 4,
@@ -16918,7 +16918,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": false,
-        "unique": false
+        "unique": true
       },
       {
         "num": 5,
@@ -16928,14 +16928,14 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Endurance"
         ],
         "proc": false,
-        "unique": false
+        "unique": true
       },
       {
         "num": 6,
         "name": "Chance for Knockback",
         "aspects": [],
         "proc": true,
-        "unique": false
+        "unique": true
       }
     ],
     "icon": "sRagnarok.png"
@@ -17344,7 +17344,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "+Res(All)",
         "aspects": [],
         "proc": true,
-        "unique": false
+        "unique": true
       }
     ],
     "icon": "sReactiveDefenses.png"
@@ -17417,7 +17417,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "+Perception",
         "aspects": [],
         "proc": true,
-        "unique": false
+        "unique": true
       }
     ],
     "icon": "sRectifiedreticle.png"
@@ -17653,7 +17653,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "+Regeneration",
         "aspects": [],
         "proc": true,
-        "unique": false
+        "unique": true
       }
     ],
     "icon": "sRegenerativetissue.png"
@@ -19048,7 +19048,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "+Res(All)",
         "aspects": [],
         "proc": true,
-        "unique": false
+        "unique": true
       }
     ],
     "icon": "sShieldwall.png"
@@ -19407,7 +19407,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Damage"
         ],
         "proc": false,
-        "unique": false
+        "unique": true
       },
       {
         "num": 2,
@@ -19417,7 +19417,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": false,
-        "unique": false
+        "unique": true
       },
       {
         "num": 3,
@@ -19428,7 +19428,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": false,
-        "unique": false
+        "unique": true
       },
       {
         "num": 4,
@@ -19438,7 +19438,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": false,
-        "unique": false
+        "unique": true
       },
       {
         "num": 5,
@@ -19448,14 +19448,14 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Endurance"
         ],
         "proc": false,
-        "unique": false
+        "unique": true
       },
       {
         "num": 6,
         "name": "Chance for Build Up",
         "aspects": [],
         "proc": true,
-        "unique": false
+        "unique": true
       }
     ],
     "icon": "sSoulboaundAll.png"
@@ -19593,7 +19593,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "+Res(All)",
         "aspects": [],
         "proc": true,
-        "unique": false
+        "unique": true
       }
     ],
     "icon": "sSoverignRight.png"
@@ -20101,7 +20101,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Damage Resistance"
         ],
         "proc": true,
-        "unique": false
+        "unique": true
       },
       {
         "num": 3,
@@ -24947,7 +24947,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "EndMod"
         ],
         "proc": false,
-        "unique": false
+        "unique": true
       }
     ],
     "icon": "sEnergyManip.png"
@@ -25374,7 +25374,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Run"
         ],
         "proc": true,
-        "unique": false
+        "unique": true
       }
     ],
     "icon": "sThrust.png"
@@ -25566,7 +25566,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "+Stealth",
         "aspects": [],
         "proc": true,
-        "unique": false
+        "unique": true
       }
     ],
     "icon": "sSpacetimemanipulation.png"
@@ -26415,7 +26415,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "+Stealth",
         "aspects": [],
         "proc": true,
-        "unique": false
+        "unique": true
       }
     ],
     "icon": "sUnboundedleap.png"
@@ -26496,7 +26496,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Hold"
         ],
         "proc": false,
-        "unique": false
+        "unique": true
       },
       {
         "num": 2,
@@ -26506,7 +26506,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": false,
-        "unique": false
+        "unique": true
       },
       {
         "num": 3,
@@ -26517,7 +26517,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": false,
-        "unique": false
+        "unique": true
       },
       {
         "num": 4,
@@ -26527,7 +26527,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": false,
-        "unique": false
+        "unique": true
       },
       {
         "num": 5,
@@ -26537,14 +26537,14 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Hold"
         ],
         "proc": false,
-        "unique": false
+        "unique": true
       },
       {
         "num": 6,
         "name": "Chance for Smashing Damage",
         "aspects": [],
         "proc": true,
-        "unique": false
+        "unique": true
       }
     ],
     "icon": "sUnbreakableconstraint.png"
@@ -26693,7 +26693,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "+Max HitPoints",
         "aspects": [],
         "proc": true,
-        "unique": false
+        "unique": true
       }
     ],
     "icon": "sUnbreakableGuard.png"
@@ -27530,7 +27530,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Range"
         ],
         "proc": true,
-        "unique": false
+        "unique": true
       }
     ],
     "icon": "sJaunt.png"
@@ -27897,7 +27897,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "name": "+Res(Recharge Debuff)/+Res(Slow)",
         "aspects": [],
         "proc": true,
-        "unique": false
+        "unique": true
       }
     ],
     "icon": "WintersGift.png"

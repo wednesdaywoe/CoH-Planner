@@ -478,10 +478,11 @@ interface StatItemProps {
 }
 
 function StatItem({ label, value, color = 'text-gray-300', tooltip, breakdown, breakdownUnit = '%', className = '', tracked, onTrack }: StatItemProps) {
+  const hasCapped = breakdown?.sources.some(s => s.capped) ?? false;
   const content = (
     <div
       className={`flex items-baseline justify-between gap-1 min-w-0 overflow-hidden ${onTrack ? 'cursor-pointer' : 'cursor-help'} ${
-        tracked ? 'ring-1 ring-blue-500/60 rounded px-1 -mx-1' : ''
+        tracked ? `ring-1 ${hasCapped ? 'ring-orange-400/70' : 'ring-blue-500/60'} rounded px-1 -mx-1` : ''
       } ${className}`}
       onClick={onTrack}
     >
