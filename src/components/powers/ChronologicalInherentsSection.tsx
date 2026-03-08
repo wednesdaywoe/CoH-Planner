@@ -6,8 +6,10 @@
 
 import { useMemo, useState } from 'react';
 import { useBuildStore, useUIStore } from '@/stores';
+import { useShowSlotLevels } from '@/stores/uiStore';
 import { PowerRow } from './PowerRow';
 import { getPowerIconPath } from '@/data';
+import { useSlotLevels } from '@/hooks';
 import type { SelectedPower } from '@/types';
 
 interface ChronologicalInherentsSectionProps {
@@ -25,6 +27,8 @@ export function ChronologicalInherentsSection({ inherents }: ChronologicalInhere
   const unlockInfoPanel = useUIStore((s) => s.unlockInfoPanel);
   const infoPanelLocked = useUIStore((s) => s.infoPanel.locked);
   const lockedContent = useUIStore((s) => s.infoPanel.lockedContent);
+  const showSlotLevels = useShowSlotLevels();
+  const slotLevelsMap = useSlotLevels();
 
   // Group inherent powers by category
   const inherentGroups = useMemo(() => {
@@ -172,6 +176,7 @@ export function ChronologicalInherentsSection({ inherents }: ChronologicalInhere
               onRemoveAllSlots={handleRemoveAllSlots}
               onClearAllEnhancements={handleClearAllEnhancements}
               onInfoClick={handleInfoClick}
+              slotLevelsMap={showSlotLevels ? slotLevelsMap : undefined}
             />
           )}
 
@@ -191,6 +196,7 @@ export function ChronologicalInherentsSection({ inherents }: ChronologicalInhere
               onRemoveAllSlots={handleRemoveAllSlots}
               onClearAllEnhancements={handleClearAllEnhancements}
               onInfoClick={handleInfoClick}
+              slotLevelsMap={showSlotLevels ? slotLevelsMap : undefined}
             />
           )}
 
@@ -210,6 +216,7 @@ export function ChronologicalInherentsSection({ inherents }: ChronologicalInhere
               onRemoveAllSlots={handleRemoveAllSlots}
               onClearAllEnhancements={handleClearAllEnhancements}
               onInfoClick={handleInfoClick}
+              slotLevelsMap={showSlotLevels ? slotLevelsMap : undefined}
             />
           )}
         </div>
@@ -232,6 +239,7 @@ interface InherentGroupProps {
   onRemoveAllSlots: (powerName: string, totalSlots: number) => void;
   onClearAllEnhancements: (powerName: string, totalSlots: number) => void;
   onInfoClick: (power: SelectedPower) => void;
+  slotLevelsMap?: Map<string, number[]>;
 }
 
 function InherentGroup({
@@ -248,6 +256,7 @@ function InherentGroup({
   onRemoveAllSlots,
   onClearAllEnhancements,
   onInfoClick,
+  slotLevelsMap,
 }: InherentGroupProps) {
   const openEnhancementPicker = useUIStore((s) => s.openEnhancementPicker);
   const openCompareSlotting = useUIStore((s) => s.openCompareSlotting);
@@ -285,6 +294,7 @@ function InherentGroup({
               onRightClick={(e) => onPowerRightClick(e, power)}
               onCompareSlotting={() => openCompareSlotting(power.name, 'Inherent')}
               onInfoClick={() => onInfoClick(power)}
+              slotLevels={slotLevelsMap?.get(power.name)}
             />
           );
         })}

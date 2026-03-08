@@ -68,36 +68,48 @@ export function getPowerPicksAtLevel(level: number): number {
 
 /**
  * Enhancement slot grants by level.
- * Key = level, Value = number of slots granted at that level.
+ * Key = level, Value = number of PLACEABLE slots granted at that level.
+ * These are the extra slots players can freely assign — NOT the free slot 0
+ * that comes with every power pick.
  *
- * Level 1: 2 slots (first power gets 1 slot automatically, plus 1 additional)
- * Levels 2-21 (even): 2 slots each
- * Levels 22-50 (even): 3 slots each
+ * Pattern:
+ *   L1-L2: No placeable slots (only free defaults for picked powers)
+ *   L3-L29 (odd levels): 2 placeable slots each
+ *   L31+: 3 placeable slots, schedule interleaved with power picks:
+ *     31 slots, 32 power, 33 slots, 34 slots,
+ *     35 power, 36 slots, 37 slots, 38 power, 39 slots, 40 slots,
+ *     41 power, 42 slots, 43 slots, 44 power, 45 slots, 46 slots,
+ *     47 power, 48 slots, 49 power, 50 slots
+ *
+ * Total: 14×2 + 13×3 = 67 placeable slots at level 50
  */
 export const SLOT_GRANTS: Readonly<Record<number, number>> = {
-  1: 2,
-  2: 2,
-  4: 2,
-  6: 2,
-  8: 2,
-  10: 2,
-  12: 2,
-  14: 2,
-  16: 2,
-  18: 2,
-  20: 2,
-  22: 3,
-  24: 3,
-  26: 3,
-  28: 3,
-  30: 3,
-  32: 3,
+  // Levels 3-29 (odd): 2 slots each
+  3: 2,
+  5: 2,
+  7: 2,
+  9: 2,
+  11: 2,
+  13: 2,
+  15: 2,
+  17: 2,
+  19: 2,
+  21: 2,
+  23: 2,
+  25: 2,
+  27: 2,
+  29: 2,
+  // Levels 31+: 3 slots each
+  31: 3,
+  33: 3,
   34: 3,
   36: 3,
-  38: 3,
+  37: 3,
+  39: 3,
   40: 3,
   42: 3,
-  44: 3,
+  43: 3,
+  45: 3,
   46: 3,
   48: 3,
   50: 3,

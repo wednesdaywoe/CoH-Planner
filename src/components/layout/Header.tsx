@@ -100,6 +100,8 @@ export function Header() {
   const openExportImportModal = useUIStore((s) => s.openExportImportModal);
   const selectedBranch = useUIStore((s) => s.selectedBranch);
   const setSelectedBranch = useUIStore((s) => s.setSelectedBranch);
+  const showSlotLevels = useUIStore((s) => s.showSlotLevels);
+  const toggleShowSlotLevels = useUIStore((s) => s.toggleShowSlotLevels);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -577,6 +579,19 @@ export function Header() {
               showRange={false}
             />
           </div>
+          <Tooltip content="Show/hide slot level labels on enhancement slots">
+            <div className={`flex items-center px-2 py-1.5 rounded border ${
+              showSlotLevels ? 'bg-slate-700/50 border-slate-500' : 'bg-slate-700/50 border-slate-600'
+            }`}>
+              <Toggle
+                id="slot-levels-toggle"
+                name="showSlotLevels"
+                checked={showSlotLevels}
+                onChange={toggleShowSlotLevels}
+                label="Slot Lvls"
+              />
+            </div>
+          </Tooltip>
           <Tooltip content="When enabled, set bonuses are suppressed based on build level (simulates exemplaring down)">
             <div className={`flex items-center px-2 py-1.5 rounded border ${
               exemplarMode ? 'bg-amber-900/20 border-amber-600/50' : 'bg-slate-700/50 border-slate-600'

@@ -5,11 +5,13 @@
 
 import { useState } from 'react';
 import { useBuildStore, useUIStore } from '@/stores';
+import { useShowSlotLevels } from '@/stores/uiStore';
 import type { PowerCategory } from '@/stores';
 import type { SelectedPower, Power } from '@/types';
 import { getPowerIconPath, getPowerset, hasGrantedPowers, getGrantedPowerGroup, GRANTED_POWER_GROUPS } from '@/data';
 import { resolvePath } from '@/utils/paths';
 import { Tooltip } from '@/components/ui';
+import { useSlotLevels } from '@/hooks';
 import { PowerRow } from './PowerRow';
 import { shouldShowToggle } from './power-row-utils';
 
@@ -34,6 +36,8 @@ export function SelectedPowers({ category }: SelectedPowersProps) {
   const lockedContent = useUIStore((s) => s.infoPanel.lockedContent);
   const openEnhancementPicker = useUIStore((s) => s.openEnhancementPicker);
   const openCompareSlotting = useUIStore((s) => s.openCompareSlotting);
+  const showSlotLevels = useShowSlotLevels();
+  const slotLevelsMap = useSlotLevels();
 
   const selection = category === 'primary' ? build.primary : build.secondary;
   const powersetId = selection.id || '';
@@ -206,6 +210,7 @@ export function SelectedPowers({ category }: SelectedPowersProps) {
                       }
                     }
                   }}
+                  slotLevels={showSlotLevels ? slotLevelsMap.get(power.name) : undefined}
                 />
 
                 {/* Granted sub-powers display (simple toggles) */}
@@ -261,6 +266,7 @@ export function SelectedPowers({ category }: SelectedPowersProps) {
                               }
                             }
                           }}
+                          slotLevels={showSlotLevels ? slotLevelsMap.get(subPower.name) : undefined}
                         />
                       );
                     })}

@@ -32,3 +32,4 @@ export type {
 export { useLongPress } from './useLongPress';
 export { useSwipeToRemove } from './useSwipeToRemove';
 export { useActivePowerBuffs } from './useActivePowerBuffs';
+export { useSlotLevels } from './useSlotLevels';

@@ -2001,15 +2001,16 @@ export function calculateCharacterTotals(
   const globalBonuses = createEmptyGlobalBonuses();
 
   // Step 1: Calculate set bonuses with Rule of 5
-  // In exemplar mode, use exemplar level; otherwise always use 50
+  // effectiveLevel drives HP, fitness, and toggle scaling — always use build.level
+  // Set bonus suppression only applies in exemplar mode (don't suppress at low build levels)
   const exemplarLevel = options?.exemplarLevel;
-  const effectiveLevel = exemplarMode ? (exemplarLevel ?? build.level) : 50;
+  const effectiveLevel = exemplarMode ? (exemplarLevel ?? build.level) : build.level;
   const buildPowers = buildToBuildPowers(build);
   const { bonuses: setBonusAggregated, tracking } = calculateSetBonuses(
     buildPowers,
     getIOSet,
     exemplarMode ? effectiveLevel : undefined,
-    effectiveLevel
+    exemplarMode ? effectiveLevel : 50
   );
 
 

@@ -13,10 +13,10 @@ import { SlotContextMenu } from './SlotContextMenu';
 
 export type SlotSize = 'xs' | 'sm' | 'md';
 
-const SIZE_CONFIG: Record<SlotSize, { className: string; iconSize: number; fontSize: string }> = {
-  xs: { className: 'w-4 h-4', iconSize: 16, fontSize: 'text-[7px]' },
-  sm: { className: 'w-5 h-5', iconSize: 20, fontSize: 'text-[8px]' },
-  md: { className: 'w-6 h-6', iconSize: 24, fontSize: 'text-[9px]' },
+const SIZE_CONFIG: Record<SlotSize, { className: string; iconSize: number; fontSize: string; levelFontSize: number }> = {
+  xs: { className: 'w-4 h-4', iconSize: 16, fontSize: 'text-[7px]', levelFontSize: 6 },
+  sm: { className: 'w-5 h-5', iconSize: 20, fontSize: 'text-[8px]', levelFontSize: 7 },
+  md: { className: 'w-6 h-6', iconSize: 24, fontSize: 'text-[9px]', levelFontSize: 8 },
 };
 
 interface TouchableSlotProps {
@@ -24,6 +24,7 @@ interface TouchableSlotProps {
   index: number;
   canRemoveSlot: boolean;
   size?: SlotSize;
+  slotLevel?: number;
   onClick: () => void;
   onMouseEnter: () => void;
   onClearEnhancement: () => void;
@@ -38,6 +39,7 @@ export function TouchableSlot({
   index,
   canRemoveSlot,
   size = 'md',
+  slotLevel,
   onClick,
   onMouseEnter,
   onClearEnhancement,
@@ -106,35 +108,45 @@ export function TouchableSlot({
 
   return (
     <>
-      <div
-        onClick={handleClick}
-        onMouseEnter={onMouseEnter}
-        onContextMenu={handleContextMenu}
-        onTouchStart={handleTouchStart}
-        onTouchEnd={handleTouchEnd}
-        onTouchMove={handleTouchMove}
-        onTouchCancel={handleTouchMove}
-        className={`
-          ${config.className} rounded-full border flex items-center justify-center
-          ${config.fontSize} font-semibold cursor-pointer transition-transform hover:scale-110
-          select-none
-          ${
+      <div className="relative">
+        <div
+          onClick={handleClick}
+          onMouseEnter={onMouseEnter}
+          onContextMenu={handleContextMenu}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+          onTouchMove={handleTouchMove}
+          onTouchCancel={handleTouchMove}
+          className={`
+            ${config.className} rounded-full border flex items-center justify-center
+            ${config.fontSize} font-semibold cursor-pointer transition-transform hover:scale-110
+            select-none
+            ${
+              slot
+                ? 'border-transparent bg-transparent'
+                : 'border-slate-600 bg-slate-700/50 text-slate-500 hover:border-blue-500 hover:bg-slate-600'
+            }
+          `}
+          style={{ WebkitTouchCallout: 'none', WebkitUserSelect: 'none' }}
+          title={
             slot
-              ? 'border-transparent bg-transparent'
-              : 'border-slate-600 bg-slate-700/50 text-slate-500 hover:border-blue-500 hover:bg-slate-600'
+              ? `${slot.name || 'Enhancement'} - right-click to remove, Shift+right-click for menu`
+              : `Empty slot ${index + 1} - tap to add${canRemoveSlot ? ', right-click to remove' : ''}`
           }
-        `}
-        style={{ WebkitTouchCallout: 'none', WebkitUserSelect: 'none' }}
-        title={
-          slot
-            ? `${slot.name || 'Enhancement'} - right-click to remove, Shift+right-click for menu`
-            : `Empty slot ${index + 1} - tap to add${canRemoveSlot ? ', right-click to remove' : ''}`
-        }
-      >
-        {slot ? (
-          <SlottedEnhancementIcon enhancement={slot} size={config.iconSize} />
-        ) : (
-          <span className="text-slate-400">+</span>
+        >
+          {slot ? (
+            <SlottedEnhancementIcon enhancement={slot} size={config.iconSize} />
+          ) : (
+            <span className="text-slate-400">+</span>
+          )}
+        </div>
+        {slotLevel !== undefined && (
+          <div
+            className="absolute left-1/2 -translate-x-1/2 bg-gray-900/90 text-slate-300 border border-slate-600 rounded-sm pointer-events-none z-20 leading-none px-px"
+            style={{ bottom: -4, fontSize: config.levelFontSize, minWidth: config.levelFontSize * 1.6 }}
+          >
+            <span className="flex items-center justify-center">{slotLevel}</span>
+          </div>
         )}
       </div>
 

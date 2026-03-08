@@ -6,8 +6,10 @@
  */
 
 import { useBuildStore, useUIStore } from '@/stores';
+import { useShowSlotLevels } from '@/stores/uiStore';
 import type { PowerCategory as StorePowerCategory } from '@/stores';
 import { getPowerIconPath } from '@/data';
+import { useSlotLevels } from '@/hooks';
 import { PowerRow } from './PowerRow';
 import { shouldShowToggle } from './power-row-utils';
 import type { CategorizedPower, PowerCategory } from './ChronologicalPowerView';
@@ -64,6 +66,8 @@ export function ChronologicalPowerSlot({
   const lockedContent = useUIStore((s) => s.infoPanel.lockedContent);
   const openEnhancementPicker = useUIStore((s) => s.openEnhancementPicker);
   const openCompareSlotting = useUIStore((s) => s.openCompareSlotting);
+  const showSlotLevels = useShowSlotLevels();
+  const slotLevelsMap = useSlotLevels();
 
   const iconSrc = power ? getPowerIconPath(power.icon) : '';
 
@@ -180,6 +184,7 @@ export function ChronologicalPowerSlot({
       onEnhancementHover={handleEnhancementHover}
       onRightClick={handleRightClick}
       onCompareSlotting={() => openCompareSlotting(power.name, power.powerSet)}
+      slotLevels={showSlotLevels ? slotLevelsMap.get(power.name) : undefined}
       onInfoClick={() => {
         if (power.powerSet) {
           if (isLocked) {

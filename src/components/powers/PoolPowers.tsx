@@ -6,6 +6,7 @@
 
 import { useMemo, useState } from 'react';
 import { useBuildStore, useUIStore } from '@/stores';
+import { useShowSlotLevels } from '@/stores/uiStore';
 import {
   getPowerPool,
   getPowerIconPath,
@@ -14,6 +15,7 @@ import {
 } from '@/data';
 import { resolvePath } from '@/utils/paths';
 import { Tooltip } from '@/components/ui';
+import { useSlotLevels } from '@/hooks';
 import { PowerRow } from './PowerRow';
 import { shouldShowToggle } from './power-row-utils';
 import type { Power, SelectedPower } from '@/types';
@@ -32,6 +34,9 @@ export function PoolPowers() {
   const unlockInfoPanel = useUIStore((s) => s.unlockInfoPanel);
   const infoPanelLocked = useUIStore((s) => s.infoPanel.locked);
   const lockedContent = useUIStore((s) => s.infoPanel.lockedContent);
+
+  const showSlotLevels = useShowSlotLevels();
+  const slotLevelsMap = useSlotLevels();
 
   const pools = build.pools;
 
@@ -191,6 +196,7 @@ export function PoolPowers() {
                 lockInfoPanel({ type: 'power', powerName: power.name, powerSet: poolSelection.id });
               }
             }}
+            slotLevelsMap={showSlotLevels ? slotLevelsMap : undefined}
           />
         );
       })}
@@ -200,6 +206,7 @@ export function PoolPowers() {
         <EpicPoolSelectedPowers
           epicPool={build.epicPool!}
           isPowerLocked={isPowerLocked}
+          slotLevelsMap={showSlotLevels ? slotLevelsMap : undefined}
         />
       )}
 
@@ -227,6 +234,7 @@ export function PoolPowers() {
                   lockInfoPanel({ type: 'power', powerName: power.name, powerSet: 'Inherent' });
                 }
               }}
+              slotLevelsMap={showSlotLevels ? slotLevelsMap : undefined}
             />
           )}
 
@@ -333,6 +341,7 @@ interface PoolPowerGroupProps {
   onRemoveAllSlots: (powerName: string, totalSlots: number) => void;
   onClearAllEnhancements: (powerName: string, totalSlots: number) => void;
   onInfoClick: (power: Power | SelectedPower) => void;
+  slotLevelsMap?: Map<string, number[]>;
 }
 
 function PoolPowerGroup({
@@ -354,6 +363,7 @@ function PoolPowerGroup({
   onRemoveAllSlots,
   onClearAllEnhancements,
   onInfoClick,
+  slotLevelsMap,
 }: PoolPowerGroupProps) {
   const [collapsed, setCollapsed] = useState(false);
   const openEnhancementPicker = useUIStore((s) => s.openEnhancementPicker);
@@ -421,6 +431,7 @@ function PoolPowerGroup({
                   onRightClick={(e) => onPowerRightClick(e, power)}
                   onCompareSlotting={() => openCompareSlotting(power.name, poolId)}
                   onInfoClick={() => onInfoClick(power)}
+                  slotLevels={slotLevelsMap?.get(power.name)}
                 />
 
                 {/* Granted sub-powers display */}
@@ -553,9 +564,10 @@ function GrantedPoolSubPowers({
 interface EpicPoolSelectedPowersProps {
   epicPool: { id: string; name: string; powers: SelectedPower[] };
   isPowerLocked: (powerName: string) => boolean;
+  slotLevelsMap?: Map<string, number[]>;
 }
 
-function EpicPoolSelectedPowers({ epicPool, isPowerLocked }: EpicPoolSelectedPowersProps) {
+function EpicPoolSelectedPowers({ epicPool, isPowerLocked, slotLevelsMap }: EpicPoolSelectedPowersProps) {
   const [collapsed, setCollapsed] = useState(false);
 
   const removePower = useBuildStore((s) => s.removePower);
@@ -689,6 +701,7 @@ function EpicPoolSelectedPowers({ epicPool, isPowerLocked }: EpicPoolSelectedPow
                     lockInfoPanel({ type: 'power', powerName: power.name, powerSet: epicPool.id });
                   }
                 }}
+                slotLevels={slotLevelsMap?.get(power.name)}
               />
             );
           })}
@@ -717,6 +730,7 @@ interface InherentPowerGroupProps {
   onClearAllEnhancements: (powerName: string, totalSlots: number) => void;
   onInfoClick: (power: SelectedPower) => void;
   defaultCollapsed?: boolean;
+  slotLevelsMap?: Map<string, number[]>;
 }
 
 function InherentPowerGroup({
@@ -734,6 +748,7 @@ function InherentPowerGroup({
   onClearAllEnhancements,
   onInfoClick,
   defaultCollapsed = false,
+  slotLevelsMap,
 }: InherentPowerGroupProps) {
   const [collapsed, setCollapsed] = useState(defaultCollapsed);
   const openEnhancementPicker = useUIStore((s) => s.openEnhancementPicker);
@@ -786,6 +801,7 @@ function InherentPowerGroup({
                 onRightClick={(e) => onPowerRightClick(e, power)}
                 onCompareSlotting={() => openCompareSlotting(power.name, 'Inherent')}
                 onInfoClick={() => onInfoClick(power)}
+                slotLevels={slotLevelsMap?.get(power.name)}
               />
             );
           })}

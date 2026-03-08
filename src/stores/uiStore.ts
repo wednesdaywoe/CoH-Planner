@@ -174,6 +174,9 @@ interface UIState {
 
   /** Per-target slider values keyed by power name (0 = buff inactive, 1+ = targets hit) */
   targetsHitValues: Record<string, number>;
+
+  /** Show slot level labels on enhancement slots */
+  showSlotLevels: boolean;
 }
 
 interface UIActions {
@@ -346,6 +349,9 @@ interface UIActions {
 
   // Per-target slider
   setTargetsHit: (powerName: string, value: number) => void;
+
+  // Slot level labels
+  toggleShowSlotLevels: () => void;
 }
 
 type UIStore = UIState & UIActions;
@@ -460,6 +466,7 @@ export const useUIStore = create<UIStore>()(
       powerViewMode: 'category', // Default to category-based view
       trackedStats: [], // No tracked stats by default
       targetsHitValues: {}, // No per-target overrides by default
+      showSlotLevels: true, // Show slot level labels by default
 
       // Enhancement Picker Modal
       openEnhancementPicker: (powerName, powerSet, slotIndex, overrideSelect, virtualSlots) =>
@@ -1015,6 +1022,12 @@ export const useUIStore = create<UIStore>()(
         set((state) => ({
           targetsHitValues: { ...state.targetsHitValues, [powerName]: value },
         })),
+
+      // Slot level labels
+      toggleShowSlotLevels: () =>
+        set((state) => ({
+          showSlotLevels: !state.showSlotLevels,
+        })),
     }),
     {
       name: 'coh-planner-ui',
@@ -1045,6 +1058,7 @@ export const useUIStore = create<UIStore>()(
         selectedBranch: state.selectedBranch,
         powerViewMode: state.powerViewMode,
         trackedStats: state.trackedStats,
+        showSlotLevels: state.showSlotLevels,
       }),
     })
   );
@@ -1145,3 +1159,6 @@ export const usePowerViewMode = () => useUIStore((state) => state.powerViewMode)
 /** Select targets-hit value for a specific power */
 export const useTargetsHit = (powerName: string) =>
   useUIStore((state) => state.targetsHitValues[powerName] ?? 0);
+
+/** Select slot level labels visibility */
+export const useShowSlotLevels = () => useUIStore((state) => state.showSlotLevels);
