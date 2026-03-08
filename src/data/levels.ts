@@ -251,6 +251,7 @@ export const EARLY_TRAVEL_POWERS: readonly string[] = [
   'Infiltration',
   'Speed of Sound',
   'Mystic Flight',
+  'Mighty Leap',
 ] as const;
 
 /**
