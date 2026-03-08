@@ -11188,7 +11188,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": true
       }
     ],
-    "icon": "sFreebird.png"
+    "icon": "sHypersonic.png"
   },
   "ice_mistrals_torment": {
     "name": "Ice Mistral's Torment",
@@ -24950,7 +24950,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": true
       }
     ],
-    "icon": "sEnergyManip.png"
+    "icon": "sSynapsesShock.png"
   },
   "tempered_readiness": {
     "name": "Tempered Readiness",

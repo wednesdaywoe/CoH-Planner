@@ -683,8 +683,11 @@ export function getByTypeAbbreviations(obj: Record<string, unknown>): string {
     melee: 'Mel', ranged: 'Rng', aoe: 'AoE',
     run: 'Run', fly: 'Fly', jump: 'Jmp',
   };
-  return Object.keys(obj)
-    .map(k => typeAbbrev[k.toLowerCase()] || k.charAt(0).toUpperCase())
+  const allDamageTypes = ['smashing', 'lethal', 'fire', 'cold', 'energy', 'negative', 'psionic', 'toxic'];
+  const keys = Object.keys(obj).map(k => k.toLowerCase());
+  if (allDamageTypes.every(t => keys.includes(t))) return 'All';
+  return keys
+    .map(k => typeAbbrev[k] || k.charAt(0).toUpperCase())
     .join('');
 }
 

@@ -562,6 +562,7 @@ function EpicPoolSelectedPowers({ epicPool, isPowerLocked }: EpicPoolSelectedPow
   const addSlot = useBuildStore((s) => s.addSlot);
   const removeSlot = useBuildStore((s) => s.removeSlot);
   const clearEnhancement = useBuildStore((s) => s.clearEnhancement);
+  const togglePowerActive = useBuildStore((s) => s.togglePowerActive);
   const setInfoPanelContent = useUIStore((s) => s.setInfoPanelContent);
   const clearInfoPanel = useUIStore((s) => s.clearInfoPanel);
   const lockInfoPanel = useUIStore((s) => s.lockInfoPanel);
@@ -664,6 +665,9 @@ function EpicPoolSelectedPowers({ epicPool, isPowerLocked }: EpicPoolSelectedPow
                 stackedLayout
                 level={power.level}
                 isLocked={isLocked}
+                toggleSize={shouldShowToggle(power) ? 'md' : undefined}
+                isActive={power.isActive ?? false}
+                onToggle={() => togglePowerActive(power.name)}
                 slots={power.slots}
                 maxSlots={power.maxSlots}
                 onRemove={() => removePower('epic', power.name)}

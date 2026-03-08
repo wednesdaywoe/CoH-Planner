@@ -365,7 +365,7 @@ export const INHERENT_FITNESS_POWERS: InherentPowerDef[] = [
     available: -1,
     maxSlots: 6,
     allowedEnhancements: ['Run Speed', 'Fly'],
-    allowedSetCategories: ['Running', 'Flight'],
+    allowedSetCategories: [],
     isLocked: true,
     category: 'fitness',
     effects: {
@@ -383,7 +383,7 @@ export const INHERENT_FITNESS_POWERS: InherentPowerDef[] = [
     available: -1,
     maxSlots: 6,
     allowedEnhancements: ['Jump'],
-    allowedSetCategories: ['Leaping'],
+    allowedSetCategories: [],
     isLocked: true,
     category: 'fitness',
     effects: {
