@@ -19,6 +19,7 @@ import {
   sortRarePowers,
   STANDARD_TREE_LAYOUT,
 } from '@/data';
+import { useBuildStore } from '@/stores';
 import { getIncarnateEffectData } from './IncarnateEffectsTooltip';
 
 // ============================================
@@ -110,8 +111,9 @@ interface InfoPanelProps {
 }
 
 function InfoPanel({ power, slotId }: InfoPanelProps) {
+  const build = useBuildStore((s) => s.build);
   const tierColor = power ? getTierColor(power.tier) : undefined;
-  const effectData = power ? getIncarnateEffectData(slotId, power.id) : null;
+  const effectData = power ? getIncarnateEffectData(slotId, power.id, build.archetype.id ?? undefined, build.level) : null;
 
   return (
     <div

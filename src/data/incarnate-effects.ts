@@ -114,6 +114,9 @@ export interface HybridEffects {
 
   // Control tree - mez effects (not stats, but for display)
   mezMagnitudeBonus?: number;
+  // Control tree - containment damage proc
+  containmentScale?: number;       // damage scale for containment proc
+  containmentTableName?: string;   // AT table (e.g., "Melee_Tempdamage")
 
   // Duration info
   duration?: number;
@@ -131,8 +134,9 @@ export interface InterfaceEffects {
 
   // DoT type and damage
   dotType?: string;  // e.g., "Fire", "Cold", "Toxic"
-  dotDamage?: number;
+  dotDamage?: number;       // damage scale value
   dotDuration?: number;
+  dotTableName?: string;    // AT table for DoT calc (e.g., "Melee_Tempdamage")
 
   // Proc chance
   procChance?: number;
@@ -151,6 +155,7 @@ export interface JudgementEffects {
   activationTime: number;    // seconds
   rechargeTime: number;      // seconds (always 90)
   damageScale: number;       // usually 4.0
+  tableName: string;         // AT table for damage calc (e.g., "Ranged_Tempdamage")
   secondaryEffects: string[];  // descriptive strings for display
 }
 
@@ -1212,49 +1217,58 @@ const HYBRID_EFFECTS: Record<string, HybridEffects> = {
   },
 
   // ========== CONTROL ==========
-  // Mez effects (for display, not dashboard stats)
+  // Mez effects + containment damage proc (Waylay)
   'control_genome': {
     mezMagnitudeBonus: 0,
+    containmentScale: 0.3, containmentTableName: 'Melee_Tempdamage',
     duration: 120,
     recharge: 120,
   },
   'control_core_genome': {
     mezMagnitudeBonus: 1,
+    containmentScale: 0.3, containmentTableName: 'Melee_Tempdamage',
     duration: 120,
     recharge: 120,
   },
   'control_radial_genome': {
     mezMagnitudeBonus: 0,
+    containmentScale: 0.3, containmentTableName: 'Melee_Tempdamage',
     duration: 120,
     recharge: 120,
   },
   'control_total_core_graft': {
     mezMagnitudeBonus: 1,
+    containmentScale: 0.3, containmentTableName: 'Melee_Tempdamage',
     duration: 120,
     recharge: 120,
   },
   'control_partial_core_graft': {
     mezMagnitudeBonus: 1,
+    containmentScale: 0.3, containmentTableName: 'Melee_Tempdamage',
     duration: 120,
     recharge: 120,
   },
   'control_partial_radial_graft': {
     mezMagnitudeBonus: 1,
+    containmentScale: 0.3, containmentTableName: 'Melee_Tempdamage',
     duration: 120,
     recharge: 120,
   },
   'control_total_radial_graft': {
     mezMagnitudeBonus: 0,
+    containmentScale: 0.3, containmentTableName: 'Melee_Tempdamage',
     duration: 120,
     recharge: 120,
   },
   'control_core_embodiment': {
     mezMagnitudeBonus: 1,
+    containmentScale: 0.3, containmentTableName: 'Melee_Tempdamage',
     duration: 120,
     recharge: 120,
   },
   'control_radial_embodiment': {
     mezMagnitudeBonus: 0,
+    containmentScale: 0.3, containmentTableName: 'Melee_Tempdamage',
     duration: 120,
     recharge: 120,
   },
@@ -1316,63 +1330,63 @@ const INTERFACE_EFFECTS: Record<string, InterfaceEffects> = {
   // ========== REACTIVE ==========
   // DoT + -Resistance
   'reactive_interface': {
-    dotType: 'Toxic',
+    dotType: 'Toxic', dotTableName: 'Melee_Tempdamage',
     dotDamage: 0.20,
     debuffType: '-Resistance',
     debuffMagnitude: 0.05,
     procChance: 0.20,
   },
   'reactive_core_interface': {
-    dotType: 'Toxic',
+    dotType: 'Toxic', dotTableName: 'Melee_Tempdamage',
     dotDamage: 0.30,
     debuffType: '-Resistance',
     debuffMagnitude: 0.10,
     procChance: 0.20,
   },
   'reactive_radial_interface': {
-    dotType: 'Toxic',
+    dotType: 'Toxic', dotTableName: 'Melee_Tempdamage',
     dotDamage: 0.20,
     debuffType: '-Resistance',
     debuffMagnitude: 0.075,
     procChance: 0.30,
   },
   'reactive_total_core_conversion': {
-    dotType: 'Toxic',
+    dotType: 'Toxic', dotTableName: 'Melee_Tempdamage',
     dotDamage: 0.40,
     debuffType: '-Resistance',
     debuffMagnitude: 0.15,
     procChance: 0.20,
   },
   'reactive_partial_core_conversion': {
-    dotType: 'Toxic',
+    dotType: 'Toxic', dotTableName: 'Melee_Tempdamage',
     dotDamage: 0.35,
     debuffType: '-Resistance',
     debuffMagnitude: 0.125,
     procChance: 0.25,
   },
   'reactive_partial_radial_conversion': {
-    dotType: 'Toxic',
+    dotType: 'Toxic', dotTableName: 'Melee_Tempdamage',
     dotDamage: 0.25,
     debuffType: '-Resistance',
     debuffMagnitude: 0.10,
     procChance: 0.35,
   },
   'reactive_total_radial_conversion': {
-    dotType: 'Toxic',
+    dotType: 'Toxic', dotTableName: 'Melee_Tempdamage',
     dotDamage: 0.15,
     debuffType: '-Resistance',
     debuffMagnitude: 0.075,
     procChance: 0.50,
   },
   'reactive_core_flawless_interface': {
-    dotType: 'Toxic',
+    dotType: 'Toxic', dotTableName: 'Melee_Tempdamage',
     dotDamage: 0.50,
     debuffType: '-Resistance',
     debuffMagnitude: 0.20,
     procChance: 0.25,
   },
   'reactive_radial_flawless_interface': {
-    dotType: 'Toxic',
+    dotType: 'Toxic', dotTableName: 'Melee_Tempdamage',
     dotDamage: 0.25,
     debuffType: '-Resistance',
     debuffMagnitude: 0.125,
@@ -1570,6 +1584,106 @@ const INTERFACE_EFFECTS: Record<string, InterfaceEffects> = {
     debuffMagnitude: 0.125,
     procChance: 0.50,
   },
+
+  // ========== COGNITIVE ==========
+  // Confuse proc; Radial adds Psionic DoT
+  'cognitive_interface': {
+    debuffType: 'Confuse',
+    procChance: 0.08,
+  },
+  'cognitive_core_interface': {
+    debuffType: 'Confuse',
+    procChance: 0.12,
+  },
+  'cognitive_radial_interface': {
+    debuffType: 'Confuse',
+    procChance: 0.08,
+    dotType: 'Psionic', dotTableName: 'Melee_Tempdamage',
+    dotDamage: 0.25,
+  },
+  'cognitive_total_core_conversion': {
+    debuffType: 'Confuse',
+    procChance: 0.16,
+  },
+  'cognitive_partial_core_conversion': {
+    debuffType: 'Confuse',
+    procChance: 0.12,
+    dotType: 'Psionic', dotTableName: 'Melee_Tempdamage',
+    dotDamage: 0.25,
+  },
+  'cognitive_partial_radial_conversion': {
+    debuffType: 'Confuse',
+    procChance: 0.08,
+    dotType: 'Psionic', dotTableName: 'Melee_Tempdamage',
+    dotDamage: 0.50,
+  },
+  'cognitive_total_radial_conversion': {
+    debuffType: 'Confuse',
+    procChance: 0.04,
+    dotType: 'Psionic', dotTableName: 'Melee_Tempdamage',
+    dotDamage: 0.75,
+  },
+  'cognitive_core_flawless_interface': {
+    debuffType: 'Confuse',
+    procChance: 0.20,
+    dotType: 'Psionic', dotTableName: 'Melee_Tempdamage',
+    dotDamage: 0.25,
+  },
+  'cognitive_radial_flawless_interface': {
+    debuffType: 'Confuse',
+    procChance: 0.12,
+    dotType: 'Psionic', dotTableName: 'Melee_Tempdamage',
+    dotDamage: 0.75,
+  },
+
+  // ========== PREEMPTIVE ==========
+  // -End drain, -Recovery proc; Radial adds Energy DoT
+  'preemptive_interface': {
+    debuffType: '-End, -Recovery',
+    procChance: 0.25,
+  },
+  'preemptive_core_interface': {
+    debuffType: '-End, -Recovery',
+    procChance: 0.50,
+  },
+  'preemptive_radial_interface': {
+    debuffType: '-End, -Recovery',
+    procChance: 0.25,
+    dotType: 'Energy', dotTableName: 'Melee_Tempdamage',
+    dotDamage: 0.25,
+  },
+  'preemptive_total_core_conversion': {
+    debuffType: '-End, -Recovery',
+    procChance: 0.75,
+  },
+  'preemptive_partial_core_conversion': {
+    debuffType: '-End, -Recovery',
+    procChance: 0.50,
+    dotType: 'Energy', dotTableName: 'Melee_Tempdamage',
+    dotDamage: 0.25,
+  },
+  'preemptive_partial_radial_conversion': {
+    debuffType: '-End, -Recovery',
+    procChance: 0.25,
+    dotType: 'Energy', dotTableName: 'Melee_Tempdamage',
+    dotDamage: 0.50,
+  },
+  'preemptive_total_radial_conversion': {
+    dotType: 'Energy', dotTableName: 'Melee_Tempdamage',
+    dotDamage: 0.75,
+  },
+  'preemptive_core_flawless_interface': {
+    debuffType: '-End, -Recovery',
+    procChance: 0.75,
+    dotType: 'Energy', dotTableName: 'Melee_Tempdamage',
+    dotDamage: 0.25,
+  },
+  'preemptive_radial_flawless_interface': {
+    debuffType: '-End, -Recovery',
+    procChance: 0.25,
+    dotType: 'Energy', dotTableName: 'Melee_Tempdamage',
+    dotDamage: 0.75,
+  },
 };
 
 // ============================================
@@ -1581,47 +1695,47 @@ const JUDGEMENT_EFFECTS: Record<string, JudgementEffects> = {
   // Ranged Cone, Cold damage
   'cryonic_judgement': {
     damageType: 'Cold', effectArea: 'Cone', range: 80, radius: 80, arc: 30,
-    maxTargets: 16, activationTime: 2, rechargeTime: 90, damageScale: 4.0,
+    maxTargets: 16, activationTime: 2, rechargeTime: 90, damageScale: 4.0, tableName: 'Ranged_Tempdamage',
     secondaryEffects: [],
   },
   'cryonic_core_judgement': {
     damageType: 'Cold', effectArea: 'Cone', range: 80, radius: 80, arc: 30,
-    maxTargets: 16, activationTime: 2, rechargeTime: 90, damageScale: 4.0,
+    maxTargets: 16, activationTime: 2, rechargeTime: 90, damageScale: 4.0, tableName: 'Ranged_Tempdamage',
     secondaryEffects: ['Judgement Critical (20% chance)'],
   },
   'cryonic_radial_judgement': {
     damageType: 'Cold', effectArea: 'Cone', range: 80, radius: 80, arc: 30,
-    maxTargets: 16, activationTime: 2, rechargeTime: 90, damageScale: 4.0,
+    maxTargets: 16, activationTime: 2, rechargeTime: 90, damageScale: 4.0, tableName: 'Ranged_Tempdamage',
     secondaryEffects: ['-Speed', '-Recharge'],
   },
   'cryonic_total_core_judgement': {
     damageType: 'Cold', effectArea: 'Cone', range: 80, radius: 80, arc: 30,
-    maxTargets: 24, activationTime: 2, rechargeTime: 90, damageScale: 4.0,
+    maxTargets: 24, activationTime: 2, rechargeTime: 90, damageScale: 4.0, tableName: 'Ranged_Tempdamage',
     secondaryEffects: ['Judgement Critical (20% chance)'],
   },
   'cryonic_partial_core_judgement': {
     damageType: 'Cold', effectArea: 'Cone', range: 80, radius: 80, arc: 30,
-    maxTargets: 24, activationTime: 2, rechargeTime: 90, damageScale: 4.0,
+    maxTargets: 24, activationTime: 2, rechargeTime: 90, damageScale: 4.0, tableName: 'Ranged_Tempdamage',
     secondaryEffects: ['Judgement Critical (20% chance)', '-Speed', '-Recharge'],
   },
   'cryonic_partial_radial_judgement': {
     damageType: 'Cold', effectArea: 'Cone', range: 120, radius: 120, arc: 45,
-    maxTargets: 32, activationTime: 2, rechargeTime: 90, damageScale: 4.0,
+    maxTargets: 32, activationTime: 2, rechargeTime: 90, damageScale: 4.0, tableName: 'Ranged_Tempdamage',
     secondaryEffects: ['-Speed', '-Recharge'],
   },
   'cryonic_total_radial_judgement': {
     damageType: 'Cold', effectArea: 'Cone', range: 80, radius: 80, arc: 30,
-    maxTargets: 24, activationTime: 2, rechargeTime: 90, damageScale: 4.0,
+    maxTargets: 24, activationTime: 2, rechargeTime: 90, damageScale: 4.0, tableName: 'Ranged_Tempdamage',
     secondaryEffects: ['-Speed', '-Recharge', 'Hold (25% chance)'],
   },
   'cryonic_core_final_judgement': {
     damageType: 'Cold', effectArea: 'Cone', range: 120, radius: 120, arc: 45,
-    maxTargets: 32, activationTime: 2, rechargeTime: 90, damageScale: 4.0,
+    maxTargets: 32, activationTime: 2, rechargeTime: 90, damageScale: 4.0, tableName: 'Ranged_Tempdamage',
     secondaryEffects: ['Judgement Critical (20% chance)'],
   },
   'cryonic_radial_final_judgement': {
     damageType: 'Cold', effectArea: 'Cone', range: 120, radius: 120, arc: 45,
-    maxTargets: 32, activationTime: 2, rechargeTime: 90, damageScale: 4.0,
+    maxTargets: 32, activationTime: 2, rechargeTime: 90, damageScale: 4.0, tableName: 'Ranged_Tempdamage',
     secondaryEffects: ['-Speed', '-Recharge', 'Hold (25% chance)'],
   },
 
@@ -1629,47 +1743,47 @@ const JUDGEMENT_EFFECTS: Record<string, JudgementEffects> = {
   // Chain Ranged AoE, Energy damage
   'ion_judgement': {
     damageType: 'Energy', effectArea: 'Chain', range: 80, radius: 0, arc: 0,
-    maxTargets: 0, activationTime: 2.5, rechargeTime: 90, damageScale: 4.0,
+    maxTargets: 0, activationTime: 2.5, rechargeTime: 90, damageScale: 4.0, tableName: 'Ranged_Tempdamage',
     secondaryEffects: [],
   },
   'ion_core_judgement': {
     damageType: 'Energy', effectArea: 'Chain', range: 80, radius: 0, arc: 0,
-    maxTargets: 0, activationTime: 2.5, rechargeTime: 90, damageScale: 4.0,
+    maxTargets: 0, activationTime: 2.5, rechargeTime: 90, damageScale: 4.0, tableName: 'Ranged_Tempdamage',
     secondaryEffects: ['Judgement Critical (20% chance)'],
   },
   'ion_radial_judgement': {
     damageType: 'Energy', effectArea: 'Chain', range: 80, radius: 0, arc: 0,
-    maxTargets: 0, activationTime: 2.5, rechargeTime: 90, damageScale: 4.0,
+    maxTargets: 0, activationTime: 2.5, rechargeTime: 90, damageScale: 4.0, tableName: 'Ranged_Tempdamage',
     secondaryEffects: ['-Endurance', '-Recovery'],
   },
   'ion_total_core_judgement': {
     damageType: 'Energy', effectArea: 'Chain', range: 80, radius: 0, arc: 0,
-    maxTargets: 0, activationTime: 2.5, rechargeTime: 90, damageScale: 4.0,
+    maxTargets: 0, activationTime: 2.5, rechargeTime: 90, damageScale: 4.0, tableName: 'Ranged_Tempdamage',
     secondaryEffects: ['Judgement Critical (20% chance)'],
   },
   'ion_partial_core_judgement': {
     damageType: 'Energy', effectArea: 'Chain', range: 80, radius: 0, arc: 0,
-    maxTargets: 0, activationTime: 2.5, rechargeTime: 90, damageScale: 4.0,
+    maxTargets: 0, activationTime: 2.5, rechargeTime: 90, damageScale: 4.0, tableName: 'Ranged_Tempdamage',
     secondaryEffects: ['Judgement Critical (20% chance)', '-Endurance', '-Recovery'],
   },
   'ion_partial_radial_judgement': {
     damageType: 'Energy', effectArea: 'Chain', range: 80, radius: 0, arc: 0,
-    maxTargets: 0, activationTime: 2.5, rechargeTime: 90, damageScale: 4.0,
+    maxTargets: 0, activationTime: 2.5, rechargeTime: 90, damageScale: 4.0, tableName: 'Ranged_Tempdamage',
     secondaryEffects: ['-Endurance', '-Recovery'],
   },
   'ion_total_radial_judgement': {
     damageType: 'Energy', effectArea: 'Chain', range: 80, radius: 0, arc: 0,
-    maxTargets: 0, activationTime: 2.5, rechargeTime: 90, damageScale: 4.0,
+    maxTargets: 0, activationTime: 2.5, rechargeTime: 90, damageScale: 4.0, tableName: 'Ranged_Tempdamage',
     secondaryEffects: ['-Endurance', '-Recovery', 'Hold (25% chance)'],
   },
   'ion_core_final_judgement': {
     damageType: 'Energy', effectArea: 'Chain', range: 80, radius: 0, arc: 0,
-    maxTargets: 0, activationTime: 2.5, rechargeTime: 90, damageScale: 4.0,
+    maxTargets: 0, activationTime: 2.5, rechargeTime: 90, damageScale: 4.0, tableName: 'Ranged_Tempdamage',
     secondaryEffects: ['Judgement Critical (20% chance)'],
   },
   'ion_radial_final_judgement': {
     damageType: 'Energy', effectArea: 'Chain', range: 80, radius: 0, arc: 0,
-    maxTargets: 0, activationTime: 2.5, rechargeTime: 90, damageScale: 4.0,
+    maxTargets: 0, activationTime: 2.5, rechargeTime: 90, damageScale: 4.0, tableName: 'Ranged_Tempdamage',
     secondaryEffects: ['-Endurance', '-Recovery', 'Hold (25% chance)'],
   },
 
@@ -1677,47 +1791,47 @@ const JUDGEMENT_EFFECTS: Record<string, JudgementEffects> = {
   // PBAoE, Smashing damage
   'mighty_judgement': {
     damageType: 'Smashing', effectArea: 'PBAoE', range: 0, radius: 30, arc: 0,
-    maxTargets: 16, activationTime: 2.93, rechargeTime: 90, damageScale: 4.0,
+    maxTargets: 16, activationTime: 2.93, rechargeTime: 90, damageScale: 4.0, tableName: 'Ranged_Tempdamage',
     secondaryEffects: [],
   },
   'mighty_core_judgement': {
     damageType: 'Smashing', effectArea: 'PBAoE', range: 0, radius: 30, arc: 0,
-    maxTargets: 16, activationTime: 2.93, rechargeTime: 90, damageScale: 4.0,
+    maxTargets: 16, activationTime: 2.93, rechargeTime: 90, damageScale: 4.0, tableName: 'Ranged_Tempdamage',
     secondaryEffects: ['Judgement Critical (20% chance)'],
   },
   'mighty_radial_judgement': {
     damageType: 'Smashing', effectArea: 'PBAoE', range: 0, radius: 30, arc: 0,
-    maxTargets: 16, activationTime: 2.93, rechargeTime: 90, damageScale: 4.0,
+    maxTargets: 16, activationTime: 2.93, rechargeTime: 90, damageScale: 4.0, tableName: 'Ranged_Tempdamage',
     secondaryEffects: ['Knockup (50% chance)'],
   },
   'mighty_total_core_judgement': {
     damageType: 'Smashing', effectArea: 'PBAoE', range: 0, radius: 30, arc: 0,
-    maxTargets: 16, activationTime: 2.93, rechargeTime: 90, damageScale: 4.0,
+    maxTargets: 16, activationTime: 2.93, rechargeTime: 90, damageScale: 4.0, tableName: 'Ranged_Tempdamage',
     secondaryEffects: ['Judgement Critical (20% chance)'],
   },
   'mighty_partial_core_judgement': {
     damageType: 'Smashing', effectArea: 'PBAoE', range: 0, radius: 50, arc: 0,
-    maxTargets: 24, activationTime: 2.93, rechargeTime: 90, damageScale: 4.0,
+    maxTargets: 24, activationTime: 2.93, rechargeTime: 90, damageScale: 4.0, tableName: 'Ranged_Tempdamage',
     secondaryEffects: ['Judgement Critical (20% chance)'],
   },
   'mighty_partial_radial_judgement': {
     damageType: 'Smashing', effectArea: 'PBAoE', range: 0, radius: 50, arc: 0,
-    maxTargets: 32, activationTime: 2.93, rechargeTime: 90, damageScale: 4.0,
+    maxTargets: 32, activationTime: 2.93, rechargeTime: 90, damageScale: 4.0, tableName: 'Ranged_Tempdamage',
     secondaryEffects: ['Knockup (50% chance)'],
   },
   'mighty_total_radial_judgement': {
     damageType: 'Smashing', effectArea: 'PBAoE', range: 0, radius: 30, arc: 0,
-    maxTargets: 16, activationTime: 2.93, rechargeTime: 90, damageScale: 4.0,
+    maxTargets: 16, activationTime: 2.93, rechargeTime: 90, damageScale: 4.0, tableName: 'Ranged_Tempdamage',
     secondaryEffects: ['Knockup'],
   },
   'mighty_core_final_judgement': {
     damageType: 'Smashing', effectArea: 'PBAoE', range: 0, radius: 50, arc: 0,
-    maxTargets: 24, activationTime: 2.93, rechargeTime: 90, damageScale: 4.0,
+    maxTargets: 24, activationTime: 2.93, rechargeTime: 90, damageScale: 4.0, tableName: 'Ranged_Tempdamage',
     secondaryEffects: ['Judgement Critical (20% chance)'],
   },
   'mighty_radial_final_judgement': {
     damageType: 'Smashing', effectArea: 'PBAoE', range: 0, radius: 50, arc: 0,
-    maxTargets: 32, activationTime: 2.93, rechargeTime: 90, damageScale: 4.0,
+    maxTargets: 32, activationTime: 2.93, rechargeTime: 90, damageScale: 4.0, tableName: 'Ranged_Tempdamage',
     secondaryEffects: ['Knockup'],
   },
 
@@ -1725,47 +1839,47 @@ const JUDGEMENT_EFFECTS: Record<string, JudgementEffects> = {
   // Targeted Ranged AoE, Fire damage
   'pyronic_judgement': {
     damageType: 'Fire', effectArea: 'Targeted AoE', range: 80, radius: 25, arc: 0,
-    maxTargets: 16, activationTime: 1, rechargeTime: 90, damageScale: 4.0,
+    maxTargets: 16, activationTime: 1, rechargeTime: 90, damageScale: 4.0, tableName: 'Ranged_Tempdamage',
     secondaryEffects: [],
   },
   'pyronic_core_judgement': {
     damageType: 'Fire', effectArea: 'Targeted AoE', range: 80, radius: 25, arc: 0,
-    maxTargets: 16, activationTime: 1, rechargeTime: 90, damageScale: 4.0,
+    maxTargets: 16, activationTime: 1, rechargeTime: 90, damageScale: 4.0, tableName: 'Ranged_Tempdamage',
     secondaryEffects: ['DoT (Fire)'],
   },
   'pyronic_radial_judgement': {
     damageType: 'Fire', effectArea: 'Targeted AoE', range: 80, radius: 40, arc: 0,
-    maxTargets: 24, activationTime: 1, rechargeTime: 90, damageScale: 4.0,
+    maxTargets: 24, activationTime: 1, rechargeTime: 90, damageScale: 4.0, tableName: 'Ranged_Tempdamage',
     secondaryEffects: [],
   },
   'pyronic_total_core_judgement': {
     damageType: 'Fire', effectArea: 'Targeted AoE', range: 80, radius: 25, arc: 0,
-    maxTargets: 16, activationTime: 1, rechargeTime: 90, damageScale: 3.5,
+    maxTargets: 16, activationTime: 1, rechargeTime: 90, damageScale: 3.5, tableName: 'Ranged_Tempdamage',
     secondaryEffects: ['Superior DoT (Fire)'],
   },
   'pyronic_partial_core_judgement': {
     damageType: 'Fire', effectArea: 'Targeted AoE', range: 80, radius: 25, arc: 0,
-    maxTargets: 16, activationTime: 1, rechargeTime: 90, damageScale: 4.0,
+    maxTargets: 16, activationTime: 1, rechargeTime: 90, damageScale: 4.0, tableName: 'Ranged_Tempdamage',
     secondaryEffects: ['DoT (Fire)'],
   },
   'pyronic_partial_radial_judgement': {
     damageType: 'Fire', effectArea: 'Targeted AoE', range: 80, radius: 40, arc: 0,
-    maxTargets: 32, activationTime: 1, rechargeTime: 90, damageScale: 4.0,
+    maxTargets: 32, activationTime: 1, rechargeTime: 90, damageScale: 4.0, tableName: 'Ranged_Tempdamage',
     secondaryEffects: [],
   },
   'pyronic_total_radial_judgement': {
     damageType: 'Fire', effectArea: 'Targeted AoE', range: 80, radius: 40, arc: 0,
-    maxTargets: 24, activationTime: 1, rechargeTime: 90, damageScale: 4.0,
+    maxTargets: 24, activationTime: 1, rechargeTime: 90, damageScale: 4.0, tableName: 'Ranged_Tempdamage',
     secondaryEffects: ['Stun (25% chance)'],
   },
   'pyronic_core_final_judgement': {
     damageType: 'Fire', effectArea: 'Targeted AoE', range: 80, radius: 40, arc: 0,
-    maxTargets: 24, activationTime: 1, rechargeTime: 90, damageScale: 4.0,
+    maxTargets: 24, activationTime: 1, rechargeTime: 90, damageScale: 4.0, tableName: 'Ranged_Tempdamage',
     secondaryEffects: ['DoT (Fire)'],
   },
   'pyronic_radial_final_judgement': {
     damageType: 'Fire', effectArea: 'Targeted AoE', range: 80, radius: 40, arc: 0,
-    maxTargets: 32, activationTime: 1, rechargeTime: 90, damageScale: 4.0,
+    maxTargets: 32, activationTime: 1, rechargeTime: 90, damageScale: 4.0, tableName: 'Ranged_Tempdamage',
     secondaryEffects: ['Stun (25% chance)'],
   },
 
@@ -1773,47 +1887,47 @@ const JUDGEMENT_EFFECTS: Record<string, JudgementEffects> = {
   // PBAoE, Negative Energy damage
   'void_judgement': {
     damageType: 'Negative Energy', effectArea: 'PBAoE', range: 0, radius: 30, arc: 0,
-    maxTargets: 16, activationTime: 2, rechargeTime: 90, damageScale: 4.0,
+    maxTargets: 16, activationTime: 2, rechargeTime: 90, damageScale: 4.0, tableName: 'Ranged_Tempdamage',
     secondaryEffects: [],
   },
   'void_core_judgement': {
     damageType: 'Negative Energy', effectArea: 'PBAoE', range: 0, radius: 30, arc: 0,
-    maxTargets: 16, activationTime: 2, rechargeTime: 90, damageScale: 4.0,
+    maxTargets: 16, activationTime: 2, rechargeTime: 90, damageScale: 4.0, tableName: 'Ranged_Tempdamage',
     secondaryEffects: ['Judgement Critical (20% chance)'],
   },
   'void_radial_judgement': {
     damageType: 'Negative Energy', effectArea: 'PBAoE', range: 0, radius: 30, arc: 0,
-    maxTargets: 16, activationTime: 2, rechargeTime: 90, damageScale: 4.0,
+    maxTargets: 16, activationTime: 2, rechargeTime: 90, damageScale: 4.0, tableName: 'Ranged_Tempdamage',
     secondaryEffects: ['-Damage'],
   },
   'void_total_core_judgement': {
     damageType: 'Negative Energy', effectArea: 'PBAoE', range: 0, radius: 30, arc: 0,
-    maxTargets: 16, activationTime: 2, rechargeTime: 90, damageScale: 4.0,
+    maxTargets: 16, activationTime: 2, rechargeTime: 90, damageScale: 4.0, tableName: 'Ranged_Tempdamage',
     secondaryEffects: ['Judgement Critical (20% chance)'],
   },
   'void_partial_core_judgement': {
     damageType: 'Negative Energy', effectArea: 'PBAoE', range: 0, radius: 30, arc: 0,
-    maxTargets: 16, activationTime: 2, rechargeTime: 90, damageScale: 4.0,
+    maxTargets: 16, activationTime: 2, rechargeTime: 90, damageScale: 4.0, tableName: 'Ranged_Tempdamage',
     secondaryEffects: ['Judgement Critical (20% chance)', 'Knockback'],
   },
   'void_partial_radial_judgement': {
     damageType: 'Negative Energy', effectArea: 'PBAoE', range: 0, radius: 30, arc: 0,
-    maxTargets: 16, activationTime: 2, rechargeTime: 90, damageScale: 4.0,
+    maxTargets: 16, activationTime: 2, rechargeTime: 90, damageScale: 4.0, tableName: 'Ranged_Tempdamage',
     secondaryEffects: ['-Damage', 'Knockback'],
   },
   'void_total_radial_judgement': {
     damageType: 'Negative Energy', effectArea: 'PBAoE', range: 0, radius: 50, arc: 0,
-    maxTargets: 24, activationTime: 2, rechargeTime: 90, damageScale: 4.0,
+    maxTargets: 24, activationTime: 2, rechargeTime: 90, damageScale: 4.0, tableName: 'Ranged_Tempdamage',
     secondaryEffects: ['-Damage'],
   },
   'void_core_final_judgement': {
     damageType: 'Negative Energy', effectArea: 'PBAoE', range: 0, radius: 50, arc: 0,
-    maxTargets: 24, activationTime: 2, rechargeTime: 90, damageScale: 4.0,
+    maxTargets: 24, activationTime: 2, rechargeTime: 90, damageScale: 4.0, tableName: 'Ranged_Tempdamage',
     secondaryEffects: ['Judgement Critical (20% chance)'],
   },
   'void_radial_final_judgement': {
     damageType: 'Negative Energy', effectArea: 'PBAoE', range: 0, radius: 50, arc: 0,
-    maxTargets: 32, activationTime: 2, rechargeTime: 90, damageScale: 4.0,
+    maxTargets: 32, activationTime: 2, rechargeTime: 90, damageScale: 4.0, tableName: 'Ranged_Tempdamage',
     secondaryEffects: ['-Damage'],
   },
 
@@ -1821,47 +1935,47 @@ const JUDGEMENT_EFFECTS: Record<string, JudgementEffects> = {
   // Self-Targeted Cone, Smashing damage (+ Lethal DoT on core path)
   'vorpal_judgement': {
     damageType: 'Smashing', effectArea: 'Self Cone', range: 80, radius: 80, arc: 80,
-    maxTargets: 20, activationTime: 2.5, rechargeTime: 90, damageScale: 4.0,
+    maxTargets: 20, activationTime: 2.5, rechargeTime: 90, damageScale: 4.0, tableName: 'Ranged_Tempdamage',
     secondaryEffects: [],
   },
   'vorpal_core_judgement': {
     damageType: 'Smashing', effectArea: 'Self Cone', range: 80, radius: 80, arc: 80,
-    maxTargets: 20, activationTime: 2.5, rechargeTime: 90, damageScale: 4.0,
+    maxTargets: 20, activationTime: 2.5, rechargeTime: 90, damageScale: 4.0, tableName: 'Ranged_Tempdamage',
     secondaryEffects: ['DoT (Lethal)'],
   },
   'vorpal_radial_judgement': {
     damageType: 'Smashing', effectArea: 'Self Cone', range: 80, radius: 80, arc: 120,
-    maxTargets: 30, activationTime: 2.5, rechargeTime: 90, damageScale: 4.0,
+    maxTargets: 30, activationTime: 2.5, rechargeTime: 90, damageScale: 4.0, tableName: 'Ranged_Tempdamage',
     secondaryEffects: [],
   },
   'vorpal_total_core_judgement': {
     damageType: 'Smashing', effectArea: 'Self Cone', range: 120, radius: 120, arc: 80,
-    maxTargets: 20, activationTime: 2.5, rechargeTime: 90, damageScale: 3.5,
+    maxTargets: 20, activationTime: 2.5, rechargeTime: 90, damageScale: 3.5, tableName: 'Ranged_Tempdamage',
     secondaryEffects: ['Superior DoT (Lethal)'],
   },
   'vorpal_partial_core_judgement': {
     damageType: 'Smashing', effectArea: 'Self Cone', range: 120, radius: 120, arc: 80,
-    maxTargets: 20, activationTime: 2.5, rechargeTime: 90, damageScale: 4.0,
+    maxTargets: 20, activationTime: 2.5, rechargeTime: 90, damageScale: 4.0, tableName: 'Ranged_Tempdamage',
     secondaryEffects: ['DoT (Lethal)'],
   },
   'vorpal_partial_radial_judgement': {
     damageType: 'Smashing', effectArea: 'Self Cone', range: 80, radius: 80, arc: 120,
-    maxTargets: 40, activationTime: 2.5, rechargeTime: 90, damageScale: 4.0,
+    maxTargets: 40, activationTime: 2.5, rechargeTime: 90, damageScale: 4.0, tableName: 'Ranged_Tempdamage',
     secondaryEffects: [],
   },
   'vorpal_total_radial_judgement': {
     damageType: 'Smashing', effectArea: 'Self Cone', range: 80, radius: 80, arc: 120,
-    maxTargets: 30, activationTime: 2.5, rechargeTime: 90, damageScale: 4.0,
+    maxTargets: 30, activationTime: 2.5, rechargeTime: 90, damageScale: 4.0, tableName: 'Ranged_Tempdamage',
     secondaryEffects: ['Self +Defense (All)'],
   },
   'vorpal_core_final_judgement': {
     damageType: 'Smashing', effectArea: 'Self Cone', range: 120, radius: 120, arc: 120,
-    maxTargets: 30, activationTime: 2.5, rechargeTime: 90, damageScale: 4.0,
+    maxTargets: 30, activationTime: 2.5, rechargeTime: 90, damageScale: 4.0, tableName: 'Ranged_Tempdamage',
     secondaryEffects: ['DoT (Lethal)'],
   },
   'vorpal_radial_final_judgement': {
     damageType: 'Smashing', effectArea: 'Self Cone', range: 120, radius: 120, arc: 120,
-    maxTargets: 40, activationTime: 2.5, rechargeTime: 90, damageScale: 4.0,
+    maxTargets: 40, activationTime: 2.5, rechargeTime: 90, damageScale: 4.0, tableName: 'Ranged_Tempdamage',
     secondaryEffects: ['Self +Defense (All)'],
   },
 };

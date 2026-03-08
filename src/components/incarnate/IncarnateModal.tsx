@@ -23,6 +23,7 @@ export function IncarnateModal({ isOpen, onClose }: IncarnateModalProps) {
   const incarnates = useBuildStore((s) => s.build.incarnates);
   const setIncarnatePower = useBuildStore((s) => s.setIncarnatePower);
   const clearIncarnatePower = useBuildStore((s) => s.clearIncarnatePower);
+  const openIncarnateCraftingModal = useUIStore((s) => s.openIncarnateCraftingModal);
 
   const [selectedTreeId, setSelectedTreeId] = useState<string | null>(null);
 
@@ -233,12 +234,22 @@ export function IncarnateModal({ isOpen, onClose }: IncarnateModalProps) {
           ) : (
             <div />
           )}
-          <button
-            onClick={onClose}
-            className="px-4 py-2 text-sm font-medium text-gray-300 hover:text-white transition-colors rounded-lg hover:bg-gray-700"
-          >
-            Close
-          </button>
+          <div className="flex gap-2">
+            {currentPower && (
+              <button
+                onClick={() => { onClose(); openIncarnateCraftingModal(); }}
+                className="px-4 py-2 text-sm font-medium text-blue-400 hover:text-blue-300 transition-colors rounded-lg hover:bg-blue-900/30 border border-blue-800 hover:border-blue-600"
+              >
+                Recipe
+              </button>
+            )}
+            <button
+              onClick={onClose}
+              className="px-4 py-2 text-sm font-medium text-gray-300 hover:text-white transition-colors rounded-lg hover:bg-gray-700"
+            >
+              Close
+            </button>
+          </div>
         </div>
       </div>
     </div>,

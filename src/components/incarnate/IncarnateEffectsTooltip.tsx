@@ -14,6 +14,8 @@ import {
   getLoreEffects,
   formatEffectValue,
 } from '@/data';
+import { calculateIncarnateDamage } from '@/data/at-tables';
+import { useBuildStore } from '@/stores';
 
 // ============================================
 // EFFECT LABEL MAPS
@@ -63,7 +65,7 @@ export interface EffectData {
 }
 
 /** Extract structured effect data for any incarnate slot/power */
-export function getIncarnateEffectData(slotId: IncarnateSlotId, powerId: string): EffectData | null {
+export function getIncarnateEffectData(slotId: IncarnateSlotId, powerId: string, archetypeId?: string, level?: number): EffectData | null {
   switch (slotId) {
     case 'alpha': {
       const fx = getAlphaEffects(powerId);
@@ -90,11 +92,15 @@ export function getIncarnateEffectData(slotId: IncarnateSlotId, powerId: string)
       const fx = getHybridEffects(powerId);
       if (!fx) return null;
       const entries: EffectEntry[] = (Object.entries(fx) as [string, number][])
-        .filter(([k]) => k !== 'duration' && k !== 'recharge')
+        .filter(([k]) => k !== 'duration' && k !== 'recharge' && k !== 'containmentScale' && k !== 'containmentTableName')
         .map(([k, v]) => ({
           label: HYBRID_LABELS[k] || k,
           value: k === 'statusProtection' ? `Mag ${v}` : k === 'mezMagnitudeBonus' ? `+${v} Mag` : formatEffectValue(v),
         }));
+      if (fx.containmentScale && fx.containmentTableName && archetypeId) {
+        const dmg = calculateIncarnateDamage(fx.containmentScale, fx.containmentTableName, archetypeId, level ?? 50);
+        entries.push({ label: 'Containment (Waylay)', value: dmg !== null ? `${dmg.toFixed(1)}` : `${fx.containmentScale} scale` });
+      }
       const footer = fx.duration !== undefined ? `${fx.duration}s duration / ${fx.recharge}s recharge` : undefined;
       return { header: 'Toggle Bonuses', entries, footer };
     }
@@ -103,15 +109,21 @@ export function getIncarnateEffectData(slotId: IncarnateSlotId, powerId: string)
       if (!fx) return null;
       const entries: EffectEntry[] = [];
       if (fx.debuffType) entries.push({ label: fx.debuffType, value: formatEffectValue(-(fx.debuffMagnitude || 0)) });
-      if (fx.dotType) entries.push({ label: `DoT (${fx.dotType})`, value: `${((fx.dotDamage || 0) * 100).toFixed(0)}% base` });
+      if (fx.dotType) {
+        const dotDmg = fx.dotDamage && fx.dotTableName && archetypeId
+          ? calculateIncarnateDamage(fx.dotDamage, fx.dotTableName, archetypeId, level ?? 50)
+          : null;
+        entries.push({ label: `DoT (${fx.dotType})`, value: dotDmg !== null ? `${dotDmg.toFixed(1)}` : `${((fx.dotDamage || 0) * 100).toFixed(0)}% scale` });
+      }
       if (fx.procChance !== undefined) entries.push({ label: 'Proc Chance', value: `${(fx.procChance * 100).toFixed(0)}%` });
       return { header: 'Proc Effects', entries };
     }
     case 'judgement': {
       const fx = getJudgementEffects(powerId);
       if (!fx) return null;
+      const dmg = archetypeId ? calculateIncarnateDamage(fx.damageScale, fx.tableName, archetypeId, level ?? 50) : null;
       const entries: EffectEntry[] = [
-        { label: 'Damage', value: fx.damageType },
+        { label: `Damage (${fx.damageType})`, value: dmg !== null ? `${dmg.toFixed(1)}` : `${fx.damageScale} scale` },
         { label: 'Area', value: fx.effectArea },
       ];
       if (fx.range > 0) entries.push({ label: 'Range', value: `${fx.range}ft` });
@@ -142,6 +154,10 @@ export function getIncarnateEffectData(slotId: IncarnateSlotId, powerId: string)
 // ============================================
 
 export function IncarnateEffectsTooltip({ slotId, powerId }: { slotId: IncarnateSlotId; powerId: string }) {
+  const build = useBuildStore((s) => s.build);
+  const archetypeId = build.archetype.id ?? '';
+  const level = build.level;
+
   switch (slotId) {
     case 'alpha': {
       const fx = getAlphaEffects(powerId);
@@ -156,17 +172,17 @@ export function IncarnateEffectsTooltip({ slotId, powerId }: { slotId: Incarnate
     case 'hybrid': {
       const fx = getHybridEffects(powerId);
       if (!fx) return null;
-      return <HybridTooltip fx={fx} />;
+      return <HybridTooltip fx={fx} archetypeId={archetypeId} level={level} />;
     }
     case 'interface': {
       const fx = getInterfaceEffects(powerId);
       if (!fx) return null;
-      return <InterfaceTooltip fx={fx} />;
+      return <InterfaceTooltip fx={fx} archetypeId={archetypeId} level={level} />;
     }
     case 'judgement': {
       const fx = getJudgementEffects(powerId);
       if (!fx) return null;
-      return <JudgementTooltip fx={fx} />;
+      return <JudgementTooltip fx={fx} archetypeId={archetypeId} level={level} />;
     }
     case 'lore': {
       const fx = getLoreEffects(powerId);
@@ -233,10 +249,13 @@ function DestinyTooltip({ fx }: { fx: DestinyEffects }) {
   );
 }
 
-function HybridTooltip({ fx }: { fx: HybridEffects }) {
+function HybridTooltip({ fx, archetypeId, level }: { fx: HybridEffects; archetypeId: string; level: number }) {
   const statEntries = Object.entries(fx).filter(
-    ([k]) => k !== 'duration' && k !== 'recharge'
+    ([k]) => k !== 'duration' && k !== 'recharge' && k !== 'containmentScale' && k !== 'containmentTableName'
   ) as [string, number][];
+  const containDmg = fx.containmentScale && fx.containmentTableName
+    ? calculateIncarnateDamage(fx.containmentScale, fx.containmentTableName, archetypeId, level)
+    : null;
 
   return (
     <div className="text-[11px] mt-2 border-t border-gray-600 pt-1.5 space-y-0.5">
@@ -252,6 +271,9 @@ function HybridTooltip({ fx }: { fx: HybridEffects }) {
           }
         />
       ))}
+      {containDmg !== null && (
+        <EffectRow label="Containment (Waylay)" value={`${containDmg.toFixed(1)}`} />
+      )}
       {fx.duration !== undefined && (
         <div className="text-gray-500 text-[10px] mt-1">
           {fx.duration}s duration / {fx.recharge}s recharge
@@ -261,7 +283,10 @@ function HybridTooltip({ fx }: { fx: HybridEffects }) {
   );
 }
 
-function InterfaceTooltip({ fx }: { fx: InterfaceEffects }) {
+function InterfaceTooltip({ fx, archetypeId, level }: { fx: InterfaceEffects; archetypeId: string; level: number }) {
+  const dotDmg = fx.dotDamage && fx.dotTableName
+    ? calculateIncarnateDamage(fx.dotDamage, fx.dotTableName, archetypeId, level)
+    : null;
   return (
     <div className="text-[11px] mt-2 border-t border-gray-600 pt-1.5 space-y-0.5">
       <div className="text-cyan-400 font-semibold mb-0.5">Proc Effects</div>
@@ -269,7 +294,10 @@ function InterfaceTooltip({ fx }: { fx: InterfaceEffects }) {
         <EffectRow label={fx.debuffType} value={formatEffectValue(-(fx.debuffMagnitude || 0))} />
       )}
       {fx.dotType && (
-        <EffectRow label={`DoT (${fx.dotType})`} value={`${((fx.dotDamage || 0) * 100).toFixed(0)}% base`} />
+        <EffectRow
+          label={`DoT (${fx.dotType})`}
+          value={dotDmg !== null ? `${dotDmg.toFixed(1)}` : `${((fx.dotDamage || 0) * 100).toFixed(0)}% scale`}
+        />
       )}
       {fx.procChance !== undefined && (
         <EffectRow label="Proc Chance" value={`${(fx.procChance * 100).toFixed(0)}%`} />
@@ -278,11 +306,15 @@ function InterfaceTooltip({ fx }: { fx: InterfaceEffects }) {
   );
 }
 
-function JudgementTooltip({ fx }: { fx: JudgementEffects }) {
+function JudgementTooltip({ fx, archetypeId, level }: { fx: JudgementEffects; archetypeId: string; level: number }) {
+  const damage = calculateIncarnateDamage(fx.damageScale, fx.tableName, archetypeId, level);
   return (
     <div className="text-[11px] mt-2 border-t border-gray-600 pt-1.5 space-y-0.5">
       <div className="text-cyan-400 font-semibold mb-0.5">Attack</div>
-      <EffectRow label="Damage" value={fx.damageType} />
+      <EffectRow
+        label={`Damage (${fx.damageType})`}
+        value={damage !== null ? `${damage.toFixed(1)}` : `${fx.damageScale} scale`}
+      />
       <EffectRow label="Area" value={fx.effectArea} />
       {fx.range > 0 && <EffectRow label="Range" value={`${fx.range}ft`} />}
       {fx.radius > 0 && <EffectRow label="Radius" value={`${fx.radius}ft`} />}

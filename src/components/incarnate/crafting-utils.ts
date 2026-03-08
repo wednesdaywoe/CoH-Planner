@@ -38,14 +38,15 @@ export function branchVariants(
   // T1 has no branch choice yet — show all variants
   if (tier === 1 || branch === 'base') return variants;
 
-  // For T3, if a specific variant key is provided, only return that one
-  if (tier === 3 && t3VariantKey && variants[t3VariantKey]) {
-    return { [t3VariantKey]: variants[t3VariantKey] };
+  // For T3, show only the selected variant (no alt recipe)
+  if (tier === 3) {
+    const key = t3VariantKey || (branch === 'core' ? 'core' : 'radial');
+    if (variants[key]) return { [key]: variants[key] };
   }
 
   const keys: CraftingVariantKey[] = branch === 'core'
-    ? ['core', 'core_2']
-    : ['radial', 'radial_2'];
+    ? ['core']
+    : ['radial'];
 
   const filtered: Partial<Record<CraftingVariantKey, CraftingVariant>> = {};
   for (const k of keys) {

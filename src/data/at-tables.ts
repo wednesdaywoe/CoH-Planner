@@ -5589,6 +5589,15 @@ export function getTableValue(
     const stripped = key.replace(/self$|other$|target$/, '');
     table = at.tables[stripped];
   }
+
+  // Incarnate powers use "tempdamage" and "incarnateprocdamage" tables which
+  // are equivalent to the standard "damage" tables in the game data.
+  if (!table) {
+    const aliased = key
+      .replace('_tempdamage', '_damage')
+      .replace('_incarnateprocdamage', '_damage');
+    if (aliased !== key) table = at.tables[aliased];
+  }
   
   if (!table) return undefined;
   
@@ -5610,6 +5619,23 @@ export function calculateEffectValue(
   const tableValue = getTableValue(archetype, tableName, level);
   if (tableValue === undefined) return undefined;
   return scale * tableValue;
+}
+
+/**
+ * Calculate incarnate damage from scale × AT table value.
+ * Incarnate powers use Tempdamage tables which alias to standard Damage tables.
+ * Returns absolute damage value at the given level, or null if table not found.
+ */
+export function calculateIncarnateDamage(
+  scale: number,
+  tableName: string,
+  archetype: string,
+  level: number = 50
+): number | null {
+  if (!scale || scale === 0) return 0;
+  const tableValue = getTableValue(archetype, tableName.toLowerCase().replace(/-/g, '_'), level);
+  if (tableValue === undefined) return null;
+  return Math.abs(scale * tableValue);
 }
 
 // ============================================

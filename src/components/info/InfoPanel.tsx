@@ -24,6 +24,7 @@ import { useGlobalBonuses } from '@/hooks/useCalculatedStats';
 import { calculatePowerEnhancementBonuses, calculatePowerDamage, getAlphaEnhancementBonuses, abbreviateDamageType, type EnhancementBonuses, isControllerPower, isCorruptorAttackPower, isBruteAttackPower, isScrapperAttackPower, isStalkerAttackPower, isSentinelAttackPower, calculateContainmentDamage, calculateScourgeDamage, calculateFuryDamage, calculateFuryDamageBonus, calculateCriticalHitDamage, calculateAssassinationDamage, calculateAssassinationDamageBonus, calculateOpportunityCritDamage, getContainmentInfo, getScourgeInfo, getCriticalHitInfo, getFuryInfo } from '@/utils/calculations';
 import { calculatePetDamage, shouldApplyEnhancements, type PetDamageResult, type PetAbilityDamage } from '@/utils/calculations/pet-damage';
 import { PET_ENTITIES, type PetAbility } from '@/data/pet-entities';
+import { calculateIncarnateDamage } from '@/data/at-tables';
 import { resolvePath } from '@/utils/paths';
 import type {
   ArchetypeId,
@@ -1152,6 +1153,20 @@ function IncarnateInfo({ slotId, powerId }: IncarnateInfoProps) {
                 <span className="text-purple-400">+{hybridEffects.mezMagnitudeBonus}</span>
               </div>
             )}
+            {hybridEffects.containmentScale !== undefined && hybridEffects.containmentTableName && (() => {
+              const containDmg = calculateIncarnateDamage(
+                hybridEffects.containmentScale, hybridEffects.containmentTableName,
+                build.archetype.id ?? '', build.level
+              );
+              return (
+                <div className="flex justify-between text-xs">
+                  <span className="text-red-400">Containment (Waylay)</span>
+                  <span className="text-red-400">
+                    {containDmg !== null ? `${containDmg.toFixed(1)}` : `${hybridEffects.containmentScale} scale`}
+                  </span>
+                </div>
+              );
+            })()}
           </div>
           {hybridEffects.duration !== undefined && (
             <div className="text-[9px] text-slate-500 mt-1">
@@ -1162,7 +1177,11 @@ function IncarnateInfo({ slotId, powerId }: IncarnateInfoProps) {
       )}
 
       {/* Interface Effects (Proc-based) */}
-      {interfaceEffects && (
+      {interfaceEffects && (() => {
+        const dotDmg = interfaceEffects.dotDamage && interfaceEffects.dotTableName
+          ? calculateIncarnateDamage(interfaceEffects.dotDamage, interfaceEffects.dotTableName, build.archetype.id ?? '', build.level)
+          : null;
+        return (
         <div>
           <h4 className="text-[9px] font-semibold text-slate-500 uppercase tracking-wide mb-1">
             Proc Effects
@@ -1179,30 +1198,36 @@ function IncarnateInfo({ slotId, powerId }: IncarnateInfoProps) {
             )}
             {interfaceEffects.dotType && (
               <div className="flex justify-between text-xs">
-                <span className="text-slate-400">DoT Type</span>
-                <span className="text-red-400">{interfaceEffects.dotType}</span>
+                <span className="text-slate-400">DoT ({interfaceEffects.dotType})</span>
+                <span className="text-red-400">
+                  {dotDmg !== null ? `${dotDmg.toFixed(1)}` : `${((interfaceEffects.dotDamage || 0) * 100).toFixed(0)}% scale`}
+                </span>
               </div>
-            )}
-            {interfaceEffects.dotDamage !== undefined && (
-              <IncarnateEffectRow label="DoT Damage" value={interfaceEffects.dotDamage} colorClass="text-red-400" suffix=" scale" />
             )}
             {interfaceEffects.procChance !== undefined && (
               <IncarnateEffectRow label="Proc Chance" value={interfaceEffects.procChance} colorClass="text-cyan-400" />
             )}
           </div>
         </div>
-      )}
+        ); })()}
 
       {/* Judgement Effects (Click attack) */}
-      {judgementEffects && (
+      {judgementEffects && (() => {
+        const judgementDamage = calculateIncarnateDamage(
+          judgementEffects.damageScale, judgementEffects.tableName,
+          build.archetype.id ?? '', build.level
+        );
+        return (
         <div>
           <h4 className="text-[9px] font-semibold text-slate-500 uppercase tracking-wide mb-1">
             Attack Details
           </h4>
           <div className="bg-slate-800/50 rounded p-2 space-y-0.5">
             <div className="flex justify-between text-xs">
-              <span className="text-slate-400">Damage Type</span>
-              <span className="text-red-400">{judgementEffects.damageType}</span>
+              <span className="text-slate-400">Damage ({judgementEffects.damageType})</span>
+              <span className="text-red-400">
+                {judgementDamage !== null ? `${judgementDamage.toFixed(1)}` : `${judgementEffects.damageScale} scale`}
+              </span>
             </div>
             <div className="flex justify-between text-xs">
               <span className="text-slate-400">Effect Area</span>
@@ -1254,7 +1279,7 @@ function IncarnateInfo({ slotId, powerId }: IncarnateInfoProps) {
             </div>
           )}
         </div>
-      )}
+        ); })()}
 
       {/* Lore Effects (Pet summon) */}
       {loreEffects && (
