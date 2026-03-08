@@ -12,7 +12,6 @@ import { Absorption } from './absorption';
 import { GravityShield } from './gravity-shield';
 import { OrbitingDeath } from './orbiting-death';
 import { PenumbralShield } from './penumbral-shield';
-import { ShadowRecall } from './shadow-recall';
 import { ShadowCloak } from './shadow-cloak';
 import { TwilightShield } from './twilight-shield';
 import { BlackDwarf } from './black-dwarf';
@@ -41,7 +40,6 @@ export const powerset: Powerset = {
     GravityShield,
     OrbitingDeath,
     PenumbralShield,
-    ShadowRecall,
     ShadowCloak,
     TwilightShield,
     BlackDwarf,

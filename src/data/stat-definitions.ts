@@ -196,7 +196,7 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
   defense_toxic: {
     id: 'defense_toxic',
     label: 'Toxic',
-    getValue: () => 0, // Toxic defense is rare
+    getValue: (stats) => stats.defense.toxic,
     format: (v) => `${Number(v).toFixed(2)}%`,
     color: STAT_COLORS.defense,
     tooltip: 'Toxic defense',
@@ -591,7 +591,7 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
   def_toxic: {
     id: 'def_toxic',
     label: 'Toxic',
-    getValue: () => 0,
+    getValue: (stats) => stats.defense.toxic,
     format: (v) => `${Number(v).toFixed(2)}%`,
     color: STAT_COLORS.defense,
     tooltip: 'Toxic defense',

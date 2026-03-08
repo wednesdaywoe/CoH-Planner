@@ -241,6 +241,7 @@ export function PowerRow({
     return (
       <div
         className={`flex flex-col px-1.5 py-1 ${bgClass} border rounded-sm group transition-colors ${borderClass}`}
+        onMouseEnter={onHover}
         onMouseLeave={onLeave}
       >
         <div className="flex min-w-0">
@@ -276,6 +277,7 @@ export function PowerRow({
   return (
     <div
       className={`flex flex-col px-1.5 py-1 ${bgClass} border rounded-sm group transition-colors ${borderClass}`}
+      onMouseEnter={onHover}
       onMouseLeave={onLeave}
     >
       {/* Row 1: Level · Icon · Name | Auto | X */}

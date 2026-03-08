@@ -56,6 +56,7 @@ export interface CalculatedStats {
     energy: number;
     negative: number;
     psionic: number;
+    toxic: number;
     melee: number;
     ranged: number;
     aoe: number;
@@ -155,6 +156,7 @@ export function convertToLegacyStats(
       energy: global.defEnergy,
       negative: global.defNegative,
       psionic: global.defPsionic,
+      toxic: global.defToxic,
       melee: global.defMelee,
       ranged: global.defRanged,
       aoe: global.defAoE,
