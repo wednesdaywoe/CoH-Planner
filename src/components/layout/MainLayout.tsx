@@ -5,10 +5,12 @@
 import type { ReactNode } from 'react';
 import { Header } from './Header';
 import { StatsDashboard } from './StatsDashboard';
+import { UpdateBanner } from './UpdateBanner';
 import { EnhancementPicker } from '@/components/enhancements/EnhancementPicker';
 import { PowerInfoTooltip } from '@/components/info';
 import { PowerInfoModal } from '@/components/modals';
 import { useUIStore } from '@/stores';
+import { useUpdateChecker } from '@/hooks/useUpdateChecker';
 
 interface MainLayoutProps {
   children: ReactNode;
@@ -17,9 +19,11 @@ interface MainLayoutProps {
 export function MainLayout({ children }: MainLayoutProps) {
   const openFeedbackModal = useUIStore((s) => s.openFeedbackModal);
   const openKnownIssuesModal = useUIStore((s) => s.openKnownIssuesModal);
+  const { updateAvailable } = useUpdateChecker();
 
   return (
     <div className="min-h-screen bg-gray-950 text-gray-100 flex flex-col">
+      <UpdateBanner visible={updateAvailable} />
       <Header />
       <StatsDashboard />
       <main className="flex-1 overflow-hidden relative">

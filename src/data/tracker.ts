@@ -14,6 +14,7 @@ export interface TrackerItem {
 
 export const KNOWN_BUGS: TrackerItem[] = [
   { text: 'If you see a [missing-icon] icon, it means the icon is missing. Please report it using the feedback tool', status: 'known-bug' },
+  { text: 'A number of incarnate powers are missing their info display', status: 'known-bug' },
 ];
 
 // ============================================
