@@ -30,6 +30,8 @@ const GLOBAL_BONUS_OVERRIDES: Record<string, keyof GlobalBonuses> = {
   mezres_taunt: 'mezResistTaunt',
   mezres_placate: 'mezResistPlacate',
   level_shift: 'levelShift',
+  endcost: 'toggleEndCost',
+  netend: 'netEndPerSec',
 };
 
 // Re-export for any consumers that imported from here
@@ -150,7 +152,7 @@ export function StatsDashboard() {
     },
     {
       name: 'Health & Endurance',
-      stats: ['health', 'regeneration', 'maxend', 'recovery', 'level_shift'],
+      stats: ['health', 'regeneration', 'maxend', 'recovery', 'endcost', 'netend', 'level_shift'],
     },
     {
       name: 'Movement',

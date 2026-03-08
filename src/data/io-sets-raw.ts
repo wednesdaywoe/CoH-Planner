@@ -21594,7 +21594,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "SAO_Scrapper1.png"
+    "icon": "SAO_Scrapper2.png"
   },
   "superior_defenders_bastion": {
     "name": "Superior Defender's Bastion",
@@ -23835,7 +23835,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "SAO_Scrapper2.png"
+    "icon": "SAO_Scrapper1.png"
   },
   "superior_sentinels_ward": {
     "name": "Superior Sentinel's Ward",

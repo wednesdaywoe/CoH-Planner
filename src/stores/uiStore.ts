@@ -408,6 +408,8 @@ const defaultStatsConfig: StatDisplayConfig[] = [
   { stat: 'health', visible: true, order: 7 },
   { stat: 'regeneration', visible: true, order: 8 },
   { stat: 'recovery', visible: true, order: 9 },
+  { stat: 'endcost', visible: true, order: 10 },
+  { stat: 'netend', visible: true, order: 11 },
 ];
 
 // ============================================
@@ -1060,6 +1062,23 @@ export const useUIStore = create<UIStore>()(
         trackedStats: state.trackedStats,
         showSlotLevels: state.showSlotLevels,
       }),
+      merge: (persisted, current) => {
+        const merged = { ...current, ...(persisted as Partial<UIStore>) };
+        // Inject any new default stats that aren't in the persisted config
+        const persistedStats = (persisted as Partial<UIStore>)?.statsConfig;
+        if (persistedStats) {
+          const existingStatIds = new Set(persistedStats.map((s) => s.stat));
+          const missing = defaultStatsConfig.filter((s) => !existingStatIds.has(s.stat));
+          if (missing.length > 0) {
+            const maxOrder = Math.max(...persistedStats.map((s) => s.order), -1);
+            merged.statsConfig = [
+              ...persistedStats,
+              ...missing.map((s, i) => ({ ...s, order: maxOrder + 1 + i })),
+            ];
+          }
+        }
+        return merged;
+      },
     })
   );
 

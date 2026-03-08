@@ -82,15 +82,35 @@ export function computeAllSlotLevels(build: Build): Map<string, number[]> {
   const grantPool = buildGrantPool(build.level);
   let grantIndex = 0;
 
-  // 3. Assign slot levels for each power
+  // 3. Assign slot levels — interleave across powers.
+  // Instead of assigning all of a power's extra slots greedily (which makes
+  // low-level powers "steal" all early grants), process one extra slot per
+  // power per round. This distributes grant levels fairly:
+  //   Round 1: each power with ≥1 extra slot gets one grant
+  //   Round 2: each power with ≥2 extra slots gets one grant
+  //   etc.
+
+  // Initialize slot 0 for every power
   for (const { power, category } of allPowers) {
     const pickLevel = category === 'inherent' ? 1 : power.level;
-    const levels: number[] = [pickLevel]; // slot 0 = free at power's pick level
-    for (let i = 1; i < power.slots.length; i++) {
-      levels.push(grantPool[grantIndex] ?? pickLevel);
-      grantIndex++;
+    result.set(power.name, [pickLevel]);
+  }
+
+  // Find max extra slots any power has
+  const maxExtraSlots = allPowers.reduce(
+    (max, { power }) => Math.max(max, power.slots.length - 1), 0
+  );
+
+  // Interleave: one slot per power per round
+  for (let round = 0; round < maxExtraSlots; round++) {
+    for (const { power, category } of allPowers) {
+      if (round < power.slots.length - 1) {
+        const pickLevel = category === 'inherent' ? 1 : power.level;
+        const levels = result.get(power.name)!;
+        levels.push(grantPool[grantIndex] ?? pickLevel);
+        grantIndex++;
+      }
     }
-    result.set(power.name, levels);
   }
 
   // 4. Auto-granted sub-powers (Kheldian forms, etc.) — same as parent level

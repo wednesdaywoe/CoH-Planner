@@ -374,6 +374,30 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     color: STAT_COLORS.enduranceDiscount,
     tooltip: 'Endurance reduction',
   },
+  endcost: {
+    id: 'endcost',
+    label: 'End Cost',
+    getValue: () => 0, // Requires globalBonuses, handled via override
+    format: (v) => `${Number(v).toFixed(2)}/s`,
+    color: 'text-orange-400',
+    tooltip: 'Endurance cost per second from active toggle powers',
+    showWhenZero: true,
+    breakdownKey: 'toggleEndCost',
+    breakdownUnit: '/s',
+  },
+  netend: {
+    id: 'netend',
+    label: 'Net End',
+    getValue: () => 0, // Requires globalBonuses, handled via override
+    format: (v) => {
+      const n = Number(v);
+      const sign = n >= 0 ? '+' : '';
+      return `${sign}${n.toFixed(2)}/s`;
+    },
+    color: 'text-emerald-400',
+    tooltip: 'Net endurance per second: recovery minus toggle costs',
+    showWhenZero: true,
+  },
 
   // Health
   health: {

@@ -117,6 +117,10 @@ export interface GlobalBonuses {
   mezResistPlacate: number;
   // Incarnate
   levelShift: number;
+  // Toggle endurance cost (end/sec from active toggles)
+  toggleEndCost: number;
+  // Net endurance per second (recovery minus toggle costs)
+  netEndPerSec: number;
 }
 
 /**
@@ -215,6 +219,8 @@ function createEmptyGlobalBonuses(): GlobalBonuses {
     mezResistTaunt: 0,
     mezResistPlacate: 0,
     levelShift: 0,
+    toggleEndCost: 0,
+    netEndPerSec: 0,
   };
 }
 
@@ -441,6 +447,8 @@ interface ActivePowerEffect {
   };
   // Perception
   perceptionBuff?: ScalarOrScaled;
+  // Endurance cost per second (for toggles)
+  enduranceCost?: number;
 }
 
 interface PowerWithToggle {
@@ -449,6 +457,7 @@ interface PowerWithToggle {
   isActive?: boolean;
   effects?: ActivePowerEffect;
   slots?: (Enhancement | null)[];
+  stats?: { endurance?: number; [key: string]: unknown };
 }
 
 /**
@@ -490,6 +499,24 @@ function applyActivePowerBonuses(
     for (const [aspect, value] of Object.entries(alphaBonuses)) {
       if (value !== undefined) {
         enhBonuses[aspect] = (enhBonuses[aspect] || 0) + value;
+      }
+    }
+
+    // Track toggle endurance cost for active toggle powers
+    if (power.powerType?.toLowerCase() === 'toggle' && power.isActive) {
+      // Endurance cost per second: from effects.enduranceCost (pool/epic/inherent)
+      // or stats.endurance (primary/secondary)
+      const baseEndCost = effects.enduranceCost ?? power.stats?.endurance ?? 0;
+      if (baseEndCost > 0) {
+        // EnduranceReduction enhancement reduces the cost
+        const endRedBonus = enhBonuses.endurance || 0;
+        const actualCost = baseEndCost * (1 / (1 + endRedBonus));
+        global.toggleEndCost += actualCost;
+        addToBreakdown(breakdown, 'toggleEndCost', {
+          name: power.name,
+          value: actualCost,
+          type: 'active-power',
+        });
       }
     }
 
@@ -637,24 +664,31 @@ function applyActivePowerBonuses(
 
     // Regeneration buff
     // Enhanced by Healing enhancements
+    // Skip Res_Boolean tables — those are regen debuff resistance, not regen buffs
     if (effects.regenBuff !== undefined) {
-      const enhMultiplier = 1 + (enhBonuses.heal || 0);
-      const adjustedRegen = adjustForPerTarget(effects.regenBuff as ScalarOrScaled, targetsHitValues[power.name]);
-      const value = resolveScaledEffect(adjustedRegen, archetypeId, buildLevel) * 100 * enhMultiplier;
-      // If the power also has an unenhanced portion, combine into one breakdown entry
-      const adjustedRegenUnenh = effects.regenBuffUnenhanced !== undefined
-        ? adjustForPerTarget(effects.regenBuffUnenhanced as ScalarOrScaled, targetsHitValues[power.name])
-        : undefined;
-      const unenhValue = adjustedRegenUnenh !== undefined
-        ? resolveScaledEffect(adjustedRegenUnenh, archetypeId, buildLevel) * 100
-        : 0;
-      const totalValue = value + unenhValue;
-      global.regeneration += totalValue;
-      addToBreakdown(breakdown, 'regeneration', {
-        name: power.name,
-        value: totalValue,
-        type: 'active-power',
-      });
+      const regenVal = effects.regenBuff as ScalarOrScaled;
+      const regenTable = (typeof regenVal === 'object' && regenVal !== null && 'table' in regenVal)
+        ? (regenVal as { table?: string }).table ?? ''
+        : '';
+      if (!regenTable.toLowerCase().includes('res_boolean')) {
+        const enhMultiplier = 1 + (enhBonuses.heal || 0);
+        const adjustedRegen = adjustForPerTarget(regenVal, targetsHitValues[power.name]);
+        const value = resolveScaledEffect(adjustedRegen, archetypeId, buildLevel) * 100 * enhMultiplier;
+        // If the power also has an unenhanced portion, combine into one breakdown entry
+        const adjustedRegenUnenh = effects.regenBuffUnenhanced !== undefined
+          ? adjustForPerTarget(effects.regenBuffUnenhanced as ScalarOrScaled, targetsHitValues[power.name])
+          : undefined;
+        const unenhValue = adjustedRegenUnenh !== undefined
+          ? resolveScaledEffect(adjustedRegenUnenh, archetypeId, buildLevel) * 100
+          : 0;
+        const totalValue = value + unenhValue;
+        global.regeneration += totalValue;
+        addToBreakdown(breakdown, 'regeneration', {
+          name: power.name,
+          value: totalValue,
+          type: 'active-power',
+        });
+      }
     } else if (effects.regenBuffUnenhanced !== undefined) {
       // Power only has unenhanceable regen (no enhanceable portion)
       const adjustedUnenhOnly = adjustForPerTarget(effects.regenBuffUnenhanced as ScalarOrScaled, targetsHitValues[power.name]);
@@ -669,16 +703,23 @@ function applyActivePowerBonuses(
 
     // Recovery buff
     // Enhanced by Endurance Modification enhancements
+    // Skip Res_Boolean tables — those are endurance drain resistance, not recovery buffs
     if (effects.recoveryBuff !== undefined) {
-      const enhMultiplier = 1 + (enhBonuses.enduranceMod || 0);
-      const adjustedRecovery = adjustForPerTarget(effects.recoveryBuff as ScalarOrScaled, targetsHitValues[power.name]);
-      const value = resolveScaledEffect(adjustedRecovery, archetypeId, buildLevel) * 100 * enhMultiplier;
-      global.recovery += value;
-      addToBreakdown(breakdown, 'recovery', {
-        name: power.name,
-        value,
-        type: 'active-power',
-      });
+      const recBuff = effects.recoveryBuff as ScalarOrScaled;
+      const table = (typeof recBuff === 'object' && recBuff !== null && 'table' in recBuff)
+        ? (recBuff as { table?: string }).table ?? ''
+        : '';
+      if (!table.toLowerCase().includes('res_boolean')) {
+        const enhMultiplier = 1 + (enhBonuses.enduranceMod || 0);
+        const adjustedRecovery = adjustForPerTarget(recBuff, targetsHitValues[power.name]);
+        const value = resolveScaledEffect(adjustedRecovery, archetypeId, buildLevel) * 100 * enhMultiplier;
+        global.recovery += value;
+        addToBreakdown(breakdown, 'recovery', {
+          name: power.name,
+          value,
+          type: 'active-power',
+        });
+      }
     }
 
     // Max HP buff
@@ -2064,6 +2105,10 @@ export function calculateCharacterTotals(
 
   // Step 10: Convert to character stats format
   const stats = convertToCharacterStats(globalBonuses);
+
+  // Compute net endurance per second (recovery minus toggle costs)
+  const recoveryEndPerSec = BASE_RECOVERY_RATE * (1 + globalBonuses.recovery / 100);
+  globalBonuses.netEndPerSec = recoveryEndPerSec - globalBonuses.toggleEndCost;
 
   // Update breakdown totals from final values (exclude capped/Rule-of-5 sources)
   for (const [, bd] of breakdown) {

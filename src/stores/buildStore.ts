@@ -569,7 +569,7 @@ function getOccupiedLevels(build: Build): Set<number> {
  * Works bidirectionally — advances when powers are added, rewinds when removed.
  * Checks which pick levels are actually occupied to avoid assigning duplicates.
  */
-function calculateCorrectLevel(build: Build): number {
+export function calculateCorrectLevel(build: Build): number {
   // Level 1 special: need both a primary and secondary power before advancing
   const hasPrimary = build.primary.powers.length >= 1;
   const hasSecondary = build.secondary.powers.length >= 1;

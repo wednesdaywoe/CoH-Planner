@@ -352,21 +352,16 @@ export function AvailablePowers({
     : [];
   const selectedSet = new Set(selectedPowerNames);
 
-  // At level 1, special rules apply:
-  // - Only the first 2 powers (available=0) can be selected
-  // - Player must select exactly 1 power from primary and 1 from secondary
-  // - If first pick was from one category, second pick MUST be from the other
-  const isLevel1 = build.level === 1;
-  const currentCategoryPowerCount = selectedPowerNames.length;
-  const hasPickedPowerThisCategory = currentCategoryPowerCount > 0;
+  // Enforce level 1 picks: both primary and secondary must each have at least
+  // one power before the user can pick any higher-level powers.
+  const primaryHasPower = build.primary.powers.length > 0;
+  const secondaryHasPower = build.secondary.powers.length > 0;
+  const level1PicksDone = primaryHasPower && secondaryHasPower;
 
-  // Check if the OTHER category has a power selected (for level 1 blocking)
-  const otherCategoryHasPower = category === 'primary'
-    ? build.secondary.powers.length > 0
-    : build.primary.powers.length > 0;
-
-  // At level 1, if we already picked from THIS category but not the other,
-  // block further picks from this category until the other is selected
+  // While level 1 picks aren't done, restrict to level 1 rules
+  const isLevel1 = !level1PicksDone;
+  const hasPickedPowerThisCategory = selectedPowerNames.length > 0;
+  const otherCategoryHasPower = category === 'primary' ? secondaryHasPower : primaryHasPower;
   const isLevel1BlockedForSecondPick = isLevel1 && hasPickedPowerThisCategory && !otherCategoryHasPower;
 
   const handlePowerHover = (power: Power) => {
@@ -501,16 +496,17 @@ export function AvailablePowers({
               {allPowers.map((power, index) => {
                 const isSelected = selectedSet.has(power.name);
                 // available is 0-indexed: available=0 means level 1, available=1 means level 2
-                const isAvailable = power.available < build.level;
-
                 // Level 1 special restrictions:
                 // - Only first 2 powers can be selected (index 0 or 1)
                 // - Can only pick 1 power total from this category
                 // - If first pick was from this category, block until other category picks
                 const isLevel1Restricted = isLevel1 && (index > 1 || hasPickedPowerThisCategory || isLevel1BlockedForSecondPick);
 
+                // Grey out powers that aren't available yet OR are blocked by level 1 enforcement
+                const isAvailable = power.available < build.level && !isLevel1Restricted;
+
                 // Block selection until both powersets are chosen, or if 24 powers taken
-                const isDisabled = isSelected || !isAvailable || !bothPowersetsSelected || isLevel1Restricted || powerLimitReached;
+                const isDisabled = isSelected || !isAvailable || !bothPowersetsSelected || powerLimitReached;
                 const isLocked = isPowerLocked(power.name);
 
                 return (
