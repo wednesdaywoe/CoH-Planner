@@ -80,56 +80,35 @@ export function computeAllSlotLevels(build: Build): Map<string, number[]> {
 
   // 2. Build the grant pool
   const grantPool = buildGrantPool(build.level);
+
+  // 3. Assign slot levels — greedy with temporal constraints.
+  // Process powers in pick-level order. Each power consumes grants sequentially
+  // from the pool, but only grants at or after its pick level. This ensures:
+  //   - A power never shows a slot level before it was picked
+  //   - Earlier powers' labels stay stable when you add slots to later powers
   let grantIndex = 0;
 
-  // 3. Assign slot levels — interleave across powers.
-  // Instead of assigning all of a power's extra slots greedily (which makes
-  // low-level powers "steal" all early grants), process one extra slot per
-  // power per round. This distributes grant levels fairly:
-  //   Round 1: each power with ≥1 extra slot gets one grant
-  //   Round 2: each power with ≥2 extra slots gets one grant
-  //   etc.
-
-  // Initialize slot 0 for every power
   for (const { power, category } of allPowers) {
     const pickLevel = category === 'inherent' ? 1 : power.level;
-    result.set(power.name, [pickLevel]);
-  }
+    const levels = [pickLevel]; // slot 0 = free at pick level
 
-  // Find max extra slots any power has
-  const maxExtraSlots = allPowers.reduce(
-    (max, { power }) => Math.max(max, power.slots.length - 1), 0
-  );
-
-  // Interleave: one slot per power per round
-  for (let round = 0; round < maxExtraSlots; round++) {
-    for (const { power, category } of allPowers) {
-      if (round < power.slots.length - 1) {
-        const pickLevel = category === 'inherent' ? 1 : power.level;
-        const levels = result.get(power.name)!;
-        levels.push(grantPool[grantIndex] ?? pickLevel);
+    // Consume grants for extra slots
+    for (let s = 1; s < power.slots.length; s++) {
+      // Advance past any grants that are before this power's pick level
+      while (grantIndex < grantPool.length && grantPool[grantIndex] < pickLevel) {
         grantIndex++;
       }
+      levels.push(grantPool[grantIndex] ?? pickLevel);
+      grantIndex++;
     }
+
+    result.set(power.name, levels);
   }
 
-  // 4. Auto-granted sub-powers (Kheldian forms, etc.) — same as parent level
-  for (const p of build.primary.powers) {
+  // 4. Auto-granted sub-powers (Kheldian forms, etc.) — use parent level for all slots
+  for (const p of [...build.primary.powers, ...build.secondary.powers]) {
     if (p.isAutoGranted && !result.has(p.name)) {
-      const levels: number[] = [];
-      for (let i = 0; i < p.slots.length; i++) {
-        levels.push(i === 0 ? p.level : (grantPool[grantIndex++] ?? p.level));
-      }
-      result.set(p.name, levels);
-    }
-  }
-  for (const p of build.secondary.powers) {
-    if (p.isAutoGranted && !result.has(p.name)) {
-      const levels: number[] = [];
-      for (let i = 0; i < p.slots.length; i++) {
-        levels.push(i === 0 ? p.level : (grantPool[grantIndex++] ?? p.level));
-      }
-      result.set(p.name, levels);
+      result.set(p.name, p.slots.map(() => p.level));
     }
   }
 

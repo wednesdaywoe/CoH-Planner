@@ -10,7 +10,7 @@ export function UpdateBanner({ visible }: UpdateBannerProps) {
   if (!visible || dismissed) return null;
 
   return (
-    <div className="bg-amber-600/90 text-white text-sm flex items-center justify-center gap-3 px-4 py-1.5">
+    <div className="bg-amber-600/90 text-white text-sm flex items-center justify-center gap-3 px-4 py-1.5 flex-wrap">
       <span>A new version is available.</span>
       <button
         onClick={() => window.location.reload()}
@@ -18,6 +18,9 @@ export function UpdateBanner({ visible }: UpdateBannerProps) {
       >
         Refresh
       </button>
+      <span className="text-white/70 text-xs">
+        If your saved build powers appear at wrong levels, please remove and re-pick them to fix.
+      </span>
       <button
         onClick={() => setDismissed(true)}
         className="ml-1 text-white/70 hover:text-white transition-colors"

@@ -720,13 +720,26 @@ export const useBuildStore = create<BuildStore>()(
             return state;
           }
 
-          // Assign the correct power pick level based on how many powers are already
-          // selected. This ensures powers always get valid pick levels (1, 2, 4, 6, ...)
-          // regardless of the display level the user has set via the slider.
-          // The display level (build.level) may be set to 50 for planning, but
-          // powers must get sequential pick levels for the chronological view to work.
+          // Assign a valid pick level for this power.
+          // The level must be:
+          //   1. A valid POWER_PICK_LEVEL (1, 2, 4, 6, 8, ...)
+          //   2. Not already occupied by another power
+          //   3. At or above the power's minimum required level (available + 1)
+          // This allows picking powers in any order — each gets placed at the
+          // earliest legal level, and the chronological view shows them correctly.
           if (category !== 'inherent') {
-            power = { ...power, level: calculateCorrectLevel(state.build) };
+            const minLevel = (power.available ?? 0) + 1;
+            const nextSequential = calculateCorrectLevel(state.build);
+            if (nextSequential >= minLevel) {
+              power = { ...power, level: nextSequential };
+            } else {
+              // Power requires a higher level — find first unoccupied pick level >= minLevel
+              const occupied = getOccupiedLevels(state.build);
+              const assignedLevel = POWER_PICK_LEVELS.find(
+                l => l >= minLevel && (l === 1 ? false : !occupied.has(l))
+              ) ?? 50;
+              power = { ...power, level: assignedLevel };
+            }
           }
 
           // Powers with maxSlots=0 cannot accept enhancement slots (e.g., Reach for the Limit)
@@ -1300,7 +1313,12 @@ export const useBuildStore = create<BuildStore>()(
             incarnates: createEmptyIncarnateBuildState(),
             craftingChecklist: createEmptyCraftingChecklistState(),
             sets: {},
-            // Keep inherents (they're based on archetype, not user-selected powers)
+            // Re-grant inherents with fresh empty slots
+            inherents: getInherentSelectedPowers(
+              state.build.archetype.id,
+              state.build.archetype.name || undefined,
+              state.build.archetype.inherent
+            ),
           },
         })),
     }),

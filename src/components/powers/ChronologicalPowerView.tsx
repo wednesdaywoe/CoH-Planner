@@ -78,22 +78,40 @@ function useChronologicalPowers() {
       return categoryOrder.indexOf(a.category) - categoryOrder.indexOf(b.category);
     });
 
-    // Build the flat list of all 24 slot keys in order
+    // Build the flat list of all 24 slot positions with their fixed levels
     const slotAssignments = new Map<SlotKey, CategorizedPower>();
-    const allSlots: { columnIndex: number; slotIndex: number }[] = [];
-    ALL_COLUMNS.forEach((column) => {
-      column.levels.forEach((_level, slotIndex) => {
-        allSlots.push({ columnIndex: column.index, slotIndex });
-      });
-    });
+    const allSlots = ALL_COLUMNS.flatMap((column) =>
+      column.levels.map((level, slotIndex) => ({
+        key: `${column.index}-${slotIndex}`,
+        level,
+      }))
+    );
 
-    // Assign sorted powers sequentially to slots
-    allPowers.forEach((power, idx) => {
-      if (idx < allSlots.length) {
-        const slot = allSlots[idx];
-        slotAssignments.set(`${slot.columnIndex}-${slot.slotIndex}`, power);
+    // Place each power at the slot matching its assigned level.
+    // Powers are sorted by level, so earlier powers claim slots first.
+    const usedSlots = new Set<string>();
+    for (const power of allPowers) {
+      // Find the first unoccupied slot at this power's assigned level
+      let placed = false;
+      for (const slot of allSlots) {
+        if (slot.level === power.level && !usedSlots.has(slot.key)) {
+          slotAssignments.set(slot.key, power);
+          usedSlots.add(slot.key);
+          placed = true;
+          break;
+        }
       }
-    });
+      // Fallback: if no exact level match (legacy builds), find nearest available slot
+      if (!placed) {
+        for (const slot of allSlots) {
+          if (slot.level >= power.level && !usedSlots.has(slot.key)) {
+            slotAssignments.set(slot.key, power);
+            usedSlots.add(slot.key);
+            break;
+          }
+        }
+      }
+    }
 
     return {
       slotAssignments,
