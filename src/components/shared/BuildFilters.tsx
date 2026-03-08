@@ -25,12 +25,12 @@ export function BuildFilters({ filters, onFiltersChange }: BuildFiltersProps) {
       const powersets = getPowersetsForArchetype(filters.archetype);
       setPrimarySets(
         powersets
-          .filter((ps) => ps.category === 'Primary')
+          .filter((ps) => ps.category === 'primary')
           .map((ps) => ({ id: ps.id ?? '', name: ps.name }))
       );
       setSecondarySets(
         powersets
-          .filter((ps) => ps.category === 'Secondary')
+          .filter((ps) => ps.category === 'secondary')
           .map((ps) => ({ id: ps.id ?? '', name: ps.name }))
       );
     } else {
