@@ -189,6 +189,18 @@ export function getEpicPool(id: string): EpicPool | undefined {
   return _epicPools[id];
 }
 
+// Hero ATs that lack patron pool data use their villain counterpart's patron pools.
+// All ATs can access patron pools in-game (unlocked via going rogue/villain).
+const PATRON_POOL_FALLBACK: Record<string, string> = {
+  defender: 'corruptor',
+  tanker: 'brute',
+  scrapper: 'stalker',
+  controller: 'dominator',
+  blaster: 'sentinel',
+};
+
+const PATRON_POOL_NAMES = new Set(['Leviathan Mastery', 'Mace Mastery', 'Mu Mastery', 'Soul Mastery']);
+
 /**
  * Get epic pools for a specific archetype
  * @param archetypeId - The archetype ID (e.g., "sentinel", "blaster")
@@ -204,9 +216,23 @@ export function getEpicPoolsForArchetype(archetypeId: string): EpicPool[] {
     ? ['arachnos_widow', 'arachnos_soldier']
     : [normalizedId];
 
-  return Object.values(_epicPools).filter(
+  const pools = Object.values(_epicPools).filter(
     (pool) => archTypesToMatch.includes(pool.archetype.toLowerCase())
   );
+
+  // Fill in missing patron pools from villain counterpart
+  const fallbackAT = PATRON_POOL_FALLBACK[normalizedId];
+  if (fallbackAT) {
+    const existingNames = new Set(pools.map(p => p.displayName || p.name));
+    const fallbackPools = Object.values(_epicPools).filter(
+      (pool) => pool.archetype.toLowerCase() === fallbackAT
+        && PATRON_POOL_NAMES.has(pool.displayName || pool.name)
+        && !existingNames.has(pool.displayName || pool.name)
+    );
+    pools.push(...fallbackPools);
+  }
+
+  return pools;
 }
 
 // ============================================

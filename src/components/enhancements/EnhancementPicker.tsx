@@ -766,7 +766,10 @@ export function EnhancementPicker() {
           )}
 
           {/* Main content area */}
-          <div className="flex-1 overflow-y-auto p-2 sm:p-3">
+          <div
+            className="flex-1 overflow-y-auto p-2 sm:p-3"
+            onContextMenu={(e) => { if (e.shiftKey) e.preventDefault(); }}
+          >
             {typeFilter === 'io-sets' && sidebarFilter === 'procs' && (
               <ProcsContent
                 pieces={procPieces}
