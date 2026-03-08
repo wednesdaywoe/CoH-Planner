@@ -684,7 +684,7 @@ const WARSHADE_INHERENT_POWERS: InherentPowerDef[] = [
     description:
       'You can Teleport long distances. Once at your destination, you will be stuck in between dimensions for up to 15s. While in this state, you will not be affected by gravity, and be able to execute additional teleportation jumps at a discounted endurance cost.',
     shortHelp: 'Ranged (Location), Self Teleport',
-    icon: 'inherentwarshade_shadowstep.png',
+    icon: 'umbralaura_shadowstep.png',
     powerType: 'Click',
     targetType: 'Location (Teleport)',
     effectArea: 'Location',
@@ -770,13 +770,13 @@ export function getInherentPowerDef(name: string): InherentPowerDef | undefined 
  */
 export function createArchetypeInherentPower(
   archetypeName: string,
-  inherent: { name: string; description: string }
+  inherent: { name: string; description: string; icon?: string }
 ): InherentPowerDef {
-  // Generate icon name from archetype and power name
+  // Use explicit icon if provided, otherwise generate from archetype and power name
   // e.g., "Blaster" + "Defiance" -> "inherent_blaster_defiance.png"
   const archetypeSlug = archetypeName.toLowerCase().replace(/[\s-]+/g, '');
   const powerSlug = inherent.name.toLowerCase().replace(/[\s-]+/g, '');
-  const iconName = `inherent_${archetypeSlug}_${powerSlug}.png`;
+  const iconName = inherent.icon || `inherent_${archetypeSlug}_${powerSlug}.png`;
 
   return {
     name: inherent.name,

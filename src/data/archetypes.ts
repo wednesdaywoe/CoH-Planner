@@ -943,6 +943,7 @@ export const ARCHETYPES: ArchetypeRegistry = {
       name: 'Dark Sustenance',
       description:
         'Warshades draw on the power of their teammates. Damage Resistance increases per nearby Tanker/Mastermind/Corruptor/Defender. Damage increases per nearby Scrapper/Sentinel/Stalker/Brute/Blaster. Control protection per nearby Controller/Dominator. Slow resistance per nearby Kheldian/Arachnos teammate.',
+      icon: 'inherent_peacebringer_interspaciallink.png',
     },
     stats: {
       baseHP: 1070.8967,

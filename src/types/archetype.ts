@@ -54,6 +54,8 @@ export interface InherentPower {
   name: string;
   /** Description of what it does */
   description: string;
+  /** Optional icon override (defaults to auto-generated from archetype + power name) */
+  icon?: string;
 }
 
 // ============================================
