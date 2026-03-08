@@ -755,7 +755,14 @@ export function getInherentPowers(): InherentPowerDef[] {
  */
 export function getInherentPowerDef(name: string): InherentPowerDef | undefined {
   const allInherents = getInherentPowers();
-  return allInherents.find((p) => p.name === name);
+  const found = allInherents.find((p) => p.name === name);
+  if (found) return found;
+  // Also check archetype-specific inherent powers (e.g. Kheldian travel powers)
+  for (const powers of Object.values(ARCHETYPE_INHERENT_POWERS)) {
+    const match = powers.find((p) => p.name === name);
+    if (match) return match;
+  }
+  return undefined;
 }
 
 /**
