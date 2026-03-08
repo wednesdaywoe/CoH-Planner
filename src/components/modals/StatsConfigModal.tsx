@@ -151,6 +151,8 @@ const STAT_CATEGORIES: {
       { stat: 'regeneration', label: 'Regeneration' },
       { stat: 'maxend', label: 'Max End', colorOverride: 'endurance' },
       { stat: 'recovery', label: 'Recovery', colorOverride: 'endurance' },
+      { stat: 'endcost', label: 'End Cost', colorOverride: 'resistance' },
+      { stat: 'netend', label: 'Net End', colorOverride: 'endurance' },
       { stat: 'level_shift', label: 'Level Shift', colorOverride: 'incarnate' },
     ],
   },
@@ -306,7 +308,7 @@ export function StatsConfigModal({ isOpen, onClose }: StatsConfigModalProps) {
     resetStatsConfig();
     // Reset local config - set recommended stats visible, all others hidden
     const defaultVisibleStats = new Set([
-      'damage', 'accuracy', 'recharge', 'recovery',
+      'damage', 'accuracy', 'recharge', 'recovery', 'endcost',
       'defense_melee', 'defense_ranged', 'resist_smashing', 'health'
     ]);
     setLocalConfig(
