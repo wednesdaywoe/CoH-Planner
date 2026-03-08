@@ -106,6 +106,17 @@ function evaluateRequires(requires: string, ctx: RequiresContext): boolean {
     return !evaluateAtom(expr.slice(1), ctx);
   }
 
+  // Handle count expression: "A + B + C > N" (need more than N of the listed powers)
+  if (expr.includes('>') && expr.includes('+')) {
+    const [sumPart, thresholdPart] = expr.split('>').map(s => s.trim());
+    const threshold = parseInt(thresholdPart, 10);
+    if (!isNaN(threshold)) {
+      const atoms = sumPart.split('+').map(s => s.trim());
+      const count = atoms.filter(a => evaluateAtom(a, ctx)).length;
+      return count > threshold;
+    }
+  }
+
   // Simple atom
   return evaluateAtom(expr, ctx);
 }

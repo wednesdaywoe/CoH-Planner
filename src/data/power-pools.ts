@@ -244,7 +244,26 @@ export function arePoolPrerequisitesMet(
 
   // Parse the requires expression
   // Format: "Pool.Speed.Flurry && Pool.Speed.Hasten || Pool.Speed.Flurry && Pool.Speed.Super_Speed"
+  // Or count: "Pool.Force_of_Will.Mighty_Leap + Pool.Force_of_Will.Project_Will + ... > 1"
   const requiresExpr = power.requires;
+
+  // Helper: resolve a "Pool.X.Power_Name" atom to its display name
+  const resolveAtom = (atom: string): string => {
+    const parts = atom.trim().split('.');
+    const internalName = parts[parts.length - 1].replace(/_/g, ' ');
+    return fullNameToDisplayName[internalName] || internalName;
+  };
+
+  // Handle count expression: "A + B + C > N"
+  if (requiresExpr.includes('>') && requiresExpr.includes('+')) {
+    const [sumPart, thresholdPart] = requiresExpr.split('>').map((s) => s.trim());
+    const threshold = parseInt(thresholdPart, 10);
+    if (!isNaN(threshold)) {
+      const atoms = sumPart.split('+').map((s) => s.trim());
+      const count = atoms.filter((a) => selectedPowers.includes(resolveAtom(a))).length;
+      return count > threshold;
+    }
+  }
 
   // Split by || (OR conditions)
   const orConditions = requiresExpr.split('||').map((s) => s.trim());
@@ -256,11 +275,7 @@ export function arePoolPrerequisitesMet(
 
     // All AND conditions must be met
     return andConditions.every((andCond) => {
-      // Extract power name from full name (e.g., "Pool.Speed.Hasten" -> "Hasten")
-      const parts = andCond.split('.');
-      const internalName = parts[parts.length - 1].replace(/_/g, ' ');
-      // Resolve to display name if available, otherwise use the internal name
-      const reqPowerName = fullNameToDisplayName[internalName] || internalName;
+      const reqPowerName = resolveAtom(andCond);
       return selectedPowers.includes(reqPowerName);
     });
   });
