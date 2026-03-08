@@ -11,7 +11,7 @@
 import type { Build, SelectedPower } from '@/types';
 import { SLOT_GRANTS } from '@/data/levels';
 
-type PowerCategory = 'primary' | 'secondary' | 'pool' | 'epic';
+type PowerCategory = 'primary' | 'secondary' | 'pool' | 'epic' | 'inherent';
 
 interface CategorizedPower {
   power: SelectedPower;
@@ -36,15 +36,19 @@ function buildGrantPool(maxLevel: number): number[] {
  * parallel to the power's slots array. Index 0 = power pick level (free slot),
  * index 1+ = the grant pool level consumed for that slot.
  *
- * Inherent powers get level 1 for all slots (they're free, outside the budget).
+ * Inherent powers get level 1 for slot 0 (free default), but extra slots
+ * consume from the grant pool like any other power.
  */
 export function computeAllSlotLevels(build: Build): Map<string, number[]> {
   const result = new Map<string, number[]>();
 
-  // 1. Collect all non-inherent powers with their category
+  // 1. Collect ALL powers with their category (including inherents)
   const allPowers: CategorizedPower[] = [];
-  const categoryOrder: PowerCategory[] = ['primary', 'secondary', 'pool', 'epic'];
+  const categoryOrder: PowerCategory[] = ['inherent', 'primary', 'secondary', 'pool', 'epic'];
 
+  for (const p of build.inherents) {
+    allPowers.push({ power: p, category: 'inherent' });
+  }
   for (const p of build.primary.powers) {
     if (!p.isAutoGranted) allPowers.push({ power: p, category: 'primary' });
   }
@@ -62,9 +66,15 @@ export function computeAllSlotLevels(build: Build): Map<string, number[]> {
     }
   }
 
-  // Sort by pick level, then by category for ties (primary before secondary, etc.)
+  // Sort by effective pick level, then by category for ties.
+  // Inherents sort as level 1 (available from start).
+  const effectiveLevel = (cp: CategorizedPower) =>
+    cp.category === 'inherent' ? 1 : cp.power.level;
+
   allPowers.sort((a, b) => {
-    if (a.power.level !== b.power.level) return a.power.level - b.power.level;
+    const aLvl = effectiveLevel(a);
+    const bLvl = effectiveLevel(b);
+    if (aLvl !== bLvl) return aLvl - bLvl;
     return categoryOrder.indexOf(a.category) - categoryOrder.indexOf(b.category);
   });
 
@@ -72,11 +82,12 @@ export function computeAllSlotLevels(build: Build): Map<string, number[]> {
   const grantPool = buildGrantPool(build.level);
   let grantIndex = 0;
 
-  // 3. Assign slot levels for each non-inherent power
-  for (const { power } of allPowers) {
-    const levels: number[] = [power.level]; // slot 0 = free at power's pick level
+  // 3. Assign slot levels for each power
+  for (const { power, category } of allPowers) {
+    const pickLevel = category === 'inherent' ? 1 : power.level;
+    const levels: number[] = [pickLevel]; // slot 0 = free at power's pick level
     for (let i = 1; i < power.slots.length; i++) {
-      levels.push(grantPool[grantIndex] ?? power.level);
+      levels.push(grantPool[grantIndex] ?? pickLevel);
       grantIndex++;
     }
     result.set(power.name, levels);
@@ -100,15 +111,6 @@ export function computeAllSlotLevels(build: Build): Map<string, number[]> {
       }
       result.set(p.name, levels);
     }
-  }
-
-  // 5. Inherent powers — all slots at level 1 (free, not from budget)
-  for (const p of build.inherents) {
-    const levels: number[] = [];
-    for (let i = 0; i < p.slots.length; i++) {
-      levels.push(1);
-    }
-    result.set(p.name, levels);
   }
 
   return result;
