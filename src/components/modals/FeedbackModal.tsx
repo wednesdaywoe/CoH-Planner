@@ -216,20 +216,34 @@ export function FeedbackModal({ isOpen, onClose }: FeedbackModalProps) {
                   <svg className="w-4 h-4 text-amber-400 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
-                  <p className="text-sm text-amber-200/80">
-                    Please{' '}
-                    <button
-                      type="button"
-                      onClick={() => {
-                        handleClose();
-                        openKnownIssuesModal();
-                      }}
-                      className="text-amber-300 underline hover:text-amber-200 font-medium"
-                    >
-                      check Known Issues
-                    </button>
-                    {' '}before submitting to avoid duplicates.
-                  </p>
+                  <div className="text-sm text-amber-200/80">
+                    <p>
+                      Please{' '}
+                      <button
+                        type="button"
+                        onClick={() => {
+                          handleClose();
+                          openKnownIssuesModal();
+                        }}
+                        className="text-amber-300 underline hover:text-amber-200 font-medium"
+                      >
+                        check Known Issues
+                      </button>
+                      {' '}before submitting to avoid duplicates.
+                    </p>
+                    <p className="mt-1">
+                      Issues importing your Mids build? Please send your Mids save file to{' '}
+                      <a
+                        href="https://discord.com/users/570068130320220172"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-amber-300 underline hover:text-amber-200 font-medium"
+                      >
+                        Wednesdaywoe
+                      </a>
+                      {' '}on Discord.
+                    </p>
+                  </div>
                 </div>
                 <div className="bg-slate-800/50 border border-slate-700/50 rounded p-3">
                   <p className="text-xs font-medium text-slate-400 mb-1.5">Tips for a helpful bug report:</p>

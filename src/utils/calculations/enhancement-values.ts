@@ -271,6 +271,11 @@ const ASPECT_NAME_MAP: Record<string, string> = {
 
   // EnhancementStatType values (used by generic IOs, origin enhancements, and specials)
   EnduranceReduction: 'endurance',
+  EnduranceModification: 'enduranceMod',
+  Interrupt: 'interrupt',
+  Absorb: 'absorb',
+  Intangible: 'intangible',
+  'Mez Duration': 'mezDuration',
 
   // Full names
   Accuracy: 'accuracy',
