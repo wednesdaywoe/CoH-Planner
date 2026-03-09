@@ -179,7 +179,7 @@ export function PowerRow({
   );
 
   const renderSlots = () => (
-    <div className="flex gap-0.5 items-center flex-1">
+    <div className="flex gap-0.5 items-center flex-1 flex-wrap">
       {slots.map((slot, index) => (
         <TouchableSlot
           key={index}
