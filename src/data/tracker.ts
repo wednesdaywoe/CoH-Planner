@@ -13,7 +13,7 @@ export interface TrackerItem {
 // ============================================
 
 export const KNOWN_BUGS: TrackerItem[] = [
-  { text: 'Many varieties of Hamidon Enhancments are missing', status: 'known-bug' },
+  { text: 'Some Hamidon Enhancement icons may be missing', status: 'known-bug' },
   { text: 'If you see a [missing-icon] icon, it means the icon is missing. Please report it using the feedback tool', status: 'known-bug' },
   { text: 'Importing from Mids file is...less than reliable. You can send your Mids file (especially older builds) to Wednesdaywoe on Discord to help make this feature more robust', status: 'known-bug' },
 ];
@@ -23,6 +23,7 @@ export const KNOWN_BUGS: TrackerItem[] = [
 // ============================================
 
 export const RECENT_CHANGES: TrackerItem[] = [
+  { text: 'Added 9 missing Hamidon Enhancements (Vesicle, Stereocilia, Microtubule, Karyoplasm, Microvillus, Chromatin, Ectosome, Amyloplast, Chloroplast) but I do not have icons for them yet', status: 'fixed' },
   { text: 'Kheldian inherent travel powers removed from selection', status: 'fixed' },
   { text: 'Villain epic pools should now appear as options.', status: 'fixed' },
   { text: 'Significant audit of accuracy and damage calculations, and enhancement schedules', status: 'fixed' },

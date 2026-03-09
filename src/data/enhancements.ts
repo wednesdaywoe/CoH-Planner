@@ -110,6 +110,73 @@ export const HAMIDON_ENHANCEMENTS: HamidonRegistry = {
       { stat: 'EnduranceReduction', value: 33.33 },
     ],
   },
+  vesicle: {
+    name: 'Vesicle Exposure',
+    aspects: [
+      { stat: 'EnduranceModification', value: 33.33 },
+      { stat: 'Recharge', value: 33.33 },
+    ],
+  },
+  stereocilia: {
+    name: 'Stereocilia Exposure',
+    aspects: [
+      { stat: 'Slow', value: 33.33 },
+      { stat: 'Recharge', value: 33.33 },
+      { stat: 'EnduranceReduction', value: 33.33 },
+    ],
+  },
+  microtubule: {
+    name: 'Microtubule Exposure',
+    aspects: [
+      { stat: 'EnduranceModification', value: 33.33 },
+      { stat: 'Accuracy', value: 33.33 },
+    ],
+  },
+  karyoplasm: {
+    name: 'Karyoplasm Exposure',
+    aspects: [
+      { stat: 'Damage', value: 33.33 },
+      { stat: 'EnduranceReduction', value: 33.33 },
+    ],
+  },
+  microvillus: {
+    name: 'Microvillus Exposure',
+    aspects: [
+      { stat: 'Accuracy', value: 33.33 },
+      { stat: 'Range', value: 20 },
+    ],
+  },
+  chromatin: {
+    name: 'Chromatin Exposure',
+    aspects: [
+      { stat: 'Damage', value: 33.33 },
+      { stat: 'Recharge', value: 33.33 },
+    ],
+  },
+  ectosome: {
+    name: 'Ectosome Exposure',
+    aspects: [
+      { stat: 'Taunt', value: 33.33 },
+      { stat: 'Accuracy', value: 33.33 },
+      { stat: 'Recharge', value: 33.33 },
+    ],
+  },
+  amyloplast: {
+    name: 'Amyloplast Exposure',
+    aspects: [
+      { stat: 'Recharge', value: 33.33 },
+      { stat: 'Healing', value: 33.33 },
+      { stat: 'Absorb', value: 33.33 },
+    ],
+  },
+  chloroplast: {
+    name: 'Chloroplast Exposure',
+    aspects: [
+      { stat: 'Accuracy', value: 33.33 },
+      { stat: 'Healing', value: 33.33 },
+      { stat: 'Absorb', value: 33.33 },
+    ],
+  },
 };
 
 // ============================================
