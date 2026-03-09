@@ -14,7 +14,10 @@ export interface TrackerItem {
 
 export const KNOWN_BUGS: TrackerItem[] = [
   { text: 'If you see a [missing-icon] icon, it means the icon is missing. Please report it using the feedback tool', status: 'known-bug' },
-  { text: 'A number of incarnate powers are missing their info display', status: 'known-bug' },
+  { text: 'VEATS specializations are missing sets', status: 'known-bug' },
+  { text: 'Sorcery, Experimentation, and Force of Will pools are not mutally exclusive', status: 'known-bug' },
+  { text: 'Artillery set is missing; 1,000,000 Inf offered for its safe return', status: 'known-bug' },
+  { text: 'Importing from Mids file is...less than reliable', status: 'known-bug' },
 ];
 
 // ============================================
@@ -22,19 +25,8 @@ export const KNOWN_BUGS: TrackerItem[] = [
 // ============================================
 
 export const RECENT_CHANGES: TrackerItem[] = [
-  { text: 'Added .mnu export for Brainstorm Popmenu', status: 'new' },
-  { text: 'Added new slotting comparison tool: SHIFT-Right Click on a slot to access it', status: 'new' },
-  { text: 'Added target slider to powers where appropriate', status: 'fixed' },
-  { text: 'Implemented public build sharing, no account or registration required', status: 'new' },
-  { text: 'Finally added support for pets and pseudopet powers', status: 'new' },
-  { text: 'Undock feature added to Info Panel, allowing it to be moved and resized', status: 'new' },  
-  { text: 'Added Procs toggle to dashboard', status: 'new' },
-  { text: 'Added highlight indicator for unique and proc enhancements', status: 'new' },
-  { text: 'Tracked stats now highlight matching bonus effects in enhancement picker tooltips', status: 'new' },
-  { text: 'Update to incorporate power updates in Issue 28, Page 3, Panel 2', status: 'fixed' },
-  { text: 'Added modal for incarnate recipe calculator', status: 'new' },
-  { text: 'Added modal for set bonus finder', status: 'new' },
-  { text: 'Added dashboard feature: stat tracking! Left click a stat to track it; tracked stats will highlight sets that provide bonuses for that stat', status: 'new' },
+  { text: 'Added drag and drop functionality to swap powers BUT it requires chronological mode', status: 'new' },
+
 ];
 
 // ============================================

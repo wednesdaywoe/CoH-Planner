@@ -74,6 +74,7 @@ interface BuildActions {
   addPower: (category: PowerCategory, power: SelectedPower) => void;
   removePower: (category: PowerCategory, powerName: string) => void;
   movePowerLevel: (category: PowerCategory, powerName: string, newLevel: number) => void;
+  swapPowerLevels: (powerNameA: string, powerNameB: string) => void;
 
   // Pools
   addPool: (poolId: string) => boolean;
@@ -839,6 +840,26 @@ export const useBuildStore = create<BuildStore>()(
             powers.map((p) => (p.name === powerName ? { ...p, level: newLevel } : p))
           ),
         }));
+      },
+
+      swapPowerLevels: (powerNameA, powerNameB) => {
+        set((state) => {
+          const foundA = findPower(state.build, powerNameA);
+          const foundB = findPower(state.build, powerNameB);
+          if (!foundA || !foundB) return state;
+
+          const levelA = foundA.power.level;
+          const levelB = foundB.power.level;
+
+          let newBuild = applyPowerUpdate(state.build, foundA.category, (powers) =>
+            powers.map((p) => (p.name === powerNameA ? { ...p, level: levelB } : p))
+          );
+          newBuild = applyPowerUpdate(newBuild, foundB.category, (powers) =>
+            powers.map((p) => (p.name === powerNameB ? { ...p, level: levelA } : p))
+          );
+
+          return { build: newBuild };
+        });
       },
 
       // Pools
