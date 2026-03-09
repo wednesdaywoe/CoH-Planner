@@ -122,6 +122,7 @@ export function PlannerPage() {
           checked={tooltipEnabled}
           onChange={toggleInfoPanelTooltip}
           title="Enable power info tooltip on hover"
+          label="Tooltips"
           className="scale-75 origin-right"
         />
         <UndockButton onClick={undockInfoPanel} />

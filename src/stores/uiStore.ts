@@ -393,7 +393,7 @@ const defaultInfoPanel: InfoPanelState = {
   content: null,
   locked: false,
   lockedContent: null,
-  tooltipEnabled: false,
+  tooltipEnabled: true,
   undocked: false,
 };
 

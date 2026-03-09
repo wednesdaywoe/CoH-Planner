@@ -184,7 +184,7 @@ export function createDefaultUIState(): UIState {
       content: null,
       locked: false,
       lockedContent: null,
-      tooltipEnabled: false,
+      tooltipEnabled: true,
       undocked: false,
     },
     statsConfig: [],
