@@ -86,6 +86,22 @@ const RELEVANT_TABLES = [
   'melee_speedjumping',
   'ranged_speedjumping',
 
+  // Mez magnitude tables
+  'ranged_knockback',
+  'melee_knockback',
+  'ranged_stun',
+  'melee_stun',
+  'ranged_sleep',
+  'melee_sleep',
+  'ranged_immobilize',
+  'melee_immobilize',
+  'ranged_fear',
+  'melee_fear',
+  'ranged_slow',
+  'melee_slow',
+  'ranged_special',
+  'melee_special',
+
   // Other
   'ranged_resistance',
   'melee_resistance',
@@ -236,6 +252,14 @@ function generateTypeScript(tables, petTables) {
   lines.push(`    table = at.tables[stripped];`);
   lines.push(`  }`);
   lines.push(`  `);
+  lines.push(`  // Alias temp/incarnate damage tables to base damage tables`);
+  lines.push(`  if (!table) {`);
+  lines.push(`    const aliased = key`);
+  lines.push(`      .replace('_tempdamage', '_damage')`);
+  lines.push(`      .replace('_incarnateprocdamage', '_damage');`);
+  lines.push(`    if (aliased !== key) table = at.tables[aliased];`);
+  lines.push(`  }`);
+  lines.push(`  `);
   lines.push(`  if (!table) return undefined;`);
   lines.push(`  `);
   lines.push(`  // Level 1 = index 0`);
@@ -258,6 +282,23 @@ function generateTypeScript(tables, petTables) {
   lines.push(`  const tableValue = getTableValue(archetype, tableName, level);`);
   lines.push(`  if (tableValue === undefined) return undefined;`);
   lines.push(`  return scale * tableValue;`);
+  lines.push(`}`);
+  lines.push(``);
+
+  // Add incarnate damage helper
+  lines.push(`/**`);
+  lines.push(` * Calculate incarnate power damage from scale and table`);
+  lines.push(` */`);
+  lines.push(`export function calculateIncarnateDamage(`);
+  lines.push(`  scale: number,`);
+  lines.push(`  tableName: string,`);
+  lines.push(`  archetype: string,`);
+  lines.push(`  level: number = 50`);
+  lines.push(`): number | null {`);
+  lines.push(`  if (!scale || scale === 0) return 0;`);
+  lines.push(`  const tableValue = getTableValue(archetype, tableName.toLowerCase().replace(/-/g, '_'), level);`);
+  lines.push(`  if (tableValue === undefined) return null;`);
+  lines.push(`  return Math.abs(scale * tableValue);`);
   lines.push(`}`);
   lines.push(``);
 

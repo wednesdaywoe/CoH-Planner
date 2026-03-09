@@ -194,7 +194,7 @@ export function SelectedPowers({ category }: SelectedPowersProps) {
                   onRemoveAllSlots={() => handleRemoveAllSlots(power.name, power.slots.length)}
                   onClearEnhancement={(index) => handleClearEnhancement(power.name, index)}
                   onClearAllEnhancements={() => handleClearAllEnhancements(power.name, power.slots.length)}
-                  onOpenPicker={(slotIndex) => openEnhancementPicker(power.name, powersetId, slotIndex)}
+                  onOpenPicker={(slotIndex) => openEnhancementPicker(power.name, power.powerSet || powersetId, slotIndex)}
                   onHover={() => handlePowerHover(power)}
                   onLeave={handlePowerLeave}
                   onEnhancementHover={(index) => handleEnhancementHover(power.name, index)}
@@ -250,7 +250,7 @@ export function SelectedPowers({ category }: SelectedPowersProps) {
                           onRemoveAllSlots={() => handleRemoveAllSlots(subPower.name, subPower.slots.length)}
                           onClearEnhancement={(index) => handleClearEnhancement(subPower.name, index)}
                           onClearAllEnhancements={() => handleClearAllEnhancements(subPower.name, subPower.slots.length)}
-                          onOpenPicker={(slotIndex) => openEnhancementPicker(subPower.name, powersetId, slotIndex)}
+                          onOpenPicker={(slotIndex) => openEnhancementPicker(subPower.name, subPower.powerSet || powersetId, slotIndex)}
                           onHover={() => handlePowerHover(subPower)}
                           onLeave={handlePowerLeave}
                           onEnhancementHover={(index) => handleEnhancementHover(subPower.name, index)}

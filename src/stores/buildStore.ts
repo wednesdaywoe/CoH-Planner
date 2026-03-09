@@ -36,6 +36,7 @@ import {
   POWER_PICK_LEVELS,
   getIOSet,
   GRANTED_POWER_GROUPS,
+  getExcludedPools,
 } from '@/data';
 import type { InherentPowerDef } from '@/data';
 import { computeSetTracking } from '@/utils/calculations/set-tracking';
@@ -84,6 +85,7 @@ interface BuildActions {
   // Slots
   addSlot: (powerName: string) => boolean;
   removeSlot: (powerName: string, slotIndex: number) => boolean;
+  clearSlotOrder: () => void;
 
   // Enhancements
   setEnhancement: (powerName: string, slotIndex: number, enhancement: Enhancement) => void;
@@ -664,6 +666,7 @@ export const useBuildStore = create<BuildStore>()(
         if (!powerset) return;
 
         set((state) => {
+          const removedNames = new Set(state.build.primary.powers.map((p) => p.name));
           const newBuild = {
             ...state.build,
             primary: {
@@ -671,6 +674,7 @@ export const useBuildStore = create<BuildStore>()(
               name: powerset.name,
               powers: [], // Clear powers when powerset changes
             },
+            slotOrder: state.build.slotOrder.filter((e) => !removedNames.has(e.powerName)),
           };
 
           // Auto-grant inherent powers if both powersets are now selected
@@ -691,6 +695,7 @@ export const useBuildStore = create<BuildStore>()(
         if (!powerset) return;
 
         set((state) => {
+          const removedNames = new Set(state.build.secondary.powers.map((p) => p.name));
           const newBuild = {
             ...state.build,
             secondary: {
@@ -698,6 +703,7 @@ export const useBuildStore = create<BuildStore>()(
               name: powerset.name,
               powers: [],
             },
+            slotOrder: state.build.slotOrder.filter((e) => !removedNames.has(e.powerName)),
           };
 
           // Auto-grant inherent powers if both powersets are now selected
@@ -830,6 +836,12 @@ export const useBuildStore = create<BuildStore>()(
           // (addPower auto-advances but removePower should never lower it)
 
           newBuild.sets = updateSetTracking(newBuild);
+          // Remove slotOrder entries for removed power(s)
+          const removedNames = new Set([powerName]);
+          if (formGroup?.slottable) {
+            for (const name of formGroup.grantedPowers) removedNames.add(name);
+          }
+          newBuild.slotOrder = newBuild.slotOrder.filter((e) => !removedNames.has(e.powerName));
           return { build: newBuild };
         });
       },
@@ -873,6 +885,10 @@ export const useBuildStore = create<BuildStore>()(
         // Check if pool is already selected
         if (state.build.pools.some((p) => p.id === poolId)) return false;
 
+        // Check mutual exclusion (e.g., Sorcery / Experimentation / Force of Will)
+        const excluded = getExcludedPools(poolId);
+        if (excluded && state.build.pools.some((p) => excluded.includes(p.id))) return false;
+
         set((s) => ({
           build: {
             ...s.build,
@@ -892,9 +908,12 @@ export const useBuildStore = create<BuildStore>()(
 
       removePool: (poolId) => {
         set((state) => {
+          const removedPool = state.build.pools.find((p) => p.id === poolId);
+          const removedNames = new Set(removedPool?.powers.map((p) => p.name) ?? []);
           const newBuild = {
             ...state.build,
             pools: state.build.pools.filter((p) => p.id !== poolId),
+            slotOrder: state.build.slotOrder.filter((e) => !removedNames.has(e.powerName)),
           };
           newBuild.sets = updateSetTracking(newBuild);
           return { build: newBuild };
@@ -904,7 +923,12 @@ export const useBuildStore = create<BuildStore>()(
       setEpicPool: (poolId) => {
         if (!poolId) {
           set((state) => {
-            const newBuild = { ...state.build, epicPool: null };
+            const removedNames = new Set(state.build.epicPool?.powers.map((p) => p.name) ?? []);
+            const newBuild = {
+              ...state.build,
+              epicPool: null,
+              slotOrder: state.build.slotOrder.filter((e) => !removedNames.has(e.powerName)),
+            };
             newBuild.sets = updateSetTracking(newBuild);
             return { build: newBuild };
           });
@@ -943,13 +967,16 @@ export const useBuildStore = create<BuildStore>()(
         // Inherent power slots are excluded entirely from the budget.
         if (countPlacedSlots(state.build) >= getPlacedSlotLimit(state.build.level)) return false;
 
-        set((s) => ({
-          build: applyPowerUpdate(s.build, category, (powers) =>
+        const newSlotIndex = power.slots.length; // index of the slot being added
+        set((s) => {
+          const newBuild = applyPowerUpdate(s.build, category, (powers) =>
             powers.map((p) =>
               p.name === powerName ? { ...p, slots: [...p.slots, null] } : p
             )
-          ),
-        }));
+          );
+          newBuild.slotOrder = [...newBuild.slotOrder, { powerName, slotIndex: newSlotIndex }];
+          return { build: newBuild };
+        });
 
         return true;
       },
@@ -976,10 +1003,24 @@ export const useBuildStore = create<BuildStore>()(
             )
           );
           newBuild.sets = updateSetTracking(newBuild);
+          // Remove this slot from slotOrder and adjust higher indices for same power
+          newBuild.slotOrder = newBuild.slotOrder
+            .filter((e) => !(e.powerName === powerName && e.slotIndex === slotIndex))
+            .map((e) =>
+              e.powerName === powerName && e.slotIndex > slotIndex
+                ? { ...e, slotIndex: e.slotIndex - 1 }
+                : e
+            );
           return { build: newBuild };
         });
 
         return true;
+      },
+
+      clearSlotOrder: () => {
+        set((s) => ({
+          build: { ...s.build, slotOrder: [] },
+        }));
       },
 
       // Enhancements
@@ -1296,6 +1337,11 @@ export const useBuildStore = create<BuildStore>()(
             ),
           };
 
+          // Default slotOrder for builds that don't have it (v1 exports, older saves)
+          if (!build.slotOrder) {
+            build.slotOrder = [];
+          }
+
           // Sync power definitions (effects, icons) and enhancement icons
           // from current data — fixes stale data from older exports/shares
           syncBuildDefinitions(build);
@@ -1309,6 +1355,9 @@ export const useBuildStore = create<BuildStore>()(
       },
 
       importMidsBuild: (build) => {
+        if (!build.slotOrder) {
+          build.slotOrder = [];
+        }
         set({ build });
       },
 
@@ -1334,6 +1383,7 @@ export const useBuildStore = create<BuildStore>()(
             incarnates: createEmptyIncarnateBuildState(),
             craftingChecklist: createEmptyCraftingChecklistState(),
             sets: {},
+            slotOrder: [],
             // Re-grant inherents with fresh empty slots
             inherents: getInherentSelectedPowers(
               state.build.archetype.id,
@@ -1419,6 +1469,11 @@ export const useBuildStore = create<BuildStore>()(
           // Migration: Initialize shopping list acquired if missing
           if (!state.build.shoppingListAcquired) {
             state.build.shoppingListAcquired = {};
+          }
+
+          // Migration: Initialize slotOrder if missing (builds before leveling mode)
+          if (!state.build.slotOrder) {
+            state.build.slotOrder = [];
           }
 
           // Migration: Sync power definitions (effects, icons) and enhancement icons

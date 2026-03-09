@@ -75,6 +75,8 @@ export function Header() {
   const toggleExemplarMode = useUIStore((s) => s.toggleExemplarMode);
   const exemplarLevel = useUIStore((s) => s.exemplarLevel);
   const setExemplarLevel = useUIStore((s) => s.setExemplarLevel);
+  const targetLevelOffset = useUIStore((s) => s.targetLevelOffset);
+  const setTargetLevelOffset = useUIStore((s) => s.setTargetLevelOffset);
   const dominationActive = useUIStore((s) => s.dominationActive);
   const toggleDomination = useUIStore((s) => s.toggleDomination);
   const scourgeActive = useUIStore((s) => s.scourgeActive);
@@ -579,6 +581,28 @@ export function Header() {
               showRange={false}
             />
           </div>
+          <Tooltip content="Set target enemy level relative to yours. Affects Hit Chance in the stats dashboard.">
+            <div className="flex items-center gap-1 bg-slate-700/50 px-2 py-1.5 rounded border border-slate-600">
+              <span className="text-xs text-slate-400 font-semibold uppercase">Target</span>
+              <button
+                onClick={() => setTargetLevelOffset(targetLevelOffset - 1)}
+                disabled={targetLevelOffset <= -5}
+                className="text-slate-400 hover:text-cyan-400 disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-0.5"
+              >
+                &minus;
+              </button>
+              <span className="text-sm font-bold text-cyan-400 w-6 text-center">
+                {targetLevelOffset >= 0 ? `+${targetLevelOffset}` : `${targetLevelOffset}`}
+              </span>
+              <button
+                onClick={() => setTargetLevelOffset(targetLevelOffset + 1)}
+                disabled={targetLevelOffset >= 5}
+                className="text-slate-400 hover:text-cyan-400 disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-0.5"
+              >
+                +
+              </button>
+            </div>
+          </Tooltip>
           <Tooltip content="Show/hide slot level labels on enhancement slots">
             <div className={`flex items-center px-2 py-1.5 rounded border ${
               showSlotLevels ? 'bg-slate-700/50 border-slate-500' : 'bg-slate-700/50 border-slate-600'

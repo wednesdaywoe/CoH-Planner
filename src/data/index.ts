@@ -111,6 +111,7 @@ export {
   arePoolsUnlocked,
   isPowerAvailableInPool,
   getAvailablePoolPowers,
+  getExcludedPools,
 } from './power-pools';
 export type { PowerPoolRegistry, PoolCategoryInfo } from './power-pools';
 

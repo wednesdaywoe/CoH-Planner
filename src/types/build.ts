@@ -145,6 +145,11 @@ export interface Build {
 
   /** Shopping list: count of salvage items marked as acquired across all incarnate slots */
   shoppingListAcquired: Record<string, number>;
+
+  /** Chronological order of slot additions for leveling mode.
+   *  Each entry = one extra slot added (slot index 1+ on a power).
+   *  Empty = respec mode (slot levels computed by power-pick order). */
+  slotOrder: { powerName: string; slotIndex: number }[];
 }
 
 // ============================================
@@ -185,6 +190,7 @@ export function createEmptyBuild(): Build {
     incarnates: createEmptyIncarnateBuildState(),
     craftingChecklist: createEmptyCraftingChecklistState(),
     shoppingListAcquired: {},
+    slotOrder: [],
   };
 }
 

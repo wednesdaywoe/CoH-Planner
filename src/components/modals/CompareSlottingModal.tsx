@@ -8,6 +8,7 @@
 
 import React, { useState, useMemo, useCallback, useEffect } from 'react';
 import { useBuildStore, useUIStore } from '@/stores';
+import { getBaseToHit } from '@/data/purple-patch';
 import { lookupPower, getIOSet, getPowerIconPath } from '@/data';
 import { getArchetype } from '@/data';
 import { calculatePowerEnhancementBonuses } from '@/utils/calculations/enhancement-values';
@@ -46,6 +47,7 @@ export function CompareSlottingModal() {
   const clearEnhancement = useBuildStore((s) => s.clearEnhancement);
 
   const globalBonuses = useGlobalBonuses();
+  const targetLevelOffset = useUIStore((s) => s.targetLevelOffset);
   const incarnateActive = useUIStore((s) => s.incarnateActive);
 
   const [copies, setCopies] = useState<ComparisonCopy[]>([]);
@@ -230,6 +232,8 @@ export function CompareSlottingModal() {
   const statsConfig = useUIStore((s) => s.statsConfig);
   const includeProcsInStats = useUIStore((s) => s.includeProcsInStats);
   const targetsHitValues = useUIStore((s) => s.targetsHitValues);
+  const vigilanceTeamSize = useUIStore((s) => s.vigilanceTeamSize);
+  const furyLevel = useUIStore((s) => s.furyLevel);
 
   const currentCalcResult = useCharacterCalculation();
 
@@ -279,10 +283,12 @@ export function CompareSlottingModal() {
     const hypoResult = calculateCharacterTotals(hypoBuild, exemplarMode, incarnateActive, {
       includeProcs: includeProcsInStats,
       targetsHitValues,
+      vigilanceTeamSize,
+      furyLevel,
     });
 
     return convertToLegacyStats(hypoResult.stats, hypoResult);
-  }, [activeCopy, compareTarget, visibleStatIds.length, build, exemplarMode, incarnateActive, includeProcsInStats, targetsHitValues]);
+  }, [activeCopy, compareTarget, visibleStatIds.length, build, exemplarMode, incarnateActive, includeProcsInStats, targetsHitValues, vigilanceTeamSize, furyLevel]);
 
   // Helper: extract numeric value from a StatValue for delta computation
   const getNumericValue = useCallback((v: StatValue): number => {
@@ -397,6 +403,11 @@ export function CompareSlottingModal() {
               categories={['execution', 'buff', 'debuff', 'control', 'protection', 'movement']}
               damage={activeDamage}
               duration={mergedEffects?.buffDuration as number | undefined}
+              purplePatchInfo={{
+                factor: getBaseToHit(targetLevelOffset - globalBonuses.levelShift) / 0.75,
+                offset: targetLevelOffset,
+                combatModifier: globalBonuses.combatModifier ?? 1,
+              }}
             />
 
             {/* Dashboard Stats Impact section */}

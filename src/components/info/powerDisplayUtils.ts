@@ -205,6 +205,10 @@ export const TYPE_LABELS_FULL: Record<string, string> = {
   recharge: 'Recharge', perception: 'Percep',
   // Resistance subtypes
   heal: 'Heal',
+  // Mez types (for -Special/+Special display)
+  hold: 'Hold', stun: 'Stun', immobilize: 'Immob',
+  sleep: 'Sleep', confuse: 'Confuse', fear: 'Fear',
+  knockback: 'KB', knockup: 'KU', repel: 'Repel',
 };
 
 /**

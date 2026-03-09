@@ -111,6 +111,15 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     showWhenZero: true,
     breakdownKey: 'tohit',
   },
+  hitchance: {
+    id: 'hitchance',
+    label: 'Hit%',
+    getValue: () => 0,
+    format: (v) => `${(Number(v) * 100).toFixed(1)}%`,
+    color: STAT_COLORS.accuracy,
+    tooltip: 'Final hit chance vs target level (base ToHit + buffs \u00d7 accuracy). Per-power accuracy enhancements further improve this.',
+    showWhenZero: true,
+  },
   recharge: {
     id: 'recharge',
     label: 'Rech',

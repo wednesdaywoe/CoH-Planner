@@ -7,6 +7,7 @@
 import { useEffect, useState, useCallback, useMemo } from 'react';
 import { createPortal } from 'react-dom';
 import { useUIStore, useBuildStore, useDominationActive, useScourgeActive, useFuryLevel, useSupremacyActive, useVigilanceTeamSize, useCriticalHitsActive, useStalkerHidden, useStalkerTeamSize, useStalkerCritActive, useContainmentActive, useSentinelCritActive } from '@/stores';
+import { getBaseToHit } from '@/data/purple-patch';
 import { useGlobalBonuses } from '@/hooks/useCalculatedStats';
 import { lookupPower, getPower, getPowerPool, getArchetype, getIOSet, getPowerset, findProcData, parseProcEffect, getProcEffectLabel, getProcEffectColor, isProcAlwaysOn, interpolateProcDamage, calculateProcChance, calculateProcsPerMinute, calculateProcDPS, calculateAutoToggleProcChance, calculateAutoToggleProcsPerMinute } from '@/data';
 import type { Power } from '@/types';
@@ -81,6 +82,7 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
   const build = useBuildStore((s) => s.build);
   const archetypeId = build.archetype.id;
   const globalBonuses = useGlobalBonuses();
+  const targetLevelOffset = useUIStore((s) => s.targetLevelOffset);
   const incarnateActive = useUIStore((s) => s.incarnateActive);
   const dominationActive = useDominationActive();
   const scourgeActive = useScourgeActive();
@@ -474,6 +476,11 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
         finalColumnHeader={damageDisplayInfo?.finalColumnHeader}
         finalColumnColor={damageDisplayInfo?.finalColumnColor}
         applyInherentBonus={damageDisplayInfo?.applyInherentBonus}
+        purplePatchInfo={{
+          factor: getBaseToHit(targetLevelOffset - globalBonuses.levelShift) / 0.75,
+          offset: targetLevelOffset,
+          combatModifier: globalBonuses.combatModifier ?? 1,
+        }}
       />
 
       {/* Damage bar - overlaid base/enhanced/final relative to AT cap */}

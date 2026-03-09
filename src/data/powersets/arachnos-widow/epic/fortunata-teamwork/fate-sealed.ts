@@ -23,35 +23,13 @@ export const FateSealed: Power = {
   },
   "targetType": "Self",
   "effects": {
-    "confuse": {
-      "mag": 1,
-      "scale": 0.33,
-      "table": "Melee_Ones"
-    },
-    "fear": {
-      "mag": 1,
-      "scale": 0.33,
-      "table": "Melee_Ones"
-    },
-    "hold": {
-      "mag": 1,
-      "scale": 0.33,
-      "table": "Melee_Ones"
-    },
-    "immobilize": {
-      "mag": 1,
-      "scale": 0.33,
-      "table": "Melee_Ones"
-    },
-    "stun": {
-      "mag": 1,
-      "scale": 0.33,
-      "table": "Melee_Ones"
-    },
-    "sleep": {
-      "mag": 1,
-      "scale": 0.33,
-      "table": "Melee_Ones"
+    "specialBuff": {
+      "hold": { "scale": 0.33, "table": "Melee_Ones" },
+      "stun": { "scale": 0.33, "table": "Melee_Ones" },
+      "immobilize": { "scale": 0.33, "table": "Melee_Ones" },
+      "sleep": { "scale": 0.33, "table": "Melee_Ones" },
+      "confuse": { "scale": 0.33, "table": "Melee_Ones" },
+      "fear": { "scale": 0.33, "table": "Melee_Ones" }
     },
     "effectDuration": 0.75
   }

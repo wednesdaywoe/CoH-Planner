@@ -14,10 +14,7 @@ export interface TrackerItem {
 
 export const KNOWN_BUGS: TrackerItem[] = [
   { text: 'If you see a [missing-icon] icon, it means the icon is missing. Please report it using the feedback tool', status: 'known-bug' },
-  { text: 'VEATS specializations are missing sets', status: 'known-bug' },
-  { text: 'Sorcery, Experimentation, and Force of Will pools are not mutally exclusive', status: 'known-bug' },
-  { text: 'Artillery set is missing; 1,000,000 Inf offered for its safe return', status: 'known-bug' },
-  { text: 'Importing from Mids file is...less than reliable', status: 'known-bug' },
+  { text: 'Importing from Mids file is...less than reliable. You can send your Mids file (especially older builds) to Wednesdaywoe on Discord to help make this feature more robust', status: 'known-bug' },
 ];
 
 // ============================================
@@ -25,6 +22,12 @@ export const KNOWN_BUGS: TrackerItem[] = [
 // ============================================
 
 export const RECENT_CHANGES: TrackerItem[] = [
+  { text: 'Significant audit of accuracy and damage calculations, and enhancement schedules', status: 'fixed' },
+  { text: 'Added target level offset to calculate hit chance against different levels', status: 'new' },
+  { text: 'VEATS specializations should be correctly handled now', status: 'fixed' },
+  { text: 'Artillery set found its icon', status: 'fixed' },
+  { text: 'Sorcery, Experimentation, and Force of Will pools are now mutually exclusive', status: 'fixed' },
+  { text: 'Refactored slot level ordering to improve level-based planning', status: 'new' },
   { text: 'Added drag and drop functionality to swap powers BUT it requires chronological mode', status: 'new' },
 
 ];

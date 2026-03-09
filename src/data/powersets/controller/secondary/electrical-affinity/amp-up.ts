@@ -57,37 +57,15 @@ export const AmpUp: Power = {
         "table": "Ranged_Buff_Dmg"
       }
     },
-    "confuse": {
-      "mag": 1,
-      "scale": 6,
-      "table": "Ranged_Buff_Dmg"
+    "specialBuff": {
+      "hold": { "scale": 6, "table": "Ranged_Buff_Dmg" },
+      "stun": { "scale": 6, "table": "Ranged_Buff_Dmg" },
+      "immobilize": { "scale": 6, "table": "Ranged_Buff_Dmg" },
+      "sleep": { "scale": 6, "table": "Ranged_Buff_Dmg" },
+      "confuse": { "scale": 6, "table": "Ranged_Buff_Dmg" },
+      "fear": { "scale": 6, "table": "Ranged_Buff_Dmg" }
     },
     "effectDuration": 90,
-    "fear": {
-      "mag": 1,
-      "scale": 6,
-      "table": "Ranged_Buff_Dmg"
-    },
-    "hold": {
-      "mag": 1,
-      "scale": 6,
-      "table": "Ranged_Buff_Dmg"
-    },
-    "immobilize": {
-      "mag": 1,
-      "scale": 6,
-      "table": "Ranged_Buff_Dmg"
-    },
-    "stun": {
-      "mag": 1,
-      "scale": 6,
-      "table": "Ranged_Buff_Dmg"
-    },
-    "sleep": {
-      "mag": 1,
-      "scale": 6,
-      "table": "Ranged_Buff_Dmg"
-    },
     "defenseBuff": {
       "scale": 3.6,
       "table": "Ranged_Buff_Dmg"

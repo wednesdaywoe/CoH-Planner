@@ -431,6 +431,20 @@ interface RegistryEffectsDisplayProps {
   finalColumnColor?: string;
   /** Function to apply inherent bonus to damage values */
   applyInherentBonus?: (value: number) => number;
+  /** Purple patch info for adjusting accuracy and damage final values */
+  purplePatchInfo?: { factor: number; offset: number; combatModifier: number };
+}
+
+/** Get con-colored arrow symbol for target level offset (matches in-game con system) */
+export function getConArrow(offset: number): { symbol: string; colorClass: string } | null {
+  if (offset === 0) return null;
+  if (offset <= -3) return { symbol: '\u25B2', colorClass: 'text-slate-400' };
+  if (offset === -2) return { symbol: '\u25B2', colorClass: 'text-green-400' };
+  if (offset === -1) return { symbol: '\u25B2', colorClass: 'text-blue-400' };
+  if (offset === 1) return { symbol: '\u25BC', colorClass: 'text-yellow-400' };
+  if (offset === 2) return { symbol: '\u25BC', colorClass: 'text-orange-400' };
+  if (offset === 3) return { symbol: '\u25BC', colorClass: 'text-red-400' };
+  return { symbol: '\u25BC', colorClass: 'text-purple-400' }; // +4, +5
 }
 
 /**
@@ -475,7 +489,12 @@ function getEffectBaseValue(
       }
       return value.mag;
     }
-    // ScaledEffect without mag (knockback, knockup, repel) — scale IS the magnitude
+    // ScaledEffect without mag (knockback, knockup, repel) — resolve via table when available
+    if (archetypeId && typeof value === 'object' && value !== null && 'scale' in value && 'table' in value) {
+      const sv = value as { scale: number; table: string };
+      const tableVal = getTableValue(archetypeId, sv.table, 50);
+      if (tableVal !== undefined) return Math.abs(sv.scale * tableVal);
+    }
     const scaled = getScaleValue(value as NumberOrScaled);
     if (scaled !== undefined) return scaled;
     return null;
@@ -539,6 +558,7 @@ export function RegistryEffectsDisplay({
   finalColumnHeader = 'Final',
   finalColumnColor = 'text-amber-400',
   applyInherentBonus,
+  purplePatchInfo,
 }: RegistryEffectsDisplayProps) {
   const allowedSet = new Set(allowedEnhancements);
 
@@ -726,13 +746,21 @@ export function RegistryEffectsDisplay({
           const finalDamage = applyInherentBonus ? applyInherentBonus(damage.final) : damage.final;
           const hasFinal = Math.abs(finalDamage - damage.enhanced) > 0.001;
 
+          // Purple patch combat modifier for damage
+          const combatMod = purplePatchInfo?.combatModifier ?? 1;
+          const showCombatMod = purplePatchInfo && purplePatchInfo.offset !== 0 && combatMod !== 1;
+          const dmgConArrow = showCombatMod ? getConArrow(purplePatchInfo.offset) : null;
+          const adjustedFinal = showCombatMod ? finalDamage * combatMod : finalDamage;
+          const cappedClass = damage.capped ? 'underline decoration-dotted decoration-amber-400/50' : '';
+
           // DoT per-tick final (with inherent bonus)
           const dotFinalDamage = dot && applyInherentBonus ? applyInherentBonus(dot.final) : dot?.final ?? 0;
+          const adjustedDotFinal = showCombatMod ? dotFinalDamage * combatMod : dotFinalDamage;
 
           // DoT totals
           const dotTotalBase = dot ? dot.base * dot.ticks : 0;
           const dotTotalEnhanced = dot ? dot.enhanced * dot.ticks : 0;
-          const dotTotalFinal = dot ? dotFinalDamage * dot.ticks : 0;
+          const dotTotalFinal = dot ? adjustedDotFinal * dot.ticks : 0;
 
           return (
             <>
@@ -743,8 +771,9 @@ export function RegistryEffectsDisplay({
                 <span className={hasEnh ? 'text-green-400' : 'text-slate-400'}>
                   {damage.enhanced.toFixed(2)}
                 </span>
-                <span className={hasFinal ? finalColumnColor : 'text-slate-400'}>
-                  {finalDamage.toFixed(2)}
+                <span className={`${hasFinal || showCombatMod ? finalColumnColor : 'text-slate-400'} ${cappedClass}`}>
+                  {adjustedFinal.toFixed(2)}
+                  {dmgConArrow && <span className={`${dmgConArrow.colorClass} ml-0.5 text-[9px]`}>{dmgConArrow.symbol}</span>}
                 </span>
               </div>
 
@@ -759,8 +788,9 @@ export function RegistryEffectsDisplay({
                     <span className={dotHasEnh ? 'text-green-400' : 'text-slate-400'}>
                       {dot.enhanced.toFixed(2)}
                     </span>
-                    <span className={dotHasFinal ? finalColumnColor : 'text-slate-400'}>
-                      {dotFinalDamage.toFixed(2)}
+                    <span className={`${dotHasFinal || showCombatMod ? finalColumnColor : 'text-slate-400'} ${cappedClass}`}>
+                      {adjustedDotFinal.toFixed(2)}
+                      {dmgConArrow && <span className={`${dmgConArrow.colorClass} ml-0.5 text-[9px]`}>{dmgConArrow.symbol}</span>}
                     </span>
                   </div>
                 );
@@ -778,8 +808,9 @@ export function RegistryEffectsDisplay({
                       <span className={hasTotalEnh ? 'text-green-400' : 'text-slate-400'}>
                         {dotTotalEnhanced.toFixed(2)}
                       </span>
-                      <span className={hasTotalFinal ? finalColumnColor : 'text-slate-400'}>
+                      <span className={`${hasTotalFinal || showCombatMod ? finalColumnColor : 'text-slate-400'} ${cappedClass}`}>
                         {dotTotalFinal.toFixed(2)}
+                        {dmgConArrow && <span className={`${dmgConArrow.colorClass} ml-0.5 text-[9px]`}>{dmgConArrow.symbol}</span>}
                       </span>
                     </div>
                     <div className={`${compact ? 'text-[8px]' : 'text-[9px]'} text-orange-400/70 italic mt-0.5 ml-1`}>
@@ -883,11 +914,22 @@ export function RegistryEffectsDisplay({
             ) : (
               <span className="text-slate-600">—</span>
             )}
-            {enhanceable ? (
-              <span className={hasFinal ? 'text-amber-400' : 'text-slate-400'}>
-                {formatValue(tiers.final)}
-              </span>
-            ) : (
+            {enhanceable ? (() => {
+              const isAccuracy = key === 'accuracy' && purplePatchInfo;
+              const conArrow = isAccuracy ? getConArrow(purplePatchInfo.offset) : null;
+              const adjustedFinal = isAccuracy && purplePatchInfo.offset !== 0
+                ? tiers.final * purplePatchInfo.factor
+                : tiers.final;
+              const isAdjusted = isAccuracy && purplePatchInfo.offset !== 0;
+              return (
+                <span className={hasFinal || isAdjusted ? finalColumnColor : 'text-slate-400'}>
+                  {formatValue(adjustedFinal)}
+                  {conArrow && (
+                    <span className={`${conArrow.colorClass} ml-0.5 text-[9px]`}>{conArrow.symbol}</span>
+                  )}
+                </span>
+              );
+            })() : (
               <span className="text-slate-600">—</span>
             )}
           </div>

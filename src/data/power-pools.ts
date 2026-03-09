@@ -318,6 +318,28 @@ export const POOL_CATEGORIES: PoolCategoryInfo[] = [
 ];
 
 /**
+ * Mutually exclusive pool groups.
+ * Only one pool from each group can be selected per build.
+ * On Homecoming, Sorcery / Experimentation / Force of Will are "Specialized" pools.
+ */
+export const POOL_EXCLUSION_GROUPS: string[][] = [
+  ['sorcery', 'experimentation', 'force_of_will'],
+];
+
+/**
+ * Get the exclusion group a pool belongs to, if any.
+ * Returns the other pool IDs in the group that conflict, or null.
+ */
+export function getExcludedPools(poolId: string): string[] | null {
+  for (const group of POOL_EXCLUSION_GROUPS) {
+    if (group.includes(poolId)) {
+      return group.filter((id) => id !== poolId);
+    }
+  }
+  return null;
+}
+
+/**
  * Get pools in a category
  */
 export function getPoolsByCategory(categoryId: string): PowerPool[] {

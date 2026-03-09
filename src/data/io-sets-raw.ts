@@ -1371,7 +1371,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sVolleyfire.png"
+    "icon": "sArtillery.png"
   },
   "ascendency_of_the_dominator": {
     "name": "Ascendancy of the Dominator",

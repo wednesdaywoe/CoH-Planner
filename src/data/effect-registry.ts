@@ -306,6 +306,14 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
     format: 'percent',
     priority: 11,
   },
+  specialDebuff: {
+    label: '-Special',
+    category: 'debuff',
+    colorClass: STAT_COLORS.tohitDebuff,
+    format: 'percent',
+    expandByType: true,
+    priority: 12,
+  },
 
   // === BUFFS ===
   tohitBuff: {
@@ -428,6 +436,14 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
     colorClass: STAT_COLORS.absorb,
     format: 'value',
     priority: 15,
+  },
+  specialBuff: {
+    label: '+Special',
+    category: 'buff',
+    colorClass: STAT_COLORS.tohit,
+    format: 'percent',
+    expandByType: true,
+    priority: 20,
   },
 
   // === MOVEMENT (all teal) ===
@@ -587,6 +603,8 @@ export function isByTypeObject(value: unknown): value is Record<string, unknown>
     'defense', 'endurance', 'tohit', 'movement', 'regeneration', 'recovery', 'recharge', 'range', 'perception',
     // Resistance subtypes
     'heal',
+    // Mez types (for specialDebuff/specialBuff)
+    'hold', 'stun', 'immobilize', 'sleep', 'confuse', 'fear', 'knockback', 'knockup', 'repel',
   ];
   return keys.some(k => typeKeys.includes(k.toLowerCase()));
 }

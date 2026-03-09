@@ -17,6 +17,7 @@ import {
   areEpicPoolsUnlocked,
   isEpicPowerAvailable,
   MAX_POWER_PICKS,
+  getExcludedPools,
 } from '@/data';
 import { Select } from '@/components/ui';
 import { PowerItem } from './AvailablePowers';
@@ -54,7 +55,13 @@ export function AvailablePoolPowers() {
   const selectedPoolIds = new Set(pools.map((p) => p.id));
   const availablePoolOptions = poolsUnlocked
     ? Object.entries(allPools)
-        .filter(([id]) => !selectedPoolIds.has(id) && id !== 'fitness')
+        .filter(([id]) => {
+          if (selectedPoolIds.has(id) || id === 'fitness') return false;
+          // Check mutual exclusion (e.g., Sorcery / Experimentation / Force of Will)
+          const excluded = getExcludedPools(id);
+          if (excluded && pools.some((p) => excluded.includes(p.id))) return false;
+          return true;
+        })
         .map(([id, pool]) => ({ value: id, label: pool.name }))
     : [];
 

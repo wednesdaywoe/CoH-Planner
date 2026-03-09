@@ -343,6 +343,10 @@ export interface PowerEffects {
   rechargeDebuff?: NumberOrScaled;
   /** Movement/speed debuff (slow) - can be single value or by type */
   slow?: NumberOrScaled | MovementByType;
+  /** -Special: reduces target's secondary effect strength (mez, buffs, etc.) */
+  specialDebuff?: Record<string, NumberOrScaled>;
+  /** +Special: boosts own/ally secondary effect strength */
+  specialBuff?: Record<string, NumberOrScaled>;
 
   /** Duration of effects in seconds (for debuffs, DoTs, etc.) */
   effectDuration?: number;

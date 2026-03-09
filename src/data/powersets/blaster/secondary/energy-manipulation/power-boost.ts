@@ -51,37 +51,15 @@ export const PowerBoost: Power = {
         "table": "Melee_Stun"
       }
     },
-    "confuse": {
-      "mag": 1,
-      "scale": 0.66,
-      "table": "Melee_Stun"
+    "specialBuff": {
+      "hold": { "scale": 0.66, "table": "Melee_Stun" },
+      "stun": { "scale": 0.66, "table": "Melee_Stun" },
+      "immobilize": { "scale": 0.66, "table": "Melee_Stun" },
+      "sleep": { "scale": 0.66, "table": "Melee_Stun" },
+      "confuse": { "scale": 0.66, "table": "Melee_Stun" },
+      "fear": { "scale": 0.66, "table": "Melee_Stun" }
     },
     "effectDuration": 15,
-    "fear": {
-      "mag": 1,
-      "scale": 0.66,
-      "table": "Melee_Stun"
-    },
-    "hold": {
-      "mag": 1,
-      "scale": 0.66,
-      "table": "Melee_Stun"
-    },
-    "immobilize": {
-      "mag": 1,
-      "scale": 0.66,
-      "table": "Melee_Stun"
-    },
-    "stun": {
-      "mag": 1,
-      "scale": 0.66,
-      "table": "Melee_Stun"
-    },
-    "sleep": {
-      "mag": 1,
-      "scale": 0.66,
-      "table": "Melee_Stun"
-    },
     "defenseBuff": {
       "scale": 0.66,
       "table": "Melee_Stun"

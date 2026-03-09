@@ -136,6 +136,7 @@ const STAT_CATEGORIES: {
       { stat: 'damage', label: 'Damage', colorOverride: 'damage' },
       { stat: 'accuracy', label: 'Accuracy', colorOverride: 'accuracy' },
       { stat: 'tohit', label: 'To-Hit', colorOverride: 'accuracy' },
+      { stat: 'hitchance', label: 'Hit Chance', colorOverride: 'accuracy' },
       { stat: 'recharge', label: 'Recharge', colorOverride: 'recharge' },
       { stat: 'endreduction', label: 'End Reduction', colorOverride: 'endurance' },
       { stat: 'range_bonus', label: 'Range' },

@@ -6,6 +6,7 @@
 
 import { useMemo, useState } from 'react';
 import { useUIStore, useBuildStore, useDominationActive, useScourgeActive, useFuryLevel, useContainmentActive, useCriticalHitsActive, useStalkerHidden, useStalkerTeamSize, useStalkerCritActive, useSentinelCritActive } from '@/stores';
+import { getBaseToHit } from '@/data/purple-patch';
 import {
   lookupPower,
   getArchetype,
@@ -44,6 +45,7 @@ import {
 } from './powerDisplayUtils';
 import {
   RegistryEffectsDisplay,
+  getConArrow,
 } from './SharedPowerComponents';
 
 export function InfoPanel() {
@@ -169,6 +171,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
   const build = useBuildStore((s) => s.build);
   const archetypeId = build.archetype.id;
   const globalBonuses = useGlobalBonuses();
+  const targetLevelOffset = useUIStore((s) => s.targetLevelOffset);
   const incarnateActive = useUIStore((s) => s.incarnateActive);
   const dominationActive = useDominationActive();
   const scourgeActive = useScourgeActive();
@@ -451,6 +454,11 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
         dominationActive={dominationActive}
         header="Power Effects"
         duration={effects?.buffDuration}
+        purplePatchInfo={{
+          factor: getBaseToHit(targetLevelOffset - globalBonuses.levelShift) / 0.75,
+          offset: targetLevelOffset,
+          combatModifier: globalBonuses.combatModifier ?? 1,
+        }}
       />
 
       {/* Damage with three-tier display - using actual damage calculation */}
@@ -472,14 +480,26 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
               const inherentFinal = inherentInfo ? inherentInfo.applyBonus(calculatedDamage.final) : calculatedDamage.final;
               const hasInherentDiff = inherentInfo != null && Math.abs(inherentFinal - calculatedDamage.final) > 0.001;
 
+              // Purple patch combat modifier for damage display
+              const combatMod = globalBonuses.combatModifier ?? 1;
+              const showCombatMod = targetLevelOffset !== 0 && combatMod !== 1;
+              const dmgConArrow = showCombatMod ? getConArrow(targetLevelOffset) : null;
+              const cappedClass = calculatedDamage.capped ? 'underline decoration-dotted decoration-amber-400/50' : '';
+
+              // Apply combat modifier to final and inherent values for display
+              const displayFinal = showCombatMod ? calculatedDamage.final * combatMod : calculatedDamage.final;
+              const displayInherentFinal = showCombatMod ? inherentFinal * combatMod : inherentFinal;
+
               // DoT per-tick values (for inherent bonus on DoT)
               const dotInherentFinal = dot && inherentInfo ? inherentInfo.applyBonus(dot.final) : dot?.final ?? 0;
+              const displayDotFinal = dot ? (showCombatMod ? dot.final * combatMod : dot.final) : 0;
+              const displayDotInherentFinal = showCombatMod ? dotInherentFinal * combatMod : dotInherentFinal;
 
               // DoT totals
               const dotTotalBase = dot ? dot.base * dot.ticks : 0;
               const dotTotalEnhanced = dot ? dot.enhanced * dot.ticks : 0;
-              const dotTotalFinal = dot ? dot.final * dot.ticks : 0;
-              const dotTotalInherent = dot && inherentInfo ? dotInherentFinal * dot.ticks : dotTotalFinal;
+              const dotTotalFinal = dot ? displayDotFinal * dot.ticks : 0;
+              const dotTotalInherent = dot && inherentInfo ? displayDotInherentFinal * dot.ticks : dotTotalFinal;
 
               return (
                 <>
@@ -498,12 +518,12 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
                     <span className={hasEnh ? 'text-green-400' : 'text-slate-600'}>
                       {hasEnh ? `→ ${calculatedDamage.enhanced.toFixed(2)}` : '—'}
                     </span>
-                    <span className={hasGlobal ? 'text-amber-400' : 'text-slate-600'}>
-                      {hasGlobal ? `→ ${calculatedDamage.final.toFixed(2)}` : '—'}
+                    <span className={`${hasGlobal || showCombatMod ? 'text-amber-400' : 'text-slate-600'} ${cappedClass}`}>
+                      {hasGlobal || showCombatMod ? <>→ {displayFinal.toFixed(2)}{dmgConArrow && <span className={`${dmgConArrow.colorClass} ml-0.5 text-[9px]`}>{dmgConArrow.symbol}</span>}</> : '—'}
                     </span>
                     {inherentInfo && (
-                      <span className={hasInherentDiff ? inherentInfo.color : 'text-slate-600'}>
-                        {hasInherentDiff ? `→ ${inherentFinal.toFixed(2)}` : '—'}
+                      <span className={`${hasInherentDiff || showCombatMod ? inherentInfo.color : 'text-slate-600'} ${cappedClass}`}>
+                        {hasInherentDiff || showCombatMod ? <>→ {displayInherentFinal.toFixed(2)}{dmgConArrow && <span className={`${dmgConArrow.colorClass} ml-0.5 text-[9px]`}>{dmgConArrow.symbol}</span>}</> : '—'}
                       </span>
                     )}
                   </div>
@@ -520,12 +540,12 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
                         <span className={dotHasEnh ? 'text-green-400' : 'text-slate-600'}>
                           {dotHasEnh ? `→ ${dot.enhanced.toFixed(2)}` : '—'}
                         </span>
-                        <span className={dotHasGlobal ? 'text-amber-400' : 'text-slate-600'}>
-                          {dotHasGlobal ? `→ ${dot.final.toFixed(2)}` : '—'}
+                        <span className={`${dotHasGlobal || showCombatMod ? 'text-amber-400' : 'text-slate-600'} ${cappedClass}`}>
+                          {dotHasGlobal || showCombatMod ? <>→ {displayDotFinal.toFixed(2)}{dmgConArrow && <span className={`${dmgConArrow.colorClass} ml-0.5 text-[9px]`}>{dmgConArrow.symbol}</span>}</> : '—'}
                         </span>
                         {inherentInfo && (
-                          <span className={dotHasInherent ? inherentInfo.color : 'text-slate-600'}>
-                            {dotHasInherent ? `→ ${dotInherentFinal.toFixed(2)}` : '—'}
+                          <span className={`${dotHasInherent || showCombatMod ? inherentInfo.color : 'text-slate-600'} ${cappedClass}`}>
+                            {dotHasInherent || showCombatMod ? <>→ {displayDotInherentFinal.toFixed(2)}{dmgConArrow && <span className={`${dmgConArrow.colorClass} ml-0.5 text-[9px]`}>{dmgConArrow.symbol}</span>}</> : '—'}
                           </span>
                         )}
                       </div>
@@ -545,12 +565,12 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
                           <span className={hasTotalEnh ? 'text-green-400' : 'text-slate-600'}>
                             {hasTotalEnh ? `→ ${dotTotalEnhanced.toFixed(2)}` : '—'}
                           </span>
-                          <span className={hasTotalGlobal ? 'text-amber-400' : 'text-slate-600'}>
-                            {hasTotalGlobal ? `→ ${dotTotalFinal.toFixed(2)}` : '—'}
+                          <span className={`${hasTotalGlobal || showCombatMod ? 'text-amber-400' : 'text-slate-600'} ${cappedClass}`}>
+                            {hasTotalGlobal || showCombatMod ? <>→ {dotTotalFinal.toFixed(2)}{dmgConArrow && <span className={`${dmgConArrow.colorClass} ml-0.5 text-[9px]`}>{dmgConArrow.symbol}</span>}</> : '—'}
                           </span>
                           {inherentInfo && (
-                            <span className={hasTotalInherent ? inherentInfo.color : 'text-slate-600'}>
-                              {hasTotalInherent ? `→ ${dotTotalInherent.toFixed(2)}` : '—'}
+                            <span className={`${hasTotalInherent || showCombatMod ? inherentInfo.color : 'text-slate-600'} ${cappedClass}`}>
+                              {hasTotalInherent || showCombatMod ? <>→ {dotTotalInherent.toFixed(2)}{dmgConArrow && <span className={`${dmgConArrow.colorClass} ml-0.5 text-[9px]`}>{dmgConArrow.symbol}</span>}</> : '—'}
                             </span>
                           )}
                         </div>

@@ -99,6 +99,9 @@ interface UIState {
   /** Exemplar level - the level to exemplar down to (1-50, default: 50) */
   exemplarLevel: number;
 
+  /** Target enemy level offset for hit chance calculation (-5 to +5, 0 = even level) */
+  targetLevelOffset: number;
+
   /** Include proc bonuses in dashboard stat calculations */
   includeProcsInStats: boolean;
 
@@ -202,6 +205,7 @@ interface UIActions {
   setGlobalBoostLevel: (level: number) => void;
   toggleExemplarMode: () => void;
   setExemplarLevel: (level: number) => void;
+  setTargetLevelOffset: (offset: number) => void;
   toggleIncludeProcsInStats: () => void;
   toggleHints: () => void;
   toggleDarkMode: () => void;
@@ -401,15 +405,16 @@ const defaultStatsConfig: StatDisplayConfig[] = [
   { stat: 'damage', visible: true, order: 0 },
   { stat: 'accuracy', visible: true, order: 1 },
   { stat: 'tohit', visible: true, order: 2 },
-  { stat: 'recharge', visible: true, order: 3 },
-  { stat: 'endurance', visible: true, order: 4 },
-  { stat: 'defense', visible: true, order: 5 },
-  { stat: 'resistance', visible: true, order: 6 },
-  { stat: 'health', visible: true, order: 7 },
-  { stat: 'regeneration', visible: true, order: 8 },
-  { stat: 'recovery', visible: true, order: 9 },
-  { stat: 'endcost', visible: true, order: 10 },
-  { stat: 'netend', visible: true, order: 11 },
+  { stat: 'hitchance', visible: true, order: 3 },
+  { stat: 'recharge', visible: true, order: 4 },
+  { stat: 'endurance', visible: true, order: 5 },
+  { stat: 'defense', visible: true, order: 6 },
+  { stat: 'resistance', visible: true, order: 7 },
+  { stat: 'health', visible: true, order: 8 },
+  { stat: 'regeneration', visible: true, order: 9 },
+  { stat: 'recovery', visible: true, order: 10 },
+  { stat: 'endcost', visible: true, order: 11 },
+  { stat: 'netend', visible: true, order: 12 },
 ];
 
 // ============================================
@@ -442,6 +447,7 @@ export const useUIStore = create<UIStore>()(
       globalBoostLevel: 0,
       exemplarMode: false,
       exemplarLevel: 50,
+      targetLevelOffset: 0,
       includeProcsInStats: true,
       hintsEnabled: true,
       infoPanel: defaultInfoPanel,
@@ -585,6 +591,11 @@ export const useUIStore = create<UIStore>()(
       setExemplarLevel: (level) =>
         set({
           exemplarLevel: Math.max(1, Math.min(50, level)),
+        }),
+
+      setTargetLevelOffset: (offset) =>
+        set({
+          targetLevelOffset: Math.max(-5, Math.min(5, offset)),
         }),
 
       toggleIncludeProcsInStats: () =>
@@ -1041,6 +1052,7 @@ export const useUIStore = create<UIStore>()(
         globalBoostLevel: state.globalBoostLevel,
         exemplarMode: state.exemplarMode,
         exemplarLevel: state.exemplarLevel,
+        targetLevelOffset: state.targetLevelOffset,
         includeProcsInStats: state.includeProcsInStats,
         hintsEnabled: state.hintsEnabled,
         infoPanel: { enabled: state.infoPanel.enabled, content: null, locked: false, lockedContent: null, tooltipEnabled: state.infoPanel.tooltipEnabled, undocked: false },

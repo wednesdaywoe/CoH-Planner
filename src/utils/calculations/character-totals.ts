@@ -15,6 +15,7 @@
 import type { Build, Accolade, Enhancement, IncarnateActiveState, IncarnateBuildState, IOSetEnhancement } from '@/types';
 import { getIOSet, getAlphaEffects, getDestinyEffects, getHybridEffects, findProcData, parseProcEffect, isProcAlwaysOn, calculateAutoToggleProcsPerMinute } from '@/data';
 import { getTableValue } from '@/data/at-tables';
+import { getBaseToHit, getCombatModifier } from '@/data/purple-patch';
 import { getPowerPool } from '@/data/power-pools';
 import { getEpicPool } from '@/data/epic-pools';
 import {
@@ -37,6 +38,7 @@ import {
   BASE_REGEN_RATE,
   type EnhancementBonuses,
 } from './enhancement-values';
+import { calculateVigilanceDamageBonus, calculateFuryDamageBonus } from './inherents';
 
 // ============================================
 // TYPES
@@ -121,6 +123,10 @@ export interface GlobalBonuses {
   toggleEndCost: number;
   // Net endurance per second (recovery minus toggle costs)
   netEndPerSec: number;
+  // Purple patch - hit chance against target level
+  baseToHit: number;
+  hitChance: number;
+  combatModifier: number;
 }
 
 /**
@@ -221,6 +227,9 @@ function createEmptyGlobalBonuses(): GlobalBonuses {
     levelShift: 0,
     toggleEndCost: 0,
     netEndPerSec: 0,
+    baseToHit: 0.75,
+    hitChance: 0.75,
+    combatModifier: 1.0,
   };
 }
 
@@ -2022,6 +2031,12 @@ export interface CalculationOptions {
   targetsHitValues?: Record<string, number>;
   /** Exemplar level for enhancement scaling (undefined = no scaling) */
   exemplarLevel?: number;
+  /** Target enemy level offset for hit chance calculation (e.g. +3 = enemy is 3 levels above) */
+  targetLevelOffset?: number;
+  /** Vigilance team size for Defenders (0 = solo, 1+ = teammates) */
+  vigilanceTeamSize?: number;
+  /** Fury level for Brutes (0-100) */
+  furyLevel?: number;
 }
 
 /**
@@ -2102,6 +2117,43 @@ export function calculateCharacterTotals(
   // Step 9: Apply incarnate bonuses (Destiny, Hybrid - direct stats)
   // Note: Alpha bonuses were already applied in Step 7 as enhancement bonuses
   applyIncarnateBonuses(build.incarnates, incarnateActive, globalBonuses, breakdown);
+
+  // Step 9.1: Apply archetype inherent damage bonuses (Vigilance, Fury)
+  const archetypeId = build.archetype?.id;
+  if (archetypeId === 'defender' && options?.vigilanceTeamSize !== undefined) {
+    const vigBonus = calculateVigilanceDamageBonus(effectiveLevel, options.vigilanceTeamSize);
+    if (vigBonus > 0) {
+      const vigValue = vigBonus * 100;
+      globalBonuses.damage += vigValue;
+      addToBreakdown(breakdown, 'damage', {
+        name: 'Vigilance',
+        value: vigValue,
+        type: 'inherent',
+      });
+    }
+  }
+  if (archetypeId === 'brute' && options?.furyLevel !== undefined && options.furyLevel > 0) {
+    const furyBonus = calculateFuryDamageBonus(options.furyLevel);
+    if (furyBonus > 0) {
+      const furyValue = furyBonus * 100;
+      globalBonuses.damage += furyValue;
+      addToBreakdown(breakdown, 'damage', {
+        name: 'Fury',
+        value: furyValue,
+        type: 'inherent',
+      });
+    }
+  }
+
+  // Step 9.5: Compute hit chance against target level (purple patch)
+  const targetOffset = options?.targetLevelOffset ?? 0;
+  const effectiveLevelDiff = targetOffset - globalBonuses.levelShift;
+  const ppBaseToHit = getBaseToHit(effectiveLevelDiff);
+  const finalToHit = Math.min(0.95, Math.max(0.05, ppBaseToHit + globalBonuses.toHit / 100));
+  const accuracyMult = 1 + globalBonuses.accuracy / 100;
+  globalBonuses.baseToHit = ppBaseToHit;
+  globalBonuses.hitChance = Math.min(0.95, Math.max(0.05, finalToHit * accuracyMult));
+  globalBonuses.combatModifier = getCombatModifier(effectiveLevelDiff);
 
   // Step 10: Convert to character stats format
   const stats = convertToCharacterStats(globalBonuses);

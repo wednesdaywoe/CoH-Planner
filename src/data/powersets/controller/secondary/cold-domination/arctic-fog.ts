@@ -101,10 +101,6 @@ export const ArcticFog: Power = {
         "table": "Ranged_Ones"
       }
     },
-    "rechargeBuff": {
-      "scale": 0.6,
-      "table": "Ranged_Ones"
-    },
     "stealth": {
       "translucency": {
         "scale": 0.7,

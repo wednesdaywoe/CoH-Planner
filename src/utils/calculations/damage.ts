@@ -179,7 +179,8 @@ export function calculateDamageWithATTable(
   const baseDamagePerScale = Math.abs(tableValue);
   const base = scale * baseDamagePerScale;
   const enhanced = base * (1 + enhancementBonus);
-  const final = enhanced * (1 + damageBuffs);
+  // Enhancements and buffs are additive in the same strength multiplier (not multiplicative)
+  const final = base * (1 + enhancementBonus + damageBuffs);
 
   // Return final if we have buffs, enhanced if we have enhancements, base otherwise
   if (damageBuffs > 0) return final;
@@ -255,8 +256,9 @@ export function calculateActualDamage(options: DamageCalculationOptions): number
   const tableType: DamageTableType = damageType === 'aoe' ? 'melee' : damageType;
   const baseDamage = getBaseDamage(level, tableType);
 
-  // Calculate: Base × AT Modifier × Scale × (1 + Enhancements) × (1 + Buffs)
-  const actualDamage = baseDamage * atModifier * scale * (1 + enhancementBonus) * (1 + damageBuffs);
+  // Calculate: Base × AT Modifier × Scale × (1 + Enhancements + Buffs)
+  // Enhancements and buffs are additive in the same strength multiplier
+  const actualDamage = baseDamage * atModifier * scale * (1 + enhancementBonus + damageBuffs);
 
   return actualDamage;
 }
@@ -276,6 +278,8 @@ export interface PowerDamageResult {
   type: string;
   /** Flag indicating scale is unknown (redirect/pseudo-pet powers) */
   unknown?: boolean;
+  /** Whether the damage hit the AT's damage strength cap */
+  capped?: boolean;
   /** Conditional Fiery Embrace damage (if detected) */
   fieryEmbraceDamage?: {
     base: number;
@@ -514,11 +518,21 @@ export function calculatePowerDamage(
     finalDamage = calculateActualDamage({ scale, damageType, level, archetypeId, enhancementBonus, damageBuffs: globalDamageBonus + activeBuffs });
   }
 
+  // Apply AT damage strength cap: (1 + enh + buffs) capped at AT's damageCap
+  let capped = false;
+  const totalStrength = 1 + enhancementBonus + globalDamageBonus + activeBuffs;
+  const damageCap = archetypeId ? getArchetype(archetypeId)?.stats?.damageCap : undefined;
+  if (damageCap && totalStrength > damageCap) {
+    finalDamage = baseDamage * damageCap;
+    capped = true;
+  }
+
   const result: PowerDamageResult = {
     base: baseDamage,
     enhanced: enhancedDamage,
     final: finalDamage,
     type: damageTypeName,
+    capped,
   };
 
   // Calculate Fiery Embrace damage separately if detected
@@ -545,6 +559,11 @@ export function calculatePowerDamage(
       feBaseDamage = calculateActualDamage({ scale: fieryEmbraceScale, damageType, level, archetypeId, enhancementBonus: 0, damageBuffs: 0 });
       feEnhancedDamage = calculateActualDamage({ scale: fieryEmbraceScale, damageType, level, archetypeId, enhancementBonus, damageBuffs: 0 });
       feFinalDamage = calculateActualDamage({ scale: fieryEmbraceScale, damageType, level, archetypeId, enhancementBonus, damageBuffs: globalDamageBonus + activeBuffs });
+    }
+
+    // Apply same damage cap to FE component
+    if (capped && damageCap) {
+      feFinalDamage = feBaseDamage * damageCap;
     }
 
     result.fieryEmbraceDamage = {
@@ -600,6 +619,11 @@ export function calculatePowerDamage(
         dotBase = calculateActualDamage({ scale: dotScale, damageType, level, archetypeId, enhancementBonus: 0, damageBuffs: 0 });
         dotEnhanced = calculateActualDamage({ scale: dotScale, damageType, level, archetypeId, enhancementBonus, damageBuffs: 0 });
         dotFinal = calculateActualDamage({ scale: dotScale, damageType, level, archetypeId, enhancementBonus, damageBuffs: globalDamageBonus + activeBuffs });
+      }
+
+      // Apply same damage cap to DoT component
+      if (capped && damageCap) {
+        dotFinal = dotBase * damageCap;
       }
 
       result.dotDamage = {

@@ -239,14 +239,20 @@ export function useCharacterCalculation(): CharacterCalculationResult {
   const incarnateActive = useUIStore((state) => state.incarnateActive);
   const includeProcsInStats = useUIStore((state) => state.includeProcsInStats);
   const targetsHitValues = useUIStore((state) => state.targetsHitValues);
+  const targetLevelOffset = useUIStore((state) => state.targetLevelOffset);
+  const vigilanceTeamSize = useUIStore((state) => state.vigilanceTeamSize);
+  const furyLevel = useUIStore((state) => state.furyLevel);
 
   return useMemo(() => {
     return calculateCharacterTotals(build, exemplarMode, incarnateActive, {
       includeProcs: includeProcsInStats,
       targetsHitValues,
       exemplarLevel: exemplarMode ? exemplarLevel : undefined,
+      targetLevelOffset,
+      vigilanceTeamSize,
+      furyLevel,
     });
-  }, [build, exemplarMode, exemplarLevel, incarnateActive, includeProcsInStats, targetsHitValues]);
+  }, [build, exemplarMode, exemplarLevel, incarnateActive, includeProcsInStats, targetsHitValues, targetLevelOffset, vigilanceTeamSize, furyLevel]);
 }
 
 /**
@@ -259,15 +265,19 @@ export function useCalculatedStats(): CalculatedStats {
   const incarnateActive = useUIStore((state) => state.incarnateActive);
   const includeProcsInStats = useUIStore((state) => state.includeProcsInStats);
   const targetsHitValues = useUIStore((state) => state.targetsHitValues);
+  const vigilanceTeamSize = useUIStore((state) => state.vigilanceTeamSize);
+  const furyLevel = useUIStore((state) => state.furyLevel);
 
   return useMemo(() => {
     const result = calculateCharacterTotals(build, exemplarMode, incarnateActive, {
       includeProcs: includeProcsInStats,
       targetsHitValues,
       exemplarLevel: exemplarMode ? exemplarLevel : undefined,
+      vigilanceTeamSize,
+      furyLevel,
     });
     return convertToLegacyStats(result.stats, result);
-  }, [build, exemplarMode, exemplarLevel, incarnateActive, includeProcsInStats, targetsHitValues]);
+  }, [build, exemplarMode, exemplarLevel, incarnateActive, includeProcsInStats, targetsHitValues, vigilanceTeamSize, furyLevel]);
 }
 
 /**

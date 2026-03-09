@@ -2,10 +2,16 @@
  * Slot Level Computation
  *
  * Computes which character level each enhancement slot was "granted" at,
- * based on the game's slot grant schedule and the order powers were picked.
+ * based on the game's slot grant schedule.
+ *
+ * Two modes:
+ * - **Respec mode** (slotOrder empty): slots are assigned by power-pick order,
+ *   redistributing optimally as if doing a respec.
+ * - **Leveling mode** (slotOrder populated): slots are assigned in the
+ *   chronological order they were added, preserving the user's leveling sequence.
  *
  * Slot 0 on every power is free (comes with the power pick at that level).
- * Additional slots (index 1+) consume from the SLOT_GRANTS pool in level order.
+ * Additional slots (index 1+) consume from the SLOT_GRANTS pool.
  */
 
 import type { Build, SelectedPower } from '@/types';
@@ -29,20 +35,8 @@ function buildGrantPool(maxLevel: number): number[] {
   return pool.sort((a, b) => a - b);
 }
 
-/**
- * Compute slot level assignments for every power in the build.
- *
- * Returns a Map keyed by power name, where each value is a number[]
- * parallel to the power's slots array. Index 0 = power pick level (free slot),
- * index 1+ = the grant pool level consumed for that slot.
- *
- * Inherent powers get level 1 for slot 0 (free default), but extra slots
- * consume from the grant pool like any other power.
- */
-export function computeAllSlotLevels(build: Build): Map<string, number[]> {
-  const result = new Map<string, number[]>();
-
-  // 1. Collect ALL powers with their category (including inherents)
+/** Collect all powers in the build (excluding auto-granted sub-powers). */
+function collectAllPowers(build: Build): CategorizedPower[] {
   const allPowers: CategorizedPower[] = [];
   const categoryOrder: PowerCategory[] = ['inherent', 'primary', 'secondary', 'pool', 'epic'];
 
@@ -67,7 +61,6 @@ export function computeAllSlotLevels(build: Build): Map<string, number[]> {
   }
 
   // Sort by effective pick level, then by category for ties.
-  // Inherents sort as level 1 (available from start).
   const effectiveLevel = (cp: CategorizedPower) =>
     cp.category === 'inherent' ? 1 : cp.power.level;
 
@@ -78,39 +71,119 @@ export function computeAllSlotLevels(build: Build): Map<string, number[]> {
     return categoryOrder.indexOf(a.category) - categoryOrder.indexOf(b.category);
   });
 
-  // 2. Build the grant pool
-  const grantPool = buildGrantPool(build.level);
+  return allPowers;
+}
 
-  // 3. Assign slot levels — greedy with temporal constraints.
-  // Process powers in pick-level order. Each power consumes grants sequentially
-  // from the pool, but only grants at or after its pick level. This ensures:
-  //   - A power never shows a slot level before it was picked
-  //   - Earlier powers' labels stay stable when you add slots to later powers
-  let grantIndex = 0;
-
+/** Initialize result map with slot 0 = pick level for every power. */
+function initSlotLevels(allPowers: CategorizedPower[]): Map<string, number[]> {
+  const result = new Map<string, number[]>();
   for (const { power, category } of allPowers) {
     const pickLevel = category === 'inherent' ? 1 : power.level;
-    const levels = [pickLevel]; // slot 0 = free at pick level
-
-    // Consume grants for extra slots
-    for (let s = 1; s < power.slots.length; s++) {
-      // Advance past any grants that are before this power's pick level
-      while (grantIndex < grantPool.length && grantPool[grantIndex] < pickLevel) {
-        grantIndex++;
-      }
-      levels.push(grantPool[grantIndex] ?? pickLevel);
-      grantIndex++;
-    }
-
+    // Pre-fill array with pickLevel for all slots; extra slots get overwritten
+    const levels = new Array(power.slots.length).fill(pickLevel);
     result.set(power.name, levels);
   }
+  return result;
+}
 
-  // 4. Auto-granted sub-powers (Kheldian forms, etc.) — use parent level for all slots
+/** Add auto-granted sub-powers (Kheldian forms, etc.) to the result. */
+function addAutoGrantedPowers(build: Build, result: Map<string, number[]>) {
   for (const p of [...build.primary.powers, ...build.secondary.powers]) {
     if (p.isAutoGranted && !result.has(p.name)) {
       result.set(p.name, p.slots.map(() => p.level));
     }
   }
+}
 
+/**
+ * Respec mode: assign slot levels by power-pick order.
+ * Each power consumes grants sequentially from the pool.
+ */
+function computeSlotLevelsRespec(build: Build): Map<string, number[]> {
+  const allPowers = collectAllPowers(build);
+  const result = initSlotLevels(allPowers);
+  const grantPool = buildGrantPool(build.level);
+
+  let grantIndex = 0;
+
+  for (const { power, category } of allPowers) {
+    const pickLevel = category === 'inherent' ? 1 : power.level;
+    const levels = result.get(power.name)!;
+
+    // Consume grants for extra slots (slot 0 is already set)
+    for (let s = 1; s < power.slots.length; s++) {
+      // Advance past any grants that are before this power's pick level
+      while (grantIndex < grantPool.length && grantPool[grantIndex] < pickLevel) {
+        grantIndex++;
+      }
+      levels[s] = grantPool[grantIndex] ?? pickLevel;
+      grantIndex++;
+    }
+  }
+
+  addAutoGrantedPowers(build, result);
   return result;
+}
+
+/**
+ * Leveling mode: assign slot levels in the chronological order they were added.
+ * Each slotOrder entry consumes the next available grant at or after its
+ * power's pick level.
+ */
+function computeSlotLevelsLeveling(build: Build): Map<string, number[]> {
+  const allPowers = collectAllPowers(build);
+  const result = initSlotLevels(allPowers);
+  const grantPool = buildGrantPool(build.level);
+
+  // Build a lookup for power pick levels
+  const pickLevelMap = new Map<string, number>();
+  for (const { power, category } of allPowers) {
+    pickLevelMap.set(power.name, category === 'inherent' ? 1 : power.level);
+  }
+
+  // Track which grants have been consumed (by index)
+  const usedGrants = new Set<number>();
+
+  // Process slotOrder entries chronologically
+  for (const { powerName, slotIndex } of build.slotOrder) {
+    const levels = result.get(powerName);
+    const pickLevel = pickLevelMap.get(powerName);
+    if (!levels || pickLevel === undefined || slotIndex >= levels.length) continue;
+
+    // Find the first unused grant at or after this power's pick level
+    let assigned = false;
+    for (let gi = 0; gi < grantPool.length; gi++) {
+      if (usedGrants.has(gi)) continue;
+      if (grantPool[gi] < pickLevel) continue;
+      levels[slotIndex] = grantPool[gi];
+      usedGrants.add(gi);
+      assigned = true;
+      break;
+    }
+
+    if (!assigned) {
+      // No grants left — use pick level as fallback
+      levels[slotIndex] = pickLevel;
+    }
+  }
+
+  addAutoGrantedPowers(build, result);
+  return result;
+}
+
+/**
+ * Compute slot level assignments for every power in the build.
+ *
+ * Returns a Map keyed by power name, where each value is a number[]
+ * parallel to the power's slots array. Index 0 = power pick level (free slot),
+ * index 1+ = the grant pool level consumed for that slot.
+ *
+ * Automatically selects leveling mode if slotOrder has entries,
+ * otherwise uses respec mode.
+ */
+export function computeAllSlotLevels(build: Build): Map<string, number[]> {
+  if (build.slotOrder.length > 0) {
+    return computeSlotLevelsLeveling(build);
+  }
+  return computeSlotLevelsRespec(build);
 }

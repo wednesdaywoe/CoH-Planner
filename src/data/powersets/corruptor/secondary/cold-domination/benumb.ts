@@ -53,47 +53,16 @@ export const Benumb: Power = {
         "table": "Ranged_Stun"
       }
     },
-    "confuse": {
-      "mag": 1,
-      "scale": 0.5,
-      "table": "Ranged_Stun"
-    },
-    "fear": {
-      "mag": 1,
-      "scale": 0.5,
-      "table": "Ranged_Stun"
-    },
-    "hold": {
-      "mag": 1,
-      "scale": 0.5,
-      "table": "Ranged_Stun"
-    },
-    "immobilize": {
-      "mag": 1,
-      "scale": 0.5,
-      "table": "Ranged_Stun"
-    },
-    "stun": {
-      "mag": 1,
-      "scale": 0.5,
-      "table": "Ranged_Stun"
-    },
-    "sleep": {
-      "mag": 1,
-      "scale": 0.5,
-      "table": "Ranged_Stun"
-    },
-    "knockup": {
-      "scale": 0.5,
-      "table": "Ranged_Stun"
-    },
-    "knockback": {
-      "scale": 0.5,
-      "table": "Ranged_Stun"
-    },
-    "repel": {
-      "scale": 0.5,
-      "table": "Ranged_Stun"
+    "specialDebuff": {
+      "hold": { "scale": 0.5, "table": "Ranged_Stun" },
+      "stun": { "scale": 0.5, "table": "Ranged_Stun" },
+      "immobilize": { "scale": 0.5, "table": "Ranged_Stun" },
+      "sleep": { "scale": 0.5, "table": "Ranged_Stun" },
+      "confuse": { "scale": 0.5, "table": "Ranged_Stun" },
+      "fear": { "scale": 0.5, "table": "Ranged_Stun" },
+      "knockback": { "scale": 0.5, "table": "Ranged_Stun" },
+      "knockup": { "scale": 0.5, "table": "Ranged_Stun" },
+      "repel": { "scale": 0.5, "table": "Ranged_Stun" }
     },
     "defenseDebuff": {
       "scale": 0.5,
