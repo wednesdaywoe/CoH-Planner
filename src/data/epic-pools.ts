@@ -199,6 +199,16 @@ const PATRON_POOL_FALLBACK: Record<string, string> = {
   blaster: 'sentinel',
 };
 
+// Villain ATs that lack epic pool data use their hero counterpart's epic pools.
+// Epic pools were proliferated to villain ATs in-game.
+const EPIC_POOL_FALLBACK: Record<string, string> = {
+  corruptor: 'defender',
+  brute: 'tanker',
+  stalker: 'scrapper',
+  dominator: 'controller',
+  mastermind: 'defender',
+};
+
 const PATRON_POOL_NAMES = new Set(['Leviathan Mastery', 'Mace Mastery', 'Mu Mastery', 'Soul Mastery']);
 
 /**
@@ -221,12 +231,24 @@ export function getEpicPoolsForArchetype(archetypeId: string): EpicPool[] {
   );
 
   // Fill in missing patron pools from villain counterpart
-  const fallbackAT = PATRON_POOL_FALLBACK[normalizedId];
-  if (fallbackAT) {
+  const patronFallbackAT = PATRON_POOL_FALLBACK[normalizedId];
+  if (patronFallbackAT) {
     const existingNames = new Set(pools.map(p => p.displayName || p.name));
     const fallbackPools = Object.values(_epicPools).filter(
-      (pool) => pool.archetype.toLowerCase() === fallbackAT
+      (pool) => pool.archetype.toLowerCase() === patronFallbackAT
         && PATRON_POOL_NAMES.has(pool.displayName || pool.name)
+        && !existingNames.has(pool.displayName || pool.name)
+    );
+    pools.push(...fallbackPools);
+  }
+
+  // Fill in missing epic pools from hero counterpart
+  const epicFallbackAT = EPIC_POOL_FALLBACK[normalizedId];
+  if (epicFallbackAT) {
+    const existingNames = new Set(pools.map(p => p.displayName || p.name));
+    const fallbackPools = Object.values(_epicPools).filter(
+      (pool) => pool.archetype.toLowerCase() === epicFallbackAT
+        && !PATRON_POOL_NAMES.has(pool.displayName || pool.name)
         && !existingNames.has(pool.displayName || pool.name)
     );
     pools.push(...fallbackPools);

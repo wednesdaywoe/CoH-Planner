@@ -23,6 +23,8 @@ export const KNOWN_BUGS: TrackerItem[] = [
 // ============================================
 
 export const RECENT_CHANGES: TrackerItem[] = [
+  { text: 'Kheldian inherent travel powers removed from selection', status: 'fixed' },
+  { text: 'Villain epic pools should now appear as options.', status: 'fixed' },
   { text: 'Significant audit of accuracy and damage calculations, and enhancement schedules', status: 'fixed' },
   { text: 'Added target level offset to calculate hit chance against different levels', status: 'new' },
   { text: 'VEATS specializations should be correctly handled now', status: 'fixed' },

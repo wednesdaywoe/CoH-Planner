@@ -6,7 +6,7 @@
 import { useState } from 'react';
 import { useBuildStore, useUIStore } from '@/stores';
 
-import { getPowerset, getPowerIconPath, MAX_POWER_PICKS, GRANTED_POWER_GROUPS } from '@/data';
+import { getPowerset, getPowerIconPath, MAX_POWER_PICKS, GRANTED_POWER_GROUPS, getArchetypeInherentPowers } from '@/data';
 import { resolvePath } from '@/utils/paths';
 import type { Power } from '@/types';
 
@@ -334,6 +334,12 @@ export function AvailablePowers({
     };
   })();
 
+  // Build set of archetype-specific inherent power names (e.g. Kheldian travel powers)
+  // so we can hide them from the selectable powerset list
+  const archetypeInherentNames = new Set(
+    getArchetypeInherentPowers(archetypeId ?? undefined).map(p => p.name)
+  );
+
   // Show ALL user-selectable powers, not just ones available at current level
   // Powers not yet available will be shown as disabled
   // Powers with available === -1 are auto-granted and should not be shown in selection
@@ -345,6 +351,8 @@ export function AvailablePowers({
         if (p.available < 0) return false;
         // Filter out form sub-powers (auto-granted when parent form is selected)
         if (FORM_SUB_POWER_NAMES.has(p.name)) return false;
+        // Filter out powers already granted as archetype inherents
+        if (archetypeInherentNames.has(p.name)) return false;
         // Evaluate requires expression (handles negation, internal names, powersets)
         if (p.requires && !evaluateRequires(p.requires, requiresContext)) return false;
         return true;
