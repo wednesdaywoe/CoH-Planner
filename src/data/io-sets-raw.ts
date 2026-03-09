@@ -1525,7 +1525,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "AO_Dominator1.png"
+    "icon": "AO_Dominator_AscendencyOfTheDominator.png"
   },
   "assassins_mark": {
     "name": "Assassin's Mark",
@@ -1655,7 +1655,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "AO_Stalker2.png"
+    "icon": "AO_Stalker_AssassinsMark.png"
   },
   "avalanche": {
     "name": "Avalanche",
@@ -2165,7 +2165,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "AO_Blaster1.png"
+    "icon": "AO_Blaster_BlastersWrath.png"
   },
   "blessing_of_the_zephyr": {
     "name": "Blessing of the Zephyr",
@@ -3055,7 +3055,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "AO_Brute1.png"
+    "icon": "AO_Brute_BrutesFury.png"
   },
   "cacophany": {
     "name": "Cacophony",
@@ -4125,7 +4125,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "AO_Mastermind1.png"
+    "icon": "AO_Mastermind_CommandOfTheMastermind.png"
   },
   "commanding_presence": {
     "name": "Commanding Presence",
@@ -4364,7 +4364,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "AO_Scrapper2.png"
+    "icon": "AO_Scrapper_CriticalStrikes.png"
   },
   "crushing_impact": {
     "name": "Crushing Impact",
@@ -5398,7 +5398,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "AO_Defender1.png"
+    "icon": "AO_Defender_DefendersBastion.png"
   },
   "defiant_barrage": {
     "name": "Defiant Barrage",
@@ -5528,7 +5528,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "AO_Blaster2.png"
+    "icon": "AO_Blaster_DefiantBarrage.png"
   },
   "deflated_ego": {
     "name": "Deflated Ego",
@@ -6224,7 +6224,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "AO_Dominator2.png"
+    "icon": "AO_Dominator_DominatingGrasp.png"
   },
   "dominion_of_arachnos": {
     "name": "Dominion of Arachnos",
@@ -6354,7 +6354,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "AO_Arachnos1.png"
+    "icon": "AO_Arachnos_DominionOfArachnos.png"
   },
   "edict_of_the_master": {
     "name": "Edict of the Master",
@@ -7525,7 +7525,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "AO_Kheldian2.png"
+    "icon": "AO_Kheldian_EssenceTransfer.png"
   },
   "executioners_contract": {
     "name": "Executioner's Contract",
@@ -9274,7 +9274,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "AO_Tanker2.png"
+    "icon": "AO_Tanker_GauntletedFist.png"
   },
   "gaussians_synchronized_fire-control": {
     "name": "Gaussian's Synchronized Fire-Control",
@@ -12289,7 +12289,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "AO_Kheldian1.png"
+    "icon": "AO_Kheldian_KheldiansGrace.png"
   },
   "kinetic_combat": {
     "name": "Kinetic Combat",
@@ -13623,7 +13623,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "AO_Corruptor1.png"
+    "icon": "AO_Corruptor_MaliceOfTheCorruptor.png"
   },
   "mark_of_supremacy": {
     "name": "Mark of Supremacy",
@@ -13778,7 +13778,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "AO_Mastermind2.png"
+    "icon": "AO_Mastermind_MarkOfSupremacy.png"
   },
   "might_of_the_tanker": {
     "name": "Might of the Tanker",
@@ -13913,7 +13913,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "AO_Tanker1.png"
+    "icon": "AO_Tanker_MightOfTheTanker.png"
   },
   "miracle": {
     "name": "Miracle",
@@ -14980,7 +14980,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "AO_Sentinel2.png"
+    "icon": "AO_Sentinel_OpportunityStrikes.png"
   },
   "overpowering_presence": {
     "name": "Overpowering Presence",
@@ -15139,7 +15139,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "AO_Controller2.png"
+    "icon": "AO_Controller_OverpoweringPresence.png"
   },
   "overwhelming_force": {
     "name": "Overwhelming Force",
@@ -18341,7 +18341,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "AO_Corruptor2.png"
+    "icon": "AO_Corruptor_ScourgingBlast.png"
   },
   "scrappers_strike": {
     "name": "Scrapper's Strike",
@@ -18480,7 +18480,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "AO_Scrapper1.png"
+    "icon": "AO_Scrapper_ScrappersStrike.png"
   },
   "sentinels_ward": {
     "name": "Sentinel's Ward",
@@ -18610,7 +18610,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "AO_Sentinel1.png"
+    "icon": "AO_Sentinel_SentinelsWard.png"
   },
   "serendipity": {
     "name": "Serendipity",
@@ -19730,7 +19730,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "AO_Arachnos2.png"
+    "icon": "AO_Arachnos_SpidersBite.png"
   },
   "springfoot": {
     "name": "Springfoot",
@@ -20033,7 +20033,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "AO_Stalker1.png"
+    "icon": "AO_Stalker_StalkersGuile.png"
   },
   "steadfast_protection": {
     "name": "Steadfast Protection",
@@ -20646,7 +20646,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "SAO_Dominator1.png"
+    "icon": "SAO_Dominator_SuperiorAscendencyOfTheDominator.png"
   },
   "superior_assassins_mark": {
     "name": "Superior Assassin's Mark",
@@ -20776,7 +20776,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "SAO_Stalker1.png"
+    "icon": "SAO_Stalker_SuperiorAssassinsMark.png"
   },
   "superior_avalanche": {
     "name": "Superior Avalanche",
@@ -21046,7 +21046,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "SAO_Blaster1.png"
+    "icon": "SAO_Blaster_SuperiorBlastersWrath.png"
   },
   "superior_blistering_cold": {
     "name": "Superior Blistering Cold",
@@ -21325,7 +21325,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "SAO_Brute1.png"
+    "icon": "SAO_Brute_SuperiorBrutesFury.png"
   },
   "superior_command_of_the_mastermind": {
     "name": "Superior Command of the Mastermind",
@@ -21464,7 +21464,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "SAO_Mastermind1.png"
+    "icon": "SAO_Mastermind_SuperiorCommandOfTheMastermind.png"
   },
   "superior_critical_strikes": {
     "name": "Superior Critical Strikes",
@@ -21594,7 +21594,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "SAO_Scrapper2.png"
+    "icon": "SAO_Scrapper_SuperiorCriticalStrikes.png"
   },
   "superior_defenders_bastion": {
     "name": "Superior Defender's Bastion",
@@ -21724,7 +21724,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "SAO_Defender1.png"
+    "icon": "SAO_Defender_SuperiorDefendersBastion.png"
   },
   "superior_defiant_barrage": {
     "name": "Superior Defiant Barrage",
@@ -21854,7 +21854,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "SAO_Blaster2.png"
+    "icon": "SAO_Blaster_SuperiorDefiantBarrage.png"
   },
   "superior_dominating_grasp": {
     "name": "Superior Dominating Grasp",
@@ -22013,7 +22013,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "SAO_Controller1.png"
+    "icon": "SAO_Dominator_SuperiorDominatingGrasp.png"
   },
   "superior_dominion_of_arachnos": {
     "name": "Superior Dominion of Arachnos",
@@ -22143,7 +22143,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "SAO_Arachnos1.png"
+    "icon": "SAO_Arachnos_SuperiorDominionOfArachnos.png"
   },
   "superior_entomb": {
     "name": "Superior Entomb",
@@ -22417,7 +22417,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "SAO_Defender2.png"
+    "icon": "SAO_Kheldian_SuperiorEssenceTransfer.png"
   },
   "superior_frozen_blast": {
     "name": "Superior Frozen Blast",
@@ -22707,7 +22707,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "SAO_Tanker1.png"
+    "icon": "SAO_Tanker_SuperiorGauntletedFist.png"
   },
   "superior_kheldians_grace": {
     "name": "Superior Kheldian's Grace",
@@ -22857,7 +22857,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "SAO_Kheldian1.png"
+    "icon": "SAO_Kheldian_SuperiorKheldiansGrace.png"
   },
   "superior_malice_of_the_corruptor": {
     "name": "Superior Malice of the Corruptor",
@@ -22987,7 +22987,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "SAO_Corruptor1.png"
+    "icon": "SAO_Corruptor_SuperiorMaliceOfTheCorruptor.png"
   },
   "superior_mark_of_supremacy": {
     "name": "Superior Mark of Supremacy",
@@ -23142,7 +23142,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "SAO_Arachnos2.png"
+    "icon": "SAO_Mastermind_SuperiorMarkOfSupremacy.png"
   },
   "superior_might_of_the_tanker": {
     "name": "Superior Might of the Tanker",
@@ -23277,7 +23277,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "SAO_Tanker2.png"
+    "icon": "SAO_Tanker_SuperiorMightOfTheTanker.png"
   },
   "superior_opportunity_strikes": {
     "name": "Superior Opportunity Strikes",
@@ -23407,7 +23407,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "SAO_Sentinel2.png"
+    "icon": "SAO_Sentinel_SuperiorOpportunityStrikes.png"
   },
   "superior_overpowering_presence": {
     "name": "Superior Overpowering Presence",
@@ -23566,7 +23566,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "SAO_Controller2.png"
+    "icon": "SAO_Controller_SuperiorOverpoweringPresence.png"
   },
   "superior_scourging_blast": {
     "name": "Superior Scourging Blast",
@@ -23696,7 +23696,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "SAO_Corruptor2.png"
+    "icon": "SAO_Corruptor_SuperiorScourgingBlast.png"
   },
   "superior_scrappers_strike": {
     "name": "Superior Scrapper's Strike",
@@ -23835,7 +23835,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "SAO_Scrapper1.png"
+    "icon": "SAO_Scrapper_SuperiorScrappersStrike.png"
   },
   "superior_sentinels_ward": {
     "name": "Superior Sentinel's Ward",
@@ -23965,7 +23965,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "SAO_Sentinel1.png"
+    "icon": "SAO_Sentinel_SuperiorSentinelsWard.png"
   },
   "superior_spiders_bite": {
     "name": "Superior Spider's Bite",
@@ -24099,7 +24099,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "SAO_Arachnos2.png"
+    "icon": "SAO_Arachnos_SuperiorSpidersBite.png"
   },
   "superior_stalkers_guile": {
     "name": "Superior Stalker's Guile",
@@ -24234,7 +24234,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "SAO_Stalker2.png"
+    "icon": "SAO_Stalker_SuperiorStalkersGuile.png"
   },
   "superior_unrelenting_fury": {
     "name": "Superior Unrelenting Fury",
@@ -24389,7 +24389,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "SAO_Brute2.png"
+    "icon": "SAO_Brute_SuperiorUnrelentingFury.png"
   },
   "superior_vigilant_assault": {
     "name": "Superior Vigilant Assault",
@@ -24519,7 +24519,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "SAO_Tanker1.png"
+    "icon": "SAO_Defender_SuperiorVigilantAssault.png"
   },
   "superior_will_of_the_controller": {
     "name": "Superior Will of the Controller",
@@ -24673,7 +24673,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "SAO_Controller2.png"
+    "icon": "SAO_Controller_SuperiorWillOfTheController.png"
   },
   "superior_winters_bite": {
     "name": "Superior Winter's Bite",
@@ -27065,7 +27065,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "AO_Brute2.png"
+    "icon": "AO_Brute_UnrelentingFury.png"
   },
   "unspeakable_terror": {
     "name": "Unspeakable Terror",
@@ -27325,7 +27325,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "AO_Defender2.png"
+    "icon": "AO_Defender_VigilantAssault.png"
   },
   "volley_fire": {
     "name": "Volley Fire",
@@ -27687,7 +27687,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "AO_Controller1.png"
+    "icon": "AO_Controller_WillOfTheController.png"
   },
   "winters_bite": {
     "name": "Winter's Bite",

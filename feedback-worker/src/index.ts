@@ -27,6 +27,7 @@ interface FeedbackPayload {
   description: string;
   globalName?: string;
   buildContext?: BuildContext;
+  buildSnapshot?: string;
   userAgent: string;
   timestamp: string;
 }
@@ -93,6 +94,16 @@ function buildEmailHtml(payload: FeedbackPayload): string {
       <p style="color: #60a5fa;">${escapeHtml(payload.globalName)}</p>`;
   }
 
+  let snapshotHtml = '';
+  if (payload.buildSnapshot) {
+    snapshotHtml = `
+      <h3 style="color: #94a3b8; margin-top: 16px;">Build Snapshot</h3>
+      <details style="margin-top: 8px;">
+        <summary style="color: #60a5fa; cursor: pointer; font-size: 13px;">Click to expand full build JSON</summary>
+        <pre style="background: #0f172a; border: 1px solid #334155; border-radius: 4px; padding: 12px; margin-top: 8px; font-size: 11px; color: #cbd5e1; white-space: pre-wrap; word-break: break-all; max-height: 400px; overflow: auto;">${escapeHtml(payload.buildSnapshot)}</pre>
+      </details>`;
+  }
+
   return `
     <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 0 auto;">
       <div style="background: ${color}; color: white; padding: 12px 20px; border-radius: 8px 8px 0 0;">
@@ -103,6 +114,7 @@ function buildEmailHtml(payload: FeedbackPayload): string {
         <p style="white-space: pre-wrap; line-height: 1.5;">${escapeHtml(payload.description)}</p>
         ${contactHtml}
         ${contextHtml}
+        ${snapshotHtml}
         <hr style="border: none; border-top: 1px solid #334155; margin: 16px 0;" />
         <p style="color: #64748b; font-size: 12px; margin-bottom: 0;">
           Sent: ${escapeHtml(payload.timestamp)}<br/>
