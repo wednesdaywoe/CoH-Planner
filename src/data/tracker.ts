@@ -13,6 +13,7 @@ export interface TrackerItem {
 // ============================================
 
 export const KNOWN_BUGS: TrackerItem[] = [
+  { text: 'Many varieties of Hamidon Enhancments are missing', status: 'known-bug' },
   { text: 'If you see a [missing-icon] icon, it means the icon is missing. Please report it using the feedback tool', status: 'known-bug' },
   { text: 'Importing from Mids file is...less than reliable. You can send your Mids file (especially older builds) to Wednesdaywoe on Discord to help make this feature more robust', status: 'known-bug' },
 ];
