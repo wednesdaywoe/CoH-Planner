@@ -9,6 +9,8 @@ import { useCalculatedStats, useCharacterCalculation } from '@/hooks';
 import { convertToLegacyStats } from '@/hooks/useCalculatedStats';
 import { useBuildStore } from '@/stores';
 import { getBaselineHealth } from '@/utils/calculations/stats';
+import { getArchetype } from '@/data/archetypes';
+import type { ArchetypeId } from '@/types';
 import { calculateCharacterTotals } from '@/utils/calculations/character-totals';
 import { STAT_DEFINITIONS } from '@/data/stat-definitions';
 import type { StatValue, MezStatValue } from '@/data/stat-definitions';
@@ -117,6 +119,8 @@ interface StatRow {
   breakdown?: DashboardStatBreakdown;
   breakdownKey?: string;
   breakdownUnit?: string;
+  /** Cap value as a percentage (e.g. 90 for 90%). Present for defense/resistance stats. */
+  cap?: number;
 }
 
 // ============================================
@@ -129,7 +133,12 @@ function computeAllStats(
   breakdowns: Map<string, DashboardStatBreakdown>,
   baseHP: number,
   maxHPCap: number,
+  archetypeId?: string,
 ) {
+  const at = archetypeId ? getArchetype(archetypeId as ArchetypeId) : null;
+  const defenseCap = (at?.stats.defenseCap ?? 0.45) * 100;
+  const resistanceCap = (at?.stats.resistanceCap ?? 0.75) * 100;
+
   return DETAILED_CATEGORIES.map((cat) => ({
     name: cat.name,
     stats: cat.stats
@@ -143,7 +152,13 @@ function computeAllStats(
           : def.getValue(stats, baseHP, maxHPCap);
 
         const breakdown = def.breakdownKey ? breakdowns.get(def.breakdownKey) : undefined;
-        return { ...def, value, breakdown } as StatRow;
+
+        // Attach cap for defense/resistance stats
+        let cap: number | undefined;
+        if (id.startsWith('def_') || id.startsWith('defense_')) cap = defenseCap;
+        else if (id.startsWith('res_')) cap = resistanceCap;
+
+        return { ...def, value, breakdown, cap } as StatRow;
       })
       .filter(Boolean) as StatRow[],
   }));
@@ -256,6 +271,44 @@ function BreakdownPanel({
   );
 }
 
+/** Bar meter showing value relative to AT cap, with overflow in a separate color */
+function CapMeter({ value, cap }: { value: number; cap: number }) {
+  // Max display range: slightly beyond cap to show overflow context
+  const maxDisplay = cap * 1.3;
+  const capped = Math.min(value, cap);
+  const overflow = Math.max(0, value - cap);
+  const cappedPct = (capped / maxDisplay) * 100;
+  const overflowPct = (overflow / maxDisplay) * 100;
+  const isCapped = value >= cap;
+
+  return (
+    <div className="flex items-center gap-1.5 mt-0.5 px-1">
+      <div className="flex-1 h-[6px] bg-slate-700/80 rounded-full overflow-hidden relative">
+        {/* Capped portion */}
+        <div
+          className={`absolute inset-y-0 left-0 rounded-full ${isCapped ? 'bg-emerald-500' : 'bg-emerald-500/70'}`}
+          style={{ width: `${cappedPct}%` }}
+        />
+        {/* Overflow portion */}
+        {overflow > 0 && (
+          <div
+            className="absolute inset-y-0 rounded-full bg-amber-500/70"
+            style={{ left: `${cappedPct}%`, width: `${overflowPct}%` }}
+          />
+        )}
+        {/* Cap marker line */}
+        <div
+          className="absolute inset-y-0 w-px bg-slate-300/50"
+          style={{ left: `${(cap / maxDisplay) * 100}%` }}
+        />
+      </div>
+      <span className="text-[9px] text-slate-500 tabular-nums flex-shrink-0 w-8 text-right">
+        {cap}%
+      </span>
+    </div>
+  );
+}
+
 function StatGrid({
   allStats,
 }: {
@@ -308,6 +361,11 @@ function StatGrid({
                     </span>
                   </div>
 
+                  {/* Cap meter for defense/resistance */}
+                  {stat.cap != null && typeof stat.value === 'number' && (
+                    <CapMeter value={stat.value} cap={stat.cap} />
+                  )}
+
                   {/* Expanded breakdown */}
                   {isExpanded && stat.breakdown && (
                     <BreakdownPanel
@@ -354,15 +412,15 @@ export function DetailedTotalsModal({ isOpen, onClose }: DetailedTotalsModalProp
 
   // Compute stats for current build
   const currentBuildStats = useMemo(
-    () => computeAllStats(stats, globalBonuses, breakdowns, baseHP, maxHPCap),
-    [stats, globalBonuses, breakdowns, baseHP, maxHPCap],
+    () => computeAllStats(stats, globalBonuses, breakdowns, baseHP, maxHPCap, build.archetype?.id ?? undefined),
+    [stats, globalBonuses, breakdowns, baseHP, maxHPCap, build.archetype?.id],
   );
 
   // Compute stats for loaded builds
   const loadedBuildStats = useMemo(
     () =>
       loadedBuilds.map((lb) =>
-        computeAllStats(lb.legacyStats, lb.calcResult.globalBonuses, lb.calcResult.breakdown, lb.baseHP, lb.maxHPCap),
+        computeAllStats(lb.legacyStats, lb.calcResult.globalBonuses, lb.calcResult.breakdown, lb.baseHP, lb.maxHPCap, lb.build.archetype?.id ?? undefined),
       ),
     [loadedBuilds],
   );
