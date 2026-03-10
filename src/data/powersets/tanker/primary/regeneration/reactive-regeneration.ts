@@ -39,6 +39,7 @@ export const ReactiveRegeneration: Power = {
     },
     "durations": {
       "regenBuff": 2.25
-    }
+    },
+    "buffDuration": 2.25
   }
 };

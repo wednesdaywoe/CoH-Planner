@@ -37,13 +37,14 @@ export const ChargedShield: Power = {
       "scale": 10,
       "table": "Melee_Ones"
     },
+    "durations": {
+      "maxEndBuff": 0.6,
+      "regenBuff": 0.6
+    },
     "regenBuff": {
       "scale": 0.5,
       "table": "Melee_Ones"
     },
-    "durations": {
-      "maxEndBuff": 0.6,
-      "regenBuff": 0.6
-    }
+    "buffDuration": 0.6
   }
 };

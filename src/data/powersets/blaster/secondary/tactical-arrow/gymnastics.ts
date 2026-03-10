@@ -86,6 +86,14 @@ export const Gymnastics: Power = {
         "table": "Melee_Buff_Def"
       }
     },
+    "durations": {
+      "defenseBuff": 0.5,
+      "knockup": 0.5,
+      "knockback": 0.5,
+      "rechargeBuff": 0.5,
+      "movement": 0.5,
+      "debuffResistance": 0.5
+    },
     "knockup": {
       "scale": 9,
       "table": "Melee_Ones"
@@ -98,29 +106,26 @@ export const Gymnastics: Power = {
       "scale": 0.2,
       "table": "Melee_Ones"
     },
+    "movement": {
+      "runSpeed": {
+        "scale": 0.1,
+        "table": "Melee_SpeedRunning"
+      },
+      "flySpeed": {
+        "scale": 0.1,
+        "table": "Melee_SpeedFlying"
+      }
+    },
     "debuffResistance": {
+      "movement": {
+        "scale": 0.4,
+        "table": "Melee_Ones"
+      },
       "recharge": {
         "scale": 0.4,
         "table": "Melee_Ones"
       }
     },
-    "movement": {
-      "runSpeed": {
-        "scale": 0.4,
-        "table": "Melee_Ones"
-      },
-      "flySpeed": {
-        "scale": 0.4,
-        "table": "Melee_Ones"
-      }
-    },
-    "durations": {
-      "debuffResistance": 0.5,
-      "defenseBuff": 0.5,
-      "knockback": 0.5,
-      "knockup": 0.5,
-      "movement": 0.5,
-      "rechargeBuff": 0.5
-    }
+    "buffDuration": 0.5
   }
 };

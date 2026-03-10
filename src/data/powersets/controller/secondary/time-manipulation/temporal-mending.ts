@@ -61,39 +61,23 @@ export const TemporalMending: Power = {
     }
   ],
   "effects": {
-    "movement": {
-      "runSpeed": {
-        "scale": 0.2,
-        "table": "Ranged_Ones"
-      },
-      "flySpeed": {
-        "scale": 0.2,
-        "table": "Ranged_Ones"
-      },
-      "jumpSpeed": {
-        "scale": 0.2,
-        "table": "Ranged_Ones"
-      },
-      "jumpHeight": {
-        "scale": 0.2,
-        "table": "Ranged_Ones"
-      }
-    },
     "debuffResistance": {
+      "movement": {
+        "scale": 0.2,
+        "table": "Ranged_Ones"
+      },
       "recharge": {
         "scale": 0.2,
         "table": "Ranged_Ones"
+      },
+      "regeneration": {
+        "scale": 1,
+        "table": "Ranged_Res_Boolean"
       }
     },
-    "regenBuff": {
-      "scale": 1,
-      "table": "Ranged_Res_Boolean"
-    },
-    "buffDuration": 30,
     "durations": {
-      "debuffResistance": 30,
-      "movement": 30,
-      "regenBuff": 30
-    }
+      "debuffResistance": 30
+    },
+    "buffDuration": 30
   }
 };

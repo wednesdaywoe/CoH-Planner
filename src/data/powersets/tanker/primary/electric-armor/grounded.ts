@@ -54,9 +54,18 @@ export const Grounded: Power = {
         "table": "Melee_Res_Dmg"
       }
     },
-    "enduranceGain": {
-      "scale": 2,
-      "table": "Melee_Res_Boolean"
+    "durations": {
+      "resistance": 1,
+      "debuffResistance": 1,
+      "knockup": 5,
+      "knockback": 5,
+      "immobilize": 1
+    },
+    "debuffResistance": {
+      "endurance": {
+        "scale": 2,
+        "table": "Melee_Res_Boolean"
+      }
     },
     "knockup": {
       "scale": 6,
@@ -72,12 +81,6 @@ export const Grounded: Power = {
       "table": "Melee_Ones"
     },
     "effectDuration": 1,
-    "durations": {
-      "enduranceGain": 1,
-      "immobilize": 1,
-      "knockback": 5,
-      "knockup": 5,
-      "resistance": 1
-    }
+    "buffDuration": 1
   }
 };

@@ -33,6 +33,15 @@ export const PracticedBrawler: Power = {
       "knockup": 1,
       "knockback": 1
     },
+    "durations": {
+      "protection": 120,
+      "knockup": 120,
+      "knockback": 120,
+      "hold": 120,
+      "immobilize": 120,
+      "stun": 120,
+      "sleep": 120
+    },
     "knockup": {
       "scale": 10,
       "table": "Melee_Ones"
@@ -61,7 +70,8 @@ export const PracticedBrawler: Power = {
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
-    }
+    },
+    "buffDuration": 120
   },
   "requires": "!Sentinel_Defense.Super_Reflexes.Master_Brawler"
 };

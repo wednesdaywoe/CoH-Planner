@@ -30,7 +30,16 @@ export const ParticleAcceleration: Power = {
       "scale": 0.2,
       "table": "Melee_Ones"
     },
+    "durations": {
+      "rechargeBuff": 10.25,
+      "debuffResistance": 10.25,
+      "movement": 10.25
+    },
     "debuffResistance": {
+      "movement": {
+        "scale": 0.4,
+        "table": "Melee_Ones"
+      },
       "recharge": {
         "scale": 0.4,
         "table": "Melee_Ones"
@@ -46,10 +55,6 @@ export const ParticleAcceleration: Power = {
         "table": "Melee_SpeedFlying"
       }
     },
-    "durations": {
-      "debuffResistance": 10.25,
-      "movement": 10.25,
-      "rechargeBuff": 10.25
-    }
+    "buffDuration": 10.25
   }
 };

@@ -37,13 +37,23 @@ export const StaticShield: Power = {
       "scale": 1,
       "table": "Melee_Ones"
     },
-    "enduranceGain": {
-      "scale": 3,
-      "table": "Melee_Res_Boolean"
+    "durations": {
+      "teleport": 0.75,
+      "debuffResistance": 0.75,
+      "hold": 0.75,
+      "stun": 0.75,
+      "sleep": 0.75,
+      "resistance": 0.75
     },
-    "recoveryBuff": {
-      "scale": 3,
-      "table": "Melee_Res_Boolean"
+    "debuffResistance": {
+      "endurance": {
+        "scale": 3,
+        "table": "Melee_Res_Boolean"
+      },
+      "recovery": {
+        "scale": 3,
+        "table": "Melee_Res_Boolean"
+      }
     },
     "hold": {
       "mag": 1,
@@ -71,14 +81,6 @@ export const StaticShield: Power = {
         "table": "Melee_Res_Dmg"
       }
     },
-    "durations": {
-      "enduranceGain": 0.75,
-      "hold": 0.75,
-      "recoveryBuff": 0.75,
-      "resistance": 0.75,
-      "sleep": 0.75,
-      "stun": 0.75,
-      "teleport": 0.75
-    }
+    "buffDuration": 0.75
   }
 };

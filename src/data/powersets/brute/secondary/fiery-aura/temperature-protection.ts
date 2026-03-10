@@ -38,25 +38,18 @@ export const TemperatureProtection: Power = {
         "table": "Melee_Res_Dmg"
       }
     },
-    "movement": {
-      "runSpeed": {
-        "scale": 0.2,
-        "table": "Melee_Ones"
-      },
-      "flySpeed": {
-        "scale": 0.2,
-        "table": "Melee_Ones"
-      },
-      "jumpSpeed": {
-        "scale": 0.2,
-        "table": "Melee_Ones"
-      },
-      "jumpHeight": {
-        "scale": 0.2,
-        "table": "Melee_Ones"
-      }
+    "durations": {
+      "resistance": 10,
+      "debuffResistance": 10,
+      "regenBuff": 10,
+      "knockback": 10.25,
+      "knockup": 10.25
     },
     "debuffResistance": {
+      "movement": {
+        "scale": 0.2,
+        "table": "Melee_Ones"
+      },
       "recharge": {
         "scale": 0.2,
         "table": "Melee_Ones"
@@ -74,13 +67,6 @@ export const TemperatureProtection: Power = {
       "scale": 1,
       "table": "Melee_Ones"
     },
-    "durations": {
-      "debuffResistance": 10,
-      "knockback": 10.25,
-      "knockup": 10.25,
-      "movement": 10,
-      "regenBuff": 10,
-      "resistance": 10
-    }
+    "buffDuration": 10
   }
 };

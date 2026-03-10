@@ -34,6 +34,12 @@ export const Enduring: Power = {
       "scale": 0.3,
       "table": "Melee_Ones"
     },
+    "durations": {
+      "recoveryBuff": 0.75,
+      "defenseBuff": 0.75,
+      "elusivity": 0.75,
+      "resistance": 0.75
+    },
     "defenseBuff": {
       "psionic": {
         "scale": 1,
@@ -72,11 +78,6 @@ export const Enduring: Power = {
         "table": "Melee_Ones"
       }
     },
-    "durations": {
-      "defenseBuff": 0.75,
-      "elusivity": 0.75,
-      "recoveryBuff": 0.75,
-      "resistance": 0.75
-    }
+    "buffDuration": 0.75
   }
 };

@@ -44,6 +44,11 @@ export const TimeStop: Power = {
       "scale": 0.25,
       "table": "Ranged_Stun"
     },
+    "durations": {
+      "damageDebuff": 20,
+      "regenDebuff": 20,
+      "damageBuff": 9.67
+    },
     "regenDebuff": {
       "scale": 0.5,
       "table": "Ranged_Ones"
@@ -52,11 +57,6 @@ export const TimeStop: Power = {
       "scale": 0.143,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 20,
-    "durations": {
-      "damageBuff": 9.67,
-      "damageDebuff": 20,
-      "regenDebuff": 20
-    }
+    "buffDuration": 20
   }
 };

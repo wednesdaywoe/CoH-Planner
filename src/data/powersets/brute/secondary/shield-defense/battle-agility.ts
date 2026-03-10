@@ -43,12 +43,17 @@ export const BattleAgility: Power = {
         "table": "Melee_Buff_Def"
       }
     },
+    "durations": {
+      "defenseBuff": 0.75,
+      "elusivity": 0.75
+    },
     "elusivity": {
       "all": {
         "scale": 0.4,
         "table": "Melee_Res_Boolean"
       }
-    }
+    },
+    "buffDuration": 0.75
   },
   "requires": "!(Brute_Melee.Claws || Brute_Melee.Dual_Blades || Brute_Melee.Katana || Brute_Melee.Spines || Brute_Melee.Staff_Fighting || Brute_Melee.Titan_Weapons)"
 };

@@ -46,6 +46,7 @@ export const PhalanxFighting: Power = {
     },
     "durations": {
       "defenseBuff": 1.25
-    }
+    },
+    "buffDuration": 1.25
   }
 };

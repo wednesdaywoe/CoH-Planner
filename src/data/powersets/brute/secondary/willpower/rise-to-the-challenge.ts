@@ -43,6 +43,10 @@ export const RisetotheChallenge: Power = {
       "scale": 0.5,
       "table": "Melee_DeBuff_ToHit"
     },
+    "durations": {
+      "tohitDebuff": 1,
+      "regenBuff": 1.125
+    },
     "regenBuff": {
       "scale": 1,
       "table": "Melee_Ones"
@@ -51,9 +55,6 @@ export const RisetotheChallenge: Power = {
       "scale": 1.25,
       "table": "Melee_Ones"
     },
-    "durations": {
-      "regenBuff": 1.125,
-      "tohitDebuff": 1
-    }
+    "buffDuration": 1.125
   }
 };

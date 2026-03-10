@@ -46,6 +46,11 @@ export const Precognition: Power = {
         "table": "Melee_Buff_Def"
       }
     },
+    "durations": {
+      "defenseBuff": 10.25,
+      "perceptionBuff": 0.75,
+      "elusivity": 10.25
+    },
     "perceptionBuff": {
       "scale": 0.6,
       "table": "Melee_Ones"
@@ -56,10 +61,6 @@ export const Precognition: Power = {
         "table": "Melee_Res_Boolean"
       }
     },
-    "durations": {
-      "defenseBuff": 10.25,
-      "elusivity": 10.25,
-      "perceptionBuff": 0.75
-    }
+    "buffDuration": 10.25
   }
 };

@@ -60,6 +60,10 @@ export const StoneSkin: Power = {
         "table": "Melee_Res_Dmg"
       }
     },
+    "durations": {
+      "resistance": 10.25,
+      "defenseBuff": 10.25
+    },
     "defenseBuff": {
       "smashing": {
         "scale": 0.5,
@@ -86,9 +90,6 @@ export const StoneSkin: Power = {
         "table": "Melee_Buff_Def"
       }
     },
-    "durations": {
-      "defenseBuff": 10.25,
-      "resistance": 10.25
-    }
+    "buffDuration": 10.25
   }
 };

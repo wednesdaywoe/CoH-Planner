@@ -71,6 +71,13 @@ export const IceArrow: Power = {
         "table": "Ranged_Slow"
       }
     },
+    "durations": {
+      "movement": 10,
+      "rechargeDebuff": 10,
+      "protection": 10,
+      "knockup": 10,
+      "knockback": 10
+    },
     "rechargeDebuff": {
       "scale": 0.1,
       "table": "Ranged_Slow"
@@ -91,13 +98,6 @@ export const IceArrow: Power = {
       "scale": 0,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 10,
-    "durations": {
-      "knockback": 10,
-      "knockup": 10,
-      "movement": 10,
-      "protection": 10,
-      "rechargeBuff": 10
-    }
+    "buffDuration": 10
   }
 };

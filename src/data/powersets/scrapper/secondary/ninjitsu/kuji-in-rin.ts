@@ -46,6 +46,16 @@ export const KujiInRin: Power = {
       "table": "Melee_Res_Boolean"
     },
     "effectDuration": 120,
+    "durations": {
+      "confuse": 120,
+      "fear": 120,
+      "hold": 120,
+      "immobilize": 120,
+      "stun": 120,
+      "sleep": 120,
+      "resistance": 120,
+      "movement": 120
+    },
     "fear": {
       "mag": 1,
       "scale": 30,
@@ -91,16 +101,6 @@ export const KujiInRin: Power = {
         "table": "Melee_SpeedRunning"
       }
     },
-    "buffDuration": 120,
-    "durations": {
-      "confuse": 120,
-      "fear": 120,
-      "hold": 120,
-      "immobilize": 120,
-      "movement": 120,
-      "resistance": 120,
-      "sleep": 120,
-      "stun": 120
-    }
+    "buffDuration": 120
   }
 };

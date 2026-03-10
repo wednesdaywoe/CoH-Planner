@@ -55,9 +55,9 @@ export const InertialReduction: Power = {
         "table": "Melee_Friction"
       }
     },
-    "buffDuration": 60,
     "durations": {
       "movement": 60
-    }
+    },
+    "buffDuration": 60
   }
 };

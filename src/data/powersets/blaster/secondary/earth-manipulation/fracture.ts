@@ -44,14 +44,14 @@ export const Fracture: Power = {
       "scale": 1,
       "table": "Ranged_Debuff_Def"
     },
+    "durations": {
+      "defenseDebuff": 10
+    },
     "stun": {
       "mag": 2,
       "scale": 8,
       "table": "Ranged_Stun"
     },
-    "buffDuration": 10,
-    "durations": {
-      "defenseDebuff": 10
-    }
+    "buffDuration": 10
   }
 };

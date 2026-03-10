@@ -41,6 +41,12 @@ export const AdrenalinBoost: Power = {
       "scale": 8,
       "table": "Ranged_Ones"
     },
+    "durations": {
+      "recoveryBuff": 90,
+      "regenBuff": 90,
+      "rechargeBuff": 90,
+      "debuffResistance": 90
+    },
     "regenBuff": {
       "scale": 5,
       "table": "Ranged_Ones"
@@ -50,36 +56,15 @@ export const AdrenalinBoost: Power = {
       "table": "Ranged_Ones"
     },
     "debuffResistance": {
+      "movement": {
+        "scale": 0.8,
+        "table": "Ranged_Ones"
+      },
       "recharge": {
         "scale": 0.8,
         "table": "Ranged_Ones"
       }
     },
-    "movement": {
-      "runSpeed": {
-        "scale": 0.8,
-        "table": "Ranged_Ones"
-      },
-      "flySpeed": {
-        "scale": 0.8,
-        "table": "Ranged_Ones"
-      },
-      "jumpSpeed": {
-        "scale": 0.8,
-        "table": "Ranged_Ones"
-      },
-      "jumpHeight": {
-        "scale": 0.8,
-        "table": "Ranged_Ones"
-      }
-    },
-    "buffDuration": 90,
-    "durations": {
-      "debuffResistance": 90,
-      "movement": 90,
-      "rechargeBuff": 90,
-      "recoveryBuff": 90,
-      "regenBuff": 90
-    }
+    "buffDuration": 90
   }
 };

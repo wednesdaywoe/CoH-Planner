@@ -23,6 +23,7 @@ export const KNOWN_BUGS: TrackerItem[] = [
 // ============================================
 
 export const RECENT_CHANGES: TrackerItem[] = [
+  { text: '120 powersets regenerated to fix two classes of data errors including missing debuff resistance', status: 'fixed' },
   { text: 'Widespread issue with -recharge resistance being converted to +recharge', status: 'fixed' },
   { text: 'Added missing generic enh icons, corrected ATO slotting rule, fix issue preventing AoE defense effects from registering', status: 'fixed' },
   { text: 'Added 9 missing Hamidon Enhancements (Vesicle, Stereocilia, Microtubule, Karyoplasm, Microvillus, Chromatin, Ectosome, Amyloplast, Chloroplast) but I do not have icons for them yet', status: 'fixed' },

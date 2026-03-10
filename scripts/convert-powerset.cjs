@@ -666,7 +666,12 @@ function extractEffects(templates) {
       // ========== MOVEMENT ==========
       if (MOVEMENT_TYPES[attrib]) {
         const moveType = MOVEMENT_TYPES[attrib];
-        if (isDebuff || scale < 0) {
+        if (aspect === 'resistance') {
+          // Resistance to movement debuffs (slow resistance)
+          if (!effects.debuffResistance) effects.debuffResistance = {};
+          effects.debuffResistance.movement = makeEffect();
+          recordDuration('debuffResistance');
+        } else if (isDebuff || scale < 0) {
           if (!effects.slow) effects.slow = {};
           effects.slow[moveType] = makeEffect();
           recordDuration('slow');
@@ -691,7 +696,11 @@ function extractEffects(templates) {
             recordDuration('healing');
           }
         } else if (resType === 'endurance') {
-          if (aspect === 'maximum') {
+          if (aspect === 'resistance') {
+            if (!effects.debuffResistance) effects.debuffResistance = {};
+            effects.debuffResistance.endurance = makeEffect();
+            recordDuration('debuffResistance');
+          } else if (aspect === 'maximum') {
             effects.maxEndBuff = makeEffect();
             recordDuration('maxEndBuff');
           } else if (isDebuff || scale < 0) {
@@ -702,7 +711,11 @@ function extractEffects(templates) {
             recordDuration('enduranceGain');
           }
         } else if (resType === 'recovery') {
-          if (isDebuff || scale < 0) {
+          if (aspect === 'resistance') {
+            if (!effects.debuffResistance) effects.debuffResistance = {};
+            effects.debuffResistance.recovery = makeEffect();
+            recordDuration('debuffResistance');
+          } else if (isDebuff || scale < 0) {
             effects.recoveryDebuff = makeEffect();
             recordDuration('recoveryDebuff');
           } else {
@@ -710,7 +723,11 @@ function extractEffects(templates) {
             recordDuration('recoveryBuff');
           }
         } else if (resType === 'regeneration') {
-          if (isDebuff || scale < 0) {
+          if (aspect === 'resistance') {
+            if (!effects.debuffResistance) effects.debuffResistance = {};
+            effects.debuffResistance.regeneration = makeEffect();
+            recordDuration('debuffResistance');
+          } else if (isDebuff || scale < 0) {
             effects.regenDebuff = makeEffect();
             recordDuration('regenDebuff');
           } else {
@@ -729,7 +746,11 @@ function extractEffects(templates) {
         const modType = COMBAT_MODIFIERS[attrib];
 
         if (modType === 'toHit') {
-          if (isDebuff) {
+          if (aspect === 'resistance') {
+            if (!effects.debuffResistance) effects.debuffResistance = {};
+            effects.debuffResistance.tohit = makeEffect();
+            recordDuration('debuffResistance');
+          } else if (isDebuff) {
             effects.tohitDebuff = makeEffect();
             recordDuration('tohitDebuff');
           } else {
@@ -759,8 +780,14 @@ function extractEffects(templates) {
             recordDuration('threatBuff');
           }
         } else if (modType === 'range') {
-          effects.rangeBuff = makeEffect();
-          recordDuration('rangeBuff');
+          if (aspect === 'resistance') {
+            if (!effects.debuffResistance) effects.debuffResistance = {};
+            effects.debuffResistance.range = makeEffect();
+            recordDuration('debuffResistance');
+          } else {
+            effects.rangeBuff = makeEffect();
+            recordDuration('rangeBuff');
+          }
         } else if (modType === 'enduranceDiscount') {
           effects.enduranceDiscount = makeEffect();
           recordDuration('enduranceDiscount');

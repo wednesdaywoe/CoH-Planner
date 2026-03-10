@@ -41,6 +41,16 @@ export const Antidote: Power = {
       "table": "Ranged_Res_Boolean"
     },
     "effectDuration": 90,
+    "durations": {
+      "confuse": 90,
+      "fear": 90,
+      "hold": 90,
+      "immobilize": 90,
+      "stun": 90,
+      "sleep": 90,
+      "resistance": 90,
+      "debuffResistance": 90
+    },
     "fear": {
       "mag": 1,
       "scale": 30,
@@ -76,29 +86,16 @@ export const Antidote: Power = {
         "table": "Ranged_Res_Dmg"
       }
     },
-    "movement": {
-      "runSpeed": {
+    "debuffResistance": {
+      "movement": {
         "scale": 0.5,
         "table": "Ranged_Ones"
-      }
-    },
-    "debuffResistance": {
+      },
       "recharge": {
         "scale": 0.5,
         "table": "Ranged_Ones"
       }
     },
-    "buffDuration": 90,
-    "durations": {
-      "confuse": 90,
-      "debuffResistance": 90,
-      "fear": 90,
-      "hold": 90,
-      "immobilize": 90,
-      "movement": 90,
-      "resistance": 90,
-      "sleep": 90,
-      "stun": 90
-    }
+    "buffDuration": 90
   }
 };

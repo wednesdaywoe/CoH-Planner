@@ -59,6 +59,11 @@ export const HeightenedSenses: Power = {
         "table": "Melee_Buff_Def"
       }
     },
+    "durations": {
+      "defenseBuff": 0.75,
+      "perceptionBuff": 0.75,
+      "elusivity": 0.75
+    },
     "perceptionBuff": {
       "scale": 0.6,
       "table": "Melee_Ones"
@@ -69,10 +74,6 @@ export const HeightenedSenses: Power = {
         "table": "Melee_Res_Boolean"
       }
     },
-    "durations": {
-      "defenseBuff": 0.75,
-      "elusivity": 0.75,
-      "perceptionBuff": 0.75
-    }
+    "buffDuration": 0.75
   }
 };

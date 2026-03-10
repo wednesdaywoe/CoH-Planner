@@ -30,26 +30,31 @@ export const LightningReflexes: Power = {
       "scale": 0.2,
       "table": "Melee_Ones"
     },
-    "debuffResistance": {
-      "recharge": {
-        "scale": 0.4,
-        "table": "Melee_Ones"
-      }
+    "durations": {
+      "rechargeBuff": 10.25,
+      "movement": 10.25,
+      "debuffResistance": 10.25
     },
     "movement": {
       "runSpeed": {
-        "scale": 0.4,
-        "table": "Melee_Ones"
+        "scale": 0.1,
+        "table": "Melee_SpeedRunning"
       },
       "flySpeed": {
         "scale": 0.1,
         "table": "Melee_SpeedFlying"
       }
     },
-    "durations": {
-      "debuffResistance": 10.25,
-      "movement": 10.25,
-      "rechargeBuff": 10.25
-    }
+    "debuffResistance": {
+      "movement": {
+        "scale": 0.4,
+        "table": "Melee_Ones"
+      },
+      "recharge": {
+        "scale": 0.4,
+        "table": "Melee_Ones"
+      }
+    },
+    "buffDuration": 10.25
   }
 };

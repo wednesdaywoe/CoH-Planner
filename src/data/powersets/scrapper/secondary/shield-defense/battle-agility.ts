@@ -43,12 +43,17 @@ export const BattleAgility: Power = {
         "table": "Melee_Buff_Def"
       }
     },
+    "durations": {
+      "defenseBuff": 0.75,
+      "elusivity": 0.75
+    },
     "elusivity": {
       "all": {
         "scale": 0.4,
         "table": "Melee_Res_Boolean"
       }
-    }
+    },
+    "buffDuration": 0.75
   },
   "requires": "!(Scrapper_Melee.Claws || Scrapper_Melee.Dual_Blades || Scrapper_Melee.Katana || Scrapper_Melee.Quills || Scrapper_Melee.Staff_Fighting || Scrapper_Melee.Titan_Weapons)"
 };

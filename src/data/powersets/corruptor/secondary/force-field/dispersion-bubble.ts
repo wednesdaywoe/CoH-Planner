@@ -81,6 +81,12 @@ export const DispersionBubble: Power = {
         "table": "Ranged_Buff_Def"
       }
     },
+    "durations": {
+      "defenseBuff": 15,
+      "hold": 15,
+      "immobilize": 15,
+      "stun": 15
+    },
     "hold": {
       "mag": 1,
       "scale": 30,
@@ -97,11 +103,6 @@ export const DispersionBubble: Power = {
       "scale": 30,
       "table": "Ranged_Res_Boolean"
     },
-    "durations": {
-      "defenseBuff": 15,
-      "hold": 15,
-      "immobilize": 15,
-      "stun": 15
-    }
+    "buffDuration": 15
   }
 };

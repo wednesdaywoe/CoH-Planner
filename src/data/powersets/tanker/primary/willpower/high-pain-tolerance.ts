@@ -34,6 +34,10 @@ export const HighPainTolerance: Power = {
       "scale": 1,
       "table": "Melee_HealSelf"
     },
+    "durations": {
+      "maxHPBuff": 10.25,
+      "resistance": 10.25
+    },
     "resistance": {
       "smashing": {
         "scale": 0.75,
@@ -68,9 +72,6 @@ export const HighPainTolerance: Power = {
         "table": "Melee_Res_Dmg"
       }
     },
-    "durations": {
-      "maxHPBuff": 10.25,
-      "resistance": 10.25
-    }
+    "buffDuration": 10.25
   }
 };

@@ -71,6 +71,13 @@ export const Overload: Power = {
         "table": "Melee_Buff_Def"
       }
     },
+    "durations": {
+      "defenseBuff": 180,
+      "maxHPBuff": 180,
+      "elusivity": 180,
+      "recoveryBuff": 180,
+      "recoveryDebuff": 20
+    },
     "maxHPBuff": {
       "scale": 4,
       "table": "Melee_HealSelf"
@@ -93,13 +100,6 @@ export const Overload: Power = {
       "scale": 100,
       "table": "Melee_Ones"
     },
-    "buffDuration": 180,
-    "durations": {
-      "defenseBuff": 180,
-      "elusivity": 180,
-      "maxHPBuff": 180,
-      "recoveryBuff": 180,
-      "recoveryDebuff": 20
-    }
+    "buffDuration": 180
   }
 };

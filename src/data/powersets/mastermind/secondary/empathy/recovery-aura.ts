@@ -39,9 +39,9 @@ export const RecoveryAura: Power = {
       "scale": 2,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 90,
     "durations": {
       "recoveryBuff": 90
-    }
+    },
+    "buffDuration": 90
   }
 };

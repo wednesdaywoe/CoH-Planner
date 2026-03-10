@@ -55,6 +55,12 @@ export const LingeringRadiation: Power = {
         "table": "Ranged_Slow"
       }
     },
+    "durations": {
+      "movement": 30,
+      "rechargeDebuff": 30,
+      "slow": 30,
+      "regenDebuff": 30
+    },
     "rechargeDebuff": {
       "scale": 0.6,
       "table": "Ranged_Slow"
@@ -69,12 +75,6 @@ export const LingeringRadiation: Power = {
       "scale": 5,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 30,
-    "durations": {
-      "movement": 30,
-      "rechargeBuff": 30,
-      "regenDebuff": 30,
-      "slow": 30
-    }
+    "buffDuration": 30
   }
 };

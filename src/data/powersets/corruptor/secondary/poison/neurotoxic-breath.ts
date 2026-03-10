@@ -42,6 +42,11 @@ export const NeurotoxicBreath: Power = {
       "scale": 0.65,
       "table": "Ranged_Slow"
     },
+    "durations": {
+      "rechargeDebuff": 20,
+      "movement": 20,
+      "slow": 20
+    },
     "movement": {
       "runSpeed": {
         "scale": 0.65,
@@ -71,11 +76,6 @@ export const NeurotoxicBreath: Power = {
         "table": "Ranged_SpeedRunning"
       }
     },
-    "buffDuration": 20,
-    "durations": {
-      "movement": 20,
-      "rechargeBuff": 20,
-      "slow": 20
-    }
+    "buffDuration": 20
   }
 };

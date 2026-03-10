@@ -37,6 +37,11 @@ export const Upshot: Power = {
       "scale": 1.5,
       "table": "Melee_Buff_ToHit"
     },
+    "durations": {
+      "tohitBuff": 10,
+      "damageBuff": 10,
+      "rechargeBuff": 10
+    },
     "damageBuff": {
       "scale": 6.5,
       "table": "Melee_Buff_Dmg"
@@ -45,11 +50,6 @@ export const Upshot: Power = {
       "scale": 0.15,
       "table": "Melee_Ones"
     },
-    "buffDuration": 10,
-    "durations": {
-      "damageBuff": 10,
-      "rechargeBuff": 10,
-      "tohitBuff": 10
-    }
+    "buffDuration": 10
   }
 };

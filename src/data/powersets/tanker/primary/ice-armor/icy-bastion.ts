@@ -40,6 +40,11 @@ export const IcyBastion: Power = {
       "scale": 6,
       "table": "Melee_Ones"
     },
+    "durations": {
+      "regenBuff": 0.75,
+      "recoveryBuff": 0.75,
+      "slow": 0.75
+    },
     "recoveryBuff": {
       "scale": 2,
       "table": "Melee_Ones"
@@ -63,10 +68,6 @@ export const IcyBastion: Power = {
       "scale": 0.75,
       "table": "Melee_Ones"
     },
-    "durations": {
-      "recoveryBuff": 0.75,
-      "regenBuff": 0.75,
-      "slow": 0.75
-    }
+    "buffDuration": 0.75
   }
 };

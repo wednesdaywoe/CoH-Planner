@@ -36,7 +36,11 @@ export const MasterBrawler: Power = {
     "absorb": {
       "scale": 4,
       "table": "Melee_HealSelf"
-    }
+    },
+    "durations": {
+      "absorb": 30
+    },
+    "buffDuration": 30
   },
   "requires": "!Sentinel_Defense.Super_Reflexes.Practiced_Brawler"
 };

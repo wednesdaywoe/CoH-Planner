@@ -49,6 +49,7 @@ export const GeneticContamination: Power = {
     },
     "durations": {
       "damageDebuff": 5
-    }
+    },
+    "buffDuration": 5
   }
 };

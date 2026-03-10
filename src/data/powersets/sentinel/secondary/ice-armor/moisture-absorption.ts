@@ -79,9 +79,9 @@ export const MoistureAbsorption: Power = {
         "table": "Melee_Buff_Def"
       }
     },
-    "buffDuration": 100,
     "durations": {
       "defenseBuff": 100
-    }
+    },
+    "buffDuration": 100
   }
 };

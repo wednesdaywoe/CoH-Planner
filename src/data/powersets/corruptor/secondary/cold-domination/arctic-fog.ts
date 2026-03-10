@@ -83,6 +83,12 @@ export const ArcticFog: Power = {
         "table": "Ranged_Buff_Def"
       }
     },
+    "durations": {
+      "defenseBuff": 0.75,
+      "stealth": 0.75,
+      "resistance": 0.75,
+      "debuffResistance": 0.75
+    },
     "stealth": {
       "translucency": {
         "scale": 0.7,
@@ -111,36 +117,16 @@ export const ArcticFog: Power = {
         "table": "Ranged_Res_Dmg"
       }
     },
-    "movement": {
-      "runSpeed": {
-        "scale": 0.6,
-        "table": "Ranged_Ones"
-      },
-      "flySpeed": {
-        "scale": 0.6,
-        "table": "Ranged_Ones"
-      },
-      "jumpSpeed": {
-        "scale": 0.6,
-        "table": "Ranged_Ones"
-      },
-      "jumpHeight": {
-        "scale": 0.6,
-        "table": "Ranged_Ones"
-      }
-    },
     "debuffResistance": {
+      "movement": {
+        "scale": 0.6,
+        "table": "Ranged_Ones"
+      },
       "recharge": {
         "scale": 0.6,
         "table": "Ranged_Ones"
       }
     },
-    "durations": {
-      "debuffResistance": 0.75,
-      "defenseBuff": 0.75,
-      "movement": 0.75,
-      "resistance": 0.75,
-      "stealth": 0.75
-    }
+    "buffDuration": 0.75
   }
 };

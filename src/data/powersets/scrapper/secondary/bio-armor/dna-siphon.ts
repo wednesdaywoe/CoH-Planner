@@ -75,6 +75,11 @@ export const DNASiphon: Power = {
       "scale": 0.06,
       "table": "Melee_Ones"
     },
+    "durations": {
+      "regenBuff": 30,
+      "recoveryBuff": 30,
+      "regenDebuff": 30
+    },
     "recoveryBuff": {
       "scale": 0.0938,
       "table": "Melee_Ones"
@@ -83,11 +88,6 @@ export const DNASiphon: Power = {
       "scale": 1.33,
       "table": "Melee_Ones"
     },
-    "buffDuration": 30,
-    "durations": {
-      "recoveryBuff": 30,
-      "regenBuff": 30,
-      "regenDebuff": 30
-    }
+    "buffDuration": 30
   }
 };

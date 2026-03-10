@@ -83,6 +83,12 @@ export const SteamyMist: Power = {
         "table": "Ranged_Buff_Def"
       }
     },
+    "durations": {
+      "defenseBuff": 0.75,
+      "stealth": 0.75,
+      "resistance": 0.75,
+      "confuse": 0.75
+    },
     "stealth": {
       "translucency": {
         "scale": 0.7,
@@ -117,11 +123,6 @@ export const SteamyMist: Power = {
       "table": "Ranged_Res_Boolean"
     },
     "effectDuration": 0.75,
-    "durations": {
-      "confuse": 0.75,
-      "defenseBuff": 0.75,
-      "resistance": 0.75,
-      "stealth": 0.75
-    }
+    "buffDuration": 0.75
   }
 };

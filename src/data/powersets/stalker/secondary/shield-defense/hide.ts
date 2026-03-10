@@ -45,6 +45,10 @@ export const Hide: Power = {
         "table": "Melee_Ones"
       }
     },
+    "durations": {
+      "stealth": 0.75,
+      "defenseBuff": 0.75
+    },
     "defenseBuff": {
       "ranged": {
         "scale": 0.5,
@@ -90,7 +94,8 @@ export const Hide: Power = {
         "scale": 0.5,
         "table": "Melee_Buff_Def"
       }
-    }
+    },
+    "buffDuration": 0.75
   },
   "requires": "!(Stalker_Melee.Claws || Stalker_Melee.Dual_Blades || Stalker_Melee.Ninja_Sword || Stalker_Melee.Spines || Stalker_Melee.Staff_Fighting)"
 };

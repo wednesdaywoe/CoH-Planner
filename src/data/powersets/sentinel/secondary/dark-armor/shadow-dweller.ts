@@ -56,13 +56,14 @@ export const ShadowDweller: Power = {
         "table": "Melee_Buff_Def"
       }
     },
+    "durations": {
+      "defenseBuff": 10.25,
+      "regenBuff": 10.3
+    },
     "regenBuff": {
       "scale": 1,
       "table": "Melee_Ones"
     },
-    "durations": {
-      "defenseBuff": 10.25,
-      "regenBuff": 10.3
-    }
+    "buffDuration": 10.3
   }
 };

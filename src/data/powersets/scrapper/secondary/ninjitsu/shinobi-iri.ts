@@ -46,6 +46,10 @@ export const ShinobiIri: Power = {
         "table": "Melee_Buff_Def"
       }
     },
+    "durations": {
+      "defenseBuff": 0.75,
+      "stealth": 0.75
+    },
     "stealth": {
       "stealthPvE": {
         "scale": 35.5,
@@ -60,9 +64,6 @@ export const ShinobiIri: Power = {
         "table": "Melee_Ones"
       }
     },
-    "durations": {
-      "defenseBuff": 0.75,
-      "stealth": 0.75
-    }
+    "buffDuration": 0.75
   }
 };

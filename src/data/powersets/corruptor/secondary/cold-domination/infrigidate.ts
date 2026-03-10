@@ -56,6 +56,13 @@ export const Infrigidate: Power = {
         "table": "Ranged_Slow"
       }
     },
+    "durations": {
+      "movement": 20,
+      "rechargeDebuff": 20,
+      "defenseDebuff": 20,
+      "damageDebuff": 20,
+      "slow": 20
+    },
     "rechargeDebuff": {
       "scale": 0.7,
       "table": "Ranged_Slow"
@@ -74,13 +81,6 @@ export const Infrigidate: Power = {
         "table": "Ranged_SpeedRunning"
       }
     },
-    "buffDuration": 20,
-    "durations": {
-      "damageDebuff": 20,
-      "defenseDebuff": 20,
-      "movement": 20,
-      "rechargeBuff": 20,
-      "slow": 20
-    }
+    "buffDuration": 20
   }
 };

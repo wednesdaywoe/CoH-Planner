@@ -39,6 +39,13 @@ export const ObsidianShield: Power = {
         "table": "Melee_Res_Dmg"
       }
     },
+    "durations": {
+      "resistance": 0.75,
+      "fear": 0.75,
+      "hold": 0.75,
+      "stun": 0.75,
+      "sleep": 0.75
+    },
     "fear": {
       "mag": 1,
       "scale": 30,
@@ -60,12 +67,6 @@ export const ObsidianShield: Power = {
       "scale": 30,
       "table": "Melee_Res_Boolean"
     },
-    "durations": {
-      "fear": 0.75,
-      "hold": 0.75,
-      "resistance": 0.75,
-      "sleep": 0.75,
-      "stun": 0.75
-    }
+    "buffDuration": 0.75
   }
 };

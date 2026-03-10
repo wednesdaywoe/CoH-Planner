@@ -61,6 +61,10 @@ export const MudPots: Power = {
         "table": "Melee_Slow"
       }
     },
+    "durations": {
+      "movement": 5,
+      "slow": 5
+    },
     "slow": {
       "runSpeed": {
         "scale": 1,
@@ -72,9 +76,6 @@ export const MudPots: Power = {
       "scale": 2.25,
       "table": "Melee_Ones"
     },
-    "durations": {
-      "movement": 5,
-      "slow": 5
-    }
+    "buffDuration": 5
   }
 };

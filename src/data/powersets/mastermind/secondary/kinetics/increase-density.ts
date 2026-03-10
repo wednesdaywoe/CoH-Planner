@@ -47,6 +47,17 @@ export const IncreaseDensity: Power = {
         "table": "Ranged_Res_Dmg"
       }
     },
+    "durations": {
+      "resistance": 60,
+      "hold": 60,
+      "immobilize": 60,
+      "stun": 60,
+      "knockback": 60,
+      "knockup": 60,
+      "repel": 60,
+      "teleport": 60,
+      "movement": 60
+    },
     "hold": {
       "mag": 1,
       "scale": 30,
@@ -97,17 +108,6 @@ export const IncreaseDensity: Power = {
         "table": "Ranged_Slow"
       }
     },
-    "buffDuration": 60,
-    "durations": {
-      "hold": 60,
-      "immobilize": 60,
-      "knockback": 60,
-      "knockup": 60,
-      "movement": 60,
-      "repel": 60,
-      "resistance": 60,
-      "stun": 60,
-      "teleport": 60
-    }
+    "buffDuration": 60
   }
 };

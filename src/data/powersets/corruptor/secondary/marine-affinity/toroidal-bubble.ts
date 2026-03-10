@@ -47,6 +47,12 @@ export const ToroidalBubble: Power = {
         "table": "Melee_Leap"
       }
     },
+    "durations": {
+      "movement": 60,
+      "resistance": 60,
+      "debuffResistance": 60,
+      "recoveryBuff": 60
+    },
     "resistance": {
       "smashing": {
         "scale": 2.5,
@@ -81,6 +87,16 @@ export const ToroidalBubble: Power = {
         "table": "Ranged_Res_Dmg"
       }
     },
+    "debuffResistance": {
+      "endurance": {
+        "scale": 1.5,
+        "table": "Ranged_Res_Boolean"
+      },
+      "recovery": {
+        "scale": 1.5,
+        "table": "Ranged_Res_Boolean"
+      }
+    },
     "enduranceGain": {
       "scale": 10,
       "table": "Melee_Ones"
@@ -89,12 +105,6 @@ export const ToroidalBubble: Power = {
       "scale": 0.2,
       "table": "Melee_Ones"
     },
-    "buffDuration": 60,
-    "durations": {
-      "enduranceGain": 60,
-      "movement": 60,
-      "recoveryBuff": 60,
-      "resistance": 60
-    }
+    "buffDuration": 60
   }
 };

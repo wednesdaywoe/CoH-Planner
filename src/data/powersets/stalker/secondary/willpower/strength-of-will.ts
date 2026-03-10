@@ -66,6 +66,18 @@ export const StrengthofWill: Power = {
         "table": "Melee_Res_Dmg"
       }
     },
+    "durations": {
+      "resistance": 120,
+      "knockup": 120,
+      "knockback": 120,
+      "protection": 120,
+      "repel": 120,
+      "recoveryBuff": 120,
+      "immobilize": 120,
+      "stun": 120,
+      "sleep": 120,
+      "hold": 120
+    },
     "knockup": {
       "scale": 100,
       "table": "Melee_Ones"
@@ -112,18 +124,6 @@ export const StrengthofWill: Power = {
       "scale": 50,
       "table": "Melee_Res_Boolean"
     },
-    "buffDuration": 120,
-    "durations": {
-      "hold": 120,
-      "immobilize": 120,
-      "knockback": 120,
-      "knockup": 120,
-      "protection": 120,
-      "recoveryBuff": 120,
-      "repel": 120,
-      "resistance": 120,
-      "sleep": 120,
-      "stun": 120
-    }
+    "buffDuration": 120
   }
 };

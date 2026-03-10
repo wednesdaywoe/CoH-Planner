@@ -37,9 +37,19 @@ export const MetabolicAcceleration: Power = {
       "scale": 1.125,
       "table": "Melee_Ones"
     },
+    "durations": {
+      "regenBuff": 0.75,
+      "recoveryBuff": 0.75,
+      "rechargeBuff": 0.75,
+      "hold": 0.75,
+      "immobilize": 0.75,
+      "stun": 0.75,
+      "sleep": 0.75,
+      "debuffResistance": 0.75
+    },
     "recoveryBuff": {
-      "scale": 1,
-      "table": "Melee_Res_Boolean"
+      "scale": 0.5,
+      "table": "Melee_Ones"
     },
     "rechargeBuff": {
       "scale": 0.2,
@@ -66,19 +76,16 @@ export const MetabolicAcceleration: Power = {
       "scale": 1,
       "table": "Melee_Res_Boolean"
     },
-    "enduranceGain": {
-      "scale": 1,
-      "table": "Melee_Res_Boolean"
+    "debuffResistance": {
+      "endurance": {
+        "scale": 1,
+        "table": "Melee_Res_Boolean"
+      },
+      "recovery": {
+        "scale": 1,
+        "table": "Melee_Res_Boolean"
+      }
     },
-    "durations": {
-      "enduranceGain": 0.75,
-      "hold": 0.75,
-      "immobilize": 0.75,
-      "rechargeBuff": 0.75,
-      "recoveryBuff": 0.75,
-      "regenBuff": 0.75,
-      "sleep": 0.75,
-      "stun": 0.75
-    }
+    "buffDuration": 0.75
   }
 };

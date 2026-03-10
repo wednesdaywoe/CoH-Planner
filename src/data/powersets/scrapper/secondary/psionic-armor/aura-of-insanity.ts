@@ -64,6 +64,17 @@ export const AuraofInsanity: Power = {
       "scale": 0.75,
       "table": "Melee_Ones"
     },
+    "durations": {
+      "regenDebuff": 4,
+      "resistanceDebuff": 4,
+      "defenseDebuff": 4,
+      "tohitDebuff": 4,
+      "confuse": 4,
+      "stun": 4,
+      "sleep": 4,
+      "hold": 4,
+      "fear": 4
+    },
     "resistanceDebuff": {
       "smashing": {
         "scale": 1,
@@ -132,16 +143,6 @@ export const AuraofInsanity: Power = {
       "scale": 2,
       "table": "Melee_Ones"
     },
-    "durations": {
-      "confuse": 4,
-      "defenseDebuff": 4,
-      "fear": 4,
-      "hold": 4,
-      "regenDebuff": 4,
-      "resistanceDebuff": 4,
-      "sleep": 4,
-      "stun": 4,
-      "tohitDebuff": 4
-    }
+    "buffDuration": 4
   }
 };

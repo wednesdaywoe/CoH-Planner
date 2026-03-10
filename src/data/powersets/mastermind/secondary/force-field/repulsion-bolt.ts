@@ -81,9 +81,9 @@ export const RepulsionBolt: Power = {
         "table": "Ranged_Debuff_Res_Dmg"
       }
     },
-    "buffDuration": 30,
     "durations": {
       "resistanceDebuff": 30
-    }
+    },
+    "buffDuration": 30
   }
 };

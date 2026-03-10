@@ -63,6 +63,16 @@ export const EnvironmentalModification: Power = {
         "table": "Melee_Buff_Def"
       }
     },
+    "durations": {
+      "defenseBuff": 0.75,
+      "maxHPBuff": 0.75,
+      "tohitBuff": 0.75,
+      "hold": 0.75,
+      "protection": 0.75,
+      "knockup": 0.75,
+      "knockback": 0.75,
+      "immobilize": 0.75
+    },
     "maxHPBuff": {
       "scale": 0.45,
       "table": "Melee_HealSelf"
@@ -94,15 +104,6 @@ export const EnvironmentalModification: Power = {
       "scale": 30,
       "table": "Melee_Res_Boolean"
     },
-    "durations": {
-      "defenseBuff": 0.75,
-      "hold": 0.75,
-      "immobilize": 0.75,
-      "knockback": 0.75,
-      "knockup": 0.75,
-      "maxHPBuff": 0.75,
-      "protection": 0.75,
-      "tohitBuff": 0.75
-    }
+    "buffDuration": 0.75
   }
 };

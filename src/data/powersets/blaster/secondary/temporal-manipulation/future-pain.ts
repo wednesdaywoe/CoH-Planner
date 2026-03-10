@@ -52,9 +52,9 @@ export const FuturePain: Power = {
       "scale": 0.11,
       "table": "Melee_Ones"
     },
-    "buffDuration": 9.17,
     "durations": {
       "damageBuff": 9.17
-    }
+    },
+    "buffDuration": 9.17
   }
 };

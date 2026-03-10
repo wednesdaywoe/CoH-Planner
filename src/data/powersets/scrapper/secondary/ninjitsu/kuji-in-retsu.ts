@@ -53,6 +53,13 @@ export const KujiInRetsu: Power = {
         "table": "Melee_Buff_Def"
       }
     },
+    "durations": {
+      "defenseBuff": 180,
+      "recoveryBuff": 180,
+      "movement": 180,
+      "elusivity": 180,
+      "recoveryDebuff": 20
+    },
     "recoveryBuff": {
       "scale": 1,
       "table": "Melee_Ones"
@@ -81,13 +88,6 @@ export const KujiInRetsu: Power = {
       "scale": 1,
       "table": "Melee_Ones"
     },
-    "buffDuration": 180,
-    "durations": {
-      "defenseBuff": 180,
-      "elusivity": 180,
-      "movement": 180,
-      "recoveryBuff": 180,
-      "recoveryDebuff": 20
-    }
+    "buffDuration": 180
   }
 };

@@ -44,16 +44,16 @@ export const EarthsEmbrace: Power = {
       "scale": 2,
       "table": "Melee_HealSelf"
     },
+    "durations": {
+      "maxHPBuff": 60,
+      "resistance": 60
+    },
     "resistance": {
       "toxic": {
         "scale": 2,
         "table": "Melee_Res_Dmg"
       }
     },
-    "buffDuration": 60,
-    "durations": {
-      "maxHPBuff": 60,
-      "resistance": 60
-    }
+    "buffDuration": 60
   }
 };

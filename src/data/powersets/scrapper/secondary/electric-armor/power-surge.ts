@@ -70,9 +70,25 @@ export const PowerSurge: Power = {
         "table": "Melee_Res_Dmg"
       }
     },
+    "durations": {
+      "resistance": 30,
+      "recoveryBuff": 30,
+      "regenBuff": 30,
+      "knockup": 30,
+      "knockback": 30,
+      "repel": 30,
+      "teleport": 30,
+      "protection": 30,
+      "debuffResistance": 30,
+      "stealth": 29,
+      "hold": 30,
+      "immobilize": 30,
+      "stun": 30,
+      "sleep": 30
+    },
     "recoveryBuff": {
-      "scale": 4,
-      "table": "Melee_Res_Boolean"
+      "scale": 1,
+      "table": "Melee_Ones"
     },
     "regenBuff": {
       "scale": 4,
@@ -99,9 +115,15 @@ export const PowerSurge: Power = {
       "knockback": 1,
       "repel": 1
     },
-    "enduranceGain": {
-      "scale": 4,
-      "table": "Melee_Res_Boolean"
+    "debuffResistance": {
+      "endurance": {
+        "scale": 4,
+        "table": "Melee_Res_Boolean"
+      },
+      "recovery": {
+        "scale": 4,
+        "table": "Melee_Res_Boolean"
+      }
     },
     "stealth": {
       "translucency": {
@@ -130,22 +152,6 @@ export const PowerSurge: Power = {
       "scale": 50,
       "table": "Melee_Res_Boolean"
     },
-    "buffDuration": 30,
-    "durations": {
-      "enduranceGain": 30,
-      "hold": 30,
-      "immobilize": 30,
-      "knockback": 30,
-      "knockup": 30,
-      "protection": 30,
-      "recoveryBuff": 30,
-      "regenBuff": 30,
-      "repel": 30,
-      "resistance": 30,
-      "sleep": 30,
-      "stealth": 29,
-      "stun": 30,
-      "teleport": 30
-    }
+    "buffDuration": 30
   }
 };

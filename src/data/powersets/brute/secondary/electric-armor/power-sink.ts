@@ -47,13 +47,13 @@ export const PowerSink: Power = {
       "scale": 0.175,
       "table": "Melee_Ones"
     },
+    "durations": {
+      "regenBuff": 45
+    },
     "enduranceDrain": {
       "scale": 0.35,
       "table": "Melee_Ones"
     },
-    "buffDuration": 45,
-    "durations": {
-      "regenBuff": 45
-    }
+    "buffDuration": 45
   }
 };

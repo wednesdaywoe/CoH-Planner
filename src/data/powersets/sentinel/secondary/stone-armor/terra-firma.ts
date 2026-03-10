@@ -30,16 +30,24 @@ export const TerraFirma: Power = {
   "maxSlots": 6,
   "effects": {
     "tohitBuff": {
-      "scale": 1,
-      "table": "Melee_Res_Boolean"
+      "scale": 0.25,
+      "table": "Melee_Buff_ToHit"
+    },
+    "durations": {
+      "tohitBuff": 0.75,
+      "debuffResistance": 0.75,
+      "rangeBuff": 0.75
+    },
+    "debuffResistance": {
+      "tohit": {
+        "scale": 1,
+        "table": "Melee_Res_Boolean"
+      }
     },
     "rangeBuff": {
       "scale": 0.15,
       "table": "Melee_Ones"
     },
-    "durations": {
-      "rangeBuff": 0.75,
-      "tohitBuff": 0.75
-    }
+    "buffDuration": 0.75
   }
 };

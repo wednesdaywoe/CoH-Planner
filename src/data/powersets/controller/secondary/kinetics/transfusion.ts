@@ -46,9 +46,9 @@ export const Transfusion: Power = {
       "scale": 0.5,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 20,
     "durations": {
       "regenDebuff": 20
-    }
+    },
+    "buffDuration": 20
   }
 };

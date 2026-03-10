@@ -43,6 +43,17 @@ export const AccelerateMetabolism: Power = {
       "scale": 2,
       "table": "Ranged_Buff_Dmg"
     },
+    "durations": {
+      "damageBuff": 120,
+      "hold": 120,
+      "immobilize": 120,
+      "stun": 120,
+      "sleep": 120,
+      "rechargeBuff": 120,
+      "debuffResistance": 120,
+      "recoveryBuff": 120,
+      "movement": 120
+    },
     "hold": {
       "mag": 1,
       "scale": 5,
@@ -68,9 +79,15 @@ export const AccelerateMetabolism: Power = {
       "scale": 0.3,
       "table": "Ranged_Ones"
     },
-    "enduranceGain": {
-      "scale": 1.5,
-      "table": "Ranged_Res_Boolean"
+    "debuffResistance": {
+      "endurance": {
+        "scale": 1.5,
+        "table": "Ranged_Res_Boolean"
+      },
+      "recovery": {
+        "scale": 1.5,
+        "table": "Ranged_Res_Boolean"
+      }
     },
     "recoveryBuff": {
       "scale": 0.3,
@@ -86,17 +103,6 @@ export const AccelerateMetabolism: Power = {
         "table": "Ranged_Ones"
       }
     },
-    "buffDuration": 120,
-    "durations": {
-      "damageBuff": 120,
-      "enduranceGain": 120,
-      "hold": 120,
-      "immobilize": 120,
-      "movement": 120,
-      "rechargeBuff": 120,
-      "recoveryBuff": 120,
-      "sleep": 120,
-      "stun": 120
-    }
+    "buffDuration": 120
   }
 };

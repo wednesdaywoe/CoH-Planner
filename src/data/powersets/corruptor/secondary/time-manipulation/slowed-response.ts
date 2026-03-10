@@ -72,14 +72,14 @@ export const SlowedResponse: Power = {
         "table": "Ranged_Res_Dmg"
       }
     },
+    "durations": {
+      "resistanceDebuff": 30,
+      "defenseDebuff": 30
+    },
     "defenseDebuff": {
       "scale": 2.5,
       "table": "Ranged_Debuff_Def"
     },
-    "buffDuration": 30,
-    "durations": {
-      "defenseDebuff": 30,
-      "resistanceDebuff": 30
-    }
+    "buffDuration": 30
   }
 };

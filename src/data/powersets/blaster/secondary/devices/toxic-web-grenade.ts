@@ -63,6 +63,12 @@ export const ToxicWebGrenade: Power = {
         "table": "Ranged_Ones"
       }
     },
+    "durations": {
+      "slow": 15,
+      "rechargeDebuff": 15,
+      "movement": 15,
+      "protection": 15
+    },
     "rechargeDebuff": {
       "scale": 0.5,
       "table": "Ranged_Slow"
@@ -85,12 +91,6 @@ export const ToxicWebGrenade: Power = {
       "scale": 0,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 15,
-    "durations": {
-      "movement": 15,
-      "protection": 15,
-      "rechargeBuff": 15,
-      "slow": 15
-    }
+    "buffDuration": 15
   }
 };

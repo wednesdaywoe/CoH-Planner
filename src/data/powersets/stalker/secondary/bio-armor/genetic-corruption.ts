@@ -45,6 +45,11 @@ export const GeneticCorruption: Power = {
       "scale": 0.3,
       "table": "Melee_Ones"
     },
+    "durations": {
+      "regenBuff": 4.25,
+      "resistance": 4.25,
+      "damageDebuff": 5
+    },
     "resistance": {
       "smashing": {
         "scale": 0.75,
@@ -83,10 +88,6 @@ export const GeneticCorruption: Power = {
       "scale": 1.995,
       "table": "Melee_Debuff_Dam"
     },
-    "durations": {
-      "damageDebuff": 5,
-      "regenBuff": 4.25,
-      "resistance": 4.25
-    }
+    "buffDuration": 4.25
   }
 };

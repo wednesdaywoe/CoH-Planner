@@ -67,6 +67,12 @@ export const ElectrifiedNetArrow: Power = {
         "table": "Ranged_Ones"
       }
     },
+    "durations": {
+      "slow": 15,
+      "protection": 15,
+      "rechargeDebuff": 15,
+      "movement": 15
+    },
     "protection": {
       "knockup": 1,
       "knockback": 1
@@ -89,12 +95,6 @@ export const ElectrifiedNetArrow: Power = {
       "scale": 0,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 15,
-    "durations": {
-      "movement": 15,
-      "protection": 15,
-      "rechargeBuff": 15,
-      "slow": 15
-    }
+    "buffDuration": 15
   }
 };

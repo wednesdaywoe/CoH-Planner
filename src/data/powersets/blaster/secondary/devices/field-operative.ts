@@ -49,6 +49,12 @@ export const FieldOperative: Power = {
         "table": "Melee_Ones"
       }
     },
+    "durations": {
+      "stealth": 0.75,
+      "defenseBuff": 0.75,
+      "regenBuff": 0.75,
+      "recoveryBuff": 0.75
+    },
     "defenseBuff": {
       "ranged": {
         "scale": 0.5,
@@ -103,11 +109,6 @@ export const FieldOperative: Power = {
       "scale": 0.5,
       "table": "Melee_Ones"
     },
-    "durations": {
-      "defenseBuff": 0.75,
-      "recoveryBuff": 0.75,
-      "regenBuff": 0.75,
-      "stealth": 0.75
-    }
+    "buffDuration": 0.75
   }
 };

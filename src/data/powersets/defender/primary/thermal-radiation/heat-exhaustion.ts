@@ -35,6 +35,11 @@ export const HeatExhaustion: Power = {
       "scale": 5,
       "table": "Ranged_Debuff_Dam"
     },
+    "durations": {
+      "damageDebuff": 40,
+      "regenDebuff": 40,
+      "recoveryDebuff": 40
+    },
     "regenDebuff": {
       "scale": 5,
       "table": "Ranged_Ones"
@@ -47,11 +52,6 @@ export const HeatExhaustion: Power = {
       "scale": 0.13,
       "table": "Ranged_EndDrain"
     },
-    "buffDuration": 40,
-    "durations": {
-      "damageDebuff": 40,
-      "recoveryDebuff": 40,
-      "regenDebuff": 40
-    }
+    "buffDuration": 40
   }
 };

@@ -37,6 +37,12 @@ export const CloakofDarkness: Power = {
       "scale": 0.6,
       "table": "Melee_Ones"
     },
+    "durations": {
+      "perceptionBuff": 0.75,
+      "defenseBuff": 0.75,
+      "immobilize": 0.75,
+      "stealth": 0.75
+    },
     "defenseBuff": {
       "ranged": {
         "scale": 0.5,
@@ -99,11 +105,6 @@ export const CloakofDarkness: Power = {
         "table": "Melee_Ones"
       }
     },
-    "durations": {
-      "defenseBuff": 0.75,
-      "immobilize": 0.75,
-      "perceptionBuff": 0.75,
-      "stealth": 0.75
-    }
+    "buffDuration": 0.75
   }
 };

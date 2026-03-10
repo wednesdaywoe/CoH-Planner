@@ -37,14 +37,14 @@ export const AblativeCarapace: Power = {
       "scale": 0.09,
       "table": "Melee_Ones"
     },
+    "durations": {
+      "absorb": 30,
+      "regenBuff": 30
+    },
     "regenBuff": {
       "scale": 0.3,
       "table": "Melee_Ones"
     },
-    "buffDuration": 30,
-    "durations": {
-      "absorb": 30,
-      "regenBuff": 30
-    }
+    "buffDuration": 30
   }
 };

@@ -37,18 +37,26 @@ export const TargetingDrone: Power = {
       "scale": 4.8,
       "table": "Melee_Buff_Dmg"
     },
+    "durations": {
+      "damageBuff": 0.75,
+      "tohitBuff": 0.75,
+      "debuffResistance": 0.75,
+      "perceptionBuff": 0.75
+    },
     "tohitBuff": {
-      "scale": 2,
-      "table": "Melee_Res_Boolean"
+      "scale": 1.85,
+      "table": "Melee_Buff_ToHit"
+    },
+    "debuffResistance": {
+      "tohit": {
+        "scale": 2,
+        "table": "Melee_Res_Boolean"
+      }
     },
     "perceptionBuff": {
       "scale": 0.6,
       "table": "Melee_Ones"
     },
-    "durations": {
-      "damageBuff": 0.75,
-      "perceptionBuff": 0.75,
-      "tohitBuff": 0.75
-    }
+    "buffDuration": 0.75
   }
 };

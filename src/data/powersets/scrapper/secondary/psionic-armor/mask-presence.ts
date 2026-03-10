@@ -37,6 +37,11 @@ export const MaskPresence: Power = {
       "scale": 4,
       "table": "Melee_Buff_Dmg"
     },
+    "durations": {
+      "damageBuff": 0.75,
+      "defenseBuff": 0.55,
+      "stealth": 0.75
+    },
     "defenseBuff": {
       "ranged": {
         "scale": 1,
@@ -97,10 +102,6 @@ export const MaskPresence: Power = {
         "table": "Melee_Ones"
       }
     },
-    "durations": {
-      "damageBuff": 0.75,
-      "defenseBuff": 0.55,
-      "stealth": 0.75
-    }
+    "buffDuration": 0.75
   }
 };

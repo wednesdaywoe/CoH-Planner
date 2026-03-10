@@ -39,6 +39,17 @@ export const Geode: Power = {
       "scale": 7.5,
       "table": "Melee_Ones"
     },
+    "durations": {
+      "regenBuff": 0.2,
+      "recoveryBuff": 0.2,
+      "protection": 0.2,
+      "knockup": 0.2,
+      "knockback": 0.2,
+      "slow": 0.2,
+      "untouchable": 0.2,
+      "damageDebuff": 0.2,
+      "taunt": 0.2
+    },
     "recoveryBuff": {
       "scale": 3,
       "table": "Melee_Ones"
@@ -81,16 +92,6 @@ export const Geode: Power = {
       "scale": 999,
       "table": "Melee_Ones"
     },
-    "durations": {
-      "damageDebuff": 0.2,
-      "knockback": 0.2,
-      "knockup": 0.2,
-      "protection": 0.2,
-      "recoveryBuff": 0.2,
-      "regenBuff": 0.2,
-      "slow": 0.2,
-      "taunt": 0.2,
-      "untouchable": 0.2
-    }
+    "buffDuration": 0.2
   }
 };

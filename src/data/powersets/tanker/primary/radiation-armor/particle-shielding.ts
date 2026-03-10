@@ -37,6 +37,11 @@ export const ParticleShielding: Power = {
       "scale": 3,
       "table": "Melee_HealSelf"
     },
+    "durations": {
+      "absorb": 60,
+      "regenBuff": 30,
+      "recoveryBuff": 60
+    },
     "regenBuff": {
       "scale": 1,
       "table": "Melee_Ones"
@@ -45,11 +50,6 @@ export const ParticleShielding: Power = {
       "scale": 0.5,
       "table": "Melee_Ones"
     },
-    "buffDuration": 60,
-    "durations": {
-      "absorb": 60,
-      "recoveryBuff": 60,
-      "regenBuff": 30
-    }
+    "buffDuration": 60
   }
 };

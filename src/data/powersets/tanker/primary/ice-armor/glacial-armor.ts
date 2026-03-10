@@ -43,6 +43,12 @@ export const GlacialArmor: Power = {
         "table": "Melee_Buff_Def"
       }
     },
+    "durations": {
+      "defenseBuff": 0.75,
+      "resistance": 0.75,
+      "perceptionBuff": 0.75,
+      "elusivity": 0.75
+    },
     "resistance": {
       "cold": {
         "scale": 3,
@@ -59,11 +65,6 @@ export const GlacialArmor: Power = {
         "table": "Melee_Res_Boolean"
       }
     },
-    "durations": {
-      "defenseBuff": 0.75,
-      "elusivity": 0.75,
-      "perceptionBuff": 0.75,
-      "resistance": 0.75
-    }
+    "buffDuration": 0.75
   }
 };

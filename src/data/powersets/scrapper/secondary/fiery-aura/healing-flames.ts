@@ -46,9 +46,9 @@ export const HealingFlames: Power = {
         "table": "Melee_Res_Dmg"
       }
     },
-    "buffDuration": 60,
     "durations": {
       "resistance": 60
-    }
+    },
+    "buffDuration": 60
   }
 };

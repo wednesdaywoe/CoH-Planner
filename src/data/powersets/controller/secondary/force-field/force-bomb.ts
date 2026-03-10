@@ -88,6 +88,9 @@ export const ForceBomb: Power = {
         "table": "Ranged_Debuff_Res_Dmg"
       }
     },
+    "durations": {
+      "resistanceDebuff": 30
+    },
     "knockback": {
       "scale": 9,
       "table": "Ranged_Ones"
@@ -97,9 +100,6 @@ export const ForceBomb: Power = {
       "scale": 8,
       "table": "Ranged_Stun"
     },
-    "buffDuration": 30,
-    "durations": {
-      "resistanceDebuff": 30
-    }
+    "buffDuration": 30
   }
 };

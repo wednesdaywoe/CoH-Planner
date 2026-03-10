@@ -49,6 +49,14 @@ export const Mutation: Power = {
       "scale": 2,
       "table": "Ranged_Ones"
     },
+    "durations": {
+      "recoveryBuff": 90,
+      "rechargeBuff": 90,
+      "damageBuff": 90,
+      "tohitBuff": 90,
+      "damageDebuff": 45,
+      "tohitDebuff": 45
+    },
     "rechargeBuff": {
       "scale": 1,
       "table": "Ranged_Ones"
@@ -69,14 +77,6 @@ export const Mutation: Power = {
       "scale": 3,
       "table": "Ranged_Debuff_ToHit"
     },
-    "buffDuration": 90,
-    "durations": {
-      "damageBuff": 90,
-      "damageDebuff": 45,
-      "rechargeBuff": 90,
-      "recoveryBuff": 90,
-      "tohitBuff": 90,
-      "tohitDebuff": 45
-    }
+    "buffDuration": 90
   }
 };

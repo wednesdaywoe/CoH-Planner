@@ -34,6 +34,10 @@ export const TrueGrit: Power = {
       "scale": 1,
       "table": "Melee_HealSelf"
     },
+    "durations": {
+      "maxHPBuff": 10.25,
+      "resistance": 10.25
+    },
     "resistance": {
       "fire": {
         "scale": 1.5,
@@ -56,9 +60,6 @@ export const TrueGrit: Power = {
         "table": "Melee_Res_Dmg"
       }
     },
-    "durations": {
-      "maxHPBuff": 10.25,
-      "resistance": 10.25
-    }
+    "buffDuration": 10.25
   }
 };

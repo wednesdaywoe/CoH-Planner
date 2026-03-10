@@ -49,6 +49,7 @@ export const BrimstoneArmor: Power = {
     },
     "durations": {
       "resistance": 0.75
-    }
+    },
+    "buffDuration": 0.75
   }
 };

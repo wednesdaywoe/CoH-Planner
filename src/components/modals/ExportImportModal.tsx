@@ -8,6 +8,8 @@ import { Button } from '../ui/Button';
 import { useBuildStore } from '@/stores/buildStore';
 import { importMidsBuild } from '@/utils/mids-import';
 import type { MidsImportResult } from '@/utils/mids-import';
+import { importGameExport } from '@/utils/game-import';
+import type { GameImportResult } from '@/utils/game-import';
 import { shareBuild } from '@/services/sharedBuilds';
 import type { BuildExport } from '@/types/build';
 import { generatePopmenu } from '@/utils/export-popmenu';
@@ -17,7 +19,7 @@ interface ExportImportModalProps {
   onClose: () => void;
 }
 
-type TabType = 'export' | 'import' | 'mids' | 'share' | 'popmenu';
+type TabType = 'export' | 'import' | 'mids' | 'game' | 'share' | 'popmenu';
 
 export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
   const [activeTab, setActiveTab] = useState<TabType>('export');
@@ -33,6 +35,12 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
   const [midsError, setMidsError] = useState<string | null>(null);
   const [showWarnings, setShowWarnings] = useState(false);
   const midsFileInputRef = useRef<HTMLInputElement>(null);
+
+  // Game import state
+  const [gameText, setGameText] = useState('');
+  const [gameResult, setGameResult] = useState<GameImportResult | null>(null);
+  const [gameError, setGameError] = useState<string | null>(null);
+  const [showGameWarnings, setShowGameWarnings] = useState(false);
 
   // Share state
   const [shareDescription, setShareDescription] = useState('');
@@ -199,6 +207,41 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
     handleClose();
   };
 
+  // ============================================
+  // GAME IMPORT HANDLERS
+  // ============================================
+
+  const handleGameParse = () => {
+    setGameError(null);
+    setGameResult(null);
+    setShowGameWarnings(false);
+
+    if (!gameText.trim()) {
+      setGameError('No data to import');
+      return;
+    }
+
+    try {
+      const result = importGameExport(gameText);
+      if (result.success) {
+        setGameResult(result);
+      } else {
+        const msg = result.warnings.length > 0
+          ? result.warnings[0].message
+          : 'Failed to parse game export';
+        setGameError(msg);
+      }
+    } catch (e) {
+      setGameError('Failed to parse game export. Make sure it is a valid Homecoming build export.');
+    }
+  };
+
+  const handleGameApply = () => {
+    if (!gameResult?.build) return;
+    applyMidsBuild(gameResult.build);
+    handleClose();
+  };
+
   const handleShare = async () => {
     setShareError(null);
     setShareLoading(true);
@@ -290,6 +333,10 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
     setMidsResult(null);
     setMidsError(null);
     setShowWarnings(false);
+    setGameText('');
+    setGameResult(null);
+    setGameError(null);
+    setShowGameWarnings(false);
     setShareDescription('');
     setShareAuthor('');
     setShareServer('');
@@ -339,6 +386,16 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
             onClick={() => setActiveTab('mids')}
           >
             Mids Import
+          </button>
+          <button
+            className={`px-4 py-2 font-semibold transition-colors ${
+              activeTab === 'game'
+                ? 'text-cyan-400 border-b-2 border-cyan-400'
+                : 'text-gray-400 hover:text-gray-300'
+            }`}
+            onClick={() => setActiveTab('game')}
+          >
+            Game Import
           </button>
           <button
             className={`px-4 py-2 font-semibold transition-colors ${
@@ -600,6 +657,115 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
               </div>
             )}
           </div>
+        ) : activeTab === 'game' ? (
+          /* Game Import Tab */
+          <div className="space-y-4">
+            <div className="bg-cyan-900/20 border border-cyan-700/50 rounded p-3 text-sm text-cyan-300">
+              <p>Import a build from the <span className="font-semibold">Homecoming</span> in-game build export. Use the <span className="text-sk-magenta font-semibold">/buildsave</span> command in-game, then paste the text file contents below.</p>
+            </div>
+
+            {/* Paste area */}
+            <div>
+              <label className="block text-sm font-medium text-gray-300 mb-2">
+                Paste Build Export
+              </label>
+              <textarea
+                value={gameText}
+                onChange={(e) => { setGameText(e.target.value); setGameResult(null); setGameError(null); }}
+                placeholder={"CharName: Level 50 Science Class_Tanker\n\nCharacter Profile:\n------------------\nLevel 1: Tanker_Defense Radiation_Armor Alpha_Barrier\n\tAttuned_Unbreakable_Guard_A (1)\n..."}
+                className="w-full h-48 bg-gray-800 border border-gray-600 rounded px-3 py-2 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 font-mono text-sm"
+              />
+            </div>
+
+            {/* Error */}
+            {gameError && (
+              <div className="bg-red-900/20 border border-red-700/50 rounded p-3 text-sm text-red-300">
+                {gameError}
+              </div>
+            )}
+
+            {/* Results */}
+            {gameResult && gameResult.success && (
+              <div className="space-y-3">
+                <div className="bg-green-900/20 border border-green-700/50 rounded p-3 text-sm text-green-300">
+                  <p className="font-semibold mb-2">Parse Successful</p>
+                  <div className="grid grid-cols-2 gap-x-4 gap-y-1 text-xs">
+                    <span>Character:</span>
+                    <span className="text-white">{gameResult.build?.name}</span>
+                    <span>Archetype:</span>
+                    <span className="text-white">{gameResult.build?.archetype.name}</span>
+                    <span>Primary:</span>
+                    <span className="text-white">{gameResult.build?.primary.name || 'None'}</span>
+                    <span>Secondary:</span>
+                    <span className="text-white">{gameResult.build?.secondary.name || 'None'}</span>
+                    <span>Level:</span>
+                    <span className="text-white">{gameResult.build?.level}</span>
+                    <span>Powers:</span>
+                    <span className="text-white">
+                      {gameResult.summary.powersImported} imported
+                      {gameResult.summary.powersFailed > 0 && (
+                        <span className="text-red-400"> / {gameResult.summary.powersFailed} failed</span>
+                      )}
+                    </span>
+                    <span>Enhancements:</span>
+                    <span className="text-white">
+                      {gameResult.summary.enhancementsImported} imported
+                      {gameResult.summary.enhancementsFailed > 0 && (
+                        <span className="text-red-400"> / {gameResult.summary.enhancementsFailed} failed</span>
+                      )}
+                    </span>
+                    <span>Pools:</span>
+                    <span className="text-white">
+                      {gameResult.build?.pools.map((p) => p.name).join(', ') || 'None'}
+                    </span>
+                    {gameResult.build?.epicPool && (
+                      <>
+                        <span>Epic/Patron:</span>
+                        <span className="text-white">{gameResult.build.epicPool.name}</span>
+                      </>
+                    )}
+                  </div>
+                </div>
+
+                {/* Warnings */}
+                {gameResult.warnings.length > 0 && (
+                  <div className="bg-yellow-900/20 border border-yellow-700/50 rounded p-3 text-sm">
+                    <button
+                      type="button"
+                      onClick={() => setShowGameWarnings(!showGameWarnings)}
+                      className="flex items-center gap-1 text-yellow-300 hover:text-yellow-200 font-medium text-sm w-full"
+                    >
+                      <svg
+                        className={`w-4 h-4 transition-transform ${showGameWarnings ? 'rotate-90' : ''}`}
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                      {gameResult.warnings.length} warning{gameResult.warnings.length !== 1 ? 's' : ''}
+                    </button>
+                    {showGameWarnings && (
+                      <ul className="mt-2 space-y-1 text-xs text-yellow-200 max-h-40 overflow-y-auto">
+                        {gameResult.warnings.map((w, i) => (
+                          <li key={i} className="flex gap-2">
+                            <span className="text-yellow-500 shrink-0">[{w.type}]</span>
+                            <span>{w.message}{w.name ? `: ${w.name}` : ''}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                )}
+
+                {/* Warning about replacing build */}
+                <div className="bg-yellow-900/20 border border-yellow-700/50 rounded p-3 text-sm text-yellow-300">
+                  <p className="font-semibold mb-1">Warning:</p>
+                  <p>Applying this import will replace your current build.</p>
+                </div>
+              </div>
+            )}
+          </div>
         ) : activeTab === 'popmenu' ? (
           /* Popmenu Tab */
           <div className="space-y-4">
@@ -794,6 +960,21 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
                 disabled={shareLoading || !build.archetype.id}
               >
                 Share Build
+              </Button>
+            )
+          ) : activeTab === 'game' ? (
+            /* Game import tab buttons */
+            gameResult?.success ? (
+              <Button variant="primary" onClick={handleGameApply}>
+                Apply Build
+              </Button>
+            ) : (
+              <Button
+                variant="primary"
+                onClick={handleGameParse}
+                disabled={!gameText.trim()}
+              >
+                Parse Export
               </Button>
             )
           ) : (

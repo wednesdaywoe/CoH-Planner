@@ -53,6 +53,12 @@ export const SiphonSpeed: Power = {
         "table": "Melee_Slow"
       }
     },
+    "durations": {
+      "movement": 60,
+      "rechargeDebuff": 60,
+      "rechargeBuff": 60,
+      "slow": 60
+    },
     "rechargeDebuff": {
       "scale": 0.2,
       "table": "Melee_Ones"
@@ -67,12 +73,6 @@ export const SiphonSpeed: Power = {
         "table": "Melee_SpeedRunning"
       }
     },
-    "buffDuration": 60,
-    "durations": {
-      "movement": 60,
-      "rechargeBuff": 60,
-      "rechargeDebuff": 60,
-      "slow": 60
-    }
+    "buffDuration": 60
   }
 };

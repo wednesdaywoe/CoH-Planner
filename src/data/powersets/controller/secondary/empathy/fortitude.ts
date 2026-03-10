@@ -41,6 +41,11 @@ export const Fortitude: Power = {
       "scale": 1.5,
       "table": "Ranged_Buff_ToHit"
     },
+    "durations": {
+      "tohitBuff": 120,
+      "damageBuff": 120,
+      "defenseBuff": 120
+    },
     "damageBuff": {
       "scale": 2.5,
       "table": "Ranged_Buff_Dmg"
@@ -91,11 +96,6 @@ export const Fortitude: Power = {
         "table": "Ranged_Buff_Def"
       }
     },
-    "buffDuration": 120,
-    "durations": {
-      "damageBuff": 120,
-      "defenseBuff": 120,
-      "tohitBuff": 120
-    }
+    "buffDuration": 120
   }
 };

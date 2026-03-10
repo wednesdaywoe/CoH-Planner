@@ -32,18 +32,18 @@ export const TimeLord: Power = {
       "scale": 0.1,
       "table": "Melee_Ones"
     },
-    "debuffResistance": {
-      "recharge": {
-        "scale": 0.3,
-        "table": "Melee_Ones"
-      }
+    "durations": {
+      "rechargeBuff": 0.5,
+      "debuffResistance": 0.5,
+      "resistance": 0.5,
+      "stun": 0.5
     },
-    "movement": {
-      "runSpeed": {
+    "debuffResistance": {
+      "movement": {
         "scale": 0.3,
         "table": "Melee_Ones"
       },
-      "flySpeed": {
+      "recharge": {
         "scale": 0.3,
         "table": "Melee_Ones"
       }
@@ -60,12 +60,6 @@ export const TimeLord: Power = {
       "table": "Melee_Res_Boolean"
     },
     "effectDuration": 0.5,
-    "durations": {
-      "debuffResistance": 0.5,
-      "movement": 0.5,
-      "rechargeBuff": 0.5,
-      "resistance": 0.5,
-      "stun": 0.5
-    }
+    "buffDuration": 0.5
   }
 };

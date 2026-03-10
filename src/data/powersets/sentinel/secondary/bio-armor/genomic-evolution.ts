@@ -62,6 +62,11 @@ export const GenomicEvolution: Power = {
         "table": "Melee_Res_Dmg"
       }
     },
+    "durations": {
+      "resistance": 5.25,
+      "rangeBuff": 5.25,
+      "maxEndBuff": 5.25
+    },
     "rangeBuff": {
       "scale": 0.15,
       "table": "Melee_Ones"
@@ -70,10 +75,6 @@ export const GenomicEvolution: Power = {
       "scale": 5,
       "table": "Melee_Ones"
     },
-    "durations": {
-      "maxEndBuff": 5.25,
-      "rangeBuff": 5.25,
-      "resistance": 5.25
-    }
+    "buffDuration": 5.25
   }
 };

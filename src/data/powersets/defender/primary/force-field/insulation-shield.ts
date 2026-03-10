@@ -63,19 +63,20 @@ export const InsulationShield: Power = {
         "table": "Ranged_Buff_Def"
       }
     },
-    "enduranceGain": {
-      "scale": 2,
-      "table": "Ranged_Res_Boolean"
-    },
-    "recoveryBuff": {
-      "scale": 2,
-      "table": "Ranged_Res_Boolean"
-    },
-    "buffDuration": 240,
     "durations": {
       "defenseBuff": 240,
-      "enduranceGain": 240,
-      "recoveryBuff": 240
-    }
+      "debuffResistance": 240
+    },
+    "debuffResistance": {
+      "endurance": {
+        "scale": 2,
+        "table": "Ranged_Res_Boolean"
+      },
+      "recovery": {
+        "scale": 2,
+        "table": "Ranged_Res_Boolean"
+      }
+    },
+    "buffDuration": 240
   }
 };

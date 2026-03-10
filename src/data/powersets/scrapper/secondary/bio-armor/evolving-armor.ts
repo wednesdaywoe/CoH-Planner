@@ -71,6 +71,13 @@ export const EvolvingArmor: Power = {
         "table": "Melee_Debuff_Res_Dmg"
       }
     },
+    "durations": {
+      "resistanceDebuff": 1.125,
+      "regenBuff": 1,
+      "recoveryBuff": 1,
+      "resistance": 1,
+      "defenseBuff": 1
+    },
     "regenBuff": {
       "scale": 0.06,
       "table": "Melee_Ones"
@@ -147,12 +154,6 @@ export const EvolvingArmor: Power = {
       "scale": 1,
       "table": "Melee_InherentTaunt"
     },
-    "durations": {
-      "defenseBuff": 1,
-      "recoveryBuff": 1,
-      "regenBuff": 1,
-      "resistance": 1,
-      "resistanceDebuff": 1.125
-    }
+    "buffDuration": 1
   }
 };

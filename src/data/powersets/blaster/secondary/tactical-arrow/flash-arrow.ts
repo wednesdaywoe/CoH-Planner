@@ -42,6 +42,10 @@ export const FlashArrow: Power = {
       "scale": 0.9,
       "table": "Ranged_Ones"
     },
+    "durations": {
+      "perceptionDebuff": 60,
+      "tohitDebuff": 60
+    },
     "tohitDebuff": {
       "scale": 0.7,
       "table": "Ranged_Debuff_ToHit"
@@ -50,10 +54,6 @@ export const FlashArrow: Power = {
       "scale": 0,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 60,
-    "durations": {
-      "perceptionDebuff": 60,
-      "tohitDebuff": 60
-    }
+    "buffDuration": 60
   }
 };

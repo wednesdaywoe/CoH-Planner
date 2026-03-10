@@ -37,36 +37,38 @@ export const PsychokineticBarrier: Power = {
       "scale": 3,
       "table": "Melee_HealSelf"
     },
+    "durations": {
+      "absorb": 30,
+      "maxHPBuff": 45,
+      "regenBuff": 45,
+      "debuffResistance": 45
+    },
     "maxHPBuff": {
       "scale": 1,
       "table": "Melee_HealSelf"
     },
     "regenBuff": {
-      "scale": 0.2,
-      "table": "Melee_Ones"
-    },
-    "enduranceGain": {
-      "scale": 0.2,
-      "table": "Melee_Ones"
-    },
-    "recoveryBuff": {
-      "scale": 0.2,
+      "scale": 0.5,
       "table": "Melee_Ones"
     },
     "debuffResistance": {
+      "endurance": {
+        "scale": 0.2,
+        "table": "Melee_Ones"
+      },
+      "regeneration": {
+        "scale": 0.2,
+        "table": "Melee_Ones"
+      },
+      "recovery": {
+        "scale": 0.2,
+        "table": "Melee_Ones"
+      },
       "recharge": {
         "scale": 0.2,
         "table": "Melee_Ones"
       }
     },
-    "buffDuration": 45,
-    "durations": {
-      "absorb": 30,
-      "debuffResistance": 45,
-      "enduranceGain": 45,
-      "maxHPBuff": 45,
-      "recoveryBuff": 45,
-      "regenBuff": 45
-    }
+    "buffDuration": 45
   }
 };

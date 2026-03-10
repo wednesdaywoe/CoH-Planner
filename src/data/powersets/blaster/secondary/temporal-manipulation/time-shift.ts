@@ -51,6 +51,12 @@ export const TimeShift: Power = {
       "scale": 0.5,
       "table": "Ranged_Debuff_ToHit"
     },
+    "durations": {
+      "tohitDebuff": 20,
+      "movement": 20,
+      "slow": 20,
+      "damageBuff": 9.53
+    },
     "movement": {
       "runSpeed": {
         "scale": 0.4,
@@ -79,12 +85,6 @@ export const TimeShift: Power = {
       "scale": 0.033,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 20,
-    "durations": {
-      "damageBuff": 9.53,
-      "movement": 20,
-      "slow": 20,
-      "tohitDebuff": 20
-    }
+    "buffDuration": 20
   }
 };

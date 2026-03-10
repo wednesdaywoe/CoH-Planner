@@ -51,15 +51,16 @@ export const MudBath: Power = {
         "table": "Melee_Slow"
       }
     },
+    "durations": {
+      "movement": 5,
+      "slow": 5
+    },
     "slow": {
       "runSpeed": {
         "scale": 1,
         "table": "Melee_SpeedRunning"
       }
     },
-    "durations": {
-      "movement": 5,
-      "slow": 5
-    }
+    "buffDuration": 5
   }
 };

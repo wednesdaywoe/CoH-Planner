@@ -49,6 +49,7 @@ export const MindOverBody: Power = {
     },
     "durations": {
       "resistance": 0.75
-    }
+    },
+    "buffDuration": 0.75
   }
 };

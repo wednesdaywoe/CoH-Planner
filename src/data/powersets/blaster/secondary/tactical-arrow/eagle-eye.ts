@@ -33,9 +33,17 @@ export const EagleEye: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "tohitBuff": {
-      "scale": 2,
-      "table": "Melee_Res_Boolean"
+    "debuffResistance": {
+      "tohit": {
+        "scale": 2,
+        "table": "Melee_Res_Boolean"
+      }
+    },
+    "durations": {
+      "debuffResistance": 0.75,
+      "perceptionBuff": 0.75,
+      "regenBuff": 0.75,
+      "recoveryBuff": 0.75
     },
     "perceptionBuff": {
       "scale": 0.6,
@@ -49,11 +57,6 @@ export const EagleEye: Power = {
       "scale": 0.5,
       "table": "Melee_Ones"
     },
-    "durations": {
-      "perceptionBuff": 0.75,
-      "recoveryBuff": 0.75,
-      "regenBuff": 0.75,
-      "tohitBuff": 0.75
-    }
+    "buffDuration": 0.75
   }
 };

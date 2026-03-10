@@ -55,9 +55,9 @@ export const Consume: Power = {
       "scale": 0.05,
       "table": "Melee_Ones"
     },
-    "buffDuration": 15,
     "durations": {
       "recoveryBuff": 15
-    }
+    },
+    "buffDuration": 15
   }
 };

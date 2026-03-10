@@ -37,44 +37,29 @@ export const TemporalHealing: Power = {
       "scale": 0.5,
       "table": "Melee_Ones"
     },
-    "movement": {
-      "runSpeed": {
-        "scale": 0.2,
-        "table": "Melee_Ones"
-      },
-      "flySpeed": {
-        "scale": 0.2,
-        "table": "Melee_Ones"
-      },
-      "jumpSpeed": {
-        "scale": 0.2,
-        "table": "Melee_Ones"
-      },
-      "jumpHeight": {
-        "scale": 0.2,
-        "table": "Melee_Ones"
-      }
+    "durations": {
+      "recoveryBuff": 2.25,
+      "debuffResistance": 2.25,
+      "absorb": 12
     },
     "debuffResistance": {
+      "movement": {
+        "scale": 0.2,
+        "table": "Melee_Ones"
+      },
       "recharge": {
         "scale": 0.2,
         "table": "Melee_Ones"
+      },
+      "regeneration": {
+        "scale": 0.5,
+        "table": "Melee_Res_Boolean"
       }
-    },
-    "regenBuff": {
-      "scale": 0.5,
-      "table": "Melee_Res_Boolean"
     },
     "absorb": {
       "scale": 0.045,
       "table": "Melee_HealSelf"
     },
-    "durations": {
-      "absorb": 12,
-      "debuffResistance": 2.25,
-      "movement": 2.25,
-      "recoveryBuff": 2.25,
-      "regenBuff": 2.25
-    }
+    "buffDuration": 2.25
   }
 };

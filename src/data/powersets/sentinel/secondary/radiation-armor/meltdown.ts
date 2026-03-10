@@ -69,8 +69,15 @@ export const Meltdown: Power = {
         "table": "Melee_Res_Dmg"
       }
     },
+    "durations": {
+      "resistance": 60,
+      "recoveryBuff": 60,
+      "damageBuff": 60,
+      "recoveryDebuff": 10,
+      "debuffResistance": 10
+    },
     "recoveryBuff": {
-      "scale": 1,
+      "scale": 0.3,
       "table": "Melee_Ones"
     },
     "damageBuff": {
@@ -85,12 +92,12 @@ export const Meltdown: Power = {
       "scale": 100,
       "table": "Melee_Ones"
     },
-    "buffDuration": 60,
-    "durations": {
-      "damageBuff": 60,
-      "recoveryBuff": 10,
-      "recoveryDebuff": 10,
-      "resistance": 60
-    }
+    "debuffResistance": {
+      "recovery": {
+        "scale": 1,
+        "table": "Melee_Ones"
+      }
+    },
+    "buffDuration": 60
   }
 };

@@ -243,6 +243,7 @@ export interface DebuffResistance {
   regeneration?: NumberOrScaled; // Regeneration debuff resistance
   recovery?: NumberOrScaled; // Recovery debuff resistance
   perception?: NumberOrScaled; // Perception debuff resistance
+  range?: NumberOrScaled; // Range debuff resistance
 }
 
 // ============================================

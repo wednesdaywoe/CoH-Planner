@@ -58,6 +58,10 @@ export const ElectronShackles: Power = {
       "knockup": 1,
       "knockback": 1
     },
+    "durations": {
+      "protection": 15,
+      "defenseDebuff": 10
+    },
     "defenseDebuff": {
       "scale": 1.5,
       "table": "Ranged_Debuff_Def"
@@ -66,10 +70,6 @@ export const ElectronShackles: Power = {
       "scale": 0,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 15,
-    "durations": {
-      "defenseDebuff": 10,
-      "protection": 15
-    }
+    "buffDuration": 15
   }
 };

@@ -41,6 +41,20 @@ export const MomentofGlory: Power = {
       "scale": 1,
       "table": "Melee_Ones"
     },
+    "durations": {
+      "recoveryBuff": 15,
+      "defenseBuff": 15,
+      "resistance": 15,
+      "hold": 15,
+      "immobilize": 15,
+      "stun": 15,
+      "sleep": 15,
+      "knockup": 15,
+      "knockback": 15,
+      "repel": 15,
+      "protection": 15,
+      "damageBuff": 15
+    },
     "defenseBuff": {
       "smashing": {
         "scale": 9.5,
@@ -151,20 +165,6 @@ export const MomentofGlory: Power = {
       "scale": 0.5,
       "table": "Melee_Buff_Dmg"
     },
-    "buffDuration": 15,
-    "durations": {
-      "damageBuff": 15,
-      "defenseBuff": 15,
-      "hold": 15,
-      "immobilize": 15,
-      "knockback": 15,
-      "knockup": 15,
-      "protection": 15,
-      "recoveryBuff": 15,
-      "repel": 15,
-      "resistance": 15,
-      "sleep": 15,
-      "stun": 15
-    }
+    "buffDuration": 15
   }
 };

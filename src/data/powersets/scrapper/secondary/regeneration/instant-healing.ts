@@ -36,7 +36,11 @@ export const InstantHealing: Power = {
     "regenBuff": {
       "scale": 2,
       "table": "Melee_Ones"
-    }
+    },
+    "durations": {
+      "regenBuff": 90
+    },
+    "buffDuration": 90
   },
   "requires": "!Scrapper_Defense.Regeneration.Instant_Regeneration"
 };

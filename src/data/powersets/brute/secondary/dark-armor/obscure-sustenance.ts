@@ -39,17 +39,29 @@ export const ObscureSustenance: Power = {
   },
   "effects": {
     "regenBuff": {
-      "scale": 0.75,
-      "table": "Melee_Res_Boolean"
+      "scale": 1,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "regenBuff": 60,
+      "recoveryBuff": 30,
+      "debuffResistance": 60
     },
     "recoveryBuff": {
       "scale": 0.1,
       "table": "Melee_Ones"
     },
-    "tohitBuff": {
-      "scale": 0.75,
-      "table": "Melee_Res_Boolean"
-    }
+    "debuffResistance": {
+      "tohit": {
+        "scale": 0.75,
+        "table": "Melee_Res_Boolean"
+      },
+      "regeneration": {
+        "scale": 0.75,
+        "table": "Melee_Res_Boolean"
+      }
+    },
+    "buffDuration": 60
   },
   "requires": "!Brute_Defense.Dark_Armor.Dark_Regeneration"
 };

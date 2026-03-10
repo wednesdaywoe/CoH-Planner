@@ -39,6 +39,10 @@ export const EntropicAura: Power = {
       "scale": 0.05,
       "table": "Melee_Ones"
     },
+    "durations": {
+      "rechargeBuff": 2.25,
+      "rechargeDebuff": 2.25
+    },
     "rechargeDebuff": {
       "scale": 0.2,
       "table": "Melee_Slow"
@@ -47,8 +51,6 @@ export const EntropicAura: Power = {
       "scale": 2.25,
       "table": "Melee_Ones"
     },
-    "durations": {
-      "rechargeBuff": 2.25
-    }
+    "buffDuration": 2.25
   }
 };

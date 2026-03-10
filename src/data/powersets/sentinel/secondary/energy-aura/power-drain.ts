@@ -43,13 +43,13 @@ export const PowerDrain: Power = {
       "scale": 1,
       "table": "Melee_Ones"
     },
+    "durations": {
+      "recoveryDebuff": 4
+    },
     "enduranceGain": {
       "scale": 25,
       "table": "Melee_Ones"
     },
-    "buffDuration": 4,
-    "durations": {
-      "recoveryDebuff": 4
-    }
+    "buffDuration": 4
   }
 };

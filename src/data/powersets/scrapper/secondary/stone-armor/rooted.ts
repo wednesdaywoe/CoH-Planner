@@ -33,13 +33,28 @@ export const Rooted: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "enduranceGain": {
-      "scale": 2,
-      "table": "Melee_Res_Boolean"
+    "debuffResistance": {
+      "endurance": {
+        "scale": 2,
+        "table": "Melee_Res_Boolean"
+      },
+      "recovery": {
+        "scale": 2,
+        "table": "Melee_Res_Boolean"
+      }
     },
-    "recoveryBuff": {
-      "scale": 2,
-      "table": "Melee_Res_Boolean"
+    "durations": {
+      "debuffResistance": 0.75,
+      "elusivity": 0.75,
+      "protection": 0.75,
+      "knockup": 0.75,
+      "knockback": 0.75,
+      "repel": 0.75,
+      "hold": 0.75,
+      "immobilize": 0.75,
+      "stun": 0.75,
+      "sleep": 0.75,
+      "regenBuff": 0.75
     },
     "elusivity": {
       "all": {
@@ -89,19 +104,6 @@ export const Rooted: Power = {
       "scale": 1,
       "table": "Melee_Ones"
     },
-    "durations": {
-      "elusivity": 0.75,
-      "enduranceGain": 0.75,
-      "hold": 0.75,
-      "immobilize": 0.75,
-      "knockback": 0.75,
-      "knockup": 0.75,
-      "protection": 0.75,
-      "recoveryBuff": 0.75,
-      "regenBuff": 0.75,
-      "repel": 0.75,
-      "sleep": 0.75,
-      "stun": 0.75
-    }
+    "buffDuration": 0.75
   }
 };

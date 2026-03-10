@@ -42,6 +42,12 @@ export const Envenom: Power = {
       "scale": 1.5,
       "table": "Ranged_Debuff_Def"
     },
+    "durations": {
+      "defenseDebuff": 30,
+      "resistance": 30,
+      "regenDebuff": 30,
+      "resistanceDebuff": 30
+    },
     "resistance": {
       "heal": {
         "scale": 1,
@@ -86,12 +92,6 @@ export const Envenom: Power = {
         "table": "Ranged_Res_Dmg"
       }
     },
-    "buffDuration": 30,
-    "durations": {
-      "defenseDebuff": 30,
-      "regenDebuff": 30,
-      "resistance": 30,
-      "resistanceDebuff": 30
-    }
+    "buffDuration": 30
   }
 };

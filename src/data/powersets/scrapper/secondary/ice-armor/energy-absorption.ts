@@ -37,29 +37,19 @@ export const EnergyAbsorption: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "movement": {
-      "runSpeed": {
-        "scale": 0.2,
-        "table": "Melee_Ones"
-      },
-      "flySpeed": {
-        "scale": 0.2,
-        "table": "Melee_Ones"
-      },
-      "jumpSpeed": {
-        "scale": 0.2,
-        "table": "Melee_Ones"
-      },
-      "jumpHeight": {
-        "scale": 0.2,
-        "table": "Melee_Ones"
-      }
-    },
     "debuffResistance": {
+      "movement": {
+        "scale": 0.2,
+        "table": "Melee_Ones"
+      },
       "recharge": {
         "scale": 0.2,
         "table": "Melee_Ones"
       }
+    },
+    "durations": {
+      "debuffResistance": 45,
+      "defenseBuff": 45
     },
     "defenseBuff": {
       "smashing": {
@@ -103,11 +93,6 @@ export const EnergyAbsorption: Power = {
       "scale": 0.35,
       "table": "Melee_Ones"
     },
-    "buffDuration": 45,
-    "durations": {
-      "debuffResistance": 45,
-      "defenseBuff": 45,
-      "movement": 45
-    }
+    "buffDuration": 45
   }
 };

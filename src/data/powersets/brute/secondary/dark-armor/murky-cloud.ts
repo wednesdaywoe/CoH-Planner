@@ -51,18 +51,20 @@ export const MurkyCloud: Power = {
         "table": "Melee_Res_Dmg"
       }
     },
-    "enduranceGain": {
-      "scale": 2,
-      "table": "Melee_Res_Boolean"
-    },
-    "recoveryBuff": {
-      "scale": 2,
-      "table": "Melee_Res_Boolean"
-    },
     "durations": {
-      "enduranceGain": 0.75,
-      "recoveryBuff": 0.75,
-      "resistance": 0.75
-    }
+      "resistance": 0.75,
+      "debuffResistance": 0.75
+    },
+    "debuffResistance": {
+      "endurance": {
+        "scale": 2,
+        "table": "Melee_Res_Boolean"
+      },
+      "recovery": {
+        "scale": 2,
+        "table": "Melee_Res_Boolean"
+      }
+    },
+    "buffDuration": 0.75
   }
 };

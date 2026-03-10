@@ -60,14 +60,14 @@ export const EndofTime: Power = {
       "scale": 0.5,
       "table": "Melee_Ones"
     },
+    "durations": {
+      "regenDebuff": 20,
+      "damageBuff": 10
+    },
     "damageBuff": {
       "scale": 0.054,
       "table": "Melee_Ones"
     },
-    "buffDuration": 20,
-    "durations": {
-      "damageBuff": 10,
-      "regenDebuff": 20
-    }
+    "buffDuration": 20
   }
 };

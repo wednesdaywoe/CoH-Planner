@@ -45,6 +45,10 @@ export const Hide: Power = {
         "table": "Melee_Ones"
       }
     },
+    "durations": {
+      "stealth": 0.75,
+      "defenseBuff": 0.75
+    },
     "defenseBuff": {
       "ranged": {
         "scale": 0.5,
@@ -91,9 +95,6 @@ export const Hide: Power = {
         "table": "Melee_Buff_Def"
       }
     },
-    "durations": {
-      "defenseBuff": 0.75,
-      "stealth": 0.75
-    }
+    "buffDuration": 0.75
   }
 };

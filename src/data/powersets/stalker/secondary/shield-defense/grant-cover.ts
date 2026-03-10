@@ -73,6 +73,12 @@ export const GrantCover: Power = {
         "table": "Melee_Buff_Def"
       }
     },
+    "durations": {
+      "defenseBuff": 2.25,
+      "stealth": 0.75,
+      "elusivity": 2.25,
+      "debuffResistance": 2.25
+    },
     "stealth": {
       "stealthPvE": {
         "scale": 150,
@@ -99,11 +105,6 @@ export const GrantCover: Power = {
         "table": "Melee_Ones"
       }
     },
-    "durations": {
-      "debuffResistance": 2.25,
-      "defenseBuff": 2.25,
-      "elusivity": 2.25,
-      "stealth": 0.75
-    }
+    "buffDuration": 2.25
   }
 };

@@ -43,6 +43,11 @@ export const ImposePresence: Power = {
       "scale": 0.2,
       "table": "Melee_Buff_ToHit"
     },
+    "durations": {
+      "tohitBuff": 1,
+      "rechargeDebuff": 1.25,
+      "defenseBuff": 1
+    },
     "rechargeDebuff": {
       "scale": 0.3,
       "table": "Melee_Slow"
@@ -61,10 +66,6 @@ export const ImposePresence: Power = {
       "scale": 1,
       "table": "Melee_InherentTaunt"
     },
-    "durations": {
-      "defenseBuff": 1,
-      "rechargeBuff": 1.25,
-      "tohitBuff": 1
-    }
+    "buffDuration": 1
   }
 };

@@ -37,6 +37,11 @@ export const Chronos: Power = {
       "scale": 0.3,
       "table": "Melee_Ones"
     },
+    "durations": {
+      "rechargeBuff": 10,
+      "tohitBuff": 10,
+      "damageBuff": 10
+    },
     "tohitBuff": {
       "scale": 2,
       "table": "Melee_Buff_ToHit"
@@ -45,11 +50,6 @@ export const Chronos: Power = {
       "scale": 5,
       "table": "Melee_Buff_Dmg"
     },
-    "buffDuration": 10,
-    "durations": {
-      "damageBuff": 10,
-      "rechargeBuff": 10,
-      "tohitBuff": 10
-    }
+    "buffDuration": 10
   }
 };

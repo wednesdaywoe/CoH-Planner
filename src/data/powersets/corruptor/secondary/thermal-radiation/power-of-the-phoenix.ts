@@ -58,13 +58,13 @@ export const PowerofthePhoenix: Power = {
       "scale": 10,
       "table": "Ranged_Ones"
     },
+    "durations": {
+      "untouchable": 15
+    },
     "enduranceGain": {
       "scale": 70,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 15,
-    "durations": {
-      "untouchable": 15
-    }
+    "buffDuration": 15
   }
 };

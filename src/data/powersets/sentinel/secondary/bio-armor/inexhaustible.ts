@@ -34,6 +34,12 @@ export const Inexhaustible: Power = {
       "scale": 0.45,
       "table": "Melee_HealSelf"
     },
+    "durations": {
+      "maxHPBuff": 5.25,
+      "regenBuff": 5.25,
+      "recoveryBuff": 5.25,
+      "debuffResistance": 5.25
+    },
     "regenBuff": {
       "scale": 0.15,
       "table": "Melee_Ones"
@@ -42,41 +48,20 @@ export const Inexhaustible: Power = {
       "scale": 0.1,
       "table": "Melee_Ones"
     },
-    "enduranceGain": {
-      "scale": 2,
-      "table": "Melee_Res_Boolean"
-    },
-    "movement": {
-      "runSpeed": {
-        "scale": 0.3,
-        "table": "Melee_Ones"
-      },
-      "flySpeed": {
-        "scale": 0.3,
-        "table": "Melee_Ones"
-      },
-      "jumpSpeed": {
-        "scale": 0.3,
-        "table": "Melee_Ones"
-      },
-      "jumpHeight": {
-        "scale": 0.3,
-        "table": "Melee_Ones"
-      }
-    },
     "debuffResistance": {
+      "endurance": {
+        "scale": 2,
+        "table": "Melee_Res_Boolean"
+      },
+      "movement": {
+        "scale": 0.3,
+        "table": "Melee_Ones"
+      },
       "recharge": {
         "scale": 0.3,
         "table": "Melee_Ones"
       }
     },
-    "durations": {
-      "debuffResistance": 5.25,
-      "enduranceGain": 5.25,
-      "maxHPBuff": 5.25,
-      "movement": 5.25,
-      "recoveryBuff": 5.25,
-      "regenBuff": 5.25
-    }
+    "buffDuration": 5.25
   }
 };

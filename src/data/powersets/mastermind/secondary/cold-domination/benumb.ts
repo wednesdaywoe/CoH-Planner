@@ -35,6 +35,22 @@ export const Benumb: Power = {
       "scale": 5,
       "table": "Ranged_Ones"
     },
+    "durations": {
+      "regenDebuff": 30,
+      "damageDebuff": 30,
+      "slow": 30,
+      "confuse": 30,
+      "fear": 30,
+      "hold": 30,
+      "immobilize": 30,
+      "stun": 30,
+      "sleep": 30,
+      "knockup": 30,
+      "knockback": 30,
+      "repel": 30,
+      "defenseDebuff": 30,
+      "tohitDebuff": 30
+    },
     "enduranceDrain": {
       "scale": 0.05,
       "table": "Ranged_Ones"
@@ -104,22 +120,6 @@ export const Benumb: Power = {
       "scale": 0.5,
       "table": "Ranged_Stun"
     },
-    "buffDuration": 30,
-    "durations": {
-      "confuse": 30,
-      "damageDebuff": 30,
-      "defenseDebuff": 30,
-      "fear": 30,
-      "hold": 30,
-      "immobilize": 30,
-      "knockback": 30,
-      "knockup": 30,
-      "regenDebuff": 30,
-      "repel": 30,
-      "sleep": 30,
-      "slow": 30,
-      "stun": 30,
-      "tohitDebuff": 30
-    }
+    "buffDuration": 30
   }
 };

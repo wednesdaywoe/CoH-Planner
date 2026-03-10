@@ -71,14 +71,14 @@ export const ChronoShift: Power = {
       "scale": 0.3,
       "table": "Ranged_Ones"
     },
+    "durations": {
+      "recoveryBuff": 30,
+      "rechargeBuff": 90
+    },
     "rechargeBuff": {
       "scale": 0.5,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 90,
-    "durations": {
-      "rechargeBuff": 90,
-      "recoveryBuff": 30
-    }
+    "buffDuration": 90
   }
 };

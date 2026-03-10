@@ -64,6 +64,13 @@ export const TimeWall: Power = {
         "table": "Ranged_Slow"
       }
     },
+    "durations": {
+      "movement": 20,
+      "rechargeDebuff": 20,
+      "slow": 20,
+      "regenDebuff": 20,
+      "damageBuff": 9.1
+    },
     "rechargeDebuff": {
       "scale": 0.6,
       "table": "Ranged_Slow"
@@ -87,13 +94,6 @@ export const TimeWall: Power = {
       "scale": 0.106,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 20,
-    "durations": {
-      "damageBuff": 9.1,
-      "movement": 20,
-      "rechargeBuff": 20,
-      "regenDebuff": 20,
-      "slow": 20
-    }
+    "buffDuration": 20
   }
 };

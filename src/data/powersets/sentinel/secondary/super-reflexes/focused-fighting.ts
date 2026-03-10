@@ -39,6 +39,15 @@ export const FocusedFighting: Power = {
         "table": "Melee_Buff_Def"
       }
     },
+    "durations": {
+      "defenseBuff": 0.75,
+      "confuse": 0.75,
+      "protection": 0.75,
+      "knockup": 0.75,
+      "knockback": 0.75,
+      "immobilize": 0.75,
+      "elusivity": 0.75
+    },
     "confuse": {
       "mag": 1,
       "scale": 30,
@@ -68,14 +77,6 @@ export const FocusedFighting: Power = {
         "table": "Melee_Res_Boolean"
       }
     },
-    "durations": {
-      "confuse": 0.75,
-      "defenseBuff": 0.75,
-      "elusivity": 0.75,
-      "immobilize": 0.75,
-      "knockback": 0.75,
-      "knockup": 0.75,
-      "protection": 0.75
-    }
+    "buffDuration": 0.75
   }
 };

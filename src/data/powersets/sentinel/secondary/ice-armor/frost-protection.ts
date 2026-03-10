@@ -33,34 +33,20 @@ export const FrostProtection: Power = {
       "scale": 0.5,
       "table": "Melee_HealSelf"
     },
-    "movement": {
-      "runSpeed": {
-        "scale": 0.1,
-        "table": "Melee_Ones"
-      },
-      "flySpeed": {
-        "scale": 0.1,
-        "table": "Melee_Ones"
-      },
-      "jumpSpeed": {
-        "scale": 0.1,
-        "table": "Melee_Ones"
-      },
-      "jumpHeight": {
-        "scale": 0.1,
-        "table": "Melee_Ones"
-      }
+    "durations": {
+      "maxHPBuff": 10.3,
+      "debuffResistance": 10.3
     },
     "debuffResistance": {
+      "movement": {
+        "scale": 0.1,
+        "table": "Melee_Ones"
+      },
       "recharge": {
         "scale": 0.1,
         "table": "Melee_Ones"
       }
     },
-    "durations": {
-      "debuffResistance": 10.3,
-      "maxHPBuff": 10.3,
-      "movement": 10.3
-    }
+    "buffDuration": 10.3
   }
 };

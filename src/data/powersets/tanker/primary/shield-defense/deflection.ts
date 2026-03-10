@@ -41,6 +41,10 @@ export const Deflection: Power = {
         "table": "Melee_Buff_Def"
       }
     },
+    "durations": {
+      "defenseBuff": 0.75,
+      "resistance": 0.75
+    },
     "resistance": {
       "smashing": {
         "scale": 1.5,
@@ -50,7 +54,8 @@ export const Deflection: Power = {
         "scale": 1.5,
         "table": "Melee_Res_Dmg"
       }
-    }
+    },
+    "buffDuration": 0.75
   },
   "requires": "!(Tanker_Melee.Claws || Tanker_Melee.Dual_Blades || Tanker_Melee.Katana || Tanker_Melee.Spines || Tanker_Melee.Staff_Fighting || Tanker_Melee.Titan_Weapons)"
 };

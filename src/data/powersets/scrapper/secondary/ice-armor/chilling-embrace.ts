@@ -53,6 +53,12 @@ export const ChillingEmbrace: Power = {
         "table": "Melee_Slow"
       }
     },
+    "durations": {
+      "movement": 5,
+      "rechargeDebuff": 5,
+      "damageDebuff": 5,
+      "slow": 5
+    },
     "rechargeDebuff": {
       "scale": 0.4,
       "table": "Melee_Slow"
@@ -67,11 +73,6 @@ export const ChillingEmbrace: Power = {
         "table": "Melee_SpeedRunning"
       }
     },
-    "durations": {
-      "damageDebuff": 5,
-      "movement": 5,
-      "rechargeBuff": 5,
-      "slow": 5
-    }
+    "buffDuration": 5
   }
 };

@@ -43,6 +43,11 @@ export const BetaDecay: Power = {
       "scale": 0.75,
       "table": "Melee_DeBuff_ToHit"
     },
+    "durations": {
+      "tohitDebuff": 1,
+      "defenseDebuff": 1,
+      "rechargeBuff": 1
+    },
     "defenseDebuff": {
       "scale": 1.5,
       "table": "Melee_Debuff_Def"
@@ -55,10 +60,6 @@ export const BetaDecay: Power = {
       "scale": 1,
       "table": "Melee_InherentTaunt"
     },
-    "durations": {
-      "defenseDebuff": 1,
-      "rechargeBuff": 1,
-      "tohitDebuff": 1
-    }
+    "buffDuration": 1
   }
 };

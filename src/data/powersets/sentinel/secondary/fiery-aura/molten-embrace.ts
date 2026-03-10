@@ -35,6 +35,7 @@ export const MoltenEmbrace: Power = {
     },
     "durations": {
       "damageBuff": 1.2
-    }
+    },
+    "buffDuration": 1.2
   }
 };

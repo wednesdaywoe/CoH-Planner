@@ -36,6 +36,12 @@ export const ShadowDweller: Power = {
       "table": "Melee_Ones"
     },
     "effectDuration": 10.25,
+    "durations": {
+      "immobilize": 10.25,
+      "defenseBuff": 10.25,
+      "perceptionBuff": 10.25,
+      "regenBuff": 10.3
+    },
     "defenseBuff": {
       "ranged": {
         "scale": 0.25,
@@ -82,11 +88,6 @@ export const ShadowDweller: Power = {
       "scale": 1,
       "table": "Melee_Ones"
     },
-    "durations": {
-      "defenseBuff": 10.25,
-      "immobilize": 10.25,
-      "perceptionBuff": 10.25,
-      "regenBuff": 10.3
-    }
+    "buffDuration": 10.25
   }
 };

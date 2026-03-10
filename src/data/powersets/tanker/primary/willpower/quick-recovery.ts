@@ -34,6 +34,7 @@ export const QuickRecovery: Power = {
     },
     "durations": {
       "recoveryBuff": 10.25
-    }
+    },
+    "buffDuration": 10.25
   }
 };

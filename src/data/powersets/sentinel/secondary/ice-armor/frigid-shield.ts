@@ -37,34 +37,20 @@ export const FrigidShield: Power = {
       "scale": 0.25,
       "table": "Melee_HealSelf"
     },
-    "movement": {
-      "runSpeed": {
-        "scale": 0.1,
-        "table": "Melee_Ones"
-      },
-      "flySpeed": {
-        "scale": 0.1,
-        "table": "Melee_Ones"
-      },
-      "jumpSpeed": {
-        "scale": 0.1,
-        "table": "Melee_Ones"
-      },
-      "jumpHeight": {
-        "scale": 0.1,
-        "table": "Melee_Ones"
-      }
+    "durations": {
+      "absorb": 20,
+      "debuffResistance": 4
     },
     "debuffResistance": {
+      "movement": {
+        "scale": 0.1,
+        "table": "Melee_Ones"
+      },
       "recharge": {
         "scale": 0.1,
         "table": "Melee_Ones"
       }
     },
-    "durations": {
-      "absorb": 20,
-      "debuffResistance": 4,
-      "movement": 4
-    }
+    "buffDuration": 20
   }
 };

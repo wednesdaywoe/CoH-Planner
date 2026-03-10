@@ -53,6 +53,12 @@ export const TimeCrawl: Power = {
         "table": "Ranged_Slow"
       }
     },
+    "durations": {
+      "movement": 20,
+      "rechargeDebuff": 20,
+      "slow": 20,
+      "regenDebuff": 20
+    },
     "rechargeDebuff": {
       "scale": 0.6,
       "table": "Ranged_Slow"
@@ -67,12 +73,6 @@ export const TimeCrawl: Power = {
       "scale": 1,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 20,
-    "durations": {
-      "movement": 20,
-      "rechargeBuff": 20,
-      "regenDebuff": 20,
-      "slow": 20
-    }
+    "buffDuration": 20
   }
 };

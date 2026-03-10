@@ -41,6 +41,11 @@ export const PersonalForceField: Power = {
       "scale": 1,
       "table": "Melee_Ones"
     },
+    "durations": {
+      "teleport": 0.75,
+      "defenseBuff": 0.75,
+      "resistance": 0.75
+    },
     "defenseBuff": {
       "ranged": {
         "scale": 7.5,
@@ -121,10 +126,6 @@ export const PersonalForceField: Power = {
         "table": "Melee_Res_Dmg"
       }
     },
-    "durations": {
-      "defenseBuff": 0.75,
-      "resistance": 0.75,
-      "teleport": 0.75
-    }
+    "buffDuration": 0.75
   }
 };

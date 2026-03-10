@@ -64,6 +64,7 @@ export const RepellingForce: Power = {
     },
     "durations": {
       "defenseBuff": 10.3
-    }
+    },
+    "buffDuration": 10.3
   }
 };

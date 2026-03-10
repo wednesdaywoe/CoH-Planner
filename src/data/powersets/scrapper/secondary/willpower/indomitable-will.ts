@@ -39,6 +39,19 @@ export const IndomitableWill: Power = {
       "table": "Melee_Res_Boolean"
     },
     "effectDuration": 0.75,
+    "durations": {
+      "hold": 0.75,
+      "stun": 0.75,
+      "sleep": 0.75,
+      "confuse": 0.75,
+      "fear": 0.75,
+      "defenseBuff": 0.75,
+      "immobilize": 0.75,
+      "protection": 0.75,
+      "knockup": 0.75,
+      "knockback": 0.75,
+      "repel": 0.75
+    },
     "stun": {
       "mag": 1,
       "scale": 30,
@@ -87,18 +100,6 @@ export const IndomitableWill: Power = {
       "scale": 10,
       "table": "Melee_Ones"
     },
-    "durations": {
-      "confuse": 0.75,
-      "defenseBuff": 0.75,
-      "fear": 0.75,
-      "hold": 0.75,
-      "immobilize": 0.75,
-      "knockback": 0.75,
-      "knockup": 0.75,
-      "protection": 0.75,
-      "repel": 0.75,
-      "sleep": 0.75,
-      "stun": 0.75
-    }
+    "buffDuration": 0.75
   }
 };

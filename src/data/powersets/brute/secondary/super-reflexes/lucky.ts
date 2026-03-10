@@ -34,6 +34,11 @@ export const Lucky: Power = {
         "table": "Melee_Buff_Def"
       }
     },
+    "durations": {
+      "defenseBuff": 0.75,
+      "elusivity": 0.75,
+      "resistance": 0.75
+    },
     "elusivity": {
       "all": {
         "scale": 0.2,
@@ -66,10 +71,6 @@ export const Lucky: Power = {
         "table": "Melee_Ones"
       }
     },
-    "durations": {
-      "defenseBuff": 0.75,
-      "elusivity": 0.75,
-      "resistance": 0.75
-    }
+    "buffDuration": 0.75
   }
 };

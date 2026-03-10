@@ -33,6 +33,19 @@ export const WetIce: Power = {
       "knockup": 1,
       "knockback": 1
     },
+    "durations": {
+      "protection": 0.75,
+      "knockup": 0.75,
+      "knockback": 0.75,
+      "hold": 0.75,
+      "immobilize": 0.75,
+      "stun": 0.75,
+      "sleep": 0.75,
+      "debuffResistance": 0.75,
+      "resistance": 0.75,
+      "defenseBuff": 0.75,
+      "elusivity": 0.75
+    },
     "knockup": {
       "scale": 10,
       "table": "Melee_Ones"
@@ -62,27 +75,13 @@ export const WetIce: Power = {
       "scale": 30,
       "table": "Melee_Res_Boolean"
     },
-    "movement": {
-      "runSpeed": {
-        "scale": 0.6,
-        "table": "Melee_Ones"
-      },
-      "flySpeed": {
-        "scale": 0.6,
-        "table": "Melee_Ones"
-      },
-      "jumpSpeed": {
-        "scale": 0.6,
-        "table": "Melee_Ones"
-      },
-      "jumpHeight": {
-        "scale": 0.6,
-        "table": "Melee_Ones"
-      }
-    },
     "debuffResistance": {
+      "movement": {
+        "scale": 0.6,
+        "table": "Melee_Ones"
+      },
       "recharge": {
-        "scale": 0.5,
+        "scale": 0.6,
         "table": "Melee_Ones"
       }
     },
@@ -132,19 +131,6 @@ export const WetIce: Power = {
         "table": "Melee_Res_Boolean"
       }
     },
-    "durations": {
-      "debuffResistance": 0.75,
-      "defenseBuff": 0.75,
-      "elusivity": 0.75,
-      "hold": 0.75,
-      "immobilize": 0.75,
-      "knockback": 0.75,
-      "knockup": 0.75,
-      "movement": 0.75,
-      "protection": 0.75,
-      "resistance": 0.75,
-      "sleep": 0.75,
-      "stun": 0.75
-    }
+    "buffDuration": 0.75
   }
 };

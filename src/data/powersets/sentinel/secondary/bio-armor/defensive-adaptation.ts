@@ -28,7 +28,11 @@ export const DefensiveAdaptation: Power = {
     "damageDebuff": {
       "scale": 0.25,
       "table": "Melee_Ones"
-    }
+    },
+    "durations": {
+      "damageDebuff": 1.1
+    },
+    "buffDuration": 1.1
   },
   "requires": "Sentinel_Defense.Bio_Organic_Armor.Adaptation",
   "mechanicType": "childToggle"

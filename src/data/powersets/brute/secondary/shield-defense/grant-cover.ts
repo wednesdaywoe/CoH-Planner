@@ -73,6 +73,11 @@ export const GrantCover: Power = {
         "table": "Melee_Buff_Def"
       }
     },
+    "durations": {
+      "defenseBuff": 2.25,
+      "elusivity": 2.25,
+      "debuffResistance": 2.25
+    },
     "elusivity": {
       "all": {
         "scale": 0.4,
@@ -85,10 +90,6 @@ export const GrantCover: Power = {
         "table": "Melee_Ones"
       }
     },
-    "durations": {
-      "debuffResistance": 2.25,
-      "defenseBuff": 2.25,
-      "elusivity": 2.25
-    }
+    "buffDuration": 2.25
   }
 };

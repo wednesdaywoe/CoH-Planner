@@ -13,7 +13,7 @@ export const Resilience: Power = {
   "available": 19,
   "description": "You are more Resilient. This power allows you to build up a resistance to Disorientation effects. You tend not to get Disoriented, and if you do, it wears off quickly. This resistance to Disorientation gets stronger as you go up in level. Resilience also grants some resistance to all types of damage. This power is always on.",
   "shortHelp": "Auto: Self +Res(Disorient, All DMG)",
-  "icon": "regeneration_resilience.png",
+  "icon": "regeneration_resist.png",
   "powerType": "Auto",
   "targetType": "Self",
   "effectArea": "SingleTarget",
@@ -34,6 +34,10 @@ export const Resilience: Power = {
       "table": "Melee_Res_Boolean"
     },
     "effectDuration": 10.25,
+    "durations": {
+      "stun": 10.25,
+      "resistance": 10.25
+    },
     "resistance": {
       "smashing": {
         "scale": 1.25,
@@ -68,9 +72,6 @@ export const Resilience: Power = {
         "table": "Melee_Res_Dmg"
       }
     },
-    "durations": {
-      "resistance": 10.25,
-      "stun": 10.25
-    }
+    "buffDuration": 10.25
   }
 };

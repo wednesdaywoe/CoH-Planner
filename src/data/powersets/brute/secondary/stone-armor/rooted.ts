@@ -38,6 +38,19 @@ export const Rooted: Power = {
       "knockback": 1,
       "repel": 1
     },
+    "durations": {
+      "protection": 0.75,
+      "knockup": 0.75,
+      "knockback": 0.75,
+      "repel": 0.75,
+      "hold": 0.75,
+      "immobilize": 0.75,
+      "stun": 0.75,
+      "sleep": 0.75,
+      "regenBuff": 0.75,
+      "debuffResistance": 0.75,
+      "elusivity": 0.75
+    },
     "knockup": {
       "scale": 10,
       "table": "Melee_Ones"
@@ -75,13 +88,15 @@ export const Rooted: Power = {
       "scale": 1,
       "table": "Melee_Ones"
     },
-    "enduranceGain": {
-      "scale": 2,
-      "table": "Melee_Res_Boolean"
-    },
-    "recoveryBuff": {
-      "scale": 2,
-      "table": "Melee_Res_Boolean"
+    "debuffResistance": {
+      "endurance": {
+        "scale": 2,
+        "table": "Melee_Res_Boolean"
+      },
+      "recovery": {
+        "scale": 2,
+        "table": "Melee_Res_Boolean"
+      }
     },
     "elusivity": {
       "all": {
@@ -89,19 +104,6 @@ export const Rooted: Power = {
         "table": "Melee_Res_Boolean"
       }
     },
-    "durations": {
-      "elusivity": 0.75,
-      "enduranceGain": 0.75,
-      "hold": 0.75,
-      "immobilize": 0.75,
-      "knockback": 0.75,
-      "knockup": 0.75,
-      "protection": 0.75,
-      "recoveryBuff": 0.75,
-      "regenBuff": 0.75,
-      "repel": 0.75,
-      "sleep": 0.75,
-      "stun": 0.75
-    }
+    "buffDuration": 0.75
   }
 };

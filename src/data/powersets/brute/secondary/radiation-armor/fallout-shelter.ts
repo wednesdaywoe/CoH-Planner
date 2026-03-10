@@ -39,6 +39,17 @@ export const FalloutShelter: Power = {
       "table": "Melee_Res_Boolean"
     },
     "effectDuration": 0.75,
+    "durations": {
+      "hold": 0.75,
+      "immobilize": 0.75,
+      "stun": 0.75,
+      "sleep": 0.75,
+      "protection": 0.75,
+      "knockup": 0.75,
+      "knockback": 0.75,
+      "resistance": 0.75,
+      "debuffResistance": 0.75
+    },
     "immobilize": {
       "mag": 1,
       "scale": 30,
@@ -88,41 +99,16 @@ export const FalloutShelter: Power = {
         "table": "Melee_Res_Dmg"
       }
     },
-    "movement": {
-      "runSpeed": {
-        "scale": 1.05,
-        "table": "Melee_Res_Boolean"
-      },
-      "flySpeed": {
-        "scale": 1.05,
-        "table": "Melee_Res_Boolean"
-      },
-      "jumpSpeed": {
-        "scale": 1.05,
-        "table": "Melee_Res_Boolean"
-      },
-      "jumpHeight": {
-        "scale": 1.05,
-        "table": "Melee_Res_Boolean"
-      }
-    },
     "debuffResistance": {
+      "movement": {
+        "scale": 1.05,
+        "table": "Melee_Res_Boolean"
+      },
       "recharge": {
         "scale": 1.05,
         "table": "Melee_Res_Boolean"
       }
     },
-    "durations": {
-      "debuffResistance": 0.75,
-      "hold": 0.75,
-      "immobilize": 0.75,
-      "knockback": 0.75,
-      "knockup": 0.75,
-      "movement": 0.75,
-      "protection": 0.75,
-      "resistance": 0.75,
-      "sleep": 0.75,
-      "stun": 0.75
-    }
+    "buffDuration": 0.75
   }
 };

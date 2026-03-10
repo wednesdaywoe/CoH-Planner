@@ -61,13 +61,13 @@ export const NegatronSlam: Power = {
       "scale": 1.5,
       "table": "Melee_Debuff_Def"
     },
+    "durations": {
+      "defenseDebuff": 10
+    },
     "damageBuff": {
       "scale": 0,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 10,
-    "durations": {
-      "defenseDebuff": 10
-    }
+    "buffDuration": 10
   }
 };

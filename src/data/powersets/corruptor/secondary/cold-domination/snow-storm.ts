@@ -55,6 +55,11 @@ export const SnowStorm: Power = {
         "table": "Ranged_Slow"
       }
     },
+    "durations": {
+      "movement": 0.75,
+      "rechargeDebuff": 0.75,
+      "slow": 0.75
+    },
     "rechargeDebuff": {
       "scale": 0.5,
       "table": "Ranged_Slow"
@@ -69,10 +74,6 @@ export const SnowStorm: Power = {
         "table": "Ranged_SpeedRunning"
       }
     },
-    "durations": {
-      "movement": 0.75,
-      "rechargeBuff": 0.75,
-      "slow": 0.75
-    }
+    "buffDuration": 0.75
   }
 };

@@ -45,6 +45,7 @@ export const RepulsionField: Power = {
     },
     "durations": {
       "repel": 0.25
-    }
+    },
+    "buffDuration": 0.25
   }
 };

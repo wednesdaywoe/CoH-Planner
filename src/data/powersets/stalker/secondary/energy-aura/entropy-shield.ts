@@ -34,6 +34,20 @@ export const EntropyShield: Power = {
       "knockback": 1,
       "repel": 1
     },
+    "durations": {
+      "protection": 0.75,
+      "knockup": 0.75,
+      "knockback": 0.75,
+      "repel": 0.75,
+      "hold": 0.75,
+      "immobilize": 0.75,
+      "stun": 0.75,
+      "sleep": 0.75,
+      "teleport": 0.75,
+      "elusivity": 0.75,
+      "debuffResistance": 0.75,
+      "rechargeBuff": 0.75
+    },
     "knockup": {
       "scale": 10,
       "table": "Melee_Ones"
@@ -77,38 +91,20 @@ export const EntropyShield: Power = {
         "table": "Melee_Res_Boolean"
       }
     },
-    "enduranceGain": {
-      "scale": 0.25,
-      "table": "Melee_Ones"
-    },
-    "recoveryBuff": {
-      "scale": 0.25,
-      "table": "Melee_Ones"
+    "debuffResistance": {
+      "endurance": {
+        "scale": 0.25,
+        "table": "Melee_Ones"
+      },
+      "recovery": {
+        "scale": 0.25,
+        "table": "Melee_Ones"
+      }
     },
     "rechargeBuff": {
       "scale": 0.2,
       "table": "Melee_Ones"
     },
-    "debuffResistance": {
-      "recharge": {
-        "scale": 0.3,
-        "table": "Melee_Ones"
-      }
-    },
-    "durations": {
-      "elusivity": 0.75,
-      "enduranceGain": 0.75,
-      "hold": 0.75,
-      "immobilize": 0.75,
-      "knockback": 0.75,
-      "knockup": 0.75,
-      "protection": 0.75,
-      "rechargeBuff": 0.75,
-      "recoveryBuff": 0.75,
-      "repel": 0.75,
-      "sleep": 0.75,
-      "stun": 0.75,
-      "teleport": 0.75
-    }
+    "buffDuration": 0.75
   }
 };

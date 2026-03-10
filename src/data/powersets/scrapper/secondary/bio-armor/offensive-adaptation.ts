@@ -58,7 +58,11 @@ export const OffensiveAdaptation: Power = {
         "scale": 0.075,
         "table": "Melee_Ones"
       }
-    }
+    },
+    "durations": {
+      "resistanceDebuff": 1.1
+    },
+    "buffDuration": 1.1
   },
   "requires": "Scrapper_Defense.Bio_Organic_Armor.Evolution",
   "mechanicType": "childToggle"

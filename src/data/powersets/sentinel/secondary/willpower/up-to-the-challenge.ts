@@ -39,6 +39,7 @@ export const UptotheChallenge: Power = {
     },
     "durations": {
       "regenBuff": 1.125
-    }
+    },
+    "buffDuration": 1.125
   }
 };

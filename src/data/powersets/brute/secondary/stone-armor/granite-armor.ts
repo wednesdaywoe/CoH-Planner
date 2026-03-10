@@ -65,6 +65,21 @@ export const GraniteArmor: Power = {
         "table": "Melee_Res_Dmg"
       }
     },
+    "durations": {
+      "resistance": 0.75,
+      "defenseBuff": 0.75,
+      "hold": 0.75,
+      "immobilize": 0.75,
+      "stun": 0.75,
+      "sleep": 0.75,
+      "knockup": 0.75,
+      "knockback": 0.75,
+      "repel": 0.75,
+      "elusivity": 0.75,
+      "rechargeDebuff": 0.75,
+      "damageDebuff": 0.75,
+      "slow": 0.75
+    },
     "defenseBuff": {
       "smashing": {
         "scale": 1.5,
@@ -156,20 +171,6 @@ export const GraniteArmor: Power = {
         "table": "Melee_Ones"
       }
     },
-    "durations": {
-      "damageDebuff": 0.75,
-      "defenseBuff": 0.75,
-      "elusivity": 0.75,
-      "hold": 0.75,
-      "immobilize": 0.75,
-      "knockback": 0.75,
-      "knockup": 0.75,
-      "rechargeDebuff": 0.75,
-      "repel": 0.75,
-      "resistance": 0.75,
-      "sleep": 0.75,
-      "slow": 0.75,
-      "stun": 0.75
-    }
+    "buffDuration": 0.75
   }
 };

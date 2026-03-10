@@ -47,6 +47,13 @@ export const CloakofFear: Power = {
       "table": "Melee_Ones"
     },
     "effectDuration": 3,
+    "durations": {
+      "fear": 3,
+      "tohitDebuff": 3,
+      "damageDebuff": 3,
+      "knockup": 5,
+      "knockback": 5
+    },
     "tohitDebuff": {
       "scale": 0.05,
       "table": "Melee_Ones"
@@ -63,12 +70,6 @@ export const CloakofFear: Power = {
       "scale": 1,
       "table": "Melee_Ones"
     },
-    "durations": {
-      "damageDebuff": 3,
-      "fear": 3,
-      "knockback": 5,
-      "knockup": 5,
-      "tohitDebuff": 3
-    }
+    "buffDuration": 3
   }
 };

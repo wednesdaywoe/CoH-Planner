@@ -33,6 +33,12 @@ export const AilmentResistance: Power = {
       "scale": 1.2,
       "table": "Melee_HealSelf"
     },
+    "durations": {
+      "maxHPBuff": 10.3,
+      "resistanceDebuff": 10.3,
+      "elusivity": 10.25,
+      "debuffResistance": 10.25
+    },
     "resistanceDebuff": {
       "heal": {
         "scale": 0.15,
@@ -45,57 +51,36 @@ export const AilmentResistance: Power = {
         "table": "Melee_Ones"
       }
     },
-    "enduranceGain": {
-      "scale": 0.2,
-      "table": "Melee_Ones"
-    },
-    "tohitBuff": {
-      "scale": 0.2,
-      "table": "Melee_Ones"
-    },
-    "movement": {
-      "runSpeed": {
-        "scale": 0.2,
-        "table": "Melee_Ones"
-      },
-      "flySpeed": {
-        "scale": 0.2,
-        "table": "Melee_Ones"
-      },
-      "jumpSpeed": {
-        "scale": 0.2,
-        "table": "Melee_Ones"
-      }
-    },
-    "regenBuff": {
-      "scale": 0.2,
-      "table": "Melee_Ones"
-    },
-    "recoveryBuff": {
-      "scale": 0.2,
-      "table": "Melee_Ones"
-    },
-    "rangeBuff": {
-      "scale": 0.2,
-      "table": "Melee_Ones"
-    },
     "debuffResistance": {
+      "endurance": {
+        "scale": 0.2,
+        "table": "Melee_Ones"
+      },
+      "tohit": {
+        "scale": 0.2,
+        "table": "Melee_Ones"
+      },
+      "movement": {
+        "scale": 0.2,
+        "table": "Melee_Ones"
+      },
+      "regeneration": {
+        "scale": 0.2,
+        "table": "Melee_Ones"
+      },
+      "recovery": {
+        "scale": 0.2,
+        "table": "Melee_Ones"
+      },
+      "range": {
+        "scale": 0.2,
+        "table": "Melee_Ones"
+      },
       "recharge": {
         "scale": 0.2,
         "table": "Melee_Ones"
       }
     },
-    "durations": {
-      "debuffResistance": 10.25,
-      "elusivity": 10.25,
-      "enduranceGain": 10.25,
-      "maxHPBuff": 10.3,
-      "movement": 10.25,
-      "rangeBuff": 10.25,
-      "recoveryBuff": 10.25,
-      "regenBuff": 10.25,
-      "resistanceDebuff": 10.3,
-      "tohitBuff": 10.25
-    }
+    "buffDuration": 10.3
   }
 };

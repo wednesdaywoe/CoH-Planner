@@ -36,7 +36,11 @@ export const ReactiveRegeneration: Power = {
     "regenBuff": {
       "scale": 2,
       "table": "Melee_Ones"
-    }
+    },
+    "durations": {
+      "regenBuff": 2.25
+    },
+    "buffDuration": 2.25
   },
   "requires": "!Stalker_Defense.Regeneration.Instant_Healing"
 };
