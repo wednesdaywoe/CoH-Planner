@@ -47,6 +47,11 @@ export const PowerBurst: Power = {
       "type": "Energy",
       "scale": 1.82,
       "table": "Ranged_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.69,
+      "table": "Melee_Damage"
     }
   ],
   "effects": {

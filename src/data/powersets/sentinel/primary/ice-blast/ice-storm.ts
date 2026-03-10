@@ -43,7 +43,8 @@ export const IceStorm: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "Pets_IceStorm_Sentinel",
-      "duration": 15
+      "duration": 15,
+      "copyBoosts": true
     }
   }
 };

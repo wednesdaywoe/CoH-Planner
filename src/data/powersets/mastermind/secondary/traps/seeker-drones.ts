@@ -39,15 +39,24 @@ export const SeekerDrones: Power = {
     "Ranged AoE Damage",
     "Stuns",
     "To Hit Debuff",
-    "Universal Damage Sets",
-    "Mastermind Archetype Sets"
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "entity": "Pets_Traps_Seeker2",
-      "duration": 240
+      "duration": 240,
+      "copyBoosts": true,
+      "entities": [
+        {
+          "entity": "Pets_Traps_Seeker1",
+          "count": 1
+        },
+        {
+          "entity": "Pets_Traps_Seeker2",
+          "count": 1
+        }
+      ]
     }
   }
 };

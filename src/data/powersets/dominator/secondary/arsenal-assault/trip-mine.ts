@@ -44,7 +44,8 @@ export const TripMine: Power = {
         "Pets.Trip_Mine_Dominator.TripMine_Resistance",
         "Pets.Trip_Mine_Dominator.TripMine_Info"
       ],
-      "duration": 170
+      "duration": 170,
+      "copyBoosts": true
     }
   }
 };

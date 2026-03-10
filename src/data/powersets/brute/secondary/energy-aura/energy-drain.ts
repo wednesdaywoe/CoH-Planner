@@ -39,60 +39,51 @@ export const EnergyDrain: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-      "enduranceDrain": {
-        "scale": 0.33,
-        "table": "Melee_Ones"
+    "enduranceDrain": {
+      "scale": 0.33,
+      "table": "Melee_Ones"
+    },
+    "defenseBuff": {
+      "smashing": {
+        "scale": 0.04,
+        "table": "Melee_Buff_Def"
       },
-      "enduranceGain": {
-        "scale": 25,
-        "table": "Melee_Ones",
-        "perTarget": 25
+      "lethal": {
+        "scale": 0.04,
+        "table": "Melee_Buff_Def"
       },
-      "recoveryDebuff": {
-        "scale": 1,
-        "table": "Melee_Ones"
+      "fire": {
+        "scale": 0.04,
+        "table": "Melee_Buff_Def"
       },
-      "defenseBuff": {
-        "smashing": {
-          "scale": 0.12,
-          "table": "Melee_Buff_Def",
-          "perTarget": 0.04
-        },
-        "lethal": {
-          "scale": 0.12,
-          "table": "Melee_Buff_Def",
-          "perTarget": 0.04
-        },
-        "fire": {
-          "scale": 0.12,
-          "table": "Melee_Buff_Def",
-          "perTarget": 0.04
-        },
-        "cold": {
-          "scale": 0.12,
-          "table": "Melee_Buff_Def",
-          "perTarget": 0.04
-        },
-        "energy": {
-          "scale": 0.12,
-          "table": "Melee_Buff_Def",
-          "perTarget": 0.04
-        },
-        "negative": {
-          "scale": 0.12,
-          "table": "Melee_Buff_Def",
-          "perTarget": 0.04
-        },
-        "psionic": {
-          "scale": 0.12,
-          "table": "Melee_Buff_Def",
-          "perTarget": 0.04
-        },
-        "toxic": {
-          "scale": 0.12,
-          "table": "Melee_Buff_Def",
-          "perTarget": 0.04
-        }
+      "cold": {
+        "scale": 0.04,
+        "table": "Melee_Buff_Def"
+      },
+      "energy": {
+        "scale": 0.04,
+        "table": "Melee_Buff_Def"
+      },
+      "negative": {
+        "scale": 0.04,
+        "table": "Melee_Buff_Def"
+      },
+      "psionic": {
+        "scale": 0.04,
+        "table": "Melee_Buff_Def"
+      },
+      "toxic": {
+        "scale": 0.04,
+        "table": "Melee_Buff_Def"
       }
+    },
+    "enduranceGain": {
+      "scale": 25,
+      "table": "Melee_Ones"
+    },
+    "recoveryDebuff": {
+      "scale": 1,
+      "table": "Melee_Ones"
     }
+  }
 };

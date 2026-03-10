@@ -29,6 +29,11 @@ export const EntropyShield: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "protection": {
+      "knockup": 1,
+      "knockback": 1,
+      "repel": 1
+    },
     "knockup": {
       "scale": 10,
       "table": "Melee_Ones"
@@ -38,7 +43,7 @@ export const EntropyShield: Power = {
       "table": "Melee_Ones"
     },
     "repel": {
-      "scale": 100,
+      "scale": 10,
       "table": "Melee_Ones"
     },
     "hold": {

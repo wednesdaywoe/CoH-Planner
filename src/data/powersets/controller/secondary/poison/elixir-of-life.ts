@@ -15,15 +15,13 @@ export const ElixirofLife: Power = {
   "shortHelp": "Close, Ally Rez, Special",
   "icon": "poison_elixiroflife.png",
   "powerType": "Click",
-  "effectArea": "AoE",
+  "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
     "range": 15,
-    "radius": 15,
-    "recharge": 120,
-    "endurance": 5.2,
-    "castTime": 1.83,
-    "maxTargets": 5
+    "recharge": 180,
+    "endurance": 26,
+    "castTime": 1.83
   },
   "allowedEnhancements": [
     "Resistance",

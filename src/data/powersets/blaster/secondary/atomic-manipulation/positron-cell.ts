@@ -57,6 +57,10 @@ export const PositronCell: Power = {
     "defenseDebuff": {
       "scale": 1.5,
       "table": "Ranged_Debuff_Def"
+    },
+    "damageBuff": {
+      "scale": 0,
+      "table": "Ranged_Ones"
     }
   }
 };

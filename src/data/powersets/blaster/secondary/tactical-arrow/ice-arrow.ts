@@ -75,6 +75,10 @@ export const IceArrow: Power = {
       "scale": 0.1,
       "table": "Ranged_Slow"
     },
+    "protection": {
+      "knockup": 1,
+      "knockback": 1
+    },
     "knockup": {
       "scale": 100,
       "table": "Ranged_Ones"

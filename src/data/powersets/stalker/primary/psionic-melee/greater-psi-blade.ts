@@ -47,17 +47,32 @@ export const GreaterPsiBlade: Power = {
       "type": "Psionic",
       "scale": 2.0025,
       "table": "Melee_Damage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 2.6925,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 2.6925,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 1.3463,
+      "table": "Melee_Damage"
     }
   ],
   "effects": {
-    "rechargeDebuff": {
-      "scale": 0.2,
-      "table": "Melee_Slow"
-    },
     "hold": {
       "mag": 3,
       "scale": 8,
       "table": "Melee_Stun"
+    },
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Melee_Slow"
     }
   }
 };

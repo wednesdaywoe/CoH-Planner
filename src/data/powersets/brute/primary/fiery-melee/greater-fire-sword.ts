@@ -1,6 +1,6 @@
 /**
  * Greater Fire Sword
- * Melee, DMG(Fire)
+ * Melee, DMG(Fire), -Defense
  *
  * Source: brute_melee/fiery_melee/greater_fire_sword.json
  */
@@ -12,7 +12,7 @@ export const GreaterFireSword: Power = {
   "internalName": "Greater_Fire_Sword",
   "available": 25,
   "description": "Your mastery of fire allows you to create an enhanced Sword of Fire that can set foes ablaze and cut through their defenses. Successful attacks from the Greater Fire Sword will ignite your target, dealing damage over time.",
-  "shortHelp": "Melee, DMG(Fire)",
+  "shortHelp": "Melee, DMG(Fire), -Defense",
   "icon": "fieryfray_greaterfiresword.png",
   "powerType": "Click",
   "effectArea": "SingleTarget",
@@ -45,6 +45,13 @@ export const GreaterFireSword: Power = {
       "type": "Fire",
       "scale": 2.44,
       "table": "Melee_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.09,
+      "table": "Melee_Damage",
+      "duration": 4.1,
+      "tickRate": 1
     },
     {
       "type": "Fire",

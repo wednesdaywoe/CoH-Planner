@@ -38,11 +38,18 @@ export const ChargedBolts: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Energy",
-    "scale": 1,
-    "table": "Ranged_Damage"
-  },
+  "damage": [
+    {
+      "type": "Energy",
+      "scale": 1,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.2,
+      "table": "Ranged_Damage"
+    }
+  ],
   "effects": {
     "enduranceDrain": {
       "scale": 0.07,

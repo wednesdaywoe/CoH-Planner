@@ -46,7 +46,8 @@ export const Blizzard: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "Pets_Blizzard_Sentinel",
-      "duration": 8
+      "duration": 8,
+      "copyBoosts": true
     }
   }
 };

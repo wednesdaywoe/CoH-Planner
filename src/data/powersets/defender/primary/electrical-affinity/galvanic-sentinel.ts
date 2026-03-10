@@ -39,7 +39,8 @@ export const GalvanicSentinel: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "Pets_GalvanicSentinel",
-      "duration": 120
+      "duration": 120,
+      "copyBoosts": true
     }
   }
 };

@@ -40,23 +40,35 @@ export const ThunderousBlast: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Energy",
-    "scale": 2.253,
-    "table": "Ranged_Damage"
-  },
+  "damage": [
+    {
+      "type": "Energy",
+      "scale": 2.253,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.8,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.928,
+      "table": "Ranged_Damage"
+    }
+  ],
   "effects": {
     "enduranceDrain": {
-      "scale": 0.25,
-      "table": "Ranged_Ones"
-    },
-    "recoveryDebuff": {
-      "scale": 1,
-      "table": "Ranged_Ones"
+      "scale": 0.3,
+      "table": "Ranged_EndDrain"
     },
     "enduranceGain": {
       "scale": 6.93,
       "table": "Ranged_EndDrain"
+    },
+    "recoveryDebuff": {
+      "scale": 1,
+      "table": "Ranged_Ones"
     }
   }
 };

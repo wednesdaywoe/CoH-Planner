@@ -632,8 +632,15 @@ function extractEffects(templates) {
 
       // ========== KNOCKBACK/KNOCKUP/REPEL (no magnitude) ==========
       if (KNOCKBACK_TYPES[attrib]) {
-        const kbType = KNOCKBACK_TYPES[attrib];
-        effects[kbType] = makeEffect();
+        if (aspect === 'resistance') {
+          // KB/KU protection (e.g., Living Shadows, Acrobatics)
+          const kbType = KNOCKBACK_TYPES[attrib];
+          if (!effects.protection) effects.protection = {};
+          effects.protection[kbType] = magnitude;
+        } else {
+          const kbType = KNOCKBACK_TYPES[attrib];
+          effects[kbType] = makeEffect();
+        }
         continue;
       }
 

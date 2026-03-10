@@ -41,11 +41,18 @@ export const JetStream: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 0.8,
-    "table": "Ranged_Damage"
-  },
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 0.8,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.8,
+      "table": "Ranged_InherentDamage"
+    }
+  ],
   "effects": {
     "repel": {
       "scale": 4,

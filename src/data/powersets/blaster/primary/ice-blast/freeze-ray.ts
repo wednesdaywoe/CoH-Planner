@@ -51,6 +51,10 @@ export const FreezeRay: Power = {
       "scale": 8,
       "table": "Ranged_Sleep"
     },
+    "protection": {
+      "knockup": 1,
+      "knockback": 1
+    },
     "knockup": {
       "scale": 100,
       "table": "Ranged_Ones"

@@ -40,11 +40,18 @@ export const ScrambleMinds: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Psionic",
-    "scale": 1,
-    "table": "Ranged_Damage"
-  },
+  "damage": [
+    {
+      "type": "Psionic",
+      "scale": 1,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 1,
+      "table": "Ranged_InherentDamage"
+    }
+  ],
   "effects": {
     "stun": {
       "mag": 3,
@@ -58,6 +65,10 @@ export const ScrambleMinds: Power = {
     },
     "immobilize": {
       "mag": 3,
+      "scale": 10,
+      "table": "Ranged_Stun"
+    },
+    "placate": {
       "scale": 10,
       "table": "Ranged_Stun"
     },

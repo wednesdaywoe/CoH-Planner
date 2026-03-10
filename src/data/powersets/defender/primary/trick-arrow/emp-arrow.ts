@@ -47,7 +47,8 @@ export const EMPArrow: Power = {
         "Redirects.Trick_Arrow.EMP_Arrow",
         "Redirects.Trick_Arrow.EMP_Arrow_Fx"
       ],
-      "duration": 240
+      "duration": 240,
+      "copyBoosts": true
     }
   }
 };

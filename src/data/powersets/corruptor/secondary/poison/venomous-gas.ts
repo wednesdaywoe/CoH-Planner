@@ -19,7 +19,6 @@ export const VenomousGas: Power = {
   "effectArea": "AoE",
   "stats": {
     "accuracy": 1,
-    "range": 70,
     "radius": 15,
     "recharge": 8,
     "endurance": 0.26,

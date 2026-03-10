@@ -38,15 +38,15 @@ export const Fallout: Power = {
     "Defense Debuff",
     "Ranged AoE Damage",
     "To Hit Debuff",
-    "Universal Damage Sets",
-    "Mastermind Archetype Sets"
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "effects": {
     "summon": {
       "isPseudoPet": false,
       "entity": "Pets_Fallout",
-      "duration": 1
+      "duration": 1,
+      "copyBoosts": true
     }
   }
 };

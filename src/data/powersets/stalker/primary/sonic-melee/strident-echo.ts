@@ -11,7 +11,7 @@ export const StridentEcho: Power = {
   "name": "Strident Echo",
   "internalName": "Strident_Echo",
   "available": 0,
-  "description": "Strident Echo deals minor damage over time. It has a low chance of causing a migraine, leaving the target shaking in pain and helpless. This power will inflict a strong additional damage over time effect for 25 seconds against Attuned targets.",
+  "description": "Strident Echo deals minor damage over time. It has a low chance of causing a migraine, leaving the target shaking in pain and helpless. This power will inflict a strong additional damage over time effect against Attuned targets.",
   "shortHelp": "Melee, DMG(Energy/Smash), -Res(Debuffs), Foe Chance for Hold",
   "icon": "sonicmanipulation_stridentecho.png",
   "powerType": "Click",
@@ -37,13 +37,32 @@ export const StridentEcho: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Energy",
-    "scale": 0.22,
-    "table": "Melee_Damage",
-    "duration": 2.1,
-    "tickRate": 0.4
-  },
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 0.11,
+      "table": "Melee_Damage",
+      "duration": 2.1,
+      "tickRate": 0.4
+    },
+    {
+      "type": "Energy",
+      "scale": 0.11,
+      "table": "Melee_Damage",
+      "duration": 2.1,
+      "tickRate": 0.4
+    },
+    {
+      "type": "Energy",
+      "scale": 1.32,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.32,
+      "table": "Melee_InherentDamage"
+    }
+  ],
   "effects": {
     "elusivity": {
       "all": {

@@ -39,11 +39,18 @@ export const Shatter: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 1.48,
-    "table": "Ranged_Damage"
-  },
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 1.48,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.48,
+      "table": "Ranged_InherentDamage"
+    }
+  ],
   "effects": {
     "defenseDebuff": {
       "scale": 1,

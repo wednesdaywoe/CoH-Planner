@@ -52,14 +52,14 @@ export const FrozenAura: Power = {
     }
   ],
   "effects": {
-    "damageBuff": {
-      "scale": 0,
-      "table": "Ranged_Ones"
-    },
     "sleep": {
       "mag": 2,
       "scale": 20,
       "table": "Ranged_Sleep"
+    },
+    "damageBuff": {
+      "scale": 0,
+      "table": "Ranged_Ones"
     }
   }
 };

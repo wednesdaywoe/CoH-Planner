@@ -64,7 +64,7 @@ export const TemporalHealing: Power = {
       "table": "Melee_Res_Boolean"
     },
     "absorb": {
-      "scale": 0.15,
+      "scale": 0.045,
       "table": "Melee_HealSelf"
     }
   }

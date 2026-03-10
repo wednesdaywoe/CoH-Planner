@@ -1,6 +1,6 @@
 /**
  * Mask Presence
- * Toggle: Self Stealth, +DEF(Melee, Ranged, AoE)
+ * Toggle: Self Stealth, +DEF(Melee, Ranged)
  *
  * Source: sentinel_defense/psionic_armor/mask_presence.json
  */
@@ -11,8 +11,8 @@ export const MaskPresence: Power = {
   "name": "Mask Presence",
   "internalName": "Mask_Presence",
   "available": 3,
-  "description": "Mask Presence makes you almost impossible to detect. When you attack or are damaged while using this power, you will be discovered. Even if discovered, you are hard to see and retain some bonus to Defense. While stealthed, the strength of your next attack will be more powerful; however, you can only attempt this after spending 8 seconds without attacking.",
-  "shortHelp": "Toggle: Self Stealth, +DEF(Melee, Ranged, AoE)",
+  "description": "Mask Presence makes you almost impossible to detect. When you attack or are damaged while using this power, you will be discovered. Even if discovered, you are hard to see and retain some bonus to Defense. While stealthed you will get additional defense to all attack types and the strength of your next attack will be more powerful; however, you can only attempt this after spending 8 seconds without attacking.",
+  "shortHelp": "Toggle: Self Stealth, +DEF(Melee, Ranged)",
   "icon": "psionicarmor_maskpresence.png",
   "powerType": "Toggle",
   "targetType": "Self",

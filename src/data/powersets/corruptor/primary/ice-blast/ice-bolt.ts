@@ -38,11 +38,18 @@ export const IceBolt: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Cold",
-    "scale": 1,
-    "table": "Ranged_Damage"
-  },
+  "damage": [
+    {
+      "type": "Cold",
+      "scale": 1,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Cold",
+      "scale": 1,
+      "table": "Ranged_InherentDamage"
+    }
+  ],
   "effects": {
     "movement": {
       "runSpeed": {

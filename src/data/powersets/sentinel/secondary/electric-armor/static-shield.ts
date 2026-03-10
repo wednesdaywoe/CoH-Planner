@@ -33,6 +33,10 @@ export const StaticShield: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "teleport": {
+      "scale": 1,
+      "table": "Melee_Ones"
+    },
     "enduranceGain": {
       "scale": 3,
       "table": "Melee_Res_Boolean"
@@ -46,6 +50,7 @@ export const StaticShield: Power = {
       "scale": 30,
       "table": "Melee_Res_Boolean"
     },
+    "effectDuration": 0.75,
     "stun": {
       "mag": 1,
       "scale": 30,
@@ -65,7 +70,6 @@ export const StaticShield: Power = {
         "scale": 2,
         "table": "Melee_Res_Dmg"
       }
-    },
-    "effectDuration": 0.75
+    }
   }
 };

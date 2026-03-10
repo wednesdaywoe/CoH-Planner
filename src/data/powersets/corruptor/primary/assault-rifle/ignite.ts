@@ -48,6 +48,18 @@ export const Ignite: Power = {
       "table": "Ranged_Damage",
       "duration": 5.25,
       "tickRate": 0.25
+    },
+    {
+      "type": "Fire",
+      "scale": 1,
+      "table": "Ranged_InherentDamage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.1022,
+      "table": "Ranged_InherentDamage",
+      "duration": 5.25,
+      "tickRate": 0.25
     }
   ],
   "effects": {
@@ -59,7 +71,8 @@ export const Ignite: Power = {
         "Redirects.Assault_Rifle.Ignite",
         "Redirects.Assault_Rifle.Avoid"
       ],
-      "duration": 5.5
+      "duration": 5.5,
+      "copyBoosts": true
     }
   }
 };

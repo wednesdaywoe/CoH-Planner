@@ -56,25 +56,10 @@ export const ExecutionersShot: Power = {
     },
     {
       "type": "Fire",
-      "scale": 0.636,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Fire",
       "scale": 0.169,
       "table": "Ranged_Damage",
       "duration": 3.1,
       "tickRate": 1
-    },
-    {
-      "type": "Cold",
-      "scale": 0.636,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Toxic",
-      "scale": 0.636,
-      "table": "Ranged_Damage"
     },
     {
       "type": "Lethal",
@@ -90,32 +75,6 @@ export const ExecutionersShot: Power = {
     "knockback": {
       "scale": 1,
       "table": "Ranged_Knockback"
-    },
-    "movement": {
-      "runSpeed": {
-        "scale": 0.15,
-        "table": "Ranged_Slow"
-      },
-      "flySpeed": {
-        "scale": 0.15,
-        "table": "Ranged_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.15,
-        "table": "Ranged_Slow"
-      },
-      "jumpHeight": {
-        "scale": 0.15,
-        "table": "Ranged_Slow"
-      }
-    },
-    "rechargeDebuff": {
-      "scale": 0.15,
-      "table": "Ranged_Slow"
-    },
-    "damageDebuff": {
-      "scale": 1,
-      "table": "Ranged_Debuff_Dam"
     }
   }
 };

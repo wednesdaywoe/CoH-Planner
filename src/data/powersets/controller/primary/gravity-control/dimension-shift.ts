@@ -38,8 +38,18 @@ export const DimensionShift: Power = {
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "entity": "Pets_Dimension_Shift_Phased",
-      "duration": 20
+      "duration": 20,
+      "copyBoosts": true,
+      "entities": [
+        {
+          "entity": "Pets_Dimension_Shift",
+          "count": 1
+        },
+        {
+          "entity": "Pets_Dimension_Shift_Phased",
+          "count": 1
+        }
+      ]
     }
   }
 };

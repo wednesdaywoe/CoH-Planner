@@ -11,7 +11,7 @@ export const SonicClap: Power = {
   "name": "Sonic Clap",
   "internalName": "Sonic_Clap",
   "available": 15,
-  "description": "You generate a powerful sonic wave that damages foes in front of you with a decent chance to stun and knock them down. This power will inflict a splash damage over time effect and 10% bonus damage against Attuned targets.Notes: Thanks to gauntlet, this power can hit up to 5 targets above its cap at 1/3rd effectiveness.",
+  "description": "You generate a powerful sonic wave that damages foes in front of you with a decent chance to stun and knock them down. This power will inflict 10% bonus damage against Attuned targets.Notes: Thanks to gauntlet, this power can hit up to 5 targets above its cap at 1/3rd effectiveness.",
   "shortHelp": "Melee (Cone), Foe Disorient, Knockdown",
   "icon": "sonicmanipulation_sonicclap.png",
   "powerType": "Click",
@@ -44,11 +44,18 @@ export const SonicClap: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Energy",
-    "scale": 0.78,
-    "table": "Melee_Damage"
-  },
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 0.3919,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.3919,
+      "table": "Melee_Damage"
+    }
+  ],
   "effects": {
     "knockback": {
       "scale": 0.65,

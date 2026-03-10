@@ -33,6 +33,11 @@ export const Rooted: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "protection": {
+      "knockup": 1,
+      "knockback": 1,
+      "repel": 1
+    },
     "knockup": {
       "scale": 10,
       "table": "Melee_Ones"

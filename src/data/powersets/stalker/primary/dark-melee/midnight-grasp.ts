@@ -48,6 +48,16 @@ export const MidnightGrasp: Power = {
     },
     {
       "type": "Negative",
+      "scale": 2.76,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Negative",
+      "scale": 2.76,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Negative",
       "scale": 0.11,
       "table": "Melee_Damage",
       "duration": 3.1,

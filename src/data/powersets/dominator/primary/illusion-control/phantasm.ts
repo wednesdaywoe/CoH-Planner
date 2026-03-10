@@ -43,7 +43,8 @@ export const Phantasm: Power = {
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "entity": "Pets_Phantasm"
+      "entity": "Pets_Phantasm",
+      "copyBoosts": true
     }
   }
 };

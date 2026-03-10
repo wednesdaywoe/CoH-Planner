@@ -19,7 +19,7 @@ export const BlackHole: Power = {
   "stats": {
     "accuracy": 1,
     "range": 50,
-    "radius": 30,
+    "radius": 20,
     "recharge": 120,
     "endurance": 13,
     "castTime": 1.03,
@@ -42,6 +42,10 @@ export const BlackHole: Power = {
       "scale": 3,
       "table": "Ranged_Ones"
     },
-    "effectDuration": 30
+    "effectDuration": 30,
+    "threatDebuff": {
+      "scale": 1,
+      "table": "Ranged_Ones"
+    }
   }
 };

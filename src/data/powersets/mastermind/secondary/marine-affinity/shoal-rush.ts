@@ -23,7 +23,7 @@ export const ShoalRush: Power = {
     "arc": 1.5708,
     "recharge": 15,
     "endurance": 13,
-    "castTime": 1.33,
+    "castTime": 2.17,
     "maxTargets": 16
   },
   "allowedEnhancements": [

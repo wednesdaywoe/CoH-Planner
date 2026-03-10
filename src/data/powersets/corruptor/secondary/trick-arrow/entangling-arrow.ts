@@ -61,13 +61,9 @@ export const EntanglingArrow: Power = {
         "table": "Ranged_SpeedRunning"
       }
     },
-    "knockup": {
-      "scale": 100,
-      "table": "Ranged_Ones"
-    },
-    "knockback": {
-      "scale": 100,
-      "table": "Ranged_Ones"
+    "protection": {
+      "knockup": 1,
+      "knockback": 1
     },
     "resistanceDebuff": {
       "smashing": {

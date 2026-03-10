@@ -17,8 +17,8 @@ export const AssassinsWhisper: Power = {
   "powerType": "Click",
   "effectArea": "SingleTarget",
   "stats": {
-    "accuracy": 1.2,
-    "range": 7,
+    "accuracy": 1,
+    "range": 150,
     "recharge": 15,
     "endurance": 14.352,
     "castTime": 1.77
@@ -36,10 +36,5 @@ export const AssassinsWhisper: Power = {
     "Stalker Archetype Sets",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 8.5,
-    "table": "Melee_Damage"
-  }
+  "maxSlots": 6
 };

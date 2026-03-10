@@ -52,31 +52,10 @@ export const BulletRain: Power = {
     },
     {
       "type": "Fire",
-      "scale": 0.0997,
-      "table": "Ranged_Damage",
-      "duration": 1.1,
-      "tickRate": 0.5
-    },
-    {
-      "type": "Fire",
       "scale": 0.113,
       "table": "Ranged_Damage",
       "duration": 2.1,
       "tickRate": 1
-    },
-    {
-      "type": "Cold",
-      "scale": 0.0997,
-      "table": "Ranged_Damage",
-      "duration": 1.1,
-      "tickRate": 0.5
-    },
-    {
-      "type": "Toxic",
-      "scale": 0.0997,
-      "table": "Ranged_Damage",
-      "duration": 1.1,
-      "tickRate": 0.5
     },
     {
       "type": "Lethal",
@@ -90,32 +69,6 @@ export const BulletRain: Power = {
     "knockback": {
       "scale": 2,
       "table": "Ranged_Knockback"
-    },
-    "movement": {
-      "runSpeed": {
-        "scale": 0.15,
-        "table": "Ranged_Slow"
-      },
-      "flySpeed": {
-        "scale": 0.15,
-        "table": "Ranged_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.15,
-        "table": "Ranged_Slow"
-      },
-      "jumpHeight": {
-        "scale": 0.15,
-        "table": "Ranged_Slow"
-      }
-    },
-    "rechargeDebuff": {
-      "scale": 0.15,
-      "table": "Ranged_Slow"
-    },
-    "damageDebuff": {
-      "scale": 1,
-      "table": "Ranged_Debuff_Dam"
     },
     "damageBuff": {
       "scale": 0,

@@ -29,11 +29,8 @@ export const FastHealing: Power = {
   "maxSlots": 6,
   "effects": {
     "regenBuff": {
-      "scale": 0.75,
+      "scale": 0.2,
       "table": "Melee_Ones"
-    },
-    "debuffResistance": {
-      "regeneration": 0.2
     }
   }
 };

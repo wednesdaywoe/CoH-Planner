@@ -50,6 +50,10 @@ export const BetaDecay: Power = {
     "rechargeBuff": {
       "scale": 0.025,
       "table": "Melee_Ones"
+    },
+    "taunt": {
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
     }
   }
 };

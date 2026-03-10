@@ -23,7 +23,7 @@ export const EfficientAdaptation: Power = {
     "castTime": 0.67
   },
   "allowedEnhancements": [],
-  "maxSlots": 0,
-  "mechanicType": "childToggle",
-  "requires": "Tanker_Defense.Bio_Organic_Armor.Evolution"
+  "maxSlots": 6,
+  "requires": "Tanker_Defense.Bio_Organic_Armor.Evolution",
+  "mechanicType": "childToggle"
 };

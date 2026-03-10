@@ -36,7 +36,8 @@ export const TriageBeacon: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "Pets_Traps_Triage_Beacon",
-      "duration": 90
+      "duration": 90,
+      "copyBoosts": true
     }
   }
 };

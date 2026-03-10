@@ -59,13 +59,9 @@ export const IceArrow: Power = {
       "scale": 0.2,
       "table": "Ranged_Slow"
     },
-    "knockup": {
-      "scale": 100,
-      "table": "Ranged_Ones"
-    },
-    "knockback": {
-      "scale": 100,
-      "table": "Ranged_Ones"
+    "protection": {
+      "knockup": 1,
+      "knockback": 1
     },
     "hold": {
       "mag": 3,
@@ -73,8 +69,8 @@ export const IceArrow: Power = {
       "table": "Ranged_Immobilize"
     },
     "damageDebuff": {
-      "scale": 1.6,
-      "table": "Ranged_Debuff_Dam"
+      "scale": 0.45,
+      "table": "Ranged_Special"
     },
     "absorb": {
       "scale": 0.45,
@@ -99,6 +95,7 @@ export const IceArrow: Power = {
       "scale": 0.45,
       "table": "Ranged_Special"
     },
+    "effectDuration": 60,
     "fear": {
       "mag": 1,
       "scale": 0.45,
@@ -126,7 +123,6 @@ export const IceArrow: Power = {
     "tohitDebuff": {
       "scale": 0.45,
       "table": "Ranged_Special"
-    },
-    "effectDuration": 60
+    }
   }
 };

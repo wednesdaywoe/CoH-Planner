@@ -43,7 +43,8 @@ export const SoulAbsorption: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "Pets_SoulAbsorptionBuff",
-      "duration": 1
+      "duration": 1,
+      "copyBoosts": true
     },
     "tohitDebuff": {
       "scale": 1,

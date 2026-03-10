@@ -63,6 +63,10 @@ export const AtomSmasher: Power = {
     "defenseDebuff": {
       "scale": 1.2,
       "table": "Melee_Debuff_Def"
+    },
+    "damageBuff": {
+      "scale": 0,
+      "table": "Ranged_Ones"
     }
   }
 };

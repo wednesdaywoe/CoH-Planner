@@ -54,7 +54,8 @@ export const Liquefy: Power = {
         "Pets.ResistAll.ResistAll",
         "Pets.Liquefy.Liquefy"
       ],
-      "duration": 30
+      "duration": 30,
+      "copyBoosts": true
     }
   }
 };

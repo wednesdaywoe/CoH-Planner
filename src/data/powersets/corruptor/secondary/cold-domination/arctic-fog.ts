@@ -128,6 +128,10 @@ export const ArcticFog: Power = {
         "scale": 0.6,
         "table": "Ranged_Ones"
       }
+    },
+    "rechargeBuff": {
+      "scale": 0.6,
+      "table": "Ranged_Ones"
     }
   }
 };

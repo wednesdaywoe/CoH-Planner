@@ -42,7 +42,8 @@ export const AcidMortar: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "Pets_Traps_Acid_Mortar_Defender",
-      "duration": 60
+      "duration": 60,
+      "copyBoosts": true
     }
   }
 };

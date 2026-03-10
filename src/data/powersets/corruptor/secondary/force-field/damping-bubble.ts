@@ -41,7 +41,8 @@ export const DampingBubble: Power = {
         "Redirects.Force_Field.Dampening_Bubble_Debuff",
         "Redirects.Force_Field.Dampening_BubbleFX"
       ],
-      "duration": 45
+      "duration": 45,
+      "copyBoosts": true
     }
   }
 };

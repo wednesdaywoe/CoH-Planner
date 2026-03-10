@@ -36,11 +36,20 @@ export const Gust: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 1,
-    "table": "Ranged_Damage"
-  },
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 1,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.05,
+      "table": "Ranged_Damage",
+      "duration": 1.5,
+      "tickRate": 0.4
+    }
+  ],
   "effects": {
     "slow": {
       "fly": {

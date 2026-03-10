@@ -39,8 +39,8 @@ export const ObscureSustenance: Power = {
   },
   "effects": {
     "regenBuff": {
-      "scale": 3.375,
-      "table": "Melee_Ones"
+      "scale": 0.75,
+      "table": "Melee_Res_Boolean"
     },
     "recoveryBuff": {
       "scale": 0.1,

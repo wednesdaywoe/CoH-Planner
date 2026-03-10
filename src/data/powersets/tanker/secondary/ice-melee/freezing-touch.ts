@@ -52,6 +52,10 @@ export const FreezingTouch: Power = {
       "scale": 10,
       "table": "Melee_Immobilize"
     },
+    "protection": {
+      "knockup": 1,
+      "knockback": 1
+    },
     "knockup": {
       "scale": 100,
       "table": "Melee_Ones"

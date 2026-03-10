@@ -44,7 +44,9 @@ export const Haunt: Power = {
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "entity": "Pets_Shade"
+      "entity": "Pets_Shade",
+      "copyBoosts": true,
+      "entityCount": 2
     }
   }
 };

@@ -48,7 +48,8 @@ export const SmokeCanister: Power = {
         "Redirects.Assault_Rifle.Smoke_Grenade",
         "Redirects.Assault_Rifle.Smoke_Confusion"
       ],
-      "duration": 30
+      "duration": 30,
+      "copyBoosts": true
     }
   }
 };

@@ -61,6 +61,10 @@ export const PositronicFist: Power = {
     "defenseDebuff": {
       "scale": 2,
       "table": "Melee_Debuff_Def"
+    },
+    "damageBuff": {
+      "scale": 0,
+      "table": "Ranged_Ones"
     }
   }
 };

@@ -52,6 +52,16 @@ export const BallLightning: Power = {
       "table": "Ranged_Damage",
       "duration": 2.2,
       "tickRate": 0.6
+    },
+    {
+      "type": "Energy",
+      "scale": 0.18,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.9,
+      "table": "Ranged_InherentDamage"
     }
   ],
   "effects": {

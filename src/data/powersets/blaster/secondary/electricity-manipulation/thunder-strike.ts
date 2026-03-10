@@ -58,10 +58,6 @@ export const ThunderStrike: Power = {
       "scale": 0.07,
       "table": "Melee_Ones"
     },
-    "damageBuff": {
-      "scale": 0.078,
-      "table": "Melee_Ones"
-    },
     "recoveryDebuff": {
       "scale": 1,
       "table": "Melee_Ones"
@@ -73,6 +69,10 @@ export const ThunderStrike: Power = {
     },
     "knockback": {
       "scale": 0.64,
+      "table": "Melee_Ones"
+    },
+    "damageBuff": {
+      "scale": 0.078,
       "table": "Melee_Ones"
     }
   }

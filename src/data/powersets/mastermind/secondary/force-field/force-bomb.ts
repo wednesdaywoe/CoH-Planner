@@ -38,8 +38,7 @@ export const ForceBomb: Power = {
     "Knockback",
     "Ranged AoE Damage",
     "Stuns",
-    "Universal Damage Sets",
-    "Mastermind Archetype Sets"
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

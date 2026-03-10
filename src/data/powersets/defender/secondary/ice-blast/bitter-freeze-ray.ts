@@ -73,6 +73,10 @@ export const BitterFreezeRay: Power = {
       "scale": 0.2,
       "table": "Ranged_Slow"
     },
+    "protection": {
+      "knockup": 1,
+      "knockback": 1
+    },
     "knockup": {
       "scale": 100,
       "table": "Ranged_Ones"

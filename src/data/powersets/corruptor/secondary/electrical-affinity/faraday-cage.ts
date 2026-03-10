@@ -42,7 +42,8 @@ export const FaradayCage: Power = {
         "Redirects.Shock_Therapy.FaradayCageFx",
         "Redirects.Shock_Therapy.FaradayStatic"
       ],
-      "duration": 240
+      "duration": 240,
+      "copyBoosts": true
     }
   }
 };

@@ -40,20 +40,19 @@ export const KeeningWinds: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-      "confuse": {
-        "mag": 3,
-        "scale": 15,
-        "table": "Ranged_Fear"
-      },
-      "enduranceDrain": {
-        "scale": 0.04,
-        "table": "Ranged_Ones"
-      },
-      "enduranceGain": {
-        "scale": 10,
-        "table": "Ranged_EndDrain",
-        "perTarget": 10
-      }
+    "confuse": {
+      "mag": 3,
+      "scale": 15,
+      "table": "Ranged_Fear"
     },
+    "enduranceDrain": {
+      "scale": 0.04,
+      "table": "Ranged_Ones"
+    },
+    "enduranceGain": {
+      "scale": 10,
+      "table": "Ranged_EndDrain"
+    }
+  },
   "requires": "char>accesslevel >= 0"
 };

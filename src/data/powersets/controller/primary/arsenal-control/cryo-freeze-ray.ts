@@ -40,11 +40,18 @@ export const CryoFreezeRay: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Cold",
-    "scale": 1,
-    "table": "Ranged_Damage"
-  },
+  "damage": [
+    {
+      "type": "Cold",
+      "scale": 1,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Cold",
+      "scale": 1,
+      "table": "Ranged_InherentDamage"
+    }
+  ],
   "effects": {
     "hold": {
       "mag": 3,
@@ -73,13 +80,9 @@ export const CryoFreezeRay: Power = {
       "scale": 0.3,
       "table": "Ranged_Slow"
     },
-    "knockup": {
-      "scale": 100,
-      "table": "Ranged_Ones"
-    },
-    "knockback": {
-      "scale": 100,
-      "table": "Ranged_Ones"
+    "protection": {
+      "knockup": 1,
+      "knockback": 1
     },
     "slow": {
       "fly": {

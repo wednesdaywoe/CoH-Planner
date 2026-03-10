@@ -45,8 +45,18 @@ export const SeekerDrones: Power = {
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "entity": "Pets_Traps_Seeker2",
-      "duration": 240
+      "duration": 240,
+      "copyBoosts": true,
+      "entities": [
+        {
+          "entity": "Pets_Traps_Seeker1",
+          "count": 1
+        },
+        {
+          "entity": "Pets_Traps_Seeker2",
+          "count": 1
+        }
+      ]
     }
   }
 };

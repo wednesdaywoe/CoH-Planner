@@ -42,7 +42,8 @@ export const JackFrost: Power = {
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "entity": "Pets_JackFrost_Controller"
+      "entity": "Pets_JackFrost_Controller",
+      "copyBoosts": true
     }
   }
 };

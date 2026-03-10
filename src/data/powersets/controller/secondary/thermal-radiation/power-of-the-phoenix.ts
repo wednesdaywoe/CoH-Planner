@@ -18,9 +18,9 @@ export const PowerofthePhoenix: Power = {
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
-    "range": 60,
+    "range": 15,
     "recharge": 300,
-    "endurance": 10.4,
+    "endurance": 49.4,
     "castTime": 1.67
   },
   "allowedEnhancements": [
@@ -50,7 +50,8 @@ export const PowerofthePhoenix: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "Pets_Phoenix",
-      "duration": 5
+      "duration": 5,
+      "copyBoosts": true
     },
     "untouchable": {
       "scale": 10,

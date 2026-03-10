@@ -47,7 +47,8 @@ export const Vortex: Power = {
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "entity": "Pets_WindControl_Vortex_Controller"
+      "entity": "Pets_WindControl_Vortex_Controller",
+      "copyBoosts": true
     }
   },
   "requires": "char>accesslevel >= 0"

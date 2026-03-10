@@ -21,7 +21,7 @@ export const TearGas: Power = {
     "accuracy": 1,
     "range": 80,
     "radius": 20,
-    "recharge": 180,
+    "recharge": 240,
     "endurance": 15.6,
     "castTime": 1.87
   },
@@ -50,7 +50,8 @@ export const TearGas: Power = {
         "Redirects.Assault_Rifle.Tear_Gas_OneShot",
         "Pets.ResistAll.ResistAll"
       ],
-      "duration": 60
+      "duration": 60,
+      "copyBoosts": true
     }
   }
 };

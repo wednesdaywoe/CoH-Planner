@@ -42,7 +42,8 @@ export const OilSlickArrow: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "Pets_OilSlickOil_Blaster",
-      "duration": 30
+      "duration": 30,
+      "copyBoosts": true
     },
     "damageBuff": {
       "scale": 0,

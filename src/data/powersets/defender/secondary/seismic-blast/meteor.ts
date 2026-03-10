@@ -47,7 +47,8 @@ export const Meteor: Power = {
         "Pets.ResistAll.ResistAll",
         "Redirects.Seismic_Blast.Meteor"
       ],
-      "duration": 10
+      "duration": 10,
+      "copyBoosts": true
     }
   }
 };

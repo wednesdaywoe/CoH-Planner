@@ -41,7 +41,8 @@ export const GlueArrow: Power = {
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "entity": "Pets_StickyArrow_Blaster"
+      "entity": "Pets_StickyArrow_Blaster",
+      "copyBoosts": true
     },
     "damageBuff": {
       "scale": 0,

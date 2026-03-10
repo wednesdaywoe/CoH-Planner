@@ -61,6 +61,10 @@ export const ScrambleMinds: Power = {
       "scale": 10,
       "table": "Ranged_Stun"
     },
+    "placate": {
+      "scale": 10,
+      "table": "Ranged_Stun"
+    },
     "fear": {
       "mag": 3,
       "scale": 10,

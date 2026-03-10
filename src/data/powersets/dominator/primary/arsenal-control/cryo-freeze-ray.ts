@@ -73,13 +73,9 @@ export const CryoFreezeRay: Power = {
       "scale": 0.3,
       "table": "Ranged_Slow"
     },
-    "knockup": {
-      "scale": 100,
-      "table": "Ranged_Ones"
-    },
-    "knockback": {
-      "scale": 100,
-      "table": "Ranged_Ones"
+    "protection": {
+      "knockup": 1,
+      "knockback": 1
     },
     "slow": {
       "fly": {

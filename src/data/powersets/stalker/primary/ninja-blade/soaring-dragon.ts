@@ -40,19 +40,31 @@ export const SoaringDragon: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 1.8,
-    "table": "Melee_Damage"
-  },
-  "effects": {
-    "defenseDebuff": {
-      "scale": 1,
-      "table": "Melee_Debuff_Def"
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 1.8,
+      "table": "Melee_Damage"
     },
+    {
+      "type": "Lethal",
+      "scale": 1.8,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.8,
+      "table": "Melee_InherentDamage"
+    }
+  ],
+  "effects": {
     "knockup": {
       "scale": 2,
       "table": "Melee_Knockback"
+    },
+    "defenseDebuff": {
+      "scale": 1,
+      "table": "Melee_Debuff_Def"
     }
   }
 };

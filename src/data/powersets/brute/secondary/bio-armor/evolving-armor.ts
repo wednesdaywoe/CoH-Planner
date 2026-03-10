@@ -142,6 +142,10 @@ export const EvolvingArmor: Power = {
         "scale": 0.024,
         "table": "Melee_Buff_Def"
       }
+    },
+    "taunt": {
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
     }
   }
 };

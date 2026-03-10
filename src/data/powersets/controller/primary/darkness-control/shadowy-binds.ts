@@ -67,13 +67,9 @@ export const ShadowyBinds: Power = {
       "scale": 0.75,
       "table": "Ranged_Debuff_ToHit"
     },
-    "knockup": {
-      "scale": 100,
-      "table": "Ranged_Ones"
-    },
-    "knockback": {
-      "scale": 100,
-      "table": "Ranged_Ones"
+    "protection": {
+      "knockup": 1,
+      "knockback": 1
     },
     "slow": {
       "fly": {

@@ -19,10 +19,10 @@ export const HowlingTwilight: Power = {
   "stats": {
     "accuracy": 1,
     "range": 80,
-    "radius": 40,
+    "radius": 15,
     "recharge": 180,
-    "endurance": 10.4,
-    "castTime": 1.83,
+    "endurance": 26,
+    "castTime": 3.17,
     "maxTargets": 16
   },
   "allowedEnhancements": [
@@ -77,7 +77,8 @@ export const HowlingTwilight: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "Pets_Howling",
-      "duration": 1
+      "duration": 1,
+      "copyBoosts": true
     },
     "stun": {
       "mag": 2,

@@ -11,7 +11,7 @@ export const SecondWind: Power = {
   "name": "Second Wind",
   "internalName": "Dull_Pain",
   "available": 27,
-  "description": "When you use this power you will recover a percentage of your missing health, in addition to increasing your maximum hit points. Should you fall in battle after using this power, you can stand up and fight again. If used while defeated, you will enter stand back up and be protected from XP Debt for 90 seconds and immune to most damage for 15 seconds.Note: the self resurect granted if this power is activated while alive can not be enhanced.",
+  "description": "When you use this power you will recover a percentage of your missing health, in addition to increasing your maximum hit points. Should you fall in battle after using this power, you can stand up and fight again. If used while defeated, you will stand back up and be protected from XP Debt for 90 seconds and immune to most damage for 15 seconds.Note: the self resurrect granted if this power is activated while alive can not be enhanced.",
   "shortHelp": "Self +Max HP, Rez(Special)",
   "icon": "regeneration_dullpain.png",
   "powerType": "Click",
@@ -33,12 +33,5 @@ export const SecondWind: Power = {
     "Endurance Modification",
     "Healing"
   ],
-  "maxSlots": 6,
-  "effects": {
-    "maxHPBuff": {
-      "scale": 1.0,
-      "table": "Melee_HealSelf"
-    },
-    "buffDuration": 120
-  }
+  "maxSlots": 6
 };

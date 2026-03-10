@@ -21,8 +21,7 @@ export const ClearSkies: Power = {
     "accuracy": 1
   },
   "allowedEnhancements": [],
-  "maxSlots": 0,
-  "mechanicType": "parentMechanic",
+  "maxSlots": 6,
   "effects": {
     "tohitBuff": {
       "scale": 2.5,
@@ -41,5 +40,6 @@ export const ClearSkies: Power = {
       "table": "Ranged_Ones"
     }
   },
-  "requires": "Dominator_Control.Wind_Control.Vacuum && Dominator_Control.Wind_Control.Vortex && (char>accesslevel >= 0)"
+  "requires": "Dominator_Control.Wind_Control.Vacuum && Dominator_Control.Wind_Control.Vortex && (char>accesslevel >= 0)",
+  "mechanicType": "parentMechanic"
 };

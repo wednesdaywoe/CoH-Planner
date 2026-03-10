@@ -43,7 +43,8 @@ export const GlueArrow: Power = {
       "powers": [
         "Redirects.Trick_Arrow.GlueArrow"
       ],
-      "duration": 60
+      "duration": 60,
+      "copyBoosts": true
     }
   }
 };

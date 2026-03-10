@@ -38,15 +38,6 @@ export const AilmentResistance: Power = {
         "table": "Melee_Ones"
       }
     },
-    "debuffResistance": {
-      "defense": 0.2,
-      "endurance": 0.2,
-      "tohit": 0.2,
-      "movement": 0.2,
-      "regeneration": 0.2,
-      "recovery": 0.2,
-      "recharge": 0.2
-    },
     "elusivity": {
       "all": {
         "scale": 0.2,

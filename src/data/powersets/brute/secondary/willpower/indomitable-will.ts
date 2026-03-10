@@ -70,6 +70,11 @@ export const IndomitableWill: Power = {
         "table": "Melee_Buff_Def"
       }
     },
+    "protection": {
+      "knockup": 1,
+      "knockback": 1,
+      "repel": 1
+    },
     "knockup": {
       "scale": 10,
       "table": "Melee_Ones"

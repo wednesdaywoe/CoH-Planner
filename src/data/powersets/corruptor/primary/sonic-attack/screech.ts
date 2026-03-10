@@ -48,6 +48,11 @@ export const Screech: Power = {
       "type": "Energy",
       "scale": 1.14,
       "table": "Ranged_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 2.28,
+      "table": "Ranged_InherentDamage"
     }
   ],
   "effects": {

@@ -59,7 +59,8 @@ export const Vacuum: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "Pets_WindControl_Vacuum_Dominator",
-      "duration": 8
+      "duration": 8,
+      "copyBoosts": true
     },
     "hold": {
       "mag": 4,

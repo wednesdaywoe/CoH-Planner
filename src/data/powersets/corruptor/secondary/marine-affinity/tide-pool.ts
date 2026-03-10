@@ -42,7 +42,8 @@ export const TidePool: Power = {
         "Redirects.Marine_Affinity.TidePool_Aura",
         "Redirects.Marine_Affinity.TidePool_Aura_Debuff"
       ],
-      "duration": 240
+      "duration": 240,
+      "copyBoosts": true
     }
   }
 };

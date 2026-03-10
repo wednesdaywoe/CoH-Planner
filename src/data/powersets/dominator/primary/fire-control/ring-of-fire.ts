@@ -51,13 +51,9 @@ export const RingofFire: Power = {
       "scale": 15,
       "table": "Ranged_Immobilize"
     },
-    "knockup": {
-      "scale": 100,
-      "table": "Ranged_Ones"
-    },
-    "knockback": {
-      "scale": 100,
-      "table": "Ranged_Ones"
+    "protection": {
+      "knockup": 1,
+      "knockback": 1
     },
     "slow": {
       "fly": {

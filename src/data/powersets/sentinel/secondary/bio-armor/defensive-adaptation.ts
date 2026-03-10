@@ -23,13 +23,13 @@ export const DefensiveAdaptation: Power = {
     "castTime": 1
   },
   "allowedEnhancements": [],
-  "maxSlots": 0,
-  "mechanicType": "childToggle",
+  "maxSlots": 6,
   "effects": {
     "damageDebuff": {
       "scale": 0.25,
       "table": "Melee_Ones"
     }
   },
-  "requires": "Sentinel_Defense.Bio_Organic_Armor.Adaptation"
+  "requires": "Sentinel_Defense.Bio_Organic_Armor.Adaptation",
+  "mechanicType": "childToggle"
 };

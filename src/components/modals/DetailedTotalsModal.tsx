@@ -24,7 +24,7 @@ import type { Build } from '@/types/build';
 const DETAILED_CATEGORIES = [
   {
     name: 'Offense',
-    stats: ['damage', 'accuracy', 'tohit', 'hitchance', 'recharge', 'endreduction', 'range_bonus', 'heal_other', 'threat_level'],
+    stats: ['damage', 'accuracy', 'tohit', 'recharge', 'endreduction', 'range_bonus', 'heal_other', 'threat_level'],
   },
   {
     name: 'Health & Endurance',
@@ -92,7 +92,6 @@ const GLOBAL_BONUS_OVERRIDES: Record<string, keyof GlobalBonuses> = {
   mezres_taunt: 'mezResistTaunt',
   mezres_placate: 'mezResistPlacate',
   level_shift: 'levelShift',
-  hitchance: 'hitChance',
 };
 
 // ============================================

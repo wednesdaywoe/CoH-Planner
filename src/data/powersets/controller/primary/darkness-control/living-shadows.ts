@@ -44,13 +44,22 @@ export const LivingShadows: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Negative",
-    "scale": 0.13,
-    "table": "Ranged_Damage",
-    "duration": 5.2,
-    "tickRate": 2
-  },
+  "damage": [
+    {
+      "type": "Negative",
+      "scale": 0.13,
+      "table": "Ranged_Damage",
+      "duration": 5.2,
+      "tickRate": 2
+    },
+    {
+      "type": "Negative",
+      "scale": 0.13,
+      "table": "Ranged_InherentDamage",
+      "duration": 5.2,
+      "tickRate": 2
+    }
+  ],
   "effects": {
     "immobilize": {
       "mag": 3,
@@ -61,13 +70,9 @@ export const LivingShadows: Power = {
       "scale": 0.75,
       "table": "Ranged_Debuff_ToHit"
     },
-    "knockup": {
-      "scale": 100,
-      "table": "Ranged_Ones"
-    },
-    "knockback": {
-      "scale": 100,
-      "table": "Ranged_Ones"
+    "protection": {
+      "knockup": 1,
+      "knockback": 1
     },
     "slow": {
       "fly": {

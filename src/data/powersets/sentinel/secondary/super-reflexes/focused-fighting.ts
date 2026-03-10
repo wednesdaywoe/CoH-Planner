@@ -45,6 +45,10 @@ export const FocusedFighting: Power = {
       "table": "Melee_Res_Boolean"
     },
     "effectDuration": 0.75,
+    "protection": {
+      "knockup": 1,
+      "knockback": 1
+    },
     "knockup": {
       "scale": 10,
       "table": "Melee_Ones"

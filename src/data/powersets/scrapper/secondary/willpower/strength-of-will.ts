@@ -67,12 +67,17 @@ export const StrengthofWill: Power = {
       }
     },
     "knockup": {
-      "scale": 10,
+      "scale": 100,
       "table": "Melee_Ones"
     },
     "knockback": {
-      "scale": 10,
+      "scale": 100,
       "table": "Melee_Ones"
+    },
+    "protection": {
+      "knockup": 1,
+      "knockback": 1,
+      "repel": 1
     },
     "repel": {
       "scale": 10,

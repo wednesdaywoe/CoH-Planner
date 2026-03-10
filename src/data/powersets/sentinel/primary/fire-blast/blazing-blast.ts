@@ -36,11 +36,20 @@ export const BlazingBlast: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Fire",
-    "scale": 1,
-    "table": "Ranged_Damage"
-  },
+  "damage": [
+    {
+      "type": "Fire",
+      "scale": 1,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.0985,
+      "table": "Ranged_Damage",
+      "duration": 2.5,
+      "tickRate": 0.2
+    }
+  ],
   "effects": {
     "repel": {
       "scale": 8,

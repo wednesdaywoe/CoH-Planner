@@ -51,17 +51,27 @@ export const DevastatingBlow: Power = {
       "type": "Energy",
       "scale": 2.31,
       "table": "Melee_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 3.08,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 3.08,
+      "table": "Melee_InherentDamage"
     }
   ],
   "effects": {
-    "defenseDebuff": {
-      "scale": 2,
-      "table": "Melee_Debuff_Def"
-    },
     "stun": {
       "mag": 3,
       "scale": 10,
       "table": "Melee_Immobilize"
+    },
+    "defenseDebuff": {
+      "scale": 2,
+      "table": "Melee_Debuff_Def"
     }
   }
 };

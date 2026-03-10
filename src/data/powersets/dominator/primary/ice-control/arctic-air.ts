@@ -76,16 +76,16 @@ export const ArcticAir: Power = {
         "table": "Ranged_SpeedRunning"
       }
     },
+    "confuse": {
+      "mag": 3,
+      "scale": 3,
+      "table": "Ranged_Fear"
+    },
     "fear": {
       "mag": 1,
       "scale": 3,
       "table": "Ranged_Ones"
     },
-    "effectDuration": 2,
-    "confuse": {
-      "mag": 3,
-      "scale": 3,
-      "table": "Ranged_Fear"
-    }
+    "effectDuration": 2
   }
 };

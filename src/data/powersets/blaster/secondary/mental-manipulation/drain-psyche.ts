@@ -39,27 +39,25 @@ export const DrainPsyche: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-      "regenBuff": {
-        "scale": 0.75,
-        "table": "Melee_Ones",
-        "perTarget": 0.75
-      },
-      "recoveryBuff": {
-        "scale": 0.75,
-        "table": "Melee_Ones",
-        "perTarget": 0.75
-      },
-      "regenDebuff": {
-        "scale": 2.5,
-        "table": "Melee_Ones"
-      },
-      "recoveryDebuff": {
-        "scale": 2.5,
-        "table": "Melee_Ones"
-      },
-      "damageBuff": {
-        "scale": 0.035,
-        "table": "Melee_Ones"
-      }
+    "regenBuff": {
+      "scale": 0.75,
+      "table": "Melee_Ones"
+    },
+    "recoveryBuff": {
+      "scale": 0.75,
+      "table": "Melee_Ones"
+    },
+    "regenDebuff": {
+      "scale": 2.5,
+      "table": "Melee_Ones"
+    },
+    "recoveryDebuff": {
+      "scale": 2.5,
+      "table": "Melee_Ones"
+    },
+    "damageBuff": {
+      "scale": 0.035,
+      "table": "Melee_Ones"
     }
+  }
 };

@@ -37,48 +37,47 @@ export const MoistureAbsorption: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-      "enduranceDrain": {
-        "scale": 0.35,
-        "table": "Melee_Ones"
+    "enduranceDrain": {
+      "scale": 0.35,
+      "table": "Melee_Ones"
+    },
+    "enduranceGain": {
+      "scale": 15,
+      "table": "Melee_Ones"
+    },
+    "defenseBuff": {
+      "smashing": {
+        "scale": 0.4,
+        "table": "Melee_Buff_Def"
       },
-      "enduranceGain": {
-        "scale": 15,
-        "table": "Melee_Ones",
-        "perTarget": 15
+      "lethal": {
+        "scale": 0.4,
+        "table": "Melee_Buff_Def"
       },
-      "defenseBuff": {
-        "smashing": {
-          "scale": 0.4,
-          "table": "Melee_Buff_Def"
-        },
-        "lethal": {
-          "scale": 0.4,
-          "table": "Melee_Buff_Def"
-        },
-        "fire": {
-          "scale": 0.4,
-          "table": "Melee_Buff_Def"
-        },
-        "cold": {
-          "scale": 0.4,
-          "table": "Melee_Buff_Def"
-        },
-        "energy": {
-          "scale": 0.4,
-          "table": "Melee_Buff_Def"
-        },
-        "negative": {
-          "scale": 0.4,
-          "table": "Melee_Buff_Def"
-        },
-        "psionic": {
-          "scale": 0.4,
-          "table": "Melee_Buff_Def"
-        },
-        "toxic": {
-          "scale": 0.4,
-          "table": "Melee_Buff_Def"
-        }
+      "fire": {
+        "scale": 0.4,
+        "table": "Melee_Buff_Def"
+      },
+      "cold": {
+        "scale": 0.4,
+        "table": "Melee_Buff_Def"
+      },
+      "energy": {
+        "scale": 0.4,
+        "table": "Melee_Buff_Def"
+      },
+      "negative": {
+        "scale": 0.4,
+        "table": "Melee_Buff_Def"
+      },
+      "psionic": {
+        "scale": 0.4,
+        "table": "Melee_Buff_Def"
+      },
+      "toxic": {
+        "scale": 0.4,
+        "table": "Melee_Buff_Def"
       }
     }
+  }
 };

@@ -39,11 +39,18 @@ export const SandmansWhisper: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Energy",
-    "scale": 1.64,
-    "table": "Melee_Damage"
-  },
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 0.82,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.82,
+      "table": "Melee_Damage"
+    }
+  ],
   "effects": {
     "resistanceDebuff": {
       "smashing": {

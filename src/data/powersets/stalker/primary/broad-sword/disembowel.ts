@@ -21,7 +21,7 @@ export const Disembowel: Power = {
     "range": 7,
     "recharge": 10,
     "endurance": 10.192,
-    "castTime": 1.5
+    "castTime": 1.8
   },
   "allowedEnhancements": [
     "EnduranceReduction",
@@ -40,19 +40,31 @@ export const Disembowel: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 1.96,
-    "table": "Melee_Damage"
-  },
-  "effects": {
-    "defenseDebuff": {
-      "scale": 1,
-      "table": "Melee_Debuff_Def"
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 1.96,
+      "table": "Melee_Damage"
     },
+    {
+      "type": "Lethal",
+      "scale": 1.96,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.96,
+      "table": "Melee_InherentDamage"
+    }
+  ],
+  "effects": {
     "knockup": {
       "scale": 2,
       "table": "Melee_Knockback"
+    },
+    "defenseDebuff": {
+      "scale": 1,
+      "table": "Melee_Debuff_Def"
     }
   }
 };

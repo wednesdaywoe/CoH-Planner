@@ -38,7 +38,8 @@ export const Quicksand: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "Pets_Quicksand",
-      "duration": 45
+      "duration": 45,
+      "copyBoosts": true
     }
   }
 };

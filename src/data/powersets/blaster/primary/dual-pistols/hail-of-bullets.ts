@@ -90,32 +90,6 @@ export const HailofBullets: Power = {
       "scale": 0.4,
       "table": "Ranged_Ones"
     },
-    "movement": {
-      "runSpeed": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      },
-      "flySpeed": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      },
-      "jumpHeight": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      }
-    },
-    "rechargeDebuff": {
-      "scale": 0.2,
-      "table": "Ranged_Slow"
-    },
-    "damageDebuff": {
-      "scale": 2,
-      "table": "Ranged_Debuff_Dam"
-    },
     "defenseBuff": {
       "ranged": {
         "scale": 1.5,

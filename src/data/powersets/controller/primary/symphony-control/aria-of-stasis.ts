@@ -43,11 +43,18 @@ export const AriaofStasis: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Psionic",
-    "scale": 0.4824,
-    "table": "Ranged_Damage"
-  },
+  "damage": [
+    {
+      "type": "Psionic",
+      "scale": 0.4824,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 0.4824,
+      "table": "Ranged_InherentDamage"
+    }
+  ],
   "effects": {
     "movement": {
       "runSpeed": {
@@ -67,13 +74,9 @@ export const AriaofStasis: Power = {
         "table": "Ranged_Slow"
       }
     },
-    "knockup": {
-      "scale": 100,
-      "table": "Ranged_Ones"
-    },
-    "knockback": {
-      "scale": 100,
-      "table": "Ranged_Ones"
+    "protection": {
+      "knockup": 1,
+      "knockback": 1
     },
     "immobilize": {
       "mag": 3,

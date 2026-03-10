@@ -13,7 +13,7 @@ export const GravityDistortionField: Power = {
   "available": 17,
   "description": "Creates a large, intensely misshapen Gravity Distortion Field that encompasses several foes, rendering them unable to take any action. Enemies in the area of effect will be affected by the Gravity Distortion effect.",
   "shortHelp": "Ranged (Targeted AoE), Foe Hold, Damage(Smashing), +Gravity Distortion",
-  "icon": "gravitycontrol_gravitydistortion.png",
+  "icon": "gravitycontrol_gravitydistortionfield.png",
   "powerType": "Click",
   "effectArea": "SingleTarget",
   "stats": {
@@ -49,7 +49,8 @@ export const GravityDistortionField: Power = {
         "Redirects.Gravity_Control.Gravity_Distortion_Field_Slow",
         "Redirects.Gravity_Control.Gravity_Distortion_Field_Oneshot",
         "Redirects.Gravity_Control.Self_Destruct"
-      ]
+      ],
+      "copyBoosts": true
     }
   }
 };

@@ -33,15 +33,15 @@ export const TripMine: Power = {
   "allowedSetCategories": [
     "Knockback",
     "Melee AoE Damage",
-    "Universal Damage Sets",
-    "Mastermind Archetype Sets"
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "effects": {
     "summon": {
       "isPseudoPet": false,
       "entity": "Pets_Traps_Mine",
-      "duration": 260
+      "duration": 260,
+      "copyBoosts": true
     }
   }
 };

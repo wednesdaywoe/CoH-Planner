@@ -46,7 +46,8 @@ export const BurstofSpeed: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "Pets_Burst_of_Speed",
-      "duration": 2
+      "duration": 2,
+      "copyBoosts": true
     },
     "damageBuff": {
       "scale": 0.026,

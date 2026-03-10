@@ -43,14 +43,13 @@ export const CategoryFive: Power = {
   "effects": {
     "summon": {
       "isPseudoPet": true,
-      "displayName": "Category Five Eye",
+      "displayName": "Category Five",
       "powers": [
         "Pets.ResistAll_NoFly.ResistAll",
-        "Redirects.Storm_Blast.Nukenado_Skin",
-        "Redirects.Storm_Blast.Nukenado_Pulse_Sentinel",
-        "Redirects.Storm_Blast.Nukenado_SelfDestruct"
+        "Redirects.Storm_Blast.Category_Five_Sentinel"
       ],
-      "duration": 10
+      "duration": 20,
+      "copyBoosts": true
     }
   }
 };

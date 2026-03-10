@@ -46,6 +46,10 @@ export const RisetotheChallenge: Power = {
     "regenBuff": {
       "scale": 1,
       "table": "Melee_Ones"
+    },
+    "taunt": {
+      "scale": 1.25,
+      "table": "Melee_Ones"
     }
   }
 };

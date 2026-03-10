@@ -41,7 +41,8 @@ export const TriCannon: Power = {
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "entity": "Pets_GunDrone_Tri_Controller"
+      "entity": "Pets_GunDrone_Tri_Controller",
+      "copyBoosts": true
     }
   }
 };

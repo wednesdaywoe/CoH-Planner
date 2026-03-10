@@ -38,21 +38,19 @@ export const Sleet: Power = {
     "Defense Debuff",
     "Ranged AoE Damage",
     "Slow Movement",
-    "Universal Damage Sets",
-    "Mastermind Archetype Sets"
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "effects": {
     "summon": {
       "isPseudoPet": true,
       "displayName": "Sleet",
-      "entity": "Pets_Sleet",
-      "copyBoosts": true,
       "powers": [
         "Pets.Sleet.Sleet",
         "Pets.Sleet.Avoid"
       ],
-      "duration": 15
+      "duration": 15,
+      "copyBoosts": true
     }
   }
 };

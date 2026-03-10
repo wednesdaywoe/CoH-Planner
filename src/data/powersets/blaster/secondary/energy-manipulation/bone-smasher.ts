@@ -40,12 +40,12 @@ export const BoneSmasher: Power = {
   "damage": [
     {
       "type": "Smashing",
-      "scale": 1.82,
+      "scale": 0.78,
       "table": "Melee_Damage"
     },
     {
       "type": "Energy",
-      "scale": 0.78,
+      "scale": 1.82,
       "table": "Melee_Damage"
     }
   ],

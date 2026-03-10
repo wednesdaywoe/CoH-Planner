@@ -28,26 +28,30 @@ export const Cloudburst: Power = {
     "Range",
     "Recharge",
     "Damage",
-    "Accuracy",
-    "Slow",
-    "ToHit Debuff"
+    "Accuracy"
   ],
   "allowedSetCategories": [
     "Corruptor Archetype Sets",
-    "Accurate To-Hit Debuff",
     "Ranged Damage",
-    "Slow Movement",
-    "To Hit Debuff",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Cold",
-    "scale": 0.2275,
-    "table": "Ranged_Damage",
-    "duration": 2.9,
-    "tickRate": 0.3
-  },
+  "damage": [
+    {
+      "type": "Cold",
+      "scale": 0.2275,
+      "table": "Ranged_Damage",
+      "duration": 2.9,
+      "tickRate": 0.3
+    },
+    {
+      "type": "Cold",
+      "scale": 0.2275,
+      "table": "Ranged_InherentDamage",
+      "duration": 2.9,
+      "tickRate": 0.3
+    }
+  ],
   "effects": {
     "rechargeDebuff": {
       "scale": 0.1,

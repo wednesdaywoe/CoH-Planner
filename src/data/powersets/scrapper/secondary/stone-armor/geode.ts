@@ -51,6 +51,10 @@ export const Geode: Power = {
         "Redirects.Stone_Armor.Geode_Scaling"
       ]
     },
+    "protection": {
+      "knockup": 1,
+      "knockback": 1
+    },
     "knockup": {
       "scale": 10,
       "table": "Melee_Ones"

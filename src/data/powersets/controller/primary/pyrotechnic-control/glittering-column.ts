@@ -48,9 +48,11 @@ export const GlitteringColumn: Power = {
       "powers": [
         "Redirects.Pyrotechnic_Control.GlitteringColumn_Skin",
         "Redirects.Pyrotechnic_Control.GlitteringColumn_Aura",
+        "Redirects.Pyrotechnic_Control.GlitteringColumn_ToHitAura",
         "Redirects.Pyrotechnic_Control.GlitteringColumn_SelfDestruct"
       ],
-      "duration": 7
+      "duration": 7,
+      "copyBoosts": true
     }
   }
 };

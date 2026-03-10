@@ -10,7 +10,7 @@ import type { Power } from '@/types';
 export const ImposePresence: Power = {
   "name": "Impose Presence",
   "internalName": "Impose_Presence",
-  "available": 9,
+  "available": 7,
   "description": "Impose your presence on nearby enemies, slowing their attack rate down and increasing your defense and chance to hit.",
   "shortHelp": "Toggle: Self +DEF(Melee, Ranged), +To Hit, Foe -Recharge",
   "icon": "psionicarmor_imposepresence.png",
@@ -56,6 +56,10 @@ export const ImposePresence: Power = {
         "scale": 0.075,
         "table": "Melee_Buff_Def"
       }
+    },
+    "taunt": {
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
     }
   }
 };

@@ -57,13 +57,9 @@ export const ElectricFence: Power = {
       "scale": 0.028,
       "table": "Ranged_Ones"
     },
-    "knockup": {
-      "scale": 100,
-      "table": "Ranged_Ones"
-    },
-    "knockback": {
-      "scale": 100,
-      "table": "Ranged_Ones"
+    "protection": {
+      "knockup": 1,
+      "knockback": 1
     },
     "recoveryDebuff": {
       "scale": 1,

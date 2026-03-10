@@ -52,7 +52,8 @@ export const Reverberant: Power = {
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "entity": "Pets_Reverberant"
+      "entity": "Pets_Reverberant",
+      "copyBoosts": true
     }
   }
 };

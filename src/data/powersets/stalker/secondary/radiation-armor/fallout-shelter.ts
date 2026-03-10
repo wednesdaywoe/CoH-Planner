@@ -54,6 +54,10 @@ export const FalloutShelter: Power = {
       "scale": 30,
       "table": "Melee_Res_Boolean"
     },
+    "protection": {
+      "knockup": 1,
+      "knockback": 1
+    },
     "knockup": {
       "scale": 10,
       "table": "Melee_Ones"

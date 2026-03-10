@@ -40,6 +40,10 @@ export const FieldOperative: Power = {
         "scale": 35.5,
         "table": "Melee_Ones"
       },
+      "translucency": {
+        "scale": 0.1,
+        "table": "Melee_Ones"
+      },
       "stealthPvP": {
         "scale": 390,
         "table": "Melee_Ones"

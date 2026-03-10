@@ -35,15 +35,15 @@ export const PoisonTrap: Power = {
     "Endurance Modification",
     "Holds",
     "Melee AoE Damage",
-    "Universal Damage Sets",
-    "Mastermind Archetype Sets"
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "effects": {
     "summon": {
       "isPseudoPet": false,
       "entity": "Pets_Poison_Trap",
-      "duration": 260
+      "duration": 260,
+      "copyBoosts": true
     }
   }
 };

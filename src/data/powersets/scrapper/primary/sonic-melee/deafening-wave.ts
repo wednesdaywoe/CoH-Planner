@@ -11,7 +11,7 @@ export const DeafeningWave: Power = {
   "name": "Deafening Wave",
   "internalName": "Deafening_Wave",
   "available": 21,
-  "description": "You create a large field of sonic waves, causing damage to all foes around you. It has a moderate chance of causing migraines, leaving them shaking in pain and helpless. This power will inflict a splash damage over time effect and 10% bonus damage against Attuned targets.",
+  "description": "You create a large field of sonic waves, causing damage to all foes around you. It has a moderate chance of causing migraines, leaving them shaking in pain and helpless. This power will inflict 10% bonus damage against Attuned targets.",
   "shortHelp": "PBAoE Melee, DMG(Energy/Smash), Foe Chance for Hold",
   "icon": "sonicmanipulation_deafeningcry.png",
   "powerType": "Click",
@@ -39,11 +39,28 @@ export const DeafeningWave: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Energy",
-    "scale": 0.85,
-    "table": "Melee_Damage"
-  },
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 0.4246,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.4246,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.8492,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.8492,
+      "table": "Melee_InherentDamage"
+    }
+  ],
   "effects": {
     "hold": {
       "mag": 2,

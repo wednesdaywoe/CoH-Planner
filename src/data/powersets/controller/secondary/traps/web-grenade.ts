@@ -67,13 +67,9 @@ export const WebGrenade: Power = {
         "table": "Ranged_Slow"
       }
     },
-    "knockup": {
-      "scale": 100,
-      "table": "Ranged_Ones"
-    },
-    "knockback": {
-      "scale": 100,
-      "table": "Ranged_Ones"
+    "protection": {
+      "knockup": 1,
+      "knockback": 1
     }
   }
 };

@@ -42,6 +42,10 @@ export const BlackHole: Power = {
       "scale": 3,
       "table": "Ranged_Ones"
     },
-    "effectDuration": 30
+    "effectDuration": 30,
+    "threatDebuff": {
+      "scale": 1,
+      "table": "Ranged_Ones"
+    }
   }
 };

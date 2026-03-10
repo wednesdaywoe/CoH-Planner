@@ -46,7 +46,8 @@ export const Whirlpool: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "Pets_Whirlpool_Blaster",
-      "duration": 15
+      "duration": 15,
+      "copyBoosts": true
     },
     "damageBuff": {
       "scale": 0.033,

@@ -44,6 +44,7 @@ export const ImpenetrableMind: Power = {
       "scale": 30,
       "table": "Melee_Res_Boolean"
     },
+    "effectDuration": 0.75,
     "fear": {
       "mag": 1,
       "scale": 30,
@@ -70,13 +71,16 @@ export const ImpenetrableMind: Power = {
       "table": "Melee_Res_Boolean"
     },
     "knockup": {
-      "scale": 1,
-      "table": "Melee_Ones"
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
     },
     "knockback": {
-      "scale": 1,
-      "table": "Melee_Ones"
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
     },
-    "effectDuration": 0.75
+    "protection": {
+      "knockup": 1,
+      "knockback": 1
+    }
   }
 };

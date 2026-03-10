@@ -60,9 +60,8 @@ export const SparklingCage: Power = {
       "scale": 15,
       "table": "Ranged_Immobilize"
     },
-    "knockback": {
-      "scale": 100,
-      "table": "Ranged_Ones"
+    "protection": {
+      "knockback": 1
     },
     "slow": {
       "fly": {

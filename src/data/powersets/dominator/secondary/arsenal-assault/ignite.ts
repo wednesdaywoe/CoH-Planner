@@ -51,7 +51,8 @@ export const Ignite: Power = {
         "Redirects.Assault_Rifle.Ignite",
         "Redirects.Assault_Rifle.Avoid"
       ],
-      "duration": 5.5
+      "duration": 5.5,
+      "copyBoosts": true
     }
   }
 };

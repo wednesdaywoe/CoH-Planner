@@ -23,7 +23,7 @@ export const IncendiaryAmmunition: Power = {
     "castTime": 0.63
   },
   "allowedEnhancements": [],
-  "maxSlots": 0,
-  "mechanicType": "childToggle",
-  "requires": "Sentinel_Ranged.Dual_Pistols.Swap_Ammo"
+  "maxSlots": 6,
+  "requires": "Sentinel_Ranged.Dual_Pistols.Swap_Ammo",
+  "mechanicType": "childToggle"
 };

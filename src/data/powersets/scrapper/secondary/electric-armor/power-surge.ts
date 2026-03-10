@@ -79,26 +79,42 @@ export const PowerSurge: Power = {
       "table": "Melee_Ones"
     },
     "knockup": {
-      "scale": 1,
+      "scale": 100,
       "table": "Melee_Ones"
     },
     "knockback": {
-      "scale": 1,
+      "scale": 100,
       "table": "Melee_Ones"
     },
     "repel": {
+      "scale": 10,
+      "table": "Melee_Ones"
+    },
+    "teleport": {
       "scale": 1,
       "table": "Melee_Ones"
+    },
+    "protection": {
+      "knockup": 1,
+      "knockback": 1,
+      "repel": 1
     },
     "enduranceGain": {
       "scale": 4,
       "table": "Melee_Res_Boolean"
+    },
+    "stealth": {
+      "translucency": {
+        "scale": 0,
+        "table": "Melee_Ones"
+      }
     },
     "hold": {
       "mag": 1,
       "scale": 50,
       "table": "Melee_Res_Boolean"
     },
+    "effectDuration": 30,
     "immobilize": {
       "mag": 1,
       "scale": 50,
@@ -113,7 +129,6 @@ export const PowerSurge: Power = {
       "mag": 1,
       "scale": 50,
       "table": "Melee_Res_Boolean"
-    },
-    "effectDuration": 30
+    }
   }
 };

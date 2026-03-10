@@ -20,10 +20,10 @@ export const StormCell: Power = {
   "stats": {
     "accuracy": 1,
     "range": 40,
-    "radius": 35,
-    "recharge": 15,
+    "radius": 25,
+    "recharge": 60,
     "endurance": 15.6,
-    "castTime": 1.17
+    "castTime": 2.03
   },
   "allowedEnhancements": [
     "EnduranceModification",
@@ -51,7 +51,8 @@ export const StormCell: Power = {
         "Redirects.Storm_Blast.StormCell_Tempest_Sentinel",
         "Redirects.Storm_Blast.StormCell_SelfDestruct"
       ],
-      "duration": 60
+      "duration": 60,
+      "copyBoosts": true
     }
   }
 };

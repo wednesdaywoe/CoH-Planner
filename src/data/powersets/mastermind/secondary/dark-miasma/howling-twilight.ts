@@ -19,10 +19,10 @@ export const HowlingTwilight: Power = {
   "stats": {
     "accuracy": 1,
     "range": 80,
-    "radius": 40,
+    "radius": 15,
     "recharge": 180,
-    "endurance": 13,
-    "castTime": 1.83,
+    "endurance": 32.5,
+    "castTime": 3.17,
     "maxTargets": 16
   },
   "allowedEnhancements": [
@@ -37,8 +37,7 @@ export const HowlingTwilight: Power = {
     "Ranged AoE Damage",
     "Slow Movement",
     "Stuns",
-    "Universal Damage Sets",
-    "Mastermind Archetype Sets"
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {
@@ -77,7 +76,8 @@ export const HowlingTwilight: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "Pets_HowlingVillain",
-      "duration": 1
+      "duration": 1,
+      "copyBoosts": true
     },
     "stun": {
       "mag": 2,

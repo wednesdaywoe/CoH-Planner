@@ -23,8 +23,7 @@ export const OffensiveAdaptation: Power = {
     "castTime": 0.67
   },
   "allowedEnhancements": [],
-  "maxSlots": 0,
-  "mechanicType": "childToggle",
+  "maxSlots": 6,
   "effects": {
     "resistanceDebuff": {
       "smashing": {
@@ -61,5 +60,6 @@ export const OffensiveAdaptation: Power = {
       }
     }
   },
-  "requires": "Tanker_Defense.Bio_Organic_Armor.Evolution"
+  "requires": "Tanker_Defense.Bio_Organic_Armor.Evolution",
+  "mechanicType": "childToggle"
 };

@@ -45,10 +45,6 @@ export const BlindingPowder: Power = {
       "scale": 1,
       "table": "Melee_DeBuff_ToHit"
     },
-    "damageBuff": {
-      "scale": 0,
-      "table": "Ranged_Ones"
-    },
     "sleep": {
       "mag": 3,
       "scale": 10,
@@ -62,6 +58,10 @@ export const BlindingPowder: Power = {
     "perceptionDebuff": {
       "scale": 0.9,
       "table": "Melee_Ones"
+    },
+    "damageBuff": {
+      "scale": 0,
+      "table": "Ranged_Ones"
     }
   }
 };

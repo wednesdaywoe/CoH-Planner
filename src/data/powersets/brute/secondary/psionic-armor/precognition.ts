@@ -42,7 +42,7 @@ export const Precognition: Power = {
         "table": "Melee_Buff_Def"
       },
       "psionic": {
-        "scale": 0.5,
+        "scale": 1,
         "table": "Melee_Buff_Def"
       }
     },

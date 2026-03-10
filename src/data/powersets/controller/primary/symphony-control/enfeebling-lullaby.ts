@@ -41,11 +41,18 @@ export const EnfeeblingLullaby: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Psionic",
-    "scale": 0.2,
-    "table": "Ranged_Damage"
-  },
+  "damage": [
+    {
+      "type": "Psionic",
+      "scale": 0.2,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 0.2,
+      "table": "Ranged_InherentDamage"
+    }
+  ],
   "effects": {
     "damageDebuff": {
       "scale": 2,

@@ -52,14 +52,29 @@ export const Ripper: Power = {
       "type": "Toxic",
       "scale": 0.2,
       "table": "Melee_Damage",
-      "duration": 7.1,
+      "duration": 4.1,
       "tickRate": 1
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.7,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.7,
+      "table": "Melee_InherentDamage"
     }
   ],
   "effects": {
     "knockback": {
       "scale": 0.67,
       "table": "Melee_Ones"
+    },
+    "immobilize": {
+      "mag": 0.67,
+      "scale": 10,
+      "table": "Melee_Immobilize"
     },
     "rechargeDebuff": {
       "scale": 0.1,
@@ -82,11 +97,6 @@ export const Ripper: Power = {
         "scale": 0.2,
         "table": "Melee_Slow"
       }
-    },
-    "immobilize": {
-      "mag": 0.67,
-      "scale": 10,
-      "table": "Melee_Immobilize"
     }
   }
 };

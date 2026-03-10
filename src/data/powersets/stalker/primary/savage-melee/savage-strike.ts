@@ -35,11 +35,30 @@ export const SavageStrike: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 0.38,
-    "table": "Melee_Damage",
-    "duration": 0.4,
-    "tickRate": 0.35
-  }
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 0.38,
+      "table": "Melee_Damage",
+      "duration": 0.4,
+      "tickRate": 0.35
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.76,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.76,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.137,
+      "table": "Melee_Damage",
+      "duration": 3.1,
+      "tickRate": 1
+    }
+  ]
 };

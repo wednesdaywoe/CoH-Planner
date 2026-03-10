@@ -50,14 +50,14 @@ export const BoneSmasher: Power = {
     }
   ],
   "effects": {
-    "regenDebuff": {
-      "scale": 0.5,
-      "table": "Melee_Ones"
-    },
     "stun": {
       "mag": 3,
       "scale": 8,
       "table": "Melee_Stun"
+    },
+    "regenDebuff": {
+      "scale": 0.5,
+      "table": "Melee_Ones"
     },
     "damageDebuff": {
       "scale": 0.25,
@@ -86,6 +86,7 @@ export const BoneSmasher: Power = {
       "scale": 0.25,
       "table": "Melee_Stun"
     },
+    "effectDuration": 15,
     "fear": {
       "mag": 1,
       "scale": 0.25,
@@ -113,7 +114,6 @@ export const BoneSmasher: Power = {
     "tohitDebuff": {
       "scale": 0.25,
       "table": "Melee_Stun"
-    },
-    "effectDuration": 15
+    }
   }
 };

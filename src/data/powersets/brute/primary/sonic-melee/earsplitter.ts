@@ -11,7 +11,7 @@ export const Earsplitter: Power = {
   "name": "Earsplitter",
   "internalName": "Earsplitter",
   "available": 25,
-  "description": "You generate an earsplitting sound wave right in the face of your foe, inflicting great damage. It has a good chance of causing a migraine, leaving them shaking in pain and helpless. This power will inflict 20% bonus damage against Attuned targets.",
+  "description": "You generate an earsplitting sound wave right in the face of your foe, inflicting great damage. It has a good chance of causing a migraine, leaving them shaking in pain and helpless. This power will inflict 10% bonus damage against Attuned targets.",
   "shortHelp": "Melee, DMG(Energy/Smash), Foe -Res(Debuffs), Chance for Hold",
   "icon": "sonicmanipulation_earsplitter.png",
   "powerType": "Click",
@@ -39,11 +39,18 @@ export const Earsplitter: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Energy",
-    "scale": 2.6,
-    "table": "Melee_Damage"
-  },
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 1.3,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.3,
+      "table": "Melee_Damage"
+    }
+  ],
   "effects": {
     "elusivity": {
       "all": {

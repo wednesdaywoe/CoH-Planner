@@ -41,7 +41,8 @@ export const TripMine: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "Pets_Mine",
-      "duration": 260
+      "duration": 260,
+      "copyBoosts": true
     },
     "damageBuff": {
       "scale": 0,

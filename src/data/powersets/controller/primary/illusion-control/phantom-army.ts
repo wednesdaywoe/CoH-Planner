@@ -41,7 +41,9 @@ export const PhantomArmy: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "Pets_Decoy",
-      "duration": 60
+      "duration": 60,
+      "copyBoosts": true,
+      "entityCount": 6
     }
   }
 };

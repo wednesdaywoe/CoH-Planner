@@ -42,6 +42,10 @@ export const EntropicAura: Power = {
     "rechargeDebuff": {
       "scale": 0.2,
       "table": "Melee_Slow"
+    },
+    "taunt": {
+      "scale": 2.25,
+      "table": "Melee_Ones"
     }
   }
 };

@@ -51,17 +51,27 @@ export const Barrage: Power = {
       "table": "Melee_Damage",
       "duration": 0.3,
       "tickRate": 0.25
+    },
+    {
+      "type": "Energy",
+      "scale": 1.32,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.32,
+      "table": "Melee_InherentDamage"
     }
   ],
   "effects": {
-    "regenDebuff": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
     "stun": {
       "mag": 3,
       "scale": 8,
       "table": "Melee_Stun"
+    },
+    "regenDebuff": {
+      "scale": 1,
+      "table": "Melee_Ones"
     },
     "damageDebuff": {
       "scale": 0.25,
@@ -90,6 +100,7 @@ export const Barrage: Power = {
       "scale": 0.25,
       "table": "Melee_Stun"
     },
+    "effectDuration": 15,
     "fear": {
       "mag": 1,
       "scale": 0.25,
@@ -117,7 +128,6 @@ export const Barrage: Power = {
     "tohitDebuff": {
       "scale": 0.25,
       "table": "Melee_Stun"
-    },
-    "effectDuration": 15
+    }
   }
 };

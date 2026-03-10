@@ -51,16 +51,26 @@ export const RadioactiveSmash: Power = {
       "type": "Energy",
       "scale": 1.11,
       "table": "Melee_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.48,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.48,
+      "table": "Melee_InherentDamage"
     }
   ],
   "effects": {
-    "defenseDebuff": {
-      "scale": 1.5,
-      "table": "Melee_Debuff_Def"
-    },
     "knockback": {
       "scale": 0.67,
       "table": "Melee_Ones"
+    },
+    "defenseDebuff": {
+      "scale": 1.5,
+      "table": "Melee_Debuff_Def"
     }
   }
 };

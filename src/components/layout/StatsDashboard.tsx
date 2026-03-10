@@ -32,7 +32,6 @@ const GLOBAL_BONUS_OVERRIDES: Record<string, keyof GlobalBonuses> = {
   level_shift: 'levelShift',
   endcost: 'toggleEndCost',
   netend: 'netEndPerSec',
-  hitchance: 'hitChance',
 };
 
 // Re-export for any consumers that imported from here
@@ -147,7 +146,7 @@ export function StatsDashboard() {
     {
       name: 'Offense',
       stats: [
-        'damage', 'accuracy', 'tohit', 'hitchance', 'recharge', 'endreduction',
+        'damage', 'accuracy', 'tohit', 'recharge', 'endreduction',
         'range_bonus', 'heal_other', 'threat_level',
       ],
     },

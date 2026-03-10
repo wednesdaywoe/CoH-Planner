@@ -42,7 +42,8 @@ export const GunDrone: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "Pets_Turret",
-      "duration": 90
+      "duration": 90,
+      "copyBoosts": true
     },
     "damageBuff": {
       "scale": 0,

@@ -39,78 +39,69 @@ export const EnergyAbsorption: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-      "movement": {
-        "runSpeed": {
-          "scale": 0.2,
-          "table": "Melee_Ones"
-        },
-        "flySpeed": {
-          "scale": 0.2,
-          "table": "Melee_Ones"
-        },
-        "jumpSpeed": {
-          "scale": 0.2,
-          "table": "Melee_Ones"
-        },
-        "jumpHeight": {
-          "scale": 0.2,
-          "table": "Melee_Ones"
-        }
-      },
-      "rechargeBuff": {
+    "movement": {
+      "runSpeed": {
         "scale": 0.2,
         "table": "Melee_Ones"
       },
-      "enduranceGain": {
-        "scale": 15,
-        "table": "Melee_Ones",
-        "perTarget": 15
-      },
-      "enduranceDrain": {
-        "scale": 0.35,
+      "flySpeed": {
+        "scale": 0.2,
         "table": "Melee_Ones"
       },
-      "defenseBuff": {
-        "smashing": {
-          "scale": 0.47500000000000003,
-          "table": "Melee_Buff_Def",
-          "perTarget": 0.025
-        },
-        "lethal": {
-          "scale": 0.47500000000000003,
-          "table": "Melee_Buff_Def",
-          "perTarget": 0.025
-        },
-        "fire": {
-          "scale": 0.47500000000000003,
-          "table": "Melee_Buff_Def",
-          "perTarget": 0.025
-        },
-        "cold": {
-          "scale": 0.47500000000000003,
-          "table": "Melee_Buff_Def",
-          "perTarget": 0.025
-        },
-        "energy": {
-          "scale": 0.47500000000000003,
-          "table": "Melee_Buff_Def",
-          "perTarget": 0.025
-        },
-        "negative": {
-          "scale": 0.47500000000000003,
-          "table": "Melee_Buff_Def",
-          "perTarget": 0.025
-        },
-        "psionic": {
-          "scale": 0.47500000000000003,
-          "table": "Melee_Buff_Def",
-          "perTarget": 0.025
-        },
-        "toxic": {
-          "scale": 0.47500000000000003,
-          "table": "Melee_Buff_Def",
-          "perTarget": 0.025
-        }
+      "jumpSpeed": {
+        "scale": 0.2,
+        "table": "Melee_Ones"
+      },
+      "jumpHeight": {
+        "scale": 0.2,
+        "table": "Melee_Ones"
       }
+    },
+    "rechargeBuff": {
+      "scale": 0.2,
+      "table": "Melee_Ones"
+    },
+    "defenseBuff": {
+      "smashing": {
+        "scale": 0.025,
+        "table": "Melee_Buff_Def"
+      },
+      "lethal": {
+        "scale": 0.025,
+        "table": "Melee_Buff_Def"
+      },
+      "fire": {
+        "scale": 0.025,
+        "table": "Melee_Buff_Def"
+      },
+      "cold": {
+        "scale": 0.025,
+        "table": "Melee_Buff_Def"
+      },
+      "energy": {
+        "scale": 0.025,
+        "table": "Melee_Buff_Def"
+      },
+      "negative": {
+        "scale": 0.025,
+        "table": "Melee_Buff_Def"
+      },
+      "psionic": {
+        "scale": 0.025,
+        "table": "Melee_Buff_Def"
+      },
+      "toxic": {
+        "scale": 0.025,
+        "table": "Melee_Buff_Def"
+      }
+    },
+    "enduranceGain": {
+      "scale": 15,
+      "table": "Melee_Ones"
+    },
+    "enduranceDrain": {
+      "scale": 0.35,
+      "table": "Melee_Ones"
     }
+  }
 };

@@ -44,7 +44,8 @@ export const FlyTrap: Power = {
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "entity": "Pets_Fly_Trap_Controller"
+      "entity": "Pets_Fly_Trap_Controller",
+      "copyBoosts": true
     }
   }
 };

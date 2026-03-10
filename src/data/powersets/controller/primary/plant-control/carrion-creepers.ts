@@ -54,7 +54,8 @@ export const CarrionCreepers: Power = {
         "Villain_Pets.Creeper_Patch.Bramble",
         "Villain_Pets.Creeper_Patch.FX"
       ],
-      "duration": 120
+      "duration": 120,
+      "copyBoosts": true
     }
   }
 };

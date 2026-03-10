@@ -42,7 +42,8 @@ export const DisruptionArrow: Power = {
         "Redirects.Trick_Arrow.Disruption_Arrow",
         "Pets.ResistAll.ResistAll"
       ],
-      "duration": 45
+      "duration": 45,
+      "copyBoosts": true
     }
   }
 };

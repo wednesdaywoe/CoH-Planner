@@ -39,14 +39,25 @@ export const CrackWhip: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Toxic",
-    "scale": 0.222,
-    "table": "Ranged_Damage",
-    "duration": 2.1,
-    "tickRate": 1
-  },
+  "damage": [
+    {
+      "type": "Fire",
+      "scale": 1.13,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Toxic",
+      "scale": 0.222,
+      "table": "Ranged_Damage",
+      "duration": 2.1,
+      "tickRate": 1
+    }
+  ],
   "effects": {
+    "knockback": {
+      "scale": 0.64,
+      "table": "Ranged_Ones"
+    },
     "resistanceDebuff": {
       "smashing": {
         "scale": 1.25,
@@ -80,10 +91,6 @@ export const CrackWhip: Power = {
         "scale": 1.25,
         "table": "Ranged_Debuff_Res_Dmg"
       }
-    },
-    "knockback": {
-      "scale": 0.64,
-      "table": "Ranged_Ones"
     }
   }
 };

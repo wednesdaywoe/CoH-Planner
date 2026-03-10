@@ -43,7 +43,8 @@ export const AnimateStone: Power = {
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "entity": "Pets_Stone"
+      "entity": "Pets_Stone",
+      "copyBoosts": true
     }
   }
 };

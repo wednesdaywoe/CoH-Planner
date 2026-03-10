@@ -142,6 +142,11 @@ export const MomentofGlory: Power = {
       "scale": 1,
       "table": "Melee_Ones"
     },
+    "protection": {
+      "knockup": 1,
+      "knockback": 1,
+      "repel": 1
+    },
     "damageBuff": {
       "scale": 0.5,
       "table": "Melee_Buff_Dmg"

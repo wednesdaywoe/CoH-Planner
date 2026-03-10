@@ -64,13 +64,9 @@ export const MelodicBinding: Power = {
         "table": "Ranged_Slow"
       }
     },
-    "knockup": {
-      "scale": 100,
-      "table": "Ranged_Ones"
-    },
-    "knockback": {
-      "scale": 100,
-      "table": "Ranged_Ones"
+    "protection": {
+      "knockup": 1,
+      "knockback": 1
     },
     "immobilize": {
       "mag": 4,

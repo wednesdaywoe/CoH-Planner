@@ -40,7 +40,8 @@ export const CatherineWheel: Power = {
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "entity": "Pets_CatherineWheel_Controller"
+      "entity": "Pets_CatherineWheel_Controller",
+      "copyBoosts": true
     }
   }
 };

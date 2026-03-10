@@ -48,13 +48,18 @@ export const MercurialBlow: Power = {
       "type": "Smashing",
       "scale": 0.84,
       "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.84,
+      "table": "Melee_Damage"
     }
   ],
-  "requires": "!Stalker_Defense.Shield_Defense",
   "effects": {
     "defenseDebuff": {
       "scale": 1,
       "table": "Melee_Debuff_Def"
     }
-  }
+  },
+  "requires": "!Stalker_Defense.Shield_Defense"
 };

@@ -48,7 +48,8 @@ export const VoltaicSentinel: Power = {
         "Pets.ResistAll_NoFly.ResistAll",
         "Pets.VoltaicSentinel_PseudoPet.Electrical_Bolt",
         "Pets.VoltaicSentinel_PseudoPet.Electrical_Field"
-      ]
+      ],
+      "copyBoosts": true
     }
   }
 };

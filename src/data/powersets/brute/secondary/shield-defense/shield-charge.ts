@@ -48,7 +48,8 @@ export const ShieldCharge: Power = {
     "summon": {
       "isPseudoPet": false,
       "entity": "Pets_Shield_Charge_Brute",
-      "duration": 4
+      "duration": 4,
+      "copyBoosts": true
     }
   }
 };

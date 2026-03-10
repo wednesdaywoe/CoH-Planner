@@ -21,6 +21,6 @@ export const ReachfortheLimit: Power = {
     "accuracy": 1
   },
   "allowedEnhancements": [],
-  "maxSlots": 0,
+  "maxSlots": 6,
   "mechanicType": "parentMechanic"
 };

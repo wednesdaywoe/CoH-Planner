@@ -44,7 +44,8 @@ export const PoisonGasArrow: Power = {
       "powers": [
         "Redirects.Trick_Arrow.PoisonGasArrow"
       ],
-      "duration": 20
+      "duration": 20,
+      "copyBoosts": true
     },
     "damageDebuff": {
       "scale": 2,

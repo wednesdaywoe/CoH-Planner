@@ -39,11 +39,30 @@ export const MassLevitate: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 1.42,
-    "table": "Melee_Damage"
-  },
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 1.42,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 1.42,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 1.42,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 0.1424,
+      "table": "Melee_Damage",
+      "duration": 3.1,
+      "tickRate": 1
+    }
+  ],
   "effects": {
     "knockup": {
       "scale": 2,

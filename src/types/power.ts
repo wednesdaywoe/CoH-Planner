@@ -126,6 +126,8 @@ export interface ProtectionEffects {
   confuse?: number;
   fear?: number;
   knockback?: number;
+  knockup?: number;
+  repel?: number;
 }
 
 // ============================================

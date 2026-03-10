@@ -38,11 +38,18 @@ export const ShiftingTides: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Cold",
-    "scale": 0.5,
-    "table": "Ranged_Damage"
-  },
+  "damage": [
+    {
+      "type": "Cold",
+      "scale": 0.5,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Cold",
+      "scale": 0.5,
+      "table": "Ranged_Damage"
+    }
+  ],
   "effects": {
     "damageBuff": {
       "scale": 0.24,

@@ -63,6 +63,11 @@ export const Tranquilizer: Power = {
     }
   ],
   "effects": {
+    "sleep": {
+      "mag": 3.5,
+      "scale": 30,
+      "table": "Ranged_Sleep"
+    },
     "movement": {
       "runSpeed": {
         "scale": 0.1,
@@ -80,11 +85,6 @@ export const Tranquilizer: Power = {
         "scale": 0.1,
         "table": "Ranged_Slow"
       }
-    },
-    "sleep": {
-      "mag": 3.5,
-      "scale": 30,
-      "table": "Ranged_Sleep"
     }
   }
 };

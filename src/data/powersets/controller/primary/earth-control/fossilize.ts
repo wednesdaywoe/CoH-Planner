@@ -60,13 +60,9 @@ export const Fossilize: Power = {
       "scale": 2,
       "table": "Ranged_Debuff_Def"
     },
-    "knockup": {
-      "scale": 100,
-      "table": "Ranged_Ones"
-    },
-    "knockback": {
-      "scale": 100,
-      "table": "Ranged_Ones"
+    "protection": {
+      "knockup": 1,
+      "knockback": 1
     }
   }
 };

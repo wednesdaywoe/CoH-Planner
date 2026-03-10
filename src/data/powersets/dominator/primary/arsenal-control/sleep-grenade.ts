@@ -50,7 +50,8 @@ export const SleepGrenade: Power = {
         "Redirects.Assault_Rifle.Sleep_Grenade",
         "Redirects.Assault_Rifle.Sleep_Grenade_Damage"
       ],
-      "duration": 30
+      "duration": 30,
+      "copyBoosts": true
     }
   }
 };

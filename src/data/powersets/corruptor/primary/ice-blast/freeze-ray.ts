@@ -38,14 +38,27 @@ export const FreezeRay: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Cold",
-    "scale": 0.2,
-    "table": "Ranged_Damage",
-    "duration": 2,
-    "tickRate": 0.2
-  },
+  "damage": [
+    {
+      "type": "Cold",
+      "scale": 0.2,
+      "table": "Ranged_Damage",
+      "duration": 2,
+      "tickRate": 0.2
+    },
+    {
+      "type": "Cold",
+      "scale": 0.2,
+      "table": "Ranged_InherentDamage",
+      "duration": 2,
+      "tickRate": 0.2
+    }
+  ],
   "effects": {
+    "protection": {
+      "knockup": 1,
+      "knockback": 1
+    },
     "knockup": {
       "scale": 100,
       "table": "Ranged_Ones"

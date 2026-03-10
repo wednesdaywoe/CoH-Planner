@@ -48,7 +48,8 @@ export const VoltaicSentinel: Power = {
         "Pets.VoltaicSentinel_Dominator.Electrical_Bolt",
         "Pets.VoltaicSentinel_Dominator.Electrical_Field"
       ],
-      "duration": 60
+      "duration": 60,
+      "copyBoosts": true
     }
   }
 };

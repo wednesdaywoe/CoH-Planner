@@ -35,12 +35,24 @@ export const PowerSlice: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 0.3867,
-    "table": "Melee_Damage",
-    "duration": 1,
-    "tickRate": 0.4
-  },
+  "damage": [
+    {
+      "type": "Lethal",
+      "scale": 0.3867,
+      "table": "Melee_Damage",
+      "duration": 1,
+      "tickRate": 0.4
+    },
+    {
+      "type": "Lethal",
+      "scale": 1.16,
+      "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.84,
+      "table": "Melee_InherentDamage"
+    }
+  ],
   "requires": "!Stalker_Defense.Shield_Defense"
 };

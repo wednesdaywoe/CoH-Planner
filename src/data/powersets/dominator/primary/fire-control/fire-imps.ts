@@ -40,7 +40,9 @@ export const FireImps: Power = {
   "effects": {
     "summon": {
       "isPseudoPet": false,
-      "entity": "Pets_FireImp"
+      "entity": "Pets_FireImp",
+      "copyBoosts": true,
+      "entityCount": 3
     }
   }
 };

@@ -54,6 +54,34 @@ export const Geyser: Power = {
       "type": "Fire",
       "scale": 1.126,
       "table": "Ranged_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.102,
+      "table": "Ranged_Damage",
+      "duration": 5.1,
+      "tickRate": 0.5
+    },
+    {
+      "type": "Fire",
+      "scale": 0.108,
+      "table": "Ranged_Damage",
+      "duration": 5.1,
+      "tickRate": 0.5
+    },
+    {
+      "type": "Fire",
+      "scale": 0.115,
+      "table": "Ranged_Damage",
+      "duration": 5.1,
+      "tickRate": 0.5
+    },
+    {
+      "type": "Fire",
+      "scale": 0.128,
+      "table": "Ranged_Damage",
+      "duration": 5.1,
+      "tickRate": 0.5
     }
   ],
   "effects": {

@@ -37,7 +37,6 @@ export const PreciseStrike: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "requires": "!Stalker_Defense.Shield_Defense",
   "damage": [
     {
       "type": "Smashing",
@@ -61,5 +60,6 @@ export const PreciseStrike: Power = {
       "scale": 5,
       "table": "Melee_Stun"
     }
-  }
+  },
+  "requires": "!Stalker_Defense.Shield_Defense"
 };

@@ -45,6 +45,10 @@ export const RadioactiveCloud: Power = {
       "mag": 2,
       "scale": 8,
       "table": "Ranged_Immobilize"
+    },
+    "damageBuff": {
+      "scale": 0,
+      "table": "Ranged_Ones"
     }
   }
 };

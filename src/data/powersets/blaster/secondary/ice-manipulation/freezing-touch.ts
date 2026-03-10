@@ -45,6 +45,10 @@ export const FreezingTouch: Power = {
     "tickRate": 1
   },
   "effects": {
+    "protection": {
+      "knockup": 1,
+      "knockback": 1
+    },
     "knockup": {
       "scale": 100,
       "table": "Melee_Ones"

@@ -47,25 +47,10 @@ export const Pistols: Power = {
     },
     {
       "type": "Fire",
-      "scale": 0.3,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Fire",
       "scale": 0.113,
       "table": "Ranged_Damage",
       "duration": 2.1,
       "tickRate": 1
-    },
-    {
-      "type": "Cold",
-      "scale": 0.3,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Toxic",
-      "scale": 0.3,
-      "table": "Ranged_Damage"
     },
     {
       "type": "Lethal",
@@ -74,32 +59,6 @@ export const Pistols: Power = {
     }
   ],
   "effects": {
-    "movement": {
-      "runSpeed": {
-        "scale": 0.12,
-        "table": "Ranged_Slow"
-      },
-      "flySpeed": {
-        "scale": 0.12,
-        "table": "Ranged_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.12,
-        "table": "Ranged_Slow"
-      },
-      "jumpHeight": {
-        "scale": 0.12,
-        "table": "Ranged_Slow"
-      }
-    },
-    "rechargeDebuff": {
-      "scale": 0.12,
-      "table": "Ranged_Slow"
-    },
-    "damageDebuff": {
-      "scale": 0.8,
-      "table": "Ranged_Debuff_Dam"
-    },
     "defenseDebuff": {
       "scale": 1,
       "table": "Ranged_Debuff_Def"
