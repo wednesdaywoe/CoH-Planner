@@ -23,6 +23,7 @@ export const KNOWN_BUGS: TrackerItem[] = [
 // ============================================
 
 export const RECENT_CHANGES: TrackerItem[] = [
+  { text: 'Added missing generic enh icons, corrected ATO slotting rule, fix issue preventing AoE defense effects from registering', status: 'fixed' },
   { text: 'Added 9 missing Hamidon Enhancements (Vesicle, Stereocilia, Microtubule, Karyoplasm, Microvillus, Chromatin, Ectosome, Amyloplast, Chloroplast) but I do not have icons for them yet', status: 'fixed' },
   { text: 'Kheldian inherent travel powers removed from selection', status: 'fixed' },
   { text: 'Villain epic pools should now appear as options.', status: 'fixed' },

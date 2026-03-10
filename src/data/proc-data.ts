@@ -20,6 +20,7 @@ export type ProcEffectCategory =
   | 'RunSpeed'
   | 'MaxHP'
   | 'KnockbackProtection'
+  | 'MezResist'
   | 'Stealth'
   | 'Control'
   | 'Debuff'
@@ -1073,7 +1074,7 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     setName: "Aegis",
     ioName: "Psionic and Mez Resistance",
     ppm: null,
-    mechanics: "Resistance(Psionic 5%)",
+    mechanics: "Resistance(Psionic 5%), MezResist(All 20%)",
     pvpNotes: "",
     type: "Global",
     levelRange: "20--40",
@@ -1389,6 +1390,21 @@ export function parseProcEffect(mechanics: string): ParsedProcEffect {
       secondaryCategory: 'Endurance',
       secondaryValue: parseFloat(panaceaEndMatch[1]),
       duration,
+      isBuff: true,
+      description: mechanics,
+    };
+  }
+
+  // Aegis style: Resistance(Type X%), MezResist(All Y%)
+  const aegisMatch = mechanics.match(/Resistance\s*\(\s*(\w+)\s+(\d+(?:\.\d+)?)\s*%\s*\).*MezResist\s*\(\s*(\w+)\s+(\d+(?:\.\d+)?)\s*%\s*\)/i);
+  if (aegisMatch) {
+    return {
+      category: 'Resistance',
+      effectType: aegisMatch[1],
+      value: parseFloat(aegisMatch[2]),
+      secondaryCategory: 'MezResist',
+      secondaryEffectType: aegisMatch[3],
+      secondaryValue: parseFloat(aegisMatch[4]),
       isBuff: true,
       description: mechanics,
     };

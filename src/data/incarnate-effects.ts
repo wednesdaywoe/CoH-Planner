@@ -634,19 +634,19 @@ const ALPHA_EFFECTS: Record<string, AlphaEffects> = {
     edBypass: 1/2,  // Rare: 1/2 bypasses ED
   },
   'resilient_core_paragon': {
-    resistance: 0.45,
-    toHitBuff: 0.33,
+    resistance: 0.33,
+    toHitBuff: 0.20,
     immobilize: 0.33,
     levelShift: 1,
     edBypass: 2/3,  // Very Rare: 2/3 bypasses ED
   },
   'resilient_radial_paragon': {
-    resistance: 0.45,
-    taunt: 0.20,
+    resistance: 0.20,
+    taunt: 0.33,
     immobilize: 0.33,
-    stun: 0.20,
-    toHitBuff: 0.33,
-    absorb: 0.20,
+    stun: 0.33,
+    toHitBuff: 0.20,
+    absorb: 0.33,
     levelShift: 1,
     edBypass: 2/3,  // Very Rare: 2/3 bypasses ED
   },

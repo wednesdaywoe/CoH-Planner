@@ -45,9 +45,9 @@ export const STAT_ICON_MAP: Record<string, string> = {
   Healing: 'Heal.png',
   ToHit: 'ToHitBuff.png',
   Hold: 'Hold.png',
-  Stun: 'Hold.png',
+  Stun: 'Disorient.png',
   Immobilize: 'Immob.png',
-  Sleep: 'Hold.png',
+  Sleep: 'Sleep.png',
   Confuse: 'Confuse.png',
   Fear: 'Fear.png',
   Knockback: 'Knockback.png',
@@ -60,7 +60,7 @@ export const STAT_ICON_MAP: Record<string, string> = {
   Interrupt: 'Interrupt.png',
   Slow: 'Slow.png',
   Intangible: 'Intan.png',
-  Taunt: 'Hold.png',
+  Taunt: 'Taunt.png',
   Absorb: 'Heal.png',
 };
 

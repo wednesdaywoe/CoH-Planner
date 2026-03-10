@@ -57,12 +57,18 @@ export function AvailablePoolPowers() {
     ? Object.entries(allPools)
         .filter(([id]) => {
           if (selectedPoolIds.has(id) || id === 'fitness') return false;
-          // Check mutual exclusion (e.g., Sorcery / Experimentation / Force of Will)
-          const excluded = getExcludedPools(id);
-          if (excluded && pools.some((p) => excluded.includes(p.id))) return false;
           return true;
         })
-        .map(([id, pool]) => ({ value: id, label: pool.name }))
+        .map(([id, pool]) => {
+          // Show mutually exclusive pools as disabled with explanation
+          const excluded = getExcludedPools(id);
+          const conflicting = excluded && pools.find((p) => excluded.includes(p.id));
+          if (conflicting) {
+            const conflictPool = allPools[conflicting.id];
+            return { value: id, label: `${pool.name} (exclusive with ${conflictPool?.name || conflicting.id})`, disabled: true };
+          }
+          return { value: id, label: pool.name };
+        })
     : [];
 
   // Epic pools for dropdown

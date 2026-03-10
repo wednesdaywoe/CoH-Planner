@@ -969,6 +969,7 @@ function resolveScaledEffect(
 }
 
 function capitalizeFirst(str: string): string {
+  if (str.toLowerCase() === 'aoe') return 'AoE';
   return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
 }
 
@@ -1311,6 +1312,15 @@ function applySingleProcEffect(
     case 'RunSpeed':
       global.runSpeed += value;
       addToBreakdown(breakdown, 'runspeed', {
+        name: sourceName,
+        value,
+        type: 'proc',
+      });
+      break;
+
+    case 'MezResist':
+      global.mezResist += value;
+      addToBreakdown(breakdown, 'mezResist', {
         name: sourceName,
         value,
         type: 'proc',
