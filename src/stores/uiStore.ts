@@ -406,14 +406,14 @@ const defaultStatsConfig: StatDisplayConfig[] = [
   { stat: 'accuracy', visible: true, order: 1 },
   { stat: 'tohit', visible: true, order: 2 },
   { stat: 'recharge', visible: true, order: 3 },
-  { stat: 'endurance', visible: true, order: 5 },
-  { stat: 'defense', visible: true, order: 6 },
-  { stat: 'resistance', visible: true, order: 7 },
-  { stat: 'health', visible: true, order: 8 },
-  { stat: 'regeneration', visible: true, order: 9 },
-  { stat: 'recovery', visible: true, order: 10 },
-  { stat: 'endcost', visible: true, order: 11 },
-  { stat: 'netend', visible: true, order: 12 },
+  { stat: 'health', visible: true, order: 4 },
+  { stat: 'regeneration', visible: true, order: 5 },
+  { stat: 'recovery', visible: true, order: 6 },
+  { stat: 'endcost', visible: true, order: 7 },
+  { stat: 'netend', visible: true, order: 8 },
+  { stat: 'defense_melee', visible: true, order: 9 },
+  { stat: 'defense_ranged', visible: true, order: 10 },
+  { stat: 'res_smashing', visible: true, order: 11 },
 ];
 
 // ============================================

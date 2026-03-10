@@ -179,25 +179,31 @@ const STAT_CATEGORIES: {
     name: 'Defense',
     colorKey: 'defense',
     stats: [
-      { stat: 'defense_melee', label: 'Melee Def' },
-      { stat: 'defense_ranged', label: 'Ranged Def' },
-      { stat: 'defense_aoe', label: 'AoE Def' },
-      { stat: 'defense_smashing', label: 'S/L Def' },
-      { stat: 'defense_fire', label: 'F/C Def' },
-      { stat: 'defense_energy', label: 'E/N Def' },
-      { stat: 'defense_psionic', label: 'Psi Def' },
-      { stat: 'defense_toxic', label: 'Toxic Def' },
+      { stat: 'defense_melee', label: 'Melee' },
+      { stat: 'defense_ranged', label: 'Ranged' },
+      { stat: 'defense_aoe', label: 'AoE' },
+      { stat: 'def_smashing', label: 'Smashing' },
+      { stat: 'def_lethal', label: 'Lethal' },
+      { stat: 'def_fire', label: 'Fire' },
+      { stat: 'def_cold', label: 'Cold' },
+      { stat: 'def_energy', label: 'Energy' },
+      { stat: 'def_negative', label: 'Negative' },
+      { stat: 'def_psionic', label: 'Psionic' },
+      { stat: 'def_toxic', label: 'Toxic' },
     ],
   },
   {
     name: 'Resistance',
     colorKey: 'resistance',
     stats: [
-      { stat: 'resist_smashing', label: 'S/L Res' },
-      { stat: 'resist_fire', label: 'F/C Res' },
-      { stat: 'resist_energy', label: 'E/N Res' },
-      { stat: 'resist_psionic', label: 'Psi Res' },
-      { stat: 'resist_toxic', label: 'Toxic Res' },
+      { stat: 'res_smashing', label: 'Smashing' },
+      { stat: 'res_lethal', label: 'Lethal' },
+      { stat: 'res_fire', label: 'Fire' },
+      { stat: 'res_cold', label: 'Cold' },
+      { stat: 'res_energy', label: 'Energy' },
+      { stat: 'res_negative', label: 'Negative' },
+      { stat: 'res_psionic', label: 'Psionic' },
+      { stat: 'res_toxic', label: 'Toxic' },
     ],
   },
   {
@@ -309,7 +315,7 @@ export function StatsConfigModal({ isOpen, onClose }: StatsConfigModalProps) {
     // Reset local config - set recommended stats visible, all others hidden
     const defaultVisibleStats = new Set([
       'damage', 'accuracy', 'recharge', 'recovery', 'endcost',
-      'defense_melee', 'defense_ranged', 'resist_smashing', 'health'
+      'defense_melee', 'defense_ranged', 'res_smashing', 'health'
     ]);
     setLocalConfig(
       ALL_STAT_IDS.map((stat, index) => ({

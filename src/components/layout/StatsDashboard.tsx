@@ -166,15 +166,15 @@ export function StatsDashboard() {
       name: 'Defense',
       stats: [
         'defense_melee', 'defense_ranged', 'defense_aoe',
-        'defense_smashing', 'defense_fire', 'defense_energy',
-        'defense_psionic', 'defense_toxic',
+        'def_smashing', 'def_lethal', 'def_fire', 'def_cold',
+        'def_energy', 'def_negative', 'def_psionic', 'def_toxic',
       ],
     },
     {
       name: 'Resistance',
       stats: [
-        'resist_smashing', 'resist_fire', 'resist_energy',
-        'resist_psionic', 'resist_toxic',
+        'res_smashing', 'res_lethal', 'res_fire', 'res_cold',
+        'res_energy', 'res_negative', 'res_psionic', 'res_toxic',
       ],
     },
     {
@@ -214,10 +214,10 @@ export function StatsDashboard() {
             {groupedStats.map((group) => (
               <div
                 key={group.name}
-                className="bg-gray-800/70 rounded-lg px-3 py-2 border border-gray-700 overflow-hidden min-w-0"
+                className="@container bg-gray-800/70 rounded-lg px-3 py-2 border border-gray-700 overflow-hidden min-w-0"
               >
                 <div className="text-xs font-semibold text-gray-400 mb-1 uppercase tracking-wide truncate">{group.name}</div>
-                <div className="grid grid-cols-2 gap-x-2 gap-y-1">
+                <div className="grid grid-cols-1 @[280px]:grid-cols-2 gap-x-4 gap-y-1">
                   {group.stats.map((stat) => (
                     <StatItem
                       key={stat.id}
@@ -236,8 +236,8 @@ export function StatsDashboard() {
             ))}
 
             {/* Incarnate Powers panel - hide on very small screens */}
-            <div className="hidden md:flex flex-col bg-gray-800/70 rounded-lg px-3 py-2 border border-gray-700">
-              <div className="text-xs font-semibold text-gray-400 mb-2 uppercase tracking-wide flex items-center justify-between">
+            <div className="hidden md:flex flex-col bg-gray-800/70 rounded-lg px-3 py-2 border border-gray-700 w-fit">
+              <div className="text-xs font-semibold text-gray-400 mb-2 uppercase tracking-wide flex items-center justify-between gap-4">
                 <span>Incarnate</span>
                 {isLevel50 ? (
                   <button

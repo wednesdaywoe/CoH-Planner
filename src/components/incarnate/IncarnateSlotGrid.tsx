@@ -20,7 +20,7 @@ export function IncarnateSlotGrid({ incarnates, disabled, onSlotClick, incarnate
   const slots = getAllIncarnateSlots();
 
   return (
-    <div className="grid grid-cols-3 gap-2">
+    <div className="grid grid-cols-3 gap-1">
       {INCARNATE_SLOT_ORDER.map((slotId) => {
         const slot = slots.find((s) => s.id === slotId);
         if (!slot) return null;
@@ -91,8 +91,8 @@ function IncarnateSlotMini({
         onClick={onClick}
         disabled={disabled}
         className={`
-          relative flex items-center gap-1.5 p-1.5 rounded-md
-          transition-all duration-200 w-full
+          relative flex items-center justify-center p-1 rounded-md
+          transition-all duration-200
           ${
             disabled
               ? 'opacity-40 cursor-not-allowed bg-gray-800/30'
@@ -107,7 +107,7 @@ function IncarnateSlotMini({
           borderColor: disabled ? '#374151' : selectedPower ? tierColor : slotColor + '60',
         }}
       >
-        {/* Icon or empty circle */}
+        {/* Icon or letter circle */}
         {selectedPower && iconPath ? (
           <div className="w-7 h-7 rounded overflow-hidden flex-shrink-0">
             <img
@@ -121,33 +121,17 @@ function IncarnateSlotMini({
           </div>
         ) : (
           <div
-            className="w-7 h-7 rounded-full flex-shrink-0"
+            className="w-7 h-7 rounded-full flex-shrink-0 flex items-center justify-center text-xs font-bold"
             style={{
               backgroundColor: '#1f2937',
               border: `2px solid ${slotColor}`,
+              color: slotColor,
               opacity: disabled ? 0.4 : 0.7,
             }}
-          />
-        )}
-
-        {/* Label */}
-        <div className="flex-1 min-w-0 text-left">
-          <div
-            className="text-[9px] font-medium uppercase tracking-wide truncate"
-            style={{ color: selectedPower ? '#d1d5db' : slotColor }}
           >
-            {slotName}
+            {slotName.charAt(0)}
           </div>
-          {selectedPower ? (
-            <div className="text-[8px] text-gray-500 truncate">
-              {selectedPower.treeName}
-            </div>
-          ) : (
-            <div className="text-[8px] text-gray-600 italic">
-              Empty
-            </div>
-          )}
-        </div>
+        )}
 
         {/* Tier indicator for selected powers */}
         {selectedPower && (

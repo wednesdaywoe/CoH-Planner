@@ -14,7 +14,7 @@ export function StatsPanel() {
         <h3 className="text-sm font-medium text-gray-200">Build Statistics</h3>
       </div>
 
-      <div className="p-4 space-y-6">
+      <div className="p-4 flex flex-wrap gap-x-6">
         {/* Global Buffs */}
         <StatsSection title="Global Buffs">
           <StatItem
@@ -145,14 +145,11 @@ interface StatsSectionProps {
 
 function StatsSection({ title, children }: StatsSectionProps) {
   return (
-    <div>
+    <div className="mb-6 min-w-[200px] flex-1">
       <h4 className="text-xs font-medium text-gray-500 uppercase tracking-wide mb-2">
         {title}
       </h4>
-      <div
-        className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2"
-        // Responsive: 1 column on mobile, 2 columns on sm+ screens
-      >
+      <div className="grid grid-cols-1 gap-y-2">
         {children}
       </div>
     </div>
