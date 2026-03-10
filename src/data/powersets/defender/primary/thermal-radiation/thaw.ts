@@ -78,9 +78,11 @@ export const Thaw: Power = {
         "table": "Ranged_Ones"
       }
     },
-    "rechargeBuff": {
-      "scale": 0.8,
-      "table": "Ranged_Ones"
+    "debuffResistance": {
+      "recharge": {
+        "scale": 0.8,
+        "table": "Ranged_Ones"
+      }
     }
   }
 };

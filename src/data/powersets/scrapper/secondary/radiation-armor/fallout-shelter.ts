@@ -106,9 +106,11 @@ export const FalloutShelter: Power = {
         "table": "Melee_Res_Boolean"
       }
     },
-    "rechargeBuff": {
-      "scale": 1.05,
-      "table": "Melee_Res_Boolean"
+    "debuffResistance": {
+      "recharge": {
+        "scale": 1.05,
+        "table": "Melee_Res_Boolean"
+      }
     }
   }
 };

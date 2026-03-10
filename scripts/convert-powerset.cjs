@@ -708,7 +708,11 @@ function extractEffects(templates) {
         } else if (modType === 'defense') {
           // Skip - handled by BASE_DEFENSE section above
         } else if (modType === 'rechargeTime') {
-          if (isDebuff || scale < 0 || table?.toLowerCase().includes('slow')) {
+          if (aspect === 'resistance') {
+            // Resistance to recharge debuffs (slow resistance component)
+            if (!effects.debuffResistance) effects.debuffResistance = {};
+            effects.debuffResistance.recharge = makeEffect();
+          } else if (isDebuff || scale < 0 || table?.toLowerCase().includes('slow')) {
             effects.rechargeDebuff = makeEffect();
           } else {
             effects.rechargeBuff = makeEffect();

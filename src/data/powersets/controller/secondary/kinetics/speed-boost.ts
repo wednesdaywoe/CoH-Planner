@@ -45,6 +45,12 @@ export const SpeedBoost: Power = {
       "scale": 0.5,
       "table": "Melee_Ones"
     },
+    "debuffResistance": {
+      "recharge": {
+        "scale": 0.5,
+        "table": "Melee_Ones"
+      }
+    },
     "recoveryBuff": {
       "scale": 0.5,
       "table": "Melee_Ones"

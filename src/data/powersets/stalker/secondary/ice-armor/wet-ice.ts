@@ -80,9 +80,11 @@ export const WetIce: Power = {
         "table": "Melee_Ones"
       }
     },
-    "rechargeBuff": {
-      "scale": 0.6,
-      "table": "Melee_Ones"
+    "debuffResistance": {
+      "recharge": {
+        "scale": 0.5,
+        "table": "Melee_Ones"
+      }
     },
     "resistance": {
       "cold": {

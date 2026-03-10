@@ -27,8 +27,14 @@ export const ParticleAcceleration: Power = {
   "maxSlots": 6,
   "effects": {
     "rechargeBuff": {
-      "scale": 0.4,
+      "scale": 0.2,
       "table": "Melee_Ones"
+    },
+    "debuffResistance": {
+      "recharge": {
+        "scale": 0.4,
+        "table": "Melee_Ones"
+      }
     },
     "movement": {
       "runSpeed": {

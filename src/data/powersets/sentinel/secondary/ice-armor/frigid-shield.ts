@@ -55,9 +55,11 @@ export const FrigidShield: Power = {
         "table": "Melee_Ones"
       }
     },
-    "rechargeBuff": {
-      "scale": 0.1,
-      "table": "Melee_Ones"
+    "debuffResistance": {
+      "recharge": {
+        "scale": 0.1,
+        "table": "Melee_Ones"
+      }
     }
   }
 };

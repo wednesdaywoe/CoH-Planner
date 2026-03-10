@@ -235,14 +235,14 @@ export interface HealingEffect {
 // ============================================
 
 export interface DebuffResistance {
-  defense?: number;
-  recharge?: number;
-  movement?: number; // Also known as "Slow" resistance
-  tohit?: number;
-  endurance?: number; // Endurance drain resistance
-  regeneration?: number; // Regeneration debuff resistance
-  recovery?: number; // Recovery debuff resistance
-  perception?: number; // Perception debuff resistance
+  defense?: NumberOrScaled;
+  recharge?: NumberOrScaled;
+  movement?: NumberOrScaled; // Also known as "Slow" resistance
+  tohit?: NumberOrScaled;
+  endurance?: NumberOrScaled; // Endurance drain resistance
+  regeneration?: NumberOrScaled; // Regeneration debuff resistance
+  recovery?: NumberOrScaled; // Recovery debuff resistance
+  perception?: NumberOrScaled; // Perception debuff resistance
 }
 
 // ============================================

@@ -64,9 +64,11 @@ export const BoundlessEnergy: Power = {
         "table": "Melee_Ones"
       }
     },
-    "rechargeBuff": {
-      "scale": 0.3,
-      "table": "Melee_Ones"
+    "debuffResistance": {
+      "recharge": {
+        "scale": 0.3,
+        "table": "Melee_Ones"
+      }
     }
   }
 };

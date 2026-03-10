@@ -79,9 +79,11 @@ export const TemporalMending: Power = {
         "table": "Ranged_Ones"
       }
     },
-    "rechargeBuff": {
-      "scale": 0.2,
-      "table": "Ranged_Ones"
+    "debuffResistance": {
+      "recharge": {
+        "scale": 0.2,
+        "table": "Ranged_Ones"
+      }
     },
     "regenBuff": {
       "scale": 1,

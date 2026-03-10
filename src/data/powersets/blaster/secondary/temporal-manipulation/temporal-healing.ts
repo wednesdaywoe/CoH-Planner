@@ -55,9 +55,11 @@ export const TemporalHealing: Power = {
         "table": "Melee_Ones"
       }
     },
-    "rechargeBuff": {
-      "scale": 0.2,
-      "table": "Melee_Ones"
+    "debuffResistance": {
+      "recharge": {
+        "scale": 0.2,
+        "table": "Melee_Ones"
+      }
     },
     "regenBuff": {
       "scale": 0.5,

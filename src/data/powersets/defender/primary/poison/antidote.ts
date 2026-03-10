@@ -82,9 +82,11 @@ export const Antidote: Power = {
         "table": "Ranged_Ones"
       }
     },
-    "rechargeBuff": {
-      "scale": 0.5,
-      "table": "Ranged_Ones"
+    "debuffResistance": {
+      "recharge": {
+        "scale": 0.5,
+        "table": "Ranged_Ones"
+      }
     }
   }
 };

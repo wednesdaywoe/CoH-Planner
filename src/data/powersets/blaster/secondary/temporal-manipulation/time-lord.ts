@@ -29,8 +29,14 @@ export const TimeLord: Power = {
   "maxSlots": 6,
   "effects": {
     "rechargeBuff": {
-      "scale": 0.3,
+      "scale": 0.1,
       "table": "Melee_Ones"
+    },
+    "debuffResistance": {
+      "recharge": {
+        "scale": 0.3,
+        "table": "Melee_Ones"
+      }
     },
     "movement": {
       "runSpeed": {

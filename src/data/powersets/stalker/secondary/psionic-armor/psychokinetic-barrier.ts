@@ -53,9 +53,11 @@ export const PsychokineticBarrier: Power = {
       "scale": 0.2,
       "table": "Melee_Ones"
     },
-    "rechargeBuff": {
-      "scale": 0.2,
-      "table": "Melee_Ones"
+    "debuffResistance": {
+      "recharge": {
+        "scale": 0.2,
+        "table": "Melee_Ones"
+      }
     }
   }
 };

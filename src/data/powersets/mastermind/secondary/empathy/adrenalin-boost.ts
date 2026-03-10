@@ -46,8 +46,14 @@ export const AdrenalinBoost: Power = {
       "table": "Ranged_Ones"
     },
     "rechargeBuff": {
-      "scale": 0.8,
+      "scale": 1,
       "table": "Ranged_Ones"
+    },
+    "debuffResistance": {
+      "recharge": {
+        "scale": 0.8,
+        "table": "Ranged_Ones"
+      }
     },
     "movement": {
       "runSpeed": {
