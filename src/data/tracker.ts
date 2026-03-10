@@ -23,6 +23,8 @@ export const KNOWN_BUGS: TrackerItem[] = [
 // ============================================
 
 export const RECENT_CHANGES: TrackerItem[] = [
+  { text: 'Added print-friendly build export 🖨️ Go to Save/Load and scroll down', status: 'new' },
+  { text: 'More fussing with layout because no one will stop me', status: 'new' },
   { text: '120 powersets regenerated to fix two classes of data errors including missing debuff resistance', status: 'fixed' },
   { text: 'Widespread issue with -recharge resistance being converted to +recharge', status: 'fixed' },
   { text: 'Added missing generic enh icons, corrected ATO slotting rule, fix issue preventing AoE defense effects from registering', status: 'fixed' },
