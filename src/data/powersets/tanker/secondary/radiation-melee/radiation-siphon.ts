@@ -66,6 +66,10 @@ export const RadiationSiphon: Power = {
     "defenseDebuff": {
       "scale": 1.5,
       "table": "Melee_Debuff_Def"
+    },
+    "buffDuration": 10,
+    "durations": {
+      "defenseDebuff": 10
     }
   }
 };

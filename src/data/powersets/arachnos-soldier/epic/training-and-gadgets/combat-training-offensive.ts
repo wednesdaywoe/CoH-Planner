@@ -29,6 +29,9 @@ export const CombatTrainingOffensive: Power = {
     "tohitBuff": {
       "scale": 0.33,
       "table": "Melee_Ones"
+    },
+    "durations": {
+      "tohitBuff": 0.75
     }
   }
 };

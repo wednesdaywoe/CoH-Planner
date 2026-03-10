@@ -150,6 +150,21 @@ export const MomentofGlory: Power = {
     "damageBuff": {
       "scale": 0.5,
       "table": "Melee_Buff_Dmg"
+    },
+    "buffDuration": 15,
+    "durations": {
+      "damageBuff": 15,
+      "defenseBuff": 15,
+      "hold": 15,
+      "immobilize": 15,
+      "knockback": 15,
+      "knockup": 15,
+      "protection": 15,
+      "recoveryBuff": 15,
+      "repel": 15,
+      "resistance": 15,
+      "sleep": 15,
+      "stun": 15
     }
   }
 };

@@ -59,6 +59,10 @@ export const RefractorBeam: Power = {
     "defenseDebuff": {
       "scale": 0.5,
       "table": "Ranged_Debuff_Def"
+    },
+    "buffDuration": 15,
+    "durations": {
+      "defenseDebuff": 15
     }
   }
 };

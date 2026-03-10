@@ -73,6 +73,12 @@ export const BoRyaku: Power = {
         "scale": 1,
         "table": "Melee_Res_Dmg"
       }
+    },
+    "durations": {
+      "knockback": 10.25,
+      "knockup": 10.25,
+      "protection": 10.25,
+      "resistance": 10.25
     }
   }
 };

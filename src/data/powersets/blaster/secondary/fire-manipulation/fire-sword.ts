@@ -60,6 +60,11 @@ export const FireSword: Power = {
     "damageBuff": {
       "scale": 0.088,
       "table": "Melee_Ones"
+    },
+    "buffDuration": 10,
+    "durations": {
+      "damageBuff": 8.83,
+      "defenseDebuff": 10
     }
   }
 };

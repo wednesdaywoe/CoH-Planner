@@ -96,6 +96,10 @@ export const CombatFlight: Power = {
         "scale": 0.25,
         "table": "Melee_Buff_Def"
       }
+    },
+    "durations": {
+      "defenseBuff": 0.75,
+      "movement": 0.75
     }
   }
 };

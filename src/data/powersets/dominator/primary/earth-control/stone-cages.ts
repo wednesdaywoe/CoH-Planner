@@ -66,6 +66,12 @@ export const StoneCages: Power = {
         "scale": 1.6,
         "table": "Ranged_Ones"
       }
+    },
+    "buffDuration": 12,
+    "durations": {
+      "defenseDebuff": 12,
+      "protection": 12,
+      "slow": 12
     }
   }
 };

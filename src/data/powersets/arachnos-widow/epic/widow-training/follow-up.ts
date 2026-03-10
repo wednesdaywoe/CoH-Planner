@@ -57,6 +57,11 @@ export const FollowUp: Power = {
     "damageBuff": {
       "scale": 3,
       "table": "Melee_Buff_Dmg"
+    },
+    "buffDuration": 10,
+    "durations": {
+      "damageBuff": 10,
+      "tohitBuff": 10
     }
   }
 };

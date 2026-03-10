@@ -96,6 +96,11 @@ export const CloakingDevice: Power = {
     "threatDebuff": {
       "scale": 1,
       "table": "Melee_Ones"
+    },
+    "durations": {
+      "defenseBuff": 0.75,
+      "stealth": 0.75,
+      "threatDebuff": 0.75
     }
   }
 };

@@ -138,6 +138,23 @@ export const TacticalTrainingVengeance: Power = {
       "scale": 3.5,
       "table": "Melee_Buff_Dmg"
     },
-    "effectDuration": 120
+    "effectDuration": 120,
+    "buffDuration": 120,
+    "durations": {
+      "confuse": 120,
+      "damageBuff": 120,
+      "defenseBuff": 120,
+      "fear": 120,
+      "hold": 120,
+      "immobilize": 120,
+      "knockback": 120,
+      "knockup": 120,
+      "placate": 120,
+      "repel": 120,
+      "sleep": 120,
+      "stun": 120,
+      "taunt": 120,
+      "tohitBuff": 120
+    }
   }
 };

@@ -54,6 +54,10 @@ export const AxeCyclone: Power = {
     "knockback": {
       "scale": 0.67,
       "table": "Melee_Ones"
+    },
+    "buffDuration": 0.15,
+    "durations": {
+      "repel": 0.15
     }
   }
 };

@@ -131,6 +131,20 @@ export const WetIce: Power = {
         "scale": 0.4,
         "table": "Melee_Res_Boolean"
       }
+    },
+    "durations": {
+      "debuffResistance": 0.75,
+      "defenseBuff": 0.75,
+      "elusivity": 0.75,
+      "hold": 0.75,
+      "immobilize": 0.75,
+      "knockback": 0.75,
+      "knockup": 0.75,
+      "movement": 0.75,
+      "protection": 0.75,
+      "resistance": 0.75,
+      "sleep": 0.75,
+      "stun": 0.75
     }
   }
 };

@@ -65,6 +65,11 @@ export const ElectronShackles: Power = {
     "damageBuff": {
       "scale": 0,
       "table": "Ranged_Ones"
+    },
+    "buffDuration": 15,
+    "durations": {
+      "defenseDebuff": 10,
+      "protection": 15
     }
   }
 };

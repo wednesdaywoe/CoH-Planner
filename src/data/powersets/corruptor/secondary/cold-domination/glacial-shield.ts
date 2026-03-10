@@ -62,6 +62,11 @@ export const GlacialShield: Power = {
         "scale": 1.25,
         "table": "Ranged_Res_Dmg"
       }
+    },
+    "buffDuration": 240,
+    "durations": {
+      "defenseBuff": 240,
+      "resistance": 240
     }
   }
 };

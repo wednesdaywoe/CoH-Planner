@@ -83,6 +83,10 @@ export const Corruption: Power = {
         "scale": 1.25,
         "table": "Ranged_Debuff_Res_Dmg"
       }
+    },
+    "buffDuration": 5,
+    "durations": {
+      "resistanceDebuff": 5
     }
   }
 };

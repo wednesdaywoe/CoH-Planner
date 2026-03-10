@@ -103,6 +103,16 @@ export const SonicThrust: Power = {
     "knockback": {
       "scale": 0.67,
       "table": "Melee_Ones"
+    },
+    "buffDuration": 15,
+    "durations": {
+      "debuffResistance": 15,
+      "elusivity": 15,
+      "enduranceDrain": 15,
+      "recoveryDebuff": 15,
+      "regenDebuff": 15,
+      "slow": 15,
+      "tohitDebuff": 15
     }
   }
 };

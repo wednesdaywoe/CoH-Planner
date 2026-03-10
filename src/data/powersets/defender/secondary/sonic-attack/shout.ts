@@ -82,6 +82,10 @@ export const Shout: Power = {
         "scale": 1.5,
         "table": "Ranged_Debuff_Res_Dmg"
       }
+    },
+    "buffDuration": 10,
+    "durations": {
+      "resistanceDebuff": 10
     }
   }
 };

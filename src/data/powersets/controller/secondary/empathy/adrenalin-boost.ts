@@ -72,6 +72,14 @@ export const AdrenalinBoost: Power = {
         "scale": 0.8,
         "table": "Ranged_Ones"
       }
+    },
+    "buffDuration": 90,
+    "durations": {
+      "debuffResistance": 90,
+      "movement": 90,
+      "rechargeBuff": 90,
+      "recoveryBuff": 90,
+      "regenBuff": 90
     }
   }
 };

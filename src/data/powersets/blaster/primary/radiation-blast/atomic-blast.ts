@@ -65,6 +65,10 @@ export const AtomicBlast: Power = {
     "damageBuff": {
       "scale": 0,
       "table": "Ranged_Ones"
+    },
+    "buffDuration": 20,
+    "durations": {
+      "defenseDebuff": 20
     }
   }
 };

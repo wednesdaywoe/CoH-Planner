@@ -64,6 +64,11 @@ export const BlazingBlast: Power = {
     "knockback": {
       "scale": 2,
       "table": "Ranged_Knockback"
+    },
+    "buffDuration": 0.61,
+    "durations": {
+      "hold": 0.61,
+      "repel": 0.61
     }
   }
 };

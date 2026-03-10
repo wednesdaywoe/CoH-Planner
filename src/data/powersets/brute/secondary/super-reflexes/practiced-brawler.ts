@@ -61,6 +61,16 @@ export const PracticedBrawler: Power = {
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
+    },
+    "buffDuration": 120,
+    "durations": {
+      "hold": 120,
+      "immobilize": 120,
+      "knockback": 120,
+      "knockup": 120,
+      "protection": 120,
+      "sleep": 120,
+      "stun": 120
     }
   }
 };

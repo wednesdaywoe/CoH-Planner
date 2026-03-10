@@ -88,6 +88,13 @@ export const ElectrifiedNetArrow: Power = {
     "damageBuff": {
       "scale": 0,
       "table": "Ranged_Ones"
+    },
+    "buffDuration": 15,
+    "durations": {
+      "movement": 15,
+      "protection": 15,
+      "rechargeBuff": 15,
+      "slow": 15
     }
   }
 };

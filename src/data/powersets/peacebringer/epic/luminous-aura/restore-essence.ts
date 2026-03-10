@@ -45,6 +45,10 @@ export const RestoreEssence: Power = {
       "mag": 50,
       "scale": 4,
       "table": "Melee_Ones"
+    },
+    "buffDuration": 15,
+    "durations": {
+      "untouchable": 15
     }
   }
 };

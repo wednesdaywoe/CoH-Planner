@@ -61,6 +61,11 @@ export const PenumbralGrasp: Power = {
     "tohitDebuff": {
       "scale": 0.75,
       "table": "Ranged_Debuff_ToHit"
+    },
+    "buffDuration": 10,
+    "durations": {
+      "damageBuff": 9.17,
+      "tohitDebuff": 10
     }
   }
 };

@@ -79,6 +79,11 @@ export const ChillingRay: Power = {
     "rechargeDebuff": {
       "scale": 0.2,
       "table": "Ranged_Slow"
+    },
+    "buffDuration": 6,
+    "durations": {
+      "movement": 6,
+      "rechargeBuff": 6
     }
   }
 };

@@ -65,6 +65,12 @@ export const WebCocoon: Power = {
         "scale": 0.5,
         "table": "Ranged_Slow"
       }
+    },
+    "buffDuration": 15,
+    "durations": {
+      "movement": 15,
+      "rechargeBuff": 15,
+      "slow": 15
     }
   }
 };

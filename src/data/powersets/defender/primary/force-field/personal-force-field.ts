@@ -120,6 +120,11 @@ export const PersonalForceField: Power = {
         "scale": 4,
         "table": "Melee_Res_Dmg"
       }
+    },
+    "durations": {
+      "defenseBuff": 0.75,
+      "resistance": 0.75,
+      "teleport": 0.75
     }
   }
 };

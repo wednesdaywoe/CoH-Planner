@@ -69,6 +69,11 @@ export const CallSwarm: Power = {
         "scale": 0.2,
         "table": "Ranged_Slow"
       }
+    },
+    "buffDuration": 8,
+    "durations": {
+      "defenseDebuff": 8,
+      "movement": 8
     }
   }
 };

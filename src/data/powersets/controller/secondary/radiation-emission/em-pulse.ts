@@ -60,6 +60,11 @@ export const EMPulse: Power = {
     "recoveryDebuff": {
       "scale": 10,
       "table": "Ranged_Ones"
+    },
+    "buffDuration": 15,
+    "durations": {
+      "recoveryDebuff": 15,
+      "regenDebuff": 15
     }
   }
 };

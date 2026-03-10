@@ -88,6 +88,13 @@ export const Chilblain: Power = {
     "damageBuff": {
       "scale": 0,
       "table": "Ranged_Ones"
+    },
+    "buffDuration": 18,
+    "durations": {
+      "movement": 18,
+      "protection": 15,
+      "rechargeBuff": 18,
+      "slow": 15
     }
   }
 };

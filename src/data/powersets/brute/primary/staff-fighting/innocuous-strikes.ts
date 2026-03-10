@@ -74,6 +74,10 @@ export const InnocuousStrikes: Power = {
       "mag": 3,
       "scale": 10,
       "table": "Melee_Immobilize"
+    },
+    "buffDuration": 10,
+    "durations": {
+      "movement": 10
     }
   }
 };

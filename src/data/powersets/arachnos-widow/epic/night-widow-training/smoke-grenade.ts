@@ -42,6 +42,11 @@ export const SmokeGrenade: Power = {
     "tohitDebuff": {
       "scale": 0.5,
       "table": "Melee_DeBuff_ToHit"
+    },
+    "buffDuration": 60,
+    "durations": {
+      "perceptionDebuff": 60,
+      "tohitDebuff": 60
     }
   }
 };

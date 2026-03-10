@@ -77,6 +77,13 @@ export const SunlessMire: Power = {
         "scale": 1.25,
         "table": "Melee_Buff_Dmg",
         "perTarget": 1.25
+      },
+      "buffDuration": 30,
+      "durations": {
+        "damageBuff": 30,
+        "movement": 6,
+        "rechargeBuff": 6,
+        "tohitBuff": 30
       }
     }
 };

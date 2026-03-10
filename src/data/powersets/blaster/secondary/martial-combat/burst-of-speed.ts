@@ -52,6 +52,10 @@ export const BurstofSpeed: Power = {
     "damageBuff": {
       "scale": 0.026,
       "table": "Ranged_Ones"
+    },
+    "buffDuration": 8.5,
+    "durations": {
+      "damageBuff": 8.5
     }
   }
 };

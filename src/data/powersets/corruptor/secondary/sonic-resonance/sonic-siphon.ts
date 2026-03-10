@@ -64,6 +64,10 @@ export const SonicSiphon: Power = {
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       }
+    },
+    "buffDuration": 30,
+    "durations": {
+      "resistanceDebuff": 30
     }
   }
 };

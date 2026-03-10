@@ -45,6 +45,10 @@ export const SaltCrystals: Power = {
     "defenseDebuff": {
       "scale": 2,
       "table": "Ranged_Debuff_Def"
+    },
+    "buffDuration": 15,
+    "durations": {
+      "defenseDebuff": 15
     }
   }
 };

@@ -79,6 +79,11 @@ export const MelodicBinding: Power = {
       "mag": 4,
       "scale": 15,
       "table": "Ranged_Immobilize"
+    },
+    "buffDuration": 15,
+    "durations": {
+      "movement": 15,
+      "protection": 15
     }
   }
 };

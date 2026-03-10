@@ -61,6 +61,10 @@ export const HotFeet: Power = {
         "scale": 0.7,
         "table": "Melee_Slow"
       }
+    },
+    "durations": {
+      "movement": 2.3,
+      "slow": 15
     }
   }
 };

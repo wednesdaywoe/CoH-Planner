@@ -83,6 +83,10 @@ export const CloakingDevice: Power = {
         "scale": 0.375,
         "table": "Melee_Buff_Def"
       }
+    },
+    "durations": {
+      "defenseBuff": 0.75,
+      "stealth": 0.75
     }
   }
 };

@@ -111,6 +111,19 @@ export const StrengthofWill: Power = {
       "mag": 1,
       "scale": 50,
       "table": "Melee_Res_Boolean"
+    },
+    "buffDuration": 120,
+    "durations": {
+      "hold": 120,
+      "immobilize": 120,
+      "knockback": 120,
+      "knockup": 120,
+      "protection": 120,
+      "recoveryBuff": 120,
+      "repel": 120,
+      "resistance": 120,
+      "sleep": 120,
+      "stun": 120
     }
   }
 };

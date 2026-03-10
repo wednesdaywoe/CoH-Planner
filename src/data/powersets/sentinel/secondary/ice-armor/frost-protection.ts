@@ -56,6 +56,11 @@ export const FrostProtection: Power = {
         "scale": 0.1,
         "table": "Melee_Ones"
       }
+    },
+    "durations": {
+      "debuffResistance": 10.3,
+      "maxHPBuff": 10.3,
+      "movement": 10.3
     }
   }
 };

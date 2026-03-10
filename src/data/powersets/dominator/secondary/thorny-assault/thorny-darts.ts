@@ -56,6 +56,10 @@ export const ThornyDarts: Power = {
     "defenseDebuff": {
       "scale": 2,
       "table": "Ranged_Debuff_Def"
+    },
+    "buffDuration": 5,
+    "durations": {
+      "defenseDebuff": 5
     }
   }
 };

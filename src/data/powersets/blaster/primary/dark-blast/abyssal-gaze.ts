@@ -57,6 +57,10 @@ export const AbyssalGaze: Power = {
       "mag": 3,
       "scale": 4.4,
       "table": "Ranged_Immobilize"
+    },
+    "buffDuration": 10,
+    "durations": {
+      "tohitDebuff": 10
     }
   }
 };

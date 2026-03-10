@@ -70,6 +70,12 @@ export const NeurotoxicBreath: Power = {
         "scale": 1.5,
         "table": "Ranged_SpeedRunning"
       }
+    },
+    "buffDuration": 20,
+    "durations": {
+      "movement": 20,
+      "rechargeBuff": 20,
+      "slow": 20
     }
   }
 };

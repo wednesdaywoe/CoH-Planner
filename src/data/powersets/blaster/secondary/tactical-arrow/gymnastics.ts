@@ -113,6 +113,14 @@ export const Gymnastics: Power = {
         "scale": 0.4,
         "table": "Melee_Ones"
       }
+    },
+    "durations": {
+      "debuffResistance": 0.5,
+      "defenseBuff": 0.5,
+      "knockback": 0.5,
+      "knockup": 0.5,
+      "movement": 0.5,
+      "rechargeBuff": 0.5
     }
   }
 };

@@ -40,6 +40,10 @@ export const Confront: Power = {
     "taunt": {
       "scale": 15,
       "table": "Melee_Taunt"
+    },
+    "buffDuration": 12,
+    "durations": {
+      "rangeBuff": 12
     }
   }
 };

@@ -58,6 +58,14 @@ export const ParasiticLeech: Power = {
     "damageDebuff": {
       "scale": 2.66,
       "table": "Melee_Debuff_Dam"
+    },
+    "buffDuration": 45,
+    "durations": {
+      "absorb": 45,
+      "damageDebuff": 30,
+      "recoveryBuff": 45,
+      "regenBuff": 45,
+      "regenDebuff": 30
     }
   }
 };

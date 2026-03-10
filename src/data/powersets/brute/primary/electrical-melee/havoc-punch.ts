@@ -70,6 +70,10 @@ export const HavocPunch: Power = {
     "enduranceGain": {
       "scale": 3.432,
       "table": "Melee_Ones"
+    },
+    "buffDuration": 4,
+    "durations": {
+      "recoveryDebuff": 4
     }
   }
 };

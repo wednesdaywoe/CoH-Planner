@@ -70,6 +70,13 @@ export const WebGrenade: Power = {
     "protection": {
       "knockup": 1,
       "knockback": 1
+    },
+    "buffDuration": 15,
+    "durations": {
+      "movement": 15,
+      "protection": 15,
+      "rechargeBuff": 15,
+      "slow": 15
     }
   }
 };

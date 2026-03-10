@@ -46,6 +46,9 @@ export const EntropicAura: Power = {
     "taunt": {
       "scale": 2.25,
       "table": "Melee_Ones"
+    },
+    "durations": {
+      "rechargeBuff": 2.25
     }
   }
 };

@@ -76,6 +76,12 @@ export const BlockofIce: Power = {
     "protection": {
       "knockup": 1,
       "knockback": 1
+    },
+    "buffDuration": 18,
+    "durations": {
+      "movement": 18,
+      "protection": 10,
+      "rechargeBuff": 18
     }
   }
 };

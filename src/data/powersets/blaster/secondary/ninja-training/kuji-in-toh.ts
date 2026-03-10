@@ -56,6 +56,13 @@ export const KujiInToh: Power = {
       "scale": 30,
       "table": "Melee_Res_Boolean"
     },
-    "effectDuration": 210
+    "effectDuration": 210,
+    "buffDuration": 210,
+    "durations": {
+      "fear": 210,
+      "recoveryBuff": 210,
+      "regenBuff": 210,
+      "resistance": 210
+    }
   }
 };

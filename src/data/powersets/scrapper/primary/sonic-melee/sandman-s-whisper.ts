@@ -98,6 +98,10 @@ export const SandmansWhisper: Power = {
       "mag": 3,
       "scale": 15,
       "table": "Melee_Sleep"
+    },
+    "buffDuration": 15,
+    "durations": {
+      "resistanceDebuff": 15
     }
   }
 };

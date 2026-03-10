@@ -73,6 +73,14 @@ export const TemperatureProtection: Power = {
     "knockup": {
       "scale": 1,
       "table": "Melee_Ones"
+    },
+    "durations": {
+      "debuffResistance": 10,
+      "knockback": 10.25,
+      "knockup": 10.25,
+      "movement": 10,
+      "regenBuff": 10,
+      "resistance": 10
     }
   }
 };

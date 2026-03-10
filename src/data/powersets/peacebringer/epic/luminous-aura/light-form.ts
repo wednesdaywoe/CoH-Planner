@@ -116,6 +116,19 @@ export const LightForm: Power = {
       "scale": 10,
       "table": "Melee_Res_Boolean"
     },
-    "effectDuration": 90
+    "effectDuration": 90,
+    "buffDuration": 90,
+    "durations": {
+      "hold": 90,
+      "immobilize": 90,
+      "knockback": 90,
+      "knockup": 90,
+      "protection": 90,
+      "recoveryBuff": 90,
+      "repel": 90,
+      "resistance": 90,
+      "sleep": 90,
+      "stun": 90
+    }
   }
 };

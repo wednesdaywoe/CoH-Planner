@@ -72,6 +72,12 @@ export const Upthrust: Power = {
     "knockback": {
       "scale": 0.33,
       "table": "Ranged_Ones"
+    },
+    "buffDuration": 16,
+    "durations": {
+      "defenseDebuff": 16,
+      "movement": 16,
+      "slow": 16
     }
   }
 };

@@ -482,6 +482,14 @@ function extractEffects(templates) {
     const makeEffect = (s = scale, t = table) => ({ scale: Math.abs(s), table: t });
     const makeMezEffect = () => ({ mag: magnitude, scale: Math.abs(scale), table });
 
+    // Helper to record per-effect duration
+    const recordDuration = (effectKey) => {
+      if (duration && duration > 0) {
+        if (!effects.durations) effects.durations = {};
+        effects.durations[effectKey] = duration;
+      }
+    };
+
     // Process ALL attribs in this template (not just the first)
     for (const rawAttrib of template.attribs) {
       const attrib = rawAttrib?.toLowerCase();
@@ -542,26 +550,32 @@ function extractEffects(templates) {
           // Affects target's damage OUTPUT
           if (isDebuff) {
             effects.damageDebuff = makeEffect();
+            recordDuration('damageDebuff');
           } else {
             effects.damageBuff = makeEffect();
+            recordDuration('damageBuff');
           }
         } else if (aspect === 'resistance') {
           // Affects target's damage RESISTANCE
           if (isDebuff) {
             if (!effects.resistanceDebuff) effects.resistanceDebuff = {};
             effects.resistanceDebuff[dmgType.toLowerCase()] = makeEffect();
+            recordDuration('resistanceDebuff');
           } else {
             if (!effects.resistance) effects.resistance = {};
             effects.resistance[dmgType.toLowerCase()] = makeEffect();
+            recordDuration('resistance');
           }
         } else if (isDefenseEffect) {
           // Defense buff/debuff by damage type (e.g., Invincibility grants defense vs Smashing/Lethal/etc.)
           if (isDebuff) {
             if (!effects.defenseDebuff) effects.defenseDebuff = {};
             effects.defenseDebuff[dmgType.toLowerCase()] = makeEffect();
+            recordDuration('defenseDebuff');
           } else {
             if (!effects.defenseBuff) effects.defenseBuff = {};
             effects.defenseBuff[dmgType.toLowerCase()] = makeEffect();
+            recordDuration('defenseBuff');
           }
         }
         // "Current"/"Absolute" aspect without defense table = actual damage, handled by extractDamage()
@@ -572,22 +586,24 @@ function extractEffects(templates) {
       if (isDefensePosition(attrib)) {
         const posType = DEFENSE_POSITIONS[attrib];
         if (aspect === 'resistance') {
-          // Position-based resistance (to defense debuffs)
           if (isDebuff) {
             if (!effects.resistanceDebuff) effects.resistanceDebuff = {};
             effects.resistanceDebuff[posType.toLowerCase()] = makeEffect();
+            recordDuration('resistanceDebuff');
           } else {
             if (!effects.resistance) effects.resistance = {};
             effects.resistance[posType.toLowerCase()] = makeEffect();
+            recordDuration('resistance');
           }
         } else {
-          // Position-based defense
           if (isDebuff) {
             if (!effects.defenseDebuff) effects.defenseDebuff = {};
             effects.defenseDebuff[posType.toLowerCase()] = makeEffect();
+            recordDuration('defenseDebuff');
           } else {
             if (!effects.defenseBuff) effects.defenseBuff = {};
             effects.defenseBuff[posType.toLowerCase()] = makeEffect();
+            recordDuration('defenseBuff');
           }
         }
         continue;
@@ -596,15 +612,16 @@ function extractEffects(templates) {
       // ========== BASE_DEFENSE special handling ==========
       if (attrib === 'base_defense' || attrib === 'defense') {
         if (aspect === 'resistance') {
-          // Defense with Resistance aspect = Elusivity (defense debuff resistance)
           if (!effects.elusivity) effects.elusivity = {};
           effects.elusivity.all = makeEffect();
+          recordDuration('elusivity');
         } else {
-          // Normal defense buff/debuff
           if (isDebuff) {
             effects.defenseDebuff = makeEffect();
+            recordDuration('defenseDebuff');
           } else {
             effects.defenseBuff = makeEffect();
+            recordDuration('defenseBuff');
           }
         }
         continue;
@@ -627,19 +644,21 @@ function extractEffects(templates) {
           effects[mezType] = newMez;
         }
         if (duration) effects.effectDuration = duration;
+        recordDuration(mezType);
         continue;
       }
 
       // ========== KNOCKBACK/KNOCKUP/REPEL (no magnitude) ==========
       if (KNOCKBACK_TYPES[attrib]) {
         if (aspect === 'resistance') {
-          // KB/KU protection (e.g., Living Shadows, Acrobatics)
           const kbType = KNOCKBACK_TYPES[attrib];
           if (!effects.protection) effects.protection = {};
           effects.protection[kbType] = magnitude;
+          recordDuration('protection');
         } else {
           const kbType = KNOCKBACK_TYPES[attrib];
           effects[kbType] = makeEffect();
+          recordDuration(kbType);
         }
         continue;
       }
@@ -648,12 +667,13 @@ function extractEffects(templates) {
       if (MOVEMENT_TYPES[attrib]) {
         const moveType = MOVEMENT_TYPES[attrib];
         if (isDebuff || scale < 0) {
-          // Slow effect
           if (!effects.slow) effects.slow = {};
           effects.slow[moveType] = makeEffect();
+          recordDuration('slow');
         } else {
           if (!effects.movement) effects.movement = {};
           effects.movement[moveType] = makeEffect();
+          recordDuration('movement');
         }
         continue;
       }
@@ -665,32 +685,41 @@ function extractEffects(templates) {
         if (resType === 'hitPoints') {
           if (aspect === 'maximum') {
             effects.maxHPBuff = makeEffect();
+            recordDuration('maxHPBuff');
           } else {
-            // Current HP = healing
             effects.healing = makeEffect();
+            recordDuration('healing');
           }
         } else if (resType === 'endurance') {
           if (aspect === 'maximum') {
             effects.maxEndBuff = makeEffect();
+            recordDuration('maxEndBuff');
           } else if (isDebuff || scale < 0) {
             effects.enduranceDrain = makeEffect();
+            recordDuration('enduranceDrain');
           } else {
             effects.enduranceGain = makeEffect();
+            recordDuration('enduranceGain');
           }
         } else if (resType === 'recovery') {
           if (isDebuff || scale < 0) {
             effects.recoveryDebuff = makeEffect();
+            recordDuration('recoveryDebuff');
           } else {
             effects.recoveryBuff = makeEffect();
+            recordDuration('recoveryBuff');
           }
         } else if (resType === 'regeneration') {
           if (isDebuff || scale < 0) {
             effects.regenDebuff = makeEffect();
+            recordDuration('regenDebuff');
           } else {
             effects.regenBuff = makeEffect();
+            recordDuration('regenBuff');
           }
         } else if (resType === 'absorb') {
           effects.absorb = makeEffect();
+          recordDuration('absorb');
         }
         continue;
       }
@@ -702,31 +731,39 @@ function extractEffects(templates) {
         if (modType === 'toHit') {
           if (isDebuff) {
             effects.tohitDebuff = makeEffect();
+            recordDuration('tohitDebuff');
           } else {
             effects.tohitBuff = makeEffect();
+            recordDuration('tohitBuff');
           }
         } else if (modType === 'defense') {
           // Skip - handled by BASE_DEFENSE section above
         } else if (modType === 'rechargeTime') {
           if (aspect === 'resistance') {
-            // Resistance to recharge debuffs (slow resistance component)
             if (!effects.debuffResistance) effects.debuffResistance = {};
             effects.debuffResistance.recharge = makeEffect();
+            recordDuration('debuffResistance');
           } else if (isDebuff || scale < 0 || table?.toLowerCase().includes('slow')) {
             effects.rechargeDebuff = makeEffect();
+            recordDuration('rechargeDebuff');
           } else {
             effects.rechargeBuff = makeEffect();
+            recordDuration('rechargeBuff');
           }
         } else if (modType === 'threatLevel') {
           if (isDebuff || scale < 0) {
             effects.threatDebuff = makeEffect();
+            recordDuration('threatDebuff');
           } else {
             effects.threatBuff = makeEffect();
+            recordDuration('threatBuff');
           }
         } else if (modType === 'range') {
           effects.rangeBuff = makeEffect();
+          recordDuration('rangeBuff');
         } else if (modType === 'enduranceDiscount') {
           effects.enduranceDiscount = makeEffect();
+          recordDuration('enduranceDiscount');
         }
         continue;
       }
@@ -737,12 +774,15 @@ function extractEffects(templates) {
         if (stealthType === 'perception') {
           if (isDebuff || scale < 0) {
             effects.perceptionDebuff = makeEffect();
+            recordDuration('perceptionDebuff');
           } else {
             effects.perceptionBuff = makeEffect();
+            recordDuration('perceptionBuff');
           }
         } else {
           if (!effects.stealth) effects.stealth = {};
           effects.stealth[stealthType] = makeEffect();
+          recordDuration('stealth');
         }
         continue;
       }
@@ -751,6 +791,7 @@ function extractEffects(templates) {
       if (CONTROL_TYPES[attrib]) {
         const ctrlType = CONTROL_TYPES[attrib];
         effects[ctrlType] = makeEffect();
+        recordDuration(ctrlType);
         continue;
       }
 
@@ -764,6 +805,29 @@ function extractEffects(templates) {
   if (unmappedAttribs.size > 0) {
     // Uncomment for debugging:
     // console.log('  Unmapped attribs:', [...unmappedAttribs].join(', '));
+  }
+
+  // Derive buffDuration from durations map — use the most common duration among buff/debuff effects
+  // Skip toggle/auto powers (their tick durations aren't meaningful as "buff duration")
+  if (effects.durations && Object.keys(effects.durations).length > 0) {
+    // Count how often each duration value appears
+    const durationCounts = {};
+    for (const [, dur] of Object.entries(effects.durations)) {
+      durationCounts[dur] = (durationCounts[dur] || 0) + 1;
+    }
+    // Pick the most common duration (ties broken by largest value)
+    let bestDur = null;
+    let bestCount = 0;
+    for (const [dur, count] of Object.entries(durationCounts)) {
+      const d = parseFloat(dur);
+      if (count > bestCount || (count === bestCount && d > (bestDur || 0))) {
+        bestDur = d;
+        bestCount = count;
+      }
+    }
+    if (bestDur && bestDur > 0) {
+      effects.buffDuration = bestDur;
+    }
   }
 
   return effects;

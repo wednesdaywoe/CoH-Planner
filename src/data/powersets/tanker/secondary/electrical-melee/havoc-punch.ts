@@ -70,6 +70,10 @@ export const HavocPunch: Power = {
       "mag": 2,
       "scale": 8,
       "table": "Melee_Sleep"
+    },
+    "buffDuration": 4,
+    "durations": {
+      "recoveryDebuff": 4
     }
   }
 };

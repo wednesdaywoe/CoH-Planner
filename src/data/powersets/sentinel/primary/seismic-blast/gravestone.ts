@@ -57,6 +57,11 @@ export const Gravestone: Power = {
         "scale": 1,
         "table": "Ranged_Slow"
       }
+    },
+    "buffDuration": 16,
+    "durations": {
+      "movement": 16,
+      "slow": 16
     }
   }
 };

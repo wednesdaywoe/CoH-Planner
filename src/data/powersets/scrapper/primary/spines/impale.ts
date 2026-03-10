@@ -97,6 +97,12 @@ export const Impale: Power = {
     "rechargeDebuff": {
       "scale": 0.1,
       "table": "Melee_Slow"
+    },
+    "buffDuration": 15,
+    "durations": {
+      "movement": 15,
+      "rechargeBuff": 8,
+      "slow": 15
     }
   }
 };

@@ -60,6 +60,10 @@ export const ExplosiveArrow: Power = {
     "knockback": {
       "scale": 2,
       "table": "Ranged_Knockback"
+    },
+    "buffDuration": 8.5,
+    "durations": {
+      "damageBuff": 8.5
     }
   }
 };

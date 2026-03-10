@@ -50,6 +50,11 @@ export const IncendiaryAura: Power = {
     "defenseDebuff": {
       "scale": 0.75,
       "table": "Ranged_Debuff_Def"
+    },
+    "durations": {
+      "defenseDebuff": 0.45,
+      "slow": 0.45,
+      "tohitDebuff": 0.45
     }
   }
 };

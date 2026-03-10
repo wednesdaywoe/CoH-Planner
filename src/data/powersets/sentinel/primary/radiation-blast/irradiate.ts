@@ -51,6 +51,10 @@ export const Irradiate: Power = {
     "defenseDebuff": {
       "scale": 3,
       "table": "Ranged_Debuff_Def"
+    },
+    "buffDuration": 10,
+    "durations": {
+      "defenseDebuff": 10
     }
   }
 };

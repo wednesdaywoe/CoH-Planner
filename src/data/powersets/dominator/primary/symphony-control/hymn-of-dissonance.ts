@@ -52,6 +52,10 @@ export const HymnofDissonance: Power = {
       "mag": 3,
       "scale": 12,
       "table": "Melee_Immobilize"
+    },
+    "buffDuration": 18,
+    "durations": {
+      "rechargeBuff": 18
     }
   }
 };

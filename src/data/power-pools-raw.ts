@@ -3540,7 +3540,11 @@ export const POWER_POOLS_RAW = {
             "scale": 0.7,
             "table": "Melee_Ones"
           },
-          "enduranceCrash": 15
+          "enduranceCrash": 15,
+          "buffDuration": 120,
+          "durations": {
+            "rechargeBuff": 120
+          }
         }
       },
       {

@@ -50,6 +50,11 @@ export const PowerSink: Power = {
     "damageBuff": {
       "scale": 0.048,
       "table": "Melee_Ones"
+    },
+    "buffDuration": 9.53,
+    "durations": {
+      "damageBuff": 9.53,
+      "recoveryDebuff": 4
     }
   }
 };

@@ -90,6 +90,12 @@ export const Fortitude: Power = {
         "scale": 1.5,
         "table": "Ranged_Buff_Def"
       }
+    },
+    "buffDuration": 120,
+    "durations": {
+      "damageBuff": 120,
+      "defenseBuff": 120,
+      "tohitBuff": 120
     }
   }
 };

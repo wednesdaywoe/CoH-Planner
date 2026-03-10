@@ -71,6 +71,10 @@ export const TeslaCage: Power = {
       "mag": 3,
       "scale": 8,
       "table": "Ranged_Ones"
+    },
+    "buffDuration": 8,
+    "durations": {
+      "recoveryDebuff": 8
     }
   }
 };

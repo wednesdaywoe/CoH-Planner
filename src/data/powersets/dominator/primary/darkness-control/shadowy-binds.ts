@@ -67,6 +67,12 @@ export const ShadowyBinds: Power = {
         "scale": 1.6,
         "table": "Ranged_Ones"
       }
+    },
+    "buffDuration": 15,
+    "durations": {
+      "protection": 15,
+      "slow": 15,
+      "tohitDebuff": 15
     }
   }
 };

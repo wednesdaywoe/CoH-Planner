@@ -42,6 +42,10 @@ export const WarriorsProvocation: Power = {
     "taunt": {
       "scale": 20,
       "table": "Melee_Taunt"
+    },
+    "buffDuration": 20,
+    "durations": {
+      "rangeBuff": 20
     }
   }
 };

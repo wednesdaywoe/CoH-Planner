@@ -66,6 +66,11 @@ export const Breathless: Power = {
     "rechargeDebuff": {
       "scale": 0.3,
       "table": "Ranged_Slow"
+    },
+    "buffDuration": 15,
+    "durations": {
+      "damageDebuff": 15,
+      "rechargeBuff": 15
     }
   }
 };

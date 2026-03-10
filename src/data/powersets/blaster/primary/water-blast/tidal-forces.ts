@@ -40,6 +40,11 @@ export const TidalForces: Power = {
     "damageBuff": {
       "scale": 2.5,
       "table": "Melee_Buff_Dmg"
+    },
+    "buffDuration": 10,
+    "durations": {
+      "damageBuff": 10,
+      "tohitBuff": 10
     }
   }
 };

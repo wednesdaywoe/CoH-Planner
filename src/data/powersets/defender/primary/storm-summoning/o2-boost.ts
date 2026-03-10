@@ -62,6 +62,14 @@ export const O2Boost: Power = {
       "mag": 1,
       "scale": 20,
       "table": "Ranged_Res_Boolean"
+    },
+    "buffDuration": 60,
+    "durations": {
+      "enduranceGain": 60,
+      "perceptionBuff": 60,
+      "recoveryBuff": 60,
+      "sleep": 60,
+      "stun": 60
     }
   }
 };

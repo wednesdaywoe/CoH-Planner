@@ -36,6 +36,10 @@ export const TerraFirma: Power = {
     "rangeBuff": {
       "scale": 0.15,
       "table": "Melee_Ones"
+    },
+    "durations": {
+      "rangeBuff": 0.75,
+      "tohitBuff": 0.75
     }
   }
 };

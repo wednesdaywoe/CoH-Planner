@@ -109,6 +109,9 @@ export const QuantumManeuvers: Power = {
     "knockback": {
       "scale": 1.75,
       "table": "Melee_Res_Boolean"
+    },
+    "durations": {
+      "defenseBuff": 0.2
     }
   }
 };

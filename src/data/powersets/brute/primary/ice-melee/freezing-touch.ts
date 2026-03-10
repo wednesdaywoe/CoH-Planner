@@ -63,6 +63,12 @@ export const FreezingTouch: Power = {
     "knockback": {
       "scale": 100,
       "table": "Melee_Ones"
+    },
+    "buffDuration": 6,
+    "durations": {
+      "knockback": 6,
+      "knockup": 6,
+      "protection": 6
     }
   }
 };

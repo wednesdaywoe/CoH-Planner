@@ -42,6 +42,11 @@ export const BerylCrystals: Power = {
     "tohitBuff": {
       "scale": 1,
       "table": "Melee_Res_Boolean"
+    },
+    "durations": {
+      "confuse": 0.75,
+      "perceptionBuff": 0.75,
+      "tohitBuff": 0.75
     }
   }
 };

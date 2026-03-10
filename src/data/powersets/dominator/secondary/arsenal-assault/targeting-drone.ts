@@ -40,6 +40,10 @@ export const TargetingDrone: Power = {
     "perceptionBuff": {
       "scale": 0.6,
       "table": "Melee_Ones"
+    },
+    "durations": {
+      "perceptionBuff": 0.75,
+      "tohitBuff": 0.75
     }
   }
 };

@@ -55,6 +55,10 @@ export const TrueGrit: Power = {
         "scale": 1.5,
         "table": "Melee_Res_Dmg"
       }
+    },
+    "durations": {
+      "maxHPBuff": 10.25,
+      "resistance": 10.25
     }
   }
 };

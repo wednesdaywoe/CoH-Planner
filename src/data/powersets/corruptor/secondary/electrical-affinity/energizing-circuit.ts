@@ -44,6 +44,10 @@ export const EnergizingCircuit: Power = {
     "rechargeBuff": {
       "scale": 1.25,
       "table": "Melee_Ones"
+    },
+    "buffDuration": 5,
+    "durations": {
+      "rechargeBuff": 5
     }
   }
 };

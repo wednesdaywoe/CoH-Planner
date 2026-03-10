@@ -78,6 +78,11 @@ export const CrushingField: Power = {
         "scale": 1.6,
         "table": "Ranged_Ones"
       }
+    },
+    "buffDuration": 15,
+    "durations": {
+      "movement": 15,
+      "slow": 10
     }
   }
 };

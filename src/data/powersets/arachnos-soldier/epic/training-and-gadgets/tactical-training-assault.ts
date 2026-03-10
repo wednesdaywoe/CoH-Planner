@@ -34,6 +34,11 @@ export const TacticalTrainingAssault: Power = {
     "damageBuff": {
       "scale": 1.5,
       "table": "Ranged_Buff_Dmg"
+    },
+    "durations": {
+      "damageBuff": 2.25,
+      "placate": 2.25,
+      "taunt": 2.25
     }
   }
 };

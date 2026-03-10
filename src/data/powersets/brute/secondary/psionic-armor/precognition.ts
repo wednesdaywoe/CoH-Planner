@@ -55,6 +55,11 @@ export const Precognition: Power = {
         "scale": 0.2312,
         "table": "Melee_Res_Boolean"
       }
+    },
+    "durations": {
+      "defenseBuff": 10.25,
+      "elusivity": 10.25,
+      "perceptionBuff": 0.75
     }
   }
 };

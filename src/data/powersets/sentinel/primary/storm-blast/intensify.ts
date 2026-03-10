@@ -44,6 +44,12 @@ export const Intensify: Power = {
     "rangeBuff": {
       "scale": 0.333,
       "table": "Melee_Ones"
+    },
+    "buffDuration": 10,
+    "durations": {
+      "damageBuff": 10,
+      "rangeBuff": 10,
+      "tohitBuff": 10
     }
   }
 };

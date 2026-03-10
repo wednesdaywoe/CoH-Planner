@@ -95,6 +95,10 @@ export const DreadfulWail: Power = {
         "scale": 1.5,
         "table": "Ranged_Debuff_Res_Dmg"
       }
+    },
+    "buffDuration": 20,
+    "durations": {
+      "resistanceDebuff": 20
     }
   }
 };

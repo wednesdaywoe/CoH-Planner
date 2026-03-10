@@ -54,6 +54,11 @@ export const BetaDecay: Power = {
     "taunt": {
       "scale": 1,
       "table": "Melee_InherentTaunt"
+    },
+    "durations": {
+      "defenseDebuff": 1,
+      "rechargeBuff": 1,
+      "tohitDebuff": 1
     }
   }
 };

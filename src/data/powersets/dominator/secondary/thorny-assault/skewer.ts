@@ -55,6 +55,10 @@ export const Skewer: Power = {
     "defenseDebuff": {
       "scale": 2,
       "table": "Melee_Debuff_Def"
+    },
+    "buffDuration": 6,
+    "durations": {
+      "defenseDebuff": 6
     }
   }
 };

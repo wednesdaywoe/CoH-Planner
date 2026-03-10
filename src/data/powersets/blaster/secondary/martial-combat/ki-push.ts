@@ -60,6 +60,12 @@ export const KiPush: Power = {
     "damageBuff": {
       "scale": 0.055,
       "table": "Melee_Ones"
+    },
+    "buffDuration": 2,
+    "durations": {
+      "damageBuff": 8.33,
+      "hold": 2,
+      "repel": 2
     }
   }
 };

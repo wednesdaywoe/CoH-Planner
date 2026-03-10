@@ -106,6 +106,12 @@ export const Fade: Power = {
         "scale": 1.25,
         "table": "Ranged_Res_Dmg"
       }
+    },
+    "buffDuration": 60,
+    "durations": {
+      "defenseBuff": 60,
+      "elusivity": 60,
+      "resistance": 60
     }
   }
 };

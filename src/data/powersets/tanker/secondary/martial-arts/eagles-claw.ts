@@ -53,6 +53,10 @@ export const EaglesClaw: Power = {
       "mag": 3,
       "scale": 4,
       "table": "Melee_Stun"
+    },
+    "buffDuration": 3,
+    "durations": {
+      "damageBuff": 3
     }
   }
 };

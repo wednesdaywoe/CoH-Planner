@@ -38,6 +38,10 @@ export const RegenerationAura: Power = {
     "regenBuff": {
       "scale": 5,
       "table": "Ranged_Ones"
+    },
+    "buffDuration": 90,
+    "durations": {
+      "regenBuff": 90
     }
   }
 };

@@ -131,6 +131,10 @@ export const Geyser: Power = {
     "knockup": {
       "scale": 1.5,
       "table": "Ranged_Ones"
+    },
+    "buffDuration": 10,
+    "durations": {
+      "movement": 10
     }
   }
 };

@@ -70,6 +70,10 @@ export const ExecutionersShot: Power = {
     "knockback": {
       "scale": 1,
       "table": "Ranged_Knockback"
+    },
+    "buffDuration": 8,
+    "durations": {
+      "defenseDebuff": 8
     }
   }
 };

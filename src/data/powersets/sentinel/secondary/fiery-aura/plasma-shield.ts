@@ -57,6 +57,11 @@ export const PlasmaShield: Power = {
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
+    },
+    "durations": {
+      "hold": 0.75,
+      "resistance": 0.75,
+      "sleep": 0.75
     }
   }
 };

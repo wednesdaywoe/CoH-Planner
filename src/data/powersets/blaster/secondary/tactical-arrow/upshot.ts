@@ -44,6 +44,12 @@ export const Upshot: Power = {
     "rechargeBuff": {
       "scale": 0.15,
       "table": "Melee_Ones"
+    },
+    "buffDuration": 10,
+    "durations": {
+      "damageBuff": 10,
+      "rechargeBuff": 10,
+      "tohitBuff": 10
     }
   }
 };

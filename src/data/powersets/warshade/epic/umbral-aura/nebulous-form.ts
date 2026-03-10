@@ -64,6 +64,11 @@ export const NebulousForm: Power = {
         "scale": 2,
         "table": "Melee_Ones"
       }
+    },
+    "durations": {
+      "movement": 0.75,
+      "stealth": 0.75,
+      "threatDebuff": 0.75
     }
   }
 };

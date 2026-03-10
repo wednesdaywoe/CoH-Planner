@@ -48,6 +48,11 @@ export const SporeCloud: Power = {
     "regenDebuff": {
       "scale": 1.5,
       "table": "Ranged_Ones"
+    },
+    "durations": {
+      "damageDebuff": 0.75,
+      "regenDebuff": 0.75,
+      "tohitDebuff": 0.75
     }
   }
 };

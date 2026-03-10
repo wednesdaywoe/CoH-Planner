@@ -96,6 +96,10 @@ export const WaterBurst: Power = {
         "scale": 0.3,
         "table": "Ranged_Slow"
       }
+    },
+    "buffDuration": 10,
+    "durations": {
+      "movement": 10
     }
   }
 };

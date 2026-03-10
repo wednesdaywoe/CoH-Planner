@@ -41,6 +41,9 @@ export const ThermalShield: Power = {
         "scale": 3,
         "table": "Melee_Res_Dmg"
       }
+    },
+    "durations": {
+      "resistance": 0.75
     }
   }
 };

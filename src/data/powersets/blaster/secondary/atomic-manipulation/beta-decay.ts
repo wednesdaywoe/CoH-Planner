@@ -48,6 +48,11 @@ export const BetaDecay: Power = {
     "rechargeBuff": {
       "scale": 0.025,
       "table": "Melee_Ones"
+    },
+    "durations": {
+      "defenseDebuff": 1,
+      "rechargeBuff": 1,
+      "tohitDebuff": 1.25
     }
   }
 };

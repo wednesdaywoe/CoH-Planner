@@ -50,6 +50,10 @@ export const RisetotheChallenge: Power = {
     "taunt": {
       "scale": 1.25,
       "table": "Melee_Ones"
+    },
+    "durations": {
+      "regenBuff": 1.125,
+      "tohitDebuff": 1
     }
   }
 };

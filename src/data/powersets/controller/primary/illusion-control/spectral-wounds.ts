@@ -58,6 +58,10 @@ export const SpectralWounds: Power = {
         "scale": 0,
         "table": "Ranged_Ones"
       }
+    },
+    "buffDuration": 10,
+    "durations": {
+      "movement": 10
     }
   }
 };

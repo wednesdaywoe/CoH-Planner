@@ -52,6 +52,11 @@ export const PsychicScream: Power = {
     "damageBuff": {
       "scale": 0.064,
       "table": "Ranged_Ones"
+    },
+    "buffDuration": 10.17,
+    "durations": {
+      "damageBuff": 10.17,
+      "rechargeBuff": 10
     }
   }
 };

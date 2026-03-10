@@ -55,6 +55,10 @@ export const Hurl: Power = {
         "scale": 1.6,
         "table": "Melee_Ones"
       }
+    },
+    "buffDuration": 15,
+    "durations": {
+      "slow": 15
     }
   }
 };

@@ -86,6 +86,13 @@ export const ArcticAir: Power = {
       "scale": 3,
       "table": "Ranged_Ones"
     },
-    "effectDuration": 2
+    "effectDuration": 2,
+    "durations": {
+      "fear": 2,
+      "movement": 2.25,
+      "rechargeBuff": 2.25,
+      "slow": 2.25,
+      "stealth": 2.25
+    }
   }
 };

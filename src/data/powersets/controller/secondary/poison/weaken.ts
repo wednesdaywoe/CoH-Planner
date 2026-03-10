@@ -106,6 +106,23 @@ export const Weaken: Power = {
     "defenseDebuff": {
       "scale": 0.25,
       "table": "Ranged_Stun"
+    },
+    "buffDuration": 30,
+    "durations": {
+      "confuse": 30,
+      "damageDebuff": 30,
+      "defenseDebuff": 30,
+      "enduranceDrain": 30,
+      "fear": 30,
+      "hold": 30,
+      "immobilize": 30,
+      "knockback": 30,
+      "knockup": 30,
+      "repel": 30,
+      "sleep": 30,
+      "slow": 30,
+      "stun": 30,
+      "tohitDebuff": 30
     }
   }
 };

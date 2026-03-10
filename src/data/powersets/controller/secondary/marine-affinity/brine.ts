@@ -72,6 +72,11 @@ export const Brine: Power = {
     "maxHPBuff": {
       "scale": 2,
       "table": "Ranged_Heal"
+    },
+    "buffDuration": 60,
+    "durations": {
+      "maxHPBuff": 60,
+      "resistanceDebuff": 60
     }
   }
 };

@@ -104,6 +104,12 @@ export const EnergyAbsorption: Power = {
     "enduranceDrain": {
       "scale": 0.35,
       "table": "Melee_Ones"
+    },
+    "buffDuration": 45,
+    "durations": {
+      "debuffResistance": 45,
+      "defenseBuff": 45,
+      "movement": 45
     }
   }
 };

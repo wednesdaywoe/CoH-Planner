@@ -38,6 +38,10 @@ export const AgainstAllOdds: Power = {
     "damageDebuff": {
       "scale": 1,
       "table": "Melee_Debuff_Dam"
+    },
+    "durations": {
+      "damageBuff": 1,
+      "damageDebuff": 1
     }
   }
 };

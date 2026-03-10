@@ -102,6 +102,12 @@ export const FieldOperative: Power = {
     "recoveryBuff": {
       "scale": 0.5,
       "table": "Melee_Ones"
+    },
+    "durations": {
+      "defenseBuff": 0.75,
+      "recoveryBuff": 0.75,
+      "regenBuff": 0.75,
+      "stealth": 0.75
     }
   }
 };

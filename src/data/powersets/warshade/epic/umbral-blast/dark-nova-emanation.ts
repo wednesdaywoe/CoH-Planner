@@ -71,6 +71,11 @@ export const DarkNovaEmanation: Power = {
     "rechargeDebuff": {
       "scale": 0.2,
       "table": "Ranged_Slow"
+    },
+    "buffDuration": 8,
+    "durations": {
+      "movement": 8,
+      "rechargeBuff": 8
     }
   }
 };

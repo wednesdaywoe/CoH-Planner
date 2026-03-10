@@ -68,6 +68,12 @@ export const ShoalRush: Power = {
         "scale": 1,
         "table": "Ranged_SpeedRunning"
       }
+    },
+    "buffDuration": 20,
+    "durations": {
+      "defenseDebuff": 20,
+      "movement": 20,
+      "slow": 20
     }
   }
 };

@@ -83,6 +83,10 @@ export const Quills: Power = {
       "mag": 0.33,
       "scale": 3,
       "table": "Melee_Immobilize"
+    },
+    "durations": {
+      "movement": 3,
+      "rechargeBuff": 3
     }
   }
 };

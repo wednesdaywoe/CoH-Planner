@@ -36,6 +36,9 @@ export const UptotheChallenge: Power = {
     "regenBuff": {
       "scale": 2,
       "table": "Melee_Ones"
+    },
+    "durations": {
+      "regenBuff": 1.125
     }
   }
 };

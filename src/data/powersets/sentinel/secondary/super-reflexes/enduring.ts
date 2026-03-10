@@ -71,6 +71,12 @@ export const Enduring: Power = {
         "scale": 0,
         "table": "Melee_Ones"
       }
+    },
+    "durations": {
+      "defenseBuff": 0.75,
+      "elusivity": 0.75,
+      "recoveryBuff": 0.75,
+      "resistance": 0.75
     }
   }
 };

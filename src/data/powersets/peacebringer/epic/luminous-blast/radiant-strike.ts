@@ -66,6 +66,11 @@ export const RadiantStrike: Power = {
     "defenseDebuff": {
       "scale": 1,
       "table": "Melee_Debuff_Def"
+    },
+    "buffDuration": 30,
+    "durations": {
+      "defenseDebuff": 6,
+      "slow": 30
     }
   }
 };

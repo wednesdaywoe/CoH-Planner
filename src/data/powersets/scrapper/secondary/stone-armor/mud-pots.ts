@@ -69,6 +69,10 @@ export const MudPots: Power = {
       "mag": 2,
       "scale": 2.25,
       "table": "Melee_Ones"
+    },
+    "durations": {
+      "movement": 5,
+      "slow": 5
     }
   }
 };

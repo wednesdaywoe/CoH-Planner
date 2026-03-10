@@ -53,6 +53,13 @@ export const Rage: Power = {
     "enduranceDrain": {
       "scale": 0.25,
       "table": "Melee_Ones"
+    },
+    "buffDuration": 120,
+    "durations": {
+      "damageBuff": 120,
+      "damageDebuff": 10,
+      "defenseDebuff": 10,
+      "tohitBuff": 120
     }
   }
 };

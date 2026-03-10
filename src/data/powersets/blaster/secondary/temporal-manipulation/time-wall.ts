@@ -86,6 +86,14 @@ export const TimeWall: Power = {
     "damageBuff": {
       "scale": 0.106,
       "table": "Ranged_Ones"
+    },
+    "buffDuration": 20,
+    "durations": {
+      "damageBuff": 9.1,
+      "movement": 20,
+      "rechargeBuff": 20,
+      "regenDebuff": 20,
+      "slow": 20
     }
   }
 };

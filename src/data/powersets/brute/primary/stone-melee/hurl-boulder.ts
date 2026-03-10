@@ -55,6 +55,10 @@ export const HurlBoulder: Power = {
         "scale": 1,
         "table": "Melee_Ones"
       }
+    },
+    "buffDuration": 15,
+    "durations": {
+      "slow": 15
     }
   }
 };

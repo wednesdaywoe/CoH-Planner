@@ -36,6 +36,10 @@ export const EnvenomedBlades: Power = {
     "tohitBuff": {
       "scale": 0.12,
       "table": "Melee_Ones"
+    },
+    "buffDuration": 40,
+    "durations": {
+      "tohitBuff": 40
     }
   }
 };

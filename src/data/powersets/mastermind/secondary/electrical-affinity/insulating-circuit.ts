@@ -40,6 +40,10 @@ export const InsulatingCircuit: Power = {
     "absorb": {
       "scale": 2,
       "table": "Ranged_Heal"
+    },
+    "buffDuration": 30,
+    "durations": {
+      "absorb": 30
     }
   }
 };

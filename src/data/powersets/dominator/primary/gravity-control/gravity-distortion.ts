@@ -80,6 +80,12 @@ export const GravityDistortion: Power = {
         "scale": 1.6,
         "table": "Ranged_Ones"
       }
+    },
+    "buffDuration": 10,
+    "durations": {
+      "movement": 12,
+      "protection": 10,
+      "slow": 10
     }
   }
 };

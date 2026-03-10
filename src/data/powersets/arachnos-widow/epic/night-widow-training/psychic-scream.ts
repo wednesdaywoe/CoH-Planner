@@ -48,6 +48,10 @@ export const PsychicScream: Power = {
     "rechargeDebuff": {
       "scale": 0.5,
       "table": "Ranged_Slow"
+    },
+    "buffDuration": 20,
+    "durations": {
+      "rechargeBuff": 20
     }
   }
 };

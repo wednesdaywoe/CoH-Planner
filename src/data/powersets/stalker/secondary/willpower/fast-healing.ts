@@ -31,6 +31,9 @@ export const FastHealing: Power = {
     "regenBuff": {
       "scale": 0.75,
       "table": "Melee_Res_Boolean"
+    },
+    "durations": {
+      "regenBuff": 10
     }
   }
 };

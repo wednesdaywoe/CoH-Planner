@@ -52,6 +52,12 @@ export const Minerals: Power = {
     "rechargeBuff": {
       "scale": 0.15,
       "table": "Melee_Ones"
+    },
+    "durations": {
+      "confuse": 0.75,
+      "defenseBuff": 0.75,
+      "perceptionBuff": 0.75,
+      "rechargeBuff": 0.75
     }
   }
 };

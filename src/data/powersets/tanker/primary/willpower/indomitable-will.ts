@@ -86,6 +86,19 @@ export const IndomitableWill: Power = {
     "repel": {
       "scale": 10,
       "table": "Melee_Ones"
+    },
+    "durations": {
+      "confuse": 0.75,
+      "defenseBuff": 0.75,
+      "fear": 0.75,
+      "hold": 0.75,
+      "immobilize": 0.75,
+      "knockback": 0.75,
+      "knockup": 0.75,
+      "protection": 0.75,
+      "repel": 0.75,
+      "sleep": 0.75,
+      "stun": 0.75
     }
   }
 };

@@ -74,6 +74,13 @@ export const BrightNova: Power = {
         "scale": 0.15,
         "table": "Melee_Ones"
       }
+    },
+    "durations": {
+      "damageBuff": 2,
+      "movement": 2,
+      "recoveryBuff": 2,
+      "resistance": 2,
+      "tohitBuff": 2
     }
   }
 };

@@ -64,6 +64,13 @@ export const SpeedBoost: Power = {
         "scale": 0.5,
         "table": "Melee_SpeedFlying"
       }
+    },
+    "buffDuration": 120,
+    "durations": {
+      "debuffResistance": 120,
+      "movement": 120,
+      "rechargeBuff": 120,
+      "recoveryBuff": 120
     }
   }
 };

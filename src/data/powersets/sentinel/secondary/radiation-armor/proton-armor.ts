@@ -50,6 +50,9 @@ export const ProtonArmor: Power = {
         "scale": 0.75,
         "table": "Melee_Res_Dmg"
       }
+    },
+    "durations": {
+      "resistance": 0.75
     }
   }
 };

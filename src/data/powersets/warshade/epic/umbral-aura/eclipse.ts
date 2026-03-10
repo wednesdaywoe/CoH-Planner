@@ -91,6 +91,11 @@ export const Eclipse: Power = {
           "table": "Melee_Res_Dmg",
           "perTarget": 1.5
         }
+      },
+      "buffDuration": 90,
+      "durations": {
+        "recoveryDebuff": 10,
+        "resistance": 90
       }
     }
 };

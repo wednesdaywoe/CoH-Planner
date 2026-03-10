@@ -134,6 +134,14 @@ export const SkySplitter: Power = {
     "recoveryBuff": {
       "scale": 0.83,
       "table": "Melee_Ones"
+    },
+    "buffDuration": 15,
+    "durations": {
+      "recoveryBuff": 15,
+      "regenBuff": 15,
+      "resistance": 15,
+      "slow": 10,
+      "tohitBuff": 15
     }
   }
 };

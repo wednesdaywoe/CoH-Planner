@@ -45,6 +45,11 @@ export const Energize: Power = {
     "regenBuff": {
       "scale": 1,
       "table": "Melee_Ones"
+    },
+    "buffDuration": 30,
+    "durations": {
+      "enduranceDiscount": 30,
+      "regenBuff": 30
     }
   }
 };

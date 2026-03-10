@@ -32,6 +32,10 @@ export const ConserveEnergy: Power = {
     "enduranceDiscount": {
       "scale": 1,
       "table": "Melee_Stun"
+    },
+    "buffDuration": 90,
+    "durations": {
+      "enduranceDiscount": 90
     }
   }
 };

@@ -74,6 +74,13 @@ export const ElectricFence: Power = {
     "enduranceGain": {
       "scale": 2.6,
       "table": "Ranged_Ones"
+    },
+    "buffDuration": 15,
+    "durations": {
+      "enduranceDrain": 6.2,
+      "protection": 15,
+      "recoveryDebuff": 2,
+      "slow": 15
     }
   }
 };

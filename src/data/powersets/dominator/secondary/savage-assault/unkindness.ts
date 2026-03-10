@@ -78,6 +78,12 @@ export const Unkindness: Power = {
         "scale": 1.6,
         "table": "Ranged_Ones"
       }
+    },
+    "buffDuration": 10,
+    "durations": {
+      "defenseDebuff": 10,
+      "movement": 10,
+      "slow": 10
     }
   }
 };

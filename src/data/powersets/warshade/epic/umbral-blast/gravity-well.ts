@@ -80,6 +80,11 @@ export const GravityWell: Power = {
     "rechargeDebuff": {
       "scale": 0.3,
       "table": "Melee_Slow"
+    },
+    "buffDuration": 10,
+    "durations": {
+      "movement": 10,
+      "rechargeBuff": 10
     }
   }
 };

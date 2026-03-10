@@ -69,6 +69,12 @@ export const FrigidProtection: Power = {
         "scale": 1,
         "table": "Melee_SpeedRunning"
       }
+    },
+    "durations": {
+      "damageDebuff": 5,
+      "movement": 5,
+      "rechargeBuff": 5,
+      "slow": 5
     }
   }
 };

@@ -134,6 +134,13 @@ export const ArcticFog: Power = {
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       }
+    },
+    "durations": {
+      "debuffResistance": 0.75,
+      "defenseBuff": 0.75,
+      "movement": 0.75,
+      "resistance": 0.75,
+      "stealth": 0.75
     }
   }
 };

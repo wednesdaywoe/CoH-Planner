@@ -131,6 +131,22 @@ export const BlackDwarf: Power = {
       "scale": 100,
       "table": "Melee_Ones"
     },
-    "effectDuration": 2.03
+    "effectDuration": 2.03,
+    "durations": {
+      "confuse": 2.03,
+      "fear": 2.03,
+      "hold": 2.03,
+      "immobilize": 2.03,
+      "knockback": 2.03,
+      "knockup": 2.03,
+      "maxHPBuff": 2,
+      "movement": 2,
+      "protection": 2,
+      "recoveryBuff": 2,
+      "resistance": 2,
+      "sleep": 2.03,
+      "stun": 2.03,
+      "threatBuff": 2
+    }
   }
 };

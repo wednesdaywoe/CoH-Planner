@@ -52,6 +52,10 @@ export const NeutrinoBolt: Power = {
     "damageBuff": {
       "scale": 0,
       "table": "Ranged_Ones"
+    },
+    "buffDuration": 3,
+    "durations": {
+      "defenseDebuff": 3
     }
   }
 };

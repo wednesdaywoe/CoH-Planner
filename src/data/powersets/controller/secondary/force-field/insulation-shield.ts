@@ -70,6 +70,12 @@ export const InsulationShield: Power = {
     "recoveryBuff": {
       "scale": 2,
       "table": "Ranged_Res_Boolean"
+    },
+    "buffDuration": 240,
+    "durations": {
+      "defenseBuff": 240,
+      "enduranceGain": 240,
+      "recoveryBuff": 240
     }
   }
 };

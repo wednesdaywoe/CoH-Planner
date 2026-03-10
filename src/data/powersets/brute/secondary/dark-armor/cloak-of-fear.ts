@@ -62,6 +62,13 @@ export const CloakofFear: Power = {
     "knockback": {
       "scale": 1,
       "table": "Melee_Ones"
+    },
+    "durations": {
+      "damageDebuff": 3,
+      "fear": 3,
+      "knockback": 5,
+      "knockup": 5,
+      "tohitDebuff": 3
     }
   }
 };

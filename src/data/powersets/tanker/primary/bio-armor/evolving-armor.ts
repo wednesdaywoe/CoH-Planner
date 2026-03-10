@@ -146,6 +146,13 @@ export const EvolvingArmor: Power = {
     "taunt": {
       "scale": 1,
       "table": "Melee_InherentTaunt"
+    },
+    "durations": {
+      "defenseBuff": 1,
+      "recoveryBuff": 1,
+      "regenBuff": 1,
+      "resistance": 1,
+      "resistanceDebuff": 1.125
     }
   }
 };

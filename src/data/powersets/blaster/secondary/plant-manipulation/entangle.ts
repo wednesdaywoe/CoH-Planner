@@ -73,6 +73,11 @@ export const Entangle: Power = {
     "damageBuff": {
       "scale": 0,
       "table": "Ranged_Ones"
+    },
+    "buffDuration": 15,
+    "durations": {
+      "protection": 15,
+      "slow": 15
     }
   }
 };

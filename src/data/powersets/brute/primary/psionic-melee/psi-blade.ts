@@ -60,6 +60,10 @@ export const PsiBlade: Power = {
     "rechargeDebuff": {
       "scale": 0.12,
       "table": "Melee_Slow"
+    },
+    "buffDuration": 6,
+    "durations": {
+      "rechargeBuff": 6
     }
   }
 };

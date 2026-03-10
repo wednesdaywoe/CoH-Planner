@@ -69,6 +69,11 @@ export const ChillingEmbrace: Power = {
     "damageDebuff": {
       "scale": 1,
       "table": "Melee_Debuff_Dam"
+    },
+    "durations": {
+      "damageDebuff": 5,
+      "movement": 5,
+      "rechargeBuff": 5
     }
   }
 };

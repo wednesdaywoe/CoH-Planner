@@ -82,6 +82,20 @@ export const ActiveDefense: Power = {
         "scale": 0.5,
         "table": "Melee_Res_Boolean"
       }
+    },
+    "buffDuration": 120,
+    "durations": {
+      "confuse": 120,
+      "elusivity": 120,
+      "fear": 120,
+      "hold": 120,
+      "immobilize": 120,
+      "knockback": 120,
+      "knockup": 120,
+      "protection": 120,
+      "repel": 120,
+      "sleep": 120,
+      "stun": 120
     }
   }
 };

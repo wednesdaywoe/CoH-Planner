@@ -75,6 +75,13 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
     enhancementAspect: 'endurance',
     priority: 1,
   },
+  buffDuration: {
+    label: 'Duration',
+    category: 'execution',
+    colorClass: STAT_COLORS.buffDuration,
+    format: 'duration',
+    priority: 1.5,
+  },
   recharge: {
     label: 'Recharge',
     category: 'execution',
@@ -106,13 +113,6 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
     colorClass: STAT_COLORS.castTime,
     format: 'duration',
     priority: 5,
-  },
-  buffDuration: {
-    label: 'Duration',
-    category: 'execution',
-    colorClass: STAT_COLORS.buffDuration,
-    format: 'duration',
-    priority: 6,
   },
   effectDuration: {
     label: 'Effect Dur',

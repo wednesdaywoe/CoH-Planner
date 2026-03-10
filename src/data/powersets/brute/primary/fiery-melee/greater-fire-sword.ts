@@ -65,6 +65,10 @@ export const GreaterFireSword: Power = {
     "defenseDebuff": {
       "scale": 0.5,
       "table": "Melee_Debuff_Def"
+    },
+    "buffDuration": 10,
+    "durations": {
+      "defenseDebuff": 10
     }
   }
 };

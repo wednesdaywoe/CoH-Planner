@@ -50,6 +50,12 @@ export const Discharge: Power = {
     "enduranceDrain": {
       "scale": 0.25,
       "table": "Ranged_EndDrain"
+    },
+    "buffDuration": 25,
+    "durations": {
+      "damageDebuff": 25,
+      "recoveryDebuff": 25,
+      "regenDebuff": 25
     }
   }
 };

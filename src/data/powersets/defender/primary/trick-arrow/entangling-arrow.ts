@@ -103,6 +103,13 @@ export const EntanglingArrow: Power = {
       "mag": 3,
       "scale": 7,
       "table": "Ranged_Immobilize"
+    },
+    "buffDuration": 30,
+    "durations": {
+      "movement": 30,
+      "protection": 30,
+      "resistanceDebuff": 30,
+      "slow": 30
     }
   }
 };

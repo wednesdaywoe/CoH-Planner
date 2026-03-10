@@ -76,6 +76,13 @@ export const BlackDwarfMire: Power = {
         "scale": 1.25,
         "table": "Melee_Buff_Dmg",
         "perTarget": 1.25
+      },
+      "buffDuration": 10,
+      "durations": {
+        "damageBuff": 10,
+        "movement": 6,
+        "rechargeBuff": 6,
+        "tohitBuff": 10
       }
     }
 };

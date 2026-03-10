@@ -54,6 +54,10 @@ export const Parry: Power = {
         "scale": 2,
         "table": "Melee_Buff_Def"
       }
+    },
+    "buffDuration": 10,
+    "durations": {
+      "defenseBuff": 10
     }
   }
 };

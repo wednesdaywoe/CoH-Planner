@@ -59,6 +59,10 @@ export const Lift: Power = {
         "scale": 1.6,
         "table": "Ranged_Ones"
       }
+    },
+    "buffDuration": 10,
+    "durations": {
+      "slow": 10
     }
   }
 };

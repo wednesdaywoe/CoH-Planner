@@ -80,6 +80,12 @@ export const ShinBreaker: Power = {
     "defenseDebuff": {
       "scale": 1,
       "table": "Melee_Debuff_Def"
+    },
+    "buffDuration": 8,
+    "durations": {
+      "defenseDebuff": 10,
+      "movement": 8,
+      "slow": 8
     }
   }
 };

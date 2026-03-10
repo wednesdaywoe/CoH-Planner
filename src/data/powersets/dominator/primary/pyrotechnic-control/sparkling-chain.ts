@@ -70,6 +70,11 @@ export const SparklingChain: Power = {
         "scale": 1.6,
         "table": "Ranged_Ones"
       }
+    },
+    "buffDuration": 12,
+    "durations": {
+      "protection": 12,
+      "slow": 10
     }
   }
 };

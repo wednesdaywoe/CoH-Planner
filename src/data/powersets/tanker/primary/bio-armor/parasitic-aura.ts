@@ -56,6 +56,13 @@ export const ParasiticAura: Power = {
     "damageDebuff": {
       "scale": 2,
       "table": "Melee_Debuff_Dam"
+    },
+    "buffDuration": 45,
+    "durations": {
+      "absorb": 45,
+      "damageDebuff": 30,
+      "recoveryBuff": 45,
+      "regenBuff": 45
     }
   }
 };

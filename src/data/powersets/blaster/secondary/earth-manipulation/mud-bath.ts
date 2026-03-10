@@ -56,6 +56,10 @@ export const MudBath: Power = {
         "scale": 1,
         "table": "Melee_SpeedRunning"
       }
+    },
+    "durations": {
+      "movement": 5,
+      "slow": 5
     }
   }
 };

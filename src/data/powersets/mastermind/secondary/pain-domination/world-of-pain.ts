@@ -81,6 +81,13 @@ export const WorldofPain: Power = {
     "damageBuff": {
       "scale": 1.6,
       "table": "Ranged_Buff_Dmg"
+    },
+    "buffDuration": 90,
+    "durations": {
+      "damageBuff": 90,
+      "placate": 90,
+      "resistance": 90,
+      "tohitBuff": 90
     }
   }
 };

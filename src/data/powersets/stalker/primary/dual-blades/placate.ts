@@ -59,6 +59,12 @@ export const Placate: Power = {
     "damageBuff": {
       "scale": 2,
       "table": "Melee_Buff_Dmg"
+    },
+    "buffDuration": 20,
+    "durations": {
+      "damageBuff": 20,
+      "stealth": 10,
+      "tohitBuff": 20
     }
   }
 };

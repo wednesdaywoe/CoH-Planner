@@ -76,6 +76,12 @@ export const ReactionTime: Power = {
         "scale": 0.7,
         "table": "Melee_Slow"
       }
+    },
+    "durations": {
+      "movement": 10,
+      "rechargeBuff": 5,
+      "rechargeDebuff": 10,
+      "slow": 10
     }
   }
 };

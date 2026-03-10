@@ -89,6 +89,12 @@ export const MindLink: Power = {
         "scale": 1,
         "table": "Melee_Buff_Def"
       }
+    },
+    "buffDuration": 90,
+    "durations": {
+      "defenseBuff": 90,
+      "resistance": 90,
+      "tohitBuff": 90
     }
   }
 };

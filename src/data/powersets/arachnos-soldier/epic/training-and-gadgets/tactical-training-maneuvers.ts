@@ -79,6 +79,9 @@ export const TacticalTrainingManeuvers: Power = {
         "scale": 1,
         "table": "Ranged_Buff_Def"
       }
+    },
+    "durations": {
+      "defenseBuff": 2.25
     }
   }
 };

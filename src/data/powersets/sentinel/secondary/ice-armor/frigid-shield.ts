@@ -60,6 +60,11 @@ export const FrigidShield: Power = {
         "scale": 0.1,
         "table": "Melee_Ones"
       }
+    },
+    "durations": {
+      "absorb": 20,
+      "debuffResistance": 4,
+      "movement": 4
     }
   }
 };

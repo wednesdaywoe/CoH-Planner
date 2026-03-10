@@ -60,6 +60,11 @@ export const ImposePresence: Power = {
     "taunt": {
       "scale": 1,
       "table": "Melee_InherentTaunt"
+    },
+    "durations": {
+      "defenseBuff": 1,
+      "rechargeBuff": 1.25,
+      "tohitBuff": 1
     }
   }
 };

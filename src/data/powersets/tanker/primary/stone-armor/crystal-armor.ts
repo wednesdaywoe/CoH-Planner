@@ -54,6 +54,11 @@ export const CrystalArmor: Power = {
     "recoveryBuff": {
       "scale": 0.2,
       "table": "Melee_Ones"
+    },
+    "durations": {
+      "defenseBuff": 0.75,
+      "elusivity": 0.75,
+      "recoveryBuff": 10.25
     }
   }
 };

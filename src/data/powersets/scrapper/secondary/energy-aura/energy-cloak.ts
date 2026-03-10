@@ -92,6 +92,10 @@ export const EnergyCloak: Power = {
         "scale": 0.1,
         "table": "Melee_Ones"
       }
+    },
+    "durations": {
+      "defenseBuff": 0.75,
+      "stealth": 0.75
     }
   }
 };

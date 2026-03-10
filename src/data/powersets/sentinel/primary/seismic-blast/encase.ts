@@ -64,6 +64,12 @@ export const Encase: Power = {
         "scale": 1,
         "table": "Ranged_Slow"
       }
+    },
+    "buffDuration": 3,
+    "durations": {
+      "defenseDebuff": 3,
+      "movement": 3,
+      "slow": 3
     }
   }
 };

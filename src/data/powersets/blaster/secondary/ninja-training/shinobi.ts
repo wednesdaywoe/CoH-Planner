@@ -101,6 +101,12 @@ export const Shinobi: Power = {
         "scale": 0.3,
         "table": "Melee_Ones"
       }
+    },
+    "durations": {
+      "damageBuff": 0.75,
+      "defenseBuff": 0.75,
+      "stealth": 0.75,
+      "tohitBuff": 0.75
     }
   }
 };

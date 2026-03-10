@@ -49,6 +49,10 @@ export const SoulAbsorption: Power = {
     "tohitDebuff": {
       "scale": 1,
       "table": "Ranged_Debuff_ToHit"
+    },
+    "buffDuration": 10,
+    "durations": {
+      "tohitDebuff": 10
     }
   }
 };

@@ -81,6 +81,12 @@ export const ShadowDweller: Power = {
     "regenBuff": {
       "scale": 1,
       "table": "Melee_Ones"
+    },
+    "durations": {
+      "defenseBuff": 10.25,
+      "immobilize": 10.25,
+      "perceptionBuff": 10.25,
+      "regenBuff": 10.3
     }
   }
 };

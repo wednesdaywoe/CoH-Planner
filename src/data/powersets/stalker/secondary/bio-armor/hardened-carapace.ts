@@ -65,6 +65,13 @@ export const HardenedCarapace: Power = {
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
+    },
+    "durations": {
+      "damageBuff": 0.75,
+      "enduranceDiscount": 0.75,
+      "resistance": 0.75,
+      "sleep": 0.75,
+      "stun": 0.75
     }
   }
 };

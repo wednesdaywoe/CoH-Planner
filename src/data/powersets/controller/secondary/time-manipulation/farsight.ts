@@ -86,6 +86,12 @@ export const Farsight: Power = {
     "perceptionBuff": {
       "scale": 2,
       "table": "Ranged_Res_Boolean"
+    },
+    "buffDuration": 120,
+    "durations": {
+      "defenseBuff": 120,
+      "perceptionBuff": 120,
+      "tohitBuff": 120
     }
   }
 };

@@ -79,6 +79,11 @@ export const FrozenFists: Power = {
     "damageBuff": {
       "scale": 0,
       "table": "Ranged_Ones"
+    },
+    "buffDuration": 5,
+    "durations": {
+      "movement": 5,
+      "rechargeBuff": 5
     }
   }
 };

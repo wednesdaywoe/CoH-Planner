@@ -64,6 +64,9 @@ export const DisruptionAura: Power = {
         "scale": 2,
         "table": "Melee_Debuff_Res_Dmg"
       }
+    },
+    "durations": {
+      "resistanceDebuff": 2.25
     }
   }
 };

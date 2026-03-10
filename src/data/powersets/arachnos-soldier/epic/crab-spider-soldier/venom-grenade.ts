@@ -49,6 +49,10 @@ export const VenomGrenade: Power = {
     "resistanceDebuff": {
       "scale": -2,
       "table": "Ranged_Res_Dmg"
+    },
+    "buffDuration": 16,
+    "durations": {
+      "resistanceDebuff": 16
     }
   }
 };

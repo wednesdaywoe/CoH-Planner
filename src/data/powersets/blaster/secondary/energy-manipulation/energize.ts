@@ -51,6 +51,12 @@ export const Energize: Power = {
       "scale": 30,
       "table": "Melee_Res_Boolean"
     },
-    "effectDuration": 60
+    "effectDuration": 60,
+    "buffDuration": 60,
+    "durations": {
+      "enduranceDiscount": 60,
+      "regenBuff": 60,
+      "stun": 60
+    }
   }
 };

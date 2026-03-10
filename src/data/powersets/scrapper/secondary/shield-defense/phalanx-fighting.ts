@@ -43,6 +43,9 @@ export const PhalanxFighting: Power = {
         "scale": 0.5,
         "table": "Melee_Buff_Def"
       }
+    },
+    "durations": {
+      "defenseBuff": 1.25
     }
   }
 };

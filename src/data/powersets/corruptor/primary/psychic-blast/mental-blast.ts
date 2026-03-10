@@ -52,6 +52,10 @@ export const MentalBlast: Power = {
     "rechargeDebuff": {
       "scale": 0.3,
       "table": "Ranged_Slow"
+    },
+    "buffDuration": 6,
+    "durations": {
+      "rechargeBuff": 6
     }
   }
 };

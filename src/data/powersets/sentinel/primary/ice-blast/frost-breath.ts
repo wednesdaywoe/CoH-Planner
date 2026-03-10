@@ -70,6 +70,11 @@ export const FrostBreath: Power = {
     "rechargeDebuff": {
       "scale": 0.2,
       "table": "Ranged_Slow"
+    },
+    "buffDuration": 10,
+    "durations": {
+      "movement": 10,
+      "rechargeBuff": 10
     }
   }
 };

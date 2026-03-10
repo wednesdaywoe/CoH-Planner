@@ -54,6 +54,10 @@ export const ChargedBolts: Power = {
     "enduranceGain": {
       "scale": 2.6,
       "table": "Ranged_Ones"
+    },
+    "buffDuration": 2,
+    "durations": {
+      "recoveryDebuff": 2
     }
   }
 };

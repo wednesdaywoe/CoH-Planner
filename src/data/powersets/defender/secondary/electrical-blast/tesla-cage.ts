@@ -71,6 +71,10 @@ export const TeslaCage: Power = {
     "enduranceDrain": {
       "scale": 0.01,
       "table": "Ranged_EndDrain"
+    },
+    "buffDuration": 8,
+    "durations": {
+      "recoveryDebuff": 8
     }
   }
 };

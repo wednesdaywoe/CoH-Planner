@@ -80,6 +80,12 @@ export const SonicDispersion: Power = {
       "mag": 1,
       "scale": 20,
       "table": "Ranged_Res_Boolean"
+    },
+    "durations": {
+      "hold": 2.25,
+      "immobilize": 2.25,
+      "resistance": 2.25,
+      "stun": 2.25
     }
   }
 };

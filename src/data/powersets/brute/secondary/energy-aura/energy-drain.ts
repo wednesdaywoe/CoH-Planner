@@ -84,6 +84,11 @@ export const EnergyDrain: Power = {
     "recoveryDebuff": {
       "scale": 1,
       "table": "Melee_Ones"
+    },
+    "buffDuration": 45,
+    "durations": {
+      "defenseBuff": 45,
+      "recoveryDebuff": 4
     }
   }
 };

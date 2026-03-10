@@ -101,6 +101,12 @@ export const ShadowCloak: Power = {
         "table": "Melee_Ones"
       }
     },
-    "effectDuration": 0.75
+    "effectDuration": 0.75,
+    "durations": {
+      "defenseBuff": 0.75,
+      "immobilize": 0.75,
+      "perceptionBuff": 0.75,
+      "stealth": 0.75
+    }
   }
 };

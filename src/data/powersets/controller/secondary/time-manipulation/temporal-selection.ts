@@ -46,6 +46,12 @@ export const TemporalSelection: Power = {
     "regenBuff": {
       "scale": 1.5,
       "table": "Ranged_Ones"
+    },
+    "buffDuration": 120,
+    "durations": {
+      "damageBuff": 120,
+      "rechargeBuff": 120,
+      "regenBuff": 120
     }
   }
 };

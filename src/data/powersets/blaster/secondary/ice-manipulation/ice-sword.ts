@@ -75,6 +75,11 @@ export const IceSword: Power = {
     "damageBuff": {
       "scale": 0,
       "table": "Ranged_Ones"
+    },
+    "buffDuration": 8,
+    "durations": {
+      "movement": 8,
+      "rechargeBuff": 8
     }
   }
 };

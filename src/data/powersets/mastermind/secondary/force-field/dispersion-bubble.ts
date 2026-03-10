@@ -96,6 +96,12 @@ export const DispersionBubble: Power = {
       "mag": 1,
       "scale": 20,
       "table": "Ranged_Res_Boolean"
+    },
+    "durations": {
+      "defenseBuff": 15,
+      "hold": 15,
+      "immobilize": 15,
+      "stun": 15
     }
   }
 };

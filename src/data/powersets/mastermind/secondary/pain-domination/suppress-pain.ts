@@ -38,6 +38,9 @@ export const SuppressPain: Power = {
     "regenBuff": {
       "scale": 2,
       "table": "Ranged_Ones"
+    },
+    "durations": {
+      "regenBuff": 4.25
     }
   }
 };

@@ -67,6 +67,11 @@ export const MidnightGrasp: Power = {
     "damageBuff": {
       "scale": 0.137,
       "table": "Melee_Ones"
+    },
+    "buffDuration": 20,
+    "durations": {
+      "damageBuff": 9.57,
+      "tohitDebuff": 20
     }
   }
 };

@@ -138,6 +138,11 @@ export const HailofBullets: Power = {
         "scale": 1.5,
         "table": "Ranged_Buff_Def"
       }
+    },
+    "buffDuration": 5,
+    "durations": {
+      "defenseBuff": 5,
+      "knockback": 2.3
     }
   }
 };

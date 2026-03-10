@@ -84,6 +84,13 @@ export const Overload: Power = {
     "recoveryBuff": {
       "scale": 1,
       "table": "Melee_Ones"
+    },
+    "buffDuration": 30,
+    "durations": {
+      "defenseBuff": 30,
+      "elusivity": 30,
+      "maxHPBuff": 30,
+      "recoveryBuff": 30
     }
   }
 };

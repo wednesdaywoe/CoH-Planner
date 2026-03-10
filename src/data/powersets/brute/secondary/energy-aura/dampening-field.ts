@@ -49,6 +49,11 @@ export const DampeningField: Power = {
     "recoveryBuff": {
       "scale": 0.25,
       "table": "Melee_Ones"
+    },
+    "durations": {
+      "enduranceGain": 10.25,
+      "recoveryBuff": 10.25,
+      "resistance": 10.25
     }
   }
 };

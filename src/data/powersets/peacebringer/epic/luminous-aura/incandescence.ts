@@ -36,6 +36,9 @@ export const Incandescence: Power = {
         "scale": 1.5,
         "table": "Melee_Res_Dmg"
       }
+    },
+    "durations": {
+      "resistance": 10.25
     }
   }
 };

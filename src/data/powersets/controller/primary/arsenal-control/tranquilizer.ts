@@ -85,6 +85,10 @@ export const Tranquilizer: Power = {
         "scale": 0.1,
         "table": "Ranged_Slow"
       }
+    },
+    "buffDuration": 5,
+    "durations": {
+      "movement": 5
     }
   }
 };

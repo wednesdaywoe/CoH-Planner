@@ -86,6 +86,13 @@ export const Frostbite: Power = {
         "scale": 1.6,
         "table": "Ranged_Ones"
       }
+    },
+    "buffDuration": 15,
+    "durations": {
+      "movement": 15,
+      "protection": 12,
+      "rechargeBuff": 15,
+      "slow": 10
     }
   }
 };

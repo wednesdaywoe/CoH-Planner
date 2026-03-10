@@ -66,6 +66,11 @@ export const DarkNovaBolt: Power = {
     "rechargeDebuff": {
       "scale": 0.2,
       "table": "Ranged_Slow"
+    },
+    "buffDuration": 3,
+    "durations": {
+      "movement": 3,
+      "rechargeBuff": 3
     }
   }
 };

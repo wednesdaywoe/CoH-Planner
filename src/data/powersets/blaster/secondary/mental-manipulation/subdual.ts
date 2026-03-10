@@ -54,6 +54,10 @@ export const Subdual: Power = {
     "damageBuff": {
       "scale": 0.11,
       "table": "Ranged_Ones"
+    },
+    "buffDuration": 9.17,
+    "durations": {
+      "damageBuff": 9.17
     }
   }
 };

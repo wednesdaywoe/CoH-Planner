@@ -63,6 +63,10 @@ export const AtomSmasher: Power = {
       "mag": 2,
       "scale": 6,
       "table": "Melee_Immobilize"
+    },
+    "buffDuration": 10,
+    "durations": {
+      "defenseDebuff": 10
     }
   }
 };

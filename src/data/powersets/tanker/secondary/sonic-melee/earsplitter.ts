@@ -96,6 +96,16 @@ export const Earsplitter: Power = {
       "mag": 3,
       "scale": 5,
       "table": "Melee_Immobilize"
+    },
+    "buffDuration": 15,
+    "durations": {
+      "debuffResistance": 15,
+      "elusivity": 15,
+      "enduranceDrain": 15,
+      "recoveryDebuff": 15,
+      "regenDebuff": 15,
+      "slow": 15,
+      "tohitDebuff": 15
     }
   }
 };

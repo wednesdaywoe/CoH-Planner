@@ -65,6 +65,9 @@ export const DisruptionField: Power = {
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       }
+    },
+    "durations": {
+      "resistanceDebuff": 0.75
     }
   }
 };

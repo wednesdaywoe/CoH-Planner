@@ -60,6 +60,10 @@ export const FocusedBurst: Power = {
     "damageDebuff": {
       "scale": 0.85,
       "table": "Melee_Debuff_Dam"
+    },
+    "buffDuration": 7,
+    "durations": {
+      "damageDebuff": 7
     }
   }
 };

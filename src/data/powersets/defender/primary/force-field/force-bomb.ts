@@ -90,6 +90,10 @@ export const ForceBomb: Power = {
       "mag": 2,
       "scale": 8,
       "table": "Ranged_Stun"
+    },
+    "buffDuration": 30,
+    "durations": {
+      "resistanceDebuff": 30
     }
   }
 };

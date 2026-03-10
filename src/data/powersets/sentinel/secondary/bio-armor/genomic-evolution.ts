@@ -69,6 +69,11 @@ export const GenomicEvolution: Power = {
     "maxEndBuff": {
       "scale": 5,
       "table": "Melee_Ones"
+    },
+    "durations": {
+      "maxEndBuff": 5.25,
+      "rangeBuff": 5.25,
+      "resistance": 5.25
     }
   }
 };

@@ -60,6 +60,11 @@ export const Wormhole: Power = {
     "knockback": {
       "scale": 7,
       "table": "Ranged_Knockback"
+    },
+    "buffDuration": 15,
+    "durations": {
+      "stealth": 1.5,
+      "teleport": 15
     }
   }
 };

@@ -37,6 +37,10 @@ export const FastHealing: Power = {
     "recoveryBuff": {
       "scale": 0.2,
       "table": "Melee_Ones"
+    },
+    "durations": {
+      "recoveryBuff": 10.25,
+      "regenBuff": 10
     }
   }
 };

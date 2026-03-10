@@ -41,6 +41,11 @@ export const GammaBoost: Power = {
     "enduranceGain": {
       "scale": 2,
       "table": "Melee_Res_Boolean"
+    },
+    "durations": {
+      "enduranceGain": 1.25,
+      "recoveryBuff": 1.25,
+      "regenBuff": 1.25
     }
   }
 };

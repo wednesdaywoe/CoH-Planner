@@ -48,6 +48,11 @@ export const MindProbe: Power = {
     "damageBuff": {
       "scale": 0.077,
       "table": "Melee_Ones"
+    },
+    "buffDuration": 8.67,
+    "durations": {
+      "damageBuff": 8.67,
+      "rechargeBuff": 6
     }
   }
 };

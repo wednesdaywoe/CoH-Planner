@@ -116,6 +116,12 @@ export const SteamyMist: Power = {
       "scale": 5,
       "table": "Ranged_Res_Boolean"
     },
-    "effectDuration": 0.75
+    "effectDuration": 0.75,
+    "durations": {
+      "confuse": 0.75,
+      "defenseBuff": 0.75,
+      "resistance": 0.75,
+      "stealth": 0.75
+    }
   }
 };

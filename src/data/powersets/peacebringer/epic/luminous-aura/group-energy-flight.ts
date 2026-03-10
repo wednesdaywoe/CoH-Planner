@@ -50,6 +50,9 @@ export const GroupEnergyFlight: Power = {
         "scale": 10,
         "table": "Melee_Friction"
       }
+    },
+    "durations": {
+      "movement": 2.25
     }
   }
 };

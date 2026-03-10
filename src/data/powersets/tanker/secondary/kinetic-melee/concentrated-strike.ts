@@ -60,6 +60,10 @@ export const ConcentratedStrike: Power = {
     "damageDebuff": {
       "scale": 1,
       "table": "Melee_Debuff_Dam"
+    },
+    "buffDuration": 8,
+    "durations": {
+      "damageDebuff": 8
     }
   }
 };

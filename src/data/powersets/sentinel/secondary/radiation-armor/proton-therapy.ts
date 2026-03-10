@@ -53,6 +53,12 @@ export const ProtonTherapy: Power = {
     "regenBuff": {
       "scale": 0.75,
       "table": "Melee_Res_Boolean"
+    },
+    "buffDuration": 60,
+    "durations": {
+      "enduranceGain": 2.1,
+      "regenBuff": 60,
+      "resistance": 60
     }
   }
 };

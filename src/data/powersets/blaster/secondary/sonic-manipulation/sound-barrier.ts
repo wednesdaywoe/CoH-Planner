@@ -58,6 +58,12 @@ export const SoundBarrier: Power = {
       "scale": 30,
       "table": "Melee_Res_Boolean"
     },
-    "effectDuration": 2.25
+    "effectDuration": 2.25,
+    "durations": {
+      "absorb": 12,
+      "recoveryBuff": 3,
+      "resistance": 2.25,
+      "sleep": 2.25
+    }
   }
 };

@@ -65,6 +65,11 @@ export const Lucky: Power = {
         "scale": 0,
         "table": "Melee_Ones"
       }
+    },
+    "durations": {
+      "defenseBuff": 0.75,
+      "elusivity": 0.75,
+      "resistance": 0.75
     }
   }
 };

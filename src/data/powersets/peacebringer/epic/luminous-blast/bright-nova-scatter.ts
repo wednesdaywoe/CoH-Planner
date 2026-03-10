@@ -52,6 +52,10 @@ export const BrightNovaScatter: Power = {
     "defenseDebuff": {
       "scale": 1,
       "table": "Ranged_Debuff_Def"
+    },
+    "buffDuration": 8,
+    "durations": {
+      "defenseDebuff": 8
     }
   }
 };

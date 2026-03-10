@@ -54,6 +54,12 @@ export const WildFortress: Power = {
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       }
+    },
+    "durations": {
+      "absorb": 12,
+      "confuse": 2.5,
+      "recoveryBuff": 2.5,
+      "resistance": 2.5
     }
   }
 };

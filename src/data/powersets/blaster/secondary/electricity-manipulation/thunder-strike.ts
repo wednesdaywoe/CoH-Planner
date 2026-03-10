@@ -74,6 +74,11 @@ export const ThunderStrike: Power = {
     "damageBuff": {
       "scale": 0.078,
       "table": "Melee_Ones"
+    },
+    "buffDuration": 10.8,
+    "durations": {
+      "damageBuff": 10.8,
+      "recoveryDebuff": 4
     }
   }
 };

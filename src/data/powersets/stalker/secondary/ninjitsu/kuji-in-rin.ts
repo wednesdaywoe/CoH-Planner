@@ -90,6 +90,17 @@ export const KujiInRin: Power = {
         "scale": 0.1,
         "table": "Melee_SpeedRunning"
       }
+    },
+    "buffDuration": 120,
+    "durations": {
+      "confuse": 120,
+      "fear": 120,
+      "hold": 120,
+      "immobilize": 120,
+      "movement": 120,
+      "resistance": 120,
+      "sleep": 120,
+      "stun": 120
     }
   }
 };

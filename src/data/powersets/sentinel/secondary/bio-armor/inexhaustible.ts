@@ -69,6 +69,14 @@ export const Inexhaustible: Power = {
         "scale": 0.3,
         "table": "Melee_Ones"
       }
+    },
+    "durations": {
+      "debuffResistance": 5.25,
+      "enduranceGain": 5.25,
+      "maxHPBuff": 5.25,
+      "movement": 5.25,
+      "recoveryBuff": 5.25,
+      "regenBuff": 5.25
     }
   }
 };

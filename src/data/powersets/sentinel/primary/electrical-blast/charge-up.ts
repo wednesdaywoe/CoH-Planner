@@ -48,6 +48,13 @@ export const ChargeUp: Power = {
     "enduranceGain": {
       "scale": 0.25,
       "table": "Ranged_EndDrain"
+    },
+    "buffDuration": 10,
+    "durations": {
+      "damageBuff": 10,
+      "enduranceGain": 10,
+      "rangeBuff": 10,
+      "tohitBuff": 10
     }
   }
 };

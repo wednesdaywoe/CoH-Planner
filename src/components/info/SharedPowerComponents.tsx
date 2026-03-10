@@ -553,7 +553,7 @@ export function RegistryEffectsDisplay({
   compact = false,
   dominationActive = false,
   header,
-  duration,
+  duration: _duration,
   damage,
   finalColumnHeader = 'Final',
   finalColumnColor = 'text-amber-400',
@@ -561,6 +561,22 @@ export function RegistryEffectsDisplay({
   purplePatchInfo,
 }: RegistryEffectsDisplayProps) {
   const allowedSet = new Set(allowedEnhancements);
+
+  // Per-effect durations for annotations
+  const durations = effects?.durations as Record<string, number> | undefined;
+  const buffDur = effects?.buffDuration as number | undefined;
+
+  // Look up duration for an effect key, returns undefined if same as buffDuration or not present
+  const getEffectDuration = (effectKey: string): number | undefined => {
+    if (!durations) return undefined;
+    // Try exact key first, then strip expanded suffix (e.g. "defense_smashing" → "defense")
+    const baseKey = effectKey.includes('_') ? effectKey.split('_')[0] : effectKey;
+    const dur = durations[effectKey] ?? durations[baseKey];
+    if (dur === undefined) return undefined;
+    // Don't annotate if it matches buffDuration (already shown in execution stats)
+    if (buffDur && Math.abs(dur - buffDur) < 0.01) return undefined;
+    return dur;
+  };
 
   // Map enhancement type names to registry aspect names
   const enhancementToAspect: Record<string, string> = {
@@ -724,7 +740,7 @@ export function RegistryEffectsDisplay({
       {/* Section header if provided */}
       {header && (
         <h4 className="text-[9px] font-semibold text-slate-500 uppercase tracking-wide mb-1">
-          {header} {duration && <span className="text-slate-600 font-normal">({duration.toFixed(1)}s)</span>}
+          {header}
         </h4>
       )}
       <div className="bg-slate-800/50 rounded p-2">
@@ -865,10 +881,13 @@ export function RegistryEffectsDisplay({
           const magStr = Number.isInteger(rawMag) ? rawMag.toString() : rawMag.toFixed(1);
           const colorClass = dominationActive && config.category === 'control' ? 'text-pink-400' : config.colorClass;
 
-          // Extract duration from MezEffect if available (require mag to distinguish from ScaledEffect)
-          const mezDuration = rawValue && typeof rawValue === 'object' && 'mag' in (rawValue as Record<string, unknown>) && 'scale' in (rawValue as Record<string, unknown>)
+          // Extract duration from MezEffect if available, or fall back to durations map
+          let mezDuration = rawValue && typeof rawValue === 'object' && 'mag' in (rawValue as Record<string, unknown>) && 'scale' in (rawValue as Record<string, unknown>)
             ? (rawValue as { scale?: number }).scale
             : undefined;
+          if (mezDuration == null || mezDuration <= 0) {
+            mezDuration = durations?.[key];
+          }
 
           return (
             <div key={key} className={`grid ${gridCols} gap-1 items-baseline ${fontSize}`}>
@@ -888,6 +907,9 @@ export function RegistryEffectsDisplay({
           );
         }
 
+        // Duration annotation for this effect
+        const effectDur = getEffectDuration(key);
+
         // Standard three-tier row
         const formatValue = (v: number) => {
           switch (config.format) {
@@ -905,7 +927,12 @@ export function RegistryEffectsDisplay({
 
         return (
           <div key={key} className={`grid ${gridCols} gap-1 items-baseline ${fontSize}`}>
-            <span className={config.colorClass}>{label}</span>
+            <span className={config.colorClass}>
+              {label}
+              {effectDur != null && (
+                <span className="text-slate-500 font-normal text-[9px] ml-0.5">({effectDur}s)</span>
+              )}
+            </span>
             <span className="text-slate-200">{formatValue(tiers.base)}</span>
             {enhanceable ? (
               <span className={hasEnh ? 'text-green-400' : 'text-slate-400'}>

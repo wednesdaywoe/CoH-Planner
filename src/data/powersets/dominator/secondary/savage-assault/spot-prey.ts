@@ -44,6 +44,12 @@ export const SpotPrey: Power = {
     "perceptionBuff": {
       "scale": 1,
       "table": "Melee_Ones"
+    },
+    "buffDuration": 10,
+    "durations": {
+      "damageBuff": 10,
+      "perceptionBuff": 10,
+      "tohitBuff": 10
     }
   }
 };

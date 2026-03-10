@@ -65,6 +65,16 @@ export const Clarity: Power = {
     "perceptionBuff": {
       "scale": 2.5,
       "table": "Ranged_Res_Boolean"
+    },
+    "buffDuration": 90,
+    "durations": {
+      "confuse": 90,
+      "fear": 90,
+      "hold": 90,
+      "immobilize": 90,
+      "perceptionBuff": 90,
+      "sleep": 90,
+      "stun": 90
     }
   }
 };

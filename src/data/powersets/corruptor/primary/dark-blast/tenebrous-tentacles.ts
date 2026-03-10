@@ -79,6 +79,10 @@ export const TenebrousTentacles: Power = {
     "tohitDebuff": {
       "scale": 0.75,
       "table": "Ranged_Debuff_ToHit"
+    },
+    "buffDuration": 8,
+    "durations": {
+      "tohitDebuff": 8
     }
   }
 };

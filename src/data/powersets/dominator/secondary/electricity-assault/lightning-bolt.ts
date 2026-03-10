@@ -54,6 +54,10 @@ export const LightningBolt: Power = {
     "enduranceGain": {
       "scale": 4.265,
       "table": "Ranged_Ones"
+    },
+    "buffDuration": 4,
+    "durations": {
+      "recoveryDebuff": 4
     }
   }
 };

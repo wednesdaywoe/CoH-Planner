@@ -52,6 +52,11 @@ export const HellonEarth: Power = {
       "entity": "Pets_Living_Hellfire",
       "copyBoosts": true,
       "entityCount": 10
+    },
+    "buffDuration": 90,
+    "durations": {
+      "damageBuff": 90,
+      "tohitBuff": 90
     }
   }
 };

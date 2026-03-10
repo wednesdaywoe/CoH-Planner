@@ -45,6 +45,11 @@ export const Quickness: Power = {
         "scale": 0.1,
         "table": "Melee_SpeedFlying"
       }
+    },
+    "durations": {
+      "debuffResistance": 10.25,
+      "movement": 10.25,
+      "rechargeBuff": 10.25
     }
   }
 };

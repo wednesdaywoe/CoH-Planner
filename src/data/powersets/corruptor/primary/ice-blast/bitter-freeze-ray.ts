@@ -91,6 +91,14 @@ export const BitterFreezeRay: Power = {
     "protection": {
       "knockup": 1,
       "knockback": 1
+    },
+    "buffDuration": 10,
+    "durations": {
+      "knockback": 10,
+      "knockup": 10,
+      "movement": 18,
+      "protection": 10,
+      "rechargeBuff": 18
     }
   }
 };

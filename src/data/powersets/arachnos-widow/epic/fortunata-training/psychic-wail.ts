@@ -52,6 +52,10 @@ export const PsychicWail: Power = {
     "rechargeDebuff": {
       "scale": 0.7,
       "table": "Ranged_Slow"
+    },
+    "buffDuration": 20,
+    "durations": {
+      "rechargeBuff": 20
     }
   }
 };

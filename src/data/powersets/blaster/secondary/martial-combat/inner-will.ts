@@ -73,6 +73,15 @@ export const InnerWill: Power = {
       "mag": 1,
       "scale": 1,
       "table": "Melee_Ones"
+    },
+    "buffDuration": 30,
+    "durations": {
+      "confuse": 30,
+      "fear": 30,
+      "hold": 30,
+      "immobilize": 30,
+      "sleep": 30,
+      "stun": 30
     }
   }
 };

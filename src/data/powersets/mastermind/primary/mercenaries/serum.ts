@@ -112,6 +112,20 @@ export const Serum: Power = {
     "recoveryBuff": {
       "scale": 1,
       "table": "Ranged_Ones"
+    },
+    "buffDuration": 60,
+    "durations": {
+      "damageBuff": 60,
+      "hold": 60,
+      "immobilize": 60,
+      "knockback": 60,
+      "knockup": 60,
+      "recoveryBuff": 60,
+      "repel": 60,
+      "resistance": 60,
+      "sleep": 60,
+      "stun": 60,
+      "tohitBuff": 60
     }
   }
 };

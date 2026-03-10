@@ -73,6 +73,10 @@ export const GreaterPsiBlade: Power = {
     "rechargeDebuff": {
       "scale": 0.2,
       "table": "Melee_Slow"
+    },
+    "buffDuration": 6,
+    "durations": {
+      "rechargeBuff": 6
     }
   }
 };

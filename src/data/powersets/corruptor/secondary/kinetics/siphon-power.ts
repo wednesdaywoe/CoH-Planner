@@ -34,6 +34,10 @@ export const SiphonPower: Power = {
     "damageDebuff": {
       "scale": 2,
       "table": "Ranged_Debuff_Dam"
+    },
+    "buffDuration": 30,
+    "durations": {
+      "damageDebuff": 30
     }
   }
 };

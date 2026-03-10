@@ -96,6 +96,11 @@ export const MaskPresence: Power = {
         "scale": 0.15,
         "table": "Melee_Ones"
       }
+    },
+    "durations": {
+      "damageBuff": 0.75,
+      "defenseBuff": 0.55,
+      "stealth": 0.75
     }
   }
 };

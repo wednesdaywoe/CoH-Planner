@@ -68,6 +68,11 @@ export const SnowStorm: Power = {
         "scale": 1,
         "table": "Ranged_SpeedRunning"
       }
+    },
+    "durations": {
+      "movement": 0.75,
+      "rechargeBuff": 0.75,
+      "slow": 0.75
     }
   }
 };

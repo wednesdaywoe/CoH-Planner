@@ -50,6 +50,12 @@ export const TwilightGrasp: Power = {
     "regenDebuff": {
       "scale": 0.5,
       "table": "Ranged_Ones"
+    },
+    "buffDuration": 20,
+    "durations": {
+      "damageDebuff": 20,
+      "regenDebuff": 20,
+      "tohitDebuff": 20
     }
   }
 };

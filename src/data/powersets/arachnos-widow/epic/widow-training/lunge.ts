@@ -76,6 +76,11 @@ export const Lunge: Power = {
     "rechargeDebuff": {
       "scale": 0.2,
       "table": "Melee_Slow"
+    },
+    "buffDuration": 6,
+    "durations": {
+      "movement": 6,
+      "rechargeBuff": 6
     }
   }
 };

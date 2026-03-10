@@ -85,6 +85,18 @@ export const AccelerateMetabolism: Power = {
         "scale": 0.3,
         "table": "Ranged_Ones"
       }
+    },
+    "buffDuration": 120,
+    "durations": {
+      "damageBuff": 120,
+      "enduranceGain": 120,
+      "hold": 120,
+      "immobilize": 120,
+      "movement": 120,
+      "rechargeBuff": 120,
+      "recoveryBuff": 120,
+      "sleep": 120,
+      "stun": 120
     }
   }
 };

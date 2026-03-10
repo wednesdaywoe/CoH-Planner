@@ -64,6 +64,12 @@ export const RingofFire: Power = {
     "damageBuff": {
       "scale": 0.077,
       "table": "Ranged_Ones"
+    },
+    "buffDuration": 15,
+    "durations": {
+      "damageBuff": 8.67,
+      "protection": 15,
+      "slow": 10
     }
   }
 };

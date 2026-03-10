@@ -73,6 +73,10 @@ export const GreaterPsiBlade: Power = {
       "mag": 3,
       "scale": 12,
       "table": "Melee_Stun"
+    },
+    "buffDuration": 6,
+    "durations": {
+      "rechargeBuff": 6
     }
   }
 };

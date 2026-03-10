@@ -80,6 +80,11 @@ export const RibCracker: Power = {
         "scale": 1,
         "table": "Melee_Debuff_Res_Dmg"
       }
+    },
+    "buffDuration": 5,
+    "durations": {
+      "damageDebuff": 5,
+      "resistanceDebuff": 5
     }
   }
 };

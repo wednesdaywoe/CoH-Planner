@@ -64,6 +64,11 @@ export const AgingTouch: Power = {
     "damageBuff": {
       "scale": 0.066,
       "table": "Melee_Ones"
+    },
+    "buffDuration": 8.5,
+    "durations": {
+      "damageBuff": 8.5,
+      "enduranceDrain": 2.1
     }
   }
 };

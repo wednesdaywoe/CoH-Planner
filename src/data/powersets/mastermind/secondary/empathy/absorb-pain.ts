@@ -56,6 +56,11 @@ export const AbsorbPain: Power = {
         "scale": 1,
         "table": "Ranged_Ones"
       }
+    },
+    "buffDuration": 20,
+    "durations": {
+      "regenDebuff": 20,
+      "resistance": 20
     }
   }
 };

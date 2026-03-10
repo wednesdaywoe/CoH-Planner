@@ -89,6 +89,13 @@ export const CryoFreezeRay: Power = {
         "scale": 1.6,
         "table": "Ranged_Ones"
       }
+    },
+    "buffDuration": 12,
+    "durations": {
+      "movement": 12,
+      "protection": 12,
+      "rechargeBuff": 12,
+      "slow": 15
     }
   }
 };

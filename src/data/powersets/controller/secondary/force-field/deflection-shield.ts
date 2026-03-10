@@ -56,6 +56,11 @@ export const DeflectionShield: Power = {
         "scale": 4,
         "table": "Ranged_Res_Dmg"
       }
+    },
+    "buffDuration": 240,
+    "durations": {
+      "defenseBuff": 240,
+      "resistance": 240
     }
   }
 };

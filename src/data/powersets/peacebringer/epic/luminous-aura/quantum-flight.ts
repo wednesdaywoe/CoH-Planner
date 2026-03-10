@@ -59,6 +59,11 @@ export const QuantumFlight: Power = {
         "scale": 222,
         "table": "Melee_Ones"
       }
+    },
+    "durations": {
+      "movement": 0.75,
+      "stealth": 0.75,
+      "threatDebuff": 0.75
     }
   }
 };

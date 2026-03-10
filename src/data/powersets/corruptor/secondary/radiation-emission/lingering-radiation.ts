@@ -68,6 +68,13 @@ export const LingeringRadiation: Power = {
     "regenDebuff": {
       "scale": 5,
       "table": "Ranged_Ones"
+    },
+    "buffDuration": 30,
+    "durations": {
+      "movement": 30,
+      "rechargeBuff": 30,
+      "regenDebuff": 30,
+      "slow": 30
     }
   }
 };

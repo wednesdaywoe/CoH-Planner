@@ -89,6 +89,21 @@ export const BassBoost: Power = {
     "tohitBuff": {
       "scale": 0.5,
       "table": "Melee_Stun"
+    },
+    "buffDuration": 10,
+    "durations": {
+      "absorb": 10,
+      "confuse": 10,
+      "damageBuff": 10,
+      "defenseBuff": 10,
+      "enduranceGain": 10,
+      "fear": 10,
+      "hold": 10,
+      "immobilize": 10,
+      "movement": 10,
+      "sleep": 10,
+      "stun": 10,
+      "tohitBuff": 10
     }
   }
 };

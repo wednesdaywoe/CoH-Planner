@@ -62,6 +62,10 @@ export const PsionicShield: Power = {
     "enduranceGain": {
       "scale": 0.75,
       "table": "Melee_Res_Boolean"
+    },
+    "durations": {
+      "enduranceGain": 0.75,
+      "resistance": 0.75
     }
   }
 };

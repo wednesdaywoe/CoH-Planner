@@ -54,6 +54,13 @@ export const DrainPsyche: Power = {
     "recoveryDebuff": {
       "scale": 5,
       "table": "Melee_Ones"
+    },
+    "buffDuration": 30,
+    "durations": {
+      "recoveryBuff": 30,
+      "recoveryDebuff": 30,
+      "regenBuff": 30,
+      "regenDebuff": 30
     }
   }
 };

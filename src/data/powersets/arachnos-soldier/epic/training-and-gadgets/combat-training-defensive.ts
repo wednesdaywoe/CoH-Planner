@@ -33,6 +33,9 @@ export const CombatTrainingDefensive: Power = {
         "scale": 0.75,
         "table": "Melee_Buff_Def"
       }
+    },
+    "durations": {
+      "defenseBuff": 0.75
     }
   }
 };

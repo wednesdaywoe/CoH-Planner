@@ -52,6 +52,10 @@ export const DarkConsumption: Power = {
     "damageBuff": {
       "scale": 0.031,
       "table": "Melee_Ones"
+    },
+    "buffDuration": 8.53,
+    "durations": {
+      "damageBuff": 8.53
     }
   }
 };

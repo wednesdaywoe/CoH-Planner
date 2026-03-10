@@ -67,6 +67,10 @@ export const Resilience: Power = {
         "scale": 1.25,
         "table": "Melee_Res_Dmg"
       }
+    },
+    "durations": {
+      "resistance": 10.25,
+      "stun": 10.25
     }
   }
 };

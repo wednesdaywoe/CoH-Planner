@@ -67,6 +67,10 @@ export const ChargedBrawl: Power = {
     "enduranceGain": {
       "scale": 5.095,
       "table": "Melee_Ones"
+    },
+    "buffDuration": 2,
+    "durations": {
+      "recoveryDebuff": 2
     }
   }
 };

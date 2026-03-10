@@ -74,6 +74,10 @@ export const ExecutionersShot: Power = {
     "damageBuff": {
       "scale": 0,
       "table": "Ranged_Ones"
+    },
+    "buffDuration": 8,
+    "durations": {
+      "defenseDebuff": 8
     }
   }
 };

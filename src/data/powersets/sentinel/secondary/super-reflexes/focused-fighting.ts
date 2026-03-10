@@ -67,6 +67,15 @@ export const FocusedFighting: Power = {
         "scale": 0.4,
         "table": "Melee_Res_Boolean"
       }
+    },
+    "durations": {
+      "confuse": 0.75,
+      "defenseBuff": 0.75,
+      "elusivity": 0.75,
+      "immobilize": 0.75,
+      "knockback": 0.75,
+      "knockup": 0.75,
+      "protection": 0.75
     }
   }
 };

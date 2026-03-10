@@ -129,6 +129,23 @@ export const PowerSurge: Power = {
       "mag": 1,
       "scale": 50,
       "table": "Melee_Res_Boolean"
+    },
+    "buffDuration": 30,
+    "durations": {
+      "enduranceGain": 30,
+      "hold": 30,
+      "immobilize": 30,
+      "knockback": 30,
+      "knockup": 30,
+      "protection": 30,
+      "recoveryBuff": 30,
+      "regenBuff": 30,
+      "repel": 30,
+      "resistance": 30,
+      "sleep": 30,
+      "stealth": 29,
+      "stun": 30,
+      "teleport": 30
     }
   }
 };

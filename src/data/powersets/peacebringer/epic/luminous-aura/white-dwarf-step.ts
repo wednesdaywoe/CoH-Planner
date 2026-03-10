@@ -50,6 +50,11 @@ export const WhiteDwarfStep: Power = {
         "scale": 8,
         "table": "Melee_Ones"
       }
+    },
+    "buffDuration": 1.5,
+    "durations": {
+      "movement": 1.5,
+      "stealth": 1.5
     }
   }
 };

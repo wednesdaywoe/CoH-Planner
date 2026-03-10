@@ -75,6 +75,11 @@ export const MeltArmor: Power = {
         "scale": 3,
         "table": "Ranged_Debuff_Res_Dmg"
       }
+    },
+    "buffDuration": 40,
+    "durations": {
+      "defenseDebuff": 40,
+      "resistanceDebuff": 40
     }
   }
 };

@@ -48,6 +48,11 @@ export const EssenceBoost: Power = {
         "scale": 2,
         "table": "Melee_Res_Dmg"
       }
+    },
+    "buffDuration": 120,
+    "durations": {
+      "maxHPBuff": 120,
+      "resistance": 120
     }
   }
 };

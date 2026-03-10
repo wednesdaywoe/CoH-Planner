@@ -70,6 +70,10 @@ export const PsiBladeSweep: Power = {
       "mag": 3,
       "scale": 5,
       "table": "Melee_Stun"
+    },
+    "buffDuration": 6,
+    "durations": {
+      "rechargeBuff": 6
     }
   }
 };

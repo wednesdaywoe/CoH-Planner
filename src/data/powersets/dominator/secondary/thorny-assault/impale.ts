@@ -90,6 +90,12 @@ export const Impale: Power = {
     "defenseDebuff": {
       "scale": 3,
       "table": "Ranged_Debuff_Def"
+    },
+    "buffDuration": 15,
+    "durations": {
+      "defenseDebuff": 15,
+      "movement": 15,
+      "slow": 15
     }
   }
 };

@@ -42,6 +42,10 @@ export const DragonsRoar: Power = {
     "rangeBuff": {
       "scale": 1,
       "table": "Melee_Ones"
+    },
+    "buffDuration": 20,
+    "durations": {
+      "rangeBuff": 20
     }
   }
 };

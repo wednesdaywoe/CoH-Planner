@@ -54,6 +54,10 @@ export const FireShield: Power = {
         "scale": 1,
         "table": "Ranged_Res_Dmg"
       }
+    },
+    "buffDuration": 240,
+    "durations": {
+      "resistance": 240
     }
   }
 };

@@ -97,6 +97,11 @@ export const Ripper: Power = {
       "mag": 0.67,
       "scale": 10,
       "table": "Melee_Immobilize"
+    },
+    "buffDuration": 15,
+    "durations": {
+      "movement": 15,
+      "rechargeBuff": 10
     }
   }
 };

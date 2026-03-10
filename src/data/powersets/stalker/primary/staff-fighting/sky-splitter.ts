@@ -112,6 +112,11 @@ export const SkySplitter: Power = {
         "scale": 1.33,
         "table": "Melee_Res_Dmg"
       }
+    },
+    "buffDuration": 15,
+    "durations": {
+      "resistance": 15,
+      "slow": 10
     }
   }
 };

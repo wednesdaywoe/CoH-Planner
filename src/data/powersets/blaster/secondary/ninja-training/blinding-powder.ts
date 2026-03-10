@@ -62,6 +62,11 @@ export const BlindingPowder: Power = {
     "damageBuff": {
       "scale": 0,
       "table": "Ranged_Ones"
+    },
+    "buffDuration": 20,
+    "durations": {
+      "perceptionDebuff": 20,
+      "tohitDebuff": 15
     }
   }
 };

@@ -52,6 +52,10 @@ export const StunningShot: Power = {
       "mag": 3,
       "scale": 10,
       "table": "Ranged_Stun"
+    },
+    "buffDuration": 8.5,
+    "durations": {
+      "damageBuff": 8.5
     }
   }
 };

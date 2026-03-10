@@ -46,6 +46,10 @@ export const AgainstAllOdds: Power = {
     "taunt": {
       "scale": 1,
       "table": "Melee_InherentTaunt"
+    },
+    "durations": {
+      "damageBuff": 1,
+      "damageDebuff": 1
     }
   }
 };

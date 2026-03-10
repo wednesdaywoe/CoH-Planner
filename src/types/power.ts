@@ -283,6 +283,8 @@ export interface PowerEffects {
   dot?: DotEffect;
   /** Duration of buffs/debuffs */
   buffDuration?: number;
+  /** Per-effect durations in seconds, keyed by effect name (e.g. { tohitDebuff: 6, rechargeBuff: 120 }) */
+  durations?: Record<string, number>;
 
   // === BUFF EFFECTS ===
   /** ToHit buff value (scale or {scale, table}) */

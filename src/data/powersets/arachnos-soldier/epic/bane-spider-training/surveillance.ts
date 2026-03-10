@@ -72,6 +72,11 @@ export const Surveillance: Power = {
     "defenseDebuff": {
       "scale": 2,
       "table": "Melee_Debuff_Def"
+    },
+    "buffDuration": 20,
+    "durations": {
+      "defenseDebuff": 20,
+      "resistanceDebuff": 20
     }
   }
 };

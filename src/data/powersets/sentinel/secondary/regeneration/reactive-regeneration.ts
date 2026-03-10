@@ -36,6 +36,9 @@ export const ReactiveRegeneration: Power = {
     "regenBuff": {
       "scale": 2,
       "table": "Melee_Ones"
+    },
+    "durations": {
+      "regenBuff": 2.25
     }
   }
 };

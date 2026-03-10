@@ -96,6 +96,18 @@ export const IncreaseDensity: Power = {
         "scale": 0.1,
         "table": "Ranged_Slow"
       }
+    },
+    "buffDuration": 60,
+    "durations": {
+      "hold": 60,
+      "immobilize": 60,
+      "knockback": 60,
+      "knockup": 60,
+      "movement": 60,
+      "repel": 60,
+      "resistance": 60,
+      "stun": 60,
+      "teleport": 60
     }
   }
 };

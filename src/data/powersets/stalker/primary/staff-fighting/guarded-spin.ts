@@ -69,6 +69,10 @@ export const GuardedSpin: Power = {
         "scale": 1.5,
         "table": "Melee_Buff_Def"
       }
+    },
+    "buffDuration": 10,
+    "durations": {
+      "defenseBuff": 10
     }
   }
 };

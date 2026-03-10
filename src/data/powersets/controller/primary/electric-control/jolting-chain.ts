@@ -65,6 +65,10 @@ export const JoltingChain: Power = {
     "recoveryDebuff": {
       "scale": 0.5,
       "table": "Ranged_Ones"
+    },
+    "buffDuration": 8,
+    "durations": {
+      "recoveryDebuff": 8
     }
   }
 };

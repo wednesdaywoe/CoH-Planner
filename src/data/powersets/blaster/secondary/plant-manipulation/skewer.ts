@@ -60,6 +60,10 @@ export const Skewer: Power = {
     "damageBuff": {
       "scale": 0,
       "table": "Ranged_Ones"
+    },
+    "buffDuration": 6,
+    "durations": {
+      "defenseDebuff": 6
     }
   }
 };

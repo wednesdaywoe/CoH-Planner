@@ -95,6 +95,22 @@ export const AmpUp: Power = {
     "tohitBuff": {
       "scale": 3.6,
       "table": "Ranged_Buff_Dmg"
+    },
+    "buffDuration": 90,
+    "durations": {
+      "absorb": 90,
+      "confuse": 90,
+      "damageBuff": 90,
+      "defenseBuff": 90,
+      "enduranceGain": 90,
+      "fear": 90,
+      "hold": 90,
+      "immobilize": 90,
+      "movement": 90,
+      "rechargeBuff": 90,
+      "sleep": 90,
+      "stun": 90,
+      "tohitBuff": 90
     }
   }
 };

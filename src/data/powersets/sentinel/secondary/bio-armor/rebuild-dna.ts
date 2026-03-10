@@ -54,6 +54,10 @@ export const RebuildDNA: Power = {
     "perceptionBuff": {
       "scale": 0.6,
       "table": "Melee_Ones"
+    },
+    "buffDuration": 30,
+    "durations": {
+      "perceptionBuff": 30
     }
   }
 };

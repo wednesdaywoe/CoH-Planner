@@ -58,6 +58,11 @@ export const Smite: Power = {
     "damageBuff": {
       "scale": 0.064,
       "table": "Melee_Ones"
+    },
+    "buffDuration": 10,
+    "durations": {
+      "damageBuff": 8.47,
+      "tohitDebuff": 10
     }
   }
 };

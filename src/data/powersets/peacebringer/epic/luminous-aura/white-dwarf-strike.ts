@@ -61,6 +61,10 @@ export const WhiteDwarfStrike: Power = {
     "defenseDebuff": {
       "scale": 1,
       "table": "Melee_Debuff_Def"
+    },
+    "buffDuration": 6,
+    "durations": {
+      "defenseDebuff": 6
     }
   }
 };

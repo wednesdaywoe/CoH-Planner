@@ -45,6 +45,9 @@ export const PenumbralShield: Power = {
         "scale": 2,
         "table": "Melee_Res_Dmg"
       }
+    },
+    "durations": {
+      "resistance": 0.75
     }
   }
 };

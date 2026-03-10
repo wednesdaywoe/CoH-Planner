@@ -76,6 +76,11 @@ export const ImmobilizingDart: Power = {
     "damageBuff": {
       "scale": 0,
       "table": "Ranged_Ones"
+    },
+    "buffDuration": 18,
+    "durations": {
+      "movement": 18,
+      "rechargeBuff": 18
     }
   }
 };

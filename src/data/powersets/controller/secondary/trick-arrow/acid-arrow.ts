@@ -90,6 +90,17 @@ export const AcidArrow: Power = {
     "enduranceDiscount": {
       "scale": 4,
       "table": "Ranged_Res_Dmg"
+    },
+    "buffDuration": 45,
+    "durations": {
+      "debuffResistance": 45,
+      "defenseDebuff": 45,
+      "enduranceDiscount": 45,
+      "enduranceDrain": 45,
+      "recoveryDebuff": 45,
+      "regenDebuff": 45,
+      "resistance": 45,
+      "tohitDebuff": 45
     }
   }
 };

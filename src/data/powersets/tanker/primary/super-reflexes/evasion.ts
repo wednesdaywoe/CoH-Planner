@@ -48,6 +48,10 @@ export const Evasion: Power = {
         "scale": 0.4,
         "table": "Melee_Res_Boolean"
       }
+    },
+    "durations": {
+      "defenseBuff": 2.25,
+      "elusivity": 2.25
     }
   }
 };

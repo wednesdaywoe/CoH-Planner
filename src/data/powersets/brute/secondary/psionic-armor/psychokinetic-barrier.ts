@@ -58,6 +58,15 @@ export const PsychokineticBarrier: Power = {
         "scale": 0.2,
         "table": "Melee_Ones"
       }
+    },
+    "buffDuration": 45,
+    "durations": {
+      "absorb": 30,
+      "debuffResistance": 45,
+      "enduranceGain": 45,
+      "maxHPBuff": 45,
+      "recoveryBuff": 45,
+      "regenBuff": 45
     }
   }
 };

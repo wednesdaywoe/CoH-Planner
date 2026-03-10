@@ -40,6 +40,11 @@ export const BloodThirst: Power = {
     "damageBuff": {
       "scale": 3.333,
       "table": "Melee_Buff_Dmg"
+    },
+    "buffDuration": 15,
+    "durations": {
+      "damageBuff": 15,
+      "tohitBuff": 15
     }
   }
 };

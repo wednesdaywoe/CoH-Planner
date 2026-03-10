@@ -48,6 +48,11 @@ export const FocusedSenses: Power = {
         "scale": 0.4,
         "table": "Melee_Res_Boolean"
       }
+    },
+    "durations": {
+      "defenseBuff": 0.75,
+      "elusivity": 0.75,
+      "perceptionBuff": 0.75
     }
   }
 };

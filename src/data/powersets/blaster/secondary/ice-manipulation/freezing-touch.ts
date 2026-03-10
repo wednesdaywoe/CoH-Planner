@@ -65,6 +65,12 @@ export const FreezingTouch: Power = {
     "damageBuff": {
       "scale": 0,
       "table": "Ranged_Ones"
+    },
+    "buffDuration": 6,
+    "durations": {
+      "knockback": 6,
+      "knockup": 6,
+      "protection": 6
     }
   }
 };

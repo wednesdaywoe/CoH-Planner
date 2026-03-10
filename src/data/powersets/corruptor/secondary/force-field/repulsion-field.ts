@@ -42,6 +42,9 @@ export const RepulsionField: Power = {
     "repel": {
       "scale": 10,
       "table": "Ranged_Ones"
+    },
+    "durations": {
+      "repel": 0.25
     }
   }
 };

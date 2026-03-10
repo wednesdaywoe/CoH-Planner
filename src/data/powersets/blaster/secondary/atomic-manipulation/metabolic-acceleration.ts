@@ -69,6 +69,16 @@ export const MetabolicAcceleration: Power = {
     "enduranceGain": {
       "scale": 1,
       "table": "Melee_Res_Boolean"
+    },
+    "durations": {
+      "enduranceGain": 0.75,
+      "hold": 0.75,
+      "immobilize": 0.75,
+      "rechargeBuff": 0.75,
+      "recoveryBuff": 0.75,
+      "regenBuff": 0.75,
+      "sleep": 0.75,
+      "stun": 0.75
     }
   }
 };

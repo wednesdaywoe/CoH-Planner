@@ -71,6 +71,12 @@ export const FreezeRay: Power = {
       "mag": 3,
       "scale": 8,
       "table": "Ranged_Sleep"
+    },
+    "buffDuration": 10,
+    "durations": {
+      "knockback": 10,
+      "knockup": 10,
+      "protection": 10
     }
   }
 };

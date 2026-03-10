@@ -88,6 +88,13 @@ export const ToroidalBubble: Power = {
     "recoveryBuff": {
       "scale": 0.2,
       "table": "Melee_Ones"
+    },
+    "buffDuration": 60,
+    "durations": {
+      "enduranceGain": 60,
+      "movement": 60,
+      "recoveryBuff": 60,
+      "resistance": 60
     }
   }
 };

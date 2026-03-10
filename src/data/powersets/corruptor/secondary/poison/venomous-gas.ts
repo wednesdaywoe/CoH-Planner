@@ -83,6 +83,12 @@ export const VenomousGas: Power = {
     "tohitDebuff": {
       "scale": 1,
       "table": "Ranged_Debuff_ToHit"
+    },
+    "durations": {
+      "damageDebuff": 0.75,
+      "defenseDebuff": 0.75,
+      "resistanceDebuff": 0.75,
+      "tohitDebuff": 0.75
     }
   }
 };

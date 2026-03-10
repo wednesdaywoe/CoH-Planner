@@ -39,6 +39,10 @@ export const StarlessStep: Power = {
     "tohitBuff": {
       "scale": 1,
       "table": "Melee_Buff_ToHit"
+    },
+    "buffDuration": 5,
+    "durations": {
+      "tohitBuff": 5
     }
   }
 };

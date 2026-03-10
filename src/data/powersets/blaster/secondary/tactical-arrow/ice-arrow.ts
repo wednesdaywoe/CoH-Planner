@@ -90,6 +90,14 @@ export const IceArrow: Power = {
     "damageBuff": {
       "scale": 0,
       "table": "Ranged_Ones"
+    },
+    "buffDuration": 10,
+    "durations": {
+      "knockback": 10,
+      "knockup": 10,
+      "movement": 10,
+      "protection": 10,
+      "rechargeBuff": 10
     }
   }
 };

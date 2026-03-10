@@ -70,6 +70,10 @@ export const EnervatingField: Power = {
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       }
+    },
+    "durations": {
+      "damageDebuff": 0.75,
+      "resistanceDebuff": 0.75
     }
   }
 };

@@ -72,6 +72,12 @@ export const TimesJuncture: Power = {
     "damageDebuff": {
       "scale": 2.4,
       "table": "Ranged_Debuff_Dam"
+    },
+    "durations": {
+      "damageDebuff": 1,
+      "movement": 1,
+      "slow": 1,
+      "tohitDebuff": 1
     }
   }
 };

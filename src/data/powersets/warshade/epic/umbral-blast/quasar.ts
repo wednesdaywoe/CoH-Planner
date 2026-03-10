@@ -71,6 +71,11 @@ export const Quasar: Power = {
     "rechargeDebuff": {
       "scale": 0.3,
       "table": "Ranged_Slow"
+    },
+    "buffDuration": 20,
+    "durations": {
+      "movement": 20,
+      "rechargeBuff": 20
     }
   }
 };

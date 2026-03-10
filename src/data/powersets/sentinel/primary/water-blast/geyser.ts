@@ -111,6 +111,10 @@ export const Geyser: Power = {
       "mag": 3,
       "scale": 5,
       "table": "Ranged_Stun"
+    },
+    "buffDuration": 10,
+    "durations": {
+      "movement": 10
     }
   }
 };

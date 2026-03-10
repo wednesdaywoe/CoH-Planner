@@ -65,6 +65,11 @@ export const ShadowMaul: Power = {
     "damageBuff": {
       "scale": 0.163,
       "table": "Melee_Ones"
+    },
+    "buffDuration": 10.57,
+    "durations": {
+      "damageBuff": 10.57,
+      "tohitDebuff": 10
     }
   }
 };

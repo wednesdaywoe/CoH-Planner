@@ -62,6 +62,10 @@ export const DarkGrasp: Power = {
     "tohitDebuff": {
       "scale": 0.75,
       "table": "Ranged_Debuff_ToHit"
+    },
+    "buffDuration": 10,
+    "durations": {
+      "tohitDebuff": 10
     }
   }
 };

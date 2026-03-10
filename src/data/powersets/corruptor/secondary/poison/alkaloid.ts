@@ -45,6 +45,10 @@ export const Alkaloid: Power = {
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       }
+    },
+    "buffDuration": 60,
+    "durations": {
+      "resistance": 60
     }
   }
 };

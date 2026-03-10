@@ -50,6 +50,10 @@ export const FearsomeStare: Power = {
     "tohitDebuff": {
       "scale": 1.5,
       "table": "Ranged_Debuff_ToHit"
+    },
+    "buffDuration": 20,
+    "durations": {
+      "tohitDebuff": 20
     }
   }
 };

@@ -78,6 +78,11 @@ export const HavocPunch: Power = {
     "damageBuff": {
       "scale": 0.099,
       "table": "Melee_Ones"
+    },
+    "buffDuration": 9,
+    "durations": {
+      "damageBuff": 9,
+      "recoveryDebuff": 4
     }
   }
 };

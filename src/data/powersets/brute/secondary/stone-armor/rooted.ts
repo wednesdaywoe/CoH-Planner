@@ -88,6 +88,20 @@ export const Rooted: Power = {
         "scale": 0.4,
         "table": "Melee_Res_Boolean"
       }
+    },
+    "durations": {
+      "elusivity": 0.75,
+      "enduranceGain": 0.75,
+      "hold": 0.75,
+      "immobilize": 0.75,
+      "knockback": 0.75,
+      "knockup": 0.75,
+      "protection": 0.75,
+      "recoveryBuff": 0.75,
+      "regenBuff": 0.75,
+      "repel": 0.75,
+      "sleep": 0.75,
+      "stun": 0.75
     }
   }
 };

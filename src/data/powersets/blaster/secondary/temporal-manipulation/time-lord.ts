@@ -59,6 +59,13 @@ export const TimeLord: Power = {
       "scale": 10,
       "table": "Melee_Res_Boolean"
     },
-    "effectDuration": 0.5
+    "effectDuration": 0.5,
+    "durations": {
+      "debuffResistance": 0.5,
+      "movement": 0.5,
+      "rechargeBuff": 0.5,
+      "resistance": 0.5,
+      "stun": 0.5
+    }
   }
 };

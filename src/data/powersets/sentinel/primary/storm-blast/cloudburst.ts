@@ -69,6 +69,12 @@ export const Cloudburst: Power = {
     "tohitDebuff": {
       "scale": 1,
       "table": "Ranged_Debuff_ToHit"
+    },
+    "buffDuration": 8,
+    "durations": {
+      "movement": 8,
+      "rechargeBuff": 8,
+      "tohitDebuff": 8
     }
   }
 };

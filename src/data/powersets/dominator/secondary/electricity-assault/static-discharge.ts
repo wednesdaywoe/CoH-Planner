@@ -57,6 +57,10 @@ export const StaticDischarge: Power = {
     "enduranceGain": {
       "scale": 4.29,
       "table": "Ranged_Ones"
+    },
+    "buffDuration": 4,
+    "durations": {
+      "recoveryDebuff": 4
     }
   }
 };

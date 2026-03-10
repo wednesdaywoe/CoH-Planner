@@ -71,6 +71,15 @@ export const WolfSpiderArmor: Power = {
       "scale": 2,
       "table": "Melee_Ones"
     },
-    "effectDuration": 10.25
+    "effectDuration": 10.25,
+    "durations": {
+      "confuse": 10.25,
+      "fear": 10.25,
+      "hold": 10.25,
+      "immobilize": 10.25,
+      "resistance": 10.25,
+      "sleep": 10.25,
+      "stun": 10.25
+    }
   }
 };

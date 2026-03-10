@@ -70,6 +70,10 @@ export const ChargedBrawl: Power = {
       "mag": 2,
       "scale": 6,
       "table": "Melee_Sleep"
+    },
+    "buffDuration": 2,
+    "durations": {
+      "recoveryDebuff": 2
     }
   }
 };

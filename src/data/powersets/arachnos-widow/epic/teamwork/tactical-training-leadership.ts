@@ -52,6 +52,12 @@ export const TacticalTrainingLeadership: Power = {
       "scale": 1.75,
       "table": "Ranged_Res_Boolean"
     },
-    "effectDuration": 2.25
+    "effectDuration": 2.25,
+    "durations": {
+      "confuse": 2.25,
+      "fear": 2.25,
+      "perceptionBuff": 2.25,
+      "tohitBuff": 2.25
+    }
   }
 };

@@ -71,6 +71,13 @@ export const Grounded: Power = {
       "scale": 6,
       "table": "Melee_Ones"
     },
-    "effectDuration": 1
+    "effectDuration": 1,
+    "durations": {
+      "enduranceGain": 1,
+      "immobilize": 1,
+      "knockback": 5,
+      "knockup": 5,
+      "resistance": 1
+    }
   }
 };

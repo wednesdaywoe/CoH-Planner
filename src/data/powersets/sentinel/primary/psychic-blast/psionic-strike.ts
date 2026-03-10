@@ -45,6 +45,10 @@ export const PsionicStrike: Power = {
     "rechargeDebuff": {
       "scale": 0.15,
       "table": "Ranged_Slow"
+    },
+    "buffDuration": 10,
+    "durations": {
+      "rechargeBuff": 10
     }
   }
 };

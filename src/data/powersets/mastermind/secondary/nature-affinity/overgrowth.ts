@@ -46,6 +46,12 @@ export const Overgrowth: Power = {
     "enduranceDiscount": {
       "scale": 0.5,
       "table": "Ranged_Stun"
+    },
+    "buffDuration": 60,
+    "durations": {
+      "damageBuff": 60,
+      "enduranceDiscount": 60,
+      "tohitBuff": 60
     }
   }
 };

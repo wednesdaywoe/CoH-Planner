@@ -64,6 +64,12 @@ export const Shatter: Power = {
         "scale": 1,
         "table": "Ranged_Slow"
       }
+    },
+    "buffDuration": 6,
+    "durations": {
+      "defenseDebuff": 6,
+      "movement": 6,
+      "slow": 6
     }
   }
 };

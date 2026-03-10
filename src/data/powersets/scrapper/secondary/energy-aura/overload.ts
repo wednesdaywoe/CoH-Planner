@@ -92,6 +92,14 @@ export const Overload: Power = {
     "recoveryDebuff": {
       "scale": 100,
       "table": "Melee_Ones"
+    },
+    "buffDuration": 180,
+    "durations": {
+      "defenseBuff": 180,
+      "elusivity": 180,
+      "maxHPBuff": 180,
+      "recoveryBuff": 180,
+      "recoveryDebuff": 20
     }
   }
 };

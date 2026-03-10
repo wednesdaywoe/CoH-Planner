@@ -124,6 +124,24 @@ export const IceArrow: Power = {
     "protection": {
       "knockup": 1,
       "knockback": 1
+    },
+    "buffDuration": 60,
+    "durations": {
+      "absorb": 60,
+      "confuse": 60,
+      "damageDebuff": 60,
+      "defenseDebuff": 60,
+      "enduranceDrain": 60,
+      "fear": 60,
+      "hold": 60,
+      "immobilize": 60,
+      "movement": 10,
+      "protection": 10,
+      "rechargeBuff": 10,
+      "sleep": 60,
+      "slow": 60,
+      "stun": 60,
+      "tohitDebuff": 60
     }
   }
 };

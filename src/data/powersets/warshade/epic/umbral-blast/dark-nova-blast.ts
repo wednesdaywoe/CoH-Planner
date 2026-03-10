@@ -72,6 +72,11 @@ export const DarkNovaBlast: Power = {
     "knockback": {
       "scale": 1,
       "table": "Ranged_Knockback"
+    },
+    "buffDuration": 6,
+    "durations": {
+      "movement": 6,
+      "rechargeBuff": 6
     }
   }
 };

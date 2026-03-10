@@ -41,6 +41,10 @@ export const AthleticRegulation: Power = {
         "scale": 0.75,
         "table": "Melee_Res_Boolean"
       }
+    },
+    "durations": {
+      "elusivity": 2.25,
+      "movement": 2.25
     }
   }
 };

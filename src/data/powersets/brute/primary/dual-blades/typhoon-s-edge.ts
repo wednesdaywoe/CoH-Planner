@@ -65,6 +65,11 @@ export const TyphoonsEdge: Power = {
     "knockback": {
       "scale": 0.67,
       "table": "Melee_Ones"
+    },
+    "buffDuration": 20,
+    "durations": {
+      "defenseDebuff": 20,
+      "tohitDebuff": 20
     }
   }
 };

@@ -44,6 +44,12 @@ export const Chronos: Power = {
     "damageBuff": {
       "scale": 5,
       "table": "Melee_Buff_Dmg"
+    },
+    "buffDuration": 10,
+    "durations": {
+      "damageBuff": 10,
+      "rechargeBuff": 10,
+      "tohitBuff": 10
     }
   }
 };

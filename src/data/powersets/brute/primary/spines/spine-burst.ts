@@ -82,6 +82,11 @@ export const SpineBurst: Power = {
     "rechargeDebuff": {
       "scale": 0.1,
       "table": "Melee_Slow"
+    },
+    "buffDuration": 10,
+    "durations": {
+      "movement": 10,
+      "rechargeBuff": 8
     }
   }
 };

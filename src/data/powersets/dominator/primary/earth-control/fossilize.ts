@@ -56,6 +56,11 @@ export const Fossilize: Power = {
     "protection": {
       "knockup": 1,
       "knockback": 1
+    },
+    "buffDuration": 12,
+    "durations": {
+      "defenseDebuff": 12,
+      "protection": 12
     }
   }
 };

@@ -62,6 +62,12 @@ export const FreezeRay: Power = {
     "knockback": {
       "scale": 100,
       "table": "Ranged_Ones"
+    },
+    "buffDuration": 10,
+    "durations": {
+      "knockback": 10,
+      "knockup": 10,
+      "protection": 10
     }
   }
 };

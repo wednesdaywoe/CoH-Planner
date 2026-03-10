@@ -31,6 +31,9 @@ export const QuickRecovery: Power = {
     "recoveryBuff": {
       "scale": 0.3,
       "table": "Melee_Ones"
+    },
+    "durations": {
+      "recoveryBuff": 10.25
     }
   }
 };

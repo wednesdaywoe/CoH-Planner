@@ -64,6 +64,10 @@ export const Ripper: Power = {
     "defenseDebuff": {
       "scale": 3,
       "table": "Melee_Debuff_Def"
+    },
+    "buffDuration": 12,
+    "durations": {
+      "defenseDebuff": 12
     }
   }
 };

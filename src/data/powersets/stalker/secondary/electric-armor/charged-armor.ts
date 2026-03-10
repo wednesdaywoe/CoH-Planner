@@ -46,6 +46,9 @@ export const ChargedArmor: Power = {
         "scale": 3.5,
         "table": "Melee_Res_Dmg"
       }
+    },
+    "durations": {
+      "resistance": 0.75
     }
   }
 };

@@ -45,6 +45,10 @@ export const SnapShot: Power = {
     "damageBuff": {
       "scale": 0.066,
       "table": "Ranged_Ones"
+    },
+    "buffDuration": 8.5,
+    "durations": {
+      "damageBuff": 8.5
     }
   }
 };

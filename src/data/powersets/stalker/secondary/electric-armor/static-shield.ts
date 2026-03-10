@@ -70,6 +70,15 @@ export const StaticShield: Power = {
         "scale": 2,
         "table": "Melee_Res_Dmg"
       }
+    },
+    "durations": {
+      "enduranceGain": 0.75,
+      "hold": 0.75,
+      "recoveryBuff": 0.75,
+      "resistance": 0.75,
+      "sleep": 0.75,
+      "stun": 0.75,
+      "teleport": 0.75
     }
   }
 };

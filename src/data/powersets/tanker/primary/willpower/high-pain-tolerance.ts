@@ -67,6 +67,10 @@ export const HighPainTolerance: Power = {
         "scale": 0.75,
         "table": "Melee_Res_Dmg"
       }
+    },
+    "durations": {
+      "maxHPBuff": 10.25,
+      "resistance": 10.25
     }
   }
 };

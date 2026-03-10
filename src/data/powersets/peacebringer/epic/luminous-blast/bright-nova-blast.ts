@@ -55,6 +55,10 @@ export const BrightNovaBlast: Power = {
     "defenseDebuff": {
       "scale": 2,
       "table": "Ranged_Debuff_Def"
+    },
+    "buffDuration": 6,
+    "durations": {
+      "defenseDebuff": 6
     }
   }
 };

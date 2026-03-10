@@ -52,6 +52,11 @@ export const Hurricane: Power = {
     "knockback": {
       "scale": 4,
       "table": "Ranged_Knockback"
+    },
+    "durations": {
+      "rangeBuff": 10,
+      "repel": 1.05,
+      "tohitDebuff": 10
     }
   }
 };

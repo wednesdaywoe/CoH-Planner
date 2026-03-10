@@ -90,6 +90,10 @@ export const ProtonSweep: Power = {
     "defenseDebuff": {
       "scale": 1.2,
       "table": "Melee_Debuff_Def"
+    },
+    "buffDuration": 10,
+    "durations": {
+      "defenseDebuff": 10
     }
   }
 };

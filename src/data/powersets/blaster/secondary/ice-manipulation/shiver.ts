@@ -69,6 +69,12 @@ export const Shiver: Power = {
     "damageBuff": {
       "scale": 0,
       "table": "Ranged_Ones"
+    },
+    "buffDuration": 60,
+    "durations": {
+      "movement": 60,
+      "rechargeBuff": 60,
+      "slow": 18
     }
   }
 };

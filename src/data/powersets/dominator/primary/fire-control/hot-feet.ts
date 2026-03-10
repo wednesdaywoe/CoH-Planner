@@ -68,6 +68,10 @@ export const HotFeet: Power = {
         "scale": 0.7,
         "table": "Ranged_Slow"
       }
+    },
+    "durations": {
+      "movement": 2.25,
+      "slow": 15
     }
   }
 };

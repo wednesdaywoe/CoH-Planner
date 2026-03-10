@@ -46,6 +46,10 @@ export const SmokeFlash: Power = {
         "scale": 0.2,
         "table": "Ranged_Ones"
       }
+    },
+    "buffDuration": 4,
+    "durations": {
+      "stealth": 4
     }
   }
 };

@@ -48,6 +48,12 @@ export const EagleEye: Power = {
     "recoveryBuff": {
       "scale": 0.5,
       "table": "Melee_Ones"
+    },
+    "durations": {
+      "perceptionBuff": 0.75,
+      "recoveryBuff": 0.75,
+      "regenBuff": 0.75,
+      "tohitBuff": 0.75
     }
   }
 };

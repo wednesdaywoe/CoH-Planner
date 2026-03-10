@@ -73,6 +73,14 @@ export const Infrigidate: Power = {
         "scale": 1,
         "table": "Ranged_SpeedRunning"
       }
+    },
+    "buffDuration": 20,
+    "durations": {
+      "damageDebuff": 20,
+      "defenseDebuff": 20,
+      "movement": 20,
+      "rechargeBuff": 20,
+      "slow": 20
     }
   }
 };

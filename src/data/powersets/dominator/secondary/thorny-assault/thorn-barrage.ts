@@ -64,6 +64,11 @@ export const ThornBarrage: Power = {
     "defenseDebuff": {
       "scale": 3,
       "table": "Ranged_Debuff_Def"
+    },
+    "buffDuration": 12,
+    "durations": {
+      "defenseDebuff": 12,
+      "knockback": 1.75
     }
   }
 };

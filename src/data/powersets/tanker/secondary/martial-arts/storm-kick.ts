@@ -80,6 +80,10 @@ export const StormKick: Power = {
         "scale": 1,
         "table": "Melee_Buff_Def"
       }
+    },
+    "buffDuration": 10,
+    "durations": {
+      "defenseBuff": 10
     }
   }
 };

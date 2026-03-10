@@ -66,6 +66,13 @@ export const TimeCrawl: Power = {
     "regenDebuff": {
       "scale": 1,
       "table": "Ranged_Ones"
+    },
+    "buffDuration": 20,
+    "durations": {
+      "movement": 20,
+      "rechargeBuff": 20,
+      "regenDebuff": 20,
+      "slow": 20
     }
   }
 };

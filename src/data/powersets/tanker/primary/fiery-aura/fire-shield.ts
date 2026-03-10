@@ -56,6 +56,10 @@ export const FireShield: Power = {
       "scale": 30,
       "table": "Melee_Res_Boolean"
     },
-    "effectDuration": 0.75
+    "effectDuration": 0.75,
+    "durations": {
+      "resistance": 0.75,
+      "stun": 0.75
+    }
   }
 };

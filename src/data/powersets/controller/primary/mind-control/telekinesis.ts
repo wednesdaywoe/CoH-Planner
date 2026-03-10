@@ -61,6 +61,11 @@ export const Telekinesis: Power = {
         "scale": 1.1788,
         "table": "Melee_SpeedFlying"
       }
+    },
+    "durations": {
+      "movement": 1.5,
+      "protection": 1.5,
+      "repel": 0.5
     }
   }
 };

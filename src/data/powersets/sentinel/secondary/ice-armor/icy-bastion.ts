@@ -62,6 +62,11 @@ export const IcyBastion: Power = {
     "onlyAffectsSelf": {
       "scale": 0.75,
       "table": "Melee_Ones"
+    },
+    "durations": {
+      "recoveryBuff": 0.75,
+      "regenBuff": 0.75,
+      "slow": 0.75
     }
   }
 };

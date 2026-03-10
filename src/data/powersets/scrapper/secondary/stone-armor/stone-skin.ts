@@ -85,6 +85,10 @@ export const StoneSkin: Power = {
         "scale": 0.5,
         "table": "Melee_Buff_Def"
       }
+    },
+    "durations": {
+      "defenseBuff": 10.25,
+      "resistance": 10.25
     }
   }
 };

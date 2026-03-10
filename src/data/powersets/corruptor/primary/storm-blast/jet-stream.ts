@@ -61,6 +61,10 @@ export const JetStream: Power = {
     "knockback": {
       "scale": 0.67,
       "table": "Ranged_Ones"
+    },
+    "buffDuration": 2,
+    "durations": {
+      "repel": 2
     }
   }
 };

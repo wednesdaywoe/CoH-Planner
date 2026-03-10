@@ -59,6 +59,10 @@ export const ShinobiIri: Power = {
         "scale": 0.3,
         "table": "Melee_Ones"
       }
+    },
+    "durations": {
+      "defenseBuff": 0.75,
+      "stealth": 0.75
     }
   }
 };

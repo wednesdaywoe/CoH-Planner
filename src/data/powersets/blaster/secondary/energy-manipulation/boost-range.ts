@@ -32,6 +32,10 @@ export const BoostRange: Power = {
     "rangeBuff": {
       "scale": 0.5,
       "table": "Melee_Stun"
+    },
+    "buffDuration": 30,
+    "durations": {
+      "rangeBuff": 30
     }
   }
 };

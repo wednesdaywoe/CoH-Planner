@@ -88,6 +88,12 @@ export const TemporalMending: Power = {
     "regenBuff": {
       "scale": 1,
       "table": "Ranged_Res_Boolean"
+    },
+    "buffDuration": 30,
+    "durations": {
+      "debuffResistance": 30,
+      "movement": 30,
+      "regenBuff": 30
     }
   }
 };

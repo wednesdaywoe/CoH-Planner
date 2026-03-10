@@ -32,6 +32,9 @@ export const MoltenEmbrace: Power = {
     "damageBuff": {
       "scale": 1,
       "table": "Melee_Buff_Dmg"
+    },
+    "durations": {
+      "damageBuff": 1.2
     }
   }
 };

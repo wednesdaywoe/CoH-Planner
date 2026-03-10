@@ -42,6 +42,10 @@ export const Taunt: Power = {
     "rangeBuff": {
       "scale": 0.75,
       "table": "Melee_Ones"
+    },
+    "buffDuration": 12,
+    "durations": {
+      "rangeBuff": 12
     }
   }
 };

@@ -512,7 +512,9 @@ export function calculatePowerEnhancementBonuses(
       Object.entries(bonuses).forEach(([aspect, value]) => {
         let scaledValue = value * rarityMultiplier * boostMultiplier;
         // Apply exemplar scaling for non-attuned IOs (attuned already computed at exemplar level)
-        if (exemplarLevel !== undefined && !isAttuned && !piece.proc) {
+        // Pure procs (no aspects) skip exemplar scaling; hybrid procs scale their aspect portion
+        const isPureProc = piece.proc && (!piece.aspects || piece.aspects.length === 0);
+        if (exemplarLevel !== undefined && !isAttuned && !isPureProc) {
           scaledValue = applyExemplarScaling(scaledValue, ioLevel, exemplarLevel);
         }
         rawBonuses[aspect] = (rawBonuses[aspect] || 0) + scaledValue;

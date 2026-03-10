@@ -78,6 +78,12 @@ export const BitterIceBlast: Power = {
     "rechargeDebuff": {
       "scale": 0.2,
       "table": "Ranged_Slow"
+    },
+    "buffDuration": 12,
+    "durations": {
+      "movement": 12,
+      "rechargeBuff": 12,
+      "tohitDebuff": 6
     }
   }
 };

@@ -54,6 +54,10 @@ export const DawnStrike: Power = {
     "defenseDebuff": {
       "scale": 2,
       "table": "Ranged_Debuff_Def"
+    },
+    "buffDuration": 20,
+    "durations": {
+      "defenseDebuff": 20
     }
   }
 };

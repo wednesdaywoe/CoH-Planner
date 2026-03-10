@@ -85,6 +85,11 @@ export const Permafrost: Power = {
         "scale": 0.2,
         "table": "Melee_Ones"
       }
+    },
+    "durations": {
+      "debuffResistance": 10.25,
+      "movement": 10.25,
+      "resistance": 10.25
     }
   }
 };

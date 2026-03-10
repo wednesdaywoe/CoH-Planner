@@ -53,6 +53,10 @@ export const PhotonGrenade: Power = {
       "mag": 2,
       "scale": 4,
       "table": "Ranged_Stun"
+    },
+    "buffDuration": 30,
+    "durations": {
+      "regenDebuff": 30
     }
   }
 };

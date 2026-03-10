@@ -62,6 +62,10 @@ export const ZappingBolt: Power = {
     "recoveryDebuff": {
       "scale": 1,
       "table": "Ranged_Ones"
+    },
+    "buffDuration": 4,
+    "durations": {
+      "recoveryDebuff": 4
     }
   }
 };

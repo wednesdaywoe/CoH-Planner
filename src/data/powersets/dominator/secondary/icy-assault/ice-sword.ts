@@ -70,6 +70,11 @@ export const IceSword: Power = {
     "rechargeDebuff": {
       "scale": 0.1,
       "table": "Melee_Slow"
+    },
+    "buffDuration": 8,
+    "durations": {
+      "movement": 8,
+      "rechargeBuff": 8
     }
   }
 };

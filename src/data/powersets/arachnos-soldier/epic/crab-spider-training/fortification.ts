@@ -82,6 +82,13 @@ export const Fortification: Power = {
       "scale": 24,
       "table": "Melee_Res_Boolean"
     },
-    "effectDuration": 0.75
+    "effectDuration": 0.75,
+    "durations": {
+      "hold": 0.75,
+      "immobilize": 0.75,
+      "resistance": 0.75,
+      "sleep": 0.75,
+      "stun": 0.75
+    }
   }
 };

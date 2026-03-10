@@ -83,6 +83,18 @@ export const Thaw: Power = {
         "scale": 0.8,
         "table": "Ranged_Ones"
       }
+    },
+    "buffDuration": 90,
+    "durations": {
+      "confuse": 90,
+      "debuffResistance": 90,
+      "fear": 90,
+      "hold": 90,
+      "immobilize": 90,
+      "movement": 90,
+      "resistance": 90,
+      "sleep": 90,
+      "stun": 90
     }
   }
 };

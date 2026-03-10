@@ -97,6 +97,11 @@ export const Ripper: Power = {
         "scale": 0.2,
         "table": "Melee_Slow"
       }
+    },
+    "buffDuration": 15,
+    "durations": {
+      "movement": 15,
+      "rechargeBuff": 10
     }
   }
 };

@@ -69,6 +69,12 @@ export const Glacier: Power = {
     "rechargeDebuff": {
       "scale": 0.5,
       "table": "Ranged_Slow"
+    },
+    "buffDuration": 10,
+    "durations": {
+      "movement": 10,
+      "protection": 10,
+      "rechargeBuff": 10
     }
   }
 };

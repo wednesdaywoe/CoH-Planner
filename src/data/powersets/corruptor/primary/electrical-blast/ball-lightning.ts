@@ -76,6 +76,10 @@ export const BallLightning: Power = {
     "recoveryDebuff": {
       "scale": 0.4,
       "table": "Ranged_EndDrain"
+    },
+    "buffDuration": 5,
+    "durations": {
+      "recoveryDebuff": 5
     }
   }
 };

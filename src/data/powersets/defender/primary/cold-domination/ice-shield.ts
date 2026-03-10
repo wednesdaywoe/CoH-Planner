@@ -62,6 +62,11 @@ export const IceShield: Power = {
         "scale": 1,
         "table": "Ranged_Res_Dmg"
       }
+    },
+    "buffDuration": 240,
+    "durations": {
+      "defenseBuff": 240,
+      "resistance": 240
     }
   }
 };

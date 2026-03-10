@@ -91,6 +91,10 @@ export const CrackWhip: Power = {
         "scale": 1.25,
         "table": "Ranged_Debuff_Res_Dmg"
       }
+    },
+    "buffDuration": 6,
+    "durations": {
+      "resistanceDebuff": 6
     }
   }
 };

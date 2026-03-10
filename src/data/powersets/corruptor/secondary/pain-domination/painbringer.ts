@@ -48,6 +48,12 @@ export const Painbringer: Power = {
     "damageBuff": {
       "scale": 5,
       "table": "Ranged_Buff_Dmg"
+    },
+    "buffDuration": 90,
+    "durations": {
+      "damageBuff": 90,
+      "recoveryBuff": 90,
+      "regenBuff": 90
     }
   }
 };

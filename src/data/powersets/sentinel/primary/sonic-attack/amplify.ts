@@ -45,6 +45,12 @@ export const Amplify: Power = {
     "damageBuff": {
       "scale": 5,
       "table": "Melee_Buff_Dmg"
+    },
+    "buffDuration": 10,
+    "durations": {
+      "damageBuff": 10,
+      "rangeBuff": 10,
+      "tohitBuff": 10
     }
   }
 };

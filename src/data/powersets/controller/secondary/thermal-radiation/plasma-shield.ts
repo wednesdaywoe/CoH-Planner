@@ -50,6 +50,10 @@ export const PlasmaShield: Power = {
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       }
+    },
+    "buffDuration": 240,
+    "durations": {
+      "resistance": 240
     }
   }
 };

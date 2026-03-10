@@ -50,6 +50,11 @@ export const ThrowSand: Power = {
     "damageBuff": {
       "scale": 0.029,
       "table": "Ranged_Ones"
+    },
+    "buffDuration": 20,
+    "durations": {
+      "damageBuff": 8.57,
+      "perceptionDebuff": 20
     }
   }
 };

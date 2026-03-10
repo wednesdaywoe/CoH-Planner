@@ -77,6 +77,10 @@ export const EmptyClips: Power = {
     "knockback": {
       "scale": 0.4,
       "table": "Ranged_Knockback"
+    },
+    "buffDuration": 8,
+    "durations": {
+      "defenseDebuff": 8
     }
   }
 };

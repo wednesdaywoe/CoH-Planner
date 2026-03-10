@@ -1538,8 +1538,9 @@ function SetPieceTooltip({ set, piece }: SetPieceTooltipProps) {
   };
   const aspectModifier = getAspectModifier(aspectCount);
 
-  // Boost multiplier for non-proc pieces
-  const boostMultiplier = (!piece.proc && globalBoostLevel > 0) ? 1 + globalBoostLevel * BOOST_MULTIPLIER_PER_LEVEL : 1;
+  // Boost multiplier — pure procs (no aspects) can't be boosted, but hybrid procs can
+  const isPureProc = piece.proc && piece.aspects.length === 0;
+  const boostMultiplier = (!isPureProc && globalBoostLevel > 0) ? 1 + globalBoostLevel * BOOST_MULTIPLIER_PER_LEVEL : 1;
 
   // Purple and Superior sets get 25% higher enhancement values
   const rarityMultiplier = getSetRarityMultiplier(set.category, set.name);
@@ -1707,7 +1708,7 @@ function SetPieceTooltip({ set, piece }: SetPieceTooltipProps) {
           )}
         </span>
         <span className="text-slate-400">Range: {set.minLevel}-{set.maxLevel}</span>
-        {!piece.proc && globalBoostLevel > 0 && <span className="text-green-400">+{globalBoostLevel} Boosted</span>}
+        {!(piece.proc && piece.aspects.length === 0) && globalBoostLevel > 0 && <span className="text-green-400">+{globalBoostLevel} Boosted</span>}
         {piece.unique && <span className="text-red-400">Unique</span>}
       </div>
 

@@ -68,6 +68,12 @@ export const ColdSnap: Power = {
         "scale": 1,
         "table": "Ranged_SpeedRunning"
       }
+    },
+    "buffDuration": 18,
+    "durations": {
+      "movement": 18,
+      "rechargeBuff": 18,
+      "slow": 18
     }
   }
 };

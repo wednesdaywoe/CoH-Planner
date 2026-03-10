@@ -84,6 +84,14 @@ export const BitterFreezeRay: Power = {
     "knockback": {
       "scale": 100,
       "table": "Ranged_Ones"
+    },
+    "buffDuration": 10,
+    "durations": {
+      "knockback": 10,
+      "knockup": 10,
+      "movement": 18,
+      "protection": 10,
+      "rechargeBuff": 18
     }
   }
 };
