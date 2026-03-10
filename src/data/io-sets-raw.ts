@@ -11315,7 +11315,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "icon": "sSciroccosdervish.png"
+    "icon": "sIceMistralsTorment.png"
   },
   "impeded_swiftness": {
     "name": "Impeded Swiftness",

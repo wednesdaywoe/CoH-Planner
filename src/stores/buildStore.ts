@@ -392,20 +392,45 @@ function countTotalSlots(build: Build): number {
 }
 
 /**
+ * Get the counterpart ATO set ID (regular ↔ superior).
+ * Returns undefined if the set is not an ATO or has no counterpart.
+ */
+function getATOCounterpartSetId(setId: string): string | undefined {
+  const set = getIOSet(setId);
+  if (!set || set.category !== 'ato') return undefined;
+
+  if (setId.startsWith('superior_')) {
+    const regularId = setId.slice('superior_'.length);
+    const regularSet = getIOSet(regularId);
+    return regularSet ? regularId : undefined;
+  } else {
+    const superiorId = `superior_${setId}`;
+    const superiorSet = getIOSet(superiorId);
+    return superiorSet ? superiorId : undefined;
+  }
+}
+
+/**
  * Check if a unique enhancement is already slotted anywhere in the build.
  * Also treats all pieces from purple, event, and archetype (ATO) sets as unique,
  * since the game enforces single-copy rules for these rarities.
+ * For ATOs, also checks the counterpart set (regular ↔ superior) since
+ * you cannot use both versions of the same ATO in a build.
  * @param build - The current build
  * @param setId - The IO set ID
  * @param pieceNum - The piece number within the set
  * @returns true if the enhancement is already slotted
  */
 function isUniqueEnhancementSlotted(build: Build, setId: string, pieceNum: number): boolean {
+  // Build the list of set IDs to check: the set itself + its ATO counterpart
+  const counterpartId = getATOCounterpartSetId(setId);
+  const setIdsToCheck = counterpartId ? [setId, counterpartId] : [setId];
+
   const checkSlots = (slots: (Enhancement | null)[]): boolean => {
     return slots.some((enh) => {
       if (!enh || enh.type !== 'io-set') return false;
       const ioEnh = enh as { setId: string; pieceNum: number };
-      return ioEnh.setId === setId && ioEnh.pieceNum === pieceNum;
+      return setIdsToCheck.includes(ioEnh.setId) && ioEnh.pieceNum === pieceNum;
     });
   };
 

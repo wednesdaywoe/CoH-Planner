@@ -250,7 +250,7 @@ function CollapsibleEffectGroup({
   dominationActive: boolean;
   finalColumnColor: string;
 }) {
-  const [collapsed, setCollapsed] = useState(true);
+  const [collapsed, setCollapsed] = useState(false);
 
   // Check if all values are the same for a compact summary
   const allSameBase = items.every(i => Math.abs(i.tiers.base - items[0].tiers.base) < 0.01);

@@ -374,6 +374,7 @@ export function expandByTypeEntries(
     basePercent: calculateResistancePercent(value as NumberOrScaled, archetype, level) * 100,
   }));
 
+  // When all types share the same value and cover all primary damage types, show a single "(All)" row
   const percentValues = resolved.map(r => r.basePercent);
   const ALL_PRIMARY_DAMAGE_TYPES = ['smashing', 'lethal', 'fire', 'cold', 'energy', 'negative', 'psionic', 'toxic'];
   const typeKeys = new Set(resolved.map(r => r.typeKey));
