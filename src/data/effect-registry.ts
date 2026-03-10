@@ -33,6 +33,7 @@ export type EffectFormat =
   | 'duration'    // Display with seconds (12s)
   | 'scale'       // Display scale value
   | 'damage'      // Use damage calculation system
+  | 'degrees'     // Display as degrees (e.g., 30°)
   | 'custom';     // Needs special handling
 
 export interface EffectDisplayConfig {
@@ -126,6 +127,20 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
     colorClass: STAT_COLORS.radius,
     format: 'value',
     priority: 7,
+  },
+  arc: {
+    label: 'Arc',
+    category: 'execution',
+    colorClass: STAT_COLORS.radius,
+    format: 'degrees',
+    priority: 8,
+  },
+  maxTargets: {
+    label: 'Max Targets',
+    category: 'execution',
+    colorClass: STAT_COLORS.radius,
+    format: 'value',
+    priority: 9,
   },
 
   // === CONTROL (Mez Effects — all pink) ===
@@ -671,6 +686,8 @@ export function formatEffectValue(
       return `Mag ${value}`;
     case 'scale':
       return `${value.toFixed(2)} scale`;
+    case 'degrees':
+      return `${Math.round(value)}°`;
     case 'value':
     default:
       return value.toFixed(1);

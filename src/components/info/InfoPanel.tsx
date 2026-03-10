@@ -354,6 +354,10 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
     ...(power.stats?.accuracy && { accuracy: power.stats.accuracy }),
     ...(power.stats?.range && { range: power.stats.range }),
     ...(power.stats?.castTime && { castTime: power.stats.castTime }),
+    // AoE stats
+    ...(power.stats?.radius && { radius: power.stats.radius }),
+    ...(power.stats?.arc && { arc: power.stats.arc * (180 / Math.PI) }),
+    ...(power.stats?.maxTargets && { maxTargets: power.stats.maxTargets }),
     // Healing from damage array
     ...(healFromDamage && { healing: healFromDamage }),
   };

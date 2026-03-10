@@ -1649,6 +1649,7 @@ export function getProcEffectLabel(category: ProcEffectCategory): string {
     case 'RunSpeed': return '+Run Speed';
     case 'MaxHP': return '+Max HP';
     case 'KnockbackProtection': return 'KB Protection';
+    case 'MezResist': return '+Mez Resist';
     case 'Stealth': return 'Stealth';
     case 'Control': return 'Control';
     case 'Debuff': return 'Debuff';
@@ -1674,6 +1675,7 @@ export function getProcEffectColor(category: ProcEffectCategory): string {
     case 'RunSpeed': return 'text-teal-400';
     case 'MaxHP': return 'text-pink-400';
     case 'KnockbackProtection': return 'text-slate-300';
+    case 'MezResist': return 'text-violet-400';
     case 'Stealth': return 'text-gray-400';
     case 'Control': return 'text-indigo-400';
     case 'Debuff': return 'text-rose-400';
