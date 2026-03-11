@@ -593,9 +593,23 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
               // Fixed reference: AT's damage at scale 1.0 × damageCap
               // Since base ∝ scale, (base/scale) gives AT base at scale 1.0
               const referenceDamage = (calculatedDamage.base / calculatedDamage.scale) * damageCap;
-              const basePercent = Math.min((calculatedDamage.base / referenceDamage) * 100, 100);
-              const enhPercent = Math.min((calculatedDamage.enhanced / referenceDamage) * 100, 100);
-              const finalPercent = Math.min((calculatedDamage.final / referenceDamage) * 100, 100);
+
+              // Include DoT total damage in the bar (direct + DoT×ticks)
+              const dot = calculatedDamage.dotDamage;
+              const isPureDot = dot && Math.abs(calculatedDamage.base - dot.base) <= 0.001;
+              const totalBase = isPureDot
+                ? dot.base * dot.ticks
+                : calculatedDamage.base + (dot ? dot.base * dot.ticks : 0);
+              const totalEnhanced = isPureDot
+                ? dot.enhanced * dot.ticks
+                : calculatedDamage.enhanced + (dot ? dot.enhanced * dot.ticks : 0);
+              const totalFinal = isPureDot
+                ? dot.final * dot.ticks
+                : calculatedDamage.final + (dot ? dot.final * dot.ticks : 0);
+
+              const basePercent = Math.min((totalBase / referenceDamage) * 100, 100);
+              const enhPercent = Math.min((totalEnhanced / referenceDamage) * 100, 100);
+              const finalPercent = Math.min((totalFinal / referenceDamage) * 100, 100);
 
               return (
                 <div className="relative h-2.5 bg-slate-700/30 rounded overflow-hidden mt-2" title={`Damage cap: ${(damageCap * 100).toFixed(0)}%`}>
