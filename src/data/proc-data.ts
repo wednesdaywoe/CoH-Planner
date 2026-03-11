@@ -185,9 +185,9 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     pool: "Winter",
     unique: "Unique"
   },
-  "Entomb (Superior): Chance for +Absorb": {
+  "Superior Entomb: Chance for +Absorb": {
     setCategory: "Holds",
-    setName: "Entomb (Superior)",
+    setName: "Superior Entomb",
     ioName: "Chance for +Absorb",
     ppm: 3,
     mechanics: "Buff(Absorption 10% of HP)",
@@ -196,6 +196,94 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     levelRange: "50",
     pool: "Winter",
     unique: "Unique"
+  },
+  // Preventive Medicine (Healing set) - Global IO, health-threshold trigger
+  "+Absorb/Chance for +Absorb": {
+    setCategory: "Healing",
+    setName: "Preventive Medicine",
+    ioName: "Chance for +Absorb",
+    ppm: null,
+    mechanics: "Buff(Absorption 20% of HP), triggers at low health, 90s cooldown",
+    pvpNotes: "",
+    type: "Global",
+    levelRange: "20--50",
+    pool: "A-rare",
+    unique: "Unique"
+  },
+  // Gauntleted Fist (Tanker ATO) - Absorb proc
+  "Gauntleted Fist: Recharge/Chance for +Absorb": {
+    setCategory: "Tanker Archetype Sets",
+    setName: "Gauntleted Fist",
+    ioName: "Chance for +Absorb",
+    ppm: 2,
+    mechanics: "Buff(Absorption) by the slotted power",
+    pvpNotes: "",
+    type: "Proc",
+    levelRange: "10--50",
+    pool: "",
+    unique: "Exclusive"
+  },
+  "Superior Gauntleted Fist: Recharge/Chance for +Absorb": {
+    setCategory: "Tanker Archetype Sets",
+    setName: "Superior Gauntleted Fist",
+    ioName: "Chance for +Absorb",
+    ppm: 3,
+    mechanics: "Buff(Absorption) by the slotted power",
+    pvpNotes: "",
+    type: "Proc",
+    levelRange: "50",
+    pool: "",
+    unique: "Exclusive"
+  },
+  // Sentinel's Ward (Sentinel ATO) - Absorb proc
+  "Sentinel's Ward: Recharge/Chance for +Absorb": {
+    setCategory: "Sentinel Archetype Sets",
+    setName: "Sentinel's Ward",
+    ioName: "Chance for +Absorb",
+    ppm: 5,
+    mechanics: "Buff(Absorption 50% of HP for 30s) by the slotted power",
+    pvpNotes: "",
+    type: "Proc",
+    levelRange: "10--50",
+    pool: "",
+    unique: "Exclusive"
+  },
+  "Superior Sentinel's Ward: Recharge/Chance for +Absorb": {
+    setCategory: "Sentinel Archetype Sets",
+    setName: "Superior Sentinel's Ward",
+    ioName: "Chance for +Absorb",
+    ppm: 6,
+    mechanics: "Buff(Absorption 50% of HP for 30s) by the slotted power",
+    pvpNotes: "",
+    type: "Proc",
+    levelRange: "50",
+    pool: "",
+    unique: "Exclusive"
+  },
+  // Vigilant Assault (Defender ATO) - PBAoE Absorb proc
+  "Vigilant Assault: Recharge/Chance for +Absorb": {
+    setCategory: "Defender Archetype Sets",
+    setName: "Vigilant Assault",
+    ioName: "Chance for Minor PBAoE +Absorb",
+    ppm: 4,
+    mechanics: "PBAoE Buff(Absorption) to caster and nearby allies",
+    pvpNotes: "",
+    type: "Proc",
+    levelRange: "10--50",
+    pool: "",
+    unique: "Exclusive"
+  },
+  "Superior Vigilant Assault: Recharge/Chance for +Absorb": {
+    setCategory: "Defender Archetype Sets",
+    setName: "Superior Vigilant Assault",
+    ioName: "Chance for Minor PBAoE +Absorb",
+    ppm: 5,
+    mechanics: "PBAoE Buff(Absorption) to caster and nearby allies",
+    pvpNotes: "",
+    type: "Proc",
+    levelRange: "50",
+    pool: "",
+    unique: "Exclusive"
   },
   "Chance for Recharge Buff": {
     setCategory: "Knockback",
@@ -1478,12 +1566,21 @@ export function parseProcEffect(mechanics: string): ParsedProcEffect {
     };
   }
 
-  // Absorb buff (Entomb)
+  // Absorb buff (Entomb, Preventive Medicine, ATOs)
   const absorbMatch = mechanics.match(/Buff\s*\(\s*Absorption\s+(\d+(?:\.\d+)?)\s*%/i);
   if (absorbMatch) {
     return {
       category: 'Absorb',
       value: parseFloat(absorbMatch[1]),
+      duration,
+      isBuff: true,
+      description: mechanics,
+    };
+  }
+  // Absorb buff without explicit percentage (e.g. ATO procs)
+  if (/Buff\s*\(\s*Absorption\s*\)/i.test(mechanics) || /PBAoE\s+Buff\s*\(\s*Absorption\s*\)/i.test(mechanics)) {
+    return {
+      category: 'Absorb',
       duration,
       isBuff: true,
       description: mechanics,

@@ -81,6 +81,7 @@ export {
   IO_SET_TYPE_TO_CATEGORY,
   IO_SET_RARITIES,
   getIOSetRarityInfo,
+  ARCHETYPE_ATO_CATEGORY,
 } from './io-sets';
 export type { IOSetRarityInfo } from './io-sets';
 

@@ -19,10 +19,14 @@ interface MainLayoutProps {
 export function MainLayout({ children }: MainLayoutProps) {
   const openFeedbackModal = useUIStore((s) => s.openFeedbackModal);
   const openKnownIssuesModal = useUIStore((s) => s.openKnownIssuesModal);
+  const uiScale = useUIStore((s) => s.uiScale);
   const { updateAvailable } = useUpdateChecker();
 
   return (
-    <div className="min-h-screen bg-gray-950 text-gray-100 flex flex-col">
+    <div
+      className="min-h-screen bg-gray-950 text-gray-100 flex flex-col"
+      style={uiScale !== 1 ? { zoom: uiScale } : undefined}
+    >
       <UpdateBanner visible={updateAvailable} />
       <Header />
       <StatsDashboard />

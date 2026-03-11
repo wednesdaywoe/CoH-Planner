@@ -1161,7 +1161,10 @@ function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfoContent
             className="flex-shrink-0"
           />
           <div className="min-w-0">
-            <h3 className="text-xs font-semibold text-yellow-400 leading-tight">{ioEnh.setName}</h3>
+            <h3 className="text-xs font-semibold text-yellow-400 leading-tight">
+              {ioEnh.setName}
+              {ioSet && <span className="text-yellow-600 font-normal ml-1">({ioEnh.pieceNum}/{ioSet.pieces.length})</span>}
+            </h3>
             <span className="text-[10px] text-blue-400">{enhancement.name}</span>
           </div>
         </div>

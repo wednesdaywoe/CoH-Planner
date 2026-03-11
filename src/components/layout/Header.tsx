@@ -104,6 +104,8 @@ export function Header() {
   const setSelectedBranch = useUIStore((s) => s.setSelectedBranch);
   const showSlotLevels = useUIStore((s) => s.showSlotLevels);
   const toggleShowSlotLevels = useUIStore((s) => s.toggleShowSlotLevels);
+  const uiScale = useUIStore((s) => s.uiScale);
+  const setUIScale = useUIStore((s) => s.setUIScale);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -658,39 +660,69 @@ export function Header() {
               />
             </div>
           )}
+          <Tooltip content={`UI zoom: ${Math.round(uiScale * 100)}%. Click +/- to scale the interface.`}>
+            <div className="flex items-center gap-1 bg-slate-700/50 px-2 py-1.5 rounded border border-slate-600">
+              <svg className="w-3.5 h-3.5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+              <button
+                onClick={() => setUIScale(uiScale - 0.05)}
+                disabled={uiScale <= 0.85}
+                className="text-slate-400 hover:text-sky-400 disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-0.5"
+              >
+                &minus;
+              </button>
+              <span className="text-sm font-bold text-sky-400 w-8 text-center">{Math.round(uiScale * 100)}%</span>
+              <button
+                onClick={() => setUIScale(uiScale + 0.05)}
+                disabled={uiScale >= 1.3}
+                className="text-slate-400 hover:text-sky-400 disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-0.5"
+              >
+                +
+              </button>
+            </div>
+          </Tooltip>
         </div>
 
         {/* Export, Import, New, Clear */}
         <div className="flex items-center gap-2">
           <Button
-            variant="secondary"
+            variant="ghost"
             size="sm"
             onClick={() => navigate({ to: isOnBuildsPage ? '/' : '/builds' })}
             title={isOnBuildsPage ? 'Return to the build planner' : 'Browse shared builds from the community'}
+            style={{ background: '#4f46e5', borderColor: '#6366f1' }}
+            className="text-white hover:!bg-indigo-700"
           >
             {isOnBuildsPage ? 'Back to Planner' : 'Shared Builds'}
           </Button>
           <Button
-            variant="secondary"
+            variant="ghost"
             size="sm"
             onClick={() => openExportImportModal()}
             title="Export or import a build"
+            style={{ background: '#059669', borderColor: '#10b981' }}
+            className="text-white hover:!bg-emerald-700"
           >
             Save / Load / Share
           </Button>
           <Button
-            variant="secondary"
+            variant="ghost"
             size="sm"
             onClick={() => setConfirmAction('new')}
             title="Reset build and start fresh"
+            style={{ background: '#0284c7', borderColor: '#0ea5e9' }}
+            className="text-white hover:!bg-sky-700"
           >
             New
           </Button>
           <Button
-            variant="secondary"
+            variant="ghost"
             size="sm"
             onClick={() => setConfirmAction('clear')}
             title="Clear powers and slots, keep archetype and powersets"
+            style={{ background: '#d97706', borderColor: '#f59e0b' }}
+            className="text-white hover:!bg-amber-700"
           >
             Clear
           </Button>

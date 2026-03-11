@@ -5,6 +5,7 @@
 import type { Enhancement } from '@/types';
 import { Tooltip } from '@/components/ui';
 import { SlottedEnhancementIcon } from './SlottedEnhancementIcon';
+import { getIOSet } from '@/data';
 
 interface PowerSlotProps {
   enhancement: Enhancement | null;
@@ -74,11 +75,15 @@ interface EnhancementTooltipProps {
 }
 
 function EnhancementTooltip({ enhancement }: EnhancementTooltipProps) {
+  const ioSet = enhancement.type === 'io-set' ? getIOSet(enhancement.setId) : undefined;
   return (
     <div className="min-w-[150px]">
       <div className="font-medium text-white">{enhancement.name}</div>
       {enhancement.type === 'io-set' && (
-        <div className="text-sm text-yellow-400">{enhancement.setName}</div>
+        <div className="text-sm text-yellow-400">
+          {enhancement.setName}
+          {ioSet && <span className="text-yellow-600 ml-1.5 text-xs">({enhancement.pieceNum}/{ioSet.pieces.length})</span>}
+        </div>
       )}
       <div className="text-xs text-gray-400 flex items-center gap-2">
         {enhancement.level && (

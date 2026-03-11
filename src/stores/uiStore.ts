@@ -123,6 +123,9 @@ interface UIState {
   /** Compact mode (for future use) */
   compactMode: boolean;
 
+  /** App-wide UI zoom scale (0.85 to 1.3, default 1.0) */
+  uiScale: number;
+
   /** Incarnate active state - which incarnate slots are active for stat calculations */
   incarnateActive: IncarnateActiveState;
 
@@ -210,6 +213,7 @@ interface UIActions {
   toggleHints: () => void;
   toggleDarkMode: () => void;
   toggleCompactMode: () => void;
+  setUIScale: (scale: number) => void;
 
   // Info Panel
   setInfoPanelEnabled: (enabled: boolean) => void;
@@ -454,6 +458,7 @@ export const useUIStore = create<UIStore>()(
       tooltip: defaultTooltip,
       darkMode: true,
       compactMode: false,
+      uiScale: 1.0,
       incarnateActive: createDefaultIncarnateActiveState(),
       dominationActive: false,
       scourgeActive: false,
@@ -616,6 +621,9 @@ export const useUIStore = create<UIStore>()(
         set((state) => ({
           compactMode: !state.compactMode,
         })),
+
+      setUIScale: (scale: number) =>
+        set({ uiScale: Math.max(0.85, Math.min(1.3, scale)) }),
 
       // Info Panel
       setInfoPanelEnabled: (enabled) =>
@@ -1058,6 +1066,7 @@ export const useUIStore = create<UIStore>()(
         statsConfig: state.statsConfig,
         darkMode: state.darkMode,
         compactMode: state.compactMode,
+        uiScale: state.uiScale,
         incarnateActive: state.incarnateActive,
         dominationActive: state.dominationActive,
         scourgeActive: state.scourgeActive,
@@ -1075,6 +1084,11 @@ export const useUIStore = create<UIStore>()(
       }),
       merge: (persisted, current) => {
         const merged = { ...current, ...(persisted as Partial<UIStore>) };
+        // Migrate old infoPanelScale → uiScale
+        const raw = persisted as Record<string, unknown> | undefined;
+        if (raw && 'infoPanelScale' in raw && !('uiScale' in raw)) {
+          merged.uiScale = raw.infoPanelScale as number;
+        }
         // Inject any new default stats that aren't in the persisted config
         const persistedStats = (persisted as Partial<UIStore>)?.statsConfig;
         if (persistedStats) {

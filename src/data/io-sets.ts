@@ -97,6 +97,28 @@ export const IO_SET_TYPE_TO_CATEGORY: Record<string, IOSetCategory> = {
   'Soldiers of Arachnos Archetype Sets': 'Soldiers of Arachnos Archetype Sets',
 };
 
+/**
+ * Maps archetype IDs to their ATO (Archetype Origin) set category.
+ * In CoH, ATOs can be slotted into ANY power of the matching archetype.
+ */
+export const ARCHETYPE_ATO_CATEGORY: Record<string, IOSetCategory> = {
+  blaster: 'Blaster Archetype Sets',
+  brute: 'Brute Archetype Sets',
+  controller: 'Controller Archetype Sets',
+  corruptor: 'Corruptor Archetype Sets',
+  defender: 'Defender Archetype Sets',
+  dominator: 'Dominator Archetype Sets',
+  mastermind: 'Mastermind Archetype Sets',
+  scrapper: 'Scrapper Archetype Sets',
+  stalker: 'Stalker Archetype Sets',
+  tanker: 'Tanker Archetype Sets',
+  sentinel: 'Sentinel Archetype Sets',
+  peacebringer: 'Kheldian Archetype Sets',
+  warshade: 'Kheldian Archetype Sets',
+  'arachnos-soldier': 'Soldiers of Arachnos Archetype Sets',
+  'arachnos-widow': 'Soldiers of Arachnos Archetype Sets',
+};
+
 // ============================================
 // RAW IO SET DATA
 // ============================================

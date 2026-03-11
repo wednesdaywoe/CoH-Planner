@@ -613,8 +613,9 @@ export function RegistryEffectsDisplay({
       // Check if this effect should be shown
       if (!shouldShowExecutionEffect(key, config)) continue;
 
-      // Skip healing (handled separately with scale display)
+      // Skip healing and absorb (handled separately with AT table resolution)
       if (key === 'healing') continue;
+      if (key === 'absorb') continue;
 
       // Skip damageBuff unless it has perTarget metadata (per-target stacking like Soul Drain)
       if (key === 'damageBuff') {
@@ -713,6 +714,27 @@ export function RegistryEffectsDisplay({
       displayableEffects.push({
         effect: { key: 'healing', value: healing, config: healConfig },
         baseValue: baseHealHP,
+        tiers,
+      });
+    }
+  }
+
+  // Handle absorb separately (resolve AT table for actual HP values, like healing)
+  const absorb = effects?.absorb;
+  if (absorb && typeof absorb === 'object' && 'scale' in absorb && absorb.scale != null) {
+    const absorbConfig = EFFECT_REGISTRY['absorb'];
+    if (absorbConfig && categories.includes(absorbConfig.category as EffectCategory)) {
+      let baseAbsorbHP = absorb.scale;
+      if (absorb.table && archetypeId) {
+        const tableVal = getTableValue(archetypeId, absorb.table, level ?? 50);
+        if (tableVal !== undefined) {
+          baseAbsorbHP = absorb.scale * tableVal;
+        }
+      }
+      const tiers = calcEffectThreeTier(absorbConfig, baseAbsorbHP, enhancementBonuses, globalBonuses);
+      displayableEffects.push({
+        effect: { key: 'absorb', value: absorb, config: absorbConfig },
+        baseValue: baseAbsorbHP,
         tiers,
       });
     }

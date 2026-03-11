@@ -450,6 +450,7 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
     category: 'buff',
     colorClass: STAT_COLORS.absorb,
     format: 'value',
+    enhancementAspect: 'heal',
     priority: 15,
   },
   specialBuff: {
