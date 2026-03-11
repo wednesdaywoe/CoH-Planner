@@ -484,12 +484,13 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
       />
 
       {/* Damage bar - overlaid base/enhanced/final relative to AT cap */}
-      {calculatedDamage && !calculatedDamage.unknown && (() => {
+      {calculatedDamage && !calculatedDamage.unknown && calculatedDamage.scale && (() => {
         const damageCap = getDamageCap(archetypeId ?? '');
-        const maxDamage = calculatedDamage.base * damageCap;
-        const basePercent = Math.min((calculatedDamage.base / maxDamage) * 100, 100);
-        const enhPercent = Math.min((calculatedDamage.enhanced / maxDamage) * 100, 100);
-        const finalPercent = Math.min((calculatedDamage.final / maxDamage) * 100, 100);
+        // Fixed reference: AT's damage at scale 1.0 × damageCap
+        const referenceDamage = (calculatedDamage.base / calculatedDamage.scale) * damageCap;
+        const basePercent = Math.min((calculatedDamage.base / referenceDamage) * 100, 100);
+        const enhPercent = Math.min((calculatedDamage.enhanced / referenceDamage) * 100, 100);
+        const finalPercent = Math.min((calculatedDamage.final / referenceDamage) * 100, 100);
 
         return (
           <div className="relative h-2 bg-slate-700/30 rounded overflow-hidden" title={`Damage cap: ${(damageCap * 100).toFixed(0)}%`}>

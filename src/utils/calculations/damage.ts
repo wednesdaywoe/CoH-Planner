@@ -280,6 +280,8 @@ export interface PowerDamageResult {
   unknown?: boolean;
   /** Whether the damage hit the AT's damage strength cap */
   capped?: boolean;
+  /** The power's damage scale value (for relative comparison between powers) */
+  scale?: number;
   /** Conditional Fiery Embrace damage (if detected) */
   fieryEmbraceDamage?: {
     base: number;
@@ -533,6 +535,7 @@ export function calculatePowerDamage(
     final: finalDamage,
     type: damageTypeName,
     capped,
+    scale,
   };
 
   // Calculate Fiery Embrace damage separately if detected
