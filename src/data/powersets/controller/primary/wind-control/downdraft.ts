@@ -40,18 +40,11 @@ export const Downdraft: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 1,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1,
-      "table": "Ranged_InherentDamage"
-    }
-  ],
+  "damage": {
+    "type": "Smashing",
+    "scale": 1,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "hold": {
       "mag": 3,
@@ -76,6 +69,12 @@ export const Downdraft: Power = {
         "table": "Ranged_Slow"
       }
     },
+    "durations": {
+      "movement": 12,
+      "rechargeDebuff": 12,
+      "slow": 12,
+      "protection": 12
+    },
     "rechargeDebuff": {
       "scale": 0.3,
       "table": "Ranged_Slow"
@@ -89,7 +88,8 @@ export const Downdraft: Power = {
     "protection": {
       "knockup": 1,
       "knockback": 1
-    }
+    },
+    "buffDuration": 12
   },
   "requires": "char>accesslevel >= 0"
 };

@@ -47,6 +47,23 @@ export const IceArrow: Power = {
       "scale": 0.45,
       "table": "Ranged_Special"
     },
+    "durations": {
+      "damageDebuff": 60,
+      "absorb": 60,
+      "enduranceDrain": 60,
+      "slow": 60,
+      "confuse": 60,
+      "fear": 60,
+      "hold": 60,
+      "immobilize": 60,
+      "stun": 60,
+      "sleep": 60,
+      "defenseDebuff": 60,
+      "tohitDebuff": 60,
+      "movement": 10,
+      "rechargeDebuff": 10,
+      "protection": 10
+    },
     "absorb": {
       "scale": 0.45,
       "table": "Ranged_Special"
@@ -125,23 +142,6 @@ export const IceArrow: Power = {
       "knockup": 1,
       "knockback": 1
     },
-    "buffDuration": 60,
-    "durations": {
-      "absorb": 60,
-      "confuse": 60,
-      "damageDebuff": 60,
-      "defenseDebuff": 60,
-      "enduranceDrain": 60,
-      "fear": 60,
-      "hold": 60,
-      "immobilize": 60,
-      "movement": 10,
-      "protection": 10,
-      "rechargeBuff": 10,
-      "sleep": 60,
-      "slow": 60,
-      "stun": 60,
-      "tohitDebuff": 60
-    }
+    "buffDuration": 60
   }
 };

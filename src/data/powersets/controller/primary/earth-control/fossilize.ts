@@ -38,18 +38,11 @@ export const Fossilize: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 1,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1,
-      "table": "Ranged_InherentDamage"
-    }
-  ],
+  "damage": {
+    "type": "Smashing",
+    "scale": 1,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "hold": {
       "mag": 3,
@@ -60,14 +53,14 @@ export const Fossilize: Power = {
       "scale": 2,
       "table": "Ranged_Debuff_Def"
     },
+    "durations": {
+      "defenseDebuff": 12,
+      "protection": 12
+    },
     "protection": {
       "knockup": 1,
       "knockback": 1
     },
-    "buffDuration": 12,
-    "durations": {
-      "defenseDebuff": 12,
-      "protection": 12
-    }
+    "buffDuration": 12
   }
 };

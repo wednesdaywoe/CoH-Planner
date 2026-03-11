@@ -51,17 +51,7 @@ export const Vacuum: Power = {
     },
     {
       "type": "Lethal",
-      "scale": 0.15,
-      "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Lethal",
       "scale": 0.161,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.0179,
       "table": "Ranged_PvPDamage"
     }
   ],

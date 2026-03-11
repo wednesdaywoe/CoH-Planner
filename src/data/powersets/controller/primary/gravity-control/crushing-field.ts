@@ -42,22 +42,13 @@ export const CrushingField: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 0.1,
-      "table": "Ranged_Damage",
-      "duration": 5.2,
-      "tickRate": 2
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.1,
-      "table": "Ranged_InherentDamage",
-      "duration": 5.2,
-      "tickRate": 2
-    }
-  ],
+  "damage": {
+    "type": "Smashing",
+    "scale": 0.1,
+    "table": "Ranged_Damage",
+    "duration": 5.2,
+    "tickRate": 2
+  },
   "effects": {
     "immobilize": {
       "mag": 3,
@@ -82,16 +73,16 @@ export const CrushingField: Power = {
         "table": "Ranged_Slow"
       }
     },
+    "durations": {
+      "movement": 15,
+      "slow": 10
+    },
     "slow": {
       "fly": {
         "scale": 1.6,
         "table": "Ranged_Ones"
       }
     },
-    "buffDuration": 15,
-    "durations": {
-      "movement": 15,
-      "slow": 10
-    }
+    "buffDuration": 15
   }
 };

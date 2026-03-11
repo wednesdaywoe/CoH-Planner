@@ -40,18 +40,11 @@ export const Stalagmites: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Lethal",
-      "scale": 0.25,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.25,
-      "table": "Ranged_InherentDamage"
-    }
-  ],
+  "damage": {
+    "type": "Lethal",
+    "scale": 0.25,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "stun": {
       "mag": 3,
@@ -62,9 +55,9 @@ export const Stalagmites: Power = {
       "scale": 2,
       "table": "Ranged_Debuff_Def"
     },
-    "buffDuration": 12,
     "durations": {
       "defenseDebuff": 12
-    }
+    },
+    "buffDuration": 12
   }
 };

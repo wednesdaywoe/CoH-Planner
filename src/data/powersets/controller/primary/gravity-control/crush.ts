@@ -40,22 +40,13 @@ export const Crush: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 0.2,
-      "table": "Ranged_Damage",
-      "duration": 9.2,
-      "tickRate": 2
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.2,
-      "table": "Ranged_InherentDamage",
-      "duration": 9.2,
-      "tickRate": 2
-    }
-  ],
+  "damage": {
+    "type": "Smashing",
+    "scale": 0.2,
+    "table": "Ranged_Damage",
+    "duration": 9.2,
+    "tickRate": 2
+  },
   "effects": {
     "immobilize": {
       "mag": 4,
@@ -80,16 +71,16 @@ export const Crush: Power = {
         "table": "Ranged_Slow"
       }
     },
+    "durations": {
+      "movement": 15,
+      "slow": 10
+    },
     "slow": {
       "fly": {
         "scale": 1.6,
         "table": "Ranged_Ones"
       }
     },
-    "buffDuration": 15,
-    "durations": {
-      "movement": 15,
-      "slow": 10
-    }
+    "buffDuration": 15
   }
 };

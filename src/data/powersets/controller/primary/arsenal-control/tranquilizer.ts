@@ -49,17 +49,7 @@ export const Tranquilizer: Power = {
     {
       "type": "Toxic",
       "scale": 1,
-      "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Toxic",
-      "scale": 1,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Toxic",
-      "scale": 1,
-      "table": "Ranged_InherentDamage"
     }
   ],
   "effects": {
@@ -86,9 +76,9 @@ export const Tranquilizer: Power = {
         "table": "Ranged_Slow"
       }
     },
-    "buffDuration": 5,
     "durations": {
       "movement": 5
-    }
+    },
+    "buffDuration": 5
   }
 };

@@ -48,6 +48,12 @@ export const EntanglingArrow: Power = {
         "table": "Ranged_Slow"
       }
     },
+    "durations": {
+      "movement": 30,
+      "slow": 30,
+      "protection": 30,
+      "resistanceDebuff": 30
+    },
     "slow": {
       "fly": {
         "scale": 10,
@@ -105,12 +111,6 @@ export const EntanglingArrow: Power = {
       "scale": 7,
       "table": "Ranged_Immobilize"
     },
-    "buffDuration": 30,
-    "durations": {
-      "movement": 30,
-      "protection": 30,
-      "resistanceDebuff": 30,
-      "slow": 30
-    }
+    "buffDuration": 30
   }
 };

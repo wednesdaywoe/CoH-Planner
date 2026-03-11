@@ -42,6 +42,13 @@ export const ArcticAir: Power = {
       "scale": 0.5,
       "table": "Ranged_Slow"
     },
+    "durations": {
+      "rechargeDebuff": 2.25,
+      "movement": 2.25,
+      "stealth": 2.25,
+      "slow": 2.25,
+      "fear": 2
+    },
     "movement": {
       "runSpeed": {
         "scale": 0.65,
@@ -87,12 +94,6 @@ export const ArcticAir: Power = {
       "table": "Ranged_Ones"
     },
     "effectDuration": 2,
-    "durations": {
-      "fear": 2,
-      "movement": 2.25,
-      "rechargeBuff": 2.25,
-      "slow": 2.25,
-      "stealth": 2.25
-    }
+    "buffDuration": 2.25
   }
 };

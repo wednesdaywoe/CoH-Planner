@@ -42,6 +42,12 @@ export const WindShear: Power = {
       "scale": 0.75,
       "table": "Melee_DeBuff_ToHit"
     },
+    "durations": {
+      "tohitDebuff": 2.1,
+      "movement": 2.1,
+      "damageDebuff": 2.1,
+      "slow": 2.1
+    },
     "movement": {
       "jumpHeight": {
         "scale": 0.65,
@@ -73,7 +79,8 @@ export const WindShear: Power = {
         "scale": 1,
         "table": "Melee_SpeedRunning"
       }
-    }
+    },
+    "buffDuration": 2.1
   },
   "requires": "char>accesslevel >= 0"
 };

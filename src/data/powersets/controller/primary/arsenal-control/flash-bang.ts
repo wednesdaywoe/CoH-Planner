@@ -43,31 +43,24 @@ export const FlashBang: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Energy",
-      "scale": 0.25,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.25,
-      "table": "Ranged_InherentDamage"
-    }
-  ],
+  "damage": {
+    "type": "Energy",
+    "scale": 0.25,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "tohitDebuff": {
       "scale": 0.5,
       "table": "Ranged_Debuff_ToHit"
+    },
+    "durations": {
+      "tohitDebuff": 20
     },
     "stun": {
       "mag": 3,
       "scale": 10,
       "table": "Ranged_Stun"
     },
-    "buffDuration": 20,
-    "durations": {
-      "tohitDebuff": 20
-    }
+    "buffDuration": 20
   }
 };

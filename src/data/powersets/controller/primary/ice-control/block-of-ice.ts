@@ -40,18 +40,11 @@ export const BlockofIce: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Cold",
-      "scale": 1,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Cold",
-      "scale": 1,
-      "table": "Ranged_InherentDamage"
-    }
-  ],
+  "damage": {
+    "type": "Cold",
+    "scale": 1,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "hold": {
       "mag": 3,
@@ -76,6 +69,11 @@ export const BlockofIce: Power = {
         "table": "Ranged_Slow"
       }
     },
+    "durations": {
+      "movement": 12,
+      "rechargeDebuff": 12,
+      "protection": 12
+    },
     "rechargeDebuff": {
       "scale": 0.3,
       "table": "Ranged_Slow"
@@ -84,11 +82,6 @@ export const BlockofIce: Power = {
       "knockup": 1,
       "knockback": 1
     },
-    "buffDuration": 12,
-    "durations": {
-      "movement": 12,
-      "protection": 12,
-      "rechargeBuff": 12
-    }
+    "buffDuration": 12
   }
 };

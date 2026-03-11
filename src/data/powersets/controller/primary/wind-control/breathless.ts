@@ -41,18 +41,11 @@ export const Breathless: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Lethal",
-      "scale": 0.3,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.3,
-      "table": "Ranged_InherentDamage"
-    }
-  ],
+  "damage": {
+    "type": "Lethal",
+    "scale": 0.3,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "immobilize": {
       "mag": 3,
@@ -63,14 +56,14 @@ export const Breathless: Power = {
       "scale": 2,
       "table": "Ranged_Debuff_Dam"
     },
+    "durations": {
+      "damageDebuff": 15,
+      "rechargeDebuff": 15
+    },
     "rechargeDebuff": {
       "scale": 0.3,
       "table": "Ranged_Slow"
     },
-    "buffDuration": 15,
-    "durations": {
-      "damageDebuff": 15,
-      "rechargeBuff": 15
-    }
+    "buffDuration": 15
   }
 };

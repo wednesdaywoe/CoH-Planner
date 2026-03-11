@@ -374,6 +374,10 @@ function collectAllTemplates(effects) {
     // Skip effects with chance=0 (conditional procs that don't normally fire)
     if (effect.chance === 0 || effect.chance === 0.0) continue;
 
+    // Skip effects tagged as Containment (Controller inherent conditional damage).
+    // Containment damage is handled separately via the containment toggle in the UI.
+    if (effect.tags && effect.tags.includes('Containment')) continue;
+
     // Collect templates from this level
     if (effect.templates && effect.templates.length > 0) {
       templates.push(...effect.templates);
@@ -914,8 +918,8 @@ function convertPower(powerJson, availableLevel) {
   // If boosts_allowed is empty, the power genuinely accepts no generic IOs.
   // allowedSetCategories only determines which IO SETS can be slotted.
 
-  // Max slots
-  power.maxSlots = powerJson.max_boosts || 6;
+  // Max slots — if allowedEnhancements is empty, the power accepts no enhancements
+  power.maxSlots = (power.allowedEnhancements.length === 0) ? 0 : (powerJson.max_boosts || 6);
 
   // Extract effects from templates
   // Recursively collect from child_effects too (many powers nest effects there)

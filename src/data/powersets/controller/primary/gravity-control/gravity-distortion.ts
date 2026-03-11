@@ -40,22 +40,13 @@ export const GravityDistortion: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 0.22,
-      "table": "Ranged_Damage",
-      "duration": 4.2,
-      "tickRate": 1
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.22,
-      "table": "Ranged_InherentDamage",
-      "duration": 4.2,
-      "tickRate": 1
-    }
-  ],
+  "damage": {
+    "type": "Smashing",
+    "scale": 0.22,
+    "table": "Ranged_Damage",
+    "duration": 4.2,
+    "tickRate": 1
+  },
   "effects": {
     "hold": {
       "mag": 3,
@@ -80,6 +71,11 @@ export const GravityDistortion: Power = {
         "table": "Ranged_Slow"
       }
     },
+    "durations": {
+      "movement": 12,
+      "protection": 10,
+      "slow": 10
+    },
     "protection": {
       "knockup": 1,
       "knockback": 1
@@ -90,11 +86,6 @@ export const GravityDistortion: Power = {
         "table": "Ranged_Ones"
       }
     },
-    "buffDuration": 10,
-    "durations": {
-      "movement": 12,
-      "protection": 10,
-      "slow": 10
-    }
+    "buffDuration": 10
   }
 };

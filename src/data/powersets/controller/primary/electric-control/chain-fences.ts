@@ -54,18 +54,6 @@ export const ChainFences: Power = {
       "table": "Ranged_Damage",
       "duration": 5.2,
       "tickRate": 2
-    },
-    {
-      "type": "Energy",
-      "scale": 0.3,
-      "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.1,
-      "table": "Ranged_InherentDamage",
-      "duration": 5.2,
-      "tickRate": 2
     }
   ],
   "effects": {
@@ -82,16 +70,16 @@ export const ChainFences: Power = {
       "scale": 1,
       "table": "Ranged_Ones"
     },
+    "durations": {
+      "recoveryDebuff": 6,
+      "slow": 15
+    },
     "slow": {
       "fly": {
         "scale": 1.6,
         "table": "Ranged_Ones"
       }
     },
-    "buffDuration": 15,
-    "durations": {
-      "recoveryDebuff": 6,
-      "slow": 15
-    }
+    "buffDuration": 15
   }
 };

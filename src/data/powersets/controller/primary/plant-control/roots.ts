@@ -54,13 +54,6 @@ export const Roots: Power = {
       "table": "Ranged_Damage",
       "duration": 5.2,
       "tickRate": 2
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.2,
-      "table": "Ranged_InherentDamage",
-      "duration": 5.2,
-      "tickRate": 2
     }
   ],
   "effects": {
@@ -73,16 +66,16 @@ export const Roots: Power = {
       "knockup": 1,
       "knockback": 1
     },
+    "durations": {
+      "protection": 12,
+      "slow": 12
+    },
     "slow": {
       "fly": {
         "scale": 1.6,
         "table": "Ranged_Ones"
       }
     },
-    "buffDuration": 12,
-    "durations": {
-      "protection": 12,
-      "slow": 12
-    }
+    "buffDuration": 12
   }
 };

@@ -37,18 +37,11 @@ export const Updraft: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 1,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1,
-      "table": "Ranged_InherentDamage"
-    }
-  ],
+  "damage": {
+    "type": "Smashing",
+    "scale": 1,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "slow": {
       "fly": {
@@ -56,10 +49,14 @@ export const Updraft: Power = {
         "table": "Ranged_Ones"
       }
     },
+    "durations": {
+      "slow": 10
+    },
     "knockup": {
       "scale": 6,
       "table": "Ranged_Knockback"
-    }
+    },
+    "buffDuration": 10
   },
   "requires": "char>accesslevel >= 0"
 };

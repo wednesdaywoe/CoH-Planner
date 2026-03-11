@@ -38,18 +38,11 @@ export const HotFeet: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Fire",
-      "scale": 0.25,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.25,
-      "table": "Ranged_InherentDamage"
-    }
-  ],
+  "damage": {
+    "type": "Fire",
+    "scale": 0.25,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "fear": {
       "mag": 3,
@@ -61,6 +54,10 @@ export const HotFeet: Power = {
         "scale": 10,
         "table": "Ranged_Ones"
       }
+    },
+    "durations": {
+      "slow": 15,
+      "movement": 2.25
     },
     "movement": {
       "jumpHeight": {
@@ -76,9 +73,6 @@ export const HotFeet: Power = {
         "table": "Ranged_Slow"
       }
     },
-    "durations": {
-      "movement": 2.25,
-      "slow": 15
-    }
+    "buffDuration": 15
   }
 };

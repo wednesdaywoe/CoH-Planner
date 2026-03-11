@@ -42,22 +42,13 @@ export const HeartofDarkness: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Negative",
-      "scale": 0.07,
-      "table": "Ranged_Damage",
-      "duration": 4.1,
-      "tickRate": 1
-    },
-    {
-      "type": "Negative",
-      "scale": 0.07,
-      "table": "Ranged_InherentDamage",
-      "duration": 4.1,
-      "tickRate": 1
-    }
-  ],
+  "damage": {
+    "type": "Negative",
+    "scale": 0.07,
+    "table": "Ranged_Damage",
+    "duration": 4.1,
+    "tickRate": 1
+  },
   "effects": {
     "stun": {
       "mag": 3,
@@ -68,9 +59,9 @@ export const HeartofDarkness: Power = {
       "scale": 0.75,
       "table": "Ranged_Debuff_ToHit"
     },
-    "buffDuration": 10,
     "durations": {
       "tohitDebuff": 10
-    }
+    },
+    "buffDuration": 10
   }
 };

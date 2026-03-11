@@ -53,16 +53,6 @@ export const BrilliantBarrage: Power = {
       "type": "Energy",
       "scale": 0.1625,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.1625,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.1625,
-      "table": "Melee_InherentDamage"
     }
   ],
   "effects": {

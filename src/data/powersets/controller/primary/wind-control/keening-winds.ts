@@ -49,10 +49,14 @@ export const KeeningWinds: Power = {
       "scale": 0.04,
       "table": "Ranged_Ones"
     },
+    "durations": {
+      "enduranceDrain": 2.1
+    },
     "enduranceGain": {
       "scale": 10,
       "table": "Ranged_EndDrain"
-    }
+    },
+    "buffDuration": 2.1
   },
   "requires": "char>accesslevel >= 0"
 };

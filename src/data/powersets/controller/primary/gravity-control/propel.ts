@@ -47,11 +47,6 @@ export const Propel: Power = {
     },
     {
       "type": "Smashing",
-      "scale": 1.96,
-      "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Smashing",
       "scale": 0.49,
       "table": "Ranged_Damage"
     }

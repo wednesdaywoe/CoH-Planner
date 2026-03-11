@@ -40,22 +40,13 @@ export const Flashfire: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Fire",
-      "scale": 0.06,
-      "table": "Ranged_Damage",
-      "duration": 4,
-      "tickRate": 1
-    },
-    {
-      "type": "Fire",
-      "scale": 0.06,
-      "table": "Ranged_InherentDamage",
-      "duration": 4,
-      "tickRate": 1
-    }
-  ],
+  "damage": {
+    "type": "Fire",
+    "scale": 0.06,
+    "table": "Ranged_Damage",
+    "duration": 4,
+    "tickRate": 1
+  },
   "effects": {
     "stun": {
       "mag": 3,

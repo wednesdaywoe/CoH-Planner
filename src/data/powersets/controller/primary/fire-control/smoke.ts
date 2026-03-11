@@ -41,14 +41,14 @@ export const Smoke: Power = {
       "scale": 0.9,
       "table": "Ranged_Ones"
     },
+    "durations": {
+      "perceptionDebuff": 60,
+      "tohitDebuff": 60
+    },
     "tohitDebuff": {
       "scale": 0.5,
       "table": "Ranged_Debuff_ToHit"
     },
-    "buffDuration": 60,
-    "durations": {
-      "perceptionDebuff": 60,
-      "tohitDebuff": 60
-    }
+    "buffDuration": 60
   }
 };

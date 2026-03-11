@@ -41,6 +41,11 @@ export const IncendiaryAura: Power = {
       "scale": 1.25,
       "table": "Melee_DeBuff_ToHit"
     },
+    "durations": {
+      "tohitDebuff": 0.45,
+      "slow": 0.45,
+      "defenseDebuff": 0.45
+    },
     "slow": {
       "jumpHeight": {
         "scale": 500,
@@ -51,10 +56,6 @@ export const IncendiaryAura: Power = {
       "scale": 0.75,
       "table": "Ranged_Debuff_Def"
     },
-    "durations": {
-      "defenseDebuff": 0.45,
-      "slow": 0.45,
-      "tohitDebuff": 0.45
-    }
+    "buffDuration": 0.45
   }
 };

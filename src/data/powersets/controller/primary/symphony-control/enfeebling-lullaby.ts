@@ -41,31 +41,24 @@ export const EnfeeblingLullaby: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Psionic",
-      "scale": 0.2,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 0.2,
-      "table": "Ranged_InherentDamage"
-    }
-  ],
+  "damage": {
+    "type": "Psionic",
+    "scale": 0.2,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "damageDebuff": {
       "scale": 2,
       "table": "Melee_Debuff_Dam"
+    },
+    "durations": {
+      "damageDebuff": 15
     },
     "sleep": {
       "mag": 3,
       "scale": 12,
       "table": "Ranged_Sleep"
     },
-    "buffDuration": 15,
-    "durations": {
-      "damageDebuff": 15
-    }
+    "buffDuration": 15
   }
 };

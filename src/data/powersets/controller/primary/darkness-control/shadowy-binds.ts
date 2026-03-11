@@ -41,22 +41,13 @@ export const ShadowyBinds: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Negative",
-      "scale": 0.2,
-      "table": "Ranged_Damage",
-      "duration": 9.2,
-      "tickRate": 2
-    },
-    {
-      "type": "Negative",
-      "scale": 0.2,
-      "table": "Ranged_InherentDamage",
-      "duration": 9.2,
-      "tickRate": 2
-    }
-  ],
+  "damage": {
+    "type": "Negative",
+    "scale": 0.2,
+    "table": "Ranged_Damage",
+    "duration": 9.2,
+    "tickRate": 2
+  },
   "effects": {
     "immobilize": {
       "mag": 4,
@@ -66,6 +57,11 @@ export const ShadowyBinds: Power = {
     "tohitDebuff": {
       "scale": 0.75,
       "table": "Ranged_Debuff_ToHit"
+    },
+    "durations": {
+      "tohitDebuff": 15,
+      "protection": 15,
+      "slow": 15
     },
     "protection": {
       "knockup": 1,
@@ -77,11 +73,6 @@ export const ShadowyBinds: Power = {
         "table": "Ranged_Ones"
       }
     },
-    "buffDuration": 15,
-    "durations": {
-      "protection": 15,
-      "slow": 15,
-      "tohitDebuff": 15
-    }
+    "buffDuration": 15
   }
 };

@@ -59,6 +59,11 @@ export const ColdSnap: Power = {
         "table": "Ranged_Slow"
       }
     },
+    "durations": {
+      "movement": 18,
+      "rechargeDebuff": 18,
+      "slow": 18
+    },
     "rechargeDebuff": {
       "scale": 0.65,
       "table": "Ranged_Slow"
@@ -69,11 +74,6 @@ export const ColdSnap: Power = {
         "table": "Ranged_SpeedRunning"
       }
     },
-    "buffDuration": 18,
-    "durations": {
-      "movement": 18,
-      "rechargeBuff": 18,
-      "slow": 18
-    }
+    "buffDuration": 18
   }
 };

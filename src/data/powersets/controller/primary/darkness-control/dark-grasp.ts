@@ -41,18 +41,11 @@ export const DarkGrasp: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Negative",
-      "scale": 1,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Negative",
-      "scale": 1,
-      "table": "Ranged_InherentDamage"
-    }
-  ],
+  "damage": {
+    "type": "Negative",
+    "scale": 1,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "hold": {
       "mag": 3,
@@ -63,9 +56,9 @@ export const DarkGrasp: Power = {
       "scale": 0.75,
       "table": "Ranged_Debuff_ToHit"
     },
-    "buffDuration": 10,
     "durations": {
       "tohitDebuff": 10
-    }
+    },
+    "buffDuration": 10
   }
 };

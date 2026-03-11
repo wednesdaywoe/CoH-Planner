@@ -54,20 +54,6 @@ export const SparklingChain: Power = {
       "table": "Ranged_Damage",
       "duration": 5.2,
       "tickRate": 2
-    },
-    {
-      "type": "Fire",
-      "scale": 0.055,
-      "table": "Ranged_InherentDamage",
-      "duration": 5.2,
-      "tickRate": 2
-    },
-    {
-      "type": "Energy",
-      "scale": 0.055,
-      "table": "Ranged_InherentDamage",
-      "duration": 5.2,
-      "tickRate": 2
     }
   ],
   "effects": {
@@ -79,16 +65,16 @@ export const SparklingChain: Power = {
     "protection": {
       "knockback": 1
     },
+    "durations": {
+      "protection": 12,
+      "slow": 10
+    },
     "slow": {
       "fly": {
         "scale": 1.6,
         "table": "Ranged_Ones"
       }
     },
-    "buffDuration": 12,
-    "durations": {
-      "protection": 12,
-      "slow": 10
-    }
+    "buffDuration": 12
   }
 };

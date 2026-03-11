@@ -52,21 +52,7 @@ export const ConfoundingChant: Power = {
     {
       "type": "Psionic",
       "scale": 0.125,
-      "table": "Ranged_InherentDamage",
-      "duration": 19.75,
-      "tickRate": 1
-    },
-    {
-      "type": "Psionic",
-      "scale": 0.125,
       "table": "Ranged_Damage",
-      "duration": 34.75,
-      "tickRate": 1
-    },
-    {
-      "type": "Psionic",
-      "scale": 0.125,
-      "table": "Ranged_InherentDamage",
       "duration": 34.75,
       "tickRate": 1
     }

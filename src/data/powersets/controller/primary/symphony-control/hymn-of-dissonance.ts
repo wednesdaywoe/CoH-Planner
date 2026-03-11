@@ -38,31 +38,24 @@ export const HymnofDissonance: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Psionic",
-      "scale": 1,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 1,
-      "table": "Ranged_InherentDamage"
-    }
-  ],
+  "damage": {
+    "type": "Psionic",
+    "scale": 1,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "rechargeDebuff": {
       "scale": 0.2,
       "table": "Ranged_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 18
     },
     "hold": {
       "mag": 3,
       "scale": 12,
       "table": "Melee_Immobilize"
     },
-    "buffDuration": 18,
-    "durations": {
-      "rechargeBuff": 18
-    }
+    "buffDuration": 18
   }
 };

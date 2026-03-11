@@ -45,11 +45,6 @@ export const Lift: Power = {
     },
     {
       "type": "Smashing",
-      "scale": 1.32,
-      "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Smashing",
       "scale": 0.33,
       "table": "Ranged_Damage"
     }
@@ -65,9 +60,9 @@ export const Lift: Power = {
         "table": "Ranged_Ones"
       }
     },
-    "buffDuration": 10,
     "durations": {
       "slow": 10
-    }
+    },
+    "buffDuration": 10
   }
 };

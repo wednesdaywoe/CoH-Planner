@@ -45,18 +45,11 @@ export const Microburst: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 0.2,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.2,
-      "table": "Ranged_InherentDamage"
-    }
-  ],
+  "damage": {
+    "type": "Smashing",
+    "scale": 0.2,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "stun": {
       "mag": 3,
@@ -81,6 +74,12 @@ export const Microburst: Power = {
         "table": "Ranged_Slow"
       }
     },
+    "durations": {
+      "movement": 12,
+      "rechargeDebuff": 12,
+      "slow": 12,
+      "defenseDebuff": 12
+    },
     "rechargeDebuff": {
       "scale": 0.3,
       "table": "Ranged_Slow"
@@ -94,7 +93,8 @@ export const Microburst: Power = {
     "defenseDebuff": {
       "scale": 2.5,
       "table": "Ranged_Debuff_Def"
-    }
+    },
+    "buffDuration": 12
   },
   "requires": "char>accesslevel >= 0"
 };

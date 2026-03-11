@@ -49,6 +49,11 @@ export const GroupInvisibility: Power = {
         "table": "Ranged_Ones"
       }
     },
+    "durations": {
+      "stealth": 120,
+      "defenseBuff": 120,
+      "threatDebuff": 120
+    },
     "defenseBuff": {
       "ranged": {
         "scale": 0.25,
@@ -99,11 +104,6 @@ export const GroupInvisibility: Power = {
       "scale": 1,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 120,
-    "durations": {
-      "defenseBuff": 120,
-      "stealth": 120,
-      "threatDebuff": 120
-    }
+    "buffDuration": 120
   }
 };

@@ -45,11 +45,6 @@ export const SpectralWounds: Power = {
       "type": "Special",
       "scale": -0.64,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 1,
-      "table": "Ranged_InherentDamage"
     }
   ],
   "effects": {
@@ -59,9 +54,9 @@ export const SpectralWounds: Power = {
         "table": "Ranged_Ones"
       }
     },
-    "buffDuration": 10,
     "durations": {
       "movement": 10
-    }
+    },
+    "buffDuration": 10
   }
 };

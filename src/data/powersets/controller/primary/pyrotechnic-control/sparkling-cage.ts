@@ -52,20 +52,6 @@ export const SparklingCage: Power = {
       "table": "Ranged_Damage",
       "duration": 9.2,
       "tickRate": 2
-    },
-    {
-      "type": "Energy",
-      "scale": 0.11,
-      "table": "Ranged_InherentDamage",
-      "duration": 9.2,
-      "tickRate": 2
-    },
-    {
-      "type": "Fire",
-      "scale": 0.11,
-      "table": "Ranged_InherentDamage",
-      "duration": 9.2,
-      "tickRate": 2
     }
   ],
   "effects": {
@@ -77,16 +63,16 @@ export const SparklingCage: Power = {
     "protection": {
       "knockback": 1
     },
+    "durations": {
+      "protection": 15,
+      "slow": 10
+    },
     "slow": {
       "fly": {
         "scale": 1.6,
         "table": "Ranged_Ones"
       }
     },
-    "buffDuration": 15,
-    "durations": {
-      "protection": 15,
-      "slow": 10
-    }
+    "buffDuration": 15
   }
 };

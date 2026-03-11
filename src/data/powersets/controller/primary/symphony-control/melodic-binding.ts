@@ -40,18 +40,11 @@ export const MelodicBinding: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Psionic",
-      "scale": 1,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 1,
-      "table": "Ranged_InherentDamage"
-    }
-  ],
+  "damage": {
+    "type": "Psionic",
+    "scale": 1,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "movement": {
       "runSpeed": {
@@ -71,6 +64,10 @@ export const MelodicBinding: Power = {
         "table": "Ranged_Slow"
       }
     },
+    "durations": {
+      "movement": 15,
+      "protection": 15
+    },
     "protection": {
       "knockup": 1,
       "knockback": 1
@@ -80,10 +77,6 @@ export const MelodicBinding: Power = {
       "scale": 15,
       "table": "Ranged_Immobilize"
     },
-    "buffDuration": 15,
-    "durations": {
-      "movement": 15,
-      "protection": 15
-    }
+    "buffDuration": 15
   }
 };

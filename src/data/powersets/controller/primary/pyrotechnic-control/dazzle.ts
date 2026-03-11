@@ -48,16 +48,6 @@ export const Dazzle: Power = {
       "type": "Energy",
       "scale": 0.5,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.5,
-      "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.5,
-      "table": "Ranged_InherentDamage"
     }
   ],
   "effects": {

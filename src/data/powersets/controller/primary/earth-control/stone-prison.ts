@@ -38,22 +38,13 @@ export const StonePrison: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 0.2,
-      "table": "Ranged_Damage",
-      "duration": 9.2,
-      "tickRate": 2
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.2,
-      "table": "Ranged_InherentDamage",
-      "duration": 9.2,
-      "tickRate": 2
-    }
-  ],
+  "damage": {
+    "type": "Smashing",
+    "scale": 0.2,
+    "table": "Ranged_Damage",
+    "duration": 9.2,
+    "tickRate": 2
+  },
   "effects": {
     "immobilize": {
       "mag": 4,
@@ -63,6 +54,11 @@ export const StonePrison: Power = {
     "protection": {
       "knockup": 1,
       "knockback": 1
+    },
+    "durations": {
+      "protection": 15,
+      "defenseDebuff": 15,
+      "slow": 15
     },
     "defenseDebuff": {
       "scale": 2,
@@ -74,11 +70,6 @@ export const StonePrison: Power = {
         "table": "Ranged_Ones"
       }
     },
-    "buffDuration": 15,
-    "durations": {
-      "defenseDebuff": 15,
-      "protection": 15,
-      "slow": 15
-    }
+    "buffDuration": 15
   }
 };
