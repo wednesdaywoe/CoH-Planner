@@ -1,5 +1,5 @@
 /**
- * WelcomeModal - Shows known issues and to-do list on first visit
+ * WelcomeModal - Shows recent changes on first visit or version update
  */
 
 import { useState, useEffect } from 'react';
@@ -7,6 +7,8 @@ import { Modal, ModalHeader, ModalBody, ModalFooter } from './Modal';
 import { Button } from '@/components/ui';
 import { useUIStore } from '@/stores';
 import { BUILD_TIME, APP_VERSION } from '@/buildTime';
+import { RECENT_CHANGES } from '@/data/tracker';
+import { StatusBadge, renderTrackerText } from './KnownIssuesModal';
 
 const LAST_UPDATED = (() => {
   const date = new Date(BUILD_TIME);
@@ -23,6 +25,7 @@ interface WelcomeModalProps {
 export function WelcomeModal({ isOpen, onClose }: WelcomeModalProps) {
   const [dontShowAgain, setDontShowAgain] = useState(false);
   const openKnownIssuesModal = useUIStore((s) => s.openKnownIssuesModal);
+  const openControlsModal = useUIStore((s) => s.openControlsModal);
 
   const handleClose = () => {
     if (dontShowAgain) {
@@ -34,9 +37,9 @@ export function WelcomeModal({ isOpen, onClose }: WelcomeModalProps) {
   return (
     <Modal isOpen={isOpen} onClose={handleClose} showCloseButton={false} size="lg">
       <ModalHeader className="flex items-center justify-between">
-        <h2 className="text-lg font-medium text-gray-100">Welcome to Sidekick</h2>
+        <h2 className="text-lg font-medium text-gray-100">What's New in Sidekick</h2>
         <div className="flex items-center gap-3">
-          <span className="text-xs text-slate-500 whitespace-nowrap">v{APP_VERSION} — Updated {LAST_UPDATED}</span>
+          <span className="text-xs text-slate-500 whitespace-nowrap">v{APP_VERSION} — {LAST_UPDATED}</span>
           <button
             onClick={handleClose}
             className="p-1 text-gray-400 hover:text-white transition-colors rounded hover:bg-gray-700"
@@ -49,74 +52,51 @@ export function WelcomeModal({ isOpen, onClose }: WelcomeModalProps) {
         </div>
       </ModalHeader>
       <ModalBody>
-        <div className="space-y-5">
-          {/* Welcome Message */}
-          <p className="text-gray-300">
-            Thank you for helping test <span className="text-[#D62BCE] font-semibold">Sidekick</span>! This build planner is in <span className="text-amber-400 font-semibold">active development</span>.
-            Please expect bugs and incomplete features.
+        <div className="space-y-4">
+          <div className="bg-[#D62BCE]/10 border border-[#D62BCE]/30 rounded-lg p-4 text-sm text-gray-200 leading-relaxed">
+            <p>
+              Thank you so much for helping test <span className="text-[#D62BCE] font-semibold">Sidekick</span>! The response has been wonderful and your bug reports have been crucial to finding and fixing some very critical systems. Even just noticing and reporting seemingly small anomalies—like a power with Recharge Debuff Resistance providing a global Recharge bonus—can lead to uncovering a much wider issue with my data process that I am still improving (this scenario literally happened). With your help we can get this thing past the finish line!
+            </p>
+            <p className="mt-2 text-[#D62BCE] font-semibold">&lt;3,<br />WW</p>
+          </div>
+
+          <p className="text-gray-300 text-sm">
+            <span className="text-[#D62BCE] font-semibold">Sidekick</span>{' '}
+            <span className="text-amber-400 font-semibold">is in active beta development, so please be patient with bugs and errors.</span>
+            {' '}Here's what changed since your last visit:
           </p>
 
-          {/* How to Use */}
-          <div>
-            <h3 className="text-lg font-semibold text-cyan-400 mb-2 flex items-center gap-2">
-              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              How to Use
-            </h3>
-            <div className="space-y-3 text-sm text-gray-400">
-              <div>
-                <span className="text-cyan-300 font-medium">Desktop:</span>
-                <ul className="mt-1 space-y-1 ml-4">
-                  <li><span className="text-gray-300">Hover</span> over powers to see details in the info panel</li>
-                  <li><span className="text-gray-300">Click</span> to select powers or open the enhancement picker</li>
-                  <li><span className="text-gray-300">Right-click</span> on a power to lock its info in the panel</li>
-                  <li><span className="text-gray-300">Right-click</span> on a slot to remove its enhancement (or remove the slot if empty)</li>
-                  <li><span className="text-gray-300">Shift + Right-click</span> on a slot for bulk actions menu</li>
-                  <li><span className="text-gray-300">Drag</span> the + button to add multiple slots at once</li>
-                </ul>
-              </div>
-              <div>
-                <span className="text-cyan-300 font-medium">Mobile:</span>
-                <ul className="mt-1 space-y-1 ml-4">
-                  <li><span className="text-gray-300">Tap</span> to select powers or open the enhancement picker</li>
-                  <li><span className="text-gray-300">Long-press</span> on a power to view its info in the panel</li>
-                  <li><span className="text-gray-300">Touch and hold</span> on a slot for action menu (add, remove, clear all)</li>
-                  <li><span className="text-gray-300">Touch and drag</span> the + button to add multiple slots</li>
-                </ul>
-              </div>
-              <div>
-                <span className="text-cyan-300 font-medium">Special Features:</span>
-                <ul className="mt-1 space-y-1 ml-4">
-                  <li><span className="text-gray-300">Stat Tracking:</span> Select a stat in the dashboard to track it. This highlights IO Sets that provide a bonus for that stat</li>
-                  <li><span className="text-gray-300">Set Bonus Finder:</span> Use to find sets that provide bonuses for specific stats.</li>
-                  <li><span className="text-gray-300">Incarnate Component Calculator:</span> Calculate the components needed for your incarnate powers (available at level 50)</li>
-                </ul>
-                
-              </div>
-            </div>
-          </div>
+          {/* Recent Changes */}
+          <ul className="space-y-2">
+            {RECENT_CHANGES.map((item, idx) => (
+              <li key={idx} className="flex items-start gap-2 text-sm text-gray-400">
+                <StatusBadge status={item.status} />
+                <span>{renderTrackerText(item.text)}</span>
+              </li>
+            ))}
+          </ul>
 
           {/* Links */}
           <div className="bg-gray-800 rounded-lg p-3 border border-gray-700 space-y-2">
             <p className="text-sm text-gray-300">
-              Check the{' '}
               <button
                 type="button"
-                onClick={() => {
-                  handleClose();
-                  openKnownIssuesModal();
-                }}
+                onClick={() => { handleClose(); openKnownIssuesModal(); }}
                 className="text-cyan-400 underline hover:text-cyan-300 font-medium"
               >
                 Known Issues & Roadmap
               </button>
-              {' '}for tracked bugs and planned features.
+              {' '} — tracked bugs and planned features
             </p>
             <p className="text-sm text-gray-300">
-              Found something new? Use the{' '}
-              <span className="text-purple-400 font-medium">Feedback/Bugs</span> button
-              in the bottom-right corner to let me know!
+              <button
+                type="button"
+                onClick={() => { handleClose(); openControlsModal(); }}
+                className="text-cyan-400 underline hover:text-cyan-300 font-medium"
+              >
+                Controls
+              </button>
+              {' '} — keyboard shortcuts and interactions
             </p>
           </div>
         </div>

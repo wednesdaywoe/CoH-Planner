@@ -110,10 +110,18 @@ export function importMidsBuild(jsonString: string): MidsImportResult {
   }
 
   // 4. Map origin and level
-  // Mids top-level Level is 0-based (48 = level 49), power entry levels are 1-based
+  // Mids top-level Level is 0-based, power entry levels are 1-based
   const origin = mapOrigin(mbd.Origin);
   const parsedLevel = (parseInt(mbd.Level, 10) || 49) + 1;
-  const level = Math.min(Math.max(parsedLevel, 1), 50);
+  // Also determine level from power entries — Mids Level may reflect the highest
+  // power pick (0-based 48 = game level 49) rather than the character's actual level.
+  // If any power is at the last pick level (49), the character is level 50.
+  let maxPowerEntryLevel = 0;
+  for (const entry of mbd.PowerEntries) {
+    if (entry.Level > maxPowerEntryLevel) maxPowerEntryLevel = entry.Level;
+  }
+  const levelFromPowers = maxPowerEntryLevel >= 49 ? 50 : maxPowerEntryLevel;
+  const level = Math.min(Math.max(parsedLevel, levelFromPowers, 1), 50);
 
   // 5. Build lookup tables
   const powersetLookup = buildPowersetLookup();

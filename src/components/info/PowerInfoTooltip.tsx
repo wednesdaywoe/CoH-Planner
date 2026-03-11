@@ -163,7 +163,7 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
 
   // Calculate actual damage using archetype modifiers and level
   const calculatedDamage = useMemo(() => {
-    if (!basePower?.damage) return null;
+    if (!basePower?.damage && !basePower?.effects?.damage) return null;
 
     // Determine if this is a primary or secondary powerset
     const isPrimary = powerSet === build.primary.id;
@@ -196,7 +196,7 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
   // Extract healing from damage field (e.g., Life Drain, Dark Regeneration, Reconstruction)
   // Powers can define healing as { type: "Heal", scale, table } either as a single object or array entry
   const healFromDamageArray = useMemo(() => {
-    const dmg = basePower?.damage;
+    const dmg = basePower?.damage ?? basePower?.effects?.damage;
     if (!dmg) return undefined;
     // Single object: { type: "Heal", scale, table }
     if (!Array.isArray(dmg) && typeof dmg === 'object' && 'type' in dmg && (dmg as { type: string }).type === 'Heal') {
@@ -211,7 +211,7 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
       return { scale: healEntry.scale, table: healEntry.table };
     }
     return undefined;
-  }, [basePower?.damage]);
+  }, [basePower?.damage, basePower?.effects?.damage]);
 
   // Calculate aggregate pet damage (supports multi-entity summons)
   const petDamageAggregate = useMemo<{ results: PetDamageResult[]; base: number; enhanced: number; final: number } | null>(() => {
@@ -351,6 +351,10 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
   if (basePower.stats?.accuracy) extraEffects.accuracy = basePower.stats.accuracy;
   if (basePower.stats?.range) extraEffects.range = basePower.stats.range;
   if (basePower.stats?.castTime) extraEffects.castTime = basePower.stats.castTime;
+  // AoE stats
+  if (basePower.stats?.radius) extraEffects.radius = basePower.stats.radius;
+  if (basePower.stats?.arc) extraEffects.arc = basePower.stats.arc <= 2 * Math.PI ? basePower.stats.arc * (180 / Math.PI) : basePower.stats.arc;
+  if (basePower.stats?.maxTargets) extraEffects.maxTargets = basePower.stats.maxTargets;
   // Map pool/inherent effect keys to registry names
   if (raw.flySpeed && !rawEffects.fly) extraEffects.fly = raw.flySpeed;
   if (rawEffects.runSpeed) extraEffects.runSpeed = rawEffects.runSpeed;
@@ -488,9 +492,23 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
         const damageCap = getDamageCap(archetypeId ?? '');
         // Fixed reference: AT's damage at scale 1.0 × damageCap
         const referenceDamage = (calculatedDamage.base / calculatedDamage.scale) * damageCap;
-        const basePercent = Math.min((calculatedDamage.base / referenceDamage) * 100, 100);
-        const enhPercent = Math.min((calculatedDamage.enhanced / referenceDamage) * 100, 100);
-        const finalPercent = Math.min((calculatedDamage.final / referenceDamage) * 100, 100);
+
+        // Include DoT total damage in the bar (direct + DoT×ticks)
+        const dot = calculatedDamage.dotDamage;
+        const isPureDot = dot && Math.abs(calculatedDamage.base - dot.base) <= 0.001;
+        const totalBase = isPureDot
+          ? dot.base * dot.ticks
+          : calculatedDamage.base + (dot ? dot.base * dot.ticks : 0);
+        const totalEnhanced = isPureDot
+          ? dot.enhanced * dot.ticks
+          : calculatedDamage.enhanced + (dot ? dot.enhanced * dot.ticks : 0);
+        const totalFinal = isPureDot
+          ? dot.final * dot.ticks
+          : calculatedDamage.final + (dot ? dot.final * dot.ticks : 0);
+
+        const basePercent = Math.min((totalBase / referenceDamage) * 100, 100);
+        const enhPercent = Math.min((totalEnhanced / referenceDamage) * 100, 100);
+        const finalPercent = Math.min((totalFinal / referenceDamage) * 100, 100);
 
         return (
           <div className="relative h-2 bg-slate-700/30 rounded overflow-hidden" title={`Damage cap: ${(damageCap * 100).toFixed(0)}%`}>

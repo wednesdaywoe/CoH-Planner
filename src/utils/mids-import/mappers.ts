@@ -282,6 +282,21 @@ export function buildEpicLookup(archetypeId: string, additionalPoolIds?: string[
 }
 
 /**
+ * Mids sometimes abbreviates words in epic pool names.
+ * e.g., "Sentinel_Psi_Mastery" instead of "Sentinel_Psionic_Mastery".
+ * Maps lowercase abbreviated word → full word.
+ */
+const MIDS_WORD_ABBREVIATIONS: Record<string, string> = {
+  'psi': 'psionic',
+};
+
+function expandMidsAbbreviations(name: string): string {
+  const words = name.split('_');
+  const expanded = words.map(w => MIDS_WORD_ABBREVIATIONS[w] || w);
+  return expanded.join('_');
+}
+
+/**
  * Mids uses AT abbreviation suffixes on epic pool internal names.
  * e.g., "Ice_Mastery_DefCorr" = Ice Mastery for Defenders/Corruptors.
  * Maps lowercase suffix → AT IDs to try when constructing pool ID.
@@ -370,6 +385,23 @@ export function resolveEpicPoolId(
     if (midsEpicName.startsWith(pool.id.toLowerCase()) ||
         pool.id.toLowerCase().startsWith(midsEpicName)) {
       return pool.id;
+    }
+  }
+
+  // Fallback: expand known Mids abbreviations (e.g., "psi" → "psionic") and retry
+  const expandedName = expandMidsAbbreviations(midsEpicName);
+  if (expandedName !== midsEpicName) {
+    for (const pool of epicPools) {
+      if (pool.id.toLowerCase() === expandedName) {
+        return pool.id;
+      }
+    }
+    for (const pool of Object.values(allEpicPools)) {
+      if (pool.id.toLowerCase() === expandedName ||
+          expandedName.startsWith(pool.id.toLowerCase()) ||
+          pool.id.toLowerCase().startsWith(expandedName)) {
+        return pool.id;
+      }
     }
   }
 
@@ -465,10 +497,27 @@ export interface EnhancementMapResult {
 }
 
 /**
+ * Parse Mids RelativeLevel string to a boost number (0-5).
+ * "PlusOne" → 1, "PlusTwo" → 2, ..., "PlusFive" → 5
+ * "Even", "None", or anything else → 0
+ */
+const RELATIVE_LEVEL_BOOST: Record<string, number> = {
+  'PlusOne': 1,
+  'PlusTwo': 2,
+  'PlusThree': 3,
+  'PlusFour': 4,
+  'PlusFive': 5,
+};
+
+function parseBoostLevel(relativeLevel: string): number {
+  return RELATIVE_LEVEL_BOOST[relativeLevel] ?? 0;
+}
+
+/**
  * Map a Mids enhancement UID to an app Enhancement object.
  * @param uid - e.g., "Superior_Attuned_Superior_Brutes_Fury_A" or "Crafted_Damage"
  * @param ioLevel - the IoLevel from the .mbd file (0-based)
- * @param relativeLevel - "Even", "Superior", etc.
+ * @param relativeLevel - "Even", "PlusOne", "PlusTwo", etc.
  * @param grade - "IO", "SO", "DO", "TO", etc.
  */
 export function mapEnhancementUid(
@@ -479,17 +528,18 @@ export function mapEnhancementUid(
 ): EnhancementMapResult {
   // The ioLevel in .mbd is 0-based (49 = level 50)
   const level = Math.min(Math.max(ioLevel + 1, 1), 53);
+  const boost = parseBoostLevel(relativeLevel);
 
   // Check for special enhancements (Hamidon, Titan, Hydra, D-Sync)
   if (grade === 'SingleO' || uid.startsWith('Hamidon_') || uid.startsWith('Titan_') || uid.startsWith('Hydra_') || uid.startsWith('DSync_') || uid.startsWith('Dsync_')) {
-    return mapSpecialEnhancementUid(uid);
+    return mapSpecialEnhancementUid(uid, boost);
   }
 
   // Check for origin enhancements (SO/DO/TO)
   if (grade === 'SO' || grade === 'DO' || grade === 'TO') {
     const stat = MIDS_STAT_MAP[uid] ?? uid;
     try {
-      const enh = createOriginEnhancement(stat as any, grade);
+      const enh = createOriginEnhancement(stat as any, grade, undefined, boost || undefined);
       return { enhancement: enh, warning: null };
     } catch {
       return {
@@ -506,7 +556,7 @@ export function mapEnhancementUid(
     if (!statPart.match(/_[A-F]$/) || isGenericStat(statPart)) {
       const stat = MIDS_STAT_MAP[statPart] ?? statPart;
       try {
-        const enh = createGenericIOEnhancement(stat as any, level);
+        const enh = createGenericIOEnhancement(stat as any, level, boost || undefined);
         return { enhancement: enh, warning: null };
       } catch {
         return {
@@ -559,6 +609,7 @@ export function mapEnhancementUid(
   const enh = createIOSetEnhancement(ioSet, piece, pieceNum - 1, {
     attuned: attuned || relativeLevel === 'Even',
     level: attuned ? 50 : level,
+    boost: boost || undefined,
   });
 
   return { enhancement: enh, warning: null };
@@ -846,7 +897,7 @@ const SPECIAL_PREFIXES: [string, SpecialCategory][] = [
  * Map a Mids special enhancement UID to an app Enhancement object.
  * Uses keyword-based aspect matching against the known registries.
  */
-function mapSpecialEnhancementUid(uid: string): EnhancementMapResult {
+function mapSpecialEnhancementUid(uid: string, boost?: number): EnhancementMapResult {
   // Determine category from prefix
   let category: SpecialCategory | null = null;
   let suffix = uid;
@@ -873,7 +924,7 @@ function mapSpecialEnhancementUid(uid: string): EnhancementMapResult {
   const directId = suffixMap?.[suffix.toLowerCase()];
   if (directId && registry[directId]) {
     const def = registry[directId];
-    const enh = createSpecialEnhancement(directId, def, category);
+    const enh = createSpecialEnhancement(directId, def, category, boost);
     return { enhancement: enh, warning: null };
   }
 
@@ -882,7 +933,7 @@ function mapSpecialEnhancementUid(uid: string): EnhancementMapResult {
 
   if (matchedId) {
     const def = registry[matchedId];
-    const enh = createSpecialEnhancement(matchedId, def, category);
+    const enh = createSpecialEnhancement(matchedId, def, category, boost);
     return { enhancement: enh, warning: null };
   }
 

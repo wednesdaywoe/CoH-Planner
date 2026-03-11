@@ -3,6 +3,8 @@
  * Used by KnownIssuesModal and WelcomeModal.
  */
 
+import { text } from "stream/consumers";
+
 export interface TrackerItem {
   text: string;
   status: 'known-bug' | 'fixed' | 'planned' | 'in-progress' | 'new';
@@ -23,20 +25,13 @@ export const KNOWN_BUGS: TrackerItem[] = [
 // ============================================
 
 export const RECENT_CHANGES: TrackerItem[] = [
-  { text: 'Fix to stop Containment from being applied all willy-nilly', status: 'fixed' },
+  { text: 'First pass at refactoring the import feature: Significant improvements to build importing reliability including preserving enhancement boosts.', status: 'fixed' },
+  { text: 'Sidekicks export format 2.0: Tons of unnecessary data removed, reducing file length significantly. 1.0 Exports format is supported', status: 'fixed' },
+  { text: 'Added a zoom feature. This just replicates what your browser can already do, but some may not be aware of that functionality so this makes it more discoverable', status: 'fixed' },
+  { text: 'Fix to stop Containment from being applied all willy-nilly', status: 'new' },
   { text: 'Added print-friendly build export 🖨️ Go to Save/Load and scroll down', status: 'new' },
   { text: 'More fussing with layout because no one will stop me', status: 'new' },
-  { text: '120 powersets regenerated to fix two classes of data errors including missing debuff resistance', status: 'fixed' },
   { text: 'Widespread issue with -recharge resistance being converted to +recharge', status: 'fixed' },
-  { text: 'Added missing generic enh icons, corrected ATO slotting rule, fix issue preventing AoE defense effects from registering', status: 'fixed' },
-  { text: 'Added 9 missing Hamidon Enhancements (Vesicle, Stereocilia, Microtubule, Karyoplasm, Microvillus, Chromatin, Ectosome, Amyloplast, Chloroplast) but I do not have icons for them yet', status: 'fixed' },
-  { text: 'Kheldian inherent travel powers removed from selection', status: 'fixed' },
-  { text: 'Villain epic pools should now appear as options.', status: 'fixed' },
-  { text: 'Added target level offset to calculate hit chance against different levels', status: 'new' },
-  { text: 'Sorcery, Experimentation, and Force of Will pools are now mutually exclusive', status: 'fixed' },
-  { text: 'Refactored slot level ordering to improve level-based planning', status: 'new' },
-  { text: 'Added drag and drop functionality to swap powers BUT it requires chronological mode', status: 'new' },
-
 ];
 
 // ============================================

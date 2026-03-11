@@ -349,6 +349,8 @@ export function AvailablePowers({
     ? powerset.powers.filter(p => {
         // Filter out auto-granted powers
         if (p.available < 0) return false;
+        // Filter out set mechanics/inherents (hiddenPassive, hiddenAuto, etc.)
+        if (p.mechanicType === 'hiddenPassive' || p.mechanicType === 'hiddenAuto') return false;
         // Filter out form sub-powers (auto-granted when parent form is selected)
         if (FORM_SUB_POWER_NAMES.has(p.name)) return false;
         // Filter out powers already granted as archetype inherents

@@ -242,7 +242,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
 
   // Calculate actual damage using archetype modifiers and level
   const calculatedDamage = useMemo(() => {
-    if (!power?.damage) return null;
+    if (!power?.damage && !power?.effects?.damage) return null;
 
     // Determine if this is a primary or secondary powerset
     const isPrimary = powerSet === build.primary.id;
@@ -331,7 +331,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
   // Handles both single object { type: "Heal", scale, table } and array entries
   let healFromDamage: { scale: number; table?: string } | undefined;
   if (!baseEffects?.healing) {
-    const dmg = power.damage;
+    const dmg = power.damage ?? power.effects?.damage;
     if (!Array.isArray(dmg) && typeof dmg === 'object' && dmg && 'type' in dmg && (dmg as { type: string }).type === 'Heal') {
       const entry = dmg as { scale: number; table?: string };
       healFromDamage = { scale: entry.scale, table: entry.table };
@@ -356,7 +356,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
     ...(power.stats?.castTime && { castTime: power.stats.castTime }),
     // AoE stats
     ...(power.stats?.radius && { radius: power.stats.radius }),
-    ...(power.stats?.arc && { arc: power.stats.arc * (180 / Math.PI) }),
+    ...(power.stats?.arc && { arc: power.stats.arc <= 2 * Math.PI ? power.stats.arc * (180 / Math.PI) : power.stats.arc }),
     ...(power.stats?.maxTargets && { maxTargets: power.stats.maxTargets }),
     // Healing from damage array
     ...(healFromDamage && { healing: healFromDamage }),

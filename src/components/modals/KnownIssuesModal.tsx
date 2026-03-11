@@ -11,7 +11,7 @@ interface KnownIssuesModalProps {
   onClose: () => void;
 }
 
-function StatusBadge({ status }: { status: TrackerItem['status'] }) {
+export function StatusBadge({ status }: { status: TrackerItem['status'] }) {
   const config = {
     'known-bug': { label: 'Bug', className: 'bg-red-900/50 text-red-300 border-red-700/50' },
     'fixed': { label: 'Fixed', className: 'bg-green-900/50 text-green-300 border-green-700/50' },
@@ -28,7 +28,7 @@ function StatusBadge({ status }: { status: TrackerItem['status'] }) {
 }
 
 /** Replace [missing-icon] markers in tracker text with inline images */
-function renderTrackerText(text: string): React.ReactNode {
+export function renderTrackerText(text: string): React.ReactNode {
   const marker = '[missing-icon]';
   const idx = text.indexOf(marker);
   if (idx === -1) return text;

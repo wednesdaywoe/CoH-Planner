@@ -262,6 +262,8 @@ function CollapsibleEffectGroup({
         return `${v.toFixed(1)}%`;
       case 'duration':
         return `${v.toFixed(2)}s`;
+      case 'degrees':
+        return `${Math.round(v)}\u00B0`;
       case 'value':
         if (config.label === 'Range' || config.label === 'Radius') return `${v.toFixed(0)}ft`;
         return v.toFixed(2);
@@ -939,6 +941,8 @@ export function RegistryEffectsDisplay({
               return `${(v).toFixed(1)}%`;
             case 'duration':
               return `${v.toFixed(2)}s`;
+            case 'degrees':
+              return `${Math.round(v)}\u00B0`;
             case 'value':
               if (config.label === 'Range' || config.label === 'Radius') return `${v.toFixed(0)}ft`;
               return v.toFixed(2);
