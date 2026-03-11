@@ -40,6 +40,7 @@ import {
 } from '@/data';
 import type { InherentPowerDef } from '@/data';
 import { computeSetTracking } from '@/utils/calculations/set-tracking';
+import { slimBuild, hydrateBuild } from '@/utils/build-serialization';
 
 // ============================================
 // POWER CATEGORY TYPE
@@ -1320,17 +1321,8 @@ export const useBuildStore = create<BuildStore>()(
       exportBuild: () => {
         const { build } = get();
         const exportData = {
-          version: 1,
-          build: {
-            ...build,
-            // Convert Set to array for JSON serialization
-            sets: Object.fromEntries(
-              Object.entries(build.sets).map(([setId, tracking]) => [
-                setId,
-                { count: tracking.count, pieces: Array.from(tracking.pieces) },
-              ])
-            ),
-          },
+          version: 2,
+          build: slimBuild(build),
           meta: {
             exportedAt: new Date().toISOString(),
           },
@@ -1341,28 +1333,29 @@ export const useBuildStore = create<BuildStore>()(
       importBuild: (json) => {
         try {
           const data = JSON.parse(json);
+          let build: Build;
 
-          // Validate version
-          if (data.version !== 1) {
-            console.warn('Unknown build version:', data.version);
+          if (data.version === 2) {
+            // v2 slim format — reconstruct full Build from identity + build-specific fields
+            build = hydrateBuild(data.build);
+          } else {
+            // v1 (legacy) — full Build object, just convert Set serialization
+            const setsEntries = Object.entries(data.build.sets || {}) as [
+              string,
+              { count: number; pieces: number[] }
+            ][];
+            build = {
+              ...data.build,
+              sets: Object.fromEntries(
+                setsEntries.map(([setId, tracking]) => [
+                  setId,
+                  { count: tracking.count, pieces: new Set(tracking.pieces) },
+                ])
+              ),
+            };
           }
 
-          // Convert pieces arrays back to Sets
-          const setsEntries = Object.entries(data.build.sets || {}) as [
-            string,
-            { count: number; pieces: number[] }
-          ][];
-          const build = {
-            ...data.build,
-            sets: Object.fromEntries(
-              setsEntries.map(([setId, tracking]) => [
-                setId,
-                { count: tracking.count, pieces: new Set(tracking.pieces) },
-              ])
-            ),
-          };
-
-          // Default slotOrder for builds that don't have it (v1 exports, older saves)
+          // Default slotOrder for builds that don't have it (older saves)
           if (!build.slotOrder) {
             build.slotOrder = [];
           }

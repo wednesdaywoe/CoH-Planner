@@ -54,6 +54,7 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
   const [gameResult, setGameResult] = useState<GameImportResult | null>(null);
   const [gameError, setGameError] = useState<string | null>(null);
   const [showGameWarnings, setShowGameWarnings] = useState(false);
+  const gameFileInputRef = useRef<HTMLInputElement>(null);
 
   // Share state
   const [shareDescription, setShareDescription] = useState('');
@@ -289,6 +290,39 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
     }
   };
 
+  const handleGameFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const content = e.target?.result as string;
+      setGameText(content);
+      setGameError(null);
+      setGameResult(null);
+      setShowGameWarnings(false);
+
+      // Auto-parse
+      try {
+        const result = importGameExport(content);
+        if (result.success) {
+          setGameResult(result);
+        } else {
+          const msg = result.warnings.length > 0
+            ? result.warnings[0].message
+            : 'Failed to parse game export';
+          setGameError(msg);
+        }
+      } catch {
+        setGameError('Failed to parse game export. Make sure it is a valid Homecoming build export.');
+      }
+    };
+    reader.onerror = () => {
+      setGameError('Failed to read file');
+    };
+    reader.readAsText(file);
+  };
+
   const handleGameApply = () => {
     if (!gameResult?.build) return;
     applyMidsBuild(gameResult.build);
@@ -370,6 +404,7 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
     setShareCopied(false);
     setActiveTab('save-load');
     if (midsFileInputRef.current) midsFileInputRef.current.value = '';
+    if (gameFileInputRef.current) gameFileInputRef.current.value = '';
     onClose();
   };
 
@@ -771,7 +806,35 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
               /* Game Import */
               <div className="space-y-4">
                 <div className="bg-cyan-900/20 border border-cyan-700/50 rounded p-3 text-sm text-cyan-300">
-                  <p>Import a build from the <span className="font-semibold">Homecoming</span> in-game build export. Use the <span className="text-sk-magenta font-semibold">/buildsave</span> command in-game, then paste the text file contents below.</p>
+                  <p>Import a build from the <span className="font-semibold">Homecoming</span> in-game build export. Use the <span className="text-sk-magenta font-semibold">/buildsave</span> command in-game, then upload the text file or paste its contents below.</p>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-300 mb-2">
+                    Upload Build Export (.txt)
+                  </label>
+                  <input
+                    ref={gameFileInputRef}
+                    type="file"
+                    accept=".txt"
+                    onChange={handleGameFileUpload}
+                    className="w-full text-sm text-gray-400
+                      file:mr-4 file:py-2 file:px-4
+                      file:rounded file:border-0
+                      file:text-sm file:font-semibold
+                      file:bg-cyan-600 file:text-white
+                      hover:file:bg-cyan-700
+                      file:cursor-pointer cursor-pointer"
+                  />
+                </div>
+
+                <div className="relative">
+                  <div className="absolute inset-0 flex items-center">
+                    <div className="w-full border-t border-gray-600"></div>
+                  </div>
+                  <div className="relative flex justify-center text-sm">
+                    <span className="px-2 bg-gray-900 text-gray-500">OR</span>
+                  </div>
                 </div>
 
                 <div>

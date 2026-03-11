@@ -16,6 +16,11 @@ import {
   createIOSetEnhancement,
   createGenericIOEnhancement,
   createOriginEnhancement,
+  createSpecialEnhancement,
+  HAMIDON_ENHANCEMENTS,
+  TITAN_ENHANCEMENTS,
+  HYDRA_ENHANCEMENTS,
+  DSYNC_ENHANCEMENTS,
 } from '@/data';
 import type { MidsImportWarning } from './types';
 
@@ -175,6 +180,15 @@ export function findPowerByMidsName(powers: Power[], midsName: string): Power | 
   );
   if (byDisplay) return byDisplay;
 
+  // fullName last segment match (e.g., "Combat_Flight" matches Pool.Flight.Combat_Flight → "Hover")
+  const lowerName = midsName.toLowerCase();
+  const byFullName = powers.find((p) => {
+    if (!p.fullName) return false;
+    const segment = p.fullName.split('.').pop() ?? '';
+    return segment.toLowerCase() === lowerName;
+  });
+  if (byFullName) return byFullName;
+
   return null;
 }
 
@@ -268,6 +282,26 @@ export function buildEpicLookup(archetypeId: string, additionalPoolIds?: string[
 }
 
 /**
+ * Mids uses AT abbreviation suffixes on epic pool internal names.
+ * e.g., "Ice_Mastery_DefCorr" = Ice Mastery for Defenders/Corruptors.
+ * Maps lowercase suffix → AT IDs to try when constructing pool ID.
+ */
+const MIDS_EPIC_AT_SUFFIXES: Record<string, string[]> = {
+  '_defcorr': ['defender'],
+  '_def': ['defender'],
+  '_corr': ['corruptor'],
+  '_brute': ['brute', 'tanker'],
+  '_tank': ['tanker'],
+  '_scrap': ['scrapper'],
+  '_stalk': ['stalker', 'scrapper'],
+  '_blast': ['blaster'],
+  '_sent': ['sentinel', 'blaster'],
+  '_cont': ['controller'],
+  '_dom': ['dominator', 'controller'],
+  '_mm': ['mastermind', 'defender'],
+};
+
+/**
  * Resolve a Mids epic powerset path to an app epic pool ID.
  * @param midsPath - e.g., "Epic.Energy_Mastery_Brute"
  * @param archetypeId - the mapped archetype ID
@@ -302,8 +336,31 @@ export function resolveEpicPoolId(
   const directPool = getEpicPool(midsEpicName);
   if (directPool) return directPool.id;
 
-  // Fallback: search ALL epic pools for a match
+  // Fallback: strip Mids AT abbreviation suffix and try {at}_{baseName} pattern
+  // This must run BEFORE the broad startsWith search to avoid e.g. "ice_mastery_defcorr"
+  // matching "ice_mastery" (blaster pool) instead of "defender_ice_mastery".
   const allEpicPools = getAllEpicPools();
+  for (const [suffix, ats] of Object.entries(MIDS_EPIC_AT_SUFFIXES)) {
+    if (midsEpicName.endsWith(suffix)) {
+      const baseName = midsEpicName.slice(0, -suffix.length);
+      for (const at of ats) {
+        const candidateId = `${at}_${baseName}`;
+        for (const pool of Object.values(allEpicPools)) {
+          if (pool.id.toLowerCase() === candidateId) {
+            return pool.id;
+          }
+        }
+      }
+      // Also try baseName alone
+      for (const pool of Object.values(allEpicPools)) {
+        if (pool.id.toLowerCase() === baseName) {
+          return pool.id;
+        }
+      }
+    }
+  }
+
+  // Fallback: search ALL epic pools for a match
   for (const pool of Object.values(allEpicPools)) {
     if (pool.id.toLowerCase() === midsEpicName) {
       return pool.id;
@@ -422,6 +479,11 @@ export function mapEnhancementUid(
 ): EnhancementMapResult {
   // The ioLevel in .mbd is 0-based (49 = level 50)
   const level = Math.min(Math.max(ioLevel + 1, 1), 53);
+
+  // Check for special enhancements (Hamidon, Titan, Hydra, D-Sync)
+  if (grade === 'SingleO' || uid.startsWith('Hamidon_') || uid.startsWith('Titan_') || uid.startsWith('Hydra_') || uid.startsWith('DSync_') || uid.startsWith('Dsync_')) {
+    return mapSpecialEnhancementUid(uid);
+  }
 
   // Check for origin enhancements (SO/DO/TO)
   if (grade === 'SO' || grade === 'DO' || grade === 'TO') {
@@ -550,4 +612,282 @@ function parseIOSetUid(uid: string): ParsedIOSetUid | null {
   const setId = setName.toLowerCase();
 
   return { setId, pieceNum, attuned };
+}
+
+// ============================================
+// SPECIAL ENHANCEMENT MAPPING (HamiO/Titan/Hydra/D-Sync)
+// ============================================
+
+type SpecialCategory = 'hamidon' | 'titan' | 'hydra' | 'd-sync';
+
+interface SpecialRegistryDef {
+  name: string;
+  aspects: { stat: string; value: number }[];
+}
+
+/**
+ * Maps Mids stat-based UID keywords to normalized stat categories.
+ * Multiple HamiO aspects can map to the same keyword (e.g., Defense Debuff + ToHit Debuff → "debuff").
+ */
+const STAT_TO_UID_KEYWORD: Record<string, string> = {
+  'accuracy': 'accuracy',
+  'damage': 'damage',
+  'recharge': 'recharge',
+  'endurancereduction': 'endurance_discount',
+  'range': 'range',
+  'defense': 'defense_buff',
+  'resistance': 'resist',
+  'healing': 'heal',
+  'tohit': 'tohit_buff',
+  'defense debuff': 'debuff',
+  'tohit debuff': 'debuff',
+  'hold': 'mez',
+  'stun': 'mez',
+  'immobilize': 'mez',
+  'sleep': 'mez',
+  'confuse': 'mez',
+  'fear': 'mez',
+  'slow': 'slow',
+  'fly': 'travel',
+  'jump': 'travel',
+  'run speed': 'travel',
+  'knockback': 'knockback',
+  'taunt': 'taunt',
+  'endurancemodification': 'endmod',
+  'absorb': 'absorb',
+};
+
+/** Multi-word UID keywords to check first (longest match) */
+const MULTI_WORD_UID_KEYWORDS = [
+  'endurance_discount', 'defense_buff', 'tohit_buff',
+];
+
+/** Single-word UID keywords */
+const SINGLE_UID_KEYWORDS = [
+  'accuracy', 'damage', 'recharge', 'range', 'debuff', 'mez',
+  'resist', 'heal', 'slow', 'travel', 'knockback', 'taunt', 'endmod', 'absorb',
+];
+
+/** Extract stat keywords from a Mids UID suffix (after stripping prefix) */
+function extractUidKeywords(suffix: string): Set<string> {
+  const keywords = new Set<string>();
+  let remaining = suffix.toLowerCase();
+
+  for (const kw of MULTI_WORD_UID_KEYWORDS) {
+    if (remaining.includes(kw)) {
+      keywords.add(kw);
+      remaining = remaining.replace(kw, '');
+    }
+  }
+  for (const kw of SINGLE_UID_KEYWORDS) {
+    if (remaining.includes(kw)) {
+      keywords.add(kw);
+    }
+  }
+  return keywords;
+}
+
+/** Build expected keyword set from a registry entry's aspects */
+function buildExpectedKeywords(aspects: { stat: string }[]): Set<string> {
+  const keywords = new Set<string>();
+  for (const aspect of aspects) {
+    const kw = STAT_TO_UID_KEYWORD[aspect.stat.toLowerCase()];
+    if (kw) keywords.add(kw);
+  }
+  return keywords;
+}
+
+function setsEqual(a: Set<string>, b: Set<string>): boolean {
+  if (a.size !== b.size) return false;
+  for (const item of a) if (!b.has(item)) return false;
+  return true;
+}
+
+/**
+ * Find the best matching registry entry for a UID suffix using keyword-based matching.
+ */
+function matchByKeywords(
+  uidSuffix: string,
+  registry: Record<string, SpecialRegistryDef>,
+): string | null {
+  const inputKw = extractUidKeywords(uidSuffix);
+  if (inputKw.size === 0) return null;
+
+  // Try exact keyword set match
+  for (const [id, def] of Object.entries(registry)) {
+    const expectedKw = buildExpectedKeywords(def.aspects);
+    if (setsEqual(inputKw, expectedKw)) return id;
+  }
+
+  // Fallback: best partial match (highest overlap ratio)
+  let bestId = '';
+  let bestScore = 0;
+  for (const [id, def] of Object.entries(registry)) {
+    const expectedKw = buildExpectedKeywords(def.aspects);
+    let matches = 0;
+    for (const kw of inputKw) {
+      if (expectedKw.has(kw)) matches++;
+    }
+    const score = matches / Math.max(inputKw.size, expectedKw.size);
+    if (score > bestScore) {
+      bestScore = score;
+      bestId = id;
+    }
+  }
+
+  return bestId && bestScore >= 0.5 ? bestId : null;
+}
+
+const SPECIAL_REGISTRIES: Record<SpecialCategory, Record<string, SpecialRegistryDef>> = {
+  'hamidon': HAMIDON_ENHANCEMENTS,
+  'titan': TITAN_ENHANCEMENTS,
+  'hydra': HYDRA_ENHANCEMENTS,
+  'd-sync': DSYNC_ENHANCEMENTS,
+};
+
+/**
+ * Direct mapping from Mids UID suffix (lowercased) to registry entry ID.
+ * Mids UIDs use stat-based naming like "Damage_Range", "Buff_Endurance_Discount".
+ * This table maps those suffixes to the named entries in each enhancement registry.
+ *
+ * Key Mids UID stat keywords:
+ *   Buff = Defense + ToHit aspects
+ *   DeBuff = Defense Debuff + ToHit Debuff
+ *   Mez = all mez types (Hold/Stun/Immob/Sleep/Confuse/Fear)
+ *   Travel = Fly + Jump + Run Speed
+ *   Res_Damage = Resistance
+ *   Endurance_Discount = EnduranceReduction
+ *   Endurance_Modification = EnduranceModification
+ *   Threat = Taunt
+ *   Heal = Healing (may also include Absorb in some entries)
+ */
+const SPECIAL_SUFFIX_MAPS: Record<SpecialCategory, Record<string, string>> = {
+  'hamidon': {
+    'damage_accuracy': 'nucleolus',
+    'damage_range': 'centriole',
+    'debuff_endurance_discount': 'enzyme',
+    'debuff_accuracy': 'lysosome',
+    'buff_recharge': 'membrane',
+    'damage_mez': 'peroxisome',
+    'res_damage_endurance_discount': 'ribosome',
+    'heal_endurance_discount': 'golgi',
+    'accuracy_mez': 'endoplasm',
+    'buff_endurance_discount': 'cytoskeleton',
+    'travel_endurance_discount': 'microfilament',
+    'endurance_modification_recharge': 'vesicle',
+    'slow_recharge_endurance_discount': 'stereocilia',
+    'endurance_modification_accuracy': 'microtubule',
+    'damage_endurance_discount': 'karyoplasm',
+    'accuracy_range': 'microvillus',
+    'damage_recharge': 'chromatin',
+    'threat_accuracy_recharge': 'ectosome',
+    'heal_recharge': 'amyloplast',
+    'heal_accuracy': 'chloroplast',
+  },
+  'titan': {
+    'damage_mez': 'amethyst',
+    'accuracy_mez': 'calcite',
+    'buff_recharge': 'citrine',
+    'damage_accuracy': 'diamond',
+    'debuff_accuracy': 'gypsum',
+    'heal_endurance_discount': 'kyanite',
+    'res_damage_endurance_discount': 'peridont',
+    'damage_range': 'quartz',
+    'travel_endurance_discount': 'selenite',
+    'buff_endurance_discount': 'tanzanite',
+    'debuff_endurance_discount': 'zeolite',
+  },
+  'hydra': {
+    'debuff_endurance_discount': 'antiproton',
+    'debuff_accuracy': 'delta',
+    'res_damage_endurance_discount': 'electron',
+    'damage_mez': 'gluon',
+    'accuracy_mez': 'graviton',
+    'damage_accuracy': 'neutrino',
+    'damage_range': 'neutron',
+    'heal_endurance_discount': 'positron',
+    'buff_endurance_discount': 'proton',
+    'buff_recharge': 'quark',
+    'travel_endurance_discount': 'theta',
+  },
+  'd-sync': {
+    'travel_endurance_discount': 'acceleration',
+    'accuracy_mez': 'binding',
+    'endurance_modification_recharge': 'conduit',
+    'damage_mez': 'containment',
+    'slow_recharge_endurance_discount': 'deceleration',
+    'endurance_modification_accuracy': 'drain',
+    'damage_endurance_discount': 'efficiency',
+    'buff_endurance_discount': 'elusivity',
+    'damage_accuracy': 'empowerment',
+    'damage_range': 'extension',
+    'res_damage_endurance_discount': 'fortification',
+    'accuracy_range': 'guidance',
+    'debuff_endurance_discount': 'marginalization',
+    'debuff_accuracy': 'obfuscation',
+    'damage_recharge': 'optimization',
+    'threat_accuracy_recharge': 'provocation',
+    'heal_endurance_discount': 'reconstitution',
+    'heal_recharge': 'reconstruction',
+    'buff_recharge': 'shifting',
+    'heal_accuracy': 'siphon',
+  },
+};
+
+const SPECIAL_PREFIXES: [string, SpecialCategory][] = [
+  ['Hamidon_', 'hamidon'],
+  ['Titan_', 'titan'],
+  ['Hydra_', 'hydra'],
+  ['DSync_', 'd-sync'],
+  ['Dsync_', 'd-sync'],  // Mids sometimes uses lowercase 's'
+];
+
+/**
+ * Map a Mids special enhancement UID to an app Enhancement object.
+ * Uses keyword-based aspect matching against the known registries.
+ */
+function mapSpecialEnhancementUid(uid: string): EnhancementMapResult {
+  // Determine category from prefix
+  let category: SpecialCategory | null = null;
+  let suffix = uid;
+
+  for (const [prefix, cat] of SPECIAL_PREFIXES) {
+    if (uid.startsWith(prefix)) {
+      category = cat;
+      suffix = uid.slice(prefix.length);
+      break;
+    }
+  }
+
+  if (!category) {
+    return {
+      enhancement: null,
+      warning: { type: 'enhancement', midsName: uid, message: `Unrecognized special enhancement prefix` },
+    };
+  }
+
+  const registry = SPECIAL_REGISTRIES[category];
+
+  // Try direct suffix lookup first (most reliable)
+  const suffixMap = SPECIAL_SUFFIX_MAPS[category];
+  const directId = suffixMap?.[suffix.toLowerCase()];
+  if (directId && registry[directId]) {
+    const def = registry[directId];
+    const enh = createSpecialEnhancement(directId, def, category);
+    return { enhancement: enh, warning: null };
+  }
+
+  // Fallback: keyword-based matching for unknown suffixes
+  const matchedId = matchByKeywords(suffix, registry);
+
+  if (matchedId) {
+    const def = registry[matchedId];
+    const enh = createSpecialEnhancement(matchedId, def, category);
+    return { enhancement: enh, warning: null };
+  }
+
+  return {
+    enhancement: null,
+    warning: { type: 'enhancement', midsName: uid, message: `Could not match special enhancement: ${uid}` },
+  };
 }

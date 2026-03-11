@@ -8,12 +8,14 @@
 import type {
   Build,
   SelectedPower,
+  SelectedIncarnatePower,
+  IncarnateSlotId,
   Power,
   Enhancement,
   PoolSelection,
   SetTracking,
 } from '@/types';
-import { createEmptyIncarnateBuildState } from '@/types';
+import { createEmptyIncarnateBuildState, INCARNATE_SLOT_ORDER } from '@/types';
 import {
   getArchetype,
   getAllPowersets,
@@ -22,6 +24,9 @@ import {
   getEpicPool,
   getInherentPowers,
   createArchetypeInherentPower,
+  getIncarnatePower,
+  getIncarnateTree,
+  GRANTED_POWER_GROUPS,
 } from '@/data';
 import type { InherentPowerDef } from '@/data';
 
@@ -158,11 +163,25 @@ export function importMidsBuild(jsonString: string): MidsImportResult {
   const epicLookup = buildEpicLookup(archetypeId, epicPoolId ? [epicPoolId] : undefined);
 
   // 8. Process PowerEntries
+
+  // Build reverse lookup: sub-power display name → parent power name
+  // Only for non-slottable groups (e.g., Adaptation toggles, Swap Ammo)
+  const grantedSubPowerParent = new Map<string, string>();
+  for (const [parentName, group] of Object.entries(GRANTED_POWER_GROUPS)) {
+    if (group.slottable) continue; // Slottable sub-powers (Kheldian forms) are imported normally
+    for (const subName of group.grantedPowers) {
+      grantedSubPowerParent.set(subName, parentName);
+    }
+  }
+  // Track which sub-power is active (StatInclude: true) per parent
+  const activeSubPowers = new Map<string, string>();
+
   const primaryPowers: SelectedPower[] = [];
   const secondaryPowers: SelectedPower[] = [];
   const poolPowersMap: Record<string, SelectedPower[]> = {};
   const epicPowers: SelectedPower[] = [];
   const inherentSlotData: SelectedPower[] = []; // Slot data from Inherent.* entries
+  const incarnateResults: Partial<Record<IncarnateSlotId, SelectedIncarnatePower>> = {};
 
   for (const poolId of poolIds) {
     poolPowersMap[poolId] = [];
@@ -170,6 +189,34 @@ export function importMidsBuild(jsonString: string): MidsImportResult {
 
   for (const entry of mbd.PowerEntries) {
     if (!entry.PowerName) continue;
+
+    // Handle incarnate powers separately (Incarnate.Alpha.Musculature_Radial_Paragon)
+    if (entry.PowerName.startsWith('Incarnate.')) {
+      const incResult = processIncarnateEntry(entry, warnings, summary);
+      if (incResult) {
+        incarnateResults[incResult.slotId] = incResult;
+      }
+      continue;
+    }
+
+    // Skip non-slottable granted sub-powers (e.g., Defensive/Efficient/Offensive Adaptation)
+    // These are auto-displayed under their parent power; importing them as separate entries
+    // would cause them to appear as standalone picked powers.
+    {
+      const segments = entry.PowerName.split('.');
+      const internalName = segments[segments.length - 1];
+      // Convert Mids internal name to display name: "Defensive_Adaptation" → "Defensive Adaptation"
+      const displayName = internalName.replace(/_/g, ' ');
+      const parentName = grantedSubPowerParent.get(displayName);
+      if (parentName) {
+        // Capture which sub-power is active (StatInclude: true)
+        if (entry.StatInclude) {
+          activeSubPowers.set(parentName, displayName);
+        }
+        summary.powersImported++;
+        continue;
+      }
+    }
 
     const result = processEntry(
       entry,
@@ -212,7 +259,19 @@ export function importMidsBuild(jsonString: string): MidsImportResult {
     }
   }
 
-  // 8b. Auto-detect primary/secondary powerset if initial resolution failed
+  // 8b. Apply activeSubPower to parent powers from granted sub-power tracking
+  for (const [parentName, activeSubName] of activeSubPowers) {
+    const allPowerLists = [primaryPowers, secondaryPowers];
+    for (const powers of allPowerLists) {
+      const parent = powers.find(p => p.name === parentName);
+      if (parent) {
+        parent.activeSubPower = activeSubName;
+        break;
+      }
+    }
+  }
+
+  // 8c. Auto-detect primary/secondary powerset if initial resolution failed
   //     but powers were found via brute-force fallback
   if (!primaryId && primaryPowers.length > 0) {
     const detectedId = primaryPowers[0].powerSet;
@@ -305,7 +364,10 @@ export function importMidsBuild(jsonString: string): MidsImportResult {
       origin,
     },
     sets: {},
-    incarnates: createEmptyIncarnateBuildState(),
+    incarnates: {
+      ...createEmptyIncarnateBuildState(),
+      ...incarnateResults,
+    },
     craftingChecklist: {},
     shoppingListAcquired: {},
     slotOrder: [],
@@ -529,6 +591,51 @@ function processEntry(
   warnings.push({ type: 'power', midsName: PowerName, message: `Power not found in any ${archetypeId} powerset` });
   summary.powersFailed++;
   return null;
+}
+
+// ============================================
+// INCARNATE POWER PROCESSING
+// ============================================
+
+function processIncarnateEntry(
+  entry: MbdPowerEntry,
+  warnings: MidsImportWarning[],
+  summary: MidsImportSummary,
+): SelectedIncarnatePower | null {
+  const segments = entry.PowerName.split('.');
+  if (segments.length < 3) return null;
+
+  const slotName = segments[1].toLowerCase();
+  // Validate slot ID
+  if (!INCARNATE_SLOT_ORDER.includes(slotName as IncarnateSlotId)) {
+    warnings.push({ type: 'power', midsName: entry.PowerName, message: `Unknown incarnate slot: ${slotName}` });
+    summary.powersFailed++;
+    return null;
+  }
+
+  const slotId = slotName as IncarnateSlotId;
+
+  // Look up by fullName (e.g., "Incarnate.Alpha.Musculature_Radial_Paragon")
+  const power = getIncarnatePower(slotId, entry.PowerName);
+  if (!power) {
+    warnings.push({ type: 'power', midsName: entry.PowerName, message: `Incarnate power not found` });
+    summary.powersFailed++;
+    return null;
+  }
+
+  const tree = getIncarnateTree(slotId, power.treeId);
+  summary.powersImported++;
+
+  return {
+    slotId,
+    powerId: power.id,
+    powerName: power.id,
+    displayName: power.displayName,
+    icon: power.icon,
+    tier: power.tier,
+    treeId: power.treeId,
+    treeName: tree?.name || power.treeId,
+  };
 }
 
 // ============================================

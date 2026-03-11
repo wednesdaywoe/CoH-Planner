@@ -198,18 +198,44 @@ export function createEmptyBuild(): Build {
 // BUILD EXPORT FORMAT (for JSON serialization)
 // ============================================
 
-export interface BuildExport {
-  /** Schema version for future compatibility */
-  version: number;
-  /** Build data */
+export interface BuildExportV1 {
+  /** Schema version */
+  version: 1;
+  /** Full build data (legacy) */
   build: Omit<Build, 'sets'> & {
     /** Sets with pieces as array instead of Set */
     sets: Record<string, { count: number; pieces: number[] }>;
   };
   /** Optional metadata */
-  meta?: {
-    exportedAt: string;
-    authorName?: string;
-    authorServer?: string;
-  };
+  meta?: BuildExportMeta;
 }
+
+export interface BuildExportV2 {
+  /** Schema version */
+  version: 2;
+  /** Slim build data — identity + build-specific fields, power definitions stripped */
+  build: SlimBuildData;
+  /** Optional metadata */
+  meta?: BuildExportMeta;
+}
+
+/** Shape of the slim build data in v2 exports */
+export interface SlimBuildData {
+  name: string;
+  archetype: { id: string | null; name: string };
+  level: number;
+  primary: { id: string | null; name: string; powers: { name: string; level: number; slots: unknown[] }[] };
+  secondary: { id: string | null; name: string; powers: { name: string; level: number; slots: unknown[] }[] };
+  pools: { id: string; name: string; powers: { name: string; level: number; slots: unknown[] }[] }[];
+  epicPool: { id: string; name: string; powers: { name: string; level: number; slots: unknown[] }[] } | null;
+  [key: string]: unknown;
+}
+
+export interface BuildExportMeta {
+  exportedAt: string;
+  authorName?: string;
+  authorServer?: string;
+}
+
+/** Union of all export versions */
+export type BuildExport = BuildExportV1 | BuildExportV2;

@@ -481,6 +481,15 @@ function findPowerByInternalName(powers: Power[], internalName: string): Power |
   );
   if (byDisplay) return byDisplay;
 
+  // fullName last segment match (e.g., "Combat_Flight" matches Pool.Flight.Combat_Flight → "Hover")
+  const lowerName = internalName.toLowerCase();
+  const byFullName = powers.find((p) => {
+    if (!p.fullName) return false;
+    const segment = p.fullName.split('.').pop() ?? '';
+    return segment.toLowerCase() === lowerName;
+  });
+  if (byFullName) return byFullName;
+
   return null;
 }
 

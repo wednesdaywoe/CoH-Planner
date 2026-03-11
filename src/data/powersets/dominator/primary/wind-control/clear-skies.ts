@@ -21,7 +21,7 @@ export const ClearSkies: Power = {
     "accuracy": 1
   },
   "allowedEnhancements": [],
-  "maxSlots": 6,
+  "maxSlots": 0,
   "effects": {
     "tohitBuff": {
       "scale": 2.5,

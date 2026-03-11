@@ -95,6 +95,10 @@ export type {
   ArchetypeSelection,
   Build,
   BuildExport,
+  BuildExportV1,
+  BuildExportV2,
+  BuildExportMeta,
+  SlimBuildData,
 } from './build';
 export { createEmptyBuild } from './build';
 
