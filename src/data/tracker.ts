@@ -3,8 +3,6 @@
  * Used by KnownIssuesModal and WelcomeModal.
  */
 
-import { text } from "stream/consumers";
-
 export interface TrackerItem {
   text: string;
   status: 'known-bug' | 'fixed' | 'planned' | 'in-progress' | 'new';
