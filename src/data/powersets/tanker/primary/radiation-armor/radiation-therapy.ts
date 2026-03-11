@@ -43,5 +43,38 @@ export const RadiationTherapy: Power = {
     "Threat Duration",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Heal",
+      "scale": 1,
+      "table": "Melee_HealSelf"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.7517,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Toxic",
+      "scale": 0.188,
+      "table": "Melee_Damage",
+      "duration": 4.1,
+      "tickRate": 1
+    }
+  ],
+  "effects": {
+    "enduranceGain": {
+      "scale": 7.75,
+      "table": "Melee_Ones"
+    },
+    "regenDebuff": {
+      "scale": 1.5,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "regenDebuff": 30
+    },
+    "buffDuration": 30
+  }
 };

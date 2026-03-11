@@ -74,9 +74,9 @@ export const AtomSmasher: Power = {
       "scale": 1.2,
       "table": "Melee_Debuff_Def"
     },
-    "buffDuration": 10,
     "durations": {
       "defenseDebuff": 10
-    }
+    },
+    "buffDuration": 10
   }
 };

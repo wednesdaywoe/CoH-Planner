@@ -34,7 +34,7 @@ export const InstantHealing: Power = {
   "maxSlots": 6,
   "effects": {
     "regenBuff": {
-      "scale": 2,
+      "scale": 8,
       "table": "Melee_Ones"
     },
     "durations": {

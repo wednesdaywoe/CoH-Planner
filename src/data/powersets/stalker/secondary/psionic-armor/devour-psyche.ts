@@ -36,5 +36,37 @@ export const DevourPsyche: Power = {
     "Endurance Modification",
     "Healing"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "regenBuff": {
+      "scale": 0.85,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "regenBuff": 45,
+      "recoveryBuff": 45,
+      "resistance": 45,
+      "regenDebuff": 45,
+      "recoveryDebuff": 45
+    },
+    "recoveryBuff": {
+      "scale": 0.15000000000000002,
+      "table": "Melee_Ones"
+    },
+    "resistance": {
+      "heal": {
+        "scale": 0.25,
+        "table": "Melee_Ones"
+      }
+    },
+    "regenDebuff": {
+      "scale": 1,
+      "table": "Melee_Ones"
+    },
+    "recoveryDebuff": {
+      "scale": 1,
+      "table": "Melee_Ones"
+    },
+    "buffDuration": 45
+  }
 };

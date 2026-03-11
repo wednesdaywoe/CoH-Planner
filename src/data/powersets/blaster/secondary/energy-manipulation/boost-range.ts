@@ -33,9 +33,9 @@ export const BoostRange: Power = {
       "scale": 0.5,
       "table": "Melee_Stun"
     },
-    "buffDuration": 30,
     "durations": {
       "rangeBuff": 30
-    }
+    },
+    "buffDuration": 30
   }
 };

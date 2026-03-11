@@ -33,6 +33,20 @@ export const PowerBoost: Power = {
       "scale": 0.66,
       "table": "Melee_Stun"
     },
+    "durations": {
+      "damageBuff": 15,
+      "absorb": 15,
+      "enduranceGain": 15,
+      "movement": 15,
+      "confuse": 15,
+      "fear": 15,
+      "hold": 15,
+      "immobilize": 15,
+      "stun": 15,
+      "sleep": 15,
+      "defenseBuff": 15,
+      "tohitBuff": 15
+    },
     "absorb": {
       "scale": 0.66,
       "table": "Melee_Stun"
@@ -90,20 +104,6 @@ export const PowerBoost: Power = {
       "scale": 0.66,
       "table": "Melee_Stun"
     },
-    "buffDuration": 15,
-    "durations": {
-      "absorb": 15,
-      "confuse": 15,
-      "damageBuff": 15,
-      "defenseBuff": 15,
-      "enduranceGain": 15,
-      "fear": 15,
-      "hold": 15,
-      "immobilize": 15,
-      "movement": 15,
-      "sleep": 15,
-      "stun": 15,
-      "tohitBuff": 15
-    }
+    "buffDuration": 15
   }
 };

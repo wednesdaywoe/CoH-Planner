@@ -37,6 +37,11 @@ export const SpotPrey: Power = {
       "scale": 5,
       "table": "Melee_Buff_ToHit"
     },
+    "durations": {
+      "tohitBuff": 10,
+      "damageBuff": 10,
+      "perceptionBuff": 10
+    },
     "damageBuff": {
       "scale": 5,
       "table": "Melee_Buff_Dmg"
@@ -45,11 +50,6 @@ export const SpotPrey: Power = {
       "scale": 1,
       "table": "Melee_Ones"
     },
-    "buffDuration": 10,
-    "durations": {
-      "damageBuff": 10,
-      "perceptionBuff": 10,
-      "tohitBuff": 10
-    }
+    "buffDuration": 10
   }
 };

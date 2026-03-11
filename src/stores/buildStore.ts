@@ -463,6 +463,34 @@ function isUniqueEnhancementSlotted(build: Build, setId: string, pieceNum: numbe
 const updateSetTracking = computeSetTracking;
 
 /**
+ * For VEATs: if build.primary.id or secondary.id is a branch powerset,
+ * normalize it back to the base powerset. The planner expects these to
+ * always be base powersets, with branch powers stored alongside in the
+ * powers array.
+ */
+function normalizeBranchPowersets(build: Build): void {
+  const archetype = build.archetype.id ? getArchetype(build.archetype.id) : null;
+  if (!archetype?.branches) return;
+
+  for (const branchDef of Object.values(archetype.branches)) {
+    if (build.primary.id === branchDef.primarySet) {
+      const basePowerset = getPowerset(archetype.primarySets[0]);
+      if (basePowerset) {
+        build.primary.id = archetype.primarySets[0];
+        build.primary.name = basePowerset.name;
+      }
+    }
+    if (build.secondary.id === branchDef.secondarySet) {
+      const basePowerset = getPowerset(archetype.secondarySets[0]);
+      if (basePowerset) {
+        build.secondary.id = archetype.secondarySets[0];
+        build.secondary.name = basePowerset.name;
+      }
+    }
+  }
+}
+
+/**
  * Apply a power array updater to the correct category in a build.
  * Eliminates the repeated switch-on-PowerCategory pattern.
  */
@@ -1364,6 +1392,9 @@ export const useBuildStore = create<BuildStore>()(
           // from current data — fixes stale data from older exports/shares
           syncBuildDefinitions(build);
 
+          // Normalize VEAT branch powersets to base powersets
+          normalizeBranchPowersets(build);
+
           set({ build });
           return true;
         } catch (e) {
@@ -1382,34 +1413,50 @@ export const useBuildStore = create<BuildStore>()(
       resetBuild: () => set({ build: createEmptyBuild() }),
 
       clearPowers: () =>
-        set((state) => ({
-          build: {
-            ...state.build,
-            // Keep archetype, primary/secondary powerset selections
-            // Clear all selected powers, pools, enhancements, etc.
-            primary: {
-              ...state.build.primary,
-              powers: [],
+        set((state) => {
+          // Normalize branch powersets back to base for VEATs
+          // (e.g., after importing a Crab Spider, branch powersets may be set as primary/secondary)
+          let primary = { ...state.build.primary, powers: [] as SelectedPower[] };
+          let secondary = { ...state.build.secondary, powers: [] as SelectedPower[] };
+          const archetype = state.build.archetype.id ? getArchetype(state.build.archetype.id) : null;
+          if (archetype?.branches) {
+            for (const branchDef of Object.values(archetype.branches)) {
+              if (primary.id === branchDef.primarySet) {
+                const basePowerset = getPowerset(archetype.primarySets[0]);
+                if (basePowerset) {
+                  primary = { id: archetype.primarySets[0], name: basePowerset.name, powers: [] };
+                }
+              }
+              if (secondary.id === branchDef.secondarySet) {
+                const basePowerset = getPowerset(archetype.secondarySets[0]);
+                if (basePowerset) {
+                  secondary = { id: archetype.secondarySets[0], name: basePowerset.name, powers: [] };
+                }
+              }
+            }
+          }
+
+          return {
+            build: {
+              ...state.build,
+              primary,
+              secondary,
+              pools: [],
+              epicPool: null,
+              accolades: [],
+              incarnates: createEmptyIncarnateBuildState(),
+              craftingChecklist: createEmptyCraftingChecklistState(),
+              sets: {},
+              slotOrder: [],
+              // Re-grant inherents with fresh empty slots
+              inherents: getInherentSelectedPowers(
+                state.build.archetype.id,
+                state.build.archetype.name || undefined,
+                state.build.archetype.inherent
+              ),
             },
-            secondary: {
-              ...state.build.secondary,
-              powers: [],
-            },
-            pools: [],
-            epicPool: null,
-            accolades: [],
-            incarnates: createEmptyIncarnateBuildState(),
-            craftingChecklist: createEmptyCraftingChecklistState(),
-            sets: {},
-            slotOrder: [],
-            // Re-grant inherents with fresh empty slots
-            inherents: getInherentSelectedPowers(
-              state.build.archetype.id,
-              state.build.archetype.name || undefined,
-              state.build.archetype.inherent
-            ),
-          },
-        })),
+          };
+        }),
     }),
     {
       name: 'coh-planner-build',
@@ -1493,6 +1540,11 @@ export const useBuildStore = create<BuildStore>()(
           if (!state.build.slotOrder) {
             state.build.slotOrder = [];
           }
+
+          // Migration: Normalize VEAT branch powersets to base powersets
+          // Fixes builds where branch powersets (e.g., crab-spider-soldier) were
+          // stored as the primary/secondary instead of the base powersets
+          normalizeBranchPowersets(state.build);
 
           // Migration: Sync power definitions (effects, icons) and enhancement icons
           // from current data — fixes stale data from older builds

@@ -42,8 +42,13 @@ export const Energize: Power = {
       "scale": 1,
       "table": "Melee_Stun"
     },
+    "durations": {
+      "enduranceDiscount": 60,
+      "regenBuff": 60,
+      "stun": 60
+    },
     "regenBuff": {
-      "scale": 1.125,
+      "scale": 2.25,
       "table": "Melee_Ones"
     },
     "stun": {
@@ -52,11 +57,6 @@ export const Energize: Power = {
       "table": "Melee_Res_Boolean"
     },
     "effectDuration": 60,
-    "buffDuration": 60,
-    "durations": {
-      "enduranceDiscount": 60,
-      "regenBuff": 60,
-      "stun": 60
-    }
+    "buffDuration": 60
   }
 };

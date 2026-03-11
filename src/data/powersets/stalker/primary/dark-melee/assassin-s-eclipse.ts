@@ -35,5 +35,33 @@ export const AssassinsEclipse: Power = {
     "Stalker Archetype Sets",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 1.75,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Negative",
+      "scale": 0.75,
+      "table": "Melee_Damage"
+    }
+  ],
+  "effects": {
+    "stealth": {
+      "stealthPvE": {
+        "scale": 1,
+        "table": "Melee_Ones"
+      },
+      "stealthPvP": {
+        "scale": 1,
+        "table": "Melee_Ones"
+      }
+    },
+    "durations": {
+      "stealth": 8
+    },
+    "buffDuration": 8
+  }
 };

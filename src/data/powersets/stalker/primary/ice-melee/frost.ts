@@ -79,14 +79,14 @@ export const Frost: Power = {
         "table": "Melee_Slow"
       }
     },
+    "durations": {
+      "movement": 8,
+      "rechargeDebuff": 8
+    },
     "rechargeDebuff": {
       "scale": 0.2,
       "table": "Melee_Slow"
     },
-    "buffDuration": 8,
-    "durations": {
-      "movement": 8,
-      "rechargeBuff": 8
-    }
+    "buffDuration": 8
   }
 };

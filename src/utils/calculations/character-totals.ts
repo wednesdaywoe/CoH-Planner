@@ -1646,7 +1646,8 @@ function applyIncarnateBonuses(
   incarnates: IncarnateBuildState | undefined,
   incarnateActive: IncarnateActiveState | undefined,
   global: GlobalBonuses,
-  breakdown: Map<string, DashboardStatBreakdown>
+  breakdown: Map<string, DashboardStatBreakdown>,
+  levelShiftActive = true,
 ): void {
   if (!incarnates) return;
 
@@ -1887,26 +1888,29 @@ function applyIncarnateBonuses(
   // We don't add them to global bonuses, but they could be displayed in tooltips
 
   // Level Shift from incarnate slots (Alpha and Destiny)
-  if (incarnates.alpha && active.alpha) {
-    const alphaEffects = getAlphaEffects(incarnates.alpha.powerId);
-    if (alphaEffects?.levelShift) {
-      global.levelShift += alphaEffects.levelShift;
-      addToBreakdown(breakdown, 'levelShift', {
-        name: incarnates.alpha.displayName,
-        value: alphaEffects.levelShift,
-        type: 'incarnate',
-      });
+  // Controlled by the independent levelShiftActive flag, NOT by per-slot stat toggles
+  if (levelShiftActive) {
+    if (incarnates.alpha) {
+      const alphaEffects = getAlphaEffects(incarnates.alpha.powerId);
+      if (alphaEffects?.levelShift) {
+        global.levelShift += alphaEffects.levelShift;
+        addToBreakdown(breakdown, 'levelShift', {
+          name: incarnates.alpha.displayName,
+          value: alphaEffects.levelShift,
+          type: 'incarnate',
+        });
+      }
     }
-  }
-  if (incarnates.destiny && active.destiny) {
-    const destinyEffects = getDestinyEffects(incarnates.destiny.powerId);
-    if (destinyEffects?.levelShift) {
-      global.levelShift += destinyEffects.levelShift;
-      addToBreakdown(breakdown, 'levelShift', {
-        name: incarnates.destiny.displayName,
-        value: destinyEffects.levelShift,
-        type: 'incarnate',
-      });
+    if (incarnates.destiny) {
+      const destinyEffects = getDestinyEffects(incarnates.destiny.powerId);
+      if (destinyEffects?.levelShift) {
+        global.levelShift += destinyEffects.levelShift;
+        addToBreakdown(breakdown, 'levelShift', {
+          name: incarnates.destiny.displayName,
+          value: destinyEffects.levelShift,
+          type: 'incarnate',
+        });
+      }
     }
   }
 }
@@ -2047,6 +2051,8 @@ export interface CalculationOptions {
   vigilanceTeamSize?: number;
   /** Fury level for Brutes (0-100) */
   furyLevel?: number;
+  /** Whether incarnate level shifts are applied (default: true, independent from per-slot toggles) */
+  incarnateLevelShiftActive?: boolean;
 }
 
 /**
@@ -2126,7 +2132,7 @@ export function calculateCharacterTotals(
 
   // Step 9: Apply incarnate bonuses (Destiny, Hybrid - direct stats)
   // Note: Alpha bonuses were already applied in Step 7 as enhancement bonuses
-  applyIncarnateBonuses(build.incarnates, incarnateActive, globalBonuses, breakdown);
+  applyIncarnateBonuses(build.incarnates, incarnateActive, globalBonuses, breakdown, options?.incarnateLevelShiftActive ?? true);
 
   // Step 9.1: Apply archetype inherent damage bonuses (Vigilance, Fury)
   const archetypeId = build.archetype?.id;

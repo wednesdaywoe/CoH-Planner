@@ -36,5 +36,68 @@ export const AssassinsWhisper: Power = {
     "Stalker Archetype Sets",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 1.25,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 1.25,
+      "table": "Melee_Damage"
+    }
+  ],
+  "effects": {
+    "stealth": {
+      "stealthPvE": {
+        "scale": 1,
+        "table": "Melee_Ones"
+      },
+      "stealthPvP": {
+        "scale": 1,
+        "table": "Melee_Ones"
+      }
+    },
+    "durations": {
+      "stealth": 8,
+      "resistanceDebuff": 15
+    },
+    "resistanceDebuff": {
+      "smashing": {
+        "scale": 1.2,
+        "table": "Melee_Debuff_Res_Dmg"
+      },
+      "lethal": {
+        "scale": 1.2,
+        "table": "Melee_Debuff_Res_Dmg"
+      },
+      "fire": {
+        "scale": 1.2,
+        "table": "Melee_Debuff_Res_Dmg"
+      },
+      "cold": {
+        "scale": 1.2,
+        "table": "Melee_Debuff_Res_Dmg"
+      },
+      "energy": {
+        "scale": 1.2,
+        "table": "Melee_Debuff_Res_Dmg"
+      },
+      "negative": {
+        "scale": 1.2,
+        "table": "Melee_Debuff_Res_Dmg"
+      },
+      "psionic": {
+        "scale": 1.2,
+        "table": "Melee_Debuff_Res_Dmg"
+      },
+      "toxic": {
+        "scale": 1.2,
+        "table": "Melee_Debuff_Res_Dmg"
+      }
+    },
+    "buffDuration": 15
+  }
 };

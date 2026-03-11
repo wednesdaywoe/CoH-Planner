@@ -48,9 +48,9 @@ export const PsychicScream: Power = {
       "scale": 0.5,
       "table": "Melee_Slow"
     },
-    "buffDuration": 10,
     "durations": {
-      "rechargeBuff": 10
-    }
+      "rechargeDebuff": 10
+    },
+    "buffDuration": 10
   }
 };

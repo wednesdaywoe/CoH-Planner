@@ -20,6 +20,8 @@ export function IncarnatePanel() {
   const closeIncarnateModal = useUIStore((s) => s.closeIncarnateModal);
   const incarnateActive = useUIStore((s) => s.incarnateActive);
   const toggleIncarnateActive = useUIStore((s) => s.toggleIncarnateActive);
+  const incarnateLevelShiftActive = useUIStore((s) => s.incarnateLevelShiftActive);
+  const toggleIncarnateLevelShift = useUIStore((s) => s.toggleIncarnateLevelShift);
   const setInfoPanelContent = useUIStore((s) => s.setInfoPanelContent);
   const incarnateCraftingModalOpen = useUIStore((s) => s.incarnateCraftingModalOpen);
   const openIncarnateCraftingModal = useUIStore((s) => s.openIncarnateCraftingModal);
@@ -86,6 +88,19 @@ export function IncarnatePanel() {
           {/* Action buttons */}
           {isLevel50 && (
             <div className="flex items-center gap-1">
+              {filledSlotCount > 0 && (
+                <button
+                  onClick={toggleIncarnateLevelShift}
+                  className={`text-xs border transition-colors px-2 py-1 rounded ${
+                    incarnateLevelShiftActive
+                      ? 'text-amber-400 hover:text-amber-300 border-amber-800 hover:border-amber-600 bg-amber-900/30 hover:bg-amber-900/50'
+                      : 'text-gray-500 hover:text-gray-400 border-gray-700 hover:border-gray-600 bg-gray-800/30 hover:bg-gray-800/50'
+                  }`}
+                  title={`Level Shift: ${incarnateLevelShiftActive ? 'ON' : 'OFF'} (click to toggle)\nControls whether incarnate level shifts (+1) are applied to calculations`}
+                >
+                  +Lvl {incarnateLevelShiftActive ? 'ON' : 'OFF'}
+                </button>
+              )}
               <button
                 onClick={openIncarnateCraftingModal}
                 className="text-xs text-blue-400 hover:text-blue-300 border border-blue-800 hover:border-blue-600 bg-blue-900/30 hover:bg-blue-900/50 transition-colors px-2 py-1 rounded"

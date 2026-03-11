@@ -44,11 +44,6 @@ export const Slash: Power = {
       "tickRate": 0.4
     },
     {
-      "type": "Lethal",
-      "scale": 2.7446,
-      "table": "Melee_InherentDamage"
-    },
-    {
       "type": "Toxic",
       "scale": 0.1,
       "table": "Melee_Damage",

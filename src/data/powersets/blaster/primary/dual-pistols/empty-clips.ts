@@ -74,6 +74,9 @@ export const EmptyClips: Power = {
       "scale": 1,
       "table": "Ranged_Debuff_Def"
     },
+    "durations": {
+      "defenseDebuff": 8
+    },
     "knockback": {
       "scale": 0.4,
       "table": "Ranged_Knockback"
@@ -82,9 +85,6 @@ export const EmptyClips: Power = {
       "scale": 0,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 8,
-    "durations": {
-      "defenseDebuff": 8
-    }
+    "buffDuration": 8
   }
 };

@@ -39,5 +39,29 @@ export const DirectStrike: Power = {
     "Sniper Attacks",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Energy",
+    "scale": 4.5,
+    "table": "Ranged_Damage"
+  },
+  "effects": {
+    "enduranceDrain": {
+      "scale": 0.2,
+      "table": "Ranged_EndDrain"
+    },
+    "stun": {
+      "mag": 4,
+      "scale": 2,
+      "table": "Ranged_Stun"
+    },
+    "rangeBuff": {
+      "scale": 0.5,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "rangeBuff": 10
+    },
+    "buffDuration": 10
+  }
 };

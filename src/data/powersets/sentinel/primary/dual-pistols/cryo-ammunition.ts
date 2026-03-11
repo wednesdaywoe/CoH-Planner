@@ -23,12 +23,16 @@ export const CryoAmmunition: Power = {
     "castTime": 0.63
   },
   "allowedEnhancements": [],
-  "maxSlots": 6,
+  "maxSlots": 0,
   "effects": {
     "rangeBuff": {
       "scale": 0.333,
       "table": "Ranged_Ones"
-    }
+    },
+    "durations": {
+      "rangeBuff": 0.75
+    },
+    "buffDuration": 0.75
   },
   "requires": "Sentinel_Ranged.Dual_Pistols.Swap_Ammo",
   "mechanicType": "childToggle"

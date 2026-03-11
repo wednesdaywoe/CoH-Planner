@@ -67,14 +67,14 @@ export const Overcharge: Power = {
       "scale": 1.5,
       "table": "Ranged_Debuff_Def"
     },
+    "durations": {
+      "defenseDebuff": 15
+    },
     "stun": {
       "mag": 3,
       "scale": 4,
       "table": "Ranged_Stun"
     },
-    "buffDuration": 15,
-    "durations": {
-      "defenseDebuff": 15
-    }
+    "buffDuration": 15
   }
 };

@@ -37,5 +37,38 @@ export const Tombstone: Power = {
     "Sniper Attacks",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Smashing",
+    "scale": 4.5,
+    "table": "Ranged_Damage"
+  },
+  "effects": {
+    "slow": {
+      "fly": {
+        "scale": 1.6,
+        "table": "Ranged_Ones"
+      }
+    },
+    "durations": {
+      "slow": 16,
+      "movement": 16,
+      "rangeBuff": 10
+    },
+    "movement": {
+      "jumpSpeed": {
+        "scale": 1,
+        "table": "Ranged_Slow"
+      },
+      "jumpHeight": {
+        "scale": 1,
+        "table": "Ranged_Slow"
+      }
+    },
+    "rangeBuff": {
+      "scale": 0.5,
+      "table": "Ranged_Ones"
+    },
+    "buffDuration": 16
+  }
 };

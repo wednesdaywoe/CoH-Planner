@@ -49,14 +49,14 @@ export const SoulDrain: Power = {
       "scale": 1,
       "table": "Melee_Buff_ToHit"
     },
+    "durations": {
+      "tohitBuff": 30,
+      "damageBuff": 9.87
+    },
     "damageBuff": {
       "scale": 0.063,
       "table": "Melee_Ones"
     },
-    "buffDuration": 30,
-    "durations": {
-      "damageBuff": 9.87,
-      "tohitBuff": 30
-    }
+    "buffDuration": 30
   }
 };

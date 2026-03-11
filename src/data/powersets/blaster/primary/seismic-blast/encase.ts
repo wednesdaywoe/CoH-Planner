@@ -49,6 +49,11 @@ export const Encase: Power = {
       "scale": 0.5,
       "table": "Ranged_Debuff_Def"
     },
+    "durations": {
+      "defenseDebuff": 3,
+      "slow": 3,
+      "movement": 3
+    },
     "slow": {
       "fly": {
         "scale": 1.6,
@@ -65,11 +70,6 @@ export const Encase: Power = {
         "table": "Ranged_Slow"
       }
     },
-    "buffDuration": 3,
-    "durations": {
-      "defenseDebuff": 3,
-      "movement": 3,
-      "slow": 3
-    }
+    "buffDuration": 3
   }
 };

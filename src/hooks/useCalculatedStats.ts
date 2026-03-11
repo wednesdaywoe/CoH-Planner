@@ -237,6 +237,7 @@ export function useCharacterCalculation(): CharacterCalculationResult {
   const exemplarMode = useUIStore((state) => state.exemplarMode);
   const exemplarLevel = useUIStore((state) => state.exemplarLevel);
   const incarnateActive = useUIStore((state) => state.incarnateActive);
+  const incarnateLevelShiftActive = useUIStore((state) => state.incarnateLevelShiftActive);
   const includeProcsInStats = useUIStore((state) => state.includeProcsInStats);
   const targetsHitValues = useUIStore((state) => state.targetsHitValues);
   const targetLevelOffset = useUIStore((state) => state.targetLevelOffset);
@@ -251,8 +252,9 @@ export function useCharacterCalculation(): CharacterCalculationResult {
       targetLevelOffset,
       vigilanceTeamSize,
       furyLevel,
+      incarnateLevelShiftActive,
     });
-  }, [build, exemplarMode, exemplarLevel, incarnateActive, includeProcsInStats, targetsHitValues, targetLevelOffset, vigilanceTeamSize, furyLevel]);
+  }, [build, exemplarMode, exemplarLevel, incarnateActive, incarnateLevelShiftActive, includeProcsInStats, targetsHitValues, targetLevelOffset, vigilanceTeamSize, furyLevel]);
 }
 
 /**
@@ -263,6 +265,7 @@ export function useCalculatedStats(): CalculatedStats {
   const exemplarMode = useUIStore((state) => state.exemplarMode);
   const exemplarLevel = useUIStore((state) => state.exemplarLevel);
   const incarnateActive = useUIStore((state) => state.incarnateActive);
+  const incarnateLevelShiftActive = useUIStore((state) => state.incarnateLevelShiftActive);
   const includeProcsInStats = useUIStore((state) => state.includeProcsInStats);
   const targetsHitValues = useUIStore((state) => state.targetsHitValues);
   const vigilanceTeamSize = useUIStore((state) => state.vigilanceTeamSize);
@@ -275,9 +278,10 @@ export function useCalculatedStats(): CalculatedStats {
       exemplarLevel: exemplarMode ? exemplarLevel : undefined,
       vigilanceTeamSize,
       furyLevel,
+      incarnateLevelShiftActive,
     });
     return convertToLegacyStats(result.stats, result);
-  }, [build, exemplarMode, exemplarLevel, incarnateActive, includeProcsInStats, targetsHitValues, vigilanceTeamSize, furyLevel]);
+  }, [build, exemplarMode, exemplarLevel, incarnateActive, incarnateLevelShiftActive, includeProcsInStats, targetsHitValues, vigilanceTeamSize, furyLevel]);
 }
 
 /**

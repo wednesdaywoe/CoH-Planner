@@ -85,10 +85,15 @@ export const BarbSwipe: Power = {
         "table": "Melee_Slow"
       }
     },
+    "durations": {
+      "movement": 4,
+      "rechargeDebuff": 2
+    },
     "rechargeDebuff": {
       "scale": 0.1,
       "table": "Melee_Slow"
-    }
+    },
+    "buffDuration": 4
   },
   "requires": "!Stalker_Defense.Shield_Defense"
 };

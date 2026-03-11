@@ -54,6 +54,9 @@ export const ElectronHaze: Power = {
       "scale": 2,
       "table": "Ranged_Debuff_Def"
     },
+    "durations": {
+      "defenseDebuff": 8
+    },
     "knockback": {
       "scale": 1,
       "table": "Ranged_Knockback"
@@ -62,9 +65,6 @@ export const ElectronHaze: Power = {
       "scale": 0,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 8,
-    "durations": {
-      "defenseDebuff": 8
-    }
+    "buffDuration": 8
   }
 };

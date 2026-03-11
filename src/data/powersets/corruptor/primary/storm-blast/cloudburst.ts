@@ -57,6 +57,11 @@ export const Cloudburst: Power = {
       "scale": 0.1,
       "table": "Melee_Slow"
     },
+    "durations": {
+      "rechargeDebuff": 8,
+      "movement": 8,
+      "tohitDebuff": 8
+    },
     "movement": {
       "jumpHeight": {
         "scale": 0.2,
@@ -79,11 +84,6 @@ export const Cloudburst: Power = {
       "scale": 1,
       "table": "Ranged_Debuff_ToHit"
     },
-    "buffDuration": 8,
-    "durations": {
-      "movement": 8,
-      "rechargeBuff": 8,
-      "tohitDebuff": 8
-    }
+    "buffDuration": 8
   }
 };

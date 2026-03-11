@@ -40,5 +40,20 @@ export const CrushingBlow: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Smashing",
+    "scale": 1.64,
+    "table": "Melee_Damage"
+  },
+  "effects": {
+    "defenseDebuff": {
+      "scale": 1,
+      "table": "Melee_Debuff_Def"
+    },
+    "durations": {
+      "defenseDebuff": 10
+    },
+    "buffDuration": 10
+  },
   "requires": "!Brute_Defense.Shield_Defense"
 };

@@ -74,9 +74,9 @@ export const MidnightGrasp: Power = {
       "scale": 0.75,
       "table": "Melee_DeBuff_ToHit"
     },
-    "buffDuration": 20,
     "durations": {
       "tohitDebuff": 20
-    }
+    },
+    "buffDuration": 20
   }
 };

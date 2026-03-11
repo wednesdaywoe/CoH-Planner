@@ -82,14 +82,14 @@ export const FrozenFists: Power = {
         "table": "Melee_Slow"
       }
     },
+    "durations": {
+      "movement": 5,
+      "rechargeDebuff": 5
+    },
     "rechargeDebuff": {
       "scale": 0.1,
       "table": "Melee_Slow"
     },
-    "buffDuration": 5,
-    "durations": {
-      "movement": 5,
-      "rechargeBuff": 5
-    }
+    "buffDuration": 5
   }
 };

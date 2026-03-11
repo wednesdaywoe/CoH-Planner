@@ -66,53 +66,40 @@ export const SonicThrust: Power = {
         "table": "Melee_Debuff_Res_Dmg"
       }
     },
-    "enduranceDrain": {
-      "scale": 0.8,
-      "table": "Melee_Debuff_Res_Dmg"
+    "durations": {
+      "elusivity": 15,
+      "debuffResistance": 15
     },
-    "tohitDebuff": {
-      "scale": 0.8,
-      "table": "Melee_Debuff_Res_Dmg"
-    },
-    "slow": {
-      "runSpeed": {
+    "debuffResistance": {
+      "endurance": {
         "scale": 0.8,
         "table": "Melee_Debuff_Res_Dmg"
       },
-      "flySpeed": {
+      "tohit": {
         "scale": 0.8,
         "table": "Melee_Debuff_Res_Dmg"
       },
-      "jumpSpeed": {
+      "movement": {
+        "scale": 0.8,
+        "table": "Melee_Debuff_Res_Dmg"
+      },
+      "regeneration": {
+        "scale": 0.8,
+        "table": "Melee_Debuff_Res_Dmg"
+      },
+      "recovery": {
+        "scale": 0.8,
+        "table": "Melee_Debuff_Res_Dmg"
+      },
+      "recharge": {
         "scale": 0.8,
         "table": "Melee_Debuff_Res_Dmg"
       }
-    },
-    "regenDebuff": {
-      "scale": 0.8,
-      "table": "Melee_Debuff_Res_Dmg"
-    },
-    "recoveryDebuff": {
-      "scale": 0.8,
-      "table": "Melee_Debuff_Res_Dmg"
-    },
-    "rechargeDebuff": {
-      "scale": 0.8,
-      "table": "Melee_Debuff_Res_Dmg"
     },
     "knockback": {
       "scale": 0.67,
       "table": "Melee_Ones"
     },
-    "buffDuration": 15,
-    "durations": {
-      "debuffResistance": 15,
-      "elusivity": 15,
-      "enduranceDrain": 15,
-      "recoveryDebuff": 15,
-      "regenDebuff": 15,
-      "slow": 15,
-      "tohitDebuff": 15
-    }
+    "buffDuration": 15
   }
 };

@@ -48,6 +48,10 @@ export const Gravestone: Power = {
         "table": "Ranged_Ones"
       }
     },
+    "durations": {
+      "slow": 16,
+      "movement": 16
+    },
     "movement": {
       "jumpSpeed": {
         "scale": 1,
@@ -58,10 +62,6 @@ export const Gravestone: Power = {
         "table": "Ranged_Slow"
       }
     },
-    "buffDuration": 16,
-    "durations": {
-      "movement": 16,
-      "slow": 16
-    }
+    "buffDuration": 16
   }
 };

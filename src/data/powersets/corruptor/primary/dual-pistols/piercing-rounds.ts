@@ -100,9 +100,9 @@ export const PiercingRounds: Power = {
         "table": "Ranged_Res_Dmg"
       }
     },
-    "buffDuration": 15,
     "durations": {
       "resistanceDebuff": 15
-    }
+    },
+    "buffDuration": 15
   }
 };

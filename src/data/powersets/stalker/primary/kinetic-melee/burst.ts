@@ -70,9 +70,9 @@ export const Burst: Power = {
       "scale": 1.5,
       "table": "Melee_Debuff_Dam"
     },
-    "buffDuration": 7,
     "durations": {
       "damageDebuff": 7
-    }
+    },
+    "buffDuration": 7
   }
 };

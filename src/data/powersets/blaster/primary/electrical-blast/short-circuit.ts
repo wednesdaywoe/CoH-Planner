@@ -68,12 +68,12 @@ export const ShortCircuit: Power = {
       "table": "Ranged_EndDrain"
     },
     "recoveryDebuff": {
-      "scale": 1,
+      "scale": 1.4,
       "table": "Ranged_EndDrain"
     },
-    "buffDuration": 10,
     "durations": {
       "recoveryDebuff": 10
-    }
+    },
+    "buffDuration": 10
   }
 };

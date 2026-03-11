@@ -71,14 +71,14 @@ export const WildGrowth: Power = {
         "table": "Ranged_Res_Dmg"
       }
     },
+    "durations": {
+      "resistance": 90,
+      "regenBuff": 90
+    },
     "regenBuff": {
       "scale": 1,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 90,
-    "durations": {
-      "regenBuff": 90,
-      "resistance": 90
-    }
+    "buffDuration": 90
   }
 };

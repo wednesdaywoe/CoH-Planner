@@ -77,7 +77,7 @@ export const Integration: Power = {
       "table": "Melee_Res_Boolean"
     },
     "regenBuff": {
-      "scale": 1,
+      "scale": 1.5,
       "table": "Melee_Ones"
     },
     "buffDuration": 0.75

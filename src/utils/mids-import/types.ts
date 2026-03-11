@@ -79,4 +79,6 @@ export interface MidsImportResult {
   build: Build | null;
   warnings: MidsImportWarning[];
   summary: MidsImportSummary;
+  /** For VEATs: the detected branch (e.g., 'crab-spider') so the UI can auto-set selectedBranch */
+  detectedBranch?: string | null;
 }

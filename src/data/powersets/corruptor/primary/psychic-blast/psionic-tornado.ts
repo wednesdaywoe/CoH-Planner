@@ -61,9 +61,9 @@ export const PsionicTornado: Power = {
       "scale": 0.3,
       "table": "Ranged_Slow"
     },
-    "buffDuration": 10,
     "durations": {
-      "rechargeBuff": 10
-    }
+      "rechargeDebuff": 10
+    },
+    "buffDuration": 10
   }
 };

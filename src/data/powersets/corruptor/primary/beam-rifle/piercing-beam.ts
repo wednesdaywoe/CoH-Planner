@@ -91,9 +91,9 @@ export const PiercingBeam: Power = {
         "table": "Ranged_Res_Dmg"
       }
     },
-    "buffDuration": 10,
     "durations": {
       "resistanceDebuff": 10
-    }
+    },
+    "buffDuration": 10
   }
 };

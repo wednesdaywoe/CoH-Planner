@@ -5,7 +5,8 @@
 import { useState, useRef } from 'react';
 import { Modal, ModalBody, ModalFooter, ModalHeader } from './Modal';
 import { Button } from '../ui/Button';
-import { useBuildStore } from '@/stores/buildStore';
+import { useBuildStore, useUIStore } from '@/stores';
+import type { ArchetypeBranchId } from '@/types';
 import { importMidsBuild } from '@/utils/mids-import';
 import type { MidsImportResult } from '@/utils/mids-import';
 import { importGameExport } from '@/utils/game-import';
@@ -258,6 +259,10 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
   const handleMidsApply = () => {
     if (!midsResult?.build) return;
     applyMidsBuild(midsResult.build);
+    // Auto-set branch for VEAT imports (e.g., Crab Spider, Bane Spider)
+    if (midsResult.detectedBranch) {
+      useUIStore.getState().setSelectedBranch(midsResult.detectedBranch as ArchetypeBranchId);
+    }
     handleClose();
   };
 

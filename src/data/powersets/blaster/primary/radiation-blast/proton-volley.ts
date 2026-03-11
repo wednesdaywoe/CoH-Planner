@@ -40,5 +40,31 @@ export const ProtonVolley: Power = {
     "Sniper Attacks",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Energy",
+    "scale": 1.125,
+    "table": "Ranged_Damage",
+    "duration": 1.6,
+    "tickRate": 0.5
+  },
+  "effects": {
+    "defenseDebuff": {
+      "scale": 3,
+      "table": "Ranged_Debuff_Def"
+    },
+    "durations": {
+      "defenseDebuff": 12,
+      "rangeBuff": 10
+    },
+    "rangeBuff": {
+      "scale": 0.5,
+      "table": "Ranged_Ones"
+    },
+    "damageBuff": {
+      "scale": 0,
+      "table": "Ranged_Ones"
+    },
+    "buffDuration": 12
+  }
 };

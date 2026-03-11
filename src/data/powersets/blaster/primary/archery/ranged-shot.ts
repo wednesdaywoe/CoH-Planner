@@ -37,5 +37,24 @@ export const RangedShot: Power = {
     "Sniper Attacks",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Lethal",
+    "scale": 4.5,
+    "table": "Ranged_Damage"
+  },
+  "effects": {
+    "rangeBuff": {
+      "scale": 0.5,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "rangeBuff": 10
+    },
+    "damageBuff": {
+      "scale": 0,
+      "table": "Ranged_Ones"
+    },
+    "buffDuration": 10
+  }
 };

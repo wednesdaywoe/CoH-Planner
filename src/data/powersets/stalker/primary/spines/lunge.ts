@@ -85,10 +85,15 @@ export const Lunge: Power = {
         "table": "Melee_Slow"
       }
     },
+    "durations": {
+      "movement": 6,
+      "rechargeDebuff": 4
+    },
     "rechargeDebuff": {
       "scale": 0.1,
       "table": "Melee_Slow"
-    }
+    },
+    "buffDuration": 6
   },
   "requires": "!Stalker_Defense.Shield_Defense"
 };

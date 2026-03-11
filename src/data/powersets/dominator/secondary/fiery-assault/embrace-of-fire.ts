@@ -33,9 +33,9 @@ export const EmbraceofFire: Power = {
       "scale": 8,
       "table": "Melee_Buff_Dmg"
     },
-    "buffDuration": 10,
     "durations": {
       "damageBuff": 10
-    }
+    },
+    "buffDuration": 10
   }
 };

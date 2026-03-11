@@ -37,18 +37,11 @@ export const Pummel: Power = {
     "castTime": 1.17
   },
   "targetType": "Foe (Alive)",
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 1,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1,
-      "table": "Melee_InherentDamage"
-    }
-  ],
+  "damage": {
+    "type": "Smashing",
+    "scale": 1,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "stun": {
       "mag": 3,

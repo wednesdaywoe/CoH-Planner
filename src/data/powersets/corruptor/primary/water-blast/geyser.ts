@@ -128,13 +128,13 @@ export const Geyser: Power = {
         "table": "Ranged_Slow"
       }
     },
+    "durations": {
+      "movement": 10
+    },
     "knockup": {
       "scale": 1.5,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 10,
-    "durations": {
-      "movement": 10
-    }
+    "buffDuration": 10
   }
 };

@@ -53,9 +53,9 @@ export const Whirlpool: Power = {
       "scale": 0.033,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 9.53,
     "durations": {
       "damageBuff": 9.53
-    }
+    },
+    "buffDuration": 9.53
   }
 };

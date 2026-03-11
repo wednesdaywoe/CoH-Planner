@@ -96,14 +96,14 @@ export const Dehydrate: Power = {
         "table": "Ranged_Slow"
       }
     },
+    "durations": {
+      "movement": 8,
+      "defenseDebuff": 8
+    },
     "defenseDebuff": {
       "scale": 1,
       "table": "Ranged_Debuff_Def"
     },
-    "buffDuration": 8,
-    "durations": {
-      "defenseDebuff": 8,
-      "movement": 8
-    }
+    "buffDuration": 8
   }
 };

@@ -37,18 +37,11 @@ export const FollowUp: Power = {
     "castTime": 0.83
   },
   "targetType": "Foe (Alive)",
-  "damage": [
-    {
-      "type": "Lethal",
-      "scale": 0.912,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.608,
-      "table": "Melee_InherentDamage"
-    }
-  ],
+  "damage": {
+    "type": "Lethal",
+    "scale": 0.912,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "tohitBuff": {
       "scale": 1,

@@ -70,9 +70,9 @@ export const ThunderousBlast: Power = {
       "scale": 1,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 20,
     "durations": {
       "recoveryDebuff": 20
-    }
+    },
+    "buffDuration": 20
   }
 };

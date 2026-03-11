@@ -198,6 +198,128 @@ const SET_CATEGORY_TO_ENHANCEMENT = {
 };
 
 /**
+ * Resolve a redirect/power reference name to a file path.
+ * The first segment is the category directory (e.g., "Redirects", "Pets", "Villain_Pets").
+ * Remaining segments form the powerset/power path within that category.
+ *
+ * Examples:
+ *   "Redirects.Regeneration.Second_Wind_Awake" → ".../powers/redirects/regeneration/second_wind_awake.json"
+ *   "Pets.Defender_Archery_Snipe.Ranged_Shot_Normal" → ".../powers/pets/defender_archery_snipe/ranged_shot_normal.json"
+ *   "Villain_Pets.Broad_Sword_Assassins_Strike.Assassins_Slash_Stealth" → ".../powers/villain_pets/..."
+ */
+function resolveRedirectPath(powerName) {
+  const parts = powerName.split('.');
+  // All segments form the path: Category/Powerset/PowerName
+  const filePath = parts.map(p => p.toLowerCase()).join('/') + '.json';
+  return path.join(RAW_DATA_PATH, 'powers', filePath);
+}
+
+/**
+ * Recursively collect templates from effects, following Execute_Power references
+ * to redirect files and filtering out dead-state conditionals.
+ *
+ * @param {Array} effects - Array of effect objects
+ * @param {Set} visited - Set of already-visited power names (prevents infinite loops)
+ * @param {number} depth - Current recursion depth
+ * @returns {Array} - Flat array of all template objects
+ */
+function collectTemplatesDeep(effects, visited = new Set(), depth = 0) {
+  const templates = [];
+  const MAX_DEPTH = 3;
+
+  for (const effect of effects) {
+    if (effect.is_pvp === 'PVP_ONLY') continue;
+    if (effect.chance === 0 || effect.chance === 0.0) continue;
+    if (effect.tags && effect.tags.includes('Containment')) continue;
+    // Skip conditional effects that represent archetype inherent mechanics
+    // (these are handled separately by the planner's toggle system)
+    if (effect.requires_expression) {
+      const req = effect.requires_expression;
+      // Dead-state conditionals (rez effects when HP == 0)
+      if (req.includes('kHitPoints == 0')) continue;
+      // Stalker hidden-state bonus damage (kMeter > 0 = in hide mode)
+      if (req.includes('kMeter > 0') || req.includes('kMeter >=')) continue;
+      // Scourge/proc-based bonus damage (random chance expressions)
+      if (req.includes('rand()')) continue;
+    }
+
+    // Collect templates from this level
+    if (effect.templates && effect.templates.length > 0) {
+      for (const template of effect.templates) {
+        const attrib = template.attribs && template.attribs[0] ? template.attribs[0].toLowerCase() : null;
+
+        // Follow Execute_Power references to redirect files (up to MAX_DEPTH)
+        if (attrib === 'execute_power' && depth < MAX_DEPTH) {
+          const powerNames = (template.params && template.params.power_names) || [];
+          for (const pName of powerNames) {
+            // Only follow references to Redirects.* powers
+            if (!pName.toLowerCase().startsWith('redirects.')) continue;
+            if (visited.has(pName)) continue;
+            visited.add(pName);
+
+            const redirectPath = resolveRedirectPath(pName);
+            if (fs.existsSync(redirectPath)) {
+              const redirectJson = JSON.parse(fs.readFileSync(redirectPath, 'utf-8'));
+              if (redirectJson.effects && redirectJson.effects.length > 0) {
+                templates.push(...collectTemplatesDeep(
+                  redirectJson.effects, visited, depth + 1
+                ));
+              }
+            }
+          }
+        } else {
+          templates.push(template);
+        }
+      }
+    }
+
+    // Recurse into child_effects
+    if (effect.child_effects && effect.child_effects.length > 0) {
+      templates.push(...collectTemplatesDeep(effect.child_effects, visited, depth));
+    }
+  }
+
+  return templates;
+}
+
+/**
+ * Collect templates from a power's redirect chain.
+ * Follows the "Always" condition redirect and any Execute_Power references within,
+ * filtering out dead-state conditionals.
+ *
+ * @param {Object} powerJson - The raw power JSON object
+ * @returns {Array} - Flat array of template objects from the redirect chain
+ */
+function collectRedirectTemplates(powerJson) {
+  if (!powerJson.redirect || powerJson.redirect.length === 0) return [];
+
+  // Find the best redirect to follow:
+  // 1. Prefer "Always" condition (default fallback behavior)
+  // 2. If no "Always", use the first non-dead-state redirect (normal/base behavior)
+  let defaultRedirect = powerJson.redirect.find(
+    r => r.condition_expression === 'Always'
+  );
+  if (!defaultRedirect) {
+    defaultRedirect = powerJson.redirect.find(
+      r => !r.condition_expression.includes('kHitPoints == 0')
+    );
+  }
+  if (!defaultRedirect) return [];
+
+  const redirectPath = resolveRedirectPath(defaultRedirect.name);
+  if (!fs.existsSync(redirectPath)) {
+    console.warn(`  [redirect] File not found: ${redirectPath}`);
+    return [];
+  }
+
+  const redirectJson = JSON.parse(fs.readFileSync(redirectPath, 'utf-8'));
+  if (!redirectJson.effects || redirectJson.effects.length === 0) return [];
+
+  // Collect templates, following Execute_Power references and filtering dead-state conditionals
+  return collectTemplatesDeep(redirectJson.effects, new Set([defaultRedirect.name]));
+}
+
+/**
  * Convert a power name to kebab-case filename
  */
 function toKebabCase(name) {
@@ -377,6 +499,18 @@ function collectAllTemplates(effects) {
     // Skip effects tagged as Containment (Controller inherent conditional damage).
     // Containment damage is handled separately via the containment toggle in the UI.
     if (effect.tags && effect.tags.includes('Containment')) continue;
+
+    // Skip conditional inherent bonuses (crit damage from hide/placate, Scourge procs).
+    // These are handled by the UI's inherent toggle system.
+    if (effect.requires_expression) {
+      const req = effect.requires_expression;
+      // Dead-state effects (self-rez conditions)
+      if (req.includes('kHitPoints == 0')) continue;
+      // Stalker/Widow hidden-state bonus damage (kMeter > 0 = in hide mode)
+      if (req.includes('kMeter > 0') || req.includes('kMeter >=')) continue;
+      // Scourge / random proc conditional damage
+      if (req.includes('rand()')) continue;
+    }
 
     // Collect templates from this level
     if (effect.templates && effect.templates.length > 0) {
@@ -691,13 +825,22 @@ function extractEffects(templates) {
       if (RESOURCE_TYPES[attrib]) {
         const resType = RESOURCE_TYPES[attrib];
 
+        // Helper to accumulate scales for resource effects that may appear multiple times
+        // (e.g., maxHPBuff with 2x templates of scale 1.0 should sum to scale 2.0)
+        const addOrAccumulate = (key) => {
+          if (effects[key] && effects[key].table === table) {
+            effects[key].scale += Math.abs(scale);
+          } else {
+            effects[key] = makeEffect();
+          }
+          recordDuration(key);
+        };
+
         if (resType === 'hitPoints') {
           if (aspect === 'maximum') {
-            effects.maxHPBuff = makeEffect();
-            recordDuration('maxHPBuff');
+            addOrAccumulate('maxHPBuff');
           } else {
-            effects.healing = makeEffect();
-            recordDuration('healing');
+            addOrAccumulate('healing');
           }
         } else if (resType === 'endurance') {
           if (aspect === 'resistance') {
@@ -705,14 +848,11 @@ function extractEffects(templates) {
             effects.debuffResistance.endurance = makeEffect();
             recordDuration('debuffResistance');
           } else if (aspect === 'maximum') {
-            effects.maxEndBuff = makeEffect();
-            recordDuration('maxEndBuff');
+            addOrAccumulate('maxEndBuff');
           } else if (isDebuff || scale < 0) {
-            effects.enduranceDrain = makeEffect();
-            recordDuration('enduranceDrain');
+            addOrAccumulate('enduranceDrain');
           } else {
-            effects.enduranceGain = makeEffect();
-            recordDuration('enduranceGain');
+            addOrAccumulate('enduranceGain');
           }
         } else if (resType === 'recovery') {
           if (aspect === 'resistance') {
@@ -720,11 +860,9 @@ function extractEffects(templates) {
             effects.debuffResistance.recovery = makeEffect();
             recordDuration('debuffResistance');
           } else if (isDebuff || scale < 0) {
-            effects.recoveryDebuff = makeEffect();
-            recordDuration('recoveryDebuff');
+            addOrAccumulate('recoveryDebuff');
           } else {
-            effects.recoveryBuff = makeEffect();
-            recordDuration('recoveryBuff');
+            addOrAccumulate('recoveryBuff');
           }
         } else if (resType === 'regeneration') {
           if (aspect === 'resistance') {
@@ -732,15 +870,12 @@ function extractEffects(templates) {
             effects.debuffResistance.regeneration = makeEffect();
             recordDuration('debuffResistance');
           } else if (isDebuff || scale < 0) {
-            effects.regenDebuff = makeEffect();
-            recordDuration('regenDebuff');
+            addOrAccumulate('regenDebuff');
           } else {
-            effects.regenBuff = makeEffect();
-            recordDuration('regenBuff');
+            addOrAccumulate('regenBuff');
           }
         } else if (resType === 'absorb') {
-          effects.absorb = makeEffect();
-          recordDuration('absorb');
+          addOrAccumulate('absorb');
         }
         continue;
       }
@@ -923,9 +1058,18 @@ function convertPower(powerJson, availableLevel) {
 
   // Extract effects from templates
   // Recursively collect from child_effects too (many powers nest effects there)
+  let allTemplates = [];
   if (powerJson.effects?.length) {
-    const allTemplates = collectAllTemplates(powerJson.effects);
+    allTemplates = collectAllTemplates(powerJson.effects);
+  } else if (powerJson.redirect?.length > 0) {
+    // Power has empty effects but redirects to other powers — follow the redirect chain
+    allTemplates = collectRedirectTemplates(powerJson);
+    if (allTemplates.length > 0) {
+      console.log(`  [redirect] Resolved ${allTemplates.length} templates from redirect chain for ${powerJson.display_name}`);
+    }
+  }
 
+  if (allTemplates.length > 0) {
     const damage = extractDamage(allTemplates);
     if (damage) power.damage = damage;
 
@@ -1096,6 +1240,9 @@ module.exports = {
   SPECIAL_ATTRIBS,
   RAW_DATA_PATH,
   collectAllTemplates,
+  resolveRedirectPath,
+  collectRedirectTemplates,
+  collectTemplatesDeep,
 };
 
 // Main execution (only when run directly)

@@ -51,13 +51,13 @@ export const NeutronBomb: Power = {
       "scale": 2,
       "table": "Ranged_Debuff_Def"
     },
+    "durations": {
+      "defenseDebuff": 16
+    },
     "damageBuff": {
       "scale": 0,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 16,
-    "durations": {
-      "defenseDebuff": 16
-    }
+    "buffDuration": 16
   }
 };

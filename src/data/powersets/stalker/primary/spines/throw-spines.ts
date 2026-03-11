@@ -89,14 +89,14 @@ export const ThrowSpines: Power = {
         "table": "Melee_Slow"
       }
     },
+    "durations": {
+      "movement": 15,
+      "rechargeDebuff": 10
+    },
     "rechargeDebuff": {
       "scale": 0.2,
       "table": "Melee_Slow"
     },
-    "buffDuration": 15,
-    "durations": {
-      "movement": 15,
-      "rechargeBuff": 10
-    }
+    "buffDuration": 15
   }
 };

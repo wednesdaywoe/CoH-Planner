@@ -68,9 +68,9 @@ export const Pistols: Power = {
       "scale": 1,
       "table": "Ranged_Debuff_Def"
     },
-    "buffDuration": 8,
     "durations": {
       "defenseDebuff": 8
-    }
+    },
+    "buffDuration": 8
   }
 };

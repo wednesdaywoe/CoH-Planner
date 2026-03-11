@@ -52,9 +52,9 @@ export const SingleShot: Power = {
       "scale": 0.75,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 10,
     "durations": {
       "regenDebuff": 10
-    }
+    },
+    "buffDuration": 10
   }
 };

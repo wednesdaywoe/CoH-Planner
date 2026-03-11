@@ -55,6 +55,11 @@ export const Unkindness: Power = {
       "scale": 1,
       "table": "Ranged_Debuff_Def"
     },
+    "durations": {
+      "defenseDebuff": 10,
+      "movement": 10,
+      "slow": 10
+    },
     "movement": {
       "runSpeed": {
         "scale": 0.2,
@@ -79,11 +84,6 @@ export const Unkindness: Power = {
         "table": "Ranged_Ones"
       }
     },
-    "buffDuration": 10,
-    "durations": {
-      "defenseDebuff": 10,
-      "movement": 10,
-      "slow": 10
-    }
+    "buffDuration": 10
   }
 };

@@ -68,9 +68,9 @@ export const QuickStrike: Power = {
       "scale": 0.75,
       "table": "Melee_Debuff_Dam"
     },
-    "buffDuration": 4,
     "durations": {
       "damageDebuff": 4
-    }
+    },
+    "buffDuration": 4
   }
 };

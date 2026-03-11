@@ -80,6 +80,10 @@ export const Ripper: Power = {
       "scale": 0.1,
       "table": "Melee_Slow"
     },
+    "durations": {
+      "rechargeDebuff": 10,
+      "movement": 15
+    },
     "movement": {
       "runSpeed": {
         "scale": 0.2,
@@ -98,10 +102,6 @@ export const Ripper: Power = {
         "table": "Melee_Slow"
       }
     },
-    "buffDuration": 15,
-    "durations": {
-      "movement": 15,
-      "rechargeBuff": 10
-    }
+    "buffDuration": 15
   }
 };

@@ -129,6 +129,9 @@ interface UIState {
   /** Incarnate active state - which incarnate slots are active for stat calculations */
   incarnateActive: IncarnateActiveState;
 
+  /** Whether incarnate level shifts are applied (independent from per-slot stat toggles) */
+  incarnateLevelShiftActive: boolean;
+
   /** Domination active state - for Dominators to see enhanced mez values */
   dominationActive: boolean;
 
@@ -295,6 +298,7 @@ interface UIActions {
   toggleIncarnateActive: (slotId: ToggleableIncarnateSlot) => void;
   setIncarnateActive: (slotId: ToggleableIncarnateSlot, active: boolean) => void;
   resetIncarnateActive: () => void;
+  toggleIncarnateLevelShift: () => void;
 
   // Domination Active State (Dominator inherent)
   toggleDomination: () => void;
@@ -460,6 +464,7 @@ export const useUIStore = create<UIStore>()(
       compactMode: false,
       uiScale: 1.0,
       incarnateActive: createDefaultIncarnateActiveState(),
+      incarnateLevelShiftActive: true,
       dominationActive: false,
       scourgeActive: false,
       furyLevel: 75, // Default to 75 fury (reasonable combat average)
@@ -920,6 +925,11 @@ export const useUIStore = create<UIStore>()(
       resetIncarnateActive: () =>
         set({ incarnateActive: createDefaultIncarnateActiveState() }),
 
+      toggleIncarnateLevelShift: () =>
+        set((state) => ({
+          incarnateLevelShiftActive: !state.incarnateLevelShiftActive,
+        })),
+
       // Domination Active State
       toggleDomination: () =>
         set((state) => ({
@@ -1068,6 +1078,7 @@ export const useUIStore = create<UIStore>()(
         compactMode: state.compactMode,
         uiScale: state.uiScale,
         incarnateActive: state.incarnateActive,
+        incarnateLevelShiftActive: state.incarnateLevelShiftActive,
         dominationActive: state.dominationActive,
         scourgeActive: state.scourgeActive,
         furyLevel: state.furyLevel,

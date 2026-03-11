@@ -33,6 +33,20 @@ export const PowerUp: Power = {
       "scale": 0.5,
       "table": "Melee_Stun"
     },
+    "durations": {
+      "damageBuff": 10,
+      "absorb": 10,
+      "enduranceGain": 10,
+      "movement": 10,
+      "confuse": 10,
+      "fear": 10,
+      "hold": 10,
+      "immobilize": 10,
+      "stun": 10,
+      "sleep": 10,
+      "defenseBuff": 10,
+      "tohitBuff": 10
+    },
     "absorb": {
       "scale": 0.5,
       "table": "Melee_Stun"
@@ -90,20 +104,6 @@ export const PowerUp: Power = {
       "scale": 0.5,
       "table": "Melee_Stun"
     },
-    "buffDuration": 10,
-    "durations": {
-      "absorb": 10,
-      "confuse": 10,
-      "damageBuff": 10,
-      "defenseBuff": 10,
-      "enduranceGain": 10,
-      "fear": 10,
-      "hold": 10,
-      "immobilize": 10,
-      "movement": 10,
-      "sleep": 10,
-      "stun": 10,
-      "tohitBuff": 10
-    }
+    "buffDuration": 10
   }
 };

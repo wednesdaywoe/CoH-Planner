@@ -23,10 +23,11 @@ export const KNOWN_BUGS: TrackerItem[] = [
 // ============================================
 
 export const RECENT_CHANGES: TrackerItem[] = [
+  { text: 'Added a global "Level Shift" toggle that controls whether incarnate level shifts are applied to calculations, independently from per-slot toggles.', status: 'new' },
+  { text: 'Selecting a VEAT branch after importing from Mids caused base powerset abilities to become inaccessible.', status: 'fixed' },
   { text: 'First pass at refactoring the import feature: Significant improvements to build importing reliability including preserving enhancement boosts.', status: 'fixed' },
   { text: 'Sidekicks export format 2.0: Tons of unnecessary data removed, reducing file length significantly. 1.0 Exports format is supported', status: 'fixed' },
   { text: 'Added a zoom feature. This just replicates what your browser can already do, but some may not be aware of that functionality so this makes it more discoverable', status: 'fixed' },
-  { text: 'Fix to stop Containment from being applied all willy-nilly', status: 'new' },
   { text: 'Added print-friendly build export 🖨️ Go to Save/Load and scroll down', status: 'new' },
   { text: 'More fussing with layout because no one will stop me', status: 'new' },
   { text: 'Widespread issue with -recharge resistance being converted to +recharge', status: 'fixed' },
@@ -40,3 +41,4 @@ export const PLANNED_FEATURES: TrackerItem[] = [
   { text: 'Add data sets for Rebirth and Thunderspy', status: 'planned' },
   { text: 'Continue improving mobile experience', status: 'in-progress' },
 ];
+dd

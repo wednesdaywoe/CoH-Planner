@@ -79,6 +79,10 @@ export const SkySplitter: Power = {
         "table": "Melee_Ones"
       }
     },
+    "durations": {
+      "slow": 10,
+      "resistance": 15
+    },
     "resistance": {
       "smashing": {
         "scale": 1.33,
@@ -113,10 +117,6 @@ export const SkySplitter: Power = {
         "table": "Melee_Res_Dmg"
       }
     },
-    "buffDuration": 15,
-    "durations": {
-      "resistance": 15,
-      "slow": 10
-    }
+    "buffDuration": 15
   }
 };

@@ -30,7 +30,7 @@ export const AilmentResistance: Power = {
   "maxSlots": 6,
   "effects": {
     "maxHPBuff": {
-      "scale": 1.2,
+      "scale": 2.4,
       "table": "Melee_HealSelf"
     },
     "durations": {

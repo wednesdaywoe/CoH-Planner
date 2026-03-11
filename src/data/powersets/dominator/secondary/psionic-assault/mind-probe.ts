@@ -44,9 +44,9 @@ export const MindProbe: Power = {
       "scale": 0.4,
       "table": "Melee_Slow"
     },
-    "buffDuration": 6,
     "durations": {
-      "rechargeBuff": 6
-    }
+      "rechargeDebuff": 6
+    },
+    "buffDuration": 6
   }
 };

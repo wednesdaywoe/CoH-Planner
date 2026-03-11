@@ -57,9 +57,9 @@ export const Blackstar: Power = {
       "scale": 5,
       "table": "Ranged_Debuff_ToHit"
     },
-    "buffDuration": 20,
     "durations": {
       "tohitDebuff": 20
-    }
+    },
+    "buffDuration": 20
   }
 };

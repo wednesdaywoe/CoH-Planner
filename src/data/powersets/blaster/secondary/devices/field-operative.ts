@@ -102,7 +102,7 @@ export const FieldOperative: Power = {
       }
     },
     "regenBuff": {
-      "scale": 1.125,
+      "scale": 2.25,
       "table": "Melee_Ones"
     },
     "recoveryBuff": {

@@ -59,7 +59,11 @@ export const MercurialBlow: Power = {
     "defenseDebuff": {
       "scale": 1,
       "table": "Melee_Debuff_Def"
-    }
+    },
+    "durations": {
+      "defenseDebuff": 8
+    },
+    "buffDuration": 8
   },
   "requires": "!Stalker_Defense.Shield_Defense"
 };

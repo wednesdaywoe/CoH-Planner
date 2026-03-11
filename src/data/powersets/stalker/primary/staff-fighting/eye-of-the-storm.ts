@@ -98,13 +98,13 @@ export const EyeoftheStorm: Power = {
         "table": "Melee_Res_Dmg"
       }
     },
+    "durations": {
+      "resistanceDebuff": 6
+    },
     "knockback": {
       "scale": 0.67,
       "table": "Melee_Ones"
     },
-    "buffDuration": 6,
-    "durations": {
-      "resistanceDebuff": 6
-    }
+    "buffDuration": 6
   }
 };

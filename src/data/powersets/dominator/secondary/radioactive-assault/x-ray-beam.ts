@@ -48,9 +48,9 @@ export const XRayBeam: Power = {
       "scale": 2,
       "table": "Ranged_Debuff_Def"
     },
-    "buffDuration": 6,
     "durations": {
       "defenseDebuff": 6
-    }
+    },
+    "buffDuration": 6
   }
 };

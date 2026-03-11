@@ -39,7 +39,7 @@ export const ObscureSustenance: Power = {
   },
   "effects": {
     "regenBuff": {
-      "scale": 1,
+      "scale": 4.4399999999999995,
       "table": "Melee_Ones"
     },
     "durations": {
@@ -48,7 +48,7 @@ export const ObscureSustenance: Power = {
       "debuffResistance": 60
     },
     "recoveryBuff": {
-      "scale": 0.1,
+      "scale": 1.08,
       "table": "Melee_Ones"
     },
     "debuffResistance": {

@@ -65,9 +65,9 @@ export const MaimingSlash: Power = {
         "table": "Melee_Slow"
       }
     },
-    "buffDuration": 10,
     "durations": {
       "movement": 10
-    }
+    },
+    "buffDuration": 10
   }
 };

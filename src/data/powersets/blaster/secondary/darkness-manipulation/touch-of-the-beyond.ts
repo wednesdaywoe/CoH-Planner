@@ -40,5 +40,15 @@ export const TouchoftheBeyond: Power = {
     "Healing",
     "To Hit Debuff"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "damageBuff": {
+      "scale": 0.077,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "damageBuff": 8.67
+    },
+    "buffDuration": 8.67
+  }
 };

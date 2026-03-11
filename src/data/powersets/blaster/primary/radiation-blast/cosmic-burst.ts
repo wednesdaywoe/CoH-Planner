@@ -56,13 +56,13 @@ export const CosmicBurst: Power = {
       "scale": 3,
       "table": "Ranged_Debuff_Def"
     },
+    "durations": {
+      "defenseDebuff": 12
+    },
     "damageBuff": {
       "scale": 0,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 12,
-    "durations": {
-      "defenseDebuff": 12
-    }
+    "buffDuration": 12
   }
 };

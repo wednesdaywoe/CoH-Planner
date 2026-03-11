@@ -56,12 +56,12 @@ export const ChainLightning: Power = {
   ],
   "effects": {
     "enduranceDrain": {
-      "scale": 0.035,
+      "scale": 0.10500000000000001,
       "table": "Ranged_EndDrain"
     },
-    "buffDuration": 4.4,
     "durations": {
       "enduranceDrain": 4.4
-    }
+    },
+    "buffDuration": 4.4
   }
 };

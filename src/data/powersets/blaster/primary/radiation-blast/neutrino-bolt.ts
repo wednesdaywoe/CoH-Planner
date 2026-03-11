@@ -49,13 +49,13 @@ export const NeutrinoBolt: Power = {
       "scale": 1,
       "table": "Ranged_Debuff_Def"
     },
+    "durations": {
+      "defenseDebuff": 3
+    },
     "damageBuff": {
       "scale": 0,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 3,
-    "durations": {
-      "defenseDebuff": 3
-    }
+    "buffDuration": 3
   }
 };

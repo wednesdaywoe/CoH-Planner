@@ -57,9 +57,9 @@ export const Gust: Power = {
         "table": "Ranged_Ones"
       }
     },
-    "buffDuration": 4,
     "durations": {
       "slow": 4
-    }
+    },
+    "buffDuration": 4
   }
 };

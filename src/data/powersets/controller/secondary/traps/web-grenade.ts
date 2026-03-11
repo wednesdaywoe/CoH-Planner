@@ -53,6 +53,12 @@ export const WebGrenade: Power = {
         "table": "Ranged_Ones"
       }
     },
+    "durations": {
+      "slow": 15,
+      "rechargeDebuff": 15,
+      "movement": 15,
+      "protection": 15
+    },
     "rechargeDebuff": {
       "scale": 0.5,
       "table": "Ranged_Slow"
@@ -71,12 +77,6 @@ export const WebGrenade: Power = {
       "knockup": 1,
       "knockback": 1
     },
-    "buffDuration": 15,
-    "durations": {
-      "movement": 15,
-      "protection": 15,
-      "rechargeBuff": 15,
-      "slow": 15
-    }
+    "buffDuration": 15
   }
 };

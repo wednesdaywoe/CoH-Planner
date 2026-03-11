@@ -52,9 +52,9 @@ export const Placate: Power = {
         "table": "Melee_Ones"
       }
     },
-    "buffDuration": 10,
     "durations": {
       "stealth": 10
-    }
+    },
+    "buffDuration": 10
   }
 };

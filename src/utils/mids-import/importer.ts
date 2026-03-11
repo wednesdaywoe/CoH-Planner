@@ -144,6 +144,24 @@ export function importMidsBuild(jsonString: string): MidsImportResult {
   let primaryPowerset = primaryId ? getPowerset(primaryId) : null;
   let secondaryPowerset = secondaryId ? getPowerset(secondaryId) : null;
 
+  // 6b. VEAT branch detection: if the resolved primary/secondary is a branch powerset,
+  //     normalize to the base powerset. The planner expects build.primary.id / secondary.id
+  //     to always be the BASE powerset, with branch powers stored in the powers array.
+  let detectedBranch: string | null = null;
+  if (archetype.branches) {
+    for (const [branchId, branchDef] of Object.entries(archetype.branches)) {
+      if (primaryId === branchDef.primarySet || secondaryId === branchDef.secondarySet) {
+        detectedBranch = branchId;
+        // Replace with base powersets — keep the resolved IDs for power lookup
+        primaryId = archetype.primarySets[0] ?? primaryId;
+        secondaryId = archetype.secondarySets[0] ?? secondaryId;
+        primaryPowerset = primaryId ? getPowerset(primaryId) : null;
+        secondaryPowerset = secondaryId ? getPowerset(secondaryId) : null;
+        break;
+      }
+    }
+  }
+
   // 7. Resolve pool and epic powersets from PowerSets array
   const poolIds: string[] = [];
   let epicPoolId: string | null = null;
@@ -389,6 +407,7 @@ export function importMidsBuild(jsonString: string): MidsImportResult {
     build,
     warnings,
     summary,
+    detectedBranch,
   };
 }
 

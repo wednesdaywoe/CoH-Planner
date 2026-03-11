@@ -37,5 +37,17 @@ export const Stalagmite: Power = {
     "Stuns",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Smashing",
+    "scale": 0.75,
+    "table": "Ranged_Damage"
+  },
+  "effects": {
+    "stun": {
+      "mag": 3,
+      "scale": 6,
+      "table": "Ranged_Stun"
+    }
+  }
 };
