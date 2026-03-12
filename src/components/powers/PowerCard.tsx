@@ -8,6 +8,7 @@ import type { PowerCategory } from '@/stores';
 import { getPowerIconPath } from '@/data';
 import { resolvePath } from '@/utils/paths';
 import { PowerSlot } from './PowerSlot';
+import { PermaRing } from './PermaRing';
 import { Tooltip } from '@/components/ui';
 
 /**
@@ -112,14 +113,16 @@ export function PowerCard({
         {showLevel && (
           <span className="text-xs text-gray-500 w-6 text-right flex-shrink-0">{power.level}</span>
         )}
-        <img
-          src={getPowerIconPath(power.icon)}
-          alt=""
-          className="w-6 h-6 rounded flex-shrink-0"
-          onError={(e) => {
-            (e.target as HTMLImageElement).src = resolvePath('/img/Unknown.png');
-          }}
-        />
+        <PermaRing power={power} size={24}>
+          <img
+            src={getPowerIconPath(power.icon)}
+            alt=""
+            className="w-6 h-6 rounded flex-shrink-0"
+            onError={(e) => {
+              (e.target as HTMLImageElement).src = resolvePath('/img/Unknown.png');
+            }}
+          />
+        </PermaRing>
         <h4 className="text-sm font-medium text-white truncate flex-1 min-w-0">{power.name}</h4>
         {onRemove && (
           <button

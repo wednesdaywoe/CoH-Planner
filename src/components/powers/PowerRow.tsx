@@ -5,11 +5,12 @@
  * Supports multiple size variants and layout modes.
  */
 
-import type { Enhancement } from '@/types';
+import type { Enhancement, SelectedPower } from '@/types';
 import { resolvePath } from '@/utils/paths';
 import { Tooltip } from '@/components/ui';
 import { TouchableSlot } from './TouchableSlot';
 import { DraggableSlotGhost } from './DraggableSlotGhost';
+import { PermaRing } from './PermaRing';
 import type { SlotSize } from './TouchableSlot';
 
 type PowerRowSize = 'xs' | 'sm' | 'md' | 'lg';
@@ -70,6 +71,8 @@ interface PowerRowProps {
   onCompareSlotting?: () => void;
   onInfoClick?: () => void;
   slotLevels?: number[];
+  /** Full power object for perma ring display */
+  selectedPower?: SelectedPower;
 }
 
 export function PowerRow({
@@ -102,13 +105,32 @@ export function PowerRow({
   onCompareSlotting,
   onInfoClick,
   slotLevels,
+  selectedPower,
 }: PowerRowProps) {
   const slotSize = SLOT_SIZE_MAP[size];
   const ghostSize = GHOST_SIZE_MAP[size];
   const iconClass = ICON_CLASS_MAP[size];
+  const iconPixelSize = size === 'lg' ? 24 : 16;
 
   const handleSlotClick = (index: number) => {
     onOpenPicker?.(index);
+  };
+
+  const renderIcon = (extraClass?: string) => {
+    const img = (
+      <img
+        src={iconSrc}
+        alt=""
+        className={`${iconClass} rounded-sm${extraClass ? ` ${extraClass}` : ''}`}
+        onError={(e) => {
+          (e.target as HTMLImageElement).src = resolvePath('/img/Unknown.png');
+        }}
+      />
+    );
+    if (selectedPower) {
+      return <PermaRing power={selectedPower} size={iconPixelSize}>{img}</PermaRing>;
+    }
+    return img;
   };
 
   const handleSlotMouseEnter = (index: number, hasEnhancement: boolean) => {
@@ -253,14 +275,7 @@ export function PowerRow({
             {level !== undefined && (
               <span className="text-[10px] font-semibold text-slate-500 leading-tight">L{level}</span>
             )}
-            <img
-              src={iconSrc}
-              alt=""
-              className={`${iconClass} rounded-sm ${level !== undefined ? 'mt-0.5' : ''}`}
-              onError={(e) => {
-                (e.target as HTMLImageElement).src = resolvePath('/img/Unknown.png');
-              }}
-            />
+            {renderIcon(level !== undefined ? 'mt-0.5' : undefined)}
           </div>
 
           {/* Right column: Name (row 1) + Slots (row 2) */}
@@ -288,14 +303,9 @@ export function PowerRow({
         {level !== undefined && (
           <span className="text-[10px] font-semibold text-slate-500 w-5 text-right flex-shrink-0 mr-1">L{level}</span>
         )}
-        <img
-          src={iconSrc}
-          alt=""
-          className={`${iconClass} rounded-sm flex-shrink-0 mr-1`}
-          onError={(e) => {
-            (e.target as HTMLImageElement).src = resolvePath('/img/Unknown.png');
-          }}
-        />
+        <span className="flex-shrink-0 mr-1">
+          {renderIcon()}
+        </span>
         <span
           className="text-xs text-slate-200 truncate flex-1 min-w-0 cursor-default"
           onMouseEnter={onHover}

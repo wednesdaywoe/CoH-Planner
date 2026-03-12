@@ -278,6 +278,7 @@ function InherentGroup({
               iconSrc={getPowerIconPath(power.icon)}
               size="xs"
               muted
+              selectedPower={power}
               showRemove={false}
               isLocked={isLocked}
               slots={power.slots}

@@ -243,6 +243,7 @@ export function ChronologicalPowerSlot({
         iconSrc={iconSrc}
         size="lg"
         stackedLayout
+        selectedPower={power}
         level={level}
         isLocked={isInfoLocked}
         categoryBorder={CATEGORY_COLORS[power.category]}

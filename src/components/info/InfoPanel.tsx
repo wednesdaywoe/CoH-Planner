@@ -23,6 +23,7 @@ import {
 } from '@/data';
 import { useGlobalBonuses } from '@/hooks/useCalculatedStats';
 import { calculatePowerEnhancementBonuses, calculatePowerDamage, getAlphaEnhancementBonuses, abbreviateDamageType, type EnhancementBonuses, isControllerPower, isCorruptorAttackPower, isBruteAttackPower, isScrapperAttackPower, isStalkerAttackPower, isSentinelAttackPower, calculateContainmentDamage, calculateScourgeDamage, calculateFuryDamage, calculateFuryDamageBonus, calculateCriticalHitDamage, calculateAssassinationDamage, calculateAssassinationDamageBonus, calculateOpportunityCritDamage, getContainmentInfo, getScourgeInfo, getCriticalHitInfo, getFuryInfo } from '@/utils/calculations';
+import { isPermaEligible, calculatePermaInfo } from '@/utils/calculations/perma';
 import { calculatePetDamage, shouldApplyEnhancements, type PetDamageResult, type PetAbilityDamage } from '@/utils/calculations/pet-damage';
 import { PET_ENTITIES, type PetAbility } from '@/data/pet-entities';
 import { calculateIncarnateDamage } from '@/data/at-tables';
@@ -884,6 +885,76 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
           </div>
         </div>
       )}
+
+      {/* Perma Tracker */}
+      {isPermaEligible(power) && (() => {
+        const permaTracked = useUIStore.getState().permaTrackedPowers.includes(power.name);
+        const togglePerma = useUIStore.getState().togglePermaTracked;
+        const permaInfo = calculatePermaInfo(power, enhancementBonuses, globalBonuses.recharge ?? 0);
+
+        return (
+          <div className="border-t border-slate-700 pt-2 mt-2">
+            <div className="flex items-center justify-between">
+              <h4 className="text-[9px] font-semibold text-slate-500 uppercase tracking-wide">
+                Perma Tracker
+              </h4>
+              <button
+                onClick={() => togglePerma(power.name)}
+                className={`text-[9px] px-2 py-0.5 rounded border transition-colors ${
+                  permaTracked
+                    ? 'bg-cyan-500/20 border-cyan-500/50 text-cyan-400'
+                    : 'bg-slate-800 border-slate-600 text-slate-400 hover:border-slate-500'
+                }`}
+              >
+                {permaTracked ? 'Tracking' : 'Track'}
+              </button>
+            </div>
+            {permaInfo && (
+              <div className="mt-1.5 bg-slate-800/50 rounded p-2 space-y-1">
+                {/* Progress bar */}
+                <div className="flex items-center gap-2">
+                  <div className="flex-1 h-1.5 bg-slate-700 rounded-full overflow-hidden">
+                    <div
+                      className={`h-full rounded-full transition-all ${
+                        permaInfo.isPerma ? 'bg-green-500' : permaInfo.permaPercent > 50 ? 'bg-yellow-500' : 'bg-red-500'
+                      }`}
+                      style={{ width: `${permaInfo.permaPercent}%` }}
+                    />
+                  </div>
+                  <span className={`text-[10px] font-mono font-semibold min-w-[3rem] text-right ${
+                    permaInfo.isPerma ? 'text-green-400' : permaInfo.permaPercent > 50 ? 'text-yellow-400' : 'text-red-400'
+                  }`}>
+                    {permaInfo.isPerma ? 'PERMA' : `${permaInfo.permaPercent.toFixed(1)}%`}
+                  </span>
+                </div>
+                {/* Stats */}
+                <div className="grid grid-cols-2 gap-x-3 gap-y-0.5 text-[10px]">
+                  <div className="flex justify-between">
+                    <span className="text-slate-500">Duration</span>
+                    <span className="text-slate-300">{permaInfo.duration}s</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-slate-500">Base Rchg</span>
+                    <span className="text-slate-300">{permaInfo.baseRecharge}s</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-slate-500">Eff. Rchg</span>
+                    <span className={permaInfo.effectiveRecharge < permaInfo.baseRecharge ? 'text-green-400' : 'text-slate-300'}>
+                      {permaInfo.effectiveRecharge.toFixed(1)}s
+                    </span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-slate-500">Gap</span>
+                    <span className={permaInfo.isPerma ? 'text-green-400' : 'text-red-400'}>
+                      {permaInfo.isPerma ? 'None' : `${(permaInfo.effectiveRecharge - permaInfo.duration).toFixed(1)}s`}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+        );
+      })()}
 
       {/* Description (at bottom - least important info) */}
       <div className="border-t border-slate-700 pt-2 mt-2">

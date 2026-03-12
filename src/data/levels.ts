@@ -783,7 +783,7 @@ export function getInherentPowerDef(name: string): InherentPowerDef | undefined 
  */
 export function createArchetypeInherentPower(
   archetypeName: string,
-  inherent: { name: string; description: string; icon?: string }
+  inherent: { name: string; description: string; icon?: string; effects?: import('@/types').PowerEffects }
 ): InherentPowerDef {
   // Use explicit icon if provided, otherwise generate from archetype and power name
   // e.g., "Blaster" + "Defiance" -> "inherent_blaster_defiance.png"
@@ -803,6 +803,7 @@ export function createArchetypeInherentPower(
     allowedSetCategories: [],
     isLocked: true,
     category: 'archetype',
+    ...(inherent.effects ? { effects: inherent.effects } : {}),
   };
 }
 

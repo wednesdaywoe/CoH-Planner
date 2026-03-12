@@ -189,6 +189,9 @@ interface UIState {
 
   /** Show slot level labels on enhancement slots */
   showSlotLevels: boolean;
+
+  /** Power names being tracked for "perma" (recharge <= duration) */
+  permaTrackedPowers: string[];
 }
 
 interface UIActions {
@@ -369,6 +372,9 @@ interface UIActions {
   // Slot level labels
   toggleShowSlotLevels: () => void;
 
+  // Perma tracker
+  togglePermaTracked: (powerName: string) => void;
+
   // Hard reset of build-specific UI state (for New Build)
   resetForNewBuild: () => void;
 }
@@ -492,6 +498,7 @@ export const useUIStore = create<UIStore>()(
       trackedStats: [], // No tracked stats by default
       targetsHitValues: {}, // No per-target overrides by default
       showSlotLevels: true, // Show slot level labels by default
+      permaTrackedPowers: [], // No perma-tracked powers by default
 
       // Enhancement Picker Modal
       openEnhancementPicker: (powerName, powerSet, slotIndex, overrideSelect, virtualSlots) =>
@@ -1075,6 +1082,13 @@ export const useUIStore = create<UIStore>()(
           showSlotLevels: !state.showSlotLevels,
         })),
 
+      togglePermaTracked: (powerName) =>
+        set((state) => ({
+          permaTrackedPowers: state.permaTrackedPowers.includes(powerName)
+            ? state.permaTrackedPowers.filter((n) => n !== powerName)
+            : [...state.permaTrackedPowers, powerName],
+        })),
+
       resetForNewBuild: () =>
         set({
           enhancementPicker: defaultEnhancementPicker,
@@ -1101,6 +1115,7 @@ export const useUIStore = create<UIStore>()(
           opportunityLevel: 0,
           sentinelCritActive: false,
           trackedStats: [],
+          permaTrackedPowers: [],
           // Close all modals
           statsConfigModalOpen: false,
           accoladesModalOpen: false,
@@ -1146,6 +1161,7 @@ export const useUIStore = create<UIStore>()(
         powerViewMode: state.powerViewMode,
         trackedStats: state.trackedStats,
         showSlotLevels: state.showSlotLevels,
+        permaTrackedPowers: state.permaTrackedPowers,
       }),
       merge: (persisted, current) => {
         const merged = { ...current, ...(persisted as Partial<UIStore>) };

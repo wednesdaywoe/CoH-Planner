@@ -596,6 +596,9 @@ export function RegistryEffectsDisplay({
     const enhType = Object.entries(enhancementToAspect).find(([, aspect]) => aspect === config.enhancementAspect)?.[0];
     if (!enhType) return true; // Non-enhanceable execution stats (castTime, radius, etc.)
 
+    // If the power has no allowed enhancements at all, show all execution stats (e.g., inherent powers)
+    if (allowedSet.size === 0) return true;
+
     return allowedSet.has(enhType);
   };
 

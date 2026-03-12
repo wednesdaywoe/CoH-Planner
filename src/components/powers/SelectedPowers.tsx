@@ -183,6 +183,7 @@ export function SelectedPowers({ category }: SelectedPowersProps) {
                   stackedLayout
                   level={power.level}
                   isLocked={isLocked}
+                  selectedPower={power}
                   toggleSize={shouldShowToggle(power) ? 'md' : undefined}
                   isActive={power.isActive ?? false}
                   onToggle={() => togglePowerActive(power.name)}

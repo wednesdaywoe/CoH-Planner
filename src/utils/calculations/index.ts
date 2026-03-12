@@ -204,3 +204,10 @@ export {
   calculateOpportunityCritDamage,
   isSentinelAttackPower,
 } from './inherents';
+
+// Perma tracker calculations
+export {
+  isPermaEligible,
+  calculatePermaInfo,
+  type PermaInfo,
+} from './perma';
