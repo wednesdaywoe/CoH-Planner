@@ -41,4 +41,3 @@ export const PLANNED_FEATURES: TrackerItem[] = [
   { text: 'Add data sets for Rebirth and Thunderspy', status: 'planned' },
   { text: 'Continue improving mobile experience', status: 'in-progress' },
 ];
-dd
