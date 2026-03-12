@@ -2,17 +2,18 @@
  * ExportImportModal component - handles build save/load, import, and sharing
  */
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Modal, ModalBody, ModalFooter, ModalHeader } from './Modal';
 import { Button } from '../ui/Button';
-import { useBuildStore, useUIStore } from '@/stores';
+import { useBuildStore, useUIStore, useAuthStore } from '@/stores';
 import type { ArchetypeBranchId } from '@/types';
 import { importMidsBuild } from '@/utils/mids-import';
 import type { MidsImportResult } from '@/utils/mids-import';
 import { importGameExport } from '@/utils/game-import';
 import type { GameImportResult } from '@/utils/game-import';
-import { shareBuild, getOwnedBuildIds, getOwnerToken } from '@/services/sharedBuilds';
+import { shareBuild, getOwnedBuildIds, getOwnerToken, getMyBuilds } from '@/services/sharedBuilds';
 import type { BuildExport } from '@/types/build';
+import type { SharedBuild } from '@/types/shared';
 import { generatePopmenu } from '@/utils/export-popmenu';
 import { openPrintView } from '@/utils/export-print';
 
@@ -71,8 +72,23 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
   const [sharedBuildId, setSharedBuildId] = useState<string | null>(null);
   const [showOwnerToken, setShowOwnerToken] = useState(false);
   const [tokenCopied, setTokenCopied] = useState(false);
+  const [accountBuilds, setAccountBuilds] = useState<SharedBuild[]>([]);
 
   const { exportBuild, importBuild, importMidsBuild: applyMidsBuild, build } = useBuildStore();
+  const user = useAuthStore((s) => s.user);
+
+  // Fetch account-owned builds when modal opens and user is logged in
+  useEffect(() => {
+    if (isOpen && user) {
+      getMyBuilds().then(setAccountBuilds).catch(() => {});
+    }
+  }, [isOpen, user]);
+
+  // Merge token-owned IDs with account-owned IDs (deduplicated)
+  const tokenIds = getOwnedBuildIds();
+  const accountIds = accountBuilds.map((b) => b.id);
+  const allOwnedIds = [...new Set([...tokenIds, ...accountIds])];
+  const accountBuildMap = new Map(accountBuilds.map((b) => [b.id, b]));
 
   // ============================================
   // SAVE/LOAD HANDLERS
@@ -975,7 +991,7 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
             ) : (
               <>
                 {/* Update existing build option */}
-                {getOwnedBuildIds().length > 0 && (
+                {allOwnedIds.length > 0 && (
                   <div className="bg-gray-800 border border-gray-600 rounded p-3 space-y-2">
                     <label className="flex items-center gap-2 text-sm text-gray-300 cursor-pointer">
                       <input
@@ -983,7 +999,7 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
                         checked={updateExistingId !== null}
                         onChange={(e) => {
                           if (e.target.checked) {
-                            setUpdateExistingId(getOwnedBuildIds()[0]);
+                            setUpdateExistingId(allOwnedIds[0]);
                           } else {
                             setUpdateExistingId(null);
                           }
@@ -994,15 +1010,17 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
                     </label>
                     {updateExistingId !== null && (
                       <div>
-                        <label className="block text-xs font-medium text-gray-400 mb-1">Build ID to update</label>
+                        <label className="block text-xs font-medium text-gray-400 mb-1">Build to update</label>
                         <select
                           value={updateExistingId}
                           onChange={(e) => setUpdateExistingId(e.target.value)}
                           className="w-full bg-gray-700 border border-gray-600 rounded px-3 py-1.5 text-white text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
                         >
-                          {getOwnedBuildIds().map((id) => (
-                            <option key={id} value={id}>{id}</option>
-                          ))}
+                          {allOwnedIds.map((id) => {
+                            const info = accountBuildMap.get(id);
+                            const label = info ? `${info.name} (${id})` : id;
+                            return <option key={id} value={id}>{label}</option>;
+                          })}
                         </select>
                         <p className="text-xs text-gray-500 mt-1">This will replace the build data at the existing URL.</p>
                       </div>

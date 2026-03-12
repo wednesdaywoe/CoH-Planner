@@ -3,6 +3,7 @@
  */
 
 import { supabase } from '@/lib/supabase';
+import { useAuthStore } from '@/stores/authStore';
 import type { SharedBuild, ShareBuildInput, SearchFilters, SearchResult } from '@/types/shared';
 
 const DEFAULT_PAGE_SIZE = 20;
@@ -35,9 +36,12 @@ export function getOwnerToken(buildId: string): string | null {
   return getOwnerTokens()[buildId] ?? null;
 }
 
-/** Check if the current browser owns a given build */
-export function isOwnedBuild(buildId: string): boolean {
-  return getOwnerToken(buildId) !== null;
+/** Check if the current browser owns a given build (via token or Discord account) */
+export function isOwnedBuild(buildId: string, build?: SharedBuild | null): boolean {
+  if (getOwnerToken(buildId) !== null) return true;
+  const user = useAuthStore.getState().user;
+  if (user && build?.user_id === user.id) return true;
+  return false;
 }
 
 /** Get all owned build IDs (for the update-existing UI) */
@@ -82,12 +86,13 @@ export async function shareBuild(input: ShareBuildInput): Promise<{ id: string; 
     build_json: buildData,
   };
 
-  // If updating an existing build, attach the owner token
+  // If updating an existing build, attach credentials (token and/or JWT via auth header)
   if (input.existingId) {
     const ownerToken = getOwnerToken(input.existingId);
-    if (!ownerToken) throw new Error('No owner token found for this build');
+    const user = useAuthStore.getState().user;
+    if (!ownerToken && !user) throw new Error('No owner token or login session for this build');
     payload.existing_id = input.existingId;
-    payload.owner_token = ownerToken;
+    if (ownerToken) payload.owner_token = ownerToken;
   }
 
   const { data, error } = await supabase.functions.invoke('share-build', {
@@ -112,15 +117,16 @@ export async function shareBuild(input: ShareBuildInput): Promise<{ id: string; 
   };
 }
 
-/** Delete a shared build (requires ownership) */
+/** Delete a shared build (requires ownership via token or Discord auth) */
 export async function deleteBuild(id: string): Promise<void> {
   if (!supabase) throw new Error('Sharing is not configured');
 
   const ownerToken = getOwnerToken(id);
-  if (!ownerToken) throw new Error('No owner token found for this build');
+  const user = useAuthStore.getState().user;
+  if (!ownerToken && !user) throw new Error('No owner token or login session for this build');
 
   const { data, error } = await supabase.functions.invoke('delete-build', {
-    body: { id, owner_token: ownerToken },
+    body: { id, owner_token: ownerToken || undefined },
   });
 
   if (error) {
@@ -204,4 +210,46 @@ export async function searchSharedBuilds(filters: SearchFilters = {}): Promise<S
     pageSize,
     totalPages: Math.ceil(total / pageSize),
   };
+}
+
+/** Fetch all builds owned by the authenticated user */
+export async function getMyBuilds(): Promise<SharedBuild[]> {
+  if (!supabase) return [];
+
+  const user = useAuthStore.getState().user;
+  if (!user) return [];
+
+  const { data, error } = await supabase
+    .from('shared_builds')
+    .select('*')
+    .eq('user_id', user.id)
+    .order('updated_at', { ascending: false });
+
+  if (error) throw new Error(error.message);
+  return (data ?? []) as SharedBuild[];
+}
+
+/** Claim existing token-owned builds by linking them to the authenticated user account */
+export async function claimBuilds(): Promise<{ claimed: string[]; failed: string[] }> {
+  if (!supabase) throw new Error('Sharing is not configured');
+
+  const user = useAuthStore.getState().user;
+  if (!user) throw new Error('Must be logged in to claim builds');
+
+  const tokens = getOwnerTokens();
+  if (Object.keys(tokens).length === 0) {
+    return { claimed: [], failed: [] };
+  }
+
+  const { data, error } = await supabase.functions.invoke('claim-builds', {
+    body: { owner_tokens: tokens },
+  });
+
+  if (error) {
+    const msg = data?.error || error.message || 'Failed to claim builds';
+    throw new Error(msg);
+  }
+  if (data?.error) throw new Error(data.error);
+
+  return { claimed: data.claimed ?? [], failed: data.failed ?? [] };
 }

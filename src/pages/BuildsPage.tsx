@@ -4,10 +4,11 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from '@tanstack/react-router';
+import { useAuthStore } from '@/stores';
 import { BuildCard } from '@/components/shared/BuildCard';
 import { BuildFilters } from '@/components/shared/BuildFilters';
-import { searchSharedBuilds, isShareEnabled } from '@/services/sharedBuilds';
-import type { SearchFilters, SearchResult } from '@/types/shared';
+import { searchSharedBuilds, getMyBuilds, isShareEnabled } from '@/services/sharedBuilds';
+import type { SharedBuild, SearchFilters, SearchResult } from '@/types/shared';
 
 const EMPTY_RESULT: SearchResult = {
   builds: [],
@@ -18,12 +19,15 @@ const EMPTY_RESULT: SearchResult = {
 };
 
 export function BuildsPage() {
+  const user = useAuthStore((s) => s.user);
+  const [tab, setTab] = useState<'all' | 'mine'>('all');
   const [filters, setFilters] = useState<SearchFilters>({
     sortBy: 'newest',
     page: 1,
     pageSize: 20,
   });
   const [result, setResult] = useState<SearchResult>(EMPTY_RESULT);
+  const [myBuilds, setMyBuilds] = useState<SharedBuild[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -40,9 +44,26 @@ export function BuildsPage() {
     }
   }, []);
 
+  const fetchMyBuilds = useCallback(async () => {
+    setLoading(true);
+    setError(null);
+    try {
+      const builds = await getMyBuilds();
+      setMyBuilds(builds);
+    } catch (e) {
+      setError(e instanceof Error ? e.message : 'Failed to load your builds');
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
   useEffect(() => {
-    fetchBuilds(filters);
-  }, [filters, fetchBuilds]);
+    if (tab === 'mine' && user) {
+      fetchMyBuilds();
+    } else {
+      fetchBuilds(filters);
+    }
+  }, [filters, fetchBuilds, fetchMyBuilds, tab, user]);
 
   const handleFiltersChange = (newFilters: SearchFilters) => {
     setFilters(newFilters);
@@ -81,10 +102,38 @@ export function BuildsPage() {
         </p>
       </div>
 
-      {/* Filters */}
-      <div className="mb-6">
-        <BuildFilters filters={filters} onFiltersChange={handleFiltersChange} />
-      </div>
+      {/* Tab toggle (only when logged in) */}
+      {user && (
+        <div className="flex gap-1 mb-4 bg-gray-800 border border-gray-700 rounded-lg p-1 w-fit">
+          <button
+            onClick={() => setTab('all')}
+            className={`px-3 py-1.5 text-sm rounded-md transition-colors ${
+              tab === 'all'
+                ? 'bg-gray-700 text-white font-medium'
+                : 'text-gray-400 hover:text-white'
+            }`}
+          >
+            All Builds
+          </button>
+          <button
+            onClick={() => setTab('mine')}
+            className={`px-3 py-1.5 text-sm rounded-md transition-colors ${
+              tab === 'mine'
+                ? 'bg-gray-700 text-white font-medium'
+                : 'text-gray-400 hover:text-white'
+            }`}
+          >
+            My Builds
+          </button>
+        </div>
+      )}
+
+      {/* Filters (only for "All Builds" tab) */}
+      {tab === 'all' && (
+        <div className="mb-6">
+          <BuildFilters filters={filters} onFiltersChange={handleFiltersChange} />
+        </div>
+      )}
 
       {/* Results */}
       {error ? (
@@ -95,6 +144,25 @@ export function BuildsPage() {
         <div className="text-center py-12 text-gray-400">
           <p>Loading builds...</p>
         </div>
+      ) : tab === 'mine' ? (
+        /* My Builds tab */
+        myBuilds.length === 0 ? (
+          <div className="text-center py-12">
+            <p className="text-gray-400 mb-2">No builds linked to your account yet</p>
+            <p className="text-gray-500 text-sm">Share a build while logged in, or link existing builds from Settings.</p>
+          </div>
+        ) : (
+          <>
+            <p className="text-xs text-gray-500 mb-3">
+              {myBuilds.length} build{myBuilds.length !== 1 ? 's' : ''}
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+              {myBuilds.map((build) => (
+                <BuildCard key={build.id} build={build} />
+              ))}
+            </div>
+          </>
+        )
       ) : result.builds.length === 0 ? (
         <div className="text-center py-12">
           <p className="text-gray-400 mb-2">No builds found</p>

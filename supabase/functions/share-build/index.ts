@@ -4,7 +4,8 @@
  * Validates build data, applies rate limiting, generates a short ID,
  * and inserts the shared build into the database.
  *
- * Supports both creating new builds and updating existing ones via owner token.
+ * Supports both creating new builds and updating existing ones via owner token
+ * or authenticated user identity (Discord OAuth).
  *
  * Deploy with: supabase functions deploy share-build
  */
@@ -27,6 +28,25 @@ async function sha256(input: string): Promise<string> {
   return [...new Uint8Array(hashBuffer)].map(b => b.toString(16).padStart(2, '0')).join('');
 }
 
+/** Extract authenticated user ID from JWT in Authorization header (if present) */
+async function getUserIdFromAuth(
+  req: Request,
+  supabaseUrl: string,
+  supabaseServiceKey: string,
+): Promise<string | null> {
+  const authHeader = req.headers.get('authorization');
+  if (!authHeader?.startsWith('Bearer ')) return null;
+
+  try {
+    const token = authHeader.replace('Bearer ', '');
+    const supabase = createClient(supabaseUrl, supabaseServiceKey);
+    const { data: { user } } = await supabase.auth.getUser(token);
+    return user?.id ?? null;
+  } catch {
+    return null;
+  }
+}
+
 Deno.serve(async (req: Request) => {
   // Handle CORS preflight
   if (req.method === 'OPTIONS') {
@@ -35,7 +55,13 @@ Deno.serve(async (req: Request) => {
 
   try {
     const body = await req.json();
-    const isUpdate = !!(body.existing_id && body.owner_token);
+
+    // ---- Extract authenticated user (if logged in via Discord OAuth) ----
+    const supabaseUrl = Deno.env.get('SUPABASE_URL')!;
+    const supabaseServiceKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
+    const authUserId = await getUserIdFromAuth(req, supabaseUrl, supabaseServiceKey);
+
+    const isUpdate = !!(body.existing_id && (body.owner_token || authUserId));
 
     // ---- Validate required fields ----
     const { name, archetype, archetype_name, primary_set, primary_name, secondary_set, secondary_name, level, build_json } = body;
@@ -63,8 +89,6 @@ Deno.serve(async (req: Request) => {
     }
 
     // ---- Supabase client (service role for inserts) ----
-    const supabaseUrl = Deno.env.get('SUPABASE_URL')!;
-    const supabaseServiceKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
     const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
     // ---- Rate limiting ----
@@ -113,19 +137,33 @@ Deno.serve(async (req: Request) => {
 
     // ---- UPDATE existing build ----
     if (isUpdate) {
-      const tokenHash = await sha256(body.owner_token);
+      // Verify ownership via owner token OR authenticated user
+      let authorized = false;
 
-      // Verify ownership
-      const { data: existing } = await supabase
-        .from('shared_builds')
-        .select('id')
-        .eq('id', body.existing_id)
-        .eq('owner_token_hash', tokenHash)
-        .single();
+      if (body.owner_token) {
+        const tokenHash = await sha256(body.owner_token);
+        const { data: byToken } = await supabase
+          .from('shared_builds')
+          .select('id')
+          .eq('id', body.existing_id)
+          .eq('owner_token_hash', tokenHash)
+          .single();
+        if (byToken) authorized = true;
+      }
 
-      if (!existing) {
+      if (!authorized && authUserId) {
+        const { data: byUser } = await supabase
+          .from('shared_builds')
+          .select('id')
+          .eq('id', body.existing_id)
+          .eq('user_id', authUserId)
+          .single();
+        if (byUser) authorized = true;
+      }
+
+      if (!authorized) {
         return new Response(
-          JSON.stringify({ error: 'Build not found or invalid owner token' }),
+          JSON.stringify({ error: 'Build not found or not authorized' }),
           { status: 403, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
         );
       }
@@ -158,6 +196,7 @@ Deno.serve(async (req: Request) => {
       id,
       ...buildData,
       owner_token_hash: ownerTokenHash,
+      user_id: authUserId,  // null if not logged in, UUID if authenticated
     });
 
     if (insertError) {

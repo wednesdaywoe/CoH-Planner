@@ -23,7 +23,8 @@ export const KNOWN_BUGS: TrackerItem[] = [
 // ============================================
 
 export const RECENT_CHANGES: TrackerItem[] = [
-  { text: 'Shared builds can now be updated or deleted by the original author (please save your build token)', status: 'new' },
+  { text: 'Users can optionally sign in with Discord, Google, or Twitch to manage their builds. Anonymous build management is still supported with the build tokens.', status: 'new' },
+  { text: 'Shared builds can be updated or deleted by the original author (please save your build token)', status: 'new' },
   { text: 'Improved Incarnate crafting persistence and migration, stopped recharge enhancements passing their value to rechargeBuff', status: 'fixed' },
   { text: 'Added a global "Level Shift" toggle that controls whether incarnate level shifts are applied to calculations, independently from per-slot toggles.', status: 'new' },
   { text: 'Selecting a VEAT branch after importing from Mids caused base powerset abilities to become inaccessible.', status: 'fixed' },

@@ -46,3 +46,6 @@ export {
   usePowerViewMode,
   useTargetsHit,
 } from './uiStore';
+
+// Auth store
+export { useAuthStore } from './authStore';

@@ -22,7 +22,8 @@ CREATE TABLE shared_builds (
   created_at TIMESTAMPTZ DEFAULT now(),
   updated_at TIMESTAMPTZ DEFAULT now(),
   views INTEGER DEFAULT 0,
-  owner_token_hash TEXT
+  owner_token_hash TEXT,
+  user_id UUID REFERENCES auth.users(id)
 );
 
 -- Indexes for search and filtering
@@ -31,6 +32,7 @@ CREATE INDEX idx_shared_builds_primary ON shared_builds(primary_set);
 CREATE INDEX idx_shared_builds_secondary ON shared_builds(secondary_set);
 CREATE INDEX idx_shared_builds_created ON shared_builds(created_at DESC);
 CREATE INDEX idx_shared_builds_views ON shared_builds(views DESC);
+CREATE INDEX idx_shared_builds_user_id ON shared_builds(user_id);
 CREATE INDEX idx_shared_builds_search ON shared_builds
   USING GIN (to_tsvector('english', name || ' ' || coalesce(description, '') || ' ' || coalesce(author_name, '')));
 
@@ -79,6 +81,12 @@ $$ LANGUAGE plpgsql SECURITY DEFINER SET search_path = public;
 -- ============================================
 -- ALTER TABLE shared_builds ADD COLUMN IF NOT EXISTS owner_token_hash TEXT;
 -- ALTER TABLE shared_builds ADD COLUMN IF NOT EXISTS updated_at TIMESTAMPTZ DEFAULT now();
+
+-- ============================================
+-- Migration: Discord OAuth support (run on existing databases)
+-- ============================================
+-- ALTER TABLE shared_builds ADD COLUMN IF NOT EXISTS user_id UUID REFERENCES auth.users(id);
+-- CREATE INDEX IF NOT EXISTS idx_shared_builds_user_id ON shared_builds(user_id);
 
 -- ============================================
 -- Admin: Assign an owner token to a legacy build

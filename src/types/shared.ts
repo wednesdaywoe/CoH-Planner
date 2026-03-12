@@ -23,6 +23,8 @@ export interface SharedBuild {
   created_at: string;
   updated_at: string;
   views: number;
+  /** User ID from Discord OAuth (null for anonymous builds) */
+  user_id?: string | null;
 }
 
 /** Input for sharing a build */

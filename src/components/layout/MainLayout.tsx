@@ -2,14 +2,14 @@
  * MainLayout component - overall app layout wrapper
  */
 
-import type { ReactNode } from 'react';
+import { useEffect, type ReactNode } from 'react';
 import { Header } from './Header';
 import { StatsDashboard } from './StatsDashboard';
 import { UpdateBanner } from './UpdateBanner';
 import { EnhancementPicker } from '@/components/enhancements/EnhancementPicker';
 import { PowerInfoTooltip } from '@/components/info';
 import { PowerInfoModal } from '@/components/modals';
-import { useUIStore } from '@/stores';
+import { useUIStore, useAuthStore } from '@/stores';
 import { useUpdateChecker } from '@/hooks/useUpdateChecker';
 
 interface MainLayoutProps {
@@ -21,6 +21,13 @@ export function MainLayout({ children }: MainLayoutProps) {
   const openKnownIssuesModal = useUIStore((s) => s.openKnownIssuesModal);
   const uiScale = useUIStore((s) => s.uiScale);
   const { updateAvailable } = useUpdateChecker();
+  const initializeAuth = useAuthStore((s) => s.initialize);
+
+  // Initialize auth on mount (checks existing session, listens for changes)
+  useEffect(() => {
+    const unsubscribe = initializeAuth();
+    return unsubscribe;
+  }, [initializeAuth]);
 
   return (
     <div

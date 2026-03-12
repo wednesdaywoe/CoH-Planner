@@ -40,7 +40,7 @@ export function BuildDetailPage() {
           setError('Build not found');
         } else {
           setBuild(data);
-          setOwned(isOwnedBuild(id));
+          setOwned(isOwnedBuild(id, data));
           incrementViews(id);
         }
       } catch (e) {
