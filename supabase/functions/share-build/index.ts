@@ -96,7 +96,7 @@ Deno.serve(async (req: Request) => {
       : [];
 
     const buildData = {
-      name: (name || 'Untitled Build').slice(0, 200),
+      name: (name?.trim() || `${primary_name || 'Unknown'}/${secondary_name || 'Unknown'} ${archetype_name || 'Build'}`).slice(0, 200),
       description: (body.description || '').slice(0, 500),
       archetype,
       archetype_name: (archetype_name || '').slice(0, 100),
