@@ -8,7 +8,7 @@
  * Row 1 (Common):     [ ]  [ ]  [Base]  [ ]  [ ]        (column 3)
  */
 
-import { useState, useMemo, useCallback, useEffect } from 'react';
+import { useState, useMemo, useCallback } from 'react';
 import type { IncarnateSlotId, IncarnatePower, IncarnateTier, IncarnateBranch } from '@/types';
 import {
   getPowerIconPath,
@@ -19,7 +19,7 @@ import {
   sortRarePowers,
   STANDARD_TREE_LAYOUT,
 } from '@/data';
-import { useBuildStore } from '@/stores';
+import { useBuildStore, useUIStore } from '@/stores';
 import { getIncarnateEffectData } from './IncarnateEffectsTooltip';
 
 // ============================================
@@ -188,13 +188,9 @@ export function IncarnatePowerTree({
 }: IncarnatePowerTreeProps) {
   void _treeId;
 
-  const [t4ComboIndex, setT4ComboIndex] = useState(0);
+  const t4ComboIndex = useUIStore((s) => (selectedPowerId ? s.incarnateT4ComboIndex[selectedPowerId] ?? 0 : 0));
+  const setIncarnateT4ComboIndex = useUIStore((s) => s.setIncarnateT4ComboIndex);
   const [hoveredPower, setHoveredPower] = useState<IncarnatePower | null>(null);
-
-  // Reset combo index when selection changes
-  useEffect(() => {
-    setT4ComboIndex(0);
-  }, [selectedPowerId]);
 
   // Group powers by tier and branch (memoized)
   const powersByTierAndBranch = useMemo(
@@ -251,17 +247,19 @@ export function IncarnatePowerTree({
 
   const handlePowerContextMenu = useCallback(
     (power: IncarnatePower, e: React.MouseEvent) => {
-      if (power.tier === 'veryrare') {
+      if (power.tier === 'veryrare' && selectedPowerId) {
         e.preventDefault();
-        setT4ComboIndex((prev) => (prev + 1) % T3_PAIRS.length);
+        setIncarnateT4ComboIndex(selectedPowerId, (t4ComboIndex + 1) % T3_PAIRS.length);
       }
     },
-    []
+    [selectedPowerId, t4ComboIndex, setIncarnateT4ComboIndex]
   );
 
   const handleCyclePair = useCallback((direction: 1 | -1) => {
-    setT4ComboIndex((prev) => (prev + direction + T3_PAIRS.length) % T3_PAIRS.length);
-  }, []);
+    if (selectedPowerId) {
+      setIncarnateT4ComboIndex(selectedPowerId, (t4ComboIndex + direction + T3_PAIRS.length) % T3_PAIRS.length);
+    }
+  }, [selectedPowerId, t4ComboIndex, setIncarnateT4ComboIndex]);
 
   const handleHover = useCallback((power: IncarnatePower | null) => {
     setHoveredPower(power);

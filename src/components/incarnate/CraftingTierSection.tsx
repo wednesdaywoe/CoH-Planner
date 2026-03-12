@@ -100,9 +100,9 @@ export function CraftingTierSection({
                   const rb = RARITY_SORT[getSalvageRarity(b.salvageId)] ?? 99;
                   if (ra !== rb) return ra - rb;
                   return getSalvageDisplayName(a.salvageId).localeCompare(getSalvageDisplayName(b.salvageId));
-                }).map((salvage, idx) => {
+                }).map((salvage) => {
                   const salvageKey = craftingKey(
-                    slotId, treeId, tier, variantKey, `salvage:${salvage.salvageId}:${idx}`
+                    slotId, treeId, tier, variantKey, `salvage:${salvage.salvageId}`
                   );
                   return (
                     <CraftingSalvageRow

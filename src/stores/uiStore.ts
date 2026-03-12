@@ -60,6 +60,9 @@ interface UIState {
   /** Currently selected incarnate slot for modal */
   currentIncarnateSlot: IncarnateSlotId | null;
 
+  /** T4 crafting path combo index per power (keyed by powerId) */
+  incarnateT4ComboIndex: Record<string, number>;
+
   /** Export/Import modal open state */
   exportImportModalOpen: boolean;
 
@@ -261,6 +264,7 @@ interface UIActions {
   // Incarnate Crafting Modal
   openIncarnateCraftingModal: () => void;
   closeIncarnateCraftingModal: () => void;
+  setIncarnateT4ComboIndex: (powerId: string, index: number) => void;
 
   // Export/Import Modal
   openExportImportModal: () => void;
@@ -441,6 +445,7 @@ export const useUIStore = create<UIStore>()(
       incarnateModalOpen: false,
       incarnateCraftingModalOpen: false,
       currentIncarnateSlot: null,
+      incarnateT4ComboIndex: {},
       exportImportModalOpen: false,
       feedbackModalOpen: false,
       knownIssuesModalOpen: false,
@@ -848,6 +853,14 @@ export const useUIStore = create<UIStore>()(
 
       closeIncarnateCraftingModal: () =>
         set({ incarnateCraftingModalOpen: false }),
+
+      setIncarnateT4ComboIndex: (powerId, index) =>
+        set((state) => ({
+          incarnateT4ComboIndex: {
+            ...state.incarnateT4ComboIndex,
+            [powerId]: index,
+          },
+        })),
 
       // Export/Import Modal
       openExportImportModal: () =>

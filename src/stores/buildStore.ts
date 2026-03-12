@@ -1531,6 +1531,25 @@ export const useBuildStore = create<BuildStore>()(
             state.build.craftingChecklist = createEmptyCraftingChecklistState();
           }
 
+          // Migration: Convert old crafting keys with trailing :idx to new format without idx
+          // Old: "alpha:vigor:1:core:salvage:ArcaneCantrip:0" → New: "alpha:vigor:1:core:salvage:ArcaneCantrip"
+          if (state.build.craftingChecklist && Object.keys(state.build.craftingChecklist).length > 0) {
+            const migrated: Record<string, boolean> = {};
+            let needsMigration = false;
+            for (const [key, value] of Object.entries(state.build.craftingChecklist)) {
+              const match = key.match(/^(.+:salvage:\w+):\d+$/);
+              if (match) {
+                needsMigration = true;
+                if (value) migrated[match[1]] = true;
+              } else {
+                migrated[key] = value;
+              }
+            }
+            if (needsMigration) {
+              state.build.craftingChecklist = migrated;
+            }
+          }
+
           // Migration: Initialize shopping list acquired if missing
           if (!state.build.shoppingListAcquired) {
             state.build.shoppingListAcquired = {};
