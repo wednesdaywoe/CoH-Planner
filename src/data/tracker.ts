@@ -23,6 +23,7 @@ export const KNOWN_BUGS: TrackerItem[] = [
 // ============================================
 
 export const RECENT_CHANGES: TrackerItem[] = [
+  { text: 'Improved Incarnate crafting persistence and migration', status: 'fixed' },
   { text: 'Added a global "Level Shift" toggle that controls whether incarnate level shifts are applied to calculations, independently from per-slot toggles.', status: 'new' },
   { text: 'Selecting a VEAT branch after importing from Mids caused base powerset abilities to become inaccessible.', status: 'fixed' },
   { text: 'First pass at refactoring the import feature: Significant improvements to build importing reliability including preserving enhancement boosts.', status: 'fixed' },
