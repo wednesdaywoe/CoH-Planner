@@ -659,10 +659,10 @@ function applyActivePowerBonuses(
     }
 
     // Recharge buff
-    // Enhanced by Recharge enhancements
+    // NOT enhanced by Recharge enhancements — recharge enhancements reduce the
+    // power's own recharge time, they don't boost the recharge speed buff value
     if (effects.rechargeBuff !== undefined) {
-      const enhMultiplier = 1 + (enhBonuses.recharge || 0);
-      const value = extractScaleValue(effects.rechargeBuff) * 100 * enhMultiplier;
+      const value = extractScaleValue(effects.rechargeBuff) * 100;
       global.recharge += value;
       addToBreakdown(breakdown, 'recharge', {
         name: power.name,
