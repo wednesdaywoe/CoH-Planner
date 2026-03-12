@@ -79,3 +79,16 @@ $$ LANGUAGE plpgsql SECURITY DEFINER SET search_path = public;
 -- ============================================
 -- ALTER TABLE shared_builds ADD COLUMN IF NOT EXISTS owner_token_hash TEXT;
 -- ALTER TABLE shared_builds ADD COLUMN IF NOT EXISTS updated_at TIMESTAMPTZ DEFAULT now();
+
+-- ============================================
+-- Admin: Assign an owner token to a legacy build
+-- ============================================
+-- 1. Pick a token (any string, e.g. a UUID):
+--    SELECT gen_random_uuid();  -- generates something like 'a1b2c3d4-...'
+--
+-- 2. Set the hash on the build:
+--    UPDATE shared_builds
+--    SET owner_token_hash = encode(sha256(convert_to('YOUR-TOKEN-HERE', 'UTF8')), 'hex')
+--    WHERE id = 'BUILD-ID-HERE';
+--
+-- 3. Use that token in the app's "Reclaim" button on the build detail page.
