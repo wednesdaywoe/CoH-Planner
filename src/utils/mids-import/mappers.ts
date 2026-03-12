@@ -413,6 +413,14 @@ export function resolveEpicPoolId(
 // ============================================
 
 /**
+ * Dev-name aliases: maps internal/development set names to their live set IDs.
+ * HC sometimes ships sets with dev names that differ from the final display name.
+ */
+const DEV_NAME_ALIASES: Record<string, string> = {
+  'shrapnel': 'artillery',
+};
+
+/**
  * Build a reverse lookup from IO set display names (normalized) to set IDs.
  * Used as fallback when UID-based matching fails.
  */
@@ -439,6 +447,12 @@ function buildIOSetNameLookup(): Map<string, string> {
       lookup.set(idNoHyphens, id);
     }
   }
+
+  // Add dev-name aliases (internal names that differ from live names)
+  for (const [devName, setId] of Object.entries(DEV_NAME_ALIASES)) {
+    lookup.set(devName, setId);
+  }
+
   return lookup;
 }
 

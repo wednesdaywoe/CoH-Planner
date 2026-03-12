@@ -183,6 +183,10 @@ function getIOSetNameLookup(): Map<string, string> {
     // Also store the raw ID
     lookup.set(id, id);
   }
+
+  // Dev-name aliases: HC sometimes ships sets with internal names that differ from live
+  lookup.set('shrapnel', 'artillery');
+
   return lookup;
 }
 
