@@ -368,6 +368,9 @@ interface UIActions {
 
   // Slot level labels
   toggleShowSlotLevels: () => void;
+
+  // Hard reset of build-specific UI state (for New Build)
+  resetForNewBuild: () => void;
 }
 
 type UIStore = UIState & UIActions;
@@ -1071,6 +1074,44 @@ export const useUIStore = create<UIStore>()(
         set((state) => ({
           showSlotLevels: !state.showSlotLevels,
         })),
+
+      resetForNewBuild: () =>
+        set({
+          enhancementPicker: defaultEnhancementPicker,
+          genericPicker: defaultGenericPicker,
+          originPicker: defaultOriginPicker,
+          infoPanel: defaultInfoPanel,
+          tooltip: defaultTooltip,
+          compareSlottingOpen: false,
+          compareSlottingPower: null,
+          selectedBranch: null,
+          targetsHitValues: {},
+          incarnateActive: { alpha: false, destiny: false, hybrid: false, interface: false },
+          incarnateLevelShiftActive: false,
+          dominationActive: false,
+          scourgeActive: false,
+          furyLevel: 0,
+          supremacyActive: false,
+          vigilanceTeamSize: 0,
+          criticalHitsActive: false,
+          stalkerHidden: false,
+          stalkerTeamSize: 0,
+          stalkerCritActive: false,
+          containmentActive: false,
+          opportunityLevel: 0,
+          sentinelCritActive: false,
+          trackedStats: [],
+          // Close all modals
+          statsConfigModalOpen: false,
+          accoladesModalOpen: false,
+          incarnateModalOpen: false,
+          incarnateCraftingModalOpen: false,
+          exportImportModalOpen: false,
+          powerInfoModalOpen: false,
+          detailedTotalsModalOpen: false,
+          powersetCompareModalOpen: false,
+          setBonusLookupModalOpen: false,
+        }),
     }),
     {
       name: 'coh-planner-ui',

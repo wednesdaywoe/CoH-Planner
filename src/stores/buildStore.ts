@@ -178,11 +178,25 @@ function syncBuildDefinitions(build: Build): void {
     return anyChanged ? synced : powers;
   };
 
+  // Helper: fix powerSet to use the powerset ID instead of display name
+  const fixPowerSetIds = (powers: SelectedPower[], correctId: string): SelectedPower[] => {
+    let anyChanged = false;
+    const fixed = powers.map((power) => {
+      if (power.powerSet !== correctId) {
+        anyChanged = true;
+        return { ...power, powerSet: correctId };
+      }
+      return power;
+    });
+    return anyChanged ? fixed : powers;
+  };
+
   // Sync primary powers
   if (build.primary.id && build.primary.powers.length > 0) {
     const def = getPowerset(build.primary.id);
     if (def) {
-      const fixed = syncPowers(build.primary.powers, def.powers);
+      let fixed = syncPowers(build.primary.powers, def.powers);
+      fixed = fixPowerSetIds(fixed, build.primary.id);
       if (fixed !== build.primary.powers) {
         build.primary = { ...build.primary, powers: fixed };
       }
@@ -193,7 +207,8 @@ function syncBuildDefinitions(build: Build): void {
   if (build.secondary.id && build.secondary.powers.length > 0) {
     const def = getPowerset(build.secondary.id);
     if (def) {
-      const fixed = syncPowers(build.secondary.powers, def.powers);
+      let fixed = syncPowers(build.secondary.powers, def.powers);
+      fixed = fixPowerSetIds(fixed, build.secondary.id);
       if (fixed !== build.secondary.powers) {
         build.secondary = { ...build.secondary, powers: fixed };
       }
@@ -205,7 +220,8 @@ function syncBuildDefinitions(build: Build): void {
     build.pools = build.pools.map((pool) => {
       const def = getPowerPool(pool.id);
       if (!def) return pool;
-      const fixed = syncPowers(pool.powers, def.powers);
+      let fixed = syncPowers(pool.powers, def.powers);
+      fixed = fixPowerSetIds(fixed, pool.id);
       return fixed !== pool.powers ? { ...pool, powers: fixed } : pool;
     });
   }
@@ -214,7 +230,8 @@ function syncBuildDefinitions(build: Build): void {
   if (build.epicPool && build.epicPool.powers.length > 0) {
     const def = getEpicPool(build.epicPool.id);
     if (def) {
-      const fixed = syncPowers(build.epicPool.powers, def.powers);
+      let fixed = syncPowers(build.epicPool.powers, def.powers);
+      fixed = fixPowerSetIds(fixed, build.epicPool.id);
       if (fixed !== build.epicPool.powers) {
         build.epicPool = { ...build.epicPool, powers: fixed };
       }

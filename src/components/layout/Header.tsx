@@ -71,6 +71,7 @@ export function Header() {
   const setLevel = useBuildStore((s) => s.setLevel);
   const resetBuild = useBuildStore((s) => s.resetBuild);
   const clearPowers = useBuildStore((s) => s.clearPowers);
+  const resetForNewBuild = useUIStore((s) => s.resetForNewBuild);
 
   const exemplarMode = useUIStore((s) => s.exemplarMode);
   const toggleExemplarMode = useUIStore((s) => s.toggleExemplarMode);
@@ -743,7 +744,7 @@ export function Header() {
         title="New Build"
         message="Are you sure you want to reset? This will clear your entire build."
         confirmLabel="Reset"
-        onConfirm={() => { resetBuild(); setConfirmAction(null); }}
+        onConfirm={() => { resetBuild(); resetForNewBuild(); setConfirmAction(null); }}
         onCancel={() => setConfirmAction(null)}
       />
       <ConfirmModal

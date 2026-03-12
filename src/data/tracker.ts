@@ -23,11 +23,11 @@ export const KNOWN_BUGS: TrackerItem[] = [
 // ============================================
 
 export const RECENT_CHANGES: TrackerItem[] = [
+  { text: 'The New button is now a hard reset to prevent a stale state lingering from an imported build.', status: 'fixed' },
+  { text: 'Added fixPowerSetIds() to syncBuildDefinitions() so that existing builds already saved in localStorage with wrong display names get corrected on load', status: 'fixed' },
   { text: 'Users can optionally sign in with Discord to manage their builds across devices. Anonymous build management is still supported with build tokens.', status: 'new' },
   { text: 'Shared builds can be updated or deleted by the original author (please save your build token)', status: 'new' },
-  { text: 'Improved Incarnate crafting persistence and migration, stopped recharge enhancements passing their value to rechargeBuff', status: 'fixed' },
   { text: 'Added a global "Level Shift" toggle that controls whether incarnate level shifts are applied to calculations, independently from per-slot toggles.', status: 'new' },
-  { text: 'Selecting a VEAT branch after importing from Mids caused base powerset abilities to become inaccessible.', status: 'fixed' },
   { text: 'First pass at refactoring the import feature: Significant improvements to build importing reliability including preserving enhancement boosts.', status: 'fixed' },
   { text: 'Sidekicks export format 2.0: Tons of unnecessary data removed, reducing file length significantly. 1.0 Exports format is supported', status: 'fixed' },
   { text: 'Added a zoom feature. This just replicates what your browser can already do, but some may not be aware of that functionality so this makes it more discoverable', status: 'fixed' },

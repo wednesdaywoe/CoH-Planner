@@ -209,12 +209,12 @@ export function hydrateBuild(slim: Record<string, any>): Build {
   // Primary powerset
   const primaryId = slim.primary?.id ?? null;
   const primaryDef = primaryId ? getPowerset(primaryId) : null;
-  const primaryPowers = hydratePowers(slim.primary?.powers ?? [], primaryDef?.powers ?? [], primaryDef?.name ?? '');
+  const primaryPowers = hydratePowers(slim.primary?.powers ?? [], primaryDef?.powers ?? [], primaryId ?? '');
 
   // Secondary powerset
   const secondaryId = slim.secondary?.id ?? null;
   const secondaryDef = secondaryId ? getPowerset(secondaryId) : null;
-  const secondaryPowers = hydratePowers(slim.secondary?.powers ?? [], secondaryDef?.powers ?? [], secondaryDef?.name ?? '');
+  const secondaryPowers = hydratePowers(slim.secondary?.powers ?? [], secondaryDef?.powers ?? [], secondaryId ?? '');
 
   // Pools
   const pools: PoolSelection[] = (slim.pools ?? []).map((slimPool: SlimPoolSelection) => {
@@ -222,7 +222,7 @@ export function hydrateBuild(slim: Record<string, any>): Build {
     return {
       id: slimPool.id,
       name: poolDef?.name ?? slimPool.id,
-      powers: hydratePowers(slimPool.powers, poolDef?.powers ?? [], poolDef?.name ?? slimPool.id),
+      powers: hydratePowers(slimPool.powers, poolDef?.powers ?? [], slimPool.id),
     };
   });
 
@@ -233,7 +233,7 @@ export function hydrateBuild(slim: Record<string, any>): Build {
     epicPool = {
       id: slim.epicPool.id,
       name: epicDef?.name ?? slim.epicPool.id,
-      powers: hydratePowers(slim.epicPool.powers, epicDef?.powers ?? [], epicDef?.name ?? slim.epicPool.id),
+      powers: hydratePowers(slim.epicPool.powers, epicDef?.powers ?? [], slim.epicPool.id),
     };
   }
 
@@ -298,7 +298,7 @@ export function hydrateBuild(slim: Record<string, any>): Build {
 /**
  * Hydrate an array of slim powers by matching against powerset definitions.
  */
-function hydratePowers(slimPowers: SlimPower[], powerDefs: readonly Power[], powerSetName: string): SelectedPower[] {
+function hydratePowers(slimPowers: SlimPower[], powerDefs: readonly Power[], powerSetId: string): SelectedPower[] {
   return slimPowers.map((slim) => {
     // Find the matching power definition
     const def = powerDefs.find(
@@ -317,7 +317,7 @@ function hydratePowers(slimPowers: SlimPower[], powerDefs: readonly Power[], pow
       // Full reconstruction: spread power definition, overlay build-specific fields
       return {
         ...def,
-        powerSet: powerSetName,
+        powerSet: powerSetId,
         level: slim.level,
         slots,
         ...(slim.isActive !== undefined ? { isActive: slim.isActive } : {}),
@@ -330,7 +330,7 @@ function hydratePowers(slimPowers: SlimPower[], powerDefs: readonly Power[], pow
     // Fallback: minimal SelectedPower when definition not found
     return {
       name: slim.name,
-      powerSet: powerSetName,
+      powerSet: powerSetId,
       level: slim.level,
       available: 0,
       maxSlots: 6,
