@@ -225,7 +225,13 @@ export async function getMyBuilds(): Promise<SharedBuild[]> {
     .eq('user_id', user.id)
     .order('updated_at', { ascending: false });
 
-  if (error) throw new Error(error.message);
+  if (error) {
+    // Gracefully handle missing user_id column (migration not yet applied)
+    if (error.message.includes('user_id') && error.message.includes('does not exist')) {
+      return [];
+    }
+    throw new Error(error.message);
+  }
   return (data ?? []) as SharedBuild[];
 }
 
