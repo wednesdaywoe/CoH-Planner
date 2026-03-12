@@ -58,17 +58,9 @@ export function SettingsPage() {
               Sign in to manage your shared builds from any device or browser.
               This is optional — you can still share builds anonymously using owner tokens.
             </p>
-            <div className="flex flex-wrap gap-2">
-              <Button variant="primary" onClick={() => login('discord')}>
-                Discord
-              </Button>
-              <Button variant="primary" onClick={() => login('google')}>
-                Google
-              </Button>
-              <Button variant="primary" onClick={() => login('twitch')}>
-                Twitch
-              </Button>
-            </div>
+            <Button variant="primary" onClick={() => login('discord')}>
+              Sign in with Discord
+            </Button>
           </div>
         ) : (
           <div className="space-y-4">
@@ -86,7 +78,7 @@ export function SettingsPage() {
                   {user.user_metadata?.full_name || user.user_metadata?.name || 'User'}
                 </p>
                 <p className="text-xs text-gray-500">
-                  Signed in via {user.app_metadata?.provider === 'google' ? 'Google' : user.app_metadata?.provider === 'twitch' ? 'Twitch' : 'Discord'}
+                  Signed in via Discord
                 </p>
               </div>
             </div>

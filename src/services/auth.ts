@@ -1,11 +1,11 @@
 /**
- * Auth service — wraps Supabase Auth for OAuth providers (Discord, Google, Twitch)
+ * Auth service — wraps Supabase Auth for Discord OAuth
  */
 
 import { supabase } from '@/lib/supabase';
 import type { User, Session } from '@supabase/supabase-js';
 
-export type AuthProvider = 'discord' | 'google' | 'twitch';
+export type AuthProvider = 'discord';
 
 const redirectTo = () => window.location.origin + (import.meta.env.BASE_URL || '/');
 
@@ -21,10 +21,8 @@ export async function signInWithProvider(provider: AuthProvider): Promise<void> 
   if (error) throw error;
 }
 
-/** Convenience aliases */
+/** Convenience alias */
 export const signInWithDiscord = () => signInWithProvider('discord');
-export const signInWithGoogle = () => signInWithProvider('google');
-export const signInWithTwitch = () => signInWithProvider('twitch');
 
 /** Sign out the current user */
 export async function signOut(): Promise<void> {

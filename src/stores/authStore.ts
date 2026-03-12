@@ -1,5 +1,5 @@
 /**
- * Auth Store — manages OAuth state (Discord, Google, Twitch)
+ * Auth Store — manages Discord OAuth state
  *
  * No persistence needed — Supabase persists the session in its own localStorage key.
  */
