@@ -728,6 +728,10 @@ export const ARCHETYPES: ArchetypeRegistry = {
     inherent: {
       name: 'Domination',
       description: 'Build meter by attacking, activate at 90%+ for 2× mez magnitude, 1.5× mez duration, mez protection, and full endurance. Lasts 90s.',
+      effects: {
+        recharge: 200,
+        buffDuration: 90,
+      },
     },
     stats: {
       baseHP: 1017.3519,

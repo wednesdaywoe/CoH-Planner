@@ -56,6 +56,8 @@ export interface InherentPower {
   description: string;
   /** Optional icon override (defaults to auto-generated from archetype + power name) */
   icon?: string;
+  /** Optional effects data (recharge, duration, etc.) for display in the info panel */
+  effects?: import('./power').PowerEffects;
 }
 
 // ============================================
