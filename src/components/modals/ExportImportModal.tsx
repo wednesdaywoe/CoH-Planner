@@ -11,7 +11,7 @@ import { importMidsBuild } from '@/utils/mids-import';
 import type { MidsImportResult } from '@/utils/mids-import';
 import { importGameExport } from '@/utils/game-import';
 import type { GameImportResult } from '@/utils/game-import';
-import { shareBuild } from '@/services/sharedBuilds';
+import { shareBuild, getOwnedBuildIds, getOwnerToken } from '@/services/sharedBuilds';
 import type { BuildExport } from '@/types/build';
 import { generatePopmenu } from '@/utils/export-popmenu';
 import { openPrintView } from '@/utils/export-print';
@@ -66,6 +66,11 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
   const [shareError, setShareError] = useState<string | null>(null);
   const [shareUrl, setShareUrl] = useState<string | null>(null);
   const [shareCopied, setShareCopied] = useState(false);
+  const [shareUpdated, setShareUpdated] = useState(false);
+  const [updateExistingId, setUpdateExistingId] = useState<string | null>(null);
+  const [sharedBuildId, setSharedBuildId] = useState<string | null>(null);
+  const [showOwnerToken, setShowOwnerToken] = useState(false);
+  const [tokenCopied, setTokenCopied] = useState(false);
 
   const { exportBuild, importBuild, importMidsBuild: applyMidsBuild, build } = useBuildStore();
 
@@ -342,6 +347,7 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
     setShareError(null);
     setShareLoading(true);
     setShareUrl(null);
+    setShareUpdated(false);
 
     try {
       const exportData = JSON.parse(exportBuild()) as BuildExport;
@@ -357,9 +363,12 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
         server: shareServer,
         tags,
         build_json: exportData,
+        existingId: updateExistingId ?? undefined,
       });
 
       setShareUrl(result.url);
+      setShareUpdated(result.updated ?? false);
+      setSharedBuildId(result.id);
     } catch (e) {
       setShareError(e instanceof Error ? e.message : 'Failed to share build');
     } finally {
@@ -407,6 +416,11 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
     setShareUrl(null);
     setShareLoading(false);
     setShareCopied(false);
+    setShareUpdated(false);
+    setUpdateExistingId(null);
+    setSharedBuildId(null);
+    setShowOwnerToken(false);
+    setTokenCopied(false);
     setActiveTab('save-load');
     if (midsFileInputRef.current) midsFileInputRef.current.value = '';
     if (gameFileInputRef.current) gameFileInputRef.current.value = '';
@@ -879,7 +893,9 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
             {shareUrl ? (
               <div className="space-y-4">
                 <div className="bg-green-900/20 border border-green-700/50 rounded p-4 text-sm text-green-300">
-                  <p className="font-semibold mb-2">Build shared successfully!</p>
+                  <p className="font-semibold mb-2">
+                    {shareUpdated ? 'Build updated successfully!' : 'Build shared successfully!'}
+                  </p>
                   <p className="text-xs text-green-400 mb-3">Anyone with this link can view your build:</p>
                   <div className="flex gap-2">
                     <input
@@ -897,10 +913,103 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
                       {shareCopied ? 'Copied!' : 'Copy'}
                     </Button>
                   </div>
+                  {!shareUpdated && (
+                    <p className="text-xs text-green-500 mt-2">
+                      You can update or delete this build later from this browser.
+                    </p>
+                  )}
                 </div>
+
+                {/* Owner token backup */}
+                {sharedBuildId && getOwnerToken(sharedBuildId) && (
+                  <div className="bg-gray-800 border border-gray-600 rounded p-3 text-xs">
+                    <button
+                      type="button"
+                      onClick={() => setShowOwnerToken(!showOwnerToken)}
+                      className="flex items-center gap-1 text-gray-400 hover:text-gray-300 font-medium w-full"
+                    >
+                      <svg
+                        className={`w-3 h-3 transition-transform ${showOwnerToken ? 'rotate-90' : ''}`}
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                      Owner Token (backup)
+                    </button>
+                    {showOwnerToken && (
+                      <div className="mt-2 space-y-2">
+                        <p className="text-gray-500">
+                          Save this token to manage your build from another browser or after clearing cache.
+                          You can enter it on the build's detail page to reclaim ownership.
+                        </p>
+                        <div className="flex gap-2">
+                          <input
+                            type="text"
+                            readOnly
+                            value={getOwnerToken(sharedBuildId) ?? ''}
+                            className="flex-1 bg-gray-700 border border-gray-600 rounded px-2 py-1 text-white font-mono text-xs"
+                            onFocus={(e) => e.target.select()}
+                          />
+                          <Button
+                            variant={tokenCopied ? 'secondary' : 'ghost'}
+                            size="sm"
+                            onClick={async () => {
+                              const token = getOwnerToken(sharedBuildId);
+                              if (token) {
+                                await navigator.clipboard.writeText(token);
+                                setTokenCopied(true);
+                                setTimeout(() => setTokenCopied(false), 2000);
+                              }
+                            }}
+                          >
+                            {tokenCopied ? 'Copied!' : 'Copy'}
+                          </Button>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                )}
               </div>
             ) : (
               <>
+                {/* Update existing build option */}
+                {getOwnedBuildIds().length > 0 && (
+                  <div className="bg-gray-800 border border-gray-600 rounded p-3 space-y-2">
+                    <label className="flex items-center gap-2 text-sm text-gray-300 cursor-pointer">
+                      <input
+                        type="checkbox"
+                        checked={updateExistingId !== null}
+                        onChange={(e) => {
+                          if (e.target.checked) {
+                            setUpdateExistingId(getOwnedBuildIds()[0]);
+                          } else {
+                            setUpdateExistingId(null);
+                          }
+                        }}
+                        className="rounded border-gray-600 bg-gray-700 text-green-500 focus:ring-green-500"
+                      />
+                      Update an existing shared build
+                    </label>
+                    {updateExistingId !== null && (
+                      <div>
+                        <label className="block text-xs font-medium text-gray-400 mb-1">Build ID to update</label>
+                        <select
+                          value={updateExistingId}
+                          onChange={(e) => setUpdateExistingId(e.target.value)}
+                          className="w-full bg-gray-700 border border-gray-600 rounded px-3 py-1.5 text-white text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
+                        >
+                          {getOwnedBuildIds().map((id) => (
+                            <option key={id} value={id}>{id}</option>
+                          ))}
+                        </select>
+                        <p className="text-xs text-gray-500 mt-1">This will replace the build data at the existing URL.</p>
+                      </div>
+                    )}
+                  </div>
+                )}
+
                 <div className="bg-gray-800 border border-gray-600 rounded p-4 space-y-2">
                   <h3 className="font-semibold text-gray-300">Build to Share:</h3>
                   <div className="text-sm text-gray-400 space-y-1">
@@ -980,8 +1089,13 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
                 )}
 
                 <div className="bg-green-900/20 border border-green-700/50 rounded p-3 text-sm text-green-300">
-                  <p className="font-semibold mb-1">Share Info:</p>
-                  <p>Your build will be shared publicly. Anyone with the link can view it. No account required.</p>
+                  <p className="font-semibold mb-1">{updateExistingId ? 'Update Info:' : 'Share Info:'}</p>
+                  <p>
+                    {updateExistingId
+                      ? 'This will replace the existing shared build with your current build data. The URL will stay the same.'
+                      : 'Your build will be shared publicly. Anyone with the link can view it. No account required.'
+                    }
+                  </p>
                 </div>
               </>
             )}
@@ -1002,7 +1116,7 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
                 isLoading={shareLoading}
                 disabled={shareLoading || !build.archetype.id}
               >
-                Share Build
+                {updateExistingId ? 'Update Build' : 'Share Build'}
               </Button>
             )
           ) : activeTab === 'import' ? (

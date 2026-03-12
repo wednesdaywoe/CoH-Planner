@@ -21,6 +21,7 @@ export interface SharedBuild {
   tags: string[];
   build_json: BuildExport;
   created_at: string;
+  updated_at: string;
   views: number;
 }
 
@@ -32,6 +33,8 @@ export interface ShareBuildInput {
   server: string;
   tags: string[];
   build_json: BuildExport;
+  /** If set, updates an existing build instead of creating a new one */
+  existingId?: string;
 }
 
 /** Filters for searching shared builds */

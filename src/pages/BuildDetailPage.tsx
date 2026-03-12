@@ -5,7 +5,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from '@tanstack/react-router';
 import { Button } from '@/components/ui/Button';
-import { getSharedBuild, incrementViews } from '@/services/sharedBuilds';
+import { getSharedBuild, incrementViews, isOwnedBuild, deleteBuild, reclaimBuild } from '@/services/sharedBuilds';
 import { useBuildStore } from '@/stores/buildStore';
 import type { SharedBuild } from '@/types/shared';
 
@@ -19,6 +19,13 @@ export function BuildDetailPage() {
   const [error, setError] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
   const [loadConfirm, setLoadConfirm] = useState(false);
+  const [deleteConfirm, setDeleteConfirm] = useState(false);
+  const [deleteLoading, setDeleteLoading] = useState(false);
+  const [deleteError, setDeleteError] = useState<string | null>(null);
+  const [showReclaim, setShowReclaim] = useState(false);
+  const [reclaimToken, setReclaimToken] = useState('');
+  const [reclaimSuccess, setReclaimSuccess] = useState(false);
+  const [owned, setOwned] = useState(false);
 
   useEffect(() => {
     let cancelled = false;
@@ -33,6 +40,7 @@ export function BuildDetailPage() {
           setError('Build not found');
         } else {
           setBuild(data);
+          setOwned(isOwnedBuild(id));
           incrementViews(id);
         }
       } catch (e) {
@@ -63,6 +71,19 @@ export function BuildDetailPage() {
     const success = importBuild(JSON.stringify(build.build_json));
     if (success) {
       navigate({ to: '/' });
+    }
+  };
+
+  const handleDelete = async () => {
+    setDeleteLoading(true);
+    setDeleteError(null);
+    try {
+      await deleteBuild(id);
+      navigate({ to: '/builds' });
+    } catch (e) {
+      setDeleteError(e instanceof Error ? e.message : 'Failed to delete build');
+    } finally {
+      setDeleteLoading(false);
     }
   };
 
@@ -117,6 +138,25 @@ export function BuildDetailPage() {
             >
               {copied ? 'Copied!' : 'Copy Link'}
             </Button>
+            {owned ? (
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setDeleteConfirm(true)}
+                className="text-red-400 hover:text-red-300"
+              >
+                Delete
+              </Button>
+            ) : (
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setShowReclaim(!showReclaim)}
+                className="text-gray-400 hover:text-gray-300"
+              >
+                Reclaim
+              </Button>
+            )}
           </div>
         </div>
 
@@ -140,6 +180,74 @@ export function BuildDetailPage() {
           <span>{build.views} views</span>
         </div>
       </div>
+
+      {/* Delete confirmation */}
+      {deleteConfirm && (
+        <div className="bg-red-900/20 border border-red-700/50 rounded-lg p-4 mb-6 space-y-3">
+          <p className="text-sm text-red-300 font-semibold">Are you sure you want to delete this build?</p>
+          <p className="text-xs text-red-400">This action cannot be undone. The build will be permanently removed.</p>
+          {deleteError && (
+            <p className="text-xs text-red-300">{deleteError}</p>
+          )}
+          <div className="flex gap-2 justify-end">
+            <Button variant="secondary" size="sm" onClick={() => setDeleteConfirm(false)} disabled={deleteLoading}>
+              Cancel
+            </Button>
+            <Button
+              variant="primary"
+              size="sm"
+              onClick={handleDelete}
+              isLoading={deleteLoading}
+              className="bg-red-600 hover:bg-red-700"
+            >
+              Delete Permanently
+            </Button>
+          </div>
+        </div>
+      )}
+
+      {/* Reclaim ownership */}
+      {showReclaim && (
+        <div className="bg-gray-800 border border-gray-700 rounded-lg p-4 mb-6 space-y-3">
+          <p className="text-sm text-gray-300 font-semibold">Reclaim Build</p>
+          <p className="text-xs text-gray-400">
+            Enter the owner token you received when you originally shared this build.
+          </p>
+          <div className="flex gap-2">
+            <input
+              type="text"
+              value={reclaimToken}
+              onChange={(e) => setReclaimToken(e.target.value)}
+              placeholder="Paste owner token..."
+              className="flex-1 bg-gray-700 border border-gray-600 rounded px-3 py-1.5 text-white text-sm font-mono placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+            <Button
+              variant="primary"
+              size="sm"
+              disabled={!reclaimToken.trim()}
+              onClick={() => {
+                reclaimBuild(id, reclaimToken.trim());
+                setOwned(true);
+                setShowReclaim(false);
+                setReclaimToken('');
+                setReclaimSuccess(true);
+                setTimeout(() => setReclaimSuccess(false), 3000);
+              }}
+            >
+              Reclaim
+            </Button>
+          </div>
+          <p className="text-xs text-gray-500">
+            If the token is incorrect, future update or delete attempts will fail.
+          </p>
+        </div>
+      )}
+
+      {reclaimSuccess && (
+        <div className="bg-green-900/20 border border-green-700/50 rounded-lg p-3 mb-6 text-sm text-green-300">
+          Ownership reclaimed. You can now update or delete this build.
+        </div>
+      )}
 
       {/* Description */}
       {build.description && (

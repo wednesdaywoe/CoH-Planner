@@ -20,7 +20,9 @@ CREATE TABLE shared_builds (
   tags TEXT[] DEFAULT '{}',
   build_json JSONB NOT NULL,
   created_at TIMESTAMPTZ DEFAULT now(),
-  views INTEGER DEFAULT 0
+  updated_at TIMESTAMPTZ DEFAULT now(),
+  views INTEGER DEFAULT 0,
+  owner_token_hash TEXT
 );
 
 -- Indexes for search and filtering
@@ -71,3 +73,9 @@ BEGIN
   UPDATE shared_builds SET views = views + 1 WHERE id = build_id;
 END;
 $$ LANGUAGE plpgsql SECURITY DEFINER SET search_path = public;
+
+-- ============================================
+-- Migration: Owner token support (run on existing databases)
+-- ============================================
+-- ALTER TABLE shared_builds ADD COLUMN IF NOT EXISTS owner_token_hash TEXT;
+-- ALTER TABLE shared_builds ADD COLUMN IF NOT EXISTS updated_at TIMESTAMPTZ DEFAULT now();

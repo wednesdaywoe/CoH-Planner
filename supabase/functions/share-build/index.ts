@@ -4,6 +4,8 @@
  * Validates build data, applies rate limiting, generates a short ID,
  * and inserts the shared build into the database.
  *
+ * Supports both creating new builds and updating existing ones via owner token.
+ *
  * Deploy with: supabase functions deploy share-build
  */
 
@@ -18,6 +20,13 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 };
 
+/** SHA-256 hash a string, returning hex digest */
+async function sha256(input: string): Promise<string> {
+  const data = new TextEncoder().encode(input);
+  const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+  return [...new Uint8Array(hashBuffer)].map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
 Deno.serve(async (req: Request) => {
   // Handle CORS preflight
   if (req.method === 'OPTIONS') {
@@ -26,6 +35,7 @@ Deno.serve(async (req: Request) => {
 
   try {
     const body = await req.json();
+    const isUpdate = !!(body.existing_id && body.owner_token);
 
     // ---- Validate required fields ----
     const { name, archetype, archetype_name, primary_set, primary_name, secondary_set, secondary_name, level, build_json } = body;
@@ -81,15 +91,11 @@ Deno.serve(async (req: Request) => {
     // Record this request for rate limiting
     await supabase.from('rate_limits').insert({ ip: clientIp, action: 'share' });
 
-    // ---- Generate ID and insert ----
-    const id = nanoid(10);
-
     const tags = Array.isArray(body.tags)
       ? body.tags.filter((t: unknown) => typeof t === 'string').slice(0, 10)
       : [];
 
-    const { error: insertError } = await supabase.from('shared_builds').insert({
-      id,
+    const buildData = {
       name: (name || 'Untitled Build').slice(0, 200),
       description: (body.description || '').slice(0, 500),
       archetype,
@@ -103,6 +109,55 @@ Deno.serve(async (req: Request) => {
       server: (body.server || '').slice(0, 50),
       tags,
       build_json,
+    };
+
+    // ---- UPDATE existing build ----
+    if (isUpdate) {
+      const tokenHash = await sha256(body.owner_token);
+
+      // Verify ownership
+      const { data: existing } = await supabase
+        .from('shared_builds')
+        .select('id')
+        .eq('id', body.existing_id)
+        .eq('owner_token_hash', tokenHash)
+        .single();
+
+      if (!existing) {
+        return new Response(
+          JSON.stringify({ error: 'Build not found or invalid owner token' }),
+          { status: 403, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        );
+      }
+
+      const { error: updateError } = await supabase
+        .from('shared_builds')
+        .update({ ...buildData, updated_at: new Date().toISOString() })
+        .eq('id', body.existing_id);
+
+      if (updateError) {
+        console.error('Update error:', updateError);
+        return new Response(
+          JSON.stringify({ error: 'Failed to update build' }),
+          { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        );
+      }
+
+      return new Response(
+        JSON.stringify({ id: body.existing_id, url: `/builds/${body.existing_id}`, updated: true }),
+        { status: 200, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+
+    // ---- CREATE new build ----
+    const id = nanoid(10);
+    const ownerToken = crypto.randomUUID();
+    const ownerTokenHash = await sha256(ownerToken);
+
+    const { error: insertError } = await supabase.from('shared_builds').insert({
+      id,
+      ...buildData,
+      owner_token_hash: ownerTokenHash,
     });
 
     if (insertError) {
@@ -114,7 +169,7 @@ Deno.serve(async (req: Request) => {
     }
 
     return new Response(
-      JSON.stringify({ id, url: `/builds/${id}` }),
+      JSON.stringify({ id, url: `/builds/${id}`, owner_token: ownerToken }),
       { status: 200, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
     );
   } catch (e) {
