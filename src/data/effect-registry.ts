@@ -365,7 +365,6 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
     colorClass: STAT_COLORS.rechargeBuff,
     format: 'percent',
     calculation: 'buff',
-    enhancementAspect: 'recharge',
     priority: 4,
   },
   recoveryBuff: {

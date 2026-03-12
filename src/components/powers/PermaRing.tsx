@@ -42,7 +42,7 @@ export function PermaRing({ power, size, children }: PermaRingProps) {
       exemplarMode ? exemplarLevel : undefined,
     );
 
-    return calculatePermaInfo(power, enhBonuses, globalBonuses.recharge ?? 0);
+    return calculatePermaInfo(power, enhBonuses, (globalBonuses.recharge ?? 0) / 100);
   }, [permaTracked, power, globalIOLevel, globalBonuses.recharge, exemplarMode, exemplarLevel, buildLevel]);
 
   if (!permaTracked || !permaInfo) {
@@ -50,23 +50,19 @@ export function PermaRing({ power, size, children }: PermaRingProps) {
   }
 
   // SVG ring dimensions
-  const ringSize = size + 4; // 2px padding around icon
+  const ringSize = size + 8; // 4px padding around icon for visible gap
   const center = ringSize / 2;
   const radius = (ringSize - 2) / 2; // 1px stroke offset
   const circumference = 2 * Math.PI * radius;
   const dashOffset = circumference * (1 - permaInfo.permaPercent / 100);
 
-  // Color based on perma percentage
-  const ringColor = permaInfo.isPerma
-    ? '#22c55e' // green-500
-    : permaInfo.permaPercent > 50
-      ? '#eab308' // yellow-500
-      : '#ef4444'; // red-500
+  // Ring color: SKMagenta
+  const ringColor = '#D62BCE';
 
   const tooltipContent = (
     <div className="text-[10px] space-y-0.5 min-w-[120px]">
       <div className="font-semibold text-center mb-1">
-        <span className={permaInfo.isPerma ? 'text-green-400' : permaInfo.permaPercent > 50 ? 'text-yellow-400' : 'text-red-400'}>
+        <span className="text-sk-magenta">
           {permaInfo.isPerma ? 'PERMA' : `${permaInfo.permaPercent.toFixed(1)}% to Perma`}
         </span>
       </div>
@@ -95,7 +91,7 @@ export function PermaRing({ power, size, children }: PermaRingProps) {
 
   return (
     <Tooltip content={tooltipContent} position="top" delay={100}>
-      <div className="relative inline-flex items-center justify-center" style={{ width: ringSize, height: ringSize }}>
+      <div className="relative inline-flex items-center justify-center align-top" style={{ width: ringSize, height: ringSize }}>
         {/* SVG ring */}
         <svg
           className="absolute inset-0"

@@ -29,7 +29,14 @@ export interface PermaInfo {
 
 /**
  * Check if a power is eligible for perma tracking.
- * Requires both a recharge time and a buff duration.
+ *
+ * A power is perma-eligible when keeping it active permanently is meaningful:
+ * - Must have both a recharge time and a duration (buff, effect, or summon)
+ * - For powers that deal damage (attacks): require recharge >= 2× duration, since
+ *   the duration is typically a hold/mez that roughly matches recharge (Dark Grasp).
+ *   This still includes buff-attacks like Soul Drain (120s rech / 30s dur).
+ * - For non-damage powers (buffs, summons): require recharge > duration, a looser
+ *   threshold that includes Lightning Storm (90s rech / 60s dur).
  */
 export function isPermaEligible(power: Power | SelectedPower): boolean {
   const effects = power.effects;
@@ -37,7 +44,10 @@ export function isPermaEligible(power: Power | SelectedPower): boolean {
 
   const recharge = getRecharge(effects, power);
   const duration = getDuration(effects);
-  return recharge > 0 && duration > 0;
+  if (recharge <= 0 || duration <= 0) return false;
+
+  const hasDamage = !!(power as Power).damage;
+  return hasDamage ? recharge >= duration * 2 : recharge > duration;
 }
 
 /**
@@ -81,9 +91,10 @@ function getRecharge(effects: PowerEffects, power: Power | SelectedPower): numbe
   return 0;
 }
 
-/** Extract duration from effects (buffDuration or effectDuration) */
+/** Extract duration from effects (buffDuration, effectDuration, or summon duration) */
 function getDuration(effects: PowerEffects): number {
   if (typeof effects.buffDuration === 'number' && effects.buffDuration > 0) return effects.buffDuration;
   if (typeof effects.effectDuration === 'number' && effects.effectDuration > 0) return effects.effectDuration;
+  if (effects.summon?.duration && effects.summon.duration > 0) return effects.summon.duration;
   return 0;
 }

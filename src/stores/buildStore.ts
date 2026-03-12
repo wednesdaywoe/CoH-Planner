@@ -29,6 +29,7 @@ import {
   MAX_POWER_POOLS,
   MAX_POWER_PICKS,
   EPIC_POOL_LEVEL,
+  POOL_UNLOCK_LEVEL,
   getInherentPowers,
   getInherentPowerDef,
   getArchetypeInherentPowers,
@@ -806,7 +807,10 @@ export const useBuildStore = create<BuildStore>()(
           // This allows picking powers in any order — each gets placed at the
           // earliest legal level, and the chronological view shows them correctly.
           if (category !== 'inherent') {
-            const minLevel = (power.available ?? 0) + 1;
+            const categoryMin = category === 'pool' ? POOL_UNLOCK_LEVEL
+              : category === 'epic' ? EPIC_POOL_LEVEL
+              : 1;
+            const minLevel = Math.max((power.available ?? 0) + 1, categoryMin);
             const nextSequential = calculateCorrectLevel(state.build);
             if (nextSequential >= minLevel) {
               power = { ...power, level: nextSequential };

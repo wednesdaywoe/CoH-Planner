@@ -361,6 +361,10 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
     ...(power.stats?.maxTargets && { maxTargets: power.stats.maxTargets }),
     // Healing from damage array
     ...(healFromDamage && { healing: healFromDamage }),
+    // Surface summon duration as buffDuration when no explicit duration exists
+    ...(!baseEffects?.buffDuration && !baseEffects?.effectDuration && baseEffects?.summon?.duration && {
+      buffDuration: baseEffects.summon.duration,
+    }),
   };
 
   // Get archetype modifier for buff/debuff calculations
@@ -890,7 +894,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
       {isPermaEligible(power) && (() => {
         const permaTracked = useUIStore.getState().permaTrackedPowers.includes(power.name);
         const togglePerma = useUIStore.getState().togglePermaTracked;
-        const permaInfo = calculatePermaInfo(power, enhancementBonuses, globalBonuses.recharge ?? 0);
+        const permaInfo = calculatePermaInfo(power, enhancementBonuses, (globalBonuses.recharge ?? 0) / 100);
 
         return (
           <div className="border-t border-slate-700 pt-2 mt-2">
@@ -902,7 +906,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
                 onClick={() => togglePerma(power.name)}
                 className={`text-[9px] px-2 py-0.5 rounded border transition-colors ${
                   permaTracked
-                    ? 'bg-cyan-500/20 border-cyan-500/50 text-cyan-400'
+                    ? 'bg-sk-magenta/20 border-sk-magenta/50 text-sk-magenta'
                     : 'bg-slate-800 border-slate-600 text-slate-400 hover:border-slate-500'
                 }`}
               >
@@ -915,15 +919,11 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
                 <div className="flex items-center gap-2">
                   <div className="flex-1 h-1.5 bg-slate-700 rounded-full overflow-hidden">
                     <div
-                      className={`h-full rounded-full transition-all ${
-                        permaInfo.isPerma ? 'bg-green-500' : permaInfo.permaPercent > 50 ? 'bg-yellow-500' : 'bg-red-500'
-                      }`}
+                      className="h-full rounded-full transition-all bg-sk-magenta"
                       style={{ width: `${permaInfo.permaPercent}%` }}
                     />
                   </div>
-                  <span className={`text-[10px] font-mono font-semibold min-w-[3rem] text-right ${
-                    permaInfo.isPerma ? 'text-green-400' : permaInfo.permaPercent > 50 ? 'text-yellow-400' : 'text-red-400'
-                  }`}>
+                  <span className="text-[10px] font-mono font-semibold min-w-[3rem] text-right text-sk-magenta">
                     {permaInfo.isPerma ? 'PERMA' : `${permaInfo.permaPercent.toFixed(1)}%`}
                   </span>
                 </div>
