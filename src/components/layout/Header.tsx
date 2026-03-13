@@ -134,7 +134,7 @@ export function Header() {
   return (
     <header className="bg-slate-800 border-b border-slate-700 px-4 py-2 space-y-2">
       {/* Row 1: Build identity + actions */}
-      <div className="flex items-center gap-2 flex-nowrap overflow-x-auto md:flex-wrap md:overflow-x-visible scrollbar-thin">
+      <div className="flex items-center gap-2 flex-wrap">
         {/* Build name */}
         <input
           type="text"
@@ -143,19 +143,21 @@ export function Header() {
           value={build.name}
           onChange={(e) => setBuildName(e.target.value)}
           placeholder="Build Name"
-          className="bg-slate-700 border border-slate-600 rounded px-3 py-1.5 text-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 w-40 min-w-[120px]"
+          className="bg-slate-700 border border-slate-600 rounded px-3 py-1.5 text-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 w-32 sm:w-40 min-w-[100px]"
         />
 
-        {/* Server/Dataset selector */}
-        <Tooltip content="Select your server dataset. Rebirth and Thunderspy support is planned for a future update.">
-          <Select
-            id="server-select"
-            name="server"
-            options={SERVER_OPTIONS}
-            value="homecoming"
-            className="max-w-[180px] min-w-[120px]"
-          />
-        </Tooltip>
+        {/* Server/Dataset selector (hidden on small screens - only one active option) */}
+        <div className="hidden sm:block">
+          <Tooltip content="Select your server dataset. Rebirth and Thunderspy support is planned for a future update.">
+            <Select
+              id="server-select"
+              name="server"
+              options={SERVER_OPTIONS}
+              value="homecoming"
+              className="max-w-[180px] min-w-[120px]"
+            />
+          </Tooltip>
+        </div>
 
         {/* Archetype selector */}
         <Select
@@ -164,19 +166,19 @@ export function Header() {
           options={ARCHETYPE_OPTIONS}
           value={archetypeId || ''}
           onChange={handleArchetypeChange}
-          className="max-w-[200px] min-w-[125px]"
+          className="max-w-[200px] min-w-[110px]"
           highlight={!archetypeId}
         />
 
-        {/* Primary & Secondary (grouped to prevent flex split) */}
-        <div className="flex items-center gap-2 shrink-0">
+        {/* Primary & Secondary (grouped to prevent flex split on desktop) */}
+        <div className="flex items-center gap-2 shrink-0 sm:shrink-0 max-sm:shrink">
           <Select
             id="primary-select"
             name="primary"
             options={archetypeId ? primaryOptions : [{ value: '', label: 'Select Primary...' }]}
             value={build.primary.id || ''}
             onChange={(e) => setPrimary(e.target.value)}
-            className="max-w-[200px] min-w-[125px]"
+            className="max-w-[200px] min-w-[110px]"
             disabled={!archetypeId}
             highlight={!!archetypeId && !build.primary.id}
           />
@@ -186,7 +188,7 @@ export function Header() {
             options={archetypeId ? secondaryOptions : [{ value: '', label: 'Select Secondary...' }]}
             value={build.secondary.id || ''}
             onChange={(e) => setSecondary(e.target.value)}
-            className="max-w-[200px] min-w-[125px]"
+            className="max-w-[200px] min-w-[110px]"
             disabled={!archetypeId}
             highlight={!!archetypeId && !build.secondary.id}
           />
@@ -235,7 +237,7 @@ export function Header() {
             min={1}
             max={MAX_LEVEL}
             onChange={(e) => setLevel(Number(e.target.value))}
-            className="w-24"
+            className="hidden sm:block w-24"
             showValue={false}
             showRange={false}
           />
@@ -250,7 +252,10 @@ export function Header() {
           style={{ background: '#4f46e5', borderColor: '#6366f1' }}
           className="text-white hover:!bg-indigo-700"
         >
-          {isOnBuildsPage ? 'Back to Planner' : 'Shared Builds'}
+          <svg className="w-4 h-4 sm:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+          </svg>
+          <span className="hidden sm:inline">{isOnBuildsPage ? 'Back to Planner' : 'Shared Builds'}</span>
         </Button>
 
         {/* Action menu */}
@@ -263,18 +268,18 @@ export function Header() {
         {/* Settings popover (Target, Slot Levels, Exemplar, UI Scale, Origin, Server) */}
         <SettingsPopover />
 
-        {/* Discord auth */}
-        {supabase && <DiscordAuthButton />}
+        {/* Discord auth (hidden on very small screens, accessible via Settings page) */}
+        {supabase && <div className="hidden sm:block"><DiscordAuthButton /></div>}
 
         {/* Version */}
-        <span className="text-xs text-slate-500 ml-auto whitespace-nowrap">
+        <span className="hidden md:inline text-xs text-slate-500 ml-auto whitespace-nowrap">
           v{APP_VERSION} — {LAST_UPDATED}
         </span>
       </div>
 
       {/* Row 2: AT-specific mechanics (conditional) */}
       {hasATMechanics && (
-        <div className="flex items-center gap-2 flex-nowrap overflow-x-auto md:flex-wrap md:overflow-x-visible scrollbar-thin">
+        <div className="flex items-center gap-2 flex-wrap">
           <ATMechanics archetypeId={archetypeId!} />
         </div>
       )}

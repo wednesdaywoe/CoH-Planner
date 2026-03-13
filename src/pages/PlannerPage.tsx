@@ -224,7 +224,7 @@ export function PlannerPage() {
     <>
       <div
         className={`
-          grid gap-px bg-slate-700 flex-1 overflow-auto
+          grid gap-px bg-slate-700 flex-1 overflow-auto pb-16 md:pb-0
           grid-cols-1
           md:grid-cols-2
           ${undocked ? 'lg:grid-cols-[0.8fr_1fr_1fr_1fr]' : 'lg:grid-cols-[0.8fr_1fr_1fr_1fr_1fr]'}
