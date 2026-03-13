@@ -365,6 +365,7 @@ export function StatsDashboard() {
             onSlotClick={openIncarnateModal}
             incarnateActive={incarnateActive}
             onToggleActive={toggleIncarnateActive}
+            horizontal
           />
           {isLevel50 && (
             <button

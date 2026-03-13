@@ -15,13 +15,14 @@ interface IncarnateSlotGridProps {
   onSlotClick: (slotId: IncarnateSlotId) => void;
   incarnateActive: IncarnateActiveState;
   onToggleActive: (slotId: ToggleableIncarnateSlot) => void;
+  horizontal?: boolean;
 }
 
-export function IncarnateSlotGrid({ incarnates, disabled, onSlotClick, incarnateActive, onToggleActive }: IncarnateSlotGridProps) {
+export function IncarnateSlotGrid({ incarnates, disabled, onSlotClick, incarnateActive, onToggleActive, horizontal }: IncarnateSlotGridProps) {
   const slots = getAllIncarnateSlots();
 
   return (
-    <div className="grid grid-cols-3 gap-1">
+    <div className={horizontal ? "grid grid-cols-6 gap-1" : "grid grid-cols-3 gap-1"}>
       {INCARNATE_SLOT_ORDER.map((slotId) => {
         const slot = slots.find((s) => s.id === slotId);
         if (!slot) return null;
