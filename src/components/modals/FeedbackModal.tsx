@@ -7,7 +7,6 @@ import { useState } from 'react';
 import { Modal, ModalBody, ModalFooter, ModalHeader } from './Modal';
 import { Button } from '../ui/Button';
 import { useBuildStore } from '@/stores/buildStore';
-import { useUIStore } from '@/stores/uiStore';
 
 // Worker endpoint URL - update this after deploying the Cloudflare Worker
 const FEEDBACK_API_URL = 'https://coh-planner-feedback.wedswoe.workers.dev';
@@ -52,7 +51,6 @@ export function FeedbackModal({ isOpen, onClose }: FeedbackModalProps) {
   const [snapshotCopied, setSnapshotCopied] = useState(false);
   const [status, setStatus] = useState<SubmitStatus>('idle');
   const [errorMessage, setErrorMessage] = useState('');
-  const openKnownIssuesModal = useUIStore((s) => s.openKnownIssuesModal);
 
   const build = useBuildStore((s) => s.build);
   const exportBuild = useBuildStore((s) => s.exportBuild);
