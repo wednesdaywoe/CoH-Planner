@@ -13066,16 +13066,6 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           }
         ]
       },
-      {
-        "pieces": 6,
-        "effects": [
-          {
-            "stat": "recharge",
-            "value": 7.5,
-            "desc": "+8% Recharge"
-          }
-        ]
-      }
     ],
     "pieces": [
       {

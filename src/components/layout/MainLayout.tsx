@@ -32,7 +32,7 @@ export function MainLayout({ children }: MainLayoutProps) {
   return (
     <div
       className="min-h-screen bg-gray-950 text-gray-100 flex flex-col"
-      style={uiScale !== 1 ? { zoom: uiScale } : undefined}
+      style={uiScale !== 1 ? { zoom: uiScale, overflowX: 'clip' as const } : undefined}
     >
       <UpdateBanner visible={updateAvailable} />
       <Header />

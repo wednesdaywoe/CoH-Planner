@@ -196,7 +196,7 @@ export function Header() {
 
   return (
     <header className="bg-slate-800 border-b border-slate-700 px-4 py-2">
-      <div className="flex items-center gap-2 flex-wrap">
+      <div className="flex items-center gap-2 flex-nowrap overflow-x-auto md:flex-wrap md:overflow-x-visible scrollbar-thin">
         {/* Build name */}
         <input
           type="text"
