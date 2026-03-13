@@ -279,35 +279,6 @@ export function StatsDashboard() {
             </span>
           </Tooltip>
           <div className="w-px h-4 bg-gray-700 mx-0.5" />
-          {/* Incarnate button - only visible when incarnate panel is hidden (small screens) */}
-          <button
-            onClick={() => openIncarnateModal()}
-            className={`flex md:hidden items-center gap-1.5 px-2 py-1 text-xs rounded transition-colors ${
-              !isLevel50
-                ? 'text-gray-500 cursor-not-allowed opacity-50'
-                : 'text-gray-400 hover:text-purple-300 hover:bg-gray-800'
-            }`}
-            title={isLevel50 ? "Select incarnate powers" : "Incarnate powers unlock at level 50"}
-            disabled={!isLevel50}
-          >
-            <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-            </svg>
-            <span className="hidden sm:inline">Incarnate</span>
-          </button>
-          {/* Crafting button - only visible when incarnate panel is hidden (small screens) */}
-          {isLevel50 && (
-            <button
-              onClick={openIncarnateCraftingModal}
-              className="flex md:hidden items-center gap-1.5 px-2 py-1 text-xs text-blue-400 hover:text-blue-300 hover:bg-gray-800 rounded transition-colors"
-              title="Incarnate Crafting Checklist"
-            >
-              <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
-              </svg>
-              <span className="hidden sm:inline">Crafting</span>
-            </button>
-          )}
           <button
             onClick={openAccoladesModal}
             className="flex items-center gap-1.5 px-2 py-1 text-xs text-gray-400 hover:text-amber-300 hover:bg-gray-800 rounded transition-colors"
@@ -383,6 +354,27 @@ export function StatsDashboard() {
             />
             <span className="hidden sm:inline">About</span>
           </button>
+        </div>
+
+        {/* Mobile Incarnate grid - visible below md when the full panel is hidden */}
+        <div className="flex md:hidden items-center gap-2 pt-1 mt-1 border-t border-gray-800">
+          <div className="text-[10px] font-semibold text-gray-500 uppercase tracking-wide shrink-0">Incarnate</div>
+          <IncarnateSlotGrid
+            incarnates={incarnates}
+            disabled={!isLevel50}
+            onSlotClick={openIncarnateModal}
+            incarnateActive={incarnateActive}
+            onToggleActive={toggleIncarnateActive}
+          />
+          {isLevel50 && (
+            <button
+              onClick={openIncarnateCraftingModal}
+              className="text-[10px] text-blue-400 hover:text-blue-300 border border-blue-800 hover:border-blue-600 bg-blue-900/30 hover:bg-blue-900/50 transition-colors px-1.5 py-0.5 rounded shrink-0"
+              title="Incarnate Crafting Checklist"
+            >
+              Crafting
+            </button>
+          )}
         </div>
       </div>
 

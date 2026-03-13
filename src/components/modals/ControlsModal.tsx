@@ -1,7 +1,9 @@
 /**
- * ControlsModal - Quick reference for all desktop and mobile interactions.
+ * ControlsModal - Quick reference for interactions, adaptive to device type.
+ * Shows desktop or mobile controls based on the user's device, with a toggle to see both.
  */
 
+import { useState } from 'react';
 import { Modal, ModalBody } from './Modal';
 
 interface ControlsModalProps {
@@ -41,62 +43,114 @@ function ControlItem({ action, description }: { action: string; description: str
   );
 }
 
+// Detect touch device (coarse pointer = phone/tablet, fine pointer = mouse)
+function isTouchDevice(): boolean {
+  if (typeof window === 'undefined') return false;
+  return window.matchMedia('(pointer: coarse)').matches;
+}
+
+type DeviceView = 'auto' | 'desktop' | 'mobile';
+
 export function ControlsModal({ isOpen, onClose }: ControlsModalProps) {
+  const [view, setView] = useState<DeviceView>('auto');
+
+  const showDesktop = view === 'desktop' || (view === 'auto' && !isTouchDevice());
+  const showMobile = view === 'mobile' || (view === 'auto' && isTouchDevice());
+
   return (
     <Modal isOpen={isOpen} onClose={onClose} title="Controls" size="lg">
       <ModalBody>
+        {/* Device toggle */}
+        <div className="flex items-center gap-1 mb-4 bg-gray-800 border border-gray-700 rounded-lg p-1 w-fit">
+          {(['auto', 'desktop', 'mobile'] as const).map((v) => (
+            <button
+              key={v}
+              onClick={() => setView(v)}
+              className={`px-3 py-1 text-xs rounded-md transition-colors ${
+                view === v
+                  ? 'bg-gray-700 text-white font-medium'
+                  : 'text-gray-400 hover:text-white'
+              }`}
+            >
+              {v === 'auto' ? `Auto (${isTouchDevice() ? 'Mobile' : 'Desktop'})` : v === 'desktop' ? 'Desktop' : 'Mobile'}
+            </button>
+          ))}
+        </div>
+
         <div className="space-y-4">
           {/* Desktop — Planner */}
-          <ControlSection
-            title="Desktop — Planner"
-            color="text-cyan-400"
-            icon={
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-              </svg>
-            }
-          >
-            <ControlItem action="Hover" description="See power details in the info panel" />
-            <ControlItem action="Click" description="Select powers or open the enhancement picker" />
-            <ControlItem action="Right-click a power" description="Lock its info in the panel" />
-            <ControlItem action="Right-click a slot" description="Remove enhancement or remove the slot" />
-            <ControlItem action="Shift + Right-click a slot" description="Slot Comparison Tool and Bulk actions menu" />
-            <ControlItem action="Drag the + button" description="Add multiple slots at once" />
-          </ControlSection>          
+          {showDesktop && (
+            <ControlSection
+              title="Planner"
+              color="text-cyan-400"
+              icon={
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              }
+            >
+              <ControlItem action="Hover" description="See power details in the info panel" />
+              <ControlItem action="Click" description="Select powers or open the enhancement picker" />
+              <ControlItem action="Right-click a power" description="Lock its info in the panel" />
+              <ControlItem action="Right-click a slot" description="Remove enhancement or remove the slot" />
+              <ControlItem action="Shift + Right-click a slot" description="Slot Comparison Tool and Bulk actions menu" />
+              <ControlItem action="Drag the + button" description="Add multiple slots at once" />
+            </ControlSection>
+          )}
 
           {/* Desktop — Enhancement Picker */}
-          <ControlSection
-            title="Desktop — Enhancement Picker"
-            color="text-green-400"
-            icon={
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zm10 0a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zm10 0a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
-              </svg>
-            }
-          >
-            <ControlItem action="Click a piece" description="Slot a single enhancement" />
-            <ControlItem action="Shift+Click" description="Multi-select pieces across sets" />
-            <ControlItem action="Click a selected piece" description="Slot all selected pieces at once" />
-            <ControlItem action="Drag across pieces" description="Range-select within a set" />
-          </ControlSection>
+          {showDesktop && (
+            <ControlSection
+              title="Enhancement Picker"
+              color="text-green-400"
+              icon={
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zm10 0a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zm10 0a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+                </svg>
+              }
+            >
+              <ControlItem action="Click a piece" description="Slot a single enhancement" />
+              <ControlItem action="Shift+Click" description="Multi-select pieces across sets" />
+              <ControlItem action="Click a selected piece" description="Slot all selected pieces at once" />
+              <ControlItem action="Drag across pieces" description="Range-select within a set" />
+            </ControlSection>
+          )}
 
           {/* Mobile — Planner */}
-          <ControlSection
-            title="Mobile — Planner"
-            color="text-amber-400"
-            icon={
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
-              </svg>
-            }
-          >
-            <ControlItem action="Tap" description="Select powers or open the enhancement picker" />
-            <ControlItem action="Long-press a power" description="View its info in the panel" />
-            <ControlItem action="Touch and hold a slot" description="Action menu (add, remove, clear)" />
-            <ControlItem action="Touch and drag the + button" description="Add multiple slots" />
-          </ControlSection>
+          {showMobile && (
+            <ControlSection
+              title="Planner"
+              color="text-amber-400"
+              icon={
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                </svg>
+              }
+            >
+              <ControlItem action="Tap" description="Select powers or open the enhancement picker" />
+              <ControlItem action="Long-press a power" description="View its info in the panel" />
+              <ControlItem action="Touch and hold a slot" description="Action menu (add, remove, clear)" />
+              <ControlItem action="Touch and drag the + button" description="Add multiple slots" />
+            </ControlSection>
+          )}
 
-          {/* Dashboard */}
+          {/* Mobile — Enhancement Picker */}
+          {showMobile && (
+            <ControlSection
+              title="Enhancement Picker"
+              color="text-green-400"
+              icon={
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zm10 0a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zm10 0a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+                </svg>
+              }
+            >
+              <ControlItem action="Tap a piece" description="Slot a single enhancement" />
+              <ControlItem action="Tap and drag across pieces" description="Range-select within a set" />
+            </ControlSection>
+          )}
+
+          {/* Dashboard (always shown — same on both) */}
           <ControlSection
             title="Dashboard"
             color="text-purple-400"
@@ -106,8 +160,8 @@ export function ControlsModal({ isOpen, onClose }: ControlsModalProps) {
               </svg>
             }
           >
-            <ControlItem action="Click a stat" description="Track it (highlights IO Sets that boost that stat)" />
-            <ControlItem action="Click a tracked stat" description="Untrack it" />
+            <ControlItem action={showMobile ? "Tap a stat" : "Click a stat"} description="Track it (highlights IO Sets that boost that stat)" />
+            <ControlItem action={showMobile ? "Tap a tracked stat" : "Click a tracked stat"} description="Untrack it" />
           </ControlSection>
         </div>
       </ModalBody>
