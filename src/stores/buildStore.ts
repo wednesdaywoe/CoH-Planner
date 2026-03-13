@@ -38,6 +38,7 @@ import {
   getIOSet,
   GRANTED_POWER_GROUPS,
   getExcludedPools,
+  getAllPowerPools,
 } from '@/data';
 import type { InherentPowerDef } from '@/data';
 import { computeSetTracking } from '@/utils/calculations/set-tracking';
@@ -213,6 +214,50 @@ function syncBuildDefinitions(build: Build): void {
       if (fixed !== build.secondary.powers) {
         build.secondary = { ...build.secondary, powers: fixed };
       }
+    }
+  }
+
+  // Fix misplaced pool powers — move powers to their correct pool container
+  if (build.pools.length > 1) {
+    // Build lookup: powerName → correct poolId
+    const allPools = getAllPowerPools();
+    const powerToPool = new Map<string, string>();
+    for (const [poolId, poolDef] of Object.entries(allPools)) {
+      for (const p of poolDef.powers) {
+        powerToPool.set(p.name, poolId);
+      }
+    }
+
+    // Check for misplaced powers
+    let hasMisplaced = false;
+    for (const pool of build.pools) {
+      for (const power of pool.powers) {
+        const correctPoolId = powerToPool.get(power.name);
+        if (correctPoolId && correctPoolId !== pool.id) {
+          hasMisplaced = true;
+          break;
+        }
+      }
+      if (hasMisplaced) break;
+    }
+
+    if (hasMisplaced) {
+      // Collect all pool powers, then redistribute to correct containers
+      const poolIds = build.pools.map((p) => p.id);
+      const poolPowers = new Map<string, SelectedPower[]>(poolIds.map((id) => [id, []]));
+
+      for (const pool of build.pools) {
+        for (const power of pool.powers) {
+          const correctPoolId = powerToPool.get(power.name);
+          const targetId = correctPoolId && poolIds.includes(correctPoolId) ? correctPoolId : pool.id;
+          poolPowers.get(targetId)!.push({ ...power, powerSet: targetId });
+        }
+      }
+
+      build.pools = build.pools.map((pool) => ({
+        ...pool,
+        powers: poolPowers.get(pool.id) ?? pool.powers,
+      }));
     }
   }
 

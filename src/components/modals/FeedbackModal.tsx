@@ -217,31 +217,17 @@ export function FeedbackModal({ isOpen, onClose }: FeedbackModalProps) {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                   <div className="text-sm text-amber-200/80">
-                    <p>
-                      Please{' '}
-                      <button
-                        type="button"
-                        onClick={() => {
-                          handleClose();
-                          openKnownIssuesModal();
-                        }}
-                        className="text-amber-300 underline hover:text-amber-200 font-medium"
-                      >
-                        check Known Issues
-                      </button>
-                      {' '}before submitting to avoid duplicates.
-                    </p>
                     <p className="mt-1">
-                      Issues importing your Mids build? Please send your Mids save file to{' '}
+                      I set up{' '}
                       <a
-                        href="https://discord.com/users/570068130320220172"
+                        href="https://discord.gg/cGrUAanm"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-amber-300 underline hover:text-amber-200 font-medium"
                       >
-                        Wednesdaywoe
+                        Discord server
                       </a>
-                      {' '}on Discord.
+                      {' '}to make follow-ups on bugs easier.
                     </p>
                   </div>
                 </div>
