@@ -55,6 +55,7 @@ export function EnhancementPicker() {
   // Local filter state
   const [typeFilter, setTypeFilter] = useState<EnhancementTypeFilter>('io-sets');
   const [sidebarFilter, setSidebarFilter] = useState<SidebarFilter>('all');
+  const [ioSortBy, setIOSortBy] = useState<'name' | 'level'>('name');
 
   // Drag selection state
   const [isDragging, setIsDragging] = useState(false);
@@ -163,31 +164,41 @@ export function EnhancementPicker() {
     set.category === 'pvp' ||
     set.type === 'Universal Damage Sets';
 
-  // Filter sets based on sidebar selection
+  // Filter sets based on sidebar selection, then sort
   const filteredSets = useMemo(() => {
+    let sets: IOSet[];
     switch (sidebarFilter) {
       case 'all':
-        // "All" only shows standard IO sets (uncommon/rare), excludes special categories
-        return availableSets.filter((set) => !isSpecialSet(set));
+        sets = availableSets.filter((set) => !isSpecialSet(set));
+        break;
       case 'universal':
-        return availableSets.filter((set) => set.type === 'Universal Damage Sets');
+        sets = availableSets.filter((set) => set.type === 'Universal Damage Sets');
+        break;
       case 'very-rare':
-        return availableSets.filter((set) => set.category === 'purple');
+        sets = availableSets.filter((set) => set.category === 'purple');
+        break;
       case 'event':
-        return availableSets.filter((set) => set.category === 'event');
+        sets = availableSets.filter((set) => set.category === 'event');
+        break;
       case 'archetype':
-        return availableSets.filter((set) => set.category === 'ato');
+        sets = availableSets.filter((set) => set.category === 'ato');
+        break;
       case 'pvp':
-        return availableSets.filter((set) => set.category === 'pvp');
+        sets = availableSets.filter((set) => set.category === 'pvp');
+        break;
       case 'procs':
-        return availableSets.filter((set) =>
-          set.pieces.some((p) => p.proc)
-        );
+        sets = availableSets.filter((set) => set.pieces.some((p) => p.proc));
+        break;
       default:
-        // It's a category name - only show standard sets of that type
-        return availableSets.filter((set) => set.type === sidebarFilter && !isSpecialSet(set));
+        sets = availableSets.filter((set) => set.type === sidebarFilter && !isSpecialSet(set));
     }
-  }, [availableSets, sidebarFilter]);
+    if (ioSortBy === 'level') {
+      sets = [...sets].sort((a, b) => a.minLevel - b.minLevel || a.maxLevel - b.maxLevel || a.name.localeCompare(b.name));
+    } else {
+      sets = [...sets].sort((a, b) => a.name.localeCompare(b.name));
+    }
+    return sets;
+  }, [availableSets, sidebarFilter, ioSortBy]);
 
   // Flat list of individual proc pieces for the Procs filter
   const procPieces = useMemo(() => {
@@ -760,6 +771,23 @@ export function EnhancementPicker() {
               />
             )}
             {typeFilter === 'io-sets' && sidebarFilter !== 'procs' && (
+              <div className="flex items-center justify-end gap-1 mb-2">
+                <span className="text-xs text-gray-500 mr-1">Sort:</span>
+                <button
+                  onClick={() => setIOSortBy('name')}
+                  className={`text-xs px-1.5 py-0.5 rounded ${ioSortBy === 'name' ? 'bg-blue-600 text-white' : 'text-gray-400 hover:text-gray-200'}`}
+                >
+                  A-Z
+                </button>
+                <button
+                  onClick={() => setIOSortBy('level')}
+                  className={`text-xs px-1.5 py-0.5 rounded ${ioSortBy === 'level' ? 'bg-blue-600 text-white' : 'text-gray-400 hover:text-gray-200'}`}
+                >
+                  Level
+                </button>
+              </div>
+            )}
+            {typeFilter === 'io-sets' && sidebarFilter !== 'procs' && (
               <IOSetsContent
                 sets={filteredSets}
                 globalIOLevel={globalIOLevel}
@@ -1184,9 +1212,10 @@ function IOSetRow({
             <Tooltip
               key={pieceIndex}
               content={
-                isDisabled
-                  ? <div className="text-orange-400">{disabledReason}</div>
-                  : <SetPieceTooltip set={set} piece={piece} />
+                <div>
+                  {isDisabled && <div className="text-orange-400 text-xs font-medium mb-1">{disabledReason}</div>}
+                  <SetPieceTooltip set={set} piece={piece} />
+                </div>
               }
             >
               <button
