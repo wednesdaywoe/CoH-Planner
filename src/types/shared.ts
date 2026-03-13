@@ -45,6 +45,8 @@ export interface SearchFilters {
   primarySet?: string;
   secondarySet?: string;
   query?: string;
+  authorId?: string;
+  authorName?: string;
   sortBy?: 'newest' | 'views';
   page?: number;
   pageSize?: number;

@@ -23,6 +23,7 @@ export const KNOWN_BUGS: TrackerItem[] = [
 // ============================================
 
 export const RECENT_CHANGES: TrackerItem[] = [
+  { text: 'New features for logged in users: favorites/bookmarks, new sort and filter options including by author, inline delete', status: 'new' },
   { text: 'Added A-Z / Level sort toggle above the IO sets list.', status: 'new' },
   { text: 'Disabled IO set pieces now show the full stats tooltip', status: 'new' },
   { text: 'Added a defensive check on imported builds to enforce power assignment, but still investigating the root cause.', status: 'fixed' },  

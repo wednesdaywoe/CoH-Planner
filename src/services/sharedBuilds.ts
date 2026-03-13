@@ -8,6 +8,55 @@ import type { SharedBuild, ShareBuildInput, SearchFilters, SearchResult } from '
 
 const DEFAULT_PAGE_SIZE = 20;
 const OWNER_TOKENS_KEY = 'coh-planner-owner-tokens';
+const FAVORITES_KEY = 'coh-planner-favorites';
+
+// ---- Favorites management (localStorage) ----
+
+function getFavoriteIds(): string[] {
+  try {
+    return JSON.parse(localStorage.getItem(FAVORITES_KEY) || '[]');
+  } catch {
+    return [];
+  }
+}
+
+function saveFavoriteIds(ids: string[]): void {
+  localStorage.setItem(FAVORITES_KEY, JSON.stringify(ids));
+}
+
+export function isFavorite(buildId: string): boolean {
+  return getFavoriteIds().includes(buildId);
+}
+
+export function toggleFavorite(buildId: string): boolean {
+  const ids = getFavoriteIds();
+  const index = ids.indexOf(buildId);
+  if (index >= 0) {
+    ids.splice(index, 1);
+    saveFavoriteIds(ids);
+    return false;
+  } else {
+    ids.push(buildId);
+    saveFavoriteIds(ids);
+    return true;
+  }
+}
+
+/** Fetch all favorited builds from Supabase */
+export async function getFavoriteBuilds(): Promise<SharedBuild[]> {
+  if (!supabase) return [];
+  const ids = getFavoriteIds();
+  if (ids.length === 0) return [];
+
+  const { data, error } = await supabase
+    .from('shared_builds')
+    .select('*')
+    .in('id', ids)
+    .order('updated_at', { ascending: false });
+
+  if (error) throw new Error(error.message);
+  return (data ?? []) as SharedBuild[];
+}
 
 // ---- Owner token management (localStorage) ----
 
@@ -182,6 +231,12 @@ export async function searchSharedBuilds(filters: SearchFilters = {}): Promise<S
   }
   if (filters.secondarySet) {
     query = query.eq('secondary_set', filters.secondarySet);
+  }
+  if (filters.authorId) {
+    query = query.eq('user_id', filters.authorId);
+  }
+  if (filters.authorName) {
+    query = query.eq('author_name', filters.authorName);
   }
   if (filters.query?.trim()) {
     query = query.textSearch('name', filters.query.trim(), { type: 'websearch' });
