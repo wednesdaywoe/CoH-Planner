@@ -63,6 +63,10 @@ function detectMechanicType(rawJson, availableLevel) {
       return 'childToggle';
     } else if (showInInventory === 'Never' && !showInInfo) {
       return 'hiddenAuto';
+    } else if (availableLevel >= 0) {
+      // Powers like Adaptation (Bio Armor) and Staff Mastery: hidden from manage
+      // but pickable at a specific level, granting child toggles
+      return 'parentMechanic';
     } else {
       return 'hiddenPassive';
     }
