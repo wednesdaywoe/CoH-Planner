@@ -65,6 +65,8 @@ interface UIState {
 
   /** Export/Import modal open state */
   exportImportModalOpen: boolean;
+  /** Which tab the Export/Import modal should open to */
+  exportImportModalTab: 'save-load' | 'import' | 'share' | null;
 
   /** Feedback modal open state */
   feedbackModalOpen: boolean;
@@ -270,7 +272,7 @@ interface UIActions {
   setIncarnateT4ComboIndex: (powerId: string, index: number) => void;
 
   // Export/Import Modal
-  openExportImportModal: () => void;
+  openExportImportModal: (tab?: 'save-load' | 'import' | 'share') => void;
   closeExportImportModal: () => void;
 
   // Feedback Modal
@@ -456,6 +458,7 @@ export const useUIStore = create<UIStore>()(
       currentIncarnateSlot: null,
       incarnateT4ComboIndex: {},
       exportImportModalOpen: false,
+      exportImportModalTab: null,
       feedbackModalOpen: false,
       knownIssuesModalOpen: false,
       controlsModalOpen: false,
@@ -873,11 +876,11 @@ export const useUIStore = create<UIStore>()(
         })),
 
       // Export/Import Modal
-      openExportImportModal: () =>
-        set({ exportImportModalOpen: true }),
+      openExportImportModal: (tab) =>
+        set({ exportImportModalOpen: true, exportImportModalTab: tab ?? null }),
 
       closeExportImportModal: () =>
-        set({ exportImportModalOpen: false }),
+        set({ exportImportModalOpen: false, exportImportModalTab: null }),
 
       // Feedback Modal
       openFeedbackModal: () =>
@@ -1122,6 +1125,7 @@ export const useUIStore = create<UIStore>()(
           incarnateModalOpen: false,
           incarnateCraftingModalOpen: false,
           exportImportModalOpen: false,
+          exportImportModalTab: null,
           powerInfoModalOpen: false,
           detailedTotalsModalOpen: false,
           powersetCompareModalOpen: false,

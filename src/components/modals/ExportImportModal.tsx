@@ -27,6 +27,14 @@ type ImportSource = 'mids' | 'game';
 
 export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
   const [activeTab, setActiveTab] = useState<TabType>('save-load');
+  const requestedTab = useUIStore((s) => s.exportImportModalTab);
+
+  // Sync tab when modal opens with a specific tab requested
+  useEffect(() => {
+    if (isOpen && requestedTab) {
+      setActiveTab(requestedTab);
+    }
+  }, [isOpen, requestedTab]);
 
   // Save/Load state
   const [buildAlias, setBuildAlias] = useState('');
