@@ -23,7 +23,7 @@ export const KNOWN_BUGS: TrackerItem[] = [
 // ============================================
 
 export const RECENT_CHANGES: TrackerItem[] = [
-  { text: 'The perma tracker was confusing people, so the meter now displays how much +recharge have, instead of the powers cooldown', status: 'new' },
+  { text: 'The perma tracker was confusing people, so the meter now displays the amount of +recharge you have out of the total needed for perma, instead of the powers cooldown', status: 'new' },
   { text: 'Fixed various bugs related to endurance calculations and power display accuracy', status: 'fixed' },
   { text: 'Fixed toggle endurance costs (Leadership, etc.) now correctly use activate_period for per-second calculation', status: 'new' },
   { text: 'Fixed ToHit buffs (Tactics, Aim, Kismet) now properly affect per-power accuracy display', status: 'new' },
