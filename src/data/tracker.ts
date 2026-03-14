@@ -14,6 +14,7 @@ export interface TrackerItem {
 
 export const KNOWN_BUGS: TrackerItem[] = [
   { text: 'Some Hamidon/Special Enhancement icons may be missing', status: 'known-bug' },
+  { text: 'Proc damage is currently not calculated', status: 'known-bug' },
   { text: 'The icon for Rime is missing. 10,000,000 inf for its safe return unharmed', status: 'known-bug' },
   { text: 'If you see a [missing-icon] icon, it means the icon is missing. Please report it using the feedback tool', status: 'known-bug' },
   { text: 'If you import a build and it has a lot of weirdness, please specify the method of import (if Mids, please mention if its an older Mids format)', status: 'known-bug' },
@@ -32,8 +33,6 @@ export const RECENT_CHANGES: TrackerItem[] = [
   { text: 'Added fixPowerSetIds() to syncBuildDefinitions() so that existing builds already saved in localStorage with wrong display names get corrected on load', status: 'fixed' },
   { text: 'Users can optionally sign in with Discord to manage their builds across devices. Anonymous build management is still supported with build tokens', status: 'new' },
   { text: 'Shared builds can be updated or deleted by the original author (please save your build token)', status: 'new' },
-  { text: 'Added a global "Level Shift" toggle that controls whether incarnate level shifts are applied to calculations, independently from per-slot toggles', status: 'new' },
-  { text: 'Added a zoom feature. This just replicates what your browser can already do, but some may not be aware of that functionality so this makes it more discoverable', status: 'fixed' },
   { text: 'Added print-friendly build export 🖨️ Go to Save/Load and scroll down', status: 'new' },
 ];
 
