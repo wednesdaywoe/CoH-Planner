@@ -760,6 +760,7 @@ export function EnhancementPicker() {
               <ProcsContent
                 pieces={procPieces}
                 attunementEnabled={attunementEnabled}
+                globalIOLevel={globalIOLevel}
                 isPieceInCurrentPower={isPieceInCurrentPower}
                 onPieceMouseDown={handlePieceMouseDown}
                 onPieceMouseUp={handlePieceMouseUp}
@@ -973,6 +974,7 @@ function IOSetsContent({
 interface ProcsContentProps {
   pieces: { set: IOSet; piece: IOSetPiece; pieceIndex: number }[];
   attunementEnabled: boolean;
+  globalIOLevel: number;
   isPieceInCurrentPower: (setId: string, pieceNum: number) => boolean;
   onPieceMouseDown: (set: IOSet, pieceIndex: number, e: React.MouseEvent) => void;
   onPieceMouseUp: (set: IOSet, pieceIndex: number, e: React.MouseEvent) => void;
@@ -986,6 +988,7 @@ interface ProcsContentProps {
 function ProcsContent({
   pieces,
   attunementEnabled,
+  globalIOLevel,
   isPieceInCurrentPower,
   onPieceMouseDown,
   onPieceMouseUp,
@@ -1038,9 +1041,57 @@ function ProcsContent({
 
         const shiftSel = isShiftSelected(set, pieceIndex);
 
+        const tooltipContent = procData && procEffect ? (
+          <div className="space-y-1 text-xs">
+            <div className="text-slate-300">{procData.mechanics}</div>
+            <div className="flex flex-wrap gap-x-3 gap-y-0.5">
+              {procData.ppm !== null && (
+                <span>
+                  <span className="text-slate-400">PPM:</span>
+                  <span className="text-amber-300 ml-1 font-medium">{procData.ppm}</span>
+                </span>
+              )}
+              <span>
+                <span className="text-slate-400">Type:</span>
+                <span className={`ml-1 ${
+                  procData.type === 'Proc120s' ? 'text-purple-400' :
+                  procData.type === 'Global' ? 'text-green-400' :
+                  'text-amber-300'
+                }`}>
+                  {procData.type === 'Proc120s' ? '100% (120s)' : procData.type}
+                </span>
+              </span>
+              {procEffect.category === 'Damage' && procEffect.value !== undefined && procEffect.valueMax !== undefined && (
+                <span>
+                  <span className="text-slate-400">Dmg:</span>
+                  <span className="text-red-400 ml-1">
+                    {interpolateProcDamage(procEffect.value, procEffect.valueMax, procData.levelRange, globalIOLevel)} {procEffect.effectType}
+                  </span>
+                </span>
+              )}
+              {procEffect.value !== undefined && procEffect.category !== 'Damage' && (
+                <span>
+                  <span className="text-slate-400">Value:</span>
+                  <span className="ml-1" style={{ color: procColor }}>
+                    {procEffect.category === 'KnockbackProtection' ? `Mag ${procEffect.value}` :
+                     procEffect.category === 'Stealth' ? `${procEffect.value} ft` :
+                     `${procEffect.value}%`}
+                    {procEffect.effectType ? ` ${procEffect.effectType}` : ''}
+                  </span>
+                </span>
+              )}
+              {isProcAlwaysOn(procData) && (
+                <span className="text-green-400">Always On</span>
+              )}
+            </div>
+          </div>
+        ) : (
+          <div className="text-xs text-slate-300">{piece.name}</div>
+        );
+
         return (
+          <Tooltip key={`${setId}-${piece.num}`} content={tooltipContent} position="right" className="!max-w-sm" triggerClassName="block">
           <button
-            key={`${setId}-${piece.num}`}
             onMouseDown={(e) => !isDisabled && onPieceMouseDown(set, pieceIndex, e)}
             onMouseUp={(e) => !isDisabled && onPieceMouseUp(set, pieceIndex, e)}
             onTouchStart={(e) => !isDisabled && onPieceTouchStart(set, pieceIndex, e)}
@@ -1099,6 +1150,7 @@ function ProcsContent({
               )}
             </div>
           </button>
+          </Tooltip>
         );
       })}
     </div>

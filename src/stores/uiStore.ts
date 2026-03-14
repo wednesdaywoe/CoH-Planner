@@ -110,6 +110,12 @@ interface UIState {
   /** Include proc bonuses in dashboard stat calculations */
   includeProcsInStats: boolean;
 
+  /** Include proc damage in per-power DPS calculations */
+  includeProcDamageInDPS: boolean;
+
+  /** Use ArcanaTime (server-tick-adjusted cast time) for DPS calculations */
+  useArcanaTime: boolean;
+
   /** Hints/help visibility */
   hintsEnabled: boolean;
 
@@ -221,6 +227,8 @@ interface UIActions {
   setExemplarLevel: (level: number) => void;
   setTargetLevelOffset: (offset: number) => void;
   toggleIncludeProcsInStats: () => void;
+  toggleIncludeProcDamageInDPS: () => void;
+  toggleUseArcanaTime: () => void;
   toggleHints: () => void;
   toggleDarkMode: () => void;
   toggleCompactMode: () => void;
@@ -473,6 +481,8 @@ export const useUIStore = create<UIStore>()(
       exemplarLevel: 50,
       targetLevelOffset: 0,
       includeProcsInStats: true,
+      includeProcDamageInDPS: true,
+      useArcanaTime: true,
       hintsEnabled: true,
       infoPanel: defaultInfoPanel,
       statsConfig: defaultStatsConfig,
@@ -628,6 +638,16 @@ export const useUIStore = create<UIStore>()(
       toggleIncludeProcsInStats: () =>
         set((state) => ({
           includeProcsInStats: !state.includeProcsInStats,
+        })),
+
+      toggleIncludeProcDamageInDPS: () =>
+        set((state) => ({
+          includeProcDamageInDPS: !state.includeProcDamageInDPS,
+        })),
+
+      toggleUseArcanaTime: () =>
+        set((state) => ({
+          useArcanaTime: !state.useArcanaTime,
         })),
 
       toggleHints: () =>
@@ -1291,3 +1311,9 @@ export const useTargetsHit = (powerName: string) =>
 
 /** Select slot level labels visibility */
 export const useShowSlotLevels = () => useUIStore((state) => state.showSlotLevels);
+
+/** Select proc damage in DPS toggle */
+export const useIncludeProcDamageInDPS = () => useUIStore((state) => state.includeProcDamageInDPS);
+
+/** Select ArcanaTime toggle */
+export const useArcanaTime = () => useUIStore((state) => state.useArcanaTime);

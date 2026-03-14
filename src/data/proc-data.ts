@@ -1355,7 +1355,7 @@ export const PROC_DATABASE: Record<string, ProcData> = {
   },
   "Chance for +Damage": {
     setCategory: "Archetype Enhancement",
-    setName: "Ascendency of the Dominator",
+    setName: "Ascendancy of the Dominator",
     ioName: "Chance for +Damage",
     ppm: 5,
     mechanics: "14.19% Damage buff that stacks up to 3 times by the Slotted Power",
@@ -1388,6 +1388,590 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     levelRange: "10--50",
     pool: "",
     unique: "Exclusive"
+  },
+
+  // ============================================
+  // Missing ATOs — Superior variants
+  // ============================================
+  "Superior Ascendancy of the Dominator: Recharge/Chance for +Dam(All)": {
+    setCategory: "Dominator Archetype Sets",
+    setName: "Superior Ascendancy of the Dominator",
+    ioName: "Recharge/Chance for +Dam(All)",
+    ppm: 3,
+    mechanics: "Buff(+21.25% Damage) stacks 3x by the slotted power",
+    pvpNotes: "",
+    type: "Proc",
+    levelRange: "50",
+    pool: "",
+    unique: "Exclusive"
+  },
+  "Blaster's Wrath: Recharge/Chance for Fire Damage": {
+    setCategory: "Blaster Archetype Sets",
+    setName: "Blaster's Wrath",
+    ioName: "Recharge/Chance for Fire Damage",
+    ppm: 4,
+    mechanics: "Damage (Fire 72)",
+    pvpNotes: "",
+    type: "Proc",
+    levelRange: "10--50",
+    pool: "",
+    unique: "Exclusive"
+  },
+  "Superior Blaster's Wrath: Recharge/Chance for Fire Damage": {
+    setCategory: "Blaster Archetype Sets",
+    setName: "Superior Blaster's Wrath",
+    ioName: "Recharge/Chance for Fire Damage",
+    ppm: 5,
+    mechanics: "Damage (Fire 107)",
+    pvpNotes: "",
+    type: "Proc",
+    levelRange: "50",
+    pool: "",
+    unique: "Exclusive"
+  },
+  "Defiant Barrage: Recharge/Chance for Mez Protection,Resistance": {
+    setCategory: "Blaster Archetype Sets",
+    setName: "Defiant Barrage",
+    ioName: "Recharge/Chance for Mez Protection,Resistance",
+    ppm: 3,
+    mechanics: "Buff(Mez Protection Mag 1 Hold/Stun/Sleep/Immob/Confuse/Fear) for 10s",
+    pvpNotes: "",
+    type: "Proc",
+    levelRange: "10--50",
+    pool: "",
+    unique: "Exclusive"
+  },
+  "Superior Defiant Barrage: Recharge/Chance for Mez Protection,Resistance": {
+    setCategory: "Blaster Archetype Sets",
+    setName: "Superior Defiant Barrage",
+    ioName: "Recharge/Chance for Mez Protection,Resistance",
+    ppm: 4,
+    mechanics: "Buff(Mez Protection Mag 1 Hold/Stun/Sleep/Immob/Confuse/Fear) for 10s",
+    pvpNotes: "",
+    type: "Proc",
+    levelRange: "50",
+    pool: "",
+    unique: "Exclusive"
+  },
+  "Essence Transfer: Recharge/Chance for +Health": {
+    setCategory: "Kheldian Archetype Sets",
+    setName: "Essence Transfer",
+    ioName: "Recharge/Chance for +Health",
+    ppm: null,
+    mechanics: "Buff(Heal 54 HP) 12% chance",
+    pvpNotes: "",
+    type: "Global",
+    levelRange: "10--50",
+    pool: "",
+    unique: "Exclusive"
+  },
+  "Superior Essence Transfer: Recharge/Chance for +Health": {
+    setCategory: "Kheldian Archetype Sets",
+    setName: "Superior Essence Transfer",
+    ioName: "Recharge/Chance for +Health",
+    ppm: null,
+    mechanics: "Buff(Heal 70 HP) 18% chance",
+    pvpNotes: "",
+    type: "Global",
+    levelRange: "50",
+    pool: "",
+    unique: "Exclusive"
+  },
+  "Malice of the Corruptor: Recharge/Chance for Negative Energy Damage": {
+    setCategory: "Corruptor Archetype Sets",
+    setName: "Malice of the Corruptor",
+    ioName: "Recharge/Chance for Negative Energy Damage",
+    ppm: 4,
+    mechanics: "Damage (Negative 72)",
+    pvpNotes: "",
+    type: "Proc",
+    levelRange: "10--50",
+    pool: "",
+    unique: "Exclusive"
+  },
+  "Superior Malice of the Corruptor: Recharge/Chance for Negative Energy Damage": {
+    setCategory: "Corruptor Archetype Sets",
+    setName: "Superior Malice of the Corruptor",
+    ioName: "Recharge/Chance for Negative Energy Damage",
+    ppm: 5,
+    mechanics: "Damage (Negative 107)",
+    pvpNotes: "",
+    type: "Proc",
+    levelRange: "50",
+    pool: "",
+    unique: "Exclusive"
+  },
+  "Scourging Blast: Recharge/Chance for +Endurance,+Health": {
+    setCategory: "Corruptor Archetype Sets",
+    setName: "Scourging Blast",
+    ioName: "Recharge/Chance for +Endurance,+Health",
+    ppm: 2,
+    mechanics: "PBAoE Buff(+5% End, Heal 67 HP)",
+    pvpNotes: "",
+    type: "Proc",
+    levelRange: "10--50",
+    pool: "",
+    unique: "Exclusive"
+  },
+  "Superior Scourging Blast: Recharge/Chance for +Endurance,+Health": {
+    setCategory: "Corruptor Archetype Sets",
+    setName: "Superior Scourging Blast",
+    ioName: "Recharge/Chance for +Endurance,+Health",
+    ppm: 3,
+    mechanics: "PBAoE Buff(+7.5% End, Heal 100 HP)",
+    pvpNotes: "",
+    type: "Proc",
+    levelRange: "50",
+    pool: "",
+    unique: "Exclusive"
+  },
+  "Will of the Controller: Recharge/Chance for Psionic Damage": {
+    setCategory: "Controller Archetype Sets",
+    setName: "Will of the Controller",
+    ioName: "Recharge/Chance for Psionic Damage",
+    ppm: 4,
+    mechanics: "Damage (Psionic 72)",
+    pvpNotes: "",
+    type: "Proc",
+    levelRange: "10--50",
+    pool: "",
+    unique: "Exclusive"
+  },
+  "Superior Will of the Controller: Recharge/Chance for Psionic Damage": {
+    setCategory: "Controller Archetype Sets",
+    setName: "Superior Will of the Controller",
+    ioName: "Recharge/Chance for Psionic Damage",
+    ppm: 5,
+    mechanics: "Damage (Psionic 107)",
+    pvpNotes: "",
+    type: "Proc",
+    levelRange: "50",
+    pool: "",
+    unique: "Exclusive"
+  },
+  "Unrelenting Fury: Recharge/Chance for +End Discount,+Regeneration": {
+    setCategory: "Brute Archetype Sets",
+    setName: "Unrelenting Fury",
+    ioName: "Recharge/Chance for +End Discount,+Regeneration",
+    ppm: 6,
+    mechanics: "Buff(+15% Regen, +5% End Discount) stacks 5x",
+    pvpNotes: "",
+    type: "Proc",
+    levelRange: "10--50",
+    pool: "",
+    unique: "Exclusive"
+  },
+  "Superior Unrelenting Fury: Recharge/Chance for +End Discount,+Regeneration": {
+    setCategory: "Brute Archetype Sets",
+    setName: "Superior Unrelenting Fury",
+    ioName: "Recharge/Chance for +End Discount,+Regeneration",
+    ppm: 7,
+    mechanics: "Buff(+20% Regen, +6.65% End Discount) stacks 5x",
+    pvpNotes: "",
+    type: "Proc",
+    levelRange: "50",
+    pool: "",
+    unique: "Exclusive"
+  },
+  "Opportunity Strikes: Recharge/Chance for +Opportunity": {
+    setCategory: "Sentinel Archetype Sets",
+    setName: "Opportunity Strikes",
+    ioName: "Recharge/Chance for +Opportunity",
+    ppm: 1,
+    mechanics: "Buff(Opportunity 148)",
+    pvpNotes: "",
+    type: "Proc",
+    levelRange: "10--50",
+    pool: "",
+    unique: "Exclusive"
+  },
+  "Superior Opportunity Strikes: Recharge/Chance for +Opportunity": {
+    setCategory: "Sentinel Archetype Sets",
+    setName: "Superior Opportunity Strikes",
+    ioName: "Recharge/Chance for +Opportunity",
+    ppm: 1,
+    mechanics: "Buff(Opportunity 210)",
+    pvpNotes: "",
+    type: "Proc",
+    levelRange: "50",
+    pool: "",
+    unique: "Exclusive"
+  },
+
+  // ============================================
+  // Missing ATO Superior variants for existing base procs
+  // ============================================
+  "Superior Critical Strikes: Recharge/Chance for +Critical Hit%": {
+    setCategory: "Scrapper Archetype Sets",
+    setName: "Superior Critical Strikes",
+    ioName: "Recharge/Chance for +Critical Hit%",
+    ppm: null,
+    mechanics: "+Critical Hit Chance (+5% vs Minions, +8% others) for ALL powers",
+    pvpNotes: "",
+    type: "Global",
+    levelRange: "50",
+    pool: "",
+    unique: "Exclusive"
+  },
+  "Superior Stalker's Guile: Recharge/Chance for Hidden Status": {
+    setCategory: "Stalker Archetype Sets",
+    setName: "Superior Stalker's Guile",
+    ioName: "Recharge/Chance for Hidden Status",
+    ppm: 3,
+    mechanics: "Buff(Hide Status) for 10s",
+    pvpNotes: "",
+    type: "Proc",
+    levelRange: "50",
+    pool: "",
+    unique: "Exclusive"
+  },
+  "Superior Assassin's Mark: Recharge/Chance for Recharge Power": {
+    setCategory: "Stalker Archetype Sets",
+    setName: "Superior Assassin's Mark",
+    ioName: "Recharge/Chance for Recharge Power",
+    ppm: 2,
+    mechanics: "Buff(Recharge Assassin's Strike) after defeating foe",
+    pvpNotes: "",
+    type: "Proc",
+    levelRange: "50",
+    pool: "",
+    unique: "Exclusive"
+  },
+  "Superior Defender's Bastion: Recharge/Chance for +Health": {
+    setCategory: "Defender Archetype Sets",
+    setName: "Superior Defender's Bastion",
+    ioName: "Recharge/Chance for +Health",
+    ppm: 3,
+    mechanics: "PBAoE Buff(Heal) to caster and nearby allies",
+    pvpNotes: "",
+    type: "Proc",
+    levelRange: "50",
+    pool: "",
+    unique: "Exclusive"
+  },
+  "Superior Might of the Tanker: Recharge/Chance for +Res(All)": {
+    setCategory: "Tanker Archetype Sets",
+    setName: "Superior Might of the Tanker",
+    ioName: "Recharge/Chance for +Res(All)",
+    ppm: 3,
+    mechanics: "Buff(+Res All 3.13%)",
+    pvpNotes: "",
+    type: "Proc",
+    levelRange: "50",
+    pool: "",
+    unique: "Exclusive"
+  },
+  "Superior Brute's Fury: Recharge/Chance for +Rage": {
+    setCategory: "Brute Archetype Sets",
+    setName: "Superior Brute's Fury",
+    ioName: "Recharge/Chance for +Rage",
+    ppm: 4,
+    mechanics: "Buff(+Fury 25)",
+    pvpNotes: "",
+    type: "Proc",
+    levelRange: "50",
+    pool: "",
+    unique: "Exclusive"
+  },
+  "Superior Dominating Grasp: Recharge/Chance for Fiery Orb": {
+    setCategory: "Dominator Archetype Sets",
+    setName: "Superior Dominating Grasp",
+    ioName: "Recharge/Chance for Fiery Orb",
+    ppm: 1,
+    mechanics: "Pet(Damage and Disorient)",
+    pvpNotes: "",
+    type: "Proc",
+    levelRange: "50",
+    pool: "",
+    unique: "Exclusive"
+  },
+  "Superior Overpowering Presence: Recharge/Chance for Energy Font": {
+    setCategory: "Controller Archetype Sets",
+    setName: "Superior Overpowering Presence",
+    ioName: "Recharge/Chance for Energy Font",
+    ppm: 1,
+    mechanics: "Chance for Energy Font Pet(Stun & Damage)",
+    pvpNotes: "",
+    type: "Proc",
+    levelRange: "50",
+    pool: "",
+    unique: "Exclusive"
+  },
+  "Dominion of Arachnos: Recharge/Chance for -Dam(All)/Chance for Terror": {
+    setCategory: "Arachnos Archetype Sets",
+    setName: "Dominion of Arachnos",
+    ioName: "Recharge/Chance for -Dam(All)/Chance for Terror",
+    ppm: 3,
+    mechanics: "Foe(-Damage All, Fear) for 8s",
+    pvpNotes: "",
+    type: "Proc",
+    levelRange: "10--50",
+    pool: "",
+    unique: "Exclusive"
+  },
+  "Superior Dominion of Arachnos: Recharge/Chance for -Dam(All)/Chance for Terror": {
+    setCategory: "Arachnos Archetype Sets",
+    setName: "Superior Dominion of Arachnos",
+    ioName: "Recharge/Chance for -Dam(All)/Chance for Terror",
+    ppm: 4,
+    mechanics: "Foe(-Damage All, Fear) for 8s",
+    pvpNotes: "",
+    type: "Proc",
+    levelRange: "50",
+    pool: "",
+    unique: "Exclusive"
+  },
+
+  // ============================================
+  // Missing Winter set Superior variants
+  // ============================================
+  "Superior Avalanche: Recharge/Chance for Knockback": {
+    setCategory: "Targeted AoE Damage",
+    setName: "Superior Avalanche",
+    ioName: "Recharge/Chance for Knockback",
+    ppm: 3,
+    mechanics: "Foe(Knockback Mag 6)",
+    pvpNotes: "",
+    type: "Proc",
+    levelRange: "50",
+    pool: "Winter",
+    unique: "Unique"
+  },
+  "Superior Blistering Cold: Recharge/Chance for Hold": {
+    setCategory: "Ranged Damage",
+    setName: "Superior Blistering Cold",
+    ioName: "Recharge/Chance for Hold",
+    ppm: 3,
+    mechanics: "Foe(Hold Mag 2) for 4s",
+    pvpNotes: "",
+    type: "Proc",
+    levelRange: "50",
+    pool: "Winter",
+    unique: "Unique"
+  },
+  "Superior Frozen Blast: Recharge/Chance for Immobilize": {
+    setCategory: "Melee Damage",
+    setName: "Superior Frozen Blast",
+    ioName: "Recharge/Chance for Immobilize",
+    ppm: 3,
+    mechanics: "Foe(Immobilize) for 4s",
+    pvpNotes: "",
+    type: "Proc",
+    levelRange: "50",
+    pool: "Winter",
+    unique: "Unique"
+  },
+  "Superior Winter's Bite: Recharge/Chance for -Recharge,Slow": {
+    setCategory: "Slow Movement",
+    setName: "Superior Winter's Bite",
+    ioName: "Recharge/Chance for -Recharge,Slow",
+    ppm: 3,
+    mechanics: "Foe(-Recharge 20%, -Speed 20%) for 10s",
+    pvpNotes: "",
+    type: "Proc",
+    levelRange: "50",
+    pool: "Winter",
+    unique: "Unique"
+  },
+
+  // ============================================
+  // Missing standard set procs
+  // ============================================
+  "Cupid's Crush: Damage/Chance for Confuse": {
+    setCategory: "Universal Damage Sets",
+    setName: "Cupid's Crush",
+    ioName: "Damage/Chance for Confuse",
+    ppm: 2.5,
+    mechanics: "Foe(Confusion) for 10s",
+    pvpNotes: "",
+    type: "Proc",
+    levelRange: "10--50",
+    pool: "",
+    unique: "Unique"
+  },
+  "Overwhelming Force: Damage/Chance for Knockdown/Knockback to Knockdown": {
+    setCategory: "Universal Damage Sets",
+    setName: "Overwhelming Force",
+    ioName: "Damage/Chance for Knockdown/Knockback to Knockdown",
+    ppm: 2.5,
+    mechanics: "Foe(Knockdown + KB to KD conversion)",
+    pvpNotes: "",
+    type: "Proc",
+    levelRange: "10--50",
+    pool: "",
+    unique: "Unique"
+  },
+  "Analyze Weakness: Chance for +ToHit": {
+    setCategory: "Accurate Defense Debuff",
+    setName: "Analyze Weakness",
+    ioName: "Chance for +ToHit",
+    ppm: 2,
+    mechanics: "Buff(+ToHit 9%) for 10s",
+    pvpNotes: "",
+    type: "Proc",
+    levelRange: "30--50",
+    pool: "",
+    unique: ""
+  },
+  "Siphon Insight: Chance for +ToHit": {
+    setCategory: "Accurate To Hit Debuff",
+    setName: "Siphon Insight",
+    ioName: "Chance for +ToHit",
+    ppm: 2,
+    mechanics: "Buff(+ToHit 9%) for 10s",
+    pvpNotes: "",
+    type: "Proc",
+    levelRange: "30--50",
+    pool: "",
+    unique: ""
+  },
+
+  // ============================================
+  // Missing global/travel procs
+  // ============================================
+  "Call to Arms: +Def(All)": {
+    setCategory: "Pet Damage",
+    setName: "Call to Arms",
+    ioName: "+Def(All)",
+    ppm: null,
+    mechanics: "Buff(+Def All 3%) to pets",
+    pvpNotes: "",
+    type: "Global",
+    levelRange: "10--50",
+    pool: "",
+    unique: ""
+  },
+  "Commanding Presence: +Resist Threat": {
+    setCategory: "Pet Damage",
+    setName: "Commanding Presence",
+    ioName: "+Resist Threat",
+    ppm: null,
+    mechanics: "Buff(+Threat Resistance) to pets",
+    pvpNotes: "",
+    type: "Global",
+    levelRange: "10--50",
+    pool: "",
+    unique: ""
+  },
+  "Edict of the Master: +Def(All)": {
+    setCategory: "Pet Damage",
+    setName: "Edict of the Master",
+    ioName: "+Def(All)",
+    ppm: null,
+    mechanics: "Buff(+Def All 5%) to pets",
+    pvpNotes: "",
+    type: "Global",
+    levelRange: "30--50",
+    pool: "A-rare",
+    unique: ""
+  },
+  "Expedient Reinforcement: +Res(All)": {
+    setCategory: "Pet Damage",
+    setName: "Expedient Reinforcement",
+    ioName: "+Res(All)",
+    ppm: null,
+    mechanics: "Buff(+Res All 5%) to pets",
+    pvpNotes: "",
+    type: "Global",
+    levelRange: "10--50",
+    pool: "",
+    unique: ""
+  },
+  "Sovereign Right: +Res(All)": {
+    setCategory: "Pet Damage",
+    setName: "Sovereign Right",
+    ioName: "+Res(All)",
+    ppm: null,
+    mechanics: "Buff(+Res All 10%) to pets",
+    pvpNotes: "",
+    type: "Global",
+    levelRange: "30--50",
+    pool: "A-rare",
+    unique: ""
+  },
+  "Freebird: +Stealth": {
+    setCategory: "Universal Travel",
+    setName: "Freebird",
+    ioName: "+Stealth",
+    ppm: null,
+    mechanics: "Buff(Stealth) while moving",
+    pvpNotes: "",
+    type: "Proc120s",
+    levelRange: "10--50",
+    pool: "",
+    unique: ""
+  },
+  "Time & Space Manipulation: +Stealth": {
+    setCategory: "Universal Travel",
+    setName: "Time & Space Manipulation",
+    ioName: "+Stealth",
+    ppm: null,
+    mechanics: "Buff(Stealth) while moving",
+    pvpNotes: "",
+    type: "Proc120s",
+    levelRange: "30--50",
+    pool: "A-rare",
+    unique: ""
+  },
+  "Unbounded Leap: +Stealth": {
+    setCategory: "Leaping",
+    setName: "Unbounded Leap",
+    ioName: "+Stealth",
+    ppm: null,
+    mechanics: "Buff(Stealth) while moving",
+    pvpNotes: "",
+    type: "Proc120s",
+    levelRange: "10--30",
+    pool: "C",
+    unique: ""
+  },
+  "Rectified Reticle: +Perception": {
+    setCategory: "Ranged Damage",
+    setName: "Rectified Reticle",
+    ioName: "+Perception",
+    ppm: null,
+    mechanics: "Buff(+Perception)",
+    pvpNotes: "",
+    type: "Proc120s",
+    levelRange: "10--30",
+    pool: "C",
+    unique: ""
+  },
+  "Warp: Range/+Perception": {
+    setCategory: "Universal Travel",
+    setName: "Warp",
+    ioName: "Range/+Perception",
+    ppm: null,
+    mechanics: "Buff(+Perception)",
+    pvpNotes: "",
+    type: "Proc120s",
+    levelRange: "10--50",
+    pool: "",
+    unique: ""
+  },
+  "Launch: Jump/+Jump Height/+Max Jump Height": {
+    setCategory: "Universal Travel",
+    setName: "Launch",
+    ioName: "Jump/+Jump Height/+Max Jump Height",
+    ppm: null,
+    mechanics: "Buff(+Jump Height, +Max Jump Height)",
+    pvpNotes: "",
+    type: "Proc120s",
+    levelRange: "10--50",
+    pool: "",
+    unique: ""
+  },
+  "Thrust: Run/+Run Speed": {
+    setCategory: "Universal Travel",
+    setName: "Thrust",
+    ioName: "Run/+Run Speed",
+    ppm: null,
+    mechanics: "Buff(+Run Speed)",
+    pvpNotes: "",
+    type: "Proc120s",
+    levelRange: "10--50",
+    pool: "",
+    unique: ""
   },
 };
 

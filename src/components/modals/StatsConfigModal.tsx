@@ -260,6 +260,8 @@ export function StatsConfigModal({ isOpen, onClose }: StatsConfigModalProps) {
   const resetStatsConfig = useUIStore((s) => s.resetStatsConfig);
   const includeProcsInStats = useUIStore((s) => s.includeProcsInStats);
   const toggleIncludeProcsInStats = useUIStore((s) => s.toggleIncludeProcsInStats);
+  const useArcanaTime = useUIStore((s) => s.useArcanaTime);
+  const toggleUseArcanaTime = useUIStore((s) => s.toggleUseArcanaTime);
 
   // Local state for editing before applying
   const [localConfig, setLocalConfig] = useState<StatDisplayConfig[]>(() => {
@@ -363,14 +365,25 @@ export function StatsConfigModal({ isOpen, onClose }: StatsConfigModalProps) {
           <Button variant="ghost" size="sm" onClick={handleReset}>
             Reset to Defaults
           </Button>
-          <div className="ml-auto flex items-center bg-slate-700/50 px-2 py-1.5 rounded border border-slate-600">
-            <Toggle
-              id="include-procs-toggle"
-              name="includeProcs"
-              checked={includeProcsInStats}
-              onChange={toggleIncludeProcsInStats}
-              label="Include Procs"
-            />
+          <div className="ml-auto flex items-center gap-3">
+            <div className="flex items-center bg-slate-700/50 px-2 py-1.5 rounded border border-slate-600">
+              <Toggle
+                id="include-procs-toggle"
+                name="includeProcs"
+                checked={includeProcsInStats}
+                onChange={toggleIncludeProcsInStats}
+                label="Include Procs"
+              />
+            </div>
+            <div className="flex items-center bg-slate-700/50 px-2 py-1.5 rounded border border-slate-600">
+              <Toggle
+                id="arcanatime-toggle"
+                name="arcanaTime"
+                checked={useArcanaTime}
+                onChange={toggleUseArcanaTime}
+                label="ArcanaTime"
+              />
+            </div>
           </div>
         </div>
 

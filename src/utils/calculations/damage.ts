@@ -141,6 +141,28 @@ const DAMAGE_TABLES = {
 export type DamageTableType = 'melee' | 'ranged';
 
 // ============================================
+// ARCANATIME CALCULATION
+// ============================================
+
+/** Server tick interval in seconds */
+const SERVER_TICK = 0.132;
+
+/**
+ * Calculate ArcanaTime — the actual activation time accounting for server ticks.
+ * The game server processes actions in 0.132s ticks, so you can't start the next
+ * power until the current tick ends after the cast animation completes.
+ *
+ * Formula: ArcanaTime = (ceil(castTime / 0.132) + 1) × 0.132
+ *
+ * @param castTime - Raw cast/activation time in seconds
+ * @returns Server-tick-adjusted activation time
+ */
+export function calculateArcanaTime(castTime: number): number {
+  if (castTime <= 0) return SERVER_TICK; // Minimum 1 tick
+  return (Math.ceil(castTime / SERVER_TICK) + 1) * SERVER_TICK;
+}
+
+// ============================================
 // AT_TABLE-BASED DAMAGE CALCULATION
 // ============================================
 

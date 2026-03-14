@@ -17,6 +17,7 @@ interface TooltipProps {
   position?: TooltipPosition;
   delay?: number;
   className?: string;
+  triggerClassName?: string;
 }
 
 export function Tooltip({
@@ -25,6 +26,7 @@ export function Tooltip({
   position = 'top',
   delay = 200,
   className = '',
+  triggerClassName,
 }: TooltipProps) {
   const [isVisible, setIsVisible] = useState(false);
   const [coords, setCoords] = useState({ x: 0, y: 0, triggerTop: 0, triggerBottom: 0 });
@@ -150,7 +152,7 @@ export function Tooltip({
         onMouseLeave={hideTooltip}
         onFocus={showTooltip}
         onBlur={hideTooltip}
-        className="inline-block"
+        className={triggerClassName || "inline-block"}
       >
         {children}
       </div>

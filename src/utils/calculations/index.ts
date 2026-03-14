@@ -11,6 +11,7 @@ export {
   formatDamage,
   calculateBuffDebuffValue,
   abbreviateDamageType,
+  calculateArcanaTime,
   type DamageTableType,
   type DamageCalculationOptions,
   type PowerDamageResult,

@@ -20,9 +20,14 @@ import {
   getLoreEffects,
   formatEffectValue,
   isSlotToggleable,
+  findProcData,
+  parseProcEffect,
+  interpolateProcDamage,
+  calculateProcChance,
 } from '@/data';
 import { useGlobalBonuses } from '@/hooks/useCalculatedStats';
-import { calculatePowerEnhancementBonuses, calculatePowerDamage, getAlphaEnhancementBonuses, abbreviateDamageType, type EnhancementBonuses, isControllerPower, isCorruptorAttackPower, isBruteAttackPower, isScrapperAttackPower, isStalkerAttackPower, isSentinelAttackPower, calculateContainmentDamage, calculateScourgeDamage, calculateFuryDamage, calculateFuryDamageBonus, calculateCriticalHitDamage, calculateAssassinationDamage, calculateAssassinationDamageBonus, calculateOpportunityCritDamage, getContainmentInfo, getScourgeInfo, getCriticalHitInfo, getFuryInfo } from '@/utils/calculations';
+import { calculatePowerEnhancementBonuses, calculatePowerDamage, calculateArcanaTime, getAlphaEnhancementBonuses, abbreviateDamageType, type EnhancementBonuses, isControllerPower, isCorruptorAttackPower, isBruteAttackPower, isScrapperAttackPower, isStalkerAttackPower, isSentinelAttackPower, calculateContainmentDamage, calculateScourgeDamage, calculateFuryDamage, calculateFuryDamageBonus, calculateCriticalHitDamage, calculateAssassinationDamage, calculateAssassinationDamageBonus, calculateOpportunityCritDamage, getContainmentInfo, getScourgeInfo, getCriticalHitInfo, getFuryInfo } from '@/utils/calculations';
+import type { IOSetEnhancement } from '@/types';
 import { isPermaEligible, calculatePermaInfo } from '@/utils/calculations/perma';
 import { calculatePetDamage, shouldApplyEnhancements, type PetDamageResult, type PetAbilityDamage } from '@/utils/calculations/pet-damage';
 import { PET_ENTITIES, type PetAbility } from '@/data/pet-entities';
@@ -183,6 +188,8 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
   const stalkerTeamSize = useStalkerTeamSize();
   const stalkerCritActive = useStalkerCritActive();
   const sentinelCritActive = useSentinelCritActive();
+  const includeProcDamageToggle = useUIStore((s) => s.includeProcDamageInDPS);
+  const useArcanaTimeToggle = useUIStore((s) => s.useArcanaTime);
 
   // Unified power lookup across all categories
   const result = lookupPower(powerSet, powerName);
@@ -646,17 +653,41 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
               (() => {
                 // Calculate enhanced recharge time
                 const rechargeStats = calcThreeTier('recharge', effects.recharge);
-                const castTime = effects.castTime;
+                const rawCastTime = effects.castTime;
+                const arcanaTimeEnabled = useArcanaTimeToggle;
+                const effectiveCastTime = arcanaTimeEnabled ? calculateArcanaTime(rawCastTime) : rawCastTime;
 
                 // Cycle time = cast time + recharge time
-                const baseCycleTime = castTime + effects.recharge;
-                const finalCycleTime = castTime + rechargeStats.final;
+                const baseCycleTime = effectiveCastTime + effects.recharge;
+                const finalCycleTime = effectiveCastTime + rechargeStats.final;
 
-                // DPS = total damage (direct + DoT total) / cycle time
+                // DPS = total damage (direct + DoT total + proc damage) / cycle time
                 const dotTotalBase = calculatedDamage.dotDamage ? calculatedDamage.dotDamage.base * calculatedDamage.dotDamage.ticks : 0;
                 const dotTotalFinal = calculatedDamage.dotDamage ? calculatedDamage.dotDamage.final * calculatedDamage.dotDamage.ticks : 0;
+
+                // Calculate proc damage per activation if toggle is enabled
+                let procDamagePerActivation = 0;
+                if (includeProcDamageToggle && selectedPower?.slots) {
+                  const radius = effects?.radius || 0;
+                  for (const slot of selectedPower.slots) {
+                    if (!slot || slot.type !== 'io-set') continue;
+                    const ioEnh = slot as IOSetEnhancement;
+                    if (!ioEnh.isProc) continue;
+                    const procData = findProcData(ioEnh.name, ioEnh.setName);
+                    if (!procData || procData.ppm === null) continue;
+                    const effect = parseProcEffect(procData.mechanics);
+                    if (effect.category !== 'Damage' || effect.value === undefined || effect.valueMax === undefined) continue;
+                    // Interpolate damage at the enhancement's effective level
+                    const enhLevel = ioEnh.attuned ? build.level : (ioEnh.level ?? build.level);
+                    const dmgAtLevel = interpolateProcDamage(effect.value, effect.valueMax, procData.levelRange, enhLevel);
+                    // Proc chance uses base recharge and raw cast time (not ArcanaTime)
+                    const procChance = calculateProcChance(procData.ppm, effects.recharge, rawCastTime, radius);
+                    procDamagePerActivation += dmgAtLevel * procChance;
+                  }
+                }
+
                 const baseDPS = (calculatedDamage.base + dotTotalBase) / baseCycleTime;
-                const finalDPS = (calculatedDamage.final + dotTotalFinal) / finalCycleTime;
+                const finalDPS = (calculatedDamage.final + dotTotalFinal + procDamagePerActivation) / finalCycleTime;
 
                 const dpsImproved = finalDPS > baseDPS * 1.01; // More than 1% improvement
 
@@ -664,7 +695,9 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
                   <div className="mt-2 pt-2 border-t border-slate-700">
                     <div className="grid grid-cols-2 gap-2 text-xs">
                       <div>
-                        <span className="text-slate-500">Cycle Time</span>
+                        <span className="text-slate-500">
+                          Cycle Time{arcanaTimeEnabled && <span className="text-cyan-500 text-[9px] ml-0.5" title="Using ArcanaTime (server-tick-adjusted cast time)">A</span>}
+                        </span>
                         <div className="text-slate-300">
                           {finalCycleTime.toFixed(2)}s
                           {finalCycleTime < baseCycleTime - 0.01 && (
@@ -681,6 +714,11 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
                           {dpsImproved && (
                             <span className="text-green-400 text-[10px] ml-1">
                               (+{((finalDPS / baseDPS - 1) * 100).toFixed(0)}%)
+                            </span>
+                          )}
+                          {procDamagePerActivation > 0 && (
+                            <span className="text-cyan-400 text-[10px] ml-1" title="Includes proc damage">
+                              +{(procDamagePerActivation / finalCycleTime).toFixed(1)} proc
                             </span>
                           )}
                         </div>

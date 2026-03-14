@@ -70,6 +70,8 @@ export function Header() {
   const openExportImportModal = useUIStore((s) => s.openExportImportModal);
   const selectedBranch = useUIStore((s) => s.selectedBranch);
   const setSelectedBranch = useUIStore((s) => s.setSelectedBranch);
+  const includeProcDamageInDPS = useUIStore((s) => s.includeProcDamageInDPS);
+  const toggleIncludeProcDamageInDPS = useUIStore((s) => s.toggleIncludeProcDamageInDPS);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -267,6 +269,18 @@ export function Header() {
 
         {/* Settings popover (Target, Slot Levels, Exemplar, UI Scale, Origin, Server) */}
         <SettingsPopover />
+
+        {/* Proc DPS toggle */}
+        <div className="hidden sm:flex items-center bg-slate-700/50 px-2 py-1 rounded border border-slate-600">
+          <Toggle
+            id="proc-dps-toggle"
+            name="procDPS"
+            checked={includeProcDamageInDPS}
+            onChange={toggleIncludeProcDamageInDPS}
+            label="Proc DPS"
+            className="!gap-2"
+          />
+        </div>
 
         {/* Discord auth (hidden on very small screens, accessible via Settings page) */}
         {supabase && <div className="hidden sm:block"><DiscordAuthButton /></div>}

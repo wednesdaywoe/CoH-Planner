@@ -25,7 +25,7 @@ export const KNOWN_BUGS: TrackerItem[] = [
 // ============================================
 
 export const RECENT_CHANGES: TrackerItem[] = [
-  { text: 'Continued fussing with the UI', status: 'new' },
+  { text: 'Calculations now suppport proc damage', status: 'new' },
   { text: 'New features for logged in users: favorites/bookmarks, new sort and filter options including by author, inline delete', status: 'new' },
   { text: 'Added A-Z / Level sort toggle above the IO sets list', status: 'new' },
   { text: 'Disabled IO set pieces now show the full stats tooltip', status: 'new' },
