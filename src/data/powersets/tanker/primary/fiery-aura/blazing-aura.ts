@@ -22,6 +22,7 @@ export const BlazingAura: Power = {
     "radius": 12,
     "recharge": 4,
     "endurance": 1.04,
+    "activatePeriod": 2.0,
     "castTime": 2.03,
     "maxTargets": 10
   },

@@ -21,6 +21,7 @@ export const UptotheChallenge: Power = {
     "accuracy": 1,
     "recharge": 10,
     "endurance": 0.208,
+    "activatePeriod": 1.0,
     "castTime": 3
   },
   "allowedEnhancements": [

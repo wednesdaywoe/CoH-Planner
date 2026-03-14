@@ -109,7 +109,7 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     color: STAT_COLORS.tohit,
     tooltip: 'ToHit buff from set bonuses. Additive modifier to base hit chance.',
     showWhenZero: true,
-    breakdownKey: 'tohit',
+    breakdownKey: 'toHit',
   },
   recharge: {
     id: 'recharge',

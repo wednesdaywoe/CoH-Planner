@@ -1110,6 +1110,7 @@ export const POWER_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "endurance": 1.3,
+          "activatePeriod": 2.0,
           "activationTime": 2.03,
           "effectArea": "AoE",
           "radius": 60,
@@ -1159,6 +1160,7 @@ export const POWER_POOLS_RAW = {
           "accuracy": 1,
           "recharge": 10,
           "endurance": 0.052,
+          "activatePeriod": 0.2,
           "effectArea": "SingleTarget",
           "defenseBuff": {
             "ranged": {
@@ -2040,6 +2042,7 @@ export const POWER_POOLS_RAW = {
           "accuracy": 1,
           "recharge": 15,
           "endurance": 0.78,
+          "activatePeriod": 2.0,
           "activationTime": 1.5,
           "effectArea": "AoE",
           "radius": 60,
@@ -2112,6 +2115,7 @@ export const POWER_POOLS_RAW = {
           "accuracy": 1,
           "recharge": 15,
           "endurance": 0.78,
+          "activatePeriod": 2.0,
           "activationTime": 1.5,
           "effectArea": "AoE",
           "radius": 60,
@@ -2153,6 +2157,7 @@ export const POWER_POOLS_RAW = {
           "accuracy": 1,
           "recharge": 15,
           "endurance": 0.78,
+          "activatePeriod": 2.0,
           "activationTime": 1.5,
           "effectArea": "AoE",
           "radius": 60,
@@ -2609,6 +2614,7 @@ export const POWER_POOLS_RAW = {
           "accuracy": 1,
           "recharge": 10,
           "endurance": 0.26,
+          "activatePeriod": 1.0,
           "activationTime": 0.67,
           "effectArea": "SingleTarget",
           "knockup": {
@@ -3129,6 +3135,7 @@ export const POWER_POOLS_RAW = {
           "range": 80,
           "recharge": 15,
           "endurance": 0.78,
+          "activatePeriod": 2.0,
           "activationTime": 2,
           "effectArea": "AoE",
           "maxTargets": 1,
@@ -3332,6 +3339,7 @@ export const POWER_POOLS_RAW = {
           "range": 80,
           "recharge": 10,
           "endurance": 1.56,
+          "activatePeriod": 3.0,
           "activationTime": 2.07,
           "effectArea": "AoE",
           "radius": 8,

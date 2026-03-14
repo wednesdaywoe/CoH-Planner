@@ -17,7 +17,6 @@ import {
   getAvailableGenericIOs, getAvailableHamidons, getAvailableTitans, getAvailableHydras, getAvailableDSyncs,
   getRarityColor, getTierTextColor, getTierBorderColor,
   findProcData, parseProcEffect, getProcEffectLabel, getProcEffectColor, isProcAlwaysOn, interpolateProcDamage,
-  ARCHETYPE_ATO_CATEGORY,
 } from '@/data';
 import { normalizeAspectName, getAspectSchedule, getIOValueAtLevel, normalizeStatName, getSetRarityMultiplier, BOOST_MULTIPLIER_PER_LEVEL } from '@/utils/calculations';
 import { getPairedStat } from '@/utils/calculations/set-bonuses';
@@ -114,19 +113,12 @@ export function EnhancementPicker() {
   }, [currentPowerSlots, picker.currentSlotIndex, picker.virtualSlots]);
 
   // Get available IO sets for the current power based on its allowedSetCategories
-  // ATOs can be slotted into ANY power of the matching archetype, so inject the ATO category
+  // ATO categories are already included in the power data for eligible powers
   const availableSets = useMemo(() => {
     if (!currentPower) return [];
     const categories = [...(currentPower.allowedSetCategories || [])] as IOSetCategory[];
-    // Inject archetype ATO category if the power has any slottable enhancement categories
-    if (categories.length > 0 && build.archetype.id) {
-      const atoCategory = ARCHETYPE_ATO_CATEGORY[build.archetype.id];
-      if (atoCategory && !categories.includes(atoCategory)) {
-        categories.push(atoCategory);
-      }
-    }
     return getIOSetsForPower(categories);
-  }, [currentPower, build.archetype.id]);
+  }, [currentPower]);
 
   // Derive all standard set categories from the available sets, sorted by priority
   const standardCategories = useMemo(() => {

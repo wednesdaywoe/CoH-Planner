@@ -22,6 +22,7 @@ export const DispersionBubble: Power = {
     "radius": 25,
     "recharge": 15,
     "endurance": 1.3,
+    "activatePeriod": 2.0,
     "castTime": 1.07,
     "maxTargets": 255
   },

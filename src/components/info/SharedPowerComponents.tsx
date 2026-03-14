@@ -434,7 +434,7 @@ interface RegistryEffectsDisplayProps {
   /** Function to apply inherent bonus to damage values */
   applyInherentBonus?: (value: number) => number;
   /** Purple patch info for adjusting accuracy and damage final values */
-  purplePatchInfo?: { factor: number; offset: number; combatModifier: number };
+  purplePatchInfo?: { factor: number; offset: number; toHitBonus?: number; combatModifier: number };
 }
 
 /** Get con-colored arrow symbol for target level offset (matches in-game con system) */
@@ -973,10 +973,11 @@ export function RegistryEffectsDisplay({
             {enhanceable ? (() => {
               const isAccuracy = key === 'accuracy' && purplePatchInfo;
               const conArrow = isAccuracy ? getConArrow(purplePatchInfo.offset) : null;
-              const adjustedFinal = isAccuracy && purplePatchInfo.offset !== 0
-                ? tiers.final * purplePatchInfo.factor
+              const hasToHitMod = isAccuracy && (purplePatchInfo.offset !== 0 || (purplePatchInfo.toHitBonus ?? 0) !== 0);
+              const adjustedFinal = hasToHitMod
+                ? Math.min(95, tiers.final * purplePatchInfo!.factor)
                 : tiers.final;
-              const isAdjusted = isAccuracy && purplePatchInfo.offset !== 0;
+              const isAdjusted = hasToHitMod;
               return (
                 <span className={hasFinal || isAdjusted ? finalColumnColor : 'text-slate-400'}>
                   {formatValue(adjustedFinal)}

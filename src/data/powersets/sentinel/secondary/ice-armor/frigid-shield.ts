@@ -21,6 +21,7 @@ export const FrigidShield: Power = {
     "accuracy": 1,
     "recharge": 2,
     "endurance": 0.13,
+    "activatePeriod": 4.0,
     "castTime": 0.73
   },
   "allowedEnhancements": [

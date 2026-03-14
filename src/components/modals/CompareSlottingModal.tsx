@@ -404,8 +404,9 @@ export function CompareSlottingModal() {
               damage={activeDamage}
               duration={mergedEffects?.buffDuration as number | undefined}
               purplePatchInfo={{
-                factor: getBaseToHit(targetLevelOffset - globalBonuses.levelShift) / 0.75,
+                factor: Math.min(0.95, Math.max(0.05, getBaseToHit(targetLevelOffset - globalBonuses.levelShift) + globalBonuses.toHit / 100)) / 0.75,
                 offset: targetLevelOffset,
+                toHitBonus: globalBonuses.toHit,
                 combatModifier: globalBonuses.combatModifier ?? 1,
               }}
             />

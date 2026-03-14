@@ -22,6 +22,7 @@ export const Quills: Power = {
     "radius": 8,
     "recharge": 15,
     "endurance": 1.04,
+    "activatePeriod": 2.0,
     "castTime": 0.73,
     "maxTargets": 10
   },

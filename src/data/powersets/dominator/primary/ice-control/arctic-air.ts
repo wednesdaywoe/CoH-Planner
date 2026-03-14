@@ -22,6 +22,7 @@ export const ArcticAir: Power = {
     "radius": 25,
     "recharge": 15,
     "endurance": 2.08,
+    "activatePeriod": 2.0,
     "castTime": 2.03,
     "maxTargets": 16
   },

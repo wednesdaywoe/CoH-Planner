@@ -3,10 +3,11 @@
  *
  * Supports three sizes (xs, sm, md) and provides consistent interaction:
  * - Desktop: Click opens picker, right-click removes, Shift+right-click opens context menu
+ * - Desktop: Right-click drag removes multiple slots based on drag distance
  * - Mobile: Tap opens picker, touch-and-hold opens context menu
  */
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import type { Enhancement } from '@/types';
 import { SlottedEnhancementIcon } from './SlottedEnhancementIcon';
 import { SlotContextMenu } from './SlotContextMenu';
@@ -18,6 +19,9 @@ const SIZE_CONFIG: Record<SlotSize, { className: string; iconSize: number; fontS
   sm: { className: 'w-5 h-5', iconSize: 20, fontSize: 'text-[8px]', levelFontSize: 7 },
   md: { className: 'w-6 h-6', iconSize: 24, fontSize: 'text-[9px]', levelFontSize: 8 },
 };
+
+const DRAG_THRESHOLD = 5; // Pixels before considering it a drag
+const PIXELS_PER_SLOT = 30; // Distance for each additional slot to remove
 
 interface TouchableSlotProps {
   slot: Enhancement | null;
@@ -32,6 +36,10 @@ interface TouchableSlotProps {
   onClearAllEnhancements: () => void;
   onRemoveAllSlots: () => void;
   onCompareSlotting?: () => void;
+  /** Called when right-click drag removes multiple slots */
+  onRemoveSlots?: (count: number) => void;
+  /** Maximum number of removable slots (total slots - 1) */
+  removableSlotCount?: number;
 }
 
 export function TouchableSlot({
@@ -47,11 +55,36 @@ export function TouchableSlot({
   onClearAllEnhancements,
   onRemoveAllSlots,
   onCompareSlotting,
+  onRemoveSlots,
+  removableSlotCount = 0,
 }: TouchableSlotProps) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [menuPosition, setMenuPosition] = useState({ x: 0, y: 0 });
+  const [dragRemoveCount, setDragRemoveCount] = useState(0);
   const longPressTriggeredRef = useRef(false);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Right-click drag tracking via ref (avoids re-renders during mousemove)
+  const rightDragRef = useRef({
+    active: false,
+    startX: 0,
+    startY: 0,
+    hasMoved: false,
+    slotsToRemove: 0,
+    moveHandler: null as ((e: MouseEvent) => void) | null,
+    upHandler: null as ((e: MouseEvent) => void) | null,
+    contextHandler: null as ((e: Event) => void) | null,
+  });
+
+  // Cleanup document listeners on unmount
+  useEffect(() => {
+    return () => {
+      const drag = rightDragRef.current;
+      if (drag.moveHandler) document.removeEventListener('mousemove', drag.moveHandler);
+      if (drag.upHandler) document.removeEventListener('mouseup', drag.upHandler);
+      if (drag.contextHandler) document.removeEventListener('contextmenu', drag.contextHandler);
+    };
+  }, []);
 
   const config = SIZE_CONFIG[size];
 
@@ -66,8 +99,78 @@ export function TouchableSlot({
     onClick();
   };
 
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (e.button !== 2) return; // Only right button
+    if (!onRemoveSlots || removableSlotCount <= 0) return; // No multi-remove available
+
+    const drag = rightDragRef.current;
+    drag.active = true;
+    drag.startX = e.clientX;
+    drag.startY = e.clientY;
+    drag.hasMoved = false;
+    drag.slotsToRemove = 0;
+
+    const handleMove = (ev: MouseEvent) => {
+      if (!drag.active) return;
+      const dx = ev.clientX - drag.startX;
+      const dy = ev.clientY - drag.startY;
+      const distance = Math.sqrt(dx * dx + dy * dy);
+
+      if (distance > DRAG_THRESHOLD) {
+        drag.hasMoved = true;
+        const count = Math.min(
+          1 + Math.floor(distance / PIXELS_PER_SLOT),
+          removableSlotCount
+        );
+        drag.slotsToRemove = count;
+        setDragRemoveCount(count);
+      }
+    };
+
+    const handleUp = () => {
+      // Cleanup happens here; contextmenu fires after mouseup
+      document.removeEventListener('mousemove', handleMove);
+      document.removeEventListener('mouseup', handleUp);
+      // Remove contextmenu blocker after a tick (so it catches the one that fires with this mouseup)
+      setTimeout(() => {
+        if (drag.contextHandler) {
+          document.removeEventListener('contextmenu', drag.contextHandler);
+          drag.contextHandler = null;
+        }
+      }, 0);
+      setDragRemoveCount(0);
+    };
+
+    // Block browser context menu globally during drag
+    const preventContext = (ev: Event) => {
+      ev.preventDefault();
+      // If drag completed, execute the removal
+      if (drag.active && drag.hasMoved && drag.slotsToRemove > 0) {
+        onRemoveSlots!(drag.slotsToRemove);
+      }
+      drag.active = false;
+      drag.hasMoved = false;
+      drag.slotsToRemove = 0;
+    };
+
+    drag.moveHandler = handleMove;
+    drag.upHandler = handleUp;
+    drag.contextHandler = preventContext;
+
+    document.addEventListener('mousemove', handleMove);
+    document.addEventListener('mouseup', handleUp);
+    document.addEventListener('contextmenu', preventContext, { once: true });
+  };
+
   const handleContextMenu = (e: React.MouseEvent) => {
     e.preventDefault();
+
+    // If right-click drag was active, the document-level contextmenu handler
+    // already processed it — skip the normal right-click action
+    if (rightDragRef.current.hasMoved) {
+      return;
+    }
+
     if (e.shiftKey) {
       openMenu(e.clientX, e.clientY);
       return;
@@ -111,6 +214,7 @@ export function TouchableSlot({
       <div className="relative">
         <div
           onClick={handleClick}
+          onMouseDown={handleMouseDown}
           onMouseEnter={onMouseEnter}
           onContextMenu={handleContextMenu}
           onTouchStart={handleTouchStart}
@@ -130,8 +234,8 @@ export function TouchableSlot({
           style={{ WebkitTouchCallout: 'none', WebkitUserSelect: 'none' }}
           title={
             slot
-              ? `${slot.name || 'Enhancement'} - right-click to remove, Shift+right-click for menu`
-              : `Empty slot ${index + 1} - tap to add${canRemoveSlot ? ', right-click to remove' : ''}`
+              ? `${slot.name || 'Enhancement'} - right-click to remove, drag to remove multiple`
+              : `Empty slot ${index + 1} - tap to add${canRemoveSlot ? ', right-click to remove, drag to remove multiple' : ''}`
           }
         >
           {slot ? (
@@ -140,6 +244,12 @@ export function TouchableSlot({
             <span className="text-slate-400">+</span>
           )}
         </div>
+        {/* Drag-to-remove count badge */}
+        {dragRemoveCount > 0 && (
+          <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-red-600 text-white text-[9px] font-bold rounded-full min-w-[18px] h-[18px] flex items-center justify-center z-30 pointer-events-none animate-pulse px-0.5">
+            -{dragRemoveCount}
+          </div>
+        )}
         {slotLevel !== undefined && (
           <div
             className="absolute left-1/2 -translate-x-1/2 bg-gray-900/90 text-slate-300 border border-slate-600 rounded-sm pointer-events-none z-20 leading-none px-px"

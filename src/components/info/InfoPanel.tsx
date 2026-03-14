@@ -357,7 +357,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
   const effects = {
     ...baseEffects,
     // Execution stats from power.stats
-    ...(power.stats?.endurance && { enduranceCost: power.stats.endurance }),
+    ...(power.stats?.endurance && { enduranceCost: power.stats.endurance / (power.stats?.activatePeriod ?? 0.5) }),
     ...(power.stats?.recharge && { recharge: power.stats.recharge }),
     ...(power.stats?.accuracy && { accuracy: power.stats.accuracy }),
     ...(power.stats?.range && { range: power.stats.range }),
@@ -471,8 +471,9 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
         header="Power Effects"
         duration={effects?.buffDuration}
         purplePatchInfo={{
-          factor: getBaseToHit(targetLevelOffset - globalBonuses.levelShift) / 0.75,
+          factor: Math.min(0.95, Math.max(0.05, getBaseToHit(targetLevelOffset - globalBonuses.levelShift) + globalBonuses.toHit / 100)) / 0.75,
           offset: targetLevelOffset,
+          toHitBonus: globalBonuses.toHit,
           combatModifier: globalBonuses.combatModifier ?? 1,
         }}
       />

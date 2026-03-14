@@ -116,6 +116,16 @@ export function PowerRow({
     onOpenPicker?.(index);
   };
 
+  // Remove multiple slots from the end (used by right-click drag on slots)
+  const handleRemoveMultipleSlots = (count: number) => {
+    if (!onRemoveSlot) return;
+    for (let i = 0; i < count; i++) {
+      const idx = slots.length - 1 - i;
+      if (idx > 0) onRemoveSlot(idx);
+    }
+  };
+  const removableSlotCount = slots.length - 1; // Can't remove slot 0
+
   const renderIcon = (extraClass?: string) => {
     const img = (
       <img
@@ -217,6 +227,8 @@ export function PowerRow({
           onClearAllEnhancements={() => onClearAllEnhancements?.()}
           onRemoveAllSlots={() => onRemoveAllSlots?.()}
           onCompareSlotting={onCompareSlotting}
+          onRemoveSlots={onRemoveSlot ? handleRemoveMultipleSlots : undefined}
+          removableSlotCount={removableSlotCount}
         />
       ))}
       {onAddSlots && (

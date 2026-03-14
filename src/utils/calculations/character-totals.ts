@@ -466,7 +466,7 @@ interface PowerWithToggle {
   isActive?: boolean;
   effects?: ActivePowerEffect;
   slots?: (Enhancement | null)[];
-  stats?: { endurance?: number; [key: string]: unknown };
+  stats?: { endurance?: number; activatePeriod?: number; [key: string]: unknown };
 }
 
 /**
@@ -513,13 +513,19 @@ function applyActivePowerBonuses(
 
     // Track toggle endurance cost for active toggle powers
     if (power.powerType?.toLowerCase() === 'toggle' && power.isActive) {
-      // Endurance cost per second: from effects.enduranceCost (pool/epic/inherent)
-      // or stats.endurance (primary/secondary)
-      const baseEndCost = effects.enduranceCost ?? power.stats?.endurance ?? 0;
-      if (baseEndCost > 0) {
+      // Pool/epic powers: effects.enduranceCost is already per-second (converted at transform)
+      // Primary/secondary powers: stats.endurance is per-tick, divide by activatePeriod
+      let baseEndPerSec = 0;
+      if (effects.enduranceCost) {
+        baseEndPerSec = effects.enduranceCost;
+      } else if (power.stats?.endurance) {
+        const activatePeriod = power.stats.activatePeriod ?? 0.5;
+        baseEndPerSec = activatePeriod > 0 ? power.stats.endurance / activatePeriod : 0;
+      }
+      if (baseEndPerSec > 0) {
         // EnduranceReduction enhancement reduces the cost
         const endRedBonus = enhBonuses.endurance || 0;
-        const actualCost = baseEndCost * (1 / (1 + endRedBonus));
+        const actualCost = baseEndPerSec * (1 / (1 + endRedBonus));
         global.toggleEndCost += actualCost;
         addToBreakdown(breakdown, 'toggleEndCost', {
           name: power.name,
@@ -1614,6 +1620,7 @@ export function getAlphaEnhancementBonuses(
   if (alphaEffects.accuracy !== undefined) bonuses.accuracy = alphaEffects.accuracy;
   if (alphaEffects.recharge !== undefined) bonuses.recharge = alphaEffects.recharge;
   if (alphaEffects.enduranceReduction !== undefined) bonuses.endurance = alphaEffects.enduranceReduction;
+  if (alphaEffects.enduranceModification !== undefined) bonuses.enduranceModification = alphaEffects.enduranceModification;
   if (alphaEffects.range !== undefined) bonuses.range = alphaEffects.range;
   if (alphaEffects.heal !== undefined) bonuses.heal = alphaEffects.heal;
   if (alphaEffects.defense !== undefined) bonuses.defense = alphaEffects.defense;

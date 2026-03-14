@@ -23,6 +23,7 @@ export const ShiftingTides: Power = {
     "radius": 25,
     "recharge": 15,
     "endurance": 0.0975,
+    "activatePeriod": 0.1,
     "castTime": 1.17,
     "maxTargets": 16
   },

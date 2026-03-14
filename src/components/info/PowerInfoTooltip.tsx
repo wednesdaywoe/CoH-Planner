@@ -346,7 +346,7 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
   // Build additional mappings for keys that differ between data formats
   const extraEffects: Record<string, unknown> = {};
   // Execution stats from power.stats
-  if (basePower.stats?.endurance) extraEffects.enduranceCost = basePower.stats.endurance;
+  if (basePower.stats?.endurance) extraEffects.enduranceCost = basePower.stats.endurance / (basePower.stats?.activatePeriod ?? 0.5);
   if (basePower.stats?.recharge) extraEffects.recharge = basePower.stats.recharge;
   if (basePower.stats?.accuracy) extraEffects.accuracy = basePower.stats.accuracy;
   if (basePower.stats?.range) extraEffects.range = basePower.stats.range;
@@ -481,8 +481,9 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
         finalColumnColor={damageDisplayInfo?.finalColumnColor}
         applyInherentBonus={damageDisplayInfo?.applyInherentBonus}
         purplePatchInfo={{
-          factor: getBaseToHit(targetLevelOffset - globalBonuses.levelShift) / 0.75,
+          factor: Math.min(0.95, Math.max(0.05, getBaseToHit(targetLevelOffset - globalBonuses.levelShift) + globalBonuses.toHit / 100)) / 0.75,
           offset: targetLevelOffset,
+          toHitBonus: globalBonuses.toHit,
           combatModifier: globalBonuses.combatModifier ?? 1,
         }}
       />

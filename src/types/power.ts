@@ -266,8 +266,10 @@ export interface PowerEffects {
   range?: number;
   /** Recharge time in seconds */
   recharge?: number;
-  /** Endurance cost (legacy: 'endurance', new: 'enduranceCost') */
+  /** Endurance cost per tick (divide by activatePeriod for per-second) */
   enduranceCost?: number;
+  /** Toggle tick interval in seconds (default 0.5). End/s = enduranceCost / activatePeriod */
+  activatePeriod?: number;
   /** Cast/activation time in seconds */
   castTime?: number;
   /** Effect area type */
@@ -439,8 +441,10 @@ export interface PowerStats {
   radius?: number;
   /** Recharge time in seconds */
   recharge?: number;
-  /** Endurance cost */
+  /** Endurance cost (per tick — divide by activatePeriod for per-second) */
   endurance?: number;
+  /** Toggle tick interval in seconds (default 0.5). End/s = endurance / activatePeriod */
+  activatePeriod?: number;
   /** Cast/activation time in seconds */
   castTime?: number;
   /** Max targets for AoE */

@@ -43,6 +43,7 @@ interface LegacyEpicPowerEffects {
   range?: number;
   recharge?: number;
   endurance?: number;
+  activatePeriod?: number;
   activationTime?: number;
   effectArea?: string;
   radius?: number;
@@ -93,6 +94,7 @@ function transformEpicPower(legacy: LegacyEpicPower): Power {
   // Destructure stats that need renaming, spread the rest through directly
   const {
     endurance,
+    activatePeriod,
     activationTime,
     accuracy,
     range,
@@ -103,6 +105,9 @@ function transformEpicPower(legacy: LegacyEpicPower): Power {
     maxTargets,
     ...effectFields
   } = legacy.effects;
+
+  // Convert per-tick endurance to per-second
+  const endPerSec = endurance ? endurance / (activatePeriod || 0.5) : undefined;
 
   return {
     name: legacy.name,
@@ -122,7 +127,7 @@ function transformEpicPower(legacy: LegacyEpicPower): Power {
       accuracy,
       range,
       recharge,
-      enduranceCost: endurance,
+      enduranceCost: endPerSec,
       castTime: activationTime,
       effectArea: effectArea as PowerEffects['effectArea'],
       radius,

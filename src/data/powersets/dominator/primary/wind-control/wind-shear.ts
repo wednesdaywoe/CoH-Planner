@@ -22,6 +22,7 @@ export const WindShear: Power = {
     "radius": 20,
     "recharge": 15,
     "endurance": 2.6,
+    "activatePeriod": 2.0,
     "castTime": 2.03,
     "maxTargets": 16
   },

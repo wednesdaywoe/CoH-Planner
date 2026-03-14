@@ -35,6 +35,7 @@ export interface AlphaEffects {
   accuracy?: number;
   recharge?: number;
   enduranceReduction?: number;
+  enduranceModification?: number;
   range?: number;
   heal?: number;
   defense?: number;
@@ -233,7 +234,7 @@ const ALPHA_EFFECTS: Record<string, AlphaEffects> = {
     damage: 0.33,
     immobilize: 0.165,
     defenseDebuff: 0.33,
-    enduranceReduction: 0.33,
+    enduranceModification: 0.33,
     levelShift: 1,
     edBypass: 1/2,  // Rare: 1/2 bypasses ED
   },
@@ -249,7 +250,7 @@ const ALPHA_EFFECTS: Record<string, AlphaEffects> = {
     immobilize: 0.33,
     defenseDebuff: 0.33,
     toHitDebuff: 0.20,
-    enduranceReduction: 0.20,
+    enduranceModification: 0.20,
     runSpeed: 0.20,
     levelShift: 1,
     edBypass: 2/3,  // Very Rare: 2/3 bypasses ED
@@ -456,37 +457,37 @@ const ALPHA_EFFECTS: Record<string, AlphaEffects> = {
   // ========== AGILITY ==========
   // Focuses on Endurance Modification (Recovery)
   'agility_boost': {
-    enduranceReduction: 0.20,  // End Mod
+    enduranceModification: 0.20,
     levelShift: 0,
     edBypass: 1/6,  // Common: 1/6 bypasses ED
   },
   'agility_core_boost': {
-    enduranceReduction: 0.25,
+    enduranceModification: 0.25,
     recharge: 0.20,
     levelShift: 0,
     edBypass: 1/3,  // Uncommon: 1/3 bypasses ED
   },
   'agility_radial_boost': {
-    enduranceReduction: 0.25,
+    enduranceModification: 0.25,
     defense: 0.20,
     levelShift: 0,
     edBypass: 1/3,  // Uncommon: 1/3 bypasses ED
   },
   'agility_total_core_revamp': {
-    enduranceReduction: 0.45,
+    enduranceModification: 0.45,
     recharge: 0.33,
     levelShift: 1,
     edBypass: 1/2,  // Rare: 1/2 bypasses ED
   },
   'agility_partial_core_revamp': {
-    enduranceReduction: 0.33,
+    enduranceModification: 0.33,
     recharge: 0.33,
     defense: 0.20,
     levelShift: 1,
     edBypass: 1/2,  // Rare: 1/2 bypasses ED
   },
   'agility_partial_radial_revamp': {
-    enduranceReduction: 0.33,
+    enduranceModification: 0.33,
     recharge: 0.165,
     defense: 0.20,
     runSpeed: 0.33,
@@ -494,7 +495,7 @@ const ALPHA_EFFECTS: Record<string, AlphaEffects> = {
     edBypass: 1/2,  // Rare: 1/2 bypasses ED
   },
   'agility_total_radial_revamp': {
-    enduranceReduction: 0.33,
+    enduranceModification: 0.33,
     recharge: 0.165,
     defense: 0.20,
     jumpSpeed: 0.33,
@@ -502,14 +503,14 @@ const ALPHA_EFFECTS: Record<string, AlphaEffects> = {
     edBypass: 1/2,  // Rare: 1/2 bypasses ED
   },
   'agility_core_paragon': {
-    enduranceReduction: 0.45,
+    enduranceModification: 0.45,
     recharge: 0.33,
     defense: 0.33,
     levelShift: 1,
     edBypass: 2/3,  // Very Rare: 2/3 bypasses ED
   },
   'agility_radial_paragon': {
-    enduranceReduction: 0.45,
+    enduranceModification: 0.45,
     recharge: 0.33,
     defense: 0.33,
     jumpSpeed: 0.20,
@@ -666,7 +667,7 @@ const ALPHA_EFFECTS: Record<string, AlphaEffects> = {
   },
   'vigor_radial_boost': {
     heal: 0.25,
-    enduranceReduction: 0.20,
+    enduranceModification: 0.20,
     levelShift: 0,
     edBypass: 1/3,  // Uncommon: 1/3 bypasses ED
   },
@@ -679,14 +680,14 @@ const ALPHA_EFFECTS: Record<string, AlphaEffects> = {
   'vigor_partial_core_revamp': {
     heal: 0.33,
     accuracy: 0.33,
-    enduranceReduction: 0.33,
+    enduranceModification: 0.33,
     levelShift: 1,
     edBypass: 1/2,  // Rare: 1/2 bypasses ED
   },
   'vigor_partial_radial_revamp': {
     heal: 0.33,
     accuracy: 0.165,
-    enduranceReduction: 0.33,
+    enduranceModification: 0.33,
     sleep: 0.33,
     levelShift: 1,
     edBypass: 1/2,  // Rare: 1/2 bypasses ED
@@ -694,7 +695,7 @@ const ALPHA_EFFECTS: Record<string, AlphaEffects> = {
   'vigor_total_radial_revamp': {
     heal: 0.33,
     accuracy: 0.165,
-    enduranceReduction: 0.33,
+    enduranceModification: 0.33,
     confuse: 0.33,
     levelShift: 1,
     edBypass: 1/2,  // Rare: 1/2 bypasses ED
@@ -702,14 +703,14 @@ const ALPHA_EFFECTS: Record<string, AlphaEffects> = {
   'vigor_core_paragon': {
     heal: 0.45,
     accuracy: 0.33,
-    enduranceReduction: 0.33,
+    enduranceModification: 0.33,
     levelShift: 1,
     edBypass: 2/3,  // Very Rare: 2/3 bypasses ED
   },
   'vigor_radial_paragon': {
     heal: 0.45,
     accuracy: 0.33,
-    enduranceReduction: 0.33,
+    enduranceModification: 0.33,
     confuse: 0.20,
     sleep: 0.20,
     fear: 0.20,

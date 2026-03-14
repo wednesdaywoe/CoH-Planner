@@ -23,7 +23,8 @@ import { useBuildStore } from '@/stores';
 
 const ALPHA_LABELS: Record<string, string> = {
   damage: 'Damage', accuracy: 'Accuracy', recharge: 'Recharge',
-  enduranceReduction: 'End Reduction', range: 'Range', heal: 'Heal',
+  enduranceReduction: 'End Reduction', enduranceModification: 'End Modification',
+  range: 'Range', heal: 'Heal',
   defense: 'Defense', resistance: 'Resistance', hold: 'Hold',
   immobilize: 'Immobilize', stun: 'Stun', sleep: 'Sleep',
   fear: 'Fear', confuse: 'Confuse', slow: 'Slow',
@@ -91,12 +92,20 @@ export function getIncarnateEffectData(slotId: IncarnateSlotId, powerId: string,
     case 'hybrid': {
       const fx = getHybridEffects(powerId);
       if (!fx) return null;
-      const entries: EffectEntry[] = (Object.entries(fx) as [string, number][])
+      const tree = powerId.split('_')[0];
+      const tgtInfo = HYBRID_TARGET_INFO[tree];
+      const entries: EffectEntry[] = [];
+      if (tgtInfo) {
+        entries.push({ label: 'Target', value: tgtInfo.label });
+      }
+      (Object.entries(fx) as [string, number][])
         .filter(([k]) => k !== 'duration' && k !== 'recharge' && k !== 'containmentScale' && k !== 'containmentTableName')
-        .map(([k, v]) => ({
-          label: HYBRID_LABELS[k] || k,
-          value: k === 'statusProtection' ? `Mag ${v}` : k === 'mezMagnitudeBonus' ? `+${v} Mag` : formatEffectValue(v),
-        }));
+        .forEach(([k, v]) => {
+          entries.push({
+            label: HYBRID_LABELS[k] || k,
+            value: k === 'statusProtection' ? `Mag ${v}` : k === 'mezMagnitudeBonus' ? `+${v} Mag` : formatEffectValue(v),
+          });
+        });
       if (fx.containmentScale && fx.containmentTableName && archetypeId) {
         const dmg = calculateIncarnateDamage(fx.containmentScale, fx.containmentTableName, archetypeId, level ?? 50);
         entries.push({ label: 'Containment (Waylay)', value: dmg !== null ? `${dmg.toFixed(1)}` : `${fx.containmentScale} scale` });
@@ -172,7 +181,7 @@ export function IncarnateEffectsTooltip({ slotId, powerId }: { slotId: Incarnate
     case 'hybrid': {
       const fx = getHybridEffects(powerId);
       if (!fx) return null;
-      return <HybridTooltip fx={fx} archetypeId={archetypeId} level={level} />;
+      return <HybridTooltip fx={fx} powerId={powerId} archetypeId={archetypeId} level={level} />;
     }
     case 'interface': {
       const fx = getInterfaceEffects(powerId);
@@ -249,17 +258,29 @@ function DestinyTooltip({ fx }: { fx: DestinyEffects }) {
   );
 }
 
-function HybridTooltip({ fx, archetypeId, level }: { fx: HybridEffects; archetypeId: string; level: number }) {
+const HYBRID_TARGET_INFO: Record<string, { label: string; color: string }> = {
+  assault: { label: 'Self', color: 'text-blue-400' },
+  control: { label: 'Self', color: 'text-blue-400' },
+  melee: { label: 'Self', color: 'text-blue-400' },
+  support: { label: 'Team (50ft aura, affects pets)', color: 'text-green-400' },
+};
+
+function HybridTooltip({ fx, powerId, archetypeId, level }: { fx: HybridEffects; powerId: string; archetypeId: string; level: number }) {
   const statEntries = Object.entries(fx).filter(
     ([k]) => k !== 'duration' && k !== 'recharge' && k !== 'containmentScale' && k !== 'containmentTableName'
   ) as [string, number][];
   const containDmg = fx.containmentScale && fx.containmentTableName
     ? calculateIncarnateDamage(fx.containmentScale, fx.containmentTableName, archetypeId, level)
     : null;
+  const tree = powerId.split('_')[0];
+  const targetInfo = HYBRID_TARGET_INFO[tree];
 
   return (
     <div className="text-[11px] mt-2 border-t border-gray-600 pt-1.5 space-y-0.5">
       <div className="text-cyan-400 font-semibold mb-0.5">Toggle Bonuses</div>
+      {targetInfo && (
+        <div className={`text-[10px] ${targetInfo.color} mb-0.5`}>Target: {targetInfo.label}</div>
+      )}
       {statEntries.map(([key, val]) => (
         <EffectRow
           key={key}

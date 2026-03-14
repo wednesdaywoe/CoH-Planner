@@ -22,6 +22,7 @@ export const TimesJuncture: Power = {
     "radius": 25,
     "recharge": 10,
     "endurance": 0.39,
+    "activatePeriod": 0.75,
     "castTime": 0.67,
     "maxTargets": 16
   },

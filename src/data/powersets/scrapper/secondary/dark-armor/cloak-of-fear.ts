@@ -22,6 +22,7 @@ export const CloakofFear: Power = {
     "radius": 15,
     "recharge": 4,
     "endurance": 0.26,
+    "activatePeriod": 1.0,
     "castTime": 1.17,
     "maxTargets": 10
   },

@@ -22,6 +22,7 @@ export const Integration: Power = {
     "radius": 8,
     "recharge": 10,
     "endurance": 0.52,
+    "activatePeriod": 2.0,
     "castTime": 3.1,
     "maxTargets": 10
   },

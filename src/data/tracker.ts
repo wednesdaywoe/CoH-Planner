@@ -14,7 +14,6 @@ export interface TrackerItem {
 
 export const KNOWN_BUGS: TrackerItem[] = [
   { text: 'Some Hamidon/Special Enhancement icons may be missing', status: 'known-bug' },
-  { text: 'Proc damage is currently not calculated', status: 'known-bug' },
   { text: 'The icon for Rime is missing. 10,000,000 inf for its safe return unharmed', status: 'known-bug' },
   { text: 'If you see a [missing-icon] icon, it means the icon is missing. Please report it using the feedback tool', status: 'known-bug' },
   { text: 'If you import a build and it has a lot of weirdness, please specify the method of import (if Mids, please mention if its an older Mids format)', status: 'known-bug' },
@@ -25,7 +24,13 @@ export const KNOWN_BUGS: TrackerItem[] = [
 // ============================================
 
 export const RECENT_CHANGES: TrackerItem[] = [
-  { text: 'Calculations now suppport proc damage', status: 'new' },
+  { text: 'Fixed various bugs related to endurance calculations and power display accuracy', status: 'fixed' },
+  { text: 'Fixed toggle endurance costs (Leadership, etc.) now correctly use activate_period for per-second calculation', status: 'new' },
+  { text: 'Fixed ToHit buffs (Tactics, Aim, Kismet) now properly affect per-power accuracy display', status: 'new' },
+  { text: 'Fixed Sentinel ATOs no longer incorrectly appear on ineligible powersets', status: 'new' },
+  { text: 'Added proc info tooltips to enhancement picker Procs filter with PPM, damage, and mechanics', status: 'new' },
+  { text: 'Added 48 missing proc entries (ATOs, Superior variants, globals, Cupid\'s Crush, Overwhelming Force)', status: 'new' },
+  { text: 'Calculations now support proc damage', status: 'new' },
   { text: 'New features for logged in users: favorites/bookmarks, new sort and filter options including by author, inline delete', status: 'new' },
   { text: 'Added A-Z / Level sort toggle above the IO sets list', status: 'new' },
   { text: 'Disabled IO set pieces now show the full stats tooltip', status: 'new' },
