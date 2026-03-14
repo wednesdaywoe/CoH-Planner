@@ -59,16 +59,21 @@ export function PermaRing({ power, size, children }: PermaRingProps) {
   // Ring color: SKMagenta
   const ringColor = '#D62BCE';
 
+  const rechargeNeededPct = (permaInfo.rechargeNeeded * 100).toFixed(0);
+  const totalRechargePct = (permaInfo.totalRecharge * 100).toFixed(0);
+
   const tooltipContent = (
-    <div className="text-[10px] space-y-0.5 min-w-[120px]">
+    <div className="text-[10px] space-y-0.5 min-w-[130px]">
       <div className="font-semibold text-center mb-1">
         <span className="text-sk-magenta">
           {permaInfo.isPerma ? 'PERMA' : `${permaInfo.permaPercent.toFixed(1)}% to Perma`}
         </span>
       </div>
       <div className="flex justify-between">
-        <span className="text-slate-400">Duration</span>
-        <span className="text-slate-200">{permaInfo.duration}s</span>
+        <span className="text-slate-400">+Recharge</span>
+        <span className={permaInfo.totalRecharge > 0 ? 'text-green-400' : 'text-slate-200'}>
+          {totalRechargePct}% / {rechargeNeededPct}%
+        </span>
       </div>
       <div className="flex justify-between">
         <span className="text-slate-400">Eff. Recharge</span>
@@ -77,8 +82,8 @@ export function PermaRing({ power, size, children }: PermaRingProps) {
         </span>
       </div>
       <div className="flex justify-between">
-        <span className="text-slate-400">Base Recharge</span>
-        <span className="text-slate-400">{permaInfo.baseRecharge}s</span>
+        <span className="text-slate-400">Base / Duration</span>
+        <span className="text-slate-400">{permaInfo.baseRecharge}s / {permaInfo.duration}s</span>
       </div>
       {!permaInfo.isPerma && (
         <div className="flex justify-between border-t border-slate-600 pt-0.5 mt-0.5">

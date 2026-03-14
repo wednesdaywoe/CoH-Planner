@@ -216,6 +216,9 @@ const STAT_NAME_MAP: Record<string, string | null> = {
   // Mez Protection (from IO set unique bonuses)
   'knockback_protection': 'kbprotection',
 
+  // All-defense (global proc effect handled by proc system, not set bonuses)
+  'defense_(all)': null,
+
   // Range (not tracked in dashboard, but valid set bonus)
   range: null,
   Range: null,

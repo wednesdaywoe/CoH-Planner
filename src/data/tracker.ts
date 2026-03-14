@@ -24,6 +24,7 @@ export const KNOWN_BUGS: TrackerItem[] = [
 // ============================================
 
 export const RECENT_CHANGES: TrackerItem[] = [
+  { text: 'The perma tracker was confusing people, so the meter now displays how much +recharge have, instead of the powers cooldown', status: 'new' },
   { text: 'Fixed various bugs related to endurance calculations and power display accuracy', status: 'fixed' },
   { text: 'Fixed toggle endurance costs (Leadership, etc.) now correctly use activate_period for per-second calculation', status: 'new' },
   { text: 'Fixed ToHit buffs (Tactics, Aim, Kismet) now properly affect per-power accuracy display', status: 'new' },
@@ -32,8 +33,6 @@ export const RECENT_CHANGES: TrackerItem[] = [
   { text: 'Added 48 missing proc entries (ATOs, Superior variants, globals, Cupid\'s Crush, Overwhelming Force)', status: 'new' },
   { text: 'Calculations now support proc damage', status: 'new' },
   { text: 'New features for logged in users: favorites/bookmarks, new sort and filter options including by author, inline delete', status: 'new' },
-  { text: 'Added A-Z / Level sort toggle above the IO sets list', status: 'new' },
-  { text: 'Disabled IO set pieces now show the full stats tooltip', status: 'new' },
   { text: 'Added a defensive check on imported builds to enforce power assignment, but still investigating the root cause', status: 'fixed' },
   { text: 'Added fixPowerSetIds() to syncBuildDefinitions() so that existing builds already saved in localStorage with wrong display names get corrected on load', status: 'fixed' },
   { text: 'Users can optionally sign in with Discord to manage their builds across devices. Anonymous build management is still supported with build tokens', status: 'new' },

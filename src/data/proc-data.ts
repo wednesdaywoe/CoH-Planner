@@ -1073,10 +1073,10 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     pool: "",
     unique: "Unique"
   },
-  "Defense to All": {
+  "Damage Resistance/+Def(All)": {
     setCategory: "Resist Damage",
     setName: "Steadfast Protection",
-    ioName: "Defense to All",
+    ioName: "Damage Resistance/+Def(All)",
     ppm: null,
     mechanics: "Defense(All 3%)",
     pvpNotes: "",
@@ -1085,10 +1085,10 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     pool: "A-rare",
     unique: "Unique"
   },
-  "Teleportation Protection, +Def(All)": {
+  "+Def(All)": {
     setCategory: "Resist Damage",
     setName: "Gladiator's Armor",
-    ioName: "Teleportation Protection, +Def(All)",
+    ioName: "+Def(All)",
     ppm: null,
     mechanics: "Defense(All 3%)\nTeleport Protection for 10.25s",
     pvpNotes: "",
@@ -1145,10 +1145,10 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     pool: "A-unc",
     unique: ""
   },
-  "Steadfast Protection: Protection from Knockback": {
+  "Steadfast Protection: Knockback Protection": {
     setCategory: "Resist Damage",
     setName: "Steadfast Protection",
-    ioName: "Protection from Knockback",
+    ioName: "Knockback Protection",
     ppm: null,
     mechanics: "Protection(Knockback Mag 4)",
     pvpNotes: "",

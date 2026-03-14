@@ -156,12 +156,22 @@ export function EnhancementPicker() {
     set.category === 'pvp' ||
     set.type === 'Universal Damage Sets';
 
+  // Sort priority for special categories (higher = sorted later)
+  const specialSortOrder = (set: IOSet): number => {
+    if (set.type === 'Universal Damage Sets') return 1;
+    if (set.category === 'purple') return 2;
+    if (set.category === 'event') return 3;
+    if (set.category === 'pvp') return 4;
+    if (set.category === 'ato') return 5;
+    return 0;
+  };
+
   // Filter sets based on sidebar selection, then sort
   const filteredSets = useMemo(() => {
     let sets: IOSet[];
     switch (sidebarFilter) {
       case 'all':
-        sets = availableSets.filter((set) => !isSpecialSet(set));
+        sets = [...availableSets];
         break;
       case 'universal':
         sets = availableSets.filter((set) => set.type === 'Universal Damage Sets');
@@ -184,7 +194,14 @@ export function EnhancementPicker() {
       default:
         sets = availableSets.filter((set) => set.type === sidebarFilter && !isSpecialSet(set));
     }
-    if (ioSortBy === 'level') {
+    if (sidebarFilter === 'all') {
+      // In 'all' view, group standard sets first, then special sets at bottom
+      if (ioSortBy === 'level') {
+        sets.sort((a, b) => specialSortOrder(a) - specialSortOrder(b) || a.minLevel - b.minLevel || a.maxLevel - b.maxLevel || a.name.localeCompare(b.name));
+      } else {
+        sets.sort((a, b) => specialSortOrder(a) - specialSortOrder(b) || a.name.localeCompare(b.name));
+      }
+    } else if (ioSortBy === 'level') {
       sets = [...sets].sort((a, b) => a.minLevel - b.minLevel || a.maxLevel - b.maxLevel || a.name.localeCompare(b.name));
     } else {
       sets = [...sets].sort((a, b) => a.name.localeCompare(b.name));

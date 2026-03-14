@@ -969,18 +969,20 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
                 {/* Stats */}
                 <div className="grid grid-cols-2 gap-x-3 gap-y-0.5 text-[10px]">
                   <div className="flex justify-between">
-                    <span className="text-slate-500">Duration</span>
-                    <span className="text-slate-300">{permaInfo.duration}s</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-slate-500">Base Rchg</span>
-                    <span className="text-slate-300">{permaInfo.baseRecharge}s</span>
+                    <span className="text-slate-500">+Recharge</span>
+                    <span className={permaInfo.totalRecharge > 0 ? 'text-green-400' : 'text-slate-300'}>
+                      {(permaInfo.totalRecharge * 100).toFixed(0)}% / {(permaInfo.rechargeNeeded * 100).toFixed(0)}%
+                    </span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-slate-500">Eff. Rchg</span>
                     <span className={permaInfo.effectiveRecharge < permaInfo.baseRecharge ? 'text-green-400' : 'text-slate-300'}>
                       {permaInfo.effectiveRecharge.toFixed(1)}s
                     </span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-slate-500">Base / Duration</span>
+                    <span className="text-slate-300">{permaInfo.baseRecharge}s / {permaInfo.duration}s</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-slate-500">Gap</span>

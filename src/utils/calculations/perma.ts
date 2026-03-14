@@ -5,8 +5,10 @@
  * its duration, meaning it can be reactivated immediately when it expires.
  *
  * Formula:
- *   effectiveRecharge = baseRecharge / (1 + slottedRecharge) / (1 + globalRecharge)
- *   permaRatio = duration / effectiveRecharge  (1.0 = perma, <1.0 = not perma)
+ *   rechargeNeeded = (baseRecharge / duration) - 1  (total +rech% required for perma)
+ *   totalRecharge  = slottedRecharge + globalRecharge (combined from slotting + set bonuses)
+ *   permaPercent   = totalRecharge / rechargeNeeded * 100  (0% = no bonuses, 100% = perma)
+ *   effectiveRecharge = baseRecharge / (1 + totalRecharge)
  */
 
 import type { SelectedPower, Power, PowerEffects } from '@/types';
@@ -19,9 +21,11 @@ export interface PermaInfo {
   duration: number;
   /** Effective recharge after enhancements and global bonuses */
   effectiveRecharge: number;
-  /** Duration / effectiveRecharge — at 1.0+ the power is perma */
-  permaRatio: number;
-  /** Percentage (0-100, capped at 100) */
+  /** Total +recharge% needed to reach perma (as decimal, e.g. 2.75 = 275%) */
+  rechargeNeeded: number;
+  /** Current total +recharge% (slotted + global, as decimal) */
+  totalRecharge: number;
+  /** Percentage (0-100, capped at 100) — progress toward required recharge */
   permaPercent: number;
   /** True when the power can be kept up permanently */
   isPerma: boolean;
@@ -70,17 +74,21 @@ export function calculatePermaInfo(
   if (baseRecharge <= 0 || duration <= 0) return null;
 
   const slottedRecharge = enhBonuses.recharge ?? 0;
-  const effectiveRecharge = baseRecharge / Math.max(1, 1 + slottedRecharge) / Math.max(1, 1 + globalRecharge);
-  const permaRatio = duration / effectiveRecharge;
-  const permaPercent = Math.min(100, permaRatio * 100);
+  const totalRecharge = slottedRecharge + globalRecharge;
+  const effectiveRecharge = baseRecharge / Math.max(1, 1 + totalRecharge);
+  const rechargeNeeded = (baseRecharge / duration) - 1; // e.g. 450/120 - 1 = 2.75
+  const permaPercent = rechargeNeeded > 0
+    ? Math.min(100, (totalRecharge / rechargeNeeded) * 100)
+    : 100;
 
   return {
     baseRecharge,
     duration,
     effectiveRecharge,
-    permaRatio,
+    rechargeNeeded,
+    totalRecharge,
     permaPercent,
-    isPerma: permaRatio >= 1.0,
+    isPerma: effectiveRecharge <= duration,
   };
 }
 

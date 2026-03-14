@@ -381,6 +381,7 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
     colorClass: STAT_COLORS.regen,
     format: 'percent',
     baseMultiplier: 100,
+    enhancementAspect: 'heal',
     priority: 6,
   },
   speedBuff: {
@@ -397,6 +398,7 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
     colorClass: STAT_COLORS.maxHP,
     format: 'percent',
     calculation: 'buff',
+    enhancementAspect: 'heal',
     priority: 8,
   },
   maxEndBuff: {
