@@ -14,7 +14,6 @@ export interface TrackerItem {
 
 export const KNOWN_BUGS: TrackerItem[] = [
   { text: 'Some Hamidon/Special Enhancement icons may be missing', status: 'known-bug' },
-  { text: 'The icon for Rime is missing. 10,000,000 inf for its safe return unharmed', status: 'known-bug' },
   { text: 'If you see a [missing-icon] icon, it means the icon is missing. Please report it using the feedback tool', status: 'known-bug' },
   { text: 'If you import a build and it has a lot of weirdness, please specify the method of import (if Mids, please mention if its an older Mids format)', status: 'known-bug' },
 ];
