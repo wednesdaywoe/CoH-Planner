@@ -129,7 +129,7 @@ interface LegacyIOSet {
 
 type LegacyIOSetRegistry = Record<string, LegacyIOSet>;
 
-export const IO_SETS_RAW: LegacyIOSetRegistry = ${JSON.stringify(ioSets, null, 2)};
+export const IO_SETS_RAW: LegacyIOSetRegistry = ${JSON.stringify(ioSets, (key, value) => typeof value === 'number' ? Math.round(value * 10000) / 10000 : value, 2)};
 `;
 
 fs.writeFileSync(outputPath, tsContent, 'utf-8');

@@ -1977,29 +1977,31 @@ export const PROC_DATABASE: Record<string, ProcData> = {
 
 /**
  * Look up proc data with fuzzy matching
- * First tries exact match, then tries to find by IO name alone
+ * Prioritizes set-prefixed match when setName is provided to avoid
+ * ambiguous bare keys (e.g. multiple procs share "Chance for Negative Energy Damage"
+ * but have different PPM values across sets)
  */
 export function findProcData(enhancementName: string, setName?: string): ProcData | undefined {
-  // Try exact match first
-  const exact = PROC_DATABASE[enhancementName];
-  if (exact) return exact;
-
-  // Try with set name prefix
+  // Try with set name prefix first (most specific match)
   if (setName) {
     const withSetName = PROC_DATABASE[`${setName}: ${enhancementName}`];
     if (withSetName) return withSetName;
   }
 
+  // Try exact match on bare name
+  const exact = PROC_DATABASE[enhancementName];
+  if (exact) return exact;
+
   // Try to find by IO name only (scan all entries)
+  // When setName is provided, prefer matching set; otherwise return first match
+  let firstMatch: ProcData | undefined;
   for (const [key, data] of Object.entries(PROC_DATABASE)) {
-    if (data.ioName === enhancementName) {
-      return data;
-    }
-    // Also check if the key ends with the enhancement name
-    if (key.endsWith(`: ${enhancementName}`)) {
-      return data;
-    }
+    const nameMatches = data.ioName === enhancementName || key.endsWith(`: ${enhancementName}`);
+    if (!nameMatches) continue;
+    if (setName && data.setName === setName) return data;
+    if (!firstMatch) firstMatch = data;
   }
+  if (firstMatch) return firstMatch;
 
   // Fallback: match by set name (handles name mismatches like LotG "Defense/+Recharge" vs "Buff Recharge")
   if (setName) {

@@ -195,12 +195,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "defense_(area)",
-            "value": 1.8800000000000001,
+            "value": 1.88,
             "desc": "+1.88% Area Defense"
           },
           {
             "stat": "defense_(cold)",
-            "value": 0.9400000000000001,
+            "value": 0.94,
             "desc": "+1% Cold and Fire"
           }
         ]
@@ -451,12 +451,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "defense_(cold)",
-            "value": 3.1300000000000003,
+            "value": 3.13,
             "desc": "+3% Cold and Fire"
           },
           {
             "stat": "defense_(area)",
-            "value": 1.5599999999999998,
+            "value": 1.56,
             "desc": "+1.56% Area Defense"
           }
         ]
@@ -481,12 +481,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "defense_(area)",
-            "value": 3.1300000000000003,
+            "value": 3.13,
             "desc": "+3.13% Area Defense"
           },
           {
             "stat": "defense_(cold)",
-            "value": 1.5599999999999998,
+            "value": 1.56,
             "desc": "+2% Cold and Fire"
           }
         ]
@@ -852,7 +852,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           },
           {
             "stat": "defense_(cold)",
-            "value": 1.8800000000000001,
+            "value": 1.88,
             "desc": "+2% Cold and Fire"
           }
         ]
@@ -1260,12 +1260,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "defense_(energy)",
-            "value": 1.8800000000000001,
+            "value": 1.88,
             "desc": "+2% Energy and Negative Energy"
           },
           {
             "stat": "defense_(ranged)",
-            "value": 0.9400000000000001,
+            "value": 0.94,
             "desc": "+0.94% Ranged Defense"
           }
         ]
@@ -1295,12 +1295,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "defense_(ranged)",
-            "value": 3.1300000000000003,
+            "value": 3.13,
             "desc": "+3.13% Ranged Defense"
           },
           {
             "stat": "defense_(energy)",
-            "value": 1.5599999999999998,
+            "value": 1.56,
             "desc": "+2% Energy and Negative Energy"
           }
         ]
@@ -1405,7 +1405,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           },
           {
             "stat": "terror_duration",
-            "value": 3.3000000000000003,
+            "value": 3.3,
             "desc": "+3.3% Terror Duration"
           },
           {
@@ -1450,12 +1450,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "defense_(ranged)",
-            "value": 3.1300000000000003,
+            "value": 3.13,
             "desc": "+3.13% Ranged Defense"
           },
           {
             "stat": "defense_(energy)",
-            "value": 1.5599999999999998,
+            "value": 1.56,
             "desc": "+2% Energy and Negative Energy"
           }
         ]
@@ -1564,7 +1564,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           },
           {
             "stat": "defense_(cold)",
-            "value": 1.8800000000000001,
+            "value": 1.88,
             "desc": "+2% Cold and Fire"
           }
         ]
@@ -1574,7 +1574,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "damage",
-            "value": 3.5000000000000004,
+            "value": 3.5,
             "desc": "+3.5% Damage"
           }
         ]
@@ -1704,12 +1704,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "defense_(melee)",
-            "value": 1.8800000000000001,
+            "value": 1.88,
             "desc": "+1.88% Melee Defense"
           },
           {
             "stat": "defense_(lethal)",
-            "value": 0.9400000000000001,
+            "value": 0.94,
             "desc": "+1% Lethal and Smashing"
           }
         ]
@@ -1724,7 +1724,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           },
           {
             "stat": "defense_(area)",
-            "value": 1.8800000000000001,
+            "value": 1.88,
             "desc": "+1.88% Area Defense"
           }
         ]
@@ -2049,7 +2049,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "accuracy",
-            "value": 7.000000000000001,
+            "value": 7,
             "desc": "+7% Accuracy"
           }
         ]
@@ -2089,12 +2089,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "defense_(ranged)",
-            "value": 3.1300000000000003,
+            "value": 3.13,
             "desc": "+3.13% Ranged Defense"
           },
           {
             "stat": "defense_(energy)",
-            "value": 1.5599999999999998,
+            "value": 1.56,
             "desc": "+2% Energy and Negative Energy"
           }
         ]
@@ -2194,12 +2194,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "defense_(area)",
-            "value": 1.8800000000000001,
+            "value": 1.88,
             "desc": "+1.88% Area Defense"
           },
           {
             "stat": "defense_(cold)",
-            "value": 0.9400000000000001,
+            "value": 0.94,
             "desc": "+1% Cold and Fire"
           }
         ]
@@ -2292,12 +2292,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "defense_(lethal)",
-            "value": 1.8800000000000001,
+            "value": 1.88,
             "desc": "+2% Lethal and Smashing"
           },
           {
             "stat": "defense_(melee)",
-            "value": 0.9400000000000001,
+            "value": 0.94,
             "desc": "+0.94% Melee Defense"
           }
         ]
@@ -2312,7 +2312,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           },
           {
             "stat": "defense_(area)",
-            "value": 1.8800000000000001,
+            "value": 1.88,
             "desc": "+1.88% Area Defense"
           }
         ]
@@ -2407,12 +2407,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "defense_(cold)",
-            "value": 1.8800000000000001,
+            "value": 1.88,
             "desc": "+2% Cold and Fire"
           },
           {
             "stat": "defense_(area)",
-            "value": 0.9400000000000001,
+            "value": 0.94,
             "desc": "+0.94% Area Defense"
           }
         ]
@@ -2442,7 +2442,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           },
           {
             "stat": "defense_(cold)",
-            "value": 1.8800000000000001,
+            "value": 1.88,
             "desc": "+2% Cold and Fire"
           }
         ]
@@ -2457,7 +2457,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           },
           {
             "stat": "defense_(energy)",
-            "value": 1.8800000000000001,
+            "value": 1.88,
             "desc": "+2% Energy and Negative Energy"
           }
         ]
@@ -2563,7 +2563,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "accuracy",
-            "value": 7.000000000000001,
+            "value": 7,
             "desc": "+7% Accuracy"
           }
         ]
@@ -3214,12 +3214,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "defense_(energy)",
-            "value": 1.8800000000000001,
+            "value": 1.88,
             "desc": "+2% Energy and Negative Energy"
           },
           {
             "stat": "defense_(ranged)",
-            "value": 0.9400000000000001,
+            "value": 0.94,
             "desc": "+0.94% Ranged Defense"
           }
         ]
@@ -3796,7 +3796,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           },
           {
             "stat": "defense_(energy)",
-            "value": 1.8800000000000001,
+            "value": 1.88,
             "desc": "+2% Energy and Negative Energy"
           }
         ]
@@ -4273,7 +4273,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           },
           {
             "stat": "defense_(cold)",
-            "value": 1.8800000000000001,
+            "value": 1.88,
             "desc": "+2% Cold and Fire"
           }
         ]
@@ -4283,7 +4283,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "damage",
-            "value": 3.5000000000000004,
+            "value": 3.5,
             "desc": "+3.5% Damage"
           }
         ]
@@ -4403,7 +4403,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "accuracy",
-            "value": 7.000000000000001,
+            "value": 7,
             "desc": "+7% Accuracy"
           }
         ]
@@ -5317,7 +5317,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           },
           {
             "stat": "defense_(energy)",
-            "value": 1.8800000000000001,
+            "value": 1.88,
             "desc": "+2% Energy and Negative Energy"
           }
         ]
@@ -5457,7 +5457,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           },
           {
             "stat": "defense_(ranged)",
-            "value": 1.8800000000000001,
+            "value": 1.88,
             "desc": "+1.88% Ranged Defense"
           }
         ]
@@ -5640,12 +5640,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "defense_(area)",
-            "value": 1.8800000000000001,
+            "value": 1.88,
             "desc": "+1.88% Area Defense"
           },
           {
             "stat": "defense_(cold)",
-            "value": 0.9400000000000001,
+            "value": 0.94,
             "desc": "+1% Cold and Fire"
           }
         ]
@@ -6089,7 +6089,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           },
           {
             "stat": "terror_duration",
-            "value": 3.3000000000000003,
+            "value": 3.3,
             "desc": "+3.3% Terror Duration"
           },
           {
@@ -6154,7 +6154,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           },
           {
             "stat": "defense_(ranged)",
-            "value": 1.8800000000000001,
+            "value": 1.88,
             "desc": "+1.88% Ranged Defense"
           }
         ]
@@ -6238,7 +6238,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "accuracy",
-            "value": 7.000000000000001,
+            "value": 7,
             "desc": "+7% Accuracy"
           }
         ]
@@ -6798,12 +6798,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "defense_(melee)",
-            "value": 3.1300000000000003,
+            "value": 3.13,
             "desc": "+3.13% Melee Defense"
           },
           {
             "stat": "defense_(lethal)",
-            "value": 1.5599999999999998,
+            "value": 1.56,
             "desc": "+2% Lethal and Smashing"
           }
         ]
@@ -6921,12 +6921,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "defense_(energy)",
-            "value": 1.8800000000000001,
+            "value": 1.88,
             "desc": "+2% Energy and Negative Energy"
           },
           {
             "stat": "defense_(ranged)",
-            "value": 0.9400000000000001,
+            "value": 0.94,
             "desc": "+0.94% Ranged Defense"
           }
         ]
@@ -6941,7 +6941,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           },
           {
             "stat": "defense_(area)",
-            "value": 1.8800000000000001,
+            "value": 1.88,
             "desc": "+1.88% Area Defense"
           }
         ]
@@ -7140,12 +7140,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "defense_(energy)",
-            "value": 3.1300000000000003,
+            "value": 3.13,
             "desc": "+3% Energy and Negative Energy"
           },
           {
             "stat": "defense_(ranged)",
-            "value": 1.5599999999999998,
+            "value": 1.56,
             "desc": "+1.56% Ranged Defense"
           }
         ]
@@ -7175,12 +7175,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "defense_(area)",
-            "value": 3.1300000000000003,
+            "value": 3.13,
             "desc": "+3.13% Area Defense"
           },
           {
             "stat": "defense_(cold)",
-            "value": 1.5599999999999998,
+            "value": 1.56,
             "desc": "+2% Cold and Fire"
           }
         ]
@@ -7316,12 +7316,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "defense_(ranged)",
-            "value": 1.8800000000000001,
+            "value": 1.88,
             "desc": "+1.88% Ranged Defense"
           },
           {
             "stat": "defense_(energy)",
-            "value": 0.9400000000000001,
+            "value": 0.94,
             "desc": "+1% Energy and Negative Energy"
           }
         ]
@@ -7424,12 +7424,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "defense_(ranged)",
-            "value": 3.1300000000000003,
+            "value": 3.13,
             "desc": "+3.13% Ranged Defense"
           },
           {
             "stat": "defense_(energy)",
-            "value": 1.5599999999999998,
+            "value": 1.56,
             "desc": "+2% Energy and Negative Energy"
           }
         ]
@@ -7454,7 +7454,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           },
           {
             "stat": "defense_(lethal)",
-            "value": 1.8800000000000001,
+            "value": 1.88,
             "desc": "+2% Lethal and Smashing"
           }
         ]
@@ -7594,7 +7594,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           },
           {
             "stat": "defense_(energy)",
-            "value": 1.8800000000000001,
+            "value": 1.88,
             "desc": "+2% Energy and Negative Energy"
           }
         ]
@@ -7718,12 +7718,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "defense_(ranged)",
-            "value": 3.1300000000000003,
+            "value": 3.13,
             "desc": "+3.13% Ranged Defense"
           },
           {
             "stat": "defense_(energy)",
-            "value": 1.5599999999999998,
+            "value": 1.56,
             "desc": "+2% Energy and Negative Energy"
           }
         ]
@@ -7988,12 +7988,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "defense_(cold)",
-            "value": 1.8800000000000001,
+            "value": 1.88,
             "desc": "+2% Cold and Fire"
           },
           {
             "stat": "defense_(area)",
-            "value": 0.9400000000000001,
+            "value": 0.94,
             "desc": "+0.94% Area Defense"
           }
         ]
@@ -8003,7 +8003,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "accuracy",
-            "value": 7.000000000000001,
+            "value": 7,
             "desc": "+7% Accuracy"
           }
         ]
@@ -8142,12 +8142,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "defense_(ranged)",
-            "value": 1.8800000000000001,
+            "value": 1.88,
             "desc": "+1.88% Ranged Defense"
           },
           {
             "stat": "defense_(energy)",
-            "value": 0.9400000000000001,
+            "value": 0.94,
             "desc": "+1% Energy and Negative Energy"
           }
         ]
@@ -8558,12 +8558,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "defense_(area)",
-            "value": 3.1300000000000003,
+            "value": 3.13,
             "desc": "+3.13% Area Defense"
           },
           {
             "stat": "defense_(cold)",
-            "value": 1.5599999999999998,
+            "value": 1.56,
             "desc": "+2% Cold and Fire"
           }
         ]
@@ -8864,12 +8864,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "defense_(area)",
-            "value": 1.8800000000000001,
+            "value": 1.88,
             "desc": "+1.88% Area Defense"
           },
           {
             "stat": "defense_(cold)",
-            "value": 0.9400000000000001,
+            "value": 0.94,
             "desc": "+1% Cold and Fire"
           }
         ]
@@ -8884,7 +8884,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           },
           {
             "stat": "defense_(area)",
-            "value": 1.8800000000000001,
+            "value": 1.88,
             "desc": "+1.88% Area Defense"
           }
         ]
@@ -9011,13 +9011,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           },
           {
             "stat": "defense_(cold)",
-            "value": 3.1300000000000003,
+            "value": 3.13,
             "desc": "+3% Cold and Fire",
             "pvp": true
           },
           {
             "stat": "defense_(area)",
-            "value": 1.5599999999999998,
+            "value": 1.56,
             "desc": "+1.56% Area Defense",
             "pvp": true
           }
@@ -9049,7 +9049,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "accuracy",
-            "value": 7.000000000000001,
+            "value": 7,
             "desc": "+7% Accuracy"
           },
           {
@@ -9173,12 +9173,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "defense_(melee)",
-            "value": 3.1300000000000003,
+            "value": 3.13,
             "desc": "+3.13% Melee Defense"
           },
           {
             "stat": "defense_(lethal)",
-            "value": 1.5599999999999998,
+            "value": 1.56,
             "desc": "+2% Lethal and Smashing"
           }
         ]
@@ -9921,13 +9921,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           },
           {
             "stat": "defense_(energy)",
-            "value": 3.1300000000000003,
+            "value": 3.13,
             "desc": "+3% Energy and Negative Energy",
             "pvp": true
           },
           {
             "stat": "defense_(ranged)",
-            "value": 1.5599999999999998,
+            "value": 1.56,
             "desc": "+1.56% Ranged Defense",
             "pvp": true
           }
@@ -9960,7 +9960,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "accuracy",
-            "value": 7.000000000000001,
+            "value": 7,
             "desc": "+7% Accuracy"
           },
           {
@@ -10119,12 +10119,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "defense_(area)",
-            "value": 3.1300000000000003,
+            "value": 3.13,
             "desc": "+3.13% Area Defense"
           },
           {
             "stat": "defense_(cold)",
-            "value": 1.5599999999999998,
+            "value": 1.56,
             "desc": "+2% Cold and Fire"
           },
           {
@@ -10255,13 +10255,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           },
           {
             "stat": "defense_(lethal)",
-            "value": 3.1300000000000003,
+            "value": 3.13,
             "desc": "+3% Lethal and Smashing",
             "pvp": true
           },
           {
             "stat": "defense_(melee)",
-            "value": 1.5599999999999998,
+            "value": 1.56,
             "desc": "+1.56% Melee Defense",
             "pvp": true
           }
@@ -10293,7 +10293,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "accuracy",
-            "value": 7.000000000000001,
+            "value": 7,
             "desc": "+7% Accuracy"
           },
           {
@@ -10671,12 +10671,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "defense_(area)",
-            "value": 1.8800000000000001,
+            "value": 1.88,
             "desc": "+1.88% Area Defense"
           },
           {
             "stat": "defense_(cold)",
-            "value": 0.9400000000000001,
+            "value": 0.94,
             "desc": "+1% Cold and Fire"
           }
         ]
@@ -11009,7 +11009,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "terror_duration",
-            "value": 1.0999999999999999,
+            "value": 1.1,
             "desc": "+1.1% Terror Duration"
           }
         ]
@@ -11212,7 +11212,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "accuracy",
-            "value": 7.000000000000001,
+            "value": 7,
             "desc": "+7% Accuracy"
           }
         ]
@@ -11247,7 +11247,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           },
           {
             "stat": "defense_(cold)",
-            "value": 1.8800000000000001,
+            "value": 1.88,
             "desc": "+2% Cold and Fire"
           }
         ]
@@ -11594,7 +11594,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "defense_(psionic)",
-            "value": 1.8800000000000001,
+            "value": 1.88,
             "desc": "+1.88% Psionic Defense"
           }
         ]
@@ -11951,13 +11951,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           },
           {
             "stat": "defense_(energy)",
-            "value": 3.1300000000000003,
+            "value": 3.13,
             "desc": "+3% Energy and Negative Energy",
             "pvp": true
           },
           {
             "stat": "defense_(ranged)",
-            "value": 1.5599999999999998,
+            "value": 1.56,
             "desc": "+1.56% Ranged Defense",
             "pvp": true
           }
@@ -11990,7 +11990,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "accuracy",
-            "value": 7.000000000000001,
+            "value": 7,
             "desc": "+7% Accuracy"
           },
           {
@@ -12153,7 +12153,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "accuracy",
-            "value": 7.000000000000001,
+            "value": 7,
             "desc": "+7% Accuracy"
           }
         ]
@@ -12213,7 +12213,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "damage_resistance_(all)",
-            "value": 3.5000000000000004,
+            "value": 3.5,
             "desc": "+3.5% Damage Resistance (All Damage"
           },
           {
@@ -12333,7 +12333,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           },
           {
             "stat": "defense_(melee)",
-            "value": 1.8800000000000001,
+            "value": 1.88,
             "desc": "+1.88% Melee Defense"
           }
         ]
@@ -12741,12 +12741,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "defense_(energy)",
-            "value": 1.8800000000000001,
+            "value": 1.88,
             "desc": "+2% Energy and Negative Energy"
           },
           {
             "stat": "defense_(ranged)",
-            "value": 0.9400000000000001,
+            "value": 0.94,
             "desc": "+0.94% Ranged Defense"
           }
         ]
@@ -12756,12 +12756,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "defense_(lethal)",
-            "value": 1.8800000000000001,
+            "value": 1.88,
             "desc": "+2% Lethal and Smashing"
           },
           {
             "stat": "defense_(melee)",
-            "value": 0.9400000000000001,
+            "value": 0.94,
             "desc": "+0.94% Melee Defense"
           }
         ]
@@ -12771,12 +12771,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "defense_(area)",
-            "value": 1.8800000000000001,
+            "value": 1.88,
             "desc": "+1.88% Area Defense"
           },
           {
             "stat": "defense_(cold)",
-            "value": 0.9400000000000001,
+            "value": 0.94,
             "desc": "+1% Cold and Fire"
           }
         ]
@@ -12929,7 +12929,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           },
           {
             "stat": "defense_(energy)",
-            "value": 1.8800000000000001,
+            "value": 1.88,
             "desc": "+2% Energy and Negative Energy"
           }
         ]
@@ -13152,12 +13152,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "defense_(cold)",
-            "value": 1.8800000000000001,
+            "value": 1.88,
             "desc": "+2% Cold and Fire"
           },
           {
             "stat": "defense_(area)",
-            "value": 0.9400000000000001,
+            "value": 0.94,
             "desc": "+0.94% Area Defense"
           }
         ]
@@ -13290,7 +13290,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           },
           {
             "stat": "defense_(energy)",
-            "value": 1.8800000000000001,
+            "value": 1.88,
             "desc": "+2% Energy and Negative Energy"
           }
         ]
@@ -13412,12 +13412,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "defense_(ranged)",
-            "value": 3.1300000000000003,
+            "value": 3.13,
             "desc": "+3.13% Ranged Defense"
           },
           {
             "stat": "defense_(energy)",
-            "value": 1.5599999999999998,
+            "value": 1.56,
             "desc": "+2% Energy and Negative Energy"
           }
         ]
@@ -13532,7 +13532,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           },
           {
             "stat": "defense_(energy)",
-            "value": 1.8800000000000001,
+            "value": 1.88,
             "desc": "+2% Energy and Negative Energy"
           }
         ]
@@ -13647,12 +13647,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "defense_(melee)",
-            "value": 3.1300000000000003,
+            "value": 3.13,
             "desc": "+3.13% Melee Defense"
           },
           {
             "stat": "defense_(lethal)",
-            "value": 1.5599999999999998,
+            "value": 1.56,
             "desc": "+2% Lethal and Smashing"
           }
         ]
@@ -13947,12 +13947,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "defense_(area)",
-            "value": 1.8800000000000001,
+            "value": 1.88,
             "desc": "+1.88% Area Defense"
           },
           {
             "stat": "defense_(cold)",
-            "value": 0.9400000000000001,
+            "value": 0.94,
             "desc": "+1% Cold and Fire"
           }
         ]
@@ -13962,7 +13962,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "defense_(psionic)",
-            "value": 1.8800000000000001,
+            "value": 1.88,
             "desc": "+1.88% Psionic Defense"
           }
         ]
@@ -14081,12 +14081,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "defense_(cold)",
-            "value": 3.1300000000000003,
+            "value": 3.13,
             "desc": "+3% Cold and Fire"
           },
           {
             "stat": "defense_(area)",
-            "value": 1.5599999999999998,
+            "value": 1.56,
             "desc": "+1.56% Area Defense"
           }
         ]
@@ -14222,12 +14222,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "defense_(area)",
-            "value": 1.8800000000000001,
+            "value": 1.88,
             "desc": "+1.88% Area Defense"
           },
           {
             "stat": "defense_(cold)",
-            "value": 0.9400000000000001,
+            "value": 0.94,
             "desc": "+1% Cold and Fire"
           }
         ]
@@ -14237,12 +14237,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "defense_(melee)",
-            "value": 1.8800000000000001,
+            "value": 1.88,
             "desc": "+1.88% Melee Defense"
           },
           {
             "stat": "defense_(lethal)",
-            "value": 0.9400000000000001,
+            "value": 0.94,
             "desc": "+1% Lethal and Smashing"
           }
         ]
@@ -14351,7 +14351,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "accuracy",
-            "value": 7.000000000000001,
+            "value": 7,
             "desc": "+7% Accuracy"
           }
         ]
@@ -14456,7 +14456,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "terror_duration",
-            "value": 1.6500000000000001,
+            "value": 1.65,
             "desc": "+1.7% Terror Duration"
           }
         ]
@@ -14466,12 +14466,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "defense_(energy)",
-            "value": 1.8800000000000001,
+            "value": 1.88,
             "desc": "+2% Energy and Negative Energy"
           },
           {
             "stat": "defense_(ranged)",
-            "value": 0.9400000000000001,
+            "value": 0.94,
             "desc": "+0.94% Ranged Defense"
           }
         ]
@@ -14644,7 +14644,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           },
           {
             "stat": "defense_(energy)",
-            "value": 1.8800000000000001,
+            "value": 1.88,
             "desc": "+2% Energy and Negative Energy"
           }
         ]
@@ -14773,7 +14773,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           },
           {
             "stat": "defense_(lethal)",
-            "value": 1.8800000000000001,
+            "value": 1.88,
             "desc": "+2% Lethal and Smashing"
           }
         ]
@@ -14899,7 +14899,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           },
           {
             "stat": "defense_(ranged)",
-            "value": 1.8800000000000001,
+            "value": 1.88,
             "desc": "+1.88% Ranged Defense"
           }
         ]
@@ -14994,7 +14994,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           },
           {
             "stat": "terror_duration",
-            "value": 2.1999999999999997,
+            "value": 2.2,
             "desc": "+2.2% Terror Duration"
           },
           {
@@ -15059,7 +15059,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           },
           {
             "stat": "defense_(ranged)",
-            "value": 1.8800000000000001,
+            "value": 1.88,
             "desc": "+1.88% Ranged Defense"
           }
         ]
@@ -15324,12 +15324,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "defense_(ranged)",
-            "value": 3.1300000000000003,
+            "value": 3.13,
             "desc": "+3.13% Ranged Defense"
           },
           {
             "stat": "defense_(energy)",
-            "value": 1.5599999999999998,
+            "value": 1.56,
             "desc": "+2% Energy and Negative Energy"
           }
         ]
@@ -15490,13 +15490,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           },
           {
             "stat": "defense_(melee)",
-            "value": 3.1300000000000003,
+            "value": 3.13,
             "desc": "+3.13% Melee Defense",
             "pvp": true
           },
           {
             "stat": "defense_(lethal)",
-            "value": 1.5599999999999998,
+            "value": 1.56,
             "desc": "+2% Lethal and Smashing",
             "pvp": true
           }
@@ -15729,12 +15729,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "defense_(lethal)",
-            "value": 3.1300000000000003,
+            "value": 3.13,
             "desc": "+3% Lethal and Smashing"
           },
           {
             "stat": "defense_(melee)",
-            "value": 1.5599999999999998,
+            "value": 1.56,
             "desc": "+1.56% Melee Defense"
           }
         ]
@@ -15853,12 +15853,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "defense_(area)",
-            "value": 3.1300000000000003,
+            "value": 3.13,
             "desc": "+3.13% Area Defense"
           },
           {
             "stat": "defense_(cold)",
-            "value": 1.5599999999999998,
+            "value": 1.56,
             "desc": "+2% Cold and Fire"
           }
         ]
@@ -15967,12 +15967,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "defense_(area)",
-            "value": 1.8800000000000001,
+            "value": 1.88,
             "desc": "+1.88% Area Defense"
           },
           {
             "stat": "defense_(cold)",
-            "value": 0.9400000000000001,
+            "value": 0.94,
             "desc": "+1% Cold and Fire"
           }
         ]
@@ -16455,7 +16455,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           },
           {
             "stat": "defense_(energy)",
-            "value": 1.8800000000000001,
+            "value": 1.88,
             "desc": "+2% Energy and Negative Energy"
           }
         ]
@@ -17351,12 +17351,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "defense_(lethal)",
-            "value": 1.8800000000000001,
+            "value": 1.88,
             "desc": "+2% Lethal and Smashing"
           },
           {
             "stat": "defense_(melee)",
-            "value": 0.9400000000000001,
+            "value": 0.94,
             "desc": "+0.94% Melee Defense"
           }
         ]
@@ -17813,7 +17813,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "defense_(psionic)",
-            "value": 1.8800000000000001,
+            "value": 1.88,
             "desc": "+1.88% Psionic Defense"
           }
         ]
@@ -17931,12 +17931,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "defense_(area)",
-            "value": 1.8800000000000001,
+            "value": 1.88,
             "desc": "+1.88% Area Defense"
           },
           {
             "stat": "defense_(cold)",
-            "value": 0.9400000000000001,
+            "value": 0.94,
             "desc": "+1% Cold and Fire"
           }
         ]
@@ -18120,12 +18120,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "defense_(area)",
-            "value": 3.1300000000000003,
+            "value": 3.13,
             "desc": "+3.13% Area Defense"
           },
           {
             "stat": "defense_(cold)",
-            "value": 1.5599999999999998,
+            "value": 1.56,
             "desc": "+2% Cold and Fire"
           }
         ]
@@ -18135,7 +18135,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "defense_(psionic)",
-            "value": 3.1300000000000003,
+            "value": 3.13,
             "desc": "+3.13% Psionic Defense"
           }
         ]
@@ -18260,7 +18260,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           },
           {
             "stat": "defense_(cold)",
-            "value": 1.8800000000000001,
+            "value": 1.88,
             "desc": "+2% Cold and Fire"
           }
         ]
@@ -18484,7 +18484,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "accuracy",
-            "value": 7.000000000000001,
+            "value": 7,
             "desc": "+7% Accuracy"
           }
         ]
@@ -18514,12 +18514,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "defense_(melee)",
-            "value": 3.1300000000000003,
+            "value": 3.13,
             "desc": "+3.13% Melee Defense"
           },
           {
             "stat": "defense_(lethal)",
-            "value": 1.5599999999999998,
+            "value": 1.56,
             "desc": "+2% Lethal and Smashing"
           }
         ]
@@ -18795,12 +18795,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "defense_(melee)",
-            "value": 3.1300000000000003,
+            "value": 3.13,
             "desc": "+3.13% Melee Defense"
           },
           {
             "stat": "defense_(lethal)",
-            "value": 1.5599999999999998,
+            "value": 1.56,
             "desc": "+2% Lethal and Smashing"
           }
         ]
@@ -19090,7 +19090,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           },
           {
             "stat": "defense_(melee)",
-            "value": 1.8800000000000001,
+            "value": 1.88,
             "desc": "+1.88% Melee Defense"
           }
         ]
@@ -19105,7 +19105,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           },
           {
             "stat": "defense_(cold)",
-            "value": 1.8800000000000001,
+            "value": 1.88,
             "desc": "+2% Cold and Fire"
           }
         ]
@@ -19210,12 +19210,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "defense_(lethal)",
-            "value": 1.8800000000000001,
+            "value": 1.88,
             "desc": "+2% Lethal and Smashing"
           },
           {
             "stat": "defense_(melee)",
-            "value": 0.9400000000000001,
+            "value": 0.94,
             "desc": "+0.94% Melee Defense"
           }
         ]
@@ -19512,12 +19512,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "defense_(melee)",
-            "value": 3.1300000000000003,
+            "value": 3.13,
             "desc": "+3.13% Melee Defense"
           },
           {
             "stat": "defense_(lethal)",
-            "value": 1.5599999999999998,
+            "value": 1.56,
             "desc": "+2% Lethal and Smashing"
           }
         ]
@@ -19620,12 +19620,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "defense_(melee)",
-            "value": 3.1300000000000003,
+            "value": 3.13,
             "desc": "+3.13% Melee Defense"
           },
           {
             "stat": "defense_(lethal)",
-            "value": 1.5599999999999998,
+            "value": 1.56,
             "desc": "+2% Lethal and Smashing"
           }
         ]
@@ -19635,7 +19635,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "regeneration",
-            "value": 14.000000000000002,
+            "value": 14,
             "desc": "+14.0% Regeneration"
           }
         ]
@@ -19902,7 +19902,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "accuracy",
-            "value": 7.000000000000001,
+            "value": 7,
             "desc": "+7% Accuracy"
           }
         ]
@@ -20287,12 +20287,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "defense_(ranged)",
-            "value": 3.1300000000000003,
+            "value": 3.13,
             "desc": "+3.13% Ranged Defense"
           },
           {
             "stat": "defense_(energy)",
-            "value": 1.5599999999999998,
+            "value": 1.56,
             "desc": "+2% Energy and Negative Energy"
           }
         ]
@@ -20516,7 +20516,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           },
           {
             "stat": "terror_duration",
-            "value": 4.3999999999999995,
+            "value": 4.4,
             "desc": "+4.4% Terror Duration"
           },
           {
@@ -21868,7 +21868,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           },
           {
             "stat": "terror_duration",
-            "value": 4.3999999999999995,
+            "value": 4.4,
             "desc": "+4.4% Terror Duration"
           },
           {
@@ -23421,7 +23421,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           },
           {
             "stat": "terror_duration",
-            "value": 4.3999999999999995,
+            "value": 4.4,
             "desc": "+4.4% Terror Duration"
           },
           {
@@ -24543,7 +24543,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           },
           {
             "stat": "terror_duration",
-            "value": 4.3999999999999995,
+            "value": 4.4,
             "desc": "+4.4% Terror Duration"
           },
           {
@@ -24994,12 +24994,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "defense_(ranged)",
-            "value": 1.8800000000000001,
+            "value": 1.88,
             "desc": "+1.88% Ranged Defense"
           },
           {
             "stat": "defense_(energy)",
-            "value": 0.9400000000000001,
+            "value": 0.94,
             "desc": "+1% Energy and Negative Energy"
           }
         ]
@@ -25406,7 +25406,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "accuracy",
-            "value": 7.000000000000001,
+            "value": 7,
             "desc": "+7% Accuracy"
           }
         ]
@@ -25764,7 +25764,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           },
           {
             "stat": "defense_(lethal)",
-            "value": 1.8800000000000001,
+            "value": 1.88,
             "desc": "+2% Lethal and Smashing"
           }
         ]
@@ -26134,12 +26134,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "defense_(ranged)",
-            "value": 3.1300000000000003,
+            "value": 3.13,
             "desc": "+3.13% Ranged Defense"
           },
           {
             "stat": "defense_(energy)",
-            "value": 1.5599999999999998,
+            "value": 1.56,
             "desc": "+2% Energy and Negative Energy"
           }
         ]
@@ -26312,12 +26312,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "defense_(lethal)",
-            "value": 1.8800000000000001,
+            "value": 1.88,
             "desc": "+2% Lethal and Smashing"
           },
           {
             "stat": "defense_(melee)",
-            "value": 0.9400000000000001,
+            "value": 0.94,
             "desc": "+0.94% Melee Defense"
           }
         ]
@@ -26576,12 +26576,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "defense_(melee)",
-            "value": 3.1300000000000003,
+            "value": 3.13,
             "desc": "+3.13% Melee Defense"
           },
           {
             "stat": "defense_(lethal)",
-            "value": 1.5599999999999998,
+            "value": 1.56,
             "desc": "+2% Lethal and Smashing"
           }
         ]
@@ -26720,7 +26720,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "accuracy",
-            "value": 7.000000000000001,
+            "value": 7,
             "desc": "+7% Accuracy"
           }
         ]
@@ -26949,7 +26949,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           },
           {
             "stat": "defense_(lethal)",
-            "value": 1.8800000000000001,
+            "value": 1.88,
             "desc": "+2% Lethal and Smashing"
           }
         ]
@@ -27069,7 +27069,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "terror_duration",
-            "value": 2.1999999999999997,
+            "value": 2.2,
             "desc": "+2.2% Terror Duration"
           }
         ]
@@ -27244,7 +27244,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           },
           {
             "stat": "defense_(cold)",
-            "value": 1.8800000000000001,
+            "value": 1.88,
             "desc": "+2% Cold and Fire"
           }
         ]
@@ -27557,7 +27557,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           },
           {
             "stat": "terror_duration",
-            "value": 3.3000000000000003,
+            "value": 3.3,
             "desc": "+3.3% Terror Duration"
           },
           {
@@ -27602,12 +27602,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "defense_(ranged)",
-            "value": 3.1300000000000003,
+            "value": 3.13,
             "desc": "+3.13% Ranged Defense"
           },
           {
             "stat": "defense_(energy)",
-            "value": 1.5599999999999998,
+            "value": 1.56,
             "desc": "+2% Energy and Negative Energy"
           }
         ]
@@ -27726,12 +27726,12 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "effects": [
           {
             "stat": "defense_(energy)",
-            "value": 1.8800000000000001,
+            "value": 1.88,
             "desc": "+2% Energy and Negative Energy"
           },
           {
             "stat": "defense_(ranged)",
-            "value": 0.9400000000000001,
+            "value": 0.94,
             "desc": "+0.94% Ranged Defense"
           }
         ]
@@ -27746,7 +27746,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           },
           {
             "stat": "defense_(area)",
-            "value": 1.8800000000000001,
+            "value": 1.88,
             "desc": "+1.88% Area Defense"
           }
         ]

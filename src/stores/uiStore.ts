@@ -74,6 +74,9 @@ interface UIState {
   /** Known Issues modal open state */
   knownIssuesModalOpen: boolean;
 
+  /** Changelog modal open state */
+  changelogModalOpen: boolean;
+
   /** Controls modal open state */
   controlsModalOpen: boolean;
 
@@ -291,6 +294,10 @@ interface UIActions {
   openKnownIssuesModal: () => void;
   closeKnownIssuesModal: () => void;
 
+  // Changelog Modal
+  openChangelogModal: () => void;
+  closeChangelogModal: () => void;
+
   // Controls Modal
   openControlsModal: () => void;
   closeControlsModal: () => void;
@@ -469,6 +476,7 @@ export const useUIStore = create<UIStore>()(
       exportImportModalTab: null,
       feedbackModalOpen: false,
       knownIssuesModalOpen: false,
+      changelogModalOpen: false,
       controlsModalOpen: false,
       detailedTotalsModalOpen: false,
       powersetCompareModalOpen: false,
@@ -915,6 +923,13 @@ export const useUIStore = create<UIStore>()(
 
       closeKnownIssuesModal: () =>
         set({ knownIssuesModalOpen: false }),
+
+      // Changelog Modal
+      openChangelogModal: () =>
+        set({ changelogModalOpen: true }),
+
+      closeChangelogModal: () =>
+        set({ changelogModalOpen: false }),
 
       // Controls Modal
       openControlsModal: () =>

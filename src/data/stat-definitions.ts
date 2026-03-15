@@ -412,7 +412,7 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     color: STAT_COLORS.health,
     tooltip: 'Maximum hit points',
     showWhenZero: true,
-    breakdownKey: 'maxhp',
+    breakdownKey: 'maxHP',
   },
   regeneration: {
     id: 'regeneration',

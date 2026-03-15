@@ -357,7 +357,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
   const effects = {
     ...baseEffects,
     // Execution stats from power.stats
-    ...(power.stats?.endurance && { enduranceCost: power.stats.endurance / (power.stats?.activatePeriod ?? 0.5) }),
+    ...(power.stats?.endurance && { enduranceCost: power.stats.activatePeriod ? power.stats.endurance / power.stats.activatePeriod : power.stats.endurance }),
     ...(power.stats?.recharge && { recharge: power.stats.recharge }),
     ...(power.stats?.accuracy && { accuracy: power.stats.accuracy }),
     ...(power.stats?.range && { range: power.stats.range }),

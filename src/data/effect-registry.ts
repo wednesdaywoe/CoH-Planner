@@ -616,6 +616,8 @@ export function isByTypeObject(value: unknown): value is Record<string, unknown>
   const typeKeys = [
     'smashing', 'lethal', 'fire', 'cold', 'energy', 'negative', 'psionic', 'toxic',
     'melee', 'ranged', 'aoe', 'all', 'run', 'fly', 'jump',
+    // Movement speed keys (used by slow effects)
+    'runspeed', 'flyspeed', 'jumpspeed', 'jumpheight',
     // Debuff resistance stat types
     'defense', 'endurance', 'tohit', 'movement', 'regeneration', 'recovery', 'recharge', 'range', 'perception',
     // Resistance subtypes
@@ -719,6 +721,7 @@ export function getByTypeAbbreviations(obj: Record<string, unknown>): string {
     energy: 'E', negative: 'N', psionic: 'P', toxic: 'T',
     melee: 'Mel', ranged: 'Rng', aoe: 'AoE',
     run: 'Run', fly: 'Fly', jump: 'Jmp',
+    runspeed: 'Run', flyspeed: 'Fly', jumpspeed: 'Jmp', jumpheight: 'JmpH',
   };
   const allDamageTypes = ['smashing', 'lethal', 'fire', 'cold', 'energy', 'negative', 'psionic', 'toxic'];
   const keys = Object.keys(obj).map(k => k.toLowerCase());

@@ -4,7 +4,8 @@
  */
 
 import { Modal, ModalBody } from './Modal';
-import { KNOWN_BUGS, RECENT_CHANGES, PLANNED_FEATURES, type TrackerItem } from '@/data/tracker';
+import { KNOWN_BUGS, PLANNED_FEATURES, type TrackerItem } from '@/data/tracker';
+import { useUIStore } from '@/stores';
 
 interface KnownIssuesModalProps {
   isOpen: boolean;
@@ -72,6 +73,8 @@ function TrackerSection({
 }
 
 export function KnownIssuesModal({ isOpen, onClose }: KnownIssuesModalProps) {
+  const openChangelogModal = useUIStore((s) => s.openChangelogModal);
+
   return (
     <Modal isOpen={isOpen} onClose={onClose} title="Known Issues & Roadmap" size="lg">
       <ModalBody>
@@ -92,18 +95,6 @@ export function KnownIssuesModal({ isOpen, onClose }: KnownIssuesModalProps) {
             }
           />
 
-          {/* Recent Fixes */}
-          <TrackerSection
-            title="Recent Changes"
-            color="text-green-400"
-            items={RECENT_CHANGES}
-            icon={
-              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-            }
-          />
-
           {/* Planned Features */}
           <TrackerSection
             title="Planned Features"
@@ -116,8 +107,18 @@ export function KnownIssuesModal({ isOpen, onClose }: KnownIssuesModalProps) {
             }
           />
 
-          {/* Feedback note */}
-          <div className="bg-gray-800 rounded-lg p-3 border border-gray-700">
+          {/* Links */}
+          <div className="bg-gray-800 rounded-lg p-3 border border-gray-700 space-y-2">
+            <p className="text-sm text-gray-300">
+              <button
+                type="button"
+                onClick={() => { onClose(); openChangelogModal(); }}
+                className="text-cyan-400 underline hover:text-cyan-300 font-medium"
+              >
+                View Full Changelog
+              </button>
+              {' '} — complete history of all changes
+            </p>
             <p className="text-sm text-gray-300">
               Don't see your issue listed? Use the{' '}
               <span className="text-purple-400 font-medium">Feedback/Bugs</span> button

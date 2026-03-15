@@ -7,7 +7,7 @@ import { Modal, ModalHeader, ModalBody, ModalFooter } from './Modal';
 import { Button } from '@/components/ui';
 import { useUIStore } from '@/stores';
 import { BUILD_TIME, APP_VERSION } from '@/buildTime';
-import { RECENT_CHANGES } from '@/data/tracker';
+import { getRecentChanges } from '@/data/changelog';
 import { StatusBadge, renderTrackerText } from './KnownIssuesModal';
 
 const LAST_UPDATED = (() => {
@@ -25,7 +25,9 @@ interface WelcomeModalProps {
 export function WelcomeModal({ isOpen, onClose }: WelcomeModalProps) {
   const [dontShowAgain, setDontShowAgain] = useState(false);
   const openKnownIssuesModal = useUIStore((s) => s.openKnownIssuesModal);
+  const openChangelogModal = useUIStore((s) => s.openChangelogModal);
   const openControlsModal = useUIStore((s) => s.openControlsModal);
+  const recentChanges = getRecentChanges();
 
   const handleClose = () => {
     if (dontShowAgain) {
@@ -68,7 +70,7 @@ export function WelcomeModal({ isOpen, onClose }: WelcomeModalProps) {
 
           {/* Recent Changes */}
           <ul className="space-y-2">
-            {RECENT_CHANGES.map((item, idx) => (
+            {recentChanges.map((item, idx) => (
               <li key={idx} className="flex items-start gap-2 text-sm text-gray-400">
                 <StatusBadge status={item.status} />
                 <span>{renderTrackerText(item.text)}</span>
@@ -78,6 +80,16 @@ export function WelcomeModal({ isOpen, onClose }: WelcomeModalProps) {
 
           {/* Links */}
           <div className="bg-gray-800 rounded-lg p-3 border border-gray-700 space-y-2">
+            <p className="text-sm text-gray-300">
+              <button
+                type="button"
+                onClick={() => { handleClose(); openChangelogModal(); }}
+                className="text-cyan-400 underline hover:text-cyan-300 font-medium"
+              >
+                View Full Changelog
+              </button>
+              {' '} — complete history of all changes
+            </p>
             <p className="text-sm text-gray-300">
               <button
                 type="button"

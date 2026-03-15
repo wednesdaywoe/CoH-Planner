@@ -18,6 +18,7 @@ import { getTableValue } from '@/data/at-tables';
 import { getBaseToHit, getCombatModifier } from '@/data/purple-patch';
 import { getPowerPool } from '@/data/power-pools';
 import { getEpicPool } from '@/data/epic-pools';
+import { getPowerset } from '@/data/powersets';
 import {
   calculateSetBonuses,
   getStatBreakdown,
@@ -1992,14 +1993,27 @@ function convertToCharacterStats(global: GlobalBonuses): CharacterStats {
 function collectAllPowers(build: Build): PowerWithToggle[] {
   const powers: PowerWithToggle[] = [];
 
-  // Primary powers
+  // Primary powers — enrich with current definition effects
+  // Stored powers may have stale/missing effects if power data was updated after they were saved
+  const primaryDef = build.primary.id ? getPowerset(build.primary.id) : undefined;
   for (const power of build.primary.powers) {
-    powers.push(power as unknown as PowerWithToggle);
+    const currentDef = primaryDef?.powers.find((p) => p.name === power.name);
+    if (currentDef?.effects) {
+      powers.push({ ...power, effects: currentDef.effects } as unknown as PowerWithToggle);
+    } else {
+      powers.push(power as unknown as PowerWithToggle);
+    }
   }
 
-  // Secondary powers
+  // Secondary powers — enrich with current definition effects
+  const secondaryDef = build.secondary.id ? getPowerset(build.secondary.id) : undefined;
   for (const power of build.secondary.powers) {
-    powers.push(power as unknown as PowerWithToggle);
+    const currentDef = secondaryDef?.powers.find((p) => p.name === power.name);
+    if (currentDef?.effects) {
+      powers.push({ ...power, effects: currentDef.effects } as unknown as PowerWithToggle);
+    } else {
+      powers.push(power as unknown as PowerWithToggle);
+    }
   }
 
   // Pool powers — enrich with current definition effects
