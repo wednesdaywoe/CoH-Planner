@@ -170,8 +170,6 @@ export interface CraftingVariant {
 export interface TierRecipe {
   threads: number;
   empyrean: number;
-  /** Alpha-only: Incarnate Shard cost */
-  shards: number;
   /** Incarnate Component descriptions (e.g., "3x Common Alpha Component") */
   incarnateComponents: string[];
   /** Prerequisite tier keys (e.g., ["t1"], ["t2"], ["t3_core","t3_radial"]) */
@@ -183,7 +181,6 @@ export interface TierRecipe {
  */
 export interface CraftingConversions {
   empyreanToThreads: number;
-  shardsToThreads: number;
   favorOfWellToEmpyrean: number;
 }
 
