@@ -9,6 +9,7 @@ import { AT_TABLES } from '@/data/at-tables';
 import { getPowerset } from '@/data/powersets';
 import { getPowerPool } from '@/data/power-pools';
 import { getEpicPool } from '@/data/epic-pools';
+import { getIOSet } from '@/data/io-sets';
 
 // ============================================
 // REVERSE ARCHETYPE MAP (app ID → Mids Class_*)
@@ -80,6 +81,19 @@ function titleCase(str: string): string {
 }
 
 /**
+ * Convert an IO set display name to its Mids UID stem.
+ * "Luck of the Gambler" → "Luck_of_the_Gambler"
+ * "Gaussian's Synchronized Fire-Control" → "Gaussians_Synchronized_FireControl"
+ * "Superior Malice of the Corruptor" → "Superior_Malice_of_the_Corruptor"
+ */
+function displayNameToMidsUid(name: string): string {
+  return name
+    .replace(/['']/g, '')      // Remove apostrophes: Gaussian's → Gaussians
+    .replace(/-(\w)/g, (_, c: string) => c.toUpperCase()) // Fire-Control → FireControl
+    .replace(/\s+/g, '_');     // Spaces → underscores
+}
+
+/**
  * Get the Mids internal name for a powerset from its icon.
  * Icon "willpower_set.png" → "Willpower"
  * Icon "fire_blast_set.png" → "Fire_Blast"
@@ -90,8 +104,16 @@ function getMidsSetName(icon: string): string {
 }
 
 /**
+ * Normalize an AT category prefix to Title_Case for Mids compatibility.
+ * "Corruptor_BUFF" → "Corruptor_Buff", "Brute_DEFENSE" → "Brute_Defense"
+ */
+function normalizeCategoryPrefix(prefix: string): string {
+  return titleCase(prefix.toLowerCase());
+}
+
+/**
  * Build the Mids powerset path (first two segments):
- * e.g., "Tanker_DEFENSE.Willpower"
+ * e.g., "Tanker_Defense.Willpower"
  */
 function buildPowersetPath(
   archetypeId: string,
@@ -99,8 +121,10 @@ function buildPowersetPath(
   category: 'primary' | 'secondary',
 ): string {
   const at = AT_TABLES[archetypeId];
-  const prefix = category === 'primary' ? at?.primaryCategory : at?.secondaryCategory;
-  if (!prefix) return '';
+  const rawPrefix = category === 'primary' ? at?.primaryCategory : at?.secondaryCategory;
+  if (!rawPrefix) return '';
+
+  const prefix = normalizeCategoryPrefix(rawPrefix);
 
   const powerset = getPowerset(powersetId);
   if (!powerset?.icon) return '';
@@ -174,30 +198,40 @@ function buildEnhancement(enh: Enhancement): MbdEnhancement {
     case 'special':
       return buildSpecialEnhancement(enh);
     default:
-      return { Uid: '', Grade: 'IO', IoLevel: 49, RelativeLevel: 'Even', Obtained: false };
+      return { Uid: '', Grade: 'None', IoLevel: 49, RelativeLevel: 'Even', Obtained: false };
   }
+}
+
+/**
+ * Get the Mids UID stem for an IO set.
+ * Looks up the set display name and converts it to Mids format.
+ * Falls back to titleCase of the setId if not found.
+ */
+function getMidsSetUidStem(setId: string): string {
+  const ioSet = getIOSet(setId);
+  if (ioSet?.name) {
+    return displayNameToMidsUid(ioSet.name);
+  }
+  return titleCase(setId);
 }
 
 function buildIOSetEnhancement(enh: IOSetEnhancement): MbdEnhancement {
   const pieceLetter = String.fromCharCode('A'.charCodeAt(0) + enh.pieceNum - 1);
-  const setName = titleCase(enh.setId);
+  const setName = getMidsSetUidStem(enh.setId);
 
   let uid: string;
-  if (enh.attuned) {
-    // Superior sets use Superior_Attuned_ prefix
-    if (enh.setId.startsWith('superior_')) {
-      uid = `Superior_Attuned_${setName}_${pieceLetter}`;
-    } else {
-      uid = `Attuned_${setName}_${pieceLetter}`;
-    }
+  if (enh.setId.startsWith('superior_')) {
+    // Superior sets: Superior_Attuned_Superior_SetName_X
+    uid = `Superior_Attuned_${setName}_${pieceLetter}`;
   } else {
+    // All other sets: Crafted_SetName_X (Mids uses Crafted_ for all non-Superior IOs)
     uid = `Crafted_${setName}_${pieceLetter}`;
   }
 
   return {
     Uid: uid,
-    Grade: 'IO',
-    IoLevel: enh.attuned ? 0 : Math.max(0, (enh.level ?? 50) - 1),
+    Grade: 'None',
+    IoLevel: Math.max(0, (enh.level ?? 50) - 1),
     RelativeLevel: buildRelativeLevel(enh.boost),
     Obtained: false,
   };
@@ -207,7 +241,7 @@ function buildGenericIOEnhancement(enh: GenericIOEnhancement): MbdEnhancement {
   const midsStat = REVERSE_STAT_MAP[enh.stat] || enh.stat.replace(/\s+/g, '_');
   return {
     Uid: `Crafted_${midsStat}`,
-    Grade: 'IO',
+    Grade: 'None',
     IoLevel: Math.max(0, (enh.level ?? 50) - 1),
     RelativeLevel: buildRelativeLevel(enh.boost),
     Obtained: false,
@@ -225,8 +259,54 @@ function buildOriginEnhancement(enh: OriginEnhancement): MbdEnhancement {
   };
 }
 
+/**
+ * Reverse mapping from special enhancement registry ID → Mids UID suffix.
+ * Built from the import code's SPECIAL_SUFFIX_MAPS (inverted).
+ */
+const REVERSE_SPECIAL_SUFFIX: Record<string, Record<string, string>> = {
+  hamidon: {
+    nucleolus: 'Damage_Accuracy', centriole: 'Damage_Range',
+    enzyme: 'DeBuff_Endurance_Discount', lysosome: 'DeBuff_Accuracy',
+    membrane: 'Buff_Recharge', peroxisome: 'Damage_Mez',
+    ribosome: 'Res_Damage_Endurance_Discount', golgi: 'Heal_Endurance_Discount',
+    endoplasm: 'Accuracy_Mez', cytoskeleton: 'Buff_Endurance_Discount',
+    microfilament: 'Travel_Endurance_Discount', vesicle: 'Endurance_Modification_Recharge',
+    stereocilia: 'Slow_Recharge_Endurance_Discount', microtubule: 'Endurance_Modification_Accuracy',
+    karyoplasm: 'Damage_Endurance_Discount', microvillus: 'Accuracy_Range',
+    chromatin: 'Damage_Recharge', ectosome: 'Threat_Accuracy_Recharge',
+    amyloplast: 'Heal_Recharge', chloroplast: 'Heal_Accuracy',
+  },
+  titan: {
+    amethyst: 'Damage_Mez', calcite: 'Accuracy_Mez',
+    citrine: 'Buff_Recharge', diamond: 'Damage_Accuracy',
+    gypsum: 'DeBuff_Accuracy', kyanite: 'Heal_Endurance_Discount',
+    peridont: 'Res_Damage_Endurance_Discount', quartz: 'Damage_Range',
+    selenite: 'Travel_Endurance_Discount', tanzanite: 'Buff_Endurance_Discount',
+    zeolite: 'DeBuff_Endurance_Discount',
+  },
+  hydra: {
+    antiproton: 'DeBuff_Endurance_Discount', delta: 'DeBuff_Accuracy',
+    electron: 'Res_Damage_Endurance_Discount', gluon: 'Damage_Mez',
+    graviton: 'Accuracy_Mez', neutrino: 'Damage_Accuracy',
+    neutron: 'Damage_Range', positron: 'Heal_Endurance_Discount',
+    proton: 'Buff_Endurance_Discount', quark: 'Buff_Recharge',
+    theta: 'Travel_Endurance_Discount',
+  },
+  'd-sync': {
+    acceleration: 'Travel_Endurance_Discount', binding: 'Accuracy_Mez',
+    conduit: 'Endurance_Modification_Recharge', containment: 'Damage_Mez',
+    deceleration: 'Slow_Recharge_Endurance_Discount', drain: 'Endurance_Modification_Accuracy',
+    efficiency: 'Damage_Endurance_Discount', elusivity: 'Buff_Endurance_Discount',
+    empowerment: 'Damage_Accuracy', extension: 'Damage_Range',
+    fortification: 'Res_Damage_Endurance_Discount', guidance: 'Accuracy_Range',
+    marginalization: 'DeBuff_Endurance_Discount', obfuscation: 'DeBuff_Accuracy',
+    optimization: 'Damage_Recharge', provocation: 'Threat_Accuracy_Recharge',
+    reconstitution: 'Heal_Endurance_Discount', reconstruction: 'Heal_Recharge',
+    shifting: 'Buff_Recharge', siphon: 'Heal_Accuracy',
+  },
+};
+
 function buildSpecialEnhancement(enh: SpecialEnhancement): MbdEnhancement {
-  // Build UID from category prefix + aspect keywords
   const prefixMap: Record<string, string> = {
     hamidon: 'Hamidon',
     titan: 'Titan',
@@ -235,14 +315,16 @@ function buildSpecialEnhancement(enh: SpecialEnhancement): MbdEnhancement {
   };
   const prefix = prefixMap[enh.category] || 'Hamidon';
 
-  // Build keyword part from aspects
-  const keywords = enh.aspects
-    .map((a) => REVERSE_STAT_MAP[a.stat] || a.stat.replace(/\s+/g, '_'))
-    .join('_');
+  // Extract registry ID from enhancement ID (e.g., "hamidon-enzyme" → "enzyme")
+  const registryId = enh.id.replace(`${enh.category}-`, '');
+  const suffixMap = REVERSE_SPECIAL_SUFFIX[enh.category];
+  const suffix = suffixMap?.[registryId];
+
+  const uid = suffix ? `${prefix}_${suffix}` : `${prefix}_Unknown`;
 
   return {
-    Uid: `${prefix}_${keywords}`,
-    Grade: 'SingleO',
+    Uid: uid,
+    Grade: 'None',
     IoLevel: 0,
     RelativeLevel: buildRelativeLevel(enh.boost),
     Obtained: false,
@@ -254,9 +336,9 @@ function buildSpecialEnhancement(enh: SpecialEnhancement): MbdEnhancement {
 // ============================================
 
 function buildSlotEntries(slots: (Enhancement | null)[], powerLevel: number): MbdSlotEntry[] {
-  return slots.map((slot, idx) => ({
-    Level: idx === 0 ? powerLevel : powerLevel, // Slot level defaults to power level
-    IsInherent: idx === 0,
+  return slots.map((slot) => ({
+    Level: powerLevel,
+    IsInherent: false,
     Enhancement: slot ? buildEnhancement(slot) : null,
     FlippedEnhancement: null,
   }));
@@ -274,50 +356,46 @@ export function exportToMids(build: Build): string {
   const archetypeId = build.archetype.id || '';
   const midsClass = REVERSE_ARCHETYPE_MAP[archetypeId] || 'Class_Blaster';
 
-  // Build PowerSets array: [primary, secondary, ...pools, epic]
-  const powerSets: string[] = [];
-
-  // Primary path
+  // Build PowerSets array: always 8 entries
+  // [0]=primary, [1]=secondary, [2]="" (reserved), [3-6]=pools, [7]=epic
   const primaryPath = build.primary.id
     ? buildPowersetPath(archetypeId, build.primary.id, 'primary')
     : '';
-  powerSets.push(primaryPath);
-
-  // Secondary path
   const secondaryPath = build.secondary.id
     ? buildPowersetPath(archetypeId, build.secondary.id, 'secondary')
     : '';
-  powerSets.push(secondaryPath);
 
-  // Pool paths
+  // Collect pool paths (up to 4)
+  const poolPaths: string[] = [];
   for (const pool of build.pools) {
-    // Try to derive the pool path from a power's fullName
-    const firstPower = pool.powers[0];
     const poolDef = getPowerPool(pool.id);
     const defPower = poolDef?.powers[0];
-    const fullName = defPower?.fullName || (firstPower as any)?.fullName;
+    const fullName = defPower?.fullName || (pool.powers[0] as any)?.fullName;
     if (fullName && fullName.startsWith('Pool.')) {
-      // Extract "Pool.Speed" from "Pool.Speed.Hasten"
       const parts = fullName.split('.');
-      powerSets.push(`${parts[0]}.${parts[1]}`);
+      poolPaths.push(`${parts[0]}.${parts[1]}`);
     } else {
-      // Fallback: construct from pool ID
-      powerSets.push(`Pool.${titleCase(pool.id)}`);
+      poolPaths.push(`Pool.${titleCase(pool.id)}`);
     }
   }
+  // Pad to exactly 4 pool slots
+  while (poolPaths.length < 4) poolPaths.push('');
 
-  // Epic path
+  // Epic path: derive from first epic power's fullName for correct Mids naming
+  let epicPath = '';
   if (build.epicPool) {
     const epicDef = getEpicPool(build.epicPool.id);
     const firstEpicPower = epicDef?.powers[0];
     const fullName = firstEpicPower?.fullName || (build.epicPool.powers[0] as any)?.fullName;
     if (fullName && fullName.startsWith('Epic.')) {
       const parts = fullName.split('.');
-      powerSets.push(`${parts[0]}.${parts[1]}`);
+      epicPath = `${parts[0]}.${parts[1]}`;
     } else {
-      powerSets.push(`Epic.${titleCase(build.epicPool.id)}`);
+      epicPath = `Epic.${titleCase(build.epicPool.id)}`;
     }
   }
+
+  const powerSets = [primaryPath, secondaryPath, '', ...poolPaths, epicPath];
 
   // Build PowerEntries from all selected powers
   const powerEntries: MbdPowerEntry[] = [];

@@ -119,6 +119,9 @@ interface UIState {
   /** Use ArcanaTime (server-tick-adjusted cast time) for DPS calculations */
   useArcanaTime: boolean;
 
+  /** Show damage per activation instead of DPS */
+  showDamagePerActivation: boolean;
+
   /** Hints/help visibility */
   hintsEnabled: boolean;
 
@@ -232,6 +235,7 @@ interface UIActions {
   toggleIncludeProcsInStats: () => void;
   toggleIncludeProcDamageInDPS: () => void;
   toggleUseArcanaTime: () => void;
+  toggleShowDamagePerActivation: () => void;
   toggleHints: () => void;
   toggleDarkMode: () => void;
   toggleCompactMode: () => void;
@@ -491,6 +495,7 @@ export const useUIStore = create<UIStore>()(
       includeProcsInStats: true,
       includeProcDamageInDPS: true,
       useArcanaTime: true,
+      showDamagePerActivation: false,
       hintsEnabled: true,
       infoPanel: defaultInfoPanel,
       statsConfig: defaultStatsConfig,
@@ -656,6 +661,11 @@ export const useUIStore = create<UIStore>()(
       toggleUseArcanaTime: () =>
         set((state) => ({
           useArcanaTime: !state.useArcanaTime,
+        })),
+
+      toggleShowDamagePerActivation: () =>
+        set((state) => ({
+          showDamagePerActivation: !state.showDamagePerActivation,
         })),
 
       toggleHints: () =>
@@ -1332,3 +1342,6 @@ export const useIncludeProcDamageInDPS = () => useUIStore((state) => state.inclu
 
 /** Select ArcanaTime toggle */
 export const useArcanaTime = () => useUIStore((state) => state.useArcanaTime);
+
+/** Select damage per activation toggle */
+export const useShowDamagePerActivation = () => useUIStore((state) => state.showDamagePerActivation);

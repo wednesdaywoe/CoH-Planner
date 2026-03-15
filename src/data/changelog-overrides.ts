@@ -19,12 +19,13 @@ export interface ChangelogOverride {
 export const CHANGELOG_OVERRIDES: Record<string, ChangelogOverride> = {
   'a294a54': { message: 'Added icon for Rime', type: 'fix' },
   '3b6ade2': { message: 'Add activatePeriod field to power definitions and update calculations', type: 'fix',},
-  'f301ff4': { message: '', type: 'fix', hide: true },
-  '7e5a9fa': { message: '', type: 'fix', hide: true },
-  '8c0d23f': { message: '', type: 'fix', hide: true },
-  'e95a822': { message: '', type: 'fix', hide: true },
-  'a346b0d': { message: '', type: 'fix', hide: true },
+  'f301ff4': { hide: true },
+  '7e5a9fa': { hide: true },
+  '8c0d23f': { hide: true },
+  'e95a822': { hide: true },
+  'a346b0d': { hide: true },
   '97612e1': { message: 'First pass at Mids export', type: 'feat' },
+  '5564e22': { hide: true },
 }
   // Add overrides here, keyed by short commit hash (first 7 chars)
   // 'a1b2c3d': { message: 'Better description here', type: 'feat' },

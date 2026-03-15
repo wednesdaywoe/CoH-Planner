@@ -724,7 +724,7 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
                 }}
                 className="flex-1"
               >
-                Export to Mids
+                Export to Mids (experimental)
               </Button>
               <Button
                 variant="secondary"
@@ -808,7 +808,8 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
               /* Mids Import */
               <div className="space-y-4">
                 <div className="bg-amber-900/20 border border-amber-700/50 rounded p-3 text-sm text-amber-300">
-                  <p>Import a build from <span className="font-semibold">Mids Reborn</span> (.mbd file). Upload the file or paste its contents below.</p>
+                  <p>Upload an .MBD file or paste its contents below. </p>
+                  <p>!!! PLEASE READ !!! Here's the reality: Mids name patterns are all over the place. Some entries have no AT designation at all, others use abbreviated or combined AT names, and a few use prefixes instead of suffixes. There are also cases where the AT name appears as a prefix instead of a suffix, which makes the naming even more inconsistent. Importing and exporting Mids files reliably is going to be a long work in progress.</p>
                 </div>
 
                 <div>

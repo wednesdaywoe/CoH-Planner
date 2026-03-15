@@ -55,11 +55,38 @@ export function WelcomeModal({ isOpen, onClose }: WelcomeModalProps) {
       </ModalHeader>
       <ModalBody>
         <div className="space-y-4">
-          <div className="bg-[#D62BCE]/10 border border-[#D62BCE]/30 rounded-lg p-4 text-sm text-gray-200 leading-relaxed">
+          <div className="bg-amber-900/30 border-2 border-amber-500/60 rounded-lg p-4 text-sm text-gray-200 leading-relaxed">
+            <p className="text-center text-amber-400 font-bold mb-2">!!! PLEASE READ !!!</p>
             <p>
-              Thank you so much for helping test <span className="text-[#D62BCE] font-semibold">Sidekick</span>! The response has been wonderful and your bug reports have been crucial to finding and fixing some very critical systems. Even just noticing and reporting seemingly small anomalies—like a power with Recharge Debuff Resistance providing a global Recharge bonus—can lead to uncovering a much wider issue with my data process that I am still improving (this scenario literally happened). With your help we can get this thing past the finish line!
+              If you have a question and would like a response, please contact{' '}
+              <a
+                href="https://discord.com/channels/@me/570068130320220172"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-amber-300 underline hover:text-amber-100"
+              >
+                WW on Discord
+              </a>
+              , message{' '}
+              <a
+                href="https://www.reddit.com/message/compose/?to=wednesdaywoe13"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-amber-300 underline hover:text-amber-100"
+              >
+                WW on Reddit
+              </a>
+              {' '}or join the{' '}
+              <a
+                href="https://discord.gg/cGrUAanm"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-amber-300 underline hover:text-amber-100"
+              >
+                Sidekick Discord channel
+              </a>
+              . I'm not able to respond to questions submitted through the reporting tool.
             </p>
-            <p className="mt-2 text-[#D62BCE] font-semibold">&lt;3,<br />WW</p>
           </div>
 
           <p className="text-gray-300 text-sm">

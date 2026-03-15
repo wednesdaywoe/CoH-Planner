@@ -72,6 +72,8 @@ export function Header() {
   const setSelectedBranch = useUIStore((s) => s.setSelectedBranch);
   const includeProcDamageInDPS = useUIStore((s) => s.includeProcDamageInDPS);
   const toggleIncludeProcDamageInDPS = useUIStore((s) => s.toggleIncludeProcDamageInDPS);
+  const showDamagePerActivation = useUIStore((s) => s.showDamagePerActivation);
+  const toggleShowDamagePerActivation = useUIStore((s) => s.toggleShowDamagePerActivation);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -278,6 +280,18 @@ export function Header() {
             checked={includeProcDamageInDPS}
             onChange={toggleIncludeProcDamageInDPS}
             label="Proc DPS"
+            className="!gap-2"
+          />
+        </div>
+
+        {/* Avg Dmg toggle */}
+        <div className="hidden sm:flex items-center bg-slate-700/50 px-2 py-1 rounded border border-slate-600">
+          <Toggle
+            id="avg-dmg-toggle"
+            name="avgDmg"
+            checked={showDamagePerActivation}
+            onChange={toggleShowDamagePerActivation}
+            label="Avg Dmg"
             className="!gap-2"
           />
         </div>

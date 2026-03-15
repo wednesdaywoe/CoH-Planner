@@ -173,6 +173,41 @@ export function FeedbackModal({ isOpen, onClose }: FeedbackModalProps) {
           </div>
         ) : (
           <div className="space-y-4">
+            {/* Contact notice */}
+            <div className="bg-amber-900/30 border-2 border-amber-500/60 rounded-lg p-3">
+              <p className="text-center text-amber-400 font-bold text-sm mb-2">!!! PLEASE READ !!!</p>
+              <p className="text-sm text-amber-200 font-medium">
+                If you have a question and would like a response, please contact{' '}
+                <a
+                  href="https://discord.com/channels/@me/570068130320220172"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-amber-300 underline hover:text-amber-100"
+                >
+                  WW on Discord
+                </a>
+                , message{' '}
+                <a
+                  href="https://www.reddit.com/message/compose/?to=wednesdaywoe13"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-amber-300 underline hover:text-amber-100"
+                >
+                  WW on Reddit
+                </a>
+                {' '}or join the{' '}
+                <a
+                  href="https://discord.gg/cGrUAanm"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-amber-300 underline hover:text-amber-100"
+                >
+                  Sidekick Discord channel
+                </a>
+                . I'm not able to respond to questions submitted through the reporting tool.
+              </p>
+            </div>
+
             {/* Type selector */}
             <div>
               <label className="block text-sm font-medium text-gray-300 mb-2">

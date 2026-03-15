@@ -33,6 +33,7 @@ import { calculatePetDamage, shouldApplyEnhancements, type PetDamageResult, type
 import { PET_ENTITIES, type PetAbility } from '@/data/pet-entities';
 import { calculateIncarnateDamage } from '@/data/at-tables';
 import { resolvePath } from '@/utils/paths';
+import { EnhancementInfoContent } from './EnhancementInfoContent';
 import type {
   ArchetypeId,
   Power,
@@ -90,6 +91,10 @@ export function InfoPanel() {
 
       {content.type === 'enhancement' && (
         <EnhancementInfo enhancementId={content.enhancementId} />
+      )}
+
+      {content.type === 'slotted-enhancement' && (
+        <EnhancementInfoContent powerName={content.powerName} slotIndex={content.slotIndex} />
       )}
 
       {content.type === 'incarnate' && (
@@ -190,6 +195,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
   const sentinelCritActive = useSentinelCritActive();
   const includeProcDamageToggle = useUIStore((s) => s.includeProcDamageInDPS);
   const useArcanaTimeToggle = useUIStore((s) => s.useArcanaTime);
+  const showDamagePerActivation = useUIStore((s) => s.showDamagePerActivation);
 
   // Unified power lookup across all categories
   const result = lookupPower(powerSet, powerName);
@@ -687,10 +693,14 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
                   }
                 }
 
-                const baseDPS = (calculatedDamage.base + dotTotalBase) / baseCycleTime;
-                const finalDPS = (calculatedDamage.final + dotTotalFinal + procDamagePerActivation) / finalCycleTime;
+                const totalDmgBase = calculatedDamage.base + dotTotalBase;
+                const totalDmgFinal = calculatedDamage.final + dotTotalFinal + procDamagePerActivation;
+
+                const baseDPS = totalDmgBase / baseCycleTime;
+                const finalDPS = totalDmgFinal / finalCycleTime;
 
                 const dpsImproved = finalDPS > baseDPS * 1.01; // More than 1% improvement
+                const dmgImproved = totalDmgFinal > totalDmgBase * 1.01;
 
                 return (
                   <div className="mt-2 pt-2 border-t border-slate-700">
@@ -708,22 +718,41 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
                           )}
                         </div>
                       </div>
-                      <div>
-                        <span className="text-slate-500">DPS</span>
-                        <div className={dpsImproved ? 'text-amber-400' : 'text-slate-300'}>
-                          {finalDPS.toFixed(2)}
-                          {dpsImproved && (
-                            <span className="text-green-400 text-[10px] ml-1">
-                              (+{((finalDPS / baseDPS - 1) * 100).toFixed(0)}%)
-                            </span>
-                          )}
-                          {procDamagePerActivation > 0 && (
-                            <span className="text-cyan-400 text-[10px] ml-1" title="Includes proc damage">
-                              +{(procDamagePerActivation / finalCycleTime).toFixed(1)} proc
-                            </span>
-                          )}
+                      {showDamagePerActivation ? (
+                        <div>
+                          <span className="text-slate-500">Avg Dmg</span>
+                          <div className={dmgImproved ? 'text-amber-400' : 'text-slate-300'}>
+                            {totalDmgFinal.toFixed(2)}
+                            {dmgImproved && (
+                              <span className="text-green-400 text-[10px] ml-1">
+                                (+{((totalDmgFinal / totalDmgBase - 1) * 100).toFixed(0)}%)
+                              </span>
+                            )}
+                            {procDamagePerActivation > 0 && (
+                              <span className="text-cyan-400 text-[10px] ml-1" title="Includes proc damage">
+                                +{procDamagePerActivation.toFixed(1)} proc
+                              </span>
+                            )}
+                          </div>
                         </div>
-                      </div>
+                      ) : (
+                        <div>
+                          <span className="text-slate-500">DPS</span>
+                          <div className={dpsImproved ? 'text-amber-400' : 'text-slate-300'}>
+                            {finalDPS.toFixed(2)}
+                            {dpsImproved && (
+                              <span className="text-green-400 text-[10px] ml-1">
+                                (+{((finalDPS / baseDPS - 1) * 100).toFixed(0)}%)
+                              </span>
+                            )}
+                            {procDamagePerActivation > 0 && (
+                              <span className="text-cyan-400 text-[10px] ml-1" title="Includes proc damage">
+                                +{(procDamagePerActivation / finalCycleTime).toFixed(1)} proc
+                              </span>
+                            )}
+                          </div>
+                        </div>
+                      )}
                     </div>
                   </div>
                 );
