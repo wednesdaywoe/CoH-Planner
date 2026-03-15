@@ -24,7 +24,8 @@ export const CHANGELOG_OVERRIDES: Record<string, ChangelogOverride> = {
   '8c0d23f': { message: '', type: 'fix', hide: true },
   'e95a822': { message: '', type: 'fix', hide: true },
   'a346b0d': { message: '', type: 'fix', hide: true },
-};
+  '97612e1': { message: 'First pass at Mids export', type: 'feat' },
+}
   // Add overrides here, keyed by short commit hash (first 7 chars)
   // 'a1b2c3d': { message: 'Better description here', type: 'feat' },
 
