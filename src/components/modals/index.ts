@@ -14,6 +14,7 @@ export { WelcomeModal, useWelcomeModal } from './WelcomeModal';
 export { PowerInfoModal } from './PowerInfoModal';
 export { SetBonusLookupModal } from './SetBonusLookupModal';
 export { ControlsModal } from './ControlsModal';
+export { HelpModal } from './HelpModal';
 export { ConfirmModal } from './ConfirmModal';
 export { CompareSlottingModal } from './CompareSlottingModal';
 export { DetailedTotalsModal } from './DetailedTotalsModal';

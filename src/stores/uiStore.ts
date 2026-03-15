@@ -80,6 +80,9 @@ interface UIState {
   /** Controls modal open state */
   controlsModalOpen: boolean;
 
+  /** Help modal open state */
+  helpModalOpen: boolean;
+
   /** Detailed Totals modal open state */
   detailedTotalsModalOpen: boolean;
 
@@ -306,6 +309,10 @@ interface UIActions {
   openControlsModal: () => void;
   closeControlsModal: () => void;
 
+  // Help Modal
+  openHelpModal: () => void;
+  closeHelpModal: () => void;
+
   // Detailed Totals Modal
   openDetailedTotalsModal: () => void;
   closeDetailedTotalsModal: () => void;
@@ -482,6 +489,7 @@ export const useUIStore = create<UIStore>()(
       knownIssuesModalOpen: false,
       changelogModalOpen: false,
       controlsModalOpen: false,
+      helpModalOpen: false,
       detailedTotalsModalOpen: false,
       powersetCompareModalOpen: false,
       setBonusLookupModalOpen: false,
@@ -947,6 +955,13 @@ export const useUIStore = create<UIStore>()(
 
       closeControlsModal: () =>
         set({ controlsModalOpen: false }),
+
+      // Help Modal
+      openHelpModal: () =>
+        set({ helpModalOpen: true }),
+
+      closeHelpModal: () =>
+        set({ helpModalOpen: false }),
 
       // Detailed Totals Modal
       openDetailedTotalsModal: () =>

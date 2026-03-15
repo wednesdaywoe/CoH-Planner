@@ -9,7 +9,7 @@ import { useCalculatedStats, useCharacterCalculation } from '@/hooks';
 import { useBuildStore, useUIStore } from '@/stores';
 import { getBaselineHealth } from '@/utils/calculations/stats';
 import { Tooltip } from '@/components/ui';
-import { StatsConfigModal, AccoladesModal, AboutModal, ExportImportModal, FeedbackModal, KnownIssuesModal, ChangelogModal, WelcomeModal, useWelcomeModal, SetBonusLookupModal, ControlsModal, CompareSlottingModal, DetailedTotalsModal, PowersetCompareModal } from '@/components/modals';
+import { StatsConfigModal, AccoladesModal, AboutModal, ExportImportModal, FeedbackModal, KnownIssuesModal, ChangelogModal, WelcomeModal, useWelcomeModal, SetBonusLookupModal, ControlsModal, HelpModal, CompareSlottingModal, DetailedTotalsModal, PowersetCompareModal } from '@/components/modals';
 import { IncarnateSlotGrid, IncarnateModal, IncarnateCraftingModal } from '@/components/incarnate';
 import { INCARNATE_REQUIRED_LEVEL, createEmptyIncarnateBuildState } from '@/types';
 import type { DashboardStatBreakdown } from '@/hooks/useCalculatedStats';
@@ -74,6 +74,8 @@ export function StatsDashboard() {
   const controlsModalOpen = useUIStore((s) => s.controlsModalOpen);
   const openControlsModal = useUIStore((s) => s.openControlsModal);
   const closeControlsModal = useUIStore((s) => s.closeControlsModal);
+  const helpModalOpen = useUIStore((s) => s.helpModalOpen);
+  const closeHelpModal = useUIStore((s) => s.closeHelpModal);
   const detailedTotalsModalOpen = useUIStore((s) => s.detailedTotalsModalOpen);
   const openDetailedTotalsModal = useUIStore((s) => s.openDetailedTotalsModal);
   const closeDetailedTotalsModal = useUIStore((s) => s.closeDetailedTotalsModal);
@@ -445,6 +447,12 @@ export function StatsDashboard() {
       <ControlsModal
         isOpen={controlsModalOpen}
         onClose={closeControlsModal}
+      />
+
+      {/* Help Modal */}
+      <HelpModal
+        isOpen={helpModalOpen}
+        onClose={closeHelpModal}
       />
 
       {/* Detailed Totals Modal */}

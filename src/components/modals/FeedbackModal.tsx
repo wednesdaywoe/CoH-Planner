@@ -244,26 +244,7 @@ export function FeedbackModal({ isOpen, onClose }: FeedbackModalProps) {
 
             {/* Guidance tips per feedback type */}
             {feedbackType === 'bug' && (
-              <div className="space-y-2">
-                <div className="bg-amber-900/20 border border-amber-700/50 rounded p-3 flex items-start gap-2">
-                  <svg className="w-4 h-4 text-amber-400 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                  <div className="text-sm text-amber-200/80">
-                    <p className="mt-1">
-                      I set up{' '}
-                      <a
-                        href="https://discord.gg/cGrUAanm"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-amber-300 underline hover:text-amber-200 font-medium"
-                      >
-                        Discord server
-                      </a>
-                      {' '}to make follow-ups on bugs easier.
-                    </p>
-                  </div>
-                </div>
+              <div>
                 <div className="bg-slate-800/50 border border-slate-700/50 rounded p-3">
                   <p className="text-xs font-medium text-slate-400 mb-1.5">Tips for a helpful bug report:</p>
                   <ul className="text-xs text-slate-500 space-y-0.5 list-disc list-inside">
