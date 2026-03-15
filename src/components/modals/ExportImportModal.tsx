@@ -16,6 +16,7 @@ import type { BuildExport } from '@/types/build';
 import type { SharedBuild } from '@/types/shared';
 import { generatePopmenu } from '@/utils/export-popmenu';
 import { openPrintView } from '@/utils/export-print';
+import { exportToMids } from '@/utils/mids-export';
 
 interface ExportImportModalProps {
   isOpen: boolean;
@@ -703,6 +704,28 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
 
             {/* Tools row */}
             <div className="flex gap-3">
+              <Button
+                variant="secondary"
+                size="sm"
+                onClick={() => {
+                  const json = exportToMids(build);
+                  const blob = new Blob([json], { type: 'application/json' });
+                  const url = URL.createObjectURL(blob);
+                  const link = document.createElement('a');
+                  const filename = (build.name || 'build')
+                    .replace(/[^a-z0-9]/gi, '_')
+                    .toLowerCase();
+                  link.href = url;
+                  link.download = `${filename}.mbd`;
+                  document.body.appendChild(link);
+                  link.click();
+                  document.body.removeChild(link);
+                  URL.revokeObjectURL(url);
+                }}
+                className="flex-1"
+              >
+                Export to Mids
+              </Button>
               <Button
                 variant="secondary"
                 size="sm"
