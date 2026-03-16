@@ -45,10 +45,10 @@ export function ChangelogModal({ isOpen, onClose }: ChangelogModalProps) {
               </h3>
               <ul className="space-y-1.5 ml-1">
                 {entries.map((entry) => (
-                  <li key={entry.hash} className="flex items-start gap-2 text-sm text-gray-400">
+                  <li key={entry.hash || entry.message} className="flex items-start gap-2 text-sm text-gray-400">
                     <TypeBadge type={entry.type} />
                     <span className="flex-1">{entry.message}</span>
-                    <code className="text-[10px] text-gray-600 font-mono mt-0.5">{entry.hash}</code>
+                    {entry.hash && <code className="text-[10px] text-gray-600 font-mono mt-0.5">{entry.hash}</code>}
                   </li>
                 ))}
               </ul>

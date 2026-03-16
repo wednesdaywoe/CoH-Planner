@@ -545,7 +545,7 @@ export const useUIStore = create<UIStore>()(
       procSettingsModalOpen: false,
       includeProcDamageInDPS: true,
       useArcanaTime: true,
-      showDamagePerActivation: false,
+      showDamagePerActivation: true,
       combatMode: false,
       hintsEnabled: true,
       infoPanel: defaultInfoPanel,

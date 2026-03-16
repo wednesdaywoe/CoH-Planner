@@ -313,10 +313,11 @@ export function SetBonusLookupModal({ isOpen, onClose }: SetBonusLookupModalProp
           )}
         </div>
 
-        {/* Footer with result count */}
+        {/* Footer with result count + legend */}
         {selectedEffect && (
-          <div className="px-4 py-2 border-t border-gray-700 text-xs text-gray-500">
-            {sortedResults.length} result{sortedResults.length !== 1 ? 's' : ''}
+          <div className="px-4 py-2 border-t border-gray-700 text-xs text-gray-500 flex items-center justify-between">
+            <span>{sortedResults.length} result{sortedResults.length !== 1 ? 's' : ''}</span>
+            <span className="text-gray-600">⚔ = PvP zone only</span>
           </div>
         )}
       </div>
@@ -334,17 +335,34 @@ function canSlot(entry: LookupEntry, slottableCategories: Set<IOSetCategory>): b
   return !!mapped && slottableCategories.has(mapped);
 }
 
+const RARITY_BADGE: Record<string, { label: string; className: string }> = {
+  purple: { label: 'PUR', className: 'text-purple-400 border-purple-600' },
+  ato:    { label: 'ATO', className: 'text-orange-400 border-orange-600' },
+  pvp:    { label: 'PvP', className: 'text-red-400 border-red-700' },
+  event:  { label: 'EVT', className: 'text-cyan-400 border-cyan-700' },
+};
+
 function ResultRow({ entry, dimmed }: { entry: LookupEntry; dimmed: boolean }) {
+  const badge = RARITY_BADGE[entry.rarity];
   return (
     <div
       className={`grid grid-cols-[1fr_90px_1fr_70px_60px] gap-2 px-4 py-1.5 hover:bg-gray-800/50 text-sm border-b border-gray-800/30 ${
         dimmed ? 'opacity-40' : ''
       }`}
     >
-      <span className="text-gray-200 truncate">{entry.setName}</span>
+      <span className="text-gray-200 truncate flex items-center gap-1.5 min-w-0">
+        {badge && (
+          <span className={`shrink-0 text-[10px] font-semibold border rounded px-1 leading-tight ${badge.className}`}>
+            {badge.label}
+          </span>
+        )}
+        <span className="truncate">{entry.setName}</span>
+      </span>
       <span className="text-gray-400">{entry.levelRange}</span>
       <span className="text-gray-400 truncate">{entry.setType}</span>
-      <span className="text-cyan-400 text-right tabular-nums">{parseFloat(entry.value.toFixed(2))}%</span>
+      <span className={`text-right tabular-nums ${entry.pvp ? 'text-red-400' : 'text-cyan-400'}`}>
+        {parseFloat(entry.value.toFixed(2))}%{entry.pvp && <span className="ml-0.5 text-[10px]">⚔</span>}
+      </span>
       <span className="text-green-400 text-right tabular-nums">{entry.piecesRequired}</span>
     </div>
   );

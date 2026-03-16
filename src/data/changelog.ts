@@ -6,6 +6,7 @@
 
 import type { TrackerItem } from './tracker';
 import { CHANGELOG_OVERRIDES } from './changelog-overrides';
+import { MANUAL_CHANGELOG } from './changelog-manual';
 
 declare const __CHANGELOG_DATA__: ChangelogEntry[];
 
@@ -33,20 +34,49 @@ function applyOverrides(entries: ChangelogEntry[]): ChangelogEntry[] {
 
 export const CHANGELOG_ENTRIES: ChangelogEntry[] = applyOverrides(__CHANGELOG_DATA__);
 
+/** Manual entries converted to ChangelogEntry format (no hash) */
+const MANUAL_ENTRIES: ChangelogEntry[] = MANUAL_CHANGELOG.map(e => ({
+  hash: '',
+  date: e.date,
+  message: e.message,
+  type: e.type,
+}));
+
+/**
+ * All entries merged: git-log + manual, deduplicated by (date+message).
+ * Sorted newest-first. Git-log entries take precedence over manual entries
+ * with identical messages on the same date.
+ */
+function buildAllEntries(): ChangelogEntry[] {
+  const seen = new Set<string>();
+  const all: ChangelogEntry[] = [];
+  for (const entry of [...CHANGELOG_ENTRIES, ...MANUAL_ENTRIES]) {
+    const key = `${entry.date}|${entry.message}`;
+    if (!seen.has(key)) {
+      seen.add(key);
+      all.push(entry);
+    }
+  }
+  // Sort by date descending, preserving insertion order within a date
+  return all.sort((a, b) => b.date.localeCompare(a.date));
+}
+
+const ALL_ENTRIES = buildAllEntries();
+
 const TYPE_TO_STATUS: Record<string, TrackerItem['status']> = {
   feat: 'new',
   fix: 'fixed',
   update: 'in-progress',
 };
 
-/** Get changelog entries from today as TrackerItems for WelcomeModal.
- *  Falls back to the most recent date if no entries exist for today. */
+/** Get entries for the most recent date (today if available) as TrackerItems.
+ *  Used by WelcomeModal. Searches across both git-log and manual entries. */
 export function getRecentChanges(): { date: string; items: TrackerItem[] } {
-  if (CHANGELOG_ENTRIES.length === 0) return { date: '', items: [] };
+  if (ALL_ENTRIES.length === 0) return { date: '', items: [] };
   const today = new Date().toISOString().slice(0, 10); // YYYY-MM-DD
-  const todayEntries = CHANGELOG_ENTRIES.filter(e => e.date === today);
-  const targetDate = todayEntries.length > 0 ? today : CHANGELOG_ENTRIES[0].date;
-  const entries = todayEntries.length > 0 ? todayEntries : CHANGELOG_ENTRIES.filter(e => e.date === targetDate);
+  const todayEntries = ALL_ENTRIES.filter(e => e.date === today);
+  const targetDate = todayEntries.length > 0 ? today : ALL_ENTRIES[0].date;
+  const entries = todayEntries.length > 0 ? todayEntries : ALL_ENTRIES.filter(e => e.date === targetDate);
   return {
     date: targetDate,
     items: entries.map(entry => ({
@@ -56,10 +86,10 @@ export function getRecentChanges(): { date: string; items: TrackerItem[] } {
   };
 }
 
-/** Group all changelog entries by date */
+/** Group all entries (git-log + manual) by date, newest date first. */
 export function getChangelogByDate(): Map<string, ChangelogEntry[]> {
   const grouped = new Map<string, ChangelogEntry[]>();
-  for (const entry of CHANGELOG_ENTRIES) {
+  for (const entry of ALL_ENTRIES) {
     const existing = grouped.get(entry.date);
     if (existing) {
       existing.push(entry);

@@ -162,6 +162,43 @@ const GENERIC_STAT_MAP: Record<string, string> = {
 };
 
 // ============================================
+// SO/DO ORIGIN PARSING
+// ============================================
+
+const SO_ORIGINS = ['Natural', 'Magic', 'Mutation', 'Science', 'Technology'] as const;
+
+/** Stat names used in SO/DO UIDs that differ from GENERIC_STAT_MAP */
+const SO_STAT_MAP: Record<string, string> = {
+  'Recovery': 'EnduranceModification',  // Endurance Recovery SOs
+  'Endurance_Discount': 'EnduranceReduction',
+  'Defense_Buff': 'Defense',
+  'Run': 'Run Speed',
+};
+
+/**
+ * Parse a SO/DO UID by stripping up to 2 origin prefixes.
+ * Returns the stat part if an origin prefix was found, otherwise null.
+ * Example: "Magic_Recovery" → "Recovery", "Natural_Magic_Run" → "Run".
+ */
+function parseSOEnhancement(uid: string): string | null {
+  // IO set pieces end with _[A-F] — skip those
+  if (/^.+_[A-F]$/.test(uid)) return null;
+
+  let remaining = uid;
+  let stripped = 0;
+  for (let i = 0; i < 2; i++) {
+    const match = SO_ORIGINS.find((o) => remaining.startsWith(o + '_'));
+    if (match) {
+      remaining = remaining.slice(match.length + 1);
+      stripped++;
+    } else {
+      break;
+    }
+  }
+  return stripped > 0 ? remaining : null;
+}
+
+// ============================================
 // IO SET NAME LOOKUP
 // ============================================
 
@@ -608,6 +645,22 @@ function resolveEnhancement(enh: GameExportEnhancement): EnhancementResolveResul
     return {
       enhancement: null,
       warning: { type: 'enhancement', name: uid, message: `Unknown generic IO stat: ${statPart}` },
+    };
+  }
+
+  // Check for Single/Dual Origin enhancements: "Magic_Accuracy", "Natural_Magic_Run", etc.
+  // SOs/DOs have an origin prefix but no _[A-F] piece suffix.
+  const soStat = parseSOEnhancement(uid);
+  if (soStat !== null) {
+    const stat = SO_STAT_MAP[soStat] ?? GENERIC_STAT_MAP[soStat];
+    if (stat) {
+      const enhancement = createGenericIOEnhancement(stat as any, level ?? 50, boost);
+      return { enhancement, warning: null };
+    }
+    // Origin prefix found but stat is unknown — warn but don't block
+    return {
+      enhancement: null,
+      warning: { type: 'enhancement', name: uid, message: `Unknown SO/DO stat: ${soStat}` },
     };
   }
 
