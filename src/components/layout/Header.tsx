@@ -74,6 +74,9 @@ export function Header() {
   const toggleIncludeProcDamageInDPS = useUIStore((s) => s.toggleIncludeProcDamageInDPS);
   const showDamagePerActivation = useUIStore((s) => s.showDamagePerActivation);
   const toggleShowDamagePerActivation = useUIStore((s) => s.toggleShowDamagePerActivation);
+  const combatMode = useUIStore((s) => s.combatMode);
+  const toggleCombatMode = useUIStore((s) => s.toggleCombatMode);
+  const openProcSettingsModal = useUIStore((s) => s.openProcSettingsModal);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -272,8 +275,20 @@ export function Header() {
         {/* Settings popover (Target, Slot Levels, Exemplar, UI Scale, Origin, Server) */}
         <SettingsPopover />
 
-        {/* Proc DPS toggle */}
+        {/* In-Combat toggle */}
         <div className="hidden sm:flex items-center bg-slate-700/50 px-2 py-1 rounded border border-slate-600">
+          <Toggle
+            id="combat-mode-toggle"
+            name="combatMode"
+            checked={combatMode}
+            onChange={toggleCombatMode}
+            label="In-Combat"
+            className="!gap-2"
+          />
+        </div>
+
+        {/* Proc DPS toggle + Settings button */}
+        <div className="hidden sm:flex items-center gap-1 bg-slate-700/50 px-2 py-1 rounded border border-slate-600">
           <Toggle
             id="proc-dps-toggle"
             name="procDPS"
@@ -282,6 +297,16 @@ export function Header() {
             label="Proc DPS"
             className="!gap-2"
           />
+          <button
+            onClick={openProcSettingsModal}
+            className="ml-1 text-slate-400 hover:text-white transition-colors"
+            title="Proc Settings"
+          >
+            <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+          </button>
         </div>
 
         {/* Avg Dmg toggle */}
@@ -416,6 +441,8 @@ function SettingsPopover() {
   const setExemplarLevel = useUIStore((s) => s.setExemplarLevel);
   const uiScale = useUIStore((s) => s.uiScale);
   const setUIScale = useUIStore((s) => s.setUIScale);
+  const useArcanaTime = useUIStore((s) => s.useArcanaTime);
+  const toggleUseArcanaTime = useUIStore((s) => s.toggleUseArcanaTime);
 
   useEffect(() => {
     if (!open) return;
@@ -513,17 +540,30 @@ function SettingsPopover() {
             </Tooltip>
           </div>
 
-          {/* Toggles row */}
-          <div className="flex items-center justify-between">
-            <Tooltip content="Show/hide slot level labels on enhancement slots">
-              <Toggle
-                id="slot-levels-toggle"
-                name="showSlotLevels"
-                checked={showSlotLevels}
-                onChange={toggleShowSlotLevels}
-                label="Slot Levels"
-              />
-            </Tooltip>
+          {/* Toggles */}
+          <div className="space-y-2">
+            <div className="flex items-center justify-between">
+              <Tooltip content="Show/hide slot level labels on enhancement slots">
+                <Toggle
+                  id="slot-levels-toggle"
+                  name="showSlotLevels"
+                  checked={showSlotLevels}
+                  onChange={toggleShowSlotLevels}
+                  label="Slot Levels"
+                />
+              </Tooltip>
+            </div>
+            <div className="flex items-center justify-between">
+              <Tooltip content="Adjust cast times to account for the server's tick-based animation system (more accurate DPS)">
+                <Toggle
+                  id="arcanatime-toggle"
+                  name="arcanaTime"
+                  checked={useArcanaTime}
+                  onChange={toggleUseArcanaTime}
+                  label="ArcanaTime"
+                />
+              </Tooltip>
+            </div>
           </div>
 
           {/* Exemplar */}

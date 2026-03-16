@@ -6,7 +6,7 @@
 import { useState } from 'react';
 import { useUIStore } from '@/stores';
 import { Modal, ModalBody, ModalFooter } from './Modal';
-import { Button, Toggle } from '@/components/ui';
+import { Button } from '@/components/ui';
 import type { StatDisplayConfig } from '@/types';
 
 // Color schemes for each category (matching legacy app)
@@ -259,10 +259,6 @@ export function StatsConfigModal({ isOpen, onClose }: StatsConfigModalProps) {
   const reorderStats = useUIStore((s) => s.reorderStats);
   const resetStatsConfig = useUIStore((s) => s.resetStatsConfig);
   const openProcSettingsModal = useUIStore((s) => s.openProcSettingsModal);
-  const useArcanaTime = useUIStore((s) => s.useArcanaTime);
-  const toggleUseArcanaTime = useUIStore((s) => s.toggleUseArcanaTime);
-  const combatMode = useUIStore((s) => s.combatMode);
-  const toggleCombatMode = useUIStore((s) => s.toggleCombatMode);
 
   // Local state for editing before applying
   const [localConfig, setLocalConfig] = useState<StatDisplayConfig[]>(() => {
@@ -375,24 +371,6 @@ export function StatsConfigModal({ isOpen, onClose }: StatsConfigModalProps) {
             >
               Proc Settings
             </Button>
-            <div className="flex items-center bg-slate-700/50 px-2 py-1.5 rounded border border-slate-600">
-              <Toggle
-                id="arcanatime-toggle"
-                name="arcanaTime"
-                checked={useArcanaTime}
-                onChange={toggleUseArcanaTime}
-                label="ArcanaTime"
-              />
-            </div>
-            <div className="flex items-center bg-slate-700/50 px-2 py-1.5 rounded border border-slate-600">
-              <Toggle
-                id="combat-mode-toggle"
-                name="combatMode"
-                checked={combatMode}
-                onChange={toggleCombatMode}
-                label="In-Combat"
-              />
-            </div>
           </div>
         </div>
 
