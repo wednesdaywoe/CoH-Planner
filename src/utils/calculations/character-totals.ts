@@ -1334,6 +1334,24 @@ function applySingleProcEffect(
       });
       break;
 
+    case 'SlowResistance':
+      global.debuffResistSlow += value;
+      addToBreakdown(breakdown, 'debuffResistSlow', {
+        name: sourceName,
+        value,
+        type: 'proc',
+      });
+      break;
+
+    case 'RechargeResistance':
+      global.debuffResistRecharge += value;
+      addToBreakdown(breakdown, 'debuffResistRecharge', {
+        name: sourceName,
+        value,
+        type: 'proc',
+      });
+      break;
+
     case 'KnockbackProtection':
       global.protKnockback += value;
       addToBreakdown(breakdown, 'protKnockback', {

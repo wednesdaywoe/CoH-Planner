@@ -256,8 +256,9 @@ export function calcThreeTier(
 
   if (aspect === 'endurance' || aspect === 'recharge') {
     // Divisive reduction: base / (1 + bonus) — matches CoH game formula
+    // Enhancement and global bonuses combine ADDITIVELY in one denominator
     enhanced = baseValue / Math.max(1, 1 + enhBonus);
-    final = enhanced / Math.max(1, 1 + globalBonus);
+    final = baseValue / Math.max(1, 1 + enhBonus + globalBonus);
   } else {
     // Multiplicative: base * (1 + bonus)
     enhanced = baseValue * (1 + enhBonus);

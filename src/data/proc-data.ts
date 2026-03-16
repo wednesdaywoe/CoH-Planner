@@ -21,6 +21,8 @@ export type ProcEffectCategory =
   | 'MaxHP'
   | 'KnockbackProtection'
   | 'MezResist'
+  | 'SlowResistance'
+  | 'RechargeResistance'
   | 'Stealth'
   | 'Control'
   | 'Debuff'
@@ -2085,13 +2087,14 @@ export function parseProcEffect(mechanics: string): ParsedProcEffect {
   }
 
   // Winter's Gift style: Resist(-Speed X% & -Recharge Y%)
+  // These are DEBUFF RESISTANCES, not speed/recharge buffs
   const winterGiftMatch = mechanics.match(/Resist\s*\(\s*-Speed\s+(\d+(?:\.\d+)?)\s*%\s*&\s*-Recharge\s+(\d+(?:\.\d+)?)\s*%/i);
   if (winterGiftMatch) {
     return {
-      category: 'RunSpeed',
+      category: 'SlowResistance',
       effectType: 'Slow Resistance',
       value: parseFloat(winterGiftMatch[1]),
-      secondaryCategory: 'Recharge',
+      secondaryCategory: 'RechargeResistance',
       secondaryEffectType: 'Recharge Resistance',
       secondaryValue: parseFloat(winterGiftMatch[2]),
       isBuff: true,
@@ -2333,6 +2336,8 @@ export function getProcEffectLabel(category: ProcEffectCategory): string {
     case 'MaxHP': return '+Max HP';
     case 'KnockbackProtection': return 'KB Protection';
     case 'MezResist': return '+Mez Resist';
+    case 'SlowResistance': return 'Slow Resist';
+    case 'RechargeResistance': return 'Rech Debuff Resist';
     case 'Stealth': return 'Stealth';
     case 'Control': return 'Control';
     case 'Debuff': return 'Debuff';
@@ -2359,6 +2364,8 @@ export function getProcEffectColor(category: ProcEffectCategory): string {
     case 'MaxHP': return 'text-pink-400';
     case 'KnockbackProtection': return 'text-slate-300';
     case 'MezResist': return 'text-violet-400';
+    case 'SlowResistance': return 'text-teal-300';
+    case 'RechargeResistance': return 'text-amber-300';
     case 'Stealth': return 'text-gray-400';
     case 'Control': return 'text-indigo-400';
     case 'Debuff': return 'text-rose-400';
