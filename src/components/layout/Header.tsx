@@ -918,9 +918,9 @@ function DiscordAuthButton() {
         </button>
 
         {menuOpen && (
-          <div className="absolute right-0 top-full mt-1 bg-gray-800 border border-gray-600 rounded-lg shadow-xl py-1 min-w-[210px] z-50">
+          <div className="absolute left-0 top-full mt-1 bg-gray-800 border border-gray-600 rounded-lg shadow-xl py-1 w-[210px] z-50">
             <p className="px-3 pt-2 pb-1 text-xs text-gray-400 leading-relaxed">
-              Optionally sign in with Discord to manage your shared builds across devices and browsers. Sidekick does 
+              Optionally sign in with Discord to manage your shared builds across devices and browsers. Sidekick does
             </p>
             <p className="px-3 pb-1.5 text-[10px] text-gray-500">
               THIS IS COMPLETELY OPTIONAL - anonymous sharing still works without a Discord account.
@@ -961,7 +961,7 @@ function DiscordAuthButton() {
       </button>
 
       {menuOpen && (
-        <div className="absolute right-0 top-full mt-1 bg-gray-800 border border-gray-600 rounded-lg shadow-xl py-1 min-w-[140px] z-50">
+        <div className="absolute left-0 top-full mt-1 bg-gray-800 border border-gray-600 rounded-lg shadow-xl py-1 min-w-[140px] z-50">
           <button
             onClick={() => { navigate({ to: '/builds' }); setMenuOpen(false); }}
             className="w-full text-left px-3 py-1.5 text-sm text-gray-300 hover:bg-gray-700 hover:text-white transition-colors"

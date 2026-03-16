@@ -532,27 +532,24 @@ function resolvePowersetId(gameSetName: string, archetypeId: string): string | n
  */
 function resolveEpicPoolId(gameName: string, archetypeId: string): string | null {
   const normalized = gameName.toLowerCase();
-
-  // Try direct match: "Corruptor_Mace_Mastery" → "corruptor_mace_mastery"
-  let pool = getEpicPool(normalized);
-  if (pool) return pool.id;
-
-  // Try with archetype prefix: "Energy_Mastery" → "corruptor_energy_mastery"
-  // (Some exports may not include archetype prefix)
   const withArchetype = `${archetypeId.replace(/-/g, '_')}_${normalized}`;
-  pool = getEpicPool(withArchetype);
-  if (pool) return pool.id;
 
-  // Fallback: search epic pools for this archetype
+  // Search archetype-specific pools FIRST to avoid cross-archetype collisions
+  // (e.g., "Psi_Mastery" exists for controller, scrapper, stalker, etc.)
   const epicPools = getEpicPoolsForArchetype(archetypeId);
   for (const ep of epicPools) {
-    if (ep.id.toLowerCase() === normalized) return ep.id;
-    if (ep.id.toLowerCase() === withArchetype) return ep.id;
-    // Partial match: "Energy_Mastery" matches "corruptor_energy_mastery"
-    if (ep.id.toLowerCase().endsWith(`_${normalized}`)) return ep.id;
-    // Display name match
+    const epId = ep.id.toLowerCase();
+    // Direct ID match
+    if (epId === normalized || epId === withArchetype) return ep.id;
+    // Partial match: "Psi_Mastery" matches "melee_psionic_mastery"
+    if (epId.endsWith(`_${normalized}`)) return ep.id;
+    // Display name match: "Psi Mastery" → "psi_mastery" matches pool name
     if (ep.name.toLowerCase().replace(/\s+/g, '_') === normalized) return ep.id;
   }
+
+  // Fallback: direct match across all pools (for fully-qualified IDs like "corruptor_mace_mastery")
+  const pool = getEpicPool(normalized);
+  if (pool) return pool.id;
 
   return null;
 }

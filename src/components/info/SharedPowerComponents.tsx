@@ -304,7 +304,7 @@ function CollapsibleEffectGroup({
 
       {/* Expanded entries */}
       {!collapsed && items.map(({ effect, tiers, expandedLabel: elabel }) => {
-        const { key, value: rawValue, config } = effect;
+        const { key, config } = effect;
         const enhanceable = !!config.enhancementAspect;
         const hasEnh = Math.abs(tiers.enhanced - tiers.base) > 0.001;
         const hasFinal = Math.abs(tiers.final - tiers.enhanced) > 0.001;
@@ -314,17 +314,10 @@ function CollapsibleEffectGroup({
           const rawMag = dominationActive && config.category === 'control' ? calculateDominationMagnitude(tiers.base) : tiers.base;
           const magStr = Number.isInteger(rawMag) ? rawMag.toString() : rawMag.toFixed(1);
           const magColorClass = dominationActive && config.category === 'control' ? 'text-pink-400' : config.colorClass;
-          const mezDuration = rawValue && typeof rawValue === 'object' && 'mag' in (rawValue as Record<string, unknown>) && 'scale' in (rawValue as Record<string, unknown>)
-            ? (rawValue as { scale?: number }).scale : undefined;
           return (
             <div key={key} className={`grid ${gridCols} gap-1 items-baseline ${fontSize} ml-2`}>
               <span className={magColorClass}>{itemLabel}</span>
-              <span className="text-slate-200">
-                Mag {magStr}
-                {mezDuration != null && mezDuration > 0 && (
-                  <span className="text-slate-400 ml-1">({mezDuration.toFixed(1)}s)</span>
-                )}
-              </span>
+              <span className="text-slate-200">Mag {magStr}</span>
               <span className="text-slate-600">—</span>
               <span className="text-slate-600">—</span>
             </div>
@@ -902,26 +895,80 @@ export function RegistryEffectsDisplay({
           label = `${config.label} (${byTypeLabel})`;
         }
 
-        // Handle mez effects (magnitude format) — not enhanceable, show "—"
+        // Handle mez effects (magnitude format)
         if (config.format === 'mag') {
           const rawMag = dominationActive && config.category === 'control' ? calculateDominationMagnitude(tiers.base) : tiers.base;
           const magStr = Number.isInteger(rawMag) ? rawMag.toString() : rawMag.toFixed(1);
           const colorClass = dominationActive && config.category === 'control' ? 'text-pink-400' : config.colorClass;
 
-          // Extract duration from MezEffect if available, or fall back to durations map
-          let mezDuration = rawValue && typeof rawValue === 'object' && 'mag' in (rawValue as Record<string, unknown>) && 'scale' in (rawValue as Record<string, unknown>)
-            ? (rawValue as { scale?: number }).scale
-            : undefined;
-          if (mezDuration == null || mezDuration <= 0) {
-            mezDuration = durations?.[key];
+          // Duration-based mez (stun, hold, etc.) — magnitude is fixed, duration is enhanceable
+          if (isMezEffect(rawValue) && archetypeId && level) {
+            const tableVal = getTableValue(archetypeId, rawValue.table, level);
+            const baseDuration = tableVal !== undefined ? Math.abs(rawValue.scale * tableVal) : undefined;
+
+            if (baseDuration !== undefined && baseDuration > 0) {
+              const enhBonus = enhancementBonuses[key] || 0;
+              const enhancedDuration = baseDuration * (1 + enhBonus);
+              // No global mez bonus exists, but support it for correctness
+              const globalBonus = globalBonuses[key] || 0;
+              const finalDuration = baseDuration * (1 + enhBonus + globalBonus);
+              const hasEnh = Math.abs(enhancedDuration - baseDuration) > 0.001;
+              const hasFinal = Math.abs(finalDuration - enhancedDuration) > 0.001;
+
+              return (
+                <div key={key} className={`grid ${gridCols} gap-1 items-baseline ${fontSize}`}>
+                  <span className={colorClass}>{label}</span>
+                  <span className="text-slate-200">
+                    Mag {magStr} ({baseDuration.toFixed(1)}s)
+                    {dominationActive && config.category === 'control' && (
+                      <span className="text-pink-300 text-[8px] ml-1">[2×]</span>
+                    )}
+                  </span>
+                  <span className={hasEnh ? 'text-green-400' : 'text-slate-400'}>
+                    ({enhancedDuration.toFixed(1)}s)
+                  </span>
+                  <span className={hasFinal ? finalColumnColor : 'text-slate-400'}>
+                    ({finalDuration.toFixed(1)}s)
+                  </span>
+                </div>
+              );
+            }
           }
+
+          // Distance-based mez (knockback, knockup, repel) — no mag, distance is enhanceable
+          if (!isMezEffect(rawValue) && rawValue && typeof rawValue === 'object' && 'scale' in rawValue && 'table' in rawValue && archetypeId && level) {
+            const enhBonus = enhancementBonuses[key] || 0;
+            const globalBonus = globalBonuses[key] || 0;
+            const enhanced = tiers.base * (1 + enhBonus);
+            const final_ = tiers.base * (1 + enhBonus + globalBonus);
+            const hasEnh = Math.abs(enhanced - tiers.base) > 0.001;
+            const hasFinal = Math.abs(final_ - enhanced) > 0.001;
+
+            return (
+              <div key={key} className={`grid ${gridCols} gap-1 items-baseline ${fontSize}`}>
+                <span className={colorClass}>{label}</span>
+                <span className="text-slate-200">{tiers.base.toFixed(1)}</span>
+                <span className={hasEnh ? 'text-green-400' : 'text-slate-400'}>
+                  {enhanced.toFixed(1)}
+                </span>
+                <span className={hasFinal ? finalColumnColor : 'text-slate-400'}>
+                  {final_.toFixed(1)}
+                </span>
+              </div>
+            );
+          }
+
+          // Fallback: simple magnitude (no AT data or plain number) — not enhanceable
+          // Also used by protection entries which have plain number values
+          let mezDuration = durations?.[key];
+          if (mezDuration == null || mezDuration <= 0) mezDuration = undefined;
 
           return (
             <div key={key} className={`grid ${gridCols} gap-1 items-baseline ${fontSize}`}>
               <span className={colorClass}>{label}</span>
               <span className="text-slate-200">
                 Mag {magStr}
-                {mezDuration != null && mezDuration > 0 && (
+                {mezDuration != null && (
                   <span className="text-slate-400 ml-1">({mezDuration.toFixed(1)}s)</span>
                 )}
                 {dominationActive && config.category === 'control' && (

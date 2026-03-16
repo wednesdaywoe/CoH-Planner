@@ -23,11 +23,27 @@ function hasHealingDamage(power: SelectedPower): boolean {
   return (power.damage as { type?: string }).type === 'Heal';
 }
 
+/** Known buff effect keys that indicate persistent toggleable effects */
+const BUFF_EFFECT_KEYS = [
+  'rechargeBuff', 'recoveryBuff', 'damageBuff', 'defenseBuff',
+  'resistanceBuff', 'tohitBuff', 'enduranceGain', 'speedBuff',
+];
+
+/**
+ * Check if a power has persistent buff effects (e.g. Chrono Shift's +Recharge, +Recovery).
+ * Powers with these should still get a toggle even if they also have healing damage.
+ */
+function hasPersistentBuffEffects(power: SelectedPower): boolean {
+  if (!power.effects) return false;
+  return BUFF_EFFECT_KEYS.some(key => key in power.effects!);
+}
+
 /**
  * Determine if a power should show a toggle switch for stat calculations.
  * This includes:
  * - Toggle powers (always toggleable)
  * - Click powers that buff self (targetType: Self), excluding one-shot heals
+ *   unless they also have persistent buff effects (Chrono Shift)
  * - Click powers that are PBAoE and affect allies (buffs teammates AND user)
  */
 function shouldShowToggle(power: SelectedPower): boolean {
@@ -42,8 +58,9 @@ function shouldShowToggle(power: SelectedPower): boolean {
 
   // Click powers that target self (self-buffs like Build Up, Aim)
   // Exclude one-shot heals/drains (Dark Regeneration, Dull Pain, etc.)
+  // but allow heals with persistent buff effects (Chrono Shift)
   if (powerType === 'click' && targetType === 'self') {
-    return !hasHealingDamage(power);
+    return !hasHealingDamage(power) || hasPersistentBuffEffects(power);
   }
 
   // Click powers that are PBAoE and target allies (like Accelerate Metabolism)
