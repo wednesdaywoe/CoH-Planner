@@ -34,6 +34,7 @@ import { createDefaultIncarnateActiveState } from '@/types';
 
 /** Per-category toggles for proc effects in dashboard stats */
 export interface ProcSettings {
+  damage: boolean;
   recovery: boolean;
   regeneration: boolean;
   recharge: boolean;
@@ -47,6 +48,7 @@ export interface ProcSettings {
 export type ProcSettingsKey = keyof ProcSettings;
 
 const DEFAULT_PROC_SETTINGS: ProcSettings = {
+  damage: true,
   recovery: true,
   regeneration: true,
   recharge: true,
@@ -1297,6 +1299,7 @@ export const useUIStore = create<UIStore>()(
         if (raw && 'includeProcsInStats' in raw && !('procSettings' in raw)) {
           const allOn = raw.includeProcsInStats !== false;
           merged.procSettings = {
+            damage: allOn,
             recovery: allOn,
             regeneration: allOn,
             recharge: allOn,

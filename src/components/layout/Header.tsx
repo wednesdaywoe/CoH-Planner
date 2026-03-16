@@ -287,14 +287,14 @@ export function Header() {
           />
         </div>
 
-        {/* Proc DPS toggle + Settings button */}
+        {/* Proc master toggle + Settings button */}
         <div className="hidden sm:flex items-center gap-1 bg-slate-700/50 px-2 py-1 rounded border border-slate-600">
           <Toggle
-            id="proc-dps-toggle"
-            name="procDPS"
+            id="procs-toggle"
+            name="procs"
             checked={includeProcDamageInDPS}
             onChange={toggleIncludeProcDamageInDPS}
-            label="Proc DPS"
+            label="Procs"
             className="!gap-2"
           />
           <button

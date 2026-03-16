@@ -193,7 +193,8 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
   const stalkerTeamSize = useStalkerTeamSize();
   const stalkerCritActive = useStalkerCritActive();
   const sentinelCritActive = useSentinelCritActive();
-  const includeProcDamageToggle = useUIStore((s) => s.includeProcDamageInDPS);
+  const procSettings = useUIStore((s) => s.procSettings);
+  const includeProcDamageToggle = useUIStore((s) => s.includeProcDamageInDPS) && procSettings.damage;
   const useArcanaTimeToggle = useUIStore((s) => s.useArcanaTime);
   const showDamagePerActivation = useUIStore((s) => s.showDamagePerActivation);
   const combatMode = useUIStore((s) => s.combatMode);

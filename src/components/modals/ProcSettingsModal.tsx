@@ -15,6 +15,7 @@ interface ProcCategory {
 }
 
 const PROC_CATEGORIES: ProcCategory[] = [
+  { key: 'damage', label: 'Damage Procs', description: 'Proc damage included in per-power DPS calculations', colorClass: 'text-red-400' },
   { key: 'recovery', label: 'Recovery & Endurance', description: 'Performance Shifter, Panacea, Numina\'s', colorClass: 'text-blue-300' },
   { key: 'regeneration', label: 'Regeneration & Heal', description: 'Numina\'s, Preventive Medicine', colorClass: 'text-green-300' },
   { key: 'recharge', label: 'Recharge', description: 'LotG +7.5% Recharge', colorClass: 'text-amber-400' },
@@ -40,12 +41,12 @@ export function ProcSettingsModal({ isOpen, onClose }: ProcSettingsModalProps) {
   const noneEnabled = enabledCount === 0;
 
   const handleEnableAll = () => {
-    const all: ProcSettings = { recovery: true, regeneration: true, recharge: true, toHit: true, defense: true, resistance: true, buildUp: true, movement: true };
+    const all: ProcSettings = { damage: true, recovery: true, regeneration: true, recharge: true, toHit: true, defense: true, resistance: true, buildUp: true, movement: true };
     setProcSettings(all);
   };
 
   const handleDisableAll = () => {
-    const none: ProcSettings = { recovery: false, regeneration: false, recharge: false, toHit: false, defense: false, resistance: false, buildUp: false, movement: false };
+    const none: ProcSettings = { damage: false, recovery: false, regeneration: false, recharge: false, toHit: false, defense: false, resistance: false, buildUp: false, movement: false };
     setProcSettings(none);
   };
 
@@ -59,7 +60,7 @@ export function ProcSettingsModal({ isOpen, onClose }: ProcSettingsModalProps) {
       <ModalBody>
         <div className="px-1 py-1">
           <p className="text-sm text-gray-400 mb-3">
-            Choose which proc categories are included in dashboard stat calculations.
+            Choose which proc categories are calculated in your powers and dashboard totals.
           </p>
 
           <div className="space-y-1">

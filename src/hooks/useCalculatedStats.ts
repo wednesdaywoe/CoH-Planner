@@ -13,6 +13,7 @@ import { useMemo } from 'react';
 import { useBuildStore, useUIStore } from '@/stores';
 import { getIOSet } from '@/data';
 import type { SetBonus } from '@/types';
+import type { ProcSettings } from '@/stores/uiStore';
 import {
   calculateCharacterTotals,
   type CharacterStats,
@@ -20,6 +21,12 @@ import {
   type DashboardStatBreakdown,
   type StatSource,
 } from '@/utils/calculations';
+
+/** All procs disabled — used when master Proc toggle is off */
+const ALL_PROCS_DISABLED: ProcSettings = {
+  damage: false, recovery: false, regeneration: false, recharge: false,
+  toHit: false, defense: false, resistance: false, buildUp: false, movement: false,
+};
 
 // ============================================
 // RE-EXPORT TYPES
@@ -239,15 +246,19 @@ export function useCharacterCalculation(): CharacterCalculationResult {
   const incarnateActive = useUIStore((state) => state.incarnateActive);
   const incarnateLevelShiftActive = useUIStore((state) => state.incarnateLevelShiftActive);
   const procSettings = useUIStore((state) => state.procSettings);
+  const procsEnabled = useUIStore((state) => state.includeProcDamageInDPS);
   const targetsHitValues = useUIStore((state) => state.targetsHitValues);
   const targetLevelOffset = useUIStore((state) => state.targetLevelOffset);
   const vigilanceTeamSize = useUIStore((state) => state.vigilanceTeamSize);
   const furyLevel = useUIStore((state) => state.furyLevel);
   const combatMode = useUIStore((state) => state.combatMode);
 
+  // When master Proc toggle is off, disable all proc categories
+  const effectiveProcSettings = procsEnabled ? procSettings : ALL_PROCS_DISABLED;
+
   return useMemo(() => {
     return calculateCharacterTotals(build, exemplarMode, incarnateActive, {
-      procSettings,
+      procSettings: effectiveProcSettings,
       targetsHitValues,
       exemplarLevel: exemplarMode ? exemplarLevel : undefined,
       targetLevelOffset,
@@ -256,7 +267,7 @@ export function useCharacterCalculation(): CharacterCalculationResult {
       incarnateLevelShiftActive,
       combatMode,
     });
-  }, [build, exemplarMode, exemplarLevel, incarnateActive, incarnateLevelShiftActive, procSettings, targetsHitValues, targetLevelOffset, vigilanceTeamSize, furyLevel, combatMode]);
+  }, [build, exemplarMode, exemplarLevel, incarnateActive, incarnateLevelShiftActive, effectiveProcSettings, targetsHitValues, targetLevelOffset, vigilanceTeamSize, furyLevel, combatMode]);
 }
 
 /**
@@ -269,14 +280,18 @@ export function useCalculatedStats(): CalculatedStats {
   const incarnateActive = useUIStore((state) => state.incarnateActive);
   const incarnateLevelShiftActive = useUIStore((state) => state.incarnateLevelShiftActive);
   const procSettings = useUIStore((state) => state.procSettings);
+  const procsEnabled = useUIStore((state) => state.includeProcDamageInDPS);
   const targetsHitValues = useUIStore((state) => state.targetsHitValues);
   const vigilanceTeamSize = useUIStore((state) => state.vigilanceTeamSize);
   const furyLevel = useUIStore((state) => state.furyLevel);
   const combatMode = useUIStore((state) => state.combatMode);
 
+  // When master Proc toggle is off, disable all proc categories
+  const effectiveProcSettings = procsEnabled ? procSettings : ALL_PROCS_DISABLED;
+
   return useMemo(() => {
     const result = calculateCharacterTotals(build, exemplarMode, incarnateActive, {
-      procSettings,
+      procSettings: effectiveProcSettings,
       targetsHitValues,
       exemplarLevel: exemplarMode ? exemplarLevel : undefined,
       vigilanceTeamSize,
@@ -285,7 +300,7 @@ export function useCalculatedStats(): CalculatedStats {
       combatMode,
     });
     return convertToLegacyStats(result.stats, result);
-  }, [build, exemplarMode, exemplarLevel, incarnateActive, incarnateLevelShiftActive, procSettings, targetsHitValues, vigilanceTeamSize, furyLevel, combatMode]);
+  }, [build, exemplarMode, exemplarLevel, incarnateActive, incarnateLevelShiftActive, effectiveProcSettings, targetsHitValues, vigilanceTeamSize, furyLevel, combatMode]);
 }
 
 /**
