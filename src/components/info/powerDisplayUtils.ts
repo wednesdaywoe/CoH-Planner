@@ -260,9 +260,10 @@ export function calcThreeTier(
     enhanced = baseValue / Math.max(1, 1 + enhBonus);
     final = baseValue / Math.max(1, 1 + enhBonus + globalBonus);
   } else {
-    // Multiplicative: base * (1 + bonus)
+    // Strength multiplier: base * (1 + bonus) — matches CoH game formula
+    // Enhancement and global bonuses combine ADDITIVELY in one multiplier
     enhanced = baseValue * (1 + enhBonus);
-    final = enhanced * (1 + globalBonus);
+    final = baseValue * (1 + enhBonus + globalBonus);
   }
 
   return { base: baseValue, enhanced, final };

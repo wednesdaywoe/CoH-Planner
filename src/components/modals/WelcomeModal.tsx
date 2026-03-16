@@ -6,14 +6,9 @@ import { useState, useEffect } from 'react';
 import { Modal, ModalHeader, ModalBody, ModalFooter } from './Modal';
 import { Button } from '@/components/ui';
 import { useUIStore } from '@/stores';
-import { BUILD_TIME, APP_VERSION } from '@/buildTime';
+import { APP_VERSION } from '@/buildTime';
 import { getRecentChanges } from '@/data/changelog';
 import { StatusBadge, renderTrackerText } from './KnownIssuesModal';
-
-const LAST_UPDATED = (() => {
-  const date = new Date(BUILD_TIME);
-  return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
-})();
 
 const STORAGE_KEY = 'coh-planner-welcome-dismissed';
 
@@ -27,7 +22,10 @@ export function WelcomeModal({ isOpen, onClose }: WelcomeModalProps) {
   const openKnownIssuesModal = useUIStore((s) => s.openKnownIssuesModal);
   const openChangelogModal = useUIStore((s) => s.openChangelogModal);
   const openControlsModal = useUIStore((s) => s.openControlsModal);
-  const recentChanges = getRecentChanges();
+  const { date: changesDate, items: recentChanges } = getRecentChanges();
+  const formattedDate = changesDate
+    ? new Date(changesDate + 'T00:00:00').toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })
+    : '';
 
   const handleClose = () => {
     if (dontShowAgain) {
@@ -41,7 +39,7 @@ export function WelcomeModal({ isOpen, onClose }: WelcomeModalProps) {
       <ModalHeader className="flex items-center justify-between">
         <h2 className="text-lg font-medium text-gray-100">What's New in Sidekick</h2>
         <div className="flex items-center gap-3">
-          <span className="text-xs text-slate-500 whitespace-nowrap">v{APP_VERSION} — {LAST_UPDATED}</span>
+          <span className="text-xs text-slate-500 whitespace-nowrap">v{APP_VERSION}{formattedDate ? ` — ${formattedDate}` : ''}</span>
           <button
             onClick={handleClose}
             className="p-1 text-gray-400 hover:text-white transition-colors rounded hover:bg-gray-700"
@@ -92,7 +90,7 @@ export function WelcomeModal({ isOpen, onClose }: WelcomeModalProps) {
           <p className="text-gray-300 text-sm">
             <span className="text-[#D62BCE] font-semibold">Sidekick</span>{' '}
             <span className="text-amber-400 font-semibold">is in active beta development, so please be patient with bugs and errors.</span>
-            {' '}Here's what changed since your last visit:
+            {' '}Here's what's been updated{formattedDate ? ` on ${formattedDate}` : ' recently'}:
           </p>
 
           {/* Recent Changes */}

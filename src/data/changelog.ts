@@ -39,16 +39,21 @@ const TYPE_TO_STATUS: Record<string, TrackerItem['status']> = {
   update: 'in-progress',
 };
 
-/** Get changelog entries from the most recent date as TrackerItems for WelcomeModal */
-export function getRecentChanges(): TrackerItem[] {
-  if (CHANGELOG_ENTRIES.length === 0) return [];
-  const latestDate = CHANGELOG_ENTRIES[0].date;
-  return CHANGELOG_ENTRIES
-    .filter(e => e.date === latestDate)
-    .map(entry => ({
+/** Get changelog entries from today as TrackerItems for WelcomeModal.
+ *  Falls back to the most recent date if no entries exist for today. */
+export function getRecentChanges(): { date: string; items: TrackerItem[] } {
+  if (CHANGELOG_ENTRIES.length === 0) return { date: '', items: [] };
+  const today = new Date().toISOString().slice(0, 10); // YYYY-MM-DD
+  const todayEntries = CHANGELOG_ENTRIES.filter(e => e.date === today);
+  const targetDate = todayEntries.length > 0 ? today : CHANGELOG_ENTRIES[0].date;
+  const entries = todayEntries.length > 0 ? todayEntries : CHANGELOG_ENTRIES.filter(e => e.date === targetDate);
+  return {
+    date: targetDate,
+    items: entries.map(entry => ({
       text: entry.message,
       status: TYPE_TO_STATUS[entry.type] ?? 'in-progress',
-    }));
+    })),
+  };
 }
 
 /** Group all changelog entries by date */
