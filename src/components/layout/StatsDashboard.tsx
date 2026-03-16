@@ -9,7 +9,7 @@ import { useCalculatedStats, useCharacterCalculation } from '@/hooks';
 import { useBuildStore, useUIStore } from '@/stores';
 import { getBaselineHealth } from '@/utils/calculations/stats';
 import { Tooltip } from '@/components/ui';
-import { StatsConfigModal, AccoladesModal, AboutModal, ExportImportModal, FeedbackModal, KnownIssuesModal, ChangelogModal, WelcomeModal, useWelcomeModal, SetBonusLookupModal, ControlsModal, HelpModal, CompareSlottingModal, DetailedTotalsModal, PowersetCompareModal } from '@/components/modals';
+import { StatsConfigModal, AccoladesModal, AboutModal, ExportImportModal, FeedbackModal, KnownIssuesModal, ChangelogModal, WelcomeModal, useWelcomeModal, SetBonusLookupModal, ControlsModal, HelpModal, CompareSlottingModal, DetailedTotalsModal, PowersetCompareModal, ProcSettingsModal } from '@/components/modals';
 import { IncarnateSlotGrid, IncarnateModal, IncarnateCraftingModal } from '@/components/incarnate';
 import { INCARNATE_REQUIRED_LEVEL, createEmptyIncarnateBuildState } from '@/types';
 import type { DashboardStatBreakdown } from '@/hooks/useCalculatedStats';
@@ -80,6 +80,8 @@ export function StatsDashboard() {
   const openDetailedTotalsModal = useUIStore((s) => s.openDetailedTotalsModal);
   const closeDetailedTotalsModal = useUIStore((s) => s.closeDetailedTotalsModal);
   const openPowersetCompareModal = useUIStore((s) => s.openPowersetCompareModal);
+  const procSettingsModalOpen = useUIStore((s) => s.procSettingsModalOpen);
+  const closeProcSettingsModal = useUIStore((s) => s.closeProcSettingsModal);
   const trackedStats = useUIStore((s) => s.trackedStats);
   const toggleTrackedStat = useUIStore((s) => s.toggleTrackedStat);
   // Welcome modal (auto-shows on first visit)
@@ -472,6 +474,12 @@ export function StatsDashboard() {
 
       {/* Powerset Compare Modal */}
       <PowersetCompareModal />
+
+      {/* Proc Settings Modal */}
+      <ProcSettingsModal
+        isOpen={procSettingsModalOpen}
+        onClose={closeProcSettingsModal}
+      />
     </>
   );
 }

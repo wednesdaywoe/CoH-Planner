@@ -258,10 +258,11 @@ export function StatsConfigModal({ isOpen, onClose }: StatsConfigModalProps) {
   const setStatVisible = useUIStore((s) => s.setStatVisible);
   const reorderStats = useUIStore((s) => s.reorderStats);
   const resetStatsConfig = useUIStore((s) => s.resetStatsConfig);
-  const includeProcsInStats = useUIStore((s) => s.includeProcsInStats);
-  const toggleIncludeProcsInStats = useUIStore((s) => s.toggleIncludeProcsInStats);
+  const openProcSettingsModal = useUIStore((s) => s.openProcSettingsModal);
   const useArcanaTime = useUIStore((s) => s.useArcanaTime);
   const toggleUseArcanaTime = useUIStore((s) => s.toggleUseArcanaTime);
+  const combatMode = useUIStore((s) => s.combatMode);
+  const toggleCombatMode = useUIStore((s) => s.toggleCombatMode);
 
   // Local state for editing before applying
   const [localConfig, setLocalConfig] = useState<StatDisplayConfig[]>(() => {
@@ -366,15 +367,14 @@ export function StatsConfigModal({ isOpen, onClose }: StatsConfigModalProps) {
             Reset to Defaults
           </Button>
           <div className="ml-auto flex items-center gap-3">
-            <div className="flex items-center bg-slate-700/50 px-2 py-1.5 rounded border border-slate-600">
-              <Toggle
-                id="include-procs-toggle"
-                name="includeProcs"
-                checked={includeProcsInStats}
-                onChange={toggleIncludeProcsInStats}
-                label="Include Procs"
-              />
-            </div>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={openProcSettingsModal}
+              className="bg-slate-700/50 border border-slate-600 hover:bg-slate-600/50"
+            >
+              Proc Settings
+            </Button>
             <div className="flex items-center bg-slate-700/50 px-2 py-1.5 rounded border border-slate-600">
               <Toggle
                 id="arcanatime-toggle"
@@ -382,6 +382,15 @@ export function StatsConfigModal({ isOpen, onClose }: StatsConfigModalProps) {
                 checked={useArcanaTime}
                 onChange={toggleUseArcanaTime}
                 label="ArcanaTime"
+              />
+            </div>
+            <div className="flex items-center bg-slate-700/50 px-2 py-1.5 rounded border border-slate-600">
+              <Toggle
+                id="combat-mode-toggle"
+                name="combatMode"
+                checked={combatMode}
+                onChange={toggleCombatMode}
+                label="In-Combat"
               />
             </div>
           </div>

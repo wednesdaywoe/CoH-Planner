@@ -24,6 +24,7 @@ export type ProcEffectCategory =
   | 'SlowResistance'
   | 'RechargeResistance'
   | 'Stealth'
+  | 'BuildUp'
   | 'Control'
   | 'Debuff'
   | 'Special';
@@ -2250,7 +2251,22 @@ export function parseProcEffect(mechanics: string): ParsedProcEffect {
     };
   }
 
-  // ToHit buff (Kismet, Build Up)
+  // Build Up proc: combined ToHit + Damage buff (Decimation, Gaussian's)
+  const buildUpMatch = mechanics.match(/Build\s*up\s*\(\s*(\d+(?:\.\d+)?)\s*%\s*ToHit\s+(\d+(?:\.\d+)?)\s*%\s*Dam\s*\)/i);
+  if (buildUpMatch) {
+    return {
+      category: 'BuildUp',
+      effectType: 'Build Up',
+      value: parseFloat(buildUpMatch[2]),       // Damage %
+      secondaryCategory: 'ToHit',
+      secondaryValue: parseFloat(buildUpMatch[1]), // ToHit %
+      duration,
+      isBuff: true,
+      description: mechanics,
+    };
+  }
+
+  // ToHit buff (Kismet)
   const toHitMatch = mechanics.match(/(?:Buff\s*\()?ToHit\s+(\d+(?:\.\d+)?)\s*%/i);
   if (toHitMatch) {
     return {
@@ -2339,6 +2355,7 @@ export function getProcEffectLabel(category: ProcEffectCategory): string {
     case 'SlowResistance': return 'Slow Resist';
     case 'RechargeResistance': return 'Rech Debuff Resist';
     case 'Stealth': return 'Stealth';
+    case 'BuildUp': return 'Build Up';
     case 'Control': return 'Control';
     case 'Debuff': return 'Debuff';
     case 'Special': return 'Special';
@@ -2367,6 +2384,7 @@ export function getProcEffectColor(category: ProcEffectCategory): string {
     case 'SlowResistance': return 'text-teal-300';
     case 'RechargeResistance': return 'text-amber-300';
     case 'Stealth': return 'text-gray-400';
+    case 'BuildUp': return 'text-yellow-300';
     case 'Control': return 'text-indigo-400';
     case 'Debuff': return 'text-rose-400';
     case 'Special': return 'text-slate-400';

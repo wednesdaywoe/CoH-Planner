@@ -196,6 +196,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
   const includeProcDamageToggle = useUIStore((s) => s.includeProcDamageInDPS);
   const useArcanaTimeToggle = useUIStore((s) => s.useArcanaTime);
   const showDamagePerActivation = useUIStore((s) => s.showDamagePerActivation);
+  const combatMode = useUIStore((s) => s.combatMode);
 
   // Unified power lookup across all categories
   const result = lookupPower(powerSet, powerName);
@@ -254,9 +255,28 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
     [globalBonuses]
   );
 
+  // When combatMode is active and power has quickSnipe, use Quick-cast stats/damage
+  const isQuickSnipe = combatMode && !!power?.quickSnipe;
+  const effectivePower = useMemo(() => {
+    if (!power) return power;
+    if (!isQuickSnipe || !power.quickSnipe) return power;
+    return {
+      ...power,
+      stats: power.stats ? { ...power.stats, ...power.quickSnipe.stats } : power.stats,
+      damage: power.quickSnipe.damage,
+      // For epic pool powers that store stats in effects
+      effects: power.effects ? {
+        ...power.effects,
+        ...(power.quickSnipe.stats.castTime != null && { castTime: power.quickSnipe.stats.castTime }),
+        ...(power.quickSnipe.stats.range != null && { range: power.quickSnipe.stats.range }),
+        ...(power.quickSnipe.stats.accuracy != null && { accuracy: power.quickSnipe.stats.accuracy }),
+      } : power.effects,
+    } as Power;
+  }, [power, isQuickSnipe]);
+
   // Calculate actual damage using archetype modifiers and level
   const calculatedDamage = useMemo(() => {
-    if (!power?.damage && !power?.effects?.damage) return null;
+    if (!effectivePower?.damage && !effectivePower?.effects?.damage) return null;
 
     // Determine if this is a primary or secondary powerset
     const isPrimary = powerSet === build.primary.id;
@@ -266,7 +286,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
     const powersetCategory = isPrimary ? 'PRIMARY' : isSecondary ? 'SECONDARY' : undefined;
 
     return calculatePowerDamage(
-      power,
+      effectivePower,
       {
         level: build.level,
         archetypeId: archetypeId as ArchetypeId | undefined,
@@ -277,7 +297,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
       globalBonusesForCalc.damage,
       0
     );
-  }, [power, build.level, archetypeId, powersetName, enhancementBonuses.damage, globalBonusesForCalc.damage, powerSet, build.primary.id, build.secondary.id]);
+  }, [effectivePower, build.level, archetypeId, powersetName, enhancementBonuses.damage, globalBonusesForCalc.damage, powerSet, build.primary.id, build.secondary.id]);
 
   // Calculate archetype inherent damage bonus info (Containment, Scourge, Fury, etc.)
   const inherentInfo = useMemo(() => {
@@ -335,17 +355,17 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
   const targetsHit = useUIStore((s) => s.targetsHitValues[powerName] ?? 0);
   const setTargetsHit = useUIStore((s) => s.setTargetsHit);
 
-  if (!power) {
+  if (!power || !effectivePower) {
     return <div className="text-slate-500 text-xs">Power not found</div>;
   }
 
-  const baseEffects = power.effects;
+  const baseEffects = effectivePower.effects;
 
   // Extract healing from damage field (e.g., Life Drain, Reconstruction)
   // Handles both single object { type: "Heal", scale, table } and array entries
   let healFromDamage: { scale: number; table?: string } | undefined;
   if (!baseEffects?.healing) {
-    const dmg = power.damage ?? power.effects?.damage;
+    const dmg = effectivePower.damage ?? effectivePower.effects?.damage;
     if (!Array.isArray(dmg) && typeof dmg === 'object' && dmg && 'type' in dmg && (dmg as { type: string }).type === 'Heal') {
       const entry = dmg as { scale: number; table?: string };
       healFromDamage = { scale: entry.scale, table: entry.table };
@@ -358,20 +378,23 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
     }
   }
 
+  // Use effective stats (quickSnipe-aware) for display
+  const effectiveStats = effectivePower.stats;
+
   // Merge power.stats into effects for registry-driven display
   // Map stats field names to registry-expected names
   const effects = {
     ...baseEffects,
     // Execution stats from power.stats
-    ...(power.stats?.endurance && { enduranceCost: power.stats.activatePeriod ? power.stats.endurance / power.stats.activatePeriod : power.stats.endurance }),
-    ...(power.stats?.recharge && { recharge: power.stats.recharge }),
-    ...(power.stats?.accuracy && { accuracy: power.stats.accuracy }),
-    ...(power.stats?.range && { range: power.stats.range }),
-    ...(power.stats?.castTime && { castTime: power.stats.castTime }),
+    ...(effectiveStats?.endurance && { enduranceCost: effectiveStats.activatePeriod ? effectiveStats.endurance / effectiveStats.activatePeriod : effectiveStats.endurance }),
+    ...(effectiveStats?.recharge && { recharge: effectiveStats.recharge }),
+    ...(effectiveStats?.accuracy && { accuracy: effectiveStats.accuracy }),
+    ...(effectiveStats?.range && { range: effectiveStats.range }),
+    ...(effectiveStats?.castTime && { castTime: effectiveStats.castTime }),
     // AoE stats
-    ...(power.stats?.radius && { radius: power.stats.radius }),
-    ...(power.stats?.arc && { arc: power.stats.arc <= 2 * Math.PI ? power.stats.arc * (180 / Math.PI) : power.stats.arc }),
-    ...(power.stats?.maxTargets && { maxTargets: power.stats.maxTargets }),
+    ...(effectiveStats?.radius && { radius: effectiveStats.radius }),
+    ...(effectiveStats?.arc && { arc: effectiveStats.arc <= 2 * Math.PI ? effectiveStats.arc * (180 / Math.PI) : effectiveStats.arc }),
+    ...(effectiveStats?.maxTargets && { maxTargets: effectiveStats.maxTargets }),
     // Healing from damage array
     ...(healFromDamage && { healing: healFromDamage }),
     // Surface summon duration as buffDuration when no explicit duration exists
@@ -411,6 +434,9 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
         <div className="min-w-0">
           <h3 className="text-sm font-semibold text-blue-400 leading-tight">
             {power.name}
+            {isQuickSnipe && (
+              <span className="text-[9px] text-amber-400 ml-1 font-normal">(Quick)</span>
+            )}
             {hasEnhancements && (
               <span className="text-[9px] text-green-500 ml-1 font-normal">(enhanced)</span>
             )}

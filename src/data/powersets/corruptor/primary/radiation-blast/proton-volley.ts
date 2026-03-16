@@ -17,11 +17,11 @@ export const ProtonVolley: Power = {
   "powerType": "Click",
   "effectArea": "SingleTarget",
   "stats": {
-    "accuracy": 1,
+    "accuracy": 1.2,
     "range": 150,
     "recharge": 12,
     "endurance": 14.352,
-    "castTime": 1.33
+    "castTime": 3.33
   },
   "allowedEnhancements": [
     "Interrupt",
@@ -47,6 +47,19 @@ export const ProtonVolley: Power = {
     "table": "Ranged_Damage",
     "duration": 1.6,
     "tickRate": 0.5
+  },
+  "quickSnipe": {
+    "stats": {
+      "castTime": 1.33,
+      "range": 100
+    },
+    "damage": {
+      "type": "Energy",
+      "scale": 2.28,
+      "table": "Ranged_Damage",
+      "duration": 1.6,
+      "tickRate": 0.5
+    }
   },
   "effects": {
     "defenseDebuff": {

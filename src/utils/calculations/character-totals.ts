@@ -13,7 +13,8 @@
  */
 
 import type { Build, Accolade, Enhancement, IncarnateActiveState, IncarnateBuildState, IOSetEnhancement } from '@/types';
-import { getIOSet, getAlphaEffects, getDestinyEffects, getHybridEffects, findProcData, parseProcEffect, isProcAlwaysOn, calculateAutoToggleProcsPerMinute } from '@/data';
+import type { ProcSettings } from '@/stores/uiStore';
+import { getIOSet, getAlphaEffects, getDestinyEffects, getHybridEffects, findProcData, parseProcEffect, isProcAlwaysOn, calculateAutoToggleProcsPerMinute, calculateProcChance } from '@/data';
 import { getTableValue } from '@/data/at-tables';
 import { getBaseToHit, getCombatModifier } from '@/data/purple-patch';
 import { getPowerPool } from '@/data/power-pools';
@@ -421,6 +422,7 @@ interface ActivePowerEffect {
   rechargeBuff?: ScalarOrScaled;
   defense?: Record<string, ScalarOrScaled>;
   defenseBuff?: Record<string, ScalarOrScaled>;
+  defenseBuffSuppressible?: Record<string, ScalarOrScaled>;
   resistance?: Record<string, ScalarOrScaled>;
   debuffResistance?: Record<string, ScalarOrScaled>;
   runSpeed?: number;
@@ -484,7 +486,8 @@ function applyActivePowerBonuses(
   alphaBonuses: EnhancementBonuses = {},
   baseMaxHP: number = 0,
   targetsHitValues: Record<string, number> = {},
-  exemplarLevel?: number
+  exemplarLevel?: number,
+  combatMode?: boolean
 ): void {
   for (const power of powers) {
     // Auto powers are always active; others require explicit isActive toggle
@@ -578,6 +581,24 @@ function applyActivePowerBonuses(
           global[key] += percentage;
           addToBreakdown(breakdown, key, {
             name: power.name,
+            value: percentage,
+            type: 'active-power',
+          });
+        }
+      }
+    }
+
+    // Suppressible defense from stealth/travel powers (skipped in combat mode)
+    if (!combatMode && effects.defenseBuffSuppressible && typeof effects.defenseBuffSuppressible === 'object') {
+      const enhMultiplier = 1 + (enhBonuses.defense || enhBonuses.defenseBuff || 0);
+      for (const [type, value] of Object.entries(effects.defenseBuffSuppressible)) {
+        const adjustedDef = adjustForPerTarget(value, targetsHitValues[power.name]);
+        const percentage = resolveScaledEffect(adjustedDef, archetypeId, buildLevel) * 100 * enhMultiplier;
+        const key = `def${capitalizeFirst(type)}` as keyof GlobalBonuses;
+        if (key in global) {
+          global[key] += percentage;
+          addToBreakdown(breakdown, key, {
+            name: `${power.name} (suppressible)`,
             value: percentage,
             type: 'active-power',
           });
@@ -1113,6 +1134,7 @@ interface PowerForProcScan {
   powerType?: string;
   isActive?: boolean;
   slots?: (Enhancement | null)[];
+  stats?: { recharge?: number; castTime?: number; radius?: number };
 }
 
 /**
@@ -1380,6 +1402,32 @@ const PROC_CATEGORY_TO_STAT: Record<string, string | null> = {
   RunSpeed:          'runspeed',
 };
 
+/** Maps proc effect categories to procSettings keys */
+const PROC_CATEGORY_TO_SETTING: Record<string, keyof ProcSettings> = {
+  Recovery: 'recovery',
+  Endurance: 'recovery',
+  Regeneration: 'regeneration',
+  Heal: 'regeneration',
+  Recharge: 'recharge',
+  ToHit: 'toHit',
+  Defense: 'defense',
+  Resistance: 'resistance',
+  BuildUp: 'buildUp',
+  RunSpeed: 'movement',
+  KnockbackProtection: 'movement',
+  MezResist: 'movement',
+  SlowResistance: 'movement',
+  RechargeResistance: 'movement',
+};
+
+/** Check if a proc category is enabled in procSettings */
+function isProcCategoryEnabled(category: string, procSettings?: ProcSettings): boolean {
+  if (!procSettings) return true; // All enabled by default
+  const settingKey = PROC_CATEGORY_TO_SETTING[category];
+  if (!settingKey) return true; // Unknown categories are always enabled
+  return procSettings[settingKey];
+}
+
 /**
  * Apply bonuses from always-on procs (Global and Proc120s in Auto/Toggle powers).
  * Rule of 5 is enforced by sharing the same BonusTracking as set bonuses.
@@ -1388,6 +1436,7 @@ function applyProcBonuses(
   build: Build,
   global: GlobalBonuses,
   breakdown: Map<string, DashboardStatBreakdown>,
+  procSettings?: ProcSettings,
 ): void {
   // Procs use their own Rule of 5 tracking, separate from set bonuses.
   // In CoH, unique IO procs (e.g., LotG +Recharge) and set bonuses have independent stacking limits.
@@ -1401,8 +1450,8 @@ function applyProcBonuses(
     const effect = parseProcEffect(procData.mechanics);
     const sourceName = `${proc.setName}: ${proc.procName}`;
 
-    // Apply primary effect — check Rule of 5 first
-    if (effect.value !== undefined) {
+    // Apply primary effect — check category filter and Rule of 5
+    if (effect.value !== undefined && isProcCategoryEnabled(effect.category, procSettings)) {
       const stat = effect.category ? PROC_CATEGORY_TO_STAT[effect.category] : undefined;
       const allowed = stat === undefined
         ? true  // No stat mapping: not subject to Rule of 5 (e.g., KB protection)
@@ -1430,8 +1479,8 @@ function applyProcBonuses(
       }
     }
 
-    // Apply secondary effect if present — check Rule of 5 independently
-    if (effect.secondaryCategory && effect.secondaryValue !== undefined) {
+    // Apply secondary effect if present — check category filter and Rule of 5
+    if (effect.secondaryCategory && effect.secondaryValue !== undefined && isProcCategoryEnabled(effect.secondaryCategory, procSettings)) {
       const stat = PROC_CATEGORY_TO_STAT[effect.secondaryCategory];
       const allowed = stat === undefined
         ? true
@@ -1461,7 +1510,7 @@ function applyProcBonuses(
   }
 
   // Also collect PPM procs from Auto/Toggle powers and calculate their effective contribution
-  applyPPMProcBonuses(build, global, breakdown);
+  applyPPMProcBonuses(build, global, breakdown, procSettings);
 }
 
 /**
@@ -1471,7 +1520,8 @@ function applyProcBonuses(
 function applyPPMProcBonuses(
   build: Build,
   global: GlobalBonuses,
-  breakdown: Map<string, DashboardStatBreakdown>
+  breakdown: Map<string, DashboardStatBreakdown>,
+  procSettings?: ProcSettings,
 ): void {
   // BASE_RECOVERY_RATE imported from enhancement-values.ts
 
@@ -1503,6 +1553,7 @@ function applyPPMProcBonuses(
       // Helper to apply a single PPM effect contribution
       const applyPPMEffect = (category: string | undefined, value: number | undefined, suffix?: string) => {
         if (!category || value === undefined) return;
+        if (!isProcCategoryEnabled(category, procSettings)) return;
         const label = suffix ? `${sourceName} (${suffix})` : sourceName;
 
         switch (category) {
@@ -1571,6 +1622,117 @@ function applyPPMProcBonuses(
   }
   for (const power of build.inherents || []) {
     processPower(power);
+  }
+}
+
+// ============================================
+// BUILD UP PROC PROCESSING
+// ============================================
+
+/**
+ * Apply average contributions from Build Up procs (Decimation, Gaussian's) in click powers.
+ * These are PPM-based procs that grant a temporary +Damage and +ToHit buff.
+ * We calculate the expected uptime across all click powers and add the average contribution.
+ */
+function applyBuildUpProcBonuses(
+  build: Build,
+  global: GlobalBonuses,
+  breakdown: Map<string, DashboardStatBreakdown>,
+): void {
+  // Collect all click powers that have Build Up procs
+  const buildUpProcs: { procName: string; setName: string; ppm: number; damage: number; toHit: number; duration: number; powerName: string; baseRecharge: number; castTime: number; radius: number }[] = [];
+
+  const processPower = (power: PowerForProcScan) => {
+    if (!power.slots) return;
+    const powerType = power.powerType?.toLowerCase() || '';
+    // Build Up procs only fire in click powers (not auto/toggle)
+    if (powerType === 'auto' || powerType === 'toggle') return;
+    if (!power.isActive) return;
+
+    const baseRecharge = power.stats?.recharge || 4;
+    const castTime = power.stats?.castTime || 1;
+    const radius = power.stats?.radius || 0;
+
+    for (const slot of power.slots) {
+      if (!slot || slot.type !== 'io-set') continue;
+      const ioSlot = slot as IOSetEnhancement;
+      if (!ioSlot.isProc) continue;
+
+      const procData = findProcData(ioSlot.name, ioSlot.setName);
+      if (!procData || procData.type !== 'Proc' || procData.ppm === null) continue;
+
+      const effect = parseProcEffect(procData.mechanics);
+      if (effect.category !== 'BuildUp') continue;
+
+      buildUpProcs.push({
+        procName: ioSlot.name,
+        setName: procData.setName,
+        ppm: procData.ppm,
+        damage: effect.value || 0,
+        toHit: effect.secondaryValue || 0,
+        duration: effect.duration || 10,
+        powerName: power.name,
+        baseRecharge,
+        castTime,
+        radius,
+      });
+    }
+  };
+
+  // Process all power categories
+  for (const power of build.primary?.powers || []) processPower(power);
+  for (const power of build.secondary?.powers || []) processPower(power);
+  for (const pool of build.pools || []) {
+    for (const power of pool.powers) processPower(power);
+  }
+  if (build.epicPool) {
+    for (const power of build.epicPool.powers) processPower(power);
+  }
+  for (const power of build.inherents || []) processPower(power);
+
+  if (buildUpProcs.length === 0) return;
+
+  // For each Build Up proc, calculate the expected uptime
+  // Build Up procs are unique — only one instance can be active at a time
+  // We calculate the average contribution across all host powers
+  // Simplified model: highest single-proc uptime (since buff doesn't stack with itself)
+  let bestDamageContrib = 0;
+  let bestToHitContrib = 0;
+  let bestSourceName = '';
+
+  for (const proc of buildUpProcs) {
+    const procChance = calculateProcChance(proc.ppm, proc.baseRecharge, proc.castTime, proc.radius);
+    // Expected uptime: assume power fires on recharge. Rough cycle = recharge + castTime.
+    // Average buff uptime ≈ procChance × min(duration / cycleTime, 1)
+    // For a rough estimate, use: avgDamage = procChance × damageValue
+    // This assumes the buff duration covers most of the next cycle
+    const avgDamage = procChance * proc.damage;
+    const avgToHit = procChance * proc.toHit;
+    const sourceName = `${proc.setName}: ${proc.procName} (in ${proc.powerName})`;
+
+    if (avgDamage > bestDamageContrib) {
+      bestDamageContrib = avgDamage;
+      bestToHitContrib = avgToHit;
+      bestSourceName = sourceName;
+    }
+  }
+
+  // Apply the best single Build Up proc contribution
+  if (bestDamageContrib > 0) {
+    global.damage += bestDamageContrib;
+    addToBreakdown(breakdown, 'damage', {
+      name: bestSourceName,
+      value: bestDamageContrib,
+      type: 'proc',
+    });
+  }
+  if (bestToHitContrib > 0) {
+    global.toHit += bestToHitContrib;
+    addToBreakdown(breakdown, 'toHit', {
+      name: bestSourceName,
+      value: bestToHitContrib,
+      type: 'proc',
+    });
   }
 }
 
@@ -2078,8 +2240,8 @@ function buildToBuildPowers(build: Build): BuildPowers {
 }
 
 export interface CalculationOptions {
-  /** Include proc bonuses in stat calculations (default: true) */
-  includeProcs?: boolean;
+  /** Per-category proc settings (default: all enabled) */
+  procSettings?: ProcSettings;
   /** Per-target slider values keyed by power name (0 = inactive, 1+ = targets hit) */
   targetsHitValues?: Record<string, number>;
   /** Exemplar level for enhancement scaling (undefined = no scaling) */
@@ -2092,6 +2254,8 @@ export interface CalculationOptions {
   furyLevel?: number;
   /** Whether incarnate level shifts are applied (default: true, independent from per-slot toggles) */
   incarnateLevelShiftActive?: boolean;
+  /** Combat mode: suppress defenseBuffSuppressible from stealth/travel powers */
+  combatMode?: boolean;
 }
 
 /**
@@ -2156,12 +2320,19 @@ export function calculateCharacterTotals(
 
   // Step 7: Apply active toggle power bonuses (with enhancement multipliers + Alpha bonuses)
   const baseMaxHP = getBaselineHealth(build.archetype?.id ?? undefined, effectiveLevel).baseHealth;
-  applyActivePowerBonuses(allPowers, globalBonuses, breakdown, effectiveLevel, build.archetype.id || '', alphaBonuses, baseMaxHP, options?.targetsHitValues ?? {}, exemplarLevel);
+  applyActivePowerBonuses(allPowers, globalBonuses, breakdown, effectiveLevel, build.archetype.id || '', alphaBonuses, baseMaxHP, options?.targetsHitValues ?? {}, exemplarLevel, options?.combatMode);
 
   // Step 7.5: Apply always-on proc bonuses (Global and Proc120s in Auto/Toggle powers)
   // Procs have their own Rule of 5 tracking, separate from set bonuses
-  if (options?.includeProcs !== false) {
-    applyProcBonuses(build, globalBonuses, breakdown);
+  const procSettings = options?.procSettings;
+  const anyProcEnabled = !procSettings || Object.values(procSettings).some(v => v);
+  if (anyProcEnabled) {
+    applyProcBonuses(build, globalBonuses, breakdown, procSettings);
+  }
+
+  // Step 7.6: Apply Build Up proc average contributions (PPM click procs)
+  if (!procSettings || procSettings.buildUp) {
+    applyBuildUpProcBonuses(build, globalBonuses, breakdown);
   }
 
   // Step 8: Apply accolade bonuses

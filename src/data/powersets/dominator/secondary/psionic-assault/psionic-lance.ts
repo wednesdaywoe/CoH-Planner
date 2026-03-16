@@ -17,11 +17,11 @@ export const PsionicLance: Power = {
   "powerType": "Click",
   "effectArea": "SingleTarget",
   "stats": {
-    "accuracy": 1,
+    "accuracy": 1.2,
     "range": 175,
     "recharge": 20,
     "endurance": 18.512,
-    "castTime": 1.33
+    "castTime": 3
   },
   "allowedEnhancements": [
     "Interrupt",
@@ -41,6 +41,17 @@ export const PsionicLance: Power = {
     "type": "Psionic",
     "scale": 4.5,
     "table": "Ranged_Damage"
+  },
+  "quickSnipe": {
+    "stats": {
+      "castTime": 1.33,
+      "range": 100
+    },
+    "damage": {
+      "type": "Psionic",
+      "scale": 3.56,
+      "table": "Ranged_Damage"
+    }
   },
   "effects": {
     "rechargeDebuff": {

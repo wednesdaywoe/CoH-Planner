@@ -296,6 +296,8 @@ export interface PowerEffects {
   damageBuff?: NumberOrScaled;
   /** Defense buff value - can be single value or by type */
   defenseBuff?: NumberOrScaled | DefenseByType;
+  /** Defense buff suppressed in combat (stealth/travel powers) */
+  defenseBuffSuppressible?: NumberOrScaled | DefenseByType;
   /** Recharge buff value (percentage as decimal, e.g., 0.30 = 30%) */
   rechargeBuff?: NumberOrScaled;
   /** Recovery buff value (percentage as decimal) */
@@ -520,6 +522,11 @@ export interface Power {
   damage?: ScaledDamageEntry[] | ScaledDamageEntry;
   /** All effects of this power */
   effects?: PowerEffects;
+  /** Quick-cast sniper form stats (used when in combat / Experienced Marksman) */
+  quickSnipe?: {
+    stats: Partial<PowerStats>;
+    damage: ScaledDamageEntry | ScaledDamageEntry[];
+  };
 }
 
 // ============================================

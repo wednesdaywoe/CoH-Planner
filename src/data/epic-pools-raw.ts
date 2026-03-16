@@ -15859,12 +15859,16 @@ export const EPIC_POOLS_RAW = {
           "Sniper Attacks",
           "Universal Damage Sets"
         ],
+        "quickSnipe": {
+          "stats": { "castTime": 1.33, "range": 100 },
+          "damage": { "type": "Psionic", "scale": 1.75, "table": "Melee_Damage" }
+        },
         "effects": {
-          "accuracy": 1,
+          "accuracy": 1.2,
           "range": 175,
           "recharge": 24,
           "endurance": 16.646,
-          "activationTime": 1.33,
+          "activationTime": 3,
           "effectArea": "SingleTarget"
         }
       },
@@ -16131,12 +16135,16 @@ export const EPIC_POOLS_RAW = {
           "Sniper Attacks",
           "Universal Damage Sets"
         ],
+        "quickSnipe": {
+          "stats": { "castTime": 1.33, "range": 80 },
+          "damage": { "type": "Cold", "scale": 1.75, "table": "Melee_Damage" }
+        },
         "effects": {
-          "accuracy": 1,
+          "accuracy": 1.2,
           "range": 150,
           "recharge": 24,
           "endurance": 17.94,
-          "activationTime": 1.33,
+          "activationTime": 4.33,
           "effectArea": "SingleTarget"
         }
       },
@@ -20123,12 +20131,16 @@ export const EPIC_POOLS_RAW = {
           "Sniper Attacks",
           "Universal Damage Sets"
         ],
+        "quickSnipe": {
+          "stats": { "castTime": 2, "range": 80, "accuracy": 1.05 },
+          "damage": { "type": "Energy", "scale": 1.75, "table": "Melee_Damage" }
+        },
         "effects": {
-          "accuracy": 1.05,
+          "accuracy": 1.25,
           "range": 150,
           "recharge": 24,
           "endurance": 17.94,
-          "activationTime": 2,
+          "activationTime": 5,
           "effectArea": "SingleTarget"
         }
       },
@@ -20442,12 +20454,16 @@ export const EPIC_POOLS_RAW = {
           "Sniper Attacks",
           "Universal Damage Sets"
         ],
+        "quickSnipe": {
+          "stats": { "castTime": 1.33, "range": 80 },
+          "damage": { "type": "Energy", "scale": 1.75, "table": "Melee_Damage" }
+        },
         "effects": {
-          "accuracy": 1,
+          "accuracy": 1.2,
           "range": 150,
           "recharge": 24,
           "endurance": 17.94,
-          "activationTime": 1.33,
+          "activationTime": 4.33,
           "effectArea": "SingleTarget"
         }
       },
@@ -20758,12 +20774,16 @@ export const EPIC_POOLS_RAW = {
           "To Hit Debuff",
           "Universal Damage Sets"
         ],
+        "quickSnipe": {
+          "stats": { "castTime": 1.33, "range": 80 },
+          "damage": { "type": "Negative", "scale": 1.75, "table": "Melee_Damage" }
+        },
         "effects": {
-          "accuracy": 1,
+          "accuracy": 1.2,
           "range": 150,
           "recharge": 24,
           "endurance": 17.94,
-          "activationTime": 1.33,
+          "activationTime": 4.33,
           "effectArea": "SingleTarget"
         }
       },

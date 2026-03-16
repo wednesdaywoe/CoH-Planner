@@ -17,11 +17,11 @@ export const PenetratingRay: Power = {
   "powerType": "Click",
   "effectArea": "SingleTarget",
   "stats": {
-    "accuracy": 1.05,
+    "accuracy": 1.25,
     "range": 150,
     "recharge": 12,
     "endurance": 14.352,
-    "castTime": 1.67
+    "castTime": 3.4
   },
   "allowedEnhancements": [
     "Interrupt",
@@ -54,6 +54,27 @@ export const PenetratingRay: Power = {
       "tickRate": 1.5
     }
   ],
+  "quickSnipe": {
+    "stats": {
+      "castTime": 1.67,
+      "range": 80,
+      "accuracy": 1.05
+    },
+    "damage": [
+      {
+        "type": "Energy",
+        "scale": 2.28,
+        "table": "Ranged_Damage"
+      },
+      {
+        "type": "Energy",
+        "scale": 2.28,
+        "table": "Ranged_Damage",
+        "duration": 3.1,
+        "tickRate": 1.5
+      }
+    ]
+  },
   "effects": {
     "knockback": {
       "scale": 0.7,

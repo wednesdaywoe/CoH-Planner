@@ -238,23 +238,25 @@ export function useCharacterCalculation(): CharacterCalculationResult {
   const exemplarLevel = useUIStore((state) => state.exemplarLevel);
   const incarnateActive = useUIStore((state) => state.incarnateActive);
   const incarnateLevelShiftActive = useUIStore((state) => state.incarnateLevelShiftActive);
-  const includeProcsInStats = useUIStore((state) => state.includeProcsInStats);
+  const procSettings = useUIStore((state) => state.procSettings);
   const targetsHitValues = useUIStore((state) => state.targetsHitValues);
   const targetLevelOffset = useUIStore((state) => state.targetLevelOffset);
   const vigilanceTeamSize = useUIStore((state) => state.vigilanceTeamSize);
   const furyLevel = useUIStore((state) => state.furyLevel);
+  const combatMode = useUIStore((state) => state.combatMode);
 
   return useMemo(() => {
     return calculateCharacterTotals(build, exemplarMode, incarnateActive, {
-      includeProcs: includeProcsInStats,
+      procSettings,
       targetsHitValues,
       exemplarLevel: exemplarMode ? exemplarLevel : undefined,
       targetLevelOffset,
       vigilanceTeamSize,
       furyLevel,
       incarnateLevelShiftActive,
+      combatMode,
     });
-  }, [build, exemplarMode, exemplarLevel, incarnateActive, incarnateLevelShiftActive, includeProcsInStats, targetsHitValues, targetLevelOffset, vigilanceTeamSize, furyLevel]);
+  }, [build, exemplarMode, exemplarLevel, incarnateActive, incarnateLevelShiftActive, procSettings, targetsHitValues, targetLevelOffset, vigilanceTeamSize, furyLevel, combatMode]);
 }
 
 /**
@@ -266,22 +268,24 @@ export function useCalculatedStats(): CalculatedStats {
   const exemplarLevel = useUIStore((state) => state.exemplarLevel);
   const incarnateActive = useUIStore((state) => state.incarnateActive);
   const incarnateLevelShiftActive = useUIStore((state) => state.incarnateLevelShiftActive);
-  const includeProcsInStats = useUIStore((state) => state.includeProcsInStats);
+  const procSettings = useUIStore((state) => state.procSettings);
   const targetsHitValues = useUIStore((state) => state.targetsHitValues);
   const vigilanceTeamSize = useUIStore((state) => state.vigilanceTeamSize);
   const furyLevel = useUIStore((state) => state.furyLevel);
+  const combatMode = useUIStore((state) => state.combatMode);
 
   return useMemo(() => {
     const result = calculateCharacterTotals(build, exemplarMode, incarnateActive, {
-      includeProcs: includeProcsInStats,
+      procSettings,
       targetsHitValues,
       exemplarLevel: exemplarMode ? exemplarLevel : undefined,
       vigilanceTeamSize,
       furyLevel,
       incarnateLevelShiftActive,
+      combatMode,
     });
     return convertToLegacyStats(result.stats, result);
-  }, [build, exemplarMode, exemplarLevel, incarnateActive, incarnateLevelShiftActive, includeProcsInStats, targetsHitValues, vigilanceTeamSize, furyLevel]);
+  }, [build, exemplarMode, exemplarLevel, incarnateActive, incarnateLevelShiftActive, procSettings, targetsHitValues, vigilanceTeamSize, furyLevel, combatMode]);
 }
 
 /**

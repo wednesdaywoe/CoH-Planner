@@ -17,11 +17,11 @@ export const SniperBlast: Power = {
   "powerType": "Click",
   "effectArea": "SingleTarget",
   "stats": {
-    "accuracy": 1,
+    "accuracy": 1.2,
     "range": 150,
     "recharge": 20,
     "endurance": 18.512,
-    "castTime": 1.33
+    "castTime": 3.33
   },
   "allowedEnhancements": [
     "Interrupt",
@@ -51,6 +51,24 @@ export const SniperBlast: Power = {
       "table": "Ranged_Damage"
     }
   ],
+  "quickSnipe": {
+    "stats": {
+      "castTime": 1.33,
+      "range": 80
+    },
+    "damage": [
+      {
+        "type": "Smashing",
+        "scale": 1.424,
+        "table": "Ranged_Damage"
+      },
+      {
+        "type": "Energy",
+        "scale": 2.136,
+        "table": "Ranged_Damage"
+      }
+    ]
+  },
   "effects": {
     "knockback": {
       "scale": 0.7,

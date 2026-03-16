@@ -17,11 +17,11 @@ export const MasterfulThrow: Power = {
   "powerType": "Click",
   "effectArea": "SingleTarget",
   "stats": {
-    "accuracy": 1,
+    "accuracy": 1.2,
     "range": 150,
     "recharge": 20,
     "endurance": 18.512,
-    "castTime": 1.33
+    "castTime": 3.17
   },
   "allowedEnhancements": [
     "Interrupt",
@@ -44,6 +44,17 @@ export const MasterfulThrow: Power = {
     "type": "Lethal",
     "scale": 4.5,
     "table": "Ranged_Damage"
+  },
+  "quickSnipe": {
+    "stats": {
+      "castTime": 1.33,
+      "range": 80
+    },
+    "damage": {
+      "type": "Lethal",
+      "scale": 3.56,
+      "table": "Ranged_Damage"
+    }
   },
   "effects": {
     "tohitDebuff": {

@@ -359,6 +359,16 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
     expandByType: true,
     priority: 3,
   },
+  defenseBuffSuppressible: {
+    label: '+Defense (Suppressible)',
+    category: 'buff',
+    colorClass: STAT_COLORS.defense,
+    format: 'percent',
+    enhancementAspect: 'defense',
+    canBeByType: true,
+    expandByType: true,
+    priority: 3,
+  },
   rechargeBuff: {
     label: '+Recharge',
     category: 'buff',

@@ -230,7 +230,7 @@ export function CompareSlottingModal() {
   // DASHBOARD STATS: hypothetical build calculation
   // ============================================
   const statsConfig = useUIStore((s) => s.statsConfig);
-  const includeProcsInStats = useUIStore((s) => s.includeProcsInStats);
+  const procSettings = useUIStore((s) => s.procSettings);
   const targetsHitValues = useUIStore((s) => s.targetsHitValues);
   const vigilanceTeamSize = useUIStore((s) => s.vigilanceTeamSize);
   const furyLevel = useUIStore((s) => s.furyLevel);
@@ -281,14 +281,14 @@ export function CompareSlottingModal() {
     hypoBuild.sets = computeSetTracking(hypoBuild);
 
     const hypoResult = calculateCharacterTotals(hypoBuild, exemplarMode, incarnateActive, {
-      includeProcs: includeProcsInStats,
+      procSettings,
       targetsHitValues,
       vigilanceTeamSize,
       furyLevel,
     });
 
     return convertToLegacyStats(hypoResult.stats, hypoResult);
-  }, [activeCopy, compareTarget, visibleStatIds.length, build, exemplarMode, incarnateActive, includeProcsInStats, targetsHitValues, vigilanceTeamSize, furyLevel]);
+  }, [activeCopy, compareTarget, visibleStatIds.length, build, exemplarMode, incarnateActive, procSettings, targetsHitValues, vigilanceTeamSize, furyLevel]);
 
   // Helper: extract numeric value from a StatValue for delta computation
   const getNumericValue = useCallback((v: StatValue): number => {

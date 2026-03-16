@@ -17,11 +17,11 @@ export const RangedShot: Power = {
   "powerType": "Click",
   "effectArea": "SingleTarget",
   "stats": {
-    "accuracy": 1.155,
+    "accuracy": 1.39,
     "range": 150,
     "recharge": 12,
     "endurance": 14.352,
-    "castTime": 1.67
+    "castTime": 3.67
   },
   "allowedEnhancements": [
     "Interrupt",
@@ -42,6 +42,18 @@ export const RangedShot: Power = {
     "type": "Lethal",
     "scale": 4.5,
     "table": "Ranged_Damage"
+  },
+  "quickSnipe": {
+    "stats": {
+      "castTime": 1.67,
+      "range": 80,
+      "accuracy": 1.16
+    },
+    "damage": {
+      "type": "Lethal",
+      "scale": 2.28,
+      "table": "Ranged_Damage"
+    }
   },
   "effects": {
     "rangeBuff": {

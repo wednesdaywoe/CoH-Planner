@@ -29,6 +29,35 @@ import type {
 import { createDefaultIncarnateActiveState } from '@/types';
 
 // ============================================
+// PROC SETTINGS
+// ============================================
+
+/** Per-category toggles for proc effects in dashboard stats */
+export interface ProcSettings {
+  recovery: boolean;
+  regeneration: boolean;
+  recharge: boolean;
+  toHit: boolean;
+  defense: boolean;
+  resistance: boolean;
+  buildUp: boolean;
+  movement: boolean;
+}
+
+export type ProcSettingsKey = keyof ProcSettings;
+
+const DEFAULT_PROC_SETTINGS: ProcSettings = {
+  recovery: true,
+  regeneration: true,
+  recharge: true,
+  toHit: true,
+  defense: true,
+  resistance: true,
+  buildUp: true,
+  movement: true,
+};
+
+// ============================================
 // UI STORE INTERFACE
 // ============================================
 
@@ -113,8 +142,11 @@ interface UIState {
   /** Target enemy level offset for hit chance calculation (-5 to +5, 0 = even level) */
   targetLevelOffset: number;
 
-  /** Include proc bonuses in dashboard stat calculations */
-  includeProcsInStats: boolean;
+  /** Per-category proc settings for dashboard stat calculations */
+  procSettings: ProcSettings;
+
+  /** Proc settings modal open state */
+  procSettingsModalOpen: boolean;
 
   /** Include proc damage in per-power DPS calculations */
   includeProcDamageInDPS: boolean;
@@ -124,6 +156,9 @@ interface UIState {
 
   /** Show damage per activation instead of DPS */
   showDamagePerActivation: boolean;
+
+  /** Combat mode: suppress defense buffs from stealth/travel powers */
+  combatMode: boolean;
 
   /** Hints/help visibility */
   hintsEnabled: boolean;
@@ -235,10 +270,14 @@ interface UIActions {
   toggleExemplarMode: () => void;
   setExemplarLevel: (level: number) => void;
   setTargetLevelOffset: (offset: number) => void;
-  toggleIncludeProcsInStats: () => void;
+  toggleProcCategory: (category: ProcSettingsKey) => void;
+  setProcSettings: (settings: ProcSettings) => void;
+  openProcSettingsModal: () => void;
+  closeProcSettingsModal: () => void;
   toggleIncludeProcDamageInDPS: () => void;
   toggleUseArcanaTime: () => void;
   toggleShowDamagePerActivation: () => void;
+  toggleCombatMode: () => void;
   toggleHints: () => void;
   toggleDarkMode: () => void;
   toggleCompactMode: () => void;
@@ -500,10 +539,12 @@ export const useUIStore = create<UIStore>()(
       exemplarMode: false,
       exemplarLevel: 50,
       targetLevelOffset: 0,
-      includeProcsInStats: true,
+      procSettings: { ...DEFAULT_PROC_SETTINGS },
+      procSettingsModalOpen: false,
       includeProcDamageInDPS: true,
       useArcanaTime: true,
       showDamagePerActivation: false,
+      combatMode: false,
       hintsEnabled: true,
       infoPanel: defaultInfoPanel,
       statsConfig: defaultStatsConfig,
@@ -656,14 +697,31 @@ export const useUIStore = create<UIStore>()(
           targetLevelOffset: Math.max(-5, Math.min(5, offset)),
         }),
 
-      toggleIncludeProcsInStats: () =>
+      toggleProcCategory: (category: ProcSettingsKey) =>
         set((state) => ({
-          includeProcsInStats: !state.includeProcsInStats,
+          procSettings: {
+            ...state.procSettings,
+            [category]: !state.procSettings[category],
+          },
         })),
+
+      setProcSettings: (settings: ProcSettings) =>
+        set({ procSettings: settings }),
+
+      openProcSettingsModal: () =>
+        set({ procSettingsModalOpen: true }),
+
+      closeProcSettingsModal: () =>
+        set({ procSettingsModalOpen: false }),
 
       toggleIncludeProcDamageInDPS: () =>
         set((state) => ({
           includeProcDamageInDPS: !state.includeProcDamageInDPS,
+        })),
+
+      toggleCombatMode: () =>
+        set((state) => ({
+          combatMode: !state.combatMode,
         })),
 
       toggleUseArcanaTime: () =>
@@ -1203,7 +1261,8 @@ export const useUIStore = create<UIStore>()(
         exemplarMode: state.exemplarMode,
         exemplarLevel: state.exemplarLevel,
         targetLevelOffset: state.targetLevelOffset,
-        includeProcsInStats: state.includeProcsInStats,
+        procSettings: state.procSettings,
+        combatMode: state.combatMode,
         hintsEnabled: state.hintsEnabled,
         infoPanel: { enabled: state.infoPanel.enabled, content: null, locked: false, lockedContent: null, tooltipEnabled: state.infoPanel.tooltipEnabled, undocked: false },
         statsConfig: state.statsConfig,
@@ -1233,6 +1292,24 @@ export const useUIStore = create<UIStore>()(
         const raw = persisted as Record<string, unknown> | undefined;
         if (raw && 'infoPanelScale' in raw && !('uiScale' in raw)) {
           merged.uiScale = raw.infoPanelScale as number;
+        }
+        // Migrate old includeProcsInStats → procSettings
+        if (raw && 'includeProcsInStats' in raw && !('procSettings' in raw)) {
+          const allOn = raw.includeProcsInStats !== false;
+          merged.procSettings = {
+            recovery: allOn,
+            regeneration: allOn,
+            recharge: allOn,
+            toHit: allOn,
+            defense: allOn,
+            resistance: allOn,
+            buildUp: allOn,
+            movement: allOn,
+          };
+        }
+        // Ensure procSettings has all keys (in case new categories are added)
+        if (merged.procSettings) {
+          merged.procSettings = { ...DEFAULT_PROC_SETTINGS, ...merged.procSettings };
         }
         // Inject any new default stats that aren't in the persisted config
         const persistedStats = (persisted as Partial<UIStore>)?.statsConfig;

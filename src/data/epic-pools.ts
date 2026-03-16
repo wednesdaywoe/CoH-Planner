@@ -67,6 +67,7 @@ interface LegacyEpicPower {
   allowedEnhancements: string[];
   allowedSetCategories: string[];
   effects: LegacyEpicPowerEffects;
+  quickSnipe?: Power['quickSnipe'];
 }
 
 interface LegacyEpicPool {
@@ -122,6 +123,7 @@ function transformEpicPower(legacy: LegacyEpicPower): Power {
     icon: legacy.icon,
     powerType: legacy.powerType as PowerType,
     requires: legacy.requires,
+    ...(legacy.quickSnipe ? { quickSnipe: legacy.quickSnipe } : {}),
     effects: {
       // Stats (renamed from legacy format)
       accuracy,
