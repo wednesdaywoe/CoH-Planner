@@ -230,8 +230,8 @@ export function PlannerPage() {
           ${undocked ? 'lg:grid-cols-[0.8fr_1fr_1fr_1fr]' : 'lg:grid-cols-[0.8fr_1fr_1fr_1fr_1fr]'}
         `}
       >
-        {/* Column 1: Available Powers (Primary + Secondary + Pool/Epic selection) */}
-        <div className="bg-slate-900 flex flex-col overflow-hidden min-h-[300px] lg:min-h-0">
+        {/* Column 1: Available Powers — combined (xs and lg+, hidden at md) */}
+        <div className="bg-slate-900 flex md:hidden lg:flex flex-col overflow-hidden min-h-[300px] lg:min-h-0">
           <div className="bg-slate-800 border-b border-slate-700 px-3 py-2 flex items-center justify-between">
             <h2 className="text-xs font-semibold uppercase tracking-wide text-slate-400">
               Available Powers
@@ -258,7 +258,6 @@ export function PlannerPage() {
                 onSelectPower={handleSelectBranchPrimaryPower}
               />
             )}
-
             <AvailablePowers
               category="secondary"
               powersetId={secondaryPowersetId}
@@ -273,8 +272,69 @@ export function PlannerPage() {
                 onSelectPower={handleSelectBranchSecondaryPower}
               />
             )}
-
             <AvailablePoolPowers />
+          </div>
+        </div>
+
+        {/* md-only: Available Primary (col 1 of row 1) */}
+        <div className="bg-slate-900 hidden md:flex lg:hidden flex-col overflow-hidden min-h-[300px]">
+          <div className="bg-slate-800 border-b border-slate-700 px-3 py-2 flex items-center justify-between">
+            <h2 className="text-xs font-semibold uppercase tracking-wide text-slate-400">
+              Available Primary
+            </h2>
+            <ViewModeToggle />
+          </div>
+          <div className={`flex-1 overflow-y-auto p-2 space-y-3 relative ${powerLimitReached ? 'opacity-40 pointer-events-none' : ''}`}>
+            {powerLimitReached && (
+              <div className="sticky top-0 z-10 text-center text-xs text-amber-400 bg-slate-900/90 py-1.5 rounded border border-amber-500/30 mb-2 pointer-events-auto">
+                All {MAX_POWER_PICKS} powers selected
+              </div>
+            )}
+            <AvailablePowers
+              category="primary"
+              powersetId={primaryPowersetId}
+              selectedPowerNames={primarySelectedNames}
+              onSelectPower={handleSelectPrimaryPower}
+            />
+            {branchPrimaryId && (
+              <AvailablePowers
+                category="primary"
+                powersetId={branchPrimaryId}
+                selectedPowerNames={primarySelectedNames}
+                onSelectPower={handleSelectBranchPrimaryPower}
+              />
+            )}
+            <AvailablePoolPowers />
+          </div>
+        </div>
+
+        {/* md-only: Available Secondary (col 2 of row 1) */}
+        <div className="bg-slate-900 hidden md:flex lg:hidden flex-col overflow-hidden min-h-[300px]">
+          <div className="bg-slate-800 border-b border-slate-700 px-3 py-2">
+            <h2 className="text-xs font-semibold uppercase tracking-wide text-slate-400">
+              Available Secondary
+            </h2>
+          </div>
+          <div className={`flex-1 overflow-y-auto p-2 space-y-3 relative ${powerLimitReached ? 'opacity-40 pointer-events-none' : ''}`}>
+            {powerLimitReached && (
+              <div className="sticky top-0 z-10 text-center text-xs text-amber-400 bg-slate-900/90 py-1.5 rounded border border-amber-500/30 mb-2 pointer-events-auto">
+                All {MAX_POWER_PICKS} powers selected
+              </div>
+            )}
+            <AvailablePowers
+              category="secondary"
+              powersetId={secondaryPowersetId}
+              selectedPowerNames={secondarySelectedNames}
+              onSelectPower={handleSelectSecondaryPower}
+            />
+            {branchSecondaryId && (
+              <AvailablePowers
+                category="secondary"
+                powersetId={branchSecondaryId}
+                selectedPowerNames={secondarySelectedNames}
+                onSelectPower={handleSelectBranchSecondaryPower}
+              />
+            )}
           </div>
         </div>
 

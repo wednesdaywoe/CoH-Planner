@@ -59,17 +59,10 @@ function isPrimaryPowerset(powerset: Powerset): boolean {
 
 export function Header() {
   const build = useBuildStore((s) => s.build);
-  const setArchetype = useBuildStore((s) => s.setArchetype);
-  const setBuildName = useBuildStore((s) => s.setBuildName);
-  const setPrimary = useBuildStore((s) => s.setPrimary);
-  const setSecondary = useBuildStore((s) => s.setSecondary);
-  const setLevel = useBuildStore((s) => s.setLevel);
   const resetBuild = useBuildStore((s) => s.resetBuild);
   const clearPowers = useBuildStore((s) => s.clearPowers);
   const resetForNewBuild = useUIStore((s) => s.resetForNewBuild);
   const openExportImportModal = useUIStore((s) => s.openExportImportModal);
-  const selectedBranch = useUIStore((s) => s.selectedBranch);
-  const setSelectedBranch = useUIStore((s) => s.setSelectedBranch);
   const includeProcDamageInDPS = useUIStore((s) => s.includeProcDamageInDPS);
   const toggleIncludeProcDamageInDPS = useUIStore((s) => s.toggleIncludeProcDamageInDPS);
   const showDamagePerActivation = useUIStore((s) => s.showDamagePerActivation);
@@ -77,6 +70,7 @@ export function Header() {
   const combatMode = useUIStore((s) => s.combatMode);
   const toggleCombatMode = useUIStore((s) => s.toggleCombatMode);
   const openProcSettingsModal = useUIStore((s) => s.openProcSettingsModal);
+  const openAboutModal = useUIStore((s) => s.openAboutModal);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -84,55 +78,8 @@ export function Header() {
   const [confirmAction, setConfirmAction] = useState<'new' | 'clear' | null>(null);
 
   const archetypeId = build.archetype.id;
-  const archetype = archetypeId ? ARCHETYPES[archetypeId] : null;
-  const hasBranches = archetype?.branches && Object.keys(archetype.branches).length > 0;
 
-  const allPowersets = archetypeId ? getPowersetsForArchetype(archetypeId) : [];
-  const isEpicAT = ['peacebringer', 'warshade', 'arachnos-soldier', 'arachnos-widow'].includes(archetypeId || '');
-
-  let primaryPowersets: Powerset[];
-  let secondaryPowersets: Powerset[];
-
-  if (isEpicAT && archetype) {
-    primaryPowersets = archetype.primarySets
-      .map(id => getPowerset(id))
-      .filter((ps): ps is Powerset => ps !== undefined);
-    secondaryPowersets = archetype.secondarySets
-      .map(id => getPowerset(id))
-      .filter((ps): ps is Powerset => ps !== undefined);
-  } else {
-    primaryPowersets = allPowersets.filter((ps) => isPrimaryPowerset(ps));
-    secondaryPowersets = allPowersets.filter((ps) => !isPrimaryPowerset(ps));
-  }
-
-  const primaryOptions = [
-    { value: '', label: 'Select Primary...' },
-    ...primaryPowersets.filter((ps) => ps.id).map((ps) => ({
-      value: ps.id as string,
-      label: ps.name,
-    })),
-  ];
-
-  const secondaryOptions = [
-    { value: '', label: 'Select Secondary...' },
-    ...secondaryPowersets.filter((ps) => ps.id).map((ps) => ({
-      value: ps.id as string,
-      label: ps.name,
-    })),
-  ];
-
-  const handleArchetypeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const value = e.target.value;
-    if (value) {
-      setArchetype(value as ArchetypeId);
-      if (value === 'peacebringer') { setPrimary('peacebringer/luminous-blast'); setSecondary('peacebringer/luminous-aura'); }
-      else if (value === 'warshade') { setPrimary('warshade/umbral-blast'); setSecondary('warshade/umbral-aura'); }
-      else if (value === 'arachnos-soldier') { setPrimary('arachnos-soldier/arachnos-soldier'); setSecondary('arachnos-soldier/training-and-gadgets'); }
-      else if (value === 'arachnos-widow') { setPrimary('arachnos-widow/widow-training'); setSecondary('arachnos-widow/teamwork'); }
-    }
-  };
-
-  // Check if AT has mechanics to show second row
+  // Check if AT has mechanics to show mechanic row
   const hasATMechanics = archetypeId && [
     'dominator', 'corruptor', 'brute', 'mastermind', 'defender',
     'scrapper', 'stalker', 'controller', 'sentinel',
@@ -140,117 +87,20 @@ export function Header() {
 
   return (
     <header className="bg-slate-800 border-b border-slate-700 px-4 py-2 space-y-2">
-      {/* Row 1: Build identity + actions */}
+      {/* Row 1: three fixed items — never wraps */}
+      <div className="flex items-center gap-2">
+        <ActionMenu
+          onOpenModal={openExportImportModal}
+          onNew={() => setConfirmAction('new')}
+          onClear={() => setConfirmAction('clear')}
+          onAbout={openAboutModal}
+        />
+        <SettingsPopover />
+        <BuildIdentityPopover />
+      </div>
+
+      {/* Row 2: left-anchored Shared Builds + toggles + login/version right-anchored */}
       <div className="flex items-center gap-2 flex-wrap">
-        {/* Build name */}
-        <input
-          type="text"
-          id="build-name"
-          name="build-name"
-          value={build.name}
-          onChange={(e) => setBuildName(e.target.value)}
-          placeholder="Build Name"
-          className="bg-slate-700 border border-slate-600 rounded px-3 py-1.5 text-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 w-32 sm:w-40 min-w-[100px]"
-        />
-
-        {/* Server/Dataset selector (hidden on small screens - only one active option) */}
-        <div className="hidden sm:block">
-          <Tooltip content="Select your server dataset. Rebirth and Thunderspy support is planned for a future update.">
-            <Select
-              id="server-select"
-              name="server"
-              options={SERVER_OPTIONS}
-              value="homecoming"
-              className="max-w-[180px] min-w-[120px]"
-            />
-          </Tooltip>
-        </div>
-
-        {/* Archetype selector */}
-        <Select
-          id="archetype-select"
-          name="archetype"
-          options={ARCHETYPE_OPTIONS}
-          value={archetypeId || ''}
-          onChange={handleArchetypeChange}
-          className="max-w-[200px] min-w-[110px]"
-          highlight={!archetypeId}
-        />
-
-        {/* Primary & Secondary (grouped to prevent flex split on desktop) */}
-        <div className="flex items-center gap-2 shrink-0 sm:shrink-0 max-sm:shrink">
-          <Select
-            id="primary-select"
-            name="primary"
-            options={archetypeId ? primaryOptions : [{ value: '', label: 'Select Primary...' }]}
-            value={build.primary.id || ''}
-            onChange={(e) => setPrimary(e.target.value)}
-            className="max-w-[200px] min-w-[110px]"
-            disabled={!archetypeId}
-            highlight={!!archetypeId && !build.primary.id}
-          />
-          <Select
-            id="secondary-select"
-            name="secondary"
-            options={archetypeId ? secondaryOptions : [{ value: '', label: 'Select Secondary...' }]}
-            value={build.secondary.id || ''}
-            onChange={(e) => setSecondary(e.target.value)}
-            className="max-w-[200px] min-w-[110px]"
-            disabled={!archetypeId}
-            highlight={!!archetypeId && !build.secondary.id}
-          />
-        </div>
-
-        {/* Branch selector for Epic ATs */}
-        {hasBranches && archetype?.branches && (
-          <Tooltip content="Choose your specialization path. At level 24, you can branch into a specialization that unlocks additional powers.">
-            <Select
-              id="branch-select"
-              name="branch"
-              options={[
-                { value: '', label: 'Select Branch...' },
-                ...Object.entries(archetype.branches).map(([branchId, branch]) => ({
-                  value: branchId,
-                  label: branch.name,
-                })),
-              ]}
-              value={selectedBranch || ''}
-              onChange={(e) => setSelectedBranch(e.target.value as ArchetypeBranchId || null)}
-              className="max-w-[180px] min-w-[125px]"
-            />
-          </Tooltip>
-        )}
-
-        {/* Level slider */}
-        <div className="flex items-center gap-1 bg-slate-700/50 px-2 py-1.5 rounded border border-slate-600">
-          <span className="text-xs text-slate-400 font-semibold uppercase">Level</span>
-          <button
-            onClick={() => setLevel(build.level - 1)}
-            disabled={build.level <= 1}
-            className="text-slate-400 hover:text-emerald-400 disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-0.5"
-          >
-            &minus;
-          </button>
-          <span className="text-sm font-bold text-emerald-400 w-6 text-center">{build.level}</span>
-          <button
-            onClick={() => setLevel(build.level + 1)}
-            disabled={build.level >= MAX_LEVEL}
-            className="text-slate-400 hover:text-emerald-400 disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-0.5"
-          >
-            +
-          </button>
-          <Slider
-            value={build.level}
-            min={1}
-            max={MAX_LEVEL}
-            onChange={(e) => setLevel(Number(e.target.value))}
-            className="hidden sm:block w-24"
-            showValue={false}
-            showRange={false}
-          />
-        </div>
-
-        {/* Shared Builds button (always visible) */}
         <Button
           variant="ghost"
           size="sm"
@@ -265,43 +115,13 @@ export function Header() {
           <span className="hidden sm:inline">{isOnBuildsPage ? 'Back to Planner' : 'Shared Builds'}</span>
         </Button>
 
-        {/* Action menu */}
-        <ActionMenu
-          onOpenModal={openExportImportModal}
-          onNew={() => setConfirmAction('new')}
-          onClear={() => setConfirmAction('clear')}
-        />
-
-        {/* Settings popover (Target, Slot Levels, Exemplar, UI Scale, Origin, Server) */}
-        <SettingsPopover />
-
-        {/* In-Combat toggle */}
-        <div className="hidden sm:flex items-center bg-slate-700/50 px-2 py-1 rounded border border-slate-600">
-          <Toggle
-            id="combat-mode-toggle"
-            name="combatMode"
-            checked={combatMode}
-            onChange={toggleCombatMode}
-            label="In-Combat"
-            className="!gap-2"
-          />
+        <div className="flex items-center bg-slate-700/50 px-2 py-1 rounded border border-slate-600">
+          <Toggle id="combat-mode-toggle" name="combatMode" checked={combatMode} onChange={toggleCombatMode} label="In-Combat" className="!gap-2" />
         </div>
 
-        {/* Proc master toggle + Settings button */}
-        <div className="hidden sm:flex items-center gap-1 bg-slate-700/50 px-2 py-1 rounded border border-slate-600">
-          <Toggle
-            id="procs-toggle"
-            name="procs"
-            checked={includeProcDamageInDPS}
-            onChange={toggleIncludeProcDamageInDPS}
-            label="Procs"
-            className="!gap-2"
-          />
-          <button
-            onClick={openProcSettingsModal}
-            className="ml-1 text-slate-400 hover:text-white transition-colors"
-            title="Proc Settings"
-          >
+        <div className="flex items-center gap-1 bg-slate-700/50 px-2 py-1 rounded border border-slate-600">
+          <Toggle id="procs-toggle" name="procs" checked={includeProcDamageInDPS} onChange={toggleIncludeProcDamageInDPS} label="Procs" className="!gap-2" />
+          <button onClick={openProcSettingsModal} className="ml-1 text-slate-400 hover:text-white transition-colors" title="Proc Settings">
             <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -309,28 +129,12 @@ export function Header() {
           </button>
         </div>
 
-        {/* Avg Dmg toggle */}
-        <div className="hidden sm:flex items-center bg-slate-700/50 px-2 py-1 rounded border border-slate-600">
-          <Toggle
-            id="avg-dmg-toggle"
-            name="avgDmg"
-            checked={showDamagePerActivation}
-            onChange={toggleShowDamagePerActivation}
-            label="Avg Dmg"
-            className="!gap-2"
-          />
+        <div className="flex items-center bg-slate-700/50 px-2 py-1 rounded border border-slate-600">
+          <Toggle id="avg-dmg-toggle" name="avgDmg" checked={showDamagePerActivation} onChange={toggleShowDamagePerActivation} label="Avg Dmg" className="!gap-2" />
         </div>
-
-        {/* Discord auth (hidden on very small screens, accessible via Settings page) */}
-        {supabase && <div className="hidden sm:block"><DiscordAuthButton /></div>}
-
-        {/* Version */}
-        <span className="hidden md:inline text-xs text-slate-500 ml-auto whitespace-nowrap">
-          v{APP_VERSION} — {LAST_UPDATED}
-        </span>
       </div>
 
-      {/* Row 2: AT-specific mechanics (conditional) */}
+      {/* Row 3: AT-specific mechanics (conditional) */}
       {hasATMechanics && (
         <div className="flex items-center gap-2 flex-wrap">
           <ATMechanics archetypeId={archetypeId!} />
@@ -358,19 +162,19 @@ export function Header() {
   );
 }
 
-// ---- Action Menu (hamburger) ----
+// ---- Build Identity Popover ----
 
-function ActionMenu({
-  onOpenModal,
-  onNew,
-  onClear,
-}: {
-  onOpenModal: (tab?: 'save-load' | 'import' | 'share') => void;
-  onNew: () => void;
-  onClear: () => void;
-}) {
+function BuildIdentityPopover() {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
+
+  const build = useBuildStore((s) => s.build);
+  const setArchetype = useBuildStore((s) => s.setArchetype);
+  const setBuildName = useBuildStore((s) => s.setBuildName);
+  const setPrimary = useBuildStore((s) => s.setPrimary);
+  const setSecondary = useBuildStore((s) => s.setSecondary);
+  const selectedBranch = useUIStore((s) => s.selectedBranch);
+  const setSelectedBranch = useUIStore((s) => s.setSelectedBranch);
 
   useEffect(() => {
     if (!open) return;
@@ -380,6 +184,208 @@ function ActionMenu({
     document.addEventListener('mousedown', handleClick);
     return () => document.removeEventListener('mousedown', handleClick);
   }, [open]);
+
+  const archetypeId = build.archetype.id;
+  const archetype = archetypeId ? ARCHETYPES[archetypeId] : null;
+  const hasBranches = archetype?.branches && Object.keys(archetype.branches).length > 0;
+  const isEpicAT = ['peacebringer', 'warshade', 'arachnos-soldier', 'arachnos-widow'].includes(archetypeId || '');
+
+  const allPowersets = archetypeId ? getPowersetsForArchetype(archetypeId) : [];
+  let primaryPowersets: Powerset[];
+  let secondaryPowersets: Powerset[];
+  if (isEpicAT && archetype) {
+    primaryPowersets = archetype.primarySets.map(id => getPowerset(id)).filter((ps): ps is Powerset => ps !== undefined);
+    secondaryPowersets = archetype.secondarySets.map(id => getPowerset(id)).filter((ps): ps is Powerset => ps !== undefined);
+  } else {
+    primaryPowersets = allPowersets.filter((ps) => isPrimaryPowerset(ps));
+    secondaryPowersets = allPowersets.filter((ps) => !isPrimaryPowerset(ps));
+  }
+
+  const primaryOptions = [
+    { value: '', label: 'Select Primary...' },
+    ...primaryPowersets.filter((ps) => ps.id).map((ps) => ({ value: ps.id as string, label: ps.name })),
+  ];
+  const secondaryOptions = [
+    { value: '', label: 'Select Secondary...' },
+    ...secondaryPowersets.filter((ps) => ps.id).map((ps) => ({ value: ps.id as string, label: ps.name })),
+  ];
+
+  const handleArchetypeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const value = e.target.value;
+    if (value) {
+      setArchetype(value as ArchetypeId);
+      if (value === 'peacebringer') { setPrimary('peacebringer/luminous-blast'); setSecondary('peacebringer/luminous-aura'); }
+      else if (value === 'warshade') { setPrimary('warshade/umbral-blast'); setSecondary('warshade/umbral-aura'); }
+      else if (value === 'arachnos-soldier') { setPrimary('arachnos-soldier/arachnos-soldier'); setSecondary('arachnos-soldier/training-and-gadgets'); }
+      else if (value === 'arachnos-widow') { setPrimary('arachnos-widow/widow-training'); setSecondary('arachnos-widow/teamwork'); }
+    }
+  };
+
+  // Build summary label for the button
+  const isIncomplete = !archetypeId || !build.primary.id || !build.secondary.id;
+  const atLabel = archetype?.name ?? null;
+  const primaryLabel = build.primary.name || null;
+  const secondaryLabel = build.secondary.name || null;
+  const summaryLabel = atLabel
+    ? [atLabel, primaryLabel, secondaryLabel].filter(Boolean).join(' · ')
+    : 'Select Build Identity...';
+
+  return (
+    <div className="relative" ref={ref}>
+      <button
+        onClick={() => setOpen(!open)}
+        className={`flex items-center gap-1.5 px-2 py-1.5 text-xs border rounded transition-colors ${
+          isIncomplete
+            ? 'text-amber-300 bg-amber-900/40 hover:bg-amber-800/50 border-amber-600/50'
+            : 'text-slate-200 bg-slate-700/50 hover:bg-slate-600/60 border-slate-600'
+        }`}
+        title="Set archetype and powersets"
+      >
+        <svg className="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+        </svg>
+        <span className="hidden sm:inline max-w-[320px] truncate">{summaryLabel}</span>
+        <svg className="w-3 h-3 shrink-0 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+
+      {open && (
+        <div className="absolute left-0 top-full mt-1 bg-gray-800 border border-gray-600 rounded-lg shadow-xl p-4 min-w-[260px] z-50 space-y-3">
+          <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Build Identity</h3>
+
+          {/* Build Name */}
+          <div className="space-y-1">
+            <label className="text-xs text-gray-400" htmlFor="build-name-popover">Build Name</label>
+            <input
+              id="build-name-popover"
+              type="text"
+              value={build.name}
+              onChange={(e) => setBuildName(e.target.value)}
+              placeholder="Build Name"
+              className="w-full bg-slate-700 border border-slate-600 rounded px-3 py-1.5 text-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+
+          {/* Server */}
+          <div className="space-y-1">
+            <label className="text-xs text-gray-400">Server</label>
+            <Tooltip content="Select your server dataset. Rebirth and Thunderspy support is planned for a future update.">
+              <Select
+                id="server-select"
+                name="server"
+                options={SERVER_OPTIONS}
+                value="homecoming"
+                className="w-full"
+              />
+            </Tooltip>
+          </div>
+
+          {/* Archetype */}
+          <div className="space-y-1">
+            <label className="text-xs text-gray-400">Archetype</label>
+            <Select
+              id="archetype-select"
+              name="archetype"
+              options={ARCHETYPE_OPTIONS}
+              value={archetypeId || ''}
+              onChange={handleArchetypeChange}
+              className="w-full"
+              highlight={!archetypeId}
+            />
+          </div>
+
+          {/* Primary */}
+          <div className="space-y-1">
+            <label className="text-xs text-gray-400">Primary</label>
+            <Select
+              id="primary-select"
+              name="primary"
+              options={archetypeId ? primaryOptions : [{ value: '', label: 'Select Primary...' }]}
+              value={build.primary.id || ''}
+              onChange={(e) => setPrimary(e.target.value)}
+              className="w-full"
+              disabled={!archetypeId}
+              highlight={!!archetypeId && !build.primary.id}
+            />
+          </div>
+
+          {/* Secondary */}
+          <div className="space-y-1">
+            <label className="text-xs text-gray-400">Secondary</label>
+            <Select
+              id="secondary-select"
+              name="secondary"
+              options={archetypeId ? secondaryOptions : [{ value: '', label: 'Select Secondary...' }]}
+              value={build.secondary.id || ''}
+              onChange={(e) => setSecondary(e.target.value)}
+              className="w-full"
+              disabled={!archetypeId}
+              highlight={!!archetypeId && !build.secondary.id}
+            />
+          </div>
+
+          {/* Branch (Epic ATs only) */}
+          {hasBranches && archetype?.branches && (
+            <div className="space-y-1">
+              <label className="text-xs text-gray-400">Branch</label>
+              <Tooltip content="Choose your specialization path. At level 24, you can branch into a specialization that unlocks additional powers.">
+                <Select
+                  id="branch-select"
+                  name="branch"
+                  options={[
+                    { value: '', label: 'Select Branch...' },
+                    ...Object.entries(archetype.branches).map(([branchId, branch]) => ({
+                      value: branchId,
+                      label: branch.name,
+                    })),
+                  ]}
+                  value={selectedBranch || ''}
+                  onChange={(e) => setSelectedBranch(e.target.value as ArchetypeBranchId || null)}
+                  className="w-full"
+                />
+              </Tooltip>
+            </div>
+          )}
+        </div>
+      )}
+    </div>
+  );
+}
+
+// ---- Action Menu (hamburger) ----
+
+function ActionMenu({
+  onOpenModal,
+  onNew,
+  onClear,
+  onAbout,
+}: {
+  onOpenModal: (tab?: 'save-load' | 'import' | 'share') => void;
+  onNew: () => void;
+  onClear: () => void;
+  onAbout: () => void;
+}) {
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
+
+  const user = useAuthStore((s) => s.user);
+  const loading = useAuthStore((s) => s.loading);
+  const login = useAuthStore((s) => s.login);
+  const logout = useAuthStore((s) => s.logout);
+
+  useEffect(() => {
+    if (!open) return;
+    function handleClick(e: MouseEvent) {
+      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
+    }
+    document.addEventListener('mousedown', handleClick);
+    return () => document.removeEventListener('mousedown', handleClick);
+  }, [open]);
+
+  const displayName = user?.user_metadata?.full_name || user?.user_metadata?.name || 'Account';
+  const avatarUrl = user?.user_metadata?.avatar_url;
 
   return (
     <div className="relative" ref={ref}>
@@ -391,7 +397,7 @@ function ActionMenu({
         <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
         </svg>
-        <span className="hidden sm:inline">Actions</span>
+        <span className="hidden sm:inline">File</span>
       </button>
 
       {open && (
@@ -417,6 +423,45 @@ function ActionMenu({
             <svg className="w-4 h-4 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
             Clear Powers
           </button>
+          {supabase && !loading && (
+            <>
+              <hr className="border-gray-700 my-1" />
+              {user ? (
+                <>
+                  <div className="px-3 py-1.5 flex items-center gap-2">
+                    {avatarUrl ? (
+                      <img src={avatarUrl} alt="" className="w-4 h-4 rounded-full shrink-0" />
+                    ) : (
+                      <svg className="w-4 h-4 text-slate-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>
+                    )}
+                    <span className="text-xs text-gray-400 truncate max-w-[120px]">{displayName}</span>
+                  </div>
+                  <button onClick={() => { navigate({ to: '/builds' }); setOpen(false); }} className="w-full text-left px-3 py-1.5 text-sm text-gray-300 hover:bg-gray-700 hover:text-white transition-colors flex items-center gap-2">
+                    <svg className="w-4 h-4 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" /></svg>
+                    My Builds
+                  </button>
+                  <button onClick={() => { navigate({ to: '/settings' }); setOpen(false); }} className="w-full text-left px-3 py-1.5 text-sm text-gray-300 hover:bg-gray-700 hover:text-white transition-colors flex items-center gap-2">
+                    <svg className="w-4 h-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                    Account
+                  </button>
+                  <button onClick={() => { logout(); setOpen(false); }} className="w-full text-left px-3 py-1.5 text-sm text-red-400 hover:bg-gray-700 hover:text-red-300 transition-colors flex items-center gap-2">
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" /></svg>
+                    Log Out
+                  </button>
+                </>
+              ) : (
+                <button onClick={() => { login('discord'); setOpen(false); }} className="w-full text-left px-3 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white transition-colors flex items-center gap-2">
+                  <svg className="w-4 h-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>
+                  Log In
+                </button>
+              )}
+            </>
+          )}
+          <hr className="border-gray-700 my-1" />
+          <button onClick={() => { onAbout(); setOpen(false); }} className="w-full text-left px-3 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white transition-colors flex items-center gap-2">
+            <img src="img/favicon-32x32.png" alt="" className="w-4 h-4" />
+            About Sidekick
+          </button>
         </div>
       )}
     </div>
@@ -431,6 +476,7 @@ function SettingsPopover() {
 
   const build = useBuildStore((s) => s.build);
   const setOrigin = useBuildStore((s) => s.setOrigin);
+  const setLevel = useBuildStore((s) => s.setLevel);
   const targetLevelOffset = useUIStore((s) => s.targetLevelOffset);
   const setTargetLevelOffset = useUIStore((s) => s.setTargetLevelOffset);
   const showSlotLevels = useUIStore((s) => s.showSlotLevels);
@@ -472,8 +518,39 @@ function SettingsPopover() {
       </button>
 
       {open && (
-        <div className="absolute right-0 top-full mt-1 bg-gray-800 border border-gray-600 rounded-lg shadow-xl p-4 min-w-[280px] z-50 space-y-4">
+        <div className="absolute left-0 top-full mt-1 bg-gray-800 border border-gray-600 rounded-lg shadow-xl p-4 min-w-[280px] z-50 space-y-4">
           <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Build Settings</h3>
+
+          {/* Level */}
+          <div className="space-y-1">
+            <label className="text-xs text-gray-400">Level</label>
+            <div className="flex items-center gap-1">
+              <button
+                onClick={() => setLevel(build.level - 1)}
+                disabled={build.level <= 1}
+                className="text-slate-400 hover:text-emerald-400 disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-1"
+              >
+                &minus;
+              </button>
+              <span className="text-sm font-bold text-emerald-400 w-6 text-center">{build.level}</span>
+              <button
+                onClick={() => setLevel(build.level + 1)}
+                disabled={build.level >= MAX_LEVEL}
+                className="text-slate-400 hover:text-emerald-400 disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-1"
+              >
+                +
+              </button>
+              <Slider
+                value={build.level}
+                min={1}
+                max={MAX_LEVEL}
+                onChange={(e) => setLevel(Number(e.target.value))}
+                className="w-32"
+                showValue={false}
+                showRange={false}
+              />
+            </div>
+          </div>
 
           {/* UI Scale */}
           <div className="space-y-1">
@@ -608,6 +685,9 @@ function SettingsPopover() {
               </div>
             )}
           </div>
+
+          <hr className="border-gray-700" />
+          <p className="text-[10px] text-gray-600 text-center">v{APP_VERSION} — {LAST_UPDATED}</p>
 
         </div>
       )}
@@ -916,121 +996,5 @@ function ATMechanics({ archetypeId }: { archetypeId: string }) {
         </Tooltip>
       )}
     </>
-  );
-}
-
-// ---- Discord Auth Button ----
-
-function DiscordAuthButton() {
-  const user = useAuthStore((s) => s.user);
-  const loading = useAuthStore((s) => s.loading);
-  const login = useAuthStore((s) => s.login);
-  const logout = useAuthStore((s) => s.logout);
-  const navigate = useNavigate();
-  const [menuOpen, setMenuOpen] = useState(false);
-  const menuRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (!menuOpen) return;
-    function handleClick(e: MouseEvent) {
-      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
-        setMenuOpen(false);
-      }
-    }
-    document.addEventListener('mousedown', handleClick);
-    return () => document.removeEventListener('mousedown', handleClick);
-  }, [menuOpen]);
-
-  if (loading) return null;
-
-  if (!user) {
-    return (
-      <div className="relative" ref={menuRef}>
-        <button
-          onClick={() => setMenuOpen(!menuOpen)}
-          className="flex items-center gap-1.5 px-2.5 py-1.5 text-xs text-slate-400 hover:text-white bg-slate-800 hover:bg-slate-700 border border-slate-600 rounded transition-colors whitespace-nowrap"
-          title="Sign in for cross-device build management"
-        >
-          <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-          </svg>
-          Log In
-        </button>
-
-        {menuOpen && (
-          <div className="absolute left-0 top-full mt-1 bg-gray-800 border border-gray-600 rounded-lg shadow-xl py-1 w-[210px] z-50">
-            <p className="px-3 pt-2 pb-1 text-xs text-gray-400 leading-relaxed">
-              Optionally sign in with Discord to manage your shared builds across devices and browsers. Sidekick does
-            </p>
-            <p className="px-3 pb-1.5 text-[10px] text-gray-500">
-              THIS IS COMPLETELY OPTIONAL - anonymous sharing still works without a Discord account.
-            </p>
-            <div className="border-t border-gray-700 my-1" />
-            <button
-              onClick={() => { login('discord'); setMenuOpen(false); }}
-              className="w-full text-left px-3 py-1.5 text-sm text-gray-300 hover:bg-gray-700 hover:text-white transition-colors flex items-center gap-2"
-            >
-              <DiscordIcon /> Sign in with Discord
-            </button>
-          </div>
-        )}
-      </div>
-    );
-  }
-
-  const displayName = user.user_metadata?.full_name || user.user_metadata?.name || 'User';
-  const avatarUrl = user.user_metadata?.avatar_url;
-
-  return (
-    <div className="relative" ref={menuRef}>
-      <button
-        onClick={() => setMenuOpen(!menuOpen)}
-        className="flex items-center gap-1.5 px-2.5 py-1.5 text-xs text-slate-300 hover:text-white bg-slate-800 hover:bg-slate-700 border border-slate-600 rounded transition-colors whitespace-nowrap"
-      >
-        {avatarUrl ? (
-          <img src={avatarUrl} alt="" className="w-4 h-4 rounded-full" />
-        ) : (
-          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-          </svg>
-        )}
-        <span className="max-w-[80px] truncate">{displayName}</span>
-        <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-        </svg>
-      </button>
-
-      {menuOpen && (
-        <div className="absolute left-0 top-full mt-1 bg-gray-800 border border-gray-600 rounded-lg shadow-xl py-1 min-w-[140px] z-50">
-          <button
-            onClick={() => { navigate({ to: '/builds' }); setMenuOpen(false); }}
-            className="w-full text-left px-3 py-1.5 text-sm text-gray-300 hover:bg-gray-700 hover:text-white transition-colors"
-          >
-            My Builds
-          </button>
-          <button
-            onClick={() => { navigate({ to: '/settings' }); setMenuOpen(false); }}
-            className="w-full text-left px-3 py-1.5 text-sm text-gray-300 hover:bg-gray-700 hover:text-white transition-colors"
-          >
-            Account
-          </button>
-          <hr className="border-gray-700 my-1" />
-          <button
-            onClick={() => { logout(); setMenuOpen(false); }}
-            className="w-full text-left px-3 py-1.5 text-sm text-red-400 hover:bg-gray-700 hover:text-red-300 transition-colors"
-          >
-            Log Out
-          </button>
-        </div>
-      )}
-    </div>
-  );
-}
-
-function DiscordIcon() {
-  return (
-    <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.947 2.418-2.157 2.418z" />
-    </svg>
   );
 }

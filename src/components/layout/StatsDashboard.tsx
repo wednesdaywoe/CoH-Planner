@@ -50,7 +50,6 @@ export function StatsDashboard() {
   const openAccoladesModal = useUIStore((s) => s.openAccoladesModal);
   const closeAccoladesModal = useUIStore((s) => s.closeAccoladesModal);
   const aboutModalOpen = useUIStore((s) => s.aboutModalOpen);
-  const openAboutModal = useUIStore((s) => s.openAboutModal);
   const closeAboutModal = useUIStore((s) => s.closeAboutModal);
   const setBonusLookupModalOpen = useUIStore((s) => s.setBonusLookupModalOpen);
   const openSetBonusLookupModal = useUIStore((s) => s.openSetBonusLookupModal);
@@ -214,9 +213,10 @@ export function StatsDashboard() {
   return (
     <>
       <div className="bg-gray-900/50 border-b border-gray-800 px-2 sm:px-4 py-2 overflow-hidden">
-        {/* Grouped stats - CSS Grid auto-fill layout with vertical stretch */}
-        <div className="grid grid-cols-[repeat(auto-fit,minmax(160px,1fr))] gap-2 items-stretch">
-            {/* All stat group panels */}
+        {/* Grouped stats + Incarnate panel in a single flex row */}
+        <div className="flex items-stretch gap-2">
+          {/* Stats grid - fills remaining space */}
+          <div className="flex-1 grid grid-cols-[repeat(auto-fit,minmax(160px,1fr))] gap-2 items-stretch min-w-0">
             {groupedStats.map((group) => (
               <div
                 key={group.name}
@@ -240,125 +240,88 @@ export function StatsDashboard() {
                 </div>
               </div>
             ))}
-
-            {/* Incarnate Powers panel - hide on very small screens */}
-            <div className="hidden md:flex flex-col bg-gray-800/70 rounded-lg px-3 py-2 border border-gray-700 w-fit">
-              <div className="text-xs font-semibold text-gray-400 mb-2 uppercase tracking-wide flex items-center justify-between gap-4">
-                <span>Incarnate</span>
-                {isLevel50 ? (
-                  <button
-                    onClick={openIncarnateCraftingModal}
-                    className="text-[10px] text-blue-400 hover:text-blue-300 border border-blue-800 hover:border-blue-600 bg-blue-900/30 hover:bg-blue-900/50 transition-colors px-1.5 py-0.5 rounded font-normal normal-case"
-                    title="Incarnate Crafting Checklist"
-                  >
-                    Crafting
-                  </button>
-                ) : (
-                  <span className="text-[9px] text-gray-500 font-normal normal-case">Lv50</span>
-                )}
-              </div>
-              <IncarnateSlotGrid
-                incarnates={incarnates}
-                disabled={!isLevel50}
-                onSlotClick={openIncarnateModal}
-                incarnateActive={incarnateActive}
-                onToggleActive={toggleIncarnateActive}
-              />
-            </div>
           </div>
 
+          {/* Incarnate Powers panel - always in the same row, never wraps */}
+          <div className="hidden md:flex flex-col shrink-0 bg-gray-800/70 rounded-lg px-3 py-2 border border-gray-700">
+            <div className="text-xs font-semibold text-gray-400 mb-2 uppercase tracking-wide flex items-center justify-between gap-4">
+              <span>Incarnate</span>
+              {isLevel50 ? (
+                <button
+                  onClick={openIncarnateCraftingModal}
+                  className="text-[10px] text-blue-400 hover:text-blue-300 border border-blue-800 hover:border-blue-600 bg-blue-900/30 hover:bg-blue-900/50 transition-colors px-1.5 py-0.5 rounded font-normal normal-case"
+                  title="Incarnate Crafting Checklist"
+                >
+                  Crafting
+                </button>
+              ) : (
+                <span className="text-[9px] text-gray-500 font-normal normal-case">Lv50</span>
+              )}
+            </div>
+            <IncarnateSlotGrid
+              incarnates={incarnates}
+              disabled={!isLevel50}
+              onSlotClick={openIncarnateModal}
+              incarnateActive={incarnateActive}
+              onToggleActive={toggleIncarnateActive}
+            />
+          </div>
+        </div>
+
         {/* Dashboard action bar */}
-        <div className="flex items-center gap-1 pt-1 mt-1 border-t border-gray-800 flex-wrap">
+        <div className="flex items-center gap-0.5 pt-1 mt-1 border-t border-gray-800 overflow-x-auto">
           {/* Resources: Powers and Slots remaining */}
           <Tooltip content={`${24 - currentPowerCount} power picks remaining (${currentPowerCount} used)`}>
-            <span className={`text-xs tabular-nums font-medium px-1.5 ${
+            <span className={`text-xs tabular-nums font-medium px-1 ${
               currentPowerCount > 24 ? 'text-red-400' : 24 - currentPowerCount <= 3 ? 'text-yellow-400' : 'text-emerald-400'
             }`}>
               Pwr {24 - currentPowerCount}/24
             </span>
           </Tooltip>
           <Tooltip content={`${Math.max(0, 67 - currentSlotCount)} enhancement slots remaining (${currentSlotCount} used)`}>
-            <span className={`text-xs tabular-nums font-medium px-1.5 ${
+            <span className={`text-xs tabular-nums font-medium px-1 ${
               currentSlotCount > 67 ? 'text-red-400' : 67 - currentSlotCount <= 5 ? 'text-yellow-400' : 'text-emerald-400'
             }`}>
               Slot {Math.max(0, 67 - currentSlotCount)}/67
             </span>
           </Tooltip>
-          <div className="w-px h-4 bg-gray-700 mx-0.5" />
-          <button
-            onClick={openAccoladesModal}
-            className="flex items-center gap-1.5 px-2 py-1 text-xs text-gray-400 hover:text-amber-300 hover:bg-gray-800 rounded transition-colors"
-            title="Toggle accolade bonuses"
-          >
+          <div className="w-px h-4 bg-gray-700 mx-0.5 shrink-0" />
+          <button onClick={openAccoladesModal} className="flex items-center gap-1 px-1.5 py-1 text-xs text-gray-400 hover:text-amber-300 hover:bg-gray-800 rounded transition-colors shrink-0" title="Toggle accolade bonuses">
             <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
             </svg>
-            <span className="hidden sm:inline">Accolades</span>
+            <span className="hidden md:inline">Accolades</span>
           </button>
-          <button
-            onClick={openSetBonusLookupModal}
-            className="flex items-center gap-1.5 px-2 py-1 text-xs text-gray-400 hover:text-green-300 hover:bg-gray-800 rounded transition-colors"
-            title="Look up set bonuses by stat"
-          >
+          <button onClick={openSetBonusLookupModal} className="flex items-center gap-1 px-1.5 py-1 text-xs text-gray-400 hover:text-green-300 hover:bg-gray-800 rounded transition-colors shrink-0" title="Look up set bonuses by stat">
             <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
-            <span className="hidden sm:inline">Set Bonus Finder</span>
+            <span className="hidden md:inline">Set Bonus Finder</span>
           </button>
-          <button
-            onClick={openDetailedTotalsModal}
-            className="flex items-center gap-1.5 px-2 py-1 text-xs text-gray-400 hover:text-blue-300 hover:bg-gray-800 rounded transition-colors"
-            title="View detailed character totals"
-          >
+          <button onClick={openDetailedTotalsModal} className="flex items-center gap-1 px-1.5 py-1 text-xs text-gray-400 hover:text-blue-300 hover:bg-gray-800 rounded transition-colors shrink-0" title="View detailed character totals">
             <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
             </svg>
-            <span className="hidden sm:inline">Totals</span>
+            <span className="hidden md:inline">Totals</span>
           </button>
-          <button
-            onClick={openPowersetCompareModal}
-            className="flex items-center gap-1.5 px-2 py-1 text-xs text-gray-400 hover:text-cyan-300 hover:bg-gray-800 rounded transition-colors"
-            title="Compare powersets side-by-side"
-          >
+          <button onClick={openPowersetCompareModal} className="flex items-center gap-1 px-1.5 py-1 text-xs text-gray-400 hover:text-cyan-300 hover:bg-gray-800 rounded transition-colors shrink-0" title="Compare powersets side-by-side">
             <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
             </svg>
-            <span className="hidden sm:inline">Compare Sets</span>
+            <span className="hidden md:inline">Compare Sets</span>
           </button>
-          <button
-            onClick={openStatsConfigModal}
-            className="flex items-center gap-1.5 px-2 py-1 text-xs text-gray-400 hover:text-gray-200 hover:bg-gray-800 rounded transition-colors"
-            title="Configure dashboard stats"
-          >
+          <button onClick={openStatsConfigModal} className="flex items-center gap-1 px-1.5 py-1 text-xs text-gray-400 hover:text-gray-200 hover:bg-gray-800 rounded transition-colors shrink-0" title="Configure dashboard stats">
             <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
             </svg>
-            <span className="hidden sm:inline">Configure</span>
+            <span className="hidden md:inline">Configure</span>
           </button>
-          <button
-            onClick={openControlsModal}
-            className="flex items-center gap-1.5 px-2 py-1 text-xs text-gray-400 hover:text-cyan-300 hover:bg-gray-800 rounded transition-colors"
-            title="View control hints"
-          >
+          <button onClick={openControlsModal} className="flex items-center gap-1 px-1.5 py-1 text-xs text-gray-400 hover:text-cyan-300 hover:bg-gray-800 rounded transition-colors shrink-0" title="View control hints">
             <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
-            <span className="hidden sm:inline">Controls</span>
-          </button>
-          {/* Spacer pushes About to the right */}
-          <div className="flex-1" />
-          <button
-            onClick={openAboutModal}
-            className="flex items-center gap-1.5 px-2 py-1 text-xs text-gray-400 hover:text-gray-200 hover:bg-gray-800 rounded transition-colors group"
-            title="About Sidekick"
-          >
-            <img
-              src="img/favicon-32x32.png"
-              alt="About"
-              className="w-3.5 h-3.5 group-hover:scale-110 transition-transform"
-            />
-            <span className="hidden sm:inline">About</span>
+            <span className="hidden md:inline">Controls</span>
           </button>
         </div>
 
