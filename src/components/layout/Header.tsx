@@ -79,12 +79,6 @@ export function Header() {
 
   const archetypeId = build.archetype.id;
 
-  // Check if AT has mechanics to show mechanic row
-  const hasATMechanics = archetypeId && [
-    'dominator', 'corruptor', 'brute', 'mastermind', 'defender',
-    'scrapper', 'stalker', 'controller', 'sentinel',
-  ].includes(archetypeId);
-
   return (
     <header className="bg-slate-800 border-b border-slate-700 px-4 py-2 space-y-2">
       {/* Row 1: three fixed items — never wraps */}
@@ -132,14 +126,9 @@ export function Header() {
         <div className="flex items-center bg-slate-700/50 px-2 py-1 rounded border border-slate-600">
           <Toggle id="avg-dmg-toggle" name="avgDmg" checked={showDamagePerActivation} onChange={toggleShowDamagePerActivation} label="Avg Dmg" className="!gap-2" />
         </div>
-      </div>
 
-      {/* Row 3: AT-specific mechanics (conditional) */}
-      {hasATMechanics && (
-        <div className="flex items-center gap-2 flex-wrap">
-          <ATMechanics archetypeId={archetypeId!} />
-        </div>
-      )}
+        {archetypeId && <ATMechanics archetypeId={archetypeId} />}
+      </div>
 
       {/* Confirmation modals */}
       <ConfirmModal
@@ -725,8 +714,6 @@ function ATMechanics({ archetypeId }: { archetypeId: string }) {
 
   return (
     <>
-      <span className="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">AT Mechanics</span>
-
       {/* Domination - Dominators */}
       {archetypeId === 'dominator' && (
         <Tooltip content="Toggle Domination active state to see enhanced mez values (2x magnitude, 1.5x duration)">
