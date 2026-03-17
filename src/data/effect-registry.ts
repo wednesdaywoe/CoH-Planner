@@ -383,6 +383,7 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
     colorClass: STAT_COLORS.recoveryBuff,
     format: 'percent',
     baseMultiplier: 100,
+    enhancementAspect: 'enduranceMod',
     priority: 5,
   },
   regenBuff: {

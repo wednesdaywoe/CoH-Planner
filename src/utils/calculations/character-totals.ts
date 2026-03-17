@@ -1275,12 +1275,12 @@ function applySingleProcEffect(
         ];
         for (const defType of defTypes) {
           global[defType] += value;
+          addToBreakdown(breakdown, defType as string, {
+            name: sourceName,
+            value,
+            type: 'proc',
+          });
         }
-        addToBreakdown(breakdown, 'defall', {
-          name: sourceName,
-          value,
-          type: 'proc',
-        });
       }
       break;
 
@@ -1293,12 +1293,12 @@ function applySingleProcEffect(
         ];
         for (const resType of resTypes) {
           global[resType] += value;
+          addToBreakdown(breakdown, resType as string, {
+            name: sourceName,
+            value,
+            type: 'proc',
+          });
         }
-        addToBreakdown(breakdown, 'resall', {
-          name: sourceName,
-          value,
-          type: 'proc',
-        });
       } else {
         // Specific resistance type (e.g., "Psionic", "Fire")
         const specificResMap: Record<string, keyof GlobalBonuses> = {

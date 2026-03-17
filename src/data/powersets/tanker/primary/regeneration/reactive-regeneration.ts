@@ -21,6 +21,7 @@ export const ReactiveRegeneration: Power = {
     "accuracy": 1,
     "recharge": 10,
     "endurance": 0.52,
+    "activatePeriod": 2.0,
     "castTime": 1.17
   },
   "allowedEnhancements": [
