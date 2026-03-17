@@ -115,12 +115,15 @@ export function Header() {
         <SettingsPopover />
         <BuildIdentityPopover />
 
+        {/* Inline Level Slider */}
+        <HeaderLevelSlider />
+
         {/* Undo / Redo */}
         <div className="flex items-center gap-0.5">
           <button
             onClick={handleUndo}
             disabled={!canUndo}
-            className="p-1 rounded text-slate-400 hover:text-white hover:bg-slate-700 disabled:opacity-25 disabled:cursor-not-allowed transition-colors"
+            className="p-1 rounded text-sk-magenta hover:text-sk-magenta hover:bg-sk-magenta/10 disabled:opacity-25 disabled:cursor-not-allowed transition-colors"
             title="Undo (Ctrl+Z)"
           >
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -130,7 +133,7 @@ export function Header() {
           <button
             onClick={handleRedo}
             disabled={!canRedo}
-            className="p-1 rounded text-slate-400 hover:text-white hover:bg-slate-700 disabled:opacity-25 disabled:cursor-not-allowed transition-colors"
+            className="p-1 rounded text-sk-magenta hover:text-sk-magenta hover:bg-sk-magenta/10 disabled:opacity-25 disabled:cursor-not-allowed transition-colors"
             title="Redo (Ctrl+Shift+Z)"
           >
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -195,6 +198,43 @@ export function Header() {
         onCancel={() => setConfirmAction(null)}
       />
     </header>
+  );
+}
+
+// ---- Inline Level Slider ----
+
+function HeaderLevelSlider() {
+  const level = useBuildStore((s) => s.build.level);
+  const setLevel = useBuildStore((s) => s.setLevel);
+
+  return (
+    <div className="flex items-center gap-1 px-2 py-1 rounded border border-slate-600 bg-slate-700/50">
+      <span className="text-[10px] text-slate-400 uppercase font-semibold hidden sm:inline">Lvl</span>
+      <button
+        onClick={() => setLevel(level - 1)}
+        disabled={level <= 1}
+        className="text-slate-400 hover:text-emerald-400 disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-0.5"
+      >
+        &minus;
+      </button>
+      <span className="text-sm font-bold text-emerald-400 w-6 text-center">{level}</span>
+      <button
+        onClick={() => setLevel(level + 1)}
+        disabled={level >= MAX_LEVEL}
+        className="text-slate-400 hover:text-emerald-400 disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-0.5"
+      >
+        +
+      </button>
+      <Slider
+        value={level}
+        min={1}
+        max={MAX_LEVEL}
+        onChange={(e) => setLevel(Number(e.target.value))}
+        className="w-24"
+        showValue={false}
+        showRange={false}
+      />
+    </div>
   );
 }
 
