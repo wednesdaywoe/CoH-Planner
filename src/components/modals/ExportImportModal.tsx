@@ -72,11 +72,13 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
   const [shareAuthor, setShareAuthor] = useState('');
   const [shareServer, setShareServer] = useState('');
   const [shareTags, setShareTags] = useState('');
+  const [shareIsPublic, setShareIsPublic] = useState(true);
   const [shareLoading, setShareLoading] = useState(false);
   const [shareError, setShareError] = useState<string | null>(null);
   const [shareUrl, setShareUrl] = useState<string | null>(null);
   const [shareCopied, setShareCopied] = useState(false);
   const [shareUpdated, setShareUpdated] = useState(false);
+  const [shareWasPublic, setShareWasPublic] = useState(true);
   const [updateExistingId, setUpdateExistingId] = useState<string | null>(null);
   const [sharedBuildId, setSharedBuildId] = useState<string | null>(null);
   const [showOwnerToken, setShowOwnerToken] = useState(false);
@@ -389,7 +391,9 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
         tags,
         build_json: exportData,
         existingId: updateExistingId ?? undefined,
+        is_public: shareIsPublic,
       });
+      setShareWasPublic(shareIsPublic);
 
       setShareUrl(result.url);
       setShareUpdated(result.updated ?? false);
@@ -437,6 +441,8 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
     setShareAuthor('');
     setShareServer('');
     setShareTags('');
+    setShareIsPublic(true);
+    setShareWasPublic(true);
     setShareError(null);
     setShareUrl(null);
     setShareLoading(false);
@@ -940,33 +946,44 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
           <div className="space-y-4">
             {shareUrl ? (
               <div className="space-y-4">
-                <div className="bg-green-900/20 border border-green-700/50 rounded p-4 text-sm text-green-300">
-                  <p className="font-semibold mb-2">
-                    {shareUpdated ? 'Build updated successfully!' : 'Build shared successfully!'}
-                  </p>
-                  <p className="text-xs text-green-400 mb-3">Anyone with this link can view your build:</p>
-                  <div className="flex gap-2">
-                    <input
-                      type="text"
-                      readOnly
-                      value={shareUrl}
-                      className="flex-1 bg-gray-800 border border-gray-600 rounded px-3 py-2 text-white text-sm font-mono"
-                      onFocus={(e) => e.target.select()}
-                    />
-                    <Button
-                      variant={shareCopied ? 'secondary' : 'primary'}
-                      size="sm"
-                      onClick={handleCopyShareUrl}
-                    >
-                      {shareCopied ? 'Copied!' : 'Copy'}
-                    </Button>
-                  </div>
-                  {!shareUpdated && (
-                    <p className="text-xs text-green-500 mt-2">
-                      You can update or delete this build later from this browser.
+                {!shareWasPublic ? (
+                  /* Vault save success */
+                  <div className="bg-indigo-900/20 border border-indigo-700/50 rounded p-4 text-sm text-indigo-300">
+                    <p className="font-semibold mb-2">Build saved to your vault!</p>
+                    <p className="text-xs text-indigo-400">
+                      This build is private and only visible to you in My Builds. You can make it public at any time.
                     </p>
-                  )}
-                </div>
+                  </div>
+                ) : (
+                  /* Public share success */
+                  <div className="bg-green-900/20 border border-green-700/50 rounded p-4 text-sm text-green-300">
+                    <p className="font-semibold mb-2">
+                      {shareUpdated ? 'Build updated successfully!' : 'Build shared successfully!'}
+                    </p>
+                    <p className="text-xs text-green-400 mb-3">Anyone with this link can view your build:</p>
+                    <div className="flex gap-2">
+                      <input
+                        type="text"
+                        readOnly
+                        value={shareUrl}
+                        className="flex-1 bg-gray-800 border border-gray-600 rounded px-3 py-2 text-white text-sm font-mono"
+                        onFocus={(e) => e.target.select()}
+                      />
+                      <Button
+                        variant={shareCopied ? 'secondary' : 'primary'}
+                        size="sm"
+                        onClick={handleCopyShareUrl}
+                      >
+                        {shareCopied ? 'Copied!' : 'Copy'}
+                      </Button>
+                    </div>
+                    {!shareUpdated && (
+                      <p className="text-xs text-green-500 mt-2">
+                        You can update or delete this build later from this browser.
+                      </p>
+                    )}
+                  </div>
+                )}
 
                 {/* Owner token backup */}
                 {sharedBuildId && getOwnerToken(sharedBuildId) && (
@@ -1060,6 +1077,40 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
                   </div>
                 )}
 
+                {/* Visibility selector — only for logged-in users, only on new shares */}
+                {user && !updateExistingId && (
+                  <div className="flex rounded overflow-hidden border border-gray-600">
+                    <button
+                      type="button"
+                      onClick={() => setShareIsPublic(true)}
+                      className={`flex-1 flex items-center justify-center gap-2 py-2 px-3 text-sm font-medium transition-colors ${
+                        shareIsPublic
+                          ? 'bg-green-700 text-white'
+                          : 'bg-gray-800 text-gray-400 hover:text-gray-300 hover:bg-gray-700'
+                      }`}
+                    >
+                      <svg className="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 004 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064" />
+                      </svg>
+                      Share Publicly
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setShareIsPublic(false)}
+                      className={`flex-1 flex items-center justify-center gap-2 py-2 px-3 text-sm font-medium transition-colors ${
+                        !shareIsPublic
+                          ? 'bg-indigo-700 text-white'
+                          : 'bg-gray-800 text-gray-400 hover:text-gray-300 hover:bg-gray-700'
+                      }`}
+                    >
+                      <svg className="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                      </svg>
+                      Save to Vault
+                    </button>
+                  </div>
+                )}
+
                 <div className="bg-gray-800 border border-gray-600 rounded p-4 space-y-2">
                   <h3 className="font-semibold text-gray-300">Build to Share:</h3>
                   <div className="text-sm text-gray-400 space-y-1">
@@ -1138,12 +1189,20 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
                   </div>
                 )}
 
-                <div className="bg-green-900/20 border border-green-700/50 rounded p-3 text-sm text-green-300">
-                  <p className="font-semibold mb-1">{updateExistingId ? 'Update Info:' : 'Share Info:'}</p>
+                <div className={`border rounded p-3 text-sm ${
+                  !shareIsPublic && !updateExistingId
+                    ? 'bg-indigo-900/20 border-indigo-700/50 text-indigo-300'
+                    : 'bg-green-900/20 border-green-700/50 text-green-300'
+                }`}>
+                  <p className="font-semibold mb-1">
+                    {updateExistingId ? 'Update Info:' : shareIsPublic ? 'Share Info:' : 'Vault Info:'}
+                  </p>
                   <p>
                     {updateExistingId
                       ? 'This will replace the existing shared build with your current build data. The URL will stay the same.'
-                      : 'Your build will be shared publicly. Anyone with the link can view it. No account required.'
+                      : shareIsPublic
+                      ? 'Your build will be shared publicly. Anyone with the link can view it. No account required.'
+                      : 'Your build will be saved privately to your vault. Only you can see it in My Builds.'
                     }
                   </p>
                 </div>
@@ -1166,7 +1225,7 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
                 isLoading={shareLoading}
                 disabled={shareLoading || !build.archetype.id}
               >
-                {updateExistingId ? 'Update Build' : 'Share Build'}
+                {updateExistingId ? 'Update Build' : shareIsPublic ? 'Share Build' : 'Save to Vault'}
               </Button>
             )
           ) : activeTab === 'import' ? (

@@ -13,7 +13,8 @@
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
 import { nanoid } from 'https://esm.sh/nanoid@5';
 
-const RATE_LIMIT = 5; // max shares per window
+const SHARE_RATE_LIMIT = 5;  // max public shares per hour
+const VAULT_RATE_LIMIT = 20; // max vault saves per hour
 const RATE_WINDOW_HOURS = 1;
 
 const corsHeaders = {
@@ -63,6 +64,9 @@ Deno.serve(async (req: Request) => {
 
     const isUpdate = !!(body.existing_id && (body.owner_token || authUserId));
 
+    // is_public defaults to true; only authenticated users may create private builds
+    const isPublic: boolean = body.is_public === false ? (authUserId !== null) : true;
+
     // ---- Validate required fields ----
     const { name, archetype, archetype_name, primary_set, primary_name, secondary_set, secondary_name, level, build_json } = body;
 
@@ -98,14 +102,18 @@ Deno.serve(async (req: Request) => {
 
     const windowStart = new Date(Date.now() - RATE_WINDOW_HOURS * 60 * 60 * 1000).toISOString();
 
+    // Vault saves and public shares use separate rate limit buckets
+    const rateLimitAction = isPublic ? 'share' : 'vault';
+    const rateLimit = isPublic ? SHARE_RATE_LIMIT : VAULT_RATE_LIMIT;
+
     const { count } = await supabase
       .from('rate_limits')
       .select('*', { count: 'exact', head: true })
       .eq('ip', clientIp)
-      .eq('action', 'share')
+      .eq('action', rateLimitAction)
       .gte('created_at', windowStart);
 
-    if ((count ?? 0) >= RATE_LIMIT) {
+    if ((count ?? 0) >= rateLimit) {
       return new Response(
         JSON.stringify({ error: 'Rate limit exceeded. Please try again later.' }),
         { status: 429, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
@@ -113,7 +121,7 @@ Deno.serve(async (req: Request) => {
     }
 
     // Record this request for rate limiting
-    await supabase.from('rate_limits').insert({ ip: clientIp, action: 'share' });
+    await supabase.from('rate_limits').insert({ ip: clientIp, action: rateLimitAction });
 
     const tags = Array.isArray(body.tags)
       ? body.tags.filter((t: unknown) => typeof t === 'string').slice(0, 10)
@@ -133,6 +141,7 @@ Deno.serve(async (req: Request) => {
       server: (body.server || '').slice(0, 50),
       tags,
       build_json,
+      is_public: isPublic,
     };
 
     // ---- UPDATE existing build ----

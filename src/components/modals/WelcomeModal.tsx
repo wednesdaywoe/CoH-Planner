@@ -87,6 +87,23 @@ export function WelcomeModal({ isOpen, onClose }: WelcomeModalProps) {
             </p>
           </div>
 
+          <div className="bg-purple-900/30 border border-purple-600/50 rounded-lg p-4 text-xs text-purple-200 leading-relaxed space-y-2">
+            <p>
+              One frequent request is better Mids importing, especially for very old files. The challenge is that Mids 
+              spans decades of development, with inconsistent naming for archetypes, powers, and enhancements. There’s 
+              no standard format, which makes importing unreliable.
+            </p>
+            <p>
+              I’m improving the importer case by case, but with hundreds of named elements and variations
+              across versions, it’s an enormous task. For players with large archives of old builds, keeping Mids
+              installed will likely remain necessary.
+            </p>
+            <p>
+              Sidekick isn’t meant to replace Mids—it’s meant to provide, IMHO, an essential CoH tool for those who can’t use it
+              or run into technical issues.
+            </p>
+          </div>
+
           <p className="text-gray-300 text-sm">
             <span className="text-[#D62BCE] font-semibold">Sidekick</span>{' '}
             <span className="text-amber-400 font-semibold">is in active beta development, so please be patient with bugs and errors.</span>

@@ -25,6 +25,8 @@ export interface SharedBuild {
   views: number;
   /** User ID from Discord OAuth (null for anonymous builds) */
   user_id?: string | null;
+  /** Whether the build is visible in public search (false = private vault only) */
+  is_public: boolean;
 }
 
 /** Input for sharing a build */
@@ -37,6 +39,8 @@ export interface ShareBuildInput {
   build_json: BuildExport;
   /** If set, updates an existing build instead of creating a new one */
   existingId?: string;
+  /** Whether the build is publicly visible (default true). Requires login to set false. */
+  is_public?: boolean;
 }
 
 /** Filters for searching shared builds */
