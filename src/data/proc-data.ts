@@ -2004,7 +2004,10 @@ export function findProcData(enhancementName: string, setName?: string): ProcDat
     if (setName && data.setName === setName) return data;
     if (!firstMatch) firstMatch = data;
   }
-  if (firstMatch) return firstMatch;
+  // Only use firstMatch when no setName was provided — otherwise ambiguous
+  // ioName matches (e.g. "+Res(All)" shared by Reactive Defenses and pet sets)
+  // would return the wrong entry before the setName fallback below
+  if (firstMatch && !setName) return firstMatch;
 
   // Fallback: match by set name (handles name mismatches like LotG "Defense/+Recharge" vs "Buff Recharge")
   if (setName) {
@@ -2014,6 +2017,9 @@ export function findProcData(enhancementName: string, setName?: string): ProcDat
       }
     }
   }
+
+  // Last resort: return ioName match even with mismatched set (better than nothing)
+  if (firstMatch) return firstMatch;
 
   return undefined;
 }
