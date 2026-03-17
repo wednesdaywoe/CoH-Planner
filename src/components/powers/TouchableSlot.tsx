@@ -36,10 +36,18 @@ interface TouchableSlotProps {
   onClearAllEnhancements: () => void;
   onRemoveAllSlots: () => void;
   onCompareSlotting?: () => void;
-  /** Called when right-click drag removes multiple slots */
+  /** Called when right-click drag removes multiple empty slots */
   onRemoveSlots?: (count: number) => void;
-  /** Maximum number of removable slots (total slots - 1) */
+  /** Called when right-click drag clears multiple enhancements */
+  onClearEnhancements?: (count: number) => void;
+  /** Maximum number of removable empty slots */
   removableSlotCount?: number;
+  /** Number of filled enhancement slots */
+  filledSlotCount?: number;
+  /** Report drag state changes to parent for highlighting */
+  onDragStateChange?: (state: { mode: 'slots' | 'enhancements'; count: number } | null) => void;
+  /** Whether this slot is highlighted for pending removal */
+  highlightRemoval?: 'slot' | 'enhancement' | null;
 }
 
 export function TouchableSlot({
@@ -56,11 +64,16 @@ export function TouchableSlot({
   onRemoveAllSlots,
   onCompareSlotting,
   onRemoveSlots,
+  onClearEnhancements,
   removableSlotCount = 0,
+  filledSlotCount = 0,
+  onDragStateChange,
+  highlightRemoval,
 }: TouchableSlotProps) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [menuPosition, setMenuPosition] = useState({ x: 0, y: 0 });
   const [dragRemoveCount, setDragRemoveCount] = useState(0);
+  const [dragMode, setDragMode] = useState<'slots' | 'enhancements' | null>(null);
   const longPressTriggeredRef = useRef(false);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -101,7 +114,14 @@ export function TouchableSlot({
 
   const handleMouseDown = (e: React.MouseEvent) => {
     if (e.button !== 2) return; // Only right button
-    if (!onRemoveSlots || removableSlotCount <= 0) return; // No multi-remove available
+
+    // Determine drag mode based on what's under the cursor
+    const mode = slot ? 'enhancements' : 'slots';
+    const maxCount = mode === 'enhancements' ? filledSlotCount : removableSlotCount;
+    const callback = mode === 'enhancements' ? onClearEnhancements : onRemoveSlots;
+    if (!callback || maxCount <= 0) return;
+
+    setDragMode(mode);
 
     const drag = rightDragRef.current;
     drag.active = true;
@@ -120,10 +140,11 @@ export function TouchableSlot({
         drag.hasMoved = true;
         const count = Math.min(
           1 + Math.floor(distance / PIXELS_PER_SLOT),
-          removableSlotCount
+          maxCount
         );
         drag.slotsToRemove = count;
         setDragRemoveCount(count);
+        onDragStateChange?.({ mode, count });
       }
     };
 
@@ -139,18 +160,22 @@ export function TouchableSlot({
         }
       }, 0);
       setDragRemoveCount(0);
+      setDragMode(null);
+      onDragStateChange?.(null);
     };
 
     // Block browser context menu globally during drag
     const preventContext = (ev: Event) => {
       ev.preventDefault();
-      // If drag completed, execute the removal
+      ev.stopImmediatePropagation();
+      // If drag completed, execute the removal/clear
       if (drag.active && drag.hasMoved && drag.slotsToRemove > 0) {
-        onRemoveSlots!(drag.slotsToRemove);
+        callback(drag.slotsToRemove);
       }
       drag.active = false;
-      drag.hasMoved = false;
       drag.slotsToRemove = 0;
+      // Keep hasMoved true briefly so handleContextMenu (React synthetic) also skips
+      setTimeout(() => { drag.hasMoved = false; }, 0);
     };
 
     drag.moveHandler = handleMove;
@@ -226,9 +251,13 @@ export function TouchableSlot({
             ${config.fontSize} font-semibold cursor-pointer transition-transform hover:scale-110
             select-none
             ${
-              slot
-                ? 'border-transparent bg-transparent'
-                : 'border-slate-600 bg-slate-700/50 text-slate-500 hover:border-blue-500 hover:bg-slate-600'
+              highlightRemoval === 'enhancement'
+                ? 'border-amber-500 bg-amber-900/40 ring-1 ring-amber-500/50'
+                : highlightRemoval === 'slot'
+                  ? 'border-red-500 bg-red-900/40 ring-1 ring-red-500/50'
+                  : slot
+                    ? 'border-transparent bg-transparent'
+                    : 'border-slate-600 bg-slate-700/50 text-slate-500 hover:border-blue-500 hover:bg-slate-600'
             }
           `}
           style={{ WebkitTouchCallout: 'none', WebkitUserSelect: 'none' }}
@@ -246,7 +275,9 @@ export function TouchableSlot({
         </div>
         {/* Drag-to-remove count badge */}
         {dragRemoveCount > 0 && (
-          <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-red-600 text-white text-[9px] font-bold rounded-full min-w-[18px] h-[18px] flex items-center justify-center z-30 pointer-events-none animate-pulse px-0.5">
+          <div className={`absolute -top-3 left-1/2 -translate-x-1/2 text-white text-[9px] font-bold rounded-full min-w-[18px] h-[18px] flex items-center justify-center z-30 pointer-events-none animate-pulse px-0.5 ${
+            dragMode === 'enhancements' ? 'bg-amber-600' : 'bg-red-600'
+          }`}>
             -{dragRemoveCount}
           </div>
         )}

@@ -417,8 +417,8 @@ export function parseIOSetPieceValues(aspects: string[], level = 50, isProc = fa
   }
 
   const bonuses: ParsedBonuses = {};
-  // Proc effects count as 3 additional aspects for the multi-aspect modifier
-  const effectiveAspectCount = isProc ? aspects.length + 3 : aspects.length;
+  // Proc effects count as 1 additional aspect for the multi-aspect modifier
+  const effectiveAspectCount = isProc ? aspects.length + 1 : aspects.length;
   const modifier = getMultiAspectModifier(effectiveAspectCount);
 
   // Each aspect gets the schedule's value modified by aspect count

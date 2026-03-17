@@ -219,9 +219,9 @@ const STAT_NAME_MAP: Record<string, string | null> = {
   // All-defense (global proc effect handled by proc system, not set bonuses)
   'defense_(all)': null,
 
-  // Range (not tracked in dashboard, but valid set bonus)
-  range: null,
-  Range: null,
+  // Range
+  range: 'range',
+  Range: 'range',
 
   // Debuff Resistance (slow/recharge debuff resistance — not tracked in dashboard)
   '+res(recharge_debuff)': null,

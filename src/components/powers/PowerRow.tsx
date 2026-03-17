@@ -5,6 +5,7 @@
  * Supports multiple size variants and layout modes.
  */
 
+import { useState, useCallback } from 'react';
 import type { Enhancement, SelectedPower } from '@/types';
 import { resolvePath } from '@/utils/paths';
 import { Tooltip } from '@/components/ui';
@@ -116,15 +117,53 @@ export function PowerRow({
     onOpenPicker?.(index);
   };
 
-  // Remove multiple slots from the end (used by right-click drag on slots)
+  // Remove multiple empty slots from the end (used by right-click drag on empty slots)
   const handleRemoveMultipleSlots = (count: number) => {
     if (!onRemoveSlot) return;
-    for (let i = 0; i < count; i++) {
-      const idx = slots.length - 1 - i;
-      if (idx > 0) onRemoveSlot(idx);
+    let removed = 0;
+    for (let i = slots.length - 1; i > 0 && removed < count; i--) {
+      if (slots[i] === null) {
+        onRemoveSlot(i);
+        removed++;
+      }
     }
   };
-  const removableSlotCount = slots.length - 1; // Can't remove slot 0
+
+  // Clear multiple enhancements from the end (used by right-click drag on filled slots)
+  const handleClearMultipleEnhancements = (count: number) => {
+    if (!onClearEnhancement) return;
+    let cleared = 0;
+    for (let i = slots.length - 1; i >= 0 && cleared < count; i--) {
+      if (slots[i] !== null) {
+        onClearEnhancement(i);
+        cleared++;
+      }
+    }
+  };
+
+  const removableSlotCount = slots.filter((s, i) => i > 0 && s === null).length;
+  const filledSlotCount = slots.filter(s => s !== null).length;
+
+  // Track drag state for slot highlighting
+  const [dragHighlight, setDragHighlight] = useState<{ mode: 'slots' | 'enhancements'; count: number } | null>(null);
+  const handleDragStateChange = useCallback((state: { mode: 'slots' | 'enhancements'; count: number } | null) => {
+    setDragHighlight(state);
+  }, []);
+
+  // Compute which slot indices are highlighted during drag
+  const highlightedSlots = new Map<number, 'slot' | 'enhancement'>();
+  if (dragHighlight) {
+    let remaining = dragHighlight.count;
+    for (let i = slots.length - 1; i >= 0 && remaining > 0; i--) {
+      if (dragHighlight.mode === 'enhancements' && slots[i] !== null) {
+        highlightedSlots.set(i, 'enhancement');
+        remaining--;
+      } else if (dragHighlight.mode === 'slots' && i > 0 && slots[i] === null) {
+        highlightedSlots.set(i, 'slot');
+        remaining--;
+      }
+    }
+  }
 
   const renderIcon = (extraClass?: string) => {
     const img = (
@@ -228,7 +267,11 @@ export function PowerRow({
           onRemoveAllSlots={() => onRemoveAllSlots?.()}
           onCompareSlotting={onCompareSlotting}
           onRemoveSlots={onRemoveSlot ? handleRemoveMultipleSlots : undefined}
+          onClearEnhancements={onClearEnhancement ? handleClearMultipleEnhancements : undefined}
           removableSlotCount={removableSlotCount}
+          filledSlotCount={filledSlotCount}
+          onDragStateChange={handleDragStateChange}
+          highlightRemoval={highlightedSlots.get(index) ?? null}
         />
       ))}
       {onAddSlots && (

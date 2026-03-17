@@ -7,6 +7,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { useNavigate, useLocation } from '@tanstack/react-router';
 import { useBuildStore, useUIStore, useAuthStore } from '@/stores';
+import { useHistoryStore } from '@/stores/historyStore';
 import { supabase } from '@/lib/supabase';
 import { getPowersetsForArchetype, getPowerset, MAX_LEVEL, ARCHETYPES } from '@/data';
 import { Button, Select, Slider, Toggle, Tooltip } from '@/components/ui';
@@ -79,6 +80,27 @@ export function Header() {
 
   const archetypeId = build.archetype.id;
 
+  const canUndo = useHistoryStore((s) => s.past.length > 0);
+  const canRedo = useHistoryStore((s) => s.future.length > 0);
+
+  const handleUndo = () => {
+    const history = useHistoryStore.getState();
+    const currentBuild = useBuildStore.getState().build;
+    history.setRestoring(true);
+    const restored = history.undo(currentBuild);
+    if (restored) useBuildStore.getState()._restoreBuild(restored);
+    history.setRestoring(false);
+  };
+
+  const handleRedo = () => {
+    const history = useHistoryStore.getState();
+    const currentBuild = useBuildStore.getState().build;
+    history.setRestoring(true);
+    const restored = history.redo(currentBuild);
+    if (restored) useBuildStore.getState()._restoreBuild(restored);
+    history.setRestoring(false);
+  };
+
   return (
     <header className="bg-slate-800 border-b border-slate-700 px-4 py-2 space-y-2">
       {/* Row 1: three fixed items — never wraps */}
@@ -89,8 +111,33 @@ export function Header() {
           onClear={() => setConfirmAction('clear')}
           onAbout={openAboutModal}
         />
+
         <SettingsPopover />
         <BuildIdentityPopover />
+
+        {/* Undo / Redo */}
+        <div className="flex items-center gap-0.5">
+          <button
+            onClick={handleUndo}
+            disabled={!canUndo}
+            className="p-1 rounded text-slate-400 hover:text-white hover:bg-slate-700 disabled:opacity-25 disabled:cursor-not-allowed transition-colors"
+            title="Undo (Ctrl+Z)"
+          >
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h10a5 5 0 015 5v2M3 10l4-4M3 10l4 4" />
+            </svg>
+          </button>
+          <button
+            onClick={handleRedo}
+            disabled={!canRedo}
+            className="p-1 rounded text-slate-400 hover:text-white hover:bg-slate-700 disabled:opacity-25 disabled:cursor-not-allowed transition-colors"
+            title="Redo (Ctrl+Shift+Z)"
+          >
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 10H11a5 5 0 00-5 5v2M21 10l-4-4M21 10l-4 4" />
+            </svg>
+          </button>
+        </div>
       </div>
 
       {/* Row 2: left-anchored Shared Builds + toggles + login/version right-anchored */}

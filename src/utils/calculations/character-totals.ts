@@ -1258,7 +1258,7 @@ function applySingleProcEffect(
 
     case 'MaxHP':
       global.maxHP += value;
-      addToBreakdown(breakdown, 'maxhp', {
+      addToBreakdown(breakdown, 'maxHP', {
         name: sourceName,
         value,
         type: 'proc',
@@ -1567,14 +1567,10 @@ function applyPPMProcBonuses(
             break;
           }
           case 'Heal': {
-            // Heal proc: X% of max HP per proc
-            // Convert to effective regen %: (value% × procsPerMin) / 60 → %HP/sec, then scale to regen%
-            // At base, regen = ~100% max HP per 240s = 0.417%/sec
-            // So effective regen contribution = (value% × procsPerMin) / 60 / 0.417 × 100
-            const hpPerSec = (value * procsPerMin) / 60;
-            const regenEquivalent = (hpPerSec / BASE_REGEN_RATE) * 100;
-            global.regeneration += regenEquivalent;
-            addToBreakdown(breakdown, 'regeneration', { name: `${label} (+HP)`, value: regenEquivalent, type: 'proc' });
+            // PPM heal procs (e.g. Panacea) grant a chunk of HP on each proc fire.
+            // The game does NOT count these as steady-state regeneration in Combat Attributes.
+            // Only percentage-based regen buffs (Proc120s like Numina's) contribute to regen rate.
+            // Skip adding to global.regeneration to match game behavior.
             break;
           }
           case 'Recovery': {
@@ -1753,7 +1749,7 @@ function applyAccoladeBonuses(
       if (stat === 'maxhp') {
         // HP bonuses from accolades are percentages
         global.maxHP += bonus.value;
-        addToBreakdown(breakdown, 'maxhp', {
+        addToBreakdown(breakdown, 'maxHP', {
           name: accolade.name,
           value: bonus.value,
           type: 'accolade',
@@ -2297,14 +2293,17 @@ export function calculateCharacterTotals(
     const statBreakdownItems = getStatBreakdown(tracking, stat);
     if (statBreakdownItems.length > 0) {
       const built = buildStatBreakdown(statBreakdownItems);
+      // Normalize stat key to match breakdownKey casing (e.g. 'maxhp' → 'maxHP')
+      const normalizedStat = stat.toLowerCase().replace(/[^a-z]/g, '');
+      const breakdownStat = STAT_TO_GLOBAL[normalizedStat] || stat;
       // Merge into existing breakdown if there are other sources
-      const existing = breakdown.get(stat);
+      const existing = breakdown.get(breakdownStat);
       if (existing) {
         existing.sources.push(...built.sources);
         existing.total += built.total;
         existing.cappedSources += built.cappedSources;
       } else {
-        breakdown.set(stat, built);
+        breakdown.set(breakdownStat, built);
       }
     }
   }

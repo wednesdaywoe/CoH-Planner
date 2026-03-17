@@ -1029,7 +1029,7 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
           <div className="flex flex-wrap gap-x-2 text-[9px]">
             {Object.entries(enhancementBonuses).map(([aspect, value]) => (
               <span key={aspect} className="text-green-400">
-                {aspect}: +{((value || 0) * 100).toFixed(1)}%
+                {aspect}: +{((value || 0) * 100).toFixed(2)}%
               </span>
             ))}
           </div>

@@ -88,7 +88,7 @@ export function ThreeTierStatRow({
   const formatValue = (v: number) => {
     switch (format) {
       case 'percent':
-        return `${(v * 100).toFixed(1)}%`;
+        return `${(v * 100).toFixed(2)}%`;
       case 'seconds':
         return `${v.toFixed(2)}s`;
       case 'feet':
@@ -988,7 +988,7 @@ export function RegistryEffectsDisplay({
         const formatValue = (v: number) => {
           switch (config.format) {
             case 'percent':
-              return `${(v).toFixed(1)}%`;
+              return `${(v).toFixed(2)}%`;
             case 'duration':
               return `${v.toFixed(2)}s`;
             case 'degrees':

@@ -104,10 +104,10 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
   tohit: {
     id: 'tohit',
     label: 'ToHit',
-    getValue: (stats) => stats.toHitBuff,
-    format: (v) => `+${Number(v).toFixed(2)}%`,
+    getValue: (stats) => 75 + stats.toHitBuff,
+    format: (v) => `${Number(v).toFixed(2)}%`,
     color: STAT_COLORS.tohit,
-    tooltip: 'ToHit buff from set bonuses. Additive modifier to base hit chance.',
+    tooltip: 'Base 75% + ToHit buffs from set bonuses and procs',
     showWhenZero: true,
     breakdownKey: 'toHit',
   },
@@ -368,11 +368,18 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
   },
   endreduction: {
     id: 'endreduction',
-    label: 'End Red',
-    getValue: (stats) => stats.enduranceReduction,
-    format: (v) => `+${Number(v).toFixed(2)}%`,
+    label: 'End Disc',
+    getValue: (stats) => {
+      // Convert raw EndRdx% to Endurance Discount% as shown in-game:
+      // Game formula: cost = baseCost / (1 + endRdx/100), so discount = 1 - 1/(1 + endRdx/100)
+      const endRdx = stats.enduranceReduction;
+      if (endRdx <= 0) return 0;
+      return (1 - 1 / (1 + endRdx / 100)) * 100;
+    },
+    format: (v) => `${Number(v).toFixed(2)}%`,
     color: STAT_COLORS.enduranceDiscount,
-    tooltip: 'Endurance reduction',
+    tooltip: 'Endurance Discount: reduces endurance cost of powers',
+    breakdownKey: 'endurance',
   },
   endcost: {
     id: 'endcost',

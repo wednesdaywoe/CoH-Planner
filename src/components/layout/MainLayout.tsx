@@ -11,6 +11,7 @@ import { PowerInfoTooltip } from '@/components/info';
 import { PowerInfoModal } from '@/components/modals';
 import { useUIStore, useAuthStore } from '@/stores';
 import { useUpdateChecker } from '@/hooks/useUpdateChecker';
+import { useUndoRedoKeyboard } from '@/hooks/useUndoRedoKeyboard';
 
 interface MainLayoutProps {
   children: ReactNode;
@@ -22,6 +23,7 @@ export function MainLayout({ children }: MainLayoutProps) {
   const openHelpModal = useUIStore((s) => s.openHelpModal);
   const uiScale = useUIStore((s) => s.uiScale);
   const { updateAvailable } = useUpdateChecker();
+  useUndoRedoKeyboard();
   const initializeAuth = useAuthStore((s) => s.initialize);
 
   // Initialize auth on mount (checks existing session, listens for changes)

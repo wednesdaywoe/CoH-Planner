@@ -180,7 +180,7 @@ export function calculateBuffDebuffValue(
  * Format a decimal value as a percentage string
  */
 export function formatPercent(value: number): string {
-  return `${(value * 100).toFixed(1)}%`;
+  return `${(value * 100).toFixed(2)}%`;
 }
 
 /**

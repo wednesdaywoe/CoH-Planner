@@ -31,7 +31,7 @@ export const STAT_CATEGORIES: Record<string, StatCategory> = {
       accuracy: { name: 'Accuracy', format: '+{value}%', color: 'stat-accuracy' },
       tohit: { name: 'To-Hit', format: '+{value}%', color: 'stat-tohit' },
       recharge: { name: 'Recharge', format: '+{value}%', color: 'stat-recharge' },
-      endrdx: { name: 'End Reduction', format: '+{value}%', color: 'stat-endurance' },
+      endrdx: { name: 'End Discount', format: '+{value}%', color: 'stat-endurance' },
     },
   },
   defense: {

@@ -307,9 +307,9 @@ export function formatStatForTooltip(
 
   switch (format) {
     case 'percentage':
-      baseStr = `${(base * 100).toFixed(1)}%`;
-      enhancedStr = `${(enhanced * 100).toFixed(1)}%`;
-      finalStr = `${(final * 100).toFixed(1)}%`;
+      baseStr = `${(base * 100).toFixed(2)}%`;
+      enhancedStr = `${(enhanced * 100).toFixed(2)}%`;
+      finalStr = `${(final * 100).toFixed(2)}%`;
       break;
     case 'seconds':
       baseStr = `${base.toFixed(2)}s`;

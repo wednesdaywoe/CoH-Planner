@@ -43,6 +43,7 @@ import {
 import type { InherentPowerDef } from '@/data';
 import { computeSetTracking } from '@/utils/calculations/set-tracking';
 import { slimBuild, hydrateBuild } from '@/utils/build-serialization';
+import { useHistoryStore } from './historyStore';
 
 // ============================================
 // POWER CATEGORY TYPE
@@ -145,6 +146,9 @@ interface BuildActions {
 
   // Hydration
   setHasHydrated: (value: boolean) => void;
+
+  // History (internal - used by undo/redo)
+  _restoreBuild: (build: Build) => void;
 }
 
 type BuildStore = BuildState & BuildActions;
@@ -726,7 +730,16 @@ export function calculateCorrectLevel(build: Build): number {
 
 export const useBuildStore = create<BuildStore>()(
   persist(
-    (set, get) => ({
+    (set, get) => {
+      // Undo/redo checkpoint helper — call before mutations
+      const historyCheckpoint = () => {
+        const { _isRestoring } = useHistoryStore.getState();
+        if (!_isRestoring) {
+          useHistoryStore.getState().checkpoint(get().build);
+        }
+      };
+
+      return ({
       // Initial state
       build: createEmptyBuild(),
       _hasHydrated: false,
@@ -734,16 +747,22 @@ export const useBuildStore = create<BuildStore>()(
       // Hydration tracking
       setHasHydrated: (value) => set({ _hasHydrated: value }),
 
+      // History restore (used by undo/redo)
+      _restoreBuild: (build) => set({ build }),
+
       // Build metadata
-      setBuildName: (name) =>
+      setBuildName: (name) => {
+        historyCheckpoint();
         set((state) => ({
           build: { ...state.build, name },
-        })),
+        }));
+      },
 
       // Archetype
       setArchetype: (archetypeId) => {
         const archetype = getArchetype(archetypeId);
         if (!archetype) return;
+        historyCheckpoint();
 
         set((state) => ({
           build: {
@@ -764,7 +783,8 @@ export const useBuildStore = create<BuildStore>()(
         }));
       },
 
-      clearArchetype: () =>
+      clearArchetype: () => {
+        historyCheckpoint();
         set((state) => ({
           build: {
             ...state.build,
@@ -775,12 +795,14 @@ export const useBuildStore = create<BuildStore>()(
             epicPool: null,
             inherents: [], // Clear inherents
           },
-        })),
+        }));
+      },
 
       // Powersets
       setPrimary: (powersetId) => {
         const powerset = getPowerset(powersetId);
         if (!powerset) return;
+        historyCheckpoint();
 
         set((state) => {
           const removedNames = new Set(state.build.primary.powers.map((p) => p.name));
@@ -810,6 +832,7 @@ export const useBuildStore = create<BuildStore>()(
       setSecondary: (powersetId) => {
         const powerset = getPowerset(powersetId);
         if (!powerset) return;
+        historyCheckpoint();
 
         set((state) => {
           const removedNames = new Set(state.build.secondary.powers.map((p) => p.name));
@@ -838,6 +861,7 @@ export const useBuildStore = create<BuildStore>()(
 
       // Powers
       addPower: (category, power) => {
+        historyCheckpoint();
         set((state) => {
           // Enforce 24-power limit (inherents don't count)
           if (category !== 'inherent' && countSelectedPowers(state.build) >= MAX_POWER_PICKS) {
@@ -935,6 +959,7 @@ export const useBuildStore = create<BuildStore>()(
       },
 
       removePower: (category, powerName) => {
+        historyCheckpoint();
         set((state) => {
           // Inherent: only allow removal of unlocked powers
           const updater = category === 'inherent'
@@ -967,6 +992,7 @@ export const useBuildStore = create<BuildStore>()(
       },
 
       movePowerLevel: (category, powerName, newLevel) => {
+        historyCheckpoint();
         set((state) => ({
           build: applyPowerUpdate(state.build, category, (powers) =>
             powers.map((p) => (p.name === powerName ? { ...p, level: newLevel } : p))
@@ -975,6 +1001,7 @@ export const useBuildStore = create<BuildStore>()(
       },
 
       swapPowerLevels: (powerNameA, powerNameB) => {
+        historyCheckpoint();
         set((state) => {
           const foundA = findPower(state.build, powerNameA);
           const foundB = findPower(state.build, powerNameB);
@@ -1009,6 +1036,7 @@ export const useBuildStore = create<BuildStore>()(
         const excluded = getExcludedPools(poolId);
         if (excluded && state.build.pools.some((p) => excluded.includes(p.id))) return false;
 
+        historyCheckpoint();
         set((s) => ({
           build: {
             ...s.build,
@@ -1027,6 +1055,7 @@ export const useBuildStore = create<BuildStore>()(
       },
 
       removePool: (poolId) => {
+        historyCheckpoint();
         set((state) => {
           const removedPool = state.build.pools.find((p) => p.id === poolId);
           const removedNames = new Set(removedPool?.powers.map((p) => p.name) ?? []);
@@ -1041,6 +1070,7 @@ export const useBuildStore = create<BuildStore>()(
       },
 
       setEpicPool: (poolId) => {
+        historyCheckpoint();
         if (!poolId) {
           set((state) => {
             const removedNames = new Set(state.build.epicPool?.powers.map((p) => p.name) ?? []);
@@ -1087,6 +1117,7 @@ export const useBuildStore = create<BuildStore>()(
         // Inherent power slots are excluded entirely from the budget.
         if (countPlacedSlots(state.build) >= getPlacedSlotLimit(state.build.level)) return false;
 
+        historyCheckpoint();
         const newSlotIndex = power.slots.length; // index of the slot being added
         set((s) => {
           const newBuild = applyPowerUpdate(s.build, category, (powers) =>
@@ -1114,6 +1145,7 @@ export const useBuildStore = create<BuildStore>()(
         // Check if slot exists
         if (slotIndex >= power.slots.length) return false;
 
+        historyCheckpoint();
         set((s) => {
           const newBuild = applyPowerUpdate(s.build, category, (powers) =>
             powers.map((p) =>
@@ -1149,6 +1181,7 @@ export const useBuildStore = create<BuildStore>()(
         const found = findPower(state.build, powerName);
         if (!found) return;
 
+        historyCheckpoint();
         const { category } = found;
 
         set((s) => {
@@ -1173,6 +1206,7 @@ export const useBuildStore = create<BuildStore>()(
         const found = findPower(state.build, powerName);
         if (!found) return;
 
+        historyCheckpoint();
         const { category } = found;
 
         set((s) => {
@@ -1187,36 +1221,45 @@ export const useBuildStore = create<BuildStore>()(
       },
 
       // Settings
-      setLevel: (level) =>
+      setLevel: (level) => {
+        historyCheckpoint();
         set((state) => ({
           build: {
             ...state.build,
             level: Math.max(1, Math.min(50, level)),
           },
-        })),
+        }));
+      },
 
-      setExemplarLevel: (level) =>
+      setExemplarLevel: (level) => {
+        historyCheckpoint();
         set((state) => ({
           build: {
             ...state.build,
             exemplarLevel: level ? Math.max(1, Math.min(state.build.level, level)) : null,
           },
-        })),
+        }));
+      },
 
-      setProgressionMode: (mode) =>
+      setProgressionMode: (mode) => {
+        historyCheckpoint();
         set((state) => ({
           build: { ...state.build, progressionMode: mode },
-        })),
+        }));
+      },
 
-      setOrigin: (origin) =>
+      setOrigin: (origin) => {
+        historyCheckpoint();
         set((state) => ({
           build: {
             ...state.build,
             settings: { ...state.build.settings, origin },
           },
-        })),
+        }));
+      },
 
-      setGlobalIOLevel: (level) =>
+      setGlobalIOLevel: (level) => {
+        historyCheckpoint();
         set((state) => ({
           build: {
             ...state.build,
@@ -1225,27 +1268,33 @@ export const useBuildStore = create<BuildStore>()(
               globalIOLevel: Math.max(10, Math.min(53, level)),
             },
           },
-        })),
+        }));
+      },
 
       // Accolades
-      addAccolade: (accolade) =>
+      addAccolade: (accolade) => {
+        historyCheckpoint();
         set((state) => ({
           build: {
             ...state.build,
             accolades: [...state.build.accolades, accolade],
           },
-        })),
+        }));
+      },
 
-      removeAccolade: (accoladeId) =>
+      removeAccolade: (accoladeId) => {
+        historyCheckpoint();
         set((state) => ({
           build: {
             ...state.build,
             accolades: state.build.accolades.filter((a) => a.id !== accoladeId),
           },
-        })),
+        }));
+      },
 
       // Incarnates
-      setIncarnatePower: (slotId, power) =>
+      setIncarnatePower: (slotId, power) => {
+        historyCheckpoint();
         set((state) => ({
           build: {
             ...state.build,
@@ -1254,9 +1303,11 @@ export const useBuildStore = create<BuildStore>()(
               [slotId]: power,
             },
           },
-        })),
+        }));
+      },
 
-      clearIncarnatePower: (slotId) =>
+      clearIncarnatePower: (slotId) => {
+        historyCheckpoint();
         set((state) => ({
           build: {
             ...state.build,
@@ -1265,15 +1316,18 @@ export const useBuildStore = create<BuildStore>()(
               [slotId]: null,
             },
           },
-        })),
+        }));
+      },
 
-      clearAllIncarnates: () =>
+      clearAllIncarnates: () => {
+        historyCheckpoint();
         set((state) => ({
           build: {
             ...state.build,
             incarnates: createEmptyIncarnateBuildState(),
           },
-        })),
+        }));
+      },
 
       // Incarnate Crafting Checklist
       toggleCraftingCheckItem: (key) =>
@@ -1349,17 +1403,20 @@ export const useBuildStore = create<BuildStore>()(
         })),
 
       // Power toggle (for stat calculations)
-      togglePowerActive: (powerName) =>
+      togglePowerActive: (powerName) => {
+        historyCheckpoint();
         set((state) => ({
           build: applyToAllPowers(state.build, (powers) =>
             powers.map((p) =>
               p.name === powerName ? { ...p, isActive: !p.isActive } : p
             )
           ),
-        })),
+        }));
+      },
 
       // Set active sub-power for powers with mutually exclusive stances
-      setActiveSubPower: (parentPowerName, subPowerName) =>
+      setActiveSubPower: (parentPowerName, subPowerName) => {
+        historyCheckpoint();
         set((state) => ({
           build: applyToAllPowers(state.build, (powers) =>
             powers.map((p) =>
@@ -1368,7 +1425,8 @@ export const useBuildStore = create<BuildStore>()(
                 : p
             )
           ),
-        })),
+        }));
+      },
 
       // Computed
       getTotalSlotsUsed: () => countTotalSlots(get().build),
@@ -1425,6 +1483,7 @@ export const useBuildStore = create<BuildStore>()(
       },
 
       importBuild: (json) => {
+        historyCheckpoint();
         try {
           const data = JSON.parse(json);
           let build: Build;
@@ -1470,15 +1529,20 @@ export const useBuildStore = create<BuildStore>()(
       },
 
       importMidsBuild: (build) => {
+        historyCheckpoint();
         if (!build.slotOrder) {
           build.slotOrder = [];
         }
         set({ build });
       },
 
-      resetBuild: () => set({ build: createEmptyBuild() }),
+      resetBuild: () => {
+        historyCheckpoint();
+        set({ build: createEmptyBuild() });
+      },
 
-      clearPowers: () =>
+      clearPowers: () => {
+        historyCheckpoint();
         set((state) => {
           // Normalize branch powersets back to base for VEATs
           // (e.g., after importing a Crab Spider, branch powersets may be set as primary/secondary)
@@ -1522,8 +1586,9 @@ export const useBuildStore = create<BuildStore>()(
               ),
             },
           };
-        }),
-    }),
+        });
+      },
+    });},
     {
       name: 'coh-planner-build',
       storage: createJSONStorage(() => localStorage),

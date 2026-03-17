@@ -978,7 +978,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
             {Object.entries(enhancementBonuses).map(([aspect, value]) => (
               <div key={aspect} className="flex justify-between">
                 <span className="text-slate-400 capitalize">{aspect}</span>
-                <span className="text-green-400">+{((value || 0) * 100).toFixed(1)}%</span>
+                <span className="text-green-400">+{((value || 0) * 100).toFixed(2)}%</span>
               </div>
             ))}
           </div>
