@@ -215,8 +215,9 @@ function BuildIdentityPopover() {
   const atLabel = archetype?.name ?? null;
   const primaryLabel = build.primary.name || null;
   const secondaryLabel = build.secondary.name || null;
+  const buildName = build.name?.trim() || null;
   const summaryLabel = atLabel
-    ? [atLabel, primaryLabel, secondaryLabel].filter(Boolean).join(' · ')
+    ? [buildName, atLabel, primaryLabel, secondaryLabel].filter(Boolean).join(' · ')
     : 'Select Build Identity...';
 
   return (

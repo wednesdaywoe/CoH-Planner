@@ -328,6 +328,10 @@ export function generatePrintHTML(build: Build): string {
   if (build.epicPool) {
     allPowersetSections.push(powersetSection(build.epicPool.name, build.epicPool.powers, slotLevels));
   }
+  if (build.inherents && build.inherents.length > 0) {
+    const slottedInherents = build.inherents.filter(p => p.slots.some(s => s !== null));
+    allPowersetSections.push(powersetSection('Inherent Powers', slottedInherents, slotLevels));
+  }
   const incarnateSection = buildIncarnateHTML(build.incarnates);
   if (incarnateSection) allPowersetSections.push(incarnateSection);
 
