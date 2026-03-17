@@ -93,11 +93,30 @@ const CATEGORY_ROLE_MAP: Record<string, 'primary' | 'secondary'> = {
  * Some roles swap meaning depending on archetype (e.g., Defense is primary for Tanker, secondary for Scrapper).
  */
 function getCategoryType(category: string, archetypeId: string): 'primary' | 'secondary' | null {
-  // Parse: "Corruptor_Ranged" → archetype="Corruptor", role="Ranged"
+  // Arachnos and Kheldian archetypes use non-standard category names
+  // that don't follow the standard "{Archetype}_{Role}" pattern
+  if (archetypeId === 'arachnos-widow') {
+    if (category === 'Widow_Training') return 'primary';
+    if (category === 'Teamwork') return 'secondary';
+  }
+  if (archetypeId === 'arachnos-soldier') {
+    if (category === 'Arachnos_Soldiers') return 'primary';
+    if (category === 'Training_Gadgets' || category === 'Training_and_Gadgets') return 'secondary';
+  }
+  if (archetypeId === 'peacebringer') {
+    if (category === 'Peacebringer_Offensive') return 'primary';
+    if (category === 'Peacebringer_Defensive') return 'secondary';
+  }
+  if (archetypeId === 'warshade') {
+    if (category === 'Warshade_Offensive') return 'primary';
+    if (category === 'Warshade_Defensive') return 'secondary';
+  }
+
+  // Standard format: "Archetype_Role" (e.g., "Corruptor_Ranged")
   const parts = category.split('_');
   if (parts.length < 2) return null;
 
-  const role = parts.slice(1).join('_'); // Handle multi-word roles like "Arachnos_Soldier"
+  const role = parts.slice(1).join('_'); // Handle multi-word roles
 
   // Special cases where role meaning flips based on archetype
   if (role === 'Defense') {
