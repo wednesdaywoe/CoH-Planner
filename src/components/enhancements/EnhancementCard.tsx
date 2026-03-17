@@ -182,8 +182,8 @@ function formatEnhValue(value: number): string {
 }
 
 function EnhancementTooltip({ piece, setName, level, isAttuned, boost = 0 }: EnhancementTooltipProps) {
-  // For attuned, use level 50 for display purposes
-  const effectiveLevel = isAttuned ? 50 : level;
+  // Attuned enhancements scale to character level; non-attuned use their fixed level
+  const effectiveLevel = level;
   const aspectCount = piece.aspects.length;
   const boostMultiplier = 1 + boost * BOOST_MULTIPLIER_PER_LEVEL;
 

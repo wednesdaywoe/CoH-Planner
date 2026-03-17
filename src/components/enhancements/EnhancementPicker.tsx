@@ -44,6 +44,7 @@ export function EnhancementPicker() {
   const globalIOLevel = useUIStore((s) => s.globalIOLevel);
   const attunementEnabled = useUIStore((s) => s.attunementEnabled);
   const toggleAttunement = useUIStore((s) => s.toggleAttunement);
+  const setGlobalIOLevel = useUIStore((s) => s.setGlobalIOLevel);
   const globalBoostLevel = useUIStore((s) => s.globalBoostLevel);
   const setGlobalBoostLevel = useUIStore((s) => s.setGlobalBoostLevel);
   const closeEnhancementPicker = useUIStore((s) => s.closeEnhancementPicker);
@@ -238,13 +239,17 @@ export function EnhancementPicker() {
     if (picker.isOpen && !prevIsOpen.current) {
       if (primaryCategory) setSidebarFilter(primaryCategory);
       setShiftSelected(new Map());
+      // Default IO level to character level when picker opens
+      setGlobalIOLevel(Math.max(10, build.level));
     }
     prevIsOpen.current = picker.isOpen;
-  }, [picker.isOpen, primaryCategory]);
+  }, [picker.isOpen, primaryCategory, build.level, setGlobalIOLevel]);
 
   // Helper to create IO set enhancement via registry factory
-  const makeIOSetEnhancement = (set: IOSet, piece: IOSetPiece, pieceIndex: number) =>
-    createIOSetEnhancement(set, piece, pieceIndex, { attuned: attunementEnabled, level: globalIOLevel, boost: globalBoostLevel });
+  const makeIOSetEnhancement = (set: IOSet, piece: IOSetPiece, pieceIndex: number) => {
+    const clampedLevel = Math.max(set.minLevel, Math.min(globalIOLevel, set.maxLevel));
+    return createIOSetEnhancement(set, piece, pieceIndex, { attuned: attunementEnabled, level: clampedLevel, boost: globalBoostLevel });
+  };
 
   // Unified placement: routes to override handler (Compare Slotting) or build store
   const placeEnhancement = (powerName: string, slotIndex: number, enhancement: Enhancement) => {
@@ -566,8 +571,24 @@ export function EnhancementPicker() {
               </button>
             ))}
           </div>
-          {/* Attunement toggle + Boost dial */}
+          {/* IO Level adjuster + Attunement toggle + Boost dial */}
           <div className="px-3 sm:px-4 py-1.5 sm:py-0 border-t sm:border-t-0 border-gray-700 flex items-center gap-4">
+            <div className={`flex items-center gap-1.5 ${attunementEnabled ? 'opacity-40 pointer-events-none' : ''}`}>
+              <span className="text-xs text-gray-400">Lv</span>
+              <button
+                onClick={() => setGlobalIOLevel(globalIOLevel - 1)}
+                className="w-5 h-5 rounded text-xs bg-gray-700 hover:bg-gray-600 text-gray-300 flex items-center justify-center disabled:opacity-30 disabled:cursor-not-allowed"
+                disabled={attunementEnabled || globalIOLevel <= 10}
+              >-</button>
+              <span className={`text-sm font-mono w-6 text-center ${attunementEnabled ? 'text-gray-500' : 'text-blue-400'}`}>
+                {globalIOLevel}
+              </span>
+              <button
+                onClick={() => setGlobalIOLevel(globalIOLevel + 1)}
+                className="w-5 h-5 rounded text-xs bg-gray-700 hover:bg-gray-600 text-gray-300 flex items-center justify-center disabled:opacity-30 disabled:cursor-not-allowed"
+                disabled={attunementEnabled || globalIOLevel >= 53}
+              >+</button>
+            </div>
             <Toggle
               id="attunement-toggle-picker"
               name="attunement"
@@ -1198,8 +1219,12 @@ function IOSetRow({
   hasShiftSelection,
 }: IOSetRowProps) {
   const attunementEnabled = useUIStore((s) => s.attunementEnabled);
+  const globalIOLevel = useUIStore((s) => s.globalIOLevel);
   const isUniqueEnhancementSlotted = useBuildStore((s) => s.isUniqueEnhancementSlotted);
   const trackedStats = useUIStore((s) => s.trackedStats);
+
+  // Level gating: set is unavailable if IO level is outside its range
+  const isLevelGated = !attunementEnabled && (set.minLevel > globalIOLevel || set.maxLevel < globalIOLevel);
 
   // Check if this set provides any tracked stat bonuses
   const hasTrackedMatch = useMemo(() => {
@@ -1254,6 +1279,11 @@ function IOSetRow({
         <span className="text-[10px] sm:text-xs text-gray-500">
           Lv {set.minLevel}-{set.maxLevel} • {set.pieces.length}pc
         </span>
+        {isLevelGated && (
+          <span className="text-[10px] text-orange-400">
+            (will slot at Lv {globalIOLevel < set.minLevel ? set.minLevel : set.maxLevel})
+          </span>
+        )}
         <span className="hidden sm:inline text-xs text-gray-600 ml-auto">
           {hasShiftSelection ? 'Tap selected to slot all' : 'Shift+click or long-press to multi-select'}
         </span>
@@ -1622,7 +1652,8 @@ function SetPieceTooltip({ set, piece }: SetPieceTooltipProps) {
   }, [build, picker.currentPowerName, setId]);
 
   // Calculate aspect values at the effective level
-  const effectiveLevel = attunementEnabled ? 50 : globalIOLevel;
+  const rawLevel = attunementEnabled ? (build.level || 50) : globalIOLevel;
+  const effectiveLevel = Math.max(set.minLevel, Math.min(rawLevel, set.maxLevel));
   const rawAspectCount = piece.aspects.filter(a => normalizeAspectName(a) !== null).length || piece.aspects.length;
   // Proc effects count as 3 additional aspects for the multi-aspect modifier
   const aspectCount = piece.proc ? rawAspectCount + 3 : rawAspectCount;
@@ -1803,7 +1834,11 @@ function SetPieceTooltip({ set, piece }: SetPieceTooltipProps) {
           {attunementEnabled ? (
             <span className="text-purple-400">Attuned</span>
           ) : (
-            <>Level: <span className="text-slate-200">{globalIOLevel}</span></>
+            <>Level: <span className="text-slate-200">{effectiveLevel}</span>
+              {effectiveLevel !== globalIOLevel && (
+                <span className="text-orange-400 ml-1">({effectiveLevel < globalIOLevel ? 'max' : 'min'})</span>
+              )}
+            </>
           )}
         </span>
         <span className="text-slate-400">Range: {set.minLevel}-{set.maxLevel}</span>

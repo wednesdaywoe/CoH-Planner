@@ -115,10 +115,11 @@ export function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfo
       : rawIcon;
 
     // Calculate enhancement values for each aspect
-    // IO enhancement values are based on the IO's level, not character level
-    // Attuned enhancements always use level 50 values (they scale to stay effective, not to change values)
+    // Attuned enhancements scale to character level (clamped to set's level range)
     // Non-attuned use their slotted level, defaulting to 50
-    const effectiveLevel = enhancement.level || 50;
+    const effectiveLevel = ioEnh.attuned
+      ? Math.min(Math.max(build.level, ioSet?.minLevel || 1), ioSet?.maxLevel || 50)
+      : (enhancement.level || 50);
     const rawAspectCount = ioEnh.aspects.filter(a => normalizeAspectName(a) !== null).length || ioEnh.aspects.length;
     // Proc effects count as 3 additional aspects for the multi-aspect modifier
     const effectiveAspectCount = ioEnh.isProc ? rawAspectCount + 3 : rawAspectCount;

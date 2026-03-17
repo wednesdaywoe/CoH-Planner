@@ -493,10 +493,11 @@ export function calculatePowerEnhancementBonuses(
       const piece = set.pieces.find((p) => p.num === slot.pieceNum);
       if (!piece?.aspects) return;
 
-      // maxLevel <= 1 indicates an attuned set (ATO/Event) that scales with player level
-      // When exemplared, attuned IOs compute at exemplar level (they auto-scale)
+      // Attuned if: inherently attuned set (ATO/Event with maxLevel <= 1) OR
+      // individually attuned IO (slot.attuned flag from catalyzed/purchased attuned)
+      // When attuned, compute at character level (they auto-scale)
       // Non-attuned IOs compute at their fixed level, then get scaled
-      const isAttuned = set.maxLevel <= 1;
+      const isAttuned = set.maxLevel <= 1 || slot.attuned === true;
       let ioLevel: number;
       if (isAttuned) {
         // Attuned: use exemplar level if exemplaring, otherwise globalIOLevel (typically 50)
