@@ -121,37 +121,35 @@ export function WelcomeModal({ isOpen, onClose }: WelcomeModalProps) {
           </ul>
 
           {/* Links */}
-          <div className="bg-gray-800 rounded-lg p-3 border border-gray-700 space-y-2">
-            <p className="text-sm text-gray-300">
-              <button
-                type="button"
-                onClick={() => { handleClose(); openChangelogModal(); }}
-                className="text-cyan-400 underline hover:text-cyan-300 font-medium"
-              >
-                View Full Changelog
-              </button>
-              {' '} — complete history of all changes
-            </p>
-            <p className="text-sm text-gray-300">
-              <button
-                type="button"
-                onClick={() => { handleClose(); openKnownIssuesModal(); }}
-                className="text-cyan-400 underline hover:text-cyan-300 font-medium"
-              >
-                Known Issues & Roadmap
-              </button>
-              {' '} — tracked bugs and planned features
-            </p>
-            <p className="text-sm text-gray-300">
-              <button
-                type="button"
-                onClick={() => { handleClose(); openControlsModal(); }}
-                className="text-cyan-400 underline hover:text-cyan-300 font-medium"
-              >
-                Controls
-              </button>
-              {' '} — keyboard shortcuts and interactions
-            </p>
+          <div className="grid grid-cols-3 gap-2">
+            <button
+              type="button"
+              onClick={() => { handleClose(); openChangelogModal(); }}
+              className="flex flex-col items-center justify-center gap-1.5 p-3 bg-gray-800 border border-gray-700 rounded-lg hover:bg-gray-700 hover:border-cyan-600/50 transition-colors text-center"
+            >
+              <svg className="w-5 h-5 text-cyan-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+              </svg>
+              <span className="text-xs font-medium text-cyan-400 leading-tight">Full Changelog</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => { handleClose(); openKnownIssuesModal(); }}
+              className="flex flex-col items-center justify-center gap-1.5 p-3 bg-gray-800 border border-gray-700 rounded-lg hover:bg-gray-700 hover:border-cyan-600/50 transition-colors text-center"
+            >
+              <svg className="w-5 h-5 text-cyan-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+              </svg>
+              <span className="text-xs font-medium text-cyan-400 leading-tight">Known Issues & Roadmap</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => { handleClose(); openControlsModal(); }}
+              className="flex flex-col items-center justify-center gap-1.5 p-3 bg-gray-800 border border-gray-700 rounded-lg hover:bg-gray-700 hover:border-cyan-600/50 transition-colors text-center"
+            >
+              <span className="text-xl font-bold text-cyan-400 leading-none">?</span>
+              <span className="text-xs font-medium text-cyan-400 leading-tight">Controls & Help</span>
+            </button>
           </div>
         </div>
       </ModalBody>
