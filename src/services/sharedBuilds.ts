@@ -133,6 +133,7 @@ export async function shareBuild(input: ShareBuildInput): Promise<{ id: string; 
     server: input.server,
     tags: input.tags,
     build_json: buildData,
+    is_public: input.is_public ?? true,
   };
 
   // If updating an existing build, attach credentials (token and/or JWT via auth header)
@@ -288,6 +289,24 @@ export async function getMyBuilds(): Promise<SharedBuild[]> {
     throw new Error(error.message);
   }
   return (data ?? []) as SharedBuild[];
+}
+
+/** Toggle the public/private visibility of an owned build (requires Discord login) */
+export async function updateBuildVisibility(id: string, isPublic: boolean): Promise<void> {
+  if (!supabase) throw new Error('Sharing is not configured');
+
+  const user = useAuthStore.getState().user;
+  if (!user) throw new Error('Must be logged in to change build visibility');
+
+  const { data, error } = await supabase.functions.invoke('update-build-visibility', {
+    body: { id, is_public: isPublic },
+  });
+
+  if (error) {
+    const msg = data?.error || error.message || 'Failed to update visibility';
+    throw new Error(msg);
+  }
+  if (data?.error) throw new Error(data.error);
 }
 
 /** Claim existing token-owned builds by linking them to the authenticated user account */

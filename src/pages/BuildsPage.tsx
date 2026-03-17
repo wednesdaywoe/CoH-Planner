@@ -12,6 +12,7 @@ import {
   getMyBuilds,
   getFavoriteBuilds,
   isShareEnabled,
+  updateBuildVisibility,
 } from '@/services/sharedBuilds';
 import type { SharedBuild, SearchFilters, SearchResult } from '@/types/shared';
 
@@ -140,6 +141,13 @@ export function BuildsPage() {
 
   const handleBuildDeleted = (id: string) => {
     setMyBuilds((prev) => prev.filter((b) => b.id !== id));
+  };
+
+  const handleVisibilityToggle = async (id: string, isPublic: boolean) => {
+    await updateBuildVisibility(id, isPublic);
+    setMyBuilds((prev) =>
+      prev.map((b) => (b.id === id ? { ...b, is_public: isPublic } : b)),
+    );
   };
 
   if (!isShareEnabled()) {
@@ -284,6 +292,7 @@ export function BuildsPage() {
                 showDelete
                 onDeleted={handleBuildDeleted}
                 onAuthorClick={handleAuthorClick}
+                onVisibilityToggle={handleVisibilityToggle}
               />
             ))}
           </div>

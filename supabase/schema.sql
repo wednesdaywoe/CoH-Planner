@@ -23,7 +23,8 @@ CREATE TABLE shared_builds (
   updated_at TIMESTAMPTZ DEFAULT now(),
   views INTEGER DEFAULT 0,
   owner_token_hash TEXT,
-  user_id UUID REFERENCES auth.users(id)
+  user_id UUID REFERENCES auth.users(id),
+  is_public BOOLEAN NOT NULL DEFAULT TRUE
 );
 
 -- Indexes for search and filtering
@@ -39,12 +40,17 @@ CREATE INDEX idx_shared_builds_search ON shared_builds
 -- Row Level Security
 ALTER TABLE shared_builds ENABLE ROW LEVEL SECURITY;
 
--- Anyone can read
+-- Anon/public role: only public builds
 CREATE POLICY "Public read" ON shared_builds
-  FOR SELECT USING (true);
+  FOR SELECT USING (is_public = TRUE);
+
+-- Authenticated users: all public builds + their own private builds
+CREATE POLICY "Owner read private" ON shared_builds
+  FOR SELECT TO authenticated
+  USING (is_public = TRUE OR user_id = auth.uid());
 
 -- No INSERT/UPDATE/DELETE policies for anon role.
--- The edge function uses the service role key, which bypasses RLS.
+-- The edge functions use the service role key, which bypasses RLS.
 
 -- ============================================
 -- Rate limiting table
@@ -87,6 +93,29 @@ $$ LANGUAGE plpgsql SECURITY DEFINER SET search_path = public;
 -- ============================================
 -- ALTER TABLE shared_builds ADD COLUMN IF NOT EXISTS user_id UUID REFERENCES auth.users(id);
 -- CREATE INDEX IF NOT EXISTS idx_shared_builds_user_id ON shared_builds(user_id);
+
+-- ============================================
+-- Migration: Personal Vault support (run on existing databases)
+-- ============================================
+-- 1. Add the is_public column (defaults TRUE — all existing builds remain public)
+-- ALTER TABLE shared_builds ADD COLUMN IF NOT EXISTS is_public BOOLEAN NOT NULL DEFAULT TRUE;
+--
+-- 2. Index for the filtered public browse query
+-- CREATE INDEX IF NOT EXISTS idx_shared_builds_is_public ON shared_builds(is_public) WHERE is_public = TRUE;
+--
+-- 3. Replace the permissive read policy with visibility-aware policies
+-- DROP POLICY IF EXISTS "Public read" ON shared_builds;
+--
+-- Anon/public role: only public builds
+-- CREATE POLICY "Public read" ON shared_builds
+--   FOR SELECT
+--   USING (is_public = TRUE);
+--
+-- Authenticated users: their own builds (public or private) + all public builds
+-- CREATE POLICY "Owner read private" ON shared_builds
+--   FOR SELECT
+--   TO authenticated
+--   USING (is_public = TRUE OR user_id = auth.uid());
 
 -- ============================================
 -- Admin: Assign an owner token to a legacy build

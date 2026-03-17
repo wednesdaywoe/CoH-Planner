@@ -5,14 +5,16 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from '@tanstack/react-router';
 import { Button } from '@/components/ui/Button';
-import { getSharedBuild, incrementViews, isOwnedBuild, deleteBuild, reclaimBuild } from '@/services/sharedBuilds';
+import { getSharedBuild, incrementViews, isOwnedBuild, deleteBuild, reclaimBuild, updateBuildVisibility } from '@/services/sharedBuilds';
 import { useBuildStore } from '@/stores/buildStore';
+import { useAuthStore } from '@/stores/authStore';
 import type { SharedBuild } from '@/types/shared';
 
 export function BuildDetailPage() {
   const { id } = useParams({ from: '/builds/$id' });
   const navigate = useNavigate();
   const importBuild = useBuildStore((s) => s.importBuild);
+  const user = useAuthStore((s) => s.user);
 
   const [build, setBuild] = useState<SharedBuild | null>(null);
   const [loading, setLoading] = useState(true);
@@ -26,6 +28,8 @@ export function BuildDetailPage() {
   const [reclaimToken, setReclaimToken] = useState('');
   const [reclaimSuccess, setReclaimSuccess] = useState(false);
   const [owned, setOwned] = useState(false);
+  const [visibilityLoading, setVisibilityLoading] = useState(false);
+  const [visibilityError, setVisibilityError] = useState<string | null>(null);
 
   useEffect(() => {
     let cancelled = false;
@@ -87,6 +91,21 @@ export function BuildDetailPage() {
     }
   };
 
+  const handleToggleVisibility = async () => {
+    if (!build || visibilityLoading) return;
+    setVisibilityLoading(true);
+    setVisibilityError(null);
+    const newIsPublic = !build.is_public;
+    try {
+      await updateBuildVisibility(id, newIsPublic);
+      setBuild({ ...build, is_public: newIsPublic });
+    } catch (e) {
+      setVisibilityError(e instanceof Error ? e.message : 'Failed to update visibility');
+    } finally {
+      setVisibilityLoading(false);
+    }
+  };
+
   if (loading) {
     return (
       <div className="max-w-4xl mx-auto p-6 text-center py-12">
@@ -130,7 +149,7 @@ export function BuildDetailPage() {
               {build.archetype_name} — Level {build.level}
             </p>
           </div>
-          <div className="flex gap-2 shrink-0">
+          <div className="flex gap-2 shrink-0 flex-wrap justify-end">
             <Button
               variant={copied ? 'secondary' : 'ghost'}
               size="sm"
@@ -138,6 +157,18 @@ export function BuildDetailPage() {
             >
               {copied ? 'Copied!' : 'Copy Link'}
             </Button>
+            {/* Visibility toggle — only for Discord-linked owners */}
+            {owned && user && build?.user_id === user.id && (
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={handleToggleVisibility}
+                isLoading={visibilityLoading}
+                className={build?.is_public ? 'text-gray-400 hover:text-indigo-300' : 'text-indigo-400 hover:text-indigo-300'}
+              >
+                {build?.is_public ? 'Make Private' : 'Make Public'}
+              </Button>
+            )}
             {owned ? (
               <Button
                 variant="ghost"
@@ -180,6 +211,23 @@ export function BuildDetailPage() {
           <span>{build.views} views</span>
         </div>
       </div>
+
+      {/* Private build badge */}
+      {build && !build.is_public && (
+        <div className="bg-indigo-900/20 border border-indigo-700/50 rounded-lg px-4 py-2.5 mb-6 flex items-center gap-2 text-sm text-indigo-300">
+          <svg className="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+          </svg>
+          This build is private. Only you can see it.
+        </div>
+      )}
+
+      {/* Visibility error */}
+      {visibilityError && (
+        <div className="bg-red-900/20 border border-red-700/50 rounded-lg p-3 mb-6 text-sm text-red-300">
+          {visibilityError}
+        </div>
+      )}
 
       {/* Delete confirmation */}
       {deleteConfirm && (
