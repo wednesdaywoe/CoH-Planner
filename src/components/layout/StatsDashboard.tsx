@@ -4,7 +4,7 @@
  * Tooltips show detailed breakdowns of stat sources with Rule of 5 tracking
  */
 
-import { useMemo } from 'react';
+import { useEffect, useMemo } from 'react';
 import { useCalculatedStats, useCharacterCalculation } from '@/hooks';
 import { useBuildStore, useUIStore } from '@/stores';
 import { getBaselineHealth } from '@/utils/calculations/stats';
@@ -209,6 +209,17 @@ export function StatsDashboard() {
     name: cat.name,
     stats: visibleStats.filter((s) => cat.stats.includes(s.id)),
   })).filter((cat) => cat.stats.length > 0);
+
+  // Auto-track stats that have Rule of 5 violations so the user sees them immediately
+  useEffect(() => {
+    for (const stat of visibleStats) {
+      if (!stat.breakdownKey) continue;
+      const hasCapped = stat.breakdown?.sources.some(s => s.capped) ?? false;
+      if (hasCapped && !trackedStats.includes(stat.breakdownKey)) {
+        toggleTrackedStat(stat.breakdownKey);
+      }
+    }
+  }, [visibleStats, trackedStats, toggleTrackedStat]);
 
   return (
     <>
@@ -464,7 +475,7 @@ function StatItem({ label, value, color = 'text-gray-300', tooltip, breakdown, b
   const content = (
     <div
       className={`flex items-baseline justify-between gap-1 min-w-0 overflow-hidden ${onTrack ? 'cursor-pointer' : 'cursor-help'} ${
-        tracked ? `ring-1 ${hasCapped ? 'ring-orange-400/70' : 'ring-blue-500/60'} rounded px-1 -mx-1` : ''
+        (tracked || hasCapped) ? `ring-1 ${hasCapped ? 'ring-orange-400/70' : 'ring-blue-500/60'} rounded px-1 -mx-1` : ''
       } ${className}`}
       onClick={onTrack}
     >
