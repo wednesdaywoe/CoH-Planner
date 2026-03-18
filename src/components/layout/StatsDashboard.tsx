@@ -83,6 +83,7 @@ export function StatsDashboard() {
   const closeProcSettingsModal = useUIStore((s) => s.closeProcSettingsModal);
   const trackedStats = useUIStore((s) => s.trackedStats);
   const toggleTrackedStat = useUIStore((s) => s.toggleTrackedStat);
+  const ensureTrackedStats = useUIStore((s) => s.ensureTrackedStats);
   // Welcome modal (auto-shows on first visit)
   const [welcomeModalOpen, closeWelcomeModal] = useWelcomeModal();
 
@@ -212,14 +213,13 @@ export function StatsDashboard() {
 
   // Auto-track stats that have Rule of 5 violations so the user sees them immediately
   useEffect(() => {
-    for (const stat of visibleStats) {
-      if (!stat.breakdownKey) continue;
-      const hasCapped = stat.breakdown?.sources.some(s => s.capped) ?? false;
-      if (hasCapped && !trackedStats.includes(stat.breakdownKey)) {
-        toggleTrackedStat(stat.breakdownKey);
-      }
+    const cappedKeys = visibleStats
+      .filter(s => s.breakdownKey && s.breakdown?.sources.some(src => src.capped))
+      .map(s => s.breakdownKey!);
+    if (cappedKeys.length > 0) {
+      ensureTrackedStats(cappedKeys);
     }
-  }, [visibleStats, trackedStats, toggleTrackedStat]);
+  }, [visibleStats, ensureTrackedStats]);
 
   return (
     <>

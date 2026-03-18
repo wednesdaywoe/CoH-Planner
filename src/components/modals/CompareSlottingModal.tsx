@@ -462,6 +462,7 @@ export function CompareSlottingModal() {
                       totalPieces={item.totalPieces}
                       slottedPieces={item.slottedPieces}
                       bonuses={item.bonuses}
+                      bonusTracking={currentCalcResult.bonusTracking}
                     />
                   ))}
                 </div>

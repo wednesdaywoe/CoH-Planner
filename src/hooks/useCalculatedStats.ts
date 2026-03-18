@@ -14,6 +14,7 @@ import { useBuildStore, useUIStore } from '@/stores';
 import { getIOSet } from '@/data';
 import type { SetBonus } from '@/types';
 import type { ProcSettings } from '@/stores/uiStore';
+import type { BonusTracking } from '@/utils/calculations';
 import {
   calculateCharacterTotals,
   type CharacterStats,
@@ -447,4 +448,12 @@ export function useActiveSetBonuses(): Array<{
 
     return results;
   }, [build.sets]);
+}
+
+/**
+ * Get Rule of 5 bonus tracking data for displaying (x/5) indicators
+ */
+export function useBonusTracking(): BonusTracking {
+  const result = useCharacterCalculation();
+  return result.bonusTracking;
 }

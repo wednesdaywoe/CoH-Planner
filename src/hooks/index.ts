@@ -19,6 +19,7 @@ export {
   useSlotsRemaining,
   usePowersPerLevel,
   useActiveSetBonuses,
+  useBonusTracking,
   convertToLegacyStats,
 } from './useCalculatedStats';
 

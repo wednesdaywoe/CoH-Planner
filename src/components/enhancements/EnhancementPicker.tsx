@@ -18,8 +18,9 @@ import {
   getRarityColor, getTierTextColor, getTierBorderColor,
   findProcData, parseProcEffect, getProcEffectLabel, getProcEffectColor, isProcAlwaysOn, interpolateProcDamage,
 } from '@/data';
-import { normalizeAspectName, getAspectSchedule, getIOValueAtLevel, normalizeStatName, getSetRarityMultiplier, BOOST_MULTIPLIER_PER_LEVEL } from '@/utils/calculations';
+import { normalizeAspectName, getAspectSchedule, getIOValueAtLevel, normalizeStatName, getTotalBonusCount, isBonusCapped, getSetRarityMultiplier, BOOST_MULTIPLIER_PER_LEVEL } from '@/utils/calculations';
 import { getPairedStat } from '@/utils/calculations/set-bonuses';
+import { useBonusTracking } from '@/hooks';
 import { Modal, ModalBody } from '@/components/modals';
 import { Tooltip, Toggle } from '@/components/ui';
 import { IOSetIcon, GenericIOIcon, OriginEnhancementIcon, SpecialEnhancementIcon } from './EnhancementIcon';
@@ -1616,6 +1617,7 @@ function SetPieceTooltip({ set, piece }: SetPieceTooltipProps) {
   const build = useBuildStore((s) => s.build);
   const picker = useUIStore((s) => s.enhancementPicker);
   const trackedStats = useUIStore((s) => s.trackedStats);
+  const bonusTracking = useBonusTracking();
 
   // Build a set of normalized stat keys that are being tracked (including paired stats)
   const trackedNormalized = useMemo(() => {
@@ -1873,13 +1875,20 @@ function SetPieceTooltip({ set, piece }: SetPieceTooltipProps) {
                     {pveEffects.map((eff, i) => {
                       const normalized = normalizeStatName(eff.stat);
                       const isTracked = normalized ? trackedNormalized.has(normalized) : false;
+                      const totalCount = (isActive && normalized) ? getTotalBonusCount(bonusTracking, normalized, eff.value) : 0;
+                      const capped = (isActive && normalized) ? isBonusCapped(bonusTracking, normalized, eff.value) : false;
                       // Use eff.value for accurate display instead of pre-rounded eff.desc
                       const displayValue = parseFloat(eff.value.toFixed(2));
                       const formatted = eff.desc.replace(/^\+[\d.]+%/, `+${displayValue}%`);
                       return (
-                        <span key={i} className={isTracked ? 'text-blue-300 font-semibold' : ''}>
+                        <span key={i} className={capped ? 'text-orange-400 font-semibold' : isTracked ? 'text-blue-300 font-semibold' : ''}>
                           {i > 0 && ', '}
                           {formatted}
+                          {isActive && totalCount > 0 && (
+                            <span className={`ml-0.5 text-[9px] ${capped ? 'text-orange-400' : 'text-slate-500'}`}>
+                              ({totalCount}/5)
+                            </span>
+                          )}
                         </span>
                       );
                     })}

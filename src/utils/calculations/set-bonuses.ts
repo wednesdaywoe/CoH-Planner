@@ -219,6 +219,9 @@ const STAT_NAME_MAP: Record<string, string | null> = {
   // All-defense (global proc effect handled by proc system, not set bonuses)
   'defense_(all)': null,
 
+  // Healing
+  healing_strength: 'healOther',
+
   // Range
   range: 'range',
   Range: 'range',
@@ -555,11 +558,21 @@ export function isBonusCapped(tracking: BonusTracking, stat: string, value: numb
 }
 
 /**
- * Get count of a specific bonus value for a stat
+ * Get count of a specific bonus value for a stat (only accepted, max 5)
  */
 export function getBonusCount(tracking: BonusTracking, stat: string, value: number): number {
   const valueKey = value.toFixed(2);
   return tracking[stat]?.[valueKey]?.count ?? 0;
+}
+
+/**
+ * Get total instances of a specific bonus (accepted + rejected) for (x/5) display
+ */
+export function getTotalBonusCount(tracking: BonusTracking, stat: string, value: number): number {
+  const valueKey = value.toFixed(2);
+  const vt = tracking[stat]?.[valueKey];
+  if (!vt) return 0;
+  return vt.sources.length + vt.rejectedSources.length;
 }
 
 /**

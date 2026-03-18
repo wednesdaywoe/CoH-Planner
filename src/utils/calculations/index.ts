@@ -70,6 +70,7 @@ export {
   getStatBreakdown,
   isBonusCapped,
   getBonusCount,
+  getTotalBonusCount,
   getActiveSetBonusesList,
   type BonusSource,
   type ValueTracking,

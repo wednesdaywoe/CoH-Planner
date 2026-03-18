@@ -433,6 +433,7 @@ interface UIActions {
 
   // Tracked Stats
   toggleTrackedStat: (breakdownKey: string) => void;
+  ensureTrackedStats: (keys: string[]) => void;
   clearTrackedStats: () => void;
 
   // Per-target slider
@@ -1191,6 +1192,12 @@ export const useUIStore = create<UIStore>()(
             ? state.trackedStats.filter((k) => k !== breakdownKey)
             : [...state.trackedStats, breakdownKey],
         })),
+      ensureTrackedStats: (keys) =>
+        set((state) => {
+          const toAdd = keys.filter((k) => !state.trackedStats.includes(k));
+          if (toAdd.length === 0) return state;
+          return { trackedStats: [...state.trackedStats, ...toAdd] };
+        }),
       clearTrackedStats: () => set({ trackedStats: [] }),
 
       // Per-target slider

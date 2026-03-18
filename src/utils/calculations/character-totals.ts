@@ -26,6 +26,7 @@ import {
   trackBonus,
   createBonusTracking,
   type AggregatedBonuses,
+  type BonusTracking,
   type StatBreakdownItem,
   type BuildPowers,
 } from './set-bonuses';
@@ -161,6 +162,8 @@ export interface CharacterCalculationResult {
   globalBonuses: GlobalBonuses;
   breakdown: Map<string, DashboardStatBreakdown>;
   setBonuses: AggregatedBonuses;
+  /** Raw Rule of 5 tracking — use getBonusCount/isBonusCapped to query */
+  bonusTracking: BonusTracking;
 }
 
 // ============================================
@@ -2397,6 +2400,7 @@ export function calculateCharacterTotals(
     globalBonuses,
     breakdown,
     setBonuses: setBonusAggregated,
+    bonusTracking: tracking,
   };
 }
 

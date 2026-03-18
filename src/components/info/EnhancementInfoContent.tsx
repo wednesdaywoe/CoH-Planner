@@ -4,11 +4,15 @@
  */
 
 import { useBuildStore } from '@/stores';
+import { useBonusTracking } from '@/hooks';
 import { getIOSet, getPower, getPowerPool, findProcData, parseProcEffect, getProcEffectLabel, getProcEffectColor, isProcAlwaysOn, interpolateProcDamage, calculateProcChance, calculateProcsPerMinute, calculateProcDPS, calculateAutoToggleProcChance, calculateAutoToggleProcsPerMinute } from '@/data';
 import {
   normalizeAspectName,
   getAspectSchedule,
   getIOValueAtLevel,
+  normalizeStatName,
+  getTotalBonusCount,
+  isBonusCapped,
   BOOST_MULTIPLIER_PER_LEVEL,
   getMultiAspectModifier,
   getSetRarityMultiplier,
@@ -28,6 +32,7 @@ interface EnhancementInfoContentProps {
 
 export function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfoContentProps) {
   const build = useBuildStore((s) => s.build);
+  const bonusTracking = useBonusTracking();
 
   // Find the power and get the enhancement
   const findEnhancement = (): Enhancement | null => {
@@ -561,12 +566,22 @@ export function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfo
                       <span className={`font-medium ${isActive ? 'text-green-500' : 'text-slate-600'}`}>
                         {bonus.pieces}pc:
                       </span>{' '}
-                      {pveEffects.map((eff, i) => (
-                        <span key={i}>
-                          {i > 0 && ', '}
-                          {eff.desc}
-                        </span>
-                      ))}
+                      {pveEffects.map((eff, i) => {
+                        const normalized = isActive ? normalizeStatName(eff.stat) : null;
+                        const totalCount = normalized ? getTotalBonusCount(bonusTracking, normalized, eff.value) : 0;
+                        const capped = normalized ? isBonusCapped(bonusTracking, normalized, eff.value) : false;
+                        return (
+                          <span key={i} className={capped ? 'text-orange-400' : ''}>
+                            {i > 0 && ', '}
+                            {eff.desc}
+                            {isActive && totalCount > 0 && (
+                              <span className={`ml-0.5 text-[9px] ${capped ? 'text-orange-400 font-semibold' : 'text-slate-500'}`}>
+                                ({totalCount}/5)
+                              </span>
+                            )}
+                          </span>
+                        );
+                      })}
                     </div>
                   );
                 })}
