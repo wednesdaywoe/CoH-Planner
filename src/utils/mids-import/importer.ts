@@ -448,7 +448,7 @@ function processEntry(
   // Process inherent powers for their slot data (powers are auto-populated,
   // but we need to preserve any slotted enhancements from the import)
   if (PowerName.startsWith('Inherent.')) {
-    if (segments.length < 3 || !SlotEntries || SlotEntries.length <= 1) {
+    if (segments.length < 3 || !SlotEntries || !SlotEntries.some(s => s.Enhancement)) {
       return null; // No meaningful slot data to preserve
     }
     const powerInternalName = segments[2];

@@ -10,7 +10,7 @@
 import { useState, useMemo, useEffect, useRef } from 'react';
 import { useBuildStore, useUIStore } from '@/stores';
 import {
-  getIOSetsForPower, getAllIOSets, lookupPower,
+  getIOSetsForPower, lookupPower,
   getCommonIOValueAtLevel, ORIGIN_TIERS,
   sortCategoriesByPriority,
   createIOSetEnhancement, createGenericIOEnhancement, createSpecialEnhancement, createOriginEnhancement,
@@ -28,7 +28,7 @@ import type { IOSet, IOSetPiece, EnhancementStatType, SpecialEnhancementDef, IOS
 import { getSetTrackedMatches } from '@/data/set-bonus-index';
 import { getEnhancementOutline } from '@/utils/enhancement-outline';
 
-type EnhancementTypeFilter = 'io-sets' | 'generic' | 'special' | 'origin' | 'debug';
+type EnhancementTypeFilter = 'io-sets' | 'generic' | 'special' | 'origin';
 
 // Sidebar filter can be 'all', a category name, or a special group
 type SidebarFilter =
@@ -48,6 +48,8 @@ export function EnhancementPicker() {
   const setGlobalIOLevel = useUIStore((s) => s.setGlobalIOLevel);
   const globalBoostLevel = useUIStore((s) => s.globalBoostLevel);
   const setGlobalBoostLevel = useUIStore((s) => s.setGlobalBoostLevel);
+  const ioSortBy = useUIStore((s) => s.ioSetSortBy);
+  const setIOSortBy = useUIStore((s) => s.setIOSetSortBy);
   const closeEnhancementPicker = useUIStore((s) => s.closeEnhancementPicker);
   const setEnhancement = useBuildStore((s) => s.setEnhancement);
   const buildOrigin = useBuildStore((s) => s.build.settings.origin);
@@ -56,7 +58,6 @@ export function EnhancementPicker() {
   // Local filter state
   const [typeFilter, setTypeFilter] = useState<EnhancementTypeFilter>('io-sets');
   const [sidebarFilter, setSidebarFilter] = useState<SidebarFilter>('all');
-  const [ioSortBy, setIOSortBy] = useState<'name' | 'level'>('name');
 
   // Drag selection state
   const [isDragging, setIsDragging] = useState(false);
@@ -554,7 +555,6 @@ export function EnhancementPicker() {
               { id: 'generic' as const, label: 'Generic IO' },
               { id: 'special' as const, label: 'Special' },
               { id: 'origin' as const, label: 'Origin' },
-              { id: 'debug' as const, label: 'Debug: All Sets' },
             ].map((tab) => (
               <button
                 key={tab.id}
@@ -866,9 +866,7 @@ export function EnhancementPicker() {
               />
             )}
 
-            {typeFilter === 'debug' && (
-              <DebugAllSetsContent />
-            )}
+
           </div>
         </div>
         </div>
@@ -1654,8 +1652,11 @@ function SetPieceTooltip({ set, piece }: SetPieceTooltipProps) {
   }, [build, picker.currentPowerName, setId]);
 
   // Calculate aspect values at the effective level
+  // Attuned IOs scale to character level (no maxLevel cap — that only applies to non-attuned)
   const rawLevel = attunementEnabled ? (build.level || 50) : globalIOLevel;
-  const effectiveLevel = Math.max(set.minLevel, Math.min(rawLevel, set.maxLevel));
+  const effectiveLevel = attunementEnabled
+    ? Math.max(set.minLevel, rawLevel)
+    : Math.max(set.minLevel, Math.min(rawLevel, set.maxLevel));
   const rawAspectCount = piece.aspects.filter(a => normalizeAspectName(a) !== null).length || piece.aspects.length;
   // Proc effects count as 3 additional aspects for the multi-aspect modifier
   const aspectCount = piece.proc ? rawAspectCount + 3 : rawAspectCount;
@@ -1936,73 +1937,6 @@ function SetPieceTooltip({ set, piece }: SetPieceTooltipProps) {
   );
 }
 
-// ============================================
-// DEBUG: ALL SETS VIEW
-// ============================================
-
-function DebugAllSetsContent() {
-  const allSets = useMemo(() => Object.values(getAllIOSets()), []);
-
-  // Group by category
-  const grouped = useMemo(() => {
-    const groups: Record<string, IOSet[]> = {};
-    for (const set of allSets) {
-      const key = set.category || 'unknown';
-      if (!groups[key]) groups[key] = [];
-      groups[key].push(set);
-    }
-    // Sort sets within each group alphabetically
-    for (const key of Object.keys(groups)) {
-      groups[key].sort((a, b) => a.name.localeCompare(b.name));
-    }
-    return groups;
-  }, [allSets]);
-
-  const categoryOrder = ['uncommon', 'rare', 'purple', 'pvp', 'ato', 'event', 'universal', 'unknown'];
-  const categoryLabels: Record<string, string> = {
-    'uncommon': 'Uncommon',
-    'rare': 'Rare',
-    'purple': 'Very Rare (Purple)',
-    'pvp': 'PvP',
-    'ato': 'Archetype (ATO)',
-    'event': 'Event',
-    'universal': 'Universal',
-    'unknown': 'Unknown Category',
-  };
-
-  return (
-    <div className="space-y-4">
-      <div className="text-xs text-gray-500 bg-gray-800/50 rounded p-2">
-        Debug view — showing all {allSets.length} IO sets. Scroll to visually check icons.
-      </div>
-      {categoryOrder.map((cat) => {
-        const sets = grouped[cat];
-        if (!sets || sets.length === 0) return null;
-        return (
-          <div key={cat}>
-            <div className="text-sm font-semibold text-gray-300 mb-2 sticky top-0 bg-gray-900 py-1 z-10">
-              {categoryLabels[cat] || cat} ({sets.length})
-            </div>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2">
-              {sets.map((set) => (
-                <div
-                  key={set.id || set.name}
-                  className="flex items-center gap-2 p-1.5 rounded bg-gray-800/40 border border-gray-700/50"
-                >
-                  <IOSetIcon icon={set.icon} category={set.category} size={32} alt={set.name} />
-                  <div className="min-w-0 flex-1">
-                    <div className="text-xs text-gray-200 truncate">{set.name}</div>
-                    <div className="text-[10px] text-gray-500 truncate">{set.type}</div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        );
-      })}
-    </div>
-  );
-}
 
 // ============================================
 // HELPER FUNCTIONS

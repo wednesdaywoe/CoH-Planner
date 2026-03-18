@@ -334,7 +334,7 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
   // Build additional mappings for keys that differ between data formats
   const extraEffects: Record<string, unknown> = {};
   // Execution stats from power.stats
-  if (basePower.stats?.endurance) extraEffects.enduranceCost = basePower.stats.activatePeriod ? basePower.stats.endurance / basePower.stats.activatePeriod : basePower.stats.endurance;
+  if (basePower.stats?.endurance) extraEffects.enduranceCost = basePower.powerType === 'Toggle' ? basePower.stats.endurance / (basePower.stats.activatePeriod ?? 0.5) : basePower.stats.endurance;
   if (basePower.stats?.recharge) extraEffects.recharge = basePower.stats.recharge;
   if (basePower.stats?.accuracy) extraEffects.accuracy = basePower.stats.accuracy;
   if (basePower.stats?.range) extraEffects.range = basePower.stats.range;

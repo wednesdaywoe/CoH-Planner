@@ -1021,13 +1021,16 @@ export function RegistryEffectsDisplay({
               const isAccuracy = key === 'accuracy' && purplePatchInfo;
               const conArrow = isAccuracy ? getConArrow(purplePatchInfo.offset) : null;
               const hasToHitMod = isAccuracy && (purplePatchInfo.offset !== 0 || (purplePatchInfo.toHitBonus ?? 0) !== 0);
-              const adjustedFinal = hasToHitMod
-                ? Math.min(95, tiers.final * purplePatchInfo!.factor)
-                : tiers.final;
+              const rawFinal = hasToHitMod ? tiers.final * purplePatchInfo!.factor : tiers.final;
+              const adjustedFinal = isAccuracy ? Math.min(95, rawFinal) : rawFinal;
+              const isCapped = isAccuracy && rawFinal > 95;
               const isAdjusted = hasToHitMod;
               return (
-                <span className={hasFinal || isAdjusted ? finalColumnColor : 'text-slate-400'}>
+                <span className={isCapped ? 'text-orange-400' : hasFinal || isAdjusted ? finalColumnColor : 'text-slate-400'}>
                   {formatValue(adjustedFinal)}
+                  {isCapped && (
+                    <span className="text-slate-500 text-[9px] ml-0.5">({formatValue(rawFinal)})</span>
+                  )}
                   {conArrow && (
                     <span className={`${conArrow.colorClass} ml-0.5 text-[9px]`}>{conArrow.symbol}</span>
                   )}

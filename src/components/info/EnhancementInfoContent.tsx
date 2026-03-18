@@ -120,10 +120,10 @@ export function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfo
       : rawIcon;
 
     // Calculate enhancement values for each aspect
-    // Attuned enhancements scale to character level (clamped to set's level range)
+    // Attuned IOs scale to character level (no maxLevel cap — that only applies to non-attuned)
     // Non-attuned use their slotted level, defaulting to 50
     const effectiveLevel = ioEnh.attuned
-      ? Math.min(Math.max(build.level, ioSet?.minLevel || 1), ioSet?.maxLevel || 50)
+      ? Math.max(build.level || 50, ioSet?.minLevel || 1)
       : (enhancement.level || 50);
     const rawAspectCount = ioEnh.aspects.filter(a => normalizeAspectName(a) !== null).length || ioEnh.aspects.length;
     // Proc effects count as 3 additional aspects for the multi-aspect modifier
@@ -570,10 +570,12 @@ export function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfo
                         const normalized = isActive ? normalizeStatName(eff.stat) : null;
                         const totalCount = normalized ? getTotalBonusCount(bonusTracking, normalized, eff.value) : 0;
                         const capped = normalized ? isBonusCapped(bonusTracking, normalized, eff.value) : false;
+                        const displayValue = parseFloat(eff.value.toFixed(2));
+                        const formatted = eff.desc.replace(/^\+[\d.]+%/, `+${displayValue}%`);
                         return (
                           <span key={i} className={capped ? 'text-orange-400' : ''}>
                             {i > 0 && ', '}
-                            {eff.desc}
+                            {formatted}
                             {isActive && totalCount > 0 && (
                               <span className={`ml-0.5 text-[9px] ${capped ? 'text-orange-400 font-semibold' : 'text-slate-500'}`}>
                                 ({totalCount}/5)

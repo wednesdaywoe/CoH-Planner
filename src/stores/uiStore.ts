@@ -97,7 +97,7 @@ interface UIState {
   /** Export/Import modal open state */
   exportImportModalOpen: boolean;
   /** Which tab the Export/Import modal should open to */
-  exportImportModalTab: 'save-load' | 'import' | 'share' | null;
+  exportImportModalTab: 'save' | 'load-import' | 'share-export' | null;
 
   /** Feedback modal open state */
   feedbackModalOpen: boolean;
@@ -134,6 +134,9 @@ interface UIState {
 
   /** Global enhancement boost level (0-5) */
   globalBoostLevel: number;
+
+  /** IO set sort preference in enhancement picker */
+  ioSetSortBy: 'name' | 'level';
 
   /** Exemplar mode - when ON, respects build level for set bonus suppression */
   exemplarMode: boolean;
@@ -269,6 +272,7 @@ interface UIActions {
   setGlobalIOLevel: (level: number) => void;
   toggleAttunement: () => void;
   setGlobalBoostLevel: (level: number) => void;
+  setIOSetSortBy: (sort: 'name' | 'level') => void;
   toggleExemplarMode: () => void;
   setExemplarLevel: (level: number) => void;
   setTargetLevelOffset: (offset: number) => void;
@@ -331,7 +335,7 @@ interface UIActions {
   setIncarnateT4ComboIndex: (powerId: string, index: number) => void;
 
   // Export/Import Modal
-  openExportImportModal: (tab?: 'save-load' | 'import' | 'share') => void;
+  openExportImportModal: (tab?: 'save' | 'load-import' | 'share-export') => void;
   closeExportImportModal: () => void;
 
   // Feedback Modal
@@ -424,7 +428,7 @@ interface UIActions {
   clearSelectedBranch: () => void;
 
   // Compare Slotting Modal
-  openCompareSlotting: (powerName: string, powerSet: string) => void;
+  openCompareSlotting: (powerName?: string, powerSet?: string) => void;
   closeCompareSlotting: () => void;
 
   // Power View Mode
@@ -539,6 +543,7 @@ export const useUIStore = create<UIStore>()(
       globalIOLevel: 50,
       attunementEnabled: false,
       globalBoostLevel: 0,
+      ioSetSortBy: 'name' as const,
       exemplarMode: false,
       exemplarLevel: 50,
       targetLevelOffset: 0,
@@ -684,6 +689,9 @@ export const useUIStore = create<UIStore>()(
         set({
           globalBoostLevel: Math.max(0, Math.min(5, level)),
         }),
+
+      setIOSetSortBy: (sort) =>
+        set({ ioSetSortBy: sort }),
 
       toggleExemplarMode: () =>
         set((state) => ({
@@ -1170,8 +1178,11 @@ export const useUIStore = create<UIStore>()(
         set({ selectedBranch: null }),
 
       // Compare Slotting Modal
-      openCompareSlotting: (powerName, powerSet) =>
-        set({ compareSlottingOpen: true, compareSlottingPower: { powerName, powerSet } }),
+      openCompareSlotting: (powerName?, powerSet?) =>
+        set({
+          compareSlottingOpen: true,
+          compareSlottingPower: powerName && powerSet ? { powerName, powerSet } : null,
+        }),
 
       closeCompareSlotting: () =>
         set({ compareSlottingOpen: false, compareSlottingPower: null }),
@@ -1267,6 +1278,7 @@ export const useUIStore = create<UIStore>()(
         globalIOLevel: state.globalIOLevel,
         attunementEnabled: state.attunementEnabled,
         globalBoostLevel: state.globalBoostLevel,
+        ioSetSortBy: state.ioSetSortBy,
         exemplarMode: state.exemplarMode,
         exemplarLevel: state.exemplarLevel,
         targetLevelOffset: state.targetLevelOffset,

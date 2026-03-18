@@ -79,6 +79,7 @@ export function StatsDashboard() {
   const openDetailedTotalsModal = useUIStore((s) => s.openDetailedTotalsModal);
   const closeDetailedTotalsModal = useUIStore((s) => s.closeDetailedTotalsModal);
   const openPowersetCompareModal = useUIStore((s) => s.openPowersetCompareModal);
+  const openCompareSlotting = useUIStore((s) => s.openCompareSlotting);
   const procSettingsModalOpen = useUIStore((s) => s.procSettingsModalOpen);
   const closeProcSettingsModal = useUIStore((s) => s.closeProcSettingsModal);
   const trackedStats = useUIStore((s) => s.trackedStats);
@@ -244,6 +245,7 @@ export function StatsDashboard() {
                       tooltip={stat.tooltip}
                       breakdown={stat.breakdown}
                       breakdownUnit={stat.breakdownUnit}
+                      rawValue={stat.value}
                       tracked={stat.breakdownKey ? trackedStats.includes(stat.breakdownKey) : false}
                       onTrack={stat.breakdownKey ? () => toggleTrackedStat(stat.breakdownKey!) : undefined}
                     />
@@ -320,6 +322,12 @@ export function StatsDashboard() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
             </svg>
             <span className="hidden md:inline">Compare Sets</span>
+          </button>
+          <button onClick={() => openCompareSlotting()} className="flex items-center gap-1 px-1.5 py-1 text-xs text-gray-400 hover:text-purple-300 hover:bg-gray-800 rounded transition-colors shrink-0" title="Compare enhancement slotting configurations">
+            <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" />
+            </svg>
+            <span className="hidden md:inline">Compare Slotting</span>
           </button>
           <button onClick={openStatsConfigModal} className="flex items-center gap-1 px-1.5 py-1 text-xs text-gray-400 hover:text-gray-200 hover:bg-gray-800 rounded transition-colors shrink-0" title="Configure dashboard stats">
             <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -465,12 +473,13 @@ interface StatItemProps {
   tooltip?: string;
   breakdown?: DashboardStatBreakdown;
   breakdownUnit?: string;
+  rawValue?: StatValue;
   className?: string;
   tracked?: boolean;
   onTrack?: () => void;
 }
 
-function StatItem({ label, value, color = 'text-gray-300', tooltip, breakdown, breakdownUnit = '%', className = '', tracked, onTrack }: StatItemProps) {
+function StatItem({ label, value, color = 'text-gray-300', tooltip, breakdown, breakdownUnit = '%', rawValue, className = '', tracked, onTrack }: StatItemProps) {
   const hasCapped = breakdown?.sources.some(s => s.capped) ?? false;
   const content = (
     <div
@@ -489,6 +498,16 @@ function StatItem({ label, value, color = 'text-gray-300', tooltip, breakdown, b
     if (!breakdown || breakdown.sources.length === 0) {
       return tooltip || label;
     }
+
+    // Compute base regen rate for HP/sec display on regen sources
+    const isRegen = rawValue && typeof rawValue === 'object' && 'perSec' in rawValue && 'buff' in rawValue;
+    const regenBaseRate = isRegen
+      ? (rawValue as CompoundStatValue).perSec / (1 + (rawValue as CompoundStatValue).buff / 100)
+      : 0;
+
+    // Format HP/sec suffix for a source's percentage value
+    const hpsSuffix = (pct: number) =>
+      isRegen ? ` (${(regenBaseRate * pct / 100).toFixed(2)}/s)` : '';
 
     // Group sources by type for display
     const setBonusSources = breakdown.sources.filter(s => s.type === 'set-bonus');
@@ -512,8 +531,8 @@ function StatItem({ label, value, color = 'text-gray-300', tooltip, breakdown, b
                 <span className={`${source.capped ? 'text-orange-400 line-through' : 'text-slate-300'} truncate max-w-[200px]`}>
                   {source.name}
                 </span>
-                <span className={`ml-2 ${source.capped ? 'text-orange-400 line-through' : 'text-green-400'}`}>
-                  +{source.value.toFixed(2)}{breakdownUnit}
+                <span className={`ml-2 whitespace-nowrap ${source.capped ? 'text-orange-400 line-through' : 'text-green-400'}`}>
+                  +{source.value.toFixed(2)}{breakdownUnit}{isRegen && <span className="text-slate-400">{hpsSuffix(source.value)}</span>}
                 </span>
               </div>
             ))}
@@ -527,7 +546,7 @@ function StatItem({ label, value, color = 'text-gray-300', tooltip, breakdown, b
             {activePowerSources.map((source, i) => (
               <div key={i} className="flex justify-between text-[10px]">
                 <span className="text-slate-300">{source.name}</span>
-                <span className="text-amber-400 ml-2">+{source.value.toFixed(2)}{breakdownUnit}</span>
+                <span className="text-amber-400 ml-2 whitespace-nowrap">+{source.value.toFixed(2)}{breakdownUnit}{isRegen && <span className="text-slate-400">{hpsSuffix(source.value)}</span>}</span>
               </div>
             ))}
           </div>
@@ -540,7 +559,7 @@ function StatItem({ label, value, color = 'text-gray-300', tooltip, breakdown, b
             {inherentSources.map((source, i) => (
               <div key={i} className="flex justify-between text-[10px]">
                 <span className="text-slate-300">{source.name}</span>
-                <span className="text-blue-400 ml-2">+{source.value.toFixed(2)}{breakdownUnit}</span>
+                <span className="text-blue-400 ml-2 whitespace-nowrap">+{source.value.toFixed(2)}{breakdownUnit}{isRegen && <span className="text-slate-400">{hpsSuffix(source.value)}</span>}</span>
               </div>
             ))}
           </div>
@@ -553,7 +572,7 @@ function StatItem({ label, value, color = 'text-gray-300', tooltip, breakdown, b
             {accoladeSources.map((source, i) => (
               <div key={i} className="flex justify-between text-[10px]">
                 <span className="text-slate-300">{source.name}</span>
-                <span className="text-amber-300 ml-2">+{source.value.toFixed(2)}</span>
+                <span className="text-amber-300 ml-2 whitespace-nowrap">+{source.value.toFixed(2)}{isRegen && <span className="text-slate-400">{hpsSuffix(source.value)}</span>}</span>
               </div>
             ))}
           </div>
@@ -566,7 +585,7 @@ function StatItem({ label, value, color = 'text-gray-300', tooltip, breakdown, b
             {procSources.map((source, i) => (
               <div key={i} className={`flex justify-between text-[10px] ${source.capped ? 'opacity-70' : ''}`}>
                 <span className={`${source.capped ? 'text-orange-400 line-through' : 'text-slate-300'} truncate max-w-[200px]`}>{source.name}</span>
-                <span className={`ml-2 ${source.capped ? 'text-orange-400 line-through' : 'text-cyan-400'}`}>+{source.value.toFixed(2)}{breakdownUnit}</span>
+                <span className={`ml-2 whitespace-nowrap ${source.capped ? 'text-orange-400 line-through' : 'text-cyan-400'}`}>+{source.value.toFixed(2)}{breakdownUnit}{isRegen && <span className="text-slate-400">{hpsSuffix(source.value)}</span>}</span>
               </div>
             ))}
           </div>
@@ -579,7 +598,7 @@ function StatItem({ label, value, color = 'text-gray-300', tooltip, breakdown, b
             {incarnateSources.map((source, i) => (
               <div key={i} className="flex justify-between text-[10px]">
                 <span className="text-slate-300 truncate max-w-[200px]">{source.name}</span>
-                <span className="text-purple-400 ml-2">+{source.value.toFixed(2)}{breakdownUnit}</span>
+                <span className="text-purple-400 ml-2 whitespace-nowrap">+{source.value.toFixed(2)}{breakdownUnit}{isRegen && <span className="text-slate-400">{hpsSuffix(source.value)}</span>}</span>
               </div>
             ))}
           </div>
@@ -588,11 +607,11 @@ function StatItem({ label, value, color = 'text-gray-300', tooltip, breakdown, b
         {/* Total */}
         <div className="border-t border-slate-600 pt-1 flex justify-between text-[11px] font-medium">
           <span className="text-slate-300">Total</span>
-          <span className={color}>+{breakdown.total.toFixed(2)}{breakdownUnit}</span>
+          <span className={color}>+{breakdown.total.toFixed(2)}{breakdownUnit}{isRegen && <span className="text-slate-400"> ({(rawValue as CompoundStatValue).perSec.toFixed(2)}/s)</span>}</span>
         </div>
       </div>
     );
-  }, [breakdown, tooltip, label, color, breakdownUnit]);
+  }, [breakdown, tooltip, label, color, breakdownUnit, rawValue]);
 
   return <Tooltip content={tooltipContent}>{content}</Tooltip>;
 }

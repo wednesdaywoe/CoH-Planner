@@ -40,6 +40,7 @@ export function CompareSlottingModal() {
   const isOpen = useUIStore((s) => s.compareSlottingOpen);
   const compareTarget = useUIStore((s) => s.compareSlottingPower);
   const closeModal = useUIStore((s) => s.closeCompareSlotting);
+  const openCompareSlotting = useUIStore((s) => s.openCompareSlotting);
   const openEnhancementPicker = useUIStore((s) => s.openEnhancementPicker);
 
   const build = useBuildStore((s) => s.build);
@@ -67,7 +68,44 @@ export function CompareSlottingModal() {
     return findSelectedPowerInBuild(compareTarget.powerName, build);
   }, [compareTarget, build]);
 
-  // Initialize copies when modal opens
+  // Build list of all slotted powers for the power selector dropdown
+  const allBuildPowers = useMemo(() => {
+    const powers: { name: string; powerSet: string; category: string }[] = [];
+    for (const p of build.primary.powers) {
+      powers.push({ name: p.name, powerSet: p.powerSet, category: build.primary.name });
+    }
+    for (const p of build.secondary.powers) {
+      powers.push({ name: p.name, powerSet: p.powerSet, category: build.secondary.name });
+    }
+    for (const pool of build.pools) {
+      for (const p of pool.powers) {
+        powers.push({ name: p.name, powerSet: p.powerSet, category: pool.name });
+      }
+    }
+    if (build.epicPool) {
+      for (const p of build.epicPool.powers) {
+        powers.push({ name: p.name, powerSet: p.powerSet, category: build.epicPool.name });
+      }
+    }
+    for (const p of build.inherents) {
+      if (p.slots.length > 0) {
+        powers.push({ name: p.name, powerSet: p.powerSet || 'Inherent', category: 'Inherent' });
+      }
+    }
+    return powers;
+  }, [build]);
+
+  // Group powers by category for optgroup rendering
+  const powersByCategory = useMemo(() => {
+    const groups = new Map<string, { name: string; powerSet: string }[]>();
+    for (const p of allBuildPowers) {
+      if (!groups.has(p.category)) groups.set(p.category, []);
+      groups.get(p.category)!.push({ name: p.name, powerSet: p.powerSet });
+    }
+    return groups;
+  }, [allBuildPowers]);
+
+  // Initialize copies when modal opens or target power changes
   useEffect(() => {
     if (isOpen && selectedPower) {
       nextCopyId = 1;
@@ -121,7 +159,7 @@ export function CompareSlottingModal() {
 
     return {
       ...baseEffects,
-      ...(power.stats?.endurance && { enduranceCost: power.stats.endurance }),
+      ...(power.stats?.endurance && { enduranceCost: power.powerType === 'Toggle' ? power.stats.endurance / (power.stats.activatePeriod ?? 0.5) : power.stats.endurance }),
       ...(power.stats?.recharge && { recharge: power.stats.recharge }),
       ...(power.stats?.accuracy && { accuracy: power.stats.accuracy }),
       ...(power.stats?.range && { range: power.stats.range }),
@@ -373,7 +411,55 @@ export function CompareSlottingModal() {
     setTimeout(() => setAppliedCopyId(null), 1200);
   }, [compareTarget, copies, setEnhancement, clearEnhancement]);
 
-  if (!isOpen || !compareTarget || !power) return null;
+  if (!isOpen) return null;
+
+  // Power selector dropdown — shared between "no power" and "power selected" states
+  const powerSelector = (
+    <div className="flex items-center gap-3">
+      <label className="text-sm font-medium text-gray-300 shrink-0">Power:</label>
+      <select
+        value={compareTarget ? `${compareTarget.powerSet}::${compareTarget.powerName}` : ''}
+        onChange={(e) => {
+          if (!e.target.value) return;
+          const [powerSet, powerName] = e.target.value.split('::');
+          openCompareSlotting(powerName, powerSet);
+        }}
+        className="flex-1 bg-gray-800 border border-gray-600 rounded px-3 py-1.5 text-white text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 max-w-md"
+      >
+        <option value="">Select a power...</option>
+        {Array.from(powersByCategory.entries()).map(([category, powers]) => (
+          <optgroup key={category} label={category}>
+            {powers.map((p) => (
+              <option key={`${p.powerSet}::${p.name}`} value={`${p.powerSet}::${p.name}`}>
+                {p.name}
+              </option>
+            ))}
+          </optgroup>
+        ))}
+      </select>
+    </div>
+  );
+
+  // No power selected — show picker only
+  if (!compareTarget || !power) {
+    return (
+      <Modal
+        isOpen={isOpen}
+        onClose={closeModal}
+        title="Compare Slotting"
+        size="full"
+      >
+        <ModalBody>
+          <div className="max-w-lg mx-auto mt-8 space-y-6">
+            {powerSelector}
+            <p className="text-sm text-gray-500 text-center">
+              Select a power to compare slotting configurations.
+            </p>
+          </div>
+        </ModalBody>
+      </Modal>
+    );
+  }
 
   return (
     <Modal
@@ -383,6 +469,11 @@ export function CompareSlottingModal() {
       size="full"
     >
       <ModalBody>
+        {/* Power selector */}
+        <div className="mb-4">
+          {powerSelector}
+        </div>
+
         <div className="flex flex-col md:flex-row gap-4 min-h-0 md:min-h-[400px]">
           {/* Stats panel - shown first on mobile (top), right side on desktop */}
           <div className="w-full md:w-[320px] flex-shrink-0 overflow-y-auto max-h-[40vh] md:max-h-none md:h-[70vh] bg-slate-900/50 rounded-lg border border-slate-700 p-3 order-1 md:order-2">

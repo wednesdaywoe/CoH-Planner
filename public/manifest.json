@@ -26,5 +26,13 @@
       "purpose": "any maskable"
     }
   ],
-  "categories": ["games", "utilities"]
+  "categories": ["games", "utilities"],
+  "file_handlers": [
+    {
+      "action": "/",
+      "accept": {
+        "application/x-skif": [".skif"]
+      }
+    }
+  ]
 }
