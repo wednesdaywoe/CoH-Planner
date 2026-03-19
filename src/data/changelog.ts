@@ -69,14 +69,12 @@ const TYPE_TO_STATUS: Record<string, TrackerItem['status']> = {
   update: 'in-progress',
 };
 
-/** Get entries for the most recent date (today if available) as TrackerItems.
- *  Used by WelcomeModal. Searches across both git-log and manual entries. */
+/** Get entries for the most recent date from the manual changelog as TrackerItems.
+ *  Used by WelcomeModal. Only shows manually curated entries. */
 export function getRecentChanges(): { date: string; items: TrackerItem[] } {
-  if (ALL_ENTRIES.length === 0) return { date: '', items: [] };
-  const today = new Date().toISOString().slice(0, 10); // YYYY-MM-DD
-  const todayEntries = ALL_ENTRIES.filter(e => e.date === today);
-  const targetDate = todayEntries.length > 0 ? today : ALL_ENTRIES[0].date;
-  const entries = todayEntries.length > 0 ? todayEntries : ALL_ENTRIES.filter(e => e.date === targetDate);
+  if (MANUAL_ENTRIES.length === 0) return { date: '', items: [] };
+  const targetDate = MANUAL_ENTRIES[0].date;
+  const entries = MANUAL_ENTRIES.filter(e => e.date === targetDate);
   return {
     date: targetDate,
     items: entries.map(entry => ({

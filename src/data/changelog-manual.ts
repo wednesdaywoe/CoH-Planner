@@ -1,35 +1,41 @@
 /**
- * Manually-maintained changelog entries.
- *
- * These supplement the auto-generated git log history.
- * Use this for historical dates whose commit messages aren't user-friendly,
- * or to add notes about multi-commit sessions.
- *
- * ADD NEW ENTRIES AT THE TOP (newest date first).
- * Multiple entries with the same date are grouped together in the Full Changelog.
- * The WelcomeModal shows whichever date group is most recent (manual or git).
+ * Manually-maintained changelog for the WelcomeModal "What's New" list.
+  * This is separate from the auto-generated changelog (changelog.ts) which is based on git history.
  */
 
-export interface ManualEntry {
+export interface ManualChangelogGroup {
   date: string; // YYYY-MM-DD
+  items: {
+    message: string;
+    type: 'feat' | 'fix' | 'update';
+  }[];
+}
+
+/** Flat entry used by changelog.ts */
+export interface ManualEntry {
+  date: string;
   message: string;
   type: 'feat' | 'fix' | 'update';
 }
 
-export const MANUAL_CHANGELOG: ManualEntry[] = [
-  // ─── 2026-03-16 ────────────────────────────────────────────────────────────
-  { date: '2026-03-16', message: 'Proc settings now include Damage Procs; header "Proc" toggle acts as master on/off for all proc categories', type: 'feat' },
-  { date: '2026-03-16', message: 'ArcanaTime moved to Build Settings; Proc Settings button paired with Proc toggle; In-Combat toggle moved to main bar', type: 'update' },
-  { date: '2026-03-16', message: 'Set Bonus Finder now shows rarity badges (PvP, Purple, ATO, Event) and flags PvP-only bonuses with ⚔', type: 'feat' },
-  { date: '2026-03-16', message: 'Importing builds with Single/Dual Origin enhancements (SOs/DOs) no longer generates warnings', type: 'fix' },
-
-  // ─── 2026-03-12 ────────────────────────────────────────────────────────────
-  { date: '2026-03-12', message: 'Chrono Shift now shows a toggle to display its buff effects on the rest of the build', type: 'fix' },
-  { date: '2026-03-12', message: 'Mez effects (Stun, Knockback, etc.) now show enhanced duration/distance values when slotted', type: 'fix' },
-  { date: '2026-03-12', message: 'Importing builds now correctly resolves archetype-specific epic pools (e.g., Stalker Psionic Mastery)', type: 'fix' },
-  { date: '2026-03-12', message: 'Login popover no longer clips off screen on desktop', type: 'fix' },
-  { date: '2026-03-12', message: 'Added In-Combat toggle and power suppression; sniper attacks now use Quick Form cast time while in combat', type: 'feat' },
-  { date: '2026-03-12', message: 'Fixed powerSet hydration bug (was storing display name instead of ID, broke power lookup)', type: 'fix' },
-  { date: '2026-03-12', message: 'New build button now hard-resets all build-dependent UI state', type: 'fix' },
-  { date: '2026-03-12', message: 'Domination recharge and duration now display correctly in archetype inherent', type: 'fix' },
+export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
+  // ─── 2026-03-18 ────────────────────────────────────────────────────────────
+  {
+    date: '2026-03-18',
+    items: [
+      { message: 'Reorganized the Save/Load/Import/Export', type: 'update' },
+      { message: 'Compare Slotting now has a spot on the Dashboard to make it more discoverable ', type: 'update' },
+      { message: 'Accuracy calculations show the actual value after the capped value', type: 'update' },
+      { message: 'Corrected more Sentinel modifiers', type: 'fix' },
+      { message: 'Fixed Enhancement selection modal sorting memory issue', type: 'fix' },
+      { message: 'Fixed importer skipping inherents with only the default slot', type: 'fix' },
+      { message: 'Created the missing Hami-Os (the game doesnt have distinct icons but this is prettier and helps visually differentiate them)', type: 'fix' },
+      { message: 'Corrected some Brute melee sets to accept ATOs  ', type: 'fix' },
+    ],
+  },
 ];
+
+/** Flatten groups into individual entries for changelog.ts consumption */
+export const MANUAL_CHANGELOG: ManualEntry[] = MANUAL_CHANGELOG_GROUPS.flatMap(group =>
+  group.items.map(item => ({ date: group.date, message: item.message, type: item.type }))
+);
