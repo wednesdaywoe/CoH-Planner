@@ -227,8 +227,10 @@ export function EnhancementPicker() {
   }, [availableSets, sidebarFilter]);
 
   // Check if a specific set piece is already slotted in the current power
+  // In compare mode (virtualSlots), check the comparison copy's slots instead of the build
   const isPieceInCurrentPower = (setId: string, pieceNum: number) => {
-    return currentPowerSlots.some((enh) => {
+    const slots = picker.virtualSlots ?? currentPowerSlots;
+    return slots.some((enh) => {
       if (!enh || typeof enh !== 'object') return false;
       const ioEnh = enh as { type?: string; setId?: string; pieceNum?: number };
       return ioEnh.type === 'io-set' && ioEnh.setId === setId && ioEnh.pieceNum === pieceNum;
@@ -1028,6 +1030,7 @@ function ProcsContent({
   hasShiftSelection,
 }: ProcsContentProps) {
   const isUniqueEnhancementSlotted = useBuildStore((s) => s.isUniqueEnhancementSlotted);
+  const isCompareMode = useUIStore((s) => s.enhancementPicker.virtualSlots) !== null;
 
   if (pieces.length === 0) {
     return <div className="text-center text-gray-500 py-8">No procs available for this power</div>;
@@ -1051,10 +1054,11 @@ function ProcsContent({
         );
 
         // Check disabled state
+        // In compare mode, skip build-wide unique check — each configuration is independent
         let disabledReason: string | null = null;
         if (isPieceInCurrentPower(setId, piece.num)) {
           disabledReason = 'Already in this power';
-        } else {
+        } else if (!isCompareMode) {
           const isSpecialRarity = set.category === 'purple' || set.category === 'event' || set.category === 'ato';
           if ((piece.unique || isSpecialRarity) && isUniqueEnhancementSlotted(setId, piece.num)) {
             disabledReason = 'Already slotted in build';
@@ -1220,6 +1224,7 @@ function IOSetRow({
   const attunementEnabled = useUIStore((s) => s.attunementEnabled);
   const globalIOLevel = useUIStore((s) => s.globalIOLevel);
   const isUniqueEnhancementSlotted = useBuildStore((s) => s.isUniqueEnhancementSlotted);
+  const isCompareMode = useUIStore((s) => s.enhancementPicker.virtualSlots) !== null;
   const trackedStats = useUIStore((s) => s.trackedStats);
 
   // Level gating: set is unavailable if IO level is outside its range
@@ -1252,14 +1257,17 @@ function IOSetRow({
   };
 
   // Check if a piece is disabled (already slotted in this power, or unique/special already in build)
+  // In compare mode, skip build-wide unique check — each configuration is independent
   const isPieceDisabled = (piece: IOSetPiece) => {
     const setId = set.id || set.name;
     // Always prevent duplicate of the same piece in the same power
     if (isPieceInCurrentPower(setId, piece.num)) return 'Already in this power';
-    // Unique pieces and special rarity sets: prevent across entire build
-    const isSpecialRarity = set.category === 'purple' || set.category === 'event' || set.category === 'ato';
-    if ((piece.unique || isSpecialRarity) && isUniqueEnhancementSlotted(setId, piece.num)) {
-      return 'Already slotted in build';
+    // Unique pieces and special rarity sets: prevent across entire build (not in compare mode)
+    if (!isCompareMode) {
+      const isSpecialRarity = set.category === 'purple' || set.category === 'event' || set.category === 'ato';
+      if ((piece.unique || isSpecialRarity) && isUniqueEnhancementSlotted(setId, piece.num)) {
+        return 'Already slotted in build';
+      }
     }
     return null;
   };

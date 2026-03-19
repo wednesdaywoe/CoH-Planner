@@ -246,12 +246,12 @@ const ALPHA_EFFECTS: Record<string, AlphaEffects> = {
     edBypass: 2/3,  // Very Rare: 2/3 bypasses ED
   },
   'musculature_radial_paragon': {
-    damage: 0.45,
+    damage: 0.33,
     immobilize: 0.33,
     defenseDebuff: 0.33,
     toHitDebuff: 0.20,
-    enduranceModification: 0.20,
-    runSpeed: 0.20,
+    enduranceModification: 0.33,
+    runSpeed: 0.33,
     levelShift: 1,
     edBypass: 2/3,  // Very Rare: 2/3 bypasses ED
   },
@@ -312,11 +312,11 @@ const ALPHA_EFFECTS: Record<string, AlphaEffects> = {
     edBypass: 2/3,  // Very Rare: 2/3 bypasses ED
   },
   'spiritual_radial_paragon': {
-    recharge: 0.45,
+    recharge: 0.33,
     stun: 0.33,
     heal: 0.33,
-    jumpSpeed: 0.20,
-    slow: 0.20,
+    jumpSpeed: 0.33,
+    slow: 0.33,
     toHitBuff: 0.20,
     levelShift: 1,
     edBypass: 2/3,  // Very Rare: 2/3 bypasses ED
@@ -372,18 +372,18 @@ const ALPHA_EFFECTS: Record<string, AlphaEffects> = {
   },
   'cardiac_core_paragon': {
     enduranceReduction: 0.45,
-    range: 0.33,
-    resistance: 0.33,
+    range: 0.20,
+    resistance: 0.20,
     levelShift: 1,
     edBypass: 2/3,  // Very Rare: 2/3 bypasses ED
   },
   'cardiac_radial_paragon': {
-    enduranceReduction: 0.45,
-    range: 0.33,
-    resistance: 0.33,
-    sleep: 0.20,
-    fear: 0.20,
-    absorb: 0.20,
+    enduranceReduction: 0.33,
+    range: 0.20,
+    resistance: 0.20,
+    sleep: 0.33,
+    fear: 0.33,
+    absorb: 0.33,
     levelShift: 1,
     edBypass: 2/3,  // Very Rare: 2/3 bypasses ED
   },
@@ -439,17 +439,17 @@ const ALPHA_EFFECTS: Record<string, AlphaEffects> = {
   'nerve_core_paragon': {
     accuracy: 0.45,
     hold: 0.33,
-    defense: 0.33,
+    defense: 0.20,
     levelShift: 1,
     edBypass: 2/3,  // Very Rare: 2/3 bypasses ED
   },
   'nerve_radial_paragon': {
-    accuracy: 0.45,
+    accuracy: 0.33,
     hold: 0.33,
-    confuse: 0.20,
-    defense: 0.33,
-    taunt: 0.20,
-    flySpeed: 0.20,
+    confuse: 0.33,
+    defense: 0.20,
+    taunt: 0.33,
+    flySpeed: 0.33,
     levelShift: 1,
     edBypass: 2/3,  // Very Rare: 2/3 bypasses ED
   },
@@ -505,17 +505,17 @@ const ALPHA_EFFECTS: Record<string, AlphaEffects> = {
   'agility_core_paragon': {
     enduranceModification: 0.45,
     recharge: 0.33,
-    defense: 0.33,
+    defense: 0.20,
     levelShift: 1,
     edBypass: 2/3,  // Very Rare: 2/3 bypasses ED
   },
   'agility_radial_paragon': {
-    enduranceModification: 0.45,
+    enduranceModification: 0.33,
     recharge: 0.33,
-    defense: 0.33,
-    jumpSpeed: 0.20,
-    runSpeed: 0.20,
-    flySpeed: 0.20,
+    defense: 0.20,
+    jumpSpeed: 0.33,
+    runSpeed: 0.33,
+    flySpeed: 0.33,
     levelShift: 1,
     edBypass: 2/3,  // Very Rare: 2/3 bypasses ED
   },
@@ -571,17 +571,17 @@ const ALPHA_EFFECTS: Record<string, AlphaEffects> = {
   'intuition_core_paragon': {
     hold: 0.45,
     defenseDebuff: 0.33,
-    range: 0.33,
+    range: 0.20,
     levelShift: 1,
     edBypass: 2/3,  // Very Rare: 2/3 bypasses ED
   },
   'intuition_radial_paragon': {
-    hold: 0.45,
+    hold: 0.33,
     defenseDebuff: 0.33,
-    range: 0.33,
+    range: 0.20,
     toHitDebuff: 0.20,
-    damage: 0.20,
-    slow: 0.20,
+    damage: 0.33,
+    slow: 0.33,
     levelShift: 1,
     edBypass: 2/3,  // Very Rare: 2/3 bypasses ED
   },
@@ -708,12 +708,12 @@ const ALPHA_EFFECTS: Record<string, AlphaEffects> = {
     edBypass: 2/3,  // Very Rare: 2/3 bypasses ED
   },
   'vigor_radial_paragon': {
-    heal: 0.45,
+    heal: 0.33,
     accuracy: 0.33,
     enduranceModification: 0.33,
-    confuse: 0.20,
-    sleep: 0.20,
-    fear: 0.20,
+    confuse: 0.33,
+    sleep: 0.33,
+    fear: 0.33,
     levelShift: 1,
     edBypass: 2/3,  // Very Rare: 2/3 bypasses ED
   },

@@ -296,6 +296,8 @@ export interface PowerEffects {
   damageBuff?: NumberOrScaled;
   /** Defense buff value - can be single value or by type */
   defenseBuff?: NumberOrScaled | DefenseByType;
+  /** If true, defenseBuff only applies to teammates, not the caster (e.g., Grant Cover) */
+  defenseBuffExcludesSelf?: boolean;
   /** Defense buff suppressed in combat (stealth/travel powers) */
   defenseBuffSuppressible?: NumberOrScaled | DefenseByType;
   /** Recharge buff value (percentage as decimal, e.g., 0.30 = 30%) */

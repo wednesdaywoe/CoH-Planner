@@ -424,6 +424,7 @@ interface ActivePowerEffect {
   rechargeBuff?: ScalarOrScaled;
   defense?: Record<string, ScalarOrScaled>;
   defenseBuff?: Record<string, ScalarOrScaled>;
+  defenseBuffExcludesSelf?: boolean;
   defenseBuffSuppressible?: Record<string, ScalarOrScaled>;
   resistance?: Record<string, ScalarOrScaled>;
   debuffResistance?: Record<string, ScalarOrScaled>;
@@ -571,7 +572,8 @@ function applyActivePowerBonuses(
     // Defense from active powers
     // Enhanced by Defense enhancements
     // Power data uses either "defense" or "defenseBuff" key for defense effects
-    const defenseEffects = effects.defense || effects.defenseBuff;
+    // Skip defenseBuff when defenseBuffExcludesSelf is set (e.g., Grant Cover — team only)
+    const defenseEffects = effects.defense || (!effects.defenseBuffExcludesSelf ? effects.defenseBuff : undefined);
     if (defenseEffects && typeof defenseEffects === 'object') {
       const enhMultiplier = 1 + (enhBonuses.defense || enhBonuses.defenseBuff || 0);
       for (const [type, value] of Object.entries(defenseEffects)) {

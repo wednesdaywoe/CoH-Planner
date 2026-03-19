@@ -36,6 +36,7 @@ export const GrantCover: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "defenseBuffExcludesSelf": true,
     "defenseBuff": {
       "ranged": {
         "scale": 1.125,

@@ -33,7 +33,9 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
       { message: 'Catalyzed non-ATO sets now correctly cap at their sets maxLevel when \
         computing enhancement values. Previously they resolved at level 50 because the \
         attuned path bypassed the maxLevel cap', type: 'fix' },
-      
+      { message: 'Core Paragon: tertiary stat corrected 0.33 → 0.2', type: 'fix' },
+      { message: 'Radial Paragon: primary stat corrected 0.45 → 0.33, also secondary/tertiary had swapped values', type: 'fix' },
+      { message: 'Grant Cover no longer grants cover. Well, it does, but not for you.', type: 'fix' },
 
     ],
   },
