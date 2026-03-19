@@ -32,7 +32,6 @@ import {
 } from './set-bonuses';
 import {
   createEmptyStats,
-  getBaselineHealth,
   type CharacterStats,
 } from './stats';
 import {
@@ -487,7 +486,6 @@ function applyActivePowerBonuses(
   buildLevel: number,
   archetypeId: string,
   alphaBonuses: EnhancementBonuses = {},
-  baseMaxHP: number = 0,
   targetsHitValues: Record<string, number> = {},
   exemplarLevel?: number,
   combatMode?: boolean
@@ -764,20 +762,14 @@ function applyActivePowerBonuses(
 
     // Max HP buff
     // Enhanced by Healing enhancements
-    // Heal tables (e.g., Melee_HealSelf) return absolute HP values, not percentages.
-    // Convert to percentage of base max HP when a heal table is used.
+    // MaxHP buffs use a flat 5% per scale point (the game's base fMag = 0.05).
+    // The heal table reference in power data is NOT used for MaxHP percentage calculation.
     if (effects.maxHPBuff !== undefined) {
       const enhMultiplier = 1 + (enhBonuses.heal || 0);
-      const resolved = resolveScaledEffect(effects.maxHPBuff, archetypeId, buildLevel);
-      const isHealTable = typeof effects.maxHPBuff === 'object' && effects.maxHPBuff.table &&
-        effects.maxHPBuff.table.toLowerCase().includes('heal');
-      let value: number;
-      if (isHealTable && baseMaxHP > 0) {
-        // Absolute HP from heal table → convert to percentage of base max HP
-        value = (resolved / baseMaxHP) * 100 * enhMultiplier;
-      } else {
-        value = resolved * 100 * enhMultiplier;
-      }
+      const scale = typeof effects.maxHPBuff === 'number'
+        ? effects.maxHPBuff
+        : effects.maxHPBuff.scale;
+      const value = scale * 5 * enhMultiplier;
       global.maxHP += value;
       addToBreakdown(breakdown, 'maxHP', {
         name: power.name,
@@ -2329,8 +2321,7 @@ export function calculateCharacterTotals(
   applyFitnessPowerBonuses(build, globalBonuses, breakdown, effectiveLevel, alphaBonuses, exemplarLevel);
 
   // Step 7: Apply active toggle power bonuses (with enhancement multipliers + Alpha bonuses)
-  const baseMaxHP = getBaselineHealth(build.archetype?.id ?? undefined, effectiveLevel).baseHealth;
-  applyActivePowerBonuses(allPowers, globalBonuses, breakdown, effectiveLevel, build.archetype.id || '', alphaBonuses, baseMaxHP, options?.targetsHitValues ?? {}, exemplarLevel, options?.combatMode);
+  applyActivePowerBonuses(allPowers, globalBonuses, breakdown, effectiveLevel, build.archetype.id || '', alphaBonuses, options?.targetsHitValues ?? {}, exemplarLevel, options?.combatMode);
 
   // Step 7.5: Apply always-on proc bonuses (Global and Proc120s in Auto/Toggle powers)
   // Procs have their own Rule of 5 tracking, separate from set bonuses

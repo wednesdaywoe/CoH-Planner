@@ -23,6 +23,8 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   {
     date: '2026-03-19',
     items: [
+      { message: 'Discovered the maxHPBuff formula was wrong. It should be a flat 5% maxHP per scale point.\
+        This affects every powerset with a maxHP buff', type: 'fix' },
       { message: 'SK builds created before level recalculation was added imported with multiple \
         powers assigned to the same level. Migration now detects when multiple powers share the \
         same pick level. When duplicates are found, the migration reassigns levels correctly', type: 'fix' },
