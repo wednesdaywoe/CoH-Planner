@@ -172,11 +172,13 @@ function slimEnhancement(enh: Enhancement): SlimEnhancement {
 }
 
 /**
- * Only include inherents that have at least one slotted enhancement.
+ * Include inherents that have been modified from their default state:
+ * either they have a slotted enhancement, or they have extra slots placed
+ * (even if empty — the user has allocated slot picks to them).
  */
 function slimInherents(inherents: SelectedPower[]): SlimPower[] {
   return inherents
-    .filter((p) => p.slots.some((s) => s !== null))
+    .filter((p) => p.slots.some((s) => s !== null) || p.slots.length > 1)
     .map(slimPower);
 }
 

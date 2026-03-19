@@ -21,16 +21,18 @@ export interface ManualEntry {
 export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   // ─── 2026-03-18 ────────────────────────────────────────────────────────────
   {
-    date: '2026-03-18',
+    date: '2026-03-19',
     items: [
-      { message: 'Reorganized the Save/Load/Import/Export', type: 'update' },
-      { message: 'Compare Slotting now has a spot on the Dashboard to make it more discoverable ', type: 'update' },
-      { message: 'Accuracy calculations show the actual value after the capped value', type: 'update' },
-      { message: 'Corrected more Sentinel modifiers', type: 'fix' },
-      { message: 'Fixed Enhancement selection modal sorting memory issue', type: 'fix' },
-      { message: 'Fixed importer skipping inherents with only the default slot', type: 'fix' },
-      { message: 'Created the missing Hami-Os (the game doesnt have distinct icons but this is prettier and helps visually differentiate them)', type: 'fix' },
-      { message: 'Corrected some Brute melee sets to accept ATOs  ', type: 'fix' },
+      { message: 'SK builds created before level recalculation was added imported with multiple \
+        powers assigned to the same level. Migration now detects when multiple powers share the \
+        same pick level. When duplicates are found, the migration reassigns levels correctly', type: 'fix' },
+      { message: 'Inherent fitness slots lost on .skif export: .skif export now preserves \
+        inherents that have extra empty slots, not just those with slotted enhancements', type: 'fix' },
+      { message: 'Catalyzed non-ATO sets now correctly cap at their sets maxLevel when \
+        computing enhancement values. Previously they resolved at level 50 because the \
+        attuned path bypassed the maxLevel cap', type: 'fix' },
+      
+
     ],
   },
 ];

@@ -1073,6 +1073,7 @@ function applyFitnessPowerBonuses(
   global: GlobalBonuses,
   breakdown: Map<string, DashboardStatBreakdown>,
   globalIOLevel: number,
+  alphaBonuses: EnhancementBonuses = {},
   exemplarLevel?: number
 ): void {
   const fitnessPowers = (build.inherents || []).filter(
@@ -1090,6 +1091,13 @@ function applyFitnessPowerBonuses(
       getIOSet,
       exemplarLevel
     );
+
+    // Add Alpha incarnate enhancement bonuses (apply universally, bypass ED)
+    for (const [aspect, value] of Object.entries(alphaBonuses)) {
+      if (value !== undefined) {
+        enhBonuses[aspect] = (enhBonuses[aspect] || 0) + value;
+      }
+    }
 
     for (const effect of effects) {
       // Get the enhancement multiplier for this effect's type
@@ -2314,11 +2322,11 @@ export function calculateCharacterTotals(
   // Step 4: Collect all powers
   const allPowers = collectAllPowers(build);
 
-  // Step 5: Apply inherent power bonuses (Fitness powers)
-  applyFitnessPowerBonuses(build, globalBonuses, breakdown, effectiveLevel, exemplarLevel);
-
-  // Step 6: Get Alpha incarnate enhancement bonuses (apply to all powers)
+  // Step 5: Get Alpha incarnate enhancement bonuses (apply to all powers including fitness)
   const alphaBonuses = getAlphaEnhancementBonuses(build.incarnates, incarnateActive);
+
+  // Step 6: Apply inherent power bonuses (Fitness powers, with Alpha bonuses)
+  applyFitnessPowerBonuses(build, globalBonuses, breakdown, effectiveLevel, alphaBonuses, exemplarLevel);
 
   // Step 7: Apply active toggle power bonuses (with enhancement multipliers + Alpha bonuses)
   const baseMaxHP = getBaselineHealth(build.archetype?.id ?? undefined, effectiveLevel).baseHealth;

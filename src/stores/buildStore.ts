@@ -1714,11 +1714,26 @@ export const useBuildStore = create<BuildStore>()(
               state.build.epicPool.powers.filter(p => !p.isAutoGranted).forEach((p, i) => allPowers.push({ power: p, category: 'epic', index: i }));
             }
 
-            // Check if any non-inherent power has a level that isn't a valid pick level
+            // Check if any non-inherent power has a level that isn't a valid pick level,
+            // OR if there are duplicate levels (e.g., 6 primaries all at level 1)
             const pickLevelSet = new Set(POWER_PICK_LEVELS);
             const hasInvalidLevels = allPowers.some((entry) => !pickLevelSet.has(entry.power.level));
 
-            if (hasInvalidLevels && allPowers.length > 0) {
+            // Detect duplicate levels: count how many powers occupy each level
+            // Level 1 allows 2 powers (primary + secondary), all others allow 1
+            let hasDuplicateLevels = false;
+            if (!hasInvalidLevels && allPowers.length > 0) {
+              const levelCounts = new Map<number, number>();
+              for (const entry of allPowers) {
+                levelCounts.set(entry.power.level, (levelCounts.get(entry.power.level) || 0) + 1);
+              }
+              for (const [level, count] of levelCounts) {
+                if (level === 1 && count > 2) { hasDuplicateLevels = true; break; }
+                if (level !== 1 && count > 1) { hasDuplicateLevels = true; break; }
+              }
+            }
+
+            if ((hasInvalidLevels || hasDuplicateLevels) && allPowers.length > 0) {
               // Level 1 is special: one primary + one secondary. Pull those out first
               // to guarantee they get level 1, regardless of how many of each exist.
               const firstPrimaryIdx = allPowers.findIndex((e) => e.category === 'primary');

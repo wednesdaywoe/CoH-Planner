@@ -501,7 +501,10 @@ export function calculatePowerEnhancementBonuses(
       let ioLevel: number;
       if (isAttuned) {
         // Attuned: use exemplar level if exemplaring, otherwise globalIOLevel (typically 50)
-        ioLevel = exemplarLevel ?? globalIOLevel;
+        const baseLevel = exemplarLevel ?? globalIOLevel;
+        // Catalyzed non-ATO/non-event sets still cap at their maxLevel
+        // (ATOs/event IOs have maxLevel <= 1 and scale freely)
+        ioLevel = set.maxLevel > 1 ? Math.min(baseLevel, set.maxLevel) : baseLevel;
       } else {
         // Non-attuned: capped by set's max level
         ioLevel = Math.min(globalIOLevel, set.maxLevel);
