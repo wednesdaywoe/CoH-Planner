@@ -2464,7 +2464,9 @@ export function calculateCharacterTotals(
   const stats = convertToCharacterStats(globalBonuses);
 
   // Compute net endurance per second (recovery minus toggle costs)
-  const recoveryEndPerSec = BASE_RECOVERY_RATE * (1 + globalBonuses.recovery / 100);
+  // Recovery = MaxEnd × (1 + RecoveryMod) / 60 — max endurance bonuses scale the base rate
+  const totalMaxEnd = 100 * (1 + globalBonuses.maxEndurance / 100);
+  const recoveryEndPerSec = (totalMaxEnd / 60) * (1 + globalBonuses.recovery / 100);
   globalBonuses.netEndPerSec = recoveryEndPerSec - globalBonuses.toggleEndCost;
 
   // Update breakdown totals from final values (exclude capped/Rule-of-5 sources)

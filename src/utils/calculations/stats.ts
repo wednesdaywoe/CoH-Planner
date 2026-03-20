@@ -545,8 +545,11 @@ export function formatStatValue(
       const baseRegenPerSecond = (actualHP * baseRegenRate) / 12;
       absValue = baseRegenPerSecond * (1 + value / 100);
     } else if (statId === 'recovery') {
-      const baselineRecovery = getBaselineRecovery(archetypeId, level);
-      absValue = baselineRecovery * (1 + value / 100);
+      // Recovery = MaxEnd × (1 + RecoveryMod) / 60 (wiki formula)
+      // MaxEnd bonus is stored as a percentage in stats.maxend
+      const baselineMaxEnd = getBaselineEndurance(archetypeId, level);
+      const totalMaxEnd = baselineMaxEnd * (1 + (stats.maxend || 0) / 100);
+      absValue = (totalMaxEnd / 60) * (1 + value / 100);
     } else if (statId === 'runspeed') {
       const baseRunSpeed = 12.5; // mph
       absValue = baseRunSpeed * (1 + value / 100);
