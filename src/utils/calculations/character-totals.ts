@@ -464,6 +464,11 @@ interface ActivePowerEffect {
   perceptionBuff?: ScalarOrScaled;
   // Endurance cost per second (for toggles)
   enduranceCost?: number;
+  // Self-debuffs (e.g., Granite Armor)
+  slow?: ScalarOrScaled | Record<string, ScalarOrScaled>;
+  movement?: Record<string, ScalarOrScaled>;
+  rechargeDebuff?: ScalarOrScaled;
+  damageDebuff?: ScalarOrScaled;
 }
 
 interface PowerWithToggle {
@@ -561,6 +566,18 @@ function applyActivePowerBonuses(
       const enhMultiplier = 1 + (enhBonuses.damage || 0);
       const adjustedBuff = adjustForPerTarget(effects.damageBuff as ScalarOrScaled, targetsHitValues[power.name]);
       const value = resolveScaledEffect(adjustedBuff, archetypeId, buildLevel) * 100 * enhMultiplier;
+      global.damage += value;
+      addToBreakdown(breakdown, 'damage', {
+        name: power.name,
+        value,
+        type: 'active-power',
+      });
+    }
+
+    // Damage debuff (self-penalty, e.g. Granite Armor -30% damage)
+    // Unenhanceable — self-debuffs are not boosted by slotted enhancements
+    if (effects.damageDebuff !== undefined) {
+      const value = resolveScaledEffect(effects.damageDebuff as ScalarOrScaled, archetypeId, buildLevel) * -100;
       global.damage += value;
       addToBreakdown(breakdown, 'damage', {
         name: power.name,
@@ -689,11 +706,70 @@ function applyActivePowerBonuses(
       });
     }
 
+    // Movement buffs (new format — e.g., Lightning Reflexes)
+    if (effects.movement && typeof effects.movement === 'object') {
+      const movementKeyMap: Record<string, keyof GlobalBonuses> = {
+        runSpeed: 'runSpeed',
+        flySpeed: 'flySpeed',
+        fly: 'flySpeed',
+        jumpHeight: 'jumpHeight',
+        jumpSpeed: 'jumpHeight',
+      };
+      for (const [type, val] of Object.entries(effects.movement)) {
+        const key = movementKeyMap[type];
+        if (key && key in global) {
+          const value = resolveScaledEffect(val as ScalarOrScaled, archetypeId, buildLevel) * 100;
+          global[key] += value;
+          addToBreakdown(breakdown, key, {
+            name: power.name,
+            value,
+            type: 'active-power',
+          });
+        }
+      }
+    }
+
+    // Movement debuffs / slow (self-penalty, e.g. Granite Armor -70% run speed)
+    // Unenhanceable — self-slows are not boosted by slotted enhancements
+    if (effects.slow && typeof effects.slow === 'object') {
+      const slowKeyMap: Record<string, keyof GlobalBonuses> = {
+        runSpeed: 'runSpeed',
+        flySpeed: 'flySpeed',
+        fly: 'flySpeed',
+        jumpHeight: 'jumpHeight',
+        jumpSpeed: 'jumpHeight',
+      };
+      for (const [type, val] of Object.entries(effects.slow)) {
+        const key = slowKeyMap[type];
+        if (key && key in global) {
+          const value = resolveScaledEffect(val as ScalarOrScaled, archetypeId, buildLevel) * -100;
+          global[key] += value;
+          addToBreakdown(breakdown, key, {
+            name: power.name,
+            value,
+            type: 'active-power',
+          });
+        }
+      }
+    }
+
     // Recharge buff
     // NOT enhanced by Recharge enhancements — recharge enhancements reduce the
     // power's own recharge time, they don't boost the recharge speed buff value
     if (effects.rechargeBuff !== undefined) {
       const value = extractScaleValue(effects.rechargeBuff) * 100;
+      global.recharge += value;
+      addToBreakdown(breakdown, 'recharge', {
+        name: power.name,
+        value,
+        type: 'active-power',
+      });
+    }
+
+    // Recharge debuff (self-penalty, e.g. Granite Armor -65% recharge)
+    // Unenhanceable — self-debuffs are not boosted by slotted enhancements
+    if (effects.rechargeDebuff !== undefined) {
+      const value = resolveScaledEffect(effects.rechargeDebuff as ScalarOrScaled, archetypeId, buildLevel) * -100;
       global.recharge += value;
       addToBreakdown(breakdown, 'recharge', {
         name: power.name,
