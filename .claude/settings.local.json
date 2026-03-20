@@ -95,7 +95,8 @@
       "Bash(find /Users/brian/Library/CloudStorage/Dropbox/GitHub/CoH-Planner/raw_data_homecoming-20251209_7415/powers/pets -name \"*.json\" -type f -exec grep -h '\"\"attrib\"\":' {} ;)",
       "Bash(for ps in beast_mastery demon_summoning mercenaries necromancy ninjas robotics thugs)",
       "Bash(do echo \"=== $ps ===\")",
-      "Bash(node scripts/fix-allowed-enhancements.cjs --archetype blaster --dry-run)"
+      "Bash(node scripts/fix-allowed-enhancements.cjs --archetype blaster --dry-run)",
+      "Bash(find /Users/brian/Library/CloudStorage/Dropbox/GitHub/CoH-Planner/raw_data_homecoming-20251209_7415 -path *Electric_Manipulation*Dynamo* -o -path *electricity_manipulation*dynamo*)"
     ]
   }
 }

@@ -36,6 +36,11 @@ export const MudBath: Power = {
     "Slow Movement"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Heal",
+    "scale": 0.15,
+    "table": "Melee_HealSelf"
+  },
   "effects": {
     "movement": {
       "runSpeed": {
@@ -53,13 +58,18 @@ export const MudBath: Power = {
     },
     "durations": {
       "movement": 5,
-      "slow": 5
+      "slow": 5,
+      "recoveryBuff": 2.1
     },
     "slow": {
       "runSpeed": {
         "scale": 1,
         "table": "Melee_SpeedRunning"
       }
+    },
+    "recoveryBuff": {
+      "scale": 0.5,
+      "table": "Melee_Ones"
     },
     "buffDuration": 5
   }

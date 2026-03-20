@@ -12,6 +12,7 @@ import type { Powerset } from '@/types';
 import { ReachfortheLimit as ReachfortheLimit } from './reach-for-the-limit';
 import { KiPush as KiPush } from './ki-push';
 import { StormKick as StormKick } from './storm-kick';
+import { ReachfortheLimit as ReachfortheLimit2 } from './reach-for-the-limit';
 import { BurstofSpeed as BurstofSpeed } from './burst-of-speed';
 import { DragonsTail as DragonsTail } from './dragon-s-tail';
 import { ReactionTime as ReactionTime } from './reaction-time';
@@ -30,6 +31,7 @@ export const powerset: Powerset = {
     ReachfortheLimit,
     KiPush,
     StormKick,
+    ReachfortheLimit2,
     BurstofSpeed,
     DragonsTail,
     ReactionTime,

@@ -1069,6 +1069,22 @@ function convertPower(powerJson, availableLevel) {
     }
   }
 
+  // Also collect self-buff templates from activation_effects.
+  // These are continuous self-targeted effects applied while a toggle/auto is active
+  // (e.g., Dynamo's +regen/+recovery, Reaction Time's +recovery).
+  // Skip IgnoreStrength templates — the same effect is always present without that flag
+  // as the enhanceable version, so only process the enhanceable copy.
+  if (powerJson.activation_effects?.length) {
+    const activationTemplates = collectAllTemplates(powerJson.activation_effects)
+      .filter(t =>
+        t.target === 'Self' &&
+        !(t.flags || []).some(f => f.startsWith('IgnoreStrength'))
+      );
+    if (activationTemplates.length > 0) {
+      allTemplates = allTemplates.concat(activationTemplates);
+    }
+  }
+
   if (allTemplates.length > 0) {
     const damage = extractDamage(allTemplates);
     if (damage) power.damage = damage;

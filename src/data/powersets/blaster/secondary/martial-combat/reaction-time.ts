@@ -55,6 +55,13 @@ export const ReactionTime: Power = {
         "table": "Melee_Slow"
       }
     },
+    "durations": {
+      "movement": 10,
+      "rechargeDebuff": 10,
+      "slow": 10,
+      "recoveryBuff": 1.25,
+      "absorb": 12
+    },
     "rechargeDebuff": {
       "scale": 0.4,
       "table": "Melee_Slow"
@@ -77,11 +84,14 @@ export const ReactionTime: Power = {
         "table": "Melee_Slow"
       }
     },
-    "durations": {
-      "movement": 10,
-      "rechargeBuff": 5,
-      "rechargeDebuff": 10,
-      "slow": 10
-    }
+    "recoveryBuff": {
+      "scale": 0.5,
+      "table": "Melee_Ones"
+    },
+    "absorb": {
+      "scale": 0.15,
+      "table": "Melee_HealSelf"
+    },
+    "buffDuration": 10
   }
 };

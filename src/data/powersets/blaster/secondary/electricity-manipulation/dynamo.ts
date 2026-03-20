@@ -55,6 +55,19 @@ export const Dynamo: Power = {
     "enduranceDrain": {
       "scale": 1,
       "table": "Melee_EndDrain"
-    }
+    },
+    "regenBuff": {
+      "scale": 1.125,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "regenBuff": 2.25,
+      "recoveryBuff": 2.25
+    },
+    "recoveryBuff": {
+      "scale": 0.5,
+      "table": "Melee_Ones"
+    },
+    "buffDuration": 2.25
   }
 };

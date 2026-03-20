@@ -60,9 +60,9 @@ export const StormKick: Power = {
       "scale": 0.071,
       "table": "Melee_Ones"
     },
-    "buffDuration": 8.57,
     "durations": {
       "damageBuff": 8.57
-    }
+    },
+    "buffDuration": 8.57
   }
 };

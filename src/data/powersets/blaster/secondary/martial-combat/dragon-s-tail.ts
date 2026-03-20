@@ -53,9 +53,9 @@ export const DragonsTail: Power = {
       "scale": 0.045,
       "table": "Melee_Ones"
     },
-    "buffDuration": 9,
     "durations": {
       "damageBuff": 9
-    }
+    },
+    "buffDuration": 9
   }
 };

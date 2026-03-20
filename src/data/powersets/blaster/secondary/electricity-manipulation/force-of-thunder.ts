@@ -51,9 +51,9 @@ export const ForceofThunder: Power = {
       "scale": 0.025,
       "table": "Melee_Ones"
     },
-    "buffDuration": 8.73,
     "durations": {
       "damageBuff": 8.73
-    }
+    },
+    "buffDuration": 8.73
   }
 };

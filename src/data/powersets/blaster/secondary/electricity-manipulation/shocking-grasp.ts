@@ -56,6 +56,11 @@ export const ShockingGrasp: Power = {
       "scale": 0.07,
       "table": "Melee_Ones"
     },
+    "durations": {
+      "enduranceDrain": 8.1,
+      "recoveryDebuff": 4,
+      "damageBuff": 8.5
+    },
     "recoveryDebuff": {
       "scale": 1,
       "table": "Melee_Ones"
@@ -68,11 +73,6 @@ export const ShockingGrasp: Power = {
       "scale": 0.066,
       "table": "Melee_Ones"
     },
-    "buffDuration": 8.5,
-    "durations": {
-      "damageBuff": 8.5,
-      "enduranceDrain": 8.1,
-      "recoveryDebuff": 4
-    }
+    "buffDuration": 8.5
   }
 };
