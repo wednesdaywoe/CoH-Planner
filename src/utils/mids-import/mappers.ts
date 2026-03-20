@@ -162,26 +162,34 @@ export function resolvePowerset(
 // POWER MAPPING (within a powerset)
 // ============================================
 
+/** Known Mids typos: midsName (lowercase) → corrected internalName */
+const MIDS_NAME_TYPOS: Record<string, string> = {
+  'spectral_terrror': 'Spectral_Terror',
+};
+
 /**
  * Find a power within a list of Power definitions by Mids internal name.
  * Tries internalName match first, then display name normalization.
  */
 export function findPowerByMidsName(powers: Power[], midsName: string): Power | null {
+  // Fix known Mids typos
+  const corrected = MIDS_NAME_TYPOS[midsName.toLowerCase()] ?? midsName;
+
   // Try exact internalName match
   const byInternal = powers.find(
-    (p) => p.internalName?.toLowerCase() === midsName.toLowerCase()
+    (p) => p.internalName?.toLowerCase() === corrected.toLowerCase()
   );
   if (byInternal) return byInternal;
 
   // Try display name: "Quick_Strike" → "Quick Strike"
-  const normalized = midsName.replace(/_/g, ' ');
+  const normalized = corrected.replace(/_/g, ' ');
   const byDisplay = powers.find(
     (p) => p.name.toLowerCase() === normalized.toLowerCase()
   );
   if (byDisplay) return byDisplay;
 
   // fullName last segment match (e.g., "Combat_Flight" matches Pool.Flight.Combat_Flight → "Hover")
-  const lowerName = midsName.toLowerCase();
+  const lowerName = corrected.toLowerCase();
   const byFullName = powers.find((p) => {
     if (!p.fullName) return false;
     const segment = p.fullName.split('.').pop() ?? '';
