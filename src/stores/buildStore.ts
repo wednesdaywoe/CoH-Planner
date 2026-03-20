@@ -12,6 +12,7 @@ import type {
   SelectedPower,
   Accolade,
   ArchetypeId,
+  ArchetypeBranchId,
   Origin,
   ProgressionMode,
   Enhancement,
@@ -44,6 +45,7 @@ import type { InherentPowerDef } from '@/data';
 import { computeSetTracking } from '@/utils/calculations/set-tracking';
 import { slimBuild, hydrateBuild } from '@/utils/build-serialization';
 import { useHistoryStore } from './historyStore';
+import { useUIStore } from './uiStore';
 
 // ============================================
 // POWER CATEGORY TYPE
@@ -197,11 +199,27 @@ function syncBuildDefinitions(build: Build): void {
     return anyChanged ? fixed : powers;
   };
 
+  // For VEATs, collect branch power definitions so sync covers branch powers too
+  const archetype = build.archetype.id ? getArchetype(build.archetype.id) : null;
+  const getBranchPowers = (role: 'primary' | 'secondary'): readonly Pick<SelectedPower, 'name' | 'effects' | 'icon'>[] => {
+    if (!archetype?.branches) return [];
+    const powers: Pick<SelectedPower, 'name' | 'effects' | 'icon'>[] = [];
+    for (const branch of Object.values(archetype.branches)) {
+      if (!branch) continue;
+      const branchSetId = role === 'primary' ? branch.primarySet : branch.secondarySet;
+      if (!branchSetId) continue;
+      const branchDef = getPowerset(branchSetId);
+      if (branchDef) powers.push(...branchDef.powers);
+    }
+    return powers;
+  };
+
   // Sync primary powers
   if (build.primary.id && build.primary.powers.length > 0) {
     const def = getPowerset(build.primary.id);
     if (def) {
-      let fixed = syncPowers(build.primary.powers, def.powers);
+      const allDefs = [...def.powers, ...getBranchPowers('primary')];
+      let fixed = syncPowers(build.primary.powers, allDefs);
       fixed = fixPowerSetIds(fixed, build.primary.id);
       if (fixed !== build.primary.powers) {
         build.primary = { ...build.primary, powers: fixed };
@@ -213,7 +231,8 @@ function syncBuildDefinitions(build: Build): void {
   if (build.secondary.id && build.secondary.powers.length > 0) {
     const def = getPowerset(build.secondary.id);
     if (def) {
-      let fixed = syncPowers(build.secondary.powers, def.powers);
+      const allDefs = [...def.powers, ...getBranchPowers('secondary')];
+      let fixed = syncPowers(build.secondary.powers, allDefs);
       fixed = fixPowerSetIds(fixed, build.secondary.id);
       if (fixed !== build.secondary.powers) {
         build.secondary = { ...build.secondary, powers: fixed };
@@ -555,6 +574,34 @@ function normalizeBranchPowersets(build: Build): void {
       }
     }
   }
+}
+
+/**
+ * For VEATs: detect which branch the build's powers belong to.
+ * Scans primary/secondary power names against each branch's powerset definitions.
+ */
+function detectBranch(build: Build): ArchetypeBranchId | null {
+  const archetype = build.archetype.id ? getArchetype(build.archetype.id) : null;
+  if (!archetype?.branches) return null;
+
+  const allPowerNames = new Set([
+    ...build.primary.powers.map((p) => p.name.toLowerCase()),
+    ...build.secondary.powers.map((p) => p.name.toLowerCase()),
+  ]);
+
+  for (const [branchId, branch] of Object.entries(archetype.branches)) {
+    if (!branch) continue;
+    const branchPrimary = branch.primarySet ? getPowerset(branch.primarySet) : null;
+    const branchSecondary = getPowerset(branch.secondarySet);
+    const branchPowerNames = [
+      ...(branchPrimary?.powers ?? []).map((p) => p.name.toLowerCase()),
+      ...(branchSecondary?.powers ?? []).map((p) => p.name.toLowerCase()),
+    ];
+    if (branchPowerNames.some((name) => allPowerNames.has(name))) {
+      return branchId as ArchetypeBranchId;
+    }
+  }
+  return null;
 }
 
 /**
@@ -1520,6 +1567,12 @@ export const useBuildStore = create<BuildStore>()(
           // Normalize VEAT branch powersets to base powersets
           normalizeBranchPowersets(build);
 
+          // Auto-detect branch for VEAT builds (so branch powers appear in the picker)
+          const branch = detectBranch(build);
+          if (branch) {
+            useUIStore.getState().setSelectedBranch(branch);
+          }
+
           set({ build });
           return true;
         } catch (e) {
@@ -1699,6 +1752,13 @@ export const useBuildStore = create<BuildStore>()(
           // Migration: Sync power definitions (effects, icons) and enhancement icons
           // from current data — fixes stale data from older builds
           syncBuildDefinitions(state.build);
+
+          // Auto-detect branch for VEAT builds on rehydration
+          const branch = detectBranch(state.build);
+          if (branch) {
+            // Defer to avoid store initialization ordering issues
+            setTimeout(() => useUIStore.getState().setSelectedBranch(branch), 0);
+          }
 
           // Migration: Fix power pick levels that don't match valid power pick levels.
           // Older builds may have all powers at the display level (e.g., 50) instead of

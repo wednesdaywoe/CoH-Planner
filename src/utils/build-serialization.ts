@@ -194,6 +194,28 @@ const SPECIAL_REGISTRIES = {
 } as const;
 
 /**
+ * For VEAT archetypes, collect power definitions from all branch powersets
+ * so hydration can find branch powers (e.g., Night Widow's Slash in widow-training builds).
+ */
+function getBranchPowerDefs(
+  archetype: ReturnType<typeof getArchetype> | null,
+  role: 'primary' | 'secondary',
+): Power[] {
+  if (!archetype?.branches) return [];
+  const branchPowers: Power[] = [];
+  for (const branch of Object.values(archetype.branches)) {
+    if (!branch) continue;
+    const branchSetId = role === 'primary' ? branch.primarySet : branch.secondarySet;
+    if (!branchSetId) continue;
+    const branchDef = getPowerset(branchSetId);
+    if (branchDef) {
+      branchPowers.push(...branchDef.powers);
+    }
+  }
+  return branchPowers;
+}
+
+/**
  * Reconstruct a full Build from a v2 slim export.
  */
 export function hydrateBuild(slim: Record<string, any>): Build {
@@ -208,15 +230,17 @@ export function hydrateBuild(slim: Record<string, any>): Build {
     inherent: archetype?.inherent ?? null,
   };
 
-  // Primary powerset
+  // Primary powerset (include branch powers for VEATs)
   const primaryId = slim.primary?.id ?? null;
   const primaryDef = primaryId ? getPowerset(primaryId) : null;
-  const primaryPowers = hydratePowers(slim.primary?.powers ?? [], primaryDef?.powers ?? [], primaryId ?? '');
+  const allPrimaryDefs = [...(primaryDef?.powers ?? []), ...getBranchPowerDefs(archetype, 'primary')];
+  const primaryPowers = hydratePowers(slim.primary?.powers ?? [], allPrimaryDefs, primaryId ?? '');
 
-  // Secondary powerset
+  // Secondary powerset (include branch powers for VEATs)
   const secondaryId = slim.secondary?.id ?? null;
   const secondaryDef = secondaryId ? getPowerset(secondaryId) : null;
-  const secondaryPowers = hydratePowers(slim.secondary?.powers ?? [], secondaryDef?.powers ?? [], secondaryId ?? '');
+  const allSecondaryDefs = [...(secondaryDef?.powers ?? []), ...getBranchPowerDefs(archetype, 'secondary')];
+  const secondaryPowers = hydratePowers(slim.secondary?.powers ?? [], allSecondaryDefs, secondaryId ?? '');
 
   // Pools
   const pools: PoolSelection[] = (slim.pools ?? []).map((slimPool: SlimPoolSelection) => {
