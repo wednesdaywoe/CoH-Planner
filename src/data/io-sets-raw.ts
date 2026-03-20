@@ -16,6 +16,7 @@ interface LegacyIOSetPiece {
   aspects: string[];
   proc: boolean;
   unique: boolean;
+  totalAspects?: number;
 }
 
 interface LegacySetBonusEffect {
@@ -1522,7 +1523,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": true,
-        "unique": false
+        "unique": false,
+        "totalAspects": 4
       }
     ],
     "icon": "AO_Dominator_AscendencyOfTheDominator.png"
@@ -1652,7 +1654,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": true,
-        "unique": false
+        "unique": false,
+        "totalAspects": 4
       }
     ],
     "icon": "AO_Stalker_AssassinsMark.png"
@@ -1792,7 +1795,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": true,
-        "unique": false
+        "unique": false,
+        "totalAspects": 4
       }
     ],
     "icon": "EO_Avalanche.png"
@@ -2162,7 +2166,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": true,
-        "unique": false
+        "unique": false,
+        "totalAspects": 4
       }
     ],
     "icon": "AO_Blaster_BlastersWrath.png"
@@ -2380,7 +2385,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": true,
-        "unique": false
+        "unique": false,
+        "totalAspects": 4
       }
     ],
     "icon": "EO_Blistering_Cold.png"
@@ -3052,7 +3058,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": true,
-        "unique": false
+        "unique": false,
+        "totalAspects": 4
       }
     ],
     "icon": "AO_Brute_BrutesFury.png"
@@ -4122,7 +4129,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": false,
-        "unique": false
+        "unique": false,
+        "totalAspects": 4
       }
     ],
     "icon": "AO_Mastermind_CommandOfTheMastermind.png"
@@ -4361,7 +4369,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": true,
-        "unique": false
+        "unique": false,
+        "totalAspects": 4
       }
     ],
     "icon": "AO_Scrapper_CriticalStrikes.png"
@@ -5395,7 +5404,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": true,
-        "unique": false
+        "unique": false,
+        "totalAspects": 4
       }
     ],
     "icon": "AO_Defender_DefendersBastion.png"
@@ -5525,7 +5535,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": true,
-        "unique": false
+        "unique": false,
+        "totalAspects": 4
       }
     ],
     "icon": "AO_Blaster_DefiantBarrage.png"
@@ -6221,7 +6232,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": true,
-        "unique": false
+        "unique": false,
+        "totalAspects": 4
       }
     ],
     "icon": "AO_Dominator_DominatingGrasp.png"
@@ -6351,7 +6363,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": true,
-        "unique": false
+        "unique": false,
+        "totalAspects": 4
       }
     ],
     "icon": "AO_Arachnos_DominionOfArachnos.png"
@@ -7008,7 +7021,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": true,
-        "unique": false
+        "unique": false,
+        "totalAspects": 4
       }
     ],
     "icon": "EO_Entomb.png"
@@ -7522,7 +7536,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": true,
-        "unique": false
+        "unique": false,
+        "totalAspects": 4
       }
     ],
     "icon": "AO_Kheldian_EssenceTransfer.png"
@@ -8952,7 +8967,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": true,
-        "unique": false
+        "unique": false,
+        "totalAspects": 4
       }
     ],
     "icon": "EO_Frozen_Blast.png"
@@ -9271,7 +9287,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": true,
-        "unique": false
+        "unique": false,
+        "totalAspects": 4
       }
     ],
     "icon": "AO_Tanker_GauntletedFist.png"
@@ -12286,7 +12303,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": false,
-        "unique": false
+        "unique": false,
+        "totalAspects": 4
       }
     ],
     "icon": "AO_Kheldian_KheldiansGrace.png"
@@ -13610,7 +13628,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": true,
-        "unique": false
+        "unique": false,
+        "totalAspects": 4
       }
     ],
     "icon": "AO_Corruptor_MaliceOfTheCorruptor.png"
@@ -13765,7 +13784,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Endurance"
         ],
         "proc": false,
-        "unique": false
+        "unique": false,
+        "totalAspects": 4
       }
     ],
     "icon": "AO_Mastermind_MarkOfSupremacy.png"
@@ -13900,7 +13920,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": true,
-        "unique": false
+        "unique": false,
+        "totalAspects": 4
       }
     ],
     "icon": "AO_Tanker_MightOfTheTanker.png"
@@ -14967,7 +14988,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": true,
-        "unique": false
+        "unique": false,
+        "totalAspects": 4
       }
     ],
     "icon": "AO_Sentinel_OpportunityStrikes.png"
@@ -15126,7 +15148,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": true,
-        "unique": false
+        "unique": false,
+        "totalAspects": 4
       }
     ],
     "icon": "AO_Controller_OverpoweringPresence.png"
@@ -18328,7 +18351,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": true,
-        "unique": false
+        "unique": false,
+        "totalAspects": 4
       }
     ],
     "icon": "AO_Corruptor_ScourgingBlast.png"
@@ -18467,7 +18491,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": false,
-        "unique": false
+        "unique": false,
+        "totalAspects": 4
       }
     ],
     "icon": "AO_Scrapper_ScrappersStrike.png"
@@ -18597,7 +18622,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": true,
-        "unique": false
+        "unique": false,
+        "totalAspects": 4
       }
     ],
     "icon": "AO_Sentinel_SentinelsWard.png"
@@ -19717,7 +19743,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": false,
-        "unique": false
+        "unique": false,
+        "totalAspects": 4
       }
     ],
     "icon": "AO_Arachnos_SpidersBite.png"
@@ -20020,7 +20047,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": true,
-        "unique": false
+        "unique": false,
+        "totalAspects": 4
       }
     ],
     "icon": "AO_Stalker_StalkersGuile.png"
@@ -20633,7 +20661,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": true,
-        "unique": false
+        "unique": false,
+        "totalAspects": 4
       }
     ],
     "icon": "SAO_Dominator_SuperiorAscendencyOfTheDominator.png"
@@ -20763,7 +20792,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": true,
-        "unique": false
+        "unique": false,
+        "totalAspects": 4
       }
     ],
     "icon": "SAO_Stalker_SuperiorAssassinsMark.png"
@@ -20903,7 +20933,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": true,
-        "unique": false
+        "unique": false,
+        "totalAspects": 4
       }
     ],
     "icon": "EO_Avalanche.png"
@@ -21033,7 +21064,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": true,
-        "unique": false
+        "unique": false,
+        "totalAspects": 4
       }
     ],
     "icon": "SAO_Blaster_SuperiorBlastersWrath.png"
@@ -21173,7 +21205,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": true,
-        "unique": false
+        "unique": false,
+        "totalAspects": 4
       }
     ],
     "icon": "SEO_Blistering_Cold.png"
@@ -21312,7 +21345,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": true,
-        "unique": false
+        "unique": false,
+        "totalAspects": 4
       }
     ],
     "icon": "SAO_Brute_SuperiorBrutesFury.png"
@@ -21451,7 +21485,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": false,
-        "unique": false
+        "unique": false,
+        "totalAspects": 4
       }
     ],
     "icon": "SAO_Mastermind_SuperiorCommandOfTheMastermind.png"
@@ -21581,7 +21616,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": true,
-        "unique": false
+        "unique": false,
+        "totalAspects": 4
       }
     ],
     "icon": "SAO_Scrapper_SuperiorCriticalStrikes.png"
@@ -21711,7 +21747,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": true,
-        "unique": false
+        "unique": false,
+        "totalAspects": 4
       }
     ],
     "icon": "SAO_Defender_SuperiorDefendersBastion.png"
@@ -21841,7 +21878,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": true,
-        "unique": false
+        "unique": false,
+        "totalAspects": 4
       }
     ],
     "icon": "SAO_Blaster_SuperiorDefiantBarrage.png"
@@ -22000,7 +22038,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": true,
-        "unique": false
+        "unique": false,
+        "totalAspects": 4
       }
     ],
     "icon": "SAO_Dominator_SuperiorDominatingGrasp.png"
@@ -22130,7 +22169,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": true,
-        "unique": false
+        "unique": false,
+        "totalAspects": 4
       }
     ],
     "icon": "SAO_Arachnos_SuperiorDominionOfArachnos.png"
@@ -22269,7 +22309,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": true,
-        "unique": false
+        "unique": false,
+        "totalAspects": 4
       }
     ],
     "icon": "EO_Entomb.png"
@@ -22404,7 +22445,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": true,
-        "unique": false
+        "unique": false,
+        "totalAspects": 4
       }
     ],
     "icon": "SAO_Kheldian_SuperiorEssenceTransfer.png"
@@ -22544,7 +22586,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": true,
-        "unique": false
+        "unique": false,
+        "totalAspects": 4
       }
     ],
     "icon": "SEO_Frozen_Blast.png"
@@ -22694,7 +22737,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": true,
-        "unique": false
+        "unique": false,
+        "totalAspects": 4
       }
     ],
     "icon": "SAO_Tanker_SuperiorGauntletedFist.png"
@@ -22844,7 +22888,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": false,
-        "unique": false
+        "unique": false,
+        "totalAspects": 4
       }
     ],
     "icon": "SAO_Kheldian_SuperiorKheldiansGrace.png"
@@ -22974,7 +23019,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": true,
-        "unique": false
+        "unique": false,
+        "totalAspects": 4
       }
     ],
     "icon": "SAO_Corruptor_SuperiorMaliceOfTheCorruptor.png"
@@ -23129,7 +23175,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Endurance"
         ],
         "proc": false,
-        "unique": false
+        "unique": false,
+        "totalAspects": 4
       }
     ],
     "icon": "SAO_Mastermind_SuperiorMarkOfSupremacy.png"
@@ -23264,7 +23311,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": true,
-        "unique": false
+        "unique": false,
+        "totalAspects": 4
       }
     ],
     "icon": "SAO_Tanker_SuperiorMightOfTheTanker.png"
@@ -23394,7 +23442,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": true,
-        "unique": false
+        "unique": false,
+        "totalAspects": 4
       }
     ],
     "icon": "SAO_Sentinel_SuperiorOpportunityStrikes.png"
@@ -23553,7 +23602,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": true,
-        "unique": false
+        "unique": false,
+        "totalAspects": 4
       }
     ],
     "icon": "SAO_Controller_SuperiorOverpoweringPresence.png"
@@ -23683,7 +23733,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": true,
-        "unique": false
+        "unique": false,
+        "totalAspects": 4
       }
     ],
     "icon": "SAO_Corruptor_SuperiorScourgingBlast.png"
@@ -23822,7 +23873,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": false,
-        "unique": false
+        "unique": false,
+        "totalAspects": 4
       }
     ],
     "icon": "SAO_Scrapper_SuperiorScrappersStrike.png"
@@ -23952,7 +24004,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": true,
-        "unique": false
+        "unique": false,
+        "totalAspects": 4
       }
     ],
     "icon": "SAO_Sentinel_SuperiorSentinelsWard.png"
@@ -24086,7 +24139,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": false,
-        "unique": false
+        "unique": false,
+        "totalAspects": 4
       }
     ],
     "icon": "SAO_Arachnos_SuperiorSpidersBite.png"
@@ -24221,7 +24275,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": true,
-        "unique": false
+        "unique": false,
+        "totalAspects": 4
       }
     ],
     "icon": "SAO_Stalker_SuperiorStalkersGuile.png"
@@ -24376,7 +24431,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": true,
-        "unique": false
+        "unique": false,
+        "totalAspects": 4
       }
     ],
     "icon": "SAO_Brute_SuperiorUnrelentingFury.png"
@@ -24506,7 +24562,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": true,
-        "unique": false
+        "unique": false,
+        "totalAspects": 4
       }
     ],
     "icon": "SAO_Defender_SuperiorVigilantAssault.png"
@@ -24660,7 +24717,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": true,
-        "unique": false
+        "unique": false,
+        "totalAspects": 4
       }
     ],
     "icon": "SAO_Controller_SuperiorWillOfTheController.png"
@@ -24800,7 +24858,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": true,
-        "unique": false
+        "unique": false,
+        "totalAspects": 4
       }
     ],
     "icon": "EO_WintersBite.png"
@@ -27052,7 +27111,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": true,
-        "unique": false
+        "unique": false,
+        "totalAspects": 4
       }
     ],
     "icon": "AO_Brute_UnrelentingFury.png"
@@ -27312,7 +27372,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": true,
-        "unique": false
+        "unique": false,
+        "totalAspects": 4
       }
     ],
     "icon": "AO_Defender_VigilantAssault.png"
@@ -27674,7 +27735,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": true,
-        "unique": false
+        "unique": false,
+        "totalAspects": 4
       }
     ],
     "icon": "AO_Controller_WillOfTheController.png"
@@ -27814,7 +27876,8 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
           "Recharge"
         ],
         "proc": true,
-        "unique": false
+        "unique": false,
+        "totalAspects": 4
       }
     ],
     "icon": "EO_WintersBite.png"

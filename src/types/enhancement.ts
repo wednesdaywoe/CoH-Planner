@@ -147,6 +147,9 @@ export interface IOSetPiece {
   proc: boolean;
   /** Is this unique? */
   unique: boolean;
+  /** Total internal aspect count for multi-aspect modifier (when game has more
+   *  attributes than listed in aspects, e.g. special effects like +Critical Hit%) */
+  totalAspects?: number;
 }
 
 export interface IOSet {

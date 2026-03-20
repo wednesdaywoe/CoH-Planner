@@ -138,6 +138,7 @@ interface LegacyIOSetPiece {
   aspects: string[];
   proc: boolean;
   unique: boolean;
+  totalAspects?: number;
 }
 
 interface LegacySetBonusEffect {
@@ -195,6 +196,7 @@ function transformIOSet(id: string, legacy: LegacyIOSet): IOSet {
       aspects: p.aspects,
       proc: p.proc,
       unique: p.unique,
+      ...(p.totalAspects && { totalAspects: p.totalAspects }),
     })),
     icon: legacy.icon,
   };

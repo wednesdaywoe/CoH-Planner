@@ -411,14 +411,16 @@ export function getSetRarityMultiplier(category?: string, name?: string): number
 /**
  * Parse IO set piece aspects into enhancement bonuses
  */
-export function parseIOSetPieceValues(aspects: string[], level = 50, isProc = false): ParsedBonuses {
+export function parseIOSetPieceValues(aspects: string[], level = 50, isProc = false, totalAspects?: number): ParsedBonuses {
   if (!aspects || !Array.isArray(aspects)) {
     return {};
   }
 
   const bonuses: ParsedBonuses = {};
-  // Proc effects count as 1 additional aspect for the multi-aspect modifier
-  const effectiveAspectCount = isProc ? aspects.length + 1 : aspects.length;
+  // Use explicit totalAspects if provided (for pieces with internal attributes
+  // not listed in aspects, e.g. +Critical Hit% counts as 3 extra attributes).
+  // Otherwise, proc effects count as 1 additional aspect.
+  const effectiveAspectCount = totalAspects ?? (isProc ? aspects.length + 1 : aspects.length);
   const modifier = getMultiAspectModifier(effectiveAspectCount);
 
   // Each aspect gets the schedule's value modified by aspect count
@@ -469,7 +471,7 @@ export interface EnhancementBonuses {
 export function calculatePowerEnhancementBonuses(
   power: PowerWithSlots,
   globalIOLevel = 50,
-  getIOSet?: (setId: string) => { pieces: Array<{ num: number; aspects?: string[]; proc?: boolean }>; maxLevel: number; category?: string; name?: string } | undefined,
+  getIOSet?: (setId: string) => { pieces: Array<{ num: number; aspects?: string[]; proc?: boolean; totalAspects?: number }>; maxLevel: number; category?: string; name?: string } | undefined,
   exemplarLevel?: number
 ): EnhancementBonuses {
   if (!power?.slots) {
@@ -511,7 +513,7 @@ export function calculatePowerEnhancementBonuses(
       }
       // Purple and Superior sets get 25% higher enhancement values
       const rarityMultiplier = getSetRarityMultiplier(set.category, set.name);
-      const bonuses = parseIOSetPieceValues(piece.aspects, ioLevel, piece.proc);
+      const bonuses = parseIOSetPieceValues(piece.aspects, ioLevel, piece.proc, piece.totalAspects);
 
       Object.entries(bonuses).forEach(([aspect, value]) => {
         let scaledValue = value * rarityMultiplier * boostMultiplier;

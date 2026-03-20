@@ -36,6 +36,7 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
       { message: 'Core Paragon: tertiary stat corrected 0.33 → 0.2', type: 'fix' },
       { message: 'Radial Paragon: primary stat corrected 0.45 → 0.33, also secondary/tertiary had swapped values', type: 'fix' },
       { message: 'Grant Cover no longer grants cover. Well, it does, but not for you.', type: 'fix' },
+      { message: 'Corrected aspect values for ATO and Winter sets with Recharge / UniqueEffect', type: 'fix' },
 
     ],
   },
