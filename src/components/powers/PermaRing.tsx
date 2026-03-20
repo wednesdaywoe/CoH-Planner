@@ -9,7 +9,7 @@
 import { useMemo } from 'react';
 import { useUIStore, useBuildStore } from '@/stores';
 import { useGlobalBonuses } from '@/hooks/useCalculatedStats';
-import { calculatePowerEnhancementBonuses, type EnhancementBonuses } from '@/utils/calculations';
+import { calculatePowerEnhancementBonuses, getAlphaEnhancementBonuses, type EnhancementBonuses } from '@/utils/calculations';
 import { calculatePermaInfo, type PermaInfo } from '@/utils/calculations/perma';
 import { getIOSet } from '@/data';
 import { Tooltip } from '@/components/ui/Tooltip';
@@ -30,7 +30,8 @@ export function PermaRing({ power, size, children }: PermaRingProps) {
   const globalIOLevel = useUIStore((s) => s.globalIOLevel);
   const exemplarMode = useUIStore((s) => s.exemplarMode);
   const exemplarLevel = useUIStore((s) => s.exemplarLevel);
-  const buildLevel = useBuildStore((s) => s.build.level);
+  const build = useBuildStore((s) => s.build);
+  const incarnateActive = useUIStore((s) => s.incarnateActive);
 
   const permaInfo = useMemo<PermaInfo | null>(() => {
     if (!permaTracked) return null;
@@ -42,8 +43,16 @@ export function PermaRing({ power, size, children }: PermaRingProps) {
       exemplarMode ? exemplarLevel : undefined,
     );
 
+    // Add Alpha incarnate bonuses (same as InfoPanel)
+    const alphaBonuses = getAlphaEnhancementBonuses(build.incarnates, incarnateActive);
+    for (const [aspect, value] of Object.entries(alphaBonuses)) {
+      if (value !== undefined) {
+        enhBonuses[aspect] = (enhBonuses[aspect] || 0) + value;
+      }
+    }
+
     return calculatePermaInfo(power, enhBonuses, (globalBonuses.recharge ?? 0) / 100);
-  }, [permaTracked, power, globalIOLevel, globalBonuses.recharge, exemplarMode, exemplarLevel, buildLevel]);
+  }, [permaTracked, power, globalIOLevel, globalBonuses.recharge, exemplarMode, exemplarLevel, build.level, build.incarnates, incarnateActive]);
 
   if (!permaTracked || !permaInfo) {
     return <>{children}</>;
