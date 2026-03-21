@@ -7,6 +7,7 @@ import type { Power } from '@/types';
 
 export const Bash: Power = {
   "name": "Bash",
+  "internalName": "Bash",
   "available": 0,
   "description": "Bash with your Nullifier Mace dealing moderate Smashing damage and minor Toxic damage over time. Has a chance to disorient the target. NOTE: This power will deal critical damage if used after a successful Placate or while hidden. Damage: Moderate",
   "shortHelp": "Melee, Moderate DMG(Smash), Minor DoT(Toxic), Foe Disorient",

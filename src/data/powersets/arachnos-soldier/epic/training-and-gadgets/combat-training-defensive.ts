@@ -9,6 +9,7 @@ import type { Power } from '@/types';
 
 export const CombatTrainingDefensive: Power = {
   "name": "Combat Training: Defensive",
+  "internalName": "Combat_Training:_Defensive",
   "available": 1,
   "description": "You are more evasive to ranged attacks.",
   "shortHelp": "Auto: Self +DEF(Ranged)",

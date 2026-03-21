@@ -112,6 +112,7 @@ function transformEpicPower(legacy: LegacyEpicPower): Power {
 
   return {
     name: legacy.name,
+    internalName: legacy.fullName?.split('.').pop()?.replace(/\s+/g, '_') ?? legacy.name.replace(/\s+/g, '_'),
     fullName: legacy.fullName,
     available: legacy.available,
     rank: legacy.rank,

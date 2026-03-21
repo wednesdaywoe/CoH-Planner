@@ -7,6 +7,7 @@ import type { Power } from '@/types';
 
 export const Slice: Power = {
   "name": "Slice",
+  "internalName": "Slice",
   "available": 0,
   "description": "Your Crab Spider backpack arms are capable of a devastating melee Slice. This attack deals heavy Lethal damage and can reduce the target's Defense. Damage: Heavy",
   "shortHelp": "Melee, Heavy DMG(Lethal), Foe -DEF",

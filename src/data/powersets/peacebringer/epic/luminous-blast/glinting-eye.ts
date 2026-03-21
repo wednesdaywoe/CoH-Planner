@@ -9,6 +9,7 @@ import type { Power } from '@/types';
 
 export const GlintingEye: Power = {
   "name": "Glinting Eye",
+  "internalName": "Glinting_Eye",
   "available": 0,
   "description": "You can emit a beam of Kheldian energy from your eyes, dealing moderate Energy damage and reducing a target's Defense. This power can be used while in Nova form at an increased range and with higher damage but slower recharge.  Damage: Moderate. Recharge: Fast.",
   "shortHelp": "Ranged, Moderate DMG(Energy), Foe -DEF",

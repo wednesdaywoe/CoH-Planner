@@ -13,14 +13,14 @@ import type { Accolade } from '@/types';
 
 export const ACCOLADES: Accolade[] = [
   {
-    id: 'atlas_medallion',
+    id: 'the_atlas_medallion',
     name: 'The Atlas Medallion',
     description: '+5 Max Endurance',
     icon: 'accolade_atlas.png',
     bonuses: [{ stat: 'maxEndurance', value: 5 }],
   },
   {
-    id: 'freedom_phalanx',
+    id: 'freedom_phalanx_reserve',
     name: 'Freedom Phalanx Reserve',
     description: '+10% Max Health',
     icon: 'accolade_freedom.png',
@@ -38,6 +38,38 @@ export const ACCOLADES: Accolade[] = [
     name: 'Portal Jockey',
     description: '+5% Max Health, +5 Max Endurance',
     icon: 'accolade_portal.png',
+    bonuses: [
+      { stat: 'maxHP', value: 5 },
+      { stat: 'maxEndurance', value: 5 },
+    ],
+  },
+  // Villain-side equivalents
+  {
+    id: 'born_in_battle',
+    name: 'Born in Battle',
+    description: '+5 Max Endurance',
+    icon: 'accolade_born.png',
+    bonuses: [{ stat: 'maxEndurance', value: 5 }],
+  },
+  {
+    id: 'high_pain_threshold',
+    name: 'High Pain Threshold',
+    description: '+10% Max Health',
+    icon: 'accolade_highpain.png',
+    bonuses: [{ stat: 'maxHP', value: 10 }],
+  },
+  {
+    id: 'invader',
+    name: 'Invader',
+    description: '+5% Max Health',
+    icon: 'accolade_invader.png',
+    bonuses: [{ stat: 'maxHP', value: 5 }],
+  },
+  {
+    id: 'marshall',
+    name: 'Marshall',
+    description: '+5% Max Health, +5 Max Endurance',
+    icon: 'accolade_marshall.png',
     bonuses: [
       { stat: 'maxHP', value: 5 },
       { stat: 'maxEndurance', value: 5 },

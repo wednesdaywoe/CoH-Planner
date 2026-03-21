@@ -9,6 +9,7 @@ import type { Power } from '@/types';
 
 export const PsychicScream: Power = {
   "name": "Psychic Scream",
+  "internalName": "Psychic_Scream",
   "available": 7,
   "description": "This howl of Psionic energy resonates in the minds of all foes within its conical area of effect, inflicting moderate damage.",
   "shortHelp": "Ranged (Cone), DMG(Psionic), Foe -Recharge",

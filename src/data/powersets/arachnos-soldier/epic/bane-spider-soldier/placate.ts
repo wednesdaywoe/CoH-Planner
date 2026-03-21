@@ -7,6 +7,7 @@ import type { Power } from '@/types';
 
 export const Placate: Power = {
   "name": "Placate",
+  "internalName": "Placate",
   "available": 21,
   "description": "Allows you to trick a foe to no longer attack you. A successful Placate will also Hide you. The Hide is very brief, and offers no Defense bonus, but it will allow you to deliver a Critical Hit. However, if you attack a Placated Foe, he will be able to attack you back. Recharge: Long",
   "shortHelp": "Melee, Foe Placate, Self Hide",

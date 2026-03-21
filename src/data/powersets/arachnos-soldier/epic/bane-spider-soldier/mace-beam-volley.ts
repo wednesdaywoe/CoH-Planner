@@ -7,6 +7,7 @@ import type { Power } from '@/types';
 
 export const MaceBeamVolley: Power = {
   "name": "Mace Beam Volley",
+  "internalName": "Mace_Beam_Volley",
   "available": 7,
   "description": "The Nullifier Mace can fire a volley of energy at all foes in front of the user. The Mace Beam Volley is a moderate damage area of effect cone attack with a chance to knock foes off their feet. Damage: Moderate",
   "shortHelp": "Ranged(Cone), Moderate DMG(Smash/Energy), Foe Knockback",

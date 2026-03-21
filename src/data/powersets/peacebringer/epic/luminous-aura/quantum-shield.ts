@@ -9,6 +9,7 @@ import type { Power } from '@/types';
 
 export const QuantumShield: Power = {
   "name": "Quantum Shield",
+  "internalName": "Quantum_Shield",
   "available": 13,
   "description": "When you toggle on Quantum Shield, you become highly resistant to Energy and Negative damage.  Recharge: Very Fast.",
   "shortHelp": "Toggle: Self +Res(Energy, Negative)",

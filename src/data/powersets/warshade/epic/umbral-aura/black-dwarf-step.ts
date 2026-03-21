@@ -9,6 +9,7 @@ import type { Power } from '@/types';
 
 export const BlackDwarfStep: Power = {
   "name": "Black Dwarf Step",
+  "internalName": "Black_Dwarf_Step",
   "available": 19,
   "description": "Black Dwarfs can Teleport long distances. Black Dwarf Step has no recharge time, and can be reactivated without pause, as long as you have Endurance.",
   "shortHelp": "Ranged (Location), Self Teleport",

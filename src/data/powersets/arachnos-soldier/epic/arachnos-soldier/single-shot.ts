@@ -9,6 +9,7 @@ import type { Power } from '@/types';
 
 export const SingleShot: Power = {
   "name": "Single Shot",
+  "internalName": "Single_Shot",
   "available": 0,
   "description": "A quick single shot from the Arachnos Sub-machinegun. Extremely accurate. Damage: Minor",
   "shortHelp": "Ranged, Minor DMG(Lethal), Foe -DEF",

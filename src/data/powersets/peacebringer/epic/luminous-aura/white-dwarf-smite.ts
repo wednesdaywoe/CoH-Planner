@@ -9,6 +9,7 @@ import type { Power } from '@/types';
 
 export const WhiteDwarfSmite: Power = {
   "name": "White Dwarf Smite",
+  "internalName": "White_Dwarf_Smite",
   "available": 19,
   "description": "White Dwarf Smite is powerful melee attack that can often Disorient or Knock Down opponents. White Dwarf Smite can also bring down fliers, and reduce their defense. This power is only available while in White Dwarf Form.  Damage: Light. Recharge: Fast.",
   "shortHelp": "Melee, Light DMG(Energy/Smash), Foe -DEF, -Fly, Disorient",

@@ -9,6 +9,7 @@ import type { Power } from '@/types';
 
 export const RadiantStrike: Power = {
   "name": "Radiant Strike",
+  "internalName": "Radiant_Strike",
   "available": 5,
   "description": "The Radiant Strike is a slow melee attack, but makes up for it with superior damage. Radiant Strike releases Kheldian light on impact, which can Knock Back foes, bring down fliers, and reduce a target's Defense.  Damage: High. Recharge: Moderate.",
   "shortHelp": "Melee, High DMG(Smash/Energy), Foe -DEF, Knockback, -Fly",

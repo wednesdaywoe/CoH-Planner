@@ -7,6 +7,7 @@ import type { Power } from '@/types';
 
 export const PoisonousRay: Power = {
   "name": "Poisonous Ray",
+  "internalName": "Poisonous_Ray",
   "available": 11,
   "description": "You fire a poisonous ray from your Nullifier Mace causing toxic damage over time as well as reducing the target's Defense. Damage: Moderate",
   "shortHelp": "Ranged, Moderate DoT(Toxic), Foe -DEF",

@@ -6,7 +6,7 @@
 
 import { createRouter, createRootRoute, createRoute, Outlet } from '@tanstack/react-router';
 import { MainLayout } from '@/components/layout/MainLayout';
-import { PlannerPage, BuildsPage, BuildDetailPage, SettingsPage } from '@/pages';
+import { PlannerPage, BuildsPage, BuildDetailPage, SettingsPage, ImportPage } from '@/pages';
 
 
 // Create root route
@@ -46,6 +46,13 @@ const settingsRoute = createRoute({
   component: SettingsPage,
 });
 
+// Import route (receives builds from Homecoming game client via URL fragment)
+const importRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/import',
+  component: ImportPage,
+});
+
 
 
 // Create route tree
@@ -54,6 +61,7 @@ const routeTree = rootRoute.addChildren([
   buildsRoute,
   buildDetailRoute,
   settingsRoute,
+  importRoute,
 ]);
 
 // Create router

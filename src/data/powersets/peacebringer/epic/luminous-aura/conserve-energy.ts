@@ -9,6 +9,7 @@ import type { Power } from '@/types';
 
 export const ConserveEnergy: Power = {
   "name": "Conserve Energy",
+  "internalName": "Conserve_Energy",
   "available": 23,
   "description": "You can focus for a moment to Conserve your Energy. After activating this power, you expend less Endurance on all other powers for a while.  Recharge: Very Long.",
   "shortHelp": "Self Endurance Discount",

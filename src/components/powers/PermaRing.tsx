@@ -25,7 +25,7 @@ interface PermaRingProps {
 }
 
 export function PermaRing({ power, size, children }: PermaRingProps) {
-  const permaTracked = useUIStore((s) => s.permaTrackedPowers.includes(power.name));
+  const permaTracked = useUIStore((s) => s.permaTrackedPowers.includes(power.internalName));
   const globalBonuses = useGlobalBonuses();
   const globalIOLevel = useUIStore((s) => s.globalIOLevel);
   const exemplarMode = useUIStore((s) => s.exemplarMode);

@@ -7,6 +7,7 @@ import type { Power } from '@/types';
 
 export const Shatter: Power = {
   "name": "Shatter",
+  "internalName": "Shatter",
   "available": 17,
   "description": "You attempt to Shatter the bones of your opponent by striking them with all your might. This attack will deal extreme damage and can knock foes back a great ways. NOTE: This power will deal critical damage if used after a successful Placate or while hidden. Damage: Extreme",
   "shortHelp": "Melee, Extreme DMG(Smash), Minor DoT(Toxic), Foe High Knockback",

@@ -152,14 +152,14 @@ function buildPowerName(
   // For pool powers without fullName, try looking up from pool definition
   if (category === 'pool') {
     const pool = getPowerPool(powersetId);
-    const def = pool?.powers.find((p) => p.name === power.name);
+    const def = pool?.powers.find((p) => p.internalName === power.internalName);
     if (def?.fullName) return def.fullName;
   }
 
   // For epic powers without fullName, try looking up from epic definition
   if (category === 'epic') {
     const epic = getEpicPool(powersetId);
-    const def = epic?.powers.find((p) => p.name === power.name);
+    const def = epic?.powers.find((p) => p.internalName === power.internalName);
     if (def?.fullName) return def.fullName;
   }
 

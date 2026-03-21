@@ -9,6 +9,7 @@ import type { Power } from '@/types';
 
 export const MentalTraining: Power = {
   "name": "Mental Training",
+  "internalName": "Mental_Training",
   "available": 21,
   "description": "Your mental training allows you to focus your will, allowing you to move faster than normal, as well as resist slow effects. This power is always on and permanently increases your attack rate and movement speed.",
   "shortHelp": "Auto: Self +Recharge, +SPD, Res (Slow)",

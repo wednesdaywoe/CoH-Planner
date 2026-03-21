@@ -52,6 +52,7 @@ export type SlimEnhancement =
 
 export interface SlimPower {
   name: string;
+  internalName?: string;
   level: number;
   slots: (SlimEnhancement | null)[];
   isActive?: boolean;
@@ -126,6 +127,7 @@ function slimPoolSelection(pool: PoolSelection): SlimPoolSelection {
 function slimPower(power: SelectedPower): SlimPower {
   const slim: SlimPower = {
     name: power.name,
+    internalName: power.internalName,
     level: power.level,
     slots: power.slots.map((slot) => (slot ? slimEnhancement(slot) : null)),
   };
@@ -270,9 +272,14 @@ export function hydrateBuild(slim: Record<string, any>): Build {
   );
   const slimInherents: SlimPower[] = slim.inherents ?? [];
   for (const slimInh of slimInherents) {
-    const match = inherents.find(
-      (inh) => inh.name.toLowerCase() === slimInh.name.toLowerCase()
-    );
+    let match = slimInh.internalName
+      ? inherents.find((inh) => inh.internalName === slimInh.internalName)
+      : undefined;
+    if (!match) {
+      match = inherents.find(
+        (inh) => inh.name.toLowerCase() === slimInh.name.toLowerCase()
+      );
+    }
     if (match && slimInh.slots.length > 0) {
       match.slots = slimInh.slots.map((s: SlimEnhancement | null) =>
         s ? hydrateEnhancement(s) : null
@@ -326,10 +333,15 @@ export function hydrateBuild(slim: Record<string, any>): Build {
  */
 function hydratePowers(slimPowers: SlimPower[], powerDefs: readonly Power[], powerSetId: string): SelectedPower[] {
   return slimPowers.map((slim) => {
-    // Find the matching power definition
-    const def = powerDefs.find(
-      (p) => p.name.toLowerCase() === slim.name.toLowerCase()
-    );
+    // Find the matching power definition — prefer internalName, fall back to display name
+    let def = slim.internalName
+      ? powerDefs.find((p) => p.internalName === slim.internalName)
+      : undefined;
+    if (!def) {
+      def = powerDefs.find(
+        (p) => p.name.toLowerCase() === slim.name.toLowerCase()
+      );
+    }
 
     // Hydrate enhancement slots
     const slots: (Enhancement | null)[] = slim.slots.map(
@@ -356,6 +368,7 @@ function hydratePowers(slimPowers: SlimPower[], powerDefs: readonly Power[], pow
     // Fallback: minimal SelectedPower when definition not found
     return {
       name: slim.name,
+      internalName: slim.name.replace(/\s+/g, '_'),
       powerSet: powerSetId,
       level: slim.level,
       available: 0,

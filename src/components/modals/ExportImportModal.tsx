@@ -11,6 +11,8 @@ import { importMidsBuild } from '@/utils/mids-import';
 import type { MidsImportResult } from '@/utils/mids-import';
 import { importGameExport } from '@/utils/game-import';
 import type { GameImportResult } from '@/utils/game-import';
+import { importExternalBuild } from '@/utils/external-import';
+import type { ExternalImportResult } from '@/utils/external-import';
 import { shareBuild, getOwnedBuildIds, getOwnerToken, getMyBuilds } from '@/services/sharedBuilds';
 import type { BuildExport } from '@/types/build';
 import type { SharedBuild } from '@/types/shared';
@@ -24,7 +26,7 @@ interface ExportImportModalProps {
 }
 
 type TabType = 'save' | 'load-import' | 'share-export';
-type LoadSource = 'local' | 'mids' | 'game';
+type LoadSource = 'local' | 'mids' | 'game' | 'external';
 type ShareExportSubTab = 'share' | 'export';
 
 export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
@@ -69,6 +71,13 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
   const [gameError, setGameError] = useState<string | null>(null);
   const [showGameWarnings, setShowGameWarnings] = useState(false);
   const gameFileInputRef = useRef<HTMLInputElement>(null);
+
+  // External import state
+  const [extResult, setExtResult] = useState<ExternalImportResult | null>(null);
+  const [extError, setExtError] = useState<string | null>(null);
+  const [showExtWarnings, setShowExtWarnings] = useState(false);
+  const [extSelectedBuild, setExtSelectedBuild] = useState<number | null>(null);
+  const extFileInputRef = useRef<HTMLInputElement>(null);
 
   // Share/Export sub-tab
   const [shareExportSubTab, setShareExportSubTab] = useState<ShareExportSubTab>('share');
@@ -404,6 +413,52 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
   };
 
   // ============================================
+  // EXTERNAL IMPORT HANDLERS
+  // ============================================
+
+  const parseExternalContent = (content: string, buildIdx?: number) => {
+    setExtError(null);
+    setExtResult(null);
+    setShowExtWarnings(false);
+
+    if (!content.trim()) {
+      setExtError('No data to import');
+      return;
+    }
+
+    try {
+      const result = importExternalBuild(content, buildIdx);
+      if (result.success) {
+        setExtResult(result);
+        setExtSelectedBuild(result.selectedBuild);
+      } else {
+        const msg = result.warnings.length > 0
+          ? result.warnings[0].message
+          : 'Failed to parse external build';
+        setExtError(msg);
+      }
+    } catch {
+      setExtError('Failed to parse external build JSON.');
+    }
+  };
+
+  // Store the raw JSON so we can re-parse with a different build index
+  const [extRawJson, setExtRawJson] = useState('');
+
+  const handleExtBuildSelect = (buildIndex: number) => {
+    setExtSelectedBuild(buildIndex);
+    if (extRawJson) {
+      parseExternalContent(extRawJson, buildIndex);
+    }
+  };
+
+  const handleExtApply = () => {
+    if (!extResult?.build) return;
+    applyMidsBuild(extResult.build);
+    handleClose();
+  };
+
+  // ============================================
   // SHARE HANDLERS
   // ============================================
 
@@ -474,6 +529,11 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
     setGameResult(null);
     setGameError(null);
     setShowGameWarnings(false);
+    setExtResult(null);
+    setExtError(null);
+    setShowExtWarnings(false);
+    setExtSelectedBuild(null);
+    setExtRawJson('');
     setShareExportSubTab('share');
     setShareDescription('');
     setShareAuthor('');
@@ -494,6 +554,7 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
     setActiveTab('save');
     if (midsFileInputRef.current) midsFileInputRef.current.value = '';
     if (gameFileInputRef.current) gameFileInputRef.current.value = '';
+    if (extFileInputRef.current) extFileInputRef.current.value = '';
     onClose();
   };
 
@@ -755,6 +816,7 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
               >
                 Game (/buildsave)
               </button>
+              {/* External Tool tab hidden during Homecoming closed beta */}
             </div>
 
             {loadSource === 'local' ? (
@@ -889,7 +951,7 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
                 )}
               </div>
 
-            ) : (
+            ) : loadSource === 'game' ? (
               /* Game Import */
               <div className="space-y-4">
                 <div className="bg-cyan-900/20 border border-cyan-700/50 rounded p-3 text-sm text-cyan-300">
@@ -946,6 +1008,96 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
                   <div className="space-y-3">
                     {renderImportResultSummary(gameResult.build, gameResult.summary, gameResult.build.name)}
                     {renderWarningsToggle(gameResult.warnings, showGameWarnings, setShowGameWarnings, true)}
+                    <div className="bg-yellow-900/20 border border-yellow-700/50 rounded p-3 text-sm text-yellow-300">
+                      <p className="font-semibold mb-1">Warning:</p>
+                      <p>Applying this import will replace your current build.</p>
+                    </div>
+                  </div>
+                )}
+              </div>
+            ) : (
+              /* External Tool Import */
+              <div className="space-y-4">
+                <div className="bg-purple-900/20 border border-purple-700/50 rounded p-3 text-sm text-purple-300">
+                  <p>Import a build from an external CoH companion tool. Upload the JSON export file below. If the export contains multiple builds, you can select which one to import.</p>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-300 mb-2">
+                    Upload External Build (.json)
+                  </label>
+                  <input
+                    ref={extFileInputRef}
+                    type="file"
+                    accept=".json"
+                    onChange={(e) => {
+                      const file = e.target.files?.[0];
+                      if (!file) return;
+                      const reader = new FileReader();
+                      reader.onload = (ev) => {
+                        const content = ev.target?.result as string;
+                        setExtRawJson(content);
+                        parseExternalContent(content);
+                      };
+                      reader.onerror = () => setExtError('Failed to read file');
+                      reader.readAsText(file);
+                    }}
+                    className="w-full text-sm text-gray-400
+                      file:mr-4 file:py-2 file:px-4
+                      file:rounded file:border-0
+                      file:text-sm file:font-semibold
+                      file:bg-purple-600 file:text-white
+                      hover:file:bg-purple-700
+                      file:cursor-pointer cursor-pointer"
+                  />
+                </div>
+
+                {extError && (
+                  <div className="bg-red-900/20 border border-red-700/50 rounded p-3 text-sm text-red-300">
+                    {extError}
+                  </div>
+                )}
+
+                {extResult && extResult.success && extResult.build && (
+                  <div className="space-y-3">
+                    {/* Build selector (if multiple builds detected) */}
+                    {extResult.availableBuilds.length > 1 && (
+                      <div className="bg-gray-800 border border-gray-600 rounded p-3 space-y-2">
+                        <label className="block text-sm font-medium text-gray-300">
+                          Select Build ({extResult.availableBuilds.length} detected)
+                        </label>
+                        <div className="space-y-1">
+                          {extResult.availableBuilds.map((b) => (
+                            <label
+                              key={b.index}
+                              className={`flex items-center gap-2 px-2 py-1.5 rounded cursor-pointer transition-colors text-sm ${
+                                extSelectedBuild === b.index
+                                  ? 'bg-purple-900/30 text-purple-300'
+                                  : 'text-gray-400 hover:bg-gray-700'
+                              }`}
+                            >
+                              <input
+                                type="radio"
+                                name="ext-build-select"
+                                checked={extSelectedBuild === b.index}
+                                onChange={() => handleExtBuildSelect(b.index)}
+                                className="text-purple-500 focus:ring-purple-500"
+                              />
+                              <span>
+                                Build {b.index + 1}
+                                {b.primarySet && <span className="text-gray-500"> - {b.primarySet}/{b.secondarySet}</span>}
+                                <span className="text-gray-500 ml-1">
+                                  ({b.powerCount} powers, {b.enhancementCount} enhancements)
+                                </span>
+                              </span>
+                            </label>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                    {renderImportResultSummary(extResult.build, extResult.summary, extResult.build.name)}
+                    {renderWarningsToggle(extResult.warnings, showExtWarnings, setShowExtWarnings, true)}
                     <div className="bg-yellow-900/20 border border-yellow-700/50 rounded p-3 text-sm text-yellow-300">
                       <p className="font-semibold mb-1">Warning:</p>
                       <p>Applying this import will replace your current build.</p>
@@ -1328,6 +1480,12 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
                   Parse Export
                 </Button>
               )
+            ) : loadSource === 'external' ? (
+              extResult?.success ? (
+                <Button variant="primary" onClick={handleExtApply}>
+                  Apply Build
+                </Button>
+              ) : null
             ) : null
           ) : null}
         </div>

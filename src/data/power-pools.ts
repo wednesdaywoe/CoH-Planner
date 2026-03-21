@@ -99,6 +99,7 @@ function transformPoolPower(legacy: LegacyPoolPower): Power {
 
   return {
     name: legacy.name,
+    internalName: legacy.fullName?.split('.').pop()?.replace(/\s+/g, '_') ?? legacy.name.replace(/\s+/g, '_'),
     fullName: legacy.fullName,
     available: legacy.available,
     rank: legacy.rank,
@@ -193,7 +194,7 @@ export function getPowerPoolIds(): string[] {
  */
 export function getPoolPower(poolId: string, powerName: string): Power | undefined {
   const pool = getPowerPool(poolId);
-  return pool?.powers.find((p) => p.name === powerName);
+  return pool?.powers.find((p) => p.internalName === powerName);
 }
 
 /**
@@ -232,31 +233,15 @@ export function arePoolPrerequisitesMet(
   // No requires means no prerequisites
   if (!power.requires || power.requires === '') return true;
 
-  // Build a mapping from fullName to display name for this pool
-  // This handles cases where internal names differ from display names
-  // (e.g., Pool.Flight.Combat_Flight -> "Hover", not "Combat Flight")
-  const pool = _pools[poolId];
-  const fullNameToDisplayName: Record<string, string> = {};
-  if (pool) {
-    for (const p of pool.powers) {
-      if (p.fullName) {
-        const internalParts = p.fullName.split('.');
-        const internalName = internalParts[internalParts.length - 1].replace(/_/g, ' ');
-        fullNameToDisplayName[internalName] = p.name;
-      }
-    }
-  }
-
   // Parse the requires expression
   // Format: "Pool.Speed.Flurry && Pool.Speed.Hasten || Pool.Speed.Flurry && Pool.Speed.Super_Speed"
   // Or count: "Pool.Force_of_Will.Mighty_Leap + Pool.Force_of_Will.Project_Will + ... > 1"
   const requiresExpr = power.requires;
 
-  // Helper: resolve a "Pool.X.Power_Name" atom to its display name
+  // Helper: resolve a "Pool.X.Power_Name" atom to its internalName (last segment)
   const resolveAtom = (atom: string): string => {
     const parts = atom.trim().split('.');
-    const internalName = parts[parts.length - 1].replace(/_/g, ' ');
-    return fullNameToDisplayName[internalName] || internalName;
+    return parts[parts.length - 1];
   };
 
   // Handle count expression: "A + B + C > N"
@@ -406,7 +391,7 @@ export function isPowerAvailableInPool(
 
   // Rank 3: Check if it's an early travel power
   if (rank === 3) {
-    const isEarlyTravelPower = EARLY_TRAVEL_POWERS.includes(power.name);
+    const isEarlyTravelPower = EARLY_TRAVEL_POWERS.includes(power.internalName);
     if (isEarlyTravelPower) {
       // Travel powers are available at level 4 with no prerequisites
       return true;
@@ -441,7 +426,7 @@ export function getAvailablePoolPowers(
 
   return pool.powers.filter((power) => {
     // Skip already selected powers
-    if (selectedPowersInPool.includes(power.name)) return false;
+    if (selectedPowersInPool.includes(power.internalName)) return false;
     // Check availability
     return isPowerAvailableInPool(poolId, power, level, selectedPowersInPool);
   });

@@ -9,6 +9,7 @@ import type { Power } from '@/types';
 
 export const ThermalShield: Power = {
   "name": "Thermal Shield",
+  "internalName": "Thermal_Shield",
   "available": 9,
   "description": "When you toggle on Thermal Shield, you emit tendrils of Kheldian energy that give you resistance to Fire and Cold damage.  Recharge: Very Fast.",
   "shortHelp": "Toggle: Self +Res(Fire, Cold)",

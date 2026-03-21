@@ -99,25 +99,25 @@ export function PowerCard({
   const isActive = power.isActive ?? false;
 
   const handleSlotClick = (slotIndex: number) => {
-    openEnhancementPicker(power.name, powersetId, slotIndex);
+    openEnhancementPicker(power.internalName, powersetId, slotIndex);
   };
 
   const handleSlotRightClick = (slotIndex: number) => {
     if (power.slots[slotIndex]) {
-      clearEnhancement(power.name, slotIndex);
+      clearEnhancement(power.internalName, slotIndex);
     }
   };
 
   const handlePowerHover = () => {
     setInfoPanelContent({
       type: 'power',
-      powerName: power.name,
+      powerName: power.internalName,
       powerSet: powersetId,
     });
   };
 
   const handleAddSlot = () => {
-    addSlot(power.name);
+    addSlot(power.internalName);
   };
 
   return (
@@ -184,7 +184,7 @@ export function PowerCard({
             }
           >
             <button
-              onClick={() => togglePowerActive(power.name)}
+              onClick={() => togglePowerActive(power.internalName)}
               className={`
                 flex-shrink-0 flex items-center gap-1 px-1.5 py-0.5 rounded text-xs font-medium transition-all
                 ${

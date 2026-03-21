@@ -9,6 +9,7 @@ import type { Power } from '@/types';
 
 export const BlackDwarfStrike: Power = {
   "name": "Black Dwarf Strike",
+  "internalName": "Black_Dwarf_Strike",
   "available": 19,
   "description": "The Black Dwarf Strike is a moderate melee attack that releases Nictus Dark Energy on impact, which can Knock Down foes, and slows a targets attack and movement speed. This power is only available while in Black Dwarf Form.  Damage: Light. Recharge: Very Fast.",
   "shortHelp": "Melee, Light DMG(Smash/Negative), Foe -Recharge, -SPD, Knockback",

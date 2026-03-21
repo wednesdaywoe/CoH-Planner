@@ -7,6 +7,7 @@ import type { Power } from '@/types';
 
 export const Pulverize: Power = {
   "name": "Pulverize",
+  "internalName": "Pulverize",
   "available": 11,
   "description": "You are capable of Pulverizing a foe with your Nullifier Mace dealing high damage and causing toxic damage over time. Pulverize will occasionally disorient foes as well. NOTE: This power will deal critical damage if used after a successful Placate or while hidden. Damage: High",
   "shortHelp": "Melee, High DMG(Smash), Minor DoT(Toxic), Foe Disorient",

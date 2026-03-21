@@ -9,6 +9,7 @@ import type { Power } from '@/types';
 
 export const BrightNovaDetonation: Power = {
   "name": "Bright Nova Detonation",
+  "internalName": "Bright_Nova_Detonation",
   "available": 3,
   "description": "You hurl a large blast of Kheldian light energy that violently explodes on impact, damaging all foes near the target, reducing their defense. Some affected targets may get knocked back. This power is only available while in Bright Nova Form.  Damage: Light. Recharge: Slow.",
   "shortHelp": "Ranged (Targeted AoE), Light DMG(Smash/Energy), Foe -DEF, Knockback",

@@ -9,6 +9,7 @@ import type { Power } from '@/types';
 
 export const DarkDetonation: Power = {
   "name": "Dark Detonation",
+  "internalName": "Dark_Detonation",
   "available": 11,
   "description": "You hurl a blast of Dark Matter that violently explodes on impact, damaging all foes near the target. All affected targets' have their attack rate and movement speed slowed. Some foes may be knocked down.  Damage: Light. Recharge: Slow.",
   "shortHelp": "Ranged (Targeted AoE), Light DMG(Negative), Foe Knockback, -Recharge, -SPD",

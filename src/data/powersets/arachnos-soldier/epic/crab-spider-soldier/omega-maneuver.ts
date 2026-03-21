@@ -7,6 +7,7 @@ import type { Power } from '@/types';
 
 export const OmegaManeuver: Power = {
   "name": "Omega Maneuver",
+  "internalName": "Omega_Maneuver",
   "available": 25,
   "description": "You launch a devastating Omega Maneuver from your Crab Spider backpack. A powerful explosive is fired at a targeted location, detonating with extreme force dealing extreme Smashing and Energy damage. Foes struck may be disoriented. Recharge: Very Long",
   "shortHelp": "Ranged(Location AoE), Extreme DMG(Smash/Energy), Foe Disorient",

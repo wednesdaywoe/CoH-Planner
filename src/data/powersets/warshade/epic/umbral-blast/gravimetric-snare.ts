@@ -9,6 +9,7 @@ import type { Power } from '@/types';
 
 export const GravimetricSnare: Power = {
   "name": "Gravimetric Snare",
+  "internalName": "Gravimetric_Snare",
   "available": 1,
   "description": "You can hurl Gravimetric fibers to Snare your foes. Gravimetric Snare can Immobilize a single target and crush them. The target's attack rate and movement speed are also slowed, even if they resist the Immobilization effect.  Damage: Light. Recharge: Fast.",
   "shortHelp": "Ranged, Moderate DOT(Negative), Foe Immobilize, -Recharge, -SPD",

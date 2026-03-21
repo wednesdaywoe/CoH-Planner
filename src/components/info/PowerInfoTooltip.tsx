@@ -87,10 +87,10 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
   // Check if Fiery Embrace is active in the build
   const isFieryEmbraceActive = useMemo(() => {
     // Check secondary powers for Fiery Embrace
-    const fieryEmbrace = build.secondary.powers.find(p => p.name === 'Fiery Embrace');
+    const fieryEmbrace = build.secondary.powers.find(p => p.internalName === 'Fiery_Embrace');
     if (fieryEmbrace && fieryEmbrace.isActive) return true;
     // Also check primary (some ATs might have it there)
-    const primaryFE = build.primary.powers.find(p => p.name === 'Fiery Embrace');
+    const primaryFE = build.primary.powers.find(p => p.internalName === 'Fiery_Embrace');
     if (primaryFE && primaryFE.isActive) return true;
     return false;
   }, [build.secondary.powers, build.primary.powers]);
@@ -101,7 +101,7 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
 
   // Archetype inherent fallback (dynamically created, not in static data)
   if (!basePower && powerSet === 'Inherent') {
-    const selectedInherent = build.inherents.find((p) => p.name === powerName);
+    const selectedInherent = build.inherents.find((p) => p.internalName === powerName);
     if (selectedInherent) {
       basePower = { ...selectedInherent };
     }

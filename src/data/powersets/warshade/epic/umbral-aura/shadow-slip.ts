@@ -9,6 +9,7 @@ import type { Power } from '@/types';
 
 export const ShadowSlip: Power = {
   "name": "Shadow Slip",
+  "internalName": "Shadow_Slip",
   "available": 25,
   "description": "Shadow Slip teleports enemies from up to 100ft away into melee range of the caster.  Recharge: Long.",
   "shortHelp": "Melee (PBAoE), Foe Teleport",

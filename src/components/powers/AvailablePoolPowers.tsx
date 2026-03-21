@@ -77,7 +77,7 @@ export function AvailablePoolPowers() {
     return getEpicPoolsForArchetype(build.archetype.id);
   }, [build.archetype.id]);
 
-  // Info panel helpers
+  // Info panel helpers (powerName here is internalName)
   const isPowerLocked = (powerName: string) => {
     return infoPanelLocked && lockedContent?.type === 'power' && lockedContent.powerName === powerName;
   };
@@ -85,7 +85,7 @@ export function AvailablePoolPowers() {
   const handlePowerHover = (power: Power, poolId: string) => {
     setInfoPanelContent({
       type: 'power',
-      powerName: power.name,
+      powerName: power.internalName,
       powerSet: poolId,
     });
   };
@@ -95,12 +95,12 @@ export function AvailablePoolPowers() {
   };
 
   const handleLockToggle = (power: Power, poolId: string) => {
-    if (infoPanelLocked && lockedContent?.type === 'power' && lockedContent.powerName === power.name) {
+    if (infoPanelLocked && lockedContent?.type === 'power' && lockedContent.powerName === power.internalName) {
       unlockInfoPanel();
     } else {
       lockInfoPanel({
         type: 'power',
-        powerName: power.name,
+        powerName: power.internalName,
         powerSet: poolId,
       });
     }
@@ -110,7 +110,7 @@ export function AvailablePoolPowers() {
     if (e) e.stopPropagation();
     lockInfoPanel({
       type: 'power',
-      powerName: power.name,
+      powerName: power.internalName,
       powerSet: poolId,
     });
   };
@@ -328,7 +328,7 @@ function AvailablePoolSection({
             const isSelected = selectedPowerNames.has(power.name);
             const isAvailable = !isSelected && checkAvailability(power);
             const isDisabled = isSelected || !isAvailable || !!powerLimitReached;
-            const isLocked = isPowerLocked(power.name);
+            const isLocked = isPowerLocked(power.internalName);
 
             return (
               <PowerItem
@@ -427,7 +427,7 @@ function AvailableEpicPoolSection({
             const selectedNames = epicPool.powers.map((p) => p.name);
             const isAvailable = !isSelected && isEpicPowerAvailable(power, level, selectedNames);
             const isDisabled = isSelected || !isAvailable || !!powerLimitReached;
-            const isLocked = isPowerLocked(power.name);
+            const isLocked = isPowerLocked(power.internalName);
 
             return (
               <PowerItem

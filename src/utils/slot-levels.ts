@@ -81,7 +81,7 @@ function initSlotLevels(allPowers: CategorizedPower[]): Map<string, number[]> {
     const pickLevel = category === 'inherent' ? 1 : power.level;
     // Pre-fill array with pickLevel for all slots; extra slots get overwritten
     const levels = new Array(power.slots.length).fill(pickLevel);
-    result.set(power.name, levels);
+    result.set(power.internalName, levels);
   }
   return result;
 }
@@ -89,8 +89,8 @@ function initSlotLevels(allPowers: CategorizedPower[]): Map<string, number[]> {
 /** Add auto-granted sub-powers (Kheldian forms, etc.) to the result. */
 function addAutoGrantedPowers(build: Build, result: Map<string, number[]>) {
   for (const p of [...build.primary.powers, ...build.secondary.powers]) {
-    if (p.isAutoGranted && !result.has(p.name)) {
-      result.set(p.name, p.slots.map(() => p.level));
+    if (p.isAutoGranted && !result.has(p.internalName)) {
+      result.set(p.internalName, p.slots.map(() => p.level));
     }
   }
 }
@@ -108,7 +108,7 @@ function computeSlotLevelsRespec(build: Build): Map<string, number[]> {
 
   for (const { power, category } of allPowers) {
     const pickLevel = category === 'inherent' ? 1 : power.level;
-    const levels = result.get(power.name)!;
+    const levels = result.get(power.internalName)!;
 
     // Consume grants for extra slots (slot 0 is already set)
     for (let s = 1; s < power.slots.length; s++) {
@@ -138,7 +138,7 @@ function computeSlotLevelsLeveling(build: Build): Map<string, number[]> {
   // Build a lookup for power pick levels
   const pickLevelMap = new Map<string, number>();
   for (const { power, category } of allPowers) {
-    pickLevelMap.set(power.name, category === 'inherent' ? 1 : power.level);
+    pickLevelMap.set(power.internalName, category === 'inherent' ? 1 : power.level);
   }
 
   // Track which grants have been consumed (by index)
@@ -174,7 +174,7 @@ function computeSlotLevelsLeveling(build: Build): Map<string, number[]> {
 /**
  * Compute slot level assignments for every power in the build.
  *
- * Returns a Map keyed by power name, where each value is a number[]
+ * Returns a Map keyed by power internalName, where each value is a number[]
  * parallel to the power's slots array. Index 0 = power pick level (free slot),
  * index 1+ = the grant pool level consumed for that slot.
  *

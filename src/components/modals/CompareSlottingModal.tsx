@@ -70,26 +70,26 @@ export function CompareSlottingModal() {
 
   // Build list of all slotted powers for the power selector dropdown
   const allBuildPowers = useMemo(() => {
-    const powers: { name: string; powerSet: string; category: string }[] = [];
+    const powers: { name: string; internalName: string; powerSet: string; category: string }[] = [];
     for (const p of build.primary.powers) {
-      powers.push({ name: p.name, powerSet: p.powerSet, category: build.primary.name });
+      powers.push({ name: p.name, internalName: p.internalName, powerSet: p.powerSet, category: build.primary.name });
     }
     for (const p of build.secondary.powers) {
-      powers.push({ name: p.name, powerSet: p.powerSet, category: build.secondary.name });
+      powers.push({ name: p.name, internalName: p.internalName, powerSet: p.powerSet, category: build.secondary.name });
     }
     for (const pool of build.pools) {
       for (const p of pool.powers) {
-        powers.push({ name: p.name, powerSet: p.powerSet, category: pool.name });
+        powers.push({ name: p.name, internalName: p.internalName, powerSet: p.powerSet, category: pool.name });
       }
     }
     if (build.epicPool) {
       for (const p of build.epicPool.powers) {
-        powers.push({ name: p.name, powerSet: p.powerSet, category: build.epicPool.name });
+        powers.push({ name: p.name, internalName: p.internalName, powerSet: p.powerSet, category: build.epicPool.name });
       }
     }
     for (const p of build.inherents) {
       if (p.slots.length > 0) {
-        powers.push({ name: p.name, powerSet: p.powerSet || 'Inherent', category: 'Inherent' });
+        powers.push({ name: p.name, internalName: p.internalName, powerSet: p.powerSet || 'Inherent', category: 'Inherent' });
       }
     }
     return powers;
@@ -97,10 +97,10 @@ export function CompareSlottingModal() {
 
   // Group powers by category for optgroup rendering
   const powersByCategory = useMemo(() => {
-    const groups = new Map<string, { name: string; powerSet: string }[]>();
+    const groups = new Map<string, { name: string; internalName: string; powerSet: string }[]>();
     for (const p of allBuildPowers) {
       if (!groups.has(p.category)) groups.set(p.category, []);
-      groups.get(p.category)!.push({ name: p.name, powerSet: p.powerSet });
+      groups.get(p.category)!.push({ name: p.name, internalName: p.internalName, powerSet: p.powerSet });
     }
     return groups;
   }, [allBuildPowers]);
@@ -302,8 +302,8 @@ export function CompareSlottingModal() {
     if (!activeCopy || !compareTarget || visibleStatIds.length === 0) return null;
 
     // Clone the build with the target power's slots replaced
-    const replacePower = <T extends { name: string; slots: (Enhancement | null)[] }>(p: T): T =>
-      p.name === compareTarget.powerName ? { ...p, slots: [...activeCopy.slots] } : p;
+    const replacePower = <T extends { name: string; internalName: string; slots: (Enhancement | null)[] }>(p: T): T =>
+      p.internalName === compareTarget.powerName ? { ...p, slots: [...activeCopy.slots] } : p;
 
     const hypoBuild = {
       ...build,
@@ -430,7 +430,7 @@ export function CompareSlottingModal() {
         {Array.from(powersByCategory.entries()).map(([category, powers]) => (
           <optgroup key={category} label={category}>
             {powers.map((p) => (
-              <option key={`${p.powerSet}::${p.name}`} value={`${p.powerSet}::${p.name}`}>
+              <option key={`${p.powerSet}::${p.internalName}`} value={`${p.powerSet}::${p.internalName}`}>
                 {p.name}
               </option>
             ))}
@@ -465,7 +465,7 @@ export function CompareSlottingModal() {
     <Modal
       isOpen={isOpen}
       onClose={closeModal}
-      title={`Compare Slotting: ${compareTarget.powerName}`}
+      title={`Compare Slotting: ${power.name}`}
       size="full"
     >
       <ModalBody>

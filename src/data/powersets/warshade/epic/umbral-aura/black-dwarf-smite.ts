@@ -9,6 +9,7 @@ import type { Power } from '@/types';
 
 export const BlackDwarfSmite: Power = {
   "name": "Black Dwarf Smite",
+  "internalName": "Black_Dwarf_Smite",
   "available": 19,
   "description": "Black Dwarf Smite is powerful melee attack that can often Disorient or Knock Down opponents. Black Dwarf Smite can also bring down fliers, and slows a targets attack and movement speed. This power is only available while in Black Dwarf Form.  Damage: Light. Recharge: Fast.",
   "shortHelp": "Melee, Light DMG(Negative/Smash), Foe -Recharge, -SPD, -Fly, Disorient",

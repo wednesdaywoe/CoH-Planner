@@ -9,6 +9,7 @@ import type { Power } from '@/types';
 
 export const Confront: Power = {
   "name": "Confront",
+  "internalName": "Confront",
   "available": 17,
   "description": "Challenges a foe to attack you. Useful to pull a villain off an ally who finds himself in over his head. A To Hit check required to Taunt enemy players, but is not needed against critter targets.",
   "shortHelp": "Ranged, Foe Taunt",

@@ -7,6 +7,7 @@ import type { Power } from '@/types';
 
 export const CrowdControl: Power = {
   "name": "Crowd Control",
+  "internalName": "Crowd_Control",
   "available": 25,
   "description": "Swing your Nullifier Mace in a wide arc in front of you. This attack strikes all foes within melee range, deals them high damage and minor Toxic damage over time, and knocks them down. NOTE: This power will deal critical damage if used after a successful Placate or while hidden. Damage: High",
   "shortHelp": "Melee(Cone), High DMG(Smash), Minor DoT(Toxic), Foe Knockback",

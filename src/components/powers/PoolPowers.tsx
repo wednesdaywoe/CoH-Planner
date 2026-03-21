@@ -69,7 +69,7 @@ export function PoolPowers() {
   const handlePowerHover = (power: Power | SelectedPower, poolId: string) => {
     setInfoPanelContent({
       type: 'power',
-      powerName: power.name,
+      powerName: power.internalName,
       powerSet: poolId,
     });
   };
@@ -92,12 +92,12 @@ export function PoolPowers() {
 
   const handlePowerRightClick = (e: React.MouseEvent, power: Power | SelectedPower, poolId: string) => {
     e.preventDefault();
-    if (infoPanelLocked && lockedContent?.type === 'power' && lockedContent.powerName === power.name) {
+    if (infoPanelLocked && lockedContent?.type === 'power' && lockedContent.powerName === power.internalName) {
       unlockInfoPanel();
     } else {
       lockInfoPanel({
         type: 'power',
-        powerName: power.name,
+        powerName: power.internalName,
         powerSet: poolId,
       });
     }
@@ -129,19 +129,19 @@ export function PoolPowers() {
   const handleInherentPowerHover = (power: SelectedPower) => {
     setInfoPanelContent({
       type: 'power',
-      powerName: power.name,
+      powerName: power.internalName,
       powerSet: 'Inherent',
     });
   };
 
   const handleInherentPowerRightClick = (e: React.MouseEvent, power: SelectedPower) => {
     e.preventDefault();
-    if (infoPanelLocked && lockedContent?.type === 'power' && lockedContent.powerName === power.name) {
+    if (infoPanelLocked && lockedContent?.type === 'power' && lockedContent.powerName === power.internalName) {
       unlockInfoPanel();
     } else {
       lockInfoPanel({
         type: 'power',
-        powerName: power.name,
+        powerName: power.internalName,
         powerSet: 'Inherent',
       });
     }
@@ -190,10 +190,10 @@ export function PoolPowers() {
             onRemoveAllSlots={handleRemoveAllSlots}
             onClearAllEnhancements={handleClearAllEnhancements}
             onInfoClick={(power) => {
-              if (isPowerLocked(power.name)) {
+              if (isPowerLocked(power.internalName)) {
                 unlockInfoPanel();
               } else {
-                lockInfoPanel({ type: 'power', powerName: power.name, powerSet: poolSelection.id });
+                lockInfoPanel({ type: 'power', powerName: power.internalName, powerSet: poolSelection.id });
               }
             }}
             slotLevelsMap={showSlotLevels ? slotLevelsMap : undefined}
@@ -228,10 +228,10 @@ export function PoolPowers() {
               onRemoveAllSlots={handleRemoveAllSlots}
               onClearAllEnhancements={handleClearAllEnhancements}
               onInfoClick={(power) => {
-                if (isPowerLocked(power.name)) {
+                if (isPowerLocked(power.internalName)) {
                   unlockInfoPanel();
                 } else {
-                  lockInfoPanel({ type: 'power', powerName: power.name, powerSet: 'Inherent' });
+                  lockInfoPanel({ type: 'power', powerName: power.internalName, powerSet: 'Inherent' });
                 }
               }}
               slotLevelsMap={showSlotLevels ? slotLevelsMap : undefined}
@@ -253,10 +253,10 @@ export function PoolPowers() {
               onRemoveAllSlots={handleRemoveAllSlots}
               onClearAllEnhancements={handleClearAllEnhancements}
               onInfoClick={(power) => {
-                if (isPowerLocked(power.name)) {
+                if (isPowerLocked(power.internalName)) {
                   unlockInfoPanel();
                 } else {
-                  lockInfoPanel({ type: 'power', powerName: power.name, powerSet: 'Inherent' });
+                  lockInfoPanel({ type: 'power', powerName: power.internalName, powerSet: 'Inherent' });
                 }
               }}
               defaultCollapsed
@@ -278,10 +278,10 @@ export function PoolPowers() {
               onRemoveAllSlots={handleRemoveAllSlots}
               onClearAllEnhancements={handleClearAllEnhancements}
               onInfoClick={(power) => {
-                if (isPowerLocked(power.name)) {
+                if (isPowerLocked(power.internalName)) {
                   unlockInfoPanel();
                 } else {
-                  lockInfoPanel({ type: 'power', powerName: power.name, powerSet: 'Inherent' });
+                  lockInfoPanel({ type: 'power', powerName: power.internalName, powerSet: 'Inherent' });
                 }
               }}
               defaultCollapsed
@@ -303,10 +303,10 @@ export function PoolPowers() {
               onRemoveAllSlots={handleRemoveAllSlots}
               onClearAllEnhancements={handleClearAllEnhancements}
               onInfoClick={(power) => {
-                if (isPowerLocked(power.name)) {
+                if (isPowerLocked(power.internalName)) {
                   unlockInfoPanel();
                 } else {
-                  lockInfoPanel({ type: 'power', powerName: power.name, powerSet: 'Inherent' });
+                  lockInfoPanel({ type: 'power', powerName: power.internalName, powerSet: 'Inherent' });
                 }
               }}
               defaultCollapsed
@@ -378,7 +378,7 @@ function PoolPowerGroup({
     const group = getGrantedPowerGroup(parentPowerName);
     if (!group) return [];
 
-    return poolPowers.filter(p => group.grantedPowers.includes(p.name));
+    return poolPowers.filter(p => group.grantedPowers.includes(p.internalName));
   };
 
   return (
@@ -401,9 +401,9 @@ function PoolPowerGroup({
       {!collapsed && (
         <div className="space-y-0.5">
           {sortedPowers.map((power) => {
-            const isLocked = isPowerLocked(power.name);
-            const subPowers = getSubPowers(power.name);
-            const grantedGroup = getGrantedPowerGroup(power.name);
+            const isLocked = isPowerLocked(power.internalName);
+            const subPowers = getSubPowers(power.internalName);
+            const grantedGroup = getGrantedPowerGroup(power.internalName);
             return (
               <div key={power.name}>
                 <PowerRow
@@ -416,23 +416,23 @@ function PoolPowerGroup({
                   selectedPower={power}
                   toggleSize={shouldShowToggle(power) ? 'md' : undefined}
                   isActive={power.isActive ?? false}
-                  onToggle={() => onToggle(power.name)}
+                  onToggle={() => onToggle(power.internalName)}
                   slots={power.slots}
                   maxSlots={power.maxSlots}
-                  onRemove={() => onRemovePower(power.name)}
-                  onAddSlots={(count) => onAddSlots(power.name, count)}
-                  onRemoveSlot={(index) => onRemoveSlot(power.name, index)}
-                  onRemoveAllSlots={() => onRemoveAllSlots(power.name, power.slots.length)}
-                  onClearEnhancement={(index) => onClearEnhancement(power.name, index)}
-                  onClearAllEnhancements={() => onClearAllEnhancements(power.name, power.slots.length)}
-                  onOpenPicker={(slotIndex) => openEnhancementPicker(power.name, poolId, slotIndex)}
+                  onRemove={() => onRemovePower(power.internalName)}
+                  onAddSlots={(count) => onAddSlots(power.internalName, count)}
+                  onRemoveSlot={(index) => onRemoveSlot(power.internalName, index)}
+                  onRemoveAllSlots={() => onRemoveAllSlots(power.internalName, power.slots.length)}
+                  onClearEnhancement={(index) => onClearEnhancement(power.internalName, index)}
+                  onClearAllEnhancements={() => onClearAllEnhancements(power.internalName, power.slots.length)}
+                  onOpenPicker={(slotIndex) => openEnhancementPicker(power.internalName, poolId, slotIndex)}
                   onHover={() => onPowerHover(power)}
                   onLeave={onPowerLeave}
-                  onEnhancementHover={(index) => onEnhancementHover(power.name, index)}
+                  onEnhancementHover={(index) => onEnhancementHover(power.internalName, index)}
                   onRightClick={(e) => onPowerRightClick(e, power)}
-                  onCompareSlotting={() => openCompareSlotting(power.name, poolId)}
+                  onCompareSlotting={() => openCompareSlotting(power.internalName, poolId)}
                   onInfoClick={() => onInfoClick(power)}
-                  slotLevels={slotLevelsMap?.get(power.name)}
+                  slotLevels={slotLevelsMap?.get(power.internalName)}
                 />
 
                 {/* Granted sub-powers display */}
@@ -442,7 +442,7 @@ function PoolPowerGroup({
                     poolName={poolName}
                     isMutuallyExclusive={grantedGroup?.mutuallyExclusive ?? false}
                     activeSubPower={power.activeSubPower}
-                    onSetActive={(subPowerName) => onSetActiveSubPower(power.name, subPowerName)}
+                    onSetActive={(subPowerName) => onSetActiveSubPower(power.internalName, subPowerName)}
                   />
                 )}
               </div>
@@ -476,11 +476,11 @@ function GrantedPoolSubPowers({
   return (
     <div className="ml-6 mt-0.5 space-y-0.5">
       {subPowers.map((subPower) => {
-        const isActive = activeSubPower === subPower.name;
+        const isActive = activeSubPower === subPower.internalName;
 
         return (
           <div
-            key={subPower.name}
+            key={subPower.internalName}
             className={`
               flex items-center gap-1.5 px-1.5 py-0.5 rounded-sm
               border transition-colors
@@ -511,7 +511,7 @@ function GrantedPoolSubPowers({
                 }
               >
                 <button
-                  onClick={() => onSetActive(isActive ? null : subPower.name)}
+                  onClick={() => onSetActive(isActive ? null : subPower.internalName)}
                   className={`
                     w-4 h-4 rounded-full border-2 flex items-center justify-center
                     transition-colors
@@ -535,7 +535,7 @@ function GrantedPoolSubPowers({
                 }
               >
                 <button
-                  onClick={() => onSetActive(isActive ? null : subPower.name)}
+                  onClick={() => onSetActive(isActive ? null : subPower.internalName)}
                   className={`
                     relative w-6 h-3 rounded-full transition-colors duration-200
                     ${isActive ? 'bg-green-600' : 'bg-slate-600'}
@@ -592,7 +592,7 @@ function EpicPoolSelectedPowers({ epicPool, isPowerLocked, slotLevelsMap }: Epic
   const handlePowerHover = (power: Power | SelectedPower) => {
     setInfoPanelContent({
       type: 'power',
-      powerName: power.name,
+      powerName: power.internalName,
       powerSet: epicPool.id,
     });
   };
@@ -603,12 +603,12 @@ function EpicPoolSelectedPowers({ epicPool, isPowerLocked, slotLevelsMap }: Epic
 
   const handlePowerRightClick = (e: React.MouseEvent, power: Power | SelectedPower) => {
     e.preventDefault();
-    if (infoPanelLocked && lockedContent?.type === 'power' && lockedContent.powerName === power.name) {
+    if (infoPanelLocked && lockedContent?.type === 'power' && lockedContent.powerName === power.internalName) {
       unlockInfoPanel();
     } else {
       lockInfoPanel({
         type: 'power',
-        powerName: power.name,
+        powerName: power.internalName,
         powerSet: epicPool.id,
       });
     }
@@ -668,7 +668,7 @@ function EpicPoolSelectedPowers({ epicPool, isPowerLocked, slotLevelsMap }: Epic
       {!collapsed && (
         <div className="space-y-0.5">
           {[...epicPool.powers].sort((a, b) => a.available - b.available).map((power) => {
-            const isLocked = isPowerLocked(power.name);
+            const isLocked = isPowerLocked(power.internalName);
             return (
               <PowerRow
                 key={power.name}
@@ -681,29 +681,29 @@ function EpicPoolSelectedPowers({ epicPool, isPowerLocked, slotLevelsMap }: Epic
                 selectedPower={power}
                 toggleSize={shouldShowToggle(power) ? 'md' : undefined}
                 isActive={power.isActive ?? false}
-                onToggle={() => togglePowerActive(power.name)}
+                onToggle={() => togglePowerActive(power.internalName)}
                 slots={power.slots}
                 maxSlots={power.maxSlots}
-                onRemove={() => removePower('epic', power.name)}
-                onAddSlots={(count) => handleAddSlots(power.name, count)}
-                onRemoveSlot={(index) => handleRemoveSlot(power.name, index)}
-                onRemoveAllSlots={() => handleRemoveAllSlots(power.name, power.slots.length)}
-                onClearEnhancement={(index) => handleClearEnhancement(power.name, index)}
-                onClearAllEnhancements={() => handleClearAllEnhancements(power.name, power.slots.length)}
-                onOpenPicker={(slotIndex) => openEnhancementPicker(power.name, epicPool.id, slotIndex)}
+                onRemove={() => removePower('epic', power.internalName)}
+                onAddSlots={(count) => handleAddSlots(power.internalName, count)}
+                onRemoveSlot={(index) => handleRemoveSlot(power.internalName, index)}
+                onRemoveAllSlots={() => handleRemoveAllSlots(power.internalName, power.slots.length)}
+                onClearEnhancement={(index) => handleClearEnhancement(power.internalName, index)}
+                onClearAllEnhancements={() => handleClearAllEnhancements(power.internalName, power.slots.length)}
+                onOpenPicker={(slotIndex) => openEnhancementPicker(power.internalName, epicPool.id, slotIndex)}
                 onHover={() => handlePowerHover(power)}
                 onLeave={handlePowerLeave}
-                onEnhancementHover={(index) => handleEnhancementHover(power.name, index)}
+                onEnhancementHover={(index) => handleEnhancementHover(power.internalName, index)}
                 onRightClick={(e) => handlePowerRightClick(e, power)}
-                onCompareSlotting={() => openCompareSlotting(power.name, epicPool.id)}
+                onCompareSlotting={() => openCompareSlotting(power.internalName, epicPool.id)}
                 onInfoClick={() => {
                   if (isLocked) {
                     unlockInfoPanel();
                   } else {
-                    lockInfoPanel({ type: 'power', powerName: power.name, powerSet: epicPool.id });
+                    lockInfoPanel({ type: 'power', powerName: power.internalName, powerSet: epicPool.id });
                   }
                 }}
-                slotLevels={slotLevelsMap?.get(power.name)}
+                slotLevels={slotLevelsMap?.get(power.internalName)}
               />
             );
           })}
@@ -776,7 +776,7 @@ function InherentPowerGroup({
       {!collapsed && (
         <div className="space-y-0.5">
           {sortedPowers.map((power) => {
-            const isLocked = isPowerLocked(power.name);
+            const isLocked = isPowerLocked(power.internalName);
 
             return (
               <PowerRow
@@ -792,19 +792,19 @@ function InherentPowerGroup({
                 isLocked={isLocked}
                 slots={power.slots}
                 maxSlots={power.maxSlots}
-                onAddSlots={(count) => onAddSlots(power.name, count)}
-                onRemoveSlot={(index) => onRemoveSlot(power.name, index)}
-                onRemoveAllSlots={() => onRemoveAllSlots(power.name, power.slots.length)}
-                onClearEnhancement={(index) => onClearEnhancement(power.name, index)}
-                onClearAllEnhancements={() => onClearAllEnhancements(power.name, power.slots.length)}
-                onOpenPicker={(slotIndex) => openEnhancementPicker(power.name, 'Inherent', slotIndex)}
+                onAddSlots={(count) => onAddSlots(power.internalName, count)}
+                onRemoveSlot={(index) => onRemoveSlot(power.internalName, index)}
+                onRemoveAllSlots={() => onRemoveAllSlots(power.internalName, power.slots.length)}
+                onClearEnhancement={(index) => onClearEnhancement(power.internalName, index)}
+                onClearAllEnhancements={() => onClearAllEnhancements(power.internalName, power.slots.length)}
+                onOpenPicker={(slotIndex) => openEnhancementPicker(power.internalName, 'Inherent', slotIndex)}
                 onHover={() => onPowerHover(power)}
                 onLeave={onPowerLeave}
-                onEnhancementHover={(index) => onEnhancementHover(power.name, index)}
+                onEnhancementHover={(index) => onEnhancementHover(power.internalName, index)}
                 onRightClick={(e) => onPowerRightClick(e, power)}
-                onCompareSlotting={() => openCompareSlotting(power.name, 'Inherent')}
+                onCompareSlotting={() => openCompareSlotting(power.internalName, 'Inherent')}
                 onInfoClick={() => onInfoClick(power)}
-                slotLevels={slotLevelsMap?.get(power.name)}
+                slotLevels={slotLevelsMap?.get(power.internalName)}
               />
             );
           })}

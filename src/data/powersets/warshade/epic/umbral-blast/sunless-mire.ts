@@ -9,6 +9,7 @@ import type { Power } from '@/types';
 
 export const SunlessMire: Power = {
   "name": "Sunless Mire",
+  "internalName": "Sunless_Mire",
   "available": 9,
   "description": "Sunless Mire can drain the essence of all nearby foes, thus increasing your own strength. Each affected foe will lose some Hit Points and add to your Damage and chance to hit.  Damage: Light. Recharge: Long.",
   "shortHelp": "PBAoE, Light DMG(Negative), Foe -Recharge, -SPD; Self +DMG, +To Hit",

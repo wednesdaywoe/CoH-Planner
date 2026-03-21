@@ -9,6 +9,7 @@ import type { Power } from '@/types';
 
 export const Fortification: Power = {
   "name": "Fortification",
+  "internalName": "Fortification",
   "available": 23,
   "description": "Crab Spiders armor may be reinforced to become far more resistant to all types of damage except Psionics, as well as increasing protection to Sleep, Hold, Immobilization and Disorient effects.",
   "shortHelp": "Toggle: Self +Res(Disorient, Hold, Immobilize, Sleep, All DMG but Psionics)",

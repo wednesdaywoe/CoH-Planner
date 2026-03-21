@@ -379,7 +379,7 @@ export function AvailablePowers({
     if (powersetId) {
       setInfoPanelContent({
         type: 'power',
-        powerName: power.name,
+        powerName: power.internalName,
         powerSet: powersetId,
       });
     }
@@ -398,7 +398,7 @@ export function AvailablePowers({
 
     lockInfoPanel({
       type: 'power',
-      powerName: power.name,
+      powerName: power.internalName,
       powerSet: powersetId,
     });
   };
@@ -407,12 +407,12 @@ export function AvailablePowers({
     if (!powersetId) return;
 
     // If already locked to this power, unlock; otherwise lock to this power
-    if (infoPanelLocked && lockedContent?.type === 'power' && lockedContent.powerName === power.name) {
+    if (infoPanelLocked && lockedContent?.type === 'power' && lockedContent.powerName === power.internalName) {
       unlockInfoPanel();
     } else {
       lockInfoPanel({
         type: 'power',
-        powerName: power.name,
+        powerName: power.internalName,
         powerSet: powersetId,
       });
     }
@@ -517,7 +517,7 @@ export function AvailablePowers({
 
                 // Block selection until both powersets are chosen, or if 24 powers taken
                 const isDisabled = isSelected || !isAvailable || !bothPowersetsSelected || powerLimitReached;
-                const isLocked = isPowerLocked(power.name);
+                const isLocked = isPowerLocked(power.internalName);
 
                 return (
                   <PowerItem

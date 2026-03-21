@@ -9,6 +9,7 @@ import type { Power } from '@/types';
 
 export const SummonSpiderlings: Power = {
   "name": "Summon Spiderlings",
+  "internalName": "Summon_Spiderlings",
   "available": 27,
   "description": "As a Crab Spider you have access to a small squadron of Arachnobot Spiderlings. Three Spiderlings that are two levels less than you will show up when summoned.",
   "shortHelp": "Summon Spiderlings: Ranged Moderate DMG(Lethal)",

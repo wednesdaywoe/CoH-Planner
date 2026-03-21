@@ -9,6 +9,7 @@ import type { Power } from '@/types';
 
 export const BrightNovaScatter: Power = {
   "name": "Bright Nova Scatter",
+  "internalName": "Bright_Nova_Scatter",
   "available": 3,
   "description": "Bright Nova Scatter sends bolts of Kheldian light energy to multiple targets at once within a cone area in front of the caster. Bright Nova Scatter deals moderate energy damage to each affected target and reduces their defense. This power is only available while in Bright Nova Form.  Damage: Light. Recharge: Slow.",
   "shortHelp": "Ranged (Cone), Light DMG(Energy), Foe -DEF",

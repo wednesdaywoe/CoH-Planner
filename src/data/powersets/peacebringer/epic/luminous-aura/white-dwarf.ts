@@ -9,6 +9,7 @@ import type { Power } from '@/types';
 
 export const WhiteDwarf: Power = {
   "name": "White Dwarf",
+  "internalName": "White_Dwarf",
   "available": 19,
   "description": "Kheldians are masters of energy and matter. A Peacebringer can transform into a massive unstoppable energy beast known as a White Dwarf. When you choose this power, you will have access to 6 other powers that can only be used while in this form. You will not be able to use any other powers while in White Dwarf form. White Dwarf has awesome resistance to all damage except Psionics, as well as controlling effects. White Dwarf also has improved HP and Endurance Recovery, but is limited to melee attacks.  Recharge: Very Fast.",
   "shortHelp": "Toggle: Shapeshift, Special",

@@ -9,6 +9,7 @@ import type { Power } from '@/types';
 
 export const CloakingDevice: Power = {
   "name": "Cloaking Device",
+  "internalName": "Cloaking_Device",
   "available": 23,
   "description": "Cloaking Device makes you almost impossible to detect. When you attack or are damaged while using this power, you will be discovered. Even if discovered, you are hard to see and retain some bonus to Defense.",
   "shortHelp": "Toggle: Self Stealth, +DEF(Melee, Ranged, AoE)",

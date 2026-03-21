@@ -53,7 +53,7 @@ export function ChronologicalInherentsSection({ inherents }: ChronologicalInhere
   const handlePowerHover = (power: SelectedPower) => {
     setInfoPanelContent({
       type: 'power',
-      powerName: power.name,
+      powerName: power.internalName,
       powerSet: 'Inherent',
     });
   };
@@ -67,13 +67,13 @@ export function ChronologicalInherentsSection({ inherents }: ChronologicalInhere
     if (
       infoPanelLocked &&
       lockedContent?.type === 'power' &&
-      lockedContent.powerName === power.name
+      lockedContent.powerName === power.internalName
     ) {
       unlockInfoPanel();
     } else {
       lockInfoPanel({
         type: 'power',
-        powerName: power.name,
+        powerName: power.internalName,
         powerSet: 'Inherent',
       });
     }
@@ -122,10 +122,10 @@ export function ChronologicalInherentsSection({ inherents }: ChronologicalInhere
   };
 
   const handleInfoClick = (power: SelectedPower) => {
-    if (isPowerLocked(power.name)) {
+    if (isPowerLocked(power.internalName)) {
       unlockInfoPanel();
     } else {
-      lockInfoPanel({ type: 'power', powerName: power.name, powerSet: 'Inherent' });
+      lockInfoPanel({ type: 'power', powerName: power.internalName, powerSet: 'Inherent' });
     }
   };
 
@@ -269,7 +269,7 @@ function InherentGroup({
       </div>
       <div className="grid grid-cols-2 gap-1">
         {sortedPowers.map((power) => {
-          const isLocked = isPowerLocked(power.name);
+          const isLocked = isPowerLocked(power.internalName);
 
           return (
             <PowerRow
@@ -283,19 +283,19 @@ function InherentGroup({
               isLocked={isLocked}
               slots={power.slots}
               maxSlots={power.maxSlots}
-              onAddSlots={(count) => onAddSlots(power.name, count)}
-              onRemoveSlot={(index) => onRemoveSlot(power.name, index)}
-              onRemoveAllSlots={() => onRemoveAllSlots(power.name, power.slots.length)}
-              onClearEnhancement={(index) => onClearEnhancement(power.name, index)}
-              onClearAllEnhancements={() => onClearAllEnhancements(power.name, power.slots.length)}
-              onOpenPicker={(slotIndex) => openEnhancementPicker(power.name, 'Inherent', slotIndex)}
+              onAddSlots={(count) => onAddSlots(power.internalName, count)}
+              onRemoveSlot={(index) => onRemoveSlot(power.internalName, index)}
+              onRemoveAllSlots={() => onRemoveAllSlots(power.internalName, power.slots.length)}
+              onClearEnhancement={(index) => onClearEnhancement(power.internalName, index)}
+              onClearAllEnhancements={() => onClearAllEnhancements(power.internalName, power.slots.length)}
+              onOpenPicker={(slotIndex) => openEnhancementPicker(power.internalName, 'Inherent', slotIndex)}
               onHover={() => onPowerHover(power)}
               onLeave={onPowerLeave}
-              onEnhancementHover={(index) => onEnhancementHover(power.name, index)}
+              onEnhancementHover={(index) => onEnhancementHover(power.internalName, index)}
               onRightClick={(e) => onPowerRightClick(e, power)}
-              onCompareSlotting={() => openCompareSlotting(power.name, 'Inherent')}
+              onCompareSlotting={() => openCompareSlotting(power.internalName, 'Inherent')}
               onInfoClick={() => onInfoClick(power)}
-              slotLevels={slotLevelsMap?.get(power.name)}
+              slotLevels={slotLevelsMap?.get(power.internalName)}
             />
           );
         })}

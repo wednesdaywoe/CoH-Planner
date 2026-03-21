@@ -9,6 +9,7 @@ import type { Power } from '@/types';
 
 export const AuraofConfusion: Power = {
   "name": "Aura of Confusion",
+  "internalName": "Aura_of_Confusion",
   "available": 29,
   "description": "Aura of Confusion can cause chaos within a group of foes. All affected foes within the area will turn and attack each other, ignoring the user and their allies. If you confuse a foe before they noticed you, your presence will continue to go unnoticed. You will not receive any Experience Points for foes defeated entirely by confused enemies.",
   "shortHelp": "PBAoE, Foe Confuse",

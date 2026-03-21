@@ -9,6 +9,7 @@ import type { Power } from '@/types';
 
 export const DarkNovaBolt: Power = {
   "name": "Dark Nova Bolt",
+  "internalName": "Dark_Nova_Bolt",
   "available": 3,
   "description": "A very quick, but low damage attack that lowers your target's attack and movement speed. This power is only available while in Dark Nova Form.  Damage: Minor. Recharge: Very Fast.",
   "shortHelp": "Ranged, Minor DMG(Negative), Foe -Recharge, -SPD",

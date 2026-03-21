@@ -9,6 +9,7 @@ import type { Power } from '@/types';
 
 export const DarkNovaBlast: Power = {
   "name": "Dark Nova Blast",
+  "internalName": "Dark_Nova_Blast",
   "available": 3,
   "description": "A much more powerful, yet slower version of Dark Nova Bolt. Dark Nova Blast sends focused negative Nictus energy at a foe. This attack can knock down foes and will leave the targets' attack and movement speed slowed. This power is only available while in Dark Nova Form.  Damage: Light. Recharge: Fast.",
   "shortHelp": "Ranged, Light DMG(Negative), Foe Knockback, -Recharge, -SPD",

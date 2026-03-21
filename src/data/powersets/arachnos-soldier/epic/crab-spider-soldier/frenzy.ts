@@ -7,6 +7,7 @@ import type { Power } from '@/types';
 
 export const Frenzy: Power = {
   "name": "Frenzy",
+  "internalName": "Frenzy",
   "available": 21,
   "description": "Your Crab Spider backpack arms go into a frenzy, striking all nearby foes with a barrage of attacks dealing heavy Energy damage in an area around you. Can also reduce the targets' Defense. Damage: Heavy",
   "shortHelp": "Melee(PBAoE), Heavy DMG(Energy), Foe -DEF",

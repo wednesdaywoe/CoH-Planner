@@ -53,7 +53,7 @@ export function getPowersetsForArchetype(archetypeId: string): Powerset[] {
  */
 export function getPower(powersetId: string, powerName: string): Power | undefined {
   const powerset = getPowerset(powersetId);
-  return powerset?.powers.find((p) => p.name === powerName);
+  return powerset?.powers.find((p) => p.internalName === powerName);
 }
 
 /**

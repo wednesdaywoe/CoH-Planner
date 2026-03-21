@@ -82,7 +82,7 @@ export function useActivePowerBuffs(): ActiveBuffs {
       if (power.isActive === false) continue;
 
       // Check targets-hit value — 0 means buff is inactive
-      const targetsHit = targetsHitValues[power.name] ?? 0;
+      const targetsHit = targetsHitValues[power.internalName] ?? 0;
       if (targetsHit <= 0) continue;
 
       const effects = power.effects;

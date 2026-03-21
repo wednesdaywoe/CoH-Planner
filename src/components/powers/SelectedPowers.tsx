@@ -73,7 +73,7 @@ export function SelectedPowers({ category }: SelectedPowersProps) {
     if (powerPowerSet) {
       setInfoPanelContent({
         type: 'power',
-        powerName: power.name,
+        powerName: power.internalName,
         powerSet: powerPowerSet,
       });
     }
@@ -106,12 +106,12 @@ export function SelectedPowers({ category }: SelectedPowersProps) {
     const powerPowerSet = power.powerSet || powersetId;
     if (!powerPowerSet) return;
 
-    if (infoPanelLocked && lockedContent?.type === 'power' && lockedContent.powerName === power.name) {
+    if (infoPanelLocked && lockedContent?.type === 'power' && lockedContent.powerName === power.internalName) {
       unlockInfoPanel();
     } else {
       lockInfoPanel({
         type: 'power',
-        powerName: power.name,
+        powerName: power.internalName,
         powerSet: powerPowerSet,
       });
     }
@@ -133,7 +133,7 @@ export function SelectedPowers({ category }: SelectedPowersProps) {
     const group = getGrantedPowerGroup(parentPowerName);
     if (!group || group.slottable) return []; // Slottable sub-powers are rendered differently
     return powerset.powers.filter(p =>
-      group.grantedPowers.includes(p.name)
+      group.grantedPowers.includes(p.internalName)
     );
   };
 
@@ -168,11 +168,11 @@ export function SelectedPowers({ category }: SelectedPowersProps) {
           {powers.map((power) => {
             const isLocked = infoPanelLocked &&
               lockedContent?.type === 'power' &&
-              lockedContent.powerName === power.name;
+              lockedContent.powerName === power.internalName;
 
-            const subPowers = getSubPowers(power.name);
-            const grantedGroup = getGrantedPowerGroup(power.name);
-            const slottableSubPowers = getSlottableSubPowers(power.name);
+            const subPowers = getSubPowers(power.internalName);
+            const grantedGroup = getGrantedPowerGroup(power.internalName);
+            const slottableSubPowers = getSlottableSubPowers(power.internalName);
 
             return (
               <div key={power.name}>
@@ -186,32 +186,32 @@ export function SelectedPowers({ category }: SelectedPowersProps) {
                   selectedPower={power}
                   toggleSize={shouldShowToggle(power) ? 'md' : undefined}
                   isActive={power.isActive ?? false}
-                  onToggle={() => togglePowerActive(power.name)}
+                  onToggle={() => togglePowerActive(power.internalName)}
                   slots={power.slots}
                   maxSlots={power.maxSlots}
-                  onRemove={() => handleRemove(power.name)}
-                  onAddSlots={(count) => handleAddSlots(power.name, count)}
-                  onRemoveSlot={(index) => handleRemoveSlot(power.name, index)}
-                  onRemoveAllSlots={() => handleRemoveAllSlots(power.name, power.slots.length)}
-                  onClearEnhancement={(index) => handleClearEnhancement(power.name, index)}
-                  onClearAllEnhancements={() => handleClearAllEnhancements(power.name, power.slots.length)}
-                  onOpenPicker={(slotIndex) => openEnhancementPicker(power.name, power.powerSet || powersetId, slotIndex)}
+                  onRemove={() => handleRemove(power.internalName)}
+                  onAddSlots={(count) => handleAddSlots(power.internalName, count)}
+                  onRemoveSlot={(index) => handleRemoveSlot(power.internalName, index)}
+                  onRemoveAllSlots={() => handleRemoveAllSlots(power.internalName, power.slots.length)}
+                  onClearEnhancement={(index) => handleClearEnhancement(power.internalName, index)}
+                  onClearAllEnhancements={() => handleClearAllEnhancements(power.internalName, power.slots.length)}
+                  onOpenPicker={(slotIndex) => openEnhancementPicker(power.internalName, power.powerSet || powersetId, slotIndex)}
                   onHover={() => handlePowerHover(power)}
                   onLeave={handlePowerLeave}
-                  onEnhancementHover={(index) => handleEnhancementHover(power.name, index)}
+                  onEnhancementHover={(index) => handleEnhancementHover(power.internalName, index)}
                   onRightClick={(e) => handlePowerRightClick(e, power)}
-                  onCompareSlotting={() => openCompareSlotting(power.name, power.powerSet || powersetId)}
+                  onCompareSlotting={() => openCompareSlotting(power.internalName, power.powerSet || powersetId)}
                   onInfoClick={() => {
                     const ps = power.powerSet || powersetId;
                     if (ps) {
                       if (isLocked) {
                         unlockInfoPanel();
                       } else {
-                        lockInfoPanel({ type: 'power', powerName: power.name, powerSet: ps });
+                        lockInfoPanel({ type: 'power', powerName: power.internalName, powerSet: ps });
                       }
                     }
                   }}
-                  slotLevels={showSlotLevels ? slotLevelsMap.get(power.name) : undefined}
+                  slotLevels={showSlotLevels ? slotLevelsMap.get(power.internalName) : undefined}
                 />
 
                 {/* Granted sub-powers display (simple toggles) */}
@@ -222,7 +222,7 @@ export function SelectedPowers({ category }: SelectedPowersProps) {
                     powersetName={selection.name}
                     isMutuallyExclusive={grantedGroup?.mutuallyExclusive ?? false}
                     activeSubPower={power.activeSubPower}
-                    onSetActive={(subPowerName) => setActiveSubPower(power.name, subPowerName)}
+                    onSetActive={(subPowerName) => setActiveSubPower(power.internalName, subPowerName)}
                   />
                 )}
 
@@ -232,7 +232,7 @@ export function SelectedPowers({ category }: SelectedPowersProps) {
                     {slottableSubPowers.map((subPower) => {
                       const subIsLocked = infoPanelLocked &&
                         lockedContent?.type === 'power' &&
-                        lockedContent.powerName === subPower.name;
+                        lockedContent.powerName === subPower.internalName;
 
                       return (
                         <PowerRow
@@ -246,28 +246,28 @@ export function SelectedPowers({ category }: SelectedPowersProps) {
                           showAutoLabel
                           slots={subPower.slots}
                           maxSlots={subPower.maxSlots}
-                          onAddSlots={(count) => handleAddSlots(subPower.name, count)}
-                          onRemoveSlot={(index) => handleRemoveSlot(subPower.name, index)}
-                          onRemoveAllSlots={() => handleRemoveAllSlots(subPower.name, subPower.slots.length)}
-                          onClearEnhancement={(index) => handleClearEnhancement(subPower.name, index)}
-                          onClearAllEnhancements={() => handleClearAllEnhancements(subPower.name, subPower.slots.length)}
-                          onOpenPicker={(slotIndex) => openEnhancementPicker(subPower.name, subPower.powerSet || powersetId, slotIndex)}
+                          onAddSlots={(count) => handleAddSlots(subPower.internalName, count)}
+                          onRemoveSlot={(index) => handleRemoveSlot(subPower.internalName, index)}
+                          onRemoveAllSlots={() => handleRemoveAllSlots(subPower.internalName, subPower.slots.length)}
+                          onClearEnhancement={(index) => handleClearEnhancement(subPower.internalName, index)}
+                          onClearAllEnhancements={() => handleClearAllEnhancements(subPower.internalName, subPower.slots.length)}
+                          onOpenPicker={(slotIndex) => openEnhancementPicker(subPower.internalName, subPower.powerSet || powersetId, slotIndex)}
                           onHover={() => handlePowerHover(subPower)}
                           onLeave={handlePowerLeave}
-                          onEnhancementHover={(index) => handleEnhancementHover(subPower.name, index)}
+                          onEnhancementHover={(index) => handleEnhancementHover(subPower.internalName, index)}
                           onRightClick={(e) => handlePowerRightClick(e, subPower)}
-                          onCompareSlotting={() => openCompareSlotting(subPower.name, subPower.powerSet || powersetId)}
+                          onCompareSlotting={() => openCompareSlotting(subPower.internalName, subPower.powerSet || powersetId)}
                           onInfoClick={() => {
                             const ps = subPower.powerSet || powersetId;
                             if (ps) {
                               if (subIsLocked) {
                                 unlockInfoPanel();
                               } else {
-                                lockInfoPanel({ type: 'power', powerName: subPower.name, powerSet: ps });
+                                lockInfoPanel({ type: 'power', powerName: subPower.internalName, powerSet: ps });
                               }
                             }
                           }}
-                          slotLevels={showSlotLevels ? slotLevelsMap.get(subPower.name) : undefined}
+                          slotLevels={showSlotLevels ? slotLevelsMap.get(subPower.internalName) : undefined}
                         />
                       );
                     })}
@@ -309,11 +309,11 @@ function GrantedSubPowers({
   return (
     <div className="ml-6 mt-0.5 space-y-0.5">
       {subPowers.map((subPower) => {
-        const isActive = activeSubPower === subPower.name;
+        const isActive = activeSubPower === subPower.internalName;
 
         return (
           <div
-            key={subPower.name}
+            key={subPower.internalName}
             className={`
               flex items-center gap-1.5 px-1.5 py-0.5 rounded-sm
               border transition-colors
@@ -346,7 +346,7 @@ function GrantedSubPowers({
                 }
               >
                 <button
-                  onClick={() => onSetActive(isActive ? null : subPower.name)}
+                  onClick={() => onSetActive(isActive ? null : subPower.internalName)}
                   className={`
                     w-4 h-4 rounded-full border-2 flex items-center justify-center
                     transition-colors
@@ -370,7 +370,7 @@ function GrantedSubPowers({
                 }
               >
                 <button
-                  onClick={() => onSetActive(isActive ? null : subPower.name)}
+                  onClick={() => onSetActive(isActive ? null : subPower.internalName)}
                   className={`
                     relative w-6 h-3 rounded-full transition-colors duration-200
                     ${isActive ? 'bg-green-600' : 'bg-slate-600'}

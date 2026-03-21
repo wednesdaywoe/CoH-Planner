@@ -473,6 +473,7 @@ interface ActivePowerEffect {
 
 interface PowerWithToggle {
   name: string;
+  internalName: string;
   powerType?: string;
   isActive?: boolean;
   effects?: ActivePowerEffect;
@@ -550,7 +551,7 @@ function applyActivePowerBonuses(
     // Enhanced by ToHit enhancements
     if (effects.tohitBuff !== undefined) {
       const enhMultiplier = 1 + (enhBonuses.tohit || 0);
-      const adjustedBuff = adjustForPerTarget(effects.tohitBuff as ScalarOrScaled, targetsHitValues[power.name]);
+      const adjustedBuff = adjustForPerTarget(effects.tohitBuff as ScalarOrScaled, targetsHitValues[power.internalName]);
       const value = resolveScaledEffect(adjustedBuff, archetypeId, buildLevel) * 100 * enhMultiplier;
       global.toHit += value;
       addToBreakdown(breakdown, 'toHit', {
@@ -564,7 +565,7 @@ function applyActivePowerBonuses(
     // Enhanced by Damage enhancements
     if (effects.damageBuff !== undefined) {
       const enhMultiplier = 1 + (enhBonuses.damage || 0);
-      const adjustedBuff = adjustForPerTarget(effects.damageBuff as ScalarOrScaled, targetsHitValues[power.name]);
+      const adjustedBuff = adjustForPerTarget(effects.damageBuff as ScalarOrScaled, targetsHitValues[power.internalName]);
       const value = resolveScaledEffect(adjustedBuff, archetypeId, buildLevel) * 100 * enhMultiplier;
       global.damage += value;
       addToBreakdown(breakdown, 'damage', {
@@ -594,7 +595,7 @@ function applyActivePowerBonuses(
     if (defenseEffects && typeof defenseEffects === 'object') {
       const enhMultiplier = 1 + (enhBonuses.defense || enhBonuses.defenseBuff || 0);
       for (const [type, value] of Object.entries(defenseEffects)) {
-        const adjustedDef = adjustForPerTarget(value, targetsHitValues[power.name]);
+        const adjustedDef = adjustForPerTarget(value, targetsHitValues[power.internalName]);
         const percentage = resolveScaledEffect(adjustedDef, archetypeId, buildLevel) * 100 * enhMultiplier;
         const key = `def${capitalizeFirst(type)}` as keyof GlobalBonuses;
         if (key in global) {
@@ -612,7 +613,7 @@ function applyActivePowerBonuses(
     if (!combatMode && effects.defenseBuffSuppressible && typeof effects.defenseBuffSuppressible === 'object') {
       const enhMultiplier = 1 + (enhBonuses.defense || enhBonuses.defenseBuff || 0);
       for (const [type, value] of Object.entries(effects.defenseBuffSuppressible)) {
-        const adjustedDef = adjustForPerTarget(value, targetsHitValues[power.name]);
+        const adjustedDef = adjustForPerTarget(value, targetsHitValues[power.internalName]);
         const percentage = resolveScaledEffect(adjustedDef, archetypeId, buildLevel) * 100 * enhMultiplier;
         const key = `def${capitalizeFirst(type)}` as keyof GlobalBonuses;
         if (key in global) {
@@ -788,11 +789,11 @@ function applyActivePowerBonuses(
         : '';
       if (!regenTable.toLowerCase().includes('res_boolean')) {
         const enhMultiplier = 1 + (enhBonuses.heal || 0);
-        const adjustedRegen = adjustForPerTarget(regenVal, targetsHitValues[power.name]);
+        const adjustedRegen = adjustForPerTarget(regenVal, targetsHitValues[power.internalName]);
         const value = resolveScaledEffect(adjustedRegen, archetypeId, buildLevel) * 100 * enhMultiplier;
         // If the power also has an unenhanced portion, combine into one breakdown entry
         const adjustedRegenUnenh = effects.regenBuffUnenhanced !== undefined
-          ? adjustForPerTarget(effects.regenBuffUnenhanced as ScalarOrScaled, targetsHitValues[power.name])
+          ? adjustForPerTarget(effects.regenBuffUnenhanced as ScalarOrScaled, targetsHitValues[power.internalName])
           : undefined;
         const unenhValue = adjustedRegenUnenh !== undefined
           ? resolveScaledEffect(adjustedRegenUnenh, archetypeId, buildLevel) * 100
@@ -807,7 +808,7 @@ function applyActivePowerBonuses(
       }
     } else if (effects.regenBuffUnenhanced !== undefined) {
       // Power only has unenhanceable regen (no enhanceable portion)
-      const adjustedUnenhOnly = adjustForPerTarget(effects.regenBuffUnenhanced as ScalarOrScaled, targetsHitValues[power.name]);
+      const adjustedUnenhOnly = adjustForPerTarget(effects.regenBuffUnenhanced as ScalarOrScaled, targetsHitValues[power.internalName]);
       const value = resolveScaledEffect(adjustedUnenhOnly, archetypeId, buildLevel) * 100;
       global.regeneration += value;
       addToBreakdown(breakdown, 'regeneration', {
@@ -827,7 +828,7 @@ function applyActivePowerBonuses(
         : '';
       if (!table.toLowerCase().includes('res_boolean')) {
         const enhMultiplier = 1 + (enhBonuses.enduranceMod || 0);
-        const adjustedRecovery = adjustForPerTarget(recBuff, targetsHitValues[power.name]);
+        const adjustedRecovery = adjustForPerTarget(recBuff, targetsHitValues[power.internalName]);
         const value = resolveScaledEffect(adjustedRecovery, archetypeId, buildLevel) * 100 * enhMultiplier;
         global.recovery += value;
         addToBreakdown(breakdown, 'recovery', {
@@ -1151,7 +1152,7 @@ function applyFitnessPowerBonuses(
   );
 
   for (const power of fitnessPowers) {
-    const effects = FITNESS_POWER_EFFECTS[power.name];
+    const effects = FITNESS_POWER_EFFECTS[power.internalName];
     if (!effects) continue;
 
     // Calculate enhancement bonus for this power
@@ -2254,7 +2255,7 @@ function collectAllPowers(build: Build): PowerWithToggle[] {
   // Stored powers may have stale/missing effects if power data was updated after they were saved
   const primaryDef = build.primary.id ? getPowerset(build.primary.id) : undefined;
   for (const power of build.primary.powers) {
-    const currentDef = primaryDef?.powers.find((p) => p.name === power.name);
+    const currentDef = primaryDef?.powers.find((p) => p.internalName === power.internalName);
     if (currentDef?.effects) {
       powers.push({ ...power, effects: currentDef.effects } as unknown as PowerWithToggle);
     } else {
@@ -2265,7 +2266,7 @@ function collectAllPowers(build: Build): PowerWithToggle[] {
   // Secondary powers — enrich with current definition effects
   const secondaryDef = build.secondary.id ? getPowerset(build.secondary.id) : undefined;
   for (const power of build.secondary.powers) {
-    const currentDef = secondaryDef?.powers.find((p) => p.name === power.name);
+    const currentDef = secondaryDef?.powers.find((p) => p.internalName === power.internalName);
     if (currentDef?.effects) {
       powers.push({ ...power, effects: currentDef.effects } as unknown as PowerWithToggle);
     } else {
@@ -2278,7 +2279,7 @@ function collectAllPowers(build: Build): PowerWithToggle[] {
   for (const pool of build.pools) {
     const poolDef = getPowerPool(pool.id);
     for (const power of pool.powers) {
-      const currentDef = poolDef?.powers.find((p) => p.name === power.name);
+      const currentDef = poolDef?.powers.find((p) => p.internalName === power.internalName);
       if (currentDef?.effects) {
         powers.push({ ...power, effects: currentDef.effects } as unknown as PowerWithToggle);
       } else {
@@ -2291,7 +2292,7 @@ function collectAllPowers(build: Build): PowerWithToggle[] {
   if (build.epicPool) {
     const epicDef = getEpicPool(build.epicPool.id);
     for (const power of build.epicPool.powers) {
-      const currentDef = epicDef?.powers.find((p) => p.name === power.name);
+      const currentDef = epicDef?.powers.find((p) => p.internalName === power.internalName);
       if (currentDef?.effects) {
         powers.push({ ...power, effects: currentDef.effects } as unknown as PowerWithToggle);
       } else {

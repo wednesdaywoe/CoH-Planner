@@ -9,6 +9,7 @@ import type { Power } from '@/types';
 
 export const EbonEye: Power = {
   "name": "Ebon Eye",
+  "internalName": "Ebon_Eye",
   "available": 0,
   "description": "You can emit a beam of dark energy from your eyes, dealing moderate Negative Energy damage. Ebon Eye can also slow your target's attack rate and movement speed. This power can be used while in Nova form at an increased range and with higher damage but slower recharge.  Damage: Moderate. Recharge: Fast.",
   "shortHelp": "Ranged, Moderate DMG(Negative), Foe -Recharge, -SPD",

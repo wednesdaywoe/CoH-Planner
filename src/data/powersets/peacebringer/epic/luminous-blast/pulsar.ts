@@ -9,6 +9,7 @@ import type { Power } from '@/types';
 
 export const Pulsar: Power = {
   "name": "Pulsar",
+  "internalName": "Pulsar",
   "available": 17,
   "description": "Generates a brilliant pulse of Kheldian light around you that stuns nearby foes. Affected foes are Disoriented and unable to defend themselves.  Recharge: Slow.",
   "shortHelp": "PBAoE, Foe Disorient",

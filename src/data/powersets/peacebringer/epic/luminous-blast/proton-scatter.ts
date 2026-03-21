@@ -9,6 +9,7 @@ import type { Power } from '@/types';
 
 export const ProtonScatter: Power = {
   "name": "Proton Scatter",
+  "internalName": "Proton_Scatter",
   "available": 7,
   "description": "Proton Scatter sends bolts of Kheldian energy to multiple targets at once within a cone area in front of the caster. Proton Scatter deals moderate Energy damage to each affected target and reduces their Defense.  Damage: Light. Recharge: Slow.",
   "shortHelp": "Ranged (Cone), Light DMG(Energy), Foe -DEF",

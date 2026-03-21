@@ -9,6 +9,7 @@ import type { Power } from '@/types';
 
 export const DartBurst: Power = {
   "name": "Dart Burst",
+  "internalName": "Dart_Burst",
   "available": 5,
   "description": "Dart Burst does light lethal damage to foes in a 30 degree arc cone, then poisons them. The poison does toxic damage over time and reduces their regeneration rate.",
   "shortHelp": "Ranged Cone, DMG(Lethal), DoT(Toxic), -Regeneration",

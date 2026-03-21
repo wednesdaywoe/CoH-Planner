@@ -9,6 +9,7 @@ import type { Power } from '@/types';
 
 export const StygianCircle: Power = {
   "name": "Stygian Circle",
+  "internalName": "Stygian_Circle",
   "available": 21,
   "description": "You can tap into your Nictus power to drain the remaining essence of all nearby defeated foes to heal yourself, and recover Endurance. The more defeated foes affected, the more you will be healed. Additionally, the more powerful the defeated foes you drain, the more health you will recover.  Recharge: Slow.",
   "shortHelp": "PBAoE Self +HP (Special), +End",

@@ -9,6 +9,7 @@ import type { Power } from '@/types';
 
 export const TacticalTrainingAssault: Power = {
   "name": "Tactical Training: Assault",
+  "internalName": "Tactical_Training:_Assault",
   "available": 15,
   "description": "While this power is active, you and your nearby teammates deal more damage and are more resistant to Taunt and Placate.",
   "shortHelp": "Toggle: PBAoE, Team +DMG, Res(Taunt, Placate)",

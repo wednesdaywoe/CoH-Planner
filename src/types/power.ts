@@ -478,8 +478,8 @@ export interface ScaledDamageEntry {
 export interface Power {
   /** Power name */
   name: string;
-  /** Internal name from raw data (e.g., "Radiation_Infection") */
-  internalName?: string;
+  /** Internal name from raw data (e.g., "Radiation_Infection") — canonical stable identifier */
+  internalName: string;
   /** Full internal name (e.g., "Pool.Speed.Hasten") */
   fullName?: string;
   /** Level available (0 = level 1, -1 = unlocked by prerequisite) */

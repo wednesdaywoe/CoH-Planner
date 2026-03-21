@@ -207,7 +207,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
   // Archetype inherent fallback (dynamically created, not in static data)
   if (!power && powerSet === 'Inherent') {
     powersetName = 'Inherent';
-    const selectedInherent = build.inherents.find((p) => p.name === powerName);
+    const selectedInherent = build.inherents.find((p) => p.internalName === powerName);
     if (selectedInherent) {
       power = selectedInherent;
       if (selectedInherent.inherentCategory === 'archetype') {
@@ -987,7 +987,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
 
       {/* Perma Tracker */}
       {isPermaEligible(power) && (() => {
-        const permaTracked = useUIStore.getState().permaTrackedPowers.includes(power.name);
+        const permaTracked = useUIStore.getState().permaTrackedPowers.includes(power.internalName);
         const togglePerma = useUIStore.getState().togglePermaTracked;
         const permaInfo = calculatePermaInfo(power, enhancementBonuses, (globalBonuses.recharge ?? 0) / 100);
 
@@ -998,7 +998,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
                 Perma Tracker
               </h4>
               <button
-                onClick={() => togglePerma(power.name)}
+                onClick={() => togglePerma(power.internalName)}
                 className={`text-[9px] px-2 py-0.5 rounded border transition-colors ${
                   permaTracked
                     ? 'bg-sk-magenta/20 border-sk-magenta/50 text-sk-magenta'

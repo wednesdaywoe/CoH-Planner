@@ -9,6 +9,7 @@ import type { Power } from '@/types';
 
 export const Surveillance: Power = {
   "name": "Surveillance",
+  "internalName": "Surveillance",
   "available": 23,
   "description": "When this power is activated, you focus your senses to analyze your targets defensive capabilities and discover their weaknesses. By sharing your knowledge of the targets weaknesses with your team mates, you effectively reduce their defense and resistance to damage.",
   "shortHelp": "Ranged Foe -DEF, -RES (All)",

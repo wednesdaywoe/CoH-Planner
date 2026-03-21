@@ -9,6 +9,7 @@ import type { Power } from '@/types';
 
 export const Lunge: Power = {
   "name": "Lunge",
+  "internalName": "Lunge",
   "available": 11,
   "description": "Lunge does high lethal damage to your foe, then poisons them. The poison does toxic damage over time and slows their recovery rate and movement speed.  Notes: This power will deal critical damage if used after a successful Placate or while the user is hidden with the Night Widow or Fortunata Mask Presence power.",
   "shortHelp": "Melee, DMG(Lethal), DoT(Toxic), -Recharge, -SPD",

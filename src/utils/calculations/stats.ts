@@ -326,6 +326,7 @@ interface PowerEffects {
 
 interface PowerWithEffects {
   name: string;
+  internalName: string;
   effects?: PowerEffects;
   powerType?: string;
   isActive?: boolean;
@@ -348,7 +349,7 @@ export function calculatePoolPowerBonuses(powers: PowerWithEffects[]): PowerBonu
 
   powers.forEach((power) => {
     // Skip Rest power
-    if (power.name === 'Rest') return;
+    if (power.internalName === 'Rest') return;
 
     const effects = power.effects;
     if (!effects) return;

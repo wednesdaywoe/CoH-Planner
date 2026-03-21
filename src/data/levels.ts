@@ -244,14 +244,14 @@ export const POOL_TIER_REQUIREMENTS = {
  * These powers have available=4 in the data but require no prerequisites
  */
 export const EARLY_TRAVEL_POWERS: readonly string[] = [
-  'Super Speed',
+  'Super_Speed',
   'Fly',
   'Teleport',
-  'Super Jump',
+  'Super_Jump',
   'Infiltration',
-  'Speed of Sound',
-  'Mystic Flight',
-  'Mighty Leap',
+  'Speed_Of_Sound',
+  'Mystic_Flight',
+  'Mighty_Leap',
 ] as const;
 
 /**
@@ -370,6 +370,7 @@ export interface InherentPowerDef extends Power {
 export const INHERENT_FITNESS_POWERS: InherentPowerDef[] = [
   {
     name: 'Swift',
+    internalName: 'Swift',
     fullName: 'Inherent.Fitness.Swift',
     description: 'You can naturally run slightly faster than normal. This ability is always on and does not cost any Endurance.',
     shortHelp: 'Auto: Self +Speed',
@@ -388,6 +389,7 @@ export const INHERENT_FITNESS_POWERS: InherentPowerDef[] = [
   },
   {
     name: 'Hurdle',
+    internalName: 'Hurdle',
     fullName: 'Inherent.Fitness.Hurdle',
     description: 'You can naturally jump higher than normal. This ability is always on and does not cost any Endurance.',
     shortHelp: 'Auto: Self +Jump',
@@ -406,6 +408,7 @@ export const INHERENT_FITNESS_POWERS: InherentPowerDef[] = [
   },
   {
     name: 'Health',
+    internalName: 'Health',
     fullName: 'Inherent.Fitness.Health',
     description: 'You heal slightly faster than a normal person. Your improved Health also grants you resistance to Sleep. This ability is always on and does not cost any Endurance.',
     shortHelp: 'Auto: Self +Regeneration, Res(Sleep)',
@@ -423,6 +426,7 @@ export const INHERENT_FITNESS_POWERS: InherentPowerDef[] = [
   },
   {
     name: 'Stamina',
+    internalName: 'Stamina',
     fullName: 'Inherent.Fitness.Stamina',
     description: 'You recover Endurance slightly more quickly than normal. This ability is always on and does not cost any Endurance.',
     shortHelp: 'Auto: Self +Recovery',
@@ -446,6 +450,7 @@ export const INHERENT_FITNESS_POWERS: InherentPowerDef[] = [
 export const BASIC_INHERENT_POWERS: InherentPowerDef[] = [
   {
     name: 'Brawl',
+    internalName: 'Brawl',
     fullName: 'Inherent.Brawl',
     description: 'When all else fails, use your fists. Brawl attacks deal minor smashing damage but have a very fast recharge.',
     shortHelp: 'Melee, DMG(Smashing)',
@@ -472,6 +477,7 @@ export const BASIC_INHERENT_POWERS: InherentPowerDef[] = [
   },
   {
     name: 'Rest',
+    internalName: 'Rest',
     fullName: 'Inherent.Rest',
     description: 'Rest to recover hit points and endurance. You are vulnerable while resting.',
     shortHelp: 'Self +Regen, +Recovery',
@@ -498,6 +504,7 @@ export const BASIC_INHERENT_POWERS: InherentPowerDef[] = [
   },
   {
     name: 'Sprint',
+    internalName: 'Sprint',
     fullName: 'Inherent.Sprint',
     description: 'You can Sprint at a faster than normal rate, but you are not as quick as characters with Super Speed.',
     shortHelp: 'Toggle: Self +Speed',
@@ -522,6 +529,7 @@ export const BASIC_INHERENT_POWERS: InherentPowerDef[] = [
 export const PRESTIGE_SPRINT_POWERS: InherentPowerDef[] = [
   {
     name: 'Prestige Power Slide',
+    internalName: 'PowerSlide',
     fullName: 'Inherent.Prestige.PowerSlide',
     description: 'Activating this power will have your character slide across the ground, leaving behind a trail of sparks. This prestige power increases your run speed.',
     shortHelp: 'Toggle: Self +Speed',
@@ -540,6 +548,7 @@ export const PRESTIGE_SPRINT_POWERS: InherentPowerDef[] = [
   },
   {
     name: 'Prestige Power Rush',
+    internalName: 'PowerRush',
     fullName: 'Inherent.Prestige.PowerRush',
     description: 'Activating this power will give your character a burst of speed, leaving behind a colored trail. This prestige power increases your run speed.',
     shortHelp: 'Toggle: Self +Speed',
@@ -558,6 +567,7 @@ export const PRESTIGE_SPRINT_POWERS: InherentPowerDef[] = [
   },
   {
     name: 'Prestige Power Surge',
+    internalName: 'PowerSurge',
     fullName: 'Inherent.Prestige.PowerSurge',
     description: 'Activating this power will surround your character with an electric field as you run. This prestige power increases your run speed.',
     shortHelp: 'Toggle: Self +Speed',
@@ -576,6 +586,7 @@ export const PRESTIGE_SPRINT_POWERS: InherentPowerDef[] = [
   },
   {
     name: 'Prestige Power Dash',
+    internalName: 'PowerDash',
     fullName: 'Inherent.Prestige.PowerDash',
     description: 'Activating this power will cause your character to dash forward leaving a colored afterimage trail. This prestige power increases your run speed.',
     shortHelp: 'Toggle: Self +Speed',
@@ -594,6 +605,7 @@ export const PRESTIGE_SPRINT_POWERS: InherentPowerDef[] = [
   },
   {
     name: 'Prestige Power Quick',
+    internalName: 'PowerQuick',
     fullName: 'Inherent.Prestige.PowerQuick',
     description: 'Activating this power will cause your character to leave behind ghostly afterimages as you run. This prestige power increases your run speed.',
     shortHelp: 'Toggle: Self +Speed',
@@ -622,6 +634,7 @@ export const PRESTIGE_SPRINT_POWERS: InherentPowerDef[] = [
 const PEACEBRINGER_INHERENT_POWERS: InherentPowerDef[] = [
   {
     name: 'Energy Flight',
+    internalName: 'Energy_Flight',
     fullName: 'Inherent.Inherent.Energy Flight',
     description:
       'Energy Flight allows you to travel large distances quickly. If you attack a target while this power is on, your flight speed will be temporarily reduced. Your Energy Flight speed increases with your Level.',
@@ -648,6 +661,7 @@ const PEACEBRINGER_INHERENT_POWERS: InherentPowerDef[] = [
   },
   {
     name: 'Combat Flight',
+    internalName: 'Combat_Flight',
     fullName: 'Inherent.Inherent.Combat Flight',
     description:
       'For hovering and aerial combat. This power is much slower than Energy Flight, but provides some Defense, offers good air control, costs little Endurance, and has none of the penalties associated with Energy Flight.',
@@ -693,6 +707,7 @@ const PEACEBRINGER_INHERENT_POWERS: InherentPowerDef[] = [
 const WARSHADE_INHERENT_POWERS: InherentPowerDef[] = [
   {
     name: 'Shadow Step',
+    internalName: 'Shadow_Step',
     fullName: 'Inherent.Inherent.Shadow Step',
     description:
       'You can Teleport long distances. Once at your destination, you will be stuck in between dimensions for up to 15s. While in this state, you will not be affected by gravity, and be able to execute additional teleportation jumps at a discounted endurance cost.',
@@ -715,6 +730,7 @@ const WARSHADE_INHERENT_POWERS: InherentPowerDef[] = [
   },
   {
     name: 'Shadow Recall',
+    internalName: 'Shadow_Recall',
     fullName: 'Inherent.Inherent.Shadow Recall',
     description:
       'You can Teleport a single foe or ally directly next to yourself. A successful hit must be made in order to Teleport the foes. Some powerful foes cannot be Teleported.',
@@ -768,11 +784,11 @@ export function getInherentPowers(): InherentPowerDef[] {
  */
 export function getInherentPowerDef(name: string): InherentPowerDef | undefined {
   const allInherents = getInherentPowers();
-  const found = allInherents.find((p) => p.name === name);
+  const found = allInherents.find((p) => p.internalName === name);
   if (found) return found;
   // Also check archetype-specific inherent powers (e.g. Kheldian travel powers)
   for (const powers of Object.values(ARCHETYPE_INHERENT_POWERS)) {
-    const match = powers.find((p) => p.name === name);
+    const match = powers.find((p) => p.internalName === name);
     if (match) return match;
   }
   return undefined;
@@ -793,6 +809,7 @@ export function createArchetypeInherentPower(
 
   return {
     name: inherent.name,
+    internalName: inherent.name.replace(/\s+/g, '_'),
     fullName: `Inherent.${archetypeName}.${inherent.name.replace(/\s+/g, '')}`,
     description: inherent.description,
     icon: iconName,

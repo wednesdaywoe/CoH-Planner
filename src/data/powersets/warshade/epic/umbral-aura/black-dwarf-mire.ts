@@ -9,6 +9,7 @@ import type { Power } from '@/types';
 
 export const BlackDwarfMire: Power = {
   "name": "Black Dwarf Mire",
+  "internalName": "Black_Dwarf_Mire",
   "available": 19,
   "description": "Black Dwarf Mire can drain the essence of all nearby foes, thus increasing your own strength. Each affected foe will lose some Hit Points and add to your Damage and Accuracy.  Damage: Light. Recharge: Slow.",
   "shortHelp": "PBAoE, Light DMG(Negative), Foe -Recharge, -SPD; Self +DMG, +ACC",

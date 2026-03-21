@@ -37,20 +37,20 @@ export function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfo
   // Find the power and get the enhancement
   const findEnhancement = (): Enhancement | null => {
     // Check primary
-    const primaryPower = build.primary.powers.find((p) => p.name === powerName);
+    const primaryPower = build.primary.powers.find((p) => p.internalName === powerName);
     if (primaryPower && primaryPower.slots[slotIndex]) {
       return primaryPower.slots[slotIndex];
     }
 
     // Check secondary
-    const secondaryPower = build.secondary.powers.find((p) => p.name === powerName);
+    const secondaryPower = build.secondary.powers.find((p) => p.internalName === powerName);
     if (secondaryPower && secondaryPower.slots[slotIndex]) {
       return secondaryPower.slots[slotIndex];
     }
 
     // Check pools
     for (const pool of build.pools) {
-      const poolPower = pool.powers.find((p) => p.name === powerName);
+      const poolPower = pool.powers.find((p) => p.internalName === powerName);
       if (poolPower && poolPower.slots[slotIndex]) {
         return poolPower.slots[slotIndex];
       }
@@ -58,14 +58,14 @@ export function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfo
 
     // Check epic pool
     if (build.epicPool) {
-      const epicPower = build.epicPool.powers.find((p) => p.name === powerName);
+      const epicPower = build.epicPool.powers.find((p) => p.internalName === powerName);
       if (epicPower && epicPower.slots[slotIndex]) {
         return epicPower.slots[slotIndex];
       }
     }
 
     // Check inherent powers (Fitness, Basic, Prestige)
-    const inherentPower = build.inherents.find((p) => p.name === powerName);
+    const inherentPower = build.inherents.find((p) => p.internalName === powerName);
     if (inherentPower && inherentPower.slots[slotIndex]) {
       return inherentPower.slots[slotIndex];
     }
@@ -76,20 +76,20 @@ export function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfo
   // Count how many pieces of a set are slotted in this power
   const countSetPiecesInPower = (setId: string): number => {
     const findPower = () => {
-      const primary = build.primary.powers.find((p) => p.name === powerName);
+      const primary = build.primary.powers.find((p) => p.internalName === powerName);
       if (primary) return primary;
-      const secondary = build.secondary.powers.find((p) => p.name === powerName);
+      const secondary = build.secondary.powers.find((p) => p.internalName === powerName);
       if (secondary) return secondary;
       for (const pool of build.pools) {
-        const poolPower = pool.powers.find((p) => p.name === powerName);
+        const poolPower = pool.powers.find((p) => p.internalName === powerName);
         if (poolPower) return poolPower;
       }
       if (build.epicPool) {
-        const epicPower = build.epicPool.powers.find((p) => p.name === powerName);
+        const epicPower = build.epicPool.powers.find((p) => p.internalName === powerName);
         if (epicPower) return epicPower;
       }
       // Check inherent powers (Fitness, Basic, Prestige)
-      const inherentPower = build.inherents.find((p) => p.name === powerName);
+      const inherentPower = build.inherents.find((p) => p.internalName === powerName);
       if (inherentPower) return inherentPower;
       return null;
     };
@@ -291,28 +291,28 @@ export function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfo
                       // Find the power this enhancement is slotted in
                       const findPowerData = () => {
                         // Check primary
-                        const primaryPower = build.primary.powers.find((p) => p.name === powerName);
+                        const primaryPower = build.primary.powers.find((p) => p.internalName === powerName);
                         if (primaryPower && build.primary.id) {
                           const basePower = getPower(build.primary.id, powerName);
                           return { selected: primaryPower, base: basePower };
                         }
                         // Check secondary
-                        const secondaryPower = build.secondary.powers.find((p) => p.name === powerName);
+                        const secondaryPower = build.secondary.powers.find((p) => p.internalName === powerName);
                         if (secondaryPower && build.secondary.id) {
                           const basePower = getPower(build.secondary.id, powerName);
                           return { selected: secondaryPower, base: basePower };
                         }
                         // Check pools
                         for (const pool of build.pools) {
-                          const poolPower = pool.powers.find((p) => p.name === powerName);
+                          const poolPower = pool.powers.find((p) => p.internalName === powerName);
                           if (poolPower) {
                             const poolData = getPowerPool(pool.id);
-                            const basePower = poolData?.powers.find((p) => p.name === powerName);
+                            const basePower = poolData?.powers.find((p) => p.internalName === powerName);
                             return { selected: poolPower, base: basePower };
                           }
                         }
                         // Check inherents
-                        const inherentPower = build.inherents.find((p) => p.name === powerName);
+                        const inherentPower = build.inherents.find((p) => p.internalName === powerName);
                         if (inherentPower) {
                           return { selected: inherentPower, base: null };
                         }

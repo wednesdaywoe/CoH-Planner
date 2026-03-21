@@ -9,6 +9,7 @@ import type { Power } from '@/types';
 
 export const DarkNovaEmanation: Power = {
   "name": "Dark Nova Emanation",
+  "internalName": "Dark_Nova_Emanation",
   "available": 3,
   "description": "Sends bolts of Nictus dark energy to multiple targets at once within a cone area in front of the caster. Deals moderate negative energy damage to each affected foe and reduces their attack rate and movement speed. This power is only available while in Dark Nova Form.  Damage: Light. Recharge: Slow.",
   "shortHelp": "Ranged (Cone), Light DMG(Negative), Foe -Recharge, -SPD, Knockback",

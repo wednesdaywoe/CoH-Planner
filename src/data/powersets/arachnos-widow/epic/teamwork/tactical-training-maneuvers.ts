@@ -9,6 +9,7 @@ import type { Power } from '@/types';
 
 export const TacticalTrainingManeuvers: Power = {
   "name": "Tactical Training: Maneuvers",
+  "internalName": "Tactical_Training:_Maneuvers",
   "available": 3,
   "description": "A good leader knows how to protect his team. While active, this power increases the Defense of yourself and all nearby teammates to all attacks.",
   "shortHelp": "PBAoE, Team +DEF(All)",

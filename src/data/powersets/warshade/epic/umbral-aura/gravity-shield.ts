@@ -9,6 +9,7 @@ import type { Power } from '@/types';
 
 export const GravityShield: Power = {
   "name": "Gravity Shield",
+  "internalName": "Gravity_Shield",
   "available": 0,
   "description": "When you toggle on Gravity Shield, you become highly resistant to Smashing and Lethal damage, deflecting away such physical attacks.  Recharge: Very Fast.",
   "shortHelp": "Toggle: Self +Res(Smash, Lethal)",

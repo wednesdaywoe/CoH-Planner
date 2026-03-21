@@ -9,6 +9,7 @@ import type { Power } from '@/types';
 
 export const UnchainEssence: Power = {
   "name": "Unchain Essence",
+  "internalName": "Unchain_Essence",
   "available": 21,
   "description": "The Warshade can release the energy of a defeated foe and cause a massive Negative Energy explosion that can devastate any remaining foes. This power can only be activated by targeting a defeated foe.  Damage: Superior. Recharge: Long.",
   "shortHelp": "Ranged (Targeted AoE Special), Superior DMG(Negative), Foe Disorient, Knockback, -Recharge, -SPD",

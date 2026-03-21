@@ -9,6 +9,7 @@ import type { Power } from '@/types';
 
 export const PoisonDart: Power = {
   "name": "Poison Dart",
+  "internalName": "Poison_Dart",
   "available": 0,
   "description": "Poison Dart does moderate damage to your foe, then poisons them. The poison does toxic damage over time and reduces their regeneration rate. ",
   "shortHelp": "Ranged, DMG(Lethal), DoT(Toxic), -Regeneration",

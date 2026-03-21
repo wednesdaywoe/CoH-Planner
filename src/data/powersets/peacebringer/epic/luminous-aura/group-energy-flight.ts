@@ -9,6 +9,7 @@ import type { Power } from '@/types';
 
 export const GroupEnergyFlight: Power = {
   "name": "Group Energy Flight",
+  "internalName": "Group_Energy_Flight",
   "available": 15,
   "description": "You can endow your nearby teammates with Flight. Be mindful! Your friends will fall if you run out of Endurance or if they travel too far away from you. Group Energy Flight travel speed is slower than Energy Flight.",
   "shortHelp": "Toggle: Team Fly",

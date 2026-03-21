@@ -7,6 +7,7 @@ import type { Power } from '@/types';
 
 export const Aim: Power = {
   "name": "Aim",
+  "internalName": "Aim",
   "available": 5,
   "description": "Greatly increases the chance to hit and damage of your attacks for a few seconds. Recharge: Long",
   "shortHelp": "Self +ToHit, +DMG",

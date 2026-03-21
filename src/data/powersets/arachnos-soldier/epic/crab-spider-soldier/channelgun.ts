@@ -7,6 +7,7 @@ import type { Power } from '@/types';
 
 export const Channelgun: Power = {
   "name": "Channelgun",
+  "internalName": "Channelgun",
   "available": 0,
   "description": "Your Crab Spider backpack is equipped with a powerful energy Channelgun. This ranged attack deals moderate Energy damage and can reduce the target's Defense. Damage: Moderate",
   "shortHelp": "Ranged, Moderate DMG(Energy), Foe -DEF",

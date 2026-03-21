@@ -231,13 +231,11 @@ export function importMidsBuild(jsonString: string): MidsImportResult {
     {
       const segments = entry.PowerName.split('.');
       const internalName = segments[segments.length - 1];
-      // Convert Mids internal name to display name: "Defensive_Adaptation" → "Defensive Adaptation"
-      const displayName = internalName.replace(/_/g, ' ');
-      const parentName = grantedSubPowerParent.get(displayName);
+      const parentName = grantedSubPowerParent.get(internalName);
       if (parentName) {
         // Capture which sub-power is active (StatInclude: true)
         if (entry.StatInclude) {
-          activeSubPowers.set(parentName, displayName);
+          activeSubPowers.set(parentName, internalName);
         }
         summary.powersImported++;
         continue;
@@ -289,7 +287,7 @@ export function importMidsBuild(jsonString: string): MidsImportResult {
   for (const [parentName, activeSubName] of activeSubPowers) {
     const allPowerLists = [primaryPowers, secondaryPowers];
     for (const powers of allPowerLists) {
-      const parent = powers.find(p => p.name === parentName);
+      const parent = powers.find(p => p.internalName === parentName);
       if (parent) {
         parent.activeSubPower = activeSubName;
         break;

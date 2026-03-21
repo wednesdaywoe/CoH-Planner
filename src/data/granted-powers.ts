@@ -12,12 +12,14 @@
  *    - Sub-powers have `available: -1` and `requires: "Pool.<PoolName>.<ParentPowerName>"`
  * 2. Archetype Powersets: Manual curation (no `requires` field in data)
  *    - Sub-powers have `available: -1` but no way to automatically link to parent
+ *
+ * All keys and power names use internalName format (underscores, no spaces).
  */
 
 export interface GrantedPowerGroup {
-  /** The parent power that grants sub-powers */
+  /** The parent power that grants sub-powers (internalName) */
   parentPower: string;
-  /** List of power names that are granted */
+  /** List of power internalNames that are granted */
   grantedPowers: string[];
   /** Whether the granted powers are mutually exclusive (only one can be active) */
   mutuallyExclusive: boolean;
@@ -34,7 +36,7 @@ export interface GrantedPowerGroup {
 
 /**
  * Curated list of powers that grant sub-powers
- * Key is the parent power name, value describes the granted powers
+ * Key is the parent power internalName, value describes the granted powers
  *
  * Note: Power pool granted powers (like Afterburner from Fly) are detected
  * automatically using the `requires` field in the power data.
@@ -45,7 +47,7 @@ export const GRANTED_POWER_GROUPS: Record<string, GrantedPowerGroup> = {
   // ============================================
   'Adaptation': {
     parentPower: 'Adaptation',
-    grantedPowers: ['Defensive Adaptation', 'Efficient Adaptation', 'Offensive Adaptation'],
+    grantedPowers: ['Defensive_Adaptation', 'Efficient_Adaptation', 'Offensive_Adaptation'],
     mutuallyExclusive: true,
     description: 'Bio Armor stances - only one can be active at a time',
   },
@@ -53,9 +55,9 @@ export const GRANTED_POWER_GROUPS: Record<string, GrantedPowerGroup> = {
   // ============================================
   // DUAL PISTOLS - Ammunition types
   // ============================================
-  'Swap Ammo': {
-    parentPower: 'Swap Ammo',
-    grantedPowers: ['Chemical Ammunition', 'Cryo Ammunition', 'Incendiary Ammunition'],
+  'Swap_Ammo': {
+    parentPower: 'Swap_Ammo',
+    grantedPowers: ['Chemical_Ammunition', 'Cryo_Ammunition', 'Incendiary_Ammunition'],
     mutuallyExclusive: true,
     description: 'Ammunition types - only one can be active at a time',
   },
@@ -65,7 +67,7 @@ export const GRANTED_POWER_GROUPS: Record<string, GrantedPowerGroup> = {
   // ============================================
   'Slice': {
     parentPower: 'Slice',
-    grantedPowers: ['Boomerang Slice'],
+    grantedPowers: ['Boomerang_Slice'],
     mutuallyExclusive: true,
     description: 'Broad Sword cone variants - choose Slice or Boomerang Slice',
   },
@@ -73,18 +75,18 @@ export const GRANTED_POWER_GROUPS: Record<string, GrantedPowerGroup> = {
   // ============================================
   // STAFF FIGHTING - Form stances
   // ============================================
-  'Form of the Body': {
-    parentPower: 'Form of the Body',
+  'Form_of_the_Body': {
+    parentPower: 'Form_of_the_Body',
     grantedPowers: [],
     mutuallyExclusive: false,
   },
-  'Form of the Mind': {
-    parentPower: 'Form of the Mind',
+  'Form_of_the_Mind': {
+    parentPower: 'Form_of_the_Mind',
     grantedPowers: [],
     mutuallyExclusive: false,
   },
-  'Form of the Soul': {
-    parentPower: 'Form of the Soul',
+  'Form_of_the_Soul': {
+    parentPower: 'Form_of_the_Soul',
     grantedPowers: [],
     mutuallyExclusive: false,
   },
@@ -103,54 +105,54 @@ export const GRANTED_POWER_GROUPS: Record<string, GrantedPowerGroup> = {
   },
 
   // Leaping Pool
-  'Super Jump': {
-    parentPower: 'Super Jump',
-    grantedPowers: ['Double Jump'],
+  'Super_Jump': {
+    parentPower: 'Super_Jump',
+    grantedPowers: ['Double_Jump'],
     mutuallyExclusive: false,
     description: 'Double Jump available while Super Jump is active',
   },
   // Also Long Jump grants Double Jump
-  'Long Jump': {
-    parentPower: 'Long Jump',
-    grantedPowers: ['Double Jump'],
+  'Long_Jump': {
+    parentPower: 'Long_Jump',
+    grantedPowers: ['Double_Jump'],
     mutuallyExclusive: false,
     description: 'Double Jump available while Long Jump is active',
   },
 
   // Speed Pool
-  'Super Speed': {
-    parentPower: 'Super Speed',
-    grantedPowers: ['Speed Phase'],
+  'Super_Speed': {
+    parentPower: 'Super_Speed',
+    grantedPowers: ['Speed_Phase'],
     mutuallyExclusive: false,
     description: 'Speed Phase available while Super Speed is active',
   },
 
   // Sorcery Pool
-  'Mystic Flight': {
-    parentPower: 'Mystic Flight',
+  'Mystic_Flight': {
+    parentPower: 'Mystic_Flight',
     grantedPowers: ['Translocation'],
     mutuallyExclusive: false,
     description: 'Translocation teleport available while Mystic Flight is active',
   },
   // Arcane Bolt grants Arcane Power
-  'Arcane Bolt': {
-    parentPower: 'Arcane Bolt',
-    grantedPowers: ['Arcane Power'],
+  'Arcane_Bolt': {
+    parentPower: 'Arcane_Bolt',
+    grantedPowers: ['Arcane_Power'],
     mutuallyExclusive: false,
     description: 'Arcane Power buff after using Arcane Bolt',
   },
 
   // Experimentation Pool
-  'Speed of Sound': {
-    parentPower: 'Speed of Sound',
+  'Speed_Of_Sound': {
+    parentPower: 'Speed_Of_Sound',
     grantedPowers: ['Jaunt'],
     mutuallyExclusive: false,
     description: 'Jaunt teleport available while Speed of Sound is active',
   },
 
   // Force of Will Pool
-  'Mighty Leap': {
-    parentPower: 'Mighty Leap',
+  'Mighty_Leap': {
+    parentPower: 'Mighty_Leap',
     grantedPowers: ['Takeoff'],
     mutuallyExclusive: false,
     description: 'Takeoff ground pound available with Mighty Leap',
@@ -161,36 +163,36 @@ export const GRANTED_POWER_GROUPS: Record<string, GrantedPowerGroup> = {
   // ============================================
 
   // Peacebringer - Bright Nova (offensive form, level 3)
-  'Bright Nova': {
-    parentPower: 'Bright Nova',
-    grantedPowers: ['Bright Nova Bolt', 'Bright Nova Blast', 'Bright Nova Scatter', 'Bright Nova Detonation'],
+  'Bright_Nova': {
+    parentPower: 'Bright_Nova',
+    grantedPowers: ['Bright_Nova_Bolt', 'Bright_Nova_Blast', 'Bright_Nova_Scatter', 'Bright_Nova_Detonation'],
     mutuallyExclusive: false,
     slottable: true,
     description: 'Bright Nova form attack powers',
   },
 
   // Peacebringer - White Dwarf (defensive form, level 19)
-  'White Dwarf': {
-    parentPower: 'White Dwarf',
-    grantedPowers: ['White Dwarf Strike', 'White Dwarf Smite', 'White Dwarf Flare', 'White Dwarf Sublimation', 'White Dwarf Step', 'White Dwarf Antagonize'],
+  'White_Dwarf': {
+    parentPower: 'White_Dwarf',
+    grantedPowers: ['White_Dwarf_Strike', 'White_Dwarf_Smite', 'White_Dwarf_Flare', 'White_Dwarf_Sublimation', 'White_Dwarf_Step', 'White_Dwarf_Antagonize'],
     mutuallyExclusive: false,
     slottable: true,
     description: 'White Dwarf form powers',
   },
 
   // Warshade - Dark Nova (offensive form, level 3)
-  'Dark Nova': {
-    parentPower: 'Dark Nova',
-    grantedPowers: ['Dark Nova Bolt', 'Dark Nova Blast', 'Dark Nova Emanation', 'Dark Nova Detonation'],
+  'Dark_Nova': {
+    parentPower: 'Dark_Nova',
+    grantedPowers: ['Dark_Nova_Bolt', 'Dark_Nova_Blast', 'Dark_Nova_Emanation', 'Dark_Nova_Detonation'],
     mutuallyExclusive: false,
     slottable: true,
     description: 'Dark Nova form attack powers',
   },
 
   // Warshade - Black Dwarf (defensive form, level 19)
-  'Black Dwarf': {
-    parentPower: 'Black Dwarf',
-    grantedPowers: ['Black Dwarf Strike', 'Black Dwarf Smite', 'Black Dwarf Drain', 'Black Dwarf Mire', 'Black Dwarf Step', 'Black Dwarf Antagonize'],
+  'Black_Dwarf': {
+    parentPower: 'Black_Dwarf',
+    grantedPowers: ['Black_Dwarf_Strike', 'Black_Dwarf_Smite', 'Black_Dwarf_Drain', 'Black_Dwarf_Mire', 'Black_Dwarf_Step', 'Black_Dwarf_Antagonize'],
     mutuallyExclusive: false,
     slottable: true,
     description: 'Black Dwarf form powers',
@@ -215,4 +217,3 @@ export function hasGrantedPowers(powerName: string): boolean {
 export function getGrantedPowerGroup(powerName: string): GrantedPowerGroup | null {
   return GRANTED_POWER_GROUPS[powerName] || null;
 }
-

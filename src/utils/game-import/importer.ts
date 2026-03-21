@@ -10,6 +10,8 @@ import type {
   SelectedPower,
   Power,
   Enhancement,
+  SpecialEnhancement,
+  SpecialEnhancementDef,
   PoolSelection,
   ArchetypeId,
   Origin,
@@ -28,12 +30,18 @@ import {
   createArchetypeInherentPower,
   createIOSetEnhancement,
   createGenericIOEnhancement,
+  createSpecialEnhancement,
+  HAMIDON_ENHANCEMENTS,
+  TITAN_ENHANCEMENTS,
+  HYDRA_ENHANCEMENTS,
+  DSYNC_ENHANCEMENTS,
 } from '@/data';
 import type { InherentPowerDef } from '@/data';
 import { computeSetTracking } from '@/utils/calculations/set-tracking';
 
 import { parseGameExport } from './parser';
 import type {
+  GameExportData,
   GameExportEnhancement,
   GameImportResult,
   GameImportWarning,
@@ -178,6 +186,11 @@ const GENERIC_STAT_MAP: Record<string, string> = {
   'EndMod': 'EnduranceModification',
   'Interrupt': 'Interrupt',
   'Absorb': 'Absorb',
+  // Internal boost category names (used by external tools)
+  'Res_Damage': 'Resistance',
+  'Tohit_Debuff': 'ToHit',
+  'Recovery': 'EnduranceModification',
+  'Endurance_Discount': 'EnduranceReduction',
 };
 
 // ============================================
@@ -250,7 +263,29 @@ function getIOSetNameLookup(): Map<string, string> {
 // MAIN IMPORT FUNCTION
 // ============================================
 
+/**
+ * Import from raw game export text (from /buildexport command).
+ * Parses the text, then delegates to importFromParsedData.
+ */
 export function importGameExport(text: string): GameImportResult {
+  const parsed = parseGameExport(text);
+  if (!parsed) {
+    return {
+      success: false,
+      build: null,
+      warnings: [{ type: 'general', name: '', message: 'Could not parse game export text. Make sure it includes the header line and power entries.' }],
+      summary: { powersImported: 0, powersFailed: 0, enhancementsImported: 0, enhancementsFailed: 0, slotsImported: 0 },
+    };
+  }
+
+  return importFromParsedData(parsed);
+}
+
+/**
+ * Import from pre-parsed GameExportData.
+ * Shared by the game text importer and external tool JSON importer.
+ */
+export function importFromParsedData(parsed: GameExportData): GameImportResult {
   const warnings: GameImportWarning[] = [];
   const summary: GameImportSummary = {
     powersImported: 0,
@@ -260,18 +295,7 @@ export function importGameExport(text: string): GameImportResult {
     slotsImported: 0,
   };
 
-  // 1. Parse text
-  const parsed = parseGameExport(text);
-  if (!parsed) {
-    return {
-      success: false,
-      build: null,
-      warnings: [{ type: 'general', name: '', message: 'Could not parse game export text. Make sure it includes the header line and power entries.' }],
-      summary,
-    };
-  }
-
-  // 2. Map archetype
+  // 1. Map archetype
   const archetypeId = ARCHETYPE_MAP[parsed.header.archetype];
   if (!archetypeId) {
     return {
@@ -643,6 +667,84 @@ interface EnhancementResolveResult {
   warning: GameImportWarning | null;
 }
 
+// Special enhancement prefix → category + registry mapping
+const SPECIAL_ENH_PREFIXES: [string, SpecialEnhancement['category'], Record<string, SpecialEnhancementDef>][] = [
+  ['Hamidon_', 'hamidon', HAMIDON_ENHANCEMENTS],
+  ['Titan_', 'titan', TITAN_ENHANCEMENTS],
+  ['Hydra_', 'hydra', HYDRA_ENHANCEMENTS],
+  ['DSync_', 'd-sync', DSYNC_ENHANCEMENTS],
+  ['Dsync_', 'd-sync', DSYNC_ENHANCEMENTS],
+];
+
+// Direct suffix → registry ID mappings (same as Mids importer)
+const SPECIAL_SUFFIX_MAP: Record<string, Record<string, string>> = {
+  'hamidon': {
+    'damage_accuracy': 'nucleolus', 'damage_range': 'centriole',
+    'debuff_endurance_discount': 'enzyme', 'debuff_accuracy': 'lysosome',
+    'buff_recharge': 'membrane', 'damage_mez': 'peroxisome',
+    'res_damage_endurance_discount': 'ribosome', 'heal_endurance_discount': 'golgi',
+    'accuracy_mez': 'endoplasm', 'buff_endurance_discount': 'cytoskeleton',
+    'travel_endurance_discount': 'microfilament', 'endurance_modification_recharge': 'vesicle',
+    'slow_recharge_endurance_discount': 'stereocilia', 'endurance_modification_accuracy': 'microtubule',
+    'damage_endurance_discount': 'karyoplasm', 'accuracy_range': 'microvillus',
+    'damage_recharge': 'chromatin', 'threat_accuracy_recharge': 'ectosome',
+    'heal_recharge': 'amyloplast', 'heal_accuracy': 'chloroplast',
+  },
+  'titan': {
+    'damage_mez': 'amethyst', 'accuracy_mez': 'calcite', 'buff_recharge': 'citrine',
+    'damage_accuracy': 'diamond', 'debuff_accuracy': 'gypsum',
+    'heal_endurance_discount': 'kyanite', 'res_damage_endurance_discount': 'peridont',
+    'damage_range': 'quartz', 'travel_endurance_discount': 'selenite',
+    'buff_endurance_discount': 'tanzanite', 'debuff_endurance_discount': 'zeolite',
+  },
+  'hydra': {
+    'debuff_endurance_discount': 'antiproton', 'debuff_accuracy': 'delta',
+    'res_damage_endurance_discount': 'electron', 'damage_mez': 'gluon',
+    'accuracy_mez': 'graviton', 'damage_accuracy': 'neutrino',
+    'damage_range': 'neutron', 'heal_endurance_discount': 'positron',
+    'buff_endurance_discount': 'proton', 'buff_recharge': 'quark',
+    'travel_endurance_discount': 'theta',
+  },
+  'd-sync': {
+    'travel_endurance_discount': 'acceleration', 'accuracy_mez': 'binding',
+    'endurance_modification_recharge': 'conduit', 'damage_mez': 'containment',
+    'slow_recharge_endurance_discount': 'deceleration', 'endurance_modification_accuracy': 'drain',
+    'damage_endurance_discount': 'efficiency', 'buff_endurance_discount': 'elusivity',
+    'damage_accuracy': 'empowerment', 'damage_range': 'extension',
+    'res_damage_endurance_discount': 'fortification', 'accuracy_range': 'guidance',
+    'debuff_endurance_discount': 'marginalization', 'debuff_accuracy': 'obfuscation',
+    'damage_recharge': 'optimization', 'threat_accuracy_recharge': 'provocation',
+    'heal_endurance_discount': 'reconstitution', 'heal_recharge': 'reconstruction',
+    'buff_recharge': 'shifting', 'heal_accuracy': 'siphon',
+  },
+};
+
+/**
+ * Try to resolve a UID as a special enhancement (HamiO, Titan, Hydra, D-Sync).
+ * Returns null if the UID doesn't match any special prefix.
+ */
+function resolveSpecialEnhancement(uid: string, boost?: number): EnhancementResolveResult | null {
+  for (const [prefix, category, registry] of SPECIAL_ENH_PREFIXES) {
+    if (!uid.startsWith(prefix)) continue;
+
+    const suffix = uid.slice(prefix.length).toLowerCase();
+    const suffixMap = SPECIAL_SUFFIX_MAP[category];
+    const id = suffixMap?.[suffix];
+    if (id && registry[id]) {
+      return {
+        enhancement: createSpecialEnhancement(id, registry[id], category, boost),
+        warning: null,
+      };
+    }
+
+    return {
+      enhancement: null,
+      warning: { type: 'enhancement', name: uid, message: `Unknown ${category} enhancement: ${suffix}` },
+    };
+  }
+  return null;
+}
+
 /**
  * Resolve a single parsed enhancement into an Enhancement object.
  */
@@ -682,6 +784,10 @@ function resolveEnhancement(enh: GameExportEnhancement): EnhancementResolveResul
       warning: { type: 'enhancement', name: uid, message: `Unknown SO/DO stat: ${soStat}` },
     };
   }
+
+  // Special enhancements: Hamidon, Titan, Hydra, D-Sync
+  const specialResult = resolveSpecialEnhancement(uid, boost);
+  if (specialResult) return specialResult;
 
   // IO Set enhancement
   const parsed = parseIOSetUid(uid);

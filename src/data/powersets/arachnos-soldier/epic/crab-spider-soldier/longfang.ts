@@ -7,6 +7,7 @@ import type { Power } from '@/types';
 
 export const Longfang: Power = {
   "name": "Longfang",
+  "internalName": "Longfang",
   "available": 1,
   "description": "Your Crab Spider backpack is equipped with a powerful Longfang cannon. This ranged attack deals superior Lethal damage and can reduce the target's Defense. Damage: Superior",
   "shortHelp": "Ranged, Superior DMG(Lethal), Foe -DEF",

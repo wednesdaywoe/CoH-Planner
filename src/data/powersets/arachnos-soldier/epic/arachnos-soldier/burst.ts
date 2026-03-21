@@ -9,6 +9,7 @@ import type { Power } from '@/types';
 
 export const Burst: Power = {
   "name": "Burst",
+  "internalName": "Burst",
   "available": 1,
   "description": "Quickly fires a Burst of rounds at a single target at long range. Damage is average, but the fire rate is fast. Can also reduce the target's defense. Damage: Moderate(DoT)",
   "shortHelp": "Ranged, Moderate DMG(Lethal), Foe -DEF",

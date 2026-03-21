@@ -9,6 +9,7 @@ import type { Power } from '@/types';
 
 export const ShiningShield: Power = {
   "name": "Shining Shield",
+  "internalName": "Shining_Shield",
   "available": 0,
   "description": "When you toggle on your Shining Shield, you create an energy barrier that grants you high resistance to Smashing and Lethal damage.  Recharge: Very Fast.",
   "shortHelp": "Toggle: Self +Res(Smash, Lethal)",

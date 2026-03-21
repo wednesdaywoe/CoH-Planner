@@ -9,6 +9,7 @@ import type { Power } from '@/types';
 
 export const WhiteDwarfSublimation: Power = {
   "name": "White Dwarf Sublimation",
+  "internalName": "White_Dwarf_Sublimation",
   "available": 19,
   "description": "Through perfect control of your body and energy, you can concentrate for a few moments and heal yourself. This power is only available while in White Dwarf Form.  Recharge: Slow.",
   "shortHelp": "Self Heal",

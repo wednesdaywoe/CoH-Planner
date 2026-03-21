@@ -9,6 +9,7 @@ import type { Power } from '@/types';
 
 export const TacticalTrainingLeadership: Power = {
   "name": "Tactical Training: Leadership",
+  "internalName": "Tactical_Training:_Leadership",
   "available": 19,
   "description": "While this power is active, your chance to hit and that of all your nearby teammates' is increased. Your advanced Tactics also protect you and your team from Confuse and Fear effects. Additionally, your Perception is improved, allowing you to better detect Stealthy foes.",
   "shortHelp": "Toggle: PBAoE, Team +To Hit, Res(Confuse, Fear), +Perception",

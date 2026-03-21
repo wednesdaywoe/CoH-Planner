@@ -7,6 +7,7 @@ import type { Power } from '@/types';
 
 export const MaceBeam: Power = {
   "name": "Mace Beam",
+  "internalName": "Mace_Beam",
   "available": 0,
   "description": "The Nullifier Mace has several different ranged attack modes. The Mace Beam is a moderate damage single target attack with a chance to knock a foe off their feet. Damage: Moderate",
   "shortHelp": "Ranged, Moderate DMG(Smash/Energy), Foe Knockback",

@@ -79,8 +79,8 @@ export function EnhancementPicker() {
     if (!picker.currentPowerName) return [];
 
     // Search in all power categories
-    const findInPowers = (powers: { name: string; slots: (unknown | null)[] }[]) =>
-      powers.find(p => p.name === picker.currentPowerName)?.slots || [];
+    const findInPowers = (powers: { name: string; internalName: string; slots: (unknown | null)[] }[]) =>
+      powers.find(p => p.internalName === picker.currentPowerName)?.slots || [];
 
     let slots = findInPowers(build.primary.powers);
     if (slots.length > 0) return slots;
@@ -544,7 +544,7 @@ export function EnhancementPicker() {
     <Modal
       isOpen={picker.isOpen}
       onClose={closeEnhancementPicker}
-      title={`Select Enhancement for ${picker.currentPowerName || 'Power'}`}
+      title={`Select Enhancement for ${currentPower?.name || picker.currentPowerName || 'Power'}`}
       size="full"
     >
       <ModalBody className="p-0">
@@ -1641,8 +1641,8 @@ function SetPieceTooltip({ set, piece }: SetPieceTooltipProps) {
   const setId = set.id || set.name;
   const piecesInPower = useMemo(() => {
     if (!picker.currentPowerName) return 0;
-    const findPower = (powers: { name: string; slots: (unknown | null)[] }[]) =>
-      powers.find(p => p.name === picker.currentPowerName);
+    const findPower = (powers: { name: string; internalName: string; slots: (unknown | null)[] }[]) =>
+      powers.find(p => p.internalName === picker.currentPowerName);
 
     const power = findPower(build.primary.powers)
       || findPower(build.secondary.powers)

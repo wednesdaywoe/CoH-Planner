@@ -9,6 +9,7 @@ import type { Power } from '@/types';
 
 export const BuildUp: Power = {
   "name": "Build Up",
+  "internalName": "Build_Up",
   "available": 7,
   "description": "Greatly increases the amount of damage you deal for a few seconds, as well as slightly increasing your chance to hit.  Notes: If you select this power, you may not also select Follow Up.",
   "shortHelp": "Self +DMG, +To Hit",

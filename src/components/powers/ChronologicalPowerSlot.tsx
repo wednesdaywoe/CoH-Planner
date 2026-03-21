@@ -83,7 +83,7 @@ export function ChronologicalPowerSlot({
   const iconSrc = power ? getPowerIconPath(power.icon) : '';
 
   // Drag state for this slot
-  const isDragging = dragState && power && dragState.draggedPower.name === power.name;
+  const isDragging = dragState && power && dragState.draggedPower.internalName === power.internalName;
   const isValidTarget = dragState && !isDragging && dragState.validTargets.has(slotKey);
   const isInvalidTarget = dragState && !isDragging && !dragState.validTargets.has(slotKey);
 
@@ -100,12 +100,12 @@ export function ChronologicalPowerSlot({
 
     if (power) {
       // Swap with occupied slot
-      swapPowerLevels(dragState.draggedPower.name, power.name);
+      swapPowerLevels(dragState.draggedPower.internalName, power.internalName);
     } else {
       // Move to empty slot
       movePowerLevel(
         mapCategoryToStoreCategory(dragState.draggedPower.category),
-        dragState.draggedPower.name,
+        dragState.draggedPower.internalName,
         level,
       );
     }
@@ -149,28 +149,28 @@ export function ChronologicalPowerSlot({
   const isInfoLocked =
     infoPanelLocked &&
     lockedContent?.type === 'power' &&
-    lockedContent.powerName === power.name;
+    lockedContent.powerName === power.internalName;
 
   const handleRemove = () => {
     const storeCategory = mapCategoryToStoreCategory(power.category);
-    removePower(storeCategory, power.name);
+    removePower(storeCategory, power.internalName);
   };
 
   const handleAddSlots = (count: number) => {
     for (let i = 0; i < count; i++) {
-      addSlot(power.name);
+      addSlot(power.internalName);
     }
   };
 
   const handleClearAllEnhancements = () => {
     for (let i = 0; i < power.slots.length; i++) {
-      clearEnhancement(power.name, i);
+      clearEnhancement(power.internalName, i);
     }
   };
 
   const handleRemoveAllSlots = () => {
     for (let i = power.slots.length - 1; i > 0; i--) {
-      removeSlot(power.name, i);
+      removeSlot(power.internalName, i);
     }
   };
 
@@ -178,7 +178,7 @@ export function ChronologicalPowerSlot({
     if (power.powerSet) {
       setInfoPanelContent({
         type: 'power',
-        powerName: power.name,
+        powerName: power.internalName,
         powerSet: power.powerSet,
       });
     }
@@ -191,7 +191,7 @@ export function ChronologicalPowerSlot({
   const handleEnhancementHover = (index: number) => {
     setInfoPanelContent({
       type: 'slotted-enhancement',
-      powerName: power.name,
+      powerName: power.internalName,
       slotIndex: index,
     });
   };
@@ -203,13 +203,13 @@ export function ChronologicalPowerSlot({
     if (
       infoPanelLocked &&
       lockedContent?.type === 'power' &&
-      lockedContent.powerName === power.name
+      lockedContent.powerName === power.internalName
     ) {
       unlockInfoPanel();
     } else {
       lockInfoPanel({
         type: 'power',
-        powerName: power.name,
+        powerName: power.internalName,
         powerSet: power.powerSet,
       });
     }
@@ -249,22 +249,22 @@ export function ChronologicalPowerSlot({
         categoryBorder={CATEGORY_COLORS[power.category]}
         toggleSize={shouldShowToggle(power) ? 'md' : undefined}
         isActive={power.isActive ?? false}
-        onToggle={() => togglePowerActive(power.name)}
+        onToggle={() => togglePowerActive(power.internalName)}
         slots={power.slots}
         maxSlots={power.maxSlots}
         onRemove={handleRemove}
         onAddSlots={handleAddSlots}
-        onRemoveSlot={(index) => removeSlot(power.name, index)}
+        onRemoveSlot={(index) => removeSlot(power.internalName, index)}
         onRemoveAllSlots={handleRemoveAllSlots}
-        onClearEnhancement={(index) => clearEnhancement(power.name, index)}
+        onClearEnhancement={(index) => clearEnhancement(power.internalName, index)}
         onClearAllEnhancements={handleClearAllEnhancements}
-        onOpenPicker={(slotIndex) => openEnhancementPicker(power.name, power.powerSet, slotIndex)}
+        onOpenPicker={(slotIndex) => openEnhancementPicker(power.internalName, power.powerSet, slotIndex)}
         onHover={handlePowerHover}
         onLeave={handlePowerLeave}
         onEnhancementHover={handleEnhancementHover}
         onRightClick={handleRightClick}
-        onCompareSlotting={() => openCompareSlotting(power.name, power.powerSet)}
-        slotLevels={showSlotLevels ? slotLevelsMap.get(power.name) : undefined}
+        onCompareSlotting={() => openCompareSlotting(power.internalName, power.powerSet)}
+        slotLevels={showSlotLevels ? slotLevelsMap.get(power.internalName) : undefined}
         onInfoClick={() => {
           if (power.powerSet) {
             if (isInfoLocked) {
@@ -272,7 +272,7 @@ export function ChronologicalPowerSlot({
             } else {
               lockInfoPanel({
                 type: 'power',
-                powerName: power.name,
+                powerName: power.internalName,
                 powerSet: power.powerSet,
               });
             }

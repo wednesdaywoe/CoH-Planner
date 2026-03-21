@@ -9,6 +9,7 @@ import type { Power } from '@/types';
 
 export const BrightNovaBlast: Power = {
   "name": "Bright Nova Blast",
+  "internalName": "Bright_Nova_Blast",
   "available": 3,
   "description": "A much more powerful, yet slower version of Bright Nova Bolt. Bright Nova Blast sends a focused blast of Kheldian energy at a foe that can knock him back and reduce his defense. This power is only available while in Bright Nova Form.  Damage: Light. Recharge: Fast.",
   "shortHelp": "Ranged, Light DMG(Energy), Foe -DEF, Knockback",

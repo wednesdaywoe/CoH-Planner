@@ -7,6 +7,7 @@ import type { Power } from '@/types';
 
 export const MaceBeamBlast: Power = {
   "name": "Mace Beam Blast",
+  "internalName": "Mace_Beam_Blast",
   "available": 1,
   "description": "The Nullifier Mace is capable of firing a tremendous bolt of force from the end of it. The Mace Beam Blast is a light damage area of effect attack. Foes struck by the blast may be knocked back. Damage: Light",
   "shortHelp": "Ranged(Targeted AoE), Light DMG(Smash/Energy), Foe Knockback",

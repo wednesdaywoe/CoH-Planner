@@ -31,14 +31,14 @@ export function lookupPower(powerSetId: string, powerName: string): PowerLookupR
   // 2. Power pool
   const pool = getPowerPool(powerSetId);
   if (pool) {
-    const poolPower = pool.powers.find(p => p.name === powerName);
+    const poolPower = pool.powers.find(p => p.internalName === powerName);
     if (poolPower) return { power: poolPower, powersetName: pool.name, isInherent: false };
   }
 
   // 3. Epic/patron pool
   const epicPool = getEpicPool(powerSetId);
   if (epicPool) {
-    const epicPower = epicPool.powers.find(p => p.name === powerName);
+    const epicPower = epicPool.powers.find(p => p.internalName === powerName);
     if (epicPower) {
       return { power: epicPower, powersetName: epicPool.displayName || epicPool.name, isInherent: false };
     }

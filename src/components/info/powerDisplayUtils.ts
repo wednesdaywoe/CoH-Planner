@@ -327,20 +327,20 @@ export function findSelectedPowerInBuild(
     inherents: SelectedPower[];
   }
 ): SelectedPower | null {
-  const primary = build.primary.powers.find((p) => p.name === powerName);
+  const primary = build.primary.powers.find((p) => p.internalName === powerName);
   if (primary) return primary;
-  const secondary = build.secondary.powers.find((p) => p.name === powerName);
+  const secondary = build.secondary.powers.find((p) => p.internalName === powerName);
   if (secondary) return secondary;
   for (const pool of build.pools) {
-    const poolPower = pool.powers.find((p) => p.name === powerName);
+    const poolPower = pool.powers.find((p) => p.internalName === powerName);
     if (poolPower) return poolPower;
   }
   if (build.epicPool) {
-    const epic = build.epicPool.powers.find((p) => p.name === powerName);
+    const epic = build.epicPool.powers.find((p) => p.internalName === powerName);
     if (epic) return epic;
   }
   // Check inherent powers
-  const inherent = build.inherents.find((p) => p.name === powerName);
+  const inherent = build.inherents.find((p) => p.internalName === powerName);
   if (inherent) return inherent;
   return null;
 }

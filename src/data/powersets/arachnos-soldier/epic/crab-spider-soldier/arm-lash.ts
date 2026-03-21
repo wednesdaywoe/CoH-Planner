@@ -7,6 +7,7 @@ import type { Power } from '@/types';
 
 export const ArmLash: Power = {
   "name": "Arm Lash",
+  "internalName": "Arm_Lash",
   "available": 11,
   "description": "Your Crab Spider backpack arms lash out in a wide arc, striking all foes in front of you for high Lethal damage. Can also reduce the targets' Defense. Damage: High",
   "shortHelp": "Melee(Cone), High DMG(Lethal), Foe -DEF",

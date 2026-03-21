@@ -166,10 +166,10 @@ type BuildStore = BuildState & BuildActions;
  */
 function syncBuildDefinitions(build: Build): void {
   // Helper: sync power effects + icons from a powerset definition
-  const syncPowers = (powers: SelectedPower[], defPowers: readonly Pick<SelectedPower, 'name' | 'effects' | 'icon'>[]): SelectedPower[] => {
+  const syncPowers = (powers: SelectedPower[], defPowers: readonly Pick<SelectedPower, 'name' | 'internalName' | 'effects' | 'icon'>[]): SelectedPower[] => {
     let anyChanged = false;
     const synced = powers.map((power) => {
-      const currentDef = defPowers.find((p) => p.name === power.name);
+      const currentDef = defPowers.find((p) => p.internalName === power.internalName);
       if (!currentDef) return power;
       const needsEffects = currentDef.effects && currentDef.effects !== power.effects;
       const needsIcon = currentDef.icon && currentDef.icon !== power.icon;
@@ -201,9 +201,9 @@ function syncBuildDefinitions(build: Build): void {
 
   // For VEATs, collect branch power definitions so sync covers branch powers too
   const archetype = build.archetype.id ? getArchetype(build.archetype.id) : null;
-  const getBranchPowers = (role: 'primary' | 'secondary'): readonly Pick<SelectedPower, 'name' | 'effects' | 'icon'>[] => {
+  const getBranchPowers = (role: 'primary' | 'secondary'): readonly Pick<SelectedPower, 'name' | 'internalName' | 'effects' | 'icon'>[] => {
     if (!archetype?.branches) return [];
-    const powers: Pick<SelectedPower, 'name' | 'effects' | 'icon'>[] = [];
+    const powers: Pick<SelectedPower, 'name' | 'internalName' | 'effects' | 'icon'>[] = [];
     for (const branch of Object.values(archetype.branches)) {
       if (!branch) continue;
       const branchSetId = role === 'primary' ? branch.primarySet : branch.secondarySet;
@@ -247,7 +247,7 @@ function syncBuildDefinitions(build: Build): void {
     const powerToPool = new Map<string, string>();
     for (const [poolId, poolDef] of Object.entries(allPools)) {
       for (const p of poolDef.powers) {
-        powerToPool.set(p.name, poolId);
+        powerToPool.set(p.internalName, poolId);
       }
     }
 
@@ -255,7 +255,7 @@ function syncBuildDefinitions(build: Build): void {
     let hasMisplaced = false;
     for (const pool of build.pools) {
       for (const power of pool.powers) {
-        const correctPoolId = powerToPool.get(power.name);
+        const correctPoolId = powerToPool.get(power.internalName);
         if (correctPoolId && correctPoolId !== pool.id) {
           hasMisplaced = true;
           break;
@@ -271,7 +271,7 @@ function syncBuildDefinitions(build: Build): void {
 
       for (const pool of build.pools) {
         for (const power of pool.powers) {
-          const correctPoolId = powerToPool.get(power.name);
+          const correctPoolId = powerToPool.get(power.internalName);
           const targetId = correctPoolId && poolIds.includes(correctPoolId) ? correctPoolId : pool.id;
           poolPowers.get(targetId)!.push({ ...power, powerSet: targetId });
         }
@@ -380,27 +380,27 @@ function findPower(
   powerName: string
 ): { power: SelectedPower; category: PowerCategory } | null {
   // Check primary
-  const primaryPower = build.primary.powers.find((p) => p.name === powerName);
+  const primaryPower = build.primary.powers.find((p) => p.internalName === powerName);
   if (primaryPower) return { power: primaryPower, category: 'primary' };
 
   // Check secondary
-  const secondaryPower = build.secondary.powers.find((p) => p.name === powerName);
+  const secondaryPower = build.secondary.powers.find((p) => p.internalName === powerName);
   if (secondaryPower) return { power: secondaryPower, category: 'secondary' };
 
   // Check pools
   for (const pool of build.pools) {
-    const poolPower = pool.powers.find((p) => p.name === powerName);
+    const poolPower = pool.powers.find((p) => p.internalName === powerName);
     if (poolPower) return { power: poolPower, category: 'pool' };
   }
 
   // Check epic pool
   if (build.epicPool) {
-    const epicPower = build.epicPool.powers.find((p) => p.name === powerName);
+    const epicPower = build.epicPool.powers.find((p) => p.internalName === powerName);
     if (epicPower) return { power: epicPower, category: 'epic' };
   }
 
   // Check inherents
-  const inherentPower = build.inherents.find((p) => p.name === powerName);
+  const inherentPower = build.inherents.find((p) => p.internalName === powerName);
   if (inherentPower) return { power: inherentPower, category: 'inherent' };
 
   return null;
@@ -585,8 +585,8 @@ function detectBranch(build: Build): ArchetypeBranchId | null {
   if (!archetype?.branches) return null;
 
   const allPowerNames = new Set([
-    ...build.primary.powers.map((p) => p.name.toLowerCase()),
-    ...build.secondary.powers.map((p) => p.name.toLowerCase()),
+    ...build.primary.powers.map((p) => p.internalName.toLowerCase()),
+    ...build.secondary.powers.map((p) => p.internalName.toLowerCase()),
   ]);
 
   for (const [branchId, branch] of Object.entries(archetype.branches)) {
@@ -594,8 +594,8 @@ function detectBranch(build: Build): ArchetypeBranchId | null {
     const branchPrimary = branch.primarySet ? getPowerset(branch.primarySet) : null;
     const branchSecondary = getPowerset(branch.secondarySet);
     const branchPowerNames = [
-      ...(branchPrimary?.powers ?? []).map((p) => p.name.toLowerCase()),
-      ...(branchSecondary?.powers ?? []).map((p) => p.name.toLowerCase()),
+      ...(branchPrimary?.powers ?? []).map((p) => p.internalName.toLowerCase()),
+      ...(branchSecondary?.powers ?? []).map((p) => p.internalName.toLowerCase()),
     ];
     if (branchPowerNames.some((name) => allPowerNames.has(name))) {
       return branchId as ArchetypeBranchId;
@@ -852,7 +852,7 @@ export const useBuildStore = create<BuildStore>()(
         historyCheckpoint();
 
         set((state) => {
-          const removedNames = new Set(state.build.primary.powers.map((p) => p.name));
+          const removedNames = new Set(state.build.primary.powers.map((p) => p.internalName));
           const newBuild = {
             ...state.build,
             primary: {
@@ -882,7 +882,7 @@ export const useBuildStore = create<BuildStore>()(
         historyCheckpoint();
 
         set((state) => {
-          const removedNames = new Set(state.build.secondary.powers.map((p) => p.name));
+          const removedNames = new Set(state.build.secondary.powers.map((p) => p.internalName));
           const newBuild = {
             ...state.build,
             secondary: {
@@ -969,14 +969,14 @@ export const useBuildStore = create<BuildStore>()(
           }
 
           // Auto-grant slottable sub-powers when a form power is added (e.g., Kheldian forms)
-          const formGroup = GRANTED_POWER_GROUPS[power.name];
+          const formGroup = GRANTED_POWER_GROUPS[power.internalName];
           if (formGroup?.slottable && formGroup.grantedPowers.length > 0) {
             // Find the powerset definition to get full sub-power data
             const powersetId = power.powerSet;
             const powersetDef = powersetId ? getPowerset(powersetId) : null;
             if (powersetDef) {
               const subPowerDefs = powersetDef.powers.filter(p =>
-                formGroup.grantedPowers.includes(p.name)
+                formGroup.grantedPowers.includes(p.internalName)
               );
               for (const subPowerDef of subPowerDefs) {
                 const subPower: SelectedPower = {
@@ -985,7 +985,7 @@ export const useBuildStore = create<BuildStore>()(
                   level: power.level,
                   slots: [null],
                   isAutoGranted: true,
-                  grantedByPower: power.name,
+                  grantedByPower: power.internalName,
                   isActive: (subPowerDef.powerType === 'Toggle' || subPowerDef.powerType === 'Auto') ? true : undefined,
                 };
                 // Add sub-power to the same category
@@ -1010,8 +1010,8 @@ export const useBuildStore = create<BuildStore>()(
         set((state) => {
           // Inherent: only allow removal of unlocked powers
           const updater = category === 'inherent'
-            ? (powers: SelectedPower[]) => powers.filter((p) => p.name !== powerName || p.isLocked)
-            : (powers: SelectedPower[]) => powers.filter((p) => p.name !== powerName);
+            ? (powers: SelectedPower[]) => powers.filter((p) => p.internalName !== powerName || p.isLocked)
+            : (powers: SelectedPower[]) => powers.filter((p) => p.internalName !== powerName);
 
           let newBuild = applyPowerUpdate(state.build, category, updater);
 
@@ -1020,7 +1020,7 @@ export const useBuildStore = create<BuildStore>()(
           if (formGroup?.slottable && formGroup.grantedPowers.length > 0) {
             const subPowerNames = new Set(formGroup.grantedPowers);
             newBuild = applyPowerUpdate(newBuild, category, (powers) =>
-              powers.filter((p) => !subPowerNames.has(p.name))
+              powers.filter((p) => !subPowerNames.has(p.internalName))
             );
           }
 
@@ -1042,7 +1042,7 @@ export const useBuildStore = create<BuildStore>()(
         historyCheckpoint();
         set((state) => ({
           build: applyPowerUpdate(state.build, category, (powers) =>
-            powers.map((p) => (p.name === powerName ? { ...p, level: newLevel } : p))
+            powers.map((p) => (p.internalName === powerName ? { ...p, level: newLevel } : p))
           ),
         }));
       },
@@ -1058,10 +1058,10 @@ export const useBuildStore = create<BuildStore>()(
           const levelB = foundB.power.level;
 
           let newBuild = applyPowerUpdate(state.build, foundA.category, (powers) =>
-            powers.map((p) => (p.name === powerNameA ? { ...p, level: levelB } : p))
+            powers.map((p) => (p.internalName === powerNameA ? { ...p, level: levelB } : p))
           );
           newBuild = applyPowerUpdate(newBuild, foundB.category, (powers) =>
-            powers.map((p) => (p.name === powerNameB ? { ...p, level: levelA } : p))
+            powers.map((p) => (p.internalName === powerNameB ? { ...p, level: levelA } : p))
           );
 
           return { build: newBuild };
@@ -1105,7 +1105,7 @@ export const useBuildStore = create<BuildStore>()(
         historyCheckpoint();
         set((state) => {
           const removedPool = state.build.pools.find((p) => p.id === poolId);
-          const removedNames = new Set(removedPool?.powers.map((p) => p.name) ?? []);
+          const removedNames = new Set(removedPool?.powers.map((p) => p.internalName) ?? []);
           const newBuild = {
             ...state.build,
             pools: state.build.pools.filter((p) => p.id !== poolId),
@@ -1120,7 +1120,7 @@ export const useBuildStore = create<BuildStore>()(
         historyCheckpoint();
         if (!poolId) {
           set((state) => {
-            const removedNames = new Set(state.build.epicPool?.powers.map((p) => p.name) ?? []);
+            const removedNames = new Set(state.build.epicPool?.powers.map((p) => p.internalName) ?? []);
             const newBuild = {
               ...state.build,
               epicPool: null,
@@ -1169,7 +1169,7 @@ export const useBuildStore = create<BuildStore>()(
         set((s) => {
           const newBuild = applyPowerUpdate(s.build, category, (powers) =>
             powers.map((p) =>
-              p.name === powerName ? { ...p, slots: [...p.slots, null] } : p
+              p.internalName === powerName ? { ...p, slots: [...p.slots, null] } : p
             )
           );
           newBuild.slotOrder = [...newBuild.slotOrder, { powerName, slotIndex: newSlotIndex }];
@@ -1196,7 +1196,7 @@ export const useBuildStore = create<BuildStore>()(
         set((s) => {
           const newBuild = applyPowerUpdate(s.build, category, (powers) =>
             powers.map((p) =>
-              p.name === powerName
+              p.internalName === powerName
                 ? { ...p, slots: p.slots.filter((_, i) => i !== slotIndex) }
                 : p
             )
@@ -1234,7 +1234,7 @@ export const useBuildStore = create<BuildStore>()(
         set((s) => {
           const newBuild = applyPowerUpdate(s.build, category, (powers) =>
             powers.map((p) =>
-              p.name === powerName
+              p.internalName === powerName
                 ? { ...p, slots: p.slots.map((slot, i) => (i === slotIndex ? enhancement : slot)) }
                 : p
             )
@@ -1259,7 +1259,7 @@ export const useBuildStore = create<BuildStore>()(
         set((s) => {
           const newBuild = applyPowerUpdate(s.build, category, (powers) =>
             powers.map((p) =>
-              p.name === powerName ? { ...p, slots: p.slots.map(() => null) } : p
+              p.internalName === powerName ? { ...p, slots: p.slots.map(() => null) } : p
             )
           );
           newBuild.sets = updateSetTracking(newBuild);
@@ -1455,7 +1455,7 @@ export const useBuildStore = create<BuildStore>()(
         set((state) => ({
           build: applyToAllPowers(state.build, (powers) =>
             powers.map((p) =>
-              p.name === powerName ? { ...p, isActive: !p.isActive } : p
+              p.internalName === powerName ? { ...p, isActive: !p.isActive } : p
             )
           ),
         }));
@@ -1467,7 +1467,7 @@ export const useBuildStore = create<BuildStore>()(
         set((state) => ({
           build: applyToAllPowers(state.build, (powers) =>
             powers.map((p) =>
-              p.name === parentPowerName
+              p.internalName === parentPowerName
                 ? { ...p, activeSubPower: subPowerName ?? undefined }
                 : p
             )
@@ -1520,7 +1520,7 @@ export const useBuildStore = create<BuildStore>()(
       exportBuild: () => {
         const { build } = get();
         const exportData = {
-          version: 2,
+          version: 3,
           build: slimBuild(build),
           meta: {
             exportedAt: new Date().toISOString(),
@@ -1535,8 +1535,9 @@ export const useBuildStore = create<BuildStore>()(
           const data = JSON.parse(json);
           let build: Build;
 
-          if (data.version === 2) {
-            // v2 slim format — reconstruct full Build from identity + build-specific fields
+          if (data.version === 2 || data.version === 3) {
+            // v2/v3 slim format — reconstruct full Build from identity + build-specific fields
+            // v3 adds internalName to SlimPower; v2 uses display name fallback
             build = hydrateBuild(data.build);
           } else {
             // v1 (legacy) — full Build object, just convert Set serialization
@@ -1697,7 +1698,8 @@ export const useBuildStore = create<BuildStore>()(
           // This fixes powers like Rest that may have been saved with wrong maxSlots
           if (state.build.inherents.length > 0) {
             state.build.inherents = state.build.inherents.map((power) => {
-              const def = getInherentPowerDef(power.name);
+              const def = getInherentPowerDef(power.internalName)
+                ?? getInherentPowerDef(power.name.replace(/\s+/g, '_'));
               if (def && power.maxSlots !== def.maxSlots) {
                 return { ...power, maxSlots: def.maxSlots };
               }
@@ -1744,6 +1746,18 @@ export const useBuildStore = create<BuildStore>()(
             state.build.slotOrder = [];
           }
 
+          // Migration: Rename old accolade IDs to match game internal names
+          if (state.build.accolades?.length > 0) {
+            const accoladeIdMap: Record<string, string> = {
+              'atlas_medallion': 'the_atlas_medallion',
+              'freedom_phalanx': 'freedom_phalanx_reserve',
+            };
+            state.build.accolades = state.build.accolades.map((a) => {
+              const newId = accoladeIdMap[a.id];
+              return newId ? { ...a, id: newId } : a;
+            });
+          }
+
           // Migration: Normalize VEAT branch powersets to base powersets
           // Fixes builds where branch powersets (e.g., crab-spider-soldier) were
           // stored as the primary/secondary instead of the base powersets
@@ -1752,6 +1766,44 @@ export const useBuildStore = create<BuildStore>()(
           // Migration: Sync power definitions (effects, icons) and enhancement icons
           // from current data — fixes stale data from older builds
           syncBuildDefinitions(state.build);
+
+          // Migration: Convert display-name identifiers to internalName
+          // Old builds stored display names (e.g., "Super Speed") in slotOrder,
+          // activeSubPower, and grantedByPower. Convert to internalName format.
+          {
+            // Build a display-name → internalName lookup from all hydrated powers
+            const nameToInternal = new Map<string, string>();
+            const allBuildPowers = [
+              ...state.build.primary.powers,
+              ...state.build.secondary.powers,
+              ...state.build.pools.flatMap((pool) => pool.powers),
+              ...(state.build.epicPool?.powers ?? []),
+              ...state.build.inherents,
+            ];
+            for (const p of allBuildPowers) {
+              if (p.name !== p.internalName) {
+                nameToInternal.set(p.name, p.internalName);
+              }
+            }
+
+            // Migrate slotOrder entries
+            if (state.build.slotOrder) {
+              for (const entry of state.build.slotOrder) {
+                const mapped = nameToInternal.get(entry.powerName);
+                if (mapped) entry.powerName = mapped;
+              }
+            }
+
+            // Migrate activeSubPower and grantedByPower on all powers
+            for (const p of allBuildPowers) {
+              if (p.activeSubPower && p.activeSubPower.includes(' ')) {
+                p.activeSubPower = p.activeSubPower.replace(/\s+/g, '_');
+              }
+              if (p.grantedByPower && p.grantedByPower.includes(' ')) {
+                p.grantedByPower = p.grantedByPower.replace(/\s+/g, '_');
+              }
+            }
+          }
 
           // Auto-detect branch for VEAT builds on rehydration
           const branch = detectBranch(state.build);
