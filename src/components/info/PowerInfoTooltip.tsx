@@ -348,6 +348,14 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
   if (rawEffects.runSpeed) extraEffects.runSpeed = rawEffects.runSpeed;
   if (rawEffects.jumpSpeed) extraEffects.jumpSpeed = rawEffects.jumpSpeed;
   if (rawEffects.jumpHeight) extraEffects.jumpHeight = rawEffects.jumpHeight;
+  // Flatten nested movement object (e.g., Super Jump, Fly, Sprint)
+  if (raw.movement && typeof raw.movement === 'object') {
+    const mov = raw.movement as Record<string, unknown>;
+    if (mov.flySpeed && !extraEffects.fly) extraEffects.fly = mov.flySpeed;
+    if (mov.runSpeed && !extraEffects.runSpeed) extraEffects.runSpeed = mov.runSpeed;
+    if (mov.jumpSpeed && !extraEffects.jumpSpeed) extraEffects.jumpSpeed = mov.jumpSpeed;
+    if (mov.jumpHeight && !extraEffects.jumpHeight) extraEffects.jumpHeight = mov.jumpHeight;
+  }
   if (raw.regeneration && !rawEffects.regenBuff) extraEffects.regenBuff = raw.regeneration;
   if (raw.recovery && !rawEffects.recoveryBuff) extraEffects.recoveryBuff = raw.recovery;
   // Pool powers may have endurance inside effects instead of stats

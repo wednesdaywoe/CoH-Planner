@@ -579,7 +579,9 @@ function applyActivePowerBonuses(
 
     // Damage debuff (self-penalty, e.g. Granite Armor -30% damage)
     // Unenhanceable — self-debuffs are not boosted by slotted enhancements
-    if (effects.damageDebuff !== undefined) {
+    // Skip crash debuffs: if a power also has damageBuff, the debuff is a crash effect
+    // (e.g., Rage: 120s buff + 10s crash) and should not count as sustained damage
+    if (effects.damageDebuff !== undefined && effects.damageBuff === undefined) {
       const value = resolveScaledEffect(effects.damageDebuff as ScalarOrScaled, archetypeId, buildLevel) * -100;
       global.damage += value;
       addToBreakdown(breakdown, 'damage', {
@@ -1435,7 +1437,7 @@ function applySingleProcEffect(
 
     case 'RunSpeed':
       global.runSpeed += value;
-      addToBreakdown(breakdown, 'runspeed', {
+      addToBreakdown(breakdown, 'runSpeed', {
         name: sourceName,
         value,
         type: 'proc',

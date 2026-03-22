@@ -402,6 +402,16 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
     ...(!baseEffects?.buffDuration && !baseEffects?.effectDuration && baseEffects?.summon?.duration && {
       buffDuration: baseEffects.summon.duration,
     }),
+    // Flatten nested movement object (e.g., Super Jump, Fly, Sprint)
+    ...(baseEffects?.movement && typeof baseEffects.movement === 'object' && (() => {
+      const mov = baseEffects.movement as Record<string, unknown>;
+      const flat: Record<string, unknown> = {};
+      if (mov.flySpeed) flat.fly = mov.flySpeed;
+      if (mov.runSpeed) flat.runSpeed = mov.runSpeed;
+      if (mov.jumpSpeed) flat.jumpSpeed = mov.jumpSpeed;
+      if (mov.jumpHeight) flat.jumpHeight = mov.jumpHeight;
+      return flat;
+    })()),
   };
 
   // Get archetype modifier for buff/debuff calculations

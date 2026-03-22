@@ -102,6 +102,10 @@ export const GrantCover: Power = {
       }
     },
     "debuffResistance": {
+      "defense": {
+        "scale": 0.3,
+        "table": "Melee_Ones"
+      },
       "recharge": {
         "scale": 0.3,
         "table": "Melee_Ones"

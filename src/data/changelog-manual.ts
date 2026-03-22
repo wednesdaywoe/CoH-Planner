@@ -26,6 +26,9 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
       { message: ' fix: Display names ("Combat Jumping") being compared \
          against internal names ("Combat_Jumping"). This affected all \
          rank 3+ pool powers that have multi-word names.', type: 'fix' },
+      { message: 'Rage crash debuff excluded from DMG stat', type: 'fix' },
+      { message: 'Contributing sources now display for Movement and Debuff Resistance', type: 'fix' },
+      { message: 'Added missing defense debuff resistance to power data', type: 'fix' },
     ],
   },
 ];

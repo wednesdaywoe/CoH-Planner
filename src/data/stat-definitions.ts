@@ -454,6 +454,7 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     format: (v) => { const n = Number(v); return `${n >= 0 ? '+' : ''}${n.toFixed(2)}%`; },
     color: STAT_COLORS.runSpeed,
     tooltip: 'Run speed buff/debuff',
+    breakdownKey: 'runSpeed',
   },
   flyspeed: {
     id: 'flyspeed',
@@ -462,6 +463,7 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     format: (v) => { const n = Number(v); return `${n >= 0 ? '+' : ''}${n.toFixed(2)}%`; },
     color: STAT_COLORS.flySpeed,
     tooltip: 'Fly speed buff/debuff',
+    breakdownKey: 'flySpeed',
   },
   jumpspeed: {
     id: 'jumpspeed',
@@ -470,6 +472,7 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     format: (v) => { const n = Number(v); return `${n >= 0 ? '+' : ''}${n.toFixed(2)}%`; },
     color: STAT_COLORS.jumpSpeed,
     tooltip: 'Jump speed buff/debuff',
+    breakdownKey: 'jumpHeight',
   },
   jumpheight: {
     id: 'jumpheight',
@@ -478,6 +481,7 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     format: (v) => { const n = Number(v); return `${n >= 0 ? '+' : ''}${n.toFixed(2)}%`; },
     color: STAT_COLORS.jumpHeight,
     tooltip: 'Jump height buff/debuff',
+    breakdownKey: 'jumpHeight',
   },
 
   // Debuff Resistance
@@ -488,6 +492,7 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     format: (v) => `${Number(v).toFixed(2)}%`,
     color: STAT_COLORS.debuffResistance,
     tooltip: 'Resistance to slow/movement debuffs',
+    breakdownKey: 'debuffResistSlow',
   },
   debuff_defense: {
     id: 'debuff_defense',
@@ -496,6 +501,7 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     format: (v) => `${Number(v).toFixed(2)}%`,
     color: STAT_COLORS.debuffResistance,
     tooltip: 'Resistance to defense debuffs',
+    breakdownKey: 'debuffResistDefense',
   },
   debuff_recharge: {
     id: 'debuff_recharge',
@@ -504,6 +510,7 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     format: (v) => `${Number(v).toFixed(2)}%`,
     color: STAT_COLORS.debuffResistance,
     tooltip: 'Resistance to recharge debuffs',
+    breakdownKey: 'debuffResistRecharge',
   },
   debuff_endurance: {
     id: 'debuff_endurance',
@@ -512,6 +519,7 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     format: (v) => `${Number(v).toFixed(2)}%`,
     color: STAT_COLORS.debuffResistance,
     tooltip: 'Resistance to endurance drain',
+    breakdownKey: 'debuffResistEndurance',
   },
   debuff_recovery: {
     id: 'debuff_recovery',
@@ -520,6 +528,7 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     format: (v) => `${Number(v).toFixed(2)}%`,
     color: STAT_COLORS.debuffResistance,
     tooltip: 'Resistance to recovery debuffs',
+    breakdownKey: 'debuffResistRecovery',
   },
   debuff_tohit: {
     id: 'debuff_tohit',
@@ -528,6 +537,7 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     format: (v) => `${Number(v).toFixed(2)}%`,
     color: STAT_COLORS.debuffResistance,
     tooltip: 'Resistance to ToHit debuffs',
+    breakdownKey: 'debuffResistToHit',
   },
   debuff_regen: {
     id: 'debuff_regen',
@@ -536,6 +546,7 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     format: (v) => `${Number(v).toFixed(2)}%`,
     color: STAT_COLORS.debuffResistance,
     tooltip: 'Resistance to regeneration debuffs',
+    breakdownKey: 'debuffResistRegeneration',
   },
   debuff_perception: {
     id: 'debuff_perception',
@@ -544,6 +555,7 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     format: (v) => `${Number(v).toFixed(2)}%`,
     color: STAT_COLORS.debuffResistance,
     tooltip: 'Resistance to perception debuffs',
+    breakdownKey: 'debuffResistPerception',
   },
 
   // ============================================
