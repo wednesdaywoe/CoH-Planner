@@ -440,6 +440,8 @@ interface ActivePowerEffect {
   recoveryBuff?: ScalarOrScaled;
   maxHPBuff?: ScalarOrScaled;
   maxEndBuff?: ScalarOrScaled;
+  // Effect targeting (SingleTarget, AoE, etc.)
+  effectArea?: string;
   // Mez protection (pool/epic style — direct magnitudes)
   protection?: Record<string, number>;
   // Mez effects that may be protection when using Res_Boolean tables
@@ -912,11 +914,22 @@ function applyActivePowerBonuses(
       if (mezVal === undefined || typeof mezVal === 'number') continue;
       const mez = mezVal as MezScaled;
       if (!mez.table) continue;
-      // Only Res_Boolean tables are protection magnitudes
-      if (mez.table.toLowerCase().includes('res_boolean')) {
-        const tableValue = getTableValue(archetypeId, mez.table.toLowerCase(), buildLevel);
+      const tableLower = mez.table.toLowerCase();
+      const isResBoolean = tableLower.includes('res_boolean');
+      // Knockback effects on SingleTarget Toggle/Auto powers are protection even without Res_Boolean
+      // (e.g., Acrobatics uses Melee_Ones table for KB protection)
+      // AoE toggles like Repulsion Field and Hurricane are offensive KB, not protection
+      const isKbToggleProt = field === 'knockback' &&
+        effects.effectArea === 'SingleTarget' &&
+        (power.powerType?.toLowerCase() === 'toggle' || power.powerType?.toLowerCase() === 'auto');
+      if (isResBoolean || isKbToggleProt) {
+        const tableValue = getTableValue(archetypeId, tableLower, buildLevel);
         if (tableValue !== undefined) {
-          const mag = Math.abs(mez.scale) * tableValue;
+          let mag = Math.abs(mez.scale) * tableValue;
+          // Knockback enhancements boost KB protection magnitude (per Acrobatics description)
+          if (isKbToggleProt && !isResBoolean) {
+            mag *= (1 + (enhBonuses.knockback || 0));
+          }
           global[key] += mag;
           addToBreakdown(breakdown, key, {
             name: power.name,
