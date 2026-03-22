@@ -9,7 +9,7 @@ import type { Power } from '@/types';
 
 export const Subdue: Power = {
   "name": "Subdue",
-  "internalName": "Subdue",
+  "internalName": "Frt_Subdue",
   "available": 1,
   "description": "Subdue deals moderate Psionic damage and may leave the targeted foe Immobilized for a brief time. Immobilized foes cannot move but can still attack.",
   "shortHelp": "Ranged, DMG(Psionic), Foe Immobilize",

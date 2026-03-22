@@ -9,7 +9,7 @@ import type { Power } from '@/types';
 
 export const PsychicWail: Power = {
   "name": "Psychic Wail",
-  "internalName": "Psychic_Wail",
+  "internalName": "Frt_Psychic_Wail",
   "available": 27,
   "description": "Psychic Wail is a devastating Psionic attack that wracks the minds of all nearby foes. Those that survive will have a severely reduced attack rate and may be left Disoriented.",
   "shortHelp": "PBAoE, DMG(Psionic), Foe Disorient -Recharge",

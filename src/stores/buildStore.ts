@@ -165,18 +165,30 @@ type BuildStore = BuildState & BuildActions;
  * Called on both localStorage rehydration and build import.
  */
 function syncBuildDefinitions(build: Build): void {
+  // Track old→new internalName changes for slotOrder migration
+  const internalNameMigrations = new Map<string, string>();
+
   // Helper: sync power effects + icons from a powerset definition
   const syncPowers = (powers: SelectedPower[], defPowers: readonly Pick<SelectedPower, 'name' | 'internalName' | 'effects' | 'icon'>[]): SelectedPower[] => {
     let anyChanged = false;
     const synced = powers.map((power) => {
-      const currentDef = defPowers.find((p) => p.internalName === power.internalName);
+      let currentDef = defPowers.find((p) => p.internalName === power.internalName);
+      // Fallback: match by display name if internalName was renamed
+      if (!currentDef) {
+        currentDef = defPowers.find((p) => p.name === power.name);
+      }
       if (!currentDef) return power;
+      const needsInternalName = currentDef.internalName !== power.internalName;
       const needsEffects = currentDef.effects && currentDef.effects !== power.effects;
       const needsIcon = currentDef.icon && currentDef.icon !== power.icon;
-      if (needsEffects || needsIcon) {
+      if (needsInternalName || needsEffects || needsIcon) {
         anyChanged = true;
+        if (needsInternalName) {
+          internalNameMigrations.set(power.internalName, currentDef.internalName);
+        }
         return {
           ...power,
+          ...(needsInternalName ? { internalName: currentDef.internalName } : {}),
           ...(needsEffects ? { effects: currentDef.effects } : {}),
           ...(needsIcon ? { icon: currentDef.icon } : {}),
         };
@@ -368,6 +380,14 @@ function syncBuildDefinitions(build: Build): void {
     const fixed = fixEnhancementIcons(build.inherents);
     if (fixed !== build.inherents) {
       build.inherents = fixed;
+    }
+  }
+
+  // Migrate slotOrder entries that reference old internalNames
+  if (internalNameMigrations.size > 0 && build.slotOrder) {
+    for (const entry of build.slotOrder) {
+      const newName = internalNameMigrations.get(entry.powerName);
+      if (newName) entry.powerName = newName;
     }
   }
 }

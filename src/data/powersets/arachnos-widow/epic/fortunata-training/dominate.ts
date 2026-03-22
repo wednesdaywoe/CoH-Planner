@@ -9,7 +9,7 @@ import type { Power } from '@/types';
 
 export const Dominate: Power = {
   "name": "Dominate",
-  "internalName": "Dominate",
+  "internalName": "Frt_Dominate",
   "available": 11,
   "description": "Painfully tears at the mind of a single foe. Dominate deals Psionic damage and renders a foe helpless, lost in his own mind and unable to defend himself.",
   "shortHelp": "Ranged, DMG(Psionic), Foe Hold",

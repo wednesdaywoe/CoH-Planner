@@ -9,7 +9,7 @@ import type { Power } from '@/types';
 
 export const TotalDomination: Power = {
   "name": "Total Domination",
-  "internalName": "Total_Domination",
+  "internalName": "Frt_Total_Domination",
   "available": 25,
   "description": "Tears at the mind of a target foe and those near him. Total Domination renders all affected foes helpless, lost in their own minds and unable to defend themselves.",
   "shortHelp": "Ranged (Targeted AoE), Foe Hold",

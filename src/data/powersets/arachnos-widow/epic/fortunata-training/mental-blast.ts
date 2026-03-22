@@ -9,7 +9,7 @@ import type { Power } from '@/types';
 
 export const MentalBlast: Power = {
   "name": "Mental Blast",
-  "internalName": "Mental_Blast",
+  "internalName": "Frt_Mental_Blast",
   "available": 0,
   "description": "This basic attack does moderate Psionic damage, and can slightly reduce a target's attack speed.",
   "shortHelp": "Ranged, DMG(Psionic), Target -Recharge",

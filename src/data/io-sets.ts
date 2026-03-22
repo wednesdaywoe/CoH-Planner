@@ -233,9 +233,11 @@ export function getAllIOSets(): IOSetRegistry {
 
 /**
  * Get an IO set by ID
+ * Falls back to hyphen-stripped lookup for backward compatibility
+ * (e.g., "gaussians_synchronized_fire-control" → "gaussians_synchronized_firecontrol")
  */
 export function getIOSet(id: string): IOSet | undefined {
-  return _ioSets[id];
+  return _ioSets[id] ?? _ioSets[id.replace(/-/g, '')];
 }
 
 /**

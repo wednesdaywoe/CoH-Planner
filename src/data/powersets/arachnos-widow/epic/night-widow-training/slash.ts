@@ -9,7 +9,7 @@ import type { Power } from '@/types';
 
 export const Slash: Power = {
   "name": "Slash",
-  "internalName": "Slash",
+  "internalName": "Nw_Slash",
   "available": 17,
   "description": "Slash does extreme lethal damage to your foe, then poisons them. The poison does toxic damage over time and slows their recovery rate and movement speed.  Notes: This power will deal critical damage if used after a successful Placate or while the user is hidden with the Night Widow or Fortunata Mask Presence power.",
   "shortHelp": "Melee, DMG(Lethal), DoT(Toxic), -Recharge, -SPD",

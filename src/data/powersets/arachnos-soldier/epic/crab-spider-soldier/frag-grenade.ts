@@ -9,7 +9,7 @@ import type { Power } from '@/types';
 
 export const FragGrenade: Power = {
   "name": "Frag Grenade",
-  "internalName": "Frag_Grenade",
+  "internalName": "Cs_Frag_Grenade",
   "available": 17,
   "description": "Launches a Frag Grenade at long range from your Crab Spider backpack. The explosion from this grenade affects all within the blast and can knock them back. Damage: Moderate",
   "shortHelp": "Ranged(Targeted AoE), Moderate DMG(Lethal/Fire), Foe Knockback",

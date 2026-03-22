@@ -36,6 +36,7 @@ import {
   HYDRA_ENHANCEMENTS,
   DSYNC_ENHANCEMENTS,
 } from '@/data';
+import { GRANTED_POWER_GROUPS } from '@/data/granted-powers';
 import type { InherentPowerDef } from '@/data';
 import { computeSetTracking } from '@/utils/calculations/set-tracking';
 
@@ -331,6 +332,16 @@ export function importFromParsedData(parsed: GameExportData): GameImportResult {
   const origin = ORIGIN_MAP[parsed.header.origin] ?? 'Natural';
   const level = Math.min(Math.max(parsed.header.level, 1), 50);
 
+  // Build set of non-slottable granted sub-power names to skip during import
+  // (e.g., Double Jump from Super Jump, Speed Phase from Super Speed)
+  const nonSlottableSubPowers = new Set<string>();
+  for (const group of Object.values(GRANTED_POWER_GROUPS)) {
+    if (group.slottable) continue;
+    for (const subName of group.grantedPowers) {
+      nonSlottableSubPowers.add(subName.toLowerCase());
+    }
+  }
+
   // 4. Process powers by category
   const primaryPowers: SelectedPower[] = [];
   const secondaryPowers: SelectedPower[] = [];
@@ -382,6 +393,10 @@ export function importFromParsedData(parsed: GameExportData): GameImportResult {
         summary.powersFailed++;
         continue;
       }
+
+      // Skip auto-granted pool sub-powers (Double Jump, Speed Phase, Afterburner, etc.)
+      // These have available: -1 and are granted by parent travel powers
+      if (powerDef.available === -1) continue;
 
       if (!poolPowersMap[poolId]) {
         poolPowersMap[poolId] = [];
@@ -453,6 +468,11 @@ export function importFromParsedData(parsed: GameExportData): GameImportResult {
       summary.powersFailed++;
       continue;
     }
+
+    // Skip non-slottable granted sub-powers (Adaptation toggles, Swap Ammo, etc.)
+    // Check both the entry name and the resolved internalName against the known set
+    if (nonSlottableSubPowers.has(entry.powerName.toLowerCase()) ||
+        nonSlottableSubPowers.has(powerDef.internalName.toLowerCase())) continue;
 
     const slots = resolveEnhancements(entry.enhancements, warnings, summary);
     const selectedPower = buildSelectedPower(powerDef, powersetId, entry.level, slots);

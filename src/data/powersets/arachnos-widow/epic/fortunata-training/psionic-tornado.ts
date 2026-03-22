@@ -9,7 +9,7 @@ import type { Power } from '@/types';
 
 export const PsionicTornado: Power = {
   "name": "Psionic Tornado",
-  "internalName": "Psionic_Tornado",
+  "internalName": "Frt_Psionic_Lance",
   "available": 11,
   "description": "Unleashes a whirlwind of Psionic energy on a target, tossing nearby foes into the air. The Psionic Tornado damages foes and Slows their attack speed.",
   "shortHelp": "Ranged (Targeted AoE), DoT(Psionic), Foe Knockback",

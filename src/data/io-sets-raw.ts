@@ -9293,7 +9293,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
     ],
     "icon": "AO_Tanker_GauntletedFist.png"
   },
-  "gaussians_synchronized_fire-control": {
+  "gaussians_synchronized_firecontrol": {
     "name": "Gaussian's Synchronized Fire-Control",
     "category": "rare",
     "type": "To Hit Buff",

@@ -9,7 +9,7 @@ import type { Power } from '@/types';
 
 export const ScrambleThoughts: Power = {
   "name": "Scramble Thoughts",
-  "internalName": "Scramble_Thoughts",
+  "internalName": "Frt_Scramble_Thoughts",
   "available": 17,
   "description": "Painfully scrambles the synapses of a targeted foe, leaving him dramatically Disoriented for a short duration. Over time, the pain will increase causing psionic damage.",
   "shortHelp": "Ranged, DoT(Psionic), Foe Disorient",

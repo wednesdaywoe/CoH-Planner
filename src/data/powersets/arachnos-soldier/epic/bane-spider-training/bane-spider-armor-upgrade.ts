@@ -9,7 +9,7 @@ import type { Power } from '@/types';
 
 export const BaneSpiderArmorUpgrade: Power = {
   "name": "Bane Spider Armor Upgrade",
-  "internalName": "Bane_Spider_Armor_Upgrade",
+  "internalName": "Bane_Spider_Armor",
   "available": 0,
   "description": "Your Bane Spider Armor Upgrade improves your overall health, protection to all damage types, as well as increasing your protection against most status effects, including Confuse, Fear, Disorient, Hold, Sleep and Immobilize effects.",
   "shortHelp": "Auto: Self +Res(All DMG, Status Effects), +HP",

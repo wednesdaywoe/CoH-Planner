@@ -9,7 +9,7 @@ import type { Power } from '@/types';
 
 export const VenomGrenade: Power = {
   "name": "Venom Grenade",
-  "internalName": "Venom_Grenade",
+  "internalName": "Cs_Venom_Grenade",
   "available": 11,
   "description": "This poisonous grenade causes toxic damage over time and weakens the resistance of all foes within the area of effect. Damage: Moderate",
   "shortHelp": "Ranged(Targeted AoE), DoT(Toxic), -Res(All)",

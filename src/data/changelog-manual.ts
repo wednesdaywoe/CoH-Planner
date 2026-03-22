@@ -21,7 +21,7 @@ export interface ManualEntry {
 export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   // ─── 2026-03-22 ────────────────────────────────────────────────────────────
   {
-    date: '2026-03-20',
+    date: '2026-03-22',
     items: [
       { message: ' fix: Display names ("Combat Jumping") being compared \
          against internal names ("Combat_Jumping"). This affected all \
@@ -29,6 +29,10 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
       { message: 'Rage crash debuff excluded from DMG stat', type: 'fix' },
       { message: 'Contributing sources now display for Movement and Debuff Resistance', type: 'fix' },
       { message: 'Added missing defense debuff resistance to power data', type: 'fix' },
+      { message: 'Updated internal names for various powers across Arachnos Soldier, Arachnos Widow, and Peacebringer powersets ', type: 'fix' },
+      { message: 'Implemented fallback logic in getIOSet function to support backward compatibility for renamed IO set', type: 'fix' },
+      { message: 'Added migration logic to sync internal name changes during build synchronization', type: 'fix' },
+      { message: 'Enhanced import functionality to skip non-slottable granted sub-powers during data import', type: 'fix' },
     ],
   },
 ];
