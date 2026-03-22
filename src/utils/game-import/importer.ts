@@ -251,6 +251,17 @@ function getIOSetNameLookup(): Map<string, string> {
 
     // Also store the raw ID
     lookup.set(id, id);
+
+    // Hyphen-stripped variant for IDs like "fire-control" → "firecontrol"
+    // (external tools may omit hyphens in internal names)
+    const stripped = normalized.replace(/-/g, '');
+    if (stripped !== normalized) {
+      lookup.set(stripped, id);
+    }
+    const idStripped = id.replace(/-/g, '');
+    if (idStripped !== id) {
+      lookup.set(idStripped, id);
+    }
   }
 
   // Dev-name aliases: HC sometimes ships sets with internal names that differ from live
@@ -780,7 +791,9 @@ function resolveEnhancement(enh: GameExportEnhancement): EnhancementResolveResul
   // Check for generic IOs: "Crafted_Accuracy", "Crafted_Heal", etc.
   if (uid.startsWith('Crafted_') && !hasIOSetPieceSuffix(uid)) {
     const statPart = uid.slice('Crafted_'.length);
-    const stat = GENERIC_STAT_MAP[statPart];
+    // Case-insensitive lookup (external tool titleCase may differ: "Tohit_Buff" vs "ToHit_Buff")
+    const stat = GENERIC_STAT_MAP[statPart]
+      ?? Object.entries(GENERIC_STAT_MAP).find(([k]) => k.toLowerCase() === statPart.toLowerCase())?.[1];
     if (stat) {
       const enhancement = createGenericIOEnhancement(
         stat as any,
