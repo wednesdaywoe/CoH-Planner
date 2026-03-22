@@ -399,14 +399,14 @@ export function isPowerAvailableInPool(
     // Non-travel rank 3 powers require level 14 and 1 power from the pool
     if (level < 14) return false;
     if (numSelectedPowers < 1) return false;
-    return arePoolPrerequisitesMet(poolId, power.name, selectedPowersInPool);
+    return arePoolPrerequisitesMet(poolId, power.internalName, selectedPowersInPool);
   }
 
   // Rank 4-5+: Require level 14 and 2 powers from the pool
   if (rank >= 4) {
     if (level < 14) return false;
     if (numSelectedPowers < 2) return false;
-    return arePoolPrerequisitesMet(poolId, power.name, selectedPowersInPool);
+    return arePoolPrerequisitesMet(poolId, power.internalName, selectedPowersInPool);
   }
 
   return false;

@@ -176,8 +176,8 @@ export function AvailablePoolPowers() {
             const pool = getPowerPool(poolSelection.id);
             if (!pool) return null;
 
-            const selectedPowerNames = poolSelection.powers.map((p) => p.name);
-            const selectedSet = new Set(selectedPowerNames);
+            const selectedSet = new Set(poolSelection.powers.map((p) => p.name));
+            const selectedInternalNames = poolSelection.powers.map((p) => p.internalName);
 
             return (
               <AvailablePoolSection
@@ -196,7 +196,7 @@ export function AvailablePoolPowers() {
                 onShowInfo={(power, e) => handleShowInfo(power, poolSelection.id, e)}
                 color="blue"
                 checkAvailability={(power) =>
-                  isPowerAvailableInPool(poolSelection.id, power, build.level, selectedPowerNames)
+                  isPowerAvailableInPool(poolSelection.id, power, build.level, selectedInternalNames)
                 }
                 powerLimitReached={powerLimitReached}
               />

@@ -578,6 +578,25 @@ function findPowerByInternalName(powers: Power[], internalName: string): Power |
 }
 
 /**
+ * Game internal powerset names that differ from our slug IDs.
+ * Maps game_name (hyphenated) → our slug.
+ */
+const POWERSET_ALIASES: Record<string, string> = {
+  'bio-organic-armor': 'bio-armor',
+  'kinetic-attack': 'kinetic-melee',
+  'brawling': 'street-justice',
+  'shock-therapy': 'electrical-affinity',
+  'sonic-debuff': 'sonic-resonance',
+  'radiation-manipulation': 'atomic-manipulation',
+  'quills': 'spines',
+  'ninja-sword': 'ninja-blade',
+  'gadgets': 'devices',
+  'martial-manipulation': 'martial-combat',
+  'time-manipulation': 'temporal-manipulation',
+  'electricity-manipulation': 'electricity-assault',
+};
+
+/**
  * Resolve a powerset name from the game export to our powerset ID.
  * Game uses: "Storm_Blast" → we need: "corruptor/storm-blast"
  */
@@ -588,6 +607,13 @@ function resolvePowersetId(gameSetName: string, archetypeId: string): string | n
 
   // Try direct ID
   if (getPowerset(directId)) return directId;
+
+  // Try alias lookup (game internal names that differ from our slugs)
+  const aliasSlug = POWERSET_ALIASES[slug];
+  if (aliasSlug) {
+    const aliasId = `${archetypeId}/${aliasSlug}`;
+    if (getPowerset(aliasId)) return aliasId;
+  }
 
   // Fallback: brute-force search all powersets for this archetype
   const allPowersets = getAllPowersets();

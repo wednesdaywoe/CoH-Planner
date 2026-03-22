@@ -19,15 +19,13 @@ export interface ManualEntry {
 }
 
 export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
-  // ─── 2026-03-18 ────────────────────────────────────────────────────────────
+  // ─── 2026-03-22 ────────────────────────────────────────────────────────────
   {
     date: '2026-03-20',
     items: [
-      { message: 'Added Incarnate power effects to Perma Tracker calculations', type: 'fix' },
-      { message: 'Fixed issue with missing recoveryBuff', type: 'fix' },
-      { message: 'Updated endurance recovery calculations to reflect max endurance scaling', type: 'fix' },
-      { message: 'Corrected active power effects to include self-debuffs', type: 'fix' },
-      { message: 'Fixed buildStore to include branch power definitions so VEAT powers can be constructed correctly', type: 'fix' },
+      { message: ' fix: Display names ("Combat Jumping") being compared \
+         against internal names ("Combat_Jumping"). This affected all \
+         rank 3+ pool powers that have multi-word names.', type: 'fix' },
     ],
   },
 ];

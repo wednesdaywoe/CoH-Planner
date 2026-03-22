@@ -145,17 +145,10 @@ interface BuildSegment {
 }
 
 /**
- * Split the flat powers array into per-build segments.
- *
- * The external format groups ALL inherent blocks first (one per build,
- * delineated by "brawl" markers), then ALL combat powers from all builds
- * grouped by powerset. We use the brawl count to determine the number of
- * builds, split inherents at brawl boundaries, and assign the i-th
- * occurrence of each combat power to build i (CoH builds share the same
- * power picks — only slot allocation differs).
+ * Separate inherent powers from combat powers into a single build segment.
+ * HC sends a single pre-selected build — no multi-build splitting needed.
  */
 function splitBuilds(powers: ExternalPower[]): BuildSegment[] {
-  // Separate inherent from combat powers
   const inherentPowers: ExternalPower[] = [];
   const combatPowers: ExternalPower[] = [];
 
@@ -167,51 +160,7 @@ function splitBuilds(powers: ExternalPower[]): BuildSegment[] {
     }
   }
 
-  // Count builds from brawl markers in the inherent block
-  let buildCount = 0;
-  for (const p of inherentPowers) {
-    if (p.powerName === 'brawl') buildCount++;
-  }
-  if (buildCount === 0) buildCount = 1;
-
-  // Split inherent powers into blocks at brawl boundaries
-  const inherentBlocks: ExternalPower[][] = [];
-  let currentBlock: ExternalPower[] = [];
-  for (const p of inherentPowers) {
-    if (p.powerName === 'brawl' && currentBlock.length > 0) {
-      inherentBlocks.push(currentBlock);
-      currentBlock = [];
-    }
-    currentBlock.push(p);
-  }
-  if (currentBlock.length > 0) {
-    inherentBlocks.push(currentBlock);
-  }
-
-  // For combat powers, the i-th occurrence of each power goes to build i
-  const combatBlocks: ExternalPower[][] = Array.from({ length: buildCount }, () => []);
-  const occurrenceCount = new Map<string, number>();
-
-  for (const p of combatPowers) {
-    const key = `${p.powerSetName}:${p.powerName}`;
-    const occ = occurrenceCount.get(key) || 0;
-    if (occ < buildCount) {
-      combatBlocks[occ].push(p);
-    }
-    occurrenceCount.set(key, occ + 1);
-  }
-
-  // Pair inherent blocks with combat blocks
-  const numBuilds = Math.max(inherentBlocks.length, combatBlocks.length, 1);
-  const segments: BuildSegment[] = [];
-  for (let i = 0; i < numBuilds; i++) {
-    segments.push({
-      inherents: inherentBlocks[i] || [],
-      combatPowers: combatBlocks[i] || [],
-    });
-  }
-
-  return segments;
+  return [{ inherents: inherentPowers, combatPowers }];
 }
 
 /**
