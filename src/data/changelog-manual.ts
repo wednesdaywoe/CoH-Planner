@@ -21,8 +21,10 @@ export interface ManualEntry {
 export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   // ─── 2026-03-22 ────────────────────────────────────────────────────────────
   {
-    date: '2026-03-22',
+    date: '2026-03-23',
     items: [
+      { message: 'Fixed issue with power import deduplication', type: 'fix' },
+      { message: 'Fix for imported powers with debuffs being applied incorrectly', type: 'fix' },
       { message: '21 powers now correctly flagged with selfPenalty', type: 'fix' },
       { message: ' fix: Display names ("Combat Jumping") being compared \
          against internal names ("Combat_Jumping"). This affected all \
