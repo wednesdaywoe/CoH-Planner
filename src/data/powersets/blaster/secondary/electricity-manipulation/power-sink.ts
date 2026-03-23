@@ -49,7 +49,8 @@ export const PowerSink: Power = {
     },
     "enduranceGain": {
       "scale": 25,
-      "table": "Melee_Ones"
+      "table": "Melee_Ones",
+      "perTarget": 25
     },
     "damageBuff": {
       "scale": 0.048,

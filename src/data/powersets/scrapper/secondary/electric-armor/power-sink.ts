@@ -39,11 +39,13 @@ export const PowerSink: Power = {
   "effects": {
     "enduranceGain": {
       "scale": 15,
-      "table": "Melee_Ones"
+      "table": "Melee_Ones",
+      "perTarget": 15
     },
     "regenBuff": {
       "scale": 0.35,
-      "table": "Melee_Ones"
+      "table": "Melee_Ones",
+      "perTarget": 0.175
     },
     "durations": {
       "regenBuff": 45

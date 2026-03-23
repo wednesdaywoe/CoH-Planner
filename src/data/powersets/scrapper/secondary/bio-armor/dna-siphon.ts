@@ -69,7 +69,8 @@ export const DNASiphon: Power = {
   "effects": {
     "enduranceGain": {
       "scale": 5,
-      "table": "Melee_Ones"
+      "table": "Melee_Ones",
+      "perTarget": 5
     },
     "regenDebuff": {
       "scale": 1.33,

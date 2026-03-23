@@ -41,7 +41,8 @@ export const RisetotheChallenge: Power = {
   "effects": {
     "regenBuff": {
       "scale": 1.25,
-      "table": "Melee_Ones"
+      "table": "Melee_Ones",
+      "perTarget": 0.25
     },
     "durations": {
       "regenBuff": 1.125

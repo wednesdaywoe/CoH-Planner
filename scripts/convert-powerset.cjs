@@ -1022,6 +1022,315 @@ function extractEffects(templates) {
   return effects;
 }
 
+// ============================================
+// PER-TARGET STACKING DETECTION
+// ============================================
+
+/**
+ * Collect all templates from effects with parent-level tags preserved.
+ * Returns array of { template, tags } objects.
+ */
+function collectTemplatesWithMeta(effects) {
+  const results = [];
+  for (const effect of effects) {
+    if (effect.is_pvp === 'PVP_ONLY') continue;
+    if (effect.chance === 0 || effect.chance === 0.0) continue;
+    if (effect.tags && effect.tags.includes('Containment')) continue;
+
+    // Skip conditional effects (dead-state, hide, scourge)
+    if (effect.requires_expression) {
+      const req = effect.requires_expression;
+      if (req.includes('kHitPoints == 0')) continue;
+      if (req.includes('kMeter > 0') || req.includes('kMeter >=')) continue;
+      if (req.includes('rand()')) continue;
+    }
+
+    const tags = effect.tags || [];
+
+    if (effect.templates && effect.templates.length > 0) {
+      for (const t of effect.templates) {
+        results.push({ template: t, tags });
+      }
+    }
+    if (effect.child_effects && effect.child_effects.length > 0) {
+      const childResults = collectTemplatesWithMeta(effect.child_effects);
+      for (const cr of childResults) {
+        results.push({ template: cr.template, tags: [...tags, ...cr.tags] });
+      }
+    }
+  }
+  return results;
+}
+
+/**
+ * Classify a raw template into our effect key system for stacking detection.
+ * Returns array of { effectKey, subKey? } or empty if not a self-buff.
+ */
+function classifyTemplateForStacking(template) {
+  if (!template.attribs || template.attribs.length === 0) return [];
+  if (template.target !== 'Self') return [];
+
+  const aspect = template.aspect?.toLowerCase();
+  const scale = template.scale || 0;
+  const table = template.table || '';
+  const tableLower = table.toLowerCase();
+  const isDebuff = scale < 0 || tableLower.includes('debuff');
+
+  // Only care about self-buffs (positive effects)
+  if (isDebuff) return [];
+
+  const results = [];
+
+  for (const rawAttrib of template.attribs) {
+    const attrib = rawAttrib?.toLowerCase();
+    if (!attrib) continue;
+    if (SPECIAL_ATTRIBS.has(attrib)) continue;
+
+    // Damage type attributes
+    if (DAMAGE_TYPES[attrib]) {
+      if (aspect === 'strength') {
+        return [{ effectKey: 'damageBuff' }];
+      }
+      if (aspect === 'resistance') {
+        results.push({ effectKey: 'resistance', subKey: DAMAGE_TYPES[attrib].toLowerCase() });
+        continue;
+      }
+      if (tableLower.includes('buff_def')) {
+        results.push({ effectKey: 'defenseBuff', subKey: DAMAGE_TYPES[attrib].toLowerCase() });
+        continue;
+      }
+      continue;
+    }
+
+    // Defense positions
+    if (DEFENSE_POSITIONS[attrib]) {
+      const posType = DEFENSE_POSITIONS[attrib].toLowerCase();
+      if (aspect === 'resistance') {
+        results.push({ effectKey: 'resistance', subKey: posType });
+      } else {
+        results.push({ effectKey: 'defenseBuff', subKey: posType });
+      }
+      continue;
+    }
+
+    // Resources — skip resistance aspect (debuff resistance, not a stacking buff)
+    if (RESOURCE_TYPES[attrib]) {
+      if (aspect === 'resistance') continue;
+      const resType = RESOURCE_TYPES[attrib];
+      if (resType === 'hitPoints') {
+        if (aspect === 'maximum') return [{ effectKey: 'maxHPBuff' }];
+      }
+      if (resType === 'endurance') {
+        if (aspect === 'maximum') return [{ effectKey: 'maxEndBuff' }];
+        if (!isDebuff) return [{ effectKey: 'enduranceGain' }];
+      }
+      if (resType === 'recovery') return [{ effectKey: 'recoveryBuff' }];
+      if (resType === 'regeneration') return [{ effectKey: 'regenBuff' }];
+      if (resType === 'absorb') return [{ effectKey: 'absorb' }];
+      continue;
+    }
+
+    // Combat modifiers
+    if (COMBAT_MODIFIERS[attrib]) {
+      const modType = COMBAT_MODIFIERS[attrib];
+      if (modType === 'toHit' && !isDebuff) return [{ effectKey: 'tohitBuff' }];
+      if (modType === 'rechargeTime' && !isDebuff && !tableLower.includes('slow')) return [{ effectKey: 'rechargeBuff' }];
+      if (modType === 'threatLevel') return [{ effectKey: 'threatBuff' }];
+      if (modType === 'enduranceDiscount') return [{ effectKey: 'enduranceDiscount' }];
+      continue;
+    }
+  }
+
+  return results;
+}
+
+/**
+ * Detect per-target stacking effects in a raw power JSON.
+ * Analyzes Stack/Continuous templates and returns patches to merge into effects.
+ *
+ * Also detects Execute_Power redirect stacking for non-AoE powers
+ * (e.g., Reactive Regeneration → maxStacks from number_allowed).
+ */
+function detectStackingEffects(rawJson) {
+  if (!rawJson.effects || rawJson.effects.length === 0) return null;
+
+  const allTemplatesWithMeta = collectTemplatesWithMeta(rawJson.effects);
+  const patches = {};
+  let maxStacks = null;
+
+  // === AoE per-target stacking (Stack/Continuous + Replace) ===
+  // Only for AoE/Cone powers with maxTargets > 1 (not 255 = team-wide)
+  const effectArea = rawJson.effect_area;
+  const maxTargets = rawJson.max_targets_hit;
+  const isAoEWithTargets = (effectArea === 'AoE' || effectArea === 'Cone') &&
+    maxTargets && maxTargets > 1 && maxTargets !== 255;
+
+  const selfBuffs = [];
+  if (isAoEWithTargets) for (const { template, tags } of allTemplatesWithMeta) {
+    if (template.target !== 'Self') continue;
+    if (template.stack !== 'Stack' && template.stack !== 'Continuous' && template.stack !== 'Replace') continue;
+
+    const isDefiance = tags.some(t =>
+      typeof t === 'string' && t.toLowerCase().includes('defiance')
+    );
+
+    const classifications = classifyTemplateForStacking(template);
+    if (classifications.length === 0) continue;
+
+    for (const classification of classifications) {
+      selfBuffs.push({
+        ...classification,
+        scale: Math.abs(template.scale || 0),
+        table: template.table,
+        stack: template.stack,
+        isDefiance,
+      });
+    }
+  }
+
+  // Group by effectKey + subKey
+  const groups = {};
+  for (const buff of selfBuffs) {
+    const groupKey = buff.subKey ? `${buff.effectKey}.${buff.subKey}` : buff.effectKey;
+    if (!groups[groupKey]) groups[groupKey] = [];
+    groups[groupKey].push(buff);
+  }
+
+  // Compute perTarget for each group
+  for (const [, entries] of Object.entries(groups)) {
+    // Stack/Continuous = per-target increment; Replace = base
+    const stacks = entries.filter(e => (e.stack === 'Stack' || e.stack === 'Continuous') && !e.isDefiance);
+    const replaces = entries.filter(e => e.stack === 'Replace' && !e.isDefiance);
+
+    if (stacks.length === 0) continue;
+
+    const stackScale = stacks.reduce((sum, e) => sum + e.scale, 0);
+    const replaceScale = replaces.reduce((sum, e) => sum + e.scale, 0);
+    const table = stacks[0].table;
+    const combinedScale = replaceScale + stackScale;
+    const perTarget = stackScale;
+
+    const firstEntry = stacks[0];
+    if (firstEntry.subKey) {
+      if (!patches[firstEntry.effectKey]) patches[firstEntry.effectKey] = {};
+      patches[firstEntry.effectKey][firstEntry.subKey] = { scale: combinedScale, table, perTarget };
+    } else {
+      patches[firstEntry.effectKey] = { scale: combinedScale, table, perTarget };
+    }
+  }
+
+  // === Execute_Power redirect stacking (non-AoE, e.g., Reactive Regeneration) ===
+  for (const { template } of allTemplatesWithMeta) {
+    const attrib = template.attribs && template.attribs[0] ? template.attribs[0].toLowerCase() : null;
+    if (attrib !== 'execute_power') continue;
+    if (template.stack !== 'Stack') continue;
+
+    const powerNames = (template.params && template.params.power_names) || [];
+    for (const pName of powerNames) {
+      if (!pName.toLowerCase().startsWith('redirects.')) continue;
+
+      const redirectPath = resolveRedirectPath(pName);
+      if (!fs.existsSync(redirectPath)) continue;
+
+      let redirectJson;
+      try { redirectJson = JSON.parse(fs.readFileSync(redirectPath, 'utf-8')); } catch { continue; }
+
+      // number_allowed on the redirect power = max stacks
+      if (redirectJson.number_allowed && redirectJson.number_allowed > 1) {
+        maxStacks = redirectJson.number_allowed;
+      }
+
+      // Extract stacking effects from the redirect power's templates
+      if (redirectJson.effects && redirectJson.effects.length > 0) {
+        const redirectTemplates = collectTemplatesWithMeta(redirectJson.effects);
+        for (const { template: rt } of redirectTemplates) {
+          if (rt.target !== 'Self') continue;
+          if (rt.stack !== 'Stack') continue;
+
+          const classifications = classifyTemplateForStacking(rt);
+          for (const cls of classifications) {
+            const scale = Math.abs(rt.scale || 0);
+            if (cls.subKey) {
+              if (!patches[cls.effectKey]) patches[cls.effectKey] = {};
+              const prev = patches[cls.effectKey][cls.subKey];
+              patches[cls.effectKey][cls.subKey] = {
+                scale: prev?.scale || 0,
+                table: rt.table,
+                perTarget: (prev?.perTarget || 0) + scale,
+              };
+            } else {
+              // Accumulate perTarget for same effectKey (multiple Stack templates)
+              const existing = patches[cls.effectKey];
+              const prevPerTarget = (existing && typeof existing === 'object' && 'perTarget' in existing) ? existing.perTarget : 0;
+              patches[cls.effectKey] = {
+                scale: (existing && typeof existing === 'object' && 'scale' in existing) ? existing.scale : 0,
+                table: rt.table,
+                perTarget: prevPerTarget + scale,
+              };
+            }
+          }
+        }
+      }
+    }
+  }
+
+  if (Object.keys(patches).length === 0 && maxStacks === null) return null;
+  return { patches, maxStacks };
+}
+
+/**
+ * Merge stacking patches into an existing effects object.
+ * Updates scale values and adds perTarget fields.
+ */
+function mergeStackingPatches(effects, stackingResult) {
+  if (!stackingResult) return;
+
+  const { patches, maxStacks } = stackingResult;
+
+  if (maxStacks) {
+    effects.maxStacks = maxStacks;
+  }
+
+  for (const [key, patchValue] of Object.entries(patches)) {
+    if (typeof patchValue === 'object' && !('scale' in patchValue)) {
+      // By-type patch (e.g., resistance: { smashing: {...} })
+      if (!effects[key] || typeof effects[key] !== 'object') {
+        effects[key] = {};
+      }
+      for (const [subKey, subVal] of Object.entries(patchValue)) {
+        const existing = effects[key][subKey];
+        if (existing && typeof existing === 'object') {
+          // For redirect stacking: add perTarget to existing base scale
+          if (subVal.scale === 0 && existing.scale) {
+            effects[key][subKey] = { ...existing, perTarget: subVal.perTarget };
+          } else {
+            effects[key][subKey] = { scale: subVal.scale, table: subVal.table || existing.table, perTarget: subVal.perTarget };
+          }
+        } else {
+          effects[key][subKey] = subVal;
+        }
+      }
+    } else {
+      // Simple effect patch (e.g., tohitBuff, damageBuff, regenBuff)
+      const existing = effects[key];
+      if (existing && typeof existing === 'object' && 'scale' in existing) {
+        // For redirect stacking: add perTarget to existing base scale
+        if (patchValue.scale === 0 && existing.scale) {
+          effects[key] = { ...existing, perTarget: patchValue.perTarget };
+        } else {
+          effects[key] = { scale: patchValue.scale, table: patchValue.table || existing.table, perTarget: patchValue.perTarget };
+        }
+      } else if (patchValue.scale > 0) {
+        effects[key] = patchValue;
+      } else if (existing !== undefined && patchValue.perTarget) {
+        // existing is a number or something else — wrap with perTarget
+        const s = typeof existing === 'number' ? existing : (existing?.scale || 0);
+        effects[key] = { scale: s, table: patchValue.table, perTarget: patchValue.perTarget };
+      }
+    }
+  }
+}
+
 /**
  * Convert a single power file
  */
@@ -1113,6 +1422,13 @@ function convertPower(powerJson, availableLevel) {
     if (damage) power.damage = damage;
 
     const effects = extractEffects(allTemplates);
+
+    // Detect per-target stacking (Stack/Continuous templates, Execute_Power redirects)
+    const stackingResult = detectStackingEffects(powerJson);
+    if (stackingResult) {
+      mergeStackingPatches(effects, stackingResult);
+    }
+
     if (Object.keys(effects).length) power.effects = effects;
   }
 
@@ -1282,6 +1598,8 @@ module.exports = {
   resolveRedirectPath,
   collectRedirectTemplates,
   collectTemplatesDeep,
+  detectStackingEffects,
+  mergeStackingPatches,
 };
 
 // Main execution (only when run directly)

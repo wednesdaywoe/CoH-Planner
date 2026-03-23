@@ -641,7 +641,8 @@ function applyActivePowerBonuses(
       const res = effects.resistance;
       const enhMultiplier = 1 + (enhBonuses.resistance || 0);
       for (const [type, value] of Object.entries(res)) {
-        const percentage = resolveScaledEffect(value, archetypeId, buildLevel) * 100 * enhMultiplier;
+        const adjustedRes = adjustForPerTarget(value, targetsHitValues[power.internalName]);
+        const percentage = resolveScaledEffect(adjustedRes, archetypeId, buildLevel) * 100 * enhMultiplier;
         const key = `res${capitalizeFirst(type)}` as keyof GlobalBonuses;
         if (key in global) {
           global[key] += percentage;

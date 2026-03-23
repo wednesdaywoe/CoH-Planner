@@ -46,8 +46,9 @@ export const BetaDecay: Power = {
       "rechargeBuff": 1
     },
     "rechargeBuff": {
-      "scale": 0.025,
-      "table": "Melee_Ones"
+      "scale": 0.125,
+      "table": "Melee_Ones",
+      "perTarget": 0.025
     },
     "buffDuration": 1
   }

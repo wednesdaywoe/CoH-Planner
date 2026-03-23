@@ -54,7 +54,8 @@ export const KeeningWinds: Power = {
     },
     "enduranceGain": {
       "scale": 10,
-      "table": "Ranged_EndDrain"
+      "table": "Ranged_EndDrain",
+      "perTarget": 10
     },
     "buffDuration": 2.1
   },

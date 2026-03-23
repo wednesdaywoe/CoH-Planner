@@ -35,11 +35,13 @@ export const ReactiveRegeneration: Power = {
   "effects": {
     "regenBuff": {
       "scale": 2,
-      "table": "Melee_Ones"
+      "table": "Melee_Ones",
+      "perTarget": 0.25
     },
     "durations": {
       "regenBuff": 2.25
     },
-    "buffDuration": 2.25
+    "buffDuration": 2.25,
+    "maxStacks": 20
   }
 };

@@ -41,7 +41,8 @@ export const ParasiticAura: Power = {
   "effects": {
     "recoveryBuff": {
       "scale": 0.39,
-      "table": "Melee_Ones"
+      "table": "Melee_Ones",
+      "perTarget": 0.39
     },
     "durations": {
       "recoveryBuff": 45,
@@ -50,11 +51,13 @@ export const ParasiticAura: Power = {
     },
     "regenBuff": {
       "scale": 0.7,
-      "table": "Melee_Ones"
+      "table": "Melee_Ones",
+      "perTarget": 0.7
     },
     "absorb": {
       "scale": 2.13,
-      "table": "Melee_Ones"
+      "table": "Melee_Ones",
+      "perTarget": 2.13
     },
     "buffDuration": 45
   }

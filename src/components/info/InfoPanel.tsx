@@ -118,16 +118,26 @@ function hasPerTargetField(value: unknown): boolean {
 }
 
 /**
- * Data-driven detection: show per-target slider when effects have perTarget metadata.
+ * Data-driven detection: show stacking slider when effects have perTarget metadata.
+ * Supports both AoE per-target powers (maxTargets) and non-AoE stacking (maxStacks).
  */
-function getPerTargetBuffInfo(power: Power): { maxTargets: number } | null {
-  const maxTargets = power.stats?.maxTargets;
-  if (!maxTargets || maxTargets <= 1 || maxTargets === 255) return null;
+function getStackingInfo(power: Power): { maxStacks: number; label: string } | null {
   if (!power.effects) return null;
-
   const hasPerTarget = Object.values(power.effects).some(v => hasPerTargetField(v));
   if (!hasPerTarget) return null;
-  return { maxTargets };
+
+  // Non-AoE stacking powers (e.g., Reactive Regeneration)
+  if (power.effects.maxStacks) {
+    return { maxStacks: power.effects.maxStacks, label: 'Stacks' };
+  }
+
+  // AoE per-target powers (e.g., Soul Drain, Eclipse)
+  const maxTargets = power.stats?.maxTargets;
+  if (maxTargets && maxTargets > 1 && maxTargets !== 255) {
+    return { maxStacks: maxTargets, label: 'Targets Hit' };
+  }
+
+  return null;
 }
 
 /**
@@ -352,7 +362,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
       criticalHitsActive, stalkerHidden, stalkerTeamSize, stalkerCritActive, sentinelCritActive]);
 
   // Per-target buff scaling (stored in UI store so it persists across power switches)
-  const perTargetInfo = useMemo(() => power ? getPerTargetBuffInfo(power) : null, [power]);
+  const stackingInfo = useMemo(() => power ? getStackingInfo(power) : null, [power]);
   const targetsHit = useUIStore((s) => s.targetsHitValues[powerName] ?? 0);
   const setTargetsHit = useUIStore((s) => s.setTargetsHit);
 
@@ -473,8 +483,8 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
         />
       )}
 
-      {/* Per-target buff slider */}
-      {perTargetInfo && (() => {
+      {/* Stacking slider (per-target or per-stack) */}
+      {stackingInfo && (() => {
         // Disable slider when Toggle/Auto power is toggled off
         const isToggleOff = selectedPower &&
           (selectedPower.powerType === 'Toggle' || selectedPower.powerType === 'Auto') &&
@@ -483,18 +493,18 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
 
         return (
           <div className={`flex items-center gap-2 bg-slate-800/50 rounded px-2 py-1.5 ${isToggleOff ? 'opacity-50' : ''}`}>
-            <span className="text-[10px] text-slate-400 whitespace-nowrap">Targets Hit</span>
+            <span className="text-[10px] text-slate-400 whitespace-nowrap">{stackingInfo.label}</span>
             <input
               type="range"
               min={0}
-              max={perTargetInfo.maxTargets}
+              max={stackingInfo.maxStacks}
               value={effectiveTargets}
               onChange={(e) => setTargetsHit(powerName, Number(e.target.value))}
               disabled={!!isToggleOff}
               className="flex-1 h-1 accent-blue-500 cursor-pointer disabled:opacity-50"
             />
             <span className="text-[10px] text-slate-200 font-mono w-10 text-right">
-              {effectiveTargets === 0 ? 'Off' : `${effectiveTargets} / ${perTargetInfo.maxTargets}`}
+              {effectiveTargets === 0 ? 'Off' : `${effectiveTargets} / ${stackingInfo.maxStacks}`}
             </span>
           </div>
         );
@@ -502,7 +512,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
 
       {/* Registry-driven Power Effects display */}
       <RegistryEffectsDisplay
-        effects={perTargetInfo && targetsHit > 1 ? adjustEffectsForTargets(effects, targetsHit) : effects}
+        effects={stackingInfo && targetsHit > 1 ? adjustEffectsForTargets(effects, targetsHit) : effects}
         allowedEnhancements={power?.allowedEnhancements || []}
         enhancementBonuses={enhancementBonuses}
         globalBonuses={globalBonusesForCalc}

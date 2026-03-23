@@ -36,8 +36,9 @@ export const EntropicAura: Power = {
   "maxSlots": 6,
   "effects": {
     "rechargeBuff": {
-      "scale": 0.05,
-      "table": "Melee_Ones"
+      "scale": 0.085,
+      "table": "Melee_Ones",
+      "perTarget": 0.035
     },
     "durations": {
       "rechargeBuff": 2.25,

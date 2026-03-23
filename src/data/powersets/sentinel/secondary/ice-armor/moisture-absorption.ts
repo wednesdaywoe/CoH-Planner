@@ -43,7 +43,8 @@ export const MoistureAbsorption: Power = {
     },
     "enduranceGain": {
       "scale": 15,
-      "table": "Melee_Ones"
+      "table": "Melee_Ones",
+      "perTarget": 15
     },
     "defenseBuff": {
       "smashing": {

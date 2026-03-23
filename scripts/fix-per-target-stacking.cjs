@@ -1,5 +1,9 @@
 /**
- * Fix Per-Target Stacking Script
+ * @deprecated Stacking detection is now integrated into convert-powerset.cjs.
+ * The converter's detectStackingEffects() handles Stack, Continuous, and
+ * Execute_Power redirect patterns. This script is no longer needed.
+ *
+ * Fix Per-Target Stacking Script (DEPRECATED)
  *
  * Reads raw JSON data and patches processed TypeScript power files with
  * perTarget metadata for effects that stack per AoE target hit.

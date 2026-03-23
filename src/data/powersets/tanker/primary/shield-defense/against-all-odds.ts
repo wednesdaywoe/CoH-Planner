@@ -36,8 +36,9 @@ export const AgainstAllOdds: Power = {
   "maxSlots": 6,
   "effects": {
     "damageBuff": {
-      "scale": 0.55,
-      "table": "Melee_Buff_Dmg"
+      "scale": 2.55,
+      "table": "Melee_Buff_Dmg",
+      "perTarget": 0.55
     },
     "durations": {
       "damageBuff": 1

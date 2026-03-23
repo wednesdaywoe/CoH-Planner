@@ -55,41 +55,50 @@ export const EnergyAbsorption: Power = {
     },
     "defenseBuff": {
       "smashing": {
-        "scale": 0.025,
-        "table": "Melee_Buff_Def"
+        "scale": 0.47500000000000003,
+        "table": "Melee_Buff_Def",
+        "perTarget": 0.025
       },
       "lethal": {
-        "scale": 0.025,
-        "table": "Melee_Buff_Def"
+        "scale": 0.47500000000000003,
+        "table": "Melee_Buff_Def",
+        "perTarget": 0.025
       },
       "fire": {
-        "scale": 0.025,
-        "table": "Melee_Buff_Def"
+        "scale": 0.47500000000000003,
+        "table": "Melee_Buff_Def",
+        "perTarget": 0.025
       },
       "cold": {
-        "scale": 0.025,
-        "table": "Melee_Buff_Def"
+        "scale": 0.47500000000000003,
+        "table": "Melee_Buff_Def",
+        "perTarget": 0.025
       },
       "energy": {
-        "scale": 0.025,
-        "table": "Melee_Buff_Def"
+        "scale": 0.47500000000000003,
+        "table": "Melee_Buff_Def",
+        "perTarget": 0.025
       },
       "negative": {
-        "scale": 0.025,
-        "table": "Melee_Buff_Def"
+        "scale": 0.47500000000000003,
+        "table": "Melee_Buff_Def",
+        "perTarget": 0.025
       },
       "psionic": {
-        "scale": 0.025,
-        "table": "Melee_Buff_Def"
+        "scale": 0.47500000000000003,
+        "table": "Melee_Buff_Def",
+        "perTarget": 0.025
       },
       "toxic": {
-        "scale": 0.025,
-        "table": "Melee_Buff_Def"
+        "scale": 0.47500000000000003,
+        "table": "Melee_Buff_Def",
+        "perTarget": 0.025
       }
     },
     "enduranceGain": {
       "scale": 15,
-      "table": "Melee_Ones"
+      "table": "Melee_Ones",
+      "perTarget": 15
     },
     "enduranceDrain": {
       "scale": 0.35,

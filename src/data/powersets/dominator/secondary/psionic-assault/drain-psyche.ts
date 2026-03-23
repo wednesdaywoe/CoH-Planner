@@ -41,7 +41,8 @@ export const DrainPsyche: Power = {
   "effects": {
     "regenBuff": {
       "scale": 1,
-      "table": "Melee_Ones"
+      "table": "Melee_Ones",
+      "perTarget": 1
     },
     "durations": {
       "regenBuff": 30,
@@ -51,7 +52,8 @@ export const DrainPsyche: Power = {
     },
     "recoveryBuff": {
       "scale": 1,
-      "table": "Melee_Ones"
+      "table": "Melee_Ones",
+      "perTarget": 1
     },
     "regenDebuff": {
       "scale": 5,

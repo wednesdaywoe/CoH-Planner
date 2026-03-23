@@ -41,7 +41,8 @@ export const ParasiticLeech: Power = {
   "effects": {
     "recoveryBuff": {
       "scale": 0.558,
-      "table": "Melee_Ones"
+      "table": "Melee_Ones",
+      "perTarget": 0.558
     },
     "durations": {
       "recoveryBuff": 45,
@@ -51,11 +52,13 @@ export const ParasiticLeech: Power = {
     },
     "regenBuff": {
       "scale": 0.9279999999999999,
-      "table": "Melee_Ones"
+      "table": "Melee_Ones",
+      "perTarget": 0.9279999999999999
     },
     "absorb": {
       "scale": 0.186,
-      "table": "Melee_Ones"
+      "table": "Melee_Ones",
+      "perTarget": 0.186
     },
     "regenDebuff": {
       "scale": 1.3,

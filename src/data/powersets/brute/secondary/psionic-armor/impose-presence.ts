@@ -41,7 +41,8 @@ export const ImposePresence: Power = {
   "effects": {
     "tohitBuff": {
       "scale": 0.2,
-      "table": "Melee_Buff_ToHit"
+      "table": "Melee_Buff_ToHit",
+      "perTarget": 0.2
     },
     "durations": {
       "tohitBuff": 1,
@@ -50,11 +51,13 @@ export const ImposePresence: Power = {
     "defenseBuff": {
       "ranged": {
         "scale": 0.075,
-        "table": "Melee_Buff_Def"
+        "table": "Melee_Buff_Def",
+        "perTarget": 0.075
       },
       "melee": {
         "scale": 0.075,
-        "table": "Melee_Buff_Def"
+        "table": "Melee_Buff_Def",
+        "perTarget": 0.075
       }
     },
     "taunt": {

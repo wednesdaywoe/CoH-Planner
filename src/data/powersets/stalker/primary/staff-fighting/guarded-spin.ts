@@ -58,11 +58,13 @@ export const GuardedSpin: Power = {
     "defenseBuff": {
       "melee": {
         "scale": 1.5,
-        "table": "Melee_Buff_Def"
+        "table": "Melee_Buff_Def",
+        "perTarget": 1.5
       },
       "lethal": {
         "scale": 1.5,
-        "table": "Melee_Buff_Def"
+        "table": "Melee_Buff_Def",
+        "perTarget": 1.5
       }
     },
     "durations": {

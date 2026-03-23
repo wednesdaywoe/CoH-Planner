@@ -21,8 +21,9 @@ export interface ScaledEffect {
   scale: number;
   /** AT table name (e.g., "Ranged_Debuff_ToHit") */
   table: string;
-  /** Per-target scale increment for AoE per-target stacking buffs.
-   *  At N targets: effective_scale = scale + perTarget × (N - 1) */
+  /** Per-stack scale increment for stacking buffs (per-target AoE or damage-triggered).
+   *  At N stacks: effective_scale = scale + perTarget × (N - 1)
+   *  For AoE powers, N = targets hit. For non-AoE, N = stack count (see maxStacks). */
   perTarget?: number;
 }
 
@@ -328,6 +329,11 @@ export interface PowerEffects {
   perceptionBuff?: NumberOrScaled;
   /** Absorb shield */
   absorb?: NumberOrScaled;
+
+  // === STACKING ===
+  /** Max stacks for non-AoE stacking powers (e.g., Reactive Regeneration = 20).
+   *  For AoE per-target powers, use stats.maxTargets instead. */
+  maxStacks?: number;
 
   // === SELF-PENALTY FLAG ===
   /** If true, debuff fields (damageDebuff, slow, rechargeDebuff) are genuine self-penalties
