@@ -89,7 +89,7 @@ export function BuildCard({ build, showDelete, onDeleted, onAuthorClick, onVisib
               </span>
             )}
           </div>
-          <div className="flex items-center gap-1.5 shrink-0">
+          <div className="flex items-center gap-1 shrink-0">
             <span className="text-xs text-gray-500">Lv {build.level}</span>
             {/* Favorite star */}
             <span
@@ -100,6 +100,40 @@ export function BuildCard({ build, showDelete, onDeleted, onAuthorClick, onVisib
             >
               {favorited ? '\u2605' : '\u2606'}
             </span>
+            {/* Visibility toggle (My Builds tab) */}
+            {onVisibilityToggle && !deleteConfirm && (
+              <span
+                role="button"
+                onClick={handleVisibilityToggle}
+                className={`p-0.5 transition-colors rounded ${visibilityLoading ? 'opacity-50' : ''} ${
+                  isPublic ? 'text-gray-500 hover:text-indigo-400' : 'text-indigo-400 hover:text-indigo-300'
+                }`}
+                title={isPublic ? 'Make private (save to vault)' : 'Make public'}
+              >
+                {isPublic ? (
+                  <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z" />
+                  </svg>
+                ) : (
+                  <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                  </svg>
+                )}
+              </span>
+            )}
+            {/* Delete (My Builds tab) */}
+            {owned && !deleteConfirm && (
+              <span
+                role="button"
+                onClick={(e) => { e.stopPropagation(); setDeleteConfirm(true); }}
+                className="p-0.5 text-gray-600 hover:text-red-400 transition-colors rounded"
+                title="Delete build"
+              >
+                <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                </svg>
+              </span>
+            )}
           </div>
         </div>
 
@@ -153,41 +187,6 @@ export function BuildCard({ build, showDelete, onDeleted, onAuthorClick, onVisib
           </span>
         </div>
       </button>
-
-      {/* Visibility toggle (My Builds tab) */}
-      {onVisibilityToggle && !deleteConfirm && (
-        <button
-          onClick={handleVisibilityToggle}
-          disabled={visibilityLoading}
-          className={`absolute top-2 right-8 p-1 transition-colors rounded disabled:opacity-50 ${
-            isPublic ? 'text-gray-500 hover:text-indigo-400' : 'text-indigo-400 hover:text-indigo-300'
-          }`}
-          title={isPublic ? 'Make private (save to vault)' : 'Make public'}
-        >
-          {isPublic ? (
-            <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z" />
-            </svg>
-          ) : (
-            <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-            </svg>
-          )}
-        </button>
-      )}
-
-      {/* Inline delete (My Builds tab) */}
-      {owned && !deleteConfirm && (
-        <button
-          onClick={(e) => { e.stopPropagation(); setDeleteConfirm(true); }}
-          className="absolute top-2 right-2 p-1 text-gray-600 hover:text-red-400 transition-colors rounded"
-          title="Delete build"
-        >
-          <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-          </svg>
-        </button>
-      )}
 
       {/* Delete confirmation overlay */}
       {deleteConfirm && (
