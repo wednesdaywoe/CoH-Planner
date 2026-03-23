@@ -428,6 +428,7 @@ interface ActivePowerEffect {
   defenseBuffSuppressible?: Record<string, ScalarOrScaled>;
   resistance?: Record<string, ScalarOrScaled>;
   debuffResistance?: Record<string, ScalarOrScaled>;
+  elusivity?: Record<string, ScalarOrScaled>;
   runSpeed?: number;
   flySpeed?: number;
   jumpHeight?: number;
@@ -685,6 +686,24 @@ function applyActivePowerBonuses(
       }
     }
 
+    // Elusivity (Defense Debuff Resistance)
+    // Super Reflexes, Shield Defense, etc. — stored as elusivity.all or per-type
+    if (effects.elusivity && typeof effects.elusivity === 'object') {
+      const elusivity = effects.elusivity as Record<string, ScalarOrScaled>;
+      for (const [, value] of Object.entries(elusivity)) {
+        // Both 'all' and specific types (smashing, lethal, etc.) contribute to defense debuff resistance
+        const percentage = resolveScaledEffect(value, archetypeId, buildLevel) * 100;
+        if (percentage > 0) {
+          global.debuffResistDefense += percentage;
+          addToBreakdown(breakdown, 'debuffResistDefense', {
+            name: power.name,
+            value: percentage,
+            type: 'active-power',
+          });
+        }
+      }
+    }
+
     // Movement
     if (effects.runSpeed !== undefined) {
       const value = extractScaleValue(effects.runSpeed) * 100;
@@ -930,18 +949,19 @@ function applyActivePowerBonuses(
       if (!mez.table) continue;
       const tableLower = mez.table.toLowerCase();
       const isResBoolean = tableLower.includes('res_boolean');
-      // Knockback effects on SingleTarget Toggle/Auto powers are protection even without Res_Boolean
-      // (e.g., Acrobatics uses Melee_Ones table for KB protection)
+      // Knockback effects on SingleTarget Self-targeted powers are protection even without Res_Boolean
+      // (e.g., Acrobatics uses Melee_Ones table for KB protection, Practiced Brawler is a Click)
       // AoE toggles like Repulsion Field and Hurricane are offensive KB, not protection
-      const isKbToggleProt = field === 'knockback' &&
+      const powerTypeLower = power.powerType?.toLowerCase();
+      const isKbSelfProt = field === 'knockback' &&
         effects.effectArea === 'SingleTarget' &&
-        (power.powerType?.toLowerCase() === 'toggle' || power.powerType?.toLowerCase() === 'auto');
-      if (isResBoolean || isKbToggleProt) {
+        (powerTypeLower === 'toggle' || powerTypeLower === 'auto' || powerTypeLower === 'click');
+      if (isResBoolean || isKbSelfProt) {
         const tableValue = getTableValue(archetypeId, tableLower, buildLevel);
         if (tableValue !== undefined) {
           let mag = Math.abs(mez.scale) * tableValue;
           // Knockback enhancements boost KB protection magnitude (per Acrobatics description)
-          if (isKbToggleProt && !isResBoolean) {
+          if (isKbSelfProt && !isResBoolean) {
             mag *= (1 + (enhBonuses.knockback || 0));
           }
           global[key] += mag;

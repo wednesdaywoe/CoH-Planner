@@ -23,19 +23,15 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   {
     date: '2026-03-23',
     items: [
+      { message: 'Fixed stale auth session causing 401 error when trying to save to private builds', type: 'feat' },
+      { message: 'Practiced Brawlers scale now processes correctly', type: 'fix' },
+      { message: 'Added processing for elusivity to debuffResistDefense. All 7 SR powers (Agile, Dodge, Lucky, Evasion, Focused Fighting, Focused Senses, Elude) now contribute', type: 'fix' },
+      { message: 'Fixed Practiced Brawlers duplicate KB protection', type: 'fix' },
+      { message: 'KB/KU res now stores as scaled effect instead of raw magnitude in protection', type: 'fix' },
       { message: 'Fixed issue with power import deduplication', type: 'fix' },
       { message: 'Fix for imported powers with debuffs being applied incorrectly', type: 'fix' },
       { message: '21 powers now correctly flagged with selfPenalty', type: 'fix' },
-      { message: ' fix: Display names ("Combat Jumping") being compared \
-         against internal names ("Combat_Jumping"). This affected all \
-         rank 3+ pool powers that have multi-word names.', type: 'fix' },
-      { message: 'Rage crash debuff excluded from DMG stat', type: 'fix' },
-      { message: 'Contributing sources now display for Movement and Debuff Resistance', type: 'fix' },
-      { message: 'Added missing defense debuff resistance to power data', type: 'fix' },
-      { message: 'Updated internal names for various powers across Arachnos Soldier, Arachnos Widow, and Peacebringer powersets ', type: 'fix' },
-      { message: 'Implemented fallback logic in getIOSet function to support backward compatibility for renamed IO set', type: 'fix' },
-      { message: 'Added migration logic to sync internal name changes during build synchronization', type: 'fix' },
-      { message: 'Enhanced import functionality to skip non-slottable granted sub-powers during data import', type: 'fix' },
+    
     ],
   },
 ];

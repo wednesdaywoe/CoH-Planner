@@ -29,10 +29,6 @@ export const PracticedBrawler: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "protection": {
-      "knockup": 1,
-      "knockback": 1
-    },
     "durations": {
       "protection": 120,
       "knockup": 120,

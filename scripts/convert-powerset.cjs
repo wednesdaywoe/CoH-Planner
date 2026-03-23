@@ -795,15 +795,16 @@ function extractEffects(templates) {
         continue;
       }
 
-      // ========== KNOCKBACK/KNOCKUP/REPEL (no magnitude) ==========
+      // ========== KNOCKBACK/KNOCKUP/REPEL ==========
+      // For KB/KU: aspect "resistance" means protection (same as mez protection)
+      // Store as scaled effect (like hold/stun) — the scale*table gives the actual magnitude
       if (KNOCKBACK_TYPES[attrib]) {
+        const kbType = KNOCKBACK_TYPES[attrib];
         if (aspect === 'resistance') {
-          const kbType = KNOCKBACK_TYPES[attrib];
-          if (!effects.protection) effects.protection = {};
-          effects.protection[kbType] = magnitude;
-          recordDuration('protection');
+          // KB/KU protection stored as scaled effect (not in protection object)
+          effects[kbType] = makeEffect();
+          recordDuration(kbType);
         } else {
-          const kbType = KNOCKBACK_TYPES[attrib];
           effects[kbType] = makeEffect();
           recordDuration(kbType);
         }
