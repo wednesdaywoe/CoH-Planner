@@ -1,0 +1,15 @@
+# Supabase Edge Function configuration
+# These functions handle authentication internally (owner tokens + optional Discord OAuth),
+# so gateway-level JWT verification must be disabled to allow anonymous access.
+
+[functions.share-build]
+verify_jwt = false
+
+[functions.delete-build]
+verify_jwt = false
+
+[functions.claim-builds]
+verify_jwt = false
+
+[functions.update-build-visibility]
+verify_jwt = false
