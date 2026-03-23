@@ -37,6 +37,15 @@ export const Clarity: Power = {
       "table": "Ranged_Res_Boolean"
     },
     "effectDuration": 90,
+    "durations": {
+      "confuse": 90,
+      "fear": 90,
+      "hold": 90,
+      "immobilize": 90,
+      "stun": 90,
+      "sleep": 90,
+      "perceptionBuff": 90
+    },
     "fear": {
       "mag": 1,
       "scale": 30,
@@ -66,15 +75,6 @@ export const Clarity: Power = {
       "scale": 2.5,
       "table": "Ranged_Res_Boolean"
     },
-    "buffDuration": 90,
-    "durations": {
-      "confuse": 90,
-      "fear": 90,
-      "hold": 90,
-      "immobilize": 90,
-      "perceptionBuff": 90,
-      "sleep": 90,
-      "stun": 90
-    }
+    "buffDuration": 90
   }
 };

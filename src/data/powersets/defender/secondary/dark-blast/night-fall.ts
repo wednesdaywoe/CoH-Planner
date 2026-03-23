@@ -48,15 +48,5 @@ export const NightFall: Power = {
     "table": "Ranged_Damage",
     "duration": 2.8,
     "tickRate": 0.3
-  },
-  "effects": {
-    "tohitDebuff": {
-      "scale": 0.75,
-      "table": "Ranged_Debuff_ToHit"
-    },
-    "durations": {
-      "tohitDebuff": 10
-    },
-    "buffDuration": 10
   }
 };

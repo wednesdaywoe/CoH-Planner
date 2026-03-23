@@ -37,61 +37,18 @@ export const ReactionTime: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "movement": {
-      "runSpeed": {
-        "scale": 1,
-        "table": "Melee_SpeedRunning"
-      },
-      "flySpeed": {
-        "scale": 0.7,
-        "table": "Melee_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.7,
-        "table": "Melee_Slow"
-      },
-      "jumpHeight": {
-        "scale": 0.7,
-        "table": "Melee_Slow"
-      }
-    },
-    "durations": {
-      "movement": 10,
-      "rechargeDebuff": 10,
-      "slow": 10,
-      "recoveryBuff": 1.25,
-      "absorb": 12
-    },
-    "rechargeDebuff": {
-      "scale": 0.4,
-      "table": "Melee_Slow"
-    },
-    "slow": {
-      "runSpeed": {
-        "scale": 0.7,
-        "table": "Melee_Slow"
-      },
-      "flySpeed": {
-        "scale": 0.7,
-        "table": "Melee_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.7,
-        "table": "Melee_Slow"
-      },
-      "jumpHeight": {
-        "scale": 0.7,
-        "table": "Melee_Slow"
-      }
-    },
     "recoveryBuff": {
       "scale": 0.5,
       "table": "Melee_Ones"
+    },
+    "durations": {
+      "recoveryBuff": 1.25,
+      "absorb": 12
     },
     "absorb": {
       "scale": 0.15,
       "table": "Melee_HealSelf"
     },
-    "buffDuration": 10
+    "buffDuration": 12
   }
 };

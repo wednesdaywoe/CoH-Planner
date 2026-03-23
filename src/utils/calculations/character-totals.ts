@@ -466,7 +466,10 @@ interface ActivePowerEffect {
   perceptionBuff?: ScalarOrScaled;
   // Endurance cost per second (for toggles)
   enduranceCost?: number;
-  // Self-debuffs (e.g., Granite Armor)
+  // Self-debuffs (e.g., Granite Armor) — only applied when selfPenalty is true
+  // Most powers with these fields target enemies, not the caster
+  selfPenalty?: boolean;
+  tohitDebuff?: ScalarOrScaled;
   slow?: ScalarOrScaled | Record<string, ScalarOrScaled>;
   movement?: Record<string, ScalarOrScaled>;
   rechargeDebuff?: ScalarOrScaled;
@@ -578,10 +581,11 @@ function applyActivePowerBonuses(
     }
 
     // Damage debuff (self-penalty, e.g. Granite Armor -30% damage)
+    // Only applied when selfPenalty flag is set — most damageDebuff effects target enemies
     // Unenhanceable — self-debuffs are not boosted by slotted enhancements
     // Skip crash debuffs: if a power also has damageBuff, the debuff is a crash effect
     // (e.g., Rage: 120s buff + 10s crash) and should not count as sustained damage
-    if (effects.damageDebuff !== undefined && effects.damageBuff === undefined) {
+    if (effects.selfPenalty && effects.damageDebuff !== undefined && effects.damageBuff === undefined) {
       const value = resolveScaledEffect(effects.damageDebuff as ScalarOrScaled, archetypeId, buildLevel) * -100;
       global.damage += value;
       addToBreakdown(breakdown, 'damage', {
@@ -711,8 +715,12 @@ function applyActivePowerBonuses(
       });
     }
 
-    // Movement buffs (new format — e.g., Lightning Reflexes)
-    if (effects.movement && typeof effects.movement === 'object') {
+    // Movement buffs (new format — e.g., Lightning Reflexes, Reaction Time)
+    // Skip when the power also has tohitDebuff or damageDebuff — those indicate
+    // enemy-targeting debuff auras (e.g., Time's Juncture) where movement is a
+    // foe slow, not a self-buff
+    if (effects.movement && typeof effects.movement === 'object' &&
+        effects.tohitDebuff === undefined && effects.damageDebuff === undefined) {
       const movementKeyMap: Record<string, keyof GlobalBonuses> = {
         runSpeed: 'runSpeed',
         flySpeed: 'flySpeed',
@@ -735,8 +743,9 @@ function applyActivePowerBonuses(
     }
 
     // Movement debuffs / slow (self-penalty, e.g. Granite Armor -70% run speed)
+    // Only applied when selfPenalty flag is set — most slow effects target enemies
     // Unenhanceable — self-slows are not boosted by slotted enhancements
-    if (effects.slow && typeof effects.slow === 'object') {
+    if (effects.selfPenalty && effects.slow && typeof effects.slow === 'object') {
       const slowKeyMap: Record<string, keyof GlobalBonuses> = {
         runSpeed: 'runSpeed',
         flySpeed: 'flySpeed',
@@ -772,8 +781,9 @@ function applyActivePowerBonuses(
     }
 
     // Recharge debuff (self-penalty, e.g. Granite Armor -65% recharge)
+    // Only applied when selfPenalty flag is set — most rechargeDebuff effects target enemies
     // Unenhanceable — self-debuffs are not boosted by slotted enhancements
-    if (effects.rechargeDebuff !== undefined) {
+    if (effects.selfPenalty && effects.rechargeDebuff !== undefined) {
       const value = resolveScaledEffect(effects.rechargeDebuff as ScalarOrScaled, archetypeId, buildLevel) * -100;
       global.recharge += value;
       addToBreakdown(breakdown, 'recharge', {
@@ -863,9 +873,10 @@ function applyActivePowerBonuses(
 
     // Max Endurance buff
     // Enhanced by Endurance Modification enhancements
+    // Scale values are already in absolute endurance points (e.g., scale 10 = +10 end)
     if (effects.maxEndBuff !== undefined) {
       const enhMultiplier = 1 + (enhBonuses.enduranceMod || 0);
-      const value = resolveScaledEffect(effects.maxEndBuff, archetypeId, buildLevel) * 100 * enhMultiplier;
+      const value = resolveScaledEffect(effects.maxEndBuff, archetypeId, buildLevel) * enhMultiplier;
       global.maxEndurance += value;
       addToBreakdown(breakdown, 'maxEndurance', {
         name: power.name,

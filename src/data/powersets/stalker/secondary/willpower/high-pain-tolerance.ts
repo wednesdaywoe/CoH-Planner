@@ -31,7 +31,7 @@ export const HighPainTolerance: Power = {
   "maxSlots": 6,
   "effects": {
     "maxHPBuff": {
-      "scale": 1,
+      "scale": 2,
       "table": "Melee_HealSelf"
     },
     "durations": {

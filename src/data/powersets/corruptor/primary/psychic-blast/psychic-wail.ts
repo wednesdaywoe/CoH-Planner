@@ -39,31 +39,16 @@ export const PsychicWail: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Psionic",
-      "scale": 4,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 2,
-      "table": "Ranged_InherentDamage"
-    }
-  ],
+  "damage": {
+    "type": "Psionic",
+    "scale": 4,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "stun": {
       "mag": 3,
       "scale": 10,
       "table": "Ranged_Stun"
-    },
-    "rechargeDebuff": {
-      "scale": 0.7,
-      "table": "Ranged_Slow"
-    },
-    "durations": {
-      "rechargeDebuff": 20
-    },
-    "buffDuration": 20
+    }
   }
 };

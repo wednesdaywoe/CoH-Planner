@@ -54,14 +54,6 @@ export const HeartofDarkness: Power = {
       "mag": 3,
       "scale": 10,
       "table": "Ranged_Stun"
-    },
-    "tohitDebuff": {
-      "scale": 0.75,
-      "table": "Ranged_Debuff_ToHit"
-    },
-    "durations": {
-      "tohitDebuff": 10
-    },
-    "buffDuration": 10
+    }
   }
 };

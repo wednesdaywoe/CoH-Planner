@@ -50,11 +50,6 @@ export const GamblersCut: Power = {
       "type": "Lethal",
       "scale": 0.84,
       "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.84,
-      "table": "Melee_InherentDamage"
     }
   ],
   "effects": {

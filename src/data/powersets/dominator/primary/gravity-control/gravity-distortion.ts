@@ -53,39 +53,13 @@ export const GravityDistortion: Power = {
       "scale": 12,
       "table": "Ranged_Immobilize"
     },
-    "movement": {
-      "runSpeed": {
-        "scale": 0.5,
-        "table": "Ranged_Slow"
-      },
-      "flySpeed": {
-        "scale": 0.5,
-        "table": "Ranged_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.5,
-        "table": "Ranged_Slow"
-      },
-      "jumpHeight": {
-        "scale": 0.5,
-        "table": "Ranged_Slow"
-      }
-    },
     "protection": {
       "knockup": 1,
       "knockback": 1
     },
-    "slow": {
-      "fly": {
-        "scale": 1.6,
-        "table": "Ranged_Ones"
-      }
-    },
-    "buffDuration": 10,
     "durations": {
-      "movement": 12,
-      "protection": 10,
-      "slow": 10
-    }
+      "protection": 10
+    },
+    "buffDuration": 10
   }
 };

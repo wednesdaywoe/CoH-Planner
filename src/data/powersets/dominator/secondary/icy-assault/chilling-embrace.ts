@@ -22,7 +22,6 @@ export const ChillingEmbrace: Power = {
     "radius": 15,
     "recharge": 2,
     "endurance": 0.52,
-    "activatePeriod": 2.0,
     "castTime": 0.73,
     "maxTargets": 10
   },
@@ -43,38 +42,5 @@ export const ChillingEmbrace: Power = {
     "type": "Cold",
     "scale": 0.14,
     "table": "Melee_Damage"
-  },
-  "effects": {
-    "movement": {
-      "runSpeed": {
-        "scale": 0.4,
-        "table": "Melee_Slow"
-      },
-      "flySpeed": {
-        "scale": 0.4,
-        "table": "Melee_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.4,
-        "table": "Melee_Slow"
-      },
-      "jumpHeight": {
-        "scale": 0.4,
-        "table": "Melee_Slow"
-      }
-    },
-    "rechargeDebuff": {
-      "scale": 0.4,
-      "table": "Melee_Slow"
-    },
-    "damageDebuff": {
-      "scale": 1,
-      "table": "Melee_Debuff_Dam"
-    },
-    "durations": {
-      "damageDebuff": 5,
-      "movement": 5,
-      "rechargeBuff": 5
-    }
   }
 };

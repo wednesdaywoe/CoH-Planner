@@ -50,18 +50,13 @@ export const PsychicShockwave: Power = {
       "scale": 5,
       "table": "Ranged_Stun"
     },
-    "rechargeDebuff": {
-      "scale": 0.5,
-      "table": "Ranged_Slow"
-    },
     "damageBuff": {
       "scale": 0.04,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 20,
     "durations": {
-      "damageBuff": 9.47,
-      "rechargeBuff": 20
-    }
+      "damageBuff": 9.47
+    },
+    "buffDuration": 9.47
   }
 };

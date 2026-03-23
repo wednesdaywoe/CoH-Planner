@@ -37,6 +37,11 @@ export const PsychicFocus: Power = {
       "scale": 5,
       "table": "Melee_Buff_ToHit"
     },
+    "durations": {
+      "tohitBuff": 10,
+      "rangeBuff": 10,
+      "damageBuff": 10
+    },
     "rangeBuff": {
       "scale": 0.333,
       "table": "Melee_Ones"
@@ -45,11 +50,6 @@ export const PsychicFocus: Power = {
       "scale": 5,
       "table": "Melee_Buff_Dmg"
     },
-    "buffDuration": 10,
-    "durations": {
-      "damageBuff": 10,
-      "rangeBuff": 10,
-      "tohitBuff": 10
-    }
+    "buffDuration": 10
   }
 };

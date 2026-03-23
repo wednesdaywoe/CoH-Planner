@@ -58,28 +58,6 @@ export const BarbSwipe: Power = {
       "mag": 0.33,
       "scale": 8,
       "table": "Melee_Immobilize"
-    },
-    "movement": {
-      "runSpeed": {
-        "scale": 0.2,
-        "table": "Melee_Slow"
-      },
-      "flySpeed": {
-        "scale": 0.2,
-        "table": "Melee_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.2,
-        "table": "Melee_Slow"
-      },
-      "jumpHeight": {
-        "scale": 0.2,
-        "table": "Melee_Slow"
-      }
-    },
-    "rechargeDebuff": {
-      "scale": 0.1,
-      "table": "Melee_Slow"
     }
   },
   "requires": "!Tanker_Defense.Shield_Defense"

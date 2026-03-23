@@ -31,7 +31,7 @@ export const Inexhaustible: Power = {
   "maxSlots": 6,
   "effects": {
     "maxHPBuff": {
-      "scale": 0.45,
+      "scale": 1.45,
       "table": "Melee_HealSelf"
     },
     "durations": {
@@ -41,11 +41,11 @@ export const Inexhaustible: Power = {
       "debuffResistance": 5.25
     },
     "regenBuff": {
-      "scale": 0.15,
+      "scale": 0.65,
       "table": "Melee_Ones"
     },
     "recoveryBuff": {
-      "scale": 0.1,
+      "scale": 0.35,
       "table": "Melee_Ones"
     },
     "debuffResistance": {

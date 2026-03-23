@@ -74,21 +74,11 @@ export const VenomousGas: Power = {
     },
     "durations": {
       "resistanceDebuff": 0.75,
-      "damageDebuff": 0.75,
-      "defenseDebuff": 0.75,
-      "tohitDebuff": 0.75
-    },
-    "damageDebuff": {
-      "scale": 1.5,
-      "table": "Ranged_Debuff_Dam"
+      "defenseDebuff": 0.75
     },
     "defenseDebuff": {
       "scale": 1,
       "table": "Ranged_Debuff_Def"
-    },
-    "tohitDebuff": {
-      "scale": 1,
-      "table": "Ranged_Debuff_ToHit"
     },
     "buffDuration": 0.75
   }

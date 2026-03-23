@@ -51,10 +51,6 @@ export const AilmentResistance: Power = {
       }
     },
     "debuffResistance": {
-      "defense": {
-        "scale": 0.2,
-        "table": "Melee_Ones"
-      },
       "endurance": {
         "scale": 0.2,
         "table": "Melee_Ones"

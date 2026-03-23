@@ -22,7 +22,6 @@ export const IncendiaryAura: Power = {
     "radius": 20,
     "recharge": 20,
     "endurance": 0.08,
-    "activatePeriod": 0.2,
     "castTime": 1.47,
     "maxTargets": 10
   },
@@ -38,24 +37,12 @@ export const IncendiaryAura: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "tohitDebuff": {
-      "scale": 1.25,
-      "table": "Melee_DeBuff_ToHit"
-    },
-    "durations": {
-      "tohitDebuff": 0.45,
-      "slow": 0.45,
-      "defenseDebuff": 0.45
-    },
-    "slow": {
-      "jumpHeight": {
-        "scale": 500,
-        "table": "Melee_Ones"
-      }
-    },
     "defenseDebuff": {
       "scale": 0.75,
       "table": "Ranged_Debuff_Def"
+    },
+    "durations": {
+      "defenseDebuff": 0.45
     },
     "buffDuration": 0.45
   }

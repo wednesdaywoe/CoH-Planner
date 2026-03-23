@@ -48,34 +48,5 @@ export const IceBlast: Power = {
       "scale": 1,
       "table": "Ranged_Damage"
     }
-  ],
-  "effects": {
-    "movement": {
-      "jumpHeight": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      },
-      "flySpeed": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      }
-    },
-    "rechargeDebuff": {
-      "scale": 0.2,
-      "table": "Ranged_Slow"
-    },
-    "buffDuration": 10,
-    "durations": {
-      "movement": 10,
-      "rechargeBuff": 10
-    }
-  }
+  ]
 };

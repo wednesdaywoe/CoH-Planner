@@ -41,6 +41,10 @@ export const AnguishingCry: Power = {
       "scale": 3,
       "table": "Ranged_Debuff_Def"
     },
+    "durations": {
+      "defenseDebuff": 30,
+      "resistanceDebuff": 30
+    },
     "resistanceDebuff": {
       "smashing": {
         "scale": 3,
@@ -75,10 +79,6 @@ export const AnguishingCry: Power = {
         "table": "Ranged_Res_Dmg"
       }
     },
-    "buffDuration": 30,
-    "durations": {
-      "defenseDebuff": 30,
-      "resistanceDebuff": 30
-    }
+    "buffDuration": 30
   }
 };

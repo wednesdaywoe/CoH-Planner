@@ -53,43 +53,12 @@ export const Chilblain: Power = {
       "scale": 15,
       "table": "Ranged_Immobilize"
     },
-    "movement": {
-      "runSpeed": {
-        "scale": 0.3,
-        "table": "Ranged_Slow"
-      },
-      "flySpeed": {
-        "scale": 0.3,
-        "table": "Ranged_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.3,
-        "table": "Ranged_Slow"
-      },
-      "jumpHeight": {
-        "scale": 0.3,
-        "table": "Ranged_Slow"
-      }
-    },
-    "durations": {
-      "movement": 15,
-      "rechargeDebuff": 18,
-      "protection": 15,
-      "slow": 15
-    },
-    "rechargeDebuff": {
-      "scale": 0.2,
-      "table": "Ranged_Slow"
-    },
     "protection": {
       "knockup": 1,
       "knockback": 1
     },
-    "slow": {
-      "fly": {
-        "scale": 1.6,
-        "table": "Ranged_Ones"
-      }
+    "durations": {
+      "protection": 15
     },
     "buffDuration": 15
   }

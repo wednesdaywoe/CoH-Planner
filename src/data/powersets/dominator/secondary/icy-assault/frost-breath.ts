@@ -46,34 +46,5 @@ export const FrostBreath: Power = {
     "table": "Ranged_Damage",
     "duration": 0.6,
     "tickRate": 0.5
-  },
-  "effects": {
-    "movement": {
-      "jumpHeight": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      },
-      "flySpeed": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      }
-    },
-    "rechargeDebuff": {
-      "scale": 0.2,
-      "table": "Ranged_Slow"
-    },
-    "buffDuration": 10,
-    "durations": {
-      "movement": 10,
-      "rechargeBuff": 10
-    }
   }
 };

@@ -79,11 +79,11 @@ export const EvolvingArmor: Power = {
       "defenseBuff": 1
     },
     "regenBuff": {
-      "scale": 0.06,
+      "scale": 0.36,
       "table": "Melee_Ones"
     },
     "recoveryBuff": {
-      "scale": 0.03,
+      "scale": 0.18,
       "table": "Melee_Ones"
     },
     "resistance": {

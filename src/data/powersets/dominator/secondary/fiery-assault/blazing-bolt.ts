@@ -17,11 +17,11 @@ export const BlazingBolt: Power = {
   "powerType": "Click",
   "effectArea": "SingleTarget",
   "stats": {
-    "accuracy": 1.2,
+    "accuracy": 1,
     "range": 150,
     "recharge": 20,
     "endurance": 18.512,
-    "castTime": 3.67
+    "castTime": 1.67
   },
   "allowedEnhancements": [
     "Interrupt",
@@ -50,25 +50,5 @@ export const BlazingBolt: Power = {
       "duration": 3.1,
       "tickRate": 1
     }
-  ],
-  "quickSnipe": {
-    "stats": {
-      "castTime": 1.67,
-      "range": 80
-    },
-    "damage": [
-      {
-        "type": "Fire",
-        "scale": 3.56,
-        "table": "Ranged_Damage"
-      },
-      {
-        "type": "Fire",
-        "scale": 0.225,
-        "table": "Ranged_Damage",
-        "duration": 3.1,
-        "tickRate": 1.0
-      }
-    ]
-  }
+  ]
 };

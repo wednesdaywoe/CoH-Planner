@@ -48,11 +48,6 @@ export const PowerPush: Power = {
       "type": "Energy",
       "scale": 0.2,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.4,
-      "table": "Ranged_InherentDamage"
     }
   ],
   "effects": {

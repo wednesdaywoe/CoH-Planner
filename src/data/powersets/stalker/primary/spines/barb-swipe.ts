@@ -54,11 +54,6 @@ export const BarbSwipe: Power = {
       "type": "Lethal",
       "scale": 0.84,
       "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.84,
-      "table": "Melee_InherentDamage"
     }
   ],
   "effects": {
@@ -66,34 +61,7 @@ export const BarbSwipe: Power = {
       "mag": 0.33,
       "scale": 8,
       "table": "Melee_Immobilize"
-    },
-    "movement": {
-      "runSpeed": {
-        "scale": 0.2,
-        "table": "Melee_Slow"
-      },
-      "flySpeed": {
-        "scale": 0.2,
-        "table": "Melee_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.2,
-        "table": "Melee_Slow"
-      },
-      "jumpHeight": {
-        "scale": 0.2,
-        "table": "Melee_Slow"
-      }
-    },
-    "durations": {
-      "movement": 4,
-      "rechargeDebuff": 2
-    },
-    "rechargeDebuff": {
-      "scale": 0.1,
-      "table": "Melee_Slow"
-    },
-    "buffDuration": 4
+    }
   },
   "requires": "!Stalker_Defense.Shield_Defense"
 };

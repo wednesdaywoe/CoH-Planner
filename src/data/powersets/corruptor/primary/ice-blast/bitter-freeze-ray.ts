@@ -40,49 +40,25 @@ export const BitterFreezeRay: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Cold",
-      "scale": 2.76,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Cold",
-      "scale": 2.76,
-      "table": "Ranged_InherentDamage"
-    }
-  ],
+  "damage": {
+    "type": "Cold",
+    "scale": 2.76,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "hold": {
       "mag": 3,
       "scale": 8,
       "table": "Ranged_Immobilize"
     },
-    "movement": {
-      "jumpHeight": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      },
-      "flySpeed": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      }
-    },
-    "rechargeDebuff": {
-      "scale": 0.2,
-      "table": "Ranged_Slow"
-    },
     "knockup": {
       "scale": 100,
       "table": "Ranged_Ones"
+    },
+    "durations": {
+      "knockup": 10,
+      "knockback": 10,
+      "protection": 10
     },
     "knockback": {
       "scale": 100,
@@ -92,13 +68,6 @@ export const BitterFreezeRay: Power = {
       "knockup": 1,
       "knockback": 1
     },
-    "buffDuration": 10,
-    "durations": {
-      "knockback": 10,
-      "knockup": 10,
-      "movement": 18,
-      "protection": 10,
-      "rechargeBuff": 18
-    }
+    "buffDuration": 10
   }
 };

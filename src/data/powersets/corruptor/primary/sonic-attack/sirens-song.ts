@@ -50,17 +50,7 @@ export const SirensSong: Power = {
     {
       "type": "Energy",
       "scale": 1.1902,
-      "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.1902,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.1902,
-      "table": "Ranged_InherentDamage"
     }
   ],
   "effects": {

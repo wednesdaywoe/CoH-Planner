@@ -17,11 +17,11 @@ export const SniperRifle: Power = {
   "powerType": "Click",
   "effectArea": "SingleTarget",
   "stats": {
-    "accuracy": 1.25,
+    "accuracy": 1,
     "range": 150,
     "recharge": 12,
     "endurance": 14.352,
-    "castTime": 2.67
+    "castTime": 1.17
   },
   "allowedEnhancements": [
     "Interrupt",
@@ -44,17 +44,6 @@ export const SniperRifle: Power = {
     "type": "Lethal",
     "scale": 4.5,
     "table": "Ranged_Damage"
-  },
-  "quickSnipe": {
-    "stats": {
-      "castTime": 1.17,
-      "range": 80
-    },
-    "damage": {
-      "type": "Lethal",
-      "scale": 2.28,
-      "table": "Ranged_Damage"
-    }
   },
   "effects": {
     "knockback": {

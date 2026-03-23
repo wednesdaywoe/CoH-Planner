@@ -53,24 +53,9 @@ export const SiphonLife: Power = {
       "table": "Melee_InherentDamage"
     },
     {
-      "type": "Negative",
-      "scale": 1.96,
-      "table": "Melee_InherentDamage"
-    },
-    {
       "type": "Heal",
       "scale": 1,
       "table": "Melee_HealSelf"
     }
-  ],
-  "effects": {
-    "tohitDebuff": {
-      "scale": 0.75,
-      "table": "Melee_DeBuff_ToHit"
-    },
-    "durations": {
-      "tohitDebuff": 10
-    },
-    "buffDuration": 10
-  }
+  ]
 };

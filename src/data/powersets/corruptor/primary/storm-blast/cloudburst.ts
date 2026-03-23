@@ -36,54 +36,11 @@ export const Cloudburst: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Cold",
-      "scale": 0.2275,
-      "table": "Ranged_Damage",
-      "duration": 2.9,
-      "tickRate": 0.3
-    },
-    {
-      "type": "Cold",
-      "scale": 0.2275,
-      "table": "Ranged_InherentDamage",
-      "duration": 2.9,
-      "tickRate": 0.3
-    }
-  ],
-  "effects": {
-    "rechargeDebuff": {
-      "scale": 0.1,
-      "table": "Melee_Slow"
-    },
-    "durations": {
-      "rechargeDebuff": 8,
-      "movement": 8,
-      "tohitDebuff": 8
-    },
-    "movement": {
-      "jumpHeight": {
-        "scale": 0.2,
-        "table": "Melee_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.2,
-        "table": "Melee_Slow"
-      },
-      "flySpeed": {
-        "scale": 0.2,
-        "table": "Melee_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.2,
-        "table": "Melee_Slow"
-      }
-    },
-    "tohitDebuff": {
-      "scale": 1,
-      "table": "Ranged_Debuff_ToHit"
-    },
-    "buffDuration": 8
+  "damage": {
+    "type": "Cold",
+    "scale": 0.2275,
+    "table": "Ranged_Damage",
+    "duration": 2.9,
+    "tickRate": 0.3
   }
 };

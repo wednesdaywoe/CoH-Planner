@@ -37,40 +37,26 @@ export const IceArrow: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "movement": {
-      "runSpeed": {
-        "scale": 0.1,
-        "table": "Ranged_Slow"
-      },
-      "flySpeed": {
-        "scale": 0.1,
-        "table": "Ranged_Slow"
-      },
-      "jumpHeight": {
-        "scale": 0.3,
-        "table": "Ranged_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.3,
-        "table": "Ranged_Slow"
-      }
-    },
-    "rechargeDebuff": {
-      "scale": 0.2,
-      "table": "Ranged_Slow"
-    },
     "protection": {
       "knockup": 1,
       "knockback": 1
+    },
+    "durations": {
+      "protection": 10,
+      "absorb": 60,
+      "enduranceDrain": 60,
+      "confuse": 60,
+      "fear": 60,
+      "hold": 60,
+      "immobilize": 60,
+      "stun": 60,
+      "sleep": 60,
+      "defenseDebuff": 60
     },
     "hold": {
       "mag": 3,
       "scale": 8,
       "table": "Ranged_Immobilize"
-    },
-    "damageDebuff": {
-      "scale": 0.45,
-      "table": "Ranged_Special"
     },
     "absorb": {
       "scale": 0.45,
@@ -79,16 +65,6 @@ export const IceArrow: Power = {
     "enduranceDrain": {
       "scale": 0.45,
       "table": "Ranged_Special"
-    },
-    "slow": {
-      "runSpeed": {
-        "scale": 0.45,
-        "table": "Ranged_Special"
-      },
-      "flySpeed": {
-        "scale": 0.45,
-        "table": "Ranged_Special"
-      }
     },
     "confuse": {
       "mag": 1,
@@ -120,27 +96,6 @@ export const IceArrow: Power = {
       "scale": 0.45,
       "table": "Ranged_Special"
     },
-    "tohitDebuff": {
-      "scale": 0.45,
-      "table": "Ranged_Special"
-    },
-    "buffDuration": 60,
-    "durations": {
-      "absorb": 60,
-      "confuse": 60,
-      "damageDebuff": 60,
-      "defenseDebuff": 60,
-      "enduranceDrain": 60,
-      "fear": 60,
-      "hold": 60,
-      "immobilize": 60,
-      "movement": 10,
-      "protection": 10,
-      "rechargeBuff": 10,
-      "sleep": 60,
-      "slow": 60,
-      "stun": 60,
-      "tohitDebuff": 60
-    }
+    "buffDuration": 60
   }
 };

@@ -100,27 +100,9 @@ export const EyeoftheStorm: Power = {
         "table": "Melee_Res_Dmg"
       }
     },
-    "movement": {
-      "jumpHeight": {
-        "scale": 0.15,
-        "table": "Melee_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.15,
-        "table": "Melee_Slow"
-      },
-      "flySpeed": {
-        "scale": 0.15,
-        "table": "Melee_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.15,
-        "table": "Melee_Slow"
-      }
-    },
-    "rechargeDebuff": {
-      "scale": 0.15,
-      "table": "Melee_Slow"
+    "durations": {
+      "resistanceDebuff": 6,
+      "defenseDebuff": 8
     },
     "defenseDebuff": {
       "scale": 1,
@@ -130,12 +112,6 @@ export const EyeoftheStorm: Power = {
       "scale": 0.67,
       "table": "Melee_Ones"
     },
-    "buffDuration": 8,
-    "durations": {
-      "defenseDebuff": 8,
-      "movement": 8,
-      "rechargeBuff": 8,
-      "resistanceDebuff": 6
-    }
+    "buffDuration": 8
   }
 };

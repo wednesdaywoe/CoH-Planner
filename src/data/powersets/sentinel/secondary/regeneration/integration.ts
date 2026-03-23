@@ -77,7 +77,7 @@ export const Integration: Power = {
       "table": "Melee_Res_Boolean"
     },
     "regenBuff": {
-      "scale": 1.0, // HC patch: reduced from 1.5 to 1.0 (server-side change not in bins)
+      "scale": 1.5,
       "table": "Melee_Ones"
     },
     "buffDuration": 0.75

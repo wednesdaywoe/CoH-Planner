@@ -49,11 +49,6 @@ export const Nova: Power = {
       "type": "Energy",
       "scale": 3,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 2,
-      "table": "Ranged_InherentDamage"
     }
   ],
   "effects": {

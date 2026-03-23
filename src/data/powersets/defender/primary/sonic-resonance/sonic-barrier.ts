@@ -51,9 +51,9 @@ export const SonicBarrier: Power = {
         "table": "Ranged_Res_Dmg"
       }
     },
-    "buffDuration": 240,
     "durations": {
       "resistance": 240
-    }
+    },
+    "buffDuration": 240
   }
 };

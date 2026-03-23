@@ -41,6 +41,7 @@ export const SuppressPain: Power = {
     },
     "durations": {
       "regenBuff": 4.25
-    }
+    },
+    "buffDuration": 4.25
   }
 };

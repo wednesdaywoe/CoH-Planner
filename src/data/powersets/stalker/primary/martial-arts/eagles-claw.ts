@@ -47,11 +47,6 @@ export const EaglesClaw: Power = {
       "type": "Smashing",
       "scale": 2.92,
       "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 2.92,
-      "table": "Melee_InherentDamage"
     }
   ],
   "effects": {

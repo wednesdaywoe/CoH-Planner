@@ -22,7 +22,6 @@ export const IrradiatedGround: Power = {
     "radius": 8,
     "recharge": 4,
     "endurance": 2.6,
-    "activatePeriod": 5.0,
     "castTime": 2.03,
     "maxTargets": 10
   },
@@ -40,5 +39,12 @@ export const IrradiatedGround: Power = {
     "Scrapper Archetype Sets",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_Radiation_Melee_Irradiated_Ground_Pet",
+      "copyBoosts": true
+    }
+  }
 };

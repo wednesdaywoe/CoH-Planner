@@ -41,15 +41,59 @@ export const EntropicAura: Power = {
     },
     "durations": {
       "rechargeBuff": 2.25,
-      "rechargeDebuff": 2.25
-    },
-    "rechargeDebuff": {
-      "scale": 0.2,
-      "table": "Melee_Slow"
+      "teleport": 2.25,
+      "knockup": 2.25,
+      "knockback": 2.25,
+      "repel": 2.25,
+      "protection": 2.25,
+      "hold": 2.25,
+      "stun": 2.25,
+      "sleep": 2.25,
+      "immobilize": 2.25
     },
     "taunt": {
       "scale": 2.25,
       "table": "Melee_Ones"
+    },
+    "teleport": {
+      "scale": 1,
+      "table": "Melee_Ones"
+    },
+    "knockup": {
+      "scale": 10,
+      "table": "Melee_Ones"
+    },
+    "knockback": {
+      "scale": 10,
+      "table": "Melee_Ones"
+    },
+    "repel": {
+      "scale": 10,
+      "table": "Melee_Ones"
+    },
+    "protection": {
+      "repel": 1
+    },
+    "hold": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "effectDuration": 2.25,
+    "stun": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "sleep": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "immobilize": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
     },
     "buffDuration": 2.25
   }

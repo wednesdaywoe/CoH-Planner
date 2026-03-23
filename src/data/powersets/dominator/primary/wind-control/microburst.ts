@@ -56,38 +56,14 @@ export const Microburst: Power = {
       "scale": 8,
       "table": "Ranged_Stun"
     },
-    "movement": {
-      "runSpeed": {
-        "scale": 0.3,
-        "table": "Ranged_Slow"
-      },
-      "flySpeed": {
-        "scale": 0.3,
-        "table": "Ranged_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.3,
-        "table": "Ranged_Slow"
-      },
-      "jumpHeight": {
-        "scale": 0.3,
-        "table": "Ranged_Slow"
-      }
-    },
-    "rechargeDebuff": {
-      "scale": 0.3,
-      "table": "Ranged_Slow"
-    },
-    "slow": {
-      "fly": {
-        "scale": 2,
-        "table": "Ranged_Ones"
-      }
-    },
     "defenseDebuff": {
       "scale": 2.5,
       "table": "Ranged_Debuff_Def"
-    }
+    },
+    "durations": {
+      "defenseDebuff": 12
+    },
+    "buffDuration": 12
   },
   "requires": "char>accesslevel >= 0"
 };

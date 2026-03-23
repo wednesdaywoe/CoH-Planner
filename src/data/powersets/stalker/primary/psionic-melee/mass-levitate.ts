@@ -52,11 +52,6 @@ export const MassLevitate: Power = {
     },
     {
       "type": "Psionic",
-      "scale": 1.42,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Psionic",
       "scale": 0.1424,
       "table": "Melee_Damage",
       "duration": 3.1,

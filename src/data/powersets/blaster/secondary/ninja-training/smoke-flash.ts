@@ -74,13 +74,13 @@ export const SmokeFlash: Power = {
         "table": "Melee_Res_Dmg"
       }
     },
+    "durations": {
+      "resistanceDebuff": 15
+    },
     "damageBuff": {
       "scale": 0,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 15,
-    "durations": {
-      "resistanceDebuff": 15
-    }
+    "buffDuration": 15
   }
 };

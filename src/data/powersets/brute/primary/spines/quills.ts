@@ -22,7 +22,6 @@ export const Quills: Power = {
     "radius": 8,
     "recharge": 15,
     "endurance": 1.04,
-    "activatePeriod": 2.0,
     "castTime": 0.73,
     "maxTargets": 10
   },
@@ -47,36 +46,10 @@ export const Quills: Power = {
     "table": "Melee_Damage"
   },
   "effects": {
-    "rechargeDebuff": {
-      "scale": 0.1,
-      "table": "Melee_Slow"
-    },
-    "movement": {
-      "runSpeed": {
-        "scale": 0.2,
-        "table": "Melee_Slow"
-      },
-      "flySpeed": {
-        "scale": 0.2,
-        "table": "Melee_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.2,
-        "table": "Melee_Slow"
-      },
-      "jumpHeight": {
-        "scale": 0.2,
-        "table": "Melee_Slow"
-      }
-    },
     "immobilize": {
       "mag": 0.33,
       "scale": 3,
       "table": "Melee_Immobilize"
-    },
-    "durations": {
-      "movement": 3,
-      "rechargeBuff": 3
     }
   }
 };

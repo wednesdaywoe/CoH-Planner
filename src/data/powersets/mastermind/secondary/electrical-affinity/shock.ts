@@ -35,13 +35,13 @@ export const Shock: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "damageDebuff": {
-      "scale": 3,
-      "table": "Ranged_Debuff_Dam"
-    },
     "regenDebuff": {
       "scale": 0.75,
       "table": "Ranged_Ones"
+    },
+    "durations": {
+      "regenDebuff": 25,
+      "recoveryDebuff": 25
     },
     "recoveryDebuff": {
       "scale": 0.75,
@@ -51,11 +51,6 @@ export const Shock: Power = {
       "scale": 0.16,
       "table": "Ranged_EndDrain"
     },
-    "buffDuration": 25,
-    "durations": {
-      "damageDebuff": 25,
-      "recoveryDebuff": 25,
-      "regenDebuff": 25
-    }
+    "buffDuration": 25
   }
 };

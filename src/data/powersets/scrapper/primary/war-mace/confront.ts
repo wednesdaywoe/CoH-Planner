@@ -42,9 +42,9 @@ export const Confront: Power = {
       "scale": 0.75,
       "table": "Melee_Ones"
     },
-    "buffDuration": 12,
     "durations": {
       "rangeBuff": 12
-    }
+    },
+    "buffDuration": 12
   }
 };

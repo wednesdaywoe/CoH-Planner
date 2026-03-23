@@ -44,30 +44,15 @@ export const Torrent: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Negative",
-      "scale": 0.4,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Negative",
-      "scale": 0.4,
-      "table": "Ranged_InherentDamage"
-    }
-  ],
+  "damage": {
+    "type": "Negative",
+    "scale": 0.4,
+    "table": "Ranged_Damage"
+  },
   "effects": {
-    "tohitDebuff": {
-      "scale": 0.75,
-      "table": "Ranged_Debuff_ToHit"
-    },
-    "durations": {
-      "tohitDebuff": 10
-    },
     "knockback": {
       "scale": 5,
       "table": "Ranged_Knockback"
-    },
-    "buffDuration": 10
+    }
   }
 };

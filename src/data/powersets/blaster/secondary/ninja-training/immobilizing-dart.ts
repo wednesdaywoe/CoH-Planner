@@ -51,36 +51,9 @@ export const ImmobilizingDart: Power = {
       "scale": 15,
       "table": "Ranged_Immobilize"
     },
-    "movement": {
-      "jumpHeight": {
-        "scale": 0.3,
-        "table": "Ranged_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.3,
-        "table": "Ranged_Slow"
-      },
-      "flySpeed": {
-        "scale": 0.3,
-        "table": "Ranged_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.3,
-        "table": "Ranged_Slow"
-      }
-    },
-    "rechargeDebuff": {
-      "scale": 0.3,
-      "table": "Ranged_Slow"
-    },
     "damageBuff": {
       "scale": 0,
       "table": "Ranged_Ones"
-    },
-    "buffDuration": 18,
-    "durations": {
-      "movement": 18,
-      "rechargeBuff": 18
     }
   }
 };

@@ -38,39 +38,13 @@ export const EntanglingArrow: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "movement": {
-      "runSpeed": {
-        "scale": 0.5,
-        "table": "Ranged_Slow"
-      },
-      "flySpeed": {
-        "scale": 0.5,
-        "table": "Ranged_Slow"
-      }
-    },
-    "durations": {
-      "movement": 30,
-      "slow": 30,
-      "protection": 30,
-      "resistanceDebuff": 30
-    },
-    "slow": {
-      "fly": {
-        "scale": 10,
-        "table": "Ranged_Ones"
-      },
-      "jumpHeight": {
-        "scale": 500,
-        "table": "Ranged_Ones"
-      },
-      "runSpeed": {
-        "scale": 1,
-        "table": "Ranged_SpeedRunning"
-      }
-    },
     "protection": {
       "knockup": 1,
       "knockback": 1
+    },
+    "durations": {
+      "protection": 30,
+      "resistanceDebuff": 30
     },
     "resistanceDebuff": {
       "smashing": {

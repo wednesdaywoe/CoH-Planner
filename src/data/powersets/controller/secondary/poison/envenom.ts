@@ -55,7 +55,7 @@ export const Envenom: Power = {
       }
     },
     "regenDebuff": {
-      "scale": 0.25,
+      "scale": 0.75,
       "table": "Ranged_Ones"
     },
     "resistanceDebuff": {

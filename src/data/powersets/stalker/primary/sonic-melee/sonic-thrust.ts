@@ -52,11 +52,6 @@ export const SonicThrust: Power = {
       "type": "Energy",
       "scale": 0.76,
       "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.76,
-      "table": "Melee_InherentDamage"
     }
   ],
   "effects": {

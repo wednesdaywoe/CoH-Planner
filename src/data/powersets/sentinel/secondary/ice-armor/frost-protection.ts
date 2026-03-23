@@ -30,7 +30,7 @@ export const FrostProtection: Power = {
   "maxSlots": 6,
   "effects": {
     "maxHPBuff": {
-      "scale": 0.5,
+      "scale": 1,
       "table": "Melee_HealSelf"
     },
     "durations": {

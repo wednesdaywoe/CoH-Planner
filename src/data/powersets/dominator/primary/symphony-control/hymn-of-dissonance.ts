@@ -44,18 +44,10 @@ export const HymnofDissonance: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
-    "rechargeDebuff": {
-      "scale": 0.2,
-      "table": "Ranged_Slow"
-    },
     "hold": {
       "mag": 3,
       "scale": 12,
       "table": "Melee_Immobilize"
-    },
-    "buffDuration": 18,
-    "durations": {
-      "rechargeBuff": 18
     }
   }
 };

@@ -68,6 +68,19 @@ export const Serum: Power = {
         "table": "Ranged_Res_Dmg"
       }
     },
+    "durations": {
+      "resistance": 60,
+      "hold": 60,
+      "immobilize": 60,
+      "stun": 60,
+      "sleep": 60,
+      "knockup": 60,
+      "knockback": 60,
+      "repel": 60,
+      "damageBuff": 60,
+      "tohitBuff": 60,
+      "recoveryBuff": 60
+    },
     "hold": {
       "mag": 1,
       "scale": 30,
@@ -113,19 +126,6 @@ export const Serum: Power = {
       "scale": 1,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 60,
-    "durations": {
-      "damageBuff": 60,
-      "hold": 60,
-      "immobilize": 60,
-      "knockback": 60,
-      "knockup": 60,
-      "recoveryBuff": 60,
-      "repel": 60,
-      "resistance": 60,
-      "sleep": 60,
-      "stun": 60,
-      "tohitBuff": 60
-    }
+    "buffDuration": 60
   }
 };

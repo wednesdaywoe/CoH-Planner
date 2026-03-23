@@ -56,8 +56,20 @@ export const Consume: Power = {
       "table": "Melee_Ones"
     },
     "durations": {
-      "recoveryBuff": 15
+      "recoveryBuff": 15,
+      "debuffResistance": 120,
+      "maxHPBuff": 120
     },
-    "buffDuration": 15
+    "debuffResistance": {
+      "endurance": {
+        "scale": 0.5,
+        "table": "Melee_Ones"
+      }
+    },
+    "maxHPBuff": {
+      "scale": 1.5,
+      "table": "Melee_HealSelf"
+    },
+    "buffDuration": 120
   }
 };

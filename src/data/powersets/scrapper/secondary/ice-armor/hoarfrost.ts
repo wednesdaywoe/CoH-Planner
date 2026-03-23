@@ -51,7 +51,7 @@ export const Hoarfrost: Power = {
       "maxHPBuff": 120
     },
     "maxHPBuff": {
-      "scale": 2,
+      "scale": 4,
       "table": "Melee_HealSelf"
     },
     "buffDuration": 120

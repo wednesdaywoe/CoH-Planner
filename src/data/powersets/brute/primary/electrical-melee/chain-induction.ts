@@ -59,9 +59,9 @@ export const ChainInduction: Power = {
       "scale": 1,
       "table": "Melee_Ones"
     },
-    "buffDuration": 4,
     "durations": {
       "recoveryDebuff": 4
-    }
+    },
+    "buffDuration": 4
   }
 };

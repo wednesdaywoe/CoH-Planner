@@ -55,6 +55,10 @@ export const BlazingBlast: Power = {
       "scale": 8,
       "table": "Ranged_Ones"
     },
+    "durations": {
+      "repel": 0.61,
+      "hold": 0.61
+    },
     "hold": {
       "mag": 1,
       "scale": 4,
@@ -65,10 +69,6 @@ export const BlazingBlast: Power = {
       "scale": 2,
       "table": "Ranged_Knockback"
     },
-    "buffDuration": 0.61,
-    "durations": {
-      "hold": 0.61,
-      "repel": 0.61
-    }
+    "buffDuration": 0.61
   }
 };

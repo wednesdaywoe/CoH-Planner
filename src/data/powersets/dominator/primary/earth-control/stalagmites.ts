@@ -55,9 +55,9 @@ export const Stalagmites: Power = {
       "scale": 2,
       "table": "Ranged_Debuff_Def"
     },
-    "buffDuration": 12,
     "durations": {
       "defenseDebuff": 12
-    }
+    },
+    "buffDuration": 12
   }
 };

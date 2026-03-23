@@ -22,7 +22,6 @@ export const TimesJuncture: Power = {
     "radius": 25,
     "recharge": 10,
     "endurance": 0.4875,
-    "activatePeriod": 0.75,
     "castTime": 0.67,
     "maxTargets": 16
   },
@@ -36,50 +35,5 @@ export const TimesJuncture: Power = {
     "Slow Movement",
     "To Hit Debuff"
   ],
-  "maxSlots": 6,
-  "effects": {
-    "tohitDebuff": {
-      "scale": 1.5,
-      "table": "Ranged_Debuff_ToHit"
-    },
-    "durations": {
-      "tohitDebuff": 1,
-      "movement": 1,
-      "slow": 1,
-      "damageDebuff": 1
-    },
-    "movement": {
-      "runSpeed": {
-        "scale": 0.36,
-        "table": "Ranged_Slow"
-      },
-      "flySpeed": {
-        "scale": 0.36,
-        "table": "Ranged_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.36,
-        "table": "Ranged_Slow"
-      },
-      "jumpHeight": {
-        "scale": 0.36,
-        "table": "Ranged_Slow"
-      }
-    },
-    "slow": {
-      "fly": {
-        "scale": 1.92,
-        "table": "Ranged_Ones"
-      },
-      "runSpeed": {
-        "scale": 1.2,
-        "table": "Ranged_SpeedRunning"
-      }
-    },
-    "damageDebuff": {
-      "scale": 2.4,
-      "table": "Ranged_Debuff_Dam"
-    },
-    "buffDuration": 1
-  }
+  "maxSlots": 6
 };

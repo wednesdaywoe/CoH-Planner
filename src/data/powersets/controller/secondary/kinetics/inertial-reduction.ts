@@ -35,29 +35,5 @@ export const InertialReduction: Power = {
     "Leaping & Sprints",
     "Universal Travel"
   ],
-  "maxSlots": 6,
-  "effects": {
-    "movement": {
-      "jumpHeight": {
-        "scale": 1,
-        "table": "Melee_Leap"
-      },
-      "jumpSpeed": {
-        "scale": 1,
-        "table": "Melee_SpeedJumping"
-      },
-      "movementControl": {
-        "scale": 10,
-        "table": "Melee_Control"
-      },
-      "movementFriction": {
-        "scale": 10,
-        "table": "Melee_Friction"
-      }
-    },
-    "durations": {
-      "movement": 60
-    },
-    "buffDuration": 60
-  }
+  "maxSlots": 6
 };

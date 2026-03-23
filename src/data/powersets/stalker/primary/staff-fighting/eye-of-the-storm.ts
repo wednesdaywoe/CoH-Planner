@@ -56,11 +56,6 @@ export const EyeoftheStorm: Power = {
       "type": "Smashing",
       "scale": 1.23,
       "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.23,
-      "table": "Melee_InherentDamage"
     }
   ],
   "effects": {

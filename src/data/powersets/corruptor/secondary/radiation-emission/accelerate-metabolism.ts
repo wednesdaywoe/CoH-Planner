@@ -51,8 +51,7 @@ export const AccelerateMetabolism: Power = {
       "sleep": 120,
       "rechargeBuff": 120,
       "debuffResistance": 120,
-      "recoveryBuff": 120,
-      "movement": 120
+      "recoveryBuff": 120
     },
     "hold": {
       "mag": 1,
@@ -92,16 +91,6 @@ export const AccelerateMetabolism: Power = {
     "recoveryBuff": {
       "scale": 0.3,
       "table": "Ranged_Ones"
-    },
-    "movement": {
-      "runSpeed": {
-        "scale": 0.3,
-        "table": "Ranged_Ones"
-      },
-      "flySpeed": {
-        "scale": 0.3,
-        "table": "Ranged_Ones"
-      }
     },
     "buffDuration": 120
   }

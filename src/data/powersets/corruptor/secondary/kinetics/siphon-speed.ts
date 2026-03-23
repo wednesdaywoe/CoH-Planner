@@ -43,35 +43,15 @@ export const SiphonSpeed: Power = {
       "flySpeed": {
         "scale": 0.85,
         "table": "Melee_SpeedFlying"
-      },
-      "jumpSpeed": {
-        "scale": 0.5,
-        "table": "Melee_Slow"
-      },
-      "jumpHeight": {
-        "scale": 0.5,
-        "table": "Melee_Slow"
       }
     },
     "durations": {
       "movement": 60,
-      "rechargeDebuff": 60,
-      "rechargeBuff": 60,
-      "slow": 60
-    },
-    "rechargeDebuff": {
-      "scale": 0.2,
-      "table": "Melee_Ones"
+      "rechargeBuff": 60
     },
     "rechargeBuff": {
       "scale": 0.2,
       "table": "Melee_Ones"
-    },
-    "slow": {
-      "runSpeed": {
-        "scale": 1,
-        "table": "Melee_SpeedRunning"
-      }
     },
     "buffDuration": 60
   }

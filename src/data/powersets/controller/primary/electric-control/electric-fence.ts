@@ -60,18 +60,11 @@ export const ElectricFence: Power = {
     "durations": {
       "enduranceDrain": 6.2,
       "protection": 15,
-      "slow": 15,
       "recoveryDebuff": 2
     },
     "protection": {
       "knockup": 1,
       "knockback": 1
-    },
-    "slow": {
-      "fly": {
-        "scale": 1.6,
-        "table": "Ranged_Ones"
-      }
     },
     "recoveryDebuff": {
       "scale": 1,

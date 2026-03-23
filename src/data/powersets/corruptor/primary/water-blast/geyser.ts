@@ -57,11 +57,6 @@ export const Geyser: Power = {
     },
     {
       "type": "Fire",
-      "scale": 1.5,
-      "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Fire",
       "scale": 0.1,
       "table": "Ranged_Damage"
     },
@@ -110,31 +105,9 @@ export const Geyser: Power = {
       "scale": 5,
       "table": "Ranged_Stun"
     },
-    "movement": {
-      "jumpHeight": {
-        "scale": 0.33,
-        "table": "Ranged_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.33,
-        "table": "Ranged_Slow"
-      },
-      "flySpeed": {
-        "scale": 0.33,
-        "table": "Ranged_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.33,
-        "table": "Ranged_Slow"
-      }
-    },
-    "durations": {
-      "movement": 10
-    },
     "knockup": {
       "scale": 1.5,
       "table": "Ranged_Ones"
-    },
-    "buffDuration": 10
+    }
   }
 };

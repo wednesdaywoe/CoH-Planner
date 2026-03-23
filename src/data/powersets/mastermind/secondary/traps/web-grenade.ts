@@ -42,40 +42,13 @@ export const WebGrenade: Power = {
       "scale": 15,
       "table": "Ranged_Immobilize"
     },
-    "slow": {
-      "jumpHeight": {
-        "scale": 500,
-        "table": "Ranged_Ones"
-      },
-      "fly": {
-        "scale": 10,
-        "table": "Ranged_Ones"
-      }
-    },
-    "rechargeDebuff": {
-      "scale": 0.5,
-      "table": "Ranged_Slow"
-    },
-    "movement": {
-      "runSpeed": {
-        "scale": 0.5,
-        "table": "Ranged_Slow"
-      },
-      "flySpeed": {
-        "scale": 0.5,
-        "table": "Ranged_Slow"
-      }
-    },
     "protection": {
       "knockup": 1,
       "knockback": 1
     },
-    "buffDuration": 15,
     "durations": {
-      "movement": 15,
-      "protection": 15,
-      "rechargeBuff": 15,
-      "slow": 15
-    }
+      "protection": 15
+    },
+    "buffDuration": 15
   }
 };

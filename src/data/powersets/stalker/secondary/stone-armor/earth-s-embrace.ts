@@ -41,7 +41,7 @@ export const EarthsEmbrace: Power = {
   },
   "effects": {
     "maxHPBuff": {
-      "scale": 2,
+      "scale": 4,
       "table": "Melee_HealSelf"
     },
     "durations": {

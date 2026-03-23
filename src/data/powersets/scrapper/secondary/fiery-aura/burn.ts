@@ -41,5 +41,17 @@ export const Burn: Power = {
     "type": "Fire",
     "scale": 1.44,
     "table": "Melee_Damage"
+  },
+  "effects": {
+    "summon": {
+      "isPseudoPet": true,
+      "displayName": "Burn Flames",
+      "powers": [
+        "Pets.ResistAll.ResistAll",
+        "Redirects.Fiery_Aura.Burn"
+      ],
+      "duration": 10,
+      "copyBoosts": true
+    }
   }
 };

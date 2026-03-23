@@ -48,6 +48,10 @@ export const Wormhole: Power = {
         "table": "Ranged_Ones"
       }
     },
+    "durations": {
+      "stealth": 1.5,
+      "teleport": 15
+    },
     "teleport": {
       "scale": 100,
       "table": "Ranged_Ones"
@@ -61,10 +65,6 @@ export const Wormhole: Power = {
       "scale": 7,
       "table": "Ranged_Knockback"
     },
-    "buffDuration": 15,
-    "durations": {
-      "stealth": 1.5,
-      "teleport": 15
-    }
+    "buffDuration": 15
   }
 };

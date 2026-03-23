@@ -45,12 +45,18 @@ export const SoundBarrier: Power = {
         "table": "Melee_Res_Dmg"
       }
     },
+    "durations": {
+      "resistance": 2.25,
+      "absorb": 12,
+      "recoveryBuff": 3,
+      "sleep": 2.25
+    },
     "absorb": {
-      "scale": 0.15,
+      "scale": 0.3,
       "table": "Melee_HealSelf"
     },
     "recoveryBuff": {
-      "scale": 0.5,
+      "scale": 1,
       "table": "Melee_Ones"
     },
     "sleep": {
@@ -59,11 +65,6 @@ export const SoundBarrier: Power = {
       "table": "Melee_Res_Boolean"
     },
     "effectDuration": 2.25,
-    "durations": {
-      "absorb": 12,
-      "recoveryBuff": 3,
-      "resistance": 2.25,
-      "sleep": 2.25
-    }
+    "buffDuration": 2.25
   }
 };

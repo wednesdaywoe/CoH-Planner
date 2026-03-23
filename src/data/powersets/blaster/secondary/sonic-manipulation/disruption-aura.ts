@@ -22,7 +22,6 @@ export const DisruptionAura: Power = {
     "radius": 15,
     "recharge": 10,
     "endurance": 1.04,
-    "activatePeriod": 2.0,
     "castTime": 1.97,
     "maxTargets": 10
   },
@@ -68,6 +67,7 @@ export const DisruptionAura: Power = {
     },
     "durations": {
       "resistanceDebuff": 2.25
-    }
+    },
+    "buffDuration": 2.25
   }
 };

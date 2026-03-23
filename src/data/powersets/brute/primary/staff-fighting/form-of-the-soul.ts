@@ -23,7 +23,7 @@ export const FormoftheSoul: Power = {
     "castTime": 0.63
   },
   "allowedEnhancements": [],
-  "maxSlots": 6,
+  "maxSlots": 0,
   "requires": "Brute_Melee.Staff_Fighting.Staff_Mastery",
   "mechanicType": "childToggle"
 };

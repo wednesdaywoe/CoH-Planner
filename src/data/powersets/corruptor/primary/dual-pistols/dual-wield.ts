@@ -47,11 +47,6 @@ export const DualWield: Power = {
       "table": "Ranged_Damage"
     },
     {
-      "type": "Lethal",
-      "scale": 1.32,
-      "table": "Ranged_InherentDamage"
-    },
-    {
       "type": "Fire",
       "scale": 0.113,
       "table": "Ranged_Damage",

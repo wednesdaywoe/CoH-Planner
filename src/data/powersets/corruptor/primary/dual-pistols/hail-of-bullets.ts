@@ -51,11 +51,6 @@ export const HailofBullets: Power = {
     },
     {
       "type": "Lethal",
-      "scale": 1,
-      "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Lethal",
       "scale": 0.1362,
       "table": "Ranged_Damage",
       "duration": 2.3,

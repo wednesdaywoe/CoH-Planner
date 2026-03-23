@@ -46,11 +46,6 @@ export const Shout: Power = {
       "type": "Energy",
       "scale": 0.98,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.96,
-      "table": "Ranged_InherentDamage"
     }
   ],
   "effects": {
@@ -88,9 +83,9 @@ export const Shout: Power = {
         "table": "Ranged_Debuff_Res_Dmg"
       }
     },
-    "buffDuration": 10,
     "durations": {
       "resistanceDebuff": 10
-    }
+    },
+    "buffDuration": 10
   }
 };

@@ -47,11 +47,6 @@ export const MercurialBlow: Power = {
     {
       "type": "Smashing",
       "scale": 0.84,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.84,
       "table": "Melee_Damage"
     }
   ],

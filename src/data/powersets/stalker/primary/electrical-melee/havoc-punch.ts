@@ -54,11 +54,6 @@ export const HavocPunch: Power = {
       "type": "Energy",
       "scale": 1.32,
       "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.32,
-      "table": "Melee_InherentDamage"
     }
   ],
   "effects": {

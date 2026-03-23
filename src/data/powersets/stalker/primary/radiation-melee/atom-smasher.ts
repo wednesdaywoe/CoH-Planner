@@ -57,11 +57,6 @@ export const AtomSmasher: Power = {
       "type": "Energy",
       "scale": 1.55,
       "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.55,
-      "table": "Melee_InherentDamage"
     }
   ],
   "effects": {

@@ -42,35 +42,13 @@ export const MudBath: Power = {
     "table": "Melee_HealSelf"
   },
   "effects": {
-    "movement": {
-      "runSpeed": {
-        "scale": 0.5,
-        "table": "Melee_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.5,
-        "table": "Melee_Slow"
-      },
-      "jumpHeight": {
-        "scale": 0.5,
-        "table": "Melee_Slow"
-      }
-    },
-    "durations": {
-      "movement": 5,
-      "slow": 5,
-      "recoveryBuff": 2.1
-    },
-    "slow": {
-      "runSpeed": {
-        "scale": 1,
-        "table": "Melee_SpeedRunning"
-      }
-    },
     "recoveryBuff": {
       "scale": 0.5,
       "table": "Melee_Ones"
     },
-    "buffDuration": 5
+    "durations": {
+      "recoveryBuff": 2.1
+    },
+    "buffDuration": 2.1
   }
 };

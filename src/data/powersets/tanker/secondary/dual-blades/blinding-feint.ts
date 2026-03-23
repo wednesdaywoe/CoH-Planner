@@ -49,14 +49,14 @@ export const BlindingFeint: Power = {
       "scale": 0.33,
       "table": "Melee_Buff_ToHit"
     },
+    "durations": {
+      "tohitBuff": 10,
+      "damageBuff": 10
+    },
     "damageBuff": {
       "scale": 1,
       "table": "Melee_Buff_Dmg"
     },
-    "buffDuration": 10,
-    "durations": {
-      "damageBuff": 10,
-      "tohitBuff": 10
-    }
+    "buffDuration": 10
   }
 };

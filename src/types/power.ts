@@ -329,6 +329,11 @@ export interface PowerEffects {
   /** Absorb shield */
   absorb?: NumberOrScaled;
 
+  // === SELF-PENALTY FLAG ===
+  /** If true, debuff fields (damageDebuff, slow, rechargeDebuff) are genuine self-penalties
+   *  (e.g., Granite Armor, Defensive Adaptation). Most powers with these fields target enemies. */
+  selfPenalty?: boolean;
+
   // === DEBUFF EFFECTS ===
   /** ToHit debuff value (scale or {scale, table}) */
   tohitDebuff?: NumberOrScaled;

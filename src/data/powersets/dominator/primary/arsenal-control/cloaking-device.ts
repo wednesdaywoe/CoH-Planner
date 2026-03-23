@@ -79,6 +79,11 @@ export const CloakingDevice: Power = {
         "table": "Melee_Buff_Def"
       }
     },
+    "durations": {
+      "defenseBuff": 0.75,
+      "stealth": 0.75,
+      "threatDebuff": 0.75
+    },
     "stealth": {
       "translucency": {
         "scale": 0.1,
@@ -97,10 +102,6 @@ export const CloakingDevice: Power = {
       "scale": 1,
       "table": "Melee_Ones"
     },
-    "durations": {
-      "defenseBuff": 0.75,
-      "stealth": 0.75,
-      "threatDebuff": 0.75
-    }
+    "buffDuration": 0.75
   }
 };

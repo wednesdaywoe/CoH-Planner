@@ -90,9 +90,9 @@ export const Screech: Power = {
         "table": "Ranged_Debuff_Res_Dmg"
       }
     },
-    "buffDuration": 15,
     "durations": {
       "resistanceDebuff": 15
-    }
+    },
+    "buffDuration": 15
   }
 };

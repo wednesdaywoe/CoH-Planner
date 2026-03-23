@@ -50,11 +50,6 @@ export const M30Grenade: Power = {
       "type": "Lethal",
       "scale": 0.45,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.9,
-      "table": "Ranged_InherentDamage"
     }
   ],
   "effects": {

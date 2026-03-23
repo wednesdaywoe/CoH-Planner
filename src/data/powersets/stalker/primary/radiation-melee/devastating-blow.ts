@@ -56,11 +56,6 @@ export const DevastatingBlow: Power = {
       "type": "Energy",
       "scale": 3.08,
       "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 3.08,
-      "table": "Melee_InherentDamage"
     }
   ],
   "effects": {

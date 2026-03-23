@@ -53,14 +53,6 @@ export const SpectralWall: Power = {
       "mag": 4,
       "scale": 15,
       "table": "Ranged_Immobilize"
-    },
-    "tohitDebuff": {
-      "scale": 0.75,
-      "table": "Ranged_Debuff_ToHit"
-    },
-    "buffDuration": 15,
-    "durations": {
-      "tohitDebuff": 15
     }
   }
 };

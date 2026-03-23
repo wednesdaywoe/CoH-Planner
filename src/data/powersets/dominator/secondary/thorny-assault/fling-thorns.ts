@@ -60,9 +60,9 @@ export const FlingThorns: Power = {
       "scale": 2,
       "table": "Ranged_Debuff_Def"
     },
-    "buffDuration": 8,
     "durations": {
       "defenseDebuff": 8
-    }
+    },
+    "buffDuration": 8
   }
 };

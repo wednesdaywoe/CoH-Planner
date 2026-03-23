@@ -55,21 +55,14 @@ export const RingofFire: Power = {
       "knockup": 1,
       "knockback": 1
     },
-    "slow": {
-      "fly": {
-        "scale": 1.6,
-        "table": "Ranged_Ones"
-      }
+    "durations": {
+      "protection": 15,
+      "damageBuff": 8.67
     },
     "damageBuff": {
       "scale": 0.077,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 15,
-    "durations": {
-      "damageBuff": 8.67,
-      "protection": 15,
-      "slow": 10
-    }
+    "buffDuration": 15
   }
 };

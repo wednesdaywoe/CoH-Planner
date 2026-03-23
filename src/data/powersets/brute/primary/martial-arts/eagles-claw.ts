@@ -54,9 +54,9 @@ export const EaglesClaw: Power = {
       "scale": 3.3,
       "table": "Melee_Buff_Dmg"
     },
-    "buffDuration": 3,
     "durations": {
       "damageBuff": 3
-    }
+    },
+    "buffDuration": 3
   }
 };

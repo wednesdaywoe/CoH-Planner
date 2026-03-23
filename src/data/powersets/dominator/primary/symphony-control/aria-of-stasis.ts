@@ -49,37 +49,18 @@ export const AriaofStasis: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
-    "movement": {
-      "runSpeed": {
-        "scale": 0.3,
-        "table": "Ranged_Slow"
-      },
-      "flySpeed": {
-        "scale": 0.3,
-        "table": "Ranged_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.3,
-        "table": "Ranged_Slow"
-      },
-      "jumpHeight": {
-        "scale": 0.3,
-        "table": "Ranged_Slow"
-      }
-    },
     "protection": {
       "knockup": 1,
       "knockback": 1
+    },
+    "durations": {
+      "protection": 15
     },
     "immobilize": {
       "mag": 3,
       "scale": 15,
       "table": "Ranged_Immobilize"
     },
-    "buffDuration": 15,
-    "durations": {
-      "movement": 15,
-      "protection": 15
-    }
+    "buffDuration": 15
   }
 };

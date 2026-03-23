@@ -48,8 +48,7 @@ export const SpeedBoost: Power = {
     "durations": {
       "rechargeBuff": 120,
       "recoveryBuff": 120,
-      "debuffResistance": 120,
-      "movement": 120
+      "debuffResistance": 120
     },
     "recoveryBuff": {
       "scale": 0.5,
@@ -61,16 +60,6 @@ export const SpeedBoost: Power = {
         "table": "Melee_Ones"
       },
       "movement": {
-        "scale": 0.5,
-        "table": "Melee_SpeedFlying"
-      }
-    },
-    "movement": {
-      "runSpeed": {
-        "scale": 0.5,
-        "table": "Melee_SpeedRunning"
-      },
-      "flySpeed": {
         "scale": 0.5,
         "table": "Melee_SpeedFlying"
       }

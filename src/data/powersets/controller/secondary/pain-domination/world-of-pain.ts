@@ -40,6 +40,12 @@ export const WorldofPain: Power = {
       "scale": 1,
       "table": "Ranged_Buff_ToHit"
     },
+    "durations": {
+      "tohitBuff": 90,
+      "placate": 90,
+      "resistance": 90,
+      "damageBuff": 90
+    },
     "placate": {
       "scale": 30,
       "table": "Ranged_Res_Boolean"
@@ -82,12 +88,6 @@ export const WorldofPain: Power = {
       "scale": 1.6,
       "table": "Ranged_Buff_Dmg"
     },
-    "buffDuration": 90,
-    "durations": {
-      "damageBuff": 90,
-      "placate": 90,
-      "resistance": 90,
-      "tohitBuff": 90
-    }
+    "buffDuration": 90
   }
 };

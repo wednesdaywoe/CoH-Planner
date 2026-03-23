@@ -49,31 +49,7 @@ export const Glacier: Power = {
       "knockback": 1
     },
     "durations": {
-      "protection": 10,
-      "movement": 10,
-      "rechargeDebuff": 10
-    },
-    "movement": {
-      "jumpHeight": {
-        "scale": 0.5,
-        "table": "Ranged_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.5,
-        "table": "Ranged_Slow"
-      },
-      "flySpeed": {
-        "scale": 0.5,
-        "table": "Ranged_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.5,
-        "table": "Ranged_Slow"
-      }
-    },
-    "rechargeDebuff": {
-      "scale": 0.5,
-      "table": "Ranged_Slow"
+      "protection": 10
     },
     "buffDuration": 10
   }

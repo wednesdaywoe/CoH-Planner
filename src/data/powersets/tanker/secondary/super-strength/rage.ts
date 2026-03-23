@@ -38,6 +38,12 @@ export const Rage: Power = {
       "scale": 2,
       "table": "Melee_Buff_ToHit"
     },
+    "durations": {
+      "tohitBuff": 120,
+      "damageBuff": 120,
+      "damageDebuff": 10,
+      "defenseDebuff": 10
+    },
     "damageBuff": {
       "scale": 8,
       "table": "Melee_Buff_Dmg"
@@ -46,6 +52,7 @@ export const Rage: Power = {
       "scale": 999,
       "table": "Melee_Buff_Dmg"
     },
+    "selfPenalty": true,
     "defenseDebuff": {
       "scale": 0.2,
       "table": "Melee_Ones"
@@ -54,12 +61,6 @@ export const Rage: Power = {
       "scale": 0.25,
       "table": "Melee_Ones"
     },
-    "buffDuration": 120,
-    "durations": {
-      "damageBuff": 120,
-      "damageDebuff": 10,
-      "defenseDebuff": 10,
-      "tohitBuff": 120
-    }
+    "buffDuration": 120
   }
 };

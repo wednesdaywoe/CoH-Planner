@@ -51,37 +51,13 @@ export const BlockofIce: Power = {
       "scale": 12,
       "table": "Ranged_Immobilize"
     },
-    "movement": {
-      "runSpeed": {
-        "scale": 0.3,
-        "table": "Ranged_Slow"
-      },
-      "flySpeed": {
-        "scale": 0.3,
-        "table": "Ranged_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.3,
-        "table": "Ranged_Slow"
-      },
-      "jumpHeight": {
-        "scale": 0.3,
-        "table": "Ranged_Slow"
-      }
-    },
-    "rechargeDebuff": {
-      "scale": 0.3,
-      "table": "Ranged_Slow"
-    },
     "protection": {
       "knockup": 1,
       "knockback": 1
     },
-    "buffDuration": 18,
     "durations": {
-      "movement": 18,
-      "protection": 10,
-      "rechargeBuff": 18
-    }
+      "protection": 10
+    },
+    "buffDuration": 10
   }
 };

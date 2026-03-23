@@ -52,11 +52,6 @@ export const GuardedSpin: Power = {
       "type": "Smashing",
       "scale": 1.2085,
       "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.2085,
-      "table": "Melee_InherentDamage"
     }
   ],
   "effects": {

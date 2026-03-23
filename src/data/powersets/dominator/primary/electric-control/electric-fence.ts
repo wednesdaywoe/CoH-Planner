@@ -57,15 +57,14 @@ export const ElectricFence: Power = {
       "scale": 0.028,
       "table": "Ranged_Ones"
     },
+    "durations": {
+      "enduranceDrain": 6.2,
+      "protection": 15,
+      "recoveryDebuff": 2
+    },
     "protection": {
       "knockup": 1,
       "knockback": 1
-    },
-    "slow": {
-      "fly": {
-        "scale": 1.6,
-        "table": "Ranged_Ones"
-      }
     },
     "recoveryDebuff": {
       "scale": 1,
@@ -75,12 +74,6 @@ export const ElectricFence: Power = {
       "scale": 2.6,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 15,
-    "durations": {
-      "enduranceDrain": 6.2,
-      "protection": 15,
-      "recoveryDebuff": 2,
-      "slow": 15
-    }
+    "buffDuration": 15
   }
 };

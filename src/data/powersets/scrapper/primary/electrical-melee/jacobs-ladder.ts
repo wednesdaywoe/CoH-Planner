@@ -73,9 +73,9 @@ export const JacobsLadder: Power = {
       "scale": 1,
       "table": "Melee_Ones"
     },
-    "buffDuration": 2,
     "durations": {
       "recoveryDebuff": 2
-    }
+    },
+    "buffDuration": 2
   }
 };

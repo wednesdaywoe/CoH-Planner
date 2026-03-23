@@ -48,11 +48,6 @@ export const PowerBolt: Power = {
       "type": "Energy",
       "scale": 0.8,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1,
-      "table": "Ranged_InherentDamage"
     }
   ],
   "effects": {

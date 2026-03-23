@@ -22,7 +22,6 @@ export const HotFeet: Power = {
     "radius": 20,
     "recharge": 20,
     "endurance": 2.08,
-    "activatePeriod": 2.0,
     "castTime": 1.47,
     "maxTargets": 16
   },
@@ -49,30 +48,6 @@ export const HotFeet: Power = {
       "mag": 3,
       "scale": 4,
       "table": "Ranged_Ones"
-    },
-    "slow": {
-      "fly": {
-        "scale": 10,
-        "table": "Ranged_Ones"
-      }
-    },
-    "movement": {
-      "jumpHeight": {
-        "scale": 0.7,
-        "table": "Ranged_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.7,
-        "table": "Ranged_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.7,
-        "table": "Ranged_Slow"
-      }
-    },
-    "durations": {
-      "movement": 2.25,
-      "slow": 15
     }
   }
 };

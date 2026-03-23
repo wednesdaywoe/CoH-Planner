@@ -50,11 +50,6 @@ export const Disembowel: Power = {
       "type": "Lethal",
       "scale": 1.96,
       "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.96,
-      "table": "Melee_InherentDamage"
     }
   ],
   "effects": {

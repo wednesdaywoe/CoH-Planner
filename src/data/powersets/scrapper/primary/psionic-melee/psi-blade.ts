@@ -63,15 +63,5 @@ export const PsiBlade: Power = {
       "scale": 1.14,
       "table": "Melee_InherentDamage"
     }
-  ],
-  "effects": {
-    "rechargeDebuff": {
-      "scale": 0.12,
-      "table": "Melee_Slow"
-    },
-    "buffDuration": 6,
-    "durations": {
-      "rechargeBuff": 6
-    }
-  }
+  ]
 };

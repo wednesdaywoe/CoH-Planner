@@ -53,6 +53,11 @@ export const SharePain: Power = {
         "table": "Ranged_Ones"
       }
     },
+    "durations": {
+      "resistance": 15,
+      "regenDebuff": 15,
+      "damageBuff": 15
+    },
     "regenDebuff": {
       "scale": 1,
       "table": "Ranged_Ones"
@@ -61,11 +66,6 @@ export const SharePain: Power = {
       "scale": 2.5,
       "table": "Ranged_Buff_Dmg"
     },
-    "buffDuration": 15,
-    "durations": {
-      "damageBuff": 15,
-      "regenDebuff": 15,
-      "resistance": 15
-    }
+    "buffDuration": 15
   }
 };

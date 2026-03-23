@@ -22,7 +22,6 @@ export const HotFeet: Power = {
     "radius": 20,
     "recharge": 20,
     "endurance": 2.08,
-    "activatePeriod": 2.0,
     "castTime": 1.47,
     "maxTargets": 10
   },
@@ -50,22 +49,6 @@ export const HotFeet: Power = {
       "mag": 3,
       "scale": 4,
       "table": "Melee_Ones"
-    },
-    "slow": {
-      "fly": {
-        "scale": 10,
-        "table": "Melee_Ones"
-      }
-    },
-    "movement": {
-      "runSpeed": {
-        "scale": 0.7,
-        "table": "Melee_Slow"
-      }
-    },
-    "durations": {
-      "movement": 2.3,
-      "slow": 15
     }
   }
 };

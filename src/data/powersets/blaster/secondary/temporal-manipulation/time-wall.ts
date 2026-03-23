@@ -46,41 +46,6 @@ export const TimeWall: Power = {
     "table": "Melee_Damage"
   },
   "effects": {
-    "movement": {
-      "runSpeed": {
-        "scale": 0.5,
-        "table": "Ranged_Slow"
-      },
-      "flySpeed": {
-        "scale": 0.5,
-        "table": "Ranged_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.5,
-        "table": "Ranged_Slow"
-      },
-      "jumpHeight": {
-        "scale": 0.5,
-        "table": "Ranged_Slow"
-      }
-    },
-    "durations": {
-      "movement": 20,
-      "rechargeDebuff": 20,
-      "slow": 20,
-      "regenDebuff": 20,
-      "damageBuff": 9.1
-    },
-    "rechargeDebuff": {
-      "scale": 0.6,
-      "table": "Ranged_Slow"
-    },
-    "slow": {
-      "runSpeed": {
-        "scale": 1,
-        "table": "Ranged_SpeedRunning"
-      }
-    },
     "immobilize": {
       "mag": 3,
       "scale": 15,
@@ -89,6 +54,10 @@ export const TimeWall: Power = {
     "regenDebuff": {
       "scale": 0.25,
       "table": "Ranged_Ones"
+    },
+    "durations": {
+      "regenDebuff": 20,
+      "damageBuff": 9.1
     },
     "damageBuff": {
       "scale": 0.106,

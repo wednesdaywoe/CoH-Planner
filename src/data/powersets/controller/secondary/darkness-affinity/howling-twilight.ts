@@ -46,28 +46,6 @@ export const HowlingTwilight: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
-    "movement": {
-      "runSpeed": {
-        "scale": 0.5,
-        "table": "Ranged_Slow"
-      },
-      "flySpeed": {
-        "scale": 0.5,
-        "table": "Ranged_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.5,
-        "table": "Ranged_Slow"
-      },
-      "jumpHeight": {
-        "scale": 0.5,
-        "table": "Ranged_Slow"
-      }
-    },
-    "rechargeDebuff": {
-      "scale": 0.5,
-      "table": "Ranged_Slow"
-    },
     "fear": {
       "mag": 3,
       "scale": 15,
@@ -88,11 +66,9 @@ export const HowlingTwilight: Power = {
       "scale": 5,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 30,
     "durations": {
-      "movement": 30,
-      "rechargeBuff": 30,
       "regenDebuff": 30
-    }
+    },
+    "buffDuration": 30
   }
 };

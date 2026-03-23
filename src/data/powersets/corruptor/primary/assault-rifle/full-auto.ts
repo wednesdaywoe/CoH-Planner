@@ -51,13 +51,6 @@ export const FullAuto: Power = {
       "table": "Ranged_Damage",
       "duration": 2,
       "tickRate": 0.2
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.2754,
-      "table": "Ranged_InherentDamage",
-      "duration": 2,
-      "tickRate": 0.2
     }
   ]
 };

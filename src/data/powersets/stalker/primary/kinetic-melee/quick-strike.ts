@@ -52,25 +52,12 @@ export const QuickStrike: Power = {
       "type": "Energy",
       "scale": 0.84,
       "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.84,
-      "table": "Melee_InherentDamage"
     }
   ],
   "effects": {
     "knockback": {
       "scale": 0.7,
       "table": "Melee_Ones"
-    },
-    "damageDebuff": {
-      "scale": 0.75,
-      "table": "Melee_Debuff_Dam"
-    },
-    "durations": {
-      "damageDebuff": 4
-    },
-    "buffDuration": 4
+    }
   }
 };

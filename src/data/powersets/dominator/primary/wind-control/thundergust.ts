@@ -51,16 +51,6 @@ export const Thundergust: Power = {
     "knockback": {
       "scale": 0.67,
       "table": "Ranged_Ones"
-    },
-    "tohitDebuff": {
-      "scale": 1.5,
-      "table": "Ranged_Debuff_ToHit"
-    },
-    "slow": {
-      "fly": {
-        "scale": 3,
-        "table": "Ranged_Ones"
-      }
     }
   },
   "requires": "char>accesslevel >= 0"

@@ -36,19 +36,5 @@ export const DarkestNight: Power = {
     "Accurate To-Hit Debuff",
     "To Hit Debuff"
   ],
-  "maxSlots": 6,
-  "effects": {
-    "damageDebuff": {
-      "scale": 3,
-      "table": "Ranged_Debuff_Dam"
-    },
-    "tohitDebuff": {
-      "scale": 1.5,
-      "table": "Ranged_Debuff_ToHit"
-    },
-    "durations": {
-      "damageDebuff": 0.75,
-      "tohitDebuff": 0.75
-    }
-  }
+  "maxSlots": 6
 };

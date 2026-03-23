@@ -29,15 +29,5 @@ export const SiphonPower: Power = {
     "Recharge",
     "Accuracy"
   ],
-  "maxSlots": 6,
-  "effects": {
-    "damageDebuff": {
-      "scale": 2,
-      "table": "Ranged_Debuff_Dam"
-    },
-    "durations": {
-      "damageDebuff": 30
-    },
-    "buffDuration": 30
-  }
+  "maxSlots": 6
 };

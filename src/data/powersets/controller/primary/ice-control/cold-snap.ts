@@ -39,41 +39,5 @@ export const ColdSnap: Power = {
     "Fear",
     "Slow Movement"
   ],
-  "maxSlots": 6,
-  "effects": {
-    "movement": {
-      "jumpHeight": {
-        "scale": 0.65,
-        "table": "Ranged_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.65,
-        "table": "Ranged_Slow"
-      },
-      "flySpeed": {
-        "scale": 0.65,
-        "table": "Ranged_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.65,
-        "table": "Ranged_Slow"
-      }
-    },
-    "durations": {
-      "movement": 18,
-      "rechargeDebuff": 18,
-      "slow": 18
-    },
-    "rechargeDebuff": {
-      "scale": 0.65,
-      "table": "Ranged_Slow"
-    },
-    "slow": {
-      "runSpeed": {
-        "scale": 1,
-        "table": "Ranged_SpeedRunning"
-      }
-    },
-    "buffDuration": 18
-  }
+  "maxSlots": 6
 };

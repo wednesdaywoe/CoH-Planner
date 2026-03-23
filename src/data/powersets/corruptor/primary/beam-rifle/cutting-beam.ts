@@ -54,11 +54,6 @@ export const CuttingBeam: Power = {
       "table": "Ranged_Damage",
       "duration": 2.1,
       "tickRate": 1
-    },
-    {
-      "type": "Energy",
-      "scale": 0.919,
-      "table": "Ranged_InherentDamage"
     }
   ],
   "effects": {

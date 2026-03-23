@@ -55,35 +55,9 @@ export const CallRavens: Power = {
       "scale": 1,
       "table": "Ranged_Debuff_Def"
     },
-    "movement": {
-      "runSpeed": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      },
-      "flySpeed": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      },
-      "jumpHeight": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      }
-    },
-    "slow": {
-      "fly": {
-        "scale": 1.6,
-        "table": "Ranged_Ones"
-      }
-    },
-    "buffDuration": 10,
     "durations": {
-      "defenseDebuff": 10,
-      "movement": 10,
-      "slow": 10
-    }
+      "defenseDebuff": 10
+    },
+    "buffDuration": 10
   }
 };

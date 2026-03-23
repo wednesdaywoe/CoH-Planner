@@ -50,36 +50,9 @@ export const IceSword: Power = {
     }
   ],
   "effects": {
-    "movement": {
-      "jumpHeight": {
-        "scale": 0.1,
-        "table": "Melee_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.1,
-        "table": "Melee_Slow"
-      },
-      "flySpeed": {
-        "scale": 0.1,
-        "table": "Melee_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.1,
-        "table": "Melee_Slow"
-      }
-    },
-    "rechargeDebuff": {
-      "scale": 0.1,
-      "table": "Melee_Slow"
-    },
     "damageBuff": {
       "scale": 0,
       "table": "Ranged_Ones"
-    },
-    "buffDuration": 8,
-    "durations": {
-      "movement": 8,
-      "rechargeBuff": 8
     }
   }
 };

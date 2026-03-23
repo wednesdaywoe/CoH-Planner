@@ -22,7 +22,6 @@ export const ChokingCloud: Power = {
     "radius": 15,
     "recharge": 20,
     "endurance": 1.625,
-    "activatePeriod": 2.0,
     "castTime": 1,
     "maxTargets": 16
   },

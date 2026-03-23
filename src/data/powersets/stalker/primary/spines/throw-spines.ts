@@ -58,11 +58,6 @@ export const ThrowSpines: Power = {
       "type": "Lethal",
       "scale": 1.09,
       "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.09,
-      "table": "Melee_InherentDamage"
     }
   ],
   "effects": {
@@ -70,33 +65,6 @@ export const ThrowSpines: Power = {
       "mag": 0.67,
       "scale": 10,
       "table": "Melee_Immobilize"
-    },
-    "movement": {
-      "runSpeed": {
-        "scale": 0.5,
-        "table": "Melee_Slow"
-      },
-      "flySpeed": {
-        "scale": 0.5,
-        "table": "Melee_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.5,
-        "table": "Melee_Slow"
-      },
-      "jumpHeight": {
-        "scale": 0.5,
-        "table": "Melee_Slow"
-      }
-    },
-    "durations": {
-      "movement": 15,
-      "rechargeDebuff": 10
-    },
-    "rechargeDebuff": {
-      "scale": 0.2,
-      "table": "Melee_Slow"
-    },
-    "buffDuration": 15
+    }
   }
 };

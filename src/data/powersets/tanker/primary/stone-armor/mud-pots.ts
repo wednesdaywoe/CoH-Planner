@@ -22,7 +22,6 @@ export const MudPots: Power = {
     "radius": 12,
     "recharge": 4,
     "endurance": 1.04,
-    "activatePeriod": 2.0,
     "castTime": 2.03,
     "maxTargets": 10
   },
@@ -48,35 +47,10 @@ export const MudPots: Power = {
     "table": "Melee_Damage"
   },
   "effects": {
-    "movement": {
-      "runSpeed": {
-        "scale": 0.5,
-        "table": "Melee_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.5,
-        "table": "Melee_Slow"
-      },
-      "jumpHeight": {
-        "scale": 0.5,
-        "table": "Melee_Slow"
-      }
-    },
-    "durations": {
-      "movement": 5,
-      "slow": 5
-    },
-    "slow": {
-      "runSpeed": {
-        "scale": 1,
-        "table": "Melee_SpeedRunning"
-      }
-    },
     "immobilize": {
       "mag": 2,
       "scale": 2.25,
       "table": "Melee_Ones"
-    },
-    "buffDuration": 5
+    }
   }
 };

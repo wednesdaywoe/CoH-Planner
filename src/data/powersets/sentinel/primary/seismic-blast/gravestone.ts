@@ -40,28 +40,5 @@ export const Gravestone: Power = {
     "type": "Smashing",
     "scale": 2.28,
     "table": "Ranged_Damage"
-  },
-  "effects": {
-    "slow": {
-      "fly": {
-        "scale": 1.6,
-        "table": "Ranged_Ones"
-      }
-    },
-    "durations": {
-      "slow": 16,
-      "movement": 16
-    },
-    "movement": {
-      "jumpSpeed": {
-        "scale": 1,
-        "table": "Ranged_Slow"
-      },
-      "jumpHeight": {
-        "scale": 1,
-        "table": "Ranged_Slow"
-      }
-    },
-    "buffDuration": 16
   }
 };

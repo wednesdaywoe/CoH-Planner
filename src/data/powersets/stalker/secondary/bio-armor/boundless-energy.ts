@@ -31,7 +31,7 @@ export const BoundlessEnergy: Power = {
   "maxSlots": 6,
   "effects": {
     "maxHPBuff": {
-      "scale": 0.5625,
+      "scale": 1.8125,
       "table": "Melee_HealSelf"
     },
     "durations": {
@@ -41,11 +41,11 @@ export const BoundlessEnergy: Power = {
       "debuffResistance": 5.25
     },
     "regenBuff": {
-      "scale": 0.195,
+      "scale": 0.845,
       "table": "Melee_Ones"
     },
     "recoveryBuff": {
-      "scale": 0.13,
+      "scale": 0.455,
       "table": "Melee_Ones"
     },
     "debuffResistance": {

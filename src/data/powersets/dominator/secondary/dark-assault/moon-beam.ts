@@ -17,11 +17,11 @@ export const MoonBeam: Power = {
   "powerType": "Click",
   "effectArea": "SingleTarget",
   "stats": {
-    "accuracy": 1.2,
+    "accuracy": 1,
     "range": 150,
     "recharge": 20,
     "endurance": 18.512,
-    "castTime": 4.33
+    "castTime": 1.33
   },
   "allowedEnhancements": [
     "Interrupt",
@@ -44,27 +44,5 @@ export const MoonBeam: Power = {
     "type": "Negative",
     "scale": 4.5,
     "table": "Ranged_Damage"
-  },
-  "quickSnipe": {
-    "stats": {
-      "castTime": 1.33,
-      "range": 80,
-      "accuracy": 1.2
-    },
-    "damage": {
-      "type": "Negative",
-      "scale": 3.56,
-      "table": "Ranged_Damage"
-    }
-  },
-  "effects": {
-    "tohitDebuff": {
-      "scale": 0.75,
-      "table": "Ranged_Debuff_ToHit"
-    },
-    "durations": {
-      "tohitDebuff": 10
-    },
-    "buffDuration": 10
   }
 };

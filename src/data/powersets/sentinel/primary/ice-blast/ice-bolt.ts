@@ -42,34 +42,5 @@ export const IceBolt: Power = {
     "type": "Cold",
     "scale": 0.84,
     "table": "Ranged_Damage"
-  },
-  "effects": {
-    "movement": {
-      "runSpeed": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      },
-      "flySpeed": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      },
-      "jumpHeight": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      }
-    },
-    "rechargeDebuff": {
-      "scale": 0.2,
-      "table": "Ranged_Slow"
-    },
-    "buffDuration": 6,
-    "durations": {
-      "movement": 6,
-      "rechargeBuff": 6
-    }
   }
 };

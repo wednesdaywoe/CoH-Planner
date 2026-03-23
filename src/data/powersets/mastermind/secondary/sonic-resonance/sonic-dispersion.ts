@@ -22,7 +22,6 @@ export const SonicDispersion: Power = {
     "radius": 25,
     "recharge": 15,
     "endurance": 1.3,
-    "activatePeriod": 2.0,
     "castTime": 2.03,
     "maxTargets": 255
   },
@@ -66,6 +65,12 @@ export const SonicDispersion: Power = {
         "table": "Ranged_Res_Dmg"
       }
     },
+    "durations": {
+      "resistance": 2.25,
+      "hold": 2.25,
+      "immobilize": 2.25,
+      "stun": 2.25
+    },
     "hold": {
       "mag": 1,
       "scale": 20,
@@ -82,11 +87,6 @@ export const SonicDispersion: Power = {
       "scale": 20,
       "table": "Ranged_Res_Boolean"
     },
-    "durations": {
-      "hold": 2.25,
-      "immobilize": 2.25,
-      "resistance": 2.25,
-      "stun": 2.25
-    }
+    "buffDuration": 2.25
   }
 };

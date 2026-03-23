@@ -38,18 +38,13 @@ export const FlashArrow: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "tohitDebuff": {
-      "scale": 0.75,
-      "table": "Ranged_Debuff_ToHit"
-    },
     "perceptionDebuff": {
       "scale": 0.9,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 60,
     "durations": {
-      "perceptionDebuff": 60,
-      "tohitDebuff": 60
-    }
+      "perceptionDebuff": 60
+    },
+    "buffDuration": 60
   }
 };

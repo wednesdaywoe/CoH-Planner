@@ -58,9 +58,9 @@ export const TelekineticThrust: Power = {
       "scale": 0.137,
       "table": "Melee_Ones"
     },
-    "buffDuration": 9.57,
     "durations": {
       "damageBuff": 9.57
-    }
+    },
+    "buffDuration": 9.57
   }
 };

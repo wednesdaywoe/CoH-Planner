@@ -56,9 +56,9 @@ export const Combustion: Power = {
       "scale": 0.061,
       "table": "Melee_Ones"
     },
-    "buffDuration": 10.5,
     "durations": {
       "damageBuff": 10.5
-    }
+    },
+    "buffDuration": 10.5
   }
 };

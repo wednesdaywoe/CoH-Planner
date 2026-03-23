@@ -44,7 +44,7 @@ export const PowerSink: Power = {
       "table": "Melee_Ones"
     },
     "regenBuff": {
-      "scale": 0.175,
+      "scale": 0.35,
       "table": "Melee_Ones"
     },
     "durations": {

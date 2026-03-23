@@ -57,11 +57,6 @@ export const OneThousandCuts: Power = {
       "type": "Lethal",
       "scale": 2.21,
       "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 2.21,
-      "table": "Melee_InherentDamage"
     }
   ],
   "effects": {
@@ -74,12 +69,7 @@ export const OneThousandCuts: Power = {
       "table": "Melee_Debuff_Def"
     },
     "durations": {
-      "defenseDebuff": 20,
-      "tohitDebuff": 20
-    },
-    "tohitDebuff": {
-      "scale": 1,
-      "table": "Melee_DeBuff_ToHit"
+      "defenseDebuff": 20
     },
     "buffDuration": 20
   }

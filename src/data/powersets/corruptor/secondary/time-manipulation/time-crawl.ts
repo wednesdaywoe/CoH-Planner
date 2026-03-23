@@ -35,43 +35,12 @@ export const TimeCrawl: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "movement": {
-      "runSpeed": {
-        "scale": 0.5,
-        "table": "Ranged_Slow"
-      },
-      "flySpeed": {
-        "scale": 0.5,
-        "table": "Ranged_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.5,
-        "table": "Ranged_Slow"
-      },
-      "jumpHeight": {
-        "scale": 0.5,
-        "table": "Ranged_Slow"
-      }
-    },
-    "durations": {
-      "movement": 20,
-      "rechargeDebuff": 20,
-      "slow": 20,
-      "regenDebuff": 20
-    },
-    "rechargeDebuff": {
-      "scale": 0.6,
-      "table": "Ranged_Slow"
-    },
-    "slow": {
-      "runSpeed": {
-        "scale": 1,
-        "table": "Ranged_SpeedRunning"
-      }
-    },
     "regenDebuff": {
       "scale": 1,
       "table": "Ranged_Ones"
+    },
+    "durations": {
+      "regenDebuff": 20
     },
     "buffDuration": 20
   }

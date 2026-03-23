@@ -71,15 +71,8 @@ export const ChainFences: Power = {
       "table": "Ranged_Ones"
     },
     "durations": {
-      "recoveryDebuff": 6,
-      "slow": 15
+      "recoveryDebuff": 6
     },
-    "slow": {
-      "fly": {
-        "scale": 1.6,
-        "table": "Ranged_Ones"
-      }
-    },
-    "buffDuration": 15
+    "buffDuration": 6
   }
 };

@@ -59,11 +59,6 @@ export const Ripper: Power = {
       "type": "Lethal",
       "scale": 1.7,
       "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.7,
-      "table": "Melee_InherentDamage"
     }
   ],
   "effects": {
@@ -75,33 +70,6 @@ export const Ripper: Power = {
       "mag": 0.67,
       "scale": 10,
       "table": "Melee_Immobilize"
-    },
-    "rechargeDebuff": {
-      "scale": 0.1,
-      "table": "Melee_Slow"
-    },
-    "durations": {
-      "rechargeDebuff": 10,
-      "movement": 15
-    },
-    "movement": {
-      "runSpeed": {
-        "scale": 0.2,
-        "table": "Melee_Slow"
-      },
-      "flySpeed": {
-        "scale": 0.2,
-        "table": "Melee_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.2,
-        "table": "Melee_Slow"
-      },
-      "jumpHeight": {
-        "scale": 0.2,
-        "table": "Melee_Slow"
-      }
-    },
-    "buffDuration": 15
+    }
   }
 };

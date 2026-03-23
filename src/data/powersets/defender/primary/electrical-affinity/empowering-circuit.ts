@@ -41,14 +41,14 @@ export const EmpoweringCircuit: Power = {
       "scale": 3,
       "table": "Ranged_Buff_Dmg"
     },
+    "durations": {
+      "damageBuff": 60,
+      "tohitBuff": 60
+    },
     "tohitBuff": {
       "scale": 1.2,
       "table": "Ranged_Buff_ToHit"
     },
-    "buffDuration": 60,
-    "durations": {
-      "damageBuff": 60,
-      "tohitBuff": 60
-    }
+    "buffDuration": 60
   }
 };

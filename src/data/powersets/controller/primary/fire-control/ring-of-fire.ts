@@ -56,14 +56,7 @@ export const RingofFire: Power = {
       "knockback": 1
     },
     "durations": {
-      "protection": 15,
-      "slow": 10
-    },
-    "slow": {
-      "fly": {
-        "scale": 1.6,
-        "table": "Ranged_Ones"
-      }
+      "protection": 15
     },
     "buffDuration": 15
   }

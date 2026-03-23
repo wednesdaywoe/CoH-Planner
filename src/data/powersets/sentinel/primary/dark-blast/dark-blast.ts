@@ -43,15 +43,5 @@ export const DarkBlast: Power = {
     "type": "Negative",
     "scale": 1,
     "table": "Ranged_Damage"
-  },
-  "effects": {
-    "tohitDebuff": {
-      "scale": 0.75,
-      "table": "Ranged_Debuff_ToHit"
-    },
-    "buffDuration": 6,
-    "durations": {
-      "tohitDebuff": 6
-    }
   }
 };

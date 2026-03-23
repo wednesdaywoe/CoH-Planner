@@ -51,44 +51,13 @@ export const CryoFreezeRay: Power = {
       "scale": 10,
       "table": "Ranged_Immobilize"
     },
-    "movement": {
-      "runSpeed": {
-        "scale": 0.3,
-        "table": "Ranged_Slow"
-      },
-      "flySpeed": {
-        "scale": 0.3,
-        "table": "Ranged_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.3,
-        "table": "Ranged_Slow"
-      },
-      "jumpHeight": {
-        "scale": 0.3,
-        "table": "Ranged_Slow"
-      }
-    },
-    "rechargeDebuff": {
-      "scale": 0.3,
-      "table": "Ranged_Slow"
-    },
     "protection": {
       "knockup": 1,
       "knockback": 1
     },
-    "slow": {
-      "fly": {
-        "scale": 1.6,
-        "table": "Ranged_Ones"
-      }
-    },
-    "buffDuration": 12,
     "durations": {
-      "movement": 12,
-      "protection": 12,
-      "rechargeBuff": 12,
-      "slow": 15
-    }
+      "protection": 12
+    },
+    "buffDuration": 12
   }
 };

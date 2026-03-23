@@ -66,11 +66,6 @@ export const CrushingUppercut: Power = {
       "type": "Smashing",
       "scale": 3.18,
       "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 3.18,
-      "table": "Melee_InherentDamage"
     }
   ],
   "effects": {

@@ -22,7 +22,6 @@ export const Evasion: Power = {
     "radius": 12,
     "recharge": 4,
     "endurance": 0.52,
-    "activatePeriod": 2.0,
     "castTime": 3,
     "maxTargets": 10
   },

@@ -39,15 +39,5 @@ export const PsionicDart: Power = {
     "type": "Psionic",
     "scale": 0.84,
     "table": "Ranged_Damage"
-  },
-  "effects": {
-    "rechargeDebuff": {
-      "scale": 0.3,
-      "table": "Ranged_Slow"
-    },
-    "durations": {
-      "rechargeDebuff": 5
-    },
-    "buffDuration": 5
   }
 };

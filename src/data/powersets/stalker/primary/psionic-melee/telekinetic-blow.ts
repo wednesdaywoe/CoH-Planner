@@ -55,11 +55,6 @@ export const TelekineticBlow: Power = {
     },
     {
       "type": "Psionic",
-      "scale": 1.8,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Psionic",
       "scale": 0.18,
       "table": "Melee_Damage",
       "duration": 3.1,

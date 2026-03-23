@@ -22,7 +22,6 @@ export const RisetotheChallenge: Power = {
     "radius": 12,
     "recharge": 10,
     "endurance": 0.208,
-    "activatePeriod": 1.0,
     "castTime": 3,
     "maxTargets": 10
   },
@@ -40,17 +39,12 @@ export const RisetotheChallenge: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "tohitDebuff": {
-      "scale": 0.5,
-      "table": "Melee_DeBuff_ToHit"
+    "regenBuff": {
+      "scale": 1.25,
+      "table": "Melee_Ones"
     },
     "durations": {
-      "tohitDebuff": 1,
       "regenBuff": 1.125
-    },
-    "regenBuff": {
-      "scale": 1,
-      "table": "Melee_Ones"
     },
     "taunt": {
       "scale": 1.25,

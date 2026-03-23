@@ -50,35 +50,10 @@ export const MaimingSlash: Power = {
     },
     {
       "type": "Lethal",
-      "scale": 1.16,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Lethal",
       "scale": 0.209,
       "table": "Melee_Damage",
       "duration": 3.1,
       "tickRate": 1
     }
-  ],
-  "effects": {
-    "movement": {
-      "runSpeed": {
-        "scale": 0.7,
-        "table": "Melee_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.7,
-        "table": "Melee_Slow"
-      },
-      "jumpHeight": {
-        "scale": 0.7,
-        "table": "Melee_Slow"
-      }
-    },
-    "durations": {
-      "movement": 10
-    },
-    "buffDuration": 10
-  }
+  ]
 };

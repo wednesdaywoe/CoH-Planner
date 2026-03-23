@@ -53,38 +53,14 @@ export const IceArrow: Power = {
       "scale": 10,
       "table": "Ranged_Immobilize"
     },
-    "movement": {
-      "runSpeed": {
-        "scale": 0.1,
-        "table": "Ranged_Slow"
-      },
-      "flySpeed": {
-        "scale": 0.1,
-        "table": "Ranged_Slow"
-      },
-      "jumpHeight": {
-        "scale": 0.3,
-        "table": "Ranged_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.3,
-        "table": "Ranged_Slow"
-      }
-    },
-    "durations": {
-      "movement": 10,
-      "rechargeDebuff": 10,
-      "protection": 10,
-      "knockup": 10,
-      "knockback": 10
-    },
-    "rechargeDebuff": {
-      "scale": 0.1,
-      "table": "Ranged_Slow"
-    },
     "protection": {
       "knockup": 1,
       "knockback": 1
+    },
+    "durations": {
+      "protection": 10,
+      "knockup": 10,
+      "knockback": 10
     },
     "knockup": {
       "scale": 100,

@@ -54,35 +54,6 @@ export const CrushingField: Power = {
       "mag": 3,
       "scale": 15,
       "table": "Ranged_Immobilize"
-    },
-    "movement": {
-      "jumpHeight": {
-        "scale": 0.5,
-        "table": "Ranged_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.5,
-        "table": "Ranged_Slow"
-      },
-      "flySpeed": {
-        "scale": 0.5,
-        "table": "Ranged_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.5,
-        "table": "Ranged_Slow"
-      }
-    },
-    "durations": {
-      "movement": 15,
-      "slow": 10
-    },
-    "slow": {
-      "fly": {
-        "scale": 1.6,
-        "table": "Ranged_Ones"
-      }
-    },
-    "buffDuration": 15
+    }
   }
 };

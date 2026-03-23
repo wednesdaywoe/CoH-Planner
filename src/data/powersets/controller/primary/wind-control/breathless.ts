@@ -51,19 +51,6 @@ export const Breathless: Power = {
       "mag": 3,
       "scale": 15,
       "table": "Ranged_Immobilize"
-    },
-    "damageDebuff": {
-      "scale": 2,
-      "table": "Ranged_Debuff_Dam"
-    },
-    "durations": {
-      "damageDebuff": 15,
-      "rechargeDebuff": 15
-    },
-    "rechargeDebuff": {
-      "scale": 0.3,
-      "table": "Ranged_Slow"
-    },
-    "buffDuration": 15
+    }
   }
 };

@@ -49,18 +49,10 @@ export const AbyssalGaze: Power = {
     "tickRate": 1
   },
   "effects": {
-    "tohitDebuff": {
-      "scale": 0.75,
-      "table": "Ranged_Debuff_ToHit"
-    },
-    "durations": {
-      "tohitDebuff": 10
-    },
     "hold": {
       "mag": 3,
       "scale": 4.4,
       "table": "Ranged_Immobilize"
-    },
-    "buffDuration": 10
+    }
   }
 };

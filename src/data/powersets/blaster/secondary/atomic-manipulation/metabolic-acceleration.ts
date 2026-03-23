@@ -34,7 +34,7 @@ export const MetabolicAcceleration: Power = {
   "maxSlots": 6,
   "effects": {
     "regenBuff": {
-      "scale": 1.125,
+      "scale": 2.25,
       "table": "Melee_Ones"
     },
     "durations": {

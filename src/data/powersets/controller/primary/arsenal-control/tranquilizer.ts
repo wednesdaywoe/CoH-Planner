@@ -57,28 +57,6 @@ export const Tranquilizer: Power = {
       "mag": 3.5,
       "scale": 30,
       "table": "Ranged_Sleep"
-    },
-    "movement": {
-      "runSpeed": {
-        "scale": 0.1,
-        "table": "Ranged_Slow"
-      },
-      "flySpeed": {
-        "scale": 0.1,
-        "table": "Ranged_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.1,
-        "table": "Ranged_Slow"
-      },
-      "jumpHeight": {
-        "scale": 0.1,
-        "table": "Ranged_Slow"
-      }
-    },
-    "durations": {
-      "movement": 5
-    },
-    "buffDuration": 5
+    }
   }
 };

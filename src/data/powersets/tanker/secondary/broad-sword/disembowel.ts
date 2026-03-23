@@ -56,9 +56,9 @@ export const Disembowel: Power = {
       "scale": 1,
       "table": "Melee_Debuff_Def"
     },
-    "buffDuration": 10,
     "durations": {
       "defenseDebuff": 10
-    }
+    },
+    "buffDuration": 10
   }
 };

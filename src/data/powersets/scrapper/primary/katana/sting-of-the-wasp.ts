@@ -59,7 +59,11 @@ export const StingoftheWasp: Power = {
     "defenseDebuff": {
       "scale": 1,
       "table": "Melee_Debuff_Def"
-    }
+    },
+    "durations": {
+      "defenseDebuff": 10
+    },
+    "buffDuration": 10
   },
   "requires": "!Scrapper_Defense.Shield_Defense"
 };

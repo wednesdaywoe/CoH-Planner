@@ -58,15 +58,5 @@ export const ShadowMaul: Power = {
       "duration": 2,
       "tickRate": 0.625
     }
-  ],
-  "effects": {
-    "tohitDebuff": {
-      "scale": 0.75,
-      "table": "Melee_DeBuff_ToHit"
-    },
-    "buffDuration": 10,
-    "durations": {
-      "tohitDebuff": 10
-    }
-  }
+  ]
 };

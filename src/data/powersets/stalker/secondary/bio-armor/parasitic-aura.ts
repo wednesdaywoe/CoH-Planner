@@ -40,26 +40,21 @@ export const ParasiticAura: Power = {
   "maxSlots": 6,
   "effects": {
     "recoveryBuff": {
-      "scale": 0.09,
+      "scale": 0.39,
       "table": "Melee_Ones"
     },
     "durations": {
       "recoveryBuff": 45,
       "regenBuff": 45,
-      "absorb": 45,
-      "damageDebuff": 30
+      "absorb": 45
     },
     "regenBuff": {
-      "scale": 0.2,
+      "scale": 0.7,
       "table": "Melee_Ones"
     },
     "absorb": {
-      "scale": 1,
+      "scale": 2.13,
       "table": "Melee_Ones"
-    },
-    "damageDebuff": {
-      "scale": 2,
-      "table": "Melee_Debuff_Dam"
     },
     "buffDuration": 45
   }

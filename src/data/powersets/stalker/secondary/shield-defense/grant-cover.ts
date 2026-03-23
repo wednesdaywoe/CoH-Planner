@@ -22,7 +22,6 @@ export const GrantCover: Power = {
     "radius": 15,
     "recharge": 10,
     "endurance": 0.312,
-    "activatePeriod": 2.0,
     "castTime": 2.5,
     "maxTargets": 255
   },
@@ -36,7 +35,6 @@ export const GrantCover: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "defenseBuffExcludesSelf": true,
     "defenseBuff": {
       "ranged": {
         "scale": 1.125,
@@ -77,23 +75,8 @@ export const GrantCover: Power = {
     },
     "durations": {
       "defenseBuff": 2.25,
-      "stealth": 0.75,
       "elusivity": 2.25,
       "debuffResistance": 2.25
-    },
-    "stealth": {
-      "stealthPvE": {
-        "scale": 150,
-        "table": "Melee_Ones"
-      },
-      "stealthPvP": {
-        "scale": 500,
-        "table": "Melee_Ones"
-      },
-      "translucency": {
-        "scale": 0.15,
-        "table": "Melee_Ones"
-      }
     },
     "elusivity": {
       "all": {
@@ -102,10 +85,6 @@ export const GrantCover: Power = {
       }
     },
     "debuffResistance": {
-      "defense": {
-        "scale": 0.3,
-        "table": "Melee_Ones"
-      },
       "recharge": {
         "scale": 0.3,
         "table": "Melee_Ones"

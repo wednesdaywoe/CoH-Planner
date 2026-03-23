@@ -35,13 +35,13 @@ export const Discharge: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "damageDebuff": {
-      "scale": 1.5,
-      "table": "Ranged_Debuff_Dam"
-    },
     "regenDebuff": {
       "scale": 0.5,
       "table": "Ranged_Ones"
+    },
+    "durations": {
+      "regenDebuff": 25,
+      "recoveryDebuff": 25
     },
     "recoveryDebuff": {
       "scale": 0.5,
@@ -51,11 +51,6 @@ export const Discharge: Power = {
       "scale": 0.25,
       "table": "Ranged_EndDrain"
     },
-    "buffDuration": 25,
-    "durations": {
-      "damageDebuff": 25,
-      "recoveryDebuff": 25,
-      "regenDebuff": 25
-    }
+    "buffDuration": 25
   }
 };

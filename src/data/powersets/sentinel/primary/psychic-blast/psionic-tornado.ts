@@ -51,14 +51,6 @@ export const PsionicTornado: Power = {
     "knockup": {
       "scale": 1.4,
       "table": "Ranged_Ones"
-    },
-    "rechargeDebuff": {
-      "scale": 0.3,
-      "table": "Ranged_Slow"
-    },
-    "buffDuration": 10,
-    "durations": {
-      "rechargeBuff": 10
     }
   }
 };

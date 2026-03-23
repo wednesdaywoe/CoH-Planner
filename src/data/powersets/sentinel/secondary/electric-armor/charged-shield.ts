@@ -42,7 +42,7 @@ export const ChargedShield: Power = {
       "regenBuff": 0.6
     },
     "regenBuff": {
-      "scale": 0.5,
+      "scale": 2,
       "table": "Melee_Ones"
     },
     "buffDuration": 0.6

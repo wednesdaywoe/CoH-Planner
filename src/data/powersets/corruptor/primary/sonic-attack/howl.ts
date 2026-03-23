@@ -49,11 +49,6 @@ export const Howl: Power = {
       "type": "Energy",
       "scale": 0.3347,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.6693,
-      "table": "Ranged_InherentDamage"
     }
   ],
   "effects": {
@@ -91,9 +86,9 @@ export const Howl: Power = {
         "table": "Ranged_Debuff_Res_Dmg"
       }
     },
-    "buffDuration": 8,
     "durations": {
       "resistanceDebuff": 8
-    }
+    },
+    "buffDuration": 8
   }
 };

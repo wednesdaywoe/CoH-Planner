@@ -89,9 +89,9 @@ export const Lash: Power = {
         "table": "Ranged_Debuff_Res_Dmg"
       }
     },
-    "buffDuration": 6,
     "durations": {
       "resistanceDebuff": 6
-    }
+    },
+    "buffDuration": 6
   }
 };

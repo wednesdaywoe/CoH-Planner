@@ -51,9 +51,9 @@ export const ProtonStream: Power = {
       "scale": 3,
       "table": "Ranged_Debuff_Def"
     },
-    "buffDuration": 12,
     "durations": {
       "defenseDebuff": 12
-    }
+    },
+    "buffDuration": 12
   }
 };

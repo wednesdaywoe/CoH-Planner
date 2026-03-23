@@ -61,40 +61,6 @@ export const Impale: Power = {
       "mag": 3,
       "scale": 15,
       "table": "Melee_Immobilize"
-    },
-    "slow": {
-      "fly": {
-        "scale": 1.6,
-        "table": "Melee_Ones"
-      }
-    },
-    "movement": {
-      "runSpeed": {
-        "scale": 0.3,
-        "table": "Melee_Slow"
-      },
-      "flySpeed": {
-        "scale": 0.3,
-        "table": "Melee_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.3,
-        "table": "Melee_Slow"
-      },
-      "jumpHeight": {
-        "scale": 0.3,
-        "table": "Melee_Slow"
-      }
-    },
-    "rechargeDebuff": {
-      "scale": 0.1,
-      "table": "Melee_Slow"
-    },
-    "buffDuration": 15,
-    "durations": {
-      "movement": 15,
-      "rechargeBuff": 8,
-      "slow": 15
     }
   }
 };

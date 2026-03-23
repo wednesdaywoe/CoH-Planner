@@ -56,9 +56,9 @@ export const Beheader: Power = {
       "scale": 1,
       "table": "Melee_Debuff_Def"
     },
-    "buffDuration": 6,
     "durations": {
       "defenseDebuff": 6
-    }
+    },
+    "buffDuration": 6
   }
 };

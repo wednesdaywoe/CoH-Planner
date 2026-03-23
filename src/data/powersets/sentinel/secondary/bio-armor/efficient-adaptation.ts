@@ -23,7 +23,7 @@ export const EfficientAdaptation: Power = {
     "castTime": 0.67
   },
   "allowedEnhancements": [],
-  "maxSlots": 6,
+  "maxSlots": 0,
   "requires": "Sentinel_Defense.Bio_Organic_Armor.Adaptation",
   "mechanicType": "childToggle"
 };

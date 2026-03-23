@@ -37,6 +37,16 @@ export const SoundBooster: Power = {
       "scale": 2,
       "table": "Melee_Buff_ToHit"
     },
+    "durations": {
+      "tohitBuff": 10,
+      "damageBuff": 10,
+      "confuse": 10,
+      "fear": 10,
+      "hold": 10,
+      "immobilize": 10,
+      "stun": 10,
+      "sleep": 10
+    },
     "damageBuff": {
       "scale": 6,
       "table": "Melee_Buff_Dmg"
@@ -72,16 +82,6 @@ export const SoundBooster: Power = {
       "scale": 0.25,
       "table": "Melee_Ones"
     },
-    "buffDuration": 10,
-    "durations": {
-      "confuse": 10,
-      "damageBuff": 10,
-      "fear": 10,
-      "hold": 10,
-      "immobilize": 10,
-      "sleep": 10,
-      "stun": 10,
-      "tohitBuff": 10
-    }
+    "buffDuration": 10
   }
 };

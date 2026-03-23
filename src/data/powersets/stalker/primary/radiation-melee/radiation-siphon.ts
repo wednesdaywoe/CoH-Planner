@@ -59,11 +59,6 @@ export const RadiationSiphon: Power = {
       "table": "Melee_InherentDamage"
     },
     {
-      "type": "Energy",
-      "scale": 1.96,
-      "table": "Melee_InherentDamage"
-    },
-    {
       "type": "Heal",
       "scale": 0.6667,
       "table": "Melee_HealSelf",

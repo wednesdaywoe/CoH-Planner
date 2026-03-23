@@ -49,24 +49,9 @@ export const LifeDrain: Power = {
       "table": "Ranged_Damage"
     },
     {
-      "type": "Negative",
-      "scale": 1.64,
-      "table": "Ranged_InherentDamage"
-    },
-    {
       "type": "Heal",
       "scale": 1,
       "table": "Ranged_HealSelf"
     }
-  ],
-  "effects": {
-    "tohitDebuff": {
-      "scale": 0.75,
-      "table": "Ranged_Debuff_ToHit"
-    },
-    "durations": {
-      "tohitDebuff": 10
-    },
-    "buffDuration": 10
-  }
+  ]
 };

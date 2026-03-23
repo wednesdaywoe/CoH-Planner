@@ -22,7 +22,6 @@ export const WindShear: Power = {
     "radius": 20,
     "recharge": 15,
     "endurance": 2.6,
-    "activatePeriod": 2.0,
     "castTime": 2.03,
     "maxTargets": 16
   },
@@ -38,43 +37,5 @@ export const WindShear: Power = {
     "To Hit Debuff"
   ],
   "maxSlots": 6,
-  "effects": {
-    "tohitDebuff": {
-      "scale": 0.75,
-      "table": "Melee_DeBuff_ToHit"
-    },
-    "movement": {
-      "jumpHeight": {
-        "scale": 0.65,
-        "table": "Melee_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.65,
-        "table": "Melee_Slow"
-      },
-      "flySpeed": {
-        "scale": 0.65,
-        "table": "Melee_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.65,
-        "table": "Melee_Slow"
-      }
-    },
-    "damageDebuff": {
-      "scale": 1.25,
-      "table": "Melee_Debuff_Dam"
-    },
-    "slow": {
-      "fly": {
-        "scale": 2,
-        "table": "Melee_Ones"
-      },
-      "runSpeed": {
-        "scale": 1,
-        "table": "Melee_SpeedRunning"
-      }
-    }
-  },
   "requires": "char>accesslevel >= 0"
 };

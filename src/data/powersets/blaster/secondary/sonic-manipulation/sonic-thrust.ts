@@ -58,9 +58,9 @@ export const SonicThrust: Power = {
       "scale": 4,
       "table": "Melee_Ones"
     },
-    "buffDuration": 2,
     "durations": {
       "repel": 2
-    }
+    },
+    "buffDuration": 2
   }
 };

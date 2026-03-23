@@ -48,7 +48,7 @@ export const RebuildDNA: Power = {
   ],
   "effects": {
     "enduranceGain": {
-      "scale": 7.5,
+      "scale": 32.5,
       "table": "Melee_Ones"
     },
     "perceptionBuff": {

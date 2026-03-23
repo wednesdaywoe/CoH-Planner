@@ -50,25 +50,7 @@ export const Entomb: Power = {
       "table": "Ranged_Debuff_Def"
     },
     "durations": {
-      "defenseDebuff": 12,
-      "slow": 12,
-      "movement": 12
-    },
-    "slow": {
-      "fly": {
-        "scale": 1.6,
-        "table": "Ranged_Ones"
-      }
-    },
-    "movement": {
-      "jumpSpeed": {
-        "scale": 1,
-        "table": "Ranged_Slow"
-      },
-      "jumpHeight": {
-        "scale": 1,
-        "table": "Ranged_Slow"
-      }
+      "defenseDebuff": 12
     },
     "buffDuration": 12
   }

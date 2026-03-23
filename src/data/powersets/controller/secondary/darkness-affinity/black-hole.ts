@@ -37,6 +37,11 @@ export const BlackHole: Power = {
       "scale": 1,
       "table": "Melee_Ones"
     },
+    "durations": {
+      "repel": 0.75,
+      "immobilize": 30,
+      "threatDebuff": 30
+    },
     "immobilize": {
       "mag": 1,
       "scale": 3,
@@ -47,11 +52,6 @@ export const BlackHole: Power = {
       "scale": 1,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 30,
-    "durations": {
-      "immobilize": 30,
-      "repel": 0.75,
-      "threatDebuff": 30
-    }
+    "buffDuration": 30
   }
 };

@@ -48,11 +48,6 @@ export const Flares: Power = {
       "table": "Ranged_Damage",
       "duration": 3.1,
       "tickRate": 1
-    },
-    {
-      "type": "Fire",
-      "scale": 0.71,
-      "table": "Ranged_InherentDamage"
     }
   ]
 };

@@ -51,11 +51,6 @@ export const FlashingSteel: Power = {
       "type": "Lethal",
       "scale": 0.99,
       "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.99,
-      "table": "Melee_InherentDamage"
     }
   ],
   "effects": {

@@ -35,6 +35,11 @@ export const SonicCage: Power = {
       "scale": 4,
       "table": "Ranged_Immobilize"
     },
+    "durations": {
+      "untouchable": 30,
+      "onlyAffectsSelf": 30,
+      "immobilize": 30
+    },
     "onlyAffectsSelf": {
       "scale": 4,
       "table": "Ranged_Immobilize"
@@ -45,11 +50,6 @@ export const SonicCage: Power = {
       "table": "Ranged_Immobilize"
     },
     "effectDuration": 30,
-    "buffDuration": 30,
-    "durations": {
-      "immobilize": 30,
-      "onlyAffectsSelf": 30,
-      "untouchable": 30
-    }
+    "buffDuration": 30
   }
 };

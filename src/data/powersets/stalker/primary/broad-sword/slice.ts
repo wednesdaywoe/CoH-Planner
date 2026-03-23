@@ -51,11 +51,6 @@ export const Slice: Power = {
       "type": "Lethal",
       "scale": 1.2346,
       "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.2346,
-      "table": "Melee_InherentDamage"
     }
   ],
   "effects": {

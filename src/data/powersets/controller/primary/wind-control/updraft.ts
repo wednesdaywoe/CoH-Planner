@@ -43,20 +43,10 @@ export const Updraft: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
-    "slow": {
-      "fly": {
-        "scale": 1.5,
-        "table": "Ranged_Ones"
-      }
-    },
-    "durations": {
-      "slow": 10
-    },
     "knockup": {
       "scale": 6,
       "table": "Ranged_Knockback"
-    },
-    "buffDuration": 10
+    }
   },
   "requires": "char>accesslevel >= 0"
 };

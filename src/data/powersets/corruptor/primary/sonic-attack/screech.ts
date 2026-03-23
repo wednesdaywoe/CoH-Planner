@@ -48,11 +48,6 @@ export const Screech: Power = {
       "type": "Energy",
       "scale": 1.14,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 2.28,
-      "table": "Ranged_InherentDamage"
     }
   ],
   "effects": {
@@ -95,9 +90,9 @@ export const Screech: Power = {
         "table": "Ranged_Debuff_Res_Dmg"
       }
     },
-    "buffDuration": 15,
     "durations": {
       "resistanceDebuff": 15
-    }
+    },
+    "buffDuration": 15
   }
 };

@@ -41,50 +41,9 @@ export const BitterIceBlast: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Cold",
-      "scale": 2.28,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Cold",
-      "scale": 2.28,
-      "table": "Ranged_InherentDamage"
-    }
-  ],
-  "effects": {
-    "tohitDebuff": {
-      "scale": 1,
-      "table": "Ranged_Debuff_ToHit"
-    },
-    "movement": {
-      "jumpHeight": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      },
-      "flySpeed": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      }
-    },
-    "rechargeDebuff": {
-      "scale": 0.2,
-      "table": "Ranged_Slow"
-    },
-    "buffDuration": 12,
-    "durations": {
-      "movement": 12,
-      "rechargeBuff": 12,
-      "tohitDebuff": 6
-    }
+  "damage": {
+    "type": "Cold",
+    "scale": 2.28,
+    "table": "Ranged_Damage"
   }
 };

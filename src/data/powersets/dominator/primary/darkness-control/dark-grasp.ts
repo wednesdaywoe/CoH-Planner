@@ -51,14 +51,6 @@ export const DarkGrasp: Power = {
       "mag": 3,
       "scale": 12,
       "table": "Ranged_Immobilize"
-    },
-    "tohitDebuff": {
-      "scale": 0.75,
-      "table": "Ranged_Debuff_ToHit"
-    },
-    "buffDuration": 10,
-    "durations": {
-      "tohitDebuff": 10
     }
   }
 };

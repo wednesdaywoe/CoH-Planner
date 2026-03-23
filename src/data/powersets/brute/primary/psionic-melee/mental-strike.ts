@@ -55,15 +55,5 @@ export const MentalStrike: Power = {
       "duration": 3.1,
       "tickRate": 1
     }
-  ],
-  "effects": {
-    "rechargeDebuff": {
-      "scale": 0.1,
-      "table": "Melee_Slow"
-    },
-    "buffDuration": 6,
-    "durations": {
-      "rechargeBuff": 6
-    }
-  }
+  ]
 };

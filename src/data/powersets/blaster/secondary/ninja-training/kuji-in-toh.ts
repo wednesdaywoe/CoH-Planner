@@ -38,8 +38,14 @@ export const KujiInToh: Power = {
   "maxSlots": 6,
   "effects": {
     "regenBuff": {
-      "scale": 1.125,
+      "scale": 2.25,
       "table": "Melee_Ones"
+    },
+    "durations": {
+      "regenBuff": 210,
+      "recoveryBuff": 210,
+      "resistance": 210,
+      "fear": 210
     },
     "recoveryBuff": {
       "scale": 0.5,
@@ -57,12 +63,6 @@ export const KujiInToh: Power = {
       "table": "Melee_Res_Boolean"
     },
     "effectDuration": 210,
-    "buffDuration": 210,
-    "durations": {
-      "fear": 210,
-      "recoveryBuff": 210,
-      "regenBuff": 210,
-      "resistance": 210
-    }
+    "buffDuration": 210
   }
 };

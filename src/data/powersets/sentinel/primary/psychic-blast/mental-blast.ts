@@ -40,15 +40,5 @@ export const MentalBlast: Power = {
     "type": "Psionic",
     "scale": 1,
     "table": "Ranged_Damage"
-  },
-  "effects": {
-    "rechargeDebuff": {
-      "scale": 0.3,
-      "table": "Ranged_Slow"
-    },
-    "buffDuration": 6,
-    "durations": {
-      "rechargeBuff": 6
-    }
   }
 };

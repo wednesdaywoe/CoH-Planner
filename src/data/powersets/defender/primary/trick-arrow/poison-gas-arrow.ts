@@ -45,14 +45,6 @@ export const PoisonGasArrow: Power = {
       ],
       "duration": 20,
       "copyBoosts": true
-    },
-    "damageDebuff": {
-      "scale": 2,
-      "table": "Ranged_Debuff_Dam"
-    },
-    "buffDuration": 60,
-    "durations": {
-      "damageDebuff": 60
     }
   }
 };

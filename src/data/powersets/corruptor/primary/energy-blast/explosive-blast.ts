@@ -50,11 +50,6 @@ export const ExplosiveBlast: Power = {
       "type": "Energy",
       "scale": 0.5,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.9,
-      "table": "Ranged_InherentDamage"
     }
   ],
   "effects": {

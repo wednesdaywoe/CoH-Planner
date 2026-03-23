@@ -45,14 +45,6 @@ export const SoulAbsorption: Power = {
       "entity": "Pets_SoulAbsorptionBuff",
       "duration": 1,
       "copyBoosts": true
-    },
-    "tohitDebuff": {
-      "scale": 1,
-      "table": "Ranged_Debuff_ToHit"
-    },
-    "buffDuration": 10,
-    "durations": {
-      "tohitDebuff": 10
     }
   }
 };

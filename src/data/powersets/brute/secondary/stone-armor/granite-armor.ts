@@ -149,6 +149,7 @@ export const GraniteArmor: Power = {
       "scale": 0.65,
       "table": "Melee_Ones"
     },
+    "selfPenalty": true,
     "damageDebuff": {
       "scale": 0.3,
       "table": "Melee_Ones"

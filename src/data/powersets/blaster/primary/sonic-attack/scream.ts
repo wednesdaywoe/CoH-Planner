@@ -87,9 +87,9 @@ export const Scream: Power = {
         "table": "Ranged_Debuff_Res_Dmg"
       }
     },
-    "buffDuration": 8,
     "durations": {
       "resistanceDebuff": 8
-    }
+    },
+    "buffDuration": 8
   }
 };

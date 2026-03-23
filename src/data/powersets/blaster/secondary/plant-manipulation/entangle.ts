@@ -64,20 +64,13 @@ export const Entangle: Power = {
       "knockup": 1,
       "knockback": 1
     },
-    "slow": {
-      "fly": {
-        "scale": 1.6,
-        "table": "Ranged_Ones"
-      }
+    "durations": {
+      "protection": 15
     },
     "damageBuff": {
       "scale": 0,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 15,
-    "durations": {
-      "protection": 15,
-      "slow": 15
-    }
+    "buffDuration": 15
   }
 };

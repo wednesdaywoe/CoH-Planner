@@ -37,9 +37,9 @@ export const PowerSiphon: Power = {
       "scale": 0.75,
       "table": "Melee_Buff_ToHit"
     },
-    "buffDuration": 20,
     "durations": {
       "tohitBuff": 20
-    }
+    },
+    "buffDuration": 20
   }
 };

@@ -21,6 +21,6 @@ export const Adaptation: Power = {
     "accuracy": 1
   },
   "allowedEnhancements": [],
-  "maxSlots": 6,
-  "mechanicType": "parentMechanic"
+  "maxSlots": 0,
+  "mechanicType": "hiddenPassive"
 };

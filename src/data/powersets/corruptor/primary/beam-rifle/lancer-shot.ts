@@ -46,11 +46,6 @@ export const LancerShot: Power = {
     },
     {
       "type": "Energy",
-      "scale": 2.12,
-      "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Energy",
       "scale": 0.424,
       "table": "Ranged_Damage"
     }

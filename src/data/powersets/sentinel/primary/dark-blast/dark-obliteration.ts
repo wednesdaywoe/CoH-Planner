@@ -45,15 +45,5 @@ export const DarkObliteration: Power = {
     "type": "Negative",
     "scale": 0.9,
     "table": "Melee_Damage"
-  },
-  "effects": {
-    "tohitDebuff": {
-      "scale": 0.75,
-      "table": "Melee_DeBuff_ToHit"
-    },
-    "buffDuration": 10,
-    "durations": {
-      "tohitDebuff": 10
-    }
   }
 };

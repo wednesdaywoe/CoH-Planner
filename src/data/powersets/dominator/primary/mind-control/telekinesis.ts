@@ -48,24 +48,14 @@ export const Telekinesis: Power = {
       "knockup": 1,
       "knockback": 1
     },
+    "durations": {
+      "protection": 1.5,
+      "repel": 0.5
+    },
     "repel": {
       "scale": 1,
       "table": "Melee_Ones"
     },
-    "movement": {
-      "fly": {
-        "scale": 1,
-        "table": "Melee_Ones"
-      },
-      "flySpeed": {
-        "scale": 1.1788,
-        "table": "Melee_SpeedFlying"
-      }
-    },
-    "durations": {
-      "movement": 1.5,
-      "protection": 1.5,
-      "repel": 0.5
-    }
+    "buffDuration": 1.5
   }
 };

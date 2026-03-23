@@ -53,14 +53,6 @@ export const UmbralTorrent: Power = {
     "knockback": {
       "scale": 5,
       "table": "Ranged_Knockback"
-    },
-    "tohitDebuff": {
-      "scale": 0.75,
-      "table": "Ranged_Debuff_ToHit"
-    },
-    "durations": {
-      "tohitDebuff": 10
-    },
-    "buffDuration": 10
+    }
   }
 };

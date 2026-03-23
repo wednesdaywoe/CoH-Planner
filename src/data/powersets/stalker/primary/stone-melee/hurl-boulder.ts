@@ -48,27 +48,12 @@ export const HurlBoulder: Power = {
       "type": "Smashing",
       "scale": 1.64,
       "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.64,
-      "table": "Melee_InherentDamage"
     }
   ],
   "effects": {
-    "slow": {
-      "fly": {
-        "scale": 1,
-        "table": "Melee_Ones"
-      }
-    },
-    "durations": {
-      "slow": 15
-    },
     "knockback": {
       "scale": 3,
       "table": "Melee_Knockback"
-    },
-    "buffDuration": 15
+    }
   }
 };

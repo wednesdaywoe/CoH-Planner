@@ -22,7 +22,6 @@ export const Icicles: Power = {
     "radius": 8,
     "recharge": 4,
     "endurance": 1.04,
-    "activatePeriod": 2.0,
     "castTime": 1.67,
     "maxTargets": 10
   },

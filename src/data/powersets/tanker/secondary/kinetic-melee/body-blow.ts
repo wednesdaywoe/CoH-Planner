@@ -56,14 +56,6 @@ export const BodyBlow: Power = {
       "mag": 3,
       "scale": 6,
       "table": "Melee_Stun"
-    },
-    "damageDebuff": {
-      "scale": 1,
-      "table": "Melee_Debuff_Dam"
-    },
-    "buffDuration": 5,
-    "durations": {
-      "damageDebuff": 5
     }
   }
 };

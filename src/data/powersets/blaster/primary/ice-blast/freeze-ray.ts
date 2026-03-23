@@ -55,6 +55,11 @@ export const FreezeRay: Power = {
       "knockup": 1,
       "knockback": 1
     },
+    "durations": {
+      "protection": 10,
+      "knockup": 10,
+      "knockback": 10
+    },
     "knockup": {
       "scale": 100,
       "table": "Ranged_Ones"
@@ -63,11 +68,6 @@ export const FreezeRay: Power = {
       "scale": 100,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 10,
-    "durations": {
-      "knockback": 10,
-      "knockup": 10,
-      "protection": 10
-    }
+    "buffDuration": 10
   }
 };

@@ -68,6 +68,7 @@ export const DisruptionField: Power = {
     },
     "durations": {
       "resistanceDebuff": 0.75
-    }
+    },
+    "buffDuration": 0.75
   }
 };

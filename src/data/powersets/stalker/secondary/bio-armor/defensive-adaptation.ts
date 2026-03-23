@@ -23,12 +23,13 @@ export const DefensiveAdaptation: Power = {
     "castTime": 1
   },
   "allowedEnhancements": [],
-  "maxSlots": 6,
+  "maxSlots": 0,
   "effects": {
     "damageDebuff": {
       "scale": 0.25,
       "table": "Melee_Ones"
     },
+    "selfPenalty": true,
     "durations": {
       "damageDebuff": 1.1
     },

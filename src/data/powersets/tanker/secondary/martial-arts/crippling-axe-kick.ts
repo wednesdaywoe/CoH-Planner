@@ -55,35 +55,13 @@ export const CripplingAxeKick: Power = {
       "scale": 10,
       "table": "Melee_Immobilize"
     },
-    "movement": {
-      "runSpeed": {
-        "scale": 0.5,
-        "table": "Melee_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.5,
-        "table": "Melee_Slow"
-      },
-      "jumpHeight": {
-        "scale": 0.5,
-        "table": "Melee_Slow"
-      }
-    },
-    "slow": {
-      "fly": {
-        "scale": 1.6,
-        "table": "Melee_Ones"
-      }
-    },
     "defenseDebuff": {
       "scale": 1,
       "table": "Melee_Debuff_Def"
     },
-    "buffDuration": 8,
     "durations": {
-      "defenseDebuff": 10,
-      "movement": 8,
-      "slow": 8
-    }
+      "defenseDebuff": 10
+    },
+    "buffDuration": 10
   }
 };

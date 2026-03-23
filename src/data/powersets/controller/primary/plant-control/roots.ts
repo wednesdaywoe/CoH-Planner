@@ -67,14 +67,7 @@ export const Roots: Power = {
       "knockback": 1
     },
     "durations": {
-      "protection": 12,
-      "slow": 12
-    },
-    "slow": {
-      "fly": {
-        "scale": 1.6,
-        "table": "Ranged_Ones"
-      }
+      "protection": 12
     },
     "buffDuration": 12
   }

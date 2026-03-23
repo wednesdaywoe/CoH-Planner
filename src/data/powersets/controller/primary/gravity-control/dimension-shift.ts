@@ -22,7 +22,6 @@ export const DimensionShift: Power = {
     "range": 80,
     "recharge": 60,
     "endurance": 15.6,
-    "activatePeriod": 35.0,
     "castTime": 1.17
   },
   "allowedEnhancements": [

@@ -43,15 +43,5 @@ export const GeneticContamination: Power = {
     "type": "Toxic",
     "scale": 0.15,
     "table": "Melee_Damage"
-  },
-  "effects": {
-    "damageDebuff": {
-      "scale": 1.995,
-      "table": "Melee_Debuff_Dam"
-    },
-    "durations": {
-      "damageDebuff": 5
-    },
-    "buffDuration": 5
   }
 };

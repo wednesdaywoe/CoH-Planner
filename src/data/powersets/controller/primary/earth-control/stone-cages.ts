@@ -59,18 +59,11 @@ export const StoneCages: Power = {
     },
     "durations": {
       "protection": 12,
-      "defenseDebuff": 12,
-      "slow": 12
+      "defenseDebuff": 12
     },
     "defenseDebuff": {
       "scale": 2,
       "table": "Ranged_Debuff_Def"
-    },
-    "slow": {
-      "fly": {
-        "scale": 1.6,
-        "table": "Ranged_Ones"
-      }
     },
     "buffDuration": 12
   }

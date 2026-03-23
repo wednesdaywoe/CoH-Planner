@@ -603,11 +603,15 @@ function extractEffects(templates) {
   for (const template of templates) {
     if (!template.attribs || template.attribs.length === 0) continue;
 
+    // Skip deactivation-only effects (temporary bursts on toggle off, e.g., Reaction Time speed burst)
+    if (template.application_type === 'OnDeactivate') continue;
+
     const aspect = template.aspect?.toLowerCase();
     const scale = template.scale || 0;
     const table = template.table;
     const magnitude = template.magnitude || 1;
     const isDebuff = scale < 0 || table?.toLowerCase().includes('debuff');
+    const isSelfTargeting = template.target === 'Self';
 
     // Parse duration if present
     let duration = null;
@@ -687,8 +691,13 @@ function extractEffects(templates) {
         if (aspect === 'strength') {
           // Affects target's damage OUTPUT
           if (isDebuff) {
-            effects.damageDebuff = makeEffect();
-            recordDuration('damageDebuff');
+            // Only include damageDebuff for self-targeting effects (e.g., Granite Armor -30% damage)
+            // Skip enemy-targeting damage debuffs (e.g., Time's Juncture Foe -Damage)
+            if (isSelfTargeting) {
+              effects.damageDebuff = makeEffect();
+              effects.selfPenalty = true;
+              recordDuration('damageDebuff');
+            }
           } else {
             effects.damageBuff = makeEffect();
             recordDuration('damageBuff');
@@ -809,15 +818,19 @@ function extractEffects(templates) {
           if (!effects.debuffResistance) effects.debuffResistance = {};
           effects.debuffResistance.movement = makeEffect();
           recordDuration('debuffResistance');
-        } else if (isDebuff || scale < 0) {
+        } else if (isSelfTargeting && (isDebuff || scale < 0)) {
+          // Self-targeting movement penalty (e.g., Granite Armor -70% run speed)
           if (!effects.slow) effects.slow = {};
           effects.slow[moveType] = makeEffect();
+          effects.selfPenalty = true;
           recordDuration('slow');
-        } else {
+        } else if (isSelfTargeting) {
+          // Self-targeting movement buff (e.g., Lightning Reflexes +run speed)
           if (!effects.movement) effects.movement = {};
           effects.movement[moveType] = makeEffect();
           recordDuration('movement');
         }
+        // Skip non-self movement effects (enemy slows like Time's Juncture)
         continue;
       }
 
@@ -890,8 +903,13 @@ function extractEffects(templates) {
             effects.debuffResistance.tohit = makeEffect();
             recordDuration('debuffResistance');
           } else if (isDebuff) {
-            effects.tohitDebuff = makeEffect();
-            recordDuration('tohitDebuff');
+            // Only include tohitDebuff for self-targeting effects
+            // Skip enemy-targeting tohit debuffs (e.g., Time's Juncture Foe -ToHit)
+            if (isSelfTargeting) {
+              effects.tohitDebuff = makeEffect();
+              effects.selfPenalty = true;
+              recordDuration('tohitDebuff');
+            }
           } else {
             effects.tohitBuff = makeEffect();
             recordDuration('tohitBuff');
@@ -904,8 +922,13 @@ function extractEffects(templates) {
             effects.debuffResistance.recharge = makeEffect();
             recordDuration('debuffResistance');
           } else if (isDebuff || scale < 0 || table?.toLowerCase().includes('slow')) {
-            effects.rechargeDebuff = makeEffect();
-            recordDuration('rechargeDebuff');
+            // Only include rechargeDebuff for self-targeting effects (e.g., Granite Armor -65% recharge)
+            // Skip enemy-targeting recharge debuffs (e.g., Reaction Time Foe -Recharge)
+            if (isSelfTargeting) {
+              effects.rechargeDebuff = makeEffect();
+              effects.selfPenalty = true;
+              recordDuration('rechargeDebuff');
+            }
           } else {
             effects.rechargeBuff = makeEffect();
             recordDuration('rechargeBuff');

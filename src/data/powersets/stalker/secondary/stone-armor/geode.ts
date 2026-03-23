@@ -21,7 +21,6 @@ export const Geode: Power = {
     "accuracy": 1,
     "recharge": 180,
     "endurance": 0.026,
-    "activatePeriod": 0.1,
     "castTime": 0.07
   },
   "allowedEnhancements": [
@@ -81,6 +80,7 @@ export const Geode: Power = {
         "table": "Melee_Ones"
       }
     },
+    "selfPenalty": true,
     "untouchable": {
       "scale": 1000,
       "table": "Melee_Ones"

@@ -22,7 +22,6 @@ export const Integration: Power = {
     "radius": 12,
     "recharge": 10,
     "endurance": 0.52,
-    "activatePeriod": 2.0,
     "castTime": 3.1,
     "maxTargets": 10
   },
@@ -41,6 +40,49 @@ export const Integration: Power = {
     "taunt": {
       "scale": 1,
       "table": "Melee_InherentTaunt"
-    }
+    },
+    "knockup": {
+      "scale": 10,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "knockup": 2.25,
+      "knockback": 2.25,
+      "hold": 2.25,
+      "immobilize": 2.25,
+      "stun": 2.25,
+      "sleep": 2.25,
+      "regenBuff": 2.25
+    },
+    "knockback": {
+      "scale": 10,
+      "table": "Melee_Ones"
+    },
+    "hold": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "effectDuration": 2.25,
+    "immobilize": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "stun": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "sleep": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "regenBuff": {
+      "scale": 1,
+      "table": "Melee_Ones"
+    },
+    "buffDuration": 2.25
   }
 };

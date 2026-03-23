@@ -37,9 +37,9 @@ export const Toxins: Power = {
       "scale": 2,
       "table": "Melee_Buff_ToHit"
     },
-    "buffDuration": 10,
     "durations": {
       "tohitBuff": 10
-    }
+    },
+    "buffDuration": 10
   }
 };

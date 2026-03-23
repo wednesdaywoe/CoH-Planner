@@ -56,11 +56,6 @@ export const SpineBurst: Power = {
       "type": "Lethal",
       "scale": 0.9,
       "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.9,
-      "table": "Melee_InherentDamage"
     }
   ],
   "effects": {
@@ -68,33 +63,6 @@ export const SpineBurst: Power = {
       "mag": 0.33,
       "scale": 10,
       "table": "Melee_Immobilize"
-    },
-    "movement": {
-      "runSpeed": {
-        "scale": 0.2,
-        "table": "Melee_Slow"
-      },
-      "flySpeed": {
-        "scale": 0.2,
-        "table": "Melee_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.2,
-        "table": "Melee_Slow"
-      },
-      "jumpHeight": {
-        "scale": 0.2,
-        "table": "Melee_Slow"
-      }
-    },
-    "durations": {
-      "movement": 10,
-      "rechargeDebuff": 8
-    },
-    "rechargeDebuff": {
-      "scale": 0.1,
-      "table": "Melee_Slow"
-    },
-    "buffDuration": 10
+    }
   }
 };

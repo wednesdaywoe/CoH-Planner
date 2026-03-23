@@ -22,7 +22,6 @@ export const AgainstAllOdds: Power = {
     "radius": 8,
     "recharge": 10,
     "endurance": 0.208,
-    "activatePeriod": 1.0,
     "castTime": 2.5,
     "maxTargets": 10
   },
@@ -41,12 +40,7 @@ export const AgainstAllOdds: Power = {
       "table": "Melee_Buff_Dmg"
     },
     "durations": {
-      "damageBuff": 1,
-      "damageDebuff": 1
-    },
-    "damageDebuff": {
-      "scale": 1,
-      "table": "Melee_Debuff_Dam"
+      "damageBuff": 1
     },
     "taunt": {
       "scale": 1,

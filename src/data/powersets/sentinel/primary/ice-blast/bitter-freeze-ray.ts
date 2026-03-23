@@ -51,31 +51,14 @@ export const BitterFreezeRay: Power = {
       "scale": 6.4,
       "table": "Ranged_Immobilize"
     },
-    "movement": {
-      "jumpHeight": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      },
-      "flySpeed": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      }
-    },
-    "rechargeDebuff": {
-      "scale": 0.2,
-      "table": "Ranged_Slow"
-    },
     "protection": {
       "knockup": 1,
       "knockback": 1
+    },
+    "durations": {
+      "protection": 10,
+      "knockup": 10,
+      "knockback": 10
     },
     "knockup": {
       "scale": 100,
@@ -85,13 +68,6 @@ export const BitterFreezeRay: Power = {
       "scale": 100,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 10,
-    "durations": {
-      "knockback": 10,
-      "knockup": 10,
-      "movement": 18,
-      "protection": 10,
-      "rechargeBuff": 18
-    }
+    "buffDuration": 10
   }
 };

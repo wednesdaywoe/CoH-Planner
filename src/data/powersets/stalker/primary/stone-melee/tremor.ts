@@ -49,11 +49,6 @@ export const Tremor: Power = {
       "type": "Smashing",
       "scale": 1.04,
       "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.04,
-      "table": "Melee_InherentDamage"
     }
   ],
   "effects": {

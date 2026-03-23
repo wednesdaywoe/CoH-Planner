@@ -56,11 +56,6 @@ export const Shred: Power = {
     },
     {
       "type": "Lethal",
-      "scale": 1.2615,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Lethal",
       "scale": 0.211,
       "table": "Melee_Damage",
       "duration": 3.1,

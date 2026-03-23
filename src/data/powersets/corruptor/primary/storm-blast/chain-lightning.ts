@@ -52,11 +52,6 @@ export const ChainLightning: Power = {
       "table": "Ranged_Damage",
       "duration": 2.2,
       "tickRate": 0.6
-    },
-    {
-      "type": "Energy",
-      "scale": 1.16,
-      "table": "Ranged_InherentDamage"
     }
   ],
   "effects": {

@@ -48,11 +48,6 @@ export const BlazingArrow: Power = {
       "table": "Ranged_Damage",
       "duration": 4.125,
       "tickRate": 1
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.96,
-      "table": "Ranged_InherentDamage"
     }
   ]
 };

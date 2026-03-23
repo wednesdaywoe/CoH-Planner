@@ -38,48 +38,12 @@ export const Infrigidate: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "movement": {
-      "runSpeed": {
-        "scale": 0.7,
-        "table": "Ranged_Slow"
-      },
-      "flySpeed": {
-        "scale": 0.7,
-        "table": "Ranged_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.7,
-        "table": "Ranged_Slow"
-      },
-      "jumpHeight": {
-        "scale": 0.7,
-        "table": "Ranged_Slow"
-      }
-    },
-    "durations": {
-      "movement": 20,
-      "rechargeDebuff": 20,
-      "defenseDebuff": 20,
-      "damageDebuff": 20,
-      "slow": 20
-    },
-    "rechargeDebuff": {
-      "scale": 0.7,
-      "table": "Ranged_Slow"
-    },
     "defenseDebuff": {
       "scale": 2.5,
       "table": "Ranged_Debuff_Def"
     },
-    "damageDebuff": {
-      "scale": 3,
-      "table": "Ranged_Debuff_Dam"
-    },
-    "slow": {
-      "runSpeed": {
-        "scale": 1,
-        "table": "Ranged_SpeedRunning"
-      }
+    "durations": {
+      "defenseDebuff": 20
     },
     "buffDuration": 20
   }

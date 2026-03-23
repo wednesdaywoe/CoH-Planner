@@ -53,40 +53,6 @@ export const Frost: Power = {
       "type": "Cold",
       "scale": 1.404,
       "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Cold",
-      "scale": 1.404,
-      "table": "Melee_InherentDamage"
     }
-  ],
-  "effects": {
-    "movement": {
-      "jumpHeight": {
-        "scale": 0.2,
-        "table": "Melee_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.2,
-        "table": "Melee_Slow"
-      },
-      "flySpeed": {
-        "scale": 0.2,
-        "table": "Melee_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.2,
-        "table": "Melee_Slow"
-      }
-    },
-    "durations": {
-      "movement": 8,
-      "rechargeDebuff": 8
-    },
-    "rechargeDebuff": {
-      "scale": 0.2,
-      "table": "Melee_Slow"
-    },
-    "buffDuration": 8
-  }
+  ]
 };

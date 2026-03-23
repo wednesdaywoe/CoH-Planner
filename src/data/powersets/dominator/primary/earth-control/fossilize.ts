@@ -53,14 +53,14 @@ export const Fossilize: Power = {
       "scale": 2,
       "table": "Ranged_Debuff_Def"
     },
+    "durations": {
+      "defenseDebuff": 12,
+      "protection": 12
+    },
     "protection": {
       "knockup": 1,
       "knockback": 1
     },
-    "buffDuration": 12,
-    "durations": {
-      "defenseDebuff": 12,
-      "protection": 12
-    }
+    "buffDuration": 12
   }
 };

@@ -55,6 +55,7 @@ export const IcyBastion: Power = {
         "table": "Melee_Ones"
       }
     },
+    "selfPenalty": true,
     "immobilize": {
       "mag": 1000,
       "scale": 0.75,

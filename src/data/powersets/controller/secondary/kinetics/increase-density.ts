@@ -55,8 +55,7 @@ export const IncreaseDensity: Power = {
       "knockup": 60,
       "knockback": 60,
       "repel": 60,
-      "teleport": 60,
-      "movement": 60
+      "teleport": 60
     },
     "hold": {
       "mag": 1,
@@ -89,24 +88,6 @@ export const IncreaseDensity: Power = {
     "teleport": {
       "scale": 1,
       "table": "Ranged_Ones"
-    },
-    "movement": {
-      "jumpHeight": {
-        "scale": 0.1,
-        "table": "Ranged_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.1,
-        "table": "Ranged_Slow"
-      },
-      "flySpeed": {
-        "scale": 0.1,
-        "table": "Ranged_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.1,
-        "table": "Ranged_Slow"
-      }
     },
     "buffDuration": 60
   }

@@ -55,11 +55,6 @@ export const WaterBurst: Power = {
     },
     {
       "type": "Cold",
-      "scale": 0.9,
-      "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Cold",
       "scale": 0.045,
       "table": "Ranged_Damage"
     },
@@ -78,28 +73,6 @@ export const WaterBurst: Power = {
     "knockback": {
       "scale": 0.67,
       "table": "Ranged_Ones"
-    },
-    "movement": {
-      "jumpHeight": {
-        "scale": 0.3,
-        "table": "Ranged_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.3,
-        "table": "Ranged_Slow"
-      },
-      "flySpeed": {
-        "scale": 0.3,
-        "table": "Ranged_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.3,
-        "table": "Ranged_Slow"
-      }
-    },
-    "durations": {
-      "movement": 10
-    },
-    "buffDuration": 10
+    }
   }
 };

@@ -48,14 +48,14 @@ export const Disintegrate: Power = {
       "scale": 1.5,
       "table": "Ranged_Ones"
     },
+    "durations": {
+      "regenDebuff": 15,
+      "damageBuff": 9.4
+    },
     "damageBuff": {
       "scale": 0.125,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 15,
-    "durations": {
-      "damageBuff": 9.4,
-      "regenDebuff": 15
-    }
+    "buffDuration": 15
   }
 };

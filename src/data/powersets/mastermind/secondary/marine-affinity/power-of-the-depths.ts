@@ -38,7 +38,7 @@ export const PoweroftheDepths: Power = {
   "maxSlots": 6,
   "effects": {
     "maxHPBuff": {
-      "scale": 2,
+      "scale": 4,
       "table": "Ranged_Heal"
     },
     "durations": {
@@ -48,11 +48,11 @@ export const PoweroftheDepths: Power = {
       "rangeBuff": 60
     },
     "maxEndBuff": {
-      "scale": 10,
+      "scale": 20,
       "table": "Ranged_Ones"
     },
     "regenBuff": {
-      "scale": 2,
+      "scale": 4,
       "table": "Ranged_Ones"
     },
     "rangeBuff": {

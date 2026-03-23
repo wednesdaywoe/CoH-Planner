@@ -48,11 +48,6 @@ export const TelekineticBlast: Power = {
       "type": "Psionic",
       "scale": 1,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 1.64,
-      "table": "Ranged_InherentDamage"
     }
   ],
   "effects": {

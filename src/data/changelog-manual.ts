@@ -23,6 +23,7 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   {
     date: '2026-03-22',
     items: [
+      { message: '21 powers now correctly flagged with selfPenalty', type: 'feat' },
       { message: ' fix: Display names ("Combat Jumping") being compared \
          against internal names ("Combat_Jumping"). This affected all \
          rank 3+ pool powers that have multi-word names.', type: 'fix' },

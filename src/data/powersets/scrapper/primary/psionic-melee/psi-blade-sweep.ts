@@ -70,18 +70,10 @@ export const PsiBladeSweep: Power = {
     }
   ],
   "effects": {
-    "rechargeDebuff": {
-      "scale": 0.15,
-      "table": "Melee_Slow"
-    },
     "stun": {
       "mag": 3,
       "scale": 5,
       "table": "Melee_Stun"
-    },
-    "buffDuration": 6,
-    "durations": {
-      "rechargeBuff": 6
     }
   }
 };

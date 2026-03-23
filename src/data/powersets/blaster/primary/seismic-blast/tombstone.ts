@@ -17,11 +17,11 @@ export const Tombstone: Power = {
   "powerType": "Click",
   "effectArea": "SingleTarget",
   "stats": {
-    "accuracy": 1.386,
+    "accuracy": 1,
     "range": 150,
     "recharge": 12,
     "endurance": 14.352,
-    "castTime": 3.67
+    "castTime": 1.67
   },
   "allowedEnhancements": [
     "Interrupt",
@@ -43,44 +43,14 @@ export const Tombstone: Power = {
     "scale": 4.5,
     "table": "Ranged_Damage"
   },
-  "quickSnipe": {
-    "stats": {
-      "castTime": 1.67,
-      "range": 80,
-      "accuracy": 1.155
-    },
-    "damage": {
-      "type": "Smashing",
-      "scale": 2.28,
-      "table": "Ranged_Damage"
-    }
-  },
   "effects": {
-    "slow": {
-      "fly": {
-        "scale": 1.6,
-        "table": "Ranged_Ones"
-      }
-    },
-    "durations": {
-      "slow": 16,
-      "movement": 16,
-      "rangeBuff": 10
-    },
-    "movement": {
-      "jumpSpeed": {
-        "scale": 1,
-        "table": "Ranged_Slow"
-      },
-      "jumpHeight": {
-        "scale": 1,
-        "table": "Ranged_Slow"
-      }
-    },
     "rangeBuff": {
       "scale": 0.5,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 16
+    "durations": {
+      "rangeBuff": 10
+    },
+    "buffDuration": 10
   }
 };

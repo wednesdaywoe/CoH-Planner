@@ -52,46 +52,44 @@ export const AcidArrow: Power = {
       "scale": 2,
       "table": "Ranged_Debuff_Def"
     },
+    "durations": {
+      "defenseDebuff": 45,
+      "resistance": 45,
+      "debuffResistance": 45,
+      "enduranceDiscount": 45
+    },
     "resistance": {
       "heal": {
         "scale": 4,
         "table": "Ranged_Res_Dmg"
       }
     },
-    "enduranceDrain": {
-      "scale": 4,
-      "table": "Ranged_Res_Dmg"
-    },
-    "tohitDebuff": {
-      "scale": 4,
-      "table": "Ranged_Res_Dmg"
-    },
-    "regenDebuff": {
-      "scale": 4,
-      "table": "Ranged_Res_Dmg"
-    },
-    "recoveryDebuff": {
-      "scale": 4,
-      "table": "Ranged_Res_Dmg"
-    },
-    "rechargeDebuff": {
-      "scale": 4,
-      "table": "Ranged_Res_Dmg"
+    "debuffResistance": {
+      "endurance": {
+        "scale": 4,
+        "table": "Ranged_Res_Dmg"
+      },
+      "tohit": {
+        "scale": 4,
+        "table": "Ranged_Res_Dmg"
+      },
+      "regeneration": {
+        "scale": 4,
+        "table": "Ranged_Res_Dmg"
+      },
+      "recovery": {
+        "scale": 4,
+        "table": "Ranged_Res_Dmg"
+      },
+      "recharge": {
+        "scale": 4,
+        "table": "Ranged_Res_Dmg"
+      }
     },
     "enduranceDiscount": {
       "scale": 4,
       "table": "Ranged_Res_Dmg"
     },
-    "buffDuration": 45,
-    "durations": {
-      "debuffResistance": 45,
-      "defenseDebuff": 45,
-      "enduranceDiscount": 45,
-      "enduranceDrain": 45,
-      "recoveryDebuff": 45,
-      "regenDebuff": 45,
-      "resistance": 45,
-      "tohitDebuff": 45
-    }
+    "buffDuration": 45
   }
 };

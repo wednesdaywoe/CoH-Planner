@@ -51,11 +51,6 @@ export const GreaterFireSword: Power = {
     },
     {
       "type": "Fire",
-      "scale": 2.44,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Fire",
       "scale": 0.2,
       "table": "Melee_Damage",
       "duration": 2.1,

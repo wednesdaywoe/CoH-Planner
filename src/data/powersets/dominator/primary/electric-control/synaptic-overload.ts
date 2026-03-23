@@ -52,9 +52,9 @@ export const SynapticOverload: Power = {
       "scale": 1,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 8,
     "durations": {
       "recoveryDebuff": 8
-    }
+    },
+    "buffDuration": 8
   }
 };

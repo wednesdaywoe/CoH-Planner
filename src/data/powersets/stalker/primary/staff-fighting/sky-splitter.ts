@@ -56,11 +56,6 @@ export const SkySplitter: Power = {
       "type": "Smashing",
       "scale": 2.76,
       "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 2.76,
-      "table": "Melee_InherentDamage"
     }
   ],
   "effects": {
@@ -72,16 +67,6 @@ export const SkySplitter: Power = {
     "knockup": {
       "scale": 0.67,
       "table": "Melee_Ones"
-    },
-    "slow": {
-      "fly": {
-        "scale": 1.6,
-        "table": "Melee_Ones"
-      }
-    },
-    "durations": {
-      "slow": 10,
-      "resistance": 15
     },
     "resistance": {
       "smashing": {
@@ -116,6 +101,9 @@ export const SkySplitter: Power = {
         "scale": 1.33,
         "table": "Melee_Res_Dmg"
       }
+    },
+    "durations": {
+      "resistance": 15
     },
     "buffDuration": 15
   }

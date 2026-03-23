@@ -52,11 +52,6 @@ export const JacobsLadder: Power = {
       "type": "Energy",
       "scale": 1.5,
       "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.5,
-      "table": "Melee_InherentDamage"
     }
   ],
   "effects": {

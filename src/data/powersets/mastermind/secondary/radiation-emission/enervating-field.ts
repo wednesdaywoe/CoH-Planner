@@ -33,14 +33,6 @@ export const EnervatingField: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "damageDebuff": {
-      "scale": 2,
-      "table": "Ranged_Debuff_Dam"
-    },
-    "durations": {
-      "damageDebuff": 0.75,
-      "resistanceDebuff": 0.75
-    },
     "resistanceDebuff": {
       "smashing": {
         "scale": 3,
@@ -74,6 +66,9 @@ export const EnervatingField: Power = {
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       }
+    },
+    "durations": {
+      "resistanceDebuff": 0.75
     },
     "buffDuration": 0.75
   }

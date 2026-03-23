@@ -51,11 +51,6 @@ export const EnergyTorrent: Power = {
       "type": "Energy",
       "scale": 0.66,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.96,
-      "table": "Ranged_InherentDamage"
     }
   ],
   "effects": {

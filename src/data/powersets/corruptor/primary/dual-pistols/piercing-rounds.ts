@@ -48,11 +48,6 @@ export const PiercingRounds: Power = {
       "table": "Ranged_Damage"
     },
     {
-      "type": "Lethal",
-      "scale": 2.3,
-      "table": "Ranged_InherentDamage"
-    },
-    {
       "type": "Fire",
       "scale": 0.169,
       "table": "Ranged_Damage",

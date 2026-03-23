@@ -51,7 +51,11 @@ export const GamblersCut: Power = {
     "defenseDebuff": {
       "scale": 1,
       "table": "Melee_Debuff_Def"
-    }
+    },
+    "durations": {
+      "defenseDebuff": 6
+    },
+    "buffDuration": 6
   },
   "requires": "!Brute_Defense.Shield_Defense"
 };

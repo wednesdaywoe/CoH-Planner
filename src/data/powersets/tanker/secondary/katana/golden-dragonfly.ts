@@ -55,13 +55,13 @@ export const GoldenDragonfly: Power = {
       "scale": 1,
       "table": "Melee_Debuff_Def"
     },
+    "durations": {
+      "defenseDebuff": 10
+    },
     "knockback": {
       "scale": 0.67,
       "table": "Melee_Ones"
     },
-    "buffDuration": 10,
-    "durations": {
-      "defenseDebuff": 10
-    }
+    "buffDuration": 10
   }
 };

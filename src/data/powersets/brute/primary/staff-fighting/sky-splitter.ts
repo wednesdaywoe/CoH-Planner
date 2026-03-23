@@ -75,12 +75,6 @@ export const SkySplitter: Power = {
       "scale": 0.67,
       "table": "Melee_Ones"
     },
-    "slow": {
-      "fly": {
-        "scale": 1.6,
-        "table": "Melee_Ones"
-      }
-    },
     "resistance": {
       "smashing": {
         "scale": 1.33,
@@ -115,6 +109,12 @@ export const SkySplitter: Power = {
         "table": "Melee_Res_Dmg"
       }
     },
+    "durations": {
+      "resistance": 15,
+      "tohitBuff": 15,
+      "regenBuff": 15,
+      "recoveryBuff": 15
+    },
     "tohitBuff": {
       "scale": 2,
       "table": "Melee_Buff_ToHit"
@@ -127,13 +127,6 @@ export const SkySplitter: Power = {
       "scale": 0.83,
       "table": "Melee_Ones"
     },
-    "buffDuration": 15,
-    "durations": {
-      "recoveryBuff": 15,
-      "regenBuff": 15,
-      "resistance": 15,
-      "slow": 10,
-      "tohitBuff": 15
-    }
+    "buffDuration": 15
   }
 };

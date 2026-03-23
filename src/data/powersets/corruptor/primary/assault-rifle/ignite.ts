@@ -48,18 +48,6 @@ export const Ignite: Power = {
       "table": "Ranged_Damage",
       "duration": 5.25,
       "tickRate": 0.25
-    },
-    {
-      "type": "Fire",
-      "scale": 1,
-      "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.1022,
-      "table": "Ranged_InherentDamage",
-      "duration": 5.25,
-      "tickRate": 0.25
     }
   ],
   "effects": {

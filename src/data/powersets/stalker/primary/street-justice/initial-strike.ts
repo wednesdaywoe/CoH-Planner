@@ -45,11 +45,6 @@ export const InitialStrike: Power = {
     },
     {
       "type": "Smashing",
-      "scale": 0.84,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Smashing",
       "scale": 0.42,
       "table": "Melee_Damage",
       "duration": 0.4,

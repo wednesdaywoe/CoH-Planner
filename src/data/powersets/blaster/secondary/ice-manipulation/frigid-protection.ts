@@ -38,43 +38,18 @@ export const FrigidProtection: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "movement": {
-      "runSpeed": {
-        "scale": 0.7,
-        "table": "Melee_Slow"
-      },
-      "flySpeed": {
-        "scale": 0.7,
-        "table": "Melee_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.7,
-        "table": "Melee_Slow"
-      },
-      "jumpHeight": {
-        "scale": 0.7,
-        "table": "Melee_Slow"
-      }
-    },
-    "rechargeDebuff": {
-      "scale": 0.4,
-      "table": "Melee_Slow"
-    },
-    "damageDebuff": {
-      "scale": 2,
-      "table": "Melee_Debuff_Dam"
-    },
-    "slow": {
-      "runSpeed": {
-        "scale": 1,
-        "table": "Melee_SpeedRunning"
-      }
+    "absorb": {
+      "scale": 0.3,
+      "table": "Melee_HealSelf"
     },
     "durations": {
-      "damageDebuff": 5,
-      "movement": 5,
-      "rechargeBuff": 5,
-      "slow": 5
-    }
+      "absorb": 12,
+      "recoveryBuff": 3
+    },
+    "recoveryBuff": {
+      "scale": 1,
+      "table": "Melee_Ones"
+    },
+    "buffDuration": 12
   }
 };

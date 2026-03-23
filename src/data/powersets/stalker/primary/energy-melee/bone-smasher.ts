@@ -52,11 +52,6 @@ export const BoneSmasher: Power = {
       "type": "Energy",
       "scale": 1.64,
       "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.64,
-      "table": "Melee_InherentDamage"
     }
   ],
   "effects": {

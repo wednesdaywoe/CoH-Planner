@@ -50,13 +50,6 @@ export const Scream: Power = {
       "table": "Ranged_Damage",
       "duration": 1.05,
       "tickRate": 0.25
-    },
-    {
-      "type": "Energy",
-      "scale": 0.264,
-      "table": "Ranged_InherentDamage",
-      "duration": 1.05,
-      "tickRate": 0.25
     }
   ],
   "effects": {
@@ -94,9 +87,9 @@ export const Scream: Power = {
         "table": "Ranged_Debuff_Res_Dmg"
       }
     },
-    "buffDuration": 8,
     "durations": {
       "resistanceDebuff": 8
-    }
+    },
+    "buffDuration": 8
   }
 };

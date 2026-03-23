@@ -49,16 +49,6 @@ export const HurlBoulder: Power = {
     "knockback": {
       "scale": 3,
       "table": "Melee_Knockback"
-    },
-    "slow": {
-      "fly": {
-        "scale": 1,
-        "table": "Melee_Ones"
-      }
-    },
-    "buffDuration": 15,
-    "durations": {
-      "slow": 15
     }
   }
 };

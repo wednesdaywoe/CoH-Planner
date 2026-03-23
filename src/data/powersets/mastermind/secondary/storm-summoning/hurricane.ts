@@ -22,7 +22,6 @@ export const Hurricane: Power = {
     "radius": 25,
     "recharge": 10,
     "endurance": 0.2031,
-    "activatePeriod": 0.25,
     "castTime": 2.03,
     "maxTargets": 16
   },
@@ -44,12 +43,7 @@ export const Hurricane: Power = {
     },
     "durations": {
       "rangeBuff": 10,
-      "tohitDebuff": 10,
       "repel": 1.05
-    },
-    "tohitDebuff": {
-      "scale": 3,
-      "table": "Ranged_Debuff_ToHit"
     },
     "repel": {
       "scale": 1,

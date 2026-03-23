@@ -69,14 +69,6 @@ export const MidnightGrasp: Power = {
       "mag": 3,
       "scale": 15,
       "table": "Melee_Immobilize"
-    },
-    "tohitDebuff": {
-      "scale": 0.75,
-      "table": "Melee_DeBuff_ToHit"
-    },
-    "buffDuration": 20,
-    "durations": {
-      "tohitDebuff": 20
     }
   }
 };

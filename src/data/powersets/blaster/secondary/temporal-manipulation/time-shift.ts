@@ -47,44 +47,13 @@ export const TimeShift: Power = {
       "scale": 8,
       "table": "Ranged_Immobilize"
     },
-    "tohitDebuff": {
-      "scale": 0.5,
-      "table": "Ranged_Debuff_ToHit"
-    },
-    "durations": {
-      "tohitDebuff": 20,
-      "movement": 20,
-      "slow": 20,
-      "damageBuff": 9.53
-    },
-    "movement": {
-      "runSpeed": {
-        "scale": 0.4,
-        "table": "Ranged_Slow"
-      },
-      "jumpHeight": {
-        "scale": 0.4,
-        "table": "Ranged_Slow"
-      },
-      "flySpeed": {
-        "scale": 0.4,
-        "table": "Ranged_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.4,
-        "table": "Ranged_Slow"
-      }
-    },
-    "slow": {
-      "runSpeed": {
-        "scale": 1,
-        "table": "Ranged_SpeedRunning"
-      }
-    },
     "damageBuff": {
       "scale": 0.033,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 20
+    "durations": {
+      "damageBuff": 9.53
+    },
+    "buffDuration": 9.53
   }
 };

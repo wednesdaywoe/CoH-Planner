@@ -36,8 +36,14 @@ export const WildFortress: Power = {
   "maxSlots": 6,
   "effects": {
     "absorb": {
-      "scale": 0.15,
+      "scale": 0.3,
       "table": "Melee_HealSelf"
+    },
+    "durations": {
+      "absorb": 12,
+      "confuse": 2.5,
+      "recoveryBuff": 2.5,
+      "resistance": 2.5
     },
     "confuse": {
       "mag": 1,
@@ -55,11 +61,6 @@ export const WildFortress: Power = {
         "table": "Ranged_Res_Dmg"
       }
     },
-    "durations": {
-      "absorb": 12,
-      "confuse": 2.5,
-      "recoveryBuff": 2.5,
-      "resistance": 2.5
-    }
+    "buffDuration": 2.5
   }
 };

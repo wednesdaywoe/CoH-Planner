@@ -42,6 +42,16 @@ export const EnforcedMorale: Power = {
       "table": "Ranged_Res_Boolean"
     },
     "effectDuration": 90,
+    "durations": {
+      "confuse": 90,
+      "fear": 90,
+      "hold": 90,
+      "immobilize": 90,
+      "stun": 90,
+      "sleep": 90,
+      "rechargeBuff": 90,
+      "perceptionBuff": 90
+    },
     "fear": {
       "mag": 1,
       "scale": 30,
@@ -71,39 +81,10 @@ export const EnforcedMorale: Power = {
       "scale": 0.05,
       "table": "Ranged_Ones"
     },
-    "movement": {
-      "runSpeed": {
-        "scale": 0.05,
-        "table": "Ranged_SpeedRunning"
-      },
-      "flySpeed": {
-        "scale": 0.05,
-        "table": "Ranged_SpeedFlying"
-      },
-      "jumpSpeed": {
-        "scale": 0.05,
-        "table": "Ranged_SpeedJumping"
-      },
-      "jumpHeight": {
-        "scale": 0.05,
-        "table": "Ranged_Leap"
-      }
-    },
     "perceptionBuff": {
       "scale": 2.5,
       "table": "Ranged_Res_Boolean"
     },
-    "buffDuration": 90,
-    "durations": {
-      "confuse": 90,
-      "fear": 90,
-      "hold": 90,
-      "immobilize": 90,
-      "movement": 90,
-      "perceptionBuff": 90,
-      "rechargeBuff": 90,
-      "sleep": 90,
-      "stun": 90
-    }
+    "buffDuration": 90
   }
 };

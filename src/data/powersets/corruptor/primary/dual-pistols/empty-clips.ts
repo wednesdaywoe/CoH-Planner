@@ -55,13 +55,6 @@ export const EmptyClips: Power = {
       "tickRate": 0.5
     },
     {
-      "type": "Lethal",
-      "scale": 0.26,
-      "table": "Ranged_InherentDamage",
-      "duration": 1.6,
-      "tickRate": 0.5
-    },
-    {
       "type": "Fire",
       "scale": 0.113,
       "table": "Ranged_Damage",

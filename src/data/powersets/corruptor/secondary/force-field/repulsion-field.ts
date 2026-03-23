@@ -22,7 +22,6 @@ export const RepulsionField: Power = {
     "radius": 25,
     "recharge": 20,
     "endurance": 0.1625,
-    "activatePeriod": 0.25,
     "castTime": 2.03,
     "maxTargets": 16
   },

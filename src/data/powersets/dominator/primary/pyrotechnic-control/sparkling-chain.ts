@@ -65,16 +65,9 @@ export const SparklingChain: Power = {
     "protection": {
       "knockback": 1
     },
-    "slow": {
-      "fly": {
-        "scale": 1.6,
-        "table": "Ranged_Ones"
-      }
-    },
-    "buffDuration": 12,
     "durations": {
-      "protection": 12,
-      "slow": 10
-    }
+      "protection": 12
+    },
+    "buffDuration": 12
   }
 };

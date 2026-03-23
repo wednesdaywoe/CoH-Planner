@@ -22,5 +22,5 @@ export const StaffMastery: Power = {
   },
   "allowedEnhancements": [],
   "maxSlots": 0,
-  "mechanicType": "parentMechanic"
+  "mechanicType": "hiddenPassive"
 };

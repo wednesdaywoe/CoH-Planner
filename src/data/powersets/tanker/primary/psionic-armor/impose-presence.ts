@@ -22,7 +22,6 @@ export const ImposePresence: Power = {
     "radius": 12,
     "recharge": 10,
     "endurance": 0.208,
-    "activatePeriod": 1.0,
     "castTime": 0.73,
     "maxTargets": 10
   },
@@ -46,12 +45,7 @@ export const ImposePresence: Power = {
     },
     "durations": {
       "tohitBuff": 1,
-      "rechargeDebuff": 1.25,
       "defenseBuff": 1
-    },
-    "rechargeDebuff": {
-      "scale": 0.3,
-      "table": "Melee_Slow"
     },
     "defenseBuff": {
       "ranged": {
