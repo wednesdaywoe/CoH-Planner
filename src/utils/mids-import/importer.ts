@@ -258,11 +258,18 @@ export function importMidsBuild(jsonString: string): MidsImportResult {
 
     if (!result) continue;
 
+    // Deduplicate: skip if a power with the same internalName already exists
+    // in the target list. Mids .mbd files can contain duplicate entries for the
+    // same power, which would cause the power to appear twice (same slot, same level).
+    const powerName = result.power.internalName;
+
     switch (result.category) {
       case 'primary':
+        if (primaryPowers.some(p => p.internalName === powerName)) break;
         primaryPowers.push(result.power);
         break;
       case 'secondary':
+        if (secondaryPowers.some(p => p.internalName === powerName)) break;
         secondaryPowers.push(result.power);
         break;
       case 'pool': {
@@ -271,10 +278,12 @@ export function importMidsBuild(jsonString: string): MidsImportResult {
           poolPowersMap[poolId] = [];
           if (!poolIds.includes(poolId)) poolIds.push(poolId);
         }
+        if (poolPowersMap[poolId].some(p => p.internalName === powerName)) break;
         poolPowersMap[poolId].push(result.power);
         break;
       }
       case 'epic':
+        if (epicPowers.some(p => p.internalName === powerName)) break;
         epicPowers.push(result.power);
         break;
       case 'inherent':
@@ -711,12 +720,21 @@ function buildSelectedPower(
     slots.push(null);
   }
 
+  // Only set isActive for Toggle/Auto powers — Click powers have temporary effects
+  // that shouldn't be counted as permanent stat contributions. Mids' StatInclude
+  // applies to all power types, but our calc engine treats isActive Click powers
+  // as if their effects are permanently active.
+  const powerType = powerDef.powerType?.toLowerCase();
+  const effectiveIsActive = (powerType === 'toggle' || powerType === 'auto')
+    ? isActive
+    : undefined;
+
   return {
     ...powerDef,
     powerSet: powerSetId,
     level,
     slots,
-    isActive,
+    isActive: effectiveIsActive,
   };
 }
 
