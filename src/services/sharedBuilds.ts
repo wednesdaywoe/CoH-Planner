@@ -145,12 +145,31 @@ export async function shareBuild(input: ShareBuildInput): Promise<{ id: string; 
     if (ownerToken) payload.owner_token = ownerToken;
   }
 
+  // Refresh auth session to avoid 401 from expired JWT
+  const user = useAuthStore.getState().user;
+  if (user) {
+    const { error: refreshError } = await supabase.auth.refreshSession();
+    if (refreshError) {
+      throw new Error('Session expired — please log in again');
+    }
+  }
+
   const { data, error } = await supabase.functions.invoke('share-build', {
     body: payload,
   });
 
   if (error) {
-    const msg = data?.error || error.message || 'Failed to share build';
+    let msg = 'Failed to share build';
+    try {
+      if (error.context && typeof error.context.json === 'function') {
+        const body = await error.context.json();
+        msg = body?.error || msg;
+      } else {
+        msg = error.message || msg;
+      }
+    } catch {
+      msg = error.message || msg;
+    }
     throw new Error(msg);
   }
   if (data?.error) throw new Error(data.error);
@@ -175,12 +194,30 @@ export async function deleteBuild(id: string): Promise<void> {
   const user = useAuthStore.getState().user;
   if (!ownerToken && !user) throw new Error('No owner token or login session for this build');
 
+  // Refresh auth session to avoid 401 from expired JWT
+  if (user) {
+    const { error: refreshError } = await supabase.auth.refreshSession();
+    if (refreshError) {
+      throw new Error('Session expired — please log in again');
+    }
+  }
+
   const { data, error } = await supabase.functions.invoke('delete-build', {
     body: { id, owner_token: ownerToken || undefined },
   });
 
   if (error) {
-    const msg = data?.error || error.message || 'Failed to delete build';
+    let msg = 'Failed to delete build';
+    try {
+      if (error.context && typeof error.context.json === 'function') {
+        const body = await error.context.json();
+        msg = body?.error || msg;
+      } else {
+        msg = error.message || msg;
+      }
+    } catch {
+      msg = error.message || msg;
+    }
     throw new Error(msg);
   }
   if (data?.error) throw new Error(data.error);
@@ -298,12 +335,28 @@ export async function updateBuildVisibility(id: string, isPublic: boolean): Prom
   const user = useAuthStore.getState().user;
   if (!user) throw new Error('Must be logged in to change build visibility');
 
+  // Refresh auth session to avoid 401 from expired JWT
+  const { error: refreshError } = await supabase.auth.refreshSession();
+  if (refreshError) {
+    throw new Error('Session expired — please log in again');
+  }
+
   const { data, error } = await supabase.functions.invoke('update-build-visibility', {
     body: { id, is_public: isPublic },
   });
 
   if (error) {
-    const msg = data?.error || error.message || 'Failed to update visibility';
+    let msg = 'Failed to update visibility';
+    try {
+      if (error.context && typeof error.context.json === 'function') {
+        const body = await error.context.json();
+        msg = body?.error || msg;
+      } else {
+        msg = error.message || msg;
+      }
+    } catch {
+      msg = error.message || msg;
+    }
     throw new Error(msg);
   }
   if (data?.error) throw new Error(data.error);
@@ -321,12 +374,28 @@ export async function claimBuilds(): Promise<{ claimed: string[]; failed: string
     return { claimed: [], failed: [] };
   }
 
+  // Refresh auth session to avoid 401 from expired JWT
+  const { error: refreshError } = await supabase.auth.refreshSession();
+  if (refreshError) {
+    throw new Error('Session expired — please log in again');
+  }
+
   const { data, error } = await supabase.functions.invoke('claim-builds', {
     body: { owner_tokens: tokens },
   });
 
   if (error) {
-    const msg = data?.error || error.message || 'Failed to claim builds';
+    let msg = 'Failed to claim builds';
+    try {
+      if (error.context && typeof error.context.json === 'function') {
+        const body = await error.context.json();
+        msg = body?.error || msg;
+      } else {
+        msg = error.message || msg;
+      }
+    } catch {
+      msg = error.message || msg;
+    }
     throw new Error(msg);
   }
   if (data?.error) throw new Error(data.error);
