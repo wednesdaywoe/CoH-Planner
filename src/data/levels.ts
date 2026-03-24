@@ -244,14 +244,14 @@ export const POOL_TIER_REQUIREMENTS = {
  * These powers have available=4 in the data but require no prerequisites
  */
 export const EARLY_TRAVEL_POWERS: readonly string[] = [
-  'Super_Speed',
-  'Fly',
-  'Teleport',
-  'Super_Jump',
-  'Infiltration',
-  'Speed_Of_Sound',
-  'Mystic_Flight',
-  'Mighty_Leap',
+  'Super_Speed',       // Pool.Speed.Super_Speed (rank 3)
+  'Fly',               // Pool.Flight.Fly (rank 3)
+  'Teleport',          // Pool.Teleportation.Teleport (rank 3)
+  'Long_Jump',         // Pool.Leaping.Long_Jump (rank 3, display name: Super Jump)
+  'Invisibility',      // Pool.Invisibility.Invisibility (rank 3, display name: Infiltration)
+  'Speed_of_Sound',    // Pool.Experimentation.Speed_of_Sound (rank 3)
+  'Mighty_Leap',       // Pool.Force_of_Will.Mighty_Leap (rank 3)
+  'Mystic_Flight',     // Pool.Sorcery.Mystic_Flight (rank 4, but rank 3 is auto-granted Arcane Power)
 ] as const;
 
 /**

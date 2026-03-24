@@ -23,6 +23,7 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   {
     date: '2026-03-24',
     items: [
+      { message: 'Fixed a check that was blocking travel powers from being available at the correct level', type: 'feat' },
       { message: 'Added Sudden Acceleration KBtoKD to the procs filter even though it isn\'t 😤', type: 'feat' },
       { message: 'Mobile: Suppressed hover tooltip on touch devices during power selection — use the info button instead', type: 'fix' },
       { message: 'Mobile: Larger touch targets for info, compare, and remove buttons on selected powers', type: 'fix' },

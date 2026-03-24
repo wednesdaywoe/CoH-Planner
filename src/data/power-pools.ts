@@ -389,13 +389,14 @@ export function isPowerAvailableInPool(
     return true;
   }
 
-  // Rank 3: Check if it's an early travel power
+  // Rank 3+: Check if it's an early travel power (available at level 4 with no prerequisites)
+  // Most travel powers are rank 3, but Mystic Flight is rank 4 because rank 3 is auto-granted
+  const isEarlyTravelPower = EARLY_TRAVEL_POWERS.includes(power.internalName);
+  if (isEarlyTravelPower) {
+    return true;
+  }
+
   if (rank === 3) {
-    const isEarlyTravelPower = EARLY_TRAVEL_POWERS.includes(power.internalName);
-    if (isEarlyTravelPower) {
-      // Travel powers are available at level 4 with no prerequisites
-      return true;
-    }
     // Non-travel rank 3 powers require level 14 and 1 power from the pool
     if (level < 14) return false;
     if (numSelectedPowers < 1) return false;
