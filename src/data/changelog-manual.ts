@@ -23,6 +23,7 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   {
     date: '2026-03-24',
     items: [
+      { message: 'Added Sudden Acceleration KBtoKD to the procs filter even though it isn\'t 😤', type: 'feat' },
       { message: 'Mobile: Suppressed hover tooltip on touch devices during power selection — use the info button instead', type: 'fix' },
       { message: 'Mobile: Larger touch targets for info, compare, and remove buttons on selected powers', type: 'fix' },
       { message: 'Mobile: Enhancement picker now shows piece names and aspects as a list instead of icon-only grid', type: 'feat' },

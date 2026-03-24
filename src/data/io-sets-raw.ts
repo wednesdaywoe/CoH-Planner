@@ -20507,7 +20507,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "aspects": [
           "KnockToKnockDown"
         ],
-        "proc": false,
+        "proc": true,
         "unique": false
       }
     ]
