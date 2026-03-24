@@ -71,7 +71,7 @@ export const WaterBurst: Power = {
   ],
   "effects": {
     "knockback": {
-      "scale": 0.67,
+      "scale": 2.68,
       "table": "Ranged_Ones"
     }
   }

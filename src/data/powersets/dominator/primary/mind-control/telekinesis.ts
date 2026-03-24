@@ -44,16 +44,21 @@ export const Telekinesis: Power = {
       "scale": 5,
       "table": "Ranged_Immobilize"
     },
-    "protection": {
-      "knockup": 1,
-      "knockback": 1
+    "knockup": {
+      "scale": 100,
+      "table": "Ranged_Ones"
     },
     "durations": {
-      "protection": 1.5,
+      "knockup": 1.5,
+      "knockback": 1.5,
       "repel": 0.5
     },
+    "knockback": {
+      "scale": 100,
+      "table": "Ranged_Ones"
+    },
     "repel": {
-      "scale": 1,
+      "scale": 3,
       "table": "Melee_Ones"
     },
     "buffDuration": 1.5

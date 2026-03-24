@@ -48,8 +48,7 @@ export const ImpenetrableMind: Power = {
       "stun": 0.75,
       "sleep": 0.75,
       "knockup": 0.75,
-      "knockback": 0.75,
-      "protection": 0.75
+      "knockback": 0.75
     },
     "confuse": {
       "mag": 1,
@@ -83,16 +82,12 @@ export const ImpenetrableMind: Power = {
       "table": "Melee_Res_Boolean"
     },
     "knockup": {
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
+      "scale": 1,
+      "table": "Melee_Ones"
     },
     "knockback": {
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "protection": {
-      "knockup": 1,
-      "knockback": 1
+      "scale": 1,
+      "table": "Melee_Ones"
     },
     "buffDuration": 0.75
   }

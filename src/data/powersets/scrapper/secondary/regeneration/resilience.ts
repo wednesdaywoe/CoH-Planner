@@ -28,16 +28,23 @@ export const Resilience: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "stun": {
-      "mag": 1,
-      "scale": 5,
-      "table": "Melee_Res_Boolean"
+    "mezResistance": {
+      "stun": {
+        "scale": 5,
+        "table": "Melee_Res_Boolean"
+      }
     },
-    "effectDuration": 10.25,
     "durations": {
+      "mezResistance": 10.25,
       "stun": 10.25,
       "resistance": 10.25
     },
+    "stun": {
+      "mag": 1,
+      "scale": 15,
+      "table": "Melee_Res_Boolean"
+    },
+    "effectDuration": 10.25,
     "resistance": {
       "smashing": {
         "scale": 1.25,

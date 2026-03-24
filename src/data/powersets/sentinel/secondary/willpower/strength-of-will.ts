@@ -70,7 +70,6 @@ export const StrengthofWill: Power = {
       "resistance": 120,
       "knockup": 120,
       "knockback": 120,
-      "protection": 120,
       "repel": 120,
       "recoveryBuff": 120,
       "immobilize": 120,
@@ -79,20 +78,15 @@ export const StrengthofWill: Power = {
       "hold": 120
     },
     "knockup": {
-      "scale": 100,
+      "scale": 110,
       "table": "Melee_Ones"
     },
     "knockback": {
-      "scale": 100,
+      "scale": 110,
       "table": "Melee_Ones"
     },
-    "protection": {
-      "knockup": 1,
-      "knockback": 1,
-      "repel": 1
-    },
     "repel": {
-      "scale": 10,
+      "scale": 20,
       "table": "Melee_Ones"
     },
     "recoveryBuff": {

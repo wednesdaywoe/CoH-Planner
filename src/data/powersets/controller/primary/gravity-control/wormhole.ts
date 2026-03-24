@@ -50,11 +50,17 @@ export const Wormhole: Power = {
     },
     "durations": {
       "stealth": 1.5,
-      "teleport": 15
+      "mezResistance": 15
     },
     "teleport": {
-      "scale": 100,
+      "scale": 4.1,
       "table": "Ranged_Ones"
+    },
+    "mezResistance": {
+      "teleport": {
+        "scale": 100,
+        "table": "Ranged_Ones"
+      }
     },
     "stun": {
       "mag": 3,

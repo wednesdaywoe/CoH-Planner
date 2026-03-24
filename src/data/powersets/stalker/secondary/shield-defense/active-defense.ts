@@ -42,7 +42,6 @@ export const ActiveDefense: Power = {
       "immobilize": 120,
       "stun": 120,
       "sleep": 120,
-      "protection": 120,
       "knockup": 120,
       "knockback": 120,
       "repel": 120,
@@ -73,21 +72,16 @@ export const ActiveDefense: Power = {
       "scale": 30,
       "table": "Melee_Res_Boolean"
     },
-    "protection": {
-      "knockup": 1,
-      "knockback": 1,
-      "repel": 1
-    },
     "knockup": {
-      "scale": 10,
+      "scale": 110,
       "table": "Melee_Ones"
     },
     "knockback": {
-      "scale": 10,
+      "scale": 110,
       "table": "Melee_Ones"
     },
     "repel": {
-      "scale": 10,
+      "scale": 110,
       "table": "Melee_Ones"
     },
     "elusivity": {

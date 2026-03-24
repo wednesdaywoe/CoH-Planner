@@ -37,6 +37,10 @@ export const EagleEye: Power = {
       "tohit": {
         "scale": 2,
         "table": "Melee_Res_Boolean"
+      },
+      "perception": {
+        "scale": 0.6,
+        "table": "Melee_Ones"
       }
     },
     "durations": {

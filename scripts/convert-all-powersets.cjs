@@ -2,14 +2,17 @@
  * Batch Powerset Conversion Script
  *
  * Converts ALL raw Homecoming power data to the new modular structure.
- * Usage: node scripts/convert-all-powersets.cjs
+ * Usage: node scripts/convert-all-powersets.cjs [--force]
+ *   --force  Reconvert even if output directory already exists
  */
 
 const { execSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
 
-const RAW_DATA_PATH = 'C:/Projects/Raw Data Homecoming/powers';
+const { RAW_DATA_PATH } = require('./convert-powerset.cjs');
+
+const force = process.argv.includes('--force');
 
 // Map raw category names to our folder structure
 const CATEGORIES = {
@@ -40,18 +43,34 @@ const CATEGORIES = {
   'sentinel_defense': { archetype: 'sentinel', type: 'secondary' },
 };
 
+// Also handle EAT/VEAT categories
+const EXTRA_CATEGORIES = {
+  'peacebringer_defense': { archetype: 'peacebringer', type: 'primary' },
+  'peacebringer_ranged': { archetype: 'peacebringer', type: 'secondary' },
+  'warshade_defense': { archetype: 'warshade', type: 'primary' },
+  'warshade_ranged': { archetype: 'warshade', type: 'secondary' },
+  'arachnos_soldier_ranged': { archetype: 'arachnos-soldier', type: 'primary' },
+  'arachnos_soldier_support': { archetype: 'arachnos-soldier', type: 'secondary' },
+  'arachnos_widow_melee': { archetype: 'arachnos-widow', type: 'primary' },
+  'arachnos_widow_support': { archetype: 'arachnos-widow', type: 'secondary' },
+};
+
+const ALL_CATEGORIES = { ...CATEGORIES, ...EXTRA_CATEGORIES };
+
 let converted = 0;
 let failed = 0;
 let skipped = 0;
 const errors = [];
 
-console.log('=== Batch Powerset Conversion ===\n');
+console.log(`=== Batch Powerset Conversion${force ? ' (FORCE)' : ''} ===\n`);
 
-for (const [category, info] of Object.entries(CATEGORIES)) {
-  const categoryPath = path.join(RAW_DATA_PATH, category);
+const powersPath = path.join(RAW_DATA_PATH, 'powers');
+
+for (const [category, info] of Object.entries(ALL_CATEGORIES)) {
+  const categoryPath = path.join(powersPath, category);
 
   if (!fs.existsSync(categoryPath)) {
-    console.log(`[SKIP] Category not found: ${category}`);
+    // console.log(`[SKIP] Category not found: ${category}`);
     continue;
   }
 
@@ -66,11 +85,16 @@ for (const [category, info] of Object.entries(CATEGORIES)) {
   for (const powerset of powersets) {
     const outputDir = `./src/data/powersets/${info.archetype}/${info.type}/${powerset.replace(/_/g, '-')}`;
 
-    // Check if already converted
-    if (fs.existsSync(outputDir) && fs.existsSync(path.join(outputDir, 'index.ts'))) {
+    // Check if already converted (skip unless --force)
+    if (!force && fs.existsSync(outputDir) && fs.existsSync(path.join(outputDir, 'index.ts'))) {
       console.log(`  [EXISTS] ${info.archetype}/${powerset}`);
       skipped++;
       continue;
+    }
+
+    // In force mode, remove existing output so convert-powerset.cjs regenerates it
+    if (force && fs.existsSync(outputDir)) {
+      fs.rmSync(outputDir, { recursive: true, force: true });
     }
 
     try {
@@ -81,8 +105,9 @@ for (const [category, info] of Object.entries(CATEGORIES)) {
       });
       converted++;
     } catch (err) {
-      console.log(`  [ERROR] ${category}/${powerset}: ${err.message}`);
-      errors.push({ category, powerset, error: err.message });
+      const stderr = err.stderr ? err.stderr.toString().trim() : err.message;
+      console.log(`  [ERROR] ${category}/${powerset}: ${stderr.split('\n')[0]}`);
+      errors.push({ category, powerset, error: stderr });
       failed++;
     }
   }
@@ -96,6 +121,6 @@ console.log(`Failed: ${failed}`);
 if (errors.length > 0) {
   console.log('\n=== Errors ===');
   for (const e of errors) {
-    console.log(`  ${e.category}/${e.powerset}: ${e.error}`);
+    console.log(`  ${e.category}/${e.powerset}: ${e.error.split('\n')[0]}`);
   }
 }

@@ -87,8 +87,16 @@ export interface GlobalBonuses {
   runSpeed: number;
   jumpHeight: number;
   flySpeed: number;
-  // Mez Resistance
+  // Mez Resistance (generic, from IO set bonuses — applies to all types)
   mezResist: number;
+  // Per-type mez resistance (from active power effects)
+  mezResistHold: number;
+  mezResistStun: number;
+  mezResistImmobilize: number;
+  mezResistSleep: number;
+  mezResistConfuse: number;
+  mezResistFear: number;
+  mezResistKnockback: number;
   // Mez Protection (magnitude points)
   protHold: number;
   protStun: number;
@@ -204,6 +212,13 @@ function createEmptyGlobalBonuses(): GlobalBonuses {
     jumpHeight: 0,
     flySpeed: 0,
     mezResist: 0,
+    mezResistHold: 0,
+    mezResistStun: 0,
+    mezResistImmobilize: 0,
+    mezResistSleep: 0,
+    mezResistConfuse: 0,
+    mezResistFear: 0,
+    mezResistKnockback: 0,
     protHold: 0,
     protStun: 0,
     protImmobilize: 0,
@@ -428,6 +443,7 @@ interface ActivePowerEffect {
   defenseBuffSuppressible?: Record<string, ScalarOrScaled>;
   resistance?: Record<string, ScalarOrScaled>;
   debuffResistance?: Record<string, ScalarOrScaled>;
+  mezResistance?: Record<string, ScalarOrScaled>;
   elusivity?: Record<string, ScalarOrScaled>;
   runSpeed?: number;
   flySpeed?: number;
@@ -675,6 +691,32 @@ function applyActivePowerBonuses(
       for (const [type, value] of Object.entries(debuffRes)) {
         const percentage = resolveScaledEffect(value, archetypeId, buildLevel) * 100;
         const key = debuffResMapping[type.toLowerCase()];
+        if (key && key in global) {
+          global[key] += percentage;
+          addToBreakdown(breakdown, key, {
+            name: power.name,
+            value: percentage,
+            type: 'active-power',
+          });
+        }
+      }
+    }
+
+    // Mez Resistance from active powers (e.g., Acrobatics Hold resistance)
+    // Stored as mezResistance: { hold: { scale, table }, ... }
+    if (effects.mezResistance && typeof effects.mezResistance === 'object') {
+      const mezResMapping: Record<string, keyof GlobalBonuses> = {
+        hold: 'mezResistHold',
+        stun: 'mezResistStun',
+        immobilize: 'mezResistImmobilize',
+        sleep: 'mezResistSleep',
+        confuse: 'mezResistConfuse',
+        fear: 'mezResistFear',
+        knockback: 'mezResistKnockback',
+      };
+      for (const [type, value] of Object.entries(effects.mezResistance as Record<string, ScalarOrScaled>)) {
+        const percentage = resolveScaledEffect(value, archetypeId, buildLevel) * 100;
+        const key = mezResMapping[type.toLowerCase()];
         if (key && key in global) {
           global[key] += percentage;
           addToBreakdown(breakdown, key, {

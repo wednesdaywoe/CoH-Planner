@@ -82,11 +82,18 @@ export const Farsight: Power = {
     "durations": {
       "defenseBuff": 120,
       "tohitBuff": 120,
+      "debuffResistance": 120,
       "perceptionBuff": 120
     },
     "tohitBuff": {
       "scale": 1,
       "table": "Ranged_Buff_ToHit"
+    },
+    "debuffResistance": {
+      "perception": {
+        "scale": 1.5,
+        "table": "Ranged_Res_Boolean"
+      }
     },
     "perceptionBuff": {
       "scale": 2,

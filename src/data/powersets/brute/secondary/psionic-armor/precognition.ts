@@ -49,11 +49,18 @@ export const Precognition: Power = {
     "durations": {
       "defenseBuff": 10.25,
       "perceptionBuff": 0.75,
+      "debuffResistance": 0.75,
       "elusivity": 10.25
     },
     "perceptionBuff": {
       "scale": 0.6,
       "table": "Melee_Ones"
+    },
+    "debuffResistance": {
+      "perception": {
+        "scale": 0.6,
+        "table": "Melee_Ones"
+      }
     },
     "elusivity": {
       "all": {

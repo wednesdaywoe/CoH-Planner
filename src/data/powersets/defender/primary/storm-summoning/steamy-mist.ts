@@ -87,6 +87,7 @@ export const SteamyMist: Power = {
       "defenseBuff": 0.75,
       "stealth": 0.75,
       "resistance": 0.75,
+      "mezResistance": 0.75,
       "confuse": 0.75
     },
     "stealth": {
@@ -117,9 +118,15 @@ export const SteamyMist: Power = {
         "table": "Ranged_Res_Dmg"
       }
     },
+    "mezResistance": {
+      "confuse": {
+        "scale": 5,
+        "table": "Ranged_Res_Boolean"
+      }
+    },
     "confuse": {
       "mag": 1,
-      "scale": 5,
+      "scale": 20,
       "table": "Ranged_Res_Boolean"
     },
     "effectDuration": 0.75,

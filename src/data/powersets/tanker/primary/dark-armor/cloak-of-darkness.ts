@@ -33,15 +33,22 @@ export const CloakofDarkness: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "perceptionBuff": {
-      "scale": 0.6,
-      "table": "Melee_Ones"
+    "debuffResistance": {
+      "perception": {
+        "scale": 0.6,
+        "table": "Melee_Ones"
+      }
     },
     "durations": {
+      "debuffResistance": 0.75,
       "perceptionBuff": 0.75,
       "defenseBuff": 0.75,
       "immobilize": 0.75,
       "stealth": 0.75
+    },
+    "perceptionBuff": {
+      "scale": 0.6,
+      "table": "Melee_Ones"
     },
     "defenseBuff": {
       "ranged": {

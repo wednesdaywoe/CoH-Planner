@@ -61,8 +61,15 @@ export const HeightenedSenses: Power = {
     },
     "durations": {
       "defenseBuff": 0.75,
+      "debuffResistance": 0.75,
       "perceptionBuff": 0.75,
       "elusivity": 0.75
+    },
+    "debuffResistance": {
+      "perception": {
+        "scale": 0.6,
+        "table": "Melee_Ones"
+      }
     },
     "perceptionBuff": {
       "scale": 0.6,

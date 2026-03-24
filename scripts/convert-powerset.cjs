@@ -785,29 +785,39 @@ function extractEffects(templates) {
       // ========== MEZ EFFECTS ==========
       if (MEZ_TYPES[attrib]) {
         const mezType = MEZ_TYPES[attrib];
-        const newMez = makeMezEffect();
-        // Keep the higher magnitude mez effect (for powers with multiple mez effects)
-        if (!effects[mezType] || newMez.mag > effects[mezType].mag) {
-          effects[mezType] = newMez;
+        if (aspect === 'resistance') {
+          // Status resistance (reduces mez duration) — e.g., Acrobatics Hold resistance
+          if (!effects.mezResistance) effects.mezResistance = {};
+          if (effects.mezResistance[mezType] && effects.mezResistance[mezType].table === table) {
+            effects.mezResistance[mezType].scale += Math.abs(scale);
+          } else {
+            effects.mezResistance[mezType] = makeEffect();
+          }
+          recordDuration('mezResistance');
+        } else {
+          const newMez = makeMezEffect();
+          // Keep the higher magnitude mez effect (for powers with multiple mez effects)
+          if (!effects[mezType] || newMez.mag > effects[mezType].mag) {
+            effects[mezType] = newMez;
+          }
+          if (duration) effects.effectDuration = duration;
+          recordDuration(mezType);
         }
-        if (duration) effects.effectDuration = duration;
-        recordDuration(mezType);
         continue;
       }
 
       // ========== KNOCKBACK/KNOCKUP/REPEL ==========
-      // For KB/KU: aspect "resistance" means protection (same as mez protection)
-      // Store as scaled effect (like hold/stun) — the scale*table gives the actual magnitude
+      // For KB/KU: aspect "current" means protection (magnitude applied against incoming KB)
+      // Multiple templates accumulate (e.g., Acrobatics has unenhanceable base + enhanceable portion)
       if (KNOCKBACK_TYPES[attrib]) {
         const kbType = KNOCKBACK_TYPES[attrib];
-        if (aspect === 'resistance') {
-          // KB/KU protection stored as scaled effect (not in protection object)
-          effects[kbType] = makeEffect();
-          recordDuration(kbType);
+        // Accumulate scales when multiple templates share the same table
+        if (effects[kbType] && effects[kbType].table === table) {
+          effects[kbType].scale += Math.abs(scale);
         } else {
           effects[kbType] = makeEffect();
-          recordDuration(kbType);
         }
+        recordDuration(kbType);
         continue;
       }
 
@@ -962,7 +972,12 @@ function extractEffects(templates) {
       if (STEALTH_TYPES[attrib]) {
         const stealthType = STEALTH_TYPES[attrib];
         if (stealthType === 'perception') {
-          if (isDebuff || scale < 0) {
+          if (aspect === 'resistance') {
+            // Perception debuff resistance (e.g., Beryl Crystals)
+            if (!effects.debuffResistance) effects.debuffResistance = {};
+            effects.debuffResistance.perception = makeEffect();
+            recordDuration('debuffResistance');
+          } else if (isDebuff || scale < 0) {
             effects.perceptionDebuff = makeEffect();
             recordDuration('perceptionDebuff');
           } else {
@@ -980,8 +995,19 @@ function extractEffects(templates) {
       // ========== CONTROL (Taunt, Placate, etc.) ==========
       if (CONTROL_TYPES[attrib]) {
         const ctrlType = CONTROL_TYPES[attrib];
-        effects[ctrlType] = makeEffect();
-        recordDuration(ctrlType);
+        if (aspect === 'resistance') {
+          // Status resistance for control effects (e.g., Teleport resistance from Energy Aura)
+          if (!effects.mezResistance) effects.mezResistance = {};
+          if (effects.mezResistance[ctrlType] && effects.mezResistance[ctrlType].table === table) {
+            effects.mezResistance[ctrlType].scale += Math.abs(scale);
+          } else {
+            effects.mezResistance[ctrlType] = makeEffect();
+          }
+          recordDuration('mezResistance');
+        } else {
+          effects[ctrlType] = makeEffect();
+          recordDuration(ctrlType);
+        }
         continue;
       }
 

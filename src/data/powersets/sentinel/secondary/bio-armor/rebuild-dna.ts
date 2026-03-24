@@ -51,12 +51,19 @@ export const RebuildDNA: Power = {
       "scale": 32.5,
       "table": "Melee_Ones"
     },
+    "debuffResistance": {
+      "perception": {
+        "scale": 0.6,
+        "table": "Melee_Ones"
+      }
+    },
+    "durations": {
+      "debuffResistance": 30,
+      "perceptionBuff": 30
+    },
     "perceptionBuff": {
       "scale": 0.6,
       "table": "Melee_Ones"
-    },
-    "durations": {
-      "perceptionBuff": 30
     },
     "buffDuration": 30
   }

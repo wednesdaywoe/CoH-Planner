@@ -55,7 +55,7 @@ export const IncreaseDensity: Power = {
       "knockback": 60,
       "knockup": 60,
       "repel": 60,
-      "teleport": 60
+      "mezResistance": 60
     },
     "hold": {
       "mag": 1,
@@ -85,9 +85,11 @@ export const IncreaseDensity: Power = {
       "scale": 8,
       "table": "Ranged_Ones"
     },
-    "teleport": {
-      "scale": 1,
-      "table": "Ranged_Ones"
+    "mezResistance": {
+      "teleport": {
+        "scale": 1,
+        "table": "Ranged_Ones"
+      }
     },
     "buffDuration": 60
   }

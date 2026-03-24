@@ -122,7 +122,7 @@ export const HailofBullets: Power = {
   ],
   "effects": {
     "knockback": {
-      "scale": 0.4,
+      "scale": 0.8,
       "table": "Ranged_Ones"
     },
     "durations": {

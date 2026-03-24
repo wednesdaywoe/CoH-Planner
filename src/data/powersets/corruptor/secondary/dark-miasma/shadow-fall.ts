@@ -87,6 +87,7 @@ export const ShadowFall: Power = {
       "defenseBuff": 0.75,
       "stealth": 0.75,
       "resistance": 0.75,
+      "mezResistance": 0.75,
       "fear": 0.75
     },
     "stealth": {
@@ -117,9 +118,15 @@ export const ShadowFall: Power = {
         "table": "Ranged_Res_Dmg"
       }
     },
+    "mezResistance": {
+      "fear": {
+        "scale": 5,
+        "table": "Ranged_Res_Boolean"
+      }
+    },
     "fear": {
       "mag": 1,
-      "scale": 5,
+      "scale": 20,
       "table": "Ranged_Res_Boolean"
     },
     "effectDuration": 0.75,

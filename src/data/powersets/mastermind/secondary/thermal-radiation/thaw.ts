@@ -46,6 +46,7 @@ export const Thaw: Power = {
       "immobilize": 90,
       "stun": 90,
       "sleep": 90,
+      "mezResistance": 90,
       "confuse": 90,
       "fear": 90,
       "resistance": 90,
@@ -65,6 +66,12 @@ export const Thaw: Power = {
       "mag": 1,
       "scale": 30,
       "table": "Ranged_Res_Boolean"
+    },
+    "mezResistance": {
+      "sleep": {
+        "scale": 5,
+        "table": "Ranged_Res_Boolean"
+      }
     },
     "confuse": {
       "mag": 1,

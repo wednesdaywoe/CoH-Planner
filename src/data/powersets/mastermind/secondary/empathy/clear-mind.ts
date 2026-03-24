@@ -44,6 +44,8 @@ export const ClearMind: Power = {
       "immobilize": 90,
       "stun": 90,
       "sleep": 90,
+      "mezResistance": 90,
+      "debuffResistance": 90,
       "perceptionBuff": 90
     },
     "fear": {
@@ -70,6 +72,18 @@ export const ClearMind: Power = {
       "mag": 1,
       "scale": 30,
       "table": "Ranged_Res_Boolean"
+    },
+    "mezResistance": {
+      "sleep": {
+        "scale": 5,
+        "table": "Ranged_Res_Boolean"
+      }
+    },
+    "debuffResistance": {
+      "perception": {
+        "scale": 2.5,
+        "table": "Ranged_Res_Boolean"
+      }
     },
     "perceptionBuff": {
       "scale": 2.5,

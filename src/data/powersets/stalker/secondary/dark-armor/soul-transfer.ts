@@ -84,7 +84,7 @@ export const SoulTransfer: Power = {
       "table": "Melee_Res_Boolean"
     },
     "knockback": {
-      "scale": 1.25,
+      "scale": 26.25,
       "table": "Melee_Res_Boolean"
     },
     "debuffResistance": {

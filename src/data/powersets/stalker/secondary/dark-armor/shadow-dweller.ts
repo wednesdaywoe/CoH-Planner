@@ -38,9 +38,17 @@ export const ShadowDweller: Power = {
     "effectDuration": 10.25,
     "durations": {
       "immobilize": 10.25,
+      "mezResistance": 10.25,
       "defenseBuff": 10.25,
+      "debuffResistance": 10.25,
       "perceptionBuff": 10.25,
       "regenBuff": 10.3
+    },
+    "mezResistance": {
+      "immobilize": {
+        "scale": 1.5,
+        "table": "Melee_Res_Boolean"
+      }
     },
     "defenseBuff": {
       "ranged": {
@@ -78,6 +86,12 @@ export const ShadowDweller: Power = {
       "negative": {
         "scale": 0.25,
         "table": "Melee_Buff_Def"
+      }
+    },
+    "debuffResistance": {
+      "perception": {
+        "scale": 1.25,
+        "table": "Melee_Res_Boolean"
       }
     },
     "perceptionBuff": {

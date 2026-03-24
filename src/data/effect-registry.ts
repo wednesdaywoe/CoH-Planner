@@ -591,6 +591,15 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
     expandByType: true,
     priority: 5,
   },
+  mezResistance: {
+    label: 'Status Res',
+    category: 'protection',
+    colorClass: STAT_COLORS.debuffResistance,
+    format: 'percent',
+    canBeByType: true,
+    expandByType: true,
+    priority: 6,
+  },
 };
 
 // ============================================

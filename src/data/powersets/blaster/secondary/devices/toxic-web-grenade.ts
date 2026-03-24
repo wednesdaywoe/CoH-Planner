@@ -53,12 +53,17 @@ export const ToxicWebGrenade: Power = {
       "scale": 15,
       "table": "Ranged_Immobilize"
     },
-    "protection": {
-      "knockup": 1,
-      "knockback": 1
+    "knockup": {
+      "scale": 100,
+      "table": "Ranged_Ones"
     },
     "durations": {
-      "protection": 15
+      "knockup": 15,
+      "knockback": 15
+    },
+    "knockback": {
+      "scale": 100,
+      "table": "Ranged_Ones"
     },
     "damageBuff": {
       "scale": 0,

@@ -47,7 +47,7 @@ export const Gale: Power = {
   },
   "effects": {
     "knockback": {
-      "scale": 5,
+      "scale": 10,
       "table": "Ranged_Knockback"
     }
   }

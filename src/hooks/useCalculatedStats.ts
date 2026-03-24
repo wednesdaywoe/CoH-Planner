@@ -192,15 +192,15 @@ export function convertToLegacyStats(
     jumpHeight: charStats.jumpheight,
     flySpeed: charStats.flyspeed,
 
-    // Mez Resistance (all share mezResist for now)
+    // Mez Resistance: generic (from IO sets) + per-type (from active power effects)
     mezResistance: {
-      hold: global.mezResist,
-      stun: global.mezResist,
-      immobilize: global.mezResist,
-      sleep: global.mezResist,
-      confuse: global.mezResist,
-      fear: global.mezResist,
-      knockback: global.mezResist,
+      hold: global.mezResist + global.mezResistHold,
+      stun: global.mezResist + global.mezResistStun,
+      immobilize: global.mezResist + global.mezResistImmobilize,
+      sleep: global.mezResist + global.mezResistSleep,
+      confuse: global.mezResist + global.mezResistConfuse,
+      fear: global.mezResist + global.mezResistFear,
+      knockback: global.mezResist + global.mezResistKnockback,
     },
 
     // Mez Protection (per-type magnitude from active powers + IO sets)

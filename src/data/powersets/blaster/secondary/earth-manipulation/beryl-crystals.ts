@@ -37,18 +37,22 @@ export const BerylCrystals: Power = {
     "effectDuration": 0.75,
     "durations": {
       "confuse": 0.75,
-      "perceptionBuff": 0.75,
-      "debuffResistance": 0.75
-    },
-    "perceptionBuff": {
-      "scale": 0.6,
-      "table": "Melee_Ones"
+      "debuffResistance": 0.75,
+      "perceptionBuff": 0.75
     },
     "debuffResistance": {
+      "perception": {
+        "scale": 0.6,
+        "table": "Melee_Ones"
+      },
       "tohit": {
         "scale": 1,
         "table": "Melee_Res_Boolean"
       }
+    },
+    "perceptionBuff": {
+      "scale": 0.6,
+      "table": "Melee_Ones"
     },
     "buffDuration": 0.75
   }

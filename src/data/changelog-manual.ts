@@ -23,15 +23,9 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   {
     date: '2026-03-23',
     items: [
-      { message: 'Fixed stale auth session causing 401 error when trying to save to private builds', type: 'feat' },
-      { message: 'Practiced Brawlers scale now processes correctly', type: 'fix' },
-      { message: 'Added processing for elusivity to debuffResistDefense. All 7 SR powers (Agile, Dodge, Lucky, Evasion, Focused Fighting, Focused Senses, Elude) now contribute', type: 'fix' },
-      { message: 'Fixed Practiced Brawlers duplicate KB protection', type: 'fix' },
-      { message: 'KB/KU res now stores as scaled effect instead of raw magnitude in protection', type: 'fix' },
-      { message: 'Fixed issue with power import deduplication', type: 'fix' },
-      { message: 'Fix for imported powers with debuffs being applied incorrectly', type: 'fix' },
-      { message: '21 powers now correctly flagged with selfPenalty', type: 'fix' },
-    
+      { message: 'Large data regeneration: 348 powersets regenerated. 74 powers now have mezResistance data\
+         that was previously missing. Status Resistance extracted for all types.\
+         ', type: 'fix' }
     ],
   },
 ];

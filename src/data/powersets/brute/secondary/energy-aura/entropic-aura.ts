@@ -42,11 +42,10 @@ export const EntropicAura: Power = {
     },
     "durations": {
       "rechargeBuff": 2.25,
-      "teleport": 2.25,
+      "mezResistance": 2.25,
       "knockup": 2.25,
       "knockback": 2.25,
       "repel": 2.25,
-      "protection": 2.25,
       "hold": 2.25,
       "stun": 2.25,
       "sleep": 2.25,
@@ -56,9 +55,11 @@ export const EntropicAura: Power = {
       "scale": 2.25,
       "table": "Melee_Ones"
     },
-    "teleport": {
-      "scale": 1,
-      "table": "Melee_Ones"
+    "mezResistance": {
+      "teleport": {
+        "scale": 1,
+        "table": "Melee_Ones"
+      }
     },
     "knockup": {
       "scale": 10,
@@ -69,11 +70,8 @@ export const EntropicAura: Power = {
       "table": "Melee_Ones"
     },
     "repel": {
-      "scale": 10,
+      "scale": 110,
       "table": "Melee_Ones"
-    },
-    "protection": {
-      "repel": 1
     },
     "hold": {
       "mag": 1,

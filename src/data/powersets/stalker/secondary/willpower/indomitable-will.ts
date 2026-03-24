@@ -46,7 +46,6 @@ export const IndomitableWill: Power = {
       "sleep": 0.75,
       "confuse": 0.75,
       "fear": 0.75,
-      "protection": 0.75,
       "knockup": 0.75,
       "knockback": 0.75,
       "repel": 0.75,
@@ -77,21 +76,16 @@ export const IndomitableWill: Power = {
       "scale": 30,
       "table": "Melee_Res_Boolean"
     },
-    "protection": {
-      "knockup": 1,
-      "knockback": 1,
-      "repel": 1
-    },
     "knockup": {
-      "scale": 10,
+      "scale": 110,
       "table": "Melee_Ones"
     },
     "knockback": {
-      "scale": 10,
+      "scale": 110,
       "table": "Melee_Ones"
     },
     "repel": {
-      "scale": 10,
+      "scale": 110,
       "table": "Melee_Ones"
     },
     "defenseBuff": {

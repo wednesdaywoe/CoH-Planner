@@ -45,34 +45,28 @@ export const AccelerateMetabolism: Power = {
     },
     "durations": {
       "damageBuff": 120,
-      "hold": 120,
-      "immobilize": 120,
-      "stun": 120,
-      "sleep": 120,
+      "mezResistance": 120,
       "rechargeBuff": 120,
       "debuffResistance": 120,
       "recoveryBuff": 120
     },
-    "hold": {
-      "mag": 1,
-      "scale": 5,
-      "table": "Ranged_Res_Boolean"
-    },
-    "effectDuration": 120,
-    "immobilize": {
-      "mag": 1,
-      "scale": 5,
-      "table": "Ranged_Res_Boolean"
-    },
-    "stun": {
-      "mag": 1,
-      "scale": 5,
-      "table": "Ranged_Res_Boolean"
-    },
-    "sleep": {
-      "mag": 1,
-      "scale": 5,
-      "table": "Ranged_Res_Boolean"
+    "mezResistance": {
+      "hold": {
+        "scale": 5,
+        "table": "Ranged_Res_Boolean"
+      },
+      "immobilize": {
+        "scale": 5,
+        "table": "Ranged_Res_Boolean"
+      },
+      "stun": {
+        "scale": 5,
+        "table": "Ranged_Res_Boolean"
+      },
+      "sleep": {
+        "scale": 5,
+        "table": "Ranged_Res_Boolean"
+      }
     },
     "rechargeBuff": {
       "scale": 0.3,

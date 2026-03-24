@@ -48,25 +48,36 @@ export const O2Boost: Power = {
       "recovery": {
         "scale": 2,
         "table": "Ranged_Res_Boolean"
+      },
+      "perception": {
+        "scale": 2.5,
+        "table": "Ranged_Res_Boolean"
       }
     },
     "durations": {
       "debuffResistance": 60,
-      "sleep": 60,
+      "mezResistance": 60,
       "perceptionBuff": 60,
-      "stun": 60
+      "stun": 60,
+      "sleep": 60
     },
-    "sleep": {
-      "mag": 1,
-      "scale": 4,
-      "table": "Ranged_Res_Boolean"
+    "mezResistance": {
+      "sleep": {
+        "scale": 4,
+        "table": "Ranged_Res_Boolean"
+      }
     },
-    "effectDuration": 60,
     "perceptionBuff": {
       "scale": 2.5,
       "table": "Ranged_Res_Boolean"
     },
     "stun": {
+      "mag": 1,
+      "scale": 20,
+      "table": "Ranged_Res_Boolean"
+    },
+    "effectDuration": 60,
+    "sleep": {
       "mag": 1,
       "scale": 20,
       "table": "Ranged_Res_Boolean"

@@ -44,12 +44,17 @@ export const Glacier: Power = {
       "scale": 8,
       "table": "Ranged_Immobilize"
     },
-    "protection": {
-      "knockup": 1,
-      "knockback": 1
+    "knockup": {
+      "scale": 100,
+      "table": "Ranged_Ones"
     },
     "durations": {
-      "protection": 10
+      "knockup": 10,
+      "knockback": 10
+    },
+    "knockback": {
+      "scale": 100,
+      "table": "Ranged_Ones"
     },
     "buffDuration": 10
   }

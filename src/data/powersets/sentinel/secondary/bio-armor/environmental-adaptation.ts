@@ -68,7 +68,6 @@ export const EnvironmentalAdaptation: Power = {
       "maxHPBuff": 0.75,
       "tohitBuff": 0.75,
       "hold": 0.75,
-      "protection": 0.75,
       "knockup": 0.75,
       "knockback": 0.75,
       "immobilize": 0.75
@@ -87,16 +86,12 @@ export const EnvironmentalAdaptation: Power = {
       "table": "Melee_Res_Boolean"
     },
     "effectDuration": 0.75,
-    "protection": {
-      "knockup": 1,
-      "knockback": 1
-    },
     "knockup": {
-      "scale": 10,
+      "scale": 11,
       "table": "Melee_Ones"
     },
     "knockback": {
-      "scale": 10,
+      "scale": 11,
       "table": "Melee_Ones"
     },
     "immobilize": {

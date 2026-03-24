@@ -33,12 +33,14 @@ export const StaticShield: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "teleport": {
-      "scale": 1,
-      "table": "Melee_Ones"
+    "mezResistance": {
+      "teleport": {
+        "scale": 1,
+        "table": "Melee_Ones"
+      }
     },
     "durations": {
-      "teleport": 0.75,
+      "mezResistance": 0.75,
       "debuffResistance": 0.75,
       "hold": 0.75,
       "stun": 0.75,

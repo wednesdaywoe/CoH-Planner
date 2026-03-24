@@ -87,15 +87,15 @@ export const Weaken: Power = {
       "table": "Ranged_Stun"
     },
     "knockup": {
-      "scale": 0.25,
+      "scale": 0.75,
       "table": "Ranged_Stun"
     },
     "knockback": {
-      "scale": 0.25,
+      "scale": 0.75,
       "table": "Ranged_Stun"
     },
     "repel": {
-      "scale": 0.25,
+      "scale": 0.75,
       "table": "Ranged_Stun"
     },
     "defenseDebuff": {

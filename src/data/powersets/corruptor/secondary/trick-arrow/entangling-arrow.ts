@@ -37,13 +37,18 @@ export const EntanglingArrow: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "protection": {
-      "knockup": 1,
-      "knockback": 1
+    "knockup": {
+      "scale": 100,
+      "table": "Ranged_Ones"
     },
     "durations": {
-      "protection": 30,
+      "knockup": 30,
+      "knockback": 30,
       "resistanceDebuff": 30
+    },
+    "knockback": {
+      "scale": 100,
+      "table": "Ranged_Ones"
     },
     "resistanceDebuff": {
       "smashing": {

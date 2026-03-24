@@ -29,8 +29,11 @@ export const PracticedBrawler: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "knockup": {
+      "scale": 110,
+      "table": "Melee_Ones"
+    },
     "durations": {
-      "protection": 120,
       "knockup": 120,
       "knockback": 120,
       "hold": 120,
@@ -38,12 +41,8 @@ export const PracticedBrawler: Power = {
       "stun": 120,
       "sleep": 120
     },
-    "knockup": {
-      "scale": 10,
-      "table": "Melee_Ones"
-    },
     "knockback": {
-      "scale": 10,
+      "scale": 110,
       "table": "Melee_Ones"
     },
     "hold": {

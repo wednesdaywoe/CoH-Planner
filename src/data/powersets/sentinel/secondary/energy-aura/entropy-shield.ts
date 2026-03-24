@@ -29,35 +29,29 @@ export const EntropyShield: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "protection": {
-      "knockback": 1,
-      "knockup": 1,
-      "repel": 1
+    "knockback": {
+      "scale": 110,
+      "table": "Melee_Ones"
     },
     "durations": {
-      "protection": 0.75,
-      "knockup": 0.75,
       "knockback": 0.75,
+      "knockup": 0.75,
       "repel": 0.75,
       "hold": 0.75,
       "immobilize": 0.75,
       "stun": 0.75,
       "sleep": 0.75,
-      "teleport": 0.75,
+      "mezResistance": 0.75,
       "elusivity": 0.75,
       "debuffResistance": 0.75,
       "rechargeBuff": 0.75
     },
     "knockup": {
-      "scale": 10,
-      "table": "Melee_Ones"
-    },
-    "knockback": {
-      "scale": 10,
+      "scale": 110,
       "table": "Melee_Ones"
     },
     "repel": {
-      "scale": 10,
+      "scale": 110,
       "table": "Melee_Ones"
     },
     "hold": {
@@ -81,9 +75,11 @@ export const EntropyShield: Power = {
       "scale": 30,
       "table": "Melee_Res_Boolean"
     },
-    "teleport": {
-      "scale": 1,
-      "table": "Melee_Ones"
+    "mezResistance": {
+      "teleport": {
+        "scale": 1,
+        "table": "Melee_Ones"
+      }
     },
     "elusivity": {
       "all": {

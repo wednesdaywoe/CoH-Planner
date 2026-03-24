@@ -48,6 +48,7 @@ export const Antidote: Power = {
       "immobilize": 90,
       "stun": 90,
       "sleep": 90,
+      "mezResistance": 90,
       "resistance": 90,
       "debuffResistance": 90
     },
@@ -75,6 +76,12 @@ export const Antidote: Power = {
       "mag": 1,
       "scale": 30,
       "table": "Ranged_Res_Boolean"
+    },
+    "mezResistance": {
+      "sleep": {
+        "scale": 5,
+        "table": "Ranged_Res_Boolean"
+      }
     },
     "resistance": {
       "cold": {

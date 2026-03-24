@@ -77,8 +77,7 @@ export const PowerSurge: Power = {
       "knockup": 30,
       "knockback": 30,
       "repel": 30,
-      "teleport": 30,
-      "protection": 30,
+      "mezResistance": 30,
       "debuffResistance": 30,
       "stealth": 29,
       "hold": 30,
@@ -95,25 +94,22 @@ export const PowerSurge: Power = {
       "table": "Melee_Ones"
     },
     "knockup": {
-      "scale": 100,
+      "scale": 101,
       "table": "Melee_Ones"
     },
     "knockback": {
-      "scale": 100,
+      "scale": 101,
       "table": "Melee_Ones"
     },
     "repel": {
-      "scale": 10,
+      "scale": 11,
       "table": "Melee_Ones"
     },
-    "teleport": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
-    "protection": {
-      "knockup": 1,
-      "knockback": 1,
-      "repel": 1
+    "mezResistance": {
+      "teleport": {
+        "scale": 1,
+        "table": "Melee_Ones"
+      }
     },
     "debuffResistance": {
       "endurance": {

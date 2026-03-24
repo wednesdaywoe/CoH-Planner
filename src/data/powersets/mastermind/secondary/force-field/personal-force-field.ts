@@ -37,12 +37,14 @@ export const PersonalForceField: Power = {
       "scale": 0.75,
       "table": "Melee_Ones"
     },
-    "teleport": {
-      "scale": 1,
-      "table": "Melee_Ones"
+    "mezResistance": {
+      "teleport": {
+        "scale": 1,
+        "table": "Melee_Ones"
+      }
     },
     "durations": {
-      "teleport": 0.75,
+      "mezResistance": 0.75,
       "defenseBuff": 0.75,
       "resistance": 0.75
     },

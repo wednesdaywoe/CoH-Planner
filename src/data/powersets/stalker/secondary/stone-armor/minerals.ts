@@ -42,6 +42,8 @@ export const Minerals: Power = {
     "durations": {
       "defenseBuff": 0.75,
       "confuse": 0.75,
+      "mezResistance": 0.75,
+      "debuffResistance": 0.75,
       "perceptionBuff": 0.75,
       "rechargeBuff": 0.75
     },
@@ -51,6 +53,18 @@ export const Minerals: Power = {
       "table": "Melee_Ones"
     },
     "effectDuration": 0.75,
+    "mezResistance": {
+      "confuse": {
+        "scale": 2,
+        "table": "Melee_Res_Boolean"
+      }
+    },
+    "debuffResistance": {
+      "perception": {
+        "scale": 0.6,
+        "table": "Melee_Ones"
+      }
+    },
     "perceptionBuff": {
       "scale": 0.6,
       "table": "Melee_Ones"

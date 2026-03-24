@@ -386,6 +386,8 @@ export interface PowerEffects {
   stealth?: StealthEffects;
   /** Debuff resistance */
   debuffResistance?: DebuffResistance;
+  /** Mez resistance (reduces mez duration) — per-type, e.g., { hold: { scale, table } } */
+  mezResistance?: Record<string, NumberOrScaled>;
 
   // === HEALING ===
   /** Healing effect */

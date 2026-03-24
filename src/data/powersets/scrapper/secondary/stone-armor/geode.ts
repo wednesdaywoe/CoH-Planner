@@ -42,7 +42,6 @@ export const Geode: Power = {
     "durations": {
       "regenBuff": 0.2,
       "recoveryBuff": 0.2,
-      "protection": 0.2,
       "knockup": 0.2,
       "knockback": 0.2,
       "slow": 0.2,
@@ -62,16 +61,12 @@ export const Geode: Power = {
         "Redirects.Stone_Armor.Geode_Scaling"
       ]
     },
-    "protection": {
-      "knockup": 1,
-      "knockback": 1
-    },
     "knockup": {
-      "scale": 10,
+      "scale": 20,
       "table": "Melee_Ones"
     },
     "knockback": {
-      "scale": 10,
+      "scale": 20,
       "table": "Melee_Ones"
     },
     "slow": {

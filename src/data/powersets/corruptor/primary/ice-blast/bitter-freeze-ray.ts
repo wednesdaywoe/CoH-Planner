@@ -52,21 +52,16 @@ export const BitterFreezeRay: Power = {
       "table": "Ranged_Immobilize"
     },
     "knockup": {
-      "scale": 100,
+      "scale": 200,
       "table": "Ranged_Ones"
     },
     "durations": {
       "knockup": 10,
-      "knockback": 10,
-      "protection": 10
+      "knockback": 10
     },
     "knockback": {
-      "scale": 100,
+      "scale": 200,
       "table": "Ranged_Ones"
-    },
-    "protection": {
-      "knockup": 1,
-      "knockback": 1
     },
     "buffDuration": 10
   }

@@ -46,6 +46,7 @@ export const GlacialArmor: Power = {
     "durations": {
       "defenseBuff": 0.75,
       "resistance": 0.75,
+      "debuffResistance": 0.75,
       "perceptionBuff": 0.75,
       "elusivity": 0.75
     },
@@ -53,6 +54,12 @@ export const GlacialArmor: Power = {
       "cold": {
         "scale": 3,
         "table": "Melee_Res_Dmg"
+      }
+    },
+    "debuffResistance": {
+      "perception": {
+        "scale": 0.6,
+        "table": "Melee_Ones"
       }
     },
     "perceptionBuff": {

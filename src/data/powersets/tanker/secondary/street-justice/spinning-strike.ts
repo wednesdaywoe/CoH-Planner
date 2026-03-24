@@ -73,7 +73,7 @@ export const SpinningStrike: Power = {
   ],
   "effects": {
     "knockback": {
-      "scale": 0.67,
+      "scale": 2.68,
       "table": "Melee_Ones"
     },
     "fear": {
