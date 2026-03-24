@@ -23,6 +23,7 @@ export const VenomousGas: Power = {
     "recharge": 8,
     "endurance": 0.26,
     "castTime": 2.03,
+    "activatePeriod": 0.5,
     "maxTargets": 16
   },
   "allowedEnhancements": [

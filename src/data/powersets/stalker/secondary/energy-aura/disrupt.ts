@@ -23,6 +23,7 @@ export const Disrupt: Power = {
     "recharge": 8,
     "endurance": 0.78,
     "castTime": 1.67,
+    "activatePeriod": 4,
     "maxTargets": 5
   },
   "allowedEnhancements": [

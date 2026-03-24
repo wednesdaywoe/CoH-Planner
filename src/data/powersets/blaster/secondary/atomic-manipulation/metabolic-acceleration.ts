@@ -20,7 +20,8 @@ export const MetabolicAcceleration: Power = {
   "stats": {
     "accuracy": 1,
     "recharge": 10,
-    "castTime": 0.73
+    "castTime": 0.73,
+    "activatePeriod": 0.5
   },
   "allowedEnhancements": [
     "EnduranceModification",

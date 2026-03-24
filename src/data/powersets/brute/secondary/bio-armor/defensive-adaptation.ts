@@ -20,7 +20,8 @@ export const DefensiveAdaptation: Power = {
   "stats": {
     "accuracy": 1,
     "recharge": 4,
-    "castTime": 1
+    "castTime": 1,
+    "activatePeriod": 1
   },
   "allowedEnhancements": [],
   "maxSlots": 0,

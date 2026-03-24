@@ -21,7 +21,8 @@ export const Deflection: Power = {
     "accuracy": 1,
     "recharge": 4,
     "endurance": 0.104,
-    "castTime": 1.5
+    "castTime": 1.5,
+    "activatePeriod": 0.5
   },
   "allowedEnhancements": [
     "Resistance",

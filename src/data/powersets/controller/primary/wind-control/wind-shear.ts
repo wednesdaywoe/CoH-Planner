@@ -23,6 +23,7 @@ export const WindShear: Power = {
     "recharge": 15,
     "endurance": 2.08,
     "castTime": 2.03,
+    "activatePeriod": 2,
     "maxTargets": 16
   },
   "allowedEnhancements": [

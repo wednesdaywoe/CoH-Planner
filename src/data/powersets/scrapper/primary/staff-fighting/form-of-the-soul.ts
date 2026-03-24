@@ -20,7 +20,8 @@ export const FormoftheSoul: Power = {
   "stats": {
     "accuracy": 1,
     "recharge": 4,
-    "castTime": 0.63
+    "castTime": 0.63,
+    "activatePeriod": 1
   },
   "allowedEnhancements": [],
   "maxSlots": 0,

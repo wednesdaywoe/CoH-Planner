@@ -21,7 +21,8 @@ export const MurkyCloud: Power = {
     "accuracy": 1,
     "recharge": 2,
     "endurance": 0.104,
-    "castTime": 1.17
+    "castTime": 1.17,
+    "activatePeriod": 0.5
   },
   "allowedEnhancements": [
     "Resistance",

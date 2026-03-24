@@ -23,6 +23,7 @@ export const Integration: Power = {
     "recharge": 10,
     "endurance": 0.52,
     "castTime": 3.1,
+    "activatePeriod": 2,
     "maxTargets": 10
   },
   "allowedEnhancements": [

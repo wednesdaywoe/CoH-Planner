@@ -24,6 +24,7 @@ export const Telekinesis: Power = {
     "recharge": 90,
     "endurance": 0.26,
     "castTime": 1.13,
+    "activatePeriod": 0.5,
     "maxTargets": 16
   },
   "allowedEnhancements": [

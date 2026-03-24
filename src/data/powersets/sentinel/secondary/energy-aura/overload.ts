@@ -21,7 +21,8 @@ export const Overload: Power = {
     "accuracy": 1,
     "recharge": 1000,
     "endurance": 2.6,
-    "castTime": 3
+    "castTime": 3,
+    "activatePeriod": 0.5
   },
   "allowedEnhancements": [
     "EnduranceModification",

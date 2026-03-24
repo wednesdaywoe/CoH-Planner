@@ -23,6 +23,7 @@ export const Hurricane: Power = {
     "recharge": 10,
     "endurance": 0.1625,
     "castTime": 2.03,
+    "activatePeriod": 0.25,
     "maxTargets": 16
   },
   "allowedEnhancements": [

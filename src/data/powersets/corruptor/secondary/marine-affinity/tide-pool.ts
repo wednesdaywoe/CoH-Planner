@@ -22,7 +22,8 @@ export const TidePool: Power = {
     "range": 80,
     "recharge": 10,
     "endurance": 13,
-    "castTime": 2.33
+    "castTime": 2.33,
+    "activatePeriod": 1
   },
   "allowedEnhancements": [
     "Slow",

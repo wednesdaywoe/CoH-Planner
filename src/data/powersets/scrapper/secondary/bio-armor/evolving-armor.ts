@@ -23,6 +23,7 @@ export const EvolvingArmor: Power = {
     "recharge": 10,
     "endurance": 0.26,
     "castTime": 2.93,
+    "activatePeriod": 1,
     "maxTargets": 10
   },
   "allowedEnhancements": [

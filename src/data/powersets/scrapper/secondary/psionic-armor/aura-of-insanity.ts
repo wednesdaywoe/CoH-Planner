@@ -22,6 +22,7 @@ export const AuraofInsanity: Power = {
     "radius": 8,
     "recharge": 10,
     "castTime": 1.67,
+    "activatePeriod": 4,
     "maxTargets": 10
   },
   "allowedEnhancements": [

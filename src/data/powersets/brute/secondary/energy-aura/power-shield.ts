@@ -21,7 +21,8 @@ export const PowerShield: Power = {
     "accuracy": 1,
     "recharge": 4,
     "endurance": 0.13,
-    "castTime": 1.67
+    "castTime": 1.67,
+    "activatePeriod": 0.5
   },
   "allowedEnhancements": [
     "EnduranceReduction",

@@ -21,7 +21,8 @@ export const ProtonArmor: Power = {
     "accuracy": 1,
     "recharge": 2,
     "endurance": 0.13,
-    "castTime": 0.67
+    "castTime": 0.67,
+    "activatePeriod": 0.5
   },
   "allowedEnhancements": [
     "Resistance",

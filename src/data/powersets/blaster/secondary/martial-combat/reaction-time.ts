@@ -22,6 +22,7 @@ export const ReactionTime: Power = {
     "radius": 30,
     "recharge": 10,
     "castTime": 1.83,
+    "activatePeriod": 1,
     "maxTargets": 10
   },
   "allowedEnhancements": [

@@ -21,7 +21,8 @@ export const PersonalForceField: Power = {
     "accuracy": 1,
     "recharge": 15,
     "endurance": 0.13,
-    "castTime": 2.03
+    "castTime": 2.03,
+    "activatePeriod": 0.5
   },
   "allowedEnhancements": [
     "EnduranceReduction",

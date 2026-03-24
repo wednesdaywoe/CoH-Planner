@@ -21,7 +21,8 @@ export const MoltenEmbrace: Power = {
     "accuracy": 1,
     "recharge": 10,
     "endurance": 0.208,
-    "castTime": 0.73
+    "castTime": 0.73,
+    "activatePeriod": 1
   },
   "allowedEnhancements": [
     "EnduranceReduction",

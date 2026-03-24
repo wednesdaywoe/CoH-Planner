@@ -22,6 +22,7 @@ export const MudBath: Power = {
     "radius": 10,
     "recharge": 4,
     "castTime": 2.03,
+    "activatePeriod": 2,
     "maxTargets": 10
   },
   "allowedEnhancements": [

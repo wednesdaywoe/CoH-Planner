@@ -20,7 +20,8 @@ export const ShinobiIri: Power = {
   "stats": {
     "accuracy": 1,
     "recharge": 2,
-    "endurance": 0.13
+    "endurance": 0.13,
+    "activatePeriod": 0.5
   },
   "allowedEnhancements": [
     "EnduranceReduction",

@@ -21,7 +21,8 @@ export const TargetingDrone: Power = {
     "accuracy": 1,
     "recharge": 10,
     "endurance": 0.156,
-    "castTime": 1.17
+    "castTime": 1.17,
+    "activatePeriod": 0.5
   },
   "allowedEnhancements": [
     "EnduranceReduction",

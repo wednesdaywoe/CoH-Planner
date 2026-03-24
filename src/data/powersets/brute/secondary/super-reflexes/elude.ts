@@ -21,7 +21,8 @@ export const Elude: Power = {
     "accuracy": 1,
     "recharge": 1000,
     "endurance": 2.6,
-    "castTime": 2
+    "castTime": 2,
+    "activatePeriod": 0.5
   },
   "allowedEnhancements": [
     "EnduranceModification",

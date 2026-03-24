@@ -21,8 +21,9 @@ export interface ManualEntry {
 export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   // ─── 2026-03-22 ────────────────────────────────────────────────────────────
   {
-    date: '2026-03-23',
+    date: '2026-03-24',
     items: [
+      { message: 'Toggle endurance costs: The conversion script was not including activate_period from the raw data. Every toggle power defaulted to 0.5s tick interval This caused endurance costs to be up to 4x too high.', type: 'fix' },
       { message: 'Large data regeneration: 348 powersets regenerated. 74 powers now have mezResistance data\
          that was previously missing. Status Resistance extracted for all types.\
          ', type: 'fix' },

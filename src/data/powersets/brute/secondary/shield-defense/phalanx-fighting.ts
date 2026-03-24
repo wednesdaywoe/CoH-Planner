@@ -20,6 +20,7 @@ export const PhalanxFighting: Power = {
   "stats": {
     "accuracy": 1,
     "radius": 8,
+    "activatePeriod": 1,
     "maxTargets": 3
   },
   "allowedEnhancements": [

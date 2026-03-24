@@ -21,7 +21,8 @@ export const Integration: Power = {
     "accuracy": 1,
     "recharge": 10,
     "endurance": 0.13,
-    "castTime": 3.1
+    "castTime": 3.1,
+    "activatePeriod": 0.5
   },
   "allowedEnhancements": [
     "EnduranceReduction",

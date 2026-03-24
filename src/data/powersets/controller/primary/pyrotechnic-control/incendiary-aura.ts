@@ -23,6 +23,7 @@ export const IncendiaryAura: Power = {
     "recharge": 20,
     "endurance": 0.08,
     "castTime": 1.47,
+    "activatePeriod": 0.2,
     "maxTargets": 10
   },
   "allowedEnhancements": [

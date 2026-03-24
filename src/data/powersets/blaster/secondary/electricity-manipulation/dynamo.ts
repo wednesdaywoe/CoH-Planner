@@ -22,6 +22,7 @@ export const Dynamo: Power = {
     "radius": 20,
     "recharge": 10,
     "castTime": 2.03,
+    "activatePeriod": 2,
     "maxTargets": 10
   },
   "allowedEnhancements": [

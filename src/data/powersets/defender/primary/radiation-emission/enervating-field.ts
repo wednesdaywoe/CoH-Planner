@@ -24,6 +24,7 @@ export const EnervatingField: Power = {
     "recharge": 8,
     "endurance": 0.26,
     "castTime": 1.5,
+    "activatePeriod": 0.5,
     "maxTargets": 16
   },
   "allowedEnhancements": [

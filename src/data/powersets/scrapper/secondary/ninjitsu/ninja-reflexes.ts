@@ -21,7 +21,8 @@ export const NinjaReflexes: Power = {
     "accuracy": 1,
     "recharge": 4,
     "endurance": 0.13,
-    "castTime": 1.53
+    "castTime": 1.53,
+    "activatePeriod": 0.5
   },
   "allowedEnhancements": [
     "EnduranceReduction",

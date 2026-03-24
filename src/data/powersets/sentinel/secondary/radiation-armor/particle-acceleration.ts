@@ -18,7 +18,8 @@ export const ParticleAcceleration: Power = {
   "targetType": "Self",
   "effectArea": "SingleTarget",
   "stats": {
-    "accuracy": 1
+    "accuracy": 1,
+    "activatePeriod": 10
   },
   "allowedEnhancements": [
     "Run Speed",

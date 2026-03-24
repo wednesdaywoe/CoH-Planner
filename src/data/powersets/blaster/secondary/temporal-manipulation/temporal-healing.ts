@@ -20,7 +20,8 @@ export const TemporalHealing: Power = {
   "stats": {
     "accuracy": 1,
     "recharge": 10,
-    "castTime": 2.03
+    "castTime": 2.03,
+    "activatePeriod": 2
   },
   "allowedEnhancements": [
     "EnduranceModification",

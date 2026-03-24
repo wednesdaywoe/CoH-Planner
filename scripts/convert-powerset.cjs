@@ -1387,6 +1387,7 @@ function convertPower(powerJson, availableLevel) {
     recharge: powerJson.recharge_time,
     endurance: powerJson.endurance_cost,
     castTime: powerJson.activation_time,
+    activatePeriod: powerJson.activate_period,
     maxTargets: powerJson.max_targets_hit,
   };
 

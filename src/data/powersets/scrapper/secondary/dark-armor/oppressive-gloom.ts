@@ -23,6 +23,7 @@ export const OppressiveGloom: Power = {
     "recharge": 8,
     "endurance": 0.156,
     "castTime": 1.17,
+    "activatePeriod": 2,
     "maxTargets": 10
   },
   "allowedEnhancements": [

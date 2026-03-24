@@ -20,6 +20,7 @@ export const SeismicShockwaves: Power = {
   "stats": {
     "accuracy": 0.8,
     "radius": 15,
+    "activatePeriod": 0.2,
     "maxTargets": 1
   },
   "allowedEnhancements": [],

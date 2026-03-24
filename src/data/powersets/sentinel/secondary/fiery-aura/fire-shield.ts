@@ -21,7 +21,8 @@ export const FireShield: Power = {
     "accuracy": 1,
     "recharge": 2,
     "endurance": 0.13,
-    "castTime": 1.67
+    "castTime": 1.67,
+    "activatePeriod": 0.5
   },
   "allowedEnhancements": [
     "Resistance",

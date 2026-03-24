@@ -23,6 +23,7 @@ export const ImposePresence: Power = {
     "recharge": 10,
     "endurance": 0.208,
     "castTime": 0.73,
+    "activatePeriod": 1,
     "maxTargets": 10
   },
   "allowedEnhancements": [

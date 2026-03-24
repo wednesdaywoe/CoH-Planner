@@ -19,7 +19,8 @@ export const FrostProtection: Power = {
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
-    "recharge": 10
+    "recharge": 10,
+    "activatePeriod": 10
   },
   "allowedEnhancements": [
     "Healing"

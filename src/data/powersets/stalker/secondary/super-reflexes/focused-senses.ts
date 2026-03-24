@@ -21,7 +21,8 @@ export const FocusedSenses: Power = {
     "accuracy": 1,
     "recharge": 4,
     "endurance": 0.13,
-    "castTime": 2.03
+    "castTime": 2.03,
+    "activatePeriod": 0.5
   },
   "allowedEnhancements": [
     "EnduranceReduction",

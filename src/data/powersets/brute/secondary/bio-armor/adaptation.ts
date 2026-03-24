@@ -18,7 +18,8 @@ export const Adaptation: Power = {
   "targetType": "Self",
   "effectArea": "SingleTarget",
   "stats": {
-    "accuracy": 1
+    "accuracy": 1,
+    "activatePeriod": 99999
   },
   "allowedEnhancements": [],
   "maxSlots": 0,

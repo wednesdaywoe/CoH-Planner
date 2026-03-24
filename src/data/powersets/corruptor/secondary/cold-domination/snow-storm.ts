@@ -24,6 +24,7 @@ export const SnowStorm: Power = {
     "recharge": 10,
     "endurance": 0.26,
     "castTime": 2.03,
+    "activatePeriod": 0.5,
     "maxTargets": 16
   },
   "allowedEnhancements": [

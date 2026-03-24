@@ -22,7 +22,8 @@ export const DampingBubble: Power = {
     "range": 25,
     "recharge": 90,
     "endurance": 5.2,
-    "castTime": 1.07
+    "castTime": 1.07,
+    "activatePeriod": 0.25
   },
   "allowedEnhancements": [
     "EnduranceReduction",

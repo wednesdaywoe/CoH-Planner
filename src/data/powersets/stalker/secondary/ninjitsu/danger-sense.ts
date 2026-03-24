@@ -21,7 +21,8 @@ export const DangerSense: Power = {
     "accuracy": 1,
     "recharge": 4,
     "endurance": 0.182,
-    "castTime": 0.83
+    "castTime": 0.83,
+    "activatePeriod": 0.5
   },
   "allowedEnhancements": [
     "EnduranceReduction",

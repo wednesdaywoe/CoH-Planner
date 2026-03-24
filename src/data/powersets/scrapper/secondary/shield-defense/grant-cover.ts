@@ -23,6 +23,7 @@ export const GrantCover: Power = {
     "recharge": 10,
     "endurance": 0.312,
     "castTime": 2.5,
+    "activatePeriod": 2,
     "maxTargets": 255
   },
   "allowedEnhancements": [

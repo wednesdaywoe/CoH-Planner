@@ -23,6 +23,7 @@ export const Repel: Power = {
     "recharge": 20,
     "endurance": 0.325,
     "castTime": 1.07,
+    "activatePeriod": 0.5,
     "maxTargets": 16
   },
   "allowedEnhancements": [

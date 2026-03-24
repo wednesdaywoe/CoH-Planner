@@ -23,6 +23,7 @@ export const SteamyMist: Power = {
     "recharge": 15,
     "endurance": 0.26,
     "castTime": 1.87,
+    "activatePeriod": 0.5,
     "maxTargets": 255
   },
   "allowedEnhancements": [

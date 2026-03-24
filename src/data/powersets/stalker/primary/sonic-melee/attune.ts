@@ -21,7 +21,8 @@ export const Attune: Power = {
     "range": 20,
     "recharge": 0.5,
     "endurance": 0.104,
-    "castTime": 1
+    "castTime": 1,
+    "activatePeriod": 0.5
   },
   "allowedEnhancements": [
     "Hold",

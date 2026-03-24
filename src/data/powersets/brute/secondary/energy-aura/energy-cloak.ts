@@ -21,7 +21,8 @@ export const EnergyCloak: Power = {
     "accuracy": 1,
     "recharge": 2,
     "endurance": 0.13,
-    "castTime": 0.73
+    "castTime": 0.73,
+    "activatePeriod": 0.5
   },
   "allowedEnhancements": [
     "EnduranceReduction",

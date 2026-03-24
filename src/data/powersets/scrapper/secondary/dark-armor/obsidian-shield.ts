@@ -21,7 +21,8 @@ export const ObsidianShield: Power = {
     "accuracy": 1,
     "recharge": 4,
     "endurance": 0.104,
-    "castTime": 1.17
+    "castTime": 1.17,
+    "activatePeriod": 0.5
   },
   "allowedEnhancements": [
     "Resistance",

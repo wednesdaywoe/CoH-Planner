@@ -18,7 +18,8 @@ export const GammaBoost: Power = {
   "targetType": "Self",
   "effectArea": "SingleTarget",
   "stats": {
-    "accuracy": 1
+    "accuracy": 1,
+    "activatePeriod": 1
   },
   "allowedEnhancements": [
     "EnduranceModification",

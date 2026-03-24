@@ -22,6 +22,7 @@ export const ConductiveAura: Power = {
     "radius": 20,
     "recharge": 15,
     "castTime": 2.03,
+    "activatePeriod": 2,
     "maxTargets": 16
   },
   "allowedEnhancements": [

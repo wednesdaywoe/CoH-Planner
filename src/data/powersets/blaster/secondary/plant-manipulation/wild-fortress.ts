@@ -20,7 +20,8 @@ export const WildFortress: Power = {
   "stats": {
     "accuracy": 1,
     "recharge": 10,
-    "castTime": 2.27
+    "castTime": 2.27,
+    "activatePeriod": 2
   },
   "allowedEnhancements": [
     "Resistance",

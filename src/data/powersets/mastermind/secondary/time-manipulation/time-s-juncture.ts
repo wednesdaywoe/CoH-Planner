@@ -23,6 +23,7 @@ export const TimesJuncture: Power = {
     "recharge": 10,
     "endurance": 0.4875,
     "castTime": 0.67,
+    "activatePeriod": 0.75,
     "maxTargets": 16
   },
   "allowedEnhancements": [

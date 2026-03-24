@@ -23,6 +23,7 @@ export const ShadowFall: Power = {
     "recharge": 15,
     "endurance": 0.325,
     "castTime": 2.03,
+    "activatePeriod": 0.5,
     "maxTargets": 255
   },
   "allowedEnhancements": [

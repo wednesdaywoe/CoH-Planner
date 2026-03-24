@@ -24,6 +24,7 @@ export const ShiftingTides: Power = {
     "recharge": 15,
     "endurance": 0.078,
     "castTime": 1.17,
+    "activatePeriod": 0.1,
     "maxTargets": 16
   },
   "allowedEnhancements": [

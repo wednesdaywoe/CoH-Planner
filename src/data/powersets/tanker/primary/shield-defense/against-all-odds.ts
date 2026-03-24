@@ -23,6 +23,7 @@ export const AgainstAllOdds: Power = {
     "recharge": 10,
     "endurance": 0.208,
     "castTime": 2.5,
+    "activatePeriod": 1,
     "maxTargets": 10
   },
   "allowedEnhancements": [

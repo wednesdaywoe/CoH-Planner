@@ -21,7 +21,8 @@ export const Geode: Power = {
     "accuracy": 1,
     "recharge": 180,
     "endurance": 0.026,
-    "castTime": 0.07
+    "castTime": 0.07,
+    "activatePeriod": 0.1
   },
   "allowedEnhancements": [
     "EnduranceModification",

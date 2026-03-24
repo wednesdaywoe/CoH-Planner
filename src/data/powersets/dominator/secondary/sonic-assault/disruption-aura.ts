@@ -23,6 +23,7 @@ export const DisruptionAura: Power = {
     "recharge": 10,
     "endurance": 1.04,
     "castTime": 1.97,
+    "activatePeriod": 2,
     "maxTargets": 10
   },
   "allowedEnhancements": [

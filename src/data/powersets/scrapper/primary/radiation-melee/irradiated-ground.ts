@@ -23,6 +23,7 @@ export const IrradiatedGround: Power = {
     "recharge": 4,
     "endurance": 2.6,
     "castTime": 2.03,
+    "activatePeriod": 5,
     "maxTargets": 10
   },
   "allowedEnhancements": [

@@ -23,6 +23,7 @@ export const EntropicAura: Power = {
     "recharge": 10,
     "endurance": 0.52,
     "castTime": 0.73,
+    "activatePeriod": 2,
     "maxTargets": 10
   },
   "allowedEnhancements": [

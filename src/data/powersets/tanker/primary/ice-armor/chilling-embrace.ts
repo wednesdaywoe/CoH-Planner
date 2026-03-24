@@ -23,6 +23,7 @@ export const ChillingEmbrace: Power = {
     "recharge": 2,
     "endurance": 0.13,
     "castTime": 0.73,
+    "activatePeriod": 0.5,
     "maxTargets": 10
   },
   "allowedEnhancements": [

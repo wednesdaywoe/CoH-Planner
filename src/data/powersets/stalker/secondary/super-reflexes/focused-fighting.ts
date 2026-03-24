@@ -21,7 +21,8 @@ export const FocusedFighting: Power = {
     "accuracy": 1,
     "recharge": 4,
     "endurance": 0.13,
-    "castTime": 0.67
+    "castTime": 0.67,
+    "activatePeriod": 0.5
   },
   "allowedEnhancements": [
     "EnduranceReduction",

@@ -23,6 +23,7 @@ export const DeathShroud: Power = {
     "recharge": 4,
     "endurance": 1.04,
     "castTime": 2.47,
+    "activatePeriod": 2,
     "maxTargets": 10
   },
   "allowedEnhancements": [

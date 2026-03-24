@@ -20,7 +20,8 @@ export const IcyBastion: Power = {
   "stats": {
     "accuracy": 1,
     "recharge": 300,
-    "endurance": 0.1085
+    "endurance": 0.1085,
+    "activatePeriod": 0.5
   },
   "allowedEnhancements": [
     "Resistance",

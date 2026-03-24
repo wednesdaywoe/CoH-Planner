@@ -20,7 +20,8 @@ export const Shinobi: Power = {
   "stats": {
     "accuracy": 1,
     "recharge": 4,
-    "endurance": 0.13
+    "endurance": 0.13,
+    "activatePeriod": 0.5
   },
   "allowedEnhancements": [
     "EnduranceReduction",

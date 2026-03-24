@@ -20,7 +20,8 @@ export const EagleEye: Power = {
   "stats": {
     "accuracy": 1,
     "recharge": 10,
-    "castTime": 1.17
+    "castTime": 1.17,
+    "activatePeriod": 0.5
   },
   "allowedEnhancements": [
     "EnduranceModification",

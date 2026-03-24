@@ -23,6 +23,7 @@ export const SoothingAura: Power = {
     "recharge": 10,
     "endurance": 0.78,
     "castTime": 1.67,
+    "activatePeriod": 4,
     "maxTargets": 255
   },
   "allowedEnhancements": [

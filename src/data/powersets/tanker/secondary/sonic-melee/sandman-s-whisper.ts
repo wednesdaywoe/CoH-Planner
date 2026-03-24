@@ -21,7 +21,8 @@ export const SandmansWhisper: Power = {
     "range": 7,
     "recharge": 8,
     "endurance": 8.528,
-    "castTime": 1.77
+    "castTime": 1.77,
+    "activatePeriod": 3
   },
   "allowedEnhancements": [
     "Taunt",

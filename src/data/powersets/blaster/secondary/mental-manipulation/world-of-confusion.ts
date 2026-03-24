@@ -23,6 +23,7 @@ export const WorldofConfusion: Power = {
     "recharge": 10,
     "endurance": 0.52,
     "castTime": 1.67,
+    "activatePeriod": 4,
     "maxTargets": 10
   },
   "allowedEnhancements": [

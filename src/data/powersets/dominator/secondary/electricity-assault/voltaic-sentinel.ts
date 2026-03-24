@@ -22,7 +22,8 @@ export const VoltaicSentinel: Power = {
     "range": 60,
     "recharge": 60,
     "endurance": 26,
-    "castTime": 3.1
+    "castTime": 3.1,
+    "activatePeriod": 1
   },
   "allowedEnhancements": [
     "EnduranceModification",

@@ -21,7 +21,8 @@ export const GraniteArmor: Power = {
     "accuracy": 1,
     "recharge": 10,
     "endurance": 0.13,
-    "castTime": 0.73
+    "castTime": 0.73,
+    "activatePeriod": 0.5
   },
   "allowedEnhancements": [
     "Resistance",

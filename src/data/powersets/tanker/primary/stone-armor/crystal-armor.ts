@@ -21,7 +21,8 @@ export const CrystalArmor: Power = {
     "accuracy": 1,
     "recharge": 4,
     "endurance": 0.104,
-    "castTime": 1
+    "castTime": 1,
+    "activatePeriod": 0.5
   },
   "allowedEnhancements": [
     "EnduranceModification",

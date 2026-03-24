@@ -21,7 +21,8 @@ export const ChargedShield: Power = {
     "accuracy": 1,
     "recharge": 10,
     "endurance": 0.104,
-    "castTime": 0.67
+    "castTime": 0.67,
+    "activatePeriod": 0.5
   },
   "allowedEnhancements": [
     "EnduranceReduction",

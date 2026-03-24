@@ -18,7 +18,8 @@ export const SwapAmmo: Power = {
   "targetType": "Self",
   "effectArea": "SingleTarget",
   "stats": {
-    "accuracy": 1
+    "accuracy": 1,
+    "activatePeriod": 2
   },
   "allowedEnhancements": [],
   "maxSlots": 0,

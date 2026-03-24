@@ -21,7 +21,8 @@ export const KineticShield: Power = {
     "accuracy": 1,
     "recharge": 4,
     "endurance": 0.13,
-    "castTime": 0.73
+    "castTime": 0.73,
+    "activatePeriod": 0.5
   },
   "allowedEnhancements": [
     "EnduranceReduction",

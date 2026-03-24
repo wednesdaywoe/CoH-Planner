@@ -20,7 +20,8 @@ export const OffensiveAdaptation: Power = {
   "stats": {
     "accuracy": 1,
     "recharge": 4,
-    "castTime": 0.67
+    "castTime": 0.67,
+    "activatePeriod": 1
   },
   "allowedEnhancements": [],
   "maxSlots": 0,

@@ -19,7 +19,8 @@ export const TerraFirma: Power = {
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
-    "recharge": 4
+    "recharge": 4,
+    "activatePeriod": 0.5
   },
   "allowedEnhancements": [
     "ToHit"

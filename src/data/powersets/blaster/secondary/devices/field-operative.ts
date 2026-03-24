@@ -20,7 +20,8 @@ export const FieldOperative: Power = {
   "stats": {
     "accuracy": 1,
     "recharge": 2,
-    "castTime": 0.73
+    "castTime": 0.73,
+    "activatePeriod": 0.5
   },
   "allowedEnhancements": [
     "EnduranceModification",

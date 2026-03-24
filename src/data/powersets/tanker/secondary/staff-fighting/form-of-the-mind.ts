@@ -20,7 +20,8 @@ export const FormoftheMind: Power = {
   "stats": {
     "accuracy": 1,
     "recharge": 4,
-    "castTime": 0.63
+    "castTime": 0.63,
+    "activatePeriod": 0.5
   },
   "allowedEnhancements": [],
   "maxSlots": 0,

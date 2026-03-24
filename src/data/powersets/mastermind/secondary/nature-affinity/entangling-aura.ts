@@ -23,6 +23,7 @@ export const EntanglingAura: Power = {
     "recharge": 20,
     "endurance": 1.625,
     "castTime": 2.03,
+    "activatePeriod": 2,
     "maxTargets": 16
   },
   "allowedEnhancements": [

@@ -23,6 +23,7 @@ export const BetaDecay: Power = {
     "recharge": 10,
     "endurance": 0.208,
     "castTime": 0.67,
+    "activatePeriod": 1,
     "maxTargets": 10
   },
   "allowedEnhancements": [

@@ -18,7 +18,8 @@ export const Enduring: Power = {
   "targetType": "Self",
   "effectArea": "SingleTarget",
   "stats": {
-    "accuracy": 1
+    "accuracy": 1,
+    "activatePeriod": 0.5
   },
   "allowedEnhancements": [
     "EnduranceModification",

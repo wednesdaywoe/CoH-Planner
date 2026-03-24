@@ -21,7 +21,8 @@ export const CauterizingBlaze: Power = {
     "accuracy": 1,
     "recharge": 10,
     "endurance": 0.13,
-    "castTime": 2.03
+    "castTime": 2.03,
+    "activatePeriod": 2
   },
   "allowedEnhancements": [
     "EnduranceReduction",

@@ -23,6 +23,7 @@ export const GeneticContamination: Power = {
     "recharge": 4,
     "endurance": 1.04,
     "castTime": 1.07,
+    "activatePeriod": 2,
     "maxTargets": 10
   },
   "allowedEnhancements": [

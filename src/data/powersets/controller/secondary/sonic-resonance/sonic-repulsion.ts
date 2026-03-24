@@ -24,6 +24,7 @@ export const SonicRepulsion: Power = {
     "recharge": 8,
     "endurance": 0.325,
     "castTime": 2.33,
+    "activatePeriod": 0.5,
     "maxTargets": 16
   },
   "allowedEnhancements": [

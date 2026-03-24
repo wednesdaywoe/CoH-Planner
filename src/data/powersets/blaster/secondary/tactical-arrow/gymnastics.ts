@@ -20,7 +20,8 @@ export const Gymnastics: Power = {
   "stats": {
     "accuracy": 1,
     "recharge": 10,
-    "endurance": 0.13
+    "endurance": 0.13,
+    "activatePeriod": 0.5
   },
   "allowedEnhancements": [
     "EnduranceReduction",

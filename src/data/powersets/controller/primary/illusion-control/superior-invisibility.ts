@@ -21,7 +21,8 @@ export const SuperiorInvisibility: Power = {
     "accuracy": 1,
     "recharge": 2,
     "endurance": 0.182,
-    "castTime": 0.73
+    "castTime": 0.73,
+    "activatePeriod": 0.5
   },
   "allowedEnhancements": [
     "EnduranceReduction",

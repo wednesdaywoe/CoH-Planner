@@ -22,6 +22,7 @@ export const FrigidProtection: Power = {
     "radius": 30,
     "recharge": 10,
     "castTime": 0.73,
+    "activatePeriod": 2,
     "maxTargets": 10
   },
   "allowedEnhancements": [

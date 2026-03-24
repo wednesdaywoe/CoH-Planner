@@ -23,6 +23,7 @@ export const SuppressPain: Power = {
     "recharge": 10,
     "endurance": 0.975,
     "castTime": 1.67,
+    "activatePeriod": 4,
     "maxTargets": 255
   },
   "allowedEnhancements": [

@@ -23,6 +23,7 @@ export const GeneticCorruption: Power = {
     "recharge": 4,
     "endurance": 2.08,
     "castTime": 1.07,
+    "activatePeriod": 4,
     "maxTargets": 10
   },
   "allowedEnhancements": [
