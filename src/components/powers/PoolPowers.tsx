@@ -16,6 +16,7 @@ import {
 import { resolvePath } from '@/utils/paths';
 import { Tooltip } from '@/components/ui';
 import { useSlotLevels } from '@/hooks';
+import { powerKey } from '@/utils/power-key';
 import { PowerRow } from './PowerRow';
 import { shouldShowToggle } from './power-row-utils';
 import type { Power, SelectedPower } from '@/types';
@@ -432,7 +433,7 @@ function PoolPowerGroup({
                   onRightClick={(e) => onPowerRightClick(e, power)}
                   onCompareSlotting={() => openCompareSlotting(power.internalName, poolId)}
                   onInfoClick={() => onInfoClick(power)}
-                  slotLevels={slotLevelsMap?.get(power.internalName)}
+                  slotLevels={slotLevelsMap?.get(powerKey('pool', power.internalName))}
                 />
 
                 {/* Granted sub-powers display */}
@@ -703,7 +704,7 @@ function EpicPoolSelectedPowers({ epicPool, isPowerLocked, slotLevelsMap }: Epic
                     lockInfoPanel({ type: 'power', powerName: power.internalName, powerSet: epicPool.id });
                   }
                 }}
-                slotLevels={slotLevelsMap?.get(power.internalName)}
+                slotLevels={slotLevelsMap?.get(powerKey('epic', power.internalName))}
               />
             );
           })}
@@ -804,7 +805,7 @@ function InherentPowerGroup({
                 onRightClick={(e) => onPowerRightClick(e, power)}
                 onCompareSlotting={() => openCompareSlotting(power.internalName, 'Inherent')}
                 onInfoClick={() => onInfoClick(power)}
-                slotLevels={slotLevelsMap?.get(power.internalName)}
+                slotLevels={slotLevelsMap?.get(powerKey('inherent', power.internalName))}
               />
             );
           })}

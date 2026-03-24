@@ -25,7 +25,8 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
     items: [
       { message: 'Large data regeneration: 348 powersets regenerated. 74 powers now have mezResistance data\
          that was previously missing. Status Resistance extracted for all types.\
-         ', type: 'fix' }
+         ', type: 'fix' },
+      { message: 'Created a new power-key utility to solve a slotOrder issue where powers share an identical ID across categories. Example: Energize and Superior Conditioning sharing "Conserve_Power"', type: 'fix'}
     ],
   },
 ];

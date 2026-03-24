@@ -12,12 +12,14 @@
  *
  * Slot 0 on every power is free (comes with the power pick at that level).
  * Additional slots (index 1+) consume from the SLOT_GRANTS pool.
+ *
+ * Keys: Uses powerKey("category:internalName") to avoid collisions when
+ * multiple powers share the same internalName across categories.
  */
 
 import type { Build, SelectedPower } from '@/types';
 import { SLOT_GRANTS } from '@/data/levels';
-
-type PowerCategory = 'primary' | 'secondary' | 'pool' | 'epic' | 'inherent';
+import { powerKey, type PowerCategory } from '@/utils/power-key';
 
 interface CategorizedPower {
   power: SelectedPower;
@@ -81,18 +83,51 @@ function initSlotLevels(allPowers: CategorizedPower[]): Map<string, number[]> {
     const pickLevel = category === 'inherent' ? 1 : power.level;
     // Pre-fill array with pickLevel for all slots; extra slots get overwritten
     const levels = new Array(power.slots.length).fill(pickLevel);
-    result.set(power.internalName, levels);
+    result.set(powerKey(category, power.internalName), levels);
   }
   return result;
 }
 
 /** Add auto-granted sub-powers (Kheldian forms, etc.) to the result. */
 function addAutoGrantedPowers(build: Build, result: Map<string, number[]>) {
-  for (const p of [...build.primary.powers, ...build.secondary.powers]) {
-    if (p.isAutoGranted && !result.has(p.internalName)) {
-      result.set(p.internalName, p.slots.map(() => p.level));
+  const primaryCategory: PowerCategory = 'primary';
+  const secondaryCategory: PowerCategory = 'secondary';
+  for (const p of build.primary.powers) {
+    const key = powerKey(primaryCategory, p.internalName);
+    if (p.isAutoGranted && !result.has(key)) {
+      result.set(key, p.slots.map(() => p.level));
     }
   }
+  for (const p of build.secondary.powers) {
+    const key = powerKey(secondaryCategory, p.internalName);
+    if (p.isAutoGranted && !result.has(key)) {
+      result.set(key, p.slots.map(() => p.level));
+    }
+  }
+}
+
+/**
+ * Resolve which category a slotOrder entry belongs to.
+ * New entries have an explicit `category` field.
+ * Legacy entries (no category) fall back to searching the build.
+ */
+function resolveSlotCategory(
+  build: Build,
+  powerName: string,
+  category?: string
+): PowerCategory | null {
+  if (category && ['primary', 'secondary', 'pool', 'epic', 'inherent'].includes(category)) {
+    return category as PowerCategory;
+  }
+  // Legacy fallback: search categories in standard order
+  if (build.primary.powers.some((p) => p.internalName === powerName)) return 'primary';
+  if (build.secondary.powers.some((p) => p.internalName === powerName)) return 'secondary';
+  for (const pool of build.pools) {
+    if (pool.powers.some((p) => p.internalName === powerName)) return 'pool';
+  }
+  if (build.epicPool?.powers.some((p) => p.internalName === powerName)) return 'epic';
+  if (build.inherents.some((p) => p.internalName === powerName)) return 'inherent';
+  return null;
 }
 
 /**
@@ -108,7 +143,8 @@ function computeSlotLevelsRespec(build: Build): Map<string, number[]> {
 
   for (const { power, category } of allPowers) {
     const pickLevel = category === 'inherent' ? 1 : power.level;
-    const levels = result.get(power.internalName)!;
+    const key = powerKey(category, power.internalName);
+    const levels = result.get(key)!;
 
     // Consume grants for extra slots (slot 0 is already set)
     for (let s = 1; s < power.slots.length; s++) {
@@ -135,27 +171,34 @@ function computeSlotLevelsLeveling(build: Build): Map<string, number[]> {
   const result = initSlotLevels(allPowers);
   const grantPool = buildGrantPool(build.level);
 
-  // Build a lookup for power pick levels
+  // Build a lookup for power pick levels (keyed by powerKey)
   const pickLevelMap = new Map<string, number>();
   for (const { power, category } of allPowers) {
-    pickLevelMap.set(power.internalName, category === 'inherent' ? 1 : power.level);
+    pickLevelMap.set(
+      powerKey(category, power.internalName),
+      category === 'inherent' ? 1 : power.level
+    );
   }
 
   // Track which grants have been consumed (by index)
   const usedGrants = new Set<number>();
 
   // Process slotOrder entries chronologically
-  for (const { powerName, slotIndex } of build.slotOrder) {
-    const levels = result.get(powerName);
-    const pickLevel = pickLevelMap.get(powerName);
-    if (!levels || pickLevel === undefined || slotIndex >= levels.length) continue;
+  for (const entry of build.slotOrder) {
+    const cat = resolveSlotCategory(build, entry.powerName, entry.category);
+    if (!cat) continue;
+
+    const key = powerKey(cat, entry.powerName);
+    const levels = result.get(key);
+    const pickLevel = pickLevelMap.get(key);
+    if (!levels || pickLevel === undefined || entry.slotIndex >= levels.length) continue;
 
     // Find the first unused grant at or after this power's pick level
     let assigned = false;
     for (let gi = 0; gi < grantPool.length; gi++) {
       if (usedGrants.has(gi)) continue;
       if (grantPool[gi] < pickLevel) continue;
-      levels[slotIndex] = grantPool[gi];
+      levels[entry.slotIndex] = grantPool[gi];
       usedGrants.add(gi);
       assigned = true;
       break;
@@ -163,7 +206,7 @@ function computeSlotLevelsLeveling(build: Build): Map<string, number[]> {
 
     if (!assigned) {
       // No grants left — use pick level as fallback
-      levels[slotIndex] = pickLevel;
+      levels[entry.slotIndex] = pickLevel;
     }
   }
 
@@ -174,9 +217,9 @@ function computeSlotLevelsLeveling(build: Build): Map<string, number[]> {
 /**
  * Compute slot level assignments for every power in the build.
  *
- * Returns a Map keyed by power internalName, where each value is a number[]
- * parallel to the power's slots array. Index 0 = power pick level (free slot),
- * index 1+ = the grant pool level consumed for that slot.
+ * Returns a Map keyed by powerKey ("category:internalName"), where each value
+ * is a number[] parallel to the power's slots array. Index 0 = power pick level
+ * (free slot), index 1+ = the grant pool level consumed for that slot.
  *
  * Automatically selects leveling mode if slotOrder has entries,
  * otherwise uses respec mode.

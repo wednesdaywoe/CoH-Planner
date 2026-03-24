@@ -11,6 +11,7 @@ import { useShowSlotLevels } from '@/stores/uiStore';
 import type { PowerCategory as StorePowerCategory } from '@/stores';
 import { getPowerIconPath } from '@/data';
 import { useSlotLevels } from '@/hooks';
+import { powerKey } from '@/utils/power-key';
 import { PowerRow } from './PowerRow';
 import { shouldShowToggle } from './power-row-utils';
 import type { CategorizedPower, PowerCategory, DragState } from './ChronologicalPowerView';
@@ -264,7 +265,7 @@ export function ChronologicalPowerSlot({
         onEnhancementHover={handleEnhancementHover}
         onRightClick={handleRightClick}
         onCompareSlotting={() => openCompareSlotting(power.internalName, power.powerSet)}
-        slotLevels={showSlotLevels ? slotLevelsMap.get(power.internalName) : undefined}
+        slotLevels={showSlotLevels ? slotLevelsMap.get(powerKey(power.category, power.internalName)) : undefined}
         onInfoClick={() => {
           if (power.powerSet) {
             if (isInfoLocked) {

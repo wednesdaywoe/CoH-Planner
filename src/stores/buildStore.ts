@@ -1192,7 +1192,7 @@ export const useBuildStore = create<BuildStore>()(
               p.internalName === powerName ? { ...p, slots: [...p.slots, null] } : p
             )
           );
-          newBuild.slotOrder = [...newBuild.slotOrder, { powerName, slotIndex: newSlotIndex }];
+          newBuild.slotOrder = [...newBuild.slotOrder, { powerName, slotIndex: newSlotIndex, category }];
           return { build: newBuild };
         });
 
@@ -1223,10 +1223,13 @@ export const useBuildStore = create<BuildStore>()(
           );
           newBuild.sets = updateSetTracking(newBuild);
           // Remove this slot from slotOrder and adjust higher indices for same power
+          // Match by both powerName and category to avoid collisions with same-named powers
+          const matchesEntry = (e: { powerName: string; category?: string }) =>
+            e.powerName === powerName && (!e.category || e.category === category);
           newBuild.slotOrder = newBuild.slotOrder
-            .filter((e) => !(e.powerName === powerName && e.slotIndex === slotIndex))
+            .filter((e) => !(matchesEntry(e) && e.slotIndex === slotIndex))
             .map((e) =>
-              e.powerName === powerName && e.slotIndex > slotIndex
+              matchesEntry(e) && e.slotIndex > slotIndex
                 ? { ...e, slotIndex: e.slotIndex - 1 }
                 : e
             );

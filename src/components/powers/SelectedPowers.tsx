@@ -12,6 +12,7 @@ import { getPowerIconPath, getPowerset, hasGrantedPowers, getGrantedPowerGroup, 
 import { resolvePath } from '@/utils/paths';
 import { Tooltip } from '@/components/ui';
 import { useSlotLevels } from '@/hooks';
+import { powerKey } from '@/utils/power-key';
 import { PowerRow } from './PowerRow';
 import { shouldShowToggle } from './power-row-utils';
 
@@ -211,7 +212,7 @@ export function SelectedPowers({ category }: SelectedPowersProps) {
                       }
                     }
                   }}
-                  slotLevels={showSlotLevels ? slotLevelsMap.get(power.internalName) : undefined}
+                  slotLevels={showSlotLevels ? slotLevelsMap.get(powerKey(category, power.internalName)) : undefined}
                 />
 
                 {/* Granted sub-powers display (simple toggles) */}
@@ -267,7 +268,7 @@ export function SelectedPowers({ category }: SelectedPowersProps) {
                               }
                             }
                           }}
-                          slotLevels={showSlotLevels ? slotLevelsMap.get(subPower.internalName) : undefined}
+                          slotLevels={showSlotLevels ? slotLevelsMap.get(powerKey(category, subPower.internalName)) : undefined}
                         />
                       );
                     })}

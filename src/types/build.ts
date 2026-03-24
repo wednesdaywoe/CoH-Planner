@@ -148,8 +148,10 @@ export interface Build {
 
   /** Chronological order of slot additions for leveling mode.
    *  Each entry = one extra slot added (slot index 1+ on a power).
-   *  Empty = respec mode (slot levels computed by power-pick order). */
-  slotOrder: { powerName: string; slotIndex: number }[];
+   *  Empty = respec mode (slot levels computed by power-pick order).
+   *  `category` disambiguates powers with the same internalName across categories
+   *  (e.g., "Conserve_Power" in both secondary and epic). Optional for backward compat. */
+  slotOrder: { powerName: string; slotIndex: number; category?: string }[];
 }
 
 // ============================================

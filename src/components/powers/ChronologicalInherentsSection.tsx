@@ -10,6 +10,7 @@ import { useShowSlotLevels } from '@/stores/uiStore';
 import { PowerRow } from './PowerRow';
 import { getPowerIconPath } from '@/data';
 import { useSlotLevels } from '@/hooks';
+import { powerKey } from '@/utils/power-key';
 import type { SelectedPower } from '@/types';
 
 interface ChronologicalInherentsSectionProps {
@@ -295,7 +296,7 @@ function InherentGroup({
               onRightClick={(e) => onPowerRightClick(e, power)}
               onCompareSlotting={() => openCompareSlotting(power.internalName, 'Inherent')}
               onInfoClick={() => onInfoClick(power)}
-              slotLevels={slotLevelsMap?.get(power.internalName)}
+              slotLevels={slotLevelsMap?.get(powerKey('inherent', power.internalName))}
             />
           );
         })}
