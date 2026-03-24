@@ -211,7 +211,7 @@ export function DamageRow({
 // ============================================
 
 /** Minimum number of expanded entries to trigger collapsible behavior */
-const COLLAPSE_THRESHOLD = 4;
+const COLLAPSE_THRESHOLD = 2;
 
 interface DisplayableEffect {
   effect: GroupedEffect;
@@ -748,6 +748,85 @@ export function RegistryEffectsDisplay({
     if (catA !== catB) return catA - catB;
     return (a.effect.config.priority ?? 99) - (b.effect.config.priority ?? 99);
   });
+
+  // Group mez protection effects (hold/stun/immobilize/sleep/confuse/fear) into a collapsible group
+  // Also group knockback/knockup when they share the same magnitude
+  const MEZ_PROT_KEYS = new Set(['hold', 'stun', 'immobilize', 'sleep', 'confuse', 'fear']);
+  const KB_KEYS = new Set(['knockback', 'knockup']);
+  const mezProtConfig: EffectDisplayConfig = {
+    label: 'Status Prot',
+    category: 'control',
+    colorClass: 'text-pink-400',
+    format: 'mag',
+    priority: 1,
+  };
+  const kbConfig: EffectDisplayConfig = {
+    label: 'KB Prot',
+    category: 'control',
+    colorClass: 'text-pink-400',
+    format: 'mag',
+    priority: 10,
+  };
+
+  // Find and group consecutive mez protection effects
+  const grouped: DisplayableEffect[] = [];
+  let i = 0;
+  while (i < displayableEffects.length) {
+    const eff = displayableEffects[i];
+    const rawKey = eff.effect.key;
+
+    // Check for mez protection group
+    if (MEZ_PROT_KEYS.has(rawKey) && eff.effect.config.format === 'mag') {
+      const groupItems: DisplayableEffect[] = [];
+      let j = i;
+      while (j < displayableEffects.length && MEZ_PROT_KEYS.has(displayableEffects[j].effect.key) && displayableEffects[j].effect.config.format === 'mag') {
+        groupItems.push(displayableEffects[j]);
+        j++;
+      }
+      if (groupItems.length >= 2) {
+        // Assign shared config and expandedLabel for collapsible grouping
+        for (const item of groupItems) {
+          grouped.push({
+            ...item,
+            effect: { ...item.effect, config: mezProtConfig },
+            expandedLabel: item.effect.config.label,
+          });
+        }
+      } else {
+        grouped.push(...groupItems);
+      }
+      i = j;
+      continue;
+    }
+
+    // Check for KB/KU group
+    if (KB_KEYS.has(rawKey) && eff.effect.config.format === 'mag') {
+      const groupItems: DisplayableEffect[] = [];
+      let j = i;
+      while (j < displayableEffects.length && KB_KEYS.has(displayableEffects[j].effect.key) && displayableEffects[j].effect.config.format === 'mag') {
+        groupItems.push(displayableEffects[j]);
+        j++;
+      }
+      if (groupItems.length >= 2) {
+        for (const item of groupItems) {
+          grouped.push({
+            ...item,
+            effect: { ...item.effect, config: kbConfig },
+            expandedLabel: item.effect.config.label,
+          });
+        }
+      } else {
+        grouped.push(...groupItems);
+      }
+      i = j;
+      continue;
+    }
+
+    grouped.push(eff);
+    i++;
+  }
+  displayableEffects.length = 0;
+  displayableEffects.push(...grouped);
 
   const gridCols = compact
     ? 'grid-cols-[4rem_1fr_1fr_1fr]'

@@ -1012,7 +1012,9 @@ function applyActivePowerBonuses(
         effects.effectArea === 'SingleTarget' &&
         (powerTypeLower === 'toggle' || powerTypeLower === 'auto' || powerTypeLower === 'click');
       if (isResBoolean || isKbSelfProt) {
-        const tableValue = getTableValue(archetypeId, tableLower, buildLevel);
+        // Mez protection uses level 50 table values — protection magnitude is a fixed value
+        // that doesn't scale down during leveling (matches Mids/in-game behavior)
+        const tableValue = getTableValue(archetypeId, tableLower, 50);
         if (tableValue !== undefined) {
           let mag = Math.abs(mez.scale) * tableValue;
           // Knockback enhancements boost KB protection magnitude (per Acrobatics description)
