@@ -673,7 +673,7 @@ function applyActivePowerBonuses(
     }
 
     // Debuff Resistance from active powers
-    // Note: Debuff resistance typically cannot be enhanced
+    // Defense Debuff Resistance is enhanced by Defense enhancements
     if (effects.debuffResistance && typeof effects.debuffResistance === 'object') {
       const debuffRes = effects.debuffResistance;
       // Map debuff resistance types to global bonus keys
@@ -687,10 +687,17 @@ function applyActivePowerBonuses(
         regeneration: 'debuffResistRegeneration',
         perception: 'debuffResistPerception',
       };
+      // Enhancement type that boosts each debuff resistance type
+      const debuffResEnhMapping: Record<string, string> = {
+        defense: 'defense',
+      };
 
       for (const [type, value] of Object.entries(debuffRes)) {
-        const percentage = resolveScaledEffect(value, archetypeId, buildLevel) * 100;
-        const key = debuffResMapping[type.toLowerCase()];
+        const typeLower = type.toLowerCase();
+        const enhKey = debuffResEnhMapping[typeLower];
+        const enhMultiplier = enhKey ? 1 + (enhBonuses[enhKey] || 0) : 1;
+        const percentage = resolveScaledEffect(value, archetypeId, buildLevel) * 100 * enhMultiplier;
+        const key = debuffResMapping[typeLower];
         if (key && key in global) {
           global[key] += percentage;
           addToBreakdown(breakdown, key, {
@@ -703,6 +710,7 @@ function applyActivePowerBonuses(
     }
 
     // Mez Resistance from active powers (e.g., Acrobatics Hold resistance)
+    // Enhanced by the corresponding mez type enhancement (Hold enhancements for Hold resistance, etc.)
     // Stored as mezResistance: { hold: { scale, table }, ... }
     if (effects.mezResistance && typeof effects.mezResistance === 'object') {
       const mezResMapping: Record<string, keyof GlobalBonuses> = {
@@ -715,8 +723,11 @@ function applyActivePowerBonuses(
         knockback: 'mezResistKnockback',
       };
       for (const [type, value] of Object.entries(effects.mezResistance as Record<string, ScalarOrScaled>)) {
-        const percentage = resolveScaledEffect(value, archetypeId, buildLevel) * 100;
-        const key = mezResMapping[type.toLowerCase()];
+        const typeLower = type.toLowerCase();
+        // Mez resistance is enhanced by the matching mez enhancement type
+        const enhMultiplier = 1 + (enhBonuses[typeLower] || 0);
+        const percentage = resolveScaledEffect(value, archetypeId, buildLevel) * 100 * enhMultiplier;
+        const key = mezResMapping[typeLower];
         if (key && key in global) {
           global[key] += percentage;
           addToBreakdown(breakdown, key, {
@@ -730,11 +741,13 @@ function applyActivePowerBonuses(
 
     // Elusivity (Defense Debuff Resistance)
     // Super Reflexes, Shield Defense, etc. — stored as elusivity.all or per-type
+    // Enhanced by Defense enhancements
     if (effects.elusivity && typeof effects.elusivity === 'object') {
+      const enhMultiplier = 1 + (enhBonuses.defense || enhBonuses.defenseBuff || 0);
       const elusivity = effects.elusivity as Record<string, ScalarOrScaled>;
       for (const [, value] of Object.entries(elusivity)) {
         // Both 'all' and specific types (smashing, lethal, etc.) contribute to defense debuff resistance
-        const percentage = resolveScaledEffect(value, archetypeId, buildLevel) * 100;
+        const percentage = resolveScaledEffect(value, archetypeId, buildLevel) * 100 * enhMultiplier;
         if (percentage > 0) {
           global.debuffResistDefense += percentage;
           addToBreakdown(breakdown, 'debuffResistDefense', {
