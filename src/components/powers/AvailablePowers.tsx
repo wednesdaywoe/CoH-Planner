@@ -5,6 +5,7 @@
 
 import { useState } from 'react';
 import { useBuildStore, useUIStore } from '@/stores';
+import { useIsTouchDevice } from '@/hooks';
 
 import { getPowerset, getPowerIconPath, MAX_POWER_PICKS, GRANTED_POWER_GROUPS, getArchetypeInherentPowers } from '@/data';
 import { resolvePath } from '@/utils/paths';
@@ -184,10 +185,12 @@ export function PowerItem({
     ? 'text-purple-400'
     : 'text-blue-400';
 
+  const isTouch = useIsTouchDevice();
+
   return (
     <div
-      onMouseEnter={onHover}
-      onMouseLeave={onLeave}
+      onMouseEnter={isTouch ? undefined : onHover}
+      onMouseLeave={isTouch ? undefined : onLeave}
       onContextMenu={handleRightClick}
       onClick={handleClick}
       title={isLocked ? 'Right-click to unlock' : 'Right-click for info'}

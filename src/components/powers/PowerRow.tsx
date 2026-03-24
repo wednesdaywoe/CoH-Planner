@@ -220,10 +220,10 @@ export function PowerRow({
       {onInfoClick && (
         <button
           onClick={onInfoClick}
-          className="text-slate-500 hover:text-blue-400 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity flex-shrink-0 leading-none mr-0.5"
+          className="text-slate-500 hover:text-blue-400 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity flex-shrink-0 leading-none w-7 h-7 md:w-auto md:h-auto flex items-center justify-center"
           title="Power info"
         >
-          <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg className="w-5 h-5 md:w-3.5 md:h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
         </button>
@@ -231,7 +231,7 @@ export function PowerRow({
       {onCompareSlotting && (
         <button
           onClick={onCompareSlotting}
-          className="text-sk-magenta/60 hover:text-sk-magenta text-[10px] opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity flex-shrink-0 leading-none mr-1"
+          className="text-sk-magenta/60 hover:text-sk-magenta text-base md:text-[10px] opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity flex-shrink-0 leading-none w-7 h-7 md:w-auto md:h-auto flex items-center justify-center"
           title="Compare Slotting"
         >
           ⚖
@@ -240,7 +240,7 @@ export function PowerRow({
       {showRemove && onRemove && (
         <button
           onClick={onRemove}
-          className="text-slate-500 md:text-slate-600 hover:text-red-400 text-[10px] opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity flex-shrink-0 leading-none"
+          className="text-slate-500 md:text-slate-600 hover:text-red-400 text-base md:text-[10px] opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity flex-shrink-0 leading-none w-7 h-7 md:w-auto md:h-auto flex items-center justify-center"
           title="Remove power"
         >
           ✕
@@ -375,7 +375,7 @@ export function PowerRow({
         {onInfoClick && (
           <button
             onClick={onInfoClick}
-            className="text-slate-500 hover:text-blue-400 text-[10px] opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity flex-shrink-0 leading-none mr-1"
+            className="text-slate-500 hover:text-blue-400 text-base md:text-[10px] opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity flex-shrink-0 leading-none w-7 h-7 md:w-auto md:h-auto flex items-center justify-center"
             title="Power info"
           >
             ℹ
@@ -384,7 +384,7 @@ export function PowerRow({
         {onCompareSlotting && (
           <button
             onClick={onCompareSlotting}
-            className="text-sk-magenta/60 hover:text-sk-magenta text-[10px] opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity flex-shrink-0 leading-none mr-1"
+            className="text-sk-magenta/60 hover:text-sk-magenta text-base md:text-[10px] opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity flex-shrink-0 leading-none w-7 h-7 md:w-auto md:h-auto flex items-center justify-center"
             title="Compare Slotting"
           >
             ⚖
@@ -393,7 +393,7 @@ export function PowerRow({
         {showRemove && onRemove && (
           <button
             onClick={onRemove}
-            className="text-slate-500 md:text-slate-600 hover:text-red-400 text-[10px] opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity flex-shrink-0 leading-none"
+            className="text-slate-500 md:text-slate-600 hover:text-red-400 text-base md:text-[10px] opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity flex-shrink-0 leading-none w-7 h-7 md:w-auto md:h-auto flex items-center justify-center"
             title="Remove power"
           >
             ✕

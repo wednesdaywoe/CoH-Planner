@@ -4,6 +4,7 @@
  */
 
 import { useState } from 'react';
+import { isTouchDevice } from '@/hooks';
 import { Modal, ModalBody } from './Modal';
 
 interface ControlsModalProps {
@@ -41,12 +42,6 @@ function ControlItem({ action, description }: { action: string; description: str
       {description}
     </li>
   );
-}
-
-// Detect touch device (coarse pointer = phone/tablet, fine pointer = mouse)
-function isTouchDevice(): boolean {
-  if (typeof window === 'undefined') return false;
-  return window.matchMedia('(pointer: coarse)').matches;
 }
 
 type DeviceView = 'auto' | 'desktop' | 'mobile';

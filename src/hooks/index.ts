@@ -34,3 +34,4 @@ export { useLongPress } from './useLongPress';
 export { useSwipeToRemove } from './useSwipeToRemove';
 export { useActivePowerBuffs } from './useActivePowerBuffs';
 export { useSlotLevels } from './useSlotLevels';
+export { useIsTouchDevice, isTouchDevice } from './useIsTouchDevice';

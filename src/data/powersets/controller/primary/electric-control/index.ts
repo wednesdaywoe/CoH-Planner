@@ -15,7 +15,7 @@ import { ChainFences as ChainFences } from './chain-fences';
 import { JoltingChain as JoltingChain } from './jolting-chain';
 import { ConductiveAura as ConductiveAura } from './conductive-aura';
 import { StaticField as StaticField } from './static-field';
-import { TeslaCoil as TeslaCoil } from './tesla-coil';
+import { ParalyzingBlast } from './paralyzing-blast';
 import { SynapticOverload as SynapticOverload } from './synaptic-overload';
 import { Gremlins as Gremlins } from './gremlins';
 
@@ -33,7 +33,7 @@ export const powerset: Powerset = {
     JoltingChain,
     ConductiveAura,
     StaticField,
-    TeslaCoil,
+    ParalyzingBlast,
     SynapticOverload,
     Gremlins,
   ],

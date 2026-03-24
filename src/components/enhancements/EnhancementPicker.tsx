@@ -1299,8 +1299,8 @@ function IOSetRow({
         </span>
       </div>
 
-      {/* Pieces as icons — shown on all screen sizes, supports touch-drag */}
-      <div className="flex flex-wrap gap-1.5 sm:gap-1 select-none">
+      {/* Pieces as icons — hidden on mobile, shown on sm+ */}
+      <div className="hidden sm:flex flex-wrap gap-1.5 sm:gap-1 select-none">
         {set.pieces.map((piece, pieceIndex) => {
           const dragSelected = isPieceSelected(pieceIndex);
           const shiftSel = isShiftSelected(set, pieceIndex);
@@ -1360,8 +1360,8 @@ function IOSetRow({
         })}
       </div>
 
-      {/* Pieces as list - Hidden (icon grid above handles all screens) */}
-      <div className="hidden space-y-1 select-none mt-1">
+      {/* Pieces as list — shown on mobile, hidden on sm+ */}
+      <div className="sm:hidden space-y-1 select-none mt-1">
         {set.pieces.map((piece, pieceIndex) => {
           const selected = isPieceSelected(pieceIndex);
           const shiftSel = isShiftSelected(set, pieceIndex);

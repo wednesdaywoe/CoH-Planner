@@ -651,7 +651,7 @@ function extractEffects(templates) {
             // First entity encountered
             const entityInfo = { isPseudoPet };
             if (params.entity_def) entityInfo.entity = params.entity_def;
-            if (params.display_name) entityInfo.displayName = params.display_name;
+            if (params.display_name) entityInfo.displayName = DISPLAY_NAME_OVERRIDES[powerJson.name] || params.display_name;
             if (params.redirects?.length > 0) entityInfo.powers = params.redirects;
             if (duration) entityInfo.duration = duration;
             if (hasCopyBoosts) entityInfo.copyBoosts = true;
@@ -1358,6 +1358,11 @@ function mergeStackingPatches(effects, stackingResult) {
   }
 }
 
+// Display name overrides for powers where clientmessages has stale/incorrect names
+const DISPLAY_NAME_OVERRIDES = {
+  'Paralyzing_Blast': 'Paralyzing Blast',  // Was "Tesla Coil" in clientmessages
+};
+
 /**
  * Convert a single power file
  */
@@ -1367,7 +1372,7 @@ function convertPower(powerJson, availableLevel) {
   const mappedTargetType = rawTargetType ? TARGET_TYPE_MAP[rawTargetType] : undefined;
 
   const power = {
-    name: powerJson.display_name,
+    name: DISPLAY_NAME_OVERRIDES[powerJson.name] || powerJson.display_name,
     internalName: powerJson.name,
     available: availableLevel,
     description: powerJson.display_help?.replace(/<[^>]+>/g, '').trim(),
