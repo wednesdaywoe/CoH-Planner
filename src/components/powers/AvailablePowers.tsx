@@ -269,7 +269,6 @@ export function AvailablePowers({
   const [collapsed, setCollapsed] = useState(false);
   const build = useBuildStore((s) => s.build);
   const setInfoPanelContent = useUIStore((s) => s.setInfoPanelContent);
-  const clearInfoPanel = useUIStore((s) => s.clearInfoPanel);
   const lockInfoPanel = useUIStore((s) => s.lockInfoPanel);
   const unlockInfoPanel = useUIStore((s) => s.unlockInfoPanel);
   const infoPanelLocked = useUIStore((s) => s.infoPanel.locked);
@@ -389,8 +388,7 @@ export function AvailablePowers({
   };
 
   const handlePowerLeave = () => {
-    // Clear info panel content when leaving a power
-    clearInfoPanel();
+    // Don't clear — keep showing the last-hovered power until a new one is hovered
   };
 
   const handleShowInfo = (power: Power, e?: React.MouseEvent) => {

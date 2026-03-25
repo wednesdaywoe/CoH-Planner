@@ -30,7 +30,6 @@ export function PoolPowers() {
   const togglePowerActive = useBuildStore((s) => s.togglePowerActive);
   const setActiveSubPower = useBuildStore((s) => s.setActiveSubPower);
   const setInfoPanelContent = useUIStore((s) => s.setInfoPanelContent);
-  const clearInfoPanel = useUIStore((s) => s.clearInfoPanel);
   const lockInfoPanel = useUIStore((s) => s.lockInfoPanel);
   const unlockInfoPanel = useUIStore((s) => s.unlockInfoPanel);
   const infoPanelLocked = useUIStore((s) => s.infoPanel.locked);
@@ -76,7 +75,7 @@ export function PoolPowers() {
   };
 
   const handlePowerLeave = () => {
-    clearInfoPanel();
+    // Don't clear — keep showing the last-hovered power until a new one is hovered
   };
 
   const handleEnhancementHover = (powerName: string, slotIndex: number) => {
@@ -578,7 +577,6 @@ function EpicPoolSelectedPowers({ epicPool, isPowerLocked, slotLevelsMap }: Epic
   const clearEnhancement = useBuildStore((s) => s.clearEnhancement);
   const togglePowerActive = useBuildStore((s) => s.togglePowerActive);
   const setInfoPanelContent = useUIStore((s) => s.setInfoPanelContent);
-  const clearInfoPanel = useUIStore((s) => s.clearInfoPanel);
   const lockInfoPanel = useUIStore((s) => s.lockInfoPanel);
   const unlockInfoPanel = useUIStore((s) => s.unlockInfoPanel);
   const infoPanelLocked = useUIStore((s) => s.infoPanel.locked);
@@ -599,7 +597,7 @@ function EpicPoolSelectedPowers({ epicPool, isPowerLocked, slotLevelsMap }: Epic
   };
 
   const handlePowerLeave = () => {
-    clearInfoPanel();
+    // Don't clear — keep showing the last-hovered power until a new one is hovered
   };
 
   const handlePowerRightClick = (e: React.MouseEvent, power: Power | SelectedPower) => {

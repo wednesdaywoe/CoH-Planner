@@ -131,6 +131,8 @@ export interface GlobalBonuses {
   levelShift: number;
   // Toggle endurance cost (end/sec from active toggles)
   toggleEndCost: number;
+  // Endurance discount from powers like Conserve Power (reduces end costs by this %)
+  enduranceDiscount: number;
   // Net endurance per second (recovery minus toggle costs)
   netEndPerSec: number;
   // Purple patch - hit chance against target level
@@ -245,6 +247,7 @@ function createEmptyGlobalBonuses(): GlobalBonuses {
     mezResistPlacate: 0,
     levelShift: 0,
     toggleEndCost: 0,
+    enduranceDiscount: 0,
     netEndPerSec: 0,
     baseToHit: 0.75,
     hitChance: 0.75,
@@ -483,6 +486,8 @@ interface ActivePowerEffect {
   perceptionBuff?: ScalarOrScaled;
   // Endurance cost per second (for toggles)
   enduranceCost?: number;
+  // Endurance discount (e.g., Conserve Power — reduces end costs by a percentage)
+  enduranceDiscount?: ScalarOrScaled;
   // Self-debuffs (e.g., Granite Armor) — only applied when selfPenalty is true
   // Most powers with these fields target enemies, not the caster
   selfPenalty?: boolean;
@@ -958,6 +963,20 @@ function applyActivePowerBonuses(
         value,
         type: 'active-power',
       });
+    }
+
+    // Endurance Discount (e.g., Conserve Power — reduces end costs by a percentage)
+    // Stored as a scaled effect; the resolved value is a decimal (e.g., 0.6 = 60% discount)
+    if (effects.enduranceDiscount !== undefined) {
+      const discount = resolveScaledEffect(effects.enduranceDiscount, archetypeId, buildLevel) * 100;
+      if (discount > 0) {
+        global.enduranceDiscount += discount;
+        addToBreakdown(breakdown, 'enduranceDiscount', {
+          name: power.name,
+          value: discount,
+          type: 'active-power',
+        });
+      }
     }
 
     // Mez Protection from pool/epic powers (effects.protection = { hold: 1, stun: 1, ... })
@@ -2567,6 +2586,11 @@ export function calculateCharacterTotals(
 
   // Step 10: Convert to character stats format
   const stats = convertToCharacterStats(globalBonuses);
+
+  // Apply endurance discount (e.g., Conserve Power) to toggle costs
+  if (globalBonuses.enduranceDiscount > 0) {
+    globalBonuses.toggleEndCost *= (1 - globalBonuses.enduranceDiscount / 100);
+  }
 
   // Compute net endurance per second (recovery minus toggle costs)
   // Recovery = MaxEnd × (1 + RecoveryMod) / 60 — max endurance bonuses scale the base rate

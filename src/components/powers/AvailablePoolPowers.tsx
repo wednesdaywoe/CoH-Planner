@@ -30,7 +30,6 @@ export function AvailablePoolPowers() {
   const addPower = useBuildStore((s) => s.addPower);
   const setEpicPool = useBuildStore((s) => s.setEpicPool);
   const setInfoPanelContent = useUIStore((s) => s.setInfoPanelContent);
-  const clearInfoPanel = useUIStore((s) => s.clearInfoPanel);
   const lockInfoPanel = useUIStore((s) => s.lockInfoPanel);
   const unlockInfoPanel = useUIStore((s) => s.unlockInfoPanel);
   const infoPanelLocked = useUIStore((s) => s.infoPanel.locked);
@@ -91,7 +90,7 @@ export function AvailablePoolPowers() {
   };
 
   const handlePowerLeave = () => {
-    clearInfoPanel();
+    // Don't clear — keep showing the last-hovered power until a new one is hovered
   };
 
   const handleLockToggle = (power: Power, poolId: string) => {

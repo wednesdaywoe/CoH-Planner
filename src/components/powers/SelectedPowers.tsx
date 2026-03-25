@@ -30,7 +30,6 @@ export function SelectedPowers({ category }: SelectedPowersProps) {
   const togglePowerActive = useBuildStore((s) => s.togglePowerActive);
   const setActiveSubPower = useBuildStore((s) => s.setActiveSubPower);
   const setInfoPanelContent = useUIStore((s) => s.setInfoPanelContent);
-  const clearInfoPanel = useUIStore((s) => s.clearInfoPanel);
   const lockInfoPanel = useUIStore((s) => s.lockInfoPanel);
   const unlockInfoPanel = useUIStore((s) => s.unlockInfoPanel);
   const infoPanelLocked = useUIStore((s) => s.infoPanel.locked);
@@ -81,7 +80,7 @@ export function SelectedPowers({ category }: SelectedPowersProps) {
   };
 
   const handlePowerLeave = () => {
-    clearInfoPanel();
+    // Don't clear — keep showing the last-hovered power until a new one is hovered
   };
 
   const handleEnhancementHover = (powerName: string, slotIndex: number) => {
