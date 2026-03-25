@@ -25,6 +25,8 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
     items: [
       { message: 'The info panel now persists the last-hovered power until you hover a different one', type: 'feat' },
       { message: 'enduranceDiscount should now be processed. 27 powerset powers plus the epic pool versions should now contribute to endurance discount', type: 'fix' },
+      { message: 'Resilience missing icon: Fixed all 5 archetype variants and added an ICON_OVERRIDES map to the conversion script to prevent regressions', type: 'update' },
+      { message: 'Fixed Hybrid Melee regeneration 250% → 30%. The regeneration values in the Hybrid Melee incarnate data were stored as raw multipliers instead of decimals', type: 'update' },
     ],
   },
 ];

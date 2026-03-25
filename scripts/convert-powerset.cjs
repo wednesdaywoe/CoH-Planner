@@ -1363,6 +1363,11 @@ const DISPLAY_NAME_OVERRIDES = {
   'Paralyzing_Blast': 'Paralyzing Blast',  // Was "Tesla Coil" in clientmessages
 };
 
+// Icon overrides for powers where binary data references a renamed/missing icon file
+const ICON_OVERRIDES = {
+  'regeneration_resist.png': 'regeneration_resilience.png',  // Resilience icon renamed on HC
+};
+
 /**
  * Convert a single power file
  */
@@ -1377,7 +1382,7 @@ function convertPower(powerJson, availableLevel) {
     available: availableLevel,
     description: powerJson.display_help?.replace(/<[^>]+>/g, '').trim(),
     shortHelp: powerJson.display_short_help,
-    icon: powerJson.icon,
+    icon: ICON_OVERRIDES[powerJson.icon] || powerJson.icon,
     powerType: powerJson.type,
     targetType: mappedTargetType,
     effectArea: powerJson.effect_area,

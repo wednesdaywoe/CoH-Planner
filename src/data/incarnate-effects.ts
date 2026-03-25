@@ -1158,59 +1158,59 @@ const HYBRID_EFFECTS: Record<string, HybridEffects> = {
   },
 
   // ========== MELEE ==========
-  // Defensive bonuses
+  // Defensive bonuses (regeneration values are decimals: 0.10 = +10%)
   'melee_genome': {
-    regeneration: 1.0,
+    regeneration: 0.10,
     duration: 120,
     recharge: 120,
   },
   'melee_core_genome': {
-    regeneration: 1.5,
+    regeneration: 0.15,
     resistanceAll: 0.05,
     duration: 120,
     recharge: 120,
   },
   'melee_radial_genome': {
-    regeneration: 1.5,
+    regeneration: 0.15,
     defenseAll: 0.03,
     duration: 120,
     recharge: 120,
   },
   'melee_total_core_graft': {
-    regeneration: 2.0,
+    regeneration: 0.20,
     resistanceAll: 0.10,
     statusProtection: 3,
     duration: 120,
     recharge: 120,
   },
   'melee_partial_core_graft': {
-    regeneration: 1.5,
+    regeneration: 0.15,
     resistanceAll: 0.075,
     duration: 120,
     recharge: 120,
   },
   'melee_partial_radial_graft': {
-    regeneration: 1.5,
+    regeneration: 0.15,
     defenseAll: 0.05,
     duration: 120,
     recharge: 120,
   },
   'melee_total_radial_graft': {
-    regeneration: 2.0,
+    regeneration: 0.20,
     defenseAll: 0.07,
     statusProtection: 3,
     duration: 120,
     recharge: 120,
   },
   'melee_core_embodiment': {
-    regeneration: 2.5,
+    regeneration: 0.30,
     resistanceAll: 0.15,
     statusProtection: 5,
     duration: 120,
     recharge: 120,
   },
   'melee_radial_embodiment': {
-    regeneration: 2.5,
+    regeneration: 0.30,
     defenseAll: 0.10,
     statusProtection: 5,
     duration: 120,
