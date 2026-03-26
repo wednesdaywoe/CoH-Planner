@@ -24,6 +24,7 @@ export {
   TITAN_ENHANCEMENTS,
   HYDRA_ENHANCEMENTS,
   DSYNC_ENHANCEMENTS,
+  PRESTIGE_ENHANCEMENTS,
   calculateCommonIOValue,
   getCommonIOValueAtLevel,
   COMMON_IO_TYPES,
@@ -66,6 +67,7 @@ export {
   getAvailableTitans,
   getAvailableHydras,
   getAvailableDSyncs,
+  getAvailablePrestige,
 } from './enhancement-registry';
 
 // IO Set data and accessors

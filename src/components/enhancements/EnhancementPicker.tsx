@@ -14,7 +14,7 @@ import {
   getCommonIOValueAtLevel, ORIGIN_TIERS,
   sortCategoriesByPriority,
   createIOSetEnhancement, createGenericIOEnhancement, createSpecialEnhancement, createOriginEnhancement,
-  getAvailableGenericIOs, getAvailableHamidons, getAvailableTitans, getAvailableHydras, getAvailableDSyncs,
+  getAvailableGenericIOs, getAvailableHamidons, getAvailableTitans, getAvailableHydras, getAvailableDSyncs, getAvailablePrestige,
   getRarityColor, getTierTextColor, getTierBorderColor,
   findProcData, parseProcEffect, getProcEffectLabel, getProcEffectColor, isProcAlwaysOn, interpolateProcDamage,
 } from '@/data';
@@ -260,7 +260,7 @@ export function EnhancementPicker() {
     if (picker.onOverrideSelect) {
       picker.onOverrideSelect(slotIndex, enhancement);
     } else {
-      setEnhancement(powerName, slotIndex, enhancement);
+      setEnhancement(powerName, slotIndex, enhancement, picker.currentPowerCategory as import('@/stores').PowerCategory | undefined);
     }
   };
 
@@ -537,6 +537,7 @@ export function EnhancementPicker() {
   const availableTitans = useMemo(() => getAvailableTitans(currentPower ?? null), [currentPower]);
   const availableHydras = useMemo(() => getAvailableHydras(currentPower ?? null), [currentPower]);
   const availableDSyncs = useMemo(() => getAvailableDSyncs(currentPower ?? null), [currentPower]);
+  const availablePrestige = useMemo(() => getAvailablePrestige(currentPower ?? null), [currentPower]);
 
   const ioValue = getCommonIOValueAtLevel(globalIOLevel);
 
@@ -857,6 +858,7 @@ export function EnhancementPicker() {
                 availableTitans={availableTitans}
                 availableHydras={availableHydras}
                 availableDSyncs={availableDSyncs}
+                availablePrestige={availablePrestige}
                 onSelect={handleSelectSpecial}
               />
             )}
@@ -1491,12 +1493,18 @@ interface SpecialContentProps {
   availableTitans: [string, SpecialEnhancementDef][];
   availableHydras: [string, SpecialEnhancementDef][];
   availableDSyncs: [string, SpecialEnhancementDef][];
+  availablePrestige: [string, SpecialEnhancementDef][];
   onSelect: (id: string, def: SpecialEnhancementDef, category: SpecialEnhancement['category']) => void;
 }
 
 /** Overrides for compound-word IDs whose simple capitalize doesn't match the icon filename */
 const SPECIAL_ICON_OVERRIDES: Record<string, string> = {
   antiproton: 'AntiProton',
+  clockwork_efficiency: 'ClockworkEfficiency',
+  might_of_the_empire: 'MarkoftheEmpire',
+  resistance_tactics: 'ResistanceTactics',
+  syndicate_techniques: 'SyndicateTechniques',
+  will_of_the_seers: 'WilloftheSeers',
 };
 
 const SPECIAL_SECTIONS: Array<{
@@ -1505,17 +1513,18 @@ const SPECIAL_SECTIONS: Array<{
   color: string;
   borderColor: string;
   iconPrefix: string;
-  key: 'availableHamidons' | 'availableTitans' | 'availableHydras' | 'availableDSyncs';
+  key: 'availableHamidons' | 'availableTitans' | 'availableHydras' | 'availableDSyncs' | 'availablePrestige';
 }> = [
   { category: 'hamidon', label: 'Hamidon Origin', color: 'text-purple-400', borderColor: 'border-purple-700 hover:border-purple-400', iconPrefix: 'HO', key: 'availableHamidons' },
   { category: 'titan', label: 'Titan Origin', color: 'text-amber-400', borderColor: 'border-amber-700 hover:border-amber-400', iconPrefix: 'TN', key: 'availableTitans' },
   { category: 'hydra', label: 'Hydra Origin', color: 'text-cyan-400', borderColor: 'border-cyan-700 hover:border-cyan-400', iconPrefix: 'HY', key: 'availableHydras' },
   { category: 'd-sync', label: 'D-Sync Origin', color: 'text-green-400', borderColor: 'border-green-700 hover:border-green-400', iconPrefix: 'DS', key: 'availableDSyncs' },
+  { category: 'prestige', label: 'Prestige', color: 'text-rose-400', borderColor: 'border-rose-700 hover:border-rose-400', iconPrefix: 'Prestige_', key: 'availablePrestige' },
 ];
 
 function SpecialContent(props: SpecialContentProps) {
   const { onSelect } = props;
-  const totalAvailable = props.availableHamidons.length + props.availableTitans.length + props.availableHydras.length + props.availableDSyncs.length;
+  const totalAvailable = props.availableHamidons.length + props.availableTitans.length + props.availableHydras.length + props.availableDSyncs.length + props.availablePrestige.length;
 
   if (totalAvailable === 0) {
     return <div className="text-center text-gray-500 py-8">No special enhancements available for this power</div>;

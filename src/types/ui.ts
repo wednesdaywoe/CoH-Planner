@@ -32,6 +32,8 @@ export interface EnhancementPickerState {
   currentPowerName: string | null;
   /** Powerset of the power being enhanced */
   currentPowerSet: string | null;
+  /** Build category of the power (primary/secondary/pool/epic/inherent) for disambiguation */
+  currentPowerCategory: string | null;
   /** Slot index being filled */
   currentSlotIndex: number;
   /** Current IO set category filter */
@@ -163,6 +165,7 @@ export function createDefaultUIState(): UIState {
       viewStack: [],
       currentPowerName: null,
       currentPowerSet: null,
+      currentPowerCategory: null,
       currentSlotIndex: 0,
       currentCategory: null,
       selectedSetId: null,

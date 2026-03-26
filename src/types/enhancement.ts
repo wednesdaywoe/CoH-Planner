@@ -80,8 +80,8 @@ export interface GenericIOEnhancement extends BaseEnhancement {
 
 export interface SpecialEnhancement extends BaseEnhancement {
   type: 'special';
-  /** Category (hamidon, titan, hydra, etc.) */
-  category: 'hamidon' | 'titan' | 'hydra' | 'd-sync';
+  /** Category (hamidon, titan, hydra, d-sync, prestige) */
+  category: 'hamidon' | 'titan' | 'hydra' | 'd-sync' | 'prestige';
   /** Aspects this enhances, each with its own value (percentage) */
   aspects: Array<{ stat: EnhancementStatType; value: number }>;
 }

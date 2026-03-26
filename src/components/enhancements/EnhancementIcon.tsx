@@ -124,6 +124,8 @@ function getOverlayPath(
       return `${overlayBase}/e_frame_IO.png`; // fallback
 
     case 'special':
+      // Prestige enhancements use TO frame; others use HO frame
+      if (icon?.startsWith('Prestige_')) return `${overlayBase}/e_frame_TO.png`;
       return `${overlayBase}/e_frame_HO.png`;
 
     default:
@@ -178,7 +180,8 @@ function getBaseIconPath(type: EnhancementType, icon: string): string {
       return `${IMG_BASE}/Generic/${icon}`;
 
     case 'special':
-      // Hamidon/Hydra/Titan icons are in "Special" folder
+      // Prestige icons are in "Prestige" folder, others in "Special"
+      if (icon.startsWith('Prestige_')) return `${IMG_BASE}/Prestige/${icon}`;
       return `${IMG_BASE}/Special/${icon}`;
 
     default:

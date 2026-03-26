@@ -21,8 +21,10 @@ export interface ManualEntry {
 export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   // ─── 2026-03-24 ────────────────────────────────────────────────────────────
   {
-    date: '2026-03-25',
+    date: '2026-03-26',
     items: [
+      { message: 'Added Prestige Enhancements just because SpectralShard asked nicely', type: 'feat' },
+      { message: 'More fixes for internal power name collisions', type: 'feat' },
       { message: 'The info panel now persists the last-hovered power until you hover a different one', type: 'feat' },
       { message: 'enduranceDiscount should now be processed. 27 powerset powers plus the epic pool versions should now contribute to endurance discount', type: 'fix' },
       { message: 'Resilience missing icon: Fixed all 5 archetype variants and added an ICON_OVERRIDES map to the conversion script to prevent regressions', type: 'update' },

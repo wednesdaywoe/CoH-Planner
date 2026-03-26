@@ -6,6 +6,7 @@
 
 import { useMemo, useState } from 'react';
 import { useBuildStore, useUIStore } from '@/stores';
+import type { PowerCategory } from '@/stores';
 import { useShowSlotLevels } from '@/stores/uiStore';
 import {
   getPowerPool,
@@ -46,23 +47,23 @@ export function PoolPowers() {
 
   const handleAddSlots = (powerName: string, count: number) => {
     for (let i = 0; i < count; i++) {
-      addSlot(powerName);
+      addSlot(powerName, 'pool');
     }
   };
 
   const handleRemoveSlot = (powerName: string, slotIndex: number) => {
-    removeSlot(powerName, slotIndex);
+    removeSlot(powerName, slotIndex, 'pool');
   };
 
   const handleRemoveAllSlots = (powerName: string, totalSlots: number) => {
     for (let i = totalSlots - 1; i > 0; i--) {
-      removeSlot(powerName, i);
+      removeSlot(powerName, i, 'pool');
     }
   };
 
   const handleClearAllEnhancements = (powerName: string, totalSlots: number) => {
     for (let i = 0; i < totalSlots; i++) {
-      clearEnhancement(powerName, i);
+      clearEnhancement(powerName, i, 'pool');
     }
   };
 
@@ -87,7 +88,7 @@ export function PoolPowers() {
   };
 
   const handleClearEnhancement = (powerName: string, slotIndex: number) => {
-    clearEnhancement(powerName, slotIndex);
+    clearEnhancement(powerName, slotIndex, 'pool');
   };
 
   const handlePowerRightClick = (e: React.MouseEvent, power: Power | SelectedPower, poolId: string) => {
@@ -100,6 +101,29 @@ export function PoolPowers() {
         powerName: power.internalName,
         powerSet: poolId,
       });
+    }
+  };
+
+  // Inherent power handlers (separate from pool handlers to use correct category)
+  const handleInherentAddSlots = (powerName: string, count: number) => {
+    for (let i = 0; i < count; i++) {
+      addSlot(powerName, 'inherent');
+    }
+  };
+  const handleInherentRemoveSlot = (powerName: string, slotIndex: number) => {
+    removeSlot(powerName, slotIndex, 'inherent');
+  };
+  const handleInherentRemoveAllSlots = (powerName: string, totalSlots: number) => {
+    for (let i = totalSlots - 1; i > 0; i--) {
+      removeSlot(powerName, i, 'inherent');
+    }
+  };
+  const handleInherentClearEnhancement = (powerName: string, slotIndex: number) => {
+    clearEnhancement(powerName, slotIndex, 'inherent');
+  };
+  const handleInherentClearAllEnhancements = (powerName: string, totalSlots: number) => {
+    for (let i = 0; i < totalSlots; i++) {
+      clearEnhancement(powerName, i, 'inherent');
     }
   };
 
@@ -222,11 +246,11 @@ export function PoolPowers() {
               onPowerLeave={handlePowerLeave}
               onPowerRightClick={handleInherentPowerRightClick}
               onEnhancementHover={handleEnhancementHover}
-              onClearEnhancement={handleClearEnhancement}
-              onAddSlots={handleAddSlots}
-              onRemoveSlot={handleRemoveSlot}
-              onRemoveAllSlots={handleRemoveAllSlots}
-              onClearAllEnhancements={handleClearAllEnhancements}
+              onClearEnhancement={handleInherentClearEnhancement}
+              onAddSlots={handleInherentAddSlots}
+              onRemoveSlot={handleInherentRemoveSlot}
+              onRemoveAllSlots={handleInherentRemoveAllSlots}
+              onClearAllEnhancements={handleInherentClearAllEnhancements}
               onInfoClick={(power) => {
                 if (isPowerLocked(power.internalName)) {
                   unlockInfoPanel();
@@ -247,11 +271,11 @@ export function PoolPowers() {
               onPowerLeave={handlePowerLeave}
               onPowerRightClick={handleInherentPowerRightClick}
               onEnhancementHover={handleEnhancementHover}
-              onClearEnhancement={handleClearEnhancement}
-              onAddSlots={handleAddSlots}
-              onRemoveSlot={handleRemoveSlot}
-              onRemoveAllSlots={handleRemoveAllSlots}
-              onClearAllEnhancements={handleClearAllEnhancements}
+              onClearEnhancement={handleInherentClearEnhancement}
+              onAddSlots={handleInherentAddSlots}
+              onRemoveSlot={handleInherentRemoveSlot}
+              onRemoveAllSlots={handleInherentRemoveAllSlots}
+              onClearAllEnhancements={handleInherentClearAllEnhancements}
               onInfoClick={(power) => {
                 if (isPowerLocked(power.internalName)) {
                   unlockInfoPanel();
@@ -272,11 +296,11 @@ export function PoolPowers() {
               onPowerLeave={handlePowerLeave}
               onPowerRightClick={handleInherentPowerRightClick}
               onEnhancementHover={handleEnhancementHover}
-              onClearEnhancement={handleClearEnhancement}
-              onAddSlots={handleAddSlots}
-              onRemoveSlot={handleRemoveSlot}
-              onRemoveAllSlots={handleRemoveAllSlots}
-              onClearAllEnhancements={handleClearAllEnhancements}
+              onClearEnhancement={handleInherentClearEnhancement}
+              onAddSlots={handleInherentAddSlots}
+              onRemoveSlot={handleInherentRemoveSlot}
+              onRemoveAllSlots={handleInherentRemoveAllSlots}
+              onClearAllEnhancements={handleInherentClearAllEnhancements}
               onInfoClick={(power) => {
                 if (isPowerLocked(power.internalName)) {
                   unlockInfoPanel();
@@ -297,11 +321,11 @@ export function PoolPowers() {
               onPowerLeave={handlePowerLeave}
               onPowerRightClick={handleInherentPowerRightClick}
               onEnhancementHover={handleEnhancementHover}
-              onClearEnhancement={handleClearEnhancement}
-              onAddSlots={handleAddSlots}
-              onRemoveSlot={handleRemoveSlot}
-              onRemoveAllSlots={handleRemoveAllSlots}
-              onClearAllEnhancements={handleClearAllEnhancements}
+              onClearEnhancement={handleInherentClearEnhancement}
+              onAddSlots={handleInherentAddSlots}
+              onRemoveSlot={handleInherentRemoveSlot}
+              onRemoveAllSlots={handleInherentRemoveAllSlots}
+              onClearAllEnhancements={handleInherentClearAllEnhancements}
               onInfoClick={(power) => {
                 if (isPowerLocked(power.internalName)) {
                   unlockInfoPanel();
@@ -330,7 +354,7 @@ interface PoolPowerGroupProps {
   isPowerLocked: (powerName: string) => boolean;
   onRemovePower: (powerName: string) => void;
   onPowerHover: (power: Power | SelectedPower) => void;
-  onToggle: (powerName: string) => void;
+  onToggle: (powerName: string, category?: PowerCategory) => void;
   onSetActiveSubPower: (parentPowerName: string, subPowerName: string | null) => void;
   onPowerLeave: () => void;
   onPowerRightClick: (e: React.MouseEvent, power: Power | SelectedPower) => void;
@@ -416,7 +440,7 @@ function PoolPowerGroup({
                   selectedPower={power}
                   toggleSize={shouldShowToggle(power) ? 'md' : undefined}
                   isActive={power.isActive ?? false}
-                  onToggle={() => onToggle(power.internalName)}
+                  onToggle={() => onToggle(power.internalName, 'pool')}
                   slots={power.slots}
                   maxSlots={power.maxSlots}
                   onRemove={() => onRemovePower(power.internalName)}
@@ -425,7 +449,7 @@ function PoolPowerGroup({
                   onRemoveAllSlots={() => onRemoveAllSlots(power.internalName, power.slots.length)}
                   onClearEnhancement={(index) => onClearEnhancement(power.internalName, index)}
                   onClearAllEnhancements={() => onClearAllEnhancements(power.internalName, power.slots.length)}
-                  onOpenPicker={(slotIndex) => openEnhancementPicker(power.internalName, poolId, slotIndex)}
+                  onOpenPicker={(slotIndex) => openEnhancementPicker(power.internalName, poolId, slotIndex, undefined, undefined, 'pool')}
                   onHover={() => onPowerHover(power)}
                   onLeave={onPowerLeave}
                   onEnhancementHover={(index) => onEnhancementHover(power.internalName, index)}
@@ -622,28 +646,28 @@ function EpicPoolSelectedPowers({ epicPool, isPowerLocked, slotLevelsMap }: Epic
   };
 
   const handleClearEnhancement = (powerName: string, slotIndex: number) => {
-    clearEnhancement(powerName, slotIndex);
+    clearEnhancement(powerName, slotIndex, 'epic');
   };
 
   const handleAddSlots = (powerName: string, count: number) => {
     for (let i = 0; i < count; i++) {
-      addSlot(powerName);
+      addSlot(powerName, 'epic');
     }
   };
 
   const handleRemoveSlot = (powerName: string, slotIndex: number) => {
-    removeSlot(powerName, slotIndex);
+    removeSlot(powerName, slotIndex, 'epic');
   };
 
   const handleRemoveAllSlots = (powerName: string, totalSlots: number) => {
     for (let i = totalSlots - 1; i > 0; i--) {
-      removeSlot(powerName, i);
+      removeSlot(powerName, i, 'epic');
     }
   };
 
   const handleClearAllEnhancements = (powerName: string, totalSlots: number) => {
     for (let i = 0; i < totalSlots; i++) {
-      clearEnhancement(powerName, i);
+      clearEnhancement(powerName, i, 'epic');
     }
   };
 
@@ -680,7 +704,7 @@ function EpicPoolSelectedPowers({ epicPool, isPowerLocked, slotLevelsMap }: Epic
                 selectedPower={power}
                 toggleSize={shouldShowToggle(power) ? 'md' : undefined}
                 isActive={power.isActive ?? false}
-                onToggle={() => togglePowerActive(power.internalName)}
+                onToggle={() => togglePowerActive(power.internalName, 'epic')}
                 slots={power.slots}
                 maxSlots={power.maxSlots}
                 onRemove={() => removePower('epic', power.internalName)}
@@ -689,7 +713,7 @@ function EpicPoolSelectedPowers({ epicPool, isPowerLocked, slotLevelsMap }: Epic
                 onRemoveAllSlots={() => handleRemoveAllSlots(power.internalName, power.slots.length)}
                 onClearEnhancement={(index) => handleClearEnhancement(power.internalName, index)}
                 onClearAllEnhancements={() => handleClearAllEnhancements(power.internalName, power.slots.length)}
-                onOpenPicker={(slotIndex) => openEnhancementPicker(power.internalName, epicPool.id, slotIndex)}
+                onOpenPicker={(slotIndex) => openEnhancementPicker(power.internalName, epicPool.id, slotIndex, undefined, undefined, 'epic')}
                 onHover={() => handlePowerHover(power)}
                 onLeave={handlePowerLeave}
                 onEnhancementHover={(index) => handleEnhancementHover(power.internalName, index)}
@@ -796,7 +820,7 @@ function InherentPowerGroup({
                 onRemoveAllSlots={() => onRemoveAllSlots(power.internalName, power.slots.length)}
                 onClearEnhancement={(index) => onClearEnhancement(power.internalName, index)}
                 onClearAllEnhancements={() => onClearAllEnhancements(power.internalName, power.slots.length)}
-                onOpenPicker={(slotIndex) => openEnhancementPicker(power.internalName, 'Inherent', slotIndex)}
+                onOpenPicker={(slotIndex) => openEnhancementPicker(power.internalName, 'Inherent', slotIndex, undefined, undefined, 'inherent')}
                 onHover={() => onPowerHover(power)}
                 onLeave={onPowerLeave}
                 onEnhancementHover={(index) => onEnhancementHover(power.internalName, index)}

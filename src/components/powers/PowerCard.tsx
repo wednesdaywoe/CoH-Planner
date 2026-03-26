@@ -83,6 +83,7 @@ interface PowerCardProps {
 
 export function PowerCard({
   power,
+  category,
   powersetId,
   powersetName: _powersetName,
   onRemove,
@@ -99,12 +100,12 @@ export function PowerCard({
   const isActive = power.isActive ?? false;
 
   const handleSlotClick = (slotIndex: number) => {
-    openEnhancementPicker(power.internalName, powersetId, slotIndex);
+    openEnhancementPicker(power.internalName, powersetId, slotIndex, undefined, undefined, category);
   };
 
   const handleSlotRightClick = (slotIndex: number) => {
     if (power.slots[slotIndex]) {
-      clearEnhancement(power.internalName, slotIndex);
+      clearEnhancement(power.internalName, slotIndex, category);
     }
   };
 
@@ -117,7 +118,7 @@ export function PowerCard({
   };
 
   const handleAddSlot = () => {
-    addSlot(power.internalName);
+    addSlot(power.internalName, category);
   };
 
   return (
@@ -184,7 +185,7 @@ export function PowerCard({
             }
           >
             <button
-              onClick={() => togglePowerActive(power.internalName)}
+              onClick={() => togglePowerActive(power.internalName, category)}
               className={`
                 flex-shrink-0 flex items-center gap-1 px-1.5 py-0.5 rounded text-xs font-medium transition-all
                 ${

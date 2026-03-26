@@ -22,7 +22,7 @@ import type {
   OriginEnhancement,
   SpecialEnhancementDef,
 } from '@/types';
-import { HAMIDON_ENHANCEMENTS, TITAN_ENHANCEMENTS, HYDRA_ENHANCEMENTS, DSYNC_ENHANCEMENTS, COMMON_IO_TYPES, ORIGIN_TIERS, getCommonIOValueAtLevel } from './enhancements';
+import { HAMIDON_ENHANCEMENTS, TITAN_ENHANCEMENTS, HYDRA_ENHANCEMENTS, DSYNC_ENHANCEMENTS, PRESTIGE_ENHANCEMENTS, COMMON_IO_TYPES, ORIGIN_TIERS, getCommonIOValueAtLevel } from './enhancements';
 import { resolvePath } from '@/utils/paths';
 
 // ============================================
@@ -331,11 +331,18 @@ const SPECIAL_ICON_PREFIX: Record<SpecialEnhancement['category'], string> = {
   titan: 'TN',
   hydra: 'HY',
   'd-sync': 'DS',
+  prestige: 'Prestige_',
 };
 
 /** Overrides for compound-word IDs whose simple capitalize doesn't match the icon filename */
 const SPECIAL_ICON_NAME_OVERRIDES: Record<string, string> = {
   antiproton: 'AntiProton',
+  // Prestige enhancements: id → icon filename suffix
+  clockwork_efficiency: 'ClockworkEfficiency',
+  might_of_the_empire: 'MarkoftheEmpire',
+  resistance_tactics: 'ResistanceTactics',
+  syndicate_techniques: 'SyndicateTechniques',
+  will_of_the_seers: 'WilloftheSeers',
 };
 
 /** Create a Special Enhancement object (Hamidon, Titan, Hydra, or D-Sync) */
@@ -446,4 +453,11 @@ export function getAvailableDSyncs(
   power: { allowedEnhancements: string[] } | null,
 ): [string, SpecialEnhancementDef][] {
   return filterSpecialEnhancements(DSYNC_ENHANCEMENTS, power);
+}
+
+/** Get available Prestige enhancements for a power */
+export function getAvailablePrestige(
+  power: { allowedEnhancements: string[] } | null,
+): [string, SpecialEnhancementDef][] {
+  return filterSpecialEnhancements(PRESTIGE_ENHANCEMENTS, power);
 }

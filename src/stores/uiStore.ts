@@ -253,7 +253,7 @@ interface UIState {
 
 interface UIActions {
   // Enhancement Picker Modal
-  openEnhancementPicker: (powerName: string, powerSet: string, slotIndex: number, overrideSelect?: (slotIndex: number, enhancement: Enhancement) => void, virtualSlots?: (Enhancement | null)[]) => void;
+  openEnhancementPicker: (powerName: string, powerSet: string, slotIndex: number, overrideSelect?: (slotIndex: number, enhancement: Enhancement) => void, virtualSlots?: (Enhancement | null)[], powerCategory?: string) => void;
   closeEnhancementPicker: () => void;
   setPickerView: (view: ModalView) => void;
   pushPickerView: (view: ModalView) => void;
@@ -465,6 +465,7 @@ const defaultEnhancementPicker: EnhancementPickerState = {
   viewStack: [],
   currentPowerName: null,
   currentPowerSet: null,
+  currentPowerCategory: null,
   currentSlotIndex: 0,
   currentCategory: null,
   selectedSetId: null,
@@ -584,13 +585,14 @@ export const useUIStore = create<UIStore>()(
       permaTrackedPowers: [], // No perma-tracked powers by default
 
       // Enhancement Picker Modal
-      openEnhancementPicker: (powerName, powerSet, slotIndex, overrideSelect, virtualSlots) =>
+      openEnhancementPicker: (powerName, powerSet, slotIndex, overrideSelect, virtualSlots, powerCategory) =>
         set({
           enhancementPicker: {
             ...defaultEnhancementPicker,
             isOpen: true,
             currentPowerName: powerName,
             currentPowerSet: powerSet,
+            currentPowerCategory: powerCategory ?? null,
             currentSlotIndex: slotIndex,
             onOverrideSelect: overrideSelect ?? null,
             virtualSlots: virtualSlots ?? null,

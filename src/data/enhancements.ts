@@ -548,6 +548,53 @@ export const DSYNC_ENHANCEMENTS: SpecialEnhancementRegistry = {
 };
 
 // ============================================
+// PRESTIGE ENHANCEMENTS (Going Rogue Pre-Order)
+// ============================================
+
+/**
+ * Prestige enhancements are unique per character.
+ * All provide 16.66% Damage + 16.66% Recharge plus a damage proc
+ * that only triggers below level 21.
+ */
+export const PRESTIGE_ENHANCEMENTS: SpecialEnhancementRegistry = {
+  clockwork_efficiency: {
+    name: 'Clockwork Efficiency',
+    aspects: [
+      { stat: 'Damage', value: 16.66 },
+      { stat: 'Recharge', value: 16.66 },
+    ],
+  },
+  might_of_the_empire: {
+    name: 'Might of the Empire',
+    aspects: [
+      { stat: 'Damage', value: 16.66 },
+      { stat: 'Recharge', value: 16.66 },
+    ],
+  },
+  resistance_tactics: {
+    name: 'Resistance Tactics',
+    aspects: [
+      { stat: 'Damage', value: 16.66 },
+      { stat: 'Recharge', value: 16.66 },
+    ],
+  },
+  syndicate_techniques: {
+    name: 'Syndicate Techniques',
+    aspects: [
+      { stat: 'Damage', value: 16.66 },
+      { stat: 'Recharge', value: 16.66 },
+    ],
+  },
+  will_of_the_seers: {
+    name: 'Will of the Seers',
+    aspects: [
+      { stat: 'Damage', value: 16.66 },
+      { stat: 'Recharge', value: 16.66 },
+    ],
+  },
+};
+
+// ============================================
 // COMMON IO CALCULATION
 // ============================================
 

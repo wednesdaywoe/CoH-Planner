@@ -89,27 +89,27 @@ export function ChronologicalInherentsSection({ inherents }: ChronologicalInhere
 
   const handleAddSlots = (powerName: string, count: number) => {
     for (let i = 0; i < count; i++) {
-      addSlot(powerName);
+      addSlot(powerName, 'inherent');
     }
   };
 
   const handleRemoveSlot = (powerName: string, slotIndex: number) => {
-    removeSlot(powerName, slotIndex);
+    removeSlot(powerName, slotIndex, 'inherent');
   };
 
   const handleRemoveAllSlots = (powerName: string, totalSlots: number) => {
     for (let i = totalSlots - 1; i > 0; i--) {
-      removeSlot(powerName, i);
+      removeSlot(powerName, i, 'inherent');
     }
   };
 
   const handleClearEnhancement = (powerName: string, slotIndex: number) => {
-    clearEnhancement(powerName, slotIndex);
+    clearEnhancement(powerName, slotIndex, 'inherent');
   };
 
   const handleClearAllEnhancements = (powerName: string, totalSlots: number) => {
     for (let i = 0; i < totalSlots; i++) {
-      clearEnhancement(powerName, i);
+      clearEnhancement(powerName, i, 'inherent');
     }
   };
 
@@ -288,7 +288,7 @@ function InherentGroup({
               onRemoveAllSlots={() => onRemoveAllSlots(power.internalName, power.slots.length)}
               onClearEnhancement={(index) => onClearEnhancement(power.internalName, index)}
               onClearAllEnhancements={() => onClearAllEnhancements(power.internalName, power.slots.length)}
-              onOpenPicker={(slotIndex) => openEnhancementPicker(power.internalName, 'Inherent', slotIndex)}
+              onOpenPicker={(slotIndex) => openEnhancementPicker(power.internalName, 'Inherent', slotIndex, undefined, undefined, 'inherent')}
               onHover={() => onPowerHover(power)}
               onLeave={onPowerLeave}
               onEnhancementHover={(index) => onEnhancementHover(power.internalName, index)}

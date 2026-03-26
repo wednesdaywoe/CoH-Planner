@@ -88,15 +88,15 @@ interface BuildActions {
   removePool: (poolId: string) => void;
   setEpicPool: (poolId: string | null) => void;
 
-  // Slots
-  addSlot: (powerName: string) => boolean;
-  removeSlot: (powerName: string, slotIndex: number) => boolean;
+  // Slots (category is optional — disambiguates when multiple powers share the same internalName)
+  addSlot: (powerName: string, category?: PowerCategory) => boolean;
+  removeSlot: (powerName: string, slotIndex: number, category?: PowerCategory) => boolean;
   clearSlotOrder: () => void;
 
   // Enhancements
-  setEnhancement: (powerName: string, slotIndex: number, enhancement: Enhancement) => void;
-  clearEnhancement: (powerName: string, slotIndex: number) => void;
-  clearAllEnhancements: (powerName: string) => void;
+  setEnhancement: (powerName: string, slotIndex: number, enhancement: Enhancement, category?: PowerCategory) => void;
+  clearEnhancement: (powerName: string, slotIndex: number, category?: PowerCategory) => void;
+  clearAllEnhancements: (powerName: string, category?: PowerCategory) => void;
 
   // Settings
   setLevel: (level: number) => void;
@@ -126,7 +126,7 @@ interface BuildActions {
   clearShoppingListAcquired: () => void;
 
   // Power toggle (for stat calculations)
-  togglePowerActive: (powerName: string) => void;
+  togglePowerActive: (powerName: string, category?: PowerCategory) => void;
   /** Set the active sub-power for powers with mutually exclusive stances (e.g., Adaptation) */
   setActiveSubPower: (parentPowerName: string, subPowerName: string | null) => void;
 
@@ -134,10 +134,11 @@ interface BuildActions {
   getTotalSlotsUsed: () => number;
   getSlotsRemaining: () => number;
   getActiveSetBonuses: () => Array<{ setId: string; bonusIndex: number }>;
-  canAddSlot: (powerName: string) => boolean;
+  canAddSlot: (powerName: string, category?: PowerCategory) => boolean;
   canAddPool: () => boolean;
   canSelectEpicPool: () => boolean;
   isUniqueEnhancementSlotted: (setId: string, pieceNum: number) => boolean;
+  isPrestigeSlotted: (prestigeId: string) => boolean;
 
   // Import/Export
   exportBuild: () => string;
@@ -393,37 +394,87 @@ function syncBuildDefinitions(build: Build): void {
 }
 
 /**
- * Find a power across all categories
+ * Find a power across all categories.
+ * When `categoryHint` is provided, searches that category first to avoid
+ * collisions when multiple powers share the same internalName.
  */
 function findPower(
   build: Build,
-  powerName: string
+  powerName: string,
+  categoryHint?: PowerCategory
 ): { power: SelectedPower; category: PowerCategory } | null {
-  // Check primary
-  const primaryPower = build.primary.powers.find((p) => p.internalName === powerName);
-  if (primaryPower) return { power: primaryPower, category: 'primary' };
-
-  // Check secondary
-  const secondaryPower = build.secondary.powers.find((p) => p.internalName === powerName);
-  if (secondaryPower) return { power: secondaryPower, category: 'secondary' };
-
-  // Check pools
-  for (const pool of build.pools) {
-    const poolPower = pool.powers.find((p) => p.internalName === powerName);
-    if (poolPower) return { power: poolPower, category: 'pool' };
+  // If a category hint is provided, check that category first
+  if (categoryHint) {
+    const hinted = findPowerInCategory(build, powerName, categoryHint);
+    if (hinted) return hinted;
   }
 
-  // Check epic pool
-  if (build.epicPool) {
-    const epicPower = build.epicPool.powers.find((p) => p.internalName === powerName);
-    if (epicPower) return { power: epicPower, category: 'epic' };
+  // Fall through to standard search order
+  if (categoryHint !== 'primary') {
+    const primaryPower = build.primary.powers.find((p) => p.internalName === powerName);
+    if (primaryPower) return { power: primaryPower, category: 'primary' };
   }
 
-  // Check inherents
-  const inherentPower = build.inherents.find((p) => p.internalName === powerName);
-  if (inherentPower) return { power: inherentPower, category: 'inherent' };
+  if (categoryHint !== 'secondary') {
+    const secondaryPower = build.secondary.powers.find((p) => p.internalName === powerName);
+    if (secondaryPower) return { power: secondaryPower, category: 'secondary' };
+  }
+
+  if (categoryHint !== 'pool') {
+    for (const pool of build.pools) {
+      const poolPower = pool.powers.find((p) => p.internalName === powerName);
+      if (poolPower) return { power: poolPower, category: 'pool' };
+    }
+  }
+
+  if (categoryHint !== 'epic') {
+    if (build.epicPool) {
+      const epicPower = build.epicPool.powers.find((p) => p.internalName === powerName);
+      if (epicPower) return { power: epicPower, category: 'epic' };
+    }
+  }
+
+  if (categoryHint !== 'inherent') {
+    const inherentPower = build.inherents.find((p) => p.internalName === powerName);
+    if (inherentPower) return { power: inherentPower, category: 'inherent' };
+  }
 
   return null;
+}
+
+/** Find a power in a specific category only. */
+function findPowerInCategory(
+  build: Build,
+  powerName: string,
+  category: PowerCategory
+): { power: SelectedPower; category: PowerCategory } | null {
+  switch (category) {
+    case 'primary': {
+      const p = build.primary.powers.find((p) => p.internalName === powerName);
+      return p ? { power: p, category: 'primary' } : null;
+    }
+    case 'secondary': {
+      const p = build.secondary.powers.find((p) => p.internalName === powerName);
+      return p ? { power: p, category: 'secondary' } : null;
+    }
+    case 'pool': {
+      for (const pool of build.pools) {
+        const p = pool.powers.find((p) => p.internalName === powerName);
+        if (p) return { power: p, category: 'pool' };
+      }
+      return null;
+    }
+    case 'epic': {
+      const p = build.epicPool?.powers.find((p) => p.internalName === powerName);
+      return p ? { power: p, category: 'epic' } : null;
+    }
+    case 'inherent': {
+      const p = build.inherents.find((p) => p.internalName === powerName);
+      return p ? { power: p, category: 'inherent' } : null;
+    }
+    default:
+      return null;
+  }
 }
 
 /**
@@ -562,6 +613,41 @@ function isUniqueEnhancementSlotted(build: Build, setId: string, pieceNum: numbe
     if (checkSlots(power.slots)) return true;
   }
 
+  return false;
+}
+
+/**
+ * Check if a prestige enhancement is already slotted anywhere in the build.
+ * Prestige enhancements are unique per character (max 1 of each).
+ */
+function isPrestigeEnhancementSlotted(build: Build, prestigeId: string): boolean {
+  const checkSlots = (slots: (Enhancement | null)[]): boolean => {
+    return slots.some((enh) => {
+      if (!enh || enh.type !== 'special') return false;
+      return (enh as { category: string; id: string }).category === 'prestige' &&
+        (enh as { id: string }).id === prestigeId;
+    });
+  };
+
+  for (const power of build.primary.powers) {
+    if (checkSlots(power.slots)) return true;
+  }
+  for (const power of build.secondary.powers) {
+    if (checkSlots(power.slots)) return true;
+  }
+  for (const pool of build.pools) {
+    for (const power of pool.powers) {
+      if (checkSlots(power.slots)) return true;
+    }
+  }
+  if (build.epicPool) {
+    for (const power of build.epicPool.powers) {
+      if (checkSlots(power.slots)) return true;
+    }
+  }
+  for (const power of build.inherents) {
+    if (checkSlots(power.slots)) return true;
+  }
   return false;
 }
 
@@ -1169,9 +1255,9 @@ export const useBuildStore = create<BuildStore>()(
       },
 
       // Slots
-      addSlot: (powerName) => {
+      addSlot: (powerName, categoryHint) => {
         const state = get();
-        const found = findPower(state.build, powerName);
+        const found = findPower(state.build, powerName, categoryHint);
         if (!found) return false;
 
         const { power, category } = found;
@@ -1199,9 +1285,9 @@ export const useBuildStore = create<BuildStore>()(
         return true;
       },
 
-      removeSlot: (powerName, slotIndex) => {
+      removeSlot: (powerName, slotIndex, categoryHint) => {
         const state = get();
-        const found = findPower(state.build, powerName);
+        const found = findPower(state.build, powerName, categoryHint);
         if (!found) return false;
 
         const { power, category } = found;
@@ -1246,9 +1332,9 @@ export const useBuildStore = create<BuildStore>()(
       },
 
       // Enhancements
-      setEnhancement: (powerName, slotIndex, enhancement) => {
+      setEnhancement: (powerName, slotIndex, enhancement, categoryHint) => {
         const state = get();
-        const found = findPower(state.build, powerName);
+        const found = findPower(state.build, powerName, categoryHint);
         if (!found) return;
 
         historyCheckpoint();
@@ -1267,13 +1353,13 @@ export const useBuildStore = create<BuildStore>()(
         });
       },
 
-      clearEnhancement: (powerName, slotIndex) => {
-        get().setEnhancement(powerName, slotIndex, null as unknown as Enhancement);
+      clearEnhancement: (powerName, slotIndex, categoryHint) => {
+        get().setEnhancement(powerName, slotIndex, null as unknown as Enhancement, categoryHint);
       },
 
-      clearAllEnhancements: (powerName) => {
+      clearAllEnhancements: (powerName, categoryHint) => {
         const state = get();
-        const found = findPower(state.build, powerName);
+        const found = findPower(state.build, powerName, categoryHint);
         if (!found) return;
 
         historyCheckpoint();
@@ -1473,10 +1559,13 @@ export const useBuildStore = create<BuildStore>()(
         })),
 
       // Power toggle (for stat calculations)
-      togglePowerActive: (powerName) => {
+      togglePowerActive: (powerName, categoryHint) => {
+        const state = get();
+        const found = findPower(state.build, powerName, categoryHint);
+        if (!found) return;
         historyCheckpoint();
-        set((state) => ({
-          build: applyToAllPowers(state.build, (powers) =>
+        set((s) => ({
+          build: applyPowerUpdate(s.build, found.category, (powers) =>
             powers.map((p) =>
               p.internalName === powerName ? { ...p, isActive: !p.isActive } : p
             )
@@ -1521,9 +1610,9 @@ export const useBuildStore = create<BuildStore>()(
         return bonuses;
       },
 
-      canAddSlot: (powerName) => {
+      canAddSlot: (powerName, categoryHint) => {
         const state = get();
-        const found = findPower(state.build, powerName);
+        const found = findPower(state.build, powerName, categoryHint);
         if (!found) return false;
 
         return (
@@ -1538,6 +1627,9 @@ export const useBuildStore = create<BuildStore>()(
 
       isUniqueEnhancementSlotted: (setId: string, pieceNum: number) =>
         isUniqueEnhancementSlotted(get().build, setId, pieceNum),
+
+      isPrestigeSlotted: (prestigeId: string) =>
+        isPrestigeEnhancementSlotted(get().build, prestigeId),
 
       // Import/Export
       exportBuild: () => {

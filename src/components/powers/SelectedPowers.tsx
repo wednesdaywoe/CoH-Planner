@@ -54,17 +54,17 @@ export function SelectedPowers({ category }: SelectedPowersProps) {
 
   const handleAddSlots = (powerName: string, count: number) => {
     for (let i = 0; i < count; i++) {
-      addSlot(powerName);
+      addSlot(powerName, category);
     }
   };
 
   const handleRemoveSlot = (powerName: string, slotIndex: number) => {
-    removeSlot(powerName, slotIndex);
+    removeSlot(powerName, slotIndex, category);
   };
 
   const handleRemoveAllSlots = (powerName: string, totalSlots: number) => {
     for (let i = totalSlots - 1; i > 0; i--) {
-      removeSlot(powerName, i);
+      removeSlot(powerName, i, category);
     }
   };
 
@@ -92,12 +92,12 @@ export function SelectedPowers({ category }: SelectedPowersProps) {
   };
 
   const handleClearEnhancement = (powerName: string, slotIndex: number) => {
-    clearEnhancement(powerName, slotIndex);
+    clearEnhancement(powerName, slotIndex, category);
   };
 
   const handleClearAllEnhancements = (powerName: string, totalSlots: number) => {
     for (let i = 0; i < totalSlots; i++) {
-      clearEnhancement(powerName, i);
+      clearEnhancement(powerName, i, category);
     }
   };
 
@@ -186,7 +186,7 @@ export function SelectedPowers({ category }: SelectedPowersProps) {
                   selectedPower={power}
                   toggleSize={shouldShowToggle(power) ? 'md' : undefined}
                   isActive={power.isActive ?? false}
-                  onToggle={() => togglePowerActive(power.internalName)}
+                  onToggle={() => togglePowerActive(power.internalName, category)}
                   slots={power.slots}
                   maxSlots={power.maxSlots}
                   onRemove={() => handleRemove(power.internalName)}
@@ -195,7 +195,7 @@ export function SelectedPowers({ category }: SelectedPowersProps) {
                   onRemoveAllSlots={() => handleRemoveAllSlots(power.internalName, power.slots.length)}
                   onClearEnhancement={(index) => handleClearEnhancement(power.internalName, index)}
                   onClearAllEnhancements={() => handleClearAllEnhancements(power.internalName, power.slots.length)}
-                  onOpenPicker={(slotIndex) => openEnhancementPicker(power.internalName, power.powerSet || powersetId, slotIndex)}
+                  onOpenPicker={(slotIndex) => openEnhancementPicker(power.internalName, power.powerSet || powersetId, slotIndex, undefined, undefined, category)}
                   onHover={() => handlePowerHover(power)}
                   onLeave={handlePowerLeave}
                   onEnhancementHover={(index) => handleEnhancementHover(power.internalName, index)}
@@ -251,7 +251,7 @@ export function SelectedPowers({ category }: SelectedPowersProps) {
                           onRemoveAllSlots={() => handleRemoveAllSlots(subPower.internalName, subPower.slots.length)}
                           onClearEnhancement={(index) => handleClearEnhancement(subPower.internalName, index)}
                           onClearAllEnhancements={() => handleClearAllEnhancements(subPower.internalName, subPower.slots.length)}
-                          onOpenPicker={(slotIndex) => openEnhancementPicker(subPower.internalName, subPower.powerSet || powersetId, slotIndex)}
+                          onOpenPicker={(slotIndex) => openEnhancementPicker(subPower.internalName, subPower.powerSet || powersetId, slotIndex, undefined, undefined, category)}
                           onHover={() => handlePowerHover(subPower)}
                           onLeave={handlePowerLeave}
                           onEnhancementHover={(index) => handleEnhancementHover(subPower.internalName, index)}

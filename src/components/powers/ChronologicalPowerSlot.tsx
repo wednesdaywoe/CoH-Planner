@@ -151,26 +151,27 @@ export function ChronologicalPowerSlot({
     lockedContent?.type === 'power' &&
     lockedContent.powerName === power.internalName;
 
+  const storeCategory = mapCategoryToStoreCategory(power.category);
+
   const handleRemove = () => {
-    const storeCategory = mapCategoryToStoreCategory(power.category);
     removePower(storeCategory, power.internalName);
   };
 
   const handleAddSlots = (count: number) => {
     for (let i = 0; i < count; i++) {
-      addSlot(power.internalName);
+      addSlot(power.internalName, storeCategory);
     }
   };
 
   const handleClearAllEnhancements = () => {
     for (let i = 0; i < power.slots.length; i++) {
-      clearEnhancement(power.internalName, i);
+      clearEnhancement(power.internalName, i, storeCategory);
     }
   };
 
   const handleRemoveAllSlots = () => {
     for (let i = power.slots.length - 1; i > 0; i--) {
-      removeSlot(power.internalName, i);
+      removeSlot(power.internalName, i, storeCategory);
     }
   };
 
@@ -249,16 +250,16 @@ export function ChronologicalPowerSlot({
         categoryBorder={CATEGORY_COLORS[power.category]}
         toggleSize={shouldShowToggle(power) ? 'md' : undefined}
         isActive={power.isActive ?? false}
-        onToggle={() => togglePowerActive(power.internalName)}
+        onToggle={() => togglePowerActive(power.internalName, storeCategory)}
         slots={power.slots}
         maxSlots={power.maxSlots}
         onRemove={handleRemove}
         onAddSlots={handleAddSlots}
-        onRemoveSlot={(index) => removeSlot(power.internalName, index)}
+        onRemoveSlot={(index) => removeSlot(power.internalName, index, storeCategory)}
         onRemoveAllSlots={handleRemoveAllSlots}
-        onClearEnhancement={(index) => clearEnhancement(power.internalName, index)}
+        onClearEnhancement={(index) => clearEnhancement(power.internalName, index, storeCategory)}
         onClearAllEnhancements={handleClearAllEnhancements}
-        onOpenPicker={(slotIndex) => openEnhancementPicker(power.internalName, power.powerSet, slotIndex)}
+        onOpenPicker={(slotIndex) => openEnhancementPicker(power.internalName, power.powerSet, slotIndex, undefined, undefined, storeCategory)}
         onHover={handlePowerHover}
         onLeave={handlePowerLeave}
         onEnhancementHover={handleEnhancementHover}
