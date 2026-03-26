@@ -606,6 +606,15 @@ function extractEffects(templates) {
     // Skip deactivation-only effects (temporary bursts on toggle off, e.g., Reaction Time speed burst)
     if (template.application_type === 'OnDeactivate') continue;
 
+    // Skip combat-suppressed templates (suppressed by attacking, healing, or moving).
+    // These represent "while fully unsuppressed" bonuses (e.g., Hide's massive AoE defense
+    // while not in combat). In a build planner showing combat stats, these don't apply.
+    // Note: the non-suppressed templates on the same power provide the base combat values.
+    const hasCombatSuppress = template.suppress_events?.some(
+      se => se.event === 'AttackedOther' || se.event === 'Healed' || se.event === 'Moved'
+    );
+    if (hasCombatSuppress) continue;
+
     const aspect = template.aspect?.toLowerCase();
     const scale = template.scale || 0;
     const table = template.table;
