@@ -989,7 +989,7 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     getValue: () => 0, // Requires globalBonuses
     format: (v) => Number(v) > 0 ? `+${Number(v)}` : '0',
     color: 'text-amber-400',
-    tooltip: 'Incarnate level shift (from Alpha/Destiny)',
+    tooltip: 'Incarnate level shift (from Alpha, Destiny, and Lore T3+)',
     breakdownKey: 'levelShift',
     breakdownUnit: '',
   },
