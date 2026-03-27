@@ -170,6 +170,7 @@ export interface LoreEffects {
   pets: string[];            // e.g., ['Boss', 'Support (Protected)']
   duration: number;          // pet duration in seconds
   rechargeTime: number;      // seconds (900 or 600)
+  levelShift: number;        // 0 for T1/T2, 1 for T3/T4
 }
 
 /**

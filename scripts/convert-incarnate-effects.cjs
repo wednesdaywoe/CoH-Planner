@@ -797,12 +797,14 @@ function extractLore() {
     const displayName = data.display_name || powerId;
     const rechargeTime = data.recharge_time || 900;
 
-    // Extract pets from Create_Entity templates
+    // Extract pets from Create_Entity templates and check for level shift grants
     const pets = [];
     let duration = 300;
+    let levelShift = 0;
     for (const eff of data.effects || []) {
       for (const t of eff.templates || []) {
-        if ((t.attribs || [])[0] === 'Create_Entity') {
+        const attrib = (t.attribs || [])[0];
+        if (attrib === 'Create_Entity') {
           const entityDef = (t.params || {}).entity_def || '';
           if (entityDef) {
             pets.push(petTypeFromEntityDef(entityDef));
@@ -810,6 +812,16 @@ function extractLore() {
           // Extract duration
           const durMatch = (t.duration || '').match(/([\d.]+)\s*seconds?/i);
           if (durMatch) duration = parseFloat(durMatch[1]);
+        }
+        // Check for level shift grant (via Lore_Silent.Level_Shift)
+        if (attrib === 'Grant_Power') {
+          const pnames = [
+            ...(t.power_names || []),
+            ...((t.params && t.params.power_names) || []),
+          ];
+          if (pnames.some(p => p.includes('Level_Shift'))) {
+            levelShift = 1;
+          }
         }
       }
     }
@@ -822,6 +834,7 @@ function extractLore() {
       pets: pets.length > 0 ? pets : ['Unknown'],
       duration,
       rechargeTime: round(rechargeTime, 1),
+      levelShift,
     };
 
     console.log(`  ${displayName}: ${faction} pets=[${pets.join(', ')}] ${duration}s/${rechargeTime}s`);
@@ -985,6 +998,7 @@ function generateTypeScript(alpha, destiny, hybrid, iface, judgement, lore) {
   lines.push('  pets: string[];');
   lines.push('  duration: number;');
   lines.push('  rechargeTime: number;');
+  lines.push('  levelShift: number;');
   lines.push('}> = {');
   for (const [id, data] of Object.entries(lore)) {
     lines.push(`  // ${data.displayName}`);
@@ -993,6 +1007,7 @@ function generateTypeScript(alpha, destiny, hybrid, iface, judgement, lore) {
       pets: data.pets,
       duration: data.duration,
       rechargeTime: data.rechargeTime,
+      levelShift: data.levelShift || 0,
     })},`);
   }
   lines.push('};');
