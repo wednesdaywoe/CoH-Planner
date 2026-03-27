@@ -58,7 +58,7 @@ export const Elude: Power = {
       "defenseBuff": 180,
       "recoveryBuff": 180,
       "movement": 180,
-      "elusivity": 180,
+      "debuffResistance": 180,
       "recoveryDebuff": 20
     },
     "recoveryBuff": {
@@ -75,8 +75,8 @@ export const Elude: Power = {
         "table": "Melee_SpeedRunning"
       }
     },
-    "elusivity": {
-      "all": {
+    "debuffResistance": {
+      "defense": {
         "scale": 1,
         "table": "Melee_Res_Boolean"
       }

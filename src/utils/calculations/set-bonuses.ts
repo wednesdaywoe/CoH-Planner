@@ -226,9 +226,15 @@ const STAT_NAME_MAP: Record<string, string | null> = {
   range: 'range',
   Range: 'range',
 
-  // Debuff Resistance (slow/recharge debuff resistance — not tracked in dashboard)
-  '+res(recharge_debuff)': null,
-  '+res(slow)': null,
+  // Debuff Resistance
+  '+res(recharge_debuff)': 'debuffresistrecharge',
+  '+res(slow)': 'debuffresistslow',
+
+  // Knockback Resistance (from set bonuses)
+  'knockback_resistance': 'kbresistance',
+
+  // Increased run speed (alternate name)
+  'increased_run_speed': 'runspeed',
 };
 
 /**

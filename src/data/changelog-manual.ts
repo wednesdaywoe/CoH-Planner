@@ -21,15 +21,14 @@ export interface ManualEntry {
 export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   // ─── 2026-03-24 ────────────────────────────────────────────────────────────
   {
-    date: '2026-03-26',
+    date: '2026-03-27',
     items: [
+      { message: 'Fixed KB protection and KB resistance to prevent them from getting merged', type: 'fix' },
+      { message: 'Defense Debuff Res should now be mapped correctly', type: 'fix' },
+      { message: 'Mez and debuff res from Super Reflexes autos should now register and factor into totals', type: 'fix' },
+      { message: 'Added mapping for debuff resistance stats from set bonuses', type: 'fix' },
       { message: 'Added Prestige Enhancements just because SpectralShard asked nicely', type: 'feat' },
       { message: 'Added Slow enhancement to Storm Blast Cloudburst', type: 'fix' },
-      { message: 'More fixes for internal power name collisions', type: 'feat' },
-      { message: 'The info panel now persists the last-hovered power until you hover a different one', type: 'feat' },
-      { message: 'enduranceDiscount should now be processed. 27 powerset powers plus the epic pool versions should now contribute to endurance discount', type: 'fix' },
-      { message: 'Resilience missing icon: Fixed all 5 archetype variants and added an ICON_OVERRIDES map to the conversion script to prevent regressions', type: 'update' },
-      { message: 'Fixed Hybrid Melee regeneration 250% → 30%. The regeneration values in the Hybrid Melee incarnate data were stored as raw multipliers instead of decimals', type: 'update' },
     ],
   },
 ];

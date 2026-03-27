@@ -39,16 +39,13 @@ export const AthleticRegulation: Power = {
     },
     "durations": {
       "movement": 2.25,
-      "elusivity": 2.25,
       "debuffResistance": 2.25
     },
-    "elusivity": {
-      "all": {
+    "debuffResistance": {
+      "defense": {
         "scale": 0.75,
         "table": "Melee_Res_Boolean"
-      }
-    },
-    "debuffResistance": {
+      },
       "movement": {
         "scale": 0.4,
         "table": "Melee_Ones"

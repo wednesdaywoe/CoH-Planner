@@ -768,9 +768,10 @@ function extractEffects(templates, powerName) {
       // ========== BASE_DEFENSE special handling ==========
       if (attrib === 'base_defense' || attrib === 'defense') {
         if (aspect === 'resistance') {
-          if (!effects.elusivity) effects.elusivity = {};
-          effects.elusivity.all = makeEffect();
-          recordDuration('elusivity');
+          // Defense debuff resistance (reduces effectiveness of -DEF debuffs)
+          if (!effects.debuffResistance) effects.debuffResistance = {};
+          effects.debuffResistance.defense = makeEffect();
+          recordDuration('debuffResistance');
         } else {
           if (isDebuff) {
             effects.defenseDebuff = makeEffect();
@@ -820,13 +821,20 @@ function extractEffects(templates, powerName) {
       // Multiple templates accumulate (e.g., Acrobatics has unenhanceable base + enhanceable portion)
       if (KNOCKBACK_TYPES[attrib]) {
         const kbType = KNOCKBACK_TYPES[attrib];
-        // Accumulate scales when multiple templates share the same table
-        if (effects[kbType] && effects[kbType].table === table) {
-          effects[kbType].scale += Math.abs(scale);
+        if (aspect === 'resistance') {
+          // KB/KU resistance (reduces duration/magnitude of KB applied to you)
+          if (!effects.mezResistance) effects.mezResistance = {};
+          effects.mezResistance[kbType] = makeEffect();
+          recordDuration('mezResistance');
         } else {
-          effects[kbType] = makeEffect();
+          // KB/KU protection (magnitude threshold) — accumulate if same table
+          if (effects[kbType] && effects[kbType].table === table) {
+            effects[kbType].scale += Math.abs(scale);
+          } else {
+            effects[kbType] = makeEffect();
+          }
+          recordDuration(kbType);
         }
-        recordDuration(kbType);
         continue;
       }
 

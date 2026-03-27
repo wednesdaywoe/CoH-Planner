@@ -324,6 +324,13 @@ const STAT_TO_GLOBAL: Record<string, keyof GlobalBonuses> = {
 
   // Mez Protection (from IO set bonuses — value is stored as %, divide by 100 for mag)
   kbprotection: 'protKnockback',
+
+  // Debuff Resistance (from IO set bonuses)
+  debuffresistrecharge: 'debuffResistRecharge',
+  debuffresistslow: 'debuffResistSlow',
+
+  // Knockback Resistance (from IO set bonuses)
+  kbresistance: 'mezResistKnockback',
 };
 
 /**
