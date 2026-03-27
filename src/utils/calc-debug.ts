@@ -281,6 +281,7 @@ export function debugFinalStats(global: Record<string, number>): void {
 /** Log net endurance calculation */
 export function debugNetEndurance(
   maxEnd: number,
+  maxEndBonus: number,
   recoveryMod: number,
   recoveryEndPerSec: number,
   toggleCost: number,
@@ -289,7 +290,7 @@ export function debugNetEndurance(
 ): void {
   if (!_enabled) return;
   debugGroup('Endurance Budget');
-  debugFormula(`maxEnd = 100 × (1 + ${formatNum(recoveryMod)}%) = ${formatNum(maxEnd)}`);
+  debugFormula(`maxEnd = 100 + ${formatNum(maxEndBonus)} bonuses = ${formatNum(maxEnd)}`);
   debugFormula(`recovery/sec = (${formatNum(maxEnd)} / 60) × (1 + ${formatNum(recoveryMod)}%) = ${formatNum(recoveryEndPerSec)}/sec`);
   if (endDiscount > 0) {
     debugFormula(`toggle cost (after ${formatNum(endDiscount)}% discount) = ${formatNum(toggleCost)}/sec`);

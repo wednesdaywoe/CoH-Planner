@@ -122,6 +122,12 @@ export interface HybridEffects {
   // Duration info
   duration?: number;
   recharge?: number;
+
+  // Passive bonuses (always-on just by equipping the Hybrid power)
+  passiveDamage?: number;          // Assault: +Dmg (decimal, e.g. 0.025 = 2.5%)
+  passiveStatusResist?: number;    // Control: Status Resistance (decimal, e.g. 0.10 = 10%)
+  passiveRegeneration?: number;    // Melee: +Regen (decimal, e.g. 0.075 = 7.5%)
+  passiveEndDiscount?: number;     // Support: End Discount (decimal, e.g. 0.025 = 2.5%)
 }
 
 /**
@@ -1045,66 +1051,77 @@ const DESTINY_EFFECTS: Record<string, DestinyEffects> = {
 
 const HYBRID_EFFECTS: Record<string, HybridEffects> = {
   // ========== ASSAULT ==========
-  // Damage bonuses
+  // Damage procs (toggle) + passive damage bonus (always-on)
   'assault_genome': {
     damageProc: 0.10,
+    passiveDamage: 0.025,
     duration: 120,
     recharge: 120,
   },
   'assault_core_genome': {
     damageProc: 0.15,
+    passiveDamage: 0.05,
     duration: 120,
     recharge: 120,
   },
   'assault_radial_genome': {
     doublehitChance: 0.10,
+    passiveDamage: 0.05,
     duration: 120,
     recharge: 120,
   },
   'assault_total_core_graft': {
     damageProc: 0.20,
+    passiveDamage: 0.075,
     duration: 120,
     recharge: 120,
   },
   'assault_partial_core_graft': {
     damageProc: 0.15,
     doublehitChance: 0.10,
+    passiveDamage: 0.075,
     duration: 120,
     recharge: 120,
   },
   'assault_partial_radial_graft': {
     damageProc: 0.10,
     doublehitChance: 0.15,
+    passiveDamage: 0.075,
     duration: 120,
     recharge: 120,
   },
   'assault_total_radial_graft': {
     doublehitChance: 0.20,
+    passiveDamage: 0.075,
     duration: 120,
     recharge: 120,
   },
   'assault_core_embodiment': {
     damageProc: 0.25,
+    passiveDamage: 0.10,
     duration: 120,
     recharge: 120,
   },
   'assault_radial_embodiment': {
     doublehitChance: 0.25,
+    passiveDamage: 0.10,
     duration: 120,
     recharge: 120,
   },
 
   // ========== SUPPORT ==========
-  // Team buffs
+  // Team buffs (toggle) + passive endurance discount (always-on)
   'support_genome': {
     damage: 0.10,
     defense: 0.05,
+    passiveEndDiscount: 0.025,
     duration: 120,
     recharge: 120,
   },
   'support_core_genome': {
     damage: 0.15,
     defense: 0.075,
+    passiveEndDiscount: 0.05,
     duration: 120,
     recharge: 120,
   },
@@ -1112,6 +1129,7 @@ const HYBRID_EFFECTS: Record<string, HybridEffects> = {
     damage: 0.15,
     accuracy: 0.10,
     defense: 0.075,
+    passiveEndDiscount: 0.05,
     duration: 120,
     recharge: 120,
   },
@@ -1119,12 +1137,14 @@ const HYBRID_EFFECTS: Record<string, HybridEffects> = {
     damage: 0.20,
     accuracy: 0.15,
     defense: 0.10,
+    passiveEndDiscount: 0.075,
     duration: 120,
     recharge: 120,
   },
   'support_partial_core_graft': {
     damage: 0.15,
     defense: 0.10,
+    passiveEndDiscount: 0.075,
     duration: 120,
     recharge: 120,
   },
@@ -1132,6 +1152,7 @@ const HYBRID_EFFECTS: Record<string, HybridEffects> = {
     damage: 0.15,
     accuracy: 0.10,
     defense: 0.075,
+    passiveEndDiscount: 0.075,
     duration: 120,
     recharge: 120,
   },
@@ -1139,6 +1160,7 @@ const HYBRID_EFFECTS: Record<string, HybridEffects> = {
     damage: 0.20,
     accuracy: 0.15,
     defense: 0.10,
+    passiveEndDiscount: 0.075,
     duration: 120,
     recharge: 120,
   },
@@ -1146,6 +1168,7 @@ const HYBRID_EFFECTS: Record<string, HybridEffects> = {
     damage: 0.25,
     accuracy: 0.20,
     defense: 0.15,
+    passiveEndDiscount: 0.10,
     duration: 120,
     recharge: 120,
   },
@@ -1153,26 +1176,31 @@ const HYBRID_EFFECTS: Record<string, HybridEffects> = {
     damage: 0.25,
     accuracy: 0.20,
     defense: 0.15,
+    passiveEndDiscount: 0.10,
     duration: 120,
     recharge: 120,
   },
 
   // ========== MELEE ==========
-  // Defensive bonuses (regeneration values are decimals: 0.10 = +10%)
+  // Defensive bonuses (toggle) + passive regeneration (always-on)
+  // Regeneration values are decimals: 0.10 = +10%
   'melee_genome': {
     regeneration: 0.10,
+    passiveRegeneration: 0.075,
     duration: 120,
     recharge: 120,
   },
   'melee_core_genome': {
     regeneration: 0.15,
     resistanceAll: 0.05,
+    passiveRegeneration: 0.15,
     duration: 120,
     recharge: 120,
   },
   'melee_radial_genome': {
     regeneration: 0.15,
     defenseAll: 0.03,
+    passiveRegeneration: 0.15,
     duration: 120,
     recharge: 120,
   },
@@ -1180,18 +1208,21 @@ const HYBRID_EFFECTS: Record<string, HybridEffects> = {
     regeneration: 0.20,
     resistanceAll: 0.10,
     statusProtection: 3,
+    passiveRegeneration: 0.225,
     duration: 120,
     recharge: 120,
   },
   'melee_partial_core_graft': {
     regeneration: 0.15,
     resistanceAll: 0.075,
+    passiveRegeneration: 0.225,
     duration: 120,
     recharge: 120,
   },
   'melee_partial_radial_graft': {
     regeneration: 0.15,
     defenseAll: 0.05,
+    passiveRegeneration: 0.225,
     duration: 120,
     recharge: 120,
   },
@@ -1199,6 +1230,7 @@ const HYBRID_EFFECTS: Record<string, HybridEffects> = {
     regeneration: 0.20,
     defenseAll: 0.07,
     statusProtection: 3,
+    passiveRegeneration: 0.225,
     duration: 120,
     recharge: 120,
   },
@@ -1206,6 +1238,7 @@ const HYBRID_EFFECTS: Record<string, HybridEffects> = {
     regeneration: 0.30,
     resistanceAll: 0.15,
     statusProtection: 5,
+    passiveRegeneration: 0.30,
     duration: 120,
     recharge: 120,
   },
@@ -1213,63 +1246,73 @@ const HYBRID_EFFECTS: Record<string, HybridEffects> = {
     regeneration: 0.30,
     defenseAll: 0.10,
     statusProtection: 5,
+    passiveRegeneration: 0.30,
     duration: 120,
     recharge: 120,
   },
 
   // ========== CONTROL ==========
-  // Mez effects + containment damage proc (Waylay)
+  // Mez effects + containment damage proc (toggle) + passive status resistance (always-on)
   'control_genome': {
     mezMagnitudeBonus: 0,
     containmentScale: 0.3, containmentTableName: 'Melee_Tempdamage',
+    passiveStatusResist: 0.10,
     duration: 120,
     recharge: 120,
   },
   'control_core_genome': {
     mezMagnitudeBonus: 1,
     containmentScale: 0.3, containmentTableName: 'Melee_Tempdamage',
+    passiveStatusResist: 0.20,
     duration: 120,
     recharge: 120,
   },
   'control_radial_genome': {
     mezMagnitudeBonus: 0,
     containmentScale: 0.3, containmentTableName: 'Melee_Tempdamage',
+    passiveStatusResist: 0.20,
     duration: 120,
     recharge: 120,
   },
   'control_total_core_graft': {
     mezMagnitudeBonus: 1,
     containmentScale: 0.3, containmentTableName: 'Melee_Tempdamage',
+    passiveStatusResist: 0.30,
     duration: 120,
     recharge: 120,
   },
   'control_partial_core_graft': {
     mezMagnitudeBonus: 1,
     containmentScale: 0.3, containmentTableName: 'Melee_Tempdamage',
+    passiveStatusResist: 0.30,
     duration: 120,
     recharge: 120,
   },
   'control_partial_radial_graft': {
     mezMagnitudeBonus: 1,
     containmentScale: 0.3, containmentTableName: 'Melee_Tempdamage',
+    passiveStatusResist: 0.30,
     duration: 120,
     recharge: 120,
   },
   'control_total_radial_graft': {
     mezMagnitudeBonus: 0,
     containmentScale: 0.3, containmentTableName: 'Melee_Tempdamage',
+    passiveStatusResist: 0.30,
     duration: 120,
     recharge: 120,
   },
   'control_core_embodiment': {
     mezMagnitudeBonus: 1,
     containmentScale: 0.3, containmentTableName: 'Melee_Tempdamage',
+    passiveStatusResist: 0.40,
     duration: 120,
     recharge: 120,
   },
   'control_radial_embodiment': {
     mezMagnitudeBonus: 0,
     containmentScale: 0.3, containmentTableName: 'Melee_Tempdamage',
+    passiveStatusResist: 0.40,
     duration: 120,
     recharge: 120,
   },

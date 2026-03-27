@@ -54,6 +54,21 @@
   animation: pulse-glow 2s ease-in-out infinite;
 }
 
+@keyframes pulse-magenta {
+  0%, 100% {
+    box-shadow: 0 0 4px rgba(214, 43, 206, 0.3);
+    border-color: rgba(214, 43, 206, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 12px rgba(214, 43, 206, 0.6), 0 0 24px rgba(214, 43, 206, 0.2);
+    border-color: rgba(214, 43, 206, 0.8);
+  }
+}
+
+.animate-pulse-magenta {
+  animation: pulse-magenta 2s ease-in-out infinite;
+}
+
 /* Base styles */
 body {
   @apply bg-gray-900 text-gray-100;

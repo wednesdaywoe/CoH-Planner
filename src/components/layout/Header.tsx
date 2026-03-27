@@ -314,7 +314,7 @@ function BuildIdentityPopover() {
         onClick={() => setOpen(!open)}
         className={`flex items-center gap-1.5 px-2 py-1.5 text-xs border rounded transition-colors ${
           isIncomplete
-            ? 'text-amber-300 bg-amber-900/40 hover:bg-amber-800/50 border-amber-600/50'
+            ? 'text-amber-300 bg-amber-900/40 hover:bg-amber-800/50 border-amber-600/50 animate-pulse-magenta'
             : 'text-slate-200 bg-slate-700/50 hover:bg-slate-600/60 border-slate-600'
         }`}
         title="Set archetype and powersets"

@@ -2362,6 +2362,48 @@ function applyIncarnateBonuses(
     }
   }
 
+  // Hybrid passive bonuses — always-on just by equipping, regardless of toggle state
+  if (incarnates.hybrid) {
+    const hybridEffects = getHybridEffects(incarnates.hybrid.powerId);
+    if (hybridEffects) {
+      const passiveName = `${incarnates.hybrid.displayName} (passive)`;
+
+      // Assault: passive +Damage
+      if (hybridEffects.passiveDamage !== undefined) {
+        const value = hybridEffects.passiveDamage * 100;
+        global.damage += value;
+        addToBreakdown(breakdown, 'damage', { name: passiveName, value, type: 'incarnate' });
+      }
+
+      // Control: passive Status Resistance (all mez types)
+      if (hybridEffects.passiveStatusResist !== undefined) {
+        const value = hybridEffects.passiveStatusResist * 100;
+        const mezTypes: (keyof GlobalBonuses)[] = [
+          'mezResistHold', 'mezResistStun', 'mezResistImmobilize',
+          'mezResistSleep', 'mezResistConfuse', 'mezResistFear',
+        ];
+        for (const mezKey of mezTypes) {
+          global[mezKey] += value;
+          addToBreakdown(breakdown, mezKey, { name: passiveName, value, type: 'incarnate' });
+        }
+      }
+
+      // Melee: passive +Regeneration
+      if (hybridEffects.passiveRegeneration !== undefined) {
+        const value = hybridEffects.passiveRegeneration * 100;
+        global.regeneration += value;
+        addToBreakdown(breakdown, 'regeneration', { name: passiveName, value, type: 'incarnate' });
+      }
+
+      // Support: passive Endurance Discount
+      if (hybridEffects.passiveEndDiscount !== undefined) {
+        const value = hybridEffects.passiveEndDiscount * 100;
+        global.enduranceDiscount += value;
+        addToBreakdown(breakdown, 'enduranceDiscount', { name: passiveName, value, type: 'incarnate' });
+      }
+    }
+  }
+
   // Interface - These are proc effects that debuff enemies, not player stats
   // We don't add them to global bonuses, but they could be displayed in tooltips
 
@@ -2743,13 +2785,13 @@ export function calculateCharacterTotals(
   }
 
   // Compute net endurance per second (recovery minus toggle costs)
-  // Recovery = MaxEnd × (1 + RecoveryMod) / 60 — max endurance bonuses scale the base rate
-  const totalMaxEnd = 100 * (1 + globalBonuses.maxEndurance / 100);
+  // MaxEndurance bonuses are flat values (accolades +5, power effects in absolute points)
+  const totalMaxEnd = 100 + globalBonuses.maxEndurance;
   const recoveryEndPerSec = (totalMaxEnd / 60) * (1 + globalBonuses.recovery / 100);
   globalBonuses.netEndPerSec = recoveryEndPerSec - globalBonuses.toggleEndCost;
 
   if (_debug) {
-    debugNetEndurance(totalMaxEnd, globalBonuses.recovery, recoveryEndPerSec, globalBonuses.toggleEndCost, globalBonuses.enduranceDiscount, globalBonuses.netEndPerSec);
+    debugNetEndurance(totalMaxEnd, globalBonuses.maxEndurance, globalBonuses.recovery, recoveryEndPerSec, globalBonuses.toggleEndCost, globalBonuses.enduranceDiscount, globalBonuses.netEndPerSec);
     debugFinalStats(globalBonuses as unknown as Record<string, number>);
     debugEnd();
   }

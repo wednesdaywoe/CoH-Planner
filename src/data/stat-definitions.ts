@@ -350,7 +350,8 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'recovery',
     label: 'Rec',
     getValue: (stats) => {
-      const baseRecovery = 1.667; // 100 end in 60 seconds
+      const totalMaxEnd = 100 + (stats.maxEndurance || 0);
+      const baseRecovery = totalMaxEnd / 60;
       const endPerSec = baseRecovery * (1 + stats.recoveryBuff / 100);
       return { perSec: endPerSec, buff: stats.recoveryBuff };
     },
@@ -362,7 +363,7 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
       return `+${Number(v).toFixed(2)}%`;
     },
     color: STAT_COLORS.recovery,
-    tooltip: 'Endurance recovery: base 1.67/sec',
+    tooltip: 'Endurance recovery: maxEnd/60 per second',
     showWhenZero: true,
     breakdownKey: 'recovery',
   },
