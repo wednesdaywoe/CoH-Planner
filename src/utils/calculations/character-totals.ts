@@ -41,6 +41,21 @@ import {
   type EnhancementBonuses,
 } from './enhancement-values';
 import { calculateVigilanceDamageBonus, calculateFuryDamageBonus } from './inherents';
+import {
+  isCalcDebugEnabled,
+  debugBuildContext,
+  debugSetBonuses,
+  debugAlphaBonuses,
+  debugGroup,
+  debugGroupEnd,
+  debugFitnessPower,
+  debugFormula,
+  debugAccolade,
+  debugHitChance,
+  debugFinalStats,
+  debugNetEndurance,
+  debugEnd,
+} from '@/utils/calc-debug';
 
 // ============================================
 // TYPES
@@ -537,6 +552,9 @@ function applyActivePowerBonuses(
     if (!(isAuto || power.isActive) || !power.effects) continue;
 
     const effects = power.effects;
+    const _debugEnabled = isCalcDebugEnabled();
+    // Snapshot global bonuses before this power for diff logging
+    const _debugBefore = _debugEnabled ? { ...global } : null;
 
     // Calculate enhancement bonuses for this power from slotted enhancements
     let enhBonuses: EnhancementBonuses = {};
@@ -1161,7 +1179,56 @@ function applyActivePowerBonuses(
         });
       }
     }
+
+    // Debug: log per-power diff with enhancement and alpha detail
+    if (_debugEnabled && _debugBefore) {
+      const diffs: { stat: string; value: number }[] = [];
+      for (const key of Object.keys(global) as (keyof GlobalBonuses)[]) {
+        const delta = global[key] - _debugBefore[key];
+        if (Math.abs(delta) > 0.0001) {
+          diffs.push({ stat: key, value: delta });
+        }
+      }
+      // Only log powers that actually contributed something, or have enhancements worth showing
+      const hasEnhBonuses = Object.values(enhBonuses).some(v => v !== undefined && Math.abs(v) > 0.0001);
+      if (diffs.length > 0 || hasEnhBonuses) {
+        debugGroup(`${power.name} (${power.powerType || 'unknown'}${power.isActive ? ', active' : ''})`);
+
+        // Show enhancement bonuses applied to this power
+        if (hasEnhBonuses) {
+          debugGroup('Enhancement Bonuses (post-ED + Alpha)');
+          for (const [aspect, val] of Object.entries(enhBonuses)) {
+            if (val === undefined || Math.abs(val) < 0.0001) continue;
+            const fromAlpha = alphaBonuses[aspect] ?? 0;
+            const fromSlots = val - fromAlpha;
+            let detail = `${aspect}: +${formatDebugNum(val * 100)}%`;
+            if (fromAlpha > 0 && fromSlots > 0) {
+              detail += ` (slots: ${formatDebugNum(fromSlots * 100)}% + alpha: ${formatDebugNum(fromAlpha * 100)}%)`;
+            } else if (fromAlpha > 0) {
+              detail += ` (alpha only)`;
+            }
+            debugFormula(detail);
+          }
+          debugGroupEnd();
+        }
+
+        // Show stat contributions
+        if (diffs.length > 0) {
+          debugGroup('Global Bonus Contributions');
+          for (const d of diffs) {
+            debugFormula(`${d.stat}: ${d.value > 0 ? '+' : ''}${formatDebugNum(d.value)}`);
+          }
+          debugGroupEnd();
+        }
+
+        debugGroupEnd();
+      }
+    }
   }
+}
+
+function formatDebugNum(n: number): string {
+  return Number.isInteger(n) ? n.toString() : n.toFixed(4).replace(/0+$/, '').replace(/\.$/, '');
 }
 
 function extractScaleValue(effect: ScalarOrScaled | undefined): number {
@@ -1179,7 +1246,8 @@ function extractScaleValue(effect: ScalarOrScaled | undefined): number {
 function resolveScaledEffect(
   effect: ScalarOrScaled | undefined,
   archetypeId: string,
-  level: number
+  level: number,
+  _debugContext?: string
 ): number {
   if (effect === undefined) return 0;
   if (typeof effect === 'number') return effect;
@@ -1300,6 +1368,7 @@ function applyFitnessPowerBonuses(
       }
     }
 
+    const _fitnessDebugEffects: { stat: string; base: number; enhanced: number; enhBonus: number }[] = [];
     for (const effect of effects) {
       // Get the enhancement multiplier for this effect's type
       const enhMultiplier = 1 + (enhBonuses[effect.enhancementType] || 0);
@@ -1316,6 +1385,13 @@ function applyFitnessPowerBonuses(
         value: finalValue,
         type: 'inherent',
       });
+
+      if (isCalcDebugEnabled()) {
+        _fitnessDebugEffects.push({ stat: effect.stat, base: effect.value, enhanced: finalValue, enhBonus: enhBonuses[effect.enhancementType] || 0 });
+      }
+    }
+    if (isCalcDebugEnabled() && _fitnessDebugEffects.length > 0) {
+      debugFitnessPower(power.name, _fitnessDebugEffects);
     }
   }
 }
@@ -1424,6 +1500,9 @@ function applySingleProcEffect(
   breakdown: Map<string, DashboardStatBreakdown>
 ): void {
   if (value === undefined) return;
+  if (isCalcDebugEnabled()) {
+    debugFormula(`${sourceName}: ${category}${effectType ? ` (${effectType})` : ''} +${formatDebugNum(value)}%`);
+  }
 
   switch (category) {
     case 'Recovery':
@@ -1966,6 +2045,7 @@ function applyAccoladeBonuses(
           value: bonus.value,
           type: 'accolade',
         });
+        if (isCalcDebugEnabled()) debugAccolade(accolade.name, 'maxHP', bonus.value);
       } else if (stat === 'maxendurance') {
         // Endurance bonuses from accolades are flat values
         global.maxEndurance += bonus.value;
@@ -1974,6 +2054,7 @@ function applyAccoladeBonuses(
           value: bonus.value,
           type: 'accolade',
         });
+        if (isCalcDebugEnabled()) debugAccolade(accolade.name, 'maxEndurance', bonus.value);
       }
     }
   }
@@ -2046,6 +2127,7 @@ function applyIncarnateBonuses(
   levelShiftActive = true,
 ): void {
   if (!incarnates) return;
+  const _debugBefore = isCalcDebugEnabled() ? { ...global } : null;
 
   // Default to all active if no active state provided
   const active = incarnateActive || {
@@ -2309,6 +2391,16 @@ function applyIncarnateBonuses(
       }
     }
   }
+
+  // Debug: log incarnate diff
+  if (_debugBefore && isCalcDebugEnabled()) {
+    for (const key of Object.keys(global) as (keyof GlobalBonuses)[]) {
+      const delta = global[key] - _debugBefore[key];
+      if (Math.abs(delta) > 0.0001) {
+        debugFormula(`${key}: ${delta > 0 ? '+' : ''}${formatDebugNum(delta)}`);
+      }
+    }
+  }
 }
 
 // ============================================
@@ -2482,12 +2574,32 @@ export function calculateCharacterTotals(
 ): CharacterCalculationResult {
   const breakdown = new Map<string, DashboardStatBreakdown>();
   const globalBonuses = createEmptyGlobalBonuses();
+  const _debug = isCalcDebugEnabled();
 
   // Step 1: Calculate set bonuses with Rule of 5
   // effectiveLevel drives HP, fitness, and toggle scaling — always use build.level
   // Set bonus suppression only applies in exemplar mode (don't suppress at low build levels)
   const exemplarLevel = options?.exemplarLevel;
   const effectiveLevel = exemplarMode ? (exemplarLevel ?? build.level) : build.level;
+
+  // Debug: build context
+  if (_debug) {
+    debugBuildContext(
+      build.archetype?.id || 'unknown',
+      build.level,
+      effectiveLevel,
+      exemplarLevel,
+      {
+        exemplarMode,
+        combatMode: options?.combatMode,
+        targetLevelOffset: options?.targetLevelOffset,
+        vigilanceTeamSize: options?.vigilanceTeamSize,
+        furyLevel: options?.furyLevel,
+        incarnateLevelShiftActive: options?.incarnateLevelShiftActive,
+      }
+    );
+  }
+
   const buildPowers = buildToBuildPowers(build);
   const { bonuses: setBonusAggregated, tracking } = calculateSetBonuses(
     buildPowers,
@@ -2499,6 +2611,22 @@ export function calculateCharacterTotals(
 
   // Step 2: Apply set bonuses to global bonuses
   applySetBonusesToGlobal(setBonusAggregated, globalBonuses);
+
+  // Debug: set bonus results
+  if (_debug) {
+    const trackingStats: { stat: string; count: number; capped: number }[] = [];
+    for (const stat of Object.keys(setBonusAggregated)) {
+      const items = getStatBreakdown(tracking, stat);
+      let count = 0;
+      let capped = 0;
+      for (const item of items) {
+        count += item.sources.length;
+        capped += item.rejectedSources.length;
+      }
+      if (count > 0 || capped > 0) trackingStats.push({ stat, count, capped });
+    }
+    debugSetBonuses(setBonusAggregated, trackingStats);
+  }
 
   // Step 3: Build detailed breakdown from set bonus tracking
   for (const stat of Object.keys(setBonusAggregated)) {
@@ -2525,17 +2653,23 @@ export function calculateCharacterTotals(
 
   // Step 5: Get Alpha incarnate enhancement bonuses (apply to all powers including fitness)
   const alphaBonuses = getAlphaEnhancementBonuses(build.incarnates, incarnateActive);
+  if (_debug) debugAlphaBonuses(alphaBonuses);
 
   // Step 6: Apply inherent power bonuses (Fitness powers, with Alpha bonuses)
+  if (_debug) debugGroup('Step 6: Fitness Powers');
   applyFitnessPowerBonuses(build, globalBonuses, breakdown, effectiveLevel, alphaBonuses, exemplarLevel);
+  if (_debug) debugGroupEnd();
 
   // Step 7: Apply active toggle power bonuses (with enhancement multipliers + Alpha bonuses)
+  if (_debug) debugGroup('Step 7: Active Power Bonuses');
   applyActivePowerBonuses(allPowers, globalBonuses, breakdown, effectiveLevel, build.archetype.id || '', alphaBonuses, options?.targetsHitValues ?? {}, exemplarLevel, options?.combatMode);
+  if (_debug) debugGroupEnd();
 
   // Step 7.5: Apply always-on proc bonuses (Global and Proc120s in Auto/Toggle powers)
   // Procs have their own Rule of 5 tracking, separate from set bonuses
   const procSettings = options?.procSettings;
   const anyProcEnabled = !procSettings || Object.values(procSettings).some(v => v);
+  if (_debug) debugGroup('Step 7.5-7.6: Proc Bonuses');
   if (anyProcEnabled) {
     applyProcBonuses(build, globalBonuses, breakdown, procSettings);
   }
@@ -2544,15 +2678,20 @@ export function calculateCharacterTotals(
   if (!procSettings || procSettings.buildUp) {
     applyBuildUpProcBonuses(build, globalBonuses, breakdown);
   }
+  if (_debug) debugGroupEnd();
 
   // Step 8: Apply accolade bonuses
+  if (_debug && build.accolades && build.accolades.length > 0) debugGroup('Step 8: Accolades');
   if (build.accolades && build.accolades.length > 0) {
     applyAccoladeBonuses(build.accolades, globalBonuses, breakdown);
   }
+  if (_debug && build.accolades && build.accolades.length > 0) debugGroupEnd();
 
   // Step 9: Apply incarnate bonuses (Destiny, Hybrid - direct stats)
   // Note: Alpha bonuses were already applied in Step 7 as enhancement bonuses
+  if (_debug) debugGroup('Step 9: Incarnate Bonuses');
   applyIncarnateBonuses(build.incarnates, incarnateActive, globalBonuses, breakdown, options?.incarnateLevelShiftActive ?? true);
+  if (_debug) debugGroupEnd();
 
   // Step 9.1: Apply archetype inherent damage bonuses (Vigilance, Fury)
   const archetypeId = build.archetype?.id;
@@ -2591,6 +2730,10 @@ export function calculateCharacterTotals(
   globalBonuses.hitChance = Math.min(0.95, Math.max(0.05, finalToHit * accuracyMult));
   globalBonuses.combatModifier = getCombatModifier(effectiveLevelDiff);
 
+  if (_debug) {
+    debugHitChance(targetOffset, globalBonuses.levelShift, effectiveLevelDiff, ppBaseToHit, globalBonuses.toHit, globalBonuses.accuracy, globalBonuses.hitChance);
+  }
+
   // Step 10: Convert to character stats format
   const stats = convertToCharacterStats(globalBonuses);
 
@@ -2604,6 +2747,12 @@ export function calculateCharacterTotals(
   const totalMaxEnd = 100 * (1 + globalBonuses.maxEndurance / 100);
   const recoveryEndPerSec = (totalMaxEnd / 60) * (1 + globalBonuses.recovery / 100);
   globalBonuses.netEndPerSec = recoveryEndPerSec - globalBonuses.toggleEndCost;
+
+  if (_debug) {
+    debugNetEndurance(totalMaxEnd, globalBonuses.recovery, recoveryEndPerSec, globalBonuses.toggleEndCost, globalBonuses.enduranceDiscount, globalBonuses.netEndPerSec);
+    debugFinalStats(globalBonuses as unknown as Record<string, number>);
+    debugEnd();
+  }
 
   // Update breakdown totals from final values (exclude capped/Rule-of-5 sources)
   for (const [, bd] of breakdown) {

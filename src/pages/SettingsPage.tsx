@@ -2,11 +2,12 @@
  * SettingsPage — Account management and app settings
  */
 
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { useAuthStore } from '@/stores';
 import { supabase } from '@/lib/supabase';
 import { Button } from '@/components/ui/Button';
 import { getOwnedBuildIds, claimBuilds } from '@/services/sharedBuilds';
+import { isCalcDebugEnabled, enableCalcDebug, disableCalcDebug } from '@/utils/calc-debug';
 
 export function SettingsPage() {
   const user = useAuthStore((s) => s.user);
@@ -19,6 +20,17 @@ export function SettingsPage() {
   const [claimError, setClaimError] = useState<string | null>(null);
 
   const tokenOwnedIds = getOwnedBuildIds();
+
+  const [calcDebug, setCalcDebug] = useState(isCalcDebugEnabled);
+  const toggleCalcDebug = useCallback(() => {
+    if (calcDebug) {
+      disableCalcDebug();
+      setCalcDebug(false);
+    } else {
+      enableCalcDebug();
+      setCalcDebug(true);
+    }
+  }, [calcDebug]);
 
   const handleClaim = async () => {
     setClaimLoading(true);
@@ -124,6 +136,40 @@ export function SettingsPage() {
           )}
         </div>
       )}
+
+      {/* Debug section */}
+      <div className="bg-gray-800 border border-gray-700 rounded-lg p-5 mb-6">
+        <h2 className="text-sm font-semibold text-gray-300 mb-3">Developer</h2>
+
+        <label className="flex items-center gap-3 cursor-pointer">
+          <button
+            type="button"
+            role="switch"
+            aria-checked={calcDebug}
+            onClick={toggleCalcDebug}
+            className={`relative inline-flex h-5 w-9 shrink-0 items-center rounded-full transition-colors ${
+              calcDebug ? 'bg-blue-600' : 'bg-gray-600'
+            }`}
+          >
+            <span
+              className={`inline-block h-3.5 w-3.5 rounded-full bg-white transition-transform ${
+                calcDebug ? 'translate-x-4.5' : 'translate-x-0.5'
+              }`}
+            />
+          </button>
+          <div>
+            <p className="text-sm text-white">Calculation Debug Logging</p>
+            <p className="text-xs text-gray-500">
+              Prints detailed calculation traces to the browser console.
+              Open DevTools (F12) to view.
+            </p>
+          </div>
+        </label>
+
+        <p className="text-xs text-gray-600 mt-3">
+          Also available via console: <code className="text-gray-500">window.cohDebug.enable()</code>
+        </p>
+      </div>
     </div>
   );
 }

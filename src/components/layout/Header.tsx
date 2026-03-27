@@ -13,6 +13,7 @@ import { getPowersetsForArchetype, getPowerset, MAX_LEVEL, ARCHETYPES } from '@/
 import { Button, Select, Slider, Toggle, Tooltip } from '@/components/ui';
 import { ConfirmModal } from '@/components/modals/ConfirmModal';
 import { calculateVigilanceDamageBonus, calculateAssassinationDamageBonus, OPPORTUNITY_CRIT_MULTIPLIER } from '@/utils/calculations';
+import { isCalcDebugEnabled, enableCalcDebug, disableCalcDebug } from '@/utils/calc-debug';
 import type { ArchetypeId, ArchetypeBranchId, Origin, Powerset } from '@/types';
 import { BUILD_TIME, APP_VERSION } from '@/buildTime';
 
@@ -567,6 +568,17 @@ function SettingsPopover() {
   const useArcanaTime = useUIStore((s) => s.useArcanaTime);
   const toggleUseArcanaTime = useUIStore((s) => s.toggleUseArcanaTime);
 
+  const [calcDebugOn, setCalcDebugOn] = useState(isCalcDebugEnabled);
+  const handleToggleCalcDebug = () => {
+    if (calcDebugOn) {
+      disableCalcDebug();
+      setCalcDebugOn(false);
+    } else {
+      enableCalcDebug();
+      setCalcDebugOn(true);
+    }
+  };
+
   useEffect(() => {
     if (!open) return;
     function handleClick(e: MouseEvent) {
@@ -761,6 +773,21 @@ function SettingsPopover() {
                 />
               </div>
             )}
+          </div>
+
+          <hr className="border-gray-700" />
+
+          {/* Debug */}
+          <div className="flex items-center justify-between">
+            <Tooltip content="Print detailed calculation traces to the browser console (F12)">
+              <Toggle
+                id="calc-debug-toggle"
+                name="calcDebug"
+                checked={calcDebugOn}
+                onChange={handleToggleCalcDebug}
+                label="Debug Logging"
+              />
+            </Tooltip>
           </div>
 
           <hr className="border-gray-700" />

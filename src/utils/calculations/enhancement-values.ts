@@ -6,6 +6,7 @@
  */
 
 import type { Enhancement, EnhancementStatType } from '@/types';
+import { isCalcDebugEnabled, debugGroup, debugGroupEnd, debugFormula } from '@/utils/calc-debug';
 
 // ============================================
 // SHARED CONSTANTS
@@ -565,6 +566,24 @@ export function calculatePowerEnhancementBonuses(
     const schedule = getAspectSchedule(aspect);
     edBonuses[aspect] = applyED(rawValue, schedule);
   });
+
+  // Debug: log enhancement breakdown for this power
+  if (isCalcDebugEnabled() && Object.keys(rawBonuses).length > 0) {
+    debugGroup(`Enhancements: ${power.name}`);
+    // Log each slot
+    const slotCount = power.slots?.filter(Boolean).length ?? 0;
+    debugFormula(`${slotCount} slot(s) filled`);
+    // Log raw → ED per aspect
+    for (const [aspect, rawValue] of Object.entries(rawBonuses)) {
+      const schedule = getAspectSchedule(aspect);
+      const edValue = edBonuses[aspect] ?? rawValue;
+      const rawPct = (rawValue * 100).toFixed(1);
+      const edPct = ((edValue as number) * 100).toFixed(1);
+      const edHit = Math.abs(rawValue - (edValue as number)) > 0.001;
+      debugFormula(`${aspect} (Schedule ${schedule}): raw ${rawPct}% → ED ${edPct}%${edHit ? ' (ED reduced)' : ''}`);
+    }
+    debugGroupEnd();
+  }
 
   return edBonuses;
 }

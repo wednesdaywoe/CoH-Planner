@@ -3,6 +3,9 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App'
 
+// Register window.cohDebug for calculation debug logging
+import '@/utils/calc-debug'
+
 // Handle .skif files opened via PWA file association
 if ('launchQueue' in window) {
   (window as any).launchQueue.setConsumer(async (launchParams: any) => {
