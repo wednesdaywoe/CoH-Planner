@@ -42,11 +42,17 @@ const DESTINY_LABELS: Record<string, string> = {
 };
 
 const HYBRID_LABELS: Record<string, string> = {
-  damage: 'Damage', damageProc: 'Damage Proc', doublehitChance: 'Double Hit',
-  defense: 'Defense', accuracy: 'Accuracy',
-  regeneration: 'Regeneration', resistanceAll: 'Resistance (All)',
-  defenseAll: 'Defense (All)', statusProtection: 'Status Protection',
-  mezMagnitudeBonus: 'Mez Magnitude',
+  damage: 'Damage', regeneration: 'Regeneration', recovery: 'Recovery',
+  enduranceDiscount: 'End Discount', statusResistance: 'Status Resistance',
+  resSmashing: 'Res (S)', resLethal: 'Res (L)', resFire: 'Res (F)',
+  resCold: 'Res (C)', resEnergy: 'Res (E)', resNegative: 'Res (N)',
+  resPsionic: 'Res (Psi)', resToxic: 'Res (Tox)',
+  defMelee: 'Def (Melee)', defRanged: 'Def (Ranged)', defAoE: 'Def (AoE)',
+  defSmashing: 'Def (S)', defLethal: 'Def (L)', defFire: 'Def (F)',
+  defCold: 'Def (C)', defEnergy: 'Def (E)', defNegative: 'Def (N)',
+  defPsionic: 'Def (Psi)', defToxic: 'Def (Tox)',
+  protHold: 'Prot Hold', protStun: 'Prot Stun', protImmobilize: 'Prot Immobilize',
+  protSleep: 'Prot Sleep', protConfuse: 'Prot Confuse', protFear: 'Prot Fear',
 };
 
 // ============================================
@@ -92,26 +98,24 @@ export function getIncarnateEffectData(slotId: IncarnateSlotId, powerId: string,
     case 'hybrid': {
       const fx = getHybridEffects(powerId);
       if (!fx) return null;
-      const tree = powerId.split('_')[0];
-      const tgtInfo = HYBRID_TARGET_INFO[tree];
       const entries: EffectEntry[] = [];
-      if (tgtInfo) {
-        entries.push({ label: 'Target', value: tgtInfo.label });
+      // Passive bonuses
+      for (const [stat, val] of Object.entries(fx.passive)) {
+        entries.push({ label: `${HYBRID_LABELS[stat] || stat} (passive)`, value: formatEffectValue(val) });
       }
-      (Object.entries(fx) as [string, number][])
-        .filter(([k]) => k !== 'duration' && k !== 'recharge' && k !== 'containmentScale' && k !== 'containmentTableName')
-        .forEach(([k, v]) => {
-          entries.push({
-            label: HYBRID_LABELS[k] || k,
-            value: k === 'statusProtection' ? `Mag ${v}` : k === 'mezMagnitudeBonus' ? `+${v} Mag` : formatEffectValue(v),
-          });
-        });
-      if (fx.containmentScale && fx.containmentTableName && archetypeId) {
-        const dmg = calculateIncarnateDamage(fx.containmentScale, fx.containmentTableName, archetypeId, level ?? 50);
-        entries.push({ label: 'Containment (Waylay)', value: dmg !== null ? `${dmg.toFixed(1)}` : `${fx.containmentScale} scale` });
+      // Front-loaded toggle bonuses
+      for (const [stat, val] of Object.entries(fx.frontLoaded)) {
+        const label = HYBRID_LABELS[stat] || stat;
+        entries.push({ label, value: stat.startsWith('prot') ? `Mag ${val}` : formatEffectValue(val) });
       }
-      const footer = fx.duration !== undefined ? `${fx.duration}s duration / ${fx.recharge}s recharge` : undefined;
-      return { header: 'Toggle Bonuses', entries, footer };
+      // Per-target stacking
+      if (Object.keys(fx.perTarget).length > 0) {
+        for (const [stat, val] of Object.entries(fx.perTarget)) {
+          entries.push({ label: `${HYBRID_LABELS[stat] || stat} /enemy`, value: `${formatEffectValue(val)} (max ${fx.maxTargets})` });
+        }
+      }
+      const footer = `${fx.duration}s duration / ${fx.recharge}s recharge`;
+      return { header: `${fx.tree.charAt(0).toUpperCase() + fx.tree.slice(1)} Hybrid`, entries, footer };
     }
     case 'interface': {
       const fx = getInterfaceEffects(powerId);
@@ -265,41 +269,42 @@ const HYBRID_TARGET_INFO: Record<string, { label: string; color: string }> = {
   support: { label: 'Team (50ft aura, affects pets)', color: 'text-green-400' },
 };
 
-function HybridTooltip({ fx, powerId, archetypeId, level }: { fx: HybridEffects; powerId: string; archetypeId: string; level: number }) {
-  const statEntries = Object.entries(fx).filter(
-    ([k]) => k !== 'duration' && k !== 'recharge' && k !== 'containmentScale' && k !== 'containmentTableName'
-  ) as [string, number][];
-  const containDmg = fx.containmentScale && fx.containmentTableName
-    ? calculateIncarnateDamage(fx.containmentScale, fx.containmentTableName, archetypeId, level)
-    : null;
-  const tree = powerId.split('_')[0];
-  const targetInfo = HYBRID_TARGET_INFO[tree];
+function HybridTooltip({ fx, powerId }: { fx: HybridEffects; powerId: string; archetypeId: string; level: number }) {
+  const targetInfo = HYBRID_TARGET_INFO[fx.tree] || HYBRID_TARGET_INFO[powerId.split('_')[0]];
 
   return (
     <div className="text-[11px] mt-2 border-t border-gray-600 pt-1.5 space-y-0.5">
-      <div className="text-cyan-400 font-semibold mb-0.5">Toggle Bonuses</div>
+      <div className="text-cyan-400 font-semibold mb-0.5">{fx.tree.charAt(0).toUpperCase() + fx.tree.slice(1)} Hybrid</div>
       {targetInfo && (
         <div className={`text-[10px] ${targetInfo.color} mb-0.5`}>Target: {targetInfo.label}</div>
       )}
-      {statEntries.map(([key, val]) => (
-        <EffectRow
-          key={key}
-          label={HYBRID_LABELS[key] || key}
-          value={
-            key === 'statusProtection' ? `Mag ${val}` :
-            key === 'mezMagnitudeBonus' ? `+${val} Mag` :
-            formatEffectValue(val)
-          }
-        />
-      ))}
-      {containDmg !== null && (
-        <EffectRow label="Containment (Waylay)" value={`${containDmg.toFixed(1)}`} />
+      {Object.keys(fx.passive).length > 0 && (
+        <>
+          <div className="text-gray-400 text-[10px] font-semibold mt-1">Passive (always-on)</div>
+          {Object.entries(fx.passive).map(([stat, val]) => (
+            <EffectRow key={`p-${stat}`} label={HYBRID_LABELS[stat] || stat} value={formatEffectValue(val)} />
+          ))}
+        </>
       )}
-      {fx.duration !== undefined && (
-        <div className="text-gray-500 text-[10px] mt-1">
-          {fx.duration}s duration / {fx.recharge}s recharge
-        </div>
+      {Object.keys(fx.frontLoaded).length > 0 && (
+        <>
+          <div className="text-gray-400 text-[10px] font-semibold mt-1">Toggle (baseline)</div>
+          {Object.entries(fx.frontLoaded).map(([stat, val]) => (
+            <EffectRow key={`f-${stat}`} label={HYBRID_LABELS[stat] || stat} value={stat.startsWith('prot') ? `Mag ${val}` : formatEffectValue(val)} />
+          ))}
+        </>
       )}
+      {Object.keys(fx.perTarget).length > 0 && (
+        <>
+          <div className="text-gray-400 text-[10px] font-semibold mt-1">Per enemy (max {fx.maxTargets})</div>
+          {Object.entries(fx.perTarget).map(([stat, val]) => (
+            <EffectRow key={`t-${stat}`} label={HYBRID_LABELS[stat] || stat} value={formatEffectValue(val)} />
+          ))}
+        </>
+      )}
+      <div className="text-gray-500 text-[10px] mt-1">
+        {fx.duration}s duration / {fx.recharge}s recharge
+      </div>
     </div>
   );
 }

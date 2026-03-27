@@ -2115,6 +2115,52 @@ export function getAlphaEnhancementBonuses(
 }
 
 /**
+ * Apply a block of Hybrid stat bonuses (passive, frontLoaded, or perTarget) to global bonuses.
+ * Stat keys use GlobalBonuses field names (e.g. 'regeneration', 'resSmashing', 'defMelee').
+ * Special keys: 'statusResistance' applies to all mez resist types, 'enduranceDiscount' applies to end discount.
+ */
+function applyHybridStatBlock(
+  stats: Record<string, number>,
+  sourceName: string,
+  global: GlobalBonuses,
+  breakdown: Map<string, DashboardStatBreakdown>,
+): void {
+  for (const [stat, decimal] of Object.entries(stats)) {
+    // Status resistance from Control passive applies to all mez types
+    if (stat === 'statusResistance') {
+      const value = decimal * 100;
+      const mezTypes: (keyof GlobalBonuses)[] = [
+        'mezResistHold', 'mezResistStun', 'mezResistImmobilize',
+        'mezResistSleep', 'mezResistConfuse', 'mezResistFear',
+      ];
+      for (const mezKey of mezTypes) {
+        global[mezKey] += value;
+        addToBreakdown(breakdown, mezKey, { name: sourceName, value, type: 'incarnate' });
+      }
+      continue;
+    }
+
+    // Mez protection uses raw magnitude (not percentage)
+    if (stat.startsWith('prot')) {
+      const key = stat as keyof GlobalBonuses;
+      if (key in global) {
+        global[key] += decimal; // Already magnitude, not percentage
+        addToBreakdown(breakdown, key, { name: sourceName, value: decimal, type: 'incarnate' });
+      }
+      continue;
+    }
+
+    // All other stats: decimal → percentage (× 100)
+    const value = decimal * 100;
+    const key = stat as keyof GlobalBonuses;
+    if (key in global) {
+      global[key] += value;
+      addToBreakdown(breakdown, key, { name: sourceName, value, type: 'incarnate' });
+    }
+  }
+}
+
+/**
  * Apply bonuses from incarnate powers
  * Alpha provides enhancement bonuses, Destiny/Hybrid provide direct stat bonuses
  * Interface is proc-based and doesn't provide direct stats
@@ -2269,143 +2315,28 @@ function applyIncarnateBonuses(
     }
   }
 
-  // Hybrid - Direct stat bonuses when toggled on
-  if (incarnates.hybrid && active.hybrid) {
+  // Hybrid — three-layer model: passive (always-on), frontLoaded (toggle baseline), perTarget (future slider)
+  if (incarnates.hybrid) {
     const hybridEffects = getHybridEffects(incarnates.hybrid.powerId);
     if (hybridEffects) {
       const powerName = incarnates.hybrid.displayName;
 
-      // Damage
-      if (hybridEffects.damage !== undefined) {
-        const value = hybridEffects.damage * 100;
-        global.damage += value;
-        addToBreakdown(breakdown, 'damage', {
-          name: powerName,
-          value,
-          type: 'incarnate',
-        });
+      // Layer 1: Passive bonuses — always-on just by equipping
+      applyHybridStatBlock(hybridEffects.passive, `${powerName} (passive)`, global, breakdown);
+
+      // Layer 2: Front-loaded bonuses — active when toggle is on, no enemies required
+      if (active.hybrid) {
+        applyHybridStatBlock(hybridEffects.frontLoaded, powerName, global, breakdown);
       }
 
-      // Defense (Support tree)
-      if (hybridEffects.defense !== undefined) {
-        const value = hybridEffects.defense * 100;
-        global.defMelee += value;
-        global.defRanged += value;
-        global.defAoE += value;
-        addToBreakdown(breakdown, 'defAll', {
-          name: powerName,
-          value,
-          type: 'incarnate',
-        });
-      }
-
-      // Defense All (Melee tree)
-      if (hybridEffects.defenseAll !== undefined) {
-        const value = hybridEffects.defenseAll * 100;
-        global.defMelee += value;
-        global.defRanged += value;
-        global.defAoE += value;
-        global.defSmashing += value;
-        global.defLethal += value;
-        global.defFire += value;
-        global.defCold += value;
-        global.defEnergy += value;
-        global.defNegative += value;
-        global.defPsionic += value;
-        global.defToxic += value;
-        addToBreakdown(breakdown, 'defAll', {
-          name: powerName,
-          value,
-          type: 'incarnate',
-        });
-      }
-
-      // Resistance All (Melee tree)
-      if (hybridEffects.resistanceAll !== undefined) {
-        const value = hybridEffects.resistanceAll * 100;
-        global.resSmashing += value;
-        global.resLethal += value;
-        global.resFire += value;
-        global.resCold += value;
-        global.resEnergy += value;
-        global.resNegative += value;
-        global.resPsionic += value;
-        global.resToxic += value;
-        addToBreakdown(breakdown, 'resAll', {
-          name: powerName,
-          value,
-          type: 'incarnate',
-        });
-      }
-
-      // Regeneration (Melee tree)
-      if (hybridEffects.regeneration !== undefined) {
-        const value = hybridEffects.regeneration * 100;
-        global.regeneration += value;
-        addToBreakdown(breakdown, 'regeneration', {
-          name: powerName,
-          value,
-          type: 'incarnate',
-        });
-      }
-
-      // Accuracy (Support tree)
-      if (hybridEffects.accuracy !== undefined) {
-        const value = hybridEffects.accuracy * 100;
-        global.accuracy += value;
-        addToBreakdown(breakdown, 'accuracy', {
-          name: powerName,
-          value,
-          type: 'incarnate',
-        });
-      }
-    }
-  }
-
-  // Hybrid passive bonuses — always-on just by equipping, regardless of toggle state
-  if (incarnates.hybrid) {
-    const hybridEffects = getHybridEffects(incarnates.hybrid.powerId);
-    if (hybridEffects) {
-      const passiveName = `${incarnates.hybrid.displayName} (passive)`;
-
-      // Assault: passive +Damage
-      if (hybridEffects.passiveDamage !== undefined) {
-        const value = hybridEffects.passiveDamage * 100;
-        global.damage += value;
-        addToBreakdown(breakdown, 'damage', { name: passiveName, value, type: 'incarnate' });
-      }
-
-      // Control: passive Status Resistance (all mez types)
-      if (hybridEffects.passiveStatusResist !== undefined) {
-        const value = hybridEffects.passiveStatusResist * 100;
-        const mezTypes: (keyof GlobalBonuses)[] = [
-          'mezResistHold', 'mezResistStun', 'mezResistImmobilize',
-          'mezResistSleep', 'mezResistConfuse', 'mezResistFear',
-        ];
-        for (const mezKey of mezTypes) {
-          global[mezKey] += value;
-          addToBreakdown(breakdown, mezKey, { name: passiveName, value, type: 'incarnate' });
-        }
-      }
-
-      // Melee: passive +Regeneration
-      if (hybridEffects.passiveRegeneration !== undefined) {
-        const value = hybridEffects.passiveRegeneration * 100;
-        global.regeneration += value;
-        addToBreakdown(breakdown, 'regeneration', { name: passiveName, value, type: 'incarnate' });
-      }
-
-      // Support: passive Endurance Discount
-      if (hybridEffects.passiveEndDiscount !== undefined) {
-        const value = hybridEffects.passiveEndDiscount * 100;
-        global.enduranceDiscount += value;
-        addToBreakdown(breakdown, 'enduranceDiscount', { name: passiveName, value, type: 'incarnate' });
-      }
+      // Layer 3: Per-target bonuses — not applied yet (needs slider infrastructure)
+      // When slider is added: applyHybridStatBlock(scaled perTarget, `${powerName} (per-target)`, ...)
     }
   }
 
   // Interface - These are proc effects that debuff enemies, not player stats
   // We don't add them to global bonuses, but they could be displayed in tooltips
+  //
 
   // Level Shift from incarnate slots (Alpha and Destiny)
   // Controlled by the independent levelShiftActive flag, NOT by per-slot stat toggles
