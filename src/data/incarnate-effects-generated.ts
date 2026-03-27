@@ -636,3 +636,683 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
     recharge: 120,
   },
 };
+
+// ============================================
+// INTERFACE EFFECTS
+// ============================================
+// Proc-based debuffs applied to enemies. For display, not dashboard stats.
+
+export const GENERATED_INTERFACE_EFFECTS: Record<string, {
+  debuffType: string | null;
+  debuffMagnitude: number;
+  debuffDuration: number;
+  dotType: string | null;
+  dotDamage: number;
+  dotDuration: number;
+  dotTableName: string;
+  procChance: number;
+}> = {
+  // Cognitive Core Flawless Interface
+  'cognitive_core_flawless_interface': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.25},
+  // Cognitive Core Interface
+  'cognitive_core_interface': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.12},
+  // Cognitive Interface
+  'cognitive_interface': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.08},
+  // Cognitive Partial Core Conversion
+  'cognitive_partial_core_conversion': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.25},
+  // Cognitive Partial Radial Conversion
+  'cognitive_partial_radial_conversion': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.5},
+  // Cognitive Radial Flawless Interface
+  'cognitive_radial_flawless_interface': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.75},
+  // Cognitive Radial Interface
+  'cognitive_radial_interface': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.25},
+  // Cognitive Total Core Conversion
+  'cognitive_total_core_conversion': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.16},
+  // Cognitive Total Radial Conversion
+  'cognitive_total_radial_conversion': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.75},
+  // Degenerative Core Flawless Interface
+  'degenerative_core_flawless_interface': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.75},
+  // Degenerative Core Interface
+  'degenerative_core_interface': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.5},
+  // Degenerative Interface
+  'degenerative_interface': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.25},
+  // Degenerative Partial Core Conversion
+  'degenerative_partial_core_conversion': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.5},
+  // Degenerative Partial Radial Conversion
+  'degenerative_partial_radial_conversion': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.25},
+  // Degenerative Radial Flawless Interface
+  'degenerative_radial_flawless_interface': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.25},
+  // Degenerative Radial Interface
+  'degenerative_radial_interface': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.25},
+  // Degenerative Total Core Conversion
+  'degenerative_total_core_conversion': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.75},
+  // Degenerative Total Radial Conversion
+  'degenerative_total_radial_conversion': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.75},
+  // Diamagnetic Core Flawless Interface
+  'diamagnetic_core_flawless_interface': {"debuffType":"-Regen","debuffMagnitude":0.1,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":1},
+  // Diamagnetic Core Interface
+  'diamagnetic_core_interface': {"debuffType":"-ToHit","debuffMagnitude":0.05,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.75},
+  // Diamagnetic Interface
+  'diamagnetic_interface': {"debuffType":"-ToHit","debuffMagnitude":0.05,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.5},
+  // Diamagnetic Partial Core Conversion
+  'diamagnetic_partial_core_conversion': {"debuffType":"-Regen","debuffMagnitude":0.1,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.75},
+  // Diamagnetic Partial Radial Conversion
+  'diamagnetic_partial_radial_conversion': {"debuffType":"-Regen","debuffMagnitude":0.1,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.75},
+  // Diamagnetic Radial Flawless Interface
+  'diamagnetic_radial_flawless_interface': {"debuffType":"-Regen","debuffMagnitude":0.1,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":1},
+  // Diamagnetic Radial Interface
+  'diamagnetic_radial_interface': {"debuffType":"-Regen","debuffMagnitude":0.1,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.5},
+  // Diamagnetic Total Core Conversion
+  'diamagnetic_total_core_conversion': {"debuffType":"-ToHit","debuffMagnitude":0.05,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":1},
+  // Diamagnetic Total Radial Conversion
+  'diamagnetic_total_radial_conversion': {"debuffType":"-Regen","debuffMagnitude":0.1,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":1},
+  // Gravitic Core Flawless Interface
+  'gravitic_core_flawless_interface': {"debuffType":"-Recharge","debuffMagnitude":0.1,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.75},
+  // Gravitic Core Interface
+  'gravitic_core_interface': {"debuffType":"-Recharge","debuffMagnitude":0.1,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.25},
+  // Gravitic Interface
+  'gravitic_interface': {"debuffType":"-Recharge","debuffMagnitude":0.1,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.25},
+  // Gravitic Partial Core Conversion
+  'gravitic_partial_core_conversion': {"debuffType":"-Recharge","debuffMagnitude":0.1,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.25},
+  // Gravitic Partial Radial Conversion
+  'gravitic_partial_radial_conversion': {"debuffType":"-Recharge","debuffMagnitude":0.1,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.25},
+  // Gravitic Radial Flawless Interface
+  'gravitic_radial_flawless_interface': {"debuffType":"-Recharge","debuffMagnitude":0.1,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.75},
+  // Gravitic Radial Interface
+  'gravitic_radial_interface': {"debuffType":"-Recharge","debuffMagnitude":0.1,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.25},
+  // Gravitic Total Core Conversion
+  'gravitic_total_core_conversion': {"debuffType":"-Recharge","debuffMagnitude":0.1,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.5},
+  // Gravitic Total Radial Conversion
+  'gravitic_total_radial_conversion': {"debuffType":"-Recharge","debuffMagnitude":0.1,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.5},
+  // Paralytic Core Flawless Interface
+  'paralytic_core_flawless_interface': {"debuffType":"-Damage","debuffMagnitude":0.05,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.75},
+  // Paralytic Core Interface
+  'paralytic_core_interface': {"debuffType":"-Defense","debuffMagnitude":0.025,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.5},
+  // Paralytic Interface
+  'paralytic_interface': {"debuffType":"-Defense","debuffMagnitude":0.025,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.25},
+  // Paralytic Partial Core Conversion
+  'paralytic_partial_core_conversion': {"debuffType":"-Damage","debuffMagnitude":0.05,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.5},
+  // Paralytic Partial Radial Conversion
+  'paralytic_partial_radial_conversion': {"debuffType":"-Damage","debuffMagnitude":0.05,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.5},
+  // Paralytic Radial Flawless Interface
+  'paralytic_radial_flawless_interface': {"debuffType":"-Damage","debuffMagnitude":0.05,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.75},
+  // Paralytic Radial Interface
+  'paralytic_radial_interface': {"debuffType":"-Damage","debuffMagnitude":0.05,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.25},
+  // Paralytic Total Core Conversion
+  'paralytic_total_core_conversion': {"debuffType":"-Defense","debuffMagnitude":0.025,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.75},
+  // Paralytic Total Radial Conversion
+  'paralytic_total_radial_conversion': {"debuffType":"-Damage","debuffMagnitude":0.05,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.75},
+  // Preemptive Core Flawless Interface
+  'preemptive_core_flawless_interface': {"debuffType":"-Recovery","debuffMagnitude":0.05,"debuffDuration":4.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.25},
+  // Preemptive Core Interface
+  'preemptive_core_interface': {"debuffType":"-Recovery","debuffMagnitude":0.05,"debuffDuration":4.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.5},
+  // Preemptive Interface
+  'preemptive_interface': {"debuffType":"-Recovery","debuffMagnitude":0.05,"debuffDuration":4.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.25},
+  // Preemptive Partial Core Conversion
+  'preemptive_partial_core_conversion': {"debuffType":"-Recovery","debuffMagnitude":0.05,"debuffDuration":4.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.25},
+  // Preemptive Partial Radial Conversion
+  'preemptive_partial_radial_conversion': {"debuffType":"-Recovery","debuffMagnitude":0.05,"debuffDuration":4.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.5},
+  // Preemptive Radial Flawless Interface
+  'preemptive_radial_flawless_interface': {"debuffType":"-Recovery","debuffMagnitude":0.05,"debuffDuration":4.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.75},
+  // Preemptive Radial Interface
+  'preemptive_radial_interface': {"debuffType":"-Recovery","debuffMagnitude":0.05,"debuffDuration":4.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.25},
+  // Preemptive Total Core Conversion
+  'preemptive_total_core_conversion': {"debuffType":"-Recovery","debuffMagnitude":0.05,"debuffDuration":4.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.75},
+  // Preemptive Total Radial Conversion
+  'preemptive_total_radial_conversion': {"debuffType":"-Recovery","debuffMagnitude":0.05,"debuffDuration":4.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.75},
+  // Reactive Core Flawless Interface
+  'reactive_core_flawless_interface': {"debuffType":"-Damage","debuffMagnitude":0.025,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.75},
+  // Reactive Core Interface
+  'reactive_core_interface': {"debuffType":"-Damage","debuffMagnitude":0.025,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.5},
+  // Reactive Interface
+  'reactive_interface': {"debuffType":"-Damage","debuffMagnitude":0.025,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.25},
+  // Reactive Partial Core Conversion
+  'reactive_partial_core_conversion': {"debuffType":"-Damage","debuffMagnitude":0.025,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.25},
+  // Reactive Partial Radial Conversion
+  'reactive_partial_radial_conversion': {"debuffType":"-Damage","debuffMagnitude":0.025,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.25},
+  // Reactive Radial Flawless Interface
+  'reactive_radial_flawless_interface': {"debuffType":"-Damage","debuffMagnitude":0.025,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.25},
+  // Reactive Radial Interface
+  'reactive_radial_interface': {"debuffType":"-Damage","debuffMagnitude":0.025,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.25},
+  // Reactive Total Core Conversion
+  'reactive_total_core_conversion': {"debuffType":"-Damage","debuffMagnitude":0.025,"debuffDuration":8.3,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.75},
+  // Reactive Total Radial Conversion
+  'reactive_total_radial_conversion': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.75},
+  // Spectral Core Flawless Interface
+  'spectral_core_flawless_interface': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.25},
+  // Spectral Core Interface
+  'spectral_core_interface': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.15},
+  // Spectral Interface
+  'spectral_interface': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.1},
+  // Spectral Partial Core Conversion
+  'spectral_partial_core_conversion': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.25},
+  // Spectral Partial Radial Conversion
+  'spectral_partial_radial_conversion': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.5},
+  // Spectral Radial Flawless Interface
+  'spectral_radial_flawless_interface': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.75},
+  // Spectral Radial Interface
+  'spectral_radial_interface': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.25},
+  // Spectral Total Core Conversion
+  'spectral_total_core_conversion': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.2},
+  // Spectral Total Radial Conversion
+  'spectral_total_radial_conversion': {"debuffType":null,"debuffMagnitude":0,"debuffDuration":0,"dotType":null,"dotDamage":0,"dotDuration":0,"dotTableName":"","procChance":0.75},
+};
+
+// ============================================
+// JUDGEMENT EFFECTS
+// ============================================
+// Click attack powers. For display, not dashboard stats.
+
+export const GENERATED_JUDGEMENT_EFFECTS: Record<string, {
+  damageType: string;
+  effectArea: string;
+  range: number;
+  radius: number;
+  arc: number;
+  maxTargets: number;
+  activationTime: number;
+  rechargeTime: number;
+  damageScale: number;
+  tableName: string;
+  secondaryEffects: string[];
+}> = {
+  // Cryonic Core Final Judgement
+  'cryonic_core_final_judgement': {"damageType":"Cold","effectArea":"Cone","range":120,"radius":120,"arc":0.8,"maxTargets":32,"activationTime":2,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  // Cryonic Core Judgement
+  'cryonic_core_judgement': {"damageType":"Cold","effectArea":"Cone","range":80,"radius":80,"arc":0.5,"maxTargets":16,"activationTime":2,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  // Cryonic Judgement
+  'cryonic_judgement': {"damageType":"Cold","effectArea":"Cone","range":80,"radius":80,"arc":0.5,"maxTargets":16,"activationTime":2,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  // Cryonic Partial Core Judgement
+  'cryonic_partial_core_judgement': {"damageType":"Cold","effectArea":"Cone","range":80,"radius":80,"arc":0.5,"maxTargets":24,"activationTime":2,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":["Slow"]},
+  // Cryonic Partial Radial Judgement
+  'cryonic_partial_radial_judgement': {"damageType":"Cold","effectArea":"Cone","range":120,"radius":120,"arc":0.8,"maxTargets":32,"activationTime":2,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":["Slow"]},
+  // Cryonic Radial Final Judgement
+  'cryonic_radial_final_judgement': {"damageType":"Cold","effectArea":"Cone","range":120,"radius":120,"arc":0.8,"maxTargets":32,"activationTime":2,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":["Slow","Held Mag 12","Held Mag 1"]},
+  // Cryonic Radial Judgement
+  'cryonic_radial_judgement': {"damageType":"Cold","effectArea":"Cone","range":80,"radius":80,"arc":0.5,"maxTargets":16,"activationTime":2,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":["Slow"]},
+  // Cryonic Total Core Judgement
+  'cryonic_total_core_judgement': {"damageType":"Cold","effectArea":"Cone","range":80,"radius":80,"arc":0.5,"maxTargets":24,"activationTime":2,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  // Cryonic Total Radial Judgement
+  'cryonic_total_radial_judgement': {"damageType":"Cold","effectArea":"Cone","range":80,"radius":80,"arc":0.5,"maxTargets":24,"activationTime":2,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":["Slow","Held Mag 12","Held Mag 1"]},
+  // Ion Core Final Judgement
+  'ion_core_final_judgement': {"damageType":"Energy","effectArea":"Chain","range":80,"radius":0,"arc":0,"maxTargets":0,"activationTime":2.5,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  // Ion Core Judgement
+  'ion_core_judgement': {"damageType":"Energy","effectArea":"Chain","range":80,"radius":0,"arc":0,"maxTargets":0,"activationTime":2.5,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  // Ion Judgement
+  'ion_judgement': {"damageType":"Energy","effectArea":"Chain","range":80,"radius":0,"arc":0,"maxTargets":0,"activationTime":2.5,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  // Ion Partial Core Judgement
+  'ion_partial_core_judgement': {"damageType":"Energy","effectArea":"Chain","range":80,"radius":0,"arc":0,"maxTargets":0,"activationTime":2.5,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  // Ion Partial Radial Judgement
+  'ion_partial_radial_judgement': {"damageType":"Energy","effectArea":"Chain","range":80,"radius":0,"arc":0,"maxTargets":0,"activationTime":2.5,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  // Ion Radial Final Judgement
+  'ion_radial_final_judgement': {"damageType":"Energy","effectArea":"Chain","range":80,"radius":0,"arc":0,"maxTargets":0,"activationTime":2.5,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":["Held Mag 12","Held Mag 1"]},
+  // Ion Radial Judgement
+  'ion_radial_judgement': {"damageType":"Energy","effectArea":"Chain","range":80,"radius":0,"arc":0,"maxTargets":0,"activationTime":2.5,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  // Ion Total Core Judgement
+  'ion_total_core_judgement': {"damageType":"Energy","effectArea":"Chain","range":80,"radius":0,"arc":0,"maxTargets":0,"activationTime":2.5,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  // Ion Total Radial Judgement
+  'ion_total_radial_judgement': {"damageType":"Energy","effectArea":"Chain","range":80,"radius":0,"arc":0,"maxTargets":0,"activationTime":2.5,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":["Held Mag 12","Held Mag 1"]},
+  // Mighty Core Final Judgement
+  'mighty_core_final_judgement': {"damageType":"Smashing","effectArea":"PBAoE","range":0,"radius":50,"arc":0,"maxTargets":24,"activationTime":2.93,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  // Mighty Core Judgement
+  'mighty_core_judgement': {"damageType":"Smashing","effectArea":"PBAoE","range":0,"radius":30,"arc":0,"maxTargets":16,"activationTime":2.93,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  // Mighty Judgement
+  'mighty_judgement': {"damageType":"Smashing","effectArea":"PBAoE","range":0,"radius":30,"arc":0,"maxTargets":16,"activationTime":2.93,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  // Mighty Partial Core Judgement
+  'mighty_partial_core_judgement': {"damageType":"Smashing","effectArea":"PBAoE","range":0,"radius":50,"arc":0,"maxTargets":24,"activationTime":2.93,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  // Mighty Partial Radial Judgement
+  'mighty_partial_radial_judgement': {"damageType":"Smashing","effectArea":"PBAoE","range":0,"radius":50,"arc":0,"maxTargets":32,"activationTime":2.93,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  // Mighty Radial Final Judgement
+  'mighty_radial_final_judgement': {"damageType":"Smashing","effectArea":"PBAoE","range":0,"radius":50,"arc":0,"maxTargets":32,"activationTime":2.93,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  // Mighty Radial Judgement
+  'mighty_radial_judgement': {"damageType":"Smashing","effectArea":"PBAoE","range":0,"radius":30,"arc":0,"maxTargets":16,"activationTime":2.93,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  // Mighty Total Core Judgement
+  'mighty_total_core_judgement': {"damageType":"Smashing","effectArea":"PBAoE","range":0,"radius":30,"arc":0,"maxTargets":16,"activationTime":2.93,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  // Mighty Total Radial Judgement
+  'mighty_total_radial_judgement': {"damageType":"Smashing","effectArea":"PBAoE","range":0,"radius":30,"arc":0,"maxTargets":16,"activationTime":2.93,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  // Pyronic Core Final Judgement
+  'pyronic_core_final_judgement': {"damageType":"Fire","effectArea":"Targeted AoE","range":80,"radius":40,"arc":0,"maxTargets":24,"activationTime":1,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":["DoT(Fire) 0.2 scale/10.6s"]},
+  // Pyronic Core Judgement
+  'pyronic_core_judgement': {"damageType":"Fire","effectArea":"Targeted AoE","range":80,"radius":25,"arc":0,"maxTargets":16,"activationTime":1,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":["DoT(Fire) 0.05 scale/10.6s"]},
+  // Pyronic Judgement
+  'pyronic_judgement': {"damageType":"Fire","effectArea":"Targeted AoE","range":80,"radius":25,"arc":0,"maxTargets":16,"activationTime":1,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  // Pyronic Partial Core Judgement
+  'pyronic_partial_core_judgement': {"damageType":"Fire","effectArea":"Targeted AoE","range":80,"radius":25,"arc":0,"maxTargets":16,"activationTime":1,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":["DoT(Fire) 0.08 scale/10.6s"]},
+  // Pyronic Partial Radial Judgement
+  'pyronic_partial_radial_judgement': {"damageType":"Fire","effectArea":"Targeted AoE","range":80,"radius":40,"arc":0,"maxTargets":32,"activationTime":1,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  // Pyronic Radial Final Judgement
+  'pyronic_radial_final_judgement': {"damageType":"Fire","effectArea":"Targeted AoE","range":80,"radius":40,"arc":0,"maxTargets":32,"activationTime":1,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":["Stunned Mag 12","Stunned Mag 1"]},
+  // Pyronic Radial Judgement
+  'pyronic_radial_judgement': {"damageType":"Fire","effectArea":"Targeted AoE","range":80,"radius":40,"arc":0,"maxTargets":24,"activationTime":1,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  // Pyronic Total Core Judgement
+  'pyronic_total_core_judgement': {"damageType":"Fire","effectArea":"Targeted AoE","range":80,"radius":25,"arc":0,"maxTargets":16,"activationTime":1,"rechargeTime":90,"damageScale":3.5,"tableName":"Ranged_Tempdamage","secondaryEffects":["DoT(Fire) 0.25 scale/10.6s"]},
+  // Pyronic Total Radial Judgement
+  'pyronic_total_radial_judgement': {"damageType":"Fire","effectArea":"Targeted AoE","range":80,"radius":40,"arc":0,"maxTargets":24,"activationTime":1,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":["Stunned Mag 12","Stunned Mag 1"]},
+  // Void Core Final Judgement
+  'void_core_final_judgement': {"damageType":"Negative Energy","effectArea":"PBAoE","range":0,"radius":50,"arc":0,"maxTargets":24,"activationTime":2,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  // Void Core Judgement
+  'void_core_judgement': {"damageType":"Negative Energy","effectArea":"PBAoE","range":0,"radius":30,"arc":0,"maxTargets":16,"activationTime":2,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  // Void Judgement
+  'void_judgement': {"damageType":"Negative Energy","effectArea":"PBAoE","range":0,"radius":30,"arc":0,"maxTargets":16,"activationTime":2,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  // Void Partial Core Judgement
+  'void_partial_core_judgement': {"damageType":"Negative Energy","effectArea":"PBAoE","range":0,"radius":30,"arc":0,"maxTargets":16,"activationTime":2,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  // Void Partial Radial Judgement
+  'void_partial_radial_judgement': {"damageType":"Negative Energy","effectArea":"PBAoE","range":0,"radius":30,"arc":0,"maxTargets":16,"activationTime":2,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  // Void Radial Final Judgement
+  'void_radial_final_judgement': {"damageType":"Negative Energy","effectArea":"PBAoE","range":0,"radius":50,"arc":0,"maxTargets":32,"activationTime":2,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  // Void Radial Judgement
+  'void_radial_judgement': {"damageType":"Negative Energy","effectArea":"PBAoE","range":0,"radius":30,"arc":0,"maxTargets":16,"activationTime":2,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  // Void Total Core Judgement
+  'void_total_core_judgement': {"damageType":"Negative Energy","effectArea":"PBAoE","range":0,"radius":30,"arc":0,"maxTargets":16,"activationTime":2,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  // Void Total Radial Judgement
+  'void_total_radial_judgement': {"damageType":"Negative Energy","effectArea":"PBAoE","range":0,"radius":50,"arc":0,"maxTargets":24,"activationTime":2,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  // Vorpal Core Final Judgement
+  'vorpal_core_final_judgement': {"damageType":"Smashing","effectArea":"Cone","range":120,"radius":120,"arc":2.1,"maxTargets":30,"activationTime":2.5,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":["DoT(Lethal) 0.2 scale/10.6s"]},
+  // Vorpal Core Judgement
+  'vorpal_core_judgement': {"damageType":"Smashing","effectArea":"Cone","range":80,"radius":80,"arc":1.4,"maxTargets":20,"activationTime":2.5,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":["DoT(Lethal) 0.05 scale/10.6s"]},
+  // Vorpal Judgement
+  'vorpal_judgement': {"damageType":"Smashing","effectArea":"Cone","range":80,"radius":80,"arc":1.4,"maxTargets":20,"activationTime":2.5,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  // Vorpal Partial Core Judgement
+  'vorpal_partial_core_judgement': {"damageType":"Smashing","effectArea":"Cone","range":120,"radius":120,"arc":1.4,"maxTargets":20,"activationTime":2.5,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":["DoT(Lethal) 0.08 scale/10.6s"]},
+  // Vorpal Partial Radial Judgement
+  'vorpal_partial_radial_judgement': {"damageType":"Smashing","effectArea":"Cone","range":80,"radius":80,"arc":2.1,"maxTargets":40,"activationTime":2.5,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  // Vorpal Radial Final Judgement
+  'vorpal_radial_final_judgement': {"damageType":"Smashing","effectArea":"Cone","range":120,"radius":120,"arc":2.1,"maxTargets":40,"activationTime":2.5,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  // Vorpal Radial Judgement
+  'vorpal_radial_judgement': {"damageType":"Smashing","effectArea":"Cone","range":80,"radius":80,"arc":2.1,"maxTargets":30,"activationTime":2.5,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+  // Vorpal Total Core Judgement
+  'vorpal_total_core_judgement': {"damageType":"Smashing","effectArea":"Cone","range":120,"radius":120,"arc":1.4,"maxTargets":20,"activationTime":2.5,"rechargeTime":90,"damageScale":3.5,"tableName":"Ranged_Tempdamage","secondaryEffects":["DoT(Lethal) 0.25 scale/10.6s"]},
+  // Vorpal Total Radial Judgement
+  'vorpal_total_radial_judgement': {"damageType":"Smashing","effectArea":"Cone","range":80,"radius":80,"arc":2.1,"maxTargets":30,"activationTime":2.5,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
+};
+
+// ============================================
+// LORE EFFECTS
+// ============================================
+// Pet summoning powers. For display, not dashboard stats.
+
+export const GENERATED_LORE_EFFECTS: Record<string, {
+  faction: string;
+  pets: string[];
+  duration: number;
+  rechargeTime: number;
+}> = {
+  // Arachnos Ally
+  'arachnos_ally': {"faction":"Arachnos","pets":["Lieutenant"],"duration":300,"rechargeTime":900},
+  // Arachnos Core Ally
+  'arachnos_core_ally': {"faction":"Arachnos","pets":["Boss"],"duration":300,"rechargeTime":900},
+  // Arachnos Core Superior Ally
+  'arachnos_core_superior_ally': {"faction":"Arachnos","pets":["Boss","Lieutenant"],"duration":300,"rechargeTime":900},
+  // Arachnos Partial Core Improved Ally
+  'arachnos_partial_core_improved_ally': {"faction":"Arachnos","pets":["Boss","Support"],"duration":300,"rechargeTime":900},
+  // Arachnos Partial Radial Improved Ally
+  'arachnos_partial_radial_improved_ally': {"faction":"Arachnos","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":600},
+  // Arachnos Radial Ally
+  'arachnos_radial_ally': {"faction":"Arachnos","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":900},
+  // Arachnos Radial Superior Ally
+  'arachnos_radial_superior_ally': {"faction":"Arachnos","pets":["Boss","Support"],"duration":300,"rechargeTime":600},
+  // Arachnos Total Core Improved Ally
+  'arachnos_total_core_improved_ally': {"faction":"Arachnos","pets":["Boss","Lieutenant"],"duration":300,"rechargeTime":900},
+  // Arachnos Total Radial Improved Ally
+  'arachnos_total_radial_improved_ally': {"faction":"Arachnos","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":900},
+  // Banished Pantheon Ally
+  'banished_pantheon_ally': {"faction":"Banished Pantheon","pets":["Lieutenant"],"duration":300,"rechargeTime":900},
+  // Banished Pantheon Core Ally
+  'banished_pantheon_core_ally': {"faction":"Banished Pantheon","pets":["Boss"],"duration":300,"rechargeTime":900},
+  // Banished Pantheon Core Superior Ally
+  'banished_pantheon_core_superior_ally': {"faction":"Banished Pantheon","pets":["Boss","Lieutenant"],"duration":300,"rechargeTime":900},
+  // Banished Pantheon Partial Core Improved Ally
+  'banished_pantheon_partial_core_improved_ally': {"faction":"Banished Pantheon","pets":["Boss","Support"],"duration":300,"rechargeTime":900},
+  // Banished Pantheon Partial Radial Improved Ally
+  'banished_pantheon_partial_radial_improved_ally': {"faction":"Banished Pantheon","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":600},
+  // Banished Pantheon Radial Ally
+  'banished_pantheon_radial_ally': {"faction":"Banished Pantheon","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":900},
+  // Banished Pantheon Radial Superior Ally
+  'banished_pantheon_radial_superior_ally': {"faction":"Banished Pantheon","pets":["Boss","Support"],"duration":300,"rechargeTime":600},
+  // Banished Pantheon Total Core Improved Ally
+  'banished_pantheon_total_core_improved_ally': {"faction":"Banished Pantheon","pets":["Boss","Lieutenant"],"duration":300,"rechargeTime":900},
+  // Banished Pantheon Total Radial Improved Ally
+  'banished_pantheon_total_radial_improved_ally': {"faction":"Banished Pantheon","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":900},
+  // Carnival Ally
+  'carnival_ally': {"faction":"Carnival of Shadows","pets":["Lieutenant"],"duration":300,"rechargeTime":900},
+  // Carnival Core Ally
+  'carnival_core_ally': {"faction":"Carnival of Shadows","pets":["Boss"],"duration":300,"rechargeTime":900},
+  // Carnival Core Superior Ally
+  'carnival_core_superior_ally': {"faction":"Carnival of Shadows","pets":["Boss","Lieutenant"],"duration":300,"rechargeTime":900},
+  // Carnival Partial Core Improved Ally
+  'carnival_partial_core_improved_ally': {"faction":"Carnival of Shadows","pets":["Boss","Support"],"duration":300,"rechargeTime":900},
+  // Carnival Partial Radial Improved Ally
+  'carnival_partial_radial_improved_ally': {"faction":"Carnival of Shadows","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":600},
+  // Carnival Radial Ally
+  'carnival_radial_ally': {"faction":"Carnival of Shadows","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":900},
+  // Carnival Radial Superior Ally
+  'carnival_radial_superior_ally': {"faction":"Carnival of Shadows","pets":["Boss","Support"],"duration":300,"rechargeTime":600},
+  // Carnival Total Core Improved Ally
+  'carnival_total_core_improved_ally': {"faction":"Carnival of Shadows","pets":["Boss","Lieutenant"],"duration":300,"rechargeTime":900},
+  // Carnival Total Radial Improved Ally
+  'carnival_total_radial_improved_ally': {"faction":"Carnival of Shadows","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":900},
+  // Cimeroran Ally
+  'cimeroran_ally': {"faction":"Cimeroran","pets":["Lieutenant"],"duration":300,"rechargeTime":900},
+  // Cimeroran Core Ally
+  'cimeroran_core_ally': {"faction":"Cimeroran","pets":["Boss"],"duration":300,"rechargeTime":900},
+  // Cimeroran Core Superior Ally
+  'cimeroran_core_superior_ally': {"faction":"Cimeroran","pets":["Boss","Lieutenant"],"duration":300,"rechargeTime":900},
+  // Cimeroran Partial Core Improved Ally
+  'cimeroran_partial_core_improved_ally': {"faction":"Cimeroran","pets":["Boss","Support"],"duration":300,"rechargeTime":900},
+  // Cimeroran Partial Radial Improved Ally
+  'cimeroran_partial_radial_improved_ally': {"faction":"Cimeroran","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":600},
+  // Cimeroran Radial Ally
+  'cimeroran_radial_ally': {"faction":"Cimeroran","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":900},
+  // Cimeroran Radial Superior Ally
+  'cimeroran_radial_superior_ally': {"faction":"Cimeroran","pets":["Boss","Support"],"duration":300,"rechargeTime":600},
+  // Cimeroran Total Core Improved Ally
+  'cimeroran_total_core_improved_ally': {"faction":"Cimeroran","pets":["Boss","Lieutenant"],"duration":300,"rechargeTime":900},
+  // Cimeroran Total Radial Improved Ally
+  'cimeroran_total_radial_improved_ally': {"faction":"Cimeroran","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":900},
+  // Clockwork Ally
+  'clockwork_ally': {"faction":"Clockwork","pets":["Lieutenant"],"duration":300,"rechargeTime":900},
+  // Clockwork Core Ally
+  'clockwork_core_ally': {"faction":"Clockwork","pets":["Boss"],"duration":300,"rechargeTime":900},
+  // Clockwork Core Superior Ally
+  'clockwork_core_superior_ally': {"faction":"Clockwork","pets":["Boss","Lieutenant"],"duration":300,"rechargeTime":900},
+  // Clockwork Partial Core Improved Ally
+  'clockwork_partial_core_improved_ally': {"faction":"Clockwork","pets":["Boss","Support"],"duration":300,"rechargeTime":900},
+  // Clockwork Partial Radial Improved Ally
+  'clockwork_partial_radial_improved_ally': {"faction":"Clockwork","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":600},
+  // Clockwork Radial Ally
+  'clockwork_radial_ally': {"faction":"Clockwork","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":900},
+  // Clockwork Radial Superior Ally
+  'clockwork_radial_superior_ally': {"faction":"Clockwork","pets":["Boss","Support"],"duration":300,"rechargeTime":600},
+  // Clockwork Total Core Improved Ally
+  'clockwork_total_core_improved_ally': {"faction":"Clockwork","pets":["Boss","Lieutenant"],"duration":300,"rechargeTime":900},
+  // Clockwork Total Radial Improved Ally
+  'clockwork_total_radial_improved_ally': {"faction":"Clockwork","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":900},
+  // Demons Ally
+  'demons_ally': {"faction":"Demons","pets":["Lieutenant"],"duration":300,"rechargeTime":900},
+  // Demons Core Ally
+  'demons_core_ally': {"faction":"Demons","pets":["Boss"],"duration":300,"rechargeTime":900},
+  // Demons Core Superior Ally
+  'demons_core_superior_ally': {"faction":"Demons","pets":["Boss","Lieutenant"],"duration":300,"rechargeTime":900},
+  // Demons Partial Core Improved Ally
+  'demons_partial_core_improved_ally': {"faction":"Demons","pets":["Boss","Support"],"duration":300,"rechargeTime":900},
+  // Demons Partial Radial Improved Ally
+  'demons_partial_radial_improved_ally': {"faction":"Demons","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":600},
+  // Demons Radial Ally
+  'demons_radial_ally': {"faction":"Demons","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":900},
+  // Demons Radial Superior Ally
+  'demons_radial_superior_ally': {"faction":"Demons","pets":["Boss","Support"],"duration":300,"rechargeTime":600},
+  // Demons Total Core Improved Ally
+  'demons_total_core_improved_ally': {"faction":"Demons","pets":["Boss","Lieutenant"],"duration":300,"rechargeTime":900},
+  // Demons Total Radial Improved Ally
+  'demons_total_radial_improved_ally': {"faction":"Demons","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":900},
+  // IDF Ally
+  'idf_ally': {"faction":"IDF","pets":["Lieutenant"],"duration":300,"rechargeTime":900},
+  // IDF Core Ally
+  'idf_core_ally': {"faction":"IDF","pets":["Boss"],"duration":300,"rechargeTime":900},
+  // IDF Core Superior Ally
+  'idf_core_superior_ally': {"faction":"IDF","pets":["Boss","Lieutenant"],"duration":300,"rechargeTime":900},
+  // IDF Partial Core Improved Ally
+  'idf_partial_core_improved_ally': {"faction":"IDF","pets":["Boss","Support"],"duration":300,"rechargeTime":900},
+  // IDF Partial Radial Improved Ally
+  'idf_partial_radial_improved_ally': {"faction":"IDF","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":600},
+  // IDF Radial Ally
+  'idf_radial_ally': {"faction":"IDF","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":900},
+  // IDF Radial Superior Ally
+  'idf_radial_superior_ally': {"faction":"IDF","pets":["Boss","Support"],"duration":300,"rechargeTime":600},
+  // IDF Total Core Improved Ally
+  'idf_total_core_improved_ally': {"faction":"IDF","pets":["Boss","Lieutenant"],"duration":300,"rechargeTime":900},
+  // IDF Total Radial Improved Ally
+  'idf_total_radial_improved_ally': {"faction":"IDF","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":900},
+  // Knives of Vengeance Ally
+  'knives_of_vengeance_ally': {"faction":"Knives of Artemis","pets":["Lieutenant"],"duration":300,"rechargeTime":900},
+  // Knives of Vengeance Core Ally
+  'knives_of_vengeance_core_ally': {"faction":"Knives of Artemis","pets":["Boss"],"duration":300,"rechargeTime":900},
+  // Knives of Vengeance Core Superior Ally
+  'knives_of_vengeance_core_superior_ally': {"faction":"Knives of Artemis","pets":["Boss","Lieutenant"],"duration":300,"rechargeTime":900},
+  // Knives of Vengeance Partial Core Improved Ally
+  'knives_of_vengeance_partial_core_improved_ally': {"faction":"Knives of Artemis","pets":["Boss","Support"],"duration":300,"rechargeTime":900},
+  // Knives of Vengeance Partial Radial Improved Ally
+  'knives_of_vengeance_partial_radial_improved_ally': {"faction":"Knives of Artemis","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":600},
+  // Knives of Vengeance Radial Ally
+  'knives_of_vengeance_radial_ally': {"faction":"Knives of Artemis","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":900},
+  // Knives of Vengeance Radial Superior Ally
+  'knives_of_vengeance_radial_superior_ally': {"faction":"Knives of Artemis","pets":["Boss","Support"],"duration":300,"rechargeTime":600},
+  // Knives of Vengeance Total Core Improved Ally
+  'knives_of_vengeance_total_core_improved_ally': {"faction":"Knives of Artemis","pets":["Boss","Lieutenant"],"duration":300,"rechargeTime":900},
+  // Knives of Vengeance Total Radial Improved Ally
+  'knives_of_vengeance_total_radial_improved_ally': {"faction":"Knives of Artemis","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":900},
+  // Longbow Ally
+  'longbow_ally': {"faction":"Longbow","pets":["Lieutenant"],"duration":300,"rechargeTime":900},
+  // Longbow Core Ally
+  'longbow_core_ally': {"faction":"Longbow","pets":["Boss"],"duration":300,"rechargeTime":900},
+  // Longbow Core Superior Ally
+  'longbow_core_superior_ally': {"faction":"Longbow","pets":["Boss","Lieutenant"],"duration":300,"rechargeTime":900},
+  // Longbow Partial Core Improved Ally
+  'longbow_partial_core_improved_ally': {"faction":"Longbow","pets":["Boss","Support"],"duration":300,"rechargeTime":900},
+  // Longbow Partial Radial Improved Ally
+  'longbow_partial_radial_improved_ally': {"faction":"Longbow","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":600},
+  // Longbow Radial Ally
+  'longbow_radial_ally': {"faction":"Longbow","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":900},
+  // Longbow Radial Superior Ally
+  'longbow_radial_superior_ally': {"faction":"Longbow","pets":["Boss","Support"],"duration":300,"rechargeTime":600},
+  // Longbow Total Core Improved Ally
+  'longbow_total_core_improved_ally': {"faction":"Longbow","pets":["Boss","Lieutenant"],"duration":300,"rechargeTime":900},
+  // Longbow Total Radial Improved Ally
+  'longbow_total_radial_improved_ally': {"faction":"Longbow","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":900},
+  // Nemesis Ally
+  'nemesis_ally': {"faction":"Nemesis","pets":["Lieutenant"],"duration":300,"rechargeTime":900},
+  // Nemesis Core Ally
+  'nemesis_core_ally': {"faction":"Nemesis","pets":["Boss"],"duration":300,"rechargeTime":900},
+  // Nemesis Core Superior Ally
+  'nemesis_core_superior_ally': {"faction":"Nemesis","pets":["Boss","Lieutenant"],"duration":300,"rechargeTime":900},
+  // Nemesis Partial Core Improved Ally
+  'nemesis_partial_core_improved_ally': {"faction":"Nemesis","pets":["Boss","Support"],"duration":300,"rechargeTime":900},
+  // Nemesis Partial Radial Improved Ally
+  'nemesis_partial_radial_improved_ally': {"faction":"Nemesis","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":600},
+  // Nemesis Radial Ally
+  'nemesis_radial_ally': {"faction":"Nemesis","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":900},
+  // Nemesis Radial Superior Ally
+  'nemesis_radial_superior_ally': {"faction":"Nemesis","pets":["Boss","Support"],"duration":300,"rechargeTime":600},
+  // Nemesis Total Core Improved Ally
+  'nemesis_total_core_improved_ally': {"faction":"Nemesis","pets":["Boss","Lieutenant"],"duration":300,"rechargeTime":900},
+  // Nemesis Total Radial Improved Ally
+  'nemesis_total_radial_improved_ally': {"faction":"Nemesis","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":900},
+  // Phantom Ally
+  'phantom_ally': {"faction":"Phantom","pets":["Lieutenant"],"duration":300,"rechargeTime":900},
+  // Phantom Core Ally
+  'phantom_core_ally': {"faction":"Phantom","pets":["Boss"],"duration":300,"rechargeTime":900},
+  // Phantom Core Superior Ally
+  'phantom_core_superior_ally': {"faction":"Phantom","pets":["Boss","Lieutenant"],"duration":300,"rechargeTime":900},
+  // Phantom Partial Core Improved Ally
+  'phantom_partial_core_improved_ally': {"faction":"Phantom","pets":["Boss","Support"],"duration":300,"rechargeTime":900},
+  // Phantom Partial Radial Improved Ally
+  'phantom_partial_radial_improved_ally': {"faction":"Phantom","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":600},
+  // Phantom Radial Ally
+  'phantom_radial_ally': {"faction":"Phantom","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":900},
+  // Phantom Radial Superior Ally
+  'phantom_radial_superior_ally': {"faction":"Phantom","pets":["Boss","Support"],"duration":300,"rechargeTime":600},
+  // Phantom Total Core Improved Ally
+  'phantom_total_core_improved_ally': {"faction":"Phantom","pets":["Boss","Lieutenant"],"duration":300,"rechargeTime":900},
+  // Phantom Total Radial Improved Ally
+  'phantom_total_radial_improved_ally': {"faction":"Phantom","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":900},
+  // Polar Lights Ally
+  'polar_lights_ally': {"faction":"Lights","pets":["Lieutenant"],"duration":300,"rechargeTime":900},
+  // Polar Lights Core Ally
+  'polar_lights_core_ally': {"faction":"Lights","pets":["Boss"],"duration":300,"rechargeTime":900},
+  // Polar Lights Core Superior Ally
+  'polar_lights_core_superior_ally': {"faction":"Lights","pets":["Boss","Lieutenant"],"duration":300,"rechargeTime":900},
+  // Polar Lights Partial Core Improved Ally
+  'polar_lights_partial_core_improved_ally': {"faction":"Lights","pets":["Boss","Support"],"duration":300,"rechargeTime":900},
+  // Polar Lights Partial Radial Improved Ally
+  'polar_lights_partial_radial_improved_ally': {"faction":"Lights","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":600},
+  // Polar Lights Radial Ally
+  'polar_lights_radial_ally': {"faction":"Lights","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":900},
+  // Polar Lights Radial Superior Ally
+  'polar_lights_radial_superior_ally': {"faction":"Lights","pets":["Boss","Support"],"duration":300,"rechargeTime":600},
+  // Polar Lights Total Core Improved Ally
+  'polar_lights_total_core_improved_ally': {"faction":"Lights","pets":["Boss","Lieutenant"],"duration":300,"rechargeTime":900},
+  // Polar Lights Total Radial Improved Ally
+  'polar_lights_total_radial_improved_ally': {"faction":"Lights","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":900},
+  // Rikti Ally
+  'rikti_ally': {"faction":"Rikti","pets":["Lieutenant"],"duration":300,"rechargeTime":900},
+  // Rikti Core Ally
+  'rikti_core_ally': {"faction":"Rikti","pets":["Boss"],"duration":300,"rechargeTime":900},
+  // Rikti Core Superior Ally
+  'rikti_core_superior_ally': {"faction":"Rikti","pets":["Boss","Lieutenant"],"duration":300,"rechargeTime":900},
+  // Rikti Partial Core Improved Ally
+  'rikti_partial_core_improved_ally': {"faction":"Rikti","pets":["Boss","Support"],"duration":300,"rechargeTime":900},
+  // Rikti Partial Radial Improved Ally
+  'rikti_partial_radial_improved_ally': {"faction":"Rikti","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":600},
+  // Rikti Radial Ally
+  'rikti_radial_ally': {"faction":"Rikti","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":900},
+  // Rikti Radial Superior Ally
+  'rikti_radial_superior_ally': {"faction":"Rikti","pets":["Boss","Support"],"duration":300,"rechargeTime":600},
+  // Rikti Total Core Improved Ally
+  'rikti_total_core_improved_ally': {"faction":"Rikti","pets":["Boss","Lieutenant"],"duration":300,"rechargeTime":900},
+  // Rikti Total Radial Improved Ally
+  'rikti_total_radial_improved_ally': {"faction":"Rikti","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":900},
+  // Robotic Drones Ally
+  'robotic_drones_ally': {"faction":"Drones","pets":["Lieutenant"],"duration":300,"rechargeTime":900},
+  // Robotic Drones Core Ally
+  'robotic_drones_core_ally': {"faction":"Drones","pets":["Boss"],"duration":300,"rechargeTime":900},
+  // Robotic Drones Core Superior Ally
+  'robotic_drones_core_superior_ally': {"faction":"Drones","pets":["Boss","Lieutenant"],"duration":300,"rechargeTime":900},
+  // Robotic Drones Partial Core Improved Ally
+  'robotic_drones_partial_core_improved_ally': {"faction":"Drones","pets":["Boss","Support"],"duration":300,"rechargeTime":900},
+  // Robotic Drones Partial Radial Improved Ally
+  'robotic_drones_partial_radial_improved_ally': {"faction":"Drones","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":600},
+  // Robotic Drones Radial Ally
+  'robotic_drones_radial_ally': {"faction":"Drones","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":900},
+  // Robotic Drones Radial Superior Ally
+  'robotic_drones_radial_superior_ally': {"faction":"Drones","pets":["Boss","Support"],"duration":300,"rechargeTime":600},
+  // Robotic Drones Total Core Improved Ally
+  'robotic_drones_total_core_improved_ally': {"faction":"Drones","pets":["Boss","Lieutenant"],"duration":300,"rechargeTime":900},
+  // Robotic Drones Total Radial Improved Ally
+  'robotic_drones_total_radial_improved_ally': {"faction":"Drones","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":900},
+  // Rularuu Ally
+  'rularuu_ally': {"faction":"Rularuu","pets":["Lieutenant"],"duration":300,"rechargeTime":900},
+  // Rularuu Core Ally
+  'rularuu_core_ally': {"faction":"Rularuu","pets":["Boss"],"duration":300,"rechargeTime":900},
+  // Rularuu Core Superior Ally
+  'rularuu_core_superior_ally': {"faction":"Rularuu","pets":["Boss","Lieutenant"],"duration":300,"rechargeTime":900},
+  // Rularuu Partial Core Improved Ally
+  'rularuu_partial_core_improved_ally': {"faction":"Rularuu","pets":["Boss","Support"],"duration":300,"rechargeTime":900},
+  // Rularuu Partial Radial Improved Ally
+  'rularuu_partial_radial_improved_ally': {"faction":"Rularuu","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":600},
+  // Rularuu Radial Ally
+  'rularuu_radial_ally': {"faction":"Rularuu","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":900},
+  // Rularuu Radial Superior Ally
+  'rularuu_radial_superior_ally': {"faction":"Rularuu","pets":["Boss","Support"],"duration":300,"rechargeTime":600},
+  // Rularuu Total Core Improved Ally
+  'rularuu_total_core_improved_ally': {"faction":"Rularuu","pets":["Boss","Lieutenant"],"duration":300,"rechargeTime":900},
+  // Rularuu Total Radial Improved Ally
+  'rularuu_total_radial_improved_ally': {"faction":"Rularuu","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":900},
+  // Seers Ally
+  'seers_ally': {"faction":"Seers","pets":["Lieutenant"],"duration":300,"rechargeTime":900},
+  // Seers Core Ally
+  'seers_core_ally': {"faction":"Seers","pets":["Boss"],"duration":300,"rechargeTime":900},
+  // Seers Core Superior Ally
+  'seers_core_superior_ally': {"faction":"Seers","pets":["Boss","Lieutenant"],"duration":300,"rechargeTime":900},
+  // Seers Partial Core Improved Ally
+  'seers_partial_core_improved_ally': {"faction":"Seers","pets":["Boss","Support"],"duration":300,"rechargeTime":900},
+  // Seers Partial Radial Improved Ally
+  'seers_partial_radial_improved_ally': {"faction":"Seers","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":600},
+  // Seers Radial Ally
+  'seers_radial_ally': {"faction":"Seers","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":900},
+  // Seers Radial Superior Ally
+  'seers_radial_superior_ally': {"faction":"Seers","pets":["Boss","Support"],"duration":300,"rechargeTime":600},
+  // Seers Total Core Improved Ally
+  'seers_total_core_improved_ally': {"faction":"Seers","pets":["Boss","Lieutenant"],"duration":300,"rechargeTime":900},
+  // Seers Total Radial Improved Ally
+  'seers_total_radial_improved_ally': {"faction":"Seers","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":900},
+  // Storm Elemental Ally
+  'storm_elemental_ally': {"faction":"Storm","pets":["Lieutenant"],"duration":300,"rechargeTime":900},
+  // Storm Elemental Core Ally
+  'storm_elemental_core_ally': {"faction":"Storm","pets":["Boss"],"duration":300,"rechargeTime":900},
+  // Storm Elemental Core Superior Ally
+  'storm_elemental_core_superior_ally': {"faction":"Storm","pets":["Boss","Lieutenant"],"duration":300,"rechargeTime":900},
+  // Storm Elemental Partial Core Improved Ally
+  'storm_elemental_partial_core_improved_ally': {"faction":"Storm","pets":["Boss","Support"],"duration":300,"rechargeTime":900},
+  // Storm Elemental Partial Radial Improved Ally
+  'storm_elemental_partial_radial_improved_ally': {"faction":"Storm","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":600},
+  // Storm Elemental Radial Ally
+  'storm_elemental_radial_ally': {"faction":"Storm","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":900},
+  // Storm Elemental Radial Superior Ally
+  'storm_elemental_radial_superior_ally': {"faction":"Storm","pets":["Boss","Support"],"duration":300,"rechargeTime":600},
+  // Storm Elemental Total Core Improved Ally
+  'storm_elemental_total_core_improved_ally': {"faction":"Storm","pets":["Boss","Lieutenant"],"duration":300,"rechargeTime":900},
+  // Storm Elemental Total Radial Improved Ally
+  'storm_elemental_total_radial_improved_ally': {"faction":"Storm","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":900},
+  // Talons of Vengeance Ally
+  'talons_of_vengeance_ally': {"faction":"Talons of Vengeance","pets":["Lieutenant"],"duration":300,"rechargeTime":900},
+  // Talons of Vengeance Core Ally
+  'talons_of_vengeance_core_ally': {"faction":"Talons of Vengeance","pets":["Boss"],"duration":300,"rechargeTime":900},
+  // Talons of Vengeance Core Superior Ally
+  'talons_of_vengeance_core_superior_ally': {"faction":"Talons of Vengeance","pets":["Boss","Lieutenant"],"duration":300,"rechargeTime":900},
+  // Talons of Vengeance Partial Core Improved Ally
+  'talons_of_vengeance_partial_core_improved_ally': {"faction":"Talons of Vengeance","pets":["Boss","Support"],"duration":300,"rechargeTime":900},
+  // Talons of Vengeance Partial Radial Improved Ally
+  'talons_of_vengeance_partial_radial_improved_ally': {"faction":"Talons of Vengeance","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":600},
+  // Talons of Vengeance Radial Ally
+  'talons_of_vengeance_radial_ally': {"faction":"Talons of Vengeance","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":900},
+  // Talons of Vengeance Radial Superior Ally
+  'talons_of_vengeance_radial_superior_ally': {"faction":"Talons of Vengeance","pets":["Boss","Support"],"duration":300,"rechargeTime":600},
+  // Talons of Vengeance Total Core Improved Ally
+  'talons_of_vengeance_total_core_improved_ally': {"faction":"Talons of Vengeance","pets":["Boss","Lieutenant"],"duration":300,"rechargeTime":900},
+  // Talons of Vengeance Total Radial Improved Ally
+  'talons_of_vengeance_total_radial_improved_ally': {"faction":"Talons of Vengeance","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":900},
+  // Tsoo Ally
+  'tsoo_ally': {"faction":"Tsoo","pets":["Lieutenant"],"duration":300,"rechargeTime":900},
+  // Tsoo Core Ally
+  'tsoo_core_ally': {"faction":"Tsoo","pets":["Boss"],"duration":300,"rechargeTime":900},
+  // Tsoo Core Superior Ally
+  'tsoo_core_superior_ally': {"faction":"Tsoo","pets":["Boss","Lieutenant"],"duration":300,"rechargeTime":900},
+  // Tsoo Partial Core Improved Ally
+  'tsoo_partial_core_improved_ally': {"faction":"Tsoo","pets":["Boss","Support"],"duration":300,"rechargeTime":900},
+  // Tsoo Partial Radial Improved Ally
+  'tsoo_partial_radial_improved_ally': {"faction":"Tsoo","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":600},
+  // Tsoo Radial Ally
+  'tsoo_radial_ally': {"faction":"Tsoo","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":900},
+  // Tsoo Radial Superior Ally
+  'tsoo_radial_superior_ally': {"faction":"Tsoo","pets":["Boss","Support"],"duration":300,"rechargeTime":600},
+  // Tsoo Total Core Improved Ally
+  'tsoo_total_core_improved_ally': {"faction":"Tsoo","pets":["Boss","Lieutenant"],"duration":300,"rechargeTime":900},
+  // Tsoo Total Radial Improved Ally
+  'tsoo_total_radial_improved_ally': {"faction":"Tsoo","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":900},
+  // Vanguard Ally
+  'vanguard_ally': {"faction":"Vanguard","pets":["Lieutenant"],"duration":300,"rechargeTime":900},
+  // Vanguard Core Ally
+  'vanguard_core_ally': {"faction":"Vanguard","pets":["Boss"],"duration":300,"rechargeTime":900},
+  // Vanguard Core Superior Ally
+  'vanguard_core_superior_ally': {"faction":"Vanguard","pets":["Boss","Lieutenant"],"duration":300,"rechargeTime":900},
+  // Vanguard Partial Core Improved Ally
+  'vanguard_partial_core_improved_ally': {"faction":"Vanguard","pets":["Boss","Support"],"duration":300,"rechargeTime":900},
+  // Vanguard Partial Radial Improved Ally
+  'vanguard_partial_radial_improved_ally': {"faction":"Vanguard","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":600},
+  // Vanguard Radial Ally
+  'vanguard_radial_ally': {"faction":"Vanguard","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":900},
+  // Vanguard Radial Superior Ally
+  'vanguard_radial_superior_ally': {"faction":"Vanguard","pets":["Boss","Support"],"duration":300,"rechargeTime":600},
+  // Vanguard Total Core Improved Ally
+  'vanguard_total_core_improved_ally': {"faction":"Vanguard","pets":["Boss","Lieutenant"],"duration":300,"rechargeTime":900},
+  // Vanguard Total Radial Improved Ally
+  'vanguard_total_radial_improved_ally': {"faction":"Vanguard","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":900},
+  // Warworks Ally
+  'warworks_ally': {"faction":"War Works","pets":["Lieutenant"],"duration":300,"rechargeTime":900},
+  // Warworks Core Ally
+  'warworks_core_ally': {"faction":"War Works","pets":["Boss"],"duration":300,"rechargeTime":900},
+  // Warworks Core Superior Ally
+  'warworks_core_superior_ally': {"faction":"War Works","pets":["Boss","Lieutenant"],"duration":300,"rechargeTime":900},
+  // Warworks Partial Core Improved Ally
+  'warworks_partial_core_improved_ally': {"faction":"War Works","pets":["Boss","Support"],"duration":300,"rechargeTime":900},
+  // Warworks Partial Radial Improved Ally
+  'warworks_partial_radial_improved_ally': {"faction":"War Works","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":600},
+  // Warworks Radial Ally
+  'warworks_radial_ally': {"faction":"War Works","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":900},
+  // Warworks Radial Superior Ally
+  'warworks_radial_superior_ally': {"faction":"War Works","pets":["Boss","Support"],"duration":300,"rechargeTime":600},
+  // Warworks Total Core Improved Ally
+  'warworks_total_core_improved_ally': {"faction":"War Works","pets":["Boss","Lieutenant"],"duration":300,"rechargeTime":900},
+  // Warworks Total Radial Improved Ally
+  'warworks_total_radial_improved_ally': {"faction":"War Works","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":900},
+};

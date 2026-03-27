@@ -529,13 +529,32 @@ function extractHybrid() {
 // INTERFACE EXTRACTION
 // ============================================
 
+/** Map interface silent attrib names to debuff type display strings */
+const INTERFACE_DEBUFF_MAP = {
+  'ToHit': '-ToHit', 'Accuracy': '-ToHit',
+  'Regeneration': '-Regen', 'Recovery': '-Recovery',
+  'Base_Defense': '-Defense',
+  'Smashing_Dmg': '-Damage', // aspect=Strength → damage debuff
+  'RunningSpeed': '-Speed', 'JumpHeight': '-Speed', 'FlyingSpeed': '-Speed',
+  'RechargeTime': '-Recharge',
+  'Endurance': '-Endurance',
+  'HitPoints': '-MaxHP',
+};
+
+/** Map attrib names to DoT type display */
+const INTERFACE_DOT_MAP = {
+  'Fire_Dmg': 'Fire', 'Cold_Dmg': 'Cold', 'Energy_Dmg': 'Energy',
+  'Negative_Energy_Dmg': 'Negative', 'Toxic_Dmg': 'Toxic',
+  'Psionic_Dmg': 'Psionic', 'Smashing_Dmg': 'Smashing', 'Lethal_Dmg': 'Lethal',
+};
+
 function extractInterface() {
   console.log('\n=== INTERFACE ===');
   const mainDir = path.join(RAW_BASE, 'interface');
   const silentDir = path.join(RAW_BASE, 'interface_silent');
   const results = {};
 
-  // Pre-load silent files
+  // Pre-load silent files (normalize names: "to_hit_debuff" from "To_Hit_Debuff")
   const silentCache = {};
   for (const f of readDir(silentDir)) {
     const data = readJson(path.join(silentDir, f));
@@ -549,67 +568,263 @@ function extractInterface() {
     const powerId = f.replace('.json', '');
     const displayName = data.display_name || powerId;
 
-    // Interface powers grant proc effects to attacks
-    // Extract the Global_Chance_Mod values (proc chances)
-    const procs = [];
+    // Interface powers grant silent proc powers and set Global_Chance_Mod for proc rates.
+    // The grants and chances pair up in order: first grant → first chance, etc.
     const grantedRefs = extractGrantedPowers(data);
-
+    const chances = [];
     for (const eff of data.effects || []) {
       for (const t of eff.templates || []) {
         if ((t.attribs || []).includes('Global_Chance_Mod')) {
-          const chance = t.scale || 0;
-          const pnames = t.power_names || [];
-          for (const pn of pnames) {
-            procs.push({ chance, ref: pn });
-          }
-          // If no power_names in this template, note the chance
-          if (pnames.length === 0 && chance > 0) {
-            procs.push({ chance, ref: 'unknown' });
-          }
+          chances.push(t.scale || 0);
         }
       }
     }
 
-    // Resolve proc effects from silent files
-    const procEffects = [];
-    for (const ref of grantedRefs) {
-      const silentName = silentRefToFilename(ref);
+    // Resolve each granted proc from silent files
+    let debuffType = null;
+    let debuffMagnitude = 0;
+    let debuffDuration = 0;
+    let dotType = null;
+    let dotDamage = 0;
+    let dotDuration = 0;
+    let dotTableName = '';
+    let procChance = chances[0] || 0;
+
+    for (let i = 0; i < grantedRefs.length; i++) {
+      const silentName = silentRefToFilename(grantedRefs[i]);
       const silentData = silentCache[silentName];
       if (!silentData) continue;
+      const chance = chances[i] || 0;
 
-      const effects = [];
       for (const eff of silentData.effects || []) {
         for (const t of eff.templates || []) {
           const attrib = (t.attribs || [])[0];
           const scale = t.scale || 0;
           const aspect = t.aspect || '';
-          const target = t.target || '';
           const duration = t.duration || '';
           if (!attrib || scale === 0) continue;
 
-          effects.push({
-            attrib,
-            scale: round(scale),
-            aspect,
-            target,
-            duration,
-          });
-        }
-      }
+          const durMatch = duration.match(/([\d.]+)\s*seconds?/i);
+          const durSec = durMatch ? parseFloat(durMatch[1]) : 0;
+          const tname = (t.table && typeof t.table === 'object') ? (t.table.column_name || '') : '';
 
-      if (effects.length > 0) {
-        procEffects.push({ name: silentName, effects });
+          // Classify as debuff or DoT
+          if (aspect === 'Absolute' && attrib in INTERFACE_DOT_MAP) {
+            // DoT damage
+            if (!dotType || Math.abs(scale) > Math.abs(dotDamage)) {
+              dotType = INTERFACE_DOT_MAP[attrib];
+              dotDamage = round(Math.abs(scale));
+              dotDuration = durSec;
+              dotTableName = tname || 'Ranged_Tempdamage';
+            }
+          } else if (attrib in INTERFACE_DEBUFF_MAP) {
+            // Debuff effect
+            if (!debuffType || Math.abs(scale) > Math.abs(debuffMagnitude)) {
+              debuffType = INTERFACE_DEBUFF_MAP[attrib];
+              // Aspect=Strength means it's a strength debuff (percentage)
+              // Aspect=Current means direct stat modification
+              debuffMagnitude = round(Math.abs(scale));
+              debuffDuration = durSec;
+            }
+          }
+
+          // Use the highest proc chance
+          if (chance > procChance) procChance = chance;
+        }
       }
     }
 
     results[powerId] = {
       displayName,
-      procs,
-      procEffects,
-      grantedRefs,
+      debuffType,
+      debuffMagnitude,
+      debuffDuration,
+      dotType,
+      dotDamage,
+      dotDuration,
+      dotTableName,
+      procChance: round(procChance),
     };
 
-    console.log(`  ${displayName}: ${procs.length} proc triggers, ${procEffects.length} effect groups`);
+    const parts = [];
+    if (debuffType) parts.push(`${debuffType} ${round(debuffMagnitude * 100, 1)}%`);
+    if (dotType) parts.push(`DoT(${dotType}) scale=${dotDamage}`);
+    console.log(`  ${displayName}: ${parts.join(', ') || 'procs only'} chance=${round(procChance * 100)}%`);
+  }
+
+  console.log(`  Total: ${Object.keys(results).length} powers`);
+  return results;
+}
+
+// ============================================
+// JUDGEMENT EXTRACTION
+// ============================================
+
+/** Map raw damage attrib names to display names */
+const DAMAGE_TYPE_MAP = {
+  'Smashing_Dmg': 'Smashing', 'Lethal_Dmg': 'Lethal', 'Fire_Dmg': 'Fire',
+  'Cold_Dmg': 'Cold', 'Energy_Dmg': 'Energy', 'Negative_Energy_Dmg': 'Negative Energy',
+  'Psionic_Dmg': 'Psionic', 'Toxic_Dmg': 'Toxic',
+};
+
+function extractJudgement() {
+  console.log('\n=== JUDGEMENT ===');
+  const mainDir = path.join(RAW_BASE, 'judgement');
+  const results = {};
+
+  for (const f of readDir(mainDir)) {
+    const data = readJson(path.join(mainDir, f));
+    if (!data) continue;
+
+    const powerId = f.replace('.json', '');
+    const displayName = data.display_name || powerId;
+    const helpText = data.display_help || '';
+
+    // Extract area/targeting info from top-level
+    const effectArea = data.effect_area || 'Unknown';
+    const range = data.range || 0;
+    const radius = data.radius || 0;
+    const arc = data.arc || 0;
+    const maxTargets = data.max_targets_hit || 0;
+    const activationTime = data.activation_time || 0;
+    const rechargeTime = data.recharge_time || 90;
+
+    // Extract damage effects
+    let primaryDamageType = null;
+    let damageScale = 0;
+    const secondaryEffects = [];
+
+    for (const eff of data.effects || []) {
+      for (const t of eff.templates || []) {
+        const attrib = (t.attribs || [])[0];
+        const scale = t.scale || 0;
+        const duration = t.duration || '';
+        const aspect = t.aspect || '';
+
+        if (attrib in DAMAGE_TYPE_MAP && aspect === 'Absolute') {
+          const durMatch = duration.match(/([\d.]+)\s*seconds?/i);
+          const durSec = durMatch ? parseFloat(durMatch[1]) : 0;
+
+          if (durSec === 0 && scale > damageScale) {
+            // Direct damage (no duration = instant)
+            primaryDamageType = DAMAGE_TYPE_MAP[attrib];
+            damageScale = scale;
+          } else if (durSec > 0) {
+            // DoT
+            secondaryEffects.push(`DoT(${DAMAGE_TYPE_MAP[attrib]}) ${round(scale, 2)} scale/${round(durSec, 1)}s`);
+          }
+        } else if (attrib === 'Held' || attrib === 'Stunned' || attrib === 'Immobilized' ||
+                   attrib === 'Knocked' || attrib === 'Sleep') {
+          if (scale > 0) {
+            secondaryEffects.push(`${attrib} Mag ${round(scale, 1)}`);
+          }
+        } else if ((attrib === 'JumpHeight' || attrib === 'RunningSpeed') && scale < 0) {
+          secondaryEffects.push('Slow');
+        }
+      }
+    }
+
+    // Determine effect area type from help text for better display
+    let areaType = effectArea;
+    if (helpText.includes('Cone')) areaType = 'Cone';
+    else if (helpText.includes('Chain')) areaType = 'Chain';
+    else if (helpText.includes('PBAoE')) areaType = 'PBAoE';
+    else if (helpText.includes('Targeted') && helpText.includes('AoE')) areaType = 'Targeted AoE';
+    else if (helpText.includes('AoE')) areaType = 'AoE';
+
+    results[powerId] = {
+      displayName,
+      damageType: primaryDamageType || 'Unknown',
+      effectArea: areaType,
+      range: round(range, 1),
+      radius: round(radius, 1),
+      arc: round(arc, 1),
+      maxTargets,
+      activationTime: round(activationTime, 2),
+      rechargeTime: round(rechargeTime, 1),
+      damageScale: round(damageScale, 2),
+      tableName: 'Ranged_Tempdamage',
+      secondaryEffects: [...new Set(secondaryEffects)],
+    };
+
+    console.log(`  ${displayName}: ${primaryDamageType} scale=${damageScale} ${areaType} r=${radius} arc=${arc}`);
+  }
+
+  console.log(`  Total: ${Object.keys(results).length} powers`);
+  return results;
+}
+
+// ============================================
+// LORE EXTRACTION
+// ============================================
+
+/** Map entity def names to display-friendly pet types */
+function petTypeFromEntityDef(entityDef) {
+  const lower = entityDef.toLowerCase();
+  if (lower.includes('boss')) return 'Boss';
+  if (lower.includes('support')) return 'Support';
+  if (lower.includes('_lt')) return 'Lieutenant';
+  return 'Pet';
+}
+
+/** Extract faction name from power ID (e.g., 'arachnos_core_superior_ally' → 'Arachnos') */
+function factionFromPowerId(powerId) {
+  const factionMap = {
+    arachnos: 'Arachnos', banished: 'Banished Pantheon', carnival: 'Carnival of Shadows',
+    cimeroran: 'Cimeroran', clockwork: 'Clockwork', demons: 'Demons',
+    elementals: 'Elementals', idf: 'IDF', knives: 'Knives of Artemis',
+    lights: 'Lights', longbow: 'Longbow', nemesis: 'Nemesis',
+    phantoms: 'Phantoms', rikti: 'Rikti', rularuu: 'Rularuu',
+    seers: 'Seers', talons: 'Talons of Vengeance', tsoo: 'Tsoo',
+    vanguard: 'Vanguard', warworks: 'War Works', drones: 'Drones',
+  };
+  for (const [key, name] of Object.entries(factionMap)) {
+    if (powerId.includes(key)) return name;
+  }
+  return powerId.split('_')[0].charAt(0).toUpperCase() + powerId.split('_')[0].slice(1);
+}
+
+function extractLore() {
+  console.log('\n=== LORE ===');
+  const mainDir = path.join(RAW_BASE, 'lore');
+  const results = {};
+
+  for (const f of readDir(mainDir)) {
+    const data = readJson(path.join(mainDir, f));
+    if (!data) continue;
+
+    const powerId = f.replace('.json', '');
+    const displayName = data.display_name || powerId;
+    const rechargeTime = data.recharge_time || 900;
+
+    // Extract pets from Create_Entity templates
+    const pets = [];
+    let duration = 300;
+    for (const eff of data.effects || []) {
+      for (const t of eff.templates || []) {
+        if ((t.attribs || [])[0] === 'Create_Entity') {
+          const entityDef = (t.params || {}).entity_def || '';
+          if (entityDef) {
+            pets.push(petTypeFromEntityDef(entityDef));
+          }
+          // Extract duration
+          const durMatch = (t.duration || '').match(/([\d.]+)\s*seconds?/i);
+          if (durMatch) duration = parseFloat(durMatch[1]);
+        }
+      }
+    }
+
+    const faction = factionFromPowerId(powerId);
+
+    results[powerId] = {
+      displayName,
+      faction,
+      pets: pets.length > 0 ? pets : ['Unknown'],
+      duration,
+      rechargeTime: round(rechargeTime, 1),
+    };
+
+    console.log(`  ${displayName}: ${faction} pets=[${pets.join(', ')}] ${duration}s/${rechargeTime}s`);
   }
 
   console.log(`  Total: ${Object.keys(results).length} powers`);
@@ -620,7 +835,7 @@ function extractInterface() {
 // TYPESCRIPT CODE GENERATION
 // ============================================
 
-function generateTypeScript(alpha, destiny, hybrid, _iface) {
+function generateTypeScript(alpha, destiny, hybrid, iface, judgement, lore) {
   const lines = [];
 
   lines.push(`/**`);
@@ -701,6 +916,88 @@ function generateTypeScript(alpha, destiny, hybrid, _iface) {
   lines.push('};');
   lines.push('');
 
+  // ---- INTERFACE ----
+  lines.push('// ============================================');
+  lines.push('// INTERFACE EFFECTS');
+  lines.push('// ============================================');
+  lines.push('// Proc-based debuffs applied to enemies. For display, not dashboard stats.');
+  lines.push('');
+  lines.push('export const GENERATED_INTERFACE_EFFECTS: Record<string, {');
+  lines.push('  debuffType: string | null;');
+  lines.push('  debuffMagnitude: number;');
+  lines.push('  debuffDuration: number;');
+  lines.push('  dotType: string | null;');
+  lines.push('  dotDamage: number;');
+  lines.push('  dotDuration: number;');
+  lines.push('  dotTableName: string;');
+  lines.push('  procChance: number;');
+  lines.push('}> = {');
+  for (const [id, data] of Object.entries(iface)) {
+    lines.push(`  // ${data.displayName}`);
+    lines.push(`  '${id}': ${JSON.stringify({
+      debuffType: data.debuffType,
+      debuffMagnitude: data.debuffMagnitude,
+      debuffDuration: data.debuffDuration,
+      dotType: data.dotType,
+      dotDamage: data.dotDamage,
+      dotDuration: data.dotDuration,
+      dotTableName: data.dotTableName,
+      procChance: data.procChance,
+    })},`);
+  }
+  lines.push('};');
+  lines.push('');
+
+  // ---- JUDGEMENT ----
+  lines.push('// ============================================');
+  lines.push('// JUDGEMENT EFFECTS');
+  lines.push('// ============================================');
+  lines.push('// Click attack powers. For display, not dashboard stats.');
+  lines.push('');
+  lines.push('export const GENERATED_JUDGEMENT_EFFECTS: Record<string, {');
+  lines.push('  damageType: string;');
+  lines.push('  effectArea: string;');
+  lines.push('  range: number;');
+  lines.push('  radius: number;');
+  lines.push('  arc: number;');
+  lines.push('  maxTargets: number;');
+  lines.push('  activationTime: number;');
+  lines.push('  rechargeTime: number;');
+  lines.push('  damageScale: number;');
+  lines.push('  tableName: string;');
+  lines.push('  secondaryEffects: string[];');
+  lines.push('}> = {');
+  for (const [id, data] of Object.entries(judgement)) {
+    lines.push(`  // ${data.displayName}`);
+    lines.push(`  '${id}': ${JSON.stringify(data).replace(/"displayName":"[^"]*",?/, '')},`);
+  }
+  lines.push('};');
+  lines.push('');
+
+  // ---- LORE ----
+  lines.push('// ============================================');
+  lines.push('// LORE EFFECTS');
+  lines.push('// ============================================');
+  lines.push('// Pet summoning powers. For display, not dashboard stats.');
+  lines.push('');
+  lines.push('export const GENERATED_LORE_EFFECTS: Record<string, {');
+  lines.push('  faction: string;');
+  lines.push('  pets: string[];');
+  lines.push('  duration: number;');
+  lines.push('  rechargeTime: number;');
+  lines.push('}> = {');
+  for (const [id, data] of Object.entries(lore)) {
+    lines.push(`  // ${data.displayName}`);
+    lines.push(`  '${id}': ${JSON.stringify({
+      faction: data.faction,
+      pets: data.pets,
+      duration: data.duration,
+      rechargeTime: data.rechargeTime,
+    })},`);
+  }
+  lines.push('};');
+  lines.push('');
+
   return lines.join('\n');
 }
 
@@ -721,8 +1018,10 @@ function main() {
   const destiny = extractDestiny();
   const hybrid = extractHybrid();
   const iface = extractInterface();
+  const judgement = extractJudgement();
+  const lore = extractLore();
 
-  const output = generateTypeScript(alpha, destiny, hybrid, iface);
+  const output = generateTypeScript(alpha, destiny, hybrid, iface, judgement, lore);
 
   if (DRY_RUN) {
     console.log('\n=== DRY RUN — would write to:', OUTPUT_FILE);
@@ -738,6 +1037,8 @@ function main() {
   console.log(`  Destiny:   ${Object.keys(destiny).length} powers`);
   console.log(`  Hybrid:    ${Object.keys(hybrid).length} powers`);
   console.log(`  Interface: ${Object.keys(iface).length} powers`);
+  console.log(`  Judgement: ${Object.keys(judgement).length} powers`);
+  console.log(`  Lore:      ${Object.keys(lore).length} powers`);
 }
 
 main();
