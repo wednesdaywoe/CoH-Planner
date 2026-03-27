@@ -100,7 +100,10 @@
       "Bash(find /Users/brian/Library/CloudStorage/Dropbox/GitHub/CoH-Planner/raw_data_homecoming-20251209_7415/ -ipath *hybrid_silent* -o -ipath *hybrid*boost*)",
       "Bash(node scripts/convert-incarnate-effects.cjs --dry-run)",
       "Bash(git checkout:*)",
-      "Bash(node scripts/convert-incarnate-effects.cjs)"
+      "Bash(node scripts/convert-incarnate-effects.cjs)",
+      "Bash(RAW=/Users/brian/Library/CloudStorage/Dropbox/GitHub/CoH-Planner/raw_data_homecoming-20251209_7415/powers/incarnate __NEW_LINE_435fc2fb923305da__ echo \"=== JUDGEMENT files ===\" ls \"$RAW/judgement/\")",
+      "Read(//Users/brian/Library/CloudStorage/Dropbox/GitHub/CoH-Planner/**)",
+      "Bash(/dev/null __NEW_LINE_435fc2fb923305da__ echo echo '=== Sample: Ion Core Superior Judgement ===' python3 -c \":*)"
     ]
   }
 }

@@ -4,10 +4,7 @@
 			"path": "."
 		},
 		{
-			"path": "G:/MIDS"
-		},
-		{
-			"path": "G:/Homecoming"
+			"path": "../../../../../Downloads/MRB_Release_3.8.0.0"
 		}
 	],
 	"settings": {}

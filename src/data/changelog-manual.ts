@@ -23,6 +23,9 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   {
     date: '2026-03-27',
     items: [
+      { message: 'Fixed Contagious Confusion proc registration', type: 'fix' },
+      { message: 'Comprehensive regeneration of Incarnate data', type: 'fix' },
+      { message: 'Manually updated Brute modifiers', type: 'fix' },
       { message: 'Added comprehensive verbose logging for power calculations. Enable debug mode under Settings and open your browser console to check Sidekick\'s math', type: 'feat' },
       { message: 'Fixed KB protection and KB resistance to prevent them from getting merged', type: 'fix' },
       { message: 'Defense Debuff Res should now be mapped correctly', type: 'fix' },
