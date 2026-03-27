@@ -596,7 +596,7 @@ function extractDamage(templates) {
  * - "Magnitude" = magnitude-based effect
  * - "Duration" = duration-based effect (used for mez)
  */
-function extractEffects(templates) {
+function extractEffects(templates, powerName) {
   const effects = {};
   const unmappedAttribs = new Set();
 
@@ -660,7 +660,7 @@ function extractEffects(templates) {
             // First entity encountered
             const entityInfo = { isPseudoPet };
             if (params.entity_def) entityInfo.entity = params.entity_def;
-            if (params.display_name) entityInfo.displayName = DISPLAY_NAME_OVERRIDES[powerJson.name] || params.display_name;
+            if (params.display_name) entityInfo.displayName = DISPLAY_NAME_OVERRIDES[powerName] || params.display_name;
             if (params.redirects?.length > 0) entityInfo.powers = params.redirects;
             if (duration) entityInfo.duration = duration;
             if (hasCopyBoosts) entityInfo.copyBoosts = true;
@@ -1377,6 +1377,12 @@ const ICON_OVERRIDES = {
   'regeneration_resist.png': 'regeneration_resilience.png',  // Resilience icon renamed on HC
 };
 
+// Additional allowedEnhancements not present in boosts_allowed but confirmed in-game
+const ALLOWED_ENHANCEMENT_OVERRIDES = {
+  // Storm Blast: Cloudburst accepts Slow in-game despite missing from binary data
+  'Cloudburst': ['Slow'],
+};
+
 /**
  * Convert a single power file
  */
@@ -1432,6 +1438,16 @@ function convertPower(powerJson, availableLevel) {
   // If boosts_allowed is empty, the power genuinely accepts no generic IOs.
   // allowedSetCategories only determines which IO SETS can be slotted.
 
+  // Apply manual overrides for powers where in-game allows enhancements not in binary data
+  const extraEnhancements = ALLOWED_ENHANCEMENT_OVERRIDES[powerJson.name];
+  if (extraEnhancements) {
+    for (const enh of extraEnhancements) {
+      if (!power.allowedEnhancements.includes(enh)) {
+        power.allowedEnhancements.push(enh);
+      }
+    }
+  }
+
   // Max slots — if allowedEnhancements is empty, the power accepts no enhancements
   power.maxSlots = (power.allowedEnhancements.length === 0) ? 0 : (powerJson.max_boosts || 6);
 
@@ -1468,7 +1484,7 @@ function convertPower(powerJson, availableLevel) {
     const damage = extractDamage(allTemplates);
     if (damage) power.damage = damage;
 
-    const effects = extractEffects(allTemplates);
+    const effects = extractEffects(allTemplates, powerJson.name);
 
     // Detect per-target stacking (Stack/Continuous templates, Execute_Power redirects)
     const stackingResult = detectStackingEffects(powerJson);
@@ -1477,6 +1493,7 @@ function convertPower(powerJson, availableLevel) {
     }
 
     if (Object.keys(effects).length) power.effects = effects;
+
   }
 
   // Requirements

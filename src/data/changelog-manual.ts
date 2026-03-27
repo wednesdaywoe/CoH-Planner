@@ -24,6 +24,7 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
     date: '2026-03-26',
     items: [
       { message: 'Added Prestige Enhancements just because SpectralShard asked nicely', type: 'feat' },
+      { message: 'Added Slow enhancement to Storm Blast Cloudburst', type: 'fix' },
       { message: 'More fixes for internal power name collisions', type: 'feat' },
       { message: 'The info panel now persists the last-hovered power until you hover a different one', type: 'feat' },
       { message: 'enduranceDiscount should now be processed. 27 powerset powers plus the epic pool versions should now contribute to endurance discount', type: 'fix' },

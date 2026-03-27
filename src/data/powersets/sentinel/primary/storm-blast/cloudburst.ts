@@ -28,7 +28,8 @@ export const Cloudburst: Power = {
     "Range",
     "Recharge",
     "Damage",
-    "Accuracy"
+    "Accuracy",
+    "Slow"
   ],
   "allowedSetCategories": [
     "Ranged Damage",
