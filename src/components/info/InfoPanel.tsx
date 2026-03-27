@@ -1341,66 +1341,48 @@ function IncarnateInfo({ slotId, powerId }: IncarnateInfoProps) {
       {/* Hybrid Effects */}
       {hybridEffects && (
         <div>
-          <h4 className="text-[9px] font-semibold text-slate-500 uppercase tracking-wide mb-1">
-            Toggle Effects
-          </h4>
-          <div className="bg-slate-800/50 rounded p-2 space-y-0.5">
-            {hybridEffects.damage !== undefined && (
-              <IncarnateEffectRow label="Damage" value={hybridEffects.damage} colorClass="text-red-400" />
-            )}
-            {hybridEffects.damageProc !== undefined && (
-              <IncarnateEffectRow label="Damage Proc" value={hybridEffects.damageProc} colorClass="text-red-400" suffix=" chance" />
-            )}
-            {hybridEffects.doublehitChance !== undefined && (
-              <IncarnateEffectRow label="Double Hit" value={hybridEffects.doublehitChance} colorClass="text-red-400" suffix=" chance" />
-            )}
-            {hybridEffects.defense !== undefined && (
-              <IncarnateEffectRow label="Defense" value={hybridEffects.defense} colorClass="text-purple-400" />
-            )}
-            {hybridEffects.defenseAll !== undefined && (
-              <IncarnateEffectRow label="Defense (All)" value={hybridEffects.defenseAll} colorClass="text-purple-400" />
-            )}
-            {hybridEffects.resistanceAll !== undefined && (
-              <IncarnateEffectRow label="Resistance (All)" value={hybridEffects.resistanceAll} colorClass="text-orange-400" />
-            )}
-            {hybridEffects.regeneration !== undefined && (
-              <IncarnateEffectRow label="Regeneration" value={hybridEffects.regeneration} colorClass="text-green-400" />
-            )}
-            {hybridEffects.accuracy !== undefined && (
-              <IncarnateEffectRow label="Accuracy" value={hybridEffects.accuracy} colorClass="text-yellow-400" />
-            )}
-            {hybridEffects.statusProtection !== undefined && (
-              <div className="flex justify-between text-xs">
-                <span className="text-purple-400">Status Protection</span>
-                <span className="text-purple-400">Mag {hybridEffects.statusProtection}</span>
+          {/* Passive bonuses (always-on) */}
+          {Object.keys(hybridEffects.passive).length > 0 && (
+            <>
+              <h4 className="text-[9px] font-semibold text-slate-500 uppercase tracking-wide mb-1">
+                Passive (Always-On)
+              </h4>
+              <div className="bg-slate-800/50 rounded p-2 space-y-0.5 mb-2">
+                {Object.entries(hybridEffects.passive).map(([stat, value]) => (
+                  <IncarnateEffectRow key={stat} label={formatHybridStatName(stat)} value={value} colorClass={hybridStatColor(stat)} />
+                ))}
               </div>
-            )}
-            {hybridEffects.mezMagnitudeBonus !== undefined && hybridEffects.mezMagnitudeBonus > 0 && (
-              <div className="flex justify-between text-xs">
-                <span className="text-purple-400">Mez Magnitude</span>
-                <span className="text-purple-400">+{hybridEffects.mezMagnitudeBonus}</span>
-              </div>
-            )}
-            {hybridEffects.containmentScale !== undefined && hybridEffects.containmentTableName && (() => {
-              const containDmg = calculateIncarnateDamage(
-                hybridEffects.containmentScale, hybridEffects.containmentTableName,
-                build.archetype.id ?? '', build.level
-              );
-              return (
-                <div className="flex justify-between text-xs">
-                  <span className="text-red-400">Containment (Waylay)</span>
-                  <span className="text-red-400">
-                    {containDmg !== null ? `${containDmg.toFixed(1)}` : `${hybridEffects.containmentScale} scale`}
-                  </span>
-                </div>
-              );
-            })()}
-          </div>
-          {hybridEffects.duration !== undefined && (
-            <div className="text-[9px] text-slate-500 mt-1">
-              Duration: {hybridEffects.duration}s / Recharge: {hybridEffects.recharge}s
-            </div>
+            </>
           )}
+          {/* Front-loaded toggle bonuses */}
+          {Object.keys(hybridEffects.frontLoaded).length > 0 && (
+            <>
+              <h4 className="text-[9px] font-semibold text-slate-500 uppercase tracking-wide mb-1">
+                Toggle (Baseline)
+              </h4>
+              <div className="bg-slate-800/50 rounded p-2 space-y-0.5 mb-2">
+                {Object.entries(hybridEffects.frontLoaded).map(([stat, value]) => (
+                  <IncarnateEffectRow key={stat} label={formatHybridStatName(stat)} value={value} colorClass={hybridStatColor(stat)} />
+                ))}
+              </div>
+            </>
+          )}
+          {/* Per-target stacking */}
+          {Object.keys(hybridEffects.perTarget).length > 0 && (
+            <>
+              <h4 className="text-[9px] font-semibold text-slate-500 uppercase tracking-wide mb-1">
+                Per Enemy (max {hybridEffects.maxTargets})
+              </h4>
+              <div className="bg-slate-800/50 rounded p-2 space-y-0.5 mb-2">
+                {Object.entries(hybridEffects.perTarget).map(([stat, value]) => (
+                  <IncarnateEffectRow key={stat} label={formatHybridStatName(stat)} value={value} colorClass={hybridStatColor(stat)} />
+                ))}
+              </div>
+            </>
+          )}
+          <div className="text-[9px] text-slate-500 mt-1">
+            Duration: {hybridEffects.duration}s / Recharge: {hybridEffects.recharge}s
+          </div>
         </div>
       )}
 
@@ -1543,6 +1525,35 @@ function IncarnateInfo({ slotId, powerId }: IncarnateInfoProps) {
       )}
     </div>
   );
+}
+
+/** Convert hybrid stat keys (e.g. 'resSmashing', 'defMelee', 'regeneration') to display names */
+function formatHybridStatName(stat: string): string {
+  const map: Record<string, string> = {
+    damage: 'Damage', regeneration: 'Regeneration', recovery: 'Recovery',
+    enduranceDiscount: 'End Discount', statusResistance: 'Status Resistance',
+    resSmashing: 'Res Smashing', resLethal: 'Res Lethal', resFire: 'Res Fire',
+    resCold: 'Res Cold', resEnergy: 'Res Energy', resNegative: 'Res Negative',
+    resPsionic: 'Res Psionic', resToxic: 'Res Toxic',
+    defMelee: 'Def Melee', defRanged: 'Def Ranged', defAoE: 'Def AoE',
+    defSmashing: 'Def Smashing', defLethal: 'Def Lethal', defFire: 'Def Fire',
+    defCold: 'Def Cold', defEnergy: 'Def Energy', defNegative: 'Def Negative',
+    defPsionic: 'Def Psionic', defToxic: 'Def Toxic',
+    protHold: 'Prot Hold', protStun: 'Prot Stun', protImmobilize: 'Prot Immobilize',
+    protSleep: 'Prot Sleep', protConfuse: 'Prot Confuse', protFear: 'Prot Fear',
+  };
+  return map[stat] || stat;
+}
+
+function hybridStatColor(stat: string): string {
+  if (stat.startsWith('res')) return 'text-orange-400';
+  if (stat.startsWith('def')) return 'text-purple-400';
+  if (stat.startsWith('prot')) return 'text-purple-400';
+  if (stat === 'regeneration') return 'text-green-400';
+  if (stat === 'damage') return 'text-red-400';
+  if (stat === 'statusResistance') return 'text-purple-400';
+  if (stat === 'enduranceDiscount') return 'text-blue-400';
+  return 'text-slate-400';
 }
 
 function IncarnateEffectRow({

@@ -97,7 +97,10 @@
       "Bash(do echo \"=== $ps ===\")",
       "Bash(node scripts/fix-allowed-enhancements.cjs --archetype blaster --dry-run)",
       "Bash(find /Users/brian/Library/CloudStorage/Dropbox/GitHub/CoH-Planner/raw_data_homecoming-20251209_7415 -path *Electric_Manipulation*Dynamo* -o -path *electricity_manipulation*dynamo*)",
-      "Bash(find /Users/brian/Library/CloudStorage/Dropbox/GitHub/CoH-Planner/raw_data_homecoming-20251209_7415/ -ipath *hybrid_silent* -o -ipath *hybrid*boost*)"
+      "Bash(find /Users/brian/Library/CloudStorage/Dropbox/GitHub/CoH-Planner/raw_data_homecoming-20251209_7415/ -ipath *hybrid_silent* -o -ipath *hybrid*boost*)",
+      "Bash(node scripts/convert-incarnate-effects.cjs --dry-run)",
+      "Bash(git checkout:*)",
+      "Bash(node scripts/convert-incarnate-effects.cjs)"
     ]
   }
 }

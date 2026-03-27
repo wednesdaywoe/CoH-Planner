@@ -3987,7 +3987,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       },
       {
         "num": 6,
-        "name": "Chance for -Str(Execute_Power)",
+        "name": "Contagious Confusion",
         "aspects": [],
         "proc": true,
         "unique": true

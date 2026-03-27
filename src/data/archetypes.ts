@@ -598,7 +598,7 @@ export const ARCHETYPES: ArchetypeRegistry = {
       description: 'Build fury (0-100) by attacking and being attacked. Each fury point grants +2% damage, up to +200% at max fury.',
     },
     stats: {
-      baseHP: 1499.2554,
+      baseHP: 1601.719,
       maxHP: 3212.6902,
       hpTable: HP_TABLE_BRUTE,
       hpCapTable: HP_CAP_BRUTE,
@@ -607,7 +607,7 @@ export const ARCHETYPES: ArchetypeRegistry = {
       baseThreat: 4.0,
       damageModifier: {
         melee: 0.75,
-        ranged: 0.5,
+        ranged: 0.75,
         aoe: 0.65,
       },
       buffDebuffModifier: 1.0,

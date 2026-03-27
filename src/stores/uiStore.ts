@@ -507,9 +507,10 @@ const defaultStatsConfig: StatDisplayConfig[] = [
   { stat: 'recovery', visible: true, order: 6 },
   { stat: 'endcost', visible: true, order: 7 },
   { stat: 'netend', visible: true, order: 8 },
-  { stat: 'defense_melee', visible: true, order: 9 },
-  { stat: 'defense_ranged', visible: true, order: 10 },
-  { stat: 'res_smashing', visible: true, order: 11 },
+  { stat: 'level_shift', visible: true, order: 9 },
+  { stat: 'defense_melee', visible: true, order: 10 },
+  { stat: 'defense_ranged', visible: true, order: 11 },
+  { stat: 'res_smashing', visible: true, order: 12 },
 ];
 
 // ============================================
@@ -1243,8 +1244,8 @@ export const useUIStore = create<UIStore>()(
           compareSlottingPower: null,
           selectedBranch: null,
           targetsHitValues: {},
-          incarnateActive: { alpha: false, destiny: false, hybrid: false, interface: false },
-          incarnateLevelShiftActive: false,
+          incarnateActive: createDefaultIncarnateActiveState(),
+          incarnateLevelShiftActive: true,
           dominationActive: false,
           scourgeActive: false,
           furyLevel: 0,

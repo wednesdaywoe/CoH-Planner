@@ -986,10 +986,11 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
   level_shift: {
     id: 'level_shift',
     label: 'Level Shift',
-    getValue: () => 0, // Requires globalBonuses
+    getValue: () => 0, // Overridden by GLOBAL_BONUS_OVERRIDES → globalBonuses.levelShift
     format: (v) => Number(v) > 0 ? `+${Number(v)}` : '0',
     color: 'text-amber-400',
-    tooltip: 'Incarnate level shift (from Alpha/Destiny)',
+    tooltip: 'Incarnate level shift (from Alpha, Destiny, and Lore T3+)',
+    showWhenZero: true,
     breakdownKey: 'levelShift',
     breakdownUnit: '',
   },
