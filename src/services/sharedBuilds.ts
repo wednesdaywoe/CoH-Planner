@@ -258,7 +258,8 @@ export async function searchSharedBuilds(filters: SearchFilters = {}): Promise<S
 
   let query = supabase
     .from('shared_builds')
-    .select('*', { count: 'exact' });
+    .select('*', { count: 'exact' })
+    .eq('is_public', true);
 
   // Apply filters
   if (filters.archetype) {
