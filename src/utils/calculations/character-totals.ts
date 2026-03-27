@@ -14,7 +14,7 @@
 
 import type { Build, Accolade, Enhancement, IncarnateActiveState, IncarnateBuildState, IOSetEnhancement } from '@/types';
 import type { ProcSettings } from '@/stores/uiStore';
-import { getIOSet, getAlphaEffects, getDestinyEffects, getHybridEffects, findProcData, parseProcEffect, isProcAlwaysOn, calculateAutoToggleProcsPerMinute, calculateProcChance } from '@/data';
+import { getIOSet, getAlphaEffects, getDestinyEffects, getHybridEffects, getLoreEffects, findProcData, parseProcEffect, isProcAlwaysOn, calculateAutoToggleProcsPerMinute, calculateProcChance } from '@/data';
 import { getTableValue } from '@/data/at-tables';
 import { getBaseToHit, getCombatModifier } from '@/data/purple-patch';
 import { getPowerPool } from '@/data/power-pools';
@@ -2338,7 +2338,7 @@ function applyIncarnateBonuses(
   // We don't add them to global bonuses, but they could be displayed in tooltips
   //
 
-  // Level Shift from incarnate slots (Alpha and Destiny)
+  // Level Shift from incarnate slots (Alpha, Destiny, and Lore T3+)
   // Controlled by the independent levelShiftActive flag, NOT by per-slot stat toggles
   if (levelShiftActive) {
     if (incarnates.alpha) {
@@ -2359,6 +2359,17 @@ function applyIncarnateBonuses(
         addToBreakdown(breakdown, 'levelShift', {
           name: incarnates.destiny.displayName,
           value: destinyEffects.levelShift,
+          type: 'incarnate',
+        });
+      }
+    }
+    if (incarnates.lore) {
+      const loreEffects = getLoreEffects(incarnates.lore.powerId);
+      if (loreEffects?.levelShift) {
+        global.levelShift += loreEffects.levelShift;
+        addToBreakdown(breakdown, 'levelShift', {
+          name: incarnates.lore.displayName,
+          value: loreEffects.levelShift,
           type: 'incarnate',
         });
       }
