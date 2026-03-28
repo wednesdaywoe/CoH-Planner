@@ -1064,9 +1064,20 @@ export const useBuildStore = create<BuildStore>()(
             power = { ...power, slots: [] };
           }
 
-          // Default toggle/auto powers to active
-          if ((power.powerType === 'Toggle' || power.powerType === 'Auto') && power.isActive === undefined) {
-            power = { ...power, isActive: true };
+          // Default toggle/auto powers to active; also activate Click self-buff powers
+          // with long durations (60s+) like Hasten and Practiced Brawler, since they're
+          // effectively permanent when maintained. Short-duration clicks like Build Up (10s)
+          // are left off by default — users can toggle them on manually.
+          if (power.isActive === undefined) {
+            const pt = power.powerType?.toLowerCase();
+            const buffDuration = (power.effects as Record<string, unknown>)?.buffDuration;
+            const isLongSelfBuff = pt === 'click'
+              && typeof buffDuration === 'number' && buffDuration >= 60
+              && (power.targetType?.toLowerCase() === 'self'
+                || (power.shortHelp?.toLowerCase().startsWith('self ') ?? false));
+            if (pt === 'toggle' || pt === 'auto' || isLongSelfBuff) {
+              power = { ...power, isActive: true };
+            }
           }
 
           // Pool case: must target the specific pool by ID

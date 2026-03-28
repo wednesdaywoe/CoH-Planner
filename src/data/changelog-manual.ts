@@ -21,21 +21,14 @@ export interface ManualEntry {
 export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   // ─── 2026-03-24 ────────────────────────────────────────────────────────────
   {
-    date: '2026-03-27',
+    date: '2026-03-28',
     items: [
+      { message: 'Changed heuristic for setting powers as active by default to buffDuration >= 60', type: 'fix' },
+      { message: 'Fixed controller ATO icon swap', type: 'fix' },
       { message: 'Fixed issue with VEAT base set ID overwriting the branch ID resulting in missing powers', type: 'fix' },
       { message: 'Fixed Phoenix Rising duplication in Fiery Aura', type: 'fix' },
       { message: 'Supressed auto tooltip on mobile', type: 'fix' },
       { message: 'Fixed Contagious Confusion proc registration', type: 'fix' },
-      { message: 'Comprehensive regeneration of Incarnate data', type: 'fix' },
-      { message: 'Manually updated Brute modifiers', type: 'fix' },
-      { message: 'Added comprehensive verbose logging for power calculations. Enable debug mode under Settings and open your browser console to check Sidekick\'s math', type: 'feat' },
-      { message: 'Fixed KB protection and KB resistance to prevent them from getting merged', type: 'fix' },
-      { message: 'Defense Debuff Res should now be mapped correctly', type: 'fix' },
-      { message: 'Mez and debuff res from Super Reflexes autos should now register and factor into totals', type: 'fix' },
-      { message: 'Added mapping for debuff resistance stats from set bonuses', type: 'fix' },
-      { message: 'Added Prestige Enhancements just because SpectralShard asked nicely', type: 'feat' },
-      { message: 'Added Slow enhancement to Storm Blast Cloudburst', type: 'fix' },
     ],
   },
 ];

@@ -720,12 +720,16 @@ function buildSelectedPower(
     slots.push(null);
   }
 
-  // Only set isActive for Toggle/Auto powers — Click powers have temporary effects
-  // that shouldn't be counted as permanent stat contributions. Mids' StatInclude
-  // applies to all power types, but our calc engine treats isActive Click powers
-  // as if their effects are permanently active.
+  // Set isActive for Toggle/Auto powers, and also for Click powers with long
+  // buff durations (60s+) that provide self-buff effects (e.g., Hasten 120s,
+  // Practiced Brawler 120s). Short clicks like Build Up (10s) are left unset.
   const powerType = powerDef.powerType?.toLowerCase();
-  const effectiveIsActive = (powerType === 'toggle' || powerType === 'auto')
+  const buffDuration = (powerDef.effects as Record<string, unknown> | undefined)?.buffDuration;
+  const isLongSelfBuff = powerType === 'click'
+    && typeof buffDuration === 'number' && buffDuration >= 60
+    && (powerDef.targetType?.toLowerCase() === 'self'
+      || (powerDef.shortHelp?.toLowerCase().startsWith('self ') ?? false));
+  const effectiveIsActive = (powerType === 'toggle' || powerType === 'auto' || isLongSelfBuff)
     ? isActive
     : undefined;
 
