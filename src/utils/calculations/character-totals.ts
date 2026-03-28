@@ -524,6 +524,7 @@ interface PowerWithToggle {
   name: string;
   internalName: string;
   powerType?: string;
+  effectArea?: string;
   isActive?: boolean;
   effects?: ActivePowerEffect;
   slots?: (Enhancement | null)[];
@@ -1053,7 +1054,7 @@ function applyActivePowerBonuses(
       // AoE toggles like Repulsion Field and Hurricane are offensive KB, not protection
       const powerTypeLower = power.powerType?.toLowerCase();
       const isKbSelfProt = field === 'knockback' &&
-        effects.effectArea === 'SingleTarget' &&
+        (effects.effectArea === 'SingleTarget' || power.effectArea === 'SingleTarget') &&
         (powerTypeLower === 'toggle' || powerTypeLower === 'auto' || powerTypeLower === 'click');
       if (isResBoolean || isKbSelfProt) {
         // Mez protection uses level 50 table values — protection magnitude is a fixed value
@@ -1736,7 +1737,12 @@ function applyProcBonuses(
 
   for (const proc of procs) {
     const procData = findProcData(proc.procName, proc.setName);
-    if (!procData) continue;
+    if (!procData) {
+      if (isCalcDebugEnabled()) {
+        console.warn(`[proc] No proc data found for "${proc.procName}" (set: ${proc.setName})`);
+      }
+      continue;
+    }
 
     const effect = parseProcEffect(procData.mechanics);
     const sourceName = `${proc.setName}: ${proc.procName}`;
