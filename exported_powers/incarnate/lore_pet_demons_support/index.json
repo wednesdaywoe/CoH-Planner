@@ -1,0 +1,15 @@
+{
+  "key": "Incarnate.Lore_Pet_Demons_Support",
+  "display_name": "Lore_Pet_Demons_Support",
+  "help": "Demons",
+  "short_help": "Demons",
+  "icon": "lore_pet_arachnos_support_set.ico",
+  "powers": [
+    "Chill_of_the_Night",
+    "Twilight_Grasp"
+  ],
+  "available_level": [
+    0,
+    0
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "key": "Controller_Control.Darkness_Control",
+  "display_name": "Darkness Control",
+  "help": "You can control darkness and shadow to disable your foes with negative energy. Enemies that are affected by many of your attacks will have their chance to hit reduced.",
+  "short_help": "Darkness Control",
+  "icon": "darkness_control_set.ico",
+  "powers": [
+    "Dark_Grasp",
+    "Fearsome_Stare",
+    "Haunt",
+    "Heart_of_Darkness",
+    "Living_Shadows",
+    "Possess",
+    "Shadow_Field",
+    "Shadowy_Binds",
+    "Umbra_Beast"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "key": "Dominator_Assault.Electricity_Manipulation",
+  "display_name": "Electricity Assault",
+  "help": "Electrical Assault grants you several electrical ranged and melee powers. Electrical powers can drain foes' Endurance and can often temporarily halt their Endurance recovery. This can be quite effective against higher level foes and Bosses. Some Electrical Assault powers can even sometimes transfer this Endurance back to you.",
+  "short_help": "Electricity Assault",
+  "icon": "electricity_manipulation_set.ico",
+  "powers": [
+    "Build_Up",
+    "Charged_Brawl",
+    "Electric_Fence",
+    "Havok_Punch",
+    "Lightning_Clap",
+    "Lightning_Field",
+    "Power_Sink",
+    "Shocking_Grasp",
+    "Thunder_Strike"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

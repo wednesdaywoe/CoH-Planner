@@ -1,0 +1,29 @@
+{
+  "key": "Sentinel_Defense.Stone_Armor",
+  "display_name": "Stone Armor",
+  "help": "5TW6ZL4QLQUJW6MAC8MMU8PB4Z",
+  "short_help": "Stone Armor",
+  "icon": "stone_armor_set.ico",
+  "powers": [
+    "Brimstone_Armor",
+    "Crystal_Armor",
+    "Earths_Embrace",
+    "Geode",
+    "Mineral_Armor",
+    "Rooted",
+    "Stone_Armor",
+    "Stone_Skin",
+    "Terra_Firma"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "key": "Controller_Buff.Marine_Affinity",
+  "display_name": "3A2HMNRUNHMHYYVG2NETELZD53",
+  "help": "PXP2FYL3NP3EWEXL4XV3JW946A",
+  "short_help": "3A2HMNRUNHMHYYVG2NETELZD53",
+  "icon": "nature_affinity_set.ico",
+  "powers": [
+    "Brine",
+    "Call_Depths",
+    "Shifting_Tides",
+    "Shoal_Rush",
+    "Soothing_Wave",
+    "Tide_Pool",
+    "Toroidal_Bubble",
+    "Wellspring",
+    "Whitecap"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

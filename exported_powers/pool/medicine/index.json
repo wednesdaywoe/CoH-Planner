@@ -1,0 +1,21 @@
+{
+  "key": "Pool.Medicine",
+  "display_name": "Medicine",
+  "help": "You become an adept field medic, and can assist your team with basic healing needs. These close range powers should be performed away from combat because they can be interrupted.",
+  "short_help": "Medicine",
+  "icon": "medicine_set.ico",
+  "powers": [
+    "Aid_Other",
+    "Aid_Self",
+    "Field_Medic",
+    "Resuscitate",
+    "Stimulant"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

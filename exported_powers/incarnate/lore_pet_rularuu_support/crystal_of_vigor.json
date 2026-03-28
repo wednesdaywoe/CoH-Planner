@@ -1,0 +1,48 @@
+{
+  "name": "Crystal_of_Vigor",
+  "full_name": "Incarnate.Lore_Pet_Rularuu_Support.Crystal_of_Vigor",
+  "short_name": "Crystal_of_Vigor",
+  "type": "Click",
+  "display_name": "Crystal of Vigor",
+  "display_fullname": "Incarnate Lore Pet Rularuu Support Crystal of Vigor",
+  "display_help": "MZEVDHXSSTE4YALYTYULKT9SX2",
+  "display_short_help": "PBAoE, Ally +DMG",
+  "icon": "empathy_fortitude.png",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.0,
+  "effect_area": "Sphere",
+  "max_targets_hit": 16,
+  "radius": 35.0,
+  "arc": 0.0,
+  "range": 0.0,
+  "range_secondary": 0.0,
+  "activation_time": 3.17,
+  "recharge_time": 240.0,
+  "activate_period": 0.0,
+  "endurance_cost": 0.0,
+  "interrupt_time": 0.0,
+  "target_type": "Self",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "Friend"
+  ],
+  "targets_affected": [
+    "Friend"
+  ],
+  "boosts_allowed": [
+    "Incarnate_Lore",
+    "EnduranceDiscount",
+    "Accuracy"
+  ],
+  "allowed_boostset_cats": [],
+  "cast_through": [],
+  "num_allowed": 1,
+  "requires": "",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [],
+  "effects": [],
+  "available_level": 0,
+  "powerset": "Incarnate.Lore_Pet_Rularuu_Support"
+}

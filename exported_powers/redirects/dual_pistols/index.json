@@ -1,0 +1,15 @@
+{
+  "key": "Redirects.Dual_Pistols",
+  "display_name": "Dual Pistols",
+  "help": "PMX48W4B3BKDWQVSNYHETW7UHA",
+  "short_help": "Assault Rifle",
+  "icon": "tanker_melee_set.ico",
+  "powers": [
+    "Suppressive_Fire",
+    "Suppressive_Fire_Lethal"
+  ],
+  "available_level": [
+    0,
+    0
+  ]
+}

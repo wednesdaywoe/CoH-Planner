@@ -1,0 +1,19 @@
+{
+  "key": "Incarnate.Lore_Pet_Tsoo_Boss",
+  "display_name": "Lore_Pet_Tsoo_Boss",
+  "help": "Incarnate",
+  "short_help": "Incarnate",
+  "icon": "lore_pet_tsoo_boss_set.ico",
+  "powers": [
+    "Eye_of_the_Storm",
+    "Mercurial_Blow",
+    "Precise_Strike",
+    "Serpents_Reach"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0
+  ]
+}

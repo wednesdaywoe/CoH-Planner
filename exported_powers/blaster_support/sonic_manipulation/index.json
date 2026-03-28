@@ -1,0 +1,29 @@
+{
+  "key": "Blaster_Support.Sonic_Manipulation",
+  "display_name": "Sonic Manipulation",
+  "help": "You have the ability to control sound in several fashions. You can create semi-solid barriers, set up waves which weaken or strengthen a target, as well as inflicing devastating close range sonic attacks that can cause Migraines that hold foes for a short hold. This chance can be dramatically increased by using Sound Booster.",
+  "short_help": "Sonic Manipulation",
+  "icon": "sonic_manipulation_set.ico",
+  "powers": [
+    "Build_Up",
+    "Deafening_Wave",
+    "Disruption_Aura",
+    "Earsplitter",
+    "Echo_Chamber",
+    "Sonic_Thrust",
+    "Sound_Barrier",
+    "Sound_Cannon",
+    "Strident_Echo"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

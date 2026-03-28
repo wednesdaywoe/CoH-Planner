@@ -1,0 +1,35 @@
+{
+  "key": "Redirects.Shock_Therapy",
+  "display_name": "Electrical Affinity",
+  "help": "Electrical Affinity",
+  "short_help": "Electrical Affinity",
+  "icon": "placeholder.ico",
+  "powers": [
+    "Consume_Static",
+    "Defibrillate_Debuff",
+    "Defibrillate_Revive",
+    "FaradayCage",
+    "FaradayCageFx",
+    "FaradayStatic",
+    "Galvanic_Sentinel_Discharge",
+    "Galvanic_Sentinel_Fly",
+    "Galvanic_Sentinel_Resist",
+    "Shock_Therapy_Amp_Up",
+    "Shock_Therapy_Amp_Up_Enemy_Chain_Doom",
+    "Shock_Therapy_Static"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "key": "Tanker_Defense.Willpower",
+  "display_name": "Willpower",
+  "help": "You aren't Invulnerable. Bullets don't bounce off of you, and if you are cut, you bleed. You are, however, tough, grizzled and strong willed. It takes more than a little cut to keep you down! Willpower offers a strong balance of healing, damage resistance and defense. While you have no real vulnerabilities, you can't quite deal with 'alpha strikes' as well as some other protective powers.",
+  "short_help": "Willpower",
+  "icon": "willpower_set.ico",
+  "powers": [
+    "Fast_Healing",
+    "Heightened_Senses",
+    "High_Pain_Tolerance",
+    "Indomitable_Will",
+    "Mind_Over_Body",
+    "Quick_Recovery",
+    "Resurgence",
+    "Rise_to_the_Challenge",
+    "Strength_of_Will"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

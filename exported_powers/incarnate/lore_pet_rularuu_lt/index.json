@@ -1,0 +1,17 @@
+{
+  "key": "Incarnate.Lore_Pet_Rularuu_LT",
+  "display_name": "Lore_Pet_Rularuu_LT",
+  "help": "Rularuu",
+  "short_help": "Rularuu",
+  "icon": "lore_pet_rularuu_lt_set.ico",
+  "powers": [
+    "Pummel",
+    "Scatter_Shards",
+    "Sinew"
+  ],
+  "available_level": [
+    0,
+    0,
+    0
+  ]
+}

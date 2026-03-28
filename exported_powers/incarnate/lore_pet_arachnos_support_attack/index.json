@@ -1,0 +1,13 @@
+{
+  "key": "Incarnate.Lore_Pet_Arachnos_Support_Attack",
+  "display_name": "Lore_Pet_Arachnos_Support_Attack",
+  "help": "Arachnos",
+  "short_help": "Arachnos",
+  "icon": "lore_pet_arachnos_support_attack_set.ico",
+  "powers": [
+    "Mental_Blast"
+  ],
+  "available_level": [
+    0
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "key": "Blaster_Support.Ice_Manipulation",
+  "display_name": "Ice Manipulation",
+  "help": "Ice Manipulation lets you surround yourself with various manifestations of ice and cold, assaulting and freezing nearby foes. Ice Manipulation powers are known to Slow opponents.",
+  "short_help": "Ice Manipulation",
+  "icon": "ice_manipulation_set.ico",
+  "powers": [
+    "Build_Up",
+    "Chilblain",
+    "Chilling_Embrace",
+    "Freezing_Touch",
+    "Frozen_Aura",
+    "Frozen_Fists",
+    "Ice_Patch",
+    "Ice_Sword",
+    "Shiver"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

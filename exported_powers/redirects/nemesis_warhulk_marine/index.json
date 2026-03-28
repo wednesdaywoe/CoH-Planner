@@ -1,0 +1,15 @@
+{
+  "key": "Redirects.Nemesis_Warhulk_Marine",
+  "display_name": "VQZFYTXDT72CYMM7JRVJ4N5VLW",
+  "help": "3A2HMNRUNHMHYYVG2NETELZD53",
+  "short_help": "3A2HMNRUNHMHYYVG2NETELZD53",
+  "icon": "nemesis_warhulk_marine_set.ico",
+  "powers": [
+    "Barrier_Reef",
+    "Steamquake"
+  ],
+  "available_level": [
+    0,
+    0
+  ]
+}

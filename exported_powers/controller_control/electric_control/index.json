@@ -1,0 +1,29 @@
+{
+  "key": "Controller_Control.Electric_Control",
+  "display_name": "Electric Control",
+  "help": "Electricity leaps and sparks at your command. You can use raw electrical power to paralyze, knockdown and drain the endurance of foes.",
+  "short_help": "Electric Control",
+  "icon": "electric_control_set.ico",
+  "powers": [
+    "Chain_Fences",
+    "Electric_Fence",
+    "Gremlins",
+    "Jolting_Chain",
+    "Paralyzing_Blast",
+    "Static_Field",
+    "Stunning_Aura",
+    "Synaptic_Overload",
+    "Tesla_Cage"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

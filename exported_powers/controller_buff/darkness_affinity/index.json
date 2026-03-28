@@ -1,0 +1,29 @@
+{
+  "key": "Controller_Buff.Darkness_Affinity",
+  "display_name": "Darkness Affinity",
+  "help": "Focus the dark power of the Netherworld to weaken your foes and aid your allies. Darkness Affinity focuses on draining your opponent.",
+  "short_help": "Darkness Affinity",
+  "icon": "darkness_affinity_set.ico",
+  "powers": [
+    "Black_Hole",
+    "Dark_Servant",
+    "Darkest_Night",
+    "Fade",
+    "Howling_Twilight",
+    "Shadow_Fall",
+    "Soul_Absorption",
+    "Tar_Patch",
+    "Twilight_Grasp"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

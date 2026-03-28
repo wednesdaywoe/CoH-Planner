@@ -1,0 +1,23 @@
+{
+  "key": "Pool.Experimentation",
+  "display_name": "Experimentation",
+  "help": "Experimentation gives you access to poisonous ranged attacks as well as powers that boost your attack power and the survivability of your allies. This pool's travel power is Speed of Sound. While active, this power allows you to run at incredible speeds and also gives you access to the Jaunt power. Jaunt allows you to quickly teleport long distances once every so often.",
+  "short_help": "Experimentation",
+  "icon": "experimentation_set.ico",
+  "powers": [
+    "Adrenal_Booster",
+    "Corrosive_Vial",
+    "Experimental_Injection",
+    "Jaunt",
+    "Speed_of_Sound",
+    "Toxic_Dart"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

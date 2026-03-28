@@ -1,0 +1,29 @@
+{
+  "key": "Dominator_Assault.Sonic_Assault",
+  "display_name": "9CVERCPSDPD7WLX9LWE5ZXLG2Q",
+  "help": "U6UW3VLMBF2RYAXZMVMWBFA33X",
+  "short_help": "9CVERCPSDPD7WLX9LWE5ZXLG2Q",
+  "icon": "sonic_attack_set.ico",
+  "powers": [
+    "Bass_Boost",
+    "Deafening_Wave",
+    "Disruption_Aura",
+    "Earsplitter",
+    "Scream",
+    "Shockwave",
+    "Shout",
+    "Shriek",
+    "Strident_Echo"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

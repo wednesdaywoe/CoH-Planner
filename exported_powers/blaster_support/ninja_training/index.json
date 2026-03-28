@@ -1,0 +1,29 @@
+{
+  "key": "Blaster_Support.Ninja_Training",
+  "display_name": "Ninja Training",
+  "help": "You compliment your abilities with training in the secret art of the Ninja. You have mastered valuable ninja tools, poisons and weapons, including the deadly Ninja Blade. You also mastered the harmonic powers of Kuji-In Toh, allowing you to regenerate and recover endurance at an accelerated rate.",
+  "short_help": "Ninja Training",
+  "icon": "ninja_training_set.ico",
+  "powers": [
+    "Blinding_Powder",
+    "Choking_Powder",
+    "Golden_Dragonfly",
+    "Immobilizing_Dart",
+    "Kuji-In_Toh",
+    "Kyokan",
+    "Smoke_Flash",
+    "Sting_of_the_Wasp",
+    "The_Lotus_Drops"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "key": "Controller_Control.Pyrotechnic_Control",
+  "display_name": "KXG8LEC2D5WTY2XJQNCMNUFAFW",
+  "help": "A7NZ48UULNJ3YDL4UZQPR7A89Q",
+  "short_help": "KXG8LEC2D5WTY2XJQNCMNUFAFW",
+  "icon": "electric_control_set.ico",
+  "powers": [
+    "Catherine_Wheel",
+    "Dazzle",
+    "Explosive_Bouquet",
+    "Glittering_Column",
+    "Glitz",
+    "Hypnotizing_Lights",
+    "Incendiary_Aura",
+    "Sparkling_Cage",
+    "Sparkling_Field"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

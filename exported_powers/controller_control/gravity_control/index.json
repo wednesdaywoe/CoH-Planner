@@ -1,0 +1,29 @@
+{
+  "key": "Controller_Control.Gravity_Control",
+  "display_name": "Gravity Control",
+  "help": "This power set allows you to manipulate the forces of gravity to control your foes. Enemies have little defense against Gravity powers.",
+  "short_help": "Gravity Control",
+  "icon": "gravity_control_set.ico",
+  "powers": [
+    "Crush",
+    "Crushing_Field",
+    "Dimension_Shift",
+    "Fold_Space",
+    "Gravity_Distortion",
+    "Gravity_Distortion_Field",
+    "Lift",
+    "Propel",
+    "Wormhole"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

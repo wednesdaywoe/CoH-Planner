@@ -1,0 +1,79 @@
+{
+  "name": "Precise_Strike",
+  "full_name": "Brute_Melee.Staff_Fighting.Precise_Strike",
+  "short_name": "Precise_Strike",
+  "type": "Click",
+  "display_name": "Precise Strike",
+  "display_fullname": "Brute Melee Staff Fighting Precise Strike",
+  "display_help": "JAT6CNS9QNKDYJC4T4ZJ67U3KA",
+  "display_short_help": "W8EGWYFGK5CFYXV8RCATZKXEZQ",
+  "icon": "stafffighting_precisestrike.png",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.1,
+  "effect_area": "SingleTarget",
+  "max_targets_hit": 0,
+  "radius": 0.0,
+  "arc": 0.0,
+  "range": 9.0,
+  "range_secondary": 0.0,
+  "activation_time": 1.13,
+  "recharge_time": 6.0,
+  "activate_period": 0.0,
+  "endurance_cost": 6.864,
+  "interrupt_time": 0.0,
+  "target_type": "Foe",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "None"
+  ],
+  "targets_affected": [
+    "Foe"
+  ],
+  "boosts_allowed": [
+    "Taunt",
+    "EnduranceDiscount",
+    "Stun",
+    "Recharge",
+    "Damage",
+    "Accuracy"
+  ],
+  "allowed_boostset_cats": [],
+  "cast_through": [],
+  "num_allowed": 1,
+  "requires": "Brute_Defense.Shield_Defense !",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [
+    108,
+    116
+  ],
+  "effects": [
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "enttype target> critter eq",
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": []
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "enttype target> player eq",
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": []
+    }
+  ],
+  "available_level": 0,
+  "powerset": "Brute_Melee.Staff_Fighting"
+}

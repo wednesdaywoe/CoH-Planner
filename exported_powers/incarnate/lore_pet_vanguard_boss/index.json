@@ -1,0 +1,19 @@
+{
+  "key": "Incarnate.Lore_Pet_Vanguard_Boss",
+  "display_name": "Lore_Pet_Vanguard_Boss",
+  "help": "Vanguard",
+  "short_help": "Vanguard",
+  "icon": "lore_pet_vanguard_boss_set.ico",
+  "powers": [
+    "Ball_Lightning",
+    "Freezing_Sphere",
+    "Ice_Blast",
+    "Life_Drain"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0
+  ]
+}

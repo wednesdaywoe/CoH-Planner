@@ -1,0 +1,21 @@
+{
+  "key": "Epic.Dominator_Soul_Mastery",
+  "display_name": "Soul Mastery",
+  "help": "Ghost Widow has granted you access to the power of darkness and souls. She has shown you how to use the souls of your victims to destroy your enemies. This has granted you access to powers and abilities you have never had before.",
+  "short_help": "Soul Mastery",
+  "icon": "dominator_soul_mastery_set.ico",
+  "powers": [
+    "Dark_Consumption",
+    "Dark_Embrace",
+    "Dark_Obliteration",
+    "Soul_Drain",
+    "Summon_Seer"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

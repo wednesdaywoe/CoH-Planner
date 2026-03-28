@@ -1,0 +1,127 @@
+{
+  "name": "Telekinesis",
+  "full_name": "Epic.Psychic_Mastery.Telekinesis",
+  "short_name": "Telekinesis",
+  "type": "Toggle",
+  "display_name": "Telekinesis",
+  "display_fullname": "Epic Psychic Mastery Telekinesis",
+  "display_help": "KHZUB9C8N4ZBYDNM9HBKTQ9FL3",
+  "display_short_help": "75S8Y7U4BKS2WDVGNK2TNBZU9W",
+  "icon": "mentalcontrol_telekinesis.png",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.0,
+  "effect_area": "Sphere",
+  "max_targets_hit": 10,
+  "radius": 10.0,
+  "arc": 0.0,
+  "range": 50.0,
+  "range_secondary": 0.0,
+  "activation_time": 1.13,
+  "recharge_time": 180.0,
+  "activate_period": 0.5,
+  "endurance_cost": 0.325,
+  "interrupt_time": 0.0,
+  "target_type": "DeadOrAliveFoe",
+  "target_type_secondary": "None",
+  "targets_autohit": [],
+  "targets_affected": [
+    "Foe"
+  ],
+  "boosts_allowed": [
+    "EnduranceDiscount",
+    "Range",
+    "Recharge",
+    "Immobilize",
+    "Accuracy"
+  ],
+  "allowed_boostset_cats": [],
+  "cast_through": [],
+  "num_allowed": 1,
+  "requires": "Epic ownPowerNum? 1 >",
+  "activate_requires": "",
+  "target_requires": "Held source.EventTimeSince> 5 > Stunned source.EventTimeSince> 5 > && Sleep source.EventTimeSince> 5 > &&",
+  "attack_types": [
+    140
+  ],
+  "effects": [
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "enttype target> critter eq",
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Immobilized"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Current",
+          "target": "Unknown",
+          "table": "Ranged_Immobilize",
+          "scale": 5.0,
+          "duration": "0 seconds",
+          "magnitude": 4.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Unknown",
+          "stack_limit": 2,
+          "stack_key": null
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "enttype target> player eq",
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Immobilized"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Current",
+          "target": "Unknown",
+          "table": "Ranged_PvPMez",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 4.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Unknown",
+          "stack_limit": 2,
+          "stack_key": null
+        }
+      ]
+    }
+  ],
+  "available_level": 0,
+  "powerset": "Epic.Psychic_Mastery"
+}

@@ -1,0 +1,15 @@
+{
+  "key": "Incarnate.Lore_Pet_Cimeroran_Support",
+  "display_name": "Lore_Pet_Cimeroran_Support",
+  "help": "Cimeroran",
+  "short_help": "Cimeroran",
+  "icon": "lore_pet_cimeroran_support_set.ico",
+  "powers": [
+    "Heal_Other",
+    "Healing_Aura"
+  ],
+  "available_level": [
+    0,
+    0
+  ]
+}

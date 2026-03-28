@@ -1,0 +1,29 @@
+{
+  "key": "Blaster_Support.Tactical_Arrow",
+  "display_name": "Tactical Arrow",
+  "help": "SUCTNLU6GY7CWHZL9X9C9KXYTS",
+  "short_help": "Tactical Arrow",
+  "icon": "tactical_arrow_set.ico",
+  "powers": [
+    "Eagle_Eye",
+    "Electrified_Net_Arrow",
+    "EMP_Arrow",
+    "Flash_Arrow",
+    "Glue_Arrow",
+    "Gymnastics",
+    "Ice_Arrow",
+    "Quickness",
+    "Upshot"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

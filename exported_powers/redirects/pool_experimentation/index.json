@@ -1,0 +1,13 @@
+{
+  "key": "Redirects.Pool_Experimentation",
+  "display_name": "Experimentation",
+  "help": "Pool",
+  "short_help": "Illusion Control",
+  "icon": "blind_set.ico",
+  "powers": [
+    "Corrosive_Vial_Splat"
+  ],
+  "available_level": [
+    0
+  ]
+}

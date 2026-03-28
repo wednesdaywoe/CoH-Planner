@@ -1,0 +1,170 @@
+{
+  "name": "Spec_Ops",
+  "full_name": "Mastermind_Summon.Mercenaries.Spec_Ops",
+  "short_name": "Spec_Ops",
+  "type": "Click",
+  "display_name": "Spec Ops",
+  "display_fullname": "Mastermind Summon Mercenaries Spec Ops",
+  "display_help": "VXM7DMZ9AEGYYVV6X4BN3Q57WS",
+  "display_short_help": "Summon Spec Ops",
+  "icon": "paramilitary_enlistspecialforces.png",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.0,
+  "effect_area": "Location",
+  "max_targets_hit": 0,
+  "radius": 0.0,
+  "arc": 0.0,
+  "range": 60.0,
+  "range_secondary": 0.0,
+  "activation_time": 2.03,
+  "recharge_time": 10.0,
+  "activate_period": 0.0,
+  "endurance_cost": 9.62,
+  "interrupt_time": 0.0,
+  "target_type": "Location",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "Self"
+  ],
+  "targets_affected": [
+    "Self"
+  ],
+  "boosts_allowed": [
+    "Hold",
+    "EnduranceDiscount",
+    "Stun",
+    "Immobilize",
+    "Debuff_ToHit",
+    "Debuff_Defense",
+    "Damage",
+    "Accuracy"
+  ],
+  "allowed_boostset_cats": [],
+  "cast_through": [],
+  "num_allowed": 1,
+  "requires": "",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [],
+  "effects": [
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Create_Entity"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "Unknown",
+          "table": "Ranged_Ones",
+          "scale": -1.0,
+          "duration": "99999 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": null
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "combatlevel source> 23 >",
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Create_Entity"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "Unknown",
+          "table": "Ranged_Ones",
+          "scale": -1.0,
+          "duration": "99999 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": null
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "flags": [
+        "PVPOnly"
+      ],
+      "is_pvp": "PVP_ONLY",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Recharge_Power"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "Self",
+          "table": "Ranged_Ones",
+          "scale": 35.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": null
+        }
+      ]
+    }
+  ],
+  "available_level": 0,
+  "powerset": "Mastermind_Summon.Mercenaries"
+}

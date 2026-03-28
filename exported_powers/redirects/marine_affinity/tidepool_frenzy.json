@@ -1,0 +1,96 @@
+{
+  "name": "Tidepool_Frenzy",
+  "full_name": "Redirects.Marine_Affinity.Tidepool_Frenzy",
+  "short_name": "Tidepool_Frenzy",
+  "type": "Auto",
+  "display_name": "44R4RTP7F3W7YBCF3VN4HD6F2X",
+  "display_fullname": "Redirects Marine Affinity Tidepool Frenzy",
+  "display_help": "9KE3ZDWKE28RW4ZDVUM3B3GC6S",
+  "display_short_help": "TUJVUM94HKF6YLVLULXPZS558Q",
+  "icon": "marineaffinity_tidepoolfrenzy.png",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.0,
+  "effect_area": "Sphere",
+  "max_targets_hit": 255,
+  "radius": 25.0,
+  "arc": 0.0,
+  "range": 0.0,
+  "range_secondary": 0.0,
+  "activation_time": 0.0,
+  "recharge_time": 999.0,
+  "activate_period": 0.2,
+  "endurance_cost": 0.0,
+  "interrupt_time": 0.0,
+  "target_type": "Self",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "Friend"
+  ],
+  "targets_affected": [
+    "Friend"
+  ],
+  "boosts_allowed": [
+    "Debuff_Defense",
+    "Accuracy"
+  ],
+  "allowed_boostset_cats": [],
+  "cast_through": [],
+  "num_allowed": 1,
+  "requires": "",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [
+    112,
+    128
+  ],
+  "effects": [
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "target.isFriend?",
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Smashing_Dmg",
+            "Lethal_Dmg",
+            "Fire_Dmg",
+            "Cold_Dmg",
+            "Energy_Dmg",
+            "Negative_Energy_Dmg",
+            "Psionic_Dmg",
+            "Toxic_Dmg"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Strength",
+          "target": "Unknown",
+          "table": "Ranged_Buff_Dmg",
+          "scale": 1.2,
+          "duration": "3 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null
+        }
+      ]
+    }
+  ],
+  "available_level": 0,
+  "powerset": "Redirects.Marine_Affinity"
+}

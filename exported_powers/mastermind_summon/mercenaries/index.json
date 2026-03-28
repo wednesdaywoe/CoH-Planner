@@ -1,0 +1,29 @@
+{
+  "key": "Mastermind_Summon.Mercenaries",
+  "display_name": "Mercenaries",
+  "help": "Despite their reputations, Mercenaries are extremely loyal and dedicated soldiers. They are the best at what they do, and they always follow orders, exactly what a Mastermind needs. Mercenaries typically use conventional weapons and all Mercenaries have body armor that gives them resistance to smashing and lethal damage and their training makes them resistant to Confusion and Placate",
+  "short_help": "Mercenaries",
+  "icon": "mercenaries_set.ico",
+  "powers": [
+    "Burst",
+    "Commando",
+    "Equip_Mercenary",
+    "M30_Grenade",
+    "Serum",
+    "Slug",
+    "Soldiers",
+    "Spec_Ops",
+    "Tactical_Upgrade"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

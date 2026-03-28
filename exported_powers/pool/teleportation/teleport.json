@@ -1,0 +1,47 @@
+{
+  "name": "Teleport",
+  "full_name": "Pool.Teleportation.Teleport",
+  "short_name": "Teleport",
+  "type": "Click",
+  "display_name": "Teleport",
+  "display_fullname": "Pool Teleportation Teleport",
+  "display_help": "2A8SBTUJZHUTWSN89S6G4ULAUZ",
+  "display_short_help": "Ranged (Location), Self Teleport",
+  "icon": "teleportation_teleport.png",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.0,
+  "effect_area": "Location",
+  "max_targets_hit": 0,
+  "radius": 0.0,
+  "arc": 0.0,
+  "range": 350.0,
+  "range_secondary": 0.0,
+  "activation_time": 1.5,
+  "recharge_time": 0.0,
+  "activate_period": 0.0,
+  "endurance_cost": 13.0,
+  "interrupt_time": 0.0,
+  "target_type": "DeadMyPet",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "Self"
+  ],
+  "targets_affected": [
+    "Self"
+  ],
+  "boosts_allowed": [
+    "EnduranceDiscount",
+    "Range"
+  ],
+  "allowed_boostset_cats": [],
+  "cast_through": [],
+  "num_allowed": 1,
+  "requires": "",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [],
+  "effects": [],
+  "available_level": 0,
+  "powerset": "Pool.Teleportation"
+}

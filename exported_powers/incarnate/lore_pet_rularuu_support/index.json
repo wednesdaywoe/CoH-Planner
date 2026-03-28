@@ -1,0 +1,15 @@
+{
+  "key": "Incarnate.Lore_Pet_Rularuu_Support",
+  "display_name": "Lore_Pet_Rularuu_Support",
+  "help": "Rularuu",
+  "short_help": "Rularuu",
+  "icon": "lore_pet_rularuu_support_set.ico",
+  "powers": [
+    "Crystal_of_Vigor",
+    "Heal_Other"
+  ],
+  "available_level": [
+    0,
+    0
+  ]
+}

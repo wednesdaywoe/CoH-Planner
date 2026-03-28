@@ -1,0 +1,29 @@
+{
+  "key": "Corruptor_Ranged.Electrical_Blast",
+  "display_name": "Electrical Blast",
+  "help": "P529J522EWY5WHZDQVXPC42QLS",
+  "short_help": "Electrical Blast",
+  "icon": "electrical_blast_set.ico",
+  "powers": [
+    "Aim",
+    "Ball_Lightning",
+    "Charged_Bolts",
+    "Lightning_Bolt",
+    "Short_Circuit",
+    "Tesla_Cage",
+    "Thunderous_Blast",
+    "Voltaic_Sentinel",
+    "Zapp"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

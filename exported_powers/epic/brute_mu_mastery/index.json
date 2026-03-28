@@ -1,0 +1,21 @@
+{
+  "key": "Epic.Brute_Mu_Mastery",
+  "display_name": "Mu Mastery",
+  "help": "P2730572537",
+  "short_help": "Mu Mastery",
+  "icon": "brute_mu_mastery_set.ico",
+  "powers": [
+    "Ball_Lightning",
+    "Electrifying_Fences",
+    "Mu_Lightning",
+    "Static_Discharge",
+    "Summon_Striker"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

@@ -8,7 +8,6 @@ export { AccoladesModal } from './AccoladesModal';
 export { AboutModal } from './AboutModal';
 export { ExportImportModal } from './ExportImportModal';
 export { FeedbackModal } from './FeedbackModal';
-export { KnownIssuesModal } from './KnownIssuesModal';
 export { ChangelogModal } from './ChangelogModal';
 export { WelcomeModal, useWelcomeModal } from './WelcomeModal';
 export { PowerInfoModal } from './PowerInfoModal';

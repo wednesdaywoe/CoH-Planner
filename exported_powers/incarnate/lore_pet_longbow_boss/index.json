@@ -1,0 +1,17 @@
+{
+  "key": "Incarnate.Lore_Pet_Longbow_Boss",
+  "display_name": "Lore_Pet_Longbow_Boss",
+  "help": "Longbow",
+  "short_help": "Longbow",
+  "icon": "lore_pet_longbow_boss_set.ico",
+  "powers": [
+    "Energy_Barrage",
+    "Grenade",
+    "Plasma_Blast"
+  ],
+  "available_level": [
+    0,
+    0,
+    0
+  ]
+}

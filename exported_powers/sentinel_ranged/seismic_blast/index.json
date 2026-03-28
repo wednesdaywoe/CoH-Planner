@@ -1,0 +1,31 @@
+{
+  "key": "Sentinel_Ranged.Seismic_Blast",
+  "display_name": "Seismic Blast",
+  "help": "JVAN9WMEH4N2YCV7EGH3BL98MA",
+  "short_help": "Seismic Blast",
+  "icon": "archery_set.ico",
+  "powers": [
+    "Encase",
+    "Entomb",
+    "Gravestone",
+    "Meteor",
+    "Rock_Shards",
+    "Seismic_Force",
+    "Shatter",
+    "Shockwaves",
+    "Stalagmite",
+    "Upthrust"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

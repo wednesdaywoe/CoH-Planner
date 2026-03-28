@@ -1,0 +1,37 @@
+{
+  "key": "Redirects.Assault_Rifle",
+  "display_name": "Assault Rifle",
+  "help": "EKKHN9WV25LKWLMF8S9625AH92",
+  "short_help": "Assault Rifle",
+  "icon": "tanker_melee_set.ico",
+  "powers": [
+    "Avoid",
+    "Ignite",
+    "Sleep_Grenade",
+    "Sleep_Grenade_Damage",
+    "Smoke_Confusion",
+    "Smoke_Grenade",
+    "Tear_Gas",
+    "Tear_Gas_Debuff",
+    "Tear_Gas_OneShot",
+    "TripMine",
+    "TripMine_Info",
+    "TripMine_Resistance",
+    "TripMine_SelfDestruct"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

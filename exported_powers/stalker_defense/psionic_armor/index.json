@@ -1,0 +1,29 @@
+{
+  "key": "Stalker_Defense.Psionic_Armor",
+  "display_name": "EXXF5G43NLXWWPXQZ7DDC6ZZNZ",
+  "help": "46DZPCMHDYVSWTLVE4CNDWJCJS",
+  "short_help": "EXXF5G43NLXWWPXQZ7DDC6ZZNZ",
+  "icon": "dark_armor_set.ico",
+  "powers": [
+    "Aura_of_Insanity",
+    "Devour_Psyche",
+    "Fortify_Mind",
+    "Hide",
+    "Impenetrable_Mind",
+    "Memento_Mori",
+    "Precognition",
+    "Psionic_Shield",
+    "Psychic_Wall"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

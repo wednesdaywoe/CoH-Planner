@@ -1,0 +1,29 @@
+{
+  "key": "Brute_Defense.Stone_Armor",
+  "display_name": "Stone Armor",
+  "help": "CK222MG7QVXXY7B87XN5QL4BUX",
+  "short_help": "Stone Armor",
+  "icon": "stone_armor_set.ico",
+  "powers": [
+    "Brimstone_Armor",
+    "Crystal_Armor",
+    "Earths_Embrace",
+    "Granite_Armor",
+    "Minerals",
+    "Mud_Pots",
+    "Rock_Armor",
+    "Rooted",
+    "Stone_Skin"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

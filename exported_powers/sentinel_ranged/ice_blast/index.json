@@ -1,0 +1,29 @@
+{
+  "key": "Sentinel_Ranged.Ice_Blast",
+  "display_name": "Ice Blast",
+  "help": "Ice Blast allows you to use the power of ice against your foes, with a tendency to Slow their attacks and movement.",
+  "short_help": "Ice Blast",
+  "icon": "ice_blast_set.ico",
+  "powers": [
+    "Aim",
+    "Bitter_Freeze_Ray",
+    "Bitter_Ice_Blast",
+    "Blizzard",
+    "Chilling_Ray",
+    "Frost_Breath",
+    "Ice_Blast",
+    "Ice_Bolt",
+    "Ice_Storm"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

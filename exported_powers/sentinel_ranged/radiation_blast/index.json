@@ -1,0 +1,29 @@
+{
+  "key": "Sentinel_Ranged.Radiation_Blast",
+  "display_name": "Radiation Blast",
+  "help": "Blast your foes with lethal radiation. Radiation Blast powers can bypass normal defenses, and lower your targets' overall Defense.",
+  "short_help": "Radiation Blast",
+  "icon": "radiation_blast_set.ico",
+  "powers": [
+    "Aim",
+    "Atomic_Blast",
+    "Cosmic_Burst",
+    "Electron_Haze",
+    "Irradiate",
+    "Neutrino_Bolt",
+    "Neutron_Bomb",
+    "Proton_Stream",
+    "X-Ray_Beam"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

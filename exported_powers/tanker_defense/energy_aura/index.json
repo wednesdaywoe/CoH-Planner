@@ -1,0 +1,29 @@
+{
+  "key": "Tanker_Defense.Energy_Aura",
+  "display_name": "Energy Aura",
+  "help": "You can surround yourself in powerful defensive Energy Auras that can deflect your foes' attacks. Like other defensive powers, Energy Auras do not reduce the damage you take, but rather reduce your chance of getting hit by deflecting your foes' attacks. Energy Auras offer good defense to most attack types, but offer superior defense to Energy based attacks. However, Energy Aura offers no defense to Psionic attacks.",
+  "short_help": "Energy Aura",
+  "icon": "energy_aura_set.ico",
+  "powers": [
+    "Dampening_Field",
+    "Energize",
+    "Energy_Drain",
+    "Energy_Protection",
+    "Energy_Reserve",
+    "Entropy_Shield",
+    "Kinetic_Shield",
+    "Overload",
+    "Power_Shield"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

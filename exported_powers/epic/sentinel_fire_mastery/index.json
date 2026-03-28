@@ -1,0 +1,21 @@
+{
+  "key": "Epic.Sentinel_Fire_Mastery",
+  "display_name": "Fire Mastery",
+  "help": "You have Mastery over Fire and Flame to blast your foes and control your foes.",
+  "short_help": "Fire Mastery",
+  "icon": "sentinel_fire_mastery_set.ico",
+  "powers": [
+    "Char",
+    "Cremate",
+    "Fire_Cages",
+    "Fire_Sword_Circle",
+    "Warmth"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

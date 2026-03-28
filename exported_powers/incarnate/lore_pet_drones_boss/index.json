@@ -1,0 +1,17 @@
+{
+  "key": "Incarnate.Lore_Pet_Drones_Boss",
+  "display_name": "Lore_Pet_Drones_Boss",
+  "help": "Incarnate",
+  "short_help": "Incarnate",
+  "icon": "lore_pet_drones_boss_set.ico",
+  "powers": [
+    "Plasma_Cannon_Blast",
+    "Plasma_Cannon_Burst",
+    "Plasma_Cannon_Spray"
+  ],
+  "available_level": [
+    0,
+    0,
+    0
+  ]
+}

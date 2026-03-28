@@ -1,0 +1,15 @@
+{
+  "key": "Redirects.Epic_IceMastery",
+  "display_name": "Ice Mastery",
+  "help": "Ice Mastery",
+  "short_help": "Ice Mastery",
+  "icon": "stalker_epicmumastery_snipe_set.ico",
+  "powers": [
+    "Frozen_Spear_Normal",
+    "Frozen_Spear_Quick"
+  ],
+  "available_level": [
+    0,
+    0
+  ]
+}

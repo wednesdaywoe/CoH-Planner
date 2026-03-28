@@ -1,0 +1,112 @@
+{
+  "name": "Life_Support_System",
+  "full_name": "Pool.Utility_Belt.Life_Support_System",
+  "short_name": "Life_Support_System",
+  "type": "Click",
+  "display_name": "Life Support System",
+  "display_fullname": "Pool Utility Belt Life Support System",
+  "display_help": "N29NJWD4W4XDWDBUMPZPNFQFZX",
+  "display_short_help": "Self, +HP, +Heal Over Time, +Special",
+  "icon": "utilitybelt_lifesupportsystem.png",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.0,
+  "effect_area": "SingleTarget",
+  "max_targets_hit": 0,
+  "radius": 0.0,
+  "arc": 0.0,
+  "range": 0.0,
+  "range_secondary": 0.0,
+  "activation_time": 1.27,
+  "recharge_time": 240.0,
+  "activate_period": 0.0,
+  "endurance_cost": 7.8,
+  "interrupt_time": 0.0,
+  "target_type": "Self",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "Self"
+  ],
+  "targets_affected": [
+    "Self"
+  ],
+  "boosts_allowed": [
+    "EnduranceDiscount",
+    "Recharge",
+    "Heal"
+  ],
+  "allowed_boostset_cats": [],
+  "cast_through": [],
+  "num_allowed": 1,
+  "requires": "Pool.Utility_Belt.Bolas Pool.Utility_Belt.Poisoned_Dagger && Pool.Utility_Belt.Bolas Pool.Utility_Belt.Freerunning && || Pool.Utility_Belt.Poisoned_Dagger Pool.Utility_Belt.Freerunning && || accesslevel char> 0 >= &&",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [],
+  "effects": [
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 4,
+      "templates": [
+        {
+          "attribs": [
+            "Heal_Dmg"
+          ],
+          "type": "Magnitude",
+          "application_type": "Unknown",
+          "aspect": "Absolute",
+          "target": "Self",
+          "table": "Melee_HealSelf",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": ".5thColumnEndgame.NictusFX",
+          "magnitude_expression": "100",
+          "application_period": 8.998998608047543e-41,
+          "tick_chance": 9.002081464669057e-41,
+          "tick_mag_multiplier": 1.215640430786422e-40,
+          "tick_mag_additive": 2.9623029146287335e-40,
+          "jit_requires": "/",
+          "caster_stack": "Unknown",
+          "stack": "Unknown",
+          "stack_limit": 256683,
+          "stack_key": "*"
+        },
+        {
+          "attribs": [
+            "Heal_Dmg"
+          ],
+          "type": "Magnitude",
+          "application_type": "Unknown",
+          "aspect": "Absolute",
+          "target": "Self",
+          "table": "Melee_HealSelf",
+          "scale": 1.0,
+          "duration": "9.10 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": ".5thColumnEndgame.NictusFX",
+          "magnitude_expression": "100",
+          "application_period": 8.998998608047543e-41,
+          "tick_chance": 9.002081464669057e-41,
+          "tick_mag_multiplier": 1.215640430786422e-40,
+          "tick_mag_additive": 2.706176383916372e-39,
+          "jit_requires": "/",
+          "caster_stack": "Unknown",
+          "stack": "Unknown",
+          "stack_limit": 256683,
+          "stack_key": "*"
+        }
+      ]
+    }
+  ],
+  "available_level": 0,
+  "powerset": "Pool.Utility_Belt"
+}

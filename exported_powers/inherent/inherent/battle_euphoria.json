@@ -1,0 +1,121 @@
+{
+  "name": "Battle_Euphoria",
+  "full_name": "Inherent.Inherent.Battle_Euphoria",
+  "short_name": "Battle_Euphoria",
+  "type": "Auto",
+  "display_name": "Battle Euphoria",
+  "display_fullname": "Inherent Inherent Battle Euphoria",
+  "display_help": "While engaged in combat, Devoured become filled with endorphins and adrenaline, fueling their attacks and combat lust. Each time they attack or are attacked, they gain a bonus to attack damage.",
+  "display_short_help": "Self +DMG, Special",
+  "icon": "inherent_blasterdesperation.png",
+  "auto_issue": true,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.0,
+  "effect_area": "SingleTarget",
+  "max_targets_hit": 0,
+  "radius": 0.0,
+  "arc": 0.0,
+  "range": 0.0,
+  "range_secondary": 0.0,
+  "activation_time": 0.0,
+  "recharge_time": 0.0,
+  "activate_period": 0.0,
+  "endurance_cost": 0.0,
+  "interrupt_time": 0.0,
+  "target_type": "Self",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "Self"
+  ],
+  "targets_affected": [
+    "Self"
+  ],
+  "boosts_allowed": [],
+  "allowed_boostset_cats": [],
+  "cast_through": [],
+  "num_allowed": 1,
+  "requires": "$archetype @Class_Rescued_Devoured ==",
+  "activate_requires": "$archetype @Class_Rescued_Devoured ==",
+  "target_requires": "",
+  "attack_types": [],
+  "effects": [
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "AttackedByOtherClick target.EventCount> 0 >",
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Rage"
+          ],
+          "type": "Magnitude",
+          "application_type": "Unknown",
+          "aspect": "Absolute",
+          "target": "Self",
+          "table": "Melee_Ones",
+          "scale": 0.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "ndgame.NictusFX",
+          "magnitude_expression": "AttackedByOtherClick",
+          "application_period": 2.8984527501017733e-39,
+          "tick_chance": 1.2924175736467788e-40,
+          "tick_mag_multiplier": 1.215920690479287e-40,
+          "tick_mag_additive": 2.293478571889606e-39,
+          "jit_requires": "5.0",
+          "caster_stack": "Unknown",
+          "stack": "Unknown",
+          "stack_limit": 94707,
+          "stack_key": "source>"
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "ActivateAttackClick target.EventCount> 0 >",
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Rage"
+          ],
+          "type": "Magnitude",
+          "application_type": "Unknown",
+          "aspect": "Absolute",
+          "target": "Self",
+          "table": "Melee_Ones",
+          "scale": 0.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "ndgame.NictusFX",
+          "magnitude_expression": "ActivateAttackClick",
+          "application_period": 2.8984527501017733e-39,
+          "tick_chance": 3.3662972618935783e-40,
+          "tick_mag_multiplier": 1.215920690479287e-40,
+          "tick_mag_additive": 2.293478571889606e-39,
+          "jit_requires": "10.0",
+          "caster_stack": "Unknown",
+          "stack": "Unknown",
+          "stack_limit": 94707,
+          "stack_key": "source>"
+        }
+      ]
+    }
+  ],
+  "available_level": 0,
+  "powerset": "Inherent.Inherent"
+}

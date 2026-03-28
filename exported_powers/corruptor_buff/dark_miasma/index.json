@@ -1,0 +1,29 @@
+{
+  "key": "Corruptor_Buff.Dark_Miasma",
+  "display_name": "Dark Miasma",
+  "help": "Focus the dark power of the Netherworld to weaken your foes. Dark Miasma focuses on draining your opponent.",
+  "short_help": "Dark Miasma",
+  "icon": "dark_miasma_set.ico",
+  "powers": [
+    "Black_Hole",
+    "Dark_Servant",
+    "Darkest_Night",
+    "Fearsome_Stare",
+    "Howling_Twilight",
+    "Petrifying_Gaze",
+    "Shadow_Fall",
+    "Tar_Patch",
+    "Twilight_Grasp"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

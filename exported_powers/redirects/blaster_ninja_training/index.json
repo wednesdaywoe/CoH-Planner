@@ -1,0 +1,13 @@
+{
+  "key": "Redirects.Blaster_Ninja_Training",
+  "display_name": "Ninja Training",
+  "help": "Ninja Training",
+  "short_help": "Ninja Training",
+  "icon": "blaster_ninja_training_set.ico",
+  "powers": [
+    "Shinobi_Proc"
+  ],
+  "available_level": [
+    0
+  ]
+}

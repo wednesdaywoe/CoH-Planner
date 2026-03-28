@@ -1,0 +1,13 @@
+{
+  "key": "Incarnate.AntiMatterRayBurn",
+  "display_name": "AntiMatterRayBurn",
+  "help": "Clockwork",
+  "short_help": "Clockwork",
+  "icon": "antimatterrayburn_set.ico",
+  "powers": [
+    "Anti-Matter_Particles"
+  ],
+  "available_level": [
+    0
+  ]
+}

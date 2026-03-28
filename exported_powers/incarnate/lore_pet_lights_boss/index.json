@@ -1,0 +1,19 @@
+{
+  "key": "Incarnate.Lore_Pet_Lights_Boss",
+  "display_name": "Lore_Pet_Lights_Boss",
+  "help": "Incarnate",
+  "short_help": "Incarnate",
+  "icon": "lore_pet_lights_boss_set.ico",
+  "powers": [
+    "Northern_Lights_Blast",
+    "Northern_Lights_Bolt",
+    "Northern_Lights_Detonation",
+    "Northern_Lights_Scatter"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0
+  ]
+}

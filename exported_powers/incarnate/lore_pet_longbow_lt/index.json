@@ -1,0 +1,17 @@
+{
+  "key": "Incarnate.Lore_Pet_Longbow_LT",
+  "display_name": "Lore_Pet_Longbow_LT",
+  "help": "Longbow",
+  "short_help": "Longbow",
+  "icon": "lore_pet_longbow_lt_set.ico",
+  "powers": [
+    "Burst",
+    "M30_Grenade",
+    "Slug"
+  ],
+  "available_level": [
+    0,
+    0,
+    0
+  ]
+}

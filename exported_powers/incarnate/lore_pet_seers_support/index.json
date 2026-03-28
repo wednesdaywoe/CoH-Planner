@@ -1,0 +1,15 @@
+{
+  "key": "Incarnate.Lore_Pet_Seers_Support",
+  "display_name": "Lore_Pet_Seers_Support",
+  "help": "Diviner",
+  "short_help": "Diviner",
+  "icon": "lore_pet_seers_support_set.ico",
+  "powers": [
+    "Fortitude",
+    "Soothe_Mind"
+  ],
+  "available_level": [
+    0,
+    0
+  ]
+}

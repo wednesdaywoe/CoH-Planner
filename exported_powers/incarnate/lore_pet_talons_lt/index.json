@@ -1,0 +1,17 @@
+{
+  "key": "Incarnate.Lore_Pet_Talons_LT",
+  "display_name": "Lore_Pet_Talons_LT",
+  "help": "Incarnate",
+  "short_help": "Incarnate",
+  "icon": "lore_pet_talons_lt_set.ico",
+  "powers": [
+    "Ice_Arrow",
+    "Screech",
+    "Snap_Shot"
+  ],
+  "available_level": [
+    0,
+    0,
+    0
+  ]
+}

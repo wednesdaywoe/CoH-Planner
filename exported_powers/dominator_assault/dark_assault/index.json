@@ -1,0 +1,29 @@
+{
+  "key": "Dominator_Assault.Dark_Assault",
+  "display_name": "Dark Assault",
+  "help": "Blind and drain your foes with dark energies. Dark Assault allows you to pummel your foes with heavy hitting melee attacks as well as several ranged attacks. Many of Dark Assaults powers reduce their victims' chance to hit.",
+  "short_help": "Dark Assault",
+  "icon": "dark_assault_set.ico",
+  "powers": [
+    "Dark_Blast",
+    "Death_Shroud",
+    "Gather_Shadows",
+    "Gloom",
+    "Life_Drain",
+    "Midnight_Grasp",
+    "Moonbeam",
+    "Night_Fall",
+    "Smite"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "key": "Blaster_Support.Fire_Manipulation",
+  "display_name": "Fire Manipulation",
+  "help": "Fire Manipulation lets you surround yourself with various manifestations of fire and flames, assaulting and burning nearby foes. Fire Manipulation powers tend to set foes ablaze for added damage over time.",
+  "short_help": "Fire Manipulation",
+  "icon": "fire_manipulation_set.ico",
+  "powers": [
+    "Blazing_Aura",
+    "Build_Up",
+    "Burn",
+    "Combustion",
+    "Consume",
+    "Fire_Sword",
+    "Fire_Sword_Circle",
+    "Hot_Feet",
+    "Ring_of_Fire"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "key": "Dominator_Assault.Thorny_Assault",
+  "display_name": "Thorny Assault",
+  "help": "Thorns protrude from your body and can deal damage in melee or at range. Thorns are hollow and inject toxin that deals additional Toxic damage and can weaken your enemy's Defense. Very few foes have resistance to Thorn toxins.",
+  "short_help": "Thorny Assault",
+  "icon": "thorny_assault_set.ico",
+  "powers": [
+    "Aim",
+    "Fling_Thorns",
+    "Impale",
+    "Ripper",
+    "Skewer",
+    "Thorn_Barrage",
+    "Thorn_Burst",
+    "Thorntrops",
+    "Thorny_Darts"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

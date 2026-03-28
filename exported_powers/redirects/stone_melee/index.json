@@ -1,0 +1,31 @@
+{
+  "key": "Redirects.Stone_Melee",
+  "display_name": "Stone Melee",
+  "help": "You can use the powers of earth and stone to do battle with your foes. Stone Melee allows you to strike with fists of stone, summon earthen weapons, and even quake the very ground itself.",
+  "short_help": "Stone Melee",
+  "icon": "tanker_melee_set.ico",
+  "powers": [
+    "Assassins_Rockslide_Quick",
+    "Assassins_Rockslide_Stealth",
+    "Fault_Brute",
+    "Fault_Cone_Brute",
+    "Fault_Cone_Scrapper",
+    "Fault_Cone_Stalker",
+    "Fault_Cone_Tanker",
+    "Fault_Scrapper",
+    "Fault_Stalker",
+    "Fault_Tanker"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

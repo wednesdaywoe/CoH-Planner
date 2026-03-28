@@ -1,0 +1,53 @@
+{
+  "name": "Defensive_Sweep",
+  "full_name": "Scrapper_Melee.Titan_Weapons.Defensive_Sweep",
+  "short_name": "Defensive_Sweep",
+  "type": "Click",
+  "display_name": "Defensive Sweep",
+  "display_fullname": "Scrapper Melee Titan Weapons Defensive Sweep",
+  "display_help": "UY7VZ8M85Q39YNX9YJC9EGNLM2",
+  "display_short_help": "G7EZQNDR75MYYVCHXYK5FUT8H2",
+  "icon": "titanweapons_defensivesweep.png",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.0,
+  "effect_area": "Cone",
+  "max_targets_hit": 5,
+  "radius": 10.0,
+  "arc": 2.094395160675049,
+  "range": 10.0,
+  "range_secondary": 0.0,
+  "activation_time": 2.2,
+  "recharge_time": 4.0,
+  "activate_period": 0.0,
+  "endurance_cost": 5.356,
+  "interrupt_time": 0.0,
+  "target_type": "Foe",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "None"
+  ],
+  "targets_affected": [
+    "Foe"
+  ],
+  "boosts_allowed": [
+    "EnduranceDiscount",
+    "Recharge",
+    "Damage",
+    "Buff_Defense",
+    "Accuracy"
+  ],
+  "allowed_boostset_cats": [],
+  "cast_through": [],
+  "num_allowed": 1,
+  "requires": "Scrapper_Defense.Shield_Defense !",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [
+    112,
+    116
+  ],
+  "effects": [],
+  "available_level": 0,
+  "powerset": "Scrapper_Melee.Titan_Weapons"
+}

@@ -1,0 +1,116 @@
+{
+  "name": "Fallout",
+  "full_name": "Mastermind_Buff.Radiation_Emission.Fallout",
+  "short_name": "Fallout",
+  "type": "Click",
+  "display_name": "Fallout",
+  "display_fullname": "Mastermind Buff Radiation Emission Fallout",
+  "display_help": "J4CQ9PXSRG3XWUVBAVEU9WUQMW",
+  "display_short_help": "ATMNN8ZBZJGQYFB4ENXSUUEFQ2",
+  "icon": "radiationpoisoning_fallout.png",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.0,
+  "effect_area": "SingleTarget",
+  "max_targets_hit": 0,
+  "radius": 0.0,
+  "arc": 0.0,
+  "range": 60.0,
+  "range_secondary": 0.0,
+  "activation_time": 3.2,
+  "recharge_time": 300.0,
+  "activate_period": 0.0,
+  "endurance_cost": 26.0,
+  "interrupt_time": 0.0,
+  "target_type": "Position",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "Position"
+  ],
+  "targets_affected": [
+    "Position"
+  ],
+  "boosts_allowed": [
+    "EnduranceDiscount",
+    "Range",
+    "Recharge",
+    "Debuff_ToHit",
+    "Debuff_Defense",
+    "Damage",
+    "Accuracy"
+  ],
+  "allowed_boostset_cats": [],
+  "cast_through": [],
+  "num_allowed": 1,
+  "requires": "",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [],
+  "effects": [
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Create_Entity"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "Unknown",
+          "table": "Ranged_Ones",
+          "scale": -1.0,
+          "duration": "1 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null
+        },
+        {
+          "attribs": [
+            "Null"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "Unknown",
+          "table": "Ranged_Ones",
+          "scale": 1.0,
+          "duration": "0.50 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 1.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null
+        }
+      ]
+    }
+  ],
+  "available_level": 0,
+  "powerset": "Mastermind_Buff.Radiation_Emission"
+}

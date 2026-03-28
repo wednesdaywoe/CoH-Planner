@@ -1,0 +1,61 @@
+{
+  "name": "Psionic_Shield",
+  "full_name": "Tanker_Defense.Psionic_Armor.Psionic_Shield",
+  "short_name": "Psionic_Shield",
+  "type": "Toggle",
+  "display_name": "86EFMXK37BU2YSC4UMENAYYLRQ",
+  "display_fullname": "Tanker Defense Psionic Armor Psionic Shield",
+  "display_help": "CX5CZ26KDJ8WWZNFJUDM5QVWTS",
+  "display_short_help": "TVYB539ZPE8EWENE2D2L9B9SF3",
+  "icon": "psionicarmor_psionicshield",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.0,
+  "effect_area": "SingleTarget",
+  "max_targets_hit": 0,
+  "radius": 0.0,
+  "arc": 0.0,
+  "range": 0.0,
+  "range_secondary": 0.0,
+  "activation_time": 1.17,
+  "recharge_time": 2.0,
+  "activate_period": 0.5,
+  "endurance_cost": 0.104,
+  "interrupt_time": 0.0,
+  "target_type": "Self",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "Self"
+  ],
+  "targets_affected": [
+    "Self"
+  ],
+  "boosts_allowed": [
+    "Res_Damage",
+    "EnduranceDiscount",
+    "Recharge"
+  ],
+  "allowed_boostset_cats": [],
+  "cast_through": [],
+  "num_allowed": 1,
+  "requires": "",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [],
+  "effects": [
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": []
+    }
+  ],
+  "available_level": 0,
+  "powerset": "Tanker_Defense.Psionic_Armor"
+}

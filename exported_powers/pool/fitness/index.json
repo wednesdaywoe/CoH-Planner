@@ -1,0 +1,19 @@
+{
+  "key": "Pool.Fitness",
+  "display_name": "Fitness",
+  "help": "You become a pillar of fitness, and can receive a bonus to your basic physical attributes. These abilities are always on and do not cost any Endurance.",
+  "short_help": "Fitness",
+  "icon": "fitness_set.ico",
+  "powers": [
+    "Health",
+    "Hurdle",
+    "Quick",
+    "Stamina"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0
+  ]
+}

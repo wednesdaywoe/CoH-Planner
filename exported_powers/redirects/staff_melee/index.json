@@ -1,0 +1,15 @@
+{
+  "key": "Redirects.Staff_Melee",
+  "display_name": "GZL3KP88WA3AWYL5MNKAF7BG8Q",
+  "help": "GZL3KP88WA3AWYL5MNKAF7BG8Q",
+  "short_help": "GZL3KP88WA3AWYL5MNKAF7BG8Q",
+  "icon": "blind_set.ico",
+  "powers": [
+    "Perfection_Level",
+    "Perfection_Level_Stalker"
+  ],
+  "available_level": [
+    0,
+    0
+  ]
+}

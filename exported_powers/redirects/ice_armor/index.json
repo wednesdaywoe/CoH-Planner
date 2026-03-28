@@ -1,0 +1,15 @@
+{
+  "key": "Redirects.Ice_Armor",
+  "display_name": "Ice Armor",
+  "help": "VCDBSDMJEC3XW2LA6MA5T26RU2",
+  "short_help": "Battle Axe",
+  "icon": "tanker_melee_set.ico",
+  "powers": [
+    "Icy_Bastion",
+    "Icy_Bastion_NoCast"
+  ],
+  "available_level": [
+    0,
+    0
+  ]
+}

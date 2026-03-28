@@ -1,0 +1,29 @@
+{
+  "key": "Brute_Melee.Martial_Arts",
+  "display_name": "Martial Arts",
+  "help": "A compilation of various fighting techniques from around the world, Martial Arts makes you a master in the art of hand to hand combat. Martial Artists tend to be very accurate with their strikes.",
+  "short_help": "Martial Arts",
+  "icon": "martial_arts_set.ico",
+  "powers": [
+    "Cobra_Strike",
+    "Crane_Kick",
+    "Crippling_Axe_Kick",
+    "Dragons_Tail",
+    "Eagles_Claw",
+    "Focus_Chi",
+    "Storm_Kick",
+    "Thunder_Kick",
+    "Warriors_Provocation"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

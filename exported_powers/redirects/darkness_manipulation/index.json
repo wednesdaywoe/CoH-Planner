@@ -1,0 +1,19 @@
+{
+  "key": "Redirects.Darkness_Manipulation",
+  "display_name": "Darkness Manipulation",
+  "help": "Darkness Manipulation",
+  "short_help": "Darkness Manipulation",
+  "icon": "tanker_melee_set.ico",
+  "powers": [
+    "Touch_of_Fear",
+    "Touch_of_the_Beyond",
+    "Touch_of_the_Beyond_Foe",
+    "Touch_of_the_Beyond_Self"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0
+  ]
+}

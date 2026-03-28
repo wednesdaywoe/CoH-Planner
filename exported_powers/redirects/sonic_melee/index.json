@@ -1,0 +1,17 @@
+{
+  "key": "Redirects.Sonic_Melee",
+  "display_name": "9ZQATGVZQ7CEY4XAETFKWZL2YS",
+  "help": "ELKZ8M727Q2XW4M52PH3586KYX",
+  "short_help": "9ZQATGVZQ7CEY4XAETFKWZL2YS",
+  "icon": "sonic_manipulation_set.ico",
+  "powers": [
+    "Attune",
+    "Sonic_Thrust",
+    "Strident_Echo"
+  ],
+  "available_level": [
+    0,
+    0,
+    0
+  ]
+}

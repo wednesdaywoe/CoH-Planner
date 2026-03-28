@@ -1,0 +1,29 @@
+{
+  "key": "Blaster_Support.Time_Manipulation",
+  "display_name": "Temporal Manipulation",
+  "help": "H6GSX99GU89DWWVRE66789D37Z",
+  "short_help": "Temporal Manipulation",
+  "icon": "time_manipulation_set.ico",
+  "powers": [
+    "Aging_Touch",
+    "Chronological_Selection",
+    "End_of_Time",
+    "Future_Pain",
+    "Temporal_Healing",
+    "Time_Lord",
+    "Time_Shift",
+    "Time_Stop",
+    "Time_Wall"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

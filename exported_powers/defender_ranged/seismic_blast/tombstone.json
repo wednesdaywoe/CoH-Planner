@@ -1,0 +1,54 @@
+{
+  "name": "Tombstone",
+  "full_name": "Defender_Ranged.Seismic_Blast.Tombstone",
+  "short_name": "Tombstone",
+  "type": "Click",
+  "display_name": "Tombstone",
+  "display_fullname": "Defender Ranged Seismic Blast Tombstone",
+  "display_help": "32MY6G5RFUR2YPBD2BJ8P7PRLQ",
+  "display_short_help": "JQTV86XM8EF4W7CK9QNT5W28N2",
+  "icon": "seismicblast_snipe",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.0,
+  "effect_area": "SingleTarget",
+  "max_targets_hit": 0,
+  "radius": 0.0,
+  "arc": 0.0,
+  "range": 150.0,
+  "range_secondary": 0.0,
+  "activation_time": 1.67,
+  "recharge_time": 12.0,
+  "activate_period": 0.0,
+  "endurance_cost": 14.352,
+  "interrupt_time": 0.0,
+  "target_type": "Foe",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "None"
+  ],
+  "targets_affected": [
+    "Foe"
+  ],
+  "boosts_allowed": [
+    "Interrupt",
+    "EnduranceDiscount",
+    "Range",
+    "Recharge",
+    "Damage",
+    "Accuracy"
+  ],
+  "allowed_boostset_cats": [],
+  "cast_through": [],
+  "num_allowed": 1,
+  "requires": "",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [
+    104,
+    116
+  ],
+  "effects": [],
+  "available_level": 0,
+  "powerset": "Defender_Ranged.Seismic_Blast"
+}

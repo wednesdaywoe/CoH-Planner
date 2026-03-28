@@ -1,0 +1,29 @@
+{
+  "key": "Controller_Buff.Thermal_Radiation",
+  "display_name": "Thermal Radiation",
+  "help": "You have the ability to control heat and Thermal Radiation. This allows you to protect allies from harm, heal them or increase their abilities. You can also weaken your enemies.",
+  "short_help": "Thermal Radiation",
+  "icon": "thermal_radiation_set.ico",
+  "powers": [
+    "Cauterize",
+    "Fire_Shield",
+    "Forge",
+    "Heat_Exhaustion",
+    "Melt_Armor",
+    "Plasma_Shield",
+    "Power_of_the_Phoenix",
+    "Thaw",
+    "Warmth"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

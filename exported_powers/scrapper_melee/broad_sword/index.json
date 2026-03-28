@@ -1,0 +1,29 @@
+{
+  "key": "Scrapper_Melee.Broad_Sword",
+  "display_name": "Broad Sword",
+  "help": "Wield a Broad Sword and master a variety of powerful Lethal attacks. Slower than a Katana, the Broad Sword's weight strikes with more force and damage. The Broadsword can reduce an enemy's Defense, allowing other attacks to hit more reliably. The Broad Sword is a powerful melee weapon that has a bonus to Accuracy. Like all scrapper powers, all Broad Sword attacks can sometimes land a critical hit for double damage.",
+  "short_help": "Broad Sword",
+  "icon": "broad_sword_set.ico",
+  "powers": [
+    "Build_Up",
+    "Disembowel",
+    "Hack",
+    "Head_Splitter",
+    "Parry",
+    "Slash",
+    "Slice",
+    "Taunt",
+    "Whirling_Sword"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "key": "Redirects.Scrapper_Melee",
+  "display_name": "Scrapper Melee",
+  "help": "These powers are used by stalker redirect powers.",
+  "short_help": "Scrapper Melee",
+  "icon": "scrapper_melee_set.ico",
+  "powers": [
+    "Savage_Leap"
+  ],
+  "available_level": [
+    0
+  ]
+}

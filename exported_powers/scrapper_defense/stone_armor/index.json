@@ -1,0 +1,29 @@
+{
+  "key": "Scrapper_Defense.Stone_Armor",
+  "display_name": "Stone Armor",
+  "help": "9KLK35C9EVXCWAXFR6PTDXCCAA",
+  "short_help": "Stone Armor",
+  "icon": "stone_armor_set.ico",
+  "powers": [
+    "Brimstone_Armor",
+    "Crystal_Armor",
+    "Earths_Embrace",
+    "Geode",
+    "Mineral_Armor",
+    "Mud_Pots",
+    "Rooted",
+    "Stone_Armor",
+    "Stone_Skin"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

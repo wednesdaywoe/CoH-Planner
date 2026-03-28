@@ -1,0 +1,21 @@
+{
+  "key": "Epic.Stone_Mastery",
+  "display_name": "Earth Mastery",
+  "help": "You have Mastery over Earth and Stone to attack your foes and to add some much needed armor and defense.",
+  "short_help": "Earth Mastery",
+  "icon": "stone_mastery_set.ico",
+  "powers": [
+    "Earths_Embrace",
+    "Fissure",
+    "Hurl_Boulder",
+    "Seismic_Smash",
+    "Stone_Armor"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

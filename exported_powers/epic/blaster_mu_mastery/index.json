@@ -1,0 +1,21 @@
+{
+  "key": "Epic.Blaster_Mu_Mastery",
+  "display_name": "Mu Mastery",
+  "help": "P2730572537",
+  "short_help": "Mu Mastery",
+  "icon": "blaster_mu_mastery_set.ico",
+  "powers": [
+    "Charged_Armor",
+    "Electric_Shackles",
+    "Electrifying_Fences",
+    "Static_Discharge",
+    "Thunder_Strike"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

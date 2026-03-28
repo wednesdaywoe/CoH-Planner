@@ -1,0 +1,21 @@
+{
+  "key": "Incarnate.Lore_Pet_Cimeroran_Boss",
+  "display_name": "Lore_Pet_Cimeroran_Boss",
+  "help": "Cimeroran",
+  "short_help": "Cimeroran",
+  "icon": "lore_pet_cimeroran_boss_set.ico",
+  "powers": [
+    "Hack",
+    "Pilum",
+    "Push_Back",
+    "Slash",
+    "Slice"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

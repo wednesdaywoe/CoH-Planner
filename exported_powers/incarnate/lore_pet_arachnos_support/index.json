@@ -1,0 +1,15 @@
+{
+  "key": "Incarnate.Lore_Pet_Arachnos_Support",
+  "display_name": "Lore_Pet_Arachnos_Support",
+  "help": "Arachnos",
+  "short_help": "Arachnos",
+  "icon": "lore_pet_arachnos_support_set.ico",
+  "powers": [
+    "Mind_Link",
+    "Soothe"
+  ],
+  "available_level": [
+    0,
+    0
+  ]
+}

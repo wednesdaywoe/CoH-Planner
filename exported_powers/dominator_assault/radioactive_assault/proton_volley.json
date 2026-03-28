@@ -1,0 +1,55 @@
+{
+  "name": "Proton_Volley",
+  "full_name": "Dominator_Assault.Radioactive_Assault.Proton_Volley",
+  "short_name": "Proton_Volley",
+  "type": "Click",
+  "display_name": "Proton Volley",
+  "display_fullname": "Dominator Assault Radioactive Assault Proton Volley",
+  "display_help": "WPW3EW6A4DSLWBXWJQVN9RRBF3",
+  "display_short_help": "ZMR9S25D35JMW3CX7ABHBW2SSS",
+  "icon": "radioactiveassault_protonvolley",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.0,
+  "effect_area": "SingleTarget",
+  "max_targets_hit": 0,
+  "radius": 0.0,
+  "arc": 0.0,
+  "range": 150.0,
+  "range_secondary": 0.0,
+  "activation_time": 1.33,
+  "recharge_time": 20.0,
+  "activate_period": 0.0,
+  "endurance_cost": 18.512,
+  "interrupt_time": 0.0,
+  "target_type": "Foe",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "None"
+  ],
+  "targets_affected": [
+    "Foe"
+  ],
+  "boosts_allowed": [
+    "Interrupt",
+    "EnduranceDiscount",
+    "Range",
+    "Recharge",
+    "Debuff_Defense",
+    "Damage",
+    "Accuracy"
+  ],
+  "allowed_boostset_cats": [],
+  "cast_through": [],
+  "num_allowed": 1,
+  "requires": "",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [
+    104,
+    132
+  ],
+  "effects": [],
+  "available_level": 0,
+  "powerset": "Dominator_Assault.Radioactive_Assault"
+}

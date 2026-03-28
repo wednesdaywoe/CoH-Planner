@@ -1,0 +1,17 @@
+{
+  "key": "Incarnate.Lore_Pet_Arachnos_LT",
+  "display_name": "Lore_Pet_Arachnos_LT",
+  "help": "Arachnos",
+  "short_help": "Arachnos",
+  "icon": "lore_pet_arachnos_lt_set.ico",
+  "powers": [
+    "Bash",
+    "Mace_Beam",
+    "Pulverize"
+  ],
+  "available_level": [
+    0,
+    0,
+    0
+  ]
+}

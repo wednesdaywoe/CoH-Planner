@@ -1,0 +1,19 @@
+{
+  "key": "Incarnate.Lore_Pet_Knives_Boss",
+  "display_name": "Lore_Pet_Knives_Boss",
+  "help": "Incarnate",
+  "short_help": "Incarnate",
+  "icon": "lore_pet_knives_boss_set.ico",
+  "powers": [
+    "Dual_Shot",
+    "Focused_Shot",
+    "Paralytic_Shot",
+    "Weakening_Shot"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0
+  ]
+}

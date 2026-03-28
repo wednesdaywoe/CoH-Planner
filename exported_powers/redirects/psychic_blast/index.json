@@ -1,0 +1,13 @@
+{
+  "key": "Redirects.Psychic_Blast",
+  "display_name": "Psychic Blast",
+  "help": "Trick Arrow",
+  "short_help": "Trick Arrow",
+  "icon": "tanker_melee_set.ico",
+  "powers": [
+    "Psionic_Dart"
+  ],
+  "available_level": [
+    0
+  ]
+}

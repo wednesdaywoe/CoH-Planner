@@ -1,0 +1,25 @@
+{
+  "key": "Incarnate.Lore_Pet_Generic",
+  "display_name": "Lore_Pet_Generic",
+  "help": "Incarnate",
+  "short_help": "Incarnate",
+  "icon": "lore_pet_generic_set.ico",
+  "powers": [
+    "Essence_Small",
+    "Fly",
+    "Lore_Data_Strength",
+    "Lore_Evasion",
+    "Lore_Power",
+    "Lore_Protection",
+    "Super_Leap"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "key": "Redirects.Arachnos_Soldier",
+  "display_name": "Arachnos Soldier",
+  "help": "92BV52CTD53PWFNK9KM7E9D87A",
+  "short_help": "Arachnos Soldier",
+  "icon": "arachnos_soldier_set.ico",
+  "powers": [
+    "Bane_Frag_Grenade",
+    "Bane_Venom_Grenade",
+    "Bane_WAWG",
+    "Crab_Burst",
+    "Crab_Frag_Grenade",
+    "Crab_Heavy_Burst",
+    "Crab_Venom_Grenade",
+    "Crab_WAWG",
+    "Wolf_Burst",
+    "Wolf_Frag_Grenade",
+    "Wolf_Heavy_Burst",
+    "Wolf_Venom_Grenade",
+    "Wolf_WAWG"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "key": "Arachnos_Soldiers.Bane_Spider_Soldier",
+  "display_name": "Bane Spider Soldier",
+  "help": "Bane Spiders are the commandos of the Arachnos organization, providing excellent stealth and offensive capabilities.",
+  "short_help": "Bane Spider Soldier",
+  "icon": "bane_spider_soldier_set.ico",
+  "powers": [
+    "BS_Bash",
+    "Build_Up",
+    "Crowd_Control",
+    "Mace_Beam",
+    "Mace_Beam_Blast",
+    "Mace_Beam_Volley",
+    "Placate",
+    "Poisonous_Ray",
+    "Pulverize",
+    "Shatter"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

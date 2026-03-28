@@ -1,0 +1,15 @@
+{
+  "key": "Incarnate.Lore_Pet_Elementals_Support",
+  "display_name": "Lore_Pet_Elementals_Support",
+  "help": "Incarnate",
+  "short_help": "Incarnate",
+  "icon": "lore_pet_elementals_support_set.ico",
+  "powers": [
+    "Hurricane",
+    "O2_Boost"
+  ],
+  "available_level": [
+    0,
+    0
+  ]
+}

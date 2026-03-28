@@ -1,0 +1,35 @@
+{
+  "key": "Stalker_Defense.Bio_Organic_Armor",
+  "display_name": "Bio Armor",
+  "help": "Your body is shielded by an incredibly durable Bio Armor that evolves based upon your environment. You are also able to siphon genetic data from your foes to empower yourself as well as shift from a Defensive, Offensive and Efficient form. Bio Armor provides good damage resistance and defense, a fair amount of regeneration and a good number of offensive/debuff power options.",
+  "short_help": "Bio Armor",
+  "icon": "bio_organic_armor_set.ico",
+  "powers": [
+    "Ablative_Carapace",
+    "Adaptation",
+    "Boundless_Energy",
+    "Defensive_Adaptation",
+    "DNA_Siphon",
+    "Efficient_Adaptation",
+    "Environmental_Adaptation",
+    "Genetic_Corruption",
+    "Hardened_Carapace",
+    "Hide",
+    "Offensive_Adaptation",
+    "Parasitic_Aura"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

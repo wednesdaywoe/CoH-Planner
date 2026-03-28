@@ -1,0 +1,29 @@
+{
+  "key": "Stalker_Melee.Radiation_Melee",
+  "display_name": "Radiation Melee",
+  "help": "You are able to harness the power of Radiation to crush your foes in close quarters. Radiation Melee attacks have a chance to inflict the Contaminated state on a target for a moderate amount of time. Powers that deal greater damage, have a longer recharge time and animation time have a greater chance to inflict Contaminated. Hitting Contaminated targets with Contaminated Strike, Radioactive Smash, Radiation Siphon and Devastating Blow cause a portion of that power's damage to also hit nearby foes. Radiation Melee attacks primarily deal smashing and energy damage, but this set is also capable of dealing some toxic damage.",
+  "short_help": "Radiation Melee",
+  "icon": "radiation_melee_set.ico",
+  "powers": [
+    "Assassins_Corruption",
+    "Atom_Smasher",
+    "Build_Up",
+    "Contaminated_Strike",
+    "Devastating_Blow",
+    "Placate",
+    "Proton_Sweep",
+    "Radiation_Siphon",
+    "Radioactive_Smash"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

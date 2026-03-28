@@ -1,0 +1,17 @@
+{
+  "key": "Incarnate.Lore_Pet_Clockwork_LT",
+  "display_name": "Lore_Pet_Clockwork_LT",
+  "help": "Clockwork",
+  "short_help": "Clockwork",
+  "icon": "lore_pet_clockwork_lt_set.ico",
+  "powers": [
+    "Particle_Blast",
+    "Particle_Blast_Barrage",
+    "Particle_Stunner"
+  ],
+  "available_level": [
+    0,
+    0,
+    0
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "key": "Epic.Sentinel_Dark_Mastery",
+  "display_name": "Dark Mastery",
+  "help": "You have Mastery over Darkness to control and blast your foes.",
+  "short_help": "Dark Mastery",
+  "icon": "sentinel_dark_mastery_set.ico",
+  "powers": [
+    "Darkest_Night",
+    "Engulfing_Darkness",
+    "Netherworld_Grasp",
+    "Netherworld_Tentacles",
+    "Smite"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

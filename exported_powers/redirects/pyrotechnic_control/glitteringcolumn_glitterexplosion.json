@@ -1,0 +1,50 @@
+{
+  "name": "GlitteringColumn_GlitterExplosion",
+  "full_name": "Redirects.Pyrotechnic_Control.GlitteringColumn_GlitterExplosion",
+  "short_name": "GlitteringColumn_GlitterExplosion",
+  "type": "Click",
+  "display_name": "TPSNY8CUVDXCWULPW4QQ8TL58Q",
+  "display_fullname": "Redirects Pyrotechnic Control GlitteringColumn GlitterExplosion",
+  "display_help": "L2TYNZ57WQNNWKZKFHDE6TPEJX",
+  "display_short_help": "QEK2WP5ATG37YXN5KZZ57L493Z",
+  "icon": "pyrotechnic_glitteringcolumn",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.2,
+  "effect_area": "Sphere",
+  "max_targets_hit": 16,
+  "radius": 15.0,
+  "arc": 0.0,
+  "range": 0.0,
+  "range_secondary": 0.0,
+  "activation_time": 0.0,
+  "recharge_time": 40.0,
+  "activate_period": 0.0,
+  "endurance_cost": 0.0,
+  "interrupt_time": 0.0,
+  "target_type": "Self",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "None"
+  ],
+  "targets_affected": [
+    "Foe"
+  ],
+  "boosts_allowed": [
+    "Damage",
+    "Accuracy"
+  ],
+  "allowed_boostset_cats": [],
+  "cast_through": [],
+  "num_allowed": 1,
+  "requires": "",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [
+    112,
+    124
+  ],
+  "effects": [],
+  "available_level": 0,
+  "powerset": "Redirects.Pyrotechnic_Control"
+}

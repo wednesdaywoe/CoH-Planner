@@ -1,0 +1,21 @@
+{
+  "key": "Epic.Chill_Mastery",
+  "display_name": "Ice Mastery",
+  "help": "You have Mastery over Ice and Cold to control your foes and to add some much needed armor and defense.",
+  "short_help": "Ice Mastery",
+  "icon": "chill_mastery_set.ico",
+  "powers": [
+    "Flash_Freeze",
+    "Hibernate",
+    "Hoarfrost",
+    "Ice_Blast",
+    "Snow_Storm"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

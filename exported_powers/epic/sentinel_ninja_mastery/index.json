@@ -1,0 +1,21 @@
+{
+  "key": "Epic.Sentinel_Ninja_Mastery",
+  "display_name": "Weapon Mastery",
+  "help": "A Ninja is a master of many tools and weapons, from the deadly Ninja Blade to deadly Tashibishi, in addition to various poisons.",
+  "short_help": "Weapon Mastery",
+  "icon": "sentinel_ninja_mastery_set.ico",
+  "powers": [
+    "Caltrops",
+    "Kemuridama",
+    "Paralizing_Dart",
+    "Sting_of_the_Wasp",
+    "The_Lotus_Drops"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "name": "Proton_Volley",
+  "full_name": "Defender_Ranged.Radiation_Blast.Proton_Volley",
+  "short_name": "Proton_Volley",
+  "type": "Click",
+  "display_name": "Proton Volley",
+  "display_fullname": "Defender Ranged Radiation Blast Proton Volley",
+  "display_help": "HFJNJEGHL3EDWAXBM3RTWVEP5Q",
+  "display_short_help": "YRRNKVA3TPYRYYXHNDYBHSTPRZ",
+  "icon": "radiationburst_protonvolley",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.0,
+  "effect_area": "SingleTarget",
+  "max_targets_hit": 0,
+  "radius": 0.0,
+  "arc": 0.0,
+  "range": 150.0,
+  "range_secondary": 0.0,
+  "activation_time": 1.33,
+  "recharge_time": 12.0,
+  "activate_period": 0.0,
+  "endurance_cost": 14.352,
+  "interrupt_time": 0.0,
+  "target_type": "Foe",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "None"
+  ],
+  "targets_affected": [
+    "Foe"
+  ],
+  "boosts_allowed": [
+    "Interrupt",
+    "EnduranceDiscount",
+    "Range",
+    "Recharge",
+    "Debuff_Defense",
+    "Damage",
+    "Accuracy"
+  ],
+  "allowed_boostset_cats": [],
+  "cast_through": [],
+  "num_allowed": 1,
+  "requires": "",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [
+    104,
+    132
+  ],
+  "effects": [],
+  "available_level": 0,
+  "powerset": "Defender_Ranged.Radiation_Blast"
+}

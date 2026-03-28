@@ -1,0 +1,37 @@
+{
+  "key": "Redirects.Marine_Affinity",
+  "display_name": "3A2HMNRUNHMHYYVG2NETELZD53",
+  "help": "3A2HMNRUNHMHYYVG2NETELZD53",
+  "short_help": "3A2HMNRUNHMHYYVG2NETELZD53",
+  "icon": "blind_set.ico",
+  "powers": [
+    "Rising_Tide",
+    "Shifting_Tides",
+    "Shifting_Tides_FX",
+    "Soothing_Wave",
+    "TidePool_Aura",
+    "TidePool_Aura_Debuff",
+    "Tidepool_Frenzy",
+    "Tidepool_Frenzy_Debuff",
+    "TidePool_WateryDomain",
+    "Wellspring_Barrier",
+    "Wellspring_Barrier_Def",
+    "Wellspring_Skin",
+    "Whitecap_Arrive"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

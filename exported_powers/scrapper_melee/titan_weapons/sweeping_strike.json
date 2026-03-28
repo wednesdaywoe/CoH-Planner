@@ -1,0 +1,53 @@
+{
+  "name": "Sweeping_Strike",
+  "full_name": "Scrapper_Melee.Titan_Weapons.Sweeping_Strike",
+  "short_name": "Sweeping_Strike",
+  "type": "Click",
+  "display_name": "Titan Sweep",
+  "display_fullname": "Scrapper Melee Titan Weapons Sweeping Strike",
+  "display_help": "PM4ZR5KUVVZKWSC5BQBPND8TYS",
+  "display_short_help": "FGDB45MTEXKAW4XLL2JZKAAPE2",
+  "icon": "titanweapons_sweepingstrike.png",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.0,
+  "effect_area": "Cone",
+  "max_targets_hit": 5,
+  "radius": 10.0,
+  "arc": 2.094395160675049,
+  "range": 10.0,
+  "range_secondary": 0.0,
+  "activation_time": 2.43,
+  "recharge_time": 10.0,
+  "activate_period": 0.0,
+  "endurance_cost": 10.4982,
+  "interrupt_time": 0.0,
+  "target_type": "Foe",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "None"
+  ],
+  "targets_affected": [
+    "Foe"
+  ],
+  "boosts_allowed": [
+    "EnduranceDiscount",
+    "Recharge",
+    "Knockback",
+    "Damage",
+    "Accuracy"
+  ],
+  "allowed_boostset_cats": [],
+  "cast_through": [],
+  "num_allowed": 1,
+  "requires": "",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [
+    112,
+    116
+  ],
+  "effects": [],
+  "available_level": 0,
+  "powerset": "Scrapper_Melee.Titan_Weapons"
+}

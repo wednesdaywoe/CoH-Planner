@@ -1,0 +1,54 @@
+{
+  "name": "Burst",
+  "full_name": "Arachnos_Soldiers.Arachnos_Soldier.Burst",
+  "short_name": "Burst",
+  "type": "Click",
+  "display_name": "Burst",
+  "display_fullname": "Arachnos Soldiers Arachnos Soldier Burst",
+  "display_help": "RY9XMHAK8HT9W7ZWA3VN2JJ4EA",
+  "display_short_help": "STB7LVZCBDH6WNLJERFJLYXXYZ",
+  "icon": "arachnossoldier_burst.png",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.0,
+  "effect_area": "SingleTarget",
+  "max_targets_hit": 0,
+  "radius": 0.0,
+  "arc": 0.0,
+  "range": 80.0,
+  "range_secondary": 0.0,
+  "activation_time": 1.0,
+  "recharge_time": 8.0,
+  "activate_period": 0.0,
+  "endurance_cost": 8.528,
+  "interrupt_time": 0.0,
+  "target_type": "Foe",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "None"
+  ],
+  "targets_affected": [
+    "Foe"
+  ],
+  "boosts_allowed": [
+    "EnduranceDiscount",
+    "Range",
+    "Recharge",
+    "Debuff_Defense",
+    "Damage",
+    "Accuracy"
+  ],
+  "allowed_boostset_cats": [],
+  "cast_through": [],
+  "num_allowed": 1,
+  "requires": "",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [
+    104,
+    120
+  ],
+  "effects": [],
+  "available_level": 0,
+  "powerset": "Arachnos_Soldiers.Arachnos_Soldier"
+}

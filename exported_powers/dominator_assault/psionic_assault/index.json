@@ -1,0 +1,29 @@
+{
+  "key": "Dominator_Assault.Psionic_Assault",
+  "display_name": "Psionic Assault",
+  "help": "Blast your enemies with an array of offensive Psionic powers. Few living beings can resist their effects. Creatures without minds, however, like machines and robots, are much more resistant.",
+  "short_help": "Psionic Assault",
+  "icon": "psionic_assault_set.ico",
+  "powers": [
+    "Drain_Psyche",
+    "Mental_Blast",
+    "Mind_Probe",
+    "Psionic_Dart",
+    "Psionic_Lance",
+    "Psychic_Scream",
+    "Psychic_Shockwave",
+    "Subdue",
+    "Telekinetic_Thrust"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

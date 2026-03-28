@@ -1,0 +1,31 @@
+{
+  "key": "Incarnate.Socket",
+  "display_name": "Socket",
+  "help": "Incarnate",
+  "short_help": "Incarnate",
+  "icon": "socket_set.ico",
+  "powers": [
+    "Confuse",
+    "DoT_Debuff",
+    "DoT_Energy",
+    "DoT_Negative",
+    "DoT_Psionic",
+    "DoT_Toxic",
+    "Endurance_Drain",
+    "Immobilize",
+    "MaxHP_Debuff",
+    "Resistance_Debuff"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

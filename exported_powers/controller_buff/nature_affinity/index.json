@@ -1,0 +1,29 @@
+{
+  "key": "Controller_Buff.Nature_Affinity",
+  "display_name": "Nature Affinity",
+  "help": "You have command over the forces of nature and are able to call forth primal energies to aid your allies and hinder your foes. Many of your powers place a Bloom effect on you and your allies. Each stack of Bloom boosts healing effects on the affected targets by a 4% for 30 seconds. Bloom can stack up to 5 times.",
+  "short_help": "Nature Affinity",
+  "icon": "nature_affinity_set.ico",
+  "powers": [
+    "Corrosive_Sap",
+    "Lifegiving_Spores",
+    "Overgrowth",
+    "Raging_Tempest",
+    "Rebirth",
+    "Regrowth",
+    "Spore_Cloud",
+    "Wild_Bastion",
+    "Wild_Growth"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

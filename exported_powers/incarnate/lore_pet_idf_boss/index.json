@@ -1,0 +1,17 @@
+{
+  "key": "Incarnate.Lore_Pet_IDF_Boss",
+  "display_name": "Lore_Pet_IDF_Boss",
+  "help": "Imperial Defense Force",
+  "short_help": "Imperial Defense Force",
+  "icon": "lore_pet_idf_boss_set.ico",
+  "powers": [
+    "Plasma_Blast",
+    "Plasma_Punch",
+    "Plasma_Vortex"
+  ],
+  "available_level": [
+    0,
+    0,
+    0
+  ]
+}

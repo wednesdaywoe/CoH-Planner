@@ -1,0 +1,21 @@
+{
+  "key": "Epic.Tank_Psionic_Mastery",
+  "display_name": "Psionic Mastery",
+  "help": "You have Mastery over Psionics and the mind to blast your foes, increase your power, and to add some much needed armor and defense.",
+  "short_help": "Psionic Mastery",
+  "icon": "psionic_mastery_set.ico",
+  "powers": [
+    "Dominate",
+    "Harmonic_Mind",
+    "Mental_Blast",
+    "Mesmerize",
+    "Psionic_Tornado"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

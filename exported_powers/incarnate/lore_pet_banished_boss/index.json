@@ -1,0 +1,19 @@
+{
+  "key": "Incarnate.Lore_Pet_Banished_Boss",
+  "display_name": "Lore_Pet_Banished_Boss",
+  "help": "Incarnate",
+  "short_help": "Incarnate",
+  "icon": "lore_pet_banished_boss_set.ico",
+  "powers": [
+    "Frigid_Beam",
+    "Frigid_Blast",
+    "Frigid_Enervation",
+    "Frigid_Smash"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0
+  ]
+}

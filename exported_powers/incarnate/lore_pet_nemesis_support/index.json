@@ -1,0 +1,15 @@
+{
+  "key": "Incarnate.Lore_Pet_Nemesis_Support",
+  "display_name": "Lore_Pet_Nemesis_Support",
+  "help": "Nemesis",
+  "short_help": "Nemesis",
+  "icon": "lore_pet_nemesis_support_set.ico",
+  "powers": [
+    "Healing_Aura",
+    "Triage"
+  ],
+  "available_level": [
+    0,
+    0
+  ]
+}

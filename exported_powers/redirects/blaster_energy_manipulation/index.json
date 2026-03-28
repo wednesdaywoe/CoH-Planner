@@ -1,0 +1,19 @@
+{
+  "key": "Redirects.Blaster_Energy_Manipulation",
+  "display_name": "Energy Manipulation",
+  "help": "Energy Manipulation allows you to channel energy to deliver deadly blows. These powers also help you focus your power to increase your own abilities.",
+  "short_help": "Energy Manipulation",
+  "icon": "energy_manipulation_set.ico",
+  "powers": [
+    "Stun_Melee",
+    "Stun_Melee_AoE",
+    "Stun_Ranged",
+    "Stun_Ranged_AoE"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0
+  ]
+}

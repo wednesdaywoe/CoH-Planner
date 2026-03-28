@@ -1,0 +1,29 @@
+{
+  "key": "Corruptor_Buff.Radiation_Emission",
+  "display_name": "Radiation Emission",
+  "help": "Radiation Emission powers allow you to manipulate atomic particles and waves to protect your allies and weaken your enemies.",
+  "short_help": "Radiation Emission",
+  "icon": "radiation_emission_set.ico",
+  "powers": [
+    "Accelerate_Metabolism",
+    "Choking_Cloud",
+    "EM_Pulse",
+    "Enervating_Field",
+    "Fallout",
+    "Lingering_Radiation",
+    "Mutation",
+    "Radiant_Aura",
+    "Radiation_Infection"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

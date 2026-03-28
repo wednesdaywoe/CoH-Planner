@@ -1,0 +1,29 @@
+{
+  "key": "Sentinel_Ranged.Dark_Blast",
+  "display_name": "Dark Blast",
+  "help": "Dark Blast summons the powers of the Netherworld to defeat your foes. The draining effects of most of these powers can reduce your targets' chance to hit.",
+  "short_help": "Dark Blast",
+  "icon": "dark_blast_set.ico",
+  "powers": [
+    "Abyssal_Gaze",
+    "Aim",
+    "Antumbral_Beam",
+    "Blackstar",
+    "Dark_Blast",
+    "Dark_Obliteration",
+    "Gloom",
+    "Life_Drain",
+    "Umbral_Torrent"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

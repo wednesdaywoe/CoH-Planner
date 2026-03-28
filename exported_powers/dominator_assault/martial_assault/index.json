@@ -1,0 +1,29 @@
+{
+  "key": "Dominator_Assault.Martial_Assault",
+  "display_name": "Martial Assault",
+  "help": "Your mastery of Martial Assault allows you to deliver crippling blows to your enemies and rain blades upon foes who don't dare approach you. You deliver damage to your enemies via withering kicks and punches in melee range, while your skills with thrown blades cut down aggressors from afar. Your attacks have a tendency to knock opponents down or deal additional damage over time as a secondary effect.",
+  "short_help": "Martial Assault",
+  "icon": "martial_assault_set.ico",
+  "powers": [
+    "Caltrops",
+    "Dragons_Tail",
+    "Envenomed_Blades",
+    "Explosive_Shuriken",
+    "Masterful_Throw",
+    "Shuriken_Throw",
+    "Spinning_Kick",
+    "Thunder_Kick",
+    "Trick_Shot"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

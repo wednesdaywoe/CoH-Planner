@@ -1,0 +1,29 @@
+{
+  "key": "Mastermind_Summon.Demon_Summoning",
+  "display_name": "Demon Summoning",
+  "help": "Conjure demons from the depths of the netherworld and beyond. These demonic servitors wield hellfire and serve you through some dark compact. You are capable of summoning a variety of different infernal minions each with its own strengths and weaknesses.",
+  "short_help": "Demon Summoning",
+  "icon": "demon_summoning_set.ico",
+  "powers": [
+    "Abyssal_Empowerment",
+    "Corruption",
+    "Crack_Whip",
+    "Enchant_Demon",
+    "Hell_on_Earth",
+    "Lash",
+    "Summon_Demon_Prince",
+    "Summon_Demonlings",
+    "Summon_Demons"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

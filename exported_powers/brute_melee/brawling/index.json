@@ -1,0 +1,29 @@
+{
+  "key": "Brute_Melee.Brawling",
+  "display_name": "Street Justice",
+  "help": "Street Justice delivers punishing bone crushing attacks that weaken, disable or otherwise hinder their foes. This melee power set has no singular form of secondary effect. Instead, it has many ways to cripple enemies. Street Justice's attack powers come in two categories: Combo Builders and Finishers. Combo Builders add to your Combo Level and thus empower any Finishers you use. See individual powers for how they're improved by Combo Level. Combo Building powers can provide up to 3 levels of benefits. Build up to the third level before executing a Finisher for maximum effectiveness.",
+  "short_help": "Street Justice",
+  "icon": "brawling_set.ico",
+  "powers": [
+    "Combat_Readiness",
+    "Crushing_Uppercut",
+    "Heavy_Blow",
+    "Initial_Strike",
+    "Low_Kick",
+    "Spinning_Strike",
+    "Sweeping_Cross",
+    "Taunt",
+    "Throat_Strike"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

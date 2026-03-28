@@ -1,0 +1,55 @@
+{
+  "name": "LRM_Rocket",
+  "full_name": "Epic.Munitions_Mastery.LRM_Rocket",
+  "short_name": "LRM_Rocket",
+  "type": "Click",
+  "display_name": "LRM Rocket",
+  "display_fullname": "Epic Munitions Mastery LRM Rocket",
+  "display_help": "M3BT6C2294MWY8N8UYPYKGSACZ",
+  "display_short_help": "8SE9SGAESWJMYBV9Q62XFWSX3Z",
+  "icon": "munitionsmastery_lrmrocket.png",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.05,
+  "effect_area": "Sphere",
+  "max_targets_hit": 16,
+  "radius": 20.0,
+  "arc": 0.0,
+  "range": 150.0,
+  "range_secondary": 0.0,
+  "activation_time": 3.87,
+  "recharge_time": 240.0,
+  "activate_period": 0.0,
+  "endurance_cost": 22.75,
+  "interrupt_time": 2.0,
+  "target_type": "Foe",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "None"
+  ],
+  "targets_affected": [
+    "Foe"
+  ],
+  "boosts_allowed": [
+    "Interrupt",
+    "EnduranceDiscount",
+    "Range",
+    "Recharge",
+    "Knockback",
+    "Damage",
+    "Accuracy"
+  ],
+  "allowed_boostset_cats": [],
+  "cast_through": [],
+  "num_allowed": 1,
+  "requires": "Epic ownPowerNum? 1 >",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [
+    112,
+    120
+  ],
+  "effects": [],
+  "available_level": 0,
+  "powerset": "Epic.Munitions_Mastery"
+}

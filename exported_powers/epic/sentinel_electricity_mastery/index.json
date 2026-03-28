@@ -1,0 +1,21 @@
+{
+  "key": "Epic.Sentinel_Electricity_Mastery",
+  "display_name": "Electricity Mastery",
+  "help": "You have advance Mastery over Electricity and are able to control your foes and aid your allies with it.",
+  "short_help": "Electricity Mastery",
+  "icon": "sentinel_electricity_mastery_set.ico",
+  "powers": [
+    "Chain_Fences",
+    "Havok_Punch",
+    "Lightning_Field",
+    "Paralyzing_Jolt",
+    "Rehabilitating_Circuit"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

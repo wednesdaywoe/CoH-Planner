@@ -1,0 +1,29 @@
+{
+  "key": "Defender_Buff.Storm_Summoning",
+  "display_name": "Storm Summoning",
+  "help": "You can command the forces of nature! Storm Summoning allows you to control wind and weather to aid your allies and wreak havoc on your foes.",
+  "short_help": "Storm Summoning",
+  "icon": "storm_summoning_set.ico",
+  "powers": [
+    "Fog",
+    "Gale",
+    "Hurricane",
+    "Lightning_Storm",
+    "O2_Boost",
+    "Snow_Storm",
+    "Steamy_Mist",
+    "Thunder_Clap",
+    "Tornado"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

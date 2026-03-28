@@ -1,0 +1,51 @@
+{
+  "name": "Endurance_Drain",
+  "full_name": "Incarnate.Interface_Silent.Endurance_Drain",
+  "short_name": "Endurance_Drain",
+  "type": "GlobalBoost",
+  "display_name": "Preemptive Interface",
+  "display_fullname": "Incarnate Interface Silent Endurance Drain",
+  "display_help": "Your Endurance and Recovery are drained by a Preemptive Interface proc.",
+  "display_short_help": "-End, -Recovery",
+  "icon": "incarnate_interface_preemptive_common.png",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.0,
+  "effect_area": "SingleTarget",
+  "max_targets_hit": 0,
+  "radius": 0.0,
+  "arc": 0.0,
+  "range": 0.0,
+  "range_secondary": 0.0,
+  "activation_time": 0.0,
+  "recharge_time": 0.0,
+  "activate_period": 10.0,
+  "endurance_cost": 0.0,
+  "interrupt_time": 0.0,
+  "target_type": "Self",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "Self"
+  ],
+  "targets_affected": [
+    "Self"
+  ],
+  "boosts_allowed": [
+    "Damage",
+    "Natural",
+    "Technology",
+    "Magic",
+    "Mutation",
+    "Science"
+  ],
+  "allowed_boostset_cats": [],
+  "cast_through": [],
+  "num_allowed": 1,
+  "requires": "",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [],
+  "effects": [],
+  "available_level": 0,
+  "powerset": "Incarnate.Interface_Silent"
+}

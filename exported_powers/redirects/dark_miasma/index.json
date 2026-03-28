@@ -1,0 +1,17 @@
+{
+  "key": "Redirects.Dark_Miasma",
+  "display_name": "Dark Miasma",
+  "help": "These powers are used by Dark Miasma powers.",
+  "short_help": "Tanker Melee",
+  "icon": "tanker_melee_set.ico",
+  "powers": [
+    "Tar",
+    "Tar_Epic",
+    "Twilight"
+  ],
+  "available_level": [
+    0,
+    0,
+    0
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "name": "Equip_Thugs",
+  "full_name": "Mastermind_Summon.Thugs.Equip_Thugs",
+  "short_name": "Equip_Thugs",
+  "type": "Click",
+  "display_name": "Equip Thugs",
+  "display_fullname": "Mastermind Summon Thugs Equip Thugs",
+  "display_help": "WHR33UU5PSSGYTNFGPPEV5ZPYW",
+  "display_short_help": "Ranged, Equip Thug Henchman",
+  "icon": "thugs_equipthugs.png",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.0,
+  "effect_area": "Sphere",
+  "max_targets_hit": 16,
+  "radius": 30.0,
+  "arc": 0.0,
+  "range": 50.0,
+  "range_secondary": 0.0,
+  "activation_time": 1.3,
+  "recharge_time": 0.5,
+  "activate_period": 0.0,
+  "endurance_cost": 11.375,
+  "interrupt_time": 0.0,
+  "target_type": "MyCreator",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "MyCreator"
+  ],
+  "targets_affected": [
+    "MyCreator"
+  ],
+  "boosts_allowed": [
+    "EnduranceDiscount",
+    "Range",
+    "Recharge",
+    "Buff_ToHit"
+  ],
+  "allowed_boostset_cats": [],
+  "cast_through": [],
+  "num_allowed": 1,
+  "requires": "",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [],
+  "effects": [],
+  "available_level": 0,
+  "powerset": "Mastermind_Summon.Thugs"
+}

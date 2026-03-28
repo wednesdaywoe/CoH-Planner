@@ -4,9 +4,13 @@
  * Overrides in changelog-overrides.ts can customize or hide entries.
  */
 
-import type { TrackerItem } from './tracker';
 import { CHANGELOG_OVERRIDES } from './changelog-overrides';
 import { MANUAL_CHANGELOG } from './changelog-manual';
+
+interface ChangeItem {
+  text: string;
+  status: 'known-bug' | 'fixed' | 'planned' | 'in-progress' | 'new';
+}
 
 declare const __CHANGELOG_DATA__: ChangelogEntry[];
 
@@ -63,15 +67,15 @@ function buildAllEntries(): ChangelogEntry[] {
 
 const ALL_ENTRIES = buildAllEntries();
 
-const TYPE_TO_STATUS: Record<string, TrackerItem['status']> = {
+const TYPE_TO_STATUS: Record<string, ChangeItem['status']> = {
   feat: 'new',
   fix: 'fixed',
   update: 'in-progress',
 };
 
-/** Get entries for the most recent date from the manual changelog as TrackerItems.
+/** Get entries for the most recent date from the manual changelog as ChangeItems.
  *  Used by WelcomeModal. Only shows manually curated entries. */
-export function getRecentChanges(): { date: string; items: TrackerItem[] } {
+export function getRecentChanges(): { date: string; items: ChangeItem[] } {
   if (MANUAL_ENTRIES.length === 0) return { date: '', items: [] };
   const targetDate = MANUAL_ENTRIES[0].date;
   const entries = MANUAL_ENTRIES.filter(e => e.date === targetDate);

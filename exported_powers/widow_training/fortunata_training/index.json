@@ -1,0 +1,31 @@
+{
+  "key": "Widow_Training.Fortunata_Training",
+  "display_name": "Fortunata Training",
+  "help": "Fortunata's have a wide array of extremely potent psychic attacks and controls.",
+  "short_help": "Fortunata Training",
+  "icon": "fortunata_training_set.ico",
+  "powers": [
+    "FRT_Aim",
+    "FRT_Dominate",
+    "FRT_Mental_Blast",
+    "FRT_Psionic_Lance",
+    "FRT_Psychic_Scream",
+    "FRT_Psychic_Wail",
+    "FRT_Scramble_Thoughts",
+    "FRT_Subdue",
+    "FRT_Telekinetic_Blast",
+    "FRT_Total_Domination"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

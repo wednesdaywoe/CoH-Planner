@@ -1,0 +1,27 @@
+{
+  "key": "Redirects.Trick_Arrow",
+  "display_name": "Trick Arrow",
+  "help": "Trick Arrow",
+  "short_help": "Trick Arrow",
+  "icon": "tanker_melee_set.ico",
+  "powers": [
+    "Disruption_Arrow",
+    "Disruption_Arrow_NPC",
+    "EMP_Arrow",
+    "EMP_Arrow_Burst",
+    "EMP_Arrow_Fx",
+    "GlueArrow",
+    "GlueArrow_Self_Destruct",
+    "PoisonGasArrow"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

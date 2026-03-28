@@ -1,0 +1,53 @@
+{
+  "name": "Stun",
+  "full_name": "Blaster_Support.Energy_Manipulation.Stun",
+  "short_name": "Stun",
+  "type": "Click",
+  "display_name": "Stun",
+  "display_fullname": "Blaster Support Energy Manipulation Stun",
+  "display_help": "2PXSLZUCCVBGYZV59ZWJ62VSX3",
+  "display_short_help": "Melee, Minor DMG(Energy/Smashing), Foe Disorient, Special",
+  "icon": "energymanipulation_stun.png",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.0,
+  "effect_area": "SingleTarget",
+  "max_targets_hit": 0,
+  "radius": 0.0,
+  "arc": 0.0,
+  "range": 7.0,
+  "range_secondary": 0.0,
+  "activation_time": 1.8,
+  "recharge_time": 12.0,
+  "activate_period": 0.0,
+  "endurance_cost": 10.192,
+  "interrupt_time": 0.0,
+  "target_type": "Foe",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "None"
+  ],
+  "targets_affected": [
+    "Foe"
+  ],
+  "boosts_allowed": [
+    "EnduranceDiscount",
+    "Stun",
+    "Recharge",
+    "Damage",
+    "Accuracy"
+  ],
+  "allowed_boostset_cats": [],
+  "cast_through": [],
+  "num_allowed": 1,
+  "requires": "",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [
+    108,
+    132
+  ],
+  "effects": [],
+  "available_level": 0,
+  "powerset": "Blaster_Support.Energy_Manipulation"
+}

@@ -1,0 +1,29 @@
+{
+  "key": "Dominator_Control.Fire_Control",
+  "display_name": "Fire Control",
+  "help": "You can control the essence of fire to entrap, scorch, and manipulate your foes with smoke and flame.",
+  "short_help": "Fire Control",
+  "icon": "fire_control_set.ico",
+  "powers": [
+    "Bonfire",
+    "Char",
+    "Cinders",
+    "Fire_Cages",
+    "Fire_Imps",
+    "Flashfire",
+    "Hot_Feet",
+    "Ring_of_Fire",
+    "Smoke"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

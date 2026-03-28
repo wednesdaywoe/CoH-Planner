@@ -1,0 +1,29 @@
+{
+  "key": "Corruptor_Ranged.Sonic_Attack",
+  "display_name": "Sonic Attack",
+  "help": "Sonic Attack lets you use the power of sound waves to damage and weaken your foes.",
+  "short_help": "Sonic Attacks",
+  "icon": "sonic_attack_set.ico",
+  "powers": [
+    "Amplify",
+    "Dreadful_Wail",
+    "Howl",
+    "Scream",
+    "Screech",
+    "Shockwave",
+    "Shout",
+    "Shriek",
+    "Sirens_Song"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

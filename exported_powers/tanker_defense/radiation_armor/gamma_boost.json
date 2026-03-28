@@ -1,0 +1,162 @@
+{
+  "name": "Gamma_Boost",
+  "full_name": "Tanker_Defense.Radiation_Armor.Gamma_Boost",
+  "short_name": "Gamma_Boost",
+  "type": "Auto",
+  "display_name": "Gamma Boost",
+  "display_fullname": "Tanker Defense Radiation Armor Gamma Boost",
+  "display_help": "Gamma Boost grants you a passive boost to both regeneration and recovery. The lower your current health is, the greater the regeneration bonus you'll receive from Gamma Boost. The higher your current health is, the greater the recovery bonus you'll receive from Gamma Boost. This power is always active.",
+  "display_short_help": "Auto: Self +Regen, +Recovery, Special",
+  "icon": "radiationarmor_gammaboost.png",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.0,
+  "effect_area": "SingleTarget",
+  "max_targets_hit": 0,
+  "radius": 0.0,
+  "arc": 0.0,
+  "range": 0.0,
+  "range_secondary": 0.0,
+  "activation_time": 0.0,
+  "recharge_time": 0.0,
+  "activate_period": 1.0,
+  "endurance_cost": 0.0,
+  "interrupt_time": 0.0,
+  "target_type": "Self",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "Self"
+  ],
+  "targets_affected": [
+    "Self"
+  ],
+  "boosts_allowed": [
+    "Recovery",
+    "Heal"
+  ],
+  "allowed_boostset_cats": [],
+  "cast_through": [],
+  "num_allowed": 1,
+  "requires": "",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [],
+  "effects": [
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 4,
+      "templates": [
+        {
+          "attribs": [
+            "Regeneration"
+          ],
+          "type": "Magnitude",
+          "application_type": "Unknown",
+          "aspect": "Current",
+          "target": "Self",
+          "table": "Melee_Ones",
+          "scale": 1.0,
+          "duration": "1.25 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": ".5thColumnEndgame.NictusFX",
+          "magnitude_expression": "75",
+          "application_period": 8.998998608047543e-41,
+          "tick_chance": 9.002081464669057e-41,
+          "tick_mag_multiplier": 1.215640430786422e-40,
+          "tick_mag_additive": 4.662456302440104e-40,
+          "jit_requires": "+",
+          "caster_stack": "Unknown",
+          "stack": "Unknown",
+          "stack_limit": 256683,
+          "stack_key": "*"
+        },
+        {
+          "attribs": [
+            "Regeneration"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Resistance",
+          "target": "Self",
+          "table": "Melee_Res_Boolean",
+          "scale": 0.5,
+          "duration": "1.25 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null
+        },
+        {
+          "attribs": [
+            "Recovery"
+          ],
+          "type": "Magnitude",
+          "application_type": "Unknown",
+          "aspect": "Current",
+          "target": "Self",
+          "table": "Melee_Ones",
+          "scale": 1.0,
+          "duration": "1.25 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": ".5thColumnEndgame.NictusFX",
+          "magnitude_expression": "1.2",
+          "application_period": 8.998998608047543e-41,
+          "tick_chance": 9.002081464669057e-41,
+          "tick_mag_multiplier": 1.215920690479287e-40,
+          "tick_mag_additive": 2.9623029146287335e-40,
+          "jit_requires": "/",
+          "caster_stack": "Unknown",
+          "stack": "Unknown",
+          "stack_limit": 256683,
+          "stack_key": "*"
+        },
+        {
+          "attribs": [
+            "Endurance",
+            "Recovery"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Resistance",
+          "target": "Self",
+          "table": "Melee_Res_Boolean",
+          "scale": 2.0,
+          "duration": "1.25 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null
+        }
+      ]
+    }
+  ],
+  "available_level": 0,
+  "powerset": "Tanker_Defense.Radiation_Armor"
+}

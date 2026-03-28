@@ -1,0 +1,29 @@
+{
+  "key": "Defender_Buff.Kinetics",
+  "display_name": "Kinetics",
+  "help": "You are a master at manipulating and transferring Kinetic energy. You can manipulate the potential energy found in objects to aid your allies or weaken your foes.",
+  "short_help": "Kinetics",
+  "icon": "kinetics_set.ico",
+  "powers": [
+    "Increase_Density",
+    "Inertial_Reduction",
+    "Kinetic_Transfer",
+    "Repel",
+    "Siphon_Power",
+    "Siphon_Speed",
+    "Speed_Boost",
+    "Transference",
+    "Transfusion"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

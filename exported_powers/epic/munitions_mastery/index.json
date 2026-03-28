@@ -1,0 +1,21 @@
+{
+  "key": "Epic.Munitions_Mastery",
+  "display_name": "V8TDQM45Q897W2XJVTGYEJFQBW",
+  "help": "9MJEZHRFTDH5W2MUW3NQANHWJQ",
+  "short_help": "V8TDQM45Q897W2XJVTGYEJFQBW",
+  "icon": "munitions_mastery_set.ico",
+  "powers": [
+    "Body_Armor",
+    "Cryo_Freeze_Ray",
+    "LRM_Rocket",
+    "Sleep_Grenade",
+    "Surveillance"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

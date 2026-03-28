@@ -1,0 +1,25 @@
+{
+  "key": "Pool.Sorcery",
+  "display_name": "Sorcery",
+  "help": "Sorcery grants you access to several arcane powers that both weaken foes and empower allies. This power pool also grants you access to Mystic Flight as its travel power. Mystic Flight allows you to fly at moderate speeds. While this power is active you also gain access to Translocation, which allows you to teleport to distant locations.",
+  "short_help": "Sorcery",
+  "icon": "sorcery_set.ico",
+  "powers": [
+    "Arcane_Bolt",
+    "Arcane_Proc",
+    "Enflame",
+    "Mystic_Flight",
+    "Rune_of_Protection",
+    "Spirit_Ward",
+    "Translocation"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

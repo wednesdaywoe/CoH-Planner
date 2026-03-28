@@ -1,0 +1,83 @@
+{
+  "name": "Geode_Pull",
+  "full_name": "Redirects.Stone_Armor.Geode_Pull",
+  "short_name": "Geode_Pull",
+  "type": "Click",
+  "display_name": "Geode",
+  "display_fullname": "Redirects Stone Armor Geode Pull",
+  "display_help": "ZGRWL54A9Z5FWWMFCLE4323NVZ",
+  "display_short_help": "Toggle: Self +Regeneration, +Recovery, Invulnerable; Self Hold",
+  "icon": "stonearmor_geode.png",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.0,
+  "effect_area": "Sphere",
+  "max_targets_hit": 1,
+  "radius": 1000.0,
+  "arc": 0.0,
+  "range": 0.0,
+  "range_secondary": 0.0,
+  "activation_time": 0.0,
+  "recharge_time": 1.0,
+  "activate_period": 0.1,
+  "endurance_cost": 0.0,
+  "interrupt_time": 0.0,
+  "target_type": "Self",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "MyCreator"
+  ],
+  "targets_affected": [
+    "MyCreator"
+  ],
+  "boosts_allowed": [],
+  "allowed_boostset_cats": [],
+  "cast_through": [],
+  "num_allowed": 1,
+  "requires": "",
+  "activate_requires": "",
+  "target_requires": "Redirects.Stone_Armor.Geode target.ownPower?",
+  "attack_types": [],
+  "effects": [
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "distance 0.5 >",
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Repel"
+          ],
+          "type": "Magnitude",
+          "application_type": "Unknown",
+          "aspect": "Current",
+          "target": "Unknown",
+          "table": "Melee_Ones",
+          "scale": 1.0,
+          "duration": "0.10 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "hColumn.5thColumnEndgame.NictusFX",
+          "magnitude_expression": "distance",
+          "application_period": 2.011638214356884e-39,
+          "tick_chance": 1.215920690479287e-40,
+          "tick_mag_multiplier": 0.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Unknown",
+          "stack": "Stack",
+          "stack_limit": 0,
+          "stack_key": null
+        }
+      ]
+    }
+  ],
+  "available_level": 0,
+  "powerset": "Redirects.Stone_Armor"
+}

@@ -1,0 +1,55 @@
+{
+  "name": "Sniper_Rifle",
+  "full_name": "Dominator_Assault.Arsenal_Assault.Sniper_Rifle",
+  "short_name": "Sniper_Rifle",
+  "type": "Click",
+  "display_name": "Sniper Rifle",
+  "display_fullname": "Dominator Assault Arsenal Assault Sniper Rifle",
+  "display_help": "3C6XLVTSK9FWY8ZC4U77CNE8WS",
+  "display_short_help": "HUUL7B2K9FAUWBZGQRYTBZQ5G2",
+  "icon": "assaultweapons_sniperrifle.png",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.05,
+  "effect_area": "SingleTarget",
+  "max_targets_hit": 0,
+  "radius": 0.0,
+  "arc": 0.0,
+  "range": 150.0,
+  "range_secondary": 0.0,
+  "activation_time": 1.17,
+  "recharge_time": 20.0,
+  "activate_period": 0.0,
+  "endurance_cost": 18.512,
+  "interrupt_time": 0.0,
+  "target_type": "Foe",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "None"
+  ],
+  "targets_affected": [
+    "Foe"
+  ],
+  "boosts_allowed": [
+    "Interrupt",
+    "EnduranceDiscount",
+    "Range",
+    "Recharge",
+    "Knockback",
+    "Damage",
+    "Accuracy"
+  ],
+  "allowed_boostset_cats": [],
+  "cast_through": [],
+  "num_allowed": 1,
+  "requires": "",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [
+    104,
+    120
+  ],
+  "effects": [],
+  "available_level": 0,
+  "powerset": "Dominator_Assault.Arsenal_Assault"
+}

@@ -1,0 +1,29 @@
+{
+  "key": "Defender_Buff.Pain_Domination",
+  "display_name": "Pain Domination",
+  "help": "Pain Domination gives a character the ability to manipulate, nullify and amplify pain. Ultimately this grants the user powerful healing, buffing and debuffing powers. It's healing output is unmatched!",
+  "short_help": "Pain Domination",
+  "icon": "pain_domination_set.ico",
+  "powers": [
+    "Anguishing_Cry",
+    "Conduit_of_Pain",
+    "Enforced_Morale",
+    "Nullify_Pain",
+    "Painbringer",
+    "Share_Pain",
+    "Soothe",
+    "Soothing_Aura",
+    "World_of_Pain"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

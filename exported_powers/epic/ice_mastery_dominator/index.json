@@ -1,0 +1,21 @@
+{
+  "key": "Epic.Ice_Mastery_Dominator",
+  "display_name": "Ice Mastery",
+  "help": "You have Mastery over Ice to blast your foes and to add some much needed armor and defense.",
+  "short_help": "Ice Mastery",
+  "icon": "ice_mastery_dominator_set.ico",
+  "powers": [
+    "Frost_Breath",
+    "Frozen_Armor",
+    "Hibernate",
+    "Ice_Blast",
+    "Ice_Storm"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

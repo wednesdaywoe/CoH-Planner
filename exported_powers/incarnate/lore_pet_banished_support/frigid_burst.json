@@ -1,0 +1,49 @@
+{
+  "name": "Frigid_Burst",
+  "full_name": "Incarnate.Lore_Pet_Banished_Support.Frigid_Burst",
+  "short_name": "Frigid_Burst",
+  "type": "Click",
+  "display_name": "Empowering Burst",
+  "display_fullname": "Incarnate Lore Pet Banished Support Frigid Burst",
+  "display_help": "N9A4ML689SBRWGCNJL9LANP6WA",
+  "display_short_help": "Targeted AoE, +Regen, +Rec, +End, +Recharge",
+  "icon": "banishedpantheon_defiler_frigidburst.png",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.0,
+  "effect_area": "Sphere",
+  "max_targets_hit": 16,
+  "radius": 30.0,
+  "arc": 0.0,
+  "range": 60.0,
+  "range_secondary": 0.0,
+  "activation_time": 2.33,
+  "recharge_time": 60.0,
+  "activate_period": 0.0,
+  "endurance_cost": 0.0,
+  "interrupt_time": 0.0,
+  "target_type": "MyCreation",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "Friend"
+  ],
+  "targets_affected": [
+    "Friend"
+  ],
+  "boosts_allowed": [
+    "Incarnate_Lore",
+    "Recovery",
+    "EnduranceDiscount",
+    "Heal"
+  ],
+  "allowed_boostset_cats": [],
+  "cast_through": [],
+  "num_allowed": 1,
+  "requires": "",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [],
+  "effects": [],
+  "available_level": 0,
+  "powerset": "Incarnate.Lore_Pet_Banished_Support"
+}

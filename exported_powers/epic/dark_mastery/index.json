@@ -1,0 +1,21 @@
+{
+  "key": "Epic.Dark_Mastery",
+  "display_name": "Dark Mastery",
+  "help": "You have Mastery over Darkness to weaken your foes, and to add some much needed defense.",
+  "short_help": "Dark Mastery",
+  "icon": "dark_mastery_set.ico",
+  "powers": [
+    "Dark_Consumption",
+    "Dark_Embrace",
+    "Oppressive_Gloom",
+    "Soul_Drain",
+    "Soul_Transfer"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "key": "Redirects.Regeneration",
+  "display_name": "Regeneration",
+  "help": "Regeneration lets you regenerate more quickly from damage and effects. Regeneration offers almost no actual damage resistance, but your Hit Point Regeneration can become so incredibly fast, that your wounds heal almost instantly. Those who possess this power set have little downtime.",
+  "short_help": "Regeneration",
+  "icon": "regeneration_set.ico",
+  "powers": [
+    "Instant_Healing",
+    "Instant_Regeneration",
+    "Second_Wind",
+    "Second_Wind_Awake",
+    "Second_Wind_Defeated"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

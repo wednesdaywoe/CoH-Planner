@@ -8,7 +8,24 @@ import { Button } from '@/components/ui';
 import { useUIStore } from '@/stores';
 import { APP_VERSION } from '@/buildTime';
 import { getRecentChanges } from '@/data/changelog';
-import { StatusBadge, renderTrackerText } from './KnownIssuesModal';
+
+type ChangeStatus = 'known-bug' | 'fixed' | 'planned' | 'in-progress' | 'new';
+
+function StatusBadge({ status }: { status: ChangeStatus }) {
+  const config = {
+    'known-bug': { label: 'Bug', className: 'bg-red-900/50 text-red-300 border-red-700/50' },
+    'fixed': { label: 'Fixed', className: 'bg-green-900/50 text-green-300 border-green-700/50' },
+    'planned': { label: 'Planned', className: 'bg-blue-900/50 text-blue-300 border-blue-700/50' },
+    'in-progress': { label: ' ⚙️ ', className: 'bg-amber-900/50 text-amber-300 border-amber-700/50' },
+    'new': { label: 'New', className: 'bg-purple-900/50 text-purple-300 border-purple-700/50' },
+  };
+  const { label, className } = config[status];
+  return (
+    <span className={`text-[10px] font-medium px-1.5 py-0.5 rounded border ${className}`}>
+      {label}
+    </span>
+  );
+}
 
 const STORAGE_KEY = 'coh-planner-welcome-dismissed';
 
@@ -19,7 +36,6 @@ interface WelcomeModalProps {
 
 export function WelcomeModal({ isOpen, onClose }: WelcomeModalProps) {
   const [dontShowAgain, setDontShowAgain] = useState(false);
-  const openKnownIssuesModal = useUIStore((s) => s.openKnownIssuesModal);
   const openChangelogModal = useUIStore((s) => s.openChangelogModal);
   const openControlsModal = useUIStore((s) => s.openControlsModal);
   const { date: changesDate, items: recentChanges } = getRecentChanges();
@@ -108,13 +124,13 @@ export function WelcomeModal({ isOpen, onClose }: WelcomeModalProps) {
             {recentChanges.map((item, idx) => (
               <li key={idx} className="flex items-start gap-2 text-sm text-gray-400">
                 <StatusBadge status={item.status} />
-                <span>{renderTrackerText(item.text)}</span>
+                <span>{item.text}</span>
               </li>
             ))}
           </ul>
 
           {/* Links */}
-          <div className="grid grid-cols-3 gap-2">
+          <div className="grid grid-cols-2 gap-2">
             <button
               type="button"
               onClick={() => { handleClose(); openChangelogModal(); }}
@@ -124,16 +140,6 @@ export function WelcomeModal({ isOpen, onClose }: WelcomeModalProps) {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
               </svg>
               <span className="text-xs font-medium text-cyan-400 leading-tight">Full Changelog</span>
-            </button>
-            <button
-              type="button"
-              onClick={() => { handleClose(); openKnownIssuesModal(); }}
-              className="flex flex-col items-center justify-center gap-1.5 p-3 bg-gray-800 border border-gray-700 rounded-lg hover:bg-gray-700 hover:border-cyan-600/50 transition-colors text-center"
-            >
-              <svg className="w-5 h-5 text-cyan-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-              </svg>
-              <span className="text-xs font-medium text-cyan-400 leading-tight">Known Issues & Roadmap</span>
             </button>
             <button
               type="button"

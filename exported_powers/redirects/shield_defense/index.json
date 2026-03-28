@@ -1,0 +1,13 @@
+{
+  "key": "Redirects.Shield_Defense",
+  "display_name": "Shield Defense",
+  "help": "Shield Charge",
+  "short_help": "Shield Charge",
+  "icon": "blind_set.ico",
+  "powers": [
+    "Shield_Charge_AoE"
+  ],
+  "available_level": [
+    0
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "key": "Brute_Melee.Fiery_Melee",
+  "display_name": "Fiery Melee",
+  "help": "Fiery Melee allows you to attack with fire, and even conjure up flaming melee weapons. Fiery Melee powers tend to set foes ablaze for added Damage Over Time.",
+  "short_help": "Fiery Melee",
+  "icon": "fiery_melee_set.ico",
+  "powers": [
+    "Breath_of_Fire",
+    "Build_Up",
+    "Combustion",
+    "Fire_Sword",
+    "Fire_Sword_Circle",
+    "Greater_Fire_Sword",
+    "Incinerate",
+    "Scorch",
+    "Taunt"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

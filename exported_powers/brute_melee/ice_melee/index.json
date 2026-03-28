@@ -1,0 +1,29 @@
+{
+  "key": "Brute_Melee.Ice_Melee",
+  "display_name": "Ice Melee",
+  "help": "Ice Melee allows the player to use Cold-based attacks, and even conjure up frozen melee weapons. Ice Melee powers are known for their ability to slow an opponent.",
+  "short_help": "Ice Melee",
+  "icon": "ice_melee_set.ico",
+  "powers": [
+    "Build_Up",
+    "Freezing_Touch",
+    "Frost",
+    "Frozen_Aura",
+    "Frozen_Fists",
+    "Greater_Ice_Sword",
+    "Ice_Patch",
+    "Ice_Sword",
+    "Taunt"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "key": "Defender_Buff.Poison",
+  "display_name": "Poison",
+  "help": "You are a master of Poison and can concoct a variety of venoms and toxins allowing you to weaken your enemies. When used correctly, some Poisons can even be used to aid your allies.",
+  "short_help": "Poison",
+  "icon": "poison_set.ico",
+  "powers": [
+    "Alkaloid",
+    "Antidote",
+    "Elixir_of_Life",
+    "Envenom",
+    "Neurotoxic_Breath",
+    "Paralytic_Poison",
+    "Poison_Trap",
+    "Venomous_Gas",
+    "Weaken"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "name": "Static_Shield",
+  "full_name": "Scrapper_Defense.Electric_Armor.Static_Shield",
+  "short_name": "Static_Shield",
+  "type": "Toggle",
+  "display_name": "Static Shield",
+  "display_fullname": "Scrapper Defense Electric Armor Static Shield",
+  "display_help": "You can create a field of Static Electricity around your body. This Static Shield protects you from Hold, Sleep, and Disorient effects as well as Endurance Drain, Recovery DeBuffs and enemy Teleportation. Static Shield can also help normalize your synaptic activity, granting you good resistance to Psionic Damage.",
+  "display_short_help": "CGDJACQLSQH6Y7CADW4UHA4CSQ",
+  "icon": "electricarmor_selfresistmez.png",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.0,
+  "effect_area": "SingleTarget",
+  "max_targets_hit": 0,
+  "radius": 0.0,
+  "arc": 0.0,
+  "range": 0.0,
+  "range_secondary": 0.0,
+  "activation_time": 1.17,
+  "recharge_time": 4.0,
+  "activate_period": 0.5,
+  "endurance_cost": 0.104,
+  "interrupt_time": 0.0,
+  "target_type": "Self",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "Self"
+  ],
+  "targets_affected": [
+    "Self"
+  ],
+  "boosts_allowed": [
+    "Res_Damage",
+    "EnduranceDiscount",
+    "Recharge"
+  ],
+  "allowed_boostset_cats": [],
+  "cast_through": [],
+  "num_allowed": 1,
+  "requires": "",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [],
+  "effects": [
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": []
+    }
+  ],
+  "available_level": 0,
+  "powerset": "Scrapper_Defense.Electric_Armor"
+}

@@ -1,0 +1,21 @@
+{
+  "key": "Epic.Psychic_Mastery",
+  "display_name": "Psionic Mastery",
+  "help": "Your Psychic Mastery allows you to dominate and control your foes, and to add some much needed defense.",
+  "short_help": "Psionic Mastery",
+  "icon": "psychic_mastery_set.ico",
+  "powers": [
+    "Dominate",
+    "Mass_Hypnosis",
+    "Mind_Over_Body",
+    "Telekinesis",
+    "World_of_Confusion"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "key": "Incarnate.Lore_Pet_Seers_LT",
+  "display_name": "Lore_Pet_Seers_LT",
+  "help": "Diviner",
+  "short_help": "Diviner",
+  "icon": "lore_pet_seers_lt_set.ico",
+  "powers": [
+    "Dominate_Mind",
+    "Mental_Blast"
+  ],
+  "available_level": [
+    0,
+    0
+  ]
+}

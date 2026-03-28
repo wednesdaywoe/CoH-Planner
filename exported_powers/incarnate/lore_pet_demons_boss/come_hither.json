@@ -1,0 +1,51 @@
+{
+  "name": "Come_Hither",
+  "full_name": "Incarnate.Lore_Pet_Demons_Boss.Come_Hither",
+  "short_name": "Come_Hither",
+  "type": "Click",
+  "display_name": "Come Hither",
+  "display_fullname": "Incarnate Lore Pet Demons Boss Come Hither",
+  "display_help": "A4PNUYQBWKGLYQXRSB2GW7PMZQ",
+  "display_short_help": "Ranged, Foe Confuse",
+  "icon": "illusions_decieve.png",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.2,
+  "effect_area": "SingleTarget",
+  "max_targets_hit": 0,
+  "radius": 0.0,
+  "arc": 0.0,
+  "range": 80.0,
+  "range_secondary": 0.0,
+  "activation_time": 1.53,
+  "recharge_time": 30.0,
+  "activate_period": 0.0,
+  "endurance_cost": 0.0,
+  "interrupt_time": 0.0,
+  "target_type": "Foe",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "None"
+  ],
+  "targets_affected": [
+    "Foe"
+  ],
+  "boosts_allowed": [
+    "Incarnate_Lore",
+    "EnduranceDiscount",
+    "Accuracy"
+  ],
+  "allowed_boostset_cats": [],
+  "cast_through": [],
+  "num_allowed": 1,
+  "requires": "",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [
+    140,
+    172
+  ],
+  "effects": [],
+  "available_level": 0,
+  "powerset": "Incarnate.Lore_Pet_Demons_Boss"
+}

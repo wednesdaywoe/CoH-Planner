@@ -1,0 +1,29 @@
+{
+  "key": "Dominator_Assault.Energy_Assault",
+  "display_name": "Energy Assault",
+  "help": "Focus pure energy into deadly melee attacks and powerful projectiles. The impact of the melee powers can often Disorient opponents, while the velocity of the ranged projectiles can send your enemies flying.",
+  "short_help": "Energy Assault",
+  "icon": "energy_assault_set.ico",
+  "powers": [
+    "Bone_Smasher",
+    "Power_Blast",
+    "Power_Bolt",
+    "Power_Boost",
+    "Power_Burst",
+    "Power_Push",
+    "Sniper_Blast",
+    "Total_Focus",
+    "Whirling_Hands"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

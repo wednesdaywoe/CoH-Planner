@@ -1,0 +1,54 @@
+{
+  "name": "Blazing_Bolt",
+  "full_name": "Corruptor_Ranged.Fire_Blast.Blazing_Bolt",
+  "short_name": "Blazing_Bolt",
+  "type": "Click",
+  "display_name": "Blazing Bolt",
+  "display_fullname": "Corruptor Ranged Fire Blast Blazing Bolt",
+  "display_help": "QPBGKGGSDR3AWDXMUH8TA4SKMS",
+  "display_short_help": "5F8JQABEWWBMYKCDT4WYR2HNFQ",
+  "icon": "fireblast_blazingbolt.png",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.0,
+  "effect_area": "SingleTarget",
+  "max_targets_hit": 0,
+  "radius": 0.0,
+  "arc": 0.0,
+  "range": 150.0,
+  "range_secondary": 0.0,
+  "activation_time": 1.67,
+  "recharge_time": 12.0,
+  "activate_period": 0.0,
+  "endurance_cost": 14.352,
+  "interrupt_time": 0.0,
+  "target_type": "Foe",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "None"
+  ],
+  "targets_affected": [
+    "Foe"
+  ],
+  "boosts_allowed": [
+    "Interrupt",
+    "EnduranceDiscount",
+    "Range",
+    "Recharge",
+    "Damage",
+    "Accuracy"
+  ],
+  "allowed_boostset_cats": [],
+  "cast_through": [],
+  "num_allowed": 1,
+  "requires": "",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [
+    104,
+    124
+  ],
+  "effects": [],
+  "available_level": 0,
+  "powerset": "Corruptor_Ranged.Fire_Blast"
+}

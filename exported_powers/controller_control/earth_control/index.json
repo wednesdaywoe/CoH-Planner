@@ -1,0 +1,29 @@
+{
+  "key": "Controller_Control.Earth_Control",
+  "display_name": "Earth Control",
+  "help": "You can control the forces of the Earth. You can manipulate earth and stone to defeat your foes. The crushing force of many Earth Powers can reduce a target's Defense. Being of the Earth, many of these powers need to be performed while on the ground.",
+  "short_help": "Earth Control",
+  "icon": "earth_control_set.ico",
+  "powers": [
+    "Animate_Stone",
+    "Earthquake",
+    "Fossilize",
+    "Quicksand",
+    "Salt_Crystals",
+    "Stalagmites",
+    "Stone_Cages",
+    "Stone_Prison",
+    "Volcanic_Gasses"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

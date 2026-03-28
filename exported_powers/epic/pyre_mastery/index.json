@@ -1,0 +1,21 @@
+{
+  "key": "Epic.Pyre_Mastery",
+  "display_name": "Fire Mastery",
+  "help": "You have Mastery over Fire and Flame to blast your foes and control your foes.",
+  "short_help": "Fire Mastery",
+  "icon": "pyre_mastery_set.ico",
+  "powers": [
+    "Char",
+    "Fire_Ball",
+    "Fire_Blast",
+    "Melt_Armor",
+    "Ring_of_Fire"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

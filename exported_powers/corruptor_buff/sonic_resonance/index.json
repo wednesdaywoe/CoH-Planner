@@ -1,0 +1,29 @@
+{
+  "key": "Corruptor_Buff.Sonic_Resonance",
+  "display_name": "Sonic Resonance",
+  "help": "You have the ability to control sound in several fashions. You can create semi-solid barriers, set up waves which weaken or strengthen a target, as well as creating soothing sounds which act to counteract any negative effects which may exist on your friends.",
+  "short_help": "Sonic Resonance",
+  "icon": "sonic_resonance_set.ico",
+  "powers": [
+    "Clarity",
+    "Disruption_Field",
+    "Liquefy",
+    "Sonic_Barrier",
+    "Sonic_Cage",
+    "Sonic_Dispersion",
+    "Sonic_Haven",
+    "Sonic_Repulsion",
+    "Sonic_Siphon"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

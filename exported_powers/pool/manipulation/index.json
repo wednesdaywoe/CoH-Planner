@@ -1,0 +1,21 @@
+{
+  "key": "Pool.Manipulation",
+  "display_name": "Presence",
+  "help": "You have an impressive presence that manifests in a variety of ways. Whether through charm, persuasion or outright intimidation, you can manipulate your foes' desire to fight you. Though this is a challenging set to master, and can get you into trouble if used injudiciously, the potential benefits are great.",
+  "short_help": "Presence",
+  "icon": "manipulation_set.ico",
+  "powers": [
+    "Challenge",
+    "Intimidate",
+    "Invoke_Panic",
+    "Provoke",
+    "Unrelenting"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

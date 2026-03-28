@@ -1,0 +1,29 @@
+{
+  "key": "Blaster_Support.Mental_Manipulation",
+  "display_name": "Mental Manipulation",
+  "help": "Manipulate your enemies with an array of offensive Psionic powers. Few living beings can resist their effects. Creatures without minds, however, like machines and robots, are much more resistant.",
+  "short_help": "Mental Manipulation",
+  "icon": "mental_manipulation_set.ico",
+  "powers": [
+    "Build_Up",
+    "Drain_Psyche",
+    "Mind_Probe",
+    "Psychic_Scream",
+    "Psychic_Shockwave",
+    "Scare",
+    "Subdual",
+    "Telekinetic_Thrust",
+    "World_of_Confusion"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

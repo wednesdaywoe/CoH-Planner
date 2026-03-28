@@ -1,0 +1,54 @@
+{
+  "name": "Shadow_Recall",
+  "full_name": "Warshade_Defensive.Umbral_Aura.Shadow_Recall",
+  "short_name": "Shadow_Recall",
+  "type": "Click",
+  "display_name": "Shadow Recall",
+  "display_fullname": "Warshade Defensive Umbral Aura Shadow Recall",
+  "display_help": "Z6LSCJJ6LY88YCZW6UYBAQRMCX",
+  "display_short_help": "Teleport Teamate or Foe",
+  "icon": "umbralaura_shadowrecall",
+  "auto_issue": true,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.0,
+  "effect_area": "SingleTarget",
+  "max_targets_hit": 0,
+  "radius": 0.0,
+  "arc": 0.0,
+  "range": 10000.0,
+  "range_secondary": 25.0,
+  "activation_time": 5.93,
+  "recharge_time": 6.0,
+  "activate_period": 0.0,
+  "endurance_cost": 15.0,
+  "interrupt_time": 4.0,
+  "target_type": "Any",
+  "target_type_secondary": "DeadMyPet",
+  "targets_autohit": [
+    "Unknown(35)"
+  ],
+  "targets_affected": [
+    "Unknown(35)",
+    "Foe"
+  ],
+  "boosts_allowed": [
+    "Interrupt",
+    "EnduranceDiscount",
+    "Range",
+    "Recharge",
+    "Accuracy"
+  ],
+  "allowed_boostset_cats": [],
+  "cast_through": [],
+  "num_allowed": 1,
+  "requires": "Inherent.Inherent.Shadow_Recall !",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [
+    104,
+    136
+  ],
+  "effects": [],
+  "available_level": 0,
+  "powerset": "Warshade_Defensive.Umbral_Aura"
+}

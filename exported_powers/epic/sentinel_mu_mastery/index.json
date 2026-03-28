@@ -1,0 +1,21 @@
+{
+  "key": "Epic.Sentinel_Mu_Mastery",
+  "display_name": "Mu Mastery",
+  "help": "P2730572537",
+  "short_help": "Mu Mastery",
+  "icon": "sentinel_mu_mastery_set.ico",
+  "powers": [
+    "Electric_Shackles",
+    "Electrifying_Fences",
+    "Static_Discharge",
+    "Summon_Adept",
+    "Thunder_Strike"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

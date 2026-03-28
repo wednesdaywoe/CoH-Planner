@@ -1,0 +1,83 @@
+{
+  "name": "Vigilance_PerTeamEndAdjustment",
+  "full_name": "Inherent.Inherent.Vigilance_PerTeamEndAdjustment",
+  "short_name": "Vigilance_PerTeamEndAdjustment",
+  "type": "Auto",
+  "display_name": "Vigilance",
+  "display_fullname": "Inherent Inherent Vigilance PerTeamEndAdjustment",
+  "display_help": "23SELMZ8KMC7YVZDYXSZ93BLYQ",
+  "display_short_help": "Endurance Discount",
+  "icon": "inherentpeacebringer_interspaciallink.png",
+  "auto_issue": true,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.0,
+  "effect_area": "Sphere",
+  "max_targets_hit": 16,
+  "radius": 300.0,
+  "arc": 0.0,
+  "range": 0.0,
+  "range_secondary": 0.0,
+  "activation_time": 0.0,
+  "recharge_time": 0.0,
+  "activate_period": 1.0,
+  "endurance_cost": 0.0,
+  "interrupt_time": 0.0,
+  "target_type": "Self",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "DeadOrAliveTeammate"
+  ],
+  "targets_affected": [
+    "DeadOrAliveTeammate"
+  ],
+  "boosts_allowed": [],
+  "allowed_boostset_cats": [],
+  "cast_through": [],
+  "num_allowed": 1,
+  "requires": "$archetype @Class_Defender ==",
+  "activate_requires": "$archetype @Class_Defender ==",
+  "target_requires": "",
+  "attack_types": [],
+  "effects": [
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "enttype target> player eq",
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "EnduranceDiscount"
+          ],
+          "type": "Magnitude",
+          "application_type": "Unknown",
+          "aspect": "Strength",
+          "target": "Self",
+          "table": "Melee_Ones",
+          "scale": 0.0,
+          "duration": "1 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "5thColumnEndgame.NictusFX",
+          "magnitude_expression": "100",
+          "application_period": 8.998998608047543e-41,
+          "tick_chance": 1.3533740568449083e-41,
+          "tick_mag_multiplier": 1.215640430786422e-40,
+          "tick_mag_additive": 9.144313258798026e-41,
+          "jit_requires": "100",
+          "caster_stack": "Unknown",
+          "stack": "Unknown",
+          "stack_limit": 61370,
+          "stack_key": "0.75"
+        }
+      ]
+    }
+  ],
+  "available_level": 0,
+  "powerset": "Inherent.Inherent"
+}

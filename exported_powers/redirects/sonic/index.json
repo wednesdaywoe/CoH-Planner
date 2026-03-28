@@ -1,0 +1,29 @@
+{
+  "key": "Redirects.Sonic",
+  "display_name": "P83J9SQSSUPJYEL5J69NMUETXX",
+  "help": "P83J9SQSSUPJYEL5J69NMUETXX",
+  "short_help": "P83J9SQSSUPJYEL5J69NMUETXX",
+  "icon": "blind_set.ico",
+  "powers": [
+    "Sonic_Vibrations_1",
+    "Sonic_Vibrations_1_Dominator",
+    "Sonic_Vibrations_2",
+    "Sonic_Vibrations_2_Dominator",
+    "Sonic_Vibrations_3",
+    "Sonic_Vibrations_3_Dominator",
+    "Sonic_Vibrations_4",
+    "Sonic_Vibrations_Extensive",
+    "Sonic_Vibrations_Wide"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

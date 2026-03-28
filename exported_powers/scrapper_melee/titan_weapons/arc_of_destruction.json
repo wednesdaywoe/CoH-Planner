@@ -1,0 +1,53 @@
+{
+  "name": "Arc_of_Destruction",
+  "full_name": "Scrapper_Melee.Titan_Weapons.Arc_of_Destruction",
+  "short_name": "Arc_of_Destruction",
+  "type": "Click",
+  "display_name": "Arc of Destruction",
+  "display_fullname": "Scrapper Melee Titan Weapons Arc of Destruction",
+  "display_help": "G46X9P2CHVN5W2CHMWUG3P5QFA",
+  "display_short_help": "F43J5DA6HZBXWYX7APYP9AQY8Q",
+  "icon": "titanweapons_arcofdestruction.png",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.0,
+  "effect_area": "Cone",
+  "max_targets_hit": 5,
+  "radius": 10.0,
+  "arc": 2.094395160675049,
+  "range": 10.0,
+  "range_secondary": 0.0,
+  "activation_time": 2.7,
+  "recharge_time": 16.0,
+  "activate_period": 0.0,
+  "endurance_cost": 15.6395,
+  "interrupt_time": 0.0,
+  "target_type": "Foe",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "None"
+  ],
+  "targets_affected": [
+    "Foe"
+  ],
+  "boosts_allowed": [
+    "EnduranceDiscount",
+    "Recharge",
+    "Knockback",
+    "Damage",
+    "Accuracy"
+  ],
+  "allowed_boostset_cats": [],
+  "cast_through": [],
+  "num_allowed": 1,
+  "requires": "",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [
+    112,
+    116
+  ],
+  "effects": [],
+  "available_level": 0,
+  "powerset": "Scrapper_Melee.Titan_Weapons"
+}

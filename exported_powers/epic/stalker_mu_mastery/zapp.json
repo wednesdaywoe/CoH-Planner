@@ -1,0 +1,55 @@
+{
+  "name": "Zapp",
+  "full_name": "Epic.Stalker_Mu_Mastery.Zapp",
+  "short_name": "Zapp",
+  "type": "Click",
+  "display_name": "Zapp",
+  "display_fullname": "Epic Stalker Mu Mastery Zapp",
+  "display_help": "LDFJJ246YJ3WW3NQRDKCC566TW",
+  "display_short_help": "C8JY4PTCJLFTYTXTSNX5AA556Q",
+  "icon": "arachnos_patron_targetedrangedsnipe.png",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.0,
+  "effect_area": "SingleTarget",
+  "max_targets_hit": 0,
+  "radius": 0.0,
+  "arc": 0.0,
+  "range": 150.0,
+  "range_secondary": 0.0,
+  "activation_time": 1.33,
+  "recharge_time": 24.0,
+  "activate_period": 0.0,
+  "endurance_cost": 17.94,
+  "interrupt_time": 0.0,
+  "target_type": "Foe",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "None"
+  ],
+  "targets_affected": [
+    "Foe"
+  ],
+  "boosts_allowed": [
+    "Recovery",
+    "Interrupt",
+    "EnduranceDiscount",
+    "Range",
+    "Recharge",
+    "Damage",
+    "Accuracy"
+  ],
+  "allowed_boostset_cats": [],
+  "cast_through": [],
+  "num_allowed": 1,
+  "requires": "$archetype @Class_Stalker == $archetype @Class_Scrapper == || SpidersKissPatron Owned? TheStingerPatron Owned? || BloodInTheWaterPatron Owned? || MiragePatron Owned? || Beta_AutoLevel50 Owned? || &&",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [
+    104,
+    132
+  ],
+  "effects": [],
+  "available_level": 0,
+  "powerset": "Epic.Stalker_Mu_Mastery"
+}

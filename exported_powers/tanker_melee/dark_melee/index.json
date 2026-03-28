@@ -1,0 +1,29 @@
+{
+  "key": "Tanker_Melee.Dark_Melee",
+  "display_name": "Dark Melee",
+  "help": "Dark Melee allows you to focus the powers of the Netherworld to defeat your foes. The draining effects of most of these powers can reduce the target's Accuracy. Like all scrapper powers, all Dark Melee attacks can sometimes land a critical hit for double damage.",
+  "short_help": "Dark Melee",
+  "icon": "dark_melee_set.ico",
+  "powers": [
+    "Dark_Consumption",
+    "Midnight_Grasp",
+    "Shadow_Maul",
+    "Shadow_Punch",
+    "Siphon_Life",
+    "Smite",
+    "Soul_Drain",
+    "Taunt",
+    "Touch_of_Fear"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

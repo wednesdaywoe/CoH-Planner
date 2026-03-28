@@ -1,0 +1,15 @@
+{
+  "key": "Redirects.Ice_Control",
+  "display_name": "Ice Control",
+  "help": "Ice Control",
+  "short_help": "Ice Control",
+  "icon": "blind_set.ico",
+  "powers": [
+    "Cold_Snap_Controller",
+    "Cold_Snap_Dominator"
+  ],
+  "available_level": [
+    0,
+    0
+  ]
+}

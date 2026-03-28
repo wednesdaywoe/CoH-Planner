@@ -1,0 +1,48 @@
+{
+  "name": "Enchant_Undead",
+  "full_name": "Mastermind_Summon.Necromancy.Enchant_Undead",
+  "short_name": "Enchant_Undead",
+  "type": "Click",
+  "display_name": "Enchant Undead",
+  "display_fullname": "Mastermind Summon Necromancy Enchant Undead",
+  "display_help": "CNN6RY3S7JNQYDB8P78C8P73VX",
+  "display_short_help": "Ranged, Enchant Undead Henchman",
+  "icon": "necromancy_enchantundead.png",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.0,
+  "effect_area": "Sphere",
+  "max_targets_hit": 16,
+  "radius": 30.0,
+  "arc": 0.0,
+  "range": 50.0,
+  "range_secondary": 0.0,
+  "activation_time": 2.07,
+  "recharge_time": 0.5,
+  "activate_period": 0.0,
+  "endurance_cost": 11.375,
+  "interrupt_time": 0.0,
+  "target_type": "MyCreator",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "MyCreator"
+  ],
+  "targets_affected": [
+    "MyCreator"
+  ],
+  "boosts_allowed": [
+    "Res_Damage",
+    "EnduranceDiscount",
+    "Range"
+  ],
+  "allowed_boostset_cats": [],
+  "cast_through": [],
+  "num_allowed": 1,
+  "requires": "",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [],
+  "effects": [],
+  "available_level": 0,
+  "powerset": "Mastermind_Summon.Necromancy"
+}

@@ -1,0 +1,17 @@
+{
+  "key": "Redirects.Force_Field",
+  "display_name": "Force Field",
+  "help": "Force Field",
+  "short_help": "Force Field",
+  "icon": "blind_set.ico",
+  "powers": [
+    "Dampening_Bubble",
+    "Dampening_Bubble_Debuff",
+    "Dampening_BubbleFX"
+  ],
+  "available_level": [
+    0,
+    0,
+    0
+  ]
+}

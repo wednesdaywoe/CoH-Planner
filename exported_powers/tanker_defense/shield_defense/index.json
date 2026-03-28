@@ -1,0 +1,29 @@
+{
+  "key": "Tanker_Defense.Shield_Defense",
+  "display_name": "Shield Defense",
+  "help": "Your mastery over the shield protects you from all forms of attacks in the form of defense as well as some moderate damage resistance to most types of damage. Your training with the shield enables you to protect your nearby allies boosting their defenses.",
+  "short_help": "Shield Defense",
+  "icon": "shield_defense_set.ico",
+  "powers": [
+    "Active_Defense",
+    "Against_all_Odds",
+    "Battle_Agility",
+    "Deflection",
+    "Grant_Cover",
+    "One_with_the_Shield",
+    "Phalanx_Fighting",
+    "Shield_Charge",
+    "True_Grit"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "name": "Arcane_Proc",
+  "full_name": "Pool.Sorcery.Arcane_Proc",
+  "short_name": "Arcane_Proc",
+  "type": "Auto",
+  "display_name": "Arcane Power",
+  "display_fullname": "Pool Sorcery Arcane Proc",
+  "display_help": "LMXGTZM83XD7WXBQAS2BPF85N3",
+  "display_short_help": "Special",
+  "icon": "sorcerypool_arcanebolt.png",
+  "auto_issue": true,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.0,
+  "effect_area": "SingleTarget",
+  "max_targets_hit": 0,
+  "radius": 0.0,
+  "arc": 0.0,
+  "range": 80.0,
+  "range_secondary": 0.0,
+  "activation_time": 0.0,
+  "recharge_time": 7.0,
+  "activate_period": 0.0,
+  "endurance_cost": 0.0,
+  "interrupt_time": 0.0,
+  "target_type": "Self",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "Self"
+  ],
+  "targets_affected": [
+    "Self"
+  ],
+  "boosts_allowed": [],
+  "allowed_boostset_cats": [],
+  "cast_through": [],
+  "num_allowed": 1,
+  "requires": "Pool.Sorcery.Arcane_Bolt",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [],
+  "effects": [
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "EndActivateClick target.EventCount> 0 > EndActivateInsp target.EventCount> 0 > + kArcaneBolt Source.Mode? ! &&",
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": []
+    }
+  ],
+  "available_level": 0,
+  "powerset": "Pool.Sorcery"
+}

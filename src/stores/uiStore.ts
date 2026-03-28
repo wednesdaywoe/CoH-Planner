@@ -102,9 +102,6 @@ interface UIState {
   /** Feedback modal open state */
   feedbackModalOpen: boolean;
 
-  /** Known Issues modal open state */
-  knownIssuesModalOpen: boolean;
-
   /** Changelog modal open state */
   changelogModalOpen: boolean;
 
@@ -342,10 +339,6 @@ interface UIActions {
   openFeedbackModal: () => void;
   closeFeedbackModal: () => void;
 
-  // Known Issues Modal
-  openKnownIssuesModal: () => void;
-  closeKnownIssuesModal: () => void;
-
   // Changelog Modal
   openChangelogModal: () => void;
   closeChangelogModal: () => void;
@@ -534,7 +527,6 @@ export const useUIStore = create<UIStore>()(
       exportImportModalOpen: false,
       exportImportModalTab: null,
       feedbackModalOpen: false,
-      knownIssuesModalOpen: false,
       changelogModalOpen: false,
       controlsModalOpen: false,
       helpModalOpen: false,
@@ -1006,13 +998,6 @@ export const useUIStore = create<UIStore>()(
 
       closeFeedbackModal: () =>
         set({ feedbackModalOpen: false }),
-
-      // Known Issues Modal
-      openKnownIssuesModal: () =>
-        set({ knownIssuesModalOpen: true }),
-
-      closeKnownIssuesModal: () =>
-        set({ knownIssuesModalOpen: false }),
 
       // Changelog Modal
       openChangelogModal: () =>

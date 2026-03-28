@@ -1,0 +1,29 @@
+{
+  "key": "Controller_Control.Ice_Control",
+  "display_name": "Ice Control",
+  "help": "You can draw moisture from the air to create Icy formations. With these abilities, you can control ice with remarkable precision to dominate your foes.",
+  "short_help": "Ice Control",
+  "icon": "ice_control_set.ico",
+  "powers": [
+    "Artic_Air",
+    "Block_of_Ice",
+    "Chilblain",
+    "Flash_Freeze",
+    "Frostbite",
+    "Glacier",
+    "Ice_Slick",
+    "Jack_Frost",
+    "Shiver"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

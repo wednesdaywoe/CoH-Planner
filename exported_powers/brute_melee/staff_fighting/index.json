@@ -1,0 +1,35 @@
+{
+  "key": "Brute_Melee.Staff_Fighting",
+  "display_name": "Staff Fighting",
+  "help": "You have mastered the art of staff fighting, allowing you to strike at your foes in great sweeping arcs. Staff Fighting provides a good amount of control effects as well as some self buffs. By selecting the Staff Mastery power, you will gain access to techniques that further empower your Staff Fighting techniques and grant you useful augmentations that build up as you fight.",
+  "short_help": "Staff Fighting",
+  "icon": "staff_fighting_set.ico",
+  "powers": [
+    "Eye_of_the_Storm",
+    "Form_of_the_Body",
+    "Form_of_the_Mind",
+    "Form_of_the_Soul",
+    "Guarded_Spin",
+    "Innocuous_Strikes",
+    "Mercurial_Blow",
+    "Precise_Strike",
+    "Serpents_Reach",
+    "Sky_Splitter",
+    "Staff_Mastery",
+    "Taunt"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

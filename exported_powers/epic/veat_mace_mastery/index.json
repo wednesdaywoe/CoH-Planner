@@ -1,0 +1,21 @@
+{
+  "key": "Epic.VEAT_Mace_Mastery",
+  "display_name": "Mace Mastery",
+  "help": "Black Scorpion has granted you access to the advanced technology of the Executioner's Mace. The signature weapon of the Bane Spider Executioner, it is not a typical clumsy mace. The Executioner's Mace is capable of firing a variety of energy projectiles and grenades. It can even be modified to summon and command some or Black Scorpion's RV technologies.",
+  "short_help": "Mace Mastery",
+  "icon": "veat_mace_mastery_set.ico",
+  "powers": [
+    "Disruptor_Blast",
+    "Focused_Accuracy",
+    "Mace_Blast",
+    "Summon_Blaster",
+    "Web_Envelope"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

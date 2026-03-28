@@ -1,0 +1,17 @@
+{
+  "key": "Redirects.Rad_Armor",
+  "display_name": "Radiation Armor",
+  "help": "Radiation Armor",
+  "short_help": "Radiation Armor",
+  "icon": "blind_set.ico",
+  "powers": [
+    "Ground_Zero_Ally",
+    "Ground_Zero_Foe",
+    "Radiation_Therapy"
+  ],
+  "available_level": [
+    0,
+    0,
+    0
+  ]
+}

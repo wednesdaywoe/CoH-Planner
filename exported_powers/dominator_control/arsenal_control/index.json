@@ -1,0 +1,29 @@
+{
+  "key": "Dominator_Control.Arsenal_Control",
+  "display_name": "S4QBXZTMQ8YUY6LSJQASJKPYT3",
+  "help": "YR485ARZJH53WRCA5QXY3J9582",
+  "short_help": "S4QBXZTMQ8YUY6LSJQASJKPYT3",
+  "icon": "assault_rifle_set.ico",
+  "powers": [
+    "Cloaking_Device",
+    "Cryo_Freeze_Ray",
+    "Flash_Bang",
+    "Gun_Drone",
+    "Liquid_Nitrogen",
+    "Sleep_Grenade",
+    "Smoke_Grenade",
+    "Tear_Gas",
+    "Tranquilizer"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

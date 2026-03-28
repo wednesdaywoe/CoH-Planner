@@ -1,0 +1,13 @@
+{
+  "key": "Incarnate.Stance",
+  "display_name": "Stance",
+  "help": "Incarnate",
+  "short_help": "Incarnate",
+  "icon": "stance_set.ico",
+  "powers": [
+    "Nothing"
+  ],
+  "available_level": [
+    0
+  ]
+}

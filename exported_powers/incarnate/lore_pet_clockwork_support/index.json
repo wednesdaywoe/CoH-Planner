@@ -1,0 +1,15 @@
+{
+  "key": "Incarnate.Lore_Pet_Clockwork_Support",
+  "display_name": "Lore_Pet_Clockwork_Support",
+  "help": "Clockwork",
+  "short_help": "Clockwork",
+  "icon": "lore_pet_clockwork_support_set.ico",
+  "powers": [
+    "Field_Projector",
+    "Nano_Repair"
+  ],
+  "available_level": [
+    0,
+    0
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "key": "Epic.Fire_Mastery",
+  "display_name": "Fire Mastery",
+  "help": "You have Mastery over Fire to blast your foes and to add some much needed armor and defense.",
+  "short_help": "Fire Mastery",
+  "icon": "fire_mastery_set.ico",
+  "powers": [
+    "Consume",
+    "Fire_Ball",
+    "Fire_Blast",
+    "Fire_Shield",
+    "Rise_of_the_Phoenix"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

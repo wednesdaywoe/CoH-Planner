@@ -1,0 +1,31 @@
+{
+  "key": "Arachnos_Soldiers.Crab_Spider_Soldier",
+  "display_name": "Crab Spider Soldier",
+  "help": "Crab Spiders are heavy infantry in the Arachnos Organization, with a wide array of ranged and melee combat skills.",
+  "short_help": "Crab Spider Soldier",
+  "icon": "crab_spider_soldier_set.ico",
+  "powers": [
+    "Aim",
+    "Arm_Lash",
+    "Channelgun",
+    "CS_Frag_Grenade",
+    "CS_Venom_Grenade",
+    "Frenzy",
+    "Longfang",
+    "Omega_Maneuver",
+    "Slice",
+    "Suppression"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

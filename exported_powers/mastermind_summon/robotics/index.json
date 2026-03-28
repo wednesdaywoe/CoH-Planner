@@ -1,0 +1,29 @@
+{
+  "key": "Mastermind_Summon.Robotics",
+  "display_name": "Robotics",
+  "help": "Robotics allows you to construct an army of mechanical henchmen and repair and upgrade them in order to keep your army in tip-top shape. Robot Henchmen generally have good resistances to Lethal, Cold and Psionic damage, as well as Sleep, Fear and Disorient. They are vulnerable to EMP attacks. Robot Henchmen cannot be resurrected.",
+  "short_help": "Robotics",
+  "icon": "robotics_set.ico",
+  "powers": [
+    "Assault_Bot",
+    "Battle_Drones",
+    "Equip_Robot",
+    "Repair",
+    "Photon_Grenade",
+    "Protector_Bots",
+    "Pulse_Rifle_Blast",
+    "Pulse_Rifle_Burst",
+    "Upgrade_Robot"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

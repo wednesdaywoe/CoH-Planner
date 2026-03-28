@@ -1,0 +1,23 @@
+{
+  "key": "Teamwork.Fortunata_Teamwork",
+  "display_name": "Fortunata Teamwork",
+  "help": "Fortunata's receive advanced Teamwork Training, couple with advanced defensive techniques of their own.",
+  "short_help": "Fortunata Teamwork",
+  "icon": "fortunata_teamwork_set.ico",
+  "powers": [
+    "Aura_of_Confusion",
+    "Confuse",
+    "Fate_Sealed",
+    "FRT_Mask_Presence",
+    "FRT_Mind_Link",
+    "FRT_Tactical_Training:_Vengeance"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

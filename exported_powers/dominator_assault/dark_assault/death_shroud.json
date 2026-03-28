@@ -1,0 +1,55 @@
+{
+  "name": "Death_Shroud",
+  "full_name": "Dominator_Assault.Dark_Assault.Death_Shroud",
+  "short_name": "Death_Shroud",
+  "type": "Click",
+  "display_name": "Moon Beam",
+  "display_fullname": "Dominator Assault Dark Assault Death Shroud",
+  "display_help": "U9EAE3Z34K7PWHXY9N2LZTA7BZ",
+  "display_short_help": "Sniper, Extreme DMG(Negative), Target -To Hit",
+  "icon": "darknessassault_moonbeam.png",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.0,
+  "effect_area": "SingleTarget",
+  "max_targets_hit": 0,
+  "radius": 0.0,
+  "arc": 0.0,
+  "range": 150.0,
+  "range_secondary": 0.0,
+  "activation_time": 1.33,
+  "recharge_time": 20.0,
+  "activate_period": 0.0,
+  "endurance_cost": 18.512,
+  "interrupt_time": 0.0,
+  "target_type": "Foe",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "None"
+  ],
+  "targets_affected": [
+    "Foe"
+  ],
+  "boosts_allowed": [
+    "Interrupt",
+    "EnduranceDiscount",
+    "Range",
+    "Recharge",
+    "Debuff_ToHit",
+    "Damage",
+    "Accuracy"
+  ],
+  "allowed_boostset_cats": [],
+  "cast_through": [],
+  "num_allowed": 1,
+  "requires": "",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [
+    104,
+    136
+  ],
+  "effects": [],
+  "available_level": 0,
+  "powerset": "Dominator_Assault.Dark_Assault"
+}

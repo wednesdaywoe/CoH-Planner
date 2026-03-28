@@ -1,0 +1,29 @@
+{
+  "key": "Blaster_Support.Darkness_Manipulation",
+  "display_name": "Darkness Manipulation",
+  "help": "Assail your foes with powers drawn from the abyss. Darkness Manipulation offers powers that can both control and heavily damage their targets while reducing their chance to hit.",
+  "short_help": "Darkness Manipulation",
+  "icon": "darkness_manipulation_set.ico",
+  "powers": [
+    "Dark_Consumption",
+    "Dark_Pit",
+    "Death_Shroud",
+    "Midnight_Grasp",
+    "Penumbral_Grasp",
+    "Shadow_Maul",
+    "Smite",
+    "Soul_Drain",
+    "Touch_of_Fear"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

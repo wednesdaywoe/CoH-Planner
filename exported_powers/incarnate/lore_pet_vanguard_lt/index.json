@@ -1,0 +1,17 @@
+{
+  "key": "Incarnate.Lore_Pet_Vanguard_LT",
+  "display_name": "Lore_Pet_Vanguard_LT",
+  "help": "Vanguard",
+  "short_help": "Vanguard",
+  "icon": "lore_pet_vanguard_lt_set.ico",
+  "powers": [
+    "Bayonet",
+    "Burst",
+    "Willie_Pete_Round"
+  ],
+  "available_level": [
+    0,
+    0,
+    0
+  ]
+}

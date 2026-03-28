@@ -1,0 +1,55 @@
+{
+  "name": "Lightning_Clap",
+  "full_name": "Dominator_Assault.Electricity_Manipulation.Lightning_Clap",
+  "short_name": "Lightning_Clap",
+  "type": "Click",
+  "display_name": "Zapp",
+  "display_fullname": "Dominator Assault Electricity Manipulation Lightning Clap",
+  "display_help": "2Y5T6XAUX45EYDCA3S5F25GMTX",
+  "display_short_help": "Sniper, Extreme DMG(Energy), Foe -End",
+  "icon": "electricalassault_zapp.png",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.0,
+  "effect_area": "SingleTarget",
+  "max_targets_hit": 0,
+  "radius": 0.0,
+  "arc": 0.0,
+  "range": 150.0,
+  "range_secondary": 0.0,
+  "activation_time": 1.33,
+  "recharge_time": 20.0,
+  "activate_period": 0.0,
+  "endurance_cost": 18.512,
+  "interrupt_time": 0.0,
+  "target_type": "Foe",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "None"
+  ],
+  "targets_affected": [
+    "Foe"
+  ],
+  "boosts_allowed": [
+    "Recovery",
+    "Interrupt",
+    "EnduranceDiscount",
+    "Range",
+    "Recharge",
+    "Damage",
+    "Accuracy"
+  ],
+  "allowed_boostset_cats": [],
+  "cast_through": [],
+  "num_allowed": 1,
+  "requires": "",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [
+    104,
+    132
+  ],
+  "effects": [],
+  "available_level": 0,
+  "powerset": "Dominator_Assault.Electricity_Manipulation"
+}

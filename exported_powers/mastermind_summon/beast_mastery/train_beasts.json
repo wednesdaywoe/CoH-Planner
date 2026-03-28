@@ -1,0 +1,48 @@
+{
+  "name": "Train_Beasts",
+  "full_name": "Mastermind_Summon.Beast_Mastery.Train_Beasts",
+  "short_name": "Train_Beasts",
+  "type": "Click",
+  "display_name": "Train Beasts",
+  "display_fullname": "Mastermind Summon Beast Mastery Train Beasts",
+  "display_help": "93AXEDFZAWFDWULXELUXJY48K3",
+  "display_short_help": "Ranged, Train Beast Henchmen",
+  "icon": "beastmastery_trainbeasts.png",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.0,
+  "effect_area": "Sphere",
+  "max_targets_hit": 16,
+  "radius": 30.0,
+  "arc": 0.0,
+  "range": 50.0,
+  "range_secondary": 0.0,
+  "activation_time": 1.67,
+  "recharge_time": 0.5,
+  "activate_period": 0.0,
+  "endurance_cost": 11.375,
+  "interrupt_time": 0.0,
+  "target_type": "MyCreator",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "MyCreator"
+  ],
+  "targets_affected": [
+    "MyCreator"
+  ],
+  "boosts_allowed": [
+    "EnduranceDiscount",
+    "Range",
+    "Buff_ToHit"
+  ],
+  "allowed_boostset_cats": [],
+  "cast_through": [],
+  "num_allowed": 1,
+  "requires": "",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [],
+  "effects": [],
+  "available_level": 0,
+  "powerset": "Mastermind_Summon.Beast_Mastery"
+}

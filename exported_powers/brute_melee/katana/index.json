@@ -1,0 +1,29 @@
+{
+  "key": "Brute_Melee.Katana",
+  "display_name": "Katana",
+  "help": "Wield a Katana and master a variety of powerful Lethal attacks. A quick and elegant weapon, the Katana is faster than a Broad Sword, and can reduce an enemy's Defense. The Katana is a fine blade that always has a bonus to Accuracy.",
+  "short_help": "Katana",
+  "icon": "katana_set.ico",
+  "powers": [
+    "Build_Up",
+    "Disembowel",
+    "Hack",
+    "Head_Splitter",
+    "Parry",
+    "Slash",
+    "Slice",
+    "Taunt",
+    "Whirling_Sword"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "name": "Time_Bomb",
+  "full_name": "Controller_Buff.Traps.Time_Bomb",
+  "short_name": "Time_Bomb",
+  "type": "Click",
+  "display_name": "GMB9SRAGVDL5WFCEL23778ANEW",
+  "display_fullname": "Controller Buff Traps Time Bomb",
+  "display_help": "R453EBEUAJH4YKCWZNA9VGCH4X",
+  "display_short_help": "6JFFW67F87WHWUCEBCPW37JLS2",
+  "icon": "traps_remotebomb.png",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 2.0,
+  "effect_area": "SingleTarget",
+  "max_targets_hit": 0,
+  "radius": 0.0,
+  "arc": 0.0,
+  "range": 0.0,
+  "range_secondary": 0.0,
+  "activation_time": 0.0,
+  "recharge_time": 0.0,
+  "activate_period": 0.0,
+  "endurance_cost": 0.0,
+  "interrupt_time": 0.0,
+  "target_type": "Unknown(37)",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "None"
+  ],
+  "targets_affected": [
+    "None"
+  ],
+  "boosts_allowed": [
+    "Recovery",
+    "Slow",
+    "EnduranceDiscount",
+    "Recharge",
+    "Knockback",
+    "Damage",
+    "Accuracy"
+  ],
+  "allowed_boostset_cats": [],
+  "cast_through": [],
+  "num_allowed": 1,
+  "requires": "",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [],
+  "effects": [],
+  "available_level": 0,
+  "powerset": "Controller_Buff.Traps"
+}

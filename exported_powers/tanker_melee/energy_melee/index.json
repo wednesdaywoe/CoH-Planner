@@ -1,0 +1,29 @@
+{
+  "key": "Tanker_Melee.Energy_Melee",
+  "display_name": "Energy Melee",
+  "help": "VFXL8NTYDD2FYWBBU83M92R2JA",
+  "short_help": "Energy Melee",
+  "icon": "energy_melee_set.ico",
+  "powers": [
+    "Barrage",
+    "Bone_Smasher",
+    "Build_Up",
+    "Energy_Punch",
+    "Energy_Transfer",
+    "Stun",
+    "Taunt",
+    "Total_Focus",
+    "Whirling_Hands"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

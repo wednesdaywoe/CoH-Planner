@@ -1,0 +1,23 @@
+{
+  "key": "Pool.Force_of_Will",
+  "display_name": "Force of Will",
+  "help": "Force of Will grants you access to various powers that allow you to manifest your own willpower and use it to harm your foes. This power pool gives you access to Mighty Leap as your travel power, which allows you to leap great distances. Additionally, while Mighty Leap is active you gain access to Takeoff. Use the Takeoff power to knockdown nearby foes and boost your jumping speed for a short time.",
+  "short_help": "Force of Will",
+  "icon": "force_of_will_set.ico",
+  "powers": [
+    "Mighty_Leap",
+    "Project_Will",
+    "Stomp",
+    "Unleash_Potential",
+    "Wall_of_Force",
+    "Weaken_Resolve"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

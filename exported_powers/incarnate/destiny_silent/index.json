@@ -1,0 +1,17 @@
+{
+  "key": "Incarnate.Destiny_Silent",
+  "display_name": "Destiny_Silent",
+  "help": "Incarnate",
+  "short_help": "Incarnate",
+  "icon": "destiny_silent_set.ico",
+  "powers": [
+    "Incandescence",
+    "Incandescence_Wide",
+    "Level_Shift"
+  ],
+  "available_level": [
+    0,
+    0,
+    0
+  ]
+}

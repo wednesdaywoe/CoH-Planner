@@ -1,0 +1,55 @@
+{
+  "name": "Suppressive_Fire",
+  "full_name": "Corruptor_Ranged.Dual_Pistols.Suppressive_Fire",
+  "short_name": "Suppressive_Fire",
+  "type": "Click",
+  "display_name": "Suppressive Fire",
+  "display_fullname": "Corruptor Ranged Dual Pistols Suppressive Fire",
+  "display_help": "AEMHJAAW6EUHWXBDM29HUQ9J6A",
+  "display_short_help": "7FGDVZW5Z8LZWUZXTVLS9MAD83",
+  "icon": "dualpistols_suppressivefire.png",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.1,
+  "effect_area": "SingleTarget",
+  "max_targets_hit": 0,
+  "radius": 0.0,
+  "arc": 0.0,
+  "range": 60.0,
+  "range_secondary": 0.0,
+  "activation_time": 1.5,
+  "recharge_time": 20.0,
+  "activate_period": 0.0,
+  "endurance_cost": 10.192,
+  "interrupt_time": 0.0,
+  "target_type": "Foe",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "None"
+  ],
+  "targets_affected": [
+    "Foe"
+  ],
+  "boosts_allowed": [
+    "Hold",
+    "EnduranceDiscount",
+    "Range",
+    "Stun",
+    "Recharge",
+    "Damage",
+    "Accuracy"
+  ],
+  "allowed_boostset_cats": [],
+  "cast_through": [],
+  "num_allowed": 1,
+  "requires": "",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [
+    104,
+    120
+  ],
+  "effects": [],
+  "available_level": 0,
+  "powerset": "Corruptor_Ranged.Dual_Pistols"
+}

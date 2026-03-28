@@ -1,0 +1,29 @@
+{
+  "key": "Blaster_Ranged.Fire_Blast",
+  "display_name": "Fire Blast",
+  "help": "Fire Blast allows you to blast fire at foes, with a tendency to set them ablaze for added damage over time.",
+  "short_help": "Fire Blast",
+  "icon": "fire_blast_set.ico",
+  "powers": [
+    "Aim",
+    "Blaze",
+    "Blazing_Bolt",
+    "Fire_Ball",
+    "Fire_Blast",
+    "Fire_Breath",
+    "Flares",
+    "Inferno",
+    "Rain_of_Fire"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

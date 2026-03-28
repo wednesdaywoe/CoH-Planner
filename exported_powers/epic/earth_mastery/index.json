@@ -1,0 +1,21 @@
+{
+  "key": "Epic.Earth_Mastery",
+  "display_name": "Earth Mastery",
+  "help": "You have Mastery over Earth and stone to crush your foes and control your foes.",
+  "short_help": "Earth Mastery",
+  "icon": "earth_mastery_set.ico",
+  "powers": [
+    "Fossilize",
+    "Quick_Sand",
+    "Salt_Crystals",
+    "Stalagmites",
+    "Stone_Prison"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

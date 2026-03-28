@@ -1,0 +1,29 @@
+{
+  "key": "Blaster_Ranged.Beam_Rifle",
+  "display_name": "Beam Rifle",
+  "help": "P2828438103",
+  "short_help": "Beam Rifle",
+  "icon": "beam_rifle_set.ico",
+  "powers": [
+    "Aim",
+    "Charged_Shot",
+    "Cutting_Beam",
+    "Disintegrate",
+    "Lancer_Shot",
+    "Overcharge",
+    "Penetrating_Ray",
+    "Piercing_Beam",
+    "Single_Shot"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

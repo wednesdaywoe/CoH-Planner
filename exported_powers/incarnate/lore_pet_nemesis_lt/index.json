@@ -1,0 +1,15 @@
+{
+  "key": "Incarnate.Lore_Pet_Nemesis_LT",
+  "display_name": "Lore_Pet_Nemesis_LT",
+  "help": "Nemesis",
+  "short_help": "Nemesis",
+  "icon": "lore_pet_nemesis_lt_set.ico",
+  "powers": [
+    "Lance",
+    "Lance_Rifle"
+  ],
+  "available_level": [
+    0,
+    0
+  ]
+}

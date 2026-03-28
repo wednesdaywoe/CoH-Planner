@@ -1,0 +1,56 @@
+{
+  "name": "Touch_of_the_Beyond",
+  "full_name": "Redirects.Darkness_Manipulation.Touch_of_the_Beyond",
+  "short_name": "Touch_of_the_Beyond",
+  "type": "Click",
+  "display_name": "Touch of the Beyond",
+  "display_fullname": "Redirects Darkness Manipulation Touch of the Beyond",
+  "display_help": "WGKGQH4P5YM9WMCZDUTSTUBYEA",
+  "display_short_help": "Fear, Foe -To Hit, Self +Regeneration, +Recovery, +Res(Fear)",
+  "icon": "darknessmanipulation_touchoffear.png",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.2,
+  "effect_area": "SingleTarget",
+  "max_targets_hit": 0,
+  "radius": 0.0,
+  "arc": 0.0,
+  "range": 1000.0,
+  "range_secondary": 0.0,
+  "activation_time": 0.0,
+  "recharge_time": 0.0,
+  "activate_period": 0.0,
+  "endurance_cost": 0.0,
+  "interrupt_time": 0.0,
+  "target_type": "Self",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "Self"
+  ],
+  "targets_affected": [
+    "Self"
+  ],
+  "boosts_allowed": [
+    "Recovery",
+    "EnduranceDiscount",
+    "Range",
+    "Recharge",
+    "Heal",
+    "Fear",
+    "Debuff_ToHit",
+    "Accuracy"
+  ],
+  "allowed_boostset_cats": [],
+  "cast_through": [],
+  "num_allowed": 1,
+  "requires": "",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [
+    108,
+    136
+  ],
+  "effects": [],
+  "available_level": 0,
+  "powerset": "Redirects.Darkness_Manipulation"
+}

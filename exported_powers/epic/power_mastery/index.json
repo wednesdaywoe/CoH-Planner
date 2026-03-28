@@ -1,0 +1,21 @@
+{
+  "key": "Epic.Power_Mastery",
+  "display_name": "Energy Mastery",
+  "help": "You have Mastery over Power and Energy to defeat your foes, increase your power, and to add some much needed armor and defense.",
+  "short_help": "Energy Mastery",
+  "icon": "power_mastery_set.ico",
+  "powers": [
+    "Conserve_Power",
+    "Force_of_Nature",
+    "Power_Build_Up",
+    "Temp_Invulnerability",
+    "Total_Focus"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

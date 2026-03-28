@@ -1,0 +1,29 @@
+{
+  "key": "Blaster_Support.Plant_Manipulation",
+  "display_name": "Plant Manipulation",
+  "help": "You can call forth and control the power of plants and flora to manipulate your foes, inflict damage and protect yourself. Animate and control vines, roots and spores to entrap, attack with deadly thorns and empower your attacks with powerful toxins.",
+  "short_help": "Plant Manipulation",
+  "icon": "plant_manipulation_set.ico",
+  "powers": [
+    "Entangle",
+    "Ripper",
+    "Skewer",
+    "Spore_Cloud",
+    "Strangler",
+    "Thorn_Burst",
+    "Toxins",
+    "Vines",
+    "Wild_Fortress"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

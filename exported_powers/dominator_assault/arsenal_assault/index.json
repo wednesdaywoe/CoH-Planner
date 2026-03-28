@@ -1,0 +1,29 @@
+{
+  "key": "Dominator_Assault.Arsenal_Assault",
+  "display_name": "7DR7SRGABJ9XYBLCKJMJDYYUY2",
+  "help": "TMQHX4JPM5Z3WFN76JRLQSJ7ZS",
+  "short_help": "7DR7SRGABJ9XYBLCKJMJDYYUY2",
+  "icon": "assault_rifle_set.ico",
+  "powers": [
+    "Buckshot",
+    "Burst",
+    "Buttstroke",
+    "Heavy_Blow",
+    "Ignite",
+    "Power_Up",
+    "Sniper_Rifle",
+    "Targeting_Drone",
+    "Trip_Mine"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

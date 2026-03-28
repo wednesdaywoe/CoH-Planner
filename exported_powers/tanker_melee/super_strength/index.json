@@ -1,0 +1,29 @@
+{
+  "key": "Tanker_Melee.Super_Strength",
+  "display_name": "Super Strength",
+  "help": "Super Strength gives you combat powers derived from your super-human physical strength. Super Strength powers tend to knock foes back.",
+  "short_help": "Super Strength",
+  "icon": "super_strength_set.ico",
+  "powers": [
+    "Foot_Stomp",
+    "Hand_Clap",
+    "Haymaker",
+    "Hurl",
+    "Jab",
+    "Knockout_Blow",
+    "Punch",
+    "Rage",
+    "Taunt"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

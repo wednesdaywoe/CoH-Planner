@@ -1,0 +1,21 @@
+{
+  "key": "Epic.Stalker_Mu_Mastery",
+  "display_name": "Mu Mastery",
+  "help": "P2730572537",
+  "short_help": "Mu Mastery",
+  "icon": "stalker_mu_mastery_set.ico",
+  "powers": [
+    "Ball_Lightning",
+    "Electric_Shackles",
+    "Mu_Bolts",
+    "Summon_Adept",
+    "Zapp"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

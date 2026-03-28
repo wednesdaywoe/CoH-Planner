@@ -1,0 +1,13 @@
+{
+  "key": "Redirects.Illusion_Control",
+  "display_name": "Illusion Control",
+  "help": "Illusion Control",
+  "short_help": "Illusion Control",
+  "icon": "blind_set.ico",
+  "powers": [
+    "Blind"
+  ],
+  "available_level": [
+    0
+  ]
+}

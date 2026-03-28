@@ -1,0 +1,43 @@
+{
+  "key": "Redirects.Pyrotechnic_Control",
+  "display_name": "KXG8LEC2D5WTY2XJQNCMNUFAFW",
+  "help": "P0",
+  "short_help": "KXG8LEC2D5WTY2XJQNCMNUFAFW",
+  "icon": "blind_set.ico",
+  "powers": [
+    "Blast_Off",
+    "CatherineWheel_GlitterFlare",
+    "CatherineWheel_InterceptAura",
+    "CatherineWheel_InterceptProc",
+    "CatherineWheel_RocketTwirl",
+    "CatherineWheel_Skin",
+    "CatherineWheel_TwinklingBlast",
+    "CatherineWheel_VibrantBolt",
+    "GlitteringColumn_Aura",
+    "GlitteringColumn_GlitterExplosion",
+    "GlitteringColumn_SelfDestruct",
+    "GlitteringColumn_Skin",
+    "GlitteringColumn_ToHitAura",
+    "Glitz_Burst",
+    "Hypnotizing_Lights",
+    "HypnotizingLights_Narrow"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

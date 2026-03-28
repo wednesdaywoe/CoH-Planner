@@ -1,0 +1,29 @@
+{
+  "key": "Controller_Control.Symphony_Control",
+  "display_name": "8G9SKEGUVC8WY8ZRMBDYPK6R9Q",
+  "help": "8N5XZAQAVXB9Y3NBKC378QXB9Q",
+  "short_help": "8G9SKEGUVC8WY8ZRMBDYPK6R9Q",
+  "icon": "siren_set.ico",
+  "powers": [
+    "Aria_of_Stasis",
+    "Chords_of_Despair",
+    "Confounding_Chant",
+    "Dreadful_Discord",
+    "Enfeebling_Lullaby",
+    "Hymn_of_Dissonance",
+    "Impassioned_Serenade",
+    "Melodic_Binding",
+    "Reverberant"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

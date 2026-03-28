@@ -1,0 +1,54 @@
+{
+  "name": "Psionic_Lance",
+  "full_name": "Epic.Melee_Psionic_Mastery.Psionic_Lance",
+  "short_name": "Psionic_Lance",
+  "type": "Click",
+  "display_name": "Psionic Lance",
+  "display_fullname": "Epic Melee Psionic Mastery Psionic Lance",
+  "display_help": "LDEX9GG6JRQHY9CVH77BUY733Z",
+  "display_short_help": "84NRDFD47J5ZYLZHB2YTQGJ6U3",
+  "icon": "psionic_mastery_psioniclance",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.0,
+  "effect_area": "SingleTarget",
+  "max_targets_hit": 0,
+  "radius": 0.0,
+  "arc": 0.0,
+  "range": 175.0,
+  "range_secondary": 0.0,
+  "activation_time": 1.33,
+  "recharge_time": 24.0,
+  "activate_period": 0.0,
+  "endurance_cost": 16.646,
+  "interrupt_time": 0.0,
+  "target_type": "Foe",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "None"
+  ],
+  "targets_affected": [
+    "Foe"
+  ],
+  "boosts_allowed": [
+    "Interrupt",
+    "EnduranceDiscount",
+    "Range",
+    "Recharge",
+    "Damage",
+    "Accuracy"
+  ],
+  "allowed_boostset_cats": [],
+  "cast_through": [],
+  "num_allowed": 1,
+  "requires": "$archetype @Class_Scrapper == $archetype @Class_Stalker == ||",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [
+    104,
+    140
+  ],
+  "effects": [],
+  "available_level": 0,
+  "powerset": "Epic.Melee_Psionic_Mastery"
+}

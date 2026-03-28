@@ -1,0 +1,13 @@
+{
+  "key": "Redirects.Tanker_Melee",
+  "display_name": "Tanker Melee",
+  "help": "These powers are used by stalker redirect powers.",
+  "short_help": "Tanker Melee",
+  "icon": "tanker_melee_set.ico",
+  "powers": [
+    "Savage_Leap"
+  ],
+  "available_level": [
+    0
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "key": "Controller_Buff.Trick_Arrow",
+  "display_name": "Trick Arrow",
+  "help": "Trick Arrows are tipped with an odd variety of payloads, which if used strategically, can dramatically alter a battle site.",
+  "short_help": "Trick Arrow",
+  "icon": "trick_arrow_set.ico",
+  "powers": [
+    "Acid_Arrow",
+    "Disruption_Arrow",
+    "EMP_Arrow",
+    "Entangling_Arrow",
+    "Flash_Arrow",
+    "Glue_Arrow",
+    "Ice_Arrow",
+    "Oil_Slick_Arrow",
+    "Poison_Gas_Arrow"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "key": "Tanker_Defense.Stone_Armor",
+  "display_name": "Stone Armor",
+  "help": "CP79N9KDFL8TWZNE5UTVVTBA6A",
+  "short_help": "Stone Armor",
+  "icon": "stone_armor_set.ico",
+  "powers": [
+    "Brimstone_Armor",
+    "Crystal_Armor",
+    "Earths_Embrace",
+    "Granite_Armor",
+    "Mineral_Armor",
+    "Mud_Pots",
+    "Rooted",
+    "Stone_Armor",
+    "Stone_Skin"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

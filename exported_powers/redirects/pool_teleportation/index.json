@@ -1,0 +1,37 @@
+{
+  "key": "Redirects.Pool_Teleportation",
+  "display_name": "Teleportation",
+  "help": "Pool",
+  "short_help": "Teleportation",
+  "icon": "blind_set.ico",
+  "powers": [
+    "Long_Range_Teleport",
+    "Long_Range_Teleport_PVP",
+    "prestige_Base_Teleport",
+    "prestige_Base_Teleport_PVP",
+    "Rapid_Response_Member_Teleport",
+    "Rapid_Response_Member_Teleport_PVP",
+    "Recall_Friend",
+    "Shadow_Step",
+    "Shadow_Step_LowEnd",
+    "Teleport",
+    "Teleport_Foe",
+    "Teleport_Hover",
+    "Teleport_LowEnd"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

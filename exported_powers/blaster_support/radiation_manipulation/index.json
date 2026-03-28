@@ -1,0 +1,29 @@
+{
+  "key": "Blaster_Support.Radiation_Manipulation",
+  "display_name": "Atomic Manipulation",
+  "help": "You have complete control over atomic particles and waves, and can use them to disable and weaken your enemies, as well as boost your own power. Many of your powers have the ability to surround your targets with negatrons or positrons. Should you combine both of these in a single target, it will result in Electron-Positron annihilation producing a burst of Gamma Rays which will inflict a small amount of damage, and in addition debuff the target's damage output and accuracy. Enemies also have a small chance of being stunned or confused.",
+  "short_help": "Atomic Manipulation",
+  "icon": "radiation_manipulation_set.ico",
+  "powers": [
+    "Atom_Smasher",
+    "Beta_Decay",
+    "Electron_Shackles",
+    "Ionize",
+    "Metabolic_Acceleration",
+    "Negatron_Slam",
+    "Positron_Cell",
+    "Positronic_Fist",
+    "Radioactive_Cloud"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

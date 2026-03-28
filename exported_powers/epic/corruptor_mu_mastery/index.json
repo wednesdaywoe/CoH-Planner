@@ -1,0 +1,21 @@
+{
+  "key": "Epic.Corruptor_Mu_Mastery",
+  "display_name": "Mu Mastery",
+  "help": "P2730572537",
+  "short_help": "Mu Mastery",
+  "icon": "corruptor_mu_mastery_set.ico",
+  "powers": [
+    "Charged_Armor",
+    "Conserve_Power",
+    "Electric_Shackles",
+    "Power_Sink",
+    "Summon_Adept"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

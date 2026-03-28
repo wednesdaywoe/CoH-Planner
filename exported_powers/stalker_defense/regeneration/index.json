@@ -1,0 +1,31 @@
+{
+  "key": "Stalker_Defense.Regeneration",
+  "display_name": "Regeneration",
+  "help": "Regeneration leads to powers that let you regenerate more quickly from damage and effects. Regeneration offers almost no actual damage resistance, but your Hit Point Regeneration can become so incredibly fast, that your wounds heal almost instantly. Those who possess this power set have little downtime.",
+  "short_help": "Regeneration",
+  "icon": "regeneration_set.ico",
+  "powers": [
+    "Dull_Pain",
+    "Fast_Healing",
+    "Hide",
+    "Instant_Healing",
+    "Instant_Regeneration",
+    "Integration",
+    "Moment_of_Glory",
+    "Reconstruction",
+    "Resilience",
+    "Revive"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

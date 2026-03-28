@@ -1,0 +1,21 @@
+{
+  "key": "Epic.Controller_Dark_Mastery",
+  "display_name": "Dark Mastery",
+  "help": "You have Mastery over Darkness to control and blast your foes.",
+  "short_help": "Dark Mastery",
+  "icon": "sentinel_dark_mastery_set.ico",
+  "powers": [
+    "Dark_Blast",
+    "Gather_Shadows",
+    "Murky_Cloud",
+    "Soul_Consumption",
+    "Torrent"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

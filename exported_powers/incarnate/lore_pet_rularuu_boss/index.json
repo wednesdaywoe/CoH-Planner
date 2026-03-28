@@ -1,0 +1,19 @@
+{
+  "key": "Incarnate.Lore_Pet_Rularuu_Boss",
+  "display_name": "Lore_Pet_Rularuu_Boss",
+  "help": "Rularuu",
+  "short_help": "Rularuu",
+  "icon": "lore_pet_rularuu_boss_set.ico",
+  "powers": [
+    "Chomp",
+    "Optic_Blast",
+    "Paralytic_Gaze",
+    "Quill_Blast"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0
+  ]
+}

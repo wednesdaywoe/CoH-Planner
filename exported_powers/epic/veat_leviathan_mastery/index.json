@@ -1,0 +1,21 @@
+{
+  "key": "Epic.VEAT_Leviathan_Mastery",
+  "display_name": "Leviathan Mastery",
+  "help": "Captain Mako has granted you access to the power of the Leviathan. The Leviathan is an ancient gargantuan entity who slumbers under Sharkhead Isle. Worshiped by the Coralax, the Leviathan has given Captain Mako many abilities and now he has taught you how to harness its power.",
+  "short_help": "Leviathan Mastery",
+  "icon": "veat_leviathan_mastery_set.ico",
+  "powers": [
+    "Arctic_Breath",
+    "Chum_Spray",
+    "School_of_Sharks",
+    "Spirit_Shark",
+    "Summon_Guardian"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

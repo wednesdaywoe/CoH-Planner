@@ -1,0 +1,19 @@
+{
+  "key": "Incarnate.Lore_Pet_Nemesis_Boss",
+  "display_name": "Lore_Pet_Nemesis_Boss",
+  "help": "Nemesis",
+  "short_help": "Nemesis",
+  "icon": "lore_pet_nemesis_boss_set.ico",
+  "powers": [
+    "Explode",
+    "Flamethrower",
+    "Pummel",
+    "Storm_Cannon"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0
+  ]
+}

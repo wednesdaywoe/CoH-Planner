@@ -1,0 +1,29 @@
+{
+  "key": "Corruptor_Buff.Traps",
+  "display_name": "Traps",
+  "help": "Traps are devices and gadgets you construct to cripple your foes. By using them strategically, you can gain a great tactical advantage. Traps include ambush devises, as well as gadgets that can be constructed to aid you and your allies.",
+  "short_help": "Traps",
+  "icon": "traps_set.ico",
+  "powers": [
+    "Acid_Mortar",
+    "Caltrops",
+    "Force_Field_Generator",
+    "Poison_Trap",
+    "Seeker_Drones",
+    "Time_Bomb",
+    "Triage_Beacon",
+    "Trip_Mine",
+    "Web_Grenade"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "key": "Incarnate.Lore_Pet_Warworks_LT",
+  "display_name": "Lore_Pet_Warworks_LT",
+  "help": "Warworks",
+  "short_help": "Warworks",
+  "icon": "lore_pet_warworks_lt_set.ico",
+  "powers": [
+    "Plasma_Full_Auto",
+    "Plasma_Rifle_Burst"
+  ],
+  "available_level": [
+    0,
+    0
+  ]
+}

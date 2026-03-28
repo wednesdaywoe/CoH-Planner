@@ -1,0 +1,47 @@
+{
+  "name": "Power_Boost",
+  "full_name": "Epic.Primal_Forces_Mastery.Power_Boost",
+  "short_name": "Power_Boost",
+  "type": "Click",
+  "display_name": "Power Boost",
+  "display_fullname": "Epic Primal Forces Mastery Power Boost",
+  "display_help": "9HPMWG99RKWWYDXNJN7WKJDH3Q",
+  "display_short_help": "Self +Special",
+  "icon": "primalforcesmastery_powerboost.png",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.0,
+  "effect_area": "SingleTarget",
+  "max_targets_hit": 0,
+  "radius": 0.0,
+  "arc": 0.0,
+  "range": 0.0,
+  "range_secondary": 0.0,
+  "activation_time": 1.17,
+  "recharge_time": 120.0,
+  "activate_period": 0.0,
+  "endurance_cost": 9.75,
+  "interrupt_time": 0.0,
+  "target_type": "Self",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "Self"
+  ],
+  "targets_affected": [
+    "Self"
+  ],
+  "boosts_allowed": [
+    "EnduranceDiscount",
+    "Recharge"
+  ],
+  "allowed_boostset_cats": [],
+  "cast_through": [],
+  "num_allowed": 1,
+  "requires": "Epic ownPowerNum? 1 >",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [],
+  "effects": [],
+  "available_level": 0,
+  "powerset": "Epic.Primal_Forces_Mastery"
+}

@@ -1,0 +1,29 @@
+{
+  "key": "Corruptor_Ranged.Dark_Blast",
+  "display_name": "Dark Blast",
+  "help": "Dark Blast summons the powers of the Netherworld to defeat your foes. The draining effects of most of these powers can reduce your target's chance to hit.",
+  "short_help": "Dark Blast",
+  "icon": "dark_blast_set.ico",
+  "powers": [
+    "Blackstar",
+    "Dark_Blast",
+    "Dark_Pit",
+    "Gloom",
+    "Life_Drain",
+    "Moonbeam",
+    "Night_Fall",
+    "Tenebrous_Tentacles",
+    "Torrent"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

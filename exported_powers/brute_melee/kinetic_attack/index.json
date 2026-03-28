@@ -1,0 +1,29 @@
+{
+  "key": "Brute_Melee.Kinetic_Attack",
+  "display_name": "Kinetic Melee",
+  "help": "Kinetic Melee features a mix of fast light attacks and slow heavy attacks, including some with range. All attacks in this set reduce the damage strength of enemies who are hit.",
+  "short_help": "Kinetic Attack",
+  "icon": "kinetic_attack_set.ico",
+  "powers": [
+    "Body_Blow",
+    "Burst",
+    "Focused_Burst",
+    "Power_Siphon",
+    "Quick_Strike",
+    "Repulsing_Torrent",
+    "Smashing_Blow",
+    "Taunt",
+    "Total_Focus"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

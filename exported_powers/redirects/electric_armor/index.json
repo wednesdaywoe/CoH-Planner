@@ -1,0 +1,15 @@
+{
+  "key": "Redirects.Electric_Armor",
+  "display_name": "Electric Armor",
+  "help": "Electric Armor",
+  "short_help": "Electric Armor",
+  "icon": "blind_set.ico",
+  "powers": [
+    "EM_Pulse",
+    "Power_Surge"
+  ],
+  "available_level": [
+    0,
+    0
+  ]
+}

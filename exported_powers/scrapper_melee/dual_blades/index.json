@@ -1,0 +1,29 @@
+{
+  "key": "Scrapper_Melee.Dual_Blades",
+  "display_name": "Dual Blades",
+  "help": "You are a master of fighting with a blade in each hand. Your precision and skill with the blades enable you to strike in numerous combinations, each of which has unique secondary effects on a target which withstands your onslaught.",
+  "short_help": "Dual Blades",
+  "icon": "dual_blades_set.ico",
+  "powers": [
+    "AoE_Bridge",
+    "Follow_Up",
+    "High_Low",
+    "Light_Opening",
+    "Moderate_Bridge",
+    "Moderate_Opening",
+    "Special_1",
+    "Special_2",
+    "Taunt"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

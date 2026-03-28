@@ -1,0 +1,23 @@
+{
+  "key": "Pool.Speed",
+  "display_name": "Speed",
+  "help": "Grants you various feats of super speed.",
+  "short_help": "Speed",
+  "icon": "speed_set.ico",
+  "powers": [
+    "Burnout",
+    "Flurry",
+    "Hasten",
+    "SpeedPhase",
+    "Super_Speed",
+    "Whirlwind"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

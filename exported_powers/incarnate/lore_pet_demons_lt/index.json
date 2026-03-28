@@ -1,0 +1,17 @@
+{
+  "key": "Incarnate.Lore_Pet_Demons_LT",
+  "display_name": "Lore_Pet_Demons_LT",
+  "help": "Demons",
+  "short_help": "Demons",
+  "icon": "lore_pet_arachnos_lt_set.ico",
+  "powers": [
+    "Fire_Blast",
+    "Fire_Smash",
+    "Fire_Sword"
+  ],
+  "available_level": [
+    0,
+    0,
+    0
+  ]
+}

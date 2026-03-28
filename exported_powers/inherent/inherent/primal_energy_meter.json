@@ -1,0 +1,83 @@
+{
+  "name": "Primal_Energy_Meter",
+  "full_name": "Inherent.Inherent.Primal_Energy_Meter",
+  "short_name": "Primal_Energy_Meter",
+  "type": "Auto",
+  "display_name": "Primal Energy",
+  "display_fullname": "Inherent Inherent Primal Energy Meter",
+  "display_help": "Many of the Primalist's Attacks will grant you Primal Energy. This energy is spent to execute devastating attacks and debuffs as well as incredibly potent healing. It's important to note that some powers require 10 Primal Energy to activate while others will scale with the amount you have.",
+  "display_short_help": "Primal Energy",
+  "icon": "inherent_blasterdesperation.png",
+  "auto_issue": true,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.0,
+  "effect_area": "SingleTarget",
+  "max_targets_hit": 0,
+  "radius": 0.0,
+  "arc": 0.0,
+  "range": 0.0,
+  "range_secondary": 0.0,
+  "activation_time": 0.0,
+  "recharge_time": 0.0,
+  "activate_period": 0.0,
+  "endurance_cost": 0.0,
+  "interrupt_time": 0.0,
+  "target_type": "Self",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "Self"
+  ],
+  "targets_affected": [
+    "Self"
+  ],
+  "boosts_allowed": [],
+  "allowed_boostset_cats": [],
+  "cast_through": [],
+  "num_allowed": 1,
+  "requires": "$archetype @Class_Primalist ==",
+  "activate_requires": "$archetype @Class_Primalist ==",
+  "target_requires": "",
+  "attack_types": [],
+  "effects": [
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Meter"
+          ],
+          "type": "Magnitude",
+          "application_type": "Unknown",
+          "aspect": "Current",
+          "target": "Self",
+          "table": "Melee_Ones",
+          "scale": 0.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "Column.5thColumnEndgame.NictusFX",
+          "magnitude_expression": "kRage",
+          "application_period": 9.002081464669057e-41,
+          "tick_chance": 2.8987217994069236e-39,
+          "tick_mag_multiplier": 1.215920690479287e-40,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Unknown",
+          "stack": "Unknown",
+          "stack_limit": 0,
+          "stack_key": null
+        }
+      ]
+    }
+  ],
+  "available_level": 0,
+  "powerset": "Inherent.Inherent"
+}

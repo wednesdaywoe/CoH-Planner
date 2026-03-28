@@ -1,0 +1,21 @@
+{
+  "key": "Pool.Invisibility",
+  "display_name": "Concealment",
+  "help": "These powers grant you Invisibility and Stealth.",
+  "short_help": "Concealment",
+  "icon": "invisibility_set.ico",
+  "powers": [
+    "Grant_Invisibility",
+    "Invisibility",
+    "Misdirection",
+    "Phase_Shift",
+    "Stealth"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

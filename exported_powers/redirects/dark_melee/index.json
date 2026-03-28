@@ -1,0 +1,21 @@
+{
+  "key": "Redirects.Dark_Melee",
+  "display_name": "Dark_Melee",
+  "help": "These powers are used by Dark Miasma powers.",
+  "short_help": "Tanker Melee",
+  "icon": "tanker_melee_set.ico",
+  "powers": [
+    "Touch_of_Fear_AoE",
+    "Touch_of_Fear_AoE_Scrapper",
+    "Touch_of_Fear_AoE_Stalker",
+    "Touch_of_Fear_AoE_Tanker",
+    "Touch_of_Fear_ST"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "key": "Incarnate.Defiler_Pets",
+  "display_name": "Defiler_Pets",
+  "help": "Incarnate",
+  "short_help": "Incarnate",
+  "icon": "defiler_pets_set.ico",
+  "powers": [
+    "Frigid_Storm"
+  ],
+  "available_level": [
+    0
+  ]
+}

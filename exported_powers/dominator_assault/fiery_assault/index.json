@@ -1,0 +1,29 @@
+{
+  "key": "Dominator_Assault.Fiery_Assault",
+  "display_name": "Fiery Assault",
+  "help": "Fiery Assault allows you to conjure up flaming melee attacks and hurl devastating fiery projectiles. Fiery Assault powers tend to set foes ablaze for added Damage Over Time.",
+  "short_help": "Fiery Assault",
+  "icon": "fiery_assault_set.ico",
+  "powers": [
+    "Blaze",
+    "Blazing_Bolt",
+    "Combustion",
+    "Consume",
+    "Fiery_Embrace",
+    "Fire_Blast",
+    "Fire_Breath",
+    "Flares",
+    "Incinerate"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

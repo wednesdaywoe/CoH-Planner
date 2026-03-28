@@ -1,0 +1,55 @@
+{
+  "name": "Direct_Strike",
+  "full_name": "Blaster_Ranged.Storm_Blast.Direct_Strike",
+  "short_name": "Direct_Strike",
+  "type": "Click",
+  "display_name": "6CRF7M4RV77YWEBJNCZ4AD6SSA",
+  "display_fullname": "Blaster Ranged Storm Blast Direct Strike",
+  "display_help": "CSV4MXKR7S4KWACMNKPTSQLR72",
+  "display_short_help": "KAR6MPNK4JFNYSBBF8XS75QMJZ",
+  "icon": "stormblast_directstrike.png",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.0,
+  "effect_area": "SingleTarget",
+  "max_targets_hit": 0,
+  "radius": 0.0,
+  "arc": 0.0,
+  "range": 150.0,
+  "range_secondary": 0.0,
+  "activation_time": 1.33,
+  "recharge_time": 12.0,
+  "activate_period": 0.0,
+  "endurance_cost": 14.352,
+  "interrupt_time": 0.0,
+  "target_type": "Foe",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "None"
+  ],
+  "targets_affected": [
+    "Foe"
+  ],
+  "boosts_allowed": [
+    "Recovery",
+    "Interrupt",
+    "EnduranceDiscount",
+    "Range",
+    "Recharge",
+    "Damage",
+    "Accuracy"
+  ],
+  "allowed_boostset_cats": [],
+  "cast_through": [],
+  "num_allowed": 1,
+  "requires": "",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [
+    104,
+    132
+  ],
+  "effects": [],
+  "available_level": 0,
+  "powerset": "Blaster_Ranged.Storm_Blast"
+}

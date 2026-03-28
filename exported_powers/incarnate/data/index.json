@@ -1,0 +1,29 @@
+{
+  "key": "Incarnate.Data",
+  "display_name": "Data",
+  "help": "Incarnate",
+  "short_help": "Incarnate",
+  "icon": "data_set.ico",
+  "powers": [
+    "Arachnos_Radial_Superior_Data",
+    "Cimeroran_Total_Core_Improved_Data",
+    "Clockwork_Partial_Radial_Improved_Data",
+    "IDF_Partial_Core_Improved_Data",
+    "Longbow_Core_Superior_Data",
+    "Polar_Lights_Radial_Data",
+    "Rikti_Data",
+    "Robotic_Drones_Core_Data",
+    "Vanguard_Total_Radial_Improved_Data"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

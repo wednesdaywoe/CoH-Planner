@@ -1,0 +1,29 @@
+{
+  "key": "Blaster_Support.Earth_Manipulation",
+  "display_name": "VNBAKUQ5CPXJWTV8NZPRLN4DC2",
+  "help": "KHHJYE38ZU6HYUN23PC58QXRRZ",
+  "short_help": "VNBAKUQ5CPXJWTV8NZPRLN4DC2",
+  "icon": "electricity_manipulation_set.ico",
+  "powers": [
+    "Beryl_Crystals",
+    "Build_Up",
+    "Fracture",
+    "Heavy_Mallet",
+    "Mud_Bath",
+    "Salt_Crystals",
+    "Seismic_Smash",
+    "Stone_Prison",
+    "Tremor"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

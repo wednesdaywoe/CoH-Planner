@@ -1,0 +1,29 @@
+{
+  "key": "Stalker_Melee.Broad_Sword",
+  "display_name": "Broad Sword",
+  "help": "Wield a Broad Sword and master a variety of powerful Lethal attacks. Slower than a Ninja Blade the Broad Sword's weight strikes with more force and damage. The Broadsword can reduce an enemy's Defense, allowing other attacks to hit more reliably. The Broad Sword is a powerful melee weapon that has a bonus to Accuracy. Like all Stalker powers, all Broad Sword attacks can sometimes land a critical hit for double damage.",
+  "short_help": "Broad Sword",
+  "icon": "broad_sword_set.ico",
+  "powers": [
+    "Assassins_Slash",
+    "Build_Up",
+    "Disembowel",
+    "Hack",
+    "Head_Splitter",
+    "Parry",
+    "Placate",
+    "Slash",
+    "Slice"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "key": "Epic.Primal_Forces_Mastery",
+  "display_name": "Energy Mastery",
+  "help": "You have Mastery over Primal Forces and energy to blast your foes, increase your power, and to add some much needed armor and defense.",
+  "short_help": "Energy Mastery",
+  "icon": "primal_forces_mastery_set.ico",
+  "powers": [
+    "Conserve_Power",
+    "Energy_Torrent",
+    "Power_Blast",
+    "Power_Boost",
+    "Temp_Invulnerability"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

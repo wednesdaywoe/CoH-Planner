@@ -1,0 +1,21 @@
+{
+  "key": "Pool.Teleportation",
+  "display_name": "Teleportation",
+  "help": "Grants you various teleportation abilities.",
+  "short_help": "Teleportation",
+  "icon": "teleportation_set.ico",
+  "powers": [
+    "Long_Range_Teleport",
+    "Recall_Friend",
+    "Team_Teleport",
+    "Teleport",
+    "Teleport_Foe"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "key": "Epic.Darkness_Mastery",
+  "display_name": "Dark Mastery",
+  "help": "You have Mastery over Darkness to control and blast your foes.",
+  "short_help": "Dark Mastery",
+  "icon": "darkness_mastery_set.ico",
+  "powers": [
+    "Dark_Blast",
+    "Night_Fall",
+    "Petrifying_Gaze",
+    "Tenebrous_Tentacles",
+    "Torrent"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

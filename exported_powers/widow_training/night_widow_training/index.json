@@ -1,0 +1,23 @@
+{
+  "key": "Widow_Training.Night_Widow_Training",
+  "display_name": "Night Widow Training",
+  "help": "With powers of Stealth, and heightened combat skills, coupled with strong mental attacks, the Night Widows of Arachnos are extremely dangerous.",
+  "short_help": "Night Widow Training",
+  "icon": "night_widow_training_set.ico",
+  "powers": [
+    "Build_Up",
+    "NW_Eviscerate",
+    "NW_Mental_Blast",
+    "NW_Psychic_Scream",
+    "NW_Slash",
+    "NW_Smoke_Grenade"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

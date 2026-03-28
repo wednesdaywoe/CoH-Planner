@@ -1,0 +1,64 @@
+{
+  "name": "Doublehit_Rare",
+  "full_name": "Incarnate.Hybrid_Silent.Doublehit_Rare",
+  "short_name": "Doublehit_Rare",
+  "type": "GlobalBoost",
+  "display_name": "Doublehit",
+  "display_fullname": "Incarnate Hybrid Silent Doublehit Rare",
+  "display_help": "HCUN2M4NHHYDWRBBY9S9EBAVMQ",
+  "display_short_help": "Assault Genome",
+  "icon": "incarnate_hybrid_assault_rare.png",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.0,
+  "effect_area": "SingleTarget",
+  "max_targets_hit": 0,
+  "radius": 0.0,
+  "arc": 0.0,
+  "range": 0.0,
+  "range_secondary": 0.0,
+  "activation_time": 0.0,
+  "recharge_time": 0.0,
+  "activate_period": 10.0,
+  "endurance_cost": 0.0,
+  "interrupt_time": 0.0,
+  "target_type": "Self",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "Self"
+  ],
+  "targets_affected": [
+    "Self"
+  ],
+  "boosts_allowed": [
+    "Damage",
+    "Natural",
+    "Technology",
+    "Magic",
+    "Mutation",
+    "Science"
+  ],
+  "allowed_boostset_cats": [],
+  "cast_through": [],
+  "num_allowed": 1,
+  "requires": "",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [],
+  "effects": [
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": []
+    }
+  ],
+  "available_level": 0,
+  "powerset": "Incarnate.Hybrid_Silent"
+}

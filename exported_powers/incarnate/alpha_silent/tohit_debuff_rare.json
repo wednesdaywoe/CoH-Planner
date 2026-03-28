@@ -1,0 +1,51 @@
+{
+  "name": "ToHit_Debuff_Rare",
+  "full_name": "Incarnate.Alpha_Silent.ToHit_Debuff_Rare",
+  "short_name": "ToHit_Debuff_Rare",
+  "type": "GlobalBoost",
+  "display_name": "ToHit DeBuff Rare",
+  "display_fullname": "Incarnate Alpha Silent ToHit Debuff Rare",
+  "display_help": "Increases to hit debuffs by {Boost.Attrib.ToHit.Scale}%.",
+  "display_short_help": "Enhances To Hit DeBuffs",
+  "icon": "e_icon_gen_to_hit_debuff_01.png",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.0,
+  "effect_area": "SingleTarget",
+  "max_targets_hit": 0,
+  "radius": 0.0,
+  "arc": 0.0,
+  "range": 0.0,
+  "range_secondary": 0.0,
+  "activation_time": 0.0,
+  "recharge_time": 0.0,
+  "activate_period": 10.0,
+  "endurance_cost": 0.0,
+  "interrupt_time": 0.0,
+  "target_type": "Self",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "Self"
+  ],
+  "targets_affected": [
+    "Self"
+  ],
+  "boosts_allowed": [
+    "Debuff_ToHit",
+    "Natural",
+    "Technology",
+    "Magic",
+    "Mutation",
+    "Science"
+  ],
+  "allowed_boostset_cats": [],
+  "cast_through": [],
+  "num_allowed": 1,
+  "requires": "",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [],
+  "effects": [],
+  "available_level": 0,
+  "powerset": "Incarnate.Alpha_Silent"
+}

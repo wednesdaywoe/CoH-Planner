@@ -1,0 +1,15 @@
+{
+  "key": "Incarnate.Lore_Pet_Longbow_Support",
+  "display_name": "Lore_Pet_Longbow_Support",
+  "help": "Longbow",
+  "short_help": "Longbow",
+  "icon": "lore_pet_longbow_support_set.ico",
+  "powers": [
+    "Heal_Other",
+    "Healing_Aura"
+  ],
+  "available_level": [
+    0,
+    0
+  ]
+}

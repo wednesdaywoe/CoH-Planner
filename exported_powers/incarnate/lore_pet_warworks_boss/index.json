@@ -1,0 +1,17 @@
+{
+  "key": "Incarnate.Lore_Pet_Warworks_Boss",
+  "display_name": "Lore_Pet_Warworks_Boss",
+  "help": "Warworks",
+  "short_help": "Warworks",
+  "icon": "lore_pet_warworks_boss_set.ico",
+  "powers": [
+    "Cross_Cut",
+    "Plasma_Eye_Beams",
+    "Swipe"
+  ],
+  "available_level": [
+    0,
+    0,
+    0
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "key": "Incarnate.Lore_Pet_Carnival_Support_Attack",
+  "display_name": "Lore_Pet_Carnival_Support_Attack",
+  "help": "Incarnate",
+  "short_help": "Incarnate",
+  "icon": "lore_pet_carnival_support_attack_set.ico",
+  "powers": [
+    "Spit_Fire"
+  ],
+  "available_level": [
+    0
+  ]
+}

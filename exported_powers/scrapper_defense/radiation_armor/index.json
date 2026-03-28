@@ -1,0 +1,29 @@
+{
+  "key": "Scrapper_Defense.Radiation_Armor",
+  "display_name": "Radiation Armor",
+  "help": "Radiation emanates from your body which harms foes, but empowers and shields yourself. You can use this energy to absorb damage, heal from your wounds and debilitate nearby foes.",
+  "short_help": "Radiation Armor",
+  "icon": "radiation_armor_set.ico",
+  "powers": [
+    "Alpha_Barrier",
+    "Beta_Decay",
+    "Fallout_Shelter",
+    "Gamma_Boost",
+    "Ground_Zero",
+    "Meltdown",
+    "Particle_Shielding",
+    "Proton_Armor",
+    "Radiation_Therapy"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

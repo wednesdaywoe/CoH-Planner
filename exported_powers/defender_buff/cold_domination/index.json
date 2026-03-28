@@ -1,0 +1,29 @@
+{
+  "key": "Defender_Buff.Cold_Domination",
+  "display_name": "Cold Domination",
+  "help": "Cold Domination powers allow you to manipulate cold and ice to protect your allies and weaken your enemies.",
+  "short_help": "Cold Domination",
+  "icon": "cold_domination_set.ico",
+  "powers": [
+    "Arctic_Fog",
+    "Benumb",
+    "Frostwork",
+    "Glacial_Shield",
+    "Heat_Loss",
+    "Ice_Shield",
+    "Infrigidate",
+    "Sleet",
+    "Snow_Storm"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

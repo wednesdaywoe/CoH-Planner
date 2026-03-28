@@ -1,0 +1,31 @@
+{
+  "key": "Blaster_Support.Martial_Manipulation",
+  "display_name": "Martial Combat",
+  "help": "Your mastery of Martial Combat allows you to draw on the physical energy stored within your body to perform remarkable feats. You deliver damage to your enemies via withering kicks and punches, while your preternatural senses keep you moving faster and striking harder than any who oppose you.",
+  "short_help": "Martial Combat",
+  "icon": "martial_manipulation_set.ico",
+  "powers": [
+    "Build_Up_Proc",
+    "Burst_of_Speed",
+    "Dragons_Tail",
+    "Eagles_Claw",
+    "Inner_Will",
+    "Ki_Push",
+    "Reach_for_the_Limit",
+    "Reaction_Time",
+    "Storm_Kick",
+    "Throw_Sand"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

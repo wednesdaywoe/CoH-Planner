@@ -1,0 +1,23 @@
+{
+  "key": "Pool.Utility_Belt",
+  "display_name": "Utility Belt",
+  "help": "This power pool option offers some tools that you can use to weaken your foes or quickly close the gap between you and your targets. The Utility Belt power pool features Free Running as its travel power. This power grants you the ability to quickly run and leap great heights. You can boost your leaping to even greater heights for short periods of time as well.",
+  "short_help": "Utility Belt",
+  "icon": "utility_belt_set.ico",
+  "powers": [
+    "Athletics",
+    "Bolas",
+    "Flying_Kick",
+    "Freerunning",
+    "Life_Support_System",
+    "Poisoned_Dagger"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

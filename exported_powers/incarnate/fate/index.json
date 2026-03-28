@@ -1,0 +1,29 @@
+{
+  "key": "Incarnate.Fate",
+  "display_name": "Fate",
+  "help": "Incarnate",
+  "short_help": "Incarnate",
+  "icon": "fate_set.ico",
+  "powers": [
+    "Ageless_Core_Fate",
+    "Ageless_Fate",
+    "Ageless_Radial_Fate",
+    "Barrier_Partial_Radial_Fate",
+    "Barrier_Total_Radial_Fate",
+    "Clarion_Core_Fortune",
+    "Clarion_Radial_Fortune",
+    "Rebirth_Partial_Core_Fate",
+    "Rebirth_Total_Core_Fate"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

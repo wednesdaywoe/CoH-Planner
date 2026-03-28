@@ -1,0 +1,50 @@
+{
+  "name": "Time_Bomb",
+  "full_name": "Blaster_Support.Gadgets.Time_Bomb",
+  "short_name": "Time_Bomb",
+  "type": "Click",
+  "display_name": "7RRFPJVL7QW2YAV87RCNWRL85W",
+  "display_fullname": "Blaster Support Gadgets Time Bomb",
+  "display_help": "6JJKHEJAPWDCWWLATAQ757PAZX",
+  "display_short_help": "Place Bomb: PBAoE, Extreme DMG(Lethal/Fire), Foe Knockback",
+  "icon": "gadgets_remotebomb.png",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 2.0,
+  "effect_area": "SingleTarget",
+  "max_targets_hit": 0,
+  "radius": 0.0,
+  "arc": 0.0,
+  "range": 0.0,
+  "range_secondary": 0.0,
+  "activation_time": 0.0,
+  "recharge_time": 0.0,
+  "activate_period": 0.0,
+  "endurance_cost": 0.0,
+  "interrupt_time": 0.0,
+  "target_type": "Unknown(37)",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "None"
+  ],
+  "targets_affected": [
+    "None"
+  ],
+  "boosts_allowed": [
+    "EnduranceDiscount",
+    "Recharge",
+    "Knockback",
+    "Damage",
+    "Accuracy"
+  ],
+  "allowed_boostset_cats": [],
+  "cast_through": [],
+  "num_allowed": 1,
+  "requires": "",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [],
+  "effects": [],
+  "available_level": 0,
+  "powerset": "Blaster_Support.Gadgets"
+}

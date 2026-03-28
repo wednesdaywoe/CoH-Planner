@@ -1,0 +1,21 @@
+{
+  "key": "Epic.Sentinel_Psionic_Mastery",
+  "display_name": "Psionic Mastery",
+  "help": "You have advance Mastery over your Psionic abilities and are able to control your foes and aid your allies with them.",
+  "short_help": "Psionic Mastery",
+  "icon": "sentinel_psionic_mastery_set.ico",
+  "powers": [
+    "Dominate",
+    "Link_Minds",
+    "Mass_Hypnosis",
+    "Mind_Probe",
+    "Psychic_Shockwave"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "key": "Incarnate.Verdict",
+  "display_name": "Verdict",
+  "help": "Incarnate",
+  "short_help": "Incarnate",
+  "icon": "verdict_set.ico",
+  "powers": [
+    "Cryonic_Partial_Radial_Verdict",
+    "Cryonic_Total_Radial_Verdict",
+    "Ion_Partial_Core_Verdict",
+    "Ion_Total_Core_Verdict",
+    "Pyronic_Core_Final_Verdict",
+    "Void_Core_Verdict",
+    "Void_Radial_Verdict",
+    "Void_Verdict",
+    "Vorpal_Radial_Final_Verdict"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

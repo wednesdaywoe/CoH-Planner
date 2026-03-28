@@ -1,0 +1,46 @@
+{
+  "name": "Field_Projector",
+  "full_name": "Incarnate.Lore_Pet_Clockwork_Support.Field_Projector",
+  "short_name": "Field_Projector",
+  "type": "Click",
+  "display_name": "Field Projector",
+  "display_fullname": "Incarnate Lore Pet Clockwork Support Field Projector",
+  "display_help": "HL7A5C6JWK6YYTXDYYKCZCVJRW",
+  "display_short_help": "Ally +DEF(Smash, Lethal, Fire, Cold, Energy, Negative)",
+  "icon": "forcefield_deflectionshield.png",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.0,
+  "effect_area": "SingleTarget",
+  "max_targets_hit": 0,
+  "radius": 0.0,
+  "arc": 0.0,
+  "range": 30.0,
+  "range_secondary": 0.0,
+  "activation_time": 2.07,
+  "recharge_time": 6.0,
+  "activate_period": 0.0,
+  "endurance_cost": 0.0,
+  "interrupt_time": 0.0,
+  "target_type": "Friend",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "Friend"
+  ],
+  "targets_affected": [
+    "Friend"
+  ],
+  "boosts_allowed": [
+    "Incarnate_Lore"
+  ],
+  "allowed_boostset_cats": [],
+  "cast_through": [],
+  "num_allowed": 1,
+  "requires": "",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [],
+  "effects": [],
+  "available_level": 0,
+  "powerset": "Incarnate.Lore_Pet_Clockwork_Support"
+}

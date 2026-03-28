@@ -1,0 +1,31 @@
+{
+  "key": "Scrapper_Defense.Ice_Armor",
+  "display_name": "Ice Armor",
+  "help": "You can dramatically reduce your core body temperature to form various armors of ice around yourself. You can protect yourself from many different damage types, and you gain exceptional resistance to Cold based attacks. However, this set offers little protection to Fire based powers and no protection against Psionics.",
+  "short_help": "Ice Armor",
+  "icon": "ice_armor_set.ico",
+  "powers": [
+    "Chilling_Embrace",
+    "Energy_Absorption",
+    "Glacial_Armor",
+    "Hoarfrost",
+    "Ice_Armor",
+    "Icicles",
+    "Icy_Bastion",
+    "Permafrost",
+    "Rime_Ice",
+    "Wet_Ice"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

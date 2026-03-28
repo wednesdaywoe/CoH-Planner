@@ -1,0 +1,31 @@
+{
+  "key": "Redirects.Stone_Armor",
+  "display_name": "Stone Armor",
+  "help": "You can transform your skin into various forms of rock and stone. Stone Armor is one of the only Tanker Defensive Power Sets that offers defense to Psionics. Stone Armor offers amazing Defense, but a few Stone Armors are mutually exclusive to each other. Some Armors, although offering superior defense, also slow you down due to its enormous bulk.",
+  "short_help": "Stone Armor",
+  "icon": "brute_melee_set.ico",
+  "powers": [
+    "Brimstone_Proc_Brute",
+    "Brimstone_Proc_Scrapper",
+    "Brimstone_Proc_Sentinel",
+    "Brimstone_Proc_Stalker",
+    "Brimstone_Proc_Tanker",
+    "Geode",
+    "Geode_Buff",
+    "Geode_Pull",
+    "Geode_Scaling",
+    "Thermal"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

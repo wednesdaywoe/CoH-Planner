@@ -1,0 +1,21 @@
+{
+  "key": "Epic.Flame_Mastery",
+  "display_name": "Fire Mastery",
+  "help": "You have Mastery over Fire and Flame to control your foes and to add some much needed armor and defense.",
+  "short_help": "Fire Mastery",
+  "icon": "flame_mastery_set.ico",
+  "powers": [
+    "Bonfire",
+    "Char",
+    "Fire_Shield",
+    "Melt_Armor",
+    "Rise_of_the_Phoenix"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

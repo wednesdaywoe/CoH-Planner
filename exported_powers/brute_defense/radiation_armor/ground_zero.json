@@ -1,0 +1,56 @@
+{
+  "name": "Ground_Zero",
+  "full_name": "Brute_Defense.Radiation_Armor.Ground_Zero",
+  "short_name": "Ground_Zero",
+  "type": "Click",
+  "display_name": "Ground Zero",
+  "display_fullname": "Brute Defense Radiation Armor Ground Zero",
+  "display_help": "UA3Q3J8AN45EW8CGTYG69PBTC2",
+  "display_short_help": "8NJ2CTSFBE8HWKVLNXDFFQ36NZ",
+  "icon": "radiationarmor_groundzero.png",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.2,
+  "effect_area": "Sphere",
+  "max_targets_hit": 10,
+  "radius": 15.0,
+  "arc": 0.0,
+  "range": 0.0,
+  "range_secondary": 0.0,
+  "activation_time": 3.0,
+  "recharge_time": 90.0,
+  "activate_period": 0.0,
+  "endurance_cost": 13.0,
+  "interrupt_time": 0.0,
+  "target_type": "Self",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "Friend"
+  ],
+  "targets_affected": [
+    "Friend",
+    "Foe"
+  ],
+  "boosts_allowed": [
+    "Taunt",
+    "EnduranceDiscount",
+    "Recharge",
+    "Heal",
+    "Debuff_Defense",
+    "Damage",
+    "Accuracy"
+  ],
+  "allowed_boostset_cats": [],
+  "cast_through": [],
+  "num_allowed": 1,
+  "requires": "",
+  "activate_requires": "",
+  "target_requires": "0",
+  "attack_types": [
+    112,
+    132
+  ],
+  "effects": [],
+  "available_level": 0,
+  "powerset": "Brute_Defense.Radiation_Armor"
+}

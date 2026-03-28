@@ -1,0 +1,29 @@
+{
+  "key": "Scrapper_Melee.Claws",
+  "display_name": "Claws",
+  "help": "Claws are bones or blades that extend from your hands and cause Lethal damage. The lightweight, natural feel of claws gives this power set a reduced Endurance cost and faster attack rate than other Scrapper melee sets. Like all scrapper powers, all Claw attacks can sometimes land a critical hit for double damage.",
+  "short_help": "Claws",
+  "icon": "claws_set.ico",
+  "powers": [
+    "Eviscerate",
+    "Focus",
+    "Follow_Up",
+    "Shockwave",
+    "Slash",
+    "Spin",
+    "Strike",
+    "Swipe",
+    "Taunt"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

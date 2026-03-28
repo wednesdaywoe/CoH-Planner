@@ -1,0 +1,25 @@
+{
+  "key": "Teamwork.Teamwork",
+  "display_name": "Teamwork",
+  "help": "Those who enter the Widow training program are given crash courses in Teamwork, Tactical Analysis and Coordination of Assets.",
+  "short_help": "Teamwork",
+  "icon": "teamwork_set.ico",
+  "powers": [
+    "Combat_Training:_Defensive",
+    "Combat_Training:_Offensive",
+    "Foresight",
+    "Indomitable_Will",
+    "Tactical_Training:_Assault",
+    "Tactical_Training:_Leadership",
+    "Tactical_Training:_Maneuvers"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

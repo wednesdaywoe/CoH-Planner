@@ -1,0 +1,21 @@
+{
+  "key": "Epic.Dominator_Mu_Mastery",
+  "display_name": "Mu Mastery",
+  "help": "P2730572537",
+  "short_help": "Mu Mastery",
+  "icon": "dominator_mu_mastery_set.ico",
+  "powers": [
+    "Ball_Lightning",
+    "Charged_Armor",
+    "Power_Sink",
+    "Summon_Guardian",
+    "Surge_of_Power"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

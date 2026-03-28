@@ -1,0 +1,15 @@
+{
+  "key": "Redirects.Stalker_Melee",
+  "display_name": "Stalker Melee",
+  "help": "These powers are used by stalker redirect powers.",
+  "short_help": "Stalker Melee",
+  "icon": "stalker_melee_set.ico",
+  "powers": [
+    "Ablating_Strike_Sweep",
+    "Savage_Leap"
+  ],
+  "available_level": [
+    0,
+    0
+  ]
+}

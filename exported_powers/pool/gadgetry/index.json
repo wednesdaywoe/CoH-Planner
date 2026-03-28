@@ -1,0 +1,23 @@
+{
+  "key": "Pool.Gadgetry",
+  "display_name": "Gadgetry",
+  "help": "Gadgetry gives you access to highly advanced technology to weaken or blast your foes. This power pool gives you access to a jetpack as your travel power. While your jetpack is active you gain access to a Turbo Charge power which allows you to fly even faster for a short time.",
+  "short_help": "Nano Net",
+  "icon": "gadgetry_set.ico",
+  "powers": [
+    "Blaster_Barrage",
+    "Force_Barrier",
+    "Jetpack",
+    "Nano_Net",
+    "Turbo_Boost",
+    "Wrist_Blaster"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "key": "Redirects.Electric_Control",
+  "display_name": "Electric Control",
+  "help": "Electric Control",
+  "short_help": "Electric Control",
+  "icon": "placeholder.ico",
+  "powers": [
+    "Self_Destruct",
+    "Stunning_Aura",
+    "Synaptic_Overload",
+    "Tesla_Coil_Chain",
+    "Tesla_Coil_Debuff",
+    "Tesla_Coil_OneShot",
+    "Tesla_Coil_Pulse"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

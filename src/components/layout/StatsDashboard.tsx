@@ -9,7 +9,7 @@ import { useCalculatedStats, useCharacterCalculation } from '@/hooks';
 import { useBuildStore, useUIStore } from '@/stores';
 import { getBaselineHealth } from '@/utils/calculations/stats';
 import { Tooltip } from '@/components/ui';
-import { StatsConfigModal, AccoladesModal, AboutModal, ExportImportModal, FeedbackModal, KnownIssuesModal, ChangelogModal, WelcomeModal, useWelcomeModal, SetBonusLookupModal, ControlsModal, HelpModal, CompareSlottingModal, DetailedTotalsModal, PowersetCompareModal, ProcSettingsModal } from '@/components/modals';
+import { StatsConfigModal, AccoladesModal, AboutModal, ExportImportModal, FeedbackModal, ChangelogModal, WelcomeModal, useWelcomeModal, SetBonusLookupModal, ControlsModal, HelpModal, CompareSlottingModal, DetailedTotalsModal, PowersetCompareModal, ProcSettingsModal } from '@/components/modals';
 import { IncarnateSlotGrid, IncarnateModal, IncarnateCraftingModal } from '@/components/incarnate';
 import { INCARNATE_REQUIRED_LEVEL, createEmptyIncarnateBuildState } from '@/types';
 import type { DashboardStatBreakdown } from '@/hooks/useCalculatedStats';
@@ -66,8 +66,6 @@ export function StatsDashboard() {
   const closeExportImportModal = useUIStore((s) => s.closeExportImportModal);
   const feedbackModalOpen = useUIStore((s) => s.feedbackModalOpen);
   const closeFeedbackModal = useUIStore((s) => s.closeFeedbackModal);
-  const knownIssuesModalOpen = useUIStore((s) => s.knownIssuesModalOpen);
-  const closeKnownIssuesModal = useUIStore((s) => s.closeKnownIssuesModal);
   const changelogModalOpen = useUIStore((s) => s.changelogModalOpen);
   const closeChangelogModal = useUIStore((s) => s.closeChangelogModal);
   const controlsModalOpen = useUIStore((s) => s.controlsModalOpen);
@@ -413,12 +411,6 @@ export function StatsDashboard() {
       <FeedbackModal
         isOpen={feedbackModalOpen}
         onClose={closeFeedbackModal}
-      />
-
-      {/* Known Issues Modal */}
-      <KnownIssuesModal
-        isOpen={knownIssuesModalOpen}
-        onClose={closeKnownIssuesModal}
       />
 
       {/* Changelog Modal */}

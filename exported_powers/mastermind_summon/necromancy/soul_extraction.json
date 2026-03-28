@@ -1,0 +1,53 @@
+{
+  "name": "Soul_Extraction",
+  "full_name": "Mastermind_Summon.Necromancy.Soul_Extraction",
+  "short_name": "Soul_Extraction",
+  "type": "Click",
+  "display_name": "Soul Extraction",
+  "display_fullname": "Mastermind Summon Necromancy Soul Extraction",
+  "display_help": "TRQ2WF3LDAY7WCZYWX6PLGNA43",
+  "display_short_help": "Summon Ghost (Special)",
+  "icon": "necromancy_soulextraction.png",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.0,
+  "effect_area": "Sphere",
+  "max_targets_hit": 0,
+  "radius": 80.0,
+  "arc": 0.0,
+  "range": 60.0,
+  "range_secondary": 0.0,
+  "activation_time": 2.03,
+  "recharge_time": 150.0,
+  "activate_period": 0.0,
+  "endurance_cost": 15.0,
+  "interrupt_time": 0.0,
+  "target_type": "Self",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "MyCreator"
+  ],
+  "targets_affected": [
+    "MyCreator"
+  ],
+  "boosts_allowed": [
+    "Hold",
+    "EnduranceDiscount",
+    "Range",
+    "Recharge",
+    "Heal",
+    "Debuff_ToHit",
+    "Damage",
+    "Accuracy"
+  ],
+  "allowed_boostset_cats": [],
+  "cast_through": [],
+  "num_allowed": 1,
+  "requires": "",
+  "activate_requires": "",
+  "target_requires": "MastermindPets_Zombie target.VillainName> MastermindPets_Skeletal_Warrior target.VillainName> || MastermindPets_Lich target.VillainName> ||",
+  "attack_types": [],
+  "effects": [],
+  "available_level": 0,
+  "powerset": "Mastermind_Summon.Necromancy"
+}

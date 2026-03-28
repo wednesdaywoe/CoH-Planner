@@ -1,0 +1,54 @@
+{
+  "name": "Heavy_Burst",
+  "full_name": "Arachnos_Soldiers.Arachnos_Soldier.Heavy_Burst",
+  "short_name": "Heavy_Burst",
+  "type": "Click",
+  "display_name": "Heavy Burst",
+  "display_fullname": "Arachnos Soldiers Arachnos Soldier Heavy Burst",
+  "display_help": "A5TMUGUWV35AW8ZEEWZ5GS83P2",
+  "display_short_help": "MRAJFW669SPQWWNVALYB2C6L72",
+  "icon": "arachnossoldier_heavyburst.png",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.0,
+  "effect_area": "Cone",
+  "max_targets_hit": 10,
+  "radius": 50.0,
+  "arc": 0.5235987901687622,
+  "range": 50.0,
+  "range_secondary": 0.0,
+  "activation_time": 2.5,
+  "recharge_time": 12.0,
+  "activate_period": 0.0,
+  "endurance_cost": 11.856,
+  "interrupt_time": 0.0,
+  "target_type": "Foe",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "None"
+  ],
+  "targets_affected": [
+    "Foe"
+  ],
+  "boosts_allowed": [
+    "EnduranceDiscount",
+    "Range",
+    "Recharge",
+    "Debuff_Defense",
+    "Damage",
+    "Accuracy"
+  ],
+  "allowed_boostset_cats": [],
+  "cast_through": [],
+  "num_allowed": 1,
+  "requires": "",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [
+    112,
+    120
+  ],
+  "effects": [],
+  "available_level": 0,
+  "powerset": "Arachnos_Soldiers.Arachnos_Soldier"
+}

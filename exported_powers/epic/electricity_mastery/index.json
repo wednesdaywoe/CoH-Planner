@@ -1,0 +1,21 @@
+{
+  "key": "Epic.Electricity_Mastery",
+  "display_name": "Electricity Mastery",
+  "help": "You have Mastery over Electricity to defeat your foes, and to add some much needed armor and defense.",
+  "short_help": "Electricity Mastery",
+  "icon": "electricity_mastery_set.ico",
+  "powers": [
+    "Charged_Armor",
+    "Electric_Fence",
+    "Power_Sink",
+    "Shocking_Bolt",
+    "Thunder_Strike"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

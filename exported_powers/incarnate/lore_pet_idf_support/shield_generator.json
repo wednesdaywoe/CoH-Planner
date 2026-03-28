@@ -1,0 +1,48 @@
+{
+  "name": "Shield_Generator",
+  "full_name": "Incarnate.Lore_Pet_IDF_Support.Shield_Generator",
+  "short_name": "Shield_Generator",
+  "type": "Toggle",
+  "display_name": "Shield Generator",
+  "display_fullname": "Incarnate Lore Pet IDF Support Shield Generator",
+  "display_help": "J92BHS7AYDVWWXXMWAUNZRY33S",
+  "display_short_help": "Team AoE Toggle, +Def(All), +Res(Immobilize, Disorient)",
+  "icon": "forcefield_dispersionbubble.png",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.0,
+  "effect_area": "Sphere",
+  "max_targets_hit": 16,
+  "radius": 25.0,
+  "arc": 0.0,
+  "range": 0.0,
+  "range_secondary": 0.0,
+  "activation_time": 2.03,
+  "recharge_time": 20.0,
+  "activate_period": 10.0,
+  "endurance_cost": 0.0,
+  "interrupt_time": 0.0,
+  "target_type": "Self",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "Friend",
+    "Self"
+  ],
+  "targets_affected": [
+    "Friend",
+    "Self"
+  ],
+  "boosts_allowed": [
+    "Incarnate_Lore"
+  ],
+  "allowed_boostset_cats": [],
+  "cast_through": [],
+  "num_allowed": 1,
+  "requires": "",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [],
+  "effects": [],
+  "available_level": 0,
+  "powerset": "Incarnate.Lore_Pet_IDF_Support"
+}

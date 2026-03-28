@@ -1,0 +1,48 @@
+{
+  "name": "Train_Ninjas",
+  "full_name": "Mastermind_Summon.Ninjas.Train_Ninjas",
+  "short_name": "Train_Ninjas",
+  "type": "Click",
+  "display_name": "Train Ninjas",
+  "display_fullname": "Mastermind Summon Ninjas Train Ninjas",
+  "display_help": "WDLFUBETFXMPWPLT9VDELV5LAZ",
+  "display_short_help": "Ranged, Train Ninja Henchman",
+  "icon": "ninjas_trainninjas.png",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.0,
+  "effect_area": "Sphere",
+  "max_targets_hit": 16,
+  "radius": 30.0,
+  "arc": 0.0,
+  "range": 50.0,
+  "range_secondary": 0.0,
+  "activation_time": 2.37,
+  "recharge_time": 0.5,
+  "activate_period": 0.0,
+  "endurance_cost": 11.375,
+  "interrupt_time": 0.0,
+  "target_type": "MyCreator",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "MyCreator"
+  ],
+  "targets_affected": [
+    "MyCreator"
+  ],
+  "boosts_allowed": [
+    "EnduranceDiscount",
+    "Range",
+    "Buff_Defense"
+  ],
+  "allowed_boostset_cats": [],
+  "cast_through": [],
+  "num_allowed": 1,
+  "requires": "",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [],
+  "effects": [],
+  "available_level": 0,
+  "powerset": "Mastermind_Summon.Ninjas"
+}

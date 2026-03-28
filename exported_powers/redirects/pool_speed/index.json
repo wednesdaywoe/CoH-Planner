@@ -1,0 +1,13 @@
+{
+  "key": "Redirects.Pool_Speed",
+  "display_name": "Speed",
+  "help": "Pool",
+  "short_help": "Teleportation",
+  "icon": "blind_set.ico",
+  "powers": [
+    "Super_Speed_Momentum"
+  ],
+  "available_level": [
+    0
+  ]
+}

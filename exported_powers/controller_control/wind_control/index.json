@@ -1,0 +1,31 @@
+{
+  "key": "Controller_Control.Wind_Control",
+  "display_name": "Wind Control",
+  "help": "Through manipulation of pressure, you are able to channel the force of wind to bind, weaken and crush your opponents.",
+  "short_help": "Wind Control",
+  "icon": "wind_control_set.ico",
+  "powers": [
+    "Breathless",
+    "Clear_Skies",
+    "Downdraft",
+    "Keening_Winds",
+    "Microburst",
+    "Thundergust",
+    "Updraft",
+    "Vacuum",
+    "Vortex",
+    "Wind_Shear"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

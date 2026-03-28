@@ -1,0 +1,23 @@
+{
+  "key": "Redirects.Kinetics",
+  "display_name": "Kinetics",
+  "help": "These powers are used by Kinetics powers.",
+  "short_help": "Kinetics",
+  "icon": "tanker_melee_set.ico",
+  "powers": [
+    "KineticTransfer",
+    "KineticTransferBuff",
+    "KineticTransferBuffSelf",
+    "SiphonPower",
+    "Transference",
+    "Transfusion"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

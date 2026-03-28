@@ -1,0 +1,29 @@
+{
+  "key": "Corruptor_Ranged.Archery",
+  "display_name": "Archery",
+  "help": "The ancient art of Archery allows you to use a Bow and Arrow to great effect. This power set has an inherent bonus to Accuracy.",
+  "short_help": "Archery",
+  "icon": "archery_set.ico",
+  "powers": [
+    "Aim",
+    "Aimed_Shot",
+    "Blazing_Arrow",
+    "Explosive_Arrow",
+    "Fistful_of_Arrows",
+    "Rain_of_Arrows",
+    "Ranged_Shot",
+    "Snap_Shot",
+    "Stunning_Shot"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

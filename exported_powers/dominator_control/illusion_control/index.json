@@ -1,0 +1,29 @@
+{
+  "key": "Dominator_Control.Illusion_Control",
+  "display_name": "Illusion Control",
+  "help": "You can manipulate light and sound to manifest all sorts of Illusions, aiding your allies as well as deceiving your foes.",
+  "short_help": "Illusion Control",
+  "icon": "illusion_control_set.ico",
+  "powers": [
+    "Blind",
+    "Deceive",
+    "Decoy",
+    "Flash",
+    "Gleam",
+    "Invisibility",
+    "Phantasm",
+    "Spectral_Terror",
+    "Spectral_Wall"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

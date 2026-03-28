@@ -1,0 +1,29 @@
+{
+  "key": "Blaster_Support.Electricity_Manipulation",
+  "display_name": "Electricity Manipulation",
+  "help": "Electricity Manipulation empowers you with various electrical melee attack and support powers. Electricity Manipulation powers can drain foes' Endurance and temporarily halt their Endurance recovery. Some powers return a portion of drained Endurance to you.",
+  "short_help": "Electricity Manipulation",
+  "icon": "electricity_manipulation_set.ico",
+  "powers": [
+    "Build_Up",
+    "Charged_Brawl",
+    "Electric_Fence",
+    "Havok_Punch",
+    "Lightning_Clap",
+    "Lightning_Field",
+    "Power_Sink",
+    "Shocking_Grasp",
+    "Thunder_Strike"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

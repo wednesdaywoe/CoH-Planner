@@ -1,0 +1,21 @@
+{
+  "key": "Epic.Stalker_Soul_Mastery",
+  "display_name": "Soul Mastery",
+  "help": "Ghost Widow has granted you access to the power of darkness and souls. She has shown you how to use the souls of your victims to destroy your enemies. This has granted you access to powers and abilities you have never had before.",
+  "short_help": "Soul Mastery",
+  "icon": "stalker_soul_mastery_set.ico",
+  "powers": [
+    "Dark_Blast",
+    "Moonbeam",
+    "Shadow_Meld",
+    "Soul_Storm",
+    "Summon_Widow"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

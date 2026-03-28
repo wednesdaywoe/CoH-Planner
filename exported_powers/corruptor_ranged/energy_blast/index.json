@@ -1,0 +1,29 @@
+{
+  "key": "Corruptor_Ranged.Energy_Blast",
+  "display_name": "Energy Blast",
+  "help": "Energy Blast allows you to hurl bolts of energy at your foes, and can often send them flying with Knockback.",
+  "short_help": "Energy Blast",
+  "icon": "energy_blast_set.ico",
+  "powers": [
+    "Aim",
+    "Energy_Torrent",
+    "Explosive_Blast",
+    "Nova",
+    "Power_Blast",
+    "Power_Bolt",
+    "Power_Burst",
+    "Power_Push",
+    "Sniper_Blast"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

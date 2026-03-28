@@ -1,0 +1,55 @@
+{
+  "name": "Touch_of_Fear",
+  "full_name": "Blaster_Support.Darkness_Manipulation.Touch_of_Fear",
+  "short_name": "Touch_of_Fear",
+  "type": "Click",
+  "display_name": "Touch of the Beyond",
+  "display_fullname": "Blaster Support Darkness Manipulation Touch of Fear",
+  "display_help": "WGKGQH4P5YM9WMCZDUTSTUBYEA",
+  "display_short_help": "Fear, Foe -To Hit, Self +Regeneration, +Recovery, +Res(Fear)",
+  "icon": "darknessmanipulation_touchoffear.png",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.2,
+  "effect_area": "SingleTarget",
+  "max_targets_hit": 0,
+  "radius": 0.0,
+  "arc": 0.0,
+  "range": 80.0,
+  "range_secondary": 0.0,
+  "activation_time": 1.17,
+  "recharge_time": 10.0,
+  "activate_period": 0.0,
+  "endurance_cost": 5.2,
+  "interrupt_time": 0.0,
+  "target_type": "Unknown(37)",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "None"
+  ],
+  "targets_affected": [
+    "Foe"
+  ],
+  "boosts_allowed": [
+    "Recovery",
+    "EnduranceDiscount",
+    "Recharge",
+    "Heal",
+    "Fear",
+    "Debuff_ToHit",
+    "Accuracy"
+  ],
+  "allowed_boostset_cats": [],
+  "cast_through": [],
+  "num_allowed": 1,
+  "requires": "",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [
+    104,
+    136
+  ],
+  "effects": [],
+  "available_level": 0,
+  "powerset": "Blaster_Support.Darkness_Manipulation"
+}

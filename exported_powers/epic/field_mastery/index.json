@@ -1,0 +1,21 @@
+{
+  "key": "Epic.Field_Mastery",
+  "display_name": "Energy Mastery",
+  "help": "You have Mastery over Energy and Force to protect yourself and defeat your foes.",
+  "short_help": "Energy Mastery",
+  "icon": "field_mastery_set.ico",
+  "powers": [
+    "Energy_Torrent",
+    "Foce_of_Nature",
+    "Personal_Force_Field",
+    "Power_Blast",
+    "Repulsion_Bomb"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

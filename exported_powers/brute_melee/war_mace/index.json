@@ -1,0 +1,29 @@
+{
+  "key": "Brute_Melee.War_Mace",
+  "display_name": "War Mace",
+  "help": "You can wield a Medieval Mace and master a variety of powerful Smashing attacks. Attack speeds are good, and the weight of the Mace has good Disorienting capabilities. The sheer weight of this weapon give it a bonus to hit.",
+  "short_help": "War Mace",
+  "icon": "war_mace_set.ico",
+  "powers": [
+    "Bash",
+    "Build_Up",
+    "Clobber",
+    "Crowd_Control",
+    "Jawbreaker",
+    "Pulverize",
+    "Shatter",
+    "Taunt",
+    "Whirling_Mace"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

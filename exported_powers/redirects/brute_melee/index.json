@@ -1,0 +1,13 @@
+{
+  "key": "Redirects.Brute_Melee",
+  "display_name": "Brute Melee",
+  "help": "These powers are used by stalker redirect powers.",
+  "short_help": "Brute Melee",
+  "icon": "brute_melee_set.ico",
+  "powers": [
+    "Savage_Leap"
+  ],
+  "available_level": [
+    0
+  ]
+}

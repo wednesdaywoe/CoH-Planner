@@ -1,0 +1,21 @@
+{
+  "key": "Epic.Scrapper_Ice_Mastery",
+  "display_name": "Ice Mastery",
+  "help": "You have Mastery over Ice and snow to blast your foes and control your foes.",
+  "short_help": "Ice Mastery",
+  "icon": "arctic_mastery_set.ico",
+  "powers": [
+    "Frigid_Wind",
+    "Frozen_Spear",
+    "Ice_Bolt",
+    "Ice_Elemental",
+    "Shiver"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

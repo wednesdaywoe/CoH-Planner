@@ -1,0 +1,47 @@
+{
+  "name": "Shadow_Step",
+  "full_name": "Inherent.Inherent.Shadow_Step",
+  "short_name": "Shadow_Step",
+  "type": "Click",
+  "display_name": "Shadow Step",
+  "display_fullname": "Inherent Inherent Shadow Step",
+  "display_help": "P6MK7MKTLFAWWTZ6EDHMGHRXX3",
+  "display_short_help": "Ranged (Location), Self Teleport",
+  "icon": "inherentwarshade_shadowstep.png",
+  "auto_issue": true,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.0,
+  "effect_area": "Location",
+  "max_targets_hit": 0,
+  "radius": 0.0,
+  "arc": 0.0,
+  "range": 300.0,
+  "range_secondary": 0.0,
+  "activation_time": 1.67,
+  "recharge_time": 0.0,
+  "activate_period": 0.0,
+  "endurance_cost": 13.0,
+  "interrupt_time": 0.0,
+  "target_type": "DeadMyPet",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "Self"
+  ],
+  "targets_affected": [
+    "Self"
+  ],
+  "boosts_allowed": [
+    "EnduranceDiscount",
+    "Range"
+  ],
+  "allowed_boostset_cats": [],
+  "cast_through": [],
+  "num_allowed": 1,
+  "requires": "0",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [],
+  "effects": [],
+  "available_level": 0,
+  "powerset": "Inherent.Inherent"
+}
