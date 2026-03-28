@@ -18,7 +18,7 @@ import { PlasmaShield as PlasmaShield } from './plasma-shield';
 import { Consume as Consume } from './consume';
 import { Burn as Burn } from './burn';
 import { CauterizingBlaze as CauterizingBlaze } from './cauterizing-blaze';
-import { PhoenixRising as PhoenixRising2 } from './phoenix-rising';
+import { PhoenixRising as PhoenixRising2 } from './rise-of-the-phoenix';
 
 export const powerset: Powerset = {
   id: 'sentinel/fiery-aura',

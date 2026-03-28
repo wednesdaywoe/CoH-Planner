@@ -8,6 +8,7 @@
 import { useState, useCallback } from 'react';
 import type { Enhancement, SelectedPower } from '@/types';
 import { resolvePath } from '@/utils/paths';
+import { useIsTouchDevice } from '@/hooks';
 import { Tooltip } from '@/components/ui';
 import { TouchableSlot } from './TouchableSlot';
 import { DraggableSlotGhost } from './DraggableSlotGhost';
@@ -108,6 +109,10 @@ export function PowerRow({
   slotLevels,
   selectedPower,
 }: PowerRowProps) {
+  const isTouch = useIsTouchDevice();
+  // On touch devices, suppress hover-triggered info panel — use the info button instead
+  const hoverHandler = isTouch ? undefined : onHover;
+  const leaveHandler = isTouch ? undefined : onLeave;
   const slotSize = SLOT_SIZE_MAP[size];
   const ghostSize = GHOST_SIZE_MAP[size];
   const iconClass = ICON_CLASS_MAP[size];
@@ -183,6 +188,7 @@ export function PowerRow({
   };
 
   const handleSlotMouseEnter = (index: number, hasEnhancement: boolean) => {
+    if (isTouch) return;
     if (hasEnhancement) {
       onEnhancementHover?.(index);
     } else {
@@ -208,7 +214,7 @@ export function PowerRow({
     <div className="flex items-center min-w-0">
       <span
         className="text-xs text-slate-200 truncate flex-1 min-w-0 cursor-default"
-        onMouseEnter={onHover}
+        onMouseEnter={hoverHandler}
         onContextMenu={onRightClick}
         title={isLocked ? 'Right-click to unlock power info' : 'Right-click to lock power info'}
       >
@@ -321,8 +327,8 @@ export function PowerRow({
     return (
       <div
         className={`flex flex-col px-1.5 py-1 ${bgClass} border rounded-sm group transition-colors ${borderClass}`}
-        onMouseEnter={onHover}
-        onMouseLeave={onLeave}
+        onMouseEnter={hoverHandler}
+        onMouseLeave={leaveHandler}
       >
         <div className="flex min-w-0">
           {/* Left column: Level on top, icon underneath */}
@@ -350,8 +356,8 @@ export function PowerRow({
   return (
     <div
       className={`flex flex-col px-1.5 py-1 ${bgClass} border rounded-sm group transition-colors ${borderClass}`}
-      onMouseEnter={onHover}
-      onMouseLeave={onLeave}
+      onMouseEnter={hoverHandler}
+      onMouseLeave={leaveHandler}
     >
       {/* Row 1: Level · Icon · Name | Auto | X */}
       <div className="flex items-center min-w-0">
@@ -363,7 +369,7 @@ export function PowerRow({
         </span>
         <span
           className="text-xs text-slate-200 truncate flex-1 min-w-0 cursor-default"
-          onMouseEnter={onHover}
+          onMouseEnter={hoverHandler}
           onContextMenu={onRightClick}
           title={isLocked ? 'Right-click to unlock power info' : 'Right-click to lock power info'}
         >

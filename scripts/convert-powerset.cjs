@@ -1582,8 +1582,9 @@ function convertPowerset(category, powersetName) {
     const power = convertPower(powerJson, availableLevel);
     powers.push(power);
 
-    // Write individual power file
-    const powerFileName = toKebabCase(power.name) + '.ts';
+    // Write individual power file (use internalName for filename to avoid collisions
+    // when multiple powers share the same display name, e.g., "Phoenix Rising")
+    const powerFileName = toKebabCase(power.internalName) + '.ts';
     const powerContent = `/**
  * ${power.name}
  * ${power.shortHelp}
@@ -1624,7 +1625,7 @@ export const ${power.name.replace(/[^a-zA-Z0-9]/g, '')}: Power = ${JSON.stringif
 
 import type { Powerset } from '@/types';
 
-${powers.map((p, i) => `import { ${p.name.replace(/[^a-zA-Z0-9]/g, '')} as ${powerVarNames[i]} } from './${toKebabCase(p.name)}';`).join('\n')}
+${powers.map((p, i) => `import { ${p.name.replace(/[^a-zA-Z0-9]/g, '')} as ${powerVarNames[i]} } from './${toKebabCase(p.internalName)}';`).join('\n')}
 
 export const powerset: Powerset = {
   id: '${categoryInfo.archetype}/${toKebabCase(indexJson.display_name)}',

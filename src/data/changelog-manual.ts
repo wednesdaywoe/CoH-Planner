@@ -23,6 +23,8 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   {
     date: '2026-03-27',
     items: [
+      { message: 'Fixed Phoenix Rising duplication in Fiery Aura', type: 'fix' },
+      { message: 'Supressed auto tooltip on mobile', type: 'fix' },
       { message: 'Fixed Contagious Confusion proc registration', type: 'fix' },
       { message: 'Comprehensive regeneration of Incarnate data', type: 'fix' },
       { message: 'Manually updated Brute modifiers', type: 'fix' },

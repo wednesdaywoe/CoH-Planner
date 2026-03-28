@@ -15,10 +15,10 @@ import { PhoenixRising as PhoenixRising } from './phoenix-rising';
 import { HealingFlames as HealingFlames } from './healing-flames';
 import { TemperatureProtection as TemperatureProtection } from './temperature-protection';
 import { Consume as Consume } from './consume';
-import { PlasmaShield as PlasmaShield } from './plasma-shield';
+import { PlasmaShield as PlasmaShield } from './plasma-sheild';
 import { Burn as Burn } from './burn';
 import { FieryEmbrace as FieryEmbrace } from './fiery-embrace';
-import { PhoenixRising as PhoenixRising2 } from './phoenix-rising';
+import { PhoenixRising as PhoenixRising2 } from './rise-of-the-phoenix';
 
 export const powerset: Powerset = {
   id: 'tanker/fiery-aura',
