@@ -14,8 +14,8 @@ import { StridentEcho as StridentEcho } from './strident-echo';
 import { Attune as Attune } from './attune';
 import { Taunt as Taunt } from './taunt';
 import { SonicClap as SonicClap } from './sonic-clap';
-import { SoundBooster as SoundBooster } from './sound-booster';
-import { SandmansWhisper as SandmansWhisper } from './sandman-s-whisper';
+import { SoundBooster as SoundBooster } from './build-up';
+import { SandmansWhisper as SandmansWhisper } from './sandmans-whisper';
 import { DeafeningWave as DeafeningWave } from './deafening-wave';
 import { Earsplitter as Earsplitter } from './earsplitter';
 

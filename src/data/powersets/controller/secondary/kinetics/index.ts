@@ -17,7 +17,7 @@ import { IncreaseDensity as IncreaseDensity } from './increase-density';
 import { SpeedBoost as SpeedBoost } from './speed-boost';
 import { InertialReduction as InertialReduction } from './inertial-reduction';
 import { Transference as Transference } from './transference';
-import { FulcrumShift as FulcrumShift } from './fulcrum-shift';
+import { FulcrumShift as FulcrumShift } from './kinetic-transfer';
 
 export const powerset: Powerset = {
   id: 'controller/kinetics',

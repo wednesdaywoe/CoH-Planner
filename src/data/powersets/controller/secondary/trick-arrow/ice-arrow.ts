@@ -57,8 +57,7 @@ export const IceArrow: Power = {
       "stun": 60,
       "sleep": 60,
       "defenseDebuff": 60,
-      "knockup": 10,
-      "knockback": 10
+      "mezResistance": 10
     },
     "enduranceDrain": {
       "scale": 0.45,
@@ -94,13 +93,15 @@ export const IceArrow: Power = {
       "scale": 0.45,
       "table": "Ranged_Special"
     },
-    "knockup": {
-      "scale": 100,
-      "table": "Ranged_Ones"
-    },
-    "knockback": {
-      "scale": 100,
-      "table": "Ranged_Ones"
+    "mezResistance": {
+      "knockup": {
+        "scale": 100,
+        "table": "Ranged_Ones"
+      },
+      "knockback": {
+        "scale": 100,
+        "table": "Ranged_Ones"
+      }
     },
     "buffDuration": 60
   }

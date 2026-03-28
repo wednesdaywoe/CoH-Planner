@@ -11,7 +11,7 @@ import type { Powerset } from '@/types';
 
 import { FrozenArmor as FrozenArmor } from './frozen-armor';
 import { Hoarfrost as Hoarfrost } from './hoarfrost';
-import { Rime as Rime } from './rime';
+import { Rime as Rime } from './rime-ice';
 import { WetIce as WetIce } from './wet-ice';
 import { FrigidShield as FrigidShield } from './frigid-shield';
 import { MoistureAbsorption as MoistureAbsorption } from './moisture-absorption';

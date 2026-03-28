@@ -13,10 +13,10 @@ import { Hide as Hide } from './hide';
 import { KineticShield as KineticShield } from './kinetic-shield';
 import { PowerShield as PowerShield } from './power-shield';
 import { EntropyShield as EntropyShield } from './entropy-shield';
-import { KineticDampening as KineticDampening } from './kinetic-dampening';
-import { Disrupt as Disrupt } from './disrupt';
+import { KineticDampening as KineticDampening } from './energy-protection';
+import { Disrupt as Disrupt } from './repulse';
 import { EnergyDrain as EnergyDrain } from './energy-drain';
-import { Energize as Energize } from './energize';
+import { Energize as Energize } from './conserve-power';
 import { Overload as Overload } from './overload';
 
 export const powerset: Powerset = {

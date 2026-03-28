@@ -14,7 +14,7 @@ import { ThunderKick as ThunderKick } from './thunder-kick';
 import { TrickShot as TrickShot } from './trick-shot';
 import { SpinningKick as SpinningKick } from './spinning-kick';
 import { EnvenomedBlades as EnvenomedBlades } from './envenomed-blades';
-import { DragonsTail as DragonsTail } from './dragon-s-tail';
+import { DragonsTail as DragonsTail } from './dragons-tail';
 import { Caltrops as Caltrops } from './caltrops';
 import { MasterfulThrow as MasterfulThrow } from './masterful-throw';
 import { ExplosiveShuriken as ExplosiveShuriken } from './explosive-shuriken';

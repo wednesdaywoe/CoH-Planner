@@ -10,14 +10,14 @@
 import type { Powerset } from '@/types';
 
 import { ChargedBrawl as ChargedBrawl } from './charged-brawl';
-import { ChargedBolts as ChargedBolts } from './charged-bolts';
-import { LightningBolt as LightningBolt } from './lightning-bolt';
-import { HavocPunch as HavocPunch } from './havoc-punch';
+import { ChargedBolts as ChargedBolts } from './electric-fence';
+import { LightningBolt as LightningBolt } from './lightning-field';
+import { HavocPunch as HavocPunch } from './havok-punch';
 import { BuildUp as BuildUp } from './build-up';
-import { Zapp as Zapp } from './zapp';
-import { StaticDischarge as StaticDischarge } from './static-discharge';
-import { ThunderStrike as ThunderStrike } from './thunder-strike';
-import { VoltaicSentinel as VoltaicSentinel } from './voltaic-sentinel';
+import { Zapp as Zapp } from './lightning-clap';
+import { StaticDischarge as StaticDischarge } from './thunder-strike';
+import { ThunderStrike as ThunderStrike } from './power-sink';
+import { VoltaicSentinel as VoltaicSentinel } from './shocking-grasp';
 
 export const powerset: Powerset = {
   id: 'dominator/electricity-assault',

@@ -12,7 +12,7 @@ import type { Powerset } from '@/types';
 import { MaimingSlash as MaimingSlash } from './maiming-slash';
 import { SavageStrike as SavageStrike } from './savage-strike';
 import { Shred as Shred } from './shred';
-import { AssassinsFrenzy as AssassinsFrenzy } from './assassin-s-frenzy';
+import { AssassinsFrenzy as AssassinsFrenzy } from './assassins-frenzy';
 import { BuildUp as BuildUp } from './build-up';
 import { Placate as Placate } from './placate';
 import { RendingFlurry as RendingFlurry } from './rending-flurry';

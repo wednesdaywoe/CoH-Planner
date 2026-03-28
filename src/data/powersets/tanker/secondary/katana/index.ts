@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { StingoftheWasp as StingoftheWasp } from './sting-of-the-wasp';
-import { GamblersCut as GamblersCut } from './gambler-s-cut';
-import { FlashingSteel as FlashingSteel } from './flashing-steel';
-import { DragonsRoar as DragonsRoar } from './dragon-s-roar';
-import { DivineAvalanche as DivineAvalanche } from './divine-avalanche';
+import { StingoftheWasp as StingoftheWasp } from './hack';
+import { GamblersCut as GamblersCut } from './slash';
+import { FlashingSteel as FlashingSteel } from './slice';
+import { DragonsRoar as DragonsRoar } from './taunt';
+import { DivineAvalanche as DivineAvalanche } from './parry';
 import { BuildUp as BuildUp } from './build-up';
-import { TheLotusDrops as TheLotusDrops } from './the-lotus-drops';
-import { SoaringDragon as SoaringDragon } from './soaring-dragon';
-import { GoldenDragonfly as GoldenDragonfly } from './golden-dragonfly';
+import { TheLotusDrops as TheLotusDrops } from './whirling-sword';
+import { SoaringDragon as SoaringDragon } from './disembowel';
+import { GoldenDragonfly as GoldenDragonfly } from './head-splitter';
 
 export const powerset: Powerset = {
   id: 'tanker/katana',

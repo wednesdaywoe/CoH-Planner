@@ -1,60 +1,110 @@
 /**
- * Battle Agility
- * Toggle: Self +DEF(Ranged, AoE), +Res(Defense Debuff)
+ * Active Defense
+ * Self Res (Disorient, Hold, Immobilize, Sleep, Fear, Confuse, Repel, Knockback, Defense Debuff)
  *
- * Source: scrapper_defense/shield_defense/deflection.json
+ * Source: scrapper_defense/shield_defense/battle_agility.json
  */
 
 import type { Power } from '@/types';
 
-export const BattleAgility: Power = {
-  "name": "Battle Agility",
-  "internalName": "Deflection",
-  "available": 0,
-  "description": "Your incredible agility allows you to position your shield to protect yourself from incoming ranged damage. While Battle Agility is active you will benefit from increased Ranged and AoE defense as well as some moderate protection from Defense Debuffs.Recharge: Fast.",
-  "shortHelp": "Toggle: Self +DEF(Ranged, AoE), +Res(Defense Debuff)",
-  "icon": "shielddefense_deflection.png",
-  "powerType": "Toggle",
+export const ActiveDefense: Power = {
+  "name": "Active Defense",
+  "internalName": "Battle_Agility",
+  "available": 9,
+  "description": "When you activate this power, it grants protection from Sleep, Disorient, Fear, Immobilize, Confusion, Repel, Knockback, Hold and Defense Debuff effects for a short duration.Recharge: Long.",
+  "shortHelp": "Self Res (Disorient, Hold, Immobilize, Sleep, Fear, Confuse, Repel, Knockback, Defense Debuff)",
+  "icon": "shielddefense_battleagility.png",
+  "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
-    "recharge": 4,
-    "endurance": 0.104,
-    "castTime": 1.5,
-    "activatePeriod": 0.5
+    "recharge": 200,
+    "endurance": 10.4,
+    "castTime": 1.5
   },
   "allowedEnhancements": [
     "EnduranceReduction",
-    "Recharge",
-    "Defense"
-  ],
-  "allowedSetCategories": [
-    "Defense Sets"
+    "Recharge"
   ],
   "maxSlots": 6,
   "effects": {
-    "defenseBuff": {
-      "ranged": {
-        "scale": 1.5,
-        "table": "Melee_Buff_Def"
+    "confuse": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "effectDuration": 120,
+    "durations": {
+      "confuse": 120,
+      "fear": 120,
+      "hold": 120,
+      "immobilize": 120,
+      "stun": 120,
+      "sleep": 120,
+      "mezResistance": 120,
+      "knockup": 120,
+      "knockback": 120,
+      "repel": 120,
+      "debuffResistance": 120
+    },
+    "fear": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "hold": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "immobilize": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "stun": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "sleep": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "mezResistance": {
+      "knockup": {
+        "scale": 100,
+        "table": "Melee_Ones"
       },
-      "aoe": {
-        "scale": 1.5,
-        "table": "Melee_Buff_Def"
+      "knockback": {
+        "scale": 100,
+        "table": "Melee_Ones"
+      },
+      "repel": {
+        "scale": 100,
+        "table": "Melee_Ones"
       }
     },
-    "durations": {
-      "defenseBuff": 0.75,
-      "elusivity": 0.75
+    "knockup": {
+      "scale": 10,
+      "table": "Melee_Ones"
     },
-    "elusivity": {
-      "all": {
-        "scale": 0.4,
+    "knockback": {
+      "scale": 10,
+      "table": "Melee_Ones"
+    },
+    "repel": {
+      "scale": 10,
+      "table": "Melee_Ones"
+    },
+    "debuffResistance": {
+      "defense": {
+        "scale": 0.5,
         "table": "Melee_Res_Boolean"
       }
     },
-    "buffDuration": 0.75
-  },
-  "requires": "!(Scrapper_Melee.Claws || Scrapper_Melee.Dual_Blades || Scrapper_Melee.Katana || Scrapper_Melee.Quills || Scrapper_Melee.Staff_Fighting || Scrapper_Melee.Titan_Weapons)"
+    "buffDuration": 120
+  }
 };

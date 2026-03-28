@@ -11,7 +11,7 @@ import type { Powerset } from '@/types';
 
 import { TemporalMending as TemporalMending } from './temporal-mending';
 import { TimeCrawl as TimeCrawl } from './time-crawl';
-import { TimesJuncture as TimesJuncture } from './time-s-juncture';
+import { TimesJuncture as TimesJuncture } from './times-juncture';
 import { TemporalSelection as TemporalSelection } from './temporal-selection';
 import { DistortionField as DistortionField } from './distortion-field';
 import { TimeStop as TimeStop } from './time-stop';

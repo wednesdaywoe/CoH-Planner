@@ -94,19 +94,31 @@ export const PowerSurge: Power = {
       "table": "Melee_Ones"
     },
     "knockup": {
-      "scale": 101,
+      "scale": 100,
       "table": "Melee_Ones"
     },
     "knockback": {
-      "scale": 101,
+      "scale": 100,
       "table": "Melee_Ones"
     },
     "repel": {
-      "scale": 11,
+      "scale": 10,
       "table": "Melee_Ones"
     },
     "mezResistance": {
       "teleport": {
+        "scale": 1,
+        "table": "Melee_Ones"
+      },
+      "knockup": {
+        "scale": 1,
+        "table": "Melee_Ones"
+      },
+      "knockback": {
+        "scale": 1,
+        "table": "Melee_Ones"
+      },
+      "repel": {
         "scale": 1,
         "table": "Melee_Ones"
       }

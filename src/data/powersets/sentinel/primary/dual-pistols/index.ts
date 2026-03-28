@@ -18,7 +18,7 @@ import { EmptyClips as EmptyClips } from './empty-clips';
 import { SuppressiveFire as SuppressiveFire } from './suppressive-fire';
 import { SwapAmmo as SwapAmmo } from './swap-ammo';
 import { BulletRain as BulletRain } from './bullet-rain';
-import { ExecutionersShot as ExecutionersShot } from './executioner-s-shot';
+import { ExecutionersShot as ExecutionersShot } from './executioners-shot';
 import { PiercingRounds as PiercingRounds } from './piercing-rounds';
 import { HailofBullets as HailofBullets } from './hail-of-bullets';
 

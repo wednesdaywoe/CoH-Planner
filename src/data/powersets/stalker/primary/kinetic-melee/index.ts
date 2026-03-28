@@ -12,12 +12,12 @@ import type { Powerset } from '@/types';
 import { BodyBlow as BodyBlow } from './body-blow';
 import { QuickStrike as QuickStrike } from './quick-strike';
 import { SmashingBlow as SmashingBlow } from './smashing-blow';
-import { AssassinsStrike as AssassinsStrike } from './assassin-s-strike';
+import { AssassinsStrike as AssassinsStrike } from './assassins-strike';
 import { BuildUp as BuildUp } from './build-up';
 import { Placate as Placate } from './placate';
 import { Burst as Burst } from './burst';
 import { FocusedBurst as FocusedBurst } from './focused-burst';
-import { ConcentratedStrike as ConcentratedStrike } from './concentrated-strike';
+import { ConcentratedStrike as ConcentratedStrike } from './total-focus';
 
 export const powerset: Powerset = {
   id: 'stalker/kinetic-melee',

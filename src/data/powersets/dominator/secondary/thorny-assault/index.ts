@@ -13,7 +13,7 @@ import { Skewer as Skewer } from './skewer';
 import { ThornyDarts as ThornyDarts } from './thorny-darts';
 import { FlingThorns as FlingThorns } from './fling-thorns';
 import { Impale as Impale } from './impale';
-import { BuildUp as BuildUp } from './build-up';
+import { BuildUp as BuildUp } from './aim';
 import { ThornBurst as ThornBurst } from './thorn-burst';
 import { Thorntrops as Thorntrops } from './thorntrops';
 import { Ripper as Ripper } from './ripper';

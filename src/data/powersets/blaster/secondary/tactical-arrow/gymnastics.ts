@@ -1,132 +1,53 @@
 /**
- * Gymnastics
- * Toggle: Self +Recharge, +DEF(All), +SPD, +Res(Slow, Knockback)
+ * Oil Slick Arrow
+ * Ranged (Location AoE), Foe Knockdown, -SPD, -Jump, +Special
  *
- * Source: blaster_support/tactical_arrow/quickness.json
+ * Source: blaster_support/tactical_arrow/gymnastics.json
  */
 
 import type { Power } from '@/types';
 
-export const Gymnastics: Power = {
-  "name": "Gymnastics",
-  "internalName": "Quickness",
-  "available": 23,
-  "description": "Years of training have made you extremely agile and quick on your feet. This power slightly increases your defense, attack rate and movement speed, in addition of protecting you from knockback.Recharge: Moderate.",
-  "shortHelp": "Toggle: Self +Recharge, +DEF(All), +SPD, +Res(Slow, Knockback)",
-  "icon": "tacticalarrow_quickness.png",
-  "powerType": "Toggle",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
+export const OilSlickArrow: Power = {
+  "name": "Oil Slick Arrow",
+  "internalName": "Gymnastics",
+  "available": 29,
+  "description": "On impact, this arrow creates an oil slick that Slows foes in the area and may cause them to slip and fall. The oil slick is very flammable and may burst into flames if fire is used near it.Recharge: Long.",
+  "shortHelp": "Ranged (Location AoE), Foe Knockdown, -SPD, -Jump, +Special",
+  "icon": "tacticalarrow_knockdown.png",
+  "powerType": "Click",
+  "targetType": "Location",
+  "effectArea": "Location",
   "stats": {
     "accuracy": 1,
-    "recharge": 10,
-    "endurance": 0.13,
-    "activatePeriod": 0.5
+    "range": 70,
+    "recharge": 90,
+    "endurance": 15.6,
+    "castTime": 1.16
   },
   "allowedEnhancements": [
+    "Slow",
     "EnduranceReduction",
-    "Run Speed",
+    "Range",
     "Recharge",
-    "Jump",
-    "Fly",
-    "Defense"
+    "Damage"
   ],
   "allowedSetCategories": [
-    "Defense Sets",
-    "Leaping",
-    "Leaping & Sprints",
-    "Running",
-    "Running & Sprints",
-    "Universal Travel"
+    "Blaster Archetype Sets",
+    "Ranged AoE Damage",
+    "Slow Movement",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "effects": {
-    "defenseBuff": {
-      "ranged": {
-        "scale": 0.25,
-        "table": "Melee_Buff_Def"
-      },
-      "melee": {
-        "scale": 0.25,
-        "table": "Melee_Buff_Def"
-      },
-      "aoe": {
-        "scale": 0.25,
-        "table": "Melee_Buff_Def"
-      },
-      "smashing": {
-        "scale": 0.25,
-        "table": "Melee_Buff_Def"
-      },
-      "lethal": {
-        "scale": 0.25,
-        "table": "Melee_Buff_Def"
-      },
-      "fire": {
-        "scale": 0.25,
-        "table": "Melee_Buff_Def"
-      },
-      "cold": {
-        "scale": 0.25,
-        "table": "Melee_Buff_Def"
-      },
-      "energy": {
-        "scale": 0.25,
-        "table": "Melee_Buff_Def"
-      },
-      "negative": {
-        "scale": 0.25,
-        "table": "Melee_Buff_Def"
-      },
-      "psionic": {
-        "scale": 0.25,
-        "table": "Melee_Buff_Def"
-      },
-      "toxic": {
-        "scale": 0.25,
-        "table": "Melee_Buff_Def"
-      }
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_OilSlickOil_Blaster",
+      "duration": 30,
+      "copyBoosts": true
     },
-    "durations": {
-      "defenseBuff": 0.5,
-      "knockup": 0.5,
-      "knockback": 0.5,
-      "rechargeBuff": 0.5,
-      "movement": 0.5,
-      "debuffResistance": 0.5
-    },
-    "knockup": {
-      "scale": 9,
-      "table": "Melee_Ones"
-    },
-    "knockback": {
-      "scale": 9,
-      "table": "Melee_Ones"
-    },
-    "rechargeBuff": {
-      "scale": 0.2,
-      "table": "Melee_Ones"
-    },
-    "movement": {
-      "runSpeed": {
-        "scale": 0.1,
-        "table": "Melee_SpeedRunning"
-      },
-      "flySpeed": {
-        "scale": 0.1,
-        "table": "Melee_SpeedFlying"
-      }
-    },
-    "debuffResistance": {
-      "movement": {
-        "scale": 0.4,
-        "table": "Melee_Ones"
-      },
-      "recharge": {
-        "scale": 0.4,
-        "table": "Melee_Ones"
-      }
-    },
-    "buffDuration": 0.5
+    "damageBuff": {
+      "scale": 0,
+      "table": "Ranged_Ones"
+    }
   }
 };

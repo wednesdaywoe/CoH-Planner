@@ -15,7 +15,7 @@ import { Howl as Howl } from './howl';
 import { Shockwave as Shockwave } from './shockwave';
 import { Shout as Shout } from './shout';
 import { Amplify as Amplify } from './amplify';
-import { SirensSong as SirensSong } from './siren-s-song';
+import { SirensSong as SirensSong } from './sirens-song';
 import { Screech as Screech } from './screech';
 import { DreadfulWail as DreadfulWail } from './dreadful-wail';
 

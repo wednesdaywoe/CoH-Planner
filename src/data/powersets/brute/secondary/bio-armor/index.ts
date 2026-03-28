@@ -14,9 +14,9 @@ import { EfficientAdaptation as EfficientAdaptation } from './efficient-adaptati
 import { OffensiveAdaptation as OffensiveAdaptation } from './offensive-adaptation';
 import { HardenedCarapace as HardenedCarapace } from './hardened-carapace';
 import { Inexhaustible as Inexhaustible } from './inexhaustible';
-import { EvolvingArmor as EvolvingArmor } from './evolving-armor';
-import { EnvironmentalModification as EnvironmentalModification } from './environmental-modification';
-import { Adaptation as Adaptation } from './adaptation';
+import { EvolvingArmor as EvolvingArmor } from './adaptation';
+import { EnvironmentalModification as EnvironmentalModification } from './environmental-adaptation';
+import { Adaptation as Adaptation } from './evolution';
 import { AblativeCarapace as AblativeCarapace } from './ablative-carapace';
 import { DNASiphon as DNASiphon } from './dna-siphon';
 import { GeneticContamination as GeneticContamination } from './genetic-contamination';

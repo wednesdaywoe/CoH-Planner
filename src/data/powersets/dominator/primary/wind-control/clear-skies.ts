@@ -23,31 +23,6 @@ export const ClearSkies: Power = {
   },
   "allowedEnhancements": [],
   "maxSlots": 0,
-  "effects": {
-    "tohitBuff": {
-      "scale": 2.5,
-      "table": "Ranged_Buff_ToHit"
-    },
-    "durations": {
-      "tohitBuff": 2.1,
-      "rechargeBuff": 2.1,
-      "enduranceDiscount": 2.1,
-      "recoveryBuff": 2.1
-    },
-    "rechargeBuff": {
-      "scale": 0.25,
-      "table": "Ranged_Ones"
-    },
-    "enduranceDiscount": {
-      "scale": 0.25,
-      "table": "Ranged_Ones"
-    },
-    "recoveryBuff": {
-      "scale": 0.25,
-      "table": "Ranged_Ones"
-    },
-    "buffDuration": 2.1
-  },
   "requires": "Dominator_Control.Wind_Control.Vacuum && Dominator_Control.Wind_Control.Vortex && (char>accesslevel >= 0)",
   "mechanicType": "parentMechanic"
 };

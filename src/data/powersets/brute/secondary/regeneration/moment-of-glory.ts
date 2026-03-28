@@ -52,6 +52,7 @@ export const MomentofGlory: Power = {
       "knockup": 15,
       "knockback": 15,
       "repel": 15,
+      "mezResistance": 15,
       "damageBuff": 15
     },
     "defenseBuff": {
@@ -144,16 +145,30 @@ export const MomentofGlory: Power = {
       "table": "Melee_Res_Boolean"
     },
     "knockup": {
-      "scale": 2,
+      "scale": 1,
       "table": "Melee_Ones"
     },
     "knockback": {
-      "scale": 2,
+      "scale": 1,
       "table": "Melee_Ones"
     },
     "repel": {
-      "scale": 2,
+      "scale": 1,
       "table": "Melee_Ones"
+    },
+    "mezResistance": {
+      "knockup": {
+        "scale": 1,
+        "table": "Melee_Ones"
+      },
+      "knockback": {
+        "scale": 1,
+        "table": "Melee_Ones"
+      },
+      "repel": {
+        "scale": 1,
+        "table": "Melee_Ones"
+      }
     },
     "damageBuff": {
       "scale": 0.5,

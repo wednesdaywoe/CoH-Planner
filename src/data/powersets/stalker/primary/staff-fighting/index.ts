@@ -12,11 +12,11 @@ import type { Powerset } from '@/types';
 import { MercurialBlow as MercurialBlow } from './mercurial-blow';
 import { PreciseStrike as PreciseStrike } from './precise-strike';
 import { GuardedSpin as GuardedSpin } from './guarded-spin';
-import { AssassinsStaff as AssassinsStaff } from './assassin-s-staff';
+import { AssassinsStaff as AssassinsStaff } from './assassins-staff';
 import { BuildUp as BuildUp } from './build-up';
 import { Placate as Placate } from './placate';
 import { EyeoftheStorm as EyeoftheStorm } from './eye-of-the-storm';
-import { SerpentsReach as SerpentsReach } from './serpent-s-reach';
+import { SerpentsReach as SerpentsReach } from './serpents-reach';
 import { SkySplitter as SkySplitter } from './sky-splitter';
 
 export const powerset: Powerset = {

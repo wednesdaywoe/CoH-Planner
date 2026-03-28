@@ -12,7 +12,7 @@ import type { Powerset } from '@/types';
 import { ShadowPunch as ShadowPunch } from './shadow-punch';
 import { Smite as Smite } from './smite';
 import { ShadowMaul as ShadowMaul } from './shadow-maul';
-import { AssassinsEclipse as AssassinsEclipse } from './assassin-s-eclipse';
+import { AssassinsEclipse as AssassinsEclipse } from './assassins-eclipse';
 import { BuildUp as BuildUp } from './build-up';
 import { Placate as Placate } from './placate';
 import { SiphonLife as SiphonLife } from './siphon-life';

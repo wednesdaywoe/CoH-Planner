@@ -1,38 +1,41 @@
 /**
- * Gash
- * Melee, DMG(Lethal), Foe Knockdown
+ * Beheader
+ * Melee, DMG(Lethal), Foe Knockdown, -Defense
  *
- * Source: brute_melee/battle_axe/beheader.json
+ * Source: brute_melee/battle_axe/gash.json
  */
 
 import type { Power } from '@/types';
 
-export const Gash: Power = {
-  "name": "Gash",
-  "internalName": "Beheader",
-  "available": 1,
-  "description": "Gashes your opponent with your Battle Axe dealing superior damage. This attack is very slow, but can deal a lot damage and knock the target down.",
-  "shortHelp": "Melee, DMG(Lethal), Foe Knockdown",
-  "icon": "battleaxe_beheader.png",
+export const Beheader: Power = {
+  "name": "Beheader",
+  "internalName": "Gash",
+  "available": 0,
+  "description": "This is an attempt to remove your opponent's head from his neck with your Battle Axe. This attack is fairly quick for such a large weapon, and has a chance to cut through your foe's defense and knock them down.",
+  "shortHelp": "Melee, DMG(Lethal), Foe Knockdown, -Defense",
+  "icon": "battleaxe_chop.png",
   "powerType": "Click",
   "effectArea": "SingleTarget",
   "stats": {
-    "accuracy": 1.05,
+    "accuracy": 1.15,
     "range": 7,
-    "recharge": 10,
-    "endurance": 10.192,
-    "castTime": 1.27
+    "recharge": 4,
+    "endurance": 5.2,
+    "castTime": 1
   },
   "allowedEnhancements": [
     "Taunt",
     "EnduranceReduction",
     "Recharge",
     "Knockback",
+    "Defense Debuff",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Accurate Defense Debuff",
     "Brute Archetype Sets",
+    "Defense Debuff",
     "Knockback",
     "Melee Damage",
     "Threat Duration",
@@ -41,13 +44,21 @@ export const Gash: Power = {
   "maxSlots": 6,
   "damage": {
     "type": "Lethal",
-    "scale": 1.96,
+    "scale": 1,
     "table": "Melee_Damage"
   },
   "effects": {
     "knockback": {
       "scale": 0.67,
       "table": "Melee_Ones"
-    }
+    },
+    "defenseDebuff": {
+      "scale": 1,
+      "table": "Melee_Debuff_Def"
+    },
+    "durations": {
+      "defenseDebuff": 6
+    },
+    "buffDuration": 6
   }
 };

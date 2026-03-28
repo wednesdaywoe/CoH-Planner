@@ -12,7 +12,7 @@ import type { Powerset } from '@/types';
 import { Strike as Strike } from './strike';
 import { Swipe as Swipe } from './swipe';
 import { Slash as Slash } from './slash';
-import { AssassinsClaw as AssassinsClaw } from './assassin-s-claw';
+import { AssassinsClaw as AssassinsClaw } from './assassins-claw';
 import { BuildUp as BuildUp } from './build-up';
 import { Placate as Placate } from './placate';
 import { Focus as Focus } from './focus';

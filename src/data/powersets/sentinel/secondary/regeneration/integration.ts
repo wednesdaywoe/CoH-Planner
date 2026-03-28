@@ -34,11 +34,18 @@ export const Integration: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "knockup": {
-      "scale": 110,
-      "table": "Melee_Ones"
+    "mezResistance": {
+      "knockup": {
+        "scale": 100,
+        "table": "Melee_Ones"
+      },
+      "knockback": {
+        "scale": 100,
+        "table": "Melee_Ones"
+      }
     },
     "durations": {
+      "mezResistance": 0.75,
       "knockup": 0.75,
       "knockback": 0.75,
       "hold": 0.75,
@@ -47,8 +54,12 @@ export const Integration: Power = {
       "sleep": 0.75,
       "regenBuff": 0.75
     },
+    "knockup": {
+      "scale": 10,
+      "table": "Melee_Ones"
+    },
     "knockback": {
-      "scale": 110,
+      "scale": 10,
       "table": "Melee_Ones"
     },
     "hold": {

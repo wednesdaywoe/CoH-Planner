@@ -10,13 +10,13 @@
 import type { Powerset } from '@/types';
 
 import { Chop as Chop } from './chop';
-import { Beheader as Beheader } from './beheader';
-import { Gash as Gash } from './gash';
+import { Beheader as Beheader } from './gash';
+import { Gash as Gash } from './beheader';
 import { BuildUp as BuildUp } from './build-up';
 import { Pendulum as Pendulum } from './pendulum';
 import { Taunt as Taunt } from './taunt';
 import { Swoop as Swoop } from './swoop';
-import { AxeCyclone as AxeCyclone } from './axe-cyclone';
+import { AxeCyclone as AxeCyclone } from './whirling-axe';
 import { Cleave as Cleave } from './cleave';
 
 export const powerset: Powerset = {

@@ -14,9 +14,9 @@ import { InitialStrike as InitialStrike } from './initial-strike';
 import { SweepingCross as SweepingCross } from './sweeping-cross';
 import { Taunt as Taunt } from './taunt';
 import { CombatReadiness as CombatReadiness } from './combat-readiness';
-import { RibCracker as RibCracker } from './rib-cracker';
+import { RibCracker as RibCracker } from './throat-strike';
 import { SpinningStrike as SpinningStrike } from './spinning-strike';
-import { ShinBreaker as ShinBreaker } from './shin-breaker';
+import { ShinBreaker as ShinBreaker } from './low-kick';
 import { CrushingUppercut as CrushingUppercut } from './crushing-uppercut';
 
 export const powerset: Powerset = {

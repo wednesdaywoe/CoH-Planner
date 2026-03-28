@@ -11,13 +11,13 @@ import type { Powerset } from '@/types';
 
 import { DeflectionShield as DeflectionShield } from './deflection-shield';
 import { PersonalForceField as PersonalForceField } from './personal-force-field';
-import { RepulsionBolt as RepulsionBolt } from './repulsion-bolt';
+import { RepulsionBolt as RepulsionBolt } from './force-bolt';
 import { InsulationShield as InsulationShield } from './insulation-shield';
-import { DetentionField as DetentionField } from './detention-field';
+import { DetentionField as DetentionField } from './refraction-shield';
 import { DispersionBubble as DispersionBubble } from './dispersion-bubble';
 import { RepulsionField as RepulsionField } from './repulsion-field';
-import { ForceBomb as ForceBomb } from './force-bomb';
-import { DampingBubble as DampingBubble } from './damping-bubble';
+import { ForceBomb as ForceBomb } from './repulsion-bomb';
+import { DampingBubble as DampingBubble } from './force-bubble';
 
 export const powerset: Powerset = {
   id: 'corruptor/force-field',

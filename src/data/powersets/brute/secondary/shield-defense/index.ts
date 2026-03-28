@@ -9,10 +9,10 @@
 
 import type { Powerset } from '@/types';
 
-import { Deflection as Deflection } from './deflection';
-import { BattleAgility as BattleAgility } from './battle-agility';
+import { Deflection as Deflection } from './active-defense';
+import { BattleAgility as BattleAgility } from './deflection';
 import { TrueGrit as TrueGrit } from './true-grit';
-import { ActiveDefense as ActiveDefense } from './active-defense';
+import { ActiveDefense as ActiveDefense } from './battle-agility';
 import { AgainstAllOdds as AgainstAllOdds } from './against-all-odds';
 import { PhalanxFighting as PhalanxFighting } from './phalanx-fighting';
 import { GrantCover as GrantCover } from './grant-cover';

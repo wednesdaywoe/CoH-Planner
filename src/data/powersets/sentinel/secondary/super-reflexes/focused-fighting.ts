@@ -43,10 +43,11 @@ export const FocusedFighting: Power = {
     "durations": {
       "defenseBuff": 0.75,
       "confuse": 0.75,
+      "mezResistance": 0.75,
       "knockup": 0.75,
       "knockback": 0.75,
       "immobilize": 0.75,
-      "elusivity": 0.75
+      "debuffResistance": 0.75
     },
     "confuse": {
       "mag": 1,
@@ -54,12 +55,22 @@ export const FocusedFighting: Power = {
       "table": "Melee_Res_Boolean"
     },
     "effectDuration": 0.75,
+    "mezResistance": {
+      "knockup": {
+        "scale": 100,
+        "table": "Melee_Ones"
+      },
+      "knockback": {
+        "scale": 100,
+        "table": "Melee_Ones"
+      }
+    },
     "knockup": {
-      "scale": 110,
+      "scale": 10,
       "table": "Melee_Ones"
     },
     "knockback": {
-      "scale": 110,
+      "scale": 10,
       "table": "Melee_Ones"
     },
     "immobilize": {
@@ -67,8 +78,8 @@ export const FocusedFighting: Power = {
       "scale": 30,
       "table": "Melee_Res_Boolean"
     },
-    "elusivity": {
-      "all": {
+    "debuffResistance": {
+      "defense": {
         "scale": 0.4,
         "table": "Melee_Res_Boolean"
       }

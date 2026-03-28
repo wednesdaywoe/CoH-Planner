@@ -45,16 +45,27 @@ export const FreezingTouch: Power = {
     "tickRate": 1
   },
   "effects": {
-    "knockup": {
-      "scale": 200,
-      "table": "Melee_Ones"
+    "mezResistance": {
+      "knockup": {
+        "scale": 100,
+        "table": "Melee_Ones"
+      },
+      "knockback": {
+        "scale": 100,
+        "table": "Melee_Ones"
+      }
     },
     "durations": {
+      "mezResistance": 6,
       "knockup": 6,
       "knockback": 6
     },
+    "knockup": {
+      "scale": 100,
+      "table": "Melee_Ones"
+    },
     "knockback": {
-      "scale": 200,
+      "scale": 100,
       "table": "Melee_Ones"
     },
     "hold": {

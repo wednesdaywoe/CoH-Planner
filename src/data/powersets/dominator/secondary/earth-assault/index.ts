@@ -13,7 +13,7 @@ import { StoneMallet as StoneMallet } from './stone-mallet';
 import { StoneSpears as StoneSpears } from './stone-spears';
 import { Tremor as Tremor } from './tremor';
 import { HurlBoulder as HurlBoulder } from './hurl-boulder';
-import { PowerUp as PowerUp } from './power-up';
+import { PowerUp as PowerUp } from './power-boost';
 import { HeavyMallet as HeavyMallet } from './heavy-mallet';
 import { SeismicSmash as SeismicSmash } from './seismic-smash';
 import { MudPots as MudPots } from './mud-pots';

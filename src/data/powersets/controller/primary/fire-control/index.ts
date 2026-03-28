@@ -10,7 +10,7 @@
 import type { Powerset } from '@/types';
 
 import { RingofFire as RingofFire } from './ring-of-fire';
-import { Char as Char } from './char';
+import { Char as Char } from './soot';
 import { FireCages as FireCages } from './fire-cages';
 import { Smoke as Smoke } from './smoke';
 import { HotFeet as HotFeet } from './hot-feet';

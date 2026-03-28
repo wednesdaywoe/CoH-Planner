@@ -14,10 +14,10 @@ import { Tranquilizer as Tranquilizer } from './tranquilizer';
 import { SleepGrenade as SleepGrenade } from './sleep-grenade';
 import { LiquidNitrogen as LiquidNitrogen } from './liquid-nitrogen';
 import { CloakingDevice as CloakingDevice } from './cloaking-device';
-import { SmokeCanister as SmokeCanister } from './smoke-canister';
+import { SmokeCanister as SmokeCanister } from './smoke-grenade';
 import { FlashBang as FlashBang } from './flash-bang';
 import { TearGas as TearGas } from './tear-gas';
-import { TriCannon as TriCannon } from './tri-cannon';
+import { TriCannon as TriCannon } from './gun-drone';
 
 export const powerset: Powerset = {
   id: 'dominator/arsenal-control',

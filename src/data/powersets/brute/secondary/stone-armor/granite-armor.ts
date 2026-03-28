@@ -76,7 +76,7 @@ export const GraniteArmor: Power = {
       "knockup": 0.75,
       "knockback": 0.75,
       "repel": 0.75,
-      "elusivity": 0.75,
+      "debuffResistance": 0.75,
       "rechargeDebuff": 0.75,
       "damageDebuff": 0.75,
       "slow": 0.75
@@ -140,8 +140,8 @@ export const GraniteArmor: Power = {
       "scale": 10,
       "table": "Melee_Ones"
     },
-    "elusivity": {
-      "all": {
+    "debuffResistance": {
+      "defense": {
         "scale": 1,
         "table": "Melee_Res_Boolean"
       }

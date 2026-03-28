@@ -10,7 +10,7 @@
 import type { Powerset } from '@/types';
 
 import { DarkEmbrace as DarkEmbrace } from './dark-embrace';
-import { ShadowDweller as ShadowDweller } from './shadow-dweller';
+import { ShadowDweller as ShadowDweller } from './tenebrous-regeneration';
 import { MurkyCloud as MurkyCloud } from './murky-cloud';
 import { ObsidianShield as ObsidianShield } from './obsidian-shield';
 import { DarkRegeneration as DarkRegeneration } from './dark-regeneration';

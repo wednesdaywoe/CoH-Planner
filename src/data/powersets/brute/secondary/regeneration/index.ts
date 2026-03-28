@@ -12,12 +12,12 @@ import type { Powerset } from '@/types';
 import { FastHealing as FastHealing } from './fast-healing';
 import { Reconstruction as Reconstruction } from './reconstruction';
 import { QuickRecovery as QuickRecovery } from './quick-recovery';
-import { AilmentResistance as AilmentResistance } from './ailment-resistance';
+import { AilmentResistance as AilmentResistance } from './revive';
 import { Integration as Integration } from './integration';
-import { Resilience as Resilience } from './resilience';
+import { Resilience as Resilience } from './resist-disorientation';
 import { InstantHealing as InstantHealing } from './instant-healing';
-import { ReactiveRegeneration as ReactiveRegeneration } from './reactive-regeneration';
-import { SecondWind as SecondWind } from './second-wind';
+import { ReactiveRegeneration as ReactiveRegeneration } from './instant-regeneration';
+import { SecondWind as SecondWind } from './dull-pain';
 import { MomentofGlory as MomentofGlory } from './moment-of-glory';
 
 export const powerset: Powerset = {

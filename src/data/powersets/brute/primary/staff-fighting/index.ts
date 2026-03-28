@@ -18,7 +18,7 @@ import { GuardedSpin as GuardedSpin } from './guarded-spin';
 import { EyeoftheStorm as EyeoftheStorm } from './eye-of-the-storm';
 import { StaffMastery as StaffMastery } from './staff-mastery';
 import { Taunt as Taunt } from './taunt';
-import { SerpentsReach as SerpentsReach } from './serpent-s-reach';
+import { SerpentsReach as SerpentsReach } from './serpents-reach';
 import { InnocuousStrikes as InnocuousStrikes } from './innocuous-strikes';
 import { SkySplitter as SkySplitter } from './sky-splitter';
 

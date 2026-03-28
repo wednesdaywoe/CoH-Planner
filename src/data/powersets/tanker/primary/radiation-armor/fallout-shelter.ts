@@ -45,6 +45,7 @@ export const FalloutShelter: Power = {
       "immobilize": 0.75,
       "stun": 0.75,
       "sleep": 0.75,
+      "mezResistance": 0.75,
       "knockup": 0.75,
       "knockback": 0.75,
       "resistance": 0.75,
@@ -65,12 +66,22 @@ export const FalloutShelter: Power = {
       "scale": 30,
       "table": "Melee_Res_Boolean"
     },
+    "mezResistance": {
+      "knockup": {
+        "scale": 100,
+        "table": "Melee_Ones"
+      },
+      "knockback": {
+        "scale": 100,
+        "table": "Melee_Ones"
+      }
+    },
     "knockup": {
-      "scale": 110,
+      "scale": 10,
       "table": "Melee_Ones"
     },
     "knockback": {
-      "scale": 110,
+      "scale": 10,
       "table": "Melee_Ones"
     },
     "resistance": {

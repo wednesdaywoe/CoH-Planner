@@ -17,7 +17,7 @@ import { ShadowFall as ShadowFall } from './shadow-fall';
 import { FearsomeStare as FearsomeStare } from './fearsome-stare';
 import { PetrifyingGaze as PetrifyingGaze } from './petrifying-gaze';
 import { BlackHole as BlackHole } from './black-hole';
-import { DarkServant as DarkServant } from './dark-servant';
+import { DarkServant as DarkServant } from './chill-of-the-night';
 
 export const powerset: Powerset = {
   id: 'defender/dark-miasma',

@@ -75,15 +75,15 @@ export const Overload: Power = {
     "durations": {
       "defenseBuff": 30,
       "maxHPBuff": 30,
-      "elusivity": 30,
+      "debuffResistance": 30,
       "recoveryBuff": 30
     },
     "maxHPBuff": {
       "scale": 3,
       "table": "Melee_HealSelf"
     },
-    "elusivity": {
-      "all": {
+    "debuffResistance": {
+      "defense": {
         "scale": 1,
         "table": "Melee_Res_Boolean"
       }

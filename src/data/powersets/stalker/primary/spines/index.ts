@@ -12,7 +12,7 @@ import type { Powerset } from '@/types';
 import { BarbSwipe as BarbSwipe } from './barb-swipe';
 import { Lunge as Lunge } from './lunge';
 import { SpineBurst as SpineBurst } from './spine-burst';
-import { AssassinsImpaler as AssassinsImpaler } from './assassin-s-impaler';
+import { AssassinsImpaler as AssassinsImpaler } from './assassins-impaler';
 import { BuildUp as BuildUp } from './build-up';
 import { Placate as Placate } from './placate';
 import { Impale as Impale } from './impale';

@@ -53,18 +53,19 @@ export const StoneCages: Power = {
       "scale": 22.5,
       "table": "Ranged_Immobilize"
     },
-    "knockup": {
-      "scale": 100,
-      "table": "Ranged_Ones"
+    "mezResistance": {
+      "knockup": {
+        "scale": 100,
+        "table": "Ranged_Ones"
+      },
+      "knockback": {
+        "scale": 100,
+        "table": "Ranged_Ones"
+      }
     },
     "durations": {
-      "knockup": 12,
-      "knockback": 12,
+      "mezResistance": 12,
       "defenseDebuff": 12
-    },
-    "knockback": {
-      "scale": 100,
-      "table": "Ranged_Ones"
     },
     "defenseDebuff": {
       "scale": 2,

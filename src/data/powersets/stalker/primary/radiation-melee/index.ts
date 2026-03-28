@@ -12,7 +12,7 @@ import type { Powerset } from '@/types';
 import { ContaminatedStrike as ContaminatedStrike } from './contaminated-strike';
 import { RadioactiveSmash as RadioactiveSmash } from './radioactive-smash';
 import { ProtonSweep as ProtonSweep } from './proton-sweep';
-import { AssassinsCorruption as AssassinsCorruption } from './assassin-s-corruption';
+import { AssassinsCorruption as AssassinsCorruption } from './assassins-corruption';
 import { BuildUp as BuildUp } from './build-up';
 import { Placate as Placate } from './placate';
 import { RadiationSiphon as RadiationSiphon } from './radiation-siphon';

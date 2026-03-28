@@ -44,7 +44,6 @@ export const FocusedSenses: Power = {
       "defenseBuff": 0.75,
       "debuffResistance": 0.75,
       "perceptionBuff": 0.75,
-      "elusivity": 0.75,
       "hold": 0.75,
       "stun": 0.75,
       "sleep": 0.75
@@ -53,17 +52,15 @@ export const FocusedSenses: Power = {
       "perception": {
         "scale": 0.6,
         "table": "Melee_Ones"
+      },
+      "defense": {
+        "scale": 0.4,
+        "table": "Melee_Res_Boolean"
       }
     },
     "perceptionBuff": {
       "scale": 0.6,
       "table": "Melee_Ones"
-    },
-    "elusivity": {
-      "all": {
-        "scale": 0.4,
-        "table": "Melee_Res_Boolean"
-      }
     },
     "hold": {
       "mag": 1,

@@ -16,8 +16,8 @@ import { Whitecap as Whitecap } from './whitecap';
 import { TidePool as TidePool } from './tide-pool';
 import { Brine as Brine } from './brine';
 import { ShiftingTides as ShiftingTides } from './shifting-tides';
-import { BarrierReef as BarrierReef } from './barrier-reef';
-import { PoweroftheDepths as PoweroftheDepths } from './power-of-the-depths';
+import { BarrierReef as BarrierReef } from './wellspring';
+import { PoweroftheDepths as PoweroftheDepths } from './call-depths';
 
 export const powerset: Powerset = {
   id: 'mastermind/marine-affinity',

@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { StingoftheWasp as StingoftheWasp } from './sting-of-the-wasp';
-import { GamblersCut as GamblersCut } from './gambler-s-cut';
-import { FlashingSteel as FlashingSteel } from './flashing-steel';
+import { StingoftheWasp as StingoftheWasp } from './hack';
+import { GamblersCut as GamblersCut } from './slash';
+import { FlashingSteel as FlashingSteel } from './slice';
 import { BuildUp as BuildUp } from './build-up';
-import { DivineAvalanche as DivineAvalanche } from './divine-avalanche';
-import { CallingtheWolf as CallingtheWolf } from './calling-the-wolf';
-import { TheLotusDrops as TheLotusDrops } from './the-lotus-drops';
-import { SoaringDragon as SoaringDragon } from './soaring-dragon';
-import { GoldenDragonfly as GoldenDragonfly } from './golden-dragonfly';
+import { DivineAvalanche as DivineAvalanche } from './parry';
+import { CallingtheWolf as CallingtheWolf } from './taunt';
+import { TheLotusDrops as TheLotusDrops } from './whirling-sword';
+import { SoaringDragon as SoaringDragon } from './disembowel';
+import { GoldenDragonfly as GoldenDragonfly } from './head-splitter';
 
 export const powerset: Powerset = {
   id: 'scrapper/katana',

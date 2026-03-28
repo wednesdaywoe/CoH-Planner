@@ -12,7 +12,7 @@ import type { Powerset } from '@/types';
 import { Burst as Burst } from './burst';
 import { Buttstroke as Buttstroke } from './buttstroke';
 import { Buckshot as Buckshot } from './buckshot';
-import { ElbowStrike as ElbowStrike } from './elbow-strike';
+import { ElbowStrike as ElbowStrike } from './heavy-blow';
 import { PowerUp as PowerUp } from './power-up';
 import { TripMine as TripMine } from './trip-mine';
 import { TargetingDrone as TargetingDrone } from './targeting-drone';

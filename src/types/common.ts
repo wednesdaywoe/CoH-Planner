@@ -70,7 +70,7 @@ export type EnhancementStatType =
 // POWER TYPES
 // ============================================
 
-export type PowerType = 'Click' | 'Toggle' | 'Auto' | 'Passive';
+export type PowerType = 'Click' | 'Toggle' | 'Auto' | 'Passive' | 'Global Enhancement';
 
 export type TargetType =
   | 'Self'

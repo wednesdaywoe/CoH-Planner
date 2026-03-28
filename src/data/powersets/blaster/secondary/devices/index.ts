@@ -10,14 +10,14 @@
 import type { Powerset } from '@/types';
 
 import { Caltrops as Caltrops } from './caltrops';
-import { ToxicWebGrenade as ToxicWebGrenade } from './toxic-web-grenade';
+import { ToxicWebGrenade as ToxicWebGrenade } from './web-grenade';
 import { Taser as Taser } from './taser';
 import { TargetingDrone as TargetingDrone } from './targeting-drone';
 import { SmokeGrenade as SmokeGrenade } from './smoke-grenade';
-import { FieldOperative as FieldOperative } from './field-operative';
+import { FieldOperative as FieldOperative } from './cloaking-device';
 import { TripMine as TripMine } from './trip-mine';
-import { RemoteBomb as RemoteBomb } from './remote-bomb';
-import { GunDrone as GunDrone } from './gun-drone';
+import { RemoteBomb as RemoteBomb } from './time-bomb';
+import { GunDrone as GunDrone } from './auto-turret';
 
 export const powerset: Powerset = {
   id: 'blaster/devices',

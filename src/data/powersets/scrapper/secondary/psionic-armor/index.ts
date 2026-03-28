@@ -14,7 +14,7 @@ import { PsychicWall as PsychicWall } from './psychic-wall';
 import { MaskPresence as MaskPresence } from './mask-presence';
 import { ImpenetrableMind as ImpenetrableMind } from './impenetrable-mind';
 import { DevourPsyche as DevourPsyche } from './devour-psyche';
-import { PsychokineticBarrier as PsychokineticBarrier } from './psychokinetic-barrier';
+import { PsychokineticBarrier as PsychokineticBarrier } from './fortify-mind';
 import { Precognition as Precognition } from './precognition';
 import { AuraofInsanity as AuraofInsanity } from './aura-of-insanity';
 import { MementoMori as MementoMori } from './memento-mori';

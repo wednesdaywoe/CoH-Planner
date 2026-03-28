@@ -598,10 +598,23 @@ export function mapEnhancementUid(
     };
   }
 
-  const { setId, pieceNum, attuned } = parsed;
+  let { setId, pieceNum, attuned } = parsed;
 
   // Look up the IO set
   let ioSet = getIOSet(setId);
+
+  // For Superior_Attuned_ UIDs where the set name doesn't already include "superior_",
+  // try the superior variant (e.g., "blistering_cold" → "superior_blistering_cold").
+  // Mids uses "Superior_Attuned_Blistering_Cold" for winter sets but our data stores
+  // the superior version as "superior_blistering_cold".
+  if (!ioSet && attuned && !setId.startsWith('superior_')) {
+    const superiorId = `superior_${setId}`;
+    const superiorSet = getIOSet(superiorId);
+    if (superiorSet) {
+      ioSet = superiorSet;
+      setId = superiorId;
+    }
+  }
 
   // Fallback: try name-based lookup
   if (!ioSet) {

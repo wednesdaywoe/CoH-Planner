@@ -16,7 +16,7 @@ import { StunningShot as StunningShot } from './stunning-shot';
 import { Aim as Aim } from './aim';
 import { ExplosiveArrow as ExplosiveArrow } from './explosive-arrow';
 import { BlazingArrow as BlazingArrow } from './blazing-arrow';
-import { PerfectShot as PerfectShot } from './perfect-shot';
+import { PerfectShot as PerfectShot } from './ranged-shot';
 import { RainofArrows as RainofArrows } from './rain-of-arrows';
 
 export const powerset: Powerset = {

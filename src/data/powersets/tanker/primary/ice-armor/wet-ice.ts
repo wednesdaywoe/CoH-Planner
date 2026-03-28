@@ -30,11 +30,18 @@ export const WetIce: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "knockup": {
-      "scale": 110,
-      "table": "Melee_Ones"
+    "mezResistance": {
+      "knockup": {
+        "scale": 100,
+        "table": "Melee_Ones"
+      },
+      "knockback": {
+        "scale": 100,
+        "table": "Melee_Ones"
+      }
     },
     "durations": {
+      "mezResistance": 0.75,
       "knockup": 0.75,
       "knockback": 0.75,
       "hold": 0.75,
@@ -43,11 +50,14 @@ export const WetIce: Power = {
       "sleep": 0.75,
       "debuffResistance": 0.75,
       "resistance": 0.75,
-      "defenseBuff": 0.75,
-      "elusivity": 0.75
+      "defenseBuff": 0.75
+    },
+    "knockup": {
+      "scale": 10,
+      "table": "Melee_Ones"
     },
     "knockback": {
-      "scale": 110,
+      "scale": 10,
       "table": "Melee_Ones"
     },
     "hold": {
@@ -79,6 +89,10 @@ export const WetIce: Power = {
       "recharge": {
         "scale": 0.6,
         "table": "Melee_Ones"
+      },
+      "defense": {
+        "scale": 0.4,
+        "table": "Melee_Res_Boolean"
       }
     },
     "resistance": {
@@ -119,12 +133,6 @@ export const WetIce: Power = {
       "toxic": {
         "scale": 0.1,
         "table": "Melee_Buff_Def"
-      }
-    },
-    "elusivity": {
-      "all": {
-        "scale": 0.4,
-        "table": "Melee_Res_Boolean"
       }
     },
     "buffDuration": 0.75

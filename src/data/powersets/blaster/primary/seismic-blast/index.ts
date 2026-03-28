@@ -11,7 +11,7 @@ import type { Powerset } from '@/types';
 
 import { Encase as Encase } from './encase';
 import { Shatter as Shatter } from './shatter';
-import { SeismicShockwaves as SeismicShockwaves } from './seismic-shockwaves';
+import { SeismicShockwaves as SeismicShockwaves } from './shockwaves';
 import { RockShards as RockShards } from './rock-shards';
 import { Entomb as Entomb } from './entomb';
 import { SeismicForce as SeismicForce } from './seismic-force';

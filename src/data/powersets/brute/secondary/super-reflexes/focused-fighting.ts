@@ -43,7 +43,7 @@ export const FocusedFighting: Power = {
     "durations": {
       "defenseBuff": 0.75,
       "confuse": 0.75,
-      "elusivity": 0.75
+      "debuffResistance": 0.75
     },
     "confuse": {
       "mag": 1,
@@ -51,8 +51,8 @@ export const FocusedFighting: Power = {
       "table": "Melee_Res_Boolean"
     },
     "effectDuration": 0.75,
-    "elusivity": {
-      "all": {
+    "debuffResistance": {
+      "defense": {
         "scale": 0.4,
         "table": "Melee_Res_Boolean"
       }

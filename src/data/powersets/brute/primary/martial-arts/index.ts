@@ -14,9 +14,9 @@ import { ThunderKick as ThunderKick } from './thunder-kick';
 import { CobraStrike as CobraStrike } from './cobra-strike';
 import { FocusChi as FocusChi } from './focus-chi';
 import { CraneKick as CraneKick } from './crane-kick';
-import { WarriorsProvocation as WarriorsProvocation } from './warrior-s-provocation';
+import { WarriorsProvocation as WarriorsProvocation } from './warriors-provocation';
 import { CripplingAxeKick as CripplingAxeKick } from './crippling-axe-kick';
-import { DragonsTail as DragonsTail } from './dragon-s-tail';
+import { DragonsTail as DragonsTail } from './dragons-tail';
 import { EaglesClaw as EaglesClaw } from './eagles-claw';
 
 export const powerset: Powerset = {

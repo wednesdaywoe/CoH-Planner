@@ -13,9 +13,9 @@ import { Blind as Blind } from './blind';
 import { SpectralWounds as SpectralWounds } from './spectral-wounds';
 import { Deceive as Deceive } from './deceive';
 import { Flash as Flash } from './flash';
-import { SuperiorInvisibility as SuperiorInvisibility } from './superior-invisibility';
+import { SuperiorInvisibility as SuperiorInvisibility } from './invisibility';
 import { GroupInvisibility as GroupInvisibility } from './group-invisibility';
-import { PhantomArmy as PhantomArmy } from './phantom-army';
+import { PhantomArmy as PhantomArmy } from './decoy';
 import { SpectralTerror as SpectralTerror } from './spectral-terror';
 import { Phantasm as Phantasm } from './phantasm';
 

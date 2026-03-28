@@ -358,6 +358,8 @@ const PAIRED_STATS: Record<string, string[]> = {
   ressl: ['resSmashing', 'resLethal'],
   resfc: ['resFire', 'resCold'],
   resen: ['resEnergy', 'resNegative'],
+  // +Res(Recharge Debuff) set bonuses also provide Slow resistance
+  debuffresistrecharge: ['debuffResistRecharge', 'debuffResistSlow'],
 };
 
 // ============================================

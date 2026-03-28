@@ -11,7 +11,7 @@ import type { Powerset } from '@/types';
 
 import { RejuvenatingCircuit as RejuvenatingCircuit } from './rejuvenating-circuit';
 import { Shock as Shock } from './shock';
-import { GalvanicSentinel as GalvanicSentinel } from './galvanic-sentinel';
+import { GalvanicSentinel as GalvanicSentinel } from './discharge';
 import { EnergizingCircuit as EnergizingCircuit } from './energizing-circuit';
 import { FaradayCage as FaradayCage } from './faraday-cage';
 import { EmpoweringCircuit as EmpoweringCircuit } from './empowering-circuit';

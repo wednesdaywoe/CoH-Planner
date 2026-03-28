@@ -12,10 +12,10 @@ import type { Powerset } from '@/types';
 import { SonicThrust as SonicThrust } from './sonic-thrust';
 import { StridentEcho as StridentEcho } from './strident-echo';
 import { Attune as Attune } from './attune';
-import { SoundBooster as SoundBooster } from './sound-booster';
+import { SoundBooster as SoundBooster } from './build-up';
 import { SonicClap as SonicClap } from './sonic-clap';
 import { Taunt as Taunt } from './taunt';
-import { SandmansWhisper as SandmansWhisper } from './sandman-s-whisper';
+import { SandmansWhisper as SandmansWhisper } from './sandmans-whisper';
 import { DeafeningWave as DeafeningWave } from './deafening-wave';
 import { Earsplitter as Earsplitter } from './earsplitter';
 

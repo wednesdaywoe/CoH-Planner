@@ -15,9 +15,9 @@ import { IceArrow as IceArrow } from './ice-arrow';
 import { Upshot as Upshot } from './upshot';
 import { FlashArrow as FlashArrow } from './flash-arrow';
 import { EagleEye as EagleEye } from './eagle-eye';
-import { Gymnastics as Gymnastics } from './gymnastics';
-import { ESDArrow as ESDArrow } from './esd-arrow';
-import { OilSlickArrow as OilSlickArrow } from './oil-slick-arrow';
+import { Gymnastics as Gymnastics } from './quickness';
+import { ESDArrow as ESDArrow } from './emp-arrow';
+import { OilSlickArrow as OilSlickArrow } from './gymnastics';
 
 export const powerset: Powerset = {
   id: 'blaster/tactical-arrow',

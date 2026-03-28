@@ -12,10 +12,10 @@ import type { Powerset } from '@/types';
 import { Barrage as Barrage } from './barrage';
 import { EnergyPunch as EnergyPunch } from './energy-punch';
 import { BoneSmasher as BoneSmasher } from './bone-smasher';
-import { AssassinsStrike as AssassinsStrike } from './assassin-s-strike';
+import { AssassinsStrike as AssassinsStrike } from './assassins-strike';
 import { BuildUp as BuildUp } from './build-up';
 import { Placate as Placate } from './placate';
-import { PowerCrash as PowerCrash } from './power-crash';
+import { PowerCrash as PowerCrash } from './stun';
 import { TotalFocus as TotalFocus } from './total-focus';
 import { EnergyTransfer as EnergyTransfer } from './energy-transfer';
 

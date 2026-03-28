@@ -14,9 +14,9 @@ import { PsychicWall as PsychicWall } from './psychic-wall';
 import { PsionicShield as PsionicShield } from './psionic-shield';
 import { ImpenetrableMind as ImpenetrableMind } from './impenetrable-mind';
 import { DevourPsyche as DevourPsyche } from './devour-psyche';
-import { PsychokineticBarrier as PsychokineticBarrier } from './psychokinetic-barrier';
+import { PsychokineticBarrier as PsychokineticBarrier } from './fortify-mind';
 import { Precognition as Precognition } from './precognition';
-import { AuraofMadness as AuraofMadness } from './aura-of-madness';
+import { AuraofMadness as AuraofMadness } from './aura-of-insanity';
 import { MementoMori as MementoMori } from './memento-mori';
 
 export const powerset: Powerset = {

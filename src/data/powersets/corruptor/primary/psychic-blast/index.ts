@@ -16,7 +16,7 @@ import { PsychicScream as PsychicScream } from './psychic-scream';
 import { WillDomination as WillDomination } from './will-domination';
 import { PsionicLance as PsionicLance } from './psionic-lance';
 import { PsionicTornado as PsionicTornado } from './psionic-tornado';
-import { ScrambleMinds as ScrambleMinds } from './scramble-minds';
+import { ScrambleMinds as ScrambleMinds } from './scramble-thoughts';
 import { PsychicWail as PsychicWail } from './psychic-wail';
 
 export const powerset: Powerset = {

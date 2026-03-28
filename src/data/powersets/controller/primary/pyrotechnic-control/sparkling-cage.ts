@@ -60,12 +60,14 @@ export const SparklingCage: Power = {
       "scale": 15,
       "table": "Ranged_Immobilize"
     },
-    "knockback": {
-      "scale": 100,
-      "table": "Ranged_Ones"
+    "mezResistance": {
+      "knockback": {
+        "scale": 100,
+        "table": "Ranged_Ones"
+      }
     },
     "durations": {
-      "knockback": 15
+      "mezResistance": 15
     },
     "buffDuration": 15
   }

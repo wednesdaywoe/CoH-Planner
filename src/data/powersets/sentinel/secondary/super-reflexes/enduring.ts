@@ -38,7 +38,7 @@ export const Enduring: Power = {
     "durations": {
       "recoveryBuff": 0.75,
       "defenseBuff": 0.75,
-      "elusivity": 0.75,
+      "debuffResistance": 0.75,
       "resistance": 0.75
     },
     "defenseBuff": {
@@ -47,8 +47,8 @@ export const Enduring: Power = {
         "table": "Melee_Buff_Def"
       }
     },
-    "elusivity": {
-      "all": {
+    "debuffResistance": {
+      "defense": {
         "scale": 0.2,
         "table": "Melee_Res_Boolean"
       }

@@ -14,7 +14,7 @@ import { ZombieHorde as ZombieHorde } from './zombie-horde';
 import { Gloom as Gloom } from './gloom';
 import { EnchantUndead as EnchantUndead } from './enchant-undead';
 import { LifeDrain as LifeDrain } from './life-drain';
-import { GraveKnight as GraveKnight } from './grave-knight';
+import { GraveKnight as GraveKnight } from './skeletal-warriors';
 import { SoulExtraction as SoulExtraction } from './soul-extraction';
 import { Lich as Lich } from './lich';
 import { DarkEmpowerment as DarkEmpowerment } from './dark-empowerment';

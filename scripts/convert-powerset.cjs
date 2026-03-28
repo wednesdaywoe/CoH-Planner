@@ -510,6 +510,10 @@ function collectAllTemplates(effects) {
       if (req.includes('kMeter > 0') || req.includes('kMeter >=')) continue;
       // Scourge / random proc conditional damage
       if (req.includes('rand()')) continue;
+      // Mode-based conditional bonuses (Bio Armor Adaptation, Kheldian forms, etc.)
+      // These are mutually exclusive modes — the base unconditional effects provide
+      // the default values; mode-specific bonuses would overwrite them incorrectly
+      if (req.includes('Source.Mode?') || req.includes('kMode')) continue;
     }
 
     // Collect templates from this level

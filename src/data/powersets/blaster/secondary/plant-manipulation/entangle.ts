@@ -60,17 +60,18 @@ export const Entangle: Power = {
       "scale": 15,
       "table": "Ranged_Immobilize"
     },
-    "knockup": {
-      "scale": 100,
-      "table": "Ranged_Ones"
+    "mezResistance": {
+      "knockup": {
+        "scale": 100,
+        "table": "Ranged_Ones"
+      },
+      "knockback": {
+        "scale": 100,
+        "table": "Ranged_Ones"
+      }
     },
     "durations": {
-      "knockup": 15,
-      "knockback": 15
-    },
-    "knockback": {
-      "scale": 100,
-      "table": "Ranged_Ones"
+      "mezResistance": 15
     },
     "damageBuff": {
       "scale": 0,

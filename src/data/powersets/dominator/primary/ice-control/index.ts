@@ -13,7 +13,7 @@ import { BlockofIce as BlockofIce } from './block-of-ice';
 import { Chilblain as Chilblain } from './chilblain';
 import { Frostbite as Frostbite } from './frostbite';
 import { ArcticAir as ArcticAir } from './arctic-air';
-import { ColdSnap as ColdSnap } from './cold-snap';
+import { ColdSnap as ColdSnap } from './shiver';
 import { IceSlick as IceSlick } from './ice-slick';
 import { FlashFreeze as FlashFreeze } from './flash-freeze';
 import { Glacier as Glacier } from './glacier';

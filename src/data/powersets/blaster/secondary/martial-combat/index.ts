@@ -9,12 +9,12 @@
 
 import type { Powerset } from '@/types';
 
-import { ReachfortheLimit as ReachfortheLimit } from './reach-for-the-limit';
+import { ReachfortheLimit as ReachfortheLimit } from './build-up-proc';
 import { KiPush as KiPush } from './ki-push';
 import { StormKick as StormKick } from './storm-kick';
 import { ReachfortheLimit as ReachfortheLimit2 } from './reach-for-the-limit';
 import { BurstofSpeed as BurstofSpeed } from './burst-of-speed';
-import { DragonsTail as DragonsTail } from './dragon-s-tail';
+import { DragonsTail as DragonsTail } from './dragons-tail';
 import { ReactionTime as ReactionTime } from './reaction-time';
 import { InnerWill as InnerWill } from './inner-will';
 import { ThrowSand as ThrowSand } from './throw-sand';

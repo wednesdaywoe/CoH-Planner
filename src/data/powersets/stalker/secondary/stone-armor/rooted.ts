@@ -42,11 +42,15 @@ export const Rooted: Power = {
       "recovery": {
         "scale": 2,
         "table": "Melee_Res_Boolean"
+      },
+      "defense": {
+        "scale": 0.4,
+        "table": "Melee_Res_Boolean"
       }
     },
     "durations": {
       "debuffResistance": 0.75,
-      "elusivity": 0.75,
+      "mezResistance": 0.75,
       "knockup": 0.75,
       "knockback": 0.75,
       "repel": 0.75,
@@ -56,22 +60,30 @@ export const Rooted: Power = {
       "sleep": 0.75,
       "regenBuff": 0.75
     },
-    "elusivity": {
-      "all": {
-        "scale": 0.4,
-        "table": "Melee_Res_Boolean"
+    "mezResistance": {
+      "knockup": {
+        "scale": 100,
+        "table": "Melee_Ones"
+      },
+      "knockback": {
+        "scale": 100,
+        "table": "Melee_Ones"
+      },
+      "repel": {
+        "scale": 10,
+        "table": "Melee_Ones"
       }
     },
     "knockup": {
-      "scale": 110,
+      "scale": 10,
       "table": "Melee_Ones"
     },
     "knockback": {
-      "scale": 110,
+      "scale": 10,
       "table": "Melee_Ones"
     },
     "repel": {
-      "scale": 20,
+      "scale": 10,
       "table": "Melee_Ones"
     },
     "hold": {

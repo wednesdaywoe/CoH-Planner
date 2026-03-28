@@ -13,7 +13,7 @@ import { CallSwarm as CallSwarm } from './call-swarm';
 import { SummonWolves as SummonWolves } from './summon-wolves';
 import { CallHawk as CallHawk } from './call-hawk';
 import { TrainBeasts as TrainBeasts } from './train-beasts';
-import { CallRavens as CallRavens } from './call-ravens';
+import { CallRavens as CallRavens } from './call-locusts';
 import { SummonLions as SummonLions } from './summon-lions';
 import { FortifyPack as FortifyPack } from './fortify-pack';
 import { SummonDireWolf as SummonDireWolf } from './summon-dire-wolf';

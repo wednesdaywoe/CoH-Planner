@@ -55,16 +55,17 @@ export const Fossilize: Power = {
     },
     "durations": {
       "defenseDebuff": 12,
-      "knockup": 12,
-      "knockback": 12
+      "mezResistance": 12
     },
-    "knockup": {
-      "scale": 100,
-      "table": "Ranged_Ones"
-    },
-    "knockback": {
-      "scale": 100,
-      "table": "Ranged_Ones"
+    "mezResistance": {
+      "knockup": {
+        "scale": 100,
+        "table": "Ranged_Ones"
+      },
+      "knockback": {
+        "scale": 100,
+        "table": "Ranged_Ones"
+      }
     },
     "buffDuration": 12
   }

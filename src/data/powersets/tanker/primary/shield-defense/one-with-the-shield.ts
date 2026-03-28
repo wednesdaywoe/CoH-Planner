@@ -71,6 +71,7 @@ export const OnewiththeShield: Power = {
       "maxHPBuff": 120,
       "knockup": 120,
       "knockback": 120,
+      "mezResistance": 120,
       "repel": 120,
       "recoveryBuff": 120,
       "hold": 120,
@@ -83,15 +84,29 @@ export const OnewiththeShield: Power = {
       "table": "Melee_HealSelf"
     },
     "knockup": {
-      "scale": 110,
+      "scale": 100,
       "table": "Melee_Ones"
     },
     "knockback": {
-      "scale": 110,
+      "scale": 100,
       "table": "Melee_Ones"
     },
+    "mezResistance": {
+      "knockup": {
+        "scale": 10,
+        "table": "Melee_Ones"
+      },
+      "knockback": {
+        "scale": 10,
+        "table": "Melee_Ones"
+      },
+      "repel": {
+        "scale": 10,
+        "table": "Melee_Ones"
+      }
+    },
     "repel": {
-      "scale": 20,
+      "scale": 10,
       "table": "Melee_Ones"
     },
     "recoveryBuff": {

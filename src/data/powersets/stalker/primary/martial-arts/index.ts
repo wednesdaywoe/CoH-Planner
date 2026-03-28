@@ -12,7 +12,7 @@ import type { Powerset } from '@/types';
 import { StormKick as StormKick } from './storm-kick';
 import { ThunderKick as ThunderKick } from './thunder-kick';
 import { CripplingAxeKick as CripplingAxeKick } from './crippling-axe-kick';
-import { AssassinsBlow as AssassinsBlow } from './assassin-s-blow';
+import { AssassinsBlow as AssassinsBlow } from './assassins-blow';
 import { FocusChi as FocusChi } from './focus-chi';
 import { Placate as Placate } from './placate';
 import { CobraStrike as CobraStrike } from './cobra-strike';

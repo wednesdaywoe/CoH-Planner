@@ -10,13 +10,13 @@
 import type { Powerset } from '@/types';
 
 import { MentalBlast as MentalBlast } from './mental-blast';
-import { DominateWill as DominateWill } from './dominate-will';
+import { DominateWill as DominateWill } from './will-domination';
 import { TelekineticBlast as TelekineticBlast } from './telekinetic-blast';
-import { PsionicDarts as PsionicDarts } from './psionic-darts';
-import { PsychicFocus as PsychicFocus } from './psychic-focus';
+import { PsionicDarts as PsionicDarts } from './psionic-dart';
+import { PsychicFocus as PsychicFocus } from './aim';
 import { PsionicLance as PsionicLance } from './psionic-lance';
 import { PsionicTornado as PsionicTornado } from './psionic-tornado';
-import { ScrambleMinds as ScrambleMinds } from './scramble-minds';
+import { ScrambleMinds as ScrambleMinds } from './scramble-thoughts';
 import { PsychicWail as PsychicWail } from './psychic-wail';
 
 export const powerset: Powerset = {

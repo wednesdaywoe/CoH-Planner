@@ -13,7 +13,7 @@ import { Gust as Gust } from './gust';
 import { Hailstones as Hailstones } from './hailstones';
 import { JetStream as JetStream } from './jet-stream';
 import { StormCell as StormCell } from './storm-cell';
-import { Intensify as Intensify } from './intensify';
+import { Intensify as Intensify } from './aim';
 import { LightningStrike as LightningStrike } from './lightning-strike';
 import { ChainLightning as ChainLightning } from './chain-lightning';
 import { Cloudburst as Cloudburst } from './cloudburst';

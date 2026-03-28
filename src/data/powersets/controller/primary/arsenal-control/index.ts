@@ -17,7 +17,7 @@ import { CloakingDevice as CloakingDevice } from './cloaking-device';
 import { SmokeCanister as SmokeCanister } from './smoke-canister';
 import { FlashBang as FlashBang } from './flash-bang';
 import { TearGas as TearGas } from './tear-gas';
-import { TriCannon as TriCannon } from './tri-cannon';
+import { TriCannon as TriCannon } from './gun-drone';
 
 export const powerset: Powerset = {
   id: 'controller/arsenal-control',

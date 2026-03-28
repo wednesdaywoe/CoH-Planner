@@ -14,7 +14,7 @@ import { Smite as Smite } from './smite';
 import { ShadowMaul as ShadowMaul } from './shadow-maul';
 import { TouchofFear as TouchofFear } from './touch-of-fear';
 import { SiphonLife as SiphonLife } from './siphon-life';
-import { Confront as Confront } from './confront';
+import { Confront as Confront } from './taunt';
 import { DarkConsumption as DarkConsumption } from './dark-consumption';
 import { SoulDrain as SoulDrain } from './soul-drain';
 import { MidnightGrasp as MidnightGrasp } from './midnight-grasp';

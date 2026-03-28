@@ -16,7 +16,7 @@ import { BuildUp as BuildUp } from './build-up';
 import { Pendulum as Pendulum } from './pendulum';
 import { Confront as Confront } from './confront';
 import { Swoop as Swoop } from './swoop';
-import { AxeCyclone as AxeCyclone } from './axe-cyclone';
+import { AxeCyclone as AxeCyclone } from './whirling-axe';
 import { Cleave as Cleave } from './cleave';
 
 export const powerset: Powerset = {

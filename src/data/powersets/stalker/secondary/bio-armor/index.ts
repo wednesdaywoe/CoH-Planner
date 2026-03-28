@@ -16,7 +16,7 @@ import { HardenedCarapace as HardenedCarapace } from './hardened-carapace';
 import { Hide as Hide } from './hide';
 import { BoundlessEnergy as BoundlessEnergy } from './boundless-energy';
 import { Adaptation as Adaptation } from './adaptation';
-import { EnvironmentalModification as EnvironmentalModification } from './environmental-modification';
+import { EnvironmentalModification as EnvironmentalModification } from './environmental-adaptation';
 import { AblativeCarapace as AblativeCarapace } from './ablative-carapace';
 import { DNASiphon as DNASiphon } from './dna-siphon';
 import { GeneticCorruption as GeneticCorruption } from './genetic-corruption';

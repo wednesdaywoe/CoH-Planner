@@ -16,7 +16,7 @@ import { FocusChi as FocusChi } from './focus-chi';
 import { CraneKick as CraneKick } from './crane-kick';
 import { WarriorsChallenge as WarriorsChallenge } from './warriors-challenge';
 import { CripplingAxeKick as CripplingAxeKick } from './crippling-axe-kick';
-import { DragonsTail as DragonsTail } from './dragon-s-tail';
+import { DragonsTail as DragonsTail } from './dragons-tail';
 import { EaglesClaw as EaglesClaw } from './eagles-claw';
 
 export const powerset: Powerset = {

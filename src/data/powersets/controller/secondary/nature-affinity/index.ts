@@ -9,14 +9,14 @@
 
 import type { Powerset } from '@/types';
 
-import { CorrosiveEnzymes as CorrosiveEnzymes } from './corrosive-enzymes';
+import { CorrosiveEnzymes as CorrosiveEnzymes } from './corrosive-sap';
 import { Regrowth as Regrowth } from './regrowth';
 import { WildGrowth as WildGrowth } from './wild-growth';
 import { SporeCloud as SporeCloud } from './spore-cloud';
 import { LifegivingSpores as LifegivingSpores } from './lifegiving-spores';
 import { WildBastion as WildBastion } from './wild-bastion';
 import { Rebirth as Rebirth } from './rebirth';
-import { EntanglingAura as EntanglingAura } from './entangling-aura';
+import { EntanglingAura as EntanglingAura } from './raging-tempest';
 import { Overgrowth as Overgrowth } from './overgrowth';
 
 export const powerset: Powerset = {

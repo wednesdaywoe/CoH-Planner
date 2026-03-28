@@ -59,17 +59,11 @@ export const StridentEcho: Power = {
     }
   ],
   "effects": {
-    "elusivity": {
-      "all": {
+    "debuffResistance": {
+      "defense": {
         "scale": 0.8,
         "table": "Melee_Debuff_Res_Dmg"
-      }
-    },
-    "durations": {
-      "elusivity": 15,
-      "debuffResistance": 15
-    },
-    "debuffResistance": {
+      },
       "endurance": {
         "scale": 0.8,
         "table": "Melee_Debuff_Res_Dmg"
@@ -94,6 +88,9 @@ export const StridentEcho: Power = {
         "scale": 0.8,
         "table": "Melee_Debuff_Res_Dmg"
       }
+    },
+    "durations": {
+      "debuffResistance": 15
     },
     "hold": {
       "mag": 3,

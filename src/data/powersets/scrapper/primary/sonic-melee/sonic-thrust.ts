@@ -60,17 +60,11 @@ export const SonicThrust: Power = {
     }
   ],
   "effects": {
-    "elusivity": {
-      "all": {
+    "debuffResistance": {
+      "defense": {
         "scale": 0.8,
         "table": "Melee_Debuff_Res_Dmg"
-      }
-    },
-    "durations": {
-      "elusivity": 15,
-      "debuffResistance": 15
-    },
-    "debuffResistance": {
+      },
       "endurance": {
         "scale": 0.8,
         "table": "Melee_Debuff_Res_Dmg"
@@ -95,6 +89,9 @@ export const SonicThrust: Power = {
         "scale": 0.8,
         "table": "Melee_Debuff_Res_Dmg"
       }
+    },
+    "durations": {
+      "debuffResistance": 15
     },
     "knockback": {
       "scale": 0.67,

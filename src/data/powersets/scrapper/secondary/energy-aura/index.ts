@@ -12,10 +12,10 @@ import type { Powerset } from '@/types';
 import { DampeningField as DampeningField } from './dampening-field';
 import { KineticShield as KineticShield } from './kinetic-shield';
 import { PowerShield as PowerShield } from './power-shield';
-import { EntropicAura as EntropicAura } from './entropic-aura';
+import { EntropicAura as EntropicAura } from './entropy-shield';
 import { EnergyProtection as EnergyProtection } from './energy-protection';
 import { EnergyCloak as EnergyCloak } from './energy-cloak';
-import { Energize as Energize } from './energize';
+import { Energize as Energize } from './efficiency';
 import { EnergyDrain as EnergyDrain } from './energy-drain';
 import { Overload as Overload } from './overload';
 

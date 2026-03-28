@@ -12,7 +12,7 @@ import type { Powerset } from '@/types';
 import { SonicThrust as SonicThrust } from './sonic-thrust';
 import { StridentEcho as StridentEcho } from './strident-echo';
 import { EchoChamber as EchoChamber } from './echo-chamber';
-import { SoundBooster as SoundBooster } from './sound-booster';
+import { SoundBooster as SoundBooster } from './build-up';
 import { DeafeningWave as DeafeningWave } from './deafening-wave';
 import { SoundBarrier as SoundBarrier } from './sound-barrier';
 import { DisruptionAura as DisruptionAura } from './disruption-aura';

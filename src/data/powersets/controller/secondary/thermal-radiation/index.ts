@@ -9,7 +9,7 @@
 
 import type { Powerset } from '@/types';
 
-import { ThermalShield as ThermalShield } from './thermal-shield';
+import { ThermalShield as ThermalShield } from './fire-shield';
 import { Warmth as Warmth } from './warmth';
 import { Cauterize as Cauterize } from './cauterize';
 import { PlasmaShield as PlasmaShield } from './plasma-shield';

@@ -30,29 +30,46 @@ export const EntropyShield: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "knockback": {
-      "scale": 110,
-      "table": "Melee_Ones"
+    "mezResistance": {
+      "knockback": {
+        "scale": 100,
+        "table": "Melee_Ones"
+      },
+      "knockup": {
+        "scale": 100,
+        "table": "Melee_Ones"
+      },
+      "repel": {
+        "scale": 100,
+        "table": "Melee_Ones"
+      },
+      "teleport": {
+        "scale": 1,
+        "table": "Melee_Ones"
+      }
     },
     "durations": {
-      "knockback": 0.75,
+      "mezResistance": 0.75,
       "knockup": 0.75,
+      "knockback": 0.75,
       "repel": 0.75,
       "hold": 0.75,
       "immobilize": 0.75,
       "stun": 0.75,
       "sleep": 0.75,
-      "mezResistance": 0.75,
-      "elusivity": 0.75,
       "debuffResistance": 0.75,
       "rechargeBuff": 0.75
     },
     "knockup": {
-      "scale": 110,
+      "scale": 10,
+      "table": "Melee_Ones"
+    },
+    "knockback": {
+      "scale": 10,
       "table": "Melee_Ones"
     },
     "repel": {
-      "scale": 110,
+      "scale": 10,
       "table": "Melee_Ones"
     },
     "hold": {
@@ -76,19 +93,11 @@ export const EntropyShield: Power = {
       "scale": 30,
       "table": "Melee_Res_Boolean"
     },
-    "mezResistance": {
-      "teleport": {
-        "scale": 1,
-        "table": "Melee_Ones"
-      }
-    },
-    "elusivity": {
-      "all": {
+    "debuffResistance": {
+      "defense": {
         "scale": 0.5,
         "table": "Melee_Res_Boolean"
-      }
-    },
-    "debuffResistance": {
+      },
       "endurance": {
         "scale": 0.25,
         "table": "Melee_Ones"

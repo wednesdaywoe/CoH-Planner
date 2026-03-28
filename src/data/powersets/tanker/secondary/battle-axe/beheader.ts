@@ -1,40 +1,37 @@
 /**
- * Beheader
- * Melee, DMG(Lethal), Foe Knockdown, -Defense
+ * Gash
+ * Melee, DMG(Lethal), Foe Knockdown
  *
- * Source: tanker_melee/battle_axe/gash.json
+ * Source: tanker_melee/battle_axe/beheader.json
  */
 
 import type { Power } from '@/types';
 
-export const Beheader: Power = {
-  "name": "Beheader",
-  "internalName": "Gash",
-  "available": 0,
-  "description": "This is an attempt to remove your opponent's head from his neck with your Battle Axe. This attack is fairly quick for such a large weapon, and has a chance to cut through your foe's defense and knock them down.",
-  "shortHelp": "Melee, DMG(Lethal), Foe Knockdown, -Defense",
-  "icon": "battleaxe_chop.png",
+export const Gash: Power = {
+  "name": "Gash",
+  "internalName": "Beheader",
+  "available": 3,
+  "description": "Gashes your opponent with your Battle Axe dealing superior damage. This attack is very slow, but can deal a lot damage and knock the target down.",
+  "shortHelp": "Melee, DMG(Lethal), Foe Knockdown",
+  "icon": "battleaxe_beheader.png",
   "powerType": "Click",
   "effectArea": "SingleTarget",
   "stats": {
-    "accuracy": 1.15,
+    "accuracy": 1.05,
     "range": 7,
-    "recharge": 4,
-    "endurance": 5.2,
-    "castTime": 1
+    "recharge": 10,
+    "endurance": 10.192,
+    "castTime": 1.27
   },
   "allowedEnhancements": [
     "Taunt",
     "EnduranceReduction",
     "Recharge",
     "Knockback",
-    "Defense Debuff",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Defense Debuff",
     "Knockback",
     "Melee Damage",
     "Tanker Archetype Sets",
@@ -44,21 +41,13 @@ export const Beheader: Power = {
   "maxSlots": 6,
   "damage": {
     "type": "Lethal",
-    "scale": 1,
+    "scale": 1.96,
     "table": "Melee_Damage"
   },
   "effects": {
     "knockback": {
       "scale": 0.67,
       "table": "Melee_Ones"
-    },
-    "defenseDebuff": {
-      "scale": 1,
-      "table": "Melee_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 6
-    },
-    "buffDuration": 6
+    }
   }
 };

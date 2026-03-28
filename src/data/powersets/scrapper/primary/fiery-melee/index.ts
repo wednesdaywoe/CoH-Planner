@@ -14,7 +14,7 @@ import { Scorch as Scorch } from './scorch';
 import { Cremate as Cremate } from './cremate';
 import { BuildUp as BuildUp } from './build-up';
 import { BreathofFire as BreathofFire } from './breath-of-fire';
-import { Confront as Confront } from './confront';
+import { Confront as Confront } from './provoke';
 import { FireSwordCircle as FireSwordCircle } from './fire-sword-circle';
 import { Incinerate as Incinerate } from './incinerate';
 import { GreaterFireSword as GreaterFireSword } from './greater-fire-sword';

@@ -12,7 +12,7 @@ import type { Powerset } from '@/types';
 import { Hack as Hack } from './hack';
 import { Slash as Slash } from './slash';
 import { Slice as Slice } from './slice';
-import { AssassinsSlash as AssassinsSlash } from './assassin-s-slash';
+import { AssassinsSlash as AssassinsSlash } from './assassins-slash';
 import { BuildUp as BuildUp } from './build-up';
 import { Placate as Placate } from './placate';
 import { Parry as Parry } from './parry';

@@ -34,37 +34,15 @@ export const RebuildDNA: Power = {
     "Healing"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Heal",
-      "scale": 3,
-      "table": "Melee_HealSelf"
-    },
-    {
-      "type": "Heal",
-      "scale": 0.9,
-      "table": "Melee_HealSelf"
-    }
-  ],
+  "damage": {
+    "type": "Heal",
+    "scale": 3,
+    "table": "Melee_HealSelf"
+  },
   "effects": {
     "enduranceGain": {
-      "scale": 32.5,
+      "scale": 25,
       "table": "Melee_Ones"
-    },
-    "debuffResistance": {
-      "perception": {
-        "scale": 0.6,
-        "table": "Melee_Ones"
-      }
-    },
-    "durations": {
-      "debuffResistance": 30,
-      "perceptionBuff": 30
-    },
-    "perceptionBuff": {
-      "scale": 0.6,
-      "table": "Melee_Ones"
-    },
-    "buffDuration": 30
+    }
   }
 };

@@ -12,7 +12,7 @@ import type { Powerset } from '@/types';
 import { FireSword as FireSword } from './fire-sword';
 import { Scorch as Scorch } from './scorch';
 import { Cremate as Cremate } from './cremate';
-import { AssassinsBlaze as AssassinsBlaze } from './assassin-s-blaze';
+import { AssassinsBlaze as AssassinsBlaze } from './assassins-blaze';
 import { BuildUp as BuildUp } from './build-up';
 import { Placate as Placate } from './placate';
 import { BreathofFire as BreathofFire } from './breath-of-fire';

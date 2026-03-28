@@ -9,14 +9,14 @@
 
 import type { Powerset } from '@/types';
 
-import { DisorientingShot as DisorientingShot } from './disorienting-shot';
+import { DisorientingShot as DisorientingShot } from './beanbag';
 import { Burst as Burst } from './burst';
 import { Buckshot as Buckshot } from './buckshot';
 import { Slug as Slug } from './slug';
 import { Aim as Aim } from './aim';
 import { M30Grenade as M30Grenade } from './m30-grenade';
 import { Flamethrower as Flamethrower } from './flamethrower';
-import { Ignite as Ignite } from './ignite';
+import { Ignite as Ignite } from './incinerator';
 import { FullAuto as FullAuto } from './full-auto';
 
 export const powerset: Powerset = {

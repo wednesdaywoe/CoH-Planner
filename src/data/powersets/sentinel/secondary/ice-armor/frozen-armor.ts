@@ -47,7 +47,7 @@ export const FrozenArmor: Power = {
     "durations": {
       "defenseBuff": 0.75,
       "resistance": 0.75,
-      "elusivity": 0.75
+      "debuffResistance": 0.75
     },
     "resistance": {
       "cold": {
@@ -59,8 +59,8 @@ export const FrozenArmor: Power = {
         "table": "Melee_Res_Dmg"
       }
     },
-    "elusivity": {
-      "all": {
+    "debuffResistance": {
+      "defense": {
         "scale": 0.4,
         "table": "Melee_Res_Boolean"
       }

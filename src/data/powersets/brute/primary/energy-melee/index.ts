@@ -16,7 +16,7 @@ import { BuildUp as BuildUp } from './build-up';
 import { WhirlingHands as WhirlingHands } from './whirling-hands';
 import { Taunt as Taunt } from './taunt';
 import { TotalFocus as TotalFocus } from './total-focus';
-import { PowerCrash as PowerCrash } from './power-crash';
+import { PowerCrash as PowerCrash } from './stun';
 import { EnergyTransfer as EnergyTransfer } from './energy-transfer';
 
 export const powerset: Powerset = {

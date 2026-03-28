@@ -1,19 +1,19 @@
 /**
- * Deflection
- * Toggle: Self +DEF(Melee), +Res(Lethal, Smashing)
+ * Battle Agility
+ * Toggle: Self +DEF(Ranged, AoE), +Res(Defense Debuff)
  *
- * Source: scrapper_defense/shield_defense/active_defense.json
+ * Source: scrapper_defense/shield_defense/deflection.json
  */
 
 import type { Power } from '@/types';
 
-export const Deflection: Power = {
-  "name": "Deflection",
-  "internalName": "Active_Defense",
+export const BattleAgility: Power = {
+  "name": "Battle Agility",
+  "internalName": "Deflection",
   "available": 0,
-  "description": "Your mastery of the shield allows you to easily deflect melee attacks, and attacks that do get through your ironclad defenses tend to do less damage. While Deflection is active the user will gain defense to melee attacks and some minor resistance to lethal and smashing damage.Recharge: Fast.",
-  "shortHelp": "Toggle: Self +DEF(Melee), +Res(Lethal, Smashing)",
-  "icon": "shielddefense_activedefense.png",
+  "description": "Your incredible agility allows you to position your shield to protect yourself from incoming ranged damage. While Battle Agility is active you will benefit from increased Ranged and AoE defense as well as some moderate protection from Defense Debuffs.Recharge: Fast.",
+  "shortHelp": "Toggle: Self +DEF(Ranged, AoE), +Res(Defense Debuff)",
+  "icon": "shielddefense_deflection.png",
   "powerType": "Toggle",
   "targetType": "Self",
   "effectArea": "SingleTarget",
@@ -25,35 +25,33 @@ export const Deflection: Power = {
     "activatePeriod": 0.5
   },
   "allowedEnhancements": [
-    "Resistance",
     "EnduranceReduction",
     "Recharge",
     "Defense"
   ],
   "allowedSetCategories": [
-    "Defense Sets",
-    "Resist Damage"
+    "Defense Sets"
   ],
   "maxSlots": 6,
   "effects": {
     "defenseBuff": {
-      "melee": {
+      "ranged": {
+        "scale": 1.5,
+        "table": "Melee_Buff_Def"
+      },
+      "aoe": {
         "scale": 1.5,
         "table": "Melee_Buff_Def"
       }
     },
     "durations": {
       "defenseBuff": 0.75,
-      "resistance": 0.75
+      "debuffResistance": 0.75
     },
-    "resistance": {
-      "smashing": {
-        "scale": 1.5,
-        "table": "Melee_Res_Dmg"
-      },
-      "lethal": {
-        "scale": 1.5,
-        "table": "Melee_Res_Dmg"
+    "debuffResistance": {
+      "defense": {
+        "scale": 0.4,
+        "table": "Melee_Res_Boolean"
       }
     },
     "buffDuration": 0.75

@@ -67,14 +67,7 @@ export const MementoMori: Power = {
     },
     "durations": {
       "untouchable": 15,
-      "stealth": 15,
       "maxHPBuff": 30
-    },
-    "stealth": {
-      "stealthPvE": {
-        "scale": 300,
-        "table": "Melee_Ones"
-      }
     },
     "maxHPBuff": {
       "scale": 3.55,
@@ -90,6 +83,6 @@ export const MementoMori: Power = {
       "scale": 10,
       "table": "Melee_Stun"
     },
-    "buffDuration": 15
+    "buffDuration": 30
   }
 };

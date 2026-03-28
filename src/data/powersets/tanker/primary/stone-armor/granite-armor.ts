@@ -36,14 +36,14 @@ export const GraniteArmor: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "elusivity": {
-      "all": {
+    "debuffResistance": {
+      "defense": {
         "scale": 1,
         "table": "Melee_Res_Boolean"
       }
     },
     "durations": {
-      "elusivity": 0.75,
+      "debuffResistance": 0.75,
       "resistance": 0.75,
       "defenseBuff": 0.75,
       "hold": 0.75,

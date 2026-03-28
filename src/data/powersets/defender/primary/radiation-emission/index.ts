@@ -9,7 +9,7 @@
 
 import type { Powerset } from '@/types';
 
-import { RadiantAura as RadiantAura } from './radiant-aura';
+import { RadiantAura as RadiantAura } from './radiation-emission';
 import { RadiationInfection as RadiationInfection } from './radiation-infection';
 import { AccelerateMetabolism as AccelerateMetabolism } from './accelerate-metabolism';
 import { EnervatingField as EnervatingField } from './enervating-field';
@@ -17,7 +17,7 @@ import { Mutation as Mutation } from './mutation';
 import { LingeringRadiation as LingeringRadiation } from './lingering-radiation';
 import { ChokingCloud as ChokingCloud } from './choking-cloud';
 import { Fallout as Fallout } from './fallout';
-import { EMPulse as EMPulse } from './em-pulse';
+import { EMPulse as EMPulse } from './emp-pulse';
 
 export const powerset: Powerset = {
   id: 'defender/radiation-emission',

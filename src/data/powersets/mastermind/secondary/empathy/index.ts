@@ -10,7 +10,7 @@
 import type { Powerset } from '@/types';
 
 import { HealOther as HealOther } from './heal-other';
-import { HealingAura as HealingAura } from './healing-aura';
+import { HealingAura as HealingAura } from './siphon-energy';
 import { AbsorbPain as AbsorbPain } from './absorb-pain';
 import { Resurrect as Resurrect } from './resurrect';
 import { ClearMind as ClearMind } from './clear-mind';

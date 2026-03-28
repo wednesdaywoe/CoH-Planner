@@ -12,7 +12,7 @@ import type { Powerset } from '@/types';
 import { Chilblain as Chilblain } from './chilblain';
 import { FrozenFists as FrozenFists } from './frozen-fists';
 import { IceSword as IceSword } from './ice-sword';
-import { FrigidProtection as FrigidProtection } from './frigid-protection';
+import { FrigidProtection as FrigidProtection } from './chilling-embrace';
 import { BuildUp as BuildUp } from './build-up';
 import { IcePatch as IcePatch } from './ice-patch';
 import { Shiver as Shiver } from './shiver';

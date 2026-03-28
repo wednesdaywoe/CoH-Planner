@@ -11,7 +11,7 @@ import type { Powerset } from '@/types';
 
 import { FireSword as FireSword } from './fire-sword';
 import { Scorch as Scorch } from './scorch';
-import { Cremate as Cremate } from './cremate';
+import { Cremate as Cremate } from './combustion';
 import { BuildUp as BuildUp } from './build-up';
 import { Incinerate as Incinerate } from './incinerate';
 import { Taunt as Taunt } from './taunt';

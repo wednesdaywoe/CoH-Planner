@@ -14,7 +14,7 @@ import { Smite as Smite } from './smite';
 import { DeathShroud as DeathShroud } from './death-shroud';
 import { ShadowMaul as ShadowMaul } from './shadow-maul';
 import { SoulDrain as SoulDrain } from './soul-drain';
-import { TouchoftheBeyond as TouchoftheBeyond } from './touch-of-the-beyond';
+import { TouchoftheBeyond as TouchoftheBeyond } from './touch-of-fear';
 import { DarkConsumption as DarkConsumption } from './dark-consumption';
 import { DarkPit as DarkPit } from './dark-pit';
 import { MidnightGrasp as MidnightGrasp } from './midnight-grasp';

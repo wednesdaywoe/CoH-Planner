@@ -13,7 +13,7 @@ import { MindProbe as MindProbe } from './mind-probe';
 import { Subdual as Subdual } from './subdual';
 import { WorldofConfusion as WorldofConfusion } from './world-of-confusion';
 import { PsychicScream as PsychicScream } from './psychic-scream';
-import { Concentration as Concentration } from './concentration';
+import { Concentration as Concentration } from './build-up';
 import { DrainPsyche as DrainPsyche } from './drain-psyche';
 import { Scare as Scare } from './scare';
 import { PsychicShockwave as PsychicShockwave } from './psychic-shockwave';

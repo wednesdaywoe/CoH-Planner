@@ -12,11 +12,11 @@ import type { Powerset } from '@/types';
 import { ChargedBrawl as ChargedBrawl } from './charged-brawl';
 import { HavocPunch as HavocPunch } from './havoc-punch';
 import { JacobsLadder as JacobsLadder } from './jacobs-ladder';
-import { AssassinsShock as AssassinsShock } from './assassin-s-shock';
+import { AssassinsShock as AssassinsShock } from './assassins-strike';
 import { BuildUp as BuildUp } from './build-up';
 import { Placate as Placate } from './placate';
 import { ChainInduction as ChainInduction } from './chain-induction';
-import { ThunderStrike as ThunderStrike } from './thunder-strike';
+import { ThunderStrike as ThunderStrike } from './lightning-clap';
 import { LightningRod as LightningRod } from './lightning-rod';
 
 export const powerset: Powerset = {

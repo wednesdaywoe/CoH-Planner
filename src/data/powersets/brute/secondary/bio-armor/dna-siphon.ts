@@ -61,11 +61,6 @@ export const DNASiphon: Power = {
       "type": "Heal",
       "scale": 1.25,
       "table": "Melee_HealSelf"
-    },
-    {
-      "type": "Heal",
-      "scale": 0.375,
-      "table": "Melee_HealSelf"
     }
   ],
   "effects": {
@@ -73,14 +68,6 @@ export const DNASiphon: Power = {
       "scale": 5,
       "table": "Melee_Ones",
       "perTarget": 5
-    },
-    "regenDebuff": {
-      "scale": 1.33,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "regenDebuff": 30
-    },
-    "buffDuration": 30
+    }
   }
 };

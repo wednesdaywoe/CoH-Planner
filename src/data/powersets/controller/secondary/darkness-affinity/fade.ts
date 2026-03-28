@@ -85,11 +85,11 @@ export const Fade: Power = {
     },
     "durations": {
       "defenseBuff": 60,
-      "elusivity": 60,
+      "debuffResistance": 60,
       "resistance": 60
     },
-    "elusivity": {
-      "all": {
+    "debuffResistance": {
+      "defense": {
         "scale": 1,
         "table": "Ranged_Res_Boolean"
       }

@@ -34,15 +34,6 @@ export const MaskPresence: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "damageBuff": {
-      "scale": 4,
-      "table": "Melee_Buff_Dmg"
-    },
-    "durations": {
-      "damageBuff": 0.75,
-      "defenseBuff": 0.55,
-      "stealth": 0.75
-    },
     "defenseBuff": {
       "ranged": {
         "scale": 1,
@@ -89,6 +80,10 @@ export const MaskPresence: Power = {
         "table": "Melee_Buff_Def"
       }
     },
+    "durations": {
+      "defenseBuff": 0.55,
+      "stealth": 0.75
+    },
     "stealth": {
       "stealthPvE": {
         "scale": 35.5,
@@ -96,10 +91,6 @@ export const MaskPresence: Power = {
       },
       "stealthPvP": {
         "scale": 390,
-        "table": "Melee_Ones"
-      },
-      "translucency": {
-        "scale": 0.15,
         "table": "Melee_Ones"
       }
     },

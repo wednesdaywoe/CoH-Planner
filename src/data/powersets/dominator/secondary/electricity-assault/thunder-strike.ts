@@ -1,72 +1,65 @@
 /**
- * Thunder Strike
- * Melee (AoE), Superior DMG(Smash, Energy), Foe Disorient, Knockback
+ * Static Discharge
+ * Ranged (Cone), Light DMG(Energy), -END
  *
- * Source: dominator_assault/electricity_manipulation/power_sink.json
+ * Source: dominator_assault/electricity_manipulation/thunder_strike.json
  */
 
 import type { Power } from '@/types';
 
-export const ThunderStrike: Power = {
-  "name": "Thunder Strike",
-  "internalName": "Power_Sink",
-  "available": 27,
-  "description": "A massive attack. You smash your foes with all the power of a lightning bolt. The pummeled victim takes tremendous damage and may be Disoriented. Any nearby foes may be knocked down and take some damage from the shockwave.Damage: Superior.Recharge: Slow.",
-  "shortHelp": "Melee (AoE), Superior DMG(Smash, Energy), Foe Disorient, Knockback",
-  "icon": "electricalassault_thunderstrike.png",
+export const StaticDischarge: Power = {
+  "name": "Static Discharge",
+  "internalName": "Thunder_Strike",
+  "available": 23,
+  "description": "Discharges a cone of Static Electricity that deals damage and drains Endurance from all affected foes in the area.Damage: Light.Recharge: Slow.",
+  "shortHelp": "Ranged (Cone), Light DMG(Energy), -END",
+  "icon": "electricalassault_staticdischarge.png",
   "powerType": "Click",
-  "effectArea": "SingleTarget",
+  "effectArea": "Cone",
   "stats": {
     "accuracy": 1,
-    "range": 7,
+    "range": 40,
+    "radius": 40,
+    "arc": 0.7854,
     "recharge": 16,
     "endurance": 15.184,
-    "castTime": 2.53
+    "castTime": 2.07,
+    "maxTargets": 10
   },
   "allowedEnhancements": [
+    "EnduranceModification",
     "EnduranceReduction",
-    "Stun",
+    "Range",
     "Recharge",
-    "Knockback",
     "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Dominator Archetype Sets",
-    "Knockback",
-    "Melee AoE Damage",
-    "Stuns",
+    "Endurance Modification",
+    "Ranged AoE Damage",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 2.044,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.876,
-      "table": "Melee_Damage"
-    }
-  ],
+  "damage": {
+    "type": "Energy",
+    "scale": 1.23,
+    "table": "Ranged_Damage"
+  },
   "effects": {
-    "stun": {
-      "mag": 3,
-      "scale": 5,
-      "table": "Melee_Stun"
+    "enduranceDrain": {
+      "scale": 0.07,
+      "table": "Ranged_Ones"
     },
     "recoveryDebuff": {
       "scale": 1,
-      "table": "Melee_Ones"
+      "table": "Ranged_Ones"
     },
     "durations": {
       "recoveryDebuff": 4
     },
-    "knockback": {
-      "scale": 0.67,
-      "table": "Melee_Ones"
+    "enduranceGain": {
+      "scale": 4.29,
+      "table": "Ranged_Ones"
     },
     "buffDuration": 4
   }

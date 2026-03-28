@@ -13,7 +13,7 @@ import { MentalBlast as MentalBlast } from './mental-blast';
 import { TelekineticBlast as TelekineticBlast } from './telekinetic-blast';
 import { PsychicScream as PsychicScream } from './psychic-scream';
 import { WillDomination as WillDomination } from './will-domination';
-import { PsychicFocus as PsychicFocus } from './psychic-focus';
+import { PsychicFocus as PsychicFocus } from './aim';
 import { PsionicStrike as PsionicStrike } from './psionic-strike';
 import { PsionicTornado as PsionicTornado } from './psionic-tornado';
 import { ScrambleThoughts as ScrambleThoughts } from './scramble-thoughts';

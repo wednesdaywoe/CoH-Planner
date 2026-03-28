@@ -14,7 +14,7 @@ import { RingofFire as RingofFire } from './ring-of-fire';
 import { Combustion as Combustion } from './combustion';
 import { FireSwordCircle as FireSwordCircle } from './fire-sword-circle';
 import { BuildUp as BuildUp } from './build-up';
-import { CauterizingAura as CauterizingAura } from './cauterizing-aura';
+import { CauterizingAura as CauterizingAura } from './blazing-aura';
 import { Consume as Consume } from './consume';
 import { Burn as Burn } from './burn';
 import { HotFeet as HotFeet } from './hot-feet';

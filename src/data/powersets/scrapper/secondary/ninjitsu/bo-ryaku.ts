@@ -29,17 +29,28 @@ export const BoRyaku: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "knockup": {
-      "scale": 20,
-      "table": "Melee_Res_Boolean"
+    "mezResistance": {
+      "knockup": {
+        "scale": 5,
+        "table": "Melee_Res_Boolean"
+      },
+      "knockback": {
+        "scale": 5,
+        "table": "Melee_Res_Boolean"
+      }
     },
     "durations": {
+      "mezResistance": 10.25,
       "knockup": 10.25,
       "knockback": 10.25,
       "resistance": 10.25
     },
+    "knockup": {
+      "scale": 15,
+      "table": "Melee_Res_Boolean"
+    },
     "knockback": {
-      "scale": 20,
+      "scale": 15,
       "table": "Melee_Res_Boolean"
     },
     "resistance": {

@@ -10,15 +10,15 @@
 import type { Powerset } from '@/types';
 
 import { Hoarfrost as Hoarfrost } from './hoarfrost';
-import { FrozenArmor as FrozenArmor } from './frozen-armor';
-import { Rime as Rime } from './rime';
+import { FrozenArmor as FrozenArmor } from './ice-armor';
+import { Rime as Rime } from './rime-ice';
 import { ChillingEmbrace as ChillingEmbrace } from './chilling-embrace';
 import { WetIce as WetIce } from './wet-ice';
 import { Permafrost as Permafrost } from './permafrost';
 import { Icicles as Icicles } from './icicles';
 import { GlacialArmor as GlacialArmor } from './glacial-armor';
 import { EnergyAbsorption as EnergyAbsorption } from './energy-absorption';
-import { IcyBastion as IcyBastion } from './icy-bastion';
+import { IcyBastion as IcyBastion } from './hibernate';
 
 export const powerset: Powerset = {
   id: 'tanker/ice-armor',

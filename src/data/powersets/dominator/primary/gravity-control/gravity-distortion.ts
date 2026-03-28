@@ -53,17 +53,18 @@ export const GravityDistortion: Power = {
       "scale": 12,
       "table": "Ranged_Immobilize"
     },
-    "knockup": {
-      "scale": 100,
-      "table": "Ranged_Ones"
+    "mezResistance": {
+      "knockup": {
+        "scale": 100,
+        "table": "Ranged_Ones"
+      },
+      "knockback": {
+        "scale": 100,
+        "table": "Ranged_Ones"
+      }
     },
     "durations": {
-      "knockup": 10,
-      "knockback": 10
-    },
-    "knockback": {
-      "scale": 100,
-      "table": "Ranged_Ones"
+      "mezResistance": 10
     },
     "buffDuration": 10
   }

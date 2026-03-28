@@ -12,11 +12,11 @@ import type { Powerset } from '@/types';
 import { HeavyBlow as HeavyBlow } from './heavy-blow';
 import { InitialStrike as InitialStrike } from './initial-strike';
 import { SweepingCross as SweepingCross } from './sweeping-cross';
-import { AssassinsStrike as AssassinsStrike } from './assassin-s-strike';
+import { AssassinsStrike as AssassinsStrike } from './assassins-strike';
 import { BuildUp as BuildUp } from './build-up';
 import { Placate as Placate } from './placate';
 import { SpinningStrike as SpinningStrike } from './spinning-strike';
-import { ShinBreaker as ShinBreaker } from './shin-breaker';
+import { ShinBreaker as ShinBreaker } from './low-kick';
 import { CrushingUppercut as CrushingUppercut } from './crushing-uppercut';
 
 export const powerset: Powerset = {
