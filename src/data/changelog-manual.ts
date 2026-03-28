@@ -23,6 +23,7 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   {
     date: '2026-03-27',
     items: [
+      { message: 'Fixed issue with VEAT base set ID overwriting the branch ID resulting in missing powers', type: 'fix' },
       { message: 'Fixed Phoenix Rising duplication in Fiery Aura', type: 'fix' },
       { message: 'Supressed auto tooltip on mobile', type: 'fix' },
       { message: 'Fixed Contagious Confusion proc registration', type: 'fix' },

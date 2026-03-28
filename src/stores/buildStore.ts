@@ -199,11 +199,27 @@ function syncBuildDefinitions(build: Build): void {
     return anyChanged ? synced : powers;
   };
 
-  // Helper: fix powerSet to use the powerset ID instead of display name
-  const fixPowerSetIds = (powers: SelectedPower[], correctId: string): SelectedPower[] => {
+  // For VEATs, collect branch power definitions so sync covers branch powers too
+  const archetype = build.archetype.id ? getArchetype(build.archetype.id) : null;
+
+  // Helper: fix powerSet to use the powerset ID instead of display name.
+  // For VEATs with branches, a power's powerSet may legitimately be a branch set ID
+  // (e.g., 'arachnos-widow/fortunata-training') rather than the base primary ID.
+  // Only override if the current powerSet doesn't match ANY valid set for this role.
+  const fixPowerSetIds = (powers: SelectedPower[], correctId: string, role?: 'primary' | 'secondary'): SelectedPower[] => {
+    // Collect all valid powerset IDs: base + branch sets
+    const validIds = new Set([correctId]);
+    if (role && archetype?.branches) {
+      for (const branch of Object.values(archetype.branches)) {
+        if (!branch) continue;
+        const branchSetId = role === 'primary' ? branch.primarySet : branch.secondarySet;
+        if (branchSetId) validIds.add(branchSetId);
+      }
+    }
+
     let anyChanged = false;
     const fixed = powers.map((power) => {
-      if (power.powerSet !== correctId) {
+      if (!power.powerSet || !validIds.has(power.powerSet)) {
         anyChanged = true;
         return { ...power, powerSet: correctId };
       }
@@ -211,9 +227,6 @@ function syncBuildDefinitions(build: Build): void {
     });
     return anyChanged ? fixed : powers;
   };
-
-  // For VEATs, collect branch power definitions so sync covers branch powers too
-  const archetype = build.archetype.id ? getArchetype(build.archetype.id) : null;
   const getBranchPowers = (role: 'primary' | 'secondary'): readonly Pick<SelectedPower, 'name' | 'internalName' | 'effects' | 'icon'>[] => {
     if (!archetype?.branches) return [];
     const powers: Pick<SelectedPower, 'name' | 'internalName' | 'effects' | 'icon'>[] = [];
@@ -233,7 +246,7 @@ function syncBuildDefinitions(build: Build): void {
     if (def) {
       const allDefs = [...def.powers, ...getBranchPowers('primary')];
       let fixed = syncPowers(build.primary.powers, allDefs);
-      fixed = fixPowerSetIds(fixed, build.primary.id);
+      fixed = fixPowerSetIds(fixed, build.primary.id, 'primary');
       if (fixed !== build.primary.powers) {
         build.primary = { ...build.primary, powers: fixed };
       }
@@ -246,7 +259,7 @@ function syncBuildDefinitions(build: Build): void {
     if (def) {
       const allDefs = [...def.powers, ...getBranchPowers('secondary')];
       let fixed = syncPowers(build.secondary.powers, allDefs);
-      fixed = fixPowerSetIds(fixed, build.secondary.id);
+      fixed = fixPowerSetIds(fixed, build.secondary.id, 'secondary');
       if (fixed !== build.secondary.powers) {
         build.secondary = { ...build.secondary, powers: fixed };
       }
