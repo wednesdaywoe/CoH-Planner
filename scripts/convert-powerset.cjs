@@ -1387,6 +1387,7 @@ const DISPLAY_NAME_OVERRIDES = {
 // Icon overrides for powers where binary data references a renamed/missing icon file
 const ICON_OVERRIDES = {
   'regeneration_resist.png': 'regeneration_resilience.png',  // Resilience icon renamed on HC
+  'electriccontrol_paralyzingblastpatch.png': 'electriccontrol_paralyzingblast.png',  // Paralyzing Blast (was Tesla Coil)
 };
 
 // Additional allowedEnhancements not present in boosts_allowed but confirmed in-game

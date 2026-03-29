@@ -13,7 +13,7 @@ export const ParalyzingBlast: Power = {
   "available": 17,
   "description": "Summoning a large amount of energy that periodically jolts at nearby enemies dealing energy damage and paralizing them for a short time. These foes may be drained of some endurance as well.",
   "shortHelp": "Ranged (Targeted AoE), Foe DMG(Energy), Hold, -End, -Fly, -Jump, -Recharge",
-  "icon": "electriccontrol_paralyzingblastpatch.png",
+  "icon": "electriccontrol_paralyzingblast.png",
   "powerType": "Click",
   "effectArea": "SingleTarget",
   "stats": {

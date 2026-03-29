@@ -23,6 +23,7 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   {
     date: '2026-03-29',
     items: [
+      { message: 'Fixed Paralyzing Blast icon AGAIN and punished it for regressing 🤬', type: 'feat' },
       { message: 'Click powers were incorrectly being divided by activatePeriod, doubling their costs', type: 'feat' },
       { message: 'Changed heuristic for setting powers as active by default to buffDuration >= 60', type: 'fix' },
       { message: 'Fixed controller ATO icon swap', type: 'fix' },
