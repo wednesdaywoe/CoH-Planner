@@ -26,8 +26,9 @@ import {
   calculateProcChance,
 } from '@/data';
 import { useGlobalBonuses } from '@/hooks/useCalculatedStats';
-import { calculatePowerEnhancementBonuses, calculatePowerDamage, calculateArcanaTime, getAlphaEnhancementBonuses, abbreviateDamageType, type EnhancementBonuses, isControllerPower, isCorruptorAttackPower, isBruteAttackPower, isScrapperAttackPower, isStalkerAttackPower, isSentinelAttackPower, calculateContainmentDamage, calculateScourgeDamage, calculateFuryDamage, calculateFuryDamageBonus, calculateCriticalHitDamage, calculateAssassinationDamage, calculateAssassinationDamageBonus, calculateOpportunityCritDamage, getContainmentInfo, getScourgeInfo, getCriticalHitInfo, getFuryInfo } from '@/utils/calculations';
+import { calculatePowerEnhancementBonuses, combineWithAlphaED, calculatePowerDamage, calculateArcanaTime, getAlphaEnhancementBonuses, abbreviateDamageType, type EnhancementBonuses, isControllerPower, isCorruptorAttackPower, isBruteAttackPower, isScrapperAttackPower, isStalkerAttackPower, isSentinelAttackPower, calculateContainmentDamage, calculateScourgeDamage, calculateFuryDamage, calculateFuryDamageBonus, calculateCriticalHitDamage, calculateAssassinationDamage, calculateAssassinationDamageBonus, calculateOpportunityCritDamage, getContainmentInfo, getScourgeInfo, getCriticalHitInfo, getFuryInfo } from '@/utils/calculations';
 import type { IOSetEnhancement } from '@/types';
+import { INCARNATE_TIER_REGISTRY } from '@/data/incarnate-registry';
 import { isPermaEligible, calculatePermaInfo } from '@/utils/calculations/perma';
 import { calculatePetDamage, shouldApplyEnhancements, type PetDamageResult, type PetAbilityDamage } from '@/utils/calculations/pet-damage';
 import { PET_ENTITIES, type PetAbility } from '@/data/pet-entities';
@@ -237,12 +238,31 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
   const exemplarMode = useUIStore((s) => s.exemplarMode);
   const exemplarLevel = useUIStore((s) => s.exemplarLevel);
 
-  // Calculate enhancement bonuses if power is slotted, plus Alpha bonuses
+  // Calculate enhancement bonuses if power is slotted, plus Alpha bonuses.
+  // Alpha bonuses interact with ED: a portion (based on tier) bypasses ED,
+  // the rest is added to raw IO bonuses before ED is applied.
   const enhancementBonuses = useMemo<EnhancementBonuses>(() => {
-    // Start with slotted enhancement bonuses
-    let bonuses: EnhancementBonuses = {};
+    const hasAlpha = Object.values(alphaBonuses).some((v) => v !== undefined && v !== 0);
+    const alphaTier = build.incarnates?.alpha?.tier;
+    const edBypassRatio = alphaTier
+      ? (INCARNATE_TIER_REGISTRY[alphaTier]?.edBypassRatio ?? 1 / 6)
+      : 1 / 6;
+
+    if (hasAlpha && selectedPower?.slots) {
+      // Use combined calculation that properly splits alpha through/around ED
+      return combineWithAlphaED(
+        { name: selectedPower.name, slots: selectedPower.slots },
+        build.level,
+        getIOSet,
+        alphaBonuses,
+        edBypassRatio,
+        exemplarMode ? exemplarLevel : undefined
+      );
+    }
+
+    // No alpha — standard ED-only calculation
     if (selectedPower?.slots) {
-      bonuses = calculatePowerEnhancementBonuses(
+      return calculatePowerEnhancementBonuses(
         { name: selectedPower.name, slots: selectedPower.slots },
         build.level,
         getIOSet,
@@ -250,15 +270,8 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
       );
     }
 
-    // Add Alpha incarnate bonuses (these apply universally to all powers)
-    for (const [aspect, value] of Object.entries(alphaBonuses)) {
-      if (value !== undefined) {
-        bonuses[aspect] = (bonuses[aspect] || 0) + value;
-      }
-    }
-
-    return bonuses;
-  }, [selectedPower, build.level, alphaBonuses, exemplarMode, exemplarLevel]);
+    return { ...alphaBonuses };
+  }, [selectedPower, build.level, alphaBonuses, exemplarMode, exemplarLevel, build.incarnates?.alpha?.tier]);
 
   // Convert global bonuses to enhancement-aspect-keyed decimals for three-tier display
   const globalBonusesForCalc = useMemo(
@@ -989,21 +1002,38 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
       )}
 
       {/* Enhancement Bonuses Summary */}
-      {hasEnhancements && Object.keys(enhancementBonuses).length > 0 && (
-        <div className="border-t border-slate-700 pt-2 mt-2">
-          <h4 className="text-[9px] font-semibold text-slate-500 uppercase tracking-wide mb-1">
-            Enhancement Bonuses (after ED)
-          </h4>
-          <div className="grid grid-cols-2 gap-x-4 gap-y-0.5 text-xs">
-            {Object.entries(enhancementBonuses).map(([aspect, value]) => (
-              <div key={aspect} className="flex justify-between">
-                <span className="text-slate-400 capitalize">{aspect}</span>
-                <span className="text-green-400">+{((value || 0) * 100).toFixed(2)}%</span>
-              </div>
-            ))}
+      {hasEnhancements && Object.keys(enhancementBonuses).length > 0 && (() => {
+        const hasAlpha = Object.values(alphaBonuses).some((v) => v !== undefined && v !== 0);
+        return (
+          <div className="border-t border-slate-700 pt-2 mt-2">
+            <h4 className="text-[9px] font-semibold text-slate-500 uppercase tracking-wide mb-1">
+              Enhancement Bonuses (after ED)
+            </h4>
+            <div className="grid grid-cols-2 gap-x-4 gap-y-0.5 text-xs">
+              {Object.entries(enhancementBonuses).map(([aspect, value]) => {
+                const total = (value || 0) * 100;
+                const alphaVal = (alphaBonuses[aspect] || 0) * 100;
+                const hasAlphaForAspect = alphaVal > 0;
+                const ioOnly = total - alphaVal;
+                return (
+                  <div key={aspect} className="flex justify-between">
+                    <span className="text-slate-400 capitalize">{aspect}</span>
+                    <span className="text-green-400">
+                      +{total.toFixed(2)}%
+                      {hasAlpha && hasAlphaForAspect && (
+                        <span className="text-slate-500 text-[10px]"> ({ioOnly.toFixed(0)}%)</span>
+                      )}
+                    </span>
+                  </div>
+                );
+              })}
+            </div>
+            {hasAlpha && (
+              <p className="text-[9px] text-slate-600 mt-1">Includes Alpha incarnate</p>
+            )}
           </div>
-        </div>
-      )}
+        );
+      })()}
 
       {/* Perma Tracker */}
       {isPermaEligible(power) && (() => {

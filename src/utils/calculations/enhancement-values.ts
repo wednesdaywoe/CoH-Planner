@@ -588,6 +588,111 @@ export function calculatePowerEnhancementBonuses(
   return edBonuses;
 }
 
+/**
+ * Combine IO enhancement bonuses with Alpha incarnate bonuses, properly
+ * handling the Alpha ED bypass mechanic.
+ *
+ * Alpha bonuses are split into two portions:
+ * - ED-subject portion (1 - bypassRatio): added to raw IO totals BEFORE ED
+ * - ED-bypass portion (bypassRatio): added AFTER ED
+ *
+ * Bypass ratios by tier: Common 1/6, Uncommon 1/3, Rare 1/2, Very Rare 2/3
+ */
+export function combineWithAlphaED(
+  power: PowerWithSlots,
+  globalIOLevel: number,
+  getIOSet: Parameters<typeof calculatePowerEnhancementBonuses>[2],
+  alphaBonuses: EnhancementBonuses,
+  edBypassRatio: number,
+  exemplarLevel?: number
+): EnhancementBonuses {
+  if (!power?.slots) return { ...alphaBonuses };
+
+  // Step 1: Compute raw IO bonuses (before ED)
+  const rawBonuses: Record<string, number> = {};
+  power.slots.forEach((slot) => {
+    if (!slot) return;
+    const boostMultiplier = 1 + (slot.boost || 0) * BOOST_MULTIPLIER_PER_LEVEL;
+
+    if (slot.type === 'io-set' && getIOSet) {
+      const set = getIOSet(slot.setId);
+      if (!set) return;
+      const piece = set.pieces.find((p) => p.num === slot.pieceNum);
+      if (!piece?.aspects) return;
+      const isAttuned = set.maxLevel <= 1 || slot.attuned === true;
+      let ioLevel: number;
+      if (isAttuned) {
+        const baseLevel = exemplarLevel ?? globalIOLevel;
+        ioLevel = set.maxLevel > 1 ? Math.min(baseLevel, set.maxLevel) : baseLevel;
+      } else {
+        ioLevel = Math.min(globalIOLevel, set.maxLevel);
+      }
+      const rarityMultiplier = getSetRarityMultiplier(set.category, set.name);
+      const bonuses = parseIOSetPieceValues(piece.aspects, ioLevel, piece.proc, piece.totalAspects);
+      Object.entries(bonuses).forEach(([aspect, value]) => {
+        let scaledValue = value * rarityMultiplier * boostMultiplier;
+        const isPureProc = piece.proc && (!piece.aspects || piece.aspects.length === 0);
+        if (exemplarLevel !== undefined && !isAttuned && !isPureProc) {
+          scaledValue = applyExemplarScaling(scaledValue, ioLevel, exemplarLevel);
+        }
+        rawBonuses[aspect] = (rawBonuses[aspect] || 0) + scaledValue;
+      });
+    } else if (slot.type === 'io-generic') {
+      const aspect = slot.stat as string;
+      const normalized = normalizeAspectName(aspect);
+      if (normalized) {
+        const schedule = getAspectSchedule(normalized);
+        const genericIOLevel = slot.level || globalIOLevel;
+        let value = getIOValueAtLevel(genericIOLevel, schedule) * boostMultiplier;
+        if (exemplarLevel !== undefined) {
+          value = applyExemplarScaling(value, genericIOLevel, exemplarLevel);
+        }
+        rawBonuses[normalized] = (rawBonuses[normalized] || 0) + value;
+      }
+    } else if (slot.type === 'special') {
+      if (slot.aspects) {
+        slot.aspects.forEach((aspect: { stat: string; value: number }) => {
+          const normalized = normalizeAspectName(aspect.stat);
+          if (normalized) {
+            rawBonuses[normalized] = (rawBonuses[normalized] || 0) + (aspect.value / 100) * boostMultiplier;
+          }
+        });
+      }
+    } else if (slot.type === 'origin') {
+      const aspect = slot.stat as string;
+      const normalized = normalizeAspectName(aspect);
+      if (normalized && slot.value) {
+        rawBonuses[normalized] = (rawBonuses[normalized] || 0) + (slot.value / 100) * boostMultiplier;
+      }
+    }
+  });
+
+  // Step 2: Add ED-subject portion of alpha (1 - bypassRatio) to raw totals
+  for (const [aspect, value] of Object.entries(alphaBonuses)) {
+    if (value !== undefined && value !== 0) {
+      const edSubject = value * (1 - edBypassRatio);
+      rawBonuses[aspect] = (rawBonuses[aspect] || 0) + edSubject;
+    }
+  }
+
+  // Step 3: Apply ED to the combined totals
+  const result: EnhancementBonuses = {};
+  Object.entries(rawBonuses).forEach(([aspect, rawValue]) => {
+    const schedule = getAspectSchedule(aspect);
+    result[aspect] = applyED(rawValue, schedule);
+  });
+
+  // Step 4: Add ED-bypass portion of alpha on top
+  for (const [aspect, value] of Object.entries(alphaBonuses)) {
+    if (value !== undefined && value !== 0) {
+      const bypass = value * edBypassRatio;
+      result[aspect] = (result[aspect] || 0) + bypass;
+    }
+  }
+
+  return result;
+}
+
 // ============================================
 // UTILITY FUNCTIONS
 // ============================================

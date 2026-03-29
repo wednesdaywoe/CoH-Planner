@@ -34,6 +34,7 @@ export {
   getMultiAspectModifier,
   getSetRarityMultiplier,
   calculatePowerEnhancementBonuses,
+  combineWithAlphaED,
   calculateCommonIOValue,
   formatEnhancementValue,
   type EnhancementSchedule,

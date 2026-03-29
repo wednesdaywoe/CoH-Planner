@@ -221,17 +221,31 @@ function buildIOSetEnhancement(enh: IOSetEnhancement): MbdEnhancement {
 
   let uid: string;
   if (enh.setId.startsWith('superior_')) {
-    // Superior sets: Superior_Attuned_Superior_SetName_X
-    uid = `Superior_Attuned_${setName}_${pieceLetter}`;
+    // Superior sets use Superior_Attuned_ prefix.
+    // Winter/purple sets that have a non-superior variant (e.g., "Blistering Cold"
+    // exists alongside "Superior Blistering Cold") need "Superior_" stripped from
+    // the stem — Mids uses "Superior_Attuned_Blistering_Cold_A".
+    // ATOs that ONLY exist as Superior (e.g., "Superior Critical Strikes") keep
+    // it — Mids uses "Superior_Attuned_Superior_Critical_Strikes_A".
+    const nonSuperiorId = enh.setId.slice('superior_'.length);
+    const hasNonSuperiorVariant = !!getIOSet(nonSuperiorId);
+    const stem = hasNonSuperiorVariant && setName.startsWith('Superior_')
+      ? setName.slice('Superior_'.length)
+      : setName;
+    uid = `Superior_Attuned_${stem}_${pieceLetter}`;
   } else {
     // All other sets: Crafted_SetName_X (Mids uses Crafted_ for all non-Superior IOs)
     uid = `Crafted_${setName}_${pieceLetter}`;
   }
 
+  // Attuned IOs scale with level and don't have a fixed IoLevel — use 0.
+  // Non-attuned IOs use their fixed level (0-based).
+  const ioLevel = enh.attuned ? 0 : Math.max(0, (enh.level ?? 50) - 1);
+
   return {
     Uid: uid,
     Grade: 'None',
-    IoLevel: Math.max(0, (enh.level ?? 50) - 1),
+    IoLevel: ioLevel,
     RelativeLevel: buildRelativeLevel(enh.boost),
     Obtained: false,
   };

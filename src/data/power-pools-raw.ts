@@ -1115,6 +1115,7 @@ export const POWER_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "endurance": 1.3,
+          "activatePeriod": 2,
           "activationTime": 2.03,
           "effectArea": "AoE",
           "radius": 60,
@@ -1156,6 +1157,7 @@ export const POWER_POOLS_RAW = {
           "accuracy": 1,
           "recharge": 10,
           "endurance": 0.052,
+          "activatePeriod": 0.2,
           "effectArea": "SingleTarget",
           "defenseBuff": {
             "ranged": {
@@ -2048,6 +2050,7 @@ export const POWER_POOLS_RAW = {
           "accuracy": 1,
           "recharge": 15,
           "endurance": 0.78,
+          "activatePeriod": 2,
           "activationTime": 1.5,
           "effectArea": "AoE",
           "radius": 60,
@@ -2124,6 +2127,7 @@ export const POWER_POOLS_RAW = {
           "accuracy": 1,
           "recharge": 15,
           "endurance": 0.78,
+          "activatePeriod": 2,
           "activationTime": 1.5,
           "effectArea": "AoE",
           "radius": 60,
@@ -2172,6 +2176,7 @@ export const POWER_POOLS_RAW = {
           "accuracy": 1,
           "recharge": 15,
           "endurance": 0.78,
+          "activatePeriod": 2,
           "activationTime": 1.5,
           "effectArea": "AoE",
           "radius": 60,
@@ -3400,6 +3405,7 @@ export const POWER_POOLS_RAW = {
           "range": 80,
           "recharge": 10,
           "endurance": 1.56,
+          "activatePeriod": 3,
           "activationTime": 2.07,
           "effectArea": "AoE",
           "radius": 8,

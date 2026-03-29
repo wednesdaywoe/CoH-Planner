@@ -13,6 +13,7 @@ import { lookupPower, getArchetype, getIOSet, getPowerset } from '@/data';
 import type { Power } from '@/types';
 import {
   calculatePowerEnhancementBonuses,
+  combineWithAlphaED,
   calculatePowerDamage,
   calculateDefiance,
   getDominationInfo,
@@ -51,6 +52,7 @@ import {
 } from '@/utils/calculations';
 import { calculatePetDamage, shouldApplyEnhancements, type PetDamageResult } from '@/utils/calculations/pet-damage';
 import type { ArchetypeId } from '@/types';
+import { INCARNATE_TIER_REGISTRY } from '@/data/incarnate-registry';
 import {
   getEffectiveBuffDebuffModifier,
   convertGlobalBonusesToAspects,
@@ -118,11 +120,27 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
   const exemplarMode = useUIStore((s) => s.exemplarMode);
   const exemplarLevel = useUIStore((s) => s.exemplarLevel);
 
-  // Calculate enhancement bonuses if power is slotted, plus Alpha bonuses
+  // Calculate enhancement bonuses with proper Alpha ED bypass handling
   const enhancementBonuses = useMemo<EnhancementBonuses>(() => {
-    let bonuses: EnhancementBonuses = {};
+    const hasAlpha = Object.values(alphaBonuses).some((v) => v !== undefined && v !== 0);
+    const alphaTier = build.incarnates?.alpha?.tier;
+    const edBypassRatio = alphaTier
+      ? (INCARNATE_TIER_REGISTRY[alphaTier]?.edBypassRatio ?? 1 / 6)
+      : 1 / 6;
+
+    if (hasAlpha && selectedPower?.slots) {
+      return combineWithAlphaED(
+        { name: selectedPower.name, slots: selectedPower.slots },
+        build.level,
+        getIOSet,
+        alphaBonuses,
+        edBypassRatio,
+        exemplarMode ? exemplarLevel : undefined
+      );
+    }
+
     if (selectedPower?.slots) {
-      bonuses = calculatePowerEnhancementBonuses(
+      return calculatePowerEnhancementBonuses(
         { name: selectedPower.name, slots: selectedPower.slots },
         build.level,
         getIOSet,
@@ -130,15 +148,8 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
       );
     }
 
-    // Add Alpha incarnate bonuses (these apply universally to all powers)
-    for (const [aspect, value] of Object.entries(alphaBonuses)) {
-      if (value !== undefined) {
-        bonuses[aspect] = (bonuses[aspect] || 0) + value;
-      }
-    }
-
-    return bonuses;
-  }, [selectedPower, build.level, alphaBonuses, exemplarMode, exemplarLevel]);
+    return { ...alphaBonuses };
+  }, [selectedPower, build.level, alphaBonuses, exemplarMode, exemplarLevel, build.incarnates?.alpha?.tier]);
 
   // Convert global bonuses to enhancement-aspect-keyed decimals for three-tier display
   const globalBonusesForCalc = useMemo(
