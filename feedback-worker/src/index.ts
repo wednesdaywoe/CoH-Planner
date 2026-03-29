@@ -98,10 +98,7 @@ function buildEmailHtml(payload: FeedbackPayload): string {
   if (payload.buildSnapshot) {
     snapshotHtml = `
       <h3 style="color: #94a3b8; margin-top: 16px;">Build Snapshot</h3>
-      <details style="margin-top: 8px;">
-        <summary style="color: #60a5fa; cursor: pointer; font-size: 13px;">Click to expand full build JSON</summary>
-        <pre style="background: #0f172a; border: 1px solid #334155; border-radius: 4px; padding: 12px; margin-top: 8px; font-size: 11px; color: #cbd5e1; white-space: pre-wrap; word-break: break-all; max-height: 400px; overflow: auto;">${escapeHtml(payload.buildSnapshot)}</pre>
-      </details>`;
+      <p style="color: #60a5fa; font-size: 13px;">Attached as .json file</p>`;
   }
 
   return `
@@ -182,18 +179,50 @@ export default {
     const subject = `[CoH Planner] ${payload.type}: ${subjectPreview}${description.length > 60 ? '...' : ''}`;
 
     try {
+      // Build the email payload
+      const emailPayload: Record<string, unknown> = {
+        from: 'CoH Planner <onboarding@resend.dev>',
+        to: env.FEEDBACK_EMAIL,
+        subject,
+        html: buildEmailHtml({ ...payload, description }),
+      };
+
+      // Attach build snapshot as a .json file if included
+      if (payload.buildSnapshot) {
+        // Generate a filename from the build name or timestamp
+        let buildName = 'build';
+        try {
+          const parsed = JSON.parse(payload.buildSnapshot);
+          if (parsed.build?.name) {
+            buildName = parsed.build.name.replace(/[^a-zA-Z0-9_-]/g, '_').substring(0, 40);
+          }
+        } catch { /* use default */ }
+
+        const timestamp = new Date().toISOString().slice(0, 10);
+        const filename = `${buildName}_${timestamp}.json`;
+
+        // Pretty-print the JSON for the attachment
+        let prettyJson = payload.buildSnapshot;
+        try {
+          prettyJson = JSON.stringify(JSON.parse(payload.buildSnapshot), null, 2);
+        } catch { /* use raw */ }
+
+        // Resend accepts base64-encoded attachments
+        const base64Content = btoa(unescape(encodeURIComponent(prettyJson)));
+        emailPayload.attachments = [{
+          filename,
+          content: base64Content,
+          type: 'application/json',
+        }];
+      }
+
       const resendResponse = await fetch('https://api.resend.com/emails', {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${env.RESEND_API_KEY}`,
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          from: 'CoH Planner <onboarding@resend.dev>',
-          to: env.FEEDBACK_EMAIL,
-          subject,
-          html: buildEmailHtml({ ...payload, description }),
-        }),
+        body: JSON.stringify(emailPayload),
       });
 
       if (!resendResponse.ok) {
