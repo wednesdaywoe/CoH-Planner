@@ -418,7 +418,7 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     },
     format: (v) => `${v}`,
     color: STAT_COLORS.health,
-    tooltip: 'Maximum hit points',
+    tooltip: 'Hit point bonuses',
     showWhenZero: true,
     breakdownKey: 'maxHP',
   },

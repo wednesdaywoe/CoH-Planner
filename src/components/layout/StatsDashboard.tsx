@@ -129,7 +129,7 @@ export function StatsDashboard() {
           ? globalBonuses[globalKey]
           : def.getValue(stats, baseHP, maxHPCap);
         const breakdown = def.breakdownKey ? breakdowns.get(def.breakdownKey) : undefined;
-        return { ...def, value, breakdown, breakdownUnit: def.breakdownUnit };
+        return { ...def, value, breakdown, breakdownUnit: def.breakdownUnit, hpCap: config.stat === 'health' ? maxHPCap : undefined };
       })
       .filter((stat) => {
         if (stat.showWhenZero) return true;
@@ -246,6 +246,7 @@ export function StatsDashboard() {
                       rawValue={stat.value}
                       tracked={stat.breakdownKey ? trackedStats.includes(stat.breakdownKey) : false}
                       onTrack={stat.breakdownKey ? () => toggleTrackedStat(stat.breakdownKey!) : undefined}
+                      hpCap={stat.hpCap}
                     />
                   ))}
                 </div>
@@ -469,9 +470,11 @@ interface StatItemProps {
   className?: string;
   tracked?: boolean;
   onTrack?: () => void;
+  /** HP cap for this archetype (only for HP stat) */
+  hpCap?: number;
 }
 
-function StatItem({ label, value, color = 'text-gray-300', tooltip, breakdown, breakdownUnit = '%', rawValue, className = '', tracked, onTrack }: StatItemProps) {
+function StatItem({ label, value, color = 'text-gray-300', tooltip, breakdown, breakdownUnit = '%', rawValue, className = '', tracked, onTrack, hpCap }: StatItemProps) {
   const hasCapped = breakdown?.sources.some(s => s.capped) ?? false;
   const content = (
     <div
@@ -601,6 +604,14 @@ function StatItem({ label, value, color = 'text-gray-300', tooltip, breakdown, b
           <span className="text-slate-300">Total</span>
           <span className={color}>+{breakdown.total.toFixed(2)}{breakdownUnit}{isRegen && <span className="text-slate-400"> ({(rawValue as CompoundStatValue).perSec.toFixed(2)}/s)</span>}</span>
         </div>
+
+        {/* HP Cap */}
+        {hpCap !== undefined && hpCap > 0 && (
+          <div className="flex justify-between text-[10px] text-slate-500">
+            <span>AT Cap</span>
+            <span className="text-slate-400">{Math.floor(hpCap)} HP</span>
+          </div>
+        )}
       </div>
     );
   }, [breakdown, tooltip, label, color, breakdownUnit, rawValue]);
