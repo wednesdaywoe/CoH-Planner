@@ -94,8 +94,12 @@ function transformPoolPower(legacy: LegacyPoolPower): Power {
     ...effectFields
   } = legacy.effects;
 
-  // Convert per-tick endurance to per-second
-  const endPerSec = endurance ? endurance / (activatePeriod || 0.5) : undefined;
+  // For toggles, convert per-tick endurance to per-second using activatePeriod.
+  // For clicks, endurance is a flat cost per activation — don't divide.
+  const isToggle = legacy.powerType === 'Toggle';
+  const endCost = endurance
+    ? (isToggle ? endurance / (activatePeriod || 0.5) : endurance)
+    : undefined;
 
   return {
     name: legacy.name,
@@ -116,7 +120,7 @@ function transformPoolPower(legacy: LegacyPoolPower): Power {
       accuracy,
       range,
       recharge,
-      enduranceCost: endPerSec,
+      enduranceCost: endCost,
       castTime: activationTime,
       effectArea: effectArea as PowerEffects['effectArea'],
       radius,

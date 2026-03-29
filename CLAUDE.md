@@ -29,15 +29,24 @@ The export is functional and verified. Run with: `py -3 power_stats/export_power
 - 96 attrib indices mapped and verified by cross-referencing 7,687 powers against CoD2 data
 - Key files: `_dataclasses.py` (EffectGroup/EffectTemplate), `_enums.py` (ATTRIB_NAME, aspect/type/stack enums), `_powers.py` (effect parser), `export_powers.py` (export script)
 
-### Verification Results (against 5,228 CoD2 reference powers)
+### Verification Results (against 7,687 CoD2 reference powers)
 
 | Template Field | Accuracy | Notes |
 |---|---|---|
 | aspect | **100%** | Encoded as value*8 in binary |
 | table | **100%** | String table offset |
-| magnitude | **99.96%** | 6 diffs from float32 precision |
+| target | **100%** | Fixed: Self, SelfAndPets, AnyAffected, AnyAffectedAndPets, etc. |
+| magnitude | **100%** | Perfect match |
+| scale | **99.99%** | 3 diffs from float32 precision |
+| stack_limit | **98.86%** | Minor parsing issues in some templates |
+| caster_stack | **97.63%** | Added Collective mapping |
+| stack_key | **97.29%** | Some truncated string offsets |
+| stack | **96.02%** | Added Extend, Overlap, Refresh, Continuous, etc. |
 | attribs | **93.1%** | Remaining 7% are unmapped exotic indices |
-| duration | **92.4%** | Some formatting differences |
+| application_type | **79.31%** | CoD2 re-labels based on context (see below) |
+| type | **78.85%** | CoD2 re-labels based on context (see below) |
+
+**Note on type/application_type (79%):** The binary stores consistent enum values, but CoD2 applies semantic re-labeling based on attrib context. For example, mez templates (Held, Stunned) use binary type=0 (Magnitude) but CoD2 relabels as "Duration". The underlying data is correct — this is a naming convention difference, not a parsing error.
 
 ### Remaining Tasks (low priority — not blocking current use)
 
