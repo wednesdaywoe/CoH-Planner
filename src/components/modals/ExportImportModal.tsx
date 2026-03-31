@@ -160,8 +160,17 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
 
     try {
       const exportData = JSON.parse(exportBuild()) as BuildExport;
+      // Generate a meaningful name if the user hasn't set one
+      let vaultName = buildAlias.trim() || build.name;
+      if (!vaultName || /^untitled\s*build$/i.test(vaultName.trim())) {
+        const at = build.archetype.name || '';
+        const pri = build.primary.name || '';
+        const sec = build.secondary.name || '';
+        vaultName = ['Generic ' + at, pri, sec].filter(Boolean).join(' - ') || 'Saved Build';
+      }
+
       await shareBuild({
-        name: buildAlias.trim() || build.name || 'Untitled Build',
+        name: vaultName,
         description: '',
         author_name: '',
         server: '',
@@ -475,8 +484,17 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
         .map((t) => t.trim())
         .filter(Boolean);
 
+      // Generate a meaningful name if the user hasn't set one
+      let shareName = build.name;
+      if (!shareName || /^untitled\s*build$/i.test(shareName.trim())) {
+        const at = build.archetype.name || '';
+        const pri = build.primary.name || '';
+        const sec = build.secondary.name || '';
+        shareName = ['Generic ' + at, pri, sec].filter(Boolean).join(' - ') || 'Shared Build';
+      }
+
       const result = await shareBuild({
-        name: build.name || 'Untitled Build',
+        name: shareName,
         description: shareDescription,
         author_name: shareAuthor,
         server: shareServer,
