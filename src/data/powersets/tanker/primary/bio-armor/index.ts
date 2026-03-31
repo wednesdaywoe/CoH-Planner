@@ -14,9 +14,9 @@ import { EfficientAdaptation as EfficientAdaptation } from './efficient-adaptati
 import { OffensiveAdaptation as OffensiveAdaptation } from './offensive-adaptation';
 import { HardenedCarapace as HardenedCarapace } from './hardened-carapace';
 import { Inexhaustible as Inexhaustible } from './inexhaustible';
-import { EvolvingArmor as EvolvingArmor } from './adaptation';
+import { Adaptation as AdaptationPower } from './adaptation';
 import { EnvironmentalModification as EnvironmentalModification } from './environmental-adaptation';
-import { Adaptation as Adaptation } from './evolution';
+import { Evolution as Evolution } from './evolution';
 import { AblativeCarapace as AblativeCarapace } from './ablative-carapace';
 import { DNASiphon as DNASiphon } from './dna-siphon';
 import { GeneticContamination as GeneticContamination } from './genetic-contamination';
@@ -35,9 +35,9 @@ export const powerset: Powerset = {
     OffensiveAdaptation,
     HardenedCarapace,
     Inexhaustible,
-    EvolvingArmor,
+    AdaptationPower,
     EnvironmentalModification,
-    Adaptation,
+    Evolution,
     AblativeCarapace,
     DNASiphon,
     GeneticContamination,

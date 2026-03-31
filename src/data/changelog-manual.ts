@@ -25,6 +25,7 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
     items: [
       { message: 'Removed Wind Control from Controller and Dominator, not available on Homecoming', type: 'fix' },
       { message: '...but hear me out HC, Rebirth, or Thunderspy -- Storm Armor! ⛈️ My ideas are free!', type: 'feat' }
+      { message: 'Restored Adaption for Bio Armor', type: 'fix' }
     ],
   },
 ];

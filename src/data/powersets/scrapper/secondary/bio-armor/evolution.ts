@@ -7,8 +7,8 @@
 
 import type { Power } from '@/types';
 
-export const Adaptation: Power = {
-  "name": "Adaptation",
+export const Evolution: Power = {
+  "name": "Evolution",
   "internalName": "Evolution",
   "available": 9,
   "description": "By purchasing this power you gain access to three mutually exclusive toggle powers: Efficient Adaptation, Defensive Adaptation and Offensive Adaptation. If Defensive Adaptation is active you gain improved damage resistance from Hardened Carapace and Evolving Armor, additional defense from Environmental Modification and Evolving Armor, and increased Maximum HP from Environmental Modification and Inexhaustible. If Offensive Adaptation is active you gain bonus damage from Hardened Carapace, additional To Hit from Environmental Modification, empowered -resistance debuff from Evolving Armor, and your debuff effects from DNA Siphon, Genetic Contamination and Parasitic Aura are increased.",
