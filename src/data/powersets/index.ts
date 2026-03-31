@@ -136,7 +136,7 @@ import { powerset as controllerThermalRadiation } from './controller/secondary/t
 import { powerset as controllerTimeManipulation } from './controller/secondary/time-manipulation';
 import { powerset as controllerTraps } from './controller/secondary/traps';
 import { powerset as controllerTrickArrow } from './controller/secondary/trick-arrow';
-import { powerset as controllerWindControl } from './controller/primary/wind-control';
+// Wind Control was never implemented on Homecoming — excluded from planner
 
 // ============================================
 // CORRUPTOR POWERSETS
@@ -238,7 +238,7 @@ import { powerset as dominatorSavageAssault } from './dominator/secondary/savage
 import { powerset as dominatorSonicAssault } from './dominator/secondary/sonic-assault';
 import { powerset as dominatorSymphonyControl } from './dominator/primary/symphony-control';
 import { powerset as dominatorThornyAssault } from './dominator/secondary/thorny-assault';
-import { powerset as dominatorWindControl } from './dominator/primary/wind-control';
+// Wind Control was never implemented on Homecoming — excluded from planner
 
 // ============================================
 // MASTERMIND POWERSETS
@@ -555,7 +555,6 @@ const ALL_MODULAR_POWERSETS: Powerset[] = [
   controllerTimeManipulation,
   controllerTraps,
   controllerTrickArrow,
-  controllerWindControl,
 
   // Corruptor
   corruptorArchery,
@@ -651,7 +650,6 @@ const ALL_MODULAR_POWERSETS: Powerset[] = [
   dominatorSonicAssault,
   dominatorSymphonyControl,
   dominatorThornyAssault,
-  dominatorWindControl,
 
   // Mastermind
   mastermindBeastMastery,

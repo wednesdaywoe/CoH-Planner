@@ -21,18 +21,10 @@ export interface ManualEntry {
 export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   // ─── 2026-03-24 ────────────────────────────────────────────────────────────
   {
-    date: '2026-03-29',
+    date: '2026-03-31',
     items: [
-      { message: 'Fixed Alpha slot ED bypass handling', type: 'fix' },
-      { message: 'Fixed 5 pool toggles with non-standard activatePeriod values using the 0.5 fallback, which gave wrong endurance costs:', type: 'fix' },
-      { message: 'Fixed Paralyzing Blast icon AGAIN and punished it for regressing 🤬', type: 'fix' },
-      { message: 'Click powers were incorrectly being divided by activatePeriod, doubling their costs', type: 'fix' },
-      { message: 'Changed heuristic for setting powers as active by default to buffDuration >= 60', type: 'fix' },
-      { message: 'Fixed controller ATO icon swap', type: 'fix' },
-      { message: 'Fixed issue with VEAT base set ID overwriting the branch ID resulting in missing powers', type: 'fix' },
-      { message: 'Fixed Phoenix Rising duplication in Fiery Aura', type: 'fix' },
-      { message: 'Supressed auto tooltip on mobile', type: 'fix' },
-      { message: 'Fixed Contagious Confusion proc registration', type: 'fix' },
+      { message: 'Removed Wind Control from Controller and Dominator, not available on Homecoming', type: 'fix' },
+      { message: '...but hear me out HC, Rebirth, or Thunderspy -- Storm Armor! ⛈️ My ideas are free!', type: 'feat' }
     ],
   },
 ];
