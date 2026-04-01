@@ -1319,7 +1319,7 @@ function mergeStackingPatches(effects, stackingResult) {
 const DISPLAY_NAME_OVERRIDES = {
   'Paralyzing_Blast': 'Paralyzing Blast',  // Was "Tesla Coil" in clientmessages
   'Adaptation': 'Adaptation',              // Bio Armor: clientmessages shows "Evolving Armor", in-game is "Adaptation"
-  'Evolution': 'Evolution',                // Bio Armor: clientmessages shows "Adaptation", in-game is "Evolution"
+  'Evolution': 'Evolving Armor',           // Bio Armor: clientmessages shows "Adaptation", in-game is "Evolving Armor"
 };
 
 // Icon overrides for powers where binary data references a renamed/missing icon file
