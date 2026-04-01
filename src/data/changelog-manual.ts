@@ -21,13 +21,14 @@ export interface ManualEntry {
 export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   // ─── 2026-03-24 ────────────────────────────────────────────────────────────
   {
-    date: '2026-03-31',
+    date: '2026-04-01',
     items: [
-      { message: 'Fix for Evolving Armor and Stalker/Sentinel variants', type: 'fix' },
-      { message: 'Beginning to implement changes from Issue 28, Page 3, Panel 2. No data is available to scrape so it all has to be collected manually in-game. This will take time', type: 'feat' },
-      { message: 'Users who share public builds with lazy names will be punished 😈', type: 'feat' },
-      { message: 'Removed Wind Control from Controller and Dominator, not available on Homecoming', type: 'fix' },
-      { message: '...but hear me out HC, Rebirth, or Thunderspy -- Storm Armor! ⛈️ My ideas are free!', type: 'feat' },
+      { message: 'Introducing $idekick+ subscription model', type: 'feat' },
+      { message: 'Generic: Free, access to Single Origin enhancements', type: 'feat' },
+      { message: '$idekick+ Pro: $5/month, access to Common IOs', type: 'feat' },
+      { message: '$idekick+ Elite: $15/month, access IO sets and Universal sets', type: 'feat' },
+      { message: '$idekick+ Elite Platinum: $20/month, access to Very Rare and Winter sets', type: 'feat' },
+      { message: '$idekick+ Elite Platinum Plus: $30/month, access to all sets including Hamidon, Titan, and Hydra', type: 'feat' },
     ],
   },
 ];

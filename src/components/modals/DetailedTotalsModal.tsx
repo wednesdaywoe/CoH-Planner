@@ -3,20 +3,23 @@
  * with expandable source breakdowns. Supports tabs for comparing loaded builds.
  */
 
-import { useState, useMemo, useCallback, useRef } from 'react';
+import { useState, useMemo, useCallback, useRef, useEffect } from 'react';
 import { Modal, ModalBody } from './Modal';
 import { useCalculatedStats, useCharacterCalculation } from '@/hooks';
 import { convertToLegacyStats } from '@/hooks/useCalculatedStats';
-import { useBuildStore } from '@/stores';
+import { useBuildStore, useAuthStore } from '@/stores';
 import { getBaselineHealth } from '@/utils/calculations/stats';
 import { getArchetype } from '@/data/archetypes';
 import type { ArchetypeId } from '@/types';
 import { calculateCharacterTotals } from '@/utils/calculations/character-totals';
+import { hydrateBuild } from '@/utils/build-serialization';
+import { getMyBuilds, getOwnedBuildIds, isShareEnabled } from '@/services/sharedBuilds';
 import { STAT_DEFINITIONS } from '@/data/stat-definitions';
 import type { StatValue, MezStatValue } from '@/data/stat-definitions';
 import type { CalculatedStats, DashboardStatBreakdown } from '@/hooks/useCalculatedStats';
 import type { GlobalBonuses, CharacterCalculationResult } from '@/utils/calculations/character-totals';
 import type { Build } from '@/types/build';
+import type { SharedBuild } from '@/types/shared';
 
 // ============================================
 // CONSTANTS
@@ -169,7 +172,12 @@ function parseBuildFromJSON(json: string): Build | null {
     const data = JSON.parse(json);
     if (!data.build) return null;
 
-    // Convert pieces arrays back to Sets (same logic as buildStore.importBuild)
+    // v2/v3 slim format — hydrate back to full Build
+    if (data.version >= 2) {
+      return hydrateBuild(data.build);
+    }
+
+    // v1 legacy format — convert pieces arrays back to Sets
     const setsEntries = Object.entries(data.build.sets || {}) as [
       string,
       { count: number; pieces: number[] },
@@ -186,6 +194,48 @@ function parseBuildFromJSON(json: string): Build | null {
   } catch {
     return null;
   }
+}
+
+/** Parse a SharedBuild (from vault/library) into a full Build */
+function parseSharedBuild(shared: SharedBuild): Build | null {
+  try {
+    const data = shared.build_json;
+    if (!data?.build) return null;
+    if ((data as { version?: number }).version && (data as { version: number }).version >= 2) {
+      return hydrateBuild(data.build as Record<string, any>);
+    }
+    // v1 fallback
+    const setsEntries = Object.entries((data.build as any).sets || {}) as [
+      string,
+      { count: number; pieces: number[] },
+    ][];
+    return {
+      ...(data.build as any),
+      sets: Object.fromEntries(
+        setsEntries.map(([setId, tracking]) => [
+          setId,
+          { count: tracking.count, pieces: new Set(tracking.pieces) },
+        ]),
+      ),
+    } as Build;
+  } catch {
+    return null;
+  }
+}
+
+/** Convert a parsed Build into a LoadedBuild with calculated stats */
+function buildToLoadedBuild(parsedBuild: Build, name: string): LoadedBuild {
+  const result = calculateCharacterTotals(parsedBuild, false);
+  const legacy = convertToLegacyStats(result.stats, result);
+  const h = getBaselineHealth(parsedBuild.archetype?.id ?? undefined, parsedBuild.level);
+  return {
+    name,
+    build: parsedBuild,
+    calcResult: result,
+    legacyStats: legacy,
+    baseHP: h.baseHealth,
+    maxHPCap: h.maxHealth,
+  };
 }
 
 function isNonZero(v: StatValue): boolean {
@@ -440,25 +490,11 @@ export function DetailedTotalsModal({ isOpen, onClose }: DetailedTotalsModalProp
         return;
       }
 
-      const result = calculateCharacterTotals(parsedBuild, false);
-      const legacy = convertToLegacyStats(result.stats, result);
-      const h = getBaselineHealth(parsedBuild.archetype?.id ?? undefined, parsedBuild.level);
-
       const buildName = parsedBuild.name || file.name.replace(/\.(json|skif)$/, '');
+      const loaded = buildToLoadedBuild(parsedBuild, buildName);
 
       setLoadedBuilds((prev) => {
-        const next = [
-          ...prev,
-          {
-            name: buildName,
-            build: parsedBuild,
-            calcResult: result,
-            legacyStats: legacy,
-            baseHP: h.baseHealth,
-            maxHPCap: h.maxHealth,
-          },
-        ];
-        // Switch to the new tab (1-indexed, 0 is current build)
+        const next = [...prev, loaded];
         setActiveTab(next.length);
         return next;
       });
@@ -468,6 +504,70 @@ export function DetailedTotalsModal({ isOpen, onClose }: DetailedTotalsModalProp
     // Reset input so same file can be loaded again
     e.target.value = '';
   }, []);
+
+  // Vault builds state
+  const user = useAuthStore((s) => s.user);
+  const [showVaultPicker, setShowVaultPicker] = useState(false);
+  const [vaultBuilds, setVaultBuilds] = useState<SharedBuild[] | null>(null);
+  const [vaultLoading, setVaultLoading] = useState(false);
+
+  const handleOpenVaultPicker = useCallback(async () => {
+    if (vaultBuilds !== null) {
+      // Already loaded, just toggle visibility
+      setShowVaultPicker((prev) => !prev);
+      return;
+    }
+    setVaultLoading(true);
+    setShowVaultPicker(true);
+    try {
+      let builds: SharedBuild[];
+      if (user) {
+        // Logged in — fetch from Supabase
+        builds = await getMyBuilds();
+      } else {
+        // Not logged in — check for locally-owned builds
+        const ownedIds = getOwnedBuildIds();
+        if (ownedIds.length === 0) {
+          builds = [];
+        } else {
+          // Fetch owned builds from Supabase by ID
+          const { searchSharedBuilds } = await import('@/services/sharedBuilds');
+          const result = await searchSharedBuilds({ pageSize: 100 });
+          builds = result.builds.filter((b) => ownedIds.includes(b.id));
+        }
+      }
+      setVaultBuilds(builds);
+    } catch {
+      setVaultBuilds([]);
+    } finally {
+      setVaultLoading(false);
+    }
+  }, [vaultBuilds, user]);
+
+  const handleLoadVaultBuild = useCallback((shared: SharedBuild) => {
+    setLoadError(null);
+    const parsedBuild = parseSharedBuild(shared);
+    if (!parsedBuild) {
+      setLoadError('Could not parse vault build');
+      return;
+    }
+
+    const loaded = buildToLoadedBuild(parsedBuild, shared.name);
+    setLoadedBuilds((prev) => {
+      const next = [...prev, loaded];
+      setActiveTab(next.length);
+      return next;
+    });
+    setShowVaultPicker(false);
+  }, []);
+
+  // Reset vault state when modal closes
+  useEffect(() => {
+    if (!isOpen) {
+      setShowVaultPicker(false);
+      setVaultBuilds(null);
+    }
+  }, [isOpen]);
 
   const handleRemoveTab = useCallback(
     (index: number) => {
@@ -527,14 +627,27 @@ export function DetailedTotalsModal({ isOpen, onClose }: DetailedTotalsModalProp
             </div>
           ))}
 
-          {/* Load build button */}
+          {/* Load build buttons */}
           <button
             onClick={() => fileInputRef.current?.click()}
             className="px-2 py-1.5 text-xs text-slate-500 hover:text-blue-400 hover:bg-slate-800 rounded transition-colors"
-            title="Load a build JSON file to compare"
+            title="Load a build file to compare"
           >
-            + Load Build
+            + From File
           </button>
+          {isShareEnabled() && (
+            <button
+              onClick={handleOpenVaultPicker}
+              className={`px-2 py-1.5 text-xs rounded transition-colors ${
+                showVaultPicker
+                  ? 'text-purple-400 bg-slate-800'
+                  : 'text-slate-500 hover:text-purple-400 hover:bg-slate-800'
+              }`}
+              title={user ? 'Load a build from your vault' : 'Load a build you own'}
+            >
+              + From Vault
+            </button>
+          )}
           <input
             ref={fileInputRef}
             type="file"
@@ -543,6 +656,37 @@ export function DetailedTotalsModal({ isOpen, onClose }: DetailedTotalsModalProp
             className="hidden"
           />
         </div>
+
+        {/* Vault build picker */}
+        {showVaultPicker && (
+          <div className="mb-3 border border-slate-700 rounded-lg bg-slate-800/50 max-h-48 overflow-y-auto">
+            {vaultLoading ? (
+              <div className="p-3 text-xs text-slate-400 text-center">Loading vault builds...</div>
+            ) : !vaultBuilds || vaultBuilds.length === 0 ? (
+              <div className="p-3 text-xs text-slate-500 text-center">
+                {user ? 'No builds in your vault' : 'No owned builds found. Share a build to add it to your vault.'}
+              </div>
+            ) : (
+              <div className="divide-y divide-slate-700/50">
+                {vaultBuilds.map((vb) => (
+                  <button
+                    key={vb.id}
+                    onClick={() => handleLoadVaultBuild(vb)}
+                    className="w-full flex items-center gap-2 px-3 py-2 text-left hover:bg-slate-700/50 transition-colors"
+                  >
+                    <div className="flex-1 min-w-0">
+                      <div className="text-xs font-medium text-slate-200 truncate">{vb.name}</div>
+                      <div className="text-[10px] text-slate-500">
+                        {vb.archetype_name} — {vb.primary_name} / {vb.secondary_name} — Lv{vb.level}
+                      </div>
+                    </div>
+                    <span className="text-[10px] text-purple-400 flex-shrink-0">Load</span>
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
 
         {loadError && (
           <div className="text-xs text-red-400 mb-2">{loadError}</div>
