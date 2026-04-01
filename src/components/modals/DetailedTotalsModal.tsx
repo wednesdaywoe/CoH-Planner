@@ -444,7 +444,7 @@ export function DetailedTotalsModal({ isOpen, onClose }: DetailedTotalsModalProp
       const legacy = convertToLegacyStats(result.stats, result);
       const h = getBaselineHealth(parsedBuild.archetype?.id ?? undefined, parsedBuild.level);
 
-      const buildName = parsedBuild.name || file.name.replace(/\.json$/, '');
+      const buildName = parsedBuild.name || file.name.replace(/\.(json|skif)$/, '');
 
       setLoadedBuilds((prev) => {
         const next = [
@@ -538,7 +538,7 @@ export function DetailedTotalsModal({ isOpen, onClose }: DetailedTotalsModalProp
           <input
             ref={fileInputRef}
             type="file"
-            accept=".json"
+            accept=".skif,.json"
             onChange={handleFileLoad}
             className="hidden"
           />

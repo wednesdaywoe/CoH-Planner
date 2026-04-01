@@ -396,7 +396,7 @@ function BuildIdentityPopover() {
               name="secondary"
               options={archetypeId ? secondaryOptions : [{ value: '', label: 'Select Secondary...' }]}
               value={build.secondary.id || ''}
-              onChange={(e) => setSecondary(e.target.value)}
+              onChange={(e) => { setSecondary(e.target.value); if (e.target.value) setOpen(false); }}
               className="w-full"
               disabled={!archetypeId}
               highlight={!!archetypeId && !build.secondary.id}

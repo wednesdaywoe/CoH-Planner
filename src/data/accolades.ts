@@ -18,6 +18,7 @@ export const ACCOLADES: Accolade[] = [
     description: '+5 Max Endurance',
     icon: 'accolade_atlas.png',
     bonuses: [{ stat: 'maxEndurance', value: 5 }],
+    excludes: 'born_in_battle',
   },
   {
     id: 'freedom_phalanx_reserve',
@@ -25,6 +26,7 @@ export const ACCOLADES: Accolade[] = [
     description: '+10% Max Health',
     icon: 'accolade_freedom.png',
     bonuses: [{ stat: 'maxHP', value: 10 }],
+    excludes: 'high_pain_threshold',
   },
   {
     id: 'task_force_commander',
@@ -32,6 +34,7 @@ export const ACCOLADES: Accolade[] = [
     description: '+5% Max Health',
     icon: 'accolade_taskforce.png',
     bonuses: [{ stat: 'maxHP', value: 5 }],
+    excludes: 'invader',
   },
   {
     id: 'portal_jockey',
@@ -42,6 +45,7 @@ export const ACCOLADES: Accolade[] = [
       { stat: 'maxHP', value: 5 },
       { stat: 'maxEndurance', value: 5 },
     ],
+    excludes: 'marshall',
   },
   // Villain-side equivalents
   {
@@ -50,6 +54,7 @@ export const ACCOLADES: Accolade[] = [
     description: '+5 Max Endurance',
     icon: 'accolade_born.png',
     bonuses: [{ stat: 'maxEndurance', value: 5 }],
+    excludes: 'the_atlas_medallion',
   },
   {
     id: 'high_pain_threshold',
@@ -57,6 +62,7 @@ export const ACCOLADES: Accolade[] = [
     description: '+10% Max Health',
     icon: 'accolade_highpain.png',
     bonuses: [{ stat: 'maxHP', value: 10 }],
+    excludes: 'freedom_phalanx_reserve',
   },
   {
     id: 'invader',
@@ -64,6 +70,7 @@ export const ACCOLADES: Accolade[] = [
     description: '+5% Max Health',
     icon: 'accolade_invader.png',
     bonuses: [{ stat: 'maxHP', value: 5 }],
+    excludes: 'task_force_commander',
   },
   {
     id: 'marshall',
@@ -74,6 +81,7 @@ export const ACCOLADES: Accolade[] = [
       { stat: 'maxHP', value: 5 },
       { stat: 'maxEndurance', value: 5 },
     ],
+    excludes: 'portal_jockey',
   },
 ];
 

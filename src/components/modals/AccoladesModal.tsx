@@ -27,6 +27,10 @@ export function AccoladesModal({ isOpen, onClose }: AccoladesModalProps) {
     if (isAccoladeEnabled(accolade.id)) {
       removeAccolade(accolade.id);
     } else {
+      // Remove mutually exclusive counterpart if selected
+      if (accolade.excludes && isAccoladeEnabled(accolade.excludes)) {
+        removeAccolade(accolade.excludes);
+      }
       addAccolade(accolade);
     }
   };
@@ -54,6 +58,7 @@ export function AccoladesModal({ isOpen, onClose }: AccoladesModalProps) {
         <div className="p-4 space-y-2">
           {accolades.map((accolade) => {
             const enabled = isAccoladeEnabled(accolade.id);
+            const counterpartEnabled = accolade.excludes ? isAccoladeEnabled(accolade.excludes) : false;
             return (
               <button
                 key={accolade.id}
@@ -63,7 +68,9 @@ export function AccoladesModal({ isOpen, onClose }: AccoladesModalProps) {
                   ${
                     enabled
                       ? 'bg-amber-900/40 border-amber-500 text-amber-100'
-                      : 'bg-gray-800/50 border-gray-700 text-gray-300 hover:border-gray-600 hover:bg-gray-800'
+                      : counterpartEnabled
+                        ? 'bg-gray-800/30 border-gray-700/50 text-gray-500 opacity-50 hover:opacity-80'
+                        : 'bg-gray-800/50 border-gray-700 text-gray-300 hover:border-gray-600 hover:bg-gray-800'
                   }
                 `}
               >

@@ -49,6 +49,8 @@ export interface Accolade {
   icon: string;
   /** Stat bonuses granted */
   bonuses: AccoladeBonus[];
+  /** ID of the mutually exclusive counterpart (hero/villain pair) */
+  excludes?: string;
 }
 
 export interface AccoladeBonus {

@@ -142,6 +142,7 @@ export interface PowerItemProps {
   isDisabled: boolean;
   isLocked: boolean;
   onSelect: () => void;
+  onRemove?: () => void;
   onHover: () => void;
   onLeave: () => void;
   onLockToggle: () => void;
@@ -159,6 +160,7 @@ export function PowerItem({
   isDisabled,
   isLocked,
   onSelect,
+  onRemove,
   onHover,
   onLeave,
   onLockToggle,
@@ -170,7 +172,9 @@ export function PowerItem({
   };
 
   const handleClick = (_e: React.MouseEvent) => {
-    if (!isDisabled) {
+    if (isSelected && onRemove) {
+      onRemove();
+    } else if (!isDisabled) {
       onSelect();
     }
   };
@@ -201,7 +205,7 @@ export function PowerItem({
           isLocked
             ? 'border-amber-500 shadow-[0_0_4px_rgba(245,158,11,0.4)] bg-gradient-to-r from-amber-500/10 to-slate-800'
             : isSelected
-              ? 'bg-blue-900/30 border border-blue-600/50 opacity-60'
+              ? 'bg-blue-900/30 border border-blue-600/50 hover:border-red-500/70 cursor-pointer'
               : !isAvailable
                 ? 'bg-slate-800/50 border border-slate-700/50 opacity-40 cursor-not-allowed'
                 : `bg-slate-800 border border-slate-700 ${hoverBorderClass} cursor-pointer`
@@ -268,6 +272,7 @@ export function AvailablePowers({
 }: AvailablePowersProps) {
   const [collapsed, setCollapsed] = useState(false);
   const build = useBuildStore((s) => s.build);
+  const removePower = useBuildStore((s) => s.removePower);
   const setInfoPanelContent = useUIStore((s) => s.setInfoPanelContent);
   const lockInfoPanel = useUIStore((s) => s.lockInfoPanel);
   const unlockInfoPanel = useUIStore((s) => s.unlockInfoPanel);
@@ -522,7 +527,8 @@ export function AvailablePowers({
                 )) ?? false;
 
                 // Block selection until both powersets are chosen, or if 24 powers taken
-                const isDisabled = isSelected || isExcluded || !isAvailable || !bothPowersetsSelected || powerLimitReached;
+                // Selected powers are NOT disabled — clicking them will remove them
+                const isDisabled = (!isSelected && (isExcluded || !isAvailable || !bothPowersetsSelected || powerLimitReached));
                 const isLocked = isPowerLocked(power.internalName);
 
                 return (
@@ -536,6 +542,7 @@ export function AvailablePowers({
                     isDisabled={isDisabled}
                     isLocked={isLocked}
                     onSelect={() => onSelectPower(power)}
+                    onRemove={() => removePower(category, power.internalName)}
                     onHover={() => handlePowerHover(power)}
                     onLeave={handlePowerLeave}
                     onLockToggle={() => handleLockToggle(power)}
