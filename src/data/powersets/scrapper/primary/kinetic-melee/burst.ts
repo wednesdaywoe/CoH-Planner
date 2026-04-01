@@ -22,7 +22,7 @@ export const Burst: Power = {
     "radius": 8,
     "recharge": 15,
     "endurance": 14.3,
-    "castTime": 2.67,
+    "castTime": 2.53,
     "maxTargets": 10
   },
   "allowedEnhancements": [

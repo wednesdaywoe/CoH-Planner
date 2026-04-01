@@ -21,7 +21,7 @@ export const ConcentratedStrike: Power = {
     "range": 7,
     "recharge": 20,
     "endurance": 18.512,
-    "castTime": 2.83
+    "castTime": 2.67
   },
   "allowedEnhancements": [
     "Taunt",

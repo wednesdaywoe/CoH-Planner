@@ -20,7 +20,7 @@ export const LightningClap: Power = {
   "stats": {
     "accuracy": 0.8,
     "radius": 15,
-    "recharge": 30,
+    "recharge": 15,
     "endurance": 13,
     "castTime": 1.23,
     "maxTargets": 10

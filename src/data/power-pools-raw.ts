@@ -408,7 +408,7 @@ export const POWER_POOLS_RAW = {
           "accuracy": 1,
           "range": 7,
           "recharge": 2.5,
-          "endurance": 4.42,
+          "endurance": 3.952,
           "activationTime": 1.07,
           "effectArea": "SingleTarget",
           "damage": [
@@ -474,7 +474,7 @@ export const POWER_POOLS_RAW = {
           "accuracy": 1,
           "range": 7,
           "recharge": 3,
-          "endurance": 4.94,
+          "endurance": 4.368,
           "activationTime": 1.83,
           "effectArea": "SingleTarget",
           "damage": [
@@ -534,7 +534,7 @@ export const POWER_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 10,
-          "endurance": 0.1625,
+          "endurance": 0.64,
           "activationTime": 3.1,
           "effectArea": "SingleTarget",
           "resistance": {
@@ -575,7 +575,7 @@ export const POWER_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 10,
-          "endurance": 0.1625,
+          "endurance": 0.64,
           "activationTime": 0.67,
           "effectArea": "SingleTarget",
           "defenseBuff": {
@@ -666,7 +666,7 @@ export const POWER_POOLS_RAW = {
           "accuracy": 1,
           "range": 7,
           "recharge": 8,
-          "endurance": 10.66,
+          "endurance": 8.528,
           "activationTime": 1.67,
           "effectArea": "Cone",
           "radius": 7,
@@ -990,7 +990,7 @@ export const POWER_POOLS_RAW = {
           "accuracy": 1,
           "range": 7,
           "recharge": 4,
-          "endurance": 6.5,
+          "endurance": 5.2,
           "activationTime": 1.5,
           "effectArea": "SingleTarget",
           "damage": [
@@ -2440,7 +2440,7 @@ export const POWER_POOLS_RAW = {
           "accuracy": 1,
           "range": 7,
           "recharge": 2.8,
-          "endurance": 5.46,
+          "endurance": 4.2,
           "activationTime": 1.5,
           "effectArea": "SingleTarget",
           "damage": [
@@ -3554,7 +3554,7 @@ export const POWER_POOLS_RAW = {
           "accuracy": 1,
           "range": 7,
           "recharge": 3,
-          "endurance": 5.46,
+          "endurance": 4.368,
           "activationTime": 3.07,
           "effectArea": "SingleTarget",
           "damage": [

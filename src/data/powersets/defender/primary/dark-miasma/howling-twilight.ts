@@ -18,11 +18,11 @@ export const HowlingTwilight: Power = {
   "effectArea": "AoE",
   "stats": {
     "accuracy": 1,
-    "range": 80,
+    "range": 40,
     "radius": 15,
     "recharge": 180,
-    "endurance": 26,
-    "castTime": 3.17,
+    "endurance": 10.4,
+    "castTime": 1.83,
     "maxTargets": 16
   },
   "allowedEnhancements": [

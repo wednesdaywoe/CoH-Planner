@@ -21,7 +21,7 @@ export const Disembowel: Power = {
     "range": 7,
     "recharge": 10,
     "endurance": 10.192,
-    "castTime": 1.8
+    "castTime": 1.5
   },
   "allowedEnhancements": [
     "EnduranceReduction",

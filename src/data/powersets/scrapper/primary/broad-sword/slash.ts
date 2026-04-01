@@ -21,7 +21,7 @@ export const Slash: Power = {
     "range": 7,
     "recharge": 4,
     "endurance": 5.2,
-    "castTime": 1.33
+    "castTime": 1.1
   },
   "allowedEnhancements": [
     "EnduranceReduction",

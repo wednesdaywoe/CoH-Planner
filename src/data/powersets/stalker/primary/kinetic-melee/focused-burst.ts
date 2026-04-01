@@ -15,13 +15,13 @@ export const FocusedBurst: Power = {
   "shortHelp": "Ranged, DMG(Smash/Energy), Foe Knockdown",
   "icon": "kineticattack_focusedburst.png",
   "powerType": "Click",
-  "effectArea": "SingleTarget",
+  "effectArea": "Chain",
   "stats": {
-    "accuracy": 1,
+    "accuracy": 1.0,
     "range": 40,
     "recharge": 8,
     "endurance": 8.528,
-    "castTime": 2
+    "castTime": 2.0
   },
   "allowedEnhancements": [
     "EnduranceReduction",

@@ -516,8 +516,13 @@ export function AvailablePowers({
                 // Grey out powers that aren't available yet OR are blocked by level 1 enforcement
                 const isAvailable = power.available < build.level && !isLevel1Restricted;
 
+                // Check if this power is excluded by an already-selected mutually exclusive power
+                const isExcluded = power.excludes?.some(ex => selectedSet.has(
+                  allPowers.find(p => p.internalName === ex)?.name ?? ''
+                )) ?? false;
+
                 // Block selection until both powersets are chosen, or if 24 powers taken
-                const isDisabled = isSelected || !isAvailable || !bothPowersetsSelected || powerLimitReached;
+                const isDisabled = isSelected || isExcluded || !isAvailable || !bothPowersetsSelected || powerLimitReached;
                 const isLocked = isPowerLocked(power.internalName);
 
                 return (

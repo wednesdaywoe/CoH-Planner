@@ -1,26 +1,27 @@
 /**
- * Slice
- * Melee (Cone), DMG(Lethal), Foe -DEF
+ * Boomerang Slice
+ * Ranged (Cone), DMG(Lethal/DoT), Foe -DEF
  *
- * Source: scrapper_melee/broad_sword/slice.json
+ * HC runtime-only power — not in binary data.
+ * Mutually exclusive with Slice.
  */
 
 import type { Power } from '@/types';
 
-export const Slice: Power = {
-  "name": "Slice",
-  "internalName": "Slice",
+export const BoomerangSlice: Power = {
+  "name": "Boomerang Slice",
+  "internalName": "Boomerang_Slice",
   "available": 1,
-  "description": "You Slice your sword in a wide arc, attacking all enemies in front of you. Slice does less damage than Hack but can hit multiple foes and reduce their defense.",
-  "shortHelp": "Melee (Cone), DMG(Lethal), Foe -DEF",
+  "description": "You toss your sword outward in a Boomerang Slice, attacking all enemies in front of you. This attack wounds your opponents, causing them to take minor damage over time and reduces their defense and damage resistance. Every 15 seconds you can perform a more powerful Rending Slice on your main target.",
+  "shortHelp": "Ranged (Cone), DMG(Lethal/DoT), Foe -DEF",
   "icon": "sword_slice.png",
   "powerType": "Click",
   "effectArea": "Cone",
   "stats": {
     "accuracy": 1.05,
-    "range": 7,
-    "radius": 7,
-    "arc": 2.2689,
+    "range": 30,
+    "radius": 30,
+    "arc": 0.5236,
     "recharge": 8,
     "endurance": 8.528,
     "castTime": 1.83,
@@ -36,7 +37,7 @@ export const Slice: Power = {
   "allowedSetCategories": [
     "Accurate Defense Debuff",
     "Defense Debuff",
-    "Melee AoE Damage",
+    "Ranged AoE Damage",
     "Scrapper Archetype Sets",
     "Universal Damage Sets"
   ],
@@ -58,15 +59,15 @@ export const Slice: Power = {
       "table": "Melee_InherentDamage"
     }
   ],
-  "excludes": ["Boomerang_Slice"],
+  "excludes": ["Slice"],
   "effects": {
     "defenseDebuff": {
       "scale": 1,
       "table": "Melee_Debuff_Def"
     },
     "durations": {
-      "defenseDebuff": 10
+      "defenseDebuff": 15
     },
-    "buffDuration": 10
+    "buffDuration": 15
   }
 };

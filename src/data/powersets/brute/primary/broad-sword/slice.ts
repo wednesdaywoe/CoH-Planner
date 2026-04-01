@@ -23,7 +23,7 @@ export const Slice: Power = {
     "arc": 2.2689,
     "recharge": 8,
     "endurance": 8.528,
-    "castTime": 2,
+    "castTime": 1.83,
     "maxTargets": 5
   },
   "allowedEnhancements": [

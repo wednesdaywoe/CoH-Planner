@@ -19,8 +19,8 @@ export const Impale: Power = {
   "stats": {
     "accuracy": 1,
     "range": 40,
-    "recharge": 8,
-    "endurance": 8.528,
+    "recharge": 10,
+    "endurance": 10.192,
     "castTime": 2.43
   },
   "allowedEnhancements": [

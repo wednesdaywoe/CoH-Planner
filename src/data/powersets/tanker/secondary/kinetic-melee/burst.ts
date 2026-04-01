@@ -19,10 +19,10 @@ export const Burst: Power = {
   "effectArea": "AoE",
   "stats": {
     "accuracy": 1,
-    "radius": 12,
+    "radius": 8,
     "recharge": 15,
-    "endurance": 14.352,
-    "castTime": 2.67,
+    "endurance": 14.3,
+    "castTime": 2.53,
     "maxTargets": 10
   },
   "allowedEnhancements": [

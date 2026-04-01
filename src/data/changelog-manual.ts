@@ -23,6 +23,7 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   {
     date: '2026-03-31',
     items: [
+      { message: 'Beginning to implement changes from Issue 28, Page 3, Panel 2. No data is available to scrape so it all has to be collected manually in-game. This will take time', type: 'feat' },
       { message: 'Users who share public builds with lazy names will be punished 😈', type: 'feat' },
       { message: 'Removed Wind Control from Controller and Dominator, not available on Homecoming', type: 'fix' },
       { message: '...but hear me out HC, Rebirth, or Thunderspy -- Storm Armor! ⛈️ My ideas are free!', type: 'feat' },

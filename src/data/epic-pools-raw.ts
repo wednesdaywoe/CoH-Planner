@@ -49,7 +49,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 80,
           "recharge": 13,
-          "endurance": 9.1,
+          "endurance": 7.28,
           "activationTime": 2,
           "effectArea": "SingleTarget",
           "damage": [
@@ -107,7 +107,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 50,
           "recharge": 16,
-          "endurance": 10.751,
+          "endurance": 8.601,
           "activationTime": 2.37,
           "effectArea": "Cone",
           "radius": 50,
@@ -173,7 +173,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 60,
           "recharge": 32,
-          "endurance": 18.98,
+          "endurance": 15.184,
           "activationTime": 1.6,
           "effectArea": "Cone",
           "radius": 60,
@@ -226,7 +226,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 60,
           "recharge": 32,
-          "endurance": 18.98,
+          "endurance": 15.184,
           "activationTime": 2.33,
           "effectArea": "Cone",
           "radius": 60,
@@ -330,7 +330,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 60,
           "recharge": 900,
-          "endurance": 26,
+          "endurance": 20.8,
           "activationTime": 3.2,
           "effectArea": "Location",
           "summon": {
@@ -381,7 +381,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1.05,
           "range": 80,
           "recharge": 12,
-          "endurance": 8.58,
+          "endurance": 6.864,
           "activationTime": 2,
           "effectArea": "SingleTarget",
           "damage": {
@@ -425,7 +425,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1.05,
           "range": 50,
           "recharge": 16,
-          "endurance": 10.751,
+          "endurance": 8.601,
           "activationTime": 2,
           "effectArea": "AoE",
           "radius": 15,
@@ -485,7 +485,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1.05,
           "range": 80,
           "recharge": 32,
-          "endurance": 18.98,
+          "endurance": 15.184,
           "activationTime": 2,
           "effectArea": "AoE",
           "radius": 15,
@@ -526,7 +526,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1.05,
           "range": 7,
           "recharge": 30,
-          "endurance": 17.94,
+          "endurance": 14.352,
           "activationTime": 2.33,
           "effectArea": "SingleTarget",
           "damage": {
@@ -606,7 +606,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 60,
           "recharge": 900,
-          "endurance": 26,
+          "endurance": 20.8,
           "activationTime": 3.03,
           "effectArea": "Location",
           "summon": {
@@ -657,7 +657,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 80,
           "recharge": 12,
-          "endurance": 8.58,
+          "endurance": 6.864,
           "activationTime": 1.17,
           "effectArea": "SingleTarget",
           "damage": {
@@ -713,7 +713,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 50,
           "recharge": 16,
-          "endurance": 10.751,
+          "endurance": 8.601,
           "activationTime": 1.17,
           "effectArea": "AoE",
           "radius": 15,
@@ -783,7 +783,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 80,
           "recharge": 32,
-          "endurance": 18.98,
+          "endurance": 15.184,
           "activationTime": 1.07,
           "effectArea": "AoE",
           "radius": 15,
@@ -844,7 +844,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 40,
           "recharge": 24,
-          "endurance": 18.98,
+          "endurance": 15.184,
           "activationTime": 2.07,
           "effectArea": "Cone",
           "radius": 40,
@@ -903,7 +903,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 60,
           "recharge": 900,
-          "endurance": 26,
+          "endurance": 20.8,
           "activationTime": 1.17,
           "effectArea": "Location",
           "summon": {
@@ -955,7 +955,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 80,
           "recharge": 16,
-          "endurance": 10.66,
+          "endurance": 8.528,
           "activationTime": 1.1,
           "effectArea": "SingleTarget",
           "damage": {
@@ -995,7 +995,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 50,
           "recharge": 16,
-          "endurance": 10.751,
+          "endurance": 8.601,
           "activationTime": 1.67,
           "effectArea": "Cone",
           "radius": 50,
@@ -1064,7 +1064,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 80,
           "recharge": 32,
-          "endurance": 18.98,
+          "endurance": 15.184,
           "activationTime": 1,
           "effectArea": "AoE",
           "radius": 15,
@@ -1100,7 +1100,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 70,
           "recharge": 20,
-          "endurance": 0.325,
+          "endurance": 0.26,
           "activationTime": 2.37,
           "effectArea": "AoE",
           "radius": 15,
@@ -1134,7 +1134,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 60,
           "recharge": 900,
-          "endurance": 26,
+          "endurance": 20.8,
           "activationTime": 3.2,
           "effectArea": "Location",
           "summon": {
@@ -1179,7 +1179,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 8,
-          "endurance": 0.1625,
+          "endurance": 0.13,
           "activationTime": 1.17,
           "effectArea": "SingleTarget",
           "resistance": {
@@ -1234,7 +1234,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 0.8,
           "range": 50,
           "recharge": 100,
-          "endurance": 10.66,
+          "endurance": 8.528,
           "activationTime": 2.03,
           "effectArea": "Cone",
           "radius": 50,
@@ -1272,7 +1272,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 80,
           "recharge": 24,
-          "endurance": 10.66,
+          "endurance": 8.528,
           "activationTime": 2.33,
           "effectArea": "SingleTarget",
           "confuse": {
@@ -1354,7 +1354,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 50,
           "recharge": 240,
-          "endurance": 16.25,
+          "endurance": 13.0,
           "activationTime": 1.03,
           "effectArea": "AoE",
           "radius": 10,
@@ -1408,7 +1408,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 15,
           "recharge": 600,
-          "endurance": 0.65,
+          "endurance": 0.52,
           "activationTime": 1.17,
           "effectArea": "AoE",
           "radius": 15,
@@ -1480,7 +1480,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1.05,
           "range": 50,
           "recharge": 16,
-          "endurance": 10.751,
+          "endurance": 8.601,
           "activationTime": 2,
           "effectArea": "AoE",
           "radius": 15,
@@ -1534,7 +1534,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 8,
-          "endurance": 0.1625,
+          "endurance": 0.13,
           "activationTime": 2,
           "effectArea": "SingleTarget",
           "defenseBuff": {
@@ -1592,7 +1592,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1.05,
           "range": 50,
           "recharge": 32,
-          "endurance": 18.98,
+          "endurance": 15.184,
           "activationTime": 2,
           "effectArea": "Cone",
           "radius": 50,
@@ -1638,7 +1638,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 60,
           "recharge": 900,
-          "endurance": 26,
+          "endurance": 20.8,
           "activationTime": 3.03,
           "effectArea": "Location",
           "summon": {
@@ -1680,7 +1680,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1.05,
           "range": 60,
           "recharge": 24,
-          "endurance": 10.66,
+          "endurance": 8.528,
           "activationTime": 2,
           "effectArea": "SingleTarget",
           "damage": {
@@ -1737,7 +1737,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 40,
           "recharge": 24,
-          "endurance": 18.98,
+          "endurance": 15.184,
           "activationTime": 2.07,
           "effectArea": "Cone",
           "radius": 40,
@@ -1788,7 +1788,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 8,
-          "endurance": 0.1625,
+          "endurance": 0.13,
           "activationTime": 0.67,
           "effectArea": "SingleTarget",
           "resistance": {
@@ -1845,7 +1845,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 60,
           "recharge": 900,
-          "endurance": 26,
+          "endurance": 20.8,
           "activationTime": 1.17,
           "effectArea": "Location",
           "summon": {
@@ -1886,7 +1886,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 50,
           "recharge": 16,
-          "endurance": 10.751,
+          "endurance": 8.601,
           "activationTime": 1.17,
           "effectArea": "AoE",
           "radius": 15,
@@ -1958,7 +1958,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 60,
           "recharge": 24,
-          "endurance": 10.66,
+          "endurance": 8.528,
           "activationTime": 2.17,
           "effectArea": "SingleTarget",
           "damage": {
@@ -2026,7 +2026,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 80,
           "recharge": 20,
-          "endurance": 0.325,
+          "endurance": 0.26,
           "activationTime": 2.03,
           "effectArea": "AoE",
           "radius": 25,
@@ -2061,7 +2061,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 60,
           "recharge": 90,
-          "endurance": 19.5,
+          "endurance": 15.6,
           "activationTime": 2.37,
           "effectArea": "AoE",
           "radius": 25,
@@ -2119,7 +2119,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 540,
-          "endurance": 18.2,
+          "endurance": 14.56,
           "activationTime": 0.73,
           "effectArea": "SingleTarget",
           "damage": {
@@ -2168,7 +2168,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 8,
-          "endurance": 0.1625,
+          "endurance": 0.13,
           "activationTime": 0.73,
           "effectArea": "SingleTarget",
           "defenseBuff": {
@@ -2222,7 +2222,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 240,
-          "endurance": 0.1625,
+          "endurance": 0.13,
           "activationTime": 0.07,
           "effectArea": "SingleTarget",
           "regenBuff": {
@@ -2311,7 +2311,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 40,
           "recharge": 24,
-          "endurance": 18.98,
+          "endurance": 15.184,
           "activationTime": 2.17,
           "effectArea": "Cone",
           "radius": 40,
@@ -2358,7 +2358,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 60,
           "recharge": 24,
-          "endurance": 10.66,
+          "endurance": 8.528,
           "activationTime": 2,
           "effectArea": "SingleTarget",
           "damage": {
@@ -2409,7 +2409,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 8,
-          "endurance": 0.1625,
+          "endurance": 0.13,
           "activationTime": 0.67,
           "effectArea": "SingleTarget",
           "resistance": {
@@ -2456,7 +2456,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 1000,
-          "endurance": 3.25,
+          "endurance": 2.6,
           "activationTime": 1.96,
           "effectArea": "SingleTarget",
           "resistance": {
@@ -2541,7 +2541,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 800,
-          "endurance": 26,
+          "endurance": 20.8,
           "activationTime": 2.93,
           "effectArea": "AoE",
           "radius": 40,
@@ -2615,7 +2615,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 70,
           "recharge": 120,
-          "endurance": 16.25,
+          "endurance": 13.0,
           "activationTime": 3.07,
           "effectArea": "Location",
           "summon": {
@@ -2657,7 +2657,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 60,
           "recharge": 24,
-          "endurance": 10.66,
+          "endurance": 8.528,
           "activationTime": 1.07,
           "effectArea": "SingleTarget",
           "damage": {
@@ -2696,7 +2696,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 8,
-          "endurance": 0.1625,
+          "endurance": 0.13,
           "activationTime": 1.67,
           "effectArea": "SingleTarget",
           "resistance": {
@@ -2749,7 +2749,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 70,
           "recharge": 200,
-          "endurance": 22.75,
+          "endurance": 18.2,
           "activationTime": 1.5,
           "effectArea": "AoE",
           "radius": 10,
@@ -2891,7 +2891,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 30,
-          "endurance": 0.1625,
+          "endurance": 0.13,
           "activationTime": 2.03,
           "effectArea": "SingleTarget",
           "onlyAffectsSelf": {
@@ -3007,7 +3007,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 40,
-          "endurance": 0.4875,
+          "endurance": 0.39,
           "activationTime": 2.03,
           "effectArea": "AoE",
           "radius": 9,
@@ -3044,7 +3044,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 8,
-          "endurance": 0.1625,
+          "endurance": 0.13,
           "activationTime": 0.67,
           "effectArea": "SingleTarget",
           "resistance": {
@@ -3093,7 +3093,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1.2,
           "range": 70,
           "recharge": 60,
-          "endurance": 21.125,
+          "endurance": 16.9,
           "activationTime": 1.67,
           "effectArea": "AoE",
           "radius": 10,
@@ -3176,7 +3176,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 1000,
-          "endurance": 3.25,
+          "endurance": 2.6,
           "activationTime": 3.1,
           "effectArea": "SingleTarget",
           "resistance": {
@@ -3327,7 +3327,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1.05,
           "range": 60,
           "recharge": 24,
-          "endurance": 10.66,
+          "endurance": 8.528,
           "activationTime": 1.67,
           "effectArea": "SingleTarget",
           "damage": {
@@ -3383,7 +3383,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1.05,
           "range": 80,
           "recharge": 90,
-          "endurance": 19.5,
+          "endurance": 15.6,
           "activationTime": 1.87,
           "effectArea": "AoE",
           "radius": 15,
@@ -3425,7 +3425,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1.05,
           "range": 80,
           "recharge": 45,
-          "endurance": 10.66,
+          "endurance": 8.528,
           "activationTime": 1.5,
           "effectArea": "SingleTarget",
           "resistanceDebuff": {
@@ -3502,7 +3502,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1.05,
           "range": 150,
           "recharge": 240,
-          "endurance": 22.75,
+          "endurance": 18.2,
           "activationTime": 3.87,
           "effectArea": "AoE",
           "radius": 20,
@@ -3549,7 +3549,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 80,
           "recharge": 13,
-          "endurance": 9.1,
+          "endurance": 7.28,
           "activationTime": 2,
           "effectArea": "SingleTarget",
           "damage": [
@@ -3607,7 +3607,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 50,
           "recharge": 16,
-          "endurance": 10.751,
+          "endurance": 8.601,
           "activationTime": 2.37,
           "effectArea": "Cone",
           "radius": 50,
@@ -3673,7 +3673,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 60,
           "recharge": 32,
-          "endurance": 18.98,
+          "endurance": 15.184,
           "activationTime": 1.6,
           "effectArea": "Cone",
           "radius": 60,
@@ -3726,7 +3726,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 60,
           "recharge": 32,
-          "endurance": 18.98,
+          "endurance": 15.184,
           "activationTime": 2.33,
           "effectArea": "Cone",
           "radius": 60,
@@ -3830,7 +3830,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 60,
           "recharge": 900,
-          "endurance": 26,
+          "endurance": 20.8,
           "activationTime": 3.2,
           "effectArea": "Location",
           "summon": {
@@ -3881,7 +3881,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1.05,
           "range": 80,
           "recharge": 12,
-          "endurance": 8.58,
+          "endurance": 6.864,
           "activationTime": 2,
           "effectArea": "SingleTarget",
           "damage": {
@@ -3925,7 +3925,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1.05,
           "range": 50,
           "recharge": 16,
-          "endurance": 10.751,
+          "endurance": 8.601,
           "activationTime": 2,
           "effectArea": "AoE",
           "radius": 15,
@@ -3979,7 +3979,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 10,
-          "endurance": 0.195,
+          "endurance": 0.156,
           "activationTime": 1.17,
           "effectArea": "SingleTarget",
           "tohitBuff": {
@@ -4036,7 +4036,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1.05,
           "range": 80,
           "recharge": 32,
-          "endurance": 18.98,
+          "endurance": 15.184,
           "activationTime": 2,
           "effectArea": "AoE",
           "radius": 15,
@@ -4084,7 +4084,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 60,
           "recharge": 900,
-          "endurance": 26,
+          "endurance": 20.8,
           "activationTime": 3.03,
           "effectArea": "Location",
           "summon": {
@@ -4135,7 +4135,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 80,
           "recharge": 12,
-          "endurance": 8.58,
+          "endurance": 6.864,
           "activationTime": 1.17,
           "effectArea": "SingleTarget",
           "damage": {
@@ -4191,7 +4191,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 50,
           "recharge": 16,
-          "endurance": 10.751,
+          "endurance": 8.601,
           "activationTime": 1.17,
           "effectArea": "AoE",
           "radius": 15,
@@ -4261,7 +4261,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 80,
           "recharge": 32,
-          "endurance": 18.98,
+          "endurance": 15.184,
           "activationTime": 1.07,
           "effectArea": "AoE",
           "radius": 15,
@@ -4322,7 +4322,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 40,
           "recharge": 24,
-          "endurance": 18.98,
+          "endurance": 15.184,
           "activationTime": 2.07,
           "effectArea": "Cone",
           "radius": 40,
@@ -4381,7 +4381,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 60,
           "recharge": 900,
-          "endurance": 26,
+          "endurance": 20.8,
           "activationTime": 1.17,
           "effectArea": "Location",
           "summon": {
@@ -4433,7 +4433,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 80,
           "recharge": 16,
-          "endurance": 10.66,
+          "endurance": 8.528,
           "activationTime": 1.1,
           "effectArea": "SingleTarget",
           "damage": {
@@ -4473,7 +4473,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 50,
           "recharge": 20,
-          "endurance": 12.74,
+          "endurance": 10.192,
           "activationTime": 1.67,
           "effectArea": "Cone",
           "radius": 50,
@@ -4537,7 +4537,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 70,
           "recharge": 20,
-          "endurance": 0.325,
+          "endurance": 0.26,
           "activationTime": 2.37,
           "effectArea": "AoE",
           "radius": 15,
@@ -4573,7 +4573,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 80,
           "recharge": 32,
-          "endurance": 18.98,
+          "endurance": 15.184,
           "activationTime": 1,
           "effectArea": "AoE",
           "radius": 15,
@@ -4612,7 +4612,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 60,
           "recharge": 900,
-          "endurance": 26,
+          "endurance": 20.8,
           "activationTime": 3.2,
           "effectArea": "Location",
           "summon": {
@@ -4688,7 +4688,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 10,
-          "endurance": 0.195,
+          "endurance": 0.156,
           "activationTime": 1.17,
           "effectArea": "SingleTarget",
           "tohitBuff": {
@@ -4746,7 +4746,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 80,
           "recharge": 8,
-          "endurance": 6.5,
+          "endurance": 5.2,
           "activationTime": 1.67,
           "effectArea": "SingleTarget",
           "damage": [
@@ -4836,7 +4836,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 40,
           "recharge": 24,
-          "endurance": 14.82,
+          "endurance": 11.856,
           "activationTime": 1.07,
           "effectArea": "Cone",
           "radius": 40,
@@ -4894,7 +4894,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 8,
-          "endurance": 0.1625,
+          "endurance": 0.13,
           "activationTime": 1.17,
           "effectArea": "SingleTarget",
           "resistance": {
@@ -4950,7 +4950,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 80,
           "recharge": 8,
-          "endurance": 6.5,
+          "endurance": 5.2,
           "activationTime": 1,
           "effectArea": "SingleTarget",
           "damage": {
@@ -4991,7 +4991,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 60,
           "recharge": 30,
-          "endurance": 17.94,
+          "endurance": 14.352,
           "activationTime": 1.03,
           "effectArea": "Cone",
           "radius": 60,
@@ -5038,7 +5038,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 7,
           "recharge": 30,
-          "endurance": 17.94,
+          "endurance": 14.352,
           "activationTime": 2.07,
           "effectArea": "SingleTarget",
           "damage": [
@@ -5089,7 +5089,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 15,
           "recharge": 600,
-          "endurance": 0.65,
+          "endurance": 0.52,
           "activationTime": 1.17,
           "effectArea": "AoE",
           "radius": 15,
@@ -5160,7 +5160,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1.05,
           "range": 80,
           "recharge": 24,
-          "endurance": 13,
+          "endurance": 10.4,
           "activationTime": 2,
           "effectArea": "SingleTarget",
           "damage": [
@@ -5244,7 +5244,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 8,
-          "endurance": 0.1625,
+          "endurance": 0.13,
           "activationTime": 2,
           "effectArea": "SingleTarget",
           "defenseBuff": {
@@ -5302,7 +5302,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1.05,
           "range": 80,
           "recharge": 32,
-          "endurance": 18.98,
+          "endurance": 15.184,
           "activationTime": 2,
           "effectArea": "AoE",
           "radius": 15,
@@ -5340,7 +5340,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 10,
-          "endurance": 0.195,
+          "endurance": 0.156,
           "activationTime": 1.17,
           "effectArea": "SingleTarget",
           "tohitBuff": {
@@ -5402,7 +5402,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 60,
           "recharge": 900,
-          "endurance": 26,
+          "endurance": 20.8,
           "activationTime": 3.03,
           "effectArea": "Location",
           "summon": {
@@ -5451,7 +5451,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 80,
           "recharge": 8,
-          "endurance": 6.5,
+          "endurance": 5.2,
           "activationTime": 1.67,
           "effectArea": "SingleTarget",
           "damage": [
@@ -5496,7 +5496,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 80,
           "recharge": 32,
-          "endurance": 18.98,
+          "endurance": 15.184,
           "activationTime": 1,
           "effectArea": "AoE",
           "radius": 15,
@@ -5544,7 +5544,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 8,
-          "endurance": 0.1625,
+          "endurance": 0.13,
           "activationTime": 1.67,
           "effectArea": "SingleTarget",
           "resistance": {
@@ -5655,7 +5655,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 360,
-          "endurance": 0.65,
+          "endurance": 0.52,
           "activationTime": 2.03,
           "effectArea": "AoE",
           "radius": 20,
@@ -5719,7 +5719,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 80,
           "recharge": 8,
-          "endurance": 6.5,
+          "endurance": 5.2,
           "activationTime": 1.67,
           "effectArea": "SingleTarget",
           "damage": {
@@ -5753,7 +5753,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 240,
-          "endurance": 0.1625,
+          "endurance": 0.13,
           "activationTime": 0.07,
           "effectArea": "SingleTarget",
           "regenBuff": {
@@ -5826,7 +5826,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 8,
-          "endurance": 0.1625,
+          "endurance": 0.13,
           "activationTime": 0.73,
           "effectArea": "SingleTarget",
           "defenseBuff": {
@@ -5884,7 +5884,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1.2,
           "range": 40,
           "recharge": 32,
-          "endurance": 18.98,
+          "endurance": 15.184,
           "activationTime": 2.67,
           "effectArea": "Cone",
           "radius": 40,
@@ -5926,7 +5926,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 2,
           "range": 60,
           "recharge": 120,
-          "endurance": 19.5,
+          "endurance": 15.6,
           "activationTime": 2.03,
           "effectArea": "Location",
           "summon": {
@@ -5977,7 +5977,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 80,
           "recharge": 8,
-          "endurance": 10.66,
+          "endurance": 8.528,
           "activationTime": 1.67,
           "effectArea": "SingleTarget",
           "damage": [
@@ -6017,7 +6017,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 600,
-          "endurance": 9.75,
+          "endurance": 7.8,
           "activationTime": 1.17,
           "effectArea": "SingleTarget",
           "enduranceDiscount": {
@@ -6052,7 +6052,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 8,
-          "endurance": 0.1625,
+          "endurance": 0.13,
           "activationTime": 0.67,
           "effectArea": "SingleTarget",
           "resistance": {
@@ -6099,7 +6099,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 40,
           "recharge": 24,
-          "endurance": 14.82,
+          "endurance": 11.856,
           "activationTime": 1.07,
           "effectArea": "Cone",
           "radius": 40,
@@ -6142,7 +6142,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 120,
-          "endurance": 9.75,
+          "endurance": 7.8,
           "activationTime": 1.17,
           "effectArea": "SingleTarget",
           "damageBuff": {
@@ -6261,7 +6261,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 100,
           "recharge": 8,
-          "endurance": 6.5,
+          "endurance": 5.2,
           "activationTime": 1.67,
           "effectArea": "SingleTarget",
           "damage": {
@@ -6293,7 +6293,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 360,
-          "endurance": 19.5,
+          "endurance": 15.6,
           "activationTime": 0.73,
           "effectArea": "SingleTarget",
           "confuse": {
@@ -6361,7 +6361,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 8,
-          "endurance": 0.1625,
+          "endurance": 0.13,
           "activationTime": 0.67,
           "effectArea": "SingleTarget",
           "resistance": {
@@ -6410,7 +6410,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 15,
-          "endurance": 0.65,
+          "endurance": 0.52,
           "activationTime": 1.67,
           "effectArea": "AoE",
           "radius": 8,
@@ -6456,7 +6456,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 100,
           "recharge": 40,
-          "endurance": 23.14,
+          "endurance": 18.512,
           "activationTime": 1.83,
           "effectArea": "AoE",
           "radius": 15,
@@ -6512,7 +6512,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 80,
           "recharge": 16,
-          "endurance": 10.66,
+          "endurance": 8.528,
           "activationTime": 2,
           "effectArea": "SingleTarget",
           "damage": {
@@ -6556,7 +6556,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 20,
           "recharge": 20,
-          "endurance": 12.74,
+          "endurance": 10.192,
           "activationTime": 2.1,
           "effectArea": "AoE",
           "radius": 15,
@@ -6599,7 +6599,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 4,
-          "endurance": 0.1625,
+          "endurance": 0.13,
           "activationTime": 0.73,
           "effectArea": "SingleTarget",
           "defenseBuff": {
@@ -6645,7 +6645,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1.2,
           "range": 7,
           "recharge": 28,
-          "endurance": 18.512,
+          "endurance": 14.81,
           "activationTime": 1.5,
           "effectArea": "SingleTarget",
           "damage": {
@@ -6684,7 +6684,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 360,
-          "endurance": 13,
+          "endurance": 10.4,
           "activationTime": 2.03,
           "effectArea": "SingleTarget",
           "damage": {
@@ -6747,7 +6747,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 360,
-          "endurance": 0.65,
+          "endurance": 0.52,
           "activationTime": 2.03,
           "effectArea": "AoE",
           "radius": 20,
@@ -6799,7 +6799,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 60,
           "recharge": 24,
-          "endurance": 10.66,
+          "endurance": 8.528,
           "activationTime": 1.07,
           "effectArea": "SingleTarget",
           "damage": {
@@ -6838,7 +6838,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 8,
-          "endurance": 0.1625,
+          "endurance": 0.13,
           "activationTime": 1.67,
           "effectArea": "SingleTarget",
           "resistance": {
@@ -6948,7 +6948,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1.2,
           "range": 7,
           "recharge": 24,
-          "endurance": 19.825,
+          "endurance": 15.86,
           "activationTime": 1.37,
           "effectArea": "SingleTarget",
           "damage": [
@@ -7007,7 +7007,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 50,
           "recharge": 16,
-          "endurance": 10.751,
+          "endurance": 8.601,
           "activationTime": 2.37,
           "effectArea": "Cone",
           "radius": 50,
@@ -7069,7 +7069,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 8,
-          "endurance": 0.1625,
+          "endurance": 0.13,
           "activationTime": 0.67,
           "effectArea": "SingleTarget",
           "resistance": {
@@ -7116,7 +7116,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 240,
-          "endurance": 0.1625,
+          "endurance": 0.13,
           "activationTime": 0.07,
           "effectArea": "SingleTarget",
           "regenBuff": {
@@ -7193,7 +7193,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 60,
           "recharge": 24,
-          "endurance": 10.66,
+          "endurance": 8.528,
           "activationTime": 1.87,
           "effectArea": "SingleTarget",
           "damage": [
@@ -7251,7 +7251,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 60,
           "recharge": 900,
-          "endurance": 26,
+          "endurance": 20.8,
           "activationTime": 3.2,
           "effectArea": "Location",
           "summon": {
@@ -7304,7 +7304,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1.05,
           "range": 50,
           "recharge": 16,
-          "endurance": 10.751,
+          "endurance": 8.601,
           "activationTime": 2,
           "effectArea": "AoE",
           "radius": 15,
@@ -7358,7 +7358,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 8,
-          "endurance": 0.1625,
+          "endurance": 0.13,
           "activationTime": 2,
           "effectArea": "SingleTarget",
           "defenseBuff": {
@@ -7410,7 +7410,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 10,
-          "endurance": 0.195,
+          "endurance": 0.156,
           "activationTime": 1.17,
           "effectArea": "SingleTarget",
           "tohitBuff": {
@@ -7469,7 +7469,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1.05,
           "range": 60,
           "recharge": 24,
-          "endurance": 10.66,
+          "endurance": 8.528,
           "activationTime": 2,
           "effectArea": "SingleTarget",
           "damage": {
@@ -7520,7 +7520,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 60,
           "recharge": 900,
-          "endurance": 26,
+          "endurance": 20.8,
           "activationTime": 3.03,
           "effectArea": "Location",
           "summon": {
@@ -7565,7 +7565,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 120,
-          "endurance": 16.25,
+          "endurance": 13.0,
           "activationTime": 2.03,
           "effectArea": "AoE",
           "radius": 10,
@@ -7610,7 +7610,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 8,
-          "endurance": 0.1625,
+          "endurance": 0.13,
           "activationTime": 0.67,
           "effectArea": "SingleTarget",
           "resistance": {
@@ -7663,7 +7663,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 60,
           "recharge": 24,
-          "endurance": 10.66,
+          "endurance": 8.528,
           "activationTime": 2.17,
           "effectArea": "SingleTarget",
           "damage": {
@@ -7718,7 +7718,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 240,
-          "endurance": 12.714,
+          "endurance": 10.171,
           "activationTime": 1.17,
           "effectArea": "SingleTarget",
           "damage": {
@@ -7775,7 +7775,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 60,
           "recharge": 900,
-          "endurance": 26,
+          "endurance": 20.8,
           "activationTime": 1.17,
           "effectArea": "Location",
           "summon": {
@@ -7826,7 +7826,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 60,
           "recharge": 24,
-          "endurance": 10.66,
+          "endurance": 8.528,
           "activationTime": 2.17,
           "effectArea": "SingleTarget",
           "damage": {
@@ -7865,7 +7865,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 8,
-          "endurance": 0.1625,
+          "endurance": 0.13,
           "activationTime": 0.67,
           "effectArea": "SingleTarget",
           "resistance": {
@@ -7911,7 +7911,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 120,
-          "endurance": 9.75,
+          "endurance": 7.8,
           "activationTime": 1.17,
           "effectArea": "SingleTarget",
           "damageBuff": {
@@ -8018,7 +8018,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1.2,
           "recharge": 240,
-          "endurance": 19.5,
+          "endurance": 15.6,
           "activationTime": 2.37,
           "effectArea": "AoE",
           "radius": 10,
@@ -8078,7 +8078,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 60,
           "recharge": 900,
-          "endurance": 26,
+          "endurance": 20.8,
           "activationTime": 3.2,
           "effectArea": "Location",
           "summon": {
@@ -8125,7 +8125,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 60,
           "recharge": 16,
-          "endurance": 0.195,
+          "endurance": 0.156,
           "activationTime": 1.17,
           "effectArea": "AoE",
           "radius": 12,
@@ -8168,7 +8168,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 360,
-          "endurance": 0.65,
+          "endurance": 0.52,
           "activationTime": 1.03,
           "effectArea": "AoE",
           "radius": 8,
@@ -8206,7 +8206,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 8,
-          "endurance": 0.1625,
+          "endurance": 0.13,
           "activationTime": 0.67,
           "effectArea": "SingleTarget",
           "resistance": {
@@ -8323,7 +8323,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1.2,
           "range": 60,
           "recharge": 120,
-          "endurance": 19.5,
+          "endurance": 15.6,
           "activationTime": 2.37,
           "effectArea": "AoE",
           "radius": 15,
@@ -8386,7 +8386,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 360,
-          "endurance": 0.65,
+          "endurance": 0.52,
           "activationTime": 2.03,
           "effectArea": "AoE",
           "radius": 20,
@@ -8438,7 +8438,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 60,
           "recharge": 24,
-          "endurance": 10.66,
+          "endurance": 8.528,
           "activationTime": 1.07,
           "effectArea": "SingleTarget",
           "damage": {
@@ -8477,7 +8477,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 8,
-          "endurance": 0.1625,
+          "endurance": 0.13,
           "activationTime": 1.67,
           "effectArea": "SingleTarget",
           "resistance": {
@@ -8587,7 +8587,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1.2,
           "range": 7,
           "recharge": 24,
-          "endurance": 19.825,
+          "endurance": 15.86,
           "activationTime": 1.37,
           "effectArea": "SingleTarget",
           "damage": [
@@ -8642,7 +8642,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 8,
-          "endurance": 0.1625,
+          "endurance": 0.13,
           "activationTime": 0.73,
           "effectArea": "SingleTarget",
           "defenseBuff": {
@@ -8700,7 +8700,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 60,
           "recharge": 90,
-          "endurance": 19.5,
+          "endurance": 15.6,
           "activationTime": 2.37,
           "effectArea": "AoE",
           "radius": 25,
@@ -8748,7 +8748,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 540,
-          "endurance": 18.2,
+          "endurance": 14.56,
           "activationTime": 0.73,
           "effectArea": "SingleTarget",
           "damage": {
@@ -8795,7 +8795,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 180,
-          "endurance": 6.5,
+          "endurance": 5.2,
           "activationTime": 1.17,
           "effectArea": "SingleTarget",
           "tohitBuff": {
@@ -8844,7 +8844,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 60,
           "recharge": 900,
-          "endurance": 26,
+          "endurance": 20.8,
           "activationTime": 1.87,
           "effectArea": "Location",
           "summon": {
@@ -8897,7 +8897,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 50,
           "recharge": 8,
-          "endurance": 8.405,
+          "endurance": 6.724,
           "activationTime": 1.67,
           "effectArea": "SingleTarget",
           "damage": {
@@ -8966,7 +8966,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 7,
           "recharge": 40,
-          "endurance": 23.14,
+          "endurance": 18.512,
           "activationTime": 2.53,
           "effectArea": "AoE",
           "radius": 10,
@@ -9028,7 +9028,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 8,
-          "endurance": 0.1625,
+          "endurance": 0.13,
           "activationTime": 0.67,
           "effectArea": "SingleTarget",
           "resistance": {
@@ -9081,7 +9081,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 60,
           "recharge": 24,
-          "endurance": 10.66,
+          "endurance": 8.528,
           "activationTime": 2,
           "effectArea": "SingleTarget",
           "damage": {
@@ -9132,7 +9132,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 120,
-          "endurance": 16.25,
+          "endurance": 13.0,
           "activationTime": 2.03,
           "effectArea": "AoE",
           "radius": 12,
@@ -9186,7 +9186,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 600,
-          "endurance": 9.75,
+          "endurance": 7.8,
           "activationTime": 1.17,
           "effectArea": "SingleTarget",
           "enduranceDiscount": {
@@ -9221,7 +9221,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 240,
-          "endurance": 13,
+          "endurance": 10.4,
           "activationTime": 1.17,
           "effectArea": "SingleTarget",
           "tohitBuff": {
@@ -9324,7 +9324,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 8,
-          "endurance": 0.1625,
+          "endurance": 0.13,
           "activationTime": 0.67,
           "effectArea": "SingleTarget",
           "resistance": {
@@ -9367,7 +9367,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 1000,
-          "endurance": 3.25,
+          "endurance": 2.6,
           "activationTime": 3.1,
           "effectArea": "SingleTarget",
           "resistance": {
@@ -9447,7 +9447,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1.2,
           "range": 7,
           "recharge": 40,
-          "endurance": 23.14,
+          "endurance": 18.512,
           "activationTime": 2.53,
           "effectArea": "SingleTarget",
           "damage": [
@@ -9509,7 +9509,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 80,
           "recharge": 24,
-          "endurance": 10.66,
+          "endurance": 8.528,
           "activationTime": 1.1,
           "effectArea": "SingleTarget",
           "damage": {
@@ -9549,7 +9549,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 80,
           "recharge": 90,
-          "endurance": 19.5,
+          "endurance": 15.6,
           "activationTime": 2.03,
           "effectArea": "AoE",
           "radius": 25,
@@ -9583,7 +9583,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 8,
-          "endurance": 0.1625,
+          "endurance": 0.13,
           "activationTime": 0.67,
           "effectArea": "SingleTarget",
           "resistance": {
@@ -9632,7 +9632,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 10,
-          "endurance": 1.3,
+          "endurance": 1.04,
           "activationTime": 1.67,
           "effectArea": "AoE",
           "radius": 8,
@@ -9675,7 +9675,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 50,
           "recharge": 180,
-          "endurance": 0.325,
+          "endurance": 0.26,
           "activationTime": 1.13,
           "effectArea": "AoE",
           "radius": 10,
@@ -9739,7 +9739,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 8,
-          "endurance": 0.1625,
+          "endurance": 0.13,
           "activationTime": 1.17,
           "effectArea": "SingleTarget",
           "resistance": {
@@ -9791,7 +9791,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 60,
           "recharge": 180,
-          "endurance": 9.75,
+          "endurance": 7.8,
           "activationTime": 3.1,
           "effectArea": "Location",
           "summon": {
@@ -9829,7 +9829,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 70,
           "recharge": 20,
-          "endurance": 0.325,
+          "endurance": 0.26,
           "activationTime": 3.17,
           "effectArea": "AoE",
           "radius": 15,
@@ -9867,7 +9867,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 60,
           "recharge": 30,
-          "endurance": 17.94,
+          "endurance": 14.352,
           "activationTime": 1.03,
           "effectArea": "Cone",
           "radius": 60,
@@ -9911,7 +9911,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 15,
           "recharge": 600,
-          "endurance": 0.65,
+          "endurance": 0.52,
           "activationTime": 1.17,
           "effectArea": "AoE",
           "radius": 15,
@@ -9984,7 +9984,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1.3,
           "range": 60,
           "recharge": 180,
-          "endurance": 26,
+          "endurance": 20.8,
           "activationTime": 1.17,
           "effectArea": "Location",
           "summon": {
@@ -10021,7 +10021,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 60,
           "recharge": 32,
-          "endurance": 18.98,
+          "endurance": 15.184,
           "activationTime": 1.6,
           "effectArea": "Cone",
           "radius": 60,
@@ -10067,7 +10067,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 240,
-          "endurance": 0.1625,
+          "endurance": 0.13,
           "activationTime": 0.07,
           "effectArea": "SingleTarget",
           "regenBuff": {
@@ -10138,7 +10138,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 8,
-          "endurance": 0.1625,
+          "endurance": 0.13,
           "activationTime": 0.67,
           "effectArea": "SingleTarget",
           "resistance": {
@@ -10190,7 +10190,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 60,
           "recharge": 900,
-          "endurance": 26,
+          "endurance": 20.8,
           "activationTime": 3.2,
           "effectArea": "Location",
           "summon": {
@@ -10242,7 +10242,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1.05,
           "range": 80,
           "recharge": 24,
-          "endurance": 13,
+          "endurance": 10.4,
           "activationTime": 2,
           "effectArea": "SingleTarget",
           "damage": [
@@ -10326,7 +10326,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 8,
-          "endurance": 0.1625,
+          "endurance": 0.13,
           "activationTime": 2,
           "effectArea": "SingleTarget",
           "defenseBuff": {
@@ -10384,7 +10384,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1.05,
           "range": 80,
           "recharge": 32,
-          "endurance": 18.98,
+          "endurance": 15.184,
           "activationTime": 2,
           "effectArea": "AoE",
           "radius": 15,
@@ -10422,7 +10422,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 30,
-          "endurance": 0.1625,
+          "endurance": 0.13,
           "activationTime": 2.03,
           "effectArea": "SingleTarget",
           "onlyAffectsSelf": {
@@ -10549,7 +10549,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 60,
           "recharge": 900,
-          "endurance": 26,
+          "endurance": 20.8,
           "activationTime": 3.03,
           "effectArea": "Location",
           "summon": {
@@ -10594,7 +10594,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 120,
-          "endurance": 16.25,
+          "endurance": 13.0,
           "activationTime": 2.03,
           "effectArea": "AoE",
           "radius": 10,
@@ -10639,7 +10639,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 8,
-          "endurance": 0.1625,
+          "endurance": 0.13,
           "activationTime": 0.67,
           "effectArea": "SingleTarget",
           "resistance": {
@@ -10690,7 +10690,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 80,
           "recharge": 32,
-          "endurance": 18.98,
+          "endurance": 15.184,
           "activationTime": 1.07,
           "effectArea": "AoE",
           "radius": 15,
@@ -10747,7 +10747,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 1000,
-          "endurance": 3.25,
+          "endurance": 2.6,
           "activationTime": 1.96,
           "effectArea": "SingleTarget",
           "resistance": {
@@ -10838,7 +10838,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 60,
           "recharge": 900,
-          "endurance": 26,
+          "endurance": 20.8,
           "activationTime": 1.17,
           "effectArea": "Location",
           "summon": {
@@ -10886,7 +10886,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 360,
-          "endurance": 0.65,
+          "endurance": 0.52,
           "activationTime": 1.03,
           "effectArea": "AoE",
           "radius": 8,
@@ -10924,7 +10924,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 8,
-          "endurance": 0.1625,
+          "endurance": 0.13,
           "activationTime": 0.67,
           "effectArea": "SingleTarget",
           "resistance": {
@@ -10980,7 +10980,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 80,
           "recharge": 32,
-          "endurance": 18.98,
+          "endurance": 15.184,
           "activationTime": 1,
           "effectArea": "AoE",
           "radius": 15,
@@ -11018,7 +11018,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1.2,
           "recharge": 240,
-          "endurance": 19.5,
+          "endurance": 15.6,
           "activationTime": 2.37,
           "effectArea": "AoE",
           "radius": 10,
@@ -11072,7 +11072,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 60,
           "recharge": 900,
-          "endurance": 26,
+          "endurance": 20.8,
           "activationTime": 3.2,
           "effectArea": "Location",
           "summon": {
@@ -11121,7 +11121,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 60,
           "recharge": 120,
-          "endurance": 32.5,
+          "endurance": 26.0,
           "activationTime": 2.03,
           "effectArea": "Location",
           "summon": {
@@ -11158,7 +11158,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 80,
           "recharge": 32,
-          "endurance": 18.98,
+          "endurance": 15.184,
           "activationTime": 1,
           "effectArea": "AoE",
           "radius": 15,
@@ -11206,7 +11206,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 8,
-          "endurance": 0.1625,
+          "endurance": 0.13,
           "activationTime": 1.67,
           "effectArea": "SingleTarget",
           "resistance": {
@@ -11317,7 +11317,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 70,
           "recharge": 200,
-          "endurance": 22.75,
+          "endurance": 18.2,
           "activationTime": 1.5,
           "effectArea": "AoE",
           "radius": 10,
@@ -11410,7 +11410,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 60,
           "recharge": 120,
-          "endurance": 22.659,
+          "endurance": 18.127,
           "activationTime": 2.03,
           "effectArea": "Location",
           "summon": {
@@ -11449,7 +11449,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 240,
-          "endurance": 0.1625,
+          "endurance": 0.13,
           "activationTime": 0.07,
           "effectArea": "SingleTarget",
           "regenBuff": {
@@ -11522,7 +11522,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 8,
-          "endurance": 0.1625,
+          "endurance": 0.13,
           "activationTime": 0.73,
           "effectArea": "SingleTarget",
           "defenseBuff": {
@@ -11576,7 +11576,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 540,
-          "endurance": 18.2,
+          "endurance": 14.56,
           "activationTime": 0.73,
           "effectArea": "SingleTarget",
           "damage": {
@@ -11628,7 +11628,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 2,
           "range": 60,
           "recharge": 120,
-          "endurance": 19.5,
+          "endurance": 15.6,
           "activationTime": 2.03,
           "effectArea": "Location",
           "summon": {
@@ -11678,7 +11678,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1.2,
           "range": 7,
           "recharge": 20,
-          "endurance": 19.11,
+          "endurance": 15.288,
           "activationTime": 2.67,
           "effectArea": "SingleTarget",
           "damage": [
@@ -11724,7 +11724,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 600,
-          "endurance": 9.75,
+          "endurance": 7.8,
           "activationTime": 1.17,
           "effectArea": "SingleTarget",
           "enduranceDiscount": {
@@ -11759,7 +11759,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 8,
-          "endurance": 0.1625,
+          "endurance": 0.13,
           "activationTime": 0.67,
           "effectArea": "SingleTarget",
           "resistance": {
@@ -11806,7 +11806,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 40,
           "recharge": 24,
-          "endurance": 14.82,
+          "endurance": 11.856,
           "activationTime": 1.07,
           "effectArea": "Cone",
           "radius": 40,
@@ -11858,7 +11858,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 80,
           "recharge": 32,
-          "endurance": 18.98,
+          "endurance": 15.184,
           "activationTime": 1.67,
           "effectArea": "AoE",
           "radius": 15,
@@ -11915,7 +11915,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 300,
-          "endurance": 15.288,
+          "endurance": 12.23,
           "activationTime": 3.67,
           "effectArea": "AoE",
           "radius": 35,
@@ -12006,7 +12006,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 360,
-          "endurance": 19.5,
+          "endurance": 15.6,
           "activationTime": 0.73,
           "effectArea": "SingleTarget",
           "confuse": {
@@ -12074,7 +12074,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 8,
-          "endurance": 0.1625,
+          "endurance": 0.13,
           "activationTime": 0.67,
           "effectArea": "SingleTarget",
           "resistance": {
@@ -12123,7 +12123,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 15,
-          "endurance": 0.65,
+          "endurance": 0.52,
           "activationTime": 1.67,
           "effectArea": "AoE",
           "radius": 8,
@@ -12169,7 +12169,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 100,
           "recharge": 40,
-          "endurance": 23.14,
+          "endurance": 18.512,
           "activationTime": 1.83,
           "effectArea": "AoE",
           "radius": 15,
@@ -12225,7 +12225,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 40,
           "recharge": 24,
-          "endurance": 18.98,
+          "endurance": 15.184,
           "activationTime": 2.17,
           "effectArea": "Cone",
           "radius": 40,
@@ -12272,7 +12272,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 60,
           "recharge": 24,
-          "endurance": 10.66,
+          "endurance": 8.528,
           "activationTime": 2.17,
           "effectArea": "SingleTarget",
           "damage": {
@@ -12334,7 +12334,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 7,
           "recharge": 40,
-          "endurance": 23.14,
+          "endurance": 18.512,
           "activationTime": 2.53,
           "effectArea": "AoE",
           "radius": 10,
@@ -12398,7 +12398,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 1000,
-          "endurance": 3.25,
+          "endurance": 2.6,
           "activationTime": 1.96,
           "effectArea": "SingleTarget",
           "resistance": {
@@ -12483,7 +12483,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 180,
-          "endurance": 25.225,
+          "endurance": 20.18,
           "activationTime": 2.93,
           "effectArea": "AoE",
           "radius": 25,
@@ -12552,7 +12552,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 80,
           "recharge": 8,
-          "endurance": 6.5,
+          "endurance": 5.2,
           "activationTime": 1.67,
           "effectArea": "SingleTarget",
           "damage": {
@@ -12590,7 +12590,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 60,
           "recharge": 90,
-          "endurance": 19.5,
+          "endurance": 15.6,
           "activationTime": 2.37,
           "effectArea": "AoE",
           "radius": 25,
@@ -12638,7 +12638,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 540,
-          "endurance": 18.2,
+          "endurance": 14.56,
           "activationTime": 0.73,
           "effectArea": "SingleTarget",
           "damage": {
@@ -12687,7 +12687,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 8,
-          "endurance": 0.1625,
+          "endurance": 0.13,
           "activationTime": 0.73,
           "effectArea": "SingleTarget",
           "defenseBuff": {
@@ -12741,7 +12741,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 240,
-          "endurance": 0.1625,
+          "endurance": 0.13,
           "activationTime": 0.07,
           "effectArea": "SingleTarget",
           "regenBuff": {
@@ -12824,7 +12824,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 8,
-          "endurance": 0.1625,
+          "endurance": 0.13,
           "activationTime": 0.67,
           "effectArea": "SingleTarget",
           "resistance": {
@@ -12871,7 +12871,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 80,
           "recharge": 8,
-          "endurance": 10.66,
+          "endurance": 8.528,
           "activationTime": 1.67,
           "effectArea": "SingleTarget",
           "damage": [
@@ -12920,7 +12920,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 40,
           "recharge": 24,
-          "endurance": 14.82,
+          "endurance": 11.856,
           "activationTime": 1.07,
           "effectArea": "Cone",
           "radius": 40,
@@ -12972,7 +12972,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 80,
           "recharge": 32,
-          "endurance": 18.98,
+          "endurance": 15.184,
           "activationTime": 1.67,
           "effectArea": "AoE",
           "radius": 15,
@@ -13019,7 +13019,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 1000,
-          "endurance": 3.25,
+          "endurance": 2.6,
           "activationTime": 3.1,
           "effectArea": "SingleTarget",
           "resistance": {
@@ -13112,7 +13112,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 70,
           "recharge": 120,
-          "endurance": 16.25,
+          "endurance": 13.0,
           "activationTime": 3.07,
           "effectArea": "Location",
           "summon": {
@@ -13152,7 +13152,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 80,
           "recharge": 8,
-          "endurance": 6.5,
+          "endurance": 5.2,
           "activationTime": 1.67,
           "effectArea": "SingleTarget",
           "damage": [
@@ -13197,7 +13197,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 80,
           "recharge": 32,
-          "endurance": 18.98,
+          "endurance": 15.184,
           "activationTime": 1,
           "effectArea": "AoE",
           "radius": 15,
@@ -13251,7 +13251,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 60,
           "recharge": 24,
-          "endurance": 10.66,
+          "endurance": 8.528,
           "activationTime": 1.07,
           "effectArea": "SingleTarget",
           "damage": {
@@ -13360,7 +13360,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 8,
-          "endurance": 0.1625,
+          "endurance": 0.13,
           "activationTime": 1.17,
           "effectArea": "SingleTarget",
           "resistance": {
@@ -13418,7 +13418,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1.2,
           "range": 50,
           "recharge": 8,
-          "endurance": 8.405,
+          "endurance": 6.724,
           "activationTime": 1.2,
           "effectArea": "SingleTarget",
           "damage": {
@@ -13473,7 +13473,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 0.8,
           "range": 70,
           "recharge": 180,
-          "endurance": 25.225,
+          "endurance": 20.18,
           "activationTime": 1.07,
           "effectArea": "AoE",
           "radius": 20,
@@ -13510,7 +13510,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 80,
           "recharge": 24,
-          "endurance": 10.66,
+          "endurance": 8.528,
           "activationTime": 2.33,
           "effectArea": "SingleTarget",
           "confuse": {
@@ -13597,7 +13597,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 15,
           "recharge": 600,
-          "endurance": 0.65,
+          "endurance": 0.52,
           "activationTime": 1.17,
           "effectArea": "AoE",
           "radius": 15,
@@ -13667,7 +13667,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 50,
           "recharge": 16,
-          "endurance": 10.751,
+          "endurance": 8.601,
           "activationTime": 2.37,
           "effectArea": "Cone",
           "radius": 50,
@@ -13733,7 +13733,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 60,
           "recharge": 32,
-          "endurance": 18.98,
+          "endurance": 15.184,
           "activationTime": 1.6,
           "effectArea": "Cone",
           "radius": 60,
@@ -13784,7 +13784,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1.2,
           "range": 13.2,
           "recharge": 40,
-          "endurance": 23.14,
+          "endurance": 18.512,
           "activationTime": 2.23,
           "effectArea": "SingleTarget",
           "damage": {
@@ -13825,7 +13825,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 8,
-          "endurance": 0.1625,
+          "endurance": 0.13,
           "activationTime": 0.67,
           "effectArea": "SingleTarget",
           "resistance": {
@@ -13876,7 +13876,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 60,
           "recharge": 24,
-          "endurance": 10.66,
+          "endurance": 8.528,
           "activationTime": 1.87,
           "effectArea": "SingleTarget",
           "damage": [
@@ -13942,7 +13942,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1.05,
           "range": 50,
           "recharge": 16,
-          "endurance": 10.751,
+          "endurance": 8.601,
           "activationTime": 2,
           "effectArea": "AoE",
           "radius": 15,
@@ -13996,7 +13996,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 8,
-          "endurance": 0.1625,
+          "endurance": 0.13,
           "activationTime": 2,
           "effectArea": "SingleTarget",
           "defenseBuff": {
@@ -14054,7 +14054,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1.05,
           "range": 50,
           "recharge": 32,
-          "endurance": 18.98,
+          "endurance": 15.184,
           "activationTime": 2,
           "effectArea": "Cone",
           "radius": 50,
@@ -14090,7 +14090,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 120,
-          "endurance": 9.75,
+          "endurance": 7.8,
           "activationTime": 1.17,
           "effectArea": "SingleTarget",
           "damageBuff": {
@@ -14201,7 +14201,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1.05,
           "range": 60,
           "recharge": 24,
-          "endurance": 10.66,
+          "endurance": 8.528,
           "activationTime": 2,
           "effectArea": "SingleTarget",
           "damage": {
@@ -14258,7 +14258,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 40,
           "recharge": 24,
-          "endurance": 18.98,
+          "endurance": 15.184,
           "activationTime": 2.07,
           "effectArea": "Cone",
           "radius": 40,
@@ -14309,7 +14309,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 8,
-          "endurance": 0.1625,
+          "endurance": 0.13,
           "activationTime": 0.67,
           "effectArea": "SingleTarget",
           "resistance": {
@@ -14363,7 +14363,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 7,
           "recharge": 40,
-          "endurance": 23.14,
+          "endurance": 18.512,
           "activationTime": 2.53,
           "effectArea": "AoE",
           "radius": 10,
@@ -14433,7 +14433,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 50,
           "recharge": 16,
-          "endurance": 10.751,
+          "endurance": 8.601,
           "activationTime": 1.17,
           "effectArea": "AoE",
           "radius": 15,
@@ -14505,7 +14505,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 60,
           "recharge": 24,
-          "endurance": 10.66,
+          "endurance": 8.528,
           "activationTime": 2.17,
           "effectArea": "SingleTarget",
           "damage": {
@@ -14579,7 +14579,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 60,
           "recharge": 20,
-          "endurance": 16.38,
+          "endurance": 13.104,
           "activationTime": 2,
           "effectArea": "Cone",
           "radius": 60,
@@ -14616,7 +14616,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 8,
-          "endurance": 0.1625,
+          "endurance": 0.13,
           "activationTime": 0.67,
           "effectArea": "SingleTarget",
           "resistance": {
@@ -14666,7 +14666,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 16,
-          "endurance": 0.195,
+          "endurance": 0.156,
           "activationTime": 1.17,
           "effectArea": "AoE",
           "radius": 12,
@@ -14711,7 +14711,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 50,
           "recharge": 16,
-          "endurance": 10.751,
+          "endurance": 8.601,
           "activationTime": 1.67,
           "effectArea": "Cone",
           "radius": 50,
@@ -14779,7 +14779,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 60,
           "recharge": 24,
-          "endurance": 10.66,
+          "endurance": 8.528,
           "activationTime": 2.17,
           "effectArea": "SingleTarget",
           "damage": {
@@ -14836,7 +14836,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 50,
           "recharge": 8,
-          "endurance": 8.405,
+          "endurance": 6.724,
           "activationTime": 1.17,
           "effectArea": "SingleTarget",
           "damage": [
@@ -14911,7 +14911,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 60,
           "recharge": 24,
-          "endurance": 10.66,
+          "endurance": 8.528,
           "activationTime": 1.07,
           "effectArea": "SingleTarget",
           "damage": [
@@ -14971,7 +14971,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 80,
           "recharge": 8,
-          "endurance": 6.5,
+          "endurance": 5.2,
           "activationTime": 1.67,
           "effectArea": "SingleTarget",
           "damage": [
@@ -15031,7 +15031,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 70,
           "recharge": 200,
-          "endurance": 22.75,
+          "endurance": 18.2,
           "activationTime": 1.5,
           "effectArea": "AoE",
           "radius": 10,
@@ -15107,7 +15107,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 80,
           "recharge": 32,
-          "endurance": 18.98,
+          "endurance": 15.184,
           "activationTime": 1,
           "effectArea": "AoE",
           "radius": 15,
@@ -15179,7 +15179,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 600,
-          "endurance": 9.75,
+          "endurance": 7.8,
           "activationTime": 1.17,
           "effectArea": "SingleTarget",
           "enduranceDiscount": {
@@ -15214,7 +15214,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 10,
-          "endurance": 0.195,
+          "endurance": 0.156,
           "activationTime": 1.17,
           "effectArea": "SingleTarget",
           "tohitBuff": {
@@ -15272,7 +15272,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 80,
           "recharge": 8,
-          "endurance": 6.5,
+          "endurance": 5.2,
           "activationTime": 1.67,
           "effectArea": "SingleTarget",
           "damage": [
@@ -15372,7 +15372,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 40,
           "recharge": 24,
-          "endurance": 14.82,
+          "endurance": 11.856,
           "activationTime": 1.07,
           "effectArea": "Cone",
           "radius": 40,
@@ -15454,7 +15454,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 60,
           "recharge": 30,
-          "endurance": 17.94,
+          "endurance": 14.352,
           "activationTime": 1.03,
           "effectArea": "Cone",
           "radius": 60,
@@ -15516,7 +15516,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 60,
           "recharge": 24,
-          "endurance": 10.66,
+          "endurance": 8.528,
           "activationTime": 1.67,
           "effectArea": "SingleTarget",
           "damage": [
@@ -15577,7 +15577,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 80,
           "recharge": 8,
-          "endurance": 6.5,
+          "endurance": 5.2,
           "activationTime": 1,
           "effectArea": "SingleTarget",
           "damage": [
@@ -15633,7 +15633,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 60,
           "recharge": 20,
-          "endurance": 16.38,
+          "endurance": 13.104,
           "activationTime": 2,
           "effectArea": "Cone",
           "radius": 60,
@@ -15696,7 +15696,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 50,
           "recharge": 16,
-          "endurance": 10.751,
+          "endurance": 8.601,
           "activationTime": 1.67,
           "effectArea": "Cone",
           "radius": 50,
@@ -15789,7 +15789,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 100,
           "recharge": 8,
-          "endurance": 6.5,
+          "endurance": 5.2,
           "activationTime": 1.67,
           "effectArea": "SingleTarget",
           "damage": [
@@ -15844,7 +15844,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 175,
           "recharge": 24,
-          "endurance": 16.646,
+          "endurance": 13.317,
           "activationTime": 1.33,
           "effectArea": "SingleTarget"
         }
@@ -15875,7 +15875,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 60,
           "recharge": 24,
-          "endurance": 16.646,
+          "endurance": 13.317,
           "activationTime": 1.87,
           "effectArea": "Cone",
           "radius": 60,
@@ -15975,7 +15975,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 80,
           "recharge": 900,
-          "endurance": 26,
+          "endurance": 20.8,
           "activationTime": 2,
           "effectArea": "Location",
           "summon": {
@@ -16026,7 +16026,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 80,
           "recharge": 8,
-          "endurance": 6.5,
+          "endurance": 5.2,
           "activationTime": 1,
           "effectArea": "SingleTarget",
           "damage": [
@@ -16085,7 +16085,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 150,
           "recharge": 24,
-          "endurance": 17.94,
+          "endurance": 14.352,
           "activationTime": 1.33,
           "effectArea": "SingleTarget"
         }
@@ -16115,7 +16115,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 60,
           "recharge": 24,
-          "endurance": 15.6,
+          "endurance": 12.48,
           "activationTime": 2.17,
           "effectArea": "Cone",
           "radius": 60,
@@ -16151,7 +16151,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 40,
           "recharge": 36,
-          "endurance": 21.06,
+          "endurance": 16.848,
           "activationTime": 1.6,
           "effectArea": "Cone",
           "radius": 40,
@@ -16214,7 +16214,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 60,
           "recharge": 900,
-          "endurance": 26,
+          "endurance": 20.8,
           "activationTime": 1.87,
           "effectArea": "Location",
           "summon": {
@@ -16267,7 +16267,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 50,
           "recharge": 8,
-          "endurance": 6.5,
+          "endurance": 5.2,
           "activationTime": 1.37,
           "effectArea": "SingleTarget",
           "damage": [
@@ -16334,7 +16334,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 25,
           "recharge": 45,
-          "endurance": 9.75,
+          "endurance": 7.8,
           "activationTime": 1.07,
           "effectArea": "Location",
           "summon": {
@@ -16371,7 +16371,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 70,
           "recharge": 6,
-          "endurance": 5.46,
+          "endurance": 4.368,
           "activationTime": 1.07,
           "effectArea": "SingleTarget",
           "damage": [
@@ -16415,7 +16415,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 20,
-          "endurance": 0.195,
+          "endurance": 0.156,
           "activationTime": 1.17,
           "effectArea": "SingleTarget",
           "tohitBuff": {
@@ -16470,7 +16470,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 80,
           "recharge": 32,
-          "endurance": 18.98,
+          "endurance": 15.184,
           "activationTime": 1,
           "effectArea": "AoE",
           "radius": 15,
@@ -16537,7 +16537,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 50,
           "recharge": 16,
-          "endurance": 10.751,
+          "endurance": 8.601,
           "activationTime": 1.67,
           "effectArea": "Cone",
           "radius": 50,
@@ -16598,7 +16598,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 7,
           "recharge": 12,
-          "endurance": 8.58,
+          "endurance": 6.864,
           "activationTime": 0.97,
           "effectArea": "SingleTarget",
           "damage": [
@@ -16646,7 +16646,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 60,
           "recharge": 24,
-          "endurance": 10.66,
+          "endurance": 8.528,
           "activationTime": 2.07,
           "effectArea": "SingleTarget",
           "damage": {
@@ -16688,7 +16688,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 36,
-          "endurance": 21.06,
+          "endurance": 16.848,
           "activationTime": 2,
           "effectArea": "AoE",
           "radius": 15,
@@ -16733,7 +16733,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 70,
           "recharge": 20,
-          "endurance": 0.325,
+          "endurance": 0.26,
           "activationTime": 3.17,
           "effectArea": "AoE",
           "radius": 15,
@@ -16782,7 +16782,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 50,
           "recharge": 16,
-          "endurance": 10.751,
+          "endurance": 8.601,
           "activationTime": 1.17,
           "effectArea": "AoE",
           "radius": 15,
@@ -16852,7 +16852,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 7,
           "recharge": 28,
-          "endurance": 16.9,
+          "endurance": 13.52,
           "activationTime": 1.5,
           "effectArea": "SingleTarget",
           "damage": [
@@ -16920,7 +16920,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 80,
           "recharge": 16,
-          "endurance": 10.66,
+          "endurance": 8.528,
           "activationTime": 2.07,
           "effectArea": "SingleTarget",
           "damage": {
@@ -16973,7 +16973,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 20,
-          "endurance": 1.3,
+          "endurance": 1.04,
           "activationTime": 2.03,
           "effectArea": "AoE",
           "radius": 10,
@@ -17023,7 +17023,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 80,
           "recharge": 32,
-          "endurance": 16.25,
+          "endurance": 13.0,
           "activationTime": 1,
           "effectArea": "Chain",
           "radius": 20,
@@ -17075,7 +17075,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 50,
           "recharge": 16,
-          "endurance": 10.751,
+          "endurance": 8.601,
           "activationTime": 1.03,
           "effectArea": "AoE",
           "radius": 15,
@@ -17132,7 +17132,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 7,
           "recharge": 16,
-          "endurance": 10.66,
+          "endurance": 8.528,
           "activationTime": 1.5,
           "effectArea": "SingleTarget",
           "damage": [
@@ -17179,7 +17179,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 60,
           "recharge": 24,
-          "endurance": 10.66,
+          "endurance": 8.528,
           "activationTime": 1.07,
           "effectArea": "SingleTarget",
           "damage": {
@@ -17220,7 +17220,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 40,
-          "endurance": 23.14,
+          "endurance": 18.512,
           "activationTime": 2.67,
           "effectArea": "AoE",
           "radius": 10,
@@ -17263,7 +17263,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 32,
-          "endurance": 16.25,
+          "endurance": 13.0,
           "activationTime": 2.03,
           "effectArea": "AoE",
           "radius": 25,
@@ -17317,7 +17317,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 50,
           "recharge": 16,
-          "endurance": 10.751,
+          "endurance": 8.601,
           "activationTime": 2.07,
           "effectArea": "AoE",
           "radius": 15,
@@ -17376,7 +17376,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 7,
           "recharge": 20,
-          "endurance": 12.74,
+          "endurance": 10.192,
           "activationTime": 1.33,
           "effectArea": "SingleTarget",
           "damage": [
@@ -17423,7 +17423,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 60,
           "recharge": 24,
-          "endurance": 10.66,
+          "endurance": 8.528,
           "activationTime": 1.87,
           "effectArea": "SingleTarget",
           "damage": {
@@ -17477,7 +17477,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 40,
-          "endurance": 23.14,
+          "endurance": 18.512,
           "activationTime": 2.1,
           "effectArea": "AoE",
           "radius": 10,
@@ -17524,7 +17524,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 60,
           "recharge": 20,
-          "endurance": 0.325,
+          "endurance": 0.26,
           "activationTime": 2.03,
           "effectArea": "AoE",
           "radius": 25,
@@ -17571,7 +17571,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 50,
           "recharge": 16,
-          "endurance": 10.751,
+          "endurance": 8.601,
           "activationTime": 2.37,
           "effectArea": "Cone",
           "radius": 50,
@@ -17640,7 +17640,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1.2,
           "range": 13.2,
           "recharge": 40,
-          "endurance": 23.14,
+          "endurance": 18.512,
           "activationTime": 2.23,
           "effectArea": "SingleTarget",
           "damage": {
@@ -17687,7 +17687,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 60,
           "recharge": 24,
-          "endurance": 10.66,
+          "endurance": 8.528,
           "activationTime": 1.87,
           "effectArea": "SingleTarget",
           "damage": [
@@ -17742,7 +17742,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 60,
           "recharge": 32,
-          "endurance": 18.98,
+          "endurance": 15.184,
           "activationTime": 2.33,
           "effectArea": "Cone",
           "radius": 60,
@@ -17840,7 +17840,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 60,
           "recharge": 900,
-          "endurance": 26,
+          "endurance": 20.8,
           "activationTime": 3.2,
           "effectArea": "Location",
           "summon": {
@@ -17893,7 +17893,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1.05,
           "range": 50,
           "recharge": 16,
-          "endurance": 10.751,
+          "endurance": 8.601,
           "activationTime": 2,
           "effectArea": "AoE",
           "radius": 15,
@@ -17952,7 +17952,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1.05,
           "range": 7,
           "recharge": 16,
-          "endurance": 10.66,
+          "endurance": 8.528,
           "activationTime": 1.5,
           "effectArea": "SingleTarget",
           "damage": [
@@ -18006,7 +18006,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1.05,
           "range": 60,
           "recharge": 24,
-          "endurance": 10.66,
+          "endurance": 8.528,
           "activationTime": 2,
           "effectArea": "SingleTarget",
           "damage": {
@@ -18045,7 +18045,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 10,
-          "endurance": 0.39,
+          "endurance": 0.312,
           "activationTime": 1.17,
           "effectArea": "AoE",
           "radius": 25,
@@ -18109,7 +18109,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 60,
           "recharge": 900,
-          "endurance": 26,
+          "endurance": 20.8,
           "activationTime": 3.03,
           "effectArea": "Location",
           "summon": {
@@ -18162,7 +18162,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 50,
           "recharge": 16,
-          "endurance": 10.751,
+          "endurance": 8.601,
           "activationTime": 1.17,
           "effectArea": "AoE",
           "radius": 15,
@@ -18235,7 +18235,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 7,
           "recharge": 40,
-          "endurance": 23.14,
+          "endurance": 18.512,
           "activationTime": 2.53,
           "effectArea": "AoE",
           "radius": 10,
@@ -18305,7 +18305,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 60,
           "recharge": 24,
-          "endurance": 10.66,
+          "endurance": 8.528,
           "activationTime": 2.17,
           "effectArea": "SingleTarget",
           "damage": {
@@ -18366,7 +18366,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 40,
           "recharge": 24,
-          "endurance": 18.98,
+          "endurance": 15.184,
           "activationTime": 2.07,
           "effectArea": "Cone",
           "radius": 40,
@@ -18430,7 +18430,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 60,
           "recharge": 900,
-          "endurance": 26,
+          "endurance": 20.8,
           "activationTime": 1.17,
           "effectArea": "Location",
           "summon": {
@@ -18481,7 +18481,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 25,
           "recharge": 45,
-          "endurance": 9.75,
+          "endurance": 7.8,
           "activationTime": 1.07,
           "effectArea": "Location",
           "summon": {
@@ -18521,7 +18521,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1.05,
           "range": 7,
           "recharge": 10,
-          "endurance": 7.54,
+          "endurance": 6.032,
           "activationTime": 1.17,
           "effectArea": "SingleTarget",
           "damage": {
@@ -18568,7 +18568,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 60,
           "recharge": 24,
-          "endurance": 10.66,
+          "endurance": 8.528,
           "activationTime": 1.5,
           "effectArea": "SingleTarget",
           "damage": {
@@ -18613,7 +18613,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1.05,
           "recharge": 28,
-          "endurance": 16.25,
+          "endurance": 13.0,
           "activationTime": 1.83,
           "effectArea": "AoE",
           "radius": 8,
@@ -18669,7 +18669,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1.4,
           "recharge": 120,
-          "endurance": 19.5,
+          "endurance": 15.6,
           "activationTime": 1.83,
           "effectArea": "AoE",
           "radius": 20,
@@ -18717,7 +18717,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 80,
           "recharge": 90,
-          "endurance": 19.5,
+          "endurance": 15.6,
           "activationTime": 2.03,
           "effectArea": "AoE",
           "radius": 25,
@@ -18754,7 +18754,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 7,
           "recharge": 20,
-          "endurance": 12.74,
+          "endurance": 10.192,
           "activationTime": 1.17,
           "effectArea": "SingleTarget",
           "damage": {
@@ -18792,7 +18792,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 80,
           "recharge": 24,
-          "endurance": 10.66,
+          "endurance": 8.528,
           "activationTime": 1.1,
           "effectArea": "SingleTarget",
           "damage": {
@@ -18833,7 +18833,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 40,
-          "endurance": 23.14,
+          "endurance": 18.512,
           "activationTime": 1.97,
           "effectArea": "AoE",
           "radius": 15,
@@ -18872,7 +18872,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 300,
-          "endurance": 15.288,
+          "endurance": 12.23,
           "activationTime": 3.67,
           "effectArea": "AoE",
           "radius": 35,
@@ -18981,7 +18981,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 50,
           "recharge": 16,
-          "endurance": 10.751,
+          "endurance": 8.601,
           "activationTime": 1.67,
           "effectArea": "Cone",
           "radius": 50,
@@ -19051,7 +19051,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 7,
           "recharge": 30,
-          "endurance": 14.95,
+          "endurance": 11.96,
           "activationTime": 2.07,
           "effectArea": "SingleTarget",
           "damage": [
@@ -19103,7 +19103,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 60,
           "recharge": 24,
-          "endurance": 10.66,
+          "endurance": 8.528,
           "activationTime": 2.17,
           "effectArea": "SingleTarget",
           "damage": {
@@ -19144,7 +19144,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 70,
           "recharge": 20,
-          "endurance": 0.325,
+          "endurance": 0.26,
           "activationTime": 2.37,
           "effectArea": "AoE",
           "radius": 15,
@@ -19186,7 +19186,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 60,
           "recharge": 900,
-          "endurance": 26,
+          "endurance": 20.8,
           "activationTime": 3.2,
           "effectArea": "Location",
           "summon": {
@@ -19262,7 +19262,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 10,
-          "endurance": 0.195,
+          "endurance": 0.156,
           "activationTime": 1.17,
           "effectArea": "SingleTarget",
           "tohitBuff": {
@@ -19320,7 +19320,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 80,
           "recharge": 8,
-          "endurance": 6.5,
+          "endurance": 5.2,
           "activationTime": 1.67,
           "effectArea": "SingleTarget",
           "damage": [
@@ -19415,7 +19415,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 40,
           "recharge": 24,
-          "endurance": 14.82,
+          "endurance": 11.856,
           "activationTime": 1.07,
           "effectArea": "Cone",
           "radius": 40,
@@ -19484,7 +19484,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 80,
           "recharge": 13,
-          "endurance": 9.1,
+          "endurance": 7.28,
           "activationTime": 2,
           "effectArea": "SingleTarget",
           "damage": [
@@ -19560,7 +19560,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1.3,
           "range": 60,
           "recharge": 180,
-          "endurance": 26,
+          "endurance": 20.8,
           "activationTime": 1.17,
           "effectArea": "Location",
           "summon": {
@@ -19595,7 +19595,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 240,
-          "endurance": 0.1625,
+          "endurance": 0.13,
           "activationTime": 0.07,
           "effectArea": "SingleTarget",
           "regenBuff": {
@@ -19672,7 +19672,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 60,
           "recharge": 24,
-          "endurance": 10.66,
+          "endurance": 8.528,
           "activationTime": 1.87,
           "effectArea": "SingleTarget",
           "damage": [
@@ -19745,7 +19745,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 60,
           "recharge": 900,
-          "endurance": 26,
+          "endurance": 20.8,
           "activationTime": 3.2,
           "effectArea": "Location",
           "summon": {
@@ -19796,7 +19796,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1.05,
           "range": 80,
           "recharge": 12,
-          "endurance": 8.58,
+          "endurance": 6.864,
           "activationTime": 2,
           "effectArea": "SingleTarget",
           "damage": [
@@ -19857,7 +19857,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1.05,
           "range": 150,
           "recharge": 24,
-          "endurance": 17.94,
+          "endurance": 14.352,
           "activationTime": 2,
           "effectArea": "SingleTarget"
         }
@@ -19890,7 +19890,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1.05,
           "range": 80,
           "recharge": 32,
-          "endurance": 18.98,
+          "endurance": 15.184,
           "activationTime": 2,
           "effectArea": "AoE",
           "radius": 15,
@@ -19953,7 +19953,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1.05,
           "range": 60,
           "recharge": 24,
-          "endurance": 10.66,
+          "endurance": 8.528,
           "activationTime": 2,
           "effectArea": "SingleTarget",
           "damage": [
@@ -20016,7 +20016,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 60,
           "recharge": 900,
-          "endurance": 26,
+          "endurance": 20.8,
           "activationTime": 3.03,
           "effectArea": "Location",
           "summon": {
@@ -20068,7 +20068,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 80,
           "recharge": 8,
-          "endurance": 6.5,
+          "endurance": 5.2,
           "activationTime": 1.17,
           "effectArea": "SingleTarget",
           "damage": [
@@ -20141,7 +20141,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 150,
           "recharge": 24,
-          "endurance": 17.94,
+          "endurance": 14.352,
           "activationTime": 1.33,
           "effectArea": "SingleTarget"
         }
@@ -20174,7 +20174,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 80,
           "recharge": 32,
-          "endurance": 18.98,
+          "endurance": 15.184,
           "activationTime": 1.07,
           "effectArea": "AoE",
           "radius": 15,
@@ -20252,7 +20252,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 60,
           "recharge": 24,
-          "endurance": 10.66,
+          "endurance": 8.528,
           "activationTime": 2.17,
           "effectArea": "SingleTarget",
           "damage": [
@@ -20336,7 +20336,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 60,
           "recharge": 900,
-          "endurance": 26,
+          "endurance": 20.8,
           "activationTime": 1.17,
           "effectArea": "Location",
           "summon": {
@@ -20388,7 +20388,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 80,
           "recharge": 8,
-          "endurance": 6.5,
+          "endurance": 5.2,
           "activationTime": 1,
           "effectArea": "SingleTarget",
           "damage": [
@@ -20446,7 +20446,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 150,
           "recharge": 24,
-          "endurance": 17.94,
+          "endurance": 14.352,
           "activationTime": 1.33,
           "effectArea": "SingleTarget"
         }
@@ -20473,7 +20473,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 90,
-          "endurance": 5.2,
+          "endurance": 4.16,
           "activationTime": 3,
           "effectArea": "SingleTarget",
           "defenseBuff": {
@@ -20563,7 +20563,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 60,
           "recharge": 24,
-          "endurance": 10.66,
+          "endurance": 8.528,
           "activationTime": 2.17,
           "effectArea": "SingleTarget",
           "damage": [
@@ -20627,7 +20627,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 60,
           "recharge": 900,
-          "endurance": 26,
+          "endurance": 20.8,
           "activationTime": 3.2,
           "effectArea": "Location",
           "summon": {
@@ -20680,7 +20680,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 50,
           "recharge": 8,
-          "endurance": 6.5,
+          "endurance": 5.2,
           "activationTime": 1.37,
           "effectArea": "SingleTarget",
           "damage": [
@@ -20778,7 +20778,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 70,
           "recharge": 6,
-          "endurance": 5.46,
+          "endurance": 4.368,
           "activationTime": 1.07,
           "effectArea": "SingleTarget",
           "damage": [
@@ -20817,7 +20817,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 20,
-          "endurance": 0.195,
+          "endurance": 0.156,
           "activationTime": 1.17,
           "effectArea": "SingleTarget",
           "tohitBuff": {
@@ -20872,7 +20872,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 80,
           "recharge": 32,
-          "endurance": 18.98,
+          "endurance": 15.184,
           "activationTime": 1,
           "effectArea": "AoE",
           "radius": 15,
@@ -20933,7 +20933,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 50,
           "recharge": 8,
-          "endurance": 8.405,
+          "endurance": 6.724,
           "activationTime": 1.17,
           "effectArea": "SingleTarget",
           "damage": {
@@ -20993,7 +20993,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 60,
           "recharge": 24,
-          "endurance": 10.66,
+          "endurance": 8.528,
           "activationTime": 1.87,
           "effectArea": "SingleTarget",
           "damage": {
@@ -21049,7 +21049,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 80,
           "recharge": 8,
-          "endurance": 6.5,
+          "endurance": 5.2,
           "activationTime": 1.67,
           "effectArea": "SingleTarget",
           "damage": {
@@ -21084,7 +21084,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 60,
           "recharge": 24,
-          "endurance": 15.6,
+          "endurance": 12.48,
           "activationTime": 2.17,
           "effectArea": "Cone",
           "radius": 60,
@@ -21119,7 +21119,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 2,
           "range": 60,
           "recharge": 120,
-          "endurance": 19.5,
+          "endurance": 15.6,
           "activationTime": 2.03,
           "effectArea": "Location",
           "summon": {
@@ -21170,7 +21170,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 50,
           "recharge": 8,
-          "endurance": 8.405,
+          "endurance": 6.724,
           "activationTime": 1.23,
           "effectArea": "SingleTarget",
           "damage": {
@@ -21228,7 +21228,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 90,
-          "endurance": 19.5,
+          "endurance": 15.6,
           "activationTime": 1.07,
           "effectArea": "AoE",
           "radius": 30,
@@ -21276,7 +21276,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 60,
           "recharge": 24,
-          "endurance": 10.66,
+          "endurance": 8.528,
           "activationTime": 2.07,
           "effectArea": "SingleTarget",
           "damage": {
@@ -21323,7 +21323,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 90,
           "recharge": 60,
-          "endurance": 9.75,
+          "endurance": 7.8,
           "activationTime": 3.1,
           "effectArea": "Location",
           "summon": {
@@ -21362,7 +21362,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 80,
           "recharge": 32,
-          "endurance": 18.98,
+          "endurance": 15.184,
           "activationTime": 1,
           "effectArea": "AoE",
           "radius": 15,
@@ -21418,7 +21418,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 600,
-          "endurance": 9.75,
+          "endurance": 7.8,
           "activationTime": 1.17,
           "effectArea": "SingleTarget",
           "enduranceDiscount": {
@@ -21453,7 +21453,7 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 10,
-          "endurance": 0.195,
+          "endurance": 0.156,
           "activationTime": 1.17,
           "effectArea": "SingleTarget",
           "tohitBuff": {
@@ -21511,7 +21511,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 80,
           "recharge": 8,
-          "endurance": 6.5,
+          "endurance": 5.2,
           "activationTime": 1.67,
           "effectArea": "SingleTarget",
           "damage": [
@@ -21601,7 +21601,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 40,
           "recharge": 24,
-          "endurance": 14.82,
+          "endurance": 11.856,
           "activationTime": 1.07,
           "effectArea": "Cone",
           "radius": 40,
@@ -21665,7 +21665,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 50,
           "recharge": 8,
-          "endurance": 8.405,
+          "endurance": 6.724,
           "activationTime": 1.17,
           "effectArea": "SingleTarget",
           "damage": {
@@ -21723,7 +21723,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 60,
           "recharge": 24,
-          "endurance": 10.66,
+          "endurance": 8.528,
           "activationTime": 1.07,
           "effectArea": "SingleTarget",
           "damage": {
@@ -21766,7 +21766,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 80,
           "recharge": 8,
-          "endurance": 6.5,
+          "endurance": 5.2,
           "activationTime": 1.67,
           "effectArea": "SingleTarget",
           "damage": [
@@ -21811,7 +21811,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 70,
           "recharge": 200,
-          "endurance": 22.75,
+          "endurance": 18.2,
           "activationTime": 1.5,
           "effectArea": "AoE",
           "radius": 10,
@@ -21887,7 +21887,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 80,
           "recharge": 32,
-          "endurance": 18.98,
+          "endurance": 15.184,
           "activationTime": 1,
           "effectArea": "AoE",
           "radius": 15,
@@ -21956,7 +21956,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 50,
           "recharge": 8,
-          "endurance": 8.405,
+          "endurance": 6.724,
           "activationTime": 1.67,
           "effectArea": "SingleTarget",
           "damage": {
@@ -22014,7 +22014,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 60,
           "recharge": 24,
-          "endurance": 10.66,
+          "endurance": 8.528,
           "activationTime": 1.67,
           "effectArea": "SingleTarget",
           "damage": {
@@ -22058,7 +22058,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 80,
           "recharge": 8,
-          "endurance": 6.5,
+          "endurance": 5.2,
           "activationTime": 1,
           "effectArea": "SingleTarget",
           "damage": {
@@ -22097,7 +22097,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 60,
           "recharge": 20,
-          "endurance": 16.38,
+          "endurance": 13.104,
           "activationTime": 2,
           "effectArea": "Cone",
           "radius": 60,
@@ -22137,7 +22137,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 60,
           "recharge": 180,
-          "endurance": 9.75,
+          "endurance": 7.8,
           "activationTime": 3.1,
           "effectArea": "Location",
           "summon": {
@@ -22191,7 +22191,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1.1,
           "range": 100,
           "recharge": 12,
-          "endurance": 6.5,
+          "endurance": 5.2,
           "activationTime": 1.67,
           "effectArea": "SingleTarget",
           "damage": [
@@ -22241,7 +22241,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 60,
           "recharge": 24,
-          "endurance": 10.66,
+          "endurance": 8.528,
           "activationTime": 1.1,
           "effectArea": "SingleTarget",
           "damage": {
@@ -22317,7 +22317,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 100,
           "recharge": 8,
-          "endurance": 6.5,
+          "endurance": 5.2,
           "activationTime": 1.67,
           "effectArea": "SingleTarget",
           "damage": {
@@ -22355,7 +22355,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "range": 100,
           "recharge": 40,
-          "endurance": 23.14,
+          "endurance": 18.512,
           "activationTime": 1.83,
           "effectArea": "AoE",
           "radius": 15,

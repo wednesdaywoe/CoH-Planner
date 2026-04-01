@@ -19,8 +19,8 @@ export const ElixirofLife: Power = {
   "stats": {
     "accuracy": 1,
     "range": 15,
-    "recharge": 180,
-    "endurance": 32.5,
+    "recharge": 120,
+    "endurance": 5.2,
     "castTime": 1.83
   },
   "allowedEnhancements": [

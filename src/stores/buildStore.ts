@@ -1080,6 +1080,17 @@ export const useBuildStore = create<BuildStore>()(
             }
           }
 
+          // Enforce mutually exclusive powers (e.g., Slice vs Boomerang Slice)
+          // If this power excludes another, check if the excluded power is already picked
+          if (power.excludes?.length) {
+            const categoryPowers = category === 'primary' ? state.build.primary.powers
+              : category === 'secondary' ? state.build.secondary.powers
+              : category === 'epic' ? (state.build.epicPool?.powers ?? [])
+              : [];
+            const hasExcluded = categoryPowers.some(p => power.excludes!.includes(p.internalName));
+            if (hasExcluded) return state;
+          }
+
           // Pool case: must target the specific pool by ID
           let newBuild: Build;
           if (category === 'pool') {

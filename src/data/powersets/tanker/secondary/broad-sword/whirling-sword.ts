@@ -20,8 +20,8 @@ export const WhirlingSword: Power = {
   "stats": {
     "accuracy": 1.05,
     "radius": 12,
-    "recharge": 14,
-    "endurance": 13,
+    "recharge": 20,
+    "endurance": 18.512,
     "castTime": 2.67,
     "maxTargets": 10
   },

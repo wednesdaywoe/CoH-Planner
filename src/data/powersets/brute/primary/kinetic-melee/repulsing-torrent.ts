@@ -18,7 +18,7 @@ export const RepulsingTorrent: Power = {
   "effectArea": "Cone",
   "stats": {
     "accuracy": 1,
-    "range": 40,
+    "range": 30,
     "radius": 40,
     "arc": 0.7854,
     "recharge": 12,

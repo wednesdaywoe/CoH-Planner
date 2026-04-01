@@ -20,9 +20,9 @@ export const SpineBurst: Power = {
   "stats": {
     "accuracy": 1,
     "radius": 15,
-    "recharge": 16,
-    "endurance": 15.184,
-    "castTime": 3,
+    "recharge": 10,
+    "endurance": 10.192,
+    "castTime": 1.67,
     "maxTargets": 10
   },
   "allowedEnhancements": [

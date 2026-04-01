@@ -20,7 +20,7 @@ export const ThunderStrike: Power = {
     "accuracy": 1,
     "range": 7,
     "radius": 10,
-    "recharge": 20,
+    "recharge": 15,
     "endurance": 18.512,
     "castTime": 2.53,
     "maxTargets": 10

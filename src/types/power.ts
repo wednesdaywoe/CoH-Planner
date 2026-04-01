@@ -542,6 +542,8 @@ export interface Power {
     stats: Partial<PowerStats>;
     damage: ScaledDamageEntry | ScaledDamageEntry[];
   };
+  /** Mutually exclusive power(s) — picking this power prevents picking the listed internalNames */
+  excludes?: string[];
 }
 
 // ============================================
