@@ -96,6 +96,8 @@ const PAIRED_STATS: Record<string, string> = {
   resCold: 'resFire',
   resEnergy: 'resNegative',
   resNegative: 'resEnergy',
+  resPsionic: 'resToxic',
+  resToxic: 'resPsionic',
   // Defense pairs
   defSmashing: 'defLethal',
   defLethal: 'defSmashing',
@@ -186,6 +188,9 @@ const STAT_NAME_MAP: Record<string, string | null> = {
   'damage_resistance_(psionic)': 'resPsionic',
   ToxicRes: 'resToxic',
   'damage_resistance_(toxic)': 'resToxic',
+
+  // All-resistance (expands to all 8 types — handled specially in bonus processing)
+  'damage_resistance_(all)': 'resAll',
 
   // Recovery & HP
   Recovery: 'recovery',
@@ -411,26 +416,35 @@ export function collectAllSetBonuses(
               return;
             }
 
-            bonuses.push({
-              stat,
-              value: effect.value,
-              source: `${set.name} (${bonus.pieces}pc in ${power.name})`,
-              setName: set.name,
-              pieceCount: bonus.pieces,
-              powerName: power.name,
-            });
+            // Expand "all" stats into individual types
+            const ALL_RES_TYPES = ['resSmashing', 'resLethal', 'resFire', 'resCold', 'resEnergy', 'resNegative', 'resPsionic', 'resToxic'];
+            const expandedStats = stat === 'resAll' ? ALL_RES_TYPES : [stat];
 
-            // Also apply to paired stat (e.g., S/L, F/C, E/N are paired)
-            const pairedStat = getPairedStat(stat);
-            if (pairedStat) {
+            for (const expandedStat of expandedStats) {
               bonuses.push({
-                stat: pairedStat,
+                stat: expandedStat,
                 value: effect.value,
                 source: `${set.name} (${bonus.pieces}pc in ${power.name})`,
                 setName: set.name,
                 pieceCount: bonus.pieces,
                 powerName: power.name,
               });
+
+              // Also apply to paired stat (e.g., S/L, F/C, E/N are paired)
+              // Skip for resAll since we already expanded all types
+              if (stat !== 'resAll') {
+                const pairedStat = getPairedStat(expandedStat);
+                if (pairedStat) {
+                  bonuses.push({
+                    stat: pairedStat,
+                    value: effect.value,
+                    source: `${set.name} (${bonus.pieces}pc in ${power.name})`,
+                    setName: set.name,
+                    pieceCount: bonus.pieces,
+                    powerName: power.name,
+                  });
+                }
+              }
             }
           });
         }
