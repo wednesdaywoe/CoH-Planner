@@ -23,7 +23,12 @@ import { Select } from '@/components/ui';
 import { PowerItem } from './AvailablePowers';
 import type { Power } from '@/types';
 
-export function AvailablePoolPowers() {
+interface AvailablePoolPowersProps {
+  /** Compact mode: 2-column grid layout for pools */
+  compact?: boolean;
+}
+
+export function AvailablePoolPowers({ compact = false }: AvailablePoolPowersProps) {
   const build = useBuildStore((s) => s.build);
   const addPool = useBuildStore((s) => s.addPool);
   const removePool = useBuildStore((s) => s.removePool);
@@ -153,96 +158,105 @@ export function AvailablePoolPowers() {
     );
   }
 
+  // Build pool tile elements for reuse in both layouts
+  const poolTiles = poolsUnlocked ? pools.map((poolSelection) => {
+    const pool = getPowerPool(poolSelection.id);
+    if (!pool) return null;
+    const selectedSet = new Set(poolSelection.powers.map((p) => p.name));
+    const selectedInternalNames = poolSelection.powers.map((p) => p.internalName);
+    return (
+      <AvailablePoolSection
+        key={poolSelection.id}
+        poolId={poolSelection.id}
+        poolName={pool.name}
+        allPowers={pool.powers}
+        selectedPowerNames={selectedSet}
+        level={build.level}
+        isPowerLocked={isPowerLocked}
+        onSelectPower={(power) => handleSelectPoolPower(poolSelection.id, power)}
+        onRemovePool={() => removePool(poolSelection.id)}
+        onPowerHover={(power) => handlePowerHover(power, poolSelection.id)}
+        onPowerLeave={handlePowerLeave}
+        onLockToggle={(power) => handleLockToggle(power, poolSelection.id)}
+        onShowInfo={(power, e) => handleShowInfo(power, poolSelection.id, e)}
+        color="blue"
+        checkAvailability={(power) =>
+          isPowerAvailableInPool(poolSelection.id, power, build.level, selectedInternalNames)
+        }
+        powerLimitReached={powerLimitReached}
+        compact={compact}
+      />
+    );
+  }).filter(Boolean) : [];
+
+  const epicTile = epicUnlocked && build.archetype.id ? (
+    !build.epicPool ? (
+      <div className={compact ? 'bg-slate-900 p-2' : 'mb-3'}>
+        <div className="text-xs font-semibold text-purple-400 uppercase tracking-wide mb-1">
+          {compact ? 'Epic' : 'Epic/Patron Pool'}
+        </div>
+        <Select
+          id="epic-pool-select"
+          name="epic-pool"
+          options={[
+            { value: '', label: compact ? 'Select...' : 'Select Epic/Patron Pool...' },
+            ...availableEpicPools.map((pool) => ({
+              value: pool.id,
+              label: pool.displayName || pool.name,
+            })),
+          ]}
+          value=""
+          onChange={(e) => handleSelectEpicPool(e.target.value)}
+          className="w-full text-xs"
+        />
+      </div>
+    ) : (
+      <AvailableEpicPoolSection
+        epicPool={build.epicPool}
+        level={build.level}
+        isPowerLocked={isPowerLocked}
+        onSelectPower={handleSelectEpicPower}
+        onRemovePool={() => setEpicPool(null)}
+        onPowerHover={(power) => handlePowerHover(power, build.epicPool!.id)}
+        onPowerLeave={handlePowerLeave}
+        onLockToggle={(power) => handleLockToggle(power, build.epicPool!.id)}
+        onShowInfo={(power, e) => handleShowInfo(power, build.epicPool!.id, e)}
+        powerLimitReached={powerLimitReached}
+        compact={compact}
+      />
+    )
+  ) : null;
+
+  const addPoolDropdown = poolsUnlocked && canAddPool && availablePoolOptions.length > 0 ? (
+    <div className={compact ? 'bg-slate-900 p-2 flex items-center justify-center' : ''}>
+      <Select
+        id="add-pool-select"
+        name="add-pool"
+        options={[{ value: '', label: compact ? '+ Add Pool' : 'Add Pool...' }, ...availablePoolOptions]}
+        value=""
+        onChange={(e) => handleAddPool(e.target.value)}
+        className={compact ? 'w-full text-xs' : 'w-full text-xs'}
+      />
+    </div>
+  ) : null;
+
+  // Compact mode: 2-column grid layout
+  if (compact) {
+    return (
+      <div className="grid grid-cols-2 gap-px bg-slate-700">
+        {poolTiles}
+        {epicTile}
+        {addPoolDropdown}
+      </div>
+    );
+  }
+
+  // Normal mode: stacked layout
   return (
     <div className="space-y-3">
-      {/* Pool sections */}
-      {poolsUnlocked && (
-        <>
-          {/* Add pool dropdown */}
-          {canAddPool && availablePoolOptions.length > 0 && (
-            <Select
-              id="add-pool-select"
-              name="add-pool"
-              options={[{ value: '', label: 'Add Pool...' }, ...availablePoolOptions]}
-              value=""
-              onChange={(e) => handleAddPool(e.target.value)}
-              className="w-full text-xs"
-            />
-          )}
-
-          {/* Each added pool as a collapsible section */}
-          {pools.map((poolSelection) => {
-            const pool = getPowerPool(poolSelection.id);
-            if (!pool) return null;
-
-            const selectedSet = new Set(poolSelection.powers.map((p) => p.name));
-            const selectedInternalNames = poolSelection.powers.map((p) => p.internalName);
-
-            return (
-              <AvailablePoolSection
-                key={poolSelection.id}
-                poolId={poolSelection.id}
-                poolName={pool.name}
-                allPowers={pool.powers}
-                selectedPowerNames={selectedSet}
-                level={build.level}
-                isPowerLocked={isPowerLocked}
-                onSelectPower={(power) => handleSelectPoolPower(poolSelection.id, power)}
-                onRemovePool={() => removePool(poolSelection.id)}
-                onPowerHover={(power) => handlePowerHover(power, poolSelection.id)}
-                onPowerLeave={handlePowerLeave}
-                onLockToggle={(power) => handleLockToggle(power, poolSelection.id)}
-                onShowInfo={(power, e) => handleShowInfo(power, poolSelection.id, e)}
-                color="blue"
-                checkAvailability={(power) =>
-                  isPowerAvailableInPool(poolSelection.id, power, build.level, selectedInternalNames)
-                }
-                powerLimitReached={powerLimitReached}
-              />
-            );
-          })}
-        </>
-      )}
-
-      {/* Epic/Patron Pool section */}
-      {epicUnlocked && build.archetype.id && (
-        <>
-          {!build.epicPool ? (
-            <div className="mb-3">
-              <div className="text-xs font-semibold text-purple-400 uppercase tracking-wide mb-1">
-                Epic/Patron Pool
-              </div>
-              <Select
-                id="epic-pool-select"
-                name="epic-pool"
-                options={[
-                  { value: '', label: 'Select Epic/Patron Pool...' },
-                  ...availableEpicPools.map((pool) => ({
-                    value: pool.id,
-                    label: pool.displayName || pool.name,
-                  })),
-                ]}
-                value=""
-                onChange={(e) => handleSelectEpicPool(e.target.value)}
-                className="w-full text-xs"
-              />
-            </div>
-          ) : (
-            <AvailableEpicPoolSection
-              epicPool={build.epicPool}
-              level={build.level}
-              isPowerLocked={isPowerLocked}
-              onSelectPower={handleSelectEpicPower}
-              onRemovePool={() => setEpicPool(null)}
-              onPowerHover={(power) => handlePowerHover(power, build.epicPool!.id)}
-              onPowerLeave={handlePowerLeave}
-              onLockToggle={(power) => handleLockToggle(power, build.epicPool!.id)}
-              onShowInfo={(power, e) => handleShowInfo(power, build.epicPool!.id, e)}
-              powerLimitReached={powerLimitReached}
-            />
-          )}
-        </>
-      )}
+      {addPoolDropdown}
+      {poolTiles}
+      {epicTile}
     </div>
   );
 }
@@ -267,6 +281,7 @@ interface AvailablePoolSectionProps {
   color: 'blue' | 'purple';
   checkAvailability: (power: Power) => boolean;
   powerLimitReached?: boolean;
+  compact?: boolean;
 }
 
 function AvailablePoolSection({
@@ -284,13 +299,59 @@ function AvailablePoolSection({
   color,
   checkAvailability,
   powerLimitReached,
+  compact = false,
 }: AvailablePoolSectionProps) {
   const [collapsed, setCollapsed] = useState(false);
 
-  const colorClass = color === 'blue' ? 'text-blue-400' : 'text-purple-400';
+  const isPool = color === 'blue';
+  const colorClass = isPool ? 'text-blue-400' : 'text-purple-400';
 
   // Filter out auto-granted powers (available < 0)
   const visiblePowers = allPowers.filter((p) => p.available >= 0);
+
+  if (compact) {
+    return (
+      <div className="bg-slate-900">
+        {/* Compact tile header */}
+        <div className="flex items-center justify-between px-2 h-7 bg-slate-800/80 border-b border-slate-700">
+          <div className={`text-[10px] font-semibold ${colorClass} uppercase tracking-wide truncate`}>
+            {poolName}
+          </div>
+          <button
+            onClick={(e) => { e.stopPropagation(); onRemovePool(); }}
+            className="text-[10px] text-slate-600 hover:text-red-400 ml-1"
+            title="Remove pool"
+          >✕</button>
+        </div>
+        {/* Power list */}
+        <div>
+          {visiblePowers.map((power) => {
+            const isSelected = selectedPowerNames.has(power.name);
+            const isAvailable = !isSelected && checkAvailability(power);
+            const isDisabled = isSelected || !isAvailable || !!powerLimitReached;
+            const isLocked = isPowerLocked(power.internalName);
+            return (
+              <PowerItem
+                key={power.name}
+                power={power}
+                powersetId={poolId}
+                powersetName={poolName}
+                isSelected={isSelected}
+                isAvailable={isAvailable}
+                isDisabled={isDisabled}
+                isLocked={isLocked}
+                onSelect={() => onSelectPower(power)}
+                onHover={() => onPowerHover(power)}
+                onLeave={onPowerLeave}
+                onLockToggle={() => onLockToggle(power)}
+                onShowInfo={(e) => onShowInfo(power, e)}
+              />
+            );
+          })}
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="mb-3">
@@ -303,7 +364,7 @@ function AvailablePoolSection({
           <span className={`text-[10px] text-slate-500 transition-transform ${collapsed ? '' : 'rotate-90'}`}>
             ▶
           </span>
-          <div className={`text-xs font-semibold ${colorClass} uppercase tracking-wide`}>
+          <div className={`text-xs font-semibold text-blue-400 uppercase tracking-wide`}>
             {poolName}
           </div>
           <span className="text-[9px] text-slate-600">({selectedPowerNames.size})</span>
@@ -368,6 +429,7 @@ interface AvailableEpicPoolSectionProps {
   onLockToggle: (power: Power) => void;
   onShowInfo: (power: Power, e?: React.MouseEvent) => void;
   powerLimitReached?: boolean;
+  compact?: boolean;
 }
 
 function AvailableEpicPoolSection({
@@ -381,6 +443,7 @@ function AvailableEpicPoolSection({
   onLockToggle,
   onShowInfo,
   powerLimitReached,
+  compact = false,
 }: AvailableEpicPoolSectionProps) {
   const [collapsed, setCollapsed] = useState(false);
 
@@ -390,9 +453,53 @@ function AvailableEpicPoolSection({
   const selectedPowerNames = new Set(epicPool.powers.map((p) => p.name));
   const visiblePowers = poolData.powers.filter((p) => p.available >= 0);
 
+  const powerList = visiblePowers.map((power) => {
+    const isSelected = selectedPowerNames.has(power.name);
+    const selectedNames = epicPool.powers.map((p) => p.name);
+    const isAvailable = !isSelected && isEpicPowerAvailable(power, level, selectedNames);
+    const isDisabled = isSelected || !isAvailable || !!powerLimitReached;
+    const isLocked = isPowerLocked(power.internalName);
+    return (
+      <PowerItem
+        key={power.name}
+        power={power}
+        powersetId={epicPool.id}
+        powersetName={poolData.name}
+        iconSrc={getPowerIconPath(power.icon)}
+        accentColor="purple"
+        isSelected={isSelected}
+        isAvailable={isAvailable}
+        isDisabled={isDisabled}
+        isLocked={isLocked}
+        onSelect={() => onSelectPower(power)}
+        onHover={() => onPowerHover(power)}
+        onLeave={onPowerLeave}
+        onLockToggle={() => onLockToggle(power)}
+        onShowInfo={(e) => onShowInfo(power, e)}
+      />
+    );
+  });
+
+  if (compact) {
+    return (
+      <div className="bg-slate-900">
+        <div className="flex items-center justify-between px-2 h-7 bg-slate-800/80 border-b border-slate-700">
+          <div className="text-[10px] font-semibold text-purple-400 uppercase tracking-wide truncate">
+            {epicPool.name}
+          </div>
+          <button
+            onClick={(e) => { e.stopPropagation(); onRemovePool(); }}
+            className="text-[10px] text-slate-600 hover:text-red-400 ml-1"
+            title="Remove epic pool"
+          >✕</button>
+        </div>
+        <div>{powerList}</div>
+      </div>
+    );
+  }
+
   return (
     <div className="mb-3">
-      {/* Section header */}
       <div
         className="flex items-center justify-between mb-1 cursor-pointer select-none"
         onClick={() => setCollapsed(!collapsed)}
@@ -417,39 +524,7 @@ function AvailableEpicPoolSection({
           ✕
         </button>
       </div>
-
-      {/* Power list */}
-      {!collapsed && (
-        <div className="space-y-0.5">
-          {visiblePowers.map((power) => {
-            const isSelected = selectedPowerNames.has(power.name);
-            const selectedNames = epicPool.powers.map((p) => p.name);
-            const isAvailable = !isSelected && isEpicPowerAvailable(power, level, selectedNames);
-            const isDisabled = isSelected || !isAvailable || !!powerLimitReached;
-            const isLocked = isPowerLocked(power.internalName);
-
-            return (
-              <PowerItem
-                key={power.name}
-                power={power}
-                powersetId={epicPool.id}
-                powersetName={poolData.name}
-                iconSrc={getPowerIconPath(power.icon)}
-                accentColor="purple"
-                isSelected={isSelected}
-                isAvailable={isAvailable}
-                isDisabled={isDisabled}
-                isLocked={isLocked}
-                onSelect={() => onSelectPower(power)}
-                onHover={() => onPowerHover(power)}
-                onLeave={onPowerLeave}
-                onLockToggle={() => onLockToggle(power)}
-                onShowInfo={(e) => onShowInfo(power, e)}
-              />
-            );
-          })}
-        </div>
-      )}
+      {!collapsed && <div className="space-y-0.5">{powerList}</div>}
     </div>
   );
 }

@@ -21,15 +21,11 @@ export interface ManualEntry {
 export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   // ─── 2026-03-24 ────────────────────────────────────────────────────────────
   {
-    date: '2026-04-01',
+    date: '2026-04-02',
     items: [
-      { message: 'Introducing $idekick+ subscription model', type: 'feat' },
-      { message: 'Generic: Free, access to Single Origin enhancements', type: 'feat' },
-      { message: '$idekick+ Pro: $5/month, access to Common IOs', type: 'feat' },
-      { message: '$idekick+ Elite: $15/month, access IO sets and Universal sets', type: 'feat' },
-      { message: '$idekick+ Elite Platinum: $20/month, access to Very Rare and Winter sets', type: 'feat' },
-      { message: '$idekick+ Elite Platinum Plus: $30/month, access to all sets including Hamidon, Titan, and Hydra', type: 'feat' },
-    ],
+      { message: 'Trying a layout change to see if it helps reduce scrolling. Let me know what you think through the feedback tool or the Discord', type: 'feat' },
+      { message: 'Changed the Tooltip toggle to OFF by default. You may need to turn it off manually if it was previously enabled because settings are intended to persist across sessions', type: 'feat' },
+      ]
   },
 ];
 

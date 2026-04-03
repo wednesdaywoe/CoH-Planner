@@ -127,6 +127,8 @@ interface AvailablePowersProps {
   category: 'primary' | 'secondary';
   selectedPowerNames: string[];
   onSelectPower: (power: Power) => void;
+  /** Compact mode: no section header/collapse, tighter rows, used in side-by-side layout */
+  compact?: boolean;
 }
 
 export interface PowerItemProps {
@@ -269,6 +271,7 @@ export function AvailablePowers({
   category,
   selectedPowerNames,
   onSelectPower,
+  compact = false,
 }: AvailablePowersProps) {
   const [collapsed, setCollapsed] = useState(false);
   const build = useBuildStore((s) => s.build);
@@ -458,25 +461,34 @@ export function AvailablePowers({
   }
 
   return (
-    <div className="mb-3">
-      {/* Section header with powerset name - clickable to collapse */}
-      <div
-        className="flex items-center justify-between mb-1 cursor-pointer select-none"
-        onClick={() => setCollapsed(!collapsed)}
-      >
-        <div className="flex items-center gap-1">
-          <span className={`text-[10px] text-slate-500 transition-transform ${collapsed ? '' : 'rotate-90'}`}>
-            ▶
-          </span>
-          <div className="text-xs font-semibold text-blue-400 uppercase tracking-wide">
+    <div className={compact ? '' : 'mb-3'}>
+      {/* Section header - compact mode uses a smaller inline header, normal mode has collapse toggle */}
+      {compact ? (
+        <div className="flex items-center justify-between px-2 h-8 bg-slate-800/80 border-b border-slate-700">
+          <div className="text-[10px] font-semibold text-blue-400 uppercase tracking-wide leading-tight">
             {powerset?.name || categoryLabel}
           </div>
-          <span className="text-[9px] text-slate-600">({selectedPowerNames.length})</span>
+          <span className="text-[9px] text-slate-500">({selectedPowerNames.length})</span>
         </div>
-      </div>
+      ) : (
+        <div
+          className="flex items-center justify-between mb-1 cursor-pointer select-none"
+          onClick={() => setCollapsed(!collapsed)}
+        >
+          <div className="flex items-center gap-1">
+            <span className={`text-[10px] text-slate-500 transition-transform ${collapsed ? '' : 'rotate-90'}`}>
+              ▶
+            </span>
+            <div className="text-xs font-semibold text-blue-400 uppercase tracking-wide">
+              {powerset?.name || categoryLabel}
+            </div>
+            <span className="text-[9px] text-slate-600">({selectedPowerNames.length})</span>
+          </div>
+        </div>
+      )}
 
-      {/* Collapsible content */}
-      {!collapsed && (
+      {/* Collapsible content (compact mode never collapses - parent section handles that) */}
+      {(compact || !collapsed) && (
         <>
           {/* Show message if both powersets not selected */}
           {!bothPowersetsSelected && (

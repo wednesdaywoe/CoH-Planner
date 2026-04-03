@@ -23,7 +23,7 @@ import { PoolPowers } from '@/components/powers/PoolPowers';
 import { ChronologicalPowerView } from '@/components/powers/ChronologicalPowerView';
 import { InfoPanel } from '@/components/info/InfoPanel';
 import { PopOutInfoPanel } from '@/components/info/PopOutInfoPanel';
-import { Toggle } from '@/components/ui';
+import { Toggle, CollapsibleSection } from '@/components/ui';
 import { ViewModeToggle } from '@/components/ui/ViewModeToggle';
 import { MAX_POWER_PICKS, getArchetype } from '@/data';
 import type { Power } from '@/types';
@@ -139,7 +139,7 @@ export function PlannerPage() {
             grid gap-px bg-slate-700 flex-1 overflow-auto pb-16 md:pb-0
             grid-cols-1
             md:grid-cols-2
-            ${undocked ? 'lg:grid-cols-[0.8fr_2fr]' : 'lg:grid-cols-[0.8fr_2fr_1fr]'}
+            ${undocked ? 'lg:grid-cols-[1fr_2fr]' : 'lg:grid-cols-[1fr_2fr_1fr]'}
           `}
         >
           {/* Column 1: Available Powers (Primary + Secondary + Pool/Epic) */}
@@ -147,46 +147,59 @@ export function PlannerPage() {
             <div className="bg-slate-800 border-b border-slate-700 px-3 py-2 flex items-center justify-between">
               <h2 className="text-xs font-semibold uppercase tracking-wide text-slate-400">
                 Available Powers
+                {powerLimitReached && (
+                  <span className="ml-2 text-amber-400 normal-case tracking-normal font-normal">
+                    — All {MAX_POWER_PICKS} selected
+                  </span>
+                )}
               </h2>
               <ViewModeToggle />
             </div>
-            <div className={`flex-1 overflow-y-auto p-2 space-y-3 relative ${powerLimitReached ? 'opacity-40 pointer-events-none' : ''}`}>
-              {powerLimitReached && (
-                <div className="sticky top-0 z-10 text-center text-xs text-amber-400 bg-slate-900/90 py-1.5 rounded border border-amber-500/30 mb-2 pointer-events-auto">
-                  All {MAX_POWER_PICKS} powers selected
+            <div className={`flex-1 overflow-y-auto p-1.5 space-y-0 relative ${powerLimitReached ? 'opacity-60' : ''}`}>
+              <CollapsibleSection title="Primary & Secondary" defaultOpen>
+                <div className="grid grid-cols-2 gap-px bg-slate-700">
+                  <div className="bg-slate-900">
+                    <AvailablePowers
+                      category="primary"
+                      powersetId={primaryPowersetId}
+                      selectedPowerNames={primarySelectedNames}
+                      onSelectPower={handleSelectPrimaryPower}
+                      compact
+                    />
+                    {branchPrimaryId && (
+                      <AvailablePowers
+                        category="primary"
+                        powersetId={branchPrimaryId}
+                        selectedPowerNames={primarySelectedNames}
+                        onSelectPower={handleSelectBranchPrimaryPower}
+                        compact
+                      />
+                    )}
+                  </div>
+                  <div className="bg-slate-900">
+                    <AvailablePowers
+                      category="secondary"
+                      powersetId={secondaryPowersetId}
+                      selectedPowerNames={secondarySelectedNames}
+                      onSelectPower={handleSelectSecondaryPower}
+                      compact
+                    />
+                    {branchSecondaryId && (
+                      <AvailablePowers
+                        category="secondary"
+                        powersetId={branchSecondaryId}
+                        selectedPowerNames={secondarySelectedNames}
+                        onSelectPower={handleSelectBranchSecondaryPower}
+                        compact
+                      />
+                    )}
+                  </div>
                 </div>
-              )}
-              <AvailablePowers
-                category="primary"
-                powersetId={primaryPowersetId}
-                selectedPowerNames={primarySelectedNames}
-                onSelectPower={handleSelectPrimaryPower}
-              />
-              {branchPrimaryId && (
-                <AvailablePowers
-                  category="primary"
-                  powersetId={branchPrimaryId}
-                  selectedPowerNames={primarySelectedNames}
-                  onSelectPower={handleSelectBranchPrimaryPower}
-                />
-              )}
+              </CollapsibleSection>
 
-              <AvailablePowers
-                category="secondary"
-                powersetId={secondaryPowersetId}
-                selectedPowerNames={secondarySelectedNames}
-                onSelectPower={handleSelectSecondaryPower}
-              />
-              {branchSecondaryId && (
-                <AvailablePowers
-                  category="secondary"
-                  powersetId={branchSecondaryId}
-                  selectedPowerNames={secondarySelectedNames}
-                  onSelectPower={handleSelectBranchSecondaryPower}
-                />
-              )}
-
-              <AvailablePoolPowers />
+              <CollapsibleSection title="Power Pools & Epic" defaultOpen>
+                <AvailablePoolPowers compact />
+              </CollapsibleSection>
             </div>
           </div>
 
@@ -227,7 +240,7 @@ export function PlannerPage() {
           grid gap-px bg-slate-700 flex-1 overflow-auto pb-16 md:pb-0
           grid-cols-1
           md:grid-cols-2
-          ${undocked ? 'lg:grid-cols-[0.8fr_1fr_1fr_1fr]' : 'lg:grid-cols-[0.8fr_1fr_1fr_1fr_1fr]'}
+          ${undocked ? 'lg:grid-cols-[1fr_1fr_1fr_1fr]' : 'lg:grid-cols-[1fr_1fr_1fr_1fr_1fr]'}
         `}
       >
         {/* Column 1: Available Powers — combined (xs and lg+, hidden at md) */}
@@ -235,44 +248,61 @@ export function PlannerPage() {
           <div className="bg-slate-800 border-b border-slate-700 px-3 py-2 flex items-center justify-between">
             <h2 className="text-xs font-semibold uppercase tracking-wide text-slate-400">
               Available Powers
+              {powerLimitReached && (
+                <span className="ml-2 text-amber-400 normal-case tracking-normal font-normal">
+                  — All {MAX_POWER_PICKS} selected
+                </span>
+              )}
             </h2>
             <ViewModeToggle />
           </div>
-          <div className={`flex-1 overflow-y-auto p-2 space-y-3 relative ${powerLimitReached ? 'opacity-40 pointer-events-none' : ''}`}>
-            {powerLimitReached && (
-              <div className="sticky top-0 z-10 text-center text-xs text-amber-400 bg-slate-900/90 py-1.5 rounded border border-amber-500/30 mb-2 pointer-events-auto">
-                All {MAX_POWER_PICKS} powers selected
+          <div className={`flex-1 overflow-y-auto p-1.5 space-y-0 relative ${powerLimitReached ? 'opacity-60' : ''}`}>
+            {/* Primary & Secondary side-by-side */}
+            <CollapsibleSection title="Primary & Secondary" defaultOpen>
+              <div className="grid grid-cols-2 gap-px bg-slate-700">
+                <div className="bg-slate-900">
+                  <AvailablePowers
+                    category="primary"
+                    powersetId={primaryPowersetId}
+                    selectedPowerNames={primarySelectedNames}
+                    onSelectPower={handleSelectPrimaryPower}
+                    compact
+                  />
+                  {branchPrimaryId && (
+                    <AvailablePowers
+                      category="primary"
+                      powersetId={branchPrimaryId}
+                      selectedPowerNames={primarySelectedNames}
+                      onSelectPower={handleSelectBranchPrimaryPower}
+                      compact
+                    />
+                  )}
+                </div>
+                <div className="bg-slate-900">
+                  <AvailablePowers
+                    category="secondary"
+                    powersetId={secondaryPowersetId}
+                    selectedPowerNames={secondarySelectedNames}
+                    onSelectPower={handleSelectSecondaryPower}
+                    compact
+                  />
+                  {branchSecondaryId && (
+                    <AvailablePowers
+                      category="secondary"
+                      powersetId={branchSecondaryId}
+                      selectedPowerNames={secondarySelectedNames}
+                      onSelectPower={handleSelectBranchSecondaryPower}
+                      compact
+                    />
+                  )}
+                </div>
               </div>
-            )}
-            <AvailablePowers
-              category="primary"
-              powersetId={primaryPowersetId}
-              selectedPowerNames={primarySelectedNames}
-              onSelectPower={handleSelectPrimaryPower}
-            />
-            {branchPrimaryId && (
-              <AvailablePowers
-                category="primary"
-                powersetId={branchPrimaryId}
-                selectedPowerNames={primarySelectedNames}
-                onSelectPower={handleSelectBranchPrimaryPower}
-              />
-            )}
-            <AvailablePowers
-              category="secondary"
-              powersetId={secondaryPowersetId}
-              selectedPowerNames={secondarySelectedNames}
-              onSelectPower={handleSelectSecondaryPower}
-            />
-            {branchSecondaryId && (
-              <AvailablePowers
-                category="secondary"
-                powersetId={branchSecondaryId}
-                selectedPowerNames={secondarySelectedNames}
-                onSelectPower={handleSelectBranchSecondaryPower}
-              />
-            )}
-            <AvailablePoolPowers />
+            </CollapsibleSection>
+
+            {/* Pool & Epic grid */}
+            <CollapsibleSection title="Power Pools & Epic" defaultOpen>
+              <AvailablePoolPowers compact />
+            </CollapsibleSection>
           </div>
         </div>
 
@@ -284,7 +314,7 @@ export function PlannerPage() {
             </h2>
             <ViewModeToggle />
           </div>
-          <div className={`flex-1 overflow-y-auto p-2 space-y-3 relative ${powerLimitReached ? 'opacity-40 pointer-events-none' : ''}`}>
+          <div className={`flex-1 overflow-y-auto p-2 space-y-3 relative ${powerLimitReached ? 'opacity-60' : ''}`}>
             {powerLimitReached && (
               <div className="sticky top-0 z-10 text-center text-xs text-amber-400 bg-slate-900/90 py-1.5 rounded border border-amber-500/30 mb-2 pointer-events-auto">
                 All {MAX_POWER_PICKS} powers selected
@@ -315,7 +345,7 @@ export function PlannerPage() {
               Available Secondary
             </h2>
           </div>
-          <div className={`flex-1 overflow-y-auto p-2 space-y-3 relative ${powerLimitReached ? 'opacity-40 pointer-events-none' : ''}`}>
+          <div className={`flex-1 overflow-y-auto p-2 space-y-3 relative ${powerLimitReached ? 'opacity-60' : ''}`}>
             {powerLimitReached && (
               <div className="sticky top-0 z-10 text-center text-xs text-amber-400 bg-slate-900/90 py-1.5 rounded border border-amber-500/30 mb-2 pointer-events-auto">
                 All {MAX_POWER_PICKS} powers selected

@@ -19,3 +19,5 @@ export { Badge, RarityBadge } from './Badge';
 export type { BadgeVariant, BadgeSize, IOSetRarityType } from './Badge';
 
 export { Input } from './Input';
+
+export { CollapsibleSection } from './CollapsibleSection';
