@@ -534,7 +534,7 @@ export const POWER_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 10,
-          "endurance": 0.64,
+          "endurance": 0.32,
           "activationTime": 3.1,
           "effectArea": "SingleTarget",
           "resistance": {
@@ -575,7 +575,7 @@ export const POWER_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 10,
-          "endurance": 0.64,
+          "endurance": 0.32,
           "activationTime": 0.67,
           "effectArea": "SingleTarget",
           "defenseBuff": {

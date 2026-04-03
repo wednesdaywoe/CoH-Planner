@@ -94,11 +94,12 @@ function transformPoolPower(legacy: LegacyPoolPower): Power {
     ...effectFields
   } = legacy.effects;
 
-  // For toggles, convert per-tick endurance to per-second using activatePeriod.
-  // For clicks, endurance is a flat cost per activation — don't divide.
+  // For toggles WITH an explicit activatePeriod, endurance is per-tick — convert to per-second.
+  // For toggles WITHOUT activatePeriod, endurance is already per-second in the raw data.
+  // For clicks, endurance is a flat cost per activation.
   const isToggle = legacy.powerType === 'Toggle';
   const endCost = endurance
-    ? (isToggle ? endurance / (activatePeriod || 0.5) : endurance)
+    ? (isToggle && activatePeriod ? endurance / activatePeriod : endurance)
     : undefined;
 
   return {

@@ -21,8 +21,10 @@ export interface ManualEntry {
 export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   // ─── 2026-03-24 ────────────────────────────────────────────────────────────
   {
-    date: '2026-04-02',
+    date: '2026-04-03',
     items: [
+      { message: 'Fixed powers endurance costs to only divide by activatePeriod when explicitly present', type: 'fix' },
+      { message: 'Added Boomerang Slice power to Broadsword', type: 'fix' },
       { message: 'Trying a layout change to see if it helps reduce scrolling. Let me know what you think through the feedback tool or the Discord', type: 'feat' },
       { message: 'Changed the Tooltip toggle to OFF by default. You may need to turn it off manually if it was previously enabled because settings are intended to persist across sessions', type: 'feat' },
       ]
