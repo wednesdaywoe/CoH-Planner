@@ -21,7 +21,7 @@ export const PhotonGrenade: Power = {
     "range": 80,
     "radius": 15,
     "recharge": 16,
-    "endurance": 18.98,
+    "endurance": 15.18,
     "castTime": 1.87,
     "maxTargets": 10
   },
@@ -34,6 +34,7 @@ export const PhotonGrenade: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Mastermind Archetype Sets",
     "Ranged AoE Damage",
     "Stuns",
     "Universal Damage Sets"

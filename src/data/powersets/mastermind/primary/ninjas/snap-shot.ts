@@ -20,7 +20,7 @@ export const SnapShot: Power = {
     "accuracy": 1.155,
     "range": 80,
     "recharge": 2,
-    "endurance": 4.42,
+    "endurance": 3.54,
     "castTime": 1
   },
   "allowedEnhancements": [
@@ -31,6 +31,7 @@ export const SnapShot: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Mastermind Archetype Sets",
     "Ranged Damage",
     "Universal Damage Sets"
   ],

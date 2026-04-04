@@ -20,7 +20,7 @@ export const CallHawk: Power = {
     "accuracy": 1,
     "range": 80,
     "recharge": 6,
-    "endurance": 9.62,
+    "endurance": 6.86,
     "castTime": 1.67
   },
   "allowedEnhancements": [
@@ -33,6 +33,7 @@ export const CallHawk: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Mastermind Archetype Sets",
     "Accurate To-Hit Debuff",
     "Knockback",
     "Ranged Damage",

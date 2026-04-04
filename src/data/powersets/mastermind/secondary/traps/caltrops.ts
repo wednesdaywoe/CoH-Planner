@@ -32,6 +32,7 @@ export const Caltrops: Power = {
     "Damage"
   ],
   "allowedSetCategories": [
+    "Mastermind Archetype Sets",
     "Ranged AoE Damage",
     "Slow Movement",
     "Universal Damage Sets"

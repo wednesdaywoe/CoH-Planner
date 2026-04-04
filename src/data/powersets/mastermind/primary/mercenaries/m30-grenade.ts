@@ -21,7 +21,7 @@ export const M30Grenade: Power = {
     "range": 80,
     "radius": 15,
     "recharge": 16,
-    "endurance": 18.98,
+    "endurance": 15.18,
     "castTime": 1.67,
     "maxTargets": 16
   },
@@ -34,6 +34,7 @@ export const M30Grenade: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Mastermind Archetype Sets",
     "Knockback",
     "Ranged AoE Damage",
     "Universal Damage Sets"

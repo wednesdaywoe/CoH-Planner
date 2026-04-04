@@ -22,7 +22,7 @@ export const EmptyClips: Power = {
     "radius": 40,
     "arc": 0.5236,
     "recharge": 8,
-    "endurance": 18.98,
+    "endurance": 8.53,
     "castTime": 1.83,
     "maxTargets": 10
   },
@@ -35,6 +35,7 @@ export const EmptyClips: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Mastermind Archetype Sets",
     "Knockback",
     "Ranged AoE Damage",
     "Universal Damage Sets"

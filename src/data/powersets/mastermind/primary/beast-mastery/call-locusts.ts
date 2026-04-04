@@ -22,7 +22,7 @@ export const CallRavens: Power = {
     "radius": 40,
     "arc": 0.5236,
     "recharge": 14,
-    "endurance": 16.9,
+    "endurance": 13.52,
     "castTime": 2.17,
     "maxTargets": 10
   },
@@ -36,6 +36,7 @@ export const CallRavens: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Mastermind Archetype Sets",
     "Accurate Defense Debuff",
     "Defense Debuff",
     "Ranged AoE Damage",

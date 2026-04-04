@@ -23,6 +23,7 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   {
     date: '2026-04-03',
     items: [
+      { message: 'Continued work on implementing changes from Issue 28, Page 3, Panel 2', type: 'fix' },
       { message: 'Fixed powers endurance costs to only divide by activatePeriod when explicitly present', type: 'fix' },
       { message: 'Added Boomerang Slice power to Broadsword', type: 'fix' },
       { message: 'Trying a layout change to see if it helps reduce scrolling. Let me know what you think through the feedback tool or the Discord', type: 'feat' },

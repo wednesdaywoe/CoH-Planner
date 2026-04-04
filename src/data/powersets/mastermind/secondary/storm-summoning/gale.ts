@@ -35,6 +35,7 @@ export const Gale: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Mastermind Archetype Sets",
     "Knockback",
     "Ranged AoE Damage",
     "Universal Damage Sets"

@@ -30,6 +30,7 @@ export const PoisonTrap: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Mastermind Archetype Sets",
     "Holds"
   ],
   "maxSlots": 6,

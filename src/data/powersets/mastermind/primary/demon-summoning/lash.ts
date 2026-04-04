@@ -20,7 +20,7 @@ export const Lash: Power = {
     "accuracy": 1,
     "range": 20,
     "recharge": 5,
-    "endurance": 7.54,
+    "endurance": 6.03,
     "castTime": 1.8
   },
   "allowedEnhancements": [
@@ -31,6 +31,7 @@ export const Lash: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Mastermind Archetype Sets",
     "Knockback",
     "Melee Damage",
     "Universal Damage Sets"

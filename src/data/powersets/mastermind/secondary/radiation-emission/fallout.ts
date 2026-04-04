@@ -33,6 +33,7 @@ export const Fallout: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Mastermind Archetype Sets",
     "Accurate Defense Debuff",
     "Accurate To-Hit Debuff",
     "Defense Debuff",

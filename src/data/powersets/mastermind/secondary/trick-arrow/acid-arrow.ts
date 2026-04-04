@@ -34,6 +34,7 @@ export const AcidArrow: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Mastermind Archetype Sets",
     "Accurate Defense Debuff",
     "Defense Debuff",
     "Ranged AoE Damage",

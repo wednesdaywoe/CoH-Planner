@@ -20,7 +20,7 @@ export const Corruption: Power = {
     "accuracy": 1,
     "range": 80,
     "recharge": 3,
-    "endurance": 5.46,
+    "endurance": 4.37,
     "castTime": 1.23
   },
   "allowedEnhancements": [
@@ -31,6 +31,7 @@ export const Corruption: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Mastermind Archetype Sets",
     "Ranged Damage",
     "Universal Damage Sets"
   ],

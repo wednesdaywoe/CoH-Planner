@@ -20,7 +20,7 @@ export const CallSwarm: Power = {
     "accuracy": 1,
     "range": 80,
     "recharge": 3,
-    "endurance": 5.46,
+    "endurance": 4.37,
     "castTime": 1
   },
   "allowedEnhancements": [
@@ -33,6 +33,7 @@ export const CallSwarm: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Mastermind Archetype Sets",
     "Accurate Defense Debuff",
     "Defense Debuff",
     "Ranged Damage",

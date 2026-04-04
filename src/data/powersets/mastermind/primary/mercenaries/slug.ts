@@ -20,7 +20,7 @@ export const Slug: Power = {
     "accuracy": 1.05,
     "range": 100,
     "recharge": 8,
-    "endurance": 10.66,
+    "endurance": 8.53,
     "castTime": 1.67
   },
   "allowedEnhancements": [
@@ -32,6 +32,7 @@ export const Slug: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Mastermind Archetype Sets",
     "Knockback",
     "Ranged Damage",
     "Universal Damage Sets"

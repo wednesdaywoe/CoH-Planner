@@ -35,6 +35,7 @@ export const ForceBomb: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Mastermind Archetype Sets",
     "Knockback",
     "Ranged AoE Damage",
     "Stuns",

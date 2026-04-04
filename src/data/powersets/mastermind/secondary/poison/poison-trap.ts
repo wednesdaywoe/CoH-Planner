@@ -32,6 +32,7 @@ export const PoisonTrap: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Mastermind Archetype Sets",
     "Endurance Modification",
     "Holds",
     "Melee AoE Damage",

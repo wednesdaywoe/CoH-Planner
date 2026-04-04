@@ -22,7 +22,7 @@ export const FistfulofArrows: Power = {
     "radius": 40,
     "arc": 0.5236,
     "recharge": 8,
-    "endurance": 10.66,
+    "endurance": 8.53,
     "castTime": 1.17,
     "maxTargets": 10
   },
@@ -34,6 +34,7 @@ export const FistfulofArrows: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Mastermind Archetype Sets",
     "Ranged AoE Damage",
     "Universal Damage Sets"
   ],

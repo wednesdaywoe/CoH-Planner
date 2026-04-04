@@ -20,7 +20,7 @@ export const LifeDrain: Power = {
     "accuracy": 1,
     "range": 60,
     "recharge": 8,
-    "endurance": 10.66,
+    "endurance": 8.53,
     "castTime": 1.93
   },
   "allowedEnhancements": [
@@ -33,6 +33,7 @@ export const LifeDrain: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Mastermind Archetype Sets",
     "Accurate Healing",
     "Accurate To-Hit Debuff",
     "Healing",

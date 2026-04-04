@@ -20,7 +20,7 @@ export const Burst: Power = {
     "accuracy": 1.05,
     "range": 90,
     "recharge": 4,
-    "endurance": 6.5,
+    "endurance": 5.2,
     "castTime": 1
   },
   "allowedEnhancements": [
@@ -32,6 +32,7 @@ export const Burst: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Mastermind Archetype Sets",
     "Accurate Defense Debuff",
     "Defense Debuff",
     "Ranged Damage",

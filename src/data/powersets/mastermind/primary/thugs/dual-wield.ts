@@ -20,7 +20,7 @@ export const DualWield: Power = {
     "accuracy": 1.1,
     "range": 80,
     "recharge": 6,
-    "endurance": 8.58,
+    "endurance": 6.86,
     "castTime": 1.2
   },
   "allowedEnhancements": [
@@ -32,6 +32,7 @@ export const DualWield: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Mastermind Archetype Sets",
     "Knockback",
     "Ranged Damage",
     "Universal Damage Sets"

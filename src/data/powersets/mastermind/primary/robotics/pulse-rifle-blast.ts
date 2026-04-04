@@ -20,7 +20,7 @@ export const PulseRifleBlast: Power = {
     "accuracy": 1,
     "range": 80,
     "recharge": 4,
-    "endurance": 6.5,
+    "endurance": 5.2,
     "castTime": 1
   },
   "allowedEnhancements": [
@@ -31,6 +31,7 @@ export const PulseRifleBlast: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Mastermind Archetype Sets",
     "Ranged Damage",
     "Universal Damage Sets"
   ],

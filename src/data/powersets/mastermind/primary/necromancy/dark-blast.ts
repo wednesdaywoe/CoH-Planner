@@ -20,7 +20,7 @@ export const DarkBlast: Power = {
     "accuracy": 1,
     "range": 80,
     "recharge": 4,
-    "endurance": 6.5,
+    "endurance": 5.46,
     "castTime": 1
   },
   "allowedEnhancements": [
@@ -32,6 +32,7 @@ export const DarkBlast: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Mastermind Archetype Sets",
     "Accurate To-Hit Debuff",
     "Ranged Damage",
     "To Hit Debuff",

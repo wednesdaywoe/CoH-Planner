@@ -34,6 +34,7 @@ export const FreezingRain: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Mastermind Archetype Sets",
     "Accurate Defense Debuff",
     "Defense Debuff",
     "Ranged AoE Damage",

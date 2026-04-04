@@ -34,6 +34,7 @@ export const ShiftingTides: Power = {
     "ToHit"
   ],
   "allowedSetCategories": [
+    "Mastermind Archetype Sets",
     "Ranged AoE Damage",
     "To Hit Buff",
     "Universal Damage Sets"

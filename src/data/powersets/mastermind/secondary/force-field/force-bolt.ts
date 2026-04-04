@@ -32,6 +32,7 @@ export const RepulsionBolt: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Mastermind Archetype Sets",
     "Knockback",
     "Ranged Damage",
     "Universal Damage Sets"

@@ -20,7 +20,7 @@ export const Gloom: Power = {
     "accuracy": 1,
     "range": 80,
     "recharge": 8,
-    "endurance": 10.66,
+    "endurance": 8.53,
     "castTime": 1.1
   },
   "allowedEnhancements": [
@@ -32,6 +32,7 @@ export const Gloom: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Mastermind Archetype Sets",
     "Accurate To-Hit Debuff",
     "Ranged Damage",
     "To Hit Debuff",

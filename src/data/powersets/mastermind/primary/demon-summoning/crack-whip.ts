@@ -22,7 +22,7 @@ export const CrackWhip: Power = {
     "radius": 30,
     "arc": 0.5236,
     "recharge": 11,
-    "endurance": 13.78,
+    "endurance": 11.02,
     "castTime": 2.33,
     "maxTargets": 10
   },
@@ -34,6 +34,7 @@ export const CrackWhip: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Mastermind Archetype Sets",
     "Knockback",
     "Ranged AoE Damage",
     "Universal Damage Sets"

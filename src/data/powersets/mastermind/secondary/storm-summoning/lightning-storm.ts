@@ -33,6 +33,7 @@ export const LightningStorm: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Mastermind Archetype Sets",
     "Endurance Modification",
     "Knockback",
     "Ranged Damage",

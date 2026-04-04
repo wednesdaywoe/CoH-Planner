@@ -20,7 +20,7 @@ export const Pistols: Power = {
     "accuracy": 1.1,
     "range": 80,
     "recharge": 3,
-    "endurance": 6.5,
+    "endurance": 5.2,
     "castTime": 1.2
   },
   "allowedEnhancements": [
@@ -31,6 +31,7 @@ export const Pistols: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Mastermind Archetype Sets",
     "Ranged Damage",
     "Universal Damage Sets"
   ],
