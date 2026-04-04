@@ -24,6 +24,7 @@ import {
   parseProcEffect,
   interpolateProcDamage,
   calculateProcChance,
+  getActiveDamageConversion,
 } from '@/data';
 import { useGlobalBonuses } from '@/hooks/useCalculatedStats';
 import { calculatePowerEnhancementBonuses, combineWithAlphaED, calculatePowerDamage, calculateArcanaTime, getAlphaEnhancementBonuses, abbreviateDamageType, type EnhancementBonuses, isControllerPower, isCorruptorAttackPower, isBruteAttackPower, isScrapperAttackPower, isStalkerAttackPower, isSentinelAttackPower, calculateContainmentDamage, calculateScourgeDamage, calculateFuryDamage, calculateFuryDamageBonus, calculateCriticalHitDamage, calculateAssassinationDamage, calculateAssassinationDamageBonus, calculateOpportunityCritDamage, getContainmentInfo, getScourgeInfo, getCriticalHitInfo, getFuryInfo } from '@/utils/calculations';
@@ -309,7 +310,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
     // Derive the powerset category for melee vs ranged determination
     const powersetCategory = isPrimary ? 'PRIMARY' : isSecondary ? 'SECONDARY' : undefined;
 
-    return calculatePowerDamage(
+    const result = calculatePowerDamage(
       effectivePower,
       {
         level: build.level,
@@ -321,7 +322,19 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
       globalBonusesForCalc.damage,
       0
     );
-  }, [effectivePower, build.level, archetypeId, powersetName, enhancementBonuses.damage, globalBonusesForCalc.damage, powerSet, build.primary.id, build.secondary.id]);
+
+    // Apply damage type conversion (e.g., Dual Pistols ammo swap)
+    if (result) {
+      const powersetPowers = isPrimary ? build.primary.powers
+        : isSecondary ? build.secondary.powers : [];
+      const conversion = getActiveDamageConversion(powersetPowers);
+      if (conversion && result.type === conversion.from) {
+        result.type = conversion.to;
+      }
+    }
+
+    return result;
+  }, [effectivePower, build.level, archetypeId, powersetName, enhancementBonuses.damage, globalBonusesForCalc.damage, powerSet, build.primary.id, build.secondary.id, build.primary.powers, build.secondary.powers]);
 
   // Calculate archetype inherent damage bonus info (Containment, Scourge, Fury, etc.)
   const inherentInfo = useMemo(() => {

@@ -27,6 +27,10 @@ export interface GrantedPowerGroup {
   description?: string;
   /** If true, sub-powers accept enhancement slots and are added as full SelectedPower entries (e.g., Kheldian form sub-powers) */
   slottable?: boolean;
+  /** Damage type conversion when a sub-power is active (e.g., Dual Pistols ammo types).
+   *  Maps sub-power internalName to { from, to } damage type conversion.
+   *  All powers in the same powerset have their damage type converted. */
+  damageConversion?: Record<string, { from: string; to: string }>;
 }
 
 // ============================================
@@ -60,6 +64,11 @@ export const GRANTED_POWER_GROUPS: Record<string, GrantedPowerGroup> = {
     grantedPowers: ['Chemical_Ammunition', 'Cryo_Ammunition', 'Incendiary_Ammunition'],
     mutuallyExclusive: true,
     description: 'Ammunition types - only one can be active at a time',
+    damageConversion: {
+      'Chemical_Ammunition': { from: 'Lethal', to: 'Toxic' },
+      'Cryo_Ammunition': { from: 'Lethal', to: 'Cold' },
+      'Incendiary_Ammunition': { from: 'Lethal', to: 'Fire' },
+    },
   },
 
   // ============================================
@@ -216,4 +225,22 @@ export function hasGrantedPowers(powerName: string): boolean {
  */
 export function getGrantedPowerGroup(powerName: string): GrantedPowerGroup | null {
   return GRANTED_POWER_GROUPS[powerName] || null;
+}
+
+/**
+ * Get the active damage type conversion for a powerset, if any.
+ * Checks if any power in the build has an activeSubPower that maps to a damageConversion.
+ * Returns { from, to } if a conversion is active, or null if not.
+ */
+export function getActiveDamageConversion(
+  powers: Array<{ internalName: string; activeSubPower?: string }>
+): { from: string; to: string } | null {
+  for (const power of powers) {
+    if (!power.activeSubPower) continue;
+    const group = GRANTED_POWER_GROUPS[power.internalName];
+    if (!group?.damageConversion) continue;
+    const conversion = group.damageConversion[power.activeSubPower];
+    if (conversion) return conversion;
+  }
+  return null;
 }

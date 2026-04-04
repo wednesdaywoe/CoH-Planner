@@ -303,6 +303,7 @@ export {
   GRANTED_POWER_GROUPS,
   hasGrantedPowers,
   getGrantedPowerGroup,
+  getActiveDamageConversion,
 } from './granted-powers';
 export type { GrantedPowerGroup } from './granted-powers';
 
