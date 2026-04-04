@@ -337,7 +337,15 @@ export function PowersetCompareModal() {
     if (!atA) return [];
     const at = getArchetype(atA as ArchetypeId);
     if (!at) return [];
-    return [...at.primarySets, ...at.secondarySets]
+    const setIds = [...at.primarySets, ...at.secondarySets];
+    // Include VEAT branch powersets (Night Widow, Fortunata, Crab Spider, Bane Spider)
+    if (at.branches) {
+      for (const branch of Object.values(at.branches)) {
+        if (branch.primarySet) setIds.push(branch.primarySet);
+        if (branch.secondarySet) setIds.push(branch.secondarySet);
+      }
+    }
+    return setIds
       .map((id) => {
         const ps = getPowerset(id);
         return { value: id, label: ps?.name ?? id };
@@ -349,7 +357,14 @@ export function PowersetCompareModal() {
     if (!atB) return [];
     const at = getArchetype(atB as ArchetypeId);
     if (!at) return [];
-    return [...at.primarySets, ...at.secondarySets]
+    const setIds = [...at.primarySets, ...at.secondarySets];
+    if (at.branches) {
+      for (const branch of Object.values(at.branches)) {
+        if (branch.primarySet) setIds.push(branch.primarySet);
+        if (branch.secondarySet) setIds.push(branch.secondarySet);
+      }
+    }
+    return setIds
       .map((id) => {
         const ps = getPowerset(id);
         return { value: id, label: ps?.name ?? id };
