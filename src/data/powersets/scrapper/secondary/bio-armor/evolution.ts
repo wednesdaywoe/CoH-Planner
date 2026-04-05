@@ -22,6 +22,5 @@ export const Evolution: Power = {
     "activatePeriod": 99999
   },
   "allowedEnhancements": [],
-  "maxSlots": 0,
-  "mechanicType": "hiddenPassive"
+  "maxSlots": 0
 };

@@ -36,12 +36,13 @@ export const powerset: Powerset = {
     HardenedCarapace,
     Hide,
     BoundlessEnergy,
-    Adaptation,
     EnvironmentalModification,
+    Adaptation,
     AblativeCarapace,
     DNASiphon,
     GeneticCorruption,
     ParasiticAura,
+  
   ],
 };
 

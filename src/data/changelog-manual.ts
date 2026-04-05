@@ -23,6 +23,7 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   {
     date: '2026-04-05',
     items: [
+      { message: 'Even more fixes for Bio Armor. This set just keeps on giving', type: 'fix' },
       { message: 'Fixed Destiny and Hybrid to report to the Dashboard correctly', type: 'fix' },
       { message: 'Added a bunch of missing power icons', type: 'fix' },
       { message: 'Added padding and gutter to give Android/mobile users a dead zone on the right side of the enhancement picker where they can touch to scroll', type: 'fix' },
