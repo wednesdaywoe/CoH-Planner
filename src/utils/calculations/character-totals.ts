@@ -2160,6 +2160,32 @@ function applyHybridStatBlock(
 
     // All other stats: decimal → percentage (× 100)
     const value = decimal * 100;
+
+    // Handle "All" defense/resistance keys by expanding to individual types
+    if (stat === 'defenseAll') {
+      const defKeys: (keyof GlobalBonuses)[] = [
+        'defMelee', 'defRanged', 'defAoE',
+        'defSmashing', 'defLethal', 'defFire', 'defCold',
+        'defEnergy', 'defNegative', 'defPsionic', 'defToxic',
+      ];
+      for (const k of defKeys) {
+        global[k] += value;
+        addToBreakdown(breakdown, k, { name: sourceName, value, type: 'incarnate' });
+      }
+      continue;
+    }
+    if (stat === 'resistanceAll') {
+      const resKeys: (keyof GlobalBonuses)[] = [
+        'resSmashing', 'resLethal', 'resFire', 'resCold',
+        'resEnergy', 'resNegative', 'resPsionic', 'resToxic',
+      ];
+      for (const k of resKeys) {
+        global[k] += value;
+        addToBreakdown(breakdown, k, { name: sourceName, value, type: 'incarnate' });
+      }
+      continue;
+    }
+
     const key = stat as keyof GlobalBonuses;
     if (key in global) {
       global[key] += value;
@@ -2205,43 +2231,28 @@ function applyIncarnateBonuses(
       // Defense All
       if (destinyEffects.defenseAll !== undefined) {
         const value = destinyEffects.defenseAll * 100;
-        // Apply to all defense types
-        global.defMelee += value;
-        global.defRanged += value;
-        global.defAoE += value;
-        global.defSmashing += value;
-        global.defLethal += value;
-        global.defFire += value;
-        global.defCold += value;
-        global.defEnergy += value;
-        global.defNegative += value;
-        global.defPsionic += value;
-        global.defToxic += value;
-
-        addToBreakdown(breakdown, 'defAll', {
-          name: powerName,
-          value,
-          type: 'incarnate',
-        });
+        const defKeys: (keyof GlobalBonuses)[] = [
+          'defMelee', 'defRanged', 'defAoE',
+          'defSmashing', 'defLethal', 'defFire', 'defCold',
+          'defEnergy', 'defNegative', 'defPsionic', 'defToxic',
+        ];
+        for (const key of defKeys) {
+          global[key] += value;
+          addToBreakdown(breakdown, key, { name: powerName, value, type: 'incarnate' });
+        }
       }
 
       // Resistance All
       if (destinyEffects.resistanceAll !== undefined) {
         const value = destinyEffects.resistanceAll * 100;
-        global.resSmashing += value;
-        global.resLethal += value;
-        global.resFire += value;
-        global.resCold += value;
-        global.resEnergy += value;
-        global.resNegative += value;
-        global.resPsionic += value;
-        global.resToxic += value;
-
-        addToBreakdown(breakdown, 'resAll', {
-          name: powerName,
-          value,
-          type: 'incarnate',
-        });
+        const resKeys: (keyof GlobalBonuses)[] = [
+          'resSmashing', 'resLethal', 'resFire', 'resCold',
+          'resEnergy', 'resNegative', 'resPsionic', 'resToxic',
+        ];
+        for (const key of resKeys) {
+          global[key] += value;
+          addToBreakdown(breakdown, key, { name: powerName, value, type: 'incarnate' });
+        }
       }
 
       // Regeneration

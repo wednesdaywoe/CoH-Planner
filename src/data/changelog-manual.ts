@@ -23,6 +23,7 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   {
     date: '2026-04-05',
     items: [
+      { message: 'Fixed Destiny and Hybrid to report to the Dashboard correctly', type: 'fix' },
       { message: 'Added a bunch of missing power icons', type: 'fix' },
       { message: 'Added padding and gutter to give Android/mobile users a dead zone on the right side of the enhancement picker where they can touch to scroll', type: 'fix' },
       { message: 'Deactivated UI Scale control on mobile, as CSS zoom is unreliable on mobile browsers and users should use pinch-to-zoom gestures instead', type: 'feat' },
