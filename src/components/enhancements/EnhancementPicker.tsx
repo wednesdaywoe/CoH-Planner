@@ -787,7 +787,7 @@ export function EnhancementPicker() {
 
           {/* Main content area */}
           <div
-            className="flex-1 overflow-y-auto p-2 sm:p-3"
+            className="flex-1 overflow-y-auto p-2 pr-4 sm:p-3"
             onContextMenu={(e) => { if (e.shiftKey) e.preventDefault(); }}
           >
             {typeFilter === 'io-sets' && sidebarFilter === 'procs' && (
@@ -1363,7 +1363,7 @@ function IOSetRow({
       </div>
 
       {/* Pieces as list — shown on mobile, hidden on sm+ */}
-      <div className="sm:hidden space-y-1 select-none mt-1">
+      <div className="sm:hidden space-y-1 select-none mt-1 mr-2">
         {set.pieces.map((piece, pieceIndex) => {
           const selected = isPieceSelected(pieceIndex);
           const shiftSel = isShiftSelected(set, pieceIndex);

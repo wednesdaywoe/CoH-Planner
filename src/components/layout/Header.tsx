@@ -641,8 +641,8 @@ function SettingsPopover() {
             </div>
           </div>
 
-          {/* UI Scale */}
-          <div className="space-y-1">
+          {/* UI Scale — hidden on mobile (CSS zoom unreliable on mobile browsers) */}
+          <div className="space-y-1 hidden sm:block">
             <label className="text-xs text-gray-400">UI Scale</label>
             <div className="flex items-center gap-1">
               <button

@@ -1326,6 +1326,9 @@ const DISPLAY_NAME_OVERRIDES = {
 const ICON_OVERRIDES = {
   'regeneration_resist.png': 'regeneration_resilience.png',  // Resilience icon renamed on HC
   'electriccontrol_paralyzingblastpatch.png': 'electriccontrol_paralyzingblast.png',  // Paralyzing Blast (was Tesla Coil)
+  "martialarts_warrior'schallenge.png": 'martialarts_warrior%27schallenge.png',  // Apostrophe in filename
+  'psionicarmor_worldofconfusion.png': 'psionicarmor_auraofinsanity.png',  // Aura of Insanity uses wrong icon name
+  // Sonic Melee icons now extracted from live pigg — no overrides needed
 };
 
 // Additional allowedEnhancements not present in boosts_allowed but confirmed in-game

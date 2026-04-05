@@ -21,13 +21,12 @@ export interface ManualEntry {
 export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   // ─── 2026-03-24 ────────────────────────────────────────────────────────────
   {
-    date: '2026-04-03',
+    date: '2026-04-05',
     items: [
+      { message: 'Added a bunch of missing power icons', type: 'fix' },
+      { message: 'Added padding and gutter to give Android/mobile users a dead zone on the right side of the enhancement picker where they can touch to scroll', type: 'fix' },
+      { message: 'Deactivated UI Scale control on mobile, as CSS zoom is unreliable on mobile browsers and users should use pinch-to-zoom gestures instead', type: 'feat' },
       { message: 'Continued work on implementing changes from Issue 28, Page 3, Panel 2', type: 'fix' },
-      { message: 'Fixed powers endurance costs to only divide by activatePeriod when explicitly present', type: 'fix' },
-      { message: 'Added Boomerang Slice power to Broadsword', type: 'fix' },
-      { message: 'Trying a layout change to see if it helps reduce scrolling. Let me know what you think through the feedback tool or the Discord', type: 'feat' },
-      { message: 'Changed the Tooltip toggle to OFF by default. You may need to turn it off manually if it was previously enabled because settings are intended to persist across sessions', type: 'feat' },
       ]
   },
 ];
