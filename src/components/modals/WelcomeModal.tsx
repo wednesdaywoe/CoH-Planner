@@ -92,7 +92,7 @@ export function WelcomeModal({ isOpen, onClose }: WelcomeModalProps) {
               </a>
               {' '}or join the{' '}
               <a
-                href="https://discord.gg/tJKAsMxK"
+                href="https://discord.gg/TeTtvydZ"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-amber-300 underline hover:text-amber-100"
