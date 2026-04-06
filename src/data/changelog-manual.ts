@@ -23,6 +23,7 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   {
     date: '2026-04-05',
     items: [
+      { message: 'Updated Discord link to be non-expiring', type: 'feat' },
       { message: 'Even more fixes for Bio Armor. This set just keeps on giving', type: 'fix' },
       { message: 'Fixed Destiny and Hybrid to report to the Dashboard correctly', type: 'fix' },
       { message: 'Added a bunch of missing power icons', type: 'fix' },
