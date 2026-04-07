@@ -108,7 +108,7 @@ export const GRANTED_POWER_GROUPS: Record<string, GrantedPowerGroup> = {
   // Flight Pool
   'Fly': {
     parentPower: 'Fly',
-    grantedPowers: ['Afterburner'],
+    grantedPowers: ['Fly_Boost'],
     mutuallyExclusive: false,
     description: 'Afterburner boost available while Fly is active',
   },
