@@ -9,6 +9,7 @@ import { useBuildStore, useUIStore, useAuthStore } from '@/stores';
 import type { ArchetypeBranchId } from '@/types';
 import { importMidsBuild } from '@/utils/mids-import';
 import type { MidsImportResult } from '@/utils/mids-import';
+import { parseMxdText, importMxdBuild } from '@/utils/mxd-import';
 import { importGameExport } from '@/utils/game-import';
 import type { GameImportResult } from '@/utils/game-import';
 import { importExternalBuild } from '@/utils/external-import';
@@ -305,6 +306,32 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
 
     if (!content.trim()) {
       setMidsError('No data to import');
+      return;
+    }
+
+    // Detect MXD text format vs MBD JSON format
+    const trimmed = content.trim();
+    if (trimmed.startsWith('This Hero') || trimmed.startsWith('This Villain')) {
+      // MXD legacy text format
+      try {
+        const parsed = parseMxdText(trimmed);
+        if (parsed) {
+          // Convert MXD parsed data to a Mids import result
+          const result = importMxdBuild(parsed);
+          if (result.success) {
+            setMidsResult(result);
+          } else {
+            const msg = result.warnings.length > 0
+              ? result.warnings[0].message
+              : 'Failed to parse .mxd file';
+            setMidsError(msg);
+          }
+        } else {
+          setMidsError('Could not parse MXD file format. Make sure it is a valid Mids Reborn .mxd file.');
+        }
+      } catch {
+        setMidsError('Failed to parse .mxd file.');
+      }
       return;
     }
 
@@ -918,7 +945,7 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
                   <input
                     ref={midsFileInputRef}
                     type="file"
-                    accept=".mbd,.json,.skif"
+                    accept=".mbd,.mxd,.json,.skif"
                     onChange={handleMidsFileUpload}
                     className="w-full text-sm text-gray-400
                       file:mr-4 file:py-2 file:px-4
