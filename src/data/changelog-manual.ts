@@ -21,8 +21,9 @@ export interface ManualEntry {
 export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   // ─── 2026-03-24 ────────────────────────────────────────────────────────────
   {
-    date: '2026-04-05',
+    date: '2026-04-06',
     items: [
+      { message: 'Began implementing support for .MXD files (Mids older format). I will need more examples to work out the mappings, so expect errors. Work on supporting Mids hex blob is in the works', type: 'feat' },
       { message: 'Updated Discord link to be non-expiring', type: 'feat' },
       { message: 'Even more fixes for Bio Armor. This set just keeps on giving', type: 'fix' },
       { message: 'Fixed Destiny and Hybrid to report to the Dashboard correctly', type: 'fix' },
