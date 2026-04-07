@@ -23,6 +23,7 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   {
     date: '2026-04-06',
     items: [
+      { message: 'Fixed...just a whole bunch of mismatched archetype IDs', type: 'fix' },
       { message: 'Began implementing support for .MXD files (Mids older format). I will need more examples to work out the mappings, so expect errors. Work on supporting Mids hex blob is ongoing', type: 'feat' },
       { message: 'Updated Discord link to be non-expiring', type: 'feat' },
       { message: 'Even more fixes for Bio Armor. This set just keeps on giving', type: 'fix' },
