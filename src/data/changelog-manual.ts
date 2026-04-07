@@ -23,7 +23,13 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   {
     date: '2026-04-05',
     items: [
-      { message: 'Began implementing support for older .MXD files. I\'ll need more examples to work out the mappings, so expect some errors. I\'m still working out the details for importing from Mids hex blob', type: 'feat' },
+      { message: 'Updated Discord link to be non-expiring', type: 'feat' },
+      { message: 'Even more fixes for Bio Armor. This set just keeps on giving', type: 'fix' },
+      { message: 'Fixed Destiny and Hybrid to report to the Dashboard correctly', type: 'fix' },
+      { message: 'Added a bunch of missing power icons', type: 'fix' },
+      { message: 'Added padding and gutter to give Android/mobile users a dead zone on the right side of the enhancement picker where they can touch to scroll', type: 'fix' },
+      { message: 'Deactivated UI Scale control on mobile, as CSS zoom is unreliable on mobile browsers and users should use pinch-to-zoom gestures instead', type: 'feat' },
+      { message: 'Continued work on implementing changes from Issue 28, Page 3, Panel 2', type: 'fix' },
       ]
   },
 ];
