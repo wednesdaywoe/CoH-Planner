@@ -16,8 +16,9 @@ function TypeBadge({ type }: { type: ChangelogEntry['type'] }) {
     feat: { label: 'New', className: 'bg-purple-900/50 text-purple-300 border-purple-700/50' },
     fix: { label: 'Fix', className: 'bg-green-900/50 text-green-300 border-green-700/50' },
     update: { label: 'Update', className: 'bg-blue-900/50 text-blue-300 border-blue-700/50' },
+    'known-issue': { label: 'Known Issue', className: 'bg-amber-900/50 text-amber-300 border-amber-700/50' },
   };
-  const { label, className } = config[type];
+  const { label, className } = config[type] || config.update;
   return (
     <span className={`text-[10px] font-medium px-1.5 py-0.5 rounded border whitespace-nowrap ${className}`}>
       {label}

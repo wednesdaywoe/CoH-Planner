@@ -3254,21 +3254,6 @@ export const POWER_POOLS_RAW = {
               "type": "Energy",
               "scale": 1.48,
               "table": "Ranged_Damage"
-            },
-            {
-              "type": "Energy",
-              "scale": 1.48,
-              "table": "Ranged_InherentDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 1.48,
-              "table": "Ranged_InherentDamage"
-            },
-            {
-              "type": "Energy",
-              "scale": 1.48,
-              "table": "Ranged_Damage"
             }
           ],
           "knockback": {

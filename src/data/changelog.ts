@@ -18,7 +18,7 @@ export interface ChangelogEntry {
   hash: string;
   date: string;   // YYYY-MM-DD
   message: string;
-  type: 'feat' | 'fix' | 'update';
+  type: 'feat' | 'fix' | 'update' | 'known-issue';
 }
 
 /** Apply overrides: custom messages, type changes, and hidden entries */
@@ -71,6 +71,7 @@ const TYPE_TO_STATUS: Record<string, ChangeItem['status']> = {
   feat: 'new',
   fix: 'fixed',
   update: 'in-progress',
+  'known-issue': 'known-bug',
 };
 
 /** Get entries for the most recent date from the manual changelog as ChangeItems.

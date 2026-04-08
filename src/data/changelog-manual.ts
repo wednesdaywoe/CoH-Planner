@@ -7,7 +7,7 @@ export interface ManualChangelogGroup {
   date: string; // YYYY-MM-DD
   items: {
     message: string;
-    type: 'feat' | 'fix' | 'update';
+    type: 'feat' | 'fix' | 'update' | 'known-issue';
   }[];
 }
 
@@ -15,7 +15,7 @@ export interface ManualChangelogGroup {
 export interface ManualEntry {
   date: string;
   message: string;
-  type: 'feat' | 'fix' | 'update';
+  type: 'feat' | 'fix' | 'update' | 'known-issue';
 }
 
 export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
@@ -23,15 +23,9 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   {
     date: '2026-04-06',
     items: [
+      { message: 'Updates for the extensive changes made in the Feb 10th Panel 2 update are ongoing', type: 'known-issue' },
+      { message: 'Fixed Arcane Bolt incorrectly multiplying its own damage', type: 'fix' },
       { message: 'Fixed...just a whole bunch of mismatched archetype IDs', type: 'fix' },
-      { message: 'Began implementing support for .MXD files (Mids older format). I will need more examples to work out the mappings, so expect errors. Work on supporting Mids hex blob is ongoing', type: 'feat' },
-      { message: 'Updated Discord link to be non-expiring', type: 'feat' },
-      { message: 'Even more fixes for Bio Armor. This set just keeps on giving', type: 'fix' },
-      { message: 'Fixed Destiny and Hybrid to report to the Dashboard correctly', type: 'fix' },
-      { message: 'Added a bunch of missing power icons', type: 'fix' },
-      { message: 'Added padding and gutter to give Android/mobile users a dead zone on the right side of the enhancement picker where they can touch to scroll', type: 'fix' },
-      { message: 'Deactivated UI Scale control on mobile, as CSS zoom is unreliable on mobile browsers and users should use pinch-to-zoom gestures instead', type: 'feat' },
-      { message: 'Continued work on implementing changes from Issue 28, Page 3, Panel 2', type: 'fix' },
       ]
   },
 ];

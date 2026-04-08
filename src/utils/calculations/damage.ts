@@ -451,6 +451,9 @@ export function calculatePowerDamage(
       const fireType = types.find((t: DamageTypeEntry) => t.type === 'Fire');
       const nonFireTypes = types.filter((t: DamageTypeEntry) => t.type !== 'Fire');
 
+      // Deduplicate type names (e.g., Energy/Energy/Energy → Energy)
+      const uniqueTypeNames = [...new Set(types.map((t: DamageTypeEntry) => t.type))];
+
       if (fireType && nonFireTypes.length > 0) {
         const fireRatio = fireType.scale / totalScale;
         const dominantNonFire = nonFireTypes.reduce((max: DamageTypeEntry, t: DamageTypeEntry) => t.scale > max.scale ? t : max, nonFireTypes[0]);
@@ -460,16 +463,16 @@ export function calculatePowerDamage(
           // Separate Fiery Embrace damage from primary damage
           fieryEmbraceScale = fireType.scale;
           scale = totalScale - (fieryEmbraceScale ?? 0);
-          damageTypeName = nonFireTypes.map((t: DamageTypeEntry) => t.type).join('/');
+          damageTypeName = [...new Set(nonFireTypes.map((t: DamageTypeEntry) => t.type))].join('/');
         } else {
           // Fire is dominant or significant - treat normally
           scale = totalScale;
-          damageTypeName = types.map((t: DamageTypeEntry) => t.type).join('/');
+          damageTypeName = uniqueTypeNames.join('/');
         }
       } else {
         // No Fire type or no non-Fire types - treat normally
         scale = totalScale;
-        damageTypeName = types.map((t: DamageTypeEntry) => t.type).join('/');
+        damageTypeName = uniqueTypeNames.join('/');
       }
     } else {
       scale = damageEffect.scale;
