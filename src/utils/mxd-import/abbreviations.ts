@@ -183,6 +183,71 @@ export const SET_ABBREVIATIONS: Record<string, string> = {
 
   // --- Purple sets ---
   'Apoc': 'apocalypse',
+
+  // ============================================
+  // ALTERNATE ABBREVIATIONS (from older Mids versions)
+  // Discovered by parsing 49 user-provided MXD files.
+  // These are variant spellings of sets already mapped above.
+  // ============================================
+
+  // Alternate Superior ATO spellings
+  'SprUnrFur': 'superior_unrelenting_fury',
+  'SprBrtFur': 'superior_brutes_fury',
+  'SprScrStr': 'superior_critical_strikes',
+  'SprScrBls': 'superior_blistering_cold',
+  'SprMlcoft': 'superior_malice_of_the_corruptor',
+  'SprBlsCol': 'superior_blistering_cold',
+  'SprWntBit': 'superior_winters_bite',
+  'SprDfnBrr': 'superior_defiant_barrage',
+  'SprDfnBst': 'superior_defiant_barrage',
+  'SprVglAss': 'superior_vigilant_assault',
+  'SprGntFis': 'superior_gauntleted_fist',
+  'SprMghoft': 'superior_might_of_the_tanker',
+  'SprAscoft': 'superior_ascendency_of_the_dominator',
+  'SprEnt': 'superior_entomb',
+  'SprMarofS': 'superior_mark_of_supremacy',
+  'SprCmmoft': 'superior_command_of_the_mastermind',
+  'SprDmnGrs': 'superior_dominating_grasp',
+  'SprSntWar': 'superior_sentinels_ward',
+  'SprOppStr': 'superior_opportunity_strikes',
+  'SprWiloft': 'superior_will_of_the_controller',
+  'SprBlsWrt': 'superior_blasters_wrath',
+
+  // Alternate standard set spellings
+  'TtnCtn': 'titanium_coating',
+  'GifoftheA': 'gift_of_the_ancients',
+  'AdjTrg': 'adjusted_targeting',
+  'SynSck': 'synapses_shock',
+  'CrsImp': 'crushing_impact',
+  'SuddAcc': 'sudden_acceleration',
+  'WntGif': 'winters_gift',
+  'FuroftheG': 'fury_of_the_gladiator',
+  'EnrMnp': 'energy_manipulator',
+  'TchofLadG': 'touch_of_lady_grey',
+  'StnoftheM': 'sting_of_the_manticore',
+  'GhsWdwEmb': 'ghost_widows_embrace',
+  'TchoftheN': 'touch_of_the_nictus',
+  'KntCmb': 'kinetic_combat',
+  'MckBrt': 'makos_bite',
+  'PreOptmz': 'preemptive_optimization',
+  'ClvBlo': 'cleaving_blow',
+  'GlmoftheA': 'glimpse_of_the_abyss',
+  'Thn': 'thunderstrike',
+  'ShlBrk': 'shield_breaker',
+  'Clr': 'celerity',
+  'IceMisTrmt': 'ice_mistrals_torment',
+  'Mlt': 'multi_strike',
+  'Jnt': 'jaunt',
+  'TraoftheH': 'trap_of_the_hunter',
+  'AscoftheD': 'ascendency_of_the_dominator',
+  'UnbLea': 'unbreakable_constraint',
+  'Bit': 'blistering_cold',
+  'ExpVln': 'exploit_weakness',
+  'RctRtc': 'reactive_armor',
+  'EncAcc': 'encouraged_accuracy',
+  'Srn': 'serendipity',
+  'PndSlg': 'pounding_slugfest',
+  'Tmp': 'tempered_readiness',
 };
 
 // ============================================
@@ -213,6 +278,9 @@ export const GENERIC_ABBREVIATIONS: Record<string, string> = {
   'Fear': 'Fear',
   'Taunt': 'Taunt',
   'KB': 'Knockback',
+  'IntRdx': 'Interrupt',
+  'Flight': 'Fly Speed',
+  'KBDist': 'Knockback',
 };
 
 // ============================================
