@@ -27913,16 +27913,6 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
             "desc": "+9.0% Increased Movement"
           }
         ]
-      },
-      {
-        "pieces": 3,
-        "effects": [
-          {
-            "stat": "+res(recharge_debuff)",
-            "value": 20,
-            "desc": "+20% +Res(Recharge Debuff) and Slow Resistance"
-          }
-        ]
       }
     ],
     "pieces": [

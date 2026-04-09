@@ -107,6 +107,12 @@ export function DraggableSlotGhost({
       const additionalSlots = Math.floor(distance / PIXELS_PER_SLOT);
       const newCount = Math.min(1 + additionalSlots, max);
       setSlotsCount(newCount);
+
+      // Update ghost position from button's current rect (handles scroll during drag)
+      if (dragMode === 'add' && buttonRef.current) {
+        const rect = buttonRef.current.getBoundingClientRect();
+        setGhostPosition({ x: rect.right + GHOST_SLOT_GAP, y: rect.top });
+      }
     },
     [dragMode, maxCanAdd, maxCanRemove]
   );
@@ -207,7 +213,7 @@ export function DraggableSlotGhost({
           key={i}
           className="w-6 h-6 rounded-full border-2 border-dashed border-blue-400 bg-blue-500/20 flex items-center justify-center animate-pulse"
           style={{
-            position: 'absolute',
+            position: 'fixed',
             left: ghostPosition.x + (i - 1) * (GHOST_SLOT_SIZE + GHOST_SLOT_GAP),
             top: ghostPosition.y,
             width: GHOST_SLOT_SIZE,

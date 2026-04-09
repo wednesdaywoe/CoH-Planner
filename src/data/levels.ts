@@ -513,7 +513,7 @@ export const BASIC_INHERENT_POWERS: InherentPowerDef[] = [
     available: -1,
     maxSlots: 4,
     allowedEnhancements: ['Run Speed', 'EnduranceReduction', 'Jump'],
-    allowedSetCategories: ['Running & Sprints', 'Leaping & Sprints'],
+    allowedSetCategories: ['Running & Sprints', 'Leaping & Sprints', 'Universal Travel'],
     isLocked: true,
     category: 'basic',
     effects: {
@@ -538,7 +538,7 @@ export const PRESTIGE_SPRINT_POWERS: InherentPowerDef[] = [
     available: -1,
     maxSlots: 4,
     allowedEnhancements: ['Run Speed', 'EnduranceReduction', 'Jump'],
-    allowedSetCategories: ['Running & Sprints', 'Leaping & Sprints'],
+    allowedSetCategories: ['Running & Sprints', 'Leaping & Sprints', 'Universal Travel'],
     isLocked: true,
     category: 'prestige',
     effects: {
@@ -557,7 +557,7 @@ export const PRESTIGE_SPRINT_POWERS: InherentPowerDef[] = [
     available: -1,
     maxSlots: 4,
     allowedEnhancements: ['Run Speed', 'EnduranceReduction', 'Jump'],
-    allowedSetCategories: ['Running & Sprints', 'Leaping & Sprints'],
+    allowedSetCategories: ['Running & Sprints', 'Leaping & Sprints', 'Universal Travel'],
     isLocked: true,
     category: 'prestige',
     effects: {
@@ -576,7 +576,7 @@ export const PRESTIGE_SPRINT_POWERS: InherentPowerDef[] = [
     available: -1,
     maxSlots: 4,
     allowedEnhancements: ['Run Speed', 'EnduranceReduction', 'Jump'],
-    allowedSetCategories: ['Running & Sprints', 'Leaping & Sprints'],
+    allowedSetCategories: ['Running & Sprints', 'Leaping & Sprints', 'Universal Travel'],
     isLocked: true,
     category: 'prestige',
     effects: {
@@ -595,7 +595,7 @@ export const PRESTIGE_SPRINT_POWERS: InherentPowerDef[] = [
     available: -1,
     maxSlots: 4,
     allowedEnhancements: ['Run Speed', 'EnduranceReduction', 'Jump'],
-    allowedSetCategories: ['Running & Sprints', 'Leaping & Sprints'],
+    allowedSetCategories: ['Running & Sprints', 'Leaping & Sprints', 'Universal Travel'],
     isLocked: true,
     category: 'prestige',
     effects: {
@@ -614,7 +614,7 @@ export const PRESTIGE_SPRINT_POWERS: InherentPowerDef[] = [
     available: -1,
     maxSlots: 4,
     allowedEnhancements: ['Run Speed', 'EnduranceReduction', 'Jump'],
-    allowedSetCategories: ['Running & Sprints', 'Leaping & Sprints'],
+    allowedSetCategories: ['Running & Sprints', 'Leaping & Sprints', 'Universal Travel'],
     isLocked: true,
     category: 'prestige',
     effects: {

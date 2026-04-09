@@ -21,10 +21,12 @@ export interface ManualEntry {
 export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   // ─── 2026-03-24 ────────────────────────────────────────────────────────────
   {
-    date: '2026-04-06',
+    date: '2026-04-09',
     items: [
+      { message: 'Fixed missing Universal Travel in allowedSetCategories for Sprint and prestige sprints', type: 'fix' },
+      { message: 'Fixed duplicate bonus entry in Winters Gift', type: 'fix' },
       { message: 'I hate bio armor', type: 'feat' },
-      { message: 'Improved mappings for Popmenu export', type: 'feat' },
+      { message: 'Improved mappings for Popmenu export', type: 'fix' },
       { message: 'Solved the mystery of Street Justices\' disappearance from melee sets', type: 'fix' },
       { message: 'Updates for the extensive changes made in the Feb 10th Panel 2 update are ongoing', type: 'known-issue' },
       { message: 'Fixed Arcane Bolt incorrectly multiplying its own damage', type: 'fix' },
