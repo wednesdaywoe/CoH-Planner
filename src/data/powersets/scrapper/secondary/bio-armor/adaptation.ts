@@ -1,5 +1,5 @@
 /**
- * Evolving Armor
+ * Evolving Armor (display name: "Evolving Armor", internal: "Adaptation")
  * Self Toggle, +Res(All), Foe -Res(All), Taunt, +Special
  *
  * Source: scrapper_defense/bio_organic_armor/adaptation.json
@@ -8,7 +8,7 @@
 import type { Power } from '@/types';
 
 export const Adaptation: Power = {
-  "name": "Adaptation",
+  "name": "Evolving Armor",
   "internalName": "Adaptation",
   "available": 9,
   "description": "When faced with danger, your Bio Armor reacts by becoming incredibly durable as well as infecting nearby enemies, lowering their resistance to damage. While active, Evolving Armor will grant you small amount of damage resistance, plus an additional amount for each nearby target. Nearby foes will also be taunted and have their damage resistance reduced. While Efficient Adaptation is active, this power grants a moderate bonus to Regeneration and Recovery plus a tiny amount of both for each nearby foe up to 10 foes. While Defensive Adaptation is active you gain a very minor amount of defense and damage resistance for each nearby foe, however you lose the benefit of this power's resistance debuff. If Offensive Adaptation is active this power's damage resistance debuff is increased. These special bonuses are unenhanceable.Recharge: Moderate.",

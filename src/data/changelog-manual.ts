@@ -23,6 +23,7 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   {
     date: '2026-04-06',
     items: [
+      { message: 'I hate bio armor', type: 'feat' },
       { message: 'Improved mappings for Popmenu export', type: 'feat' },
       { message: 'Solved the mystery of Street Justices\' disappearance from melee sets', type: 'fix' },
       { message: 'Updates for the extensive changes made in the Feb 10th Panel 2 update are ongoing', type: 'known-issue' },
