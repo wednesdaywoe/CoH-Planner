@@ -7,7 +7,7 @@
  */
 
 import type { Build, Enhancement } from '@/types';
-import type { IOSetEnhancement, GenericIOEnhancement } from '@/types/enhancement';
+import type { IOSetEnhancement, GenericIOEnhancement, SpecialEnhancement } from '@/types/enhancement';
 import { getIOSet } from '@/data';
 
 // ============================================
@@ -28,17 +28,17 @@ const STAT_TO_POPMENU: Record<string, string> = {
   'ToHit Debuff': 'ToHit_Debuff',
   'Hold': 'Hold',
   'Stun': 'Stun',
-  'Immobilize': 'Immob',
+  'Immobilize': 'Immobilize',
   'Sleep': 'Sleep',
   'Confuse': 'Confuse',
   'Fear': 'Fear',
   'Knockback': 'Knockback',
-  'Run Speed': 'Run_Speed',
+  'Run Speed': 'Run',
   'Jump': 'Jump',
   'Fly': 'Flight',
   'Slow': 'Slow',
   'Taunt': 'Taunt',
-  'EnduranceModification': 'EndMod',
+  'EnduranceModification': 'Recovery',
   'Interrupt': 'Interrupt',
 };
 
@@ -79,23 +79,27 @@ function enhancementToBoostCmd(enh: Enhancement): string | null {
   switch (enh.type) {
     case 'io-set': {
       const ioSet = enh as IOSetEnhancement;
-      const pascal = toPascalUnderscore(ioSet.setId);
       const letter = pieceToLetter(ioSet.pieceNum);
       const setDef = getIOSet(ioSet.setId);
       const isAto = setDef?.category === 'ato';
       const isEvent = setDef?.category === 'event';
+      const isSuperior = ioSet.setId.startsWith('superior_');
 
       let prefix: string;
       if (isAto || isEvent) {
         // ATOs and event sets don't have crafted versions — always attuned
-        prefix = ioSet.setId.startsWith('superior_') ? 'Superior_Attuned_' : 'Attuned_';
+        prefix = isSuperior ? 'Superior_Attuned_' : 'Attuned_';
       } else if (!ioSet.attuned) {
         prefix = 'Crafted_';
-      } else if (setDef?.category === 'purple' || ioSet.setId.startsWith('superior_')) {
+      } else if (setDef?.category === 'purple' || isSuperior) {
         prefix = 'Superior_Attuned_';
       } else {
         prefix = 'Attuned_';
       }
+
+      // Strip "superior_" from setId when prefix already includes "Superior_"
+      const baseId = isSuperior ? ioSet.setId.slice('superior_'.length) : ioSet.setId;
+      const pascal = toPascalUnderscore(baseId);
 
       const uid = `${prefix}${pascal}_${letter}`;
       const level = ioSet.attuned ? 50 : (ioSet.level || 50);
@@ -110,7 +114,13 @@ function enhancementToBoostCmd(enh: Enhancement): string | null {
       return `boost ${uid} ${uid} ${level}`;
     }
 
-    // Origin and special enhancements can't be granted via boost command
+    case 'special': {
+      const special = enh as SpecialEnhancement;
+      const uid = special.name.replace(/ /g, '_');
+      return `boost ${uid} ${uid} 1`;
+    }
+
+    // Origin enhancements can't be granted via boost command
     default:
       return null;
   }

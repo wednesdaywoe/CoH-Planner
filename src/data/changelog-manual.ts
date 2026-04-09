@@ -23,6 +23,8 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   {
     date: '2026-04-06',
     items: [
+      { message: 'Improved mappings for Popmenu export', type: 'feat' },
+      { message: 'Solved the mystery of Street Justices\' disappearance from melee sets', type: 'fix' },
       { message: 'Updates for the extensive changes made in the Feb 10th Panel 2 update are ongoing', type: 'known-issue' },
       { message: 'Fixed Arcane Bolt incorrectly multiplying its own damage', type: 'fix' },
       { message: 'Fixed...just a whole bunch of mismatched archetype IDs', type: 'fix' },

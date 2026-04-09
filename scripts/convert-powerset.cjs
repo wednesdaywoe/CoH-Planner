@@ -1317,7 +1317,7 @@ function mergeStackingPatches(effects, stackingResult) {
 
 // Display name overrides for powers where clientmessages has stale/incorrect names
 const DISPLAY_NAME_OVERRIDES = {
-  'Paralyzing_Blast': 'Paralyzing Blast',  // Was "Tesla Coil" in clientmessages
+  // Note: Paralyzing_Blast is the internalName but in-game display is "Tesla Coil" (from clientmessages)
   'Adaptation': 'Adaptation',              // Bio Armor: clientmessages shows "Evolving Armor", in-game is "Adaptation"
   'Evolution': 'Evolving Armor',           // Bio Armor: clientmessages shows "Adaptation", in-game is "Evolving Armor"
 };

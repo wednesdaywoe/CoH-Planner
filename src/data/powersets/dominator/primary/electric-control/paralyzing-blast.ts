@@ -1,5 +1,5 @@
 /**
- * Paralyzing Blast
+ * Tesla Coil
  * Ranged (Targeted AoE), Foe DMG(Energy), Hold, -End, -Fly, -Jump, -Recharge
  *
  * Source: dominator_control/electric_control/paralyzing_blast.json
@@ -8,7 +8,7 @@
 import type { Power } from '@/types';
 
 export const ParalyzingBlast: Power = {
-  "name": "Paralyzing Blast",
+  "name": "Tesla Coil",
   "internalName": "Paralyzing_Blast",
   "available": 17,
   "description": "Summoning a large amount of energy that periodically jolts at nearby enemies dealing energy damage and paralizing them for a short time. These foes may be drained of some endurance as well.",
@@ -42,7 +42,7 @@ export const ParalyzingBlast: Power = {
   "effects": {
     "summon": {
       "isPseudoPet": true,
-      "displayName": "Paralyzing Blast",
+      "displayName": "Tesla Coil",
       "powers": [
         "Redirects.Electric_Control.Tesla_Coil_Pulse",
         "Redirects.Electric_Control.Tesla_Coil_Debuff",

@@ -10,7 +10,7 @@ import type { Power } from '@/types';
 export const Quills: Power = {
   "name": "Quills",
   "internalName": "Quills",
-  "available": 1,
+  "available": 17,
   "description": "While this power is active, you will constantly fire dozens of Spines in all directions. These Spines do minor damage, but can poison all foes in close range. Spine poison Slows affected foes.",
   "shortHelp": "Toggle: PBAoE, DoT(Lethal), Foe -Speed, -Recharge",
   "icon": "quills_quills.png",

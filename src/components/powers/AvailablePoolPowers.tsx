@@ -33,6 +33,7 @@ export function AvailablePoolPowers({ compact = false }: AvailablePoolPowersProp
   const addPool = useBuildStore((s) => s.addPool);
   const removePool = useBuildStore((s) => s.removePool);
   const addPower = useBuildStore((s) => s.addPower);
+  const removePower = useBuildStore((s) => s.removePower);
   const setEpicPool = useBuildStore((s) => s.setEpicPool);
   const setInfoPanelContent = useUIStore((s) => s.setInfoPanelContent);
   const lockInfoPanel = useUIStore((s) => s.lockInfoPanel);
@@ -174,6 +175,7 @@ export function AvailablePoolPowers({ compact = false }: AvailablePoolPowersProp
         level={build.level}
         isPowerLocked={isPowerLocked}
         onSelectPower={(power) => handleSelectPoolPower(poolSelection.id, power)}
+        onRemovePower={(power) => removePower('pool', power.internalName)}
         onRemovePool={() => removePool(poolSelection.id)}
         onPowerHover={(power) => handlePowerHover(power, poolSelection.id)}
         onPowerLeave={handlePowerLeave}
@@ -216,6 +218,7 @@ export function AvailablePoolPowers({ compact = false }: AvailablePoolPowersProp
         level={build.level}
         isPowerLocked={isPowerLocked}
         onSelectPower={handleSelectEpicPower}
+        onRemovePower={(power) => removePower('epic', power.internalName)}
         onRemovePool={() => setEpicPool(null)}
         onPowerHover={(power) => handlePowerHover(power, build.epicPool!.id)}
         onPowerLeave={handlePowerLeave}
@@ -273,6 +276,7 @@ interface AvailablePoolSectionProps {
   level: number;
   isPowerLocked: (powerName: string) => boolean;
   onSelectPower: (power: Power) => void;
+  onRemovePower: (power: Power) => void;
   onRemovePool: () => void;
   onPowerHover: (power: Power) => void;
   onPowerLeave: () => void;
@@ -291,6 +295,7 @@ function AvailablePoolSection({
   selectedPowerNames,
   isPowerLocked,
   onSelectPower,
+  onRemovePower,
   onRemovePool,
   onPowerHover,
   onPowerLeave,
@@ -328,7 +333,7 @@ function AvailablePoolSection({
           {visiblePowers.map((power) => {
             const isSelected = selectedPowerNames.has(power.name);
             const isAvailable = !isSelected && checkAvailability(power);
-            const isDisabled = isSelected || !isAvailable || !!powerLimitReached;
+            const isDisabled = !isSelected && (!isAvailable || !!powerLimitReached);
             const isLocked = isPowerLocked(power.internalName);
             return (
               <PowerItem
@@ -341,6 +346,7 @@ function AvailablePoolSection({
                 isDisabled={isDisabled}
                 isLocked={isLocked}
                 onSelect={() => onSelectPower(power)}
+                onRemove={() => onRemovePower(power)}
                 onHover={() => onPowerHover(power)}
                 onLeave={onPowerLeave}
                 onLockToggle={() => onLockToggle(power)}
@@ -387,7 +393,7 @@ function AvailablePoolSection({
           {visiblePowers.map((power) => {
             const isSelected = selectedPowerNames.has(power.name);
             const isAvailable = !isSelected && checkAvailability(power);
-            const isDisabled = isSelected || !isAvailable || !!powerLimitReached;
+            const isDisabled = !isSelected && (!isAvailable || !!powerLimitReached);
             const isLocked = isPowerLocked(power.internalName);
 
             return (
@@ -401,6 +407,7 @@ function AvailablePoolSection({
                 isDisabled={isDisabled}
                 isLocked={isLocked}
                 onSelect={() => onSelectPower(power)}
+                onRemove={() => onRemovePower(power)}
                 onHover={() => onPowerHover(power)}
                 onLeave={onPowerLeave}
                 onLockToggle={() => onLockToggle(power)}
@@ -423,6 +430,7 @@ interface AvailableEpicPoolSectionProps {
   level: number;
   isPowerLocked: (powerName: string) => boolean;
   onSelectPower: (power: Power) => void;
+  onRemovePower: (power: Power) => void;
   onRemovePool: () => void;
   onPowerHover: (power: Power) => void;
   onPowerLeave: () => void;
@@ -437,6 +445,7 @@ function AvailableEpicPoolSection({
   level,
   isPowerLocked,
   onSelectPower,
+  onRemovePower,
   onRemovePool,
   onPowerHover,
   onPowerLeave,
@@ -457,7 +466,7 @@ function AvailableEpicPoolSection({
     const isSelected = selectedPowerNames.has(power.name);
     const selectedNames = epicPool.powers.map((p) => p.name);
     const isAvailable = !isSelected && isEpicPowerAvailable(power, level, selectedNames);
-    const isDisabled = isSelected || !isAvailable || !!powerLimitReached;
+    const isDisabled = !isSelected && (!isAvailable || !!powerLimitReached);
     const isLocked = isPowerLocked(power.internalName);
     return (
       <PowerItem
@@ -472,6 +481,7 @@ function AvailableEpicPoolSection({
         isDisabled={isDisabled}
         isLocked={isLocked}
         onSelect={() => onSelectPower(power)}
+        onRemove={() => onRemovePower(power)}
         onHover={() => onPowerHover(power)}
         onLeave={onPowerLeave}
         onLockToggle={() => onLockToggle(power)}

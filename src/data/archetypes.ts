@@ -416,7 +416,7 @@ export const ARCHETYPES: ArchetypeRegistry = {
     },
     primarySets: [
       'scrapper/battle-axe',
-      'scrapper/street_justice',
+      'scrapper/street-justice',
       'scrapper/broad-sword',
       'scrapper/claws',
       'scrapper/dark-melee',
@@ -500,7 +500,7 @@ export const ARCHETYPES: ArchetypeRegistry = {
     ],
     secondarySets: [
       'tanker/battle-axe',
-      'tanker/street_justice',
+      'tanker/street-justice',
       'tanker/broad-sword',
       'tanker/claws',
       'tanker/dark-melee',
@@ -617,7 +617,7 @@ export const ARCHETYPES: ArchetypeRegistry = {
     },
     primarySets: [
       'brute/battle-axe',
-      'brute/street_justice',
+      'brute/street-justice',
       'brute/broad-sword',
       'brute/claws',
       'brute/dark-melee',
@@ -865,7 +865,7 @@ export const ARCHETYPES: ArchetypeRegistry = {
       resistanceCap: 0.90,  // 90%
     },
     primarySets: [
-      'stalker/street_justice',
+      'stalker/street-justice',
       'stalker/broad-sword',
       'stalker/claws',
       'stalker/dark-melee',
