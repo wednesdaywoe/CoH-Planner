@@ -642,7 +642,7 @@ export function mapEnhancementUid(
   }
 
   const enh = createIOSetEnhancement(ioSet, piece, pieceNum - 1, {
-    attuned: attuned || relativeLevel === 'Even',
+    attuned,
     level: attuned ? 50 : level,
     boost: boost || undefined,
   });

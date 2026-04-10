@@ -11,6 +11,7 @@ import { getBaselineHealth } from '@/utils/calculations/stats';
 import { Tooltip } from '@/components/ui';
 import { StatsConfigModal, AccoladesModal, AboutModal, ExportImportModal, FeedbackModal, ChangelogModal, WelcomeModal, useWelcomeModal, SetBonusLookupModal, ControlsModal, HelpModal, CompareSlottingModal, DetailedTotalsModal, PowersetCompareModal, ProcSettingsModal } from '@/components/modals';
 import { IncarnateSlotGrid, IncarnateModal, IncarnateCraftingModal } from '@/components/incarnate';
+import { PinnedPowersBar } from './PinnedPowersBar';
 import { INCARNATE_REQUIRED_LEVEL, createEmptyIncarnateBuildState } from '@/types';
 import type { DashboardStatBreakdown } from '@/hooks/useCalculatedStats';
 import { STAT_DEFINITIONS } from '@/data/stat-definitions';
@@ -279,6 +280,9 @@ export function StatsDashboard() {
             />
           </div>
         </div>
+
+        {/* Pinned perma-tracked powers */}
+        <PinnedPowersBar />
 
         {/* Dashboard action bar */}
         <div className="flex items-center gap-0.5 pt-1 mt-1 border-t border-gray-800 overflow-x-auto">
