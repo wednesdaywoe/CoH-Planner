@@ -23,6 +23,7 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   {
     date: '2026-04-10',
     items: [
+      { message: 'Improved Mids import for Incarnate powers and Tri-Cannon resolution', type: 'fix' },
       { message: 'Added new "Perma-Tracked Powers" feature to pin perma-tracked powers to a new bar in the Dashboard', type: 'feat' },
       { message: 'Fixed MBD importer incorrectly marking all non-boosted crafted IOs as attuned', type: 'fix' },
       { message: 'Fixed missing Universal Travel in allowedSetCategories for Sprint and prestige sprints', type: 'fix' },
