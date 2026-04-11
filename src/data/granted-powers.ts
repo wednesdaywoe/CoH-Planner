@@ -82,22 +82,13 @@ export const GRANTED_POWER_GROUPS: Record<string, GrantedPowerGroup> = {
   },
 
   // ============================================
-  // STAFF FIGHTING - Form stances
+  // STAFF FIGHTING - Staff Mastery grants Form stances
   // ============================================
-  'Form_of_the_Body': {
-    parentPower: 'Form_of_the_Body',
-    grantedPowers: [],
-    mutuallyExclusive: false,
-  },
-  'Form_of_the_Mind': {
-    parentPower: 'Form_of_the_Mind',
-    grantedPowers: [],
-    mutuallyExclusive: false,
-  },
-  'Form_of_the_Soul': {
-    parentPower: 'Form_of_the_Soul',
-    grantedPowers: [],
-    mutuallyExclusive: false,
+  'Staff_Mastery': {
+    parentPower: 'Staff_Mastery',
+    grantedPowers: ['Form_of_the_Body', 'Form_of_the_Mind', 'Form_of_the_Soul'],
+    mutuallyExclusive: true,
+    description: 'Staff Fighting stances - only one form can be active at a time',
   },
 
   // ============================================
