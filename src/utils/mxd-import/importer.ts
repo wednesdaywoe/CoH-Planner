@@ -13,10 +13,12 @@ import { createEmptyBuild } from '@/types/build';
 import { getArchetype } from '@/data/archetypes';
 import { getPowerset } from '@/data/powersets';
 import { getIOSet } from '@/data/io-sets';
+import { getIncarnateSlot, getIncarnateTree } from '@/data/incarnates';
 import { SET_ABBREVIATIONS, GENERIC_ABBREVIATIONS, CLASS_TO_ARCHETYPE } from './abbreviations';
 import type { ArchetypeId } from '@/types/archetype';
 import type { Power } from '@/types/power';
-import type { SelectedPower } from '@/types';
+import type { SelectedPower, SelectedIncarnatePower } from '@/types';
+import { INCARNATE_SLOT_ORDER } from '@/types';
 
 // ============================================
 // MAIN IMPORT FUNCTION
@@ -175,6 +177,17 @@ export function importMxdBuild(parsed: MxdParsedBuild): MidsImportResult {
     }
   }
 
+  // --- Incarnate powers ---
+  for (const mxdInc of parsed.incarnates) {
+    const result = resolveIncarnateByDisplayName(mxdInc.name, warnings);
+    if (result) {
+      build.incarnates[result.slotId] = result;
+      powersImported++;
+    } else {
+      powersFailed++;
+    }
+  }
+
   // Detect VEAT branch
   let detectedBranch: string | undefined;
   if (archetype.branches) {
@@ -252,35 +265,84 @@ function findPowerInBuild(
   displayName: string,
   build: Build,
 ): { power: Power | null; category: PowerCategory | null } {
+  const normalizeAll = (s: string) => s.toLowerCase().replace(/[-_\s]/g, '');
+
+  const searchPowers = (powers: Power[], category: PowerCategory): { power: Power; category: PowerCategory } | null => {
+    // Exact match
+    const exact = powers.find(p => p.name === displayName);
+    if (exact) return { power: exact, category };
+    // Normalized match (handles hyphens vs spaces vs underscores)
+    const normalized = normalizeAll(displayName);
+    const fuzzy = powers.find(p => normalizeAll(p.name) === normalized);
+    if (fuzzy) return { power: fuzzy, category };
+    return null;
+  };
+
   const primaryPs = build.primary?.id ? getPowerset(build.primary.id) : null;
   if (primaryPs) {
-    const found = primaryPs.powers.find(p => p.name === displayName);
-    if (found) return { power: found, category: 'primary' };
+    const found = searchPowers(primaryPs.powers, 'primary');
+    if (found) return found;
   }
 
   const secondaryPs = build.secondary?.id ? getPowerset(build.secondary.id) : null;
   if (secondaryPs) {
-    const found = secondaryPs.powers.find(p => p.name === displayName);
-    if (found) return { power: found, category: 'secondary' };
+    const found = searchPowers(secondaryPs.powers, 'secondary');
+    if (found) return found;
   }
 
   for (const pool of build.pools) {
     const poolPs = getPowerset(pool.id);
     if (poolPs) {
-      const found = poolPs.powers.find(p => p.name === displayName);
-      if (found) return { power: found, category: 'pool' };
+      const found = searchPowers(poolPs.powers, 'pool');
+      if (found) return found;
     }
   }
 
   if (build.epicPool) {
     const epicPs = getPowerset(build.epicPool.id);
     if (epicPs) {
-      const found = epicPs.powers.find(p => p.name === displayName);
-      if (found) return { power: found, category: 'epic' };
+      const found = searchPowers(epicPs.powers, 'epic');
+      if (found) return found;
     }
   }
 
   return { power: null, category: null };
+}
+
+/**
+ * Resolve an incarnate power by its MXD display name (e.g., "Melee Core Embodiment").
+ * Searches all slots and trees for a matching displayName.
+ */
+function resolveIncarnateByDisplayName(
+  displayName: string,
+  warnings: MidsImportWarning[],
+): SelectedIncarnatePower | null {
+  const lowerName = displayName.toLowerCase();
+
+  for (const slotId of INCARNATE_SLOT_ORDER) {
+    const slot = getIncarnateSlot(slotId);
+    if (!slot) continue;
+
+    for (const tree of slot.trees) {
+      const power = tree.powers.find(p => p.displayName.toLowerCase() === lowerName);
+      if (power) {
+        const treeInfo = getIncarnateTree(slotId, power.treeId);
+        return {
+          slotId,
+          powerId: power.id,
+          powerName: power.id,
+          displayName: power.displayName,
+          icon: power.icon,
+          tier: power.tier,
+          treeId: power.treeId,
+          treeName: treeInfo?.name || power.treeId,
+        };
+      }
+    }
+  }
+
+  warnings.push({ type: 'power', midsName: displayName, message: `Incarnate power not found: ${displayName}` });
+  return null;
 }
 
 function resolveEnhancement(

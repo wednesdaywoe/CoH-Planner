@@ -257,9 +257,39 @@ export function getIncarnatePower(
   const slot = getIncarnateSlot(slotId);
   if (!slot) return undefined;
 
+  // Exact match on id or fullName
   for (const tree of slot.trees) {
     const power = tree.powers.find(p => p.id === powerId || p.fullName === powerId);
     if (power) return power;
+  }
+
+  // Case-insensitive fallback
+  const lowerPowerId = powerId.toLowerCase();
+  for (const tree of slot.trees) {
+    const power = tree.powers.find(
+      p => p.id === lowerPowerId || p.fullName?.toLowerCase() === lowerPowerId
+    );
+    if (power) return power;
+  }
+
+  // Last-segment fallback: extract final segment and match against id
+  const lastSegment = powerId.split('.').pop()?.toLowerCase();
+  if (lastSegment) {
+    for (const tree of slot.trees) {
+      const power = tree.powers.find(p => p.id === lastSegment);
+      if (power) return power;
+    }
+  }
+
+  // Display name fallback: normalize underscores to spaces and match
+  const normalizedName = lastSegment?.replace(/_/g, ' ');
+  if (normalizedName) {
+    for (const tree of slot.trees) {
+      const power = tree.powers.find(
+        p => p.displayName.toLowerCase() === normalizedName
+      );
+      if (power) return power;
+    }
   }
 
   return undefined;

@@ -181,12 +181,20 @@ export function findPowerByMidsName(powers: Power[], midsName: string): Power | 
   );
   if (byInternal) return byInternal;
 
-  // Try display name: "Quick_Strike" → "Quick Strike"
+  // Try display name: "Quick_Strike" → "Quick Strike", "Tri_Cannon" → matches "Tri-Cannon"
   const normalized = corrected.replace(/_/g, ' ');
   const byDisplay = powers.find(
     (p) => p.name.toLowerCase() === normalized.toLowerCase()
   );
   if (byDisplay) return byDisplay;
+
+  // Try display name with hyphen normalization: "Tri_Cannon" → "tri cannon" matches "Tri-Cannon" → "tri cannon"
+  const normalizeAll = (s: string) => s.toLowerCase().replace(/[-_]/g, ' ');
+  const normalizedAll = normalizeAll(corrected);
+  const byDisplayNormalized = powers.find(
+    (p) => normalizeAll(p.name) === normalizedAll
+  );
+  if (byDisplayNormalized) return byDisplayNormalized;
 
   // fullName last segment match (e.g., "Combat_Flight" matches Pool.Flight.Combat_Flight → "Hover")
   const lowerName = corrected.toLowerCase();
