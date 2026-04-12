@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>OG Image - CoH Sidekick</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      width: 1200px;
+      height: 630px;
+      overflow: hidden;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #0f1729;
+      color: #e2e8f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card {
+      width: 1200px;
+      height: 630px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 48px;
+      padding: 60px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Subtle radial glow behind logo */
+    .card::before {
+      content: '';
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      left: 200px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: radial-gradient(circle, rgba(214, 43, 206, 0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* Top border accent */
+    .card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, transparent, #D62BCE, transparent);
+    }
+
+    /* Subtle grid pattern */
+    .grid-bg {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(100, 116, 139, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(100, 116, 139, 0.05) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+    }
+
+    .logo-area {
+      position: relative;
+      z-index: 1;
+      flex-shrink: 0;
+    }
+
+    .logo-area img {
+      width: 220px;
+      height: 220px;
+      filter: drop-shadow(0 0 30px rgba(214, 43, 206, 0.3));
+    }
+
+    .text-area {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .app-name {
+      font-size: 72px;
+      font-weight: 800;
+      letter-spacing: -1px;
+      line-height: 1;
+      background: linear-gradient(135deg, #f1f5f9 0%, #94a3b8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .app-name span {
+      font-style: italic;
+      background: linear-gradient(135deg, #D62BCE 0%, #e879de 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      padding-right: 10px;
+    }
+
+    .tagline {
+      font-size: 26px;
+      font-weight: 400;
+      color: #94a3b8;
+      line-height: 1.4;
+      max-width: 500px;
+    }
+
+    .pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    .pill {
+      font-size: 13px;
+      font-weight: 600;
+      padding: 6px 16px;
+      border-radius: 20px;
+      border: 1px solid;
+      letter-spacing: 0.3px;
+    }
+
+    .pill-cyan    { color: #22d3ee; border-color: rgba(34, 211, 238, 0.3); background: rgba(34, 211, 238, 0.08); }
+    .pill-purple  { color: #a78bfa; border-color: rgba(167, 139, 250, 0.3); background: rgba(167, 139, 250, 0.08); }
+    .pill-green   { color: #34d399; border-color: rgba(52, 211, 153, 0.3); background: rgba(52, 211, 153, 0.08); }
+    .pill-magenta { color: #e879de; border-color: rgba(214, 43, 206, 0.3); background: rgba(214, 43, 206, 0.08); }
+    .pill-amber   { color: #fbbf24; border-color: rgba(251, 191, 36, 0.3); background: rgba(251, 191, 36, 0.08); }
+    .pill-blue    { color: #3b82f6; border-color: rgba(59, 130, 246, 0.3); background: rgba(59, 130, 246, 0.08); }  
+
+    .url {
+      font-size: 18px;
+      font-weight: 600;
+      color: #D62BCE;
+      letter-spacing: 0.5px;
+      margin-top: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="grid-bg"></div>
+
+    <div class="logo-area">
+      <img src="img/favicon-512x512.png" alt="CoH Sidekick Logo">
+    </div>
+
+    <div class="text-area">
+      <div class="app-name">CoH <span>SIDEKICK</span></div>
+      <div class="tagline">A City of Heroes character planner for everyone</div>
+      <div class="pills">
+
+        <span class="pill pill-purple">Set Bonus Finder</span>
+        <span class="pill pill-cyan">Compare powers and slot configurations</span>
+        <span class="pill pill-green">Incarnate Crafting Calculator</span>
+        <span class="pill pill-magenta">Stat Tracking</span>
+        <span class="pill pill-blue">Save your builds or share to a searchable public build library</span>
+        <span class="pill pill-amber">Import from Mids</span>
+
+      </div>
+      <div class="url">coh-sidekick.com</div>
+    </div>
+  </div>
+</body>
+</html>
