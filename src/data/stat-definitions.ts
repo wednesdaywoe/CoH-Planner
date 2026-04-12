@@ -350,7 +350,8 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'recovery',
     label: 'Rec',
     getValue: (stats) => {
-      const totalMaxEnd = 100 + (stats.maxEndurance || 0);
+      // stats.maxEndurance already includes base 100 (added in useCalculatedStats)
+      const totalMaxEnd = stats.maxEndurance || 100;
       const baseRecovery = totalMaxEnd / 60;
       const endPerSec = baseRecovery * (1 + stats.recoveryBuff / 100);
       return { perSec: endPerSec, buff: stats.recoveryBuff };
