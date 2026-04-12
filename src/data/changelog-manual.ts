@@ -23,6 +23,7 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   {
     date: '2026-04-10',
     items: [
+      { message: 'Fixed permatracker to use the same calculation as InfoPanel for Alpha incarnate bonuses instead of doing its own thing', type: 'fix' },
       { message: 'Removed hiddenPassive flag from Staff Mastery which was hiding it from selection in the UI', type: 'fix' },
       { message: 'Reverted Universal Travel addition to Sprint powers, learned not to trust anyone', type: 'fix' },
       { message: 'Improved Mids import for Incarnate powers and Tri-Cannon resolution', type: 'fix' },
