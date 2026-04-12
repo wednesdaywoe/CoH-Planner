@@ -8,6 +8,7 @@ import { useState, useRef, useEffect } from 'react';
 import { useNavigate, useLocation } from '@tanstack/react-router';
 import { useBuildStore, useUIStore, useAuthStore } from '@/stores';
 import { useHistoryStore } from '@/stores/historyStore';
+import { useOnboardingStore, useOnboardingCurrentStep } from '@/stores/onboardingStore';
 import { supabase } from '@/lib/supabase';
 import { getPowersetsForArchetype, getPowerset, MAX_LEVEL, ARCHETYPES } from '@/data';
 import { Button, Select, Slider, Toggle, Tooltip } from '@/components/ui';
@@ -120,11 +121,11 @@ export function Header() {
         <HeaderLevelSlider />
 
         {/* Undo / Redo */}
-        <div className="flex items-center gap-0.5">
+        <div className="flex items-center gap-0.5" data-onboarding="undo-redo">
           <button
             onClick={handleUndo}
             disabled={!canUndo}
-            className="p-1 rounded text-sk-magenta hover:text-sk-magenta hover:bg-sk-magenta/10 disabled:opacity-25 disabled:cursor-not-allowed transition-colors"
+            className="p-1 rounded text-slate-400 hover:text-slate-200 hover:bg-slate-700 disabled:opacity-25 disabled:cursor-not-allowed transition-colors"
             title="Undo (Ctrl+Z)"
           >
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -134,7 +135,7 @@ export function Header() {
           <button
             onClick={handleRedo}
             disabled={!canRedo}
-            className="p-1 rounded text-sk-magenta hover:text-sk-magenta hover:bg-sk-magenta/10 disabled:opacity-25 disabled:cursor-not-allowed transition-colors"
+            className="p-1 rounded text-slate-400 hover:text-slate-200 hover:bg-slate-700 disabled:opacity-25 disabled:cursor-not-allowed transition-colors"
             title="Redo (Ctrl+Shift+Z)"
           >
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -209,7 +210,7 @@ function HeaderLevelSlider() {
   const setLevel = useBuildStore((s) => s.setLevel);
 
   return (
-    <div className="flex items-center gap-1 px-2 py-1 rounded border border-slate-600 bg-slate-700/50">
+    <div className="flex items-center gap-1 px-2 py-1 rounded border border-slate-600 bg-slate-700/50" data-onboarding="level-slider">
       <span className="text-[10px] text-slate-400 uppercase font-semibold hidden sm:inline">Lvl</span>
       <button
         onClick={() => setLevel(level - 1)}
@@ -252,6 +253,8 @@ function BuildIdentityPopover() {
   const setSecondary = useBuildStore((s) => s.setSecondary);
   const selectedBranch = useUIStore((s) => s.selectedBranch);
   const setSelectedBranch = useUIStore((s) => s.setSelectedBranch);
+  const currentOnboardingStep = useOnboardingCurrentStep();
+  const onboardingStepId = currentOnboardingStep?.id;
 
   useEffect(() => {
     if (!open) return;
@@ -299,7 +302,6 @@ function BuildIdentityPopover() {
   };
 
   // Build summary label for the button
-  const isIncomplete = !archetypeId || !build.primary.id || !build.secondary.id;
   const atLabel = archetype?.name ?? null;
   const primaryLabel = build.primary.name || null;
   const secondaryLabel = build.secondary.name || null;
@@ -308,15 +310,18 @@ function BuildIdentityPopover() {
     ? [buildName, atLabel, primaryLabel, secondaryLabel].filter(Boolean).join(' · ')
     : 'Select Build Identity...';
 
+  // Show onboarding beacon on trigger when popover is closed and step is a build-identity step
+  const identitySteps = ['select-archetype', 'select-primary', 'select-secondary'];
+  const triggerOnboardingId = !open && onboardingStepId && identitySteps.includes(onboardingStepId)
+    ? onboardingStepId
+    : undefined;
+
   return (
     <div className="relative" ref={ref}>
       <button
         onClick={() => setOpen(!open)}
-        className={`flex items-center gap-1.5 px-2 py-1.5 text-xs border rounded transition-colors ${
-          isIncomplete
-            ? 'text-amber-300 bg-amber-900/40 hover:bg-amber-800/50 border-amber-600/50 animate-pulse-magenta'
-            : 'text-slate-200 bg-slate-700/50 hover:bg-slate-600/60 border-slate-600'
-        }`}
+        data-onboarding={triggerOnboardingId}
+        className="flex items-center gap-1.5 px-2 py-1.5 text-xs border rounded transition-colors text-slate-200 bg-slate-700/50 hover:bg-slate-600/60 border-slate-600"
         title="Set archetype and powersets"
       >
         <svg className="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -360,7 +365,7 @@ function BuildIdentityPopover() {
           </div>
 
           {/* Archetype */}
-          <div className="space-y-1">
+          <div className="space-y-1" data-onboarding="select-archetype">
             <label className="text-xs text-gray-400">Archetype</label>
             <Select
               id="archetype-select"
@@ -369,12 +374,11 @@ function BuildIdentityPopover() {
               value={archetypeId || ''}
               onChange={handleArchetypeChange}
               className="w-full"
-              highlight={!archetypeId}
             />
           </div>
 
           {/* Primary */}
-          <div className="space-y-1">
+          <div className="space-y-1" data-onboarding="select-primary">
             <label className="text-xs text-gray-400">Primary</label>
             <Select
               id="primary-select"
@@ -384,12 +388,11 @@ function BuildIdentityPopover() {
               onChange={(e) => setPrimary(e.target.value)}
               className="w-full"
               disabled={!archetypeId}
-              highlight={!!archetypeId && !build.primary.id}
             />
           </div>
 
           {/* Secondary */}
-          <div className="space-y-1">
+          <div className="space-y-1" data-onboarding="select-secondary">
             <label className="text-xs text-gray-400">Secondary</label>
             <Select
               id="secondary-select"
@@ -399,7 +402,6 @@ function BuildIdentityPopover() {
               onChange={(e) => { setSecondary(e.target.value); if (e.target.value) setOpen(false); }}
               className="w-full"
               disabled={!archetypeId}
-              highlight={!!archetypeId && !build.secondary.id}
             />
           </div>
 
@@ -452,6 +454,7 @@ function ActionMenu({
   const loading = useAuthStore((s) => s.loading);
   const login = useAuthStore((s) => s.login);
   const logout = useAuthStore((s) => s.logout);
+  const currentOnboardingStep2 = useOnboardingCurrentStep();
 
   useEffect(() => {
     if (!open) return;
@@ -465,10 +468,16 @@ function ActionMenu({
   const displayName = user?.user_metadata?.full_name || user?.user_metadata?.name || 'Account';
   const avatarUrl = user?.user_metadata?.avatar_url;
 
+  // Show onboarding beacon on trigger when menu is closed
+  const triggerOnboardingId2 = !open && currentOnboardingStep2?.id === 'export-import'
+    ? 'export-import'
+    : undefined;
+
   return (
     <div className="relative" ref={ref}>
       <button
         onClick={() => setOpen(!open)}
+        data-onboarding={triggerOnboardingId2}
         className="flex items-center gap-1 px-2 py-1.5 text-xs text-emerald-300 hover:text-white bg-emerald-900/40 hover:bg-emerald-800/50 border border-emerald-700/50 rounded transition-colors"
         title="Build actions"
       >
@@ -488,7 +497,7 @@ function ActionMenu({
             <svg className="w-4 h-4 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" /></svg>
             Load / Import
           </button>
-          <button onClick={() => { onOpenModal('share-export'); setOpen(false); }} className="w-full text-left px-3 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white transition-colors flex items-center gap-2">
+          <button onClick={() => { onOpenModal('share-export'); setOpen(false); }} className="w-full text-left px-3 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white transition-colors flex items-center gap-2" data-onboarding="export-import">
             <svg className="w-4 h-4 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" /></svg>
             Share / Export
           </button>
@@ -568,6 +577,10 @@ function SettingsPopover() {
   const useArcanaTime = useUIStore((s) => s.useArcanaTime);
   const toggleUseArcanaTime = useUIStore((s) => s.toggleUseArcanaTime);
 
+  const onboardingEnabled = useOnboardingStore((s) => s.enabled);
+  const toggleOnboarding = useOnboardingStore((s) => s.toggle);
+  const resetOnboarding = useOnboardingStore((s) => s.reset);
+
   const [calcDebugOn, setCalcDebugOn] = useState(isCalcDebugEnabled);
   const handleToggleCalcDebug = () => {
     if (calcDebugOn) {
@@ -592,6 +605,7 @@ function SettingsPopover() {
     <div className="relative" ref={ref}>
       <button
         onClick={() => setOpen(!open)}
+        data-onboarding="settings"
         className={`flex items-center gap-1 px-2 py-1.5 text-xs hover:text-white border rounded transition-colors ${
           exemplarMode
             ? 'text-amber-400 bg-amber-900/40 hover:bg-amber-800/50 border-amber-600/50'
@@ -790,6 +804,27 @@ function SettingsPopover() {
             </Tooltip>
           </div>
 
+          {/* Onboarding */}
+          <div className="space-y-2">
+            <div className="flex items-center justify-between">
+              <Tooltip content="Show guided hints that introduce features one at a time">
+                <Toggle
+                  id="onboarding-toggle"
+                  name="onboarding"
+                  checked={onboardingEnabled}
+                  onChange={toggleOnboarding}
+                  label="Guided Hints"
+                />
+              </Tooltip>
+            </div>
+            <button
+              onClick={resetOnboarding}
+              className="text-xs text-sky-400 hover:text-sky-300 transition-colors"
+            >
+              Reset guided hints
+            </button>
+          </div>
+
           <hr className="border-gray-700" />
           <p className="text-[10px] text-gray-600 text-center">v{APP_VERSION} — {LAST_UPDATED}</p>
 
@@ -832,7 +867,7 @@ function ATMechanics({ archetypeId }: { archetypeId: string }) {
       {/* Domination - Dominators */}
       {archetypeId === 'dominator' && (
         <Tooltip content="Toggle Domination active state to see enhanced mez values (2x magnitude, 1.5x duration)">
-          <div className={`flex items-center px-2 py-1 rounded border ${
+          <div data-onboarding="at-mechanic" className={`flex items-center px-2 py-1 rounded border ${
             dominationActive
               ? 'bg-pink-900/30 border-pink-700/50'
               : 'bg-slate-700/50 border-slate-600'
@@ -851,9 +886,9 @@ function ATMechanics({ archetypeId }: { archetypeId: string }) {
       {/* Scourge - Corruptors */}
       {archetypeId === 'corruptor' && (
         <Tooltip content="Toggle to show average Scourge damage bonus (+30% as multiplier). Scourge chance increases as enemy HP drops below 50%.">
-          <div className={`flex items-center px-2 py-1 rounded border ${
+          <div data-onboarding="at-mechanic" className={`flex items-center px-2 py-1 rounded border ${
             scourgeActive
-              ? 'bg-sk-magenta/10 border-sk-magenta/30'
+              ? 'bg-sky-900/30 border-sky-700/40'
               : 'bg-slate-700/50 border-slate-600'
           }`}>
             <Toggle
@@ -870,24 +905,24 @@ function ATMechanics({ archetypeId }: { archetypeId: string }) {
       {/* Fury - Brutes */}
       {archetypeId === 'brute' && (
         <Tooltip content={`Fury grants +${furyLevel * 2}% damage. Adjust to see damage at different fury levels.`}>
-          <div className={`flex items-center gap-1 px-2 py-1 rounded border ${
+          <div data-onboarding="at-mechanic" className={`flex items-center gap-1 px-2 py-1 rounded border ${
             furyLevel > 0
-              ? 'bg-sk-magenta/10 border-sk-magenta/30'
+              ? 'bg-sky-900/30 border-sky-700/40'
               : 'bg-slate-700/50 border-slate-600'
           }`}>
-            <span className="text-xs text-sk-magenta font-semibold uppercase">Fury</span>
+            <span className="text-xs text-sky-400 font-semibold uppercase">Fury</span>
             <button
               onClick={() => setFuryLevel(Math.max(0, furyLevel - 1))}
               disabled={furyLevel <= 0}
-              className="text-slate-400 hover:text-sk-magenta disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-0.5"
+              className="text-slate-400 hover:text-sky-400 disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-0.5"
             >
               &minus;
             </button>
-            <span className="text-sm font-bold text-sk-magenta w-7 text-center">{furyLevel}</span>
+            <span className="text-sm font-bold text-sky-400 w-7 text-center">{furyLevel}</span>
             <button
               onClick={() => setFuryLevel(Math.min(100, furyLevel + 1))}
               disabled={furyLevel >= 100}
-              className="text-slate-400 hover:text-sk-magenta disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-0.5"
+              className="text-slate-400 hover:text-sky-400 disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-0.5"
             >
               +
             </button>
@@ -900,7 +935,7 @@ function ATMechanics({ archetypeId }: { archetypeId: string }) {
               showValue={false}
               showRange={false}
             />
-            <span className="text-[10px] text-sk-magenta/70">+{furyLevel * 2}%</span>
+            <span className="text-[10px] text-sky-400/70">+{furyLevel * 2}%</span>
           </div>
         </Tooltip>
       )}
@@ -908,9 +943,9 @@ function ATMechanics({ archetypeId }: { archetypeId: string }) {
       {/* Supremacy - Masterminds */}
       {archetypeId === 'mastermind' && (
         <Tooltip content="Toggle to show Supremacy buffs (+25% Damage, +10% ToHit) for henchmen within 60ft. Also enables Bodyguard Mode info.">
-          <div className={`flex items-center px-2 py-1 rounded border ${
+          <div data-onboarding="at-mechanic" className={`flex items-center px-2 py-1 rounded border ${
             supremacyActive
-              ? 'bg-sk-magenta/10 border-sk-magenta/30'
+              ? 'bg-sky-900/30 border-sky-700/40'
               : 'bg-slate-700/50 border-slate-600'
           }`}>
             <Toggle
@@ -930,24 +965,24 @@ function ATMechanics({ archetypeId }: { archetypeId: string }) {
         const teamLabel = vigilanceTeamSize === 0 ? 'Solo' : `+${vigilanceTeamSize}`;
         return (
           <Tooltip content={`Vigilance grants +${(damageBonus * 100).toFixed(0)}% damage based on team size. Solo = max bonus, 3+ teammates = no bonus.`}>
-            <div className={`flex items-center gap-1 px-2 py-1 rounded border ${
+            <div data-onboarding="at-mechanic" className={`flex items-center gap-1 px-2 py-1 rounded border ${
               vigilanceTeamSize < 3
-                ? 'bg-sk-magenta/10 border-sk-magenta/30'
+                ? 'bg-sky-900/30 border-sky-700/40'
                 : 'bg-slate-700/50 border-slate-600'
             }`}>
-              <span className="text-xs text-sk-magenta font-semibold uppercase">Team</span>
+              <span className="text-xs text-sky-400 font-semibold uppercase">Team</span>
               <button
                 onClick={() => setVigilanceTeamSize(Math.max(0, vigilanceTeamSize - 1))}
                 disabled={vigilanceTeamSize <= 0}
-                className="text-slate-400 hover:text-sk-magenta disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-0.5"
+                className="text-slate-400 hover:text-sky-400 disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-0.5"
               >
                 &minus;
               </button>
-              <span className="text-sm font-bold text-sk-magenta w-8 text-center">{teamLabel}</span>
+              <span className="text-sm font-bold text-sky-400 w-8 text-center">{teamLabel}</span>
               <button
                 onClick={() => setVigilanceTeamSize(Math.min(7, vigilanceTeamSize + 1))}
                 disabled={vigilanceTeamSize >= 7}
-                className="text-slate-400 hover:text-sk-magenta disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-0.5"
+                className="text-slate-400 hover:text-sky-400 disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-0.5"
               >
                 +
               </button>
@@ -960,7 +995,7 @@ function ATMechanics({ archetypeId }: { archetypeId: string }) {
                 showValue={false}
                 showRange={false}
               />
-              <span className="text-[10px] text-sk-magenta/70">+{(damageBonus * 100).toFixed(0)}%</span>
+              <span className="text-[10px] text-sky-400/70">+{(damageBonus * 100).toFixed(0)}%</span>
             </div>
           </Tooltip>
         );
@@ -969,9 +1004,9 @@ function ATMechanics({ archetypeId }: { archetypeId: string }) {
       {/* Critical Hits - Scrappers */}
       {archetypeId === 'scrapper' && (
         <Tooltip content="Toggle to show average Critical Hit damage bonus. 5% crit chance vs minions (+5% avg), 10% vs higher ranks (+10% avg). Critical hits deal double damage.">
-          <div className={`flex items-center px-2 py-1 rounded border ${
+          <div data-onboarding="at-mechanic" className={`flex items-center px-2 py-1 rounded border ${
             criticalHitsActive
-              ? 'bg-sk-magenta/10 border-sk-magenta/30'
+              ? 'bg-sky-900/30 border-sky-700/40'
               : 'bg-slate-700/50 border-slate-600'
           }`}>
             <Toggle
@@ -995,9 +1030,9 @@ function ATMechanics({ archetypeId }: { archetypeId: string }) {
               ? "Attacking from Hide: 100% critical chance (double damage)"
               : "Not Hidden: 10% base crit + 3% per teammate. Toggle to see damage from Hide."
             }>
-              <div className={`flex items-center px-2 py-1 rounded border ${
+              <div data-onboarding="at-mechanic" className={`flex items-center px-2 py-1 rounded border ${
                 stalkerHidden
-                  ? 'bg-sk-magenta/10 border-sk-magenta/30'
+                  ? 'bg-sky-900/30 border-sky-700/40'
                   : 'bg-slate-700/50 border-slate-600'
               }`}>
                 <Toggle
@@ -1011,20 +1046,20 @@ function ATMechanics({ archetypeId }: { archetypeId: string }) {
             </Tooltip>
             {!stalkerHidden && (
               <Tooltip content={`Assassination grants +${(damageBonus * 100).toFixed(0)}% avg damage. 10% base crit + 3% per teammate outside of hide.`}>
-                <div className="flex items-center gap-1 px-2 py-1 rounded border bg-sk-magenta/10 border-sk-magenta/30">
-                  <span className="text-xs text-sk-magenta font-semibold uppercase">Team</span>
+                <div className="flex items-center gap-1 px-2 py-1 rounded border bg-sky-900/30 border-sky-700/40">
+                  <span className="text-xs text-sky-400 font-semibold uppercase">Team</span>
                   <button
                     onClick={() => setStalkerTeamSize(Math.max(0, stalkerTeamSize - 1))}
                     disabled={stalkerTeamSize <= 0}
-                    className="text-slate-400 hover:text-sk-magenta disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-0.5"
+                    className="text-slate-400 hover:text-sky-400 disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-0.5"
                   >
                     &minus;
                   </button>
-                  <span className="text-sm font-bold text-sk-magenta w-8 text-center">{teamLabel}</span>
+                  <span className="text-sm font-bold text-sky-400 w-8 text-center">{teamLabel}</span>
                   <button
                     onClick={() => setStalkerTeamSize(Math.min(7, stalkerTeamSize + 1))}
                     disabled={stalkerTeamSize >= 7}
-                    className="text-slate-400 hover:text-sk-magenta disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-0.5"
+                    className="text-slate-400 hover:text-sky-400 disabled:text-slate-600 disabled:cursor-not-allowed text-xs font-bold px-0.5"
                   >
                     +
                   </button>
@@ -1037,14 +1072,14 @@ function ATMechanics({ archetypeId }: { archetypeId: string }) {
                     showValue={false}
                     showRange={false}
                   />
-                  <span className="text-[10px] text-sk-magenta/70">+{(damageBonus * 100).toFixed(0)}%</span>
+                  <span className="text-[10px] text-sky-400/70">+{(damageBonus * 100).toFixed(0)}%</span>
                 </div>
               </Tooltip>
             )}
             <Tooltip content={`Toggle to show average Assassination critical damage bonus (+${(damageBonus * 100).toFixed(0)}% avg).`}>
               <div className={`flex items-center px-2 py-1 rounded border ${
                 stalkerCritActive
-                  ? 'bg-sk-magenta/10 border-sk-magenta/30'
+                  ? 'bg-sky-900/30 border-sky-700/40'
                   : 'bg-slate-700/50 border-slate-600'
               }`}>
                 <Toggle
@@ -1063,9 +1098,9 @@ function ATMechanics({ archetypeId }: { archetypeId: string }) {
       {/* Containment - Controllers */}
       {archetypeId === 'controller' && (
         <Tooltip content="Toggle to show Containment damage bonus. Controllers deal double damage to Held, Immobilized, Slept, or Disoriented targets.">
-          <div className={`flex items-center px-2 py-1 rounded border ${
+          <div data-onboarding="at-mechanic" className={`flex items-center px-2 py-1 rounded border ${
             containmentActive
-              ? 'bg-sk-magenta/10 border-sk-magenta/30'
+              ? 'bg-sky-900/30 border-sky-700/40'
               : 'bg-slate-700/50 border-slate-600'
           }`}>
             <Toggle
@@ -1082,9 +1117,9 @@ function ATMechanics({ archetypeId }: { archetypeId: string }) {
       {/* Sentinel Opportunity Crit */}
       {archetypeId === 'sentinel' && (
         <Tooltip content={`Toggle to show Opportunity critical damage bonus (+${(OPPORTUNITY_CRIT_MULTIPLIER * 100).toFixed(0)}%). Crits deal ${(OPPORTUNITY_CRIT_MULTIPLIER * 100).toFixed(0)}% bonus damage.`}>
-          <div className={`flex items-center px-2 py-1 rounded border ${
+          <div data-onboarding="at-mechanic" className={`flex items-center px-2 py-1 rounded border ${
             sentinelCritActive
-              ? 'bg-sk-magenta/10 border-sk-magenta/30'
+              ? 'bg-sky-900/30 border-sky-700/40'
               : 'bg-slate-700/50 border-slate-600'
           }`}>
             <Toggle

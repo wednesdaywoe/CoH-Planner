@@ -186,6 +186,7 @@ export function PowerCard({
           >
             <button
               onClick={() => togglePowerActive(power.internalName, category)}
+              data-onboarding="power-toggle"
               className={`
                 flex-shrink-0 flex items-center gap-1 px-1.5 py-0.5 rounded text-xs font-medium transition-all
                 ${

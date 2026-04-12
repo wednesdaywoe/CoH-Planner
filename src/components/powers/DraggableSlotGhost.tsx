@@ -253,6 +253,7 @@ export function DraggableSlotGhost({
         onMouseDown={handleMouseDown}
         onTouchStart={handleTouchStart}
         onContextMenu={handleContextMenu}
+        data-onboarding="add-slot"
         className={`
           ${sizeClass} rounded-full border flex items-center justify-center
           cursor-pointer transition-all select-none

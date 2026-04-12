@@ -329,6 +329,7 @@ export function PowerRow({
         className={`flex flex-col px-1.5 py-1 ${bgClass} border rounded-sm group transition-colors ${borderClass}`}
         onMouseEnter={hoverHandler}
         onMouseLeave={leaveHandler}
+        {...(toggleSize && onToggle ? { 'data-onboarding': 'power-toggle' } : {})}
       >
         <div className="flex min-w-0">
           {/* Left column: Level on top, icon underneath */}
@@ -358,6 +359,7 @@ export function PowerRow({
       className={`flex flex-col px-1.5 py-1 ${bgClass} border rounded-sm group transition-colors ${borderClass}`}
       onMouseEnter={hoverHandler}
       onMouseLeave={leaveHandler}
+      {...(toggleSize && onToggle ? { 'data-onboarding': 'power-toggle' } : {})}
     >
       {/* Row 1: Level · Icon · Name | Auto | X */}
       <div className="flex items-center min-w-0">

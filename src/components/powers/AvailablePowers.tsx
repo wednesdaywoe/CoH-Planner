@@ -461,7 +461,7 @@ export function AvailablePowers({
   }
 
   return (
-    <div className={compact ? '' : 'mb-3'}>
+    <div className={compact ? '' : 'mb-3'} {...(category === 'primary' ? { 'data-onboarding': 'add-power' } : {})}>
       {/* Section header - compact mode uses a smaller inline header, normal mode has collapse toggle */}
       {compact ? (
         <div className="flex items-center justify-between px-2 h-8 bg-slate-800/80 border-b border-slate-700">

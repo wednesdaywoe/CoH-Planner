@@ -21,16 +21,12 @@ export interface ManualEntry {
 export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   // ─── 2026-03-24 ────────────────────────────────────────────────────────────
   {
-    date: '2026-04-10',
+    date: '2026-04-12',
     items: [
+      { message: 'Added a gentle Onboarding beacon system to point out features for new users. Onboarding can be disabled or reset in the settings menu.', type: 'feat' },
+      { message: 'Added handling for Prestige enhancement UIDs to all import methods', type: 'feat' },
       { message: 'Fixed recovery end/sec display double-counting the base 100 endurance', type: 'fix' },
       { message: 'Fixed permatracker to use the same calculation as InfoPanel for Alpha incarnate bonuses instead of doing its own thing', type: 'fix' },
-      { message: 'Removed hiddenPassive flag from Staff Mastery which was hiding it from selection in the UI', type: 'fix' },
-      { message: 'Reverted Universal Travel addition to Sprint powers, learned not to trust anyone', type: 'fix' },
-      { message: 'Improved Mids import for Incarnate powers and Tri-Cannon resolution', type: 'fix' },
-      { message: 'Added new "Perma-Tracked Powers" feature to pin perma-tracked powers to a new bar in the Dashboard', type: 'feat' },
-      { message: 'Fixed MBD importer incorrectly marking all non-boosted crafted IOs as attuned', type: 'fix' },
-      { message: 'Fixed duplicate bonus entry in Winters Gift', type: 'fix' },
       ]
   },
 ];

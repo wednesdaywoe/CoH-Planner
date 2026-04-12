@@ -261,6 +261,7 @@ export function TouchableSlot({
             }
           `}
           style={{ WebkitTouchCallout: 'none', WebkitUserSelect: 'none' }}
+          {...(!slot ? { 'data-onboarding': 'slot-enhancement' } : {})}
           title={
             slot
               ? `${slot.name || 'Enhancement'} - right-click to remove, drag to remove multiple`

@@ -217,7 +217,7 @@ export function PlannerPage() {
 
           {/* Column 3: Info Panel (hidden when undocked) */}
           {!undocked && (
-            <div className="bg-slate-900 flex flex-col overflow-hidden min-h-[250px] lg:min-h-0 hidden md:flex">
+            <div className="bg-slate-900 flex flex-col overflow-hidden min-h-[250px] lg:min-h-0 hidden md:flex" data-onboarding="info-panel">
               {infoPanelHeader}
               <div className="flex-1 overflow-y-auto p-2">
                 <InfoPanel />
@@ -406,7 +406,7 @@ export function PlannerPage() {
 
         {/* Column 5: Info Panel - hidden on mobile, hidden when undocked */}
         {!undocked && (
-          <div className="bg-slate-900 flex flex-col overflow-hidden min-h-[250px] lg:min-h-0 hidden md:flex">
+          <div className="bg-slate-900 flex flex-col overflow-hidden min-h-[250px] lg:min-h-0 hidden md:flex" data-onboarding="info-panel">
             {infoPanelHeader}
             <div className="flex-1 overflow-y-auto p-2">
               <InfoPanel />

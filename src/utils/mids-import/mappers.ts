@@ -21,6 +21,7 @@ import {
   TITAN_ENHANCEMENTS,
   HYDRA_ENHANCEMENTS,
   DSYNC_ENHANCEMENTS,
+  PRESTIGE_ENHANCEMENTS,
 } from '@/data';
 import type { MidsImportWarning } from './types';
 
@@ -560,8 +561,8 @@ export function mapEnhancementUid(
   const level = Math.min(Math.max(ioLevel + 1, 1), 53);
   const boost = parseBoostLevel(relativeLevel);
 
-  // Check for special enhancements (Hamidon, Titan, Hydra, D-Sync)
-  if (grade === 'SingleO' || uid.startsWith('Hamidon_') || uid.startsWith('Titan_') || uid.startsWith('Hydra_') || uid.startsWith('DSync_') || uid.startsWith('Dsync_')) {
+  // Check for special enhancements (Hamidon, Titan, Hydra, D-Sync, Prestige)
+  if (grade === 'SingleO' || uid.startsWith('Hamidon_') || uid.startsWith('Titan_') || uid.startsWith('Hydra_') || uid.startsWith('DSync_') || uid.startsWith('Dsync_') || uid.startsWith('Generic_')) {
     return mapSpecialEnhancementUid(uid, boost);
   }
 
@@ -712,7 +713,7 @@ function parseIOSetUid(uid: string): ParsedIOSetUid | null {
 // SPECIAL ENHANCEMENT MAPPING (HamiO/Titan/Hydra/D-Sync)
 // ============================================
 
-type SpecialCategory = 'hamidon' | 'titan' | 'hydra' | 'd-sync';
+type SpecialCategory = 'hamidon' | 'titan' | 'hydra' | 'd-sync' | 'prestige';
 
 interface SpecialRegistryDef {
   name: string;
@@ -837,6 +838,7 @@ const SPECIAL_REGISTRIES: Record<SpecialCategory, Record<string, SpecialRegistry
   'titan': TITAN_ENHANCEMENTS,
   'hydra': HYDRA_ENHANCEMENTS,
   'd-sync': DSYNC_ENHANCEMENTS,
+  'prestige': PRESTIGE_ENHANCEMENTS,
 };
 
 /**
@@ -926,6 +928,13 @@ const SPECIAL_SUFFIX_MAPS: Record<SpecialCategory, Record<string, string>> = {
     'buff_recharge': 'shifting',
     'heal_accuracy': 'siphon',
   },
+  'prestige': {
+    'might_of_the_empire': 'might_of_the_empire',
+    'clockwork_efficiency': 'clockwork_efficiency',
+    'will_of_the_seers': 'will_of_the_seers',
+    'resistance_tactics': 'resistance_tactics',
+    'syndicate_techniques': 'syndicate_techniques',
+  },
 };
 
 const SPECIAL_PREFIXES: [string, SpecialCategory][] = [
@@ -934,6 +943,7 @@ const SPECIAL_PREFIXES: [string, SpecialCategory][] = [
   ['Hydra_', 'hydra'],
   ['DSync_', 'd-sync'],
   ['Dsync_', 'd-sync'],  // Mids sometimes uses lowercase 's'
+  ['Generic_', 'prestige'],
 ];
 
 /**

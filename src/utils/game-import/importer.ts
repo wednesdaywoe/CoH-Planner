@@ -35,6 +35,7 @@ import {
   TITAN_ENHANCEMENTS,
   HYDRA_ENHANCEMENTS,
   DSYNC_ENHANCEMENTS,
+  PRESTIGE_ENHANCEMENTS,
 } from '@/data';
 import { GRANTED_POWER_GROUPS } from '@/data/granted-powers';
 import type { InherentPowerDef } from '@/data';
@@ -731,6 +732,7 @@ const SPECIAL_ENH_PREFIXES: [string, SpecialEnhancement['category'], Record<stri
   ['Hydra_', 'hydra', HYDRA_ENHANCEMENTS],
   ['DSync_', 'd-sync', DSYNC_ENHANCEMENTS],
   ['Dsync_', 'd-sync', DSYNC_ENHANCEMENTS],
+  ['Generic_', 'prestige', PRESTIGE_ENHANCEMENTS],
 ];
 
 // Direct suffix → registry ID mappings (same as Mids importer)
@@ -774,10 +776,17 @@ const SPECIAL_SUFFIX_MAP: Record<string, Record<string, string>> = {
     'heal_endurance_discount': 'reconstitution', 'heal_recharge': 'reconstruction',
     'buff_recharge': 'shifting', 'heal_accuracy': 'siphon',
   },
+  'prestige': {
+    'might_of_the_empire': 'might_of_the_empire',
+    'clockwork_efficiency': 'clockwork_efficiency',
+    'will_of_the_seers': 'will_of_the_seers',
+    'resistance_tactics': 'resistance_tactics',
+    'syndicate_techniques': 'syndicate_techniques',
+  },
 };
 
 /**
- * Try to resolve a UID as a special enhancement (HamiO, Titan, Hydra, D-Sync).
+ * Try to resolve a UID as a special enhancement (HamiO, Titan, Hydra, D-Sync, Prestige).
  * Returns null if the UID doesn't match any special prefix.
  */
 function resolveSpecialEnhancement(uid: string, boost?: number): EnhancementResolveResult | null {
