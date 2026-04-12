@@ -9,8 +9,8 @@
 
 import type { Powerset } from '@/types';
 
-import { PowerBlast as PowerBlast } from './power-blast';
 import { PowerBolt as PowerBolt } from './power-bolt';
+import { PowerBlast as PowerBlast } from './power-blast';
 import { EnergyTorrent as EnergyTorrent } from './energy-torrent';
 import { PowerBurst as PowerBurst } from './power-burst';
 import { SniperBlast as SniperBlast } from './sniper-blast';
@@ -27,8 +27,8 @@ export const powerset: Powerset = {
   archetype: 'corruptor',
   category: 'primary',
   powers: [
-    PowerBlast,
     PowerBolt,
+    PowerBlast,
     EnergyTorrent,
     PowerBurst,
     SniperBlast,

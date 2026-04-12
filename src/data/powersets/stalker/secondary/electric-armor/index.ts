@@ -9,8 +9,8 @@
 
 import type { Powerset } from '@/types';
 
-import { ChargedArmor as ChargedArmor } from './charged-armor';
 import { Hide as Hide } from './hide';
+import { ChargedArmor as ChargedArmor } from './charged-armor';
 import { ConductiveShield as ConductiveShield } from './conductive-shield';
 import { StaticShield as StaticShield } from './static-shield';
 import { Grounded as Grounded } from './grounded';
@@ -27,8 +27,8 @@ export const powerset: Powerset = {
   archetype: 'stalker',
   category: 'secondary',
   powers: [
-    ChargedArmor,
     Hide,
+    ChargedArmor,
     ConductiveShield,
     StaticShield,
     Grounded,

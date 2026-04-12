@@ -9,8 +9,8 @@
 
 import type { Powerset } from '@/types';
 
-import { AlphaBarrier as AlphaBarrier } from './alpha-barrier';
 import { Hide as Hide } from './hide';
+import { AlphaBarrier as AlphaBarrier } from './alpha-barrier';
 import { GammaBoost as GammaBoost } from './gamma-boost';
 import { ProtonArmor as ProtonArmor } from './proton-armor';
 import { FalloutShelter as FalloutShelter } from './fallout-shelter';
@@ -27,8 +27,8 @@ export const powerset: Powerset = {
   archetype: 'stalker',
   category: 'secondary',
   powers: [
-    AlphaBarrier,
     Hide,
+    AlphaBarrier,
     GammaBoost,
     ProtonArmor,
     FalloutShelter,

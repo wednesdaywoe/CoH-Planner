@@ -9,8 +9,8 @@
 
 import type { Powerset } from '@/types';
 
-import { EnergyPunch as EnergyPunch } from './energy-punch';
 import { PowerThrust as PowerThrust } from './power-thrust';
+import { EnergyPunch as EnergyPunch } from './energy-punch';
 import { BuildUp as BuildUp } from './build-up';
 import { BoneSmasher as BoneSmasher } from './bone-smasher';
 import { Energize as Energize } from './conserve-power';
@@ -27,8 +27,8 @@ export const powerset: Powerset = {
   archetype: 'blaster',
   category: 'secondary',
   powers: [
-    EnergyPunch,
     PowerThrust,
+    EnergyPunch,
     BuildUp,
     BoneSmasher,
     Energize,

@@ -9,8 +9,8 @@
 
 import type { Powerset } from '@/types';
 
-import { KineticDampening as KineticDampening } from './kinetic-dampening';
 import { KineticShield as KineticShield } from './kinetic-shield';
+import { KineticDampening as KineticDampening } from './kinetic-dampening';
 import { PowerShield as PowerShield } from './power-shield';
 import { Energize as Energize } from './energize';
 import { EntropyShield as EntropyShield } from './entropy-shield';
@@ -27,8 +27,8 @@ export const powerset: Powerset = {
   archetype: 'sentinel',
   category: 'secondary',
   powers: [
-    KineticDampening,
     KineticShield,
+    KineticDampening,
     PowerShield,
     Energize,
     EntropyShield,

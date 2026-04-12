@@ -11,7 +11,6 @@ import type { Powerset } from '@/types';
 
 import { Encase as Encase } from './encase';
 import { Shatter as Shatter } from './shatter';
-import { SeismicShockwaves as SeismicShockwaves } from './shockwaves';
 import { RockShards as RockShards } from './rock-shards';
 import { Entomb as Entomb } from './entomb';
 import { SeismicForce as SeismicForce } from './seismic-force';
@@ -19,6 +18,7 @@ import { Upthrust as Upthrust } from './upthrust';
 import { Tombstone as Tombstone } from './tombstone';
 import { Stalagmite as Stalagmite } from './stalagmite';
 import { Meteor as Meteor } from './meteor';
+import { SeismicShockwaves as SeismicShockwaves } from './shockwaves';
 
 export const powerset: Powerset = {
   id: 'defender/seismic-blast',
@@ -30,7 +30,6 @@ export const powerset: Powerset = {
   powers: [
     Encase,
     Shatter,
-    SeismicShockwaves,
     RockShards,
     Entomb,
     SeismicForce,
@@ -38,6 +37,7 @@ export const powerset: Powerset = {
     Tombstone,
     Stalagmite,
     Meteor,
+    SeismicShockwaves,
   ],
 };
 

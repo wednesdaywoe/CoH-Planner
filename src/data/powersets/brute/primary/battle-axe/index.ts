@@ -9,8 +9,8 @@
 
 import type { Powerset } from '@/types';
 
-import { Chop as Chop } from './chop';
 import { Beheader as Beheader } from './gash';
+import { Chop as Chop } from './chop';
 import { Gash as Gash } from './beheader';
 import { BuildUp as BuildUp } from './build-up';
 import { Pendulum as Pendulum } from './pendulum';
@@ -27,8 +27,8 @@ export const powerset: Powerset = {
   archetype: 'brute',
   category: 'primary',
   powers: [
-    Chop,
     Beheader,
+    Chop,
     Gash,
     BuildUp,
     Pendulum,

@@ -9,8 +9,8 @@
 
 import type { Powerset } from '@/types';
 
-import { StormKick as StormKick } from './storm-kick';
 import { ThunderKick as ThunderKick } from './thunder-kick';
+import { StormKick as StormKick } from './storm-kick';
 import { CripplingAxeKick as CripplingAxeKick } from './crippling-axe-kick';
 import { AssassinsBlow as AssassinsBlow } from './assassins-blow';
 import { FocusChi as FocusChi } from './focus-chi';
@@ -27,8 +27,8 @@ export const powerset: Powerset = {
   archetype: 'stalker',
   category: 'primary',
   powers: [
-    StormKick,
     ThunderKick,
+    StormKick,
     CripplingAxeKick,
     AssassinsBlow,
     FocusChi,

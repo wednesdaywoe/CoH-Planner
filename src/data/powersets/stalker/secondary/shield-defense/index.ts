@@ -9,8 +9,8 @@
 
 import type { Powerset } from '@/types';
 
-import { Deflection as Deflection } from './active-defense';
 import { Hide as Hide } from './hide';
+import { Deflection as Deflection } from './active-defense';
 import { BattleAgility as BattleAgility } from './deflection';
 import { TrueGrit as TrueGrit } from './true-grit';
 import { ActiveDefense as ActiveDefense } from './battle-agility';
@@ -27,8 +27,8 @@ export const powerset: Powerset = {
   archetype: 'stalker',
   category: 'secondary',
   powers: [
-    Deflection,
     Hide,
+    Deflection,
     BattleAgility,
     TrueGrit,
     ActiveDefense,

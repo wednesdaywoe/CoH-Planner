@@ -9,8 +9,8 @@
 
 import type { Powerset } from '@/types';
 
-import { DampeningField as DampeningField } from './dampening-field';
 import { KineticShield as KineticShield } from './kinetic-shield';
+import { DampeningField as DampeningField } from './dampening-field';
 import { PowerShield as PowerShield } from './power-shield';
 import { EntropicAura as EntropicAura } from './entropy-shield';
 import { EnergyProtection as EnergyProtection } from './energy-protection';
@@ -27,8 +27,8 @@ export const powerset: Powerset = {
   archetype: 'brute',
   category: 'secondary',
   powers: [
-    DampeningField,
     KineticShield,
+    DampeningField,
     PowerShield,
     EntropicAura,
     EnergyProtection,

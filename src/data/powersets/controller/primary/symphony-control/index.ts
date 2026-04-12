@@ -9,8 +9,8 @@
 
 import type { Powerset } from '@/types';
 
-import { HymnofDissonance as HymnofDissonance } from './hymn-of-dissonance';
 import { MelodicBinding as MelodicBinding } from './melodic-binding';
+import { HymnofDissonance as HymnofDissonance } from './hymn-of-dissonance';
 import { AriaofStasis as AriaofStasis } from './aria-of-stasis';
 import { ImpassionedSerenade as ImpassionedSerenade } from './impassioned-serenade';
 import { DreadfulDiscord as DreadfulDiscord } from './dreadful-discord';
@@ -27,8 +27,8 @@ export const powerset: Powerset = {
   archetype: 'controller',
   category: 'primary',
   powers: [
-    HymnofDissonance,
     MelodicBinding,
+    HymnofDissonance,
     AriaofStasis,
     ImpassionedSerenade,
     DreadfulDiscord,

@@ -9,8 +9,8 @@
 
 import type { Powerset } from '@/types';
 
-import { IceShield as IceShield } from './ice-shield';
 import { Infrigidate as Infrigidate } from './infrigidate';
+import { IceShield as IceShield } from './ice-shield';
 import { SnowStorm as SnowStorm } from './snow-storm';
 import { GlacialShield as GlacialShield } from './glacial-shield';
 import { Frostwork as Frostwork } from './frostwork';
@@ -27,8 +27,8 @@ export const powerset: Powerset = {
   archetype: 'mastermind',
   category: 'secondary',
   powers: [
-    IceShield,
     Infrigidate,
+    IceShield,
     SnowStorm,
     GlacialShield,
     Frostwork,

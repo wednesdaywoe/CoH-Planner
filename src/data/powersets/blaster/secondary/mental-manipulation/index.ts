@@ -9,8 +9,8 @@
 
 import type { Powerset } from '@/types';
 
-import { MindProbe as MindProbe } from './mind-probe';
 import { Subdual as Subdual } from './subdual';
+import { MindProbe as MindProbe } from './mind-probe';
 import { WorldofConfusion as WorldofConfusion } from './world-of-confusion';
 import { PsychicScream as PsychicScream } from './psychic-scream';
 import { Concentration as Concentration } from './build-up';
@@ -27,8 +27,8 @@ export const powerset: Powerset = {
   archetype: 'blaster',
   category: 'secondary',
   powers: [
-    MindProbe,
     Subdual,
+    MindProbe,
     WorldofConfusion,
     PsychicScream,
     Concentration,

@@ -9,8 +9,8 @@
 
 import type { Powerset } from '@/types';
 
-import { DisorientingShot as DisorientingShot } from './beanbag';
 import { Burst as Burst } from './burst';
+import { DisorientingShot as DisorientingShot } from './beanbag';
 import { Buckshot as Buckshot } from './buckshot';
 import { Slug as Slug } from './slug';
 import { Aim as Aim } from './aim';
@@ -27,8 +27,8 @@ export const powerset: Powerset = {
   archetype: 'sentinel',
   category: 'primary',
   powers: [
-    DisorientingShot,
     Burst,
+    DisorientingShot,
     Buckshot,
     Slug,
     Aim,

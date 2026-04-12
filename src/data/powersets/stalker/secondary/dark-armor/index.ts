@@ -9,8 +9,8 @@
 
 import type { Powerset } from '@/types';
 
-import { DarkEmbrace as DarkEmbrace } from './dark-embrace';
 import { Hide as Hide } from './hide';
+import { DarkEmbrace as DarkEmbrace } from './dark-embrace';
 import { MurkyCloud as MurkyCloud } from './murky-cloud';
 import { ShadowDweller as ShadowDweller } from './shadow-dweller';
 import { ObsidianShield as ObsidianShield } from './obsidian-shield';
@@ -28,8 +28,8 @@ export const powerset: Powerset = {
   archetype: 'stalker',
   category: 'secondary',
   powers: [
-    DarkEmbrace,
     Hide,
+    DarkEmbrace,
     MurkyCloud,
     ShadowDweller,
     ObsidianShield,

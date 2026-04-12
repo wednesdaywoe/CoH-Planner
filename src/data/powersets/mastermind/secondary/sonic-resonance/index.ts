@@ -9,8 +9,8 @@
 
 import type { Powerset } from '@/types';
 
-import { SonicBarrier as SonicBarrier } from './sonic-barrier';
 import { SonicSiphon as SonicSiphon } from './sonic-siphon';
+import { SonicBarrier as SonicBarrier } from './sonic-barrier';
 import { SonicHaven as SonicHaven } from './sonic-haven';
 import { SonicCage as SonicCage } from './sonic-cage';
 import { DisruptionField as DisruptionField } from './disruption-field';
@@ -27,8 +27,8 @@ export const powerset: Powerset = {
   archetype: 'mastermind',
   category: 'secondary',
   powers: [
-    SonicBarrier,
     SonicSiphon,
+    SonicBarrier,
     SonicHaven,
     SonicCage,
     DisruptionField,

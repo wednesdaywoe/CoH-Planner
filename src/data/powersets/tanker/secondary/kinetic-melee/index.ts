@@ -9,8 +9,8 @@
 
 import type { Powerset } from '@/types';
 
-import { BodyBlow as BodyBlow } from './body-blow';
 import { QuickStrike as QuickStrike } from './quick-strike';
+import { BodyBlow as BodyBlow } from './body-blow';
 import { SmashingBlow as SmashingBlow } from './smashing-blow';
 import { Taunt as Taunt } from './taunt';
 import { RepulsingTorrent as RepulsingTorrent } from './repulsing-torrent';
@@ -27,8 +27,8 @@ export const powerset: Powerset = {
   archetype: 'tanker',
   category: 'secondary',
   powers: [
-    BodyBlow,
     QuickStrike,
+    BodyBlow,
     SmashingBlow,
     Taunt,
     RepulsingTorrent,

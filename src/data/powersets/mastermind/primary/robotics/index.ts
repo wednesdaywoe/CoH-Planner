@@ -9,8 +9,8 @@
 
 import type { Powerset } from '@/types';
 
-import { BattleDrones as BattleDrones } from './battle-drones';
 import { PulseRifleBlast as PulseRifleBlast } from './pulse-rifle-blast';
+import { BattleDrones as BattleDrones } from './battle-drones';
 import { PulseRifleBurst as PulseRifleBurst } from './pulse-rifle-burst';
 import { EquipRobot as EquipRobot } from './equip-robot';
 import { PhotonGrenade as PhotonGrenade } from './photon-grenade';
@@ -27,8 +27,8 @@ export const powerset: Powerset = {
   archetype: 'mastermind',
   category: 'primary',
   powers: [
-    BattleDrones,
     PulseRifleBlast,
+    BattleDrones,
     PulseRifleBurst,
     EquipRobot,
     PhotonGrenade,

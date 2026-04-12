@@ -9,8 +9,8 @@
 
 import type { Powerset } from '@/types';
 
-import { TarPatch as TarPatch } from './tar-patch';
 import { TwilightGrasp as TwilightGrasp } from './twilight-grasp';
+import { TarPatch as TarPatch } from './tar-patch';
 import { DarkestNight as DarkestNight } from './darkest-night';
 import { HowlingTwilight as HowlingTwilight } from './howling-twilight';
 import { ShadowFall as ShadowFall } from './shadow-fall';
@@ -27,8 +27,8 @@ export const powerset: Powerset = {
   archetype: 'defender',
   category: 'primary',
   powers: [
-    TarPatch,
     TwilightGrasp,
+    TarPatch,
     DarkestNight,
     HowlingTwilight,
     ShadowFall,

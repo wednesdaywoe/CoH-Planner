@@ -9,8 +9,8 @@
 
 import type { Powerset } from '@/types';
 
-import { MentalBlast as MentalBlast } from './mental-blast';
 import { Subdue as Subdue } from './subdue';
+import { MentalBlast as MentalBlast } from './mental-blast';
 import { TelekineticBlast as TelekineticBlast } from './telekinetic-blast';
 import { PsychicScream as PsychicScream } from './psychic-scream';
 import { WillDomination as WillDomination } from './will-domination';
@@ -27,8 +27,8 @@ export const powerset: Powerset = {
   archetype: 'defender',
   category: 'secondary',
   powers: [
-    MentalBlast,
     Subdue,
+    MentalBlast,
     TelekineticBlast,
     PsychicScream,
     WillDomination,

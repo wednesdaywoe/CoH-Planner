@@ -9,8 +9,8 @@
 
 import type { Powerset } from '@/types';
 
-import { DarkEmbrace as DarkEmbrace } from './dark-embrace';
 import { DeathShroud as DeathShroud } from './death-shroud';
+import { DarkEmbrace as DarkEmbrace } from './dark-embrace';
 import { MurkyCloud as MurkyCloud } from './murky-cloud';
 import { ObsidianShield as ObsidianShield } from './obsidian-shield';
 import { DarkRegeneration as DarkRegeneration } from './dark-regeneration';
@@ -28,8 +28,8 @@ export const powerset: Powerset = {
   archetype: 'tanker',
   category: 'primary',
   powers: [
-    DarkEmbrace,
     DeathShroud,
+    DarkEmbrace,
     MurkyCloud,
     ObsidianShield,
     DarkRegeneration,

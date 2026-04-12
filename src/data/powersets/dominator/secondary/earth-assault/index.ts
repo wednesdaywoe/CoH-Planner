@@ -9,8 +9,8 @@
 
 import type { Powerset } from '@/types';
 
-import { StoneMallet as StoneMallet } from './stone-mallet';
 import { StoneSpears as StoneSpears } from './stone-spears';
+import { StoneMallet as StoneMallet } from './stone-mallet';
 import { Tremor as Tremor } from './tremor';
 import { HurlBoulder as HurlBoulder } from './hurl-boulder';
 import { PowerUp as PowerUp } from './power-boost';
@@ -27,8 +27,8 @@ export const powerset: Powerset = {
   archetype: 'dominator',
   category: 'secondary',
   powers: [
-    StoneMallet,
     StoneSpears,
+    StoneMallet,
     Tremor,
     HurlBoulder,
     PowerUp,

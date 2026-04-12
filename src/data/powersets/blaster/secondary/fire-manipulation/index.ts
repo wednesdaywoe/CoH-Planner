@@ -9,8 +9,8 @@
 
 import type { Powerset } from '@/types';
 
-import { FireSword as FireSword } from './fire-sword';
 import { RingofFire as RingofFire } from './ring-of-fire';
+import { FireSword as FireSword } from './fire-sword';
 import { Combustion as Combustion } from './combustion';
 import { FireSwordCircle as FireSwordCircle } from './fire-sword-circle';
 import { BuildUp as BuildUp } from './build-up';
@@ -27,8 +27,8 @@ export const powerset: Powerset = {
   archetype: 'blaster',
   category: 'secondary',
   powers: [
-    FireSword,
     RingofFire,
+    FireSword,
     Combustion,
     FireSwordCircle,
     BuildUp,

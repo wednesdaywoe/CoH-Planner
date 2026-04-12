@@ -9,8 +9,8 @@
 
 import type { Powerset } from '@/types';
 
-import { CryoFreezeRay as CryoFreezeRay } from './cryo-freeze-ray';
 import { Tranquilizer as Tranquilizer } from './tranquilizer';
+import { CryoFreezeRay as CryoFreezeRay } from './cryo-freeze-ray';
 import { SleepGrenade as SleepGrenade } from './sleep-grenade';
 import { LiquidNitrogen as LiquidNitrogen } from './liquid-nitrogen';
 import { CloakingDevice as CloakingDevice } from './cloaking-device';
@@ -27,8 +27,8 @@ export const powerset: Powerset = {
   archetype: 'dominator',
   category: 'primary',
   powers: [
-    CryoFreezeRay,
     Tranquilizer,
+    CryoFreezeRay,
     SleepGrenade,
     LiquidNitrogen,
     CloakingDevice,

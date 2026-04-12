@@ -9,15 +9,15 @@
 
 import type { Powerset } from '@/types';
 
-import { FormoftheBody as FormoftheBody } from './form-of-the-body';
-import { FormoftheMind as FormoftheMind } from './form-of-the-mind';
-import { FormoftheSoul as FormoftheSoul } from './form-of-the-soul';
 import { MercurialBlow as MercurialBlow } from './mercurial-blow';
 import { PreciseStrike as PreciseStrike } from './precise-strike';
 import { GuardedSpin as GuardedSpin } from './guarded-spin';
 import { Taunt as Taunt } from './taunt';
 import { EyeoftheStorm as EyeoftheStorm } from './eye-of-the-storm';
 import { StaffMastery as StaffMastery } from './staff-mastery';
+import { FormoftheBody as FormoftheBody } from './form-of-the-body';
+import { FormoftheMind as FormoftheMind } from './form-of-the-mind';
+import { FormoftheSoul as FormoftheSoul } from './form-of-the-soul';
 import { SerpentsReach as SerpentsReach } from './serpents-reach';
 import { InnocuousStrikes as InnocuousStrikes } from './innocuous-strikes';
 import { SkySplitter as SkySplitter } from './sky-splitter';
@@ -30,15 +30,15 @@ export const powerset: Powerset = {
   archetype: 'tanker',
   category: 'secondary',
   powers: [
-    FormoftheBody,
-    FormoftheMind,
-    FormoftheSoul,
     MercurialBlow,
     PreciseStrike,
     GuardedSpin,
     Taunt,
     EyeoftheStorm,
     StaffMastery,
+    FormoftheBody,
+    FormoftheMind,
+    FormoftheSoul,
     SerpentsReach,
     InnocuousStrikes,
     SkySplitter,

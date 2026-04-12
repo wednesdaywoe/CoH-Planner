@@ -9,8 +9,8 @@
 
 import type { Powerset } from '@/types';
 
-import { Char as Char } from './char';
 import { RingofFire as RingofFire } from './ring-of-fire';
+import { Char as Char } from './char';
 import { FireCages as FireCages } from './fire-cages';
 import { Smoke as Smoke } from './smoke';
 import { HotFeet as HotFeet } from './hot-feet';
@@ -27,8 +27,8 @@ export const powerset: Powerset = {
   archetype: 'dominator',
   category: 'primary',
   powers: [
-    Char,
     RingofFire,
+    Char,
     FireCages,
     Smoke,
     HotFeet,

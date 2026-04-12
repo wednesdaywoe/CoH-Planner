@@ -9,8 +9,8 @@
 
 import type { Powerset } from '@/types';
 
-import { HeavyBlow as HeavyBlow } from './heavy-blow';
 import { InitialStrike as InitialStrike } from './initial-strike';
+import { HeavyBlow as HeavyBlow } from './heavy-blow';
 import { SweepingCross as SweepingCross } from './sweeping-cross';
 import { AssassinsStrike as AssassinsStrike } from './assassins-strike';
 import { BuildUp as BuildUp } from './build-up';
@@ -27,8 +27,8 @@ export const powerset: Powerset = {
   archetype: 'stalker',
   category: 'primary',
   powers: [
-    HeavyBlow,
     InitialStrike,
+    HeavyBlow,
     SweepingCross,
     AssassinsStrike,
     BuildUp,

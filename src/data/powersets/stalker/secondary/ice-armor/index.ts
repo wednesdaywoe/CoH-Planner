@@ -9,10 +9,10 @@
 
 import type { Powerset } from '@/types';
 
-import { FrozenArmor as FrozenArmor } from './frozen-armor';
 import { Hide as Hide } from './hide';
-import { Hoarfrost as Hoarfrost } from './hoarfrost';
+import { FrozenArmor as FrozenArmor } from './frozen-armor';
 import { Rime as Rime } from './rime-ice';
+import { Hoarfrost as Hoarfrost } from './hoarfrost';
 import { WetIce as WetIce } from './wet-ice';
 import { ChillingEmbrace as ChillingEmbrace } from './chilling-embrace';
 import { Permafrost as Permafrost } from './permafrost';
@@ -28,10 +28,10 @@ export const powerset: Powerset = {
   archetype: 'stalker',
   category: 'secondary',
   powers: [
-    FrozenArmor,
     Hide,
-    Hoarfrost,
+    FrozenArmor,
     Rime,
+    Hoarfrost,
     WetIce,
     ChillingEmbrace,
     Permafrost,

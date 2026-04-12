@@ -9,8 +9,8 @@
 
 import type { Powerset } from '@/types';
 
-import { Scream as Scream } from './scream';
 import { Shriek as Shriek } from './shriek';
+import { Scream as Scream } from './scream';
 import { Howl as Howl } from './howl';
 import { Shockwave as Shockwave } from './shockwave';
 import { Shout as Shout } from './shout';
@@ -27,8 +27,8 @@ export const powerset: Powerset = {
   archetype: 'defender',
   category: 'secondary',
   powers: [
-    Scream,
     Shriek,
+    Scream,
     Howl,
     Shockwave,
     Shout,

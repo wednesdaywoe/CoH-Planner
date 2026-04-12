@@ -9,13 +9,13 @@
 
 import type { Powerset } from '@/types';
 
-import { ChemicalAmmunition as ChemicalAmmunition } from './chemical-ammunition';
-import { CryoAmmunition as CryoAmmunition } from './cryo-ammunition';
-import { IncendiaryAmmunition as IncendiaryAmmunition } from './incendiary-ammunition';
-import { DualWield as DualWield } from './dual-wield';
 import { Pistols as Pistols } from './pistols';
+import { DualWield as DualWield } from './dual-wield';
 import { EmptyClips as EmptyClips } from './empty-clips';
 import { SwapAmmo as SwapAmmo } from './swap-ammo';
+import { CryoAmmunition as CryoAmmunition } from './cryo-ammunition';
+import { IncendiaryAmmunition as IncendiaryAmmunition } from './incendiary-ammunition';
+import { ChemicalAmmunition as ChemicalAmmunition } from './chemical-ammunition';
 import { BulletRain as BulletRain } from './bullet-rain';
 import { SuppressiveFire as SuppressiveFire } from './suppressive-fire';
 import { ExecutionersShot as ExecutionersShot } from './executioners-shot';
@@ -30,13 +30,13 @@ export const powerset: Powerset = {
   archetype: 'defender',
   category: 'secondary',
   powers: [
-    ChemicalAmmunition,
-    CryoAmmunition,
-    IncendiaryAmmunition,
-    DualWield,
     Pistols,
+    DualWield,
     EmptyClips,
     SwapAmmo,
+    CryoAmmunition,
+    IncendiaryAmmunition,
+    ChemicalAmmunition,
     BulletRain,
     SuppressiveFire,
     ExecutionersShot,

@@ -9,8 +9,8 @@
 
 import type { Powerset } from '@/types';
 
-import { DeflectionShield as DeflectionShield } from './deflection-shield';
 import { PersonalForceField as PersonalForceField } from './personal-force-field';
+import { DeflectionShield as DeflectionShield } from './deflection-shield';
 import { RepulsionBolt as RepulsionBolt } from './force-bolt';
 import { InsulationShield as InsulationShield } from './insulation-shield';
 import { DetentionField as DetentionField } from './refraction-shield';
@@ -27,8 +27,8 @@ export const powerset: Powerset = {
   archetype: 'controller',
   category: 'secondary',
   powers: [
-    DeflectionShield,
     PersonalForceField,
+    DeflectionShield,
     RepulsionBolt,
     InsulationShield,
     DetentionField,

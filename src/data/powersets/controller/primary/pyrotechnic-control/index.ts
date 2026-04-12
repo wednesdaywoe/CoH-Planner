@@ -9,8 +9,8 @@
 
 import type { Powerset } from '@/types';
 
-import { Dazzle as Dazzle } from './dazzle';
 import { SparklingCage as SparklingCage } from './sparkling-cage';
+import { Dazzle as Dazzle } from './dazzle';
 import { SparklingChain as SparklingChain } from './sparkling-field';
 import { GlitteringColumn as GlitteringColumn } from './glittering-column';
 import { HypnotizingLights as HypnotizingLights } from './hypnotizing-lights';
@@ -27,8 +27,8 @@ export const powerset: Powerset = {
   archetype: 'controller',
   category: 'primary',
   powers: [
-    Dazzle,
     SparklingCage,
+    Dazzle,
     SparklingChain,
     GlitteringColumn,
     HypnotizingLights,

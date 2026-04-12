@@ -9,8 +9,8 @@
 
 import type { Powerset } from '@/types';
 
-import { FireSword as FireSword } from './fire-sword';
 import { Scorch as Scorch } from './scorch';
+import { FireSword as FireSword } from './fire-sword';
 import { Combustion as Combustion } from './combustion';
 import { Taunt as Taunt } from './taunt';
 import { BreathofFire as BreathofFire } from './breath-of-fire';
@@ -27,8 +27,8 @@ export const powerset: Powerset = {
   archetype: 'tanker',
   category: 'secondary',
   powers: [
-    FireSword,
     Scorch,
+    FireSword,
     Combustion,
     Taunt,
     BreathofFire,

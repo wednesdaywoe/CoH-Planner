@@ -9,8 +9,8 @@
 
 import type { Powerset } from '@/types';
 
-import { DangerSense as DangerSense } from './danger-sense';
 import { NinjaReflexes as NinjaReflexes } from './ninja-reflexes';
+import { DangerSense as DangerSense } from './danger-sense';
 import { ShinobiIri as ShinobiIri } from './shinobi-iri';
 import { KujiInRin as KujiInRin } from './kuji-in-rin';
 import { SeishintekiKyoyo as SeishintekiKyoyo } from './seishinteki-kyoyo';
@@ -27,8 +27,8 @@ export const powerset: Powerset = {
   archetype: 'sentinel',
   category: 'secondary',
   powers: [
-    DangerSense,
     NinjaReflexes,
+    DangerSense,
     ShinobiIri,
     KujiInRin,
     SeishintekiKyoyo,

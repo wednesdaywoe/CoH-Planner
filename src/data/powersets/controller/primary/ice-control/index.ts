@@ -9,8 +9,8 @@
 
 import type { Powerset } from '@/types';
 
-import { BlockofIce as BlockofIce } from './block-of-ice';
 import { Chilblain as Chilblain } from './chilblain';
+import { BlockofIce as BlockofIce } from './block-of-ice';
 import { Frostbite as Frostbite } from './frostbite';
 import { ArcticAir as ArcticAir } from './artic-air';
 import { ColdSnap as ColdSnap } from './shiver';
@@ -27,8 +27,8 @@ export const powerset: Powerset = {
   archetype: 'controller',
   category: 'primary',
   powers: [
-    BlockofIce,
     Chilblain,
+    BlockofIce,
     Frostbite,
     ArcticAir,
     ColdSnap,

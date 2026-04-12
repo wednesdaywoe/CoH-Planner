@@ -9,8 +9,8 @@
 
 import type { Powerset } from '@/types';
 
-import { CallGenin as CallGenin } from './call-genin';
 import { SnapShot as SnapShot } from './snap-shot';
+import { CallGenin as CallGenin } from './call-genin';
 import { AimedShot as AimedShot } from './aimed-shot';
 import { TrainNinjas as TrainNinjas } from './train-ninjas';
 import { FistfulofArrows as FistfulofArrows } from './fistful-of-arrows';
@@ -27,8 +27,8 @@ export const powerset: Powerset = {
   archetype: 'mastermind',
   category: 'primary',
   powers: [
-    CallGenin,
     SnapShot,
+    CallGenin,
     AimedShot,
     TrainNinjas,
     FistfulofArrows,

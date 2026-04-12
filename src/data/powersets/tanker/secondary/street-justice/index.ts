@@ -9,8 +9,8 @@
 
 import type { Powerset } from '@/types';
 
-import { HeavyBlow as HeavyBlow } from './heavy-blow';
 import { InitialStrike as InitialStrike } from './initial-strike';
+import { HeavyBlow as HeavyBlow } from './heavy-blow';
 import { SweepingCross as SweepingCross } from './sweeping-cross';
 import { Taunt as Taunt } from './taunt';
 import { CombatReadiness as CombatReadiness } from './combat-readiness';
@@ -27,8 +27,8 @@ export const powerset: Powerset = {
   archetype: 'tanker',
   category: 'secondary',
   powers: [
-    HeavyBlow,
     InitialStrike,
+    HeavyBlow,
     SweepingCross,
     Taunt,
     CombatReadiness,

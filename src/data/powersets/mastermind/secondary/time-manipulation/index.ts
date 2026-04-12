@@ -9,8 +9,8 @@
 
 import type { Powerset } from '@/types';
 
-import { TemporalMending as TemporalMending } from './temporal-mending';
 import { TimeCrawl as TimeCrawl } from './time-crawl';
+import { TemporalMending as TemporalMending } from './temporal-mending';
 import { TimesJuncture as TimesJuncture } from './times-juncture';
 import { TemporalSelection as TemporalSelection } from './temporal-selection';
 import { DistortionField as DistortionField } from './distortion-field';
@@ -27,8 +27,8 @@ export const powerset: Powerset = {
   archetype: 'mastermind',
   category: 'secondary',
   powers: [
-    TemporalMending,
     TimeCrawl,
+    TemporalMending,
     TimesJuncture,
     TemporalSelection,
     DistortionField,

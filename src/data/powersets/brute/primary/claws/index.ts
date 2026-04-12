@@ -9,8 +9,8 @@
 
 import type { Powerset } from '@/types';
 
-import { Strike as Strike } from './strike';
 import { Swipe as Swipe } from './swipe';
+import { Strike as Strike } from './strike';
 import { Slash as Slash } from './slash';
 import { Spin as Spin } from './spin';
 import { FollowUp as FollowUp } from './follow-up';
@@ -27,8 +27,8 @@ export const powerset: Powerset = {
   archetype: 'brute',
   category: 'primary',
   powers: [
-    Strike,
     Swipe,
+    Strike,
     Slash,
     Spin,
     FollowUp,

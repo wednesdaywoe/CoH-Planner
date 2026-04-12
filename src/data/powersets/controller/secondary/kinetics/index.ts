@@ -9,8 +9,8 @@
 
 import type { Powerset } from '@/types';
 
-import { SiphonPower as SiphonPower } from './siphon-power';
 import { Transfusion as Transfusion } from './transfusion';
+import { SiphonPower as SiphonPower } from './siphon-power';
 import { Repel as Repel } from './repel';
 import { SiphonSpeed as SiphonSpeed } from './siphon-speed';
 import { IncreaseDensity as IncreaseDensity } from './increase-density';
@@ -27,8 +27,8 @@ export const powerset: Powerset = {
   archetype: 'controller',
   category: 'secondary',
   powers: [
-    SiphonPower,
     Transfusion,
+    SiphonPower,
     Repel,
     SiphonSpeed,
     IncreaseDensity,

@@ -9,8 +9,8 @@
 
 import type { Powerset } from '@/types';
 
-import { Levitate as Levitate } from './levitate';
 import { Mesmerize as Mesmerize } from './mesmerize';
+import { Levitate as Levitate } from './levitate';
 import { Dominate as Dominate } from './dominate';
 import { Confuse as Confuse } from './confuse';
 import { MassHypnosis as MassHypnosis } from './mass-hypnosis';
@@ -27,8 +27,8 @@ export const powerset: Powerset = {
   archetype: 'dominator',
   category: 'primary',
   powers: [
-    Levitate,
     Mesmerize,
+    Levitate,
     Dominate,
     Confuse,
     MassHypnosis,

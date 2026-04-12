@@ -9,8 +9,8 @@
 
 import type { Powerset } from '@/types';
 
-import { CallThugs as CallThugs } from './call-thugs';
 import { Pistols as Pistols } from './pistols';
+import { CallThugs as CallThugs } from './call-thugs';
 import { DualWield as DualWield } from './dual-wield';
 import { EquipThugs as EquipThugs } from './equip-thugs';
 import { EmptyClips as EmptyClips } from './empty-clips';
@@ -27,8 +27,8 @@ export const powerset: Powerset = {
   archetype: 'mastermind',
   category: 'primary',
   powers: [
-    CallThugs,
     Pistols,
+    CallThugs,
     DualWield,
     EquipThugs,
     EmptyClips,

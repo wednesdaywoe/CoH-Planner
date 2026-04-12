@@ -1526,10 +1526,14 @@ function convertPowerset(category, powersetName) {
     const availableLevel = powerIndex >= 0 ? indexJson.available_level[powerIndex] : 0;
 
     const power = convertPower(powerJson, availableLevel);
-    powers.push(power);
+    powers.push({ power, powerIndex: powerIndex >= 0 ? powerIndex : 999, file });
+  }
 
-    // Write individual power file (use internalName for filename to avoid collisions
-    // when multiple powers share the same display name, e.g., "Phoenix Rising")
+  // Sort powers by their index in the powerset definition (game order)
+  powers.sort((a, b) => a.powerIndex - b.powerIndex);
+
+  // Write individual power files
+  for (const { power, file } of powers) {
     const powerFileName = toKebabCase(power.internalName) + '.ts';
     const powerContent = `/**
  * ${power.name}
@@ -1547,12 +1551,9 @@ export const ${power.name.replace(/[^a-zA-Z0-9]/g, '')}: Power = ${JSON.stringif
     console.log(`  - ${power.name}`);
   }
 
-  // Sort powers by available level
-  powers.sort((a, b) => a.available - b.available);
-
   // Generate unique variable names (handle duplicates)
   const usedNames = new Map(); // name -> count
-  const powerVarNames = powers.map(p => {
+  const powerVarNames = powers.map(({ power: p }) => {
     const baseName = p.name.replace(/[^a-zA-Z0-9]/g, '');
     const count = usedNames.get(baseName) || 0;
     usedNames.set(baseName, count + 1);
@@ -1571,7 +1572,7 @@ export const ${power.name.replace(/[^a-zA-Z0-9]/g, '')}: Power = ${JSON.stringif
 
 import type { Powerset } from '@/types';
 
-${powers.map((p, i) => `import { ${p.name.replace(/[^a-zA-Z0-9]/g, '')} as ${powerVarNames[i]} } from './${toKebabCase(p.internalName)}';`).join('\n')}
+${powers.map(({ power: p }, i) => `import { ${p.name.replace(/[^a-zA-Z0-9]/g, '')} as ${powerVarNames[i]} } from './${toKebabCase(p.internalName)}';`).join('\n')}
 
 export const powerset: Powerset = {
   id: '${categoryInfo.archetype}/${toKebabCase(indexJson.display_name)}',

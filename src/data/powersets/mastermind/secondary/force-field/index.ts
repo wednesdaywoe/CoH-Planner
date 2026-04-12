@@ -9,8 +9,8 @@
 
 import type { Powerset } from '@/types';
 
-import { DeflectionShield as DeflectionShield } from './deflection-shield';
 import { RepulsionBolt as RepulsionBolt } from './force-bolt';
+import { DeflectionShield as DeflectionShield } from './deflection-shield';
 import { InsulationShield as InsulationShield } from './insulation-shield';
 import { DetentionField as DetentionField } from './detention-field';
 import { PersonalForceField as PersonalForceField } from './personal-force-field';
@@ -27,8 +27,8 @@ export const powerset: Powerset = {
   archetype: 'mastermind',
   category: 'secondary',
   powers: [
-    DeflectionShield,
     RepulsionBolt,
+    DeflectionShield,
     InsulationShield,
     DetentionField,
     PersonalForceField,

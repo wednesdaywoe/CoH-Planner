@@ -9,8 +9,8 @@
 
 import type { Powerset } from '@/types';
 
-import { BodyBlow as BodyBlow } from './body-blow';
 import { QuickStrike as QuickStrike } from './quick-strike';
+import { BodyBlow as BodyBlow } from './body-blow';
 import { SmashingBlow as SmashingBlow } from './smashing-blow';
 import { PowerSiphon as PowerSiphon } from './power-siphon';
 import { RepulsingTorrent as RepulsingTorrent } from './repulsing-torrent';
@@ -27,8 +27,8 @@ export const powerset: Powerset = {
   archetype: 'brute',
   category: 'primary',
   powers: [
-    BodyBlow,
     QuickStrike,
+    BodyBlow,
     SmashingBlow,
     PowerSiphon,
     RepulsingTorrent,

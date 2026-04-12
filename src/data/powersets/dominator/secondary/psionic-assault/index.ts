@@ -9,8 +9,8 @@
 
 import type { Powerset } from '@/types';
 
-import { MindProbe as MindProbe } from './mind-probe';
 import { PsionicDart as PsionicDart } from './psionic-dart';
+import { MindProbe as MindProbe } from './mind-probe';
 import { TelekineticThrust as TelekineticThrust } from './telekinetic-thrust';
 import { MentalBlast as MentalBlast } from './mental-blast';
 import { PsychicScream as PsychicScream } from './psychic-scream';
@@ -27,8 +27,8 @@ export const powerset: Powerset = {
   archetype: 'dominator',
   category: 'secondary',
   powers: [
-    MindProbe,
     PsionicDart,
+    MindProbe,
     TelekineticThrust,
     MentalBlast,
     PsychicScream,

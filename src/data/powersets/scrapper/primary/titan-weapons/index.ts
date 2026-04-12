@@ -9,8 +9,8 @@
 
 import type { Powerset } from '@/types';
 
-import { CrushingBlow as CrushingBlow } from './crushing-blow';
 import { DefensiveSweep as DefensiveSweep } from './defensive-sweep';
+import { CrushingBlow as CrushingBlow } from './crushing-blow';
 import { TitanSweep as TitanSweep } from './sweeping-strike';
 import { FollowThrough as FollowThrough } from './follow-through';
 import { BuildMomentum as BuildMomentum } from './build-up';
@@ -27,8 +27,8 @@ export const powerset: Powerset = {
   archetype: 'scrapper',
   category: 'primary',
   powers: [
-    CrushingBlow,
     DefensiveSweep,
+    CrushingBlow,
     TitanSweep,
     FollowThrough,
     BuildMomentum,

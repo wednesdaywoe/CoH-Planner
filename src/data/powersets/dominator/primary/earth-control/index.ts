@@ -9,8 +9,8 @@
 
 import type { Powerset } from '@/types';
 
-import { Fossilize as Fossilize } from './fossilize';
 import { StonePrison as StonePrison } from './stone-prison';
+import { Fossilize as Fossilize } from './fossilize';
 import { StoneCages as StoneCages } from './stone-cages';
 import { Quicksand as Quicksand } from './quicksand';
 import { SaltCrystals as SaltCrystals } from './salt-crystals';
@@ -27,8 +27,8 @@ export const powerset: Powerset = {
   archetype: 'dominator',
   category: 'primary',
   powers: [
-    Fossilize,
     StonePrison,
+    Fossilize,
     StoneCages,
     Quicksand,
     SaltCrystals,

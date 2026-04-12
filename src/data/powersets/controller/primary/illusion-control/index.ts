@@ -9,8 +9,8 @@
 
 import type { Powerset } from '@/types';
 
-import { Blind as Blind } from './blind';
 import { SpectralWounds as SpectralWounds } from './spectral-wounds';
+import { Blind as Blind } from './blind';
 import { Deceive as Deceive } from './deceive';
 import { Flash as Flash } from './flash';
 import { SuperiorInvisibility as SuperiorInvisibility } from './invisibility';
@@ -27,8 +27,8 @@ export const powerset: Powerset = {
   archetype: 'controller',
   category: 'primary',
   powers: [
-    Blind,
     SpectralWounds,
+    Blind,
     Deceive,
     Flash,
     SuperiorInvisibility,

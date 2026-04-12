@@ -9,8 +9,8 @@
 
 import type { Powerset } from '@/types';
 
-import { MaimingSlash as MaimingSlash } from './maiming-slash';
 import { SavageStrike as SavageStrike } from './savage-strike';
+import { MaimingSlash as MaimingSlash } from './maiming-slash';
 import { Shred as Shred } from './shred';
 import { Taunt as Taunt } from './taunt';
 import { ViciousSlash as ViciousSlash } from './vicious-slash';
@@ -27,8 +27,8 @@ export const powerset: Powerset = {
   archetype: 'tanker',
   category: 'secondary',
   powers: [
-    MaimingSlash,
     SavageStrike,
+    MaimingSlash,
     Shred,
     Taunt,
     ViciousSlash,

@@ -9,8 +9,8 @@
 
 import type { Powerset } from '@/types';
 
-import { FireSword as FireSword } from './fire-sword';
 import { Scorch as Scorch } from './scorch';
+import { FireSword as FireSword } from './fire-sword';
 import { Cremate as Cremate } from './cremate';
 import { BuildUp as BuildUp } from './build-up';
 import { BreathofFire as BreathofFire } from './breath-of-fire';
@@ -27,8 +27,8 @@ export const powerset: Powerset = {
   archetype: 'scrapper',
   category: 'primary',
   powers: [
-    FireSword,
     Scorch,
+    FireSword,
     Cremate,
     BuildUp,
     BreathofFire,

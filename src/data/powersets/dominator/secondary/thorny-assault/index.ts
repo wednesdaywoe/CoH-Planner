@@ -9,8 +9,8 @@
 
 import type { Powerset } from '@/types';
 
-import { Skewer as Skewer } from './skewer';
 import { ThornyDarts as ThornyDarts } from './thorny-darts';
+import { Skewer as Skewer } from './skewer';
 import { FlingThorns as FlingThorns } from './fling-thorns';
 import { Impale as Impale } from './impale';
 import { BuildUp as BuildUp } from './aim';
@@ -27,8 +27,8 @@ export const powerset: Powerset = {
   archetype: 'dominator',
   category: 'secondary',
   powers: [
-    Skewer,
     ThornyDarts,
+    Skewer,
     FlingThorns,
     Impale,
     BuildUp,

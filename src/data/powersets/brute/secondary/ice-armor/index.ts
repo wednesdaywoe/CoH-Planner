@@ -9,9 +9,9 @@
 
 import type { Powerset } from '@/types';
 
-import { Hoarfrost as Hoarfrost } from './hoarfrost';
 import { FrozenArmor as FrozenArmor } from './ice-armor';
 import { Rime as Rime } from './rime-ice';
+import { Hoarfrost as Hoarfrost } from './hoarfrost';
 import { ChillingEmbrace as ChillingEmbrace } from './chilling-embrace';
 import { WetIce as WetIce } from './wet-ice';
 import { GlacialArmor as GlacialArmor } from './glacial-armor';
@@ -28,9 +28,9 @@ export const powerset: Powerset = {
   archetype: 'brute',
   category: 'secondary',
   powers: [
-    Hoarfrost,
     FrozenArmor,
     Rime,
+    Hoarfrost,
     ChillingEmbrace,
     WetIce,
     GlacialArmor,

@@ -9,8 +9,8 @@
 
 import type { Powerset } from '@/types';
 
-import { StormKick as StormKick } from './storm-kick';
 import { ThunderKick as ThunderKick } from './thunder-kick';
+import { StormKick as StormKick } from './storm-kick';
 import { CobraStrike as CobraStrike } from './cobra-strike';
 import { FocusChi as FocusChi } from './focus-chi';
 import { CraneKick as CraneKick } from './crane-kick';
@@ -27,8 +27,8 @@ export const powerset: Powerset = {
   archetype: 'scrapper',
   category: 'primary',
   powers: [
-    StormKick,
     ThunderKick,
+    StormKick,
     CobraStrike,
     FocusChi,
     CraneKick,

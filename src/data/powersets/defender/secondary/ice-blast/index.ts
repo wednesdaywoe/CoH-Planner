@@ -9,8 +9,8 @@
 
 import type { Powerset } from '@/types';
 
-import { IceBlast as IceBlast } from './ice-blast';
 import { IceBolt as IceBolt } from './ice-bolt';
+import { IceBlast as IceBlast } from './ice-blast';
 import { FrostBreath as FrostBreath } from './frost-breath';
 import { Aim as Aim } from './aim';
 import { FreezeRay as FreezeRay } from './freeze-ray';
@@ -27,8 +27,8 @@ export const powerset: Powerset = {
   archetype: 'defender',
   category: 'secondary',
   powers: [
-    IceBlast,
     IceBolt,
+    IceBlast,
     FrostBreath,
     Aim,
     FreezeRay,

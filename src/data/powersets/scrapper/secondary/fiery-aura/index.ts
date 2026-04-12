@@ -9,16 +9,16 @@
 
 import type { Powerset } from '@/types';
 
-import { BlazingAura as BlazingAura } from './blazing-aura';
 import { FireShield as FireShield } from './fire-shield';
-import { PhoenixRising as PhoenixRising } from './phoenix-rising';
+import { BlazingAura as BlazingAura } from './blazing-aura';
 import { HealingFlames as HealingFlames } from './healing-flames';
 import { TemperatureProtection as TemperatureProtection } from './temperature-protection';
 import { PlasmaShield as PlasmaShield } from './plasma-shield';
 import { Consume as Consume } from './consume';
 import { Burn as Burn } from './burn';
 import { FieryEmbrace as FieryEmbrace } from './fiery-embrace';
-import { PhoenixRising as PhoenixRising2 } from './rise-of-the-phoenix';
+import { PhoenixRising as PhoenixRising } from './rise-of-the-phoenix';
+import { PhoenixRising as PhoenixRising2 } from './phoenix-rising';
 
 export const powerset: Powerset = {
   id: 'scrapper/fiery-aura',
@@ -28,15 +28,15 @@ export const powerset: Powerset = {
   archetype: 'scrapper',
   category: 'secondary',
   powers: [
-    BlazingAura,
     FireShield,
-    PhoenixRising,
+    BlazingAura,
     HealingFlames,
     TemperatureProtection,
     PlasmaShield,
     Consume,
     Burn,
     FieryEmbrace,
+    PhoenixRising,
     PhoenixRising2,
   ],
 };

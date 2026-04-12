@@ -11,14 +11,14 @@ import type { Powerset } from '@/types';
 
 import { FireShield as FireShield } from './fire-shield';
 import { MoltenEmbrace as MoltenEmbrace } from './molten-embrace';
-import { PhoenixRising as PhoenixRising } from './phoenix-rising';
 import { HealingFlames as HealingFlames } from './healing-flames';
 import { TemperatureProtection as TemperatureProtection } from './temperature-protection';
 import { PlasmaShield as PlasmaShield } from './plasma-shield';
 import { Consume as Consume } from './consume';
 import { Burn as Burn } from './burn';
 import { CauterizingBlaze as CauterizingBlaze } from './cauterizing-blaze';
-import { PhoenixRising as PhoenixRising2 } from './rise-of-the-phoenix';
+import { PhoenixRising as PhoenixRising } from './rise-of-the-phoenix';
+import { PhoenixRising as PhoenixRising2 } from './phoenix-rising';
 
 export const powerset: Powerset = {
   id: 'sentinel/fiery-aura',
@@ -30,13 +30,13 @@ export const powerset: Powerset = {
   powers: [
     FireShield,
     MoltenEmbrace,
-    PhoenixRising,
     HealingFlames,
     TemperatureProtection,
     PlasmaShield,
     Consume,
     Burn,
     CauterizingBlaze,
+    PhoenixRising,
     PhoenixRising2,
   ],
 };

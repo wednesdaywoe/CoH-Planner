@@ -9,9 +9,8 @@
 
 import type { Powerset } from '@/types';
 
-import { ClearSkies as ClearSkies } from './clear-skies';
-import { Downdraft as Downdraft } from './downdraft';
 import { Updraft as Updraft } from './updraft';
+import { Downdraft as Downdraft } from './downdraft';
 import { Breathless as Breathless } from './breathless';
 import { WindShear as WindShear } from './wind-shear';
 import { Thundergust as Thundergust } from './thundergust';
@@ -19,6 +18,7 @@ import { Microburst as Microburst } from './microburst';
 import { KeeningWinds as KeeningWinds } from './keening-winds';
 import { Vacuum as Vacuum } from './vacuum';
 import { Vortex as Vortex } from './vortex';
+import { ClearSkies as ClearSkies } from './clear-skies';
 
 export const powerset: Powerset = {
   id: 'controller/wind-control',
@@ -28,9 +28,8 @@ export const powerset: Powerset = {
   archetype: 'controller',
   category: 'primary',
   powers: [
-    ClearSkies,
-    Downdraft,
     Updraft,
+    Downdraft,
     Breathless,
     WindShear,
     Thundergust,
@@ -38,6 +37,7 @@ export const powerset: Powerset = {
     KeeningWinds,
     Vacuum,
     Vortex,
+    ClearSkies,
   ],
 };
 

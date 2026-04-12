@@ -9,8 +9,8 @@
 
 import type { Powerset } from '@/types';
 
-import { ChargedShot as ChargedShot } from './charged-shot';
 import { SingleShot as SingleShot } from './single-shot';
+import { ChargedShot as ChargedShot } from './charged-shot';
 import { CuttingBeam as CuttingBeam } from './cutting-beam';
 import { Disintegrate as Disintegrate } from './disintegrate';
 import { Aim as Aim } from './aim';
@@ -27,8 +27,8 @@ export const powerset: Powerset = {
   archetype: 'defender',
   category: 'secondary',
   powers: [
-    ChargedShot,
     SingleShot,
+    ChargedShot,
     CuttingBeam,
     Disintegrate,
     Aim,

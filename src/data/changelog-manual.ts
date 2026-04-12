@@ -23,6 +23,7 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   {
     date: '2026-04-12',
     items: [
+      { message: 'Fixed a large number of powersets that had their level 0 powers incorrectly ordered', type: 'fix' },
       { message: 'Added a gentle Onboarding beacon system to point out features for new users. Onboarding can be disabled or reset in the settings menu.', type: 'feat' },
       { message: 'Added handling for Prestige enhancement UIDs to all import methods', type: 'feat' },
       { message: 'Fixed recovery end/sec display double-counting the base 100 endurance', type: 'fix' },

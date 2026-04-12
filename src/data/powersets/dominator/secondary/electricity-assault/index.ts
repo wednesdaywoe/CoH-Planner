@@ -9,8 +9,8 @@
 
 import type { Powerset } from '@/types';
 
-import { ChargedBrawl as ChargedBrawl } from './charged-brawl';
 import { ChargedBolts as ChargedBolts } from './electric-fence';
+import { ChargedBrawl as ChargedBrawl } from './charged-brawl';
 import { LightningBolt as LightningBolt } from './lightning-field';
 import { HavocPunch as HavocPunch } from './havok-punch';
 import { BuildUp as BuildUp } from './build-up';
@@ -27,8 +27,8 @@ export const powerset: Powerset = {
   archetype: 'dominator',
   category: 'secondary',
   powers: [
-    ChargedBrawl,
     ChargedBolts,
+    ChargedBrawl,
     LightningBolt,
     HavocPunch,
     BuildUp,

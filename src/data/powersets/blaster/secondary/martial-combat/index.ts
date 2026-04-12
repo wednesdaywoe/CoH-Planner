@@ -9,10 +9,10 @@
 
 import type { Powerset } from '@/types';
 
-import { ReachfortheLimit as ReachfortheLimit } from './build-up-proc';
 import { KiPush as KiPush } from './ki-push';
 import { StormKick as StormKick } from './storm-kick';
-import { ReachfortheLimit as ReachfortheLimit2 } from './reach-for-the-limit';
+import { ReachfortheLimit as ReachfortheLimit } from './reach-for-the-limit';
+import { ReachfortheLimit as ReachfortheLimit2 } from './build-up-proc';
 import { BurstofSpeed as BurstofSpeed } from './burst-of-speed';
 import { DragonsTail as DragonsTail } from './dragons-tail';
 import { ReactionTime as ReactionTime } from './reaction-time';
@@ -28,9 +28,9 @@ export const powerset: Powerset = {
   archetype: 'blaster',
   category: 'secondary',
   powers: [
-    ReachfortheLimit,
     KiPush,
     StormKick,
+    ReachfortheLimit,
     ReachfortheLimit2,
     BurstofSpeed,
     DragonsTail,

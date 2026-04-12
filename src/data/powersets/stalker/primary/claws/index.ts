@@ -9,8 +9,8 @@
 
 import type { Powerset } from '@/types';
 
-import { Strike as Strike } from './strike';
 import { Swipe as Swipe } from './swipe';
+import { Strike as Strike } from './strike';
 import { Slash as Slash } from './slash';
 import { AssassinsClaw as AssassinsClaw } from './assassins-claw';
 import { BuildUp as BuildUp } from './build-up';
@@ -27,8 +27,8 @@ export const powerset: Powerset = {
   archetype: 'stalker',
   category: 'primary',
   powers: [
-    Strike,
     Swipe,
+    Strike,
     Slash,
     AssassinsClaw,
     BuildUp,

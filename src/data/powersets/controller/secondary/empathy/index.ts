@@ -9,8 +9,8 @@
 
 import type { Powerset } from '@/types';
 
-import { HealOther as HealOther } from './heal-other';
 import { HealingAura as HealingAura } from './siphon-energy';
+import { HealOther as HealOther } from './heal-other';
 import { AbsorbPain as AbsorbPain } from './absorb-pain';
 import { Resurrect as Resurrect } from './resurrect';
 import { ClearMind as ClearMind } from './clear-mind';
@@ -27,8 +27,8 @@ export const powerset: Powerset = {
   archetype: 'controller',
   category: 'secondary',
   powers: [
-    HealOther,
     HealingAura,
+    HealOther,
     AbsorbPain,
     Resurrect,
     ClearMind,

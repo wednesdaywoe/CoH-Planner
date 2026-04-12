@@ -9,8 +9,8 @@
 
 import type { Powerset } from '@/types';
 
-import { MaimingSlash as MaimingSlash } from './maiming-slash';
 import { SavageStrike as SavageStrike } from './savage-strike';
+import { MaimingSlash as MaimingSlash } from './maiming-slash';
 import { Shred as Shred } from './shred';
 import { AssassinsFrenzy as AssassinsFrenzy } from './assassins-frenzy';
 import { BuildUp as BuildUp } from './build-up';
@@ -27,8 +27,8 @@ export const powerset: Powerset = {
   archetype: 'stalker',
   category: 'primary',
   powers: [
-    MaimingSlash,
     SavageStrike,
+    MaimingSlash,
     Shred,
     AssassinsFrenzy,
     BuildUp,

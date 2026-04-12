@@ -9,8 +9,8 @@
 
 import type { Powerset } from '@/types';
 
-import { DarkGrasp as DarkGrasp } from './dark-grasp';
 import { ShadowyBinds as ShadowyBinds } from './shadowy-binds';
+import { DarkGrasp as DarkGrasp } from './dark-grasp';
 import { LivingShadows as LivingShadows } from './living-shadows';
 import { Possess as Possess } from './possess';
 import { FearsomeStare as FearsomeStare } from './fearsome-stare';
@@ -27,8 +27,8 @@ export const powerset: Powerset = {
   archetype: 'controller',
   category: 'primary',
   powers: [
-    DarkGrasp,
     ShadowyBinds,
+    DarkGrasp,
     LivingShadows,
     Possess,
     FearsomeStare,

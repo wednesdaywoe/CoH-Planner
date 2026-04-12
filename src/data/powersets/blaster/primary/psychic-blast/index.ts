@@ -9,8 +9,8 @@
 
 import type { Powerset } from '@/types';
 
-import { MentalBlast as MentalBlast } from './mental-blast';
 import { DominateWill as DominateWill } from './will-domination';
+import { MentalBlast as MentalBlast } from './mental-blast';
 import { TelekineticBlast as TelekineticBlast } from './telekinetic-blast';
 import { PsionicDarts as PsionicDarts } from './psionic-dart';
 import { PsychicFocus as PsychicFocus } from './aim';
@@ -27,8 +27,8 @@ export const powerset: Powerset = {
   archetype: 'blaster',
   category: 'primary',
   powers: [
-    MentalBlast,
     DominateWill,
+    MentalBlast,
     TelekineticBlast,
     PsionicDarts,
     PsychicFocus,

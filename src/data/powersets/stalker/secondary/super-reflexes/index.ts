@@ -9,8 +9,8 @@
 
 import type { Powerset } from '@/types';
 
-import { FocusedFighting as FocusedFighting } from './focused-fighting';
 import { Hide as Hide } from './hide';
+import { FocusedFighting as FocusedFighting } from './focused-fighting';
 import { FocusedSenses as FocusedSenses } from './focused-senses';
 import { Agile as Agile } from './agile';
 import { PracticedBrawler as PracticedBrawler } from './practiced-brawler';
@@ -27,8 +27,8 @@ export const powerset: Powerset = {
   archetype: 'stalker',
   category: 'secondary',
   powers: [
-    FocusedFighting,
     Hide,
+    FocusedFighting,
     FocusedSenses,
     Agile,
     PracticedBrawler,
