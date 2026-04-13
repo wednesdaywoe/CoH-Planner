@@ -256,7 +256,7 @@ export function OnboardingBeacon() {
         left: position.left,
         width: position.width,
         height: position.height,
-        zIndex: 9999,
+        zIndex: 40,
         pointerEvents: 'none',
       }}
     >
