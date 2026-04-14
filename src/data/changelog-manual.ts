@@ -21,8 +21,9 @@ export interface ManualEntry {
 export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   // ─── 2026-03-24 ────────────────────────────────────────────────────────────
   {
-    date: '2026-04-12',
+    date: '2026-04-14',
     items: [
+      { message: 'Enhanced VEAT branch powerset handling in Mids import process', type: 'fix' },
       { message: 'Fixed a large number of powersets that had their level 0 powers incorrectly ordered', type: 'fix' },
       { message: 'Added a gentle Onboarding beacon system to point out features for new users. Onboarding can be disabled or reset in the settings menu.', type: 'feat' },
       { message: 'Added handling for Prestige enhancement UIDs to all import methods', type: 'feat' },

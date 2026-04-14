@@ -148,10 +148,23 @@ export function importMidsBuild(jsonString: string): MidsImportResult {
   //     normalize to the base powerset. The planner expects build.primary.id / secondary.id
   //     to always be the BASE powerset, with branch powers stored in the powers array.
   let detectedBranch: string | null = null;
+  // Track branch powerset powers so we can include them in first-pass lookups
+  let branchPrimaryPowers: Power[] = [];
+  let branchSecondaryPowers: Power[] = [];
+  // Build a set of all VEAT branch powerset IDs mapped to primary/secondary
+  const branchPrimarySetIds = new Set<string>();
+  const branchSecondarySetIds = new Set<string>();
   if (archetype.branches) {
+    for (const branchDef of Object.values(archetype.branches)) {
+      if (branchDef.primarySet) branchPrimarySetIds.add(branchDef.primarySet);
+      if (branchDef.secondarySet) branchSecondarySetIds.add(branchDef.secondarySet);
+    }
     for (const [branchId, branchDef] of Object.entries(archetype.branches)) {
       if (primaryId === branchDef.primarySet || secondaryId === branchDef.secondarySet) {
         detectedBranch = branchId;
+        // Save branch powers before replacing with base
+        branchPrimaryPowers = (branchDef.primarySet ? getPowerset(branchDef.primarySet)?.powers : undefined) ?? [];
+        branchSecondaryPowers = (branchDef.secondarySet ? getPowerset(branchDef.secondarySet)?.powers : undefined) ?? [];
         // Replace with base powersets — keep the resolved IDs for power lookup
         primaryId = archetype.primarySets[0] ?? primaryId;
         secondaryId = archetype.secondarySets[0] ?? secondaryId;
@@ -246,12 +259,14 @@ export function importMidsBuild(jsonString: string): MidsImportResult {
       entry,
       archetypeId,
       primaryId,
-      primaryPowerset?.powers ?? [],
+      [...(primaryPowerset?.powers ?? []), ...branchPrimaryPowers],
       secondaryId,
-      secondaryPowerset?.powers ?? [],
+      [...(secondaryPowerset?.powers ?? []), ...branchSecondaryPowers],
       poolLookup,
       epicLookup,
       powersetLookup,
+      branchPrimarySetIds,
+      branchSecondarySetIds,
       warnings,
       summary,
     );
@@ -428,6 +443,22 @@ interface ProcessedEntry {
   poolId?: string;
 }
 
+/**
+ * Determine whether a powerset should be categorized as primary or secondary.
+ * VEAT branch powersets have category 'epic' in their definitions, so we check
+ * if the powerset ID is a known branch primary/secondary set.
+ */
+function categorizePowerset(
+  powersetId: string,
+  rawCategory: string | undefined,
+  branchPrimarySetIds: Set<string>,
+  branchSecondarySetIds: Set<string>,
+): 'primary' | 'secondary' {
+  if (branchPrimarySetIds.has(powersetId)) return 'primary';
+  if (branchSecondarySetIds.has(powersetId)) return 'secondary';
+  return rawCategory === 'primary' ? 'primary' : 'secondary';
+}
+
 function processEntry(
   entry: MbdPowerEntry,
   archetypeId: string,
@@ -438,6 +469,8 @@ function processEntry(
   poolLookup: Map<string, PoolPowerMatch>,
   epicLookup: Map<string, EpicPowerMatch>,
   powersetLookup: Map<string, string>,
+  branchPrimarySetIds: Set<string>,
+  branchSecondarySetIds: Set<string>,
   warnings: MidsImportWarning[],
   summary: MidsImportSummary,
 ): ProcessedEntry | null {
@@ -601,10 +634,10 @@ function processEntry(
     if (fallbackPowerset) {
       const match = findPowerByMidsName(fallbackPowerset.powers, powerInternalName);
       if (match) {
-        const category = fallbackPowerset.category === 'primary' ? 'primary' : 'secondary';
+        const category = categorizePowerset(fallbackPowersetId, fallbackPowerset.category, branchPrimarySetIds, branchSecondarySetIds);
         const power = buildSelectedPower(match, fallbackPowersetId, appLevel, StatInclude, SlotEntries, warnings, summary);
         summary.powersImported++;
-        return { category: category as 'primary' | 'secondary', power };
+        return { category, power };
       }
     }
   }
@@ -615,7 +648,7 @@ function processEntry(
     if (ps.archetype?.toLowerCase() !== archetypeId.toLowerCase()) continue;
     const match = findPowerByMidsName(ps.powers, powerInternalName);
     if (match) {
-      const category = ps.category === 'primary' ? 'primary' : 'secondary';
+      const category = categorizePowerset(psId, ps.category, branchPrimarySetIds, branchSecondarySetIds);
       const power = buildSelectedPower(match, psId, appLevel, StatInclude, SlotEntries, warnings, summary);
       summary.powersImported++;
       return { category: category as 'primary' | 'secondary', power };
