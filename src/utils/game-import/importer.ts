@@ -817,9 +817,13 @@ function resolveSpecialEnhancement(uid: string, boost?: number): EnhancementReso
 function resolveEnhancement(enh: GameExportEnhancement): EnhancementResolveResult {
   const { uid, level, boost, attuned } = enh;
 
-  // Check for generic IOs: "Crafted_Accuracy", "Crafted_Heal", etc.
-  if (uid.startsWith('Crafted_') && !hasIOSetPieceSuffix(uid)) {
-    const statPart = uid.slice('Crafted_'.length);
+  // Check for generic IOs: "Crafted_Accuracy", "Generic_Damage", etc.
+  // Both "Crafted_" and "Generic_" prefixes can denote plain generic IOs.
+  const genericPrefix = uid.startsWith('Crafted_') ? 'Crafted_'
+    : uid.startsWith('Generic_') ? 'Generic_'
+    : null;
+  if (genericPrefix && !hasIOSetPieceSuffix(uid)) {
+    const statPart = uid.slice(genericPrefix.length);
     // Case-insensitive lookup (external tool titleCase may differ: "Tohit_Buff" vs "ToHit_Buff")
     const stat = GENERIC_STAT_MAP[statPart]
       ?? Object.entries(GENERIC_STAT_MAP).find(([k]) => k.toLowerCase() === statPart.toLowerCase())?.[1];
@@ -831,10 +835,13 @@ function resolveEnhancement(enh: GameExportEnhancement): EnhancementResolveResul
       );
       return { enhancement, warning: null };
     }
-    return {
-      enhancement: null,
-      warning: { type: 'enhancement', name: uid, message: `Unknown generic IO stat: ${statPart}` },
-    };
+    // For Crafted_ prefix, unknown stat is an error; for Generic_, fall through to prestige check
+    if (genericPrefix === 'Crafted_') {
+      return {
+        enhancement: null,
+        warning: { type: 'enhancement', name: uid, message: `Unknown generic IO stat: ${statPart}` },
+      };
+    }
   }
 
   // Check for Single/Dual Origin enhancements: "Magic_Accuracy", "Natural_Magic_Run", etc.
