@@ -621,7 +621,7 @@ function SettingsPopover() {
       </button>
 
       {open && (
-        <div className="absolute left-0 top-full mt-1 bg-gray-800 border border-gray-600 rounded-lg shadow-xl p-4 min-w-[280px] z-50 space-y-4">
+        <div className="absolute left-0 top-full mt-1 bg-gray-800 border border-gray-600 rounded-lg shadow-xl p-4 min-w-[280px] z-[60] space-y-4">
           <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Build Settings</h3>
 
           {/* Level */}
