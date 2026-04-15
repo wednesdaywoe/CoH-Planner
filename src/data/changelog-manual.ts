@@ -25,7 +25,7 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
     items: [
       { message: 'Fixed Impervium Armor\'s registration with the Dashboard system', type: 'fix' },
       { message: 'You can now toggle info tooltips on/off with the T key', type: 'feat' },
-      { message: 'Tooltip info for individal enhancements will now show all related set bonuses and their active/inactive status (if applicabale)', type: 'feat' },
+      { message: 'Tooltip info for individual enhancements will now show all related set bonuses and their active/inactive status (if applicable)', type: 'feat' },
       { message: 'Added a gentle Onboarding beacon system to point out features for new users. Onboarding can be disabled or reset in the settings menu.', type: 'feat' },
     ]
   },
