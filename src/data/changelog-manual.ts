@@ -23,6 +23,8 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   {
     date: '2026-04-15',
     items: [
+      { message: 'Fixed type assignment for Chain powers', type: 'fix' },
+      { message: 'Fixed end costs for a variety of power pool toggles that were missing activate_period', type: 'fix' },
       { message: 'Fixed Impervium Armor\'s registration with the Dashboard system', type: 'fix' },
       { message: 'You can now toggle info tooltips on/off with the T key', type: 'feat' },
       { message: 'Tooltip info for individual enhancements will now show all related set bonuses and their active/inactive status (if applicable)', type: 'feat' },
