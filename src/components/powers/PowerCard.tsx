@@ -163,6 +163,7 @@ export function PowerCard({
               key={index}
               enhancement={slot}
               slotIndex={index}
+              slots={power.slots}
               onClick={() => handleSlotClick(index)}
               onRightClick={() => handleSlotRightClick(index)}
             />

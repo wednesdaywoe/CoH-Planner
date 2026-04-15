@@ -11655,16 +11655,6 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
             "desc": "+8% Mez Resistance (All Resistance"
           }
         ]
-      },
-      {
-        "pieces": 6,
-        "effects": [
-          {
-            "stat": "damage_resistance_(psionic)",
-            "value": 6,
-            "desc": "+6.0% Damage Resistance (Psionic Damage"
-          }
-        ]
       }
     ],
     "pieces": [

@@ -1172,6 +1172,18 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     pool: "",
     unique: "Unique"
   },
+  "Impervium Armor: +Res(Psionic)": {
+    setCategory: "Resist Damage",
+    setName: "Impervium Armor",
+    ioName: "+Res(Psionic)",
+    ppm: null,
+    mechanics: "Resistance(Psionic 5%)",
+    pvpNotes: "",
+    type: "Global",
+    levelRange: "15--40",
+    pool: "A-rare",
+    unique: "Unique"
+  },
   "Resist Speed and Recharge Debuffs": {
     setCategory: "Universal Travel",
     setName: "Winter's Gift",

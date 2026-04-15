@@ -378,6 +378,7 @@ export const HELP_TOPICS: HelpTopic[] = [
       'Right-click a slot: Remove enhancement or slot',
       'Shift + Right-click a slot: Compare Slotting tool',
       'Drag the + button: Add multiple slots at once',
+      'Press T: Toggle info tooltips on/off',
     ],
   },
   {

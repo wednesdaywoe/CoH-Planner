@@ -13,6 +13,7 @@ import { OnboardingBeacon } from '@/components/onboarding/OnboardingBeacon';
 import { useUIStore, useAuthStore } from '@/stores';
 import { useUpdateChecker } from '@/hooks/useUpdateChecker';
 import { useUndoRedoKeyboard } from '@/hooks/useUndoRedoKeyboard';
+import { useTooltipHotkey } from '@/hooks/useTooltipHotkey';
 
 interface MainLayoutProps {
   children: ReactNode;
@@ -25,6 +26,7 @@ export function MainLayout({ children }: MainLayoutProps) {
   const uiScale = useUIStore((s) => s.uiScale);
   const { updateAvailable } = useUpdateChecker();
   useUndoRedoKeyboard();
+  useTooltipHotkey();
   const initializeAuth = useAuthStore((s) => s.initialize);
 
   // Initialize auth on mount (checks existing session, listens for changes)

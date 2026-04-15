@@ -264,7 +264,7 @@ export function TouchableSlot({
           {...(!slot ? { 'data-onboarding': 'slot-enhancement' } : {})}
           title={
             slot
-              ? `${slot.name || 'Enhancement'} - right-click to remove, drag to remove multiple`
+              ? undefined
               : `Empty slot ${index + 1} - tap to add${canRemoveSlot ? ', right-click to remove, drag to remove multiple' : ''}`
           }
         >

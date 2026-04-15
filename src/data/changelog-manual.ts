@@ -21,16 +21,15 @@ export interface ManualEntry {
 export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   // ─── 2026-03-24 ────────────────────────────────────────────────────────────
   {
-    date: '2026-04-14',
+    date: '2026-04-15',
     items: [
-      { message: 'Enhanced VEAT branch powerset handling in Mids import process', type: 'fix' },
-      { message: 'Fixed a large number of powersets that had their level 0 powers incorrectly ordered', type: 'fix' },
+      { message: 'Fixed Impervium Armor\'s registration with the Dashboard system', type: 'fix' },
+      { message: 'You can now toggle info tooltips on/off with the T key', type: 'feat' },
+      { message: 'Tooltip info for individal enhancements will now show all related set bonuses and their active/inactive status (if applicabale)', type: 'feat' },
       { message: 'Added a gentle Onboarding beacon system to point out features for new users. Onboarding can be disabled or reset in the settings menu.', type: 'feat' },
-      { message: 'Added handling for Prestige enhancement UIDs to all import methods', type: 'feat' },
-      { message: 'Fixed recovery end/sec display double-counting the base 100 endurance', type: 'fix' },
-      { message: 'Fixed permatracker to use the same calculation as InfoPanel for Alpha incarnate bonuses instead of doing its own thing', type: 'fix' },
-      ]
+    ]
   },
+
 ];
 
 /** Flatten groups into individual entries for changelog.ts consumption */
