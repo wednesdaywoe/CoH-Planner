@@ -1938,7 +1938,7 @@ function SingleEntityDisplay({
   );
 }
 
-function PetDamageDisplay({ summon, level, enhancementDamageBonus, globalDamageBonus }: PetDamageDisplayProps) {
+export function PetDamageDisplay({ summon, level, enhancementDamageBonus, globalDamageBonus }: PetDamageDisplayProps) {
   const [upgradeTier, setUpgradeTier] = useState(0);
 
   // Build entity list from either entities array or single entity

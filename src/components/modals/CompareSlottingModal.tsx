@@ -22,6 +22,7 @@ import { STAT_DEFINITIONS } from '@/data/stat-definitions';
 import type { StatValue } from '@/data/stat-definitions';
 
 import { RegistryEffectsDisplay } from '@/components/info/SharedPowerComponents';
+import { PetDamageDisplay } from '@/components/info/InfoPanel';
 import { SetBonusSummary } from '@/components/enhancements/SetBonusDisplay';
 import { SlottedEnhancementIcon } from '@/components/powers/SlottedEnhancementIcon';
 import { resolvePath } from '@/utils/paths';
@@ -501,6 +502,18 @@ export function CompareSlottingModal() {
                 combatModifier: globalBonuses.combatModifier ?? 1,
               }}
             />
+
+            {/* Pet Damage section */}
+            {power.effects?.summon && (
+              <div className="mt-3 pt-3 border-t border-slate-700">
+                <PetDamageDisplay
+                  summon={power.effects.summon}
+                  level={build.level}
+                  enhancementDamageBonus={activeEnhBonuses.damage || 0}
+                  globalDamageBonus={globalBonusesForCalc.damage ?? 0}
+                />
+              </div>
+            )}
 
             {/* Dashboard Stats Impact section */}
             {visibleStatIds.length > 0 && hypotheticalLegacyStats && (
