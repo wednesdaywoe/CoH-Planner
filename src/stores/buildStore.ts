@@ -202,26 +202,56 @@ function syncBuildDefinitions(build: Build): void {
   // For VEATs, collect branch power definitions so sync covers branch powers too
   const archetype = build.archetype.id ? getArchetype(build.archetype.id) : null;
 
-  // Helper: fix powerSet to use the powerset ID instead of display name.
+  // Helper: fix powerSet to use the correct powerset ID.
   // For VEATs with branches, a power's powerSet may legitimately be a branch set ID
   // (e.g., 'arachnos-widow/fortunata-training') rather than the base primary ID.
-  // Only override if the current powerSet doesn't match ANY valid set for this role.
+  // Also fixes branch powers that were incorrectly assigned the base set ID
+  // (e.g., from older imports that didn't distinguish branch powersets).
   const fixPowerSetIds = (powers: SelectedPower[], correctId: string, role?: 'primary' | 'secondary'): SelectedPower[] => {
     // Collect all valid powerset IDs: base + branch sets
     const validIds = new Set([correctId]);
+    // Build branch set map for correcting misassigned powers
+    const branchSets: Array<{ id: string; powerNames: Set<string> }> = [];
     if (role && archetype?.branches) {
       for (const branch of Object.values(archetype.branches)) {
         if (!branch) continue;
         const branchSetId = role === 'primary' ? branch.primarySet : branch.secondarySet;
-        if (branchSetId) validIds.add(branchSetId);
+        if (branchSetId) {
+          validIds.add(branchSetId);
+          const branchPowerset = getPowerset(branchSetId);
+          if (branchPowerset) {
+            branchSets.push({
+              id: branchSetId,
+              powerNames: new Set(branchPowerset.powers.map(p => p.internalName)),
+            });
+          }
+        }
       }
     }
+
+    // Check if the base powerset actually contains each power
+    const basePowerset = getPowerset(correctId);
+    const basePowerNames = basePowerset
+      ? new Set(basePowerset.powers.map(p => p.internalName))
+      : new Set<string>();
 
     let anyChanged = false;
     const fixed = powers.map((power) => {
       if (!power.powerSet || !validIds.has(power.powerSet)) {
+        // Invalid powerset — assign base
         anyChanged = true;
         return { ...power, powerSet: correctId };
+      }
+      // Fix branch powers incorrectly assigned to the base powerset:
+      // if the power's current powerSet is the base but the power doesn't exist there,
+      // find the correct branch powerset
+      if (power.powerSet === correctId && !basePowerNames.has(power.internalName)) {
+        for (const branch of branchSets) {
+          if (branch.powerNames.has(power.internalName)) {
+            anyChanged = true;
+            return { ...power, powerSet: branch.id };
+          }
+        }
       }
       return power;
     });

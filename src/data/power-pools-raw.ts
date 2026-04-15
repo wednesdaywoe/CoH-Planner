@@ -534,7 +534,7 @@ export const POWER_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 10,
-          "endurance": 0.32,
+          "endurance": 0.1625,
           "activationTime": 3.1,
           "effectArea": "SingleTarget",
           "resistance": {
@@ -575,7 +575,7 @@ export const POWER_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 10,
-          "endurance": 0.32,
+          "endurance": 0.1625,
           "activationTime": 0.67,
           "effectArea": "SingleTarget",
           "defenseBuff": {
@@ -2972,6 +2972,7 @@ export const POWER_POOLS_RAW = {
           "recharge": 10,
           "endurance": 6.5,
           "activationTime": 3.93,
+          "interrupt": 1,
           "effectArea": "SingleTarget"
         }
       },
@@ -3072,6 +3073,7 @@ export const POWER_POOLS_RAW = {
           "recharge": 20,
           "endurance": 13,
           "activationTime": 4.33,
+          "interrupt": 1,
           "effectArea": "SingleTarget",
           "damage": {
             "type": "Heal",
@@ -3121,6 +3123,7 @@ export const POWER_POOLS_RAW = {
           "recharge": 180,
           "endurance": 32.5,
           "activationTime": 7.33,
+          "interrupt": 4,
           "effectArea": "SingleTarget",
           "damage": {
             "type": "Heal",
@@ -3820,6 +3823,7 @@ export const POWER_POOLS_RAW = {
           "recharge": 6,
           "endurance": 15,
           "activationTime": 5.93,
+          "interrupt": 4,
           "effectArea": "SingleTarget"
         }
       },

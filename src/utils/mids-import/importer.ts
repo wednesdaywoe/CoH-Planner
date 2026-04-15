@@ -610,7 +610,16 @@ function processEntry(
   if (primaryId) {
     const match = findPowerByMidsName(primaryPowers, powerInternalName);
     if (match) {
-      const power = buildSelectedPower(match, primaryId, appLevel, StatInclude, SlotEntries, warnings, summary);
+      // Determine correct powerset ID — may be a branch powerset, not the base
+      let correctSetId = primaryId;
+      for (const branchSetId of branchPrimarySetIds) {
+        const branchSet = getPowerset(branchSetId);
+        if (branchSet?.powers.some(p => p.internalName === match.internalName)) {
+          correctSetId = branchSetId;
+          break;
+        }
+      }
+      const power = buildSelectedPower(match, correctSetId, appLevel, StatInclude, SlotEntries, warnings, summary);
       summary.powersImported++;
       return { category: 'primary', power };
     }
@@ -620,7 +629,16 @@ function processEntry(
   if (secondaryId) {
     const match = findPowerByMidsName(secondaryPowers, powerInternalName);
     if (match) {
-      const power = buildSelectedPower(match, secondaryId, appLevel, StatInclude, SlotEntries, warnings, summary);
+      // Determine correct powerset ID — may be a branch powerset, not the base
+      let correctSetId = secondaryId;
+      for (const branchSetId of branchSecondarySetIds) {
+        const branchSet = getPowerset(branchSetId);
+        if (branchSet?.powers.some(p => p.internalName === match.internalName)) {
+          correctSetId = branchSetId;
+          break;
+        }
+      }
+      const power = buildSelectedPower(match, correctSetId, appLevel, StatInclude, SlotEntries, warnings, summary);
       summary.powersImported++;
       return { category: 'secondary', power };
     }
