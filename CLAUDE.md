@@ -4,17 +4,17 @@
 
 Prefer fixing root problems properly over quick fixes. The planner handles complex game mechanics with many interacting systems (AT tables, enhancement calculations, power effects, set bonuses). Band-aid fixes create compounding issues that are harder to debug later. When a bug surfaces, investigate whether it's a symptom of a deeper systemic issue before patching the surface behavior. This is essential for making the app reliable and maintainable.
 
-## Source Data Divergence
+## Source Data
 
 The raw source data (`raw_data_homecoming-*`) is gitignored due to the enormous number of files. This project exists on two machines (PC and Laptop), each with their own local copy of the source data.
 
-**Current divergence (as of 2026-03-28):**
+**Data source (as of 2026-04-14):**
 
-On Laptop, the source data was manually edited to reflect Homecoming's recent brute modifier changes. HC updated brute AT modifiers but did NOT update the power definition files in the `.bin` archives — we infer HC is modifying these values at runtime (server-side overrides). This is the same pattern seen with recent Sentinel changes.
+The binary parser now reads directly from the HC `.pigg` archives (`bin.pigg`, `bin_powers.pigg`, etc.) in the assets directory (e.g. `G:\Homecoming\assets\live`). The HC launcher updates these pigg files on every game patch, so whenever the parser runs it reads current data — no manual extraction step required.
 
-PC source data does **not** reflect these brute modifier edits.
+Previously, the parser read from loose `.bin` files in a `bin/` subdirectory that were a one-time manual extract from April 2019 — 7 years out of date. This was the root cause of all "missing data" issues (brute modifier changes, Kinetic Melee rework, etc.) that were incorrectly attributed to HC server-side runtime overrides. The laptop's manual brute modifier edits were a workaround for this stale-data problem.
 
-There is currently no reliable automated way to extract these runtime-modified values from HC. Any future AT modifier discrepancies should be investigated with this in mind — the `.bin` files may not be the source of truth for all values.
+**Note on format changes:** HC occasionally adds new fields to the binary format when patching. The parser auto-detects format version (e.g. the post-2025 "field 45b" between box_size and range in powers.bin). If data looks wrong after an HC patch, investigate the binary layout for new/changed fields.
 
 ## Bin Parser Export
 
@@ -23,6 +23,8 @@ Goal: Generate CoD2-compatible structured JSON from the binary parser, filtered 
 ### Current State (2026-03-28)
 
 The export is functional and verified. Run with: `py -3 power_stats/export_powers.py`
+
+The export and server now read directly from `.pigg` archives via `BinResolver`. Use `--assets-dir` to point at an assets directory (default: `G:\Homecoming\assets\live`).
 
 - **5,277 player powers** exported across 610 powersets in 34 categories
 - Effect template parsing implemented with core fields: attribs, aspect, table, scale, duration, magnitude
