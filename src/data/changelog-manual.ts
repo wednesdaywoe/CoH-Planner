@@ -23,6 +23,7 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   {
     date: '2026-04-15',
     items: [
+      { message: 'Fixed Blaster Leviathan Mastery showing the wrong AT version', type: 'fix' },
       { message: 'Fixed type assignment for Chain powers', type: 'fix' },
       { message: 'Fixed end costs for a variety of power pool toggles that were missing activate_period', type: 'fix' },
       { message: 'Fixed Impervium Armor\'s registration with the Dashboard system', type: 'fix' },

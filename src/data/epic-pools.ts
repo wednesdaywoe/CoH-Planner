@@ -204,7 +204,7 @@ const PATRON_POOL_FALLBACK: Record<string, string> = {
   tanker: 'brute',
   scrapper: 'stalker',
   controller: 'dominator',
-  blaster: 'sentinel',
+  blaster: 'corruptor',
 };
 
 // Villain ATs that lack epic pool data use their hero counterpart's epic pools.
