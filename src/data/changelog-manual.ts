@@ -23,12 +23,8 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   {
     date: '2026-04-15',
     items: [
+      { message: 'Added a new Enhancement shopping list for your Wentworths shopping pleasure! 🛍️ Look for it in the Dashboard quickbar. Functions as a checklist by clicking/touching each item to reduce by 1. At 0, the item is crossed off. Click again to reset.', type: 'feat' },
       { message: 'Fixed Blaster Leviathan Mastery showing the wrong AT version', type: 'fix' },
-      { message: 'Fixed type assignment for Chain powers', type: 'fix' },
-      { message: 'Fixed end costs for a variety of power pool toggles that were missing activate_period', type: 'fix' },
-      { message: 'Fixed Impervium Armor\'s registration with the Dashboard system', type: 'fix' },
-      { message: 'You can now toggle info tooltips on/off with the T key', type: 'feat' },
-      { message: 'Tooltip info for individual enhancements will now show all related set bonuses and their active/inactive status (if applicable)', type: 'feat' },
       { message: 'Added a gentle Onboarding beacon system to point out features for new users. Onboarding can be disabled or reset in the settings menu.', type: 'feat' },
     ]
   },
