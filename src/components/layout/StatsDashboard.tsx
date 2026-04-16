@@ -9,7 +9,7 @@ import { useCalculatedStats, useCharacterCalculation } from '@/hooks';
 import { useBuildStore, useUIStore } from '@/stores';
 import { getBaselineHealth } from '@/utils/calculations/stats';
 import { Tooltip } from '@/components/ui';
-import { StatsConfigModal, AccoladesModal, AboutModal, ExportImportModal, FeedbackModal, ChangelogModal, WelcomeModal, useWelcomeModal, SetBonusLookupModal, ControlsModal, HelpModal, CompareSlottingModal, DetailedTotalsModal, PowersetCompareModal, ProcSettingsModal } from '@/components/modals';
+import { StatsConfigModal, AccoladesModal, AboutModal, ExportImportModal, FeedbackModal, ChangelogModal, EnhancementListModal, WelcomeModal, useWelcomeModal, SetBonusLookupModal, ControlsModal, HelpModal, CompareSlottingModal, DetailedTotalsModal, PowersetCompareModal, ProcSettingsModal } from '@/components/modals';
 import { IncarnateSlotGrid, IncarnateModal, IncarnateCraftingModal } from '@/components/incarnate';
 import { PinnedPowersBar } from './PinnedPowersBar';
 import { INCARNATE_REQUIRED_LEVEL, createEmptyIncarnateBuildState } from '@/types';
@@ -69,6 +69,8 @@ export function StatsDashboard() {
   const closeFeedbackModal = useUIStore((s) => s.closeFeedbackModal);
   const changelogModalOpen = useUIStore((s) => s.changelogModalOpen);
   const closeChangelogModal = useUIStore((s) => s.closeChangelogModal);
+  const enhancementListModalOpen = useUIStore((s) => s.enhancementListModalOpen);
+  const closeEnhancementListModal = useUIStore((s) => s.closeEnhancementListModal);
   const controlsModalOpen = useUIStore((s) => s.controlsModalOpen);
   const openControlsModal = useUIStore((s) => s.openControlsModal);
   const closeControlsModal = useUIStore((s) => s.closeControlsModal);
@@ -423,6 +425,12 @@ export function StatsDashboard() {
       <ChangelogModal
         isOpen={changelogModalOpen}
         onClose={closeChangelogModal}
+      />
+
+      {/* Enhancement List (Shopping List) Modal */}
+      <EnhancementListModal
+        isOpen={enhancementListModalOpen}
+        onClose={closeEnhancementListModal}
       />
 
       {/* Controls Modal */}

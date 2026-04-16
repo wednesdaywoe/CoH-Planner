@@ -105,6 +105,9 @@ interface UIState {
   /** Changelog modal open state */
   changelogModalOpen: boolean;
 
+  /** Enhancement list (shopping list) modal open state */
+  enhancementListModalOpen: boolean;
+
   /** Controls modal open state */
   controlsModalOpen: boolean;
 
@@ -342,6 +345,8 @@ interface UIActions {
   // Changelog Modal
   openChangelogModal: () => void;
   closeChangelogModal: () => void;
+  openEnhancementListModal: () => void;
+  closeEnhancementListModal: () => void;
 
   // Controls Modal
   openControlsModal: () => void;
@@ -528,6 +533,7 @@ export const useUIStore = create<UIStore>()(
       exportImportModalTab: null,
       feedbackModalOpen: false,
       changelogModalOpen: false,
+      enhancementListModalOpen: false,
       controlsModalOpen: false,
       helpModalOpen: false,
       detailedTotalsModalOpen: false,
@@ -1005,6 +1011,12 @@ export const useUIStore = create<UIStore>()(
 
       closeChangelogModal: () =>
         set({ changelogModalOpen: false }),
+
+      openEnhancementListModal: () =>
+        set({ enhancementListModalOpen: true }),
+
+      closeEnhancementListModal: () =>
+        set({ enhancementListModalOpen: false }),
 
       // Controls Modal
       openControlsModal: () =>
