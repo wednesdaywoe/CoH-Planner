@@ -124,11 +124,19 @@ function formatForClipboard(bySet: Map<string, EnhancementGroup[]>, totalCatalys
   return lines.join('\n');
 }
 
+/** Build a stable key for a group used for tracking acquired counts */
+function groupKey(setName: string, pieceName: string): string {
+  return `${setName}\u0000${pieceName}`;
+}
+
 export function EnhancementListModal({ isOpen, onClose }: EnhancementListModalProps) {
   const build = useBuildStore((s) => s.build);
   const [copied, setCopied] = useState(false);
+  // Tracks how many of each group have been "acquired" (clicked off).
+  // Keyed by groupKey(setName, pieceName).
+  const [acquired, setAcquired] = useState<Record<string, number>>({});
 
-  const { bySet, totalEnhancements, totalCatalysts, totalBoosters } = useMemo(() => {
+  const { bySet, groups, totalEnhancements, totalCatalysts, totalBoosters } = useMemo(() => {
     const enhancements = collectEnhancements(build);
     const groups = buildGroups(enhancements);
     const bySet = groupBySetName(groups);
@@ -136,11 +144,41 @@ export function EnhancementListModal({ isOpen, onClose }: EnhancementListModalPr
     const totalBoosters = groups.reduce((sum, g) => sum + g.totalBoosts, 0);
     return {
       bySet,
+      groups,
       totalEnhancements: enhancements.length,
       totalCatalysts,
       totalBoosters,
     };
   }, [build]);
+
+  // Compute remaining catalysts/boosters proportionally based on remaining pieces.
+  const { remainingCatalysts, remainingBoosters, remainingEnhancements } = useMemo(() => {
+    let cats = 0, boosts = 0, count = 0;
+    for (const g of groups) {
+      const acq = Math.min(acquired[groupKey(g.setName, g.pieceName)] ?? 0, g.count);
+      const remaining = g.count - acq;
+      count += remaining;
+      // Scale catalysts/boosters proportionally to remaining pieces in this group.
+      if (g.count > 0) {
+        cats += Math.round((g.attunedCount * remaining) / g.count);
+        boosts += Math.round((g.totalBoosts * remaining) / g.count);
+      }
+    }
+    return { remainingCatalysts: cats, remainingBoosters: boosts, remainingEnhancements: count };
+  }, [groups, acquired]);
+
+  const handleClickGroup = (setName: string, pieceName: string, count: number) => {
+    const key = groupKey(setName, pieceName);
+    setAcquired((prev) => {
+      const current = Math.min(prev[key] ?? 0, count);
+      // If everything is acquired, clicking resets to 0.
+      // Otherwise, increment by 1 (decrease remaining by 1).
+      const next = current >= count ? 0 : current + 1;
+      return { ...prev, [key]: next };
+    });
+  };
+
+  const handleResetAll = () => setAcquired({});
 
   const handleCopy = async () => {
     try {
@@ -152,32 +190,60 @@ export function EnhancementListModal({ isOpen, onClose }: EnhancementListModalPr
     }
   };
 
+  const allAcquired = remainingEnhancements === 0;
+
   return (
-    <Modal isOpen={isOpen} onClose={onClose} title={`Enhancement List (${totalEnhancements})`} size="full">
+    <Modal isOpen={isOpen} onClose={onClose} title={`Enhancement List (${remainingEnhancements}/${totalEnhancements})`} size="full">
       <ModalBody>
         {totalEnhancements === 0 ? (
           <p className="text-sm text-gray-500 text-center py-8">No enhancements slotted in this build.</p>
         ) : (
           <>
-            {/* Totals + copy */}
+            {/* Instructions */}
+            <div className="text-[10px] text-gray-500 text-center mb-2">
+              Click an item to mark one as acquired &middot; Click again at 0 to reset
+            </div>
+
+            {/* Totals + actions */}
             <div className="flex items-center justify-between gap-3 mb-3 pb-3 border-b border-gray-700">
               <div className="flex gap-4 text-sm">
                 <div>
                   <span className="text-gray-400">Catalysts:</span>{' '}
-                  <span className="font-semibold text-amber-400">{totalCatalysts}</span>
+                  <span className="font-semibold text-amber-400">{remainingCatalysts}</span>
+                  {remainingCatalysts !== totalCatalysts && (
+                    <span className="text-gray-500"> / {totalCatalysts}</span>
+                  )}
                 </div>
                 <div>
                   <span className="text-gray-400">Boosters:</span>{' '}
-                  <span className="font-semibold text-green-400">{totalBoosters}</span>
+                  <span className="font-semibold text-green-400">{remainingBoosters}</span>
+                  {remainingBoosters !== totalBoosters && (
+                    <span className="text-gray-500"> / {totalBoosters}</span>
+                  )}
                 </div>
               </div>
-              <button
-                onClick={handleCopy}
-                className="text-xs px-3 py-1 rounded bg-gray-700 hover:bg-gray-600 text-gray-200 transition-colors"
-              >
-                {copied ? 'Copied!' : 'Copy to clipboard'}
-              </button>
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={handleResetAll}
+                  disabled={remainingEnhancements === totalEnhancements}
+                  className="text-xs px-3 py-1 rounded bg-gray-700 hover:bg-gray-600 text-gray-200 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+                >
+                  Reset
+                </button>
+                <button
+                  onClick={handleCopy}
+                  className="text-xs px-3 py-1 rounded bg-gray-700 hover:bg-gray-600 text-gray-200 transition-colors"
+                >
+                  {copied ? 'Copied!' : 'Copy'}
+                </button>
+              </div>
             </div>
+
+            {allAcquired && (
+              <div className="text-xs text-emerald-400 text-center mb-2">
+                All enhancements acquired! &#x2713;
+              </div>
+            )}
 
             {/* Grouped list */}
             <div className="space-y-3 max-h-[60vh] overflow-y-auto pr-1">
@@ -185,22 +251,43 @@ export function EnhancementListModal({ isOpen, onClose }: EnhancementListModalPr
                 <div key={setName}>
                   <h3 className="text-sm font-semibold text-yellow-400 mb-1">{setName}</h3>
                   <ul className="space-y-0.5 ml-2">
-                    {groups.map((g) => (
-                      <li key={g.pieceName} className="flex items-baseline gap-2 text-sm text-gray-300">
-                        <span className="text-gray-500 font-mono w-6 text-right flex-shrink-0">{g.count}x</span>
-                        <span className="flex-1">{g.pieceName}</span>
-                        {g.attunedCount > 0 && (
-                          <span className="text-[10px] text-amber-400 whitespace-nowrap">
-                            {g.attunedCount} attuned
+                    {groups.map((g) => {
+                      const acq = Math.min(acquired[groupKey(g.setName, g.pieceName)] ?? 0, g.count);
+                      const remaining = g.count - acq;
+                      const isComplete = remaining <= 0;
+                      return (
+                        <li
+                          key={g.pieceName}
+                          onClick={() => handleClickGroup(g.setName, g.pieceName, g.count)}
+                          className={`flex items-baseline gap-2 text-sm rounded px-1 py-0.5 cursor-pointer select-none transition-colors ${
+                            isComplete
+                              ? 'text-gray-500 line-through opacity-50 hover:opacity-70'
+                              : 'text-gray-300 hover:bg-gray-800/50'
+                          }`}
+                        >
+                          <span className="font-mono w-10 text-right flex-shrink-0">
+                            {isComplete ? '' : `${remaining}x`}
+                            {!isComplete && acq > 0 && (
+                              <span className="text-gray-500">/{g.count}</span>
+                            )}
                           </span>
-                        )}
-                        {g.totalBoosts > 0 && (
-                          <span className="text-[10px] text-green-400 whitespace-nowrap">
-                            +{g.totalBoosts} boost{g.totalBoosts === 1 ? '' : 's'}
-                          </span>
-                        )}
-                      </li>
-                    ))}
+                          <span className="flex-1">{g.pieceName}</span>
+                          {g.attunedCount > 0 && !isComplete && (
+                            <span className="text-[10px] text-amber-400 whitespace-nowrap">
+                              {g.attunedCount} attuned
+                            </span>
+                          )}
+                          {g.totalBoosts > 0 && !isComplete && (
+                            <span className="text-[10px] text-green-400 whitespace-nowrap">
+                              +{g.totalBoosts} boost{g.totalBoosts === 1 ? '' : 's'}
+                            </span>
+                          )}
+                          {isComplete && (
+                            <span className="text-[10px] text-gray-600">&#x2713;</span>
+                          )}
+                        </li>
+                      );
+                    })}
                   </ul>
                 </div>
               ))}

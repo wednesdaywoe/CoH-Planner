@@ -70,6 +70,7 @@ export function StatsDashboard() {
   const changelogModalOpen = useUIStore((s) => s.changelogModalOpen);
   const closeChangelogModal = useUIStore((s) => s.closeChangelogModal);
   const enhancementListModalOpen = useUIStore((s) => s.enhancementListModalOpen);
+  const openEnhancementListModal = useUIStore((s) => s.openEnhancementListModal);
   const closeEnhancementListModal = useUIStore((s) => s.closeEnhancementListModal);
   const controlsModalOpen = useUIStore((s) => s.controlsModalOpen);
   const openControlsModal = useUIStore((s) => s.openControlsModal);
@@ -334,6 +335,12 @@ export function StatsDashboard() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" />
             </svg>
             <span className="hidden md:inline">Compare Slotting</span>
+          </button>
+          <button onClick={openEnhancementListModal} className="flex items-center gap-1 px-1.5 py-1 text-xs text-gray-400 hover:text-purple-300 hover:bg-gray-800 rounded transition-colors shrink-0" title="View enhancement shopping list" data-onboarding="enhancement-list">
+            <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+            </svg>
+            <span className="hidden md:inline">Enhancement List</span>
           </button>
           <button onClick={openStatsConfigModal} className="flex items-center gap-1 px-1.5 py-1 text-xs text-gray-400 hover:text-gray-200 hover:bg-gray-800 rounded transition-colors shrink-0" title="Configure dashboard stats" data-onboarding="stats-config">
             <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">

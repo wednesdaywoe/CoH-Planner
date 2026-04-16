@@ -74,7 +74,6 @@ export function Header() {
   const toggleCombatMode = useUIStore((s) => s.toggleCombatMode);
   const openProcSettingsModal = useUIStore((s) => s.openProcSettingsModal);
   const openAboutModal = useUIStore((s) => s.openAboutModal);
-  const openEnhancementListModal = useUIStore((s) => s.openEnhancementListModal);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -113,7 +112,6 @@ export function Header() {
           onNew={() => setConfirmAction('new')}
           onClear={() => setConfirmAction('clear')}
           onAbout={openAboutModal}
-          onEnhancementList={openEnhancementListModal}
         />
 
         <SettingsPopover />
@@ -442,13 +440,11 @@ function ActionMenu({
   onNew,
   onClear,
   onAbout,
-  onEnhancementList,
 }: {
   onOpenModal: (tab?: 'save' | 'load-import' | 'share-export') => void;
   onNew: () => void;
   onClear: () => void;
   onAbout: () => void;
-  onEnhancementList: () => void;
 }) {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -513,11 +509,6 @@ function ActionMenu({
           <button onClick={() => { onClear(); setOpen(false); }} className="w-full text-left px-3 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white transition-colors flex items-center gap-2">
             <svg className="w-4 h-4 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
             Clear Powers
-          </button>
-          <hr className="border-gray-700 my-1" />
-          <button onClick={() => { onEnhancementList(); setOpen(false); }} className="w-full text-left px-3 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white transition-colors flex items-center gap-2">
-            <svg className="w-4 h-4 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" /></svg>
-            Enhancement List
           </button>
           {supabase && !loading && (
             <>
