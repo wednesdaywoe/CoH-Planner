@@ -45,6 +45,7 @@ export const ONBOARDING_STEPS: OnboardingStepDef[] = [
   { id: 'stat-hover', tier: 2, hint: 'Click any stat to track it \u2014 hover to see the breakdown' },
   { id: 'set-bonus-finder', tier: 2, hint: 'Search IO sets by bonus type to find what your build needs' },
   { id: 'compare-slotting', tier: 2, hint: 'Compare different slotting options side-by-side' },
+  { id: 'enhancement-list', tier: 2, hint: 'See your full enhancement shopping list \u2014 click items to mark them as acquired' },
   { id: 'detailed-totals', tier: 2, hint: 'See the full breakdown of all your stats in one place' },
   { id: 'power-toggle', tier: 2, hint: 'Toggle powers on/off to see how they change your stats' },
   { id: 'accolades', tier: 2, hint: 'Claim accolade bonuses to add permanent stat boosts' },
