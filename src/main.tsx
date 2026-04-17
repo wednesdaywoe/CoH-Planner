@@ -3,8 +3,9 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App'
 
-// Register window.cohDebug for calculation debug logging
+// Register window.cohDebug for calculation debug logging + fallback warnings
 import '@/utils/calc-debug'
+import '@/utils/fallback-warnings'
 
 // Handle .skif files opened via PWA file association
 if ('launchQueue' in window) {

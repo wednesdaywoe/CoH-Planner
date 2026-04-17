@@ -24,6 +24,7 @@ import {
   PRESTIGE_ENHANCEMENTS,
 } from '@/data';
 import type { MidsImportWarning } from './types';
+import { warnFallback } from '@/utils/fallback-warnings';
 
 // ============================================
 // ARCHETYPE MAPPING
@@ -187,7 +188,10 @@ export function findPowerByMidsName(powers: Power[], midsName: string): Power | 
   const byDisplay = powers.find(
     (p) => p.name.toLowerCase() === normalized.toLowerCase()
   );
-  if (byDisplay) return byDisplay;
+  if (byDisplay) {
+    warnFallback('findPowerByMidsName', `'${midsName}' matched by display name → '${byDisplay.name}' (internalName '${byDisplay.internalName}') — internalName lookup failed`);
+    return byDisplay;
+  }
 
   // Try display name with hyphen normalization: "Tri_Cannon" → "tri cannon" matches "Tri-Cannon" → "tri cannon"
   const normalizeAll = (s: string) => s.toLowerCase().replace(/[-_]/g, ' ');
@@ -195,7 +199,10 @@ export function findPowerByMidsName(powers: Power[], midsName: string): Power | 
   const byDisplayNormalized = powers.find(
     (p) => normalizeAll(p.name) === normalizedAll
   );
-  if (byDisplayNormalized) return byDisplayNormalized;
+  if (byDisplayNormalized) {
+    warnFallback('findPowerByMidsName', `'${midsName}' matched by hyphen-normalized display name → '${byDisplayNormalized.name}' (internalName '${byDisplayNormalized.internalName}')`);
+    return byDisplayNormalized;
+  }
 
   // fullName last segment match (e.g., "Combat_Flight" matches Pool.Flight.Combat_Flight → "Hover")
   const lowerName = corrected.toLowerCase();
@@ -204,7 +211,10 @@ export function findPowerByMidsName(powers: Power[], midsName: string): Power | 
     const segment = p.fullName.split('.').pop() ?? '';
     return segment.toLowerCase() === lowerName;
   });
-  if (byFullName) return byFullName;
+  if (byFullName) {
+    warnFallback('findPowerByMidsName', `'${midsName}' matched by fullName last-segment → '${byFullName.name}' (internalName '${byFullName.internalName}')`);
+    return byFullName;
+  }
 
   return null;
 }

@@ -50,6 +50,7 @@ import {
   mapEnhancementUid,
 } from './mappers';
 import type { PoolPowerMatch, EpicPowerMatch } from './mappers';
+import { warnFallback } from '@/utils/fallback-warnings';
 
 // ============================================
 // MAIN IMPORT FUNCTION
@@ -653,6 +654,7 @@ function processEntry(
       const match = findPowerByMidsName(fallbackPowerset.powers, powerInternalName);
       if (match) {
         const category = categorizePowerset(fallbackPowersetId, fallbackPowerset.category, branchPrimarySetIds, branchSecondarySetIds);
+        warnFallback('mids-import/processEntry', `power '${PowerName}' resolved via powerset path (fallback 1) to '${fallbackPowersetId}' as ${category}`);
         const power = buildSelectedPower(match, fallbackPowersetId, appLevel, StatInclude, SlotEntries, warnings, summary);
         summary.powersImported++;
         return { category, power };
@@ -667,6 +669,7 @@ function processEntry(
     const match = findPowerByMidsName(ps.powers, powerInternalName);
     if (match) {
       const category = categorizePowerset(psId, ps.category, branchPrimarySetIds, branchSecondarySetIds);
+      warnFallback('mids-import/processEntry', `power '${PowerName}' resolved via brute-force search (fallback 2) — found in '${psId}' as ${category}`);
       const power = buildSelectedPower(match, psId, appLevel, StatInclude, SlotEntries, warnings, summary);
       summary.powersImported++;
       return { category: category as 'primary' | 'secondary', power };

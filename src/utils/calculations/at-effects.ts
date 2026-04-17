@@ -11,6 +11,7 @@
  */
 
 import { AT_TABLES, getTableValue } from '@/data/at-tables';
+import { warnFallback } from '@/utils/fallback-warnings';
 import type { ArchetypeId } from '@/types';
 
 // ============================================
@@ -110,7 +111,10 @@ export function calculateScaledEffect(
 
   const tableValue = getTableValue(normalizedAT, normalizedTable, level);
   if (tableValue === undefined) {
-    console.warn(`Table not found: ${normalizedTable} for ${normalizedAT}`);
+    // Note: getTableValue already warns on the root cause (unknown AT / missing
+    // table). We still return null here so the effect is excluded — but the
+    // caller should know that happened.
+    warnFallback('calculateScaledEffect', `returning null (no table value) for scale ${effect.scale} × '${normalizedTable}'`);
     return null;
   }
 

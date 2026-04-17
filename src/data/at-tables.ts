@@ -1,10 +1,12 @@
 /**
  * Archetype Modifier Tables
  * Auto-generated from Homecoming raw data
- * 
+ *
  * Each table is an array of 54 values for levels 1-54
  * Usage: tableValue = AT_TABLES[archetype].tables[tableName][level - 1]
  */
+
+import { warnFallback } from '@/utils/fallback-warnings';
 
 export interface ATTableData {
   primaryCategory: string;
@@ -8309,18 +8311,21 @@ export function getTableValue(
   level: number
 ): number | undefined {
   const at = AT_TABLES[archetype];
-  if (!at) return undefined;
-  
+  if (!at) {
+    warnFallback('getTableValue', `unknown archetype '${archetype}' (requested table '${tableName}')`);
+    return undefined;
+  }
+
   const key = tableName.toLowerCase();
   let table = at.tables[key];
-  
+
   // Power data uses suffixed names (e.g., "Ranged_HealSelf") that map to
   // base table names (e.g., "ranged_heal"). Strip common suffixes to match.
   if (!table) {
     const stripped = key.replace(/self$|other$|target$/, '');
     table = at.tables[stripped];
   }
-  
+
   // Alias temp/incarnate damage tables to base damage tables
   if (!table) {
     const aliased = key
@@ -8328,10 +8333,16 @@ export function getTableValue(
       .replace('_incarnateprocdamage', '_damage');
     if (aliased !== key) table = at.tables[aliased];
   }
-  
-  if (!table) return undefined;
-  
-  // Level 1 = index 0
+
+  if (!table) {
+    warnFallback('getTableValue', `table '${tableName}' not found for archetype '${archetype}'`);
+    return undefined;
+  }
+
+  // Level 1 = index 0 — clamp out-of-range levels to the valid window
+  if (level < 1 || level > 54) {
+    warnFallback('getTableValue', `level ${level} out of range [1,54] for '${archetype}'/'${tableName}' (clamped)`);
+  }
   const index = Math.max(0, Math.min(53, level - 1));
   return table[index];
 }

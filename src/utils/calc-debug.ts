@@ -330,6 +330,13 @@ interface CohDebugAPI {
   enable: () => void;
   disable: () => void;
   status: () => void;
+  // Extensions registered by other modules (e.g., fallback-warnings)
+  warnings?: {
+    enable: () => void;
+    disable: () => void;
+    clear: () => void;
+    status: () => void;
+  };
 }
 
 declare global {
@@ -338,13 +345,13 @@ declare global {
   }
 }
 
-// Register on window immediately
+// Register on window immediately. Mutate in-place so co-registrants
+// (e.g., fallback-warnings.ts) survive regardless of load order.
 if (typeof window !== 'undefined') {
-  window.cohDebug = {
-    enable: enableCalcDebug,
-    disable: disableCalcDebug,
-    status: statusCalcDebug,
-  };
+  const hub = (window.cohDebug ??= {} as Window['cohDebug']);
+  hub.enable = enableCalcDebug;
+  hub.disable = disableCalcDebug;
+  hub.status = statusCalcDebug;
 
   // Show a subtle hint on first load if not already enabled
   if (!_enabled) {

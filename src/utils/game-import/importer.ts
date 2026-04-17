@@ -41,6 +41,7 @@ import { GRANTED_POWER_GROUPS } from '@/data/granted-powers';
 import type { InherentPowerDef } from '@/data';
 import { computeSetTracking } from '@/utils/calculations/set-tracking';
 
+import { warnFallback } from '@/utils/fallback-warnings';
 import { parseGameExport } from './parser';
 import type {
   GameExportData,
@@ -330,7 +331,11 @@ export function importFromParsedData(parsed: GameExportData): GameImportResult {
   }
 
   // 3. Map origin and level
-  const origin = ORIGIN_MAP[parsed.header.origin] ?? 'Natural';
+  let origin = ORIGIN_MAP[parsed.header.origin];
+  if (!origin) {
+    warnFallback('game-import/origin', `unknown origin '${parsed.header.origin}' — defaulting to 'Natural'`);
+    origin = 'Natural';
+  }
   const level = Math.min(Math.max(parsed.header.level, 1), 50);
 
   // Build set of non-slottable granted sub-power names to skip during import
@@ -654,11 +659,17 @@ function resolvePowersetId(gameSetName: string, archetypeId: string): string | n
 
     // Match by internal name in the powerset data
     const psSlug = id.split('/')[1];
-    if (psSlug === slug) return id;
+    if (psSlug === slug) {
+      warnFallback('game-import/resolvePowersetId', `'${gameSetName}' (${archetypeId}) matched by brute-force slug scan → '${id}'`);
+      return id;
+    }
 
     // Match by display name
     const psDisplaySlug = ps.name.toLowerCase().replace(/\s+/g, '-');
-    if (psDisplaySlug === slug) return id;
+    if (psDisplaySlug === slug) {
+      warnFallback('game-import/resolvePowersetId', `'${gameSetName}' (${archetypeId}) matched by display-name scan → '${id}'`);
+      return id;
+    }
   }
 
   return null;
@@ -881,6 +892,7 @@ function resolveEnhancement(enh: GameExportEnhancement): EnhancementResolveResul
     const nameLookup = getIOSetNameLookup();
     const fallbackId = nameLookup.get(parsed.setId);
     if (fallbackId) {
+      warnFallback('game-import/resolveEnhancement', `IO set '${parsed.setId}' resolved via name-based lookup → '${fallbackId}' (UID '${uid}')`);
       ioSet = getIOSet(fallbackId);
     }
   }
