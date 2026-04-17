@@ -1,0 +1,1058 @@
+{
+  "version": 3,
+  "build": {
+    "name": "brian",
+    "archetype": {
+      "id": "blaster",
+      "name": "Blaster"
+    },
+    "level": 50,
+    "exemplarLevel": null,
+    "progressionMode": "auto",
+    "primary": {
+      "id": "blaster/fire-blast",
+      "name": "Fire Blast",
+      "powers": [
+        {
+          "name": "Fire Blast",
+          "internalName": "Fire_Blast",
+          "level": 1,
+          "slots": [
+            {
+              "type": "io-set",
+              "setId": "decimation",
+              "pieceNum": 6,
+              "level": 40
+            }
+          ]
+        },
+        {
+          "name": "Fire Ball",
+          "internalName": "Fire_Ball",
+          "level": 2,
+          "slots": [
+            {
+              "type": "io-set",
+              "setId": "frozen_blast",
+              "pieceNum": 6,
+              "attuned": true
+            },
+            {
+              "type": "io-set",
+              "setId": "frozen_blast",
+              "pieceNum": 5,
+              "attuned": true
+            },
+            {
+              "type": "io-set",
+              "setId": "frozen_blast",
+              "pieceNum": 1,
+              "attuned": true
+            },
+            {
+              "type": "io-set",
+              "setId": "frozen_blast",
+              "pieceNum": 2,
+              "attuned": true
+            },
+            {
+              "type": "io-set",
+              "setId": "frozen_blast",
+              "pieceNum": 3,
+              "attuned": true
+            },
+            {
+              "type": "io-set",
+              "setId": "frozen_blast",
+              "pieceNum": 4,
+              "attuned": true
+            }
+          ]
+        },
+        {
+          "name": "Blaze",
+          "internalName": "Blaze",
+          "level": 18,
+          "slots": [
+            {
+              "type": "io-set",
+              "setId": "superior_defiant_barrage",
+              "pieceNum": 6,
+              "attuned": true
+            },
+            {
+              "type": "io-set",
+              "setId": "superior_defiant_barrage",
+              "pieceNum": 5,
+              "attuned": true
+            },
+            {
+              "type": "io-set",
+              "setId": "superior_defiant_barrage",
+              "pieceNum": 1,
+              "attuned": true
+            },
+            {
+              "type": "io-set",
+              "setId": "superior_defiant_barrage",
+              "pieceNum": 2,
+              "attuned": true
+            },
+            {
+              "type": "io-set",
+              "setId": "superior_defiant_barrage",
+              "pieceNum": 3,
+              "attuned": true
+            },
+            {
+              "type": "io-set",
+              "setId": "superior_defiant_barrage",
+              "pieceNum": 4,
+              "attuned": true
+            }
+          ]
+        },
+        {
+          "name": "Blazing Bolt",
+          "internalName": "Blazing_Bolt",
+          "level": 22,
+          "slots": [
+            {
+              "type": "io-set",
+              "setId": "superior_blasters_wrath",
+              "pieceNum": 6,
+              "attuned": true
+            },
+            {
+              "type": "io-set",
+              "setId": "superior_blasters_wrath",
+              "pieceNum": 5,
+              "attuned": true
+            },
+            {
+              "type": "io-set",
+              "setId": "superior_blasters_wrath",
+              "pieceNum": 1,
+              "attuned": true
+            },
+            {
+              "type": "io-set",
+              "setId": "superior_blasters_wrath",
+              "pieceNum": 2,
+              "attuned": true
+            },
+            {
+              "type": "io-set",
+              "setId": "superior_blasters_wrath",
+              "pieceNum": 3,
+              "attuned": true
+            },
+            {
+              "type": "io-set",
+              "setId": "superior_blasters_wrath",
+              "pieceNum": 4,
+              "attuned": true
+            }
+          ]
+        },
+        {
+          "name": "Inferno",
+          "internalName": "Inferno",
+          "level": 26,
+          "slots": [
+            {
+              "type": "io-set",
+              "setId": "avalanche",
+              "pieceNum": 6,
+              "attuned": true
+            },
+            {
+              "type": "io-set",
+              "setId": "avalanche",
+              "pieceNum": 5,
+              "attuned": true
+            },
+            {
+              "type": "io-set",
+              "setId": "avalanche",
+              "pieceNum": 1,
+              "attuned": true
+            },
+            {
+              "type": "io-set",
+              "setId": "avalanche",
+              "pieceNum": 2,
+              "attuned": true
+            },
+            {
+              "type": "io-set",
+              "setId": "avalanche",
+              "pieceNum": 3,
+              "attuned": true
+            },
+            {
+              "type": "io-set",
+              "setId": "avalanche",
+              "pieceNum": 4,
+              "attuned": true
+            }
+          ]
+        },
+        {
+          "name": "Aim",
+          "internalName": "Aim",
+          "level": 30,
+          "slots": [
+            {
+              "type": "io-set",
+              "setId": "adjusted_targeting",
+              "pieceNum": 1,
+              "level": 50
+            },
+            {
+              "type": "io-set",
+              "setId": "adjusted_targeting",
+              "pieceNum": 5,
+              "level": 50
+            }
+          ]
+        }
+      ]
+    },
+    "secondary": {
+      "id": "blaster/temporal-manipulation",
+      "name": "Temporal Manipulation",
+      "powers": [
+        {
+          "name": "Time Wall",
+          "internalName": "Time_Wall",
+          "level": 1,
+          "slots": [
+            {
+              "type": "io-set",
+              "setId": "impeded_swiftness",
+              "pieceNum": 6,
+              "level": 30
+            },
+            {
+              "type": "io-set",
+              "setId": "impeded_swiftness",
+              "pieceNum": 1,
+              "level": 30
+            }
+          ]
+        },
+        {
+          "name": "Chronos",
+          "internalName": "Chronological_Selection",
+          "level": 10,
+          "slots": [
+            {
+              "type": "io-set",
+              "setId": "gaussians_synchronized_firecontrol",
+              "pieceNum": 6,
+              "level": 50
+            }
+          ]
+        },
+        {
+          "name": "Temporal Healing",
+          "internalName": "Temporal_Healing",
+          "level": 20,
+          "slots": [
+            {
+              "type": "io-set",
+              "setId": "preventive_medicine",
+              "pieceNum": 6,
+              "level": 50
+            },
+            {
+              "type": "io-set",
+              "setId": "preventive_medicine",
+              "pieceNum": 1,
+              "level": 50
+            },
+            {
+              "type": "io-set",
+              "setId": "numinas_convalesence",
+              "pieceNum": 6,
+              "level": 50
+            },
+            {
+              "type": "io-set",
+              "setId": "numinas_convalesence",
+              "pieceNum": 5,
+              "level": 50
+            },
+            {
+              "type": "io-set",
+              "setId": "performance_shifter",
+              "pieceNum": 6,
+              "level": 50
+            },
+            {
+              "type": "io-set",
+              "setId": "efficacy_adaptor",
+              "pieceNum": 1,
+              "level": 50
+            }
+          ],
+          "isActive": true
+        },
+        {
+          "name": "Future Pain",
+          "internalName": "Future_Pain",
+          "level": 24,
+          "slots": [
+            {
+              "type": "io-set",
+              "setId": "blistering_cold",
+              "pieceNum": 6,
+              "attuned": true
+            },
+            {
+              "type": "io-set",
+              "setId": "blistering_cold",
+              "pieceNum": 5,
+              "attuned": true
+            },
+            {
+              "type": "io-set",
+              "setId": "blistering_cold",
+              "pieceNum": 1,
+              "attuned": true
+            },
+            {
+              "type": "io-set",
+              "setId": "blistering_cold",
+              "pieceNum": 2,
+              "attuned": true
+            },
+            {
+              "type": "io-set",
+              "setId": "blistering_cold",
+              "pieceNum": 3,
+              "attuned": true
+            },
+            {
+              "type": "io-set",
+              "setId": "blistering_cold",
+              "pieceNum": 4,
+              "attuned": true
+            }
+          ]
+        },
+        {
+          "name": "Time Shift",
+          "internalName": "Time_Shift",
+          "level": 28,
+          "slots": [
+            {
+              "type": "io-set",
+              "setId": "dampened_spirits",
+              "pieceNum": 1,
+              "level": 50
+            },
+            {
+              "type": "io-set",
+              "setId": "dampened_spirits",
+              "pieceNum": 2,
+              "level": 50
+            },
+            {
+              "type": "io-set",
+              "setId": "cloud_senses",
+              "pieceNum": 1,
+              "level": 30
+            },
+            {
+              "type": "io-set",
+              "setId": "cloud_senses",
+              "pieceNum": 2,
+              "level": 30
+            },
+            {
+              "type": "io-set",
+              "setId": "absolute_amazement",
+              "pieceNum": 5,
+              "level": 50
+            },
+            {
+              "type": "io-set",
+              "setId": "absolute_amazement",
+              "pieceNum": 2,
+              "level": 50
+            }
+          ]
+        },
+        {
+          "name": "Time Lord",
+          "internalName": "Time_Lord",
+          "level": 32,
+          "slots": [
+            {
+              "type": "io-set",
+              "setId": "aegis",
+              "pieceNum": 6,
+              "level": 50
+            },
+            {
+              "type": "io-set",
+              "setId": "aegis",
+              "pieceNum": 5,
+              "level": 50
+            },
+            {
+              "type": "io-set",
+              "setId": "aegis",
+              "pieceNum": 1,
+              "level": 50
+            },
+            {
+              "type": "io-set",
+              "setId": "aegis",
+              "pieceNum": 2,
+              "level": 50
+            }
+          ],
+          "isActive": true
+        }
+      ]
+    },
+    "pools": [
+      {
+        "id": "invisibility",
+        "name": "Concealment",
+        "powers": [
+          {
+            "name": "Stealth",
+            "internalName": "Stealth",
+            "level": 4,
+            "slots": [
+              {
+                "type": "io-set",
+                "setId": "luck_of_the_gambler",
+                "pieceNum": 6,
+                "level": 50
+              },
+              {
+                "type": "io-set",
+                "setId": "luck_of_the_gambler",
+                "pieceNum": 5,
+                "level": 50
+              },
+              {
+                "type": "io-set",
+                "setId": "shield_wall",
+                "pieceNum": 6,
+                "level": 50
+              },
+              {
+                "type": "io-set",
+                "setId": "shield_wall",
+                "pieceNum": 5,
+                "level": 50
+              }
+            ],
+            "isActive": true
+          }
+        ]
+      },
+      {
+        "id": "speed",
+        "name": "Speed",
+        "powers": [
+          {
+            "name": "Hasten",
+            "internalName": "Hasten",
+            "level": 6,
+            "slots": [
+              {
+                "type": "io-generic",
+                "stat": "Recharge",
+                "level": 50
+              },
+              {
+                "type": "io-generic",
+                "stat": "Recharge",
+                "level": 50
+              }
+            ],
+            "isActive": true
+          },
+          {
+            "name": "Super Speed",
+            "internalName": "Super_Speed",
+            "level": 8,
+            "slots": [
+              null
+            ],
+            "isActive": false
+          }
+        ]
+      },
+      {
+        "id": "fighting",
+        "name": "Fighting",
+        "powers": [
+          {
+            "name": "Boxing",
+            "internalName": "Boxing",
+            "level": 12,
+            "slots": [
+              null
+            ]
+          },
+          {
+            "name": "Tough",
+            "internalName": "Tough",
+            "level": 14,
+            "slots": [
+              {
+                "type": "io-set",
+                "setId": "gladiators_armor",
+                "pieceNum": 6,
+                "level": 50
+              },
+              {
+                "type": "io-set",
+                "setId": "gladiators_armor",
+                "pieceNum": 5,
+                "level": 50
+              },
+              {
+                "type": "io-set",
+                "setId": "gladiators_armor",
+                "pieceNum": 1,
+                "level": 50
+              },
+              {
+                "type": "io-set",
+                "setId": "steadfast_protection",
+                "pieceNum": 2,
+                "level": 30
+              },
+              {
+                "type": "io-set",
+                "setId": "gladiators_armor",
+                "pieceNum": 2,
+                "level": 50
+              }
+            ],
+            "isActive": true
+          },
+          {
+            "name": "Weave",
+            "internalName": "Weave",
+            "level": 16,
+            "slots": [
+              {
+                "type": "io-set",
+                "setId": "luck_of_the_gambler",
+                "pieceNum": 6,
+                "level": 50
+              },
+              {
+                "type": "io-set",
+                "setId": "luck_of_the_gambler",
+                "pieceNum": 5,
+                "level": 50
+              },
+              {
+                "type": "io-set",
+                "setId": "luck_of_the_gambler",
+                "pieceNum": 1,
+                "level": 50
+              },
+              {
+                "type": "io-set",
+                "setId": "luck_of_the_gambler",
+                "pieceNum": 2,
+                "level": 50
+              },
+              {
+                "type": "io-set",
+                "setId": "luck_of_the_gambler",
+                "pieceNum": 3,
+                "level": 50
+              }
+            ],
+            "isActive": true
+          }
+        ]
+      },
+      {
+        "id": "leaping",
+        "name": "Leaping",
+        "powers": [
+          {
+            "name": "Combat Jumping",
+            "internalName": "Combat_Jumping",
+            "level": 35,
+            "slots": [
+              {
+                "type": "io-set",
+                "setId": "luck_of_the_gambler",
+                "pieceNum": 6,
+                "level": 50
+              },
+              {
+                "type": "io-set",
+                "setId": "luck_of_the_gambler",
+                "pieceNum": 5,
+                "level": 50
+              },
+              {
+                "type": "io-set",
+                "setId": "reactive_defenses",
+                "pieceNum": 6,
+                "level": 50
+              },
+              {
+                "type": "io-set",
+                "setId": "reactive_defenses",
+                "pieceNum": 1,
+                "level": 50
+              }
+            ],
+            "isActive": true
+          },
+          {
+            "name": "Super Jump",
+            "internalName": "Long_Jump",
+            "level": 47,
+            "slots": [
+              {
+                "type": "io-generic",
+                "stat": "EnduranceReduction",
+                "level": 50
+              }
+            ],
+            "isActive": true
+          }
+        ]
+      }
+    ],
+    "epicPool": {
+      "id": "force_mastery",
+      "name": "Force Mastery",
+      "powers": [
+        {
+          "name": "Personal Force Field",
+          "internalName": "Personal_Force_Field",
+          "level": 38,
+          "slots": [
+            {
+              "type": "io-set",
+              "setId": "luck_of_the_gambler",
+              "pieceNum": 6,
+              "level": 50
+            }
+          ],
+          "isActive": false
+        },
+        {
+          "name": "Temp Invulnerability",
+          "internalName": "Temp_Invulnerability",
+          "level": 41,
+          "slots": [
+            {
+              "type": "io-set",
+              "setId": "titanium_coating",
+              "pieceNum": 6,
+              "level": 50
+            },
+            {
+              "type": "io-set",
+              "setId": "titanium_coating",
+              "pieceNum": 5,
+              "level": 50
+            },
+            {
+              "type": "io-set",
+              "setId": "titanium_coating",
+              "pieceNum": 1,
+              "level": 50
+            },
+            {
+              "type": "io-set",
+              "setId": "titanium_coating",
+              "pieceNum": 4,
+              "level": 50
+            },
+            {
+              "type": "io-set",
+              "setId": "steadfast_protection",
+              "pieceNum": 3,
+              "level": 30
+            },
+            {
+              "type": "io-set",
+              "setId": "steadfast_protection",
+              "pieceNum": 1,
+              "level": 30
+            }
+          ],
+          "isActive": true
+        },
+        {
+          "name": "Force Bomb",
+          "internalName": "Repulsion_Bomb",
+          "level": 44,
+          "slots": [
+            {
+              "type": "io-set",
+              "setId": "bombardment",
+              "pieceNum": 6,
+              "level": 50
+            },
+            {
+              "type": "io-set",
+              "setId": "bombardment",
+              "pieceNum": 1,
+              "level": 50
+            },
+            {
+              "type": "io-set",
+              "setId": "absolute_amazement",
+              "pieceNum": 6,
+              "level": 50
+            },
+            {
+              "type": "io-set",
+              "setId": "absolute_amazement",
+              "pieceNum": 1,
+              "level": 50
+            },
+            {
+              "type": "io-set",
+              "setId": "absolute_amazement",
+              "pieceNum": 3,
+              "level": 50
+            },
+            {
+              "type": "io-set",
+              "setId": "absolute_amazement",
+              "pieceNum": 4,
+              "level": 50
+            }
+          ]
+        },
+        {
+          "name": "Force of Nature",
+          "internalName": "Foce_of_Nature",
+          "level": 49,
+          "slots": [
+            {
+              "type": "io-generic",
+              "stat": "Recharge",
+              "level": 50
+            }
+          ]
+        }
+      ]
+    },
+    "inherents": [
+      {
+        "name": "Health",
+        "internalName": "Health",
+        "level": 1,
+        "slots": [
+          {
+            "type": "io-set",
+            "setId": "preventive_medicine",
+            "pieceNum": 1,
+            "level": 50
+          },
+          {
+            "type": "io-set",
+            "setId": "preventive_medicine",
+            "pieceNum": 2,
+            "level": 50
+          },
+          {
+            "type": "io-set",
+            "setId": "miracle",
+            "pieceNum": 6,
+            "level": 40
+          }
+        ]
+      },
+      {
+        "name": "Stamina",
+        "internalName": "Stamina",
+        "level": 1,
+        "slots": [
+          {
+            "type": "io-set",
+            "setId": "efficacy_adaptor",
+            "pieceNum": 1,
+            "level": 50
+          }
+        ]
+      }
+    ],
+    "accolades": [],
+    "settings": {
+      "globalIOLevel": 50,
+      "origin": "Magic"
+    },
+    "sets": {
+      "decimation": {
+        "count": 1,
+        "pieces": [
+          6
+        ]
+      },
+      "frozen_blast": {
+        "count": 6,
+        "pieces": [
+          6,
+          5,
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "superior_defiant_barrage": {
+        "count": 6,
+        "pieces": [
+          6,
+          5,
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "superior_blasters_wrath": {
+        "count": 6,
+        "pieces": [
+          6,
+          5,
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "avalanche": {
+        "count": 6,
+        "pieces": [
+          6,
+          5,
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "adjusted_targeting": {
+        "count": 2,
+        "pieces": [
+          1,
+          5
+        ]
+      },
+      "impeded_swiftness": {
+        "count": 2,
+        "pieces": [
+          6,
+          1
+        ]
+      },
+      "gaussians_synchronized_firecontrol": {
+        "count": 1,
+        "pieces": [
+          6
+        ]
+      },
+      "preventive_medicine": {
+        "count": 3,
+        "pieces": [
+          6,
+          1,
+          2
+        ]
+      },
+      "numinas_convalesence": {
+        "count": 2,
+        "pieces": [
+          6,
+          5
+        ]
+      },
+      "performance_shifter": {
+        "count": 1,
+        "pieces": [
+          6
+        ]
+      },
+      "efficacy_adaptor": {
+        "count": 1,
+        "pieces": [
+          1
+        ]
+      },
+      "blistering_cold": {
+        "count": 6,
+        "pieces": [
+          6,
+          5,
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "dampened_spirits": {
+        "count": 2,
+        "pieces": [
+          1,
+          2
+        ]
+      },
+      "cloud_senses": {
+        "count": 2,
+        "pieces": [
+          1,
+          2
+        ]
+      },
+      "absolute_amazement": {
+        "count": 6,
+        "pieces": [
+          5,
+          2,
+          6,
+          1,
+          3,
+          4
+        ]
+      },
+      "aegis": {
+        "count": 4,
+        "pieces": [
+          6,
+          5,
+          1,
+          2
+        ]
+      },
+      "luck_of_the_gambler": {
+        "count": 5,
+        "pieces": [
+          6,
+          5,
+          1,
+          2,
+          3
+        ]
+      },
+      "shield_wall": {
+        "count": 2,
+        "pieces": [
+          6,
+          5
+        ]
+      },
+      "gladiators_armor": {
+        "count": 4,
+        "pieces": [
+          6,
+          5,
+          1,
+          2
+        ]
+      },
+      "steadfast_protection": {
+        "count": 3,
+        "pieces": [
+          2,
+          3,
+          1
+        ]
+      },
+      "reactive_defenses": {
+        "count": 2,
+        "pieces": [
+          6,
+          1
+        ]
+      },
+      "titanium_coating": {
+        "count": 4,
+        "pieces": [
+          6,
+          5,
+          1,
+          4
+        ]
+      },
+      "bombardment": {
+        "count": 2,
+        "pieces": [
+          6,
+          1
+        ]
+      },
+      "miracle": {
+        "count": 1,
+        "pieces": [
+          6
+        ]
+      }
+    },
+    "incarnates": {
+      "alpha": {
+        "slotId": "alpha",
+        "powerId": "musculature_core_paragon",
+        "powerName": "Incarnate.Alpha.Musculature_Core_Paragon",
+        "displayName": "Musculature Core Paragon",
+        "icon": "incarnate_alpha_musculature_veryrare.png",
+        "tier": "veryrare",
+        "treeId": "musculature",
+        "treeName": "Musculature"
+      },
+      "judgement": {
+        "slotId": "judgement",
+        "powerId": "pyronic_radial_final_judgement",
+        "powerName": "Incarnate.Judgement.Pyronic_Radial_Final_Judgement",
+        "displayName": "Pyronic Radial Final Judgement",
+        "icon": "incarnate_judgement_pyronic_veryrare.png",
+        "tier": "veryrare",
+        "treeId": "pyronic",
+        "treeName": "Pyronic"
+      },
+      "interface": {
+        "slotId": "interface",
+        "powerId": "reactive_core_flawless_interface",
+        "powerName": "Incarnate.Interface.Reactive_Core_Flawless_Interface",
+        "displayName": "Reactive Core Flawless Interface",
+        "icon": "incarnate_interface_reactive_veryrare.png",
+        "tier": "veryrare",
+        "treeId": "reactive",
+        "treeName": "Reactive"
+      },
+      "destiny": {
+        "slotId": "destiny",
+        "powerId": "ageless_radial_epiphany",
+        "powerName": "Incarnate.Destiny.Ageless_Radial_Epiphany",
+        "displayName": "Ageless Radial Epiphany",
+        "icon": "incarnate_destiny_ageless_veryrare.png",
+        "tier": "veryrare",
+        "treeId": "ageless",
+        "treeName": "Ageless"
+      },
+      "lore": null,
+      "hybrid": null
+    },
+    "craftingChecklist": {},
+    "shoppingListAcquired": {},
+    "slotOrder": []
+  },
+  "meta": {
+    "exportedAt": "2026-04-17T12:25:55.634Z"
+  }
+}

@@ -174,8 +174,9 @@ function enhancementToBoostCmd(enh: Enhancement): string | null {
         prefix = 'Attuned_';
       }
 
-      // Strip "superior_" from setId when prefix already includes "Superior_"
-      const baseId = isSuperior ? ioSet.setId.slice('superior_'.length) : ioSet.setId;
+      // Winter sets strip "superior_" (e.g., superior_avalanche → Superior_Attuned_Avalanche_F),
+      // but ATOs keep it (superior_blasters_wrath → Superior_Attuned_Superior_Blasters_Wrath_F).
+      const baseId = isSuperior && !isAto ? ioSet.setId.slice('superior_'.length) : ioSet.setId;
       const pascal = toPascalUnderscore(baseId);
 
       const uid = `${prefix}${pascal}_${letter}`;
