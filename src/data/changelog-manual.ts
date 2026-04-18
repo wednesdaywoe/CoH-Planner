@@ -23,6 +23,7 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   {
     date: '2026-04-17',
     items: [
+      { message: 'Fixed some resistance caps, and now the Dashboard should report when you\'ve gone over', type: 'fix' },
       { message: 'Fixed a number of invalid enhancement UIDs in the Popmenu export', type: 'fix' },
       { message: 'Added a new Enhancement shopping list for your Wentworths shopping pleasure! 🛍️ Look for it in the Dashboard quickbar. Functions as a checklist by clicking/touching each item to reduce by 1. At 0, the item is crossed off. Click again to reset.', type: 'feat' },
       { message: 'Fixed Blaster Leviathan Mastery showing the wrong AT version', type: 'fix' },

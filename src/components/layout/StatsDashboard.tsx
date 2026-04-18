@@ -8,6 +8,7 @@ import { useEffect, useMemo } from 'react';
 import { useCalculatedStats, useCharacterCalculation } from '@/hooks';
 import { useBuildStore, useUIStore } from '@/stores';
 import { getBaselineHealth } from '@/utils/calculations/stats';
+import { getArchetype } from '@/data';
 import { Tooltip } from '@/components/ui';
 import { StatsConfigModal, AccoladesModal, AboutModal, ExportImportModal, FeedbackModal, ChangelogModal, EnhancementListModal, WelcomeModal, useWelcomeModal, SetBonusLookupModal, ControlsModal, HelpModal, CompareSlottingModal, DetailedTotalsModal, PowersetCompareModal, ProcSettingsModal } from '@/components/modals';
 import { IncarnateSlotGrid, IncarnateModal, IncarnateCraftingModal } from '@/components/incarnate';
@@ -98,6 +99,9 @@ export function StatsDashboard() {
   const health = getBaselineHealth(build.archetype?.id ?? undefined, build.level);
   const baseHP = health.baseHealth;
   const maxHPCap = health.maxHealth;
+  const at = build.archetype?.id ? getArchetype(build.archetype.id) : null;
+  const defenseCap = (at?.stats.defenseCap ?? 0.45) * 100;
+  const resistanceCap = (at?.stats.resistanceCap ?? 0.75) * 100;
   const breakdowns = calcResult.breakdown;
   const globalBonuses = calcResult.globalBonuses;
 
@@ -133,7 +137,12 @@ export function StatsDashboard() {
           ? globalBonuses[globalKey]
           : def.getValue(stats, baseHP, maxHPCap);
         const breakdown = def.breakdownKey ? breakdowns.get(def.breakdownKey) : undefined;
-        return { ...def, value, breakdown, breakdownUnit: def.breakdownUnit, hpCap: config.stat === 'health' ? maxHPCap : undefined };
+        // Attach cap for defense/resistance stats
+        let cap: number | undefined;
+        if (config.stat.startsWith('def') || config.stat.startsWith('defense_')) cap = defenseCap;
+        else if (config.stat.startsWith('res_')) cap = resistanceCap;
+
+        return { ...def, value, breakdown, breakdownUnit: def.breakdownUnit, hpCap: config.stat === 'health' ? maxHPCap : undefined, cap };
       })
       .filter((stat) => {
         if (stat.showWhenZero) return true;
@@ -252,6 +261,7 @@ export function StatsDashboard() {
                       tracked={stat.breakdownKey ? trackedStats.includes(stat.breakdownKey) : false}
                       onTrack={stat.breakdownKey ? () => toggleTrackedStat(stat.breakdownKey!) : undefined}
                       hpCap={stat.hpCap}
+                      cap={stat.cap}
                     />
                   ))}
                 </div>
@@ -492,10 +502,16 @@ interface StatItemProps {
   onTrack?: () => void;
   /** HP cap for this archetype (only for HP stat) */
   hpCap?: number;
+  /** Stat cap as percentage (e.g. 75 for resistance, 45 for defense) */
+  cap?: number;
 }
 
-function StatItem({ label, value, color = 'text-gray-300', tooltip, breakdown, breakdownUnit = '%', rawValue, className = '', tracked, onTrack, hpCap }: StatItemProps) {
+function StatItem({ label, value, color = 'text-gray-300', tooltip, breakdown, breakdownUnit = '%', rawValue, className = '', tracked, onTrack, hpCap, cap }: StatItemProps) {
   const hasCapped = breakdown?.sources.some(s => s.capped) ?? false;
+  const numericValue = typeof rawValue === 'number' ? rawValue : undefined;
+  const isAtCap = cap !== undefined && numericValue !== undefined && numericValue >= cap;
+  const overCap = isAtCap ? numericValue - cap : 0;
+  const displayColor = isAtCap ? 'text-orange-400' : color;
   const content = (
     <div
       className={`flex items-baseline justify-between gap-1 min-w-0 overflow-hidden ${onTrack ? 'cursor-pointer' : 'cursor-help'} ${
@@ -504,7 +520,12 @@ function StatItem({ label, value, color = 'text-gray-300', tooltip, breakdown, b
       onClick={onTrack}
     >
       <span className="text-xs text-gray-500 uppercase tracking-wide shrink-0">{label}</span>
-      <span className={`text-sm font-medium tabular-nums text-right truncate ${color}`}>{value}</span>
+      <span className={`text-sm font-medium tabular-nums text-right truncate ${displayColor}`}>
+        {isAtCap ? `${cap.toFixed(2)}%` : value}
+        {overCap > 0 && (
+          <span className="text-[9px] text-orange-400/70 ml-0.5">(+{overCap.toFixed(1)})</span>
+        )}
+      </span>
     </div>
   );
 
@@ -536,6 +557,11 @@ function StatItem({ label, value, color = 'text-gray-300', tooltip, breakdown, b
       <div className="space-y-2 max-w-[300px]">
         <div className="font-semibold text-slate-200">{label}</div>
         {tooltip && <div className="text-slate-400 text-[10px]">{tooltip}</div>}
+        {isAtCap && (
+          <div className="text-orange-400 text-[10px]">
+            Capped at {cap}% (over by {overCap.toFixed(2)}%)
+          </div>
+        )}
 
         {/* Set Bonuses */}
         {setBonusSources.length > 0 && (

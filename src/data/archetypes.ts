@@ -412,7 +412,7 @@ export const ARCHETYPES: ArchetypeRegistry = {
       buffDebuffModifier: 1.0,
       damageCap: 4.0,       // 400%
       defenseCap: 0.45,     // 45%
-      resistanceCap: 0.90,  // 90%
+      resistanceCap: 0.75,  // 75%
     },
     primarySets: [
       'scrapper/battle-axe',
@@ -548,7 +548,7 @@ export const ARCHETYPES: ArchetypeRegistry = {
       buffDebuffModifier: 1.4,
       damageCap: 4.0,       // 400%
       defenseCap: 0.45,     // 45%
-      resistanceCap: 0.80,  // 80% (Homecoming)
+      resistanceCap: 0.75,  // 75%
     },
     primarySets: [
       'sentinel/archery',
@@ -862,7 +862,7 @@ export const ARCHETYPES: ArchetypeRegistry = {
       buffDebuffModifier: 1.0,
       damageCap: 4.0,       // 400%
       defenseCap: 0.45,     // 45%
-      resistanceCap: 0.90,  // 90%
+      resistanceCap: 0.75,  // 75%
     },
     primarySets: [
       'stalker/street-justice',
@@ -1000,7 +1000,7 @@ export const ARCHETYPES: ArchetypeRegistry = {
       buffDebuffModifier: 1.0,
       damageCap: 4.0,       // 400%
       defenseCap: 0.45,     // 45%
-      resistanceCap: 0.90,  // 90%
+      resistanceCap: 0.85,  // 85%
     },
     primarySets: ['arachnos-soldier/arachnos-soldier'],
     secondarySets: ['arachnos-soldier/training-and-gadgets'],
@@ -1045,7 +1045,7 @@ export const ARCHETYPES: ArchetypeRegistry = {
       buffDebuffModifier: 1.0,
       damageCap: 4.0,       // 400%
       defenseCap: 0.45,     // 45%
-      resistanceCap: 0.90,  // 90%
+      resistanceCap: 0.85,  // 85%
     },
     primarySets: ['arachnos-widow/widow-training'],
     secondarySets: ['arachnos-widow/teamwork'],
