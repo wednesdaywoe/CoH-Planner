@@ -35,6 +35,7 @@ import-output/
 
 # Local config
 .claude/
+.env
 nul
 
 # Raw Data
