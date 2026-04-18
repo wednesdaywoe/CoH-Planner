@@ -48,7 +48,31 @@ import {
   resolvePoolId,
   resolveEpicPoolId,
   mapEnhancementUid,
+  mapEnhancementByDisplayName,
+  MIDS_SILENT_SKIP_PATHS,
 } from './mappers';
+
+/**
+ * Resolve a single Mids slot-entry enhancement to an app Enhancement.
+ * Handles both the current Uid-based format and the legacy
+ * display-name format used by older Mids versions.
+ */
+function resolveSlotEnhancement(enh: {
+  Uid?: string;
+  Enhancement?: string;
+  IoLevel: number;
+  RelativeLevel: string;
+  Grade?: string;
+}): ReturnType<typeof mapEnhancementUid> {
+  if (enh.Uid && enh.Uid.length > 0) {
+    return mapEnhancementUid(enh.Uid, enh.IoLevel, enh.RelativeLevel, enh.Grade);
+  }
+  // Legacy 2023-era Mids: display-name string in `Enhancement` field.
+  if (typeof enh.Enhancement === 'string' && enh.Enhancement.length > 0) {
+    return mapEnhancementByDisplayName(enh.Enhancement, enh.IoLevel, enh.RelativeLevel, enh.Grade);
+  }
+  return { enhancement: null, warning: null };
+}
 import type { PoolPowerMatch, EpicPowerMatch } from './mappers';
 import { warnFallback } from '@/utils/fallback-warnings';
 
@@ -486,6 +510,19 @@ function processEntry(
     return null;
   }
 
+  // Silent skip list: Mids-only artifacts or auto-granted passives with no
+  // user-selectable counterpart in HC. Drop them without a warning.
+  if (MIDS_SILENT_SKIP_PATHS.has(PowerName.toLowerCase())) {
+    return null;
+  }
+
+  // Mastermind pet shadow entries: older Mids exports duplicate every pet with
+  // a `_H` suffix and zero slots. They're auto-granted "henchman" upgrade
+  // references, not user picks. Skip them silently.
+  if (PowerName.startsWith('Mastermind_Summon.') && PowerName.endsWith('_H')) {
+    return null;
+  }
+
   // Process inherent powers for their slot data (powers are auto-populated,
   // but we need to preserve any slotted enhancements from the import)
   if (PowerName.startsWith('Inherent.')) {
@@ -501,11 +538,7 @@ function processEntry(
         slots.push(null);
         continue;
       }
-      const { enhancement, warning } = mapEnhancementUid(
-        slotEntry.Enhancement.Uid,
-        slotEntry.Enhancement.IoLevel,
-        slotEntry.Enhancement.RelativeLevel,
-      );
+      const { enhancement, warning } = resolveSlotEnhancement(slotEntry.Enhancement);
       if (warning) { warnings.push(warning); summary.enhancementsFailed++; }
       if (enhancement) { summary.enhancementsImported++; }
       slots.push(enhancement);
@@ -690,6 +723,20 @@ function processIncarnateEntry(
   warnings: MidsImportWarning[],
   summary: MidsImportSummary,
 ): SelectedIncarnatePower | null {
+  // Silent skip: Mids-only incarnate artifacts with no HC counterpart.
+  if (MIDS_SILENT_SKIP_PATHS.has(entry.PowerName.toLowerCase())) {
+    return null;
+  }
+
+  // Hybrid `*_Genome_<n>` entries are Mids-only numeric indexes for Hybrid
+  // tree tiers (e.g. Support_Genome_8, Melee_Genome_8). HC exposes Hybrid
+  // powers under named tiers (Support_Core_Genome, Support_Total_Core_Graft,
+  // etc.), not numeric suffixes. Drop the enumerated entries silently — the
+  // build's actual selected power lives in its named entry elsewhere.
+  if (/^Incarnate\.Hybrid\.[A-Za-z]+_Genome_\d+$/.test(entry.PowerName)) {
+    return null;
+  }
+
   const segments = entry.PowerName.split('.');
   if (segments.length < 3) return null;
 
@@ -750,12 +797,7 @@ function buildSelectedPower(
       continue;
     }
 
-    const { enhancement, warning } = mapEnhancementUid(
-      slotEntry.Enhancement.Uid,
-      slotEntry.Enhancement.IoLevel,
-      slotEntry.Enhancement.RelativeLevel,
-      slotEntry.Enhancement.Grade,
-    );
+    const { enhancement, warning } = resolveSlotEnhancement(slotEntry.Enhancement);
 
     if (warning) {
       warnings.push(warning);

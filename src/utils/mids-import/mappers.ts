@@ -23,6 +23,7 @@ import {
   DSYNC_ENHANCEMENTS,
   PRESTIGE_ENHANCEMENTS,
 } from '@/data';
+import { LEGACY_PIECE_ALIASES } from './legacy-piece-aliases';
 import type { MidsImportWarning } from './types';
 import { warnFallback } from '@/utils/fallback-warnings';
 
@@ -164,56 +165,135 @@ export function resolvePowerset(
 // POWER MAPPING (within a powerset)
 // ============================================
 
-/** Known Mids typos: midsName (lowercase) → corrected internalName */
+/**
+ * Known Mids-name → app internalName remaps.
+ *
+ * Applied ONLY as a fallback after every other matcher fails against the
+ * original name. This makes renames safe even when the old name is still valid
+ * in some powersets: e.g. `Conserve_Power` still matches Brute Energy Aura's
+ * `Conserve_Power` directly, but for Tanker Energy Aura (which no longer has
+ * Conserve_Power) the rename kicks in and maps to `Energize`.
+ */
 const MIDS_NAME_TYPOS: Record<string, string> = {
   'spectral_terrror': 'Spectral_Terror',
+
+  // Stalker Assassin-power renames.
+  'assassins_smash': 'Assassins_Rockslide',     // Stone Melee
+  'assassins_whisper': 'Assassins_Resonance',   // Sonic Melee
+
+  // Pyrotechnic Control T9: renamed/reworked from Multipurpose_Missiles → Glitz
+  // (display: "Brilliant Barrage").
+  'multipurpose_missiles': 'Glitz',
+
+  // Tanker Energy Aura: Conserve_Power was removed and its function folded
+  // into Energize. Brute Energy Aura still has Conserve_Power natively, so
+  // this rename is only used as a fallback.
+  'conserve_power': 'Energize',
+
+  // Mastermind Kinetics T9: Kinetic_Transfer is the internal redirect power for
+  // Fulcrum_Shift on the MM variant. Controller/Defender Kinetics still has
+  // Kinetic_Transfer natively; the rename fires only for MM builds.
+  'kinetic_transfer': 'Fulcrum_Shift',
+
+  // VEAT prefix stripping. Mids prefixes some powers with a branch code
+  // (BS_, FRT_, NW_) that the HC client data doesn't use.
+  'bs_bash': 'Bash',                   // Arachnos Soldier / Bane Spider Soldier
+  'frt_fate_sealed': 'Fate_Sealed',    // Arachnos Widow / Fortunata Teamwork
+  'nw_pain_tolerance': 'Pain_Tolerance', // Arachnos Widow / Widow Teamwork
+
+  // Mids quirk: an extra `P` in EMP Pulse for Mastermind Radiation Emission.
+  'emp_pulse': 'EM_Pulse',
 };
 
 /**
- * Find a power within a list of Power definitions by Mids internal name.
- * Tries internalName match first, then display name normalization.
+ * Mids full paths that reference powers/effects with no user-selectable
+ * counterpart in HC. When encountered at the top level of PowerEntries we
+ * silently skip them (no warning, no failure) — they're auto-granted passives
+ * or Mids serialization artifacts.
+ *
+ * Keys are lowercase full Mids paths (e.g. `mastermind_summon.beast_mastery.pack_mentality`).
  */
-export function findPowerByMidsName(powers: Power[], midsName: string): Power | null {
-  // Fix known Mids typos
-  const corrected = MIDS_NAME_TYPOS[midsName.toLowerCase()] ?? midsName;
+export const MIDS_SILENT_SKIP_PATHS = new Set<string>([
+  // Auto-granted passive from Beast Mastery summons; not a player pick in HC.
+  'mastermind_summon.beast_mastery.pack_mentality',
 
-  // Try exact internalName match
+  // Mids serialization quirk: emits a "Radiation_Emission" power entry inside
+  // the Radiation_Emission set (likely the set root). No corresponding power.
+  'mastermind_buff.radiation_emission.radiation_emission',
+]);
+
+function tryMatch(powers: Power[], name: string): Power | null {
+  // Exact internalName match
   const byInternal = powers.find(
-    (p) => p.internalName?.toLowerCase() === corrected.toLowerCase()
+    (p) => p.internalName?.toLowerCase() === name.toLowerCase(),
   );
   if (byInternal) return byInternal;
 
-  // Try display name: "Quick_Strike" → "Quick Strike", "Tri_Cannon" → matches "Tri-Cannon"
-  const normalized = corrected.replace(/_/g, ' ');
+  // Display name: "Quick_Strike" → "Quick Strike"
+  const normalized = name.replace(/_/g, ' ');
   const byDisplay = powers.find(
-    (p) => p.name.toLowerCase() === normalized.toLowerCase()
+    (p) => p.name.toLowerCase() === normalized.toLowerCase(),
   );
   if (byDisplay) {
-    warnFallback('findPowerByMidsName', `'${midsName}' matched by display name → '${byDisplay.name}' (internalName '${byDisplay.internalName}') — internalName lookup failed`);
+    warnFallback('findPowerByMidsName', `'${name}' matched by display name → '${byDisplay.name}' (internalName '${byDisplay.internalName}') — internalName lookup failed`);
     return byDisplay;
   }
 
-  // Try display name with hyphen normalization: "Tri_Cannon" → "tri cannon" matches "Tri-Cannon" → "tri cannon"
-  const normalizeAll = (s: string) => s.toLowerCase().replace(/[-_]/g, ' ');
-  const normalizedAll = normalizeAll(corrected);
+  // Collapse runs of separators: "Enervating__Field" → "enervating field".
+  const normalizeAll = (s: string) => s.toLowerCase().replace(/[-_\s]+/g, ' ').trim();
+  const normalizedAll = normalizeAll(name);
   const byDisplayNormalized = powers.find(
-    (p) => normalizeAll(p.name) === normalizedAll
+    (p) => normalizeAll(p.name) === normalizedAll,
   );
   if (byDisplayNormalized) {
-    warnFallback('findPowerByMidsName', `'${midsName}' matched by hyphen-normalized display name → '${byDisplayNormalized.name}' (internalName '${byDisplayNormalized.internalName}')`);
+    warnFallback('findPowerByMidsName', `'${name}' matched by hyphen-normalized display name → '${byDisplayNormalized.name}' (internalName '${byDisplayNormalized.internalName}')`);
     return byDisplayNormalized;
   }
+  const byInternalNormalized = powers.find(
+    (p) => p.internalName && normalizeAll(p.internalName) === normalizedAll,
+  );
+  if (byInternalNormalized) {
+    warnFallback('findPowerByMidsName', `'${name}' matched by collapsed-separator internalName → '${byInternalNormalized.name}' (internalName '${byInternalNormalized.internalName}')`);
+    return byInternalNormalized;
+  }
 
-  // fullName last segment match (e.g., "Combat_Flight" matches Pool.Flight.Combat_Flight → "Hover")
-  const lowerName = corrected.toLowerCase();
+  // fullName last segment (e.g. "Combat_Flight" → Pool.Flight.Combat_Flight / "Hover")
+  const lowerName = name.toLowerCase();
   const byFullName = powers.find((p) => {
     if (!p.fullName) return false;
     const segment = p.fullName.split('.').pop() ?? '';
     return segment.toLowerCase() === lowerName;
   });
   if (byFullName) {
-    warnFallback('findPowerByMidsName', `'${midsName}' matched by fullName last-segment → '${byFullName.name}' (internalName '${byFullName.internalName}')`);
+    warnFallback('findPowerByMidsName', `'${name}' matched by fullName last-segment → '${byFullName.name}' (internalName '${byFullName.internalName}')`);
     return byFullName;
+  }
+
+  return null;
+}
+
+/**
+ * Find a power within a list of Power definitions by Mids internal name.
+ *
+ * Strategy:
+ *   1. Try every matcher on the original Mids name (exact, display, normalized, fullName-tail).
+ *   2. Only if all of those fail, apply MIDS_NAME_TYPOS and retry the exact-match
+ *      lookup with the renamed target. This keeps renames safe in powersets
+ *      where the old name is still valid.
+ */
+export function findPowerByMidsName(powers: Power[], midsName: string): Power | null {
+  const direct = tryMatch(powers, midsName);
+  if (direct) return direct;
+
+  const renamed = MIDS_NAME_TYPOS[midsName.toLowerCase()];
+  if (renamed && renamed.toLowerCase() !== midsName.toLowerCase()) {
+    const viaRename = powers.find(
+      (p) => p.internalName?.toLowerCase() === renamed.toLowerCase(),
+    );
+    if (viaRename) {
+      warnFallback('findPowerByMidsName', `'${midsName}' mapped via rename → '${viaRename.name}' (internalName '${viaRename.internalName}')`);
+      return viaRename;
+    }
   }
 
   return null;
@@ -253,6 +333,15 @@ export function buildPoolLookup(): Map<string, PoolPowerMatch> {
 }
 
 /**
+ * Mids pool name → app pool ID aliases for pools whose names diverge.
+ * Keys are lowercase Mids pool names (after "Pool." prefix).
+ */
+const MIDS_POOL_ALIASES: Record<string, string> = {
+  // HC renamed Presence → Manipulation in newer exports; our app still uses "presence".
+  manipulation: 'presence',
+};
+
+/**
  * Resolve a Mids pool powerset path to an app pool ID.
  * @param midsPath - e.g., "Pool.Fighting" or "Pool.Force_of_Will"
  */
@@ -261,7 +350,8 @@ export function resolvePoolId(midsPath: string): string | null {
   if (segments.length < 2 || segments[0] !== 'Pool') return null;
 
   // "Force_of_Will" → "force_of_will"
-  return segments[1].toLowerCase();
+  const rawId = segments[1].toLowerCase();
+  return MIDS_POOL_ALIASES[rawId] ?? rawId;
 }
 
 // ============================================
@@ -315,6 +405,7 @@ export function buildEpicLookup(archetypeId: string, additionalPoolIds?: string[
  */
 const MIDS_WORD_ABBREVIATIONS: Record<string, string> = {
   'psi': 'psionic',
+  'elec': 'electricity',
 };
 
 function expandMidsAbbreviations(name: string): string {
@@ -332,15 +423,64 @@ const MIDS_EPIC_AT_SUFFIXES: Record<string, string[]> = {
   '_defcorr': ['defender'],
   '_def': ['defender'],
   '_corr': ['corruptor'],
-  '_brute': ['brute', 'tanker'],
-  '_tank': ['tanker'],
-  '_scrap': ['scrapper'],
-  '_stalk': ['stalker', 'scrapper'],
+  '_brute': ['brute', 'tanker', 'tank'],
+  '_tank': ['tanker', 'tank'],
+  // Shared Tank/Brute pools (e.g. Psionic Mastery): our data uses the `tank_` prefix.
+  '_tankbrute': ['tank', 'tanker', 'brute'],
+  '_scrap': ['scrapper', 'melee'],
+  '_stalk': ['stalker', 'scrapper', 'melee'],
+  // Shared Scrapper/Stalker pools (e.g. Psionic Mastery): our data uses the `melee_` prefix.
+  '_scrapstalk': ['melee', 'scrapper', 'stalker'],
   '_blast': ['blaster'],
   '_sent': ['sentinel', 'blaster'],
   '_cont': ['controller'],
   '_dom': ['dominator', 'controller'],
   '_mm': ['mastermind', 'defender'],
+  // Pool name ends with the full AT name (e.g. "Dark_Mastery_Mastermind"
+  // maps to `mastermind_dark_mastery`).
+  '_mastermind': ['mastermind'],
+  '_defender': ['defender'],
+  '_corruptor': ['corruptor'],
+  '_dominator': ['dominator'],
+  '_controller': ['controller'],
+  '_blaster': ['blaster'],
+  '_tanker': ['tanker', 'tank'],
+  '_scrapper': ['scrapper'],
+  '_stalker': ['stalker'],
+  '_sentinel': ['sentinel'],
+};
+
+/**
+ * Mids also uses AT-abbreviation PREFIXES on some epic pool names.
+ * e.g., "Corr_Flame_Mastery" (Corruptor Flame Mastery) → `flame_mastery`.
+ * Maps lowercase prefix → AT IDs to try when constructing pool ID.
+ */
+const MIDS_EPIC_AT_PREFIXES: Record<string, string[]> = {
+  'def_': ['defender'],
+  'corr_': ['corruptor'],
+  'brute_': ['brute', 'tanker', 'tank'],
+  'tank_': ['tanker', 'tank'],
+  'scrap_': ['scrapper', 'melee'],
+  'stalk_': ['stalker', 'scrapper', 'melee'],
+  'blast_': ['blaster'],
+  'sent_': ['sentinel', 'blaster'],
+  'sentinel_': ['sentinel', 'blaster'],
+  'cont_': ['controller'],
+  'dom_': ['dominator', 'controller'],
+  'mm_': ['mastermind', 'defender'],
+  'mastermind_': ['mastermind'],
+};
+
+/**
+ * Direct Mids → app epic-pool ID overrides. These cover cases where the AT
+ * prefix/suffix logic picks the wrong pool due to HC set renames.
+ * Key is the lowercased Mids pool name (after stripping `Epic.`).
+ */
+const MIDS_EPIC_POOL_OVERRIDES: Record<string, string> = {
+  // HC renamed the Corruptor/Defender epic pool from "Flame Mastery" to
+  // "Fire Mastery". Mids still uses the old name.
+  'corr_flame_mastery': 'corruptor_fire_mastery',
+  'def_flame_mastery': 'defender_fire_mastery',
 };
 
 /**
@@ -357,6 +497,10 @@ export function resolveEpicPoolId(
 
   // "Energy_Mastery_Brute" → "energy_mastery_brute"
   const midsEpicName = segments[1].toLowerCase();
+
+  // Direct override for known Mids/HC naming divergences (set renames).
+  const override = MIDS_EPIC_POOL_OVERRIDES[midsEpicName];
+  if (override && getEpicPool(override)) return override;
 
   // Try direct match with the epic pool IDs for this archetype
   const epicPools = getEpicPoolsForArchetype(archetypeId);
@@ -394,6 +538,27 @@ export function resolveEpicPoolId(
         }
       }
       // Also try baseName alone
+      for (const pool of Object.values(allEpicPools)) {
+        if (pool.id.toLowerCase() === baseName) {
+          return pool.id;
+        }
+      }
+    }
+  }
+
+  // Also try AT-abbreviation PREFIXES (e.g. "corr_flame_mastery" → try
+  // `corruptor_flame_mastery` or just `flame_mastery`).
+  for (const [prefix, ats] of Object.entries(MIDS_EPIC_AT_PREFIXES)) {
+    if (midsEpicName.startsWith(prefix)) {
+      const baseName = midsEpicName.slice(prefix.length);
+      for (const at of ats) {
+        const candidateId = `${at}_${baseName}`;
+        for (const pool of Object.values(allEpicPools)) {
+          if (pool.id.toLowerCase() === candidateId) {
+            return pool.id;
+          }
+        }
+      }
       for (const pool of Object.values(allEpicPools)) {
         if (pool.id.toLowerCase() === baseName) {
           return pool.id;
@@ -468,7 +633,10 @@ function buildIOSetNameLookup(): Map<string, string> {
       lookup.set(noHyphens, id);
     }
 
-    // Also key by set ID with hyphens removed (direct ID match after Mids normalization)
+    // Always key by the set ID itself — catches cases where our ID spelling
+    // diverges from the display-name spelling (e.g. `superior_ascendency_of_the_dominator`
+    // has display "Superior Ascendancy of the Dominator" but Mids sends the ID spelling).
+    lookup.set(id, id);
     const idNoHyphens = id.replace(/-/g, '');
     if (idNoHyphens !== id) {
       lookup.set(idNoHyphens, id);
@@ -567,6 +735,15 @@ export function mapEnhancementUid(
   relativeLevel: string,
   grade?: string,
 ): EnhancementMapResult {
+  // Defensive: Mids slot entries occasionally have undefined/null Uid values.
+  // Treat them as an empty slot rather than crashing.
+  if (uid == null || typeof uid !== 'string' || uid.length === 0) {
+    return {
+      enhancement: null,
+      warning: { type: 'enhancement', midsName: '(empty)', message: 'Enhancement entry had no Uid' },
+    };
+  }
+
   // The ioLevel in .mbd is 0-based (49 = level 50)
   const level = Math.min(Math.max(ioLevel + 1, 1), 53);
   const boost = parseBoostLevel(relativeLevel);
@@ -663,6 +840,486 @@ export function mapEnhancementUid(
   const enh = createIOSetEnhancement(ioSet, piece, pieceNum - 1, {
     attuned,
     level: attuned ? 50 : level,
+    boost: boost || undefined,
+  });
+
+  return { enhancement: enh, warning: null };
+}
+
+// ============================================
+// LEGACY ENHANCEMENT FORMAT (pre-2024 Mids)
+// ============================================
+
+/**
+ * Normalize an IO set piece display name so minor divergences between data
+ * sources (Mids, HC binary, our app data) collapse to the same key.
+ *
+ * Handles:
+ *  - `Resistance` ↔ `Damage Resistance`
+ *  - `+End` ↔ `+Endurance`, `+HP` ↔ `+Hit Points` ↔ `+Health`
+ *  - `Increased Global Recharge Speed` ↔ `+Recharge`
+ *  - `RechargeTime` ↔ `Recharge`, `Endurance Reduction` ↔ `Endurance`
+ *  - `Chance for/of/to X` collapses
+ *  - `Damage(Negative)` ↔ `Damage(Negative Energy)` — strip " Energy"
+ *  - `Knockback Reduction (N points)` ↔ `Knockback Protection`
+ *  - `Scaling Resist Damage` ↔ `+Res(All)`
+ *  - `TP Protection +3% Def (All)` ↔ `+Def(All)`
+ */
+function normalizePieceName(name: string): string {
+  let n = name.toLowerCase().trim();
+
+  // Strip apostrophes and curly quotes.
+  n = n.replace(/['']/g, '');
+
+  // Canonical slash separator (no spaces around "/").
+  n = n.replace(/\s*\/\s*/g, '/');
+
+  // Recharge phrasings.
+  n = n.replace(/increased global recharge speed/g, '+recharge');
+  n = n.replace(/\bglobal recharge\b/g, '+recharge');
+  n = n.replace(/\brechargetime\b/g, 'recharge');
+
+  // Chance-for-X collapses.
+  n = n.replace(/\bchance (for|to|of)\s+/g, 'chance ');
+
+  // Endurance phrasings.
+  n = n.replace(/\bendurance reduction\b/g, 'endurance');
+  n = n.replace(/\bend mod\b/g, 'endmod');
+  n = n.replace(/\bendurance modification\b/g, 'endmod');
+  n = n.replace(/\+endurance\b/g, '+end');
+  n = n.replace(/\+end\b/g, '+end');
+
+  // Health / HP aliases.
+  n = n.replace(/\+hit points\b/g, '+hp');
+  n = n.replace(/\+health\b/g, '+hp');
+  n = n.replace(/heal self\b/g, '+hp');
+
+  // Damage type expansions → short forms.
+  n = n.replace(/negative energy/g, 'negative');
+
+  // Knockback Reduction (N points) / Knockback Protection → kb protection.
+  n = n.replace(/knockback reduction\s*\(\d+\s*points?\)/g, 'knockback protection');
+  n = n.replace(/knockback reduction/g, 'knockback protection');
+
+  // Scaling Resist Damage → +res(all).
+  n = n.replace(/scaling resist damage/g, '+res(all)');
+  n = n.replace(/scaling resistance/g, '+res(all)');
+
+  // Shield Wall: "+Res (Teleportation), +5% Res (All)" → +res(all)
+  n = n.replace(/\+res\s*\(teleportation\),\s*\+\d+%\s*res\s*\(all\)/g, '+res(all)');
+  n = n.replace(/\+res\s*\(all\)/g, '+res(all)');
+
+  // Gladiator's Armor: "TP Protection +3% Def (All)" → +def(all)
+  n = n.replace(/tp protection\s*\+\d+%\s*def\s*\(all\)/g, '+def(all)');
+  n = n.replace(/\+def\s*\(all\)/g, '+def(all)');
+  n = n.replace(/\+def\s*\d+%\s*/g, '+def(all) ');
+  n = n.replace(/resistance\/\+def\s*\d+%?/g, 'damage resistance/+def(all)');
+
+  // Max HP aliases.
+  n = n.replace(/\+max hp\b/g, '+max hitpoints');
+  n = n.replace(/\+max hitpoints\b/g, '+max hitpoints');
+
+  // Strip "damage " prefix from each slash-segment (Aegis / Unbreakable Guard).
+  n = n.split('/').map((part) => part.replace(/^damage\s+/, '').trim()).join('/');
+
+  // Parenthetical spacing.
+  n = n.replace(/\s*\(\s*/g, '(').replace(/\s*\)\s*/g, ')');
+
+  // Collapse whitespace runs.
+  n = n.replace(/\s+/g, ' ').trim();
+
+  return n;
+}
+
+/** Single-word aspect aliases used by parsePieceAspects. */
+const ASPECT_WORD_ALIASES: Record<string, string> = {
+  'accuracy': 'accuracy',
+  'acc': 'accuracy',
+  'damage': 'damage',
+  'dam': 'damage',
+  'dmg': 'damage',
+  'endurance': 'endurance',
+  'end': 'endurance',
+  'endmod': 'endmod',
+  'endurancemod': 'endmod',
+  'enduranceamod': 'endmod',
+  'endurancemodification': 'endmod',
+  'recharge': 'recharge',
+  'rech': 'recharge',
+  'rechargetime': 'recharge',
+  'range': 'range',
+  'defense': 'defense',
+  'def': 'defense',
+  'resistance': 'resistance',
+  'res': 'resistance',
+  'damageresistance': 'resistance',
+  'heal': 'heal',
+  'healing': 'heal',
+  'absorb': 'absorb',
+  'tohit': 'tohit',
+  'tohitbuff': 'tohit',
+  'tohitdebuff': '-tohit',
+  '-tohit': '-tohit',
+  // Mez aliases — Mids uses past tense (Confused, Stunned, Held, Slept); our data uses infinitive.
+  'holdduration': 'hold',
+  'hold': 'hold',
+  'held': 'hold',
+  'immobilize': 'immobilize',
+  'immobilizeduration': 'immobilize',
+  'immob': 'immobilize',
+  'immobilized': 'immobilize',
+  'stun': 'stun',
+  'stunduration': 'stun',
+  'stunned': 'stun',
+  'sleep': 'sleep',
+  'sleepduration': 'sleep',
+  'slept': 'sleep',
+  'fear': 'fear',
+  'fearduration': 'fear',
+  'feared': 'fear',
+  'terrorized': 'fear',
+  'confuse': 'confuse',
+  'confused': 'confuse',
+  'confuseduration': 'confuse',
+  'taunt': 'taunt',
+  'tauntduration': 'taunt',
+  'taunted': 'taunt',
+  'placate': 'placate',
+  'placated': 'placate',
+  'threat': 'taunt',
+  'slow': 'slow',
+  'slowmovement': 'slow',
+  'knockback': 'knockback',
+  'flight': 'flight',
+  'flightspeed': 'flight',
+  'jumping': 'jump',
+  'jump': 'jump',
+  'running': 'run',
+  'runspeed': 'run',
+  'interrupt': 'interrupt',
+  'interrupttime': 'interrupt',
+  // ATO-specific bonus aspect names. Mids uses verbose names; our data uses
+  // terser "+X%" forms. All collapse to the same `atobonus` canonical key.
+  'criticalhitbonus': 'atobonus',
+  'criticalhit': 'atobonus',
+  'furybonus': 'atobonus',
+  'fury': 'atobonus',
+  'buildupproc': 'atobonus',
+  'buildup': 'atobonus',
+  'rchbuildup': 'atobonus',
+  'energyfont': 'atobonus',
+  'fieryorb': 'atobonus',
+  'dominationbonus': 'atobonus',
+  'domination': 'atobonus',
+  'containmentproc': 'atobonus',
+  'containment': 'atobonus',
+  'assassinbonus': 'atobonus',
+  'assassination': 'atobonus',
+  'gauntletbonus': 'atobonus',
+  'gauntlet': 'atobonus',
+  'minionbonus': 'atobonus',
+  'petbonus': 'atobonus',
+  'petresistregen': 'atobonus',
+  'petaoedefenseaura': 'atobonus',
+  'petdefenseaura': 'atobonus',
+  'chanceofdamage': 'atobonus',
+  // Mids "Control Duration" is the same concept as our data's generic "Mez"
+  // aspect on Dominator ATO sets (Overpowering Presence, Dominating Grasp,
+  // Will of the Controller, Ascendency of the Dominator). Map both to `mez`,
+  // and in the aspect matcher treat `mez` as a wildcard for any specific mez
+  // aspect (Confuse/Hold/etc.) in case a set uses a specific one instead.
+  'controlduration': 'mez',
+  'mez': 'mez',
+};
+
+/** Mez-type canonical aspect names that the `mez` wildcard should match. */
+const MEZ_ASPECT_NAMES = new Set(['confuse', 'hold', 'immobilize', 'stun', 'sleep', 'fear', 'taunt', 'placate', 'slow', 'mez']);
+
+/**
+ * Check if a display-name-only enhancement is a special enhancement
+ * (Hamidon Exposure, Titan, Hydra, D-Sync).
+ */
+function isSpecialEnhancementName(name: string): boolean {
+  return /\b(exposure|origin|nucleus)\b/i.test(name)
+    || name.startsWith('Titan ')
+    || name.startsWith('Hydra ')
+    || name.startsWith('D-Sync ');
+}
+
+/**
+ * Look up a special enhancement (Hamidon/Titan/Hydra/D-Sync/Prestige) by display name.
+ */
+function findSpecialByDisplayName(displayName: string, boost: number): Enhancement | null {
+  const needle = displayName.toLowerCase().trim();
+  const registries: Array<[typeof HAMIDON_ENHANCEMENTS, 'hamidon' | 'titan' | 'hydra' | 'd-sync' | 'prestige']> = [
+    [HAMIDON_ENHANCEMENTS, 'hamidon'],
+    [TITAN_ENHANCEMENTS, 'titan'],
+    [HYDRA_ENHANCEMENTS, 'hydra'],
+    [DSYNC_ENHANCEMENTS, 'd-sync'],
+    [PRESTIGE_ENHANCEMENTS, 'prestige'],
+  ];
+  for (const [registry, category] of registries) {
+    for (const [id, def] of Object.entries(registry)) {
+      if (def.name.toLowerCase() === needle) {
+        try {
+          return createSpecialEnhancement(id, def, category, boost || undefined);
+        } catch {
+          return null;
+        }
+      }
+    }
+  }
+  return null;
+}
+
+/**
+ * Parse a piece display name into a canonical set of aspect words, stripping
+ * apostrophes, normalizing slashes, and mapping common synonyms so that
+ * "Damage/Endurance/Accuracy/RechargeTime" and "Accuracy/Damage/Endurance/Recharge"
+ * produce the same aspect set.
+ *
+ * Returns an empty array for proc/special pieces whose names don't follow the
+ * slash-separated aspect convention.
+ */
+function parsePieceAspects(name: string): string[] {
+  // Skip if this looks like a true proc or KB/teleport special.
+  // Note: parentheses alone don't signal a proc — "+Res(All)" is just a
+  // formatting convention for ATO-bonus pieces.
+  if (/\bchance\b|\bscaling\b|\bknockback (protection|reduction)\b|\breduction \(/i.test(name)) {
+    return [];
+  }
+
+  const segments = name
+    .toLowerCase()
+    .replace(/['']/g, '')
+    .split(/\s*\/\s*/)
+    .map((s) => s.trim())
+    .filter(Boolean);
+
+  if (segments.length === 0) return [];
+
+  const aspects: string[] = [];
+  for (const seg of segments) {
+    // Segments starting with `+` (e.g. "+Regeneration", "+Res(All)",
+    // "+Critical Hit%") or containing "Pet " are ATO-bonus aspects — collapse
+    // them into a single `atobonus` so our "Endurance/+Regen/+Res(All)" piece
+    // matches Mids' "Endurance/Pet +Resist +Regen".
+    if (seg.startsWith('+') || /\bpet\b/.test(seg) || /^-/.test(seg)) {
+      aspects.push('atobonus');
+      continue;
+    }
+    // Normalize: strip non-alphanumeric runs.
+    const key = seg.replace(/[^a-z0-9-]+/g, '');
+    if (!key) return [];
+    aspects.push(ASPECT_WORD_ALIASES[key] ?? key);
+  }
+
+  // Dedupe atobonus (multi-segment bonus aspects collapse to one).
+  const deduped: string[] = [];
+  let atobonusSeen = false;
+  for (const a of aspects) {
+    if (a === 'atobonus') {
+      if (atobonusSeen) continue;
+      atobonusSeen = true;
+    }
+    deduped.push(a);
+  }
+
+  deduped.sort();
+  return deduped;
+}
+
+/**
+ * Older Mids exports (e.g. 3.5.x, DB 2023.x) store enhancements by display
+ * name inside an inner `Enhancement` string field, not a `Uid`. Format is
+ * `"Set Name: Piece Name"`, e.g. `"Blood Mandate: Accuracy/Damage"`. Generic
+ * IOs use `"Invention: Stat"`. This parser resolves those to app enhancements
+ * via the display-name lookups already used elsewhere in the mapper.
+ */
+export function mapEnhancementByDisplayName(
+  displayName: string,
+  ioLevel: number,
+  relativeLevel: string,
+  grade?: string,
+): EnhancementMapResult {
+  if (typeof displayName !== 'string' || displayName.length === 0) {
+    return { enhancement: null, warning: null };
+  }
+
+  const level = Math.min(Math.max(ioLevel + 1, 1), 53);
+  const boost = parseBoostLevel(relativeLevel);
+
+  // Special enhancements (Hamidon, Titan, Hydra, D-Sync). Mids encodes these
+  // with Grade='SingleO' and the full display name in the Enhancement string
+  // (e.g. "Membrane Exposure").
+  if (grade === 'SingleO' || isSpecialEnhancementName(displayName)) {
+    const enh = findSpecialByDisplayName(displayName, boost);
+    if (enh) return { enhancement: enh, warning: null };
+    return {
+      enhancement: null,
+      warning: { type: 'enhancement', midsName: displayName, message: `Unknown special enhancement: ${displayName}` },
+    };
+  }
+
+  // Split on the first ": " (sets may contain colons in piece names like "Chance for +End").
+  const splitIdx = displayName.indexOf(': ');
+  if (splitIdx < 0) {
+    return {
+      enhancement: null,
+      warning: { type: 'enhancement', midsName: displayName, message: `Legacy enhancement lacks "Set: Piece" format` },
+    };
+  }
+
+  const setNameRaw = displayName.slice(0, splitIdx).trim();
+  const pieceNameRaw = displayName.slice(splitIdx + 2).trim();
+
+  // Generic IOs: "Invention: Accuracy"
+  if (setNameRaw.toLowerCase() === 'invention') {
+    const stat = MIDS_STAT_MAP[pieceNameRaw.replace(/\s+/g, '_')]
+      ?? MIDS_STAT_MAP[pieceNameRaw]
+      ?? pieceNameRaw.replace(/\s+/g, '_');
+    try {
+      const enh = createGenericIOEnhancement(stat as any, level, boost || undefined);
+      return { enhancement: enh, warning: null };
+    } catch {
+      return {
+        enhancement: null,
+        warning: { type: 'enhancement', midsName: displayName, message: `Unknown generic IO stat: ${pieceNameRaw}` },
+      };
+    }
+  }
+
+  // Set IO: look up set by display name, then piece by display name.
+  // Apply known spelling fixes before normalizing (e.g. Mids misspells
+  // "Convalescence" as "Convalesence").
+  const setNameFixed = setNameRaw.replace(/Convalesence/gi, 'Convalescence');
+
+  const normalizedSet = setNameFixed
+    .toLowerCase()
+    .replace(/['']/g, '')
+    .replace(/\s+/g, '_');
+
+  const nameLookup = getIOSetNameLookup();
+  let setId = nameLookup.get(normalizedSet);
+  if (!setId) {
+    // Try without hyphens (same normalization the lookup builder uses).
+    setId = nameLookup.get(normalizedSet.replace(/-/g, ''));
+  }
+  if (!setId) {
+    return {
+      enhancement: null,
+      warning: { type: 'enhancement', midsName: displayName, message: `Legacy set not found: ${setNameRaw}` },
+    };
+  }
+
+  const ioSet = getIOSet(setId);
+  if (!ioSet) {
+    return {
+      enhancement: null,
+      warning: { type: 'enhancement', midsName: displayName, message: `Set resolved to ${setId} but not retrievable` },
+    };
+  }
+
+  // Piece-name resolution. Try in order:
+  //   1. Auto-generated alias table keyed by HC display name.
+  //   2. Normalized matcher (handles common word aliases).
+  //   3. Aspect-set matching for compound pieces (e.g. "Damage/Endurance/Accuracy").
+  //   4. Proc detection: if the Mids name looks like a proc ("Chance for/to/of",
+  //      "+X"), fall back to the set's unique proc piece.
+  let piece = null as (typeof ioSet.pieces)[number] | null;
+
+  const aliasKey = `${setId}\u0000${pieceNameRaw.toLowerCase().trim()}`;
+  const aliasPieceNum = LEGACY_PIECE_ALIASES[aliasKey];
+  if (aliasPieceNum != null) {
+    piece = ioSet.pieces.find((p) => p.num === aliasPieceNum) ?? null;
+  }
+
+  if (!piece) {
+    const pieceNorm = normalizePieceName(pieceNameRaw);
+    piece = ioSet.pieces.find(
+      (p) => normalizePieceName(p.name) === pieceNorm,
+    ) ?? null;
+  }
+
+  // Aspect-set match: compare multiset of aspect words. Handles two wildcards:
+  //   - `mez` (from Mids "Control Duration" or our "Mez") matches any mez aspect.
+  //   - `atobonus` (from Mids "X Bonus" / "+X%") matches our +X%/ATO-bonus piece.
+  if (!piece) {
+    const midsAspects = parsePieceAspects(pieceNameRaw);
+    if (midsAspects.length > 0) {
+      piece = ioSet.pieces.find((p) => {
+        const ourAspects = parsePieceAspects(p.name);
+        if (ourAspects.length !== midsAspects.length) return false;
+        const ourRemaining = [...ourAspects];
+        for (const m of midsAspects) {
+          let idx = -1;
+          if (m === 'mez') {
+            idx = ourRemaining.findIndex((o) => MEZ_ASPECT_NAMES.has(o));
+          } else if (m === 'atobonus') {
+            idx = ourRemaining.findIndex((o) => o === 'atobonus');
+          } else {
+            idx = ourRemaining.indexOf(m);
+          }
+          if (idx < 0) return false;
+          ourRemaining.splice(idx, 1);
+        }
+        return ourRemaining.length === 0;
+      }) ?? null;
+    }
+  }
+
+  // Proc fallback: if Mids name looks proc-y and the set has a single proc piece, use it.
+  if (!piece) {
+    const looksProcy = /\bchance\b|\+\w|\bscaling\b/i.test(pieceNameRaw);
+    if (looksProcy) {
+      const procPieces = ioSet.pieces.filter((p) => p.proc);
+      if (procPieces.length === 1) {
+        piece = procPieces[0];
+      }
+    }
+  }
+
+  // Last-resort fuzzy aspect match: same count, at most 1 mismatched aspect.
+  // Catches cases like Perfect Zinger's `Threat/Placate/Recharge` (Mids)
+  // vs `Range/Recharge/Threat` (ours) — same 3-aspect piece, one aspect
+  // labeled differently.
+  if (!piece) {
+    const midsAspects = parsePieceAspects(pieceNameRaw);
+    if (midsAspects.length >= 2) {
+      const candidates = ioSet.pieces
+        .map((p) => ({
+          p,
+          ourAspects: parsePieceAspects(p.name),
+        }))
+        .filter(({ ourAspects }) => ourAspects.length === midsAspects.length);
+      const matches = candidates.map(({ p, ourAspects }) => {
+        const overlap = ourAspects.filter((a) => midsAspects.includes(a)).length;
+        return { p, overlap };
+      });
+      // Accept if the best candidate has exactly one mismatch and is unique.
+      matches.sort((a, b) => b.overlap - a.overlap);
+      if (
+        matches.length > 0 &&
+        matches[0].overlap === midsAspects.length - 1 &&
+        (matches.length === 1 || matches[0].overlap > matches[1].overlap)
+      ) {
+        piece = matches[0].p;
+      }
+    }
+  }
+
+  if (!piece) {
+    return {
+      enhancement: null,
+      warning: { type: 'enhancement', midsName: displayName, message: `Piece not found in ${ioSet.name}: ${pieceNameRaw}` },
+    };
+  }
+
+  // Older format uses `Grade: "None"` for IOs; treat all legacy entries as non-attuned
+  // unless the caller explicitly maps them elsewhere.
+  const enh = createIOSetEnhancement(ioSet, piece, piece.num - 1, {
+    attuned: false,
+    level,
     boost: boost || undefined,
   });
 

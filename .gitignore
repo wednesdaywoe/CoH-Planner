@@ -27,6 +27,9 @@ Thumbs.db
 *.log
 npm-debug.log*
 
+# Bulk-import script outputs
+import-output/
+
 # TypeScript cache
 *.tsbuildinfo
 
@@ -43,3 +46,4 @@ power_stats/
 MidsReborn-master/
 texture_library2/
 Mids MXD files/
+dump/
