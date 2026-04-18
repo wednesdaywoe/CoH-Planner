@@ -1,11 +1,11 @@
 /**
- * Auth service — wraps Supabase Auth for Discord OAuth
+ * Auth service — wraps Supabase Auth for OAuth providers
  */
 
 import { supabase } from '@/lib/supabase';
-import type { User, Session } from '@supabase/supabase-js';
+import type { User, Session, Provider } from '@supabase/supabase-js';
 
-export type AuthProvider = 'discord';
+export type AuthProvider = 'discord' | 'custom:simplelogin';
 
 const redirectTo = () => window.location.origin + (import.meta.env.BASE_URL || '/');
 
@@ -14,15 +14,16 @@ export async function signInWithProvider(provider: AuthProvider): Promise<void> 
   if (!supabase) throw new Error('Supabase is not configured');
 
   const { error } = await supabase.auth.signInWithOAuth({
-    provider,
+    provider: provider as Provider,
     options: { redirectTo: redirectTo() },
   });
 
   if (error) throw error;
 }
 
-/** Convenience alias */
+/** Convenience aliases */
 export const signInWithDiscord = () => signInWithProvider('discord');
+export const signInWithSimpleLogin = () => signInWithProvider('custom:simplelogin');
 
 /** Sign out the current user */
 export async function signOut(): Promise<void> {

@@ -24,6 +24,7 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
     date: '2026-04-18',
     items: [
       { message: 'An absolutely bonkers amount of new mappings added for Mids import--473 new mappings added to get around typos, inconsistencies, unexpected prefixes and suffixes, abbreviations, aliases, and legacy names. This should significantly improve import accuracy', type: 'feat' },
+      { message: 'Added SimpleLogin option for users who don\'t use Discord', type: 'feat' },
       { message: 'Fixed some resistance caps, and now the Dashboard should report when you\'ve gone over', type: 'fix' },
       { message: 'Added a gentle Onboarding beacon system to point out features for new users. Onboarding can be disabled or reset in the settings menu.', type: 'feat' },
     ]
