@@ -21,12 +21,10 @@ export interface ManualEntry {
 export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   // ─── 2026-03-24 ────────────────────────────────────────────────────────────
   {
-    date: '2026-04-17',
+    date: '2026-04-18',
     items: [
+      { message: 'An absolutely bonkers amount of new mappings added for Mids import--473 new mappings added to get around typos, inconsistencies, unexpected prefixes and suffixes, abbreviations, aliases, and legacy names. This should significantly improve import accuracy', type: 'feat' },
       { message: 'Fixed some resistance caps, and now the Dashboard should report when you\'ve gone over', type: 'fix' },
-      { message: 'Fixed a number of invalid enhancement UIDs in the Popmenu export', type: 'fix' },
-      { message: 'Added a new Enhancement shopping list for your Wentworths shopping pleasure! 🛍️ Look for it in the Dashboard quickbar. Functions as a checklist by clicking/touching each item to reduce by 1. At 0, the item is crossed off. Click again to reset.', type: 'feat' },
-      { message: 'Fixed Blaster Leviathan Mastery showing the wrong AT version', type: 'fix' },
       { message: 'Added a gentle Onboarding beacon system to point out features for new users. Onboarding can be disabled or reset in the settings menu.', type: 'feat' },
     ]
   },
