@@ -21,7 +21,7 @@
     "mmorpg"
   ],
   "author": "Wednesdaywoe",
-  "license": "ISC",
+  "license": "AGPL-3.0-or-later",
   "bugs": {
     "url": "https://github.com/wednesdaywoe/CoH-Planner/issues"
   },

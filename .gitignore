@@ -38,13 +38,20 @@ import-output/
 .env
 nul
 
-# Raw Data
+# Data
 raw_data_homecoming-raw_data_homecoming-20251209_7415/
 texture_library/
 raw_data_homecoming-20251209_7415/
-tools/
-power_stats/
 MidsReborn-master/
 texture_library2/
 Mids MXD files/
 dump/
+CLAUDE.md
+
+# Tool suite: commit source, ignore build artifacts and generated data
+tools/**/__pycache__/
+tools/**/*.pyc
+tools/pigg-wrangler-dist/build/
+tools/pigg-wrangler-dist/dist/
+tools/bin-crawler/exported_powers/
+tools/bin-crawler/**/static/cache/

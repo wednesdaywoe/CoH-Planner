@@ -16,15 +16,15 @@ Previously, the parser read from loose `.bin` files in a `bin/` subdirectory tha
 
 **Note on format changes:** HC occasionally adds new fields to the binary format when patching. The parser auto-detects format version (e.g. the post-2025 "field 45b" between box_size and range in powers.bin). If data looks wrong after an HC patch, investigate the binary layout for new/changed fields.
 
-## Bin Parser Export
+## Bin Crawler Export
 
-Goal: Generate CoD2-compatible structured JSON from the binary parser, filtered to only the 34 player-relevant categories (out of 204 total). This replaces the dependency on the external City of Data 2.0 raw data archive (thousands of NPC/critter files we don't need).
+Goal: Generate CoD2-compatible structured JSON from Bin Crawler's binary parser, filtered to only the 34 player-relevant categories (out of 204 total). This replaces the dependency on the external City of Data 2.0 raw data archive (thousands of NPC/critter files we don't need).
 
 ### Current State (2026-03-28)
 
-The export is functional and verified. Run with: `py -3 power_stats/export_powers.py`
+The export is functional and verified. Run with: `py -3 tools/bin-crawler/bin_crawler/export_powers.py` (or `py -3 -m bin_crawler.export_powers` from inside `tools/bin-crawler/`).
 
-The export and server now read directly from `.pigg` archives via `BinResolver`. Use `--assets-dir` to point at an assets directory (default: `G:\Homecoming\assets\live`).
+The exporter and HTTP server read directly from `.pigg` archives via `BinResolver`, which uses Pigg Wrangler's `PiggArchive` under the hood. Use `--assets-dir` to point at an assets directory (default: `G:\Homecoming\assets\live`).
 
 - **5,277 player powers** exported across 610 powersets in 34 categories
 - Effect template parsing implemented with core fields: attribs, aspect, table, scale, duration, magnitude

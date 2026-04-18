@@ -1,0 +1,154 @@
+"""Parser for classes.bin and villain_classes.bin (archetype definitions).
+
+Extracts class name, display name, icon, primary/secondary/pool categories,
+and the named modifier tables (e.g. Melee_Damage, Ranged_Buff_Def).
+
+Record layout varies between standard ATs, EATs, and villain classes, so
+we use anchor-based field detection:
+  - Icon: first string field ending in ".tga"
+  - Categories: 3 consecutive strings at icon_offset + 20/24/28
+  - Named tables: struct array scanned from end of record
+    (count 30-200, sub-records of ~428 bytes each with 105 float values)
+"""
+
+import struct
+from pathlib import Path
+
+from ._reader import open_parse7
+from ._dataclasses import ClassRecord
+
+
+def _find_icon_offset(data, rec_start, rec_len, strtab_base):
+    """Scan record for the first .tga string reference (icon field)."""
+    limit = min(200, rec_len)
+    for off in range(8, limit, 4):
+        raw = struct.unpack_from("<I", data, rec_start + off)[0]
+        if raw == 0 or raw > 200000:
+            continue
+        str_abs = strtab_base + raw
+        if str_abs + 4 >= len(data):
+            continue
+        end = str_abs
+        while end < len(data) and data[end] != 0:
+            end += 1
+        s = bytes(data[str_abs:end]).decode("ascii", errors="replace")
+        if s.endswith(".tga"):
+            return off
+    return None
+
+
+def _read_str_at(data, rec_start, off, strtab_base):
+    """Read a string table reference at a given record offset."""
+    raw = struct.unpack_from("<I", data, rec_start + off)[0]
+    if raw == 0:
+        return ""
+    str_abs = strtab_base + raw
+    if str_abs >= len(data):
+        return ""
+    end = str_abs
+    while end < len(data) and data[end] != 0:
+        end += 1
+    return bytes(data[str_abs:end]).decode("ascii", errors="replace")
+
+
+def _find_named_tables_offset(data, rec_start, rec_len):
+    """Scan backwards for the named_tables struct array."""
+    for offset in range(rec_len - 12, 0, -4):
+        count = struct.unpack_from("<I", data, rec_start + offset)[0]
+        if not (30 <= count <= 200):
+            continue
+        # First sub-record length should be ~428 bytes
+        sub_len = struct.unpack_from("<I", data, rec_start + offset + 4)[0]
+        if not (400 <= sub_len <= 500):
+            continue
+        # Verify: name string + count of 105 float values
+        sub_start = rec_start + offset + 8
+        vcount = struct.unpack_from("<I", data, sub_start + 4)[0]
+        if vcount == 105:
+            return offset
+    return None
+
+
+def _parse_named_tables(data, rec_start, tables_offset, strtab_base):
+    """Parse the struct array of named modifier tables."""
+    abs_pos = rec_start + tables_offset
+    count = struct.unpack_from("<I", data, abs_pos)[0]
+    abs_pos += 4
+
+    tables = {}
+    for _ in range(count):
+        sub_len = struct.unpack_from("<I", data, abs_pos)[0]
+        abs_pos += 4
+
+        # name (string offset) + value count + float values
+        str_off = struct.unpack_from("<I", data, abs_pos)[0]
+        str_abs = strtab_base + str_off
+        end = str_abs
+        while end < len(data) and data[end] != 0:
+            end += 1
+        tname = bytes(data[str_abs:end]).decode("ascii", errors="replace")
+
+        vcount = struct.unpack_from("<I", data, abs_pos + 4)[0]
+        values = [
+            struct.unpack_from("<f", data, abs_pos + 8 + i * 4)[0]
+            for i in range(vcount)
+        ]
+
+        tables[tname] = values
+        abs_pos += sub_len
+
+    return tables
+
+
+def parse_classes(bin_path_or_data) -> list[ClassRecord]:
+    """Parse classes.bin or villain_classes.bin into ClassRecord list."""
+    r = open_parse7(bin_path_or_data)
+
+    block_size = r.read_u4()
+    count = r.read_u4()
+
+    records = []
+    for _ in range(count):
+        rec_len = r.read_u4()
+        sub = r.sub_reader(rec_len)
+        data = sub._data
+        rec_start = sub.pos
+        strtab_base = sub._strtab_base
+
+        # Field 0: name
+        name = _read_str_at(data, rec_start, 0, strtab_base)
+        # Field 1: display_name (P-hash)
+        display_name = _read_str_at(data, rec_start, 4, strtab_base)
+
+        # Find icon via .tga anchor
+        icon = ""
+        primary = ""
+        secondary = ""
+        pool = ""
+        icon_off = _find_icon_offset(data, rec_start, rec_len, strtab_base)
+        if icon_off is not None:
+            icon = _read_str_at(data, rec_start, icon_off, strtab_base)
+            # Categories: icon + 20, +24, +28 (after icon, u4 skip, 3 screenshots)
+            primary = _read_str_at(data, rec_start, icon_off + 20, strtab_base)
+            secondary = _read_str_at(data, rec_start, icon_off + 24, strtab_base)
+            pool = _read_str_at(data, rec_start, icon_off + 28, strtab_base)
+
+        # Find and parse named modifier tables
+        named_tables = {}
+        tables_off = _find_named_tables_offset(data, rec_start, rec_len)
+        if tables_off is not None:
+            named_tables = _parse_named_tables(data, rec_start, tables_off, strtab_base)
+
+        records.append(ClassRecord(
+            name=name,
+            display_name=display_name,
+            icon=icon,
+            primary_category=primary,
+            secondary_category=secondary,
+            pool_category=pool,
+            named_tables=named_tables,
+        ))
+
+        r.skip(rec_len)
+
+    return records
