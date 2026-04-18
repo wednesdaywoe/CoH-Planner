@@ -38,6 +38,7 @@ const { values: args } = parseArgs({
   options: {
     dir: { type: 'string' },
     'user-id': { type: 'string' },
+    'author-name': { type: 'string', default: '' },
     public: { type: 'boolean', default: false },
     'dry-run': { type: 'boolean', default: false },
     'lookup-discord-username': { type: 'string' },
@@ -59,6 +60,8 @@ Modes:
 Options:
   --dir <path>                         Directory containing .mbd files (recursive)
   --user-id <uuid>                     Supabase auth.users.id to attribute builds to
+  --author-name <name>                 Display name for the build's original author
+                                       (populates the author_name column; default: "")
   --public                             Make imports public (default: private/vault)
   --dry-run                            Parse only, no database writes
   --output-dir <path>                  Where to write state/reports (default: ./import-output)
@@ -310,11 +313,19 @@ interface SharedBuildRow {
   owner_token_hash: string | null;
 }
 
-function buildToRow(build: Build, userId: string, isPublic: boolean): SharedBuildRow {
+function buildToRow(
+  build: Build,
+  userId: string,
+  isPublic: boolean,
+  authorName: string,
+): SharedBuildRow {
   const exportJson = {
     version: 3,
     build: slimBuild(build),
-    meta: { exportedAt: new Date().toISOString() },
+    meta: {
+      exportedAt: new Date().toISOString(),
+      ...(authorName ? { authorName } : {}),
+    },
   };
 
   return {
@@ -328,7 +339,7 @@ function buildToRow(build: Build, userId: string, isPublic: boolean): SharedBuil
     secondary_set: build.secondary.id ?? '',
     secondary_name: build.secondary.name ?? '',
     level: build.level ?? 50,
-    author_name: '',
+    author_name: authorName,
     server: '',
     tags: [],
     build_json: exportJson,
@@ -348,8 +359,9 @@ async function runImport(opts: {
   isPublic: boolean;
   dryRun: boolean;
   outputDir: string;
+  authorName: string;
 }) {
-  const { dir, userId, isPublic, dryRun, outputDir } = opts;
+  const { dir, userId, isPublic, dryRun, outputDir, authorName } = opts;
 
   if (!fs.existsSync(dir)) {
     console.error(`ERROR: Directory not found: ${dir}`);
@@ -371,6 +383,7 @@ async function runImport(opts: {
   console.log(`  Mode: ${dryRun ? 'DRY RUN (no DB writes)' : 'LIVE IMPORT'}`);
   console.log(`  Target user_id: ${userId}`);
   console.log(`  Visibility: ${isPublic ? 'PUBLIC' : 'private (vault)'}`);
+  console.log(`  Author name: ${authorName ? `"${authorName}"` : '(none — author_name stays blank)'}`);
   console.log();
 
   const supabase = dryRun ? null : getSupabase();
@@ -455,7 +468,7 @@ async function runImport(opts: {
       continue;
     }
 
-    const row = buildToRow(result.build, userId, isPublic);
+    const row = buildToRow(result.build, userId, isPublic, authorName);
     pendingRows.push({ row, filename: filepath });
 
     if (pendingRows.length >= BATCH_SIZE) {
@@ -516,6 +529,7 @@ async function main() {
   const dryRun = Boolean(args['dry-run']);
   const isPublic = Boolean(args.public);
   const outputDir = (args['output-dir'] as string) || './import-output';
+  const authorName = ((args['author-name'] as string) || '').trim();
 
   if (!dir || !userId) {
     console.error('ERROR: --dir and --user-id are required for import mode.');
@@ -524,7 +538,7 @@ async function main() {
     process.exit(1);
   }
 
-  await runImport({ dir, userId, isPublic, dryRun, outputDir });
+  await runImport({ dir, userId, isPublic, dryRun, outputDir, authorName });
 }
 
 main().catch((err) => {
