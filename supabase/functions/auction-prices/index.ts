@@ -14,10 +14,17 @@
 
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
 
-const CACHE_TTL_HOURS = 4;
+const CACHE_TTL_HOURS = 1;
 const HISTORY_LIMIT = 20;
 const MAX_IDENTIFIERS_PER_REQUEST = 100;
 const HC_BASE = 'https://hcvault.cityofheroes.dev/api/v1';
+
+// Throttle to stay under HC API rate limits. Batches of CONCURRENCY run in
+// parallel, with BATCH_DELAY_MS between batches. On 429, we back off and retry
+// once before giving up on that identifier.
+const CONCURRENCY = 4;
+const BATCH_DELAY_MS = 250;
+const RETRY_BACKOFF_MS = 1500;
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -52,38 +59,47 @@ function isFresh(fetched_at: string): boolean {
   return ageMs < CACHE_TTL_HOURS * 60 * 60 * 1000;
 }
 
-async function fetchPrice(identifier: string, apiKey: string): Promise<PriceRow> {
+async function fetchPriceOnce(identifier: string, apiKey: string): Promise<PriceRow | 'retry'> {
   const url = `${HC_BASE}/auction/history/${encodeURIComponent(identifier)}?limit=${HISTORY_LIMIT}`;
   const now = new Date().toISOString();
 
+  const res = await fetch(url, { headers: { Authorization: `Bearer ${apiKey}` } });
+
+  if (res.status === 429) return 'retry';
+  if (res.status === 404) {
+    return { raw_identifier: identifier, avg_price: null, min_price: null, max_price: null,
+             sample_count: 0, last_sale_at: null, fetched_at: now, not_found: true };
+  }
+  if (!res.ok) throw new Error(`HC API ${res.status}`);
+
+  const json: HcHistoryResponse = await res.json();
+  if (!json.ok || !json.summary || json.summary.total_rows === 0) {
+    return { raw_identifier: identifier, avg_price: null, min_price: null, max_price: null,
+             sample_count: 0, last_sale_at: null, fetched_at: now, not_found: true };
+  }
+
+  return {
+    raw_identifier: identifier,
+    avg_price: Math.round(Number(json.summary.avg_price)),
+    min_price: json.summary.min_price,
+    max_price: json.summary.max_price,
+    sample_count: json.summary.total_rows,
+    last_sale_at: json.summary.latest_sale_at,
+    fetched_at: now,
+    not_found: false,
+  };
+}
+
+async function fetchPrice(identifier: string, apiKey: string): Promise<PriceRow> {
   try {
-    const res = await fetch(url, {
-      headers: { Authorization: `Bearer ${apiKey}` },
-    });
+    const first = await fetchPriceOnce(identifier, apiKey);
+    if (first !== 'retry') return first;
 
-    if (res.status === 404) {
-      return { raw_identifier: identifier, avg_price: null, min_price: null, max_price: null,
-               sample_count: 0, last_sale_at: null, fetched_at: now, not_found: true };
-    }
-
-    if (!res.ok) throw new Error(`HC API ${res.status}`);
-
-    const json: HcHistoryResponse = await res.json();
-    if (!json.ok || !json.summary || json.summary.total_rows === 0) {
-      return { raw_identifier: identifier, avg_price: null, min_price: null, max_price: null,
-               sample_count: 0, last_sale_at: null, fetched_at: now, not_found: true };
-    }
-
-    return {
-      raw_identifier: identifier,
-      avg_price: Math.round(Number(json.summary.avg_price)),
-      min_price: json.summary.min_price,
-      max_price: json.summary.max_price,
-      sample_count: json.summary.total_rows,
-      last_sale_at: json.summary.latest_sale_at,
-      fetched_at: now,
-      not_found: false,
-    };
+    // Got 429 — back off and try once more
+    await new Promise(r => setTimeout(r, RETRY_BACKOFF_MS));
+    const second = await fetchPriceOnce(identifier, apiKey);
+    if (second === 'retry') throw new Error('HC API 429 (after retry)');
+    return second;
   } catch (err) {
     console.error(`fetchPrice(${identifier})`, err);
     throw err;
@@ -132,16 +148,22 @@ Deno.serve(async (req: Request) => {
       return !row || !isFresh(row.fetched_at);
     });
 
-    // Fetch stale entries from HC API in parallel (but bounded)
-    const fetched = await Promise.allSettled(stale.map(id => fetchPrice(id, apiKey)));
+    // Fetch stale entries in throttled batches so we don't trip HC's rate limit.
     const newRows: PriceRow[] = [];
-    for (let i = 0; i < fetched.length; i++) {
-      const result = fetched[i];
-      if (result.status === 'fulfilled') {
-        newRows.push(result.value);
-        cacheMap.set(stale[i], result.value);
+    for (let i = 0; i < stale.length; i += CONCURRENCY) {
+      const batch = stale.slice(i, i + CONCURRENCY);
+      const fetched = await Promise.allSettled(batch.map(id => fetchPrice(id, apiKey)));
+      for (let j = 0; j < fetched.length; j++) {
+        const result = fetched[j];
+        if (result.status === 'fulfilled') {
+          newRows.push(result.value);
+          cacheMap.set(batch[j], result.value);
+        }
+        // on rejection: leave any existing (stale) cached row in place; next request will retry
       }
-      // on rejection: leave any existing (stale) cached row in place; next request will retry
+      if (i + CONCURRENCY < stale.length) {
+        await new Promise(r => setTimeout(r, BATCH_DELAY_MS));
+      }
     }
 
     if (newRows.length > 0) {
