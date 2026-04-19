@@ -118,6 +118,32 @@ $$ LANGUAGE plpgsql SECURITY DEFINER SET search_path = public;
 --   USING (is_public = TRUE OR user_id = auth.uid());
 
 -- ============================================
+-- Migration: Auction house price cache (run on existing databases)
+-- ============================================
+-- Caches average/min/max prices fetched from the HC auction API.
+-- The auction-prices edge function is the only writer (service role).
+-- Anon role can read prices (they're not sensitive).
+--
+-- CREATE TABLE auction_prices (
+--   raw_identifier TEXT PRIMARY KEY,
+--   avg_price BIGINT,
+--   min_price BIGINT,
+--   max_price BIGINT,
+--   sample_count INTEGER,
+--   last_sale_at TIMESTAMPTZ,
+--   fetched_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+--   not_found BOOLEAN NOT NULL DEFAULT FALSE
+-- );
+--
+-- CREATE INDEX idx_auction_prices_fetched ON auction_prices(fetched_at);
+--
+-- ALTER TABLE auction_prices ENABLE ROW LEVEL SECURITY;
+--
+-- CREATE POLICY "Public read prices" ON auction_prices
+--   FOR SELECT USING (TRUE);
+-- -- No INSERT/UPDATE policies: only service role (edge function) writes.
+
+-- ============================================
 -- Admin: Assign an owner token to a legacy build
 -- ============================================
 -- 1. Pick a token (any string, e.g. a UUID):

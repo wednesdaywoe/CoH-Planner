@@ -47,6 +47,7 @@ texture_library2/
 Mids MXD files/
 dump/
 CLAUDE.md
+docs/
 
 # Tool suite: commit source, ignore build artifacts and generated data
 tools/**/__pycache__/

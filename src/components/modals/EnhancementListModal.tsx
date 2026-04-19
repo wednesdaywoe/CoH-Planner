@@ -5,10 +5,15 @@
  * plus totals for Catalysts (attuned) and Enhancement Boosters needed.
  */
 
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Modal, ModalBody } from './Modal';
 import { useBuildStore } from '@/stores';
 import type { Enhancement, IOSetEnhancement } from '@/types';
+import { enhancementToRawIdentifier, fetchPrices, formatInf, type PriceRow } from '@/services/auctionPrices';
+import { supabase } from '@/lib/supabase';
+
+// This will enable live AH pricing in the Enhancement List modal.
+const SHOW_AUCTION_PRICES = import.meta.env.VITE_SHOW_AUCTION_PRICES === 'true';
 
 interface EnhancementListModalProps {
   isOpen: boolean;
@@ -28,6 +33,8 @@ interface EnhancementGroup {
   totalBoosts: number;
   /** For sorting: set + piece num */
   sortKey: string;
+  /** Per-variant identifiers for auction lookup (null for un-priceable) */
+  pricingVariants: Array<{ identifier: string; count: number }>;
 }
 
 function collectEnhancements(build: ReturnType<typeof useBuildStore.getState>['build']): Enhancement[] {
@@ -84,12 +91,20 @@ function buildGroups(enhancements: Enhancement[]): EnhancementGroup[] {
         attunedCount: 0,
         totalBoosts: 0,
         sortKey,
+        pricingVariants: [],
       };
       map.set(key, group);
     }
     group.count += 1;
     if (enh.attuned) group.attunedCount += 1;
     if (enh.boost) group.totalBoosts += enh.boost;
+
+    const id = enhancementToRawIdentifier(enh);
+    if (id) {
+      const existing = group.pricingVariants.find(v => v.identifier === id);
+      if (existing) existing.count += 1;
+      else group.pricingVariants.push({ identifier: id, count: 1 });
+    }
   }
 
   return Array.from(map.values()).sort((a, b) => a.sortKey.localeCompare(b.sortKey));
@@ -135,6 +150,9 @@ export function EnhancementListModal({ isOpen, onClose }: EnhancementListModalPr
   // Tracks how many of each group have been "acquired" (clicked off).
   // Keyed by groupKey(setName, pieceName).
   const [acquired, setAcquired] = useState<Record<string, number>>({});
+  const [prices, setPrices] = useState<Record<string, PriceRow | null>>({});
+  const [pricesLoading, setPricesLoading] = useState(false);
+  const [pricesError, setPricesError] = useState<string | null>(null);
 
   const { bySet, groups, totalEnhancements, totalCatalysts, totalBoosters } = useMemo(() => {
     const enhancements = collectEnhancements(build);
@@ -166,6 +184,67 @@ export function EnhancementListModal({ isOpen, onClose }: EnhancementListModalPr
     }
     return { remainingCatalysts: cats, remainingBoosters: boosts, remainingEnhancements: count };
   }, [groups, acquired]);
+
+  // Fetch auction prices when modal opens (and whenever the set of identifiers changes)
+  const allIdentifiers = useMemo(() => {
+    const ids = new Set<string>();
+    for (const g of groups) {
+      for (const v of g.pricingVariants) ids.add(v.identifier);
+    }
+    return [...ids];
+  }, [groups]);
+
+  useEffect(() => {
+    if (!SHOW_AUCTION_PRICES || !isOpen || !supabase || allIdentifiers.length === 0) return;
+    let cancelled = false;
+    setPricesLoading(true);
+    setPricesError(null);
+    fetchPrices(allIdentifiers)
+      .then(p => { if (!cancelled) setPrices(p); })
+      .catch(err => { if (!cancelled) setPricesError(err instanceof Error ? err.message : String(err)); })
+      .finally(() => { if (!cancelled) setPricesLoading(false); });
+    return () => { cancelled = true; };
+  }, [isOpen, allIdentifiers]);
+
+  // Per-group remaining price and overall total (based on remaining, not total)
+  const { groupPrice, remainingTotalPrice, totalPrice } = useMemo(() => {
+    const groupPrice: Record<string, { full: number | null; remaining: number | null }> = {};
+    let remainingTotalPrice = 0;
+    let totalPrice = 0;
+    let anyPriced = false;
+
+    for (const g of groups) {
+      const acq = Math.min(acquired[groupKey(g.setName, g.pieceName)] ?? 0, g.count);
+      const remaining = g.count - acq;
+      const remainRatio = g.count > 0 ? remaining / g.count : 0;
+
+      let full = 0;
+      let priced = false;
+      for (const v of g.pricingVariants) {
+        const row = prices[v.identifier];
+        if (row?.avg_price != null) {
+          full += row.avg_price * v.count;
+          priced = true;
+        }
+      }
+      if (priced) {
+        anyPriced = true;
+        groupPrice[groupKey(g.setName, g.pieceName)] = {
+          full,
+          remaining: Math.round(full * remainRatio),
+        };
+        totalPrice += full;
+        remainingTotalPrice += Math.round(full * remainRatio);
+      } else {
+        groupPrice[groupKey(g.setName, g.pieceName)] = { full: null, remaining: null };
+      }
+    }
+    return {
+      groupPrice,
+      remainingTotalPrice: anyPriced ? remainingTotalPrice : null,
+      totalPrice: anyPriced ? totalPrice : null,
+    };
+  }, [groups, prices, acquired]);
 
   const handleClickGroup = (setName: string, pieceName: string, count: number) => {
     const key = groupKey(setName, pieceName);
@@ -221,6 +300,25 @@ export function EnhancementListModal({ isOpen, onClose }: EnhancementListModalPr
                     <span className="text-gray-500"> / {totalBoosters}</span>
                   )}
                 </div>
+                {SHOW_AUCTION_PRICES && supabase && (
+                  <div title="Estimated influence based on recent auction house averages">
+                    <span className="text-gray-400">Est. Inf:</span>{' '}
+                    {pricesLoading && Object.keys(prices).length === 0 ? (
+                      <span className="text-gray-500 italic">loading&hellip;</span>
+                    ) : pricesError ? (
+                      <span className="text-red-400 text-xs" title={pricesError}>price fetch failed</span>
+                    ) : remainingTotalPrice != null ? (
+                      <>
+                        <span className="font-semibold text-cyan-400">{formatInf(remainingTotalPrice)}</span>
+                        {remainingTotalPrice !== totalPrice && totalPrice != null && (
+                          <span className="text-gray-500"> / {formatInf(totalPrice)}</span>
+                        )}
+                      </>
+                    ) : (
+                      <span className="text-gray-500">&mdash;</span>
+                    )}
+                  </div>
+                )}
               </div>
               <div className="flex items-center gap-2">
                 <button
@@ -280,6 +378,11 @@ export function EnhancementListModal({ isOpen, onClose }: EnhancementListModalPr
                           {g.totalBoosts > 0 && !isComplete && (
                             <span className="text-[10px] text-green-400 whitespace-nowrap">
                               +{g.totalBoosts} boost{g.totalBoosts === 1 ? '' : 's'}
+                            </span>
+                          )}
+                          {supabase && !isComplete && groupPrice[groupKey(g.setName, g.pieceName)]?.remaining != null && (
+                            <span className="text-[10px] text-cyan-400 whitespace-nowrap font-mono">
+                              {formatInf(groupPrice[groupKey(g.setName, g.pieceName)].remaining)}
                             </span>
                           )}
                           {isComplete && (
