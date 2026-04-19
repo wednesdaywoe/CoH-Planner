@@ -9,7 +9,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { Modal, ModalBody } from './Modal';
 import { useBuildStore } from '@/stores';
 import type { Enhancement, IOSetEnhancement } from '@/types';
-import { enhancementToRawIdentifier, fetchPrices, formatInf, type PriceRow } from '@/services/auctionPrices';
+import { enhancementToRawIdentifier, fetchPrices, formatInf, MATERIAL_IDENTIFIERS, type PriceRow } from '@/services/auctionPrices';
 import { supabase } from '@/lib/supabase';
 
 // This will enable live AH pricing in the Enhancement List modal.
@@ -191,8 +191,10 @@ export function EnhancementListModal({ isOpen, onClose }: EnhancementListModalPr
     for (const g of groups) {
       for (const v of g.pricingVariants) ids.add(v.identifier);
     }
+    if (totalCatalysts > 0) ids.add(MATERIAL_IDENTIFIERS.catalyst);
+    if (totalBoosters > 0) ids.add(MATERIAL_IDENTIFIERS.booster);
     return [...ids];
-  }, [groups]);
+  }, [groups, totalCatalysts, totalBoosters]);
 
   useEffect(() => {
     if (!SHOW_AUCTION_PRICES || !isOpen || !supabase || allIdentifiers.length === 0) return;
@@ -205,6 +207,10 @@ export function EnhancementListModal({ isOpen, onClose }: EnhancementListModalPr
       .finally(() => { if (!cancelled) setPricesLoading(false); });
     return () => { cancelled = true; };
   }, [isOpen, allIdentifiers]);
+
+  // Per-material unit prices (Catalysts/Boosters)
+  const catalystUnit = prices[MATERIAL_IDENTIFIERS.catalyst]?.avg_price ?? null;
+  const boosterUnit = prices[MATERIAL_IDENTIFIERS.booster]?.avg_price ?? null;
 
   // Per-group remaining price and overall total (based on remaining, not total)
   const { groupPrice, remainingTotalPrice, totalPrice } = useMemo(() => {
@@ -239,12 +245,24 @@ export function EnhancementListModal({ isOpen, onClose }: EnhancementListModalPr
         groupPrice[groupKey(g.setName, g.pieceName)] = { full: null, remaining: null };
       }
     }
+    // Add material costs to the overall totals (based on remaining counts)
+    if (catalystUnit != null) {
+      anyPriced = true;
+      remainingTotalPrice += catalystUnit * remainingCatalysts;
+      totalPrice += catalystUnit * totalCatalysts;
+    }
+    if (boosterUnit != null) {
+      anyPriced = true;
+      remainingTotalPrice += boosterUnit * remainingBoosters;
+      totalPrice += boosterUnit * totalBoosters;
+    }
+
     return {
       groupPrice,
       remainingTotalPrice: anyPriced ? remainingTotalPrice : null,
       totalPrice: anyPriced ? totalPrice : null,
     };
-  }, [groups, prices, acquired]);
+  }, [groups, prices, acquired, catalystUnit, boosterUnit, remainingCatalysts, totalCatalysts, remainingBoosters, totalBoosters]);
 
   const handleClickGroup = (setName: string, pieceName: string, count: number) => {
     const key = groupKey(setName, pieceName);
@@ -279,7 +297,7 @@ export function EnhancementListModal({ isOpen, onClose }: EnhancementListModalPr
         ) : (
           <>
             {/* Instructions */}
-            <div className="text-[10px] text-gray-500 text-center mb-2">
+            <div className="text-xs text-gray-500 text-center mb-2">
               Click an item to mark one as acquired &middot; Click again at 0 to reset
             </div>
 
@@ -292,12 +310,28 @@ export function EnhancementListModal({ isOpen, onClose }: EnhancementListModalPr
                   {remainingCatalysts !== totalCatalysts && (
                     <span className="text-gray-500"> / {totalCatalysts}</span>
                   )}
+                  {SHOW_AUCTION_PRICES && catalystUnit != null && remainingCatalysts > 0 && (
+                    <>
+                      <span className="text-sm text-gray-500 ml-1">@ {formatInf(catalystUnit)}</span>
+                      <span className="text-sm text-cyan-400 ml-1 font-mono">
+                        {formatInf(catalystUnit * remainingCatalysts)}
+                      </span>
+                    </>
+                  )}
                 </div>
                 <div>
                   <span className="text-gray-400">Boosters:</span>{' '}
                   <span className="font-semibold text-green-400">{remainingBoosters}</span>
                   {remainingBoosters !== totalBoosters && (
                     <span className="text-gray-500"> / {totalBoosters}</span>
+                  )}
+                  {SHOW_AUCTION_PRICES && boosterUnit != null && remainingBoosters > 0 && (
+                    <>
+                      <span className="text-sm text-gray-500 ml-1">@ {formatInf(boosterUnit)}</span>
+                      <span className="text-sm text-cyan-400 ml-1 font-mono">
+                        {formatInf(boosterUnit * remainingBoosters)}
+                      </span>
+                    </>
                   )}
                 </div>
                 {SHOW_AUCTION_PRICES && supabase && (
@@ -371,22 +405,22 @@ export function EnhancementListModal({ isOpen, onClose }: EnhancementListModalPr
                           </span>
                           <span className="flex-1">{g.pieceName}</span>
                           {g.attunedCount > 0 && !isComplete && (
-                            <span className="text-[10px] text-amber-400 whitespace-nowrap">
+                            <span className="text-sm text-amber-400 whitespace-nowrap">
                               {g.attunedCount} attuned
                             </span>
                           )}
                           {g.totalBoosts > 0 && !isComplete && (
-                            <span className="text-[10px] text-green-400 whitespace-nowrap">
+                            <span className="text-sm text-green-400 whitespace-nowrap">
                               +{g.totalBoosts} boost{g.totalBoosts === 1 ? '' : 's'}
                             </span>
                           )}
                           {supabase && !isComplete && groupPrice[groupKey(g.setName, g.pieceName)]?.remaining != null && (
-                            <span className="text-[10px] text-cyan-400 whitespace-nowrap font-mono">
+                            <span className="text-sm text-cyan-400 whitespace-nowrap font-mono">
                               {formatInf(groupPrice[groupKey(g.setName, g.pieceName)].remaining)}
                             </span>
                           )}
                           {isComplete && (
-                            <span className="text-[10px] text-gray-600">&#x2713;</span>
+                            <span className="text-xs text-gray-600">&#x2713;</span>
                           )}
                         </li>
                       );

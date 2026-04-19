@@ -9,6 +9,10 @@ HC added 6 extra fields not present in Parse6:
   - 52b: u4 after idea_cost
 Parse6 retains fields 53-56 (confirm dialog fields) in all records.
 Parse6 has 8 bytes of box data (2×f4) instead of Parse7's 24 bytes (2×f4×3).
+
+Post-2026 HC experimental patch added 8 bytes after chain_delay (field 41b):
+  - 41b: 2×u4 (likely f4 + u4, often (1.0f, 0))
+Auto-detected via _detect_field_41b.
 """
 
 import struct
@@ -23,35 +27,41 @@ from ._enums import (
 )
 
 
-def _detect_field_45b(r: BinReader) -> bool:
-    """Detect whether the Parse7 powers.bin has the post-2025 field 45b.
+def _detect_format(r: BinReader) -> tuple[bool, bool]:
+    """Detect whether the Parse7 powers.bin has field 45b and/or field 41b.
 
-    Tests first 20 records with both layouts. Wrong layout shifts reads by 4 bytes,
-    producing implausible values: endurance > 1000, negative range, etc.
+    Tests first 20 records across all 4 combinations of (has_41b, has_45b).
+    Wrong layout shifts reads by 4+ bytes, producing implausible numeric values.
+    Returns (has_field_41b, has_field_45b).
     """
     save_pos = r.pos
-    scores = {True: 0, False: 0}
-    for has_45b in (True, False):
-        r._pos = save_pos
-        for _ in range(20):
-            rec_len = r.read_u4()
-            sub = r.sub_reader(rec_len)
-            try:
-                pw = _parse_power(sub, has_field_45b=has_45b)
-                # Plausibility: game values have sane ranges
-                plausible = (
-                    0 <= pw.range <= 500
-                    and 0 <= pw.recharge_time <= 3600
-                    and 0 <= pw.endurance_cost <= 500
-                    and 0 <= pw.time_to_activate <= 30
-                )
-                if plausible:
-                    scores[has_45b] += 1
-            except Exception:
-                pass
-            r.skip(rec_len)
+    best = (False, False)
+    best_score = -1
+    for has_41b in (False, True):
+        for has_45b in (False, True):
+            r._pos = save_pos
+            score = 0
+            for _ in range(20):
+                rec_len = r.read_u4()
+                sub = r.sub_reader(rec_len)
+                try:
+                    pw = _parse_power(sub, has_field_45b=has_45b, has_field_41b=has_41b)
+                    plausible = (
+                        0 <= pw.range <= 500
+                        and 0 <= pw.recharge_time <= 3600
+                        and 0 <= pw.endurance_cost <= 500
+                        and 0 <= pw.time_to_activate <= 30
+                    )
+                    if plausible:
+                        score += 1
+                except Exception:
+                    pass
+                r.skip(rec_len)
+            if score > best_score:
+                best_score = score
+                best = (has_41b, has_45b)
     r._pos = save_pos
-    return scores[True] >= scores[False]
+    return best
 
 
 def parse_powers(bin_path_or_data) -> list[PowerRecord]:
@@ -65,11 +75,12 @@ def parse_powers(bin_path_or_data) -> list[PowerRecord]:
         parser = _parse_power_parse6
     else:
         # Auto-detect HC format version by testing the first few records.
-        # Post-2025 HC bins added a u4 field between box_size and range (field 45b).
-        # Detection: wrong layout produces range=0/recharge=0 for powers that should
-        # have nonzero values, because the extra field shifts all subsequent reads.
-        has_45b = _detect_field_45b(r)
-        parser = lambda sub: _parse_power(sub, has_field_45b=has_45b)
+        # Two known post-release additions that shift subsequent field offsets:
+        #   - field 45b (u4 between box_size and range) added in a past HC patch
+        #   - field 41b (8 bytes after chain_delay) added in 2026 experimental patch
+        # Wrong layout produces implausible values (negative range, huge recharge).
+        has_41b, has_45b = _detect_format(r)
+        parser = lambda sub: _parse_power(sub, has_field_45b=has_45b, has_field_41b=has_41b)
 
     records = []
     for i in range(count):
@@ -287,7 +298,7 @@ def _parse_cast_flags(r: BinReader) -> list[str]:
     return cast_through
 
 
-def _parse_power(r: BinReader, *, has_field_45b: bool = True) -> PowerRecord:
+def _parse_power(r: BinReader, *, has_field_45b: bool = True, has_field_41b: bool = False) -> PowerRecord:
     """Parse a single power record (HC Parse7 layout)."""
 
     # 1. key (string) — full_name
@@ -379,6 +390,9 @@ def _parse_power(r: BinReader, *, has_field_45b: bool = True) -> PowerRecord:
     arc = r.read_f4()
     # 41. chain_delay (f4)
     r.read_f4()
+    # 41b. HC experimental 2026: 8 bytes (likely f4 + u4, often (1.0f, 0))
+    if has_field_41b:
+        r.skip(8)
     # 42. chain_eff (string_array)
     r.read_string_array()
     # 43. chain_fork (string_array)

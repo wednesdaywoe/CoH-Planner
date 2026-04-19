@@ -19,6 +19,13 @@ export interface PriceRow {
 
 const PIECE_LETTERS = 'abcdef';
 
+/** Well-known raw_identifiers for crafting materials (type 11 / salvage). */
+export const MATERIAL_IDENTIFIERS = {
+  catalyst: '11 S_EnhancementCatalyst 0',
+  booster: '11 S_EnhancementBooster 0',
+  converter: '11 S_EnhancementConverter 0',
+} as const;
+
 /** Convert "attuned_brutes_fury_a" → "Attuned_Brutes_Fury_A" */
 function titleCaseToken(token: string): string {
   return token

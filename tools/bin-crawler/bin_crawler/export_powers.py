@@ -158,13 +158,17 @@ def main():
     ap = argparse.ArgumentParser(description='Export player power data as structured JSON')
     ap.add_argument('--assets-dir', default=r'G:\Homecoming\assets\live',
                     help='Path to assets directory (with .pigg files or bin/ subdir)')
-    ap.add_argument('--output-dir', default='./exported_powers',
-                    help='Output directory for JSON files')
+    ap.add_argument('--output-dir', default=None,
+                    help='Output directory for JSON files (default: ./exported_powers/<assets-dir-name>, e.g. ./exported_powers/live or ./exported_powers/experimental)')
     ap.add_argument('--categories', nargs='*',
                     help='Specific categories to export (default: all player categories)')
     args = ap.parse_args()
 
-    output_dir = Path(args.output_dir)
+    if args.output_dir is None:
+        source_name = Path(args.assets_dir).name or 'export'
+        output_dir = Path('./exported_powers') / source_name
+    else:
+        output_dir = Path(args.output_dir)
     categories = set(args.categories) if args.categories else PLAYER_CATEGORIES
 
     resolver = BinResolver(args.assets_dir)
