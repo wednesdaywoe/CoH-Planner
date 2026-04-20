@@ -748,8 +748,8 @@ export function mapEnhancementUid(
   const level = Math.min(Math.max(ioLevel + 1, 1), 53);
   const boost = parseBoostLevel(relativeLevel);
 
-  // Check for special enhancements (Hamidon, Titan, Hydra, D-Sync, Prestige)
-  if (grade === 'SingleO' || uid.startsWith('Hamidon_') || uid.startsWith('Titan_') || uid.startsWith('Hydra_') || uid.startsWith('DSync_') || uid.startsWith('Dsync_') || uid.startsWith('Generic_')) {
+  // Check for special enhancements (Hamidon, Synthetic HO, Titan, Hydra, D-Sync, Prestige)
+  if (grade === 'SingleO' || uid.startsWith('Synthetic_Hamidon_') || uid.startsWith('Hamidon_') || uid.startsWith('Titan_') || uid.startsWith('Hydra_') || uid.startsWith('DSync_') || uid.startsWith('Dsync_') || uid.startsWith('Generic_')) {
     return mapSpecialEnhancementUid(uid, boost);
   }
 
@@ -1605,6 +1605,9 @@ const SPECIAL_SUFFIX_MAPS: Record<SpecialCategory, Record<string, string>> = {
 };
 
 const SPECIAL_PREFIXES: [string, SpecialCategory][] = [
+  // Synthetic_Hamidon_ must come before Hamidon_ so startsWith matches the longer prefix first.
+  // Synthetic HOs share the Hamidon registry (identical aspect values in-game).
+  ['Synthetic_Hamidon_', 'hamidon'],
   ['Hamidon_', 'hamidon'],
   ['Titan_', 'titan'],
   ['Hydra_', 'hydra'],

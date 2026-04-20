@@ -49,6 +49,8 @@ Mids MXD files/
 dump/
 CLAUDE.md
 docs/
+raw defs/
+tools/ghidra-audit/project/
 
 # Tool suite: commit source, ignore build artifacts and generated data
 tools/**/__pycache__/

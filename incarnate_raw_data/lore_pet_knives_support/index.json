@@ -1,0 +1,26 @@
+{
+  "name": "Lore_Pet_Knives_Support",
+  "display_name": "Lore_Pet_Knives_Support",
+  "display_fullname": "Incarnate.Lore Pet Knives Support",
+  "display_help": "Incarnate",
+  "display_short_help": "Incarnate",
+  "available_level": [
+    0,
+    0
+  ],
+  "source_file": "DEFS/POWERS/INCARNATE/LORE_PET_KNIVES_SUPPORT.POWERSETS",
+  "icon": "lore_pet_knives_support_set.png",
+  "requires": "",
+  "power_names": [
+    "Incarnate.Lore_Pet_Knives_Support.Adrenalin_Boost",
+    "Incarnate.Lore_Pet_Knives_Support.Rallying_Cry"
+  ],
+  "power_display_names": [
+    "Guardianship",
+    "Rallying Cry"
+  ],
+  "power_short_helps": [
+    "Ranged, Ally +End, +Regeneration, +Recharge, Res (Slow)",
+    "PBAoE, Buff(Self and Allies), +DMG(All), +ToHit, +RES(All Status Effects), +Prot(All Status Effects)"
+  ]
+}

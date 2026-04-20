@@ -1,0 +1,26 @@
+{
+  "name": "Lore_Pet_Seers_Support",
+  "display_name": "Lore_Pet_Seers_Support",
+  "display_fullname": "Incarnate.Lore Pet Seers Support",
+  "display_help": "Diviner",
+  "display_short_help": "Diviner",
+  "available_level": [
+    0,
+    0
+  ],
+  "source_file": "DEFS/POWERS/INCARNATE/LORE_PET_SEERS_SUPPORT.POWERSETS",
+  "icon": "lore_pet_seers_support_set.png",
+  "requires": "",
+  "power_names": [
+    "Incarnate.Lore_Pet_Seers_Support.Soothe_Mind",
+    "Incarnate.Lore_Pet_Seers_Support.Fortitude"
+  ],
+  "power_display_names": [
+    "Soothe Mind",
+    "Fortitude"
+  ],
+  "power_short_helps": [
+    "Ally Heal",
+    "Ally +DEF, +DMG, +ACC"
+  ]
+}

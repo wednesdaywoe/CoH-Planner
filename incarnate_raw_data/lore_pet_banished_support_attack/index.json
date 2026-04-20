@@ -1,0 +1,22 @@
+{
+  "name": "Lore_Pet_Banished_Support_Attack",
+  "display_name": "Lore_Pet_Banished_Support_Attack",
+  "display_fullname": "Incarnate.Lore Pet Banished Support Attack",
+  "display_help": "Incarnate",
+  "display_short_help": "Incarnate",
+  "available_level": [
+    0
+  ],
+  "source_file": "DEFS/POWERS/INCARNATE/LORE_PET_BANISHED_SUPPORT_ATTACK.POWERSETS",
+  "icon": "lore_pet_banished_support_attack_set.png",
+  "requires": "",
+  "power_names": [
+    "Incarnate.Lore_Pet_Banished_Support_Attack.Frigid_Blast"
+  ],
+  "power_display_names": [
+    "Frigid Blast"
+  ],
+  "power_short_helps": [
+    "Ranged (Cone), Moderate DMG(Cold/Negative Energy), -ToHit(Foe), -RES(Foe, Cold/Negative Energy), Chance for +EndCost(Foe)"
+  ]
+}

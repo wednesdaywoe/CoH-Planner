@@ -736,8 +736,12 @@ interface EnhancementResolveResult {
   warning: GameImportWarning | null;
 }
 
-// Special enhancement prefix → category + registry mapping
+// Special enhancement prefix → category + registry mapping.
+// Synthetic HOs share the Hamidon registry (identical aspect values in-game;
+// the "synthetic" distinction is cosmetic). Prefix order matters — the longer
+// `Synthetic_Hamidon_` must come before `Hamidon_` so `startsWith` matches it first.
 const SPECIAL_ENH_PREFIXES: [string, SpecialEnhancement['category'], Record<string, SpecialEnhancementDef>][] = [
+  ['Synthetic_Hamidon_', 'hamidon', HAMIDON_ENHANCEMENTS],
   ['Hamidon_', 'hamidon', HAMIDON_ENHANCEMENTS],
   ['Titan_', 'titan', TITAN_ENHANCEMENTS],
   ['Hydra_', 'hydra', HYDRA_ENHANCEMENTS],

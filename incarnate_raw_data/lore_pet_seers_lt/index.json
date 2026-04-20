@@ -1,0 +1,26 @@
+{
+  "name": "Lore_Pet_Seers_LT",
+  "display_name": "Lore_Pet_Seers_LT",
+  "display_fullname": "Incarnate.Lore Pet Seers LT",
+  "display_help": "Diviner",
+  "display_short_help": "Diviner",
+  "available_level": [
+    0,
+    0
+  ],
+  "source_file": "DEFS/POWERS/INCARNATE/LORE_PET_SEERS_LT.POWERSETS",
+  "icon": "lore_pet_seers_lt_set.png",
+  "requires": "",
+  "power_names": [
+    "Incarnate.Lore_Pet_Seers_LT.Mental_Blast",
+    "Incarnate.Lore_Pet_Seers_LT.Dominate_Mind"
+  ],
+  "power_display_names": [
+    "Mental Blast",
+    "Dominate Mind"
+  ],
+  "power_short_helps": [
+    "Ranged, Moderate DMG(Psionic), Target -Recharge",
+    "Melee, Moderate DMG(Psionic), Foe Hold"
+  ]
+}

@@ -120,20 +120,24 @@ function hasPerTargetField(value: unknown): boolean {
 }
 
 /**
- * Data-driven detection: show stacking slider when effects have perTarget metadata.
- * Supports both AoE per-target powers (maxTargets) and non-AoE stacking (maxStacks).
+ * Data-driven detection: show stacking slider for either per-target AoE
+ * scaling (perTarget metadata + maxTargets) or linear self-stacking
+ * (`effects.maxStacks` set explicitly, e.g. Psychokinetic Barrier).
  */
 function getStackingInfo(power: Power): { maxStacks: number; label: string } | null {
   if (!power.effects) return null;
-  const hasPerTarget = Object.values(power.effects).some(v => hasPerTargetField(v));
-  if (!hasPerTarget) return null;
 
-  // Non-AoE stacking powers (e.g., Reactive Regeneration)
+  // Linear self-stacking — power declares maxStacks directly. Doesn't
+  // require perTarget metadata; the slider just multiplies scale of any
+  // effect listed in `effects.stacksLinear`.
   if (power.effects.maxStacks) {
     return { maxStacks: power.effects.maxStacks, label: 'Stacks' };
   }
 
-  // AoE per-target powers (e.g., Soul Drain, Eclipse)
+  // AoE per-target powers (e.g., Soul Drain, Eclipse) — perTarget on the
+  // effect drives the math, slider max comes from stats.maxTargets.
+  const hasPerTarget = Object.values(power.effects).some(v => hasPerTargetField(v));
+  if (!hasPerTarget) return null;
   const maxTargets = power.stats?.maxTargets;
   if (maxTargets && maxTargets > 1 && maxTargets !== 255) {
     return { maxStacks: maxTargets, label: 'Targets Hit' };
@@ -168,17 +172,45 @@ function adjustScaledValue(value: unknown, targetsHit: number): unknown {
 }
 
 /**
- * Create an adjusted copy of effects with per-target scale values multiplied.
+ * Multiply the `scale` field of a ScaledEffect (or every leaf of a by-type
+ * object) by `multiplier`. Used for linear self-stacking — every additional
+ * stack just adds another instance of the base magnitude.
+ */
+function multiplyScale(value: unknown, multiplier: number): unknown {
+  if (multiplier === 1) return value;
+  if (typeof value !== 'object' || value === null) return value;
+  if ('scale' in value && typeof (value as { scale: unknown }).scale === 'number') {
+    const se = value as { scale: number; [k: string]: unknown };
+    return { ...se, scale: se.scale * multiplier };
+  }
+  // By-type object — recurse
+  const result: Record<string, unknown> = {};
+  let changed = false;
+  for (const [k, v] of Object.entries(value as Record<string, unknown>)) {
+    const adj = multiplyScale(v, multiplier);
+    result[k] = adj;
+    if (adj !== v) changed = true;
+  }
+  return changed ? result : value;
+}
+
+/**
+ * Create an adjusted copy of effects with per-target scale values multiplied
+ * (perTarget AoE math) and/or stacks-linear effects multiplied by stack count.
  */
 function adjustEffectsForTargets(
   effects: PowerEffects,
   targetsHit: number
 ): PowerEffects {
   if (targetsHit <= 1) return effects;
+  const stacksLinear = new Set(effects.stacksLinear || []);
   const adjusted: Record<string, unknown> = {};
   let changed = false;
   for (const [key, value] of Object.entries(effects)) {
-    const adj = adjustScaledValue(value, targetsHit);
+    let adj = adjustScaledValue(value, targetsHit);
+    if (stacksLinear.has(key)) {
+      adj = multiplyScale(adj, targetsHit);
+    }
     adjusted[key] = adj;
     if (adj !== value) changed = true;
   }

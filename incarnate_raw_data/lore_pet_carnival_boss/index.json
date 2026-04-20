@@ -1,0 +1,34 @@
+{
+  "name": "Lore_Pet_Carnival_Boss",
+  "display_name": "Lore_Pet_Carnival_Boss",
+  "display_fullname": "Incarnate.Lore Pet Carnival Boss",
+  "display_help": "Incarnate",
+  "display_short_help": "Incarnate",
+  "available_level": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "source_file": "DEFS/POWERS/INCARNATE/LORE_PET_CARNIVAL_BOSS.POWERSETS",
+  "icon": "lore_pet_carnival_boss_set.png",
+  "requires": "",
+  "power_names": [
+    "Incarnate.Lore_Pet_Carnival_Boss.Telekinetic_Blast",
+    "Incarnate.Lore_Pet_Carnival_Boss.Mental_Blast",
+    "Incarnate.Lore_Pet_Carnival_Boss.Psionic_Tornado",
+    "Incarnate.Lore_Pet_Carnival_Boss.Tenebrous_Tentacles"
+  ],
+  "power_display_names": [
+    "Telekinetic Blast",
+    "Mental Blast",
+    "Psionic Tornado",
+    "Tenebrous Tentacles"
+  ],
+  "power_short_helps": [
+    "Ranged, Moderate DMG(Smash/Psionic), Foe Knockback",
+    "Ranged, Superior DMG(Psionic), Target -Recharge",
+    "Ranged (Targeted AoE), Moderate DoT(Psionic), Foe Knockback",
+    "Ranged (Cone), Light DMG(Negative), Foe Immobilize, -To-hit"
+  ]
+}

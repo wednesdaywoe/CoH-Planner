@@ -1,0 +1,26 @@
+{
+  "name": "Lore_Pet_Cimeroran_Support",
+  "display_name": "Lore_Pet_Cimeroran_Support",
+  "display_fullname": "Incarnate.Lore Pet Cimeroran Support",
+  "display_help": "Cimeroran",
+  "display_short_help": "Cimeroran",
+  "available_level": [
+    0,
+    0
+  ],
+  "source_file": "DEFS/POWERS/INCARNATE/LORE_PET_CIMERORAN_SUPPORT.POWERSETS",
+  "icon": "lore_pet_cimeroran_support_set.png",
+  "requires": "",
+  "power_names": [
+    "Incarnate.Lore_Pet_Cimeroran_Support.Healing_Aura",
+    "Incarnate.Lore_Pet_Cimeroran_Support.Heal_Other"
+  ],
+  "power_display_names": [
+    "Healing Aura",
+    "Heal Other"
+  ],
+  "power_short_helps": [
+    "PBAoE, Team +Heal",
+    "Ally Heal"
+  ]
+}

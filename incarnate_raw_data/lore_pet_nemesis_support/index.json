@@ -1,0 +1,26 @@
+{
+  "name": "Lore_Pet_Nemesis_Support",
+  "display_name": "Lore_Pet_Nemesis_Support",
+  "display_fullname": "Incarnate.Lore Pet Nemesis Support",
+  "display_help": "Nemesis",
+  "display_short_help": "Nemesis",
+  "available_level": [
+    0,
+    0
+  ],
+  "source_file": "DEFS/POWERS/INCARNATE/LORE_PET_NEMESIS_SUPPORT.POWERSETS",
+  "icon": "lore_pet_nemesis_support_set.png",
+  "requires": "",
+  "power_names": [
+    "Incarnate.Lore_Pet_Nemesis_Support.Triage",
+    "Incarnate.Lore_Pet_Nemesis_Support.Healing_Aura"
+  ],
+  "power_display_names": [
+    "Triage",
+    "Healing Aura"
+  ],
+  "power_short_helps": [
+    "Ally Heal, Res Effects",
+    "PBAoE, Team +Heal"
+  ]
+}

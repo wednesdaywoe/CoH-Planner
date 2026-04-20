@@ -1,0 +1,22 @@
+{
+  "name": "AntiMatterRayBurn",
+  "display_name": "AntiMatterRayBurn",
+  "display_fullname": "Incarnate.AntiMatterRayBurn",
+  "display_help": "Clockwork",
+  "display_short_help": "Clockwork",
+  "available_level": [
+    0
+  ],
+  "source_file": "DEFS/POWERS/INCARNATE/ANTIMATTERRAYBURN.POWERSETS",
+  "icon": "antimatterrayburn_set.png",
+  "requires": "",
+  "power_names": [
+    "Incarnate.AntiMatterRayBurn.Anti-Matter_Particles"
+  ],
+  "power_display_names": [
+    "Anti-Matter Particles"
+  ],
+  "power_short_helps": [
+    "Superior DoT(Energy), Foe -Def"
+  ]
+}

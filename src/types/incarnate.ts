@@ -110,12 +110,19 @@ export interface IncarnateActiveState {
   destiny: boolean;
   hybrid: boolean;
   interface: boolean;
+  judgement: boolean;
+  lore: boolean;
 }
 
 /**
  * Slots that can be toggled for stat calculations
+ *
+ * Note: alpha, destiny, hybrid, interface toggles affect dashboard calculations.
+ * judgement and lore toggles are cosmetic-only (their in-combat click/summon
+ * powers don't contribute passive stats; level shift is gated by the separate
+ * incarnateLevelShiftActive flag, not per-slot active state).
  */
-export type ToggleableIncarnateSlot = 'alpha' | 'destiny' | 'hybrid' | 'interface';
+export type ToggleableIncarnateSlot = 'alpha' | 'destiny' | 'hybrid' | 'interface' | 'judgement' | 'lore';
 
 // ============================================
 // CRAFTING TYPES
@@ -269,6 +276,8 @@ export function createDefaultIncarnateActiveState(): IncarnateActiveState {
     destiny: true,
     hybrid: true,
     interface: true,
+    judgement: true,
+    lore: true,
   };
 }
 

@@ -1,0 +1,30 @@
+{
+  "name": "Lore_Pet_Talons_LT",
+  "display_name": "Lore_Pet_Talons_LT",
+  "display_fullname": "Incarnate.Lore Pet Talons LT",
+  "display_help": "Incarnate",
+  "display_short_help": "Incarnate",
+  "available_level": [
+    0,
+    0,
+    0
+  ],
+  "source_file": "DEFS/POWERS/INCARNATE/LORE_PET_TALONS_LT.POWERSETS",
+  "icon": "lore_pet_talons_lt_set.png",
+  "requires": "",
+  "power_names": [
+    "Incarnate.Lore_Pet_Talons_LT.Snap_Shot",
+    "Incarnate.Lore_Pet_Talons_LT.Ice_Arrow",
+    "Incarnate.Lore_Pet_Talons_LT.Screech"
+  ],
+  "power_display_names": [
+    "Snap Shot",
+    "Ice Arrow",
+    "Screech"
+  ],
+  "power_short_helps": [
+    "Ranged, Minor DMG(Lethal)",
+    "Ranged, Hold, -Recharge (Foe), -Speed(Foe,All)",
+    "Ranged, High DMG(Smashing/Energy), +DMG(All), -Res(Foe,All), Stun"
+  ]
+}

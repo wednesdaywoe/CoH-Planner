@@ -1,0 +1,34 @@
+{
+  "name": "Lore_Pet_Rikti_Boss",
+  "display_name": "Lore_Pet_Rikti_Boss",
+  "display_fullname": "Incarnate.Lore Pet Rikti Boss",
+  "display_help": "Incarnate",
+  "display_short_help": "Incarnate",
+  "available_level": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "source_file": "DEFS/POWERS/INCARNATE/LORE_PET_RIKTI_BOSS.POWERSETS",
+  "icon": "lore_pet_rikti_boss_set.png",
+  "requires": "",
+  "power_names": [
+    "Incarnate.Lore_Pet_Rikti_Boss.Greater_Rikti_Sword",
+    "Incarnate.Lore_Pet_Rikti_Boss.Mental_Blast",
+    "Incarnate.Lore_Pet_Rikti_Boss.Mesmerize",
+    "Incarnate.Lore_Pet_Rikti_Boss.Total_Domination"
+  ],
+  "power_display_names": [
+    "Greater Rikti Sword",
+    "Mental Blast",
+    "Mesmerize",
+    "Total Domination"
+  ],
+  "power_short_helps": [
+    "Disorient",
+    "-Recharge",
+    "Sleep",
+    "Hold"
+  ]
+}

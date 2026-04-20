@@ -1,0 +1,26 @@
+{
+  "name": "Lore_Pet_IDF_LT",
+  "display_name": "Lore_Pet_IDF_LT",
+  "display_fullname": "Incarnate.Lore Pet IDF LT",
+  "display_help": "Imperial Defense Force",
+  "display_short_help": "Imperial Defense Force",
+  "available_level": [
+    0,
+    0
+  ],
+  "source_file": "DEFS/POWERS/INCARNATE/LORE_PET_IDF_LT.POWERSETS",
+  "icon": "lore_pet_idf_lt_set.png",
+  "requires": "",
+  "power_names": [
+    "Incarnate.Lore_Pet_IDF_LT.Plasma_Blast",
+    "Incarnate.Lore_Pet_IDF_LT.Plasma_Burst"
+  ],
+  "power_display_names": [
+    "Plasma Blast",
+    "Plasma Burst"
+  ],
+  "power_short_helps": [
+    "Ranged, Moderate DMG(Energy), Minor DoT(Energy) Foe Knockdown",
+    "Ranged, Moderate DMG(Energy), Foe Knockdown"
+  ]
+}

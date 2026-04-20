@@ -1,0 +1,30 @@
+{
+  "name": "Lore_Pet_Phantoms_Boss",
+  "display_name": "Lore_Pet_Phantoms_Boss",
+  "display_fullname": "Incarnate.Lore Pet Phantoms Boss",
+  "display_help": "Incarnate",
+  "display_short_help": "Incarnate",
+  "available_level": [
+    0,
+    0,
+    0
+  ],
+  "source_file": "DEFS/POWERS/INCARNATE/LORE_PET_PHANTOMS_BOSS.POWERSETS",
+  "icon": "lore_pet_phantoms_boss_set.png",
+  "requires": "",
+  "power_names": [
+    "Incarnate.Lore_Pet_Phantoms_Boss.Greater_Ice_Sword",
+    "Incarnate.Lore_Pet_Phantoms_Boss.Fire_Blast",
+    "Incarnate.Lore_Pet_Phantoms_Boss.Fire_Sword_Circle"
+  ],
+  "power_display_names": [
+    "Greater Ice Sword",
+    "Fire Blast",
+    "Fire Sword Circle"
+  ],
+  "power_short_helps": [
+    "Melee, High DMG(Cold/Lethal), Foe -Recharge, -SPD",
+    "Ranged, Light DMG(Fire)",
+    "PBAoE Melee, Moderate DMG(Fire/Lethal)"
+  ]
+}

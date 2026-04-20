@@ -1,0 +1,46 @@
+{
+  "name": "Lore_Pet_Generic",
+  "display_name": "Lore_Pet_Generic",
+  "display_fullname": "Incarnate.Lore Pet Generic",
+  "display_help": "Incarnate",
+  "display_short_help": "Incarnate",
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "source_file": "DEFS/POWERS/INCARNATE/LORE_PET_GENERIC.POWERSETS",
+  "icon": "lore_pet_generic_set.png",
+  "requires": "",
+  "power_names": [
+    "Incarnate.Lore_Pet_Generic.Lore_Evasion",
+    "Incarnate.Lore_Pet_Generic.Lore_Protection",
+    "Incarnate.Lore_Pet_Generic.Lore_Power",
+    "Incarnate.Lore_Pet_Generic.Lore_Data_Strength",
+    "Incarnate.Lore_Pet_Generic.Fly",
+    "Incarnate.Lore_Pet_Generic.Super_Leap",
+    "Incarnate.Lore_Pet_Generic.Essence_Small"
+  ],
+  "power_display_names": [
+    "Lore Evasion",
+    "Lore Protection",
+    "Lore Power",
+    "Lore Data Strength",
+    "Fly",
+    "Super Leap",
+    "Essence"
+  ],
+  "power_short_helps": [
+    "Auto: +DEF(AoE), +Res(All)",
+    "Auto: Untouchable, No Threat",
+    "Auto: +DMG(All)",
+    "Auto: -DMG(All)",
+    "Self Fly",
+    "Self Leap",
+    "Essence"
+  ]
+}

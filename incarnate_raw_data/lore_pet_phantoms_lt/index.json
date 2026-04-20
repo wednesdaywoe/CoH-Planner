@@ -1,0 +1,26 @@
+{
+  "name": "Lore_Pet_Phantoms_LT",
+  "display_name": "Lore_Pet_Phantoms_LT",
+  "display_fullname": "Incarnate.Lore Pet Phantoms LT",
+  "display_help": "Incarnate",
+  "display_short_help": "Incarnate",
+  "available_level": [
+    0,
+    0
+  ],
+  "source_file": "DEFS/POWERS/INCARNATE/LORE_PET_PHANTOMS_LT.POWERSETS",
+  "icon": "lore_pet_phantoms_lt_set.png",
+  "requires": "",
+  "power_names": [
+    "Incarnate.Lore_Pet_Phantoms_LT.Fire_Blast",
+    "Incarnate.Lore_Pet_Phantoms_LT.Fire_Sword"
+  ],
+  "power_display_names": [
+    "Fire Blast",
+    "Fire Sword"
+  ],
+  "power_short_helps": [
+    "Ranged, Light DMG(Fire)",
+    "Melee, Moderate DMG(Fire/Lethal)"
+  ]
+}

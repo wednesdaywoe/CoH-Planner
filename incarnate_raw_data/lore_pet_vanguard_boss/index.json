@@ -1,0 +1,34 @@
+{
+  "name": "Lore_Pet_Vanguard_Boss",
+  "display_name": "Lore_Pet_Vanguard_Boss",
+  "display_fullname": "Incarnate.Lore Pet Vanguard Boss",
+  "display_help": "Vanguard",
+  "display_short_help": "Vanguard",
+  "available_level": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "source_file": "DEFS/POWERS/INCARNATE/LORE_PET_VANGUARD_BOSS.POWERSETS",
+  "icon": "lore_pet_vanguard_boss_set.png",
+  "requires": "",
+  "power_names": [
+    "Incarnate.Lore_Pet_Vanguard_Boss.Life_Drain",
+    "Incarnate.Lore_Pet_Vanguard_Boss.Freezing_Sphere",
+    "Incarnate.Lore_Pet_Vanguard_Boss.Ice_Blast",
+    "Incarnate.Lore_Pet_Vanguard_Boss.Ball_Lightning"
+  ],
+  "power_display_names": [
+    "Life Drain",
+    "Freezing Sphere",
+    "Ice Blast",
+    "Ball Lightning"
+  ],
+  "power_short_helps": [
+    "Ranged, High DMG(Negative), Target -ACC, -Res(All), Self +HP",
+    "Ranged, Minor DMG(Cold/Smash), Foe -Recharge, -SPD, -ACC, -ToHit",
+    "Ranged, High DMG(Cold/Smash), Foe -Recharge, -SPD",
+    "Sleep"
+  ]
+}

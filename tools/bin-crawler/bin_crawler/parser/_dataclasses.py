@@ -43,7 +43,12 @@ class EffectTemplate:
 
 @dataclass
 class EffectGroup:
-    """A group of effect templates with shared chance/flags/requires."""
+    """A group of effect templates with shared chance/flags/requires.
+
+    Effect groups can nest — `child_groups` holds inner Effect blocks (e.g.
+    a Chance/Requires-gated sub-effect inside an outer Effect), each with its
+    own templates and possibly its own children.
+    """
     chance: float = 1.0
     ppm: float = 0.0
     delay: float = 0.0
@@ -54,6 +59,7 @@ class EffectGroup:
     is_pvp: str = "EITHER"   # "EITHER", "PVE_ONLY", "PVP_ONLY"
     eval_flags: int = 0
     templates: list[EffectTemplate] = field(default_factory=list)
+    child_groups: list["EffectGroup"] = field(default_factory=list)
 
 
 # ============================================

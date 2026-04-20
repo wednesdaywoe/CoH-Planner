@@ -1,0 +1,26 @@
+{
+  "name": "Lore_Pet_Talons_Support",
+  "display_name": "Lore_Pet_Talons_Support",
+  "display_fullname": "Incarnate.Lore Pet Talons Support",
+  "display_help": "Incarnate",
+  "display_short_help": "Incarnate",
+  "available_level": [
+    0,
+    0
+  ],
+  "source_file": "DEFS/POWERS/INCARNATE/LORE_PET_TALONS_SUPPORT.POWERSETS",
+  "icon": "lore_pet_talons_support_set.png",
+  "requires": "",
+  "power_names": [
+    "Incarnate.Lore_Pet_Talons_Support.Seductive_Song",
+    "Incarnate.Lore_Pet_Talons_Support.Debilitating_Song"
+  ],
+  "power_display_names": [
+    "Soothing Song",
+    "Regenerating Song"
+  ],
+  "power_short_helps": [
+    "PBAoE, +DEF, +RES, +Healing",
+    "Heal, HoT, +Recovery, +Recharge"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Lore_Pet_Arachnos_Support_Attack",
+  "display_name": "Lore_Pet_Arachnos_Support_Attack",
+  "display_fullname": "Incarnate.Lore Pet Arachnos Support Attack",
+  "display_help": "Arachnos",
+  "display_short_help": "Arachnos",
+  "available_level": [
+    0
+  ],
+  "source_file": "DEFS/POWERS/INCARNATE/LORE_PET_ARACHNOS_SUPPORT_ATTACK.POWERSETS",
+  "icon": "lore_pet_arachnos_support_attack_set.png",
+  "requires": "",
+  "power_names": [
+    "Incarnate.Lore_Pet_Arachnos_Support_Attack.Mental_Blast"
+  ],
+  "power_display_names": [
+    "Mental Blast"
+  ],
+  "power_short_helps": [
+    "-Recharge"
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "name": "Lore_Pet_Arachnos_LT",
+  "display_name": "Lore_Pet_Arachnos_LT",
+  "display_fullname": "Incarnate.Lore Pet Arachnos LT",
+  "display_help": "Arachnos",
+  "display_short_help": "Arachnos",
+  "available_level": [
+    0,
+    0,
+    0
+  ],
+  "source_file": "DEFS/POWERS/INCARNATE/LORE_PET_ARACHNOS_LT.POWERSETS",
+  "icon": "lore_pet_arachnos_lt_set.png",
+  "requires": "",
+  "power_names": [
+    "Incarnate.Lore_Pet_Arachnos_LT.Bash",
+    "Incarnate.Lore_Pet_Arachnos_LT.Pulverize",
+    "Incarnate.Lore_Pet_Arachnos_LT.Mace_Beam"
+  ],
+  "power_display_names": [
+    "Bash",
+    "Pulverize",
+    "Mace Beam"
+  ],
+  "power_short_helps": [
+    "Melee, Light DMG(Smash), Minor DoT(Toxic), Minor Disorient",
+    "Melee, Moderate DMG(Smash), Minor DoT(Toxic), Minor Disorient",
+    "Ranged, Minor DMG(Energy), Foe Knockback"
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "name": "Lore_Pet_IDF_Boss",
+  "display_name": "Lore_Pet_IDF_Boss",
+  "display_fullname": "Incarnate.Lore Pet IDF Boss",
+  "display_help": "Imperial Defense Force",
+  "display_short_help": "Imperial Defense Force",
+  "available_level": [
+    0,
+    0,
+    0
+  ],
+  "source_file": "DEFS/POWERS/INCARNATE/LORE_PET_IDF_BOSS.POWERSETS",
+  "icon": "lore_pet_idf_boss_set.png",
+  "requires": "",
+  "power_names": [
+    "Incarnate.Lore_Pet_IDF_Boss.Plasma_Punch",
+    "Incarnate.Lore_Pet_IDF_Boss.Plasma_Vortex",
+    "Incarnate.Lore_Pet_IDF_Boss.Plasma_Blast"
+  ],
+  "power_display_names": [
+    "Plasma Punch",
+    "Plasma Vortex",
+    "Plasma Blast"
+  ],
+  "power_short_helps": [
+    "Melee, Light DMG(Energy/Smash), Foe Disorient",
+    "Melee AoE Smash/Energy",
+    "Ranged, Moderate DMG(Energy), Foe Knockdown"
+  ]
+}

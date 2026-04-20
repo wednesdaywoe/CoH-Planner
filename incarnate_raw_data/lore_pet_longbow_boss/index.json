@@ -1,0 +1,30 @@
+{
+  "name": "Lore_Pet_Longbow_Boss",
+  "display_name": "Lore_Pet_Longbow_Boss",
+  "display_fullname": "Incarnate.Lore Pet Longbow Boss",
+  "display_help": "Longbow",
+  "display_short_help": "Longbow",
+  "available_level": [
+    0,
+    0,
+    0
+  ],
+  "source_file": "DEFS/POWERS/INCARNATE/LORE_PET_LONGBOW_BOSS.POWERSETS",
+  "icon": "lore_pet_longbow_boss_set.png",
+  "requires": "",
+  "power_names": [
+    "Incarnate.Lore_Pet_Longbow_Boss.Grenade",
+    "Incarnate.Lore_Pet_Longbow_Boss.Plasma_Blast",
+    "Incarnate.Lore_Pet_Longbow_Boss.Energy_Barrage"
+  ],
+  "power_display_names": [
+    "Grenade",
+    "Plasma Blast",
+    "Energy Barrage"
+  ],
+  "power_short_helps": [
+    "Targeted AoE Lethal/Smash, Knockback",
+    "-Regeneration",
+    "Knockback"
+  ]
+}

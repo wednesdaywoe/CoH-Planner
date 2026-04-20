@@ -1,0 +1,30 @@
+{
+  "name": "Lore_Pet_Clockwork_LT",
+  "display_name": "Lore_Pet_Clockwork_LT",
+  "display_fullname": "Incarnate.Lore Pet Clockwork LT",
+  "display_help": "Clockwork",
+  "display_short_help": "Clockwork",
+  "available_level": [
+    0,
+    0,
+    0
+  ],
+  "source_file": "DEFS/POWERS/INCARNATE/LORE_PET_CLOCKWORK_LT.POWERSETS",
+  "icon": "lore_pet_clockwork_lt_set.png",
+  "requires": "",
+  "power_names": [
+    "Incarnate.Lore_Pet_Clockwork_LT.Particle_Blast",
+    "Incarnate.Lore_Pet_Clockwork_LT.Particle_Blast_Barrage",
+    "Incarnate.Lore_Pet_Clockwork_LT.Particle_Stunner"
+  ],
+  "power_display_names": [
+    "Particle Blast",
+    "Particle Blast Barrage",
+    "Particle Stunner"
+  ],
+  "power_short_helps": [
+    "Ranged, High DMG(Energy) Foe -Regen",
+    "Ranged, High DMG(Energy) Foe Minor DoT(Energy)",
+    "Ranged, Minor DoT(Energy), Foe Disorient"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Mind",
+  "display_name": "Mind",
+  "display_fullname": "Incarnate.Mind",
+  "display_help": "Incarnate",
+  "display_short_help": "Incarnate",
+  "available_level": [
+    0
+  ],
+  "source_file": "DEFS/POWERS/INCARNATE/MIND.POWERSETS",
+  "icon": "mind_set.png",
+  "requires": "",
+  "power_names": [
+    "Incarnate.Mind.Nothing"
+  ],
+  "power_display_names": [
+    "Nothing"
+  ],
+  "power_short_helps": [
+    "Nothing"
+  ]
+}

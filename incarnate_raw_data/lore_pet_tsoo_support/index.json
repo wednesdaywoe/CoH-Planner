@@ -1,0 +1,30 @@
+{
+  "name": "Lore_Pet_Tsoo_Support",
+  "display_name": "Lore_Pet_Tsoo_Support",
+  "display_fullname": "Incarnate.Lore Pet Tsoo Support",
+  "display_help": "Incarnate",
+  "display_short_help": "Incarnate",
+  "available_level": [
+    0,
+    0,
+    0
+  ],
+  "source_file": "DEFS/POWERS/INCARNATE/LORE_PET_TSOO_SUPPORT.POWERSETS",
+  "icon": "lore_pet_tsoo_support_set.png",
+  "requires": "",
+  "power_names": [
+    "Incarnate.Lore_Pet_Tsoo_Support.O2_Boost",
+    "Incarnate.Lore_Pet_Tsoo_Support.Hurricane",
+    "Incarnate.Lore_Pet_Tsoo_Support.Teleport"
+  ],
+  "power_display_names": [
+    "O2 Boost",
+    "Hurricane",
+    "Teleport"
+  ],
+  "power_short_helps": [
+    "Ally Heal +Res(Effects)",
+    "-Range, -ACC",
+    "Self Travel"
+  ]
+}

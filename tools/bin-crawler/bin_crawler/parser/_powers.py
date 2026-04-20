@@ -111,10 +111,17 @@ def _parse_effect_template(r: BinReader) -> EffectTemplate:
     aspect_raw = r.read_u4()
     aspect = ATTRIB_MOD_ASPECT.get(aspect_raw // 8, f"Unknown({aspect_raw})")
 
-    # Remaining enums
-    typ = ATTRIB_MOD_TYPE.get(r.read_u4(), "Unknown")
-    app_type = ATTRIB_MOD_APPLICATION.get(r.read_u4(), "Unknown")
-    target = ATTRIB_MOD_TARGET.get(r.read_u4(), "Unknown")
+    # Remaining enums — preserve raw value when unmapped so we can investigate.
+    # Field order is (application_type, type) — verified via Ghidra keyword
+    # tables. The old parser had these labels swapped, which also explained
+    # the ~20% type/application_type "mismatch" vs CoD2 (the mez "Magnitude
+    # relabeled as Duration" story — CoD2 was right, parser was wrong).
+    _app_raw = r.read_u4()
+    app_type = ATTRIB_MOD_APPLICATION.get(_app_raw, f"Unknown({_app_raw})")
+    _typ_raw = r.read_u4()
+    typ = ATTRIB_MOD_TYPE.get(_typ_raw, f"Unknown({_typ_raw})")
+    _target_raw = r.read_u4()
+    target = ATTRIB_MOD_TARGET.get(_target_raw, f"Unknown({_target_raw})")
 
     # Unknown field between target and table (possibly near_ground or another flag)
     r.read_u4()
@@ -126,9 +133,25 @@ def _parse_effect_template(r: BinReader) -> EffectTemplate:
     magnitude = r.read_f4()
     delay = r.read_f4()
 
-    # Expression strings
-    dur_expr = r.read_string()
-    mag_expr = r.read_string()
+    # The Ghidra AttribMod field descriptor (table at 0x1408ed5a0, type code
+    # 0x500009) says DurationExpr and MagnitudeExpr are always string_arrays.
+    # But treating them that way universally breaks ~430 powers — those
+    # templates have a legit non-zero single-string offset in this slot that
+    # a string_array read misinterprets as a huge count and overruns the
+    # template buffer. So the binary file layout has a version/flag the
+    # in-memory descriptor doesn't capture. Conservative rule that matches
+    # the evidence: only read as string_arrays when _typ_raw says kExpression
+    # (the only known case where these slots carry a compiled token stream).
+    # Covers ~100+ templates on HC live; remaining 29 stack-mismatches are
+    # Create_Entity templates whose discriminator is still unidentified.
+    if _typ_raw == 3:
+        r.read_u4_array()  # mag_expr_tokens
+        r.read_u4_array()  # dur_expr_tokens
+        dur_expr = ''
+        mag_expr = ''
+    else:
+        dur_expr = r.read_string()
+        mag_expr = r.read_string()
 
     # Tick fields
     app_period = r.read_f4()
@@ -136,12 +159,22 @@ def _parse_effect_template(r: BinReader) -> EffectTemplate:
     tick_mul = r.read_f4()
     tick_add = r.read_f4()
 
-    # JIT requires
-    jit_requires = r.read_string()
+    # DelayedRequires — Ghidra descriptor (0x1408ed5a0 row 17) types this as
+    # string_array (0x500009), not a single string. Empty for most templates
+    # (count=0 → 4 bytes, equivalent to old single-string read). For Create_Entity
+    # / Summon / AoE-control templates with delayed conditionals (e.g.
+    #   `DelayedRequires arch target> Class_Henchman_Lt eq … 18 tokens`)
+    # the array contains the compiled token offsets. The old single-string
+    # read shifted every downstream field by 4*N bytes, breaking stack reads
+    # on ~29 pet-summon templates (Summon_Wolves, Paralyzing_Blast, etc.).
+    r.read_u4_array()  # delayed_requires_tokens
+    jit_requires = ''  # legacy field name kept to avoid churn; tokens not resolved here
 
-    # Stack info
-    caster_stack = ATTRIB_MOD_CASTER_STACK.get(r.read_u4(), "Unknown")
-    stack = ATTRIB_MOD_STACK.get(r.read_u4(), "Unknown")
+    # Stack info — preserve raw value when unmapped so the unknown is debuggable
+    _caster_stack_raw = r.read_u4()
+    caster_stack = ATTRIB_MOD_CASTER_STACK.get(_caster_stack_raw, f"Unknown({_caster_stack_raw})")
+    _stack_raw = r.read_u4()
+    stack = ATTRIB_MOD_STACK.get(_stack_raw, f"Unknown({_stack_raw})")
     stack_limit = r.read_u4()
     stack_key = r.read_string() or None
 
@@ -193,9 +226,16 @@ def _parse_effect_template(r: BinReader) -> EffectTemplate:
 
 def _parse_effect_group(r: BinReader) -> EffectGroup:
     """Parse an effect group containing templates."""
-    # Two u4 pre-fields (tags count? pvp flag?)
-    pre1 = r.read_u4()
-    pre2 = r.read_u4()
+    # Leading fields: a `Tags` string_array (def keyword: `Tag "foo"`), then a
+    # one-u4 slot whose meaning we haven't nailed down (always 0 in samples
+    # we've walked). Old parser assumed the first 8 bytes were two u4 "pre"
+    # fields — which happens to be correct when Tags is empty (count=0), but
+    # shifts every downstream field by 4 bytes per populated tag. Surfaces
+    # e.g. in Crowd_Control's `PVP_MainTargetOnly`-tagged nested effect,
+    # where the shift drops the whole nested-group parse and loses its
+    # AttribMod.
+    tags = r.read_string_array()
+    _post_tags = r.read_u4()
 
     # Effect header
     chance = r.read_f4()
@@ -233,7 +273,27 @@ def _parse_effect_group(r: BinReader) -> EffectGroup:
             pass  # Skip unparseable templates
         r.skip(tmpl_len)
 
-    # Skip any remaining effect group data
+    # Nested effect groups (recursive). The .def grammar allows `Effect { ... }`
+    # inside another `Effect { ... }` (e.g. Chance/Requires-gated sub-effects);
+    # the binary mirrors this with a struct_array of child groups right after
+    # the templates array. Without this read, ~1700 powers (35%) lost the
+    # AttribMods buried inside nested Effects (BS_Bash, Crowd_Control, …).
+    child_groups = []
+    try:
+        child_count = r.read_u4()
+        for _ in range(child_count):
+            child_len = r.read_u4()
+            child_reader = r.sub_reader(child_len)
+            try:
+                child = _parse_effect_group(child_reader)
+                child_groups.append(child)
+            except Exception:
+                pass
+            r.skip(child_len)
+    except Exception:
+        pass  # No nested-groups field — older or empty effect group
+
+    # Skip any remaining effect group data (tail beyond children — usually 0).
     r.skip_to_end()
 
     return EffectGroup(
@@ -247,20 +307,28 @@ def _parse_effect_group(r: BinReader) -> EffectGroup:
         is_pvp=is_pvp,
         eval_flags=eval_flags,
         templates=templates,
+        child_groups=child_groups,
     )
 
 
 def _parse_effects(r: BinReader) -> list[EffectGroup]:
-    """Parse the effects struct_array from a power record."""
+    """Parse the effects struct_array from a power record.
+
+    Also pulls the trailing `ActivationEffect` struct_array (a parallel top-
+    level structure in the .def grammar — separate keyword block from regular
+    `Effect`). The binary stores it immediately after the main effects array.
+    The ActivationEffect groups are flattened into the same returned list so
+    downstream code (and audit) sees one unified set.
+    """
     # Pre-field 1: struct_array (recharge_groups or similar).
     # When empty: u4(0). When populated: u4(count) + [u4(len) + data]* per element.
     r.skip_struct_array()
     # Pre-field 2: u4 (unknown scalar, typically 0)
     r.read_u4()
 
+    effects = []
     # Effects struct_array
     eff_count = r.read_u4()
-    effects = []
     for _ in range(eff_count):
         eff_len = r.read_u4()
         eff_reader = r.sub_reader(eff_len)
@@ -270,6 +338,24 @@ def _parse_effects(r: BinReader) -> list[EffectGroup]:
         except Exception:
             pass  # Skip unparseable effect groups
         r.skip(eff_len)
+
+    # ActivationEffects struct_array — same layout as regular effects.
+    # Wrapped in try since not every power has this field present (older or
+    # alternate layouts), and we don't want to abort parsing the rest of the
+    # record over a missing optional structure.
+    try:
+        act_count = r.read_u4()
+        for _ in range(act_count):
+            eff_len = r.read_u4()
+            eff_reader = r.sub_reader(eff_len)
+            try:
+                eg = _parse_effect_group(eff_reader)
+                effects.append(eg)
+            except Exception:
+                pass
+            r.skip(eff_len)
+    except Exception:
+        pass
 
     return effects
 

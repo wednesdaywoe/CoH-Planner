@@ -39,5 +39,21 @@ export const Fault: Power = {
     "Stuns",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Smashing",
+    "scale": 0.7825,
+    "table": "Melee_Damage"
+  },
+  "effects": {
+    "knockback": {
+      "scale": 0.67,
+      "table": "Melee_Ones"
+    },
+    "stun": {
+      "mag": 2,
+      "scale": 8,
+      "table": "Melee_Stun"
+    }
+  }
 };

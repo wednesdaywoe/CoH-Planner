@@ -33,6 +33,8 @@ export const PsychokineticBarrier: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "maxStacks": 3,
+    "stacksLinear": ["absorb", "debuffResistance"],
     "absorb": {
       "scale": 3,
       "table": "Melee_HealSelf"

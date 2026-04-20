@@ -1,0 +1,30 @@
+{
+  "name": "Lore_Pet_Vanguard_LT",
+  "display_name": "Lore_Pet_Vanguard_LT",
+  "display_fullname": "Incarnate.Lore Pet Vanguard LT",
+  "display_help": "Vanguard",
+  "display_short_help": "Vanguard",
+  "available_level": [
+    0,
+    0,
+    0
+  ],
+  "source_file": "DEFS/POWERS/INCARNATE/LORE_PET_VANGUARD_LT.POWERSETS",
+  "icon": "lore_pet_vanguard_lt_set.png",
+  "requires": "",
+  "power_names": [
+    "Incarnate.Lore_Pet_Vanguard_LT.Bayonet",
+    "Incarnate.Lore_Pet_Vanguard_LT.Burst",
+    "Incarnate.Lore_Pet_Vanguard_LT.Willie_Pete_Round"
+  ],
+  "power_display_names": [
+    "Bayonet",
+    "Burst",
+    "Willie Pete Round"
+  ],
+  "power_short_helps": [
+    "Melee, Light DMG(Lethal/Energy), -Resist (Lethal/Energy)",
+    "-Def",
+    "Targeted AoE Lethal/Smashing, Knockback"
+  ]
+}

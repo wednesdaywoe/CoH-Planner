@@ -1,0 +1,26 @@
+{
+  "name": "Lore_Pet_Rularuu_Support",
+  "display_name": "Lore_Pet_Rularuu_Support",
+  "display_fullname": "Incarnate.Lore Pet Rularuu Support",
+  "display_help": "Rularuu",
+  "display_short_help": "Rularuu",
+  "available_level": [
+    0,
+    0
+  ],
+  "source_file": "DEFS/POWERS/INCARNATE/LORE_PET_RULARUU_SUPPORT.POWERSETS",
+  "icon": "lore_pet_rularuu_support_set.png",
+  "requires": "",
+  "power_names": [
+    "Incarnate.Lore_Pet_Rularuu_Support.Crystal_of_Vigor",
+    "Incarnate.Lore_Pet_Rularuu_Support.Heal_Other"
+  ],
+  "power_display_names": [
+    "Crystal of Vigor",
+    "Heal Other"
+  ],
+  "power_short_helps": [
+    "PBAoE, Ally +DMG",
+    "Ally Heal"
+  ]
+}

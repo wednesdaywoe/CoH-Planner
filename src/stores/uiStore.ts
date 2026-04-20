@@ -1333,6 +1333,10 @@ export const useUIStore = create<UIStore>()(
         if (merged.procSettings) {
           merged.procSettings = { ...DEFAULT_PROC_SETTINGS, ...merged.procSettings };
         }
+        // Ensure incarnateActive has all slot keys (judgement/lore added later as cosmetic toggles)
+        if (merged.incarnateActive) {
+          merged.incarnateActive = { ...createDefaultIncarnateActiveState(), ...merged.incarnateActive };
+        }
         // Inject any new default stats that aren't in the persisted config
         const persistedStats = (persisted as Partial<UIStore>)?.statsConfig;
         if (persistedStats) {

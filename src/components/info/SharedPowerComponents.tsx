@@ -497,8 +497,19 @@ function getEffectBaseValue(
 
   // Handle buff/debuff calculation - returns decimal, multiply by 100 for percent display
   if (config.calculation === 'buff' || config.calculation === 'debuff') {
-    // Use AT table directly when available (accurate per-AT values)
     const scaled = value as NumberOrScaled;
+    const scaleNum = typeof scaled === 'number'
+      ? scaled
+      : (scaled && typeof scaled === 'object' && 'scale' in scaled
+          ? (scaled as { scale: number }).scale
+          : undefined);
+    // Effects flagged as flat-percent-per-scale (e.g. maxHPBuff at 5%/scale)
+    // intentionally ignore the AT-table reference: the game stores a heal-table
+    // ref for bookkeeping but applies a fixed multiplier. See effect-registry.ts.
+    if (config.flatPercentPerScale !== undefined && scaleNum !== undefined) {
+      return Math.abs(scaleNum * config.flatPercentPerScale);
+    }
+    // Use AT table directly when available (accurate per-AT values)
     if (archetypeId && typeof scaled === 'object' && scaled !== null && 'table' in scaled && 'scale' in scaled) {
       const tableVal = getTableValue(archetypeId, (scaled as { scale: number; table: string }).table, 50);
       if (tableVal !== undefined) {

@@ -1,0 +1,30 @@
+{
+  "name": "Lore_Pet_Rularuu_LT",
+  "display_name": "Lore_Pet_Rularuu_LT",
+  "display_fullname": "Incarnate.Lore Pet Rularuu LT",
+  "display_help": "Rularuu",
+  "display_short_help": "Rularuu",
+  "available_level": [
+    0,
+    0,
+    0
+  ],
+  "source_file": "DEFS/POWERS/INCARNATE/LORE_PET_RULARUU_LT.POWERSETS",
+  "icon": "lore_pet_rularuu_lt_set.png",
+  "requires": "",
+  "power_names": [
+    "Incarnate.Lore_Pet_Rularuu_LT.Pummel",
+    "Incarnate.Lore_Pet_Rularuu_LT.Scatter_Shards",
+    "Incarnate.Lore_Pet_Rularuu_LT.Sinew"
+  ],
+  "power_display_names": [
+    "Pummel",
+    "Scatter Shards",
+    "Sinew"
+  ],
+  "power_short_helps": [
+    "Melee Heavy Smash",
+    "Ranged, Light DMG(Lethal)",
+    "Hold"
+  ]
+}

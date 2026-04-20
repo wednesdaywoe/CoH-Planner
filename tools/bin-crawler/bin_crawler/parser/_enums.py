@@ -189,8 +189,12 @@ ATTRIB_NAME: dict[int, str] = {
 }
 
 ATTRIB_MOD_TYPE: dict[int, str] = {
-    0: "Magnitude",
-    1: "Duration",
+    # Verified via Ghidra keyword table at 0x1408eb958 in cityofheroes.exe —
+    # values 0/1 were swapped in the old parser (the .ksy spec had them backwards),
+    # which is the root cause of the "CoD2 re-labels Magnitude as Duration for mez
+    # templates" confusion: the binary always stored Duration=0, and CoD2 was right.
+    0: "Duration",
+    1: "Magnitude",
     2: "Constant",
     3: "Expression",
 }
@@ -225,17 +229,21 @@ ATTRIB_MOD_TARGET: dict[int, str] = {
 }
 
 ATTRIB_MOD_STACK: dict[int, str] = {
+    # All 11 values verified via Ghidra keyword table at 0x1408ee708 in
+    # cityofheroes.exe (24-byte rows: { const char* name, uint64 value }).
+    # The bulk-audit-driven corrections below are all confirmed by this table.
     0: "Stack",
     1: "Ignore",
     2: "Extend",
     3: "Replace",
     4: "Overlap",
-    5: "Refresh",
-    6: "RefreshToLimit",
-    7: "Suppress",
-    8: "Continuous",
-    9: "StackToLimit",
-    10: "Maximize",
+    5: "StackThenIgnore",
+    6: "Refresh",
+    7: "RefreshToCount",
+    8: "Maximize",
+    9: "Suppress",
+    10: "Continuous",
+    # kCollective is NOT in this enum — it belongs to ATTRIB_MOD_CASTER_STACK.
 }
 
 ATTRIB_MOD_CASTER_STACK: dict[int, str] = {

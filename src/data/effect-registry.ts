@@ -59,6 +59,15 @@ export interface EffectDisplayConfig {
   renderAs?: string;
   /** Base value to multiply by (e.g., accuracy is multiplier × 75% base to-hit) */
   baseMultiplier?: number;
+  /**
+   * If set, treat the effect as a flat percentage per scale point (ignoring
+   * any AT-table reference in the data). Used by effects like maxHPBuff,
+   * which the game stores with a heal-table reference for engine bookkeeping
+   * but actually applies as a fixed 5% per scale point. Without this flag,
+   * the display would multiply scale × heal-table-value × 100 and produce
+   * absurd percentages.
+   */
+  flatPercentPerScale?: number;
 }
 
 // ============================================
@@ -410,6 +419,7 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
     format: 'percent',
     calculation: 'buff',
     enhancementAspect: 'heal',
+    flatPercentPerScale: 5,
     priority: 8,
   },
   maxEndBuff: {

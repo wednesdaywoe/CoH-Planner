@@ -34,7 +34,8 @@ function hasPersistentBuffEffects(power: { effects?: object }): boolean {
 /**
  * Determine if a power should show a toggle switch for stat calculations.
  * - Toggle powers (always toggleable)
- * - Click powers that target self (Build Up, Aim, Hasten, etc.)
+ * - Click powers that target self (Build Up, Aim, Hasten, Shadow Meld, Rune of Protection, etc.)
+ * - Click team buffs that also buff the caster (Vengeance, Tactical Training: Vengeance, etc.)
  * - Excludes one-shot heals/drains (Dark Regeneration, Dull Pain, etc.)
  *   unless the power also has persistent buff effects (Chrono Shift)
  */
@@ -54,7 +55,18 @@ export function shouldShowToggle(power: {
   if (powerType === 'click') {
     if (hasHealingDamage(power) && !hasPersistentBuffEffects(power)) return false;
     if (targetType === 'self') return true;
-    if (shortHelp.startsWith('self ') || shortHelp.includes('self +')) return true;
+    // shortHelp starting with "self" followed by any separator (space, colon, comma, etc.)
+    // covers "Self +DMG", "Self: +Def(All)", "Self, +Res(All Dmg)", etc.
+    if (/^self\b/.test(shortHelp)) return true;
+    if (shortHelp.includes('self +')) return true;
+    // Team buffs that also apply to the caster (Vengeance, Tactical Training: Vengeance).
+    // Excluded when the power is flagged as ally-only (defenseBuffExcludesSelf).
+    if (
+      hasPersistentBuffEffects(power) &&
+      !(power.effects as { defenseBuffExcludesSelf?: boolean })?.defenseBuffExcludesSelf
+    ) {
+      return true;
+    }
   }
 
   return false;

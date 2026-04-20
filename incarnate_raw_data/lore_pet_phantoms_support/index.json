@@ -1,0 +1,26 @@
+{
+  "name": "Lore_Pet_Phantoms_Support",
+  "display_name": "Lore_Pet_Phantoms_Support",
+  "display_fullname": "Incarnate.Lore Pet Phantoms Support",
+  "display_help": "Incarnate",
+  "display_short_help": "Incarnate",
+  "available_level": [
+    0,
+    0
+  ],
+  "source_file": "DEFS/POWERS/INCARNATE/LORE_PET_PHANTOMS_SUPPORT.POWERSETS",
+  "icon": "lore_pet_phantoms_support_set.png",
+  "requires": "",
+  "power_names": [
+    "Incarnate.Lore_Pet_Phantoms_Support.Heal_Other",
+    "Incarnate.Lore_Pet_Phantoms_Support.Adrenalin_Boost"
+  ],
+  "power_display_names": [
+    "Heal Other",
+    "Adrenalin Boost"
+  ],
+  "power_short_helps": [
+    "Ally Heal",
+    "Ranged, Ally +End, +Regeneration, +Recharge, Res (Slow)"
+  ]
+}

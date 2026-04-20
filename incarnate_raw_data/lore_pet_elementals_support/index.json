@@ -1,0 +1,26 @@
+{
+  "name": "Lore_Pet_Elementals_Support",
+  "display_name": "Lore_Pet_Elementals_Support",
+  "display_fullname": "Incarnate.Lore Pet Elementals Support",
+  "display_help": "Incarnate",
+  "display_short_help": "Incarnate",
+  "available_level": [
+    0,
+    0
+  ],
+  "source_file": "DEFS/POWERS/INCARNATE/LORE_PET_ELEMENTALS_SUPPORT.POWERSETS",
+  "icon": "lore_pet_elementals_support_set.png",
+  "requires": "",
+  "power_names": [
+    "Incarnate.Lore_Pet_Elementals_Support.O2_Boost",
+    "Incarnate.Lore_Pet_Elementals_Support.Hurricane"
+  ],
+  "power_display_names": [
+    "O2 Boost",
+    "Hurricane"
+  ],
+  "power_short_helps": [
+    "Ally Heal, +Res(Disorient, Sleep, End Drain), +Perception",
+    "Toggle: PBAoE, Foe -Range, -To-hit, Repel, Knockback"
+  ]
+}

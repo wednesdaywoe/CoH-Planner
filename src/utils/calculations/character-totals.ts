@@ -460,6 +460,26 @@ function adjustForPerTarget(value: ScalarOrScaled, targetsHit?: number): ScalarO
   return { ...value, scale: value.scale + obj.perTarget * (targetsHit - 1) };
 }
 
+/**
+ * Combined stacking adjustment: applies perTarget AoE math (existing behavior)
+ * and, when the effect key is listed in `effects.stacksLinear`, multiplies
+ * scale by stack count for linear self-stacking powers (e.g. Psychokinetic
+ * Barrier's debuff resistance). Effects not in stacksLinear are unaffected.
+ */
+function adjustForStacking(
+  value: ScalarOrScaled,
+  targetsHit: number | undefined,
+  stacksLinear: readonly string[] | undefined,
+  effectKey: string,
+): ScalarOrScaled {
+  const adjusted = adjustForPerTarget(value, targetsHit);
+  if (!targetsHit || targetsHit <= 1) return adjusted;
+  if (!stacksLinear || !stacksLinear.includes(effectKey)) return adjusted;
+  if (typeof adjusted !== 'object' || adjusted === null) return adjusted;
+  const obj = adjusted as { scale: number };
+  return { ...adjusted, scale: obj.scale * targetsHit };
+}
+
 interface ActivePowerEffect {
   tohitBuff?: number;
   damageBuff?: number;
@@ -520,6 +540,8 @@ interface ActivePowerEffect {
   movement?: Record<string, ScalarOrScaled>;
   rechargeDebuff?: ScalarOrScaled;
   damageDebuff?: ScalarOrScaled;
+  /** Linear self-stacking metadata — see PowerEffects.stacksLinear */
+  stacksLinear?: readonly string[];
 }
 
 interface PowerWithToggle {
@@ -729,7 +751,13 @@ function applyActivePowerBonuses(
         const typeLower = type.toLowerCase();
         const enhKey = debuffResEnhMapping[typeLower];
         const enhMultiplier = enhKey ? 1 + (enhBonuses[enhKey] || 0) : 1;
-        const percentage = resolveScaledEffect(value, archetypeId, buildLevel) * 100 * enhMultiplier;
+        const stackedValue = adjustForStacking(
+          value,
+          targetsHitValues[power.internalName],
+          effects.stacksLinear,
+          'debuffResistance',
+        );
+        const percentage = resolveScaledEffect(stackedValue, archetypeId, buildLevel) * 100 * enhMultiplier;
         const key = debuffResMapping[typeLower];
         if (key && key in global) {
           global[key] += percentage;
@@ -2084,7 +2112,7 @@ export function getAlphaEnhancementBonuses(
   if (!incarnates?.alpha) return {};
 
   // Check if alpha is active
-  const active = incarnateActive || { alpha: true, destiny: true, hybrid: true, interface: true };
+  const active = incarnateActive || { alpha: true, destiny: true, hybrid: true, interface: true, judgement: true, lore: true };
   if (!active.alpha) return {};
 
   const alphaEffects = getAlphaEffects(incarnates.alpha.powerId);
@@ -2215,6 +2243,8 @@ function applyIncarnateBonuses(
     destiny: true,
     hybrid: true,
     interface: true,
+    judgement: true,
+    lore: true,
   };
 
   // Alpha - Enhancement bonuses are handled separately via getAlphaEnhancementBonuses()

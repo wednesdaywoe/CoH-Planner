@@ -1,0 +1,30 @@
+{
+  "name": "Lore_Pet_Drones_Boss",
+  "display_name": "Lore_Pet_Drones_Boss",
+  "display_fullname": "Incarnate.Lore Pet Drones Boss",
+  "display_help": "Incarnate",
+  "display_short_help": "Incarnate",
+  "available_level": [
+    0,
+    0,
+    0
+  ],
+  "source_file": "DEFS/POWERS/INCARNATE/LORE_PET_DRONES_BOSS.POWERSETS",
+  "icon": "lore_pet_drones_boss_set.png",
+  "requires": "",
+  "power_names": [
+    "Incarnate.Lore_Pet_Drones_Boss.Plasma_Cannon_Blast",
+    "Incarnate.Lore_Pet_Drones_Boss.Plasma_Cannon_Spray",
+    "Incarnate.Lore_Pet_Drones_Boss.Plasma_Cannon_Burst"
+  ],
+  "power_display_names": [
+    "Plasma Cannon Blast",
+    "Plasma Cannon Spray",
+    "Plasma Cannon Burst"
+  ],
+  "power_short_helps": [
+    "Ranged, Moderate DMG(Energy), Foe -Regen",
+    "Ranged Cone, Light DMG(Energy), Foe -Regen",
+    "Ranged, Moderate DMG(Energy), Foe -Regen"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "name": "Lore_Pet_IDF_Support",
+  "display_name": "Lore_Pet_IDF_Support",
+  "display_fullname": "Incarnate.Lore Pet IDF Support",
+  "display_help": "Imperial Defense Force",
+  "display_short_help": "Imperial Defense Force",
+  "available_level": [
+    0,
+    0
+  ],
+  "source_file": "DEFS/POWERS/INCARNATE/LORE_PET_IDF_SUPPORT.POWERSETS",
+  "icon": "lore_pet_idf_support_set.png",
+  "requires": "",
+  "power_names": [
+    "Incarnate.Lore_Pet_IDF_Support.Shield_Generator",
+    "Incarnate.Lore_Pet_IDF_Support.Deploy_Stimulant"
+  ],
+  "power_display_names": [
+    "Shield Generator",
+    "Deploy Stimulant"
+  ],
+  "power_short_helps": [
+    "Team AoE Toggle, +Def(All), +Res(Immobilize, Disorient)",
+    "Ally Heal, Res Effects"
+  ]
+}

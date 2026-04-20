@@ -1,0 +1,34 @@
+{
+  "name": "Lore_Pet_Lights_Boss",
+  "display_name": "Lore_Pet_Lights_Boss",
+  "display_fullname": "Incarnate.Lore Pet Lights Boss",
+  "display_help": "Incarnate",
+  "display_short_help": "Incarnate",
+  "available_level": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "source_file": "DEFS/POWERS/INCARNATE/LORE_PET_LIGHTS_BOSS.POWERSETS",
+  "icon": "lore_pet_lights_boss_set.png",
+  "requires": "",
+  "power_names": [
+    "Incarnate.Lore_Pet_Lights_Boss.Northern_Lights_Bolt",
+    "Incarnate.Lore_Pet_Lights_Boss.Northern_Lights_Blast",
+    "Incarnate.Lore_Pet_Lights_Boss.Northern_Lights_Scatter",
+    "Incarnate.Lore_Pet_Lights_Boss.Northern_Lights_Detonation"
+  ],
+  "power_display_names": [
+    "Northern Light's Bolt",
+    "Northern Light's Blast",
+    "Northern Light's Scatter",
+    "Northern Light's Detonation"
+  ],
+  "power_short_helps": [
+    "-DEF",
+    "-DEF",
+    "-DEF",
+    "-DEF"
+  ]
+}

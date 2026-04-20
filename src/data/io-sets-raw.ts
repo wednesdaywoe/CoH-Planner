@@ -7979,7 +7979,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": true
       }
     ],
-    "icon": "sFarstrike.png"
+    "icon": "sExperiencedMarksman.png"
   },
   "exploit_weakness": {
     "name": "Exploit Weakness",
@@ -27574,7 +27574,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": true
       }
     ],
-    "icon": "sJaunt.png"
+    "icon": "sWarp.png"
   },
   "will_of_the_controller": {
     "name": "Will of the Controller",

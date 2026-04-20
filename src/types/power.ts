@@ -334,6 +334,12 @@ export interface PowerEffects {
   /** Max stacks for non-AoE stacking powers (e.g., Reactive Regeneration = 20).
    *  For AoE per-target powers, use stats.maxTargets instead. */
   maxStacks?: number;
+  /** Names of effect keys whose scale multiplies linearly with stack count
+   *  (e.g. ['absorb', 'debuffResistance'] for Psychokinetic Barrier).
+   *  Effects not listed here are treated as refresh-only — they re-apply
+   *  with full duration but their magnitude does not stack. Only meaningful
+   *  when `maxStacks` is set. */
+  stacksLinear?: string[];
 
   // === SELF-PENALTY FLAG ===
   /** If true, debuff fields (damageDebuff, slow, rechargeDebuff) are genuine self-penalties

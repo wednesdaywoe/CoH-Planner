@@ -1,0 +1,22 @@
+{
+  "name": "Lore_Pet_Knives_Support_Attack",
+  "display_name": "Lore_Pet_Knives_Support_Attack",
+  "display_fullname": "Incarnate.Lore Pet Knives Support Attack",
+  "display_help": "Incarnate",
+  "display_short_help": "Incarnate",
+  "available_level": [
+    0
+  ],
+  "source_file": "DEFS/POWERS/INCARNATE/LORE_PET_KNIVES_SUPPORT_ATTACK.POWERSETS",
+  "icon": "lore_pet_knives_support_attack_set.png",
+  "requires": "",
+  "power_names": [
+    "Incarnate.Lore_Pet_Knives_Support_Attack.Concussive_Blow"
+  ],
+  "power_display_names": [
+    "Concussive Blow"
+  ],
+  "power_short_helps": [
+    "Melee, Minor DMG(Smashing), Minor DoT(Lethal), Chance for Stun(Foe), -ToHit(Foe), -Rech(Foe), -DMG(Foe,All)"
+  ]
+}

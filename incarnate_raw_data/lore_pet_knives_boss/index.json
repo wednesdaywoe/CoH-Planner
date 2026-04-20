@@ -1,0 +1,34 @@
+{
+  "name": "Lore_Pet_Knives_Boss",
+  "display_name": "Lore_Pet_Knives_Boss",
+  "display_fullname": "Incarnate.Lore Pet Knives Boss",
+  "display_help": "Incarnate",
+  "display_short_help": "Incarnate",
+  "available_level": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "source_file": "DEFS/POWERS/INCARNATE/LORE_PET_KNIVES_BOSS.POWERSETS",
+  "icon": "lore_pet_knives_boss_set.png",
+  "requires": "",
+  "power_names": [
+    "Incarnate.Lore_Pet_Knives_Boss.Focused_Shot",
+    "Incarnate.Lore_Pet_Knives_Boss.Dual_Shot",
+    "Incarnate.Lore_Pet_Knives_Boss.Weakening_Shot",
+    "Incarnate.Lore_Pet_Knives_Boss.Paralytic_Shot"
+  ],
+  "power_display_names": [
+    "Focused Shot",
+    "Dual Shot",
+    "Weakening Shot",
+    "Paralytic Shot"
+  ],
+  "power_short_helps": [
+    "Ranged, Moderate DMG(Lethal), Minor DoT (Toxic)",
+    "Ranged, Moderate DMG(Lethal), Minor DoT (Toxic), Knockdown (Foe), -DMG(Foe,All)",
+    "Ranged, -DMG(Foe, All), -DEF(Foe, All), -RES(Foe, Status Effects), -ToHit(Foe), -Heal(Foe), -End(Foe), Chance for Light DMG(Toxic), Stun",
+    "Ranged, Hold (Foe), Chance for High DMG(Toxic), -Regen(Foe), -Rec(Foe)"
+  ]
+}

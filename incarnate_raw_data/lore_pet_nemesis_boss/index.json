@@ -1,0 +1,34 @@
+{
+  "name": "Lore_Pet_Nemesis_Boss",
+  "display_name": "Lore_Pet_Nemesis_Boss",
+  "display_fullname": "Incarnate.Lore Pet Nemesis Boss",
+  "display_help": "Nemesis",
+  "display_short_help": "Nemesis",
+  "available_level": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "source_file": "DEFS/POWERS/INCARNATE/LORE_PET_NEMESIS_BOSS.POWERSETS",
+  "icon": "lore_pet_nemesis_boss_set.png",
+  "requires": "",
+  "power_names": [
+    "Incarnate.Lore_Pet_Nemesis_Boss.Pummel",
+    "Incarnate.Lore_Pet_Nemesis_Boss.Storm_Cannon",
+    "Incarnate.Lore_Pet_Nemesis_Boss.Flamethrower",
+    "Incarnate.Lore_Pet_Nemesis_Boss.Explode"
+  ],
+  "power_display_names": [
+    "Pummel",
+    "Storm Cannon",
+    "Flamethrower",
+    "Explode"
+  ],
+  "power_short_helps": [
+    "Melee Heavy Lethal",
+    "Disorient",
+    "DoT(Fire)",
+    "Post Death Special"
+  ]
+}

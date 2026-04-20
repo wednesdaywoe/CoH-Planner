@@ -1,0 +1,34 @@
+{
+  "name": "Lore_Pet_Tsoo_Boss",
+  "display_name": "Lore_Pet_Tsoo_Boss",
+  "display_fullname": "Incarnate.Lore Pet Tsoo Boss",
+  "display_help": "Incarnate",
+  "display_short_help": "Incarnate",
+  "available_level": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "source_file": "DEFS/POWERS/INCARNATE/LORE_PET_TSOO_BOSS.POWERSETS",
+  "icon": "lore_pet_tsoo_boss_set.png",
+  "requires": "",
+  "power_names": [
+    "Incarnate.Lore_Pet_Tsoo_Boss.Mercurial_Blow",
+    "Incarnate.Lore_Pet_Tsoo_Boss.Precise_Strike",
+    "Incarnate.Lore_Pet_Tsoo_Boss.Serpents_Reach",
+    "Incarnate.Lore_Pet_Tsoo_Boss.Eye_of_the_Storm"
+  ],
+  "power_display_names": [
+    "Mercurial Blow",
+    "Precise Strike",
+    "Serpent's Reach",
+    "Eye of the Storm"
+  ],
+  "power_short_helps": [
+    "Melee, Light DMG(Smashing), -DEF(Foe,All), Chance for Critical",
+    "Melee, Light DMG(Smashing), Chance for Stun(Foe), Critical",
+    "Ranged, Moderate DMG(Smashing), Chance for Knockdown, Critical Hit",
+    "PBAoE, Moderate DMG(Smashing), -RES(Foe,All), Chance for Knockdown, Critical"
+  ]
+}

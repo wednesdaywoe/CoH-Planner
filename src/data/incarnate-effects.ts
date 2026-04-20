@@ -267,11 +267,44 @@ export function getDestinyEffects(powerId: string): DestinyEffects | null {
 }
 
 /**
+ * Alias map for Hybrid Melee/Support powers.
+ *
+ * The UI data loader uses the old `incarnate_raw_data` internal names
+ * (e.g. `Melee_Core_Embodiment`), but the generated effects file is
+ * extracted from raw_data_homecoming where the binary internal names
+ * are numeric suffixes (e.g. `Melee_Genome_8`). Order matches the
+ * position in the hybrid powerset index — that's the stable contract
+ * between the two name spaces.
+ */
+const HYBRID_ID_ALIASES: Record<string, string> = {
+  // Melee tree (9 powers, in powerset order)
+  'melee_genome': 'melee_genome_1',
+  'melee_core_genome': 'melee_genome_2',
+  'melee_radial_genome': 'melee_genome_3',
+  'melee_total_core_graft': 'melee_genome_4',
+  'melee_partial_core_graft': 'melee_genome_5',
+  'melee_partial_radial_graft': 'melee_genome_6',
+  'melee_total_radial_graft': 'melee_genome_7',
+  'melee_core_embodiment': 'melee_genome_8',
+  'melee_radial_embodiment': 'melee_genome_9',
+  // Support tree (9 powers — support_genome keeps its name, rest are numeric)
+  'support_core_genome': 'support_genome_2',
+  'support_radial_genome': 'support_genome_3',
+  'support_total_core_graft': 'support_genome_4',
+  'support_partial_core_graft': 'support_genome_5',
+  'support_partial_radial_graft': 'support_genome_6',
+  'support_total_radial_graft': 'support_genome_7',
+  'support_core_embodiment': 'support_genome_8',
+  'support_radial_embodiment': 'support_genome_9',
+};
+
+/**
  * Get Hybrid effects for a power
  */
 export function getHybridEffects(powerId: string): HybridEffects | null {
   const normalized = normalizePowerId(powerId);
-  return HYBRID_EFFECTS[normalized] || null;
+  const key = HYBRID_ID_ALIASES[normalized] || normalized;
+  return HYBRID_EFFECTS[key] || null;
 }
 
 /**

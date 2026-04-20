@@ -1,0 +1,22 @@
+{
+  "name": "Lore_Pet_Banished_Storm",
+  "display_name": "Lore_Pet_Banished_Storm",
+  "display_fullname": "Incarnate.Lore Pet Banished Storm",
+  "display_help": "Incarnate",
+  "display_short_help": "Incarnate",
+  "available_level": [
+    0
+  ],
+  "source_file": "DEFS/POWERS/INCARNATE/LORE_PET_BANISHED_STORM.POWERSETS",
+  "icon": "lore_pet_banished_support_attack_set.png",
+  "requires": "",
+  "power_names": [
+    "Incarnate.Lore_Pet_Banished_Storm.Frigid_Storm"
+  ],
+  "power_display_names": [
+    "Enervating Storm"
+  ],
+  "power_short_helps": [
+    "Targeted AoE, Minor DoT(Cold/Negative Energy), -DMG(Foe, All)"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Lore_Pet_Nemesis_Support_Attack",
+  "display_name": "Lore_Pet_Nemesis_Support_Attack",
+  "display_fullname": "Incarnate.Lore Pet Nemesis Support Attack",
+  "display_help": "Nemesis",
+  "display_short_help": "Nemesis",
+  "available_level": [
+    0
+  ],
+  "source_file": "DEFS/POWERS/INCARNATE/LORE_PET_NEMESIS_SUPPORT_ATTACK.POWERSETS",
+  "icon": "lore_pet_nemesis_support_attack_set.png",
+  "requires": "",
+  "power_names": [
+    "Incarnate.Lore_Pet_Nemesis_Support_Attack.Nemesis_Rifle"
+  ],
+  "power_display_names": [
+    "Nemesis Rifle"
+  ],
+  "power_short_helps": [
+    "Ranged Lethal"
+  ]
+}
