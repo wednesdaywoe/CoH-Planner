@@ -1,10 +1,10 @@
 # CoH Sidekick — Architecture & Technical Documentation
 
-**Last updated:** April 18, 2026
+**Last updated:** April 19, 2026
 
 CoH Sidekick is a City of Heroes character build planner and suite of helpful tools for the Homecoming server. Hosted at **coh-sidekick.com** via GitHub Pages.
 
-This document covers the planner's architecture. The repository also ships two companion tools — **Pigg Wrangler** and **Bin Crawler** — documented in a separate section at the end.
+This document covers the planner's architecture. The repository also ships three companion tools — **Pigg Wrangler**, **Bin Crawler**, and **Sidekick Launcher** — documented in a separate section at the end.
 
 ## Stack
 
@@ -79,7 +79,7 @@ raw_data_homecoming-<build>/
 └── objects/<entity>.json        ──convert──→  src/data/pet-entities.ts
 ```
 
-The current raw dump in use is `raw_data_homecoming-20251209_7415` (Homecoming build 7415, Dec 9, 2025). Swapping in a newer dump is a matter of dropping the new directory next to the old one and updating the path constant in the conversion scripts. Longer-term, the plan is to regenerate this data directly from the `.pigg` archives via Bin Crawler (see Suite section below), removing the dependency on externally-produced JSON dumps.
+The current raw dump in use is `exported_powers`. Swapping in a newer dump is a matter of dropping the new directory next to the old one and updating the path constant in the conversion scripts. Longer-term, the plan is to regenerate this data directly from the `.pigg` archives via Bin Crawler (see Suite section below), removing the dependency on externally-produced JSON dumps.
 
 ### Extraction Scripts (scripts/)
 
@@ -89,40 +89,21 @@ The current raw dump in use is `raw_data_homecoming-20251209_7415` (Homecoming b
 | `convert-all-powersets.cjs` | Batch converter for all powersets |
 | `convert-pool-powers.cjs` | Pool power extraction |
 | `convert-epic-pools.cjs` | Epic/patron pool extraction |
-| `convert-epic-powersets-to-modular.cjs` | Migrates epic pools to the modular data layout |
 | `convert-incarnate-effects.cjs` | Incarnate effects from all 6 slots (Alpha through Lore) |
 | `convert-io-sets.js` | IO enhancement set extraction |
 | `convert-pet-entities.cjs` | Pet/minion entity definitions |
 | `extract-at-tables.cjs` | AT modifier tables from archetype JSON |
 | `reconvert-redirect-powersets.cjs` | Rebuilds powersets that use in-game redirects |
+| `generate-powerset-index.cjs` | Regenerates the powerset barrel index after powerset additions |
 
-### Fix/Patch Scripts
-
-These apply corrections that can't be derived from raw data alone:
-
-| Script | Purpose |
-|--------|---------|
-| `fix-allowed-enhancements.cjs` | Patches allowedEnhancements from raw boost data |
-| `fix-mechanic-types.cjs` | Tags mechanic powers (childToggle, hiddenAuto, etc.) |
-| `fix-missing-effects.cjs` | Adds effects from child_effects recursion |
-| `fix-per-target-stacking.cjs` | Adds perTarget metadata to stacking powers |
-| `fix-add-durations.cjs` | Adds duration data to powers |
-| `fix-eat-veat-sources.cjs` | Source-data fixes for Epic/Villain Epic archetypes |
-| `fix-recharge-debuff-resistance.cjs` | Patches recharge-debuff resistance values |
-| `fix-brute-feb2026.cjs` | Legacy patch for the HC Feb 2026 Brute balance pass (resist/defense 75%→85%, HP increase, ranged damage unification). Only needed while the shipping dataset predates that patch; will become obsolete once the data pipeline is regenerated from current `.pigg` data. |
-| `fix-stats.cjs` | Miscellaneous stat corrections |
-| `add-internal-name.cjs` | Backfills internal (machine) names onto data records |
-
-### Audit Scripts
+### Other Scripts
 
 | Script | Purpose |
 |--------|---------|
-| `audit-comprehensive.cjs` | 5-dimension audit comparing raw vs processed data |
-| `audit-pool-powers.cjs` | Validates pool power data |
-| `audit-epic-pools.cjs` | Validates epic pool data |
-| `audit-powerset-effects.cjs` | Validates powerset effect values |
-| `check-raw.cjs` | Ad-hoc raw-data spot checks |
-| `spot-check.cjs` | General spot-check utility |
+| `bulk-import-mids.ts` | Bulk-imports a directory of Mids `.mxd` files as shared builds (supports `--author-name` for attribution). See `README-bulk-import-mids.md`. |
+| `env-loader.ts`, `env-shim.ts`, `register-env-loader.mjs` | Load `.env` vars into Node-side TypeScript scripts that need Vite-style `VITE_*` env access. |
+
+> **Note on script hygiene:** historically this directory accumulated `fix-*`, `patch-*`, and one-shot migration scripts that applied corrections to generated data. Those have all been removed in favor of fixing the upstream data pipeline. If you need to apply a one-time correction in future, prefer regenerating from current `.pigg` data via Bin Crawler over committing a one-shot patch script — those scripts are usually non-idempotent and rot quickly.
 
 ## Calculation System
 
@@ -199,10 +180,15 @@ Backend: Supabase (Edge Functions + PostgreSQL + RLS)
 |----------|---------|
 | `share-build` | Create/update shared builds (rate limited) |
 | `delete-build` | Delete owned builds |
-| `update-build-visibility` | Toggle public/private (requires Discord auth) |
-| `claim-builds` | Link anonymous builds to Discord account |
+| `update-build-visibility` | Toggle public/private (requires authenticated user) |
+| `claim-builds` | Link anonymous builds to an authenticated account |
 
-Ownership model: dual — owner token (localStorage) OR Discord OAuth. RLS enforces visibility: anonymous users see only `is_public = TRUE` builds.
+**Auth providers:** Supabase OAuth wrapped by [src/services/auth.ts](src/services/auth.ts). Two providers are supported:
+
+- `discord` — Discord OAuth
+- `custom:simplelogin` — SimpleLogin OAuth2 (privacy-preserving email-based identity)
+
+Ownership model: dual — owner token (localStorage) OR an authenticated account from either provider. RLS enforces visibility: anonymous users see only `is_public = TRUE` builds.
 
 ## Archetypes
 
@@ -223,21 +209,21 @@ Each has AT-specific:
 ## Branches
 
 - `main` — production, auto-deploys to GitHub Pages
-- Active feature branches: `feat/perma-tracker`, `feat/header-layout-cleanup`, `feature/enhancement-list-modal`
 - Long-running rework branches: `migration-plan`, `phase-0-foundation`, `rebuild`
+- Short-lived feature branches come and go; check `git branch -a` for the current set rather than maintaining a list here.
 
 ---
 
 # Companion Tools: The Sidekick Suite
 
-The repository ships two maintenance tools alongside the planner, both under [tools/](tools/). They are standalone products — each runs on its own — but Bin Crawler depends on Pigg Wrangler as a library.
+The repository ships three maintenance tools alongside the planner, all under [tools/](tools/). Each is a standalone product, but Bin Crawler depends on Pigg Wrangler as a library, and Sidekick Launcher is a thin front door over the other two.
 
 ```
 tools/
 ├── pigg-wrangler/          Pigg Wrangler source + launchers
 │   ├── pigg_wrangler/      Python package (import as: pigg_wrangler)
 │   │   ├── pigg.py         Core .pigg format library (PiggArchive, PiggCollection)
-│   │   ├── server.py       Local HTTP server + web UI
+│   │   ├── server.py       Local HTTP server + web UI (port 8085)
 │   │   ├── index_builder.py In-memory index across all archives
 │   │   ├── texture.py      .texture file decoding
 │   │   ├── config.py       Persistent user config
@@ -251,17 +237,25 @@ tools/
 │   ├── piggwrangler.ico    Application icon
 │   └── piggwrangler128.png Application icon (128px)
 │
-└── bin-crawler/            Bin Crawler source
-    ├── bin_crawler/        Python package (import as: bin_crawler)
-    │   ├── parser/         Parse6/Parse7 binary format parsers
-    │   │   ├── _reader.py, _dataclasses.py, _enums.py
-    │   │   ├── _powers.py, _powersets.py, _powercats.py, _classes.py
-    │   │   ├── _messages.py (P-hash → string lookup)
-    │   │   └── _pigg.py    (BinResolver; imports pigg_wrangler for archives)
-    │   ├── server.py       HTTP API for the planner (port 8090)
-    │   ├── export_powers.py JSON exporter
-    │   └── static/         Browser UI assets
-    └── bin-crawler.bat     User launcher
+├── bin-crawler/            Bin Crawler source
+│   ├── bin_crawler/        Python package (import as: bin_crawler)
+│   │   ├── parser/         Parse6/Parse7 binary format parsers
+│   │   │   ├── _reader.py, _dataclasses.py, _enums.py
+│   │   │   ├── _powers.py, _powersets.py, _powercats.py, _classes.py
+│   │   │   ├── _messages.py (P-hash → string lookup)
+│   │   │   └── _pigg.py    (BinResolver; imports pigg_wrangler for archives)
+│   │   ├── server.py       HTTP API for the planner (port 8090)
+│   │   ├── export_powers.py JSON exporter
+│   │   └── static/         Browser UI assets
+│   └── bin-crawler.bat     User launcher
+│
+└── sidekick-launcher/      Unified front-door dashboard
+    ├── launcher.py         Tiny HTTP server (port 8000) + status/launch API
+    ├── tools.json          Tool registry (id, name, port, icon, launch command)
+    └── static/index.html   Dashboard UI
+
+# User launcher lives at the repo root for easy access:
+SidekickLauncher.bat        Double-click to start the launcher
 ```
 
 ## Pigg Wrangler
@@ -296,7 +290,7 @@ A parser for the Cryptic binary data file format used by City of Heroes. Handles
 
 ### Data Sources
 
-Bin Crawler reads directly from the `.pigg` archives Homecoming updates on every patch (typically `G:\Homecoming\assets\live\bin.pigg` and siblings). Because HC's launcher refreshes these archives automatically, Bin Crawler always sees current data. This is the long-term answer to "the JSON dump is out of date." The planner's shipping data pipeline has not yet been migrated to consume Bin Crawler's output; when that migration happens, legacy patch scripts like `fix-brute-feb2026.cjs` become obsolete.
+Bin Crawler reads directly from the `.pigg` archives Homecoming updates on every patch (typically `G:\Homecoming\assets\live\bin.pigg` and siblings). Because HC's launcher refreshes these archives automatically, Bin Crawler always sees current data. This is the long-term answer to "the JSON dump is out of date." The planner's shipping data pipeline has not yet been migrated to consume Bin Crawler's output; once it is, the conversion scripts in `scripts/` can be retired in favor of pulling current data from the live API.
 
 ### Binary Format Notes
 
@@ -312,23 +306,36 @@ Bin Crawler reads directly from the `.pigg` archives Homecoming updates on every
 
 Homecoming occasionally adds new fields to the binary format during patches. Bin Crawler includes auto-detection for known additions (e.g., the post-2025 "field 45b" inserted between `box_size` and `range` in `powers.bin`). If parsed data looks wrong after an HC patch, investigate the binary layout for new/changed fields before assuming a semantic bug.
 
+## Sidekick Launcher
+
+A small dashboard that lives at `http://localhost:8000/` and acts as the front door for the suite. It reads [`tools/sidekick-launcher/tools.json`](tools/sidekick-launcher/tools.json), polls each registered tool's port to show live status, and exposes a `/api/launch` endpoint that shells out to a tool's `.bat` when the user clicks Launch.
+
+The launcher is intentionally thin (~150 LOC, stdlib-only): it does not bundle, proxy, or wrap the other tools — they keep running on their own ports and remain usable standalone. Adding a future tool is one entry in `tools.json`. The dashboard also lists external links (e.g. the hosted planner at coh-sidekick.com).
+
+Run with `py -3 tools/sidekick-launcher/launcher.py` or by double-clicking `SidekickLauncher.bat` in the repo root.
+
 ## How the Tools Fit Together
 
 ```
-┌─────────────────┐
-│  Pigg Wrangler  │  owns: .pigg format, archive indexing, texture decoding
-│  (pigg.py, UI)  │  exports: PiggArchive, PiggCollection, PiggEntry
-└────────┬────────┘
-         │ imports
-         ▼
-┌─────────────────┐
-│   Bin Crawler   │  owns: .bin format (Parse6/Parse7), record parsing,
-│  (parser, API)  │         P-hash resolution, HTTP API
-└────────┬────────┘
-         │ (future) API consumed by
-         ▼
-┌─────────────────┐
-│  CoH Sidekick   │  owns: build planning, calculations, UI
-│    (planner)    │  (currently reads JSON dump; will migrate to Bin Crawler)
-└─────────────────┘
+                    ┌───────────────────────┐
+                    │   Sidekick Launcher   │  front door, status + launch
+                    │  (port 8000, JSON cfg)│
+                    └─────┬───────────┬─────┘
+                          │           │ launches / links
+              ┌───────────┘           └───────────┐
+              ▼                                   ▼
+      ┌─────────────────┐                 ┌─────────────────┐
+      │  Pigg Wrangler  │  owns: .pigg    │   Bin Crawler   │  owns: .bin format,
+      │  (port 8085)    │  format, index, │  (port 8090)    │  Parse6/Parse7,
+      │                 │  texture decode │                 │  P-hash resolution,
+      └────────┬────────┘                 └────────┬────────┘  HTTP API
+               │ exports PiggArchive,              │
+               │ PiggCollection, PiggEntry         │ (future) API consumed by
+               └──────────► imports ───────────────┤
+                                                   ▼
+                                          ┌─────────────────┐
+                                          │  CoH Sidekick   │  owns: build planning,
+                                          │    (planner)    │  calculations, UI
+                                          │  coh-sidekick.com│ (currently JSON dump;
+                                          └─────────────────┘  will migrate to Bin Crawler)
 ```

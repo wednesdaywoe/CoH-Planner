@@ -1,6 +1,0 @@
-  UUID:    1a8be24d-a011-4398-8eee-ffe339a704d3
-  Discord: aceaer#0
-  Email:   theguyverswill@hotmail.com
-  Created: 2026-04-15T22:46:40.564072Z
-
-npm run import-mids -- --dir ""C:\Projects\CoH-Planner\dump\guyver_archive"" --user-id 1a8be24d-a011-4398-8eee-ffe339a704d3 --author-name "@Guyver" 

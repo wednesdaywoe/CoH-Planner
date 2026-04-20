@@ -16,7 +16,7 @@ from pathlib import Path
 from socketserver import ThreadingMixIn
 from urllib.parse import parse_qs, urlparse
 
-from .parser import parse_powers as parse_power_stats, parse_powersets, parse_powercats, parse_classes, load_messages, BinResolver
+from .parser import parse_powers, parse_powersets, parse_powercats, parse_classes, load_messages, BinResolver
 
 DEFAULT_ASSETS_DIR = Path(r"G:\Homecoming\assets\live")
 
@@ -272,37 +272,36 @@ def load_source(name: str, label: str, assets_dir: Path) -> DataSource:
         msgs = load_messages(resolver.read("clientmessages-en.bin"))
         print(f"  [{name}] {len(msgs)} messages loaded.", flush=True)
 
-    # Parse powers
-    print(f"  [{name}] Parsing powers.bin...", flush=True)
-    powers = parse_power_stats(resolver.read("powers.bin"))
-    print(f"  [{name}] {len(powers)} power records loaded.", flush=True)
+    import time as _time
+
+    def _timed(label: str, parse_fn, filename: str):
+        print(f"  [{name}] Parsing {filename} (this may take a while)...", flush=True)
+        t0 = _time.monotonic()
+        result = parse_fn(resolver.read(filename))
+        print(f"  [{name}] {len(result)} {label} loaded in {_time.monotonic() - t0:.1f}s.", flush=True)
+        return result
+
+    # Parse powers (this is the slow one — typically 60-120s for HC's powers.bin)
+    powers = _timed("power records", parse_powers, "powers.bin")
 
     # Parse powersets
     if resolver.has("powersets.bin"):
-        print(f"  [{name}] Parsing powersets.bin...", flush=True)
-        ps_records = parse_powersets(resolver.read("powersets.bin"))
+        ps_records = _timed("powerset records", parse_powersets, "powersets.bin")
         src.powerset_dicts = [asdict(ps) for ps in ps_records]
-        print(f"  [{name}] {len(ps_records)} powerset records loaded.", flush=True)
 
     # Parse powercats
     if resolver.has("powercats.bin"):
-        print(f"  [{name}] Parsing powercats.bin...", flush=True)
-        pc_records = parse_powercats(resolver.read("powercats.bin"))
+        pc_records = _timed("powercat records", parse_powercats, "powercats.bin")
         src.powercat_dicts = [asdict(pc) for pc in pc_records]
-        print(f"  [{name}] {len(pc_records)} powercat records loaded.", flush=True)
 
     # Parse classes
     if resolver.has("classes.bin"):
-        print(f"  [{name}] Parsing classes.bin...", flush=True)
-        cls_records = parse_classes(resolver.read("classes.bin"))
+        cls_records = _timed("class records", parse_classes, "classes.bin")
         src.class_dicts = [asdict(c) for c in cls_records]
-        print(f"  [{name}] {len(cls_records)} class records loaded.", flush=True)
 
     if resolver.has("villain_classes.bin"):
-        print(f"  [{name}] Parsing villain_classes.bin...", flush=True)
-        vcls_records = parse_classes(resolver.read("villain_classes.bin"))
+        vcls_records = _timed("villain class records", parse_classes, "villain_classes.bin")
         src.villain_class_dicts = [asdict(c) for c in vcls_records]
-        print(f"  [{name}] {len(vcls_records)} villain class records loaded.", flush=True)
 
     # Resolve P-hash display names
     if msgs:
@@ -366,10 +365,21 @@ def main():
         sys.exit(1)
 
     # Load all sources
+    print("=" * 60, flush=True)
+    print(f"Bin Crawler — loading {len(source_specs)} data source(s).", flush=True)
+    print("Parsing the .pigg archives can take 1-3 minutes per source", flush=True)
+    print("(it's CPU-bound, not stuck). Progress per .bin file is shown below.", flush=True)
+    print("The browser will open automatically once the server is ready.", flush=True)
+    print("=" * 60, flush=True)
+    import time as _time
     sources: dict[str, DataSource] = {}
+    overall_start = _time.monotonic()
     for name, label, path in source_specs:
-        print(f"Loading source '{name}' from {path}...", flush=True)
+        print(f"\nLoading source '{name}' from {path}...", flush=True)
+        src_start = _time.monotonic()
         sources[name] = load_source(name, label, path)
+        print(f"  [{name}] Source loaded in {_time.monotonic() - src_start:.1f}s.", flush=True)
+    print(f"\nAll sources loaded in {_time.monotonic() - overall_start:.1f}s.", flush=True)
 
     StatsHandler.sources = sources
     StatsHandler.default_source = source_specs[0][0]

@@ -26,7 +26,7 @@ In short:
 
 This license was chosen deliberately to keep CoH Sidekick free and open: it prevents anyone from taking the code, closing the source, and selling it back to the community as a proprietary product.
 
-Copyright (C) 2026 Wednesdaywoe and contributors.
+Copyright (C) 2026 Wednesdaywoe.
 
 ## Trademarks
 

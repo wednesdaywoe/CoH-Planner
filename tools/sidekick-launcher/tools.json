@@ -1,0 +1,36 @@
+{
+  "brand_icon": "../../public/img/icon_sidekick.png",
+  "tools": [
+    {
+      "id": "pigg",
+      "name": "Pigg Wrangler",
+      "description": "Browse and extract .pigg archives.",
+      "port": 8085,
+      "url": "http://localhost:8085/",
+      "icon": "../pigg-wrangler/pigg_wrangler.png",
+      "command": ["py", "-3", "-m", "pigg_wrangler", "--no-browser"],
+      "cwd": "../pigg-wrangler",
+      "launcher": "../pigg-wrangler/PiggWrangler.bat"
+    },
+    {
+      "id": "bincrawler",
+      "name": "Bin Crawler",
+      "description": "Game data API parsed from .bin files (powers, sets, categories).",
+      "port": 8090,
+      "url": "http://localhost:8090/",
+      "icon": "../bin-crawler/bincrawler_icon.png",
+      "command": ["py", "-3", "-m", "bin_crawler", "--no-browser"],
+      "cwd": "../bin-crawler",
+      "launcher": "../bin-crawler/bin-crawler.bat"
+    }
+  ],
+  "links": [
+    {
+      "id": "planner",
+      "name": "CoH Sidekick (planner)",
+      "description": "The hosted build planner.",
+      "url": "https://coh-sidekick.com/",
+      "icon": "../../public/img/icon_sidekick.png"
+    }
+  ]
+}

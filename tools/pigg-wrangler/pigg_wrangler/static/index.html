@@ -6,16 +6,16 @@
 <title>Pigg Wrangler</title>
 <style>
 :root {
-    --bg: #1a1a2e;
-    --bg-panel: #16213e;
+    --bg: #0f1729;
+    --bg-panel: #162042;
     --bg-input: #0f3460;
     --bg-hover: #1a3a6e;
-    --text: #e0e0e0;
-    --text-muted: #7788aa;
-    --accent: #e94560;
-    --accent-hover: #ff6b81;
+    --text: #e2e8f0;
+    --text-muted: #94a3b8;
+    --accent: #D62BCE;
+    --accent-hover: #e879de;
     --border: #2a2a4a;
-    --success: #4ecca3;
+    --success: #34d399;
     --error: #e94560;
     --mono: 'Consolas', 'Courier New', monospace;
 }
@@ -542,6 +542,10 @@ const App = {
 
         if (path === '') container.innerHTML = '';
 
+        if (data.error || !Array.isArray(data.dirs)) {
+            const msg = data.error || 'tree response had no dirs array';
+            throw new Error(`/api/tree failed: ${msg}`);
+        }
         const dirs = data.dirs;
         for (const d of dirs) {
             // Skip if already rendered

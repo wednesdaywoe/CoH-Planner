@@ -20,16 +20,16 @@ Previously, the parser read from loose `.bin` files in a `bin/` subdirectory tha
 
 Goal: Generate CoD2-compatible structured JSON from Bin Crawler's binary parser, filtered to only the 34 player-relevant categories (out of 204 total). This replaces the dependency on the external City of Data 2.0 raw data archive (thousands of NPC/critter files we don't need).
 
-### Current State (2026-03-28)
+### Current State
 
 The export is functional and verified. Run with: `py -3 tools/bin-crawler/bin_crawler/export_powers.py` (or `py -3 -m bin_crawler.export_powers` from inside `tools/bin-crawler/`).
 
 The exporter and HTTP server read directly from `.pigg` archives via `BinResolver`, which uses Pigg Wrangler's `PiggArchive` under the hood. Use `--assets-dir` to point at an assets directory (default: `G:\Homecoming\assets\live`).
 
-- **5,277 player powers** exported across 610 powersets in 34 categories
+- **5,277 player powers** exported across 610 powersets in 34 categories (last verified 2026-03-28)
 - Effect template parsing implemented with core fields: attribs, aspect, table, scale, duration, magnitude
 - 96 attrib indices mapped and verified by cross-referencing 7,687 powers against CoD2 data
-- Key files: `_dataclasses.py` (EffectGroup/EffectTemplate), `_enums.py` (ATTRIB_NAME, aspect/type/stack enums), `_powers.py` (effect parser), `export_powers.py` (export script)
+- Key files (under `tools/bin-crawler/bin_crawler/`): `parser/_dataclasses.py` (EffectGroup/EffectTemplate), `parser/_enums.py` (ATTRIB_NAME, aspect/type/stack enums), `parser/_powers.py` (effect parser), `export_powers.py` (export script at package root)
 
 ### Verification Results (against 7,687 CoD2 reference powers)
 

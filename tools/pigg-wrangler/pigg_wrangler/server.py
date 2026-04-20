@@ -11,6 +11,7 @@ import argparse
 import io
 import json
 import mimetypes
+import sys
 import time
 import urllib.parse
 import zipfile
@@ -96,7 +97,10 @@ class ExplorerHandler(BaseHTTPRequestHandler):
             try:
                 handler(params)
             except Exception as e:
-                self._send_json({"error": str(e)}, 500)
+                import traceback
+                print(f"[ERROR] GET {self.path}: {type(e).__name__}: {e}", file=sys.stderr)
+                traceback.print_exc(file=sys.stderr)
+                self._send_json({"error": f"{type(e).__name__}: {e}"}, 500)
         else:
             self._serve_static(path)
 
@@ -619,7 +623,6 @@ def _file_dict(f: FileNode) -> dict:
         "size": e.uncompressed_size,
         "compressed_size": e.compressed_size,
         "pigg": f.pigg_name,
-        "timestamp": e.timestamp,
     }
 
 
