@@ -9,6 +9,12 @@
 const fs = require('fs');
 const path = require('path');
 
+// Source: CoD2 archive (stale snapshot; see src/data/README.md). The live
+// bin-crawler export at ../exported_powers/ has newer effect/redirect data
+// but its description/short_help strings are encoded hashes the parser
+// can't yet decode (~89% of powers affected), so swapping the source
+// wholesale breaks UI. Until the encoded-string resolver lands, the
+// converter stays on CoD2 and the override layer carries HC drift.
 const RAW_DATA_PATH = path.join(__dirname, '../raw_data_homecoming-20251209_7415');
 // The convert writes into three parallel trees (see src/data/README.md):
 //   generated/  — full auto-extraction, overwritten on every run
@@ -1401,9 +1407,12 @@ function convertPower(powerJson, availableLevel) {
     if (!power.stats[key]) delete power.stats[key];
   });
 
-  // Allowed enhancements (always include, even if empty, for type safety)
+  // Allowed enhancements (always include, even if empty, for type safety).
+  // Accept both CoD2's descriptive names (via BOOST_TYPE_MAP) and the
+  // bin-crawler's short names (passed through directly — already in the
+  // planner's format, e.g. 'Accuracy', 'Damage', 'EnduranceDiscount').
   power.allowedEnhancements = (powerJson.boosts_allowed || [])
-    .map(b => BOOST_TYPE_MAP[b])
+    .map(b => BOOST_TYPE_MAP[b] ?? b)
     .filter(Boolean);
 
   // Allowed IO set categories
@@ -1542,6 +1551,13 @@ function convertPowerset(category, powersetName) {
   }
 
   const indexJson = JSON.parse(fs.readFileSync(indexPath, 'utf-8'));
+
+  // Compatibility shim: bin-crawler export uses `powers` + `help` where CoD2
+  // used `power_names` + `display_help`. Normalize to the CoD2-style names the
+  // rest of this script expects so we don't have to rewrite every usage.
+  if (!indexJson.power_names && indexJson.powers) indexJson.power_names = indexJson.powers;
+  if (!indexJson.display_help && indexJson.help) indexJson.display_help = indexJson.help;
+  if (!indexJson.display_short_help && indexJson.short_help) indexJson.display_short_help = indexJson.short_help;
 
   // Three parallel output directories — see src/data/README.md for the layering.
   const relPath = path.join(
