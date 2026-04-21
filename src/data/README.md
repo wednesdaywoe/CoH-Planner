@@ -96,23 +96,37 @@ export const overrides: Partial<Power> = {};
   pointing to the relevant issue/PR so the override can be removed once
   the converter is fixed
 
-## Migrating an existing power
+## Converter behavior
 
-Most of `src/data/powersets/` still holds the old single-file shape. When
-you regenerate a power that has hand-edits (and you want to preserve
-them), do this:
+`node scripts/convert-powerset.cjs <category> <powerset>` always writes
+the fresh extraction into `src/data/generated/powersets/<at>/<slot>/<set>/`
+and writes the powerset `index.ts` into `src/data/powersets/<at>/<slot>/<set>/`.
 
-1. **Diff the existing file vs what `convert-powerset.cjs` would produce.**
-   The diff IS your overrides — copy the modified fields into a new
-   override file.
-2. **Move the generated content** to `src/data/generated/powersets/.../<power>.ts`
-   (rewrite the header to mark it as generated; otherwise verbatim).
-3. **Replace the original file** with a composed file (3 imports + 1
-   `withOverrides()` call).
+For each individual power, the converter scaffolds the composed + override
+files ONLY WHEN NEITHER EXISTS — this avoids dropping a dangling override
+file next to a pre-layering single-file composed that would never import
+it. The two layers are scaffolded atomically or not at all.
+
+Consequence: for powersets that still hold the pre-layering single-file
+shape, the converter regenerates their `generated/` file but does not
+touch their composed file. Planner behavior is unchanged until the
+composed file is explicitly migrated.
+
+## Migrating an existing single-file power to the layered shape
+
+1. **Diff the existing composed file vs what convert just wrote to
+   `generated/`.** Any difference is either a fix the converter caught or
+   a manual tweak that needs to survive as an override.
+2. **Write the deltas to `src/data/overrides/powersets/<…>/<power>.ts`**
+   (create it if it doesn't exist; shape is `export const overrides:
+   Partial<Power> = { … };`).
+3. **Replace the composed file** with the 3-import + `withOverrides()`
+   shape (see any recently-migrated composed file for the template).
 4. **Run `npx tsc --noEmit`** to confirm nothing broke.
 
-The two prototype migrations live at:
+Three prototype migrations to copy from:
 - `brute/primary/stone-melee/fault.ts` — empty overrides (auto-gen is
   exactly what we want)
 - `brute/secondary/psionic-armor/fortify-mind.ts` — overrides add
   `maxStacks` + `stacksLinear` for the planner's stacking slider
+- `tanker/primary/psionic-armor/fortify-mind.ts` — same pattern as Brute
