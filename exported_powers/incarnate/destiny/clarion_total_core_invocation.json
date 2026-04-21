@@ -71,9 +71,9 @@
             "Sleep"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": -21.0,
           "duration": "22.50 seconds",
@@ -101,9 +101,9 @@
             "Sleep"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": -3.0,
           "duration": "45 seconds",
@@ -131,9 +131,9 @@
             "Sleep"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": -6.0,
           "duration": "90 seconds",
@@ -170,9 +170,9 @@
             "Knockback"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": -10.5,
           "duration": "22.50 seconds",
@@ -195,9 +195,9 @@
             "Repel"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Resistance",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": 0.7,
           "duration": "22.50 seconds",
@@ -221,9 +221,9 @@
             "Placate"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Resistance",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": 0.35,
           "duration": "22.50 seconds",
@@ -247,9 +247,9 @@
             "Knockback"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": -1.5,
           "duration": "45 seconds",
@@ -272,9 +272,9 @@
             "Repel"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Resistance",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": 0.1,
           "duration": "45 seconds",
@@ -298,9 +298,9 @@
             "Placate"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Resistance",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": 0.05,
           "duration": "45 seconds",
@@ -324,9 +324,9 @@
             "Knockback"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": -3.0,
           "duration": "90 seconds",
@@ -349,9 +349,9 @@
             "Repel"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Resistance",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": 0.2,
           "duration": "90 seconds",
@@ -375,9 +375,9 @@
             "Placate"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Resistance",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": 0.1,
           "duration": "90 seconds",
@@ -399,8 +399,8 @@
           "attribs": [
             "Grant_Power"
           ],
-          "type": "Unknown",
-          "application_type": "OnTick",
+          "type": "Magnitude",
+          "application_type": "OnEnable",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -418,14 +418,20 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Incarnate.Destiny_Silent.Level_Shift"
+            ]
+          }
         },
         {
           "attribs": [
             "Grant_Power"
           ],
-          "type": "Unknown",
-          "application_type": "OnTick",
+          "type": "Magnitude",
+          "application_type": "OnDisable",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -443,7 +449,13 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Incarnate.Destiny_Silent.Level_Shift"
+            ]
+          }
         }
       ]
     },
@@ -470,9 +482,9 @@
             "Sleep"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Resistance",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Res_Boolean",
           "scale": 2.1,
           "duration": "22.50 seconds",
@@ -500,9 +512,9 @@
             "Sleep"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Resistance",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Res_Boolean",
           "scale": 0.3,
           "duration": "45 seconds",
@@ -530,9 +542,9 @@
             "Sleep"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Resistance",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Res_Boolean",
           "scale": 0.6,
           "duration": "90 seconds",

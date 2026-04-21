@@ -20,7 +20,7 @@
   "activation_time": 1.07,
   "recharge_time": 180.0,
   "activate_period": 0.0,
-  "endurance_cost": 25.225,
+  "endurance_cost": 20.18,
   "interrupt_time": 0.0,
   "target_type": "Foe",
   "target_type_secondary": "None",
@@ -63,10 +63,10 @@
           "attribs": [
             "Stunned"
           ],
-          "type": "Magnitude",
+          "type": "Duration",
           "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Stun",
           "scale": 8.0,
           "duration": "0 seconds",
@@ -101,10 +101,10 @@
           "attribs": [
             "Stunned"
           ],
-          "type": "Magnitude",
+          "type": "Duration",
           "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_PvPMez",
           "scale": 1.0,
           "duration": "0 seconds",

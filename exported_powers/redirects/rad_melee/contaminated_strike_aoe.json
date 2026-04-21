@@ -65,9 +65,9 @@
             "Toxic_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Absolute",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Melee_Damage",
           "scale": 0.168,
           "duration": "0 seconds",
@@ -103,9 +103,9 @@
             "Toxic_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Absolute",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Melee_Damage",
           "scale": 0.1319,
           "duration": "0 seconds",

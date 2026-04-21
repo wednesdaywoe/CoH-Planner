@@ -60,9 +60,9 @@
             "Fly"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Melee_Ones",
           "scale": 2.0,
           "duration": "10 seconds",
@@ -85,9 +85,9 @@
             "FlyingSpeed"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Melee_SpeedFlying",
           "scale": 0.5,
           "duration": "10 seconds",
@@ -110,9 +110,9 @@
             "MovementControl"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Melee_Control",
           "scale": 10.0,
           "duration": "10 seconds",
@@ -135,9 +135,9 @@
             "MovementFriction"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Melee_Friction",
           "scale": 10.0,
           "duration": "10 seconds",
@@ -154,6 +154,350 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null
+        }
+      ],
+      "child_effects": [
+        {
+          "chance": 1.0,
+          "ppm": 0.0,
+          "delay": 0.0,
+          "radius_inner": -1.0,
+          "radius_outer": -1.0,
+          "requires_expression": "",
+          "flags": [],
+          "is_pvp": "EITHER",
+          "eval_flags": 0,
+          "templates": [
+            {
+              "attribs": [
+                "Null"
+              ],
+              "type": "Magnitude",
+              "application_type": "Immediate",
+              "aspect": "Current",
+              "target": "Self",
+              "table": "Melee_Ones",
+              "scale": 1.0,
+              "duration": "10 seconds",
+              "magnitude": 1.0,
+              "delay": 0.0,
+              "duration_expression": "",
+              "magnitude_expression": "",
+              "application_period": 0.0,
+              "tick_chance": 1.0,
+              "tick_mag_multiplier": 1.0,
+              "tick_mag_additive": 0.0,
+              "jit_requires": "",
+              "caster_stack": "Individual",
+              "stack": "Replace",
+              "stack_limit": 2,
+              "stack_key": null
+            },
+            {
+              "attribs": [
+                "Null"
+              ],
+              "type": "Magnitude",
+              "application_type": "Immediate",
+              "aspect": "Current",
+              "target": "Self",
+              "table": "Melee_Ones",
+              "scale": 1.0,
+              "duration": "10 seconds",
+              "magnitude": 1.0,
+              "delay": 0.0,
+              "duration_expression": "",
+              "magnitude_expression": "",
+              "application_period": 0.0,
+              "tick_chance": 1.0,
+              "tick_mag_multiplier": 1.0,
+              "tick_mag_additive": 0.0,
+              "jit_requires": "",
+              "caster_stack": "Individual",
+              "stack": "Replace",
+              "stack_limit": 2,
+              "stack_key": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 1,
+      "templates": [
+        {
+          "attribs": [
+            "Fly"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Current",
+          "target": "SelfAndPets",
+          "table": "Melee_Ones",
+          "scale": 2.0,
+          "duration": "2.25 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Suppress",
+          "stack_limit": 2,
+          "stack_key": "ictusFX"
+        },
+        {
+          "attribs": [
+            "FlyingSpeed"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Current",
+          "target": "SelfAndPets",
+          "table": "Melee_SpeedFlying",
+          "scale": 0.5,
+          "duration": "2.25 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Suppress",
+          "stack_limit": 2,
+          "stack_key": "ictusFX"
+        },
+        {
+          "attribs": [
+            "MovementControl"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Current",
+          "target": "SelfAndPets",
+          "table": "Melee_Control",
+          "scale": 10.0,
+          "duration": "2.25 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Suppress",
+          "stack_limit": 2,
+          "stack_key": "ictusFX"
+        },
+        {
+          "attribs": [
+            "MovementFriction"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Current",
+          "target": "SelfAndPets",
+          "table": "Melee_Friction",
+          "scale": 10.0,
+          "duration": "2.25 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Suppress",
+          "stack_limit": 2,
+          "stack_key": "ictusFX"
+        },
+        {
+          "attribs": [
+            "Global_Chance_Mod"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Current",
+          "target": "Self",
+          "table": "Melee_Ones",
+          "scale": 1.0,
+          "duration": "2 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Continuous",
+          "stack_limit": 2,
+          "stack_key": null
+        }
+      ],
+      "child_effects": [
+        {
+          "chance": 1.0,
+          "ppm": 0.0,
+          "delay": 0.0,
+          "radius_inner": -1.0,
+          "radius_outer": -1.0,
+          "requires_expression": "",
+          "flags": [],
+          "is_pvp": "EITHER",
+          "eval_flags": 1,
+          "templates": [
+            {
+              "attribs": [
+                "Null"
+              ],
+              "type": "Magnitude",
+              "application_type": "Immediate",
+              "aspect": "Current",
+              "target": "Self",
+              "table": "Melee_Ones",
+              "scale": 1.0,
+              "duration": "2.25 seconds",
+              "magnitude": 1.0,
+              "delay": 0.0,
+              "duration_expression": "",
+              "magnitude_expression": "",
+              "application_period": 0.0,
+              "tick_chance": 1.0,
+              "tick_mag_multiplier": 1.0,
+              "tick_mag_additive": 0.0,
+              "jit_requires": "",
+              "caster_stack": "Individual",
+              "stack": "Replace",
+              "stack_limit": 2,
+              "stack_key": null
+            },
+            {
+              "attribs": [
+                "Null"
+              ],
+              "type": "Magnitude",
+              "application_type": "Immediate",
+              "aspect": "Current",
+              "target": "Self",
+              "table": "Melee_Ones",
+              "scale": 1.0,
+              "duration": "2.25 seconds",
+              "magnitude": 1.0,
+              "delay": 0.0,
+              "duration_expression": "",
+              "magnitude_expression": "",
+              "application_period": 0.0,
+              "tick_chance": 1.0,
+              "tick_mag_multiplier": 1.0,
+              "tick_mag_additive": 0.0,
+              "jit_requires": "",
+              "caster_stack": "Individual",
+              "stack": "Replace",
+              "stack_limit": 2,
+              "stack_key": null
+            }
+          ]
+        },
+        {
+          "chance": 1.0,
+          "ppm": 0.0,
+          "delay": 0.0,
+          "radius_inner": -1.0,
+          "radius_outer": -1.0,
+          "requires_expression": "",
+          "flags": [],
+          "is_pvp": "EITHER",
+          "eval_flags": 1,
+          "templates": [
+            {
+              "attribs": [
+                "Fly"
+              ],
+              "type": "Magnitude",
+              "application_type": "Immediate",
+              "aspect": "Current",
+              "target": "Self",
+              "table": "Melee_Ones",
+              "scale": 0.1,
+              "duration": "2.25 seconds",
+              "magnitude": 1.0,
+              "delay": 0.0,
+              "duration_expression": "",
+              "magnitude_expression": "",
+              "application_period": 0.0,
+              "tick_chance": 1.0,
+              "tick_mag_multiplier": 1.0,
+              "tick_mag_additive": 0.0,
+              "jit_requires": "",
+              "caster_stack": "Individual",
+              "stack": "Replace",
+              "stack_limit": 2,
+              "stack_key": null
+            }
+          ]
+        },
+        {
+          "chance": 0.0,
+          "ppm": 0.0,
+          "delay": 0.0,
+          "radius_inner": -1.0,
+          "radius_outer": -1.0,
+          "requires_expression": "",
+          "flags": [],
+          "is_pvp": "EITHER",
+          "eval_flags": 1,
+          "templates": [
+            {
+              "attribs": [
+                "Fly"
+              ],
+              "type": "Magnitude",
+              "application_type": "Immediate",
+              "aspect": "Current",
+              "target": "SelfAndPets",
+              "table": "Melee_Ones",
+              "scale": 2.0,
+              "duration": "2.25 seconds",
+              "magnitude": 1.0,
+              "delay": 0.0,
+              "duration_expression": "",
+              "magnitude_expression": "",
+              "application_period": 0.0,
+              "tick_chance": 1.0,
+              "tick_mag_multiplier": 1.0,
+              "tick_mag_additive": 0.0,
+              "jit_requires": "",
+              "caster_stack": "Individual",
+              "stack": "Replace",
+              "stack_limit": 2,
+              "stack_key": null
+            }
+          ]
         }
       ]
     }

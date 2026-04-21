@@ -58,9 +58,9 @@
             "Execute_Power"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Absolute",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": 0.0,
           "duration": "0 seconds",
@@ -76,7 +76,13 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Redirects.Kinetics.KineticTransferBuff"
+            ]
+          }
         },
         {
           "attribs": [
@@ -90,9 +96,9 @@
             "Toxic_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Strength",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Debuff_Dam",
           "scale": 2.0,
           "duration": "30 seconds",

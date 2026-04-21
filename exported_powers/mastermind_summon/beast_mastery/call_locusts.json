@@ -20,7 +20,7 @@
   "activation_time": 2.17,
   "recharge_time": 14.0,
   "activate_period": 0.0,
-  "endurance_cost": 16.9,
+  "endurance_cost": 13.52,
   "interrupt_time": 0.0,
   "target_type": "Foe",
   "target_type_secondary": "None",
@@ -56,6 +56,44 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
+      "requires_expression": "enttype target> critter eq",
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Lethal_Dmg"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
+          "table": "Ranged_Damage",
+          "scale": 0.3036,
+          "duration": "3.10 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.75,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
       "requires_expression": "enttype target> player eq",
       "flags": [],
       "is_pvp": "EITHER",
@@ -66,9 +104,9 @@
             "Lethal_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Absolute",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_PvPDamage",
           "scale": 0.2638,
           "duration": "3.10 seconds",
@@ -104,9 +142,9 @@
             "Base_Defense"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Debuff_Def",
           "scale": 1.0,
           "duration": "10 seconds",
@@ -131,9 +169,9 @@
             "JumpingSpeed"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Slow",
           "scale": 0.2,
           "duration": "10 seconds",
@@ -156,9 +194,9 @@
             "JumpHeight"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Strength",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Slow",
           "scale": 0.2,
           "duration": "10 seconds",
@@ -181,9 +219,9 @@
             "Fly"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": -1.6,
           "duration": "10 seconds",
@@ -219,7 +257,7 @@
             "Grant_Power"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -236,6 +274,100 @@
           "jit_requires": "",
           "caster_stack": "Individual",
           "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Temporary_Powers.Temporary_Powers.Pack_Mentality"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 1,
+      "templates": [
+        {
+          "attribs": [
+            "HitPoints"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Maximum",
+          "target": "SelfAndPets",
+          "table": "Melee_HealSelf",
+          "scale": 0.4,
+          "duration": "30 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null
+        },
+        {
+          "attribs": [
+            "Accuracy"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Strength",
+          "target": "Self",
+          "table": "Melee_Ones",
+          "scale": 0.03,
+          "duration": "10 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null
+        },
+        {
+          "attribs": [
+            "Set_Mode"
+          ],
+          "type": "Constant",
+          "application_type": "Immediate",
+          "aspect": "Current",
+          "target": "Self",
+          "table": "Melee_Ones",
+          "scale": 1.0,
+          "duration": "30 seconds",
+          "magnitude": 181.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null
         }

@@ -58,7 +58,7 @@
             "RunningSpeed"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_SpeedRunning",
@@ -83,7 +83,7 @@
             "FlyingSpeed"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_SpeedFlying",
@@ -108,7 +108,7 @@
             "Base_Defense"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Resistance",
           "target": "Self",
           "table": "Melee_Res_Boolean",
@@ -147,7 +147,7 @@
             "FlyingSpeed"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Resistance",
           "target": "Self",
           "table": "Melee_Ones",
@@ -186,7 +186,7 @@
             "FlyingSpeed"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -225,7 +225,7 @@
             "FlyingSpeed"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Ones",

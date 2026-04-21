@@ -62,7 +62,1401 @@
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
-      "templates": []
+      "templates": [],
+      "child_effects": [
+        {
+          "chance": 1.0,
+          "ppm": 0.0,
+          "delay": 0.0,
+          "radius_inner": -1.0,
+          "radius_outer": -1.0,
+          "requires_expression": "",
+          "flags": [],
+          "is_pvp": "EITHER",
+          "eval_flags": 0,
+          "templates": [
+            {
+              "attribs": [
+                "Special_Dmg"
+              ],
+              "type": "Magnitude",
+              "application_type": "Immediate",
+              "aspect": "Absolute",
+              "target": "Self",
+              "table": "Melee_HealSelf",
+              "scale": -0.05,
+              "duration": "0 seconds",
+              "magnitude": 1.0,
+              "delay": 0.0,
+              "duration_expression": "",
+              "magnitude_expression": "",
+              "application_period": 0.0,
+              "tick_chance": 1.0,
+              "tick_mag_multiplier": 1.0,
+              "tick_mag_additive": 0.0,
+              "jit_requires": "",
+              "caster_stack": "Individual",
+              "stack": "Stack",
+              "stack_limit": 2,
+              "stack_key": null
+            },
+            {
+              "attribs": [
+                "Regeneration"
+              ],
+              "type": "Magnitude",
+              "application_type": "Immediate",
+              "aspect": "Current",
+              "target": "AnyAffected",
+              "table": "Melee_Ones",
+              "scale": -0.75,
+              "duration": "4 seconds",
+              "magnitude": 1.0,
+              "delay": 0.0,
+              "duration_expression": "",
+              "magnitude_expression": "",
+              "application_period": 0.0,
+              "tick_chance": 1.0,
+              "tick_mag_multiplier": 1.0,
+              "tick_mag_additive": 0.0,
+              "jit_requires": "",
+              "caster_stack": "Individual",
+              "stack": "Stack",
+              "stack_limit": 2,
+              "stack_key": null
+            },
+            {
+              "attribs": [
+                "Smashing_Dmg",
+                "Lethal_Dmg",
+                "Fire_Dmg",
+                "Cold_Dmg",
+                "Energy_Dmg",
+                "Negative_Energy_Dmg",
+                "Psionic_Dmg",
+                "Toxic_Dmg"
+              ],
+              "type": "Magnitude",
+              "application_type": "Immediate",
+              "aspect": "Resistance",
+              "target": "AnyAffected",
+              "table": "Melee_Debuff_Def",
+              "scale": 1.0,
+              "duration": "4 seconds",
+              "magnitude": 1.0,
+              "delay": 0.0,
+              "duration_expression": "",
+              "magnitude_expression": "",
+              "application_period": 0.0,
+              "tick_chance": 1.0,
+              "tick_mag_multiplier": 1.0,
+              "tick_mag_additive": 0.0,
+              "jit_requires": "",
+              "caster_stack": "Individual",
+              "stack": "Stack",
+              "stack_limit": 2,
+              "stack_key": null
+            },
+            {
+              "attribs": [
+                "Base_Defense"
+              ],
+              "type": "Magnitude",
+              "application_type": "Immediate",
+              "aspect": "Current",
+              "target": "AnyAffected",
+              "table": "Melee_Debuff_Def",
+              "scale": 1.0,
+              "duration": "4 seconds",
+              "magnitude": 1.0,
+              "delay": 0.0,
+              "duration_expression": "",
+              "magnitude_expression": "",
+              "application_period": 0.0,
+              "tick_chance": 1.0,
+              "tick_mag_multiplier": 1.0,
+              "tick_mag_additive": 0.0,
+              "jit_requires": "",
+              "caster_stack": "Individual",
+              "stack": "Stack",
+              "stack_limit": 2,
+              "stack_key": null
+            },
+            {
+              "attribs": [
+                "ToHit"
+              ],
+              "type": "Magnitude",
+              "application_type": "Immediate",
+              "aspect": "Current",
+              "target": "AnyAffected",
+              "table": "Melee_DeBuff_ToHit",
+              "scale": 1.0,
+              "duration": "4 seconds",
+              "magnitude": 1.0,
+              "delay": 0.0,
+              "duration_expression": "",
+              "magnitude_expression": "",
+              "application_period": 0.0,
+              "tick_chance": 1.0,
+              "tick_mag_multiplier": 1.0,
+              "tick_mag_additive": 0.0,
+              "jit_requires": "",
+              "caster_stack": "Individual",
+              "stack": "Stack",
+              "stack_limit": 2,
+              "stack_key": null
+            },
+            {
+              "attribs": [
+                "Psionic_Dmg"
+              ],
+              "type": "Magnitude",
+              "application_type": "Immediate",
+              "aspect": "Absolute",
+              "target": "AnyAffected",
+              "table": "Melee_Damage",
+              "scale": 0.05,
+              "duration": "3.75 seconds",
+              "magnitude": 1.0,
+              "delay": 0.0,
+              "duration_expression": "",
+              "magnitude_expression": "",
+              "application_period": 1.0,
+              "tick_chance": 1.0,
+              "tick_mag_multiplier": 1.0,
+              "tick_mag_additive": 0.0,
+              "jit_requires": "",
+              "caster_stack": "Individual",
+              "stack": "Stack",
+              "stack_limit": 2,
+              "stack_key": null
+            }
+          ]
+        },
+        {
+          "chance": 1.0,
+          "ppm": 0.0,
+          "delay": 0.0,
+          "radius_inner": -1.0,
+          "radius_outer": -1.0,
+          "requires_expression": "enttype target> critter eq",
+          "flags": [],
+          "is_pvp": "EITHER",
+          "eval_flags": 0,
+          "templates": [],
+          "child_effects": [
+            {
+              "chance": 1.0,
+              "ppm": 0.0,
+              "delay": 0.0,
+              "radius_inner": -1.0,
+              "radius_outer": -1.0,
+              "requires_expression": "0",
+              "flags": [],
+              "is_pvp": "EITHER",
+              "eval_flags": 0,
+              "templates": [],
+              "child_effects": [
+                {
+                  "chance": 0.20000000298023224,
+                  "ppm": 0.0,
+                  "delay": 0.0,
+                  "radius_inner": -1.0,
+                  "radius_outer": -1.0,
+                  "requires_expression": "",
+                  "flags": [],
+                  "is_pvp": "EITHER",
+                  "eval_flags": 0,
+                  "templates": [
+                    {
+                      "attribs": [
+                        "Confused"
+                      ],
+                      "type": "Magnitude",
+                      "application_type": "Immediate",
+                      "aspect": "Current",
+                      "target": "AnyAffected",
+                      "table": "Melee_Ones",
+                      "scale": 2.0,
+                      "duration": "4 seconds",
+                      "magnitude": 2.0,
+                      "delay": 0.0,
+                      "duration_expression": "",
+                      "magnitude_expression": "",
+                      "application_period": 0.0,
+                      "tick_chance": 1.0,
+                      "tick_mag_multiplier": 1.0,
+                      "tick_mag_additive": 0.0,
+                      "jit_requires": "",
+                      "caster_stack": "Individual",
+                      "stack": "RefreshToCount",
+                      "stack_limit": 1,
+                      "stack_key": null
+                    },
+                    {
+                      "attribs": [
+                        "Confused"
+                      ],
+                      "type": "Magnitude",
+                      "application_type": "Immediate",
+                      "aspect": "Current",
+                      "target": "AnyAffected",
+                      "table": "Melee_Ones",
+                      "scale": 0.5,
+                      "duration": "4 seconds",
+                      "magnitude": 0.5,
+                      "delay": 0.0,
+                      "duration_expression": "",
+                      "magnitude_expression": "",
+                      "application_period": 0.0,
+                      "tick_chance": 1.0,
+                      "tick_mag_multiplier": 1.0,
+                      "tick_mag_additive": 0.0,
+                      "jit_requires": "",
+                      "caster_stack": "Individual",
+                      "stack": "RefreshToCount",
+                      "stack_limit": 1,
+                      "stack_key": null
+                    }
+                  ]
+                },
+                {
+                  "chance": 0.20000000298023224,
+                  "ppm": 0.0,
+                  "delay": 0.0,
+                  "radius_inner": -1.0,
+                  "radius_outer": -1.0,
+                  "requires_expression": "",
+                  "flags": [],
+                  "is_pvp": "EITHER",
+                  "eval_flags": 0,
+                  "templates": [
+                    {
+                      "attribs": [
+                        "Stunned"
+                      ],
+                      "type": "Magnitude",
+                      "application_type": "Immediate",
+                      "aspect": "Current",
+                      "target": "AnyAffected",
+                      "table": "Melee_Ones",
+                      "scale": 2.0,
+                      "duration": "4 seconds",
+                      "magnitude": 2.0,
+                      "delay": 0.0,
+                      "duration_expression": "",
+                      "magnitude_expression": "",
+                      "application_period": 0.0,
+                      "tick_chance": 1.0,
+                      "tick_mag_multiplier": 1.0,
+                      "tick_mag_additive": 0.0,
+                      "jit_requires": "",
+                      "caster_stack": "Individual",
+                      "stack": "RefreshToCount",
+                      "stack_limit": 1,
+                      "stack_key": null
+                    },
+                    {
+                      "attribs": [
+                        "Stunned"
+                      ],
+                      "type": "Magnitude",
+                      "application_type": "Immediate",
+                      "aspect": "Current",
+                      "target": "AnyAffected",
+                      "table": "Melee_Ones",
+                      "scale": 0.5,
+                      "duration": "4 seconds",
+                      "magnitude": 0.5,
+                      "delay": 0.0,
+                      "duration_expression": "",
+                      "magnitude_expression": "",
+                      "application_period": 0.0,
+                      "tick_chance": 1.0,
+                      "tick_mag_multiplier": 1.0,
+                      "tick_mag_additive": 0.0,
+                      "jit_requires": "",
+                      "caster_stack": "Individual",
+                      "stack": "RefreshToCount",
+                      "stack_limit": 1,
+                      "stack_key": null
+                    }
+                  ]
+                },
+                {
+                  "chance": 0.20000000298023224,
+                  "ppm": 0.0,
+                  "delay": 0.0,
+                  "radius_inner": -1.0,
+                  "radius_outer": -1.0,
+                  "requires_expression": "",
+                  "flags": [],
+                  "is_pvp": "EITHER",
+                  "eval_flags": 0,
+                  "templates": [
+                    {
+                      "attribs": [
+                        "Sleep"
+                      ],
+                      "type": "Magnitude",
+                      "application_type": "Immediate",
+                      "aspect": "Current",
+                      "target": "AnyAffected",
+                      "table": "Melee_Ones",
+                      "scale": 2.0,
+                      "duration": "4 seconds",
+                      "magnitude": 2.0,
+                      "delay": 0.0,
+                      "duration_expression": "",
+                      "magnitude_expression": "",
+                      "application_period": 0.0,
+                      "tick_chance": 1.0,
+                      "tick_mag_multiplier": 1.0,
+                      "tick_mag_additive": 0.0,
+                      "jit_requires": "",
+                      "caster_stack": "Individual",
+                      "stack": "RefreshToCount",
+                      "stack_limit": 1,
+                      "stack_key": null
+                    },
+                    {
+                      "attribs": [
+                        "Sleep"
+                      ],
+                      "type": "Magnitude",
+                      "application_type": "Immediate",
+                      "aspect": "Current",
+                      "target": "AnyAffected",
+                      "table": "Melee_Ones",
+                      "scale": 0.5,
+                      "duration": "4 seconds",
+                      "magnitude": 0.5,
+                      "delay": 0.0,
+                      "duration_expression": "",
+                      "magnitude_expression": "",
+                      "application_period": 0.0,
+                      "tick_chance": 1.0,
+                      "tick_mag_multiplier": 1.0,
+                      "tick_mag_additive": 0.0,
+                      "jit_requires": "",
+                      "caster_stack": "Individual",
+                      "stack": "RefreshToCount",
+                      "stack_limit": 1,
+                      "stack_key": null
+                    }
+                  ]
+                },
+                {
+                  "chance": 0.20000000298023224,
+                  "ppm": 0.0,
+                  "delay": 0.0,
+                  "radius_inner": -1.0,
+                  "radius_outer": -1.0,
+                  "requires_expression": "",
+                  "flags": [],
+                  "is_pvp": "EITHER",
+                  "eval_flags": 0,
+                  "templates": [
+                    {
+                      "attribs": [
+                        "Held"
+                      ],
+                      "type": "Magnitude",
+                      "application_type": "Immediate",
+                      "aspect": "Current",
+                      "target": "AnyAffected",
+                      "table": "Melee_Ones",
+                      "scale": 2.0,
+                      "duration": "4 seconds",
+                      "magnitude": 2.0,
+                      "delay": 0.0,
+                      "duration_expression": "",
+                      "magnitude_expression": "",
+                      "application_period": 0.0,
+                      "tick_chance": 1.0,
+                      "tick_mag_multiplier": 1.0,
+                      "tick_mag_additive": 0.0,
+                      "jit_requires": "",
+                      "caster_stack": "Individual",
+                      "stack": "RefreshToCount",
+                      "stack_limit": 1,
+                      "stack_key": null
+                    },
+                    {
+                      "attribs": [
+                        "Held"
+                      ],
+                      "type": "Magnitude",
+                      "application_type": "Immediate",
+                      "aspect": "Current",
+                      "target": "AnyAffected",
+                      "table": "Melee_Ones",
+                      "scale": 0.5,
+                      "duration": "4 seconds",
+                      "magnitude": 0.5,
+                      "delay": 0.0,
+                      "duration_expression": "",
+                      "magnitude_expression": "",
+                      "application_period": 0.0,
+                      "tick_chance": 1.0,
+                      "tick_mag_multiplier": 1.0,
+                      "tick_mag_additive": 0.0,
+                      "jit_requires": "",
+                      "caster_stack": "Individual",
+                      "stack": "RefreshToCount",
+                      "stack_limit": 1,
+                      "stack_key": null
+                    }
+                  ]
+                },
+                {
+                  "chance": 0.20000000298023224,
+                  "ppm": 0.0,
+                  "delay": 0.0,
+                  "radius_inner": -1.0,
+                  "radius_outer": -1.0,
+                  "requires_expression": "",
+                  "flags": [],
+                  "is_pvp": "EITHER",
+                  "eval_flags": 0,
+                  "templates": [
+                    {
+                      "attribs": [
+                        "Terrorized"
+                      ],
+                      "type": "Magnitude",
+                      "application_type": "Immediate",
+                      "aspect": "Current",
+                      "target": "AnyAffected",
+                      "table": "Melee_Ones",
+                      "scale": 2.0,
+                      "duration": "4 seconds",
+                      "magnitude": 2.0,
+                      "delay": 0.0,
+                      "duration_expression": "",
+                      "magnitude_expression": "",
+                      "application_period": 0.0,
+                      "tick_chance": 1.0,
+                      "tick_mag_multiplier": 1.0,
+                      "tick_mag_additive": 0.0,
+                      "jit_requires": "",
+                      "caster_stack": "Individual",
+                      "stack": "RefreshToCount",
+                      "stack_limit": 1,
+                      "stack_key": null
+                    },
+                    {
+                      "attribs": [
+                        "Terrorized"
+                      ],
+                      "type": "Magnitude",
+                      "application_type": "Immediate",
+                      "aspect": "Current",
+                      "target": "AnyAffected",
+                      "table": "Melee_Ones",
+                      "scale": 0.5,
+                      "duration": "4 seconds",
+                      "magnitude": 0.5,
+                      "delay": 0.0,
+                      "duration_expression": "",
+                      "magnitude_expression": "",
+                      "application_period": 0.0,
+                      "tick_chance": 1.0,
+                      "tick_mag_multiplier": 1.0,
+                      "tick_mag_additive": 0.0,
+                      "jit_requires": "",
+                      "caster_stack": "Individual",
+                      "stack": "RefreshToCount",
+                      "stack_limit": 1,
+                      "stack_key": null
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "chance": 1.0,
+              "ppm": 0.0,
+              "delay": 0.0,
+              "radius_inner": -1.0,
+              "radius_outer": -1.0,
+              "requires_expression": "",
+              "flags": [],
+              "is_pvp": "EITHER",
+              "eval_flags": 0,
+              "templates": [],
+              "child_effects": [
+                {
+                  "chance": 0.20000000298023224,
+                  "ppm": 0.0,
+                  "delay": 0.0,
+                  "radius_inner": -1.0,
+                  "radius_outer": -1.0,
+                  "requires_expression": "",
+                  "flags": [],
+                  "is_pvp": "EITHER",
+                  "eval_flags": 0,
+                  "templates": [
+                    {
+                      "attribs": [
+                        "Confused"
+                      ],
+                      "type": "Magnitude",
+                      "application_type": "Immediate",
+                      "aspect": "Current",
+                      "target": "AnyAffected",
+                      "table": "Melee_Ones",
+                      "scale": 2.0,
+                      "duration": "4 seconds",
+                      "magnitude": 2.0,
+                      "delay": 0.0,
+                      "duration_expression": "",
+                      "magnitude_expression": "",
+                      "application_period": 0.0,
+                      "tick_chance": 1.0,
+                      "tick_mag_multiplier": 1.0,
+                      "tick_mag_additive": 0.0,
+                      "jit_requires": "",
+                      "caster_stack": "Individual",
+                      "stack": "RefreshToCount",
+                      "stack_limit": 1,
+                      "stack_key": null
+                    },
+                    {
+                      "attribs": [
+                        "Confused"
+                      ],
+                      "type": "Magnitude",
+                      "application_type": "Immediate",
+                      "aspect": "Current",
+                      "target": "AnyAffected",
+                      "table": "Melee_Ones",
+                      "scale": 0.5,
+                      "duration": "4 seconds",
+                      "magnitude": 0.5,
+                      "delay": 0.0,
+                      "duration_expression": "",
+                      "magnitude_expression": "",
+                      "application_period": 0.0,
+                      "tick_chance": 1.0,
+                      "tick_mag_multiplier": 1.0,
+                      "tick_mag_additive": 0.0,
+                      "jit_requires": "",
+                      "caster_stack": "Individual",
+                      "stack": "RefreshToCount",
+                      "stack_limit": 1,
+                      "stack_key": null
+                    }
+                  ]
+                },
+                {
+                  "chance": 1.0,
+                  "ppm": 0.0,
+                  "delay": 0.0,
+                  "radius_inner": -1.0,
+                  "radius_outer": -1.0,
+                  "requires_expression": "",
+                  "flags": [],
+                  "is_pvp": "EITHER",
+                  "eval_flags": 0,
+                  "templates": [],
+                  "child_effects": [
+                    {
+                      "chance": 0.25,
+                      "ppm": 0.0,
+                      "delay": 0.0,
+                      "radius_inner": -1.0,
+                      "radius_outer": -1.0,
+                      "requires_expression": "",
+                      "flags": [],
+                      "is_pvp": "EITHER",
+                      "eval_flags": 0,
+                      "templates": [
+                        {
+                          "attribs": [
+                            "Stunned"
+                          ],
+                          "type": "Magnitude",
+                          "application_type": "Immediate",
+                          "aspect": "Current",
+                          "target": "AnyAffected",
+                          "table": "Melee_Ones",
+                          "scale": 2.0,
+                          "duration": "4 seconds",
+                          "magnitude": 2.0,
+                          "delay": 0.0,
+                          "duration_expression": "",
+                          "magnitude_expression": "",
+                          "application_period": 0.0,
+                          "tick_chance": 1.0,
+                          "tick_mag_multiplier": 1.0,
+                          "tick_mag_additive": 0.0,
+                          "jit_requires": "",
+                          "caster_stack": "Individual",
+                          "stack": "RefreshToCount",
+                          "stack_limit": 1,
+                          "stack_key": null
+                        },
+                        {
+                          "attribs": [
+                            "Stunned"
+                          ],
+                          "type": "Magnitude",
+                          "application_type": "Immediate",
+                          "aspect": "Current",
+                          "target": "AnyAffected",
+                          "table": "Melee_Ones",
+                          "scale": 0.5,
+                          "duration": "4 seconds",
+                          "magnitude": 0.5,
+                          "delay": 0.0,
+                          "duration_expression": "",
+                          "magnitude_expression": "",
+                          "application_period": 0.0,
+                          "tick_chance": 1.0,
+                          "tick_mag_multiplier": 1.0,
+                          "tick_mag_additive": 0.0,
+                          "jit_requires": "",
+                          "caster_stack": "Individual",
+                          "stack": "RefreshToCount",
+                          "stack_limit": 1,
+                          "stack_key": null
+                        }
+                      ]
+                    },
+                    {
+                      "chance": 1.0,
+                      "ppm": 0.0,
+                      "delay": 0.0,
+                      "radius_inner": -1.0,
+                      "radius_outer": -1.0,
+                      "requires_expression": "",
+                      "flags": [],
+                      "is_pvp": "EITHER",
+                      "eval_flags": 0,
+                      "templates": [],
+                      "child_effects": [
+                        {
+                          "chance": 0.33329999446868896,
+                          "ppm": 0.0,
+                          "delay": 0.0,
+                          "radius_inner": -1.0,
+                          "radius_outer": -1.0,
+                          "requires_expression": "",
+                          "flags": [],
+                          "is_pvp": "EITHER",
+                          "eval_flags": 0,
+                          "templates": [
+                            {
+                              "attribs": [
+                                "Sleep"
+                              ],
+                              "type": "Magnitude",
+                              "application_type": "Immediate",
+                              "aspect": "Current",
+                              "target": "AnyAffected",
+                              "table": "Melee_Ones",
+                              "scale": 2.0,
+                              "duration": "4 seconds",
+                              "magnitude": 2.0,
+                              "delay": 0.0,
+                              "duration_expression": "",
+                              "magnitude_expression": "",
+                              "application_period": 0.0,
+                              "tick_chance": 1.0,
+                              "tick_mag_multiplier": 1.0,
+                              "tick_mag_additive": 0.0,
+                              "jit_requires": "",
+                              "caster_stack": "Individual",
+                              "stack": "RefreshToCount",
+                              "stack_limit": 1,
+                              "stack_key": null
+                            },
+                            {
+                              "attribs": [
+                                "Sleep"
+                              ],
+                              "type": "Magnitude",
+                              "application_type": "Immediate",
+                              "aspect": "Current",
+                              "target": "AnyAffected",
+                              "table": "Melee_Ones",
+                              "scale": 0.5,
+                              "duration": "4 seconds",
+                              "magnitude": 0.5,
+                              "delay": 0.0,
+                              "duration_expression": "",
+                              "magnitude_expression": "",
+                              "application_period": 0.0,
+                              "tick_chance": 1.0,
+                              "tick_mag_multiplier": 1.0,
+                              "tick_mag_additive": 0.0,
+                              "jit_requires": "",
+                              "caster_stack": "Individual",
+                              "stack": "RefreshToCount",
+                              "stack_limit": 1,
+                              "stack_key": null
+                            }
+                          ]
+                        },
+                        {
+                          "chance": 1.0,
+                          "ppm": 0.0,
+                          "delay": 0.0,
+                          "radius_inner": -1.0,
+                          "radius_outer": -1.0,
+                          "requires_expression": "",
+                          "flags": [],
+                          "is_pvp": "EITHER",
+                          "eval_flags": 0,
+                          "templates": [],
+                          "child_effects": [
+                            {
+                              "chance": 0.5,
+                              "ppm": 0.0,
+                              "delay": 0.0,
+                              "radius_inner": -1.0,
+                              "radius_outer": -1.0,
+                              "requires_expression": "",
+                              "flags": [],
+                              "is_pvp": "EITHER",
+                              "eval_flags": 0,
+                              "templates": [
+                                {
+                                  "attribs": [
+                                    "Held"
+                                  ],
+                                  "type": "Magnitude",
+                                  "application_type": "Immediate",
+                                  "aspect": "Current",
+                                  "target": "AnyAffected",
+                                  "table": "Melee_Ones",
+                                  "scale": 2.0,
+                                  "duration": "4 seconds",
+                                  "magnitude": 2.0,
+                                  "delay": 0.0,
+                                  "duration_expression": "",
+                                  "magnitude_expression": "",
+                                  "application_period": 0.0,
+                                  "tick_chance": 1.0,
+                                  "tick_mag_multiplier": 1.0,
+                                  "tick_mag_additive": 0.0,
+                                  "jit_requires": "",
+                                  "caster_stack": "Individual",
+                                  "stack": "RefreshToCount",
+                                  "stack_limit": 1,
+                                  "stack_key": null
+                                },
+                                {
+                                  "attribs": [
+                                    "Held"
+                                  ],
+                                  "type": "Magnitude",
+                                  "application_type": "Immediate",
+                                  "aspect": "Current",
+                                  "target": "AnyAffected",
+                                  "table": "Melee_Ones",
+                                  "scale": 0.5,
+                                  "duration": "4 seconds",
+                                  "magnitude": 0.5,
+                                  "delay": 0.0,
+                                  "duration_expression": "",
+                                  "magnitude_expression": "",
+                                  "application_period": 0.0,
+                                  "tick_chance": 1.0,
+                                  "tick_mag_multiplier": 1.0,
+                                  "tick_mag_additive": 0.0,
+                                  "jit_requires": "",
+                                  "caster_stack": "Individual",
+                                  "stack": "RefreshToCount",
+                                  "stack_limit": 1,
+                                  "stack_key": null
+                                }
+                              ]
+                            },
+                            {
+                              "chance": 1.0,
+                              "ppm": 0.0,
+                              "delay": 0.0,
+                              "radius_inner": -1.0,
+                              "radius_outer": -1.0,
+                              "requires_expression": "",
+                              "flags": [],
+                              "is_pvp": "EITHER",
+                              "eval_flags": 0,
+                              "templates": [
+                                {
+                                  "attribs": [
+                                    "Terrorized"
+                                  ],
+                                  "type": "Magnitude",
+                                  "application_type": "Immediate",
+                                  "aspect": "Current",
+                                  "target": "AnyAffected",
+                                  "table": "Melee_Ones",
+                                  "scale": 2.0,
+                                  "duration": "4 seconds",
+                                  "magnitude": 2.0,
+                                  "delay": 0.0,
+                                  "duration_expression": "",
+                                  "magnitude_expression": "",
+                                  "application_period": 0.0,
+                                  "tick_chance": 1.0,
+                                  "tick_mag_multiplier": 1.0,
+                                  "tick_mag_additive": 0.0,
+                                  "jit_requires": "",
+                                  "caster_stack": "Individual",
+                                  "stack": "RefreshToCount",
+                                  "stack_limit": 1,
+                                  "stack_key": null
+                                },
+                                {
+                                  "attribs": [
+                                    "Terrorized"
+                                  ],
+                                  "type": "Magnitude",
+                                  "application_type": "Immediate",
+                                  "aspect": "Current",
+                                  "target": "AnyAffected",
+                                  "table": "Melee_Ones",
+                                  "scale": 0.5,
+                                  "duration": "4 seconds",
+                                  "magnitude": 1.25,
+                                  "delay": 0.0,
+                                  "duration_expression": "",
+                                  "magnitude_expression": "",
+                                  "application_period": 0.0,
+                                  "tick_chance": 1.0,
+                                  "tick_mag_multiplier": 1.0,
+                                  "tick_mag_additive": 0.0,
+                                  "jit_requires": "",
+                                  "caster_stack": "Individual",
+                                  "stack": "RefreshToCount",
+                                  "stack_limit": 1,
+                                  "stack_key": null
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "chance": 1.0,
+          "ppm": 0.0,
+          "delay": 0.0,
+          "radius_inner": -1.0,
+          "radius_outer": -1.0,
+          "requires_expression": "enttype target> player eq",
+          "flags": [],
+          "is_pvp": "EITHER",
+          "eval_flags": 0,
+          "templates": [],
+          "child_effects": [
+            {
+              "chance": 1.0,
+              "ppm": 0.0,
+              "delay": 0.0,
+              "radius_inner": -1.0,
+              "radius_outer": -1.0,
+              "requires_expression": "0",
+              "flags": [],
+              "is_pvp": "EITHER",
+              "eval_flags": 0,
+              "templates": [],
+              "child_effects": [
+                {
+                  "chance": 0.20000000298023224,
+                  "ppm": 0.0,
+                  "delay": 0.0,
+                  "radius_inner": -1.0,
+                  "radius_outer": -1.0,
+                  "requires_expression": "",
+                  "flags": [],
+                  "is_pvp": "EITHER",
+                  "eval_flags": 0,
+                  "templates": [
+                    {
+                      "attribs": [
+                        "Confused"
+                      ],
+                      "type": "Magnitude",
+                      "application_type": "Immediate",
+                      "aspect": "Current",
+                      "target": "AnyAffected",
+                      "table": "Melee_Ones",
+                      "scale": 2.5,
+                      "duration": "4 seconds",
+                      "magnitude": 2.5,
+                      "delay": 0.0,
+                      "duration_expression": "",
+                      "magnitude_expression": "",
+                      "application_period": 0.0,
+                      "tick_chance": 1.0,
+                      "tick_mag_multiplier": 1.0,
+                      "tick_mag_additive": 0.0,
+                      "jit_requires": "",
+                      "caster_stack": "Individual",
+                      "stack": "RefreshToCount",
+                      "stack_limit": 1,
+                      "stack_key": null
+                    }
+                  ]
+                },
+                {
+                  "chance": 0.20000000298023224,
+                  "ppm": 0.0,
+                  "delay": 0.0,
+                  "radius_inner": -1.0,
+                  "radius_outer": -1.0,
+                  "requires_expression": "",
+                  "flags": [],
+                  "is_pvp": "EITHER",
+                  "eval_flags": 0,
+                  "templates": [
+                    {
+                      "attribs": [
+                        "Stunned"
+                      ],
+                      "type": "Magnitude",
+                      "application_type": "Immediate",
+                      "aspect": "Current",
+                      "target": "AnyAffected",
+                      "table": "Melee_Ones",
+                      "scale": 2.5,
+                      "duration": "4 seconds",
+                      "magnitude": 2.5,
+                      "delay": 0.0,
+                      "duration_expression": "",
+                      "magnitude_expression": "",
+                      "application_period": 0.0,
+                      "tick_chance": 1.0,
+                      "tick_mag_multiplier": 1.0,
+                      "tick_mag_additive": 0.0,
+                      "jit_requires": "",
+                      "caster_stack": "Individual",
+                      "stack": "RefreshToCount",
+                      "stack_limit": 1,
+                      "stack_key": null
+                    }
+                  ]
+                },
+                {
+                  "chance": 0.20000000298023224,
+                  "ppm": 0.0,
+                  "delay": 0.0,
+                  "radius_inner": -1.0,
+                  "radius_outer": -1.0,
+                  "requires_expression": "",
+                  "flags": [],
+                  "is_pvp": "EITHER",
+                  "eval_flags": 0,
+                  "templates": [
+                    {
+                      "attribs": [
+                        "Sleep"
+                      ],
+                      "type": "Magnitude",
+                      "application_type": "Immediate",
+                      "aspect": "Current",
+                      "target": "AnyAffected",
+                      "table": "Melee_Ones",
+                      "scale": 2.5,
+                      "duration": "4 seconds",
+                      "magnitude": 2.5,
+                      "delay": 0.0,
+                      "duration_expression": "",
+                      "magnitude_expression": "",
+                      "application_period": 0.0,
+                      "tick_chance": 1.0,
+                      "tick_mag_multiplier": 1.0,
+                      "tick_mag_additive": 0.0,
+                      "jit_requires": "",
+                      "caster_stack": "Individual",
+                      "stack": "RefreshToCount",
+                      "stack_limit": 1,
+                      "stack_key": null
+                    }
+                  ]
+                },
+                {
+                  "chance": 0.20000000298023224,
+                  "ppm": 0.0,
+                  "delay": 0.0,
+                  "radius_inner": -1.0,
+                  "radius_outer": -1.0,
+                  "requires_expression": "",
+                  "flags": [],
+                  "is_pvp": "EITHER",
+                  "eval_flags": 0,
+                  "templates": [
+                    {
+                      "attribs": [
+                        "Held"
+                      ],
+                      "type": "Magnitude",
+                      "application_type": "Immediate",
+                      "aspect": "Current",
+                      "target": "AnyAffected",
+                      "table": "Melee_Ones",
+                      "scale": 2.5,
+                      "duration": "4 seconds",
+                      "magnitude": 2.5,
+                      "delay": 0.0,
+                      "duration_expression": "",
+                      "magnitude_expression": "",
+                      "application_period": 0.0,
+                      "tick_chance": 1.0,
+                      "tick_mag_multiplier": 1.0,
+                      "tick_mag_additive": 0.0,
+                      "jit_requires": "",
+                      "caster_stack": "Individual",
+                      "stack": "RefreshToCount",
+                      "stack_limit": 1,
+                      "stack_key": null
+                    }
+                  ]
+                },
+                {
+                  "chance": 0.20000000298023224,
+                  "ppm": 0.0,
+                  "delay": 0.0,
+                  "radius_inner": -1.0,
+                  "radius_outer": -1.0,
+                  "requires_expression": "",
+                  "flags": [],
+                  "is_pvp": "EITHER",
+                  "eval_flags": 0,
+                  "templates": [
+                    {
+                      "attribs": [
+                        "Terrorized"
+                      ],
+                      "type": "Magnitude",
+                      "application_type": "Immediate",
+                      "aspect": "Current",
+                      "target": "AnyAffected",
+                      "table": "Melee_Ones",
+                      "scale": 2.5,
+                      "duration": "4 seconds",
+                      "magnitude": 2.5,
+                      "delay": 0.0,
+                      "duration_expression": "",
+                      "magnitude_expression": "",
+                      "application_period": 0.0,
+                      "tick_chance": 1.0,
+                      "tick_mag_multiplier": 1.0,
+                      "tick_mag_additive": 0.0,
+                      "jit_requires": "",
+                      "caster_stack": "Individual",
+                      "stack": "RefreshToCount",
+                      "stack_limit": 1,
+                      "stack_key": null
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "chance": 1.0,
+              "ppm": 0.0,
+              "delay": 0.0,
+              "radius_inner": -1.0,
+              "radius_outer": -1.0,
+              "requires_expression": "",
+              "flags": [],
+              "is_pvp": "EITHER",
+              "eval_flags": 0,
+              "templates": [],
+              "child_effects": [
+                {
+                  "chance": 0.20000000298023224,
+                  "ppm": 0.0,
+                  "delay": 0.0,
+                  "radius_inner": -1.0,
+                  "radius_outer": -1.0,
+                  "requires_expression": "",
+                  "flags": [],
+                  "is_pvp": "EITHER",
+                  "eval_flags": 0,
+                  "templates": [
+                    {
+                      "attribs": [
+                        "Confused"
+                      ],
+                      "type": "Magnitude",
+                      "application_type": "Immediate",
+                      "aspect": "Current",
+                      "target": "AnyAffected",
+                      "table": "Melee_Ones",
+                      "scale": 2.5,
+                      "duration": "4 seconds",
+                      "magnitude": 2.5,
+                      "delay": 0.0,
+                      "duration_expression": "",
+                      "magnitude_expression": "",
+                      "application_period": 0.0,
+                      "tick_chance": 1.0,
+                      "tick_mag_multiplier": 1.0,
+                      "tick_mag_additive": 0.0,
+                      "jit_requires": "",
+                      "caster_stack": "Individual",
+                      "stack": "Stack",
+                      "stack_limit": 2,
+                      "stack_key": null
+                    }
+                  ]
+                },
+                {
+                  "chance": 1.0,
+                  "ppm": 0.0,
+                  "delay": 0.0,
+                  "radius_inner": -1.0,
+                  "radius_outer": -1.0,
+                  "requires_expression": "",
+                  "flags": [],
+                  "is_pvp": "EITHER",
+                  "eval_flags": 0,
+                  "templates": [],
+                  "child_effects": [
+                    {
+                      "chance": 0.25,
+                      "ppm": 0.0,
+                      "delay": 0.0,
+                      "radius_inner": -1.0,
+                      "radius_outer": -1.0,
+                      "requires_expression": "",
+                      "flags": [],
+                      "is_pvp": "EITHER",
+                      "eval_flags": 0,
+                      "templates": [
+                        {
+                          "attribs": [
+                            "Stunned"
+                          ],
+                          "type": "Magnitude",
+                          "application_type": "Immediate",
+                          "aspect": "Current",
+                          "target": "AnyAffected",
+                          "table": "Melee_Ones",
+                          "scale": 2.5,
+                          "duration": "4 seconds",
+                          "magnitude": 2.5,
+                          "delay": 0.0,
+                          "duration_expression": "",
+                          "magnitude_expression": "",
+                          "application_period": 0.0,
+                          "tick_chance": 1.0,
+                          "tick_mag_multiplier": 1.0,
+                          "tick_mag_additive": 0.0,
+                          "jit_requires": "",
+                          "caster_stack": "Individual",
+                          "stack": "Stack",
+                          "stack_limit": 2,
+                          "stack_key": null
+                        }
+                      ]
+                    },
+                    {
+                      "chance": 1.0,
+                      "ppm": 0.0,
+                      "delay": 0.0,
+                      "radius_inner": -1.0,
+                      "radius_outer": -1.0,
+                      "requires_expression": "",
+                      "flags": [],
+                      "is_pvp": "EITHER",
+                      "eval_flags": 0,
+                      "templates": [],
+                      "child_effects": [
+                        {
+                          "chance": 0.33329999446868896,
+                          "ppm": 0.0,
+                          "delay": 0.0,
+                          "radius_inner": -1.0,
+                          "radius_outer": -1.0,
+                          "requires_expression": "",
+                          "flags": [],
+                          "is_pvp": "EITHER",
+                          "eval_flags": 0,
+                          "templates": [
+                            {
+                              "attribs": [
+                                "Sleep"
+                              ],
+                              "type": "Magnitude",
+                              "application_type": "Immediate",
+                              "aspect": "Current",
+                              "target": "AnyAffected",
+                              "table": "Melee_Ones",
+                              "scale": 2.5,
+                              "duration": "4 seconds",
+                              "magnitude": 2.5,
+                              "delay": 0.0,
+                              "duration_expression": "",
+                              "magnitude_expression": "",
+                              "application_period": 0.0,
+                              "tick_chance": 1.0,
+                              "tick_mag_multiplier": 1.0,
+                              "tick_mag_additive": 0.0,
+                              "jit_requires": "",
+                              "caster_stack": "Individual",
+                              "stack": "Stack",
+                              "stack_limit": 2,
+                              "stack_key": null
+                            }
+                          ]
+                        },
+                        {
+                          "chance": 1.0,
+                          "ppm": 0.0,
+                          "delay": 0.0,
+                          "radius_inner": -1.0,
+                          "radius_outer": -1.0,
+                          "requires_expression": "",
+                          "flags": [],
+                          "is_pvp": "EITHER",
+                          "eval_flags": 0,
+                          "templates": [],
+                          "child_effects": [
+                            {
+                              "chance": 0.5,
+                              "ppm": 0.0,
+                              "delay": 0.0,
+                              "radius_inner": -1.0,
+                              "radius_outer": -1.0,
+                              "requires_expression": "",
+                              "flags": [],
+                              "is_pvp": "EITHER",
+                              "eval_flags": 0,
+                              "templates": [
+                                {
+                                  "attribs": [
+                                    "Held"
+                                  ],
+                                  "type": "Magnitude",
+                                  "application_type": "Immediate",
+                                  "aspect": "Current",
+                                  "target": "AnyAffected",
+                                  "table": "Melee_Ones",
+                                  "scale": 2.5,
+                                  "duration": "4 seconds",
+                                  "magnitude": 2.5,
+                                  "delay": 0.0,
+                                  "duration_expression": "",
+                                  "magnitude_expression": "",
+                                  "application_period": 0.0,
+                                  "tick_chance": 1.0,
+                                  "tick_mag_multiplier": 1.0,
+                                  "tick_mag_additive": 0.0,
+                                  "jit_requires": "",
+                                  "caster_stack": "Individual",
+                                  "stack": "Stack",
+                                  "stack_limit": 2,
+                                  "stack_key": null
+                                }
+                              ]
+                            },
+                            {
+                              "chance": 1.0,
+                              "ppm": 0.0,
+                              "delay": 0.0,
+                              "radius_inner": -1.0,
+                              "radius_outer": -1.0,
+                              "requires_expression": "",
+                              "flags": [],
+                              "is_pvp": "EITHER",
+                              "eval_flags": 0,
+                              "templates": [
+                                {
+                                  "attribs": [
+                                    "Terrorized"
+                                  ],
+                                  "type": "Magnitude",
+                                  "application_type": "Immediate",
+                                  "aspect": "Current",
+                                  "target": "AnyAffected",
+                                  "table": "Melee_Ones",
+                                  "scale": 2.5,
+                                  "duration": "4 seconds",
+                                  "magnitude": 2.5,
+                                  "delay": 0.0,
+                                  "duration_expression": "",
+                                  "magnitude_expression": "",
+                                  "application_period": 0.0,
+                                  "tick_chance": 1.0,
+                                  "tick_mag_multiplier": 1.0,
+                                  "tick_mag_additive": 0.0,
+                                  "jit_requires": "",
+                                  "caster_stack": "Individual",
+                                  "stack": "Stack",
+                                  "stack_limit": 2,
+                                  "stack_key": null
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Execute_Power"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Strength",
+          "target": "AnyAffected",
+          "table": "Melee_Ones",
+          "scale": 0.0,
+          "duration": "0 seconds",
+          "magnitude": 0.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Redirects.Inherents.Gauntlet_Proc_Aura"
+            ]
+          }
+        }
+      ]
     }
   ],
   "available_level": 0,

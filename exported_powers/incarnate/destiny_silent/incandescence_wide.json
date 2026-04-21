@@ -55,9 +55,9 @@
             "Knockback"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Melee_Ones",
           "scale": 10.0,
           "duration": "0 seconds",
@@ -79,10 +79,10 @@
           "attribs": [
             "Stunned"
           ],
-          "type": "Magnitude",
+          "type": "Duration",
           "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Melee_Stun",
           "scale": 5.0,
           "duration": "0 seconds",
@@ -118,9 +118,9 @@
             "Knockback"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Melee_Ones",
           "scale": 10.0,
           "duration": "0 seconds",
@@ -142,10 +142,10 @@
           "attribs": [
             "Stunned"
           ],
-          "type": "Magnitude",
+          "type": "Duration",
           "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Melee_Ones",
           "scale": 4.0,
           "duration": "0 seconds",

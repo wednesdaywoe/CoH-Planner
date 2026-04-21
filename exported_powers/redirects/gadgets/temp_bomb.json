@@ -63,7 +63,7 @@
             "Cancel_Effects"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Damage",
@@ -88,7 +88,7 @@
             "Grant_Power"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Melee_Ones",
@@ -106,9 +106,27 @@
           "caster_stack": "Individual",
           "stack": "Ignore",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Temporary_Powers.Temporary_Powers.Time_Bomb"
+            ]
+          }
         }
       ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "arch source> Class_Blaster eq",
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": []
     }
   ],
   "available_level": 0,

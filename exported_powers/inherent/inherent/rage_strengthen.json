@@ -55,7 +55,7 @@
             "Rage"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Ones",

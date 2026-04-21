@@ -57,73 +57,1193 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "enttype target> critter eq",
+      "requires_expression": "",
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
-      "templates": [
+      "templates": [],
+      "child_effects": [
         {
-          "attribs": [
-            "Lethal_Dmg"
-          ],
-          "type": "Magnitude",
-          "application_type": "OnTick",
-          "aspect": "Absolute",
-          "target": "Unknown",
-          "table": "Ranged_Damage",
-          "scale": 0.182,
-          "duration": "1.60 seconds",
-          "magnitude": 1.0,
+          "chance": 1.0,
+          "ppm": 0.0,
           "delay": 0.0,
-          "duration_expression": "",
-          "magnitude_expression": "",
-          "application_period": 0.5,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": "",
-          "caster_stack": "Individual",
-          "stack": "Stack",
-          "stack_limit": 2,
-          "stack_key": null
-        }
-      ]
-    },
-    {
-      "chance": 1.0,
-      "ppm": 0.0,
-      "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
-      "requires_expression": "enttype target> player eq",
-      "flags": [],
-      "is_pvp": "EITHER",
-      "eval_flags": 0,
-      "templates": [
+          "radius_inner": -1.0,
+          "radius_outer": -1.0,
+          "requires_expression": "enttype target> critter eq",
+          "flags": [],
+          "is_pvp": "EITHER",
+          "eval_flags": 0,
+          "templates": [],
+          "child_effects": [
+            {
+              "chance": 1.0,
+              "ppm": 0.0,
+              "delay": 0.0,
+              "radius_inner": -1.0,
+              "radius_outer": -1.0,
+              "requires_expression": "",
+              "flags": [],
+              "is_pvp": "EITHER",
+              "eval_flags": 0,
+              "templates": [],
+              "child_effects": [
+                {
+                  "chance": 1.0,
+                  "ppm": 0.0,
+                  "delay": 0.0,
+                  "radius_inner": -1.0,
+                  "radius_outer": -1.0,
+                  "requires_expression": "",
+                  "flags": [],
+                  "is_pvp": "EITHER",
+                  "eval_flags": 0,
+                  "templates": [
+                    {
+                      "attribs": [
+                        "Base_Defense"
+                      ],
+                      "type": "Magnitude",
+                      "application_type": "Immediate",
+                      "aspect": "Current",
+                      "target": "AnyAffected",
+                      "table": "Ranged_Debuff_Def",
+                      "scale": 1.0,
+                      "duration": "8 seconds",
+                      "magnitude": 1.0,
+                      "delay": 0.0,
+                      "duration_expression": "",
+                      "magnitude_expression": "",
+                      "application_period": 0.0,
+                      "tick_chance": 1.0,
+                      "tick_mag_multiplier": 1.0,
+                      "tick_mag_additive": 0.0,
+                      "jit_requires": "",
+                      "caster_stack": "Individual",
+                      "stack": "Stack",
+                      "stack_limit": 2,
+                      "stack_key": null
+                    }
+                  ],
+                  "child_effects": [
+                    {
+                      "chance": 1.0,
+                      "ppm": 0.0,
+                      "delay": 0.0,
+                      "radius_inner": -1.0,
+                      "radius_outer": -1.0,
+                      "requires_expression": "",
+                      "flags": [],
+                      "is_pvp": "EITHER",
+                      "eval_flags": 0,
+                      "templates": [
+                        {
+                          "attribs": [
+                            "Lethal_Dmg"
+                          ],
+                          "type": "Magnitude",
+                          "application_type": "Immediate",
+                          "aspect": "Absolute",
+                          "target": "AnyAffected",
+                          "table": "Ranged_Damage",
+                          "scale": 0.26,
+                          "duration": "1.60 seconds",
+                          "magnitude": 1.0,
+                          "delay": 0.0,
+                          "duration_expression": "",
+                          "magnitude_expression": "",
+                          "application_period": 0.5,
+                          "tick_chance": 1.0,
+                          "tick_mag_multiplier": 1.0,
+                          "tick_mag_additive": 0.0,
+                          "jit_requires": "",
+                          "caster_stack": "Individual",
+                          "stack": "Stack",
+                          "stack_limit": 2,
+                          "stack_key": null
+                        }
+                      ]
+                    },
+                    {
+                      "chance": 1.0,
+                      "ppm": 0.0,
+                      "delay": 0.0,
+                      "radius_inner": -1.0,
+                      "radius_outer": -1.0,
+                      "requires_expression": "",
+                      "flags": [],
+                      "is_pvp": "EITHER",
+                      "eval_flags": 0,
+                      "templates": [
+                        {
+                          "attribs": [
+                            "Lethal_Dmg"
+                          ],
+                          "type": "Magnitude",
+                          "application_type": "Immediate",
+                          "aspect": "Absolute",
+                          "target": "AnyAffected",
+                          "table": "Ranged_InherentDamage",
+                          "scale": 0.26,
+                          "duration": "1.60 seconds",
+                          "magnitude": 1.0,
+                          "delay": 0.0,
+                          "duration_expression": "",
+                          "magnitude_expression": "",
+                          "application_period": 0.5,
+                          "tick_chance": 0.0,
+                          "tick_mag_multiplier": 1.0,
+                          "tick_mag_additive": 0.0,
+                          "jit_requires": "",
+                          "caster_stack": "Individual",
+                          "stack": "Stack",
+                          "stack_limit": 2,
+                          "stack_key": null
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "chance": 0.10000000149011612,
+                  "ppm": 0.0,
+                  "delay": 0.0,
+                  "radius_inner": -1.0,
+                  "radius_outer": -1.0,
+                  "requires_expression": "",
+                  "flags": [],
+                  "is_pvp": "EITHER",
+                  "eval_flags": 0,
+                  "templates": [
+                    {
+                      "attribs": [
+                        "Knockback"
+                      ],
+                      "type": "Magnitude",
+                      "application_type": "Immediate",
+                      "aspect": "Current",
+                      "target": "AnyAffected",
+                      "table": "Ranged_Knockback",
+                      "scale": 0.4,
+                      "duration": "0 seconds",
+                      "magnitude": 1.0,
+                      "delay": 0.0,
+                      "duration_expression": "",
+                      "magnitude_expression": "",
+                      "application_period": 0.0,
+                      "tick_chance": 1.0,
+                      "tick_mag_multiplier": 1.0,
+                      "tick_mag_additive": 0.0,
+                      "jit_requires": "",
+                      "caster_stack": "Individual",
+                      "stack": "Stack",
+                      "stack_limit": 2,
+                      "stack_key": null
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "chance": 0.0,
+              "ppm": 0.0,
+              "delay": 0.0,
+              "radius_inner": -1.0,
+              "radius_outer": -1.0,
+              "requires_expression": "",
+              "flags": [],
+              "is_pvp": "EITHER",
+              "eval_flags": 0,
+              "templates": [],
+              "child_effects": [
+                {
+                  "chance": 0.0,
+                  "ppm": 0.0,
+                  "delay": 0.0,
+                  "radius_inner": -1.0,
+                  "radius_outer": -1.0,
+                  "requires_expression": "",
+                  "flags": [],
+                  "is_pvp": "EITHER",
+                  "eval_flags": 0,
+                  "templates": [],
+                  "child_effects": [
+                    {
+                      "chance": 0.0,
+                      "ppm": 0.0,
+                      "delay": 0.0,
+                      "radius_inner": -1.0,
+                      "radius_outer": -1.0,
+                      "requires_expression": "",
+                      "flags": [],
+                      "is_pvp": "EITHER",
+                      "eval_flags": 0,
+                      "templates": [
+                        {
+                          "attribs": [
+                            "Fire_Dmg"
+                          ],
+                          "type": "Magnitude",
+                          "application_type": "Immediate",
+                          "aspect": "Absolute",
+                          "target": "AnyAffected",
+                          "table": "Ranged_Damage",
+                          "scale": 0.26,
+                          "duration": "1.60 seconds",
+                          "magnitude": 1.0,
+                          "delay": 0.0,
+                          "duration_expression": "",
+                          "magnitude_expression": "",
+                          "application_period": 0.5,
+                          "tick_chance": 1.0,
+                          "tick_mag_multiplier": 1.0,
+                          "tick_mag_additive": 0.0,
+                          "jit_requires": "",
+                          "caster_stack": "Individual",
+                          "stack": "Stack",
+                          "stack_limit": 2,
+                          "stack_key": null
+                        }
+                      ]
+                    },
+                    {
+                      "chance": 1.0,
+                      "ppm": 0.0,
+                      "delay": 0.0,
+                      "radius_inner": -1.0,
+                      "radius_outer": -1.0,
+                      "requires_expression": "",
+                      "flags": [],
+                      "is_pvp": "EITHER",
+                      "eval_flags": 0,
+                      "templates": [
+                        {
+                          "attribs": [
+                            "Fire_Dmg"
+                          ],
+                          "type": "Magnitude",
+                          "application_type": "Immediate",
+                          "aspect": "Absolute",
+                          "target": "AnyAffected",
+                          "table": "Ranged_InherentDamage",
+                          "scale": 0.26,
+                          "duration": "1.60 seconds",
+                          "magnitude": 1.0,
+                          "delay": 0.0,
+                          "duration_expression": "",
+                          "magnitude_expression": "",
+                          "application_period": 0.5,
+                          "tick_chance": 0.0,
+                          "tick_mag_multiplier": 1.0,
+                          "tick_mag_additive": 0.0,
+                          "jit_requires": "",
+                          "caster_stack": "Individual",
+                          "stack": "Stack",
+                          "stack_limit": 2,
+                          "stack_key": null
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "chance": 1.0,
+                  "ppm": 0.0,
+                  "delay": 0.0,
+                  "radius_inner": -1.0,
+                  "radius_outer": -1.0,
+                  "requires_expression": "",
+                  "flags": [],
+                  "is_pvp": "EITHER",
+                  "eval_flags": 0,
+                  "templates": [
+                    {
+                      "attribs": [
+                        "Fire_Dmg"
+                      ],
+                      "type": "Magnitude",
+                      "application_type": "Immediate",
+                      "aspect": "Absolute",
+                      "target": "AnyAffected",
+                      "table": "Ranged_Damage",
+                      "scale": 0.113,
+                      "duration": "2.10 seconds",
+                      "magnitude": 1.0,
+                      "delay": 0.0,
+                      "duration_expression": "",
+                      "magnitude_expression": "",
+                      "application_period": 1.0,
+                      "tick_chance": 0.0,
+                      "tick_mag_multiplier": 1.0,
+                      "tick_mag_additive": 0.0,
+                      "jit_requires": "",
+                      "caster_stack": "Individual",
+                      "stack": "Stack",
+                      "stack_limit": 2,
+                      "stack_key": null
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "chance": 0.0,
+              "ppm": 0.0,
+              "delay": 0.0,
+              "radius_inner": -1.0,
+              "radius_outer": -1.0,
+              "requires_expression": "",
+              "flags": [],
+              "is_pvp": "EITHER",
+              "eval_flags": 0,
+              "templates": [
+                {
+                  "attribs": [
+                    "RunningSpeed",
+                    "FlyingSpeed",
+                    "JumpingSpeed"
+                  ],
+                  "type": "Magnitude",
+                  "application_type": "Immediate",
+                  "aspect": "Current",
+                  "target": "AnyAffected",
+                  "table": "Ranged_Slow",
+                  "scale": 0.15,
+                  "duration": "8 seconds",
+                  "magnitude": 1.0,
+                  "delay": 0.0,
+                  "duration_expression": "",
+                  "magnitude_expression": "",
+                  "application_period": 0.0,
+                  "tick_chance": 1.0,
+                  "tick_mag_multiplier": 1.0,
+                  "tick_mag_additive": 0.0,
+                  "jit_requires": "",
+                  "caster_stack": "Individual",
+                  "stack": "Stack",
+                  "stack_limit": 2,
+                  "stack_key": null
+                },
+                {
+                  "attribs": [
+                    "JumpHeight",
+                    "RechargeTime"
+                  ],
+                  "type": "Magnitude",
+                  "application_type": "Immediate",
+                  "aspect": "Strength",
+                  "target": "AnyAffected",
+                  "table": "Ranged_Slow",
+                  "scale": 0.15,
+                  "duration": "8 seconds",
+                  "magnitude": 1.0,
+                  "delay": 0.0,
+                  "duration_expression": "",
+                  "magnitude_expression": "",
+                  "application_period": 0.0,
+                  "tick_chance": 1.0,
+                  "tick_mag_multiplier": 1.0,
+                  "tick_mag_additive": 0.0,
+                  "jit_requires": "",
+                  "caster_stack": "Individual",
+                  "stack": "Stack",
+                  "stack_limit": 2,
+                  "stack_key": null
+                }
+              ],
+              "child_effects": [
+                {
+                  "chance": 0.0,
+                  "ppm": 0.0,
+                  "delay": 0.0,
+                  "radius_inner": -1.0,
+                  "radius_outer": -1.0,
+                  "requires_expression": "",
+                  "flags": [],
+                  "is_pvp": "EITHER",
+                  "eval_flags": 0,
+                  "templates": [
+                    {
+                      "attribs": [
+                        "Cold_Dmg"
+                      ],
+                      "type": "Magnitude",
+                      "application_type": "Immediate",
+                      "aspect": "Absolute",
+                      "target": "AnyAffected",
+                      "table": "Ranged_Damage",
+                      "scale": 0.26,
+                      "duration": "1.60 seconds",
+                      "magnitude": 1.0,
+                      "delay": 0.0,
+                      "duration_expression": "",
+                      "magnitude_expression": "",
+                      "application_period": 0.5,
+                      "tick_chance": 1.0,
+                      "tick_mag_multiplier": 1.0,
+                      "tick_mag_additive": 0.0,
+                      "jit_requires": "",
+                      "caster_stack": "Individual",
+                      "stack": "Stack",
+                      "stack_limit": 2,
+                      "stack_key": null
+                    }
+                  ]
+                },
+                {
+                  "chance": 1.0,
+                  "ppm": 0.0,
+                  "delay": 0.0,
+                  "radius_inner": -1.0,
+                  "radius_outer": -1.0,
+                  "requires_expression": "",
+                  "flags": [],
+                  "is_pvp": "EITHER",
+                  "eval_flags": 0,
+                  "templates": [
+                    {
+                      "attribs": [
+                        "Cold_Dmg"
+                      ],
+                      "type": "Magnitude",
+                      "application_type": "Immediate",
+                      "aspect": "Absolute",
+                      "target": "AnyAffected",
+                      "table": "Ranged_InherentDamage",
+                      "scale": 0.26,
+                      "duration": "1.60 seconds",
+                      "magnitude": 1.0,
+                      "delay": 0.0,
+                      "duration_expression": "",
+                      "magnitude_expression": "",
+                      "application_period": 0.5,
+                      "tick_chance": 0.0,
+                      "tick_mag_multiplier": 1.0,
+                      "tick_mag_additive": 0.0,
+                      "jit_requires": "",
+                      "caster_stack": "Individual",
+                      "stack": "Stack",
+                      "stack_limit": 2,
+                      "stack_key": null
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "chance": 0.0,
+              "ppm": 0.0,
+              "delay": 0.0,
+              "radius_inner": -1.0,
+              "radius_outer": -1.0,
+              "requires_expression": "",
+              "flags": [],
+              "is_pvp": "EITHER",
+              "eval_flags": 0,
+              "templates": [
+                {
+                  "attribs": [
+                    "Smashing_Dmg",
+                    "Lethal_Dmg",
+                    "Fire_Dmg",
+                    "Cold_Dmg",
+                    "Energy_Dmg",
+                    "Negative_Energy_Dmg",
+                    "Psionic_Dmg",
+                    "Toxic_Dmg"
+                  ],
+                  "type": "Magnitude",
+                  "application_type": "Immediate",
+                  "aspect": "Strength",
+                  "target": "AnyAffected",
+                  "table": "Ranged_Debuff_Dam",
+                  "scale": 1.0,
+                  "duration": "6 seconds",
+                  "magnitude": 1.0,
+                  "delay": 0.0,
+                  "duration_expression": "",
+                  "magnitude_expression": "",
+                  "application_period": 0.0,
+                  "tick_chance": 1.0,
+                  "tick_mag_multiplier": 1.0,
+                  "tick_mag_additive": 0.0,
+                  "jit_requires": "",
+                  "caster_stack": "Individual",
+                  "stack": "Replace",
+                  "stack_limit": 2,
+                  "stack_key": null
+                }
+              ],
+              "child_effects": [
+                {
+                  "chance": 0.0,
+                  "ppm": 0.0,
+                  "delay": 0.0,
+                  "radius_inner": -1.0,
+                  "radius_outer": -1.0,
+                  "requires_expression": "",
+                  "flags": [],
+                  "is_pvp": "EITHER",
+                  "eval_flags": 0,
+                  "templates": [
+                    {
+                      "attribs": [
+                        "Toxic_Dmg"
+                      ],
+                      "type": "Magnitude",
+                      "application_type": "Immediate",
+                      "aspect": "Absolute",
+                      "target": "AnyAffected",
+                      "table": "Ranged_Damage",
+                      "scale": 0.26,
+                      "duration": "1.60 seconds",
+                      "magnitude": 1.0,
+                      "delay": 0.0,
+                      "duration_expression": "",
+                      "magnitude_expression": "",
+                      "application_period": 0.5,
+                      "tick_chance": 1.0,
+                      "tick_mag_multiplier": 1.0,
+                      "tick_mag_additive": 0.0,
+                      "jit_requires": "",
+                      "caster_stack": "Individual",
+                      "stack": "Stack",
+                      "stack_limit": 2,
+                      "stack_key": null
+                    }
+                  ]
+                },
+                {
+                  "chance": 1.0,
+                  "ppm": 0.0,
+                  "delay": 0.0,
+                  "radius_inner": -1.0,
+                  "radius_outer": -1.0,
+                  "requires_expression": "",
+                  "flags": [],
+                  "is_pvp": "EITHER",
+                  "eval_flags": 0,
+                  "templates": [
+                    {
+                      "attribs": [
+                        "Toxic_Dmg"
+                      ],
+                      "type": "Magnitude",
+                      "application_type": "Immediate",
+                      "aspect": "Absolute",
+                      "target": "AnyAffected",
+                      "table": "Ranged_InherentDamage",
+                      "scale": 0.26,
+                      "duration": "1.60 seconds",
+                      "magnitude": 1.0,
+                      "delay": 0.0,
+                      "duration_expression": "",
+                      "magnitude_expression": "",
+                      "application_period": 0.5,
+                      "tick_chance": 0.0,
+                      "tick_mag_multiplier": 1.0,
+                      "tick_mag_additive": 0.0,
+                      "jit_requires": "",
+                      "caster_stack": "Individual",
+                      "stack": "Stack",
+                      "stack_limit": 2,
+                      "stack_key": null
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
         {
-          "attribs": [
-            "Lethal_Dmg"
-          ],
-          "type": "Magnitude",
-          "application_type": "OnTick",
-          "aspect": "Absolute",
-          "target": "Unknown",
-          "table": "Ranged_PvPDamage",
-          "scale": 0.1595,
-          "duration": "1.60 seconds",
-          "magnitude": 1.0,
+          "chance": 1.0,
+          "ppm": 0.0,
           "delay": 0.0,
-          "duration_expression": "",
-          "magnitude_expression": "",
-          "application_period": 0.5,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": "",
-          "caster_stack": "Individual",
-          "stack": "Stack",
-          "stack_limit": 2,
-          "stack_key": null
+          "radius_inner": -1.0,
+          "radius_outer": -1.0,
+          "requires_expression": "enttype target> player eq",
+          "flags": [],
+          "is_pvp": "EITHER",
+          "eval_flags": 0,
+          "templates": [],
+          "child_effects": [
+            {
+              "chance": 1.0,
+              "ppm": 0.0,
+              "delay": 0.0,
+              "radius_inner": -1.0,
+              "radius_outer": -1.0,
+              "requires_expression": "",
+              "flags": [],
+              "is_pvp": "EITHER",
+              "eval_flags": 0,
+              "templates": [],
+              "child_effects": [
+                {
+                  "chance": 1.0,
+                  "ppm": 0.0,
+                  "delay": 0.0,
+                  "radius_inner": -1.0,
+                  "radius_outer": -1.0,
+                  "requires_expression": "",
+                  "flags": [],
+                  "is_pvp": "EITHER",
+                  "eval_flags": 0,
+                  "templates": [
+                    {
+                      "attribs": [
+                        "Base_Defense"
+                      ],
+                      "type": "Magnitude",
+                      "application_type": "Immediate",
+                      "aspect": "Current",
+                      "target": "AnyAffected",
+                      "table": "Ranged_Debuff_Def",
+                      "scale": 1.0,
+                      "duration": "8 seconds",
+                      "magnitude": 1.0,
+                      "delay": 0.0,
+                      "duration_expression": "",
+                      "magnitude_expression": "",
+                      "application_period": 0.0,
+                      "tick_chance": 1.0,
+                      "tick_mag_multiplier": 1.0,
+                      "tick_mag_additive": 0.0,
+                      "jit_requires": "",
+                      "caster_stack": "Individual",
+                      "stack": "Stack",
+                      "stack_limit": 2,
+                      "stack_key": null
+                    }
+                  ],
+                  "child_effects": [
+                    {
+                      "chance": 1.0,
+                      "ppm": 0.0,
+                      "delay": 0.0,
+                      "radius_inner": -1.0,
+                      "radius_outer": -1.0,
+                      "requires_expression": "",
+                      "flags": [],
+                      "is_pvp": "EITHER",
+                      "eval_flags": 0,
+                      "templates": [
+                        {
+                          "attribs": [
+                            "Lethal_Dmg"
+                          ],
+                          "type": "Magnitude",
+                          "application_type": "Immediate",
+                          "aspect": "Absolute",
+                          "target": "AnyAffected",
+                          "table": "Ranged_PvPDamage",
+                          "scale": 0.2612,
+                          "duration": "1.60 seconds",
+                          "magnitude": 1.0,
+                          "delay": 0.0,
+                          "duration_expression": "",
+                          "magnitude_expression": "",
+                          "application_period": 0.5,
+                          "tick_chance": 1.0,
+                          "tick_mag_multiplier": 1.0,
+                          "tick_mag_additive": 0.0,
+                          "jit_requires": "",
+                          "caster_stack": "Individual",
+                          "stack": "Stack",
+                          "stack_limit": 2,
+                          "stack_key": null
+                        }
+                      ]
+                    },
+                    {
+                      "chance": 1.0,
+                      "ppm": 0.0,
+                      "delay": 0.0,
+                      "radius_inner": -1.0,
+                      "radius_outer": -1.0,
+                      "requires_expression": "",
+                      "flags": [],
+                      "is_pvp": "EITHER",
+                      "eval_flags": 0,
+                      "templates": [
+                        {
+                          "attribs": [
+                            "Lethal_Dmg"
+                          ],
+                          "type": "Magnitude",
+                          "application_type": "Immediate",
+                          "aspect": "Absolute",
+                          "target": "AnyAffected",
+                          "table": "Ranged_PvPDamage",
+                          "scale": 0.2612,
+                          "duration": "1.60 seconds",
+                          "magnitude": 1.0,
+                          "delay": 0.0,
+                          "duration_expression": "",
+                          "magnitude_expression": "",
+                          "application_period": 0.5,
+                          "tick_chance": 0.0,
+                          "tick_mag_multiplier": 1.0,
+                          "tick_mag_additive": 0.0,
+                          "jit_requires": "",
+                          "caster_stack": "Individual",
+                          "stack": "Stack",
+                          "stack_limit": 2,
+                          "stack_key": null
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "chance": 0.10000000149011612,
+                  "ppm": 0.0,
+                  "delay": 0.0,
+                  "radius_inner": -1.0,
+                  "radius_outer": -1.0,
+                  "requires_expression": "",
+                  "flags": [],
+                  "is_pvp": "EITHER",
+                  "eval_flags": 0,
+                  "templates": [
+                    {
+                      "attribs": [
+                        "Knockback"
+                      ],
+                      "type": "Magnitude",
+                      "application_type": "Immediate",
+                      "aspect": "Current",
+                      "target": "AnyAffected",
+                      "table": "Ranged_Knockback",
+                      "scale": 0.4,
+                      "duration": "0 seconds",
+                      "magnitude": 1.0,
+                      "delay": 0.0,
+                      "duration_expression": "",
+                      "magnitude_expression": "",
+                      "application_period": 0.0,
+                      "tick_chance": 1.0,
+                      "tick_mag_multiplier": 1.0,
+                      "tick_mag_additive": 0.0,
+                      "jit_requires": "",
+                      "caster_stack": "Individual",
+                      "stack": "Stack",
+                      "stack_limit": 2,
+                      "stack_key": null
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "chance": 0.0,
+              "ppm": 0.0,
+              "delay": 0.0,
+              "radius_inner": -1.0,
+              "radius_outer": -1.0,
+              "requires_expression": "",
+              "flags": [],
+              "is_pvp": "EITHER",
+              "eval_flags": 0,
+              "templates": [],
+              "child_effects": [
+                {
+                  "chance": 0.0,
+                  "ppm": 0.0,
+                  "delay": 0.0,
+                  "radius_inner": -1.0,
+                  "radius_outer": -1.0,
+                  "requires_expression": "",
+                  "flags": [],
+                  "is_pvp": "EITHER",
+                  "eval_flags": 0,
+                  "templates": [],
+                  "child_effects": [
+                    {
+                      "chance": 0.0,
+                      "ppm": 0.0,
+                      "delay": 0.0,
+                      "radius_inner": -1.0,
+                      "radius_outer": -1.0,
+                      "requires_expression": "",
+                      "flags": [],
+                      "is_pvp": "EITHER",
+                      "eval_flags": 0,
+                      "templates": [
+                        {
+                          "attribs": [
+                            "Fire_Dmg"
+                          ],
+                          "type": "Magnitude",
+                          "application_type": "Immediate",
+                          "aspect": "Absolute",
+                          "target": "AnyAffected",
+                          "table": "Ranged_PvPDamage",
+                          "scale": 0.2612,
+                          "duration": "1.60 seconds",
+                          "magnitude": 1.0,
+                          "delay": 0.0,
+                          "duration_expression": "",
+                          "magnitude_expression": "",
+                          "application_period": 0.5,
+                          "tick_chance": 1.0,
+                          "tick_mag_multiplier": 1.0,
+                          "tick_mag_additive": 0.0,
+                          "jit_requires": "",
+                          "caster_stack": "Individual",
+                          "stack": "Stack",
+                          "stack_limit": 2,
+                          "stack_key": null
+                        }
+                      ]
+                    },
+                    {
+                      "chance": 1.0,
+                      "ppm": 0.0,
+                      "delay": 0.0,
+                      "radius_inner": -1.0,
+                      "radius_outer": -1.0,
+                      "requires_expression": "",
+                      "flags": [],
+                      "is_pvp": "EITHER",
+                      "eval_flags": 0,
+                      "templates": [
+                        {
+                          "attribs": [
+                            "Fire_Dmg"
+                          ],
+                          "type": "Magnitude",
+                          "application_type": "Immediate",
+                          "aspect": "Absolute",
+                          "target": "AnyAffected",
+                          "table": "Ranged_PvPDamage",
+                          "scale": 0.2612,
+                          "duration": "1.60 seconds",
+                          "magnitude": 1.0,
+                          "delay": 0.0,
+                          "duration_expression": "",
+                          "magnitude_expression": "",
+                          "application_period": 0.5,
+                          "tick_chance": 0.0,
+                          "tick_mag_multiplier": 1.0,
+                          "tick_mag_additive": 0.0,
+                          "jit_requires": "",
+                          "caster_stack": "Individual",
+                          "stack": "Stack",
+                          "stack_limit": 2,
+                          "stack_key": null
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "chance": 1.0,
+                  "ppm": 0.0,
+                  "delay": 0.0,
+                  "radius_inner": -1.0,
+                  "radius_outer": -1.0,
+                  "requires_expression": "",
+                  "flags": [],
+                  "is_pvp": "EITHER",
+                  "eval_flags": 0,
+                  "templates": [
+                    {
+                      "attribs": [
+                        "Fire_Dmg"
+                      ],
+                      "type": "Magnitude",
+                      "application_type": "Immediate",
+                      "aspect": "Absolute",
+                      "target": "AnyAffected",
+                      "table": "Ranged_PvPDamage",
+                      "scale": 0.0919,
+                      "duration": "2.10 seconds",
+                      "magnitude": 1.0,
+                      "delay": 0.0,
+                      "duration_expression": "",
+                      "magnitude_expression": "",
+                      "application_period": 1.0,
+                      "tick_chance": 0.0,
+                      "tick_mag_multiplier": 1.0,
+                      "tick_mag_additive": 0.0,
+                      "jit_requires": "",
+                      "caster_stack": "Individual",
+                      "stack": "Stack",
+                      "stack_limit": 2,
+                      "stack_key": null
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "chance": 0.0,
+              "ppm": 0.0,
+              "delay": 0.0,
+              "radius_inner": -1.0,
+              "radius_outer": -1.0,
+              "requires_expression": "",
+              "flags": [],
+              "is_pvp": "EITHER",
+              "eval_flags": 0,
+              "templates": [
+                {
+                  "attribs": [
+                    "RunningSpeed",
+                    "FlyingSpeed",
+                    "JumpingSpeed"
+                  ],
+                  "type": "Magnitude",
+                  "application_type": "Immediate",
+                  "aspect": "Current",
+                  "target": "AnyAffected",
+                  "table": "Ranged_Slow",
+                  "scale": 0.15,
+                  "duration": "8 seconds",
+                  "magnitude": 1.0,
+                  "delay": 0.0,
+                  "duration_expression": "",
+                  "magnitude_expression": "",
+                  "application_period": 0.0,
+                  "tick_chance": 1.0,
+                  "tick_mag_multiplier": 1.0,
+                  "tick_mag_additive": 0.0,
+                  "jit_requires": "",
+                  "caster_stack": "Individual",
+                  "stack": "Stack",
+                  "stack_limit": 2,
+                  "stack_key": null
+                },
+                {
+                  "attribs": [
+                    "JumpHeight",
+                    "RechargeTime"
+                  ],
+                  "type": "Magnitude",
+                  "application_type": "Immediate",
+                  "aspect": "Strength",
+                  "target": "AnyAffected",
+                  "table": "Ranged_Slow",
+                  "scale": 0.15,
+                  "duration": "8 seconds",
+                  "magnitude": 1.0,
+                  "delay": 0.0,
+                  "duration_expression": "",
+                  "magnitude_expression": "",
+                  "application_period": 0.0,
+                  "tick_chance": 1.0,
+                  "tick_mag_multiplier": 1.0,
+                  "tick_mag_additive": 0.0,
+                  "jit_requires": "",
+                  "caster_stack": "Individual",
+                  "stack": "Stack",
+                  "stack_limit": 2,
+                  "stack_key": null
+                }
+              ],
+              "child_effects": [
+                {
+                  "chance": 0.0,
+                  "ppm": 0.0,
+                  "delay": 0.0,
+                  "radius_inner": -1.0,
+                  "radius_outer": -1.0,
+                  "requires_expression": "",
+                  "flags": [],
+                  "is_pvp": "EITHER",
+                  "eval_flags": 0,
+                  "templates": [
+                    {
+                      "attribs": [
+                        "Cold_Dmg"
+                      ],
+                      "type": "Magnitude",
+                      "application_type": "Immediate",
+                      "aspect": "Absolute",
+                      "target": "AnyAffected",
+                      "table": "Ranged_PvPDamage",
+                      "scale": 0.2612,
+                      "duration": "1.60 seconds",
+                      "magnitude": 1.0,
+                      "delay": 0.0,
+                      "duration_expression": "",
+                      "magnitude_expression": "",
+                      "application_period": 0.5,
+                      "tick_chance": 1.0,
+                      "tick_mag_multiplier": 1.0,
+                      "tick_mag_additive": 0.0,
+                      "jit_requires": "",
+                      "caster_stack": "Individual",
+                      "stack": "Stack",
+                      "stack_limit": 2,
+                      "stack_key": null
+                    }
+                  ]
+                },
+                {
+                  "chance": 1.0,
+                  "ppm": 0.0,
+                  "delay": 0.0,
+                  "radius_inner": -1.0,
+                  "radius_outer": -1.0,
+                  "requires_expression": "",
+                  "flags": [],
+                  "is_pvp": "EITHER",
+                  "eval_flags": 0,
+                  "templates": [
+                    {
+                      "attribs": [
+                        "Cold_Dmg"
+                      ],
+                      "type": "Magnitude",
+                      "application_type": "Immediate",
+                      "aspect": "Absolute",
+                      "target": "AnyAffected",
+                      "table": "Ranged_PvPDamage",
+                      "scale": 0.2612,
+                      "duration": "1.60 seconds",
+                      "magnitude": 1.0,
+                      "delay": 0.0,
+                      "duration_expression": "",
+                      "magnitude_expression": "",
+                      "application_period": 0.5,
+                      "tick_chance": 0.0,
+                      "tick_mag_multiplier": 1.0,
+                      "tick_mag_additive": 0.0,
+                      "jit_requires": "",
+                      "caster_stack": "Individual",
+                      "stack": "Stack",
+                      "stack_limit": 2,
+                      "stack_key": null
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "chance": 0.0,
+              "ppm": 0.0,
+              "delay": 0.0,
+              "radius_inner": -1.0,
+              "radius_outer": -1.0,
+              "requires_expression": "",
+              "flags": [],
+              "is_pvp": "EITHER",
+              "eval_flags": 0,
+              "templates": [
+                {
+                  "attribs": [
+                    "Smashing_Dmg",
+                    "Lethal_Dmg",
+                    "Fire_Dmg",
+                    "Cold_Dmg",
+                    "Energy_Dmg",
+                    "Negative_Energy_Dmg",
+                    "Psionic_Dmg",
+                    "Toxic_Dmg"
+                  ],
+                  "type": "Magnitude",
+                  "application_type": "Immediate",
+                  "aspect": "Strength",
+                  "target": "AnyAffected",
+                  "table": "Ranged_Debuff_Dam",
+                  "scale": 1.0,
+                  "duration": "6 seconds",
+                  "magnitude": 1.0,
+                  "delay": 0.0,
+                  "duration_expression": "",
+                  "magnitude_expression": "",
+                  "application_period": 0.0,
+                  "tick_chance": 1.0,
+                  "tick_mag_multiplier": 1.0,
+                  "tick_mag_additive": 0.0,
+                  "jit_requires": "",
+                  "caster_stack": "Individual",
+                  "stack": "Replace",
+                  "stack_limit": 2,
+                  "stack_key": null
+                }
+              ],
+              "child_effects": [
+                {
+                  "chance": 0.0,
+                  "ppm": 0.0,
+                  "delay": 0.0,
+                  "radius_inner": -1.0,
+                  "radius_outer": -1.0,
+                  "requires_expression": "",
+                  "flags": [],
+                  "is_pvp": "EITHER",
+                  "eval_flags": 0,
+                  "templates": [
+                    {
+                      "attribs": [
+                        "Toxic_Dmg"
+                      ],
+                      "type": "Magnitude",
+                      "application_type": "Immediate",
+                      "aspect": "Absolute",
+                      "target": "AnyAffected",
+                      "table": "Ranged_PvPDamage",
+                      "scale": 0.2612,
+                      "duration": "1.60 seconds",
+                      "magnitude": 1.0,
+                      "delay": 0.0,
+                      "duration_expression": "",
+                      "magnitude_expression": "",
+                      "application_period": 0.5,
+                      "tick_chance": 1.0,
+                      "tick_mag_multiplier": 1.0,
+                      "tick_mag_additive": 0.0,
+                      "jit_requires": "",
+                      "caster_stack": "Individual",
+                      "stack": "Stack",
+                      "stack_limit": 2,
+                      "stack_key": null
+                    }
+                  ]
+                },
+                {
+                  "chance": 1.0,
+                  "ppm": 0.0,
+                  "delay": 0.0,
+                  "radius_inner": -1.0,
+                  "radius_outer": -1.0,
+                  "requires_expression": "",
+                  "flags": [],
+                  "is_pvp": "EITHER",
+                  "eval_flags": 0,
+                  "templates": [
+                    {
+                      "attribs": [
+                        "Toxic_Dmg"
+                      ],
+                      "type": "Magnitude",
+                      "application_type": "Immediate",
+                      "aspect": "Absolute",
+                      "target": "AnyAffected",
+                      "table": "Ranged_PvPDamage",
+                      "scale": 0.2612,
+                      "duration": "1.60 seconds",
+                      "magnitude": 1.0,
+                      "delay": 0.0,
+                      "duration_expression": "",
+                      "magnitude_expression": "",
+                      "application_period": 0.5,
+                      "tick_chance": 0.0,
+                      "tick_mag_multiplier": 1.0,
+                      "tick_mag_additive": 0.0,
+                      "jit_requires": "",
+                      "caster_stack": "Individual",
+                      "stack": "Stack",
+                      "stack_limit": 2,
+                      "stack_key": null
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
         }
       ]
     }

@@ -61,7 +61,7 @@
             "Smashing"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Buff_Def",
@@ -86,7 +86,7 @@
             "Lethal"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Buff_Def",
@@ -114,7 +114,7 @@
             "Negative_Energy"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Buff_Def",
@@ -154,7 +154,7 @@
             "Smashing"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Buff_Def",
@@ -179,7 +179,7 @@
             "Lethal"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Buff_Def",
@@ -207,7 +207,7 @@
             "Negative_Energy"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Buff_Def",
@@ -245,7 +245,7 @@
             "PerceptionRadius"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Resistance",
           "target": "Self",
           "table": "Melee_Ones",
@@ -270,7 +270,7 @@
             "PerceptionRadius"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -295,7 +295,7 @@
             "Base_Defense"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Resistance",
           "target": "Self",
           "table": "Melee_Res_Boolean",

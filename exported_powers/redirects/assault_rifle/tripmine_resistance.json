@@ -61,7 +61,7 @@
             "Stunned"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -89,7 +89,7 @@
             "Sleep"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -115,7 +115,7 @@
             "Terrorized"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -139,7 +139,7 @@
           "attribs": [
             "Global_Chance_Mod"
           ],
-          "type": "Duration",
+          "type": "Magnitude",
           "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
@@ -158,7 +158,13 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Redirects.Assault_Rifle.TripMine_SelfDestruct"
+            ]
+          }
         },
         {
           "attribs": [
@@ -173,7 +179,7 @@
             "Special_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Resistance",
           "target": "Self",
           "table": "Melee_Ones",
@@ -208,7 +214,7 @@
             "EnduranceDiscount"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Resistance",
           "target": "Self",
           "table": "Melee_Ones",
@@ -233,7 +239,7 @@
             "HitPoints"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Resistance",
           "target": "Self",
           "table": "Melee_Ones",
@@ -259,7 +265,7 @@
             "Sleep"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Resistance",
           "target": "Self",
           "table": "Melee_Ones",
@@ -283,7 +289,7 @@
           "attribs": [
             "Immobilized"
           ],
-          "type": "Magnitude",
+          "type": "Duration",
           "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
@@ -309,7 +315,7 @@
             "StealthRadius_PVP"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",

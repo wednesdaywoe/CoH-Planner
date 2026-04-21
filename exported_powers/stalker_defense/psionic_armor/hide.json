@@ -58,7 +58,7 @@
             "StealthRadius_PVE"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -83,7 +83,7 @@
             "StealthRadius_PVP"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -108,7 +108,7 @@
             "Meter"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -133,7 +133,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -183,7 +183,7 @@
             "Toxic"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Buff_Def",
@@ -217,7 +217,7 @@
             "Toxic"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Buff_Def",
@@ -242,7 +242,7 @@
             "Area"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Buff_Def",
@@ -292,7 +292,7 @@
             "Toxic"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Buff_Def",
@@ -326,7 +326,7 @@
             "Toxic"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Buff_Def",
@@ -351,7 +351,7 @@
             "Area"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Buff_Def",

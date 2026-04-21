@@ -20,7 +20,7 @@
   "activation_time": 1.5,
   "recharge_time": 28.0,
   "activate_period": 0.0,
-  "endurance_cost": 18.512,
+  "endurance_cost": 13.52,
   "interrupt_time": 0.0,
   "target_type": "Foe",
   "target_type_secondary": "None",
@@ -64,9 +64,9 @@
             "Smashing_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Absolute",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Melee_Damage",
           "scale": 2.6,
           "duration": "0 seconds",
@@ -88,10 +88,10 @@
           "attribs": [
             "Held"
           ],
-          "type": "Magnitude",
+          "type": "Duration",
           "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Melee_Immobilize",
           "scale": 8.0,
           "duration": "0 seconds",
@@ -108,6 +108,46 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null
+        }
+      ],
+      "child_effects": [
+        {
+          "chance": 1.0,
+          "ppm": 0.0,
+          "delay": 0.0,
+          "radius_inner": -1.0,
+          "radius_outer": -1.0,
+          "requires_expression": "kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? ||",
+          "flags": [],
+          "is_pvp": "EITHER",
+          "eval_flags": 0,
+          "templates": [
+            {
+              "attribs": [
+                "Smashing_Dmg"
+              ],
+              "type": "Magnitude",
+              "application_type": "Immediate",
+              "aspect": "Absolute",
+              "target": "AnyAffected",
+              "table": "Melee_InherentDamage",
+              "scale": 2.6,
+              "duration": "0 seconds",
+              "magnitude": 1.0,
+              "delay": 0.0,
+              "duration_expression": "",
+              "magnitude_expression": "",
+              "application_period": 0.0,
+              "tick_chance": 1.0,
+              "tick_mag_multiplier": 1.0,
+              "tick_mag_additive": 0.0,
+              "jit_requires": "",
+              "caster_stack": "Individual",
+              "stack": "Stack",
+              "stack_limit": 2,
+              "stack_key": null
+            }
+          ]
         }
       ]
     },
@@ -127,9 +167,9 @@
             "Smashing_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Absolute",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Melee_PvPDamage",
           "scale": 2.57,
           "duration": "0 seconds",
@@ -151,10 +191,10 @@
           "attribs": [
             "Held"
           ],
-          "type": "Magnitude",
+          "type": "Duration",
           "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Melee_PvPMez",
           "scale": 1.0,
           "duration": "0 seconds",
@@ -171,6 +211,46 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null
+        }
+      ],
+      "child_effects": [
+        {
+          "chance": 1.0,
+          "ppm": 0.0,
+          "delay": 0.0,
+          "radius_inner": -1.0,
+          "radius_outer": -1.0,
+          "requires_expression": "kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? ||",
+          "flags": [],
+          "is_pvp": "EITHER",
+          "eval_flags": 0,
+          "templates": [
+            {
+              "attribs": [
+                "Smashing_Dmg"
+              ],
+              "type": "Magnitude",
+              "application_type": "Immediate",
+              "aspect": "Absolute",
+              "target": "AnyAffected",
+              "table": "Melee_PvPDamage",
+              "scale": 2.57,
+              "duration": "0 seconds",
+              "magnitude": 1.0,
+              "delay": 0.0,
+              "duration_expression": "",
+              "magnitude_expression": "",
+              "application_period": 0.0,
+              "tick_chance": 1.0,
+              "tick_mag_multiplier": 1.0,
+              "tick_mag_additive": 0.0,
+              "jit_requires": "",
+              "caster_stack": "Individual",
+              "stack": "Stack",
+              "stack_limit": 2,
+              "stack_key": null
+            }
+          ]
         }
       ]
     }

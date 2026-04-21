@@ -60,9 +60,9 @@
             "ToHit"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Buff_ToHit",
           "scale": 2.0,
           "duration": "120 seconds",
@@ -92,9 +92,9 @@
             "Toxic_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Strength",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Buff_Dmg",
           "scale": 4.0,
           "duration": "120 seconds",

@@ -65,9 +65,9 @@
             "Energy_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Absolute",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Damage",
           "scale": 0.9,
           "duration": "0 seconds",
@@ -103,9 +103,9 @@
             "Base_Defense"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Debuff_Def",
           "scale": 2.0,
           "duration": "16 seconds",
@@ -141,9 +141,9 @@
             "Energy_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Absolute",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_PvPDamage",
           "scale": 0.6798,
           "duration": "0 seconds",
@@ -162,6 +162,18 @@
           "stack_key": null
         }
       ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": []
     }
   ],
   "available_level": 0,

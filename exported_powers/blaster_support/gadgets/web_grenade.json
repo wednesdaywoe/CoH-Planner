@@ -71,9 +71,9 @@
             "Toxic_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Absolute",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Damage",
           "scale": 0.2,
           "duration": "8.20 seconds",
@@ -95,10 +95,10 @@
           "attribs": [
             "Immobilized"
           ],
-          "type": "Magnitude",
+          "type": "Duration",
           "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Immobilize",
           "scale": 15.0,
           "duration": "0 seconds",
@@ -121,9 +121,9 @@
             "JumpHeight"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": -500.0,
           "duration": "15 seconds",
@@ -146,9 +146,9 @@
             "RechargeTime"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Strength",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Slow",
           "scale": 0.5,
           "duration": "15 seconds",
@@ -184,9 +184,9 @@
             "Toxic_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Absolute",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_PvPDamage",
           "scale": 0.3038,
           "duration": "8.20 seconds",
@@ -208,10 +208,10 @@
           "attribs": [
             "Immobilized"
           ],
-          "type": "Magnitude",
+          "type": "Duration",
           "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_PvPMez",
           "scale": 1.0,
           "duration": "0 seconds",
@@ -234,9 +234,9 @@
             "JumpHeight"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Melee_Leap",
           "scale": -1.5,
           "duration": "15 seconds",
@@ -259,9 +259,9 @@
             "RechargeTime"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Strength",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Slow",
           "scale": 0.5,
           "duration": "15 seconds",
@@ -298,9 +298,9 @@
             "FlyingSpeed"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Slow",
           "scale": 0.5,
           "duration": "15 seconds",
@@ -324,9 +324,9 @@
             "Knockback"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Resistance",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": 100.0,
           "duration": "15 seconds",
@@ -349,9 +349,9 @@
             "Fly"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": -10.0,
           "duration": "15 seconds",
@@ -370,6 +370,18 @@
           "stack_key": null
         }
       ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": []
     }
   ],
   "available_level": 0,

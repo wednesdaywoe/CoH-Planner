@@ -62,9 +62,9 @@
             "Toxic_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Resistance",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Res_Dmg",
           "scale": 2.0,
           "duration": "240 seconds",

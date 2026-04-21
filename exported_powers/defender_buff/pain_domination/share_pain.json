@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Share Pain",
   "display_fullname": "Defender Buff Pain Domination Share Pain",
-  "display_help": "W6P2WZ99EB7AYPNJHEZMCG9CX3",
+  "display_help": "6FE2ZWWL8LSFY9ZSKKYQ8LFX7A",
   "display_short_help": "Ally Strong Heal, Self Moderate DMG(Special), +DMG",
   "icon": "paindomination_sharepain.png",
   "auto_issue": false,
@@ -62,9 +62,9 @@
             "Heal_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Absolute",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Heal",
           "scale": 4.0,
           "duration": "0 seconds",
@@ -87,7 +87,7 @@
             "Heal_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Resistance",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -112,7 +112,7 @@
             "Regeneration"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -152,9 +152,9 @@
             "Heal_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Absolute",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Heal",
           "scale": 4.0,
           "duration": "0 seconds",
@@ -177,7 +177,7 @@
             "Regeneration"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -202,7 +202,7 @@
             "Heal_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Resistance",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -240,7 +240,7 @@
             "Special_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Ranged_Damage",
@@ -272,7 +272,7 @@
             "Toxic_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Strength",
           "target": "Self",
           "table": "Ranged_Buff_Dmg",

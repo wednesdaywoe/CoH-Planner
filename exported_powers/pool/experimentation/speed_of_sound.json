@@ -60,7 +60,7 @@
             "RunningSpeed"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_SpeedRunning",
@@ -76,7 +76,7 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "Individual",
-          "stack": "Unknown",
+          "stack": "Suppress",
           "stack_limit": 2,
           "stack_key": "ictusFX"
         },
@@ -85,7 +85,7 @@
             "RunningSpeed"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Maximum",
           "target": "Self",
           "table": "Melee_Ones",
@@ -122,14 +122,14 @@
           "attribs": [
             "Set_Mode"
           ],
-          "type": "Magnitude",
-          "application_type": "Unknown",
+          "type": "Constant",
+          "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
           "scale": 1.0,
           "duration": "0.75 seconds",
-          "magnitude": 159.0,
+          "magnitude": 161.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -148,7 +148,7 @@
             "Global_Chance_Mod"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -188,7 +188,7 @@
             "RunningSpeed"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_SpeedRunning",
@@ -204,7 +204,7 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "Individual",
-          "stack": "Unknown",
+          "stack": "Suppress",
           "stack_limit": 2,
           "stack_key": "ictusFX"
         },
@@ -213,7 +213,7 @@
             "RunningSpeed"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Maximum",
           "target": "Self",
           "table": "Melee_Ones",

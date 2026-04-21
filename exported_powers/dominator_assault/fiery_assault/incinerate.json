@@ -63,9 +63,9 @@
             "Fire_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Absolute",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Melee_Damage",
           "scale": 0.212,
           "duration": "4.60 seconds",
@@ -101,9 +101,9 @@
             "Fire_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Absolute",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Melee_PvPDamage",
           "scale": 0.1969,
           "duration": "4.60 seconds",
@@ -126,7 +126,7 @@
             "Rage"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Melee_Ones",

@@ -61,7 +61,7 @@
             "Heal_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Melee_HealSelf",
@@ -86,7 +86,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Level",
@@ -104,13 +104,18 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "Pets_Phoenix",
+            "priority_list": "PL_StaticObject"
+          }
         },
         {
           "attribs": [
             "Untouchable"
           ],
-          "type": "Magnitude",
+          "type": "Duration",
           "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
@@ -136,7 +141,7 @@
             "Endurance"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Melee_Ones",
@@ -160,7 +165,7 @@
           "attribs": [
             "Immobilized"
           ],
-          "type": "Magnitude",
+          "type": "Duration",
           "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
@@ -186,7 +191,7 @@
             "Set_Mode"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Melee_Ones",

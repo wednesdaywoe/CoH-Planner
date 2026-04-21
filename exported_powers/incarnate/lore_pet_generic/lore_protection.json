@@ -54,7 +54,7 @@
           "attribs": [
             "Untouchable"
           ],
-          "type": "Duration",
+          "type": "Magnitude",
           "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
@@ -79,7 +79,7 @@
           "attribs": [
             "ThreatLevel"
           ],
-          "type": "Duration",
+          "type": "Magnitude",
           "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",

@@ -65,9 +65,9 @@
             "Toxic_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Absolute",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Damage",
           "scale": 0.01,
           "duration": "20 seconds",
@@ -84,6 +84,46 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null
+        }
+      ],
+      "child_effects": [
+        {
+          "chance": 1.0,
+          "ppm": 0.0,
+          "delay": 0.0,
+          "radius_inner": -1.0,
+          "radius_outer": -1.0,
+          "requires_expression": "kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? ||",
+          "flags": [],
+          "is_pvp": "EITHER",
+          "eval_flags": 0,
+          "templates": [
+            {
+              "attribs": [
+                "Toxic_Dmg"
+              ],
+              "type": "Magnitude",
+              "application_type": "Immediate",
+              "aspect": "Absolute",
+              "target": "AnyAffected",
+              "table": "Ranged_InherentDamage",
+              "scale": 0.01,
+              "duration": "20 seconds",
+              "magnitude": 1.0,
+              "delay": 0.0,
+              "duration_expression": "",
+              "magnitude_expression": "",
+              "application_period": 1.0,
+              "tick_chance": 1.0,
+              "tick_mag_multiplier": 1.0,
+              "tick_mag_additive": 0.0,
+              "jit_requires": "",
+              "caster_stack": "Individual",
+              "stack": "Stack",
+              "stack_limit": 2,
+              "stack_key": null
+            }
+          ]
         }
       ]
     },
@@ -105,9 +145,9 @@
             "Base_Defense"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Debuff_Def",
           "scale": 2.0,
           "duration": "45 seconds",
@@ -130,9 +170,9 @@
             "Heal_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Resistance",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Res_Dmg",
           "scale": 4.0,
           "duration": "45 seconds",
@@ -160,9 +200,9 @@
             "EnduranceDiscount"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Resistance",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Res_Dmg",
           "scale": -4.0,
           "duration": "45 seconds",
@@ -200,9 +240,9 @@
             "Base_Defense"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Debuff_Def",
           "scale": 2.0,
           "duration": "20 seconds",
@@ -225,9 +265,9 @@
             "Heal_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Resistance",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Res_Dmg",
           "scale": 2.0,
           "duration": "20 seconds",
@@ -255,9 +295,9 @@
             "EnduranceDiscount"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Resistance",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Res_Dmg",
           "scale": -2.0,
           "duration": "20 seconds",

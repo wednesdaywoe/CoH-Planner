@@ -60,9 +60,9 @@
             "HitPoints"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Maximum",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Heal",
           "scale": 4.0,
           "duration": "120 seconds",
@@ -85,9 +85,9 @@
             "Toxic_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Resistance",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Res_Dmg",
           "scale": 2.0,
           "duration": "120 seconds",

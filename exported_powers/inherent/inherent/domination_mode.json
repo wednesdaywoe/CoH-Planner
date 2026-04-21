@@ -54,8 +54,8 @@
           "attribs": [
             "Set_Mode"
           ],
-          "type": "Magnitude",
-          "application_type": "Unknown",
+          "type": "Constant",
+          "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -71,7 +71,7 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "Individual",
-          "stack": "Unknown",
+          "stack": "Overlap",
           "stack_limit": 2,
           "stack_key": null
         },
@@ -80,9 +80,9 @@
             "Evade"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Melee_Ones",
           "scale": 1.0,
           "duration": "0.75 seconds",

@@ -50,6 +50,158 @@
   ],
   "effects": [
     {
+      "chance": 0.6600000262260437,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "enttype target> critter eq entref target> entref source> eq ! && kOffensiveAdaptation Source.Mode? ! &&",
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Sleep"
+          ],
+          "type": "Duration",
+          "application_type": "Immediate",
+          "aspect": "Current",
+          "target": "AnyAffected",
+          "table": "Melee_Stun",
+          "scale": 6.0,
+          "duration": "0 seconds",
+          "magnitude": 2.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "RefreshToCount",
+          "stack_limit": 1,
+          "stack_key": null
+        }
+      ]
+    },
+    {
+      "chance": 0.6600000262260437,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "enttype target> player eq entref target> entref source> eq ! && kOffensiveAdaptation Source.Mode? ! &&",
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Sleep"
+          ],
+          "type": "Duration",
+          "application_type": "Immediate",
+          "aspect": "Current",
+          "target": "AnyAffected",
+          "table": "Melee_PvPMez",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 2.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "RefreshToCount",
+          "stack_limit": 1,
+          "stack_key": null
+        }
+      ]
+    },
+    {
+      "chance": 0.8500000238418579,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "enttype target> critter eq entref target> entref source> eq ! && kOffensiveAdaptation Source.Mode? &&",
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Sleep"
+          ],
+          "type": "Duration",
+          "application_type": "Immediate",
+          "aspect": "Current",
+          "target": "AnyAffected",
+          "table": "Melee_Stun",
+          "scale": 6.0,
+          "duration": "0 seconds",
+          "magnitude": 2.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "RefreshToCount",
+          "stack_limit": 1,
+          "stack_key": null
+        }
+      ]
+    },
+    {
+      "chance": 0.8500000238418579,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "enttype target> player eq entref target> entref source> eq ! && kOffensiveAdaptation Source.Mode? &&",
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Sleep"
+          ],
+          "type": "Duration",
+          "application_type": "Immediate",
+          "aspect": "Current",
+          "target": "AnyAffected",
+          "table": "Melee_PvPMez",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 2.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "RefreshToCount",
+          "stack_limit": 1,
+          "stack_key": null
+        }
+      ]
+    },
+    {
       "chance": 1.0,
       "ppm": 0.0,
       "delay": 0.0,
@@ -65,7 +217,7 @@
             "Regeneration"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -105,7 +257,7 @@
             "Toxic_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Resistance",
           "target": "Self",
           "table": "Melee_Res_Dmg",
@@ -134,7 +286,7 @@
             "Psionic_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Resistance",
           "target": "Self",
           "table": "Melee_Res_Dmg",
@@ -179,9 +331,9 @@
             "Toxic_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Strength",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Melee_Debuff_Dam",
           "scale": 1.5,
           "duration": "5 seconds",
@@ -224,9 +376,9 @@
             "Toxic_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Strength",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Melee_Debuff_Dam",
           "scale": 1.995,
           "duration": "5 seconds",

@@ -20,7 +20,7 @@
   "activation_time": 1.93,
   "recharge_time": 20.0,
   "activate_period": 0.0,
-  "endurance_cost": 13.0,
+  "endurance_cost": 10.4,
   "interrupt_time": 0.0,
   "target_type": "Foe",
   "target_type_secondary": "None",
@@ -69,9 +69,9 @@
             "Toxic_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Strength",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Debuff_Dam",
           "scale": 2.0,
           "duration": "30 seconds",
@@ -94,7 +94,7 @@
             "Execute_Power"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -112,7 +112,13 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Redirects.Kinetics.SiphonPower"
+            ]
+          }
         }
       ]
     }

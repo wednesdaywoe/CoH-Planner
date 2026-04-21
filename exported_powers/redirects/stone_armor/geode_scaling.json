@@ -54,10 +54,10 @@
           "attribs": [
             "Taunt"
           ],
-          "type": "Magnitude",
+          "type": "Duration",
           "application_type": "Immediate",
           "aspect": "Absolute",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Melee_InherentTaunt",
           "scale": 1.0,
           "duration": "0 seconds",
@@ -87,7 +87,7 @@
             "Toxic_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Resistance",
           "target": "Self",
           "table": "Melee_Ones",
@@ -103,7 +103,7 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "Individual",
-          "stack": "Unknown",
+          "stack": "Continuous",
           "stack_limit": 2,
           "stack_key": null
         }

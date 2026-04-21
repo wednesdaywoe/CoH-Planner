@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Fallout",
   "display_fullname": "Defender Buff Radiation Emission Fallout",
-  "display_help": "RUX3NWQQPMENYLL5QGRN9VRJ6Q",
+  "display_help": "JQANXYRUK3E7YZNLXS26SZD3J2",
   "display_short_help": "Post-Defeat: PBAoE, Extreme DMG(Energy), Foe -To Hit, -DEF, -DMG, -Res(All)",
   "icon": "radiationpoisoning_fallout.png",
   "auto_issue": false,
@@ -63,9 +63,9 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": -1.0,
           "duration": "1 seconds",
@@ -81,16 +81,21 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "P536219010",
+            "priority_list": "P2158078059"
+          }
         },
         {
           "attribs": [
             "Null"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": 1.0,
           "duration": "0.50 seconds",

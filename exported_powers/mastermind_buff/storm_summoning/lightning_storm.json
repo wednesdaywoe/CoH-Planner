@@ -20,7 +20,7 @@
   "activation_time": 2.03,
   "recharge_time": 90.0,
   "activate_period": 0.0,
-  "endurance_cost": 39.0,
+  "endurance_cost": 31.2,
   "interrupt_time": 0.0,
   "target_type": "Self",
   "target_type_secondary": "None",
@@ -63,9 +63,9 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Level",
           "scale": 1.0,
           "duration": "60 seconds",
@@ -81,7 +81,12 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "Pets_LightningStorm_Controller",
+            "priority_list": "PL_Untargetable_SpawnFlying"
+          }
         }
       ]
     }

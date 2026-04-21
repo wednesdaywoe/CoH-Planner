@@ -60,7 +60,7 @@
             "ToHit"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Buff_ToHit",
@@ -86,7 +86,7 @@
             "EnduranceDiscount"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Strength",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -111,7 +111,7 @@
             "Recovery"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -136,7 +136,7 @@
             "Designer_Status"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -174,7 +174,7 @@
             "Designer_Status"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Ranged_Ones",

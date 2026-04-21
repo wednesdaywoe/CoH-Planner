@@ -62,9 +62,9 @@
             "Heal_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Absolute",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Melee_HealSelf",
           "scale": 1.0,
           "duration": "0 seconds",
@@ -87,9 +87,9 @@
             "Heal_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Absolute",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Melee_HealSelf",
           "scale": 0.05,
           "duration": "9.10 seconds",

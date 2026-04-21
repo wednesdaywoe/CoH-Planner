@@ -64,35 +64,35 @@
           "attribs": [
             "Lethal_Dmg"
           ],
-          "type": "Magnitude",
-          "application_type": "Unknown",
+          "type": "Expression",
+          "application_type": "Immediate",
           "aspect": "Absolute",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Damage",
           "scale": 0.3,
           "duration": "0 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
-          "duration_expression": "thColumnEndgame.NictusFX",
-          "magnitude_expression": "@Scale",
-          "application_period": 1.673319923518015e-39,
-          "tick_chance": 1.6733269300103365e-39,
-          "tick_mag_multiplier": 3.583960952357152e-40,
-          "tick_mag_additive": 1.215920690479287e-40,
-          "jit_requires": "+",
-          "caster_stack": "Unknown",
-          "stack": "Unknown",
-          "stack_limit": 1194189,
-          "stack_key": "*"
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null
         },
         {
           "attribs": [
             "Immobilized"
           ],
-          "type": "Magnitude",
+          "type": "Duration",
           "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Immobilize",
           "scale": 15.0,
           "duration": "0 seconds",
@@ -122,9 +122,9 @@
             "Toxic_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Strength",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Debuff_Dam",
           "scale": 2.0,
           "duration": "15 seconds",
@@ -160,9 +160,9 @@
             "Lethal_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Absolute",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_PvPDamage",
           "scale": 0.3944,
           "duration": "0 seconds",
@@ -197,10 +197,10 @@
           "attribs": [
             "Immobilized"
           ],
-          "type": "Magnitude",
+          "type": "Duration",
           "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_PvPMez",
           "scale": 1.0,
           "duration": "0 seconds",
@@ -223,9 +223,9 @@
             "EnduranceDiscount"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Strength",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": -0.3,
           "duration": "15 seconds",
@@ -251,6 +251,82 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
+      "requires_expression": "enttype target> critter eq",
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Immobilized"
+          ],
+          "type": "Duration",
+          "application_type": "Immediate",
+          "aspect": "Current",
+          "target": "AnyAffected",
+          "table": "Ranged_Immobilize",
+          "scale": 22.5,
+          "duration": "0 seconds",
+          "magnitude": 3.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "enttype target> player eq",
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Immobilized"
+          ],
+          "type": "Duration",
+          "application_type": "Immediate",
+          "aspect": "Current",
+          "target": "AnyAffected",
+          "table": "Ranged_PvPMez",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
       "requires_expression": "Temporary_Powers.Temporary_Powers.Wind_Control_Pressure source.ownPower?",
       "flags": [],
       "is_pvp": "EITHER",
@@ -261,9 +337,9 @@
             "Grant_Power"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Absolute",
-          "target": "AnyAffected",
+          "target": "SelfAndPets",
           "table": "Ranged_Ones",
           "scale": 1.0,
           "duration": "1.10 seconds",
@@ -279,14 +355,20 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Temporary_Powers.Temporary_Powers.Wind_Control_Pressure"
+            ]
+          }
         },
         {
           "attribs": [
             "Null"
           ],
-          "type": "Magnitude",
-          "application_type": "Unknown",
+          "type": "Constant",
+          "application_type": "Immediate",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -324,9 +406,9 @@
             "RechargeTime"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Strength",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Slow",
           "scale": 0.3,
           "duration": "15 seconds",
@@ -369,9 +451,9 @@
             "Toxic_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Strength",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Debuff_Dam",
           "scale": 2.0,
           "duration": "15 seconds",

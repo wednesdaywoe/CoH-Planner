@@ -55,9 +55,9 @@
             "Null"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Strength",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Melee_Ones",
           "scale": 0.0,
           "duration": "0.75 seconds",
@@ -74,6 +74,400 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "@CustomFX Ninja eq",
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 8,
+      "templates": [
+        {
+          "attribs": [
+            "Null"
+          ],
+          "type": "Constant",
+          "application_type": "Immediate",
+          "aspect": "Current",
+          "target": "Self",
+          "table": "Melee_Ones",
+          "scale": 1.0,
+          "duration": "0.75 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "@CustomFX Beast eq",
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 8,
+      "templates": [
+        {
+          "attribs": [
+            "Null"
+          ],
+          "type": "Constant",
+          "application_type": "Immediate",
+          "aspect": "Current",
+          "target": "Self",
+          "table": "Melee_Ones",
+          "scale": 1.0,
+          "duration": "0.75 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "@CustomFX Slide eq cur.kFly source> 0 <= &&",
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 8,
+      "templates": [
+        {
+          "attribs": [
+            "Null"
+          ],
+          "type": "Constant",
+          "application_type": "Immediate",
+          "aspect": "Current",
+          "target": "Self",
+          "table": "Melee_Ones",
+          "scale": 1.0,
+          "duration": "0.75 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "@CustomFX Parkour eq cur.kFly source> 0 <= &&",
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 8,
+      "templates": [
+        {
+          "attribs": [
+            "Null"
+          ],
+          "type": "Constant",
+          "application_type": "Immediate",
+          "aspect": "Current",
+          "target": "Self",
+          "table": "Melee_Ones",
+          "scale": 1.0,
+          "duration": "0.75 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "@CustomFX Blitz eq cur.kFly source> 0 <= &&",
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 8,
+      "templates": [
+        {
+          "attribs": [
+            "Null"
+          ],
+          "type": "Constant",
+          "application_type": "Immediate",
+          "aspect": "Current",
+          "target": "Self",
+          "table": "Melee_Ones",
+          "scale": 1.0,
+          "duration": "0.75 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null
+        }
+      ]
+    },
+    {
+      "chance": 0.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [],
+      "child_effects": [
+        {
+          "chance": 1.0,
+          "ppm": 0.0,
+          "delay": 0.0,
+          "radius_inner": -1.0,
+          "radius_outer": -1.0,
+          "requires_expression": "@CustomFX NinjaTravel eq",
+          "flags": [],
+          "is_pvp": "EITHER",
+          "eval_flags": 8,
+          "templates": [
+            {
+              "attribs": [
+                "Null"
+              ],
+              "type": "Constant",
+              "application_type": "Immediate",
+              "aspect": "Current",
+              "target": "Self",
+              "table": "Melee_Ones",
+              "scale": 1.0,
+              "duration": "0.75 seconds",
+              "magnitude": 1.0,
+              "delay": 0.0,
+              "duration_expression": "",
+              "magnitude_expression": "",
+              "application_period": 0.0,
+              "tick_chance": 1.0,
+              "tick_mag_multiplier": 1.0,
+              "tick_mag_additive": 0.0,
+              "jit_requires": "",
+              "caster_stack": "Individual",
+              "stack": "Replace",
+              "stack_limit": 2,
+              "stack_key": null
+            }
+          ]
+        },
+        {
+          "chance": 1.0,
+          "ppm": 0.0,
+          "delay": 0.0,
+          "radius_inner": -1.0,
+          "radius_outer": -1.0,
+          "requires_expression": "@CustomFX BeastTravel eq",
+          "flags": [],
+          "is_pvp": "EITHER",
+          "eval_flags": 8,
+          "templates": [
+            {
+              "attribs": [
+                "Null"
+              ],
+              "type": "Constant",
+              "application_type": "Immediate",
+              "aspect": "Current",
+              "target": "Self",
+              "table": "Melee_Ones",
+              "scale": 1.0,
+              "duration": "0.75 seconds",
+              "magnitude": 1.0,
+              "delay": 0.0,
+              "duration_expression": "",
+              "magnitude_expression": "",
+              "application_period": 0.0,
+              "tick_chance": 1.0,
+              "tick_mag_multiplier": 1.0,
+              "tick_mag_additive": 0.0,
+              "jit_requires": "",
+              "caster_stack": "Individual",
+              "stack": "Replace",
+              "stack_limit": 2,
+              "stack_key": null
+            }
+          ]
+        },
+        {
+          "chance": 1.0,
+          "ppm": 0.0,
+          "delay": 0.0,
+          "radius_inner": -1.0,
+          "radius_outer": -1.0,
+          "requires_expression": "@CustomFX SlideTravel eq cur.kFly source> 0 <= &&",
+          "flags": [],
+          "is_pvp": "EITHER",
+          "eval_flags": 8,
+          "templates": [
+            {
+              "attribs": [
+                "Null"
+              ],
+              "type": "Constant",
+              "application_type": "Immediate",
+              "aspect": "Current",
+              "target": "Self",
+              "table": "Melee_Ones",
+              "scale": 1.0,
+              "duration": "0.75 seconds",
+              "magnitude": 1.0,
+              "delay": 0.0,
+              "duration_expression": "",
+              "magnitude_expression": "",
+              "application_period": 0.0,
+              "tick_chance": 1.0,
+              "tick_mag_multiplier": 1.0,
+              "tick_mag_additive": 0.0,
+              "jit_requires": "",
+              "caster_stack": "Individual",
+              "stack": "Replace",
+              "stack_limit": 2,
+              "stack_key": null
+            }
+          ]
+        },
+        {
+          "chance": 1.0,
+          "ppm": 0.0,
+          "delay": 0.0,
+          "radius_inner": -1.0,
+          "radius_outer": -1.0,
+          "requires_expression": "@CustomFX ParkourTravel eq cur.kFly source> 0 <= &&",
+          "flags": [],
+          "is_pvp": "EITHER",
+          "eval_flags": 8,
+          "templates": [
+            {
+              "attribs": [
+                "Null"
+              ],
+              "type": "Constant",
+              "application_type": "Immediate",
+              "aspect": "Current",
+              "target": "Self",
+              "table": "Melee_Ones",
+              "scale": 1.0,
+              "duration": "0.75 seconds",
+              "magnitude": 1.0,
+              "delay": 0.0,
+              "duration_expression": "",
+              "magnitude_expression": "",
+              "application_period": 0.0,
+              "tick_chance": 1.0,
+              "tick_mag_multiplier": 1.0,
+              "tick_mag_additive": 0.0,
+              "jit_requires": "",
+              "caster_stack": "Individual",
+              "stack": "Replace",
+              "stack_limit": 2,
+              "stack_key": null
+            }
+          ]
+        },
+        {
+          "chance": 1.0,
+          "ppm": 0.0,
+          "delay": 0.0,
+          "radius_inner": -1.0,
+          "radius_outer": -1.0,
+          "requires_expression": "@CustomFX BlitzTravel eq cur.kFly source> 0 <= &&",
+          "flags": [],
+          "is_pvp": "EITHER",
+          "eval_flags": 8,
+          "templates": [
+            {
+              "attribs": [
+                "Null"
+              ],
+              "type": "Constant",
+              "application_type": "Immediate",
+              "aspect": "Current",
+              "target": "Self",
+              "table": "Melee_Ones",
+              "scale": 1.0,
+              "duration": "0.75 seconds",
+              "magnitude": 1.0,
+              "delay": 0.0,
+              "duration_expression": "",
+              "magnitude_expression": "",
+              "application_period": 0.0,
+              "tick_chance": 1.0,
+              "tick_mag_multiplier": 1.0,
+              "tick_mag_additive": 0.0,
+              "jit_requires": "",
+              "caster_stack": "Individual",
+              "stack": "Replace",
+              "stack_limit": 2,
+              "stack_key": null
+            }
+          ]
         }
       ]
     }

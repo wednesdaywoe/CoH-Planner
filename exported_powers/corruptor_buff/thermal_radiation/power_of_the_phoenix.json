@@ -15,12 +15,12 @@
   "max_targets_hit": 0,
   "radius": 0.0,
   "arc": 0.0,
-  "range": 15.0,
+  "range": 60.0,
   "range_secondary": 0.0,
   "activation_time": 1.67,
   "recharge_time": 300.0,
   "activate_period": 0.0,
-  "endurance_cost": 49.4,
+  "endurance_cost": 10.4,
   "interrupt_time": 0.0,
   "target_type": "DeadPlayerFriend",
   "target_type_secondary": "None",
@@ -62,9 +62,9 @@
             "Heal_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Absolute",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_HealSelf",
           "scale": 7.0,
           "duration": "0.50 seconds",
@@ -87,9 +87,9 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": -1.0,
           "duration": "5 seconds",
@@ -105,16 +105,21 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "P297828065",
+            "priority_list": "P2874174058"
+          }
         },
         {
           "attribs": [
             "Untouchable"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": 10.0,
           "duration": "15 seconds",
@@ -137,9 +142,9 @@
             "Set_Mode"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Absolute",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": 1.0,
           "duration": "90 seconds",
@@ -162,9 +167,9 @@
             "Endurance"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Absolute",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": 70.0,
           "duration": "0 seconds",
@@ -179,6 +184,46 @@
           "jit_requires": "",
           "caster_stack": "Individual",
           "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "flags": [
+        "PVEOnly"
+      ],
+      "is_pvp": "PVE_ONLY",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "StealthRadius_PVE"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Current",
+          "target": "Self",
+          "table": "Melee_Ones",
+          "scale": 300.0,
+          "duration": "15 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null
         }

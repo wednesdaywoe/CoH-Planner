@@ -58,8 +58,8 @@
           "attribs": [
             "Absorb"
           ],
-          "type": "Magnitude",
-          "application_type": "Unknown",
+          "type": "Expression",
+          "application_type": "Immediate",
           "aspect": "Maximum",
           "target": "Self",
           "table": "Melee_Ones",
@@ -67,16 +67,16 @@
           "duration": "30 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
-          "duration_expression": "lumn.5thColumnEndgame.NictusFX",
-          "magnitude_expression": "Max.kHitPoints",
-          "application_period": 9.002081464669057e-41,
-          "tick_chance": 1.2924175736467788e-40,
-          "tick_mag_multiplier": 1.215920690479287e-40,
-          "tick_mag_additive": 1.624104920152463e-40,
-          "jit_requires": "*",
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
           "caster_stack": "Individual",
-          "stack": "Stack",
-          "stack_limit": 1065353216,
+          "stack": "Replace",
+          "stack_limit": 2,
           "stack_key": null
         }
       ]

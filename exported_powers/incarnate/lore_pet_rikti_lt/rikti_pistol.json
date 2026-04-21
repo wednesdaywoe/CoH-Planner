@@ -64,9 +64,9 @@
             "Energy_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Absolute",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Damage",
           "scale": 1.32,
           "duration": "0 seconds",
@@ -101,10 +101,10 @@
           "attribs": [
             "Stunned"
           ],
-          "type": "Magnitude",
+          "type": "Duration",
           "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Stun",
           "scale": 5.0,
           "duration": "0 seconds",
@@ -139,10 +139,10 @@
           "attribs": [
             "Stunned"
           ],
-          "type": "Magnitude",
+          "type": "Duration",
           "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_PvPMez",
           "scale": 1.0,
           "duration": "0 seconds",

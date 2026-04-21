@@ -65,9 +65,9 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Melee_Level",
           "scale": 1.0,
           "duration": "60 seconds",
@@ -83,7 +83,18 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "PL_StaticObject",
+            "display_name": "Tear Gas",
+            "redirects": [
+              "Redirects.Assault_Rifle.Tear_Gas",
+              "Redirects.Assault_Rifle.Tear_Gas_Debuff",
+              "Redirects.Assault_Rifle.Tear_Gas_OneShot",
+              "Pets.ResistAll.ResistAll"
+            ]
+          }
         }
       ]
     }

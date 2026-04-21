@@ -62,7 +62,7 @@
             "Grant_Power"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Melee_Ones",
@@ -80,16 +80,22 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Incarnate.Hybrid_Silent.Doublehit_Uncommon"
+            ]
+          }
         },
         {
           "attribs": [
             "Grant_Power"
           ],
-          "type": "Constant",
-          "application_type": "OnTick",
+          "type": "Magnitude",
+          "application_type": "OnActivate",
           "aspect": "Absolute",
-          "target": "AnyAffected",
+          "target": "SelfAndPets",
           "table": "Melee_Ones",
           "scale": 1.0,
           "duration": "0 seconds",
@@ -105,14 +111,20 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Incarnate.Hybrid_Silent.Doublehit_Uncommon"
+            ]
+          }
         },
         {
           "attribs": [
             "Grant_Power"
           ],
-          "type": "Unknown",
-          "application_type": "OnTick",
+          "type": "Magnitude",
+          "application_type": "OnEnable",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Melee_Ones",
@@ -130,16 +142,22 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Incarnate.Hybrid_Silent.Assault_Boost_Uncommon"
+            ]
+          }
         },
         {
           "attribs": [
             "Grant_Power"
           ],
-          "type": "Unknown",
-          "application_type": "OnTick",
+          "type": "Magnitude",
+          "application_type": "OnDisable",
           "aspect": "Absolute",
-          "target": "AnyAffected",
+          "target": "SelfAndPets",
           "table": "Melee_Ones",
           "scale": 1.0,
           "duration": "0 seconds",
@@ -155,7 +173,13 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Incarnate.Hybrid_Silent.Assault_Boost_Uncommon"
+            ]
+          }
         }
       ]
     }

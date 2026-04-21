@@ -65,9 +65,9 @@
             "Energy_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Absolute",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Tempdamage",
           "scale": 2.0,
           "duration": "0 seconds",
@@ -90,9 +90,9 @@
             "Recovery"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": -0.5,
           "duration": "10 seconds",
@@ -128,9 +128,9 @@
             "Energy_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Absolute",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Tempdamage",
           "scale": 0.75,
           "duration": "0 seconds",
@@ -165,14 +165,14 @@
           "attribs": [
             "Set_Mode"
           ],
-          "type": "Magnitude",
-          "application_type": "Unknown",
+          "type": "Constant",
+          "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": 1.0,
           "duration": "4 seconds",
-          "magnitude": 73.0,
+          "magnitude": 75.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -191,9 +191,9 @@
             "Null"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": 1.0,
           "duration": "2 seconds",
@@ -216,9 +216,9 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": -1.0,
           "duration": "1 seconds",
@@ -234,7 +234,12 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "IncarnatePets_Ion_Partial_Core_Verdict_Jump1",
+            "priority_list": "PL_Untargetable_FightPreferRanged"
+          }
         }
       ]
     },
@@ -254,9 +259,9 @@
             "Endurance"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": -0.175,
           "duration": "0 seconds",
@@ -292,9 +297,9 @@
             "Endurance"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Absolute",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": -5.0,
           "duration": "0 seconds",

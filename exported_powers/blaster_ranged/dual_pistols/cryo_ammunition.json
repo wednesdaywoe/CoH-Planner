@@ -57,7 +57,7 @@
             "Global_Chance_Mod"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -82,7 +82,7 @@
             "Global_Chance_Mod"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -107,7 +107,7 @@
             "Global_Chance_Mod"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -132,7 +132,7 @@
             "Global_Chance_Mod"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -157,7 +157,7 @@
             "Global_Chance_Mod"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -182,7 +182,7 @@
             "Global_Chance_Mod"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -207,7 +207,7 @@
             "Global_Chance_Mod"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -232,7 +232,7 @@
             "Global_Chance_Mod"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -257,7 +257,7 @@
             "Global_Chance_Mod"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -282,7 +282,7 @@
             "Global_Chance_Mod"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -307,7 +307,7 @@
             "Global_Chance_Mod"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -332,7 +332,7 @@
             "Global_Chance_Mod"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -357,7 +357,7 @@
             "Global_Chance_Mod"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -381,14 +381,14 @@
           "attribs": [
             "Set_Mode"
           ],
-          "type": "Magnitude",
-          "application_type": "Unknown",
+          "type": "Constant",
+          "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
           "scale": 1.0,
           "duration": "0.75 seconds",
-          "magnitude": 88.0,
+          "magnitude": 90.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",

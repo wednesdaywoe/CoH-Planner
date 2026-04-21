@@ -66,9 +66,9 @@
             "Jump Pack"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": -1.6,
           "duration": "16 seconds",
@@ -92,9 +92,9 @@
             "JumpHeight"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Maximum",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Slow",
           "scale": 1.0,
           "duration": "16 seconds",
@@ -108,7 +108,7 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "Unlimited",
-          "stack": "Unknown",
+          "stack": "Suppress",
           "stack_limit": 2,
           "stack_key": "ctusFX"
         },
@@ -117,7 +117,7 @@
             "Range"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Strength",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -154,26 +154,26 @@
           "attribs": [
             "Smashing_Dmg"
           ],
-          "type": "Magnitude",
-          "application_type": "Unknown",
+          "type": "Expression",
+          "application_type": "Immediate",
           "aspect": "Absolute",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Damage",
           "scale": 2.28,
           "duration": "0 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
-          "duration_expression": "olumnEndgame.NictusFX",
-          "magnitude_expression": "cur.kToHit",
-          "application_period": 9.002081464669057e-41,
-          "tick_chance": 2.4215446398427153e-39,
-          "tick_mag_multiplier": 1.215640430786422e-40,
-          "tick_mag_additive": 3.263895975314578e-39,
-          "jit_requires": "/",
-          "caster_stack": "Unknown",
-          "stack": "Unknown",
-          "stack_limit": 211401,
-          "stack_key": "0.210526316"
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null
         }
       ]
     },
@@ -193,9 +193,9 @@
             "Smashing_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Absolute",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_PvPDamage",
           "scale": 2.049,
           "duration": "0 seconds",
@@ -212,6 +212,189 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": []
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "NearGround source.EventTimeSince> 1 >=",
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Recharge_Power"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
+          "table": "Melee_Ones",
+          "scale": -1.0,
+          "duration": "0 seconds",
+          "magnitude": 0.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Blaster_Ranged.Seismic_Blast.Encase",
+              "Blaster_Ranged.Seismic_Blast.Entomb",
+              "Blaster_Ranged.Seismic_Blast.Meteor",
+              "Blaster_Ranged.Seismic_Blast.Rock_Shards",
+              "Blaster_Ranged.Seismic_Blast.Shatter",
+              "Blaster_Ranged.Seismic_Blast.Stalagmite",
+              "Blaster_Ranged.Seismic_Blast.Upthrust"
+            ]
+          }
+        }
+      ],
+      "child_effects": [
+        {
+          "chance": 0.0,
+          "ppm": 0.0,
+          "delay": 0.0,
+          "radius_inner": -1.0,
+          "radius_outer": -1.0,
+          "requires_expression": "",
+          "flags": [],
+          "is_pvp": "EITHER",
+          "eval_flags": 0,
+          "templates": [
+            {
+              "attribs": [
+                "Execute_Power"
+              ],
+              "type": "Magnitude",
+              "application_type": "Immediate",
+              "aspect": "Current",
+              "target": "AnyAffected",
+              "table": "Melee_Ones",
+              "scale": 0.0,
+              "duration": "0 seconds",
+              "magnitude": 0.0,
+              "delay": 0.0,
+              "duration_expression": "",
+              "magnitude_expression": "",
+              "application_period": 0.0,
+              "tick_chance": 1.0,
+              "tick_mag_multiplier": 1.0,
+              "tick_mag_additive": 0.0,
+              "jit_requires": "",
+              "caster_stack": "Individual",
+              "stack": "Stack",
+              "stack_limit": 2,
+              "stack_key": null,
+              "params": {
+                "type": "Power",
+                "power_names": [
+                  "Redirects.Seismic_Blast.Seismic_Stress_Release"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "chance": 1.0,
+          "ppm": 0.0,
+          "delay": 0.0,
+          "radius_inner": -1.0,
+          "radius_outer": -1.0,
+          "requires_expression": "",
+          "flags": [],
+          "is_pvp": "EITHER",
+          "eval_flags": 0,
+          "templates": [
+            {
+              "attribs": [
+                "Execute_Power"
+              ],
+              "type": "Magnitude",
+              "application_type": "Immediate",
+              "aspect": "Current",
+              "target": "AnyAffected",
+              "table": "Melee_Ones",
+              "scale": 0.0,
+              "duration": "0 seconds",
+              "magnitude": 0.0,
+              "delay": 0.0,
+              "duration_expression": "",
+              "magnitude_expression": "",
+              "application_period": 0.0,
+              "tick_chance": 1.0,
+              "tick_mag_multiplier": 1.0,
+              "tick_mag_additive": 0.0,
+              "jit_requires": "",
+              "caster_stack": "Individual",
+              "stack": "Stack",
+              "stack_limit": 2,
+              "stack_key": null,
+              "params": {
+                "type": "Power",
+                "power_names": [
+                  "Redirects.Seismic_Blast.Seismic_Stress"
+                ]
+              }
+            },
+            {
+              "attribs": [
+                "Execute_Power"
+              ],
+              "type": "Magnitude",
+              "application_type": "Immediate",
+              "aspect": "Current",
+              "target": "AnyAffected",
+              "table": "Melee_Ones",
+              "scale": 0.0,
+              "duration": "0 seconds",
+              "magnitude": 0.0,
+              "delay": 0.0,
+              "duration_expression": "",
+              "magnitude_expression": "",
+              "application_period": 0.0,
+              "tick_chance": 1.0,
+              "tick_mag_multiplier": 1.0,
+              "tick_mag_additive": 0.0,
+              "jit_requires": "",
+              "caster_stack": "Individual",
+              "stack": "Stack",
+              "stack_limit": 2,
+              "stack_key": null,
+              "params": {
+                "type": "Power",
+                "power_names": [
+                  "Redirects.Seismic_Blast.Seismic_Stress"
+                ]
+              }
+            }
+          ]
         }
       ]
     }

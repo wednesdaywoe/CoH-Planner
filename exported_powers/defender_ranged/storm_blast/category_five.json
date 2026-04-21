@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "NWM8XM8EG8T7YSCD76QFWG4NP3",
   "display_fullname": "Defender Ranged Storm Blast Category Five",
-  "display_help": "UY3AWS7Y72DQYFNLZS5MSQMQ83",
+  "display_help": "49XJNKLZD2TAW4CDENYHLF4A7X",
   "display_short_help": "KCW79JPHRBZEYXMATV2E7X3F5Z",
   "icon": "stormblast_categoryfive.png",
   "auto_issue": false,
@@ -62,12 +62,12 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Level",
           "scale": 1.0,
-          "duration": "30 seconds",
+          "duration": "20 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -80,19 +80,28 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "PL_StaticObject",
+            "display_name": "Category Five",
+            "redirects": [
+              "Pets.ResistAll_NoFly.ResistAll",
+              "Redirects.Storm_Blast.Category_Five"
+            ]
+          }
         },
         {
           "attribs": [
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Level",
           "scale": 1.0,
-          "duration": "25 seconds",
+          "duration": "17 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -105,7 +114,62 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "PL_StaticObject",
+            "display_name": "Category Five Eye",
+            "redirects": [
+              "Pets.ResistAll_NoFly.ResistAll",
+              "Redirects.Storm_Blast.Nukenado_Skin",
+              "Redirects.Storm_Blast.Nukenado_Pulse",
+              "Redirects.Storm_Blast.Nukenado_SelfDestruct"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Grant_Power"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Absolute",
+          "target": "Self",
+          "table": "Ranged_Ones",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Temporary_Powers.Temporary_Powers.StormBlast_StormBrewing"
+            ]
+          }
         }
       ]
     }

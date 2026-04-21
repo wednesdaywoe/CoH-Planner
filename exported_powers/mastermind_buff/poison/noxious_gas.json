@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Noxious Gas",
   "display_fullname": "Mastermind Buff Poison Noxious Gas",
-  "display_help": "NZNPH85YVTT9WLXTAX6JRFC3NW",
+  "display_help": "VPMR3K9KM76HYQCXGH3Y2QGJKS",
   "display_short_help": "Ranged (Infect Henchman); Foe -RES, -DEF, -To Hit, -Res, +Special",
   "icon": "poison_noxiousgas.png",
   "auto_issue": false,
@@ -59,9 +59,9 @@
             "Grant_Power"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Absolute",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": 1.0,
           "duration": "0 seconds",
@@ -77,7 +77,13 @@
           "caster_stack": "Individual",
           "stack": "Ignore",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Villain_Pets.Noxious_Gas.Noxious_Gas"
+            ]
+          }
         }
       ]
     }

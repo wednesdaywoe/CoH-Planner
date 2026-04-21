@@ -66,9 +66,9 @@
             "Cold_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Absolute",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Melee_Damage",
           "scale": 0.45,
           "duration": "0 seconds",
@@ -91,9 +91,9 @@
             "Negative_Energy_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Absolute",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Melee_Damage",
           "scale": 0.25,
           "duration": "0 seconds",
@@ -117,9 +117,9 @@
             "Negative_Energy_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Resistance",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Melee_Res_Dmg",
           "scale": -1.0,
           "duration": "7 seconds",
@@ -154,10 +154,10 @@
           "attribs": [
             "Terrorized"
           ],
-          "type": "Magnitude",
+          "type": "Duration",
           "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Melee_PvPMez",
           "scale": 1.0,
           "duration": "0 seconds",
@@ -192,10 +192,10 @@
           "attribs": [
             "Terrorized"
           ],
-          "type": "Magnitude",
+          "type": "Duration",
           "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Melee_Ones",
           "scale": 3.0,
           "duration": "0 seconds",

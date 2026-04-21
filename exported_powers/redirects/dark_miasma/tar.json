@@ -60,9 +60,9 @@
             "RunningSpeed"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Slow",
           "scale": 0.72,
           "duration": "0.50 seconds",
@@ -76,7 +76,7 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "Individual",
-          "stack": "Unknown",
+          "stack": "Continuous",
           "stack_limit": 2,
           "stack_key": null
         },
@@ -85,9 +85,9 @@
             "JumpHeight"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": -500.0,
           "duration": "0.50 seconds",
@@ -101,7 +101,7 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "Individual",
-          "stack": "Unknown",
+          "stack": "Continuous",
           "stack_limit": 2,
           "stack_key": null
         },
@@ -110,9 +110,9 @@
             "Fly"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": -10.0,
           "duration": "0.50 seconds",
@@ -126,7 +126,7 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "Individual",
-          "stack": "Unknown",
+          "stack": "Continuous",
           "stack_limit": 2,
           "stack_key": null
         },
@@ -142,9 +142,9 @@
             "Toxic_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Resistance",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Debuff_Res_Dmg",
           "scale": -3.0,
           "duration": "0.50 seconds",
@@ -158,7 +158,7 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "Individual",
-          "stack": "Unknown",
+          "stack": "Continuous",
           "stack_limit": 2,
           "stack_key": null
         },
@@ -167,9 +167,9 @@
             "Null"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": 0.0,
           "duration": "0.50 seconds",
@@ -183,7 +183,7 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "Individual",
-          "stack": "Unknown",
+          "stack": "Continuous",
           "stack_limit": 2,
           "stack_key": null
         }
@@ -205,9 +205,9 @@
             "RunningSpeed"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Maximum",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_SpeedRunning",
           "scale": -1.0,
           "duration": "0.50 seconds",
@@ -221,7 +221,7 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "Individual",
-          "stack": "Unknown",
+          "stack": "Continuous",
           "stack_limit": 2,
           "stack_key": null
         }

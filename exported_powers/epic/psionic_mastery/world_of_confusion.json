@@ -13,14 +13,14 @@
   "accuracy": 1.0,
   "effect_area": "Sphere",
   "max_targets_hit": 10,
-  "radius": 8.0,
+  "radius": 12.0,
   "arc": 0.0,
   "range": 0.0,
   "range_secondary": 0.0,
   "activation_time": 1.67,
   "recharge_time": 15.0,
   "activate_period": 4.0,
-  "endurance_cost": 0.65,
+  "endurance_cost": 0.52,
   "interrupt_time": 0.0,
   "target_type": "Self",
   "target_type_secondary": "None",
@@ -62,10 +62,10 @@
           "attribs": [
             "Confused"
           ],
-          "type": "Magnitude",
+          "type": "Duration",
           "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_PvPMez",
           "scale": 1.0,
           "duration": "0 seconds",
@@ -79,7 +79,7 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "Individual",
-          "stack": "Unknown",
+          "stack": "RefreshToCount",
           "stack_limit": 1,
           "stack_key": null
         }
@@ -100,10 +100,10 @@
           "attribs": [
             "Confused"
           ],
-          "type": "Magnitude",
+          "type": "Duration",
           "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": 1.5,
           "duration": "0 seconds",
@@ -117,7 +117,45 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "Individual",
-          "stack": "Unknown",
+          "stack": "RefreshToCount",
+          "stack_limit": 1,
+          "stack_key": null
+        }
+      ]
+    },
+    {
+      "chance": 0.20000000298023224,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "@ToHitRoll 0.25 + @ToHit < enttype target> player eq &&",
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 2,
+      "templates": [
+        {
+          "attribs": [
+            "Confused"
+          ],
+          "type": "Duration",
+          "application_type": "Immediate",
+          "aspect": "Current",
+          "target": "AnyAffected",
+          "table": "Ranged_PvPMez",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "RefreshToCount",
           "stack_limit": 1,
           "stack_key": null
         }
@@ -128,7 +166,7 @@
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
-      "radius_outer": -1.0,
+      "radius_outer": 8.0,
       "requires_expression": "",
       "flags": [],
       "is_pvp": "EITHER",
@@ -139,9 +177,9 @@
             "Psionic_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Absolute",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Damage",
           "scale": 0.12,
           "duration": "0 seconds",
@@ -157,6 +195,44 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
+          "stack_key": null
+        }
+      ]
+    },
+    {
+      "chance": 0.20000000298023224,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "@ToHitRoll 0.25 + @ToHit < enttype target> critter eq &&",
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 2,
+      "templates": [
+        {
+          "attribs": [
+            "Confused"
+          ],
+          "type": "Duration",
+          "application_type": "Immediate",
+          "aspect": "Current",
+          "target": "AnyAffected",
+          "table": "Ranged_Ones",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "RefreshToCount",
+          "stack_limit": 1,
           "stack_key": null
         }
       ]

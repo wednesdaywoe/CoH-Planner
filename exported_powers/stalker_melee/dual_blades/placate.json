@@ -46,76 +46,293 @@
     {
       "chance": 1.0,
       "ppm": 0.0,
-      "delay": 0.05000000074505806,
+      "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "enttype target> critter eq",
+      "requires_expression": "",
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
-      "templates": [
+      "templates": [],
+      "child_effects": [
         {
-          "attribs": [
-            "Placate"
-          ],
-          "type": "Magnitude",
-          "application_type": "Immediate",
-          "aspect": "Absolute",
-          "target": "Unknown",
-          "table": "Melee_Taunt",
-          "scale": 10.0,
-          "duration": "0 seconds",
-          "magnitude": 4.0,
-          "delay": 0.0,
-          "duration_expression": "",
-          "magnitude_expression": "",
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": "",
-          "caster_stack": "Individual",
-          "stack": "Stack",
-          "stack_limit": 2,
-          "stack_key": null
-        }
-      ]
-    },
-    {
-      "chance": 1.0,
-      "ppm": 0.0,
-      "delay": 0.05000000074505806,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
-      "requires_expression": "enttype target> player eq",
-      "flags": [],
-      "is_pvp": "EITHER",
-      "eval_flags": 0,
-      "templates": [
+          "chance": 1.0,
+          "ppm": 0.0,
+          "delay": 0.05000000074505806,
+          "radius_inner": -1.0,
+          "radius_outer": -1.0,
+          "requires_expression": "enttype target> critter eq",
+          "flags": [],
+          "is_pvp": "EITHER",
+          "eval_flags": 0,
+          "templates": [
+            {
+              "attribs": [
+                "Placate"
+              ],
+              "type": "Duration",
+              "application_type": "Immediate",
+              "aspect": "Absolute",
+              "target": "AnyAffected",
+              "table": "Melee_Taunt",
+              "scale": 10.0,
+              "duration": "0 seconds",
+              "magnitude": 4.0,
+              "delay": 0.0,
+              "duration_expression": "",
+              "magnitude_expression": "",
+              "application_period": 0.0,
+              "tick_chance": 1.0,
+              "tick_mag_multiplier": 1.0,
+              "tick_mag_additive": 0.0,
+              "jit_requires": "",
+              "caster_stack": "Individual",
+              "stack": "Stack",
+              "stack_limit": 2,
+              "stack_key": null
+            }
+          ]
+        },
         {
-          "attribs": [
-            "Placate"
+          "chance": 1.0,
+          "ppm": 0.0,
+          "delay": 0.05000000074505806,
+          "radius_inner": -1.0,
+          "radius_outer": -1.0,
+          "requires_expression": "enttype target> player eq",
+          "flags": [],
+          "is_pvp": "EITHER",
+          "eval_flags": 0,
+          "templates": [
+            {
+              "attribs": [
+                "Placate"
+              ],
+              "type": "Duration",
+              "application_type": "Immediate",
+              "aspect": "Absolute",
+              "target": "AnyAffected",
+              "table": "Melee_Taunt",
+              "scale": 6.0,
+              "duration": "0 seconds",
+              "magnitude": 4.0,
+              "delay": 0.0,
+              "duration_expression": "",
+              "magnitude_expression": "",
+              "application_period": 0.0,
+              "tick_chance": 1.0,
+              "tick_mag_multiplier": 1.0,
+              "tick_mag_additive": 0.0,
+              "jit_requires": "",
+              "caster_stack": "Individual",
+              "stack": "Stack",
+              "stack_limit": 2,
+              "stack_key": null
+            }
+          ]
+        },
+        {
+          "chance": 1.0,
+          "ppm": 0.0,
+          "delay": 0.05000000074505806,
+          "radius_inner": -1.0,
+          "radius_outer": -1.0,
+          "requires_expression": "",
+          "flags": [],
+          "is_pvp": "EITHER",
+          "eval_flags": 0,
+          "templates": [
+            {
+              "attribs": [
+                "StealthRadius_PVE"
+              ],
+              "type": "Magnitude",
+              "application_type": "Immediate",
+              "aspect": "Current",
+              "target": "Self",
+              "table": "Melee_Ones",
+              "scale": 150.0,
+              "duration": "10 seconds",
+              "magnitude": 1.0,
+              "delay": 0.0,
+              "duration_expression": "",
+              "magnitude_expression": "",
+              "application_period": 0.0,
+              "tick_chance": 1.0,
+              "tick_mag_multiplier": 1.0,
+              "tick_mag_additive": 0.0,
+              "jit_requires": "",
+              "caster_stack": "Individual",
+              "stack": "Replace",
+              "stack_limit": 2,
+              "stack_key": null
+            },
+            {
+              "attribs": [
+                "StealthRadius_PVP"
+              ],
+              "type": "Magnitude",
+              "application_type": "Immediate",
+              "aspect": "Current",
+              "target": "Self",
+              "table": "Melee_Ones",
+              "scale": 380.0,
+              "duration": "10 seconds",
+              "magnitude": 1.0,
+              "delay": 0.0,
+              "duration_expression": "",
+              "magnitude_expression": "",
+              "application_period": 0.0,
+              "tick_chance": 1.0,
+              "tick_mag_multiplier": 1.0,
+              "tick_mag_additive": 0.0,
+              "jit_requires": "",
+              "caster_stack": "Individual",
+              "stack": "Replace",
+              "stack_limit": 2,
+              "stack_key": null
+            },
+            {
+              "attribs": [
+                "Meter"
+              ],
+              "type": "Magnitude",
+              "application_type": "Immediate",
+              "aspect": "Current",
+              "target": "Self",
+              "table": "Melee_Ones",
+              "scale": 1.0,
+              "duration": "10 seconds",
+              "magnitude": 1.0,
+              "delay": 0.0,
+              "duration_expression": "",
+              "magnitude_expression": "",
+              "application_period": 0.0,
+              "tick_chance": 1.0,
+              "tick_mag_multiplier": 1.0,
+              "tick_mag_additive": 0.0,
+              "jit_requires": "",
+              "caster_stack": "Individual",
+              "stack": "Replace",
+              "stack_limit": 2,
+              "stack_key": null
+            },
+            {
+              "attribs": [
+                "Create_Entity"
+              ],
+              "type": "Magnitude",
+              "application_type": "Immediate",
+              "aspect": "Current",
+              "target": "Self",
+              "table": "Melee_Ones",
+              "scale": 0.2,
+              "duration": "10 seconds",
+              "magnitude": 1.0,
+              "delay": 0.0,
+              "duration_expression": "",
+              "magnitude_expression": "",
+              "application_period": 0.0,
+              "tick_chance": 1.0,
+              "tick_mag_multiplier": 1.0,
+              "tick_mag_additive": 0.0,
+              "jit_requires": "",
+              "caster_stack": "Individual",
+              "stack": "Replace",
+              "stack_limit": 2,
+              "stack_key": null
+            },
+            {
+              "attribs": [
+                "Set_Mode"
+              ],
+              "type": "Constant",
+              "application_type": "Immediate",
+              "aspect": "Current",
+              "target": "Self",
+              "table": "Melee_Ones",
+              "scale": 1.0,
+              "duration": "10 seconds",
+              "magnitude": 71.0,
+              "delay": 0.0,
+              "duration_expression": "",
+              "magnitude_expression": "",
+              "application_period": 0.0,
+              "tick_chance": 1.0,
+              "tick_mag_multiplier": 1.0,
+              "tick_mag_additive": 0.0,
+              "jit_requires": "",
+              "caster_stack": "Individual",
+              "stack": "Replace",
+              "stack_limit": 2,
+              "stack_key": null
+            }
           ],
-          "type": "Magnitude",
-          "application_type": "Immediate",
-          "aspect": "Absolute",
-          "target": "Unknown",
-          "table": "Melee_Taunt",
-          "scale": 6.0,
-          "duration": "0 seconds",
-          "magnitude": 4.0,
-          "delay": 0.0,
-          "duration_expression": "",
-          "magnitude_expression": "",
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": "",
-          "caster_stack": "Individual",
-          "stack": "Stack",
-          "stack_limit": 2,
-          "stack_key": null
+          "child_effects": [
+            {
+              "chance": 1.0,
+              "ppm": 0.0,
+              "delay": 0.0,
+              "radius_inner": -1.0,
+              "radius_outer": -1.0,
+              "requires_expression": "",
+              "flags": [],
+              "is_pvp": "EITHER",
+              "eval_flags": 0,
+              "templates": [
+                {
+                  "attribs": [
+                    "Meter"
+                  ],
+                  "type": "Magnitude",
+                  "application_type": "Immediate",
+                  "aspect": "Current",
+                  "target": "Self",
+                  "table": "Melee_Ones",
+                  "scale": 1.0,
+                  "duration": "5 seconds",
+                  "magnitude": 1.0,
+                  "delay": 0.0,
+                  "duration_expression": "",
+                  "magnitude_expression": "",
+                  "application_period": 0.0,
+                  "tick_chance": 1.0,
+                  "tick_mag_multiplier": 1.0,
+                  "tick_mag_additive": 0.0,
+                  "jit_requires": "",
+                  "caster_stack": "Individual",
+                  "stack": "Replace",
+                  "stack_limit": 2,
+                  "stack_key": null
+                },
+                {
+                  "attribs": [
+                    "Set_Mode"
+                  ],
+                  "type": "Constant",
+                  "application_type": "Immediate",
+                  "aspect": "Current",
+                  "target": "Self",
+                  "table": "Melee_Ones",
+                  "scale": 1.0,
+                  "duration": "5 seconds",
+                  "magnitude": 71.0,
+                  "delay": 0.0,
+                  "duration_expression": "",
+                  "magnitude_expression": "",
+                  "application_period": 0.0,
+                  "tick_chance": 1.0,
+                  "tick_mag_multiplier": 1.0,
+                  "tick_mag_additive": 0.0,
+                  "jit_requires": "",
+                  "caster_stack": "Individual",
+                  "stack": "Replace",
+                  "stack_limit": 2,
+                  "stack_key": null
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -132,110 +349,10 @@
       "templates": [
         {
           "attribs": [
-            "StealthRadius_PVE"
-          ],
-          "type": "Magnitude",
-          "application_type": "OnTick",
-          "aspect": "Current",
-          "target": "Self",
-          "table": "Melee_Ones",
-          "scale": 150.0,
-          "duration": "10 seconds",
-          "magnitude": 1.0,
-          "delay": 0.0,
-          "duration_expression": "",
-          "magnitude_expression": "",
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": "",
-          "caster_stack": "Individual",
-          "stack": "Replace",
-          "stack_limit": 2,
-          "stack_key": null
-        },
-        {
-          "attribs": [
-            "StealthRadius_PVP"
-          ],
-          "type": "Magnitude",
-          "application_type": "OnTick",
-          "aspect": "Current",
-          "target": "Self",
-          "table": "Melee_Ones",
-          "scale": 380.0,
-          "duration": "10 seconds",
-          "magnitude": 1.0,
-          "delay": 0.0,
-          "duration_expression": "",
-          "magnitude_expression": "",
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": "",
-          "caster_stack": "Individual",
-          "stack": "Replace",
-          "stack_limit": 2,
-          "stack_key": null
-        },
-        {
-          "attribs": [
-            "Meter"
-          ],
-          "type": "Magnitude",
-          "application_type": "OnTick",
-          "aspect": "Current",
-          "target": "Self",
-          "table": "Melee_Ones",
-          "scale": 1.0,
-          "duration": "10 seconds",
-          "magnitude": 1.0,
-          "delay": 0.0,
-          "duration_expression": "",
-          "magnitude_expression": "",
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": "",
-          "caster_stack": "Individual",
-          "stack": "Replace",
-          "stack_limit": 2,
-          "stack_key": null
-        },
-        {
-          "attribs": [
-            "Create_Entity"
-          ],
-          "type": "Magnitude",
-          "application_type": "OnTick",
-          "aspect": "Current",
-          "target": "Self",
-          "table": "Melee_Ones",
-          "scale": 0.2,
-          "duration": "10 seconds",
-          "magnitude": 1.0,
-          "delay": 0.0,
-          "duration_expression": "",
-          "magnitude_expression": "",
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": "",
-          "caster_stack": "Individual",
-          "stack": "Replace",
-          "stack_limit": 2,
-          "stack_key": null
-        },
-        {
-          "attribs": [
             "Cancel_Effects"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Ones",
@@ -260,7 +377,7 @@
             "Cancel_Effects"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Ones",
@@ -285,7 +402,7 @@
             "Cancel_Effects"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Ones",
@@ -310,7 +427,7 @@
             "Cancel_Effects"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Ones",
@@ -335,7 +452,7 @@
             "Cancel_Effects"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Ones",
@@ -360,7 +477,7 @@
             "Cancel_Effects"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Ones",
@@ -385,7 +502,7 @@
             "Cancel_Effects"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Ones",
@@ -423,7 +540,7 @@
             "ToHit"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Buff_ToHit",
@@ -455,7 +572,7 @@
             "Toxic_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Buff_Dmg",
@@ -480,7 +597,7 @@
             "Cancel_Effects"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Ones",

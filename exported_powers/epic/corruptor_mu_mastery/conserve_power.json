@@ -20,7 +20,7 @@
   "activation_time": 1.17,
   "recharge_time": 240.0,
   "activate_period": 0.0,
-  "endurance_cost": 12.714,
+  "endurance_cost": 10.4,
   "interrupt_time": 0.0,
   "target_type": "Self",
   "target_type_secondary": "None",
@@ -59,7 +59,7 @@
             "EnduranceDiscount"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Stun",
@@ -84,7 +84,7 @@
             "Regeneration"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -109,7 +109,7 @@
             "Heal_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Melee_HealSelf",

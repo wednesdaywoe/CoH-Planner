@@ -54,8 +54,8 @@
           "attribs": [
             "Grant_Power"
           ],
-          "type": "Unknown",
-          "application_type": "OnTick",
+          "type": "Magnitude",
+          "application_type": "OnEnable",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Melee_Ones",
@@ -73,14 +73,20 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Incarnate.Alpha_Silent.Recovery_Plus_Very_Rare"
+            ]
+          }
         },
         {
           "attribs": [
             "Grant_Power"
           ],
-          "type": "Unknown",
-          "application_type": "OnTick",
+          "type": "Magnitude",
+          "application_type": "OnEnable",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Melee_Ones",
@@ -98,14 +104,20 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Incarnate.Alpha_Silent.Recharge_Very_Rare"
+            ]
+          }
         },
         {
           "attribs": [
             "Grant_Power"
           ],
-          "type": "Unknown",
-          "application_type": "OnTick",
+          "type": "Magnitude",
+          "application_type": "OnEnable",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Melee_Ones",
@@ -123,14 +135,20 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Incarnate.Alpha_Silent.Defense_Buff_Very_Rare"
+            ]
+          }
         },
         {
           "attribs": [
             "Grant_Power"
           ],
-          "type": "Unknown",
-          "application_type": "OnTick",
+          "type": "Magnitude",
+          "application_type": "OnDisable",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Melee_Ones",
@@ -148,14 +166,20 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Incarnate.Alpha_Silent.Recovery_Plus_Very_Rare"
+            ]
+          }
         },
         {
           "attribs": [
             "Grant_Power"
           ],
-          "type": "Unknown",
-          "application_type": "OnTick",
+          "type": "Magnitude",
+          "application_type": "OnDisable",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Melee_Ones",
@@ -173,14 +197,20 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Incarnate.Alpha_Silent.Recharge_Very_Rare"
+            ]
+          }
         },
         {
           "attribs": [
             "Grant_Power"
           ],
-          "type": "Unknown",
-          "application_type": "OnTick",
+          "type": "Magnitude",
+          "application_type": "OnDisable",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Melee_Ones",
@@ -198,16 +228,22 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Incarnate.Alpha_Silent.Defense_Buff_Very_Rare"
+            ]
+          }
         },
         {
           "attribs": [
             "Recharge_Power"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffectedAndPets",
           "table": "Melee_Ones",
           "scale": 1.0,
           "duration": "10.30 seconds",
@@ -229,14 +265,14 @@
           "attribs": [
             "Set_Mode"
           ],
-          "type": "Magnitude",
-          "application_type": "Unknown",
+          "type": "Constant",
+          "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
           "scale": 1.0,
           "duration": "10.30 seconds",
-          "magnitude": 141.0,
+          "magnitude": 143.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",

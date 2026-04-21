@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Defibrillate",
   "display_fullname": "Mastermind Buff Shock Therapy Defibrillate",
-  "display_help": "RYS8U695DDGZYFX6WLZ6V7Y6Z2",
+  "display_help": "Strike a target with a highly-charged jolt of electricity, reviving all nearby allies and draining all nearby foes. Any enemies affected will be drained of some endurance, have their recovery reduced and be put to sleep for a short time. Defibrillate consumes all stacks of Static, and the strength of the offensive component of this power scales with the number of stacks consumed. Allies will always be revived with full health and endurance regardless of the number of Static stacks consumed.",
   "display_short_help": "Melee (Targeted AoE), Ally Rez, Foe Sleep, -End, -Recovery",
   "icon": "shocktherapy_defibrillate.png",
   "auto_issue": false,
@@ -20,7 +20,7 @@
   "activation_time": 3.3,
   "recharge_time": 120.0,
   "activate_period": 0.0,
-  "endurance_cost": 32.5,
+  "endurance_cost": 10.4,
   "interrupt_time": 0.0,
   "target_type": "DeadOrAliveMyPet",
   "target_type_secondary": "None",
@@ -63,9 +63,9 @@
             "Execute_Power"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Strength",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Melee_Ones",
           "scale": 0.0,
           "duration": "0 seconds",
@@ -81,16 +81,22 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Redirects.Shock_Therapy.Defibrillate_Revive"
+            ]
+          }
         },
         {
           "attribs": [
             "Execute_Power"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Strength",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Melee_Ones",
           "scale": 0.0,
           "duration": "0 seconds",
@@ -106,14 +112,20 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Redirects.Shock_Therapy.Defibrillate_Debuff"
+            ]
+          }
         },
         {
           "attribs": [
             "Execute_Power"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Ones",
@@ -131,7 +143,13 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Redirects.Shock_Therapy.Consume_Static"
+            ]
+          }
         }
       ]
     }

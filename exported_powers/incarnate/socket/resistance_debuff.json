@@ -45,7 +45,53 @@
   "activate_requires": "isVIP? isAccountInventoryLoaded? ! || combatlevel char> 45 < &&",
   "target_requires": "",
   "attack_types": [],
-  "effects": [],
+  "effects": [
+    {
+      "chance": 0.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "target.isFriend? ! @ToHitRoll @ToHit / @ChanceMods < && combatlevel source> 45 < &&",
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 34,
+      "templates": [
+        {
+          "attribs": [
+            "Smashing_Dmg",
+            "Lethal_Dmg",
+            "Fire_Dmg",
+            "Cold_Dmg",
+            "Energy_Dmg",
+            "Negative_Energy_Dmg",
+            "Psionic_Dmg",
+            "Toxic_Dmg"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Resistance",
+          "target": "AnyAffected",
+          "table": "Melee_Ones",
+          "scale": -0.0125,
+          "duration": "8.30 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Unlimited",
+          "stack": "StackThenIgnore",
+          "stack_limit": 4,
+          "stack_key": null
+        }
+      ]
+    }
+  ],
   "available_level": 0,
   "powerset": "Incarnate.Socket"
 }

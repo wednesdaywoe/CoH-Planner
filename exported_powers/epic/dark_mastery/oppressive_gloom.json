@@ -20,7 +20,7 @@
   "activation_time": 1.17,
   "recharge_time": 16.0,
   "activate_period": 2.0,
-  "endurance_cost": 0.195,
+  "endurance_cost": 0.156,
   "interrupt_time": 0.0,
   "target_type": "Self",
   "target_type_secondary": "None",
@@ -62,10 +62,10 @@
           "attribs": [
             "Stunned"
           ],
-          "type": "Magnitude",
+          "type": "Duration",
           "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Melee_Stun",
           "scale": 6.0,
           "duration": "0 seconds",
@@ -79,7 +79,7 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "Individual",
-          "stack": "Unknown",
+          "stack": "RefreshToCount",
           "stack_limit": 1,
           "stack_key": null
         }
@@ -101,7 +101,7 @@
             "Special_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Melee_Damage",
@@ -138,10 +138,10 @@
           "attribs": [
             "Stunned"
           ],
-          "type": "Magnitude",
+          "type": "Duration",
           "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Melee_PvPMez",
           "scale": 1.0,
           "duration": "0 seconds",
@@ -155,7 +155,7 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "Individual",
-          "stack": "Unknown",
+          "stack": "RefreshToCount",
           "stack_limit": 1,
           "stack_key": null
         }

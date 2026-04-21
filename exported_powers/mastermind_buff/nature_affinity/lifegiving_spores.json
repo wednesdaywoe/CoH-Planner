@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Lifegiving Spores",
   "display_fullname": "Mastermind Buff Nature Affinity Lifegiving Spores",
-  "display_help": "MDEU9TCUUX7MWHM733XDVXMXE3",
+  "display_help": "When activating this power you cause all allies at a selected location to recover a small amount of health and endurance every few seconds as long as they remain within the Lifegiving Spores.",
   "display_short_help": "Toggle (Location AoE), PBAoE +Minor Heal Over Time, +Endurance",
   "icon": "natureaffinity_lifegivingspores.png",
   "auto_issue": false,
@@ -20,7 +20,7 @@
   "activation_time": 2.33,
   "recharge_time": 4.0,
   "activate_period": 1.0,
-  "endurance_cost": 0.325,
+  "endurance_cost": 0.26,
   "interrupt_time": 0.0,
   "target_type": "Location",
   "target_type_secondary": "None",
@@ -60,7 +60,7 @@
           "attribs": [
             "Create_Entity"
           ],
-          "type": "Duration",
+          "type": "Magnitude",
           "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
@@ -79,7 +79,16 @@
           "caster_stack": "Individual",
           "stack": "Ignore",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "PL_StaticObject",
+            "display_name": "LIfegiving Spores",
+            "redirects": [
+              "Pets.ResistAll.ResistAll",
+              "Pets.Lifegiving_Spores.Lifegiving_Spores"
+            ]
+          }
         }
       ]
     }

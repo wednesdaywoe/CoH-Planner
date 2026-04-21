@@ -64,9 +64,9 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Level",
           "scale": 1.0,
           "duration": "30 seconds",
@@ -82,16 +82,25 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "P258400189",
+            "redirects": [
+              "Pets.ResistAll.ResistAll",
+              "Pets.Liquefy.Liquefy"
+            ],
+            "priority_list": "Liquefy"
+          }
         },
         {
           "attribs": [
             "Execute_Power"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Strength",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Melee_Ones",
           "scale": 0.0,
           "duration": "0 seconds",
@@ -107,7 +116,13 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Pets.Liquefy.LiquefyShock"
+            ]
+          }
         }
       ]
     }

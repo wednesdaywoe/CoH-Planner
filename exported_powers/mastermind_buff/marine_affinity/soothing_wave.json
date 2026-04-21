@@ -20,7 +20,7 @@
   "activation_time": 2.0,
   "recharge_time": 10.0,
   "activate_period": 0.0,
-  "endurance_cost": 16.9,
+  "endurance_cost": 13.52,
   "interrupt_time": 0.0,
   "target_type": "Self",
   "target_type_secondary": "None",
@@ -62,9 +62,9 @@
             "Heal_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Absolute",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Heal",
           "scale": 1.0,
           "duration": "0 seconds",
@@ -87,7 +87,7 @@
             "Execute_Power"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Ones",
@@ -105,7 +105,13 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Redirects.Marine_Affinity.Soothing_Wave"
+            ]
+          }
         }
       ]
     }

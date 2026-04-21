@@ -20,7 +20,7 @@
   "activation_time": 3.0,
   "recharge_time": 90.0,
   "activate_period": 0.0,
-  "endurance_cost": 5.2,
+  "endurance_cost": 4.16,
   "interrupt_time": 0.0,
   "target_type": "Self",
   "target_type_secondary": "None",
@@ -69,7 +69,7 @@
             "Toxic"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Buff_Def",
@@ -94,7 +94,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",

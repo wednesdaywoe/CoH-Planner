@@ -62,7 +62,7 @@
             "Grant_Power"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Melee_Ones",
@@ -80,41 +80,22 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
-        },
-        {
-          "attribs": [
-            "Grant_Power"
-          ],
-          "type": "Constant",
-          "application_type": "OnTick",
-          "aspect": "Absolute",
-          "target": "AnyAffected",
-          "table": "Melee_Ones",
-          "scale": 1.0,
-          "duration": "0 seconds",
-          "magnitude": 1.0,
-          "delay": 0.0,
-          "duration_expression": "",
-          "magnitude_expression": "",
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": "",
-          "caster_stack": "Individual",
-          "stack": "Stack",
-          "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Incarnate.Hybrid_Silent.Control_Boost_1"
+            ]
+          }
         },
         {
           "attribs": [
             "Grant_Power"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "OnActivate",
           "aspect": "Absolute",
-          "target": "Self",
+          "target": "SelfAndPets",
           "table": "Melee_Ones",
           "scale": 1.0,
           "duration": "0 seconds",
@@ -130,39 +111,20 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
-        },
-        {
-          "attribs": [
-            "Grant_Power"
-          ],
-          "type": "Constant",
-          "application_type": "OnTick",
-          "aspect": "Absolute",
-          "target": "AnyAffected",
-          "table": "Melee_Ones",
-          "scale": 1.0,
-          "duration": "0 seconds",
-          "magnitude": 1.0,
-          "delay": 0.0,
-          "duration_expression": "",
-          "magnitude_expression": "",
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": "",
-          "caster_stack": "Individual",
-          "stack": "Stack",
-          "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Incarnate.Hybrid_Silent.Control_Boost_1"
+            ]
+          }
         },
         {
           "attribs": [
             "Grant_Power"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Melee_Ones",
@@ -180,41 +142,22 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
-        },
-        {
-          "attribs": [
-            "Grant_Power"
-          ],
-          "type": "Constant",
-          "application_type": "OnTick",
-          "aspect": "Absolute",
-          "target": "AnyAffected",
-          "table": "Melee_Ones",
-          "scale": 1.0,
-          "duration": "0 seconds",
-          "magnitude": 1.0,
-          "delay": 0.0,
-          "duration_expression": "",
-          "magnitude_expression": "",
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": "",
-          "caster_stack": "Individual",
-          "stack": "Stack",
-          "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Incarnate.Hybrid_Silent.Control_Boost_2"
+            ]
+          }
         },
         {
           "attribs": [
             "Grant_Power"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "OnActivate",
           "aspect": "Absolute",
-          "target": "Self",
+          "target": "SelfAndPets",
           "table": "Melee_Ones",
           "scale": 1.0,
           "duration": "0 seconds",
@@ -230,39 +173,20 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
-        },
-        {
-          "attribs": [
-            "Grant_Power"
-          ],
-          "type": "Constant",
-          "application_type": "OnTick",
-          "aspect": "Absolute",
-          "target": "AnyAffected",
-          "table": "Melee_Ones",
-          "scale": 1.0,
-          "duration": "0 seconds",
-          "magnitude": 1.0,
-          "delay": 0.0,
-          "duration_expression": "",
-          "magnitude_expression": "",
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": "",
-          "caster_stack": "Individual",
-          "stack": "Stack",
-          "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Incarnate.Hybrid_Silent.Control_Boost_2"
+            ]
+          }
         },
         {
           "attribs": [
             "Grant_Power"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Melee_Ones",
@@ -280,41 +204,22 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
-        },
-        {
-          "attribs": [
-            "Grant_Power"
-          ],
-          "type": "Constant",
-          "application_type": "OnTick",
-          "aspect": "Absolute",
-          "target": "AnyAffected",
-          "table": "Melee_Ones",
-          "scale": 1.0,
-          "duration": "0 seconds",
-          "magnitude": 1.0,
-          "delay": 0.0,
-          "duration_expression": "",
-          "magnitude_expression": "",
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": "",
-          "caster_stack": "Individual",
-          "stack": "Stack",
-          "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Incarnate.Hybrid_Silent.Control_Boost_3"
+            ]
+          }
         },
         {
           "attribs": [
             "Grant_Power"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "OnActivate",
           "aspect": "Absolute",
-          "target": "Self",
+          "target": "SelfAndPets",
           "table": "Melee_Ones",
           "scale": 1.0,
           "duration": "0 seconds",
@@ -330,39 +235,20 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
-        },
-        {
-          "attribs": [
-            "Grant_Power"
-          ],
-          "type": "Constant",
-          "application_type": "OnTick",
-          "aspect": "Absolute",
-          "target": "AnyAffected",
-          "table": "Melee_Ones",
-          "scale": 1.0,
-          "duration": "0 seconds",
-          "magnitude": 1.0,
-          "delay": 0.0,
-          "duration_expression": "",
-          "magnitude_expression": "",
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": "",
-          "caster_stack": "Individual",
-          "stack": "Stack",
-          "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Incarnate.Hybrid_Silent.Control_Boost_3"
+            ]
+          }
         },
         {
           "attribs": [
             "Grant_Power"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Melee_Ones",
@@ -380,16 +266,22 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Incarnate.Hybrid_Silent.Control_Boost_4"
+            ]
+          }
         },
         {
           "attribs": [
             "Grant_Power"
           ],
-          "type": "Constant",
-          "application_type": "OnTick",
+          "type": "Magnitude",
+          "application_type": "OnActivate",
           "aspect": "Absolute",
-          "target": "AnyAffected",
+          "target": "SelfAndPets",
           "table": "Melee_Ones",
           "scale": 1.0,
           "duration": "0 seconds",
@@ -405,14 +297,206 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Incarnate.Hybrid_Silent.Control_Boost_4"
+            ]
+          }
+        },
+        {
+          "attribs": [
+            "Grant_Power"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Absolute",
+          "target": "Self",
+          "table": "Melee_Ones",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Incarnate.Hybrid_Silent.Control_Boost_5"
+            ]
+          }
+        },
+        {
+          "attribs": [
+            "Grant_Power"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnActivate",
+          "aspect": "Absolute",
+          "target": "SelfAndPets",
+          "table": "Melee_Ones",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Incarnate.Hybrid_Silent.Control_Boost_5"
+            ]
+          }
+        },
+        {
+          "attribs": [
+            "Grant_Power"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Absolute",
+          "target": "Self",
+          "table": "Melee_Ones",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Incarnate.Hybrid_Silent.Control_Boost_6"
+            ]
+          }
+        },
+        {
+          "attribs": [
+            "Grant_Power"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnActivate",
+          "aspect": "Absolute",
+          "target": "SelfAndPets",
+          "table": "Melee_Ones",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Incarnate.Hybrid_Silent.Control_Boost_6"
+            ]
+          }
+        },
+        {
+          "attribs": [
+            "Grant_Power"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Absolute",
+          "target": "Self",
+          "table": "Melee_Ones",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Incarnate.Hybrid_Silent.Containment_5"
+            ]
+          }
+        },
+        {
+          "attribs": [
+            "Grant_Power"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnActivate",
+          "aspect": "Absolute",
+          "target": "SelfAndPets",
+          "table": "Melee_Ones",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Incarnate.Hybrid_Silent.Containment_5"
+            ]
+          }
         },
         {
           "attribs": [
             "Global_Chance_Mod"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -436,8 +520,8 @@
           "attribs": [
             "Grant_Power"
           ],
-          "type": "Unknown",
-          "application_type": "OnTick",
+          "type": "Magnitude",
+          "application_type": "OnEnable",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Melee_Ones",
@@ -455,16 +539,22 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Incarnate.Hybrid_Silent.Control_Boost_Rare"
+            ]
+          }
         },
         {
           "attribs": [
             "Grant_Power"
           ],
-          "type": "Unknown",
-          "application_type": "OnTick",
+          "type": "Magnitude",
+          "application_type": "OnDisable",
           "aspect": "Absolute",
-          "target": "AnyAffected",
+          "target": "SelfAndPets",
           "table": "Melee_Ones",
           "scale": 1.0,
           "duration": "0 seconds",
@@ -480,7 +570,13 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Incarnate.Hybrid_Silent.Control_Boost_Rare"
+            ]
+          }
         }
       ]
     }

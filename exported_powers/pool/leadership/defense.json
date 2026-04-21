@@ -73,9 +73,9 @@
             "Toxic"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Buff_Def",
           "scale": 0.35,
           "duration": "2.25 seconds",
@@ -122,9 +122,9 @@
             "Psionic"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Buff_Def",
           "scale": 0.35,
           "duration": "2.25 seconds",

@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Faraday Cage",
   "display_fullname": "Controller Buff Shock Therapy Faraday Cage",
-  "display_help": "MQ2BREC4GXG2WYL7EPJBT7B9JQ",
+  "display_help": "Create a large energy barrier at your location which provides all allies within resistance to all damage except Toxic. They are also protected from status effects, knockbacks, endurance drain, recovery debuffs and recharge debuffs. Casting this power again will move the energy barrier to your location. Standing inside your own Faraday Cage will grant you a stack of Static every 5 seconds.",
   "display_short_help": "Location (PBAoE), Team +Res(All DMG but Toxic, Status, Knockback, -Rech, -Rec, -End)",
   "icon": "shocktherapy_faradaycage.png",
   "auto_issue": false,
@@ -65,7 +65,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Level",
@@ -83,7 +83,17 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "PL_StaticObject",
+            "display_name": "Faraday Cage",
+            "redirects": [
+              "Redirects.Shock_Therapy.FaradayCage",
+              "Redirects.Shock_Therapy.FaradayCageFx",
+              "Redirects.Shock_Therapy.FaradayStatic"
+            ]
+          }
         }
       ]
     }

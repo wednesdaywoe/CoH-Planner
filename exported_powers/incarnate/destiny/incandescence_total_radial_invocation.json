@@ -60,9 +60,9 @@
             "Teleport"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": 3.1,
           "duration": "0 seconds",
@@ -85,9 +85,9 @@
             "Heal_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Resistance",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": -0.5,
           "duration": "60 seconds",
@@ -110,7 +110,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Level",
@@ -128,16 +128,21 @@
           "caster_stack": "Individual",
           "stack": "Ignore",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "P2051536888",
+            "priority_list": "PL_StaticObject"
+          }
         },
         {
           "attribs": [
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": 0.3,
           "duration": "60 seconds",
@@ -160,9 +165,9 @@
             "StealthRadius_PVE"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": 20.0,
           "duration": "60 seconds",
@@ -185,9 +190,9 @@
             "StealthRadius_PVP"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": 222.0,
           "duration": "60 seconds",
@@ -209,10 +214,10 @@
           "attribs": [
             "Combat_Phase"
           ],
-          "type": "Magnitude",
+          "type": "Duration",
           "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": 4.0,
           "duration": "0 seconds",
@@ -234,10 +239,10 @@
           "attribs": [
             "Combat_Phase"
           ],
-          "type": "Magnitude",
+          "type": "Duration",
           "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": 4.0,
           "duration": "0 seconds",
@@ -259,10 +264,10 @@
           "attribs": [
             "Intangible"
           ],
-          "type": "Magnitude",
+          "type": "Duration",
           "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": 4.0,
           "duration": "0 seconds",
@@ -285,9 +290,9 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": 0.5,
           "duration": "4 seconds",
@@ -309,8 +314,8 @@
           "attribs": [
             "Grant_Power"
           ],
-          "type": "Unknown",
-          "application_type": "OnTick",
+          "type": "Magnitude",
+          "application_type": "OnEnable",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -328,14 +333,20 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Incarnate.Destiny_Silent.Level_Shift"
+            ]
+          }
         },
         {
           "attribs": [
             "Grant_Power"
           ],
-          "type": "Unknown",
-          "application_type": "OnTick",
+          "type": "Magnitude",
+          "application_type": "OnDisable",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -353,7 +364,13 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Incarnate.Destiny_Silent.Level_Shift"
+            ]
+          }
         }
       ]
     }

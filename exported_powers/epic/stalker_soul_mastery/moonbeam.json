@@ -20,7 +20,7 @@
   "activation_time": 1.33,
   "recharge_time": 24.0,
   "activate_period": 0.0,
-  "endurance_cost": 17.94,
+  "endurance_cost": 14.352,
   "interrupt_time": 0.0,
   "target_type": "Foe",
   "target_type_secondary": "None",

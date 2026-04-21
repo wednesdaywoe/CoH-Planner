@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Fallout",
   "display_fullname": "Mastermind Buff Radiation Emission Fallout",
-  "display_help": "J4CQ9PXSRG3XWUVBAVEU9WUQMW",
+  "display_help": "4G3QKBVTX4MUWVZ3DVZUWN65HX",
   "display_short_help": "ATMNN8ZBZJGQYFB4ENXSUUEFQ2",
   "icon": "radiationpoisoning_fallout.png",
   "auto_issue": false,
@@ -20,7 +20,7 @@
   "activation_time": 3.2,
   "recharge_time": 300.0,
   "activate_period": 0.0,
-  "endurance_cost": 26.0,
+  "endurance_cost": 20.8,
   "interrupt_time": 0.0,
   "target_type": "Position",
   "target_type_secondary": "None",
@@ -63,9 +63,9 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": -1.0,
           "duration": "1 seconds",
@@ -81,16 +81,21 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "P536219010",
+            "priority_list": "P2158078059"
+          }
         },
         {
           "attribs": [
             "Null"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": 1.0,
           "duration": "0.50 seconds",

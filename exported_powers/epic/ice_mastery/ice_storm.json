@@ -20,7 +20,7 @@
   "activation_time": 2.03,
   "recharge_time": 120.0,
   "activate_period": 0.0,
-  "endurance_cost": 19.5,
+  "endurance_cost": 15.6,
   "interrupt_time": 0.0,
   "target_type": "Location",
   "target_type_secondary": "None",
@@ -61,9 +61,9 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Level",
           "scale": 1.0,
           "duration": "15 seconds",
@@ -79,7 +79,12 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "Pets_Epic_IceStorm",
+            "priority_list": "PL_StaticObject"
+          }
         }
       ]
     }

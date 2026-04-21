@@ -59,10 +59,10 @@
           "attribs": [
             "Placate"
           ],
-          "type": "Magnitude",
+          "type": "Duration",
           "application_type": "Immediate",
           "aspect": "Absolute",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Melee_Ones",
           "scale": 15.0,
           "duration": "0 seconds",
@@ -97,10 +97,10 @@
           "attribs": [
             "Placate"
           ],
-          "type": "Magnitude",
+          "type": "Duration",
           "application_type": "Immediate",
           "aspect": "Absolute",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Melee_Ones",
           "scale": 9.0,
           "duration": "0 seconds",
@@ -143,9 +143,9 @@
             "Toxic_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Resistance",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Melee_Res_Dmg",
           "scale": -1.5,
           "duration": "15 seconds",

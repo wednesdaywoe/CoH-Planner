@@ -58,8 +58,8 @@
           "attribs": [
             "Heal_Dmg"
           ],
-          "type": "Magnitude",
-          "application_type": "Unknown",
+          "type": "Expression",
+          "application_type": "Immediate",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Melee_HealSelf",
@@ -67,24 +67,24 @@
           "duration": "0 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
-          "duration_expression": ".5thColumnEndgame.NictusFX",
-          "magnitude_expression": "100",
-          "application_period": 8.998998608047543e-41,
-          "tick_chance": 9.002081464669057e-41,
-          "tick_mag_multiplier": 1.215640430786422e-40,
-          "tick_mag_additive": 2.9623029146287335e-40,
-          "jit_requires": "/",
-          "caster_stack": "Unknown",
-          "stack": "Unknown",
-          "stack_limit": 256683,
-          "stack_key": "*"
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null
         },
         {
           "attribs": [
             "Heal_Dmg"
           ],
-          "type": "Magnitude",
-          "application_type": "Unknown",
+          "type": "Expression",
+          "application_type": "Immediate",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Melee_HealSelf",
@@ -92,17 +92,17 @@
           "duration": "9.10 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
-          "duration_expression": ".5thColumnEndgame.NictusFX",
-          "magnitude_expression": "100",
-          "application_period": 8.998998608047543e-41,
-          "tick_chance": 9.002081464669057e-41,
-          "tick_mag_multiplier": 1.215640430786422e-40,
-          "tick_mag_additive": 2.706176383916372e-39,
-          "jit_requires": "/",
-          "caster_stack": "Unknown",
-          "stack": "Unknown",
-          "stack_limit": 256683,
-          "stack_key": "*"
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 1.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null
         }
       ]
     }

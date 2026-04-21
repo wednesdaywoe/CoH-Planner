@@ -54,7 +54,7 @@
           "attribs": [
             "Null"
           ],
-          "type": "Duration",
+          "type": "Magnitude",
           "application_type": "OnTick",
           "aspect": "Strength",
           "target": "Self",
@@ -80,9 +80,9 @@
             "Null"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Strength",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Melee_Ones",
           "scale": 1.0,
           "duration": "0.25 seconds",
@@ -105,7 +105,7 @@
             "Designer_Status"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Melee_Ones",
@@ -130,7 +130,7 @@
             "Global_Chance_Mod"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",

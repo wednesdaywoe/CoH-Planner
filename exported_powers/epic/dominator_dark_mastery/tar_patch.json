@@ -20,7 +20,7 @@
   "activation_time": 3.1,
   "recharge_time": 180.0,
   "activate_period": 0.0,
-  "endurance_cost": 9.75,
+  "endurance_cost": 7.8,
   "interrupt_time": 0.0,
   "target_type": "Location",
   "target_type_secondary": "None",
@@ -61,7 +61,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Level",
@@ -79,7 +79,15 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "PL_StaticObject",
+            "display_name": "Tar Patch",
+            "redirects": [
+              "Redirects.Dark_Miasma.Tar_Epic"
+            ]
+          }
         }
       ]
     }

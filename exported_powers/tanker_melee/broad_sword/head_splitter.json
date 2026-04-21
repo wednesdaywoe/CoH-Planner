@@ -5,16 +5,16 @@
   "type": "Click",
   "display_name": "Head Splitter",
   "display_fullname": "Tanker Melee Broad Sword Head Splitter",
-  "display_help": "HAEYKL4LE3YAYHXTNHLL7DY7GS",
+  "display_help": "UDHAF464X9UVYHBPGM4WGDYWZ2",
   "display_short_help": "N4C46XGLB7QQWVC27TE73XFC5S",
   "icon": "sword_headsplitter.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
   "accuracy": 1.05,
-  "effect_area": "Cone",
-  "max_targets_hit": 5,
-  "radius": 10.0,
-  "arc": 0.3490658700466156,
+  "effect_area": "SingleTarget",
+  "max_targets_hit": 0,
+  "radius": 0.0,
+  "arc": 0.0,
   "range": 10.0,
   "range_secondary": 0.0,
   "activation_time": 2.33,
@@ -25,7 +25,7 @@
   "target_type": "Foe",
   "target_type_secondary": "None",
   "targets_autohit": [
-    "None"
+    "Foe"
   ],
   "targets_affected": [
     "Foe"
@@ -56,158 +56,6 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "enttype target> critter eq",
-      "flags": [],
-      "is_pvp": "EITHER",
-      "eval_flags": 0,
-      "templates": [
-        {
-          "attribs": [
-            "Lethal_Dmg"
-          ],
-          "type": "Magnitude",
-          "application_type": "OnTick",
-          "aspect": "Absolute",
-          "target": "Unknown",
-          "table": "Melee_Damage",
-          "scale": 2.6,
-          "duration": "0 seconds",
-          "magnitude": 1.0,
-          "delay": 0.0,
-          "duration_expression": "",
-          "magnitude_expression": "",
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": "",
-          "caster_stack": "Individual",
-          "stack": "Stack",
-          "stack_limit": 2,
-          "stack_key": null
-        }
-      ]
-    },
-    {
-      "chance": 0.6000000238418579,
-      "ppm": 0.0,
-      "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
-      "requires_expression": "enttype target> critter eq",
-      "flags": [],
-      "is_pvp": "EITHER",
-      "eval_flags": 0,
-      "templates": [
-        {
-          "attribs": [
-            "Knockback"
-          ],
-          "type": "Magnitude",
-          "application_type": "OnTick",
-          "aspect": "Current",
-          "target": "Unknown",
-          "table": "Melee_Ones",
-          "scale": 0.67,
-          "duration": "0 seconds",
-          "magnitude": 1.0,
-          "delay": 0.0,
-          "duration_expression": "",
-          "magnitude_expression": "",
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": "",
-          "caster_stack": "Individual",
-          "stack": "Stack",
-          "stack_limit": 2,
-          "stack_key": null
-        }
-      ]
-    },
-    {
-      "chance": 1.0,
-      "ppm": 0.0,
-      "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
-      "requires_expression": "enttype target> player eq",
-      "flags": [],
-      "is_pvp": "EITHER",
-      "eval_flags": 0,
-      "templates": [
-        {
-          "attribs": [
-            "Lethal_Dmg"
-          ],
-          "type": "Magnitude",
-          "application_type": "OnTick",
-          "aspect": "Absolute",
-          "target": "Unknown",
-          "table": "Melee_PvPDamage",
-          "scale": 2.5909,
-          "duration": "0 seconds",
-          "magnitude": 1.0,
-          "delay": 0.0,
-          "duration_expression": "",
-          "magnitude_expression": "",
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": "",
-          "caster_stack": "Individual",
-          "stack": "Stack",
-          "stack_limit": 2,
-          "stack_key": null
-        }
-      ]
-    },
-    {
-      "chance": 0.6000000238418579,
-      "ppm": 0.0,
-      "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
-      "requires_expression": "enttype target> player eq",
-      "flags": [],
-      "is_pvp": "EITHER",
-      "eval_flags": 0,
-      "templates": [
-        {
-          "attribs": [
-            "Knockback"
-          ],
-          "type": "Magnitude",
-          "application_type": "OnTick",
-          "aspect": "Current",
-          "target": "Unknown",
-          "table": "Melee_Ones",
-          "scale": 0.67,
-          "duration": "0 seconds",
-          "magnitude": 1.0,
-          "delay": 0.0,
-          "duration_expression": "",
-          "magnitude_expression": "",
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": "",
-          "caster_stack": "Individual",
-          "stack": "Stack",
-          "stack_limit": 2,
-          "stack_key": null
-        }
-      ]
-    },
-    {
-      "chance": 1.0,
-      "ppm": 0.0,
-      "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
       "requires_expression": "",
       "flags": [],
       "is_pvp": "EITHER",
@@ -215,28 +63,35 @@
       "templates": [
         {
           "attribs": [
-            "Base_Defense"
+            "Execute_Power"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
-          "aspect": "Current",
-          "target": "Unknown",
-          "table": "Melee_Debuff_Def",
-          "scale": 1.0,
-          "duration": "10 seconds",
-          "magnitude": 1.0,
+          "application_type": "Immediate",
+          "aspect": "Strength",
+          "target": "AnyAffected",
+          "table": "Melee_Ones",
+          "scale": 0.0,
+          "duration": "0 seconds",
+          "magnitude": 0.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
-          "tick_chance": 0.9980000257492065,
+          "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Redirects.Broad_Sword.Head_Splitter",
+              "Redirects.Broad_Sword.Head_Splitter_Glance"
+            ]
+          }
         }
       ]
     }

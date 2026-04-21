@@ -60,9 +60,9 @@
             "Regeneration"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Strength",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Res_Boolean",
           "scale": -1.0,
           "duration": "0.50 seconds",
@@ -76,7 +76,7 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "Individual",
-          "stack": "Unknown",
+          "stack": "Continuous",
           "stack_limit": 2,
           "stack_key": null
         },
@@ -85,9 +85,9 @@
             "Base_Defense"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Strength",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Res_Boolean",
           "scale": -0.5,
           "duration": "0.50 seconds",
@@ -101,7 +101,7 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "Individual",
-          "stack": "Unknown",
+          "stack": "Continuous",
           "stack_limit": 2,
           "stack_key": null
         }

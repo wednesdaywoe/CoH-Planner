@@ -61,7 +61,7 @@
           "attribs": [
             "Create_Entity"
           ],
-          "type": "Duration",
+          "type": "Magnitude",
           "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
@@ -80,13 +80,18 @@
           "caster_stack": "Individual",
           "stack": "Ignore",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "Pets_Dimension_Shift",
+            "priority_list": "PFX"
+          }
         },
         {
           "attribs": [
             "Create_Entity"
           ],
-          "type": "Duration",
+          "type": "Magnitude",
           "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
@@ -105,7 +110,12 @@
           "caster_stack": "Individual",
           "stack": "Ignore",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "Pets_Dimension_Shift_Phased",
+            "priority_list": "PL_StaticObject"
+          }
         }
       ]
     },
@@ -126,7 +136,7 @@
           "attribs": [
             "Create_Entity"
           ],
-          "type": "Duration",
+          "type": "Magnitude",
           "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
@@ -145,13 +155,18 @@
           "caster_stack": "Individual",
           "stack": "Ignore",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "Pets_Dimension_Shift",
+            "priority_list": "PFX"
+          }
         },
         {
           "attribs": [
             "Create_Entity"
           ],
-          "type": "Duration",
+          "type": "Magnitude",
           "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
@@ -170,7 +185,12 @@
           "caster_stack": "Individual",
           "stack": "Ignore",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "Pets_Dimension_Shift_Phased",
+            "priority_list": "PL_StaticObject"
+          }
         }
       ]
     }

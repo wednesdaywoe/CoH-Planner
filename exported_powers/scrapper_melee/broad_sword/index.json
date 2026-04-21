@@ -5,6 +5,7 @@
   "short_help": "Broad Sword",
   "icon": "broad_sword_set.ico",
   "powers": [
+    "Boomerang_Slice",
     "Build_Up",
     "Disembowel",
     "Hack",
@@ -16,6 +17,7 @@
     "Whirling_Sword"
   ],
   "available_level": [
+    0,
     0,
     0,
     0,

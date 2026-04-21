@@ -56,14 +56,14 @@
           "attribs": [
             "Set_Mode"
           ],
-          "type": "Magnitude",
-          "application_type": "Unknown",
+          "type": "Constant",
+          "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
           "scale": 1.0,
           "duration": "1.10 seconds",
-          "magnitude": 151.0,
+          "magnitude": 153.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",

@@ -7,7 +7,7 @@
   "display_fullname": "Scrapper Melee Kinetic Attack Confront",
   "display_help": "3HHZJT3SE3FQY5BD6WBJFZ3BFA",
   "display_short_help": "Ranged (Targeted AoE), Foe Taunt",
-  "icon": "kineticattack_taunt.png",
+  "icon": "kineticattack_confront.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
   "accuracy": 1.0,
@@ -61,10 +61,10 @@
           "attribs": [
             "Taunt"
           ],
-          "type": "Magnitude",
+          "type": "Duration",
           "application_type": "Immediate",
           "aspect": "Absolute",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Melee_Taunt",
           "scale": 15.0,
           "duration": "0 seconds",
@@ -99,10 +99,10 @@
           "attribs": [
             "Taunt"
           ],
-          "type": "Magnitude",
+          "type": "Duration",
           "application_type": "Immediate",
           "aspect": "Absolute",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Melee_Taunt",
           "scale": 4.0,
           "duration": "0 seconds",
@@ -138,9 +138,9 @@
             "Range"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Strength",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Melee_Ones",
           "scale": -0.75,
           "duration": "12 seconds",
@@ -176,9 +176,9 @@
             "Null"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Melee_Ones",
           "scale": 1.0,
           "duration": "0 seconds",

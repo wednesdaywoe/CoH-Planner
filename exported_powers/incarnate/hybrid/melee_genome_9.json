@@ -76,7 +76,7 @@
             "Toxic"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -101,7 +101,7 @@
             "Regeneration"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -126,9 +126,9 @@
             "Taunt"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Absolute",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Melee_InherentTaunt",
           "scale": 1.0,
           "duration": "2.10 seconds",
@@ -145,6 +145,100 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null
+        }
+      ],
+      "child_effects": [
+        {
+          "chance": 1.0,
+          "ppm": 0.0,
+          "delay": 0.0,
+          "radius_inner": -1.0,
+          "radius_outer": -1.0,
+          "requires_expression": "",
+          "flags": [
+            "PVEOnly"
+          ],
+          "is_pvp": "PVE_ONLY",
+          "eval_flags": 0,
+          "templates": [
+            {
+              "attribs": [
+                "Confused",
+                "Afraid",
+                "Terrorized",
+                "Held",
+                "Immobilized",
+                "Stunned",
+                "Sleep"
+              ],
+              "type": "Magnitude",
+              "application_type": "Immediate",
+              "aspect": "Current",
+              "target": "Self",
+              "table": "Melee_Ones",
+              "scale": -2.0,
+              "duration": "2.10 seconds",
+              "magnitude": 1.0,
+              "delay": 0.0,
+              "duration_expression": "",
+              "magnitude_expression": "",
+              "application_period": 0.0,
+              "tick_chance": 1.0,
+              "tick_mag_multiplier": 1.0,
+              "tick_mag_additive": 0.0,
+              "jit_requires": "",
+              "caster_stack": "Individual",
+              "stack": "Stack",
+              "stack_limit": 2,
+              "stack_key": null
+            }
+          ]
+        },
+        {
+          "chance": 1.0,
+          "ppm": 0.0,
+          "delay": 0.0,
+          "radius_inner": -1.0,
+          "radius_outer": -1.0,
+          "requires_expression": "",
+          "flags": [
+            "PVPOnly"
+          ],
+          "is_pvp": "PVP_ONLY",
+          "eval_flags": 0,
+          "templates": [
+            {
+              "attribs": [
+                "Confused",
+                "Afraid",
+                "Terrorized",
+                "Held",
+                "Immobilized",
+                "Stunned",
+                "Sleep"
+              ],
+              "type": "Magnitude",
+              "application_type": "Immediate",
+              "aspect": "Resistance",
+              "target": "Self",
+              "table": "Melee_Ones",
+              "scale": -0.2,
+              "duration": "2.10 seconds",
+              "magnitude": 1.0,
+              "delay": 0.0,
+              "duration_expression": "",
+              "magnitude_expression": "",
+              "application_period": 0.0,
+              "tick_chance": 1.0,
+              "tick_mag_multiplier": 1.0,
+              "tick_mag_additive": 0.0,
+              "jit_requires": "",
+              "caster_stack": "Individual",
+              "stack": "Stack",
+              "stack_limit": 2,
+              "stack_key": null
+            }
+          ]
         }
       ]
     },
@@ -163,8 +257,8 @@
           "attribs": [
             "Grant_Power"
           ],
-          "type": "Unknown",
-          "application_type": "OnTick",
+          "type": "Magnitude",
+          "application_type": "OnEnable",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Melee_Ones",
@@ -182,16 +276,22 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Incarnate.Hybrid_Silent.Melee_Boost_Very_Rare"
+            ]
+          }
         },
         {
           "attribs": [
             "Grant_Power"
           ],
-          "type": "Unknown",
-          "application_type": "OnTick",
+          "type": "Magnitude",
+          "application_type": "OnDisable",
           "aspect": "Absolute",
-          "target": "AnyAffected",
+          "target": "SelfAndPets",
           "table": "Melee_Ones",
           "scale": 1.0,
           "duration": "0 seconds",
@@ -207,7 +307,13 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Incarnate.Hybrid_Silent.Melee_Boost_Very_Rare"
+            ]
+          }
         }
       ]
     }

@@ -107,10 +107,10 @@ def power_to_dict(pw, msgs=None) -> dict:
         'attack_types': pw.attack_types,
     }
 
-    # Effects
-    d['effects'] = []
-    for eg in pw.effects:
-        effect_dict = {
+    # Effects (recursive — each effect group can have nested child groups,
+    # which the convert script reads as `child_effects`).
+    def _eg_to_dict(eg):
+        out = {
             'chance': eg.chance,
             'ppm': eg.ppm,
             'delay': eg.delay,
@@ -122,7 +122,6 @@ def power_to_dict(pw, msgs=None) -> dict:
             'eval_flags': eg.eval_flags,
             'templates': [],
         }
-
         for t in eg.templates:
             tmpl_dict = {
                 'attribs': t.attribs,
@@ -147,9 +146,17 @@ def power_to_dict(pw, msgs=None) -> dict:
                 'stack_limit': t.stack_limit,
                 'stack_key': t.stack_key,
             }
-            effect_dict['templates'].append(tmpl_dict)
+            if t.params:
+                tmpl_dict['params'] = t.params
+            out['templates'].append(tmpl_dict)
+        children = getattr(eg, 'child_groups', None) or []
+        if children:
+            out['child_effects'] = [_eg_to_dict(c) for c in children]
+        return out
 
-        d['effects'].append(effect_dict)
+    d['effects'] = [_eg_to_dict(eg) for eg in pw.effects]
+    if pw.activation_effects:
+        d['activation_effects'] = [_eg_to_dict(eg) for eg in pw.activation_effects]
 
     return d
 

@@ -13,7 +13,7 @@
   "accuracy": 1.0,
   "effect_area": "Sphere",
   "max_targets_hit": 10,
-  "radius": 8.0,
+  "radius": 12.0,
   "arc": 0.0,
   "range": 0.0,
   "range_secondary": 0.0,
@@ -67,7 +67,7 @@
             "Toxic_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Buff_Dmg",
@@ -92,7 +92,7 @@
             "Lethal_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Buff_Dmg",
@@ -124,7 +124,7 @@
             "Toxic_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Buff_Dmg",
@@ -140,7 +140,7 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "Individual",
-          "stack": "Unknown",
+          "stack": "Continuous",
           "stack_limit": 2,
           "stack_key": null
         },
@@ -156,9 +156,9 @@
             "Toxic_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Strength",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Melee_Debuff_Dam",
           "scale": 1.0,
           "duration": "1 seconds",

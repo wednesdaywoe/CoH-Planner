@@ -60,9 +60,9 @@
             "Absorb"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Maximum",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Melee_HealSelf",
           "scale": 0.15,
           "duration": "12 seconds",
@@ -100,7 +100,7 @@
             "Confused"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Res_Boolean",
@@ -138,9 +138,9 @@
             "Absorb"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Maximum",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Melee_HealSelf",
           "scale": 0.15,
           "duration": "12 seconds",
@@ -176,9 +176,9 @@
             "Recovery"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": 0.5,
           "duration": "2.50 seconds",
@@ -201,7 +201,7 @@
             "Toxic_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Resistance",
           "target": "Self",
           "table": "Ranged_Res_Dmg",

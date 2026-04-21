@@ -55,9 +55,9 @@
             "Recharge_Power"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffectedAndPets",
           "table": "Melee_Ones",
           "scale": 1.0,
           "duration": "10.30 seconds",

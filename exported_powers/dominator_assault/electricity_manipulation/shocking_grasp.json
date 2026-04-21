@@ -61,7 +61,7 @@
           "attribs": [
             "Create_Entity"
           ],
-          "type": "Duration",
+          "type": "Magnitude",
           "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
@@ -80,7 +80,18 @@
           "caster_stack": "Individual",
           "stack": "Ignore",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "P964605222",
+            "display_name": "Voltaic Sentinel",
+            "redirects": [
+              "Pets.ResistAll_NoFly.ResistAll",
+              "Pets.VoltaicSentinel_Dominator.Electrical_Bolt",
+              "Pets.VoltaicSentinel_Dominator.Electrical_Field"
+            ],
+            "priority_list": "Pet_NoCollision"
+          }
         }
       ]
     }

@@ -58,10 +58,10 @@
           "attribs": [
             "Placate"
           ],
-          "type": "Magnitude",
+          "type": "Duration",
           "application_type": "Immediate",
           "aspect": "Absolute",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Melee_Taunt",
           "scale": 8.0,
           "duration": "0 seconds",
@@ -96,10 +96,10 @@
           "attribs": [
             "Placate"
           ],
-          "type": "Magnitude",
+          "type": "Duration",
           "application_type": "Immediate",
           "aspect": "Absolute",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Melee_Taunt",
           "scale": 6.0,
           "duration": "0 seconds",

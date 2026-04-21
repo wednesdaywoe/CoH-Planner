@@ -20,7 +20,7 @@
   "activation_time": 1.16,
   "recharge_time": 45.0,
   "activate_period": 0.0,
-  "endurance_cost": 13.0,
+  "endurance_cost": 10.4,
   "interrupt_time": 0.0,
   "target_type": "Foe",
   "target_type_secondary": "None",
@@ -63,9 +63,9 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Level",
           "scale": 1.0,
           "duration": "20 seconds",
@@ -81,7 +81,15 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "PL_StaticObject",
+            "display_name": "Poison Gas Arrow",
+            "redirects": [
+              "Redirects.Trick_Arrow.PoisonGasArrow"
+            ]
+          }
         }
       ]
     },
@@ -108,9 +116,9 @@
             "Toxic_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Strength",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Debuff_Dam",
           "scale": 2.0,
           "duration": "60 seconds",
@@ -140,9 +148,9 @@
             "Toxic_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Strength",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Debuff_Dam",
           "scale": 2.0,
           "duration": "60 seconds",

@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Regrowth",
   "display_fullname": "Corruptor Buff Nature Affinity Regrowth",
-  "display_help": "4T4BZWPYTA5RYAVWLL5L6WGSAA",
+  "display_help": "By channeling the energies present in nature you are able to immediately heal yourself and allies in front of you for a small amount of health and cause them to recover a small amount of health over time. Regrowth places a stack of Bloom on its target.",
   "display_short_help": "Ranged Facing Cone, Minor Ally Heal, Ally Moderate Healing Over Time, +1 Bloom",
   "icon": "natureaffinity_regrowth.png",
   "auto_issue": false,
@@ -62,9 +62,9 @@
             "Heal_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Absolute",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Heal",
           "scale": 0.75,
           "duration": "0 seconds",
@@ -87,9 +87,9 @@
             "Grant_Power"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Absolute",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": 1.0,
           "duration": "0 seconds",
@@ -105,16 +105,22 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Temporary_Powers.Temporary_Powers.Bloom"
+            ]
+          }
         },
         {
           "attribs": [
             "Heal_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Absolute",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Heal",
           "scale": 0.15,
           "duration": "4.10 seconds",

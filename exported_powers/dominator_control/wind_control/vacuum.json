@@ -62,33 +62,7 @@
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
-      "templates": [
-        {
-          "attribs": [
-            "Create_Entity"
-          ],
-          "type": "Magnitude",
-          "application_type": "Unknown",
-          "aspect": "Current",
-          "target": "Unknown",
-          "table": "Ranged_Ones",
-          "scale": -1.0,
-          "duration": "8 seconds",
-          "magnitude": 1.0,
-          "delay": 8.407790785948902e-45,
-          "duration_expression": "8",
-          "magnitude_expression": "Temporary_Powers.Temporary_Powers.Wind_Control_Pressure",
-          "application_period": 3.583960952357152e-40,
-          "tick_chance": 4.132947651725686e-40,
-          "tick_mag_multiplier": 1.215920690479287e-40,
-          "tick_mag_additive": 3.3297093589900573e-40,
-          "jit_requires": "",
-          "caster_stack": "Individual",
-          "stack": "Stack",
-          "stack_limit": 1065353216,
-          "stack_key": null
-        }
-      ]
+      "templates": []
     },
     {
       "chance": 1.0,
@@ -105,10 +79,10 @@
           "attribs": [
             "Held"
           ],
-          "type": "Magnitude",
+          "type": "Duration",
           "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Immobilize",
           "scale": 8.0,
           "duration": "0 seconds",
@@ -143,14 +117,90 @@
           "attribs": [
             "Held"
           ],
-          "type": "Magnitude",
+          "type": "Duration",
           "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": 4.0,
           "duration": "0 seconds",
           "magnitude": 4.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "entref target.owner> entref source> eq ! target.isFriend? ! && enttype target> critter eq &&",
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Held"
+          ],
+          "type": "Duration",
+          "application_type": "Immediate",
+          "aspect": "Current",
+          "target": "AnyAffected",
+          "table": "Ranged_Immobilize",
+          "scale": 12.0,
+          "duration": "0 seconds",
+          "magnitude": 3.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "entref target.owner> entref source> eq ! target.isFriend? ! && enttype target> player eq &&",
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Held"
+          ],
+          "type": "Duration",
+          "application_type": "Immediate",
+          "aspect": "Current",
+          "target": "AnyAffected",
+          "table": "Ranged_Ones",
+          "scale": 4.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -182,9 +232,9 @@
             "Lethal_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Absolute",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Damage",
           "scale": 0.15,
           "duration": "0 seconds",
@@ -220,9 +270,9 @@
             "Lethal_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Absolute",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_PvPDamage",
           "scale": 0.1929,
           "duration": "0 seconds",
@@ -252,33 +302,7 @@
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
-      "templates": [
-        {
-          "attribs": [
-            "Set_Mode"
-          ],
-          "type": "Magnitude",
-          "application_type": "Unknown",
-          "aspect": "Current",
-          "target": "Self",
-          "table": "Ranged_Ones",
-          "scale": 1.0,
-          "duration": "0 seconds",
-          "magnitude": 157.0,
-          "delay": 8.407790785948902e-45,
-          "duration_expression": "Temporary_Powers.Temporary_Powers.Wind_Control_Pressure",
-          "magnitude_expression": "source.ownPowerNum?",
-          "application_period": 1.0715449096999011e-40,
-          "tick_chance": 1.215920690479287e-40,
-          "tick_mag_multiplier": 4.662456302440104e-40,
-          "tick_mag_additive": 3.3297093589900573e-40,
-          "jit_requires": "",
-          "caster_stack": "Individual",
-          "stack": "Stack",
-          "stack_limit": 1065353216,
-          "stack_key": null
-        }
-      ]
+      "templates": []
     },
     {
       "chance": 1.0,
@@ -296,13 +320,13 @@
             "Set_Mode"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
           "scale": 1.0,
           "duration": "239 seconds",
-          "magnitude": 158.0,
+          "magnitude": 160.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -334,9 +358,9 @@
             "Grant_Power"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Absolute",
-          "target": "AnyAffected",
+          "target": "SelfAndPets",
           "table": "Ranged_Ones",
           "scale": 1.0,
           "duration": "1.10 seconds",
@@ -352,14 +376,20 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Temporary_Powers.Temporary_Powers.Wind_Control_Pressure"
+            ]
+          }
         },
         {
           "attribs": [
             "Null"
           ],
-          "type": "Magnitude",
-          "application_type": "Unknown",
+          "type": "Constant",
+          "application_type": "Immediate",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Ranged_Ones",

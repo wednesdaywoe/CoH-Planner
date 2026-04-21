@@ -65,9 +65,9 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Melee_Level",
           "scale": 1.0,
           "duration": "30 seconds",
@@ -83,7 +83,18 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "Class_Minion_Pets",
+            "display_name": "Smoke Grenade",
+            "redirects": [
+              "Pets.ResistAll.ResistAll",
+              "Redirects.Assault_Rifle.Smoke_Grenade",
+              "Redirects.Assault_Rifle.Smoke_Confusion"
+            ],
+            "priority_list": "PL_StaticObject"
+          }
         }
       ]
     }

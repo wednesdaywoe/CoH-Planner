@@ -54,7 +54,7 @@
           "attribs": [
             "Heal_Dmg"
           ],
-          "type": "Duration",
+          "type": "Magnitude",
           "application_type": "OnTick",
           "aspect": "Resistance",
           "target": "Self",

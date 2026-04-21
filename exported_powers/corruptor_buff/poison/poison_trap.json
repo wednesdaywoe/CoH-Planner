@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Poison Trap",
   "display_fullname": "Corruptor Buff Poison Poison Trap",
-  "display_help": "D5CSZH77CN5GYSMKJ3APHCKAVS",
+  "display_help": "3YT8RFK5RVBYY2N9PLNPZ9RC2S",
   "display_short_help": "Place Trap: PBAoE Foe Hold, -END, -Recovery, Chance to Hold, Minor DoT(Toxic)",
   "icon": "poison_poison_trap.png",
   "auto_issue": false,
@@ -62,9 +62,9 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Level",
           "scale": 1.0,
           "duration": "260 seconds",
@@ -80,7 +80,12 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "Pets_Poison_Trap",
+            "priority_list": "PL_Untargetable_FightPreferRanged"
+          }
         }
       ]
     }

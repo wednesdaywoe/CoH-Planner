@@ -104,8 +104,15 @@ class PowerRecord:
     allowed_boostset_cats: list[str]
     cast_through: list[str]
 
-    # Effect data
+    # Effect data — the binary stores two parallel struct_arrays:
+    # - `Effect` blocks (main effects) go into `effects`
+    # - `ActivationEffect` blocks (self-buff/redirect sources for toggles &
+    #   click-with-redirect powers) go into `activation_effects`
+    # The converter treats them differently (see collectRedirectTemplates /
+    # activation_effects filter logic), so they stay split here instead of
+    # being merged.
     effects: list[EffectGroup] = field(default_factory=list)
+    activation_effects: list[EffectGroup] = field(default_factory=list)
 
     # Fields kept from before for backward compat
     @property

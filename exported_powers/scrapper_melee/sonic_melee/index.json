@@ -6,13 +6,13 @@
   "icon": "sonic_manipulation_set.ico",
   "powers": [
     "Attune",
+    "Build_Up",
     "Confront",
     "Deafening_Wave",
     "Earsplitter",
     "Sandmans_Whisper",
     "Sonic_Clap",
     "Sonic_Thrust",
-    "Build_Up",
     "Strident_Echo"
   ],
   "available_level": [

@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Choking Cloud",
   "display_fullname": "Mastermind Buff Radiation Emission Choking Cloud",
-  "display_help": "78QXZBUEWR33WNNZAUY7PCK79A",
+  "display_help": "While active, you generate toxic radioactive gas around yourself. Any nearby foes may be overcome by the gas, leaving them choking and helpless.",
   "display_short_help": "Toggle: PBAoE, Foe Hold",
   "icon": "radiationpoisoning_chokingcloud.png",
   "auto_issue": false,
@@ -20,7 +20,7 @@
   "activation_time": 1.0,
   "recharge_time": 20.0,
   "activate_period": 2.0,
-  "endurance_cost": 1.625,
+  "endurance_cost": 1.3,
   "interrupt_time": 0.0,
   "target_type": "Self",
   "target_type_secondary": "None",
@@ -61,10 +61,10 @@
           "attribs": [
             "Held"
           ],
-          "type": "Magnitude",
+          "type": "Duration",
           "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Immobilize",
           "scale": 4.0,
           "duration": "0 seconds",
@@ -99,10 +99,10 @@
           "attribs": [
             "Held"
           ],
-          "type": "Magnitude",
+          "type": "Duration",
           "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Immobilize",
           "scale": 4.0,
           "duration": "0 seconds",
@@ -137,10 +137,10 @@
           "attribs": [
             "Held"
           ],
-          "type": "Magnitude",
+          "type": "Duration",
           "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_PvPMez",
           "scale": 1.0,
           "duration": "0 seconds",

@@ -20,7 +20,7 @@
   "activation_time": 2.77,
   "recharge_time": 200.0,
   "activate_period": 0.0,
-  "endurance_cost": 16.25,
+  "endurance_cost": 13.0,
   "interrupt_time": 0.0,
   "target_type": "Self",
   "target_type_secondary": "None",
@@ -59,9 +59,9 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": -1.0,
           "duration": "90 seconds",
@@ -77,7 +77,12 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "Pets_Traps_Triage_Beacon",
+            "priority_list": "PL_StaticObject"
+          }
         }
       ]
     }

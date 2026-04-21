@@ -53,7 +53,329 @@
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
-      "templates": []
+      "templates": [],
+      "child_effects": [
+        {
+          "chance": 1.0,
+          "ppm": 0.0,
+          "delay": 0.0,
+          "radius_inner": -1.0,
+          "radius_outer": -1.0,
+          "requires_expression": "rank target> Class_Boss_PraetorianArchvillain eq rank target> Class_Boss_PraetorianAVLowPerception eq || rank target> Class_Boss_Archvillain eq || rank target> Class_Boss_Monster eq || rank target> Class_Boss_Rularuu eq || rank target> Class_Boss_RularuuCoP eq || rank target> Class_Boss_RularuuFM eq || rank target> Class_Boss_Hamidon eq || rank target> Class_Boss_Archvillain_Flying eq || rank target> Class_Boss_Monster_Flying eq || rank target> Class_Boss_Reichsman eq ||",
+          "flags": [],
+          "is_pvp": "EITHER",
+          "eval_flags": 0,
+          "templates": [
+            {
+              "attribs": [
+                "Execute_Power"
+              ],
+              "type": "Magnitude",
+              "application_type": "Immediate",
+              "aspect": "Strength",
+              "target": "AnyAffected",
+              "table": "Melee_Ones",
+              "scale": 0.0,
+              "duration": "0 seconds",
+              "magnitude": 0.0,
+              "delay": 0.0,
+              "duration_expression": "",
+              "magnitude_expression": "",
+              "application_period": 0.0,
+              "tick_chance": 1.0,
+              "tick_mag_multiplier": 1.0,
+              "tick_mag_additive": 0.0,
+              "jit_requires": "",
+              "caster_stack": "Individual",
+              "stack": "Stack",
+              "stack_limit": 2,
+              "stack_key": null,
+              "params": {
+                "type": "Power",
+                "power_names": [
+                  "Pets.Pool_Leadership_VictoryRush.VictoryRush_AV"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "chance": 1.0,
+          "ppm": 0.0,
+          "delay": 0.0,
+          "radius_inner": -1.0,
+          "radius_outer": -1.0,
+          "requires_expression": "",
+          "flags": [],
+          "is_pvp": "EITHER",
+          "eval_flags": 0,
+          "templates": [],
+          "child_effects": [
+            {
+              "chance": 1.0,
+              "ppm": 0.0,
+              "delay": 0.0,
+              "radius_inner": -1.0,
+              "radius_outer": -1.0,
+              "requires_expression": "rank target> Class_Boss_PraetorianElite eq rank target> Class_Boss_Elite eq || rank target> Class_Boss_EliteTurret eq ||",
+              "flags": [],
+              "is_pvp": "EITHER",
+              "eval_flags": 0,
+              "templates": [
+                {
+                  "attribs": [
+                    "Execute_Power"
+                  ],
+                  "type": "Magnitude",
+                  "application_type": "Immediate",
+                  "aspect": "Strength",
+                  "target": "AnyAffected",
+                  "table": "Melee_Ones",
+                  "scale": 0.0,
+                  "duration": "0 seconds",
+                  "magnitude": 0.0,
+                  "delay": 0.0,
+                  "duration_expression": "",
+                  "magnitude_expression": "",
+                  "application_period": 0.0,
+                  "tick_chance": 1.0,
+                  "tick_mag_multiplier": 1.0,
+                  "tick_mag_additive": 0.0,
+                  "jit_requires": "",
+                  "caster_stack": "Individual",
+                  "stack": "Stack",
+                  "stack_limit": 2,
+                  "stack_key": null,
+                  "params": {
+                    "type": "Power",
+                    "power_names": [
+                      "Pets.Pool_Leadership_VictoryRush.VictoryRush_EB"
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "chance": 1.0,
+              "ppm": 0.0,
+              "delay": 0.0,
+              "radius_inner": -1.0,
+              "radius_outer": -1.0,
+              "requires_expression": "",
+              "flags": [],
+              "is_pvp": "EITHER",
+              "eval_flags": 0,
+              "templates": [],
+              "child_effects": [
+                {
+                  "chance": 1.0,
+                  "ppm": 0.0,
+                  "delay": 0.0,
+                  "radius_inner": -1.0,
+                  "radius_outer": -1.0,
+                  "requires_expression": "enttype target> player eq rank target> Class_Boss_PraetorianGrunt eq || rank target> Class_Boss_Grunt eq || rank target> Class_Boss_HeavyPet eq || rank target> Class_Boss_Shield eq || rank target> Class_Boss_Grunt eq || rank target> Class_Boss_Mito eq || rank target> Class_Boss_Guard eq || rank target> Class_Boss_Henchman eq || rank target> Class_Boss_Signature_Pets eq || rank target> Class_Boss_HugeDevice eq || enttype target> player eq ||",
+                  "flags": [],
+                  "is_pvp": "EITHER",
+                  "eval_flags": 0,
+                  "templates": [
+                    {
+                      "attribs": [
+                        "Execute_Power"
+                      ],
+                      "type": "Magnitude",
+                      "application_type": "Immediate",
+                      "aspect": "Strength",
+                      "target": "AnyAffected",
+                      "table": "Melee_Ones",
+                      "scale": 0.0,
+                      "duration": "0 seconds",
+                      "magnitude": 0.0,
+                      "delay": 0.0,
+                      "duration_expression": "",
+                      "magnitude_expression": "",
+                      "application_period": 0.0,
+                      "tick_chance": 1.0,
+                      "tick_mag_multiplier": 1.0,
+                      "tick_mag_additive": 0.0,
+                      "jit_requires": "",
+                      "caster_stack": "Individual",
+                      "stack": "Stack",
+                      "stack_limit": 2,
+                      "stack_key": null,
+                      "params": {
+                        "type": "Power",
+                        "power_names": [
+                          "Pets.Pool_Leadership_VictoryRush.VictoryRush_BS"
+                        ]
+                      }
+                    }
+                  ]
+                },
+                {
+                  "chance": 1.0,
+                  "ppm": 0.0,
+                  "delay": 0.0,
+                  "radius_inner": -1.0,
+                  "radius_outer": -1.0,
+                  "requires_expression": "",
+                  "flags": [],
+                  "is_pvp": "EITHER",
+                  "eval_flags": 0,
+                  "templates": [],
+                  "child_effects": [
+                    {
+                      "chance": 1.0,
+                      "ppm": 0.0,
+                      "delay": 0.0,
+                      "radius_inner": -1.0,
+                      "radius_outer": -1.0,
+                      "requires_expression": "rank target> Class_Lt_PraetorianGrunt eq rank target> Class_Lt_Grunt eq || rank target> Class_Lt_Sniper eq || rank target> Class_Lt_Henchman eq || rank target> Class_Lt_LongRangeDrone eq || rank target> Class_Lt_Turret eq ||",
+                      "flags": [],
+                      "is_pvp": "EITHER",
+                      "eval_flags": 0,
+                      "templates": [
+                        {
+                          "attribs": [
+                            "Execute_Power"
+                          ],
+                          "type": "Magnitude",
+                          "application_type": "Immediate",
+                          "aspect": "Strength",
+                          "target": "AnyAffected",
+                          "table": "Melee_Ones",
+                          "scale": 0.0,
+                          "duration": "0 seconds",
+                          "magnitude": 0.0,
+                          "delay": 0.0,
+                          "duration_expression": "",
+                          "magnitude_expression": "",
+                          "application_period": 0.0,
+                          "tick_chance": 1.0,
+                          "tick_mag_multiplier": 1.0,
+                          "tick_mag_additive": 0.0,
+                          "jit_requires": "",
+                          "caster_stack": "Individual",
+                          "stack": "Stack",
+                          "stack_limit": 2,
+                          "stack_key": null,
+                          "params": {
+                            "type": "Power",
+                            "power_names": [
+                              "Pets.Pool_Leadership_VictoryRush.VictoryRush_LT"
+                            ]
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "chance": 1.0,
+                      "ppm": 0.0,
+                      "delay": 0.0,
+                      "radius_inner": -1.0,
+                      "radius_outer": -1.0,
+                      "requires_expression": "",
+                      "flags": [],
+                      "is_pvp": "EITHER",
+                      "eval_flags": 0,
+                      "templates": [],
+                      "child_effects": [
+                        {
+                          "chance": 1.0,
+                          "ppm": 0.0,
+                          "delay": 0.0,
+                          "radius_inner": -1.0,
+                          "radius_outer": -1.0,
+                          "requires_expression": "rank target> Class_Minion_PraetorianGrunt eq rank target> Class_Minion_Grunt eq ||",
+                          "flags": [],
+                          "is_pvp": "EITHER",
+                          "eval_flags": 0,
+                          "templates": [
+                            {
+                              "attribs": [
+                                "Execute_Power"
+                              ],
+                              "type": "Magnitude",
+                              "application_type": "Immediate",
+                              "aspect": "Strength",
+                              "target": "AnyAffected",
+                              "table": "Melee_Ones",
+                              "scale": 0.0,
+                              "duration": "0 seconds",
+                              "magnitude": 0.0,
+                              "delay": 0.0,
+                              "duration_expression": "",
+                              "magnitude_expression": "",
+                              "application_period": 0.0,
+                              "tick_chance": 1.0,
+                              "tick_mag_multiplier": 1.0,
+                              "tick_mag_additive": 0.0,
+                              "jit_requires": "",
+                              "caster_stack": "Individual",
+                              "stack": "Stack",
+                              "stack_limit": 2,
+                              "stack_key": null,
+                              "params": {
+                                "type": "Power",
+                                "power_names": [
+                                  "Pets.Pool_Leadership_VictoryRush.VictoryRush_MN"
+                                ]
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "chance": 1.0,
+                          "ppm": 0.0,
+                          "delay": 0.0,
+                          "radius_inner": -1.0,
+                          "radius_outer": -1.0,
+                          "requires_expression": "",
+                          "flags": [],
+                          "is_pvp": "EITHER",
+                          "eval_flags": 0,
+                          "templates": [
+                            {
+                              "attribs": [
+                                "Execute_Power"
+                              ],
+                              "type": "Magnitude",
+                              "application_type": "Immediate",
+                              "aspect": "Strength",
+                              "target": "AnyAffected",
+                              "table": "Melee_Ones",
+                              "scale": 0.0,
+                              "duration": "0 seconds",
+                              "magnitude": 0.0,
+                              "delay": 0.0,
+                              "duration_expression": "",
+                              "magnitude_expression": "",
+                              "application_period": 0.0,
+                              "tick_chance": 1.0,
+                              "tick_mag_multiplier": 1.0,
+                              "tick_mag_additive": 0.0,
+                              "jit_requires": "",
+                              "caster_stack": "Individual",
+                              "stack": "Stack",
+                              "stack_limit": 2,
+                              "stack_key": null,
+                              "params": {
+                                "type": "Power",
+                                "power_names": [
+                                  "Pets.Pool_Leadership_VictoryRush.VictoryRush_Base"
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   ],
   "available_level": 0,

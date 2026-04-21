@@ -1,12 +1,12 @@
 {
-  "name": "Scrutiny",
-  "full_name": "Inherent.Inherent.Scrutiny",
-  "short_name": "Scrutiny",
+  "name": "Opportunity",
+  "full_name": "Inherent.Inherent.Opportunity",
+  "short_name": "Opportunity",
   "type": "Auto",
   "display_name": "Opportunity",
-  "display_fullname": "Inherent Inherent Scrutiny",
-  "display_help": "UKU9WNFXVQT9YRXSMRK6A2Q7A2",
-  "display_short_help": "-Resist, -Def",
+  "display_fullname": "Inherent Inherent Opportunity",
+  "display_help": "J9QZ7KXAM9QDYPZJN5L9H8FRJS",
+  "display_short_help": "Critical Damage",
   "icon": "inherent_targetlock",
   "auto_issue": true,
   "auto_issue_keeps_level": false,
@@ -19,7 +19,7 @@
   "range_secondary": 0.0,
   "activation_time": 0.0,
   "recharge_time": 0.0,
-  "activate_period": 45.0,
+  "activate_period": 0.25,
   "endurance_cost": 0.0,
   "interrupt_time": 0.0,
   "target_type": "Self",
@@ -40,27 +40,29 @@
   "attack_types": [],
   "effects": [
     {
-      "chance": 0.0,
+      "chance": 1.0,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
       "requires_expression": "",
-      "flags": [],
-      "is_pvp": "EITHER",
-      "eval_flags": 0,
+      "flags": [
+        "PVEOnly"
+      ],
+      "is_pvp": "PVE_ONLY",
+      "eval_flags": 4,
       "templates": [
         {
           "attribs": [
-            "Grant_Power"
+            "Global_Chance_Mod"
           ],
-          "type": "Magnitude",
-          "application_type": "OnTick",
+          "type": "Expression",
+          "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
-          "table": "Ranged_Ones",
-          "scale": 1.0,
-          "duration": "45 seconds",
+          "target": "SelfAndPets",
+          "table": "Melee_Ones",
+          "scale": 0.35,
+          "duration": "0.25 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -71,21 +73,21 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "Individual",
-          "stack": "Replace",
+          "stack": "Continuous",
           "stack_limit": 2,
           "stack_key": null
         },
         {
           "attribs": [
-            "Null"
+            "PerceptionRadius"
           ],
-          "type": "Magnitude",
-          "application_type": "OnTick",
+          "type": "Expression",
+          "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
-          "table": "Ranged_Ones",
-          "scale": 1.0,
-          "duration": "100 seconds",
+          "target": "SelfAndPets",
+          "table": "Melee_Ones",
+          "scale": 0.25,
+          "duration": "0.25 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -96,7 +98,7 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "Individual",
-          "stack": "Replace",
+          "stack": "Continuous",
           "stack_limit": 2,
           "stack_key": null
         }

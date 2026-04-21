@@ -69,7 +69,7 @@
             "Grant_Power"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -87,7 +87,195 @@
           "caster_stack": "Individual",
           "stack": "Ignore",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Redirects.Stone_Armor.Thermal"
+            ]
+          }
+        }
+      ],
+      "child_effects": [
+        {
+          "chance": 1.0,
+          "ppm": 0.0,
+          "delay": 0.0,
+          "radius_inner": -1.0,
+          "radius_outer": -1.0,
+          "requires_expression": "@CustomFX *null* eq",
+          "flags": [],
+          "is_pvp": "EITHER",
+          "eval_flags": 8,
+          "templates": [],
+          "child_effects": [
+            {
+              "chance": 1.0,
+              "ppm": 0.0,
+              "delay": 0.0,
+              "radius_inner": -1.0,
+              "radius_outer": -1.0,
+              "requires_expression": "Range power.base> 20 >",
+              "flags": [],
+              "is_pvp": "EITHER",
+              "eval_flags": 4,
+              "templates": [],
+              "child_effects": [
+                {
+                  "chance": 1.0,
+                  "ppm": 0.0,
+                  "delay": 0.0,
+                  "radius_inner": -1.0,
+                  "radius_outer": -1.0,
+                  "requires_expression": "kMeter source> 0 >",
+                  "flags": [],
+                  "is_pvp": "EITHER",
+                  "eval_flags": 4,
+                  "templates": []
+                },
+                {
+                  "chance": 0.07000000029802322,
+                  "ppm": 0.0,
+                  "delay": 0.0,
+                  "radius_inner": -1.0,
+                  "radius_outer": -1.0,
+                  "requires_expression": "kMeter source> .9 <",
+                  "flags": [],
+                  "is_pvp": "EITHER",
+                  "eval_flags": 4,
+                  "templates": []
+                }
+              ]
+            },
+            {
+              "chance": 1.0,
+              "ppm": 0.0,
+              "delay": 0.0,
+              "radius_inner": -1.0,
+              "radius_outer": -1.0,
+              "requires_expression": "",
+              "flags": [],
+              "is_pvp": "EITHER",
+              "eval_flags": 4,
+              "templates": [],
+              "child_effects": [
+                {
+                  "chance": 1.0,
+                  "ppm": 0.0,
+                  "delay": 0.0,
+                  "radius_inner": -1.0,
+                  "radius_outer": -1.0,
+                  "requires_expression": "kMeter source> 0 >",
+                  "flags": [],
+                  "is_pvp": "EITHER",
+                  "eval_flags": 4,
+                  "templates": []
+                },
+                {
+                  "chance": 0.07000000029802322,
+                  "ppm": 0.0,
+                  "delay": 0.0,
+                  "radius_inner": -1.0,
+                  "radius_outer": -1.0,
+                  "requires_expression": "kMeter source> .9 <",
+                  "flags": [],
+                  "is_pvp": "EITHER",
+                  "eval_flags": 4,
+                  "templates": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "chance": 1.0,
+          "ppm": 0.0,
+          "delay": 0.0,
+          "radius_inner": -1.0,
+          "radius_outer": -1.0,
+          "requires_expression": "@CustomFX *null* eq !",
+          "flags": [],
+          "is_pvp": "EITHER",
+          "eval_flags": 8,
+          "templates": [],
+          "child_effects": [
+            {
+              "chance": 1.0,
+              "ppm": 0.0,
+              "delay": 0.0,
+              "radius_inner": -1.0,
+              "radius_outer": -1.0,
+              "requires_expression": "Range power.base> 20 >",
+              "flags": [],
+              "is_pvp": "EITHER",
+              "eval_flags": 4,
+              "templates": [],
+              "child_effects": [
+                {
+                  "chance": 1.0,
+                  "ppm": 0.0,
+                  "delay": 0.0,
+                  "radius_inner": -1.0,
+                  "radius_outer": -1.0,
+                  "requires_expression": "kMeter source> 0 >",
+                  "flags": [],
+                  "is_pvp": "EITHER",
+                  "eval_flags": 4,
+                  "templates": []
+                },
+                {
+                  "chance": 0.20000000298023224,
+                  "ppm": 0.0,
+                  "delay": 0.0,
+                  "radius_inner": -1.0,
+                  "radius_outer": -1.0,
+                  "requires_expression": "kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || &&",
+                  "flags": [],
+                  "is_pvp": "EITHER",
+                  "eval_flags": 4,
+                  "templates": []
+                }
+              ]
+            },
+            {
+              "chance": 1.0,
+              "ppm": 0.0,
+              "delay": 0.0,
+              "radius_inner": -1.0,
+              "radius_outer": -1.0,
+              "requires_expression": "",
+              "flags": [],
+              "is_pvp": "EITHER",
+              "eval_flags": 4,
+              "templates": [],
+              "child_effects": [
+                {
+                  "chance": 1.0,
+                  "ppm": 0.0,
+                  "delay": 0.0,
+                  "radius_inner": -1.0,
+                  "radius_outer": -1.0,
+                  "requires_expression": "kMeter source> 0 >",
+                  "flags": [],
+                  "is_pvp": "EITHER",
+                  "eval_flags": 4,
+                  "templates": []
+                },
+                {
+                  "chance": 0.20000000298023224,
+                  "ppm": 0.0,
+                  "delay": 0.0,
+                  "radius_inner": -1.0,
+                  "radius_outer": -1.0,
+                  "requires_expression": "kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || &&",
+                  "flags": [],
+                  "is_pvp": "EITHER",
+                  "eval_flags": 4,
+                  "templates": []
+                }
+              ]
+            }
+          ]
         }
       ]
     }

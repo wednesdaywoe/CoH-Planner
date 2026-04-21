@@ -54,8 +54,8 @@
           "attribs": [
             "Rage"
           ],
-          "type": "Magnitude",
-          "application_type": "Unknown",
+          "type": "Expression",
+          "application_type": "Immediate",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Melee_Ones",
@@ -63,16 +63,16 @@
           "duration": "0 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
-          "duration_expression": "Column.5thColumnEndgame.NictusFX",
-          "magnitude_expression": "ActivateAttackClick",
-          "application_period": 2.8984527501017733e-39,
-          "tick_chance": 1.0715449096999011e-40,
-          "tick_mag_multiplier": 1.215920690479287e-40,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
           "jit_requires": "",
-          "caster_stack": "Unknown",
-          "stack": "Unknown",
-          "stack_limit": 0,
+          "caster_stack": "Individual",
+          "stack": "Stack",
+          "stack_limit": 2,
           "stack_key": null
         }
       ]

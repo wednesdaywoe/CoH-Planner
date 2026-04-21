@@ -58,58 +58,7 @@
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 4,
-      "templates": [
-        {
-          "attribs": [
-            "Lethal_Dmg"
-          ],
-          "type": "Magnitude",
-          "application_type": "Unknown",
-          "aspect": "Absolute",
-          "target": "Unknown",
-          "table": "Melee_Damage",
-          "scale": 0.85,
-          "duration": "0 seconds",
-          "magnitude": 1.0,
-          "delay": 0.0,
-          "duration_expression": "thColumnEndgame.NictusFX",
-          "magnitude_expression": "distance",
-          "application_period": 1.3880589964338762e-39,
-          "tick_chance": 1.215640430786422e-40,
-          "tick_mag_multiplier": 9.144313258798026e-41,
-          "tick_mag_additive": 1.3453446166443271e-39,
-          "jit_requires": "minmax",
-          "caster_stack": "Unknown",
-          "stack": "Unknown",
-          "stack_limit": 95389,
-          "stack_key": "+"
-        },
-        {
-          "attribs": [
-            "Lethal_Dmg"
-          ],
-          "type": "Magnitude",
-          "application_type": "Unknown",
-          "aspect": "Absolute",
-          "target": "Unknown",
-          "table": "Melee_Damage",
-          "scale": 0.07,
-          "duration": "3.10 seconds",
-          "magnitude": 1.0,
-          "delay": 0.0,
-          "duration_expression": "thColumnEndgame.NictusFX",
-          "magnitude_expression": "distance",
-          "application_period": 1.3880589964338762e-39,
-          "tick_chance": 1.215640430786422e-40,
-          "tick_mag_multiplier": 9.144313258798026e-41,
-          "tick_mag_additive": 1.3453446166443271e-39,
-          "jit_requires": "minmax",
-          "caster_stack": "Unknown",
-          "stack": "Unknown",
-          "stack_limit": 95389,
-          "stack_key": "+"
-        }
-      ]
+      "templates": []
     },
     {
       "chance": 1.0,
@@ -121,33 +70,7 @@
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 4,
-      "templates": [
-        {
-          "attribs": [
-            "Lethal_Dmg"
-          ],
-          "type": "Magnitude",
-          "application_type": "Unknown",
-          "aspect": "Absolute",
-          "target": "Unknown",
-          "table": "Melee_InherentDamage",
-          "scale": 0.85,
-          "duration": "0 seconds",
-          "magnitude": 1.0,
-          "delay": 0.0,
-          "duration_expression": "ndgame.NictusFX",
-          "magnitude_expression": "30",
-          "application_period": 2.8981724904089083e-39,
-          "tick_chance": 2.9624570574598093e-40,
-          "tick_mag_multiplier": 1.215920690479287e-40,
-          "tick_mag_additive": 2.8803003297949096e-39,
-          "jit_requires": "+",
-          "caster_stack": "Unknown",
-          "stack": "Unknown",
-          "stack_limit": 177411,
-          "stack_key": "25"
-        }
-      ]
+      "templates": []
     },
     {
       "chance": 0.5,
@@ -159,33 +82,7 @@
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 4,
-      "templates": [
-        {
-          "attribs": [
-            "Lethal_Dmg"
-          ],
-          "type": "Magnitude",
-          "application_type": "Unknown",
-          "aspect": "Absolute",
-          "target": "Unknown",
-          "table": "Melee_InherentDamage",
-          "scale": 0.85,
-          "duration": "0 seconds",
-          "magnitude": 1.0,
-          "delay": 0.0,
-          "duration_expression": "thColumnEndgame.NictusFX",
-          "magnitude_expression": "distance",
-          "application_period": 1.3880589964338762e-39,
-          "tick_chance": 1.215640430786422e-40,
-          "tick_mag_multiplier": 9.144313258798026e-41,
-          "tick_mag_additive": 1.3453446166443271e-39,
-          "jit_requires": "minmax",
-          "caster_stack": "Unknown",
-          "stack": "Unknown",
-          "stack_limit": 95389,
-          "stack_key": "+"
-        }
-      ]
+      "templates": []
     },
     {
       "chance": 1.0,
@@ -197,58 +94,7 @@
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 4,
-      "templates": [
-        {
-          "attribs": [
-            "Lethal_Dmg"
-          ],
-          "type": "Magnitude",
-          "application_type": "Unknown",
-          "aspect": "Absolute",
-          "target": "Unknown",
-          "table": "Melee_Damage",
-          "scale": 0.57,
-          "duration": "0 seconds",
-          "magnitude": 1.0,
-          "delay": 0.0,
-          "duration_expression": "thColumnEndgame.NictusFX",
-          "magnitude_expression": "distance",
-          "application_period": 1.3880589964338762e-39,
-          "tick_chance": 1.215640430786422e-40,
-          "tick_mag_multiplier": 9.144313258798026e-41,
-          "tick_mag_additive": 1.3453446166443271e-39,
-          "jit_requires": "minmax",
-          "caster_stack": "Unknown",
-          "stack": "Unknown",
-          "stack_limit": 95389,
-          "stack_key": "+"
-        },
-        {
-          "attribs": [
-            "Lethal_Dmg"
-          ],
-          "type": "Magnitude",
-          "application_type": "Unknown",
-          "aspect": "Absolute",
-          "target": "Unknown",
-          "table": "Melee_Damage",
-          "scale": 0.05,
-          "duration": "3.10 seconds",
-          "magnitude": 1.0,
-          "delay": 0.0,
-          "duration_expression": "thColumnEndgame.NictusFX",
-          "magnitude_expression": "distance",
-          "application_period": 1.3880589964338762e-39,
-          "tick_chance": 1.215640430786422e-40,
-          "tick_mag_multiplier": 9.144313258798026e-41,
-          "tick_mag_additive": 1.3453446166443271e-39,
-          "jit_requires": "minmax",
-          "caster_stack": "Unknown",
-          "stack": "Unknown",
-          "stack_limit": 95389,
-          "stack_key": "+"
-        }
-      ]
+      "templates": []
     },
     {
       "chance": 0.10000000149011612,
@@ -260,33 +106,7 @@
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 4,
-      "templates": [
-        {
-          "attribs": [
-            "Lethal_Dmg"
-          ],
-          "type": "Magnitude",
-          "application_type": "Unknown",
-          "aspect": "Absolute",
-          "target": "Unknown",
-          "table": "Melee_InherentDamage",
-          "scale": 0.57,
-          "duration": "0 seconds",
-          "magnitude": 1.0,
-          "delay": 0.0,
-          "duration_expression": "thColumnEndgame.NictusFX",
-          "magnitude_expression": "distance",
-          "application_period": 1.3880589964338762e-39,
-          "tick_chance": 1.215640430786422e-40,
-          "tick_mag_multiplier": 9.144313258798026e-41,
-          "tick_mag_additive": 1.3453446166443271e-39,
-          "jit_requires": "minmax",
-          "caster_stack": "Unknown",
-          "stack": "Unknown",
-          "stack_limit": 95389,
-          "stack_key": "+"
-        }
-      ]
+      "templates": []
     },
     {
       "chance": 1.0,
@@ -298,33 +118,19 @@
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 4,
-      "templates": [
-        {
-          "attribs": [
-            "Lethal_Dmg"
-          ],
-          "type": "Magnitude",
-          "application_type": "Unknown",
-          "aspect": "Absolute",
-          "target": "Unknown",
-          "table": "Melee_InherentDamage",
-          "scale": 0.57,
-          "duration": "0 seconds",
-          "magnitude": 1.0,
-          "delay": 0.0,
-          "duration_expression": "thColumnEndgame.NictusFX",
-          "magnitude_expression": "distance",
-          "application_period": 1.3880589964338762e-39,
-          "tick_chance": 1.215640430786422e-40,
-          "tick_mag_multiplier": 9.144313258798026e-41,
-          "tick_mag_additive": 1.3453446166443271e-39,
-          "jit_requires": "minmax",
-          "caster_stack": "Unknown",
-          "stack": "Unknown",
-          "stack_limit": 95389,
-          "stack_key": "+"
-        }
-      ]
+      "templates": []
+    },
+    {
+      "chance": 0.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 4,
+      "templates": []
     },
     {
       "chance": 1.0,
@@ -342,7 +148,7 @@
             "Grant_Power"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Melee_Ones",
@@ -360,7 +166,13 @@
           "caster_stack": "Individual",
           "stack": "Ignore",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Temporary_Powers.Temporary_Powers.Assassins_Focus"
+            ]
+          }
         }
       ]
     }

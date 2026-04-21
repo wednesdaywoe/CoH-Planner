@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Overgrowth",
   "display_fullname": "Defender Buff Nature Affinity Overgrowth",
-  "display_help": "9PRHA7ANMG4LYXXEYRNB8F3UGX",
+  "display_help": "Becoming a conduit of nature itself, you greatly boost the damage, to hit and endurance discount of nearby allies for a long period of time. Overgrowth also grants the affected targets 5 stacks of Bloom.",
   "display_short_help": "PBAoE, Team +Damage, +To Hit, +Endurance Discount, +5 Bloom",
   "icon": "natureaffinity_overgrowth.png",
   "auto_issue": false,
@@ -61,9 +61,9 @@
             "ToHit"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Buff_ToHit",
           "scale": 1.0,
           "duration": "60 seconds",
@@ -93,9 +93,9 @@
             "Toxic_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Strength",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Buff_Dmg",
           "scale": 6.6,
           "duration": "60 seconds",
@@ -118,9 +118,9 @@
             "EnduranceDiscount"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Strength",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Stun",
           "scale": 0.5,
           "duration": "60 seconds",
@@ -143,9 +143,9 @@
             "Grant_Power"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Absolute",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": 1.0,
           "duration": "0 seconds",
@@ -161,7 +161,13 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Temporary_Powers.Temporary_Powers.Bloom"
+            ]
+          }
         }
       ]
     }

@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Entangling Aura",
   "display_fullname": "Controller Buff Nature Affinity Raging Tempest",
-  "display_help": "S9F73S6JL59BWFNGYP2J2SWKBS",
+  "display_help": "While this power is active there is a high chance that entangling vines will grasp nearby foes and render them held for a short time.",
   "display_short_help": "Toggle, Foe Hold",
   "icon": "natureaffinity_ragingtempest.png",
   "auto_issue": false,
@@ -60,10 +60,10 @@
           "attribs": [
             "Held"
           ],
-          "type": "Magnitude",
+          "type": "Duration",
           "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": 4.0,
           "duration": "0 seconds",
@@ -98,10 +98,10 @@
           "attribs": [
             "Held"
           ],
-          "type": "Magnitude",
+          "type": "Duration",
           "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": 4.0,
           "duration": "0 seconds",
@@ -136,10 +136,10 @@
           "attribs": [
             "Held"
           ],
-          "type": "Magnitude",
+          "type": "Duration",
           "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_PvPMez",
           "scale": 1.0,
           "duration": "0 seconds",

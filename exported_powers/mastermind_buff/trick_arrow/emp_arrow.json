@@ -20,7 +20,7 @@
   "activation_time": 1.83,
   "recharge_time": 300.0,
   "activate_period": 0.0,
-  "endurance_cost": 29.25,
+  "endurance_cost": 23.4,
   "interrupt_time": 0.0,
   "target_type": "Location",
   "target_type_secondary": "None",
@@ -65,9 +65,9 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Melee_Level",
           "scale": 1.0,
           "duration": "240 seconds",
@@ -83,16 +83,25 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "PL_StaticObject",
+            "display_name": "EMP Field",
+            "redirects": [
+              "Redirects.Trick_Arrow.EMP_Arrow",
+              "Redirects.Trick_Arrow.EMP_Arrow_Fx"
+            ]
+          }
         },
         {
           "attribs": [
             "Execute_Power"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Strength",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Melee_Ones",
           "scale": 0.0,
           "duration": "0 seconds",
@@ -108,7 +117,13 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Redirects.Trick_Arrow.EMP_Arrow_Burst"
+            ]
+          }
         }
       ]
     }

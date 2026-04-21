@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Paralytic Poison",
   "display_fullname": "Mastermind Buff Poison Paralytic Poison",
-  "display_help": "VKTRSYPLWD6XW8MYGLPGBPHGKZ",
+  "display_help": "This Paralytic Poison viciously attacks a foe's nervous system and can leave an affected target completely Held and defenseless.",
   "display_short_help": "Ranged Hold",
   "icon": "poison_paralytic.png",
   "auto_issue": false,
@@ -20,7 +20,7 @@
   "activation_time": 2.0,
   "recharge_time": 16.0,
   "activate_period": 0.0,
-  "endurance_cost": 9.75,
+  "endurance_cost": 7.8,
   "interrupt_time": 0.0,
   "target_type": "Foe",
   "target_type_secondary": "None",
@@ -63,10 +63,10 @@
           "attribs": [
             "Held"
           ],
-          "type": "Magnitude",
+          "type": "Duration",
           "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Immobilize",
           "scale": 8.0,
           "duration": "0 seconds",
@@ -101,10 +101,10 @@
           "attribs": [
             "Held"
           ],
-          "type": "Magnitude",
+          "type": "Duration",
           "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_PvPMez",
           "scale": 1.0,
           "duration": "0 seconds",

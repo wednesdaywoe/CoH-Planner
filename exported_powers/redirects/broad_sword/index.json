@@ -1,0 +1,15 @@
+{
+  "key": "Redirects.Broad_Sword",
+  "display_name": "Broad Sword",
+  "help": "Wield a Broad Sword and master a variety of powerful Lethal attacks. Slower than a Katana, the Broad Sword's weight strikes with more force and damage. The Broadsword can reduce an enemy's Defense, allowing other attacks to hit more reliably. The Broad Sword is a powerful melee weapon that has a bonus to Accuracy.",
+  "short_help": "Broad Sword",
+  "icon": "tanker_melee_set.ico",
+  "powers": [
+    "Head_Splitter",
+    "Head_Splitter_Glance"
+  ],
+  "available_level": [
+    0,
+    0
+  ]
+}

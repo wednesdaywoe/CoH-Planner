@@ -11,24 +11,24 @@
   "auto_issue": false,
   "auto_issue_keeps_level": false,
   "accuracy": 1.0,
-  "effect_area": "SingleTarget",
+  "effect_area": "Location",
   "max_targets_hit": 0,
-  "radius": 0.0,
+  "radius": 20.0,
   "arc": 0.0,
   "range": 80.0,
   "range_secondary": 0.0,
-  "activation_time": 2.0,
-  "recharge_time": 30.0,
+  "activation_time": 1.5,
+  "recharge_time": 15.0,
   "activate_period": 0.0,
-  "endurance_cost": 22.5,
+  "endurance_cost": 14.352,
   "interrupt_time": 0.0,
-  "target_type": "Foe",
-  "target_type_secondary": null,
+  "target_type": "DeadMyPet",
+  "target_type_secondary": "None",
   "targets_autohit": [
-    "Foe"
+    "Self"
   ],
   "targets_affected": [
-    "Foe"
+    "Location"
   ],
   "boosts_allowed": [
     "EnduranceDiscount",
@@ -65,13 +65,13 @@
             "Execute_Power"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Strength",
-          "target": "Unknown",
+          "target": "Self",
           "table": "Melee_Ones",
-          "scale": 1.0,
+          "scale": 0.0,
           "duration": "0 seconds",
-          "magnitude": 1.0,
+          "magnitude": 0.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -83,14 +83,20 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Redirects.Marine_Affinity.Whitecap_Arrive"
+            ]
+          }
         },
         {
           "attribs": [
             "Teleport"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",

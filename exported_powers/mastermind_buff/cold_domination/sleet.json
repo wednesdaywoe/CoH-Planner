@@ -20,7 +20,7 @@
   "activation_time": 2.03,
   "recharge_time": 60.0,
   "activate_period": 0.0,
-  "endurance_cost": 22.75,
+  "endurance_cost": 18.2,
   "interrupt_time": 0.0,
   "target_type": "Location",
   "target_type_secondary": "None",
@@ -63,9 +63,9 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Melee_Level",
           "scale": 1.0,
           "duration": "15 seconds",
@@ -81,7 +81,16 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "P536219010",
+            "redirects": [
+              "Pets.Sleet.Sleet",
+              "Pets.Sleet.Avoid"
+            ],
+            "priority_list": "P3955584513"
+          }
         }
       ]
     }

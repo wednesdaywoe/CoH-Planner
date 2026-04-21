@@ -64,7 +64,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Level",
@@ -82,7 +82,19 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "PL_Untargetable_FightPreferRanged",
+            "display_name": "Carrion Creeper",
+            "redirects": [
+              "Pets.ResistAll.ResistAll",
+              "Villain_Pets.Creeper_Patch.Carrion_Creepers",
+              "Villain_Pets.Creeper_Patch.Vines",
+              "Villain_Pets.Creeper_Patch.Bramble",
+              "Villain_Pets.Creeper_Patch.FX"
+            ]
+          }
         }
       ]
     }

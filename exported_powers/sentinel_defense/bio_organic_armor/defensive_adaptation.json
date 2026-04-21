@@ -56,14 +56,14 @@
           "attribs": [
             "Set_Mode"
           ],
-          "type": "Magnitude",
-          "application_type": "Unknown",
+          "type": "Constant",
+          "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
           "scale": 1.0,
           "duration": "1.10 seconds",
-          "magnitude": 152.0,
+          "magnitude": 154.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -81,7 +81,7 @@
           "attribs": [
             "Grant_Power"
           ],
-          "type": "Duration",
+          "type": "Magnitude",
           "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "Self",
@@ -100,13 +100,19 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Temporary_Powers.Temporary_Powers.Defensive_Adaptation_Proc"
+            ]
+          }
         },
         {
           "attribs": [
             "Grant_Power"
           ],
-          "type": "Duration",
+          "type": "Magnitude",
           "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "Self",
@@ -125,14 +131,20 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Temporary_Powers.Temporary_Powers.Offensive_Adaptation_Proc"
+            ]
+          }
         },
         {
           "attribs": [
             "Grant_Power"
           ],
-          "type": "Constant",
-          "application_type": "OnTick",
+          "type": "Magnitude",
+          "application_type": "OnActivate",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Melee_Ones",
@@ -150,7 +162,13 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Temporary_Powers.Temporary_Powers.Defensive_Adaptation_Proc"
+            ]
+          }
         },
         {
           "attribs": [
@@ -164,7 +182,7 @@
             "Toxic_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Ones",

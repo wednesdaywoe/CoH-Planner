@@ -54,7 +54,7 @@
           "attribs": [
             "Null"
           ],
-          "type": "Duration",
+          "type": "Magnitude",
           "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",

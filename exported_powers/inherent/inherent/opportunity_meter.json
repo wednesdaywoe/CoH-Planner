@@ -1,10 +1,10 @@
 {
-  "name": "Scrutiny_Meter",
-  "full_name": "Inherent.Inherent.Scrutiny_Meter",
-  "short_name": "Scrutiny_Meter",
+  "name": "Opportunity_Meter",
+  "full_name": "Inherent.Inherent.Opportunity_Meter",
+  "short_name": "Opportunity_Meter",
   "type": "Auto",
   "display_name": "Opportunity",
-  "display_fullname": "Inherent Inherent Scrutiny Meter",
+  "display_fullname": "Inherent Inherent Opportunity Meter",
   "display_help": "DLJKDUKLAXUNW9MMSMGDX3SENX",
   "display_short_help": "58L9GUL864KKWPNW85VYUAEP2X",
   "icon": "inherent_opportunity",
@@ -54,8 +54,8 @@
           "attribs": [
             "Meter"
           ],
-          "type": "Magnitude",
-          "application_type": "Unknown",
+          "type": "Expression",
+          "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -63,16 +63,16 @@
           "duration": "1 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
-          "duration_expression": "Column.5thColumnEndgame.NictusFX",
-          "magnitude_expression": "kRage",
-          "application_period": 9.002081464669057e-41,
-          "tick_chance": 2.8987217994069236e-39,
-          "tick_mag_multiplier": 1.215920690479287e-40,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
           "jit_requires": "",
-          "caster_stack": "Unknown",
-          "stack": "Unknown",
-          "stack_limit": 0,
+          "caster_stack": "Individual",
+          "stack": "Replace",
+          "stack_limit": 2,
           "stack_key": null
         },
         {
@@ -80,7 +80,7 @@
             "Rage"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Melee_Ones",
@@ -106,7 +106,7 @@
             "PerceptionRadius"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Resistance",
           "target": "Self",
           "table": "Melee_Ones",
@@ -123,6 +123,82 @@
           "jit_requires": "",
           "caster_stack": "Individual",
           "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "kRage source> 50 >=",
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Set_Mode"
+          ],
+          "type": "Constant",
+          "application_type": "Immediate",
+          "aspect": "Current",
+          "target": "Self",
+          "table": "Melee_Ones",
+          "scale": 1.0,
+          "duration": "1 seconds",
+          "magnitude": 45.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 1.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Overlap",
+          "stack_limit": 2,
+          "stack_key": null
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "kRage source> 100 ==",
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Set_Mode"
+          ],
+          "type": "Constant",
+          "application_type": "Immediate",
+          "aspect": "Current",
+          "target": "Self",
+          "table": "Melee_Ones",
+          "scale": 1.0,
+          "duration": "1 seconds",
+          "magnitude": 129.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 1.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Overlap",
           "stack_limit": 2,
           "stack_key": null
         }

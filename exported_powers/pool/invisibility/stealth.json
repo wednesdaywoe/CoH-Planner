@@ -58,7 +58,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -82,14 +82,14 @@
           "attribs": [
             "Set_Mode"
           ],
-          "type": "Magnitude",
-          "application_type": "Unknown",
+          "type": "Constant",
+          "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
           "scale": 1.0,
           "duration": "0.75 seconds",
-          "magnitude": 102.0,
+          "magnitude": 104.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -121,7 +121,7 @@
             "StealthRadius_PVE"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -137,7 +137,7 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "Individual",
-          "stack": "Unknown",
+          "stack": "Suppress",
           "stack_limit": 2,
           "stack_key": "NictusFX"
         },
@@ -146,7 +146,7 @@
             "StealthRadius_PVP"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -162,7 +162,7 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "Individual",
-          "stack": "Unknown",
+          "stack": "Suppress",
           "stack_limit": 2,
           "stack_key": "NictusFX"
         },
@@ -171,7 +171,7 @@
             "ThreatLevel"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
@@ -191,6 +191,84 @@
           "stack_limit": 2,
           "stack_key": "NictusFX"
         }
+      ],
+      "child_effects": [
+        {
+          "chance": 1.0,
+          "ppm": 0.0,
+          "delay": 0.0,
+          "radius_inner": -1.0,
+          "radius_outer": -1.0,
+          "requires_expression": "@CustomFX InvisibleBright eq @CustomFX InvisibleDark eq || !",
+          "flags": [],
+          "is_pvp": "EITHER",
+          "eval_flags": 8,
+          "templates": [
+            {
+              "attribs": [
+                "Create_Entity"
+              ],
+              "type": "Magnitude",
+              "application_type": "Immediate",
+              "aspect": "Current",
+              "target": "Self",
+              "table": "Melee_Ones",
+              "scale": 0.7,
+              "duration": "0.75 seconds",
+              "magnitude": 1.0,
+              "delay": 0.0,
+              "duration_expression": "",
+              "magnitude_expression": "",
+              "application_period": 0.0,
+              "tick_chance": 1.0,
+              "tick_mag_multiplier": 1.0,
+              "tick_mag_additive": 0.0,
+              "jit_requires": "",
+              "caster_stack": "Individual",
+              "stack": "Replace",
+              "stack_limit": 2,
+              "stack_key": null
+            }
+          ]
+        },
+        {
+          "chance": 1.0,
+          "ppm": 0.0,
+          "delay": 0.0,
+          "radius_inner": -1.0,
+          "radius_outer": -1.0,
+          "requires_expression": "@CustomFX InvisibleBright eq @CustomFX InvisibleDark eq ||",
+          "flags": [],
+          "is_pvp": "EITHER",
+          "eval_flags": 8,
+          "templates": [
+            {
+              "attribs": [
+                "Create_Entity"
+              ],
+              "type": "Magnitude",
+              "application_type": "Immediate",
+              "aspect": "Current",
+              "target": "Self",
+              "table": "Melee_Ones",
+              "scale": 0.05,
+              "duration": "0.75 seconds",
+              "magnitude": 1.0,
+              "delay": 0.0,
+              "duration_expression": "",
+              "magnitude_expression": "",
+              "application_period": 0.0,
+              "tick_chance": 1.0,
+              "tick_mag_multiplier": 1.0,
+              "tick_mag_additive": 0.0,
+              "jit_requires": "",
+              "caster_stack": "Individual",
+              "stack": "Replace",
+              "stack_limit": 2,
+              "stack_key": null
+            }
+          ]
+        }
       ]
     },
     {
@@ -203,7 +281,109 @@
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
-      "templates": []
+      "templates": [],
+      "child_effects": [
+        {
+          "chance": 1.0,
+          "ppm": 0.0,
+          "delay": 0.0,
+          "radius_inner": -1.0,
+          "radius_outer": -1.0,
+          "requires_expression": "",
+          "flags": [
+            "PVEOnly"
+          ],
+          "is_pvp": "PVE_ONLY",
+          "eval_flags": 0,
+          "templates": [
+            {
+              "attribs": [
+                "Ranged",
+                "Melee",
+                "Area",
+                "Smashing",
+                "Lethal",
+                "Fire",
+                "Cold",
+                "Energy",
+                "Negative_Energy",
+                "Psionic",
+                "Toxic"
+              ],
+              "type": "Magnitude",
+              "application_type": "Immediate",
+              "aspect": "Current",
+              "target": "Self",
+              "table": "Melee_Buff_Def",
+              "scale": 1.0,
+              "duration": "0.75 seconds",
+              "magnitude": 1.0,
+              "delay": 0.0,
+              "duration_expression": "",
+              "magnitude_expression": "",
+              "application_period": 0.0,
+              "tick_chance": 1.0,
+              "tick_mag_multiplier": 1.0,
+              "tick_mag_additive": 0.0,
+              "jit_requires": "",
+              "caster_stack": "Individual",
+              "stack": "Suppress",
+              "stack_limit": 2,
+              "stack_key": "NictusFX"
+            }
+          ]
+        },
+        {
+          "chance": 1.0,
+          "ppm": 0.0,
+          "delay": 0.0,
+          "radius_inner": -1.0,
+          "radius_outer": -1.0,
+          "requires_expression": "",
+          "flags": [
+            "PVPOnly"
+          ],
+          "is_pvp": "PVP_ONLY",
+          "eval_flags": 0,
+          "templates": [
+            {
+              "attribs": [
+                "Ranged",
+                "Melee",
+                "Area",
+                "Smashing",
+                "Lethal",
+                "Fire",
+                "Cold",
+                "Energy",
+                "Negative_Energy",
+                "Psionic",
+                "Toxic"
+              ],
+              "type": "Magnitude",
+              "application_type": "Immediate",
+              "aspect": "Current",
+              "target": "Self",
+              "table": "Melee_Buff_Def",
+              "scale": 1.0,
+              "duration": "0.75 seconds",
+              "magnitude": 1.0,
+              "delay": 0.0,
+              "duration_expression": "",
+              "magnitude_expression": "",
+              "application_period": 0.0,
+              "tick_chance": 1.0,
+              "tick_mag_multiplier": 1.0,
+              "tick_mag_additive": 0.0,
+              "jit_requires": "",
+              "caster_stack": "Individual",
+              "stack": "Suppress",
+              "stack_limit": 2,
+              "stack_key": "NictusFX"
+            }
+          ]
+        }
+      ]
     },
     {
       "chance": 1.0,
@@ -233,7 +413,7 @@
             "Toxic"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Buff_Def",
@@ -249,7 +429,7 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "Individual",
-          "stack": "Unknown",
+          "stack": "Suppress",
           "stack_limit": 2,
           "stack_key": "NictusFX"
         }
@@ -283,7 +463,7 @@
             "Toxic"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Buff_Def",
@@ -299,7 +479,7 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "Individual",
-          "stack": "Unknown",
+          "stack": "Suppress",
           "stack_limit": 2,
           "stack_key": "NictusFX"
         }

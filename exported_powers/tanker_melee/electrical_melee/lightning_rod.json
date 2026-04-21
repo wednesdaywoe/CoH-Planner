@@ -63,7 +63,7 @@
             "Teleport"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -85,16 +85,16 @@
         },
         {
           "attribs": [
-            "Execute_Power"
+            "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
-          "aspect": "Strength",
-          "target": "Self",
-          "table": "Ranged_Ones",
-          "scale": 0.0,
-          "duration": "0 seconds",
-          "magnitude": 0.0,
+          "application_type": "Immediate",
+          "aspect": "Current",
+          "target": "AnyAffected",
+          "table": "Melee_Level",
+          "scale": 1.0,
+          "duration": "1 seconds",
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -104,9 +104,19 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "Individual",
-          "stack": "Stack",
+          "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "PL_StaticObject",
+            "display_name": "Lightning Rod",
+            "redirects": [
+              "Pets.Lightning_Rod_Universal.Lightning_Rod_Center",
+              "Pets.Lightning_Rod_Universal.Lightning_Rod",
+              "Pets.ResistAll.ResistAll"
+            ]
+          }
         }
       ]
     }

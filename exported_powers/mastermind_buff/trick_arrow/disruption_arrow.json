@@ -20,7 +20,7 @@
   "activation_time": 1.16,
   "recharge_time": 30.0,
   "activate_period": 0.0,
-  "endurance_cost": 18.2,
+  "endurance_cost": 14.56,
   "interrupt_time": 0.0,
   "target_type": "Location",
   "target_type_secondary": "None",
@@ -60,7 +60,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Level",
@@ -78,7 +78,16 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "PL_StaticObject",
+            "display_name": "Disruption Arrow",
+            "redirects": [
+              "Redirects.Trick_Arrow.Disruption_Arrow",
+              "Pets.ResistAll.ResistAll"
+            ]
+          }
         }
       ]
     }

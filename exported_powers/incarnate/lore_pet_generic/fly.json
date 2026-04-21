@@ -54,7 +54,7 @@
           "attribs": [
             "Fly"
           ],
-          "type": "Duration",
+          "type": "Magnitude",
           "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
@@ -79,7 +79,7 @@
           "attribs": [
             "MovementControl"
           ],
-          "type": "Duration",
+          "type": "Magnitude",
           "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
@@ -104,7 +104,7 @@
           "attribs": [
             "FlyingSpeed"
           ],
-          "type": "Duration",
+          "type": "Magnitude",
           "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
@@ -129,7 +129,7 @@
           "attribs": [
             "MovementFriction"
           ],
-          "type": "Duration",
+          "type": "Magnitude",
           "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",

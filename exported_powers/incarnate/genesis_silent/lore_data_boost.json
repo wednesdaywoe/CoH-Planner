@@ -61,7 +61,7 @@
             "Psionic_Dmg",
             "Toxic_Dmg"
           ],
-          "type": "Duration",
+          "type": "Magnitude",
           "application_type": "OnTick",
           "aspect": "Strength",
           "target": "Self",
@@ -86,7 +86,7 @@
           "attribs": [
             "HitPoints"
           ],
-          "type": "Duration",
+          "type": "Magnitude",
           "application_type": "OnTick",
           "aspect": "Maximum",
           "target": "Self",

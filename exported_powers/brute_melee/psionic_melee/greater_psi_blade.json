@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Greater Psi Blade",
   "display_fullname": "Brute Melee Psionic Melee Greater Psi Blade",
-  "display_help": "BNMT4G5TZTRZYSZL8CRZCRREVS",
+  "display_help": "SQ3NVVRU94HQY4MM83ZQA5LJNW",
   "display_short_help": "T8WY2JJSBBESYPV45JCR3TA75W",
   "icon": "psionicmelee_greaterpsiblade.png",
   "auto_issue": false,
@@ -65,7 +65,7 @@
             "Grant_Power"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Melee_Ones",
@@ -83,7 +83,13 @@
           "caster_stack": "Individual",
           "stack": "Ignore",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight"
+            ]
+          }
         }
       ]
     },
@@ -103,9 +109,9 @@
             "Lethal_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Absolute",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Melee_Damage",
           "scale": 0.69,
           "duration": "0 seconds",
@@ -128,13 +134,38 @@
             "Psionic_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Absolute",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Melee_Damage",
           "scale": 2.0025,
           "duration": "0 seconds",
           "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null
+        },
+        {
+          "attribs": [
+            "Held"
+          ],
+          "type": "Duration",
+          "application_type": "Immediate",
+          "aspect": "Current",
+          "target": "AnyAffected",
+          "table": "Melee_Stun",
+          "scale": 8.0,
+          "duration": "0 seconds",
+          "magnitude": 3.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -166,9 +197,9 @@
             "Lethal_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Absolute",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Melee_PvPDamage",
           "scale": 0.6875,
           "duration": "0 seconds",
@@ -191,9 +222,9 @@
             "Psionic_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Absolute",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Melee_PvPDamage",
           "scale": 2.0624,
           "duration": "0 seconds",
@@ -215,10 +246,10 @@
           "attribs": [
             "Held"
           ],
-          "type": "Magnitude",
+          "type": "Duration",
           "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Melee_PvPMez",
           "scale": 1.0,
           "duration": "0 seconds",
@@ -254,9 +285,9 @@
             "RechargeTime"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Strength",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Melee_Slow",
           "scale": 0.2,
           "duration": "6 seconds",
@@ -292,11 +323,11 @@
             "Psionic_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Absolute",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Melee_Damage",
-          "scale": 1.3463,
+          "scale": 1.656,
           "duration": "0 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
@@ -316,14 +347,14 @@
           "attribs": [
             "Held"
           ],
-          "type": "Magnitude",
+          "type": "Duration",
           "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Melee_Stun",
-          "scale": 12.0,
+          "scale": 8.0,
           "duration": "0 seconds",
-          "magnitude": 3.0,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -355,11 +386,11 @@
             "Psionic_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Absolute",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Melee_PvPDamage",
-          "scale": 1.375,
+          "scale": 1.65,
           "duration": "0 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
@@ -378,28 +409,28 @@
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.0,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight source.ownPower? ! enttype target> critter eq &&",
+      "requires_expression": "",
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
       "templates": [
         {
           "attribs": [
-            "Held"
+            "Fire_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
-          "aspect": "Current",
-          "target": "Unknown",
-          "table": "Melee_Stun",
-          "scale": 8.0,
+          "aspect": "Absolute",
+          "target": "AnyAffected",
+          "table": "Melee_Damage",
+          "scale": 1.2116,
           "duration": "0 seconds",
-          "magnitude": 3.0,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",

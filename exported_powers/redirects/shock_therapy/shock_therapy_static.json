@@ -54,14 +54,14 @@
           "attribs": [
             "Set_Mode"
           ],
-          "type": "Magnitude",
-          "application_type": "Unknown",
+          "type": "Constant",
+          "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
           "table": "Ranged_Ones",
           "scale": 0.2,
           "duration": "2 seconds",
-          "magnitude": 172.0,
+          "magnitude": 174.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",

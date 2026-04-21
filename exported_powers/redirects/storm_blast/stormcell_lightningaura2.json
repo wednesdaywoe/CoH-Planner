@@ -2,8 +2,8 @@
   "name": "StormCell_LightningAura2",
   "full_name": "Redirects.Storm_Blast.StormCell_LightningAura2",
   "short_name": "StormCell_LightningAura2",
-  "type": "Auto",
-  "display_name": "87NCV2AU47A4WCB7NZDFLBTYFS",
+  "type": "Click",
+  "display_name": "ESGRJCMFE47KWXXZGSN9QFKQHX",
   "display_fullname": "Redirects Storm Blast StormCell LightningAura2",
   "display_help": "9GWWHNJJ9YRTY6VHG9AFZWMY23",
   "display_short_help": "4Q7DN2437G5AYJBZ2V5LK9L6Z2",
@@ -11,18 +11,18 @@
   "auto_issue": false,
   "auto_issue_keeps_level": false,
   "accuracy": 1.15,
-  "effect_area": "Sphere",
-  "max_targets_hit": 2,
-  "radius": 25.0,
+  "effect_area": "Chain",
+  "max_targets_hit": 3,
+  "radius": 15.0,
   "arc": 0.0,
-  "range": 0.0,
+  "range": 30.0,
   "range_secondary": 0.0,
   "activation_time": 0.0,
-  "recharge_time": 99999.0,
+  "recharge_time": 4.0,
   "activate_period": 999.0,
   "endurance_cost": 0.0,
   "interrupt_time": 0.0,
-  "target_type": "Self",
+  "target_type": "Foe",
   "target_type_secondary": "None",
   "targets_autohit": [
     "None"
@@ -41,7 +41,7 @@
   "num_allowed": 1,
   "requires": "",
   "activate_requires": "",
-  "target_requires": "kLightningCell target.mode? !",
+  "target_requires": "kLightningCat5 target.mode? !",
   "attack_types": [
     104,
     132
@@ -59,81 +59,559 @@
       ],
       "is_pvp": "PVE_ONLY",
       "eval_flags": 0,
-      "templates": [
+      "templates": [],
+      "child_effects": [
         {
-          "attribs": [
-            "Energy_Dmg"
-          ],
-          "type": "Magnitude",
-          "application_type": "OnTick",
-          "aspect": "Absolute",
-          "target": "Unknown",
-          "table": "Ranged_Damage",
-          "scale": 0.5,
-          "duration": "0 seconds",
-          "magnitude": 1.0,
+          "chance": 1.0,
+          "ppm": 0.0,
           "delay": 0.0,
-          "duration_expression": "",
-          "magnitude_expression": "",
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": "",
-          "caster_stack": "Individual",
-          "stack": "Stack",
-          "stack_limit": 2,
-          "stack_key": null
+          "radius_inner": -1.0,
+          "radius_outer": -1.0,
+          "requires_expression": "",
+          "flags": [],
+          "is_pvp": "EITHER",
+          "eval_flags": 0,
+          "templates": [],
+          "child_effects": [
+            {
+              "chance": 1.0,
+              "ppm": 0.0,
+              "delay": 0.0,
+              "radius_inner": -1.0,
+              "radius_outer": -1.0,
+              "requires_expression": "",
+              "flags": [],
+              "is_pvp": "EITHER",
+              "eval_flags": 0,
+              "templates": [
+                {
+                  "attribs": [
+                    "Energy_Dmg"
+                  ],
+                  "type": "Magnitude",
+                  "application_type": "Immediate",
+                  "aspect": "Absolute",
+                  "target": "AnyAffected",
+                  "table": "Ranged_Damage",
+                  "scale": 0.5,
+                  "duration": "0 seconds",
+                  "magnitude": 1.0,
+                  "delay": 0.0,
+                  "duration_expression": "",
+                  "magnitude_expression": "",
+                  "application_period": 0.0,
+                  "tick_chance": 1.0,
+                  "tick_mag_multiplier": 1.0,
+                  "tick_mag_additive": 0.0,
+                  "jit_requires": "",
+                  "caster_stack": "Individual",
+                  "stack": "Stack",
+                  "stack_limit": 2,
+                  "stack_key": null
+                },
+                {
+                  "attribs": [
+                    "Endurance"
+                  ],
+                  "type": "Magnitude",
+                  "application_type": "Immediate",
+                  "aspect": "Current",
+                  "target": "AnyAffected",
+                  "table": "Ranged_EndDrain",
+                  "scale": -0.025,
+                  "duration": "0 seconds",
+                  "magnitude": 1.0,
+                  "delay": 0.0,
+                  "duration_expression": "",
+                  "magnitude_expression": "",
+                  "application_period": 0.0,
+                  "tick_chance": 1.0,
+                  "tick_mag_multiplier": 1.0,
+                  "tick_mag_additive": 0.0,
+                  "jit_requires": "",
+                  "caster_stack": "Individual",
+                  "stack": "Stack",
+                  "stack_limit": 2,
+                  "stack_key": null
+                },
+                {
+                  "attribs": [
+                    "Null"
+                  ],
+                  "type": "Magnitude",
+                  "application_type": "Immediate",
+                  "aspect": "Current",
+                  "target": "AnyAffected",
+                  "table": "Ranged_Ones",
+                  "scale": 1.0,
+                  "duration": "1.10 seconds",
+                  "magnitude": 1.0,
+                  "delay": 0.0,
+                  "duration_expression": "",
+                  "magnitude_expression": "",
+                  "application_period": 0.0,
+                  "tick_chance": 1.0,
+                  "tick_mag_multiplier": 1.0,
+                  "tick_mag_additive": 0.0,
+                  "jit_requires": "",
+                  "caster_stack": "Individual",
+                  "stack": "Stack",
+                  "stack_limit": 2,
+                  "stack_key": null
+                }
+              ]
+            },
+            {
+              "chance": 1.0,
+              "ppm": 0.0,
+              "delay": 0.0,
+              "radius_inner": -1.0,
+              "radius_outer": -1.0,
+              "requires_expression": "kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < arch source> Class_Corruptor eq &&",
+              "flags": [],
+              "is_pvp": "EITHER",
+              "eval_flags": 0,
+              "templates": [
+                {
+                  "attribs": [
+                    "Energy_Dmg"
+                  ],
+                  "type": "Magnitude",
+                  "application_type": "Immediate",
+                  "aspect": "Absolute",
+                  "target": "AnyAffected",
+                  "table": "Ranged_InherentDamage",
+                  "scale": 0.5,
+                  "duration": "0 seconds",
+                  "magnitude": 1.0,
+                  "delay": 0.0,
+                  "duration_expression": "",
+                  "magnitude_expression": "",
+                  "application_period": 0.0,
+                  "tick_chance": 1.0,
+                  "tick_mag_multiplier": 1.0,
+                  "tick_mag_additive": 0.0,
+                  "jit_requires": "",
+                  "caster_stack": "Individual",
+                  "stack": "Stack",
+                  "stack_limit": 2,
+                  "stack_key": null
+                }
+              ]
+            },
+            {
+              "chance": 1.0,
+              "ppm": 0.0,
+              "delay": 0.0,
+              "radius_inner": -1.0,
+              "radius_outer": -1.0,
+              "requires_expression": "arch source> Class_Sentinel eq",
+              "flags": [
+                "PVEOnly"
+              ],
+              "is_pvp": "PVE_ONLY",
+              "eval_flags": 0,
+              "templates": [
+                {
+                  "attribs": [
+                    "Energy_Dmg"
+                  ],
+                  "type": "Magnitude",
+                  "application_type": "Immediate",
+                  "aspect": "Absolute",
+                  "target": "AnyAffected",
+                  "table": "Ranged_InherentDamage",
+                  "scale": 0.5,
+                  "duration": "0 seconds",
+                  "magnitude": 1.0,
+                  "delay": 0.0,
+                  "duration_expression": "",
+                  "magnitude_expression": "",
+                  "application_period": 0.0,
+                  "tick_chance": 0.0,
+                  "tick_mag_multiplier": 1.0,
+                  "tick_mag_additive": 0.0,
+                  "jit_requires": "",
+                  "caster_stack": "Individual",
+                  "stack": "Stack",
+                  "stack_limit": 2,
+                  "stack_key": null
+                }
+              ]
+            },
+            {
+              "chance": 0.33000001311302185,
+              "ppm": 0.0,
+              "delay": 0.0,
+              "radius_inner": -1.0,
+              "radius_outer": -1.0,
+              "requires_expression": "kLightningCell target.mode? !",
+              "flags": [],
+              "is_pvp": "EITHER",
+              "eval_flags": 0,
+              "templates": [
+                {
+                  "attribs": [
+                    "Set_Mode"
+                  ],
+                  "type": "Constant",
+                  "application_type": "Immediate",
+                  "aspect": "Current",
+                  "target": "AnyAffected",
+                  "table": "Melee_Ones",
+                  "scale": 1.0,
+                  "duration": "5 seconds",
+                  "magnitude": 184.0,
+                  "delay": 0.0,
+                  "duration_expression": "",
+                  "magnitude_expression": "",
+                  "application_period": 0.0,
+                  "tick_chance": 1.0,
+                  "tick_mag_multiplier": 1.0,
+                  "tick_mag_additive": 0.0,
+                  "jit_requires": "",
+                  "caster_stack": "Individual",
+                  "stack": "Replace",
+                  "stack_limit": 2,
+                  "stack_key": null
+                }
+              ],
+              "child_effects": [
+                {
+                  "chance": 1.0,
+                  "ppm": 0.0,
+                  "delay": 0.0,
+                  "radius_inner": -1.0,
+                  "radius_outer": -1.0,
+                  "requires_expression": "",
+                  "flags": [],
+                  "is_pvp": "EITHER",
+                  "eval_flags": 0,
+                  "templates": [
+                    {
+                      "attribs": [
+                        "Stunned"
+                      ],
+                      "type": "Duration",
+                      "application_type": "Immediate",
+                      "aspect": "Current",
+                      "target": "AnyAffected",
+                      "table": "Ranged_Stun",
+                      "scale": 4.0,
+                      "duration": "0 seconds",
+                      "magnitude": 3.0,
+                      "delay": 0.0,
+                      "duration_expression": "",
+                      "magnitude_expression": "",
+                      "application_period": 0.0,
+                      "tick_chance": 1.0,
+                      "tick_mag_multiplier": 1.0,
+                      "tick_mag_additive": 0.0,
+                      "jit_requires": "",
+                      "caster_stack": "Individual",
+                      "stack": "Replace",
+                      "stack_limit": 2,
+                      "stack_key": null
+                    }
+                  ]
+                },
+                {
+                  "chance": 0.5,
+                  "ppm": 0.0,
+                  "delay": 0.0,
+                  "radius_inner": -1.0,
+                  "radius_outer": -1.0,
+                  "requires_expression": "",
+                  "flags": [],
+                  "is_pvp": "EITHER",
+                  "eval_flags": 0,
+                  "templates": [
+                    {
+                      "attribs": [
+                        "Knockback"
+                      ],
+                      "type": "Magnitude",
+                      "application_type": "Immediate",
+                      "aspect": "Current",
+                      "target": "AnyAffected",
+                      "table": "Ranged_Knockback",
+                      "scale": 1.0,
+                      "duration": "0 seconds",
+                      "magnitude": 1.0,
+                      "delay": 0.0,
+                      "duration_expression": "",
+                      "magnitude_expression": "",
+                      "application_period": 0.0,
+                      "tick_chance": 1.0,
+                      "tick_mag_multiplier": 1.0,
+                      "tick_mag_additive": 0.0,
+                      "jit_requires": "",
+                      "caster_stack": "Individual",
+                      "stack": "Stack",
+                      "stack_limit": 2,
+                      "stack_key": null
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
         },
         {
-          "attribs": [
-            "Endurance"
-          ],
-          "type": "Magnitude",
-          "application_type": "OnTick",
-          "aspect": "Current",
-          "target": "Unknown",
-          "table": "Ranged_EndDrain",
-          "scale": -0.05,
-          "duration": "0 seconds",
-          "magnitude": 1.0,
+          "chance": 0.0,
+          "ppm": 0.0,
           "delay": 0.0,
-          "duration_expression": "",
-          "magnitude_expression": "",
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": "",
-          "caster_stack": "Individual",
-          "stack": "Stack",
-          "stack_limit": 2,
-          "stack_key": null
-        },
-        {
-          "attribs": [
-            "Knockback"
-          ],
-          "type": "Magnitude",
-          "application_type": "OnTick",
-          "aspect": "Current",
-          "target": "Unknown",
-          "table": "Ranged_Knockback",
-          "scale": 1.0,
-          "duration": "0 seconds",
-          "magnitude": 1.0,
-          "delay": 0.0,
-          "duration_expression": "",
-          "magnitude_expression": "",
-          "application_period": 0.0,
-          "tick_chance": 0.5,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": "",
-          "caster_stack": "Individual",
-          "stack": "Stack",
-          "stack_limit": 2,
-          "stack_key": null
+          "radius_inner": -1.0,
+          "radius_outer": -1.0,
+          "requires_expression": "",
+          "flags": [],
+          "is_pvp": "EITHER",
+          "eval_flags": 0,
+          "templates": [],
+          "child_effects": [
+            {
+              "chance": 1.0,
+              "ppm": 0.0,
+              "delay": 0.0,
+              "radius_inner": -1.0,
+              "radius_outer": -1.0,
+              "requires_expression": "",
+              "flags": [],
+              "is_pvp": "EITHER",
+              "eval_flags": 0,
+              "templates": [
+                {
+                  "attribs": [
+                    "Energy_Dmg"
+                  ],
+                  "type": "Magnitude",
+                  "application_type": "Immediate",
+                  "aspect": "Absolute",
+                  "target": "AnyAffected",
+                  "table": "Ranged_Damage",
+                  "scale": 0.5,
+                  "duration": "0 seconds",
+                  "magnitude": 1.0,
+                  "delay": 0.0,
+                  "duration_expression": "",
+                  "magnitude_expression": "",
+                  "application_period": 0.0,
+                  "tick_chance": 1.0,
+                  "tick_mag_multiplier": 1.0,
+                  "tick_mag_additive": 0.0,
+                  "jit_requires": "",
+                  "caster_stack": "Individual",
+                  "stack": "Stack",
+                  "stack_limit": 2,
+                  "stack_key": null
+                },
+                {
+                  "attribs": [
+                    "Endurance"
+                  ],
+                  "type": "Magnitude",
+                  "application_type": "Immediate",
+                  "aspect": "Current",
+                  "target": "AnyAffected",
+                  "table": "Ranged_EndDrain",
+                  "scale": -0.025,
+                  "duration": "0 seconds",
+                  "magnitude": 1.0,
+                  "delay": 0.0,
+                  "duration_expression": "",
+                  "magnitude_expression": "",
+                  "application_period": 0.0,
+                  "tick_chance": 1.0,
+                  "tick_mag_multiplier": 1.0,
+                  "tick_mag_additive": 0.0,
+                  "jit_requires": "",
+                  "caster_stack": "Individual",
+                  "stack": "Stack",
+                  "stack_limit": 2,
+                  "stack_key": null
+                },
+                {
+                  "attribs": [
+                    "Null"
+                  ],
+                  "type": "Magnitude",
+                  "application_type": "Immediate",
+                  "aspect": "Current",
+                  "target": "AnyAffected",
+                  "table": "Ranged_Ones",
+                  "scale": 1.0,
+                  "duration": "1.10 seconds",
+                  "magnitude": 1.0,
+                  "delay": 0.0,
+                  "duration_expression": "",
+                  "magnitude_expression": "",
+                  "application_period": 0.0,
+                  "tick_chance": 1.0,
+                  "tick_mag_multiplier": 1.0,
+                  "tick_mag_additive": 0.0,
+                  "jit_requires": "",
+                  "caster_stack": "Individual",
+                  "stack": "Stack",
+                  "stack_limit": 2,
+                  "stack_key": null
+                }
+              ]
+            },
+            {
+              "chance": 1.0,
+              "ppm": 0.0,
+              "delay": 0.0,
+              "radius_inner": -1.0,
+              "radius_outer": -1.0,
+              "requires_expression": "kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < arch source> Class_Corruptor eq &&",
+              "flags": [],
+              "is_pvp": "EITHER",
+              "eval_flags": 0,
+              "templates": [
+                {
+                  "attribs": [
+                    "Energy_Dmg"
+                  ],
+                  "type": "Magnitude",
+                  "application_type": "Immediate",
+                  "aspect": "Absolute",
+                  "target": "AnyAffected",
+                  "table": "Ranged_Damage",
+                  "scale": 0.5,
+                  "duration": "0 seconds",
+                  "magnitude": 1.0,
+                  "delay": 0.0,
+                  "duration_expression": "",
+                  "magnitude_expression": "",
+                  "application_period": 0.0,
+                  "tick_chance": 1.0,
+                  "tick_mag_multiplier": 1.0,
+                  "tick_mag_additive": 0.0,
+                  "jit_requires": "",
+                  "caster_stack": "Individual",
+                  "stack": "Stack",
+                  "stack_limit": 2,
+                  "stack_key": null
+                }
+              ]
+            },
+            {
+              "chance": 0.33000001311302185,
+              "ppm": 0.0,
+              "delay": 0.0,
+              "radius_inner": -1.0,
+              "radius_outer": -1.0,
+              "requires_expression": "kLightningCell target.mode? !",
+              "flags": [],
+              "is_pvp": "EITHER",
+              "eval_flags": 0,
+              "templates": [
+                {
+                  "attribs": [
+                    "Set_Mode"
+                  ],
+                  "type": "Constant",
+                  "application_type": "Immediate",
+                  "aspect": "Current",
+                  "target": "AnyAffected",
+                  "table": "Melee_Ones",
+                  "scale": 1.0,
+                  "duration": "5 seconds",
+                  "magnitude": 184.0,
+                  "delay": 0.0,
+                  "duration_expression": "",
+                  "magnitude_expression": "",
+                  "application_period": 0.0,
+                  "tick_chance": 1.0,
+                  "tick_mag_multiplier": 1.0,
+                  "tick_mag_additive": 0.0,
+                  "jit_requires": "",
+                  "caster_stack": "Individual",
+                  "stack": "Replace",
+                  "stack_limit": 2,
+                  "stack_key": null
+                }
+              ],
+              "child_effects": [
+                {
+                  "chance": 1.0,
+                  "ppm": 0.0,
+                  "delay": 0.0,
+                  "radius_inner": -1.0,
+                  "radius_outer": -1.0,
+                  "requires_expression": "",
+                  "flags": [],
+                  "is_pvp": "EITHER",
+                  "eval_flags": 0,
+                  "templates": [
+                    {
+                      "attribs": [
+                        "Stunned"
+                      ],
+                      "type": "Duration",
+                      "application_type": "Immediate",
+                      "aspect": "Current",
+                      "target": "AnyAffected",
+                      "table": "Ranged_Stun",
+                      "scale": 4.0,
+                      "duration": "0 seconds",
+                      "magnitude": 3.0,
+                      "delay": 0.0,
+                      "duration_expression": "",
+                      "magnitude_expression": "",
+                      "application_period": 0.0,
+                      "tick_chance": 1.0,
+                      "tick_mag_multiplier": 1.0,
+                      "tick_mag_additive": 0.0,
+                      "jit_requires": "",
+                      "caster_stack": "Individual",
+                      "stack": "Replace",
+                      "stack_limit": 2,
+                      "stack_key": null
+                    }
+                  ]
+                },
+                {
+                  "chance": 0.5,
+                  "ppm": 0.0,
+                  "delay": 0.0,
+                  "radius_inner": -1.0,
+                  "radius_outer": -1.0,
+                  "requires_expression": "",
+                  "flags": [],
+                  "is_pvp": "EITHER",
+                  "eval_flags": 0,
+                  "templates": [
+                    {
+                      "attribs": [
+                        "Knockback"
+                      ],
+                      "type": "Magnitude",
+                      "application_type": "Immediate",
+                      "aspect": "Current",
+                      "target": "AnyAffected",
+                      "table": "Ranged_Knockback",
+                      "scale": 1.0,
+                      "duration": "0 seconds",
+                      "magnitude": 1.0,
+                      "delay": 0.0,
+                      "duration_expression": "",
+                      "magnitude_expression": "",
+                      "application_period": 0.0,
+                      "tick_chance": 1.0,
+                      "tick_mag_multiplier": 1.0,
+                      "tick_mag_additive": 0.0,
+                      "jit_requires": "",
+                      "caster_stack": "Individual",
+                      "stack": "Stack",
+                      "stack_limit": 2,
+                      "stack_key": null
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -155,11 +633,11 @@
             "Energy_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Absolute",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_PvPDamage",
-          "scale": 0.4346,
+          "scale": 0.7757,
           "duration": "0 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
@@ -180,9 +658,9 @@
             "Endurance"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Absolute",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_EndDrain",
           "scale": -2.0,
           "duration": "0 seconds",
@@ -199,31 +677,162 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null
+        }
+      ],
+      "child_effects": [
+        {
+          "chance": 1.0,
+          "ppm": 0.0,
+          "delay": 0.0,
+          "radius_inner": -1.0,
+          "radius_outer": -1.0,
+          "requires_expression": "kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < arch source> Class_Corruptor eq &&",
+          "flags": [],
+          "is_pvp": "EITHER",
+          "eval_flags": 0,
+          "templates": [
+            {
+              "attribs": [
+                "Energy_Dmg"
+              ],
+              "type": "Magnitude",
+              "application_type": "Immediate",
+              "aspect": "Absolute",
+              "target": "AnyAffected",
+              "table": "Ranged_PvPDamage",
+              "scale": 0.7757,
+              "duration": "0 seconds",
+              "magnitude": 1.0,
+              "delay": 0.0,
+              "duration_expression": "",
+              "magnitude_expression": "",
+              "application_period": 0.0,
+              "tick_chance": 1.0,
+              "tick_mag_multiplier": 1.0,
+              "tick_mag_additive": 0.0,
+              "jit_requires": "",
+              "caster_stack": "Individual",
+              "stack": "Stack",
+              "stack_limit": 2,
+              "stack_key": null
+            }
+          ]
         },
         {
-          "attribs": [
-            "Knockback"
-          ],
-          "type": "Magnitude",
-          "application_type": "OnTick",
-          "aspect": "Current",
-          "target": "Unknown",
-          "table": "Ranged_Knockback",
-          "scale": 1.0,
-          "duration": "0 seconds",
-          "magnitude": 1.0,
+          "chance": 0.5,
+          "ppm": 0.0,
           "delay": 0.0,
-          "duration_expression": "",
-          "magnitude_expression": "",
-          "application_period": 0.0,
-          "tick_chance": 0.5,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": "",
-          "caster_stack": "Individual",
-          "stack": "Stack",
-          "stack_limit": 2,
-          "stack_key": null
+          "radius_inner": -1.0,
+          "radius_outer": -1.0,
+          "requires_expression": "kLightningCell target.mode? !",
+          "flags": [],
+          "is_pvp": "EITHER",
+          "eval_flags": 0,
+          "templates": [
+            {
+              "attribs": [
+                "Set_Mode"
+              ],
+              "type": "Constant",
+              "application_type": "Immediate",
+              "aspect": "Current",
+              "target": "AnyAffected",
+              "table": "Melee_Ones",
+              "scale": 1.0,
+              "duration": "4 seconds",
+              "magnitude": 184.0,
+              "delay": 0.0,
+              "duration_expression": "",
+              "magnitude_expression": "",
+              "application_period": 0.0,
+              "tick_chance": 1.0,
+              "tick_mag_multiplier": 1.0,
+              "tick_mag_additive": 0.0,
+              "jit_requires": "",
+              "caster_stack": "Individual",
+              "stack": "Replace",
+              "stack_limit": 2,
+              "stack_key": null
+            }
+          ],
+          "child_effects": [
+            {
+              "chance": 1.0,
+              "ppm": 0.0,
+              "delay": 0.0,
+              "radius_inner": -1.0,
+              "radius_outer": -1.0,
+              "requires_expression": "",
+              "flags": [],
+              "is_pvp": "EITHER",
+              "eval_flags": 0,
+              "templates": [
+                {
+                  "attribs": [
+                    "Stunned"
+                  ],
+                  "type": "Duration",
+                  "application_type": "Immediate",
+                  "aspect": "Current",
+                  "target": "AnyAffected",
+                  "table": "Ranged_PvPMez",
+                  "scale": 1.0,
+                  "duration": "0 seconds",
+                  "magnitude": 3.0,
+                  "delay": 0.0,
+                  "duration_expression": "",
+                  "magnitude_expression": "",
+                  "application_period": 0.0,
+                  "tick_chance": 1.0,
+                  "tick_mag_multiplier": 1.0,
+                  "tick_mag_additive": 0.0,
+                  "jit_requires": "",
+                  "caster_stack": "Individual",
+                  "stack": "Replace",
+                  "stack_limit": 2,
+                  "stack_key": null
+                }
+              ]
+            },
+            {
+              "chance": 0.5,
+              "ppm": 0.0,
+              "delay": 0.0,
+              "radius_inner": -1.0,
+              "radius_outer": -1.0,
+              "requires_expression": "",
+              "flags": [],
+              "is_pvp": "EITHER",
+              "eval_flags": 0,
+              "templates": [
+                {
+                  "attribs": [
+                    "Knockback"
+                  ],
+                  "type": "Magnitude",
+                  "application_type": "Immediate",
+                  "aspect": "Current",
+                  "target": "AnyAffected",
+                  "table": "Ranged_Knockback",
+                  "scale": 1.0,
+                  "duration": "0 seconds",
+                  "magnitude": 1.0,
+                  "delay": 0.0,
+                  "duration_expression": "",
+                  "magnitude_expression": "",
+                  "application_period": 0.0,
+                  "tick_chance": 1.0,
+                  "tick_mag_multiplier": 1.0,
+                  "tick_mag_additive": 0.0,
+                  "jit_requires": "",
+                  "caster_stack": "Individual",
+                  "stack": "Stack",
+                  "stack_limit": 2,
+                  "stack_key": null
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -237,31 +846,83 @@
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
-      "templates": [
+      "templates": [],
+      "child_effects": [
         {
-          "attribs": [
-            "Set_Mode"
-          ],
-          "type": "Magnitude",
-          "application_type": "Unknown",
-          "aspect": "Current",
-          "target": "Unknown",
-          "table": "Melee_Ones",
-          "scale": 1.0,
-          "duration": "1.67 seconds",
-          "magnitude": 182.0,
+          "chance": 1.0,
+          "ppm": 0.0,
           "delay": 0.0,
-          "duration_expression": "",
-          "magnitude_expression": "",
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": "",
-          "caster_stack": "Individual",
-          "stack": "Replace",
-          "stack_limit": 2,
-          "stack_key": null
+          "radius_inner": -1.0,
+          "radius_outer": -1.0,
+          "requires_expression": "",
+          "flags": [],
+          "is_pvp": "EITHER",
+          "eval_flags": 0,
+          "templates": [
+            {
+              "attribs": [
+                "Set_Mode"
+              ],
+              "type": "Constant",
+              "application_type": "Immediate",
+              "aspect": "Current",
+              "target": "AnyAffected",
+              "table": "Melee_Ones",
+              "scale": 1.0,
+              "duration": "2 seconds",
+              "magnitude": 183.0,
+              "delay": 0.0,
+              "duration_expression": "",
+              "magnitude_expression": "",
+              "application_period": 0.0,
+              "tick_chance": 1.0,
+              "tick_mag_multiplier": 1.0,
+              "tick_mag_additive": 0.0,
+              "jit_requires": "",
+              "caster_stack": "Individual",
+              "stack": "Replace",
+              "stack_limit": 2,
+              "stack_key": null
+            }
+          ]
+        },
+        {
+          "chance": 0.5,
+          "ppm": 0.0,
+          "delay": 0.0,
+          "radius_inner": -1.0,
+          "radius_outer": -1.0,
+          "requires_expression": "",
+          "flags": [],
+          "is_pvp": "EITHER",
+          "eval_flags": 0,
+          "templates": [
+            {
+              "attribs": [
+                "Set_Mode"
+              ],
+              "type": "Constant",
+              "application_type": "Immediate",
+              "aspect": "Current",
+              "target": "AnyAffected",
+              "table": "Melee_Ones",
+              "scale": 1.0,
+              "duration": "1 seconds",
+              "magnitude": 183.0,
+              "delay": 0.0,
+              "duration_expression": "",
+              "magnitude_expression": "",
+              "application_period": 0.0,
+              "tick_chance": 1.0,
+              "tick_mag_multiplier": 1.0,
+              "tick_mag_additive": 0.0,
+              "jit_requires": "",
+              "caster_stack": "Individual",
+              "stack": "Replace",
+              "stack_limit": 2,
+              "stack_key": null
+            }
+          ]
         }
       ]
     }

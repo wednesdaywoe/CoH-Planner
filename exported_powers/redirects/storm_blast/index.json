@@ -11,6 +11,7 @@
     "Category_Five_Sentinel",
     "Direct_Strike_Normal",
     "Direct_Strike_Quick",
+    "Lightning_Proc",
     "Nukenado_Pulse",
     "Nukenado_Pulse_Sentinel",
     "Nukenado_SelfDestruct",
@@ -25,6 +26,7 @@
     "StormCell_WindSpeed_Sentinel"
   ],
   "available_level": [
+    0,
     0,
     0,
     0,

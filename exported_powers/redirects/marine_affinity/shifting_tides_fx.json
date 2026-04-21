@@ -58,12 +58,12 @@
             "Null"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Melee_Ones",
           "scale": 0.0,
-          "duration": "2 seconds",
+          "duration": "0.35 seconds",
           "magnitude": 0.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -74,7 +74,7 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "Individual",
-          "stack": "Unknown",
+          "stack": "Refresh",
           "stack_limit": 2,
           "stack_key": null
         }

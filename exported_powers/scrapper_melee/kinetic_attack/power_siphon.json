@@ -17,8 +17,8 @@
   "arc": 0.0,
   "range": 0.0,
   "range_secondary": 0.0,
-  "activation_time": 1.93,
-  "recharge_time": 120.0,
+  "activation_time": 1.17,
+  "recharge_time": 90.0,
   "activate_period": 0.0,
   "endurance_cost": 5.2,
   "interrupt_time": 0.0,
@@ -58,14 +58,14 @@
           "attribs": [
             "Set_Mode"
           ],
-          "type": "Magnitude",
-          "application_type": "Unknown",
+          "type": "Constant",
+          "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
           "scale": 1.0,
-          "duration": "20 seconds",
-          "magnitude": 103.0,
+          "duration": "15 seconds",
+          "magnitude": 105.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -81,15 +81,46 @@
         },
         {
           "attribs": [
+            "Grant_Power"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Absolute",
+          "target": "Self",
+          "table": "Melee_Ones",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Temporary_Powers.Temporary_Powers.Power_Siphon"
+            ]
+          }
+        },
+        {
+          "attribs": [
             "ToHit"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Buff_ToHit",
           "scale": 0.75,
-          "duration": "20 seconds",
+          "duration": "15 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",

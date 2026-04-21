@@ -59,9 +59,9 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Levelminus",
           "scale": 1.0,
           "duration": "150 seconds",
@@ -77,16 +77,21 @@
           "caster_stack": "Individual",
           "stack": "Ignore",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "IncarnatePets_Fate_Clockwork_LT",
+            "priority_list": "Pet"
+          }
         },
         {
           "attribs": [
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Levelminus",
           "scale": 1.0,
           "duration": "150 seconds",
@@ -102,7 +107,12 @@
           "caster_stack": "Individual",
           "stack": "Ignore",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "IncarnatePets_Fate_Clockwork_Support_Attacks",
+            "priority_list": "Pet"
+          }
         }
       ]
     }

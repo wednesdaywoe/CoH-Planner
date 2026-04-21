@@ -65,9 +65,9 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Melee_Level",
           "scale": 1.0,
           "duration": "0 seconds",
@@ -83,16 +83,28 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "Vines",
+            "redirects": [
+              "Villain_Pets.Vines.Self_Destruct",
+              "Pets.ResistAll.ResistAll",
+              "Villain_Pets.Vines.Vines_Pulse",
+              "Villain_Pets.Vines.Vines_Debuff",
+              "Villain_Pets.Vines.Vines_OneShot"
+            ],
+            "priority_list": "PL_Untargetable_FightPreferRanged"
+          }
         },
         {
           "attribs": [
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
-          "target": "AnyAffected",
+          "target": "SelfAndPets",
           "table": "Melee_Ones",
           "scale": 1.0,
           "duration": "0 seconds",
@@ -104,10 +116,10 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "thColumn.5thColumnEndgame.NictusFX",
-          "caster_stack": "Unknown",
-          "stack": "Unknown",
-          "stack_limit": 0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Stack",
+          "stack_limit": 2,
           "stack_key": null
         }
       ]

@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Galvanic Sentinel",
   "display_fullname": "Controller Buff Shock Therapy Discharge",
-  "display_help": "VZUGJMH4WSNMYCZN6W33DSREEX",
+  "display_help": "RYPC4MLLTFGCWQCQ2GPSBBQ32X",
   "display_short_help": "Summon Galvanic Sentinel: Ranged Debuff Special",
   "icon": "shocktherapy_galvanicsentinel.png",
   "auto_issue": false,
@@ -62,9 +62,9 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": -1.0,
           "duration": "120 seconds",
@@ -80,7 +80,12 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "Pets_GalvanicSentinel",
+            "priority_list": "PL_FightPreferRanged"
+          }
         }
       ]
     }

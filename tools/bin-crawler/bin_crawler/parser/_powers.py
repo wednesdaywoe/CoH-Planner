@@ -101,6 +101,152 @@ def parse_powers(bin_path_or_data) -> list[PowerRecord]:
     return records
 
 
+def _resolve_offset(strtab_data, strtab_base, offset: int) -> str | None:
+    """Resolve a u4 string-table offset to a printable string, or None if invalid.
+
+    Requires the offset to land on a string boundary (the previous byte must be a
+    null terminator, or the offset must be 0 within the table). Without that
+    check, random u4 values that happen to point mid-string look like valid
+    short strings and pollute downstream heuristics (e.g. an offset pointing 5
+    bytes into "5thColumnEndgame.NictusFX" yields "lumnEndgame.NictusFX" — same
+    shape as a real entity def, but garbage).
+    """
+    if offset == 0:
+        return None
+    abs_pos = strtab_base + offset
+    if abs_pos <= 0 or abs_pos >= len(strtab_data):
+        return None
+    # Boundary check: previous byte must be a null terminator.
+    if strtab_data[abs_pos - 1] != 0:
+        return None
+    end = abs_pos
+    limit = min(abs_pos + 256, len(strtab_data))
+    while end < limit and strtab_data[end] != 0:
+        end += 1
+    if end >= limit and (limit < len(strtab_data) and strtab_data[end] != 0):
+        return None
+    try:
+        s = bytes(strtab_data[abs_pos:end]).decode('ascii')
+    except UnicodeDecodeError:
+        return None
+    if not s:
+        return None
+    if not all(0x20 <= ord(c) < 0x7f for c in s):
+        return None
+    return s
+
+
+# Attribs that carry a Params Power { Power Redirects.X } block — the ones
+# the planner's redirect-following logic in convert-powerset.cjs cares about.
+# Source: scripts/convert-powerset.cjs:188 (execute_power follow), :594 (create_entity).
+_POWER_PARAM_ATTRIBS = frozenset({
+    'execute_power', 'grant_power', 'recharge_power', 'add_behavior',
+    'cancel_effects', 'global_chance_mod', 'set_mode',
+})
+
+# Heuristic: a string looks like a power name if it has dotted form
+# `Category.Powerset.Power` (3 parts, identifier characters, leading uppercase).
+_PWRNAME_RE = None  # set below to avoid re-import
+
+
+def _looks_like_power_name(s: str) -> bool:
+    global _PWRNAME_RE
+    if _PWRNAME_RE is None:
+        import re
+        _PWRNAME_RE = re.compile(r'^[A-Z][A-Za-z0-9_]*\.[A-Z][A-Za-z0-9_]*\.[A-Za-z0-9_]+$')
+    return bool(_PWRNAME_RE.match(s))
+
+
+def _looks_like_entity_def(s: str) -> bool:
+    # Entity defs in CoH look like `MastermindPets_Howler_Wolf` or
+    # `Class_Tarantula_Pet` — identifier characters, leading uppercase,
+    # no spaces, no dots. (Power names use dots; entity defs use underscores.)
+    if not s or ' ' in s or '.' in s:
+        return False
+    if len(s) < 4 or len(s) > 80:
+        return False
+    if not s[0].isupper():
+        return False
+    return all(c.isalnum() or c == '_' for c in s)
+
+
+def _extract_params(tail_bytes: bytes, attribs: list[str],
+                    strtab_base: int, strtab_data) -> dict | None:
+    """Scan the AttribMod template tail for Params data the planner cares about.
+
+    The full tail layout (8 fields: CancelEvents, RequiredEvent, Suppress,
+    BoostModAllowed, Flags, Messages, FX, Params) hasn't been fully reverse-
+    engineered. As a stopgap, we scan u4-aligned slots for offsets that
+    resolve to strings matching the patterns we expect for known attribs:
+
+      * Execute_Power-family attribs → Params Power { Power Redirects.X }
+        → emit {type: 'Power', power_names: [...]}
+      * Create_Entity attribs → Params EntCreate { EntityDef ... }
+        → emit {type: 'EntCreate', entity_def, display_name, redirects, priority_list}
+
+    Returns None if no relevant Params content is found.
+    """
+    if not attribs or not tail_bytes:
+        return None
+    attrib_lc = {a.lower() for a in attribs}
+
+    # Pull every plausible string out of the tail in order.
+    found: list[str] = []
+    seen: set[str] = set()
+    for off in range(0, len(tail_bytes) - 3, 4):
+        val = struct.unpack_from('<I', tail_bytes, off)[0]
+        s = _resolve_offset(strtab_data, strtab_base, val)
+        if s and s not in seen:
+            found.append(s)
+            seen.add(s)
+
+    is_power_attrib = bool(attrib_lc & _POWER_PARAM_ATTRIBS)
+    is_create_entity = 'create_entity' in attrib_lc
+
+    if is_power_attrib:
+        power_names = [s for s in found if _looks_like_power_name(s)]
+        if power_names:
+            return {'type': 'Power', 'power_names': power_names}
+        return None
+
+    if is_create_entity:
+        # Entity defs typically lead the Params block. DisplayName is free text
+        # (often title-cased with spaces), PriorityList is short identifier.
+        entity_def = next((s for s in found if _looks_like_entity_def(s)), None)
+        power_names = [s for s in found if _looks_like_power_name(s)]
+        # DisplayName: any short string that isn't a power-name and has a space
+        # or just looks like a tooltip.
+        display_name = next(
+            (s for s in found
+             if s != entity_def and not _looks_like_power_name(s)
+             and ' ' in s and len(s) < 80),
+            None,
+        )
+        # PriorityList: leftover short non-dotted identifier (e.g. "Pet").
+        priority_list = next(
+            (s for s in found
+             if s != entity_def and s != display_name
+             and '.' not in s and len(s) < 40
+             and all(c.isalnum() or c == '_' for c in s)),
+            None,
+        )
+        # Only emit a result if we found a real entity_def — without one this
+        # is almost certainly a non-EntCreate use of attrib index 117 (binary
+        # index 117 is shared between Create_Entity, Translucency, Silent_Kill,
+        # Clear_Damagers per the ATTRIB_NAME enum note). Returning a result
+        # with just `priority_list` would feed a stray P-hash to the convert
+        # script as if it were a real Pet PriorityList.
+        if not entity_def:
+            return None
+        result = {'type': 'EntCreate', 'entity_def': entity_def}
+        if display_name: result['display_name'] = display_name
+        if power_names: result['redirects'] = power_names
+        if priority_list: result['priority_list'] = priority_list
+        return result
+
+    return None
+
+
 def _parse_effect_template(r: BinReader) -> EffectTemplate:
     """Parse a single attrib_mod template within an effect group."""
     # Attribs: u4_array where values are enum_index * 4
@@ -187,10 +333,17 @@ def _parse_effect_template(r: BinReader) -> EffectTemplate:
     boost_mod_allowed = ""
     flags = []
     mode_name = None
-    params = None
 
-    # Skip remaining template data
+    # Capture raw tail bytes (everything after stack_key) and post-process.
+    # The full tail layout (CancelEvents, RequiredEvent, Suppress, BoostModAllowed,
+    # Flags, Messages, FX, Params per the Ghidra descriptor) is not fully
+    # reverse-engineered yet; rather than blocking on that, we extract the bits
+    # downstream actually uses (Params for Execute_Power redirects and EntCreate
+    # entity defs) by scanning the tail for u4 values that resolve to plausible
+    # strings in the string table.
+    tail_bytes = bytes(r._data[r._pos:r._end])
     r.skip_to_end()
+    params = _extract_params(tail_bytes, attribs, r._strtab_base, r._strtab_data)
 
     return EffectTemplate(
         attribs=attribs,
@@ -311,14 +464,17 @@ def _parse_effect_group(r: BinReader) -> EffectGroup:
     )
 
 
-def _parse_effects(r: BinReader) -> list[EffectGroup]:
-    """Parse the effects struct_array from a power record.
+def _parse_effects(r: BinReader) -> tuple[list[EffectGroup], list[EffectGroup]]:
+    """Parse the effects and activation_effects struct_arrays from a power record.
 
-    Also pulls the trailing `ActivationEffect` struct_array (a parallel top-
-    level structure in the .def grammar — separate keyword block from regular
-    `Effect`). The binary stores it immediately after the main effects array.
-    The ActivationEffect groups are flattened into the same returned list so
-    downstream code (and audit) sees one unified set.
+    The binary stores two parallel top-level structures:
+    - regular `Effect` blocks (main effects struct_array)
+    - `ActivationEffect` blocks (separate keyword block in the .def grammar;
+      stored in a second struct_array immediately after the main effects)
+
+    Returns (effects, activation_effects) as two distinct lists so the
+    converter can treat them with different semantics (redirect-follow,
+    self-buff filtering).
     """
     # Pre-field 1: struct_array (recharge_groups or similar).
     # When empty: u4(0). When populated: u4(count) + [u4(len) + data]* per element.
@@ -343,6 +499,7 @@ def _parse_effects(r: BinReader) -> list[EffectGroup]:
     # Wrapped in try since not every power has this field present (older or
     # alternate layouts), and we don't want to abort parsing the rest of the
     # record over a missing optional structure.
+    activation_effects = []
     try:
         act_count = r.read_u4()
         for _ in range(act_count):
@@ -350,14 +507,14 @@ def _parse_effects(r: BinReader) -> list[EffectGroup]:
             eff_reader = r.sub_reader(eff_len)
             try:
                 eg = _parse_effect_group(eff_reader)
-                effects.append(eg)
+                activation_effects.append(eg)
             except Exception:
                 pass
             r.skip(eff_len)
     except Exception:
         pass
 
-    return effects
+    return effects, activation_effects
 
 
 def _parse_cast_flags(r: BinReader) -> list[str]:
@@ -566,9 +723,10 @@ def _parse_power(r: BinReader, *, has_field_45b: bool = True, has_field_41b: boo
 
     # Parse effects
     try:
-        effects = _parse_effects(r)
+        effects, activation_effects = _parse_effects(r)
     except Exception:
         effects = []
+        activation_effects = []
 
     # Skip remaining metadata after effects
     r.skip_to_end()
@@ -610,6 +768,7 @@ def _parse_power(r: BinReader, *, has_field_45b: bool = True, has_field_41b: boo
         allowed_boostset_cats=allowed_boostset_cats,
         cast_through=cast_through,
         effects=effects,
+        activation_effects=activation_effects,
     )
 
 

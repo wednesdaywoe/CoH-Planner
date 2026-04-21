@@ -59,9 +59,9 @@
             "StealthRadius_PVE"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffectedAndPets",
           "table": "Ranged_Ones",
           "scale": 54.0,
           "duration": "4 seconds",
@@ -73,20 +73,20 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "ictusFX",
-          "caster_stack": "Unknown",
-          "stack": "Unknown",
-          "stack_limit": 48440,
-          "stack_key": "eq"
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null
         },
         {
           "attribs": [
             "StealthRadius_PVP"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffectedAndPets",
           "table": "Ranged_Ones",
           "scale": 500.0,
           "duration": "4 seconds",
@@ -98,20 +98,20 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "ictusFX",
-          "caster_stack": "Unknown",
-          "stack": "Unknown",
-          "stack_limit": 48440,
-          "stack_key": "eq"
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null
         },
         {
           "attribs": [
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffectedAndPets",
           "table": "Ranged_Ones",
           "scale": 0.2,
           "duration": "4 seconds",
@@ -123,20 +123,20 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "ictusFX",
-          "caster_stack": "Unknown",
-          "stack": "Unknown",
-          "stack_limit": 48440,
-          "stack_key": "eq"
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null
         },
         {
           "attribs": [
             "Global_Chance_Mod"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffectedAndPets",
           "table": "Melee_Ones",
           "scale": 1.0,
           "duration": "4 seconds",
@@ -148,20 +148,20 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "ictusFX",
-          "caster_stack": "Unknown",
-          "stack": "Unknown",
-          "stack_limit": 48440,
-          "stack_key": "eq"
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null
         },
         {
           "attribs": [
             "Grant_Power"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Absolute",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": 1.0,
           "duration": "0 seconds",
@@ -177,7 +177,13 @@
           "caster_stack": "Individual",
           "stack": "Ignore",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Villain_Pets.Kuji_Kiri.Smoke_Bomb"
+            ]
+          }
         }
       ]
     }

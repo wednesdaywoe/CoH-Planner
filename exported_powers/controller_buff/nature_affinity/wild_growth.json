@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Wild Growth",
   "display_fullname": "Controller Buff Nature Affinity Wild Growth",
-  "display_help": "3YPDK2ZXNZZBW5MK2VGS9MP4FA",
+  "display_help": "You channel the power of nature into your allies allowing them to more easily shrug off damage and causing their wounds to heal more quickly. Wild Growth increases the damage resistance and boosts the regeneration rate of all affected allies. This power also grants 2 stacks of Bloom.",
   "display_short_help": "PBAoE, Team +Res(All), +Regen, +2 Bloom",
   "icon": "natureaffinity_wildgrowth.png",
   "auto_issue": false,
@@ -69,9 +69,9 @@
             "Toxic_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Resistance",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Res_Dmg",
           "scale": 1.5,
           "duration": "90 seconds",
@@ -94,9 +94,9 @@
             "Regeneration"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": 1.0,
           "duration": "90 seconds",
@@ -119,9 +119,9 @@
             "Grant_Power"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Absolute",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": 1.0,
           "duration": "0 seconds",
@@ -137,7 +137,13 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Temporary_Powers.Temporary_Powers.Bloom"
+            ]
+          }
         }
       ]
     }

@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Aim",
   "display_fullname": "Sentinel Ranged Fire Blast Aim",
-  "display_help": "6XZ4PMU2TLTCWZC5243A8UVZHS",
+  "display_help": "N9H5KEPTD5Q3WDN83MMK98UZ7A",
   "display_short_help": "JJ2F2S7HKQ93WFCWCHA4TJ9D22",
   "icon": "fireblast_aim.png",
   "auto_issue": false,
@@ -59,7 +59,7 @@
             "ToHit"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Buff_ToHit",
@@ -84,7 +84,7 @@
             "Range"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Ones",
@@ -116,7 +116,7 @@
             "Toxic_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Buff_Dmg",

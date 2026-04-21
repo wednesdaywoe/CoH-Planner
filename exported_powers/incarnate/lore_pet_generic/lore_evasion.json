@@ -54,7 +54,7 @@
           "attribs": [
             "Area"
           ],
-          "type": "Duration",
+          "type": "Magnitude",
           "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
@@ -86,7 +86,7 @@
             "Psionic_Dmg",
             "Toxic_Dmg"
           ],
-          "type": "Duration",
+          "type": "Magnitude",
           "application_type": "OnTick",
           "aspect": "Resistance",
           "target": "Self",

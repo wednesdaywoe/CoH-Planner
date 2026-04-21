@@ -8,11 +8,11 @@
     "Assault_Bot",
     "Battle_Drones",
     "Equip_Robot",
-    "Repair",
     "Photon_Grenade",
     "Protector_Bots",
     "Pulse_Rifle_Blast",
     "Pulse_Rifle_Burst",
+    "Repair",
     "Upgrade_Robot"
   ],
   "available_level": [

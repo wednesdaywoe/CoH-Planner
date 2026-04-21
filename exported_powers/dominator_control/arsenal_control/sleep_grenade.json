@@ -66,9 +66,9 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Melee_Level",
           "scale": 1.0,
           "duration": "30 seconds",
@@ -84,7 +84,18 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "Class_Minion_Pets",
+            "display_name": "Sleep Grenade",
+            "redirects": [
+              "Pets.ResistAll.ResistAll",
+              "Redirects.Assault_Rifle.Sleep_Grenade",
+              "Redirects.Assault_Rifle.Sleep_Grenade_Damage"
+            ],
+            "priority_list": "PL_StaticObject"
+          }
         }
       ]
     }

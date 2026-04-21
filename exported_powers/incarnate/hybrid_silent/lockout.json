@@ -54,14 +54,14 @@
           "attribs": [
             "Set_Mode"
           ],
-          "type": "Magnitude",
-          "application_type": "Unknown",
+          "type": "Constant",
+          "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
           "scale": 1.0,
           "duration": "2 seconds",
-          "magnitude": 150.0,
+          "magnitude": 152.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -79,10 +79,10 @@
           "attribs": [
             "Grant_Power"
           ],
-          "type": "Constant",
-          "application_type": "OnTick",
+          "type": "Magnitude",
+          "application_type": "OnActivate",
           "aspect": "Absolute",
-          "target": "AnyAffected",
+          "target": "SelfAndPets",
           "table": "Melee_Ones",
           "scale": 1.0,
           "duration": "0 seconds",
@@ -98,7 +98,13 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Incarnate.Hybrid_Silent.Lockout"
+            ]
+          }
         }
       ]
     }

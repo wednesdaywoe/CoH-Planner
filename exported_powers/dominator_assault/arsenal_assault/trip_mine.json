@@ -61,7 +61,7 @@
             "Create_Entity"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Level",
@@ -79,7 +79,16 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "Mine",
+            "redirects": [
+              "Pets.Trip_Mine_Dominator.TripMine_Resistance",
+              "Pets.Trip_Mine_Dominator.TripMine_Info"
+            ],
+            "priority_list": "PL_Untargetable_FightPreferRanged"
+          }
         }
       ]
     }

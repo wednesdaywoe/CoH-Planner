@@ -54,8 +54,8 @@
           "attribs": [
             "Create_Entity"
           ],
-          "type": "Constant",
-          "application_type": "OnTick",
+          "type": "Magnitude",
+          "application_type": "OnActivate",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",

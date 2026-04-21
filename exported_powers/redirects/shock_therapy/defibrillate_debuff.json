@@ -61,10 +61,10 @@
           "attribs": [
             "Sleep"
           ],
-          "type": "Magnitude",
+          "type": "Duration",
           "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_PvPMez",
           "scale": 1.0,
           "duration": "0 seconds",
@@ -86,26 +86,26 @@
           "attribs": [
             "Endurance"
           ],
-          "type": "Magnitude",
-          "application_type": "Unknown",
+          "type": "Expression",
+          "application_type": "Immediate",
           "aspect": "Absolute",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_EndDrain",
           "scale": -20.0,
           "duration": "0 seconds",
           "magnitude": 0.0,
           "delay": 0.0,
-          "duration_expression": "hColumnEndgame.NictusFX",
-          "magnitude_expression": "Redirects.Shock_Therapy.Shock_Therapy_Static",
-          "application_period": 3.583960952357152e-40,
-          "tick_chance": 9.144313258798026e-41,
-          "tick_mag_multiplier": 2.4860155795893715e-40,
-          "tick_mag_additive": 2.9623589665673065e-40,
-          "jit_requires": "5",
-          "caster_stack": "Unknown",
-          "stack": "Unknown",
-          "stack_limit": 86771,
-          "stack_key": "0.2"
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": null
         }
       ]
     },
@@ -122,53 +122,28 @@
       "templates": [
         {
           "attribs": [
-            "Sleep"
-          ],
-          "type": "Magnitude",
-          "application_type": "Unknown",
-          "aspect": "Current",
-          "target": "Unknown",
-          "table": "Ranged_Sleep",
-          "scale": 30.0,
-          "duration": "0 seconds",
-          "magnitude": 3.0,
-          "delay": 1.8216880036222622e-44,
-          "duration_expression": "Redirects.Shock_Therapy.Shock_Therapy_Static",
-          "magnitude_expression": "source.ownPowerNum?",
-          "application_period": 9.144313258798026e-41,
-          "tick_chance": 2.4860155795893715e-40,
-          "tick_mag_multiplier": 2.9623589665673065e-40,
-          "tick_mag_additive": 1.0715449096999011e-40,
-          "jit_requires": "/",
-          "caster_stack": "Unknown",
-          "stack": "Unknown",
-          "stack_limit": 860492,
-          "stack_key": "+"
-        },
-        {
-          "attribs": [
             "Endurance"
           ],
-          "type": "Magnitude",
-          "application_type": "Unknown",
+          "type": "Expression",
+          "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_EndDrain",
           "scale": -0.3,
           "duration": "0 seconds",
           "magnitude": 0.0,
           "delay": 0.0,
-          "duration_expression": "hColumnEndgame.NictusFX",
-          "magnitude_expression": "Redirects.Shock_Therapy.Shock_Therapy_Static",
-          "application_period": 3.583960952357152e-40,
-          "tick_chance": 9.144313258798026e-41,
-          "tick_mag_multiplier": 2.4860155795893715e-40,
-          "tick_mag_additive": 2.9623589665673065e-40,
-          "jit_requires": "5",
-          "caster_stack": "Unknown",
-          "stack": "Unknown",
-          "stack_limit": 86771,
-          "stack_key": "0.2"
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": null
         }
       ]
     },
@@ -182,33 +157,7 @@
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 4,
-      "templates": [
-        {
-          "attribs": [
-            "Recovery"
-          ],
-          "type": "Magnitude",
-          "application_type": "Unknown",
-          "aspect": "Current",
-          "target": "Unknown",
-          "table": "Ranged_Ones",
-          "scale": 30.0,
-          "duration": "0 seconds",
-          "magnitude": -0.5,
-          "delay": 1.8216880036222622e-44,
-          "duration_expression": "Redirects.Shock_Therapy.Shock_Therapy_Static",
-          "magnitude_expression": "source.ownPowerNum?",
-          "application_period": 9.144313258798026e-41,
-          "tick_chance": 2.4860155795893715e-40,
-          "tick_mag_multiplier": 2.9623589665673065e-40,
-          "tick_mag_additive": 1.0715449096999011e-40,
-          "jit_requires": "/",
-          "caster_stack": "Unknown",
-          "stack": "Unknown",
-          "stack_limit": 860492,
-          "stack_key": "+"
-        }
-      ]
+      "templates": []
     }
   ],
   "available_level": 0,

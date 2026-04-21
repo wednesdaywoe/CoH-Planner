@@ -60,33 +60,7 @@
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 4,
-      "templates": [
-        {
-          "attribs": [
-            "Lethal_Dmg"
-          ],
-          "type": "Magnitude",
-          "application_type": "Unknown",
-          "aspect": "Absolute",
-          "target": "Unknown",
-          "table": "Ranged_Damage",
-          "scale": 0.241,
-          "duration": "3.10 seconds",
-          "magnitude": 1.0,
-          "delay": 0.0,
-          "duration_expression": "mn.5thColumnEndgame.NictusFX",
-          "magnitude_expression": "Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker",
-          "application_period": 3.583960952357152e-40,
-          "tick_chance": 2.1484525886227733e-39,
-          "tick_mag_multiplier": 1.215920690479287e-40,
-          "tick_mag_additive": 1.3366845921347998e-40,
-          "jit_requires": "+",
-          "caster_stack": "Unknown",
-          "stack": "Unknown",
-          "stack_limit": 1056964608,
-          "stack_key": null
-        }
-      ]
+      "templates": []
     },
     {
       "chance": 1.0,
@@ -101,35 +75,10 @@
       "templates": [
         {
           "attribs": [
-            "Lethal_Dmg"
-          ],
-          "type": "Magnitude",
-          "application_type": "Unknown",
-          "aspect": "Absolute",
-          "target": "Unknown",
-          "table": "Ranged_PvPDamage",
-          "scale": 0.2514,
-          "duration": "3.10 seconds",
-          "magnitude": 1.0,
-          "delay": 0.0,
-          "duration_expression": "mn.5thColumnEndgame.NictusFX",
-          "magnitude_expression": "Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker",
-          "application_period": 3.583960952357152e-40,
-          "tick_chance": 2.1484525886227733e-39,
-          "tick_mag_multiplier": 1.215920690479287e-40,
-          "tick_mag_additive": 1.3366845921347998e-40,
-          "jit_requires": "+",
-          "caster_stack": "Unknown",
-          "stack": "Unknown",
-          "stack_limit": 1056964608,
-          "stack_key": null
-        },
-        {
-          "attribs": [
             "Rage"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Absolute",
           "target": "Self",
           "table": "Ranged_Ones",
@@ -167,9 +116,9 @@
             "Base_Defense"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Debuff_Def",
           "scale": 1.0,
           "duration": "10 seconds",
@@ -194,9 +143,9 @@
             "JumpingSpeed"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Slow",
           "scale": 0.2,
           "duration": "10 seconds",
@@ -219,9 +168,9 @@
             "JumpHeight"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Strength",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Slow",
           "scale": 0.2,
           "duration": "10 seconds",
@@ -244,9 +193,9 @@
             "Fly"
           ],
           "type": "Magnitude",
-          "application_type": "OnTick",
+          "application_type": "Immediate",
           "aspect": "Current",
-          "target": "Unknown",
+          "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": -1.6,
           "duration": "10 seconds",
@@ -263,6 +212,50 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "Temporary_Powers.Temporary_Powers.Savage_Melee_Exhausted source.ownPower? !",
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Grant_Power"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Absolute",
+          "target": "Self",
+          "table": "Ranged_Ones",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker"
+            ]
+          }
         }
       ]
     }
