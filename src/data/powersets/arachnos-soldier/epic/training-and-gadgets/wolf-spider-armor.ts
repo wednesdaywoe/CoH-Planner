@@ -1,86 +1,16 @@
 /**
- * Wolf Spider Armor
- * Auto: Self +RES(Smash, Lethal, Psionic, Status Effects)
+ * Wolf Spider Armor — COMPOSED EXPORT
  *
- * Source: training_gadgets/training_and_gadgets/wolf_spider_armor.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs training_gadgets training_and_gadgets
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { WolfSpiderArmor as base } from '@/data/generated/powersets/arachnos-soldier/epic/training-and-gadgets/wolf-spider-armor';
+import { overrides } from '@/data/overrides/powersets/arachnos-soldier/epic/training-and-gadgets/wolf-spider-armor';
 
-export const WolfSpiderArmor: Power = {
-  "name": "Wolf Spider Armor",
-  "internalName": "Wolf_Spider_Armor",
-  "available": 0,
-  "description": "Your Wolf Spider Armor provides good protection to Smashing, Lethal and Psionic damage types, as well as offering basic levels of protection to most status effects, including Confuse, Fear, Disorient, Hold, Sleep and Immobilize effects.",
-  "shortHelp": "Auto: Self +RES(Smash, Lethal, Psionic, Status Effects)",
-  "icon": "trainingandgadgets_wolfspiderarmor.png",
-  "powerType": "Auto",
-  "effectArea": "SingleTarget",
-  "maxSlots": 6,
-  "allowedEnhancements": [
-    "Resistance"
-  ],
-  "allowedSetCategories": [
-    "Resist Damage"
-  ],
-  "stats": {
-    "accuracy": 1
-  },
-  "targetType": "Self",
-  "effects": {
-    "resistance": {
-      "smashing": {
-        "scale": 0.3,
-        "table": "Melee_Res_Dmg"
-      },
-      "lethal": {
-        "scale": 0.3,
-        "table": "Melee_Res_Dmg"
-      },
-      "psionic": {
-        "scale": 0.2,
-        "table": "Melee_Res_Dmg"
-      }
-    },
-    "confuse": {
-      "mag": 1,
-      "scale": 2,
-      "table": "Melee_Ones"
-    },
-    "fear": {
-      "mag": 1,
-      "scale": 2,
-      "table": "Melee_Ones"
-    },
-    "hold": {
-      "mag": 1,
-      "scale": 2,
-      "table": "Melee_Ones"
-    },
-    "immobilize": {
-      "mag": 1,
-      "scale": 2,
-      "table": "Melee_Ones"
-    },
-    "stun": {
-      "mag": 1,
-      "scale": 2,
-      "table": "Melee_Ones"
-    },
-    "sleep": {
-      "mag": 1,
-      "scale": 2,
-      "table": "Melee_Ones"
-    },
-    "effectDuration": 10.25,
-    "durations": {
-      "confuse": 10.25,
-      "fear": 10.25,
-      "hold": 10.25,
-      "immobilize": 10.25,
-      "resistance": 10.25,
-      "sleep": 10.25,
-      "stun": 10.25
-    }
-  }
-};
+export const WolfSpiderArmor: Power = withOverrides(base, overrides);

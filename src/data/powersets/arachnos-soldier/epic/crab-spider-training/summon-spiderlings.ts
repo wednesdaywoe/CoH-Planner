@@ -1,50 +1,16 @@
 /**
- * Summon Spiderlings
- * Summon Spiderlings: Ranged Moderate DMG(Lethal)
+ * Summon Spiderlings — COMPOSED EXPORT
  *
- * Source: training_gadgets/crab_spider_training/summon_spiderlings.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs training_gadgets crab_spider_training
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { SummonSpiderlings as base } from '@/data/generated/powersets/arachnos-soldier/epic/crab-spider-training/summon-spiderlings';
+import { overrides } from '@/data/overrides/powersets/arachnos-soldier/epic/crab-spider-training/summon-spiderlings';
 
-export const SummonSpiderlings: Power = {
-  "name": "Summon Spiderlings",
-  "internalName": "Summon_Spiderlings",
-  "available": 27,
-  "description": "As a Crab Spider you have access to a small squadron of Arachnobot Spiderlings. Three Spiderlings that are two levels less than you will show up when summoned.",
-  "shortHelp": "Summon Spiderlings: Ranged Moderate DMG(Lethal)",
-  "icon": "crabspidertraining_summonspiderlings.png",
-  "powerType": "Click",
-  "effectArea": "Location",
-  "maxSlots": 6,
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Defense Debuff",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Pet Damage",
-    "Recharge Intensive Pets",
-    "Universal Damage Sets"
-  ],
-  "stats": {
-    "accuracy": 1,
-    "range": 60,
-    "recharge": 600,
-    "endurance": 26,
-    "castTime": 2.03
-  },
-  "targetType": "Location",
-  "effects": {
-    "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_Patron_Powers_Arachnobot_Spiderling",
-      "duration": 240,
-      "copyBoosts": true,
-      "entityCount": 3
-    }
-  }
-};
+export const SummonSpiderlings: Power = withOverrides(base, overrides);

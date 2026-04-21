@@ -1,38 +1,16 @@
 /**
- * Combat Training: Offensive
- * Auto: Self +ACC
+ * Combat Training: Offensive — COMPOSED EXPORT
  *
- * Source: training_gadgets/training_and_gadgets/combat_training:_offensive.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs training_gadgets training_and_gadgets
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { CombatTrainingOffensive as base } from '@/data/generated/powersets/arachnos-soldier/epic/training-and-gadgets/combat-training-offensive';
+import { overrides } from '@/data/overrides/powersets/arachnos-soldier/epic/training-and-gadgets/combat-training-offensive';
 
-export const CombatTrainingOffensive: Power = {
-  "name": "Combat Training: Offensive",
-  "internalName": "Combat_Training:_Offensive",
-  "available": 3,
-  "description": "Your accuracy is improved.",
-  "shortHelp": "Auto: Self +ACC",
-  "icon": "trainingandgadgets_combattrainingoffensive.png",
-  "powerType": "Auto",
-  "effectArea": "SingleTarget",
-  "maxSlots": 6,
-  "allowedEnhancements": [
-    "Accuracy"
-  ],
-  "allowedSetCategories": [],
-  "stats": {
-    "accuracy": 1,
-    "recharge": 4
-  },
-  "targetType": "Self",
-  "effects": {
-    "tohitBuff": {
-      "scale": 0.33,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "tohitBuff": 0.75
-    }
-  }
-};
+export const CombatTrainingOffensive: Power = withOverrides(base, overrides);

@@ -1,52 +1,16 @@
 /**
- * Call Reinforcements
- * Call Reinforcements: Ranged Moderate DMG(Lethal)
+ * Call Reinforcements — COMPOSED EXPORT
  *
- * Source: training_gadgets/training_and_gadgets/call_reinforcements.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs training_gadgets training_and_gadgets
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { CallReinforcements as base } from '@/data/generated/powersets/arachnos-soldier/epic/training-and-gadgets/call-reinforcements';
+import { overrides } from '@/data/overrides/powersets/arachnos-soldier/epic/training-and-gadgets/call-reinforcements';
 
-export const CallReinforcements: Power = {
-  "name": "Call Reinforcements",
-  "internalName": "Call_Reinforcements",
-  "available": 29,
-  "description": "As an Arachnos Soldier you have access to a small squadron of Arachnobot Disruptors. Two Disruptors that are one level less than you will show up when summoned.",
-  "shortHelp": "Call Reinforcements: Ranged Moderate DMG(Lethal)",
-  "icon": "trainingandgadgets_callreinforcements.png",
-  "powerType": "Click",
-  "effectArea": "Location",
-  "maxSlots": 6,
-  "allowedEnhancements": [
-    "EnduranceModification",
-    "Hold",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Immobilize",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Pet Damage",
-    "Recharge Intensive Pets",
-    "Universal Damage Sets"
-  ],
-  "stats": {
-    "accuracy": 1,
-    "range": 60,
-    "recharge": 900,
-    "endurance": 26,
-    "castTime": 2.03
-  },
-  "targetType": "Location",
-  "effects": {
-    "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_Patron_Powers_Arachnobot_Disrupter",
-      "duration": 240,
-      "copyBoosts": true,
-      "entityCount": 2
-    }
-  }
-};
+export const CallReinforcements: Power = withOverrides(base, overrides);

@@ -1,95 +1,16 @@
 /**
- * Fortification
- * Toggle: Self +Res(Disorient, Hold, Immobilize, Sleep, All DMG but Psionics)
+ * Fortification — COMPOSED EXPORT
  *
- * Source: training_gadgets/crab_spider_training/fortification.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs training_gadgets crab_spider_training
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Fortification as base } from '@/data/generated/powersets/arachnos-soldier/epic/crab-spider-training/fortification';
+import { overrides } from '@/data/overrides/powersets/arachnos-soldier/epic/crab-spider-training/fortification';
 
-export const Fortification: Power = {
-  "name": "Fortification",
-  "internalName": "Fortification",
-  "available": 23,
-  "description": "Crab Spiders armor may be reinforced to become far more resistant to all types of damage except Psionics, as well as increasing protection to Sleep, Hold, Immobilization and Disorient effects.",
-  "shortHelp": "Toggle: Self +Res(Disorient, Hold, Immobilize, Sleep, All DMG but Psionics)",
-  "icon": "crabspidertraining_fortification.png",
-  "powerType": "Toggle",
-  "effectArea": "SingleTarget",
-  "maxSlots": 6,
-  "allowedEnhancements": [
-    "Resistance",
-    "EnduranceReduction",
-    "Recharge"
-  ],
-  "allowedSetCategories": [
-    "Resist Damage"
-  ],
-  "stats": {
-    "accuracy": 1,
-    "recharge": 3,
-    "endurance": 0.104,
-    "castTime": 2.33
-  },
-  "targetType": "Self",
-  "effects": {
-    "resistance": {
-      "smashing": {
-        "scale": 1.5,
-        "table": "Melee_Res_Dmg"
-      },
-      "lethal": {
-        "scale": 1.5,
-        "table": "Melee_Res_Dmg"
-      },
-      "fire": {
-        "scale": 2.5,
-        "table": "Melee_Res_Dmg"
-      },
-      "cold": {
-        "scale": 2.5,
-        "table": "Melee_Res_Dmg"
-      },
-      "energy": {
-        "scale": 2.5,
-        "table": "Melee_Res_Dmg"
-      },
-      "negative": {
-        "scale": 2.5,
-        "table": "Melee_Res_Dmg"
-      },
-      "toxic": {
-        "scale": 2.5,
-        "table": "Melee_Res_Dmg"
-      }
-    },
-    "hold": {
-      "mag": 1,
-      "scale": 24,
-      "table": "Melee_Res_Boolean"
-    },
-    "immobilize": {
-      "mag": 1,
-      "scale": 24,
-      "table": "Melee_Res_Boolean"
-    },
-    "stun": {
-      "mag": 1,
-      "scale": 24,
-      "table": "Melee_Res_Boolean"
-    },
-    "sleep": {
-      "mag": 1,
-      "scale": 24,
-      "table": "Melee_Res_Boolean"
-    },
-    "effectDuration": 0.75,
-    "durations": {
-      "hold": 0.75,
-      "immobilize": 0.75,
-      "resistance": 0.75,
-      "sleep": 0.75,
-      "stun": 0.75
-    }
-  }
-};
+export const Fortification: Power = withOverrides(base, overrides);

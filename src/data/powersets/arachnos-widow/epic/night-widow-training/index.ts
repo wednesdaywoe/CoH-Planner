@@ -3,17 +3,18 @@
  * With powers of Stealth, and heightened combat skills, coupled with strong mental attacks, the Night Widows of Arachnos are extremely dangerous.
  *
  * Archetype: arachnos-widow
- * Category: Epic
+ * Category: epic
+ * Source: widow_training/night_widow_training
  */
 
 import type { Powerset } from '@/types';
 
-import { MentalBlast } from './mental-blast';
-import { BuildUp } from './build-up';
-import { SmokeGrenade } from './smoke-grenade';
-import { Slash } from './slash';
-import { Eviscerate } from './eviscerate';
-import { PsychicScream } from './psychic-scream';
+import { MentalBlast as MentalBlast } from './nw-mental-blast';
+import { BuildUp as BuildUp } from './build-up';
+import { SmokeGrenade as SmokeGrenade } from './nw-smoke-grenade';
+import { Slash as Slash } from './nw-slash';
+import { Eviscerate as Eviscerate } from './nw-eviscerate';
+import { PsychicScream as PsychicScream } from './nw-psychic-scream';
 
 export const powerset: Powerset = {
   id: 'arachnos-widow/night-widow-training',

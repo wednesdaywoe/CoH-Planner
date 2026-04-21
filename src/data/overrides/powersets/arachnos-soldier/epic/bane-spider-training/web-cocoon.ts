@@ -1,0 +1,47 @@
+/**
+ * Web Cocoon — OVERRIDES LAYER
+ *
+ * Hand-written deltas applied on top of the generated power object via
+ * `withOverrides()`. Each field below is a value the previously-committed
+ * composed file carried that the current CoD2-raw extraction does not.
+ * Keep them — the CoD2 archive we convert from is a snapshot, and these
+ * overrides are where current HC values live when they've drifted from
+ * that snapshot. See src/data/README.md.
+ */
+import type { Power } from '@/types';
+
+export const overrides: Partial<Power> = {
+  "targetType": "Foe (Alive)",
+  "effects": {
+    "slow": {
+      "jumpHeight": {
+        "scale": 500,
+        "table": "Ranged_Ones"
+      },
+      "fly": {
+        "scale": 10,
+        "table": "Ranged_Ones"
+      }
+    },
+    "rechargeDebuff": {
+      "scale": 0.5,
+      "table": "Ranged_Slow"
+    },
+    "movement": {
+      "runSpeed": {
+        "scale": 0.5,
+        "table": "Ranged_Slow"
+      },
+      "flySpeed": {
+        "scale": 0.5,
+        "table": "Ranged_Slow"
+      }
+    },
+    "buffDuration": 15,
+    "durations": {
+      "movement": 15,
+      "rechargeBuff": 15,
+      "slow": 15
+    }
+  }
+};

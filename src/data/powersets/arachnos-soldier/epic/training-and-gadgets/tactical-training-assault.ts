@@ -1,45 +1,16 @@
 /**
- * Tactical Training: Assault
- * Toggle: PBAoE, Team +DMG, Res(Taunt, Placate)
+ * Tactical Training: Assault — COMPOSED EXPORT
  *
- * Source: training_gadgets/training_and_gadgets/tactical_training:_assault.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs training_gadgets training_and_gadgets
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { TacticalTrainingAssault as base } from '@/data/generated/powersets/arachnos-soldier/epic/training-and-gadgets/tactical-training-assault';
+import { overrides } from '@/data/overrides/powersets/arachnos-soldier/epic/training-and-gadgets/tactical-training-assault';
 
-export const TacticalTrainingAssault: Power = {
-  "name": "Tactical Training: Assault",
-  "internalName": "Tactical_Training:_Assault",
-  "available": 15,
-  "description": "While this power is active, you and your nearby teammates deal more damage and are more resistant to Taunt and Placate.",
-  "shortHelp": "Toggle: PBAoE, Team +DMG, Res(Taunt, Placate)",
-  "icon": "trainingandgadgets_tacticaltrainingassault.png",
-  "powerType": "Toggle",
-  "effectArea": "AoE",
-  "maxSlots": 6,
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge"
-  ],
-  "allowedSetCategories": [],
-  "stats": {
-    "accuracy": 1,
-    "recharge": 15,
-    "endurance": 0.416,
-    "castTime": 1.5,
-    "radius": 60,
-    "maxTargets": 255
-  },
-  "targetType": "Self",
-  "effects": {
-    "damageBuff": {
-      "scale": 1.5,
-      "table": "Ranged_Buff_Dmg"
-    },
-    "durations": {
-      "damageBuff": 2.25,
-      "placate": 2.25,
-      "taunt": 2.25
-    }
-  }
-};
+export const TacticalTrainingAssault: Power = withOverrides(base, overrides);

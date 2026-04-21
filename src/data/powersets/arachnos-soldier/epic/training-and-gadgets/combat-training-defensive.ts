@@ -1,42 +1,16 @@
 /**
- * Combat Training: Defensive
- * Auto: Self +DEF(Ranged)
+ * Combat Training: Defensive — COMPOSED EXPORT
  *
- * Source: training_gadgets/training_and_gadgets/combat_training:_defensive.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs training_gadgets training_and_gadgets
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { CombatTrainingDefensive as base } from '@/data/generated/powersets/arachnos-soldier/epic/training-and-gadgets/combat-training-defensive';
+import { overrides } from '@/data/overrides/powersets/arachnos-soldier/epic/training-and-gadgets/combat-training-defensive';
 
-export const CombatTrainingDefensive: Power = {
-  "name": "Combat Training: Defensive",
-  "internalName": "Combat_Training:_Defensive",
-  "available": 1,
-  "description": "You are more evasive to ranged attacks.",
-  "shortHelp": "Auto: Self +DEF(Ranged)",
-  "icon": "trainingandgadgets_combattrainingdefensive.png",
-  "powerType": "Auto",
-  "effectArea": "SingleTarget",
-  "maxSlots": 6,
-  "allowedEnhancements": [
-    "Defense"
-  ],
-  "allowedSetCategories": [
-    "Defense Sets"
-  ],
-  "stats": {
-    "accuracy": 1,
-    "recharge": 4
-  },
-  "targetType": "Self",
-  "effects": {
-    "defenseBuff": {
-      "ranged": {
-        "scale": 0.75,
-        "table": "Melee_Buff_Def"
-      }
-    },
-    "durations": {
-      "defenseBuff": 0.75
-    }
-  }
-};
+export const CombatTrainingDefensive: Power = withOverrides(base, overrides);

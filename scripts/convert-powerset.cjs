@@ -54,6 +54,14 @@ const CATEGORY_MAP = {
   'peacebringer_offensive': { archetype: 'peacebringer', type: 'epic' },
   'warshade_defensive': { archetype: 'warshade', type: 'epic' },
   'warshade_offensive': { archetype: 'warshade', type: 'epic' },
+  // Arachnos Soldiers / Widows — CoD2 stores the SoA training powersets
+  // under training_gadgets and widow_training; both map to the existing
+  // arachnos-soldier/epic + arachnos-widow/epic folder layout.
+  // Note: the core arachnos_soldiers core sets (arachnos-soldier /
+  // bane-spider-soldier / crab-spider-soldier) and the teamwork sets
+  // have no CoD2 source category, so they stay pre-layered.
+  'training_gadgets': { archetype: 'arachnos-soldier', type: 'epic' },
+  'widow_training': { archetype: 'arachnos-widow', type: 'epic' },
 };
 
 // Enhancement type mapping

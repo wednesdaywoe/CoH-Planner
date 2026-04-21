@@ -1,50 +1,16 @@
 /**
- * Build Up
- * Self +DMG, +To Hit
+ * Build Up — COMPOSED EXPORT
  *
- * Source: widow_training/night_widow_training/build_up.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs widow_training night_widow_training
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { BuildUp as base } from '@/data/generated/powersets/arachnos-widow/epic/night-widow-training/build-up';
+import { overrides } from '@/data/overrides/powersets/arachnos-widow/epic/night-widow-training/build-up';
 
-export const BuildUp: Power = {
-  "name": "Build Up",
-  "internalName": "Build_Up",
-  "available": 7,
-  "description": "Greatly increases the amount of damage you deal for a few seconds, as well as slightly increasing your chance to hit.  Notes: If you select this power, you may not also select Follow Up.",
-  "shortHelp": "Self +DMG, +To Hit",
-  "icon": "nightwidowtraining_buildup.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "maxSlots": 6,
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "ToHit"
-  ],
-  "allowedSetCategories": [
-    "To Hit Buff"
-  ],
-  "stats": {
-    "accuracy": 1,
-    "recharge": 90,
-    "endurance": 5.2,
-    "castTime": 0.73
-  },
-  "targetType": "Self",
-  "effects": {
-    "tohitBuff": {
-      "scale": 2,
-      "table": "Melee_Buff_ToHit"
-    },
-    "damageBuff": {
-      "scale": 8,
-      "table": "Melee_Buff_Dmg"
-    },
-    "buffDuration": 10,
-    "durations": {
-      "damageBuff": 10,
-      "tohitBuff": 10
-    }
-  }
-};
+export const BuildUp: Power = withOverrides(base, overrides);

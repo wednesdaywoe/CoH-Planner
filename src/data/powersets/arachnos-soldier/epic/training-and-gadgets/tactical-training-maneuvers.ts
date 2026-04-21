@@ -1,88 +1,16 @@
 /**
- * Tactical Training: Maneuvers
- * PBAoE, Team +DEF(All)
+ * Tactical Training: Maneuvers — COMPOSED EXPORT
  *
- * Source: training_gadgets/training_and_gadgets/tactical_training:_maneuvers.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs training_gadgets training_and_gadgets
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { TacticalTrainingManeuvers as base } from '@/data/generated/powersets/arachnos-soldier/epic/training-and-gadgets/tactical-training-maneuvers';
+import { overrides } from '@/data/overrides/powersets/arachnos-soldier/epic/training-and-gadgets/tactical-training-maneuvers';
 
-export const TacticalTrainingManeuvers: Power = {
-  "name": "Tactical Training: Maneuvers",
-  "internalName": "Tactical_Training:_Maneuvers",
-  "available": 9,
-  "description": "A good leader knows how to protect his team. While active, this power increases the Defense of yourself and all nearby teammates to all attacks.",
-  "shortHelp": "PBAoE, Team +DEF(All)",
-  "icon": "trainingandgadgets_tacticaltrainingmaneuvers.png",
-  "powerType": "Toggle",
-  "effectArea": "AoE",
-  "maxSlots": 6,
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Defense"
-  ],
-  "allowedSetCategories": [
-    "Defense Sets"
-  ],
-  "stats": {
-    "accuracy": 1,
-    "recharge": 15,
-    "endurance": 0.416,
-    "castTime": 1.5,
-    "radius": 60,
-    "maxTargets": 255
-  },
-  "targetType": "Self",
-  "effects": {
-    "defenseBuff": {
-      "ranged": {
-        "scale": 1,
-        "table": "Ranged_Buff_Def"
-      },
-      "melee": {
-        "scale": 1,
-        "table": "Ranged_Buff_Def"
-      },
-      "aoe": {
-        "scale": 1,
-        "table": "Ranged_Buff_Def"
-      },
-      "smashing": {
-        "scale": 1,
-        "table": "Ranged_Buff_Def"
-      },
-      "lethal": {
-        "scale": 1,
-        "table": "Ranged_Buff_Def"
-      },
-      "fire": {
-        "scale": 1,
-        "table": "Ranged_Buff_Def"
-      },
-      "cold": {
-        "scale": 1,
-        "table": "Ranged_Buff_Def"
-      },
-      "energy": {
-        "scale": 1,
-        "table": "Ranged_Buff_Def"
-      },
-      "negative": {
-        "scale": 1,
-        "table": "Ranged_Buff_Def"
-      },
-      "psionic": {
-        "scale": 1,
-        "table": "Ranged_Buff_Def"
-      },
-      "toxic": {
-        "scale": 1,
-        "table": "Ranged_Buff_Def"
-      }
-    },
-    "durations": {
-      "defenseBuff": 2.25
-    }
-  }
-};
+export const TacticalTrainingManeuvers: Power = withOverrides(base, overrides);

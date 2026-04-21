@@ -257,10 +257,17 @@ for (const genFile of genFiles) {
     continue;
   }
 
+  // The generated file's export name can diverge from the composed file's
+  // when HC renamed the display name but kept the internalName (filename).
+  // Example: `lunge.ts` exports `Strike` in generated, `Lunge` in the
+  // pre-layering composed. Match by filename, load each by its own export.
+  const genSource = fs.readFileSync(genPath, 'utf-8');
+  const genExportName = extractExportName(genSource) || exportName;
+
   let composedObj, generatedObj;
   try {
     composedObj = loadPowerObject(composedPath, exportName);
-    generatedObj = loadPowerObject(genPath, exportName);
+    generatedObj = loadPowerObject(genPath, genExportName);
   } catch (e) {
     console.log(`  ! ${powerStub}: load error — ${e.message.split('\n')[0]}`);
     errors++;
@@ -287,11 +294,97 @@ for (const genFile of genFiles) {
   const ovrRel = `@/data/overrides/powersets/${categoryInfo.archetype}/${categoryInfo.type}/${setKebab}/${powerStub}`;
 
   writeOverrideFile(ovrPath, composedObj.name || powerStub, deltas);
-  writeComposedFile(composedPath, exportName, genRel, ovrRel, composedObj.name || powerStub,
-    fs.readFileSync(genPath, 'utf-8'));
+  // Always export the generated name — the converter-written index.ts
+  // imports by that name, so a drifted composed export name would break
+  // the index.
+  writeComposedFile(composedPath, genExportName, genRel, ovrRel, composedObj.name || powerStub, genSource);
 
   console.log(`  ✓ ${powerStub}: migrated${deltaKeys.length ? ` (${deltaKeys.length} overrides: ${deltaKeys.join(', ')})` : ' (empty overrides)'}`);
   migrated++;
+}
+
+// --- Rescue pass: orphan composed files ---
+// If the old composed-tree used a different filename convention (e.g.
+// kebab of display name) than the new generated tree (kebab of
+// internalName), a pre-layering composed file may have no same-name
+// counterpart in generated/. Match those orphans by `internalName`
+// (case-insensitive) and migrate them onto their new-name generated
+// sibling, then delete the orphan.
+const composedExisting = fs.existsSync(composedDir)
+  ? fs.readdirSync(composedDir).filter(f => f.endsWith('.ts') && f !== 'index.ts')
+  : [];
+const orphans = composedExisting.filter(f => !fs.existsSync(path.join(genDir, f)));
+
+if (orphans.length > 0) {
+  console.log(`\nOrphan rescue pass: ${orphans.length} composed files without a same-name generated match`);
+  const genByInternal = new Map();
+  for (const gf of genFiles) {
+    const gfSrc = fs.readFileSync(path.join(genDir, gf), 'utf-8');
+    const gfExport = extractExportName(gfSrc);
+    if (!gfExport) continue;
+    try {
+      const gfObj = loadPowerObject(path.join(genDir, gf), gfExport);
+      if (gfObj.internalName) {
+        genByInternal.set(gfObj.internalName.toLowerCase(), { file: gf, exportName: gfExport, obj: gfObj });
+      }
+    } catch { /* ignore */ }
+  }
+
+  for (const orphanFile of orphans) {
+    const orphanPath = path.join(composedDir, orphanFile);
+    const orphanSource = fs.readFileSync(orphanPath, 'utf-8');
+    if (isComposedAlreadyLayered(orphanSource)) {
+      // Already-layered orphan — we can't re-home a withOverrides() call
+      // safely, leave it for manual review.
+      console.log(`  ? ${orphanFile}: orphan is already layered, leave for manual review`);
+      continue;
+    }
+    const orphanExport = extractExportName(orphanSource);
+    if (!orphanExport) {
+      console.log(`  ! ${orphanFile}: could not parse export name, skipping`);
+      errors++;
+      continue;
+    }
+    let orphanObj;
+    try {
+      orphanObj = loadPowerObject(orphanPath, orphanExport);
+    } catch (e) {
+      console.log(`  ! ${orphanFile}: load error — ${e.message.split('\n')[0]}`);
+      errors++;
+      continue;
+    }
+    if (!orphanObj.internalName) {
+      console.log(`  ! ${orphanFile}: no internalName field, cannot rescue`);
+      errors++;
+      continue;
+    }
+    const match = genByInternal.get(orphanObj.internalName.toLowerCase());
+    if (!match) {
+      console.log(`  ! ${orphanFile}: no generated match for internalName=${orphanObj.internalName}`);
+      errors++;
+      continue;
+    }
+
+    const deltas = computeOverrides(orphanObj, match.obj);
+    const deltaKeys = Object.keys(deltas);
+    const targetComposed = path.join(composedDir, match.file);
+    const targetOvr = path.join(ovrDir, match.file);
+
+    if (!apply) {
+      console.log(`  ↻ ${orphanFile} → ${match.file}: rescue would capture ${deltaKeys.length ? `[${deltaKeys.join(', ')}]` : 'nothing (auto-accept)'}`);
+      migrated++;
+      continue;
+    }
+
+    const genRel = `@/data/generated/powersets/${categoryInfo.archetype}/${categoryInfo.type}/${setKebab}/${match.file.replace(/\.ts$/, '')}`;
+    const ovrRel = `@/data/overrides/powersets/${categoryInfo.archetype}/${categoryInfo.type}/${setKebab}/${match.file.replace(/\.ts$/, '')}`;
+    writeOverrideFile(targetOvr, orphanObj.name || match.file, deltas);
+    writeComposedFile(targetComposed, match.exportName, genRel, ovrRel, orphanObj.name || match.file,
+      fs.readFileSync(path.join(genDir, match.file), 'utf-8'));
+    fs.unlinkSync(orphanPath);
+    console.log(`  ↻ ${orphanFile} → ${match.file}: rescued (${deltaKeys.length} overrides${deltaKeys.length ? ': ' + deltaKeys.join(', ') : ''})`);
+    migrated++;
+  }
 }
 
 console.log(`\n${migrated} migrated, ${skipped} skipped, ${errors} errors`);

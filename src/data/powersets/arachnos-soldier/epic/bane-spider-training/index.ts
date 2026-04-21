@@ -3,15 +3,16 @@
  * Bane Spiders are the commandos of the Arachnos organization, providing excellent stealth and offensive capabilities.
  *
  * Archetype: arachnos-soldier
- * Category: Epic
+ * Category: epic
+ * Source: training_gadgets/bane_spider_training
  */
 
 import type { Powerset } from '@/types';
 
-import { BaneSpiderArmorUpgrade } from './bane-spider-armor-upgrade';
-import { CloakingDevice } from './cloaking-device';
-import { Surveillance } from './surveillance';
-import { WebCocoon } from './web-cocoon';
+import { BaneSpiderArmorUpgrade as BaneSpiderArmorUpgrade } from './bane-spider-armor';
+import { CloakingDevice as CloakingDevice } from './hide';
+import { Surveillance as Surveillance } from './surveillance';
+import { WebCocoon as WebCocoon } from './web-cocoon';
 
 export const powerset: Powerset = {
   id: 'arachnos-soldier/bane-spider-training',
