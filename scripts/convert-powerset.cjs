@@ -118,6 +118,41 @@ const BOOST_TYPE_MAP = {
   'Enhance Flying Speed': 'Fly',
 };
 
+// Mapping for bin-crawler's boost-type enum names to the planner's
+// EnhancementStatType. (Bin-crawler already uses short names close to the
+// planner's format; a few still need translation.)
+const BIN_BOOST_MAP = {
+  'Accuracy': 'Accuracy',
+  'Buff_Defense': 'Defense',
+  'Buff_ToHit': 'ToHit',
+  'Confuse': 'Confuse',
+  'Damage': 'Damage',
+  'Debuff_Defense': 'Defense Debuff',
+  'Debuff_ToHit': 'ToHit Debuff',
+  'Fear': 'Fear',
+  'SpeedFlying': 'Fly',
+  'Heal': 'Healing',
+  'Immobilize': 'Immobilize',
+  'Jump': 'Jump',
+  'Knockback': 'Knockback',
+  'Recharge': 'Recharge',
+  'SpeedRunning': 'Run Speed',
+  'Sleep': 'Sleep',
+  'Stun': 'Stun',
+  'Range': 'Range',
+  'EnduranceDiscount': 'EnduranceReduction',
+  'Taunt': 'Taunt',
+  'Slow': 'Slow',
+  'Hold': 'Hold',
+  'Intangible': 'Intangible',
+  'Interrupt': 'Interrupt',
+  'Recovery': 'EnduranceModification',
+  'Endurance_Drain': 'EnduranceModification',
+  'Res_Damage': 'Resistance',
+  // Origin tags (Science/Mutation/Magic/Technology/Natural) intentionally
+  // unmapped — they aren't enhancement categories.
+};
+
 // IO Set category mapping
 const SET_CATEGORY_MAP = {
   'Accurate Defense Debuff': 'Accurate Defense Debuff',
@@ -1409,10 +1444,11 @@ function convertPower(powerJson, availableLevel) {
 
   // Allowed enhancements (always include, even if empty, for type safety).
   // Accept both CoD2's descriptive names (via BOOST_TYPE_MAP) and the
-  // bin-crawler's short names (passed through directly — already in the
-  // planner's format, e.g. 'Accuracy', 'Damage', 'EnduranceDiscount').
+  // bin-crawler's short names (via BIN_BOOST_MAP). Anything else is noise
+  // (CoD2 emits origin tags like 'Natural_Boost' for some powers) and
+  // gets filtered out.
   power.allowedEnhancements = (powerJson.boosts_allowed || [])
-    .map(b => BOOST_TYPE_MAP[b] ?? b)
+    .map(b => BOOST_TYPE_MAP[b] || BIN_BOOST_MAP[b])
     .filter(Boolean);
 
   // Allowed IO set categories

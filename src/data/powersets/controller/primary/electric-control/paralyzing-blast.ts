@@ -1,55 +1,16 @@
 /**
- * Tesla Coil
- * Ranged (Targeted AoE), Foe DMG(Energy), Hold, -End, -Fly, -Jump, -Recharge
+ * Tesla Coil — COMPOSED EXPORT
  *
- * Source: controller_control/electric_control/paralyzing_blast.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs controller_control electric_control
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { TeslaCoil as base } from '@/data/generated/powersets/controller/primary/electric-control/paralyzing-blast';
+import { overrides } from '@/data/overrides/powersets/controller/primary/electric-control/paralyzing-blast';
 
-export const ParalyzingBlast: Power = {
-  "name": "Tesla Coil",
-  "internalName": "Paralyzing_Blast",
-  "available": 17,
-  "description": "Summoning a large amount of energy that periodically jolts at nearby enemies dealing energy damage and paralizing them for a short time. These foes may be drained of some endurance as well.",
-  "shortHelp": "Ranged (Targeted AoE), Foe DMG(Energy), Hold, -End, -Fly, -Jump, -Recharge",
-  "icon": "electriccontrol_paralyzingblast.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 0.8,
-    "range": 80,
-    "recharge": 240,
-    "endurance": 15.6,
-    "castTime": 1.67
-  },
-  "allowedEnhancements": [
-    "EnduranceModification",
-    "Hold",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Controller Archetype Sets",
-    "Holds",
-    "Ranged AoE Damage",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "isPseudoPet": true,
-      "displayName": "Tesla Coil",
-      "powers": [
-        "Redirects.Electric_Control.Tesla_Coil_Pulse",
-        "Redirects.Electric_Control.Tesla_Coil_Debuff",
-        "Redirects.Electric_Control.Tesla_Coil_OneShot",
-        "Redirects.Electric_Control.Self_Destruct"
-      ],
-      "copyBoosts": true
-    }
-  }
-};
+export const TeslaCoil: Power = withOverrides(base, overrides);

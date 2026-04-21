@@ -1,26 +1,16 @@
 /**
- * Adaptation (display name: "Adaptation", internal: "Evolution")
- * Gain Efficient, Defensive and Offensive Adaptations
+ * Adaptation — COMPOSED EXPORT
  *
- * Source: scrapper_defense/bio_organic_armor/evolution.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs scrapper_defense bio_organic_armor
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { EvolvingArmor as base } from '@/data/generated/powersets/scrapper/secondary/bio-armor/evolution';
+import { overrides } from '@/data/overrides/powersets/scrapper/secondary/bio-armor/evolution';
 
-export const Evolution: Power = {
-  "name": "Adaptation",
-  "internalName": "Evolution",
-  "available": 19,
-  "description": "By purchasing this power you gain access to three mutually exclusive toggle powers: Efficient Adaptation, Defensive Adaptation and Offensive Adaptation. If Defensive Adaptation is active you gain improved damage resistance from Hardened Carapace and Evolving Armor, additional defense from Environmental Modification and Evolving Armor, and increased Maximum HP from Environmental Modification and Inexhaustible. If Offensive Adaptation is active you gain bonus damage from Hardened Carapace, additional To Hit from Environmental Modification, empowered -resistance debuff from Evolving Armor, and your debuff effects from DNA Siphon, Genetic Contamination and Parasitic Aura are increased.",
-  "shortHelp": "Gain Efficient, Defensive and Offensive Adaptations",
-  "icon": "bioorganicarmor_adaptation.png",
-  "powerType": "Auto",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "activatePeriod": 99999
-  },
-  "allowedEnhancements": [],
-  "maxSlots": 0
-};
+export const EvolvingArmor: Power = withOverrides(base, overrides);

@@ -1,5 +1,5 @@
 /**
- * Concentrated Strike — OVERRIDES LAYER
+ * Adaptation — OVERRIDES LAYER
  *
  * Hand-written deltas applied on top of the generated power object via
  * `withOverrides()`. Each field below is a value the previously-committed
@@ -11,7 +11,6 @@
 import type { Power } from '@/types';
 
 export const overrides: Partial<Power> = {
-  "stats": {
-    "castTime": 2.67
-  }
+  "name": "Adaptation",
+  "available": 11
 };

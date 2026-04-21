@@ -9,14 +9,14 @@
 
 import type { Powerset } from '@/types';
 
-import { DefensiveAdaptation as DefensiveAdaptation } from './defensive-adaptation';
-import { EfficientAdaptation as EfficientAdaptation } from './efficient-adaptation';
-import { OffensiveAdaptation as OffensiveAdaptation } from './offensive-adaptation';
 import { HardenedCarapace as HardenedCarapace } from './hardened-carapace';
 import { Inexhaustible as Inexhaustible } from './inexhaustible';
-import { Adaptation as AdaptationPower } from './adaptation';
+import { Adaptation as Adaptation } from './adaptation';
 import { EnvironmentalModification as EnvironmentalModification } from './environmental-adaptation';
-import { Evolution as Evolution } from './evolution';
+import { EvolvingArmor as EvolvingArmor } from './evolution';
+import { EfficientAdaptation as EfficientAdaptation } from './efficient-adaptation';
+import { DefensiveAdaptation as DefensiveAdaptation } from './defensive-adaptation';
+import { OffensiveAdaptation as OffensiveAdaptation } from './offensive-adaptation';
 import { AblativeCarapace as AblativeCarapace } from './ablative-carapace';
 import { DNASiphon as DNASiphon } from './dna-siphon';
 import { GeneticContamination as GeneticContamination } from './genetic-contamination';
@@ -30,19 +30,18 @@ export const powerset: Powerset = {
   archetype: 'brute',
   category: 'secondary',
   powers: [
-    DefensiveAdaptation,
-    EfficientAdaptation,
-    OffensiveAdaptation,
     HardenedCarapace,
     Inexhaustible,
+    Adaptation,
     EnvironmentalModification,
-    AdaptationPower,
+    EvolvingArmor,
+    EfficientAdaptation,
+    DefensiveAdaptation,
+    OffensiveAdaptation,
     AblativeCarapace,
-    Evolution,
     DNASiphon,
     GeneticContamination,
     ParasiticAura,
-  
   ],
 };
 

@@ -1,5 +1,5 @@
 /**
- * Environmental Modification — OVERRIDES LAYER
+ * Tesla Coil — OVERRIDES LAYER
  *
  * Empty: the generated extraction matches the previously-committed composed
  * form; no hand-written deltas to preserve.
