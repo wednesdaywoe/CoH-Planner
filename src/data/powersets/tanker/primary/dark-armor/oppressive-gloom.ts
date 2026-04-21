@@ -48,6 +48,10 @@ export const OppressiveGloom: Power = {
       "mag": 2,
       "scale": 6,
       "table": "Melee_Stun"
+    },
+    "taunt": {
+      "scale": 1.1,
+      "table": "Melee_InherentTaunt"
     }
   }
 };

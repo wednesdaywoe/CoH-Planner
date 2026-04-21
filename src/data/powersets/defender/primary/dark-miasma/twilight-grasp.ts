@@ -38,6 +38,11 @@ export const TwilightGrasp: Power = {
     "To Hit Debuff"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Heal",
+    "scale": 1.7616,
+    "table": "Ranged_Heal"
+  },
   "effects": {
     "regenDebuff": {
       "scale": 0.5,

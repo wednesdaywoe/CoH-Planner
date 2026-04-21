@@ -54,6 +54,10 @@ export const Evasion: Power = {
         "table": "Melee_Res_Boolean"
       }
     },
+    "taunt": {
+      "scale": 1.1,
+      "table": "Melee_InherentTaunt"
+    },
     "buffDuration": 2.25
   }
 };

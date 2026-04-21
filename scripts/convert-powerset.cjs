@@ -1406,10 +1406,12 @@ function convertPower(powerJson, availableLevel) {
   power.maxSlots = (power.allowedEnhancements.length === 0) ? 0 : (powerJson.max_boosts || 6);
 
   // Extract effects from templates
-  // Recursively collect from child_effects too (many powers nest effects there)
+  // Recursively collect from child_effects AND follow Execute_Power redirects
+  // (e.g. Fault → Redirects.Stone_Melee.Fault_Brute / Fault_Cone_Brute, where
+  // the actual damage/knockback/stun lives in the redirect targets).
   let allTemplates = [];
   if (powerJson.effects?.length) {
-    allTemplates = collectAllTemplates(powerJson.effects);
+    allTemplates = collectTemplatesDeep(powerJson.effects);
   } else if (powerJson.redirect?.length > 0) {
     // Power has empty effects but redirects to other powers — follow the redirect chain
     allTemplates = collectRedirectTemplates(powerJson);
@@ -1418,19 +1420,36 @@ function convertPower(powerJson, availableLevel) {
     }
   }
 
-  // Also collect self-buff templates from activation_effects.
-  // These are continuous self-targeted effects applied while a toggle/auto is active
-  // (e.g., Dynamo's +regen/+recovery, Reaction Time's +recovery).
-  // Skip IgnoreStrength templates — the same effect is always present without that flag
-  // as the enhanceable version, so only process the enhanceable copy.
+  // Also collect templates from activation_effects. Two distinct patterns share
+  // this slot:
+  //   1. Continuous self-targeted toggle/auto buffs (Dynamo +regen/+recovery,
+  //      Reaction Time +recovery) — keep target=Self only, skip IgnoreStrength
+  //      duplicates (the enhanceable copy is the unflagged one).
+  //   2. Click powers whose effects live entirely behind an ActivationEffect
+  //      Execute_Power redirect (Ground Zero → Ground_Zero_Ally + Foe; the
+  //      redirect targets emit AnyAffected damage/heal templates). Those need
+  //      to bypass the Self filter — the redirect target dictates the target.
   if (powerJson.activation_effects?.length) {
-    const activationTemplates = collectAllTemplates(powerJson.activation_effects)
+    // Direct templates from activation_effects (no redirect traversal).
+    const directBuffs = collectAllTemplates(powerJson.activation_effects)
       .filter(t =>
         t.target === 'Self' &&
         !(t.flags || []).some(f => f.startsWith('IgnoreStrength'))
       );
-    if (activationTemplates.length > 0) {
-      allTemplates = allTemplates.concat(activationTemplates);
+    if (directBuffs.length > 0) {
+      allTemplates = allTemplates.concat(directBuffs);
+    }
+    // Templates surfaced by following Execute_Power redirects within
+    // activation_effects. Exclude anything that already came in via the
+    // directBuffs pass (matched on identity since both pulls share array refs).
+    const directSet = new Set(directBuffs);
+    const redirected = collectTemplatesDeep(powerJson.activation_effects)
+      .filter(t =>
+        !directSet.has(t) &&
+        !(t.flags || []).some(f => f.startsWith('IgnoreStrength'))
+      );
+    if (redirected.length > 0) {
+      allTemplates = allTemplates.concat(redirected);
     }
   }
 

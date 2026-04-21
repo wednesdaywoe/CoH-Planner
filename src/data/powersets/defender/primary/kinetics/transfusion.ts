@@ -37,6 +37,11 @@ export const Transfusion: Power = {
     "Healing"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Heal",
+    "scale": 1.7616,
+    "table": "Ranged_Heal"
+  },
   "effects": {
     "enduranceDrain": {
       "scale": 0.1,

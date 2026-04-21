@@ -44,5 +44,11 @@ export const DeathShroud: Power = {
     "type": "Negative",
     "scale": 0.1571,
     "table": "Melee_Damage"
+  },
+  "effects": {
+    "taunt": {
+      "scale": 1.1,
+      "table": "Melee_InherentTaunt"
+    }
   }
 };

@@ -50,6 +50,11 @@ export const AblatingStrike: Power = {
       "type": "Lethal",
       "scale": 1.32,
       "table": "Melee_InherentDamage"
+    },
+    {
+      "type": "Lethal",
+      "scale": 0.57,
+      "table": "Melee_Damage"
     }
   ],
   "effects": {
@@ -59,6 +64,10 @@ export const AblatingStrike: Power = {
     },
     "durations": {
       "defenseDebuff": 10
+    },
+    "knockback": {
+      "scale": 0.67,
+      "table": "Melee_Ones"
     },
     "buffDuration": 10
   }

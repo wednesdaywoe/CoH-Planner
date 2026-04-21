@@ -53,6 +53,16 @@ export const BrilliantBarrage: Power = {
       "type": "Energy",
       "scale": 0.1625,
       "table": "Melee_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.1625,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Energy",
+      "scale": 0.1625,
+      "table": "Melee_Damage"
     }
   ],
   "effects": {
@@ -60,6 +70,11 @@ export const BrilliantBarrage: Power = {
       "mag": 3,
       "scale": 8,
       "table": "Ranged_Stun"
+    },
+    "fear": {
+      "mag": 3,
+      "scale": 15,
+      "table": "Ranged_Fear"
     }
   }
 };

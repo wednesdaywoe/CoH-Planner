@@ -23,8 +23,9 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   {
     date: '2026-04-20',
     items: [
+      { message: 'All incarnate powers will now have a toggle-off option even if its purely cosmetic', type: 'fix' },
       { message: 'Updated Discord channel link, maybe this time it will stick', type: 'update' },
-      { message: 'Temporary fix for Stone Melee Fault, but more work is needed to apply a broader solution for powers with missing Execute_Power parameters', type: 'feat' },
+      { message: 'Broad fix for powers with missing Execute_Power parameters', type: 'fix' },
       { message: 'Fix for Synthetic HO UIDs not being imported correctly', type: 'fix' },
       { message: 'Fix for a number of powers that were not getting toggles assigned or incorrectly had toggles assigned', type: 'fix' },
       { message: 'Wired up active powers with stacking mechanics to report to the Dashboard', type: 'fix' },

@@ -35,6 +35,10 @@ export const Transference: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "enduranceGain": {
+      "scale": 40,
+      "table": "Ranged_EndDrain"
+    },
     "enduranceDrain": {
       "scale": 0.45,
       "table": "Ranged_EndDrain"

@@ -40,11 +40,18 @@ export const Fault: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 0.7825,
-    "table": "Melee_Damage"
-  },
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 0.7825,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 0.7825,
+      "table": "Melee_InherentDamage"
+    }
+  ],
   "effects": {
     "knockback": {
       "scale": 0.67,

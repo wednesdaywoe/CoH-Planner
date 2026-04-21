@@ -60,6 +60,11 @@ export const RadiationSiphon: Power = {
       "tickRate": 1
     },
     {
+      "type": "Toxic",
+      "scale": 0.392,
+      "table": "Melee_Damage"
+    },
+    {
       "type": "Smashing",
       "scale": 0.49,
       "table": "Melee_Damage"

@@ -36,5 +36,11 @@ export const ChillingEmbrace: Power = {
     "Slow Movement",
     "Threat Duration"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "taunt": {
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
+    }
+  }
 };

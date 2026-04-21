@@ -44,5 +44,11 @@ export const Icicles: Power = {
     "type": "Cold",
     "scale": 0.2,
     "table": "Melee_Damage"
+  },
+  "effects": {
+    "taunt": {
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
+    }
   }
 };

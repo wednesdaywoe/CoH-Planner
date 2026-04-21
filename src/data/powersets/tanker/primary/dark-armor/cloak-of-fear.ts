@@ -61,6 +61,10 @@ export const CloakofFear: Power = {
       "scale": 1.25,
       "table": "Melee_Ones"
     },
+    "taunt": {
+      "scale": 1.1,
+      "table": "Melee_InherentTaunt"
+    },
     "buffDuration": 5
   }
 };

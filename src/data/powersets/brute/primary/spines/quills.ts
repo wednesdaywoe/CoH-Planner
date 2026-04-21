@@ -51,6 +51,10 @@ export const Quills: Power = {
       "mag": 0.33,
       "scale": 3,
       "table": "Melee_Immobilize"
+    },
+    "taunt": {
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
     }
   }
 };

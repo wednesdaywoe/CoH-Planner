@@ -141,6 +141,10 @@ export const AuraofInsanity: Power = {
       "scale": 2,
       "table": "Melee_Ones"
     },
+    "taunt": {
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
+    },
     "buffDuration": 4
   }
 };

@@ -44,5 +44,11 @@ export const BlazingAura: Power = {
     "type": "Fire",
     "scale": 0.22,
     "table": "Melee_Damage"
+  },
+  "effects": {
+    "taunt": {
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
+    }
   }
 };

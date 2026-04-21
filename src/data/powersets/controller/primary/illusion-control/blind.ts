@@ -50,6 +50,11 @@ export const Blind: Power = {
       "mag": 3,
       "scale": 10,
       "table": "Ranged_Immobilize"
+    },
+    "sleep": {
+      "mag": 2,
+      "scale": 10,
+      "table": "Melee_Sleep"
     }
   }
 };

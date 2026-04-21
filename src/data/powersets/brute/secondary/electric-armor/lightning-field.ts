@@ -51,6 +51,10 @@ export const LightningField: Power = {
     "enduranceDrain": {
       "scale": 0.03,
       "table": "Melee_Ones"
+    },
+    "taunt": {
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
     }
   }
 };
