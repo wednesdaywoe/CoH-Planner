@@ -32,3 +32,43 @@ export function withOverrides(base: Power, overrides?: Partial<Power>): Power {
   }
   return out;
 }
+
+/**
+ * Walk an aggregate generated-data tree (Epic or Pool pools) and apply
+ * per-power overrides keyed by the power's `fullName`. Shape:
+ *
+ *   data:      Record<poolId, { powers: PowerLike[], ...poolMeta }>
+ *   overrides: Record<powerFullName, Partial<Power>>
+ *
+ * Returns a new tree with matched powers wrapped via `withOverrides`.
+ * Pools and metadata aren't cloned unless they contain an override; this
+ * keeps object identity stable for unrelated pools.
+ *
+ * The aggregate scripts (convert-epic-pools, convert-pool-powers) emit
+ * power objects whose shape doesn't strictly match the `Power` type
+ * imported by the planner — they have a few extra fields (`fullName`,
+ * `rank`) and are missing some `Power` fields (no `internalName`). We
+ * use a loose `Record<string, unknown>`-like constraint to accept them
+ * and rely on `withOverrides` operating on whichever fields are present.
+ */
+export function applyAggregateOverrides<T extends { powers: Array<Record<string, unknown> & { fullName?: string }> }>(
+  data: Record<string, T>,
+  overrides: Record<string, Partial<Power>>,
+): Record<string, T> {
+  const overrideKeys = Object.keys(overrides);
+  if (overrideKeys.length === 0) return data;
+  const out: Record<string, T> = {};
+  for (const [poolId, pool] of Object.entries(data)) {
+    const matched = pool.powers.filter(p => p.fullName && overrides[p.fullName]);
+    if (matched.length === 0) {
+      out[poolId] = pool;
+      continue;
+    }
+    const nextPowers = pool.powers.map(p => {
+      const o = p.fullName ? overrides[p.fullName] : undefined;
+      return o ? (withOverrides(p as unknown as Power, o) as unknown as typeof p) : p;
+    });
+    out[poolId] = { ...pool, powers: nextPowers };
+  }
+  return out;
+}

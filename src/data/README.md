@@ -4,20 +4,30 @@ Power data lives in three sibling trees under this directory:
 
 ```
 src/data/
-├── generated/powersets/<at>/<slot>/<set>/<power>.ts
-│       Auto-extracted from CoD2 raw data. NEVER hand-edit.
-│       Regenerated freely by `scripts/convert-powerset.cjs`.
+├── generated/                    All auto-extracted data. NEVER hand-edit.
+│   ├── powersets/<at>/<slot>/<set>/<power>.ts   (per-power)
+│   ├── epic-pools.ts                            (aggregate)
+│   ├── power-pools.ts                           (aggregate)
+│   └── incarnate-effects.ts                     (aggregate, heterogeneous)
 │
-├── overrides/powersets/<at>/<slot>/<set>/<power>.ts
-│       Hand-written deltas. Survives regeneration.
-│       Empty `{}` for most powers; populated only when the generated
-│       output needs correction or planner-only fields added.
+├── overrides/                    Hand-written deltas. Survives regeneration.
+│   ├── powersets/<at>/<slot>/<set>/<power>.ts   (per-power Partial<Power>)
+│   ├── epic-pools.ts                            (Record<fullName, Partial<Power>>)
+│   └── power-pools.ts                           (Record<fullName, Partial<Power>>)
+│   (No overrides file for incarnate — its exports are heterogeneous
+│    so per-power overrides don't apply.)
 │
-└── powersets/<at>/<slot>/<set>/<power>.ts
-        Composed export — imports both layers and merges via
-        `withOverrides()`. This is what the planner code imports.
-        Index files (`index.ts`) likewise import from here.
+├── powersets/<at>/<slot>/<set>/<power>.ts       Composed per-power export
+├── epic-pools-raw.ts                            Composed aggregate facade
+├── power-pools-raw.ts                           Composed aggregate facade
+└── _layer.ts                                    withOverrides() + applyAggregateOverrides()
 ```
+
+Planner code imports from the composed layer (`powersets/.../<power>.ts`,
+`epic-pools-raw.ts`, `power-pools-raw.ts`, `incarnate-effects.ts`). Aggregate
+composed files wrap the generated data with `applyAggregateOverrides(base,
+overrides)`, which walks the tree and applies any per-power override keyed
+by `fullName`.
 
 ## Why three files
 

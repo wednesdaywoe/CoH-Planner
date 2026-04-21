@@ -20,7 +20,7 @@ import {
   GENERATED_INTERFACE_EFFECTS,
   GENERATED_JUDGEMENT_EFFECTS,
   GENERATED_LORE_EFFECTS,
-} from './incarnate-effects-generated';
+} from './generated/incarnate-effects';
 
 // ============================================
 // TYPES

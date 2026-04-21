@@ -20,7 +20,13 @@ const fs = require('fs');
 const path = require('path');
 
 const RAW_BASE = path.join(__dirname, '..', 'raw_data_homecoming-20251209_7415', 'powers', 'incarnate');
-const OUTPUT_FILE = path.join(__dirname, '..', 'src', 'data', 'incarnate-effects-generated.ts');
+// Relocated into the layered tree under src/data/generated/ for consistency
+// with the per-power / epic-pool / power-pool layering. Incarnate's seven
+// generated exports (Alpha/Destiny/Hybrid/Interface/Judgement/Lore/etc.)
+// are heterogeneous, so there's no per-power override layer here — the
+// planner imports directly from this generated file via
+// src/data/incarnate-effects.ts.
+const OUTPUT_FILE = path.join(__dirname, '..', 'src', 'data', 'generated', 'incarnate-effects.ts');
 const DRY_RUN = process.argv.includes('--dry-run');
 
 // ============================================
@@ -1042,6 +1048,7 @@ function main() {
     console.log('\n=== DRY RUN — would write to:', OUTPUT_FILE);
     console.log(`=== Output size: ${output.length} characters, ${output.split('\n').length} lines`);
   } else {
+    fs.mkdirSync(path.dirname(OUTPUT_FILE), { recursive: true });
     fs.writeFileSync(OUTPUT_FILE, output, 'utf8');
     console.log(`\nWrote ${output.split('\n').length} lines to ${OUTPUT_FILE}`);
   }
