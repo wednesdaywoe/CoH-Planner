@@ -21,18 +21,9 @@ export interface ManualEntry {
 export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   // ─── 2026-03-24 ────────────────────────────────────────────────────────────
   {
-    date: '2026-04-20',
+    date: '2026-04-21'
     items: [
-      { message: 'All incarnate powers will now have a toggle-off option even if its purely cosmetic', type: 'fix' },
-      { message: 'Updated Discord channel link, maybe this time it will stick', type: 'update' },
-      { message: 'Broad fix for powers with missing Execute_Power parameters', type: 'fix' },
-      { message: 'Fix for Synthetic HO UIDs not being imported correctly', type: 'fix' },
-      { message: 'Fix for a number of powers that were not getting toggles assigned or incorrectly had toggles assigned', type: 'fix' },
-      { message: 'Wired up active powers with stacking mechanics to report to the Dashboard', type: 'fix' },
-      { message: 'An absolutely bonkers amount of new mappings added for Mids import--473 new mappings added to get around typos, inconsistencies, unexpected prefixes and suffixes, abbreviations, aliases, and legacy names. This should significantly improve import accuracy', type: 'feat' },
-      { message: 'Added SimpleLogin option for users who don\'t use Discord', type: 'feat' },
-      { message: 'Fixed some resistance caps, and now the Dashboard should report when you\'ve gone over', type: 'fix' },
-      { message: 'Added a gentle Onboarding beacon system to point out features for new users. Onboarding can be disabled or reset in the settings menu.', type: 'feat' },
+      { message: 'Huge milestone for Sidekick: migration to new self-sourced dataset is complete. I expect some growing pains, but it will be worth it for keeping SK current with CoH development.', type: 'feat' },
     ]
   },
 
