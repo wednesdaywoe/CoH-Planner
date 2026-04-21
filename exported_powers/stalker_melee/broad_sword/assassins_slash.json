@@ -47,6 +47,23 @@
     120
   ],
   "effects": [],
+  "redirect": [
+    {
+      "name": "Villain_Pets.Broad_Sword_Assassins_Strike.Assassins_Slash_Quick",
+      "condition_expression": "kMeter source> .9 <",
+      "show_in_info": true
+    },
+    {
+      "name": "Villain_Pets.Broad_Sword_Assassins_Strike.Assassins_Slash_Placate",
+      "condition_expression": "kMeter source> .9 >= kPlacate Source.Mode? && enttype target> critter eq && 0 &&",
+      "show_in_info": true
+    },
+    {
+      "name": "Villain_Pets.Broad_Sword_Assassins_Strike.Assassins_Slash_Stealth",
+      "condition_expression": "Always",
+      "show_in_info": true
+    }
+  ],
   "available_level": 0,
   "powerset": "Stalker_Melee.Broad_Sword"
 }

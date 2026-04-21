@@ -47,6 +47,13 @@
     140
   ],
   "effects": [],
+  "redirect": [
+    {
+      "name": "Redirects.Psionic_Armor.Devour_Psyche",
+      "condition_expression": "Always",
+      "show_in_info": true
+    }
+  ],
   "available_level": 0,
   "powerset": "Sentinel_Defense.Psionic_Armor"
 }

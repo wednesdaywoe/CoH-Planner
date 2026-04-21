@@ -50,6 +50,18 @@
     132
   ],
   "effects": [],
+  "redirect": [
+    {
+      "name": "Redirects.Storm_Blast.Direct_Strike_Quick",
+      "condition_expression": "kEngaged Source.Mode? Set_Bonus.Global_Bonus.Experienced_Marksman source.ownPower? ||",
+      "show_in_info": true
+    },
+    {
+      "name": "Redirects.Storm_Blast.Direct_Strike_Normal",
+      "condition_expression": "Always",
+      "show_in_info": true
+    }
+  ],
   "available_level": 0,
   "powerset": "Defender_Ranged.Storm_Blast"
 }

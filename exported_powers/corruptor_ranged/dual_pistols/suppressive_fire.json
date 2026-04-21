@@ -50,6 +50,18 @@
     120
   ],
   "effects": [],
+  "redirect": [
+    {
+      "name": "Redirects.Dual_Pistols.Suppressive_Fire_Lethal",
+      "condition_expression": "kIceAmmo Source.Mode? kFireAmmo Source.Mode? || kToxicAmmo Source.Mode? || !",
+      "show_in_info": true
+    },
+    {
+      "name": "Redirects.Dual_Pistols.Suppressive_Fire",
+      "condition_expression": "Always",
+      "show_in_info": true
+    }
+  ],
   "available_level": 0,
   "powerset": "Corruptor_Ranged.Dual_Pistols"
 }

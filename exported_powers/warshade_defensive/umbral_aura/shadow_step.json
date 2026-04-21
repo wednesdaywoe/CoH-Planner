@@ -42,6 +42,18 @@
   "target_requires": "",
   "attack_types": [],
   "effects": [],
+  "redirect": [
+    {
+      "name": "Redirects.Pool_Teleportation.Shadow_Step_LowEnd",
+      "condition_expression": "kChainTeleport Source.Mode?",
+      "show_in_info": true
+    },
+    {
+      "name": "Redirects.Pool_Teleportation.Shadow_Step",
+      "condition_expression": "Always",
+      "show_in_info": true
+    }
+  ],
   "available_level": 0,
   "powerset": "Warshade_Defensive.Umbral_Aura"
 }

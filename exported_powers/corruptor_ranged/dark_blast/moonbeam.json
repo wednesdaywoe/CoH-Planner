@@ -50,6 +50,18 @@
     136
   ],
   "effects": [],
+  "redirect": [
+    {
+      "name": "Villain_Pets.Corruptor_DarkBlast_Snipe.Moonbeam_Quick",
+      "condition_expression": "kEngaged Source.Mode? Set_Bonus.Global_Bonus.Experienced_Marksman source.ownPower? ||",
+      "show_in_info": true
+    },
+    {
+      "name": "Villain_Pets.Corruptor_DarkBlast_Snipe.Moonbeam_Normal",
+      "condition_expression": "Always",
+      "show_in_info": true
+    }
+  ],
   "available_level": 0,
   "powerset": "Corruptor_Ranged.Dark_Blast"
 }

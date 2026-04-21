@@ -45,6 +45,18 @@
   "target_requires": "",
   "attack_types": [],
   "effects": [],
+  "redirect": [
+    {
+      "name": "Pets.Nature_Affinity_Mastermind.Rebirth_Mastermind_Heal",
+      "condition_expression": "Cur.kHitPoints target> 0 >",
+      "show_in_info": true
+    },
+    {
+      "name": "Pets.Nature_Affinity_Mastermind.Rebirth_Mastermind_Rez",
+      "condition_expression": "Always",
+      "show_in_info": true
+    }
+  ],
   "available_level": 0,
   "powerset": "Mastermind_Buff.Nature_Affinity"
 }

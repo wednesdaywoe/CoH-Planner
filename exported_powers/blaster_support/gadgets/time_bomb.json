@@ -45,6 +45,28 @@
   "target_requires": "",
   "attack_types": [],
   "effects": [],
+  "redirect": [
+    {
+      "name": "Redirects.Gadgets.Remote_Bomb_Target",
+      "condition_expression": "kRemoteBomb Source.Mode? ! target.isFriend? ! &&",
+      "show_in_info": true
+    },
+    {
+      "name": "Redirects.Gadgets.Remote_Bomb_Self",
+      "condition_expression": "kRemoteBomb Source.Mode? !",
+      "show_in_info": true
+    },
+    {
+      "name": "Redirects.Gadgets.Time_Bomb",
+      "condition_expression": "kRemoteBomb Source.Mode?",
+      "show_in_info": true
+    },
+    {
+      "name": "Redirects.Gadgets.Remote_Bomb_Blaster_Info",
+      "condition_expression": "0",
+      "show_in_info": true
+    }
+  ],
   "available_level": 0,
   "powerset": "Blaster_Support.Gadgets"
 }

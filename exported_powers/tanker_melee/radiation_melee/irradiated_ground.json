@@ -47,7 +47,8 @@
     112,
     144
   ],
-  "effects": [
+  "effects": [],
+  "activation_effects": [
     {
       "chance": 1.0,
       "ppm": 0.0,

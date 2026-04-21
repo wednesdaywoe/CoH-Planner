@@ -48,6 +48,28 @@
     132
   ],
   "effects": [],
+  "redirect": [
+    {
+      "name": "Redirects.Blaster_Energy_Manipulation.Stun_Ranged_AoE",
+      "condition_expression": "kBoostRange Source.Mode? kBoostPower Source.Mode? &&",
+      "show_in_info": true
+    },
+    {
+      "name": "Redirects.Blaster_Energy_Manipulation.Stun_Ranged",
+      "condition_expression": "kBoostRange Source.Mode? distance 7 > &&",
+      "show_in_info": true
+    },
+    {
+      "name": "Redirects.Blaster_Energy_Manipulation.Stun_Melee_AoE",
+      "condition_expression": "kBoostPower Source.Mode?",
+      "show_in_info": true
+    },
+    {
+      "name": "Redirects.Blaster_Energy_Manipulation.Stun_Melee",
+      "condition_expression": "Always",
+      "show_in_info": true
+    }
+  ],
   "available_level": 0,
   "powerset": "Blaster_Support.Energy_Manipulation"
 }

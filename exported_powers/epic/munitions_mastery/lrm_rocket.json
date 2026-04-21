@@ -50,6 +50,18 @@
     120
   ],
   "effects": [],
+  "redirect": [
+    {
+      "name": "Pets.Epic_LRMRocket.LRM_Rocket_Quick",
+      "condition_expression": "kEngaged Source.Mode? Set_Bonus.Global_Bonus.Experienced_Marksman source.ownPower? ||",
+      "show_in_info": true
+    },
+    {
+      "name": "Pets.Epic_LRMRocket.LRM_Rocket_Normal",
+      "condition_expression": "Always",
+      "show_in_info": true
+    }
+  ],
   "available_level": 0,
   "powerset": "Epic.Munitions_Mastery"
 }

@@ -47,6 +47,18 @@
     132
   ],
   "effects": [],
+  "redirect": [
+    {
+      "name": "Redirects.Energy_Melee.Energy_Transfer_Slow_Scrapper",
+      "condition_expression": "Redirects.Energy_Melee.Energy_Store source.ownPower? !",
+      "show_in_info": true
+    },
+    {
+      "name": "Redirects.Energy_Melee.Energy_Transfer_Fast_Scrapper",
+      "condition_expression": "Redirects.Energy_Melee.Energy_Store source.ownPower?",
+      "show_in_info": true
+    }
+  ],
   "available_level": 0,
   "powerset": "Scrapper_Melee.Energy_Melee"
 }

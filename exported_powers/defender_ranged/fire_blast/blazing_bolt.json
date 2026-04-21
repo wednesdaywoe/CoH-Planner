@@ -49,6 +49,18 @@
     124
   ],
   "effects": [],
+  "redirect": [
+    {
+      "name": "Pets.Defender_Fire_Snipe.Blazing_Bolt_Quick",
+      "condition_expression": "kEngaged Source.Mode? Set_Bonus.Global_Bonus.Experienced_Marksman source.ownPower? ||",
+      "show_in_info": true
+    },
+    {
+      "name": "Pets.Defender_Fire_Snipe.Blazing_Bolt_Normal",
+      "condition_expression": "Always",
+      "show_in_info": true
+    }
+  ],
   "available_level": 0,
   "powerset": "Defender_Ranged.Fire_Blast"
 }

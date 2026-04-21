@@ -48,6 +48,23 @@
     144
   ],
   "effects": [],
+  "redirect": [
+    {
+      "name": "Redirects.Arachnos_Soldier.Crab_Venom_Grenade",
+      "condition_expression": "@CustomFX Crabpack eq @CustomFX CrabpackTintable eq || Training_Gadgets.Crab_Spider_Training.Crab_Spider_Armor source.ownPower? &&",
+      "show_in_info": true
+    },
+    {
+      "name": "Redirects.Arachnos_Soldier.Bane_Venom_Grenade",
+      "condition_expression": "@CustomFX NullifierMace eq @CustomFX NullifierMaceTintable eq || Training_Gadgets.Bane_Spider_Training.Bane_Spider_Armor source.ownPower? &&",
+      "show_in_info": true
+    },
+    {
+      "name": "Redirects.Arachnos_Soldier.Wolf_Venom_Grenade",
+      "condition_expression": "Always",
+      "show_in_info": true
+    }
+  ],
   "available_level": 0,
   "powerset": "Arachnos_Soldiers.Arachnos_Soldier"
 }

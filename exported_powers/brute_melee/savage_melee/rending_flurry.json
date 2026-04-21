@@ -48,6 +48,18 @@
     120
   ],
   "effects": [],
+  "redirect": [
+    {
+      "name": "Brute_Melee_Aux.Savage_Melee.Rending_Flurry_Large",
+      "condition_expression": "Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker source.ownPowerNum? 5 ==",
+      "show_in_info": true
+    },
+    {
+      "name": "Brute_Melee_Aux.Savage_Melee.Rending_Flurry_Normal",
+      "condition_expression": "Always",
+      "show_in_info": true
+    }
+  ],
   "available_level": 0,
   "powerset": "Brute_Melee.Savage_Melee"
 }

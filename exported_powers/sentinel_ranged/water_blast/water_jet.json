@@ -49,6 +49,18 @@
     128
   ],
   "effects": [],
+  "redirect": [
+    {
+      "name": "Pets.Water_Blast_Sentinel.Water_Jet_Fast",
+      "condition_expression": "temporary_powers.temporary_powers.tidal_power source.ownPowerNum? 3 == temporary_powers.temporary_powers.enhanced_water_jet_lock source.ownPower? ! &&",
+      "show_in_info": true
+    },
+    {
+      "name": "Pets.Water_Blast_Sentinel.Water_Jet_Normal",
+      "condition_expression": "Always",
+      "show_in_info": true
+    }
+  ],
   "available_level": 0,
   "powerset": "Sentinel_Ranged.Water_Blast"
 }

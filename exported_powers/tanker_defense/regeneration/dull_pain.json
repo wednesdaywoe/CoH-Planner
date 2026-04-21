@@ -44,6 +44,18 @@
   "target_requires": "",
   "attack_types": [],
   "effects": [],
+  "redirect": [
+    {
+      "name": "Redirects.Regeneration.Second_Wind_Defeated",
+      "condition_expression": "Cur.kHitPoints source> 0 ==",
+      "show_in_info": true
+    },
+    {
+      "name": "Redirects.Regeneration.Second_Wind_Awake",
+      "condition_expression": "Always",
+      "show_in_info": true
+    }
+  ],
   "available_level": 0,
   "powerset": "Tanker_Defense.Regeneration"
 }

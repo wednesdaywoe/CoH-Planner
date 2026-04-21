@@ -47,6 +47,18 @@
     140
   ],
   "effects": [],
+  "redirect": [
+    {
+      "name": "Villain_Pets.Psionic_Melee_Assassins_Strike.Assassins_Psi_Blade_Quick",
+      "condition_expression": "kMeter source> .9 <",
+      "show_in_info": true
+    },
+    {
+      "name": "Villain_Pets.Psionic_Melee_Assassins_Strike.Assassins_Psi_Blade_Stealth",
+      "condition_expression": "Always",
+      "show_in_info": true
+    }
+  ],
   "available_level": 0,
   "powerset": "Stalker_Melee.Psionic_Melee"
 }

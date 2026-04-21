@@ -49,6 +49,18 @@
     132
   ],
   "effects": [],
+  "redirect": [
+    {
+      "name": "Kheldian_Pets.Luminous_Blast.Gleaming_Bolt",
+      "condition_expression": "kPeacebringer_Tanker_Mode Source.Mode? !",
+      "show_in_info": true
+    },
+    {
+      "name": "Kheldian_Pets.Luminous_Blast.Dwarf_Gleaming_Bolt",
+      "condition_expression": "kPeacebringer_Tanker_Mode Source.Mode?",
+      "show_in_info": true
+    }
+  ],
   "available_level": 0,
   "powerset": "Peacebringer_Offensive.Luminous_Blast"
 }

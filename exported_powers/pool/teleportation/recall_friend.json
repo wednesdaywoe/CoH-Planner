@@ -46,6 +46,18 @@
   "target_requires": "",
   "attack_types": [],
   "effects": [],
+  "redirect": [
+    {
+      "name": "Redirects.Pool_Teleportation.Recall_Friend",
+      "condition_expression": "target.isFriend?",
+      "show_in_info": true
+    },
+    {
+      "name": "Redirects.Pool_Teleportation.Teleport_Foe",
+      "condition_expression": "target.isFriend? !",
+      "show_in_info": true
+    }
+  ],
   "available_level": 0,
   "powerset": "Pool.Teleportation"
 }

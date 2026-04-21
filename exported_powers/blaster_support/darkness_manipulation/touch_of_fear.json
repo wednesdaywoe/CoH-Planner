@@ -50,6 +50,18 @@
     136
   ],
   "effects": [],
+  "redirect": [
+    {
+      "name": "Redirects.Darkness_Manipulation.Touch_of_the_Beyond_Foe",
+      "condition_expression": "target.isFriend? ! distance 79 < &&",
+      "show_in_info": true
+    },
+    {
+      "name": "Redirects.Darkness_Manipulation.Touch_of_the_Beyond_Self",
+      "condition_expression": "Always",
+      "show_in_info": true
+    }
+  ],
   "available_level": 0,
   "powerset": "Blaster_Support.Darkness_Manipulation"
 }

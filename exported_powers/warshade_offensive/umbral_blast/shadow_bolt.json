@@ -49,6 +49,18 @@
     136
   ],
   "effects": [],
+  "redirect": [
+    {
+      "name": "Kheldian_Pets.Umbral_Blast.Shadow_Bolt",
+      "condition_expression": "kWarshade_Tanker_Mode Source.Mode? !",
+      "show_in_info": true
+    },
+    {
+      "name": "Kheldian_Pets.Umbral_Blast.Dwarf_Shadow_Bolt",
+      "condition_expression": "kWarshade_Tanker_Mode Source.Mode?",
+      "show_in_info": true
+    }
+  ],
   "available_level": 0,
   "powerset": "Warshade_Offensive.Umbral_Blast"
 }

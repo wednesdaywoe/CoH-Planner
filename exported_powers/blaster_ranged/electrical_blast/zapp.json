@@ -50,6 +50,18 @@
     132
   ],
   "effects": [],
+  "redirect": [
+    {
+      "name": "Pets.Blaster_Electric_Snipe.Zapp_Quick",
+      "condition_expression": "kEngaged Source.Mode? Set_Bonus.Global_Bonus.Experienced_Marksman source.ownPower? ||",
+      "show_in_info": true
+    },
+    {
+      "name": "Pets.Blaster_Electric_Snipe.Zapp_Normal",
+      "condition_expression": "Always",
+      "show_in_info": true
+    }
+  ],
   "available_level": 0,
   "powerset": "Blaster_Ranged.Electrical_Blast"
 }

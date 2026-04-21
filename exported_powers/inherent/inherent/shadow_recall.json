@@ -46,6 +46,18 @@
   "target_requires": "",
   "attack_types": [],
   "effects": [],
+  "redirect": [
+    {
+      "name": "Kheldian_Pets.Umbral_Blast.Shadow_Recall",
+      "condition_expression": "target.isFriend?",
+      "show_in_info": true
+    },
+    {
+      "name": "Kheldian_Pets.Umbral_Blast.Starless_Step",
+      "condition_expression": "target.isFriend? !",
+      "show_in_info": true
+    }
+  ],
   "available_level": 0,
   "powerset": "Inherent.Inherent"
 }

@@ -49,6 +49,18 @@
     132
   ],
   "effects": [],
+  "redirect": [
+    {
+      "name": "Kheldian_Pets.Luminous_Blast.Glinting_Eye",
+      "condition_expression": "kPeacebringer_Blaster_Mode Source.Mode? !",
+      "show_in_info": true
+    },
+    {
+      "name": "Kheldian_Pets.Luminous_Blast.Nova_Glinting_Eye",
+      "condition_expression": "kPeacebringer_Blaster_Mode Source.Mode?",
+      "show_in_info": true
+    }
+  ],
   "available_level": 0,
   "powerset": "Peacebringer_Offensive.Luminous_Blast"
 }

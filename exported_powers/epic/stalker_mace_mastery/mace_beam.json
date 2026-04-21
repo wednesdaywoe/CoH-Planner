@@ -50,6 +50,18 @@
     132
   ],
   "effects": [],
+  "redirect": [
+    {
+      "name": "Villain_Pets.Stalker_EpicMaceMastery_Snipe.Mace_Beam_Quick",
+      "condition_expression": "kEngaged Source.Mode? Set_Bonus.Global_Bonus.Experienced_Marksman source.ownPower? ||",
+      "show_in_info": true
+    },
+    {
+      "name": "Villain_Pets.Stalker_EpicMaceMastery_Snipe.Mace_Beam_Normal",
+      "condition_expression": "Always",
+      "show_in_info": true
+    }
+  ],
   "available_level": 0,
   "powerset": "Epic.Stalker_Mace_Mastery"
 }

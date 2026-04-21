@@ -44,6 +44,18 @@
   "target_requires": "",
   "attack_types": [],
   "effects": [],
+  "redirect": [
+    {
+      "name": "Pets.Pool_Medicine_AidOther.AidOther_NoInterrupt",
+      "condition_expression": "Pool.Medicine.Field_Medic source.ownPower?",
+      "show_in_info": true
+    },
+    {
+      "name": "Pets.Pool_Medicine_AidOther.AidOther_Interrupt",
+      "condition_expression": "Always",
+      "show_in_info": true
+    }
+  ],
   "available_level": 0,
   "powerset": "Pool.Medicine"
 }

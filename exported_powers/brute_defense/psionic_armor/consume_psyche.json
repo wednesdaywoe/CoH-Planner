@@ -48,6 +48,13 @@
     140
   ],
   "effects": [],
+  "redirect": [
+    {
+      "name": "Redirects.Psionic_Armor.Consume_Psyche",
+      "condition_expression": "Always",
+      "show_in_info": true
+    }
+  ],
   "available_level": 0,
   "powerset": "Brute_Defense.Psionic_Armor"
 }

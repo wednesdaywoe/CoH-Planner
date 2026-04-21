@@ -190,7 +190,9 @@
           "stack_key": "/5THCOLUMNENDGAME/NICTUSFX.POWERS"
         }
       ]
-    },
+    }
+  ],
+  "activation_effects": [
     {
       "chance": 1.0,
       "ppm": 0.0,

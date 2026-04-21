@@ -48,6 +48,18 @@
     116
   ],
   "effects": [],
+  "redirect": [
+    {
+      "name": "Redirects.Stone_Melee.Assassins_Rockslide_Quick",
+      "condition_expression": "kMeter source> .9 <",
+      "show_in_info": true
+    },
+    {
+      "name": "Redirects.Stone_Melee.Assassins_Rockslide_Stealth",
+      "condition_expression": "Always",
+      "show_in_info": true
+    }
+  ],
   "available_level": 0,
   "powerset": "Stalker_Melee.Stone_Melee"
 }

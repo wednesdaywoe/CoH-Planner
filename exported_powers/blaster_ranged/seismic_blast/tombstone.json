@@ -49,6 +49,18 @@
     116
   ],
   "effects": [],
+  "redirect": [
+    {
+      "name": "Redirects.Seismic_Blast.Blaster_Tombstone_Quick",
+      "condition_expression": "kEngaged Source.Mode? Set_Bonus.Global_Bonus.Experienced_Marksman source.ownPower? ||",
+      "show_in_info": true
+    },
+    {
+      "name": "Redirects.Seismic_Blast.Blaster_Tombstone_Normal",
+      "condition_expression": "Always",
+      "show_in_info": true
+    }
+  ],
   "available_level": 0,
   "powerset": "Blaster_Ranged.Seismic_Blast"
 }

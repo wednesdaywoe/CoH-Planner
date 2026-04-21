@@ -49,6 +49,13 @@
     132
   ],
   "effects": [],
+  "redirect": [
+    {
+      "name": "Redirects.Rad_Armor.Radiation_Therapy",
+      "condition_expression": "Always",
+      "show_in_info": true
+    }
+  ],
   "available_level": 0,
   "powerset": "Scrapper_Defense.Radiation_Armor"
 }

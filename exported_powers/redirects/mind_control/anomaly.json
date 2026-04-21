@@ -38,7 +38,8 @@
   "activate_requires": "",
   "target_requires": "",
   "attack_types": [],
-  "effects": [
+  "effects": [],
+  "activation_effects": [
     {
       "chance": 1.0,
       "ppm": 0.0,

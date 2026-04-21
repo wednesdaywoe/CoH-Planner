@@ -49,6 +49,18 @@
     116
   ],
   "effects": [],
+  "redirect": [
+    {
+      "name": "Villain_Pets.Titan_Weapons_Brute.Sweeping_Strike_Fast",
+      "condition_expression": "kFastMode Source.Mode?",
+      "show_in_info": true
+    },
+    {
+      "name": "Villain_Pets.Titan_Weapons_Brute.Sweeping_Strike_Slow",
+      "condition_expression": "Always",
+      "show_in_info": true
+    }
+  ],
   "available_level": 0,
   "powerset": "Brute_Melee.Titan_Weapons"
 }

@@ -48,6 +48,18 @@
     116
   ],
   "effects": [],
+  "redirect": [
+    {
+      "name": "Pets.Titan_Weapons.Sweeping_Strike_Fast",
+      "condition_expression": "kFastMode Source.Mode?",
+      "show_in_info": true
+    },
+    {
+      "name": "Pets.Titan_Weapons.Sweeping_Strike_Slow",
+      "condition_expression": "Always",
+      "show_in_info": true
+    }
+  ],
   "available_level": 0,
   "powerset": "Scrapper_Melee.Titan_Weapons"
 }

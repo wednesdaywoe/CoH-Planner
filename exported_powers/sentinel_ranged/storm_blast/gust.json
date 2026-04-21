@@ -454,7 +454,9 @@
           "stack_key": null
         }
       ]
-    },
+    }
+  ],
+  "activation_effects": [
     {
       "chance": 0.20000000298023224,
       "ppm": 0.0,

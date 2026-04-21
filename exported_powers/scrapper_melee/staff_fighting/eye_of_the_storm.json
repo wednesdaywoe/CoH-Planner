@@ -1415,7 +1415,9 @@
           ]
         }
       ]
-    },
+    }
+  ],
+  "activation_effects": [
     {
       "chance": 1.0,
       "ppm": 0.0,
