@@ -186,7 +186,7 @@ function writeOverrideFile(ovrPath, powerName, deltas) {
   const isEmpty = Object.keys(deltas).length === 0;
   const body = isEmpty
     ? `/**\n * ${powerName} — OVERRIDES LAYER\n *\n * Empty: the generated extraction matches the previously-committed composed\n * form; no hand-written deltas to preserve.\n */\nimport type { Power } from '@/types';\n\nexport const overrides: Partial<Power> = {};\n`
-    : `/**\n * ${powerName} — OVERRIDES LAYER\n *\n * Hand-written deltas applied on top of the generated power object via\n * \`withOverrides()\`. These are the fields where the previously-committed\n * composed file differed from the current generated extraction. Review\n * each to confirm it's a deliberate manual correction (retain) vs. the\n * converter producing the wrong value (candidate for a converter fix).\n */\nimport type { Power } from '@/types';\n\nexport const overrides: Partial<Power> = ${JSON.stringify(deltas, null, 2)};\n`;
+    : `/**\n * ${powerName} — OVERRIDES LAYER\n *\n * Hand-written deltas applied on top of the generated power object via\n * \`withOverrides()\`. Each field below is a value the previously-committed\n * composed file carried that the current CoD2-raw extraction does not.\n * Keep them — the CoD2 archive we convert from is a snapshot, and these\n * overrides are where current HC values live when they've drifted from\n * that snapshot. See src/data/README.md.\n */\nimport type { Power } from '@/types';\n\nexport const overrides: Partial<Power> = ${JSON.stringify(deltas, null, 2)};\n`;
   fs.writeFileSync(ovrPath, body);
 }
 

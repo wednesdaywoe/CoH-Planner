@@ -34,6 +34,34 @@ each layer evolve independently:
 - Composed files are stable once written; they only need editing if the
   power's identifier (export name) changes.
 
+## Important: the CoD2 raw data is a stale snapshot
+
+`raw_data_homecoming-20251209_7415/` is an external archive that hasn't
+been refreshed since its timestamp — HC's actual game data has drifted
+from it in places (attack recharges shortened, effect durations
+adjusted, new sub-effects added, etc.). **The overrides layer is where
+the current HC values live** when they differ from raw CoD2. Concretely:
+
+- **Do not drop an override just because it disagrees with the generated
+  file.** The generated file comes from CoD2; CoD2 is the snapshot. An
+  override that sets `stats.recharge = 8` where generated says `10` is
+  preserving the current in-game value.
+- When in doubt about a specific number, verify against live HC (or the
+  bin-crawler parser, which reads the current `.pigg` archives directly)
+  before accepting either side. See
+  [`tools/bin-crawler/`](../../tools/bin-crawler/) for the live parser.
+- The long-term fix is to migrate the convert pipeline away from the
+  CoD2 archive onto the bin-crawler extraction in
+  [`exported_powers/`](../../exported_powers/). Until then, overrides
+  are how corrections land.
+
+A large batch of overrides was produced by `scripts/migrate-to-layered.cjs`
+during the layering rollout. Those overrides capture deltas between the
+CoD2 snapshot and the previously-committed composed files (which already
+had current HC values hand-merged). They represent accurate data that
+would silently regress if the override layer were bypassed — keep them
+until CoD2 or the convert source is refreshed.
+
 ## Override file shape
 
 ```ts
