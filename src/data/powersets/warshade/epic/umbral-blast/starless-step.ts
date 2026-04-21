@@ -1,49 +1,16 @@
 /**
- * Starless Step
- * Ranged (Location), Self Teleport, ToHit
+ * Starless Step — COMPOSED EXPORT
  *
- * Source: warshade_offensive/umbral_blast/starless_step.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs warshade_offensive umbral_blast
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { StarlessStep as base } from '@/data/generated/powersets/warshade/epic/umbral-blast/starless-step';
+import { overrides } from '@/data/overrides/powersets/warshade/epic/umbral-blast/starless-step';
 
-export const StarlessStep: Power = {
-  "name": "Starless Step",
-  "internalName": "Starless_Step",
-  "available": 7,
-  "description": "You can Teleport moderate distances extremely quickly. These quick teleports surprise foes, giving your next attack a small ToHit advantage. This power can be used up to 3 times in a row before it starts recharging. Note that Starless is unaffected by Range changes.  Notes: Starless Step is unaffected by Range changes.  Recharge: Fast.",
-  "shortHelp": "Ranged (Location), Self Teleport, ToHit",
-  "icon": "umbralblast_starlessstep.png",
-  "powerType": "Click",
-  "effectArea": "Location",
-  "maxSlots": 6,
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "ToHit"
-  ],
-  "allowedSetCategories": [
-    "Teleport",
-    "To Hit Buff",
-    "Universal Travel"
-  ],
-  "stats": {
-    "accuracy": 1,
-    "range": 100,
-    "recharge": 6,
-    "endurance": 5.5714,
-    "castTime": 0.67
-  },
-  "targetType": "Location (Teleport)",
-  "effects": {
-    "tohitBuff": {
-      "scale": 1,
-      "table": "Melee_Buff_ToHit"
-    },
-    "buffDuration": 5,
-    "durations": {
-      "tohitBuff": 5
-    }
-  }
-};
+export const StarlessStep: Power = withOverrides(base, overrides);

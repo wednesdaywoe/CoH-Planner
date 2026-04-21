@@ -1,45 +1,16 @@
 /**
- * Pulsar
- * PBAoE, Foe Disorient
+ * Pulsar — COMPOSED EXPORT
  *
- * Source: peacebringer_offensive/luminous_blast/pulsar.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs peacebringer_offensive luminous_blast
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Pulsar as base } from '@/data/generated/powersets/peacebringer/epic/luminous-blast/pulsar';
+import { overrides } from '@/data/overrides/powersets/peacebringer/epic/luminous-blast/pulsar';
 
-export const Pulsar: Power = {
-  "name": "Pulsar",
-  "internalName": "Pulsar",
-  "available": 17,
-  "description": "Generates a brilliant pulse of Kheldian light around you that stuns nearby foes. Affected foes are Disoriented and unable to defend themselves.  Recharge: Slow.",
-  "shortHelp": "PBAoE, Foe Disorient",
-  "icon": "luminousblast_pulsar.png",
-  "powerType": "Click",
-  "effectArea": "AoE",
-  "maxSlots": 6,
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Stun",
-    "Recharge",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Stuns"
-  ],
-  "stats": {
-    "accuracy": 0.8,
-    "recharge": 45,
-    "endurance": 15.6,
-    "castTime": 3,
-    "radius": 20,
-    "maxTargets": 10
-  },
-  "targetType": "Self",
-  "effects": {
-    "stun": {
-      "mag": 2,
-      "scale": 10,
-      "table": "Ranged_Stun"
-    }
-  }
-};
+export const Pulsar: Power = withOverrides(base, overrides);

@@ -1,64 +1,16 @@
 /**
- * Dawn Strike
- * PBAoE, Extreme DMG(Energy), Foe -DEF, Knockback
+ * Dawn Strike — COMPOSED EXPORT
  *
- * Source: peacebringer_offensive/luminous_blast/dawn_strike.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs peacebringer_offensive luminous_blast
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { DawnStrike as base } from '@/data/generated/powersets/peacebringer/epic/luminous-blast/dawn-strike';
+import { overrides } from '@/data/overrides/powersets/peacebringer/epic/luminous-blast/dawn-strike';
 
-export const DawnStrike: Power = {
-  "name": "Dawn Strike",
-  "internalName": "Dawn_Strike",
-  "available": 25,
-  "description": "You can explode in a tremendous blast of Kheldian energy, sending nearby foes flying and reducing their defense. Dawn Strike deals massive damage to all nearby foes.  Damage: Extreme. Recharge: Long.",
-  "shortHelp": "PBAoE, Extreme DMG(Energy), Foe -DEF, Knockback",
-  "icon": "luminousblast_dawnstrike.png",
-  "powerType": "Click",
-  "effectArea": "AoE",
-  "maxSlots": 6,
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Knockback",
-    "Defense Debuff",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Defense Debuff",
-    "Kheldian Archetype Sets",
-    "Knockback",
-    "Melee AoE Damage",
-    "Universal Damage Sets"
-  ],
-  "stats": {
-    "accuracy": 1.4,
-    "recharge": 145,
-    "endurance": 27.716,
-    "castTime": 3,
-    "radius": 25,
-    "maxTargets": 16
-  },
-  "targetType": "Self",
-  "damage": {
-    "type": "Energy",
-    "scale": 4,
-    "table": "Ranged_Damage"
-  },
-  "effects": {
-    "knockback": {
-      "scale": 10,
-      "table": "Ranged_Knockback"
-    },
-    "defenseDebuff": {
-      "scale": 2,
-      "table": "Ranged_Debuff_Def"
-    },
-    "buffDuration": 20,
-    "durations": {
-      "defenseDebuff": 20
-    }
-  }
-};
+export const DawnStrike: Power = withOverrides(base, overrides);

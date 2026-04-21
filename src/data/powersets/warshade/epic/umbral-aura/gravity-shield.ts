@@ -1,50 +1,16 @@
 /**
- * Gravity Shield
- * Toggle: Self +Res(Smash, Lethal)
+ * Gravity Shield — COMPOSED EXPORT
  *
- * Source: warshade_defensive/umbral_aura/gravity_shield.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs warshade_defensive umbral_aura
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { GravityShield as base } from '@/data/generated/powersets/warshade/epic/umbral-aura/gravity-shield';
+import { overrides } from '@/data/overrides/powersets/warshade/epic/umbral-aura/gravity-shield';
 
-export const GravityShield: Power = {
-  "name": "Gravity Shield",
-  "internalName": "Gravity_Shield",
-  "available": 0,
-  "description": "When you toggle on Gravity Shield, you become highly resistant to Smashing and Lethal damage, deflecting away such physical attacks.  Recharge: Very Fast.",
-  "shortHelp": "Toggle: Self +Res(Smash, Lethal)",
-  "icon": "umbralaura_gravityshield.png",
-  "powerType": "Toggle",
-  "effectArea": "SingleTarget",
-  "maxSlots": 6,
-  "allowedEnhancements": [
-    "Resistance",
-    "EnduranceReduction",
-    "Recharge"
-  ],
-  "allowedSetCategories": [
-    "Resist Damage"
-  ],
-  "stats": {
-    "accuracy": 1,
-    "recharge": 2,
-    "endurance": 0.13,
-    "castTime": 0.67
-  },
-  "targetType": "Self",
-  "effects": {
-    "resistance": {
-      "smashing": {
-        "scale": 3,
-        "table": "Melee_Res_Dmg"
-      },
-      "lethal": {
-        "scale": 3,
-        "table": "Melee_Res_Dmg"
-      }
-    },
-    "durations": {
-      "resistance": 0.75
-    }
-  }
-};
+export const GravityShield: Power = withOverrides(base, overrides);

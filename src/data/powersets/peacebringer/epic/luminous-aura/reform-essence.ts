@@ -1,40 +1,16 @@
 /**
- * Reform Essence
- * Self Heal
+ * Reform Essence — COMPOSED EXPORT
  *
- * Source: peacebringer_defensive/luminous_aura/reform_essence.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs peacebringer_defensive luminous_aura
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { ReformEssence as base } from '@/data/generated/powersets/peacebringer/epic/luminous-aura/reform-essence';
+import { overrides } from '@/data/overrides/powersets/peacebringer/epic/luminous-aura/reform-essence';
 
-export const ReformEssence: Power = {
-  "name": "Reform Essence",
-  "internalName": "Reform_Essence",
-  "available": 21,
-  "description": "Through perfect control of your body and energy, you can concentrate for a few moments and heal yourself.  Recharge: Slow.",
-  "shortHelp": "Self Heal",
-  "icon": "luminousaura_reformessence.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "maxSlots": 6,
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Healing"
-  ],
-  "allowedSetCategories": [
-    "Healing"
-  ],
-  "stats": {
-    "accuracy": 1,
-    "recharge": 60,
-    "endurance": 10.4,
-    "castTime": 0.73
-  },
-  "targetType": "Self",
-  "damage": {
-    "type": "Heal",
-    "scale": 2.5,
-    "table": "Melee_HealSelf"
-  }
-};
+export const ReformEssence: Power = withOverrides(base, overrides);

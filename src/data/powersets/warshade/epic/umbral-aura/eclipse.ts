@@ -1,102 +1,16 @@
 /**
- * Eclipse
- * Melee (AoE), Foe -END, - Recovery; Self +End, + Res (All DMG)
+ * Eclipse — COMPOSED EXPORT
  *
- * Source: warshade_defensive/umbral_aura/eclipse.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs warshade_defensive umbral_aura
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Eclipse as base } from '@/data/generated/powersets/warshade/epic/umbral-aura/eclipse';
+import { overrides } from '@/data/overrides/powersets/warshade/epic/umbral-aura/eclipse';
 
-export const Eclipse: Power = {
-  "name": "Eclipse",
-  "internalName": "Eclipse",
-  "available": 31,
-  "description": "The dark Nictus power allows you to tap the essence of your foe's soul and transfer it to yourself. This will drain the Endurance of all nearby enemies and add to your own. It will also increase your resistance to all damage. The more foes affected, the more Endurance and Damage Resistance you will gain. Affected foes are unable to recover Endurance for a short while.  Recharge: Very Long.",
-  "shortHelp": "Melee (AoE), Foe -END, - Recovery; Self +End, + Res (All DMG)",
-  "icon": "umbralaura_eclipse.png",
-  "powerType": "Click",
-  "effectArea": "AoE",
-  "maxSlots": 6,
-  "allowedEnhancements": [
-    "Resistance",
-    "EnduranceModification",
-    "EnduranceReduction",
-    "Recharge",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Endurance Modification",
-    "Resist Damage"
-  ],
-  "stats": {
-    "accuracy": 1,
-    "recharge": 300,
-    "endurance": 0.52,
-    "castTime": 1.03,
-    "radius": 15,
-    "maxTargets": 16
-  },
-  "targetType": "Self",
-  "effects": {
-      "enduranceDrain": {
-        "scale": 0.33,
-        "table": "Melee_Ones"
-      },
-      "recoveryDebuff": {
-        "scale": 1,
-        "table": "Melee_Ones"
-      },
-      "enduranceGain": {
-        "scale": 25,
-        "table": "Melee_Ones",
-        "perTarget": 25
-      },
-      "resistance": {
-        "smashing": {
-          "scale": 1.5,
-          "table": "Melee_Res_Dmg",
-          "perTarget": 1.5
-        },
-        "lethal": {
-          "scale": 1.5,
-          "table": "Melee_Res_Dmg",
-          "perTarget": 1.5
-        },
-        "fire": {
-          "scale": 1.5,
-          "table": "Melee_Res_Dmg",
-          "perTarget": 1.5
-        },
-        "cold": {
-          "scale": 1.5,
-          "table": "Melee_Res_Dmg",
-          "perTarget": 1.5
-        },
-        "energy": {
-          "scale": 1.5,
-          "table": "Melee_Res_Dmg",
-          "perTarget": 1.5
-        },
-        "negative": {
-          "scale": 1.5,
-          "table": "Melee_Res_Dmg",
-          "perTarget": 1.5
-        },
-        "psionic": {
-          "scale": 1.5,
-          "table": "Melee_Res_Dmg",
-          "perTarget": 1.5
-        },
-        "toxic": {
-          "scale": 1.5,
-          "table": "Melee_Res_Dmg",
-          "perTarget": 1.5
-        }
-      },
-      "buffDuration": 90,
-      "durations": {
-        "recoveryDebuff": 10,
-        "resistance": 90
-      }
-    }
-};
+export const Eclipse: Power = withOverrides(base, overrides);

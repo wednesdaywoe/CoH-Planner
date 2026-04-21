@@ -1,41 +1,16 @@
 /**
- * White Dwarf Sublimation
- * Self Heal
+ * White Dwarf Sublimation — COMPOSED EXPORT
  *
- * Source: peacebringer_defensive/luminous_aura/white_dwarf_sublimation.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs peacebringer_defensive luminous_aura
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { WhiteDwarfSublimation as base } from '@/data/generated/powersets/peacebringer/epic/luminous-aura/white-dwarf-sublimation';
+import { overrides } from '@/data/overrides/powersets/peacebringer/epic/luminous-aura/white-dwarf-sublimation';
 
-export const WhiteDwarfSublimation: Power = {
-  "name": "White Dwarf Sublimation",
-  "internalName": "White_Dwarf_Sublimation",
-  "available": 19,
-  "description": "Through perfect control of your body and energy, you can concentrate for a few moments and heal yourself. This power is only available while in White Dwarf Form.  Recharge: Slow.",
-  "shortHelp": "Self Heal",
-  "icon": "luminousaura_reformessence.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "maxSlots": 6,
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Healing"
-  ],
-  "allowedSetCategories": [
-    "Healing"
-  ],
-  "stats": {
-    "accuracy": 1,
-    "recharge": 60,
-    "endurance": 10.4,
-    "castTime": 0.73
-  },
-  "targetType": "Self",
-  "requires": "White Dwarf",
-  "damage": {
-    "type": "Heal",
-    "scale": 4.375,
-    "table": "Melee_HealSelf"
-  }
-};
+export const WhiteDwarfSublimation: Power = withOverrides(base, overrides);

@@ -1,43 +1,16 @@
 /**
- * Gleaming Bolt
- * Ranged, Minor DMG(Energy), Foe -DEF
+ * Gleaming Bolt — COMPOSED EXPORT
  *
- * Source: peacebringer_offensive/luminous_blast/gleaming_bolt.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs peacebringer_offensive luminous_blast
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { GleamingBolt as base } from '@/data/generated/powersets/peacebringer/epic/luminous-blast/gleaming-bolt';
+import { overrides } from '@/data/overrides/powersets/peacebringer/epic/luminous-blast/gleaming-bolt';
 
-export const GleamingBolt: Power = {
-  "name": "Gleaming Bolt",
-  "internalName": "Gleaming_Bolt",
-  "available": 0,
-  "description": "A very quick, but low damage bolt of Kheldian energy that can reduce a target's Defense. This power can be used while in Dwarf form, although only at a reduced range. While in dwarf form, this power will inflict a stronger Defense debuff, in addition to taunt its target.  Damage: Minor. Recharge: Very Fast.",
-  "shortHelp": "Ranged, Minor DMG(Energy), Foe -DEF",
-  "icon": "luminousblast_gleamingbolt.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "maxSlots": 6,
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Defense Debuff",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Defense Debuff",
-    "Kheldian Archetype Sets",
-    "Ranged Damage",
-    "Universal Damage Sets"
-  ],
-  "stats": {
-    "accuracy": 1,
-    "range": 80,
-    "recharge": 1.5,
-    "endurance": 3.12,
-    "castTime": 1
-  },
-  "targetType": "Foe (Alive)"
-};
+export const GleamingBolt: Power = withOverrides(base, overrides);

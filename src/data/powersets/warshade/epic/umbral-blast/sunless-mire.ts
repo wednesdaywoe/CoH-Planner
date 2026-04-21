@@ -1,90 +1,16 @@
 /**
- * Sunless Mire
- * PBAoE, Light DMG(Negative), Foe -Recharge, -SPD; Self +DMG, +To Hit
+ * Sunless Mire — COMPOSED EXPORT
  *
- * Source: warshade_offensive/umbral_blast/sunless_mire.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs warshade_offensive umbral_blast
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { SunlessMire as base } from '@/data/generated/powersets/warshade/epic/umbral-blast/sunless-mire';
+import { overrides } from '@/data/overrides/powersets/warshade/epic/umbral-blast/sunless-mire';
 
-export const SunlessMire: Power = {
-  "name": "Sunless Mire",
-  "internalName": "Sunless_Mire",
-  "available": 9,
-  "description": "Sunless Mire can drain the essence of all nearby foes, thus increasing your own strength. Each affected foe will lose some Hit Points and add to your Damage and chance to hit.  Damage: Light. Recharge: Long.",
-  "shortHelp": "PBAoE, Light DMG(Negative), Foe -Recharge, -SPD; Self +DMG, +To Hit",
-  "icon": "umbralblast_sunlessmire.png",
-  "powerType": "Click",
-  "effectArea": "AoE",
-  "maxSlots": 6,
-  "allowedEnhancements": [
-    "Slow",
-    "EnduranceReduction",
-    "Recharge",
-    "Damage",
-    "ToHit",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Kheldian Archetype Sets",
-    "Melee AoE Damage",
-    "Slow Movement",
-    "To Hit Buff",
-    "Universal Damage Sets"
-  ],
-  "stats": {
-    "accuracy": 1.2,
-    "recharge": 120,
-    "endurance": 15.6,
-    "castTime": 2.37,
-    "radius": 15,
-    "maxTargets": 10
-  },
-  "targetType": "Self",
-  "damage": {
-    "type": "Negative",
-    "scale": 1,
-    "table": "Melee_Damage"
-  },
-  "effects": {
-      "movement": {
-        "jumpHeight": {
-          "scale": 0.2,
-          "table": "Melee_Slow"
-        },
-        "runSpeed": {
-          "scale": 0.2,
-          "table": "Melee_Slow"
-        },
-        "flySpeed": {
-          "scale": 0.2,
-          "table": "Melee_Slow"
-        },
-        "jumpSpeed": {
-          "scale": 0.2,
-          "table": "Melee_Slow"
-        }
-      },
-      "rechargeDebuff": {
-        "scale": 0.2,
-        "table": "Melee_Slow"
-      },
-      "tohitBuff": {
-        "scale": 0.5,
-        "table": "Melee_Buff_ToHit",
-        "perTarget": 0.5
-      },
-      "damageBuff": {
-        "scale": 1.25,
-        "table": "Melee_Buff_Dmg",
-        "perTarget": 1.25
-      },
-      "buffDuration": 30,
-      "durations": {
-        "damageBuff": 30,
-        "movement": 6,
-        "rechargeBuff": 6,
-        "tohitBuff": 30
-      }
-    }
-};
+export const SunlessMire: Power = withOverrides(base, overrides);

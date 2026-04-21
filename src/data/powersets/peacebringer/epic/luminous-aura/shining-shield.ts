@@ -1,50 +1,16 @@
 /**
- * Shining Shield
- * Toggle: Self +Res(Smash, Lethal)
+ * Shining Shield — COMPOSED EXPORT
  *
- * Source: peacebringer_defensive/luminous_aura/shining_shield.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs peacebringer_defensive luminous_aura
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { ShiningShield as base } from '@/data/generated/powersets/peacebringer/epic/luminous-aura/shining-shield';
+import { overrides } from '@/data/overrides/powersets/peacebringer/epic/luminous-aura/shining-shield';
 
-export const ShiningShield: Power = {
-  "name": "Shining Shield",
-  "internalName": "Shining_Shield",
-  "available": 0,
-  "description": "When you toggle on your Shining Shield, you create an energy barrier that grants you high resistance to Smashing and Lethal damage.  Recharge: Very Fast.",
-  "shortHelp": "Toggle: Self +Res(Smash, Lethal)",
-  "icon": "luminousaura_shiningshield.png",
-  "powerType": "Toggle",
-  "effectArea": "SingleTarget",
-  "maxSlots": 6,
-  "allowedEnhancements": [
-    "Resistance",
-    "EnduranceReduction",
-    "Recharge"
-  ],
-  "allowedSetCategories": [
-    "Resist Damage"
-  ],
-  "stats": {
-    "accuracy": 1,
-    "recharge": 2,
-    "endurance": 0.13,
-    "castTime": 0.67
-  },
-  "targetType": "Self",
-  "effects": {
-    "resistance": {
-      "smashing": {
-        "scale": 3,
-        "table": "Melee_Res_Dmg"
-      },
-      "lethal": {
-        "scale": 3,
-        "table": "Melee_Res_Dmg"
-      }
-    },
-    "durations": {
-      "resistance": 0.75
-    }
-  }
-};
+export const ShiningShield: Power = withOverrides(base, overrides);

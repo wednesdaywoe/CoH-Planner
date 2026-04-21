@@ -1,42 +1,16 @@
 /**
- * Ebon Eye
- * Ranged, Moderate DMG(Negative), Foe -Recharge, -SPD
+ * Ebon Eye — COMPOSED EXPORT
  *
- * Source: warshade_offensive/umbral_blast/ebon_eye.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs warshade_offensive umbral_blast
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { EbonEye as base } from '@/data/generated/powersets/warshade/epic/umbral-blast/ebon-eye';
+import { overrides } from '@/data/overrides/powersets/warshade/epic/umbral-blast/ebon-eye';
 
-export const EbonEye: Power = {
-  "name": "Ebon Eye",
-  "internalName": "Ebon_Eye",
-  "available": 0,
-  "description": "You can emit a beam of dark energy from your eyes, dealing moderate Negative Energy damage. Ebon Eye can also slow your target's attack rate and movement speed. This power can be used while in Nova form at an increased range and with higher damage but slower recharge.  Damage: Moderate. Recharge: Fast.",
-  "shortHelp": "Ranged, Moderate DMG(Negative), Foe -Recharge, -SPD",
-  "icon": "umbralblast_eboneye.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "maxSlots": 6,
-  "allowedEnhancements": [
-    "Slow",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Kheldian Archetype Sets",
-    "Ranged Damage",
-    "Slow Movement",
-    "Universal Damage Sets"
-  ],
-  "stats": {
-    "accuracy": 1.1,
-    "range": 80,
-    "recharge": 4,
-    "endurance": 5.2,
-    "castTime": 1.67
-  },
-  "targetType": "Foe (Alive)"
-};
+export const EbonEye: Power = withOverrides(base, overrides);

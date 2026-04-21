@@ -1,42 +1,16 @@
 /**
- * Conserve Energy
- * Self Endurance Discount
+ * Conserve Energy — COMPOSED EXPORT
  *
- * Source: peacebringer_defensive/luminous_aura/conserve_energy.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs peacebringer_defensive luminous_aura
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { ConserveEnergy as base } from '@/data/generated/powersets/peacebringer/epic/luminous-aura/conserve-energy';
+import { overrides } from '@/data/overrides/powersets/peacebringer/epic/luminous-aura/conserve-energy';
 
-export const ConserveEnergy: Power = {
-  "name": "Conserve Energy",
-  "internalName": "Conserve_Energy",
-  "available": 23,
-  "description": "You can focus for a moment to Conserve your Energy. After activating this power, you expend less Endurance on all other powers for a while.  Recharge: Very Long.",
-  "shortHelp": "Self Endurance Discount",
-  "icon": "luminousaura_conserveenergy.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "maxSlots": 6,
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge"
-  ],
-  "allowedSetCategories": [],
-  "stats": {
-    "accuracy": 1,
-    "recharge": 600,
-    "endurance": 7.8,
-    "castTime": 1.17
-  },
-  "targetType": "Self",
-  "effects": {
-    "enduranceDiscount": {
-      "scale": 1,
-      "table": "Melee_Stun"
-    },
-    "buffDuration": 90,
-    "durations": {
-      "enduranceDiscount": 90
-    }
-  }
-};
+export const ConserveEnergy: Power = withOverrides(base, overrides);

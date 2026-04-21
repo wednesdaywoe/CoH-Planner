@@ -1,65 +1,16 @@
 /**
- * White Dwarf Flare
- * PBAoE Melee, Light DMG(Energy), Foe -DEF, Knockback
+ * White Dwarf Flare — COMPOSED EXPORT
  *
- * Source: peacebringer_defensive/luminous_aura/white_dwarf_flare.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs peacebringer_defensive luminous_aura
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { WhiteDwarfFlare as base } from '@/data/generated/powersets/peacebringer/epic/luminous-aura/white-dwarf-flare';
+import { overrides } from '@/data/overrides/powersets/peacebringer/epic/luminous-aura/white-dwarf-flare';
 
-export const WhiteDwarfFlare: Power = {
-  "name": "White Dwarf Flare",
-  "internalName": "White_Dwarf_Flare",
-  "available": 19,
-  "description": "You channel the might of your Kheldian energy into the very Earth itself. The ground erupts and cracks with luminous energy, blasting all nearby foes, knocking them back and reducing their defense. This power is only available while in White Dwarf Form.  Damage: Light. Recharge: Slow.",
-  "shortHelp": "PBAoE Melee, Light DMG(Energy), Foe -DEF, Knockback",
-  "icon": "luminousaura_solarflare.png",
-  "powerType": "Click",
-  "effectArea": "AoE",
-  "maxSlots": 6,
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Knockback",
-    "Defense Debuff",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Defense Debuff",
-    "Kheldian Archetype Sets",
-    "Knockback",
-    "Melee AoE Damage",
-    "Universal Damage Sets"
-  ],
-  "stats": {
-    "accuracy": 1,
-    "recharge": 16,
-    "endurance": 15.184,
-    "castTime": 2.1,
-    "radius": 15,
-    "maxTargets": 10
-  },
-  "targetType": "Self",
-  "requires": "White Dwarf",
-  "damage": {
-    "type": "Energy",
-    "scale": 0.9,
-    "table": "Melee_InherentDamage"
-  },
-  "effects": {
-    "knockback": {
-      "scale": 0.67,
-      "table": "Melee_Ones"
-    },
-    "defenseDebuff": {
-      "scale": 2,
-      "table": "Melee_Debuff_Def"
-    },
-    "buffDuration": 10,
-    "durations": {
-      "defenseDebuff": 10
-    }
-  }
-};
+export const WhiteDwarfFlare: Power = withOverrides(base, overrides);

@@ -1,54 +1,16 @@
 /**
- * Penumbral Shield
- * Toggle: Self +Res(Fire, Cold, Toxic)
+ * Penumbral Shield — COMPOSED EXPORT
  *
- * Source: warshade_defensive/umbral_aura/penumbral_shield.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs warshade_defensive umbral_aura
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { PenumbralShield as base } from '@/data/generated/powersets/warshade/epic/umbral-aura/penumbral-shield';
+import { overrides } from '@/data/overrides/powersets/warshade/epic/umbral-aura/penumbral-shield';
 
-export const PenumbralShield: Power = {
-  "name": "Penumbral Shield",
-  "internalName": "Penumbral_Shield",
-  "available": 9,
-  "description": "When you toggle on Penumbral Shield, you become highly resistant to Fire, Cold, and Toxic damage.  Recharge: Very Fast.",
-  "shortHelp": "Toggle: Self +Res(Fire, Cold, Toxic)",
-  "icon": "umbralaura_penumbralshield.png",
-  "powerType": "Toggle",
-  "effectArea": "SingleTarget",
-  "maxSlots": 6,
-  "allowedEnhancements": [
-    "Resistance",
-    "EnduranceReduction",
-    "Recharge"
-  ],
-  "allowedSetCategories": [
-    "Resist Damage"
-  ],
-  "stats": {
-    "accuracy": 1,
-    "recharge": 2,
-    "endurance": 0.13,
-    "castTime": 0.67
-  },
-  "targetType": "Self",
-  "effects": {
-    "resistance": {
-      "fire": {
-        "scale": 3,
-        "table": "Melee_Res_Dmg"
-      },
-      "cold": {
-        "scale": 3,
-        "table": "Melee_Res_Dmg"
-      },
-      "toxic": {
-        "scale": 2,
-        "table": "Melee_Res_Dmg"
-      }
-    },
-    "durations": {
-      "resistance": 0.75
-    }
-  }
-};
+export const PenumbralShield: Power = withOverrides(base, overrides);

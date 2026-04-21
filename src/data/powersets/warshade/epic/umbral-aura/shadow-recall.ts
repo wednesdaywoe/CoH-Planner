@@ -1,39 +1,16 @@
 /**
- * Shadow Recall
- * Teleport Teamate or Foe
+ * Shadow Recall — COMPOSED EXPORT
  *
- * Source: warshade_defensive/umbral_aura/shadow_recall.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs warshade_defensive umbral_aura
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { ShadowRecall as base } from '@/data/generated/powersets/warshade/epic/umbral-aura/shadow-recall';
+import { overrides } from '@/data/overrides/powersets/warshade/epic/umbral-aura/shadow-recall';
 
-export const ShadowRecall: Power = {
-  "name": "Shadow Recall",
-  "internalName": "Shadow_Recall",
-  "available": 9,
-  "description": "You can Teleport a single foe or ally directly next to yourself. A successful hit must be made in order to Teleport the foes. Some powerful foes cannot be Teleported. Enemy players that are teleported will be temporarily out of phase, and cannot be targeted or damaged. This power can be interrupted while teleporting foes.  Recharge: Fast.",
-  "shortHelp": "Teleport Teamate or Foe",
-  "icon": "umbralaura_shadowrecall.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "maxSlots": 6,
-  "allowedEnhancements": [
-    "Interrupt",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Teleport",
-    "Universal Travel"
-  ],
-  "stats": {
-    "accuracy": 1,
-    "range": 10000,
-    "recharge": 6,
-    "endurance": 15,
-    "castTime": 5.93
-  },
-  "targetType": "Any (Alive)"
-};
+export const ShadowRecall: Power = withOverrides(base, overrides);

@@ -1,42 +1,16 @@
 /**
- * Glowing Touch
- * Ally Heal
+ * Glowing Touch — COMPOSED EXPORT
  *
- * Source: peacebringer_offensive/luminous_blast/glowing_touch.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs peacebringer_offensive luminous_blast
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { GlowingTouch as base } from '@/data/generated/powersets/peacebringer/epic/luminous-blast/glowing-touch';
+import { overrides } from '@/data/overrides/powersets/peacebringer/epic/luminous-blast/glowing-touch';
 
-export const GlowingTouch: Power = {
-  "name": "Glowing Touch",
-  "internalName": "Glowing_Touch",
-  "available": 19,
-  "description": "Heals a single targeted ally at moderate range. You cannot use this power to heal yourself.  Recharge: Fast.",
-  "shortHelp": "Ally Heal",
-  "icon": "luminousblast_glowingtouch.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "maxSlots": 6,
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Healing"
-  ],
-  "allowedSetCategories": [
-    "Healing"
-  ],
-  "stats": {
-    "accuracy": 1,
-    "range": 80,
-    "recharge": 4,
-    "endurance": 13,
-    "castTime": 2.27
-  },
-  "targetType": "Ally (Alive)",
-  "damage": {
-    "type": "Heal",
-    "scale": 1.96,
-    "table": "Ranged_Heal"
-  }
-};
+export const GlowingTouch: Power = withOverrides(base, overrides);

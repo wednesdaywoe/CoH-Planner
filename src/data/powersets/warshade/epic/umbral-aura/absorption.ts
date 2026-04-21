@@ -1,45 +1,16 @@
 /**
- * Absorption
- * Auto: Self +Res (Energy,Negative)
+ * Absorption — COMPOSED EXPORT
  *
- * Source: warshade_defensive/umbral_aura/absorption.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs warshade_defensive umbral_aura
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Absorption as base } from '@/data/generated/powersets/warshade/epic/umbral-aura/absorption';
+import { overrides } from '@/data/overrides/powersets/warshade/epic/umbral-aura/absorption';
 
-export const Absorption: Power = {
-  "name": "Absorption",
-  "internalName": "Absorption",
-  "available": 0,
-  "description": "Kheldians have a natural mild resistance to Energy and Negative Energy damage. This Auto power is always on and costs no Endurance.",
-  "shortHelp": "Auto: Self +Res (Energy,Negative)",
-  "icon": "umbralaura_absorption.png",
-  "powerType": "Auto",
-  "effectArea": "SingleTarget",
-  "maxSlots": 6,
-  "allowedEnhancements": [
-    "Resistance"
-  ],
-  "allowedSetCategories": [
-    "Resist Damage"
-  ],
-  "stats": {
-    "accuracy": 1
-  },
-  "targetType": "Self",
-  "effects": {
-    "resistance": {
-      "energy": {
-        "scale": 1.5,
-        "table": "Melee_Res_Dmg"
-      },
-      "negative": {
-        "scale": 1.5,
-        "table": "Melee_Res_Dmg"
-      }
-    },
-    "durations": {
-      "resistance": 10.25
-    }
-  }
-};
+export const Absorption: Power = withOverrides(base, overrides);

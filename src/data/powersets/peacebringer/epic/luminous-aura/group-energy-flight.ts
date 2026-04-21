@@ -1,59 +1,16 @@
 /**
- * Group Energy Flight
- * Toggle: Team Fly
+ * Group Energy Flight — COMPOSED EXPORT
  *
- * Source: peacebringer_defensive/luminous_aura/group_energy_flight.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs peacebringer_defensive luminous_aura
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { GroupEnergyFlight as base } from '@/data/generated/powersets/peacebringer/epic/luminous-aura/group-energy-flight';
+import { overrides } from '@/data/overrides/powersets/peacebringer/epic/luminous-aura/group-energy-flight';
 
-export const GroupEnergyFlight: Power = {
-  "name": "Group Energy Flight",
-  "internalName": "Group_Energy_Flight",
-  "available": 15,
-  "description": "You can endow your nearby teammates with Flight. Be mindful! Your friends will fall if you run out of Endurance or if they travel too far away from you. Group Energy Flight travel speed is slower than Energy Flight.",
-  "shortHelp": "Toggle: Team Fly",
-  "icon": "luminousaura_groupenergyflight.png",
-  "powerType": "Toggle",
-  "effectArea": "AoE",
-  "maxSlots": 6,
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Fly"
-  ],
-  "allowedSetCategories": [
-    "Flight",
-    "Universal Travel"
-  ],
-  "stats": {
-    "accuracy": 1,
-    "endurance": 1.3,
-    "castTime": 2.03,
-    "radius": 60,
-    "maxTargets": 255
-  },
-  "targetType": "Self",
-  "effects": {
-    "movement": {
-      "fly": {
-        "scale": 0.1,
-        "table": "Melee_Ones"
-      },
-      "flySpeed": {
-        "scale": 0.5,
-        "table": "Melee_SpeedFlying"
-      },
-      "movementControl": {
-        "scale": 10,
-        "table": "Melee_Control"
-      },
-      "movementFriction": {
-        "scale": 10,
-        "table": "Melee_Friction"
-      }
-    },
-    "durations": {
-      "movement": 2.25
-    }
-  }
-};
+export const GroupEnergyFlight: Power = withOverrides(base, overrides);

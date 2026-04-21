@@ -47,6 +47,13 @@ const CATEGORY_MAP = {
   // Praetorian
   'sentinel_ranged': { archetype: 'sentinel', type: 'primary' },
   'sentinel_defense': { archetype: 'sentinel', type: 'secondary' },
+  // Kheldians — both the defensive and offensive categories live under
+  // the same `epic` path in the composed tree (Luminous/Umbral Aura &
+  // Blast), matching the existing Powerset.category = 'epic'.
+  'peacebringer_defensive': { archetype: 'peacebringer', type: 'epic' },
+  'peacebringer_offensive': { archetype: 'peacebringer', type: 'epic' },
+  'warshade_defensive': { archetype: 'warshade', type: 'epic' },
+  'warshade_offensive': { archetype: 'warshade', type: 'epic' },
 };
 
 // Enhancement type mapping

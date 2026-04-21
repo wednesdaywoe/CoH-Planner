@@ -1,50 +1,16 @@
 /**
- * Thermal Shield
- * Toggle: Self +Res(Fire, Cold)
+ * Thermal Shield — COMPOSED EXPORT
  *
- * Source: peacebringer_defensive/luminous_aura/thermal_shield.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs peacebringer_defensive luminous_aura
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { ThermalShield as base } from '@/data/generated/powersets/peacebringer/epic/luminous-aura/thermal-shield';
+import { overrides } from '@/data/overrides/powersets/peacebringer/epic/luminous-aura/thermal-shield';
 
-export const ThermalShield: Power = {
-  "name": "Thermal Shield",
-  "internalName": "Thermal_Shield",
-  "available": 9,
-  "description": "When you toggle on Thermal Shield, you emit tendrils of Kheldian energy that give you resistance to Fire and Cold damage.  Recharge: Very Fast.",
-  "shortHelp": "Toggle: Self +Res(Fire, Cold)",
-  "icon": "luminousaura_thermalshield.png",
-  "powerType": "Toggle",
-  "effectArea": "SingleTarget",
-  "maxSlots": 6,
-  "allowedEnhancements": [
-    "Resistance",
-    "EnduranceReduction",
-    "Recharge"
-  ],
-  "allowedSetCategories": [
-    "Resist Damage"
-  ],
-  "stats": {
-    "accuracy": 1,
-    "recharge": 2,
-    "endurance": 0.13,
-    "castTime": 0.67
-  },
-  "targetType": "Self",
-  "effects": {
-    "resistance": {
-      "fire": {
-        "scale": 3,
-        "table": "Melee_Res_Dmg"
-      },
-      "cold": {
-        "scale": 3,
-        "table": "Melee_Res_Dmg"
-      }
-    },
-    "durations": {
-      "resistance": 0.75
-    }
-  }
-};
+export const ThermalShield: Power = withOverrides(base, overrides);

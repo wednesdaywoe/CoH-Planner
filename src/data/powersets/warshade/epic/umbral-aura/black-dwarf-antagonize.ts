@@ -1,49 +1,16 @@
 /**
- * Black Dwarf Antagonize
- * Ranged (Targeted AoE), Foe Taunt
+ * Black Dwarf Antagonize — COMPOSED EXPORT
  *
- * Source: warshade_defensive/umbral_aura/black_dwarf_antagonize.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs warshade_defensive umbral_aura
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { BlackDwarfAntagonize as base } from '@/data/generated/powersets/warshade/epic/umbral-aura/black-dwarf-antagonize';
+import { overrides } from '@/data/overrides/powersets/warshade/epic/umbral-aura/black-dwarf-antagonize';
 
-export const BlackDwarfAntagonize: Power = {
-  "name": "Black Dwarf Antagonize",
-  "internalName": "Black_Dwarf_Antagonize",
-  "available": 19,
-  "description": "This power attracts the attention of a foe and all those around him. Use this to pull villains off of an ally in trouble. An Accuracy check is required to Taunt enemy players, but is not needed against critter targets.  Recharge: Moderate.",
-  "shortHelp": "Ranged (Targeted AoE), Foe Taunt",
-  "icon": "umbralaura_antagonize.png",
-  "powerType": "Click",
-  "effectArea": "AoE",
-  "maxSlots": 6,
-  "allowedEnhancements": [
-    "Taunt",
-    "Range",
-    "Recharge",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Threat Duration"
-  ],
-  "stats": {
-    "accuracy": 1.5,
-    "range": 60,
-    "recharge": 10,
-    "castTime": 1.67,
-    "radius": 15,
-    "maxTargets": 5
-  },
-  "targetType": "Foe (Alive)",
-  "requires": "Black Dwarf",
-  "effects": {
-    "rangeBuff": {
-      "scale": 0.75,
-      "table": "Melee_Ones"
-    },
-    "buffDuration": 12,
-    "durations": {
-      "rangeBuff": 12
-    }
-  }
-};
+export const BlackDwarfAntagonize: Power = withOverrides(base, overrides);

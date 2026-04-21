@@ -1,61 +1,16 @@
 /**
- * Proton Scatter
- * Ranged (Cone), Light DMG(Energy), Foe -DEF
+ * Proton Scatter — COMPOSED EXPORT
  *
- * Source: peacebringer_offensive/luminous_blast/proton_scatter.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs peacebringer_offensive luminous_blast
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { ProtonScatter as base } from '@/data/generated/powersets/peacebringer/epic/luminous-blast/proton-scatter';
+import { overrides } from '@/data/overrides/powersets/peacebringer/epic/luminous-blast/proton-scatter';
 
-export const ProtonScatter: Power = {
-  "name": "Proton Scatter",
-  "internalName": "Proton_Scatter",
-  "available": 7,
-  "description": "Proton Scatter sends bolts of Kheldian energy to multiple targets at once within a cone area in front of the caster. Proton Scatter deals moderate Energy damage to each affected target and reduces their Defense.  Damage: Light. Recharge: Slow.",
-  "shortHelp": "Ranged (Cone), Light DMG(Energy), Foe -DEF",
-  "icon": "luminousblast_protonscatter.png",
-  "powerType": "Click",
-  "effectArea": "Cone",
-  "maxSlots": 6,
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Defense Debuff",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Defense Debuff",
-    "Kheldian Archetype Sets",
-    "Ranged AoE Damage",
-    "Universal Damage Sets"
-  ],
-  "stats": {
-    "accuracy": 1,
-    "range": 40,
-    "recharge": 12,
-    "endurance": 11.856,
-    "castTime": 2.17,
-    "radius": 40,
-    "arc": 0.7854,
-    "maxTargets": 10
-  },
-  "targetType": "Foe (Alive)",
-  "damage": {
-    "type": "Energy",
-    "scale": 0.99,
-    "table": "Ranged_Damage"
-  },
-  "effects": {
-    "defenseDebuff": {
-      "scale": 1,
-      "table": "Ranged_Debuff_Def"
-    },
-    "buffDuration": 8,
-    "durations": {
-      "defenseDebuff": 8
-    }
-  }
-};
+export const ProtonScatter: Power = withOverrides(base, overrides);

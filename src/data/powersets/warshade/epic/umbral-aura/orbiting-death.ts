@@ -1,47 +1,16 @@
 /**
- * Orbiting Death
- * Toggle: PBAoE Minor DoT(Negative)
+ * Orbiting Death — COMPOSED EXPORT
  *
- * Source: warshade_defensive/umbral_aura/orbiting_death.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs warshade_defensive umbral_aura
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { OrbitingDeath as base } from '@/data/generated/powersets/warshade/epic/umbral-aura/orbiting-death';
+import { overrides } from '@/data/overrides/powersets/warshade/epic/umbral-aura/orbiting-death';
 
-export const OrbitingDeath: Power = {
-  "name": "Orbiting Death",
-  "internalName": "Orbiting_Death",
-  "available": 3,
-  "description": "You surround yourself with orbiting particles and dark matter that will continually cause Negative Energy damage to any nearby foes.  Damage: Minor(DoT). Recharge: Fast.",
-  "shortHelp": "Toggle: PBAoE Minor DoT(Negative)",
-  "icon": "umbralaura_orbitingdeath.png",
-  "powerType": "Toggle",
-  "effectArea": "AoE",
-  "maxSlots": 6,
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Kheldian Archetype Sets",
-    "Melee AoE Damage",
-    "Universal Damage Sets"
-  ],
-  "stats": {
-    "accuracy": 1,
-    "recharge": 4,
-    "endurance": 1.56,
-    "castTime": 2.03,
-    "radius": 20,
-    "maxTargets": 10
-  },
-  "targetType": "Self",
-  "damage": {
-    "type": "Negative",
-    "scale": 0.17,
-    "table": "Melee_Damage",
-    "duration": 2.5,
-    "tickRate": 3
-  }
-};
+export const OrbitingDeath: Power = withOverrides(base, overrides);

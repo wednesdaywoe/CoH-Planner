@@ -1,50 +1,16 @@
 /**
- * Twilight Shield
- * Toggle: Self +Res(Energy, Negative)
+ * Twilight Shield — COMPOSED EXPORT
  *
- * Source: warshade_defensive/umbral_aura/twilight_shield.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs warshade_defensive umbral_aura
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { TwilightShield as base } from '@/data/generated/powersets/warshade/epic/umbral-aura/twilight-shield';
+import { overrides } from '@/data/overrides/powersets/warshade/epic/umbral-aura/twilight-shield';
 
-export const TwilightShield: Power = {
-  "name": "Twilight Shield",
-  "internalName": "Twilight_Shield",
-  "available": 15,
-  "description": "When you toggle on Twilight Shield, you become highly resistant to Energy and Negative Energy damage.  Recharge: Very Fast.",
-  "shortHelp": "Toggle: Self +Res(Energy, Negative)",
-  "icon": "umbralaura_twilightshield.png",
-  "powerType": "Toggle",
-  "effectArea": "SingleTarget",
-  "maxSlots": 6,
-  "allowedEnhancements": [
-    "Resistance",
-    "EnduranceReduction",
-    "Recharge"
-  ],
-  "allowedSetCategories": [
-    "Resist Damage"
-  ],
-  "stats": {
-    "accuracy": 1,
-    "recharge": 2,
-    "endurance": 0.13,
-    "castTime": 0.73
-  },
-  "targetType": "Self",
-  "effects": {
-    "resistance": {
-      "energy": {
-        "scale": 3,
-        "table": "Melee_Res_Dmg"
-      },
-      "negative": {
-        "scale": 3,
-        "table": "Melee_Res_Dmg"
-      }
-    },
-    "durations": {
-      "resistance": 0.75
-    }
-  }
-};
+export const TwilightShield: Power = withOverrides(base, overrides);

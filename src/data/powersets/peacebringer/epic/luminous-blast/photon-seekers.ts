@@ -1,62 +1,16 @@
 /**
- * Photon Seekers
- * Summon Drones: Ranged Special, High DMG(Energy)
+ * Photon Seekers — COMPOSED EXPORT
  *
- * Source: peacebringer_offensive/luminous_blast/photon_seekers.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs peacebringer_offensive luminous_blast
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { PhotonSeekers as base } from '@/data/generated/powersets/peacebringer/epic/luminous-blast/photon-seekers';
+import { overrides } from '@/data/overrides/powersets/peacebringer/epic/luminous-blast/photon-seekers';
 
-export const PhotonSeekers: Power = {
-  "name": "Photon Seekers",
-  "internalName": "Photon_Seekers",
-  "available": 23,
-  "description": "You manifest 3 spheres of light from your Kheldian essence. These spheres will follow you until they detect an enemy target. The Photon Seekers will then zero in on their targets and detonate on impact. The explosion is small but devastating and may affect multiple foes if they are near the target.  Recharge: Long.",
-  "shortHelp": "Summon Drones: Ranged Special, High DMG(Energy)",
-  "icon": "luminousblast_photonseekers.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "maxSlots": 6,
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Knockback",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Kheldian Archetype Sets",
-    "Knockback",
-    "Pet Damage",
-    "Recharge Intensive Pets",
-    "Universal Damage Sets"
-  ],
-  "stats": {
-    "accuracy": 2,
-    "recharge": 180,
-    "endurance": 31.2,
-    "castTime": 2.03
-  },
-  "targetType": "Self",
-  "effects": {
-    "summon": {
-      "isPseudoPet": false,
-      "duration": 60,
-      "copyBoosts": true,
-      "entities": [
-        {
-          "entity": "Pets_LightDrone1",
-          "count": 1
-        },
-        {
-          "entity": "Pets_LightDrone2",
-          "count": 1
-        },
-        {
-          "entity": "Pets_LightDrone3",
-          "count": 1
-        }
-      ]
-    }
-  }
-};
+export const PhotonSeekers: Power = withOverrides(base, overrides);

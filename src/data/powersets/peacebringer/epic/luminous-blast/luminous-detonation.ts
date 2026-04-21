@@ -1,66 +1,16 @@
 /**
- * Luminous Detonation
- * Ranged (Targeted AoE), Light DMG(Energy), Foe -DEF, Knockback
+ * Luminous Detonation — COMPOSED EXPORT
  *
- * Source: peacebringer_offensive/luminous_blast/luminous_detonation.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs peacebringer_offensive luminous_blast
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { LuminousDetonation as base } from '@/data/generated/powersets/peacebringer/epic/luminous-blast/luminous-detonation';
+import { overrides } from '@/data/overrides/powersets/peacebringer/epic/luminous-blast/luminous-detonation';
 
-export const LuminousDetonation: Power = {
-  "name": "Luminous Detonation",
-  "internalName": "Luminous_Detonation",
-  "available": 11,
-  "description": "You hurl a large blast of Kheldian energy that violently explodes on impact, damaging all foes near the target, and reducing their Defense. Some affected targets may get knocked back.  Damage: Light. Recharge: Slow.",
-  "shortHelp": "Ranged (Targeted AoE), Light DMG(Energy), Foe -DEF, Knockback",
-  "icon": "luminousblast_luminousdetonation.png",
-  "powerType": "Click",
-  "effectArea": "AoE",
-  "maxSlots": 6,
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Knockback",
-    "Defense Debuff",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Defense Debuff",
-    "Kheldian Archetype Sets",
-    "Knockback",
-    "Ranged AoE Damage",
-    "Universal Damage Sets"
-  ],
-  "stats": {
-    "accuracy": 1,
-    "range": 80,
-    "recharge": 16,
-    "endurance": 15.184,
-    "castTime": 1.67,
-    "radius": 15,
-    "maxTargets": 16
-  },
-  "targetType": "Foe (Alive)",
-  "damage": {
-    "type": "Energy",
-    "scale": 0.9,
-    "table": "Ranged_Damage"
-  },
-  "effects": {
-    "knockback": {
-      "scale": 2,
-      "table": "Ranged_Knockback"
-    },
-    "defenseDebuff": {
-      "scale": 1,
-      "table": "Ranged_Debuff_Def"
-    },
-    "buffDuration": 10,
-    "durations": {
-      "defenseDebuff": 10
-    }
-  }
-};
+export const LuminousDetonation: Power = withOverrides(base, overrides);

@@ -1,55 +1,16 @@
 /**
- * Restore Essence
- * Self Rez
+ * Restore Essence — COMPOSED EXPORT
  *
- * Source: peacebringer_defensive/luminous_aura/restore_essence.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs peacebringer_defensive luminous_aura
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { RestoreEssence as base } from '@/data/generated/powersets/peacebringer/epic/luminous-aura/restore-essence';
+import { overrides } from '@/data/overrides/powersets/peacebringer/epic/luminous-aura/restore-essence';
 
-export const RestoreEssence: Power = {
-  "name": "Restore Essence",
-  "internalName": "Restore_Essence",
-  "available": 29,
-  "description": "Should you fall in battle, you can Restore your Essence and bring yourself from the brink of death. You will revive with most of your Hit Points and half your Endurance and be protected from XP Debt for 90 seconds.  Recharge: Very Long.",
-  "shortHelp": "Self Rez",
-  "icon": "luminousaura_restoreessence.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "maxSlots": 6,
-  "allowedEnhancements": [
-    "Recharge",
-    "Healing"
-  ],
-  "allowedSetCategories": [
-    "Healing"
-  ],
-  "stats": {
-    "accuracy": 1,
-    "recharge": 300,
-    "castTime": 1.5
-  },
-  "targetType": "Self",
-  "damage": {
-    "type": "Heal",
-    "scale": 7.5,
-    "table": "Melee_HealSelf",
-    "duration": 0.5,
-    "tickRate": 1
-  },
-  "effects": {
-    "enduranceGain": {
-      "scale": 50,
-      "table": "Melee_Ones"
-    },
-    "immobilize": {
-      "mag": 50,
-      "scale": 4,
-      "table": "Melee_Ones"
-    },
-    "buffDuration": 15,
-    "durations": {
-      "untouchable": 15
-    }
-  }
-};
+export const RestoreEssence: Power = withOverrides(base, overrides);

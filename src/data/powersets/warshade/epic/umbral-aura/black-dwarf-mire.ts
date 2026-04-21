@@ -1,89 +1,16 @@
 /**
- * Black Dwarf Mire
- * PBAoE, Light DMG(Negative), Foe -Recharge, -SPD; Self +DMG, +ACC
+ * Black Dwarf Mire — COMPOSED EXPORT
  *
- * Source: warshade_defensive/umbral_aura/black_dwarf_mire.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs warshade_defensive umbral_aura
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { BlackDwarfMire as base } from '@/data/generated/powersets/warshade/epic/umbral-aura/black-dwarf-mire';
+import { overrides } from '@/data/overrides/powersets/warshade/epic/umbral-aura/black-dwarf-mire';
 
-export const BlackDwarfMire: Power = {
-  "name": "Black Dwarf Mire",
-  "internalName": "Black_Dwarf_Mire",
-  "available": 19,
-  "description": "Black Dwarf Mire can drain the essence of all nearby foes, thus increasing your own strength. Each affected foe will lose some Hit Points and add to your Damage and Accuracy.  Damage: Light. Recharge: Slow.",
-  "shortHelp": "PBAoE, Light DMG(Negative), Foe -Recharge, -SPD; Self +DMG, +ACC",
-  "icon": "umbralaura_blackdwarfmire.png",
-  "powerType": "Click",
-  "effectArea": "AoE",
-  "maxSlots": 6,
-  "allowedEnhancements": [
-    "Slow",
-    "EnduranceReduction",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Kheldian Archetype Sets",
-    "Melee AoE Damage",
-    "Slow Movement",
-    "Universal Damage Sets"
-  ],
-  "stats": {
-    "accuracy": 1.2,
-    "recharge": 20,
-    "endurance": 15.6,
-    "castTime": 0.73,
-    "radius": 15,
-    "maxTargets": 10
-  },
-  "targetType": "Self",
-  "requires": "Black Dwarf",
-  "damage": {
-    "type": "Negative",
-    "scale": 1,
-    "table": "Melee_InherentDamage"
-  },
-  "effects": {
-      "movement": {
-        "jumpHeight": {
-          "scale": 0.2,
-          "table": "Melee_Slow"
-        },
-        "runSpeed": {
-          "scale": 0.2,
-          "table": "Melee_Slow"
-        },
-        "flySpeed": {
-          "scale": 0.2,
-          "table": "Melee_Slow"
-        },
-        "jumpSpeed": {
-          "scale": 0.2,
-          "table": "Melee_Slow"
-        }
-      },
-      "rechargeDebuff": {
-        "scale": 0.2,
-        "table": "Melee_Slow"
-      },
-      "tohitBuff": {
-        "scale": 0.5,
-        "table": "Melee_Buff_ToHit",
-        "perTarget": 0.5
-      },
-      "damageBuff": {
-        "scale": 1.25,
-        "table": "Melee_Buff_Dmg",
-        "perTarget": 1.25
-      },
-      "buffDuration": 10,
-      "durations": {
-        "damageBuff": 10,
-        "movement": 6,
-        "rechargeBuff": 6,
-        "tohitBuff": 10
-      }
-    }
-};
+export const BlackDwarfMire: Power = withOverrides(base, overrides);
