@@ -1,57 +1,16 @@
 /**
- * Rain of Arrows
- * Ranged (Location AoE), DoT(Lethal)
+ * Rain of Arrows — COMPOSED EXPORT
  *
- * Source: corruptor_ranged/archery/rain_of_arrows.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs corruptor_ranged archery
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { RainofArrows as base } from '@/data/generated/powersets/corruptor/primary/archery/rain-of-arrows';
+import { overrides } from '@/data/overrides/powersets/corruptor/primary/archery/rain-of-arrows';
 
-export const RainofArrows: Power = {
-  "name": "Rain of Arrows",
-  "internalName": "Rain_of_Arrows",
-  "available": 25,
-  "description": "You unleash a Rain of Arrows on a targeted location, damaging foes within a large area.",
-  "shortHelp": "Ranged (Location AoE), DoT(Lethal)",
-  "icon": "archery_rainofarrows.png",
-  "powerType": "Click",
-  "targetType": "Location",
-  "effectArea": "Location",
-  "stats": {
-    "accuracy": 1,
-    "range": 90,
-    "recharge": 65,
-    "endurance": 20.8,
-    "castTime": 2
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Corruptor Archetype Sets",
-    "Ranged AoE Damage",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "isPseudoPet": false,
-      "duration": 3,
-      "copyBoosts": true,
-      "entities": [
-        {
-          "entity": "Pets_RainofArrows_Visual",
-          "count": 1
-        },
-        {
-          "entity": "Pets_RainofArrows_Corruptor",
-          "count": 1
-        }
-      ]
-    }
-  }
-};
+export const RainofArrows: Power = withOverrides(base, overrides);

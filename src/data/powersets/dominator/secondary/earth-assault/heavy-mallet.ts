@@ -1,50 +1,16 @@
 /**
- * Heavy Mallet
- * Melee, Superior DMG(Smash), Knockback
+ * Heavy Mallet — COMPOSED EXPORT
  *
- * Source: dominator_assault/earth_assault/heavy_mallet.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs dominator_assault earth_assault
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { HeavyMallet as base } from '@/data/generated/powersets/dominator/secondary/earth-assault/heavy-mallet';
+import { overrides } from '@/data/overrides/powersets/dominator/secondary/earth-assault/heavy-mallet';
 
-export const HeavyMallet: Power = {
-  "name": "Heavy Mallet",
-  "internalName": "Heavy_Mallet",
-  "available": 19,
-  "description": "A more impressive form of Stone Mallet, the Heavy Mallet deals more damage, but is slower to swing. It has a greater chance of knocking down opponents.Damage: Superior.Recharge: Slow.",
-  "shortHelp": "Melee, Superior DMG(Smash), Knockback",
-  "icon": "earthassault_heavymallet.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 7,
-    "recharge": 15,
-    "endurance": 14.352,
-    "castTime": 1.63
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Knockback",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Knockback",
-    "Melee Damage",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 2.76,
-    "table": "Melee_Damage"
-  },
-  "effects": {
-    "knockback": {
-      "scale": 0.67,
-      "table": "Melee_Ones"
-    }
-  }
-};
+export const HeavyMallet: Power = withOverrides(base, overrides);

@@ -1,79 +1,16 @@
 /**
- * Bitter Freeze Ray
- * Ranged, Superior DMG(Cold), Foe Hold
+ * Bitter Freeze Ray — COMPOSED EXPORT
  *
- * Source: sentinel_ranged/ice_blast/bitter_freeze_ray.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs sentinel_ranged ice_blast
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { BitterFreezeRay as base } from '@/data/generated/powersets/sentinel/primary/ice-blast/bitter-freeze-ray';
+import { overrides } from '@/data/overrides/powersets/sentinel/primary/ice-blast/bitter-freeze-ray';
 
-export const BitterFreezeRay: Power = {
-  "name": "Bitter Freeze Ray",
-  "internalName": "Bitter_Freeze_Ray",
-  "available": 21,
-  "description": "This power can Hold your opponent frozen solid in a block of ice. The victim can be attacked and will remain frozen and helpless. After the ice thaws, the victim emerges chilled and Slowed.",
-  "shortHelp": "Ranged, Superior DMG(Cold), Foe Hold",
-  "icon": "iceblast_bitterfreezeray.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 60,
-    "recharge": 16,
-    "endurance": 15.184,
-    "castTime": 2.5
-  },
-  "allowedEnhancements": [
-    "Hold",
-    "Slow",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Holds",
-    "Ranged Damage",
-    "Sentinel Archetype Sets",
-    "Slow Movement",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Cold",
-    "scale": 2.92,
-    "table": "Ranged_Damage"
-  },
-  "effects": {
-    "hold": {
-      "mag": 3,
-      "scale": 6.4,
-      "table": "Ranged_Immobilize"
-    },
-    "mezResistance": {
-      "knockup": {
-        "scale": 100,
-        "table": "Ranged_Ones"
-      },
-      "knockback": {
-        "scale": 100,
-        "table": "Ranged_Ones"
-      }
-    },
-    "durations": {
-      "mezResistance": 10,
-      "knockup": 10,
-      "knockback": 10
-    },
-    "knockup": {
-      "scale": 100,
-      "table": "Ranged_Ones"
-    },
-    "knockback": {
-      "scale": 100,
-      "table": "Ranged_Ones"
-    },
-    "buffDuration": 10
-  }
-};
+export const BitterFreezeRay: Power = withOverrides(base, overrides);

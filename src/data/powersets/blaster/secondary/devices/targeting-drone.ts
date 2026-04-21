@@ -1,67 +1,16 @@
 /**
- * Targeting Drone
- * Toggle: Self +To Hit, +Damage, +Perception, Res(DeBuff To Hit)
+ * Targeting Drone — COMPOSED EXPORT
  *
- * Source: blaster_support/gadgets/targeting_drone.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs blaster_support gadgets
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { TargetingDrone as base } from '@/data/generated/powersets/blaster/secondary/devices/targeting-drone';
+import { overrides } from '@/data/overrides/powersets/blaster/secondary/devices/targeting-drone';
 
-export const TargetingDrone: Power = {
-  "name": "Targeting Drone",
-  "internalName": "Targeting_Drone",
-  "available": 9,
-  "description": "When this device is activated, the small Targeting Drone hovers around your head and emits targeting laser sights. The lasers can dramatically improve your chance to hit, slightly increase the damage you deal, and increase your perception, allowing you to better see stealthy foes. If not engaged in combat, this power will give a large damage buff to your opening attack. Targeting Drone also grants you resistance to powers that debuff your chance to hit.Recharge: Moderate.",
-  "shortHelp": "Toggle: Self +To Hit, +Damage, +Perception, Res(DeBuff To Hit)",
-  "icon": "gadgets_targetingdrone.png",
-  "powerType": "Toggle",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 10,
-    "endurance": 0.156,
-    "castTime": 1.17,
-    "activatePeriod": 0.5
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "ToHit"
-  ],
-  "allowedSetCategories": [
-    "To Hit Buff"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "damageBuff": {
-      "scale": 1.6,
-      "table": "Melee_Buff_Dmg"
-    },
-    "durations": {
-      "damageBuff": 0.6,
-      "tohitBuff": 0.75,
-      "debuffResistance": 0.75,
-      "perceptionBuff": 0.75
-    },
-    "tohitBuff": {
-      "scale": 1.85,
-      "table": "Melee_Buff_ToHit"
-    },
-    "debuffResistance": {
-      "tohit": {
-        "scale": 2,
-        "table": "Melee_Res_Boolean"
-      },
-      "perception": {
-        "scale": 0.6,
-        "table": "Melee_Ones"
-      }
-    },
-    "perceptionBuff": {
-      "scale": 0.6,
-      "table": "Melee_Ones"
-    },
-    "buffDuration": 0.75
-  }
-};
+export const TargetingDrone: Power = withOverrides(base, overrides);

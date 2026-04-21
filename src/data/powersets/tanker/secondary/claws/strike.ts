@@ -1,46 +1,16 @@
 /**
- * Strike
- * Melee, DMG(Lethal)
+ * Strike — COMPOSED EXPORT
  *
- * Source: tanker_melee/claws/strike.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs tanker_melee claws
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Strike as base } from '@/data/generated/powersets/tanker/secondary/claws/strike';
+import { overrides } from '@/data/overrides/powersets/tanker/secondary/claws/strike';
 
-export const Strike: Power = {
-  "name": "Strike",
-  "internalName": "Strike",
-  "available": 0,
-  "description": "You perform a deadly Strike with your claws. This is a basic attack that deals a moderate amount of lethal damage.",
-  "shortHelp": "Melee, DMG(Lethal)",
-  "icon": "claws_clawsstrike.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 7,
-    "recharge": 4.8,
-    "endurance": 5.4912,
-    "castTime": 1.17
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "EnduranceReduction",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Melee Damage",
-    "Tanker Archetype Sets",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 1.24,
-    "table": "Melee_Damage"
-  },
-  "requires": "!Tanker_Defense.Shield_Defense && !Tanker_Defense.Stone_Armor"
-};
+export const Strike: Power = withOverrides(base, overrides);

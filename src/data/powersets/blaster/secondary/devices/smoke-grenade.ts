@@ -1,53 +1,16 @@
 /**
- * Smoke Grenade
- * Ranged (Target AoE), Foe -Perception, -To Hit
+ * Smoke Grenade — COMPOSED EXPORT
  *
- * Source: blaster_support/gadgets/smoke_grenade.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs blaster_support gadgets
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { SmokeGrenade as base } from '@/data/generated/powersets/blaster/secondary/devices/smoke-grenade';
+import { overrides } from '@/data/overrides/powersets/blaster/secondary/devices/smoke-grenade';
 
-export const SmokeGrenade: Power = {
-  "name": "Smoke Grenade",
-  "internalName": "Smoke_Grenade",
-  "available": 15,
-  "description": "The Smoke Grenade envelops all those in the affected area in a cloud of smoke. Most villains will not be able to see past normal melee range, although some may have better perception. If the villains are attacked, they will be alerted to your presence, but will suffer a penalty to their chance to hit.Recharge: Slow.",
-  "shortHelp": "Ranged (Target AoE), Foe -Perception, -To Hit",
-  "icon": "gadgets_smokegrenade.png",
-  "powerType": "Click",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "range": 80,
-    "radius": 35,
-    "recharge": 15,
-    "endurance": 7.8,
-    "castTime": 1.37,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "ToHit Debuff",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "To Hit Debuff"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "perceptionDebuff": {
-      "scale": 0.9,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "perceptionDebuff": 60
-    },
-    "damageBuff": {
-      "scale": 0,
-      "table": "Ranged_Ones"
-    },
-    "buffDuration": 60
-  }
-};
+export const SmokeGrenade: Power = withOverrides(base, overrides);

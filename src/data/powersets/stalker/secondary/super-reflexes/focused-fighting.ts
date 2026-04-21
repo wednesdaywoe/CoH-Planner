@@ -1,62 +1,16 @@
 /**
- * Focused Fighting
- * Toggle: Self +DEF(Melee), Res(Confuse, DeBuff DEF)
+ * Focused Fighting — COMPOSED EXPORT
  *
- * Source: stalker_defense/super_reflexes/focused_fighting.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs stalker_defense super_reflexes
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { FocusedFighting as base } from '@/data/generated/powersets/stalker/secondary/super-reflexes/focused-fighting';
+import { overrides } from '@/data/overrides/powersets/stalker/secondary/super-reflexes/focused-fighting';
 
-export const FocusedFighting: Power = {
-  "name": "Focused Fighting",
-  "internalName": "Focused_Fighting",
-  "available": 0,
-  "description": "You become more evasive to melee attacks while you have Focused Fighting activated. This will increase your Defense versus melee as long as it is active. Your Focus also offers you resistance to Confuse effects and DeBuffs to Defense. Focused Fighting also adds an Elusivity defense bonus to Melee Attacks in PVP zones.Recharge: Fast.",
-  "shortHelp": "Toggle: Self +DEF(Melee), Res(Confuse, DeBuff DEF)",
-  "icon": "superreflexes_focusedfighting.png",
-  "powerType": "Toggle",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 4,
-    "endurance": 0.13,
-    "castTime": 0.67,
-    "activatePeriod": 0.5
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Defense"
-  ],
-  "allowedSetCategories": [
-    "Defense Sets"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "defenseBuff": {
-      "melee": {
-        "scale": 1.85,
-        "table": "Melee_Buff_Def"
-      }
-    },
-    "durations": {
-      "defenseBuff": 0.75,
-      "confuse": 0.75,
-      "debuffResistance": 0.75
-    },
-    "confuse": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "effectDuration": 0.75,
-    "debuffResistance": {
-      "defense": {
-        "scale": 0.4,
-        "table": "Melee_Res_Boolean"
-      }
-    },
-    "buffDuration": 0.75
-  }
-};
+export const FocusedFighting: Power = withOverrides(base, overrides);

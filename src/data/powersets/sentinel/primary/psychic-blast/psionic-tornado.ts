@@ -1,56 +1,16 @@
 /**
- * Psionic Tornado
- * Ranged (Targeted AoE), Moderate DoT(Psionic), Foe Knockback
+ * Psionic Tornado — COMPOSED EXPORT
  *
- * Source: sentinel_ranged/psychic_blast/psionic_tornado.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs sentinel_ranged psychic_blast
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { PsionicTornado as base } from '@/data/generated/powersets/sentinel/primary/psychic-blast/psionic-tornado';
+import { overrides } from '@/data/overrides/powersets/sentinel/primary/psychic-blast/psionic-tornado';
 
-export const PsionicTornado: Power = {
-  "name": "Psionic Tornado",
-  "internalName": "Psionic_Tornado",
-  "available": 17,
-  "description": "Unleashes a whirlwind of Psionic energy on a target, tossing nearby foes into the air. The Psionic Tornado damages foes and Slows their attack speed.Damage: Light.Recharge: Slow.",
-  "shortHelp": "Ranged (Targeted AoE), Moderate DoT(Psionic), Foe Knockback",
-  "icon": "psychicblast_psionictornado.png",
-  "powerType": "Click",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "range": 50,
-    "radius": 20,
-    "recharge": 20,
-    "endurance": 18.512,
-    "castTime": 1.83,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Knockback",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Knockback",
-    "Ranged AoE Damage",
-    "Sentinel Archetype Sets",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Psionic",
-    "scale": 0.178,
-    "table": "Ranged_Damage",
-    "duration": 4.1,
-    "tickRate": 1
-  },
-  "effects": {
-    "knockup": {
-      "scale": 1.4,
-      "table": "Ranged_Ones"
-    }
-  }
-};
+export const PsionicTornado: Power = withOverrides(base, overrides);

@@ -1,63 +1,16 @@
 /**
- * Stalagmites
- * Ranged (Targeted AoE), DMG(Lethal), Foe Disorient, -DEF
+ * Stalagmites — COMPOSED EXPORT
  *
- * Source: dominator_control/earth_control/stalagmites.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs dominator_control earth_control
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Stalagmites as base } from '@/data/generated/powersets/dominator/primary/earth-control/stalagmites';
+import { overrides } from '@/data/overrides/powersets/dominator/primary/earth-control/stalagmites';
 
-export const Stalagmites: Power = {
-  "name": "Stalagmites",
-  "internalName": "Stalagmites",
-  "available": 11,
-  "description": "You can cause Stalagmites to erupt all around an enemy, damaging all nearby foes. The Stalagmites deal minimal Lethal damage, and can Disorient all affected targets for a good while, as well as reduce their Defense. You must be on the ground to activate this power.",
-  "shortHelp": "Ranged (Targeted AoE), DMG(Lethal), Foe Disorient, -DEF",
-  "icon": "earthgrasp_stalagmites.png",
-  "powerType": "Click",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 0.8,
-    "range": 70,
-    "radius": 25,
-    "recharge": 90,
-    "endurance": 15.6,
-    "castTime": 1,
-    "maxTargets": 16
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Stun",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Dominator Archetype Sets",
-    "Ranged AoE Damage",
-    "Stuns",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 0.25,
-    "table": "Ranged_Damage"
-  },
-  "effects": {
-    "stun": {
-      "mag": 3,
-      "scale": 8,
-      "table": "Ranged_Stun"
-    },
-    "defenseDebuff": {
-      "scale": 2,
-      "table": "Ranged_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 12
-    },
-    "buffDuration": 12
-  }
-};
+export const Stalagmites: Power = withOverrides(base, overrides);

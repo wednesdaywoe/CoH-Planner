@@ -1,61 +1,16 @@
 /**
- * Hydro Blast
- * Ranged, DMG(Cold/Smash), Foe -Speed, Knockdown, +Wet, Self +Tidal Power
+ * Hydro Blast — COMPOSED EXPORT
  *
- * Source: blaster_ranged/water_blast/hydro_blast.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs blaster_ranged water_blast
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { HydroBlast as base } from '@/data/generated/powersets/blaster/primary/water-blast/hydro-blast';
+import { overrides } from '@/data/overrides/powersets/blaster/primary/water-blast/hydro-blast';
 
-export const HydroBlast: Power = {
-  "name": "Hydro Blast",
-  "internalName": "Hydro_Blast",
-  "available": 0,
-  "description": "You briefly focus before releasing an intense blast of chilling water at your foe that causes Cold and Smashing damage. Affected foes will have their movement speed reduced briefly and have a chance to be knocked down. Hydro Blast builds 1 Tidal Power.",
-  "shortHelp": "Ranged, DMG(Cold/Smash), Foe -Speed, Knockdown, +Wet, Self +Tidal Power",
-  "icon": "waterblast_hydroblast.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 80,
-    "recharge": 7,
-    "endurance": 7.696,
-    "castTime": 1.67
-  },
-  "allowedEnhancements": [
-    "Slow",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Knockback",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Blaster Archetype Sets",
-    "Knockback",
-    "Ranged Damage",
-    "Slow Movement",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 0.37,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Cold",
-      "scale": 1.11,
-      "table": "Ranged_Damage"
-    }
-  ],
-  "effects": {
-    "knockback": {
-      "scale": 0.67,
-      "table": "Ranged_Ones"
-    }
-  }
-};
+export const HydroBlast: Power = withOverrides(base, overrides);

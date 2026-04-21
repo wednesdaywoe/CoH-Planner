@@ -1,59 +1,16 @@
 /**
- * Sting of the Wasp
- * Melee, DMG(Lethal), Foe -Def
+ * Sting of the Wasp — COMPOSED EXPORT
  *
- * Source: brute_melee/katana/hack.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs brute_melee katana
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { StingoftheWasp as base } from '@/data/generated/powersets/brute/primary/katana/hack';
+import { overrides } from '@/data/overrides/powersets/brute/primary/katana/hack';
 
-export const StingoftheWasp: Power = {
-  "name": "Sting of the Wasp",
-  "internalName": "Hack",
-  "available": 0,
-  "description": "You perform a standard attack with your katana. This attack is slower than Gambler's Cut, but deals more damage. Sting of the Wasp can reduce a target's Defense, making them easier to hit.",
-  "shortHelp": "Melee, DMG(Lethal), Foe -Def",
-  "icon": "katana_hack.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1.05,
-    "range": 7,
-    "recharge": 5,
-    "endurance": 6.032,
-    "castTime": 1.17
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "EnduranceReduction",
-    "Recharge",
-    "Defense Debuff",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Brute Archetype Sets",
-    "Defense Debuff",
-    "Melee Damage",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 1.16,
-    "table": "Melee_Damage"
-  },
-  "effects": {
-    "defenseDebuff": {
-      "scale": 1,
-      "table": "Melee_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 10
-    },
-    "buffDuration": 10
-  },
-  "requires": "!Brute_Defense.Shield_Defense"
-};
+export const StingoftheWasp: Power = withOverrides(base, overrides);

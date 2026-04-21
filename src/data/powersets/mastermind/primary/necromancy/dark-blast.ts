@@ -1,47 +1,16 @@
 /**
- * Dark Blast
- * Ranged, DMG(Negative), Foe -To Hit
+ * Dark Blast — COMPOSED EXPORT
  *
- * Source: mastermind_summon/necromancy/dark_blast.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs mastermind_summon necromancy
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { DarkBlast as base } from '@/data/generated/powersets/mastermind/primary/necromancy/dark-blast';
+import { overrides } from '@/data/overrides/powersets/mastermind/primary/necromancy/dark-blast';
 
-export const DarkBlast: Power = {
-  "name": "Dark Blast",
-  "internalName": "Dark_Blast",
-  "available": 0,
-  "description": "A long range blast of dark energy. Deals moderate Negative Energy damage and reduces the target's chance to hit.Spectral Forces:Activating this power has a chance to summon a Specter to your side! Specters fade away over 30 seconds. They cannot be healed, regenerate, upgraded, or commanded, but provide a good distraction. Enhancements in this power will also enhance the stats of summoned Specters. You may only have 1 Specter active per Necromancy attack.",
-  "shortHelp": "Ranged, DMG(Negative), Foe -To Hit",
-  "icon": "necromancy_darkblast.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 80,
-    "recharge": 4,
-    "endurance": 5.46,
-    "castTime": 1
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "ToHit Debuff",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Mastermind Archetype Sets",
-    "Accurate To-Hit Debuff",
-    "Ranged Damage",
-    "To Hit Debuff",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Negative",
-    "scale": 1,
-    "table": "Ranged_Damage"
-  }
-};
+export const DarkBlast: Power = withOverrides(base, overrides);

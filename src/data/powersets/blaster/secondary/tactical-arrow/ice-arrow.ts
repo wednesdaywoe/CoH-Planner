@@ -1,85 +1,16 @@
 /**
- * Ice Arrow
- * Ranged, DoT(Cold), Foe Hold, -SPD, -Recharge
+ * Ice Arrow — COMPOSED EXPORT
  *
- * Source: blaster_support/tactical_arrow/ice_arrow.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs blaster_support tactical_arrow
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { IceArrow as base } from '@/data/generated/powersets/blaster/secondary/tactical-arrow/ice-arrow';
+import { overrides } from '@/data/overrides/powersets/blaster/secondary/tactical-arrow/ice-arrow';
 
-export const IceArrow: Power = {
-  "name": "Ice Arrow",
-  "internalName": "Ice_Arrow",
-  "available": 3,
-  "description": "This arrow can freeze a single foe in a block of ice. The target is frozen solid, helpless, and can be attacked. More powerful foes may not be Held, but all affected targets will be Slowed.Damage: Minor.Recharge: Slow.",
-  "shortHelp": "Ranged, DoT(Cold), Foe Hold, -SPD, -Recharge",
-  "icon": "tacticalarrow_hold.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 60,
-    "recharge": 16,
-    "endurance": 11.388,
-    "castTime": 1.67
-  },
-  "allowedEnhancements": [
-    "Hold",
-    "Slow",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Blaster Archetype Sets",
-    "Holds",
-    "Ranged Damage",
-    "Slow Movement",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Cold",
-    "scale": 0.05,
-    "table": "Ranged_Damage",
-    "duration": 4.2,
-    "tickRate": 0.5
-  },
-  "effects": {
-    "hold": {
-      "mag": 2,
-      "scale": 10,
-      "table": "Ranged_Immobilize"
-    },
-    "mezResistance": {
-      "knockup": {
-        "scale": 100,
-        "table": "Ranged_Ones"
-      },
-      "knockback": {
-        "scale": 100,
-        "table": "Ranged_Ones"
-      }
-    },
-    "durations": {
-      "mezResistance": 10,
-      "knockup": 10,
-      "knockback": 10
-    },
-    "knockup": {
-      "scale": 100,
-      "table": "Ranged_Ones"
-    },
-    "knockback": {
-      "scale": 100,
-      "table": "Ranged_Ones"
-    },
-    "damageBuff": {
-      "scale": 0,
-      "table": "Ranged_Ones"
-    },
-    "buffDuration": 10
-  }
-};
+export const IceArrow: Power = withOverrides(base, overrides);

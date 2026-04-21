@@ -1,58 +1,16 @@
 /**
- * Eviscerate
- * Melee (Cone), DMG(Lethal), Foe -DEF
+ * Eviscerate — COMPOSED EXPORT
  *
- * Source: brute_melee/claws/eviscerate.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs brute_melee claws
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Eviscerate as base } from '@/data/generated/powersets/brute/primary/claws/eviscerate';
+import { overrides } from '@/data/overrides/powersets/brute/primary/claws/eviscerate';
 
-export const Eviscerate: Power = {
-  "name": "Eviscerate",
-  "internalName": "Eviscerate",
-  "available": 21,
-  "description": "You spin and slash violently, Eviscerating all foes in a wide arc in front of you.",
-  "shortHelp": "Melee (Cone), DMG(Lethal), Foe -DEF",
-  "icon": "claws_evicerate.png",
-  "powerType": "Click",
-  "effectArea": "Cone",
-  "stats": {
-    "accuracy": 1,
-    "range": 7,
-    "radius": 7,
-    "arc": 1.5708,
-    "recharge": 12,
-    "endurance": 11.4816,
-    "castTime": 2.33,
-    "maxTargets": 5
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "EnduranceReduction",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Brute Archetype Sets",
-    "Melee AoE Damage",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 2.181,
-    "table": "Melee_Damage"
-  },
-  "effects": {
-    "defenseDebuff": {
-      "scale": 1,
-      "table": "Melee_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 10
-    },
-    "buffDuration": 10
-  }
-};
+export const Eviscerate: Power = withOverrides(base, overrides);

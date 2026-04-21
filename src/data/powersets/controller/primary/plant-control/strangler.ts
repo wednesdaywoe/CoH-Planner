@@ -1,55 +1,16 @@
 /**
- * Strangler
- * Ranged, DoT(Smashing), Foe Hold
+ * Strangler — COMPOSED EXPORT
  *
- * Source: controller_control/plant_control/strangler.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs controller_control plant_control
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Strangler as base } from '@/data/generated/powersets/controller/primary/plant-control/strangler';
+import { overrides } from '@/data/overrides/powersets/controller/primary/plant-control/strangler';
 
-export const Strangler: Power = {
-  "name": "Strangler",
-  "internalName": "Strangler",
-  "available": 0,
-  "description": "Holds a distant foe by Strangling them with massive root-like vines. The target is held helpless, while they is slowly crushed by the vines.",
-  "shortHelp": "Ranged, DoT(Smashing), Foe Hold",
-  "icon": "plantcontrol_strangler.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1.2,
-    "range": 80,
-    "recharge": 8,
-    "endurance": 8.528,
-    "castTime": 2.07
-  },
-  "allowedEnhancements": [
-    "Hold",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Controller Archetype Sets",
-    "Holds",
-    "Ranged Damage",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 0.22,
-    "table": "Ranged_Damage",
-    "duration": 4.2,
-    "tickRate": 1
-  },
-  "effects": {
-    "hold": {
-      "mag": 3,
-      "scale": 12,
-      "table": "Ranged_Immobilize"
-    }
-  }
-};
+export const Strangler: Power = withOverrides(base, overrides);

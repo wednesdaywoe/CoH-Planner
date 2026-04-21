@@ -1,41 +1,16 @@
 /**
- * Boost Range
- * Self Range Increase
+ * Boost Range — COMPOSED EXPORT
  *
- * Source: blaster_support/energy_manipulation/boost_range.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs blaster_support energy_manipulation
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { BoostRange as base } from '@/data/generated/powersets/blaster/secondary/energy-manipulation/range';
+import { overrides } from '@/data/overrides/powersets/blaster/secondary/energy-manipulation/range';
 
-export const BoostRange: Power = {
-  "name": "Boost Range",
-  "internalName": "Range",
-  "available": 27,
-  "description": "You can boost your powers to increase the range of your next few attacks.Recharge: Slow.",
-  "shortHelp": "Self Range Increase",
-  "icon": "energymanipulation_boostrange.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 60,
-    "endurance": 13,
-    "castTime": 1.17
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "rangeBuff": {
-      "scale": 0.5,
-      "table": "Melee_Stun"
-    },
-    "durations": {
-      "rangeBuff": 30
-    },
-    "buffDuration": 30
-  }
-};
+export const BoostRange: Power = withOverrides(base, overrides);

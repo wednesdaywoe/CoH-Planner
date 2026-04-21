@@ -1,63 +1,16 @@
 /**
- * Moonbeam
- * Sniper, DMG(Negative), Target -To Hit, Self +Range
+ * Moonbeam — COMPOSED EXPORT
  *
- * Source: blaster_ranged/dark_blast/moonbeam.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs blaster_ranged dark_blast
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Moonbeam as base } from '@/data/generated/powersets/blaster/primary/dark-blast/moonbeam';
+import { overrides } from '@/data/overrides/powersets/blaster/primary/dark-blast/moonbeam';
 
-export const Moonbeam: Power = {
-  "name": "Moonbeam",
-  "internalName": "Moonbeam",
-  "available": 7,
-  "description": "An extremely long range and accurate beam of Negative Energy that deals tremendous damage and reduces the target's chance to hit. This is a sniper attack, and like most sniper attacks, is best fired from a distance as it can be interrupted. If you are engaged in battle this attack becomes instant-cast. If you are not engaged, it will do bonus damage.",
-  "shortHelp": "Sniper, DMG(Negative), Target -To Hit, Self +Range",
-  "icon": "darkcast_moonbeam.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 150,
-    "recharge": 12,
-    "endurance": 14.352,
-    "castTime": 1.33
-  },
-  "allowedEnhancements": [
-    "Interrupt",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "ToHit Debuff",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate To-Hit Debuff",
-    "Blaster Archetype Sets",
-    "Ranged Damage",
-    "Sniper Attacks",
-    "To Hit Debuff",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Negative",
-    "scale": 4.5,
-    "table": "Ranged_Damage"
-  },
-  "effects": {
-    "rangeBuff": {
-      "scale": 0.5,
-      "table": "Ranged_Ones"
-    },
-    "durations": {
-      "rangeBuff": 10
-    },
-    "damageBuff": {
-      "scale": 0,
-      "table": "Ranged_Ones"
-    },
-    "buffDuration": 10
-  }
-};
+export const Moonbeam: Power = withOverrides(base, overrides);

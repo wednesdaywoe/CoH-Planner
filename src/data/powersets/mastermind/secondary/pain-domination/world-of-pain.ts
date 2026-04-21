@@ -1,93 +1,16 @@
 /**
- * World of Pain
- * PBAoE Team +To Hit, +DMG, +RES(All DMG, Placate)
+ * World of Pain — COMPOSED EXPORT
  *
- * Source: mastermind_buff/pain_domination/world_of_pain.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs mastermind_buff pain_domination
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { WorldofPain as base } from '@/data/generated/powersets/mastermind/secondary/pain-domination/world-of-pain';
+import { overrides } from '@/data/overrides/powersets/mastermind/secondary/pain-domination/world-of-pain';
 
-export const WorldofPain: Power = {
-  "name": "World of Pain",
-  "internalName": "World_of_Pain",
-  "available": 23,
-  "description": "When this power is activated the user and all nearby team members will gain a moderate damage, resistance, and To Hit bonus. Additionally those affected by this power will also be protected from Placate effects.Recharge: Long.",
-  "shortHelp": "PBAoE Team +To Hit, +DMG, +RES(All DMG, Placate)",
-  "icon": "paindomination_worldofpain.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "radius": 35,
-    "recharge": 240,
-    "endurance": 12.74,
-    "castTime": 2.03,
-    "maxTargets": 255
-  },
-  "allowedEnhancements": [
-    "Resistance",
-    "Recharge",
-    "ToHit"
-  ],
-  "allowedSetCategories": [
-    "Resist Damage",
-    "To Hit Buff"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "tohitBuff": {
-      "scale": 1,
-      "table": "Ranged_Buff_ToHit"
-    },
-    "durations": {
-      "tohitBuff": 90,
-      "placate": 90,
-      "resistance": 90,
-      "damageBuff": 90
-    },
-    "placate": {
-      "scale": 30,
-      "table": "Ranged_Res_Boolean"
-    },
-    "resistance": {
-      "smashing": {
-        "scale": 1.5,
-        "table": "Ranged_Res_Dmg"
-      },
-      "lethal": {
-        "scale": 1.5,
-        "table": "Ranged_Res_Dmg"
-      },
-      "fire": {
-        "scale": 1.5,
-        "table": "Ranged_Res_Dmg"
-      },
-      "cold": {
-        "scale": 1.5,
-        "table": "Ranged_Res_Dmg"
-      },
-      "energy": {
-        "scale": 1.5,
-        "table": "Ranged_Res_Dmg"
-      },
-      "negative": {
-        "scale": 1.5,
-        "table": "Ranged_Res_Dmg"
-      },
-      "psionic": {
-        "scale": 1.5,
-        "table": "Ranged_Res_Dmg"
-      },
-      "toxic": {
-        "scale": 1.5,
-        "table": "Ranged_Res_Dmg"
-      }
-    },
-    "damageBuff": {
-      "scale": 1.6,
-      "table": "Ranged_Buff_Dmg"
-    },
-    "buffDuration": 90
-  }
-};
+export const WorldofPain: Power = withOverrides(base, overrides);

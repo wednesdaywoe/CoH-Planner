@@ -1,98 +1,16 @@
 /**
- * Geyser
- * Ranged (Targeted AoE), DMG(Fire/Smash), Foe DoT(Fire), -Speed, Knock Up, Disorient, +Wet, Self -Tidal Power
+ * Geyser — COMPOSED EXPORT
  *
- * Source: sentinel_ranged/water_blast/geyser.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs sentinel_ranged water_blast
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Geyser as base } from '@/data/generated/powersets/sentinel/primary/water-blast/geyser';
+import { overrides } from '@/data/overrides/powersets/sentinel/primary/water-blast/geyser';
 
-export const Geyser: Power = {
-  "name": "Geyser",
-  "internalName": "Geyser",
-  "available": 25,
-  "description": "You cause the earth to erupt beneath your target's feet as a Geyser of scalding hot water burns your foes and tosses them violently into the air. Geyser causes Fire and Smashing damage before causing Fire damage over time as well as reducing their movement speed. Geyser consumes all Tidal Power. Both the initial damage and damage over time portions of this power will be increased and have a scaling chance to disorient for each stack of Tidal Power. If you have 3 stacks of Tidal Power, Geyser will have a 100% chance to disorient affected targets.",
-  "shortHelp": "Ranged (Targeted AoE), DMG(Fire/Smash), Foe DoT(Fire), -Speed, Knock Up, Disorient, +Wet, Self -Tidal Power",
-  "icon": "waterblast_geyser.png",
-  "powerType": "Click",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1.4,
-    "range": 40,
-    "radius": 20,
-    "recharge": 90,
-    "endurance": 15.6,
-    "castTime": 2.93,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "Slow",
-    "EnduranceReduction",
-    "Range",
-    "Stun",
-    "Recharge",
-    "Knockback",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Knockback",
-    "Ranged AoE Damage",
-    "Sentinel Archetype Sets",
-    "Slow Movement",
-    "Stuns",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 0.928,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 1.126,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.102,
-      "table": "Ranged_Damage",
-      "duration": 5.1,
-      "tickRate": 0.5
-    },
-    {
-      "type": "Fire",
-      "scale": 0.108,
-      "table": "Ranged_Damage",
-      "duration": 5.1,
-      "tickRate": 0.5
-    },
-    {
-      "type": "Fire",
-      "scale": 0.115,
-      "table": "Ranged_Damage",
-      "duration": 5.1,
-      "tickRate": 0.5
-    },
-    {
-      "type": "Fire",
-      "scale": 0.128,
-      "table": "Ranged_Damage",
-      "duration": 5.1,
-      "tickRate": 0.5
-    }
-  ],
-  "effects": {
-    "knockup": {
-      "scale": 1.5,
-      "table": "Ranged_Ones"
-    },
-    "stun": {
-      "mag": 3,
-      "scale": 5,
-      "table": "Ranged_Stun"
-    }
-  }
-};
+export const Geyser: Power = withOverrides(base, overrides);

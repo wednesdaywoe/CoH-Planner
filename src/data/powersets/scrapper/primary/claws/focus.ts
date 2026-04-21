@@ -1,64 +1,16 @@
 /**
- * Focus
- * Ranged, DMG(Lethal), Knockback
+ * Focus — COMPOSED EXPORT
  *
- * Source: scrapper_melee/claws/focus.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs scrapper_melee claws
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Focus as base } from '@/data/generated/powersets/scrapper/primary/claws/focus';
+import { overrides } from '@/data/overrides/powersets/scrapper/primary/claws/focus';
 
-export const Focus: Power = {
-  "name": "Focus",
-  "internalName": "Focus",
-  "available": 17,
-  "description": "Projects a burst of focused power over a short distance. Focus deals high damage and can possibly knock down your foe.",
-  "shortHelp": "Ranged, DMG(Lethal), Knockback",
-  "icon": "claws_focus.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 40,
-    "recharge": 6.4,
-    "endurance": 6.8224,
-    "castTime": 1.17
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Knockback",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Knockback",
-    "Ranged Damage",
-    "Scrapper Archetype Sets",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Lethal",
-      "scale": 1.39,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.39,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.39,
-      "table": "Melee_InherentDamage"
-    }
-  ],
-  "effects": {
-    "knockback": {
-      "scale": 0.67,
-      "table": "Melee_Ones"
-    }
-  }
-};
+export const Focus: Power = withOverrides(base, overrides);

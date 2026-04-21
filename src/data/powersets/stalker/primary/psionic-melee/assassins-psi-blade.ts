@@ -1,66 +1,16 @@
 /**
- * Assassin's Psi Blade
- * Melee, DMG(Psionic/Smash), +Insight
+ * Assassin's Psi Blade — COMPOSED EXPORT
  *
- * Source: stalker_melee/psionic_melee/assassins_psi_blade.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs stalker_melee psionic_melee
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { AssassinsPsiBlade as base } from '@/data/generated/powersets/stalker/primary/psionic-melee/assassins-psi-blade';
+import { overrides } from '@/data/overrides/powersets/stalker/primary/psionic-melee/assassins-psi-blade';
 
-export const AssassinsPsiBlade: Power = {
-  "name": "Assassin's Psi Blade",
-  "internalName": "Assassins_Psi_Blade",
-  "available": 5,
-  "description": "A signature Stalker attack. This attack does superior psionic and smashing damage on its own as a frontal attack and cannot be interrupted. However, if it is executed while you are Hidden, this attack will do tremendous damage, as you waylay your unsuspecting foe. This attack may be interrupted if you move or are attacked while executing this power and are hidden. Using this power while not hidden has a chance to critically hit equal to 33.3% times the number of stacks of Assassin's Focus. Using Assassin's Psi Blade has a good chance to grant Insight if used while not hidden and a very high chance to grant Insight if used while hidden. Using Assassin's Strike when not hidden will remove all stacks of Assassin's Focus regardless if you critically hit or not.",
-  "shortHelp": "Melee, DMG(Psionic/Smash), +Insight",
-  "icon": "psionicmelee_assassinspsiblade.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1.2,
-    "range": 7,
-    "recharge": 15,
-    "endurance": 14.352,
-    "castTime": 3
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Melee Damage",
-    "Stalker Archetype Sets",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Psionic",
-      "scale": 1.875,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.5625,
-      "table": "Melee_Damage"
-    }
-  ],
-  "effects": {
-    "stealth": {
-      "stealthPvE": {
-        "scale": 1,
-        "table": "Melee_Ones"
-      },
-      "stealthPvP": {
-        "scale": 1,
-        "table": "Melee_Ones"
-      }
-    },
-    "durations": {
-      "stealth": 8
-    },
-    "buffDuration": 8
-  }
-};
+export const AssassinsPsiBlade: Power = withOverrides(base, overrides);

@@ -1,109 +1,16 @@
 /**
- * Power Up
- * Self +Special, +Dmg(All)
+ * Power Up — COMPOSED EXPORT
  *
- * Source: dominator_assault/arsenal_assault/power_up.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs dominator_assault arsenal_assault
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { PowerUp as base } from '@/data/generated/powersets/dominator/secondary/arsenal-assault/power-up';
+import { overrides } from '@/data/overrides/powersets/dominator/secondary/arsenal-assault/power-up';
 
-export const PowerUp: Power = {
-  "name": "Power Up",
-  "internalName": "Power_Up",
-  "available": 15,
-  "description": "Boosts the damage and secondary effects of your powers. Your powers' effects like Heals, Defense Buffs, Endurance Drains, Disorients, Holds, Immobilizes and more, are all improved. The effects of Power Up last a short while, and only the next couple of attacks will be boosted.",
-  "shortHelp": "Self +Special, +Dmg(All)",
-  "icon": "assaultweapons_powerup.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 90,
-    "endurance": 7.8,
-    "castTime": 1.17
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "damageBuff": {
-      "scale": 0.5,
-      "table": "Melee_Stun"
-    },
-    "durations": {
-      "damageBuff": 10,
-      "absorb": 10,
-      "enduranceGain": 10,
-      "movement": 10,
-      "confuse": 10,
-      "fear": 10,
-      "hold": 10,
-      "immobilize": 10,
-      "stun": 10,
-      "sleep": 10,
-      "defenseBuff": 10,
-      "tohitBuff": 10
-    },
-    "absorb": {
-      "scale": 0.5,
-      "table": "Melee_Stun"
-    },
-    "enduranceGain": {
-      "scale": 0.5,
-      "table": "Melee_Stun"
-    },
-    "movement": {
-      "runSpeed": {
-        "scale": 0.5,
-        "table": "Melee_Stun"
-      },
-      "flySpeed": {
-        "scale": 0.5,
-        "table": "Melee_Stun"
-      }
-    },
-    "confuse": {
-      "mag": 1,
-      "scale": 0.5,
-      "table": "Melee_Stun"
-    },
-    "effectDuration": 10,
-    "fear": {
-      "mag": 1,
-      "scale": 0.5,
-      "table": "Melee_Stun"
-    },
-    "hold": {
-      "mag": 1,
-      "scale": 0.5,
-      "table": "Melee_Stun"
-    },
-    "immobilize": {
-      "mag": 1,
-      "scale": 0.5,
-      "table": "Melee_Stun"
-    },
-    "stun": {
-      "mag": 1,
-      "scale": 0.5,
-      "table": "Melee_Stun"
-    },
-    "sleep": {
-      "mag": 1,
-      "scale": 0.5,
-      "table": "Melee_Stun"
-    },
-    "defenseBuff": {
-      "scale": 0.5,
-      "table": "Melee_Stun"
-    },
-    "tohitBuff": {
-      "scale": 0.5,
-      "table": "Melee_Stun"
-    },
-    "buffDuration": 10
-  }
-};
+export const PowerUp: Power = withOverrides(base, overrides);

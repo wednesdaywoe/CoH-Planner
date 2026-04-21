@@ -1,57 +1,16 @@
 /**
- * Lightning Strike
- * Ranged, DMG(Energy), Foe -End, Special
+ * Lightning Strike — COMPOSED EXPORT
  *
- * Source: sentinel_ranged/storm_blast/lightning_strike.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs sentinel_ranged storm_blast
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { LightningStrike as base } from '@/data/generated/powersets/sentinel/primary/storm-blast/lightning-strike';
+import { overrides } from '@/data/overrides/powersets/sentinel/primary/storm-blast/lightning-strike';
 
-export const LightningStrike: Power = {
-  "name": "Lightning Strike",
-  "internalName": "Lightning_Strike",
-  "available": 11,
-  "description": "You channel your storm powers into a direct hit, jolting the enemy with a bolt of lightning that deals Energy damage and saps some endurance.While in a Storm Cell, targets have a chance to be stunned.",
-  "shortHelp": "Ranged, DMG(Energy), Foe -End, Special",
-  "icon": "stormblast_lightningstrike.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1.2,
-    "range": 60,
-    "recharge": 12,
-    "endurance": 14.352,
-    "castTime": 1.33
-  },
-  "allowedEnhancements": [
-    "EnduranceModification",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Endurance Modification",
-    "Ranged Damage",
-    "Sentinel Archetype Sets",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Energy",
-    "scale": 2.28,
-    "table": "Ranged_Damage"
-  },
-  "effects": {
-    "enduranceDrain": {
-      "scale": 0.1,
-      "table": "Ranged_EndDrain"
-    },
-    "stun": {
-      "mag": 3,
-      "scale": 2,
-      "table": "Ranged_Stun"
-    }
-  }
-};
+export const LightningStrike: Power = withOverrides(base, overrides);

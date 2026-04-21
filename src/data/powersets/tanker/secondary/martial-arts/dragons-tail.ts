@@ -1,55 +1,16 @@
 /**
- * Dragon's Tail
- * PBAoE Melee, DMG(Smash), Foe Knockback
+ * Dragon's Tail — COMPOSED EXPORT
  *
- * Source: tanker_melee/martial_arts/dragons_tail.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs tanker_melee martial_arts
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { DragonsTail as base } from '@/data/generated/powersets/tanker/secondary/martial-arts/dragons-tail';
+import { overrides } from '@/data/overrides/powersets/tanker/secondary/martial-arts/dragons-tail';
 
-export const DragonsTail: Power = {
-  "name": "Dragon's Tail",
-  "internalName": "Dragons_Tail",
-  "available": 19,
-  "description": "This low spinning kick deals slightly more damage than Thunder Kick, but has a chance to hit all enemies in melee range. Successful hits may trip and knock down your opponents.Notes: Thanks to gauntlet, this power can hit up to 6 targets above its cap at 1/3rd effectiveness.",
-  "shortHelp": "PBAoE Melee, DMG(Smash), Foe Knockback",
-  "icon": "martialarts_monkeysweep.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1.05,
-    "radius": 12,
-    "recharge": 14,
-    "endurance": 13.52,
-    "castTime": 1.5,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "EnduranceReduction",
-    "Recharge",
-    "Knockback",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Knockback",
-    "Melee AoE Damage",
-    "Tanker Archetype Sets",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 1.1818,
-    "table": "Melee_Damage"
-  },
-  "effects": {
-    "knockback": {
-      "scale": 0.67,
-      "table": "Melee_Ones"
-    }
-  }
-};
+export const DragonsTail: Power = withOverrides(base, overrides);

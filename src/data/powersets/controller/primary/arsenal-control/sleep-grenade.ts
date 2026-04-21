@@ -1,57 +1,16 @@
 /**
- * Sleep Grenade
- * Ranged (Location AoE), DMG(Toxic), Foe Sleep, -SPD, -Recharge, -Fly
+ * Sleep Grenade — COMPOSED EXPORT
  *
- * Source: controller_control/arsenal_control/sleep_grenade.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs controller_control arsenal_control
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { SleepGrenade as base } from '@/data/generated/powersets/controller/primary/arsenal-control/sleep-grenade';
+import { overrides } from '@/data/overrides/powersets/controller/primary/arsenal-control/sleep-grenade';
 
-export const SleepGrenade: Power = {
-  "name": "Sleep Grenade",
-  "internalName": "Sleep_Grenade",
-  "available": 1,
-  "description": "The Sleep Grenade can be launched at long range from beneath the barrel of your Assault Rifle. It releases a cloud of gas that will make enemies drowsy, slow, and fall asleep.",
-  "shortHelp": "Ranged (Location AoE), DMG(Toxic), Foe Sleep, -SPD, -Recharge, -Fly",
-  "icon": "arsenalcontrol_sleepgrenade.png",
-  "powerType": "Click",
-  "targetType": "Location",
-  "effectArea": "Location",
-  "stats": {
-    "accuracy": 1.05,
-    "range": 80,
-    "recharge": 45,
-    "endurance": 15.6,
-    "castTime": 1.87
-  },
-  "allowedEnhancements": [
-    "Slow",
-    "EnduranceReduction",
-    "Range",
-    "Sleep",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Controller Archetype Sets",
-    "Ranged AoE Damage",
-    "Sleep",
-    "Slow Movement",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "isPseudoPet": false,
-      "displayName": "Sleep Grenade",
-      "powers": [
-        "Pets.ResistAll.ResistAll",
-        "Redirects.Assault_Rifle.Sleep_Grenade",
-        "Redirects.Assault_Rifle.Sleep_Grenade_Damage"
-      ],
-      "duration": 30,
-      "copyBoosts": true
-    }
-  }
-};
+export const SleepGrenade: Power = withOverrides(base, overrides);

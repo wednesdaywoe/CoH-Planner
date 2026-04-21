@@ -1,47 +1,16 @@
 /**
- * Smoke Flash
- * Hide Ninja
+ * Smoke Flash — COMPOSED EXPORT
  *
- * Source: mastermind_summon/ninjas/smoke_flash.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs mastermind_summon ninjas
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { SmokeFlash as base } from '@/data/generated/powersets/mastermind/primary/ninjas/smoke-flash';
+import { overrides } from '@/data/overrides/powersets/mastermind/primary/ninjas/smoke-flash';
 
-export const SmokeFlash: Power = {
-  "name": "Smoke Flash",
-  "internalName": "Smoke_Flash",
-  "available": 17,
-  "description": "You can command one of your Ninja Henchmen to throw down a Smoke Bomb. The Smoke Flash will allow the Ninja to Placate his nearby foes, and thus unable to target the Ninja. The Smoke Flash also makes all your Ninja stealthy and Hidden for 3 seconds, enabling them to perform Critical hits with their next few attacks. You can only use this power on a Ninja Henchmen.",
-  "shortHelp": "Hide Ninja",
-  "icon": "ninjas_kujikiri.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "range": 100,
-    "radius": 100,
-    "recharge": 90,
-    "endurance": 15,
-    "castTime": 1.17,
-    "maxTargets": 1
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "stealth": {
-      "translucency": {
-        "scale": 0.2,
-        "table": "Ranged_Ones"
-      }
-    },
-    "durations": {
-      "stealth": 4
-    },
-    "buffDuration": 4
-  }
-};
+export const SmokeFlash: Power = withOverrides(base, overrides);

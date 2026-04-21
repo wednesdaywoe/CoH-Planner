@@ -1,53 +1,16 @@
 /**
- * Gust
- * Ranged, DMG(Smash), -Fly
+ * Gust — COMPOSED EXPORT
  *
- * Source: corruptor_ranged/storm_blast/gust.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs corruptor_ranged storm_blast
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Gust as base } from '@/data/generated/powersets/corruptor/primary/storm-blast/gust';
+import { overrides } from '@/data/overrides/powersets/corruptor/primary/storm-blast/gust';
 
-export const Gust: Power = {
-  "name": "Gust",
-  "internalName": "Gust",
-  "available": 0,
-  "description": "You create a chaotic change in atmospheric pressure, causing a sudden gust of wind to deliver a small amount of Smashing damage and knock your foe out of the sky. While in a Storm Cell, targets experience additional Smashing damage over time.",
-  "shortHelp": "Ranged, DMG(Smash), -Fly",
-  "icon": "stormblast_gust.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 80,
-    "recharge": 4,
-    "endurance": 5.2,
-    "castTime": 1.17
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Corruptor Archetype Sets",
-    "Ranged Damage",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 1,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.05,
-      "table": "Ranged_Damage",
-      "duration": 1.5,
-      "tickRate": 0.4
-    }
-  ]
-};
+export const Gust: Power = withOverrides(base, overrides);

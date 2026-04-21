@@ -1,65 +1,16 @@
 /**
- * Burst
- * PBAoE Melee, DMG(Smash/Energy), Foe Knockdown
+ * Burst — COMPOSED EXPORT
  *
- * Source: stalker_melee/kinetic_attack/burst.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs stalker_melee kinetic_attack
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Burst as base } from '@/data/generated/powersets/stalker/primary/kinetic-melee/burst';
+import { overrides } from '@/data/overrides/powersets/stalker/primary/kinetic-melee/burst';
 
-export const Burst: Power = {
-  "name": "Burst",
-  "internalName": "Burst",
-  "available": 17,
-  "description": "By focusing your energy into the muscles in your arms, you can launch a dizzying flurry of attacks against every foe in melee range. Some foes may be hit hard enough to be knocked down as well.",
-  "shortHelp": "PBAoE Melee, DMG(Smash/Energy), Foe Knockdown",
-  "icon": "kineticattack_burst.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "radius": 8,
-    "recharge": 15,
-    "endurance": 14.3,
-    "castTime": 2.53,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Knockback",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Knockback",
-    "Melee AoE Damage",
-    "Stalker Archetype Sets",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 0.75,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.5,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.25,
-      "table": "Melee_InherentDamage"
-    }
-  ],
-  "effects": {
-    "knockback": {
-      "scale": 0.67,
-      "table": "Melee_Ones"
-    }
-  }
-};
+export const Burst: Power = withOverrides(base, overrides);

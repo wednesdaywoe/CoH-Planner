@@ -1,59 +1,16 @@
 /**
- * Psi Blade
- * Melee, Moderate DMG(Psionic/Lethal), Foe -Rech, Self +Insight
+ * Psi Blade — COMPOSED EXPORT
  *
- * Source: brute_melee/psionic_melee/psi_blade.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs brute_melee psionic_melee
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { PsiBlade as base } from '@/data/generated/powersets/brute/primary/psionic-melee/psi-blade';
+import { overrides } from '@/data/overrides/powersets/brute/primary/psionic-melee/psi-blade';
 
-export const PsiBlade: Power = {
-  "name": "Psi Blade",
-  "internalName": "Psi_Blade",
-  "available": 0,
-  "description": "You lash at your foe's mind with a mentally projected blade of psychic energy to deal moderate Psionic and Lethal damage. Affected foes will have their recharge rate reduced. Psi Blade has a moderate chance to grant you Insight. While you have Insight, Psi Blade will deal additional minor psionic damage over time.Damage: Moderate.Recharge: Fast.",
-  "shortHelp": "Melee, Moderate DMG(Psionic/Lethal), Foe -Rech, Self +Insight",
-  "icon": "psionicmelee_psiblade.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 7,
-    "recharge": 5,
-    "endurance": 5.928,
-    "castTime": 1.33
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "EnduranceReduction",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Brute Archetype Sets",
-    "Melee Damage",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Lethal",
-      "scale": 0.285,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 0.855,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 0.2285,
-      "table": "Melee_Damage",
-      "duration": 3.1,
-      "tickRate": 1
-    }
-  ]
-};
+export const PsiBlade: Power = withOverrides(base, overrides);

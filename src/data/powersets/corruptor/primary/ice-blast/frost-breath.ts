@@ -1,51 +1,16 @@
 /**
- * Frost Breath
- * Close (Cone), DoT(Cold), Foe -Recharge, -SPD
+ * Frost Breath — COMPOSED EXPORT
  *
- * Source: corruptor_ranged/ice_blast/frost_breath.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs corruptor_ranged ice_blast
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { FrostBreath as base } from '@/data/generated/powersets/corruptor/primary/ice-blast/frost-breath';
+import { overrides } from '@/data/overrides/powersets/corruptor/primary/ice-blast/frost-breath';
 
-export const FrostBreath: Power = {
-  "name": "Frost Breath",
-  "internalName": "Frost_Breath",
-  "available": 1,
-  "description": "Unleashes a cone of frosty breath that can Slow your opponents' movement and attacks. Very accurate and very deadly at medium range.",
-  "shortHelp": "Close (Cone), DoT(Cold), Foe -Recharge, -SPD",
-  "icon": "iceblast_frostbreath.png",
-  "powerType": "Click",
-  "effectArea": "Cone",
-  "stats": {
-    "accuracy": 1.2,
-    "range": 40,
-    "radius": 40,
-    "arc": 0.5236,
-    "recharge": 16,
-    "endurance": 15.184,
-    "castTime": 2.67,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "Slow",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Corruptor Archetype Sets",
-    "Ranged AoE Damage",
-    "Slow Movement",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Cold",
-    "scale": 0.7,
-    "table": "Ranged_Damage",
-    "duration": 0.6,
-    "tickRate": 0.5
-  }
-};
+export const FrostBreath: Power = withOverrides(base, overrides);

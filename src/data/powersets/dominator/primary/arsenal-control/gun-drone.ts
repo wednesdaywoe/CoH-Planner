@@ -1,48 +1,16 @@
 /**
- * Tri-Cannon
- * Build Tri-Cannon: Ranged, DMG(Lethal)
+ * Tri-Cannon — COMPOSED EXPORT
  *
- * Source: dominator_control/arsenal_control/gun_drone.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs dominator_control arsenal_control
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { TriCannon as base } from '@/data/generated/powersets/dominator/primary/arsenal-control/gun-drone';
+import { overrides } from '@/data/overrides/powersets/dominator/primary/arsenal-control/gun-drone';
 
-export const TriCannon: Power = {
-  "name": "Tri-Cannon",
-  "internalName": "Gun_Drone",
-  "available": 25,
-  "description": "The Tri-Cannon is the perfect companion in the field. It has an extremely fast fire rate and is equipped with a customized tracking system. Once locked on, it will continue to unload a volley of lead into the target until it is destroyed. Enemies around the Tri-Cannon, as well as those hit by it, will prioritize attacking it over its owner. It is armored and can take significant amounts of damage.",
-  "shortHelp": "Build Tri-Cannon: Ranged, DMG(Lethal)",
-  "icon": "arsenalcontrol_gunturret.png",
-  "powerType": "Click",
-  "targetType": "Location",
-  "effectArea": "Location",
-  "stats": {
-    "accuracy": 1,
-    "range": 50,
-    "recharge": 240,
-    "endurance": 26,
-    "castTime": 1
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "EnduranceReduction",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Pet Damage",
-    "Recharge Intensive Pets",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_GunDrone_Tri",
-      "copyBoosts": true
-    }
-  }
-};
+export const TriCannon: Power = withOverrides(base, overrides);

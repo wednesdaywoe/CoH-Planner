@@ -1,71 +1,16 @@
 /**
- * Soul Extraction
- * Summon Ghost (Special)
+ * Soul Extraction — COMPOSED EXPORT
  *
- * Source: mastermind_summon/necromancy/soul_extraction.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs mastermind_summon necromancy
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { SoulExtraction as base } from '@/data/generated/powersets/mastermind/primary/necromancy/soul-extraction';
+import { overrides } from '@/data/overrides/powersets/mastermind/primary/necromancy/soul-extraction';
 
-export const SoulExtraction: Power = {
-  "name": "Soul Extraction",
-  "internalName": "Soul_Extraction",
-  "available": 17,
-  "description": "You can extract the souls from your Undead Henchmen and summon their spectral essence to do your bidding. The power of each soul is dependent upon the type of undead Henchman you extract it from, however it will always be one level lower than you. Unlike your other Henchman, these extracted Souls are only loosely bound to your control and will quickly move on to the next world. These Souls cannot gain new powers with Enchanted Undead or Dark Empowerment. If a Soul's original body is defeated then the Soul will also be defeated. If you activate Soul Extraction again while a Soul is active, it will simply be replaced.",
-  "shortHelp": "Summon Ghost (Special)",
-  "icon": "necromancy_soulextraction.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "range": 60,
-    "radius": 80,
-    "recharge": 150,
-    "endurance": 15,
-    "castTime": 2.03
-  },
-  "allowedEnhancements": [
-    "Hold",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Healing",
-    "ToHit Debuff",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate Healing",
-    "Accurate To-Hit Debuff",
-    "Healing",
-    "Holds",
-    "Mastermind Archetype Sets",
-    "Pet Damage",
-    "Recharge Intensive Pets",
-    "To Hit Debuff",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "isPseudoPet": false,
-      "duration": 30,
-      "copyBoosts": true,
-      "entities": [
-        {
-          "entity": "MastermindPets_Ghost_Boss",
-          "count": 1
-        },
-        {
-          "entity": "MastermindPets_Ghost_Lt",
-          "count": 1
-        },
-        {
-          "entity": "MastermindPets_Ghost_Minion",
-          "count": 1
-        }
-      ]
-    }
-  }
-};
+export const SoulExtraction: Power = withOverrides(base, overrides);

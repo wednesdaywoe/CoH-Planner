@@ -1,69 +1,16 @@
 /**
- * Explosive Arrow
- * Ranged (Targeted AoE), DMG(Lethal/Fire), Knockback
+ * Explosive Arrow — COMPOSED EXPORT
  *
- * Source: blaster_ranged/archery/explosive_arrow.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs blaster_ranged archery
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { ExplosiveArrow as base } from '@/data/generated/powersets/blaster/primary/archery/explosive-arrow';
+import { overrides } from '@/data/overrides/powersets/blaster/primary/archery/explosive-arrow';
 
-export const ExplosiveArrow: Power = {
-  "name": "Explosive Arrow",
-  "internalName": "Explosive_Arrow",
-  "available": 11,
-  "description": "You fire a grenade-tipped arrow at long range. This explosion affects all within the blast radius, and can knock them back.",
-  "shortHelp": "Ranged (Targeted AoE), DMG(Lethal/Fire), Knockback",
-  "icon": "archery_explodingarrow.png",
-  "powerType": "Click",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1.155,
-    "range": 80,
-    "radius": 15,
-    "recharge": 16,
-    "endurance": 15.184,
-    "castTime": 1,
-    "maxTargets": 16
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Knockback",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Blaster Archetype Sets",
-    "Knockback",
-    "Ranged AoE Damage",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Fire",
-      "scale": 0.45,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.45,
-      "table": "Ranged_Damage"
-    }
-  ],
-  "effects": {
-    "damageBuff": {
-      "scale": 0.02,
-      "table": "Ranged_Ones"
-    },
-    "durations": {
-      "damageBuff": 8.5
-    },
-    "knockback": {
-      "scale": 2,
-      "table": "Ranged_Knockback"
-    },
-    "buffDuration": 8.5
-  }
-};
+export const ExplosiveArrow: Power = withOverrides(base, overrides);

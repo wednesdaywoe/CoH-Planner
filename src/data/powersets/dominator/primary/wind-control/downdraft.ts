@@ -1,70 +1,16 @@
 /**
- * Downdraft
- * Ranged, Hold(Foe), -Movement(Foe), -Rech(Foe), -Fly(Foe), Pressure Builder (Self)
+ * Downdraft — COMPOSED EXPORT
  *
- * Source: dominator_control/wind_control/downdraft.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs dominator_control wind_control
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Downdraft as base } from '@/data/generated/powersets/dominator/primary/wind-control/downdraft';
+import { overrides } from '@/data/overrides/powersets/dominator/primary/wind-control/downdraft';
 
-export const Downdraft: Power = {
-  "name": "Downdraft",
-  "internalName": "Downdraft",
-  "available": 0,
-  "description": "You gather air above your target before forcefully pressurizing it into a downward flowing vortex. The force of the downdraft prevents your target from moving, effectively holding them in place and preventing flight. The force of the downdraft leaves the target winded, reducing their movement and attack speeds for a short time while they recover. This power builds Pressure.Damage: Light.Recharge: Moderate.",
-  "shortHelp": "Ranged, Hold(Foe), -Movement(Foe), -Rech(Foe), -Fly(Foe), Pressure Builder (Self)",
-  "icon": "windcontrol_downdraft.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1.2,
-    "range": 80,
-    "recharge": 8,
-    "endurance": 10.66,
-    "castTime": 1.87
-  },
-  "allowedEnhancements": [
-    "Hold",
-    "Slow",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Dominator Archetype Sets",
-    "Holds",
-    "Ranged Damage",
-    "Slow Movement",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 1,
-    "table": "Ranged_Damage"
-  },
-  "effects": {
-    "hold": {
-      "mag": 3,
-      "scale": 12,
-      "table": "Ranged_Immobilize"
-    },
-    "mezResistance": {
-      "knockup": {
-        "scale": 100,
-        "table": "Ranged_Ones"
-      },
-      "knockback": {
-        "scale": 100,
-        "table": "Ranged_Ones"
-      }
-    },
-    "durations": {
-      "mezResistance": 12
-    },
-    "buffDuration": 12
-  },
-  "requires": "char>accesslevel >= 0"
-};
+export const Downdraft: Power = withOverrides(base, overrides);

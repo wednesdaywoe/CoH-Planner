@@ -1,44 +1,16 @@
 /**
- * Incinerate
- * Melee, High DoT(Fire)
+ * Incinerate — COMPOSED EXPORT
  *
- * Source: dominator_assault/fiery_assault/incinerate.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs dominator_assault fiery_assault
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Incinerate as base } from '@/data/generated/powersets/dominator/secondary/fiery-assault/incinerate';
+import { overrides } from '@/data/overrides/powersets/dominator/secondary/fiery-assault/incinerate';
 
-export const Incinerate: Power = {
-  "name": "Incinerate",
-  "internalName": "Incinerate",
-  "available": 0,
-  "description": "Intense concentration can allow you to Incinerate an opponent at melee range. This will set your foe ablaze, dealing damage over time.Damage: High.Recharge: Moderate.",
-  "shortHelp": "Melee, High DoT(Fire)",
-  "icon": "fireassault_incinerate.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 7,
-    "recharge": 10,
-    "endurance": 10.192,
-    "castTime": 1.67
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Melee Damage",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Fire",
-    "scale": 0.212,
-    "table": "Melee_Damage",
-    "duration": 4.6,
-    "tickRate": 0.5
-  }
-};
+export const Incinerate: Power = withOverrides(base, overrides);

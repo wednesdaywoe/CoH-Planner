@@ -1,73 +1,16 @@
 /**
- * Sniper Blast
- * Sniper, DMG(Energy/Smash), Foe Knockback, Self +Range
+ * Sniper Blast — COMPOSED EXPORT
  *
- * Source: blaster_ranged/energy_blast/sniper_blast.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs blaster_ranged energy_blast
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { SniperBlast as base } from '@/data/generated/powersets/blaster/primary/energy-blast/sniper-blast';
+import { overrides } from '@/data/overrides/powersets/blaster/primary/energy-blast/sniper-blast';
 
-export const SniperBlast: Power = {
-  "name": "Sniper Blast",
-  "internalName": "Sniper_Blast",
-  "available": 7,
-  "description": "A focused blast that can travel great distances with high Accuracy. This is a sniper attack, and is best fired from a distance, as it can be interrupted. Sniper Blast may knock targets backwards. If you are engaged in battle this attack becomes instant-cast. If you are not engaged, it will do bonus damage.",
-  "shortHelp": "Sniper, DMG(Energy/Smash), Foe Knockback, Self +Range",
-  "icon": "powerblast_sniperblast.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 150,
-    "recharge": 12,
-    "endurance": 14.352,
-    "castTime": 1.33
-  },
-  "allowedEnhancements": [
-    "Interrupt",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Knockback",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Blaster Archetype Sets",
-    "Knockback",
-    "Ranged Damage",
-    "Sniper Attacks",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 1.5,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 3,
-      "table": "Ranged_Damage"
-    }
-  ],
-  "effects": {
-    "knockback": {
-      "scale": 0.7,
-      "table": "Ranged_Knockback"
-    },
-    "rangeBuff": {
-      "scale": 0.5,
-      "table": "Ranged_Ones"
-    },
-    "durations": {
-      "rangeBuff": 10
-    },
-    "damageBuff": {
-      "scale": 0,
-      "table": "Ranged_Ones"
-    },
-    "buffDuration": 10
-  }
-};
+export const SniperBlast: Power = withOverrides(base, overrides);

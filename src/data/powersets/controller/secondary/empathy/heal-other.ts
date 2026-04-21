@@ -1,42 +1,16 @@
 /**
- * Heal Other
- * Ally Heal
+ * Heal Other — COMPOSED EXPORT
  *
- * Source: controller_buff/empathy/heal_other.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs controller_buff empathy
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { HealOther as base } from '@/data/generated/powersets/controller/secondary/empathy/heal-other';
+import { overrides } from '@/data/overrides/powersets/controller/secondary/empathy/heal-other';
 
-export const HealOther: Power = {
-  "name": "Heal Other",
-  "internalName": "Heal_Other",
-  "available": 0,
-  "description": "Heals a single targeted ally. You cannot use this power to heal yourself.Recharge: Fast.",
-  "shortHelp": "Ally Heal",
-  "icon": "empathy_healother.png",
-  "powerType": "Click",
-  "targetType": "Ally (Alive)",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 80,
-    "recharge": 4,
-    "endurance": 13,
-    "castTime": 2.27
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Healing"
-  ],
-  "allowedSetCategories": [
-    "Healing"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Heal",
-    "scale": 1.96,
-    "table": "Ranged_Heal"
-  }
-};
+export const HealOther: Power = withOverrides(base, overrides);

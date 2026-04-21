@@ -1,42 +1,16 @@
 /**
- * Healing Aura
- * PBAoE, Team +Heal
+ * Healing Aura — COMPOSED EXPORT
  *
- * Source: corruptor_buff/empathy/siphon_energy.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs corruptor_buff empathy
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { HealingAura as base } from '@/data/generated/powersets/corruptor/secondary/empathy/siphon-energy';
+import { overrides } from '@/data/overrides/powersets/corruptor/secondary/empathy/siphon-energy';
 
-export const HealingAura: Power = {
-  "name": "Healing Aura",
-  "internalName": "Siphon_Energy",
-  "available": 0,
-  "description": "Healing Aura restores some Hit Points to you and all nearby heroes. Healing Aura is not as potent as Heal Other, but can heal multiple targets at once.Recharge: Moderate.",
-  "shortHelp": "PBAoE, Team +Heal",
-  "icon": "empathy_healingaura.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "radius": 25,
-    "recharge": 8,
-    "endurance": 13,
-    "castTime": 2.03,
-    "maxTargets": 255
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Healing"
-  ],
-  "allowedSetCategories": [
-    "Healing"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Heal",
-    "scale": 1,
-    "table": "Ranged_Heal"
-  }
-};
+export const HealingAura: Power = withOverrides(base, overrides);

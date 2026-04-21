@@ -1,85 +1,16 @@
 /**
- * Rib Cracker
- * Melee, DMG(Smash), Foe -Res (All), -Dmg, Combo Builder
+ * Rib Cracker — COMPOSED EXPORT
  *
- * Source: tanker_melee/brawling/throat_strike.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs tanker_melee brawling
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { RibCracker as base } from '@/data/generated/powersets/tanker/secondary/street-justice/throat-strike';
+import { overrides } from '@/data/overrides/powersets/tanker/secondary/street-justice/throat-strike';
 
-export const RibCracker: Power = {
-  "name": "Rib Cracker",
-  "internalName": "Throat_Strike",
-  "available": 19,
-  "description": "You deftly strike your foe in a very vulnerable location. Rib Cracker deals Moderate Damage but reduces your foe's Damage and Resistance moderately for a short time. Rib Cracker is a Combo Builder and adds 1 Combo Level.",
-  "shortHelp": "Melee, DMG(Smash), Foe -Res (All), -Dmg, Combo Builder",
-  "icon": "brawling_throatstrike.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 7,
-    "recharge": 6,
-    "endurance": 6.864,
-    "castTime": 1.33
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "EnduranceReduction",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Melee Damage",
-    "Tanker Archetype Sets",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 1.32,
-    "table": "Melee_Damage"
-  },
-  "effects": {
-    "resistanceDebuff": {
-      "smashing": {
-        "scale": 1,
-        "table": "Melee_Debuff_Res_Dmg"
-      },
-      "lethal": {
-        "scale": 1,
-        "table": "Melee_Debuff_Res_Dmg"
-      },
-      "fire": {
-        "scale": 1,
-        "table": "Melee_Debuff_Res_Dmg"
-      },
-      "cold": {
-        "scale": 1,
-        "table": "Melee_Debuff_Res_Dmg"
-      },
-      "energy": {
-        "scale": 1,
-        "table": "Melee_Debuff_Res_Dmg"
-      },
-      "negative": {
-        "scale": 1,
-        "table": "Melee_Debuff_Res_Dmg"
-      },
-      "psionic": {
-        "scale": 1,
-        "table": "Melee_Debuff_Res_Dmg"
-      },
-      "toxic": {
-        "scale": 1,
-        "table": "Melee_Debuff_Res_Dmg"
-      }
-    },
-    "durations": {
-      "resistanceDebuff": 5
-    },
-    "buffDuration": 5
-  }
-};
+export const RibCracker: Power = withOverrides(base, overrides);

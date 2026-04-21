@@ -1,51 +1,16 @@
 /**
- * Ice Slash
- * Melee, Superior DMG(Cold/Lethal), Foe -Recharge, -SPD
+ * Ice Slash — COMPOSED EXPORT
  *
- * Source: dominator_assault/icy_assault/greater_ice_sword.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs dominator_assault icy_assault
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { IceSlash as base } from '@/data/generated/powersets/dominator/secondary/icy-assault/greater-ice-sword';
+import { overrides } from '@/data/overrides/powersets/dominator/secondary/icy-assault/greater-ice-sword';
 
-export const IceSlash: Power = {
-  "name": "Ice Slash",
-  "internalName": "Greater_Ice_Sword",
-  "available": 27,
-  "description": "Ice Slash allows the user to create a blade of solid ice and strike a foe for high damage. Being hit by Ice Slash will Slow a foes' attack and movement speed, due to the intense chill.Damage: Superior.Recharge: Slow.",
-  "shortHelp": "Melee, Superior DMG(Cold/Lethal), Foe -Recharge, -SPD",
-  "icon": "iceassault_iceswordcleave.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1.2,
-    "range": 7,
-    "recharge": 17,
-    "endurance": 16.016,
-    "castTime": 1.83
-  },
-  "allowedEnhancements": [
-    "Slow",
-    "EnduranceReduction",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Melee Damage",
-    "Slow Movement",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Lethal",
-      "scale": 1.54,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Cold",
-      "scale": 1.54,
-      "table": "Melee_Damage"
-    }
-  ]
-};
+export const IceSlash: Power = withOverrides(base, overrides);

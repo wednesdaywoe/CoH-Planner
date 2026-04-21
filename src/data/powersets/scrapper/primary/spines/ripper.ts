@@ -1,80 +1,16 @@
 /**
- * Ripper
- * Melee (Cone), DMG(Lethal), DoT(Toxic), Knockback, -SPD, -Recharge
+ * Ripper — COMPOSED EXPORT
  *
- * Source: scrapper_melee/quills/ripper.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs scrapper_melee quills
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Ripper as base } from '@/data/generated/powersets/scrapper/primary/spines/ripper';
+import { overrides } from '@/data/overrides/powersets/scrapper/primary/spines/ripper';
 
-export const Ripper: Power = {
-  "name": "Ripper",
-  "internalName": "Ripper",
-  "available": 21,
-  "description": "You can unleash a spectacular slashing maneuver that attacks all villains in a wide arc in front of you. Ripper deals massive damage and poisons multiple targets. It can even knock foes down. Spine poison Slows affected targets and deals additional Toxic damage.",
-  "shortHelp": "Melee (Cone), DMG(Lethal), DoT(Toxic), Knockback, -SPD, -Recharge",
-  "icon": "quills_bonesword.png",
-  "powerType": "Click",
-  "effectArea": "Cone",
-  "stats": {
-    "accuracy": 1,
-    "range": 7,
-    "radius": 7,
-    "arc": 1.5708,
-    "recharge": 11,
-    "endurance": 11.024,
-    "castTime": 2.33,
-    "maxTargets": 5
-  },
-  "allowedEnhancements": [
-    "Slow",
-    "EnduranceReduction",
-    "Recharge",
-    "Knockback",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Knockback",
-    "Melee AoE Damage",
-    "Scrapper Archetype Sets",
-    "Slow Movement",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Lethal",
-      "scale": 1.7,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Toxic",
-      "scale": 0.2,
-      "table": "Melee_Damage",
-      "duration": 4.1,
-      "tickRate": 1
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.7,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.7,
-      "table": "Melee_InherentDamage"
-    }
-  ],
-  "effects": {
-    "knockback": {
-      "scale": 0.67,
-      "table": "Melee_Ones"
-    },
-    "immobilize": {
-      "mag": 0.67,
-      "scale": 10,
-      "table": "Melee_Immobilize"
-    }
-  }
-};
+export const Ripper: Power = withOverrides(base, overrides);

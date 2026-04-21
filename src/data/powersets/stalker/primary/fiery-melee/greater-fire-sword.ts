@@ -1,70 +1,16 @@
 /**
- * Greater Fire Sword
- * Melee, DMG(Fire), -Defense
+ * Greater Fire Sword — COMPOSED EXPORT
  *
- * Source: stalker_melee/fiery_melee/greater_fire_sword.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs stalker_melee fiery_melee
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { GreaterFireSword as base } from '@/data/generated/powersets/stalker/primary/fiery-melee/greater-fire-sword';
+import { overrides } from '@/data/overrides/powersets/stalker/primary/fiery-melee/greater-fire-sword';
 
-export const GreaterFireSword: Power = {
-  "name": "Greater Fire Sword",
-  "internalName": "Greater_Fire_Sword",
-  "available": 25,
-  "description": "Your mastery of fire allows you to create an enhanced Sword of Fire that can set foes ablaze and cut through their defenses. Successful attacks from the Greater Fire Sword will ignite your target, dealing damage over time.",
-  "shortHelp": "Melee, DMG(Fire), -Defense",
-  "icon": "fieryfray_greaterfiresword.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1.2,
-    "range": 7,
-    "recharge": 13,
-    "endurance": 12.688,
-    "castTime": 1.37
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Defense Debuff",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Defense Debuff",
-    "Melee Damage",
-    "Stalker Archetype Sets",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Fire",
-      "scale": 2.44,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 2.44,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.2,
-      "table": "Melee_Damage",
-      "duration": 2.1,
-      "tickRate": 0.5
-    }
-  ],
-  "effects": {
-    "defenseDebuff": {
-      "scale": 0.5,
-      "table": "Melee_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 10
-    },
-    "buffDuration": 10
-  }
-};
+export const GreaterFireSword: Power = withOverrides(base, overrides);

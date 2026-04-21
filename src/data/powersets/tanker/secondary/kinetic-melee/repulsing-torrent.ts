@@ -1,64 +1,16 @@
 /**
- * Repulsing Torrent
- * Ranged (Cone), DMG(Energy/Smash), Foe Knockback
+ * Repulsing Torrent — COMPOSED EXPORT
  *
- * Source: tanker_melee/kinetic_attack/repulsing_torrent.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs tanker_melee kinetic_attack
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { RepulsingTorrent as base } from '@/data/generated/powersets/tanker/secondary/kinetic-melee/repulsing-torrent';
+import { overrides } from '@/data/overrides/powersets/tanker/secondary/kinetic-melee/repulsing-torrent';
 
-export const RepulsingTorrent: Power = {
-  "name": "Repulsing Torrent",
-  "internalName": "Repulsing_Torrent",
-  "available": 15,
-  "description": "Repulsing Torrent unleashes a cone of powerful energy that can smash foes and possibly send them flying.Notes: Thanks to gauntlet, this power can hit up to 6 targets above its cap at 1/3rd effectiveness.",
-  "shortHelp": "Ranged (Cone), DMG(Energy/Smash), Foe Knockback",
-  "icon": "kineticattack_repulsingtorrent.png",
-  "powerType": "Click",
-  "effectArea": "Cone",
-  "stats": {
-    "accuracy": 1,
-    "range": 30,
-    "radius": 40,
-    "arc": 0.7854,
-    "recharge": 12,
-    "endurance": 11.856,
-    "castTime": 2,
-    "maxTargets": 16
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Knockback",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Knockback",
-    "Ranged AoE Damage",
-    "Tanker Archetype Sets",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 0.825,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.275,
-      "table": "Melee_Damage"
-    }
-  ],
-  "effects": {
-    "knockback": {
-      "scale": 3,
-      "table": "Melee_Knockback"
-    }
-  }
-};
+export const RepulsingTorrent: Power = withOverrides(base, overrides);

@@ -1,57 +1,16 @@
 /**
- * Spin
- * PBAoE Melee, DMG(Lethal)
+ * Spin — COMPOSED EXPORT
  *
- * Source: scrapper_melee/claws/spin.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs scrapper_melee claws
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Spin as base } from '@/data/generated/powersets/scrapper/primary/claws/spin';
+import { overrides } from '@/data/overrides/powersets/scrapper/primary/claws/spin';
 
-export const Spin: Power = {
-  "name": "Spin",
-  "internalName": "Spin",
-  "available": 5,
-  "description": "You spin around in a circle, attacking everyone within melee range with a Strike attack.",
-  "shortHelp": "PBAoE Melee, DMG(Lethal)",
-  "icon": "claws_spinningclawsattack.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "radius": 8,
-    "recharge": 9.2,
-    "endurance": 9.152,
-    "castTime": 2.5,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Melee AoE Damage",
-    "Scrapper Archetype Sets",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Lethal",
-      "scale": 1.58,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.58,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.58,
-      "table": "Melee_InherentDamage"
-    }
-  ]
-};
+export const Spin: Power = withOverrides(base, overrides);

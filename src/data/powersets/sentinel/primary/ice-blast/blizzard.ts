@@ -1,53 +1,16 @@
 /**
- * Blizzard
- * Ranged (Location AoE), Extreme DoT(Cold), Foe -To Hit, -SPD, -Recharge, Knockback
+ * Blizzard — COMPOSED EXPORT
  *
- * Source: sentinel_ranged/ice_blast/blizzard.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs sentinel_ranged ice_blast
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Blizzard as base } from '@/data/generated/powersets/sentinel/primary/ice-blast/blizzard';
+import { overrides } from '@/data/overrides/powersets/sentinel/primary/ice-blast/blizzard';
 
-export const Blizzard: Power = {
-  "name": "Blizzard",
-  "internalName": "Blizzard",
-  "available": 25,
-  "description": "You can conjure a Blizzard that inflicts Extreme Cold and Lethal damage over time and can Slow the attack rate of all your opponents in a large area, reducing their chance to hit and possibly knocking them back.",
-  "shortHelp": "Ranged (Location AoE), Extreme DoT(Cold), Foe -To Hit, -SPD, -Recharge, Knockback",
-  "icon": "iceblast_blizzard.png",
-  "powerType": "Click",
-  "targetType": "Location",
-  "effectArea": "Location",
-  "stats": {
-    "accuracy": 2,
-    "range": 40,
-    "recharge": 90,
-    "endurance": 15.6,
-    "castTime": 2.03
-  },
-  "allowedEnhancements": [
-    "Slow",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "ToHit Debuff",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate To-Hit Debuff",
-    "Ranged AoE Damage",
-    "Sentinel Archetype Sets",
-    "Slow Movement",
-    "To Hit Debuff",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_Blizzard_Sentinel",
-      "duration": 8,
-      "copyBoosts": true
-    }
-  }
-};
+export const Blizzard: Power = withOverrides(base, overrides);

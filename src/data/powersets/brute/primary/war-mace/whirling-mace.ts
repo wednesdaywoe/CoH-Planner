@@ -1,56 +1,16 @@
 /**
- * Whirling Mace
- * PBAoE Melee, Light DMG(Smashing), Minor Disorient
+ * Whirling Mace — COMPOSED EXPORT
  *
- * Source: brute_melee/war_mace/whirling_mace.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs brute_melee war_mace
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { WhirlingMace as base } from '@/data/generated/powersets/brute/primary/war-mace/whirling-mace';
+import { overrides } from '@/data/overrides/powersets/brute/primary/war-mace/whirling-mace';
 
-export const WhirlingMace: Power = {
-  "name": "Whirling Mace",
-  "internalName": "Whirling_Mace",
-  "available": 17,
-  "description": "You swing your mace in a circle all around you, attacking everyone in melee range. Your Whirling Mace deals moderate damage, and has a chance to Disorient every foe you hit.Damage: Light.Recharge: Slow.",
-  "shortHelp": "PBAoE Melee, Light DMG(Smashing), Minor Disorient",
-  "icon": "mace_whirlingmace.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1.05,
-    "radius": 8,
-    "recharge": 14,
-    "endurance": 13,
-    "castTime": 2.67,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "EnduranceReduction",
-    "Stun",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Brute Archetype Sets",
-    "Melee AoE Damage",
-    "Stuns",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 1.12,
-    "table": "Melee_Damage"
-  },
-  "effects": {
-    "stun": {
-      "mag": 2,
-      "scale": 5,
-      "table": "Melee_Stun"
-    }
-  }
-};
+export const WhirlingMace: Power = withOverrides(base, overrides);

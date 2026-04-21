@@ -1,91 +1,16 @@
 /**
- * Shout
- * Ranged, DMG(Smashing/Energy), Foe -Res(All)
+ * Shout — COMPOSED EXPORT
  *
- * Source: blaster_ranged/sonic_attack/shout.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs blaster_ranged sonic_attack
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Shout as base } from '@/data/generated/powersets/blaster/primary/sonic-attack/shout';
+import { overrides } from '@/data/overrides/powersets/blaster/primary/sonic-attack/shout';
 
-export const Shout: Power = {
-  "name": "Shout",
-  "internalName": "Shout",
-  "available": 7,
-  "description": "You blast your foe with a tremendous Shout, damaging them.",
-  "shortHelp": "Ranged, DMG(Smashing/Energy), Foe -Res(All)",
-  "icon": "sonicblast_heavy.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 80,
-    "recharge": 10,
-    "endurance": 10.192,
-    "castTime": 2
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Blaster Archetype Sets",
-    "Ranged Damage",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 0.98,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.98,
-      "table": "Ranged_Damage"
-    }
-  ],
-  "effects": {
-    "resistanceDebuff": {
-      "smashing": {
-        "scale": 1.5,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "lethal": {
-        "scale": 1.5,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "fire": {
-        "scale": 1.5,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "cold": {
-        "scale": 1.5,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "energy": {
-        "scale": 1.5,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "negative": {
-        "scale": 1.5,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "psionic": {
-        "scale": 1.5,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "toxic": {
-        "scale": 1.5,
-        "table": "Ranged_Debuff_Res_Dmg"
-      }
-    },
-    "durations": {
-      "resistanceDebuff": 10
-    },
-    "buffDuration": 10
-  }
-};
+export const Shout: Power = withOverrides(base, overrides);

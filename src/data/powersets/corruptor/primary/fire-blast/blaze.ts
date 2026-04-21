@@ -1,53 +1,16 @@
 /**
- * Blaze
- * Ranged, DMG(Fire)
+ * Blaze — COMPOSED EXPORT
  *
- * Source: corruptor_ranged/fire_blast/blaze.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs corruptor_ranged fire_blast
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Blaze as base } from '@/data/generated/powersets/corruptor/primary/fire-blast/blaze';
+import { overrides } from '@/data/overrides/powersets/corruptor/primary/fire-blast/blaze';
 
-export const Blaze: Power = {
-  "name": "Blaze",
-  "internalName": "Blaze",
-  "available": 17,
-  "description": "A devastating flame attack.",
-  "shortHelp": "Ranged, DMG(Fire)",
-  "icon": "fireblast_blaze.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 80,
-    "recharge": 10,
-    "endurance": 10.4,
-    "castTime": 1
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Corruptor Archetype Sets",
-    "Ranged Damage",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Fire",
-      "scale": 2.12,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.225,
-      "table": "Ranged_Damage",
-      "duration": 4.1,
-      "tickRate": 1
-    }
-  ]
-};
+export const Blaze: Power = withOverrides(base, overrides);

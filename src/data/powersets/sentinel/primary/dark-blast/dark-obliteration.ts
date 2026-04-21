@@ -1,49 +1,16 @@
 /**
- * Dark Obliteration
- * Ranged (Targeted AoE), DMG(Negative), Foe -ACC
+ * Dark Obliteration — COMPOSED EXPORT
  *
- * Source: sentinel_ranged/dark_blast/dark_obliteration.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs sentinel_ranged dark_blast
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { DarkObliteration as base } from '@/data/generated/powersets/sentinel/primary/dark-blast/dark-obliteration';
+import { overrides } from '@/data/overrides/powersets/sentinel/primary/dark-blast/dark-obliteration';
 
-export const DarkObliteration: Power = {
-  "name": "Dark Obliteration",
-  "internalName": "Dark_Obliteration",
-  "available": 11,
-  "description": "You hurl a large blast of negative energy that violently explodes on impact, exposing the dark power of the Netherworld to all foes near the target. Dark Obliteration can reduce the Accuracy of all affected targets.",
-  "shortHelp": "Ranged (Targeted AoE), DMG(Negative), Foe -ACC",
-  "icon": "darkcast_darkobliteration.png",
-  "powerType": "Click",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "range": 40,
-    "radius": 15,
-    "recharge": 16,
-    "endurance": 15.184,
-    "castTime": 1,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "ToHit Debuff",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate To-Hit Debuff",
-    "Ranged AoE Damage",
-    "Sentinel Archetype Sets",
-    "To Hit Debuff",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Negative",
-    "scale": 0.9,
-    "table": "Melee_Damage"
-  }
-};
+export const DarkObliteration: Power = withOverrides(base, overrides);

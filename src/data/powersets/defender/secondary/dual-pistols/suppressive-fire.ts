@@ -1,62 +1,16 @@
 /**
- * Suppressive Fire
- * Ranged, DMG(Lethal/Special), Foe Disorient/Special
+ * Suppressive Fire — COMPOSED EXPORT
  *
- * Source: defender_ranged/dual_pistols/suppressive_fire.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs defender_ranged dual_pistols
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { SuppressiveFire as base } from '@/data/generated/powersets/defender/secondary/dual-pistols/suppressive-fire';
+import { overrides } from '@/data/overrides/powersets/defender/secondary/dual-pistols/suppressive-fire';
 
-export const SuppressiveFire: Power = {
-  "name": "Suppressive Fire",
-  "internalName": "Suppressive_Fire",
-  "available": 19,
-  "description": "Suppressive Fire allows the user to quickly stun their target for a short time and deal a very minor amount of Lethal damage.Changing your ammo type with the 'Swap Ammo' power will change your secondary damage from lethal to cold, fire or toxic.Additionally, changing your ammunition type will also change the secondary effect of this attack from Disorient effect to a Hold effect if 'Cryo Ammo', 'Incendiary Ammo' or 'Chemical Ammo' are loaded. Damage and duration of the hold will variate by ammo type.",
-  "shortHelp": "Ranged, DMG(Lethal/Special), Foe Disorient/Special",
-  "icon": "dualpistols_suppressivefire.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1.1,
-    "range": 60,
-    "recharge": 20,
-    "endurance": 10.192,
-    "castTime": 1.5
-  },
-  "allowedEnhancements": [
-    "Hold",
-    "EnduranceReduction",
-    "Range",
-    "Stun",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Defender Archetype Sets",
-    "Holds",
-    "Ranged Damage",
-    "Stuns",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Lethal",
-      "scale": 0.05,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.05,
-      "table": "Ranged_Damage"
-    }
-  ],
-  "effects": {
-    "stun": {
-      "mag": 3,
-      "scale": 3.2,
-      "table": "Ranged_Sleep"
-    }
-  }
-};
+export const SuppressiveFire: Power = withOverrides(base, overrides);

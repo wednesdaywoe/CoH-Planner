@@ -1,59 +1,16 @@
 /**
- * Heart of Darkness
- * PBAoE, Foe Disorient, -To Hit, Minor DoT(Negative)
+ * Heart of Darkness — COMPOSED EXPORT
  *
- * Source: controller_control/darkness_control/heart_of_darkness.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs controller_control darkness_control
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { HeartofDarkness as base } from '@/data/generated/powersets/controller/primary/darkness-control/heart-of-darkness';
+import { overrides } from '@/data/overrides/powersets/controller/primary/darkness-control/heart-of-darkness';
 
-export const HeartofDarkness: Power = {
-  "name": "Heart of Darkness",
-  "internalName": "Heart_of_Darkness",
-  "available": 11,
-  "description": "In a burst of negative energy you overwhelm the minds of those around you causing them to be disoriented and suffer minor negative energy damage over a short time. Affected targets will also have their chance to hit reduced.Damage: Minor.Recharge: Long.",
-  "shortHelp": "PBAoE, Foe Disorient, -To Hit, Minor DoT(Negative)",
-  "icon": "darknesscontrol_heartofdarkness.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 0.8,
-    "radius": 25,
-    "recharge": 90,
-    "endurance": 15.6,
-    "castTime": 1.67,
-    "maxTargets": 16
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Stun",
-    "Recharge",
-    "ToHit Debuff",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate To-Hit Debuff",
-    "Controller Archetype Sets",
-    "Melee AoE Damage",
-    "Stuns",
-    "To Hit Debuff",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Negative",
-    "scale": 0.07,
-    "table": "Ranged_Damage",
-    "duration": 4.1,
-    "tickRate": 1
-  },
-  "effects": {
-    "stun": {
-      "mag": 3,
-      "scale": 10,
-      "table": "Ranged_Stun"
-    }
-  }
-};
+export const HeartofDarkness: Power = withOverrides(base, overrides);

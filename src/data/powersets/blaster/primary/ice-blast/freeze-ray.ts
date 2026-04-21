@@ -1,79 +1,16 @@
 /**
- * Freeze Ray
- * Ranged, DMG(Cold), Foe Hold
+ * Freeze Ray — COMPOSED EXPORT
  *
- * Source: blaster_ranged/ice_blast/freeze_ray.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs blaster_ranged ice_blast
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { FreezeRay as base } from '@/data/generated/powersets/blaster/primary/ice-blast/freeze-ray';
+import { overrides } from '@/data/overrides/powersets/blaster/primary/ice-blast/freeze-ray';
 
-export const FreezeRay: Power = {
-  "name": "Freeze Ray",
-  "internalName": "Freeze_Ray",
-  "available": 7,
-  "description": "Freeze Ray encases your foe in a block of ice, holding them helpless in place for a while. While frozen, your foe will take Cold damage over time.",
-  "shortHelp": "Ranged, DMG(Cold), Foe Hold",
-  "icon": "iceblast_freezeray.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 60,
-    "recharge": 10,
-    "endurance": 10.192,
-    "castTime": 1
-  },
-  "allowedEnhancements": [
-    "Hold",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Blaster Archetype Sets",
-    "Holds",
-    "Ranged Damage",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Cold",
-    "scale": 0.2,
-    "table": "Ranged_Damage",
-    "duration": 2,
-    "tickRate": 0.2
-  },
-  "effects": {
-    "hold": {
-      "mag": 3,
-      "scale": 8,
-      "table": "Ranged_Sleep"
-    },
-    "mezResistance": {
-      "knockup": {
-        "scale": 100,
-        "table": "Ranged_Ones"
-      },
-      "knockback": {
-        "scale": 100,
-        "table": "Ranged_Ones"
-      }
-    },
-    "durations": {
-      "mezResistance": 10,
-      "knockup": 10,
-      "knockback": 10
-    },
-    "knockup": {
-      "scale": 100,
-      "table": "Ranged_Ones"
-    },
-    "knockback": {
-      "scale": 100,
-      "table": "Ranged_Ones"
-    },
-    "buffDuration": 10
-  }
-};
+export const FreezeRay: Power = withOverrides(base, overrides);

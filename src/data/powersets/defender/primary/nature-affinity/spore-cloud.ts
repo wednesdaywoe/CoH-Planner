@@ -1,50 +1,16 @@
 /**
- * Spore Cloud
- * Toggle (Targeted AoE), Foe -Dmg(All), -To Hit, -Regen
+ * Spore Cloud — COMPOSED EXPORT
  *
- * Source: defender_buff/nature_affinity/spore_cloud.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs defender_buff nature_affinity
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { SporeCloud as base } from '@/data/generated/powersets/defender/primary/nature-affinity/spore-cloud';
+import { overrides } from '@/data/overrides/powersets/defender/primary/nature-affinity/spore-cloud';
 
-export const SporeCloud: Power = {
-  "name": "Spore Cloud",
-  "internalName": "Spore_Cloud",
-  "available": 5,
-  "description": "You create a large cloud of toxic spores around your targeted foe. The target and all nearby foes will have their damage output, chance to hit and regeneration rate reduced.Recharge: Moderate.",
-  "shortHelp": "Toggle (Targeted AoE), Foe -Dmg(All), -To Hit, -Regen",
-  "icon": "natureaffinity_sporecloud.png",
-  "powerType": "Toggle",
-  "targetType": "Foe",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "range": 70,
-    "radius": 15,
-    "recharge": 8,
-    "endurance": 0.26,
-    "castTime": 3.1,
-    "activatePeriod": 0.5,
-    "maxTargets": 16
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "ToHit Debuff"
-  ],
-  "allowedSetCategories": [
-    "To Hit Debuff"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "regenDebuff": {
-      "scale": 1.5,
-      "table": "Ranged_Ones"
-    },
-    "durations": {
-      "regenDebuff": 0.75
-    },
-    "buffDuration": 0.75
-  }
-};
+export const SporeCloud: Power = withOverrides(base, overrides);

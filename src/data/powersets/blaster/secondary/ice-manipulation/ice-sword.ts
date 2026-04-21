@@ -1,58 +1,16 @@
 /**
- * Ice Sword
- * Melee, High DMG(Cold/Lethal), Foe -Recharge, -SPD
+ * Ice Sword — COMPOSED EXPORT
  *
- * Source: blaster_support/ice_manipulation/ice_sword.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs blaster_support ice_manipulation
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { IceSword as base } from '@/data/generated/powersets/blaster/secondary/ice-manipulation/ice-sword';
+import { overrides } from '@/data/overrides/powersets/blaster/secondary/ice-manipulation/ice-sword';
 
-export const IceSword: Power = {
-  "name": "Ice Sword",
-  "internalName": "Ice_Sword",
-  "available": 3,
-  "description": "You create a blade of solid ice that deals higher damage then Frozen Fists. Being hit by this Ice Sword will Slow a target's movement and attack speed, due to the intense chill.Damage: High.Recharge: Moderate.",
-  "shortHelp": "Melee, High DMG(Cold/Lethal), Foe -Recharge, -SPD",
-  "icon": "icemanipulation_icesword.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 7,
-    "recharge": 10,
-    "endurance": 10.192,
-    "castTime": 1.33
-  },
-  "allowedEnhancements": [
-    "Slow",
-    "EnduranceReduction",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Blaster Archetype Sets",
-    "Melee Damage",
-    "Slow Movement",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Lethal",
-      "scale": 0.96,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Cold",
-      "scale": 1,
-      "table": "Melee_Damage"
-    }
-  ],
-  "effects": {
-    "damageBuff": {
-      "scale": 0,
-      "table": "Ranged_Ones"
-    }
-  }
-};
+export const IceSword: Power = withOverrides(base, overrides);

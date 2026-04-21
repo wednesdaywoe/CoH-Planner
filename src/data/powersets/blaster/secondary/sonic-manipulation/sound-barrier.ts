@@ -1,71 +1,16 @@
 /**
- * Sound Barrier
- * Toggle: Self +Absorb, +Recovery, +Res(Smashing, Energy, Sleep)
+ * Sound Barrier — COMPOSED EXPORT
  *
- * Source: blaster_support/sonic_manipulation/sound_barrier.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs blaster_support sonic_manipulation
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { SoundBarrier as base } from '@/data/generated/powersets/blaster/secondary/sonic-manipulation/sound-barrier';
+import { overrides } from '@/data/overrides/powersets/blaster/secondary/sonic-manipulation/sound-barrier';
 
-export const SoundBarrier: Power = {
-  "name": "Sound Barrier",
-  "internalName": "Sound_Barrier",
-  "available": 19,
-  "description": "Creates a barrier around the caster which reduces incoming energy and smashing damage, provides protection against sleep effects and grants an absorption shield. Recovery is also increased.Recharge: Moderate.",
-  "shortHelp": "Toggle: Self +Absorb, +Recovery, +Res(Smashing, Energy, Sleep)",
-  "icon": "sonicmanipulation_soundbarrier.png",
-  "powerType": "Toggle",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 10,
-    "castTime": 2.7,
-    "activatePeriod": 2
-  },
-  "allowedEnhancements": [
-    "Resistance",
-    "EnduranceModification",
-    "Recharge",
-    "Healing"
-  ],
-  "allowedSetCategories": [
-    "Endurance Modification",
-    "Healing",
-    "Resist Damage"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "resistance": {
-      "smashing": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      },
-      "energy": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      }
-    },
-    "durations": {
-      "resistance": 2.25,
-      "absorb": 12,
-      "recoveryBuff": 3,
-      "sleep": 2.25
-    },
-    "absorb": {
-      "scale": 0.3,
-      "table": "Melee_HealSelf"
-    },
-    "recoveryBuff": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
-    "sleep": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "effectDuration": 2.25,
-    "buffDuration": 2.25
-  }
-};
+export const SoundBarrier: Power = withOverrides(base, overrides);

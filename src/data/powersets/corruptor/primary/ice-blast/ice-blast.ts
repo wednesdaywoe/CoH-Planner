@@ -1,46 +1,16 @@
 /**
- * Ice Blast
- * Ranged, DMG(Cold), Foe -Recharge, -SPD
+ * Ice Blast — COMPOSED EXPORT
  *
- * Source: corruptor_ranged/ice_blast/ice_blast.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs corruptor_ranged ice_blast
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { IceBlast as base } from '@/data/generated/powersets/corruptor/primary/ice-blast/ice-blast';
+import { overrides } from '@/data/overrides/powersets/corruptor/primary/ice-blast/ice-blast';
 
-export const IceBlast: Power = {
-  "name": "Ice Blast",
-  "internalName": "Ice_Blast",
-  "available": 0,
-  "description": "Ice Blast hurls shards of ice at foes and Slows their attacks and movement for a time. Slower recharge than Ice Bolt, but more damage.",
-  "shortHelp": "Ranged, DMG(Cold), Foe -Recharge, -SPD",
-  "icon": "iceblast_iceblast.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 80,
-    "recharge": 8,
-    "endurance": 8.528,
-    "castTime": 1.67
-  },
-  "allowedEnhancements": [
-    "Slow",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Corruptor Archetype Sets",
-    "Ranged Damage",
-    "Slow Movement",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Cold",
-    "scale": 1.64,
-    "table": "Ranged_Damage"
-  }
-};
+export const IceBlast: Power = withOverrides(base, overrides);

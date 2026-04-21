@@ -1,59 +1,16 @@
 /**
- * Telekinetic Blast
- * Ranged, Light DMG(Smash/Psionic), Foe Knockback
+ * Telekinetic Blast — COMPOSED EXPORT
  *
- * Source: sentinel_ranged/psychic_blast/telekinetic_blast.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs sentinel_ranged psychic_blast
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { TelekineticBlast as base } from '@/data/generated/powersets/sentinel/primary/psychic-blast/telekinetic-blast';
+import { overrides } from '@/data/overrides/powersets/sentinel/primary/psychic-blast/telekinetic-blast';
 
-export const TelekineticBlast: Power = {
-  "name": "Telekinetic Blast",
-  "internalName": "Telekinetic_Blast",
-  "available": 0,
-  "description": "You can use Telekinesis to Blast a targeted foe with the power of your mind. This attack deals Smashing and Psionic damage, and can knock your opponent back.Damage: Light.Recharge: Fast.",
-  "shortHelp": "Ranged, Light DMG(Smash/Psionic), Foe Knockback",
-  "icon": "psychicblast_telekineticblast.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 75,
-    "recharge": 6,
-    "endurance": 6.864,
-    "castTime": 1
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Knockback",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Knockback",
-    "Ranged Damage",
-    "Sentinel Archetype Sets",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 0.32,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 1,
-      "table": "Ranged_Damage"
-    }
-  ],
-  "effects": {
-    "knockback": {
-      "scale": 4,
-      "table": "Ranged_Knockback"
-    }
-  }
-};
+export const TelekineticBlast: Power = withOverrides(base, overrides);

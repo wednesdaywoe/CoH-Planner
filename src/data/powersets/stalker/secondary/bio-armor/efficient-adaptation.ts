@@ -1,30 +1,16 @@
 /**
- * Efficient Adaptation
- * Toggle: Bio Armor Efficient Mode
+ * Efficient Adaptation — COMPOSED EXPORT
  *
- * Source: stalker_defense/bio_organic_armor/efficient_adaptation.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs stalker_defense bio_organic_armor
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { EfficientAdaptation as base } from '@/data/generated/powersets/stalker/secondary/bio-armor/efficient-adaptation';
+import { overrides } from '@/data/overrides/powersets/stalker/secondary/bio-armor/efficient-adaptation';
 
-export const EfficientAdaptation: Power = {
-  "name": "Efficient Adaptation",
-  "internalName": "Efficient_Adaptation",
-  "available": -1,
-  "description": "By activating this power you cause your Bio Armor to spontaneously mutate, causing it to become evenly distributed along your body. While active Hardened Carapace grants a minor Endurance Discount, Boundless Energy grants additional regeneration and recovery, Ablative Carapace grants a bonus to regeneration and both DNA Siphon and Parasitic Aura grant increased regeneration and recovery and Genetic Corruption grants a minor regeneration buff. Efficient Adaptation costs no endurance.Recharge: Fast.",
-  "shortHelp": "Toggle: Bio Armor Efficient Mode",
-  "icon": "bioorganicarmor_efficientadaptation.png",
-  "powerType": "Toggle",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 4,
-    "castTime": 0.67,
-    "activatePeriod": 1
-  },
-  "allowedEnhancements": [],
-  "maxSlots": 0,
-  "requires": "Stalker_Defense.Bio_Organic_Armor.Adaptation",
-  "mechanicType": "childToggle"
-};
+export const EfficientAdaptation: Power = withOverrides(base, overrides);

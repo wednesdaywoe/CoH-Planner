@@ -1,41 +1,16 @@
 /**
- * Embrace of Fire
- * Self +DMG
+ * Embrace of Fire — COMPOSED EXPORT
  *
- * Source: dominator_assault/fiery_assault/fiery_embrace.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs dominator_assault fiery_assault
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { EmbraceofFire as base } from '@/data/generated/powersets/dominator/secondary/fiery-assault/fiery-embrace';
+import { overrides } from '@/data/overrides/powersets/dominator/secondary/fiery-assault/fiery-embrace';
 
-export const EmbraceofFire: Power = {
-  "name": "Embrace of Fire",
-  "internalName": "Fiery_Embrace",
-  "available": 15,
-  "description": "Significantly boosts the damage of all your Fire attacks for quite a while. Also increases the damage of all your other non-fire based attacks for a short while.Recharge: Long.",
-  "shortHelp": "Self +DMG",
-  "icon": "fireassault_fieryembrace.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 180,
-    "endurance": 7.8,
-    "castTime": 0.73
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "damageBuff": {
-      "scale": 8,
-      "table": "Melee_Buff_Dmg"
-    },
-    "durations": {
-      "damageBuff": 10
-    },
-    "buffDuration": 10
-  }
-};
+export const EmbraceofFire: Power = withOverrides(base, overrides);

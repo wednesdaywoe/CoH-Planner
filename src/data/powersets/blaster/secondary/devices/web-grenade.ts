@@ -1,75 +1,16 @@
 /**
- * Toxic Web Grenade
- * Ranged, Moderate DoT(Toxic), Target Immobilize, -Recharge, -Fly
+ * Toxic Web Grenade — COMPOSED EXPORT
  *
- * Source: blaster_support/gadgets/web_grenade.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs blaster_support gadgets
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { ToxicWebGrenade as base } from '@/data/generated/powersets/blaster/secondary/devices/web-grenade';
+import { overrides } from '@/data/overrides/powersets/blaster/secondary/devices/web-grenade';
 
-export const ToxicWebGrenade: Power = {
-  "name": "Toxic Web Grenade",
-  "internalName": "Web_Grenade",
-  "available": 0,
-  "description": "Upon impact, the Toxic Web Grenade expels a strong, tenuous, and very sticky substance that can Immobilize and corrode most targets, dealing moderate Toxic damage. This device does not prevent targets from attacking, although their attack rate is Slowed. The Web can bring down flying entities and halts jumping.Damage: Light.Recharge: Fast.",
-  "shortHelp": "Ranged, Moderate DoT(Toxic), Target Immobilize, -Recharge, -Fly",
-  "icon": "gadgets_webgrenade.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 60,
-    "recharge": 4,
-    "endurance": 7.8,
-    "castTime": 1.37
-  },
-  "allowedEnhancements": [
-    "Slow",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Immobilize",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Blaster Archetype Sets",
-    "Immobilize",
-    "Ranged Damage",
-    "Slow Movement",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Toxic",
-    "scale": 0.2,
-    "table": "Ranged_Damage",
-    "duration": 8.2,
-    "tickRate": 2
-  },
-  "effects": {
-    "immobilize": {
-      "mag": 3,
-      "scale": 15,
-      "table": "Ranged_Immobilize"
-    },
-    "mezResistance": {
-      "knockup": {
-        "scale": 100,
-        "table": "Ranged_Ones"
-      },
-      "knockback": {
-        "scale": 100,
-        "table": "Ranged_Ones"
-      }
-    },
-    "durations": {
-      "mezResistance": 15
-    },
-    "damageBuff": {
-      "scale": 0,
-      "table": "Ranged_Ones"
-    },
-    "buffDuration": 15
-  }
-};
+export const ToxicWebGrenade: Power = withOverrides(base, overrides);

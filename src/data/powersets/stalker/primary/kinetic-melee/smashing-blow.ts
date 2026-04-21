@@ -1,64 +1,16 @@
 /**
- * Smashing Blow
- * Melee, DMG(Smash/Energy), Foe Disorient
+ * Smashing Blow — COMPOSED EXPORT
  *
- * Source: stalker_melee/kinetic_attack/smashing_blow.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs stalker_melee kinetic_attack
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { SmashingBlow as base } from '@/data/generated/powersets/stalker/primary/kinetic-melee/smashing-blow';
+import { overrides } from '@/data/overrides/powersets/stalker/primary/kinetic-melee/smashing-blow';
 
-export const SmashingBlow: Power = {
-  "name": "Smashing Blow",
-  "internalName": "Smashing_Blow",
-  "available": 1,
-  "description": "Smashing Blow is a slow attack, but makes up for it with a good amount of damage. Has a greater chance to stun than body blow.",
-  "shortHelp": "Melee, DMG(Smash/Energy), Foe Disorient",
-  "icon": "kineticattack_smashingblow.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 7,
-    "recharge": 7,
-    "endurance": 7.696,
-    "castTime": 1.2
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Stun",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Melee Damage",
-    "Stalker Archetype Sets",
-    "Stuns",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 1,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.48,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.48,
-      "table": "Melee_InherentDamage"
-    }
-  ],
-  "effects": {
-    "stun": {
-      "mag": 3,
-      "scale": 6,
-      "table": "Melee_Stun"
-    }
-  }
-};
+export const SmashingBlow: Power = withOverrides(base, overrides);

@@ -1,144 +1,16 @@
 /**
- * Aura of Insanity
- * Toggle: PBAoE, Foe Confuse, Disorient, Sleep, Hold, Fear, DoT(Psionic), +Special
+ * Aura of Insanity — COMPOSED EXPORT
  *
- * Source: scrapper_defense/psionic_armor/aura_of_insanity.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs scrapper_defense psionic_armor
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { AuraofInsanity as base } from '@/data/generated/powersets/scrapper/secondary/psionic-armor/aura-of-insanity';
+import { overrides } from '@/data/overrides/powersets/scrapper/secondary/psionic-armor/aura-of-insanity';
 
-export const AuraofInsanity: Power = {
-  "name": "Aura of Insanity",
-  "internalName": "Aura_of_Insanity",
-  "available": 27,
-  "description": "You emit a powerful psychic aura that causes the minds of those around you to become weak and distracted. Foes may be stunned, held, terrified or even confused in your presence, in addition to suffering a debuff derived from the applied control effect. Those that resist these effects will suffer damage over time. This power allows you to use your own Hit Points to keep enemies near you disabled. The power costs no endurance but can be dangerous to use.Notes: Mez enhancements on this power enhance its magnitude instead of its duration.",
-  "shortHelp": "Toggle: PBAoE, Foe Confuse, Disorient, Sleep, Hold, Fear, DoT(Psionic), +Special",
-  "icon": "psionicarmor_auraofinsanity.png",
-  "powerType": "Toggle",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 0.8,
-    "radius": 8,
-    "recharge": 10,
-    "castTime": 1.67,
-    "activatePeriod": 4,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "Hold",
-    "Stun",
-    "Sleep",
-    "Recharge",
-    "Fear",
-    "Damage",
-    "Confuse",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Confuse",
-    "Fear",
-    "Holds",
-    "Melee AoE Damage",
-    "Scrapper Archetype Sets",
-    "Sleep",
-    "Stuns",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Special",
-      "scale": -0.05,
-      "table": "Melee_HealSelf"
-    },
-    {
-      "type": "Psionic",
-      "scale": 0.05,
-      "table": "Melee_Damage",
-      "duration": 3.75,
-      "tickRate": 1
-    }
-  ],
-  "effects": {
-    "regenDebuff": {
-      "scale": 0.75,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "regenDebuff": 4,
-      "resistanceDebuff": 4,
-      "defenseDebuff": 4,
-      "confuse": 4,
-      "stun": 4,
-      "sleep": 4,
-      "hold": 4,
-      "fear": 4
-    },
-    "resistanceDebuff": {
-      "smashing": {
-        "scale": 1,
-        "table": "Melee_Debuff_Def"
-      },
-      "lethal": {
-        "scale": 1,
-        "table": "Melee_Debuff_Def"
-      },
-      "fire": {
-        "scale": 1,
-        "table": "Melee_Debuff_Def"
-      },
-      "cold": {
-        "scale": 1,
-        "table": "Melee_Debuff_Def"
-      },
-      "energy": {
-        "scale": 1,
-        "table": "Melee_Debuff_Def"
-      },
-      "negative": {
-        "scale": 1,
-        "table": "Melee_Debuff_Def"
-      },
-      "psionic": {
-        "scale": 1,
-        "table": "Melee_Debuff_Def"
-      },
-      "toxic": {
-        "scale": 1,
-        "table": "Melee_Debuff_Def"
-      }
-    },
-    "defenseDebuff": {
-      "scale": 1,
-      "table": "Melee_Debuff_Def"
-    },
-    "confuse": {
-      "mag": 2,
-      "scale": 2,
-      "table": "Melee_Ones"
-    },
-    "effectDuration": 4,
-    "stun": {
-      "mag": 2,
-      "scale": 2,
-      "table": "Melee_Ones"
-    },
-    "sleep": {
-      "mag": 2,
-      "scale": 2,
-      "table": "Melee_Ones"
-    },
-    "hold": {
-      "mag": 2,
-      "scale": 2,
-      "table": "Melee_Ones"
-    },
-    "fear": {
-      "mag": 2,
-      "scale": 2,
-      "table": "Melee_Ones"
-    },
-    "buffDuration": 4
-  }
-};
+export const AuraofInsanity: Power = withOverrides(base, overrides);

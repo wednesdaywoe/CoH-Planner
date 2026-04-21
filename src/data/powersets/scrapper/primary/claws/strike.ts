@@ -1,56 +1,16 @@
 /**
- * Strike
- * Melee, DMG(Lethal)
+ * Strike — COMPOSED EXPORT
  *
- * Source: scrapper_melee/claws/strike.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs scrapper_melee claws
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Strike as base } from '@/data/generated/powersets/scrapper/primary/claws/strike';
+import { overrides } from '@/data/overrides/powersets/scrapper/primary/claws/strike';
 
-export const Strike: Power = {
-  "name": "Strike",
-  "internalName": "Strike",
-  "available": 0,
-  "description": "You perform a deadly Strike with your claws. This is a basic attack that deals a moderate amount of lethal damage.",
-  "shortHelp": "Melee, DMG(Lethal)",
-  "icon": "claws_clawsstrike.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 7,
-    "recharge": 3.2,
-    "endurance": 4.16,
-    "castTime": 1.17
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Melee Damage",
-    "Scrapper Archetype Sets",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Lethal",
-      "scale": 1.08,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.08,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.08,
-      "table": "Melee_InherentDamage"
-    }
-  ],
-  "requires": "!Scrapper_Defense.Shield_Defense"
-};
+export const Strike: Power = withOverrides(base, overrides);

@@ -1,51 +1,16 @@
 /**
- * Stone Spears
- * Ranged, Light DMG(Lethal), Foe Knock Up
+ * Stone Spears — COMPOSED EXPORT
  *
- * Source: dominator_assault/earth_assault/stone_spears.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs dominator_assault earth_assault
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { StoneSpears as base } from '@/data/generated/powersets/dominator/secondary/earth-assault/stone-spears';
+import { overrides } from '@/data/overrides/powersets/dominator/secondary/earth-assault/stone-spears';
 
-export const StoneSpears: Power = {
-  "name": "Stone Spears",
-  "internalName": "Stone_Spears",
-  "available": 0,
-  "description": "Stone Spears erupt from the ground at the feet of your target. This attack can only be used against targets on the ground, and does moderate lethal damage.Damage: Light.Recharge: Fast.",
-  "shortHelp": "Ranged, Light DMG(Lethal), Foe Knock Up",
-  "icon": "earthassault_stonespears.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 80,
-    "recharge": 4,
-    "endurance": 5.2,
-    "castTime": 1
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Knockback",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Knockback",
-    "Ranged Damage",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 1,
-    "table": "Ranged_Damage"
-  },
-  "effects": {
-    "knockup": {
-      "scale": 0.67,
-      "table": "Ranged_Ones"
-    }
-  }
-};
+export const StoneSpears: Power = withOverrides(base, overrides);

@@ -1,55 +1,16 @@
 /**
- * Dragon's Tail
- * PBAoE Melee, DMG(Smash), Foe Knockback
+ * Dragon's Tail — COMPOSED EXPORT
  *
- * Source: brute_melee/martial_arts/dragons_tail.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs brute_melee martial_arts
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { DragonsTail as base } from '@/data/generated/powersets/brute/primary/martial-arts/dragons-tail';
+import { overrides } from '@/data/overrides/powersets/brute/primary/martial-arts/dragons-tail';
 
-export const DragonsTail: Power = {
-  "name": "Dragon's Tail",
-  "internalName": "Dragons_Tail",
-  "available": 21,
-  "description": "This low spinning kick deals slightly more damage than Thunder Kick, but has a chance to hit all enemies in melee range. Successful hits may trip and knock down your opponents.",
-  "shortHelp": "PBAoE Melee, DMG(Smash), Foe Knockback",
-  "icon": "martialarts_monkeysweep.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1.05,
-    "radius": 8,
-    "recharge": 14,
-    "endurance": 13.52,
-    "castTime": 1.5,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "EnduranceReduction",
-    "Recharge",
-    "Knockback",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Brute Archetype Sets",
-    "Knockback",
-    "Melee AoE Damage",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 1.1818,
-    "table": "Melee_Damage"
-  },
-  "effects": {
-    "knockback": {
-      "scale": 0.67,
-      "table": "Melee_Ones"
-    }
-  }
-};
+export const DragonsTail: Power = withOverrides(base, overrides);

@@ -1,59 +1,16 @@
 /**
- * Rebirth
- * Ranged, Ally Rez, +Heal Over Time, Special, +3 Bloom
+ * Rebirth — COMPOSED EXPORT
  *
- * Source: controller_buff/nature_affinity/rebirth.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs controller_buff nature_affinity
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Rebirth as base } from '@/data/generated/powersets/controller/secondary/nature-affinity/rebirth';
+import { overrides } from '@/data/overrides/powersets/controller/secondary/nature-affinity/rebirth';
 
-export const Rebirth: Power = {
-  "name": "Rebirth",
-  "internalName": "Rebirth",
-  "available": 23,
-  "description": "Rebirth can either greatly heal a conscious ally for a large amount of health over time or it can revive a fallen ally with a large amount of health and endurance and cause them to recover health over time. This power also grants 3 stacks of Bloom.Recharge: Long.",
-  "shortHelp": "Ranged, Ally Rez, +Heal Over Time, Special, +3 Bloom",
-  "icon": "natureaffinity_rebirth.png",
-  "powerType": "Click",
-  "targetType": "Teammate",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 45,
-    "recharge": 180,
-    "endurance": 13.0,
-    "castTime": 3
-  },
-  "allowedEnhancements": [
-    "EnduranceModification",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Healing"
-  ],
-  "allowedSetCategories": [
-    "Endurance Modification",
-    "Healing"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Heal",
-      "scale": 5,
-      "table": "Ranged_Heal"
-    },
-    {
-      "type": "Heal",
-      "scale": 0.4545,
-      "table": "Ranged_Heal",
-      "duration": 10.1,
-      "tickRate": 1
-    }
-  ],
-  "effects": {
-    "enduranceGain": {
-      "scale": 0.5,
-      "table": "Ranged_Ones"
-    }
-  }
-};
+export const Rebirth: Power = withOverrides(base, overrides);

@@ -1,52 +1,16 @@
 /**
- * Ice Blast
- * Ranged, Light DMG(Cold/Smash), Foe -Recharge, -SPD
+ * Ice Blast — COMPOSED EXPORT
  *
- * Source: dominator_assault/icy_assault/ice_blast.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs dominator_assault icy_assault
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { IceBlast as base } from '@/data/generated/powersets/dominator/secondary/icy-assault/ice-blast';
+import { overrides } from '@/data/overrides/powersets/dominator/secondary/icy-assault/ice-blast';
 
-export const IceBlast: Power = {
-  "name": "Ice Blast",
-  "internalName": "Ice_Blast",
-  "available": 9,
-  "description": "Ice Blast hurls shards of ice at foes and Slows their attacks and movement for a time. Slower recharge than Ice Bolt, but more damage.Damage: Light.Recharge: Fast.",
-  "shortHelp": "Ranged, Light DMG(Cold/Smash), Foe -Recharge, -SPD",
-  "icon": "iceassault_iceblast.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 80,
-    "recharge": 6,
-    "endurance": 6.864,
-    "castTime": 1
-  },
-  "allowedEnhancements": [
-    "Slow",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Ranged Damage",
-    "Slow Movement",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 0.32,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Cold",
-      "scale": 1,
-      "table": "Ranged_Damage"
-    }
-  ]
-};
+export const IceBlast: Power = withOverrides(base, overrides);

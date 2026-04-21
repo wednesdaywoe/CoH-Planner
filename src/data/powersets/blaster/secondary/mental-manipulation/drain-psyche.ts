@@ -1,73 +1,16 @@
 /**
- * Drain Psyche
- * PBAoE Foe -Regen, -Recovery; Self +Regen, +Recovery
+ * Drain Psyche — COMPOSED EXPORT
  *
- * Source: blaster_support/mental_manipulation/drain_psyche.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs blaster_support mental_manipulation
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { DrainPsyche as base } from '@/data/generated/powersets/blaster/secondary/mental-manipulation/drain-psyche';
+import { overrides } from '@/data/overrides/powersets/blaster/secondary/mental-manipulation/drain-psyche';
 
-export const DrainPsyche: Power = {
-  "name": "Drain Psyche",
-  "internalName": "Drain_Psyche",
-  "available": 19,
-  "description": "You Drain the Psyche of nearby foes, thus weakening their Hit Point Regeneration and Endurance Recovery and boosting your own.Recharge: Long.",
-  "shortHelp": "PBAoE Foe -Regen, -Recovery; Self +Regen, +Recovery",
-  "icon": "psionicassault_psychicsiphon.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "radius": 10,
-    "recharge": 120,
-    "endurance": 13,
-    "castTime": 1.33,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "EnduranceModification",
-    "EnduranceReduction",
-    "Recharge",
-    "Healing",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate Healing",
-    "Endurance Modification",
-    "Healing"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "regenBuff": {
-      "scale": 0.75,
-      "table": "Melee_Ones",
-      "perTarget": 0.75
-    },
-    "durations": {
-      "regenBuff": 30,
-      "recoveryBuff": 30,
-      "regenDebuff": 30,
-      "recoveryDebuff": 30,
-      "damageBuff": 8.83
-    },
-    "recoveryBuff": {
-      "scale": 0.75,
-      "table": "Melee_Ones",
-      "perTarget": 0.75
-    },
-    "regenDebuff": {
-      "scale": 2.5,
-      "table": "Melee_Ones"
-    },
-    "recoveryDebuff": {
-      "scale": 2.5,
-      "table": "Melee_Ones"
-    },
-    "damageBuff": {
-      "scale": 0.035,
-      "table": "Melee_Ones"
-    },
-    "buffDuration": 30
-  }
-};
+export const DrainPsyche: Power = withOverrides(base, overrides);

@@ -1,103 +1,16 @@
 /**
- * Energy Cloak
- * Toggle: Self Stealth, +DEF
+ * Energy Cloak — COMPOSED EXPORT
  *
- * Source: scrapper_defense/energy_aura/energy_cloak.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs scrapper_defense energy_aura
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { EnergyCloak as base } from '@/data/generated/powersets/scrapper/secondary/energy-aura/energy-cloak';
+import { overrides } from '@/data/overrides/powersets/scrapper/secondary/energy-aura/energy-cloak';
 
-export const EnergyCloak: Power = {
-  "name": "Energy Cloak",
-  "internalName": "Energy_Cloak",
-  "available": 19,
-  "description": "The Energy Cloak bends light around you so you become partially invisible. While Cloaked you can only be seen at very close range. If you attack while Cloaked, you will be discovered. Even if discovered, you still maintain a Defense bonus to all attacks.",
-  "shortHelp": "Toggle: Self Stealth, +DEF",
-  "icon": "energyaura_cloak.png",
-  "powerType": "Toggle",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 2,
-    "endurance": 0.13,
-    "castTime": 0.73,
-    "activatePeriod": 0.5
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Defense"
-  ],
-  "allowedSetCategories": [
-    "Defense Sets"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "defenseBuff": {
-      "ranged": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "melee": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "aoe": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "smashing": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "lethal": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "fire": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "cold": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "energy": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "negative": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "psionic": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "toxic": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      }
-    },
-    "durations": {
-      "defenseBuff": 0.75,
-      "stealth": 0.75
-    },
-    "stealth": {
-      "stealthPvE": {
-        "scale": 36.5,
-        "table": "Melee_Ones"
-      },
-      "stealthPvP": {
-        "scale": 390,
-        "table": "Melee_Ones"
-      },
-      "translucency": {
-        "scale": 0.1,
-        "table": "Melee_Ones"
-      }
-    },
-    "buffDuration": 0.75
-  }
-};
+export const EnergyCloak: Power = withOverrides(base, overrides);

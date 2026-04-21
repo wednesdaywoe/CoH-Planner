@@ -1,63 +1,16 @@
 /**
- * Stun
- * Melee, Minor DMG(Energy/Smashing), Foe Disorient, Special
+ * Stun — COMPOSED EXPORT
  *
- * Source: blaster_support/energy_manipulation/stun.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs blaster_support energy_manipulation
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Stun as base } from '@/data/generated/powersets/blaster/secondary/energy-manipulation/stun';
+import { overrides } from '@/data/overrides/powersets/blaster/secondary/energy-manipulation/stun';
 
-export const Stun: Power = {
-  "name": "Stun",
-  "internalName": "Stun",
-  "available": 19,
-  "description": "Stun deals a little bit of damage, but Disorients its target a great deal. This attack can Disorient most opponents. If this power is used under the effects of Boost Range, this power will become a ranged stun instead. If this power is used under the effect of Power Boost, it will become an AoE stun, but it will recharge in 90 seconds instead of 12. Both these effects can be combined for the power to become a ranged AoE stun.Damage: Minor.Recharge: Slow.",
-  "shortHelp": "Melee, Minor DMG(Energy/Smashing), Foe Disorient, Special",
-  "icon": "energymanipulation_stun.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 7,
-    "recharge": 12,
-    "endurance": 10.192,
-    "castTime": 1.8
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Stun",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Blaster Archetype Sets",
-    "Melee Damage",
-    "Stuns",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 0.15,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.1,
-      "table": "Melee_Damage"
-    }
-  ],
-  "effects": {
-    "stun": {
-      "mag": 3,
-      "scale": 10,
-      "table": "Melee_Stun"
-    },
-    "damageBuff": {
-      "scale": 0,
-      "table": "Melee_Ones"
-    }
-  }
-};
+export const Stun: Power = withOverrides(base, overrides);

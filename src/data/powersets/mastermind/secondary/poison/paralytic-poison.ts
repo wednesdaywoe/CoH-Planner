@@ -1,44 +1,16 @@
 /**
- * Paralytic Poison
- * Ranged Hold
+ * Paralytic Poison — COMPOSED EXPORT
  *
- * Source: mastermind_buff/poison/paralytic_poison.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs mastermind_buff poison
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { ParalyticPoison as base } from '@/data/generated/powersets/mastermind/secondary/poison/paralytic-poison';
+import { overrides } from '@/data/overrides/powersets/mastermind/secondary/poison/paralytic-poison';
 
-export const ParalyticPoison: Power = {
-  "name": "Paralytic Poison",
-  "internalName": "Paralytic_Poison",
-  "available": 23,
-  "description": "This Paralytic Poison viciously attacks a foe's nervous system and can leave an affected target completely Held and defenseless.Recharge: Slow.",
-  "shortHelp": "Ranged Hold",
-  "icon": "poison_paralytic.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 70,
-    "recharge": 16,
-    "endurance": 9.75,
-    "castTime": 2
-  },
-  "allowedEnhancements": [
-    "Hold",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Holds"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "hold": {
-      "mag": 3,
-      "scale": 8,
-      "table": "Ranged_Immobilize"
-    }
-  }
-};
+export const ParalyticPoison: Power = withOverrides(base, overrides);

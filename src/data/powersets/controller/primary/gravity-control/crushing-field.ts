@@ -1,59 +1,16 @@
 /**
- * Crushing Field
- * Ranged (Targeted AoE), DoT(Smash), Foe Immobilize, -Fly
+ * Crushing Field — COMPOSED EXPORT
  *
- * Source: controller_control/gravity_control/crushing_field.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs controller_control gravity_control
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { CrushingField as base } from '@/data/generated/powersets/controller/primary/gravity-control/crushing-field';
+import { overrides } from '@/data/overrides/powersets/controller/primary/gravity-control/crushing-field';
 
-export const CrushingField: Power = {
-  "name": "Crushing Field",
-  "internalName": "Crushing_Field",
-  "available": 7,
-  "description": "Creates a large gravitational field strong enough to Immobilize multiple foes. Crushing Field can also bring down flying entities. Slower and less damaging than Crush, but can capture multiple targets. Crushing Field deals Smashing damage over time and can Slow the movement of targets that escape its grasp.",
-  "shortHelp": "Ranged (Targeted AoE), DoT(Smash), Foe Immobilize, -Fly",
-  "icon": "gravitycontrol_crushingfield.png",
-  "powerType": "Click",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 0.9,
-    "range": 80,
-    "radius": 30,
-    "recharge": 8,
-    "endurance": 15.6,
-    "castTime": 1.33,
-    "maxTargets": 16
-  },
-  "allowedEnhancements": [
-    "Slow",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Immobilize",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Controller Archetype Sets",
-    "Immobilize",
-    "Ranged AoE Damage",
-    "Slow Movement",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 0.1,
-    "table": "Ranged_Damage",
-    "duration": 5.2,
-    "tickRate": 2
-  },
-  "effects": {
-    "immobilize": {
-      "mag": 3,
-      "scale": 15,
-      "table": "Ranged_Immobilize"
-    }
-  }
-};
+export const CrushingField: Power = withOverrides(base, overrides);

@@ -1,56 +1,16 @@
 /**
- * Dimension Shift
- * Toggle, Ranged (Location AoE), Foe Intangible
+ * Dimension Shift — COMPOSED EXPORT
  *
- * Source: controller_control/gravity_control/dimension_shift.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs controller_control gravity_control
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { DimensionShift as base } from '@/data/generated/powersets/controller/primary/gravity-control/dimension-shift';
+import { overrides } from '@/data/overrides/powersets/controller/primary/gravity-control/dimension-shift';
 
-export const DimensionShift: Power = {
-  "name": "Dimension Shift",
-  "internalName": "Dimension_Shift",
-  "available": 11,
-  "description": "Location-targeted AoE toggle. This power folds space in an area, immobilizing and phasing all targets within the sphere. Enemies who enter the area become immobilized and phased for the duration of the effect. Allies who enter the sphere's area of effect will enter the phase as well, allowing them to combat phased enemies. Detoggling this power ends the effect, bringing the phased creatures back into the physical world. Maintaining this dimensional distortion is taxing on the user, and cannot be done for more than 20 seconds.",
-  "shortHelp": "Toggle, Ranged (Location AoE), Foe Intangible",
-  "icon": "gravitycontrol_dimensionshift2.png",
-  "powerType": "Toggle",
-  "targetType": "Location",
-  "effectArea": "Location",
-  "stats": {
-    "accuracy": 1,
-    "range": 80,
-    "recharge": 60,
-    "endurance": 15.6,
-    "castTime": 1.17,
-    "activatePeriod": 35
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Immobilize"
-  ],
-  "allowedSetCategories": [
-    "Controller Archetype Sets",
-    "Immobilize"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "isPseudoPet": false,
-      "duration": 20,
-      "copyBoosts": true,
-      "entities": [
-        {
-          "entity": "Pets_Dimension_Shift",
-          "count": 1
-        },
-        {
-          "entity": "Pets_Dimension_Shift_Phased",
-          "count": 1
-        }
-      ]
-    }
-  }
-};
+export const DimensionShift: Power = withOverrides(base, overrides);

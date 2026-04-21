@@ -1,69 +1,16 @@
 /**
- * Impale
- * Ranged, DMG(Lethal), DoT(Toxic), Immobilize, -Recharge, -Fly
+ * Impale — COMPOSED EXPORT
  *
- * Source: stalker_melee/spines/impale.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs stalker_melee spines
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Impale as base } from '@/data/generated/powersets/stalker/primary/spines/impale';
+import { overrides } from '@/data/overrides/powersets/stalker/primary/spines/impale';
 
-export const Impale: Power = {
-  "name": "Impale",
-  "internalName": "Impale",
-  "available": 17,
-  "description": "You can throw a single large Spine at a targeted foe. This Spine does only moderate lethal damage, but carries a large amount of the Spine toxin. A successful attack can completely Immobilize most foes, as well as Slowing them and dealing Toxic poison damage. Impale can also bring down flying entities.",
-  "shortHelp": "Ranged, DMG(Lethal), DoT(Toxic), Immobilize, -Recharge, -Fly",
-  "icon": "quills_impale.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 40,
-    "recharge": 10,
-    "endurance": 10.192,
-    "castTime": 2.43
-  },
-  "allowedEnhancements": [
-    "Slow",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Immobilize",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Immobilize",
-    "Ranged Damage",
-    "Slow Movement",
-    "Stalker Archetype Sets",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Lethal",
-      "scale": 1.64,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Toxic",
-      "scale": 0.1,
-      "table": "Melee_Damage",
-      "duration": 4.1,
-      "tickRate": 1
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.64,
-      "table": "Melee_InherentDamage"
-    }
-  ],
-  "effects": {
-    "immobilize": {
-      "mag": 3,
-      "scale": 15,
-      "table": "Melee_Immobilize"
-    }
-  }
-};
+export const Impale: Power = withOverrides(base, overrides);

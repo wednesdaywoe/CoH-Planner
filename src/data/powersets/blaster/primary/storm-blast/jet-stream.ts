@@ -1,63 +1,16 @@
 /**
- * Jet Stream
- * Ranged (Cone), DMG(Smashing), Foe Knockdown or Repel
+ * Jet Stream — COMPOSED EXPORT
  *
- * Source: blaster_ranged/storm_blast/jet_stream.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs blaster_ranged storm_blast
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { JetStream as base } from '@/data/generated/powersets/blaster/primary/storm-blast/jet-stream';
+import { overrides } from '@/data/overrides/powersets/blaster/primary/storm-blast/jet-stream';
 
-export const JetStream: Power = {
-  "name": "Jet Stream",
-  "internalName": "Jet_Stream",
-  "available": 1,
-  "description": "You call forth a cone of rapidly moving air that repels enemies, causing Smashing damage. Enemies who are within a Storm Cell will not be repelled, but instead will be knocked down.",
-  "shortHelp": "Ranged (Cone), DMG(Smashing), Foe Knockdown or Repel",
-  "icon": "stormblast_jetstream.png",
-  "powerType": "Click",
-  "effectArea": "Cone",
-  "stats": {
-    "accuracy": 1,
-    "range": 50,
-    "radius": 50,
-    "arc": 0.5236,
-    "recharge": 10,
-    "endurance": 10.192,
-    "castTime": 1.67,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Knockback",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Blaster Archetype Sets",
-    "Knockback",
-    "Ranged AoE Damage",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 0.8,
-    "table": "Ranged_Damage"
-  },
-  "effects": {
-    "repel": {
-      "scale": 4,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "repel": 2
-    },
-    "knockback": {
-      "scale": 0.67,
-      "table": "Ranged_Ones"
-    },
-    "buffDuration": 2
-  }
-};
+export const JetStream: Power = withOverrides(base, overrides);

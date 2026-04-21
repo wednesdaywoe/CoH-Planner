@@ -1,63 +1,16 @@
 /**
- * Divine Avalanche
- * Melee, DMG(Lethal), Self +DEF (Melee, Lethal)
+ * Divine Avalanche — COMPOSED EXPORT
  *
- * Source: tanker_melee/katana/parry.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs tanker_melee katana
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { DivineAvalanche as base } from '@/data/generated/powersets/tanker/secondary/katana/parry';
+import { overrides } from '@/data/overrides/powersets/tanker/secondary/katana/parry';
 
-export const DivineAvalanche: Power = {
-  "name": "Divine Avalanche",
-  "internalName": "Parry",
-  "available": 15,
-  "description": "You can use your katana to parry incoming melee attacks and then quickly return the favor. Divine Avalanche does minor damage, but every successful hit will increase your Defense against melee and lethal attacks for a short while.",
-  "shortHelp": "Melee, DMG(Lethal), Self +DEF (Melee, Lethal)",
-  "icon": "katana_parry.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1.05,
-    "range": 7,
-    "recharge": 3,
-    "endurance": 4.368,
-    "castTime": 1.33
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "EnduranceReduction",
-    "Recharge",
-    "Damage",
-    "Defense",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Defense Sets",
-    "Melee Damage",
-    "Tanker Archetype Sets",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 0.84,
-    "table": "Melee_Damage"
-  },
-  "effects": {
-    "defenseBuff": {
-      "melee": {
-        "scale": 1.5,
-        "table": "Melee_Buff_Def"
-      },
-      "lethal": {
-        "scale": 1.5,
-        "table": "Melee_Buff_Def"
-      }
-    },
-    "durations": {
-      "defenseBuff": 10
-    },
-    "buffDuration": 10
-  }
-};
+export const DivineAvalanche: Power = withOverrides(base, overrides);

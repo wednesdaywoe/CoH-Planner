@@ -1,54 +1,16 @@
 /**
- * Alkaloid
- * Ally Heal, +Res(Toxic)
+ * Alkaloid — COMPOSED EXPORT
  *
- * Source: defender_buff/poison/alkaloid.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs defender_buff poison
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Alkaloid as base } from '@/data/generated/powersets/defender/primary/poison/alkaloid';
+import { overrides } from '@/data/overrides/powersets/defender/primary/poison/alkaloid';
 
-export const Alkaloid: Power = {
-  "name": "Alkaloid",
-  "internalName": "Alkaloid",
-  "available": 0,
-  "description": "When used correctly, poisons can be used to heal, as well as harm. Alkaloid consists of just the right amount of amino acids to safely heal a single targeted ally. The healed target is also left with some resistance to Toxic Damage (This Toxic Damage Resistance cannot be Enhanced). You cannot use this power to heal yourself.Recharge: Fast.",
-  "shortHelp": "Ally Heal, +Res(Toxic)",
-  "icon": "poison_alkaloid.png",
-  "powerType": "Click",
-  "targetType": "Ally (Alive)",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 80,
-    "recharge": 4,
-    "endurance": 13,
-    "castTime": 1.53
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Healing"
-  ],
-  "allowedSetCategories": [
-    "Healing"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Heal",
-    "scale": 1.73,
-    "table": "Ranged_Heal"
-  },
-  "effects": {
-    "resistance": {
-      "toxic": {
-        "scale": 2,
-        "table": "Ranged_Res_Dmg"
-      }
-    },
-    "durations": {
-      "resistance": 60
-    },
-    "buffDuration": 60
-  }
-};
+export const Alkaloid: Power = withOverrides(base, overrides);

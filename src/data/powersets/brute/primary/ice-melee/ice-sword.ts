@@ -1,54 +1,16 @@
 /**
- * Ice Sword
- * Melee, DMG(Cold/Lethal), Foe -Recharge, -SPD
+ * Ice Sword — COMPOSED EXPORT
  *
- * Source: brute_melee/ice_melee/ice_sword.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs brute_melee ice_melee
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { IceSword as base } from '@/data/generated/powersets/brute/primary/ice-melee/ice-sword';
+import { overrides } from '@/data/overrides/powersets/brute/primary/ice-melee/ice-sword';
 
-export const IceSword: Power = {
-  "name": "Ice Sword",
-  "internalName": "Ice_Sword",
-  "available": 0,
-  "description": "You create a blade of solid ice that deals good damage. Being hit by this Ice Sword will Slow a target's movement and attack speed, due to the intense chill.",
-  "shortHelp": "Melee, DMG(Cold/Lethal), Foe -Recharge, -SPD",
-  "icon": "icyonslaught_icesword.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 7,
-    "recharge": 6,
-    "endurance": 6.864,
-    "castTime": 1.33
-  },
-  "allowedEnhancements": [
-    "Slow",
-    "Taunt",
-    "EnduranceReduction",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Brute Archetype Sets",
-    "Melee Damage",
-    "Slow Movement",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Lethal",
-      "scale": 0.5,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Cold",
-      "scale": 0.82,
-      "table": "Melee_Damage"
-    }
-  ]
-};
+export const IceSword: Power = withOverrides(base, overrides);

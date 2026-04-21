@@ -1,47 +1,16 @@
 /**
- * Neurotoxic Breath
- * Ranged (Cone), Foe -SPD, -Recharge
+ * Neurotoxic Breath — COMPOSED EXPORT
  *
- * Source: mastermind_buff/poison/neurotoxic_breath.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs mastermind_buff poison
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { NeurotoxicBreath as base } from '@/data/generated/powersets/mastermind/secondary/poison/neurotoxic-breath';
+import { overrides } from '@/data/overrides/powersets/mastermind/secondary/poison/neurotoxic-breath';
 
-export const NeurotoxicBreath: Power = {
-  "name": "Neurotoxic Breath",
-  "internalName": "Neurotoxic_Breath",
-  "available": 9,
-  "description": "You can breath a cone of Neurotoxin gas that quickly start to anesthetize any nearby foes. Affected targets may choke on the gas as their movement and attack rate are severely reduced.Recharge: Slow.",
-  "shortHelp": "Ranged (Cone), Foe -SPD, -Recharge",
-  "icon": "poison_neurotoxicbreath.png",
-  "powerType": "Click",
-  "effectArea": "Cone",
-  "stats": {
-    "accuracy": 1,
-    "range": 60,
-    "radius": 60,
-    "arc": 0.5236,
-    "recharge": 30,
-    "endurance": 13,
-    "castTime": 2.67,
-    "maxTargets": 16
-  },
-  "allowedEnhancements": [
-    "Slow",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Slow Movement"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "hold": {
-      "mag": 2,
-      "scale": 3,
-      "table": "Ranged_Immobilize"
-    }
-  }
-};
+export const NeurotoxicBreath: Power = withOverrides(base, overrides);

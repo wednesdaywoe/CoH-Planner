@@ -1,80 +1,16 @@
 /**
- * Roots
- * Ranged (Targeted AoE), DoT(Smashing, Lethal), Foe Immobilize
+ * Roots — COMPOSED EXPORT
  *
- * Source: dominator_control/plant_control/roots.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs dominator_control plant_control
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Roots as base } from '@/data/generated/powersets/dominator/primary/plant-control/roots';
+import { overrides } from '@/data/overrides/powersets/dominator/primary/plant-control/roots';
 
-export const Roots: Power = {
-  "name": "Roots",
-  "internalName": "Roots",
-  "available": 1,
-  "description": "Immobilizes a group of foes by entangling their feet in a twisted mass of thorny Roots. Roots is slower and does less damage than Entangle, but it can capture multiple foes in one attack. Like Entangle, Roots can immobilize flying targets, if they are near the ground when attacked.",
-  "shortHelp": "Ranged (Targeted AoE), DoT(Smashing, Lethal), Foe Immobilize",
-  "icon": "plantcontrol_roots.png",
-  "powerType": "Click",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 0.9,
-    "range": 80,
-    "radius": 30,
-    "recharge": 8,
-    "endurance": 13,
-    "castTime": 1.67,
-    "maxTargets": 16
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Immobilize",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Dominator Archetype Sets",
-    "Immobilize",
-    "Ranged AoE Damage",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 0.1,
-      "table": "Ranged_Damage",
-      "duration": 5.2,
-      "tickRate": 2
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.1,
-      "table": "Ranged_Damage",
-      "duration": 5.2,
-      "tickRate": 2
-    }
-  ],
-  "effects": {
-    "immobilize": {
-      "mag": 3,
-      "scale": 15,
-      "table": "Ranged_Immobilize"
-    },
-    "mezResistance": {
-      "knockup": {
-        "scale": 100,
-        "table": "Ranged_Ones"
-      },
-      "knockback": {
-        "scale": 100,
-        "table": "Ranged_Ones"
-      }
-    },
-    "durations": {
-      "mezResistance": 12
-    },
-    "buffDuration": 12
-  }
-};
+export const Roots: Power = withOverrides(base, overrides);

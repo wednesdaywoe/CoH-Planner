@@ -1,65 +1,16 @@
 /**
- * Whirling Smash
- * PBAoE Melee, DMG(Smashing), Knockdown, Requires Momentum
+ * Whirling Smash — COMPOSED EXPORT
  *
- * Source: scrapper_melee/titan_weapons/whirling_slice.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs scrapper_melee titan_weapons
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { WhirlingSmash as base } from '@/data/generated/powersets/scrapper/primary/titan-weapons/whirling-slice';
+import { overrides } from '@/data/overrides/powersets/scrapper/primary/titan-weapons/whirling-slice';
 
-export const WhirlingSmash: Power = {
-  "name": "Whirling Smash",
-  "internalName": "Whirling_Slice",
-  "available": 21,
-  "description": "You perform a powerful Whirling Smash that deals Moderate Smashing damage, and can knock an opponent down.Notes: Whirling Smash requires Momentum in order to be activated.",
-  "shortHelp": "PBAoE Melee, DMG(Smashing), Knockdown, Requires Momentum",
-  "icon": "titanweapons_whirlingslice.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "radius": 10,
-    "recharge": 14,
-    "endurance": 13.9256,
-    "castTime": 1,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Knockback",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Knockback",
-    "Melee AoE Damage",
-    "Scrapper Archetype Sets",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 1.04,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.04,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.04,
-      "table": "Melee_InherentDamage"
-    }
-  ],
-  "effects": {
-    "knockback": {
-      "scale": 0.67,
-      "table": "Melee_Ones"
-    }
-  }
-};
+export const WhirlingSmash: Power = withOverrides(base, overrides);

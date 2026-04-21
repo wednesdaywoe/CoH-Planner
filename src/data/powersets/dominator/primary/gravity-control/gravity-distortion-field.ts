@@ -1,56 +1,16 @@
 /**
- * Gravity Distortion Field
- * Ranged (Targeted AoE), Foe Hold, Damage(Smashing), +Gravity Distortion
+ * Gravity Distortion Field — COMPOSED EXPORT
  *
- * Source: dominator_control/gravity_control/gravity_distortion_field.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs dominator_control gravity_control
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { GravityDistortionField as base } from '@/data/generated/powersets/dominator/primary/gravity-control/gravity-distortion-field';
+import { overrides } from '@/data/overrides/powersets/dominator/primary/gravity-control/gravity-distortion-field';
 
-export const GravityDistortionField: Power = {
-  "name": "Gravity Distortion Field",
-  "internalName": "Gravity_Distortion_Field",
-  "available": 17,
-  "description": "Creates a large, intensely misshapen Gravity Distortion Field that encompasses several foes, rendering them unable to take any action. Enemies in the area of effect will be affected by the Gravity Distortion effect.",
-  "shortHelp": "Ranged (Targeted AoE), Foe Hold, Damage(Smashing), +Gravity Distortion",
-  "icon": "gravitycontrol_gravitydistortionfield.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 0.8,
-    "range": 80,
-    "recharge": 240,
-    "endurance": 15.6,
-    "castTime": 1.83
-  },
-  "allowedEnhancements": [
-    "Hold",
-    "Slow",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Dominator Archetype Sets",
-    "Holds",
-    "Ranged AoE Damage",
-    "Slow Movement",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "isPseudoPet": true,
-      "displayName": "Gravity Distortion Field",
-      "powers": [
-        "Redirects.Gravity_Control.Gravity_Distortion_Field_Pulse",
-        "Redirects.Gravity_Control.Gravity_Distortion_Field_Slow",
-        "Redirects.Gravity_Control.Gravity_Distortion_Field_Oneshot",
-        "Redirects.Gravity_Control.Self_Destruct"
-      ],
-      "copyBoosts": true
-    }
-  }
-};
+export const GravityDistortionField: Power = withOverrides(base, overrides);

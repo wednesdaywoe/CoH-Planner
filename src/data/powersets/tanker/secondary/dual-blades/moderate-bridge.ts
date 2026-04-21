@@ -1,60 +1,16 @@
 /**
- * Ablating Strike
- * Melee, DMG(Lethal), Foe -DEF
+ * Ablating Strike — COMPOSED EXPORT
  *
- * Source: tanker_melee/dual_blades/moderate_bridge.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs tanker_melee dual_blades
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { AblatingStrike as base } from '@/data/generated/powersets/tanker/secondary/dual-blades/moderate-bridge';
+import { overrides } from '@/data/overrides/powersets/tanker/secondary/dual-blades/moderate-bridge';
 
-export const AblatingStrike: Power = {
-  "name": "Ablating Strike",
-  "internalName": "Moderate_Bridge",
-  "available": 3,
-  "description": "You Slash at your foe with your blades, dealing a good amount of lethal damage. This attack can reduce a target's Defense, making him easier to hit. This power is needed for the Empower and Weaken combination attacks, and is the beginning of the Attack Vitals combination attack.Empower: Nimble Slash > Ablating Strike > Blinding Feint.Weaken: Nimble Slash > Ablating Strike > Typhoon's Edge.Attack Vitals: Ablating Strike > Vengeful Slice > Sweeping Strike.",
-  "shortHelp": "Melee, DMG(Lethal), Foe -DEF",
-  "icon": "dualblades_moderatebridge.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 7,
-    "recharge": 6,
-    "endurance": 6.864,
-    "castTime": 1.03
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "EnduranceReduction",
-    "Recharge",
-    "Defense Debuff",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Defense Debuff",
-    "Melee Damage",
-    "Tanker Archetype Sets",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 0.66,
-    "table": "Melee_Damage",
-    "duration": 0.6,
-    "tickRate": 0.4
-  },
-  "effects": {
-    "defenseDebuff": {
-      "scale": 1,
-      "table": "Melee_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 10
-    },
-    "buffDuration": 10
-  }
-};
+export const AblatingStrike: Power = withOverrides(base, overrides);

@@ -1,61 +1,16 @@
 /**
- * Hailstones
- * Ranged, DMG(Cold), Chance for Knockdown
+ * Hailstones — COMPOSED EXPORT
  *
- * Source: blaster_ranged/storm_blast/hailstones.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs blaster_ranged storm_blast
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Hailstones as base } from '@/data/generated/powersets/blaster/primary/storm-blast/hailstones';
+import { overrides } from '@/data/overrides/powersets/blaster/primary/storm-blast/hailstones';
 
-export const Hailstones: Power = {
-  "name": "Hailstones",
-  "internalName": "Hailstones",
-  "available": 0,
-  "description": "You cause the air around the foe to rapidly condense, causing hailstones to crash down, dealing Cold damage. There is a chance that an especially large chunk of hail will form, knocking the target down. While in a Storm Cell, targets are much more likely to get knocked down by large chunks of hail.",
-  "shortHelp": "Ranged, DMG(Cold), Chance for Knockdown",
-  "icon": "stormblast_hailstones.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 80,
-    "recharge": 8,
-    "endurance": 8.528,
-    "castTime": 1.67
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Knockback",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Blaster Archetype Sets",
-    "Knockback",
-    "Ranged Damage",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Cold",
-      "scale": 0.64,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Cold",
-      "scale": 0.25,
-      "table": "Ranged_Damage",
-      "duration": 1,
-      "tickRate": 0.3
-    }
-  ],
-  "effects": {
-    "knockback": {
-      "scale": 1.34,
-      "table": "Ranged_Ones"
-    }
-  }
-};
+export const Hailstones: Power = withOverrides(base, overrides);

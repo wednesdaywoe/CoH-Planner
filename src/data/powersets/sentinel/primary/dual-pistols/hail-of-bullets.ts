@@ -1,148 +1,16 @@
 /**
- * Hail of Bullets
- * PBAoE, DMG(Lethal/Special), Self +Def(Melee, Ranged, AoE), Foe Knockdown/Special
+ * Hail of Bullets — COMPOSED EXPORT
  *
- * Source: sentinel_ranged/dual_pistols/hail_of_bullets.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs sentinel_ranged dual_pistols
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { HailofBullets as base } from '@/data/generated/powersets/sentinel/primary/dual-pistols/hail-of-bullets';
+import { overrides } from '@/data/overrides/powersets/sentinel/primary/dual-pistols/hail-of-bullets';
 
-export const HailofBullets: Power = {
-  "name": "Hail of Bullets",
-  "internalName": "Hail_of_Bullets",
-  "available": 25,
-  "description": "You fire a hail of bullets at all enemies around you dealing Extreme lethal damage. Enemies that are struck have a chance to be knocked down. Having Standard Rounds will dramatically increase this chance to knockdown your foes. If you hit at least one target you will gain a moderate melee, ranged and AoE Defense bonus for a brief period.Changing your ammo type with the 'Swap Ammo' power will change your secondary damage from lethal to cold, fire or toxic.Additionally, changing your ammunition type will also change the secondary effect of this attack from a guaranteed knockdown effect to:*A minor attack speed and movement speed debuff if 'Cryo Ammo' is loaded.*A minor damage over time effect if 'Incendiary Ammo' is loaded.*A -damage effect if 'Chemical Ammo' is loaded.",
-  "shortHelp": "PBAoE, DMG(Lethal/Special), Self +Def(Melee, Ranged, AoE), Foe Knockdown/Special",
-  "icon": "dualpistols_hailofbullets.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1.4,
-    "radius": 20,
-    "recharge": 90,
-    "endurance": 15.6,
-    "castTime": 2.47,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "Slow",
-    "EnduranceReduction",
-    "Recharge",
-    "Knockback",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Knockback",
-    "Melee AoE Damage",
-    "Sentinel Archetype Sets",
-    "Slow Movement",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Lethal",
-      "scale": 0.054,
-      "table": "Ranged_Damage",
-      "duration": 2.3,
-      "tickRate": 0.2
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.131,
-      "table": "Ranged_Damage",
-      "duration": 2.3,
-      "tickRate": 0.2
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.054,
-      "table": "Ranged_Damage",
-      "duration": 2.3,
-      "tickRate": 0.2
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.131,
-      "table": "Ranged_Damage",
-      "duration": 2.3,
-      "tickRate": 0.2
-    },
-    {
-      "type": "Fire",
-      "scale": 0.054,
-      "table": "Ranged_Damage",
-      "duration": 2.3,
-      "tickRate": 0.2
-    },
-    {
-      "type": "Fire",
-      "scale": 0.131,
-      "table": "Ranged_Damage",
-      "duration": 2.3,
-      "tickRate": 0.2
-    },
-    {
-      "type": "Fire",
-      "scale": 0.2,
-      "table": "Ranged_Damage",
-      "duration": 4.1,
-      "tickRate": 1
-    },
-    {
-      "type": "Cold",
-      "scale": 0.054,
-      "table": "Ranged_Damage",
-      "duration": 2.3,
-      "tickRate": 0.2
-    },
-    {
-      "type": "Cold",
-      "scale": 0.131,
-      "table": "Ranged_Damage",
-      "duration": 2.3,
-      "tickRate": 0.2
-    },
-    {
-      "type": "Toxic",
-      "scale": 0.054,
-      "table": "Ranged_Damage",
-      "duration": 2.3,
-      "tickRate": 0.2
-    },
-    {
-      "type": "Toxic",
-      "scale": 0.131,
-      "table": "Ranged_Damage",
-      "duration": 2.3,
-      "tickRate": 0.2
-    }
-  ],
-  "effects": {
-    "knockback": {
-      "scale": 0.8,
-      "table": "Ranged_Ones"
-    },
-    "durations": {
-      "knockback": 2.3,
-      "defenseBuff": 5
-    },
-    "defenseBuff": {
-      "ranged": {
-        "scale": 1.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "melee": {
-        "scale": 1.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "aoe": {
-        "scale": 1.5,
-        "table": "Ranged_Buff_Def"
-      }
-    },
-    "buffDuration": 5
-  }
-};
+export const HailofBullets: Power = withOverrides(base, overrides);

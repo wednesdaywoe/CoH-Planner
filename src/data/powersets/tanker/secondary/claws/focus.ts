@@ -1,54 +1,16 @@
 /**
- * Focus
- * Ranged, DMG(Lethal), Knockback
+ * Focus — COMPOSED EXPORT
  *
- * Source: tanker_melee/claws/focus.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs tanker_melee claws
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Focus as base } from '@/data/generated/powersets/tanker/secondary/claws/focus';
+import { overrides } from '@/data/overrides/powersets/tanker/secondary/claws/focus';
 
-export const Focus: Power = {
-  "name": "Focus",
-  "internalName": "Focus",
-  "available": 23,
-  "description": "Projects a burst of focused power over a short distance. Focus deals high damage and can possibly knock down your foe.",
-  "shortHelp": "Ranged, DMG(Lethal), Knockback",
-  "icon": "claws_focus.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 40,
-    "recharge": 8,
-    "endurance": 8.1536,
-    "castTime": 1.17
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Knockback",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Knockback",
-    "Ranged Damage",
-    "Tanker Archetype Sets",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 1.51,
-    "table": "Melee_Damage"
-  },
-  "effects": {
-    "knockback": {
-      "scale": 0.67,
-      "table": "Melee_Ones"
-    }
-  }
-};
+export const Focus: Power = withOverrides(base, overrides);

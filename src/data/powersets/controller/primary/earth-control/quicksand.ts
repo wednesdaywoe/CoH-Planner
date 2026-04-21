@@ -1,45 +1,16 @@
 /**
- * Quicksand
- * Ranged (Location AoE), Foe -Speed, -Jump, -Fly, -DEF
+ * Quicksand — COMPOSED EXPORT
  *
- * Source: controller_control/earth_control/quicksand.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs controller_control earth_control
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Quicksand as base } from '@/data/generated/powersets/controller/primary/earth-control/quicksand';
+import { overrides } from '@/data/overrides/powersets/controller/primary/earth-control/quicksand';
 
-export const Quicksand: Power = {
-  "name": "Quicksand",
-  "internalName": "Quicksand",
-  "available": 5,
-  "description": "You can cause the ground to liquefy like Quicksand at a targeted location. Any foes that pass through the Quicksand will become snared, their movement will be dramatically Slowed, and their Defense reduced. Foes trapped in the Quicksand cannot jump or Fly.",
-  "shortHelp": "Ranged (Location AoE), Foe -Speed, -Jump, -Fly, -DEF",
-  "icon": "earthgrasp_quicksand.png",
-  "powerType": "Click",
-  "targetType": "Location",
-  "effectArea": "Location",
-  "stats": {
-    "accuracy": 1,
-    "range": 90,
-    "recharge": 30,
-    "endurance": 7.8,
-    "castTime": 3.1
-  },
-  "allowedEnhancements": [
-    "Slow",
-    "EnduranceReduction",
-    "Range",
-    "Recharge"
-  ],
-  "allowedSetCategories": [
-    "Slow Movement"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_Quicksand",
-      "duration": 45,
-      "copyBoosts": true
-    }
-  }
-};
+export const Quicksand: Power = withOverrides(base, overrides);

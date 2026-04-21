@@ -1,63 +1,16 @@
 /**
- * Bone Smasher
- * Melee, Superior DMG(Smash/Energy), Foe Disorient
+ * Bone Smasher — COMPOSED EXPORT
  *
- * Source: blaster_support/energy_manipulation/bone_smasher.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs blaster_support energy_manipulation
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { BoneSmasher as base } from '@/data/generated/powersets/blaster/secondary/energy-manipulation/bone-smasher';
+import { overrides } from '@/data/overrides/powersets/blaster/secondary/energy-manipulation/bone-smasher';
 
-export const BoneSmasher: Power = {
-  "name": "Bone Smasher",
-  "internalName": "Bone_Smasher",
-  "available": 9,
-  "description": "The Bone Smasher is a slow attack, but makes up for it with a good amount of damage. Has a greater chance to Disorient than Energy Punch.Damage: Superior.Recharge: Slow.",
-  "shortHelp": "Melee, Superior DMG(Smash/Energy), Foe Disorient",
-  "icon": "energymanipulation_bonesmasher.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 7,
-    "recharge": 14,
-    "endurance": 13.52,
-    "castTime": 1.5
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Stun",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Blaster Archetype Sets",
-    "Melee Damage",
-    "Stuns",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 0.78,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.82,
-      "table": "Melee_Damage"
-    }
-  ],
-  "effects": {
-    "stun": {
-      "mag": 3,
-      "scale": 8,
-      "table": "Melee_Stun"
-    },
-    "damageBuff": {
-      "scale": 0,
-      "table": "Ranged_Ones"
-    }
-  }
-};
+export const BoneSmasher: Power = withOverrides(base, overrides);

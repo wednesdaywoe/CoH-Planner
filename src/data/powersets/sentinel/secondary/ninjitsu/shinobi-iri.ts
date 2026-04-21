@@ -1,70 +1,16 @@
 /**
- * Shinobi-Iri
- * Toggle: Self Stealth, +DEF(Melee, Ranged, AoE), +Special
+ * Shinobi-Iri — COMPOSED EXPORT
  *
- * Source: sentinel_defense/ninjitsu/shinobi-iri.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs sentinel_defense ninjitsu
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { ShinobiIri as base } from '@/data/generated/powersets/sentinel/secondary/ninjitsu/shinobi-iri';
+import { overrides } from '@/data/overrides/powersets/sentinel/secondary/ninjitsu/shinobi-iri';
 
-export const ShinobiIri: Power = {
-  "name": "Shinobi-Iri",
-  "internalName": "Shinobi-Iri",
-  "available": 3,
-  "description": "Shinobi Iri are the ninjitsu techniques of silent movement and avoidance, granting you stealth and defense against all positional attacks. While stealthed, the strength of your next attack will be more powerful; however, you can only attempt this after spending 8 seconds without attacking.Recharge: Very Fast.",
-  "shortHelp": "Toggle: Self Stealth, +DEF(Melee, Ranged, AoE), +Special",
-  "icon": "ninjitsu_hide.png",
-  "powerType": "Toggle",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 2,
-    "endurance": 0.13,
-    "activatePeriod": 0.5
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Defense"
-  ],
-  "allowedSetCategories": [
-    "Defense Sets"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "defenseBuff": {
-      "ranged": {
-        "scale": 0.45,
-        "table": "Melee_Buff_Def"
-      },
-      "melee": {
-        "scale": 0.45,
-        "table": "Melee_Buff_Def"
-      },
-      "aoe": {
-        "scale": 0.45,
-        "table": "Melee_Buff_Def"
-      }
-    },
-    "durations": {
-      "defenseBuff": 0.75,
-      "stealth": 0.75
-    },
-    "stealth": {
-      "stealthPvE": {
-        "scale": 35.5,
-        "table": "Melee_Ones"
-      },
-      "stealthPvP": {
-        "scale": 390,
-        "table": "Melee_Ones"
-      },
-      "translucency": {
-        "scale": 0.3,
-        "table": "Melee_Ones"
-      }
-    },
-    "buffDuration": 0.75
-  }
-};
+export const ShinobiIri: Power = withOverrides(base, overrides);

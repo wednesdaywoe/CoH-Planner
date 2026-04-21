@@ -1,67 +1,16 @@
 /**
- * Quills
- * Toggle: PBAoE, DoT(Lethal), Foe -Speed, -Recharge
+ * Quills — COMPOSED EXPORT
  *
- * Source: scrapper_melee/quills/quills.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs scrapper_melee quills
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Quills as base } from '@/data/generated/powersets/scrapper/primary/spines/quills';
+import { overrides } from '@/data/overrides/powersets/scrapper/primary/spines/quills';
 
-export const Quills: Power = {
-  "name": "Quills",
-  "internalName": "Quills",
-  "available": 17,
-  "description": "While this power is active, you will constantly fire dozens of Spines in all directions. These Spines do minor damage, but can poison all foes in close range. Spine poison Slows affected foes.",
-  "shortHelp": "Toggle: PBAoE, DoT(Lethal), Foe -Speed, -Recharge",
-  "icon": "quills_quills.png",
-  "powerType": "Toggle",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "radius": 8,
-    "recharge": 15,
-    "endurance": 1.04,
-    "castTime": 0.73,
-    "activatePeriod": 2,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "Slow",
-    "EnduranceReduction",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Melee AoE Damage",
-    "Scrapper Archetype Sets",
-    "Slow Movement",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Lethal",
-      "scale": 0.15,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.15,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.15,
-      "table": "Melee_InherentDamage"
-    }
-  ],
-  "effects": {
-    "immobilize": {
-      "mag": 0.33,
-      "scale": 3,
-      "table": "Melee_Immobilize"
-    }
-  }
-};
+export const Quills: Power = withOverrides(base, overrides);

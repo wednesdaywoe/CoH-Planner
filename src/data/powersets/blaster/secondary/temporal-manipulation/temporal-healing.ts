@@ -1,66 +1,16 @@
 /**
- * Temporal Healing
- * Toggle: Self +Absorb, +Recovery, +Resist(Slow, Regen Debuff)
+ * Temporal Healing — COMPOSED EXPORT
  *
- * Source: blaster_support/time_manipulation/temporal_healing.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs blaster_support time_manipulation
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { TemporalHealing as base } from '@/data/generated/powersets/blaster/secondary/temporal-manipulation/temporal-healing';
+import { overrides } from '@/data/overrides/powersets/blaster/secondary/temporal-manipulation/temporal-healing';
 
-export const TemporalHealing: Power = {
-  "name": "Temporal Healing",
-  "internalName": "Temporal_Healing",
-  "available": 19,
-  "description": "You mend your wounds by placing your bodies in a past or future state where they are far less injured. Temporal Mending will immediately absorb damage as it's inflicted. Additionally, you will gain some resistance to slow effects and regeneration debuffs. If you are affected by the Accelerated effect, you absorb even more damage from this power.Recharge: Moderate.",
-  "shortHelp": "Toggle: Self +Absorb, +Recovery, +Resist(Slow, Regen Debuff)",
-  "icon": "timemanipulation_temporalhealing.png",
-  "powerType": "Toggle",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 10,
-    "castTime": 2.03,
-    "activatePeriod": 2
-  },
-  "allowedEnhancements": [
-    "EnduranceModification",
-    "Recharge",
-    "Healing"
-  ],
-  "allowedSetCategories": [
-    "Endurance Modification",
-    "Healing"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "recoveryBuff": {
-      "scale": 0.5,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "recoveryBuff": 2.25,
-      "debuffResistance": 2.25,
-      "absorb": 12
-    },
-    "debuffResistance": {
-      "movement": {
-        "scale": 0.2,
-        "table": "Melee_Ones"
-      },
-      "recharge": {
-        "scale": 0.2,
-        "table": "Melee_Ones"
-      },
-      "regeneration": {
-        "scale": 0.5,
-        "table": "Melee_Res_Boolean"
-      }
-    },
-    "absorb": {
-      "scale": 0.38999999999999996,
-      "table": "Melee_HealSelf"
-    },
-    "buffDuration": 2.25
-  }
-};
+export const TemporalHealing: Power = withOverrides(base, overrides);

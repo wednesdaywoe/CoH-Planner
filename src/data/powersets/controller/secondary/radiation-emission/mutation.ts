@@ -1,72 +1,16 @@
 /**
- * Mutation
- * Close, Ally Rez, Special
+ * Mutation — COMPOSED EXPORT
  *
- * Source: controller_buff/radiation_emission/mutation.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs controller_buff radiation_emission
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Mutation as base } from '@/data/generated/powersets/controller/secondary/radiation-emission/mutation';
+import { overrides } from '@/data/overrides/powersets/controller/secondary/radiation-emission/mutation';
 
-export const Mutation: Power = {
-  "name": "Mutation",
-  "internalName": "Mutation",
-  "available": 15,
-  "description": "Using a concentrated burst of radiation, you can revive a fallen hero and Mutate them into a killing machine. The Mutated hero has increased damage, chance to hit, Endurance recovery, and attack speed and is protected from XP Debt for 90 seconds. The entire experience is very taxing on the Mutated hero, and they will soon be severely weakened. All effects of the Mutation will eventually wear off.Recharge: Long.",
-  "shortHelp": "Close, Ally Rez, Special",
-  "icon": "radiationpoisoning_mutation.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 60,
-    "recharge": 120,
-    "endurance": 5.2,
-    "castTime": 1.83
-  },
-  "allowedEnhancements": [
-    "EnduranceModification",
-    "EnduranceReduction",
-    "Range",
-    "Recharge"
-  ],
-  "allowedSetCategories": [
-    "Endurance Modification"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Heal",
-    "scale": 1,
-    "table": "Ranged_Ones",
-    "duration": 0.5,
-    "tickRate": 1
-  },
-  "effects": {
-    "enduranceGain": {
-      "scale": 1,
-      "table": "Ranged_Ones"
-    },
-    "recoveryBuff": {
-      "scale": 2,
-      "table": "Ranged_Ones"
-    },
-    "durations": {
-      "recoveryBuff": 90,
-      "rechargeBuff": 90,
-      "damageBuff": 90,
-      "tohitBuff": 90
-    },
-    "rechargeBuff": {
-      "scale": 1,
-      "table": "Ranged_Ones"
-    },
-    "damageBuff": {
-      "scale": 4,
-      "table": "Ranged_Buff_Dmg"
-    },
-    "tohitBuff": {
-      "scale": 3,
-      "table": "Ranged_Buff_ToHit"
-    },
-    "buffDuration": 90
-  }
-};
+export const Mutation: Power = withOverrides(base, overrides);

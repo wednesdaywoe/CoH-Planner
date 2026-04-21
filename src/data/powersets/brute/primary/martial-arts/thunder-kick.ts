@@ -1,54 +1,16 @@
 /**
- * Thunder Kick
- * Melee, DMG(Smash), Minor Disorient
+ * Thunder Kick — COMPOSED EXPORT
  *
- * Source: brute_melee/martial_arts/thunder_kick.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs brute_melee martial_arts
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { ThunderKick as base } from '@/data/generated/powersets/brute/primary/martial-arts/thunder-kick';
+import { overrides } from '@/data/overrides/powersets/brute/primary/martial-arts/thunder-kick';
 
-export const ThunderKick: Power = {
-  "name": "Thunder Kick",
-  "internalName": "Thunder_Kick",
-  "available": 0,
-  "description": "You can perform a strong Thunder Kick that hits so hard it can Disorient your target.",
-  "shortHelp": "Melee, DMG(Smash), Minor Disorient",
-  "icon": "martialarts_thunderkick.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1.05,
-    "range": 7,
-    "recharge": 3,
-    "endurance": 4.368,
-    "castTime": 0.83
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "EnduranceReduction",
-    "Stun",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Brute Archetype Sets",
-    "Melee Damage",
-    "Stuns",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 0.84,
-    "table": "Melee_Damage"
-  },
-  "effects": {
-    "stun": {
-      "mag": 2,
-      "scale": 6,
-      "table": "Melee_Stun"
-    }
-  }
-};
+export const ThunderKick: Power = withOverrides(base, overrides);

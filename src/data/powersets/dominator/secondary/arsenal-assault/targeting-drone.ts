@@ -1,62 +1,16 @@
 /**
- * Targeting Drone
- * Toggle: Self +To Hit, +Perception, Res(DeBuff To Hit)
+ * Targeting Drone — COMPOSED EXPORT
  *
- * Source: dominator_assault/arsenal_assault/targeting_drone.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs dominator_assault arsenal_assault
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { TargetingDrone as base } from '@/data/generated/powersets/dominator/secondary/arsenal-assault/targeting-drone';
+import { overrides } from '@/data/overrides/powersets/dominator/secondary/arsenal-assault/targeting-drone';
 
-export const TargetingDrone: Power = {
-  "name": "Targeting Drone",
-  "internalName": "Targeting_Drone",
-  "available": 23,
-  "description": "When this device is activated, the small Targeting Drone hovers around your head and emits targeting laser sights. The lasers can dramatically improve your chance to hit, and increase your perception, allowing you to better see stealthy foes. Targeting Drone also grants you resistance to powers that debuff your chance to hit.",
-  "shortHelp": "Toggle: Self +To Hit, +Perception, Res(DeBuff To Hit)",
-  "icon": "assaultweapons_targetingdrone.png",
-  "powerType": "Toggle",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 10,
-    "endurance": 0.156,
-    "castTime": 1.17,
-    "activatePeriod": 0.5
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "ToHit"
-  ],
-  "allowedSetCategories": [
-    "To Hit Buff"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "tohitBuff": {
-      "scale": 1.85,
-      "table": "Melee_Buff_ToHit"
-    },
-    "durations": {
-      "tohitBuff": 0.75,
-      "debuffResistance": 0.75,
-      "perceptionBuff": 0.75
-    },
-    "debuffResistance": {
-      "tohit": {
-        "scale": 2,
-        "table": "Melee_Res_Boolean"
-      },
-      "perception": {
-        "scale": 0.6,
-        "table": "Melee_Ones"
-      }
-    },
-    "perceptionBuff": {
-      "scale": 0.6,
-      "table": "Melee_Ones"
-    },
-    "buffDuration": 0.75
-  }
-};
+export const TargetingDrone: Power = withOverrides(base, overrides);

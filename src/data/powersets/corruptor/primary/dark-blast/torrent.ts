@@ -1,58 +1,16 @@
 /**
- * Torrent
- * Ranged (Cone), DMG(Negative), Foe -To Hit, Knockback
+ * Torrent — COMPOSED EXPORT
  *
- * Source: corruptor_ranged/dark_blast/torrent.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs corruptor_ranged dark_blast
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Torrent as base } from '@/data/generated/powersets/corruptor/primary/dark-blast/torrent';
+import { overrides } from '@/data/overrides/powersets/corruptor/primary/dark-blast/torrent';
 
-export const Torrent: Power = {
-  "name": "Torrent",
-  "internalName": "Torrent",
-  "available": 17,
-  "description": "You summon a wave of mire that sweeps away foes within its arc. The attack deals minimal Negative Energy damage, but sends foes flying and reduces their chance to hit.",
-  "shortHelp": "Ranged (Cone), DMG(Negative), Foe -To Hit, Knockback",
-  "icon": "darkcast_torrent.png",
-  "powerType": "Click",
-  "effectArea": "Cone",
-  "stats": {
-    "accuracy": 1,
-    "range": 80,
-    "radius": 80,
-    "arc": 0.5236,
-    "recharge": 15,
-    "endurance": 14.352,
-    "castTime": 1.03,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Knockback",
-    "ToHit Debuff",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate To-Hit Debuff",
-    "Corruptor Archetype Sets",
-    "Knockback",
-    "Ranged AoE Damage",
-    "To Hit Debuff",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Negative",
-    "scale": 0.4,
-    "table": "Ranged_Damage"
-  },
-  "effects": {
-    "knockback": {
-      "scale": 5,
-      "table": "Ranged_Knockback"
-    }
-  }
-};
+export const Torrent: Power = withOverrides(base, overrides);

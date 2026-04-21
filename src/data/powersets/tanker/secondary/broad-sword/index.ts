@@ -18,7 +18,6 @@ import { BuildUp as BuildUp } from './build-up';
 import { WhirlingSword as WhirlingSword } from './whirling-sword';
 import { Disembowel as Disembowel } from './disembowel';
 import { HeadSplitter as HeadSplitter } from './head-splitter';
-import { BoomerangSlice as BoomerangSlice } from './boomerang-slice';
 
 export const powerset: Powerset = {
   id: 'tanker/broad-sword',
@@ -37,7 +36,6 @@ export const powerset: Powerset = {
     WhirlingSword,
     Disembowel,
     HeadSplitter,
-    BoomerangSlice,
   ],
 };
 

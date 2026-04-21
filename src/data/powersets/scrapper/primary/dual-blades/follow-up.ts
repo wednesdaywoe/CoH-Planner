@@ -1,72 +1,16 @@
 /**
- * Blinding Feint
- * Melee, DMG(Lethal), Self +DMG +To Hit
+ * Blinding Feint — COMPOSED EXPORT
  *
- * Source: scrapper_melee/dual_blades/follow_up.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs scrapper_melee dual_blades
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { BlindingFeint as base } from '@/data/generated/powersets/scrapper/primary/dual-blades/follow-up';
+import { overrides } from '@/data/overrides/powersets/scrapper/primary/dual-blades/follow-up';
 
-export const BlindingFeint: Power = {
-  "name": "Blinding Feint",
-  "internalName": "Follow_Up",
-  "available": 7,
-  "description": "You perform a feint attack that deals light damage. After this attack hits, it gives you a large bonus to your chance to hit and damage for a brief time. This power is the finishing move in the Empower combination attack.Empower: Nimble Slash > Ablating Strike > Blinding Feint.",
-  "shortHelp": "Melee, DMG(Lethal), Self +DMG +To Hit",
-  "icon": "dualblades_followup.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 7,
-    "recharge": 12,
-    "endurance": 7.8,
-    "castTime": 1.2
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Damage",
-    "ToHit",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Melee Damage",
-    "Scrapper Archetype Sets",
-    "To Hit Buff",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Lethal",
-      "scale": 0.8,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.8,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.8,
-      "table": "Melee_InherentDamage"
-    }
-  ],
-  "effects": {
-    "tohitBuff": {
-      "scale": 1,
-      "table": "Melee_Buff_ToHit"
-    },
-    "durations": {
-      "tohitBuff": 10,
-      "damageBuff": 10
-    },
-    "damageBuff": {
-      "scale": 3,
-      "table": "Melee_Buff_Dmg"
-    },
-    "buffDuration": 10
-  }
-};
+export const BlindingFeint: Power = withOverrides(base, overrides);

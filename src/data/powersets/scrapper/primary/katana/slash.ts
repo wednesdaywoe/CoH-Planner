@@ -1,71 +1,16 @@
 /**
- * Gambler's Cut
- * Melee, DMG(Lethal), Foe -Def
+ * Gambler's Cut — COMPOSED EXPORT
  *
- * Source: scrapper_melee/katana/slash.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs scrapper_melee katana
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { GamblersCut as base } from '@/data/generated/powersets/scrapper/primary/katana/slash';
+import { overrides } from '@/data/overrides/powersets/scrapper/primary/katana/slash';
 
-export const GamblersCut: Power = {
-  "name": "Gambler's Cut",
-  "internalName": "Slash",
-  "available": 0,
-  "description": "You perform a quick slash with your katana. This attack is very fast, but deals only minor damage. This attack can reduce a target's Defense, making them easier to hit.",
-  "shortHelp": "Melee, DMG(Lethal), Foe -Def",
-  "icon": "katana_slash.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1.05,
-    "range": 7,
-    "recharge": 3,
-    "endurance": 4.368,
-    "castTime": 0.67
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Defense Debuff",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Defense Debuff",
-    "Melee Damage",
-    "Scrapper Archetype Sets",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Lethal",
-      "scale": 0.42,
-      "table": "Melee_Damage",
-      "duration": 0.3,
-      "tickRate": 0.25
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.84,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.84,
-      "table": "Melee_InherentDamage"
-    }
-  ],
-  "effects": {
-    "defenseDebuff": {
-      "scale": 1,
-      "table": "Melee_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 6
-    },
-    "buffDuration": 6
-  },
-  "requires": "!Scrapper_Defense.Shield_Defense"
-};
+export const GamblersCut: Power = withOverrides(base, overrides);

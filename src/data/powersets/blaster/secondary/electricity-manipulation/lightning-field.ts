@@ -1,59 +1,16 @@
 /**
- * Force of Thunder
- * PBAoE, Foe Disorient, Knockback
+ * Force of Thunder — COMPOSED EXPORT
  *
- * Source: blaster_support/electricity_manipulation/lightning_field.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs blaster_support electricity_manipulation
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { ForceofThunder as base } from '@/data/generated/powersets/blaster/secondary/electricity-manipulation/lightning-field';
+import { overrides } from '@/data/overrides/powersets/blaster/secondary/electricity-manipulation/lightning-field';
 
-export const ForceofThunder: Power = {
-  "name": "Force of Thunder",
-  "internalName": "Lightning_Field",
-  "available": 27,
-  "description": "You can channel the raw force of a thunderbolt through you knocking enemies back and potentially disorienting them.",
-  "shortHelp": "PBAoE, Foe Disorient, Knockback",
-  "icon": "electricitymanipulation_lightningclap.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 0.8,
-    "radius": 15,
-    "recharge": 30,
-    "endurance": 14,
-    "castTime": 1.23,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Stun",
-    "Recharge",
-    "Knockback",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Knockback",
-    "Stuns"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "knockback": {
-      "scale": 1,
-      "table": "Melee_Knockback"
-    },
-    "stun": {
-      "mag": 2,
-      "scale": 8,
-      "table": "Melee_Stun"
-    },
-    "damageBuff": {
-      "scale": 0.025,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "damageBuff": 8.73
-    },
-    "buffDuration": 8.73
-  }
-};
+export const ForceofThunder: Power = withOverrides(base, overrides);

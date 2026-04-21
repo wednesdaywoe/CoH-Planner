@@ -1,59 +1,16 @@
 /**
- * Hurricane
- * Toggle: PBAoE, Foe -Range, -To Hit, Repel, Knockback
+ * Hurricane — COMPOSED EXPORT
  *
- * Source: mastermind_buff/storm_summoning/hurricane.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs mastermind_buff storm_summoning
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Hurricane as base } from '@/data/generated/powersets/mastermind/secondary/storm-summoning/hurricane';
+import { overrides } from '@/data/overrides/powersets/mastermind/secondary/storm-summoning/hurricane';
 
-export const Hurricane: Power = {
-  "name": "Hurricane",
-  "internalName": "Hurricane",
-  "available": 19,
-  "description": "You can summon a Hurricane. The wind and rain from this massive storm reduce the range and chance to hit of nearby foes. The massive winds of this storm continuously force foes away from you.Recharge: Moderate.",
-  "shortHelp": "Toggle: PBAoE, Foe -Range, -To Hit, Repel, Knockback",
-  "icon": "stormsummoning_hurricane.png",
-  "powerType": "Toggle",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "radius": 25,
-    "recharge": 10,
-    "endurance": 0.2031,
-    "castTime": 2.03,
-    "activatePeriod": 0.25,
-    "maxTargets": 16
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Knockback",
-    "ToHit Debuff"
-  ],
-  "allowedSetCategories": [
-    "Knockback",
-    "To Hit Debuff"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "rangeBuff": {
-      "scale": 0.6,
-      "table": "Ranged_Ones"
-    },
-    "durations": {
-      "rangeBuff": 10,
-      "repel": 1.05
-    },
-    "repel": {
-      "scale": 1,
-      "table": "Ranged_Ones"
-    },
-    "knockback": {
-      "scale": 4,
-      "table": "Ranged_Knockback"
-    },
-    "buffDuration": 10
-  }
-};
+export const Hurricane: Power = withOverrides(base, overrides);

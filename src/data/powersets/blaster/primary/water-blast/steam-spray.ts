@@ -1,71 +1,16 @@
 /**
- * Steam Spray
- * Ranged (Cone), DMG(Fire), Foe -Defense, DoT(Fire), +Wet, Self +Tidal Power
+ * Steam Spray — COMPOSED EXPORT
  *
- * Source: blaster_ranged/water_blast/steam_spray.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs blaster_ranged water_blast
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { SteamSpray as base } from '@/data/generated/powersets/blaster/primary/water-blast/steam-spray';
+import { overrides } from '@/data/overrides/powersets/blaster/primary/water-blast/steam-spray';
 
-export const SteamSpray: Power = {
-  "name": "Steam Spray",
-  "internalName": "Steam_Spray",
-  "available": 21,
-  "description": "You spray scalding hot steam in a cone in front of you badly burning affected targets. Steam Spray causes Fire damage, Fire damage over time and reduces the target's Defense slightly. Steam Spray grants 1 stack of Tidal Power.",
-  "shortHelp": "Ranged (Cone), DMG(Fire), Foe -Defense, DoT(Fire), +Wet, Self +Tidal Power",
-  "icon": "waterblast_steamspray.png",
-  "powerType": "Click",
-  "effectArea": "Cone",
-  "stats": {
-    "accuracy": 1.2,
-    "range": 40,
-    "radius": 40,
-    "arc": 0.8727,
-    "recharge": 20,
-    "endurance": 18.512,
-    "castTime": 2.53,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Defense Debuff",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Blaster Archetype Sets",
-    "Defense Debuff",
-    "Ranged AoE Damage",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Fire",
-      "scale": 0.835,
-      "table": "Ranged_Damage",
-      "duration": 0.6,
-      "tickRate": 0.5
-    },
-    {
-      "type": "Fire",
-      "scale": 0.1,
-      "table": "Ranged_Damage",
-      "duration": 3.1,
-      "tickRate": 1
-    }
-  ],
-  "effects": {
-    "defenseDebuff": {
-      "scale": 1,
-      "table": "Ranged_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 8
-    },
-    "buffDuration": 8
-  }
-};
+export const SteamSpray: Power = withOverrides(base, overrides);

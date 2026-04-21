@@ -1,81 +1,16 @@
 /**
- * Jacobs Ladder
- * Melee (Cone), DMG(Energy), Foe Sleep, -End
+ * Jacobs Ladder — COMPOSED EXPORT
  *
- * Source: scrapper_melee/electrical_melee/jacobs_ladder.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs scrapper_melee electrical_melee
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { JacobsLadder as base } from '@/data/generated/powersets/scrapper/primary/electrical-melee/jacobs-ladder';
+import { overrides } from '@/data/overrides/powersets/scrapper/primary/electrical-melee/jacobs-ladder';
 
-export const JacobsLadder: Power = {
-  "name": "Jacobs Ladder",
-  "internalName": "Jacobs_Ladder",
-  "available": 1,
-  "description": "You are able to generate a strong current between your arms and snap a powerful bolt of electricity in an arc in front of you. This melee attack can electrocute all foes within the arc dealing High energy damage. Jacobs Ladder can drain some Endurance from your target and may overload their synapses, leaving him writhing for a moment. Disturbing an overloaded target will disperse the electrical charge and release him.",
-  "shortHelp": "Melee (Cone), DMG(Energy), Foe Sleep, -End",
-  "icon": "electricmelee_conemoderatedmg.png",
-  "powerType": "Click",
-  "effectArea": "Cone",
-  "stats": {
-    "accuracy": 1,
-    "range": 7,
-    "radius": 7,
-    "arc": 0.8727,
-    "recharge": 9,
-    "endurance": 9.36,
-    "castTime": 1.67,
-    "maxTargets": 5
-  },
-  "allowedEnhancements": [
-    "EnduranceModification",
-    "EnduranceReduction",
-    "Sleep",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Endurance Modification",
-    "Melee AoE Damage",
-    "Scrapper Archetype Sets",
-    "Sleep",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Energy",
-      "scale": 1.5,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.5,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.5,
-      "table": "Melee_InherentDamage"
-    }
-  ],
-  "effects": {
-    "enduranceDrain": {
-      "scale": 0.07,
-      "table": "Melee_Ones"
-    },
-    "sleep": {
-      "mag": 2,
-      "scale": 0.3,
-      "table": "Melee_Ones"
-    },
-    "recoveryDebuff": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "recoveryDebuff": 2
-    },
-    "buffDuration": 2
-  }
-};
+export const JacobsLadder: Power = withOverrides(base, overrides);

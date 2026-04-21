@@ -1,37 +1,16 @@
 /**
- * Enchant Demon
- * Ranged, Enchant Demon Henchman
+ * Enchant Demon — COMPOSED EXPORT
  *
- * Source: mastermind_summon/demon_summoning/enchant_demon.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs mastermind_summon demon_summoning
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { EnchantDemon as base } from '@/data/generated/powersets/mastermind/primary/demon-summoning/enchant-demon';
+import { overrides } from '@/data/overrides/powersets/mastermind/primary/demon-summoning/enchant-demon';
 
-export const EnchantDemon: Power = {
-  "name": "Enchant Demon",
-  "internalName": "Enchant_Demon",
-  "available": 5,
-  "description": "Enchant Demon will permanently bestow new powers and abilities to all of your Demon Henchman. The powers gained are unique and dependent upon the type of Demon Henchman that is Enchanted.Enchant Demon only works on your Demon Henchmen and you can only Enchant your Demon Henchmen once with this power.",
-  "shortHelp": "Ranged, Enchant Demon Henchman",
-  "icon": "demonsummoning_enchantdemon.png",
-  "powerType": "Click",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "range": 50,
-    "radius": 30,
-    "recharge": 0.5,
-    "endurance": 11.375,
-    "castTime": 2.17,
-    "maxTargets": 16
-  },
-  "allowedEnhancements": [
-    "Resistance",
-    "EnduranceReduction",
-    "Range"
-  ],
-  "allowedSetCategories": [
-    "Resist Damage"
-  ],
-  "maxSlots": 6
-};
+export const EnchantDemon: Power = withOverrides(base, overrides);

@@ -1,39 +1,16 @@
 /**
- * Seishinteki Kyoyo
- * Self +Endurance
+ * Seishinteki Kyoyo — COMPOSED EXPORT
  *
- * Source: scrapper_defense/ninjitsu/seishinteki_kyoyo.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs scrapper_defense ninjitsu
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { SeishintekiKyoyo as base } from '@/data/generated/powersets/scrapper/secondary/ninjitsu/seishinteki-kyoyo';
+import { overrides } from '@/data/overrides/powersets/scrapper/secondary/ninjitsu/seishinteki-kyoyo';
 
-export const SeishintekiKyoyo: Power = {
-  "name": "Seishinteki Kyoyo",
-  "internalName": "Seishinteki_Kyoyo",
-  "available": 15,
-  "description": "Seishinteki Kyoyo is the spiritual education in Ninjitsu. Your mastery of these spiritual techniques allow you to recover endurance with a short period of meditation.Recharge: Slow.",
-  "shortHelp": "Self +Endurance",
-  "icon": "ninjitsu_recovery.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 60,
-    "castTime": 1.83
-  },
-  "allowedEnhancements": [
-    "EnduranceModification",
-    "Recharge"
-  ],
-  "allowedSetCategories": [
-    "Endurance Modification"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "enduranceGain": {
-      "scale": 0.3,
-      "table": "Melee_Ones"
-    }
-  }
-};
+export const SeishintekiKyoyo: Power = withOverrides(base, overrides);

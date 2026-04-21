@@ -1,71 +1,16 @@
 /**
- * Gravity Distortion
- * Ranged, DoT(Smash), Foe Hold, -Fly, +Gravity Distortion
+ * Gravity Distortion — COMPOSED EXPORT
  *
- * Source: controller_control/gravity_control/gravity_distortion.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs controller_control gravity_control
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { GravityDistortion as base } from '@/data/generated/powersets/controller/primary/gravity-control/gravity-distortion';
+import { overrides } from '@/data/overrides/powersets/controller/primary/gravity-control/gravity-distortion';
 
-export const GravityDistortion: Power = {
-  "name": "Gravity Distortion",
-  "internalName": "Gravity_Distortion",
-  "available": 1,
-  "description": "Causes a single foe to be trapped in a misshapen gravity field, rendering him unable to take action. Gravity Distortion applies the Gravity Distortion effect and deals Smashing damage to the target.",
-  "shortHelp": "Ranged, DoT(Smash), Foe Hold, -Fly, +Gravity Distortion",
-  "icon": "gravitycontrol_gravitydistortion.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1.2,
-    "range": 80,
-    "recharge": 8,
-    "endurance": 8.528,
-    "castTime": 1.83
-  },
-  "allowedEnhancements": [
-    "Hold",
-    "Slow",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Controller Archetype Sets",
-    "Holds",
-    "Ranged Damage",
-    "Slow Movement",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 0.22,
-    "table": "Ranged_Damage",
-    "duration": 4.2,
-    "tickRate": 1
-  },
-  "effects": {
-    "hold": {
-      "mag": 3,
-      "scale": 12,
-      "table": "Ranged_Immobilize"
-    },
-    "mezResistance": {
-      "knockup": {
-        "scale": 100,
-        "table": "Ranged_Ones"
-      },
-      "knockback": {
-        "scale": 100,
-        "table": "Ranged_Ones"
-      }
-    },
-    "durations": {
-      "mezResistance": 10
-    },
-    "buffDuration": 10
-  }
-};
+export const GravityDistortion: Power = withOverrides(base, overrides);

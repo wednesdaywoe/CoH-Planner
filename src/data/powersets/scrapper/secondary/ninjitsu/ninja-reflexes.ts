@@ -1,55 +1,16 @@
 /**
- * Ninja Reflexes
- * Toggle: Self +DEF(Melee), Res(DeBuff DEF)
+ * Ninja Reflexes — COMPOSED EXPORT
  *
- * Source: scrapper_defense/ninjitsu/ninja_reflexes.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs scrapper_defense ninjitsu
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { NinjaReflexes as base } from '@/data/generated/powersets/scrapper/secondary/ninjitsu/ninja-reflexes';
+import { overrides } from '@/data/overrides/powersets/scrapper/secondary/ninjitsu/ninja-reflexes';
 
-export const NinjaReflexes: Power = {
-  "name": "Ninja Reflexes",
-  "internalName": "Ninja_Reflexes",
-  "available": 0,
-  "description": "Activating your Ninja Reflexes enables you to be more evasive to melee attacks. This will increase your Defense versus melee as long as it is active. Ninja Reflexes also grants you resistance to Defense DeBuffs.Recharge: Fast.",
-  "shortHelp": "Toggle: Self +DEF(Melee), Res(DeBuff DEF)",
-  "icon": "ninjitsu_ninjareflexes.png",
-  "powerType": "Toggle",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 4,
-    "endurance": 0.13,
-    "castTime": 1.53,
-    "activatePeriod": 0.5
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Defense"
-  ],
-  "allowedSetCategories": [
-    "Defense Sets"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "defenseBuff": {
-      "melee": {
-        "scale": 1.85,
-        "table": "Melee_Buff_Def"
-      }
-    },
-    "durations": {
-      "defenseBuff": 0.75,
-      "debuffResistance": 0.75
-    },
-    "debuffResistance": {
-      "defense": {
-        "scale": 0.5,
-        "table": "Melee_Res_Boolean"
-      }
-    },
-    "buffDuration": 0.75
-  }
-};
+export const NinjaReflexes: Power = withOverrides(base, overrides);

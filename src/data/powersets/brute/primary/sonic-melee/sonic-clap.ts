@@ -1,69 +1,16 @@
 /**
- * Sonic Clap
- * Melee (Cone), Foe Disorient, Knockdown
+ * Sonic Clap — COMPOSED EXPORT
  *
- * Source: brute_melee/sonic_melee/sonic_clap.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs brute_melee sonic_melee
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { SonicClap as base } from '@/data/generated/powersets/brute/primary/sonic-melee/sonic-clap';
+import { overrides } from '@/data/overrides/powersets/brute/primary/sonic-melee/sonic-clap';
 
-export const SonicClap: Power = {
-  "name": "Sonic Clap",
-  "internalName": "Sonic_Clap",
-  "available": 7,
-  "description": "You generate a powerful sonic wave that damages foes in front of you with a decent chance to stun and knock them down. This power will inflict 10% bonus damage against Attuned targets.",
-  "shortHelp": "Melee (Cone), Foe Disorient, Knockdown",
-  "icon": "sonicmanipulation_sonicclap.png",
-  "powerType": "Click",
-  "effectArea": "Cone",
-  "stats": {
-    "accuracy": 1,
-    "radius": 15,
-    "arc": 3.1416,
-    "recharge": 8,
-    "endurance": 8.528,
-    "castTime": 1.23,
-    "maxTargets": 5
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "EnduranceReduction",
-    "Stun",
-    "Recharge",
-    "Knockback",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Brute Archetype Sets",
-    "Knockback",
-    "Melee AoE Damage",
-    "Stuns",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 0.3919,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.3919,
-      "table": "Melee_Damage"
-    }
-  ],
-  "effects": {
-    "knockback": {
-      "scale": 0.65,
-      "table": "Melee_Ones"
-    },
-    "stun": {
-      "mag": 2,
-      "scale": 8,
-      "table": "Melee_Fear"
-    }
-  }
-};
+export const SonicClap: Power = withOverrides(base, overrides);

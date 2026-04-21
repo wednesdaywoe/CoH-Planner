@@ -1,61 +1,16 @@
 /**
- * Quickness
- * Auto: Self +Recharge, +SPD, Res (Slow)
+ * Quickness — COMPOSED EXPORT
  *
- * Source: sentinel_defense/super_reflexes/quickness.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs sentinel_defense super_reflexes
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Quickness as base } from '@/data/generated/powersets/sentinel/secondary/super-reflexes/quickness';
+import { overrides } from '@/data/overrides/powersets/sentinel/secondary/super-reflexes/quickness';
 
-export const Quickness: Power = {
-  "name": "Quickness",
-  "internalName": "Quickness",
-  "available": 23,
-  "description": "Your Quick reflexes allow you to move faster than normal, as well as resist slow effects. This power is always on and permanently increases your attack rate and movement speed.",
-  "shortHelp": "Auto: Self +Recharge, +SPD, Res (Slow)",
-  "icon": "superreflexes_quickness.png",
-  "powerType": "Auto",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "activatePeriod": 10
-  },
-  "allowedEnhancements": [
-    "Run Speed",
-    "Fly"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "rechargeBuff": {
-      "scale": 0.2,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "rechargeBuff": 10.25,
-      "movement": 10.25,
-      "debuffResistance": 10.25
-    },
-    "movement": {
-      "runSpeed": {
-        "scale": 0.1,
-        "table": "Melee_SpeedRunning"
-      },
-      "flySpeed": {
-        "scale": 0.1,
-        "table": "Melee_SpeedFlying"
-      }
-    },
-    "debuffResistance": {
-      "movement": {
-        "scale": 0.4,
-        "table": "Melee_Ones"
-      },
-      "recharge": {
-        "scale": 0.4,
-        "table": "Melee_Ones"
-      }
-    },
-    "buffDuration": 10.25
-  }
-};
+export const Quickness: Power = withOverrides(base, overrides);

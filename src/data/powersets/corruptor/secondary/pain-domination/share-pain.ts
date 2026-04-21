@@ -1,71 +1,16 @@
 /**
- * Share Pain
- * Ally Strong Heal, Self Moderate DMG(Special), +DMG
+ * Share Pain — COMPOSED EXPORT
  *
- * Source: corruptor_buff/pain_domination/share_pain.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs corruptor_buff pain_domination
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { SharePain as base } from '@/data/generated/powersets/corruptor/secondary/pain-domination/share-pain';
+import { overrides } from '@/data/overrides/powersets/corruptor/secondary/pain-domination/share-pain';
 
-export const SharePain: Power = {
-  "name": "Share Pain",
-  "internalName": "Share_Pain",
-  "available": 3,
-  "description": "Share Pain draws away some of an ally's anguish caused by their wounds, but damages the user. The pain caused by this power causes the user to go into a frenzy, briefly increasing their damage output, however the user cannot be healed and will have their regeneration rate greatly diminished for a short time.Recharge: Slow.",
-  "shortHelp": "Ally Strong Heal, Self Moderate DMG(Special), +DMG",
-  "icon": "paindomination_sharepain.png",
-  "powerType": "Click",
-  "targetType": "Ally (Alive)",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 80,
-    "recharge": 15,
-    "endurance": 0.52,
-    "castTime": 2.27
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Healing"
-  ],
-  "allowedSetCategories": [
-    "Healing"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Heal",
-      "scale": 4,
-      "table": "Ranged_Heal"
-    },
-    {
-      "type": "Special",
-      "scale": 2,
-      "table": "Ranged_Damage"
-    }
-  ],
-  "effects": {
-    "resistance": {
-      "heal": {
-        "scale": 1,
-        "table": "Ranged_Ones"
-      }
-    },
-    "durations": {
-      "resistance": 15,
-      "regenDebuff": 15,
-      "damageBuff": 15
-    },
-    "regenDebuff": {
-      "scale": 1,
-      "table": "Ranged_Ones"
-    },
-    "damageBuff": {
-      "scale": 2.5,
-      "table": "Ranged_Buff_Dmg"
-    },
-    "buffDuration": 15
-  }
-};
+export const SharePain: Power = withOverrides(base, overrides);

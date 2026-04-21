@@ -1,51 +1,16 @@
 /**
- * Ice Sword
- * Melee, High DMG(Cold/Lethal), Foe -Recharge, -SPD
+ * Ice Sword — COMPOSED EXPORT
  *
- * Source: dominator_assault/icy_assault/ice_sword.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs dominator_assault icy_assault
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { IceSword as base } from '@/data/generated/powersets/dominator/secondary/icy-assault/ice-sword';
+import { overrides } from '@/data/overrides/powersets/dominator/secondary/icy-assault/ice-sword';
 
-export const IceSword: Power = {
-  "name": "Ice Sword",
-  "internalName": "Ice_Sword",
-  "available": 0,
-  "description": "You create a blade of solid ice that deals good damage. Being hit by this Ice Sword will Slow a target's movement and attack speed, due to the intense chill.Damage: High.Recharge: Moderate.",
-  "shortHelp": "Melee, High DMG(Cold/Lethal), Foe -Recharge, -SPD",
-  "icon": "iceassault_icesword.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 7,
-    "recharge": 10,
-    "endurance": 10.192,
-    "castTime": 1.33
-  },
-  "allowedEnhancements": [
-    "Slow",
-    "EnduranceReduction",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Melee Damage",
-    "Slow Movement",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Lethal",
-      "scale": 0.7649,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Cold",
-      "scale": 1.1951,
-      "table": "Melee_Damage"
-    }
-  ]
-};
+export const IceSword: Power = withOverrides(base, overrides);

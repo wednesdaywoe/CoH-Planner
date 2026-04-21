@@ -1,52 +1,16 @@
 /**
- * Scare
- * Ranged, Foe Fear
+ * Scare — COMPOSED EXPORT
  *
- * Source: blaster_support/mental_manipulation/scare.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs blaster_support mental_manipulation
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Scare as base } from '@/data/generated/powersets/blaster/secondary/mental-manipulation/scare';
+import { overrides } from '@/data/overrides/powersets/blaster/secondary/mental-manipulation/scare';
 
-export const Scare: Power = {
-  "name": "Scare",
-  "internalName": "Scare",
-  "available": 23,
-  "description": "You entwine a single foe within their deepest fears and cause them to helplessly tremble for a brief while.Recharge: Slow.",
-  "shortHelp": "Ranged, Foe Fear",
-  "icon": "mentalcontrol_scare.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 60,
-    "recharge": 20,
-    "endurance": 10.4,
-    "castTime": 2.67
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Fear",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Fear"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "fear": {
-      "mag": 3,
-      "scale": 10,
-      "table": "Melee_Fear"
-    },
-    "damageBuff": {
-      "scale": 0.176,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "damageBuff": 10.17
-    },
-    "buffDuration": 10.17
-  }
-};
+export const Scare: Power = withOverrides(base, overrides);

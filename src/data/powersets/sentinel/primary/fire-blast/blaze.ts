@@ -1,53 +1,16 @@
 /**
- * Blaze
- * Ranged, DMG(Fire), DoT(Fire)
+ * Blaze — COMPOSED EXPORT
  *
- * Source: sentinel_ranged/fire_blast/blaze.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs sentinel_ranged fire_blast
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Blaze as base } from '@/data/generated/powersets/sentinel/primary/fire-blast/blaze';
+import { overrides } from '@/data/overrides/powersets/sentinel/primary/fire-blast/blaze';
 
-export const Blaze: Power = {
-  "name": "Blaze",
-  "internalName": "Blaze",
-  "available": 5,
-  "description": "A devastating flame attack.Damage: Extreme.Recharge: Moderate.",
-  "shortHelp": "Ranged, DMG(Fire), DoT(Fire)",
-  "icon": "fireblast_blaze.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 60,
-    "recharge": 10,
-    "endurance": 10.192,
-    "castTime": 1
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Ranged Damage",
-    "Sentinel Archetype Sets",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Fire",
-      "scale": 1.96,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.225,
-      "table": "Ranged_Damage",
-      "duration": 4.1,
-      "tickRate": 1
-    }
-  ]
-};
+export const Blaze: Power = withOverrides(base, overrides);

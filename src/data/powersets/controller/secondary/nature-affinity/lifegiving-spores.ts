@@ -1,51 +1,16 @@
 /**
- * Lifegiving Spores
- * Toggle (Location AoE), PBAoE +Minor Heal Over Time, +Endurance
+ * Lifegiving Spores — COMPOSED EXPORT
  *
- * Source: controller_buff/nature_affinity/lifegiving_spores.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs controller_buff nature_affinity
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { LifegivingSpores as base } from '@/data/generated/powersets/controller/secondary/nature-affinity/lifegiving-spores';
+import { overrides } from '@/data/overrides/powersets/controller/secondary/nature-affinity/lifegiving-spores';
 
-export const LifegivingSpores: Power = {
-  "name": "Lifegiving Spores",
-  "internalName": "Lifegiving_Spores",
-  "available": 15,
-  "description": "When activating this power you cause all allies at a selected location to recover a small amount of health and endurance every few seconds as long as they remain within the Lifegiving Spores.Recharge: Fast.",
-  "shortHelp": "Toggle (Location AoE), PBAoE +Minor Heal Over Time, +Endurance",
-  "icon": "natureaffinity_lifegivingspores.png",
-  "powerType": "Toggle",
-  "targetType": "Location",
-  "effectArea": "Location",
-  "stats": {
-    "accuracy": 1,
-    "range": 60,
-    "recharge": 4,
-    "endurance": 0.26,
-    "castTime": 2.33,
-    "activatePeriod": 1
-  },
-  "allowedEnhancements": [
-    "EnduranceModification",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Healing"
-  ],
-  "allowedSetCategories": [
-    "Endurance Modification",
-    "Healing"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "isPseudoPet": true,
-      "displayName": "LIfegiving Spores",
-      "powers": [
-        "Pets.ResistAll.ResistAll",
-        "Pets.Lifegiving_Spores.Lifegiving_Spores"
-      ],
-      "copyBoosts": true
-    }
-  }
-};
+export const LifegivingSpores: Power = withOverrides(base, overrides);

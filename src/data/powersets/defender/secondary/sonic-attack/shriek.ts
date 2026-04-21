@@ -1,91 +1,16 @@
 /**
- * Shriek
- * Ranged, Light DMG(Smash/Energy), Foe -Resist
+ * Shriek — COMPOSED EXPORT
  *
- * Source: defender_ranged/sonic_attack/shriek.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs defender_ranged sonic_attack
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Shriek as base } from '@/data/generated/powersets/defender/secondary/sonic-attack/shriek';
+import { overrides } from '@/data/overrides/powersets/defender/secondary/sonic-attack/shriek';
 
-export const Shriek: Power = {
-  "name": "Shriek",
-  "internalName": "Shriek",
-  "available": 0,
-  "description": "You let forth a quick Shriek, damaging your target.",
-  "shortHelp": "Ranged, Light DMG(Smash/Energy), Foe -Resist",
-  "icon": "sonicblast_quick.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 80,
-    "recharge": 3,
-    "endurance": 4.368,
-    "castTime": 1
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Defender Archetype Sets",
-    "Ranged Damage",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 0.42,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.42,
-      "table": "Ranged_Damage"
-    }
-  ],
-  "effects": {
-    "resistanceDebuff": {
-      "smashing": {
-        "scale": 1.5,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "lethal": {
-        "scale": 1.5,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "fire": {
-        "scale": 1.5,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "cold": {
-        "scale": 1.5,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "energy": {
-        "scale": 1.5,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "negative": {
-        "scale": 1.5,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "psionic": {
-        "scale": 1.5,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "toxic": {
-        "scale": 1.5,
-        "table": "Ranged_Debuff_Res_Dmg"
-      }
-    },
-    "durations": {
-      "resistanceDebuff": 8
-    },
-    "buffDuration": 8
-  }
-};
+export const Shriek: Power = withOverrides(base, overrides);

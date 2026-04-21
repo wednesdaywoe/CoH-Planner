@@ -1,60 +1,16 @@
 /**
- * Web Grenade
- * Ranged, Target Immobilize, -Recharge, -Fly
+ * Web Grenade — COMPOSED EXPORT
  *
- * Source: corruptor_buff/traps/web_grenade.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs corruptor_buff traps
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { WebGrenade as base } from '@/data/generated/powersets/corruptor/secondary/traps/web-grenade';
+import { overrides } from '@/data/overrides/powersets/corruptor/secondary/traps/web-grenade';
 
-export const WebGrenade: Power = {
-  "name": "Web Grenade",
-  "internalName": "Web_Grenade",
-  "available": 0,
-  "description": "Upon impact, the Web Grenade expels a strong, tenuous, and very sticky substance that can Immobilize most targets. This non-lethal device deals no damage and does not prevent targets from attacking, although their attack rate is Slowed. The Web can bring down flying entities and halts jumping.",
-  "shortHelp": "Ranged, Target Immobilize, -Recharge, -Fly",
-  "icon": "traps_targetedimmoblize.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 70,
-    "recharge": 4,
-    "endurance": 7.8,
-    "castTime": 1.37
-  },
-  "allowedEnhancements": [
-    "Slow",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Immobilize",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Immobilize",
-    "Slow Movement"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "immobilize": {
-      "mag": 3,
-      "scale": 15,
-      "table": "Ranged_Immobilize"
-    },
-    "mezResistance": {
-      "knockup": {
-        "scale": 100,
-        "table": "Ranged_Ones"
-      },
-      "knockback": {
-        "scale": 100,
-        "table": "Ranged_Ones"
-      }
-    },
-    "durations": {
-      "mezResistance": 15
-    },
-    "buffDuration": 15
-  }
-};
+export const WebGrenade: Power = withOverrides(base, overrides);

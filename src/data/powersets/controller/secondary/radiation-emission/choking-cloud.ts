@@ -1,46 +1,16 @@
 /**
- * Choking Cloud
- * Toggle: PBAoE, Foe Hold
+ * Choking Cloud — COMPOSED EXPORT
  *
- * Source: controller_buff/radiation_emission/choking_cloud.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs controller_buff radiation_emission
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { ChokingCloud as base } from '@/data/generated/powersets/controller/secondary/radiation-emission/choking-cloud';
+import { overrides } from '@/data/overrides/powersets/controller/secondary/radiation-emission/choking-cloud';
 
-export const ChokingCloud: Power = {
-  "name": "Choking Cloud",
-  "internalName": "Choking_Cloud",
-  "available": 23,
-  "description": "While active, you generate toxic radioactive gas around yourself. Any nearby foes may be overcome by the gas, leaving them choking and helpless.Recharge: Slow.",
-  "shortHelp": "Toggle: PBAoE, Foe Hold",
-  "icon": "radiationpoisoning_chokingcloud.png",
-  "powerType": "Toggle",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "radius": 15,
-    "recharge": 20,
-    "endurance": 1.3,
-    "castTime": 1,
-    "activatePeriod": 2,
-    "maxTargets": 16
-  },
-  "allowedEnhancements": [
-    "Hold",
-    "EnduranceReduction",
-    "Recharge"
-  ],
-  "allowedSetCategories": [
-    "Controller Archetype Sets",
-    "Holds"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "hold": {
-      "mag": 2,
-      "scale": 4,
-      "table": "Ranged_Immobilize"
-    }
-  }
-};
+export const ChokingCloud: Power = withOverrides(base, overrides);

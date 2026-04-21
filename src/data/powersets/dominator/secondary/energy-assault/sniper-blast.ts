@@ -1,60 +1,16 @@
 /**
- * Sniper Blast
- * Sniper, Extreme DMG(Energy/Smash), Foe Knockback
+ * Sniper Blast — COMPOSED EXPORT
  *
- * Source: dominator_assault/energy_assault/sniper_blast.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs dominator_assault energy_assault
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { SniperBlast as base } from '@/data/generated/powersets/dominator/secondary/energy-assault/sniper-blast';
+import { overrides } from '@/data/overrides/powersets/dominator/secondary/energy-assault/sniper-blast';
 
-export const SniperBlast: Power = {
-  "name": "Sniper Blast",
-  "internalName": "Sniper_Blast",
-  "available": 27,
-  "description": "A focused blast that can travel great distances with high Accuracy. This is a sniper attack, and is best fired from a distance, as it can be interrupted. If you are engaged in battle this attack becomes instant-cast. If you are not engaged, it will do bonus damage. If used against a Disoriented foe, there is a small chance to enter Energy Focus mode.Damage: Extreme.Recharge: Slow.",
-  "shortHelp": "Sniper, Extreme DMG(Energy/Smash), Foe Knockback",
-  "icon": "energyassault_sniperblaster.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 150,
-    "recharge": 20,
-    "endurance": 18.512,
-    "castTime": 1.33
-  },
-  "allowedEnhancements": [
-    "Interrupt",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Knockback",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Knockback",
-    "Ranged Damage",
-    "Sniper Attacks",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 1.8,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 2.7,
-      "table": "Ranged_Damage"
-    }
-  ],
-  "effects": {
-    "knockback": {
-      "scale": 0.7,
-      "table": "Ranged_Knockback"
-    }
-  }
-};
+export const SniperBlast: Power = withOverrides(base, overrides);

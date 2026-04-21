@@ -1,48 +1,16 @@
 /**
- * Fire Imps
- * Summon Imps: Melee Minor DMG(Fire)
+ * Fire Imps — COMPOSED EXPORT
  *
- * Source: dominator_control/fire_control/fire_imps.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs dominator_control fire_control
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { FireImps as base } from '@/data/generated/powersets/dominator/primary/fire-control/fire-imps';
+import { overrides } from '@/data/overrides/powersets/dominator/primary/fire-control/fire-imps';
 
-export const FireImps: Power = {
-  "name": "Fire Imps",
-  "internalName": "Fire_Imps",
-  "available": 25,
-  "description": "You can craft 3 small Fire Imps out of pure flame in a targeted location. Fire Imps will viciously attack any nearby foes, but they only possess the most basic instincts. Fire Imps can be healed and buffed like any teammate.",
-  "shortHelp": "Summon Imps: Melee Minor DMG(Fire)",
-  "icon": "firetrap_fireimps.png",
-  "powerType": "Click",
-  "targetType": "Location",
-  "effectArea": "Location",
-  "stats": {
-    "accuracy": 1.2,
-    "range": 60,
-    "recharge": 240,
-    "endurance": 26,
-    "castTime": 2.03
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Pet Damage",
-    "Recharge Intensive Pets",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_FireImp",
-      "copyBoosts": true,
-      "entityCount": 3
-    }
-  }
-};
+export const FireImps: Power = withOverrides(base, overrides);

@@ -1,56 +1,16 @@
 /**
- * Shatter
- * Melee (Cone), DMG(Smashing), Knockback
+ * Shatter — COMPOSED EXPORT
  *
- * Source: brute_melee/war_mace/shatter.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs brute_melee war_mace
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Shatter as base } from '@/data/generated/powersets/brute/primary/war-mace/shatter';
+import { overrides } from '@/data/overrides/powersets/brute/primary/war-mace/shatter';
 
-export const Shatter: Power = {
-  "name": "Shatter",
-  "internalName": "Shatter",
-  "available": 21,
-  "description": "You attempt to Shatter the bones of your opponent by striking them with all your might. This attack will deal great damage and can knock foes back a great ways. The power of this attack can actually extend a short distance through multiple foes.Damage: High.Recharge: Slow.",
-  "shortHelp": "Melee (Cone), DMG(Smashing), Knockback",
-  "icon": "mace_shatter.png",
-  "powerType": "Click",
-  "effectArea": "Cone",
-  "stats": {
-    "accuracy": 1.05,
-    "range": 8,
-    "radius": 8,
-    "arc": 0.7854,
-    "recharge": 12,
-    "endurance": 11.856,
-    "castTime": 2.33,
-    "maxTargets": 5
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "EnduranceReduction",
-    "Recharge",
-    "Knockback",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Brute Archetype Sets",
-    "Knockback",
-    "Melee AoE Damage",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 2.28,
-    "table": "Melee_Damage"
-  },
-  "effects": {
-    "knockback": {
-      "scale": 0.67,
-      "table": "Melee_Ones"
-    }
-  }
-};
+export const Shatter: Power = withOverrides(base, overrides);

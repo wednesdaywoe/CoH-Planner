@@ -1,71 +1,16 @@
 /**
- * Murky Cloud
- * Toggle: Self +Res(Fire, Cold, Energy, Negative, End Drain)
+ * Murky Cloud — COMPOSED EXPORT
  *
- * Source: sentinel_defense/dark_armor/murky_cloud.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs sentinel_defense dark_armor
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { MurkyCloud as base } from '@/data/generated/powersets/sentinel/secondary/dark-armor/murky-cloud';
+import { overrides } from '@/data/overrides/powersets/sentinel/secondary/dark-armor/murky-cloud';
 
-export const MurkyCloud: Power = {
-  "name": "Murky Cloud",
-  "internalName": "Murky_Cloud",
-  "available": 3,
-  "description": "You create a Murky Cloud enshrouding you. This cloud can absorb all forms of energy, making you more resistant to Fire, Cold, Energy, and Negative Energy attacks, as well as Endurance Drain effects.",
-  "shortHelp": "Toggle: Self +Res(Fire, Cold, Energy, Negative, End Drain)",
-  "icon": "darkarmor_defractingcloud.png",
-  "powerType": "Toggle",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 2,
-    "endurance": 0.104,
-    "castTime": 1.17,
-    "activatePeriod": 0.5
-  },
-  "allowedEnhancements": [
-    "Resistance",
-    "EnduranceReduction",
-    "Recharge"
-  ],
-  "allowedSetCategories": [
-    "Resist Damage"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "resistance": {
-      "fire": {
-        "scale": 3,
-        "table": "Melee_Res_Dmg"
-      },
-      "cold": {
-        "scale": 3,
-        "table": "Melee_Res_Dmg"
-      },
-      "energy": {
-        "scale": 2,
-        "table": "Melee_Res_Dmg"
-      },
-      "negative": {
-        "scale": 2,
-        "table": "Melee_Res_Dmg"
-      }
-    },
-    "durations": {
-      "resistance": 0.75,
-      "debuffResistance": 0.75
-    },
-    "debuffResistance": {
-      "endurance": {
-        "scale": 2,
-        "table": "Melee_Res_Boolean"
-      },
-      "recovery": {
-        "scale": 2,
-        "table": "Melee_Res_Boolean"
-      }
-    },
-    "buffDuration": 0.75
-  }
-};
+export const MurkyCloud: Power = withOverrides(base, overrides);

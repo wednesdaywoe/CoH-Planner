@@ -1,59 +1,16 @@
 /**
- * Energy Transfer
- * Melee, DMG(Energy), Foe Disorient, Self -HP, Special
+ * Energy Transfer — COMPOSED EXPORT
  *
- * Source: brute_melee/energy_melee/energy_transfer.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs brute_melee energy_melee
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { EnergyTransfer as base } from '@/data/generated/powersets/brute/primary/energy-melee/energy-transfer';
+import { overrides } from '@/data/overrides/powersets/brute/primary/energy-melee/energy-transfer';
 
-export const EnergyTransfer: Power = {
-  "name": "Energy Transfer",
-  "internalName": "Energy_Transfer",
-  "available": 25,
-  "description": "Mastery of Energy Melee culminates with the ability to transfer your own Hit Points into a punch that deals extreme damage. Energy Transfer has a good chance of Disorienting the target. This power will execute extremely quickly if under Energy Focus mode.",
-  "shortHelp": "Melee, DMG(Energy), Foe Disorient, Self -HP, Special",
-  "icon": "powerpunch_energytransfer.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1.2,
-    "range": 7,
-    "recharge": 10,
-    "castTime": 2.67
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "Stun",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Brute Archetype Sets",
-    "Melee Damage",
-    "Stuns",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Energy",
-      "scale": 4.56,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Special",
-      "scale": -1,
-      "table": "Melee_HealSelf"
-    }
-  ],
-  "effects": {
-    "stun": {
-      "mag": 3,
-      "scale": 8,
-      "table": "Melee_Stun"
-    }
-  }
-};
+export const EnergyTransfer: Power = withOverrides(base, overrides);

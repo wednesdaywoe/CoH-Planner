@@ -1,47 +1,16 @@
 /**
- * Incinerate
- * Melee, DoT (Fire)
+ * Incinerate — COMPOSED EXPORT
  *
- * Source: tanker_melee/fiery_melee/incinerate.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs tanker_melee fiery_melee
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Incinerate as base } from '@/data/generated/powersets/tanker/secondary/fiery-melee/incinerate';
+import { overrides } from '@/data/overrides/powersets/tanker/secondary/fiery-melee/incinerate';
 
-export const Incinerate: Power = {
-  "name": "Incinerate",
-  "internalName": "Incinerate",
-  "available": 27,
-  "description": "Intense concentration can allow you to Incinerate an opponent. This will set your foe ablaze, dealing damage over time.",
-  "shortHelp": "Melee, DoT (Fire)",
-  "icon": "fieryfray_incinerate.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 7,
-    "recharge": 10,
-    "endurance": 6.864,
-    "castTime": 1.67
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "EnduranceReduction",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Melee Damage",
-    "Tanker Archetype Sets",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Fire",
-    "scale": 0.25,
-    "table": "Melee_Damage",
-    "duration": 4.6,
-    "tickRate": 0.5
-  }
-};
+export const Incinerate: Power = withOverrides(base, overrides);

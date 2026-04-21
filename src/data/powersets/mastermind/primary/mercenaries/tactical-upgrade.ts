@@ -1,37 +1,16 @@
 /**
- * Tactical Upgrade
- * Ranged, Upgrade Mercenary Henchman
+ * Tactical Upgrade — COMPOSED EXPORT
  *
- * Source: mastermind_summon/mercenaries/tactical_upgrade.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs mastermind_summon mercenaries
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { TacticalUpgrade as base } from '@/data/generated/powersets/mastermind/primary/mercenaries/tactical-upgrade';
+import { overrides } from '@/data/overrides/powersets/mastermind/primary/mercenaries/tactical-upgrade';
 
-export const TacticalUpgrade: Power = {
-  "name": "Tactical Upgrade",
-  "internalName": "Tactical_Upgrade",
-  "available": 25,
-  "description": "Permanently Upgrade the most advanced tactical weapons and gear to all of your Mercenary Henchman. The Tactically Upgraded Mercenaries will gain powers, weapons and munitions. The powers gained are unique and dependent upon the type of Mercenary Henchman that is Upgraded.Your Mercenary Henchmen will also become more evasive towards Ranged and AoE attacks. This power only works on your Mercenary Henchmen and you can only Upgrade your Mercenary Henchmen once with this power.",
-  "shortHelp": "Ranged, Upgrade Mercenary Henchman",
-  "icon": "paramilitary_tacticalupgrade.png",
-  "powerType": "Click",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "range": 50,
-    "radius": 30,
-    "recharge": 0.5,
-    "endurance": 11.375,
-    "castTime": 2.03,
-    "maxTargets": 16
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Defense"
-  ],
-  "allowedSetCategories": [
-    "Defense Sets"
-  ],
-  "maxSlots": 6
-};
+export const TacticalUpgrade: Power = withOverrides(base, overrides);

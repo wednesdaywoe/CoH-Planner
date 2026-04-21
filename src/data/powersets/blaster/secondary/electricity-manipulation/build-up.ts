@@ -1,50 +1,16 @@
 /**
- * Build Up
- * Self +DMG, +To Hit
+ * Build Up — COMPOSED EXPORT
  *
- * Source: blaster_support/electricity_manipulation/build_up.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs blaster_support electricity_manipulation
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { BuildUp as base } from '@/data/generated/powersets/blaster/secondary/electricity-manipulation/build-up';
+import { overrides } from '@/data/overrides/powersets/blaster/secondary/electricity-manipulation/build-up';
 
-export const BuildUp: Power = {
-  "name": "Build Up",
-  "internalName": "Build_Up",
-  "available": 3,
-  "description": "Greatly boosts your attacks for a few seconds. Slightly increases chance to hit.",
-  "shortHelp": "Self +DMG, +To Hit",
-  "icon": "electricitymanipulation_buildup.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 90,
-    "endurance": 5.2,
-    "castTime": 1.17
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "ToHit"
-  ],
-  "allowedSetCategories": [
-    "To Hit Buff"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "tohitBuff": {
-      "scale": 2,
-      "table": "Melee_Buff_ToHit"
-    },
-    "durations": {
-      "tohitBuff": 10,
-      "damageBuff": 10
-    },
-    "damageBuff": {
-      "scale": 8,
-      "table": "Melee_Buff_Dmg"
-    },
-    "buffDuration": 10
-  }
-};
+export const BuildUp: Power = withOverrides(base, overrides);

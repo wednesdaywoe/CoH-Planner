@@ -1,63 +1,16 @@
 /**
- * Photon Grenade
- * Ranged (Targeted AoE), DMG(Energy), Disorient, -Regen
+ * Photon Grenade — COMPOSED EXPORT
  *
- * Source: mastermind_summon/robotics/photon_grenade.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs mastermind_summon robotics
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { PhotonGrenade as base } from '@/data/generated/powersets/mastermind/primary/robotics/photon-grenade';
+import { overrides } from '@/data/overrides/powersets/mastermind/primary/robotics/photon-grenade';
 
-export const PhotonGrenade: Power = {
-  "name": "Photon Grenade",
-  "internalName": "Photon_Grenade",
-  "available": 7,
-  "description": "Launches an Energy Grenade at long range from your Pulse Rifle. The energy from this explosion can Disorient some targets in the affected area and debuffs their regeneration.Laser Burn:Targets struck by this attack will have their Regeneration debuffed for 30 seconds.",
-  "shortHelp": "Ranged (Targeted AoE), DMG(Energy), Disorient, -Regen",
-  "icon": "robotics_laserriflestungrenade.png",
-  "powerType": "Click",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "range": 80,
-    "radius": 15,
-    "recharge": 16,
-    "endurance": 15.18,
-    "castTime": 1.87,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Stun",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Mastermind Archetype Sets",
-    "Ranged AoE Damage",
-    "Stuns",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Energy",
-    "scale": 0.8985,
-    "table": "Ranged_Damage"
-  },
-  "effects": {
-    "regenDebuff": {
-      "scale": 2,
-      "table": "Ranged_Ones"
-    },
-    "durations": {
-      "regenDebuff": 30
-    },
-    "stun": {
-      "mag": 2,
-      "scale": 4,
-      "table": "Ranged_Stun"
-    },
-    "buffDuration": 30
-  }
-};
+export const PhotonGrenade: Power = withOverrides(base, overrides);

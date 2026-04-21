@@ -1,78 +1,16 @@
 /**
- * Entangle
- * Ranged, DoT(Smashing, Lethal), Foe Immobilize
+ * Entangle — COMPOSED EXPORT
  *
- * Source: dominator_control/plant_control/entangle.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs dominator_control plant_control
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Entangle as base } from '@/data/generated/powersets/dominator/primary/plant-control/entangle';
+import { overrides } from '@/data/overrides/powersets/dominator/primary/plant-control/entangle';
 
-export const Entangle: Power = {
-  "name": "Entangle",
-  "internalName": "Entangle",
-  "available": 0,
-  "description": "Immobilizes your target by Entangling their feet in a twisted mass of thorny roots. The roots do smashing and lethal damage to the target over time. More resilient foes may require multiple applications to Immobilize. Entangle can immobilize flying targets, if they are near the ground when attacked.",
-  "shortHelp": "Ranged, DoT(Smashing, Lethal), Foe Immobilize",
-  "icon": "plantcontrol_entangle.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1.2,
-    "range": 80,
-    "recharge": 4,
-    "endurance": 7.8,
-    "castTime": 1.2
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Immobilize",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Dominator Archetype Sets",
-    "Immobilize",
-    "Ranged Damage",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 0.1,
-      "table": "Ranged_Damage",
-      "duration": 9.2,
-      "tickRate": 2
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.1,
-      "table": "Ranged_Damage",
-      "duration": 9.2,
-      "tickRate": 2
-    }
-  ],
-  "effects": {
-    "immobilize": {
-      "mag": 4,
-      "scale": 15,
-      "table": "Ranged_Immobilize"
-    },
-    "mezResistance": {
-      "knockup": {
-        "scale": 100,
-        "table": "Ranged_Ones"
-      },
-      "knockback": {
-        "scale": 100,
-        "table": "Ranged_Ones"
-      }
-    },
-    "durations": {
-      "mezResistance": 15
-    },
-    "buffDuration": 15
-  }
-};
+export const Entangle: Power = withOverrides(base, overrides);

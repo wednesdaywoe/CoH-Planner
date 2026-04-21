@@ -1,57 +1,16 @@
 /**
- * Crush
- * Ranged, DoT(Smash), Foe Immobilize, -Fly
+ * Crush — COMPOSED EXPORT
  *
- * Source: dominator_control/gravity_control/crush.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs dominator_control gravity_control
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Crush as base } from '@/data/generated/powersets/dominator/primary/gravity-control/crush';
+import { overrides } from '@/data/overrides/powersets/dominator/primary/gravity-control/crush';
 
-export const Crush: Power = {
-  "name": "Crush",
-  "internalName": "Crush",
-  "available": 0,
-  "description": "Creates a localized gravitational field strong enough to Immobilize a single foe. Crush can also bring down flying entities. This power deals Smashing damage over time and can Slow the movement of targets that escape its grasp.",
-  "shortHelp": "Ranged, DoT(Smash), Foe Immobilize, -Fly",
-  "icon": "gravitycontrol_crush.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1.2,
-    "range": 80,
-    "recharge": 4,
-    "endurance": 7.8,
-    "castTime": 1.33
-  },
-  "allowedEnhancements": [
-    "Slow",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Immobilize",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Dominator Archetype Sets",
-    "Immobilize",
-    "Ranged Damage",
-    "Slow Movement",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 0.2,
-    "table": "Ranged_Damage",
-    "duration": 9.2,
-    "tickRate": 2
-  },
-  "effects": {
-    "immobilize": {
-      "mag": 4,
-      "scale": 15,
-      "table": "Ranged_Immobilize"
-    }
-  }
-};
+export const Crush: Power = withOverrides(base, overrides);

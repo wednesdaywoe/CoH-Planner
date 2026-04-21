@@ -1,68 +1,16 @@
 /**
- * Kuji-In Toh
- * Self +Regen, +Recovery, Res(Psionic, Fear)
+ * Kuji-In Toh — COMPOSED EXPORT
  *
- * Source: blaster_support/ninja_training/kuji-in_toh.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs blaster_support ninja_training
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { KujiInToh as base } from '@/data/generated/powersets/blaster/secondary/ninja-training/kuji-in-toh';
+import { overrides } from '@/data/overrides/powersets/blaster/secondary/ninja-training/kuji-in-toh';
 
-export const KujiInToh: Power = {
-  "name": "Kuji-In Toh",
-  "internalName": "Kuji-In_Toh",
-  "available": 19,
-  "description": "Kuji-In Toh invokes the power of Toh, or harmony with the universe. Focusing your inner power, you can make your body regenerate and recover endurance for a while. You also gain resistance to psionic attacks and fear protection.Recharge: Long.",
-  "shortHelp": "Self +Regen, +Recovery, Res(Psionic, Fear)",
-  "icon": "ninjatools_toh.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 200,
-    "endurance": 5.2,
-    "castTime": 1
-  },
-  "allowedEnhancements": [
-    "Resistance",
-    "EnduranceModification",
-    "EnduranceReduction",
-    "Recharge",
-    "Healing"
-  ],
-  "allowedSetCategories": [
-    "Endurance Modification",
-    "Healing",
-    "Resist Damage"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "regenBuff": {
-      "scale": 2.25,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "regenBuff": 210,
-      "recoveryBuff": 210,
-      "resistance": 210,
-      "fear": 210
-    },
-    "recoveryBuff": {
-      "scale": 0.5,
-      "table": "Melee_Ones"
-    },
-    "resistance": {
-      "psionic": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      }
-    },
-    "fear": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "effectDuration": 210,
-    "buffDuration": 210
-  }
-};
+export const KujiInToh: Power = withOverrides(base, overrides);

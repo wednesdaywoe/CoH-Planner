@@ -1,40 +1,16 @@
 /**
- * Time's Juncture
- * Toggle: PBAoE Foe (-Damage, -Speed, -To Hit)
+ * Time's Juncture — COMPOSED EXPORT
  *
- * Source: defender_buff/time_manipulation/times_juncture.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs defender_buff time_manipulation
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { TimesJuncture as base } from '@/data/generated/powersets/defender/primary/time-manipulation/times-juncture';
+import { overrides } from '@/data/overrides/powersets/defender/primary/time-manipulation/times-juncture';
 
-export const TimesJuncture: Power = {
-  "name": "Time's Juncture",
-  "internalName": "Times_Juncture",
-  "available": 1,
-  "description": "You create a time dilation field around you causing enemies who get too close to be slowed to a crawl, their movement speed, damage and chance to hit will be decreased substantially. Enemies affected by Delayed have these affects increased.Recharge: Moderate.",
-  "shortHelp": "Toggle: PBAoE Foe (-Damage, -Speed, -To Hit)",
-  "icon": "timemanipulation_timesjuncture.png",
-  "powerType": "Toggle",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "radius": 25,
-    "recharge": 10,
-    "endurance": 0.39,
-    "castTime": 0.67,
-    "activatePeriod": 0.75,
-    "maxTargets": 16
-  },
-  "allowedEnhancements": [
-    "Slow",
-    "EnduranceReduction",
-    "Recharge",
-    "ToHit Debuff"
-  ],
-  "allowedSetCategories": [
-    "Slow Movement",
-    "To Hit Debuff"
-  ],
-  "maxSlots": 6
-};
+export const TimesJuncture: Power = withOverrides(base, overrides);

@@ -1,57 +1,16 @@
 /**
- * Time Stop
- * Ranged, Foe Hold, -Regen, -Heal
+ * Time Stop — COMPOSED EXPORT
  *
- * Source: blaster_support/time_manipulation/time_stop.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs blaster_support time_manipulation
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { TimeStop as base } from '@/data/generated/powersets/blaster/secondary/temporal-manipulation/time-stop';
+import { overrides } from '@/data/overrides/powersets/blaster/secondary/temporal-manipulation/time-stop';
 
-export const TimeStop: Power = {
-  "name": "Time Stop",
-  "internalName": "Time_Stop",
-  "available": 3,
-  "description": "You trap your target within the flow of time causing them to be held helpless. Even those resistant to the effects of Time Stop's hold will still have their regeneration rate and healing effects reduced for a brief period. Targets affected by the Delayed effect will suffer from a more powerful hold, however its benefits are brief.Recharge: Slow.",
-  "shortHelp": "Ranged, Foe Hold, -Regen, -Heal",
-  "icon": "timemanipulation_timestop.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 60,
-    "recharge": 16,
-    "endurance": 11.388,
-    "castTime": 2.17
-  },
-  "allowedEnhancements": [
-    "Hold",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Holds"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "hold": {
-      "mag": 2,
-      "scale": 10,
-      "table": "Ranged_Immobilize"
-    },
-    "regenDebuff": {
-      "scale": 0.5,
-      "table": "Ranged_Ones"
-    },
-    "durations": {
-      "regenDebuff": 20,
-      "damageBuff": 9.67
-    },
-    "damageBuff": {
-      "scale": 0.143,
-      "table": "Ranged_Ones"
-    },
-    "buffDuration": 20
-  }
-};
+export const TimeStop: Power = withOverrides(base, overrides);

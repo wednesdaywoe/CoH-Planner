@@ -1,71 +1,16 @@
 /**
- * Whirling Hands
- * PBAoE Melee, DMG(Smash/Energy)
+ * Whirling Hands — COMPOSED EXPORT
  *
- * Source: scrapper_melee/energy_melee/whirling_hands.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs scrapper_melee energy_melee
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { WhirlingHands as base } from '@/data/generated/powersets/scrapper/primary/energy-melee/whirling-hands';
+import { overrides } from '@/data/overrides/powersets/scrapper/primary/energy-melee/whirling-hands';
 
-export const WhirlingHands: Power = {
-  "name": "Whirling Hands",
-  "internalName": "Whirling_Hands",
-  "available": 17,
-  "description": "By focusing your energy into the muscles in your arms, you can launch a dizzying flurry of attacks against every foe in melee range. Some foes may be hit hard enough to be Disoriented as well.",
-  "shortHelp": "PBAoE Melee, DMG(Smash/Energy)",
-  "icon": "powerpunch_flurry.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "radius": 8,
-    "recharge": 14,
-    "endurance": 13,
-    "castTime": 2.5,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Stun",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Melee AoE Damage",
-    "Scrapper Archetype Sets",
-    "Stuns",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 0.4964,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.6855,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.1818,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.1818,
-      "table": "Melee_InherentDamage"
-    }
-  ],
-  "effects": {
-    "stun": {
-      "mag": 2,
-      "scale": 5,
-      "table": "Melee_Stun"
-    }
-  }
-};
+export const WhirlingHands: Power = withOverrides(base, overrides);

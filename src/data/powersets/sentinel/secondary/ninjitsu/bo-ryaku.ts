@@ -1,92 +1,16 @@
 /**
- * Bo Ryaku
- * Auto: Self +Res(Knockback, Knockup, All DMG)
+ * Bo Ryaku — COMPOSED EXPORT
  *
- * Source: sentinel_defense/ninjitsu/bo_ryaku.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs sentinel_defense ninjitsu
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { BoRyaku as base } from '@/data/generated/powersets/sentinel/secondary/ninjitsu/bo-ryaku';
+import { overrides } from '@/data/overrides/powersets/sentinel/secondary/ninjitsu/bo-ryaku';
 
-export const BoRyaku: Power = {
-  "name": "Bo Ryaku",
-  "internalName": "Bo_Ryaku",
-  "available": 23,
-  "description": "Bō Ryaku is one of the 18 fundamental skills of the Togakure-ryū school of ninjutsu. Alongside more orthodox and mainstream measures, Bō Ryaku includes use of unorthodox strategies and tactics that help you minimize the amount of damage taken in combat. This power is always on and costs no endurance.",
-  "shortHelp": "Auto: Self +Res(Knockback, Knockup, All DMG)",
-  "icon": "ninjitsu_resistance.png",
-  "powerType": "Auto",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "activatePeriod": 10
-  },
-  "allowedEnhancements": [
-    "Resistance"
-  ],
-  "allowedSetCategories": [
-    "Resist Damage"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "mezResistance": {
-      "knockup": {
-        "scale": 5,
-        "table": "Melee_Res_Boolean"
-      },
-      "knockback": {
-        "scale": 5,
-        "table": "Melee_Res_Boolean"
-      }
-    },
-    "durations": {
-      "mezResistance": 10.25,
-      "knockup": 10.25,
-      "knockback": 10.25,
-      "resistance": 10.25
-    },
-    "knockup": {
-      "scale": 15,
-      "table": "Melee_Res_Boolean"
-    },
-    "knockback": {
-      "scale": 15,
-      "table": "Melee_Res_Boolean"
-    },
-    "resistance": {
-      "smashing": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      },
-      "lethal": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      },
-      "fire": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      },
-      "cold": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      },
-      "energy": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      },
-      "negative": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      },
-      "psionic": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      },
-      "toxic": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      }
-    },
-    "buffDuration": 10.25
-  }
-};
+export const BoRyaku: Power = withOverrides(base, overrides);

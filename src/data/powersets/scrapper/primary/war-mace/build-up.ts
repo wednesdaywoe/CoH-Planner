@@ -1,51 +1,16 @@
 /**
- * Build Up
- * Self +DMG, +To Hit
+ * Build Up — COMPOSED EXPORT
  *
- * Source: scrapper_melee/war_mace/build_up.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs scrapper_melee war_mace
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { BuildUp as base } from '@/data/generated/powersets/scrapper/primary/war-mace/build-up';
+import { overrides } from '@/data/overrides/powersets/scrapper/primary/war-mace/build-up';
 
-export const BuildUp: Power = {
-  "name": "Build Up",
-  "internalName": "Build_Up",
-  "available": 5,
-  "description": "Greatly increases the amount of damage you deal for a few seconds, as well as slightly increasing your chance to hit.",
-  "shortHelp": "Self +DMG, +To Hit",
-  "icon": "mace_buildup.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1.05,
-    "recharge": 90,
-    "endurance": 5.2,
-    "castTime": 1.17
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "ToHit"
-  ],
-  "allowedSetCategories": [
-    "Scrapper Archetype Sets",
-    "To Hit Buff"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "tohitBuff": {
-      "scale": 2,
-      "table": "Melee_Buff_ToHit"
-    },
-    "durations": {
-      "tohitBuff": 10,
-      "damageBuff": 10
-    },
-    "damageBuff": {
-      "scale": 8,
-      "table": "Melee_Buff_Dmg"
-    },
-    "buffDuration": 10
-  }
-};
+export const BuildUp: Power = withOverrides(base, overrides);

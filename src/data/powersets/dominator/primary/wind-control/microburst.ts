@@ -1,69 +1,16 @@
 /**
- * Microburst
- * Ranged (Targeted AoE), Variable DMG(Smashing), Stun(Foe), -Speed(Foe, All), -Fly(Foe), -Rech(Foe), Chance for -DEF(Foe, All), Consumes Pressure
+ * Microburst — COMPOSED EXPORT
  *
- * Source: dominator_control/wind_control/microburst.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs dominator_control wind_control
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Microburst as base } from '@/data/generated/powersets/dominator/primary/wind-control/microburst';
+import { overrides } from '@/data/overrides/powersets/dominator/primary/wind-control/microburst';
 
-export const Microburst: Power = {
-  "name": "Microburst",
-  "internalName": "Microburst",
-  "available": 11,
-  "description": "You release all available Pressure to create an extremely powerful blast of air that descends from the skies and spreads out over a large radius. Any foes caught within the burst are immediately stunned by the force of the wind and suffer smashing damage.Flying foes are knocked out of the sky, while all foes suffer reduced movement speed that lingers for some time. The damage done increases in proportion to the amount of Pressure released when using this power. Also, Microburst can reduce your target's defenses at the when the highest levels of Pressure are released.Damage: Variable.Recharge: Long.",
-  "shortHelp": "Ranged (Targeted AoE), Variable DMG(Smashing), Stun(Foe), -Speed(Foe, All), -Fly(Foe), -Rech(Foe), Chance for -DEF(Foe, All), Consumes Pressure",
-  "icon": "windcontrol_microburst.png",
-  "powerType": "Click",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "range": 70,
-    "radius": 25,
-    "recharge": 90,
-    "endurance": 19.5,
-    "castTime": 2.37,
-    "maxTargets": 16
-  },
-  "allowedEnhancements": [
-    "Slow",
-    "EnduranceReduction",
-    "Range",
-    "Stun",
-    "Recharge",
-    "Defense Debuff",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Defense Debuff",
-    "Dominator Archetype Sets",
-    "Ranged AoE Damage",
-    "Slow Movement",
-    "Stuns",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 0.2,
-    "table": "Ranged_Damage"
-  },
-  "effects": {
-    "stun": {
-      "mag": 3,
-      "scale": 8,
-      "table": "Ranged_Stun"
-    },
-    "defenseDebuff": {
-      "scale": 2.5,
-      "table": "Ranged_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 12
-    },
-    "buffDuration": 12
-  },
-  "requires": "char>accesslevel >= 0"
-};
+export const Microburst: Power = withOverrides(base, overrides);

@@ -1,62 +1,16 @@
 /**
- * Follow Up
- * Melee, DMG(Lethal), Self +DMG +To-hit
+ * Follow Up — COMPOSED EXPORT
  *
- * Source: brute_melee/claws/follow_up.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs brute_melee claws
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { FollowUp as base } from '@/data/generated/powersets/brute/primary/claws/follow-up';
+import { overrides } from '@/data/overrides/powersets/brute/primary/claws/follow-up';
 
-export const FollowUp: Power = {
-  "name": "Follow Up",
-  "internalName": "Follow_Up",
-  "available": 7,
-  "description": "You perform a feint attack that deals moderate damage. After this attack hits, it gives you a large bonus Damage and chance to hit for a brief time.",
-  "shortHelp": "Melee, DMG(Lethal), Self +DMG +To-hit",
-  "icon": "claws_feint.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 7,
-    "recharge": 12,
-    "endurance": 7.8,
-    "castTime": 0.83
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "EnduranceReduction",
-    "Recharge",
-    "Damage",
-    "ToHit",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Brute Archetype Sets",
-    "Melee Damage",
-    "Threat Duration",
-    "To Hit Buff",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 0.8,
-    "table": "Melee_Damage"
-  },
-  "effects": {
-    "tohitBuff": {
-      "scale": 1,
-      "table": "Melee_Buff_ToHit"
-    },
-    "durations": {
-      "tohitBuff": 10,
-      "damageBuff": 10
-    },
-    "damageBuff": {
-      "scale": 3,
-      "table": "Melee_Buff_Dmg"
-    },
-    "buffDuration": 10
-  }
-};
+export const FollowUp: Power = withOverrides(base, overrides);

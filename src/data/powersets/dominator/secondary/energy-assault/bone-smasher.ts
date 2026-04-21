@@ -1,114 +1,16 @@
 /**
- * Bone Smasher
- * Melee, High DMG(Smash/Energy), Disorient, Special, Chance for Energy Focus
+ * Bone Smasher — COMPOSED EXPORT
  *
- * Source: dominator_assault/energy_assault/bone_smasher.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs dominator_assault energy_assault
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { BoneSmasher as base } from '@/data/generated/powersets/dominator/secondary/energy-assault/bone-smasher';
+import { overrides } from '@/data/overrides/powersets/dominator/secondary/energy-assault/bone-smasher';
 
-export const BoneSmasher: Power = {
-  "name": "Bone Smasher",
-  "internalName": "Bone_Smasher",
-  "available": 0,
-  "description": "This melee attack can be slow, but it compensates by dealing a good amount of damage and having a good chance to Disorient the target. If used against a Disoriented foe, there is a small chance to enter Energy Focus mode. This power will weaken the target's secondary effects if used while in Energy Focus mode.Damage: High.Recharge: Moderate.",
-  "shortHelp": "Melee, High DMG(Smash/Energy), Disorient, Special, Chance for Energy Focus",
-  "icon": "energyassault_bonesmasher.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 7,
-    "recharge": 10,
-    "endurance": 10.192,
-    "castTime": 1.5
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Stun",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Dominator Archetype Sets",
-    "Melee Damage",
-    "Stuns",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 0.784,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.176,
-      "table": "Melee_Damage"
-    }
-  ],
-  "effects": {
-    "stun": {
-      "mag": 3,
-      "scale": 8,
-      "table": "Melee_Stun"
-    },
-    "regenDebuff": {
-      "scale": 0.5,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "regenDebuff": 15,
-      "absorb": 15,
-      "enduranceDrain": 15,
-      "confuse": 15,
-      "fear": 15,
-      "hold": 15,
-      "immobilize": 15,
-      "stun": 15,
-      "sleep": 15,
-      "defenseDebuff": 15
-    },
-    "absorb": {
-      "scale": 0.25,
-      "table": "Melee_Stun"
-    },
-    "enduranceDrain": {
-      "scale": 0.25,
-      "table": "Melee_Stun"
-    },
-    "confuse": {
-      "mag": 1,
-      "scale": 0.25,
-      "table": "Melee_Stun"
-    },
-    "effectDuration": 15,
-    "fear": {
-      "mag": 1,
-      "scale": 0.25,
-      "table": "Melee_Stun"
-    },
-    "hold": {
-      "mag": 1,
-      "scale": 0.25,
-      "table": "Melee_Stun"
-    },
-    "immobilize": {
-      "mag": 1,
-      "scale": 0.25,
-      "table": "Melee_Stun"
-    },
-    "sleep": {
-      "mag": 1,
-      "scale": 0.25,
-      "table": "Melee_Stun"
-    },
-    "defenseDebuff": {
-      "scale": 0.25,
-      "table": "Melee_Stun"
-    },
-    "buffDuration": 15
-  }
-};
+export const BoneSmasher: Power = withOverrides(base, overrides);

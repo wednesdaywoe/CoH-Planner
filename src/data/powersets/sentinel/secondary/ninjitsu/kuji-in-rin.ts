@@ -1,106 +1,16 @@
 /**
- * Kuji-In Rin
- * Self +SPD, +Res(Disorient, Hold, Sleep, Immobilize, Confuse, Fear, Psionics)
+ * Kuji-In Rin — COMPOSED EXPORT
  *
- * Source: sentinel_defense/ninjitsu/kuji-in_rin.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs sentinel_defense ninjitsu
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { KujiInRin as base } from '@/data/generated/powersets/sentinel/secondary/ninjitsu/kuji-in-rin';
+import { overrides } from '@/data/overrides/powersets/sentinel/secondary/ninjitsu/kuji-in-rin';
 
-export const KujiInRin: Power = {
-  "name": "Kuji-In Rin",
-  "internalName": "Kuji-In_Rin",
-  "available": 9,
-  "description": "Kuji-In Rin is the strength of mind and body. By focusing your power on this exercise, you gain a resistance to Disorient, Hold, Sleep, Immobilization, Confusion, and fear, as well as resistance to Psionic damage for a few minutes. Your running speed and jumping height are also increased.Recharge: Long.",
-  "shortHelp": "Self +SPD, +Res(Disorient, Hold, Sleep, Immobilize, Confuse, Fear, Psionics)",
-  "icon": "ninjitsu_kujinrin.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 200,
-    "endurance": 10.4,
-    "castTime": 1.83
-  },
-  "allowedEnhancements": [
-    "Resistance",
-    "EnduranceReduction",
-    "Run Speed",
-    "Recharge",
-    "Jump"
-  ],
-  "allowedSetCategories": [
-    "Leaping",
-    "Leaping & Sprints",
-    "Resist Damage",
-    "Running",
-    "Running & Sprints",
-    "Universal Travel"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "confuse": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "effectDuration": 120,
-    "durations": {
-      "confuse": 120,
-      "fear": 120,
-      "hold": 120,
-      "immobilize": 120,
-      "stun": 120,
-      "sleep": 120,
-      "resistance": 120,
-      "movement": 120
-    },
-    "fear": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "hold": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "immobilize": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "stun": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "sleep": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "resistance": {
-      "psionic": {
-        "scale": 3,
-        "table": "Melee_Res_Dmg"
-      }
-    },
-    "movement": {
-      "runSpeed": {
-        "scale": 0.1,
-        "table": "Melee_SpeedRunning"
-      },
-      "jumpSpeed": {
-        "scale": 0.1,
-        "table": "Melee_SpeedRunning"
-      },
-      "jumpHeight": {
-        "scale": 0.1,
-        "table": "Melee_SpeedRunning"
-      }
-    },
-    "buffDuration": 120
-  }
-};
+export const KujiInRin: Power = withOverrides(base, overrides);

@@ -1,106 +1,16 @@
 /**
- * Overload
- * Self +DEF(All), +Recovery, +Max HP, Res(DeBuff DEF), +Special
+ * Overload — COMPOSED EXPORT
  *
- * Source: scrapper_defense/energy_aura/overload.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs scrapper_defense energy_aura
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Overload as base } from '@/data/generated/powersets/scrapper/secondary/energy-aura/overload';
+import { overrides } from '@/data/overrides/powersets/scrapper/secondary/energy-aura/overload';
 
-export const Overload: Power = {
-  "name": "Overload",
-  "internalName": "Overload",
-  "available": 29,
-  "description": "You can Overload your Energy Aura and dramatically improve your defense to all attack types. Overload also grants you high resistance to Defense Debuffs. This Energy Aura is so powerful, that it can even absorb some damage, effectively increasing your Max Hit Points. However, when Overload wears off, you are left drained of all Endurance and unable to recover Endurance for a while. Overload also adds a moderate Elusivity defense bonus to all attacks in PVP zones.",
-  "shortHelp": "Self +DEF(All), +Recovery, +Max HP, Res(DeBuff DEF), +Special",
-  "icon": "energyaura_overload.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 1000,
-    "endurance": 2.6,
-    "castTime": 3,
-    "activatePeriod": 0.5
-  },
-  "allowedEnhancements": [
-    "EnduranceModification",
-    "EnduranceReduction",
-    "Recharge",
-    "Healing",
-    "Defense"
-  ],
-  "allowedSetCategories": [
-    "Defense Sets",
-    "Endurance Modification",
-    "Healing"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "defenseBuff": {
-      "smashing": {
-        "scale": 6,
-        "table": "Melee_Buff_Def"
-      },
-      "lethal": {
-        "scale": 6,
-        "table": "Melee_Buff_Def"
-      },
-      "fire": {
-        "scale": 6,
-        "table": "Melee_Buff_Def"
-      },
-      "cold": {
-        "scale": 6,
-        "table": "Melee_Buff_Def"
-      },
-      "energy": {
-        "scale": 6,
-        "table": "Melee_Buff_Def"
-      },
-      "negative": {
-        "scale": 6,
-        "table": "Melee_Buff_Def"
-      },
-      "psionic": {
-        "scale": 4.5,
-        "table": "Melee_Buff_Def"
-      },
-      "toxic": {
-        "scale": 4.5,
-        "table": "Melee_Buff_Def"
-      }
-    },
-    "durations": {
-      "defenseBuff": 180,
-      "maxHPBuff": 180,
-      "debuffResistance": 180,
-      "recoveryBuff": 180,
-      "recoveryDebuff": 20
-    },
-    "maxHPBuff": {
-      "scale": 4,
-      "table": "Melee_HealSelf"
-    },
-    "debuffResistance": {
-      "defense": {
-        "scale": 1,
-        "table": "Melee_Res_Boolean"
-      }
-    },
-    "recoveryBuff": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
-    "enduranceDrain": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
-    "recoveryDebuff": {
-      "scale": 100,
-      "table": "Melee_Ones"
-    },
-    "buffDuration": 180
-  }
-};
+export const Overload: Power = withOverrides(base, overrides);

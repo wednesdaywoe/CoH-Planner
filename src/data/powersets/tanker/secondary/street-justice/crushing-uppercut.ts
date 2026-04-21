@@ -1,84 +1,16 @@
 /**
- * Crushing Uppercut
- * Melee, DMG(Smash), Foe Knock Up, Disorient, Finisher
+ * Crushing Uppercut — COMPOSED EXPORT
  *
- * Source: tanker_melee/brawling/crushing_uppercut.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs tanker_melee brawling
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { CrushingUppercut as base } from '@/data/generated/powersets/tanker/secondary/street-justice/crushing-uppercut';
+import { overrides } from '@/data/overrides/powersets/tanker/secondary/street-justice/crushing-uppercut';
 
-export const CrushingUppercut: Power = {
-  "name": "Crushing Uppercut",
-  "internalName": "Crushing_Uppercut",
-  "available": 29,
-  "description": "You perform a jaw breaking Crushing Uppercut on your target inflicting Extreme Smashing damage and knocking them into the air. Crushing Uppercut will leave the target disoriented for a short time. Crushing Uppercut is a Finisher and will set your Combo Level to 0. It will deal additional damage and have a longer disorient duration dependent upon the current Combo Level. At Combo Level 3, Crushing Uppercut will have its disorient effect upgraded to a Hold effect.",
-  "shortHelp": "Melee, DMG(Smash), Foe Knock Up, Disorient, Finisher",
-  "icon": "brawling_crushinguppercut.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1.2,
-    "range": 13,
-    "recharge": 25,
-    "endurance": 14.352,
-    "castTime": 2.17
-  },
-  "allowedEnhancements": [
-    "Hold",
-    "Taunt",
-    "EnduranceReduction",
-    "Stun",
-    "Recharge",
-    "Knockback",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Holds",
-    "Knockback",
-    "Melee Damage",
-    "Stuns",
-    "Tanker Archetype Sets",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 3.18,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 3.339,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 3.5616,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 3.975,
-      "table": "Melee_Damage"
-    }
-  ],
-  "effects": {
-    "knockup": {
-      "scale": 3,
-      "table": "Melee_Knockback"
-    },
-    "stun": {
-      "mag": 3,
-      "scale": 7.5,
-      "table": "Melee_Stun"
-    },
-    "hold": {
-      "mag": 3,
-      "scale": 10.5,
-      "table": "Melee_Stun"
-    }
-  }
-};
+export const CrushingUppercut: Power = withOverrides(base, overrides);

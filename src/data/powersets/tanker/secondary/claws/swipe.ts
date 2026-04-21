@@ -1,46 +1,16 @@
 /**
- * Swipe
- * Melee, DMG(Lethal)
+ * Swipe — COMPOSED EXPORT
  *
- * Source: tanker_melee/claws/swipe.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs tanker_melee claws
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Swipe as base } from '@/data/generated/powersets/tanker/secondary/claws/swipe';
+import { overrides } from '@/data/overrides/powersets/tanker/secondary/claws/swipe';
 
-export const Swipe: Power = {
-  "name": "Swipe",
-  "internalName": "Swipe",
-  "available": 0,
-  "description": "A quick Swipe with your claws. Does minor lethal damage, but has a quick recharge rate.",
-  "shortHelp": "Melee, DMG(Lethal)",
-  "icon": "claws_clawsswipe.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 7,
-    "recharge": 2.4,
-    "endurance": 3.4944,
-    "castTime": 0.83
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "EnduranceReduction",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Melee Damage",
-    "Tanker Archetype Sets",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 0.83,
-    "table": "Melee_Damage"
-  },
-  "requires": "!Tanker_Defense.Shield_Defense && !Tanker_Defense.Stone_Armor"
-};
+export const Swipe: Power = withOverrides(base, overrides);

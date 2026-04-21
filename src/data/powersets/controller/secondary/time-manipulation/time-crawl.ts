@@ -1,47 +1,16 @@
 /**
- * Time Crawl
- * Ranged Foe, -Speed, -Recharge, -Regen, Special
+ * Time Crawl — COMPOSED EXPORT
  *
- * Source: controller_buff/time_manipulation/time_crawl.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs controller_buff time_manipulation
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { TimeCrawl as base } from '@/data/generated/powersets/controller/secondary/time-manipulation/time-crawl';
+import { overrides } from '@/data/overrides/powersets/controller/secondary/time-manipulation/time-crawl';
 
-export const TimeCrawl: Power = {
-  "name": "Time Crawl",
-  "internalName": "Time_Crawl",
-  "available": 0,
-  "description": "You're able to dramatically slow the time around a single enemy, reducing their movement speed and attack rate. Time is slowed to such an extreme that their wounds will take longer to heal, reducing their regeneration rate. Time Crawl applies the Delayed effect on its target. Debuff and control effects from other Time Manipulation powers are increased on targets affected by Delayed.Recharge: Slow.",
-  "shortHelp": "Ranged Foe, -Speed, -Recharge, -Regen, Special",
-  "icon": "timemanipulation_timecrawl.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 80,
-    "recharge": 15,
-    "endurance": 10.4,
-    "castTime": 1.6
-  },
-  "allowedEnhancements": [
-    "Slow",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Slow Movement"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "regenDebuff": {
-      "scale": 1,
-      "table": "Ranged_Ones"
-    },
-    "durations": {
-      "regenDebuff": 20
-    },
-    "buffDuration": 20
-  }
-};
+export const TimeCrawl: Power = withOverrides(base, overrides);

@@ -1,27 +1,16 @@
 /**
- * Swap Ammo
- * Change Secondary Damage/Effects
+ * Swap Ammo — COMPOSED EXPORT
  *
- * Source: defender_ranged/dual_pistols/swap_ammo.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs defender_ranged dual_pistols
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { SwapAmmo as base } from '@/data/generated/powersets/defender/secondary/dual-pistols/swap-ammo';
+import { overrides } from '@/data/overrides/powersets/defender/secondary/dual-pistols/swap-ammo';
 
-export const SwapAmmo: Power = {
-  "name": "Swap Ammo",
-  "internalName": "Swap_Ammo",
-  "available": 9,
-  "description": "By purchasing this power, you will be granted the Cryo Ammunition, Incendiary Ammunition and Chemical Ammunition toggles. Activating these toggles will change your secondary damage type on most Dual Pistols attacks from lethal (Standard Rounds) to cold (Cryo Rounds), fire (Incendiary Rounds) or toxic (Chemical Rounds).These toggles are mutually exclusive and only one can be active at a time. If no Swap Ammo toggles are active, the player will revert to Standard Ammunition.Different ammo types also have different secondary effects. Examine your Dual Pistols powers for more information.",
-  "shortHelp": "Change Secondary Damage/Effects",
-  "icon": "dualpistols_swapammo.png",
-  "powerType": "Auto",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "activatePeriod": 2
-  },
-  "allowedEnhancements": [],
-  "maxSlots": 0,
-  "mechanicType": "parentMechanic"
-};
+export const SwapAmmo: Power = withOverrides(base, overrides);

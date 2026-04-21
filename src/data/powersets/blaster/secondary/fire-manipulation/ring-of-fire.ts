@@ -1,74 +1,16 @@
 /**
- * Ring of Fire
- * Ranged, DoT (Fire), Foe Immobilize
+ * Ring of Fire — COMPOSED EXPORT
  *
- * Source: blaster_support/fire_manipulation/ring_of_fire.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs blaster_support fire_manipulation
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { RingofFire as base } from '@/data/generated/powersets/blaster/secondary/fire-manipulation/ring-of-fire';
+import { overrides } from '@/data/overrides/powersets/blaster/secondary/fire-manipulation/ring-of-fire';
 
-export const RingofFire: Power = {
-  "name": "Ring of Fire",
-  "internalName": "Ring_of_Fire",
-  "available": 0,
-  "description": "Immobilizes your target in a Ring of Fire. Deals some damage over time. Useful for keeping villains at bay.Damage: Moderate.Recharge: Fast.",
-  "shortHelp": "Ranged, DoT (Fire), Foe Immobilize",
-  "icon": "firemanipulation_ringoffire.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 60,
-    "recharge": 6,
-    "endurance": 7.8,
-    "castTime": 1.17
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Immobilize",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Blaster Archetype Sets",
-    "Immobilize",
-    "Ranged Damage",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Fire",
-    "scale": 0.22,
-    "table": "Ranged_Damage",
-    "duration": 9.2,
-    "tickRate": 1.5
-  },
-  "effects": {
-    "immobilize": {
-      "mag": 3,
-      "scale": 15,
-      "table": "Ranged_Immobilize"
-    },
-    "mezResistance": {
-      "knockup": {
-        "scale": 100,
-        "table": "Ranged_Ones"
-      },
-      "knockback": {
-        "scale": 100,
-        "table": "Ranged_Ones"
-      }
-    },
-    "durations": {
-      "mezResistance": 15,
-      "damageBuff": 8.67
-    },
-    "damageBuff": {
-      "scale": 0.077,
-      "table": "Ranged_Ones"
-    },
-    "buffDuration": 15
-  }
-};
+export const RingofFire: Power = withOverrides(base, overrides);

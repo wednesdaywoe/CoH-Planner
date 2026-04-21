@@ -1,55 +1,16 @@
 /**
- * Aim
- * Self +To Hit, +DMG, +Range
+ * Aim — COMPOSED EXPORT
  *
- * Source: sentinel_ranged/dark_blast/aim.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs sentinel_ranged dark_blast
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Aim as base } from '@/data/generated/powersets/sentinel/primary/dark-blast/aim';
+import { overrides } from '@/data/overrides/powersets/sentinel/primary/dark-blast/aim';
 
-export const Aim: Power = {
-  "name": "Aim",
-  "internalName": "Aim",
-  "available": 7,
-  "description": "Greatly increases the chance to hit of your attacks for a few seconds. Slightly increases damage and range.Recharge: Long.",
-  "shortHelp": "Self +To Hit, +DMG, +Range",
-  "icon": "darkcast_aim.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 90,
-    "endurance": 5.2,
-    "castTime": 1.17
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "ToHit"
-  ],
-  "allowedSetCategories": [
-    "To Hit Buff"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "tohitBuff": {
-      "scale": 5,
-      "table": "Melee_Buff_ToHit"
-    },
-    "durations": {
-      "tohitBuff": 10,
-      "rangeBuff": 10,
-      "damageBuff": 10
-    },
-    "rangeBuff": {
-      "scale": 0.333,
-      "table": "Melee_Ones"
-    },
-    "damageBuff": {
-      "scale": 5,
-      "table": "Melee_Buff_Dmg"
-    },
-    "buffDuration": 10
-  }
-};
+export const Aim: Power = withOverrides(base, overrides);

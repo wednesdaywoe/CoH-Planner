@@ -1,68 +1,16 @@
 /**
- * Dual Wield
- * Ranged, DMG(Lethal/Special), Foe Knockback/Special
+ * Dual Wield — COMPOSED EXPORT
  *
- * Source: sentinel_ranged/dual_pistols/dual_wield.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs sentinel_ranged dual_pistols
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { DualWield as base } from '@/data/generated/powersets/sentinel/primary/dual-pistols/dual-wield';
+import { overrides } from '@/data/overrides/powersets/sentinel/primary/dual-pistols/dual-wield';
 
-export const DualWield: Power = {
-  "name": "Dual Wield",
-  "internalName": "Dual_Wield",
-  "available": 0,
-  "description": "Dual Wield fires both pistols in rapid succession at its desired target. This power is slower than Pistols, but deals more damage, and the target may get knocked back by the force of the impact.Changing your ammo type with the 'Swap Ammo' power will change your secondary damage from lethal to cold, fire or toxic.Additionally, changing your ammunition type will also change the secondary effect of this attack from Knockback to:*A minor attack speed and movement speed debuff if 'Cryo Ammo' is loaded.*A minor damage over time effect if 'Incendiary Ammo' is loaded.*A -damage effect if 'Chemical Ammo' is loaded.",
-  "shortHelp": "Ranged, DMG(Lethal/Special), Foe Knockback/Special",
-  "icon": "dualpistols_dualwield.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1.1,
-    "range": 60,
-    "recharge": 6,
-    "endurance": 6.864,
-    "castTime": 1.67
-  },
-  "allowedEnhancements": [
-    "Slow",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Knockback",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Knockback",
-    "Ranged Damage",
-    "Sentinel Archetype Sets",
-    "Slow Movement",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Lethal",
-      "scale": 0.924,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.113,
-      "table": "Ranged_Damage",
-      "duration": 3.1,
-      "tickRate": 1
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.396,
-      "table": "Ranged_Damage"
-    }
-  ],
-  "effects": {
-    "knockback": {
-      "scale": 0.75,
-      "table": "Ranged_Knockback"
-    }
-  }
-};
+export const DualWield: Power = withOverrides(base, overrides);

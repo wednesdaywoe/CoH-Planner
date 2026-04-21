@@ -1,42 +1,16 @@
 /**
- * Wind Shear
- * PBAoE (Toggle), -Speed (Foe, All), -Fly(Foe), -ToHit(Foe), -DMG(Foe, All)
+ * Wind Shear — COMPOSED EXPORT
  *
- * Source: dominator_control/wind_control/wind_shear.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs dominator_control wind_control
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { WindShear as base } from '@/data/generated/powersets/dominator/primary/wind-control/wind-shear';
+import { overrides } from '@/data/overrides/powersets/dominator/primary/wind-control/wind-shear';
 
-export const WindShear: Power = {
-  "name": "Wind Shear",
-  "internalName": "Wind_Shear",
-  "available": 5,
-  "description": "You create a sphere of high speed winds around yourself. This significantly slows the movement of any enemies caught within the sphere and makes their attacks less likely to hit. Damage potential is also reduced. Flying foes are brought to the ground. This power neither builds nor releases Pressure, but does have a continuous Endurance cost.Recharge: Slow.",
-  "shortHelp": "PBAoE (Toggle), -Speed (Foe, All), -Fly(Foe), -ToHit(Foe), -DMG(Foe, All)",
-  "icon": "windcontrol_windshear.png",
-  "powerType": "Toggle",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "radius": 20,
-    "recharge": 15,
-    "endurance": 2.6,
-    "castTime": 2.03,
-    "activatePeriod": 2,
-    "maxTargets": 16
-  },
-  "allowedEnhancements": [
-    "Slow",
-    "EnduranceReduction",
-    "Recharge",
-    "ToHit Debuff"
-  ],
-  "allowedSetCategories": [
-    "Dominator Archetype Sets",
-    "Slow Movement",
-    "To Hit Debuff"
-  ],
-  "maxSlots": 6,
-  "requires": "char>accesslevel >= 0"
-};
+export const WindShear: Power = withOverrides(base, overrides);

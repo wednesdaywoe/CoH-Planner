@@ -1,48 +1,16 @@
 /**
- * Power Slice
- * Melee, DMG(Lethal)
+ * Power Slice — COMPOSED EXPORT
  *
- * Source: brute_melee/dual_blades/moderate_opening.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs brute_melee dual_blades
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { PowerSlice as base } from '@/data/generated/powersets/brute/primary/dual-blades/moderate-opening';
+import { overrides } from '@/data/overrides/powersets/brute/primary/dual-blades/moderate-opening';
 
-export const PowerSlice: Power = {
-  "name": "Power Slice",
-  "internalName": "Moderate_Opening",
-  "available": 0,
-  "description": "You perform a deadly Strike with your blades. This is a basic attack that deals a moderate amount of lethal damage. This power is needed for the Sweep combination attack.Sweep: One Thousand Cuts > Power Slice > Typhoon's Edge.",
-  "shortHelp": "Melee, DMG(Lethal)",
-  "icon": "dualblades_moderateopening.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 7,
-    "recharge": 5,
-    "endurance": 6.032,
-    "castTime": 1.4
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "EnduranceReduction",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Brute Archetype Sets",
-    "Melee Damage",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 0.3867,
-    "table": "Melee_Damage",
-    "duration": 1,
-    "tickRate": 0.4
-  },
-  "requires": "!Brute_Defense.Shield_Defense"
-};
+export const PowerSlice: Power = withOverrides(base, overrides);

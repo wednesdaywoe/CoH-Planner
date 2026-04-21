@@ -1,53 +1,16 @@
 /**
- * Hand Clap
- * PBAoE, Foe Disorient, Knockback
+ * Hand Clap — COMPOSED EXPORT
  *
- * Source: tanker_melee/super_strength/hand_clap.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs tanker_melee super_strength
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { HandClap as base } from '@/data/generated/powersets/tanker/secondary/super-strength/hand-clap';
+import { overrides } from '@/data/overrides/powersets/tanker/secondary/super-strength/hand-clap';
 
-export const HandClap: Power = {
-  "name": "Hand Clap",
-  "internalName": "Hand_Clap",
-  "available": 15,
-  "description": "You can clap your hands together with such force that you create a deafening shockwave. This shockwave can knock back nearby foes, and they have a chance to become Disoriented due to the shock to the inner ear. Hand Clap deals no damage.Notes: Thanks to gauntlet, this power can hit up to 6 targets above its cap at 1/3rd effectiveness.",
-  "shortHelp": "PBAoE, Foe Disorient, Knockback",
-  "icon": "superstrength_handclap.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 0.8,
-    "radius": 15,
-    "recharge": 30,
-    "endurance": 13,
-    "castTime": 1.23,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "EnduranceReduction",
-    "Stun",
-    "Recharge",
-    "Knockback",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Knockback",
-    "Stuns",
-    "Threat Duration"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "stun": {
-      "mag": 2,
-      "scale": 8,
-      "table": "Melee_Stun"
-    },
-    "knockback": {
-      "scale": 2,
-      "table": "Melee_Knockback"
-    }
-  }
-};
+export const HandClap: Power = withOverrides(base, overrides);

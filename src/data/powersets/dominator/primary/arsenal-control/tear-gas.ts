@@ -1,57 +1,16 @@
 /**
- * Tear Gas
- * Ranged (Location AoE), DoT(Toxic), Foe Hold -DMG
+ * Tear Gas — COMPOSED EXPORT
  *
- * Source: dominator_control/arsenal_control/tear_gas.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs dominator_control arsenal_control
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { TearGas as base } from '@/data/generated/powersets/dominator/primary/arsenal-control/tear-gas';
+import { overrides } from '@/data/overrides/powersets/dominator/primary/arsenal-control/tear-gas';
 
-export const TearGas: Power = {
-  "name": "Tear Gas",
-  "internalName": "Tear_Gas",
-  "available": 21,
-  "description": "The Tear Gas canister serves as the ultimate crowd control tool, rendering enemies incapacitated and choking, thereby preventing them from taking any action while also debuffing their damage output.",
-  "shortHelp": "Ranged (Location AoE), DoT(Toxic), Foe Hold -DMG",
-  "icon": "arsenalcontrol_teargas.png",
-  "powerType": "Click",
-  "targetType": "Location",
-  "effectArea": "Location",
-  "stats": {
-    "accuracy": 1,
-    "range": 80,
-    "radius": 20,
-    "recharge": 240,
-    "endurance": 15.6,
-    "castTime": 1.87
-  },
-  "allowedEnhancements": [
-    "Hold",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Dominator Archetype Sets",
-    "Holds",
-    "Ranged AoE Damage",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "isPseudoPet": true,
-      "displayName": "Tear Gas",
-      "powers": [
-        "Redirects.Assault_Rifle.Tear_Gas",
-        "Redirects.Assault_Rifle.Tear_Gas_Debuff",
-        "Redirects.Assault_Rifle.Tear_Gas_OneShot",
-        "Pets.ResistAll.ResistAll"
-      ],
-      "duration": 60,
-      "copyBoosts": true
-    }
-  }
-};
+export const TearGas: Power = withOverrides(base, overrides);

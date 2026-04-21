@@ -1,107 +1,16 @@
 /**
- * Weaken
- * Ranged (Targeted AoE) Foe -DMG -To Hit, -Special
+ * Weaken — COMPOSED EXPORT
  *
- * Source: mastermind_buff/poison/weaken.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs mastermind_buff poison
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Weaken as base } from '@/data/generated/powersets/mastermind/secondary/poison/weaken';
+import { overrides } from '@/data/overrides/powersets/mastermind/secondary/poison/weaken';
 
-export const Weaken: Power = {
-  "name": "Weaken",
-  "internalName": "Weaken",
-  "available": 3,
-  "description": "You poison a single foe with a venom that significantly Weakens their strength and and that of nearby foes. The affected primary target's chance to hit and Damage output is severely reduced Additionally, the affected targets secondary power effects are all weakened. The targets power effects like Heals, Defense Buffs, Endurance Drains, Disorients, Holds, Immobilizes, Knockbacks and more, are all weakened. Secondary foes struck by this power will have a lesser effect placed on them while the primary target receives the full effectiveness of the power.Recharge: Slow.",
-  "shortHelp": "Ranged (Targeted AoE) Foe -DMG -To Hit, -Special",
-  "icon": "poison_weakenaoe.png",
-  "powerType": "Click",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "range": 70,
-    "radius": 8,
-    "recharge": 16,
-    "endurance": 13,
-    "castTime": 2.07,
-    "maxTargets": 16
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "ToHit Debuff",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate To-Hit Debuff",
-    "To Hit Debuff"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "enduranceDrain": {
-      "scale": 0.75,
-      "table": "Ranged_Stun"
-    },
-    "durations": {
-      "enduranceDrain": 30,
-      "confuse": 30,
-      "fear": 30,
-      "hold": 30,
-      "immobilize": 30,
-      "stun": 30,
-      "sleep": 30,
-      "knockup": 30,
-      "knockback": 30,
-      "repel": 30,
-      "defenseDebuff": 30
-    },
-    "confuse": {
-      "mag": 1,
-      "scale": 0.5,
-      "table": "Ranged_Stun"
-    },
-    "effectDuration": 30,
-    "fear": {
-      "mag": 1,
-      "scale": 0.5,
-      "table": "Ranged_Stun"
-    },
-    "hold": {
-      "mag": 1,
-      "scale": 0.5,
-      "table": "Ranged_Stun"
-    },
-    "immobilize": {
-      "mag": 1,
-      "scale": 0.5,
-      "table": "Ranged_Stun"
-    },
-    "stun": {
-      "mag": 1,
-      "scale": 0.5,
-      "table": "Ranged_Stun"
-    },
-    "sleep": {
-      "mag": 1,
-      "scale": 0.5,
-      "table": "Ranged_Stun"
-    },
-    "knockup": {
-      "scale": 0.75,
-      "table": "Ranged_Stun"
-    },
-    "knockback": {
-      "scale": 0.75,
-      "table": "Ranged_Stun"
-    },
-    "repel": {
-      "scale": 0.75,
-      "table": "Ranged_Stun"
-    },
-    "defenseDebuff": {
-      "scale": 0.25,
-      "table": "Ranged_Stun"
-    },
-    "buffDuration": 30
-  }
-};
+export const Weaken: Power = withOverrides(base, overrides);

@@ -1,39 +1,16 @@
 /**
- * Genetic Corruption
- * Toggle: PBAoE, Foe Sleep, -Damage(All), Self +Special
+ * Genetic Corruption — COMPOSED EXPORT
  *
- * Source: stalker_defense/bio_organic_armor/genetic_corruption.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs stalker_defense bio_organic_armor
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { GeneticCorruption as base } from '@/data/generated/powersets/stalker/secondary/bio-armor/genetic-corruption';
+import { overrides } from '@/data/overrides/powersets/stalker/secondary/bio-armor/genetic-corruption';
 
-export const GeneticCorruption: Power = {
-  "name": "Genetic Corruption",
-  "internalName": "Genetic_Corruption",
-  "available": 27,
-  "description": "Your Bio Armor is capable of corrupting the genetic code of nearby foes, reducing the damage they deal. Lesser foes may be put to sleep for a short time. While Efficiency Adaptation is active, this power grants a moderate bonus to Regeneration. While Defensive Adaptation is active you gain a minor bonus to all types of damage resistance and increase the potency of this power's damage debuff. If Offensive Adaptation is active enemies are more likely to fall asleep. These special bonuses are unenhanceable.Recharge: Fast.",
-  "shortHelp": "Toggle: PBAoE, Foe Sleep, -Damage(All), Self +Special",
-  "icon": "bioorganicarmor_geneticcorruption.png",
-  "powerType": "Toggle",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "radius": 8,
-    "recharge": 4,
-    "endurance": 2.08,
-    "castTime": 1.07,
-    "activatePeriod": 4,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Sleep",
-    "Recharge",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Sleep"
-  ],
-  "maxSlots": 6
-};
+export const GeneticCorruption: Power = withOverrides(base, overrides);

@@ -1,55 +1,16 @@
 /**
- * Upshot
- * Self +DMG, +ToHit, +Recharge
+ * Upshot — COMPOSED EXPORT
  *
- * Source: blaster_support/tactical_arrow/upshot.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs blaster_support tactical_arrow
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Upshot as base } from '@/data/generated/powersets/blaster/secondary/tactical-arrow/upshot';
+import { overrides } from '@/data/overrides/powersets/blaster/secondary/tactical-arrow/upshot';
 
-export const Upshot: Power = {
-  "name": "Upshot",
-  "internalName": "Upshot",
-  "available": 9,
-  "description": "Greatly boosts your attacks for a few seconds. Slightly increases chance to hit and recharge time of all your powers for 10 seconds.Recharge: Long.",
-  "shortHelp": "Self +DMG, +ToHit, +Recharge",
-  "icon": "tacticalarrow_buildup.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 90,
-    "endurance": 5.2,
-    "castTime": 1.17
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "ToHit"
-  ],
-  "allowedSetCategories": [
-    "To Hit Buff"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "tohitBuff": {
-      "scale": 1.5,
-      "table": "Melee_Buff_ToHit"
-    },
-    "durations": {
-      "tohitBuff": 10,
-      "damageBuff": 10,
-      "rechargeBuff": 10
-    },
-    "damageBuff": {
-      "scale": 6.5,
-      "table": "Melee_Buff_Dmg"
-    },
-    "rechargeBuff": {
-      "scale": 0.15,
-      "table": "Melee_Ones"
-    },
-    "buffDuration": 10
-  }
-};
+export const Upshot: Power = withOverrides(base, overrides);

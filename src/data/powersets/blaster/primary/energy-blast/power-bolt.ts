@@ -1,63 +1,16 @@
 /**
- * Power Bolt
- * Ranged, DMG(Energy/Smash), Foe Knockback
+ * Power Bolt — COMPOSED EXPORT
  *
- * Source: blaster_ranged/energy_blast/power_bolt.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs blaster_ranged energy_blast
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { PowerBolt as base } from '@/data/generated/powersets/blaster/primary/energy-blast/power-bolt';
+import { overrides } from '@/data/overrides/powersets/blaster/primary/energy-blast/power-bolt';
 
-export const PowerBolt: Power = {
-  "name": "Power Bolt",
-  "internalName": "Power_Bolt",
-  "available": 0,
-  "description": "A quick attack that rapidly hurls small bolts of energy at foes, sometimes knocking them down. Fast, but little damage.",
-  "shortHelp": "Ranged, DMG(Energy/Smash), Foe Knockback",
-  "icon": "powerblast_powerbolts.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 80,
-    "recharge": 4,
-    "endurance": 5.2,
-    "castTime": 1
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Knockback",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Blaster Archetype Sets",
-    "Knockback",
-    "Ranged Damage",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 0.2,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.8,
-      "table": "Ranged_Damage"
-    }
-  ],
-  "effects": {
-    "knockback": {
-      "scale": 0.7,
-      "table": "Ranged_Knockback"
-    },
-    "damageBuff": {
-      "scale": 0,
-      "table": "Ranged_Ones"
-    }
-  }
-};
+export const PowerBolt: Power = withOverrides(base, overrides);

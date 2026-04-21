@@ -1,30 +1,16 @@
 /**
- * Cryo Ammunition
- * Toggle: Ammo Change (Cold), Special
+ * Cryo Ammunition — COMPOSED EXPORT
  *
- * Source: corruptor_ranged/dual_pistols/cryo_ammunition.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs corruptor_ranged dual_pistols
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { CryoAmmunition as base } from '@/data/generated/powersets/corruptor/primary/dual-pistols/cryo-ammunition';
+import { overrides } from '@/data/overrides/powersets/corruptor/primary/dual-pistols/cryo-ammunition';
 
-export const CryoAmmunition: Power = {
-  "name": "Cryo Ammunition",
-  "internalName": "Cryo_Ammunition",
-  "available": -1,
-  "description": "While this toggle is active you will be equipped with 'Cryo Rounds'. Most of your Dual Pistol attacks will have their secondary damage converted to cold damage and inflict a minor slow effect on the target.In order to earn this power, you must purchase the Swap Ammo power.",
-  "shortHelp": "Toggle: Ammo Change (Cold), Special",
-  "icon": "dualpistols_cryoammo.png",
-  "powerType": "Toggle",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 4,
-    "castTime": 0.63,
-    "activatePeriod": 0.5
-  },
-  "allowedEnhancements": [],
-  "maxSlots": 0,
-  "requires": "Corruptor_Ranged.Dual_Pistols.Swap_Ammo",
-  "mechanicType": "childToggle"
-};
+export const CryoAmmunition: Power = withOverrides(base, overrides);

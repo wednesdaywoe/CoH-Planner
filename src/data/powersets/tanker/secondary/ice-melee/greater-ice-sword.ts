@@ -1,54 +1,16 @@
 /**
- * Greater Ice Sword
- * Melee, DMG(Cold/Lethal), Foe -Recharge, -SPD
+ * Greater Ice Sword — COMPOSED EXPORT
  *
- * Source: tanker_melee/ice_melee/greater_ice_sword.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs tanker_melee ice_melee
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { GreaterIceSword as base } from '@/data/generated/powersets/tanker/secondary/ice-melee/greater-ice-sword';
+import { overrides } from '@/data/overrides/powersets/tanker/secondary/ice-melee/greater-ice-sword';
 
-export const GreaterIceSword: Power = {
-  "name": "Greater Ice Sword",
-  "internalName": "Greater_Ice_Sword",
-  "available": 27,
-  "description": "Your mastery of Ice allows you to create an enhanced blade of solid ice that deals above average damage. Being hit by the Greater Ice Sword will Slow a villain's attack and movement speed, due to the intense chill.",
-  "shortHelp": "Melee, DMG(Cold/Lethal), Foe -Recharge, -SPD",
-  "icon": "icyonslaught_greatericesword.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1.2,
-    "range": 7,
-    "recharge": 10,
-    "endurance": 10.192,
-    "castTime": 2.33
-  },
-  "allowedEnhancements": [
-    "Slow",
-    "Taunt",
-    "EnduranceReduction",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Melee Damage",
-    "Slow Movement",
-    "Tanker Archetype Sets",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Lethal",
-      "scale": 0.96,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Cold",
-      "scale": 1,
-      "table": "Melee_Damage"
-    }
-  ]
-};
+export const GreaterIceSword: Power = withOverrides(base, overrides);

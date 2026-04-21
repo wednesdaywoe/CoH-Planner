@@ -1,87 +1,16 @@
 /**
- * Sound Booster
- * Self +DMG, +To Hit, +Special
+ * Sound Booster — COMPOSED EXPORT
  *
- * Source: scrapper_melee/sonic_melee/build_up.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs scrapper_melee sonic_melee
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { SoundBooster as base } from '@/data/generated/powersets/scrapper/primary/sonic-melee/build-up';
+import { overrides } from '@/data/overrides/powersets/scrapper/primary/sonic-melee/build-up';
 
-export const SoundBooster: Power = {
-  "name": "Sound Booster",
-  "internalName": "Build_Up",
-  "available": 7,
-  "description": "Greatly boosts your attacks for a few seconds. Slightly increases chance to hit. Moderately increases the duration of mez effects. Moderately increases the chance for Sound Manipulation powers to induce migraines.",
-  "shortHelp": "Self +DMG, +To Hit, +Special",
-  "icon": "sonicmanipulation_buildup.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 90,
-    "endurance": 5.2,
-    "castTime": 1.17
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "ToHit"
-  ],
-  "allowedSetCategories": [
-    "To Hit Buff"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "tohitBuff": {
-      "scale": 2,
-      "table": "Melee_Buff_ToHit"
-    },
-    "durations": {
-      "tohitBuff": 10,
-      "damageBuff": 10,
-      "confuse": 10,
-      "fear": 10,
-      "hold": 10,
-      "immobilize": 10,
-      "stun": 10,
-      "sleep": 10
-    },
-    "damageBuff": {
-      "scale": 6,
-      "table": "Melee_Buff_Dmg"
-    },
-    "confuse": {
-      "mag": 1,
-      "scale": 0.25,
-      "table": "Melee_Ones"
-    },
-    "effectDuration": 10,
-    "fear": {
-      "mag": 1,
-      "scale": 0.25,
-      "table": "Melee_Ones"
-    },
-    "hold": {
-      "mag": 1,
-      "scale": 0.25,
-      "table": "Melee_Ones"
-    },
-    "immobilize": {
-      "mag": 1,
-      "scale": 0.25,
-      "table": "Melee_Ones"
-    },
-    "stun": {
-      "mag": 1,
-      "scale": 0.25,
-      "table": "Melee_Ones"
-    },
-    "sleep": {
-      "mag": 1,
-      "scale": 0.25,
-      "table": "Melee_Ones"
-    },
-    "buffDuration": 10
-  }
-};
+export const SoundBooster: Power = withOverrides(base, overrides);

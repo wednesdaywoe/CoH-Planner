@@ -1,51 +1,16 @@
 /**
- * Fly Trap
- * Summon Fly Trap: Ranged Control Special
+ * Fly Trap — COMPOSED EXPORT
  *
- * Source: controller_control/plant_control/fly_trap.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs controller_control plant_control
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { FlyTrap as base } from '@/data/generated/powersets/controller/primary/plant-control/fly-trap';
+import { overrides } from '@/data/overrides/powersets/controller/primary/plant-control/fly-trap';
 
-export const FlyTrap: Power = {
-  "name": "Fly Trap",
-  "internalName": "Fly_Trap",
-  "available": 25,
-  "description": "You can summon a giant carnivorous Fly Trap plant beast. Fly Trap may be an understatement, as this plant beast has a taste for flesh. The Fly Trap will viciously attack any nearby foes; biting, hurling poisonous Thorns and even casting its own Entangle Roots. The Fly Trap will fight by your side and can be healed and buffed like any teammate.",
-  "shortHelp": "Summon Fly Trap: Ranged Control Special",
-  "icon": "plantcontrol_venusflytrap.png",
-  "powerType": "Click",
-  "targetType": "Location",
-  "effectArea": "Location",
-  "stats": {
-    "accuracy": 1,
-    "range": 50,
-    "recharge": 240,
-    "endurance": 26,
-    "castTime": 1.17
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Immobilize",
-    "Defense Debuff",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Defense Debuff",
-    "Pet Damage",
-    "Recharge Intensive Pets",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_Fly_Trap_Controller",
-      "copyBoosts": true
-    }
-  }
-};
+export const FlyTrap: Power = withOverrides(base, overrides);

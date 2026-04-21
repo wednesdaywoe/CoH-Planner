@@ -1,52 +1,16 @@
 /**
- * Lightning Clap
- * PBAoE, Foe Disorient, Knockback
+ * Lightning Clap — COMPOSED EXPORT
  *
- * Source: scrapper_melee/electrical_melee/lightning_clap.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs scrapper_melee electrical_melee
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { LightningClap as base } from '@/data/generated/powersets/scrapper/primary/electrical-melee/lightning-clap';
+import { overrides } from '@/data/overrides/powersets/scrapper/primary/electrical-melee/lightning-clap';
 
-export const LightningClap: Power = {
-  "name": "Lightning Clap",
-  "internalName": "Lightning_Clap",
-  "available": 21,
-  "description": "You can clap your hands together to release a violent Lightning Clap. The Lightning Clap can knock down most nearby foes, Disorienting many of them. Lightning Clap deals no damage.",
-  "shortHelp": "PBAoE, Foe Disorient, Knockback",
-  "icon": "electricmelee_pbaoestun.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 0.8,
-    "radius": 15,
-    "recharge": 15,
-    "endurance": 13,
-    "castTime": 1.23,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Stun",
-    "Recharge",
-    "Knockback",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Knockback",
-    "Scrapper Archetype Sets",
-    "Stuns"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "stun": {
-      "mag": 2,
-      "scale": 8,
-      "table": "Melee_Stun"
-    },
-    "knockback": {
-      "scale": 2,
-      "table": "Melee_Knockback"
-    }
-  }
-};
+export const LightningClap: Power = withOverrides(base, overrides);

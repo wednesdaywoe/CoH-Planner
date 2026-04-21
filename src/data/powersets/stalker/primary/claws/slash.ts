@@ -1,68 +1,16 @@
 /**
- * Slash
- * Melee, DMG(Lethal), Foe -DEF
+ * Slash — COMPOSED EXPORT
  *
- * Source: stalker_melee/claws/slash.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs stalker_melee claws
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Slash as base } from '@/data/generated/powersets/stalker/primary/claws/slash';
+import { overrides } from '@/data/overrides/powersets/stalker/primary/claws/slash';
 
-export const Slash: Power = {
-  "name": "Slash",
-  "internalName": "Slash",
-  "available": 1,
-  "description": "You Slash at your foe with your claws, dealing a good amount of lethal damage, but with a longer recharge rate than Swipe or Strike . This attack can reduce a target's Defense, making them easier to hit.",
-  "shortHelp": "Melee, DMG(Lethal), Foe -DEF",
-  "icon": "claws_slash.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 7,
-    "recharge": 4.8,
-    "endurance": 5.4912,
-    "castTime": 1.33
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Defense Debuff",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Defense Debuff",
-    "Melee Damage",
-    "Stalker Archetype Sets",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Lethal",
-      "scale": 0.66,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.66,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.32,
-      "table": "Melee_InherentDamage"
-    }
-  ],
-  "effects": {
-    "defenseDebuff": {
-      "scale": 1,
-      "table": "Melee_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 10
-    },
-    "buffDuration": 10
-  }
-};
+export const Slash: Power = withOverrides(base, overrides);

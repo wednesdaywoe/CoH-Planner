@@ -1,104 +1,16 @@
 /**
- * Thaw
- * Ally +Res(Disorient, Hold, Sleep, Immobilize, Confuse, Fear, Cold, Slow)
+ * Thaw — COMPOSED EXPORT
  *
- * Source: controller_buff/thermal_radiation/thaw.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs controller_buff thermal_radiation
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Thaw as base } from '@/data/generated/powersets/controller/secondary/thermal-radiation/thaw';
+import { overrides } from '@/data/overrides/powersets/controller/secondary/thermal-radiation/thaw';
 
-export const Thaw: Power = {
-  "name": "Thaw",
-  "internalName": "Thaw",
-  "available": 19,
-  "description": "Warms an ally and frees them from any Disorient, Hold, Sleep, Confuse, Fear, Slow and Immobilize effects and leaves them resistant to such effects for a good while. Thaw also grants the target some resistance to Cold damage. Some of the effects of this power will improve with multiple applications and as you advance in level.",
-  "shortHelp": "Ally +Res(Disorient, Hold, Sleep, Immobilize, Confuse, Fear, Cold, Slow)",
-  "icon": "thermalradiation_thaw.png",
-  "powerType": "Click",
-  "targetType": "Ally (Alive)",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 70,
-    "recharge": 4,
-    "endurance": 5.2,
-    "castTime": 2.17
-  },
-  "allowedEnhancements": [
-    "Resistance",
-    "EnduranceReduction",
-    "Range",
-    "Recharge"
-  ],
-  "allowedSetCategories": [
-    "Resist Damage"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "confuse": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Ranged_Res_Boolean"
-    },
-    "effectDuration": 90,
-    "durations": {
-      "confuse": 90,
-      "fear": 90,
-      "hold": 90,
-      "immobilize": 90,
-      "stun": 90,
-      "sleep": 90,
-      "mezResistance": 90,
-      "resistance": 90,
-      "debuffResistance": 90
-    },
-    "fear": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Ranged_Res_Boolean"
-    },
-    "hold": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Ranged_Res_Boolean"
-    },
-    "immobilize": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Ranged_Res_Boolean"
-    },
-    "stun": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Ranged_Res_Boolean"
-    },
-    "sleep": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Ranged_Res_Boolean"
-    },
-    "mezResistance": {
-      "sleep": {
-        "scale": 5,
-        "table": "Ranged_Res_Boolean"
-      }
-    },
-    "resistance": {
-      "cold": {
-        "scale": 1,
-        "table": "Ranged_Res_Dmg"
-      }
-    },
-    "debuffResistance": {
-      "movement": {
-        "scale": 0.8,
-        "table": "Ranged_Ones"
-      },
-      "recharge": {
-        "scale": 0.8,
-        "table": "Ranged_Ones"
-      }
-    },
-    "buffDuration": 90
-  }
-};
+export const Thaw: Power = withOverrides(base, overrides);

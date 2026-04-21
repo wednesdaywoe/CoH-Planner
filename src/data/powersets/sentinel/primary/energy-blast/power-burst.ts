@@ -1,59 +1,16 @@
 /**
- * Power Burst
- * Ranged, DMG(Energy/Smash), Foe Knockback
+ * Power Burst — COMPOSED EXPORT
  *
- * Source: sentinel_ranged/energy_blast/power_burst.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs sentinel_ranged energy_blast
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { PowerBurst as base } from '@/data/generated/powersets/sentinel/primary/energy-blast/power-burst';
+import { overrides } from '@/data/overrides/powersets/sentinel/primary/energy-blast/power-burst';
 
-export const PowerBurst: Power = {
-  "name": "Power Burst",
-  "internalName": "Power_Burst",
-  "available": 5,
-  "description": "A devastating attack, Power Burst unleashes a massive amount of energy dealing very high damage at short distances. The impact from this burst often knocks back most foes.",
-  "shortHelp": "Ranged, DMG(Energy/Smash), Foe Knockback",
-  "icon": "powerblast_powerburst.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 60,
-    "recharge": 11,
-    "endurance": 11.024,
-    "castTime": 2
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Knockback",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Knockback",
-    "Ranged Damage",
-    "Sentinel Archetype Sets",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 1,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.12,
-      "table": "Ranged_Damage"
-    }
-  ],
-  "effects": {
-    "knockback": {
-      "scale": 2,
-      "table": "Ranged_Knockback"
-    }
-  }
-};
+export const PowerBurst: Power = withOverrides(base, overrides);

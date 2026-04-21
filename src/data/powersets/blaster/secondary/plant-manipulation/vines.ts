@@ -1,57 +1,16 @@
 /**
- * Vines
- * Ranged (Targeted AoE), Foe Hold, Immobilize
+ * Vines — COMPOSED EXPORT
  *
- * Source: blaster_support/plant_manipulation/vines.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs blaster_support plant_manipulation
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Vines as base } from '@/data/generated/powersets/blaster/secondary/plant-manipulation/vines';
+import { overrides } from '@/data/overrides/powersets/blaster/secondary/plant-manipulation/vines';
 
-export const Vines: Power = {
-  "name": "Vines",
-  "internalName": "Vines",
-  "available": 27,
-  "description": "Creates a field of Strangler Vines that can Hold multiple foes at range. The affected targets are held helpless by the massive root-like vines. Some are likely to free their arms and attack, but will still be unable to move. Unlike the power Strangler, this power does not deal any damage, but it can Hold multiple foes at once.Recharge: Long.",
-  "shortHelp": "Ranged (Targeted AoE), Foe Hold, Immobilize",
-  "icon": "plantmanipulation_vines.png",
-  "powerType": "Click",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 0.8,
-    "range": 80,
-    "radius": 15,
-    "recharge": 90,
-    "endurance": 20.18,
-    "castTime": 1.17,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "Hold",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Immobilize",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Holds",
-    "Immobilize"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "damageBuff": {
-      "scale": 0,
-      "table": "Ranged_Ones"
-    },
-    "hold": {
-      "mag": 2,
-      "scale": 8,
-      "table": "Ranged_Immobilize"
-    },
-    "immobilize": {
-      "mag": 3,
-      "scale": 15,
-      "table": "Ranged_Immobilize"
-    }
-  }
-};
+export const Vines: Power = withOverrides(base, overrides);

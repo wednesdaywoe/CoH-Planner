@@ -1,131 +1,16 @@
 /**
- * Serum
- * Buff Mercenaries +DMG, +RES(All except Psionic), +To Hit, +Recovery
+ * Serum — COMPOSED EXPORT
  *
- * Source: mastermind_summon/mercenaries/serum.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs mastermind_summon mercenaries
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Serum as base } from '@/data/generated/powersets/mastermind/primary/mercenaries/serum';
+import { overrides } from '@/data/overrides/powersets/mastermind/primary/mercenaries/serum';
 
-export const Serum: Power = {
-  "name": "Serum",
-  "internalName": "Serum",
-  "available": 17,
-  "description": "You can use a special Serum to turn your Mercenaries into a virtually Unstoppable killing machines for a short time. The Serum, will increase their Damage, chance to hit, Endurance Recovery, and Damage Resistance to all damage except Psionics. They will also be virtually immune to controlling effects including Disorient, Sleep, Hold, Immobilize and Knockback. The effects will start to slowly fade away over 60 seconds.",
-  "shortHelp": "Buff Mercenaries +DMG, +RES(All except Psionic), +To Hit, +Recovery",
-  "icon": "paramilitary_serum.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 100,
-    "recharge": 250,
-    "endurance": 15,
-    "castTime": 1.3
-  },
-  "allowedEnhancements": [
-    "Resistance",
-    "EnduranceModification",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "ToHit"
-  ],
-  "allowedSetCategories": [
-    "Endurance Modification",
-    "Resist Damage",
-    "To Hit Buff"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "resistance": {
-      "smashing": {
-        "scale": 4,
-        "table": "Ranged_Res_Dmg"
-      },
-      "lethal": {
-        "scale": 4,
-        "table": "Ranged_Res_Dmg"
-      },
-      "fire": {
-        "scale": 4,
-        "table": "Ranged_Res_Dmg"
-      },
-      "cold": {
-        "scale": 4,
-        "table": "Ranged_Res_Dmg"
-      },
-      "energy": {
-        "scale": 4,
-        "table": "Ranged_Res_Dmg"
-      },
-      "negative": {
-        "scale": 4,
-        "table": "Ranged_Res_Dmg"
-      },
-      "toxic": {
-        "scale": 4,
-        "table": "Ranged_Res_Dmg"
-      }
-    },
-    "durations": {
-      "resistance": 60,
-      "hold": 60,
-      "immobilize": 60,
-      "stun": 60,
-      "sleep": 60,
-      "knockup": 60,
-      "knockback": 60,
-      "repel": 60,
-      "damageBuff": 60,
-      "tohitBuff": 60,
-      "recoveryBuff": 60
-    },
-    "hold": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Ranged_Res_Boolean"
-    },
-    "effectDuration": 60,
-    "immobilize": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Ranged_Res_Boolean"
-    },
-    "stun": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Ranged_Res_Boolean"
-    },
-    "sleep": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Ranged_Res_Boolean"
-    },
-    "knockup": {
-      "scale": 30,
-      "table": "Ranged_Res_Boolean"
-    },
-    "knockback": {
-      "scale": 30,
-      "table": "Ranged_Res_Boolean"
-    },
-    "repel": {
-      "scale": 30,
-      "table": "Ranged_Res_Boolean"
-    },
-    "damageBuff": {
-      "scale": 10,
-      "table": "Ranged_Buff_Dmg"
-    },
-    "tohitBuff": {
-      "scale": 1,
-      "table": "Ranged_Buff_ToHit"
-    },
-    "recoveryBuff": {
-      "scale": 1,
-      "table": "Ranged_Ones"
-    },
-    "buffDuration": 60
-  }
-};
+export const Serum: Power = withOverrides(base, overrides);

@@ -1,42 +1,16 @@
 /**
- * Cauterize
- * Ally Heal
+ * Cauterize — COMPOSED EXPORT
  *
- * Source: corruptor_buff/thermal_radiation/cauterize.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs corruptor_buff thermal_radiation
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Cauterize as base } from '@/data/generated/powersets/corruptor/secondary/thermal-radiation/cauterize';
+import { overrides } from '@/data/overrides/powersets/corruptor/secondary/thermal-radiation/cauterize';
 
-export const Cauterize: Power = {
-  "name": "Cauterize",
-  "internalName": "Cauterize",
-  "available": 3,
-  "description": "Heals a single targeted ally by cauterizing their wounds. You cannot use this power to heal yourself.",
-  "shortHelp": "Ally Heal",
-  "icon": "thermalradiation_cauterize.png",
-  "powerType": "Click",
-  "targetType": "Ally (Alive)",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 80,
-    "recharge": 4,
-    "endurance": 13,
-    "castTime": 2.27
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Healing"
-  ],
-  "allowedSetCategories": [
-    "Healing"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Heal",
-    "scale": 1.96,
-    "table": "Ranged_Heal"
-  }
-};
+export const Cauterize: Power = withOverrides(base, overrides);

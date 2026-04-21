@@ -1,55 +1,16 @@
 /**
- * Smoke Canister
- * Ranged (Location AoE), Foe -Perception, -To Hit, Confuse
+ * Smoke Canister — COMPOSED EXPORT
  *
- * Source: dominator_control/arsenal_control/smoke_grenade.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs dominator_control arsenal_control
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { SmokeCanister as base } from '@/data/generated/powersets/dominator/primary/arsenal-control/smoke-grenade';
+import { overrides } from '@/data/overrides/powersets/dominator/primary/arsenal-control/smoke-grenade';
 
-export const SmokeCanister: Power = {
-  "name": "Smoke Canister",
-  "internalName": "Smoke_Grenade",
-  "available": 11,
-  "description": "The Smoke Canister is a powerful infiltration tool. Fling it at a target location and it will quickly cover the area in smoke. While engulfed within this smoke, most enemies will not be able to see past normal melee range, although some may have better perception. If the foes are attacked, they will become confused and might attack their allies.",
-  "shortHelp": "Ranged (Location AoE), Foe -Perception, -To Hit, Confuse",
-  "icon": "arsenalcontrol_smokegrenade.png",
-  "powerType": "Click",
-  "targetType": "Location",
-  "effectArea": "Location",
-  "stats": {
-    "accuracy": 1.05,
-    "range": 80,
-    "recharge": 90,
-    "endurance": 16.64,
-    "castTime": 1.4
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "ToHit Debuff",
-    "Confuse",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate To-Hit Debuff",
-    "Confuse",
-    "Dominator Archetype Sets",
-    "To Hit Debuff"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "isPseudoPet": true,
-      "displayName": "Smoke Grenade",
-      "powers": [
-        "Pets.ResistAll.ResistAll",
-        "Redirects.Assault_Rifle.Smoke_Grenade",
-        "Redirects.Assault_Rifle.Smoke_Confusion"
-      ],
-      "duration": 30,
-      "copyBoosts": true
-    }
-  }
-};
+export const SmokeCanister: Power = withOverrides(base, overrides);

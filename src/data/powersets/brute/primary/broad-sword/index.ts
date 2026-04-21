@@ -18,7 +18,6 @@ import { Taunt as Taunt } from './taunt';
 import { WhirlingSword as WhirlingSword } from './whirling-sword';
 import { Disembowel as Disembowel } from './disembowel';
 import { HeadSplitter as HeadSplitter } from './head-splitter';
-import { BoomerangSlice as BoomerangSlice } from './boomerang-slice';
 
 export const powerset: Powerset = {
   id: 'brute/broad-sword',
@@ -37,7 +36,6 @@ export const powerset: Powerset = {
     WhirlingSword,
     Disembowel,
     HeadSplitter,
-    BoomerangSlice,
   ],
 };
 

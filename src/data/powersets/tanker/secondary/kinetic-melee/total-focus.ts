@@ -1,61 +1,16 @@
 /**
- * Concentrated Strike
- * Melee, DMG(Energy/Smash), Foe Disorient
+ * Concentrated Strike — COMPOSED EXPORT
  *
- * Source: tanker_melee/kinetic_attack/total_focus.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs tanker_melee kinetic_attack
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { ConcentratedStrike as base } from '@/data/generated/powersets/tanker/secondary/kinetic-melee/total-focus';
+import { overrides } from '@/data/overrides/powersets/tanker/secondary/kinetic-melee/total-focus';
 
-export const ConcentratedStrike: Power = {
-  "name": "Concentrated Strike",
-  "internalName": "Total_Focus",
-  "available": 29,
-  "description": "Concentrated Strike is a slow, but incredibly devastating attack that can knock out most opponents, leaving them Disoriented. Due to the exhausting nature of Concentrated Strike, its recharge time is very long.",
-  "shortHelp": "Melee, DMG(Energy/Smash), Foe Disorient",
-  "icon": "kineticattack_totalfocus.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1.2,
-    "range": 7,
-    "recharge": 20,
-    "endurance": 18.512,
-    "castTime": 2.83
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "EnduranceReduction",
-    "Stun",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Melee Damage",
-    "Stuns",
-    "Tanker Archetype Sets",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 1,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 2.56,
-      "table": "Melee_Damage"
-    }
-  ],
-  "effects": {
-    "stun": {
-      "mag": 3,
-      "scale": 10,
-      "table": "Melee_Immobilize"
-    }
-  }
-};
+export const ConcentratedStrike: Power = withOverrides(base, overrides);

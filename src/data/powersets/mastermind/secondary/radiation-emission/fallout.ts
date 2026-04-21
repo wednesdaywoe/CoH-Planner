@@ -1,53 +1,16 @@
 /**
- * Fallout
- * Post-Defeat: PBAoE, Foe -To Hit, -DEF, -DMG, -Res(All)
+ * Fallout — COMPOSED EXPORT
  *
- * Source: mastermind_buff/radiation_emission/fallout.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs mastermind_buff radiation_emission
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Fallout as base } from '@/data/generated/powersets/mastermind/secondary/radiation-emission/fallout';
+import { overrides } from '@/data/overrides/powersets/mastermind/secondary/radiation-emission/fallout';
 
-export const Fallout: Power = {
-  "name": "Fallout",
-  "internalName": "Fallout",
-  "available": 27,
-  "description": "After an ally falls in battle, you can activate this power to extract the energy from their body to deal a massive amount of Energy damage to any nearby foes. All affected foes are extremely weakened by the Fallout, and their Accuracy, Defense, Damage and Damage Resistance is severely reduced.Damage: Extreme.Recharge: Very Long.",
-  "shortHelp": "Post-Defeat: PBAoE, Foe -To Hit, -DEF, -DMG, -Res(All)",
-  "icon": "radiationpoisoning_fallout.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 60,
-    "recharge": 300,
-    "endurance": 26,
-    "castTime": 3.2
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "ToHit Debuff",
-    "Defense Debuff",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Mastermind Archetype Sets",
-    "Accurate Defense Debuff",
-    "Accurate To-Hit Debuff",
-    "Defense Debuff",
-    "Ranged AoE Damage",
-    "To Hit Debuff",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_Fallout",
-      "duration": 1,
-      "copyBoosts": true
-    }
-  }
-};
+export const Fallout: Power = withOverrides(base, overrides);

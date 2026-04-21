@@ -1,93 +1,16 @@
 /**
- * Rend Armor
- * Melee, DMG(Smashing), Foe -Def(All), -Res(All)
+ * Rend Armor — COMPOSED EXPORT
  *
- * Source: tanker_melee/titan_weapons/shatter_armor.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs tanker_melee titan_weapons
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { RendArmor as base } from '@/data/generated/powersets/tanker/secondary/titan-weapons/shatter-armor';
+import { overrides } from '@/data/overrides/powersets/tanker/secondary/titan-weapons/shatter-armor';
 
-export const RendArmor: Power = {
-  "name": "Rend Armor",
-  "internalName": "Shatter_Armor",
-  "available": 23,
-  "description": "You batter your enemy with your mighty weapon dealing Extreme Smashing damage and reducing their resistance to damage as well as their defense to all types of attacks for a short time.",
-  "shortHelp": "Melee, DMG(Smashing), Foe -Def(All), -Res(All)",
-  "icon": "titanweapons_shatterarmor.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 9,
-    "recharge": 16,
-    "endurance": 15.6395,
-    "castTime": 2.3
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "EnduranceReduction",
-    "Recharge",
-    "Defense Debuff",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Defense Debuff",
-    "Melee Damage",
-    "Tanker Archetype Sets",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 2.92,
-    "table": "Melee_Damage"
-  },
-  "effects": {
-    "defenseDebuff": {
-      "scale": 1,
-      "table": "Melee_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 10,
-      "resistanceDebuff": 8
-    },
-    "resistanceDebuff": {
-      "smashing": {
-        "scale": 1,
-        "table": "Melee_Debuff_Res_Dmg"
-      },
-      "lethal": {
-        "scale": 1,
-        "table": "Melee_Debuff_Res_Dmg"
-      },
-      "fire": {
-        "scale": 1,
-        "table": "Melee_Debuff_Res_Dmg"
-      },
-      "cold": {
-        "scale": 1,
-        "table": "Melee_Debuff_Res_Dmg"
-      },
-      "energy": {
-        "scale": 1,
-        "table": "Melee_Debuff_Res_Dmg"
-      },
-      "negative": {
-        "scale": 1,
-        "table": "Melee_Debuff_Res_Dmg"
-      },
-      "psionic": {
-        "scale": 1,
-        "table": "Melee_Debuff_Res_Dmg"
-      },
-      "toxic": {
-        "scale": 1,
-        "table": "Melee_Debuff_Res_Dmg"
-      }
-    },
-    "buffDuration": 10
-  }
-};
+export const RendArmor: Power = withOverrides(base, overrides);

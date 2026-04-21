@@ -1,54 +1,16 @@
 /**
- * Blazing Bolt
- * Sniper, Extreme DMG(Fire)
+ * Blazing Bolt — COMPOSED EXPORT
  *
- * Source: dominator_assault/fiery_assault/blazing_bolt.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs dominator_assault fiery_assault
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { BlazingBolt as base } from '@/data/generated/powersets/dominator/secondary/fiery-assault/blazing-bolt';
+import { overrides } from '@/data/overrides/powersets/dominator/secondary/fiery-assault/blazing-bolt';
 
-export const BlazingBolt: Power = {
-  "name": "Blazing Bolt",
-  "internalName": "Blazing_Bolt",
-  "available": 27,
-  "description": "A long range beam of fire that blasts your foes. This is a sniper attack, and is best fired from a distance, as it can be interrupted. If you are engaged in battle this attack becomes instant-cast. If you are not engaged, it will do bonus damage.Damage: Extreme.Recharge: Slow.",
-  "shortHelp": "Sniper, Extreme DMG(Fire)",
-  "icon": "fireassault_blazingbolt.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 150,
-    "recharge": 20,
-    "endurance": 18.512,
-    "castTime": 1.67
-  },
-  "allowedEnhancements": [
-    "Interrupt",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Ranged Damage",
-    "Sniper Attacks",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Fire",
-      "scale": 4.5,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.225,
-      "table": "Ranged_Damage",
-      "duration": 3.1,
-      "tickRate": 1
-    }
-  ]
-};
+export const BlazingBolt: Power = withOverrides(base, overrides);

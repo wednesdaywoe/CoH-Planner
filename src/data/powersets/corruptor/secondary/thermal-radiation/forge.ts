@@ -1,52 +1,16 @@
 /**
- * Forge
- * Ally +DMG, +To Hit
+ * Forge — COMPOSED EXPORT
  *
- * Source: corruptor_buff/thermal_radiation/forge.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs corruptor_buff thermal_radiation
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Forge as base } from '@/data/generated/powersets/corruptor/secondary/thermal-radiation/forge';
+import { overrides } from '@/data/overrides/powersets/corruptor/secondary/thermal-radiation/forge';
 
-export const Forge: Power = {
-  "name": "Forge",
-  "internalName": "Forge",
-  "available": 23,
-  "description": "Forge a single ally target into a killing machine. Forge immensely enhances a single ally's Damage and chance to hit.",
-  "shortHelp": "Ally +DMG, +To Hit",
-  "icon": "thermalradiation_forge.png",
-  "powerType": "Click",
-  "targetType": "Ally (Alive)",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 80,
-    "recharge": 60,
-    "endurance": 10.4,
-    "castTime": 2.27
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "ToHit"
-  ],
-  "allowedSetCategories": [
-    "To Hit Buff"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "tohitBuff": {
-      "scale": 2,
-      "table": "Ranged_Buff_ToHit"
-    },
-    "durations": {
-      "tohitBuff": 120,
-      "damageBuff": 120
-    },
-    "damageBuff": {
-      "scale": 4,
-      "table": "Ranged_Buff_Dmg"
-    },
-    "buffDuration": 120
-  }
-};
+export const Forge: Power = withOverrides(base, overrides);

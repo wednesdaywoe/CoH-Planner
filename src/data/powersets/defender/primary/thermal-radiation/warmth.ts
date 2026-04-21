@@ -1,42 +1,16 @@
 /**
- * Warmth
- * PBAoE, Team +Heal
+ * Warmth — COMPOSED EXPORT
  *
- * Source: defender_buff/thermal_radiation/warmth.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs defender_buff thermal_radiation
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Warmth as base } from '@/data/generated/powersets/defender/primary/thermal-radiation/warmth';
+import { overrides } from '@/data/overrides/powersets/defender/primary/thermal-radiation/warmth';
 
-export const Warmth: Power = {
-  "name": "Warmth",
-  "internalName": "Warmth",
-  "available": 0,
-  "description": "You can use your Warmth to heal some of your wounds, and the wounds of your group. This power has a small radius, so your allies need to be near you if they wish to be affected.",
-  "shortHelp": "PBAoE, Team +Heal",
-  "icon": "thermalradiation_warmth.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "radius": 25,
-    "recharge": 8,
-    "endurance": 13,
-    "castTime": 2.03,
-    "maxTargets": 255
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Healing"
-  ],
-  "allowedSetCategories": [
-    "Healing"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Heal",
-    "scale": 1,
-    "table": "Ranged_Heal"
-  }
-};
+export const Warmth: Power = withOverrides(base, overrides);

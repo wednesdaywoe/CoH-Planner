@@ -1,46 +1,16 @@
 /**
- * Genetic Contamination
- * Toggle: PBAoE, Minor DoT(Toxic), -Damage(All)
+ * Genetic Contamination — COMPOSED EXPORT
  *
- * Source: scrapper_defense/bio_organic_armor/genetic_contamination.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs scrapper_defense bio_organic_armor
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { GeneticContamination as base } from '@/data/generated/powersets/scrapper/secondary/bio-armor/genetic-contamination';
+import { overrides } from '@/data/overrides/powersets/scrapper/secondary/bio-armor/genetic-contamination';
 
-export const GeneticContamination: Power = {
-  "name": "Genetic Contamination",
-  "internalName": "Genetic_Contamination",
-  "available": 27,
-  "description": "You're capable of breaking down the genetic material of your foes with a powerful toxin that is produced by your Bio Armor. Nearby foes affected by this poison will suffer toxic damage over time as well as dealing reduced damage. While Defensive Adaptation is active this power's damage debuff is increased in effectiveness.Damage: Minor.Recharge: Fast.",
-  "shortHelp": "Toggle: PBAoE, Minor DoT(Toxic), -Damage(All)",
-  "icon": "bioorganicarmor_geneticcontamination.png",
-  "powerType": "Toggle",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "radius": 8,
-    "recharge": 4,
-    "endurance": 1.04,
-    "castTime": 1.07,
-    "activatePeriod": 2,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Melee AoE Damage",
-    "Scrapper Archetype Sets",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Toxic",
-    "scale": 0.15,
-    "table": "Melee_Damage"
-  }
-};
+export const GeneticContamination: Power = withOverrides(base, overrides);

@@ -1,93 +1,16 @@
 /**
- * Corruption
- * Ranged, Light DMG(Fire), Foe Minor DoT (Toxic), -Res
+ * Corruption — COMPOSED EXPORT
  *
- * Source: mastermind_summon/demon_summoning/corruption.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs mastermind_summon demon_summoning
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Corruption as base } from '@/data/generated/powersets/mastermind/primary/demon-summoning/corruption';
+import { overrides } from '@/data/overrides/powersets/mastermind/primary/demon-summoning/corruption';
 
-export const Corruption: Power = {
-  "name": "Corruption",
-  "internalName": "Corruption",
-  "available": 0,
-  "description": "You lash out with your whip, firing a bolt of hellfire and corrupting your victim's very living essence. This attack deals minor fire damage, causes minor toxic damage over time, and reduces their damage resistance for a short time.",
-  "shortHelp": "Ranged, Light DMG(Fire), Foe Minor DoT (Toxic), -Res",
-  "icon": "demonsummoning_corruption.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 80,
-    "recharge": 3,
-    "endurance": 4.37,
-    "castTime": 1.23
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Mastermind Archetype Sets",
-    "Ranged Damage",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Fire",
-      "scale": 0.76,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Toxic",
-      "scale": 0.15,
-      "table": "Ranged_Damage",
-      "duration": 3.1,
-      "tickRate": 1
-    }
-  ],
-  "effects": {
-    "resistanceDebuff": {
-      "smashing": {
-        "scale": 1.25,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "lethal": {
-        "scale": 1.25,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "fire": {
-        "scale": 1.25,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "cold": {
-        "scale": 1.25,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "energy": {
-        "scale": 1.25,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "negative": {
-        "scale": 1.25,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "psionic": {
-        "scale": 1.25,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "toxic": {
-        "scale": 1.25,
-        "table": "Ranged_Debuff_Res_Dmg"
-      }
-    },
-    "durations": {
-      "resistanceDebuff": 5
-    },
-    "buffDuration": 5
-  }
-};
+export const Corruption: Power = withOverrides(base, overrides);

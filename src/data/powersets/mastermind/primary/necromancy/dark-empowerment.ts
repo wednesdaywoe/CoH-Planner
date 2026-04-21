@@ -1,37 +1,16 @@
 /**
- * Dark Empowerment
- * Ranged, Empower Undead Henchman
+ * Dark Empowerment — COMPOSED EXPORT
  *
- * Source: mastermind_summon/necromancy/dark_empowerment.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs mastermind_summon necromancy
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { DarkEmpowerment as base } from '@/data/generated/powersets/mastermind/primary/necromancy/dark-empowerment';
+import { overrides } from '@/data/overrides/powersets/mastermind/primary/necromancy/dark-empowerment';
 
-export const DarkEmpowerment: Power = {
-  "name": "Dark Empowerment",
-  "internalName": "Dark_Empowerment",
-  "available": 25,
-  "description": "Dark Empowerment will permanently bestow the most powerful and darkest new powers and abilities to all of your Undead Henchman. The Empowered Undead will gain new abilities and powers. The powers gained are unique and dependent upon the type of Undead Henchman that is Empowered, but all Henchmen will gain additional Hit Points, and the power to steal life force from enemies they attack!Dark Empowerment only works on your Undead Henchmen and you can only Empower your Undead Henchmen once with this power.",
-  "shortHelp": "Ranged, Empower Undead Henchman",
-  "icon": "necromancy_darkempowerment.png",
-  "powerType": "Click",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "range": 50,
-    "radius": 30,
-    "recharge": 0.5,
-    "endurance": 11.375,
-    "castTime": 2.07,
-    "maxTargets": 16
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Healing"
-  ],
-  "allowedSetCategories": [
-    "Healing"
-  ],
-  "maxSlots": 6
-};
+export const DarkEmpowerment: Power = withOverrides(base, overrides);

@@ -1,104 +1,16 @@
 /**
- * Farsight
- * PBAoE Team, +To-Hit, +Defense(All), +Perception
+ * Farsight — COMPOSED EXPORT
  *
- * Source: mastermind_buff/time_manipulation/farsight.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs mastermind_buff time_manipulation
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Farsight as base } from '@/data/generated/powersets/mastermind/secondary/time-manipulation/farsight';
+import { overrides } from '@/data/overrides/powersets/mastermind/secondary/time-manipulation/farsight';
 
-export const Farsight: Power = {
-  "name": "Farsight",
-  "internalName": "Farsight",
-  "available": 23,
-  "description": "You give your allies a brief glimpse of the future and what is to come. This provides you and your team a moderate increase to your chance to hit and defense for a short period of time.Recharge: Long.",
-  "shortHelp": "PBAoE Team, +To-Hit, +Defense(All), +Perception",
-  "icon": "timemanipulation_farsight.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "radius": 25,
-    "recharge": 240,
-    "endurance": 19.5,
-    "castTime": 2.03,
-    "maxTargets": 255
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "ToHit",
-    "Defense"
-  ],
-  "allowedSetCategories": [
-    "Defense Sets",
-    "To Hit Buff"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "defenseBuff": {
-      "ranged": {
-        "scale": 1.25,
-        "table": "Ranged_Buff_Def"
-      },
-      "melee": {
-        "scale": 1.25,
-        "table": "Ranged_Buff_Def"
-      },
-      "aoe": {
-        "scale": 1.25,
-        "table": "Ranged_Buff_Def"
-      },
-      "smashing": {
-        "scale": 1.25,
-        "table": "Ranged_Buff_Def"
-      },
-      "lethal": {
-        "scale": 1.25,
-        "table": "Ranged_Buff_Def"
-      },
-      "fire": {
-        "scale": 1.25,
-        "table": "Ranged_Buff_Def"
-      },
-      "cold": {
-        "scale": 1.25,
-        "table": "Ranged_Buff_Def"
-      },
-      "energy": {
-        "scale": 1.25,
-        "table": "Ranged_Buff_Def"
-      },
-      "negative": {
-        "scale": 1.25,
-        "table": "Ranged_Buff_Def"
-      },
-      "psionic": {
-        "scale": 1.25,
-        "table": "Ranged_Buff_Def"
-      }
-    },
-    "durations": {
-      "defenseBuff": 120,
-      "tohitBuff": 120,
-      "debuffResistance": 120,
-      "perceptionBuff": 120
-    },
-    "tohitBuff": {
-      "scale": 1,
-      "table": "Ranged_Buff_ToHit"
-    },
-    "debuffResistance": {
-      "perception": {
-        "scale": 1.5,
-        "table": "Ranged_Res_Boolean"
-      }
-    },
-    "perceptionBuff": {
-      "scale": 2,
-      "table": "Ranged_Res_Boolean"
-    },
-    "buffDuration": 120
-  }
-};
+export const Farsight: Power = withOverrides(base, overrides);

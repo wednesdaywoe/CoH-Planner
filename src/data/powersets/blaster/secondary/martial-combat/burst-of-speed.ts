@@ -1,61 +1,16 @@
 /**
- * Burst of Speed
- * Location AoE Moderate DMG (Smash), Self Teleport
+ * Burst of Speed — COMPOSED EXPORT
  *
- * Source: blaster_support/martial_manipulation/burst_of_speed.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs blaster_support martial_manipulation
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { BurstofSpeed as base } from '@/data/generated/powersets/blaster/secondary/martial-combat/burst-of-speed';
+import { overrides } from '@/data/overrides/powersets/blaster/secondary/martial-combat/burst-of-speed';
 
-export const BurstofSpeed: Power = {
-  "name": "Burst of Speed",
-  "internalName": "Burst_of_Speed",
-  "available": 9,
-  "description": "Channeling physical Ki inwards, you move more quickly than can be seen for an instant, allowing you to move instantly to a targeted location and strike at targets within melee range. You can use this Burst of Speed up to 3 times before it needs to recharge.Recharge: Long.",
-  "shortHelp": "Location AoE Moderate DMG (Smash), Self Teleport",
-  "icon": "martialmanipulation_burstofspeed.png",
-  "powerType": "Click",
-  "effectArea": "Location",
-  "stats": {
-    "accuracy": 1,
-    "range": 200,
-    "recharge": 90,
-    "endurance": 13.52,
-    "castTime": 1
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Blaster Archetype Sets",
-    "Melee AoE Damage",
-    "Teleport",
-    "Universal Damage Sets",
-    "Universal Travel"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "teleport": {
-      "scale": 1,
-      "table": "Ranged_Ones"
-    },
-    "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_Burst_of_Speed",
-      "duration": 2,
-      "copyBoosts": true
-    },
-    "damageBuff": {
-      "scale": 0.026,
-      "table": "Ranged_Ones"
-    },
-    "durations": {
-      "damageBuff": 8.5
-    },
-    "buffDuration": 8.5
-  }
-};
+export const BurstofSpeed: Power = withOverrides(base, overrides);

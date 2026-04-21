@@ -1,69 +1,16 @@
 /**
- * Soaring Dragon
- * Melee, DMG(Lethal), Foe Knockup, -DEF
+ * Soaring Dragon — COMPOSED EXPORT
  *
- * Source: stalker_melee/ninja_sword/disembowel.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs stalker_melee ninja_sword
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { SoaringDragon as base } from '@/data/generated/powersets/stalker/primary/ninja-blade/disembowel';
+import { overrides } from '@/data/overrides/powersets/stalker/primary/ninja-blade/disembowel';
 
-export const SoaringDragon: Power = {
-  "name": "Soaring Dragon",
-  "internalName": "Disembowel",
-  "available": 21,
-  "description": "You perform a powerful Soaring Dragon maneuver that deals a great amount of lethal damage, and can knock a target up into the air. This attack can reduce a target's Defense, making them easier to hit.",
-  "shortHelp": "Melee, DMG(Lethal), Foe Knockup, -DEF",
-  "icon": "katana_disembowel.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1.05,
-    "range": 7,
-    "recharge": 9,
-    "endurance": 9.36,
-    "castTime": 1.33
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Knockback",
-    "Defense Debuff",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Defense Debuff",
-    "Knockback",
-    "Melee Damage",
-    "Stalker Archetype Sets",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Lethal",
-      "scale": 1.8,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.8,
-      "table": "Melee_InherentDamage"
-    }
-  ],
-  "effects": {
-    "knockup": {
-      "scale": 2,
-      "table": "Melee_Knockback"
-    },
-    "defenseDebuff": {
-      "scale": 1,
-      "table": "Melee_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 10
-    },
-    "buffDuration": 10
-  }
-};
+export const SoaringDragon: Power = withOverrides(base, overrides);

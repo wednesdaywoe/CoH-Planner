@@ -1,53 +1,16 @@
 /**
- * Ice Sword Circle
- * PBAoE Melee, Light DMG(Cold/Lethal), Foe -Recharge, -SPD
+ * Ice Sword Circle — COMPOSED EXPORT
  *
- * Source: dominator_assault/icy_assault/ice_sword_circle.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs dominator_assault icy_assault
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { IceSwordCircle as base } from '@/data/generated/powersets/dominator/secondary/icy-assault/ice-sword-circle';
+import { overrides } from '@/data/overrides/powersets/dominator/secondary/icy-assault/ice-sword-circle';
 
-export const IceSwordCircle: Power = {
-  "name": "Ice Sword Circle",
-  "internalName": "Ice_Sword_Circle",
-  "available": 3,
-  "description": "Mastery of your Ice Sword has enabled you to make an attack on every foe within melee distance. This will slash and chill your enemies, dealing moderate damage and slowing all affected targets' movement and attack speed.Damage: Light.Recharge: Slow.",
-  "shortHelp": "PBAoE Melee, Light DMG(Cold/Lethal), Foe -Recharge, -SPD",
-  "icon": "iceassault_iceswordcircle.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "radius": 15,
-    "recharge": 22,
-    "endurance": 20.176,
-    "castTime": 2.67,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "Slow",
-    "EnduranceReduction",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Melee AoE Damage",
-    "Slow Movement",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Lethal",
-      "scale": 0.595,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Cold",
-      "scale": 0.595,
-      "table": "Melee_Damage"
-    }
-  ]
-};
+export const IceSwordCircle: Power = withOverrides(base, overrides);

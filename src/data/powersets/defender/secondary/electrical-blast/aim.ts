@@ -1,55 +1,16 @@
 /**
- * Charge Up
- * Self +To Hit, +DMG, +End Mod
+ * Charge Up — COMPOSED EXPORT
  *
- * Source: defender_ranged/electrical_blast/aim.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs defender_ranged electrical_blast
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { ChargeUp as base } from '@/data/generated/powersets/defender/secondary/electrical-blast/aim';
+import { overrides } from '@/data/overrides/powersets/defender/secondary/electrical-blast/aim';
 
-export const ChargeUp: Power = {
-  "name": "Charge Up",
-  "internalName": "Aim",
-  "available": 15,
-  "description": "Greatly increases the chance to hit of your attacks for a few seconds. Slightly increases damage and endurance modification.",
-  "shortHelp": "Self +To Hit, +DMG, +End Mod",
-  "icon": "electricalbolt_aim.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 90,
-    "endurance": 5.2,
-    "castTime": 1.17
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "ToHit"
-  ],
-  "allowedSetCategories": [
-    "To Hit Buff"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "tohitBuff": {
-      "scale": 4,
-      "table": "Melee_Buff_ToHit"
-    },
-    "durations": {
-      "tohitBuff": 10,
-      "damageBuff": 10,
-      "enduranceGain": 10
-    },
-    "damageBuff": {
-      "scale": 4,
-      "table": "Melee_Buff_Dmg"
-    },
-    "enduranceGain": {
-      "scale": 0.25,
-      "table": "Ranged_EndDrain"
-    },
-    "buffDuration": 10
-  }
-};
+export const ChargeUp: Power = withOverrides(base, overrides);

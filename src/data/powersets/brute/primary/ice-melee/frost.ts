@@ -1,53 +1,16 @@
 /**
- * Frost
- * Close (Cone), DoT(Cold), Foe -Recharge, -SPD
+ * Frost — COMPOSED EXPORT
  *
- * Source: brute_melee/ice_melee/frost.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs brute_melee ice_melee
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Frost as base } from '@/data/generated/powersets/brute/primary/ice-melee/frost';
+import { overrides } from '@/data/overrides/powersets/brute/primary/ice-melee/frost';
 
-export const Frost: Power = {
-  "name": "Frost",
-  "internalName": "Frost",
-  "available": 1,
-  "description": "You create a short cone of Frost in front of you that can deal some damage and Slow a foe's speed, due to their uncontrollable shivering.",
-  "shortHelp": "Close (Cone), DoT(Cold), Foe -Recharge, -SPD",
-  "icon": "icyonslaught_frost.png",
-  "powerType": "Click",
-  "effectArea": "Cone",
-  "stats": {
-    "accuracy": 1,
-    "range": 10,
-    "radius": 10,
-    "arc": 1.5708,
-    "recharge": 11,
-    "endurance": 11.024,
-    "castTime": 2.27,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "Slow",
-    "Taunt",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Brute Archetype Sets",
-    "Ranged AoE Damage",
-    "Slow Movement",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Cold",
-    "scale": 0.27,
-    "table": "Melee_Damage",
-    "duration": 1.1,
-    "tickRate": 0.2
-  }
-};
+export const Frost: Power = withOverrides(base, overrides);

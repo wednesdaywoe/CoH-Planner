@@ -1,98 +1,16 @@
 /**
- * Force Bomb
- * Ranged (Targeted AoE), DMG(Smash), Foe Knockdown, Disorient
+ * Force Bomb — COMPOSED EXPORT
  *
- * Source: controller_buff/force_field/repulsion_bomb.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs controller_buff force_field
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { ForceBomb as base } from '@/data/generated/powersets/controller/secondary/force-field/repulsion-bomb';
+import { overrides } from '@/data/overrides/powersets/controller/secondary/force-field/repulsion-bomb';
 
-export const ForceBomb: Power = {
-  "name": "Force Bomb",
-  "internalName": "Repulsion_Bomb",
-  "available": 27,
-  "description": "A powerful Force Bomb is hurled at your foes dealing a moderate amount of damage and knocking them off of their feet. Foes struck by Repulsion Bomb have a chance to become disoriented, and the force of the blow will leave their armor shattered, lowering their damage resistance.",
-  "shortHelp": "Ranged (Targeted AoE), DMG(Smash), Foe Knockdown, Disorient",
-  "icon": "forcefield_repulsionbomb.png",
-  "powerType": "Click",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "range": 70,
-    "radius": 12,
-    "recharge": 30,
-    "endurance": 16.9,
-    "castTime": 1.67,
-    "maxTargets": 16
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Stun",
-    "Recharge",
-    "Knockback",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Knockback",
-    "Ranged AoE Damage",
-    "Stuns",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 0.6,
-    "table": "Ranged_Damage"
-  },
-  "effects": {
-    "resistanceDebuff": {
-      "smashing": {
-        "scale": 1.5,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "lethal": {
-        "scale": 1.5,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "fire": {
-        "scale": 1.5,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "cold": {
-        "scale": 1.5,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "energy": {
-        "scale": 1.5,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "negative": {
-        "scale": 1.5,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "psionic": {
-        "scale": 1.5,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "toxic": {
-        "scale": 1.5,
-        "table": "Ranged_Debuff_Res_Dmg"
-      }
-    },
-    "durations": {
-      "resistanceDebuff": 30
-    },
-    "knockback": {
-      "scale": 9,
-      "table": "Ranged_Ones"
-    },
-    "stun": {
-      "mag": 2,
-      "scale": 8,
-      "table": "Ranged_Stun"
-    },
-    "buffDuration": 30
-  }
-};
+export const ForceBomb: Power = withOverrides(base, overrides);

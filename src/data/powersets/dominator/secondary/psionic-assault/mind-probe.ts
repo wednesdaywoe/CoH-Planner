@@ -1,42 +1,16 @@
 /**
- * Mind Probe
- * Melee, High DMG(Psionic), Target -Recharge
+ * Mind Probe — COMPOSED EXPORT
  *
- * Source: dominator_assault/psionic_assault/mind_probe.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs dominator_assault psionic_assault
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { MindProbe as base } from '@/data/generated/powersets/dominator/secondary/psionic-assault/mind-probe';
+import { overrides } from '@/data/overrides/powersets/dominator/secondary/psionic-assault/mind-probe';
 
-export const MindProbe: Power = {
-  "name": "Mind Probe",
-  "internalName": "Mind_Probe",
-  "available": 0,
-  "description": "Grip the minds of your foe with a Mind Probe. You must be in close proximity to pull off this attack that wrecks havoc on your foes synapses, dealing high Psionic Damage while reducing their attack speed.Damage: High.Recharge: Moderate.",
-  "shortHelp": "Melee, High DMG(Psionic), Target -Recharge",
-  "icon": "psionicassault_mindprobe.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 7,
-    "recharge": 10,
-    "endurance": 10.192,
-    "castTime": 1.17
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Melee Damage",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Psionic",
-    "scale": 1.96,
-    "table": "Melee_Damage"
-  }
-};
+export const MindProbe: Power = withOverrides(base, overrides);

@@ -1,51 +1,16 @@
 /**
- * Dragon's Roar
- * Ranged (Targeted AoE), Foe Taunt
+ * Dragon's Roar — COMPOSED EXPORT
  *
- * Source: brute_melee/katana/taunt.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs brute_melee katana
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { DragonsRoar as base } from '@/data/generated/powersets/brute/primary/katana/taunt';
+import { overrides } from '@/data/overrides/powersets/brute/primary/katana/taunt';
 
-export const DragonsRoar: Power = {
-  "name": "Dragon's Roar",
-  "internalName": "Taunt",
-  "available": 11,
-  "description": "Taunt foes to attack you. Useful to pull enemies off allies and keep them attacking you to raise your Fury. A To Hit check is required to Taunt enemy players, but is not needed against critter targets.",
-  "shortHelp": "Ranged (Targeted AoE), Foe Taunt",
-  "icon": "katana_tauntaoe.png",
-  "powerType": "Click",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "range": 70,
-    "radius": 15,
-    "recharge": 10,
-    "castTime": 1.67,
-    "maxTargets": 5
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "Range",
-    "Recharge",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Threat Duration"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "rangeBuff": {
-      "scale": 0.75,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "rangeBuff": 12
-    },
-    "taunt": {
-      "scale": 20,
-      "table": "Melee_Taunt"
-    },
-    "buffDuration": 12
-  }
-};
+export const DragonsRoar: Power = withOverrides(base, overrides);

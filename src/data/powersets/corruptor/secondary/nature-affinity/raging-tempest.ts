@@ -1,45 +1,16 @@
 /**
- * Entangling Aura
- * Toggle, Foe Hold
+ * Entangling Aura — COMPOSED EXPORT
  *
- * Source: corruptor_buff/nature_affinity/raging_tempest.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs corruptor_buff nature_affinity
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { EntanglingAura as base } from '@/data/generated/powersets/corruptor/secondary/nature-affinity/raging-tempest';
+import { overrides } from '@/data/overrides/powersets/corruptor/secondary/nature-affinity/raging-tempest';
 
-export const EntanglingAura: Power = {
-  "name": "Entangling Aura",
-  "internalName": "Raging_Tempest",
-  "available": 27,
-  "description": "While this power is active there is a high chance that entangling vines will grasp nearby foes and render them held for a short time.Recharge: Slow.",
-  "shortHelp": "Toggle, Foe Hold",
-  "icon": "natureaffinity_ragingtempest.png",
-  "powerType": "Toggle",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "radius": 15,
-    "recharge": 20,
-    "endurance": 1.3,
-    "castTime": 2.03,
-    "activatePeriod": 2,
-    "maxTargets": 16
-  },
-  "allowedEnhancements": [
-    "Hold",
-    "EnduranceReduction",
-    "Recharge"
-  ],
-  "allowedSetCategories": [
-    "Holds"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "hold": {
-      "mag": 2,
-      "scale": 4,
-      "table": "Ranged_Ones"
-    }
-  }
-};
+export const EntanglingAura: Power = withOverrides(base, overrides);

@@ -1,62 +1,16 @@
 /**
- * Energy Torrent
- * Ranged (Cone), DMG(Energy/Smash), Foe Knockback
+ * Energy Torrent — COMPOSED EXPORT
  *
- * Source: corruptor_ranged/energy_blast/energy_torrent.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs corruptor_ranged energy_blast
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { EnergyTorrent as base } from '@/data/generated/powersets/corruptor/primary/energy-blast/energy-torrent';
+import { overrides } from '@/data/overrides/powersets/corruptor/primary/energy-blast/energy-torrent';
 
-export const EnergyTorrent: Power = {
-  "name": "Energy Torrent",
-  "internalName": "Energy_Torrent",
-  "available": 1,
-  "description": "Energy Torrent unleashes a cone of powerful energy that can smash foes and possibly send them flying.",
-  "shortHelp": "Ranged (Cone), DMG(Energy/Smash), Foe Knockback",
-  "icon": "powerblast_energytorrent.png",
-  "powerType": "Click",
-  "effectArea": "Cone",
-  "stats": {
-    "accuracy": 1,
-    "range": 40,
-    "radius": 40,
-    "arc": 0.7854,
-    "recharge": 12,
-    "endurance": 11.856,
-    "castTime": 1.07,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Knockback",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Corruptor Archetype Sets",
-    "Knockback",
-    "Ranged AoE Damage",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 0.3,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.66,
-      "table": "Ranged_Damage"
-    }
-  ],
-  "effects": {
-    "knockback": {
-      "scale": 3,
-      "table": "Ranged_Knockback"
-    }
-  }
-};
+export const EnergyTorrent: Power = withOverrides(base, overrides);

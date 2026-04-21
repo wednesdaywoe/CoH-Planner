@@ -1,63 +1,16 @@
 /**
- * Ball Lightning
- * Ranged (Targeted AoE), DoT(Energy), Foe -End
+ * Ball Lightning — COMPOSED EXPORT
  *
- * Source: sentinel_ranged/electrical_blast/ball_lightning.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs sentinel_ranged electrical_blast
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { BallLightning as base } from '@/data/generated/powersets/sentinel/primary/electrical-blast/ball-lightning';
+import { overrides } from '@/data/overrides/powersets/sentinel/primary/electrical-blast/ball-lightning';
 
-export const BallLightning: Power = {
-  "name": "Ball Lightning",
-  "internalName": "Ball_Lightning",
-  "available": 1,
-  "description": "Hurls a highly charged ball of lightning that explodes on contact. Ball Lightning deals good damage in an area of effect, and drains some Endurance from each target it hits.",
-  "shortHelp": "Ranged (Targeted AoE), DoT(Energy), Foe -End",
-  "icon": "electricalbolt_balllightning.png",
-  "powerType": "Click",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "range": 40,
-    "radius": 15,
-    "recharge": 16,
-    "endurance": 15.184,
-    "castTime": 1.07,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "EnduranceModification",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Endurance Modification",
-    "Ranged AoE Damage",
-    "Sentinel Archetype Sets",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Energy",
-      "scale": 0.9,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.045,
-      "table": "Ranged_Damage",
-      "duration": 2.2,
-      "tickRate": 0.6
-    }
-  ],
-  "effects": {
-    "enduranceDrain": {
-      "scale": 0.07,
-      "table": "Ranged_EndDrain"
-    }
-  }
-};
+export const BallLightning: Power = withOverrides(base, overrides);

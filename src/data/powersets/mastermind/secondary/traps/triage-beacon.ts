@@ -1,43 +1,16 @@
 /**
- * Triage Beacon
- * Place Beacon: PBAoE +Regen
+ * Triage Beacon — COMPOSED EXPORT
  *
- * Source: mastermind_buff/traps/triage_beacon.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs mastermind_buff traps
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { TriageBeacon as base } from '@/data/generated/powersets/mastermind/secondary/traps/triage-beacon';
+import { overrides } from '@/data/overrides/powersets/mastermind/secondary/traps/triage-beacon';
 
-export const TriageBeacon: Power = {
-  "name": "Triage Beacon",
-  "internalName": "Triage_Beacon",
-  "available": 3,
-  "description": "You can plant a Triage Beacon into the ground. The Beacon is immobile, but it emits a powerful healing aura. The Regeneration Rate of you, or your allies, will be greatly increased as long as you are near the Triage Beacon. The Beacon is invulnerable.Recharge: Long.",
-  "shortHelp": "Place Beacon: PBAoE +Regen",
-  "icon": "traps_droppedaoebuffregen.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 200,
-    "endurance": 16.25,
-    "castTime": 2.77
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Healing"
-  ],
-  "allowedSetCategories": [
-    "Healing"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_Traps_Triage_Beacon",
-      "duration": 90,
-      "copyBoosts": true
-    }
-  }
-};
+export const TriageBeacon: Power = withOverrides(base, overrides);

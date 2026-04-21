@@ -1,108 +1,16 @@
 /**
- * Antidote
- * Ally +Res(Disorient, Hold, Sleep, Immobilize, Confuse, Fear, Slow, Cold, Toxic)
+ * Antidote — COMPOSED EXPORT
  *
- * Source: corruptor_buff/poison/antidote.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs corruptor_buff poison
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Antidote as base } from '@/data/generated/powersets/corruptor/secondary/poison/antidote';
+import { overrides } from '@/data/overrides/powersets/corruptor/secondary/poison/antidote';
 
-export const Antidote: Power = {
-  "name": "Antidote",
-  "internalName": "Antidote",
-  "available": 19,
-  "description": "This Antidote can free an ally from any Disorient, Hold, Sleep, Slow, Confuse, Fear and Immobilize effects and leaves them resistant to such effects for a good while. The Antidote also grants the target some resistance to Cold and Toxic damage. Some of the effects of this power will improve with Multiple applications and as you advance in level.Recharge: Fast.",
-  "shortHelp": "Ally +Res(Disorient, Hold, Sleep, Immobilize, Confuse, Fear, Slow, Cold, Toxic)",
-  "icon": "poison_antidote.png",
-  "powerType": "Click",
-  "targetType": "Ally (Alive)",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 70,
-    "recharge": 4,
-    "endurance": 5.2,
-    "castTime": 1.53
-  },
-  "allowedEnhancements": [
-    "Resistance",
-    "EnduranceReduction",
-    "Range",
-    "Recharge"
-  ],
-  "allowedSetCategories": [
-    "Resist Damage"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "confuse": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Ranged_Res_Boolean"
-    },
-    "effectDuration": 90,
-    "durations": {
-      "confuse": 90,
-      "fear": 90,
-      "hold": 90,
-      "immobilize": 90,
-      "stun": 90,
-      "sleep": 90,
-      "mezResistance": 90,
-      "resistance": 90,
-      "debuffResistance": 90
-    },
-    "fear": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Ranged_Res_Boolean"
-    },
-    "hold": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Ranged_Res_Boolean"
-    },
-    "immobilize": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Ranged_Res_Boolean"
-    },
-    "stun": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Ranged_Res_Boolean"
-    },
-    "sleep": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Ranged_Res_Boolean"
-    },
-    "mezResistance": {
-      "sleep": {
-        "scale": 5,
-        "table": "Ranged_Res_Boolean"
-      }
-    },
-    "resistance": {
-      "cold": {
-        "scale": 1,
-        "table": "Ranged_Res_Dmg"
-      },
-      "toxic": {
-        "scale": 2,
-        "table": "Ranged_Res_Dmg"
-      }
-    },
-    "debuffResistance": {
-      "movement": {
-        "scale": 0.5,
-        "table": "Ranged_Ones"
-      },
-      "recharge": {
-        "scale": 0.5,
-        "table": "Ranged_Ones"
-      }
-    },
-    "buffDuration": 90
-  }
-};
+export const Antidote: Power = withOverrides(base, overrides);

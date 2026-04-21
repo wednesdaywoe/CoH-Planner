@@ -1,52 +1,16 @@
 /**
- * Bonfire
- * Ranged (Location AoE), Minor DMG(Fire), Foe Knockback
+ * Bonfire — COMPOSED EXPORT
  *
- * Source: controller_control/fire_control/bonfire.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs controller_control fire_control
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Bonfire as base } from '@/data/generated/powersets/controller/primary/fire-control/bonfire';
+import { overrides } from '@/data/overrides/powersets/controller/primary/fire-control/bonfire';
 
-export const Bonfire: Power = {
-  "name": "Bonfire",
-  "internalName": "Bonfire",
-  "available": 21,
-  "description": "You can create a Bonfire that knocks back and burns any foes who try to pass through it.",
-  "shortHelp": "Ranged (Location AoE), Minor DMG(Fire), Foe Knockback",
-  "icon": "firetrap_bonfire.png",
-  "powerType": "Click",
-  "targetType": "Location",
-  "effectArea": "Location",
-  "stats": {
-    "accuracy": 1,
-    "range": 70,
-    "recharge": 60,
-    "endurance": 13,
-    "castTime": 3.07
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Knockback",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Knockback",
-    "Ranged AoE Damage",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "isPseudoPet": true,
-      "displayName": "Bonfire",
-      "powers": [
-        "Pets.Bonfire.Bonfire"
-      ],
-      "duration": 45,
-      "copyBoosts": true
-    }
-  }
-};
+export const Bonfire: Power = withOverrides(base, overrides);

@@ -1,58 +1,16 @@
 /**
- * Power Bolt
- * Ranged, Light DMG(Energy/Smash), Foe Knockback, Chance for Energy Focus
+ * Power Bolt — COMPOSED EXPORT
  *
- * Source: dominator_assault/energy_assault/power_bolt.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs dominator_assault energy_assault
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { PowerBolt as base } from '@/data/generated/powersets/dominator/secondary/energy-assault/power-bolt';
+import { overrides } from '@/data/overrides/powersets/dominator/secondary/energy-assault/power-bolt';
 
-export const PowerBolt: Power = {
-  "name": "Power Bolt",
-  "internalName": "Power_Bolt",
-  "available": 0,
-  "description": "A quick attack that rapidly hurls small bolts of energy at foes, sometimes knocking them down. If used against a Disoriented foe, there is a small chance to enter Energy Focus mode.Damage: Light.Recharge: Fast.",
-  "shortHelp": "Ranged, Light DMG(Energy/Smash), Foe Knockback, Chance for Energy Focus",
-  "icon": "energyassault_powerbolt.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 80,
-    "recharge": 4,
-    "endurance": 5.2,
-    "castTime": 1
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Knockback",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Knockback",
-    "Ranged Damage",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 0.4,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.6,
-      "table": "Ranged_Damage"
-    }
-  ],
-  "effects": {
-    "knockback": {
-      "scale": 0.7,
-      "table": "Ranged_Knockback"
-    }
-  }
-};
+export const PowerBolt: Power = withOverrides(base, overrides);

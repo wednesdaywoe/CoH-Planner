@@ -1,55 +1,16 @@
 /**
- * Vortex
- * Summon Vortex
+ * Vortex — COMPOSED EXPORT
  *
- * Source: dominator_control/wind_control/vortex.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs dominator_control wind_control
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Vortex as base } from '@/data/generated/powersets/dominator/primary/wind-control/vortex';
+import { overrides } from '@/data/overrides/powersets/dominator/primary/wind-control/vortex';
 
-export const Vortex: Power = {
-  "name": "Vortex",
-  "internalName": "Vortex",
-  "available": 25,
-  "description": "You can create a true Vortex cloud to assist you in battle. This Vortex will build Pressure along with you as you use your powers. This will allow its attacks to have a chance, proportional to current pressure, for critical damage. However, at higher pressures, the Vortex will be unable to use some of its powers. The Manipulation of Pressure on this pet through the use of Vacuum upon it will grant you the Clear Skies buff. Both this power and Vacuum are required to automatically unlock Clear Skies.Recharge: Long.",
-  "shortHelp": "Summon Vortex",
-  "icon": "windcontrol_vortex.png",
-  "powerType": "Click",
-  "targetType": "Location",
-  "effectArea": "Location",
-  "stats": {
-    "accuracy": 1,
-    "range": 60,
-    "recharge": 240,
-    "endurance": 26,
-    "castTime": 1.87
-  },
-  "allowedEnhancements": [
-    "Slow",
-    "EnduranceReduction",
-    "Range",
-    "Stun",
-    "Recharge",
-    "ToHit Debuff",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate To-Hit Debuff",
-    "Pet Damage",
-    "Recharge Intensive Pets",
-    "Slow Movement",
-    "Stuns",
-    "To Hit Debuff",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_WindControl_Vortex",
-      "copyBoosts": true
-    }
-  },
-  "requires": "char>accesslevel >= 0"
-};
+export const Vortex: Power = withOverrides(base, overrides);

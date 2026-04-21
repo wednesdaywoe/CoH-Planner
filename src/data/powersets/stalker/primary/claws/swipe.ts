@@ -1,51 +1,16 @@
 /**
- * Swipe
- * Melee, DMG(Lethal)
+ * Swipe — COMPOSED EXPORT
  *
- * Source: stalker_melee/claws/swipe.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs stalker_melee claws
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Swipe as base } from '@/data/generated/powersets/stalker/primary/claws/swipe';
+import { overrides } from '@/data/overrides/powersets/stalker/primary/claws/swipe';
 
-export const Swipe: Power = {
-  "name": "Swipe",
-  "internalName": "Swipe",
-  "available": 0,
-  "description": "A quick Swipe with your claws. Does minor lethal damage, but has a quick recharge rate.",
-  "shortHelp": "Melee, DMG(Lethal)",
-  "icon": "claws_clawsswipe.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 7,
-    "recharge": 1.7,
-    "endurance": 2.912,
-    "castTime": 0.83
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Melee Damage",
-    "Stalker Archetype Sets",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Lethal",
-      "scale": 0.76,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.76,
-      "table": "Melee_InherentDamage"
-    }
-  ],
-  "requires": "!Stalker_Defense.Shield_Defense"
-};
+export const Swipe: Power = withOverrides(base, overrides);

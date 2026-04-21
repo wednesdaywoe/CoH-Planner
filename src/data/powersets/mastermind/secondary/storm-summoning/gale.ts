@@ -1,55 +1,16 @@
 /**
- * Gale
- * Ranged (Cone), Minor DMG(Smash), Foe Knockback
+ * Gale — COMPOSED EXPORT
  *
- * Source: mastermind_buff/storm_summoning/gale.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs mastermind_buff storm_summoning
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Gale as base } from '@/data/generated/powersets/mastermind/secondary/storm-summoning/gale';
+import { overrides } from '@/data/overrides/powersets/mastermind/secondary/storm-summoning/gale';
 
-export const Gale: Power = {
-  "name": "Gale",
-  "internalName": "Gale",
-  "available": 0,
-  "description": "You can call forth a tremendous gust of Gale force winds that knock down foes and deal some Smashing damage in a wide cone area.Damage: Minor.Recharge: Moderate.",
-  "shortHelp": "Ranged (Cone), Minor DMG(Smash), Foe Knockback",
-  "icon": "stormsummoning_gale.png",
-  "powerType": "Click",
-  "effectArea": "Cone",
-  "stats": {
-    "accuracy": 0.9,
-    "range": 50,
-    "radius": 50,
-    "arc": 1.3963,
-    "recharge": 8,
-    "endurance": 9.75,
-    "castTime": 2.17,
-    "maxTargets": 16
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Knockback",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Mastermind Archetype Sets",
-    "Knockback",
-    "Ranged AoE Damage",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 0.1,
-    "table": "Ranged_Damage"
-  },
-  "effects": {
-    "knockback": {
-      "scale": 10,
-      "table": "Ranged_Knockback"
-    }
-  }
-};
+export const Gale: Power = withOverrides(base, overrides);

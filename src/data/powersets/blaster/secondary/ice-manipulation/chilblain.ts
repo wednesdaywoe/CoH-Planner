@@ -1,75 +1,16 @@
 /**
- * Chilblain
- * Ranged, Moderate DoT(Cold), Foe Immobilize, -SPD, -Recharge
+ * Chilblain — COMPOSED EXPORT
  *
- * Source: blaster_support/ice_manipulation/chilblain.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs blaster_support ice_manipulation
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Chilblain as base } from '@/data/generated/powersets/blaster/secondary/ice-manipulation/chilblain';
+import { overrides } from '@/data/overrides/powersets/blaster/secondary/ice-manipulation/chilblain';
 
-export const Chilblain: Power = {
-  "name": "Chilblain",
-  "internalName": "Chilblain",
-  "available": 0,
-  "description": "Immobilizes your target in an icy trap. Deals some damage over time and slightly Slows the target's attack and movement speed. Useful for keeping villains at bay.Damage: Light.Recharge: Fast.",
-  "shortHelp": "Ranged, Moderate DoT(Cold), Foe Immobilize, -SPD, -Recharge",
-  "icon": "icemanipulation_chillblains.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 60,
-    "recharge": 4,
-    "endurance": 7.8,
-    "castTime": 1.17
-  },
-  "allowedEnhancements": [
-    "Slow",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Immobilize",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Blaster Archetype Sets",
-    "Immobilize",
-    "Ranged Damage",
-    "Slow Movement",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Cold",
-    "scale": 0.2,
-    "table": "Ranged_Damage",
-    "duration": 9.2,
-    "tickRate": 2
-  },
-  "effects": {
-    "immobilize": {
-      "mag": 3,
-      "scale": 15,
-      "table": "Ranged_Immobilize"
-    },
-    "mezResistance": {
-      "knockup": {
-        "scale": 100,
-        "table": "Ranged_Ones"
-      },
-      "knockback": {
-        "scale": 100,
-        "table": "Ranged_Ones"
-      }
-    },
-    "durations": {
-      "mezResistance": 15
-    },
-    "damageBuff": {
-      "scale": 0,
-      "table": "Ranged_Ones"
-    },
-    "buffDuration": 15
-  }
-};
+export const Chilblain: Power = withOverrides(base, overrides);

@@ -1,63 +1,16 @@
 /**
- * Blazing Arrow
- * Ranged, DMG(Lethal), DoT(Fire)
+ * Blazing Arrow — COMPOSED EXPORT
  *
- * Source: blaster_ranged/archery/blazing_arrow.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs blaster_ranged archery
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { BlazingArrow as base } from '@/data/generated/powersets/blaster/primary/archery/blazing-arrow';
+import { overrides } from '@/data/overrides/powersets/blaster/primary/archery/blazing-arrow';
 
-export const BlazingArrow: Power = {
-  "name": "Blazing Arrow",
-  "internalName": "Blazing_Arrow",
-  "available": 5,
-  "description": "You fire a Blazing Arrow at your foe, dealing some Lethal damage and causing them to catch on fire and burn.",
-  "shortHelp": "Ranged, DMG(Lethal), DoT(Fire)",
-  "icon": "archery_flamingarrow.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1.155,
-    "range": 80,
-    "recharge": 10,
-    "endurance": 10.192,
-    "castTime": 1.83
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Blaster Archetype Sets",
-    "Ranged Damage",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Lethal",
-      "scale": 1.96,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.125,
-      "table": "Ranged_Damage",
-      "duration": 4.125,
-      "tickRate": 1
-    }
-  ],
-  "effects": {
-    "damageBuff": {
-      "scale": 0.121,
-      "table": "Ranged_Ones"
-    },
-    "durations": {
-      "damageBuff": 9.33
-    },
-    "buffDuration": 9.33
-  }
-};
+export const BlazingArrow: Power = withOverrides(base, overrides);

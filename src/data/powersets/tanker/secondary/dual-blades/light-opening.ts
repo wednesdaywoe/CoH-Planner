@@ -1,48 +1,16 @@
 /**
- * Nimble Slash
- * Melee, DMG(Lethal)
+ * Nimble Slash — COMPOSED EXPORT
  *
- * Source: tanker_melee/dual_blades/light_opening.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs tanker_melee dual_blades
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { NimbleSlash as base } from '@/data/generated/powersets/tanker/secondary/dual-blades/light-opening';
+import { overrides } from '@/data/overrides/powersets/tanker/secondary/dual-blades/light-opening';
 
-export const NimbleSlash: Power = {
-  "name": "Nimble Slash",
-  "internalName": "Light_Opening",
-  "available": 0,
-  "description": "A quick swipe with your blades. Does minor lethal damage, but has a quick recharge rate. This attack begins both the Empower and Weaken combination attacks.Empower: Nimble Slash > Ablating Strike > Blinding Feint.Weaken: Nimble Slash > Ablating Strike > Typhoon's Edge.",
-  "shortHelp": "Melee, DMG(Lethal)",
-  "icon": "dualblades_lightopening.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 7,
-    "recharge": 3,
-    "endurance": 4.368,
-    "castTime": 1.03
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "EnduranceReduction",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Melee Damage",
-    "Tanker Archetype Sets",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 0.42,
-    "table": "Melee_Damage",
-    "duration": 0.5,
-    "tickRate": 0.33
-  },
-  "requires": "!Tanker_Defense.Shield_Defense"
-};
+export const NimbleSlash: Power = withOverrides(base, overrides);

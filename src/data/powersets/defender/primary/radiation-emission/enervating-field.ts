@@ -1,76 +1,16 @@
 /**
- * Enervating Field
- * Toggle: Ranged (Targeted AoE), Foe -DMG, -Res
+ * Enervating Field — COMPOSED EXPORT
  *
- * Source: defender_buff/radiation_emission/enervating__field.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs defender_buff radiation_emission
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { EnervatingField as base } from '@/data/generated/powersets/defender/primary/radiation-emission/enervating-field';
+import { overrides } from '@/data/overrides/powersets/defender/primary/radiation-emission/enervating-field';
 
-export const EnervatingField: Power = {
-  "name": "Enervating Field",
-  "internalName": "Enervating__Field",
-  "available": 5,
-  "description": "While this power is active, you irradiate a targeted foe, and all foes nearby, with a deadly dose of radiation. This radiation weakens exposed targets, decreasing the damage of their attacks. It also significantly weakens their resistance, so they will take much more damage from other attacks.Recharge: Moderate.",
-  "shortHelp": "Toggle: Ranged (Targeted AoE), Foe -DMG, -Res",
-  "icon": "radiationpoisoning_radiationinfection.png",
-  "powerType": "Toggle",
-  "targetType": "Foe",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "range": 70,
-    "radius": 15,
-    "recharge": 8,
-    "endurance": 0.26,
-    "castTime": 1.5,
-    "activatePeriod": 0.5,
-    "maxTargets": 16
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "resistanceDebuff": {
-      "smashing": {
-        "scale": 3,
-        "table": "Ranged_Res_Dmg"
-      },
-      "lethal": {
-        "scale": 3,
-        "table": "Ranged_Res_Dmg"
-      },
-      "fire": {
-        "scale": 3,
-        "table": "Ranged_Res_Dmg"
-      },
-      "cold": {
-        "scale": 3,
-        "table": "Ranged_Res_Dmg"
-      },
-      "energy": {
-        "scale": 3,
-        "table": "Ranged_Res_Dmg"
-      },
-      "negative": {
-        "scale": 3,
-        "table": "Ranged_Res_Dmg"
-      },
-      "psionic": {
-        "scale": 3,
-        "table": "Ranged_Res_Dmg"
-      },
-      "toxic": {
-        "scale": 3,
-        "table": "Ranged_Res_Dmg"
-      }
-    },
-    "durations": {
-      "resistanceDebuff": 0.75
-    },
-    "buffDuration": 0.75
-  }
-};
+export const EnervatingField: Power = withOverrides(base, overrides);

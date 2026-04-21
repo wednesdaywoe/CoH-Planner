@@ -1,118 +1,16 @@
 /**
- * Cloak of Darkness
- * Toggle: Self Stealth, +DEF(All), +Perception, Res (Immobilize)
+ * Cloak of Darkness — COMPOSED EXPORT
  *
- * Source: scrapper_defense/dark_armor/cloak_of_darkness.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs scrapper_defense dark_armor
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { CloakofDarkness as base } from '@/data/generated/powersets/scrapper/secondary/dark-armor/cloak-of-darkness';
+import { overrides } from '@/data/overrides/powersets/scrapper/secondary/dark-armor/cloak-of-darkness';
 
-export const CloakofDarkness: Power = {
-  "name": "Cloak of Darkness",
-  "internalName": "Cloak_of_Darkness",
-  "available": 19,
-  "description": "A shroud of Netherworld darkness envelops you, making you difficult to spot at a distance. You can be seen only at close range, or if you attack a target. Even if seen, the Cloak of Darkness grants you a bonus to Defense to all attacks and some protection from Immobilization. This Netherworld Cloak also allows you to see things in a new light, allowing you to better see stealthy foes.",
-  "shortHelp": "Toggle: Self Stealth, +DEF(All), +Perception, Res (Immobilize)",
-  "icon": "darkarmor_cloakofdarkness.png",
-  "powerType": "Toggle",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 2,
-    "endurance": 0.13,
-    "castTime": 1.17,
-    "activatePeriod": 0.5
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Defense"
-  ],
-  "allowedSetCategories": [
-    "Defense Sets"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "debuffResistance": {
-      "perception": {
-        "scale": 0.6,
-        "table": "Melee_Ones"
-      }
-    },
-    "durations": {
-      "debuffResistance": 0.75,
-      "perceptionBuff": 0.75,
-      "defenseBuff": 0.75,
-      "immobilize": 0.75,
-      "stealth": 0.75
-    },
-    "perceptionBuff": {
-      "scale": 0.6,
-      "table": "Melee_Ones"
-    },
-    "defenseBuff": {
-      "ranged": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "melee": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "aoe": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "smashing": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "lethal": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "fire": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "cold": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "energy": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "negative": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "psionic": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "toxic": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      }
-    },
-    "immobilize": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "effectDuration": 0.75,
-    "stealth": {
-      "stealthPvP": {
-        "scale": 390,
-        "table": "Melee_Ones"
-      },
-      "stealthPvE": {
-        "scale": 35.5,
-        "table": "Melee_Ones"
-      }
-    },
-    "buffDuration": 0.75
-  }
-};
+export const CloakofDarkness: Power = withOverrides(base, overrides);

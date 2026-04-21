@@ -1,71 +1,16 @@
 /**
- * Thorn Burst
- * PBAoE Melee, DMG(Lethal), DoT(Toxic), Foe -DEF
+ * Thorn Burst — COMPOSED EXPORT
  *
- * Source: blaster_support/plant_manipulation/thorn_burst.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs blaster_support plant_manipulation
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { ThornBurst as base } from '@/data/generated/powersets/blaster/secondary/plant-manipulation/thorn-burst';
+import { overrides } from '@/data/overrides/powersets/blaster/secondary/plant-manipulation/thorn-burst';
 
-export const ThornBurst: Power = {
-  "name": "Thorn Burst",
-  "internalName": "Thorn_Burst",
-  "available": 29,
-  "description": "You can explode dozens of Thorns in all directions around you. These Thorns only travel a short distance, but they can deal moderate damage and poison any target close to you. Toxic damage from the thorns can reduce the Defense of affected foes.Damage: Moderate.Recharge: Slow.",
-  "shortHelp": "PBAoE Melee, DMG(Lethal), DoT(Toxic), Foe -DEF",
-  "icon": "plantmanipulation_thornburst.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "radius": 15,
-    "recharge": 17,
-    "endurance": 16.016,
-    "castTime": 2,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Defense Debuff",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Blaster Archetype Sets",
-    "Defense Debuff",
-    "Melee AoE Damage",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Lethal",
-      "scale": 0.95,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Toxic",
-      "scale": 0.1,
-      "table": "Melee_Damage",
-      "duration": 3.1,
-      "tickRate": 1
-    }
-  ],
-  "effects": {
-    "defenseDebuff": {
-      "scale": 3,
-      "table": "Melee_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 10
-    },
-    "damageBuff": {
-      "scale": 0,
-      "table": "Ranged_Ones"
-    },
-    "buffDuration": 10
-  }
-};
+export const ThornBurst: Power = withOverrides(base, overrides);

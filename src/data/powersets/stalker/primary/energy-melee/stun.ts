@@ -1,67 +1,16 @@
 /**
- * Power Crash
- * Melee (Cone), DMG(Smash/Energy), Foe Disorient, Special
+ * Power Crash — COMPOSED EXPORT
  *
- * Source: stalker_melee/energy_melee/stun.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs stalker_melee energy_melee
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { PowerCrash as base } from '@/data/generated/powersets/stalker/primary/energy-melee/stun';
+import { overrides } from '@/data/overrides/powersets/stalker/primary/energy-melee/stun';
 
-export const PowerCrash: Power = {
-  "name": "Power Crash",
-  "internalName": "Stun",
-  "available": 17,
-  "description": "You focus your internal energy on your fists and release it once you hit your target unleashing an energy wave that hurts and disorients multiple enemies. This power will hit up to 5 additional foes if used while in Energy Focus mode.Notes: Power Crash is unaffected by Arc changes.",
-  "shortHelp": "Melee (Cone), DMG(Smash/Energy), Foe Disorient, Special",
-  "icon": "powerpunch_powercrash.png",
-  "powerType": "Click",
-  "effectArea": "Cone",
-  "stats": {
-    "accuracy": 1,
-    "range": 10,
-    "radius": 10,
-    "arc": 2.0944,
-    "recharge": 16,
-    "endurance": 15.184,
-    "castTime": 1.8,
-    "maxTargets": 5
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Stun",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Melee AoE Damage",
-    "Stalker Archetype Sets",
-    "Stuns",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 0.8198,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.132,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.9519,
-      "table": "Melee_InherentDamage"
-    }
-  ],
-  "effects": {
-    "stun": {
-      "mag": 3,
-      "scale": 5,
-      "table": "Melee_Stun"
-    }
-  }
-};
+export const PowerCrash: Power = withOverrides(base, overrides);

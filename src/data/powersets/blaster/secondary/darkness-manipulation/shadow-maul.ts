@@ -1,70 +1,16 @@
 /**
- * Shadow Maul
- * Melee (Cone), Superior DoT(Smash/Negative), Foe -To Hit
+ * Shadow Maul — COMPOSED EXPORT
  *
- * Source: blaster_support/darkness_manipulation/shadow_maul.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs blaster_support darkness_manipulation
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { ShadowMaul as base } from '@/data/generated/powersets/blaster/secondary/darkness-manipulation/shadow-maul';
+import { overrides } from '@/data/overrides/powersets/blaster/secondary/darkness-manipulation/shadow-maul';
 
-export const ShadowMaul: Power = {
-  "name": "Shadow Maul",
-  "internalName": "Shadow_Maul",
-  "available": 9,
-  "description": "You wrap your entire arms with Negative Energy channeled from the Netherworlds, then perform a series of blows that deal a lot of damage over a short period of time to multiple targets in front of you. These blows cloud your target's vision, lowering his chance to hit for a short time.",
-  "shortHelp": "Melee (Cone), Superior DoT(Smash/Negative), Foe -To Hit",
-  "icon": "darknessmanipulation_shadowmaul.png",
-  "powerType": "Click",
-  "effectArea": "Cone",
-  "stats": {
-    "accuracy": 1,
-    "range": 7,
-    "radius": 7,
-    "arc": 0.7854,
-    "recharge": 14,
-    "endurance": 13.52,
-    "castTime": 3.07,
-    "maxTargets": 5
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "ToHit Debuff",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate To-Hit Debuff",
-    "Blaster Archetype Sets",
-    "Melee AoE Damage",
-    "To Hit Debuff",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 0.325,
-      "table": "Melee_Damage",
-      "duration": 2,
-      "tickRate": 0.625
-    },
-    {
-      "type": "Negative",
-      "scale": 0.325,
-      "table": "Melee_Damage",
-      "duration": 2,
-      "tickRate": 0.625
-    }
-  ],
-  "effects": {
-    "damageBuff": {
-      "scale": 0.163,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "damageBuff": 10.57
-    },
-    "buffDuration": 10.57
-  }
-};
+export const ShadowMaul: Power = withOverrides(base, overrides);

@@ -1,53 +1,16 @@
 /**
- * Flares
- * Ranged, DMG(Fire)
+ * Flares — COMPOSED EXPORT
  *
- * Source: corruptor_ranged/fire_blast/flares.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs corruptor_ranged fire_blast
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Flares as base } from '@/data/generated/powersets/corruptor/primary/fire-blast/flares';
+import { overrides } from '@/data/overrides/powersets/corruptor/primary/fire-blast/flares';
 
-export const Flares: Power = {
-  "name": "Flares",
-  "internalName": "Flares",
-  "available": 0,
-  "description": "A quick attack that throws Flares at the target. Little damage, but very fast.",
-  "shortHelp": "Ranged, DMG(Fire)",
-  "icon": "fireblast_flare.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 80,
-    "recharge": 2.18,
-    "endurance": 3.692,
-    "castTime": 1
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Corruptor Archetype Sets",
-    "Ranged Damage",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Fire",
-      "scale": 0.71,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.15,
-      "table": "Ranged_Damage",
-      "duration": 3.1,
-      "tickRate": 1
-    }
-  ]
-};
+export const Flares: Power = withOverrides(base, overrides);

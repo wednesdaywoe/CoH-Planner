@@ -1,47 +1,16 @@
 /**
- * Recovery Aura
- * PBAoE, Ally +Recovery
+ * Recovery Aura — COMPOSED EXPORT
  *
- * Source: corruptor_buff/empathy/recovery_aura.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs corruptor_buff empathy
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { RecoveryAura as base } from '@/data/generated/powersets/corruptor/secondary/empathy/recovery-aura';
+import { overrides } from '@/data/overrides/powersets/corruptor/secondary/empathy/recovery-aura';
 
-export const RecoveryAura: Power = {
-  "name": "Recovery Aura",
-  "internalName": "Recovery_Aura",
-  "available": 23,
-  "description": "The Recovery Aura dramatically increases the Endurance recovery rate of all nearby heroes for a limited time. Emitting this Aura costs you a lot of Endurance, and it takes a long time to recharge.Recharge: Very Long.",
-  "shortHelp": "PBAoE, Ally +Recovery",
-  "icon": "empathy_recoveryaura.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "radius": 25,
-    "recharge": 500,
-    "endurance": 26,
-    "castTime": 2.03,
-    "maxTargets": 255
-  },
-  "allowedEnhancements": [
-    "EnduranceModification",
-    "EnduranceReduction",
-    "Recharge"
-  ],
-  "allowedSetCategories": [
-    "Endurance Modification"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "recoveryBuff": {
-      "scale": 2,
-      "table": "Ranged_Ones"
-    },
-    "durations": {
-      "recoveryBuff": 90
-    },
-    "buffDuration": 90
-  }
-};
+export const RecoveryAura: Power = withOverrides(base, overrides);

@@ -1,50 +1,16 @@
 /**
- * Focus Chi
- * Self +DMG, +To Hit
+ * Focus Chi — COMPOSED EXPORT
  *
- * Source: stalker_melee/martial_arts/focus_chi.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs stalker_melee martial_arts
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { FocusChi as base } from '@/data/generated/powersets/stalker/primary/martial-arts/focus-chi';
+import { overrides } from '@/data/overrides/powersets/stalker/primary/martial-arts/focus-chi';
 
-export const FocusChi: Power = {
-  "name": "Focus Chi",
-  "internalName": "Focus_Chi",
-  "available": 7,
-  "description": "Tapping into your inner Chi greatly increases the amount of damage you deal for a few seconds, as well as slightly increasing your chance to hit.",
-  "shortHelp": "Self +DMG, +To Hit",
-  "icon": "martialarts_focuschi.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 90,
-    "endurance": 5.2,
-    "castTime": 1.17
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "ToHit"
-  ],
-  "allowedSetCategories": [
-    "To Hit Buff"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "tohitBuff": {
-      "scale": 2,
-      "table": "Melee_Buff_ToHit"
-    },
-    "durations": {
-      "tohitBuff": 10,
-      "damageBuff": 10
-    },
-    "damageBuff": {
-      "scale": 8,
-      "table": "Melee_Buff_Dmg"
-    },
-    "buffDuration": 10
-  }
-};
+export const FocusChi: Power = withOverrides(base, overrides);

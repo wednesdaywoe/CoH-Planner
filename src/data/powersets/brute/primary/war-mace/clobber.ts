@@ -1,54 +1,16 @@
 /**
- * Clobber
- * Melee, Superior DMG(Smashing), Disorient
+ * Clobber — COMPOSED EXPORT
  *
- * Source: brute_melee/war_mace/clobber.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs brute_melee war_mace
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Clobber as base } from '@/data/generated/powersets/brute/primary/war-mace/clobber';
+import { overrides } from '@/data/overrides/powersets/brute/primary/war-mace/clobber';
 
-export const Clobber: Power = {
-  "name": "Clobber",
-  "internalName": "Clobber",
-  "available": 7,
-  "description": "You Clobber your foe with a massive swing of your mace. This attack deals exceptional damage and can leave most opponents disoriented for a period of time.Damage: Superior.Recharge: Slow.",
-  "shortHelp": "Melee, Superior DMG(Smashing), Disorient",
-  "icon": "mace_clobber.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1.05,
-    "range": 7,
-    "recharge": 16,
-    "endurance": 15.184,
-    "castTime": 1.23
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "EnduranceReduction",
-    "Stun",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Brute Archetype Sets",
-    "Melee Damage",
-    "Stuns",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 2.92,
-    "table": "Melee_Damage"
-  },
-  "effects": {
-    "stun": {
-      "mag": 3,
-      "scale": 5,
-      "table": "Melee_Stun"
-    }
-  }
-};
+export const Clobber: Power = withOverrides(base, overrides);

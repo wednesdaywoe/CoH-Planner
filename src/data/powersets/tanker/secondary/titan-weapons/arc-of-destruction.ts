@@ -1,56 +1,16 @@
 /**
- * Arc of Destruction
- * Melee (Cone), DMG(Smashing), Foe Knockback
+ * Arc of Destruction — COMPOSED EXPORT
  *
- * Source: tanker_melee/titan_weapons/arc_of_destruction.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs tanker_melee titan_weapons
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { ArcofDestruction as base } from '@/data/generated/powersets/tanker/secondary/titan-weapons/arc-of-destruction';
+import { overrides } from '@/data/overrides/powersets/tanker/secondary/titan-weapons/arc-of-destruction';
 
-export const ArcofDestruction: Power = {
-  "name": "Arc of Destruction",
-  "internalName": "Arc_of_Destruction",
-  "available": 29,
-  "description": "You swing your weapon in a devastating Arc of Destruction that deals Superior Smashing damage and has a good chance to knock foes down. Arc of Destruction may only be used while on the ground.Notes: Thanks to gauntlet, this power can hit up to 5 targets above its cap at 1/3rd effectiveness.",
-  "shortHelp": "Melee (Cone), DMG(Smashing), Foe Knockback",
-  "icon": "titanweapons_arcofdestruction.png",
-  "powerType": "Click",
-  "effectArea": "Cone",
-  "stats": {
-    "accuracy": 1,
-    "range": 15,
-    "radius": 15,
-    "arc": 2.0944,
-    "recharge": 16,
-    "endurance": 15.6395,
-    "castTime": 2.7,
-    "maxTargets": 5
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "EnduranceReduction",
-    "Recharge",
-    "Knockback",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Knockback",
-    "Melee AoE Damage",
-    "Tanker Archetype Sets",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 1.9519,
-    "table": "Melee_Damage"
-  },
-  "effects": {
-    "knockback": {
-      "scale": 0.67,
-      "table": "Melee_Ones"
-    }
-  }
-};
+export const ArcofDestruction: Power = withOverrides(base, overrides);

@@ -1,99 +1,16 @@
 /**
- * Mask Presence
- * Toggle: Self Stealth, +DEF(Melee, Ranged)
+ * Mask Presence — COMPOSED EXPORT
  *
- * Source: scrapper_defense/psionic_armor/mask_presence.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs scrapper_defense psionic_armor
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { MaskPresence as base } from '@/data/generated/powersets/scrapper/secondary/psionic-armor/mask-presence';
+import { overrides } from '@/data/overrides/powersets/scrapper/secondary/psionic-armor/mask-presence';
 
-export const MaskPresence: Power = {
-  "name": "Mask Presence",
-  "internalName": "Mask_Presence",
-  "available": 3,
-  "description": "Mask Presence makes you almost impossible to detect. When you attack or are damaged while using this power, you will be discovered. Even if discovered, you are hard to see and retain some bonus to Defense. While stealthed you will get additional defense to all attack types and the strength of your next attack will be more powerful; however, you can only attempt this after spending 8 seconds without attacking.",
-  "shortHelp": "Toggle: Self Stealth, +DEF(Melee, Ranged)",
-  "icon": "psionicarmor_maskpresence.png",
-  "powerType": "Toggle",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 4,
-    "endurance": 0.104,
-    "castTime": 0.73,
-    "activatePeriod": 0.5
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Defense"
-  ],
-  "allowedSetCategories": [
-    "Defense Sets"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "defenseBuff": {
-      "ranged": {
-        "scale": 1,
-        "table": "Melee_Buff_Def"
-      },
-      "melee": {
-        "scale": 1,
-        "table": "Melee_Buff_Def"
-      },
-      "aoe": {
-        "scale": 1,
-        "table": "Melee_Buff_Def"
-      },
-      "smashing": {
-        "scale": 1,
-        "table": "Melee_Buff_Def"
-      },
-      "lethal": {
-        "scale": 1,
-        "table": "Melee_Buff_Def"
-      },
-      "fire": {
-        "scale": 1,
-        "table": "Melee_Buff_Def"
-      },
-      "cold": {
-        "scale": 1,
-        "table": "Melee_Buff_Def"
-      },
-      "energy": {
-        "scale": 1,
-        "table": "Melee_Buff_Def"
-      },
-      "negative": {
-        "scale": 1,
-        "table": "Melee_Buff_Def"
-      },
-      "psionic": {
-        "scale": 1,
-        "table": "Melee_Buff_Def"
-      },
-      "toxic": {
-        "scale": 1,
-        "table": "Melee_Buff_Def"
-      }
-    },
-    "durations": {
-      "defenseBuff": 0.55,
-      "stealth": 0.75
-    },
-    "stealth": {
-      "stealthPvE": {
-        "scale": 35.5,
-        "table": "Melee_Ones"
-      },
-      "stealthPvP": {
-        "scale": 390,
-        "table": "Melee_Ones"
-      }
-    },
-    "buffDuration": 0.75
-  }
-};
+export const MaskPresence: Power = withOverrides(base, overrides);

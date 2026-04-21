@@ -1,94 +1,16 @@
 /**
- * Sonic Thrust
- * Melee, DMG(Energy/Smash), Foe Knockback, -Res(Debuffs)
+ * Sonic Thrust — COMPOSED EXPORT
  *
- * Source: tanker_melee/sonic_melee/sonic_thrust.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs tanker_melee sonic_melee
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { SonicThrust as base } from '@/data/generated/powersets/tanker/secondary/sonic-melee/sonic-thrust';
+import { overrides } from '@/data/overrides/powersets/tanker/secondary/sonic-melee/sonic-thrust';
 
-export const SonicThrust: Power = {
-  "name": "Sonic Thrust",
-  "internalName": "Sonic_Thrust",
-  "available": 0,
-  "description": "A focused attack of intense sonic power with high chance to violently knock a nearby foe off their feet. Deals minimal damage, but can be very effective. This power will inflict a strong additional damage over time effect against Attuned targets.",
-  "shortHelp": "Melee, DMG(Energy/Smash), Foe Knockback, -Res(Debuffs)",
-  "icon": "sonicmanipulation_sonicthrust.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 7,
-    "recharge": 2.5,
-    "endurance": 3.952,
-    "castTime": 1
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "EnduranceReduction",
-    "Recharge",
-    "Knockback",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Knockback",
-    "Melee Damage",
-    "Tanker Archetype Sets",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 0.38,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.38,
-      "table": "Melee_Damage"
-    }
-  ],
-  "effects": {
-    "debuffResistance": {
-      "defense": {
-        "scale": 0.8,
-        "table": "Melee_Debuff_Res_Dmg"
-      },
-      "endurance": {
-        "scale": 0.8,
-        "table": "Melee_Debuff_Res_Dmg"
-      },
-      "tohit": {
-        "scale": 0.8,
-        "table": "Melee_Debuff_Res_Dmg"
-      },
-      "movement": {
-        "scale": 0.8,
-        "table": "Melee_Debuff_Res_Dmg"
-      },
-      "regeneration": {
-        "scale": 0.8,
-        "table": "Melee_Debuff_Res_Dmg"
-      },
-      "recovery": {
-        "scale": 0.8,
-        "table": "Melee_Debuff_Res_Dmg"
-      },
-      "recharge": {
-        "scale": 0.8,
-        "table": "Melee_Debuff_Res_Dmg"
-      }
-    },
-    "durations": {
-      "debuffResistance": 15
-    },
-    "knockback": {
-      "scale": 0.67,
-      "table": "Melee_Ones"
-    },
-    "buffDuration": 15
-  }
-};
+export const SonicThrust: Power = withOverrides(base, overrides);

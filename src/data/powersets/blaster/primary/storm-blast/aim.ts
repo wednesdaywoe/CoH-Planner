@@ -1,50 +1,16 @@
 /**
- * Intensify
- * Self +To Hit, +DMG, Special
+ * Intensify — COMPOSED EXPORT
  *
- * Source: blaster_ranged/storm_blast/aim.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs blaster_ranged storm_blast
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Intensify as base } from '@/data/generated/powersets/blaster/primary/storm-blast/aim';
+import { overrides } from '@/data/overrides/powersets/blaster/primary/storm-blast/aim';
 
-export const Intensify: Power = {
-  "name": "Intensify",
-  "internalName": "Aim",
-  "available": 7,
-  "description": "Greatly increases the chance to hit of your attacks, and slightly increases damage for a few seconds. Moderately increases the chance for Storm Blast powers to summon high winds and lightning from your Storm Cell and Category Five while active.",
-  "shortHelp": "Self +To Hit, +DMG, Special",
-  "icon": "stormblast_aim.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 90,
-    "endurance": 5.2,
-    "castTime": 1.17
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "ToHit"
-  ],
-  "allowedSetCategories": [
-    "To Hit Buff"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "tohitBuff": {
-      "scale": 5,
-      "table": "Melee_Buff_ToHit"
-    },
-    "durations": {
-      "tohitBuff": 10,
-      "damageBuff": 10
-    },
-    "damageBuff": {
-      "scale": 2.5,
-      "table": "Melee_Buff_Dmg"
-    },
-    "buffDuration": 10
-  }
-};
+export const Intensify: Power = withOverrides(base, overrides);

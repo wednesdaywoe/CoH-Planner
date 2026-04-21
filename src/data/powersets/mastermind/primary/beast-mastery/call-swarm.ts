@@ -1,61 +1,16 @@
 /**
- * Call Swarm
- * Ranged, Light DoT(Lethal), Foe -Defense, -Speed
+ * Call Swarm — COMPOSED EXPORT
  *
- * Source: mastermind_summon/beast_mastery/call_swarm.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs mastermind_summon beast_mastery
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { CallSwarm as base } from '@/data/generated/powersets/mastermind/primary/beast-mastery/call-swarm';
+import { overrides } from '@/data/overrides/powersets/mastermind/primary/beast-mastery/call-swarm';
 
-export const CallSwarm: Power = {
-  "name": "Call Swarm",
-  "internalName": "Call_Swarm",
-  "available": 0,
-  "description": "You summon a swarm of stinging insects to harass your foe causing Light Lethal damage over time and reducing both their movement speed and defense. This power has a moderate chance at granting your pets a stack of Pack Mentality.Apex Predator:Using this power will grant you and your summoned beasts an Accuracy and HP buff for 30 seconds. This does not stack from the same power.",
-  "shortHelp": "Ranged, Light DoT(Lethal), Foe -Defense, -Speed",
-  "icon": "beastmastery_callswarm.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 80,
-    "recharge": 3,
-    "endurance": 4.37,
-    "castTime": 1
-  },
-  "allowedEnhancements": [
-    "Slow",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Defense Debuff",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Mastermind Archetype Sets",
-    "Accurate Defense Debuff",
-    "Defense Debuff",
-    "Ranged Damage",
-    "Slow Movement",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 0.1848,
-    "table": "Ranged_Damage",
-    "duration": 3.1,
-    "tickRate": 0.75
-  },
-  "effects": {
-    "defenseDebuff": {
-      "scale": 1,
-      "table": "Ranged_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 8
-    },
-    "buffDuration": 8
-  }
-};
+export const CallSwarm: Power = withOverrides(base, overrides);

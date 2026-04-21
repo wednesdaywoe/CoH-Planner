@@ -1,59 +1,16 @@
 /**
- * Earsplitter
- * Melee, DMG(Energy/Smash), Foe Chance for Hold
+ * Earsplitter — COMPOSED EXPORT
  *
- * Source: blaster_support/sonic_manipulation/earsplitter.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs blaster_support sonic_manipulation
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Earsplitter as base } from '@/data/generated/powersets/blaster/secondary/sonic-manipulation/earsplitter';
+import { overrides } from '@/data/overrides/powersets/blaster/secondary/sonic-manipulation/earsplitter';
 
-export const Earsplitter: Power = {
-  "name": "Earsplitter",
-  "internalName": "Earsplitter",
-  "available": 29,
-  "description": "You generate an earsplitting sound wave right in the face of your foe, inflicting great damage. It has a good chance of causing a migraine, leaving them shaking in pain and helpless.Damage: Extreme.Recharge: Slow.",
-  "shortHelp": "Melee, DMG(Energy/Smash), Foe Chance for Hold",
-  "icon": "sonicmanipulation_earsplitter.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1.2,
-    "range": 7,
-    "recharge": 20,
-    "endurance": 18.512,
-    "castTime": 1.97
-  },
-  "allowedEnhancements": [
-    "Hold",
-    "EnduranceReduction",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Blaster Archetype Sets",
-    "Holds",
-    "Melee Damage",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 1.78,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.78,
-      "table": "Melee_Damage"
-    }
-  ],
-  "effects": {
-    "hold": {
-      "mag": 3,
-      "scale": 5,
-      "table": "Melee_Immobilize"
-    }
-  }
-};
+export const Earsplitter: Power = withOverrides(base, overrides);

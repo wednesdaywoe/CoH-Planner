@@ -1,52 +1,16 @@
 /**
- * Smite
- * Melee, Moderate DMG(Smash/Negative), Foe -To Hit
+ * Smite — COMPOSED EXPORT
  *
- * Source: dominator_assault/dark_assault/smite.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs dominator_assault dark_assault
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Smite as base } from '@/data/generated/powersets/dominator/secondary/dark-assault/smite';
+import { overrides } from '@/data/overrides/powersets/dominator/secondary/dark-assault/smite';
 
-export const Smite: Power = {
-  "name": "Smite",
-  "internalName": "Smite",
-  "available": 0,
-  "description": "You wrap your fists with Negative Energy channeled from the Netherworld and Smite your foe with a powerful blow. Smite clouds the target's vision, lowering their chance to hit for a short time.Damage: Moderate.Recharge: Moderate.",
-  "shortHelp": "Melee, Moderate DMG(Smash/Negative), Foe -To Hit",
-  "icon": "darknessassault_smite.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 7,
-    "recharge": 8,
-    "endurance": 8.528,
-    "castTime": 0.97
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "ToHit Debuff",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate To-Hit Debuff",
-    "Melee Damage",
-    "To Hit Debuff",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 0.4,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Negative",
-      "scale": 1.24,
-      "table": "Melee_Damage"
-    }
-  ]
-};
+export const Smite: Power = withOverrides(base, overrides);

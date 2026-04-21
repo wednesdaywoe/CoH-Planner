@@ -1,47 +1,16 @@
 /**
- * Dark Blast
- * Ranged, DMG(Negative), Foe -To Hit
+ * Dark Blast — COMPOSED EXPORT
  *
- * Source: blaster_ranged/dark_blast/dark_blast.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs blaster_ranged dark_blast
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { DarkBlast as base } from '@/data/generated/powersets/blaster/primary/dark-blast/dark-blast';
+import { overrides } from '@/data/overrides/powersets/blaster/primary/dark-blast/dark-blast';
 
-export const DarkBlast: Power = {
-  "name": "Dark Blast",
-  "internalName": "Dark_Blast",
-  "available": 0,
-  "description": "A long range blast of dark energy. Deals moderate Negative Energy damage and reduces the target's chance to hit.",
-  "shortHelp": "Ranged, DMG(Negative), Foe -To Hit",
-  "icon": "darkcast_darkblast.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 80,
-    "recharge": 4,
-    "endurance": 5.2,
-    "castTime": 1
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "ToHit Debuff",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate To-Hit Debuff",
-    "Blaster Archetype Sets",
-    "Ranged Damage",
-    "To Hit Debuff",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Negative",
-    "scale": 1,
-    "table": "Ranged_Damage"
-  }
-};
+export const DarkBlast: Power = withOverrides(base, overrides);

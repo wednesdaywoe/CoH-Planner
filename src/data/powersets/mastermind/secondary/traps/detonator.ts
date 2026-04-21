@@ -1,40 +1,16 @@
 /**
- * Detonator
- * Sacrifice Henchman, PBAoE, Extreme DMG(Lethal/Fire), Foe Knockback
+ * Detonator — COMPOSED EXPORT
  *
- * Source: mastermind_buff/traps/detonator.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs mastermind_buff traps
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Detonator as base } from '@/data/generated/powersets/mastermind/secondary/traps/detonator';
+import { overrides } from '@/data/overrides/powersets/mastermind/secondary/traps/detonator';
 
-export const Detonator: Power = {
-  "name": "Detonator",
-  "internalName": "Detonator",
-  "available": 29,
-  "description": "A good Mastermind always plans ahead, but a great one knows when to make a strategic sacrifice. You have equipped all your Henchmen with explosives. When the time is right, select a Henchman and set off the Detonator. Recharge: Very Long.",
-  "shortHelp": "Sacrifice Henchman, PBAoE, Extreme DMG(Lethal/Fire), Foe Knockback",
-  "icon": "traps_aoemassivedamage.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 100,
-    "recharge": 300,
-    "endurance": 16.31,
-    "castTime": 2.03
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Knockback",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Knockback",
-    "Ranged AoE Damage",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6
-};
+export const Detonator: Power = withOverrides(base, overrides);

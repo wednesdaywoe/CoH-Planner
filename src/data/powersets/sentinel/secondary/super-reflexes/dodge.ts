@@ -1,77 +1,16 @@
 /**
- * Dodge
- * Auto: Self +DEF(Melee), Res(DeBuff DEF), Res(All DMG, Special)
+ * Dodge — COMPOSED EXPORT
  *
- * Source: sentinel_defense/super_reflexes/dodge.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs sentinel_defense super_reflexes
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Dodge as base } from '@/data/generated/powersets/sentinel/secondary/super-reflexes/dodge';
+import { overrides } from '@/data/overrides/powersets/sentinel/secondary/super-reflexes/dodge';
 
-export const Dodge: Power = {
-  "name": "Dodge",
-  "internalName": "Dodge",
-  "available": 19,
-  "description": "You have the ability to innately Dodge some melee attacks and you resist Defense DeBuffs. Dodge also grants you minor Damage Resistance to all damage except Toxic and Psionic. This Damage Resistance is only available as you lose Health but it improves as your HP declines. This power is always on, and will permanently increase your Defense versus melee attacks.",
-  "shortHelp": "Auto: Self +DEF(Melee), Res(DeBuff DEF), Res(All DMG, Special)",
-  "icon": "superreflexes_dodge.png",
-  "powerType": "Auto",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "activatePeriod": 0.5
-  },
-  "allowedEnhancements": [
-    "Defense"
-  ],
-  "allowedSetCategories": [
-    "Defense Sets"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "defenseBuff": {
-      "melee": {
-        "scale": 0.75,
-        "table": "Melee_Buff_Def"
-      }
-    },
-    "durations": {
-      "defenseBuff": 0.75,
-      "debuffResistance": 0.75,
-      "resistance": 0.75
-    },
-    "debuffResistance": {
-      "defense": {
-        "scale": 0.2,
-        "table": "Melee_Res_Boolean"
-      }
-    },
-    "resistance": {
-      "smashing": {
-        "scale": 0,
-        "table": "Melee_Ones"
-      },
-      "lethal": {
-        "scale": 0,
-        "table": "Melee_Ones"
-      },
-      "fire": {
-        "scale": 0,
-        "table": "Melee_Ones"
-      },
-      "cold": {
-        "scale": 0,
-        "table": "Melee_Ones"
-      },
-      "energy": {
-        "scale": 0,
-        "table": "Melee_Ones"
-      },
-      "negative": {
-        "scale": 0,
-        "table": "Melee_Ones"
-      }
-    },
-    "buffDuration": 0.75
-  }
-};
+export const Dodge: Power = withOverrides(base, overrides);

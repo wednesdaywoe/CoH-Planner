@@ -1,60 +1,16 @@
 /**
- * Pulse Rifle Burst
- * Ranged, DMG(Energy), Foe Knockback, -Regen
+ * Pulse Rifle Burst — COMPOSED EXPORT
  *
- * Source: mastermind_summon/robotics/pulse_rifle_burst.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs mastermind_summon robotics
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { PulseRifleBurst as base } from '@/data/generated/powersets/mastermind/primary/robotics/pulse-rifle-burst';
+import { overrides } from '@/data/overrides/powersets/mastermind/primary/robotics/pulse-rifle-burst';
 
-export const PulseRifleBurst: Power = {
-  "name": "Pulse Rifle Burst",
-  "internalName": "Pulse_Rifle_Burst",
-  "available": 1,
-  "description": "This high powered laser pulse from your Pulse Rifle takes more energy to fire, but causes much more damage than a standard pulse and has a very good chance to send your foes flying.Laser Burn:Targets struck by this attack will have their Regeneration debuffed for 30 seconds.",
-  "shortHelp": "Ranged, DMG(Energy), Foe Knockback, -Regen",
-  "icon": "robotics_laserrifleblast.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 80,
-    "recharge": 8,
-    "endurance": 8.53,
-    "castTime": 1.1
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Knockback",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Mastermind Archetype Sets",
-    "Knockback",
-    "Ranged Damage",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Energy",
-    "scale": 1.64,
-    "table": "Ranged_Damage"
-  },
-  "effects": {
-    "regenDebuff": {
-      "scale": 2,
-      "table": "Ranged_Ones"
-    },
-    "durations": {
-      "regenDebuff": 30
-    },
-    "knockback": {
-      "scale": 1.5,
-      "table": "Ranged_Knockback"
-    },
-    "buffDuration": 30
-  }
-};
+export const PulseRifleBurst: Power = withOverrides(base, overrides);

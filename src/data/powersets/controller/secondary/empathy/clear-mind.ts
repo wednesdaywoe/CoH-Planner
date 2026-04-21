@@ -1,94 +1,16 @@
 /**
- * Clear Mind
- * Ally +Res(Disorient, Hold, Sleep, Immobilize, Fear, Confuse), +Perception
+ * Clear Mind — COMPOSED EXPORT
  *
- * Source: controller_buff/empathy/clear_mind.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs controller_buff empathy
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { ClearMind as base } from '@/data/generated/powersets/controller/secondary/empathy/clear-mind';
+import { overrides } from '@/data/overrides/powersets/controller/secondary/empathy/clear-mind';
 
-export const ClearMind: Power = {
-  "name": "Clear Mind",
-  "internalName": "Clear_Mind",
-  "available": 15,
-  "description": "Frees an ally from any Disorient, Hold, Sleep, Fear, Confuse and Immobilize effects and leaves them resistant to such effects for a good while. Also, grants target clearer Perception to see hidden foes. Protection will improve with Multiple applications and as you advance in level.Recharge: Fast.",
-  "shortHelp": "Ally +Res(Disorient, Hold, Sleep, Immobilize, Fear, Confuse), +Perception",
-  "icon": "empathy_mindwall.png",
-  "powerType": "Click",
-  "targetType": "Ally (Alive)",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 70,
-    "recharge": 4,
-    "endurance": 5.2,
-    "castTime": 1
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "confuse": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Ranged_Res_Boolean"
-    },
-    "effectDuration": 90,
-    "durations": {
-      "confuse": 90,
-      "fear": 90,
-      "hold": 90,
-      "immobilize": 90,
-      "stun": 90,
-      "sleep": 90,
-      "mezResistance": 90,
-      "debuffResistance": 90,
-      "perceptionBuff": 90
-    },
-    "fear": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Ranged_Res_Boolean"
-    },
-    "hold": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Ranged_Res_Boolean"
-    },
-    "immobilize": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Ranged_Res_Boolean"
-    },
-    "stun": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Ranged_Res_Boolean"
-    },
-    "sleep": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Ranged_Res_Boolean"
-    },
-    "mezResistance": {
-      "sleep": {
-        "scale": 5,
-        "table": "Ranged_Res_Boolean"
-      }
-    },
-    "debuffResistance": {
-      "perception": {
-        "scale": 2.5,
-        "table": "Ranged_Res_Boolean"
-      }
-    },
-    "perceptionBuff": {
-      "scale": 2.5,
-      "table": "Ranged_Res_Boolean"
-    },
-    "buffDuration": 90
-  }
-};
+export const ClearMind: Power = withOverrides(base, overrides);

@@ -1,37 +1,16 @@
 /**
- * Enchant Undead
- * Ranged, Enchant Undead Henchman
+ * Enchant Undead — COMPOSED EXPORT
  *
- * Source: mastermind_summon/necromancy/enchant_undead.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs mastermind_summon necromancy
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { EnchantUndead as base } from '@/data/generated/powersets/mastermind/primary/necromancy/enchant-undead';
+import { overrides } from '@/data/overrides/powersets/mastermind/primary/necromancy/enchant-undead';
 
-export const EnchantUndead: Power = {
-  "name": "Enchant Undead",
-  "internalName": "Enchant_Undead",
-  "available": 5,
-  "description": "Enchant Undead will permanently bestow new powers and abilities to all of your Undead Henchman. The powers gained are unique and dependent upon the type of Undead Henchman that is Enchanted, but all henchmen will gain Resistances to most forms of crowd control and a variety of damage types.Enchant Undead only works on your Undead Henchmen and you can only Enchant your Undead Henchmen once with this power.",
-  "shortHelp": "Ranged, Enchant Undead Henchman",
-  "icon": "necromancy_enchantundead.png",
-  "powerType": "Click",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "range": 50,
-    "radius": 30,
-    "recharge": 0.5,
-    "endurance": 11.375,
-    "castTime": 2.07,
-    "maxTargets": 16
-  },
-  "allowedEnhancements": [
-    "Resistance",
-    "EnduranceReduction",
-    "Range"
-  ],
-  "allowedSetCategories": [
-    "Resist Damage"
-  ],
-  "maxSlots": 6
-};
+export const EnchantUndead: Power = withOverrides(base, overrides);

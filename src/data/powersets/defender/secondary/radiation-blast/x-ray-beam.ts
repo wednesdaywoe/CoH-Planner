@@ -1,57 +1,16 @@
 /**
- * X-Ray Beam
- * Ranged, DMG(Energy), Foe -DEF
+ * X-Ray Beam — COMPOSED EXPORT
  *
- * Source: defender_ranged/radiation_blast/x-ray_beam.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs defender_ranged radiation_blast
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { XRayBeam as base } from '@/data/generated/powersets/defender/secondary/radiation-blast/x-ray-beam';
+import { overrides } from '@/data/overrides/powersets/defender/secondary/radiation-blast/x-ray-beam';
 
-export const XRayBeam: Power = {
-  "name": "X-Ray Beam",
-  "internalName": "X-Ray_Beam",
-  "available": 0,
-  "description": "You can emit a beam of X-Ray energy from your eyes, dealing moderate Energy damage. This attack can bypass some defenses and can reduce the target's Defense.",
-  "shortHelp": "Ranged, DMG(Energy), Foe -DEF",
-  "icon": "radiationburst_xraybeam.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1.1,
-    "range": 80,
-    "recharge": 4,
-    "endurance": 5.2,
-    "castTime": 1.67
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Defense Debuff",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Defender Archetype Sets",
-    "Defense Debuff",
-    "Ranged Damage",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Energy",
-    "scale": 1,
-    "table": "Ranged_Damage"
-  },
-  "effects": {
-    "defenseDebuff": {
-      "scale": 2,
-      "table": "Ranged_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 6
-    },
-    "buffDuration": 6
-  }
-};
+export const XRayBeam: Power = withOverrides(base, overrides);

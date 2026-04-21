@@ -1,104 +1,16 @@
 /**
- * Enforced Morale
- * Ally +Res(Disorient, Hold, Sleep, Immobilize, Fear, Confuse), +Perception, +Recharge, +Speed, Light DMG
+ * Enforced Morale — COMPOSED EXPORT
  *
- * Source: controller_buff/pain_domination/enforced_morale.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs controller_buff pain_domination
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { EnforcedMorale as base } from '@/data/generated/powersets/controller/secondary/pain-domination/enforced-morale';
+import { overrides } from '@/data/overrides/powersets/controller/secondary/pain-domination/enforced-morale';
 
-export const EnforcedMorale: Power = {
-  "name": "Enforced Morale",
-  "internalName": "Enforced_Morale",
-  "available": 15,
-  "description": "Enforced Morale frees an ally from any Disorient, Hold, Sleep, Fear, Confuse and Immobilize effects and leaves them resistant to such effects for a good while. Also, Enforced Morale grants the target clearer Perception to see hidden foes, and a minor recharge and movement speed boost. The Protection and Movement boosts will improve with multiple applications and as you advance in level, although the Recharge and Movement boosts will only apply for the first few applications. If the ally is not damaged, Enforced Morale will cause them some pain before granting its benefits.Damage: Light.Recharge: Fast.",
-  "shortHelp": "Ally +Res(Disorient, Hold, Sleep, Immobilize, Fear, Confuse), +Perception, +Recharge, +Speed, Light DMG",
-  "icon": "paindomination_enforcedmorale.png",
-  "powerType": "Click",
-  "targetType": "Ally (Alive)",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 70,
-    "recharge": 4,
-    "endurance": 5.2,
-    "castTime": 1
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Special",
-    "scale": 1,
-    "table": "Ranged_Ones"
-  },
-  "effects": {
-    "confuse": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Ranged_Res_Boolean"
-    },
-    "effectDuration": 90,
-    "durations": {
-      "confuse": 90,
-      "fear": 90,
-      "hold": 90,
-      "immobilize": 90,
-      "stun": 90,
-      "sleep": 90,
-      "mezResistance": 90,
-      "rechargeBuff": 90,
-      "debuffResistance": 90,
-      "perceptionBuff": 90
-    },
-    "fear": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Ranged_Res_Boolean"
-    },
-    "hold": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Ranged_Res_Boolean"
-    },
-    "immobilize": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Ranged_Res_Boolean"
-    },
-    "stun": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Ranged_Res_Boolean"
-    },
-    "sleep": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Ranged_Res_Boolean"
-    },
-    "mezResistance": {
-      "sleep": {
-        "scale": 5,
-        "table": "Ranged_Res_Boolean"
-      }
-    },
-    "rechargeBuff": {
-      "scale": 0.05,
-      "table": "Ranged_Ones"
-    },
-    "debuffResistance": {
-      "perception": {
-        "scale": 2.5,
-        "table": "Ranged_Res_Boolean"
-      }
-    },
-    "perceptionBuff": {
-      "scale": 2.5,
-      "table": "Ranged_Res_Boolean"
-    },
-    "buffDuration": 90
-  }
-};
+export const EnforcedMorale: Power = withOverrides(base, overrides);

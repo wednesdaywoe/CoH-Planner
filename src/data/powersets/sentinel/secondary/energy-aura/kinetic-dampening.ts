@@ -1,70 +1,16 @@
 /**
- * Kinetic Dampening
- * Auto: Self +Res (Energy, Negative, Toxic, Lethal, Smashing, Slow)
+ * Kinetic Dampening — COMPOSED EXPORT
  *
- * Source: sentinel_defense/energy_aura/kinetic_dampening.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs sentinel_defense energy_aura
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { KineticDampening as base } from '@/data/generated/powersets/sentinel/secondary/energy-aura/kinetic-dampening';
+import { overrides } from '@/data/overrides/powersets/sentinel/secondary/energy-aura/kinetic-dampening';
 
-export const KineticDampening: Power = {
-  "name": "Kinetic Dampening",
-  "internalName": "Kinetic_Dampening",
-  "available": 0,
-  "description": "Your ability to channel energy makes you naturally resistant to Energy, Negative Energy, Lethal, Smashing and Toxic damage. Additionally, the user gains a moderate level of resistance to slow effects. This power is always on and costs no Endurance.",
-  "shortHelp": "Auto: Self +Res (Energy, Negative, Toxic, Lethal, Smashing, Slow)",
-  "icon": "energyaura_protection.png",
-  "powerType": "Auto",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "activatePeriod": 10
-  },
-  "allowedEnhancements": [
-    "Resistance"
-  ],
-  "allowedSetCategories": [
-    "Resist Damage"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "resistance": {
-      "energy": {
-        "scale": 1.5,
-        "table": "Melee_Res_Dmg"
-      },
-      "negative": {
-        "scale": 1.25,
-        "table": "Melee_Res_Dmg"
-      },
-      "toxic": {
-        "scale": 1.25,
-        "table": "Melee_Res_Dmg"
-      },
-      "smashing": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      },
-      "lethal": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      }
-    },
-    "durations": {
-      "resistance": 10.25,
-      "debuffResistance": 10.25
-    },
-    "debuffResistance": {
-      "movement": {
-        "scale": 0.2,
-        "table": "Melee_Ones"
-      },
-      "recharge": {
-        "scale": 0.2,
-        "table": "Melee_Ones"
-      }
-    },
-    "buffDuration": 10.25
-  }
-};
+export const KineticDampening: Power = withOverrides(base, overrides);

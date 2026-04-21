@@ -1,101 +1,16 @@
 /**
- * Crack Whip
- * Short Ranged (Cone), Moderate DMG(Fire), Foe -Res, Knockdown, DoT(Toxic)
+ * Crack Whip — COMPOSED EXPORT
  *
- * Source: mastermind_summon/demon_summoning/crack_whip.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs mastermind_summon demon_summoning
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { CrackWhip as base } from '@/data/generated/powersets/mastermind/primary/demon-summoning/crack-whip';
+import { overrides } from '@/data/overrides/powersets/mastermind/primary/demon-summoning/crack-whip';
 
-export const CrackWhip: Power = {
-  "name": "Crack Whip",
-  "internalName": "Crack_Whip",
-  "available": 7,
-  "description": "You channel hellfire into your whip and make an impressive sweep causing high fire damage to enemies within a wide cone and also cause some toxic damage over time. Whip Crack has a larger range than most melee cones. Targets that are struck will also have their resistance to damage reduced for a short time, may suffer toxic damage over time and may be knocked down.",
-  "shortHelp": "Short Ranged (Cone), Moderate DMG(Fire), Foe -Res, Knockdown, DoT(Toxic)",
-  "icon": "demonsummoning_crackwhip.png",
-  "powerType": "Click",
-  "effectArea": "Cone",
-  "stats": {
-    "accuracy": 1,
-    "range": 30,
-    "radius": 30,
-    "arc": 0.5236,
-    "recharge": 11,
-    "endurance": 11.02,
-    "castTime": 2.33,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Knockback",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Mastermind Archetype Sets",
-    "Knockback",
-    "Ranged AoE Damage",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Fire",
-      "scale": 1.13,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Toxic",
-      "scale": 0.222,
-      "table": "Ranged_Damage",
-      "duration": 2.1,
-      "tickRate": 1
-    }
-  ],
-  "effects": {
-    "knockback": {
-      "scale": 0.64,
-      "table": "Ranged_Ones"
-    },
-    "resistanceDebuff": {
-      "smashing": {
-        "scale": 1.25,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "lethal": {
-        "scale": 1.25,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "fire": {
-        "scale": 1.25,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "cold": {
-        "scale": 1.25,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "energy": {
-        "scale": 1.25,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "negative": {
-        "scale": 1.25,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "psionic": {
-        "scale": 1.25,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "toxic": {
-        "scale": 1.25,
-        "table": "Ranged_Debuff_Res_Dmg"
-      }
-    },
-    "durations": {
-      "resistanceDebuff": 6
-    },
-    "buffDuration": 6
-  }
-};
+export const CrackWhip: Power = withOverrides(base, overrides);

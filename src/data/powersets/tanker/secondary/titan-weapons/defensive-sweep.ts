@@ -1,67 +1,16 @@
 /**
- * Defensive Sweep
- * Melee(Cone), DMG(Smashing), Self +DEF(Melee, Smash)
+ * Defensive Sweep — COMPOSED EXPORT
  *
- * Source: tanker_melee/titan_weapons/defensive_sweep.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs tanker_melee titan_weapons
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { DefensiveSweep as base } from '@/data/generated/powersets/tanker/secondary/titan-weapons/defensive-sweep';
+import { overrides } from '@/data/overrides/powersets/tanker/secondary/titan-weapons/defensive-sweep';
 
-export const DefensiveSweep: Power = {
-  "name": "Defensive Sweep",
-  "internalName": "Defensive_Sweep",
-  "available": 0,
-  "description": "You take a defensive stance and strike your opponents. Successfully executing this attack will cause light smashing damage to nearby foes, while giving you increased defense against their melee and smashing attacks.",
-  "shortHelp": "Melee(Cone), DMG(Smashing), Self +DEF(Melee, Smash)",
-  "icon": "titanweapons_defensivesweep.png",
-  "powerType": "Click",
-  "effectArea": "Cone",
-  "stats": {
-    "accuracy": 1,
-    "range": 15,
-    "radius": 15,
-    "arc": 2.0944,
-    "recharge": 4,
-    "endurance": 5.356,
-    "castTime": 2.2,
-    "maxTargets": 5
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "EnduranceReduction",
-    "Recharge",
-    "Damage",
-    "Defense",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Defense Sets",
-    "Melee AoE Damage",
-    "Tanker Archetype Sets",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 0.6684,
-    "table": "Melee_Damage"
-  },
-  "effects": {
-    "defenseBuff": {
-      "melee": {
-        "scale": 1.5,
-        "table": "Melee_Buff_Def"
-      },
-      "smashing": {
-        "scale": 1.5,
-        "table": "Melee_Buff_Def"
-      }
-    },
-    "durations": {
-      "defenseBuff": 10
-    },
-    "buffDuration": 10
-  },
-  "requires": "!Tanker_Defense.Shield_Defense"
-};
+export const DefensiveSweep: Power = withOverrides(base, overrides);

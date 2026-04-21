@@ -1,63 +1,16 @@
 /**
- * Power Burst
- * Ranged, Superior DMG(Energy/Smash), Foe Knockback, Special
+ * Power Burst — COMPOSED EXPORT
  *
- * Source: dominator_assault/energy_assault/power_burst.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs dominator_assault energy_assault
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { PowerBurst as base } from '@/data/generated/powersets/dominator/secondary/energy-assault/power-burst';
+import { overrides } from '@/data/overrides/powersets/dominator/secondary/energy-assault/power-burst';
 
-export const PowerBurst: Power = {
-  "name": "Power Burst",
-  "internalName": "Power_Burst",
-  "available": 29,
-  "description": "A devastating attack that can knock your target off their feet. This power will inflict bonus damage if used while in Energy Focus mode.Damage: Superior.Recharge: Slow.",
-  "shortHelp": "Ranged, Superior DMG(Energy/Smash), Foe Knockback, Special",
-  "icon": "energyassault_powerburst.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 80,
-    "recharge": 14,
-    "endurance": 13.52,
-    "castTime": 1.67
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Knockback",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Knockback",
-    "Ranged Damage",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 0.78,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.82,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.69,
-      "table": "Melee_Damage"
-    }
-  ],
-  "effects": {
-    "knockback": {
-      "scale": 2,
-      "table": "Ranged_Knockback"
-    }
-  }
-};
+export const PowerBurst: Power = withOverrides(base, overrides);

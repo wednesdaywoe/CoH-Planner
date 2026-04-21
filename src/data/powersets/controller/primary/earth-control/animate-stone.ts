@@ -1,50 +1,16 @@
 /**
- * Animate Stone
- * Summon Golem: Melee DMG(Smashing)
+ * Animate Stone — COMPOSED EXPORT
  *
- * Source: controller_control/earth_control/animate_stone.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs controller_control earth_control
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { AnimateStone as base } from '@/data/generated/powersets/controller/primary/earth-control/animate-stone';
+import { overrides } from '@/data/overrides/powersets/controller/primary/earth-control/animate-stone';
 
-export const AnimateStone: Power = {
-  "name": "Animate Stone",
-  "internalName": "Animate_Stone",
-  "available": 25,
-  "description": "Earth and stone coalesce to form an incredibly tough entity that can attack your foes. The Animated Stone is not alive and is immune to Psionic damage. It is also virtually immune to Sleep, Immobilize, Disorient, and Hold effects. The entity can be healed and buffed like any teammate. Type ''/release_pets'' in the chat window to release all your pets.",
-  "shortHelp": "Summon Golem: Melee DMG(Smashing)",
-  "icon": "earthgrasp_animatestone.png",
-  "powerType": "Click",
-  "targetType": "Location",
-  "effectArea": "Location",
-  "stats": {
-    "accuracy": 1,
-    "range": 60,
-    "recharge": 240,
-    "endurance": 20.8,
-    "castTime": 3.2
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Stun",
-    "Recharge",
-    "Knockback",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Knockback",
-    "Pet Damage",
-    "Recharge Intensive Pets",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_Stone_Controller",
-      "copyBoosts": true
-    }
-  }
-};
+export const AnimateStone: Power = withOverrides(base, overrides);

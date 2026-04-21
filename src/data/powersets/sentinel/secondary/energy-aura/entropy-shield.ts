@@ -1,116 +1,16 @@
 /**
- * Entropy Shield
- * Toggle: Self +Res(Knockback, Repel, Disorient, Hold, Sleep, Immobilize, Teleport, DeBuff DEF), +Rech
+ * Entropy Shield — COMPOSED EXPORT
  *
- * Source: sentinel_defense/energy_aura/entropy_shield.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs sentinel_defense energy_aura
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { EntropyShield as base } from '@/data/generated/powersets/sentinel/secondary/energy-aura/entropy-shield';
+import { overrides } from '@/data/overrides/powersets/sentinel/secondary/energy-aura/entropy-shield';
 
-export const EntropyShield: Power = {
-  "name": "Entropy Shield",
-  "internalName": "Entropy_Shield",
-  "available": 15,
-  "description": "Entropy Shield diminishes and dampens the energy of controlling type effects. The shield makes you resistant to Knockback, Repel, Disorient, Hold, Sleep, Immobilization, and enemy Teleportation for as long as you can keep this toggle power active. Entropy Shield also grants you good resistance to Defense Debuffs. Additionally, this power grants the user a moderate recharge bonus while active and resistance to endurance drain effects.",
-  "shortHelp": "Toggle: Self +Res(Knockback, Repel, Disorient, Hold, Sleep, Immobilize, Teleport, DeBuff DEF), +Rech",
-  "icon": "energyaura_entropy.png",
-  "powerType": "Toggle",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 10,
-    "endurance": 0.13,
-    "castTime": 0.73,
-    "activatePeriod": 0.5
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "mezResistance": {
-      "knockback": {
-        "scale": 100,
-        "table": "Melee_Ones"
-      },
-      "knockup": {
-        "scale": 100,
-        "table": "Melee_Ones"
-      },
-      "repel": {
-        "scale": 100,
-        "table": "Melee_Ones"
-      },
-      "teleport": {
-        "scale": 1,
-        "table": "Melee_Ones"
-      }
-    },
-    "durations": {
-      "mezResistance": 0.75,
-      "knockup": 0.75,
-      "knockback": 0.75,
-      "repel": 0.75,
-      "hold": 0.75,
-      "immobilize": 0.75,
-      "stun": 0.75,
-      "sleep": 0.75,
-      "debuffResistance": 0.75,
-      "rechargeBuff": 0.75
-    },
-    "knockup": {
-      "scale": 10,
-      "table": "Melee_Ones"
-    },
-    "knockback": {
-      "scale": 10,
-      "table": "Melee_Ones"
-    },
-    "repel": {
-      "scale": 10,
-      "table": "Melee_Ones"
-    },
-    "hold": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "effectDuration": 0.75,
-    "immobilize": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "stun": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "sleep": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "debuffResistance": {
-      "defense": {
-        "scale": 0.5,
-        "table": "Melee_Res_Boolean"
-      },
-      "endurance": {
-        "scale": 0.25,
-        "table": "Melee_Ones"
-      },
-      "recovery": {
-        "scale": 0.25,
-        "table": "Melee_Ones"
-      }
-    },
-    "rechargeBuff": {
-      "scale": 0.2,
-      "table": "Melee_Ones"
-    },
-    "buffDuration": 0.75
-  }
-};
+export const EntropyShield: Power = withOverrides(base, overrides);

@@ -1,49 +1,16 @@
 /**
- * Confront
- * Ranged (Targeted AoE), Foe Taunt
+ * Confront — COMPOSED EXPORT
  *
- * Source: scrapper_melee/ice_melee/confront.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs scrapper_melee ice_melee
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Confront as base } from '@/data/generated/powersets/scrapper/primary/ice-melee/confront';
+import { overrides } from '@/data/overrides/powersets/scrapper/primary/ice-melee/confront';
 
-export const Confront: Power = {
-  "name": "Confront",
-  "internalName": "Confront",
-  "available": 11,
-  "description": "Challenges a foe to attack you. Useful to pull a villain off an ally who finds themselves in over their head. A To Hit check required to Taunt enemy players, but is not needed against critter targets.",
-  "shortHelp": "Ranged (Targeted AoE), Foe Taunt",
-  "icon": "icyonslaught_taunt.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 70,
-    "recharge": 3,
-    "castTime": 1.67
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "Range",
-    "Recharge",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Threat Duration"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "taunt": {
-      "scale": 15,
-      "table": "Melee_Taunt"
-    },
-    "rangeBuff": {
-      "scale": 0.75,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "rangeBuff": 12
-    },
-    "buffDuration": 12
-  }
-};
+export const Confront: Power = withOverrides(base, overrides);

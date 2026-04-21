@@ -1,65 +1,16 @@
 /**
- * Thorny Darts
- * Ranged, Light DMG(Lethal), DoT(Toxic) -DEF
+ * Thorny Darts — COMPOSED EXPORT
  *
- * Source: dominator_assault/thorny_assault/thorny_darts.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs dominator_assault thorny_assault
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { ThornyDarts as base } from '@/data/generated/powersets/dominator/secondary/thorny-assault/thorny-darts';
+import { overrides } from '@/data/overrides/powersets/dominator/secondary/thorny-assault/thorny-darts';
 
-export const ThornyDarts: Power = {
-  "name": "Thorny Darts",
-  "internalName": "Thorny_Darts",
-  "available": 0,
-  "description": "Hurls small Thorny Darts at your foes. Thorny Darts deal moderate damage. Poison from the Darts deals additional Toxic damage and can reduce your foes Defense.Damage: Light.Recharge: Fast.",
-  "shortHelp": "Ranged, Light DMG(Lethal), DoT(Toxic) -DEF",
-  "icon": "thornyassault_darts.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 80,
-    "recharge": 4,
-    "endurance": 5.2,
-    "castTime": 1.33
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Defense Debuff",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Defense Debuff",
-    "Ranged Damage",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Lethal",
-      "scale": 1,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Toxic",
-      "scale": 0.0595,
-      "table": "Ranged_Damage",
-      "duration": 3.1,
-      "tickRate": 1
-    }
-  ],
-  "effects": {
-    "defenseDebuff": {
-      "scale": 2,
-      "table": "Ranged_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 5
-    },
-    "buffDuration": 5
-  }
-};
+export const ThornyDarts: Power = withOverrides(base, overrides);

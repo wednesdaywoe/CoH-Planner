@@ -1,59 +1,16 @@
 /**
- * Mental Strike
- * Melee, Light DMG(Psionic/Smash), Foe -Rech; Self +Insight
+ * Mental Strike — COMPOSED EXPORT
  *
- * Source: brute_melee/psionic_melee/mental_strike.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs brute_melee psionic_melee
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { MentalStrike as base } from '@/data/generated/powersets/brute/primary/psionic-melee/mental-strike';
+import { overrides } from '@/data/overrides/powersets/brute/primary/psionic-melee/mental-strike';
 
-export const MentalStrike: Power = {
-  "name": "Mental Strike",
-  "internalName": "Mental_Strike",
-  "available": 0,
-  "description": "You project psionic energy around your fist and strike at your foe dealing light Psionic and Smashing damage. Affected foes will have their recharge rate reduced. Mental Strike has a small chance to grant you Insight. While you have Insight, Mental Strike will deal additional minor psionic damage over time.Damage: Light.Recharge: Very Fast.",
-  "shortHelp": "Melee, Light DMG(Psionic/Smash), Foe -Rech; Self +Insight",
-  "icon": "psionicmelee_mentalstrike.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 7,
-    "recharge": 3,
-    "endurance": 4.368,
-    "castTime": 1
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "EnduranceReduction",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Brute Archetype Sets",
-    "Melee Damage",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 0.21,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 0.63,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 0.084,
-      "table": "Melee_Damage",
-      "duration": 3.1,
-      "tickRate": 1
-    }
-  ]
-};
+export const MentalStrike: Power = withOverrides(base, overrides);

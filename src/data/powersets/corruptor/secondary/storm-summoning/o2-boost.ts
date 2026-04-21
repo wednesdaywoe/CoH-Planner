@@ -1,87 +1,16 @@
 /**
- * O2 Boost
- * Ally Heal, +Res(Disorient, Sleep, End Drain), +Perception
+ * O2 Boost — COMPOSED EXPORT
  *
- * Source: corruptor_buff/storm_summoning/o2_boost.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs corruptor_buff storm_summoning
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { O2Boost as base } from '@/data/generated/powersets/corruptor/secondary/storm-summoning/o2-boost';
+import { overrides } from '@/data/overrides/powersets/corruptor/secondary/storm-summoning/o2-boost';
 
-export const O2Boost: Power = {
-  "name": "O2 Boost",
-  "internalName": "O2_Boost",
-  "available": 0,
-  "description": "Saturates the air around a targeted ally with rich oxygen, healing their wounds. The O2 Boost can protect a targeted ally from Sleep, Stun and Endurance Drain effects as well as increase perception. You cannot use this power on yourself.Recharge: Fast.",
-  "shortHelp": "Ally Heal, +Res(Disorient, Sleep, End Drain), +Perception",
-  "icon": "stormsummoning_o2boost.png",
-  "powerType": "Click",
-  "targetType": "Ally (Alive)",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 80,
-    "recharge": 4,
-    "endurance": 13,
-    "castTime": 2.27
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Healing"
-  ],
-  "allowedSetCategories": [
-    "Healing"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Heal",
-    "scale": 1.32,
-    "table": "Ranged_Heal"
-  },
-  "effects": {
-    "debuffResistance": {
-      "endurance": {
-        "scale": 2,
-        "table": "Ranged_Res_Boolean"
-      },
-      "recovery": {
-        "scale": 2,
-        "table": "Ranged_Res_Boolean"
-      },
-      "perception": {
-        "scale": 2.5,
-        "table": "Ranged_Res_Boolean"
-      }
-    },
-    "durations": {
-      "debuffResistance": 60,
-      "mezResistance": 60,
-      "perceptionBuff": 60,
-      "stun": 60,
-      "sleep": 60
-    },
-    "mezResistance": {
-      "sleep": {
-        "scale": 4,
-        "table": "Ranged_Res_Boolean"
-      }
-    },
-    "perceptionBuff": {
-      "scale": 2.5,
-      "table": "Ranged_Res_Boolean"
-    },
-    "stun": {
-      "mag": 1,
-      "scale": 20,
-      "table": "Ranged_Res_Boolean"
-    },
-    "effectDuration": 60,
-    "sleep": {
-      "mag": 1,
-      "scale": 20,
-      "table": "Ranged_Res_Boolean"
-    },
-    "buffDuration": 60
-  }
-};
+export const O2Boost: Power = withOverrides(base, overrides);

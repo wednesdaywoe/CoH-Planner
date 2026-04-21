@@ -1,64 +1,16 @@
 /**
- * Parasitic Leech
- * PBAoE, Self +Absorb, +Regeneration, +Recovery, Foe -DMG
+ * Parasitic Leech — COMPOSED EXPORT
  *
- * Source: sentinel_defense/bio_organic_armor/parasitic_leech.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs sentinel_defense bio_organic_armor
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { ParasiticLeech as base } from '@/data/generated/powersets/sentinel/secondary/bio-armor/parasitic-leech';
+import { overrides } from '@/data/overrides/powersets/sentinel/secondary/bio-armor/parasitic-leech';
 
-export const ParasiticLeech: Power = {
-  "name": "Parasitic Leech",
-  "internalName": "Parasitic_Leech",
-  "available": 29,
-  "description": "You release a wave of parasites around you that draw out your enemies' genetic material. These parasites dramatically increase your survivability by gaining damage absorption while boosting your regeneration and recovery rate for a short time. Affected foes will be infected and have reduced regeneration for a short while.*While Offensive Adaptation is active, this power will apply a stronger regeneration debuff.*While Defensive Adaptation is active, this power will grant a small amount of additional damage absorption and inflict a damage debuff.*While Efficient Adaptation is active, this power will grant additional regeneration and recovery per target hit.",
-  "shortHelp": "PBAoE, Self +Absorb, +Regeneration, +Recovery, Foe -DMG",
-  "icon": "bioorganicarmor_parasiticleech.png",
-  "powerType": "Click",
-  "effectArea": "Cone",
-  "stats": {
-    "accuracy": 1.5,
-    "range": 40,
-    "radius": 90,
-    "arc": 1.5708,
-    "recharge": 270,
-    "endurance": 18.2,
-    "castTime": 1.87,
-    "maxTargets": 5
-  },
-  "allowedEnhancements": [
-    "EnduranceModification",
-    "Recharge",
-    "Healing",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate Healing",
-    "Endurance Modification",
-    "Healing"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "recoveryBuff": {
-      "scale": 0.558,
-      "table": "Melee_Ones",
-      "perTarget": 0.558
-    },
-    "durations": {
-      "recoveryBuff": 45,
-      "regenBuff": 45,
-      "absorb": 45
-    },
-    "regenBuff": {
-      "scale": 0.9279999999999999,
-      "table": "Melee_Ones",
-      "perTarget": 0.9279999999999999
-    },
-    "absorb": {
-      "scale": 0.186,
-      "table": "Melee_Ones",
-      "perTarget": 0.186
-    },
-    "buffDuration": 45
-  }
-};
+export const ParasiticLeech: Power = withOverrides(base, overrides);

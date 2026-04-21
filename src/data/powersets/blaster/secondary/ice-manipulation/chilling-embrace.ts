@@ -1,56 +1,16 @@
 /**
- * Frigid Protection
- * Toggle: PBAoE, Foe -Recharge, -Speed, -DMG, Self +Absorb over Time, +Recovery
+ * Frigid Protection — COMPOSED EXPORT
  *
- * Source: blaster_support/ice_manipulation/chilling_embrace.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs blaster_support ice_manipulation
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { FrigidProtection as base } from '@/data/generated/powersets/blaster/secondary/ice-manipulation/chilling-embrace';
+import { overrides } from '@/data/overrides/powersets/blaster/secondary/ice-manipulation/chilling-embrace';
 
-export const FrigidProtection: Power = {
-  "name": "Frigid Protection",
-  "internalName": "Chilling_Embrace",
-  "available": 9,
-  "description": "While active, you dramatically lower the temperature around yourself, Slowing the attack rate of all nearby foes, as well as their movement speed and damage. The air around your body becomes so cold that attacks deflect off of it, granting you absorption, while your body becomes extremely energy efficient, granting you bonus Recovery.Recharge: Moderate.",
-  "shortHelp": "Toggle: PBAoE, Foe -Recharge, -Speed, -DMG, Self +Absorb over Time, +Recovery",
-  "icon": "icemanipulation_chillingembrace.png",
-  "powerType": "Toggle",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "radius": 30,
-    "recharge": 10,
-    "castTime": 0.73,
-    "activatePeriod": 2,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "EnduranceModification",
-    "Slow",
-    "Recharge",
-    "Healing"
-  ],
-  "allowedSetCategories": [
-    "Accurate Healing",
-    "Endurance Modification",
-    "Healing",
-    "Slow Movement"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "absorb": {
-      "scale": 0.3,
-      "table": "Melee_HealSelf"
-    },
-    "durations": {
-      "absorb": 12,
-      "recoveryBuff": 3
-    },
-    "recoveryBuff": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
-    "buffDuration": 12
-  }
-};
+export const FrigidProtection: Power = withOverrides(base, overrides);

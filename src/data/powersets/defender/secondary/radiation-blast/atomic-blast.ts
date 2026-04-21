@@ -1,70 +1,16 @@
 /**
- * Atomic Blast
- * PBAoE, DMG(Energy/Smash), Foe Hold, -DEF
+ * Atomic Blast — COMPOSED EXPORT
  *
- * Source: defender_ranged/radiation_blast/atomic_blast.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs defender_ranged radiation_blast
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { AtomicBlast as base } from '@/data/generated/powersets/defender/secondary/radiation-blast/atomic-blast';
+import { overrides } from '@/data/overrides/powersets/defender/secondary/radiation-blast/atomic-blast';
 
-export const AtomicBlast: Power = {
-  "name": "Atomic Blast",
-  "internalName": "Atomic_Blast",
-  "available": 29,
-  "description": "This attack taps most of your stored energy to deal a devastating Atomic Blast which deals Extreme Energy and Smashing damage. Any foes left standing will have their Defense greatly reduced and may be left helplessly choking on toxic vapors.",
-  "shortHelp": "PBAoE, DMG(Energy/Smash), Foe Hold, -DEF",
-  "icon": "radiationburst_atomicblast.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1.4,
-    "radius": 25,
-    "recharge": 145,
-    "endurance": 27.716,
-    "castTime": 2.93,
-    "maxTargets": 16
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Defense Debuff",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Defender Archetype Sets",
-    "Defense Debuff",
-    "Melee AoE Damage",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 1,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 3,
-      "table": "Ranged_Damage"
-    }
-  ],
-  "effects": {
-    "hold": {
-      "mag": 3,
-      "scale": 10,
-      "table": "Ranged_Stun"
-    },
-    "defenseDebuff": {
-      "scale": 4,
-      "table": "Ranged_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 20
-    },
-    "buffDuration": 20
-  }
-};
+export const AtomicBlast: Power = withOverrides(base, overrides);

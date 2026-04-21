@@ -1,45 +1,16 @@
 /**
- * Thunder Clap
- * PBAoE, Foe Disorient
+ * Thunder Clap — COMPOSED EXPORT
  *
- * Source: mastermind_buff/storm_summoning/thunder_clap.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs mastermind_buff storm_summoning
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { ThunderClap as base } from '@/data/generated/powersets/mastermind/secondary/storm-summoning/thunder-clap';
+import { overrides } from '@/data/overrides/powersets/mastermind/secondary/storm-summoning/thunder-clap';
 
-export const ThunderClap: Power = {
-  "name": "Thunder Clap",
-  "internalName": "Thunder_Clap",
-  "available": 23,
-  "description": "You can call forth a tremendous Thunder Clap that will Disorient most foes in a large area around you.Recharge: Slow.",
-  "shortHelp": "PBAoE, Foe Disorient",
-  "icon": "stormsummoning_thunderclap.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 0.8,
-    "radius": 25,
-    "recharge": 45,
-    "endurance": 13,
-    "castTime": 2.37,
-    "maxTargets": 16
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Stun",
-    "Recharge",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Stuns"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "stun": {
-      "mag": 2,
-      "scale": 10,
-      "table": "Ranged_Stun"
-    }
-  }
-};
+export const ThunderClap: Power = withOverrides(base, overrides);

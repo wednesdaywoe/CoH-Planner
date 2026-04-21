@@ -1,75 +1,16 @@
 /**
- * Electrified Net Arrow
- * Ranged, DoT(Energy), Foe Immobilize, -Fly, -Recharge, -SPD, -Jump
+ * Electrified Net Arrow — COMPOSED EXPORT
  *
- * Source: blaster_support/tactical_arrow/electrified_net_arrow.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs blaster_support tactical_arrow
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { ElectrifiedNetArrow as base } from '@/data/generated/powersets/blaster/secondary/tactical-arrow/electrified-net-arrow';
+import { overrides } from '@/data/overrides/powersets/blaster/secondary/tactical-arrow/electrified-net-arrow';
 
-export const ElectrifiedNetArrow: Power = {
-  "name": "Electrified Net Arrow",
-  "internalName": "Electrified_Net_Arrow",
-  "available": 0,
-  "description": "Upon impact, the Electrified Net Arrow releases an electrically charged net that can Immobilize most targets. This device deals electric damage over time but does not prevent targets from attacking. The Electrified Net Arrow can bring down flying entities, halts jumping and slows all of their actions.Damage: Moderate.Recharge: Fast.",
-  "shortHelp": "Ranged, DoT(Energy), Foe Immobilize, -Fly, -Recharge, -SPD, -Jump",
-  "icon": "tacticalarrow_immobilize.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1.2,
-    "range": 60,
-    "recharge": 4,
-    "endurance": 7.8,
-    "castTime": 1
-  },
-  "allowedEnhancements": [
-    "Slow",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Immobilize",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Blaster Archetype Sets",
-    "Immobilize",
-    "Ranged Damage",
-    "Slow Movement",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Energy",
-    "scale": 0.2,
-    "table": "Ranged_Damage",
-    "duration": 8.2,
-    "tickRate": 2
-  },
-  "effects": {
-    "immobilize": {
-      "mag": 3,
-      "scale": 15,
-      "table": "Ranged_Immobilize"
-    },
-    "mezResistance": {
-      "knockup": {
-        "scale": 100,
-        "table": "Ranged_Ones"
-      },
-      "knockback": {
-        "scale": 100,
-        "table": "Ranged_Ones"
-      }
-    },
-    "durations": {
-      "mezResistance": 15
-    },
-    "damageBuff": {
-      "scale": 0,
-      "table": "Ranged_Ones"
-    },
-    "buffDuration": 15
-  }
-};
+export const ElectrifiedNetArrow: Power = withOverrides(base, overrides);

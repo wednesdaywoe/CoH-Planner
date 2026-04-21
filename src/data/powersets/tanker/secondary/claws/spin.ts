@@ -1,47 +1,16 @@
 /**
- * Spin
- * PBAoE Melee, DMG(Lethal)
+ * Spin — COMPOSED EXPORT
  *
- * Source: tanker_melee/claws/spin.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs tanker_melee claws
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Spin as base } from '@/data/generated/powersets/tanker/secondary/claws/spin';
+import { overrides } from '@/data/overrides/powersets/tanker/secondary/claws/spin';
 
-export const Spin: Power = {
-  "name": "Spin",
-  "internalName": "Spin",
-  "available": 15,
-  "description": "You spin around in a circle, attacking everyone within melee range with a Strike attack.Notes: Thanks to gauntlet, this power can hit up to 6 targets above its cap at 1/3rd effectiveness.",
-  "shortHelp": "PBAoE Melee, DMG(Lethal)",
-  "icon": "claws_spinningclawsattack.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "radius": 12,
-    "recharge": 14,
-    "endurance": 13.1456,
-    "castTime": 2.5,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "EnduranceReduction",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Melee AoE Damage",
-    "Tanker Archetype Sets",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 1.89,
-    "table": "Melee_Damage"
-  }
-};
+export const Spin: Power = withOverrides(base, overrides);

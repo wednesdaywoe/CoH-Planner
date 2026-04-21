@@ -1,55 +1,16 @@
 /**
- * Evasion
- * Toggle: Self +DEF(vs. AoE), Res(DeBuff DEF)
+ * Evasion — COMPOSED EXPORT
  *
- * Source: sentinel_defense/super_reflexes/evasion.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs sentinel_defense super_reflexes
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Evasion as base } from '@/data/generated/powersets/sentinel/secondary/super-reflexes/evasion';
+import { overrides } from '@/data/overrides/powersets/sentinel/secondary/super-reflexes/evasion';
 
-export const Evasion: Power = {
-  "name": "Evasion",
-  "internalName": "Evasion",
-  "available": 27,
-  "description": "You are Evasive against area effect and cone shaped attacks. This power increases your Defense versus such attacks as long as it is active. Evasion also helps you resist Defense DeBuffs. Evasion also adds an Elusivity defense bonus to AOE Attacks in PVP zones.Recharge: Fast.",
-  "shortHelp": "Toggle: Self +DEF(vs. AoE), Res(DeBuff DEF)",
-  "icon": "superreflexes_evasion.png",
-  "powerType": "Toggle",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 4,
-    "endurance": 0.13,
-    "castTime": 3,
-    "activatePeriod": 0.5
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Defense"
-  ],
-  "allowedSetCategories": [
-    "Defense Sets"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "defenseBuff": {
-      "aoe": {
-        "scale": 2.85,
-        "table": "Melee_Buff_Def"
-      }
-    },
-    "durations": {
-      "defenseBuff": 0.75,
-      "debuffResistance": 0.75
-    },
-    "debuffResistance": {
-      "defense": {
-        "scale": 0.4,
-        "table": "Melee_Res_Boolean"
-      }
-    },
-    "buffDuration": 0.75
-  }
-};
+export const Evasion: Power = withOverrides(base, overrides);

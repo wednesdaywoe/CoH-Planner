@@ -1,136 +1,16 @@
 /**
- * Steamy Mist
- * Toggle: PBAoE, Team Stealth, +DEF(All), +Res(Fire, Cold, Energy, Confuse)
+ * Steamy Mist — COMPOSED EXPORT
  *
- * Source: mastermind_buff/storm_summoning/steamy_mist.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs mastermind_buff storm_summoning
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { SteamyMist as base } from '@/data/generated/powersets/mastermind/secondary/storm-summoning/steamy-mist';
+import { overrides } from '@/data/overrides/powersets/mastermind/secondary/storm-summoning/steamy-mist';
 
-export const SteamyMist: Power = {
-  "name": "Steamy Mist",
-  "internalName": "Steamy_Mist",
-  "available": 9,
-  "description": "Your mastery of the elements allows you to hide yourself and all nearby allies within a Steamy Mist. Steamy Mist makes you and your allies harder to see and increases your Defense bonus to all attacks, while reducing Fire, Cold, and Energy damage, as well as your Foes ability to Confuse you.",
-  "shortHelp": "Toggle: PBAoE, Team Stealth, +DEF(All), +Res(Fire, Cold, Energy, Confuse)",
-  "icon": "stormsummoning_fog.png",
-  "powerType": "Toggle",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "radius": 40,
-    "recharge": 15,
-    "endurance": 0.325,
-    "castTime": 1.87,
-    "activatePeriod": 0.5,
-    "maxTargets": 255
-  },
-  "allowedEnhancements": [
-    "Resistance",
-    "EnduranceReduction",
-    "Recharge",
-    "Defense"
-  ],
-  "allowedSetCategories": [
-    "Defense Sets",
-    "Resist Damage"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "defenseBuff": {
-      "ranged": {
-        "scale": 0.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "melee": {
-        "scale": 0.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "aoe": {
-        "scale": 0.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "smashing": {
-        "scale": 0.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "lethal": {
-        "scale": 0.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "fire": {
-        "scale": 0.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "cold": {
-        "scale": 0.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "energy": {
-        "scale": 0.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "negative": {
-        "scale": 0.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "psionic": {
-        "scale": 0.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "toxic": {
-        "scale": 0.5,
-        "table": "Ranged_Buff_Def"
-      }
-    },
-    "durations": {
-      "defenseBuff": 0.75,
-      "stealth": 0.75,
-      "resistance": 0.75,
-      "mezResistance": 0.75,
-      "confuse": 0.75
-    },
-    "stealth": {
-      "translucency": {
-        "scale": 0.7,
-        "table": "Ranged_Ones"
-      },
-      "stealthPvP": {
-        "scale": 390,
-        "table": "Melee_Ones"
-      },
-      "stealthPvE": {
-        "scale": 35.5,
-        "table": "Melee_Ones"
-      }
-    },
-    "resistance": {
-      "fire": {
-        "scale": 2,
-        "table": "Ranged_Res_Dmg"
-      },
-      "cold": {
-        "scale": 2,
-        "table": "Ranged_Res_Dmg"
-      },
-      "energy": {
-        "scale": 2,
-        "table": "Ranged_Res_Dmg"
-      }
-    },
-    "mezResistance": {
-      "confuse": {
-        "scale": 5,
-        "table": "Ranged_Res_Boolean"
-      }
-    },
-    "confuse": {
-      "mag": 1,
-      "scale": 20,
-      "table": "Ranged_Res_Boolean"
-    },
-    "effectDuration": 0.75,
-    "buffDuration": 0.75
-  }
-};
+export const SteamyMist: Power = withOverrides(base, overrides);

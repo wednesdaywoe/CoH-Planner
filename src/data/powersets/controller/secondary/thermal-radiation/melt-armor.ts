@@ -1,85 +1,16 @@
 /**
- * Melt Armor
- * Ranged (Targeted AoE), Foe -Res, -DEF
+ * Melt Armor — COMPOSED EXPORT
  *
- * Source: controller_buff/thermal_radiation/melt_armor.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs controller_buff thermal_radiation
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { MeltArmor as base } from '@/data/generated/powersets/controller/secondary/thermal-radiation/melt-armor';
+import { overrides } from '@/data/overrides/powersets/controller/secondary/thermal-radiation/melt-armor';
 
-export const MeltArmor: Power = {
-  "name": "Melt Armor",
-  "internalName": "Melt_Armor",
-  "available": 29,
-  "description": "The searing heat from this power is enough to melt the armor and defenses of all targets in the affected area. Melt Armor significantly weakens the Defense and Damage Resistance of the affected targets.",
-  "shortHelp": "Ranged (Targeted AoE), Foe -Res, -DEF",
-  "icon": "thermalradiation_meltarmor.png",
-  "powerType": "Click",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "range": 70,
-    "radius": 20,
-    "recharge": 100,
-    "endurance": 18.2,
-    "castTime": 1.5,
-    "maxTargets": 16
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Defense Debuff",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Defense Debuff"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "defenseDebuff": {
-      "scale": 2,
-      "table": "Ranged_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 40,
-      "resistanceDebuff": 40
-    },
-    "resistanceDebuff": {
-      "smashing": {
-        "scale": 3,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "lethal": {
-        "scale": 3,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "fire": {
-        "scale": 3,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "cold": {
-        "scale": 3,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "energy": {
-        "scale": 3,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "negative": {
-        "scale": 3,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "psionic": {
-        "scale": 3,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "toxic": {
-        "scale": 3,
-        "table": "Ranged_Debuff_Res_Dmg"
-      }
-    },
-    "buffDuration": 40
-  }
-};
+export const MeltArmor: Power = withOverrides(base, overrides);

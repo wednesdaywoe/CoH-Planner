@@ -1,47 +1,16 @@
 /**
- * Spirit Tree
- * Place Tree: PBAoE +Regen
+ * Spirit Tree — COMPOSED EXPORT
  *
- * Source: dominator_control/plant_control/spirit_tree.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs dominator_control plant_control
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { SpiritTree as base } from '@/data/generated/powersets/dominator/primary/plant-control/spirit-tree';
+import { overrides } from '@/data/overrides/powersets/dominator/primary/plant-control/spirit-tree';
 
-export const SpiritTree: Power = {
-  "name": "Spirit Tree",
-  "internalName": "Spirit_Tree",
-  "available": 11,
-  "description": "You can tap into the elusive and powerful energy of the World Tree and extract a Spirit Tree at a targeted location. The Sprit Tree is immobile, but possesses incredible rejuvenating powers. The Regeneration Rate of you, or your allies, will be greatly increased as long as you are near the Spirit Tree. The tree will also distract some enemies, taunting them to attack it instead of you.",
-  "shortHelp": "Place Tree: PBAoE +Regen",
-  "icon": "plantcontrol_spirittree.png",
-  "powerType": "Click",
-  "targetType": "Location",
-  "effectArea": "Location",
-  "stats": {
-    "accuracy": 1,
-    "range": 70,
-    "recharge": 120,
-    "endurance": 13,
-    "castTime": 1.67
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Healing"
-  ],
-  "allowedSetCategories": [
-    "Healing",
-    "Threat Duration"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_Spirit_Tree",
-      "duration": 60,
-      "copyBoosts": true
-    }
-  }
-};
+export const SpiritTree: Power = withOverrides(base, overrides);

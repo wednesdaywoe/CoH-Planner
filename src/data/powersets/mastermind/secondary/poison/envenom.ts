@@ -1,97 +1,16 @@
 /**
- * Envenom
- * Ranged (Targeted AoE), Foe -RES, -DEF, -Regen, -Heal
+ * Envenom — COMPOSED EXPORT
  *
- * Source: mastermind_buff/poison/envenom.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs mastermind_buff poison
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Envenom as base } from '@/data/generated/powersets/mastermind/secondary/poison/envenom';
+import { overrides } from '@/data/overrides/powersets/mastermind/secondary/poison/envenom';
 
-export const Envenom: Power = {
-  "name": "Envenom",
-  "internalName": "Envenom",
-  "available": 0,
-  "description": "You Envenom your foe with a nasty poison, the poison then spreads to nearby foes. The toxin directly attacks the immune system, reducing the affected target's Defense, Damage Resistance and Hit Point Regeneration Rate. The poison is so potent, that the target actually responds less to Healing while affected by the poison. Secondary foes struck by this power will have a lesser effect placed on them while the primary target receives the full effectiveness of the power.Recharge: Slow.",
-  "shortHelp": "Ranged (Targeted AoE), Foe -RES, -DEF, -Regen, -Heal",
-  "icon": "poison_envenomaoe.png",
-  "powerType": "Click",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "range": 70,
-    "radius": 8,
-    "recharge": 12,
-    "endurance": 13,
-    "castTime": 1.33,
-    "maxTargets": 16
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Defense Debuff",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Defense Debuff"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "defenseDebuff": {
-      "scale": 1.5,
-      "table": "Ranged_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 30,
-      "resistance": 30,
-      "regenDebuff": 30,
-      "resistanceDebuff": 30
-    },
-    "resistance": {
-      "heal": {
-        "scale": 1,
-        "table": "Ranged_Res_Dmg"
-      }
-    },
-    "regenDebuff": {
-      "scale": 0.75,
-      "table": "Ranged_Ones"
-    },
-    "resistanceDebuff": {
-      "smashing": {
-        "scale": 2,
-        "table": "Ranged_Res_Dmg"
-      },
-      "lethal": {
-        "scale": 2,
-        "table": "Ranged_Res_Dmg"
-      },
-      "fire": {
-        "scale": 2,
-        "table": "Ranged_Res_Dmg"
-      },
-      "cold": {
-        "scale": 2,
-        "table": "Ranged_Res_Dmg"
-      },
-      "energy": {
-        "scale": 2,
-        "table": "Ranged_Res_Dmg"
-      },
-      "negative": {
-        "scale": 2,
-        "table": "Ranged_Res_Dmg"
-      },
-      "psionic": {
-        "scale": 2,
-        "table": "Ranged_Res_Dmg"
-      },
-      "toxic": {
-        "scale": 2,
-        "table": "Ranged_Res_Dmg"
-      }
-    },
-    "buffDuration": 30
-  }
-};
+export const Envenom: Power = withOverrides(base, overrides);

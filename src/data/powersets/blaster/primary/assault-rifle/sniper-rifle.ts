@@ -1,62 +1,16 @@
 /**
- * Sniper Rifle
- * Sniper, DMG(Lethal), Foe Knockback, Self +Range
+ * Sniper Rifle — COMPOSED EXPORT
  *
- * Source: blaster_ranged/assault_rifle/sniper_rifle.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs blaster_ranged assault_rifle
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { SniperRifle as base } from '@/data/generated/powersets/blaster/primary/assault-rifle/sniper-rifle';
+import { overrides } from '@/data/overrides/powersets/blaster/primary/assault-rifle/sniper-rifle';
 
-export const SniperRifle: Power = {
-  "name": "Sniper Rifle",
-  "internalName": "Sniper_Rifle",
-  "available": 11,
-  "description": "Sniper Rifle is a powerful piece of hardware. It is very accurate and has a very long range. The impressive round can knock down its target. Like most sniper attacks, you must take your time to aim, so this attack can be interrupted. If you are engaged in battle this attack becomes instant-cast. If you are not engaged, it will do bonus damage.",
-  "shortHelp": "Sniper, DMG(Lethal), Foe Knockback, Self +Range",
-  "icon": "assaultweapons_sniperrifle.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 150,
-    "recharge": 12,
-    "endurance": 14.352,
-    "castTime": 1.17
-  },
-  "allowedEnhancements": [
-    "Interrupt",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Knockback",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Blaster Archetype Sets",
-    "Knockback",
-    "Ranged Damage",
-    "Sniper Attacks",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 4.5,
-    "table": "Ranged_Damage"
-  },
-  "effects": {
-    "knockback": {
-      "scale": 0.7,
-      "table": "Ranged_Knockback"
-    },
-    "rangeBuff": {
-      "scale": 0.5,
-      "table": "Ranged_Ones"
-    },
-    "durations": {
-      "rangeBuff": 10
-    },
-    "buffDuration": 10
-  }
-};
+export const SniperRifle: Power = withOverrides(base, overrides);

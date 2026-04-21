@@ -1,52 +1,16 @@
 /**
- * Repulsion Field
- * Toggle: PBAoE Knockback
+ * Repulsion Field — COMPOSED EXPORT
  *
- * Source: mastermind_buff/force_field/repulsion_field.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs mastermind_buff force_field
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { RepulsionField as base } from '@/data/generated/powersets/mastermind/secondary/force-field/repulsion-field';
+import { overrides } from '@/data/overrides/powersets/mastermind/secondary/force-field/repulsion-field';
 
-export const RepulsionField: Power = {
-  "name": "Repulsion Field",
-  "internalName": "Repulsion_Field",
-  "available": 23,
-  "description": "This Toggle power creates a field that keeps all foes at bay, protecting all allies inside from melee or short ranged attacks. More powerful foes may be able to penetrate the Repulsion Field, but may slip and get knocked down and forced back if they try.Enemies that get too close will be violently knocked away. In PvP, Each villain that is knocked away costs you additional Endurance.Note: Slotting Knockback to Knockdown enhancement in this power will disable Repel.",
-  "shortHelp": "Toggle: PBAoE Knockback",
-  "icon": "forcefield_repulsionfield.png",
-  "powerType": "Toggle",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "radius": 25,
-    "recharge": 20,
-    "endurance": 0.2031,
-    "castTime": 2.03,
-    "activatePeriod": 0.25,
-    "maxTargets": 16
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Knockback"
-  ],
-  "allowedSetCategories": [
-    "Knockback"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "knockback": {
-      "scale": 3,
-      "table": "Ranged_Knockback"
-    },
-    "repel": {
-      "scale": 10,
-      "table": "Ranged_Ones"
-    },
-    "durations": {
-      "repel": 0.25
-    },
-    "buffDuration": 0.25
-  }
-};
+export const RepulsionField: Power = withOverrides(base, overrides);

@@ -1,90 +1,16 @@
 /**
- * Dehydrate
- * Ranged, DMG(Cold/Smash), Foe -Speed, -Defense, DoT(Cold), Self +Heal Over Time, +/- Tidal Power
+ * Dehydrate — COMPOSED EXPORT
  *
- * Source: blaster_ranged/water_blast/dehydrate.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs blaster_ranged water_blast
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Dehydrate as base } from '@/data/generated/powersets/blaster/primary/water-blast/dehydrate';
+import { overrides } from '@/data/overrides/powersets/blaster/primary/water-blast/dehydrate';
 
-export const Dehydrate: Power = {
-  "name": "Dehydrate",
-  "internalName": "Dehydrate",
-  "available": 11,
-  "description": "You rapidly dehydrate your target, causing Cold and Smashing damage, reducing their movement speed and defense as well as causing a measure of Cold damage over time. You are then healed over time for a moderate amount of health. Dehydrate grants 1 stack of Tidal Power if you have 2 or less. Dehydrate will consume all stacks of Tidal Power if you have 3, but the power's heal over time effect is increased by 50%.",
-  "shortHelp": "Ranged, DMG(Cold/Smash), Foe -Speed, -Defense, DoT(Cold), Self +Heal Over Time, +/- Tidal Power",
-  "icon": "waterblast_dehydrate.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 80,
-    "recharge": 8,
-    "endurance": 8.528,
-    "castTime": 1.87
-  },
-  "allowedEnhancements": [
-    "Slow",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Healing",
-    "Defense Debuff",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Accurate Healing",
-    "Blaster Archetype Sets",
-    "Defense Debuff",
-    "Healing",
-    "Ranged Damage",
-    "Slow Movement",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 0.25,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Cold",
-      "scale": 0.75,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Cold",
-      "scale": 0.1488,
-      "table": "Ranged_Damage",
-      "duration": 4.1,
-      "tickRate": 1
-    },
-    {
-      "type": "Heal",
-      "scale": 0.275,
-      "table": "Ranged_HealSelf",
-      "duration": 3.1,
-      "tickRate": 1
-    },
-    {
-      "type": "Heal",
-      "scale": 0.4125,
-      "table": "Ranged_HealSelf",
-      "duration": 3.1,
-      "tickRate": 1
-    }
-  ],
-  "effects": {
-    "defenseDebuff": {
-      "scale": 1,
-      "table": "Ranged_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 8
-    },
-    "buffDuration": 8
-  }
-};
+export const Dehydrate: Power = withOverrides(base, overrides);

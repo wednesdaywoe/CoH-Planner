@@ -1,132 +1,16 @@
 /**
- * Gymnastics
- * Toggle: Self +Recharge, +DEF(All), +SPD, +Res(Slow, Knockback)
+ * Gymnastics — COMPOSED EXPORT
  *
- * Source: blaster_support/tactical_arrow/quickness.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs blaster_support tactical_arrow
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Gymnastics as base } from '@/data/generated/powersets/blaster/secondary/tactical-arrow/quickness';
+import { overrides } from '@/data/overrides/powersets/blaster/secondary/tactical-arrow/quickness';
 
-export const Gymnastics: Power = {
-  "name": "Gymnastics",
-  "internalName": "Quickness",
-  "available": 23,
-  "description": "Years of training have made you extremely agile and quick on your feet. This power slightly increases your defense, attack rate and movement speed, in addition of protecting you from knockback.Recharge: Moderate.",
-  "shortHelp": "Toggle: Self +Recharge, +DEF(All), +SPD, +Res(Slow, Knockback)",
-  "icon": "tacticalarrow_quickness.png",
-  "powerType": "Toggle",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 10,
-    "endurance": 0.13,
-    "activatePeriod": 0.5
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Run Speed",
-    "Recharge",
-    "Jump",
-    "Fly",
-    "Defense"
-  ],
-  "allowedSetCategories": [
-    "Defense Sets",
-    "Leaping",
-    "Leaping & Sprints",
-    "Running",
-    "Running & Sprints",
-    "Universal Travel"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "defenseBuff": {
-      "ranged": {
-        "scale": 0.25,
-        "table": "Melee_Buff_Def"
-      },
-      "melee": {
-        "scale": 0.25,
-        "table": "Melee_Buff_Def"
-      },
-      "aoe": {
-        "scale": 0.25,
-        "table": "Melee_Buff_Def"
-      },
-      "smashing": {
-        "scale": 0.25,
-        "table": "Melee_Buff_Def"
-      },
-      "lethal": {
-        "scale": 0.25,
-        "table": "Melee_Buff_Def"
-      },
-      "fire": {
-        "scale": 0.25,
-        "table": "Melee_Buff_Def"
-      },
-      "cold": {
-        "scale": 0.25,
-        "table": "Melee_Buff_Def"
-      },
-      "energy": {
-        "scale": 0.25,
-        "table": "Melee_Buff_Def"
-      },
-      "negative": {
-        "scale": 0.25,
-        "table": "Melee_Buff_Def"
-      },
-      "psionic": {
-        "scale": 0.25,
-        "table": "Melee_Buff_Def"
-      },
-      "toxic": {
-        "scale": 0.25,
-        "table": "Melee_Buff_Def"
-      }
-    },
-    "durations": {
-      "defenseBuff": 0.5,
-      "knockup": 0.5,
-      "knockback": 0.5,
-      "rechargeBuff": 0.5,
-      "movement": 0.5,
-      "debuffResistance": 0.5
-    },
-    "knockup": {
-      "scale": 9,
-      "table": "Melee_Ones"
-    },
-    "knockback": {
-      "scale": 9,
-      "table": "Melee_Ones"
-    },
-    "rechargeBuff": {
-      "scale": 0.2,
-      "table": "Melee_Ones"
-    },
-    "movement": {
-      "runSpeed": {
-        "scale": 0.1,
-        "table": "Melee_SpeedRunning"
-      },
-      "flySpeed": {
-        "scale": 0.1,
-        "table": "Melee_SpeedFlying"
-      }
-    },
-    "debuffResistance": {
-      "movement": {
-        "scale": 0.4,
-        "table": "Melee_Ones"
-      },
-      "recharge": {
-        "scale": 0.4,
-        "table": "Melee_Ones"
-      }
-    },
-    "buffDuration": 0.5
-  }
-};
+export const Gymnastics: Power = withOverrides(base, overrides);

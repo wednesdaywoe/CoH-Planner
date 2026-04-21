@@ -1,50 +1,16 @@
 /**
- * Build Momentum
- * Self +DMG, +To Hit, +Momentum
+ * Build Momentum — COMPOSED EXPORT
  *
- * Source: scrapper_melee/titan_weapons/build_up.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs scrapper_melee titan_weapons
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { BuildMomentum as base } from '@/data/generated/powersets/scrapper/primary/titan-weapons/build-up';
+import { overrides } from '@/data/overrides/powersets/scrapper/primary/titan-weapons/build-up';
 
-export const BuildMomentum: Power = {
-  "name": "Build Momentum",
-  "internalName": "Build_Up",
-  "available": 7,
-  "description": "Grants you momentum, moderately increases the amount of damage you deal for a few seconds and slightly increases your chance to hit. Build Momentum grants you Momentum for 10 seconds and it replaces any remaining Momentum you may still have.",
-  "shortHelp": "Self +DMG, +To Hit, +Momentum",
-  "icon": "titanweapons_buildup.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 90,
-    "endurance": 5.2,
-    "castTime": 1.17
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "ToHit"
-  ],
-  "allowedSetCategories": [
-    "To Hit Buff"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "tohitBuff": {
-      "scale": 2,
-      "table": "Melee_Buff_ToHit"
-    },
-    "durations": {
-      "tohitBuff": 10,
-      "damageBuff": 10
-    },
-    "damageBuff": {
-      "scale": 5,
-      "table": "Melee_Buff_Dmg"
-    },
-    "buffDuration": 10
-  }
-};
+export const BuildMomentum: Power = withOverrides(base, overrides);

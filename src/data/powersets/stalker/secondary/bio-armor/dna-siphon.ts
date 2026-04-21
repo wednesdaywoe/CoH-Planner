@@ -1,71 +1,16 @@
 /**
- * DNA Siphon
- * Click, PBAoE Minor DMG(Lethal/Toxic) Foe -Regen, Taunt, Self +HP, +End, +Special
+ * DNA Siphon — COMPOSED EXPORT
  *
- * Source: stalker_defense/bio_organic_armor/dna_siphon.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs stalker_defense bio_organic_armor
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { DNASiphon as base } from '@/data/generated/powersets/stalker/secondary/bio-armor/dna-siphon';
+import { overrides } from '@/data/overrides/powersets/stalker/secondary/bio-armor/dna-siphon';
 
-export const DNASiphon: Power = {
-  "name": "DNA Siphon",
-  "internalName": "DNA_Siphon",
-  "available": 23,
-  "description": "You can siphon genetic material from nearby enemies, causing a minor amount of Lethal damage and a minor amount of Toxic damage over time. Living enemies will provide the user with a small boost to health and endurance. These foes will have their regeneration rate reduced for a short period of time. Defeated enemies provide a weaker sample of material and thus will boost recovery and regeneration for a short while. While Efficient Adaptation is active, this power will grant bonus regeneration and recovery per defeated target hit. While Defensive Adaptation is active, this power will grant bonus health per living target hit. While Offensive Adaptation is active this power's regeneration debuff is increased in effectiveness.Damage: Minor.Recharge: Long.",
-  "shortHelp": "Click, PBAoE Minor DMG(Lethal/Toxic) Foe -Regen, Taunt, Self +HP, +End, +Special",
-  "icon": "bioorganicarmor_dnasiphon.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "radius": 20,
-    "recharge": 90,
-    "endurance": 13,
-    "castTime": 1.67,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "EnduranceModification",
-    "EnduranceReduction",
-    "Recharge",
-    "Healing",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate Healing",
-    "Endurance Modification",
-    "Healing",
-    "Melee AoE Damage",
-    "Stalker Archetype Sets",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Lethal",
-      "scale": 0.2,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Toxic",
-      "scale": 0.1,
-      "table": "Melee_Damage",
-      "duration": 2,
-      "tickRate": 1
-    },
-    {
-      "type": "Heal",
-      "scale": 1.25,
-      "table": "Melee_HealSelf"
-    }
-  ],
-  "effects": {
-    "enduranceGain": {
-      "scale": 5,
-      "table": "Melee_Ones",
-      "perTarget": 5
-    }
-  }
-};
+export const DNASiphon: Power = withOverrides(base, overrides);

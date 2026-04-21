@@ -1,50 +1,16 @@
 /**
- * Concentration
- * Self +DMG, +To Hit
+ * Concentration — COMPOSED EXPORT
  *
- * Source: scrapper_melee/psionic_melee/concentration.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs scrapper_melee psionic_melee
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Concentration as base } from '@/data/generated/powersets/scrapper/primary/psionic-melee/concentration';
+import { overrides } from '@/data/overrides/powersets/scrapper/primary/psionic-melee/concentration';
 
-export const Concentration: Power = {
-  "name": "Concentration",
-  "internalName": "Concentration",
-  "available": 5,
-  "description": "Greatly boosts your attacks for a few seconds. Slightly increases chance to hit.",
-  "shortHelp": "Self +DMG, +To Hit",
-  "icon": "psionicmelee_concentration.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 90,
-    "endurance": 5.2,
-    "castTime": 1.17
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "ToHit"
-  ],
-  "allowedSetCategories": [
-    "To Hit Buff"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "tohitBuff": {
-      "scale": 2,
-      "table": "Melee_Buff_ToHit"
-    },
-    "durations": {
-      "tohitBuff": 10,
-      "damageBuff": 10
-    },
-    "damageBuff": {
-      "scale": 8,
-      "table": "Melee_Buff_Dmg"
-    },
-    "buffDuration": 10
-  }
-};
+export const Concentration: Power = withOverrides(base, overrides);

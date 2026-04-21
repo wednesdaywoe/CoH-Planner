@@ -1,68 +1,16 @@
 /**
- * Time Wall
- * Ranged, DMG(Energy), Foe Immobilize, -SPD, -Recharge, -Regen, Special
+ * Time Wall — COMPOSED EXPORT
  *
- * Source: blaster_support/time_manipulation/time_wall.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs blaster_support time_manipulation
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { TimeWall as base } from '@/data/generated/powersets/blaster/secondary/temporal-manipulation/time-wall';
+import { overrides } from '@/data/overrides/powersets/blaster/secondary/temporal-manipulation/time-wall';
 
-export const TimeWall: Power = {
-  "name": "Time Wall",
-  "internalName": "Time_Wall",
-  "available": 0,
-  "description": "You create a time barrier to immobilize a single enemy. Enemies behind this barrier will have time slow down around them reducing their attack rate. Enemies that are strong enough to cross the barrier will still have their movement speed reduced. Time is slowed to such an extreme that their wounds will take longer to heal, reducing their regeneration rate. Time Wall applies the Delayed effect on its target. Damage, debuff and control effects from other Temporal Manipulation powers are increased on targets affected by Delayed.Damage: Moderate.Recharge: Fast.",
-  "shortHelp": "Ranged, DMG(Energy), Foe Immobilize, -SPD, -Recharge, -Regen, Special",
-  "icon": "timemanipulation_timewall.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 60,
-    "recharge": 4,
-    "endurance": 7.8,
-    "castTime": 1.6
-  },
-  "allowedEnhancements": [
-    "Slow",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Immobilize",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Blaster Archetype Sets",
-    "Immobilize",
-    "Ranged Damage",
-    "Slow Movement",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Energy",
-    "scale": 1,
-    "table": "Melee_Damage"
-  },
-  "effects": {
-    "immobilize": {
-      "mag": 3,
-      "scale": 15,
-      "table": "Ranged_Immobilize"
-    },
-    "regenDebuff": {
-      "scale": 0.25,
-      "table": "Ranged_Ones"
-    },
-    "durations": {
-      "regenDebuff": 20,
-      "damageBuff": 9.1
-    },
-    "damageBuff": {
-      "scale": 0.106,
-      "table": "Ranged_Ones"
-    },
-    "buffDuration": 20
-  }
-};
+export const TimeWall: Power = withOverrides(base, overrides);

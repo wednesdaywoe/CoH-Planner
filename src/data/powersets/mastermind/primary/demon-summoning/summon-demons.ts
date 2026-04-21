@@ -1,58 +1,16 @@
 /**
- * Summon Demons
- * Summon Demons
+ * Summon Demons — COMPOSED EXPORT
  *
- * Source: mastermind_summon/demon_summoning/summon_demons.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs mastermind_summon demon_summoning
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { SummonDemons as base } from '@/data/generated/powersets/mastermind/primary/demon-summoning/summon-demons';
+import { overrides } from '@/data/overrides/powersets/mastermind/primary/demon-summoning/summon-demons';
 
-export const SummonDemons: Power = {
-  "name": "Summon Demons",
-  "internalName": "Summon_Demons",
-  "available": 11,
-  "description": "Summons forth one to two Demons (depending on your level) to do your bidding. One is cloaked in hellfire and has skin as hard as stone while the other manipulates flame.You may only have 2 Demons under your control at any given time. If you attempt to call more Demons, you can only replace the ones you have lost in battle. If you already have your maximum allowed number, the power will fail.",
-  "shortHelp": "Summon Demons",
-  "icon": "demonsummoning_summondemons.png",
-  "powerType": "Click",
-  "targetType": "Location",
-  "effectArea": "Location",
-  "stats": {
-    "accuracy": 1,
-    "range": 60,
-    "recharge": 10,
-    "endurance": 9.62,
-    "castTime": 2
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Knockback",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Knockback",
-    "Mastermind Archetype Sets",
-    "Pet Damage",
-    "Recharge Intensive Pets",
-    "Resist Damage",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "isPseudoPet": false,
-      "copyBoosts": true,
-      "entities": [
-        {
-          "entity": "MastermindPets_Ember_Demon",
-          "count": 1
-        },
-        {
-          "entity": "MastermindPets_Hellfire_Gargoyle",
-          "count": 1
-        }
-      ]
-    }
-  }
-};
+export const SummonDemons: Power = withOverrides(base, overrides);

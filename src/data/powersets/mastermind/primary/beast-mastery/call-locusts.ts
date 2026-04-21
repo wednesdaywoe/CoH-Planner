@@ -1,64 +1,16 @@
 /**
- * Call Ravens
- * Ranged (Cone), Moderate DoT(Lethal), Foe -Speed, -Defense, -Fly
+ * Call Ravens — COMPOSED EXPORT
  *
- * Source: mastermind_summon/beast_mastery/call_locusts.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs mastermind_summon beast_mastery
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { CallRavens as base } from '@/data/generated/powersets/mastermind/primary/beast-mastery/call-locusts';
+import { overrides } from '@/data/overrides/powersets/mastermind/primary/beast-mastery/call-locusts';
 
-export const CallRavens: Power = {
-  "name": "Call Ravens",
-  "internalName": "Call_Locusts",
-  "available": 7,
-  "description": "You command an unkindness of ravens to quickly assault and harass your foes. Your foes will suffer Moderate Lethal damage over time and have their speed and defense reduced. This power has a high chance at granting your pets a stack of Pack Mentality.Apex Predator:Using this power will grant you and your summoned beasts an Accuracy and HP buff for 30 seconds. This does not stack from the same power.",
-  "shortHelp": "Ranged (Cone), Moderate DoT(Lethal), Foe -Speed, -Defense, -Fly",
-  "icon": "beastmastery_calllocusts.png",
-  "powerType": "Click",
-  "effectArea": "Cone",
-  "stats": {
-    "accuracy": 1.155,
-    "range": 40,
-    "radius": 40,
-    "arc": 0.5236,
-    "recharge": 14,
-    "endurance": 13.52,
-    "castTime": 2.17,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "Slow",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Defense Debuff",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Mastermind Archetype Sets",
-    "Accurate Defense Debuff",
-    "Defense Debuff",
-    "Ranged AoE Damage",
-    "Slow Movement",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 0.3036,
-    "table": "Ranged_Damage",
-    "duration": 3.1,
-    "tickRate": 0.75
-  },
-  "effects": {
-    "defenseDebuff": {
-      "scale": 1,
-      "table": "Ranged_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 10
-    },
-    "buffDuration": 10
-  }
-};
+export const CallRavens: Power = withOverrides(base, overrides);

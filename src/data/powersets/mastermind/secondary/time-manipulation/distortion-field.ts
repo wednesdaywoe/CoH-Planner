@@ -1,47 +1,16 @@
 /**
- * Distortion Field
- * Ranged (Location AoE), Foe(-Recharge, -Speed), Chance for Hold
+ * Distortion Field — COMPOSED EXPORT
  *
- * Source: mastermind_buff/time_manipulation/distortion_field.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs mastermind_buff time_manipulation
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { DistortionField as base } from '@/data/generated/powersets/mastermind/secondary/time-manipulation/distortion-field';
+import { overrides } from '@/data/overrides/powersets/mastermind/secondary/time-manipulation/distortion-field';
 
-export const DistortionField: Power = {
-  "name": "Distortion Field",
-  "internalName": "Distortion_Field",
-  "available": 15,
-  "description": "You can choose an area to slow the flow of time down to a crawl. Enemies who enter the field will have their attack rate and speed slowed dramatically. In addition, affected enemies might become held as they are frozen in time. Targets affected by Time Crawl will have the chance to be held increased.Recharge: Slow.",
-  "shortHelp": "Ranged (Location AoE), Foe(-Recharge, -Speed), Chance for Hold",
-  "icon": "timemanipulation_distortionfield.png",
-  "powerType": "Click",
-  "targetType": "Location",
-  "effectArea": "Location",
-  "stats": {
-    "accuracy": 1,
-    "range": 70,
-    "recharge": 60,
-    "endurance": 18.2,
-    "castTime": 2.03
-  },
-  "allowedEnhancements": [
-    "Hold",
-    "Slow",
-    "EnduranceReduction",
-    "Range",
-    "Recharge"
-  ],
-  "allowedSetCategories": [
-    "Holds",
-    "Slow Movement"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_DistortionField_Mastermind",
-      "duration": 45,
-      "copyBoosts": true
-    }
-  }
-};
+export const DistortionField: Power = withOverrides(base, overrides);

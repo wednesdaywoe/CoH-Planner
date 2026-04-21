@@ -1,45 +1,16 @@
 /**
- * Psionic Lance
- * Sniper, Extreme DMG(Psionic), Target -Recharge
+ * Psionic Lance — COMPOSED EXPORT
  *
- * Source: dominator_assault/psionic_assault/psionic_lance.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs dominator_assault psionic_assault
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { PsionicLance as base } from '@/data/generated/powersets/dominator/secondary/psionic-assault/psionic-lance';
+import { overrides } from '@/data/overrides/powersets/dominator/secondary/psionic-assault/psionic-lance';
 
-export const PsionicLance: Power = {
-  "name": "Psionic Lance",
-  "internalName": "Psionic_Lance",
-  "available": 27,
-  "description": "This extremely long range Psionic attack has a bonus to Accuracy, and can Slow a target's attack rate. This is a sniper attack, and is best fired from a distance, as it can be interrupted. If you are engaged in battle this attack becomes instant-cast. If you are not engaged, it will do bonus damage.Damage: Extreme.Recharge: Slow.",
-  "shortHelp": "Sniper, Extreme DMG(Psionic), Target -Recharge",
-  "icon": "psionicassault_psioniclance.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 175,
-    "recharge": 20,
-    "endurance": 18.512,
-    "castTime": 1.33
-  },
-  "allowedEnhancements": [
-    "Interrupt",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Ranged Damage",
-    "Sniper Attacks",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Psionic",
-    "scale": 4.5,
-    "table": "Ranged_Damage"
-  }
-};
+export const PsionicLance: Power = withOverrides(base, overrides);

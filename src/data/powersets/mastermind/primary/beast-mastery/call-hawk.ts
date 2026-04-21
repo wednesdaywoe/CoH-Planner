@@ -1,57 +1,16 @@
 /**
- * Call Hawk
- * Ranged, Moderate DMG(Lethal), Foe -To Hit, Knockdown, -Fly
+ * Call Hawk — COMPOSED EXPORT
  *
- * Source: mastermind_summon/beast_mastery/call_hawk.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs mastermind_summon beast_mastery
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { CallHawk as base } from '@/data/generated/powersets/mastermind/primary/beast-mastery/call-hawk';
+import { overrides } from '@/data/overrides/powersets/mastermind/primary/beast-mastery/call-hawk';
 
-export const CallHawk: Power = {
-  "name": "Call Hawk",
-  "internalName": "Call_Hawk",
-  "available": 1,
-  "description": "You call forth a hawk ally to swoop in and viciously peck at your target causing High Lethal damage. The attack often catches foes off their guard and can knock them down as well as reducing their chance to hit. This power has a good chance at granting your pets a stack of Pack Mentality.Apex Predator:Using this power will grant you and your summoned beasts an Accuracy and HP buff for 30 seconds. This does not stack from the same power.",
-  "shortHelp": "Ranged, Moderate DMG(Lethal), Foe -To Hit, Knockdown, -Fly",
-  "icon": "beastmastery_callhawk.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 80,
-    "recharge": 6,
-    "endurance": 6.86,
-    "castTime": 1.67
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Knockback",
-    "ToHit Debuff",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Mastermind Archetype Sets",
-    "Accurate To-Hit Debuff",
-    "Knockback",
-    "Ranged Damage",
-    "To Hit Debuff",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 0.3256,
-    "table": "Ranged_Damage",
-    "duration": 1.3,
-    "tickRate": 0.3
-  },
-  "effects": {
-    "knockback": {
-      "scale": 0.67,
-      "table": "Ranged_Ones"
-    }
-  }
-};
+export const CallHawk: Power = withOverrides(base, overrides);

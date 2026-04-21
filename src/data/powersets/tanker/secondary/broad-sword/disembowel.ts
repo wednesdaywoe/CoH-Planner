@@ -1,64 +1,16 @@
 /**
- * Disembowel
- * Melee, DMG(Lethal), Knockup, Foe -DEF
+ * Disembowel — COMPOSED EXPORT
  *
- * Source: tanker_melee/broad_sword/disembowel.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs tanker_melee broad_sword
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Disembowel as base } from '@/data/generated/powersets/tanker/secondary/broad-sword/disembowel';
+import { overrides } from '@/data/overrides/powersets/tanker/secondary/broad-sword/disembowel';
 
-export const Disembowel: Power = {
-  "name": "Disembowel",
-  "internalName": "Disembowel",
-  "available": 27,
-  "description": "You perform a powerful Disemboweling maneuver that deals a great amount of damage, and can knock a target up into the air. This attack can reduce a target's Defense, making him easier to hit.",
-  "shortHelp": "Melee, DMG(Lethal), Knockup, Foe -DEF",
-  "icon": "sword_disembowel.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1.05,
-    "range": 7,
-    "recharge": 10,
-    "endurance": 10.192,
-    "castTime": 1.5
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "EnduranceReduction",
-    "Recharge",
-    "Knockback",
-    "Defense Debuff",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Defense Debuff",
-    "Knockback",
-    "Melee Damage",
-    "Tanker Archetype Sets",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 1.96,
-    "table": "Melee_Damage"
-  },
-  "effects": {
-    "knockup": {
-      "scale": 2,
-      "table": "Melee_Knockback"
-    },
-    "defenseDebuff": {
-      "scale": 1,
-      "table": "Melee_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 10
-    },
-    "buffDuration": 10
-  }
-};
+export const Disembowel: Power = withOverrides(base, overrides);

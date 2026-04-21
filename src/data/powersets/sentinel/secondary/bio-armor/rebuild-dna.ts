@@ -1,48 +1,16 @@
 /**
- * Rebuild DNA
- * Self +HP, +End, +Special
+ * Rebuild DNA — COMPOSED EXPORT
  *
- * Source: sentinel_defense/bio_organic_armor/rebuild_dna.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs sentinel_defense bio_organic_armor
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { RebuildDNA as base } from '@/data/generated/powersets/sentinel/secondary/bio-armor/rebuild-dna';
+import { overrides } from '@/data/overrides/powersets/sentinel/secondary/bio-armor/rebuild-dna';
 
-export const RebuildDNA: Power = {
-  "name": "Rebuild DNA",
-  "internalName": "Rebuild_DNA",
-  "available": 19,
-  "description": "You rebuild your genetic makeup to restore some of your health and endurance.*While Offensive Adaptation is active, this power's will increase your perception.*While Defensive Adaptation is active, this power will grant bonus health.*While Efficient Adaptation is active, this power will grant bonus endurance.Bonuses granted from Adaptations are unenhanceable.",
-  "shortHelp": "Self +HP, +End, +Special",
-  "icon": "bioorganicarmor_rebuilddna.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 90,
-    "endurance": 13,
-    "castTime": 0.73
-  },
-  "allowedEnhancements": [
-    "EnduranceModification",
-    "EnduranceReduction",
-    "Recharge",
-    "Healing"
-  ],
-  "allowedSetCategories": [
-    "Endurance Modification",
-    "Healing"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Heal",
-    "scale": 3,
-    "table": "Melee_HealSelf"
-  },
-  "effects": {
-    "enduranceGain": {
-      "scale": 25,
-      "table": "Melee_Ones"
-    }
-  }
-};
+export const RebuildDNA: Power = withOverrides(base, overrides);

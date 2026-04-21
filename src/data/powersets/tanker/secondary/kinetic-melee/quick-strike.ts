@@ -1,60 +1,16 @@
 /**
- * Quick Strike
- * Melee, DMG(Smash/Energy), Foe -DMG, Knockdown
+ * Quick Strike — COMPOSED EXPORT
  *
- * Source: tanker_melee/kinetic_attack/quick_strike.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs tanker_melee kinetic_attack
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { QuickStrike as base } from '@/data/generated/powersets/tanker/secondary/kinetic-melee/quick-strike';
+import { overrides } from '@/data/overrides/powersets/tanker/secondary/kinetic-melee/quick-strike';
 
-export const QuickStrike: Power = {
-  "name": "Quick Strike",
-  "internalName": "Quick_Strike",
-  "available": 0,
-  "description": "A quick attack that sometimes knock foes down. Fast, but low damage.",
-  "shortHelp": "Melee, DMG(Smash/Energy), Foe -DMG, Knockdown",
-  "icon": "kineticattack_quickstrike.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 7,
-    "recharge": 3,
-    "endurance": 4.368,
-    "castTime": 0.83
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "EnduranceReduction",
-    "Recharge",
-    "Knockback",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Knockback",
-    "Melee Damage",
-    "Tanker Archetype Sets",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 0.63,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.21,
-      "table": "Melee_Damage"
-    }
-  ],
-  "effects": {
-    "knockback": {
-      "scale": 0.7,
-      "table": "Melee_Ones"
-    }
-  }
-};
+export const QuickStrike: Power = withOverrides(base, overrides);

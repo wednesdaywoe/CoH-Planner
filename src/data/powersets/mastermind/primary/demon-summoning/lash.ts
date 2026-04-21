@@ -1,98 +1,16 @@
 /**
- * Lash
- * Close, Moderate DMG(Fire), Foe -Res, Knockdown, Minor DoT(Toxic)
+ * Lash — COMPOSED EXPORT
  *
- * Source: mastermind_summon/demon_summoning/lash.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs mastermind_summon demon_summoning
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Lash as base } from '@/data/generated/powersets/mastermind/primary/demon-summoning/lash';
+import { overrides } from '@/data/overrides/powersets/mastermind/primary/demon-summoning/lash';
 
-export const Lash: Power = {
-  "name": "Lash",
-  "internalName": "Lash",
-  "available": 1,
-  "description": "You channel unholy energies into your whip and Lash out at your foe dealing high fire damage causing toxic damage over time. Lash has longer range than most melee attacks will reduce the target's damage resistance and also has a chance to knockdown your target.",
-  "shortHelp": "Close, Moderate DMG(Fire), Foe -Res, Knockdown, Minor DoT(Toxic)",
-  "icon": "demonsummoning_lash.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 20,
-    "recharge": 5,
-    "endurance": 6.03,
-    "castTime": 1.8
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Knockback",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Mastermind Archetype Sets",
-    "Knockback",
-    "Melee Damage",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Fire",
-      "scale": 1.064,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Toxic",
-      "scale": 0.21,
-      "table": "Ranged_Damage",
-      "duration": 3.1,
-      "tickRate": 1
-    }
-  ],
-  "effects": {
-    "knockback": {
-      "scale": 0.64,
-      "table": "Ranged_Knockback"
-    },
-    "resistanceDebuff": {
-      "smashing": {
-        "scale": 1.25,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "lethal": {
-        "scale": 1.25,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "fire": {
-        "scale": 1.25,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "cold": {
-        "scale": 1.25,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "energy": {
-        "scale": 1.25,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "negative": {
-        "scale": 1.25,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "psionic": {
-        "scale": 1.25,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "toxic": {
-        "scale": 1.25,
-        "table": "Ranged_Debuff_Res_Dmg"
-      }
-    },
-    "durations": {
-      "resistanceDebuff": 6
-    },
-    "buffDuration": 6
-  }
-};
+export const Lash: Power = withOverrides(base, overrides);

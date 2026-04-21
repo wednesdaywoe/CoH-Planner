@@ -1,49 +1,16 @@
 /**
- * Gloom
- * Ranged, DoT(Negative), Foe -To Hit
+ * Gloom — COMPOSED EXPORT
  *
- * Source: corruptor_ranged/dark_blast/gloom.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs corruptor_ranged dark_blast
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Gloom as base } from '@/data/generated/powersets/corruptor/primary/dark-blast/gloom';
+import { overrides } from '@/data/overrides/powersets/corruptor/primary/dark-blast/gloom';
 
-export const Gloom: Power = {
-  "name": "Gloom",
-  "internalName": "Gloom",
-  "available": 0,
-  "description": "Gloom slowly drains a target of life, while reducing their chance to hit. Slower than Dark Blast, but deals more damage over time.",
-  "shortHelp": "Ranged, DoT(Negative), Foe -To Hit",
-  "icon": "darkcast_souldrain.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 80,
-    "recharge": 8,
-    "endurance": 8.528,
-    "castTime": 1.1
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "ToHit Debuff",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate To-Hit Debuff",
-    "Corruptor Archetype Sets",
-    "Ranged Damage",
-    "To Hit Debuff",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Negative",
-    "scale": 0.22,
-    "table": "Ranged_Damage",
-    "duration": 3.6,
-    "tickRate": 0.5
-  }
-};
+export const Gloom: Power = withOverrides(base, overrides);

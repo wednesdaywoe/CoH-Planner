@@ -1,47 +1,16 @@
 /**
- * Psychic Scream
- * Ranged (Cone), DMG(Psionic), Foe -Recharge
+ * Psychic Scream — COMPOSED EXPORT
  *
- * Source: corruptor_ranged/psychic_blast/psychic_scream.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs corruptor_ranged psychic_blast
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { PsychicScream as base } from '@/data/generated/powersets/corruptor/primary/psychic-blast/psychic-scream';
+import { overrides } from '@/data/overrides/powersets/corruptor/primary/psychic-blast/psychic-scream';
 
-export const PsychicScream: Power = {
-  "name": "Psychic Scream",
-  "internalName": "Psychic_Scream",
-  "available": 5,
-  "description": "This howl of Psionic energy resonates in the minds of all foes within its conical area of effect, inflicting moderate damage.",
-  "shortHelp": "Ranged (Cone), DMG(Psionic), Foe -Recharge",
-  "icon": "psychicblast_psychicscream.png",
-  "powerType": "Click",
-  "effectArea": "Cone",
-  "stats": {
-    "accuracy": 1,
-    "range": 60,
-    "radius": 60,
-    "arc": 0.5236,
-    "recharge": 12,
-    "endurance": 11.856,
-    "castTime": 1.87,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Corruptor Archetype Sets",
-    "Ranged AoE Damage",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Psionic",
-    "scale": 1.04,
-    "table": "Ranged_Damage"
-  }
-};
+export const PsychicScream: Power = withOverrides(base, overrides);

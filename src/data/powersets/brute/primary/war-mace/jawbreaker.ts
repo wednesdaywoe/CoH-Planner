@@ -1,53 +1,16 @@
 /**
- * Jawbreaker
- * Melee, High DMG(Smashing), Knockup
+ * Jawbreaker — COMPOSED EXPORT
  *
- * Source: brute_melee/war_mace/jawbreaker.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs brute_melee war_mace
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Jawbreaker as base } from '@/data/generated/powersets/brute/primary/war-mace/jawbreaker';
+import { overrides } from '@/data/overrides/powersets/brute/primary/war-mace/jawbreaker';
 
-export const Jawbreaker: Power = {
-  "name": "Jawbreaker",
-  "internalName": "Jawbreaker",
-  "available": 1,
-  "description": "This upward swing attempts to shatter your opponent's jaw, and has a chance to send him flying upwards into the air.Damage: High.Recharge: Moderate.",
-  "shortHelp": "Melee, High DMG(Smashing), Knockup",
-  "icon": "mace_jawbreaker.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1.05,
-    "range": 7,
-    "recharge": 10,
-    "endurance": 10.192,
-    "castTime": 1.83
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "EnduranceReduction",
-    "Recharge",
-    "Knockback",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Brute Archetype Sets",
-    "Knockback",
-    "Melee Damage",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 1.96,
-    "table": "Melee_Damage"
-  },
-  "effects": {
-    "knockup": {
-      "scale": 2,
-      "table": "Melee_Knockback"
-    }
-  }
-};
+export const Jawbreaker: Power = withOverrides(base, overrides);

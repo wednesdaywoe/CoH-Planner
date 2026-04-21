@@ -1,53 +1,16 @@
 /**
- * Punch
- * Melee, DMG(Smashing), Knockback
+ * Punch — COMPOSED EXPORT
  *
- * Source: brute_melee/super_strength/punch.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs brute_melee super_strength
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Punch as base } from '@/data/generated/powersets/brute/primary/super-strength/punch';
+import { overrides } from '@/data/overrides/powersets/brute/primary/super-strength/punch';
 
-export const Punch: Power = {
-  "name": "Punch",
-  "internalName": "Punch",
-  "available": 0,
-  "description": "Your Super Strength Punch can deal a moderate amount of damage, but most of all can knock your opponent off their feet, unable to attack again until they stand up.",
-  "shortHelp": "Melee, DMG(Smashing), Knockback",
-  "icon": "superstrength_punch.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 7,
-    "recharge": 4,
-    "endurance": 5.2,
-    "castTime": 1.2
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "EnduranceReduction",
-    "Recharge",
-    "Knockback",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Brute Archetype Sets",
-    "Knockback",
-    "Melee Damage",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 1,
-    "table": "Melee_Damage"
-  },
-  "effects": {
-    "knockback": {
-      "scale": 0.67,
-      "table": "Melee_Ones"
-    }
-  }
-};
+export const Punch: Power = withOverrides(base, overrides);

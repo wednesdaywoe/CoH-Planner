@@ -1,69 +1,16 @@
 /**
- * Hardened Carapace
- * Self Toggle, +Res(Lethal, Smash, Toxic, Disorient, Sleep), +Special
+ * Hardened Carapace — COMPOSED EXPORT
  *
- * Source: scrapper_defense/bio_organic_armor/hardened_carapace.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs scrapper_defense bio_organic_armor
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { HardenedCarapace as base } from '@/data/generated/powersets/scrapper/secondary/bio-armor/hardened-carapace';
+import { overrides } from '@/data/overrides/powersets/scrapper/secondary/bio-armor/hardened-carapace';
 
-export const HardenedCarapace: Power = {
-  "name": "Hardened Carapace",
-  "internalName": "Hardened_Carapace",
-  "available": 0,
-  "description": "With a little concentration you can cause your skin to become hard as stone, boosting your constitution to reject toxins and recovering from wounds more quickly. While active, this power will boost your resistance to Lethal, Smashing and Toxic damage, grant a minor amount of regeneration, and protection from Disorient and Sleep effects. If Efficient Adaptation is active, Hardened Carapace will grant an Endurance Discount. If Defensive Adaptation is active, Hardened Carapace will grant additional resistance to Lethal, Smashing and Toxic damage. While Offensive Adaptation is active, this power will grant a minor boost to damage. Bonuses granted from Adaptations are unenhanceable.Recharge: Very Fast.",
-  "shortHelp": "Self Toggle, +Res(Lethal, Smash, Toxic, Disorient, Sleep), +Special",
-  "icon": "bioorganicarmor_hardenedskin.png",
-  "powerType": "Toggle",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 2,
-    "endurance": 0.13,
-    "castTime": 0.67,
-    "activatePeriod": 0.5
-  },
-  "allowedEnhancements": [
-    "Resistance",
-    "EnduranceReduction",
-    "Recharge"
-  ],
-  "allowedSetCategories": [
-    "Resist Damage"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "resistance": {
-      "smashing": {
-        "scale": 2.5,
-        "table": "Melee_Res_Dmg"
-      },
-      "lethal": {
-        "scale": 2.5,
-        "table": "Melee_Res_Dmg"
-      },
-      "toxic": {
-        "scale": 2.5,
-        "table": "Melee_Res_Dmg"
-      }
-    },
-    "durations": {
-      "resistance": 0.75,
-      "stun": 0.75,
-      "sleep": 0.75
-    },
-    "stun": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "effectDuration": 0.75,
-    "sleep": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "buffDuration": 0.75
-  }
-};
+export const HardenedCarapace: Power = withOverrides(base, overrides);

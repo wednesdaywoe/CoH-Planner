@@ -1,56 +1,16 @@
 /**
- * Voltaic Sentinel
- * Summon Sentinel: Ranged, Moderate DMG(Energy), Foe -End
+ * Voltaic Sentinel — COMPOSED EXPORT
  *
- * Source: corruptor_ranged/electrical_blast/voltaic_sentinel.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs corruptor_ranged electrical_blast
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { VoltaicSentinel as base } from '@/data/generated/powersets/corruptor/primary/electrical-blast/voltaic-sentinel';
+import { overrides } from '@/data/overrides/powersets/corruptor/primary/electrical-blast/voltaic-sentinel';
 
-export const VoltaicSentinel: Power = {
-  "name": "Voltaic Sentinel",
-  "internalName": "Voltaic_Sentinel",
-  "available": 21,
-  "description": "You can manifest a polarized electricity field that hovers above the ground and hurls bolts of electricity at nearby foes. Any enemy that passes near this Sentinel risks serious injury. The Sentinel is not alive and cannot be targeted or attacked by enemies. The Sentinel can fly and will follow you.",
-  "shortHelp": "Summon Sentinel: Ranged, Moderate DMG(Energy), Foe -End",
-  "icon": "electricalbolt_voltaicsentinal.png",
-  "powerType": "Toggle",
-  "targetType": "Location",
-  "effectArea": "Location",
-  "stats": {
-    "accuracy": 2,
-    "range": 60,
-    "recharge": 10,
-    "endurance": 0.52,
-    "castTime": 3.1,
-    "activatePeriod": 1
-  },
-  "allowedEnhancements": [
-    "EnduranceModification",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Corruptor Archetype Sets",
-    "Endurance Modification",
-    "Pet Damage",
-    "Recharge Intensive Pets",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "isPseudoPet": true,
-      "displayName": "Voltaic Sentinel",
-      "powers": [
-        "Pets.ResistAll_NoFly.ResistAll",
-        "Pets.VoltaicSentinel_PseudoPet.Electrical_Bolt",
-        "Pets.VoltaicSentinel_PseudoPet.Electrical_Field"
-      ],
-      "copyBoosts": true
-    }
-  }
-};
+export const VoltaicSentinel: Power = withOverrides(base, overrides);

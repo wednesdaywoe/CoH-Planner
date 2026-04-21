@@ -1,61 +1,16 @@
 /**
- * Focused Burst
- * Ranged, DMG(Smash/Energy), Foe Knockdown
+ * Focused Burst — COMPOSED EXPORT
  *
- * Source: tanker_melee/kinetic_attack/focused_burst.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs tanker_melee kinetic_attack
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { FocusedBurst as base } from '@/data/generated/powersets/tanker/secondary/kinetic-melee/focused-burst';
+import { overrides } from '@/data/overrides/powersets/tanker/secondary/kinetic-melee/focused-burst';
 
-export const FocusedBurst: Power = {
-  "name": "Focused Burst",
-  "internalName": "Focused_Burst",
-  "available": 27,
-  "description": "Projects a burst of focused power over a short distance. Focused Burst deals high damage and can possibly knock down your foe.",
-  "shortHelp": "Ranged, DMG(Smash/Energy), Foe Knockdown",
-  "icon": "kineticattack_focusedburst.png",
-  "powerType": "Click",
-  "effectArea": "Chain",
-  "stats": {
-    "accuracy": 1.0,
-    "range": 40,
-    "recharge": 8,
-    "endurance": 8.528,
-    "castTime": 2.0
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Knockback",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Knockback",
-    "Ranged Damage",
-    "Tanker Archetype Sets",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 1.23,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.41,
-      "table": "Melee_Damage"
-    }
-  ],
-  "effects": {
-    "knockback": {
-      "scale": 0.67,
-      "table": "Melee_Ones"
-    }
-  }
-};
+export const FocusedBurst: Power = withOverrides(base, overrides);

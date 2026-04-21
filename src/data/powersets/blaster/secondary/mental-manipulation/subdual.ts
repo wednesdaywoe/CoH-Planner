@@ -1,63 +1,16 @@
 /**
- * Subdual
- * Ranged, Moderate DOT(Psionic), Foe Immobilize
+ * Subdual — COMPOSED EXPORT
  *
- * Source: blaster_support/mental_manipulation/subdual.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs blaster_support mental_manipulation
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Subdual as base } from '@/data/generated/powersets/blaster/secondary/mental-manipulation/subdual';
+import { overrides } from '@/data/overrides/powersets/blaster/secondary/mental-manipulation/subdual';
 
-export const Subdual: Power = {
-  "name": "Subdual",
-  "internalName": "Subdual",
-  "available": 0,
-  "description": "Subdual deals moderate Psionic damage and may leave the targeted foe Immobilized for a brief time. Immobilized foes cannot move but can still attack.Damage: Light.Recharge: Fast.",
-  "shortHelp": "Ranged, Moderate DOT(Psionic), Foe Immobilize",
-  "icon": "mentalcontrol_subdue.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 80,
-    "recharge": 4,
-    "endurance": 7.8,
-    "castTime": 1.67
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Immobilize",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Blaster Archetype Sets",
-    "Immobilize",
-    "Ranged Damage",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Psionic",
-    "scale": 0.2,
-    "table": "Ranged_Damage",
-    "duration": 9.2,
-    "tickRate": 2
-  },
-  "effects": {
-    "immobilize": {
-      "mag": 3,
-      "scale": 15,
-      "table": "Ranged_Immobilize"
-    },
-    "damageBuff": {
-      "scale": 0.11,
-      "table": "Ranged_Ones"
-    },
-    "durations": {
-      "damageBuff": 9.17
-    },
-    "buffDuration": 9.17
-  }
-};
+export const Subdual: Power = withOverrides(base, overrides);

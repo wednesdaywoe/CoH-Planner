@@ -1,61 +1,16 @@
 /**
- * Dragon's Tail
- * PBAoE Melee, Light DMG(Smash), Foe Knockdown
+ * Dragon's Tail — COMPOSED EXPORT
  *
- * Source: blaster_support/martial_manipulation/dragons_tail.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs blaster_support martial_manipulation
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { DragonsTail as base } from '@/data/generated/powersets/blaster/secondary/martial-combat/dragons-tail';
+import { overrides } from '@/data/overrides/powersets/blaster/secondary/martial-combat/dragons-tail';
 
-export const DragonsTail: Power = {
-  "name": "Dragon's Tail",
-  "internalName": "Dragons_Tail",
-  "available": 15,
-  "description": "This low spinning kick deals moderate damage, but has a chance to hit all enemies in melee range. Successful hits may trip and knock down your opponents.Damage: Light.Recharge: Slow.",
-  "shortHelp": "PBAoE Melee, Light DMG(Smash), Foe Knockdown",
-  "icon": "martialmanipulation_dragonstail.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1.05,
-    "radius": 8,
-    "recharge": 14,
-    "endurance": 13.52,
-    "castTime": 1.5,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Knockback",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Blaster Archetype Sets",
-    "Knockback",
-    "Melee AoE Damage",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 1.18,
-    "table": "Melee_Damage"
-  },
-  "effects": {
-    "knockback": {
-      "scale": 0.67,
-      "table": "Melee_Ones"
-    },
-    "damageBuff": {
-      "scale": 0.045,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "damageBuff": 9
-    },
-    "buffDuration": 9
-  }
-};
+export const DragonsTail: Power = withOverrides(base, overrides);

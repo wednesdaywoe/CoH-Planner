@@ -18,7 +18,6 @@ import { Placate as Placate } from './placate';
 import { Parry as Parry } from './parry';
 import { Disembowel as Disembowel } from './disembowel';
 import { HeadSplitter as HeadSplitter } from './head-splitter';
-import { BoomerangSlice as BoomerangSlice } from './boomerang-slice';
 
 export const powerset: Powerset = {
   id: 'stalker/broad-sword',
@@ -37,7 +36,6 @@ export const powerset: Powerset = {
     Parry,
     Disembowel,
     HeadSplitter,
-    BoomerangSlice,
   ],
 };
 

@@ -1,54 +1,16 @@
 /**
- * Kuji-In Sha
- * Self Heal, Res(Toxic)
+ * Kuji-In Sha — COMPOSED EXPORT
  *
- * Source: scrapper_defense/ninjitsu/kuji-in_sha.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs scrapper_defense ninjitsu
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { KujiInSha as base } from '@/data/generated/powersets/scrapper/secondary/ninjitsu/kuji-in-sha';
+import { overrides } from '@/data/overrides/powersets/scrapper/secondary/ninjitsu/kuji-in-sha';
 
-export const KujiInSha: Power = {
-  "name": "Kuji-In Sha",
-  "internalName": "Kuji-In_Sha",
-  "available": 19,
-  "description": "Kuji-In Sha invokes the power of Sha, or healing. Focusing your inner power, you can heal your body of its wounds and leave yourself resistant to the effects of Toxic damage for a while.Recharge: Slow.",
-  "shortHelp": "Self Heal, Res(Toxic)",
-  "icon": "ninjitsu_kujinsha.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 60,
-    "endurance": 10.4,
-    "castTime": 1
-  },
-  "allowedEnhancements": [
-    "Resistance",
-    "EnduranceReduction",
-    "Recharge",
-    "Healing"
-  ],
-  "allowedSetCategories": [
-    "Healing",
-    "Resist Damage"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Heal",
-    "scale": 2.5,
-    "table": "Melee_HealSelf"
-  },
-  "effects": {
-    "resistance": {
-      "toxic": {
-        "scale": 2,
-        "table": "Melee_Res_Dmg"
-      }
-    },
-    "durations": {
-      "resistance": 60
-    },
-    "buffDuration": 60
-  }
-};
+export const KujiInSha: Power = withOverrides(base, overrides);

@@ -1,63 +1,16 @@
 /**
- * Frozen Aura
- * PBAoE, DMG(Cold), Foe Sleep
+ * Frozen Aura — COMPOSED EXPORT
  *
- * Source: brute_melee/ice_melee/frozen_aura.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs brute_melee ice_melee
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { FrozenAura as base } from '@/data/generated/powersets/brute/primary/ice-melee/frozen-aura';
+import { overrides } from '@/data/overrides/powersets/brute/primary/ice-melee/frozen-aura';
 
-export const FrozenAura: Power = {
-  "name": "Frozen Aura",
-  "internalName": "Frozen_Aura",
-  "available": 25,
-  "description": "Your mastery of cold enables you to dramatically lower the temperature immediately around you. When you perform a Frozen Aura, nearby foes will be frozen within a fragile casing of ice and suffer a moderate amount of cold damage. These frozen foes will break free if attacked. Frozen Aura deals moderate damage.Notes: The Sleep component of this power is Auto Hit against regular enemies, but a To Hit check is required to against AVs and players, as well as to make secondary effects apply.",
-  "shortHelp": "PBAoE, DMG(Cold), Foe Sleep",
-  "icon": "icyonslaught_frozenaura.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "radius": 10,
-    "recharge": 20,
-    "endurance": 18.512,
-    "castTime": 2.1,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "EnduranceReduction",
-    "Sleep",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Brute Archetype Sets",
-    "Melee AoE Damage",
-    "Sleep",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Cold",
-      "scale": 1.424,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Cold",
-      "scale": 1.424,
-      "table": "Melee_Damage"
-    }
-  ],
-  "effects": {
-    "sleep": {
-      "mag": 2,
-      "scale": 10,
-      "table": "Melee_Sleep"
-    }
-  }
-};
+export const FrozenAura: Power = withOverrides(base, overrides);

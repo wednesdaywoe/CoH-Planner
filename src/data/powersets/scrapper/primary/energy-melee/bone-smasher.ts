@@ -1,69 +1,16 @@
 /**
- * Bone Smasher
- * Melee, DMG(Smash/Energy), Disorient
+ * Bone Smasher — COMPOSED EXPORT
  *
- * Source: scrapper_melee/energy_melee/bone_smasher.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs scrapper_melee energy_melee
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { BoneSmasher as base } from '@/data/generated/powersets/scrapper/primary/energy-melee/bone-smasher';
+import { overrides } from '@/data/overrides/powersets/scrapper/primary/energy-melee/bone-smasher';
 
-export const BoneSmasher: Power = {
-  "name": "Bone Smasher",
-  "internalName": "Bone_Smasher",
-  "available": 1,
-  "description": "This melee attack deals a good amount of damage and has a good chance to Disorient the target.",
-  "shortHelp": "Melee, DMG(Smash/Energy), Disorient",
-  "icon": "powerpunch_bonesmasher.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 7,
-    "recharge": 8,
-    "endurance": 8.528,
-    "castTime": 1.27
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Stun",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Melee Damage",
-    "Scrapper Archetype Sets",
-    "Stuns",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Energy",
-      "scale": 1,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.64,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.64,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.64,
-      "table": "Melee_InherentDamage"
-    }
-  ],
-  "effects": {
-    "stun": {
-      "mag": 3,
-      "scale": 8,
-      "table": "Melee_Stun"
-    }
-  }
-};
+export const BoneSmasher: Power = withOverrides(base, overrides);

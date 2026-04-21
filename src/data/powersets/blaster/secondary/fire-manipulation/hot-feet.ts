@@ -1,55 +1,16 @@
 /**
- * Hot Feet
- * Toggle: PBAoE, DoT (Fire), Foe -SPD
+ * Hot Feet — COMPOSED EXPORT
  *
- * Source: blaster_support/fire_manipulation/hot_feet.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs blaster_support fire_manipulation
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { HotFeet as base } from '@/data/generated/powersets/blaster/secondary/fire-manipulation/hot-feet';
+import { overrides } from '@/data/overrides/powersets/blaster/secondary/fire-manipulation/hot-feet';
 
-export const HotFeet: Power = {
-  "name": "Hot Feet",
-  "internalName": "Hot_Feet",
-  "available": 29,
-  "description": "While active, you heat the earth in a large area around yourself. Enemy movement is Slowed as they attempt to flee the immediate area. All foes in the affected area may also suffer some damage over time. You cannot fly and must be near the ground to use this power.Damage: Minor(DoT).Recharge: Slow.",
-  "shortHelp": "Toggle: PBAoE, DoT (Fire), Foe -SPD",
-  "icon": "firemanipulation_hotfeet.png",
-  "powerType": "Toggle",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "radius": 20,
-    "recharge": 20,
-    "endurance": 2.08,
-    "castTime": 1.47,
-    "activatePeriod": 2,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "Slow",
-    "EnduranceReduction",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Blaster Archetype Sets",
-    "Melee AoE Damage",
-    "Slow Movement",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Fire",
-    "scale": 0.25,
-    "table": "Melee_Damage"
-  },
-  "effects": {
-    "fear": {
-      "mag": 3,
-      "scale": 4,
-      "table": "Melee_Ones"
-    }
-  }
-};
+export const HotFeet: Power = withOverrides(base, overrides);

@@ -1,50 +1,16 @@
 /**
- * Ice Storm
- * Ranged (Location AoE), DoT(Cold, Lethal), Foe -Recharge, -SPD
+ * Ice Storm — COMPOSED EXPORT
  *
- * Source: blaster_ranged/ice_blast/freezing_rain.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs blaster_ranged ice_blast
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { IceStorm as base } from '@/data/generated/powersets/blaster/primary/ice-blast/freezing-rain';
+import { overrides } from '@/data/overrides/powersets/blaster/primary/ice-blast/freezing-rain';
 
-export const IceStorm: Power = {
-  "name": "Ice Storm",
-  "internalName": "Freezing_Rain",
-  "available": 11,
-  "description": "Shred your foes with this Ice Storm. This power deals a lot of damage in a large area and can Slow all affected targets movement and attack speed.",
-  "shortHelp": "Ranged (Location AoE), DoT(Cold, Lethal), Foe -Recharge, -SPD",
-  "icon": "iceblast_freezingrain.png",
-  "powerType": "Click",
-  "targetType": "Location",
-  "effectArea": "Location",
-  "stats": {
-    "accuracy": 1,
-    "range": 60,
-    "recharge": 60,
-    "endurance": 15.6,
-    "castTime": 2.03
-  },
-  "allowedEnhancements": [
-    "Slow",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Blaster Archetype Sets",
-    "Ranged AoE Damage",
-    "Slow Movement",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_IceStorm",
-      "duration": 15,
-      "copyBoosts": true
-    }
-  }
-};
+export const IceStorm: Power = withOverrides(base, overrides);

@@ -1,67 +1,16 @@
 /**
- * Crippling Axe Kick
- * Melee, DMG(Smash), Foe Immobilize, -SPD, -Fly, -DEF
+ * Crippling Axe Kick — COMPOSED EXPORT
  *
- * Source: brute_melee/martial_arts/crippling_axe_kick.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs brute_melee martial_arts
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { CripplingAxeKick as base } from '@/data/generated/powersets/brute/primary/martial-arts/crippling-axe-kick';
+import { overrides } from '@/data/overrides/powersets/brute/primary/martial-arts/crippling-axe-kick';
 
-export const CripplingAxeKick: Power = {
-  "name": "Crippling Axe Kick",
-  "internalName": "Crippling_Axe_Kick",
-  "available": 17,
-  "description": "You can perform a Crippling Axe Kick that deals superior smashing damage, reduces the targets defense, may Immobilize, and Slowing their run speed. Crippling Axe Kick may also knock some flying entities out of the sky.",
-  "shortHelp": "Melee, DMG(Smash), Foe Immobilize, -SPD, -Fly, -DEF",
-  "icon": "martialarts_cripplinghookkick.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1.05,
-    "range": 7,
-    "recharge": 11,
-    "endurance": 11.024,
-    "castTime": 1.6
-  },
-  "allowedEnhancements": [
-    "Slow",
-    "Taunt",
-    "EnduranceReduction",
-    "Recharge",
-    "Immobilize",
-    "Defense Debuff",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Brute Archetype Sets",
-    "Defense Debuff",
-    "Immobilize",
-    "Melee Damage",
-    "Slow Movement",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 2.12,
-    "table": "Melee_Damage"
-  },
-  "effects": {
-    "immobilize": {
-      "mag": 2,
-      "scale": 10,
-      "table": "Melee_Immobilize"
-    },
-    "defenseDebuff": {
-      "scale": 1,
-      "table": "Melee_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 10
-    },
-    "buffDuration": 10
-  }
-};
+export const CripplingAxeKick: Power = withOverrides(base, overrides);

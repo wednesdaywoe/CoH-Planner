@@ -1,39 +1,16 @@
 /**
- * Tame Beasts
- * Ranged, Upgrade Beast Henchmen
+ * Tame Beasts — COMPOSED EXPORT
  *
- * Source: mastermind_summon/beast_mastery/tame_beasts.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs mastermind_summon beast_mastery
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { TameBeasts as base } from '@/data/generated/powersets/mastermind/primary/beast-mastery/tame-beasts';
+import { overrides } from '@/data/overrides/powersets/mastermind/primary/beast-mastery/tame-beasts';
 
-export const TameBeasts: Power = {
-  "name": "Tame Beasts",
-  "internalName": "Tame_Beasts",
-  "available": 25,
-  "description": "Tame Beasts will permanently teach the most deadly and ferocious powers to all of your Beast Henchmen. The Tamed Beasts will gain new abilities and powers. The powers gained are unique and dependent upon the type of Beast Henchman that is Tamed.Tame Beasts only works on your Beast Henchmen and you can only Tame your Beast Henchmen once with this power.",
-  "shortHelp": "Ranged, Upgrade Beast Henchmen",
-  "icon": "beastmastery_tamebeasts.png",
-  "powerType": "Click",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "range": 30,
-    "radius": 30,
-    "recharge": 0.5,
-    "endurance": 11.375,
-    "castTime": 1.07,
-    "maxTargets": 16
-  },
-  "allowedEnhancements": [
-    "Resistance",
-    "EnduranceReduction",
-    "Range",
-    "Healing"
-  ],
-  "allowedSetCategories": [
-    "Healing",
-    "Resist Damage"
-  ],
-  "maxSlots": 6
-};
+export const TameBeasts: Power = withOverrides(base, overrides);

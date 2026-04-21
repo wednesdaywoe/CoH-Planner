@@ -1,63 +1,16 @@
 /**
- * Slash
- * Melee, DMG(Lethal), Foe -DEF
+ * Slash — COMPOSED EXPORT
  *
- * Source: stalker_melee/broad_sword/slash.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs stalker_melee broad_sword
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Slash as base } from '@/data/generated/powersets/stalker/primary/broad-sword/slash';
+import { overrides } from '@/data/overrides/powersets/stalker/primary/broad-sword/slash';
 
-export const Slash: Power = {
-  "name": "Slash",
-  "internalName": "Slash",
-  "available": 0,
-  "description": "You perform a quick Slash that can reduce a target's Defense, making him easier to hit. This attack causes moderate damage, but has a quick recharge time.",
-  "shortHelp": "Melee, DMG(Lethal), Foe -DEF",
-  "icon": "sword_slash.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1.05,
-    "range": 7,
-    "recharge": 4,
-    "endurance": 5.2,
-    "castTime": 1.1
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Defense Debuff",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Defense Debuff",
-    "Melee Damage",
-    "Stalker Archetype Sets",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Lethal",
-      "scale": 1,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 1,
-      "table": "Melee_InherentDamage"
-    }
-  ],
-  "effects": {
-    "defenseDebuff": {
-      "scale": 1,
-      "table": "Melee_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 6
-    },
-    "buffDuration": 6
-  }
-};
+export const Slash: Power = withOverrides(base, overrides);

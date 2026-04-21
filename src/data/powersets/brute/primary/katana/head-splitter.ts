@@ -1,67 +1,16 @@
 /**
- * Golden Dragonfly
- * Melee, DMG(Lethal), Foe Knockback, -DEF
+ * Golden Dragonfly — COMPOSED EXPORT
  *
- * Source: brute_melee/katana/head_splitter.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs brute_melee katana
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { GoldenDragonfly as base } from '@/data/generated/powersets/brute/primary/katana/head-splitter';
+import { overrides } from '@/data/overrides/powersets/brute/primary/katana/head-splitter';
 
-export const GoldenDragonfly: Power = {
-  "name": "Golden Dragonfly",
-  "internalName": "Head_Splitter",
-  "available": 25,
-  "description": "You perform a devastating Golden Dragonfly attack that deals a massive amount of damage and can even knock a foe down to the ground and reduce their Defense. The power of this attack can actually extend a short distance through multiple foes.",
-  "shortHelp": "Melee, DMG(Lethal), Foe Knockback, -DEF",
-  "icon": "katana_headsplitter.png",
-  "powerType": "Click",
-  "effectArea": "Cone",
-  "stats": {
-    "accuracy": 1.05,
-    "range": 10,
-    "radius": 10,
-    "arc": 0.3491,
-    "recharge": 12,
-    "endurance": 11.856,
-    "castTime": 1.83,
-    "maxTargets": 5
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "EnduranceReduction",
-    "Recharge",
-    "Knockback",
-    "Defense Debuff",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Brute Archetype Sets",
-    "Defense Debuff",
-    "Knockback",
-    "Melee AoE Damage",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 2.28,
-    "table": "Melee_Damage"
-  },
-  "effects": {
-    "defenseDebuff": {
-      "scale": 1,
-      "table": "Melee_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 10
-    },
-    "knockback": {
-      "scale": 0.67,
-      "table": "Melee_Ones"
-    },
-    "buffDuration": 10
-  }
-};
+export const GoldenDragonfly: Power = withOverrides(base, overrides);

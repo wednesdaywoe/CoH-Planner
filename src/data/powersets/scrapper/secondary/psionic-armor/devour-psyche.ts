@@ -1,72 +1,16 @@
 /**
- * Devour Psyche
- * Cone Foe -Regen, -Heal, -Recovery; Self +Regen, +Recovery
+ * Devour Psyche — COMPOSED EXPORT
  *
- * Source: scrapper_defense/psionic_armor/devour_psyche.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs scrapper_defense psionic_armor
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { DevourPsyche as base } from '@/data/generated/powersets/scrapper/secondary/psionic-armor/devour-psyche';
+import { overrides } from '@/data/overrides/powersets/scrapper/secondary/psionic-armor/devour-psyche';
 
-export const DevourPsyche: Power = {
-  "name": "Devour Psyche",
-  "internalName": "Devour_Psyche",
-  "available": 15,
-  "description": "You Devour the Psyche of foes in front of you, weakening their Hit Point Regeneration and Endurance Recovery and boosting your own. Hitting any foe with this power will refresh all existing stacks you currently have.Notes: This power has adaptive recharge. It has a base recharge of 5 seconds and each affected foe will increase the recharge by 5.5 seconds for a maximum total of 60 seconds.",
-  "shortHelp": "Cone Foe -Regen, -Heal, -Recovery; Self +Regen, +Recovery",
-  "icon": "psionicarmor_devourpsyche.png",
-  "powerType": "Click",
-  "effectArea": "Cone",
-  "stats": {
-    "accuracy": 1,
-    "range": 40,
-    "radius": 40,
-    "arc": 1.5708,
-    "recharge": 60,
-    "endurance": 10.5,
-    "castTime": 1,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "EnduranceModification",
-    "EnduranceReduction",
-    "Recharge",
-    "Healing"
-  ],
-  "allowedSetCategories": [
-    "Endurance Modification",
-    "Healing"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "regenBuff": {
-      "scale": 0.85,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "regenBuff": 45,
-      "recoveryBuff": 45,
-      "resistance": 45,
-      "regenDebuff": 45,
-      "recoveryDebuff": 45
-    },
-    "recoveryBuff": {
-      "scale": 0.15000000000000002,
-      "table": "Melee_Ones"
-    },
-    "resistance": {
-      "heal": {
-        "scale": 0.25,
-        "table": "Melee_Ones"
-      }
-    },
-    "regenDebuff": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
-    "recoveryDebuff": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
-    "buffDuration": 45
-  }
-};
+export const DevourPsyche: Power = withOverrides(base, overrides);

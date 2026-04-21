@@ -1,53 +1,16 @@
 /**
- * Disorienting Shot
- * Ranged, DMG(Smash), Foe Disorient
+ * Disorienting Shot — COMPOSED EXPORT
  *
- * Source: sentinel_ranged/assault_rifle/beanbag.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs sentinel_ranged assault_rifle
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { DisorientingShot as base } from '@/data/generated/powersets/sentinel/primary/assault-rifle/beanbag';
+import { overrides } from '@/data/overrides/powersets/sentinel/primary/assault-rifle/beanbag';
 
-export const DisorientingShot: Power = {
-  "name": "Disorienting Shot",
-  "internalName": "Beanbag",
-  "available": 0,
-  "description": "Fires a single non lethal rubber bullet that can seriously Disorient a target. Deals average damage but renders most targets unable to attack for a good while.Damage: Moderate.Recharge: Fast.",
-  "shortHelp": "Ranged, DMG(Smash), Foe Disorient",
-  "icon": "assaultweapons_shotgunbeanbag.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1.05,
-    "range": 60,
-    "recharge": 5,
-    "endurance": 6.032,
-    "castTime": 0.9
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Stun",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Ranged Damage",
-    "Sentinel Archetype Sets",
-    "Stuns",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 1.16,
-    "table": "Ranged_Damage"
-  },
-  "effects": {
-    "stun": {
-      "mag": 3,
-      "scale": 2.5,
-      "table": "Ranged_Stun"
-    }
-  }
-};
+export const DisorientingShot: Power = withOverrides(base, overrides);

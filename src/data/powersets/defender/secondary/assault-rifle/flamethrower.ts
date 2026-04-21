@@ -1,49 +1,16 @@
 /**
- * Flamethrower
- * Ranged (Cone), DoT(Fire)
+ * Flamethrower — COMPOSED EXPORT
  *
- * Source: defender_ranged/assault_rifle/flamethrower.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs defender_ranged assault_rifle
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Flamethrower as base } from '@/data/generated/powersets/defender/secondary/assault-rifle/flamethrower';
+import { overrides } from '@/data/overrides/powersets/defender/secondary/assault-rifle/flamethrower';
 
-export const Flamethrower: Power = {
-  "name": "Flamethrower",
-  "internalName": "Flamethrower",
-  "available": 23,
-  "description": "Spews forth a cone of flames from underneath the barrel of your assault rifle, setting foes on fire. Very accurate and very deadly at medium range.",
-  "shortHelp": "Ranged (Cone), DoT(Fire)",
-  "icon": "assaultweapons_arflamethrower.png",
-  "powerType": "Click",
-  "effectArea": "Cone",
-  "stats": {
-    "accuracy": 1.3,
-    "range": 40,
-    "radius": 40,
-    "arc": 0.7854,
-    "recharge": 20,
-    "endurance": 18.512,
-    "castTime": 2.33,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Defender Archetype Sets",
-    "Ranged AoE Damage",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Fire",
-    "scale": 0.3872,
-    "table": "Ranged_Damage",
-    "duration": 4.7,
-    "tickRate": 1
-  }
-};
+export const Flamethrower: Power = withOverrides(base, overrides);

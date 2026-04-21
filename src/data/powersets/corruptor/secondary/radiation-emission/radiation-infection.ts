@@ -1,52 +1,16 @@
 /**
- * Radiation Infection
- * Toggle: Ranged (Targeted AoE), Foe -DEF, -To Hit
+ * Radiation Infection — COMPOSED EXPORT
  *
- * Source: corruptor_buff/radiation_emission/radiation_infection.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs corruptor_buff radiation_emission
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { RadiationInfection as base } from '@/data/generated/powersets/corruptor/secondary/radiation-emission/radiation-infection';
+import { overrides } from '@/data/overrides/powersets/corruptor/secondary/radiation-emission/radiation-infection';
 
-export const RadiationInfection: Power = {
-  "name": "Radiation Infection",
-  "internalName": "Radiation_Infection",
-  "available": 0,
-  "description": "Infects a targeted foe with deadly radiation, severely reducing his Accuracy and Defense. All foes that come near the target will also become infected. The Radiation Infection will last until you deactivate it, or until the original target is defeated.Recharge: Moderate.",
-  "shortHelp": "Toggle: Ranged (Targeted AoE), Foe -DEF, -To Hit",
-  "icon": "radiationpoisoning_enervatingfield.png",
-  "powerType": "Toggle",
-  "targetType": "Foe",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "range": 70,
-    "radius": 15,
-    "recharge": 8,
-    "endurance": 0.26,
-    "castTime": 1.5,
-    "activatePeriod": 0.5,
-    "maxTargets": 16
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "ToHit Debuff",
-    "Defense Debuff"
-  ],
-  "allowedSetCategories": [
-    "Defense Debuff",
-    "To Hit Debuff"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "defenseDebuff": {
-      "scale": 2.5,
-      "table": "Ranged_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 0.75
-    },
-    "buffDuration": 0.75
-  }
-};
+export const RadiationInfection: Power = withOverrides(base, overrides);

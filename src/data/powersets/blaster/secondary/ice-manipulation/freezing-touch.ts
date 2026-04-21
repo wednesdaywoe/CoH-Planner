@@ -1,82 +1,16 @@
 /**
- * Freezing Touch
- * Melee, High DMG(Cold), Foe Hold
+ * Freezing Touch — COMPOSED EXPORT
  *
- * Source: blaster_support/ice_manipulation/freezing_touch.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs blaster_support ice_manipulation
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { FreezingTouch as base } from '@/data/generated/powersets/blaster/secondary/ice-manipulation/freezing-touch';
+import { overrides } from '@/data/overrides/powersets/blaster/secondary/ice-manipulation/freezing-touch';
 
-export const FreezingTouch: Power = {
-  "name": "Freezing Touch",
-  "internalName": "Freezing_Touch",
-  "available": 27,
-  "description": "This Freezing Touch will encase a single foe in a block of ice. This will deal minor damage as well as freezing them in their tracks, leaving them cold and helpless.Damage: High.Recharge: Moderate.",
-  "shortHelp": "Melee, High DMG(Cold), Foe Hold",
-  "icon": "icemanipulation_freezingtouch.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 7,
-    "recharge": 10,
-    "endurance": 10.192,
-    "castTime": 1
-  },
-  "allowedEnhancements": [
-    "Hold",
-    "EnduranceReduction",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Blaster Archetype Sets",
-    "Holds",
-    "Melee Damage",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Cold",
-    "scale": 0.19,
-    "table": "Melee_Damage",
-    "duration": 10.1,
-    "tickRate": 1
-  },
-  "effects": {
-    "mezResistance": {
-      "knockup": {
-        "scale": 100,
-        "table": "Melee_Ones"
-      },
-      "knockback": {
-        "scale": 100,
-        "table": "Melee_Ones"
-      }
-    },
-    "durations": {
-      "mezResistance": 6,
-      "knockup": 6,
-      "knockback": 6
-    },
-    "knockup": {
-      "scale": 100,
-      "table": "Melee_Ones"
-    },
-    "knockback": {
-      "scale": 100,
-      "table": "Melee_Ones"
-    },
-    "hold": {
-      "mag": 3,
-      "scale": 10,
-      "table": "Melee_Immobilize"
-    },
-    "damageBuff": {
-      "scale": 0,
-      "table": "Ranged_Ones"
-    },
-    "buffDuration": 6
-  }
-};
+export const FreezingTouch: Power = withOverrides(base, overrides);

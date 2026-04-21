@@ -1,99 +1,16 @@
 /**
- * Strident Echo
- * Melee, DMG(Energy/Smash), Foe -Res(Debuffs), Chance for Hold
+ * Strident Echo — COMPOSED EXPORT
  *
- * Source: tanker_melee/sonic_melee/strident_echo.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs tanker_melee sonic_melee
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { StridentEcho as base } from '@/data/generated/powersets/tanker/secondary/sonic-melee/strident-echo';
+import { overrides } from '@/data/overrides/powersets/tanker/secondary/sonic-melee/strident-echo';
 
-export const StridentEcho: Power = {
-  "name": "Strident Echo",
-  "internalName": "Strident_Echo",
-  "available": 0,
-  "description": "Strident Echo deals minor damage over time. It has a low chance of causing a migraine, leaving the target shaking in pain and helpless. This power will inflict a strong additional damage over time effect against Attuned targets.",
-  "shortHelp": "Melee, DMG(Energy/Smash), Foe -Res(Debuffs), Chance for Hold",
-  "icon": "sonicmanipulation_stridentecho.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 7,
-    "recharge": 6,
-    "endurance": 6.864,
-    "castTime": 1.67
-  },
-  "allowedEnhancements": [
-    "Hold",
-    "Taunt",
-    "EnduranceReduction",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Holds",
-    "Melee Damage",
-    "Tanker Archetype Sets",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 0.11,
-      "table": "Melee_Damage",
-      "duration": 2.1,
-      "tickRate": 0.4
-    },
-    {
-      "type": "Energy",
-      "scale": 0.11,
-      "table": "Melee_Damage",
-      "duration": 2.1,
-      "tickRate": 0.4
-    }
-  ],
-  "effects": {
-    "debuffResistance": {
-      "defense": {
-        "scale": 0.8,
-        "table": "Melee_Debuff_Res_Dmg"
-      },
-      "endurance": {
-        "scale": 0.8,
-        "table": "Melee_Debuff_Res_Dmg"
-      },
-      "tohit": {
-        "scale": 0.8,
-        "table": "Melee_Debuff_Res_Dmg"
-      },
-      "movement": {
-        "scale": 0.8,
-        "table": "Melee_Debuff_Res_Dmg"
-      },
-      "regeneration": {
-        "scale": 0.8,
-        "table": "Melee_Debuff_Res_Dmg"
-      },
-      "recovery": {
-        "scale": 0.8,
-        "table": "Melee_Debuff_Res_Dmg"
-      },
-      "recharge": {
-        "scale": 0.8,
-        "table": "Melee_Debuff_Res_Dmg"
-      }
-    },
-    "durations": {
-      "debuffResistance": 15
-    },
-    "hold": {
-      "mag": 3,
-      "scale": 5,
-      "table": "Melee_Immobilize"
-    },
-    "buffDuration": 15
-  }
-};
+export const StridentEcho: Power = withOverrides(base, overrides);

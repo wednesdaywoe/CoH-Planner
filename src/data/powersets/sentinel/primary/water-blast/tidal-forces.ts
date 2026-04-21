@@ -1,55 +1,16 @@
 /**
- * Tidal Forces
- * Self +To Hit, +DMG, +Range, +Special
+ * Tidal Forces — COMPOSED EXPORT
  *
- * Source: sentinel_ranged/water_blast/tidal_forces.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs sentinel_ranged water_blast
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { TidalForces as base } from '@/data/generated/powersets/sentinel/primary/water-blast/tidal-forces';
+import { overrides } from '@/data/overrides/powersets/sentinel/primary/water-blast/tidal-forces';
 
-export const TidalForces: Power = {
-  "name": "Tidal Forces",
-  "internalName": "Tidal_Forces",
-  "available": 7,
-  "description": "You draw tidal energies into yourself thus boosting your chance to hit significantly, slightly boosting your damage, range and granting yourself +3 Tidal Power.",
-  "shortHelp": "Self +To Hit, +DMG, +Range, +Special",
-  "icon": "waterblast_tidalforces.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 90,
-    "endurance": 5.2,
-    "castTime": 1.17
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "ToHit"
-  ],
-  "allowedSetCategories": [
-    "To Hit Buff"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "tohitBuff": {
-      "scale": 5,
-      "table": "Melee_Buff_ToHit"
-    },
-    "durations": {
-      "tohitBuff": 10,
-      "rangeBuff": 10,
-      "damageBuff": 10
-    },
-    "rangeBuff": {
-      "scale": 0.333,
-      "table": "Melee_Ones"
-    },
-    "damageBuff": {
-      "scale": 2.5,
-      "table": "Melee_Buff_Dmg"
-    },
-    "buffDuration": 10
-  }
-};
+export const TidalForces: Power = withOverrides(base, overrides);

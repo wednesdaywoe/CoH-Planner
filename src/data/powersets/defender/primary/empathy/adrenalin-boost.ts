@@ -1,70 +1,16 @@
 /**
- * Adrenalin Boost
- * Ranged, Ally +End, +Regeneration, +Recharge, Res (Slow)
+ * Adrenalin Boost — COMPOSED EXPORT
  *
- * Source: defender_buff/empathy/adrenalin_boost.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs defender_buff empathy
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { AdrenalinBoost as base } from '@/data/generated/powersets/defender/primary/empathy/adrenalin-boost';
+import { overrides } from '@/data/overrides/powersets/defender/primary/empathy/adrenalin-boost';
 
-export const AdrenalinBoost: Power = {
-  "name": "Adrenalin Boost",
-  "internalName": "Adrenalin_Boost",
-  "available": 25,
-  "description": "Dramatically increases an ally's Endurance Recovery, Hit Point Regeneration and attack rate for 90 seconds. Also grants the target high resistance to slow effects.Recharge: Very Long.",
-  "shortHelp": "Ranged, Ally +End, +Regeneration, +Recharge, Res (Slow)",
-  "icon": "empathy_adrenalinboost.png",
-  "powerType": "Click",
-  "targetType": "Ally (Alive)",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 80,
-    "recharge": 300,
-    "endurance": 10.4,
-    "castTime": 2.27
-  },
-  "allowedEnhancements": [
-    "EnduranceModification",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Healing"
-  ],
-  "allowedSetCategories": [
-    "Endurance Modification",
-    "Healing"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "recoveryBuff": {
-      "scale": 8,
-      "table": "Ranged_Ones"
-    },
-    "durations": {
-      "recoveryBuff": 90,
-      "regenBuff": 90,
-      "rechargeBuff": 90,
-      "debuffResistance": 90
-    },
-    "regenBuff": {
-      "scale": 5,
-      "table": "Ranged_Ones"
-    },
-    "rechargeBuff": {
-      "scale": 1,
-      "table": "Ranged_Ones"
-    },
-    "debuffResistance": {
-      "movement": {
-        "scale": 0.8,
-        "table": "Ranged_Ones"
-      },
-      "recharge": {
-        "scale": 0.8,
-        "table": "Ranged_Ones"
-      }
-    },
-    "buffDuration": 90
-  }
-};
+export const AdrenalinBoost: Power = withOverrides(base, overrides);

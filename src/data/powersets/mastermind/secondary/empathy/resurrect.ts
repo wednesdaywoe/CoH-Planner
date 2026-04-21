@@ -1,45 +1,16 @@
 /**
- * Resurrect
- * Ally Rez
+ * Resurrect — COMPOSED EXPORT
  *
- * Source: mastermind_buff/empathy/resurrect.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs mastermind_buff empathy
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Resurrect as base } from '@/data/generated/powersets/mastermind/secondary/empathy/resurrect';
+import { overrides } from '@/data/overrides/powersets/mastermind/secondary/empathy/resurrect';
 
-export const Resurrect: Power = {
-  "name": "Resurrect",
-  "internalName": "Resurrect",
-  "available": 9,
-  "description": "Resurrects a fallen ally with full Hit Points and Endurance. The Resurrected target is left protected from XP Debt for 90 seconds.Recharge: Long.",
-  "shortHelp": "Ally Rez",
-  "icon": "empathy_resurrect.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 60,
-    "recharge": 120,
-    "endurance": 5.2,
-    "castTime": 1.83
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Heal",
-    "scale": 1,
-    "table": "Ranged_Ones",
-    "duration": 0.5,
-    "tickRate": 1
-  },
-  "effects": {
-    "enduranceGain": {
-      "scale": 1,
-      "table": "Ranged_Ones"
-    }
-  }
-};
+export const Resurrect: Power = withOverrides(base, overrides);

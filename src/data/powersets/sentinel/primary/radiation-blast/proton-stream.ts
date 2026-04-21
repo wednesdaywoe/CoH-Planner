@@ -1,59 +1,16 @@
 /**
- * Proton Stream
- * Ranged, DMG(Energy), Foe -DEF
+ * Proton Stream — COMPOSED EXPORT
  *
- * Source: sentinel_ranged/radiation_blast/proton_stream.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs sentinel_ranged radiation_blast
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { ProtonStream as base } from '@/data/generated/powersets/sentinel/primary/radiation-blast/proton-stream';
+import { overrides } from '@/data/overrides/powersets/sentinel/primary/radiation-blast/proton-stream';
 
-export const ProtonStream: Power = {
-  "name": "Proton Stream",
-  "internalName": "Proton_Stream",
-  "available": 17,
-  "description": "Hurls a volley of alpha particles at your target. Proton Volley is highly accurate and will reduce the target's Defense.",
-  "shortHelp": "Ranged, DMG(Energy), Foe -DEF",
-  "icon": "radiationburst_heavy.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1.2,
-    "range": 60,
-    "recharge": 12,
-    "endurance": 11.856,
-    "castTime": 1.67
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Defense Debuff",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Defense Debuff",
-    "Ranged Damage",
-    "Sentinel Archetype Sets",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Energy",
-    "scale": 0.57,
-    "table": "Ranged_Damage",
-    "duration": 0.41,
-    "tickRate": 0.13
-  },
-  "effects": {
-    "defenseDebuff": {
-      "scale": 3,
-      "table": "Ranged_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 12
-    },
-    "buffDuration": 12
-  }
-};
+export const ProtonStream: Power = withOverrides(base, overrides);

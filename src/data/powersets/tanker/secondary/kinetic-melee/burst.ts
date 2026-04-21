@@ -1,62 +1,16 @@
 /**
- * Burst
- * PBAoE Melee, DMG(Smash/Energy), Foe Knockdown
+ * Burst — COMPOSED EXPORT
  *
- * Source: tanker_melee/kinetic_attack/burst.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs tanker_melee kinetic_attack
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Burst as base } from '@/data/generated/powersets/tanker/secondary/kinetic-melee/burst';
+import { overrides } from '@/data/overrides/powersets/tanker/secondary/kinetic-melee/burst';
 
-export const Burst: Power = {
-  "name": "Burst",
-  "internalName": "Burst",
-  "available": 23,
-  "description": "By focusing your energy into the muscles in your arms, you can launch a dizzying flurry of attacks against every foe in melee range. Some foes may be hit hard enough to be knocked down as well.Notes: Thanks to gauntlet, this power can hit up to 6 targets above its cap at 1/3rd effectiveness.",
-  "shortHelp": "PBAoE Melee, DMG(Smash/Energy), Foe Knockdown",
-  "icon": "kineticattack_burst.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "radius": 8,
-    "recharge": 15,
-    "endurance": 14.3,
-    "castTime": 2.53,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "EnduranceReduction",
-    "Recharge",
-    "Knockback",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Knockback",
-    "Melee AoE Damage",
-    "Tanker Archetype Sets",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 0.75,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.5,
-      "table": "Melee_Damage"
-    }
-  ],
-  "effects": {
-    "knockback": {
-      "scale": 0.67,
-      "table": "Melee_Ones"
-    }
-  }
-};
+export const Burst: Power = withOverrides(base, overrides);

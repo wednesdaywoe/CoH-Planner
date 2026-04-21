@@ -1,64 +1,16 @@
 /**
- * Total Focus
- * Melee, DMG(Smash/Energy), Foe DisorientMelee, Extreme(Energy/Smash), Foe Disorient, +Energy Focus
+ * Total Focus — COMPOSED EXPORT
  *
- * Source: stalker_melee/energy_melee/total_focus.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs stalker_melee energy_melee
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { TotalFocus as base } from '@/data/generated/powersets/stalker/primary/energy-melee/total-focus';
+import { overrides } from '@/data/overrides/powersets/stalker/primary/energy-melee/total-focus';
 
-export const TotalFocus: Power = {
-  "name": "Total Focus",
-  "internalName": "Total_Focus",
-  "available": 21,
-  "description": "Total Focus is complete mastery over Energy Melee. This melee attack is a very slow, but incredibly devastating attack that can knock out most opponents, leaving them Disoriented. Due to the exhausting nature of Total Focus, recharge time is very long. This power will enter Energy Focus mode. Total Focus Criticals do not result in double damage, instead it grants double Energy Focus.",
-  "shortHelp": "Melee, DMG(Smash/Energy), Foe DisorientMelee, Extreme(Energy/Smash), Foe Disorient, +Energy Focus",
-  "icon": "powerpunch_totalfocus.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1.2,
-    "range": 7,
-    "recharge": 20,
-    "endurance": 18.512,
-    "castTime": 2.53
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Stun",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Melee Damage",
-    "Stalker Archetype Sets",
-    "Stuns",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 1,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 2.56,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1,
-      "table": "Melee_InherentDamage"
-    }
-  ],
-  "effects": {
-    "stun": {
-      "mag": 3,
-      "scale": 10,
-      "table": "Melee_Immobilize"
-    }
-  }
-};
+export const TotalFocus: Power = withOverrides(base, overrides);

@@ -1,69 +1,16 @@
 /**
- * Thunderous Blast
- * Ranged (Targeted AoE), DMG(Energy), Foe -End, -Recovery
+ * Thunderous Blast — COMPOSED EXPORT
  *
- * Source: corruptor_ranged/electrical_blast/thunderous_blast.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs corruptor_ranged electrical_blast
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { ThunderousBlast as base } from '@/data/generated/powersets/corruptor/primary/electrical-blast/thunderous-blast';
+import { overrides } from '@/data/overrides/powersets/corruptor/primary/electrical-blast/thunderous-blast';
 
-export const ThunderousBlast: Power = {
-  "name": "Thunderous Blast",
-  "internalName": "Thunderous_Blast",
-  "available": 25,
-  "description": "You hurl a tremendously powerful bolt of lightning at a target, devastating all nearby foes. Thunderous Blast deals extreme Energy and Smashing damage and drains a lot of Endurance from nearby foes.",
-  "shortHelp": "Ranged (Targeted AoE), DMG(Energy), Foe -End, -Recovery",
-  "icon": "electricalbolt_thunderouseblast.png",
-  "powerType": "Click",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1.4,
-    "range": 60,
-    "radius": 25,
-    "recharge": 170,
-    "endurance": 27.7316,
-    "castTime": 2.93,
-    "maxTargets": 16
-  },
-  "allowedEnhancements": [
-    "EnduranceModification",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Corruptor Archetype Sets",
-    "Endurance Modification",
-    "Ranged AoE Damage",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 1,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 3,
-      "table": "Ranged_Damage"
-    }
-  ],
-  "effects": {
-    "enduranceDrain": {
-      "scale": 1.35,
-      "table": "Ranged_EndDrain"
-    },
-    "recoveryDebuff": {
-      "scale": 1,
-      "table": "Ranged_EndDrain"
-    },
-    "durations": {
-      "recoveryDebuff": 20
-    },
-    "buffDuration": 20
-  }
-};
+export const ThunderousBlast: Power = withOverrides(base, overrides);

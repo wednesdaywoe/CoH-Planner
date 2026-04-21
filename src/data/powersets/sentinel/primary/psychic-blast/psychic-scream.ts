@@ -1,47 +1,16 @@
 /**
- * Psychic Scream
- * Ranged (Cone), Light DMG(Psionic), Foe -Recharge
+ * Psychic Scream — COMPOSED EXPORT
  *
- * Source: sentinel_ranged/psychic_blast/psychic_scream.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs sentinel_ranged psychic_blast
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { PsychicScream as base } from '@/data/generated/powersets/sentinel/primary/psychic-blast/psychic-scream';
+import { overrides } from '@/data/overrides/powersets/sentinel/primary/psychic-blast/psychic-scream';
 
-export const PsychicScream: Power = {
-  "name": "Psychic Scream",
-  "internalName": "Psychic_Scream",
-  "available": 1,
-  "description": "This howl of Psionic energy resonates in the minds of all foes within its conical area of effect, inflicting moderate damage.Damage: Light.Recharge: Slow.",
-  "shortHelp": "Ranged (Cone), Light DMG(Psionic), Foe -Recharge",
-  "icon": "psychicblast_psychicscream.png",
-  "powerType": "Click",
-  "effectArea": "Cone",
-  "stats": {
-    "accuracy": 1,
-    "range": 50,
-    "radius": 50,
-    "arc": 1.2217,
-    "recharge": 12,
-    "endurance": 11.856,
-    "castTime": 1.87,
-    "maxTargets": 6
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Ranged AoE Damage",
-    "Sentinel Archetype Sets",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Psionic",
-    "scale": 1.04,
-    "table": "Ranged_Damage"
-  }
-};
+export const PsychicScream: Power = withOverrides(base, overrides);

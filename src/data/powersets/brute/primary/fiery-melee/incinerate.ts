@@ -1,47 +1,16 @@
 /**
- * Incinerate
- * Melee, DoT (Fire)
+ * Incinerate — COMPOSED EXPORT
  *
- * Source: brute_melee/fiery_melee/incinerate.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs brute_melee fiery_melee
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Incinerate as base } from '@/data/generated/powersets/brute/primary/fiery-melee/incinerate';
+import { overrides } from '@/data/overrides/powersets/brute/primary/fiery-melee/incinerate';
 
-export const Incinerate: Power = {
-  "name": "Incinerate",
-  "internalName": "Incinerate",
-  "available": 7,
-  "description": "Intense concentration can allow you to Incinerate an opponent. This will set your foe ablaze, dealing very high damage over a short time.",
-  "shortHelp": "Melee, DoT (Fire)",
-  "icon": "fieryfray_incinerate.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 7,
-    "recharge": 10,
-    "endurance": 6.864,
-    "castTime": 1.67
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "EnduranceReduction",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Brute Archetype Sets",
-    "Melee Damage",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Fire",
-    "scale": 0.25,
-    "table": "Melee_Damage",
-    "duration": 4.6,
-    "tickRate": 0.5
-  }
-};
+export const Incinerate: Power = withOverrides(base, overrides);

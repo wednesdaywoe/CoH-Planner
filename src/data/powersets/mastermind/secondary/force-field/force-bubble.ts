@@ -1,49 +1,16 @@
 /**
- * Damping Bubble
- * Location (PBAoE), Team +Res(Accuracy, Defense, Perception, Recharge, Regen, Speed, ToHit), Foe -Str(Defense, Perception, Regen, Speed, ToHit)
+ * Damping Bubble — COMPOSED EXPORT
  *
- * Source: mastermind_buff/force_field/force_bubble.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs mastermind_buff force_field
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { DampingBubble as base } from '@/data/generated/powersets/mastermind/secondary/force-field/force-bubble';
+import { overrides } from '@/data/overrides/powersets/mastermind/secondary/force-field/force-bubble';
 
-export const DampingBubble: Power = {
-  "name": "Damping Bubble",
-  "internalName": "Force_Bubble",
-  "available": 29,
-  "description": "Creates a large bubble at your location which protects all allies inside. While active, this power will grant resistance to Accuracy, Defense, Regeneration, Perception, and Slow debuffs on yourself and allies. Foes within this bubble will have the strength of their Accuracy, Defense, Regeneration, Perception, and Speed debuff powers weakened directly.",
-  "shortHelp": "Location (PBAoE), Team +Res(Accuracy, Defense, Perception, Recharge, Regen, Speed, ToHit), Foe -Str(Defense, Perception, Regen, Speed, ToHit)",
-  "icon": "forcefield_dampeningbubble.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 90,
-    "endurance": 6.5,
-    "castTime": 1.07,
-    "activatePeriod": 0.25
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Defense"
-  ],
-  "allowedSetCategories": [
-    "Defense Sets"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "isPseudoPet": true,
-      "displayName": "Dampening Bubble",
-      "powers": [
-        "Redirects.Force_Field.Dampening_Bubble",
-        "Redirects.Force_Field.Dampening_Bubble_Debuff",
-        "Redirects.Force_Field.Dampening_BubbleFX"
-      ],
-      "duration": 45,
-      "copyBoosts": true
-    }
-  }
-};
+export const DampingBubble: Power = withOverrides(base, overrides);

@@ -1,78 +1,16 @@
 /**
- * Power Armor
- * Auto: Self +MaxHP, +Resist(All DMG)
+ * Power Armor — COMPOSED EXPORT
  *
- * Source: sentinel_defense/energy_aura/power_armor.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs sentinel_defense energy_aura
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { PowerArmor as base } from '@/data/generated/powersets/sentinel/secondary/energy-aura/power-armor';
+import { overrides } from '@/data/overrides/powersets/sentinel/secondary/energy-aura/power-armor';
 
-export const PowerArmor: Power = {
-  "name": "Power Armor",
-  "internalName": "Power_Armor",
-  "available": 19,
-  "description": "Power Armor increases Hit Points and resistance to all damage types. This power is always on and costs no endurance.",
-  "shortHelp": "Auto: Self +MaxHP, +Resist(All DMG)",
-  "icon": "energyaura_powerarmor.png",
-  "powerType": "Auto",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "activatePeriod": 10
-  },
-  "allowedEnhancements": [
-    "Resistance",
-    "Healing"
-  ],
-  "allowedSetCategories": [
-    "Healing",
-    "Resist Damage"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "maxHPBuff": {
-      "scale": 2,
-      "table": "Melee_HealSelf"
-    },
-    "durations": {
-      "maxHPBuff": 10.25,
-      "resistance": 10.25
-    },
-    "resistance": {
-      "smashing": {
-        "scale": 0.75,
-        "table": "Melee_Res_Dmg"
-      },
-      "lethal": {
-        "scale": 0.75,
-        "table": "Melee_Res_Dmg"
-      },
-      "fire": {
-        "scale": 0.75,
-        "table": "Melee_Res_Dmg"
-      },
-      "cold": {
-        "scale": 0.75,
-        "table": "Melee_Res_Dmg"
-      },
-      "energy": {
-        "scale": 0.75,
-        "table": "Melee_Res_Dmg"
-      },
-      "negative": {
-        "scale": 0.75,
-        "table": "Melee_Res_Dmg"
-      },
-      "psionic": {
-        "scale": 0.75,
-        "table": "Melee_Res_Dmg"
-      },
-      "toxic": {
-        "scale": 0.75,
-        "table": "Melee_Res_Dmg"
-      }
-    },
-    "buffDuration": 10.25
-  }
-};
+export const PowerArmor: Power = withOverrides(base, overrides);

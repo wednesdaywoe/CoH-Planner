@@ -1,63 +1,16 @@
 /**
- * Combustion
- * PBAoE, DoT (Fire)
+ * Combustion — COMPOSED EXPORT
  *
- * Source: tanker_melee/fiery_melee/combustion.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs tanker_melee fiery_melee
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Combustion as base } from '@/data/generated/powersets/tanker/secondary/fiery-melee/combustion';
+import { overrides } from '@/data/overrides/powersets/tanker/secondary/fiery-melee/combustion';
 
-export const Combustion: Power = {
-  "name": "Combustion",
-  "internalName": "Combustion",
-  "available": 3,
-  "description": "Your mastery of fire allows you to violently raise the temperature around yourself in an attempt to spontaneously combust any nearby foes and set them ablaze, dealing damage over time.Notes: Thanks to gauntlet, this power can hit up to 6 targets above its cap at 1/3rd effectiveness.",
-  "shortHelp": "PBAoE, DoT (Fire)",
-  "icon": "fieryfray_combustion.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "radius": 15,
-    "recharge": 15,
-    "endurance": 13,
-    "castTime": 2.4,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "EnduranceReduction",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Melee AoE Damage",
-    "Tanker Archetype Sets",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Fire",
-      "scale": 0.5,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.1,
-      "table": "Melee_Damage",
-      "duration": 7.1,
-      "tickRate": 1
-    },
-    {
-      "type": "Fire",
-      "scale": 0.045,
-      "table": "Melee_Damage",
-      "duration": 7.1,
-      "tickRate": 1
-    }
-  ]
-};
+export const Combustion: Power = withOverrides(base, overrides);

@@ -1,54 +1,16 @@
 /**
- * Psychic Wail
- * PBAoE, DMG(Psionic), Foe Disorient -Recharge
+ * Psychic Wail — COMPOSED EXPORT
  *
- * Source: defender_ranged/psychic_blast/psychic_wail.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs defender_ranged psychic_blast
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { PsychicWail as base } from '@/data/generated/powersets/defender/secondary/psychic-blast/psychic-wail';
+import { overrides } from '@/data/overrides/powersets/defender/secondary/psychic-blast/psychic-wail';
 
-export const PsychicWail: Power = {
-  "name": "Psychic Wail",
-  "internalName": "Psychic_Wail",
-  "available": 29,
-  "description": "Psychic Wail is a devastating Psionic attack that wracks the minds of all nearby foes which deals Extreme Psionic damage. Those that survive will have a severely reduced attack rate and may be left Disoriented.",
-  "shortHelp": "PBAoE, DMG(Psionic), Foe Disorient -Recharge",
-  "icon": "psychicblast_psychicwail.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1.5,
-    "radius": 25,
-    "recharge": 145,
-    "endurance": 27.716,
-    "castTime": 1.97,
-    "maxTargets": 16
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Stun",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Defender Archetype Sets",
-    "Melee AoE Damage",
-    "Stuns",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Psionic",
-    "scale": 4,
-    "table": "Ranged_Damage"
-  },
-  "effects": {
-    "stun": {
-      "mag": 3,
-      "scale": 10,
-      "table": "Ranged_Stun"
-    }
-  }
-};
+export const PsychicWail: Power = withOverrides(base, overrides);

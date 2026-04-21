@@ -1,91 +1,16 @@
 /**
- * Accelerate Metabolism
- * PBAoE, Ally +SPD, +Recharge, +Recovery, +DMG(All) +Res(Effects)
+ * Accelerate Metabolism — COMPOSED EXPORT
  *
- * Source: corruptor_buff/radiation_emission/accelerate_metabolism.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs corruptor_buff radiation_emission
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { AccelerateMetabolism as base } from '@/data/generated/powersets/corruptor/secondary/radiation-emission/accelerate-metabolism';
+import { overrides } from '@/data/overrides/powersets/corruptor/secondary/radiation-emission/accelerate-metabolism';
 
-export const AccelerateMetabolism: Power = {
-  "name": "Accelerate Metabolism",
-  "internalName": "Accelerate_Metabolism",
-  "available": 3,
-  "description": "Activating this power emits radiation that increases the running speed, attack speed, Endurance recovery, and damage potential of all nearby allies. Affected allies' metabolisms are increased so much that they become resistant to effects such as Sleep, Hold, Disorient, Immobilization and Endurance Drain.Recharge: Very Long.",
-  "shortHelp": "PBAoE, Ally +SPD, +Recharge, +Recovery, +DMG(All) +Res(Effects)",
-  "icon": "radiationpoisoning_acceleratemetabolism.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "radius": 25,
-    "recharge": 422,
-    "endurance": 15.6,
-    "castTime": 2.03,
-    "maxTargets": 255
-  },
-  "allowedEnhancements": [
-    "EnduranceModification",
-    "EnduranceReduction",
-    "Run Speed",
-    "Recharge"
-  ],
-  "allowedSetCategories": [
-    "Endurance Modification",
-    "Running",
-    "Running & Sprints",
-    "Universal Travel"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "damageBuff": {
-      "scale": 2,
-      "table": "Ranged_Buff_Dmg"
-    },
-    "durations": {
-      "damageBuff": 120,
-      "mezResistance": 120,
-      "rechargeBuff": 120,
-      "debuffResistance": 120,
-      "recoveryBuff": 120
-    },
-    "mezResistance": {
-      "hold": {
-        "scale": 5,
-        "table": "Ranged_Res_Boolean"
-      },
-      "immobilize": {
-        "scale": 5,
-        "table": "Ranged_Res_Boolean"
-      },
-      "stun": {
-        "scale": 5,
-        "table": "Ranged_Res_Boolean"
-      },
-      "sleep": {
-        "scale": 5,
-        "table": "Ranged_Res_Boolean"
-      }
-    },
-    "rechargeBuff": {
-      "scale": 0.3,
-      "table": "Ranged_Ones"
-    },
-    "debuffResistance": {
-      "endurance": {
-        "scale": 1.5,
-        "table": "Ranged_Res_Boolean"
-      },
-      "recovery": {
-        "scale": 1.5,
-        "table": "Ranged_Res_Boolean"
-      }
-    },
-    "recoveryBuff": {
-      "scale": 0.3,
-      "table": "Ranged_Ones"
-    },
-    "buffDuration": 120
-  }
-};
+export const AccelerateMetabolism: Power = withOverrides(base, overrides);

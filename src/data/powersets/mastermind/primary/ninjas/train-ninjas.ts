@@ -1,37 +1,16 @@
 /**
- * Train Ninjas
- * Ranged, Train Ninja Henchman
+ * Train Ninjas — COMPOSED EXPORT
  *
- * Source: mastermind_summon/ninjas/train_ninjas.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs mastermind_summon ninjas
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { TrainNinjas as base } from '@/data/generated/powersets/mastermind/primary/ninjas/train-ninjas';
+import { overrides } from '@/data/overrides/powersets/mastermind/primary/ninjas/train-ninjas';
 
-export const TrainNinjas: Power = {
-  "name": "Train Ninjas",
-  "internalName": "Train_Ninjas",
-  "available": 5,
-  "description": "Train your Ninja Henchmen with more advanced techniques and weaponry. This power permanently bestows new powers and abilities to all of your Ninja Henchman. The powers gained are unique and dependent upon the type of Ninja Henchman. Your Ninja Henchman will also become more evasive against all forms of positional attacks and gain 3% more Critical Hit chance. This power only works on your Ninja Henchmen and you can only Train your Ninja Henchmen once with this power.",
-  "shortHelp": "Ranged, Train Ninja Henchman",
-  "icon": "ninjas_trainninjas.png",
-  "powerType": "Click",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "range": 50,
-    "radius": 30,
-    "recharge": 0.5,
-    "endurance": 11.375,
-    "castTime": 2.37,
-    "maxTargets": 16
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Defense"
-  ],
-  "allowedSetCategories": [
-    "Defense Sets"
-  ],
-  "maxSlots": 6
-};
+export const TrainNinjas: Power = withOverrides(base, overrides);

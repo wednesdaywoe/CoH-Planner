@@ -1,60 +1,16 @@
 /**
- * Follow Through
- * Melee, DMG(Smashing), Knockdown, Stun, Requires Momentum
+ * Follow Through — COMPOSED EXPORT
  *
- * Source: brute_melee/titan_weapons/follow_through.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs brute_melee titan_weapons
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { FollowThrough as base } from '@/data/generated/powersets/brute/primary/titan-weapons/follow-through';
+import { overrides } from '@/data/overrides/powersets/brute/primary/titan-weapons/follow-through';
 
-export const FollowThrough: Power = {
-  "name": "Follow Through",
-  "internalName": "Follow_Through",
-  "available": 7,
-  "description": "You Follow Through with a massive attack dealing Superior Smashing damage, knocking your opponent down and possibly stunning them.Notes: Follow Through requires Momentum in order to be activated.",
-  "shortHelp": "Melee, DMG(Smashing), Knockdown, Stun, Requires Momentum",
-  "icon": "titanweapons_followthrough.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 9,
-    "recharge": 10,
-    "endurance": 10.4978,
-    "castTime": 1.1
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "EnduranceReduction",
-    "Stun",
-    "Recharge",
-    "Knockback",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Brute Archetype Sets",
-    "Knockback",
-    "Melee Damage",
-    "Stuns",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 1.96,
-    "table": "Melee_Damage"
-  },
-  "effects": {
-    "knockback": {
-      "scale": 0.67,
-      "table": "Melee_Ones"
-    },
-    "stun": {
-      "mag": 3,
-      "scale": 4,
-      "table": "Melee_Stun"
-    }
-  }
-};
+export const FollowThrough: Power = withOverrides(base, overrides);

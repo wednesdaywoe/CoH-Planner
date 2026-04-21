@@ -1,49 +1,16 @@
 /**
- * Liquid Nitrogen
- * Ranged (Location AoE), DoT(Cold), Knockdown, -SPD
+ * Liquid Nitrogen — COMPOSED EXPORT
  *
- * Source: controller_control/arsenal_control/liquid_nitrogen.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs controller_control arsenal_control
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { LiquidNitrogen as base } from '@/data/generated/powersets/controller/primary/arsenal-control/liquid-nitrogen';
+import { overrides } from '@/data/overrides/powersets/controller/primary/arsenal-control/liquid-nitrogen';
 
-export const LiquidNitrogen: Power = {
-  "name": "Liquid Nitrogen",
-  "internalName": "Liquid_Nitrogen",
-  "available": 5,
-  "description": "The Liquid Nitrogen dispenser can spray a target location with liquid nitrogen creating a large patch of ice. Those caught in the patch of ice are dramatically slowed, tend to fall down taking damage, and will be unable to jump.",
-  "shortHelp": "Ranged (Location AoE), DoT(Cold), Knockdown, -SPD",
-  "icon": "arsenalcontrol_liquidnitrogen.png",
-  "powerType": "Click",
-  "targetType": "Location",
-  "effectArea": "Location",
-  "stats": {
-    "accuracy": 1,
-    "range": 60,
-    "recharge": 90,
-    "endurance": 10.4,
-    "castTime": 2
-  },
-  "allowedEnhancements": [
-    "Slow",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Ranged AoE Damage",
-    "Slow Movement",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_LiquidNitrogen",
-      "duration": 30,
-      "copyBoosts": true
-    }
-  }
-};
+export const LiquidNitrogen: Power = withOverrides(base, overrides);

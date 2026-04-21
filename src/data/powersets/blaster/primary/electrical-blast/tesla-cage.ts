@@ -1,69 +1,16 @@
 /**
- * Tesla Cage
- * Ranged, DMG(Energy), Foe Hold, -End
+ * Tesla Cage — COMPOSED EXPORT
  *
- * Source: blaster_ranged/electrical_blast/tesla_cage.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs blaster_ranged electrical_blast
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { TeslaCage as base } from '@/data/generated/powersets/blaster/primary/electrical-blast/tesla-cage';
+import { overrides } from '@/data/overrides/powersets/blaster/primary/electrical-blast/tesla-cage';
 
-export const TeslaCage: Power = {
-  "name": "Tesla Cage",
-  "internalName": "Tesla_Cage",
-  "available": 17,
-  "description": "Tesla Cage confines the target in an electrical prison. The target is overwhelmed by the electrical charge and is left helpless and can be attacked. The target is drained of some Endurance and some of that Endurance may be transferred back to you.Taking this power allows you to build Static with each activation of other electrical blast attacks. As Static builds, you can unleash it with Tesla Cage as electricity will jump off your main target and shock others nearby!",
-  "shortHelp": "Ranged, DMG(Energy), Foe Hold, -End",
-  "icon": "electricalbolt_telsacage.png",
-  "powerType": "Click",
-  "effectArea": "Chain",
-  "stats": {
-    "accuracy": 1,
-    "range": 60,
-    "radius": 10,
-    "recharge": 10,
-    "endurance": 6.864,
-    "castTime": 2.17,
-    "maxTargets": 1
-  },
-  "allowedEnhancements": [
-    "EnduranceModification",
-    "Hold",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Blaster Archetype Sets",
-    "Endurance Modification",
-    "Holds",
-    "Ranged Damage",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Energy",
-    "scale": 0.1,
-    "table": "Ranged_Damage"
-  },
-  "effects": {
-    "recoveryDebuff": {
-      "scale": 1.1,
-      "table": "Ranged_EndDrain"
-    },
-    "durations": {
-      "recoveryDebuff": 8
-    },
-    "enduranceDrain": {
-      "scale": 0.21000000000000002,
-      "table": "Ranged_EndDrain"
-    },
-    "hold": {
-      "mag": 3,
-      "scale": 8,
-      "table": "Ranged_Ones"
-    },
-    "buffDuration": 8
-  }
-};
+export const TeslaCage: Power = withOverrides(base, overrides);

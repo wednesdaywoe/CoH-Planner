@@ -1,75 +1,16 @@
 /**
- * Telekinetic Blow
- * Melee, DMG(Psionic/Smash), Foe Knock Up, Self +Insight
+ * Telekinetic Blow — COMPOSED EXPORT
  *
- * Source: scrapper_melee/psionic_melee/telekinetic_blow.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs scrapper_melee psionic_melee
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { TelekineticBlow as base } from '@/data/generated/powersets/scrapper/primary/psionic-melee/telekinetic-blow';
+import { overrides } from '@/data/overrides/powersets/scrapper/primary/psionic-melee/telekinetic-blow';
 
-export const TelekineticBlow: Power = {
-  "name": "Telekinetic Blow",
-  "internalName": "Telekinetic_Blow",
-  "available": 1,
-  "description": "You project telekinetic energy around your fist before delivering a shattering uppercut to your foe dealing high Psionic and Smashing damage and sending them flying into the air. Telekinetic Blow has a high chance of granting you Insight. While you have Insight, Telekinetic Blow will deal additional minor psionic damage over time.",
-  "shortHelp": "Melee, DMG(Psionic/Smash), Foe Knock Up, Self +Insight",
-  "icon": "psionicmelee_telekineticblow.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 7,
-    "recharge": 9,
-    "endurance": 9.36,
-    "castTime": 1.47
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Knockback",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Knockback",
-    "Melee Damage",
-    "Scrapper Archetype Sets",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 0.45,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 1.35,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 0.18,
-      "table": "Melee_Damage",
-      "duration": 3.1,
-      "tickRate": 1
-    },
-    {
-      "type": "Psionic",
-      "scale": 1.8,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 1.8,
-      "table": "Melee_InherentDamage"
-    }
-  ],
-  "effects": {
-    "knockup": {
-      "scale": 1,
-      "table": "Melee_Knockback"
-    }
-  }
-};
+export const TelekineticBlow: Power = withOverrides(base, overrides);

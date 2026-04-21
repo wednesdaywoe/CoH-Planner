@@ -1,54 +1,16 @@
 /**
- * Jab
- * Melee, DMG(Smash), Disorient
+ * Jab — COMPOSED EXPORT
  *
- * Source: tanker_melee/super_strength/jab.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs tanker_melee super_strength
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Jab as base } from '@/data/generated/powersets/tanker/secondary/super-strength/jab';
+import { overrides } from '@/data/overrides/powersets/tanker/secondary/super-strength/jab';
 
-export const Jab: Power = {
-  "name": "Jab",
-  "internalName": "Jab",
-  "available": 0,
-  "description": "A quick jab that deals minor damage, but has a chance of Disorienting the target, especially if coupled with other attacks.",
-  "shortHelp": "Melee, DMG(Smash), Disorient",
-  "icon": "superstrength_jab.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 7,
-    "recharge": 2,
-    "endurance": 3.536,
-    "castTime": 1.07
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "EnduranceReduction",
-    "Stun",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Melee Damage",
-    "Stuns",
-    "Tanker Archetype Sets",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 0.68,
-    "table": "Melee_Damage"
-  },
-  "effects": {
-    "stun": {
-      "mag": 2,
-      "scale": 6,
-      "table": "Melee_Stun"
-    }
-  }
-};
+export const Jab: Power = withOverrides(base, overrides);

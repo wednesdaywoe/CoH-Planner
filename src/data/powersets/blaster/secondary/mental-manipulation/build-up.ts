@@ -1,50 +1,16 @@
 /**
- * Concentration
- * Self +DMG, +To Hit
+ * Concentration — COMPOSED EXPORT
  *
- * Source: blaster_support/mental_manipulation/build_up.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs blaster_support mental_manipulation
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Concentration as base } from '@/data/generated/powersets/blaster/secondary/mental-manipulation/build-up';
+import { overrides } from '@/data/overrides/powersets/blaster/secondary/mental-manipulation/build-up';
 
-export const Concentration: Power = {
-  "name": "Concentration",
-  "internalName": "Build_Up",
-  "available": 15,
-  "description": "Greatly boosts your attacks for a few seconds. Slightly increases chance to hit.Recharge: Long.",
-  "shortHelp": "Self +DMG, +To Hit",
-  "icon": "mentalcontrol_buildup.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 90,
-    "endurance": 5.2,
-    "castTime": 1.17
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "ToHit"
-  ],
-  "allowedSetCategories": [
-    "To Hit Buff"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "tohitBuff": {
-      "scale": 2,
-      "table": "Melee_Buff_ToHit"
-    },
-    "durations": {
-      "tohitBuff": 10,
-      "damageBuff": 10
-    },
-    "damageBuff": {
-      "scale": 8,
-      "table": "Melee_Buff_Dmg"
-    },
-    "buffDuration": 10
-  }
-};
+export const Concentration: Power = withOverrides(base, overrides);

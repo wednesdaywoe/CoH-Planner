@@ -1,60 +1,16 @@
 /**
- * Irradiate
- * Close (AoE), DoT(Energy), Foe -DEF
+ * Irradiate — COMPOSED EXPORT
  *
- * Source: defender_ranged/radiation_blast/irradiate.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs defender_ranged radiation_blast
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Irradiate as base } from '@/data/generated/powersets/defender/secondary/radiation-blast/irradiate';
+import { overrides } from '@/data/overrides/powersets/defender/secondary/radiation-blast/irradiate';
 
-export const Irradiate: Power = {
-  "name": "Irradiate",
-  "internalName": "Irradiate",
-  "available": 3,
-  "description": "You can emit lethal amounts of radiation in all directions, damaging all nearby foes for a short time. Like other Radiation attacks, this power can bypass some of a target's defenses. Irradiate severely reduces the target's Defense.",
-  "shortHelp": "Close (AoE), DoT(Energy), Foe -DEF",
-  "icon": "radiationburst_irradiate.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1.1,
-    "radius": 20,
-    "recharge": 20,
-    "endurance": 18.512,
-    "castTime": 1.07,
-    "maxTargets": 16
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Defense Debuff",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Defender Archetype Sets",
-    "Defense Debuff",
-    "Melee AoE Damage",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Energy",
-    "scale": 0.1,
-    "table": "Ranged_Damage",
-    "duration": 4.6,
-    "tickRate": 0.5
-  },
-  "effects": {
-    "defenseDebuff": {
-      "scale": 3,
-      "table": "Ranged_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 10
-    },
-    "buffDuration": 10
-  }
-};
+export const Irradiate: Power = withOverrides(base, overrides);

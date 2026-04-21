@@ -1,50 +1,16 @@
 /**
- * Assault Bot
- * Summon Assault Bot
+ * Assault Bot — COMPOSED EXPORT
  *
- * Source: mastermind_summon/robotics/assault_bot.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs mastermind_summon robotics
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { AssaultBot as base } from '@/data/generated/powersets/mastermind/primary/robotics/assault-bot';
+import { overrides } from '@/data/overrides/powersets/mastermind/primary/robotics/assault-bot';
 
-export const AssaultBot: Power = {
-  "name": "Assault Bot",
-  "internalName": "Assault_Bot",
-  "available": 21,
-  "description": "Builds one massive Assault Bot. Simply put, the Assault Bot is a killing machine. There is nothing subtle about its weaponry.",
-  "shortHelp": "Summon Assault Bot",
-  "icon": "robotics_assembleassaultmech.png",
-  "powerType": "Click",
-  "targetType": "Location",
-  "effectArea": "Location",
-  "stats": {
-    "accuracy": 1,
-    "range": 60,
-    "recharge": 15,
-    "endurance": 13.18,
-    "castTime": 2.03
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Stun",
-    "Knockback",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Knockback",
-    "Mastermind Archetype Sets",
-    "Pet Damage",
-    "Recharge Intensive Pets",
-    "Stuns",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "isPseudoPet": false,
-      "entity": "MastermindPets_Assault_Bot",
-      "copyBoosts": true
-    }
-  }
-};
+export const AssaultBot: Power = withOverrides(base, overrides);

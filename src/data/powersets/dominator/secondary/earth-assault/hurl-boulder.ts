@@ -1,51 +1,16 @@
 /**
- * Hurl Boulder
- * Ranged, High DMG(Smash), Foe Knockback, -Fly
+ * Hurl Boulder — COMPOSED EXPORT
  *
- * Source: dominator_assault/earth_assault/hurl_boulder.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs dominator_assault earth_assault
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { HurlBoulder as base } from '@/data/generated/powersets/dominator/secondary/earth-assault/hurl-boulder';
+import { overrides } from '@/data/overrides/powersets/dominator/secondary/earth-assault/hurl-boulder';
 
-export const HurlBoulder: Power = {
-  "name": "Hurl Boulder",
-  "internalName": "Hurl_Boulder",
-  "available": 9,
-  "description": "You are able to tear up a chunk of ground beneath your feet and Hurl it at an enemy. This attack deals moderate damage, and can knock foes back and even drop them out of the air if they are flying.Damage: High.Recharge: Slow.",
-  "shortHelp": "Ranged, High DMG(Smash), Foe Knockback, -Fly",
-  "icon": "earthassault_hurlboulder.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 80,
-    "recharge": 12,
-    "endurance": 11.856,
-    "castTime": 1.5
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Knockback",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Knockback",
-    "Ranged Damage",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 2.28,
-    "table": "Ranged_Damage"
-  },
-  "effects": {
-    "knockback": {
-      "scale": 3,
-      "table": "Ranged_Knockback"
-    }
-  }
-};
+export const HurlBoulder: Power = withOverrides(base, overrides);

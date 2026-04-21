@@ -1,83 +1,16 @@
 /**
- * Conduit of Pain
- * Ally Rez, Self +DMG, +Recharge, +Recovery, +To Hit, +Special
+ * Conduit of Pain — COMPOSED EXPORT
  *
- * Source: mastermind_buff/pain_domination/conduit_of_pain.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs mastermind_buff pain_domination
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { ConduitofPain as base } from '@/data/generated/powersets/mastermind/secondary/pain-domination/conduit-of-pain';
+import { overrides } from '@/data/overrides/powersets/mastermind/secondary/pain-domination/conduit-of-pain';
 
-export const ConduitofPain: Power = {
-  "name": "Conduit of Pain",
-  "internalName": "Conduit_of_Pain",
-  "available": 9,
-  "description": "You revive a fallen ally by becoming a Conduit of Pain and transferring the pain that was inflicted upon them back upon your enemies. This will briefly empower you increasing your damage output, recovery rate, attack rate and chance to hit. After a minute the effect will wear off leaving you weakened for 30 seconds. Your damage, attack rate and chance to hit will all be reduced during this period.Recharge: Long.",
-  "shortHelp": "Ally Rez, Self +DMG, +Recharge, +Recovery, +To Hit, +Special",
-  "icon": "paindomination_conduitofpain.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 60,
-    "recharge": 120,
-    "endurance": 5.2,
-    "castTime": 1.83
-  },
-  "allowedEnhancements": [
-    "EnduranceModification",
-    "EnduranceReduction",
-    "Range",
-    "Recharge"
-  ],
-  "allowedSetCategories": [
-    "Endurance Modification"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Heal",
-    "scale": 4,
-    "table": "Ranged_Ones",
-    "duration": 0.5,
-    "tickRate": 1
-  },
-  "effects": {
-    "enduranceGain": {
-      "scale": 4,
-      "table": "Ranged_Ones"
-    },
-    "recoveryBuff": {
-      "scale": 1.75,
-      "table": "Ranged_Ones"
-    },
-    "durations": {
-      "recoveryBuff": 60,
-      "rechargeBuff": 60,
-      "damageBuff": 60,
-      "tohitBuff": 60,
-      "damageDebuff": 30,
-      "tohitDebuff": 30
-    },
-    "rechargeBuff": {
-      "scale": 0.75,
-      "table": "Ranged_Ones"
-    },
-    "damageBuff": {
-      "scale": 3,
-      "table": "Ranged_Buff_Dmg"
-    },
-    "tohitBuff": {
-      "scale": 2,
-      "table": "Ranged_Buff_ToHit"
-    },
-    "damageDebuff": {
-      "scale": 3,
-      "table": "Ranged_Debuff_Dam"
-    },
-    "selfPenalty": true,
-    "tohitDebuff": {
-      "scale": 2,
-      "table": "Ranged_Debuff_ToHit"
-    },
-    "buffDuration": 60
-  }
-};
+export const ConduitofPain: Power = withOverrides(base, overrides);

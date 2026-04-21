@@ -1,63 +1,16 @@
 /**
- * Crane Kick
- * Melee, High DMG(Smash), Knockback
+ * Crane Kick — COMPOSED EXPORT
  *
- * Source: scrapper_melee/martial_arts/crane_kick.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs scrapper_melee martial_arts
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { CraneKick as base } from '@/data/generated/powersets/scrapper/primary/martial-arts/crane-kick';
+import { overrides } from '@/data/overrides/powersets/scrapper/primary/martial-arts/crane-kick';
 
-export const CraneKick: Power = {
-  "name": "Crane Kick",
-  "internalName": "Crane_Kick",
-  "available": 7,
-  "description": "You can perform a slow, high damage kick that will likely knock your target back.",
-  "shortHelp": "Melee, High DMG(Smash), Knockback",
-  "icon": "martialarts_cranekick.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1.05,
-    "range": 7,
-    "recharge": 10,
-    "endurance": 10.192,
-    "castTime": 1.67
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Knockback",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Knockback",
-    "Melee Damage",
-    "Scrapper Archetype Sets",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 1.96,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.96,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.96,
-      "table": "Melee_InherentDamage"
-    }
-  ],
-  "effects": {
-    "knockback": {
-      "scale": 3,
-      "table": "Melee_Knockback"
-    }
-  }
-};
+export const CraneKick: Power = withOverrides(base, overrides);

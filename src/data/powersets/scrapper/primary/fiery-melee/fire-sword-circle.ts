@@ -1,84 +1,16 @@
 /**
- * Fire Sword Circle
- * PBAoE Melee, DMG(Fire), -Defense
+ * Fire Sword Circle — COMPOSED EXPORT
  *
- * Source: scrapper_melee/fiery_melee/fire_sword_circle.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs scrapper_melee fiery_melee
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { FireSwordCircle as base } from '@/data/generated/powersets/scrapper/primary/fiery-melee/fire-sword-circle';
+import { overrides } from '@/data/overrides/powersets/scrapper/primary/fiery-melee/fire-sword-circle';
 
-export const FireSwordCircle: Power = {
-  "name": "Fire Sword Circle",
-  "internalName": "Fire_Sword_Circle",
-  "available": 17,
-  "description": "Mastery of your Fire Sword has enabled you to make an attack on every foe within melee distance. This will slash burn and cut through the defenses of your enemies, dealing moderate damage and setting them ablaze.",
-  "shortHelp": "PBAoE Melee, DMG(Fire), -Defense",
-  "icon": "fieryfray_fireswordcircle.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "radius": 10,
-    "recharge": 20,
-    "endurance": 18.512,
-    "castTime": 2.67,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Defense Debuff",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Defense Debuff",
-    "Melee AoE Damage",
-    "Scrapper Archetype Sets",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Fire",
-      "scale": 1.424,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 1.424,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Fire",
-      "scale": 1.424,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.045,
-      "table": "Melee_Damage",
-      "duration": 3.1,
-      "tickRate": 1
-    },
-    {
-      "type": "Fire",
-      "scale": 0.1,
-      "table": "Melee_Damage",
-      "duration": 3.1,
-      "tickRate": 1
-    }
-  ],
-  "effects": {
-    "defenseDebuff": {
-      "scale": 0.5,
-      "table": "Melee_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 10
-    },
-    "buffDuration": 10
-  }
-};
+export const FireSwordCircle: Power = withOverrides(base, overrides);

@@ -1,71 +1,16 @@
 /**
- * Ki Push
- * Melee, Light DMG(Smash), Foe Repel, KB
+ * Ki Push — COMPOSED EXPORT
  *
- * Source: blaster_support/martial_manipulation/ki_push.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs blaster_support martial_manipulation
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { KiPush as base } from '@/data/generated/powersets/blaster/secondary/martial-combat/ki-push';
+import { overrides } from '@/data/overrides/powersets/blaster/secondary/martial-combat/ki-push';
 
-export const KiPush: Power = {
-  "name": "Ki Push",
-  "internalName": "Ki_Push",
-  "available": 0,
-  "description": "You smash your foe with a burst of Ki Energy, sending them flying through the air in slow motion.Damage: Light.Recharge: Fast.",
-  "shortHelp": "Melee, Light DMG(Smash), Foe Repel, KB",
-  "icon": "martialmanipulation_kipush.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 7,
-    "recharge": 4,
-    "endurance": 5.2,
-    "castTime": 0.83
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Knockback",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Blaster Archetype Sets",
-    "Knockback",
-    "Melee Damage",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 1,
-    "table": "Melee_Damage"
-  },
-  "effects": {
-    "repel": {
-      "scale": 4,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "repel": 2,
-      "hold": 2,
-      "damageBuff": 8.33
-    },
-    "hold": {
-      "mag": 1,
-      "scale": 4,
-      "table": "Melee_Ones"
-    },
-    "effectDuration": 2,
-    "knockback": {
-      "scale": 4,
-      "table": "Melee_Knockback"
-    },
-    "damageBuff": {
-      "scale": 0.055,
-      "table": "Melee_Ones"
-    },
-    "buffDuration": 2
-  }
-};
+export const KiPush: Power = withOverrides(base, overrides);

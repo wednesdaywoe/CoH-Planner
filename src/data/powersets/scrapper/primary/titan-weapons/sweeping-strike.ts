@@ -1,66 +1,16 @@
 /**
- * Titan Sweep
- * Melee (Cone), DMG(Smashing), Foe Knockdown
+ * Titan Sweep — COMPOSED EXPORT
  *
- * Source: scrapper_melee/titan_weapons/sweeping_strike.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs scrapper_melee titan_weapons
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { TitanSweep as base } from '@/data/generated/powersets/scrapper/primary/titan-weapons/sweeping-strike';
+import { overrides } from '@/data/overrides/powersets/scrapper/primary/titan-weapons/sweeping-strike';
 
-export const TitanSweep: Power = {
-  "name": "Titan Sweep",
-  "internalName": "Sweeping_Strike",
-  "available": 1,
-  "description": "You make a sweeping slash with your weapon, causing high damage and possibly knocking your opponent down.Notes: Titan Sweep is unaffected by Arc changes.",
-  "shortHelp": "Melee (Cone), DMG(Smashing), Foe Knockdown",
-  "icon": "titanweapons_sweepingstrike.png",
-  "powerType": "Click",
-  "effectArea": "Cone",
-  "stats": {
-    "accuracy": 1,
-    "range": 10,
-    "radius": 10,
-    "arc": 2.0944,
-    "recharge": 10,
-    "endurance": 10.4982,
-    "castTime": 2.43,
-    "maxTargets": 5
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Knockback",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Knockback",
-    "Melee AoE Damage",
-    "Scrapper Archetype Sets",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 1.3102,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.3102,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.3102,
-      "table": "Melee_InherentDamage"
-    }
-  ],
-  "effects": {
-    "knockback": {
-      "scale": 0.67,
-      "table": "Melee_Ones"
-    }
-  }
-};
+export const TitanSweep: Power = withOverrides(base, overrides);

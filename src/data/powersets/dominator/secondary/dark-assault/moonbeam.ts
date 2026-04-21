@@ -1,56 +1,16 @@
 /**
- * Engulfing Darkness
- * PBAoE, Light DMG(Negative), Foe -To Hit, Minor DoT(Negative)
+ * Engulfing Darkness — COMPOSED EXPORT
  *
- * Source: dominator_assault/dark_assault/moonbeam.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs dominator_assault dark_assault
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { EngulfingDarkness as base } from '@/data/generated/powersets/dominator/secondary/dark-assault/moonbeam';
+import { overrides } from '@/data/overrides/powersets/dominator/secondary/dark-assault/moonbeam';
 
-export const EngulfingDarkness: Power = {
-  "name": "Engulfing Darkness",
-  "internalName": "Moonbeam",
-  "available": 19,
-  "description": "You release a burst of negative energy to foes around you dealing moderate Negative Energy damage, reducing their chance to hit and sapping their health over time.Damage: Light.Recharge: Slow.",
-  "shortHelp": "PBAoE, Light DMG(Negative), Foe -To Hit, Minor DoT(Negative)",
-  "icon": "darknessassault_deathshroud.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "radius": 15,
-    "recharge": 18,
-    "endurance": 16.848,
-    "castTime": 2,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "ToHit Debuff",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate To-Hit Debuff",
-    "Melee AoE Damage",
-    "To Hit Debuff",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Negative",
-      "scale": 1,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Negative",
-      "scale": 0.1,
-      "table": "Melee_Damage",
-      "duration": 3.1,
-      "tickRate": 1
-    }
-  ]
-};
+export const EngulfingDarkness: Power = withOverrides(base, overrides);

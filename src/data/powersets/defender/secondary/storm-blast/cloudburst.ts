@@ -1,47 +1,16 @@
 /**
- * Cloudburst
- * Ranged, DoT(Cold), +Wet, Special
+ * Cloudburst — COMPOSED EXPORT
  *
- * Source: defender_ranged/storm_blast/cloudburst.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs defender_ranged storm_blast
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Cloudburst as base } from '@/data/generated/powersets/defender/secondary/storm-blast/cloudburst';
+import { overrides } from '@/data/overrides/powersets/defender/secondary/storm-blast/cloudburst';
 
-export const Cloudburst: Power = {
-  "name": "Cloudburst",
-  "internalName": "Cloudburst",
-  "available": 27,
-  "description": "Unleashes a cloud that drops a torrent of freezing rain on your target, causing Cold damage. While in a Storm Cell, targets experience Recharge, ToHit, and Movement speed debuffs.",
-  "shortHelp": "Ranged, DoT(Cold), +Wet, Special",
-  "icon": "stormblast_cloudburst.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 80,
-    "recharge": 11,
-    "endurance": 11.024,
-    "castTime": 1.67
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Damage",
-    "Accuracy",
-    "Slow"
-  ],
-  "allowedSetCategories": [
-    "Defender Archetype Sets",
-    "Ranged Damage",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Cold",
-    "scale": 0.2275,
-    "table": "Ranged_Damage",
-    "duration": 2.9,
-    "tickRate": 0.3
-  }
-};
+export const Cloudburst: Power = withOverrides(base, overrides);

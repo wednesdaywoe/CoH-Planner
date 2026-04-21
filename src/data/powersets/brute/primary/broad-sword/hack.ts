@@ -1,58 +1,16 @@
 /**
- * Hack
- * Melee, DMG(Lethal), Foe -DEF
+ * Hack — COMPOSED EXPORT
  *
- * Source: brute_melee/broad_sword/hack.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs brute_melee broad_sword
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Hack as base } from '@/data/generated/powersets/brute/primary/broad-sword/hack';
+import { overrides } from '@/data/overrides/powersets/brute/primary/broad-sword/hack';
 
-export const Hack: Power = {
-  "name": "Hack",
-  "internalName": "Hack",
-  "available": 0,
-  "description": "You Hack your opponent for a high amount of damage. This attack can reduce a target's Defense, making him easier to hit.",
-  "shortHelp": "Melee, DMG(Lethal), Foe -DEF",
-  "icon": "sword_hack.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1.05,
-    "range": 7,
-    "recharge": 8,
-    "endurance": 8.528,
-    "castTime": 1.33
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "EnduranceReduction",
-    "Recharge",
-    "Defense Debuff",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Brute Archetype Sets",
-    "Defense Debuff",
-    "Melee Damage",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 1.64,
-    "table": "Melee_Damage"
-  },
-  "effects": {
-    "defenseDebuff": {
-      "scale": 1,
-      "table": "Melee_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 10
-    },
-    "buffDuration": 10
-  }
-};
+export const Hack: Power = withOverrides(base, overrides);

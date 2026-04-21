@@ -1,74 +1,16 @@
 /**
- * Eagles Claw
- * Melee, Extreme DMG(Smash), DoT(Lethal), Foe Minor Disorient, +Special
+ * Eagles Claw — COMPOSED EXPORT
  *
- * Source: blaster_support/martial_manipulation/eagles_claw.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs blaster_support martial_manipulation
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { EaglesClaw as base } from '@/data/generated/powersets/blaster/secondary/martial-combat/eagles-claw';
+import { overrides } from '@/data/overrides/powersets/blaster/secondary/martial-combat/eagles-claw';
 
-export const EaglesClaw: Power = {
-  "name": "Eagles Claw",
-  "internalName": "Eagles_Claw",
-  "available": 29,
-  "description": "You can perform a devastating kick that can severely Disorient most opponents. Eagle's Claw strikes so powerfully that it weakens your target's resolve, reducing their Range and Recharge for several seconds after attacking, and has an additional chance to cause your target to bleed for Lethal damage over time.Damage: Extreme.Recharge: Slow.",
-  "shortHelp": "Melee, Extreme DMG(Smash), DoT(Lethal), Foe Minor Disorient, +Special",
-  "icon": "martialmanipulation_eaglesclaw.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1.05,
-    "range": 7,
-    "recharge": 18,
-    "endurance": 16.848,
-    "castTime": 2.53
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Stun",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Blaster Archetype Sets",
-    "Melee Damage",
-    "Stuns",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 3.24,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.5,
-      "table": "Melee_Damage",
-      "duration": 5,
-      "tickRate": 0.5
-    }
-  ],
-  "effects": {
-    "stun": {
-      "mag": 3,
-      "scale": 4,
-      "table": "Melee_Stun"
-    },
-    "rangeBuff": {
-      "scale": 0.25,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "rangeBuff": 10,
-      "damageBuff": 10.03
-    },
-    "damageBuff": {
-      "scale": 0.167,
-      "table": "Melee_Ones"
-    },
-    "buffDuration": 10.03
-  }
-};
+export const EaglesClaw: Power = withOverrides(base, overrides);

@@ -1,55 +1,16 @@
 /**
- * Tornado
- * Summon Tornado: PBAoE Minor DMG(Smash), Foe Knockback, Fear, Disorient
+ * Tornado — COMPOSED EXPORT
  *
- * Source: corruptor_buff/storm_summoning/tornado.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs corruptor_buff storm_summoning
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Tornado as base } from '@/data/generated/powersets/corruptor/secondary/storm-summoning/tornado';
+import { overrides } from '@/data/overrides/powersets/corruptor/secondary/storm-summoning/tornado';
 
-export const Tornado: Power = {
-  "name": "Tornado",
-  "internalName": "Tornado",
-  "available": 27,
-  "description": "Conjures up a funnel cloud at a targeted location. The Tornado will chase down your foes, tossing them into the air and hurling them great distances. The victims are left Disoriented and with reduced Defense. The Tornado is a menacing sight, and can even cause panic among your foes.Recharge: Slow.",
-  "shortHelp": "Summon Tornado: PBAoE Minor DMG(Smash), Foe Knockback, Fear, Disorient",
-  "icon": "stormsummoning_tornado.png",
-  "powerType": "Click",
-  "targetType": "Location",
-  "effectArea": "Location",
-  "stats": {
-    "accuracy": 1.3,
-    "range": 60,
-    "recharge": 60,
-    "endurance": 20.8,
-    "castTime": 1.17
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Stun",
-    "Recharge",
-    "Knockback",
-    "Defense Debuff",
-    "Damage"
-  ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Corruptor Archetype Sets",
-    "Defense Debuff",
-    "Knockback",
-    "Pet Damage",
-    "Recharge Intensive Pets",
-    "Stuns",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_Tornado",
-      "duration": 30,
-      "copyBoosts": true
-    }
-  }
-};
+export const Tornado: Power = withOverrides(base, overrides);

@@ -1,68 +1,16 @@
 /**
- * Tenebrous Tentacles
- * Ranged (Cone), DMG(Negative), Foe Immobilize, -To Hit
+ * Tenebrous Tentacles — COMPOSED EXPORT
  *
- * Source: defender_ranged/dark_blast/tenebrous_tentacles.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs defender_ranged dark_blast
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { TenebrousTentacles as base } from '@/data/generated/powersets/defender/secondary/dark-blast/tenebrous-tentacles';
+import { overrides } from '@/data/overrides/powersets/defender/secondary/dark-blast/tenebrous-tentacles';
 
-export const TenebrousTentacles: Power = {
-  "name": "Tenebrous Tentacles",
-  "internalName": "Tenebrous_Tentacles",
-  "available": 15,
-  "description": "You can create a cone shaped rift to the Netherworld that allows its native creatures to slip their oily Tentacles into our reality. These creatures will snare all foes within range, Immobilizing them while the Tentacles drain their life and reduce their chance to hit.",
-  "shortHelp": "Ranged (Cone), DMG(Negative), Foe Immobilize, -To Hit",
-  "icon": "darkcast_tenebroustentacles.png",
-  "powerType": "Click",
-  "effectArea": "Cone",
-  "stats": {
-    "accuracy": 1,
-    "range": 40,
-    "radius": 40,
-    "arc": 0.6981,
-    "recharge": 10,
-    "endurance": 10.192,
-    "castTime": 1.67,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Immobilize",
-    "ToHit Debuff",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate To-Hit Debuff",
-    "Defender Archetype Sets",
-    "Immobilize",
-    "Ranged AoE Damage",
-    "To Hit Debuff",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Negative",
-      "scale": 0.1,
-      "table": "Ranged_Damage",
-      "duration": 7.1,
-      "tickRate": 1
-    },
-    {
-      "type": "Negative",
-      "scale": 0.135,
-      "table": "Ranged_Damage"
-    }
-  ],
-  "effects": {
-    "immobilize": {
-      "mag": 3,
-      "scale": 15,
-      "table": "Ranged_Immobilize"
-    }
-  }
-};
+export const TenebrousTentacles: Power = withOverrides(base, overrides);

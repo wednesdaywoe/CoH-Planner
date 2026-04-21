@@ -1,62 +1,16 @@
 /**
- * Shockwave
- * Ranged (Cone), Light DMG(Smashing/Energy), Foe Knockback
+ * Shockwave — COMPOSED EXPORT
  *
- * Source: corruptor_ranged/sonic_attack/shockwave.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs corruptor_ranged sonic_attack
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Shockwave as base } from '@/data/generated/powersets/corruptor/primary/sonic-attack/shockwave';
+import { overrides } from '@/data/overrides/powersets/corruptor/primary/sonic-attack/shockwave';
 
-export const Shockwave: Power = {
-  "name": "Shockwave",
-  "internalName": "Shockwave",
-  "available": 5,
-  "description": "You can call forth a tremendous Shockwave that knocks back foes and deals Smashing damage in a wide cone area.",
-  "shortHelp": "Ranged (Cone), Light DMG(Smashing/Energy), Foe Knockback",
-  "icon": "sonicblast_knockback.png",
-  "powerType": "Click",
-  "effectArea": "Cone",
-  "stats": {
-    "accuracy": 1,
-    "range": 50,
-    "radius": 50,
-    "arc": 0.5236,
-    "recharge": 11,
-    "endurance": 11.024,
-    "castTime": 1.67,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Knockback",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Corruptor Archetype Sets",
-    "Knockback",
-    "Ranged AoE Damage",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 0.4326,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.4326,
-      "table": "Ranged_Damage"
-    }
-  ],
-  "effects": {
-    "knockback": {
-      "scale": 3,
-      "table": "Ranged_Knockback"
-    }
-  }
-};
+export const Shockwave: Power = withOverrides(base, overrides);

@@ -1,30 +1,16 @@
 /**
- * Chemical Ammunition
- * Toggle: Ammo Change (Toxic), Special
+ * Chemical Ammunition — COMPOSED EXPORT
  *
- * Source: corruptor_ranged/dual_pistols/chemical_ammunition.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs corruptor_ranged dual_pistols
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { ChemicalAmmunition as base } from '@/data/generated/powersets/corruptor/primary/dual-pistols/chemical-ammunition';
+import { overrides } from '@/data/overrides/powersets/corruptor/primary/dual-pistols/chemical-ammunition';
 
-export const ChemicalAmmunition: Power = {
-  "name": "Chemical Ammunition",
-  "internalName": "Chemical_Ammunition",
-  "available": -1,
-  "description": "While this toggle is active you will be equipped with 'Chemical Rounds.' Most of your Dual Pistol attacks will have their secondary damage converted to toxic damage and inflict a minor damage debuff effect on the target.In order to earn this power, you must purchase the Swap Ammo power.",
-  "shortHelp": "Toggle: Ammo Change (Toxic), Special",
-  "icon": "dualpistols_chemicalammo.png",
-  "powerType": "Toggle",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 4,
-    "castTime": 0.63,
-    "activatePeriod": 0.5
-  },
-  "allowedEnhancements": [],
-  "maxSlots": 0,
-  "requires": "Corruptor_Ranged.Dual_Pistols.Swap_Ammo",
-  "mechanicType": "childToggle"
-};
+export const ChemicalAmmunition: Power = withOverrides(base, overrides);

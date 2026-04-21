@@ -1,50 +1,16 @@
 /**
- * Elbow Strike
- * Melee, DMG(Smash), Foe Knockback
+ * Elbow Strike — COMPOSED EXPORT
  *
- * Source: dominator_assault/arsenal_assault/heavy_blow.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs dominator_assault arsenal_assault
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { ElbowStrike as base } from '@/data/generated/powersets/dominator/secondary/arsenal-assault/heavy-blow';
+import { overrides } from '@/data/overrides/powersets/dominator/secondary/arsenal-assault/heavy-blow';
 
-export const ElbowStrike: Power = {
-  "name": "Elbow Strike",
-  "internalName": "Heavy_Blow",
-  "available": 9,
-  "description": "You strike your foe with a powerful punch dealing Smashing damage and knocking the target back.",
-  "shortHelp": "Melee, DMG(Smash), Foe Knockback",
-  "icon": "assaultweapons_heavyblow.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1.05,
-    "range": 7,
-    "recharge": 12,
-    "endurance": 11.856,
-    "castTime": 1.07
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Knockback",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Knockback",
-    "Melee Damage",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 2.28,
-    "table": "Melee_Damage"
-  },
-  "effects": {
-    "knockback": {
-      "scale": 1.67,
-      "table": "Melee_Ones"
-    }
-  }
-};
+export const ElbowStrike: Power = withOverrides(base, overrides);

@@ -1,61 +1,16 @@
 /**
- * Energy Punch
- * Melee, DMG(Smash/Energy), Foe Disorient
+ * Energy Punch — COMPOSED EXPORT
  *
- * Source: tanker_melee/energy_melee/energy_punch.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs tanker_melee energy_melee
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { EnergyPunch as base } from '@/data/generated/powersets/tanker/secondary/energy-melee/energy-punch';
+import { overrides } from '@/data/overrides/powersets/tanker/secondary/energy-melee/energy-punch';
 
-export const EnergyPunch: Power = {
-  "name": "Energy Punch",
-  "internalName": "Energy_Punch",
-  "available": 0,
-  "description": "You perform a powerful Energy Punch that deals moderate damage. When used with other Energy Melee attacks, Energy Punch can Disorient your opponent.",
-  "shortHelp": "Melee, DMG(Smash/Energy), Foe Disorient",
-  "icon": "powerpunch_energypunch.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 7,
-    "recharge": 5,
-    "endurance": 6.032,
-    "castTime": 0.83
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "EnduranceReduction",
-    "Stun",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Melee Damage",
-    "Stuns",
-    "Tanker Archetype Sets",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Energy",
-      "scale": 0.812,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.348,
-      "table": "Melee_Damage"
-    }
-  ],
-  "effects": {
-    "stun": {
-      "mag": 2,
-      "scale": 5,
-      "table": "Melee_Stun"
-    }
-  }
-};
+export const EnergyPunch: Power = withOverrides(base, overrides);

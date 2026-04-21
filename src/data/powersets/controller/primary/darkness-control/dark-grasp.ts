@@ -1,56 +1,16 @@
 /**
- * Dark Grasp
- * Ranged, High DMG(Negative), Foe Hold, -To Hit
+ * Dark Grasp — COMPOSED EXPORT
  *
- * Source: controller_control/darkness_control/dark_grasp.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs controller_control darkness_control
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { DarkGrasp as base } from '@/data/generated/powersets/controller/primary/darkness-control/dark-grasp';
+import { overrides } from '@/data/overrides/powersets/controller/primary/darkness-control/dark-grasp';
 
-export const DarkGrasp: Power = {
-  "name": "Dark Grasp",
-  "internalName": "Dark_Grasp",
-  "available": 0,
-  "description": "You cause your target's shadow to wholly envelop them, leaving them held and rendered helpless while suffering from moderate negative energy damage. Even if the target is powerful enough to resist the power's hold effect they will have their chance to hit reduced.Damage: High.Recharge: Moderate.",
-  "shortHelp": "Ranged, High DMG(Negative), Foe Hold, -To Hit",
-  "icon": "darknesscontrol_darkgrasp.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1.2,
-    "range": 80,
-    "recharge": 8,
-    "endurance": 8.528,
-    "castTime": 1.67
-  },
-  "allowedEnhancements": [
-    "Hold",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "ToHit Debuff",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate To-Hit Debuff",
-    "Controller Archetype Sets",
-    "Holds",
-    "Ranged Damage",
-    "To Hit Debuff",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Negative",
-    "scale": 1,
-    "table": "Ranged_Damage"
-  },
-  "effects": {
-    "hold": {
-      "mag": 3,
-      "scale": 12,
-      "table": "Ranged_Immobilize"
-    }
-  }
-};
+export const DarkGrasp: Power = withOverrides(base, overrides);

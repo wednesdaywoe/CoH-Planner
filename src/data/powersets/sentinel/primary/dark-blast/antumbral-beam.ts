@@ -1,47 +1,16 @@
 /**
- * Antumbral Beam
- * Ranged, DMG(Negative), Target -To Hit
+ * Antumbral Beam — COMPOSED EXPORT
  *
- * Source: sentinel_ranged/dark_blast/antumbral_beam.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs sentinel_ranged dark_blast
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { AntumbralBeam as base } from '@/data/generated/powersets/sentinel/primary/dark-blast/antumbral-beam';
+import { overrides } from '@/data/overrides/powersets/sentinel/primary/dark-blast/antumbral-beam';
 
-export const AntumbralBeam: Power = {
-  "name": "Antumbral Beam",
-  "internalName": "Antumbral_Beam",
-  "available": 17,
-  "description": "An extremely focused beam of Negative Energy that deals tremendous damage and reduces the target's chance to hit.",
-  "shortHelp": "Ranged, DMG(Negative), Target -To Hit",
-  "icon": "darkcast_heavy.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1.2,
-    "range": 60,
-    "recharge": 15,
-    "endurance": 14.352,
-    "castTime": 2.07
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "ToHit Debuff",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate To-Hit Debuff",
-    "Ranged Damage",
-    "Sentinel Archetype Sets",
-    "To Hit Debuff",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Negative",
-    "scale": 2.76,
-    "table": "Ranged_Damage"
-  }
-};
+export const AntumbralBeam: Power = withOverrides(base, overrides);

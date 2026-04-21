@@ -1,50 +1,16 @@
 /**
- * Storm Kick
- * Melee, DMG(Smashing)
+ * Storm Kick — COMPOSED EXPORT
  *
- * Source: stalker_melee/martial_arts/storm_kick.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs stalker_melee martial_arts
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { StormKick as base } from '@/data/generated/powersets/stalker/primary/martial-arts/storm-kick';
+import { overrides } from '@/data/overrides/powersets/stalker/primary/martial-arts/storm-kick';
 
-export const StormKick: Power = {
-  "name": "Storm Kick",
-  "internalName": "Storm_Kick",
-  "available": 0,
-  "description": "You can unleash a roundhouse kick that pummels your foe for moderate damage. Storm Kick has a greater then average chance to score a critical hit.",
-  "shortHelp": "Melee, DMG(Smashing)",
-  "icon": "martialarts_stormkick.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1.05,
-    "range": 7,
-    "recharge": 6,
-    "endurance": 6.864,
-    "castTime": 0.83
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Melee Damage",
-    "Stalker Archetype Sets",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 1.32,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.32,
-      "table": "Melee_InherentDamage"
-    }
-  ]
-};
+export const StormKick: Power = withOverrides(base, overrides);

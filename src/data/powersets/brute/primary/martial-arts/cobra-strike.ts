@@ -1,54 +1,16 @@
 /**
- * Cobra Strike
- * Melee, DMG(Smash), Foe Disorient
+ * Cobra Strike — COMPOSED EXPORT
  *
- * Source: brute_melee/martial_arts/cobra_strike.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs brute_melee martial_arts
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { CobraStrike as base } from '@/data/generated/powersets/brute/primary/martial-arts/cobra-strike';
+import { overrides } from '@/data/overrides/powersets/brute/primary/martial-arts/cobra-strike';
 
-export const CobraStrike: Power = {
-  "name": "Cobra Strike",
-  "internalName": "Cobra_Strike",
-  "available": 1,
-  "description": "Using intense martial arts focus, you can perform a Cobra Strike that deals high damage, but has a great chance of Disorienting your target.",
-  "shortHelp": "Melee, DMG(Smash), Foe Disorient",
-  "icon": "martialarts_cobrastrike.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1.05,
-    "range": 7,
-    "recharge": 10,
-    "endurance": 10.192,
-    "castTime": 1.67
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "EnduranceReduction",
-    "Stun",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Brute Archetype Sets",
-    "Melee Damage",
-    "Stuns",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 1.96,
-    "table": "Melee_Damage"
-  },
-  "effects": {
-    "stun": {
-      "mag": 3,
-      "scale": 10,
-      "table": "Melee_Stun"
-    }
-  }
-};
+export const CobraStrike: Power = withOverrides(base, overrides);

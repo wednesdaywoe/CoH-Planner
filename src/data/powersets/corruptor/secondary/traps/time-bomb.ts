@@ -1,78 +1,16 @@
 /**
- * Temporal Bomb
- * Place Bomb: PBAoE, DMG(Lethal/Fire), Foe Knockback, Special
+ * Temporal Bomb — COMPOSED EXPORT
  *
- * Source: corruptor_buff/traps/time_bomb.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs corruptor_buff traps
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { TemporalBomb as base } from '@/data/generated/powersets/corruptor/secondary/traps/time-bomb';
+import { overrides } from '@/data/overrides/powersets/corruptor/secondary/traps/time-bomb';
 
-export const TemporalBomb: Power = {
-  "name": "Temporal Bomb",
-  "internalName": "Time_Bomb",
-  "available": 29,
-  "description": "You can place a Temporal Bomb on the ground. The Temporal Bomb will detonate once the power is activated a second time, resulting in a massive explosion that can damage all nearby foes and send them flying, as well as create a Temporal Bubble that speeds up yourself and allies, while slowing down all enemies inside. If used while targeting an enemy in melee range, you can attach the Temporal Bomb to them instead!The Temporal Bomb is small, and almost impossible to detect.",
-  "shortHelp": "Place Bomb: PBAoE, DMG(Lethal/Fire), Foe Knockback, Special",
-  "icon": "traps_remotebomb.png",
-  "powerType": "Click",
-  "targetType": "Location",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 2
-  },
-  "allowedEnhancements": [
-    "EnduranceModification",
-    "Slow",
-    "EnduranceReduction",
-    "Recharge",
-    "Knockback",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Corruptor Archetype Sets",
-    "Endurance Modification",
-    "Knockback",
-    "Melee AoE Damage",
-    "Slow Movement",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "isPseudoPet": false,
-      "duration": 360,
-      "copyBoosts": true,
-      "entities": [
-        {
-          "entity": "Pets_Bomb",
-          "count": 1
-        },
-        {
-          "entity": "Pets_Bomb_Controller",
-          "count": 1
-        },
-        {
-          "entity": "Pets_Bomb_Corruptor",
-          "count": 1
-        },
-        {
-          "entity": "Pets_Bomb_Temporal",
-          "count": 1
-        },
-        {
-          "entity": "Pets_Bomb_Temporal_Defender",
-          "count": 1
-        },
-        {
-          "entity": "Pets_Bomb_Defender",
-          "count": 1
-        }
-      ]
-    },
-    "damageBuff": {
-      "scale": 0,
-      "table": "Ranged_Ones"
-    }
-  }
-};
+export const TemporalBomb: Power = withOverrides(base, overrides);

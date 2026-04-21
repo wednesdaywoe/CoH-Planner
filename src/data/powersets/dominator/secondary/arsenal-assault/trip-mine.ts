@@ -1,51 +1,16 @@
 /**
- * Trip Mine
- * Place Mine: PBAoE, DMG(Fire), Foe Knockback
+ * Trip Mine — COMPOSED EXPORT
  *
- * Source: dominator_assault/arsenal_assault/trip_mine.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs dominator_assault arsenal_assault
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { TripMine as base } from '@/data/generated/powersets/dominator/secondary/arsenal-assault/trip-mine';
+import { overrides } from '@/data/overrides/powersets/dominator/secondary/arsenal-assault/trip-mine';
 
-export const TripMine: Power = {
-  "name": "Trip Mine",
-  "internalName": "Trip_Mine",
-  "available": 19,
-  "description": "You can place a Trip Mine on the ground. Any villains that pass near the Trip Mine will cause it to explode, damaging all nearby foes and sending them flying.",
-  "shortHelp": "Place Mine: PBAoE, DMG(Fire), Foe Knockback",
-  "icon": "assaultweapons_tripmine.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 20,
-    "endurance": 18.512,
-    "castTime": 1.93
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Knockback",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Knockback",
-    "Melee AoE Damage",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "isPseudoPet": true,
-      "displayName": "Mine",
-      "powers": [
-        "Pets.Trip_Mine_Dominator.TripMine_Resistance",
-        "Pets.Trip_Mine_Dominator.TripMine_Info"
-      ],
-      "duration": 170,
-      "copyBoosts": true
-    }
-  }
-};
+export const TripMine: Power = withOverrides(base, overrides);

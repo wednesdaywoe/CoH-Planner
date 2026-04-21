@@ -1,69 +1,16 @@
 /**
- * Crushing Blow
- * Melee, DMG(Smashing), -DEF
+ * Crushing Blow — COMPOSED EXPORT
  *
- * Source: scrapper_melee/titan_weapons/crushing_blow.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs scrapper_melee titan_weapons
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { CrushingBlow as base } from '@/data/generated/powersets/scrapper/primary/titan-weapons/crushing-blow';
+import { overrides } from '@/data/overrides/powersets/scrapper/primary/titan-weapons/crushing-blow';
 
-export const CrushingBlow: Power = {
-  "name": "Crushing Blow",
-  "internalName": "Crushing_Blow",
-  "available": 0,
-  "description": "You swing a mighty crushing blow at your opponent dealing High Smashing damage and reducing their defense.",
-  "shortHelp": "Melee, DMG(Smashing), -DEF",
-  "icon": "titanweapons_crushingblow.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 9,
-    "recharge": 8,
-    "endurance": 8.7838,
-    "castTime": 2
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Defense Debuff",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Defense Debuff",
-    "Melee Damage",
-    "Scrapper Archetype Sets",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 1.64,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.64,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.64,
-      "table": "Melee_InherentDamage"
-    }
-  ],
-  "effects": {
-    "defenseDebuff": {
-      "scale": 1,
-      "table": "Melee_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 10
-    },
-    "buffDuration": 10
-  },
-  "requires": "!Scrapper_Defense.Shield_Defense"
-};
+export const CrushingBlow: Power = withOverrides(base, overrides);

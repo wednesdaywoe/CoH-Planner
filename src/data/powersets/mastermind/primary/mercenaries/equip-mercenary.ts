@@ -1,37 +1,16 @@
 /**
- * Equip Mercenary
- * Ranged, Equip Mercenary Henchman
+ * Equip Mercenary — COMPOSED EXPORT
  *
- * Source: mastermind_summon/mercenaries/equip_mercenary.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs mastermind_summon mercenaries
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { EquipMercenary as base } from '@/data/generated/powersets/mastermind/primary/mercenaries/equip-mercenary';
+import { overrides } from '@/data/overrides/powersets/mastermind/primary/mercenaries/equip-mercenary';
 
-export const EquipMercenary: Power = {
-  "name": "Equip Mercenary",
-  "internalName": "Equip_Mercenary",
-  "available": 5,
-  "description": "Equip your Mercenary Henchmen with more advanced munitions and weaponry. This power permanently bestows new weapons and abilities to all Mercenary Henchman. The powers gained are unique and dependent upon the type of Mercenary Henchman.Your Mercenary Henchmen will also become more resistant to damage. This power only works on your Mercenary Henchmen and you can only Equip your Mercenary Henchmen once with this power.",
-  "shortHelp": "Ranged, Equip Mercenary Henchman",
-  "icon": "paramilitary_equipsoldier.png",
-  "powerType": "Click",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "range": 50,
-    "radius": 30,
-    "recharge": 0.5,
-    "endurance": 11.375,
-    "castTime": 1.3,
-    "maxTargets": 16
-  },
-  "allowedEnhancements": [
-    "Resistance",
-    "EnduranceReduction",
-    "Range"
-  ],
-  "allowedSetCategories": [
-    "Resist Damage"
-  ],
-  "maxSlots": 6
-};
+export const EquipMercenary: Power = withOverrides(base, overrides);

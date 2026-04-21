@@ -1,46 +1,16 @@
 /**
- * Ice Blast
- * Ranged, DMG(Cold), Foe -Recharge, -SPD
+ * Ice Blast — COMPOSED EXPORT
  *
- * Source: sentinel_ranged/ice_blast/ice_blast.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs sentinel_ranged ice_blast
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { IceBlast as base } from '@/data/generated/powersets/sentinel/primary/ice-blast/ice-blast';
+import { overrides } from '@/data/overrides/powersets/sentinel/primary/ice-blast/ice-blast';
 
-export const IceBlast: Power = {
-  "name": "Ice Blast",
-  "internalName": "Ice_Blast",
-  "available": 0,
-  "description": "Ice Blast hurls shards of ice at foes and Slows their attacks and movement for a time. Slower recharge than Ice Bolt, but more damage.",
-  "shortHelp": "Ranged, DMG(Cold), Foe -Recharge, -SPD",
-  "icon": "iceblast_iceblast.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 60,
-    "recharge": 6,
-    "endurance": 6.864,
-    "castTime": 1.67
-  },
-  "allowedEnhancements": [
-    "Slow",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Ranged Damage",
-    "Sentinel Archetype Sets",
-    "Slow Movement",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Cold",
-    "scale": 1.32,
-    "table": "Ranged_Damage"
-  }
-};
+export const IceBlast: Power = withOverrides(base, overrides);

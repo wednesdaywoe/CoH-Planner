@@ -1,64 +1,16 @@
 /**
- * Focused Burst
- * Ranged, DMG(Smash/Energy), Foe Knockdown
+ * Focused Burst — COMPOSED EXPORT
  *
- * Source: stalker_melee/kinetic_attack/focused_burst.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs stalker_melee kinetic_attack
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { FocusedBurst as base } from '@/data/generated/powersets/stalker/primary/kinetic-melee/focused-burst';
+import { overrides } from '@/data/overrides/powersets/stalker/primary/kinetic-melee/focused-burst';
 
-export const FocusedBurst: Power = {
-  "name": "Focused Burst",
-  "internalName": "Focused_Burst",
-  "available": 21,
-  "description": "Projects a burst of focused power over a short distance. Focused Burst deals high damage and can possibly knock down your foe.",
-  "shortHelp": "Ranged, DMG(Smash/Energy), Foe Knockdown",
-  "icon": "kineticattack_focusedburst.png",
-  "powerType": "Click",
-  "effectArea": "Chain",
-  "stats": {
-    "accuracy": 1.0,
-    "range": 40,
-    "recharge": 8,
-    "endurance": 8.528,
-    "castTime": 2.0
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Knockback",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Knockback",
-    "Ranged Damage",
-    "Stalker Archetype Sets",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 1.23,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.41,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.64,
-      "table": "Melee_InherentDamage"
-    }
-  ],
-  "effects": {
-    "knockback": {
-      "scale": 0.67,
-      "table": "Melee_Ones"
-    }
-  }
-};
+export const FocusedBurst: Power = withOverrides(base, overrides);

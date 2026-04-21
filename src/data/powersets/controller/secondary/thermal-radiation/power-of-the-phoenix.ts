@@ -1,69 +1,16 @@
 /**
- * Power of the Phoenix
- * Ally Rez, Special
+ * Power of the Phoenix — COMPOSED EXPORT
  *
- * Source: controller_buff/thermal_radiation/power_of_the_phoenix.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs controller_buff thermal_radiation
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { PowerofthePhoenix as base } from '@/data/generated/powersets/controller/secondary/thermal-radiation/power-of-the-phoenix';
+import { overrides } from '@/data/overrides/powersets/controller/secondary/thermal-radiation/power-of-the-phoenix';
 
-export const PowerofthePhoenix: Power = {
-  "name": "Power of the Phoenix",
-  "internalName": "Power_of_the_Phoenix",
-  "available": 15,
-  "description": "Revives a fallen ally. The fiery resurrection blasts nearby foes with an explosion and knocks them down and Disorients them. Your ally will revive with most of their Hit Points and Endurance. They will also be invulnerable for a brief time, as well as protected from XPDebt for 90 seconds.",
-  "shortHelp": "Ally Rez, Special",
-  "icon": "thermalradiation_phoenix.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 60,
-    "recharge": 300,
-    "endurance": 10.4,
-    "castTime": 1.67
-  },
-  "allowedEnhancements": [
-    "EnduranceModification",
-    "EnduranceReduction",
-    "Stun",
-    "Recharge",
-    "Healing",
-    "Damage"
-  ],
-  "allowedSetCategories": [
-    "Endurance Modification",
-    "Healing",
-    "Ranged AoE Damage",
-    "Stuns",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Heal",
-    "scale": 7,
-    "table": "Ranged_HealSelf",
-    "duration": 0.5,
-    "tickRate": 1
-  },
-  "effects": {
-    "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_Phoenix",
-      "duration": 5,
-      "copyBoosts": true
-    },
-    "untouchable": {
-      "scale": 10,
-      "table": "Ranged_Ones"
-    },
-    "durations": {
-      "untouchable": 15
-    },
-    "enduranceGain": {
-      "scale": 70,
-      "table": "Ranged_Ones"
-    },
-    "buffDuration": 15
-  }
-};
+export const PowerofthePhoenix: Power = withOverrides(base, overrides);

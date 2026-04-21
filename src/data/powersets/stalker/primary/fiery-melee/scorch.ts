@@ -1,57 +1,16 @@
 /**
- * Scorch
- * Melee, DMG(Fire)
+ * Scorch — COMPOSED EXPORT
  *
- * Source: stalker_melee/fiery_melee/scorch.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs stalker_melee fiery_melee
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Scorch as base } from '@/data/generated/powersets/stalker/primary/fiery-melee/scorch';
+import { overrides } from '@/data/overrides/powersets/stalker/primary/fiery-melee/scorch';
 
-export const Scorch: Power = {
-  "name": "Scorch",
-  "internalName": "Scorch",
-  "available": 0,
-  "description": "This power engulfs your hands in flames, and can ignite the target of your Scorching attack. Once on fire, the target will suffer damage over time.",
-  "shortHelp": "Melee, DMG(Fire)",
-  "icon": "fieryfray_targetedlightmelee.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 7,
-    "recharge": 3,
-    "endurance": 4.368,
-    "castTime": 1
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Melee Damage",
-    "Stalker Archetype Sets",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Fire",
-      "scale": 0.84,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.84,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.1,
-      "table": "Melee_Damage",
-      "duration": 1.1,
-      "tickRate": 0.5
-    }
-  ]
-};
+export const Scorch: Power = withOverrides(base, overrides);

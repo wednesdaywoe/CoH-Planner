@@ -1,72 +1,16 @@
 /**
- * Fossilize
- * Ranged, DMG(Smash), Foe Hold, -DEF
+ * Fossilize — COMPOSED EXPORT
  *
- * Source: controller_control/earth_control/fossilize.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs controller_control earth_control
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Fossilize as base } from '@/data/generated/powersets/controller/primary/earth-control/fossilize';
+import { overrides } from '@/data/overrides/powersets/controller/primary/earth-control/fossilize';
 
-export const Fossilize: Power = {
-  "name": "Fossilize",
-  "internalName": "Fossilize",
-  "available": 0,
-  "description": "Encases a single target within solid stone. The stone slowly crushes the victim, dealing Smashing damage. The Fossilized victim is held helpless and unable to defend themselves. Damage, Moderate.",
-  "shortHelp": "Ranged, DMG(Smash), Foe Hold, -DEF",
-  "icon": "earthgrasp_fossilize.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1.2,
-    "range": 80,
-    "recharge": 8,
-    "endurance": 8.528,
-    "castTime": 2.07
-  },
-  "allowedEnhancements": [
-    "Hold",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Controller Archetype Sets",
-    "Holds",
-    "Ranged Damage",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 1,
-    "table": "Ranged_Damage"
-  },
-  "effects": {
-    "hold": {
-      "mag": 3,
-      "scale": 12,
-      "table": "Ranged_Immobilize"
-    },
-    "defenseDebuff": {
-      "scale": 2,
-      "table": "Ranged_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 12,
-      "mezResistance": 12
-    },
-    "mezResistance": {
-      "knockup": {
-        "scale": 100,
-        "table": "Ranged_Ones"
-      },
-      "knockback": {
-        "scale": 100,
-        "table": "Ranged_Ones"
-      }
-    },
-    "buffDuration": 12
-  }
-};
+export const Fossilize: Power = withOverrides(base, overrides);

@@ -1,59 +1,16 @@
 /**
- * Time Shift
- * Ranged (Targeted AoE), Foe Disorient, -SPD, -ToHit
+ * Time Shift — COMPOSED EXPORT
  *
- * Source: blaster_support/time_manipulation/time_shift.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs blaster_support time_manipulation
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { TimeShift as base } from '@/data/generated/powersets/blaster/secondary/temporal-manipulation/time-shift';
+import { overrides } from '@/data/overrides/powersets/blaster/secondary/temporal-manipulation/time-shift';
 
-export const TimeShift: Power = {
-  "name": "Time Shift",
-  "internalName": "Time_Shift",
-  "available": 27,
-  "description": "You shift time on an area, replacing your foes with future or past versions of themselves. This shift can be very disorienting and will incapacitate affected foes. Stronger foes may be able to resist the effect, but they still will have their movement speed and accuracy reduced. Targets affected by the Delayed effect will suffer from a more powerful disorientation, however its benefits are brief.Recharge: Long.",
-  "shortHelp": "Ranged (Targeted AoE), Foe Disorient, -SPD, -ToHit",
-  "icon": "timemanipulation_timeshift.png",
-  "powerType": "Click",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 0.8,
-    "range": 70,
-    "radius": 20,
-    "recharge": 90,
-    "endurance": 20.18,
-    "castTime": 2.03,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "Slow",
-    "EnduranceReduction",
-    "Range",
-    "Stun",
-    "Recharge",
-    "ToHit Debuff",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate To-Hit Debuff",
-    "Slow Movement",
-    "Stuns",
-    "To Hit Debuff"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "stun": {
-      "mag": 2,
-      "scale": 8,
-      "table": "Ranged_Immobilize"
-    },
-    "damageBuff": {
-      "scale": 0.033,
-      "table": "Ranged_Ones"
-    },
-    "durations": {
-      "damageBuff": 9.53
-    },
-    "buffDuration": 9.53
-  }
-};
+export const TimeShift: Power = withOverrides(base, overrides);

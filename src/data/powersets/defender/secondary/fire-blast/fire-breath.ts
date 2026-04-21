@@ -1,49 +1,16 @@
 /**
- * Fire Breath
- * Close (Cone), DoT(Fire)
+ * Fire Breath — COMPOSED EXPORT
  *
- * Source: defender_ranged/fire_blast/fire_breath.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs defender_ranged fire_blast
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { FireBreath as base } from '@/data/generated/powersets/defender/secondary/fire-blast/fire-breath';
+import { overrides } from '@/data/overrides/powersets/defender/secondary/fire-blast/fire-breath';
 
-export const FireBreath: Power = {
-  "name": "Fire Breath",
-  "internalName": "Fire_Breath",
-  "available": 15,
-  "description": "You can breathe forth a torrent of fire that burns all foes within its narrow cone. Very accurate and very deadly at medium range.",
-  "shortHelp": "Close (Cone), DoT(Fire)",
-  "icon": "fireblast_arcoffire.png",
-  "powerType": "Click",
-  "effectArea": "Cone",
-  "stats": {
-    "accuracy": 1.2,
-    "range": 40,
-    "radius": 40,
-    "arc": 0.5236,
-    "recharge": 16,
-    "endurance": 15.184,
-    "castTime": 2.67,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Defender Archetype Sets",
-    "Ranged AoE Damage",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Fire",
-    "scale": 0.585,
-    "table": "Ranged_Damage",
-    "duration": 2.1,
-    "tickRate": 1
-  }
-};
+export const FireBreath: Power = withOverrides(base, overrides);

@@ -1,53 +1,16 @@
 /**
- * Will Domination
- * Ranged, High DMG(Psionic), Foe Sleep
+ * Will Domination — COMPOSED EXPORT
  *
- * Source: sentinel_ranged/psychic_blast/will_domination.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs sentinel_ranged psychic_blast
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { WillDomination as base } from '@/data/generated/powersets/sentinel/primary/psychic-blast/will-domination';
+import { overrides } from '@/data/overrides/powersets/sentinel/primary/psychic-blast/will-domination';
 
-export const WillDomination: Power = {
-  "name": "Will Domination",
-  "internalName": "Will_Domination",
-  "available": 5,
-  "description": "This powerful attack deals Psionic damage, and is so painful it usually renders its target unconscious. The victim is asleep, and will wake if disturbed.Damage: High.Recharge: Moderate.",
-  "shortHelp": "Ranged, High DMG(Psionic), Foe Sleep",
-  "icon": "psychicblast_willdomination.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 75,
-    "recharge": 10,
-    "endurance": 10.192,
-    "castTime": 1.1
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Sleep",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Ranged Damage",
-    "Sentinel Archetype Sets",
-    "Sleep",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Psionic",
-    "scale": 1.96,
-    "table": "Ranged_Damage"
-  },
-  "effects": {
-    "sleep": {
-      "mag": 3,
-      "scale": 8,
-      "table": "Ranged_Sleep"
-    }
-  }
-};
+export const WillDomination: Power = withOverrides(base, overrides);

@@ -1,74 +1,16 @@
 /**
- * Fire Sword
- * Melee, DMG(Fire), -Defense
+ * Fire Sword — COMPOSED EXPORT
  *
- * Source: brute_melee/fiery_melee/fire_sword.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs brute_melee fiery_melee
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { FireSword as base } from '@/data/generated/powersets/brute/primary/fiery-melee/fire-sword';
+import { overrides } from '@/data/overrides/powersets/brute/primary/fiery-melee/fire-sword';
 
-export const FireSword: Power = {
-  "name": "Fire Sword",
-  "internalName": "Fire_Sword",
-  "available": 0,
-  "description": "Through concentration, you can create a Sword of Fire that sets foes ablaze. Successful attacks from the Fire Sword will cut through your target defenses and ignite them, dealing damage over time.",
-  "shortHelp": "Melee, DMG(Fire), -Defense",
-  "icon": "fieryfray_firesword.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 7,
-    "recharge": 6,
-    "endurance": 6.864,
-    "castTime": 1.33
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "EnduranceReduction",
-    "Recharge",
-    "Defense Debuff",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Accurate Defense Debuff",
-    "Brute Archetype Sets",
-    "Defense Debuff",
-    "Melee Damage",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Fire",
-      "scale": 1.32,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.045,
-      "table": "Melee_Damage",
-      "duration": 2.1,
-      "tickRate": 1
-    },
-    {
-      "type": "Fire",
-      "scale": 0.1,
-      "table": "Melee_Damage",
-      "duration": 3.1,
-      "tickRate": 1
-    }
-  ],
-  "effects": {
-    "defenseDebuff": {
-      "scale": 0.5,
-      "table": "Melee_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 10
-    },
-    "buffDuration": 10
-  }
-};
+export const FireSword: Power = withOverrides(base, overrides);

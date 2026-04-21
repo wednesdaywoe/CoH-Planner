@@ -1,30 +1,16 @@
 /**
- * Incendiary Ammunition
- * Toggle: Ammo Change (Fire), Special
+ * Incendiary Ammunition — COMPOSED EXPORT
  *
- * Source: blaster_ranged/dual_pistols/incendiary_ammunition.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs blaster_ranged dual_pistols
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { IncendiaryAmmunition as base } from '@/data/generated/powersets/blaster/primary/dual-pistols/incendiary-ammunition';
+import { overrides } from '@/data/overrides/powersets/blaster/primary/dual-pistols/incendiary-ammunition';
 
-export const IncendiaryAmmunition: Power = {
-  "name": "Incendiary Ammunition",
-  "internalName": "Incendiary_Ammunition",
-  "available": -1,
-  "description": "While this toggle is active you will be equipped with 'Incendiary Rounds.' Most of your Dual Pistol attacks will have their secondary damage converted to fire damage and inflict a minor damage over time effect.In order to earn this power, you must purchase the Swap Ammo power.",
-  "shortHelp": "Toggle: Ammo Change (Fire), Special",
-  "icon": "dualpistols_incendiaryammo.png",
-  "powerType": "Toggle",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 4,
-    "castTime": 0.63,
-    "activatePeriod": 0.5
-  },
-  "allowedEnhancements": [],
-  "maxSlots": 0,
-  "requires": "Blaster_Ranged.Dual_Pistols.Swap_Ammo",
-  "mechanicType": "childToggle"
-};
+export const IncendiaryAmmunition: Power = withOverrides(base, overrides);

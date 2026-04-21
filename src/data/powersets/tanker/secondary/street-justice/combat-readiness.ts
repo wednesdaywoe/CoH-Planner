@@ -1,50 +1,16 @@
 /**
- * Combat Readiness
- * Self, +DMG, +To Hit, Special
+ * Combat Readiness — COMPOSED EXPORT
  *
- * Source: tanker_melee/brawling/combat_readiness.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs tanker_melee brawling
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { CombatReadiness as base } from '@/data/generated/powersets/tanker/secondary/street-justice/combat-readiness';
+import { overrides } from '@/data/overrides/powersets/tanker/secondary/street-justice/combat-readiness';
 
-export const CombatReadiness: Power = {
-  "name": "Combat Readiness",
-  "internalName": "Combat_Readiness",
-  "available": 15,
-  "description": "Activating this power will increase your chance to hit and the amount of damage you deal for a short amount of time as well as setting your current Combo Level to 3.",
-  "shortHelp": "Self, +DMG, +To Hit, Special",
-  "icon": "brawling_combatreadiness.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 90,
-    "endurance": 5.2,
-    "castTime": 1.17
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "ToHit"
-  ],
-  "allowedSetCategories": [
-    "To Hit Buff"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "tohitBuff": {
-      "scale": 2,
-      "table": "Melee_Buff_ToHit"
-    },
-    "durations": {
-      "tohitBuff": 10,
-      "damageBuff": 10
-    },
-    "damageBuff": {
-      "scale": 5,
-      "table": "Melee_Buff_Dmg"
-    },
-    "buffDuration": 10
-  }
-};
+export const CombatReadiness: Power = withOverrides(base, overrides);

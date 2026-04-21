@@ -1,59 +1,16 @@
 /**
- * Inferno
- * PBAoE, DMG(Fire/Smash), DoT(Fire)
+ * Inferno — COMPOSED EXPORT
  *
- * Source: sentinel_ranged/fire_blast/inferno.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs sentinel_ranged fire_blast
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Inferno as base } from '@/data/generated/powersets/sentinel/primary/fire-blast/inferno';
+import { overrides } from '@/data/overrides/powersets/sentinel/primary/fire-blast/inferno';
 
-export const Inferno: Power = {
-  "name": "Inferno",
-  "internalName": "Inferno",
-  "available": 25,
-  "description": "Unleashes a massive fiery explosion to devastate all nearby enemies and set them ablaze. Inferno deals Extreme Fire damage to all nearby foes and inflicts Moderate Fire damage over time.Damage: Extreme.Recharge: Long.",
-  "shortHelp": "PBAoE, DMG(Fire/Smash), DoT(Fire)",
-  "icon": "fireblast_inferno.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1.4,
-    "radius": 20,
-    "recharge": 90,
-    "endurance": 15.6,
-    "castTime": 3,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Melee AoE Damage",
-    "Sentinel Archetype Sets",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 0.928,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 2.253,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.15,
-      "table": "Ranged_Damage",
-      "duration": 2.1,
-      "tickRate": 1
-    }
-  ]
-};
+export const Inferno: Power = withOverrides(base, overrides);

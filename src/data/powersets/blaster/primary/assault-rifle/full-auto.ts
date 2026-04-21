@@ -1,56 +1,16 @@
 /**
- * Full Auto
- * Ranged (Cone), DMG(Lethal), +Special
+ * Full Auto — COMPOSED EXPORT
  *
- * Source: blaster_ranged/assault_rifle/full_auto.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs blaster_ranged assault_rifle
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { FullAuto as base } from '@/data/generated/powersets/blaster/primary/assault-rifle/full-auto';
+import { overrides } from '@/data/overrides/powersets/blaster/primary/assault-rifle/full-auto';
 
-export const FullAuto: Power = {
-  "name": "Full Auto",
-  "internalName": "Full_Auto",
-  "available": 25,
-  "description": "Opens up your assault rifle on Full Auto to lay down a massive spray of bullets at your target. Although very slow to reload, damage from this attack is massive, shredding all targets within the cone of effect. There's a chance you may land a lucky shot for extra damage.",
-  "shortHelp": "Ranged (Cone), DMG(Lethal), +Special",
-  "icon": "assaultweapons_arfullauto.png",
-  "powerType": "Click",
-  "effectArea": "Cone",
-  "stats": {
-    "accuracy": 1.35,
-    "range": 80,
-    "radius": 80,
-    "arc": 1.5708,
-    "recharge": 60,
-    "endurance": 15.6,
-    "castTime": 2.5,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Blaster Archetype Sets",
-    "Ranged AoE Damage",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Lethal",
-      "scale": 1,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.2754,
-      "table": "Ranged_Damage",
-      "duration": 2,
-      "tickRate": 0.2
-    }
-  ]
-};
+export const FullAuto: Power = withOverrides(base, overrides);

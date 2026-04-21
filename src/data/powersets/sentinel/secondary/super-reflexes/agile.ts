@@ -1,77 +1,16 @@
 /**
- * Agile
- * Auto: Self +DEF(Ranged), Res(DeBuff DEF), Res(DMG, Special)
+ * Agile — COMPOSED EXPORT
  *
- * Source: sentinel_defense/super_reflexes/agile.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs sentinel_defense super_reflexes
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Agile as base } from '@/data/generated/powersets/sentinel/secondary/super-reflexes/agile';
+import { overrides } from '@/data/overrides/powersets/sentinel/secondary/super-reflexes/agile';
 
-export const Agile: Power = {
-  "name": "Agile",
-  "internalName": "Agile",
-  "available": 3,
-  "description": "You become innately more Agile, and are able to naturally avoid some ranged attacks and resist Defense DeBuffs. Your Agility also grants you minor Damage Resistance to all damage except Toxic and Psionic. This Damage Resistance is only available as you lose Health but it improves as your HP declines. This power is always on, and will permanently increase your Defense versus ranged attacks.",
-  "shortHelp": "Auto: Self +DEF(Ranged), Res(DeBuff DEF), Res(DMG, Special)",
-  "icon": "superreflexes_agile.png",
-  "powerType": "Auto",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "activatePeriod": 0.5
-  },
-  "allowedEnhancements": [
-    "Defense"
-  ],
-  "allowedSetCategories": [
-    "Defense Sets"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "defenseBuff": {
-      "ranged": {
-        "scale": 0.75,
-        "table": "Melee_Buff_Def"
-      }
-    },
-    "durations": {
-      "defenseBuff": 0.75,
-      "debuffResistance": 0.75,
-      "resistance": 0.75
-    },
-    "debuffResistance": {
-      "defense": {
-        "scale": 0.2,
-        "table": "Melee_Res_Boolean"
-      }
-    },
-    "resistance": {
-      "smashing": {
-        "scale": 0,
-        "table": "Melee_Ones"
-      },
-      "lethal": {
-        "scale": 0,
-        "table": "Melee_Ones"
-      },
-      "fire": {
-        "scale": 0,
-        "table": "Melee_Ones"
-      },
-      "cold": {
-        "scale": 0,
-        "table": "Melee_Ones"
-      },
-      "energy": {
-        "scale": 0,
-        "table": "Melee_Ones"
-      },
-      "negative": {
-        "scale": 0,
-        "table": "Melee_Ones"
-      }
-    },
-    "buffDuration": 0.75
-  }
-};
+export const Agile: Power = withOverrides(base, overrides);

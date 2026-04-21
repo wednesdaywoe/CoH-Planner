@@ -1,53 +1,16 @@
 /**
- * Scramble Thoughts
- * Ranged, Extreme DMG(Psionic), Foe Disorient
+ * Scramble Thoughts — COMPOSED EXPORT
  *
- * Source: sentinel_ranged/psychic_blast/scramble_thoughts.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs sentinel_ranged psychic_blast
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { ScrambleThoughts as base } from '@/data/generated/powersets/sentinel/primary/psychic-blast/scramble-thoughts';
+import { overrides } from '@/data/overrides/powersets/sentinel/primary/psychic-blast/scramble-thoughts';
 
-export const ScrambleThoughts: Power = {
-  "name": "Scramble Thoughts",
-  "internalName": "Scramble_Thoughts",
-  "available": 21,
-  "description": "Painfully scrambles the synapses of a targeted foe, leaving them dramatically Disoriented for a short duration. Deals a little Psionic Damage.Damage: Extreme.Recharge: Slow.",
-  "shortHelp": "Ranged, Extreme DMG(Psionic), Foe Disorient",
-  "icon": "psychicblast_scramblethoughts.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 75,
-    "recharge": 20,
-    "endurance": 18.512,
-    "castTime": 3
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Stun",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Ranged Damage",
-    "Sentinel Archetype Sets",
-    "Stuns",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Psionic",
-    "scale": 3.56,
-    "table": "Ranged_Damage"
-  },
-  "effects": {
-    "stun": {
-      "mag": 3,
-      "scale": 8,
-      "table": "Ranged_Stun"
-    }
-  }
-};
+export const ScrambleThoughts: Power = withOverrides(base, overrides);

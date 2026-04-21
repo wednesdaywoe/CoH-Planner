@@ -1,44 +1,16 @@
 /**
- * Boggle
- * Short Ranged, Target Confuse, +Special
+ * Boggle — COMPOSED EXPORT
  *
- * Source: stalker_melee/psionic_melee/boggle.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs stalker_melee psionic_melee
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Boggle as base } from '@/data/generated/powersets/stalker/primary/psionic-melee/boggle';
+import { overrides } from '@/data/overrides/powersets/stalker/primary/psionic-melee/boggle';
 
-export const Boggle: Power = {
-  "name": "Boggle",
-  "internalName": "Boggle",
-  "available": 17,
-  "description": "You flood your foe's mind with doubt causing them to become confused for a brief time. Confused foes will attack their allies. Boggle will also place the \"Boggled\" effect on your target for a short time. Attacking a Boggled target will increase your chance of gaining Insight.",
-  "shortHelp": "Short Ranged, Target Confuse, +Special",
-  "icon": "psionicmelee_boggle.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 40,
-    "recharge": 20,
-    "endurance": 7.8,
-    "castTime": 1.0
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Confuse",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Confuse"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "confuse": {
-      "mag": 3,
-      "scale": 15,
-      "table": "Melee_Ones"
-    }
-  }
-};
+export const Boggle: Power = withOverrides(base, overrides);

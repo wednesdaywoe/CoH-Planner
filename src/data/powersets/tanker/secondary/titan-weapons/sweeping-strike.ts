@@ -1,56 +1,16 @@
 /**
- * Titan Sweep
- * Melee (Cone), DMG(Smashing), Foe Knockdown
+ * Titan Sweep — COMPOSED EXPORT
  *
- * Source: tanker_melee/titan_weapons/sweeping_strike.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs tanker_melee titan_weapons
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { TitanSweep as base } from '@/data/generated/powersets/tanker/secondary/titan-weapons/sweeping-strike';
+import { overrides } from '@/data/overrides/powersets/tanker/secondary/titan-weapons/sweeping-strike';
 
-export const TitanSweep: Power = {
-  "name": "Titan Sweep",
-  "internalName": "Sweeping_Strike",
-  "available": 3,
-  "description": "You make a sweeping slash with your weapon, causing high damage and possibly knocking your opponent down.",
-  "shortHelp": "Melee (Cone), DMG(Smashing), Foe Knockdown",
-  "icon": "titanweapons_sweepingstrike.png",
-  "powerType": "Click",
-  "effectArea": "Cone",
-  "stats": {
-    "accuracy": 1,
-    "range": 15,
-    "radius": 15,
-    "arc": 2.0944,
-    "recharge": 10,
-    "endurance": 10.4988,
-    "castTime": 2.43,
-    "maxTargets": 5
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "EnduranceReduction",
-    "Recharge",
-    "Knockback",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Knockback",
-    "Melee AoE Damage",
-    "Tanker Archetype Sets",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 1.3102,
-    "table": "Melee_Damage"
-  },
-  "effects": {
-    "knockback": {
-      "scale": 0.67,
-      "table": "Melee_Ones"
-    }
-  }
-};
+export const TitanSweep: Power = withOverrides(base, overrides);

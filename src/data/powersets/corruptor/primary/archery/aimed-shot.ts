@@ -1,44 +1,16 @@
 /**
- * Aimed Shot
- * Ranged, High DMG(Lethal)
+ * Aimed Shot — COMPOSED EXPORT
  *
- * Source: corruptor_ranged/archery/aimed_shot.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs corruptor_ranged archery
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { AimedShot as base } from '@/data/generated/powersets/corruptor/primary/archery/aimed-shot';
+import { overrides } from '@/data/overrides/powersets/corruptor/primary/archery/aimed-shot';
 
-export const AimedShot: Power = {
-  "name": "Aimed Shot",
-  "internalName": "Aimed_Shot",
-  "available": 0,
-  "description": "Though it takes longer to execute, your Aimed Shot deals greater damage than Snap Shot.Damage: High.Recharge: Fast.",
-  "shortHelp": "Ranged, High DMG(Lethal)",
-  "icon": "archery_mediumarrow.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1.155,
-    "range": 80,
-    "recharge": 4,
-    "endurance": 5.2,
-    "castTime": 1
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Corruptor Archetype Sets",
-    "Ranged Damage",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 1,
-    "table": "Ranged_Damage"
-  }
-};
+export const AimedShot: Power = withOverrides(base, overrides);

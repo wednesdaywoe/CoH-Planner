@@ -1,53 +1,16 @@
 /**
- * Mind Probe
- * Melee, Moderate DMG(Psionic), Target -Recharge
+ * Mind Probe — COMPOSED EXPORT
  *
- * Source: blaster_support/mental_manipulation/mind_probe.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs blaster_support mental_manipulation
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { MindProbe as base } from '@/data/generated/powersets/blaster/secondary/mental-manipulation/mind-probe';
+import { overrides } from '@/data/overrides/powersets/blaster/secondary/mental-manipulation/mind-probe';
 
-export const MindProbe: Power = {
-  "name": "Mind Probe",
-  "internalName": "Mind_Probe",
-  "available": 0,
-  "description": "Grip the minds of your foe with a Mind Probe. You must be in close proximity to pull off this attack that wrecks havoc on your foes synapses, dealing moderate Psionic Damage while reducing their attack speed.Damage: Moderate.Recharge: Moderate.",
-  "shortHelp": "Melee, Moderate DMG(Psionic), Target -Recharge",
-  "icon": "psionicassault_mindprobe.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 7,
-    "recharge": 8,
-    "endurance": 8.528,
-    "castTime": 1.17
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Blaster Archetype Sets",
-    "Melee Damage",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Psionic",
-    "scale": 1.64,
-    "table": "Melee_Damage"
-  },
-  "effects": {
-    "damageBuff": {
-      "scale": 0.077,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "damageBuff": 8.67
-    },
-    "buffDuration": 8.67
-  }
-};
+export const MindProbe: Power = withOverrides(base, overrides);

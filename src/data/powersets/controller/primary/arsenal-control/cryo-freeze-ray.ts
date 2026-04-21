@@ -1,69 +1,16 @@
 /**
- * Cryo Freeze Ray
- * Ranged, DMG(Cold), Foe Hold, -SPD, -Recharge, -Fly
+ * Cryo Freeze Ray — COMPOSED EXPORT
  *
- * Source: controller_control/arsenal_control/cryo_freeze_ray.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs controller_control arsenal_control
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { CryoFreezeRay as base } from '@/data/generated/powersets/controller/primary/arsenal-control/cryo-freeze-ray';
+import { overrides } from '@/data/overrides/powersets/controller/primary/arsenal-control/cryo-freeze-ray';
 
-export const CryoFreezeRay: Power = {
-  "name": "Cryo Freeze Ray",
-  "internalName": "Cryo_Freeze_Ray",
-  "available": 0,
-  "description": "The Cryo Freeze Ray encases your foe in a block of ice, holding him helpless in place for a while and dealing some cold damage.",
-  "shortHelp": "Ranged, DMG(Cold), Foe Hold, -SPD, -Recharge, -Fly",
-  "icon": "arsenalcontrol_beanbag.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1.25,
-    "range": 80,
-    "recharge": 8,
-    "endurance": 8.528,
-    "castTime": 1.67
-  },
-  "allowedEnhancements": [
-    "Hold",
-    "Slow",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Controller Archetype Sets",
-    "Holds",
-    "Ranged Damage",
-    "Slow Movement",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Cold",
-    "scale": 1,
-    "table": "Ranged_Damage"
-  },
-  "effects": {
-    "hold": {
-      "mag": 3,
-      "scale": 12,
-      "table": "Ranged_Immobilize"
-    },
-    "mezResistance": {
-      "knockup": {
-        "scale": 100,
-        "table": "Ranged_Ones"
-      },
-      "knockback": {
-        "scale": 100,
-        "table": "Ranged_Ones"
-      }
-    },
-    "durations": {
-      "mezResistance": 12
-    },
-    "buffDuration": 12
-  }
-};
+export const CryoFreezeRay: Power = withOverrides(base, overrides);

@@ -1,63 +1,16 @@
 /**
- * Kinetic Shield
- * Toggle: Self +DEF(Smashing, Lethal, Energy), Res(DeBuff DEF)
+ * Kinetic Shield — COMPOSED EXPORT
  *
- * Source: scrapper_defense/energy_aura/kinetic_shield.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs scrapper_defense energy_aura
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { KineticShield as base } from '@/data/generated/powersets/scrapper/secondary/energy-aura/kinetic-shield';
+import { overrides } from '@/data/overrides/powersets/scrapper/secondary/energy-aura/kinetic-shield';
 
-export const KineticShield: Power = {
-  "name": "Kinetic Shield",
-  "internalName": "Kinetic_Shield",
-  "available": 0,
-  "description": "Kinetic Shield creates a harmonic Energy Aura that can deflect physical attacks. Your Defense to Smashing and Lethal attacks is increased as weapons and powers like bullets, blades and punches tend to deflect off the shield. Kinetic Shield also grants you good resistance to Defense Debuffs. The Energy based nature of Kinetic Shield also offers some minimal Defense to Energy attacks. Kinetic Shield also adds an Elusivity defense bonus to Smashing, Lethal, and Energy Attacks in PVP zones.",
-  "shortHelp": "Toggle: Self +DEF(Smashing, Lethal, Energy), Res(DeBuff DEF)",
-  "icon": "energyaura_kineticshield.png",
-  "powerType": "Toggle",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 4,
-    "endurance": 0.13,
-    "castTime": 0.73,
-    "activatePeriod": 0.5
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Defense"
-  ],
-  "allowedSetCategories": [
-    "Defense Sets"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "defenseBuff": {
-      "smashing": {
-        "scale": 1.7,
-        "table": "Melee_Buff_Def"
-      },
-      "lethal": {
-        "scale": 1.7,
-        "table": "Melee_Buff_Def"
-      },
-      "energy": {
-        "scale": 0.25,
-        "table": "Melee_Buff_Def"
-      }
-    },
-    "durations": {
-      "defenseBuff": 0.75,
-      "debuffResistance": 0.75
-    },
-    "debuffResistance": {
-      "defense": {
-        "scale": 0.5,
-        "table": "Melee_Res_Boolean"
-      }
-    },
-    "buffDuration": 0.75
-  }
-};
+export const KineticShield: Power = withOverrides(base, overrides);

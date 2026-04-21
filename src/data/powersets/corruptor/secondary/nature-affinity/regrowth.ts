@@ -1,54 +1,16 @@
 /**
- * Regrowth
- * Ranged Facing Cone, Minor Ally Heal, Ally Moderate Healing Over Time, +1 Bloom
+ * Regrowth — COMPOSED EXPORT
  *
- * Source: corruptor_buff/nature_affinity/regrowth.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs corruptor_buff nature_affinity
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Regrowth as base } from '@/data/generated/powersets/corruptor/secondary/nature-affinity/regrowth';
+import { overrides } from '@/data/overrides/powersets/corruptor/secondary/nature-affinity/regrowth';
 
-export const Regrowth: Power = {
-  "name": "Regrowth",
-  "internalName": "Regrowth",
-  "available": 0,
-  "description": "By channeling the energies present in nature you are able to immediately heal yourself and allies in front of you for a small amount of health and cause them to recover a small amount of health over time. Regrowth places a stack of Bloom on its target.Recharge: Moderate.",
-  "shortHelp": "Ranged Facing Cone, Minor Ally Heal, Ally Moderate Healing Over Time, +1 Bloom",
-  "icon": "natureaffinity_regrowth.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "Cone",
-  "stats": {
-    "accuracy": 1,
-    "range": 45,
-    "radius": 45,
-    "arc": 1.5708,
-    "recharge": 10,
-    "endurance": 13.52,
-    "castTime": 2,
-    "maxTargets": 255
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Healing"
-  ],
-  "allowedSetCategories": [
-    "Healing"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Heal",
-      "scale": 0.75,
-      "table": "Ranged_Heal"
-    },
-    {
-      "type": "Heal",
-      "scale": 0.15,
-      "table": "Ranged_Heal",
-      "duration": 4.1,
-      "tickRate": 1
-    }
-  ]
-};
+export const Regrowth: Power = withOverrides(base, overrides);

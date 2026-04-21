@@ -1,55 +1,16 @@
 /**
- * Foot Stomp
- * PBAoE Melee, DMG(Smashing), Knockback
+ * Foot Stomp — COMPOSED EXPORT
  *
- * Source: brute_melee/super_strength/foot_stomp.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs brute_melee super_strength
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { FootStomp as base } from '@/data/generated/powersets/brute/primary/super-strength/foot-stomp';
+import { overrides } from '@/data/overrides/powersets/brute/primary/super-strength/foot-stomp';
 
-export const FootStomp: Power = {
-  "name": "Foot Stomp",
-  "internalName": "Foot_Stomp",
-  "available": 25,
-  "description": "Using your superior leg strength, you can Stomp your foot to the ground, quaking the earth itself. This is a localized attack against everything in melee range.",
-  "shortHelp": "PBAoE Melee, DMG(Smashing), Knockback",
-  "icon": "superstrength_footstomp.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "radius": 15,
-    "recharge": 20,
-    "endurance": 18.512,
-    "castTime": 2.1,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "EnduranceReduction",
-    "Recharge",
-    "Knockback",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Brute Archetype Sets",
-    "Knockback",
-    "Melee AoE Damage",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 1.42,
-    "table": "Melee_Damage"
-  },
-  "effects": {
-    "knockback": {
-      "scale": 0.67,
-      "table": "Melee_Ones"
-    }
-  }
-};
+export const FootStomp: Power = withOverrides(base, overrides);

@@ -1,74 +1,16 @@
 /**
- * Greater Psi Blade
- * Melee, DMG(Psionic/Lethal), Foe -Rech, Hold; Self -Insight
+ * Greater Psi Blade — COMPOSED EXPORT
  *
- * Source: scrapper_melee/psionic_melee/greater_psi_blade.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs scrapper_melee psionic_melee
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { GreaterPsiBlade as base } from '@/data/generated/powersets/scrapper/primary/psionic-melee/greater-psi-blade';
+import { overrides } from '@/data/overrides/powersets/scrapper/primary/psionic-melee/greater-psi-blade';
 
-export const GreaterPsiBlade: Power = {
-  "name": "Greater Psi Blade",
-  "internalName": "Greater_Psi_Blade",
-  "available": 21,
-  "description": "You focus and create a more powerful Psi Blade projection before slashing at your foe to deal superior Psionic and Lethal damage. The affected foe will have their recharge reduced moderately and be left held for a short time. Greater Psi Blade will cause additional damage and cause this power's hold to last for a longer duration if you have Insight. Using this power removes Insight.",
-  "shortHelp": "Melee, DMG(Psionic/Lethal), Foe -Rech, Hold; Self -Insight",
-  "icon": "psionicmelee_greaterpsiblade.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1.2,
-    "range": 7,
-    "recharge": 15,
-    "endurance": 14.352,
-    "castTime": 2.5
-  },
-  "allowedEnhancements": [
-    "Hold",
-    "EnduranceReduction",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Holds",
-    "Melee Damage",
-    "Scrapper Archetype Sets",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Lethal",
-      "scale": 0.69,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 2.07,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 1.38,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 2.76,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 2.76,
-      "table": "Melee_InherentDamage"
-    }
-  ],
-  "effects": {
-    "hold": {
-      "mag": 3,
-      "scale": 12,
-      "table": "Melee_Stun"
-    }
-  }
-};
+export const GreaterPsiBlade: Power = withOverrides(base, overrides);

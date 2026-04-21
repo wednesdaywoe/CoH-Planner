@@ -1,52 +1,16 @@
 /**
- * Call Genin
- * Summon Genin
+ * Call Genin — COMPOSED EXPORT
  *
- * Source: mastermind_summon/ninjas/call_genin.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs mastermind_summon ninjas
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { CallGenin as base } from '@/data/generated/powersets/mastermind/primary/ninjas/call-genin';
+import { overrides } from '@/data/overrides/powersets/mastermind/primary/ninjas/call-genin';
 
-export const CallGenin: Power = {
-  "name": "Call Genin",
-  "internalName": "Call_Genin",
-  "available": 0,
-  "description": "Calls forth one to three Genin Ninja (depending on your level) to do your bidding. Genin have good reflexes and jumping skill, but they are still the lowest rank Ninja and only possess the most rudimentary skills, However, they can be trained in more advanced techniques and weapons.You may only have 3 Genin under your control at any given time. If you attempt to call Genin, you can only replace the ones you have lost in battle. If you already have three, the power will fail.",
-  "shortHelp": "Summon Genin",
-  "icon": "ninjas_callgenin.png",
-  "powerType": "Click",
-  "targetType": "Location",
-  "effectArea": "Location",
-  "stats": {
-    "accuracy": 1,
-    "range": 60,
-    "recharge": 5,
-    "endurance": 5.46,
-    "castTime": 1.7
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Stun",
-    "Run Speed",
-    "Knockback",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Knockback",
-    "Mastermind Archetype Sets",
-    "Pet Damage",
-    "Recharge Intensive Pets",
-    "Stuns",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "isPseudoPet": false,
-      "entity": "MastermindPets_Genin",
-      "copyBoosts": true,
-      "entityCount": 3
-    }
-  }
-};
+export const CallGenin: Power = withOverrides(base, overrides);

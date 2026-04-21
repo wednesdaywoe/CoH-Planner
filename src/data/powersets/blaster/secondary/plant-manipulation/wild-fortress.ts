@@ -1,67 +1,16 @@
 /**
- * Wild Fortress
- * Toggle: Self +Absorb, +Recovery, +Resist(Toxic, Confuse)
+ * Wild Fortress — COMPOSED EXPORT
  *
- * Source: blaster_support/plant_manipulation/wild_fortress.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs blaster_support plant_manipulation
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { WildFortress as base } from '@/data/generated/powersets/blaster/secondary/plant-manipulation/wild-fortress';
+import { overrides } from '@/data/overrides/powersets/blaster/secondary/plant-manipulation/wild-fortress';
 
-export const WildFortress: Power = {
-  "name": "Wild Fortress",
-  "internalName": "Wild_Fortress",
-  "available": 19,
-  "description": "You encase yourself in a protective barrier that will absorb a moderate amount of damage. Additionally, you will recover endurance faster and be resistant to toxic damage and have confusion protection.Recharge: Moderate.",
-  "shortHelp": "Toggle: Self +Absorb, +Recovery, +Resist(Toxic, Confuse)",
-  "icon": "plantmanipulation_wildfortress.png",
-  "powerType": "Toggle",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 10,
-    "castTime": 2.27,
-    "activatePeriod": 2
-  },
-  "allowedEnhancements": [
-    "Resistance",
-    "EnduranceModification",
-    "Recharge",
-    "Healing"
-  ],
-  "allowedSetCategories": [
-    "Endurance Modification",
-    "Healing",
-    "Resist Damage"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "absorb": {
-      "scale": 0.3,
-      "table": "Melee_HealSelf"
-    },
-    "durations": {
-      "absorb": 12,
-      "confuse": 2.5,
-      "recoveryBuff": 2.5,
-      "resistance": 2.5
-    },
-    "confuse": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Ranged_Res_Boolean"
-    },
-    "effectDuration": 2.5,
-    "recoveryBuff": {
-      "scale": 0.5,
-      "table": "Ranged_Ones"
-    },
-    "resistance": {
-      "toxic": {
-        "scale": 2,
-        "table": "Ranged_Res_Dmg"
-      }
-    },
-    "buffDuration": 2.5
-  }
-};
+export const WildFortress: Power = withOverrides(base, overrides);

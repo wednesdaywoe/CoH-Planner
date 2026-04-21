@@ -1,45 +1,16 @@
 /**
- * Possess
- * Ranged, Target Confuse
+ * Possess — COMPOSED EXPORT
  *
- * Source: controller_control/darkness_control/possess.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs controller_control darkness_control
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Possess as base } from '@/data/generated/powersets/controller/primary/darkness-control/possess';
+import { overrides } from '@/data/overrides/powersets/controller/primary/darkness-control/possess';
 
-export const Possess: Power = {
-  "name": "Possess",
-  "internalName": "Possess",
-  "available": 5,
-  "description": "You cause your targeted foe to be possessed by a dark entity from the Netherworld causing them to be confused for a short period of time. While confused they will be unable to tell the difference between friend or foe and will attack nearby allies.Recharge: Moderate.",
-  "shortHelp": "Ranged, Target Confuse",
-  "icon": "darknesscontrol_possess.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1.2,
-    "range": 80,
-    "recharge": 8,
-    "endurance": 8.528,
-    "castTime": 2.33
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Confuse",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Confuse",
-    "Controller Archetype Sets"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "confuse": {
-      "mag": 3,
-      "scale": 20,
-      "table": "Ranged_Immobilize"
-    }
-  }
-};
+export const Possess: Power = withOverrides(base, overrides);

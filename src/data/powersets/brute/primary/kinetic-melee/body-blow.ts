@@ -1,61 +1,16 @@
 /**
- * Body Blow
- * Melee, DMG(Smash/Energy), Foe Disorient
+ * Body Blow — COMPOSED EXPORT
  *
- * Source: brute_melee/kinetic_attack/body_blow.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs brute_melee kinetic_attack
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { BodyBlow as base } from '@/data/generated/powersets/brute/primary/kinetic-melee/body-blow';
+import { overrides } from '@/data/overrides/powersets/brute/primary/kinetic-melee/body-blow';
 
-export const BodyBlow: Power = {
-  "name": "Body Blow",
-  "internalName": "Body_Blow",
-  "available": 0,
-  "description": "A much more powerful, yet slower version of Quick Strike. Body Blow is capable of stunning an opponent occasionally.",
-  "shortHelp": "Melee, DMG(Smash/Energy), Foe Disorient",
-  "icon": "kineticattack_bodyblow.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 7,
-    "recharge": 5,
-    "endurance": 6.032,
-    "castTime": 1.07
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "EnduranceReduction",
-    "Stun",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Brute Archetype Sets",
-    "Melee Damage",
-    "Stuns",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 0.87,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.29,
-      "table": "Melee_Damage"
-    }
-  ],
-  "effects": {
-    "stun": {
-      "mag": 3,
-      "scale": 6,
-      "table": "Melee_Stun"
-    }
-  }
-};
+export const BodyBlow: Power = withOverrides(base, overrides);

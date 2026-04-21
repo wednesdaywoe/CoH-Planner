@@ -1,64 +1,16 @@
 /**
- * Shin Breaker
- * Melee, Superior DMG(Smash), Foe -Speed, -Defense, Combo Builder
+ * Shin Breaker — COMPOSED EXPORT
  *
- * Source: stalker_melee/brawling/low_kick.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs stalker_melee brawling
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { ShinBreaker as base } from '@/data/generated/powersets/stalker/primary/street-justice/low-kick';
+import { overrides } from '@/data/overrides/powersets/stalker/primary/street-justice/low-kick';
 
-export const ShinBreaker: Power = {
-  "name": "Shin Breaker",
-  "internalName": "Low_Kick",
-  "available": 21,
-  "description": "You execute a quick but powerful kick targeting your foe's leg in an attempt to cripple their movement. Shin Breaker deals Superior Smashing damage and moderately reduces your target's movement speed and defense for a short time. Shin Breaker is a Combo Builder and adds 1 Combo Level.Damage: Superior.Recharge: Moderate.",
-  "shortHelp": "Melee, Superior DMG(Smash), Foe -Speed, -Defense, Combo Builder",
-  "icon": "brawling_lowkick.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 7,
-    "recharge": 8,
-    "endurance": 8.528,
-    "castTime": 1.33
-  },
-  "allowedEnhancements": [
-    "Slow",
-    "EnduranceReduction",
-    "Recharge",
-    "Defense Debuff",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Defense Debuff",
-    "Melee Damage",
-    "Slow Movement",
-    "Stalker Archetype Sets",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 1.64,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.64,
-      "table": "Melee_Damage"
-    }
-  ],
-  "effects": {
-    "defenseDebuff": {
-      "scale": 1,
-      "table": "Melee_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 10
-    },
-    "buffDuration": 10
-  }
-};
+export const ShinBreaker: Power = withOverrides(base, overrides);

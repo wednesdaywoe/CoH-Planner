@@ -1,108 +1,16 @@
 /**
- * Shadow Dweller
- * Auto: Self +Regen, +DEF(All), +Res(Immobilize), +Perception
+ * Shadow Dweller — COMPOSED EXPORT
  *
- * Source: stalker_defense/dark_armor/shadow_dweller.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs stalker_defense dark_armor
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { ShadowDweller as base } from '@/data/generated/powersets/stalker/secondary/dark-armor/shadow-dweller';
+import { overrides } from '@/data/overrides/powersets/stalker/secondary/dark-armor/shadow-dweller';
 
-export const ShadowDweller: Power = {
-  "name": "Shadow Dweller",
-  "internalName": "Shadow_Dweller",
-  "available": 9,
-  "description": "You are a true Shadow Dweller of the Netherworld. Your affinity for the shadows grants you an inherent bonus to all Defense, as well as an increased regeneration, Perception and a resistance to Immobilization. Your Perception bonus and resistance to Immobilization improves over level. Shadow Dweller is an Auto power. It is always on and costs no Endurance.",
-  "shortHelp": "Auto: Self +Regen, +DEF(All), +Res(Immobilize), +Perception",
-  "icon": "darkarmor_selfbuffdefense.png",
-  "powerType": "Auto",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "activatePeriod": 10
-  },
-  "allowedEnhancements": [
-    "Healing",
-    "Defense"
-  ],
-  "allowedSetCategories": [
-    "Defense Sets",
-    "Healing"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "immobilize": {
-      "mag": 1,
-      "scale": 4,
-      "table": "Melee_Ones"
-    },
-    "effectDuration": 10.25,
-    "durations": {
-      "immobilize": 10.25,
-      "mezResistance": 10.25,
-      "defenseBuff": 10.25,
-      "debuffResistance": 10.25,
-      "perceptionBuff": 10.25,
-      "regenBuff": 10.3
-    },
-    "mezResistance": {
-      "immobilize": {
-        "scale": 1.5,
-        "table": "Melee_Res_Boolean"
-      }
-    },
-    "defenseBuff": {
-      "ranged": {
-        "scale": 0.25,
-        "table": "Melee_Buff_Def"
-      },
-      "melee": {
-        "scale": 0.25,
-        "table": "Melee_Buff_Def"
-      },
-      "aoe": {
-        "scale": 0.25,
-        "table": "Melee_Buff_Def"
-      },
-      "smashing": {
-        "scale": 0.25,
-        "table": "Melee_Buff_Def"
-      },
-      "lethal": {
-        "scale": 0.25,
-        "table": "Melee_Buff_Def"
-      },
-      "fire": {
-        "scale": 0.25,
-        "table": "Melee_Buff_Def"
-      },
-      "cold": {
-        "scale": 0.25,
-        "table": "Melee_Buff_Def"
-      },
-      "energy": {
-        "scale": 0.25,
-        "table": "Melee_Buff_Def"
-      },
-      "negative": {
-        "scale": 0.25,
-        "table": "Melee_Buff_Def"
-      }
-    },
-    "debuffResistance": {
-      "perception": {
-        "scale": 1.25,
-        "table": "Melee_Res_Boolean"
-      }
-    },
-    "perceptionBuff": {
-      "scale": 1.25,
-      "table": "Melee_Res_Boolean"
-    },
-    "regenBuff": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
-    "buffDuration": 10.25
-  }
-};
+export const ShadowDweller: Power = withOverrides(base, overrides);

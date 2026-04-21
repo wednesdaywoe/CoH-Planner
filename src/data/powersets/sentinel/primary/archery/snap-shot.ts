@@ -1,44 +1,16 @@
 /**
- * Snap Shot
- * Ranged, Light DMG(Lethal)
+ * Snap Shot — COMPOSED EXPORT
  *
- * Source: sentinel_ranged/archery/snap_shot.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs sentinel_ranged archery
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { SnapShot as base } from '@/data/generated/powersets/sentinel/primary/archery/snap-shot';
+import { overrides } from '@/data/overrides/powersets/sentinel/primary/archery/snap-shot';
 
-export const SnapShot: Power = {
-  "name": "Snap Shot",
-  "internalName": "Snap_Shot",
-  "available": 0,
-  "description": "A quick attack that fires an arrow at your foe after only minimal aiming. Fast, but little damage.Damage: Light.Recharge: Very Fast.",
-  "shortHelp": "Ranged, Light DMG(Lethal)",
-  "icon": "archery_quickarrow.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1.155,
-    "range": 60,
-    "recharge": 2,
-    "endurance": 3.54,
-    "castTime": 1
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Ranged Damage",
-    "Sentinel Archetype Sets",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 0.84,
-    "table": "Ranged_Damage"
-  }
-};
+export const SnapShot: Power = withOverrides(base, overrides);

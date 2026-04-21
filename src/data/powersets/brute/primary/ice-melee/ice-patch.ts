@@ -1,39 +1,16 @@
 /**
- * Ice Patch
- * Location (PBAoE), Foe Knockdown
+ * Ice Patch — COMPOSED EXPORT
  *
- * Source: brute_melee/ice_melee/ice_patch.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs brute_melee ice_melee
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { IcePatch as base } from '@/data/generated/powersets/brute/primary/ice-melee/ice-patch';
+import { overrides } from '@/data/overrides/powersets/brute/primary/ice-melee/ice-patch';
 
-export const IcePatch: Power = {
-  "name": "Ice Patch",
-  "internalName": "Ice_Patch",
-  "available": 7,
-  "description": "You emanate a Patch of Ice around you. Foes that step onto the Ice Patch will slip and fall down. This effect lasts until the ice melts. You must be near the ground to activate this power.",
-  "shortHelp": "Location (PBAoE), Foe Knockdown",
-  "icon": "icyonslaught_icepatch.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 2,
-    "recharge": 35,
-    "endurance": 10.4,
-    "castTime": 1.57
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_IcePatch",
-      "duration": 30,
-      "copyBoosts": true
-    }
-  }
-};
+export const IcePatch: Power = withOverrides(base, overrides);

@@ -1,51 +1,16 @@
 /**
- * Lightning Storm
- * Create Storm: Ranged, High DMG(Energy), Foe -End
+ * Lightning Storm — COMPOSED EXPORT
  *
- * Source: mastermind_buff/storm_summoning/lightning_storm.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs mastermind_buff storm_summoning
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { LightningStorm as base } from '@/data/generated/powersets/mastermind/secondary/storm-summoning/lightning-storm';
+import { overrides } from '@/data/overrides/powersets/mastermind/secondary/storm-summoning/lightning-storm';
 
-export const LightningStorm: Power = {
-  "name": "Lightning Storm",
-  "internalName": "Lightning_Storm",
-  "available": 29,
-  "description": "You can create a massive Lightning Storm that will strike any foe that approaches you. Lightning from this storm can knock down and damage all nearby foes, and can even instill panic. Lightning bolts will continue to fall as long as the storm remains.Recharge: Long.",
-  "shortHelp": "Create Storm: Ranged, High DMG(Energy), Foe -End",
-  "icon": "stormsummoning_lightningstorm.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1.4,
-    "recharge": 90,
-    "endurance": 39,
-    "castTime": 2.03
-  },
-  "allowedEnhancements": [
-    "EnduranceModification",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Knockback",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Mastermind Archetype Sets",
-    "Endurance Modification",
-    "Knockback",
-    "Ranged Damage",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_LightningStorm_Controller",
-      "duration": 60,
-      "copyBoosts": true
-    }
-  }
-};
+export const LightningStorm: Power = withOverrides(base, overrides);

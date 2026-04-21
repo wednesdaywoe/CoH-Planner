@@ -1,28 +1,16 @@
 /**
- * Clear Skies
- * Self (Auto), +ToHit, +Rech, +Rec, -EndCost
+ * Clear Skies — COMPOSED EXPORT
  *
- * Source: dominator_control/wind_control/clear_skies.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs dominator_control wind_control
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { ClearSkies as base } from '@/data/generated/powersets/dominator/primary/wind-control/clear-skies';
+import { overrides } from '@/data/overrides/powersets/dominator/primary/wind-control/clear-skies';
 
-export const ClearSkies: Power = {
-  "name": "Clear Skies",
-  "internalName": "Clear_Skies",
-  "available": 0,
-  "description": "When training yourself in the creation of a Vortex, you also learn how to create the Clear Skies effect. If you use Vacuum on your own Vortex, you will gain a boost to your chance to hit foes, your attack speed and your recovery. Additionally, the endurance cost of all your powers will be reduced. While the strength of the Clear Skies effect cannot be stacked and cannot be increased, the duration of the effect can be extended from the minimum duration of 30 seconds. The more Pressure you consume when you execute Vacuum, the greater the duration of the Clear Skies bonuses, up to a maximum of 60 seconds. When the bonuses of Clear Skies end, you will be under the Clouded Skies effect, which prevents another Clear Skies buff from applying, for several minutes. Clear Skies is granted automatically when both Vacuum and Vortex have been trained.",
-  "shortHelp": "Self (Auto), +ToHit, +Rech, +Rec, -EndCost",
-  "icon": "windcontrol_clearskies.png",
-  "powerType": "Auto",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "activatePeriod": 2
-  },
-  "allowedEnhancements": [],
-  "maxSlots": 0,
-  "requires": "Dominator_Control.Wind_Control.Vacuum && Dominator_Control.Wind_Control.Vortex && (char>accesslevel >= 0)",
-  "mechanicType": "parentMechanic"
-};
+export const ClearSkies: Power = withOverrides(base, overrides);

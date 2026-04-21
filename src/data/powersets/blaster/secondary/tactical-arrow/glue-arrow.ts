@@ -1,52 +1,16 @@
 /**
- * Glue Arrow
- * Ranged (Targeted AoE), DoT(Toxic), Foe -SPD, -Recharge, -Fly, -Jump
+ * Glue Arrow — COMPOSED EXPORT
  *
- * Source: blaster_support/tactical_arrow/glue_arrow.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs blaster_support tactical_arrow
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { GlueArrow as base } from '@/data/generated/powersets/blaster/secondary/tactical-arrow/glue-arrow';
+import { overrides } from '@/data/overrides/powersets/blaster/secondary/tactical-arrow/glue-arrow';
 
-export const GlueArrow: Power = {
-  "name": "Glue Arrow",
-  "internalName": "Glue_Arrow",
-  "available": 0,
-  "description": "This arrow carries a cartridge of intensely sticky glue, which explodes on impact. The glue slows the movement and attack rates of any foes in the area.Recharge: Long.",
-  "shortHelp": "Ranged (Targeted AoE), DoT(Toxic), Foe -SPD, -Recharge, -Fly, -Jump",
-  "icon": "tacticalarrow_slow.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 60,
-    "recharge": 45,
-    "endurance": 7.8,
-    "castTime": 1.16
-  },
-  "allowedEnhancements": [
-    "Slow",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Blaster Archetype Sets",
-    "Ranged AoE Damage",
-    "Slow Movement",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_StickyArrow_Blaster",
-      "copyBoosts": true
-    },
-    "damageBuff": {
-      "scale": 0,
-      "table": "Ranged_Ones"
-    }
-  }
-};
+export const GlueArrow: Power = withOverrides(base, overrides);

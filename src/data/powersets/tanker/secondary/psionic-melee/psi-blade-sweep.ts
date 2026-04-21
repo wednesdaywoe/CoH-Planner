@@ -1,71 +1,16 @@
 /**
- * Psi Blade Sweep
- * Melee (Cone), DMG(Psionic/Lethal), Foe Disorient, -Rech; Self +Insight
+ * Psi Blade Sweep — COMPOSED EXPORT
  *
- * Source: tanker_melee/psionic_melee/psi_blade_sweep.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs tanker_melee psionic_melee
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { PsiBladeSweep as base } from '@/data/generated/powersets/tanker/secondary/psionic-melee/psi-blade-sweep';
+import { overrides } from '@/data/overrides/powersets/tanker/secondary/psionic-melee/psi-blade-sweep';
 
-export const PsiBladeSweep: Power = {
-  "name": "Psi Blade Sweep",
-  "internalName": "Psi_Blade_Sweep",
-  "available": 15,
-  "description": "You project a Psi Blade and swing it in a broad arc hitting all foes within a wide cone in front of you for high Psionic and Lethal damage. Foes struck by this power have their recharge reduced and have chance to become disoriented for a short time. Psi Blade Sweep has a high chance of granting you Insight. While you have Insight, Psi Blade Sweep will deal additional minor psionic damage over time and has a greater chance to disorient foes.Notes: Thanks to gauntlet, this power can hit up to 5 targets above its cap at 1/3rd effectiveness.",
-  "shortHelp": "Melee (Cone), DMG(Psionic/Lethal), Foe Disorient, -Rech; Self +Insight",
-  "icon": "psionicmelee_psibladesweep.png",
-  "powerType": "Click",
-  "effectArea": "Cone",
-  "stats": {
-    "accuracy": 1,
-    "range": 7,
-    "radius": 7,
-    "arc": 1.2217,
-    "recharge": 8,
-    "endurance": 8.528,
-    "castTime": 1.77,
-    "maxTargets": 5
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "EnduranceReduction",
-    "Stun",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Melee AoE Damage",
-    "Stuns",
-    "Tanker Archetype Sets",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Lethal",
-      "scale": 0.36,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 1.0801,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 0.236,
-      "table": "Melee_Damage",
-      "duration": 3.1,
-      "tickRate": 1
-    }
-  ],
-  "effects": {
-    "stun": {
-      "mag": 3,
-      "scale": 5,
-      "table": "Melee_Stun"
-    }
-  }
-};
+export const PsiBladeSweep: Power = withOverrides(base, overrides);

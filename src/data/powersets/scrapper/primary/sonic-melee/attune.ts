@@ -1,62 +1,16 @@
 /**
- * Attune
- * Melee Toggle, DMG(Energy), Foe DOT(Energy), Special
+ * Attune — COMPOSED EXPORT
  *
- * Source: scrapper_melee/sonic_melee/attune.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs scrapper_melee sonic_melee
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Attune as base } from '@/data/generated/powersets/scrapper/primary/sonic-melee/attune';
+import { overrides } from '@/data/overrides/powersets/scrapper/primary/sonic-melee/attune';
 
-export const Attune: Power = {
-  "name": "Attune",
-  "internalName": "Attune",
-  "available": 1,
-  "description": "A high-intensity sound wave that matches the resonant frequency of your target. This power inflicts continuous damage over time as well as making the target vulnerable to additional effects from all your attacks.",
-  "shortHelp": "Melee Toggle, DMG(Energy), Foe DOT(Energy), Special",
-  "icon": "sonicmanipulation_dot.png",
-  "powerType": "Toggle",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 20,
-    "recharge": 0.5,
-    "endurance": 0.104,
-    "castTime": 1,
-    "activatePeriod": 0.5
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Melee Damage",
-    "Scrapper Archetype Sets",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Energy",
-      "scale": 0.25,
-      "table": "Melee_Damage",
-      "duration": 1.75,
-      "tickRate": 2
-    },
-    {
-      "type": "Energy",
-      "scale": 0.25,
-      "table": "Melee_InherentDamage",
-      "duration": 1.75,
-      "tickRate": 2
-    },
-    {
-      "type": "Energy",
-      "scale": 0.25,
-      "table": "Melee_InherentDamage",
-      "duration": 1.75,
-      "tickRate": 2
-    }
-  ]
-};
+export const Attune: Power = withOverrides(base, overrides);

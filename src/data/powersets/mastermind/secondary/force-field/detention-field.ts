@@ -1,55 +1,16 @@
 /**
- * Detention Field
- * Ranged, Foe Capture (Special)
+ * Detention Field — COMPOSED EXPORT
  *
- * Source: mastermind_buff/force_field/detention_field.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs mastermind_buff force_field
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { DetentionField as base } from '@/data/generated/powersets/mastermind/secondary/force-field/detention-field';
+import { overrides } from '@/data/overrides/powersets/mastermind/secondary/force-field/detention-field';
 
-export const DetentionField: Power = {
-  "name": "Detention Field",
-  "internalName": "Detention_Field",
-  "available": 9,
-  "description": "Encases a targeted foe in a Detention Force Field. The captured target cannot be harmed, is Immobilized, and cannot attack or aid their allies. The target can, however, use powers on themselves.",
-  "shortHelp": "Ranged, Foe Capture (Special)",
-  "icon": "forcefield_refractionshield.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1.2,
-    "range": 80,
-    "recharge": 60,
-    "endurance": 13,
-    "castTime": 2.07
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Accuracy"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "immobilize": {
-      "mag": 1,
-      "scale": 4,
-      "table": "Ranged_Immobilize"
-    },
-    "effectDuration": 30,
-    "durations": {
-      "immobilize": 30,
-      "untouchable": 30,
-      "onlyAffectsSelf": 30
-    },
-    "untouchable": {
-      "scale": 4,
-      "table": "Ranged_Immobilize"
-    },
-    "onlyAffectsSelf": {
-      "scale": 4,
-      "table": "Ranged_Immobilize"
-    },
-    "buffDuration": 30
-  }
-};
+export const DetentionField: Power = withOverrides(base, overrides);

@@ -1,58 +1,16 @@
 /**
- * Storm Cell
- * Ranged (Location AoE), Foe -Recharge, -SPD, +Wet, Special
+ * Storm Cell — COMPOSED EXPORT
  *
- * Source: sentinel_ranged/storm_blast/storm_cell.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs sentinel_ranged storm_blast
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { StormCell as base } from '@/data/generated/powersets/sentinel/primary/storm-blast/storm-cell';
+import { overrides } from '@/data/overrides/powersets/sentinel/primary/storm-blast/storm-cell';
 
-export const StormCell: Power = {
-  "name": "Storm Cell",
-  "internalName": "Storm_Cell",
-  "available": 5,
-  "description": "You conjure a storm in the area that defines the boundaries of your stormy powers. Rain from this power will slightly lower a foe's movement and chance to hit. The use of your Storm Blast attacks may create high winds and lightning within the storm cell, delivering stronger debuffs and causing damage. Additionally, Storm Blast attacks will be enhanced when used against foes victimized by Storm Cell.",
-  "shortHelp": "Ranged (Location AoE), Foe -Recharge, -SPD, +Wet, Special",
-  "icon": "stormblast_stormcell.png",
-  "powerType": "Click",
-  "targetType": "Location",
-  "effectArea": "Location",
-  "stats": {
-    "accuracy": 1,
-    "range": 40,
-    "radius": 25,
-    "recharge": 60,
-    "endurance": 15.6,
-    "castTime": 2.03
-  },
-  "allowedEnhancements": [
-    "EnduranceModification",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Knockback",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Endurance Modification",
-    "Knockback",
-    "Ranged AoE Damage",
-    "Sentinel Archetype Sets",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "isPseudoPet": true,
-      "displayName": "Storm Cell",
-      "powers": [
-        "Pets.ResistAll_NoFly.ResistAll",
-        "Redirects.Storm_Blast.StormCell_Tempest_Sentinel",
-        "Redirects.Storm_Blast.StormCell_SelfDestruct"
-      ],
-      "duration": 60,
-      "copyBoosts": true
-    }
-  }
-};
+export const StormCell: Power = withOverrides(base, overrides);

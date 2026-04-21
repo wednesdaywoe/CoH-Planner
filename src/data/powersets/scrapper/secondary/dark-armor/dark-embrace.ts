@@ -1,60 +1,16 @@
 /**
- * Dark Embrace
- * Toggle: Self +Res(Smash, Lethal, Negative, Toxic)
+ * Dark Embrace — COMPOSED EXPORT
  *
- * Source: scrapper_defense/dark_armor/dark_embrace.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs scrapper_defense dark_armor
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { DarkEmbrace as base } from '@/data/generated/powersets/scrapper/secondary/dark-armor/dark-embrace';
+import { overrides } from '@/data/overrides/powersets/scrapper/secondary/dark-armor/dark-embrace';
 
-export const DarkEmbrace: Power = {
-  "name": "Dark Embrace",
-  "internalName": "Dark_Embrace",
-  "available": 0,
-  "description": "You tap into the energy of the Netherworld to protect yourself from damage. This Dark Embrace shrouds you and grants resistance to Lethal, Smashing, Negative Energy and Toxic damage.Recharge: Fast.",
-  "shortHelp": "Toggle: Self +Res(Smash, Lethal, Negative, Toxic)",
-  "icon": "darkarmor_darkembrace.png",
-  "powerType": "Toggle",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 2,
-    "endurance": 0.104,
-    "castTime": 0.67,
-    "activatePeriod": 0.5
-  },
-  "allowedEnhancements": [
-    "Resistance",
-    "EnduranceReduction",
-    "Recharge"
-  ],
-  "allowedSetCategories": [
-    "Resist Damage"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "resistance": {
-      "smashing": {
-        "scale": 3,
-        "table": "Melee_Res_Dmg"
-      },
-      "lethal": {
-        "scale": 3,
-        "table": "Melee_Res_Dmg"
-      },
-      "negative": {
-        "scale": 2,
-        "table": "Melee_Res_Dmg"
-      },
-      "toxic": {
-        "scale": 2,
-        "table": "Melee_Res_Dmg"
-      }
-    },
-    "durations": {
-      "resistance": 0.75
-    },
-    "buffDuration": 0.75
-  }
-};
+export const DarkEmbrace: Power = withOverrides(base, overrides);

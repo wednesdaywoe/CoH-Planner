@@ -1,77 +1,16 @@
 /**
- * Defensive Sweep
- * Melee(Cone), DMG(Smashing), Self +DEF(Melee, Smash)
+ * Defensive Sweep — COMPOSED EXPORT
  *
- * Source: scrapper_melee/titan_weapons/defensive_sweep.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs scrapper_melee titan_weapons
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { DefensiveSweep as base } from '@/data/generated/powersets/scrapper/primary/titan-weapons/defensive-sweep';
+import { overrides } from '@/data/overrides/powersets/scrapper/primary/titan-weapons/defensive-sweep';
 
-export const DefensiveSweep: Power = {
-  "name": "Defensive Sweep",
-  "internalName": "Defensive_Sweep",
-  "available": 0,
-  "description": "You take a defensive stance and strike your opponents. Successfully executing this attack will cause light smashing damage to nearby foes, while giving you increased defense against their melee and smashing attacks.Notes: Defensive Sweep is unaffected by Arc changes.",
-  "shortHelp": "Melee(Cone), DMG(Smashing), Self +DEF(Melee, Smash)",
-  "icon": "titanweapons_defensivesweep.png",
-  "powerType": "Click",
-  "effectArea": "Cone",
-  "stats": {
-    "accuracy": 1,
-    "range": 10,
-    "radius": 10,
-    "arc": 2.0944,
-    "recharge": 4,
-    "endurance": 5.356,
-    "castTime": 2.2,
-    "maxTargets": 5
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Damage",
-    "Defense",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Defense Sets",
-    "Melee AoE Damage",
-    "Scrapper Archetype Sets",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 0.6684,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.6684,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.6684,
-      "table": "Melee_InherentDamage"
-    }
-  ],
-  "effects": {
-    "defenseBuff": {
-      "melee": {
-        "scale": 1.5,
-        "table": "Melee_Buff_Def"
-      },
-      "smashing": {
-        "scale": 1.5,
-        "table": "Melee_Buff_Def"
-      }
-    },
-    "durations": {
-      "defenseBuff": 10
-    },
-    "buffDuration": 10
-  },
-  "requires": "!Scrapper_Defense.Shield_Defense"
-};
+export const DefensiveSweep: Power = withOverrides(base, overrides);

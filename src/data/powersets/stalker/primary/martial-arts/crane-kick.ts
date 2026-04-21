@@ -1,58 +1,16 @@
 /**
- * Crane Kick
- * Melee, DMG(Smashing), Knockback
+ * Crane Kick — COMPOSED EXPORT
  *
- * Source: stalker_melee/martial_arts/crane_kick.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs stalker_melee martial_arts
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { CraneKick as base } from '@/data/generated/powersets/stalker/primary/martial-arts/crane-kick';
+import { overrides } from '@/data/overrides/powersets/stalker/primary/martial-arts/crane-kick';
 
-export const CraneKick: Power = {
-  "name": "Crane Kick",
-  "internalName": "Crane_Kick",
-  "available": 21,
-  "description": "You can perform a slow, high smashing damage kick that will likely knock your target back.",
-  "shortHelp": "Melee, DMG(Smashing), Knockback",
-  "icon": "martialarts_cranekick.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1.05,
-    "range": 7,
-    "recharge": 10,
-    "endurance": 11.856,
-    "castTime": 1.67
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Knockback",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Knockback",
-    "Melee Damage",
-    "Stalker Archetype Sets",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 1.96,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.96,
-      "table": "Melee_InherentDamage"
-    }
-  ],
-  "effects": {
-    "knockback": {
-      "scale": 3,
-      "table": "Melee_Knockback"
-    }
-  }
-};
+export const CraneKick: Power = withOverrides(base, overrides);

@@ -1,60 +1,16 @@
 /**
- * Fire Ball
- * Ranged (Targeted AoE), DMG(Fire/Smash)
+ * Fire Ball — COMPOSED EXPORT
  *
- * Source: defender_ranged/fire_blast/fire_ball.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs defender_ranged fire_blast
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { FireBall as base } from '@/data/generated/powersets/defender/secondary/fire-blast/fire-ball';
+import { overrides } from '@/data/overrides/powersets/defender/secondary/fire-blast/fire-ball';
 
-export const FireBall: Power = {
-  "name": "Fire Ball",
-  "internalName": "Fire_Ball",
-  "available": 3,
-  "description": "Hurls an exploding Fireball that consumes a targeted foe, and all nearby enemies. Anyone in that explosion is burned and set ablaze.",
-  "shortHelp": "Ranged (Targeted AoE), DMG(Fire/Smash)",
-  "icon": "fireblast_fireball.png",
-  "powerType": "Click",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "range": 80,
-    "radius": 15,
-    "recharge": 16,
-    "endurance": 15.184,
-    "castTime": 1,
-    "maxTargets": 16
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Defender Archetype Sets",
-    "Ranged AoE Damage",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 0.2,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.7,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.15,
-      "table": "Ranged_Damage",
-      "duration": 2.1,
-      "tickRate": 1
-    }
-  ]
-};
+export const FireBall: Power = withOverrides(base, overrides);

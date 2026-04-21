@@ -1,47 +1,16 @@
 /**
- * Spin
- * PBAoE Melee, DMG(Lethal)
+ * Spin — COMPOSED EXPORT
  *
- * Source: brute_melee/claws/spin.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs brute_melee claws
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Spin as base } from '@/data/generated/powersets/brute/primary/claws/spin';
+import { overrides } from '@/data/overrides/powersets/brute/primary/claws/spin';
 
-export const Spin: Power = {
-  "name": "Spin",
-  "internalName": "Spin",
-  "available": 5,
-  "description": "You spin around in a circle, attacking everyone within melee range with a Strike attack.",
-  "shortHelp": "PBAoE Melee, DMG(Lethal)",
-  "icon": "claws_spinningclawsattack.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "radius": 8,
-    "recharge": 14,
-    "endurance": 13.1456,
-    "castTime": 2.5,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "EnduranceReduction",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Brute Archetype Sets",
-    "Melee AoE Damage",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 1.89,
-    "table": "Melee_Damage"
-  }
-};
+export const Spin: Power = withOverrides(base, overrides);

@@ -1,99 +1,16 @@
 /**
- * Dreadful Wail
- * PBAoE, Extreme DMG(Energy/Smash), Foe Disorient, -Res(All)
+ * Dreadful Wail — COMPOSED EXPORT
  *
- * Source: corruptor_ranged/sonic_attack/dreadful_wail.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs corruptor_ranged sonic_attack
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { DreadfulWail as base } from '@/data/generated/powersets/corruptor/primary/sonic-attack/dreadful-wail';
+import { overrides } from '@/data/overrides/powersets/corruptor/primary/sonic-attack/dreadful-wail';
 
-export const DreadfulWail: Power = {
-  "name": "Dreadful Wail",
-  "internalName": "Dreadful_Wail",
-  "available": 25,
-  "description": "Your Dreadful Wail is so strong that most foes will be defeated by being subjected to it. Dreadful Wail deals Extreme Smashing and Energy damage to all nearby foes in addition to disorienting them for a good while.",
-  "shortHelp": "PBAoE, Extreme DMG(Energy/Smash), Foe Disorient, -Res(All)",
-  "icon": "sonicblast_massivedamage.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1.4,
-    "radius": 25,
-    "recharge": 145,
-    "endurance": 27.716,
-    "castTime": 1.97,
-    "maxTargets": 16
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Stun",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Corruptor Archetype Sets",
-    "Melee AoE Damage",
-    "Stuns",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 2,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 2,
-      "table": "Ranged_Damage"
-    }
-  ],
-  "effects": {
-    "stun": {
-      "mag": 3,
-      "scale": 10,
-      "table": "Ranged_Stun"
-    },
-    "resistanceDebuff": {
-      "smashing": {
-        "scale": 1.5,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "lethal": {
-        "scale": 1.5,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "fire": {
-        "scale": 1.5,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "cold": {
-        "scale": 1.5,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "energy": {
-        "scale": 1.5,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "negative": {
-        "scale": 1.5,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "psionic": {
-        "scale": 1.5,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "toxic": {
-        "scale": 1.5,
-        "table": "Ranged_Debuff_Res_Dmg"
-      }
-    },
-    "durations": {
-      "resistanceDebuff": 20
-    },
-    "buffDuration": 20
-  }
-};
+export const DreadfulWail: Power = withOverrides(base, overrides);

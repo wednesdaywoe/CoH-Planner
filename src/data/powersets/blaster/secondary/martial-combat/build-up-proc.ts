@@ -1,29 +1,16 @@
 /**
- * Reach for the Limit
- * Self +DMG, +To Hit
+ * Reach for the Limit — COMPOSED EXPORT
  *
- * Source: blaster_support/martial_manipulation/build_up_proc.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs blaster_support martial_manipulation
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { ReachfortheLimit as base } from '@/data/generated/powersets/blaster/secondary/martial-combat/build-up-proc';
+import { overrides } from '@/data/overrides/powersets/blaster/secondary/martial-combat/build-up-proc';
 
-export const ReachfortheLimit: Power = {
-  "name": "Reach for the Limit",
-  "internalName": "Build_Up_Proc",
-  "available": -1,
-  "description": "Greatly boosts your attacks for a few seconds. Slightly increases chance to hit.",
-  "shortHelp": "Self +DMG, +To Hit",
-  "icon": "martialmanipulation_reachforthelimit.png",
-  "powerType": "Global Enhancement",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "activatePeriod": 10
-  },
-  "allowedEnhancements": [
-    "Damage"
-  ],
-  "maxSlots": 6,
-  "requires": "Blaster_Support.Martial_Manipulation.Reach_for_the_Limit"
-};
+export const ReachfortheLimit: Power = withOverrides(base, overrides);

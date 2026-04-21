@@ -1,98 +1,16 @@
 /**
- * Environmental Adaptation
- * Self Toggle, +Res(Hold, Knockdown, Immobilize), +Def(Energy, Negative, Fire, Cold, Psionic), +Special
+ * Environmental Adaptation — COMPOSED EXPORT
  *
- * Source: sentinel_defense/bio_organic_armor/environmental_adaptation.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs sentinel_defense bio_organic_armor
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { EnvironmentalAdaptation as base } from '@/data/generated/powersets/sentinel/secondary/bio-armor/environmental-adaptation';
+import { overrides } from '@/data/overrides/powersets/sentinel/secondary/bio-armor/environmental-adaptation';
 
-export const EnvironmentalAdaptation: Power = {
-  "name": "Environmental Adaptation",
-  "internalName": "Environmental_Adaptation",
-  "available": 3,
-  "description": "Your body can spontaneously adapt to its surroundings and your mind has learned to shield itself from harmful effects by constant exposure to these dangers. While active you gain moderate defense to Fire, Cold, Energy and Negative Energy damage, and a small amount of defense to Psionic damage. Additionally you are protected against hold, knockdown and immobilize effects.*While Offensive Adaptation is active you'll gain a moderate To Hit bonus.*While Defensive Adaptation is active you gain a minor amount of Lethal, Smashing, Fire, Cold, Energy, Negative Energy and Psionic defense, as well as a minor amount of maximum hit points.*This power doesn't grant any bonuses to Efficient Adaptation.These special bonuses are unenhanceable.",
-  "shortHelp": "Self Toggle, +Res(Hold, Knockdown, Immobilize), +Def(Energy, Negative, Fire, Cold, Psionic), +Special",
-  "icon": "bioorganicarmor_environmentalmodification.png",
-  "powerType": "Toggle",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 2,
-    "endurance": 0.13,
-    "castTime": 0.73,
-    "activatePeriod": 0.5
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Defense"
-  ],
-  "allowedSetCategories": [
-    "Defense Sets"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "defenseBuff": {
-      "fire": {
-        "scale": 1.5,
-        "table": "Melee_Buff_Def"
-      },
-      "cold": {
-        "scale": 1.5,
-        "table": "Melee_Buff_Def"
-      },
-      "energy": {
-        "scale": 1.5,
-        "table": "Melee_Buff_Def"
-      },
-      "negative": {
-        "scale": 1.5,
-        "table": "Melee_Buff_Def"
-      },
-      "psionic": {
-        "scale": 0.75,
-        "table": "Melee_Buff_Def"
-      }
-    },
-    "durations": {
-      "defenseBuff": 0.75,
-      "hold": 0.75,
-      "mezResistance": 0.75,
-      "knockup": 0.75,
-      "knockback": 0.75,
-      "immobilize": 0.75
-    },
-    "hold": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "effectDuration": 0.75,
-    "mezResistance": {
-      "knockup": {
-        "scale": 1,
-        "table": "Melee_Ones"
-      },
-      "knockback": {
-        "scale": 1,
-        "table": "Melee_Ones"
-      }
-    },
-    "knockup": {
-      "scale": 10,
-      "table": "Melee_Ones"
-    },
-    "knockback": {
-      "scale": 10,
-      "table": "Melee_Ones"
-    },
-    "immobilize": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "buffDuration": 0.75
-  }
-};
+export const EnvironmentalAdaptation: Power = withOverrides(base, overrides);

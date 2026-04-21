@@ -1,52 +1,16 @@
 /**
- * Buttstroke
- * Melee, DMG(Smash), Foe Disorient
+ * Buttstroke — COMPOSED EXPORT
  *
- * Source: dominator_assault/arsenal_assault/buttstroke.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs dominator_assault arsenal_assault
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Buttstroke as base } from '@/data/generated/powersets/dominator/secondary/arsenal-assault/buttstroke';
+import { overrides } from '@/data/overrides/powersets/dominator/secondary/arsenal-assault/buttstroke';
 
-export const Buttstroke: Power = {
-  "name": "Buttstroke",
-  "internalName": "Buttstroke",
-  "available": 0,
-  "description": "A smash with the butt of your rifle with a high chance of disorienting.",
-  "shortHelp": "Melee, DMG(Smash), Foe Disorient",
-  "icon": "assaultweapons_riflebutt.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1.05,
-    "range": 7,
-    "recharge": 8,
-    "endurance": 8.528,
-    "castTime": 1.17
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Stun",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Dominator Archetype Sets",
-    "Melee Damage",
-    "Stuns",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 1.64,
-    "table": "Melee_Damage"
-  },
-  "effects": {
-    "stun": {
-      "mag": 3,
-      "scale": 8,
-      "table": "Melee_Stun"
-    }
-  }
-};
+export const Buttstroke: Power = withOverrides(base, overrides);

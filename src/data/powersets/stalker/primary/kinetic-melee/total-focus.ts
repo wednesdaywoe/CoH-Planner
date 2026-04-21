@@ -1,59 +1,16 @@
 /**
- * Concentrated Strike
- * Melee, DMG(Energy/Smash), Foe Disorient, +Special
+ * Concentrated Strike — COMPOSED EXPORT
  *
- * Source: stalker_melee/kinetic_attack/total_focus.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs stalker_melee kinetic_attack
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { ConcentratedStrike as base } from '@/data/generated/powersets/stalker/primary/kinetic-melee/total-focus';
+import { overrides } from '@/data/overrides/powersets/stalker/primary/kinetic-melee/total-focus';
 
-export const ConcentratedStrike: Power = {
-  "name": "Concentrated Strike",
-  "internalName": "Total_Focus",
-  "available": 25,
-  "description": "Concentrated Strike is a slow, but incredibly devastating attack that can knock out most opponents, leaving them Disoriented. Due to the exhausting nature of Concentrated Strike, its recharge time is very long. Concentrated Strike Criticals do not result in extra damage, instead they instantly recharge the Build Up power.",
-  "shortHelp": "Melee, DMG(Energy/Smash), Foe Disorient, +Special",
-  "icon": "kineticattack_totalfocus.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1.2,
-    "range": 7,
-    "recharge": 20,
-    "endurance": 18.512,
-    "castTime": 2.83
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Stun",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Melee Damage",
-    "Stalker Archetype Sets",
-    "Stuns",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 1,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 2.56,
-      "table": "Melee_Damage"
-    }
-  ],
-  "effects": {
-    "stun": {
-      "mag": 3,
-      "scale": 10,
-      "table": "Melee_Immobilize"
-    }
-  }
-};
+export const ConcentratedStrike: Power = withOverrides(base, overrides);

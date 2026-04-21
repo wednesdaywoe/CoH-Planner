@@ -1,70 +1,16 @@
 /**
- * Throw Spines
- * Ranged (Cone), DMG(Lethal), DoT(Toxic), -SPD, -Recharge
+ * Throw Spines — COMPOSED EXPORT
  *
- * Source: stalker_melee/spines/throw_spines.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs stalker_melee spines
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { ThrowSpines as base } from '@/data/generated/powersets/stalker/primary/spines/throw-spines';
+import { overrides } from '@/data/overrides/powersets/stalker/primary/spines/throw-spines';
 
-export const ThrowSpines: Power = {
-  "name": "Throw Spines",
-  "internalName": "Throw_Spines",
-  "available": 25,
-  "description": "You can throw dozens of Spines in a wide cone in front of you, impaling foes caught within the range. Spine throwing deals moderate lethal damage, and poisons any targets it hits. Spine poison deals additional Toxic damage and Slows affected foes. If executed while hidden, all affected targets have a chance to be hit with a Critical Hit for extra damage.",
-  "shortHelp": "Ranged (Cone), DMG(Lethal), DoT(Toxic), -SPD, -Recharge",
-  "icon": "quills_quillthrowing.png",
-  "powerType": "Click",
-  "effectArea": "Cone",
-  "stats": {
-    "accuracy": 1,
-    "range": 30,
-    "radius": 30,
-    "arc": 1.5708,
-    "recharge": 12,
-    "endurance": 13,
-    "castTime": 1.63,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "Slow",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Ranged AoE Damage",
-    "Slow Movement",
-    "Stalker Archetype Sets",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Lethal",
-      "scale": 1.09,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Toxic",
-      "scale": 0.1,
-      "table": "Melee_Damage",
-      "duration": 4.1,
-      "tickRate": 1
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.09,
-      "table": "Melee_InherentDamage"
-    }
-  ],
-  "effects": {
-    "immobilize": {
-      "mag": 0.67,
-      "scale": 10,
-      "table": "Melee_Immobilize"
-    }
-  }
-};
+export const ThrowSpines: Power = withOverrides(base, overrides);

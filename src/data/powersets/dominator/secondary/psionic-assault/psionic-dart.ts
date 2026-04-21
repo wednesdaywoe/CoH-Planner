@@ -1,43 +1,16 @@
 /**
- * Psionic Dart
- * Ranged, Light DMG(Psionic), Target -Recharge
+ * Psionic Dart — COMPOSED EXPORT
  *
- * Source: dominator_assault/psionic_assault/psionic_dart.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs dominator_assault psionic_assault
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { PsionicDart as base } from '@/data/generated/powersets/dominator/secondary/psionic-assault/psionic-dart';
+import { overrides } from '@/data/overrides/powersets/dominator/secondary/psionic-assault/psionic-dart';
 
-export const PsionicDart: Power = {
-  "name": "Psionic Dart",
-  "internalName": "Psionic_Dart",
-  "available": 0,
-  "description": "This basic attack does moderate Psionic damage, and can slightly reduce a target's attack speed.Damage: Light.Recharge: Very Fast.",
-  "shortHelp": "Ranged, Light DMG(Psionic), Target -Recharge",
-  "icon": "psionicassault_mentaldart.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 100,
-    "recharge": 3,
-    "endurance": 4.368,
-    "castTime": 0.83
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Ranged Damage",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Psionic",
-    "scale": 0.84,
-    "table": "Ranged_Damage"
-  }
-};
+export const PsionicDart: Power = withOverrides(base, overrides);

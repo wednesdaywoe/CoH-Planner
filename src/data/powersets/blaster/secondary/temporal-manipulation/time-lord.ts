@@ -1,66 +1,16 @@
 /**
- * Time Lord
- * Auto: Self +Recharge, +Resist(Energy, Disorient, Slow)
+ * Time Lord — COMPOSED EXPORT
  *
- * Source: blaster_support/time_manipulation/time_lord.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs blaster_support time_manipulation
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { TimeLord as base } from '@/data/generated/powersets/blaster/secondary/temporal-manipulation/time-lord';
+import { overrides } from '@/data/overrides/powersets/blaster/secondary/temporal-manipulation/time-lord';
 
-export const TimeLord: Power = {
-  "name": "Time Lord",
-  "internalName": "Time_Lord",
-  "available": 29,
-  "description": "You are a time lord, for you time is just a small hurdle that can easily be overcome or ignored. As a time lord, all your attacks recharge faster and you are resistant to energy attacks in addition to disorient effects, movement debuffs and recharge debuffs. If you are affected by the Accelerated effect, your powers will recharge even faster and you will become nearly immune to recharge debuffs. This power is always on and cost no endurance.",
-  "shortHelp": "Auto: Self +Recharge, +Resist(Energy, Disorient, Slow)",
-  "icon": "timemanipulation_timelord.png",
-  "powerType": "Auto",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "activatePeriod": 0.5
-  },
-  "allowedEnhancements": [
-    "Resistance"
-  ],
-  "allowedSetCategories": [
-    "Resist Damage"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "rechargeBuff": {
-      "scale": 0.1,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "rechargeBuff": 0.5,
-      "debuffResistance": 0.5,
-      "resistance": 0.5,
-      "stun": 0.5
-    },
-    "debuffResistance": {
-      "movement": {
-        "scale": 0.3,
-        "table": "Melee_Ones"
-      },
-      "recharge": {
-        "scale": 0.3,
-        "table": "Melee_Ones"
-      }
-    },
-    "resistance": {
-      "energy": {
-        "scale": 0.5,
-        "table": "Melee_Res_Dmg"
-      }
-    },
-    "stun": {
-      "mag": 1,
-      "scale": 10,
-      "table": "Melee_Res_Boolean"
-    },
-    "effectDuration": 0.5,
-    "buffDuration": 0.5
-  }
-};
+export const TimeLord: Power = withOverrides(base, overrides);

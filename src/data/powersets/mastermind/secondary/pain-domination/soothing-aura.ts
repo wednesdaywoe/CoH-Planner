@@ -1,48 +1,16 @@
 /**
- * Suppress Pain
- * Toggle: PBAoE, Ally +Regeneration
+ * Suppress Pain — COMPOSED EXPORT
  *
- * Source: mastermind_buff/pain_domination/soothing_aura.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs mastermind_buff pain_domination
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { SuppressPain as base } from '@/data/generated/powersets/mastermind/secondary/pain-domination/soothing-aura';
+import { overrides } from '@/data/overrides/powersets/mastermind/secondary/pain-domination/soothing-aura';
 
-export const SuppressPain: Power = {
-  "name": "Suppress Pain",
-  "internalName": "Soothing_Aura",
-  "available": 19,
-  "description": "While this power is active all nearby allies will have their regeneration rate increased dramatically.Recharge: Moderate.",
-  "shortHelp": "Toggle: PBAoE, Ally +Regeneration",
-  "icon": "paindomination_soothingaura.png",
-  "powerType": "Toggle",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "radius": 15,
-    "recharge": 10,
-    "endurance": 0.975,
-    "castTime": 1.67,
-    "activatePeriod": 4,
-    "maxTargets": 255
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Healing"
-  ],
-  "allowedSetCategories": [
-    "Healing"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "regenBuff": {
-      "scale": 2,
-      "table": "Ranged_Ones"
-    },
-    "durations": {
-      "regenBuff": 4.25
-    },
-    "buffDuration": 4.25
-  }
-};
+export const SuppressPain: Power = withOverrides(base, overrides);

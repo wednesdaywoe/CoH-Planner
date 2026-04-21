@@ -1,59 +1,16 @@
 /**
- * Power Push
- * Ranged DMG(Energy/Smash), Foe High Knockback
+ * Power Push — COMPOSED EXPORT
  *
- * Source: sentinel_ranged/energy_blast/power_push.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs sentinel_ranged energy_blast
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { PowerPush as base } from '@/data/generated/powersets/sentinel/primary/energy-blast/power-push';
+import { overrides } from '@/data/overrides/powersets/sentinel/primary/energy-blast/power-push';
 
-export const PowerPush: Power = {
-  "name": "Power Push",
-  "internalName": "Power_Push",
-  "available": 11,
-  "description": "This ranged attack deals little damage, but sends the target flying for a great distance.",
-  "shortHelp": "Ranged DMG(Energy/Smash), Foe High Knockback",
-  "icon": "powerblast_powerpush.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 60,
-    "recharge": 8,
-    "endurance": 8.528,
-    "castTime": 1.1
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Knockback",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Knockback",
-    "Ranged Damage",
-    "Sentinel Archetype Sets",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 0.328,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.312,
-      "table": "Ranged_Damage"
-    }
-  ],
-  "effects": {
-    "knockback": {
-      "scale": 8,
-      "table": "Ranged_Knockback"
-    }
-  }
-};
+export const PowerPush: Power = withOverrides(base, overrides);

@@ -1,66 +1,16 @@
 /**
- * Deflection Shield
- * Ranged, Ally +DEF(Smash, Lethal, Melee), Res(Toxic)
+ * Deflection Shield — COMPOSED EXPORT
  *
- * Source: corruptor_buff/force_field/deflection_shield.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs corruptor_buff force_field
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { DeflectionShield as base } from '@/data/generated/powersets/corruptor/secondary/force-field/deflection-shield';
+import { overrides } from '@/data/overrides/powersets/corruptor/secondary/force-field/deflection-shield';
 
-export const DeflectionShield: Power = {
-  "name": "Deflection Shield",
-  "internalName": "Deflection_Shield",
-  "available": 0,
-  "description": "Dramatically protects an ally from Smashing, Lethal and all Melee attacks for a limited time. Also reduces Toxic damage. You cannot stack multiple Deflection Shields on the same target; however, the shield can be improved by another ally using the same power. Can also be used in conjunction with your Insulation Shield. You cannot use this power on yourself.",
-  "shortHelp": "Ranged, Ally +DEF(Smash, Lethal, Melee), Res(Toxic)",
-  "icon": "forcefield_deflectionshield.png",
-  "powerType": "Click",
-  "targetType": "Ally (Alive)",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "range": 80,
-    "radius": 30,
-    "recharge": 2,
-    "endurance": 7.8,
-    "castTime": 2.07,
-    "maxTargets": 255
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Defense"
-  ],
-  "allowedSetCategories": [
-    "Defense Sets"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "defenseBuff": {
-      "melee": {
-        "scale": 1.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "smashing": {
-        "scale": 1.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "lethal": {
-        "scale": 1.5,
-        "table": "Ranged_Buff_Def"
-      }
-    },
-    "durations": {
-      "defenseBuff": 240,
-      "resistance": 240
-    },
-    "resistance": {
-      "toxic": {
-        "scale": 4,
-        "table": "Ranged_Res_Dmg"
-      }
-    },
-    "buffDuration": 240
-  }
-};
+export const DeflectionShield: Power = withOverrides(base, overrides);

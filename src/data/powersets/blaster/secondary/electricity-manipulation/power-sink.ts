@@ -1,61 +1,16 @@
 /**
- * Power Sink
- * PBAoE, Self +End, Foe -End
+ * Power Sink — COMPOSED EXPORT
  *
- * Source: blaster_support/electricity_manipulation/power_sink.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs blaster_support electricity_manipulation
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { PowerSink as base } from '@/data/generated/powersets/blaster/secondary/electricity-manipulation/power-sink';
+import { overrides } from '@/data/overrides/powersets/blaster/secondary/electricity-manipulation/power-sink';
 
-export const PowerSink: Power = {
-  "name": "Power Sink",
-  "internalName": "Power_Sink",
-  "available": 23,
-  "description": "Power Sink leeches energy directly from the bodies of all nearby foes, draining their Endurance. Each foe you draw energy from increases your Endurance. If there are no foes within range, you will not gain any Endurance.",
-  "shortHelp": "PBAoE, Self +End, Foe -End",
-  "icon": "electricitymanipulation_powersink.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "radius": 12,
-    "recharge": 60,
-    "endurance": 13,
-    "castTime": 2.03,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "EnduranceModification",
-    "EnduranceReduction",
-    "Recharge"
-  ],
-  "allowedSetCategories": [
-    "Endurance Modification"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "enduranceDrain": {
-      "scale": 0.35,
-      "table": "Melee_Ones"
-    },
-    "recoveryDebuff": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "recoveryDebuff": 4,
-      "damageBuff": 9.53
-    },
-    "enduranceGain": {
-      "scale": 25,
-      "table": "Melee_Ones",
-      "perTarget": 25
-    },
-    "damageBuff": {
-      "scale": 0.048,
-      "table": "Melee_Ones"
-    },
-    "buffDuration": 9.53
-  }
-};
+export const PowerSink: Power = withOverrides(base, overrides);

@@ -1,49 +1,16 @@
 /**
- * Lingering Radiation
- * Ranged (Targeted AoE), Foe -Speed, -Recharge, -Regen
+ * Lingering Radiation — COMPOSED EXPORT
  *
- * Source: mastermind_buff/radiation_emission/lingering_radiation.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs mastermind_buff radiation_emission
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { LingeringRadiation as base } from '@/data/generated/powersets/mastermind/secondary/radiation-emission/lingering-radiation';
+import { overrides } from '@/data/overrides/powersets/mastermind/secondary/radiation-emission/lingering-radiation';
 
-export const LingeringRadiation: Power = {
-  "name": "Lingering Radiation",
-  "internalName": "Lingering_radiation",
-  "available": 19,
-  "description": "You can emit Lingering Radiation that reduces the attack rate, movement speed, and Regeneration rate of the target, and all nearby foes.Recharge: Long.",
-  "shortHelp": "Ranged (Targeted AoE), Foe -Speed, -Recharge, -Regen",
-  "icon": "radiationpoisoning_lingeringradiation.png",
-  "powerType": "Click",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "range": 80,
-    "radius": 25,
-    "recharge": 90,
-    "endurance": 19.5,
-    "castTime": 1.5,
-    "maxTargets": 16
-  },
-  "allowedEnhancements": [
-    "Slow",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Slow Movement"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "regenDebuff": {
-      "scale": 5,
-      "table": "Ranged_Ones"
-    },
-    "durations": {
-      "regenDebuff": 30
-    },
-    "buffDuration": 30
-  }
-};
+export const LingeringRadiation: Power = withOverrides(base, overrides);

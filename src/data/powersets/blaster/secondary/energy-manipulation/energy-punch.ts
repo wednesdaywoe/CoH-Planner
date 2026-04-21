@@ -1,63 +1,16 @@
 /**
- * Energy Punch
- * Melee, High DMG(Smash/Energy), Foe Disorient
+ * Energy Punch — COMPOSED EXPORT
  *
- * Source: blaster_support/energy_manipulation/energy_punch.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs blaster_support energy_manipulation
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { EnergyPunch as base } from '@/data/generated/powersets/blaster/secondary/energy-manipulation/energy-punch';
+import { overrides } from '@/data/overrides/powersets/blaster/secondary/energy-manipulation/energy-punch';
 
-export const EnergyPunch: Power = {
-  "name": "Energy Punch",
-  "internalName": "Energy_Punch",
-  "available": 0,
-  "description": "Powerful focused punch that may Disorient your opponent!Damage: High.Recharge: Moderate.",
-  "shortHelp": "Melee, High DMG(Smash/Energy), Foe Disorient",
-  "icon": "energymanipulation_energypunch.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 7,
-    "recharge": 10,
-    "endurance": 10.192,
-    "castTime": 0.83
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Stun",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Blaster Archetype Sets",
-    "Melee Damage",
-    "Stuns",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 0.96,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1,
-      "table": "Melee_Damage"
-    }
-  ],
-  "effects": {
-    "stun": {
-      "mag": 2,
-      "scale": 5,
-      "table": "Melee_Stun"
-    },
-    "damageBuff": {
-      "scale": 0,
-      "table": "Ranged_Ones"
-    }
-  }
-};
+export const EnergyPunch: Power = withOverrides(base, overrides);

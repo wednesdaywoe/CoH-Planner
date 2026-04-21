@@ -1,62 +1,16 @@
 /**
- * Eagles Claw
- * Melee, DMG(Smash), Foe Disorient, +DMG(All)
+ * Eagles Claw — COMPOSED EXPORT
  *
- * Source: tanker_melee/martial_arts/eagles_claw.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs tanker_melee martial_arts
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { EaglesClaw as base } from '@/data/generated/powersets/tanker/secondary/martial-arts/eagles-claw';
+import { overrides } from '@/data/overrides/powersets/tanker/secondary/martial-arts/eagles-claw';
 
-export const EaglesClaw: Power = {
-  "name": "Eagles Claw",
-  "internalName": "Eagles_Claw",
-  "available": 29,
-  "description": "You can perform a devastating kick that can severely Disorient most opponents. After using Eagle's Claw your damage will be increased for a brief moment allowing the next attack or two to cause additional damage.",
-  "shortHelp": "Melee, DMG(Smash), Foe Disorient, +DMG(All)",
-  "icon": "martialarts_eaglesclaw.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1.05,
-    "range": 7,
-    "recharge": 12,
-    "endurance": 11.856,
-    "castTime": 2.53
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "EnduranceReduction",
-    "Stun",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Melee Damage",
-    "Stuns",
-    "Tanker Archetype Sets",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 2.28,
-    "table": "Melee_Damage"
-  },
-  "effects": {
-    "damageBuff": {
-      "scale": 3.3,
-      "table": "Melee_Buff_Dmg"
-    },
-    "durations": {
-      "damageBuff": 3
-    },
-    "stun": {
-      "mag": 3,
-      "scale": 4,
-      "table": "Melee_Stun"
-    },
-    "buffDuration": 3
-  }
-};
+export const EaglesClaw: Power = withOverrides(base, overrides);

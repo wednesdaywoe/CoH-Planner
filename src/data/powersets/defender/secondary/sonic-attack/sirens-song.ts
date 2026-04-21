@@ -1,63 +1,16 @@
 /**
- * Siren's Song
- * Ranged (Cone), Minor DMG(Energy), Foe Sleep
+ * Siren's Song — COMPOSED EXPORT
  *
- * Source: defender_ranged/sonic_attack/sirens_song.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs defender_ranged sonic_attack
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { SirensSong as base } from '@/data/generated/powersets/defender/secondary/sonic-attack/sirens-song';
+import { overrides } from '@/data/overrides/powersets/defender/secondary/sonic-attack/sirens-song';
 
-export const SirensSong: Power = {
-  "name": "Siren's Song",
-  "internalName": "Sirens_Song",
-  "available": 23,
-  "description": "You send forth a subsonic pulse which causes your foes to fall unconscious and take energy damage. Your foes will remain unconscious for a good while, but will awaken if disturbed.Notes: The Sleep component of this power is Auto Hit against regular enemies, but a To Hit check is required against AVs and players, as well as to make secondary effects apply.",
-  "shortHelp": "Ranged (Cone), Minor DMG(Energy), Foe Sleep",
-  "icon": "sonicblast_sleep.png",
-  "powerType": "Click",
-  "effectArea": "Cone",
-  "stats": {
-    "accuracy": 1,
-    "range": 40,
-    "radius": 40,
-    "arc": 0.8727,
-    "recharge": 16,
-    "endurance": 15.184,
-    "castTime": 1.86,
-    "maxTargets": 16
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Sleep",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Defender Archetype Sets",
-    "Ranged AoE Damage",
-    "Sleep",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Energy",
-      "scale": 1.1902,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.1902,
-      "table": "Ranged_Damage"
-    }
-  ],
-  "effects": {
-    "sleep": {
-      "mag": 3,
-      "scale": 30,
-      "table": "Ranged_Sleep"
-    }
-  }
-};
+export const SirensSong: Power = withOverrides(base, overrides);

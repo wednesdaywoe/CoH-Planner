@@ -1,54 +1,16 @@
 /**
- * Zapp
- * Sniper, DMG(Energy), Foe -End
+ * Zapp — COMPOSED EXPORT
  *
- * Source: defender_ranged/electrical_blast/zapp.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs defender_ranged electrical_blast
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Zapp as base } from '@/data/generated/powersets/defender/secondary/electrical-blast/zapp';
+import { overrides } from '@/data/overrides/powersets/defender/secondary/electrical-blast/zapp';
 
-export const Zapp: Power = {
-  "name": "Zapp",
-  "internalName": "Zapp",
-  "available": 19,
-  "description": "A focused electrical blast that can travel great distances with high Accuracy. Zapp drains Endurance, and is best fired from a distance, as it can be interrupted. Some of the Endurance you drain may transfer back to you. If you are engaged in battle this attack becomes instant-cast. If you are not engaged, it will do bonus damage.",
-  "shortHelp": "Sniper, DMG(Energy), Foe -End",
-  "icon": "electricalbolt_zapp.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 150,
-    "recharge": 12,
-    "endurance": 14.352,
-    "castTime": 1.33
-  },
-  "allowedEnhancements": [
-    "EnduranceModification",
-    "Interrupt",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Defender Archetype Sets",
-    "Endurance Modification",
-    "Ranged Damage",
-    "Sniper Attacks",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Energy",
-    "scale": 4.5,
-    "table": "Ranged_Damage"
-  },
-  "effects": {
-    "enduranceDrain": {
-      "scale": 0.3,
-      "table": "Ranged_EndDrain"
-    }
-  }
-};
+export const Zapp: Power = withOverrides(base, overrides);

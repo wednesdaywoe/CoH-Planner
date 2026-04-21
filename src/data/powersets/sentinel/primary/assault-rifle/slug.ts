@@ -1,52 +1,16 @@
 /**
- * Slug
- * Ranged, DMG(Lethal), Foe Knockback
+ * Slug — COMPOSED EXPORT
  *
- * Source: sentinel_ranged/assault_rifle/slug.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs sentinel_ranged assault_rifle
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Slug as base } from '@/data/generated/powersets/sentinel/primary/assault-rifle/slug';
+import { overrides } from '@/data/overrides/powersets/sentinel/primary/assault-rifle/slug';
 
-export const Slug: Power = {
-  "name": "Slug",
-  "internalName": "Slug",
-  "available": 5,
-  "description": "Fires a single Slug at a targeted foe. Firing a single Slug is slower than firing a Burst, but deals more damage and can knock down foes.Damage: High.Recharge: Moderate.",
-  "shortHelp": "Ranged, DMG(Lethal), Foe Knockback",
-  "icon": "assaultweapons_shotgunslug.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1.05,
-    "range": 60,
-    "recharge": 8,
-    "endurance": 8.528,
-    "castTime": 1.4
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Knockback",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Knockback",
-    "Ranged Damage",
-    "Sentinel Archetype Sets",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 1.64,
-    "table": "Ranged_Damage"
-  },
-  "effects": {
-    "knockback": {
-      "scale": 0.75,
-      "table": "Ranged_Knockback"
-    }
-  }
-};
+export const Slug: Power = withOverrides(base, overrides);

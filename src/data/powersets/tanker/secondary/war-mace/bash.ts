@@ -1,54 +1,16 @@
 /**
- * Bash
- * Melee, DMG(Smash), Disorient
+ * Bash — COMPOSED EXPORT
  *
- * Source: tanker_melee/war_mace/bash.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs tanker_melee war_mace
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Bash as base } from '@/data/generated/powersets/tanker/secondary/war-mace/bash';
+import { overrides } from '@/data/overrides/powersets/tanker/secondary/war-mace/bash';
 
-export const Bash: Power = {
-  "name": "Bash",
-  "internalName": "Bash",
-  "available": 0,
-  "description": "You perform a Bashing attack with your mace that deals moderate damage, and can sometimes Disorient your opponent.",
-  "shortHelp": "Melee, DMG(Smash), Disorient",
-  "icon": "mace_bash.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1.05,
-    "range": 7,
-    "recharge": 4,
-    "endurance": 5.2,
-    "castTime": 1.33
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "EnduranceReduction",
-    "Stun",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Melee Damage",
-    "Stuns",
-    "Tanker Archetype Sets",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 1,
-    "table": "Melee_Damage"
-  },
-  "effects": {
-    "stun": {
-      "mag": 2,
-      "scale": 5,
-      "table": "Melee_Stun"
-    }
-  }
-};
+export const Bash: Power = withOverrides(base, overrides);

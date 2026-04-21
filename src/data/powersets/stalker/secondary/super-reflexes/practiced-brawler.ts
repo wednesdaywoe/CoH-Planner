@@ -1,82 +1,16 @@
 /**
- * Practiced Brawler
- * Self +Res(Knockback, Disorient, Hold, Sleep, Immobilize)
+ * Practiced Brawler — COMPOSED EXPORT
  *
- * Source: stalker_defense/super_reflexes/practiced_brawler.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs stalker_defense super_reflexes
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { PracticedBrawler as base } from '@/data/generated/powersets/stalker/secondary/super-reflexes/practiced-brawler';
+import { overrides } from '@/data/overrides/powersets/stalker/secondary/super-reflexes/practiced-brawler';
 
-export const PracticedBrawler: Power = {
-  "name": "Practiced Brawler",
-  "internalName": "Practiced_Brawler",
-  "available": 15,
-  "description": "Your training has allowed you to become a Practiced Brawler, tuning you into a perfect fighting machine. You gain a resistance to Knockback, Disorient, Hold, Sleep, and Immobilization powers for a short duration.Recharge: Long.",
-  "shortHelp": "Self +Res(Knockback, Disorient, Hold, Sleep, Immobilize)",
-  "icon": "superreflexes_practicedbrawler.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 200,
-    "endurance": 10.4,
-    "castTime": 1.53
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "mezResistance": {
-      "knockup": {
-        "scale": 100,
-        "table": "Melee_Ones"
-      },
-      "knockback": {
-        "scale": 100,
-        "table": "Melee_Ones"
-      }
-    },
-    "durations": {
-      "mezResistance": 120,
-      "knockup": 120,
-      "knockback": 120,
-      "hold": 120,
-      "immobilize": 120,
-      "stun": 120,
-      "sleep": 120
-    },
-    "knockup": {
-      "scale": 10,
-      "table": "Melee_Ones"
-    },
-    "knockback": {
-      "scale": 10,
-      "table": "Melee_Ones"
-    },
-    "hold": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "effectDuration": 120,
-    "immobilize": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "stun": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "sleep": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "buffDuration": 120
-  }
-};
+export const PracticedBrawler: Power = withOverrides(base, overrides);

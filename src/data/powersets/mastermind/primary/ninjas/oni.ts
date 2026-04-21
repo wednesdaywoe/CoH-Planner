@@ -1,52 +1,16 @@
 /**
- * Oni
- * Summon Oni
+ * Oni — COMPOSED EXPORT
  *
- * Source: mastermind_summon/ninjas/oni.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs mastermind_summon ninjas
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Oni as base } from '@/data/generated/powersets/mastermind/primary/ninjas/oni';
+import { overrides } from '@/data/overrides/powersets/mastermind/primary/ninjas/oni';
 
-export const Oni: Power = {
-  "name": "Oni",
-  "internalName": "Oni",
-  "available": 21,
-  "description": "Summons an ancient and powerful Oni. An Oni is a powerful human-like demon warrior. The Oni is a formidable creature who possesses the skill of a warrior and the powers of wind and fire.",
-  "shortHelp": "Summon Oni",
-  "icon": "ninjas_calloni.png",
-  "powerType": "Click",
-  "targetType": "Location",
-  "effectArea": "Location",
-  "stats": {
-    "accuracy": 1,
-    "range": 60,
-    "recharge": 15,
-    "endurance": 13.18,
-    "castTime": 2.03
-  },
-  "allowedEnhancements": [
-    "Hold",
-    "EnduranceReduction",
-    "Knockback",
-    "Immobilize",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Holds",
-    "Immobilize",
-    "Knockback",
-    "Mastermind Archetype Sets",
-    "Pet Damage",
-    "Recharge Intensive Pets",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "isPseudoPet": false,
-      "entity": "MastermindPets_Oni",
-      "copyBoosts": true
-    }
-  }
-};
+export const Oni: Power = withOverrides(base, overrides);

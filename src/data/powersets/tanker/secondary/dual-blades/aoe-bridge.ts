@@ -1,49 +1,16 @@
 /**
- * Typhoon's Edge
- * PBAoE Melee, DMG(Lethal)
+ * Typhoon's Edge — COMPOSED EXPORT
  *
- * Source: tanker_melee/dual_blades/aoe_bridge.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs tanker_melee dual_blades
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { TyphoonsEdge as base } from '@/data/generated/powersets/tanker/secondary/dual-blades/aoe-bridge';
+import { overrides } from '@/data/overrides/powersets/tanker/secondary/dual-blades/aoe-bridge';
 
-export const TyphoonsEdge: Power = {
-  "name": "Typhoon's Edge",
-  "internalName": "AoE_Bridge",
-  "available": 15,
-  "description": "You spin around in a circle, attacking everyone within melee range with a striking attack. This attack is the finishing move in both the Weaken and Sweep combination attacks.Weaken: Nimble Slash > Ablating Strike > Typhoon's Edge.Sweep: One Thousand Cuts > Power Slice > Typhoon's Edge.Notes: Thanks to gauntlet, this power can hit up to 5 targets above its cap at 1/3rd effectiveness.",
-  "shortHelp": "PBAoE Melee, DMG(Lethal)",
-  "icon": "dualblades_aoebridge.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "radius": 12,
-    "recharge": 12,
-    "endurance": 11.856,
-    "castTime": 2.27,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "Taunt",
-    "EnduranceReduction",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Melee AoE Damage",
-    "Tanker Archetype Sets",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 0.57,
-    "table": "Melee_Damage",
-    "duration": 0.6,
-    "tickRate": 0.4
-  }
-};
+export const TyphoonsEdge: Power = withOverrides(base, overrides);

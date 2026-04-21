@@ -1,54 +1,16 @@
 /**
- * Pulse Rifle Blast
- * Ranged, DMG(Energy), -Regen
+ * Pulse Rifle Blast — COMPOSED EXPORT
  *
- * Source: mastermind_summon/robotics/pulse_rifle_blast.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs mastermind_summon robotics
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { PulseRifleBlast as base } from '@/data/generated/powersets/mastermind/primary/robotics/pulse-rifle-blast';
+import { overrides } from '@/data/overrides/powersets/mastermind/primary/robotics/pulse-rifle-blast';
 
-export const PulseRifleBlast: Power = {
-  "name": "Pulse Rifle Blast",
-  "internalName": "Pulse_Rifle_Blast",
-  "available": 0,
-  "description": "This Pulse Rifle can fire a long range laser pulse that deals Energy damage.Laser Burn:Targets struck by this attack will have their Regeneration debuffed for 30 seconds.",
-  "shortHelp": "Ranged, DMG(Energy), -Regen",
-  "icon": "robotics_laserrifleburst.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 80,
-    "recharge": 4,
-    "endurance": 5.2,
-    "castTime": 1
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Mastermind Archetype Sets",
-    "Ranged Damage",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Energy",
-    "scale": 1,
-    "table": "Ranged_Damage"
-  },
-  "effects": {
-    "regenDebuff": {
-      "scale": 2,
-      "table": "Ranged_Ones"
-    },
-    "durations": {
-      "regenDebuff": 30
-    },
-    "buffDuration": 30
-  }
-};
+export const PulseRifleBlast: Power = withOverrides(base, overrides);

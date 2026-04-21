@@ -1,63 +1,16 @@
 /**
- * Deafening Wave
- * PBAoE Melee, DMG(Energy/Smash), Foe Chance for Hold
+ * Deafening Wave — COMPOSED EXPORT
  *
- * Source: tanker_melee/sonic_melee/deafening_wave.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs tanker_melee sonic_melee
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { DeafeningWave as base } from '@/data/generated/powersets/tanker/secondary/sonic-melee/deafening-wave';
+import { overrides } from '@/data/overrides/powersets/tanker/secondary/sonic-melee/deafening-wave';
 
-export const DeafeningWave: Power = {
-  "name": "Deafening Wave",
-  "internalName": "Deafening_Wave",
-  "available": 27,
-  "description": "You create a large field of sonic waves, causing damage to all foes around you. It has a moderate chance of causing migraines, leaving them shaking in pain and helpless. This power will inflict 10% bonus damage against Attuned targets.Notes: Thanks to gauntlet, this power can hit up to 6 targets above its cap at 1/3rd effectiveness.",
-  "shortHelp": "PBAoE Melee, DMG(Energy/Smash), Foe Chance for Hold",
-  "icon": "sonicmanipulation_deafeningcry.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "radius": 15,
-    "recharge": 15,
-    "endurance": 14.352,
-    "castTime": 2.03,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "Hold",
-    "Taunt",
-    "EnduranceReduction",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Holds",
-    "Melee AoE Damage",
-    "Tanker Archetype Sets",
-    "Threat Duration",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 0.4246,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.4246,
-      "table": "Melee_Damage"
-    }
-  ],
-  "effects": {
-    "hold": {
-      "mag": 2,
-      "scale": 5,
-      "table": "Melee_Immobilize"
-    }
-  }
-};
+export const DeafeningWave: Power = withOverrides(base, overrides);

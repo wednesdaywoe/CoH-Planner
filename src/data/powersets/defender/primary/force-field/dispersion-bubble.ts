@@ -1,109 +1,16 @@
 /**
- * Dispersion Bubble
- * Toggle: PBAoE, Team +Res(Hold, Immobilize, Disorient) +DEF(All)
+ * Dispersion Bubble — COMPOSED EXPORT
  *
- * Source: defender_buff/force_field/dispersion_bubble.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs defender_buff force_field
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { DispersionBubble as base } from '@/data/generated/powersets/defender/primary/force-field/dispersion-bubble';
+import { overrides } from '@/data/overrides/powersets/defender/primary/force-field/dispersion-bubble';
 
-export const DispersionBubble: Power = {
-  "name": "Dispersion Bubble",
-  "internalName": "Dispersion_Bubble",
-  "available": 11,
-  "description": "Creates a large bubble which protects all allies inside. While active, the Dispersion Bubble gives all allies within increased Defense against all attack types. The Dispersion Bubble also protects allies from Immobilization, Disorient, and Hold effects.Allies will retain bonuses from the bubble for some after leaving the bubble's area.",
-  "shortHelp": "Toggle: PBAoE, Team +Res(Hold, Immobilize, Disorient) +DEF(All)",
-  "icon": "forcefield_dispersionbubble.png",
-  "powerType": "Toggle",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "radius": 25,
-    "recharge": 15,
-    "endurance": 1.04,
-    "castTime": 1.07,
-    "activatePeriod": 2,
-    "maxTargets": 255
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Defense"
-  ],
-  "allowedSetCategories": [
-    "Defense Sets"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "defenseBuff": {
-      "ranged": {
-        "scale": 1,
-        "table": "Ranged_Buff_Def"
-      },
-      "melee": {
-        "scale": 1,
-        "table": "Ranged_Buff_Def"
-      },
-      "aoe": {
-        "scale": 1,
-        "table": "Ranged_Buff_Def"
-      },
-      "smashing": {
-        "scale": 1,
-        "table": "Ranged_Buff_Def"
-      },
-      "lethal": {
-        "scale": 1,
-        "table": "Ranged_Buff_Def"
-      },
-      "fire": {
-        "scale": 1,
-        "table": "Ranged_Buff_Def"
-      },
-      "cold": {
-        "scale": 1,
-        "table": "Ranged_Buff_Def"
-      },
-      "energy": {
-        "scale": 1,
-        "table": "Ranged_Buff_Def"
-      },
-      "negative": {
-        "scale": 1,
-        "table": "Ranged_Buff_Def"
-      },
-      "psionic": {
-        "scale": 1,
-        "table": "Ranged_Buff_Def"
-      },
-      "toxic": {
-        "scale": 1,
-        "table": "Ranged_Buff_Def"
-      }
-    },
-    "durations": {
-      "defenseBuff": 15,
-      "hold": 15,
-      "immobilize": 15,
-      "stun": 15
-    },
-    "hold": {
-      "mag": 1,
-      "scale": 20,
-      "table": "Ranged_Res_Boolean"
-    },
-    "effectDuration": 15,
-    "immobilize": {
-      "mag": 1,
-      "scale": 20,
-      "table": "Ranged_Res_Boolean"
-    },
-    "stun": {
-      "mag": 1,
-      "scale": 20,
-      "table": "Ranged_Res_Boolean"
-    },
-    "buffDuration": 15
-  }
-};
+export const DispersionBubble: Power = withOverrides(base, overrides);

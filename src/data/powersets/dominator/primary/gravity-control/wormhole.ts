@@ -1,76 +1,16 @@
 /**
- * Wormhole
- * Ranged (Targeted AoE), Foe Teleport, Disorient, Knockback
+ * Wormhole — COMPOSED EXPORT
  *
- * Source: dominator_control/gravity_control/wormhole.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs dominator_control gravity_control
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Wormhole as base } from '@/data/generated/powersets/dominator/primary/gravity-control/wormhole';
+import { overrides } from '@/data/overrides/powersets/dominator/primary/gravity-control/wormhole';
 
-export const Wormhole: Power = {
-  "name": "Wormhole",
-  "internalName": "Wormhole",
-  "available": 21,
-  "description": "You can open a gravitational Wormhole behind a targeted foe and violently push him, and all nearby foes, through it. The victims are sent flying out the other end of the Wormhole and are left Disoriented. You determine the location of the Wormhole's end, and can place it high in the air if desired. More powerful foes may be resistant to the Wormhole effects.",
-  "shortHelp": "Ranged (Targeted AoE), Foe Teleport, Disorient, Knockback",
-  "icon": "gravitycontrol_wormhole.png",
-  "powerType": "Click",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "range": 80,
-    "radius": 20,
-    "recharge": 90,
-    "endurance": 15.6,
-    "castTime": 3,
-    "maxTargets": 16
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Stun",
-    "Recharge",
-    "Knockback",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Dominator Archetype Sets",
-    "Knockback",
-    "Stuns",
-    "Teleport",
-    "Universal Travel"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "stealth": {
-      "translucency": {
-        "scale": 0,
-        "table": "Ranged_Ones"
-      }
-    },
-    "durations": {
-      "stealth": 1.5,
-      "mezResistance": 15
-    },
-    "teleport": {
-      "scale": 4.1,
-      "table": "Ranged_Ones"
-    },
-    "mezResistance": {
-      "teleport": {
-        "scale": 100,
-        "table": "Ranged_Ones"
-      }
-    },
-    "stun": {
-      "mag": 3,
-      "scale": 10,
-      "table": "Ranged_Stun"
-    },
-    "knockback": {
-      "scale": 7,
-      "table": "Ranged_Knockback"
-    },
-    "buffDuration": 15
-  }
-};
+export const Wormhole: Power = withOverrides(base, overrides);

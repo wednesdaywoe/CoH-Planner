@@ -1,67 +1,16 @@
 /**
- * Shockwave
- * Melee (Cone), DMG(Lethal), Foe Knockback
+ * Shockwave — COMPOSED EXPORT
  *
- * Source: scrapper_melee/claws/shockwave.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs scrapper_melee claws
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Shockwave as base } from '@/data/generated/powersets/scrapper/primary/claws/shockwave';
+import { overrides } from '@/data/overrides/powersets/scrapper/primary/claws/shockwave';
 
-export const Shockwave: Power = {
-  "name": "Shockwave",
-  "internalName": "Shockwave",
-  "available": 25,
-  "description": "Projects a Shockwave of focused power that can travel a short distance. Shockwave travels in a wide arc in front of you dealing moderate damage and, possibly knocking back foes.",
-  "shortHelp": "Melee (Cone), DMG(Lethal), Foe Knockback",
-  "icon": "claws_wave.png",
-  "powerType": "Click",
-  "effectArea": "Cone",
-  "stats": {
-    "accuracy": 1,
-    "range": 30,
-    "radius": 30,
-    "arc": 1.5708,
-    "recharge": 12.1,
-    "endurance": 11.5648,
-    "castTime": 1,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Knockback",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Knockback",
-    "Ranged AoE Damage",
-    "Scrapper Archetype Sets",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Lethal",
-      "scale": 1.05,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.05,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.05,
-      "table": "Melee_InherentDamage"
-    }
-  ],
-  "effects": {
-    "knockback": {
-      "scale": 0.7,
-      "table": "Melee_Knockback"
-    }
-  }
-};
+export const Shockwave: Power = withOverrides(base, overrides);

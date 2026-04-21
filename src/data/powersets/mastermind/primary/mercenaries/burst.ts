@@ -1,59 +1,16 @@
 /**
- * Burst
- * Ranged, DoT (Lethal) Foe -DEF
+ * Burst — COMPOSED EXPORT
  *
- * Source: mastermind_summon/mercenaries/burst.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs mastermind_summon mercenaries
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Burst as base } from '@/data/generated/powersets/mastermind/primary/mercenaries/burst';
+import { overrides } from '@/data/overrides/powersets/mastermind/primary/mercenaries/burst';
 
-export const Burst: Power = {
-  "name": "Burst",
-  "internalName": "Burst",
-  "available": 0,
-  "description": "Quickly fires a Burst of rounds at a single target at very long range. Damage is average, but the fire rate is fast. Can also reduce the target's defense.Focus Fire:The target struck by this attack will take 3.33% increased damage from any Mercenary Henchmen regardless of their owners for 30 seconds. This does effect does not stack from the same power or from multiple Masterminds.",
-  "shortHelp": "Ranged, DoT (Lethal) Foe -DEF",
-  "icon": "paramilitary_assaultrifleburst.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1.05,
-    "range": 90,
-    "recharge": 4,
-    "endurance": 5.2,
-    "castTime": 1
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Defense Debuff",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Mastermind Archetype Sets",
-    "Accurate Defense Debuff",
-    "Defense Debuff",
-    "Ranged Damage",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Lethal",
-    "scale": 0.27,
-    "table": "Ranged_Damage",
-    "duration": 0.91,
-    "tickRate": 0.3
-  },
-  "effects": {
-    "defenseDebuff": {
-      "scale": 1,
-      "table": "Ranged_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 8
-    },
-    "buffDuration": 8
-  }
-};
+export const Burst: Power = withOverrides(base, overrides);

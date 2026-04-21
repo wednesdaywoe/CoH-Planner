@@ -1,47 +1,16 @@
 /**
- * Chilling Embrace
- * Toggle: PBAoE, Minor DoT(Cold), Foe -Recharge, -Speed
+ * Chilling Embrace — COMPOSED EXPORT
  *
- * Source: dominator_assault/icy_assault/chilling_embrace.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs dominator_assault icy_assault
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { ChillingEmbrace as base } from '@/data/generated/powersets/dominator/secondary/icy-assault/chilling-embrace';
+import { overrides } from '@/data/overrides/powersets/dominator/secondary/icy-assault/chilling-embrace';
 
-export const ChillingEmbrace: Power = {
-  "name": "Chilling Embrace",
-  "internalName": "Chilling_Embrace",
-  "available": 23,
-  "description": "While active, you dramatically lower the temperature around yourself, Slowing the attack rate of all nearby foes, as well as their damage and movement speed. The low air temperatures may also deal some damage over time to the snared foes.Recharge: Very Fast.",
-  "shortHelp": "Toggle: PBAoE, Minor DoT(Cold), Foe -Recharge, -Speed",
-  "icon": "iceassault_chillingembrace.png",
-  "powerType": "Toggle",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "radius": 15,
-    "recharge": 2,
-    "endurance": 0.52,
-    "castTime": 0.73,
-    "activatePeriod": 2,
-    "maxTargets": 10
-  },
-  "allowedEnhancements": [
-    "Slow",
-    "EnduranceReduction",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Melee AoE Damage",
-    "Slow Movement",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Cold",
-    "scale": 0.14,
-    "table": "Melee_Damage"
-  }
-};
+export const ChillingEmbrace: Power = withOverrides(base, overrides);

@@ -1,50 +1,16 @@
 /**
- * Aim
- * Self +To Hit, +DMG
+ * Aim — COMPOSED EXPORT
  *
- * Source: defender_ranged/fire_blast/aim.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs defender_ranged fire_blast
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Aim as base } from '@/data/generated/powersets/defender/secondary/fire-blast/aim';
+import { overrides } from '@/data/overrides/powersets/defender/secondary/fire-blast/aim';
 
-export const Aim: Power = {
-  "name": "Aim",
-  "internalName": "Aim",
-  "available": 19,
-  "description": "Greatly increases the chance to hit of your attacks for a few seconds. Slightly increases damage.",
-  "shortHelp": "Self +To Hit, +DMG",
-  "icon": "fireblast_aim.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "recharge": 90,
-    "endurance": 5.2,
-    "castTime": 1.17
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "ToHit"
-  ],
-  "allowedSetCategories": [
-    "To Hit Buff"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "tohitBuff": {
-      "scale": 5,
-      "table": "Melee_Buff_ToHit"
-    },
-    "durations": {
-      "tohitBuff": 10,
-      "damageBuff": 10
-    },
-    "damageBuff": {
-      "scale": 5,
-      "table": "Melee_Buff_Dmg"
-    },
-    "buffDuration": 10
-  }
-};
+export const Aim: Power = withOverrides(base, overrides);

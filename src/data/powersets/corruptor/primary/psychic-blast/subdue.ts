@@ -1,53 +1,16 @@
 /**
- * Subdue
- * Ranged, DMG(Psionic), Foe Immobilize
+ * Subdue — COMPOSED EXPORT
  *
- * Source: corruptor_ranged/psychic_blast/subdue.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs corruptor_ranged psychic_blast
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Subdue as base } from '@/data/generated/powersets/corruptor/primary/psychic-blast/subdue';
+import { overrides } from '@/data/overrides/powersets/corruptor/primary/psychic-blast/subdue';
 
-export const Subdue: Power = {
-  "name": "Subdue",
-  "internalName": "Subdue",
-  "available": 0,
-  "description": "Subdue deals moderate Psionic damage and may leave the targeted foe Immobilized for a brief time. Immobilized foes cannot move but can still attack.",
-  "shortHelp": "Ranged, DMG(Psionic), Foe Immobilize",
-  "icon": "psychicblast_subdue.png",
-  "powerType": "Click",
-  "effectArea": "SingleTarget",
-  "stats": {
-    "accuracy": 1,
-    "range": 100,
-    "recharge": 4,
-    "endurance": 5.2,
-    "castTime": 1
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Immobilize",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Corruptor Archetype Sets",
-    "Immobilize",
-    "Ranged Damage",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Psionic",
-    "scale": 1,
-    "table": "Ranged_Damage"
-  },
-  "effects": {
-    "immobilize": {
-      "mag": 3,
-      "scale": 6,
-      "table": "Ranged_Immobilize"
-    }
-  }
-};
+export const Subdue: Power = withOverrides(base, overrides);

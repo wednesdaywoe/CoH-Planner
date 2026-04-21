@@ -1,42 +1,16 @@
 /**
- * Nullify Pain
- * PBAoE, Team +Heal
+ * Nullify Pain — COMPOSED EXPORT
  *
- * Source: corruptor_buff/pain_domination/nullify_pain.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs corruptor_buff pain_domination
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { NullifyPain as base } from '@/data/generated/powersets/corruptor/secondary/pain-domination/nullify-pain';
+import { overrides } from '@/data/overrides/powersets/corruptor/secondary/pain-domination/nullify-pain';
 
-export const NullifyPain: Power = {
-  "name": "Nullify Pain",
-  "internalName": "Nullify_Pain",
-  "available": 0,
-  "description": "Nullify Pain will heal nearby allies for some hit points by numbing the pain caused by their wounds. Nullify Pain is not as potent as Soothe, but can heal multiple targets at once.Recharge: Moderate.",
-  "shortHelp": "PBAoE, Team +Heal",
-  "icon": "paindomination_nullifypain.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1,
-    "radius": 25,
-    "recharge": 8,
-    "endurance": 13,
-    "castTime": 2.03,
-    "maxTargets": 255
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Healing"
-  ],
-  "allowedSetCategories": [
-    "Healing"
-  ],
-  "maxSlots": 6,
-  "damage": {
-    "type": "Heal",
-    "scale": 1,
-    "table": "Ranged_Heal"
-  }
-};
+export const NullifyPain: Power = withOverrides(base, overrides);

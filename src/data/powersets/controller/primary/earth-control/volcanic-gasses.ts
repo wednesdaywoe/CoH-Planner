@@ -1,59 +1,16 @@
 /**
- * Volcanic Gasses
- * Ranged (Location AoE), Foe Hold, DoT(Fire), Special
+ * Volcanic Gasses — COMPOSED EXPORT
  *
- * Source: controller_control/earth_control/volcanic_gasses.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs controller_control earth_control
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { VolcanicGasses as base } from '@/data/generated/powersets/controller/primary/earth-control/volcanic-gasses';
+import { overrides } from '@/data/overrides/powersets/controller/primary/earth-control/volcanic-gasses';
 
-export const VolcanicGasses: Power = {
-  "name": "Volcanic Gasses",
-  "internalName": "Volcanic_Gasses",
-  "available": 21,
-  "description": "You can tap into the geothermal power of the Earth and focus it at a targeted location. Foes that pass near a thermal vent will take minor Fire damage and be overcome by the gasses, leaving them choking and helpless.",
-  "shortHelp": "Ranged (Location AoE), Foe Hold, DoT(Fire), Special",
-  "icon": "earthgrasp_volcanicgasses.png",
-  "powerType": "Click",
-  "targetType": "Location",
-  "effectArea": "Location",
-  "stats": {
-    "accuracy": 1.4,
-    "range": 60,
-    "recharge": 240,
-    "endurance": 18.2,
-    "castTime": 1.17
-  },
-  "allowedEnhancements": [
-    "Hold",
-    "EnduranceReduction",
-    "Range",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Controller Archetype Sets",
-    "Holds",
-    "Ranged AoE Damage",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "isPseudoPet": false,
-      "duration": 60,
-      "copyBoosts": true,
-      "entities": [
-        {
-          "entity": "Pets_Volcanicgas",
-          "count": 1
-        },
-        {
-          "entity": "Pets_Volcanicgeyser",
-          "count": 6
-        }
-      ]
-    }
-  }
-};
+export const VolcanicGasses: Power = withOverrides(base, overrides);

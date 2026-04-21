@@ -1,59 +1,16 @@
 /**
- * Inferno
- * PBAoE, DMG(Fire/Smash), Foe DoT(Fire)
+ * Inferno — COMPOSED EXPORT
  *
- * Source: defender_ranged/fire_blast/inferno.json
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs defender_ranged fire_blast
  */
-
 import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Inferno as base } from '@/data/generated/powersets/defender/secondary/fire-blast/inferno';
+import { overrides } from '@/data/overrides/powersets/defender/secondary/fire-blast/inferno';
 
-export const Inferno: Power = {
-  "name": "Inferno",
-  "internalName": "Inferno",
-  "available": 29,
-  "description": "Unleashes a massive fiery explosion to devastate all nearby enemies and set them ablaze. Inferno deals Extreme Fire damage to all nearby foes and inflicts Moderate Fire damage over time.",
-  "shortHelp": "PBAoE, DMG(Fire/Smash), Foe DoT(Fire)",
-  "icon": "fireblast_inferno.png",
-  "powerType": "Click",
-  "targetType": "Self",
-  "effectArea": "AoE",
-  "stats": {
-    "accuracy": 1.4,
-    "radius": 25,
-    "recharge": 145,
-    "endurance": 27.716,
-    "castTime": 3,
-    "maxTargets": 16
-  },
-  "allowedEnhancements": [
-    "EnduranceReduction",
-    "Recharge",
-    "Damage",
-    "Accuracy"
-  ],
-  "allowedSetCategories": [
-    "Defender Archetype Sets",
-    "Melee AoE Damage",
-    "Universal Damage Sets"
-  ],
-  "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 1,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 3,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.3,
-      "table": "Ranged_Damage",
-      "duration": 8.1,
-      "tickRate": 1
-    }
-  ]
-};
+export const Inferno: Power = withOverrides(base, overrides);
