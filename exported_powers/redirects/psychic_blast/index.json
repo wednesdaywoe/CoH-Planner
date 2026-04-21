@@ -9,5 +9,11 @@
   ],
   "available_level": [
     0
+  ],
+  "power_display_names": [
+    "Psionic Dart"
+  ],
+  "power_short_helps": [
+    "Ranged, Light DMG(Psionic), Target -Recharge"
   ]
 }

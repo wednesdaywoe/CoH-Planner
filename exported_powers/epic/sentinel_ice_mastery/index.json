@@ -17,5 +17,19 @@
     40,
     34,
     43
+  ],
+  "power_display_names": [
+    "Block of Ice",
+    "Frostbite",
+    "Frozen Aura",
+    "Ice Sword",
+    "Snow Storm"
+  ],
+  "power_short_helps": [
+    "Ranged, Foe Hold, -SPD, -Recharge",
+    "Ranged (Targeted AoE), DoT(Cold), Foe Immobilize, -SPD, -Recharge",
+    "PBAoE, DMG(Cold), Foe Sleep",
+    "Melee, DMG(Cold/Lethal), Foe -Recharge, -SPD",
+    "Toggle: Ranged (Targeted AoE), Foe -Speed, -Recharge, -Fly"
   ]
 }

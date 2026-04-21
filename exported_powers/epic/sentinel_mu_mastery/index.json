@@ -17,5 +17,19 @@
     40,
     43,
     34
+  ],
+  "power_display_names": [
+    "Electric Shackles",
+    "Electrifying Fences",
+    "Static Discharge",
+    "Summon Adept",
+    "Thunder Strike"
+  ],
+  "power_short_helps": [
+    "Ranged, DMG(Energy), Foe Hold, -End",
+    "Ranged (Targeted AoE), DoT(Energy), Foe Immobilize, -END",
+    "Ranged (Cone), DMG(Energy), -END",
+    "Summon Mu Adept: Ranged DMG(Energy)",
+    "Melee (AoE), DMG(Smash, Energy), Foe Disorient, Knockback, -End"
   ]
 }

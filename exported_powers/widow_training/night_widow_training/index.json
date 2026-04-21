@@ -19,5 +19,21 @@
     23,
     17,
     11
+  ],
+  "power_display_names": [
+    "Build Up",
+    "Eviscerate",
+    "Mental Blast",
+    "Psychic Scream",
+    "Slash",
+    "Smoke Grenade"
+  ],
+  "power_short_helps": [
+    "Self +DMG, +To Hit",
+    "Melee (Cone), DMG(Lethal), DoT(Toxic), -Recharge, -SPD",
+    "Ranged, DMG(Psionic), Target -Recharge",
+    "Ranged (Cone), DMG(Psionic), Foe -Recharge",
+    "Melee, DMG(Lethal), DoT(Toxic), -Recharge, -SPD",
+    "Ranged (Target AoE), Foe -Perception, -To Hit"
   ]
 }

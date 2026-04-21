@@ -25,5 +25,27 @@
     27,
     3,
     23
+  ],
+  "power_display_names": [
+    "Energize",
+    "Entropy Shield",
+    "Kinetic Dampening",
+    "Kinetic Shield",
+    "Overload",
+    "Power Armor",
+    "Power Drain",
+    "Power Shield",
+    "Repelling Force"
+  ],
+  "power_short_helps": [
+    "Self Endurance Discount, Heal, +Regen",
+    "Toggle: Self +Res(Knockback, Repel, Disorient, Hold, Sleep, Immobilize, Teleport, DeBuff DEF), +Rech",
+    "Auto: Self +Res (Energy, Negative, Toxic, Lethal, Smashing, Slow)",
+    "Toggle: Self +DEF(Smashing, Lethal, Energy), Res(DeBuff DEF)",
+    "Self +DEF(All), +Recovery, +Max HP, Res(DeBuff DEF), +Special",
+    "Auto: Self +MaxHP, +Resist(All DMG)",
+    "Autohit: PBAoE, Self +End, Foe -End, -Recovery",
+    "Toggle: Self +DEF(Fire, Cold, Energy, Negative), Res(DeBuff DEF)",
+    "Auto: Self +DEF(Smash, Lethal, Fire, Cold, Energy, Negative, Psionic, Toxic)"
   ]
 }

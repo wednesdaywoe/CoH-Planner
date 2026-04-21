@@ -25,5 +25,27 @@
     0,
     19,
     23
+  ],
+  "power_display_names": [
+    "Anguishing Cry",
+    "Conduit of Pain",
+    "Enforced Morale",
+    "Nullify Pain",
+    "Painbringer",
+    "Share Pain",
+    "Soothe",
+    "Soothing Aura",
+    "World of Pain"
+  ],
+  "power_short_helps": [
+    "PBAoE, Foe -RES(All), -DEF(All)",
+    "Ally Rez, Self +DMG, +Recharge, +Recovery, +To Hit, +Special",
+    "Ally +Res(Disorient, Hold, Sleep, Immobilize, Fear, Confuse), +Perception, +Recharge, +Speed, Light DMG",
+    "PBAoE, Team +Heal",
+    "Ally, +Regeneration, +Recovery, +DMG",
+    "Ally Strong Heal, Self Moderate DMG(Special), +DMG",
+    "Ally Heal",
+    "Toggle: PBAoE, Team Minor Periodic Heal",
+    "PBAoE Team +To Hit, +DMG, +RES(All DMG, Placate)"
   ]
 }

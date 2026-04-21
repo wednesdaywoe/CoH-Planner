@@ -15,5 +15,17 @@
     0,
     31,
     0
+  ],
+  "power_display_names": [
+    "Burn",
+    "Phoenix",
+    "Gift of the Phoenix",
+    "Phoenix"
+  ],
+  "power_short_helps": [
+    "Burn",
+    "Phoenix",
+    "Self Rez, Special",
+    "Phoenix"
   ]
 }

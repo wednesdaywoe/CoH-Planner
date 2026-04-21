@@ -25,5 +25,27 @@
     1,
     0,
     0
+  ],
+  "power_display_names": [
+    "Assassin's Claw",
+    "Build Up",
+    "Eviscerate",
+    "Focus",
+    "Placate",
+    "Shockwave",
+    "Slash",
+    "Strike",
+    "Swipe"
+  ],
+  "power_short_helps": [
+    "Melee, DMG(Lethal)",
+    "Self +DMG, +To Hit",
+    "Melee, DMG(Lethal), +Special",
+    "Ranged, DMG(Lethal), Knockback",
+    "Ranged, Foe Placate, Self Stealth/Hide",
+    "Ranged (Cone), DMG(Lethal), Foe Knockback",
+    "Melee, DMG(Lethal), Foe -DEF",
+    "Melee, DMG(Lethal)",
+    "Melee, DMG(Lethal)"
   ]
 }

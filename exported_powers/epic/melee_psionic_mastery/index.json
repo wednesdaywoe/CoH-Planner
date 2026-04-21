@@ -17,5 +17,19 @@
     34,
     43,
     37
+  ],
+  "power_display_names": [
+    "Harmonic Mind",
+    "Mental Blast",
+    "Psionic Lance",
+    "Psionic Nexus",
+    "Psychic Scream"
+  ],
+  "power_short_helps": [
+    "Auto: Self, +Recovery, Endurance Discount",
+    "Ranged, DMG(Psionic), Target -Recharge",
+    "Sniper, DMG(Psionic), Target -Recharge",
+    "Summon Psionic Nexus: Ranged DMG(Psionic)",
+    "Ranged (Cone), DMG(Psionic), Foe -Recharge"
   ]
 }

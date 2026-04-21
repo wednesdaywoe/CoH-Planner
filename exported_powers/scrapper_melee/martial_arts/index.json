@@ -25,5 +25,27 @@
     0,
     0,
     11
+  ],
+  "power_display_names": [
+    "Cobra Strike",
+    "Crane Kick",
+    "Crippling Axe Kick",
+    "Dragon's Tail",
+    "Eagles Claw",
+    "Focus Chi",
+    "Storm Kick",
+    "Thunder Kick",
+    "Warriors Challenge"
+  ],
+  "power_short_helps": [
+    "Melee, DMG(Smash), Foe Disorient",
+    "Melee, High DMG(Smash), Knockback",
+    "Melee, DMG(Smash), Foe Immobilize, -SPD, -Fly, -DEF",
+    "PBAoE Melee, DMG(Smash), Foe Knockback",
+    "Melee, DMG(Smash), Foe Minor Disorient, +Special",
+    "Self +DMG, +To Hit",
+    "Melee, DMG(Smash)",
+    "Melee, DMG(Smash), Minor Disorient",
+    "Ranged, Foe Taunt"
   ]
 }

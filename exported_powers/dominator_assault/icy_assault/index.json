@@ -25,5 +25,27 @@
     0,
     3,
     15
+  ],
+  "power_display_names": [
+    "Bitter Ice Blast",
+    "Chilling Embrace",
+    "Frost Breath",
+    "Ice Slash",
+    "Ice Blast",
+    "Ice Bolt",
+    "Ice Sword",
+    "Ice Sword Circle",
+    "Power Up"
+  ],
+  "power_short_helps": [
+    "Ranged, High DMG(Cold/Smash), Foe -Recharge, -SPD, -To Hit",
+    "Toggle: PBAoE, Minor DoT(Cold), Foe -Recharge, -Speed",
+    "Close (Cone), Moderate DoT(Cold), Foe -Recharge, -SPD",
+    "Melee, Superior DMG(Cold/Lethal), Foe -Recharge, -SPD",
+    "Ranged, Light DMG(Cold/Smash), Foe -Recharge, -SPD",
+    "Ranged, Light DMG(Cold/Smash), Foe -Recharge, -SPD",
+    "Melee, High DMG(Cold/Lethal), Foe -Recharge, -SPD",
+    "PBAoE Melee, Light DMG(Cold/Lethal), Foe -Recharge, -SPD",
+    "Self +Special, +Dmg(All)"
   ]
 }

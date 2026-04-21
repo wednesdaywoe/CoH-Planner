@@ -25,5 +25,27 @@
     17,
     0,
     5
+  ],
+  "power_display_names": [
+    "Aimed Shot",
+    "Call Genin",
+    "Call Jounin",
+    "Fistful of Arrows",
+    "Kuji-In Zen",
+    "Oni",
+    "Smoke Flash",
+    "Snap Shot",
+    "Train Ninjas"
+  ],
+  "power_short_helps": [
+    "Ranged, DMG(Lethal)",
+    "Summon Genin",
+    "Summon Jounin",
+    "Ranged (Cone), DMG(Lethal)",
+    "Ranged, Enlighten Ninja Henchman",
+    "Summon Oni",
+    "Hide Ninja",
+    "Ranged, DMG(Lethal)",
+    "Ranged, Train Ninja Henchman"
   ]
 }

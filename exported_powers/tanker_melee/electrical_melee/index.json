@@ -25,5 +25,27 @@
     29,
     9,
     15
+  ],
+  "power_display_names": [
+    "Build Up",
+    "Chain Induction",
+    "Charged Brawl",
+    "Havoc Punch",
+    "Jacobs Ladder",
+    "Lightning Clap",
+    "Lightning Rod",
+    "Taunt",
+    "Thunder Strike"
+  ],
+  "power_short_helps": [
+    "Self +DMG, +To Hit",
+    "Melee, DMG(Energy), Foe -End +Special",
+    "Melee, DMG(Smash/Energy), Target Sleep, -End,",
+    "Melee, DMG(Smash/Energy), Foe Sleep, -End",
+    "Melee (Cone), DMG(Energy), Foe Sleep, -End",
+    "Melee AoE, Foe Damage, Disorient, Knockdown",
+    "PBAoE DMG(Energy), Foe Knockback; Self Teleport;",
+    "Ranged, Foe Taunt",
+    "Melee (AoE), DMG(Energy), Foe Disorient, Knockback, -End"
   ]
 }

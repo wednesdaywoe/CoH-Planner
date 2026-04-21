@@ -17,5 +17,19 @@
     34,
     34,
     43
+  ],
+  "power_display_names": [
+    "Hoarfrost",
+    "Frozen Armor",
+    "Hibernate",
+    "Sleet",
+    "Ice Storm"
+  ],
+  "power_short_helps": [
+    "Self Heal, +Max HP, Res(Toxic)",
+    "Toggle: Self +Def(Smash, Lethal), +Res(Cold, Fire)",
+    "Toggle: Self +Regeneration, +Recovery, Invulnerable; Self Hold",
+    "Ranged (Location AoE), Minor DoT(Cold), Foe -Speed, -Recharge, -DEF -Res",
+    "Ranged (Location AoE), DoT(Cold), Foe -Recharge, -SPD"
   ]
 }

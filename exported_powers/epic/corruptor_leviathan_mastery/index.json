@@ -17,5 +17,19 @@
     34,
     40,
     43
+  ],
+  "power_display_names": [
+    "Hibernate",
+    "School of Sharks",
+    "Shark Skin",
+    "Spirit Shark Jaws",
+    "Summon Coralax"
+  ],
+  "power_short_helps": [
+    "Toggle: Self +Regeneration, +Recovery, Invulnerable; Self Hold",
+    "Ranged (Cone), DoT(Negative), Foe Immobilize",
+    "Toggle: Self +Res(Smash, Lethal, Cold)",
+    "Ranged, DoT(Lethal), Foe Hold, -Fly",
+    "Summon Hybrid: Ranged DMG(Psionic)"
   ]
 }

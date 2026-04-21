@@ -25,5 +25,27 @@
     11,
     0,
     1
+  ],
+  "power_display_names": [
+    "Assassin's Blade",
+    "Build Up",
+    "Soaring Dragon",
+    "Sting of the Wasp",
+    "Golden Dragonfly",
+    "Divine Avalanche",
+    "Placate",
+    "Gambler's Cut",
+    "Flashing Steel"
+  ],
+  "power_short_helps": [
+    "Melee, DMG(Lethal)",
+    "Self +DMG, +To Hit",
+    "Melee, DMG(Lethal), Foe Knockup, -DEF",
+    "Melee, DMG(Lethal), Foe -Def",
+    "Melee, High DMG(Lethal), Foe Knockback, -DEF",
+    "Melee, DMG(Lethal), Self +DEF (Melee, Lethal)",
+    "Ranged, Foe Placate, Self Stealth/Hide",
+    "Melee, DMG(Lethal), Foe -Def",
+    "Melee (Cone), DMG(Lethal), Foe -Def"
   ]
 }

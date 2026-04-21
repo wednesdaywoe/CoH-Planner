@@ -9,5 +9,11 @@
   ],
   "available_level": [
     0
+  ],
+  "power_display_names": [
+    "Frigid Blast"
+  ],
+  "power_short_helps": [
+    "Ranged (Cone), Moderate DMG(Cold/Negative Energy), -ToHit(Foe), -RES(Foe, Cold/Negative Energy), Chance for +EndCost(Foe)"
   ]
 }

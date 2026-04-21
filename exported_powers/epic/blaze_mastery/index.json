@@ -17,5 +17,19 @@
     37,
     40,
     34
+  ],
+  "power_display_names": [
+    "Char",
+    "Fire Ball",
+    "Fire Blast",
+    "Melt Armor",
+    "Ring of Fire"
+  ],
+  "power_short_helps": [
+    "Ranged, DoT(Fire), Foe Hold",
+    "Ranged (Targeted AoE), DMG(Fire/Smash)",
+    "Ranged, DMG(Fire)",
+    "Ranged (Targeted AoE), Foe -Res, -DEF",
+    "Ranged, DoT(Fire), Foe Immobilize"
   ]
 }

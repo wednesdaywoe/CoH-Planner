@@ -25,5 +25,27 @@
     0,
     11,
     25
+  ],
+  "power_display_names": [
+    "Burst",
+    "Commando",
+    "Equip Mercenary",
+    "M30 Grenade",
+    "Serum",
+    "Slug",
+    "Soldiers",
+    "Spec Ops",
+    "Tactical Upgrade"
+  ],
+  "power_short_helps": [
+    "Ranged, DoT (Lethal) Foe -DEF",
+    "Summon Commando",
+    "Ranged, Equip Mercenary Henchman",
+    "Ranged (Targeted AoE), DMG(Lethal/Fire), Knockback",
+    "Buff Mercenaries +DMG, +RES(All except Psionic), +To Hit, +Recovery",
+    "Ranged, DMG(Lethal), Foe Knockback",
+    "P2937209522",
+    "Summon Spec Ops",
+    "Ranged, Upgrade Mercenary Henchman"
   ]
 }

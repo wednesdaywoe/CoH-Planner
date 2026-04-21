@@ -25,5 +25,27 @@
     17,
     21,
     11
+  ],
+  "power_display_names": [
+    "Typhoon's Edge",
+    "Blinding Feint",
+    "One Thousand Cuts",
+    "Nimble Slash",
+    "Ablating Strike",
+    "Power Slice",
+    "Vengeful Slice",
+    "Sweeping Strike",
+    "Taunt"
+  ],
+  "power_short_helps": [
+    "PBAoE Melee, DMG(Lethal)",
+    "Melee, DMG(Lethal), Self +DMG, +To Hit",
+    "Melee (Cone), DMG(Lethal), Foe Knockback",
+    "Melee, DMG(Lethal)",
+    "Melee, DMG(Lethal), Foe -DEF",
+    "Melee, DMG(Lethal)",
+    "Melee, DMG(Lethal), Knockdown",
+    "Melee (Cone), DMG(Lethal)",
+    "Ranged (Targeted AoE), Foe Taunt"
   ]
 }

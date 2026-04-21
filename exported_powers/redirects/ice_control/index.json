@@ -11,5 +11,13 @@
   "available_level": [
     7,
     7
+  ],
+  "power_display_names": [
+    "Cold Snap",
+    "Cold Snap"
+  ],
+  "power_short_helps": [
+    "Ranged (Cone), Foe Fear, -SPD, -Recharge",
+    "Ranged (Cone), Foe Fear, -SPD, -Recharge"
   ]
 }

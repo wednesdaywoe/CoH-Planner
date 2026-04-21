@@ -17,5 +17,19 @@
     0,
     13,
     13
+  ],
+  "power_display_names": [
+    "Boxing",
+    "Cross Punch",
+    "Kick",
+    "Tough",
+    "Weave"
+  ],
+  "power_short_helps": [
+    "Melee, DMG(Smash), Fighting Synergy, Foe Stun",
+    "Melee (Cone), DMG(Smash), Fighting Synergy, Foe Knockdown, Stun",
+    "Melee, DMG(Smash), Synergy, Foe Knockdown",
+    "Toggle: Self +Res(Smash/Lethal)",
+    "Toggle: Self +DEF(All), Res(Immobilize)"
   ]
 }

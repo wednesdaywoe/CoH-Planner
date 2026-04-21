@@ -25,5 +25,27 @@
     19,
     9,
     0
+  ],
+  "power_display_names": [
+    "Dark Blast",
+    "Moon Beam",
+    "Gather Shadows",
+    "Gloom",
+    "Life Drain",
+    "Midnight Grasp",
+    "Engulfing Darkness",
+    "Night Fall",
+    "Smite"
+  ],
+  "power_short_helps": [
+    "Ranged, Light DMG(Negative), Foe -To Hit",
+    "Sniper, Extreme DMG(Negative), Target -To Hit",
+    "Self +Special, +Dmg(All)",
+    "Ranged, High DoT(Negative), Foe -To Hit",
+    "Ranged, Moderate DMG(Negative), Target -To Hit, Self +HP",
+    "Melee, Superior DMG(Negative), Foe Immobilize, -To Hit",
+    "PBAoE, Light DMG(Negative), Foe -To Hit, Minor DoT(Negative)",
+    "Ranged (Cone), Moderate DMG(Negative), Foe -To Hit",
+    "Melee, Moderate DMG(Smash/Negative), Foe -To Hit"
   ]
 }

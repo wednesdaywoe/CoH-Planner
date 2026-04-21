@@ -9,5 +9,11 @@
   ],
   "available_level": [
     0
+  ],
+  "power_display_names": [
+    "Concussive Blow"
+  ],
+  "power_short_helps": [
+    "Melee, Minor DMG(Smashing), Minor DoT(Lethal), Chance for Stun(Foe), -ToHit(Foe), -Rech(Foe), -DMG(Foe,All)"
   ]
 }

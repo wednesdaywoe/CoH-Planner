@@ -25,5 +25,27 @@
     7,
     21,
     17
+  ],
+  "power_display_names": [
+    "Deflection Shield",
+    "Dispersion Bubble",
+    "Repulsion Bolt",
+    "Damping Bubble",
+    "Insulation Shield",
+    "Personal Force Field",
+    "Detention Field",
+    "Force Bomb",
+    "Repulsion Field"
+  ],
+  "power_short_helps": [
+    "Ranged, Ally +DEF(Smash, Lethal, Melee), Res(Toxic)",
+    "Toggle: PBAoE, Team +Res(Hold, Immobilize, Disorient) +DEF(All)",
+    "Ranged, DMG(Smash), Foe Knockback",
+    "Location (PBAoE), Team +Res(Accuracy, Defense, Perception, Recharge, Regen, Speed, ToHit), Foe -Str(Defense, Perception, Regen, Speed, ToHit)",
+    "Ranged, Ally +DEF(Fire, Cold, Energy, Negative, Ranged, AoE), Res (End Drain)",
+    "Toggle: Self +Def, Res(All except Toxic)",
+    "Ranged, Foe Capture (Special)",
+    "Ranged (Targeted AoE), DMG(Smash), Foe Knockdown, Disorient",
+    "Toggle: PBAoE Knockback"
   ]
 }

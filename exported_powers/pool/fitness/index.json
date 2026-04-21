@@ -15,5 +15,17 @@
     5,
     5,
     19
+  ],
+  "power_display_names": [
+    "Health",
+    "Hurdle",
+    "Swift",
+    "Stamina"
+  ],
+  "power_short_helps": [
+    "Auto: Self +Regeneration, Res(Sleep)",
+    "Auto: Self +Leap",
+    "Auto: Self +SPD",
+    "Auto: Self +Recovery"
   ]
 }

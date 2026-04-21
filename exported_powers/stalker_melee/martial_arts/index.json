@@ -25,5 +25,27 @@
     11,
     0,
     0
+  ],
+  "power_display_names": [
+    "Assassin's Blow",
+    "Cobra Strike",
+    "Crane Kick",
+    "Crippling Axe Kick",
+    "Eagles Claw",
+    "Focus Chi",
+    "Placate",
+    "Storm Kick",
+    "Thunder Kick"
+  ],
+  "power_short_helps": [
+    "Melee, DMG(Smashing)",
+    "Melee, DMG(Smashing), Foe Disorient",
+    "Melee, DMG(Smashing), Knockback",
+    "Melee, DMG(Smashing), Foe Immobilize, -SPD, -Fly, -DEF",
+    "Melee, DMG(Smashing), Foe Minor Disorient, +Special",
+    "Self +DMG, +To Hit",
+    "Ranged, Foe Placate, Self Stealth/Hide",
+    "Melee, DMG(Smashing)",
+    "Melee, DMG(Smashing), Minor Disorient"
   ]
 }

@@ -25,5 +25,27 @@
     27,
     0,
     0
+  ],
+  "power_display_names": [
+    "Amp Up",
+    "Defibrillate",
+    "Discharge",
+    "Empowering Circuit",
+    "Energizing Circuit",
+    "Faraday Cage",
+    "Insulating Circuit",
+    "Rejuvenating Circuit",
+    "Shock"
+  ],
+  "power_short_helps": [
+    "Ranged, Ally +Special, +Recharge",
+    "Melee (Targeted AoE), Ally Rez, Foe Sleep, -End, -Recovery",
+    "Ranged (Targeted AoE), Foe -DMG, -End, -Recovery, -Regen",
+    "Ranged (Chain), Ally +DMG, +Tohit, Self +Static",
+    "Ranged (Chain), Ally +End, +Recharge, Self +Static",
+    "Location (PBAoE), Team +Res(All DMG but Toxic, Status, Knockback, -Rech, -Rec, -End)",
+    "Ranged (Chain), Ally +Absorb, Self +Static",
+    "Ranged (Chain), Ally Heal, Self +Static",
+    "Ranged, Foe -DMG, -End, -Recovery, -Regen"
   ]
 }

@@ -17,5 +17,19 @@
     43,
     37,
     40
+  ],
+  "power_display_names": [
+    "Body Armor",
+    "Cryo Freeze Ray",
+    "LRM Rocket",
+    "Sleep Grenade",
+    "Surveillance"
+  ],
+  "power_short_helps": [
+    "Auto: Self +Res (All but Psionic)",
+    "Ranged, DMG(Cold), Foe Hold, -SPD, -Recharge",
+    "Interruptible (Targeted AoE), DMG(Lethal/Smash), Foe Knockback",
+    "Ranged (Targeted AoE), Minor DMG(Smash), Foe Sleep",
+    "Ranged Foe -DEF, -RES (All)"
   ]
 }

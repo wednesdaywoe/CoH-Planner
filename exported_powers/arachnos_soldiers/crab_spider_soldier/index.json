@@ -27,5 +27,29 @@
     25,
     0,
     7
+  ],
+  "power_display_names": [
+    "Aim",
+    "Arm Lash",
+    "Channelgun",
+    "Frag Grenade",
+    "Venom Grenade",
+    "Frenzy",
+    "Longfang",
+    "Omega Maneuver",
+    "Slice",
+    "Suppression"
+  ],
+  "power_short_helps": [
+    "Self +To Hit, +DMG",
+    "Melee Cone, DMG(Lethal), Foe -DEF",
+    "Ranged, DMG(Energy), Foe -DEF",
+    "Ranged(Targeted AoE), DMG(Lethal/Fire), Foe Knockback",
+    "Ranged(Targeted AoE), DoT(Toxic), -Res(All)",
+    "Melee PBAoE, DMG(Energy), Foe -DEF",
+    "Ranged, DMG(Lethal), Foe -DEF",
+    "Summon Omega Bomb: Ranged (Location Targeted AoE), Superior DMG(Smashing/Energy), Foe Disorient",
+    "Melee, DMG(Lethal), Foe -DEF",
+    "Ranged Cone, DoT (Energy), Foe -DEF"
   ]
 }

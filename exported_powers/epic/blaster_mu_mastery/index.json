@@ -17,5 +17,19 @@
     40,
     34,
     37
+  ],
+  "power_display_names": [
+    "Charged Armor",
+    "Electric Shackles",
+    "Electrifying Fences",
+    "Static Discharge",
+    "Summon Adept"
+  ],
+  "power_short_helps": [
+    "Toggle: Self +Res(Smash, Lethal, Energy)",
+    "Ranged, DMG(Energy), Foe Hold, -End",
+    "Ranged (Targeted AoE), DoT(Energy), Foe Immobilize, -END",
+    "Ranged (Cone), DMG(Energy), -END",
+    "Summon Mu Adept: Ranged DMG(Energy)"
   ]
 }

@@ -17,5 +17,19 @@
     37,
     40,
     34
+  ],
+  "power_display_names": [
+    "Caltrops",
+    "Exploding Shuriken",
+    "Shuriken",
+    "Targeting Drone",
+    "Web Grenade"
+  ],
+  "power_short_helps": [
+    "Ranged (Location AoE), DoT(Lethal), Foe -Speed",
+    "Ranged (Targeted AoE), DMG(Lethal)",
+    "Ranged, DMG(Lethal)",
+    "Toggle: Self +To Hit, +ACC, +Perception, Res(DeBuff To Hit)",
+    "Ranged, Target Immobilize, -Recharge, -Fly"
   ]
 }

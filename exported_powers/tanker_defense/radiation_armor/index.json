@@ -25,5 +25,27 @@
     17,
     1,
     7
+  ],
+  "power_display_names": [
+    "Alpha Barrier",
+    "Beta Decay",
+    "Fallout Shelter",
+    "Gamma Boost",
+    "Ground Zero",
+    "Meltdown",
+    "Particle Shielding",
+    "Proton Armor",
+    "Radiation Therapy"
+  ],
+  "power_short_helps": [
+    "Toggle: Self +Res(Lethal, Smash, Toxic)",
+    "Toggle: Foe, Taunt, -To Hit, -Defense, Self +Recharge",
+    "Toggle: Self +Res(Hold, Sleep, Immobilize, Stun, Knockdown, Toxic, Psi, Slow)",
+    "Auto: Self +Regen, +Recovery, Special",
+    "PBAoE, Foe DMG(Energy), DoT (Toxic), -DEF(All), Ally +HP, +Heal over time",
+    "Self, +Res(All), +Recovery, +DMG(All)",
+    "Self, +Absorb, +Regeneration",
+    "Toggle: Self, +Res(Energy, Fire, Cold and Negative)",
+    "PBAoE, DMG(Energy), DoT(Toxic), Foe -Regen, Self +HP, +End, Res(-Regen)"
   ]
 }

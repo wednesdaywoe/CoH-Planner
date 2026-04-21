@@ -25,5 +25,27 @@
     0,
     5,
     0
+  ],
+  "power_display_names": [
+    "Bonfire",
+    "Cinders",
+    "Fire Cages",
+    "Fire Imps",
+    "Flashfire",
+    "Hot Feet",
+    "Ring of Fire",
+    "Smoke",
+    "Char"
+  ],
+  "power_short_helps": [
+    "Ranged (Location AoE), Minor DMG(Fire), Foe Knockback",
+    "PBAoE, Foe Hold",
+    "Ranged (Targeted AoE), Minor DoT(Fire), Foe Immobilize",
+    "Summon Imps: Melee Minor DMG(Fire)",
+    "Ranged (Targeted AoE), Minor DMG(Fire), Foe Disorient",
+    "Toggle: PBAoE, Minor DoT(Fire), Foe -SPD",
+    "Ranged, Moderate DoT(Fire), Foe Immobilize",
+    "Ranged (Targeted AoE), Foe -Perception, -To Hit",
+    "Ranged, Moderate DoT(Fire), Foe Hold"
   ]
 }

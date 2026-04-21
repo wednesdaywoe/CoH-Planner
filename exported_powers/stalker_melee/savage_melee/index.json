@@ -25,5 +25,27 @@
     25,
     0,
     1
+  ],
+  "power_display_names": [
+    "Assassin's Frenzy",
+    "Build Up",
+    "Hemorrhage",
+    "Maiming Slash",
+    "Placate",
+    "Rending Flurry",
+    "Savage Leap",
+    "Savage Strike",
+    "Shred"
+  ],
+  "power_short_helps": [
+    "Melee, DMG(Lethal)), Self +1 Blood Frenzy",
+    "Self +DMG, +To Hit",
+    "Melee, DMG(Lethal), Foe Special DoT (Lethal), -Blood Frenzy",
+    "Melee, DMG(Lethal), DoT (Lethal), Foe -Speed), Self +1 Blood Frenzy",
+    "Ranged, Foe Placate, Self Stealth/Hide",
+    "PBAoE, DMG(Lethal), Foe DoT (Lethal), -Blood Frenzy",
+    "PBAoE, DMG(Lethal), Foe DoT (Lethal), 1 to 3 Blood Frenzy, Self Teleport",
+    "Melee, DMG(Lethal), Foe DoT (Lethal), Self +1 Blood Frenzy",
+    "Melee (Cone), DMG(Lethal), Foe DoT (Lethal), -Def(All), Self +1 Blood Frenzy"
   ]
 }

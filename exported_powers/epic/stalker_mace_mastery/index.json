@@ -17,5 +17,19 @@
     34,
     43,
     40
+  ],
+  "power_display_names": [
+    "Disruptor Blast",
+    "Mace Beam",
+    "Mace Blast",
+    "Summon Spiderlings",
+    "Web Cocoon"
+  ],
+  "power_short_helps": [
+    "Ranged (Targeted AoE), DMG(Smashing/Energy), Foe Knockback",
+    "Sniper, DMG(Energy), Foe Knockback",
+    "Ranged, DMG(Energy), Foe Knockback",
+    "Summon Spiderlings: Ranged DMG(Lethal)",
+    "Ranged, Foe Hold, -Recharge, -Fly, -Jump, Slow, DoT(Toxic)"
   ]
 }

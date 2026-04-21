@@ -21,5 +21,23 @@
     0,
     0,
     0
+  ],
+  "power_display_names": [
+    "Remote Bomb",
+    "Temporal Bomb",
+    "Remote Bomb",
+    "Remote Bomb",
+    "Remote Trigger",
+    "Temporal Bubble",
+    "Remote Trigger"
+  ],
+  "power_short_helps": [
+    "Place Bomb: PBAoE, Extreme DMG(Lethal/Fire), Foe Knockback",
+    "Place Bomb: PBAoE, Extreme DMG(Lethal/Fire), Foe Knockback",
+    "Place Bomb: PBAoE, Extreme DMG(Lethal/Fire), Foe Knockback",
+    "Place Bomb: PBAoE, Extreme DMG(Lethal/Fire), Foe Knockback",
+    "Place Bomb: PBAoE, Extreme DMG(Lethal/Fire), Foe Knockback",
+    "Temporal Bubble",
+    "Place Bomb: PBAoE, Extreme DMG(Lethal/Fire), Foe Knockback"
   ]
 }

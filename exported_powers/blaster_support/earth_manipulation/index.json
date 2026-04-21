@@ -25,5 +25,27 @@
     29,
     0,
     15
+  ],
+  "power_display_names": [
+    "Beryl Crystals",
+    "Build Up",
+    "Fracture",
+    "Heavy Mallet",
+    "Mud Bath",
+    "Salt Crystals",
+    "Seismic Smash",
+    "Stone Prison",
+    "Tremor"
+  ],
+  "power_short_helps": [
+    "Toggle: Self Res(Confuse, Perception, ToHit), +Perception, Accuracy",
+    "Self +DMG, +To Hit",
+    "Ranged (Targeted AoE), Foe Disorient, -DEF",
+    "Melee, High DMG(Smashing), Knockback",
+    "Toggle: PBAoE, -SPD, Self +Heal Over Time, +Recovery",
+    "PBAoE, Foe Sleep, -DEF",
+    "Melee, Extreme DMG(Smashing), Foe Hold",
+    "Ranged, Moderate DoT(Smash), Foe Immobilize, -DEF, -Fly",
+    "PBAoE, Light DMG(Smashing), Knockback"
   ]
 }

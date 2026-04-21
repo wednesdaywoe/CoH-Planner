@@ -25,5 +25,27 @@
     0,
     5,
     11
+  ],
+  "power_display_names": [
+    "Aim",
+    "Energy Torrent",
+    "Explosive Blast",
+    "Focused Power Bolt",
+    "Nova",
+    "Power Blast",
+    "Power Bolt",
+    "Power Burst",
+    "Power Push"
+  ],
+  "power_short_helps": [
+    "Self +To Hit, +DMG, +Range",
+    "Ranged (Cone), DMG(Energy/Smash), Foe Knockback",
+    "Ranged (Targeted AoE), DMG(Smash/Energy), Foe Knockback",
+    "Ranged, DMG(Energy/Smash), Foe Knockback",
+    "PBAoE, DMG(Energy), Foe Knockback",
+    "Ranged, DMG(Energy/Smash), Foe Knockback",
+    "Ranged, DMG(Energy/Smash), Foe Knockback",
+    "Ranged, DMG(Energy/Smash), Foe Knockback",
+    "Ranged DMG(Energy/Smash), Foe High Knockback"
   ]
 }

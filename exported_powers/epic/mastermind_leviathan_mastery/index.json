@@ -17,5 +17,19 @@
     34,
     40,
     43
+  ],
+  "power_display_names": [
+    "Bile Spray",
+    "Knockout Blow",
+    "School of Sharks",
+    "Shark Skin",
+    "Spirit Shark Jaws"
+  ],
+  "power_short_helps": [
+    "Ranged (Cone), DoT(Toxic)",
+    "Melee, DMG(Smash), Foe Hold",
+    "Ranged (Cone), DoT(Negative), Foe Immobilize",
+    "Toggle: Self +Res(Smash, Lethal, Cold)",
+    "Ranged, DoT(Lethal), Foe Hold, -Fly"
   ]
 }

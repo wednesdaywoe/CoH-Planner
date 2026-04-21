@@ -25,5 +25,27 @@
     0,
     25,
     5
+  ],
+  "power_display_names": [
+    "Call Hawk",
+    "Call Ravens",
+    "Call Swarm",
+    "Fortify Pack",
+    "Summon Dire Wolf",
+    "Summon Lions",
+    "Summon Wolves",
+    "Tame Beasts",
+    "Train Beasts"
+  ],
+  "power_short_helps": [
+    "Ranged, Moderate DMG(Lethal), Foe -To Hit, Knockdown, -Fly",
+    "Ranged (Cone), Moderate DoT(Lethal), Foe -Speed, -Defense, -Fly",
+    "Ranged, Light DoT(Lethal), Foe -Defense, -Speed",
+    "PBAoE, Pets +Defense, +Regeneration, consumes all charges of Pack Mentality",
+    "Summon Dire Wolf",
+    "Summon Lions",
+    "Summon Wolves",
+    "Ranged, Upgrade Beast Henchmen",
+    "Ranged, Train Beast Henchmen"
   ]
 }

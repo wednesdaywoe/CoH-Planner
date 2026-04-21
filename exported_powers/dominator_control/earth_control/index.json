@@ -25,5 +25,27 @@
     1,
     0,
     21
+  ],
+  "power_display_names": [
+    "Animate Stone",
+    "Earthquake",
+    "Fossilize",
+    "Quicksand",
+    "Salt Crystals",
+    "Stalagmites",
+    "Stone Cages",
+    "Stone Prison",
+    "Volcanic Gasses"
+  ],
+  "power_short_helps": [
+    "Summon Golem: Melee DMG(Smashing)",
+    "Ranged (Location AoE), Foe Knockback, -DEF, -To Hit",
+    "Ranged, DMG(Smash), Foe Hold, -DEF",
+    "Ranged (Location AoE), Foe -Speed, -Jump, -Fly, -DEF",
+    "PBAoE, Foe Deep Sleep, -DEF",
+    "Ranged (Targeted AoE), DMG(Lethal), Foe Disorient, -DEF",
+    "Ranged AoE, DMG(Smash), Foe Immobilize, -Fly, -DEF",
+    "Ranged, DoT(Smash), Foe Immobilize, -DEF, -Fly",
+    "Ranged (Location AoE), Foe Hold, DoT(Fire), Special"
   ]
 }

@@ -9,5 +9,11 @@
   ],
   "available_level": [
     0
+  ],
+  "power_display_names": [
+    "Shinobi Skills"
+  ],
+  "power_short_helps": [
+    "Toggle: Self Self +DEF(Melee, Ranged, AoE), +Run Speed, +Jump"
   ]
 }

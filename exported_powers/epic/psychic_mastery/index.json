@@ -17,5 +17,19 @@
     37,
     43,
     40
+  ],
+  "power_display_names": [
+    "Dominate",
+    "Mass Hypnosis",
+    "Mind Over Body",
+    "Telekinesis",
+    "World of Confusion"
+  ],
+  "power_short_helps": [
+    "Ranged, DMG(Psionic), Foe Hold",
+    "Ranged (Targeted AoE), Foe Sleep",
+    "Toggle: Self +Res(Smash, Lethal, Psionics)",
+    "Toggle: Ranged (Targeted AoE), Foe Immobilize, Repel",
+    "Toggle: PBAoE, DoT(Psionic), Foe Confuse"
   ]
 }

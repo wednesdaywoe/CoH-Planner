@@ -17,5 +17,19 @@
     37,
     34,
     40
+  ],
+  "power_display_names": [
+    "Tashibishi",
+    "Kemuridama",
+    "Paralyzing Dart",
+    "Sting of the Wasp",
+    "The Lotus Drops"
+  ],
+  "power_short_helps": [
+    "Ranged (Location AoE), DoT(Lethal), Foe -Speed",
+    "PBAoE, Foe Placate -DMG -To Hit",
+    "Ranged, DoT(Toxic), Foe Hold",
+    "Melee, DMG(Lethal), Foe -Def",
+    "PBAoE Melee, DMG(Lethal), Foe -Def"
   ]
 }

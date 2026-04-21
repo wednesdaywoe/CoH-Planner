@@ -25,5 +25,27 @@
     27,
     15,
     29
+  ],
+  "power_display_names": [
+    "Fast Healing",
+    "Heightened Senses",
+    "High Pain Tolerance",
+    "Indomitable Will",
+    "Mind Over Body",
+    "Quick Recovery",
+    "Resurgence",
+    "Rise to the Challenge",
+    "Strength of Will"
+  ],
+  "power_short_helps": [
+    "Auto: Self +Regeneration",
+    "Toggle: Self +DEF(Smash, Lethal, Fire, Cold, Energy, Negative Energy), +Per",
+    "Auto: Self +Res (All), +MaxHealth",
+    "Toggle: Self Res (Disorient, Hold, Immobilize, Sleep, Fear, Confuse, Repel, Knockback). DEF(Psionics)",
+    "Toggle: Self +Res(Smash, Lethal, Psionics)",
+    "Auto: Self +Recovery",
+    "Self Rez, Special",
+    "Toggle: Self +Regen, Foe -To Hit",
+    "Self, +Res(Disorient, Sleep, Hold, Immobilize, Repel, Knockback, All DMG), +Recovery"
   ]
 }

@@ -17,5 +17,19 @@
     37,
     34,
     34
+  ],
+  "power_display_names": [
+    "Darkest Night",
+    "Engulfing Darkness",
+    "Netherworld Grasp",
+    "Netherworld Tentacles",
+    "Smite"
+  ],
+  "power_short_helps": [
+    "Toggle: Ranged (Targeted AoE), Foe -DMG -To Hit",
+    "PBAoE, DMG(Negative), Foe -To Hit, DoT(Negative)",
+    "Ranged, DMG(Negative), Foe Hold, -To Hit",
+    "Ranged (Cone), DoT(Negative), Foe Immobilize, -To Hit, -Fly",
+    "Melee, DMG(Smash/Negative), Foe -To Hit"
   ]
 }

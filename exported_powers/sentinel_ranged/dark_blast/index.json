@@ -25,5 +25,27 @@
     0,
     21,
     1
+  ],
+  "power_display_names": [
+    "Abyssal Gaze",
+    "Aim",
+    "Antumbral Beam",
+    "Blackstar",
+    "Dark Blast",
+    "Dark Obliteration",
+    "Gloom",
+    "Life Drain",
+    "Umbral Torrent"
+  ],
+  "power_short_helps": [
+    "Ranged, DoT(Negative), Foe Hold, -To Hit",
+    "Self +To Hit, +DMG, +Range",
+    "Ranged, DMG(Negative), Target -To Hit",
+    "PBAoE, DMG(Negative), Foe -To Hit",
+    "Ranged, DMG(Negative), Foe -To Hit",
+    "Ranged (Targeted AoE), DMG(Negative), Foe -ACC",
+    "Ranged, DoT(Negative), Foe -To Hit",
+    "Ranged, DMG(Negative), Target -To Hit, Self +HP",
+    "Ranged (Cone), DMG(Negative), Foe -To Hit, Knockback"
   ]
 }

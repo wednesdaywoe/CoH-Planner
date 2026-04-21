@@ -25,5 +25,27 @@
     17,
     21,
     11
+  ],
+  "power_display_names": [
+    "Barb Swipe",
+    "Build Up",
+    "Spine Burst",
+    "Impale",
+    "Lunge",
+    "Throw Spines",
+    "Quills",
+    "Ripper",
+    "Confront"
+  ],
+  "power_short_helps": [
+    "Melee, DMG(Lethal), DoT(Toxic), -SPD, -Recharge",
+    "Self +DMG, +To Hit",
+    "PBAoE Melee, DMG(Lethal), DoT(Toxic), -SPD, -Recharge",
+    "Ranged, DMG(Lethal), DoT(Toxic), Immobilize, -Recharge, -Fly",
+    "Melee, DMG(Lethal), DoT(Toxic) -SPD, -Recharge",
+    "Ranged (Cone), DMG(Lethal), DoT(Toxic), -SPD, -Recharge",
+    "Toggle: PBAoE, DoT(Lethal), Foe -Speed, -Recharge",
+    "Melee (Cone), DMG(Lethal), DoT(Toxic), Knockback, -SPD, -Recharge",
+    "Ranged, Foe Taunt"
   ]
 }

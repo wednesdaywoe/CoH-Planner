@@ -27,5 +27,29 @@
     0,
     21,
     11
+  ],
+  "power_display_names": [
+    "Encase",
+    "Entomb",
+    "Gravestone",
+    "Meteor",
+    "Rock Shards",
+    "Seismic Force",
+    "Shatter",
+    "Seismic Shockwaves",
+    "Stalagmite",
+    "Upthrust"
+  ],
+  "power_short_helps": [
+    "Ranged, DMG(Smash), Foe -Jump, -Fly, -DEF",
+    "Ranged, DMG(Smash), Foe -Jump, -Fly, -DEF",
+    "Ranged, DMG(Smash), Foe -Jump, -Fly",
+    "Ranged (Location AoE), DMG(Smash/Fire), Foe Knockback",
+    "Ranged Cone, DMG(Smash), -Defense, Special",
+    "Self +To Hit, +DMG, +Range, +Special",
+    "Ranged, DMG(Smash), Foe -Jump, -Fly, -DEF",
+    "Foe Knock Down, Self Special",
+    "Ranged, DMG(Smash), Foe Disorient, Special",
+    "Targeted AoE, DMG(Smash), -Fly, -Defense, Chance to Knockback"
   ]
 }

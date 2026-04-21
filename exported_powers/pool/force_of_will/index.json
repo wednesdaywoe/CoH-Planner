@@ -19,5 +19,21 @@
     19,
     13,
     0
+  ],
+  "power_display_names": [
+    "Mighty Leap",
+    "Project Will",
+    "Takeoff",
+    "Unleash Potential",
+    "Wall of Force",
+    "Weaken Resolve"
+  ],
+  "power_short_helps": [
+    "Toggle: Self Long Jump, (Special)",
+    "Ranged, Light DMG(Psionic), Foe Knockdown",
+    "PBAoE Melee, Self +Jump, Foe Knockdown",
+    "Self, +Regen, +Recovery, +Defense",
+    "Ranged Cone, Minor DMG(Psionic/Smashing), Foe Knockdown",
+    "Ranged, Foe -Resist, -Defense, -To Hit"
   ]
 }

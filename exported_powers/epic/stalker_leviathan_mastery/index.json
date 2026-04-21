@@ -17,5 +17,19 @@
     40,
     43,
     34
+  ],
+  "power_display_names": [
+    "Hibernate",
+    "Spirit Shark",
+    "Spirit Shark Jaws",
+    "Summon Guardian",
+    "Water Spout"
+  ],
+  "power_short_helps": [
+    "Toggle: Self +Regeneration, +Recovery, Invulnerable; Self Hold",
+    "Ranged, DoT(Lethal), Foe Knockback, -Leviathan Hunger",
+    "Ranged, DoT(Lethal), Foe Hold, -Fly",
+    "Summon Warder: Ranged DMG(Smashing)",
+    "Summon Water Spout: PBAoE DMG(Smash), Foe Knockback, Fear, Disorient, +Wet"
   ]
 }

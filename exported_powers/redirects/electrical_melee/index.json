@@ -9,5 +9,11 @@
   ],
   "available_level": [
     21
+  ],
+  "power_display_names": [
+    "Lightning Clap"
+  ],
+  "power_short_helps": [
+    "Melee AoE, Foe Damage, Disorient, Knockdown"
   ]
 }

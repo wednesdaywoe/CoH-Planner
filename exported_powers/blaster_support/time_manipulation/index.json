@@ -25,5 +25,27 @@
     27,
     3,
     0
+  ],
+  "power_display_names": [
+    "Aging Touch",
+    "Chronos",
+    "End of Time",
+    "Future Pain",
+    "Temporal Healing",
+    "Time Lord",
+    "Time Shift",
+    "Time Stop",
+    "Time Wall"
+  ],
+  "power_short_helps": [
+    "Melee, DMG(Psionic), DoT(Psionic), Foe -End Over Time",
+    "Self +DMG, +Recharge, +ToHit, Special",
+    "PBAoE, DMG(Cold/Energy), Foe -Regen",
+    "Melee, DMG(Psionic), Foe Fear",
+    "Toggle: Self +Absorb, +Recovery, +Resist(Slow, Regen Debuff)",
+    "Auto: Self +Recharge, +Resist(Energy, Disorient, Slow)",
+    "Ranged (Targeted AoE), Foe Disorient, -SPD, -ToHit",
+    "Ranged, Foe Hold, -Regen, -Heal",
+    "Ranged, DMG(Energy), Foe Immobilize, -SPD, -Recharge, -Regen, Special"
   ]
 }

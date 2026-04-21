@@ -19,5 +19,21 @@
     3,
     19,
     0
+  ],
+  "power_display_names": [
+    "Athletics",
+    "Bolas",
+    "Envenomed Barrage",
+    "Freerunning",
+    "Life Support System",
+    "Poisoned Dagger"
+  ],
+  "power_short_helps": [
+    "Click, Self +Run Speed, +Jump",
+    "Ranged, Foe Immobilize, Knockdown",
+    "Ranged(Cone), Moderate DMG(Lethal), Foe Light DoT(Toxic), -DMG",
+    "Toggle: Self, +Jump, +Run Speed, +Special",
+    "Self, +HP, +Heal Over Time, +Special",
+    "Ranged, Moderate DMG(Lethal), Foe Light DoT(Toxic), -DMG"
   ]
 }

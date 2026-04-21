@@ -17,5 +17,19 @@
     34,
     40,
     43
+  ],
+  "power_display_names": [
+    "Char",
+    "Cremate",
+    "Fire Cages",
+    "Fire Sword Circle",
+    "Warmth"
+  ],
+  "power_short_helps": [
+    "Ranged, DoT(Fire), Foe Hold",
+    "Melee, DMG(Smash/Fire)",
+    "Ranged (Targeted AoE), DoT(Fire), Foe Immobilize",
+    "PBAoE Melee, DMG(Fire/Lethal)",
+    "PBAoE, Team +Heal"
   ]
 }

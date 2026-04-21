@@ -25,5 +25,27 @@
     0,
     27,
     3
+  ],
+  "power_display_names": [
+    "Arctic Fog",
+    "Benumb",
+    "Frostwork",
+    "Glacial Shield",
+    "Heat Loss",
+    "Ice Shield",
+    "Infrigidate",
+    "Sleet",
+    "Snow Storm"
+  ],
+  "power_short_helps": [
+    "Toggle: PBAoE, Team Stealth, +DEF, +Res(Fire, Cold, Energy, Slow)",
+    "Ranged Foe -DMG, -END, -Regeneration, -Special",
+    "Target +Max HP, Res(Toxic)",
+    "Ranged, Ally +DEF(Ranged, AoE, Energy, Negative), Res(Cold)",
+    "Ranged (Foe AoE), Foe -RES, -END, Slow; Team +END, +Recovery",
+    "Ranged, Ally +DEF(Melee, Smash, Lethal), Res(Cold, Fire)",
+    "Ranged Foe -Speed, -Recharge, -DEF, -DMG (Fire)",
+    "Ranged (Location AoE), Minor DoT(Cold), Foe -Speed, -Recharge, -DEF, -Res (All), Knockdown",
+    "Toggle: Ranged (Targeted AoE), Foe -Speed, -Recharge, -Fly"
   ]
 }

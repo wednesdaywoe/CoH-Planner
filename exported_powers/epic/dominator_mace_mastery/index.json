@@ -17,5 +17,19 @@
     34,
     34,
     43
+  ],
+  "power_display_names": [
+    "Disruptor Blast",
+    "Personal Force Field",
+    "Poisonous Ray",
+    "Scorpion Shield",
+    "Summon Tarantula"
+  ],
+  "power_short_helps": [
+    "Ranged (Targeted AoE), DMG(Smashing/Energy), Foe Knockback",
+    "Toggle: Self +Def, Res(All)",
+    "Ranged DoT(Poison), Foe -RES, -DEF",
+    "Toggle: Self, +Def(Smash,Lethal,Energy), +Res(Toxic)",
+    "Summon Tarantula: Ranged DMG(Toxic)"
   ]
 }

@@ -17,5 +17,19 @@
     40,
     34,
     43
+  ],
+  "power_display_names": [
+    "Dark Pit",
+    "Murky Cloud",
+    "Possess",
+    "Shadowy Binds",
+    "Soul Consumption"
+  ],
+  "power_short_helps": [
+    "Ranged (Targeted AoE), Foe Disorient",
+    "Toggle: Self +Res(Fire, Cold, Energy, Negative)",
+    "Ranged, Target Confuse, -ToHit, -Damage, -Healing, -Special",
+    "Ranged, Moderate DoT(Negative), Foe Immobilize, -To Hit, -Fly",
+    "PBAoE Self +Max HP, +Max End, Foe: -Max HP, -Max End"
   ]
 }

@@ -25,5 +25,27 @@
     0,
     29,
     3
+  ],
+  "power_display_names": [
+    "Concentration",
+    "Drain Psyche",
+    "Mind Probe",
+    "Psychic Scream",
+    "Psychic Shockwave",
+    "Scare",
+    "Subdual",
+    "Telekinetic Thrust",
+    "World of Confusion"
+  ],
+  "power_short_helps": [
+    "Self +DMG, +To Hit",
+    "PBAoE Foe -Regen, -Recovery; Self +Regen, +Recovery",
+    "Melee, Moderate DMG(Psionic), Target -Recharge",
+    "Ranged (Cone), Light DMG(Psionic), Foe -Recharge",
+    "Close (AoE), Light DMG(Psionic), Foe Disorient -Recharge",
+    "Ranged, Foe Fear",
+    "Ranged, Moderate DOT(Psionic), Foe Immobilize",
+    "Melee, Superior DMG(Psionic/Smash), Foe Knockback",
+    "Toggle: PBAoE, Minor DoT(Psionic), Foe Confuse"
   ]
 }

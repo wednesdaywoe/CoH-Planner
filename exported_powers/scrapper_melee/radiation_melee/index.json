@@ -25,5 +25,27 @@
     1,
     7,
     0
+  ],
+  "power_display_names": [
+    "Atom Smasher",
+    "Confront",
+    "Contaminated Strike",
+    "Devastating Blow",
+    "Fusion",
+    "Irradiated Ground",
+    "Proton Sweep",
+    "Radiation Siphon",
+    "Radioactive Smash"
+  ],
+  "power_short_helps": [
+    "PBAoE, DMG(Energy/Toxic), Foe -Def, Disorient, Special",
+    "Ranged, Foe Taunt",
+    "Melee, DMG(Energy/Smash), Foe -Def, Special",
+    "Melee, DMG(Energy/Smash), Foe -Def, Disorient, Special",
+    "Self +DMG, +To Hit, Special",
+    "Toggle, DoT(Toxic) Patch, Foe -Def, Special",
+    "Melee Cone, DoT(Energy/Toxic), Foe -Def, Special",
+    "Melee, DMG(Energy/Smash), Foe, -Def, -Contaminated, Special",
+    "Melee, DMG(Energy/Smash), Foe -Def, Knockdown, Special"
   ]
 }

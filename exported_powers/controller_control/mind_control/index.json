@@ -25,5 +25,27 @@
     11,
     21,
     17
+  ],
+  "power_display_names": [
+    "Confuse",
+    "Dominate",
+    "Levitate",
+    "Mass Confusion",
+    "Mass Hypnosis",
+    "Mesmerize",
+    "Telekinesis",
+    "Terrify",
+    "Total Domination"
+  ],
+  "power_short_helps": [
+    "Ranged, Target Confuse",
+    "Ranged, DMG(Psionic), Foe Hold",
+    "Ranged, DMG(Smash)",
+    "Ranged (Targeted AoE), Foe Confuse",
+    "Ranged (Targeted AoE), Foe Deep Sleep",
+    "Ranged, DMG(Psionic), Foe Deep Sleep",
+    "Toggle: Ranged (Targeted AoE), Foe Immobilize, Repel",
+    "Ranged (Cone), DMG(Psionic), Foe Fear(Special)",
+    "Ranged (Targeted AoE), Foe Hold"
   ]
 }

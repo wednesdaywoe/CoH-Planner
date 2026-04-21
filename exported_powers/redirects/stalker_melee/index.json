@@ -11,5 +11,13 @@
   "available_level": [
     1,
     0
+  ],
+  "power_display_names": [
+    "Ablating Sweep",
+    "Savage Leap"
+  ],
+  "power_short_helps": [
+    "Melee, Minor DMG(Lethal), Foe -DEF",
+    "PBAoE, High DMG(Lethal), Foe Minor DoT(Lethal), +3 Blood Frenzy, Self Teleport"
   ]
 }

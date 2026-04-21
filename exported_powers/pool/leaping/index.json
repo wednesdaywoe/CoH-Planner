@@ -19,5 +19,21 @@
     13,
     3,
     13
+  ],
+  "power_display_names": [
+    "Combat Jumping",
+    "Double Jump",
+    "Jump Kick",
+    "Acrobatics",
+    "Super Jump",
+    "Spring Attack"
+  ],
+  "power_short_helps": [
+    "Toggle: Self +Jump, +DEF(All), Res(Immobilization)",
+    "Toggle: Self +Special",
+    "Melee, DMG(Smash), Foe Knockdown",
+    "Toggle: Self +Res(Knockback, Hold)",
+    "Toggle: Self Long Jump",
+    "PBAoE DMG(Smash), Foe Knockdown; Self Teleport"
   ]
 }

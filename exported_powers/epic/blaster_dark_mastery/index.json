@@ -17,5 +17,19 @@
     34,
     37,
     43
+  ],
+  "power_display_names": [
+    "Black Hole",
+    "Fearsome Stare",
+    "Murky Cloud",
+    "Possess",
+    "Soul Consumption"
+  ],
+  "power_short_helps": [
+    "Ranged (Targeted AoE), Foe Intangible",
+    "Ranged (Cone), Foe Fear, -To Hit",
+    "Toggle: Self +Res(Fire, Cold, Energy, Negative)",
+    "Ranged, Target Confuse, -ToHit, -Damage, -Healing, -Special",
+    "PBAoE Self +Max HP, +Max End, Foe: -Max HP, -Max End"
   ]
 }

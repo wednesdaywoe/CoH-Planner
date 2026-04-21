@@ -15,5 +15,17 @@
     0,
     0,
     0
+  ],
+  "power_display_names": [
+    "Frigid Beam",
+    "Frigid Blast",
+    "Frigid Enervation",
+    "Frigid Slam"
+  ],
+  "power_short_helps": [
+    "Ranged (Cone), High DMG(Cold), Moderate DoT(Negative Energy), -RES(Foe, All), -End(Foe), Chance for +EndCost(Foe)",
+    "Ranged, Light DMG(Cold), Minor DoT(Negative Energy), -ToHit(Foe), -Rech(Foe), -Speed(Foe, All), Chance for +EndCost(Foe)",
+    "Targeted AoE (Secondary Target), Moderate DMG(Cold), Moderate(Negative Energy), +EndCost(Foe), -Regen(Foe), -Rec(Foe)",
+    "PBAoE, Superior DMG(Cold), Minor DoT(Negative Energy), -RES(Foe, Cold & Negative Energy), Chance for +EndCost(Foe), Knockback(Foe), Chance for +EndCost(Foe)"
   ]
 }

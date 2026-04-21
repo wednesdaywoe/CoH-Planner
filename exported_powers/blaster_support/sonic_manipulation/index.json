@@ -25,5 +25,27 @@
     19,
     27,
     0
+  ],
+  "power_display_names": [
+    "Sound Booster",
+    "Deafening Wave",
+    "Disruption Aura",
+    "Earsplitter",
+    "Echo Chamber",
+    "Sonic Thrust",
+    "Sound Barrier",
+    "Sound Cannon",
+    "Strident Echo"
+  ],
+  "power_short_helps": [
+    "Self +DMG, +To Hit, +Special",
+    "PBAoE Melee, DMG(Energy/Smash), Foe Chance for Hold",
+    "Toggle: PBAoE, Foe -Res(All)",
+    "Melee, DMG(Energy/Smash), Foe Chance for Hold",
+    "Ranged, DMG(Energy), Foe Hold",
+    "Melee, DMG(Energy/Smash), Foe Knockback/Repel",
+    "Toggle: Self +Absorb, +Recovery, +Res(Smashing, Energy, Sleep)",
+    "Ranged (Cone), Foe Disorient, Knockback",
+    "Melee, DMG(Energy/Smash), Foe Chance for Hold"
   ]
 }

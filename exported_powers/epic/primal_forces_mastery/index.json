@@ -17,5 +17,19 @@
     34,
     43,
     37
+  ],
+  "power_display_names": [
+    "Conserve Power",
+    "Energy Torrent",
+    "Power Blast",
+    "Power Boost",
+    "Temp Invulnerability"
+  ],
+  "power_short_helps": [
+    "Self Endurance Discount",
+    "Ranged (Cone), DMG(Energy/Smash), Foe Knockback",
+    "Ranged, DMG(Energy/Smash), Foe Knockback",
+    "Self +Special",
+    "Toggle: Self +Res(Smash, Lethal)"
   ]
 }

@@ -27,5 +27,29 @@
     23,
     0,
     3
+  ],
+  "power_display_names": [
+    "Frigid Shield",
+    "Frost Protection",
+    "Frozen Armor",
+    "Glacial Armor",
+    "Hoarfrost",
+    "Icy Bastion",
+    "Moisture Absorption",
+    "Permafrost",
+    "Rime",
+    "Wet Ice"
+  ],
+  "power_short_helps": [
+    "Toggle: +Absorb over time, Res(Slow)",
+    "Auto: +HP, Res (Slow)",
+    "Self, +Def(Smash, Lethal), +Res(Cold, Fire, DeBuff DEF)",
+    "Toggle: Self +DEF(Energy, Negative), Res (Cold, DeBuff DEF), +Perception",
+    "Self Heal, +Max HP, Res(Toxic)",
+    "Toggle: Self +Res(All DMG, but Psionics), +Res(Knockback, Repel, Disorient, Hold, Immobilize, Sleep), +Regen, +Recovery, Invulnerable; Self Hold",
+    "Close AoE, Self +End, +DEF(All but Psionics), Res (Slow), Foe -End",
+    "Auto: Self +Res(All damage, Slow)",
+    "Self +Regen, +Absorb, Res(Toxic)",
+    "Self, +DEF(All), +Res(Cold, Disorient, Immobilize, Hold, Sleep, Slow, Knockback, DeBuff DEF)"
   ]
 }

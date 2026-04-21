@@ -17,5 +17,19 @@
     34,
     43,
     40
+  ],
+  "power_display_names": [
+    "Ball Lightning",
+    "Charged Armor",
+    "Power Sink",
+    "Summon Guardian",
+    "Surge of Power"
+  ],
+  "power_short_helps": [
+    "Ranged (Targeted AoE), DoT(Energy), Foe -End",
+    "Toggle: Self +Res(Smash, Lethal, Energy)",
+    "PBAoE, Self +End, Foe -End",
+    "Summon Mu Guardian: Ranged DMG(Energy)",
+    "Self, +Res(Special)"
   ]
 }

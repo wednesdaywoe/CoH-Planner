@@ -25,5 +25,27 @@
     9,
     27,
     15
+  ],
+  "power_display_names": [
+    "Acid Arrow",
+    "Disruption Arrow",
+    "EMP Arrow",
+    "Entangling Arrow",
+    "Flash Arrow",
+    "Glue Arrow",
+    "Ice Arrow",
+    "Oil Slick Arrow",
+    "Poison Gas Arrow"
+  ],
+  "power_short_helps": [
+    "Ranged AoE Minor DoT(Toxic), Foe -Res(Special), Res(Heal), -DEF",
+    "Ranged (Location AoE), -Res(All), -MaxEnd",
+    "AoE, Foe Hold, Special",
+    "Ranged, Target Immobilize, -Res(All), -Fly, Slow",
+    "Ranged (Targeted AoE), Foe -Visibility, -To Hit",
+    "Ranged (Location AoE), Foe -Speed, -Recharge",
+    "Ranged, Foe Hold, -SPD, -Recharge, -DMG, -Special",
+    "Ranged (Location AoE), Knockdown, -Speed, -DEF, +Special",
+    "Ranged AoE, Foe -DMG, Sleep"
   ]
 }

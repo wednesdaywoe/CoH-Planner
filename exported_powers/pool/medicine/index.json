@@ -17,5 +17,19 @@
     13,
     13,
     0
+  ],
+  "power_display_names": [
+    "Aid Other",
+    "Aid Self",
+    "Field Medic",
+    "Resuscitate",
+    "Injection"
+  ],
+  "power_short_helps": [
+    "Close, Heal(Ally)",
+    "Self, Heal, +Res(Stun), +EndGain(Synergy)",
+    "Self, +Heal, -Res(Heal), Special",
+    "Close, Resurrect(Ally)",
+    "Ranged, +Status Protection(Ally, PvE), +Status Resistance(Ally, PvP) OR -DMG(Foe, All), -Rech(Foe), -ToHit(Foe)"
   ]
 }

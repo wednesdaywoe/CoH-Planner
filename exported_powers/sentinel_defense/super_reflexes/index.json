@@ -27,5 +27,29 @@
     9,
     9,
     23
+  ],
+  "power_display_names": [
+    "Agile",
+    "Dodge",
+    "Elude",
+    "Enduring",
+    "Evasion",
+    "Focused Fighting",
+    "Focused Senses",
+    "Master Brawler",
+    "Practiced Brawler",
+    "Quickness"
+  ],
+  "power_short_helps": [
+    "Auto: Self +DEF(Ranged), Res(DeBuff DEF), Res(DMG, Special)",
+    "Auto: Self +DEF(Melee), Res(DeBuff DEF), Res(All DMG, Special)",
+    "Self +DEF, + SPD, +Recovery, Res(DeBuff DEF), +Special",
+    "Auto: Self +Recovery, +DEF(Psionic), Res(DeBuff DEF), Res(DMG, Special)",
+    "Toggle: Self +DEF(vs. AoE), Res(DeBuff DEF)",
+    "Toggle: Self +DEF(Melee), Res(Confuse, DeBuff DEF)",
+    "Toggle: Self +DEF(Ranged), +Perception, Res(DeBuff DEF)",
+    "Self +Absorb +Special",
+    "Self +Res(Knockback, Disorient, Hold, Sleep, Immobilize)",
+    "Auto: Self +Recharge, +SPD, Res (Slow)"
   ]
 }

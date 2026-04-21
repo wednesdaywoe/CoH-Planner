@@ -17,5 +17,19 @@
     34,
     37,
     43
+  ],
+  "power_display_names": [
+    "Arctic Breath",
+    "Knockout Blow",
+    "School of Sharks",
+    "Spirit Shark Jaws",
+    "Summon Coralax"
+  ],
+  "power_short_helps": [
+    "Ranged (Cone), DoT(Cold), Foe -Speed, -Recharge, -DEF, knock down",
+    "Melee, DMG(Smash), Foe Hold",
+    "Ranged (Cone), DoT(Negative), Foe Immobilize",
+    "Ranged, DoT(Lethal), Foe Hold, -Fly",
+    "Summon Hybrid: Ranged DMG(Lethal)"
   ]
 }

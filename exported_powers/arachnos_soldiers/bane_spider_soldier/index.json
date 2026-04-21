@@ -27,5 +27,29 @@
     11,
     11,
     17
+  ],
+  "power_display_names": [
+    "Bash",
+    "Build Up",
+    "Crowd Control",
+    "Mace Beam",
+    "Mace Beam Blast",
+    "Mace Beam Volley",
+    "Placate",
+    "Poisonous Ray",
+    "Pulverize",
+    "Shatter"
+  ],
+  "power_short_helps": [
+    "Melee, DMG(Smash), Minor DoT(Toxic), Foe Disorient",
+    "Self +DMG, +To Hit",
+    "Melee (Cone), DMG(Smash), Minor DoT(Toxic), Foe Knockback",
+    "Ranged, DMG(Energy), Foe Knockback",
+    "Ranged (Targeted AoE), DMG(Energy), Foe Knockback",
+    "Ranged Cone, DMG(Energy), Foe Knockback",
+    "Melee, Foe Placate, Self Stealth/Hide",
+    "Ranged, DoT(Toxic), -DEF",
+    "Melee, DMG(Smash), Minor DoT(Toxic), Foe Disorient",
+    "Melee, DMG(Smash), Minor DoT(Toxic), High Knockback"
   ]
 }

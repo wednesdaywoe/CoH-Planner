@@ -27,5 +27,29 @@
     29,
     25,
     25
+  ],
+  "power_display_names": [
+    "Energy Focus",
+    "Energy Focus",
+    "Energy Transfer (Focused)",
+    "Energy Transfer",
+    "Energy Transfer (Focused)",
+    "Energy Transfer (Focused)",
+    "Energy Transfer (Focused)",
+    "Energy Transfer",
+    "Energy Transfer",
+    "Energy Transfer"
+  ],
+  "power_short_helps": [
+    "Energy Focus",
+    "Energy Focus",
+    "Melee, DMG(Energy), Foe Disorient, Self -HP, Special",
+    "Melee, DMG(Energy), Foe Disorient, Self -HP, Special",
+    "Melee, DMG(Energy), Foe Disorient, Self -HP, Special",
+    "Melee, DMG(Energy), Foe Disorient, Self -HP, Special",
+    "Melee, DMG(Energy), Foe Disorient, Self -HP, Special",
+    "Melee, DMG(Energy), Foe Disorient, Self -HP, Special",
+    "Melee, DMG(Energy), Foe Disorient, Self -HP, Special",
+    "Melee, DMG(Energy), Foe Disorient, Self -HP, Special"
   ]
 }

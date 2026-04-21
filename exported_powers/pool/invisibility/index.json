@@ -17,5 +17,19 @@
     13,
     13,
     0
+  ],
+  "power_display_names": [
+    "Grant Invisibility",
+    "Infiltration",
+    "Misdirection",
+    "Phase Shift",
+    "Stealth"
+  ],
+  "power_short_helps": [
+    "Ranged, Teammate Stealth, +DEF(All)",
+    "Toggle: Self, +Jump, +Run Speed, Self Stealth, +DEF(All)",
+    "PBAoE, Foe Placate, -Res(All)",
+    "Toggle: Self Intangible",
+    "Toggle: Self Stealth, +DEF(All)"
   ]
 }

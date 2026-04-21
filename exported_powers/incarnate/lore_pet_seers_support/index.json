@@ -11,5 +11,13 @@
   "available_level": [
     0,
     0
+  ],
+  "power_display_names": [
+    "Fortitude",
+    "Soothe Mind"
+  ],
+  "power_short_helps": [
+    "Ally +DEF, +DMG, +ACC",
+    "Ally Heal"
   ]
 }

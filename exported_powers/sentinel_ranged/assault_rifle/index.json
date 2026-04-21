@@ -25,5 +25,27 @@
     21,
     11,
     5
+  ],
+  "power_display_names": [
+    "Aim",
+    "Disorienting Shot",
+    "Buckshot",
+    "Burst",
+    "Flamethrower",
+    "Full Auto",
+    "Ignite",
+    "M30 Grenade",
+    "Slug"
+  ],
+  "power_short_helps": [
+    "Self +ToHit, +DMG, +Range",
+    "Ranged, DMG(Smash), Foe Disorient",
+    "Ranged (Cone), DMG(Lethal), Foe Knockback",
+    "Ranged, DMG(Lethal), Foe -DEF",
+    "Ranged (Cone), DoT(Fire)",
+    "Ranged (Cone), DoT(Lethal), +Special",
+    "Ranged, DoT(Fire), Location AoE, DoT(Fire)",
+    "Ranged (Targeted AoE), DMG(Fire/Lethal), Foe Knockback",
+    "Ranged, DMG(Lethal), Foe Knockback"
   ]
 }

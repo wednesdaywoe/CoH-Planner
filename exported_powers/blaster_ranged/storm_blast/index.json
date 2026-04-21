@@ -25,5 +25,27 @@
     0,
     1,
     5
+  ],
+  "power_display_names": [
+    "Intensify",
+    "Category Five",
+    "Chain Lightning",
+    "Cloudburst",
+    "Direct Strike",
+    "Gust",
+    "Hailstones",
+    "Jet Stream",
+    "Storm Cell"
+  ],
+  "power_short_helps": [
+    "Self +To Hit, +DMG, Special",
+    "Ranged (Location AoE), DoT(Energy), +Wet",
+    "Ranged Chain, DoT(Energy), Foe -End",
+    "Ranged, DoT(Cold), +Wet, Special",
+    "Sniper, DMG(Energy), Foe -End, Special",
+    "Ranged, DMG(Smash), -Fly",
+    "Ranged, DMG(Cold), Chance for Knockdown",
+    "Ranged (Cone), DMG(Smashing), Foe Knockdown or Repel",
+    "Ranged (Location AoE), Foe -Recharge, -SPD, +Wet, Special"
   ]
 }

@@ -17,5 +17,19 @@
     34,
     34,
     43
+  ],
+  "power_display_names": [
+    "Dark Blast",
+    "Night Fall",
+    "Penumbral Grasp",
+    "Petrifying Gaze",
+    "Tar Patch"
+  ],
+  "power_short_helps": [
+    "Ranged, DMG(Negative), Foe -ACC",
+    "Ranged (Cone), DMG(Negative), Foe -To Hit",
+    "Ranged, DOT(Negative), Foe Immobilize, -To Hit",
+    "Ranged, DMG(Negative), Foe Hold",
+    "Ranged (Location AoE), Target -Speed, -Res, -Fly"
   ]
 }

@@ -25,5 +25,27 @@
     21,
     11,
     17
+  ],
+  "power_display_names": [
+    "Bash",
+    "Build Up",
+    "Clobber",
+    "Crowd Control",
+    "Jawbreaker",
+    "Pulverize",
+    "Shatter",
+    "Taunt",
+    "Whirling Mace"
+  ],
+  "power_short_helps": [
+    "Melee, Light DMG(Smashing), Minor Disorient",
+    "Self +DMG, +To Hit",
+    "Melee, Superior DMG(Smashing), Disorient",
+    "Melee (Cone), Moderate DMG(Smashing), Knockback",
+    "Melee, High DMG(Smashing), Knockup",
+    "Melee, Moderate DMG(Smashing), Minor Disorient",
+    "Melee (Cone), DMG(Smashing), Knockback",
+    "Ranged (Targeted AoE), Foe Taunt",
+    "PBAoE Melee, Light DMG(Smashing), Minor Disorient"
   ]
 }

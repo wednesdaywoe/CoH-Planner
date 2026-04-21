@@ -21,5 +21,23 @@
     0,
     0,
     17
+  ],
+  "power_display_names": [
+    "Anomaly",
+    "Levitate",
+    "Levitate",
+    "Mass Confusion",
+    "Mesmerize",
+    "Resistance",
+    "Total Domination"
+  ],
+  "power_short_helps": [
+    "Melee(Cone), Light DMG(Smashing), Self +DEF(Melee, Smash)",
+    "Ranged, Light DMG(Smash), Foe Knock Up",
+    "Ranged, DMG(Smash)",
+    "Ranged (Targeted AoE), Foe Confuse",
+    "Ranged, Light DMG(Psionic), Foe Deep Sleep",
+    "Resistance",
+    "Ranged (Targeted AoE), DMG(Psionic), Foe Hold"
   ]
 }

@@ -25,5 +25,27 @@
     0,
     1,
     25
+  ],
+  "power_display_names": [
+    "Assassin's Strike",
+    "Body Blow",
+    "Build Up",
+    "Burst",
+    "Focused Burst",
+    "Placate",
+    "Quick Strike",
+    "Smashing Blow",
+    "Concentrated Strike"
+  ],
+  "power_short_helps": [
+    "Melee, DMG(Smashing, Energy)",
+    "Melee, DMG(Smash/Energy), Foe Disorient",
+    "Self +DMG, +To Hit",
+    "PBAoE Melee, DMG(Smash/Energy), Foe Knockdown",
+    "Ranged Chain, DMG(Smash/Energy), Foe Knockdown",
+    "Ranged, Foe Placate, Self Stealth/Hide",
+    "Melee, DMG(Smash/Energy), Foe -DMG, Knockdown",
+    "Melee, DMG(Smash/Energy), Foe Disorient",
+    "Melee, DMG(Energy/Smash), Foe Disorient, +Special"
   ]
 }

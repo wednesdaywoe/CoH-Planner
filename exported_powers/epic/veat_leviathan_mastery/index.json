@@ -17,5 +17,19 @@
     34,
     34,
     43
+  ],
+  "power_display_names": [
+    "Arctic Breath",
+    "Bile Spray",
+    "School of Sharks",
+    "Spirit Shark",
+    "Summon Guardian"
+  ],
+  "power_short_helps": [
+    "Ranged (Cone), DoT(Cold), Foe -Speed, -Recharge, -DEF -Res, knock down",
+    "Ranged (Cone), DoT(Toxic)",
+    "Ranged (Cone), DoT(Negative), Foe Immobilize",
+    "Ranged, DoT(Lethal), Foe Knockback, -Leviathan Hunger",
+    "Summon Sentinel: Ranged Moderate DMG(Smashing)"
   ]
 }

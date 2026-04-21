@@ -25,5 +25,27 @@
     3,
     27,
     0
+  ],
+  "power_display_names": [
+    "Acid Mortar",
+    "Caltrops",
+    "Detonator",
+    "Force Field Generator",
+    "Poison Trap",
+    "Seeker Drones",
+    "Triage Beacon",
+    "Trip Mine",
+    "Web Grenade"
+  ],
+  "power_short_helps": [
+    "Place Trap: Ranged (AoE), Minor DoT(Toxic), Foe -Res(All), -DEF",
+    "Ranged (Location AoE), Minor DoT(Lethal), Foe -Speed",
+    "Sacrifice Henchman, PBAoE, Extreme DMG(Lethal/Fire), Foe Knockback",
+    "Place Drone: PBAoE, Team +DEF, +Res(Hold, Immobilize, Disorient)",
+    "Place Trap: PBAoE Foe Choke, Vomit, -Regen, -Recharge",
+    "Summon Seekers: Ranged Disorient, -DMG, -To Hit, -Perception, Low DMG(Energy)",
+    "Place Beacon: PBAoE +Regen",
+    "Place Mine: PBAoE, Superior DMG(Lethal/Fire), Foe Knockback",
+    "Ranged, Target Immobilize, -Recharge, -Fly"
   ]
 }

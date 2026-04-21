@@ -25,5 +25,27 @@
     0,
     0,
     25
+  ],
+  "power_display_names": [
+    "Assassin's Smash",
+    "Build Up",
+    "Fault",
+    "Seismic Mallet",
+    "Hurl Boulder",
+    "Placate",
+    "Stone Fist",
+    "Stone Mallet",
+    "Tremor"
+  ],
+  "power_short_helps": [
+    "Melee, Extreme DMG(Smash)",
+    "Self +DMG, +To Hit",
+    "Close (Targeted AoE), Minor DMG(Smashing), Foe Knockback, Disorient",
+    "Melee, Superior DMG(Smashing), Knockback, Hold",
+    "Ranged, Moderate DMG(Smashing), Foe Knockback, -Fly",
+    "Ranged, Foe Placate, Self Stealth/Hide",
+    "Melee Light DMG(Smashing), Foe Minor Disorient",
+    "Melee, Moderate DMG(Smashing), Knockback",
+    "PBAoE, Light DMG(Smashing), Knockback"
   ]
 }

@@ -23,5 +23,25 @@
     11,
     11,
     0
+  ],
+  "power_display_names": [
+    "Confront",
+    "Dart Burst",
+    "Follow Up",
+    "Strike",
+    "Poison Dart",
+    "Spin",
+    "Lunge",
+    "Swipe"
+  ],
+  "power_short_helps": [
+    "Ranged, Foe Taunt",
+    "Ranged Cone, DMG(Lethal), DoT(Toxic), -Regeneration",
+    "Melee, DMG(Lethal), Self +DMG",
+    "Melee, DMG(Lethal), DoT(Toxic), -Recharge, -SPD",
+    "Ranged, DMG(Lethal), DoT(Toxic), -Regeneration",
+    "PBAoE Melee, DMG(Lethal), DoT(Toxic), -Recharge, -SPD",
+    "Melee, DMG(Lethal), DoT(Toxic), -Recharge, -SPD",
+    "Melee, DMG(Lethal), DoT(Toxic), -Recharge, -SPD"
   ]
 }

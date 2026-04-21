@@ -31,5 +31,33 @@
     0,
     11,
     5
+  ],
+  "power_display_names": [
+    "Bullet Rain",
+    "Chemical Ammunition",
+    "Cryo Ammunition",
+    "Dual Wield",
+    "Empty Clips",
+    "Executioner's Shot",
+    "Hail of Bullets",
+    "Incendiary Ammunition",
+    "Piercing Rounds",
+    "Pistols",
+    "Suppressive Fire",
+    "Swap Ammo"
+  ],
+  "power_short_helps": [
+    "Ranged (Targeted AoE), DMG(Lethal/Special), Knockback/Special",
+    "Toggle: Ammo Change (Toxic), Special",
+    "Toggle: Ammo Change (Cold), Special",
+    "Ranged, DMG(Lethal/Special), Foe Knockback/Special",
+    "Ranged (Cone), DMG(Lethal/Special), Foe -Defense, Knockdown/Special",
+    "Ranged, DMG(Lethal/Special), Foe -Defense, Knockback/Special",
+    "PBAoE, DMG(Lethal/Special), Self +Def(Melee, Ranged, AoE), Foe Knockdown/Special",
+    "Toggle: Ammo Change (Fire), Special",
+    "Narrow Ranged (Cone), DMG(Lethal/Special), Foes -Res(All)/Special",
+    "Ranged, DMG(Lethal/Special)",
+    "Ranged, DMG(Lethal/Special), Foe Disorient/Special",
+    "Change Secondary Damage/Effects"
   ]
 }

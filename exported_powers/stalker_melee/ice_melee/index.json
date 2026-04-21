@@ -25,5 +25,27 @@
     17,
     0,
     7
+  ],
+  "power_display_names": [
+    "Assassin's Ice Sword",
+    "Build Up",
+    "Freezing Touch",
+    "Frost",
+    "Frozen Aura",
+    "Frozen Fists",
+    "Ice Patch",
+    "Ice Sword",
+    "Placate"
+  ],
+  "power_short_helps": [
+    "Melee, DMG(Cold)",
+    "Self +DMG, +To Hit, +Special",
+    "Melee, DoT(Cold), Foe Hold",
+    "Close (Cone), DoT(Cold), Foe -Recharge, -SPD",
+    "PBAoE, DMG(Cold), Foe Sleep",
+    "Melee, DMG(Cold/Smash), Foe -Recharge, -SPD",
+    "Location (PBAoE), Foe Knockdown",
+    "Melee, DMG(Cold/Lethal), Foe -Recharge, -SPD",
+    "Ranged, Foe Placate, Self Stealth/Hide"
   ]
 }

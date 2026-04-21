@@ -17,5 +17,19 @@
     13,
     0,
     13
+  ],
+  "power_display_names": [
+    "Pacify",
+    "Intimidate",
+    "Invoke Panic",
+    "Provoke",
+    "Unrelenting"
+  ],
+  "power_short_helps": [
+    "Ranged, Placate (Foe)",
+    "Ranged, Fear (Foe)",
+    "PBAoE, Fear (Foe)",
+    "Targeted AoE, Taunt (Foe)",
+    "Self, Heal over Time, +DMG(All), +Rech, +Rec, Self Resurrect (Special)"
   ]
 }

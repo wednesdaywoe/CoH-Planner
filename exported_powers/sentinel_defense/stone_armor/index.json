@@ -25,5 +25,27 @@
     0,
     0,
     9
+  ],
+  "power_display_names": [
+    "Brimstone Armor",
+    "Crystal Armor",
+    "Earth's Embrace",
+    "Geode",
+    "Minerals",
+    "Rooted",
+    "Rock Armor",
+    "Stone Skin",
+    "Terra Firma"
+  ],
+  "power_short_helps": [
+    "Toggle: Self +Res(Fire, Cold, Toxic), +Special",
+    "Toggle: Self +Recovery, +DEF(Energy, Negative), Res(DeBuff DEF)",
+    "Self +HP, Res(Toxic)",
+    "Toggle: Self +Regeneration, +Recovery, Invulnerable; Self Hold",
+    "Toggle: Self +Recharge, +DEF(Psionic), Res(Confuse, Perception), +Perception",
+    "Toggle: Self +Res(Knockback, Sleep, Disorient, Hold, End Drain, DeBuff DEF), +Regeneration",
+    "Toggle: Self +DEF(Lethal, Smash), Res(DeBuff DEF)",
+    "Auto: Self +Res(All but Psionics), +DEF(All but Psionics)",
+    "Auto: Self +To Hit, +ACC, +Range, Res(ToHit)"
   ]
 }

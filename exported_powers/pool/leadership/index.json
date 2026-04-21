@@ -17,5 +17,19 @@
     13,
     13,
     13
+  ],
+  "power_display_names": [
+    "Assault",
+    "Maneuvers",
+    "Tactics",
+    "Vengeance",
+    "Victory Rush"
+  ],
+  "power_short_helps": [
+    "Toggle: PBAoE, Team +DMG, Res(Taunt, Placate)",
+    "Toggle: PBAoE, Team +DEF(All)",
+    "Toggle: PBAoE, Team +To Hit, Res(Confuse, Fear), +Perception",
+    "Ranged (Targeted AoE), Teammates +DMG, +To Hit, +DEF(All), Res(Effects)",
+    "Ranged (Targeted AoE), Team +Recovery, -End Cost"
   ]
 }

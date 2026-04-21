@@ -25,5 +25,27 @@
     3,
     9,
     19
+  ],
+  "power_display_names": [
+    "Combat Readiness",
+    "Crushing Uppercut",
+    "Heavy Blow",
+    "Initial Strike",
+    "Shin Breaker",
+    "Spinning Strike",
+    "Sweeping Cross",
+    "Taunt",
+    "Rib Cracker"
+  ],
+  "power_short_helps": [
+    "Self, +DMG, +To Hit, Special",
+    "Melee, DMG(Smash), Foe Knock Up, Disorient, Finisher",
+    "Melee, DMG(Smash), Foe Knockdown, Combo Builder",
+    "Melee, DMG(Smash), Foe Disorient, Combo Builder",
+    "Melee, DMG(Smash), Foe -Speed, -Defense, Combo Builder",
+    "Melee (Targeted AoE), DMG(Smash), Foe Knockdown, Finisher",
+    "Melee (Cone), DMG(Smash), Foe Disorient, Finisher",
+    "Ranged (Targeted AoE), Foe Taunt",
+    "Melee, DMG(Smash), Foe -Res (All), -Dmg, Combo Builder"
   ]
 }

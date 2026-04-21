@@ -31,5 +31,33 @@
     0,
     0,
     0
+  ],
+  "power_display_names": [
+    "Static",
+    "Defibrillate",
+    "Defibrillate",
+    "Faraday Cage",
+    "Faraday Cage",
+    "Faraday Cage",
+    "Discharge",
+    "Fly",
+    "Resist Energy",
+    "Amp Up",
+    "Amp Up",
+    "Static"
+  ],
+  "power_short_helps": [
+    "Circuit Boost",
+    "Ranged (Targeted AoE), Foe -DMG, -End, -Recovery, -Regen",
+    "Melee (Targeted AoE), Ally Rez, Foe Sleep, -End, -Recovery",
+    "Location (PBAoE), Team +Res(All DMG but Toxic, Status, Knockback, -Rech, -Rec, -End)",
+    "Location (PBAoE), Team +Res(All DMG but Toxic, Status, Knockback, -Rech, -Rec, -End)",
+    "Faraday Cage",
+    "Ranged (Targeted AoE), Foe -DMG, -End, -Recovery, -Regen",
+    "Galvanic Sentinel",
+    "+Res, +Movement",
+    "Ranged, Ally +Special, +Recharge",
+    "Ranged, Ally +Special, +Recharge",
+    "Circuit Boost"
   ]
 }

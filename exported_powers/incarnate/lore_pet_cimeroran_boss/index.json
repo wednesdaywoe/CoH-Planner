@@ -17,5 +17,19 @@
     0,
     0,
     0
+  ],
+  "power_display_names": [
+    "Hack",
+    "Pilum",
+    "Push Back",
+    "Slash",
+    "Slice"
+  ],
+  "power_short_helps": [
+    "Melee, High Dam(Lethal), Foe -DEF",
+    "Ranged, Light DMG(Lethal)",
+    "Melee, Light DMG(Smash), High Knockback",
+    "Melee, Moderate Dam(Lethal), Foe -DEF",
+    "Melee (Cone), Moderate Dam(Lethal), Foe -DEF"
   ]
 }

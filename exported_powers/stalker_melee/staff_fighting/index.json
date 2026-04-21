@@ -25,5 +25,27 @@
     0,
     21,
     25
+  ],
+  "power_display_names": [
+    "Assassin's Staff",
+    "Build Up",
+    "Eye of the Storm",
+    "Guarded Spin",
+    "Mercurial Blow",
+    "Placate",
+    "Precise Strike",
+    "Serpent's Reach",
+    "Sky Splitter"
+  ],
+  "power_short_helps": [
+    "Melee, DMG(Smash)",
+    "Self +DMG, +To Hit",
+    "PBAoE Melee, DMG(Smash), Foe Knockdown, Consumes Perfection",
+    "Melee (Cone), DMG(Smash), Self +Def(Melee, Lethal)",
+    "Melee, DMG(Smash), Foe -Def",
+    "Ranged, Foe Placate, Self Stealth/Hide",
+    "Melee, Liht DMG(Smash), Foe Disorient",
+    "Ranged, DMG(Smash), Foe Knockdown",
+    "Melee, DMG(Smash), Foe Knock Up, Disorient, -Fly, Consumes Perfection"
   ]
 }

@@ -9,5 +9,11 @@
   ],
   "available_level": [
     27
+  ],
+  "power_display_names": [
+    "Axe Hit"
+  ],
+  "power_short_helps": [
+    "Axe Hit"
   ]
 }

@@ -15,5 +15,17 @@
     34,
     15,
     1
+  ],
+  "power_display_names": [
+    "Contaminated Strike",
+    "Devastating Blow",
+    "Radiation Siphon",
+    "Radioactive Smash"
+  ],
+  "power_short_helps": [
+    "Melee, Light DMG(Energy/Smash), Foe -Def, -Res(All), Special",
+    "Melee, Minor DMG(Energy/Smash), Foe -Def, Disorient, Special",
+    "Melee, Minor DMG(Energy/Smash), Foe, -Def, -Contaminated, Special",
+    "Melee, Moderate DMG(Energy/Smash), Foe -Def, Knockdown, Special"
   ]
 }

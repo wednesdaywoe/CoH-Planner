@@ -17,5 +17,19 @@
     34,
     37,
     43
+  ],
+  "power_display_names": [
+    "Conserve Power",
+    "Force of Nature",
+    "Power Build Up",
+    "Temp Invulnerability",
+    "Total Focus"
+  ],
+  "power_short_helps": [
+    "Self Endurance Discount",
+    "Self, +Res(All DMG but Psionics)",
+    "Self +DMG, +ACC, +Special",
+    "Toggle: Self +Res(Smash, Lethal)",
+    "Melee, Extreme DMG(Energy/Smash), Foe Disorient"
   ]
 }

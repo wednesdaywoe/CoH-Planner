@@ -25,5 +25,27 @@
     17,
     0,
     1
+  ],
+  "power_display_names": [
+    "Catherine Wheel",
+    "Dazzle",
+    "Explosive Bouquet",
+    "Glittering Column",
+    "Brilliant Barrage",
+    "Hypnotizing Lights",
+    "Incendiary Aura",
+    "Sparkling Cage",
+    "Sparkling Chain"
+  ],
+  "power_short_helps": [
+    "Summon Catherine Wheel: Ranged DMG (Fire, Energy), Special",
+    "Ranged, Moderate DMG (Fire, Energy), Foe Hold, Chance for Blast Off",
+    "Ranged (AoE), Foe Hold, Blast Off",
+    "Summon Glittering Column: Taunt, -ToHit, AoE DMG (Fire, Energy), Blast Off",
+    "Ranged (AoE), Foe Stun, Foe Terrorize, Minor DMG (Fire, Energy)",
+    "Ranged (Cone), Foe Sleep, Foe Confuse (Within 20ft), Moderate DoT (Psionic), Foe Deep Sleep",
+    "Toggle: PBAoE, Chance for Blast Off. -ToHit, -Defense",
+    "Ranged, Moderate DoT(Fire, Energy), Foe Immobilize,Chance for Blast Off",
+    "Ranged Chain AoE, Minor DoT(Fire, Energy), Foe Immobilize,Chance for Blast Off"
   ]
 }

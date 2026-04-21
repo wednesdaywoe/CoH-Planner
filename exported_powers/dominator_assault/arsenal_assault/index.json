@@ -25,5 +25,27 @@
     27,
     23,
     19
+  ],
+  "power_display_names": [
+    "Buckshot",
+    "Burst",
+    "Buttstroke",
+    "Elbow Strike",
+    "Ignite",
+    "Power Up",
+    "Sniper Rifle",
+    "Targeting Drone",
+    "Trip Mine"
+  ],
+  "power_short_helps": [
+    "Ranged (Cone), DMG(Lethal), Foe Knockback",
+    "Ranged, DMG(Lethal), Foe -DEF",
+    "Melee, DMG(Smash), Foe Disorient",
+    "Melee, DMG(Smash), Foe Knockback",
+    "Ranged, DoT(Fire)",
+    "Self +Special, +Dmg(All)",
+    "Sniper, DMG(Lethal), Foe Knockback",
+    "Toggle: Self +To Hit, +Perception, Res(DeBuff To Hit)",
+    "Place Mine: PBAoE, DMG(Fire), Foe Knockback"
   ]
 }

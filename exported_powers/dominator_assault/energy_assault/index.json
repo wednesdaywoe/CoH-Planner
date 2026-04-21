@@ -25,5 +25,27 @@
     27,
     23,
     19
+  ],
+  "power_display_names": [
+    "Bone Smasher",
+    "Power Blast",
+    "Power Bolt",
+    "Power Up",
+    "Power Burst",
+    "Power Push",
+    "Sniper Blast",
+    "Total Focus",
+    "Whirling Hands"
+  ],
+  "power_short_helps": [
+    "Melee, High DMG(Smash/Energy), Disorient, Special, Chance for Energy Focus",
+    "Ranged, High DMG(Energy/Smash), Foe Knockback, Chance for Energy Focus",
+    "Ranged, Light DMG(Energy/Smash), Foe Knockback, Chance for Energy Focus",
+    "Self +Special, +Dmg(All)",
+    "Ranged, Superior DMG(Energy/Smash), Foe Knockback, Special",
+    "Ranged Moderate DMG(Energy/Smash), Foe High Knockback, Chance for Energy Focus",
+    "Sniper, Extreme DMG(Energy/Smash), Foe Knockback",
+    "Melee, Extreme DMG(Energy/Smash), Foe Disorient, +Energy Focus",
+    "PBAoE Melee, Light DMG(Smash/Energy), Special"
   ]
 }

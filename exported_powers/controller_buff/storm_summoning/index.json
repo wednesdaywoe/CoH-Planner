@@ -25,5 +25,27 @@
     9,
     23,
     27
+  ],
+  "power_display_names": [
+    "Freezing Rain",
+    "Gale",
+    "Hurricane",
+    "Lightning Storm",
+    "O2 Boost",
+    "Snow Storm",
+    "Steamy Mist",
+    "Thunder Clap",
+    "Tornado"
+  ],
+  "power_short_helps": [
+    "Ranged (Location AoE), Minor DoT(Cold), Foe -Speed, -Recharge, -DEF -Res",
+    "Ranged (Cone), Minor DMG(Smash), Foe Knockback",
+    "Toggle: PBAoE, Foe -Range, -To Hit, Repel, Knockback",
+    "Create Storm: Ranged, High DMG(Energy), Foe -End",
+    "Ally Heal, +Res(Disorient, Sleep, End Drain), +Perception",
+    "Toggle: Ranged (Targeted AoE), Foe -Speed, -Recharge, -Fly",
+    "Toggle: PBAoE, Team Stealth, +DEF(All), +Res(Fire, Cold, Energy, Confuse)",
+    "PBAoE, Foe Disorient",
+    "Summon Tornado: PBAoE Minor DMG(Smash), Foe Knockback, Fear, Disorient"
   ]
 }

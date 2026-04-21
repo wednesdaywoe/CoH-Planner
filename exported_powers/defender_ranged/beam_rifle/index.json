@@ -25,5 +25,27 @@
     23,
     27,
     0
+  ],
+  "power_display_names": [
+    "Aim",
+    "Charged Shot",
+    "Cutting Beam",
+    "Disintegrate",
+    "Lancer Shot",
+    "Overcharge",
+    "Penetrating Ray",
+    "Piercing Beam",
+    "Single Shot"
+  ],
+  "power_short_helps": [
+    "Self +To-hit, +DMG",
+    "Ranged, DMG(Energy), Foe Knockdown, Special",
+    "Ranged (Cone), DMG(Energy), Foe -Def(All), Special",
+    "Ranged, High DoT(Energy), Foe -Regen, Special",
+    "Ranged, DMG(Energy), Foe Stun, Special",
+    "Ranged (Targeted AoE), DMG(Energy), Foe Minor DoT (Energy), -Def(All), Disorient, Special",
+    "Sniper, DMG(Energy), Foe Knockdown, Special",
+    "Narrow Ranged (Cone), DMG(Energy), Foes -Res, Special",
+    "Ranged, DMG(Energy), Foe Knockdown, Special"
   ]
 }

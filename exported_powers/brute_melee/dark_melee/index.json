@@ -25,5 +25,27 @@
     21,
     11,
     5
+  ],
+  "power_display_names": [
+    "Dark Consumption",
+    "Midnight Grasp",
+    "Shadow Maul",
+    "Shadow Punch",
+    "Siphon Life",
+    "Smite",
+    "Soul Drain",
+    "Taunt",
+    "Touch of Fear"
+  ],
+  "power_short_helps": [
+    "PBAoE DMG(Negative), Self +End",
+    "Melee, DMG(Negative), Foe Immobilize, -To Hit",
+    "Melee (Cone), DoT(Smash/Negative), Foe -To Hit",
+    "Melee, DMG(Smash/Negative), Foe -To Hit",
+    "Melee, DMG(Negative), Foe -To Hit, Self +HP",
+    "Melee, DMG(Smash/Negative), Foe -To Hit",
+    "PBAoE DMG(Negative), Self +DMG, +To Hit",
+    "Ranged (Targeted AoE), Foe Taunt",
+    "Melee (Targeted AoE), DMG(Negative), Fear, Foe -To Hit"
   ]
 }

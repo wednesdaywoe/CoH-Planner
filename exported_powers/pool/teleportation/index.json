@@ -17,5 +17,19 @@
     13,
     3,
     0
+  ],
+  "power_display_names": [
+    "Fold Space",
+    "Teleport Target",
+    "Team Teleport",
+    "Teleport",
+    "Combat Teleport"
+  ],
+  "power_short_helps": [
+    "Melee (PBAoE), Foe Teleport",
+    "Teleport Teammate or Foe",
+    "Ranged (Location), Team Teleport",
+    "Ranged (Location), Self Teleport",
+    "Ranged (Location), Self Teleport, +ToHit"
   ]
 }

@@ -19,5 +19,21 @@
     0,
     4294967295,
     0
+  ],
+  "power_display_names": [
+    "Drone Barrage",
+    "Force Barrier",
+    "Jetpack",
+    "Nano Net",
+    "Turbo Boost",
+    "Blaster Drone"
+  ],
+  "power_short_helps": [
+    "Ranged Cone, Light DMG(Energy), Foe -Regen",
+    "Self, +Absorb",
+    "Toggle: Self Fly, (Special)",
+    "Ranged, Foe -Speed, -Recharge, -Fly, -Regen",
+    "Click, Self +Fly Speed",
+    "Ranged, Light DMG(Energy), Foe -Regen"
   ]
 }

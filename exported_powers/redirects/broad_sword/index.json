@@ -11,5 +11,13 @@
   "available_level": [
     25,
     25
+  ],
+  "power_display_names": [
+    "Head Splitter",
+    "Head Splitter Glance"
+  ],
+  "power_short_helps": [
+    "Melee, DMG(Lethal), Foe Knockback, -DEF",
+    "Melee, DMG(Lethal), Foe Knockback, -DEF"
   ]
 }

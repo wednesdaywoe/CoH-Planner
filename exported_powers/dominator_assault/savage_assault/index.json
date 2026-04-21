@@ -25,5 +25,27 @@
     19,
     15,
     3
+  ],
+  "power_display_names": [
+    "Blood Craze",
+    "Call Hawk",
+    "Unkindness",
+    "Call Swarm",
+    "Feral Charge",
+    "Maiming Slash",
+    "Rending Flurry",
+    "Spot Prey",
+    "Vicious Slash"
+  ],
+  "power_short_helps": [
+    "Self +HP, +Health over Time",
+    "Ranged, Foe DoT (Lethal), -To Hit, Knockdown, -Fly",
+    "Ranged (Cone), DoT (Lethal), Foe -Speed, -Defense, -Fly, +2 Blood Frenzy",
+    "Ranged, DoT (Lethal), Foe -Defense, -Speed, +1 Blood Frenzy",
+    "Melee, DMG(Lethal), Foe DoT (Lethal), +3 Blood Frenzy, Self Teleport",
+    "Melee, DMG(Lethal), DoT (Lethal), Foe -Speed, +1 Blood Frenzy",
+    "PBAoE, DMG(Lethal), Foe DoT (Lethal), -Blood Frenzy",
+    "Self +DMG, +To Hit, +Perception",
+    "Melee, DMG(Lethal), Foe DoT (Lethal), Knockdown, Self +2 Blood Frenzy"
   ]
 }

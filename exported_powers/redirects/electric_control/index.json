@@ -21,5 +21,23 @@
     0,
     0,
     0
+  ],
+  "power_display_names": [
+    "Self Destruct",
+    "Conductive Aura",
+    "Synaptic Overload",
+    "Tesla Coil",
+    "Tesla Coil",
+    "Tesla Coil",
+    "Tesla Coil"
+  ],
+  "power_short_helps": [
+    "Self Destruct",
+    "Toggle: PBAoE, Foe -End, Self +Rec, +Regen",
+    "Ranged Chain AoE, Foe Confuse, -End",
+    "Target (Location AoE), Foe DMG(Energy), Hold, -End",
+    "-Fly, -Jump, -Recharge",
+    "DMG(Energy), Hold, -End",
+    "DMG(Energy), Hold, -End"
   ]
 }

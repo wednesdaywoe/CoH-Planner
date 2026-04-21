@@ -25,5 +25,27 @@
     19,
     27,
     0
+  ],
+  "power_display_names": [
+    "Fulcrum Shift",
+    "Increase Density",
+    "Inertial Reduction",
+    "Repel",
+    "Siphon Power",
+    "Siphon Speed",
+    "Speed Boost",
+    "Transference",
+    "Transfusion"
+  ],
+  "power_short_helps": [
+    "Ranged (Foe AoE), Foe -DMG, Team +DMG",
+    "Ranged, Ally Special",
+    "PBAoE, Allies +Jump",
+    "Toggle: Self AoE Knockback",
+    "Ranged, Foe -DMG, Team +DMG",
+    "Ranged, Foe -Speed, -Rech, Self +Speed, +Rech",
+    "Ranged, Allies +SPD, +Recharge, +Recovery, Res Slow",
+    "Ranged (Targeted AoE), Target -End, Team +Recovery, Special",
+    "Ranged, Foe -End, -Regen, Team Heal"
   ]
 }

@@ -17,5 +17,19 @@
     34,
     40,
     37
+  ],
+  "power_display_names": [
+    "Embrace of the Earth",
+    "Fissure",
+    "Hurl Boulder",
+    "Seismic Smash",
+    "Rock Armor"
+  ],
+  "power_short_helps": [
+    "Self +HP",
+    "Close (Targeted AoE), DMG(Lethal/Smash), Foe Knockback, Disorient",
+    "Ranged, DMG(Smash), Foe Knockback",
+    "Melee, DMG(Smash), Foe Hold",
+    "Toggle: Self +DEF(Lethal, Smashing)"
   ]
 }

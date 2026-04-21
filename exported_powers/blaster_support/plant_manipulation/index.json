@@ -25,5 +25,27 @@
     9,
     27,
     19
+  ],
+  "power_display_names": [
+    "Entangle",
+    "Ripper",
+    "Skewer",
+    "Spore Cloud",
+    "Strangler",
+    "Thorn Burst",
+    "Toxins",
+    "Vines",
+    "Wild Fortress"
+  ],
+  "power_short_helps": [
+    "Ranged, DoT(Smash/Lethal), Foe Immobilize, -Fly",
+    "Melee (Cone), DMG(Lethal), DoT(Toxic), Foe Knockdown, -DEF",
+    "Melee, DMG(Lethal), DoT(Toxic), Foe -DEF",
+    "Toggle: Ranged (Targeted AoE), Foe -DMG, -ToHit, -Regen",
+    "Ranged, DoT(Smash), Foe Hold",
+    "PBAoE Melee, DMG(Lethal), DoT(Toxic), Foe -DEF",
+    "Self +ToHit, +DMG(Special)",
+    "Ranged (Targeted AoE), Foe Hold, Immobilize",
+    "Toggle: Self +Absorb, +Recovery, +Resist(Toxic, Confuse)"
   ]
 }

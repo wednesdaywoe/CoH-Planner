@@ -17,5 +17,19 @@
     19,
     19,
     19
+  ],
+  "power_display_names": [
+    "Touch of Fear",
+    "Touch of Fear",
+    "Touch of Fear",
+    "Touch of Fear",
+    "Touch of Fear"
+  ],
+  "power_short_helps": [
+    "Melee (Targeted AoE), Light DMG(Negative), Fear, Foe -To Hit",
+    "Melee (Targeted AoE), Light DMG(Negative), Fear, Foe -To Hit",
+    "Melee (Targeted AoE), Light DMG(Negative), Fear, Foe -To Hit",
+    "Melee (Targeted AoE), Light DMG(Negative), Fear, Foe -To Hit",
+    "Melee (Targeted AoE), Moderate DMG (Negative), Fear, Foe -To Hit"
   ]
 }

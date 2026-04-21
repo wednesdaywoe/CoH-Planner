@@ -25,5 +25,27 @@
     11,
     25,
     7
+  ],
+  "power_display_names": [
+    "Arctic Air",
+    "Block of Ice",
+    "Chilblain",
+    "Flash Freeze",
+    "Frostbite",
+    "Glacier",
+    "Ice Slick",
+    "Jack Frost",
+    "Cold Snap"
+  ],
+  "power_short_helps": [
+    "Toggle: PBAoE, Foe Confuse(Special), -SPD, -Recharge, -Stealth",
+    "Ranged, DMG(Cold), Foe Hold, -SPD, -Recharge",
+    "Ranged, DoT (Cold), Foe Immobilize, -SPD, -Recharge",
+    "Ranged (Targeted AoE), DMG(Cold), Foe Deep Sleep",
+    "Ranged (Targeted AoE), DoT (Cold), Foe Immobilize, -SPD, -Recharge",
+    "PBAoE, Foe Hold, -Recharge, -SPD",
+    "Target (Location AoE), Foe DoT (Cold), Knockdown, -SPD",
+    "Summon Jack Frost: Melee DMG(Lethal/Cold)",
+    "Ranged (Cone), Foe Fear, -SPD, -Recharge"
   ]
 }

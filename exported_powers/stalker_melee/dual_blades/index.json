@@ -25,5 +25,27 @@
     11,
     17,
     21
+  ],
+  "power_display_names": [
+    "Assassin's Blades",
+    "Build Up",
+    "One Thousand Cuts",
+    "Nimble Slash",
+    "Ablating Strike",
+    "Power Slice",
+    "Placate",
+    "Vengeful Slice",
+    "Sweeping Strike"
+  ],
+  "power_short_helps": [
+    "Melee, DMG(Lethal)",
+    "Self +DMG, +To Hit",
+    "Melee (Cone), DMG(Lethal), Foe Knockback",
+    "Melee, Light DMG(Lethal)",
+    "Melee, DMG(Lethal), Foe -DEF",
+    "Melee, Light DMG(Lethal)",
+    "Ranged, Foe Placate, Self Stealth/Hide",
+    "Melee, DMG(Lethal), Knockdown",
+    "Melee (Cone), DMG(Lethal)"
   ]
 }

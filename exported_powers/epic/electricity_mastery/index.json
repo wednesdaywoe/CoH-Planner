@@ -17,5 +17,19 @@
     43,
     40,
     34
+  ],
+  "power_display_names": [
+    "Charged Armor",
+    "Electric Fence",
+    "Power Sink",
+    "Shocking Bolt",
+    "Thunder Strike"
+  ],
+  "power_short_helps": [
+    "Toggle: Self +Res(Smash, Lethal, Energy)",
+    "Ranged, DoT(Energy), Foe Immobilize, -End",
+    "PBAoE, Self +End, Foe -End",
+    "Ranged, DoT(Energy), Foe Hold, -END",
+    "Melee (AoE), DMG(Smash, Energy), Foe Disorient, Knockback"
   ]
 }

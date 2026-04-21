@@ -25,5 +25,27 @@
     9,
     29,
     0
+  ],
+  "power_display_names": [
+    "Cauterizing Aura",
+    "Build Up",
+    "Burn",
+    "Combustion",
+    "Consume",
+    "Fire Sword",
+    "Fire Sword Circle",
+    "Hot Feet",
+    "Ring of Fire"
+  ],
+  "power_short_helps": [
+    "Toggle: PBAoE, DoT (Fire), Self +Heal Over Time, +Recovery",
+    "Self +DMG +To Hit",
+    "Location (PBAoE), DoT (Fire), Self Res(Immobilize)",
+    "Melee (AoE), DoT (Fire)",
+    "PBAoE, DMG(Fire), Self +End",
+    "Melee, Moderate DMG(Fire), -Defense",
+    "PBAoE Melee, DMG(Fire/Lethal)",
+    "Toggle: PBAoE, DoT (Fire), Foe -SPD",
+    "Ranged, DoT (Fire), Foe Immobilize"
   ]
 }

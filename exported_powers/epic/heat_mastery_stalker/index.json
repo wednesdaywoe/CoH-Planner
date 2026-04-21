@@ -17,5 +17,19 @@
     34,
     40,
     43
+  ],
+  "power_display_names": [
+    "Bonfire",
+    "Fire Ball",
+    "Fire Blast",
+    "Char",
+    "Rise of the Phoenix"
+  ],
+  "power_short_helps": [
+    "Ranged (Location AoE), DMG(Fire), Foe Knockback",
+    "Ranged (Targeted AoE), DMG(Fire/Smash)",
+    "Ranged, DMG(Fire)",
+    "Ranged, DoT(Fire), Foe Hold",
+    "Self Rez, Special"
   ]
 }

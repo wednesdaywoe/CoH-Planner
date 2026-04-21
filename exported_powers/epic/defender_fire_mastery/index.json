@@ -17,5 +17,19 @@
     37,
     43,
     40
+  ],
+  "power_display_names": [
+    "Char",
+    "Consume",
+    "Fire Shield",
+    "Greater Fire Sword",
+    "Rise of the Phoenix"
+  ],
+  "power_short_helps": [
+    "Ranged, DoT (Fire), Foe Hold",
+    "PBAoE, DMG(Fire), Self +End",
+    "Toggle: Self +Res(Fire, Lethal, Smash, Cold)",
+    "Melee, DMG(Fire)",
+    "Self Rez, Special"
   ]
 }

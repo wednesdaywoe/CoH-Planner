@@ -17,5 +17,19 @@
     34,
     43,
     37
+  ],
+  "power_display_names": [
+    "Dark Blast",
+    "Midnight Grasp",
+    "Murky Cloud",
+    "Soul Consumption",
+    "Umbral Torrent"
+  ],
+  "power_short_helps": [
+    "Ranged, DMG(Negative), Foe -ACC",
+    "Melee, Superior DMG(Negative), Foe Immobilize, -To Hit",
+    "Toggle: Self +Res(Fire, Cold, Energy, Negative)",
+    "PBAoE Self +Max HP, +Max End, Foe: -Max HP, -Max End",
+    "Ranged (Cone), DMG(Smashing), Foe -To Hit, Knockback"
   ]
 }

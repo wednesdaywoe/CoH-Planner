@@ -25,5 +25,27 @@
     1,
     17,
     0
+  ],
+  "power_display_names": [
+    "Assassin's Corruption",
+    "Atom Smasher",
+    "Build Up",
+    "Contaminated Strike",
+    "Devastating Blow",
+    "Placate",
+    "Proton Sweep",
+    "Radiation Siphon",
+    "Radioactive Smash"
+  ],
+  "power_short_helps": [
+    "Melee, DMG(Smashing, Energy)",
+    "PBAoE, DMG(Energy/Toxic), Foe -Def, Disorient, Special",
+    "Self +DMG, +To Hit",
+    "Melee, DMG(Energy/Smash), Foe -Def, Special",
+    "Melee, DMG(Energy/Smash), Foe -Def, Disorient, Special",
+    "Ranged, Foe Placate, Self Stealth/Hide",
+    "Melee Cone, DoT(Energy/Toxic), Foe -Def, Special",
+    "Melee, DMG(Energy/Smash), Foe, -Def, -Contaminated, Special",
+    "Melee, DMG(Energy/Smash), Foe -Def, Knockdown, Special"
   ]
 }

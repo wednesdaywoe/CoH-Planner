@@ -25,5 +25,27 @@
     11,
     17,
     1
+  ],
+  "power_display_names": [
+    "Assassin's Strike",
+    "Build Up",
+    "Crushing Uppercut",
+    "Heavy Blow",
+    "Initial Strike",
+    "Shin Breaker",
+    "Placate",
+    "Spinning Strike",
+    "Sweeping Cross"
+  ],
+  "power_short_helps": [
+    "Melee, Extreme DMG(Smash), Combo Builder",
+    "Self +DMG, +To Hit",
+    "Melee, Extreme DMG(Smash), Foe Knock Up, Disorient, Finisher",
+    "Melee, Moderate DMG(Smash), Foe Knockdown, Combo Builder",
+    "Melee, Light DMG(Smash), Foe Disorient, Combo Builder",
+    "Melee, Superior DMG(Smash), Foe -Speed, -Defense, Combo Builder",
+    "Ranged, Foe Placate, Self Stealth/Hide",
+    "Melee (Targeted AoE), High DMG(Smash), Foe Knockdown, Finisher",
+    "Melee (Cone), High DMG(Smash), Foe Disorient, Finisher"
   ]
 }

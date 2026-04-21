@@ -25,5 +25,27 @@
     0,
     0,
     11
+  ],
+  "power_display_names": [
+    "Attune",
+    "Sound Booster",
+    "Deafening Wave",
+    "Earsplitter",
+    "Sandman's Whisper",
+    "Sonic Clap",
+    "Sonic Thrust",
+    "Strident Echo",
+    "Taunt"
+  ],
+  "power_short_helps": [
+    "Melee Toggle, DMG(Energy), Foe DOT(Energy), Special",
+    "Self +DMG, +To Hit, +Special",
+    "PBAoE Melee, DMG(Energy/Smash), Foe Chance for Hold",
+    "Melee, DMG(Energy/Smash),\u00a0Foe -Res(Debuffs), Chance for Hold",
+    "Melee, DMG(Smashing/Energy), Foe Sleep, -Res(DMG)",
+    "Melee (Cone), Foe Disorient, Knockdown",
+    "Melee, DMG(Energy/Smash), Foe Knockdown, -Res(Debuffs)",
+    "Melee, DMG(Energy/Smash), Foe -Res(Debuffs), Chance for Hold",
+    "Ranged (Targeted AoE), Foe Taunt"
   ]
 }

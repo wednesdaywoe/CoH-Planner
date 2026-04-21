@@ -25,5 +25,27 @@
     11,
     17,
     21
+  ],
+  "power_display_names": [
+    "Assassin's Strike",
+    "Barrage",
+    "Bone Smasher",
+    "Build Up",
+    "Energy Punch",
+    "Energy Transfer",
+    "Placate",
+    "Power Crash",
+    "Total Focus"
+  ],
+  "power_short_helps": [
+    "Melee, DMG(Smash/Energy)",
+    "Melee, DMG(Smash/Energy), Foe Disorient, Special",
+    "Melee, DMG(Smash/Energy), Disorient",
+    "Self +DMG, +To Hit",
+    "Melee, DMG(Smash/Energy), Foe Disorient",
+    "Melee, DMG(Energy), Foe Disorient, Self -HP, Special",
+    "Ranged, Foe Placate, Self Stealth/Hide",
+    "Melee (Cone), DMG(Smash/Energy), Foe Disorient, Special",
+    "Melee, DMG(Smash/Energy), Foe DisorientMelee, Extreme(Energy/Smash), Foe Disorient, +Energy Focus"
   ]
 }

@@ -17,5 +17,19 @@
     34,
     43,
     34
+  ],
+  "power_display_names": [
+    "Disruptor Blast",
+    "Focused Accuracy",
+    "Mace Blast",
+    "Summon Blaster",
+    "Web Envelope"
+  ],
+  "power_short_helps": [
+    "Ranged (Targeted AoE), DMG(Energy), Foe Knockback",
+    "Toggle: Self +To Hit, +ACC, +Perception, Res(DeBuff To Hit)",
+    "Ranged, DMG(Energy), Foe Knockback",
+    "Summon Arachnobot: Ranged DMG(Energy)",
+    "Ranged (Targeted AoE) DoT(Toxic), Immobilize, -Recharge, -Fly, -Jump"
   ]
 }

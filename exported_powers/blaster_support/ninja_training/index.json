@@ -25,5 +25,27 @@
     23,
     0,
     15
+  ],
+  "power_display_names": [
+    "Blinding Powder",
+    "Choking Powder",
+    "Golden Dragonfly",
+    "Immobilizing Dart",
+    "Kuji-In Toh",
+    "Shinobi",
+    "Smoke Flash",
+    "Sting of the Wasp",
+    "The Lotus Drops"
+  ],
+  "power_short_helps": [
+    "Ranged (Cone), Foe -To Hit, Sleep, Confuse, -Perception",
+    "Ranged, Moderate DoT(Toxic), Foe Hold",
+    "Melee, Extreme DMG(Lethal), Foe Knockback, -DEF",
+    "Ranged, Minor DoT(Toxic), Foe Immobilize",
+    "Self +Regen, +Recovery, Res(Psionic, Fear)",
+    "Toggle: Self Stealth, +DEF(All), +Special",
+    "PBAoE, Foe Placate, -Res",
+    "Melee, High DMG(Lethal), Foe -Def",
+    "PBAoE Melee, Moderate DMG(Lethal), Foe -Def"
   ]
 }

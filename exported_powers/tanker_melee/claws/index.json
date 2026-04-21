@@ -25,5 +25,27 @@
     0,
     0,
     9
+  ],
+  "power_display_names": [
+    "Eviscerate",
+    "Focus",
+    "Follow Up",
+    "Shockwave",
+    "Slash",
+    "Spin",
+    "Strike",
+    "Swipe",
+    "Taunt"
+  ],
+  "power_short_helps": [
+    "Melee (Cone), DMG(Lethal), Foe -DEF",
+    "Ranged, DMG(Lethal), Knockback",
+    "Melee, DMG(Lethal), Self +DMG +To-hit",
+    "Melee (Cone), DMG(Lethal), Foe Knockback",
+    "Melee, DMG(Lethal), Foe -DEF",
+    "PBAoE Melee, DMG(Lethal)",
+    "Melee, DMG(Lethal)",
+    "Melee, DMG(Lethal)",
+    "Ranged (Targeted AoE), Foe Taunt"
   ]
 }

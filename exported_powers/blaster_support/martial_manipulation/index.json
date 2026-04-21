@@ -27,5 +27,29 @@
     19,
     0,
     27
+  ],
+  "power_display_names": [
+    "Reach for the Limit",
+    "Burst of Speed",
+    "Dragon's Tail",
+    "Eagles Claw",
+    "Inner Will",
+    "Ki Push",
+    "Reach for the Limit",
+    "Reaction Time",
+    "Storm Kick",
+    "Throw Sand"
+  ],
+  "power_short_helps": [
+    "Self +DMG, +To Hit",
+    "Location AoE Moderate DMG (Smash), Self Teleport",
+    "PBAoE Melee, Light DMG(Smash), Foe Knockdown",
+    "Melee, Extreme DMG(Smash), DoT(Lethal), Foe Minor Disorient, +Special",
+    "Self Heal, Special",
+    "Melee, Light DMG(Smash), Foe Repel, KB",
+    "All Attacks: Chance for +ToHit, +DMG(All)",
+    "Toggle (PBAoE), Self Absorb over Time, +Recovery, Foe \u2013Rech, - Move, Special",
+    "Melee, Moderate DMG(Smash), DoT(Lethal), Foe Knockdown",
+    "Ranged (Cone), Foe Disorient, -Perception"
   ]
 }

@@ -17,5 +17,19 @@
     34,
     34,
     40
+  ],
+  "power_display_names": [
+    "Energy Torrent",
+    "Force of Nature",
+    "Temp Invulnerability",
+    "Power Blast",
+    "Explosive Blast"
+  ],
+  "power_short_helps": [
+    "Ranged (Cone), DMG(Energy/Smash), Foe Knockback",
+    "Self, +Res(All DMG but Psionics)",
+    "Toggle: Self +Res(Smash, Lethal)",
+    "Ranged, DMG(Energy/Smash), Foe Knockback",
+    "Ranged (Targeted AoE), DMG(Smash/Energy), Foe Knockback"
   ]
 }

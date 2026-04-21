@@ -27,5 +27,29 @@
     15,
     29,
     9
+  ],
+  "power_display_names": [
+    "Blazing Aura",
+    "Burn",
+    "Consume",
+    "Fiery Embrace",
+    "Fire Shield",
+    "Healing Flames",
+    "Phoenix Rising",
+    "Plasma Shield",
+    "Phoenix Rising",
+    "Temperature Protection"
+  ],
+  "power_short_helps": [
+    "Toggle: PBAoE, DoT (Fire)",
+    "Location (PBAoE), DoT (Fire), Self Res(Immobilize)",
+    "PBAoE, DMG(Fire), Self +End, +Max HP",
+    "Self +DMG",
+    "Toggle: Self +Res(Fire, Lethal, Smash, Cold, Disorient)",
+    "Self Heal, +Res(Toxic)",
+    "Self Rez, Special",
+    "Toggle: Self +Res(Energy, Negative, Fire, Hold, Sleep)",
+    "Self Rez, Special",
+    "Auto: Self +Res(Fire, Cold, Slow, Knock), +Regen"
   ]
 }

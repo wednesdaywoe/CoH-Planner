@@ -25,5 +25,27 @@
     0,
     15,
     19
+  ],
+  "power_display_names": [
+    "Dark Consumption",
+    "Dark Pit",
+    "Death Shroud",
+    "Midnight Grasp",
+    "Penumbral Grasp",
+    "Shadow Maul",
+    "Smite",
+    "Soul Drain",
+    "Touch of the Beyond"
+  ],
+  "power_short_helps": [
+    "PBAoE Minor DMG(Negative), Self +End",
+    "Ranged (Targeted AoE), Foe Disorient",
+    "Toggle: PBAoE Minor DoT(Negative)",
+    "Melee, Superior DMG(Negative), Foe Immobilize, -To Hit",
+    "Ranged, Moderate DOT(Negative), Foe Immobilize, -To Hit",
+    "Melee (Cone), Superior DoT(Smash/Negative), Foe -To Hit",
+    "Melee, High DMG(Smash/Negative), Foe -To Hit",
+    "PBAoE Light DMG(Negative), Self +DMG, +To Hit",
+    "Fear, Foe -To Hit, Self +Regeneration, +Recovery, +Res(Fear)"
   ]
 }

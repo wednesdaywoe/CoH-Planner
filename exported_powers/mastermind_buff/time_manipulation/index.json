@@ -25,5 +25,27 @@
     0,
     19,
     3
+  ],
+  "power_display_names": [
+    "Chrono Shift",
+    "Distortion Field",
+    "Farsight",
+    "Slowed Response",
+    "Temporal Mending",
+    "Temporal Selection",
+    "Time Crawl",
+    "Time Stop",
+    "Time's Juncture"
+  ],
+  "power_short_helps": [
+    "PBAoE, Team +Recharge, Moderate Healing over Time",
+    "Ranged (Location AoE), Foe(-Recharge, -Speed), Chance for Hold",
+    "PBAoE Team, +To-Hit, +Defense(All), +Perception",
+    "Ranged (Targeted AoE), Foe -Defense, -Resistance",
+    "PBAoE, Ally +Heal, Heal Over Time, +Res(Slow, Regen Debuff)",
+    "Ally +Damage, +Recharge, +Regeneration",
+    "Ranged Foe, -Speed, -Recharge, -Regen, Special",
+    "Ranged Hold, Foe -Regen, -Heal",
+    "Toggle: PBAoE Foe (-Damage, -Speed, -To Hit)"
   ]
 }

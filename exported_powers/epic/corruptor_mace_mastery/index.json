@@ -17,5 +17,19 @@
     43,
     40,
     34
+  ],
+  "power_display_names": [
+    "Focused Accuracy",
+    "Scorpion Shield",
+    "Summon Disruptor",
+    "Web Cocoon",
+    "Web Envelope"
+  ],
+  "power_short_helps": [
+    "Toggle: Self +To Hit, +ACC, +Perception, Res(DeBuff To Hit)",
+    "Toggle: Self, +Def(Smash,Lethal,Energy), +Res(Toxic)",
+    "Summon Arachnobot: Ranged DMG(Energy)",
+    "Ranged, Foe Hold, -Recharge, -Fly, -Jump, Slow, DoT(Toxic)",
+    "Ranged (Targeted AoE) DoT(Toxic), Immobilize, -Recharge, -Fly, -Jump"
   ]
 }

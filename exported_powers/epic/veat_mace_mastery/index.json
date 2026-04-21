@@ -17,5 +17,19 @@
     34,
     43,
     34
+  ],
+  "power_display_names": [
+    "Disruptor Blast",
+    "Shatter Armor",
+    "Mace Blast",
+    "Summon Blaster",
+    "Web Envelope"
+  ],
+  "power_short_helps": [
+    "Ranged (Targeted AoE), DMG(Energy), Foe Knockback",
+    "Melee, DMG(Smash), Foe -Res",
+    "Ranged, DMG(Energy), Foe Knockback",
+    "Summon Arachnobot: Ranged DMG(Energy)",
+    "Ranged (Targeted AoE) DoT(Toxic), Immobilize, -Recharge, -Fly, -Jump"
   ]
 }

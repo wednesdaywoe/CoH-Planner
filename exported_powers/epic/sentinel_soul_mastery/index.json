@@ -17,5 +17,19 @@
     37,
     34,
     43
+  ],
+  "power_display_names": [
+    "Darkest Night",
+    "Midnight Grasp",
+    "Soul Storm",
+    "Soul Tentacles",
+    "Summon Mistress"
+  ],
+  "power_short_helps": [
+    "Toggle: Ranged (Targeted AoE), Foe -DMG -To Hit",
+    "Melee, DMG(Negative), Foe Immobilize, -To Hit",
+    "Ranged, DoT(Negative), Foe Hold",
+    "Ranged (Cone), DMG(Negative), Foe Immobilize",
+    "Summon Fortunata Mistress: Ranged DMG(Psionic)"
   ]
 }

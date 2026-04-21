@@ -17,5 +17,19 @@
     40,
     43,
     34
+  ],
+  "power_display_names": [
+    "Bile Spray",
+    "Hibernate",
+    "Shark Skin",
+    "Summon Coralax",
+    "Water Spout"
+  ],
+  "power_short_helps": [
+    "Ranged (Cone), DoT(Toxic)",
+    "Toggle: Self +Regeneration, +Recovery, Invulnerable; Self Hold",
+    "Toggle: Self +Res(Smash, Lethal, Cold)",
+    "Summon Hybrid: Ranged DMG(Lethal)",
+    "Summon Water Spout: PBAoE DMG(Smash), Foe Knockback, Fear, Disorient, +Wet"
   ]
 }

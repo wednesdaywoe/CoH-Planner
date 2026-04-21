@@ -9,5 +9,11 @@
   ],
   "available_level": [
     0
+  ],
+  "power_display_names": [
+    "Enervating Storm"
+  ],
+  "power_short_helps": [
+    "Targeted AoE, Minor DoT(Cold/Negative Energy), -DMG(Foe, All)"
   ]
 }

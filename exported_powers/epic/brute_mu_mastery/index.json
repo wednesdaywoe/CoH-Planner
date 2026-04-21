@@ -17,5 +17,19 @@
     34,
     40,
     43
+  ],
+  "power_display_names": [
+    "Ball Lightning",
+    "Electrifying Fences",
+    "Mu Lightning",
+    "Static Discharge",
+    "Summon Striker"
+  ],
+  "power_short_helps": [
+    "Ranged (Targeted AoE), DoT(Energy), Foe -End",
+    "Ranged (Targeted AoE), DoT(Energy), Foe Immobilize, -END",
+    "Ranged, DMG(Energy), Foe -End",
+    "Ranged (Cone), DMG(Energy), -END",
+    "Summon Mu Strike: Ranged DMG(Energy)"
   ]
 }

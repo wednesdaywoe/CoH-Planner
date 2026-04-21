@@ -25,5 +25,27 @@
     21,
     0,
     25
+  ],
+  "power_display_names": [
+    "Dark Grasp",
+    "Fearsome Stare",
+    "Haunt",
+    "Heart of Darkness",
+    "Living Shadows",
+    "Possess",
+    "Shadow Field",
+    "Shadowy Binds",
+    "Umbra Beast"
+  ],
+  "power_short_helps": [
+    "Ranged, High DMG(Negative), Foe Hold, -To Hit",
+    "Ranged (Cone), Foe Fear, -To Hit",
+    "Foe Targeted, Summon Shades",
+    "PBAoE, Foe Disorient, -To Hit, Minor DoT(Negative)",
+    "Ranged (Cone), Minor DoT(Negative), Foe Immobilize, -To Hit, -Fly",
+    "Ranged, Target Confuse",
+    "Target (Location AoE), Foe Hold, -To Hit",
+    "Ranged, Moderate DoT(Negative), Foe Immobilize, -To Hit, -Fly",
+    "Summon Umbra Beast"
   ]
 }

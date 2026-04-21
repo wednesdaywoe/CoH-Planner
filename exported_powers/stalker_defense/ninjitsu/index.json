@@ -25,5 +25,27 @@
     19,
     0,
     23
+  ],
+  "power_display_names": [
+    "Blinding Powder",
+    "Caltrops",
+    "Danger Sense",
+    "Hide",
+    "Kuji-In Retsu",
+    "Kuji-In Rin",
+    "Kuji-In Sha",
+    "Ninja Reflexes",
+    "Smoke Flash"
+  ],
+  "power_short_helps": [
+    "Ranged (Cone), Foe -To Hit, Sleep, Confuse, -Perception",
+    "Ranged (Location AoE), Minor DoT(Lethal), Foe -Speed",
+    "Toggle: Self +DEF(Ranged, AoE), +Perception, Res(DeBuff DEF)",
+    "Toggle: Self Stealth, +DEF(Melee, Ranged, AoE)",
+    "Self +DEF, +SPD, +Recovery, Res(DeBuff DEF), +Special",
+    "Self +SPD, +Res(Disorient, Hold, Sleep, Immobilize, Confuse, Fear, Psionics)",
+    "Self Heal, Res(Toxic)",
+    "Toggle: Self +DEF(Melee), Res(DeBuff DEF)",
+    "PBAoE, Foe Placate"
   ]
 }

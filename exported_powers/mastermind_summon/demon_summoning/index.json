@@ -25,5 +25,27 @@
     21,
     0,
     11
+  ],
+  "power_display_names": [
+    "Abyssal Empowerment",
+    "Corruption",
+    "Crack Whip",
+    "Enchant Demon",
+    "Hell on Earth",
+    "Lash",
+    "Summon Demon Prince",
+    "Summon Demonlings",
+    "Summon Demons"
+  ],
+  "power_short_helps": [
+    "Ranged, Empower Demon Henchman",
+    "Ranged, Light DMG(Fire), Foe Minor DoT (Toxic), -Res",
+    "Short Ranged (Cone), Moderate DMG(Fire), Foe -Res, Knockdown, DoT(Toxic)",
+    "Ranged, Enchant Demon Henchman",
+    "Ranged, Pet +Dmg, +To Hit, Summon Living Hellfire",
+    "Close, Moderate DMG(Fire), Foe -Res, Knockdown, Minor DoT(Toxic)",
+    "Summon Demon Prince",
+    "Summon Demonlings",
+    "Summon Demons"
   ]
 }

@@ -27,5 +27,29 @@
     1,
     11,
     17
+  ],
+  "power_display_names": [
+    "Boomerang Slice",
+    "Build Up",
+    "Disembowel",
+    "Hack",
+    "Head Splitter",
+    "Parry",
+    "Slash",
+    "Slice",
+    "Taunt",
+    "Whirling Sword"
+  ],
+  "power_short_helps": [
+    "Melee (Cone), DMG(Lethal), Foe -DEF, -RES",
+    "Self +DMG, +To Hit",
+    "Melee, DMG(Lethal), Knockup, Foe -DEF",
+    "Melee, DMG(Lethal), Foe -DEF",
+    "Melee, DMG(Lethal), Foe Knockback, -DEF",
+    "Melee, DMG(Lethal), Self +DEF(Melee,Lethal)",
+    "Melee, DMG(Lethal), Foe -DEF",
+    "Melee (Cone), DMG(Lethal), Foe -DEF, -Res(Dmg)",
+    "Ranged (Targeted AoE), Foe Taunt",
+    "PBAoE Melee, DMG(Lethal), Foe -Def"
   ]
 }

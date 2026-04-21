@@ -25,5 +25,27 @@
     5,
     0,
     25
+  ],
+  "power_display_names": [
+    "Aria of Stasis",
+    "Chords of Despair",
+    "Confounding Chant",
+    "Dreadful Discord",
+    "Enfeebling Lullaby",
+    "Hymn of Dissonance",
+    "Impassioned Serenade",
+    "Melodic Binding",
+    "Reverberant"
+  ],
+  "power_short_helps": [
+    "Ranged (Cone), DMG(Psionic), Foe Immobilize, -SPD",
+    "Ranged (Targeted AoE), Foe Hold",
+    "Ranged (Cone), DoT(Psionic), Foe Disorient",
+    "Ranged (Cone), DMG(Psionic), Foe Fear",
+    "Ranged (Cone), DMG(Psionic), Foe Deep Sleep, -DMG",
+    "Ranged, DMG(Psionic), Foe Hold, -Recharge",
+    "Ranged, DoT(Psionic), Foe Confuse",
+    "Ranged, DMG(Psionic), Foe Immobilize, -SPD",
+    "Summon Reverberant: Ranged Control Special"
   ]
 }

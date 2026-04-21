@@ -25,5 +25,27 @@
     27,
     9,
     0
+  ],
+  "power_display_names": [
+    "Absorb Pain",
+    "Adrenalin Boost",
+    "Clear Mind",
+    "Fortitude",
+    "Heal Other",
+    "Recovery Aura",
+    "Regeneration Aura",
+    "Resurrect",
+    "Healing Aura"
+  ],
+  "power_short_helps": [
+    "Ally Strong Heal, Self Moderate DMG(Special)",
+    "Ranged, Ally +End, +Regeneration, +Recharge, Res (Slow)",
+    "Ally +Res(Disorient, Hold, Sleep, Immobilize, Fear, Confuse), +Perception",
+    "Ally +DEF(All), +DMG, +To Hit",
+    "Ally Heal",
+    "PBAoE, Ally +Recovery",
+    "PBAoE, Ally +Regeneration",
+    "Ally Rez",
+    "PBAoE, Team +Heal"
   ]
 }

@@ -25,5 +25,27 @@
     7,
     0,
     17
+  ],
+  "power_display_names": [
+    "Amplify",
+    "Dreadful Wail",
+    "Howl",
+    "Scream",
+    "Screech",
+    "Shockwave",
+    "Shout",
+    "Shriek",
+    "Sirens Song"
+  ],
+  "power_short_helps": [
+    "Self +To Hit, +DMG",
+    "PBAoE, Extreme DMG(Energy/Smash), Foe Disorient, -Res(All)",
+    "Ranged Cone, Minor DMG(Smashing/Energy), Foe -Res(All)",
+    "Ranged, Moderate DoT(Smashing/Energy), -Res",
+    "Ranged, High DMG(Smashing/Energy), Foe Disorient, -Res(All)",
+    "Ranged (Cone), Light DMG(Smashing/Energy), Foe Knockback",
+    "Ranged, High DMG(Smashing/Energy), Foe -Res(All)",
+    "Ranged, Light DMG(Smashing/Energy), Foe -Res(All)",
+    "Ranged (Cone), Light DMG(Energy), Foe Sleep"
   ]
 }

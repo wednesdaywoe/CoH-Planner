@@ -25,5 +25,27 @@
     25,
     11,
     0
+  ],
+  "power_display_names": [
+    "Assassin's Blaze",
+    "Breath of Fire",
+    "Build Up",
+    "Cremate",
+    "Fire Sword",
+    "Fire Sword Circle",
+    "Greater Fire Sword",
+    "Placate",
+    "Scorch"
+  ],
+  "power_short_helps": [
+    "Melee, DMG(Fire)",
+    "Close (Cone) DoT (Fire)",
+    "Self +DMG, +To Hit",
+    "Melee, DMG(Fire), Knockup",
+    "Melee, DMG(Fire), -Defense",
+    "PBAoE Melee, DMG(Fire), -Defense",
+    "Melee, DMG(Fire)",
+    "Ranged, Foe Placate, Self Stealth/Hide",
+    "Melee, DMG(Fire)"
   ]
 }

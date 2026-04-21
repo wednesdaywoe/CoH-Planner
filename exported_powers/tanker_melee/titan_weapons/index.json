@@ -25,5 +25,27 @@
     3,
     9,
     27
+  ],
+  "power_display_names": [
+    "Arc of Destruction",
+    "Build Momentum",
+    "Crushing Blow",
+    "Defensive Sweep",
+    "Follow Through",
+    "Rend Armor",
+    "Titan Sweep",
+    "Taunt",
+    "Whirling Smash"
+  ],
+  "power_short_helps": [
+    "Melee (Cone), DMG(Smashing), Foe Knockback",
+    "Self +DMG, +To Hit, +Momentum",
+    "Melee, DMG(Smashing), -DEF",
+    "Melee(Cone), DMG(Smashing), Self +DEF(Melee, Smash)",
+    "Melee, DMG(Smashing), Knockdown, Stun, Requires Momentum",
+    "Melee, DMG(Smashing), Foe -Def(All), -Res(All)",
+    "Melee (Cone), DMG(Smashing), Foe Knockdown",
+    "Ranged (Targeted AoE), Foe Taunt",
+    "PBAoE Melee, DMG(Smashing), Knockdown, Requires Momentum"
   ]
 }

@@ -25,5 +25,27 @@
     11,
     17,
     0
+  ],
+  "power_display_names": [
+    "Dark Blast",
+    "Dark Empowerment",
+    "Enchant Undead",
+    "Gloom",
+    "Lich",
+    "Life Drain",
+    "Grave Knight",
+    "Soul Extraction",
+    "Zombie Horde"
+  ],
+  "power_short_helps": [
+    "Ranged, DMG(Negative), Foe -To Hit",
+    "Ranged, Empower Undead Henchman",
+    "Ranged, Enchant Undead Henchman",
+    "Ranged, DoT (Negative), Foe -To Hit",
+    "Summon Lich",
+    "Ranged, DMG(Negative), Target -To Hit, Self +HP",
+    "Summon Grave Knight",
+    "Summon Ghost (Special)",
+    "Summon Zombies"
   ]
 }

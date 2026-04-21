@@ -17,5 +17,19 @@
     37,
     40,
     43
+  ],
+  "power_display_names": [
+    "Dark Blast",
+    "Moonbeam",
+    "Shadow Meld",
+    "Soul Storm",
+    "Summon Widow"
+  ],
+  "power_short_helps": [
+    "Ranged, DMG(Negative), Foe -ACC",
+    "Sniper, DMG(Negative), Target -ACC",
+    "Self: +Def(All)",
+    "Ranged, DoT(Negative), Foe Hold",
+    "Summon Night Widow: Melee DMG(Lethal)"
   ]
 }

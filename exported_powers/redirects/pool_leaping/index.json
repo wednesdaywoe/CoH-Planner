@@ -9,5 +9,11 @@
   ],
   "available_level": [
     0
+  ],
+  "power_display_names": [
+    "Spring Attack"
+  ],
+  "power_short_helps": [
+    "PBAoE, DMG(Smash), Foe Knockback"
   ]
 }

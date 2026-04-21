@@ -21,5 +21,23 @@
     19,
     0,
     4294967295
+  ],
+  "power_display_names": [
+    "Arcane Bolt",
+    "Arcane Power",
+    "Enflame",
+    "Mystic Flight",
+    "Rune of Protection",
+    "Spirit Ward",
+    "Translocation"
+  ],
+  "power_short_helps": [
+    "Ranged, Moderate DMG(Energy), Foe Knockdown",
+    "Special",
+    "Toggle: Ranged Friend/Foe, Special",
+    "Toggle: Self Fly, (Special)",
+    "Self, +Res(All Dmg, Hold, Sleep, Immobilize, Knockdown, Disorient)",
+    "Toggle: Ally, +Absorb over time",
+    "Click, Self Teleport"
   ]
 }

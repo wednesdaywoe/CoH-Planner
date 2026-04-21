@@ -17,5 +17,19 @@
     34,
     43,
     34
+  ],
+  "power_display_names": [
+    "Dark Blast",
+    "Night Fall",
+    "Petrifying Gaze",
+    "Tenebrous Tentacles",
+    "Umbral Torrent"
+  ],
+  "power_short_helps": [
+    "Ranged, DMG(Negative), Foe -ACC",
+    "Ranged (Cone), DMG(Negative), Foe -To Hit",
+    "Ranged, DMG(Negative), Foe Hold",
+    "Ranged (Cone), DMG(Negative), Foe Immobilize, -ACC",
+    "Ranged (Cone), DMG(Smashing), Foe -To Hit, Knockback"
   ]
 }

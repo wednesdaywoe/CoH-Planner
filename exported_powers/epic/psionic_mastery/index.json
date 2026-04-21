@@ -17,5 +17,19 @@
     37,
     43,
     40
+  ],
+  "power_display_names": [
+    "Indomitable Will",
+    "Mental Blast",
+    "Mind Over Body",
+    "Psionic Tornado",
+    "World of Confusion"
+  ],
+  "power_short_helps": [
+    "Self Res(Disorient, Hold, Sleep, Fear). DEF(Psionics)",
+    "Ranged, DMG(Psionic), Target -Recharge",
+    "Toggle: Self +Res(Smash, Lethal, Psionics)",
+    "Ranged (Targeted AoE), DoT(Psionic), Foe Knockback",
+    "Toggle: PBAoE, DoT(Psionic), Foe Confuse"
   ]
 }

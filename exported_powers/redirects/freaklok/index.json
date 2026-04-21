@@ -9,5 +9,11 @@
   ],
   "available_level": [
     0
+  ],
+  "power_display_names": [
+    "Immolation"
+  ],
+  "power_short_helps": [
+    "Post Death Special: PBAoE, Ally +ToHit, +DMG, +Recharge"
   ]
 }

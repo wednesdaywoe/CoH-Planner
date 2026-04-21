@@ -25,5 +25,27 @@
     7,
     11,
     1
+  ],
+  "power_display_names": [
+    "Abyssal Gaze",
+    "Aim",
+    "Blackstar",
+    "Dark Blast",
+    "Gloom",
+    "Life Drain",
+    "Moonbeam",
+    "Tenebrous Tentacles",
+    "Umbral Torrent"
+  ],
+  "power_short_helps": [
+    "Ranged, DoT(Negative), Foe Hold, -To Hit",
+    "Self +To-hit, +DMG",
+    "PBAoE, DMG(Negative), Foe -To Hit",
+    "Ranged, DMG(Negative), Foe -To Hit",
+    "Ranged, DoT(Negative), Foe -To Hit",
+    "Ranged, DMG(Negative), Target -To Hit, Self +HP",
+    "Sniper, DMG(Negative), Target -To Hit, Self +Range",
+    "Ranged (Cone), DMG(Negative), Foe Immobilize, -To Hit",
+    "Ranged (Cone), DMG(Negative), Foe -To Hit, Knockback"
   ]
 }

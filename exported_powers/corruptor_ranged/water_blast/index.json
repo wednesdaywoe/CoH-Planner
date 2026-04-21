@@ -25,5 +25,27 @@
     1,
     17,
     5
+  ],
+  "power_display_names": [
+    "Aqua Bolt",
+    "Dehydrate",
+    "Geyser",
+    "Hydro Blast",
+    "Steam Spray",
+    "Tidal Forces",
+    "Water Burst",
+    "Water Jet",
+    "Whirlpool"
+  ],
+  "power_short_helps": [
+    "Ranged, DMG(Cold/Smash), Foe -Def, +Wet, Self +Tidal Power",
+    "Ranged, DMG(Cold/Smash), Foe -Speed, -Defense, DoT(Cold), Self +Heal Over Time, +/- Tidal Power",
+    "Ranged (Targeted AoE), DMG(Fire/Smash), Foe DoT(Fire), +Wet, -Speed, Knock Up, Disorient, Self -Tidal Power",
+    "Ranged, DMG(Cold/Smash), Foe -Speed, Knockdown, +Wet, Self +Tidal Power",
+    "Ranged (Cone), DMG(Fire), Foe -Defense, DoT(Fire), +Wet, Self +Tidal Power",
+    "Self +To Hit, +DMG",
+    "Ranged (Targeted AoE), DMG(Cold/Smash), Foe -Speed, Knockdown, +Wet, Self -Tidal Power",
+    "Ranged, DMG(Cold/Smash), Foe -Speed, +Wet, Self +/-Tidal Power",
+    "Ranged (Location AoE), DoT(Cold), -Speed, -Defense, Self +Tidal Power"
   ]
 }

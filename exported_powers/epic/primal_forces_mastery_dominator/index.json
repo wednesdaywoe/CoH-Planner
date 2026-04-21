@@ -17,5 +17,19 @@
     34,
     43,
     37
+  ],
+  "power_display_names": [
+    "Conserve Power",
+    "Energy Torrent",
+    "Energy Transfer",
+    "Explosive Blast",
+    "Temp Invulnerability"
+  ],
+  "power_short_helps": [
+    "Self Endurance Discount",
+    "Ranged (Cone), Light DMG(Energy/Smash), Foe Knockback",
+    "Melee, DMG(Energy/Smash), Foe Disorient, Self -HP",
+    "Ranged (Targeted AoE), DMG(Smash/Energy), Foe Knockback",
+    "Toggle: Self +Res(Smash, Lethal)"
   ]
 }

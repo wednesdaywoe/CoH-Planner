@@ -17,5 +17,19 @@
     34,
     43,
     34
+  ],
+  "power_display_names": [
+    "Fossilize",
+    "Quicksand",
+    "Salt Crystals",
+    "Stalagmites",
+    "Stone Prison"
+  ],
+  "power_short_helps": [
+    "Ranged, DMG(Smash), Foe Hold, -DEF",
+    "Ranged (Location AoE), Foe -Speed, -Jump, -Fly, -DEF",
+    "PBAoE, Foe Sleep, -DEF",
+    "Ranged (Targeted AoE), DMG(Lethal), Foe -DEF, Minor Disorient",
+    "Ranged, DoT(Smash), Foe Immobilize, -DEF, -Fly"
   ]
 }

@@ -19,5 +19,21 @@
     4294967295,
     3,
     13
+  ],
+  "power_display_names": [
+    "Burnout",
+    "Flurry",
+    "Hasten",
+    "Speed Phase",
+    "Super Speed",
+    "Whirlwind"
+  ],
+  "power_short_helps": [
+    "Self +Recharge",
+    "Melee, Light DMG(Smash), Foe Disorient",
+    "Self +Recharge",
+    "Self Phase (Special)",
+    "Toggle: Self +Speed",
+    "Toggle: PBAoE, Foe Knockback"
   ]
 }

@@ -17,5 +17,19 @@
     34,
     43,
     40
+  ],
+  "power_display_names": [
+    "Dark Consumption",
+    "Dark Embrace",
+    "Oppressive Gloom",
+    "Spirit Drain",
+    "Soul Transfer"
+  ],
+  "power_short_helps": [
+    "PBAoE DMG(Negative), Self +End",
+    "Toggle: Self +Res(Smash, Lethal, Negative, Toxic)",
+    "Toggle: PBAoE, Foe Disorient, Self -HP",
+    "Damged AoE, DMG(Negative), Self +DMG, +ACC",
+    "Self Rez, Special"
   ]
 }

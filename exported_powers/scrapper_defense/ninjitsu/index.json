@@ -25,5 +25,27 @@
     0,
     15,
     3
+  ],
+  "power_display_names": [
+    "Blinding Powder",
+    "Bo Ryaku",
+    "Danger Sense",
+    "Kuji-In Retsu",
+    "Kuji-In Rin",
+    "Kuji-In Sha",
+    "Ninja Reflexes",
+    "Seishinteki Kyoyo",
+    "Shinobi-Iri"
+  ],
+  "power_short_helps": [
+    "Ranged (Cone), Foe -To Hit, Sleep, Confuse, -Perception",
+    "Auto: Self +Res(Knockback, Knockup, All DMG)",
+    "Toggle: Self +DEF(Ranged, AoE), +Perception, Res(DeBuff DEF)",
+    "Self +DEF, +SPD, +Recovery, Res(DeBuff DEF), +Special",
+    "Self +SPD, +Res(Disorient, Hold, Sleep, Immobilize, Confuse, Fear, Psionics)",
+    "Self Heal, Res(Toxic)",
+    "Toggle: Self +DEF(Melee), Res(DeBuff DEF)",
+    "Self +Endurance",
+    "Toggle: Self Stealth, +DEF(Melee, Ranged, AoE), +Special"
   ]
 }

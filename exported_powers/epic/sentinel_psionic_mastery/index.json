@@ -17,5 +17,19 @@
     34,
     34,
     40
+  ],
+  "power_display_names": [
+    "Dominate",
+    "Link Minds",
+    "Mass Hypnosis",
+    "Mind Probe",
+    "Psychic Shockwave"
+  ],
+  "power_short_helps": [
+    "Ranged, DMG(Psionic), Foe Hold",
+    "PBAoE Team +To Hit, +DEF (All), +RES (Psionic)",
+    "Ranged (Targeted AoE), Foe Sleep",
+    "Melee, DMG(Psionic), Target -Recharge",
+    "PBAoE, DMG(Psionic), Foe Disorient -Recharge"
   ]
 }

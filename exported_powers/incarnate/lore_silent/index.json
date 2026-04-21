@@ -9,5 +9,11 @@
   ],
   "available_level": [
     0
+  ],
+  "power_display_names": [
+    "Level Shift"
+  ],
+  "power_short_helps": [
+    "Level Shift"
   ]
 }

@@ -15,5 +15,17 @@
     0,
     0,
     0
+  ],
+  "power_display_names": [
+    "Autumnal Equinox",
+    "Harvest Blades",
+    "Seasonal Shift",
+    "Season's End"
+  ],
+  "power_short_helps": [
+    "Ranged, Minor DMG(Cold), Minor DoT (Fire), Hold(Foe), -Speed(Foe, All), -Rech(Foe)",
+    "Melee, Light DMG(Fire/Cold), Minor DoT(Fire), -Speed(Foe, All), -Recharge(Foe)",
+    "PBAoE, Moderate DoT (Fire or Cold), Special",
+    "Melee Cone, Moderate DMG(Fire/Cold), Knockdown(Foe)"
   ]
 }

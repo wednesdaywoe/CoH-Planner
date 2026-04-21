@@ -17,5 +17,19 @@
     40,
     34,
     37
+  ],
+  "power_display_names": [
+    "Force of Nature",
+    "Personal Force Field",
+    "Force Bomb",
+    "Repulsion Field",
+    "Temp Invulnerability"
+  ],
+  "power_short_helps": [
+    "Self, +Res(All DMG but Psionics)",
+    "Toggle: Self +Def, Res(All)",
+    "Ranged (Targeted AoE), DMG(Smash), Foe -Res, Knockdown, Disorient",
+    "Toggle: PBAoE Knockback",
+    "Toggle: Self +Res(Smash, Lethal)"
   ]
 }

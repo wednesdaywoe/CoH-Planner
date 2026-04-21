@@ -25,5 +25,27 @@
     9,
     0,
     3
+  ],
+  "power_display_names": [
+    "Caltrops",
+    "Dragon's Tail",
+    "Envenomed Blades",
+    "Explosive Shuriken",
+    "Masterful Throw",
+    "Shuriken Throw",
+    "Spinning Kick",
+    "Thunder Kick",
+    "Trick Shot"
+  ],
+  "power_short_helps": [
+    "Ranged (Location AoE), Minor DoT(Lethal), Foe -Speed",
+    "PBAoE Melee, Light DMG(Smash), Foe Knockdown",
+    "Self +Toxic Damage on all attacks, +ToHit",
+    "Ranged, Superior DMG(Fire), Minor Splash Damage (Fire DoT)",
+    "Sniper, Extreme DMG(Lethal), Foe -To Hit",
+    "Ranged, Light DMG(Lethal)",
+    "Melee Cone, Light DMG(Smash), Knockdown",
+    "Melee, Moderate DMG(Smash), Minor Disorient",
+    "Ranged, Chain Light DMG(Lethal)"
   ]
 }

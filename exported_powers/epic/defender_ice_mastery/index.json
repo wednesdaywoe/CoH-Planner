@@ -17,5 +17,19 @@
     37,
     43,
     40
+  ],
+  "power_display_names": [
+    "Flash Freeze",
+    "Frozen Armor",
+    "Hoarfrost",
+    "Ice Elemental",
+    "Build Up"
+  ],
+  "power_short_helps": [
+    "Ranged (Targeted AoE), DMG(Cold), Foe Sleep",
+    "Toggle: Self +Def(Smash, Lethal), +Res(Cold, Fire)",
+    "Self Heal, +Max HP, Res(Toxic)",
+    "Summon Ice Elemental: Melee DMG(Lethal/Cold)",
+    "Self +DMG, +To Hit"
   ]
 }

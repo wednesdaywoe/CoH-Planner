@@ -9,5 +9,11 @@
   ],
   "available_level": [
     0
+  ],
+  "power_display_names": [
+    "Spit Fire"
+  ],
+  "power_short_helps": [
+    "DoT(Fire)"
   ]
 }

@@ -17,5 +17,19 @@
     34,
     34,
     43
+  ],
+  "power_display_names": [
+    "Dark Obliteration",
+    "Darkest Night",
+    "Gloom",
+    "Soul Tentacles",
+    "Summon Widow"
+  ],
+  "power_short_helps": [
+    "Ranged (Targeted AoE), DMG(Negative), Foe -ACC",
+    "Toggle: Ranged (Targeted AoE), Foe -DMG -To Hit",
+    "Ranged, DoT(Negative), Foe -ACC",
+    "Ranged (Cone), DMG(Negative), Foe Immobilize",
+    "Summon Blood Widow: Melee DMG(Lethal)"
   ]
 }

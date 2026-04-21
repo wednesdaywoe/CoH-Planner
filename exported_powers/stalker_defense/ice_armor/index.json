@@ -27,5 +27,29 @@
     19,
     3,
     9
+  ],
+  "power_display_names": [
+    "Chilling Embrace",
+    "Energy Absorption",
+    "Frozen Armor",
+    "Glacial Armor",
+    "Hide",
+    "Hoarfrost",
+    "Icy Bastion",
+    "Permafrost",
+    "Rime",
+    "Wet Ice"
+  ],
+  "power_short_helps": [
+    "Toggle: PBAoE, Foe -Recharge, -Speed, -DMG",
+    "PBAoE, Self +End, +DEF(All), Res (Slow), Foe -End",
+    "Self, +Def(Smash, Lethal), +Res(Cold, Fire, DeBuff DEF)",
+    "Toggle: Self +DEF(Energy, Negative), Res (Cold, DeBuff DEF), +Perception",
+    "Toggle: Self Stealth, +DEF(Melee, Ranged, AoE)",
+    "Self Heal, +Max HP, Res(Toxic)",
+    "Toggle: Self +Res(All DMG, but Psionics), +Res(Knockback, Repel, Disorient, Hold, Immobilize, Sleep), +Regen, +Recovery, Invulnerable; Self Hold",
+    "Auto: Self +Res(All damage, Slow)",
+    "Self +Regen, +Absorb, Res(Toxic)",
+    "Self, +DEF(All), +Res(Cold, Disorient, Immobilize, Hold, Sleep, Slow, Knockback, DeBuff DEF)"
   ]
 }

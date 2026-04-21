@@ -25,5 +25,27 @@
     5,
     25,
     21
+  ],
+  "power_display_names": [
+    "Crush",
+    "Crushing Field",
+    "Dimension Shift",
+    "Gravity Distortion",
+    "Gravity Distortion Field",
+    "Lift",
+    "Propel",
+    "Singularity",
+    "Wormhole"
+  ],
+  "power_short_helps": [
+    "Ranged, DoT(Smash), Foe Immobilize, -Fly",
+    "Ranged (Targeted AoE), DoT(Smash), Foe Immobilize, -Fly",
+    "Toggle, Ranged (Location AoE), Foe Intangible",
+    "Ranged, DoT(Smash), Foe Hold, -Fly, +Gravity Distortion",
+    "Ranged (Targeted AoE), Foe Hold, Damage(Smashing), +Gravity Distortion",
+    "Ranged, DMG(Smash), Foe Knock Up",
+    "Ranged, DMG(Smash), Foe Knockback",
+    "Summon Singularity: Ranged Control Special",
+    "Ranged (Targeted AoE), Foe Teleport, Disorient, Knockback"
   ]
 }

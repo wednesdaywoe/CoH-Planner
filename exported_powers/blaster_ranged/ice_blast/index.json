@@ -25,5 +25,27 @@
     1,
     0,
     0
+  ],
+  "power_display_names": [
+    "Aim",
+    "Bitter Freeze Ray",
+    "Bitter Ice Blast",
+    "Blizzard",
+    "Freeze Ray",
+    "Ice Storm",
+    "Frost Breath",
+    "Ice Blast",
+    "Ice Bolt"
+  ],
+  "power_short_helps": [
+    "Self +To Hit, +DMG",
+    "Ranged, DMG(Cold), Foe Hold",
+    "Ranged, DMG(Cold), Foe -Recharge, -SPD, -To Hit",
+    "Ranged (Location AoE), DoT(Cold), Foe -To Hit, -SPD, -Recharge, Knockback",
+    "Ranged, DMG(Cold), Foe Hold",
+    "Ranged (Location AoE), DoT(Cold, Lethal), Foe -Recharge, -SPD",
+    "Close (Cone), DoT(Cold), Foe -Recharge, -SPD",
+    "Ranged, DMG(Cold), Foe -Recharge, -SPD",
+    "Ranged, DMG(Cold), Foe -Recharge, -SPD"
   ]
 }

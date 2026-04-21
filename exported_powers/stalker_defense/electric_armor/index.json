@@ -25,5 +25,27 @@
     27,
     29,
     9
+  ],
+  "power_display_names": [
+    "Charged Armor",
+    "Conductive Shield",
+    "Energize",
+    "Grounded",
+    "Hide",
+    "Lightning Reflexes",
+    "Power Sink",
+    "Power Surge",
+    "Static Shield"
+  ],
+  "power_short_helps": [
+    "Toggle: Self +Res(Smash, Lethal, Energy)",
+    "Toggle: Self +Res(Fire, Cold, Energy, Negative)",
+    "Self Endurance Discount, Heal, +Regen",
+    "Auto: Self +Res (All DMG but Toxic and Psionics, End Drain, Immobilize, KB)",
+    "Toggle: Self Stealth, +DEF(Melee, Ranged, AoE)",
+    "Auto: Self +Recharge, +SPD, Res (Slow)",
+    "PBAoE, Self +End, +Regen, Foe -End",
+    "Self +Res(All DMG, but Psionics), +Res(Knockback, Repel, Disorient, Hold, Immobilize, Sleep), +Regen, +Recovery, +Special",
+    "Toggle: Self +Res(Hold, Sleep, Disorient, End Drain, Recovery DeBuff, Psionic, Toxic, Teleport)"
   ]
 }

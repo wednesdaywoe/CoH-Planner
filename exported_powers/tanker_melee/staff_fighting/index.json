@@ -31,5 +31,33 @@
     29,
     19,
     9
+  ],
+  "power_display_names": [
+    "Eye of the Storm",
+    "Form of the Body",
+    "Form of the Mind",
+    "Form of the Soul",
+    "Guarded Spin",
+    "Innocuous Strikes",
+    "Mercurial Blow",
+    "Precise Strike",
+    "Serpent's Reach",
+    "Sky Splitter",
+    "Staff Mastery",
+    "Taunt"
+  ],
+  "power_short_helps": [
+    "PBAoE Melee, DMG(Smash), Foe Knockdown, Consumes Perfection",
+    "Toggle: Grants Perfection of Body levels",
+    "Toggle: Grants Perfection of Mind levels",
+    "Toggle: Grants Perfection of Soul levels",
+    "Melee (Cone), DMG(Smash), Self +Def(Melee, Lethal)",
+    "Melee (Cone), DMG(Smash), Foe Immobilize, -Speed",
+    "Melee, DMG(Smash), Foe -Def",
+    "Melee, DMG(Smash), Foe Disorient",
+    "Ranged, DMG(Smash), Foe Knockdown",
+    "Melee, DMG(Smash), Foe Knock Up, Disorient, -Fly, Consumes Perfection",
+    "Change Stances/Special",
+    "Ranged (Targeted AoE), Foe Taunt"
   ]
 }

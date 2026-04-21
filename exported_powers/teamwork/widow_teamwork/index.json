@@ -21,5 +21,23 @@
     27,
     0,
     23
+  ],
+  "power_display_names": [
+    "Elude",
+    "Mental Training",
+    "Mask Presence",
+    "Mind Link",
+    "Tactical Training: Vengeance",
+    "Pain Tolerance",
+    "Placate"
+  ],
+  "power_short_helps": [
+    "Self +DEF, + SPD, +Recovery, Res(DeBuff DEF), +Special",
+    "Auto: Self +Recharge, +SPD, Res (Slow)",
+    "Toggle: Self Stealth, +DEF(Melee, Ranged, AoE)",
+    "PBAoE Team +To Hit, +DEF (All), +RES (Psionic)",
+    "Ranged (Targeted AoE), Teammates +DMG, +To Hit, +DEF(All), Res(Effects)",
+    "Auto: Self Res (All DMG but Psi), +MaxHealth",
+    "Ranged, Foe Placate, Self Stealth/Hide"
   ]
 }

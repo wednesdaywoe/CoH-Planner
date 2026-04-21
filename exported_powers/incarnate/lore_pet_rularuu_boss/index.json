@@ -15,5 +15,17 @@
     0,
     0,
     0
+  ],
+  "power_display_names": [
+    "Chomp",
+    "Optic Blast",
+    "Paralytic Gaze",
+    "Quill Blast"
+  ],
+  "power_short_helps": [
+    "Melee Heavy Lethal",
+    "-SPD, -Recharge, -DEF",
+    "Hold",
+    "Cone Lethal, Med Damage, Knockback"
   ]
 }

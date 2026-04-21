@@ -25,5 +25,27 @@
     25,
     5,
     0
+  ],
+  "power_display_names": [
+    "Blind",
+    "Deceive",
+    "Phantom Army",
+    "Flash",
+    "Gleam",
+    "Superior Invisibility",
+    "Phantasm",
+    "Spectral Terror",
+    "Spectral Wall"
+  ],
+  "power_short_helps": [
+    "Ranged (Targeted AoE), DMG(Psionic), Foe Hold/Sleep",
+    "Ranged, Foe Confuse",
+    "Summon Decoys: Ranged DMG(Psionic)",
+    "PBAoE, Foe Hold",
+    "Ranged (Targeted AoE), DMG(Psionic), Foe Disorient",
+    "Toggle: Self Stealth, +DEF(All)",
+    "Summon Phantasm: Ranged, DMG(Smash/Energy/Psionic)",
+    "Summon Terror: Ranged Fear, -ToHit",
+    "Ranged, DoT (Psionic), Foe Immobilize, -ToHit"
   ]
 }

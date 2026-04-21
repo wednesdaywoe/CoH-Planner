@@ -25,5 +25,27 @@
     3,
     29,
     27
+  ],
+  "power_display_names": [
+    "Atom Smasher",
+    "Beta Decay",
+    "Electron Shackles",
+    "Ionize",
+    "Metabolic Acceleration",
+    "Negatron Slam",
+    "Positron Cell",
+    "Positronic Fist",
+    "Radioactive Cloud"
+  ],
+  "power_short_helps": [
+    "PBAoE, DMG(Toxic/Energy), Foe Disorient, -DEF, Special",
+    "Toggle: PBAoE, Foe -ToHit, -DEF, Self +Recharge(Special)",
+    "Ranged, DoT(Energy), Foe Immobilize, -DEF, +Negatrons",
+    "Self +DMG, +ToHit",
+    "Toggle: Self +Recharge, +Regeneration, +Recovery, +Resist(Hold, Immobilize, Disorient, Sleep, End Drain)",
+    "Melee, DMG(Energy/Smash), Foe Knockdown, -DEF, Special, +Negatrons",
+    "Ranged, DoT(Energy), Foe Hold, -DEF, +Positrons",
+    "Melee, DMG(Energy/Smash), Foe Disorient, -DEF, +Positrons",
+    "PBAoE, Foe Hold, Immobilize"
   ]
 }

@@ -33,5 +33,35 @@
     0,
     0,
     3
+  ],
+  "power_display_names": [
+    "Long Range Teleporter",
+    "Long Range Teleporter",
+    "Base Transporter",
+    "Base Transporter",
+    "Monitor Duty Teleporter",
+    "Monitor Duty Teleporter",
+    "Recall Friend",
+    "Shadow Step",
+    "Shadow Step",
+    "Teleport",
+    "Teleport Foe",
+    "Teleport",
+    "Teleport"
+  ],
+  "power_short_helps": [
+    "Teleport to Zone or Base",
+    "Teleport to Zone or Base",
+    "Teleport to Base",
+    "Teleport to Base",
+    "Teleport to Base",
+    "Teleport to Base",
+    "Zone-Range: Teleport Teammate",
+    "Ranged (Location), Self Teleport",
+    "Ranged (Location), Self Teleport",
+    "Ranged (Location), Self Teleport",
+    "Ranged, Teleport Foe",
+    "Between Dimensions",
+    "Ranged (Location), Self Teleport"
   ]
 }

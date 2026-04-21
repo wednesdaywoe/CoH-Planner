@@ -17,5 +17,19 @@
     40,
     34,
     43
+  ],
+  "power_display_names": [
+    "Dark Embrace",
+    "Power Boost",
+    "Soul Drain",
+    "Soul Storm",
+    "Summon Mistress"
+  ],
+  "power_short_helps": [
+    "Toggle: Self +Res(Smash, Lethal, Negative, Toxic)",
+    "Self +Special",
+    "PBAoE DMG(Negative), Self +DMG, +ACC",
+    "Ranged, DoT(Negative), Foe Hold",
+    "Summon Fortunata Mistress: Ranged DMG(Psionic)"
   ]
 }

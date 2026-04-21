@@ -11,5 +11,13 @@
   "available_level": [
     29,
     29
+  ],
+  "power_display_names": [
+    "Icy Bastion",
+    "Icy Bastion"
+  ],
+  "power_short_helps": [
+    "Self +Res(All DMG, but Psionics), +Res(Knockback, Repel, Disorient, Hold, Immobilize, Sleep), +Regen, +Recovery",
+    "Self +Res(All DMG, but Psionics), +Res(Knockback, Repel, Disorient, Hold, Immobilize, Sleep), +Regen, +Recovery"
   ]
 }

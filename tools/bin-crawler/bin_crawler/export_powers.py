@@ -256,6 +256,11 @@ def main():
                 # against the per-power short name.
                 'powers': [pw.full_name for pw in powers_in_set],
                 'available_level': [ps_available.get(pw.full_name, 0) for pw in powers_in_set],
+                # Parallel arrays of per-power display info — convenience for
+                # consumers that don't want to load every power file just to
+                # build a slot index (e.g. src/data/incarnates.ts).
+                'power_display_names': [pw.display_name for pw in powers_in_set],
+                'power_short_helps': [pw.short_help for pw in powers_in_set],
             }
 
             if msgs and ps_rec:

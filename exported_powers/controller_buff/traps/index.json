@@ -25,5 +25,27 @@
     3,
     27,
     0
+  ],
+  "power_display_names": [
+    "Acid Mortar",
+    "Caltrops",
+    "Force Field Generator",
+    "Poison Trap",
+    "Seeker Drones",
+    "Temporal Bomb",
+    "Triage Beacon",
+    "Trip Mine",
+    "Web Grenade"
+  ],
+  "power_short_helps": [
+    "Place Trap: Ranged (AoE), DoT(Toxic), Foe -Res(All), -DEF",
+    "Ranged (Location AoE), DoT(Lethal), Foe -Speed",
+    "Place Drone: PBAoE, Team +DEF, +Res(Hold, Immobilize, Disorient)",
+    "Place Trap: PBAoE Foe Choke, Vomit, -Regen, -Recharge",
+    "Summon Seekers: Ranged Disorient, -DMG, -ACC, -Perception, DMG(Energy)",
+    "Place Bomb: PBAoE, DMG(Lethal/Fire), Foe Knockback, Special",
+    "Place Beacon: PBAoE +Regen",
+    "Place Mine: PBAoE, DMG(Lethal/Fire), Foe Knockback",
+    "Ranged, Target Immobilize, -Recharge, -Fly"
   ]
 }

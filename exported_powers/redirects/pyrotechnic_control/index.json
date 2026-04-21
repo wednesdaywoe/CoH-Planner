@@ -39,5 +39,41 @@
     0,
     7,
     0
+  ],
+  "power_display_names": [
+    "Blast Off",
+    "Glitter Flare",
+    "Intercept Aura",
+    "Intercept Proc",
+    "Rocket Twirl",
+    "Catherine Wheel",
+    "Twinkling Blast",
+    "Vibrant Bolt",
+    "Glittering Column Aura",
+    "Glitter Explosion",
+    "Self Destruct",
+    "Glittering Column Skin",
+    "Glittering Column Aura",
+    "Brilliant Barrage",
+    "Hypnotizing Lights",
+    "Hypnotizing Lights (Close)"
+  ],
+  "power_short_helps": [
+    "Blast Off",
+    "DMG(Fire/Energy)",
+    "Intercept Aura",
+    "DMG(Fire/Energy), Special",
+    "PBAoE, DMG(Fire/Energy), Blast Off",
+    "Catherine Wheel",
+    "DMG(Fire/Energy)",
+    "DMG(Fire/Energy)",
+    "Glittering Column Taunt",
+    "AoE -ToHit, Blast Off",
+    "Self Destruct",
+    "Glittering Column Skin",
+    "Glittering Column -ToHit",
+    "Ranged (AoE), Foe Stun, Foe Terrorize, Minor DMG (Fire, Energy)",
+    "Ranged (Cone), Foe Sleep, Foe Confuse (Within 20ft), Moderate DoT (Psionic), Foe Deep Sleep",
+    "Ranged (Cone), Foe Sleep, Foe Confuse (Within 20ft), Moderate DoT (Psionic), Foe Deep Sleep"
   ]
 }

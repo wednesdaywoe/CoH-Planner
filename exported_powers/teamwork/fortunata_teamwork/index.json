@@ -19,5 +19,21 @@
     19,
     23,
     27
+  ],
+  "power_display_names": [
+    "Aura of Confusion",
+    "Confuse",
+    "Fate Sealed",
+    "Mask Presence",
+    "Mind Link",
+    "Tactical Training: Vengeance"
+  ],
+  "power_short_helps": [
+    "PBAoE, Foe Confuse",
+    "Ranged, Target Confuse",
+    "Auto: Self +Str(Mez), +Res(Mez), +Special",
+    "Toggle: Self Stealth, +DEF(Melee, Ranged, AoE)",
+    "PBAoE Team +To Hit, +DEF (All), +RES (Psionic)",
+    "Ranged (Targeted AoE), Teammates +DMG, +To Hit, +DEF(All), Res(Effects)"
   ]
 }

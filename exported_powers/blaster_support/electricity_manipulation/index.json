@@ -25,5 +25,27 @@
     23,
     29,
     15
+  ],
+  "power_display_names": [
+    "Build Up",
+    "Charged Brawl",
+    "Electric Fence",
+    "Havoc Punch",
+    "Dynamo",
+    "Force of Thunder",
+    "Power Sink",
+    "Shocking Grasp",
+    "Thunder Strike"
+  ],
+  "power_short_helps": [
+    "Self +DMG, +To Hit",
+    "Melee, DMG(Smash/Energy), Target Sleep, -End",
+    "Ranged, DoT (Energy), Foe Immobilize, -End",
+    "Melee, DMG(Smash/Energy), Foe Sleep, -End, Knock back",
+    "Toggle: PBAoE, DoT (Energy), Foe -End",
+    "PBAoE, Foe Disorient, Knockback",
+    "PBAoE, Self +End, Foe -End",
+    "Melee, DoT (Energy), Target Hold, -End",
+    "Melee (AoE), DMG(Smash/Energy), Foe Disorient, Knockback"
   ]
 }

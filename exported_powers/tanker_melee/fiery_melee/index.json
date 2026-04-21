@@ -25,5 +25,27 @@
     27,
     0,
     9
+  ],
+  "power_display_names": [
+    "Fiery Breath",
+    "Build Up",
+    "Combustion",
+    "Fire Sword",
+    "Fire Sword Circle",
+    "Greater Fire Sword",
+    "Incinerate",
+    "Scorch",
+    "Taunt"
+  ],
+  "power_short_helps": [
+    "Close (Cone) DoT (Fire)",
+    "Self +DMG, +To Hit",
+    "PBAoE, DoT (Fire)",
+    "Melee, DMG(Fire), -Defense",
+    "PBAoE Melee, DMG(Fire), -Defense",
+    "Melee, DMG(Fire)",
+    "Melee, DoT (Fire)",
+    "Melee, DMG(Fire),",
+    "Ranged (Targeted AoE), Foe Taunt"
   ]
 }

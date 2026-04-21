@@ -17,5 +17,19 @@
     43,
     37,
     34
+  ],
+  "power_display_names": [
+    "Coordinated Targeting",
+    "Pulverize",
+    "Summon Tarantula",
+    "Web Cocoon",
+    "Web Envelope"
+  ],
+  "power_short_helps": [
+    "Toggle: Team +To Hit, +ACC, +Perception, Res(DeBuff To Hit)",
+    "Melee, High DMG(Smash), Minor DoT(Toxic), Foe Disorient",
+    "Summon Tarantula: Ranged Moderate DMG(Toxic)",
+    "Ranged, Foe Hold, -Recharge, -Fly, -Jump, Slow, DoT(Toxic)",
+    "Ranged (Targeted AoE) DoT(Toxic), Immobilize, -Recharge, -Fly, -Jump"
   ]
 }

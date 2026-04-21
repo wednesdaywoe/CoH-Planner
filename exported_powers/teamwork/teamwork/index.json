@@ -21,5 +21,23 @@
     15,
     19,
     3
+  ],
+  "power_display_names": [
+    "Combat Training: Defensive",
+    "Combat Training: Offensive",
+    "Foresight",
+    "Indomitable Will",
+    "Tactical Training: Assault",
+    "Tactical Training: Leadership",
+    "Tactical Training: Maneuvers"
+  ],
+  "power_short_helps": [
+    "Auto: Self +DEF(Melee)",
+    "Auto: Self +ACC",
+    "Auto: Self Res (Disorient, Hold, Immobilize, Sleep, Fear, Confuse, Psionics, Special), +Def (all)",
+    "Toggle: Self Res (Psionics, Disorient, Hold, Immobilize, Sleep, Fear, Confuse, Repel, Knockback).",
+    "Toggle: PBAoE, Team +DMG, Res(Taunt, Placate)",
+    "Toggle: PBAoE, Team +To Hit, Res(Confuse, Fear), +Perception",
+    "PBAoE, Team +DEF(All)"
   ]
 }

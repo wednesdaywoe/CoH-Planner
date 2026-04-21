@@ -25,5 +25,27 @@
     1,
     11,
     7
+  ],
+  "power_display_names": [
+    "Blood Thirst",
+    "Hemorrhage",
+    "Maiming Slash",
+    "Rending Flurry",
+    "Savage Leap",
+    "Savage Strike",
+    "Shred",
+    "Taunt",
+    "Vicious Slash"
+  ],
+  "power_short_helps": [
+    "Self +DMG, +To Hit, +Special, +5 Blood Frenzy",
+    "Melee, DMG(Lethal), Foe Special DoT (Lethal), -Blood Frenzy",
+    "Melee, DMG(Lethal), DoT (Lethal), Foe -Speed, Self +1 Blood Frenzy",
+    "PBAoE, DMG(Lethal), Foe DoT (Lethal), -Blood Frenzy",
+    "PBAoE, DMG(Lethal), Foe DoT (Lethal), Self 1 to 3 Blood Frenzy, Teleport",
+    "Melee, DMG(Lethal), Foe DoT (Lethal), Self +1 Blood Frenzy",
+    "Melee (Cone), Foe DoT (Lethal), -Def(All), Self +1 Blood Frenzy",
+    "Ranged (Targeted AoE), Foe Taunt",
+    "Melee, DMG(Lethal), Foe DoT (Lethal), Knockdown, Self +2 Blood Frenzy"
   ]
 }

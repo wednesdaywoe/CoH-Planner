@@ -25,5 +25,27 @@
     27,
     23,
     0
+  ],
+  "power_display_names": [
+    "Gun Drone",
+    "Caltrops",
+    "Field Operative",
+    "Smoke Grenade",
+    "Targeting Drone",
+    "Taser",
+    "Remote Bomb",
+    "Trip Mine",
+    "Toxic Web Grenade"
+  ],
+  "power_short_helps": [
+    "Build Turret: Ranged, Moderate DMG(Lethal)",
+    "Ranged (Location AoE), Minor DoT(Lethal), Foe -Speed",
+    "Toggle: Self Stealth, +DEF(All), +Special, +Regeneration, +Recovery",
+    "Ranged (Target AoE), Foe -Perception, -To Hit",
+    "Toggle: Self +To Hit, +Damage, +Perception, Res(DeBuff To Hit)",
+    "Melee, High DMG(Energy), Foe Disorient",
+    "Place Bomb: PBAoE, Extreme DMG(Lethal/Fire), Foe Knockback",
+    "Place Mine: PBAoE, Superior DMG(Lethal/Fire), Foe Knockback",
+    "Ranged, Moderate DoT(Toxic), Target Immobilize, -Recharge, -Fly"
   ]
 }

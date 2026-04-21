@@ -25,5 +25,27 @@
     0,
     19,
     27
+  ],
+  "power_display_names": [
+    "Ailment Resistance",
+    "Fast Healing",
+    "Reactive Regeneration",
+    "Integration",
+    "Moment of Glory",
+    "Quick Recovery",
+    "Reconstruction",
+    "Resilience",
+    "Second Wind"
+  ],
+  "power_short_helps": [
+    "Auto: Self +Max HP, -Res(Heal), Res(-Defense, -Endurance, -Speed, -Regeneration, -Recovery, -Recharge, -Range, -ToHit)",
+    "Auto: Self +Regeneration",
+    "Toggle: Self +Regeneration, +Res(-Regeneration, -End, -Recovery)",
+    "Toggle: Self +Res(Knockback, Disorient, Hold, Sleep, Immobilize), +Regeneration",
+    "Self +DMG, +Res(All DMG, Knock Back, Repel, Stun, Hold, Sleep, Immobilize), +DEF(All DMG), +Recovery",
+    "Auto: Self +Recovery",
+    "Self Heal, Res(Toxic)",
+    "Auto: Self +Res(Disorient, All DMG)",
+    "Self +Max HP, Rez(Special)"
   ]
 }

@@ -19,5 +19,21 @@
     4294967295,
     3,
     0
+  ],
+  "power_display_names": [
+    "Adrenal Booster",
+    "Corrosive Vial",
+    "Experimental Injection",
+    "Jaunt",
+    "Speed of Sound",
+    "Toxic Dart"
+  ],
+  "power_short_helps": [
+    "Self, +To Hit, +Recharge, +Damage, +Special",
+    "Ranged (Targeted AoE), High DoT(Toxic), -Defense",
+    "Melee Ranged, Ally +Regeneration, +Recovery, +Res(Status)",
+    "Click, Self Teleport",
+    "Toggle: Self +Speed, (Special)",
+    "Ranged, Light DMG(Lethal), High(Toxic)"
   ]
 }

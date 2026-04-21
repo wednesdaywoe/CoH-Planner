@@ -17,5 +17,19 @@
     34,
     43,
     34
+  ],
+  "power_display_names": [
+    "Mace Beam Volley",
+    "Summon Spiderlings",
+    "Scorpion Shield",
+    "Web Cocoon",
+    "Web Envelope"
+  ],
+  "power_short_helps": [
+    "Ranged (Cone), DMG(Energy), Foe Knockback",
+    "Summon Spiderlings: Ranged DMG(Lethal)",
+    "Toggle: Self, +Def(Smash,Lethal,Energy), +Res(Toxic)",
+    "Ranged, Foe Hold, -Recharge, -Fly, -Jump, Slow, DoT(Toxic)",
+    "Ranged (Targeted AoE) DoT(Toxic), Immobilize, -Recharge, -Fly, -Jump"
   ]
 }

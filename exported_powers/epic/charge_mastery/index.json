@@ -17,5 +17,19 @@
     34,
     40,
     37
+  ],
+  "power_display_names": [
+    "Electric Shackles",
+    "ESD",
+    "Static Discharge",
+    "Surge of Power",
+    "Thunder Strike"
+  ],
+  "power_short_helps": [
+    "Ranged, DMG(Energy), Foe Hold, -End",
+    "PBAoE, Foe Disorient, -END, -Regen, Special vs. Robots; Self -Recovery",
+    "Ranged (Cone), DMG(Energy), -END",
+    "Self, +Res(Special)",
+    "Melee (AoE), DMG(Smash, Energy), Foe Disorient, Knockback, -End"
   ]
 }

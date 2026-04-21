@@ -25,5 +25,27 @@
     0,
     11,
     25
+  ],
+  "power_display_names": [
+    "Build Up",
+    "Fault",
+    "Heavy Mallet",
+    "Hurl Boulder",
+    "Seismic Smash",
+    "Stone Fist",
+    "Stone Mallet",
+    "Taunt",
+    "Tremor"
+  ],
+  "power_short_helps": [
+    "Self +DMG, +To Hit",
+    "Close (Targeted AoE), DMG(Smashing), Foe Knockback, Disorient",
+    "Melee, DMG(Smashing), Knockback",
+    "Ranged, DMG(Smashing), Foe Knockback, -Fly",
+    "Melee, DMG(Smashing), Foe Hold",
+    "Melee DMG(Smashing), Foe Minor Disorient",
+    "Melee, DMG(Smashing), Knockback",
+    "Ranged (Targeted AoE), Foe Taunt",
+    "PBAoE, DMG(Smashing), Knockback"
   ]
 }

@@ -25,5 +25,27 @@
     25,
     17,
     5
+  ],
+  "power_display_names": [
+    "Charge Up",
+    "Ball Lightning",
+    "Charged Bolts",
+    "Lightning Bolt",
+    "Short Circuit",
+    "Tesla Cage",
+    "Thunderous Blast",
+    "Voltaic Sentinel",
+    "Zapping Bolt"
+  ],
+  "power_short_helps": [
+    "Self +To Hit, +DMG, +Range, +End Mod",
+    "Ranged (Targeted AoE), DoT(Energy), Foe -End",
+    "Ranged, DMG(Energy), Foe -End",
+    "Ranged, DMG(Energy), Foe -End",
+    "PBAoE, DoT(Energy), Foe -End, -Recovery",
+    "Ranged, DMG(Energy), Foe Hold, -End",
+    "Ranged (Targeted AoE), DMG(Energy), Foe -End, -Recovery",
+    "Summon Sentinel: Ranged, DMG(Energy), Foe -End",
+    "Ranged, DMG(Energy), Foe -End"
   ]
 }

@@ -23,5 +23,25 @@
     0,
     11,
     5
+  ],
+  "power_display_names": [
+    "Bayonet",
+    "Burst",
+    "Frag Grenade",
+    "Heavy Burst",
+    "Pummel",
+    "Single Shot",
+    "Venom Grenade",
+    "Wide Area Web Grenade"
+  ],
+  "power_short_helps": [
+    "Melee, DMG(Lethal), DoT(Lethal)",
+    "Ranged, DMG(Lethal), Foe -DEF",
+    "Ranged (Targeted AoE), DMG(Fire/Lethal), Foe Knockback",
+    "Ranged (Cone), DMG(Lethal), Foe -DEF",
+    "Melee, DMG(Smash), Foe Disorient",
+    "Ranged, DMG(Lethal), Foe -DEF",
+    "Ranged (Targeted AoE), DoT(Toxic), Foe -Res(All)",
+    "Ranged (Targeted AoE), Foe Immobilize, -SPD, -Recharge, -Fly, -Jump"
   ]
 }

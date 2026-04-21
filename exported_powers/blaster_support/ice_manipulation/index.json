@@ -25,5 +25,27 @@
     19,
     3,
     23
+  ],
+  "power_display_names": [
+    "Build Up",
+    "Chilblain",
+    "Frigid Protection",
+    "Freezing Touch",
+    "Frozen Aura",
+    "Frozen Fists",
+    "Ice Patch",
+    "Ice Sword",
+    "Shiver"
+  ],
+  "power_short_helps": [
+    "Self +DMG, +To Hit",
+    "Ranged, Moderate DoT(Cold), Foe Immobilize, -SPD, -Recharge",
+    "Toggle: PBAoE, Foe -Recharge, -Speed, -DMG, Self +Absorb over Time, +Recovery",
+    "Melee, High DMG(Cold), Foe Hold",
+    "PBAoE Melee, Moderate DMG(Smashing), Foe Sleep",
+    "Melee, Moderate DMG(Cold/Smash), Foe -Recharge, -SPD",
+    "Location (PBAoE), Foe Knockdown",
+    "Melee, High DMG(Cold/Lethal), Foe -Recharge, -SPD",
+    "Ranged (Cone), Foe -SPD, -Recharge"
   ]
 }

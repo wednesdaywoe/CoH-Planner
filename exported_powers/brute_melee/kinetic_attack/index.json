@@ -25,5 +25,27 @@
     1,
     11,
     25
+  ],
+  "power_display_names": [
+    "Body Blow",
+    "Burst",
+    "Focused Burst",
+    "Power Siphon",
+    "Quick Strike",
+    "Repulsing Torrent",
+    "Smashing Blow",
+    "Taunt",
+    "Concentrated Strike"
+  ],
+  "power_short_helps": [
+    "Melee, DMG(Smash/Energy), Foe Disorient",
+    "PBAoE Melee, DMG(Smash/Energy), Foe Knockdown",
+    "Ranged Chain, DMG(Smash/Energy), Foe Knockdown",
+    "Self: +ToHit, +Special",
+    "Melee, DMG(Smash/Energy), Foe -DMG, Knockdown",
+    "Ranged (Cone), DMG(Energy/Smash), Foe Knockback",
+    "Melee, DMG(Smash/Energy), Foe Disorient",
+    "Ranged (Targeted AoE), Foe Taunt",
+    "Melee, DMG(Energy/Smash), Foe Disorient"
   ]
 }

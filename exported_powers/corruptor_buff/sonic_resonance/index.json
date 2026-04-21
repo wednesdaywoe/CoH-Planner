@@ -25,5 +25,27 @@
     3,
     23,
     0
+  ],
+  "power_display_names": [
+    "Clarity",
+    "Disruption Field",
+    "Liquefy",
+    "Sonic Barrier",
+    "Sonic Cage",
+    "Sonic Dispersion",
+    "Sonic Haven",
+    "Sonic Repulsion",
+    "Sonic Siphon"
+  ],
+  "power_short_helps": [
+    "Ally +Res(Disorient, Hold, Sleep, Immobilize, Fear, Confusion), +Perception",
+    "Toggle: Ranged (Target Ally AoE), Foe -Res",
+    "Ranged (Location AoE), Foe Knockback, Hold, -To Hit, -DEF",
+    "Ranged, Ally +Res(Smash, Lethal, Toxic)",
+    "Ranged, Foe Capture (Special)",
+    "Toggle: PBAoE, Ally +Res(All DMG except Psionic, Hold, Immobilize, Disorient)",
+    "Ranged, Ally +Res(Fire, Cold, Energy, Negative Energy)",
+    "Toggle: Ranged (Target Ally AoE), Foe Knockback",
+    "Ranged, Foe -Res(All)"
   ]
 }

@@ -21,5 +21,23 @@
     0,
     0,
     0
+  ],
+  "power_display_names": [
+    "Essence",
+    "Fly",
+    "Lore Data Strength",
+    "Lore Evasion",
+    "Lore Power",
+    "Lore Protection",
+    "Super Leap"
+  ],
+  "power_short_helps": [
+    "Essence",
+    "Self Fly",
+    "Auto: -DMG(All)",
+    "Auto: +DEF(AoE), +Res(All)",
+    "Auto: +DMG(All)",
+    "Auto: Untouchable, No Threat",
+    "Self Leap"
   ]
 }

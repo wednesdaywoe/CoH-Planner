@@ -17,5 +17,19 @@
     34,
     37,
     40
+  ],
+  "power_display_names": [
+    "Superior Conditioning",
+    "Energy Torrent",
+    "Focused Accuracy",
+    "Laser Beam Eyes",
+    "Physical Perfection"
+  ],
+  "power_short_helps": [
+    "Self +Endurance",
+    "Ranged (Cone), DMG(Energy/Smash), Foe Knockback",
+    "Toggle: Self +To Hit, +ACC, +Perception, Res(DeBuff To Hit)",
+    "Ranged, DMG(Energy), Foe -DEF",
+    "Auto: Self, +Regeneration, +Recovery"
   ]
 }

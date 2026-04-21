@@ -27,5 +27,29 @@
     21,
     25,
     5
+  ],
+  "power_display_names": [
+    "Breathless",
+    "Clear Skies",
+    "Downdraft",
+    "Keening Winds",
+    "Microburst",
+    "Thundergust",
+    "Updraft",
+    "Vacuum",
+    "Vortex",
+    "Wind Shear"
+  ],
+  "power_short_helps": [
+    "Ranged (Targeted AoE), Minor DMG(Lethal), Immobilize (Foe), -DMG(Foe, All), +EndCost(Foe, PvP), Consumes Pressure",
+    "Self (Auto), +ToHit, +Rech, +Rec, -EndCost",
+    "Ranged, Hold(Foe), -Movement(Foe), -Rech(Foe), -Fly(Foe), Pressure Builder (Self)",
+    "Ranged (Targeted AoE), Confuse(Foe), EndDrain(Foe), +End(Self)",
+    "Ranged (Targeted AoE), Minor DMG(Smashing), Stun(Foe), -Speed(Foe, All), -Fly(Foe), -Rech(Foe), Chance for -DEF(Foe, All), Consumes Pressure",
+    "Ranged (Cone), Minor DMG(Smashing), Knockdown(Foe), -ToHit(Foe), Pressure Builder (Self)",
+    "Ranged, High DMG(Smashing), Knockup(Foe), -Fly(Foe), Pressure Builder (Self)",
+    "Ranged (Targeted AoE), Hold (Foe), Moderate DoT (Lethal), -Movement(Foe), -Rech(Foe), -ToHit(Foe), Special(Pet), Pressure Consumer (Self)",
+    "Summon Vortex",
+    "PBAoE (Toggle), -Speed (Foe, All), -Fly(Foe), -ToHit(Foe), -DMG(Foe, All)"
   ]
 }

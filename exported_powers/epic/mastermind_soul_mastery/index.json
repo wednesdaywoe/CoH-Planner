@@ -17,5 +17,19 @@
     37,
     43,
     40
+  ],
+  "power_display_names": [
+    "Dark Embrace",
+    "Night Fall",
+    "Oppressive Gloom",
+    "Soul Storm",
+    "Soul Tentacles"
+  ],
+  "power_short_helps": [
+    "Toggle: Self +Res(Smash, Lethal, Negative, Toxic)",
+    "Ranged (Cone), DMG(Negative), Foe -ACC",
+    "Toggle: PBAoE, Foe Disorient, Self -HP",
+    "Ranged, DoT(Negative), Foe Hold",
+    "Ranged (Cone), DMG(Negative), Foe Immobilize"
   ]
 }

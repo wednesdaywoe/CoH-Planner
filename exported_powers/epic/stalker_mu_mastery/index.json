@@ -17,5 +17,19 @@
     34,
     43,
     34
+  ],
+  "power_display_names": [
+    "Ball Lightning",
+    "Electric Shackles",
+    "Mu Bolts",
+    "Summon Adept",
+    "Zapp"
+  ],
+  "power_short_helps": [
+    "Ranged (Targeted AoE), DoT(Energy), Foe -End",
+    "Ranged, DMG(Energy), Foe Hold, -End",
+    "Ranged, DMG(Energy), Foe -End",
+    "Summon Mu Adept: Ranged DMG(Energy)",
+    "Sniper, DMG(Energy), Foe -End"
   ]
 }

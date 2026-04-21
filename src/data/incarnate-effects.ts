@@ -269,12 +269,12 @@ export function getDestinyEffects(powerId: string): DestinyEffects | null {
 /**
  * Alias map for Hybrid Melee/Support powers.
  *
- * The UI data loader uses the old `incarnate_raw_data` internal names
- * (e.g. `Melee_Core_Embodiment`), but the generated effects file is
- * extracted from raw_data_homecoming where the binary internal names
- * are numeric suffixes (e.g. `Melee_Genome_8`). Order matches the
- * position in the hybrid powerset index — that's the stable contract
- * between the two name spaces.
+ * The UI data loader uses slot-index internal names from the bin-crawler
+ * export (e.g. `Melee_Core_Embodiment`), but incarnate-effects-generated
+ * is built from a different extraction pass where the internal names are
+ * numeric suffixes (e.g. `Melee_Genome_8`). Order matches the position in
+ * the hybrid powerset index — that's the stable contract between the two
+ * name spaces.
  */
 const HYBRID_ID_ALIASES: Record<string, string> = {
   // Melee tree (9 powers, in powerset order)

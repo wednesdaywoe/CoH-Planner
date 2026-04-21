@@ -25,5 +25,27 @@
     5,
     11,
     1
+  ],
+  "power_display_names": [
+    "Corrosive Enzymes",
+    "Lifegiving Spores",
+    "Overgrowth",
+    "Entangling Aura",
+    "Rebirth",
+    "Regrowth",
+    "Spore Cloud",
+    "Wild Bastion",
+    "Wild Growth"
+  ],
+  "power_short_helps": [
+    "Ranged, Foe -Res(All), -DMG(All)",
+    "Toggle (Location AoE), PBAoE +Minor Heal Over Time, +Endurance",
+    "PBAoE, Team +Damage, +To Hit, +Endurance Discount, +5 Bloom",
+    "Toggle, Foe Hold",
+    "Ranged, Ally Rez, +Heal Over Time, Special, +3 Bloom",
+    "Ranged Facing Cone, Minor Ally Heal, Ally Moderate Healing Over Time, +1 Bloom",
+    "Toggle (Targeted AoE), Foe -Dmg(All), -To Hit, -Regen",
+    "PBAoE, Team +Absorb, +Heal Over Time, +3 Bloom",
+    "PBAoE, Team +Res(All), +Regen, +2 Bloom"
   ]
 }

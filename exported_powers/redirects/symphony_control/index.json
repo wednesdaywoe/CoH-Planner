@@ -13,5 +13,15 @@
     0,
     5,
     5
+  ],
+  "power_display_names": [
+    "Aria of Stasis",
+    "Impassioned Serenade",
+    "Impassioned Serenade"
+  ],
+  "power_short_helps": [
+    "Cone Minor DMG(Psionic), Immobilize",
+    "Ranged, Minor DMG(Psionic), Confuse",
+    "Ranged, Minor DMG(Psionic), Confuse"
   ]
 }

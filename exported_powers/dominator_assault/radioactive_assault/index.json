@@ -25,5 +25,27 @@
     27,
     19,
     3
+  ],
+  "power_display_names": [
+    "Atom Smasher",
+    "Contaminated Strike",
+    "Devastating Blow",
+    "Electron Haze",
+    "Fusion",
+    "Neutrino Bolt",
+    "Proton Volley",
+    "Radiation Siphon",
+    "X-Ray Beam"
+  ],
+  "power_short_helps": [
+    "PBAoE, Moderate DMG(Energy/Toxic), Foe -Def, Disorient, Special",
+    "Melee, High DMG(Energy/Smash), Foe -Def, Special",
+    "Melee, Extreme DMG(Energy/Smash), Foe -Def, Disorient, Special",
+    "Close, Moderate Moderate DMG(Energy), Foe -DEF, Knockback",
+    "Self +DMG, +To Hit, Special",
+    "Ranged, Light DMG(Energy), Foe -DEF",
+    "Sniper, Extreme DMG(Energy), Foe -DEF",
+    "Melee, Superior DMG(Energy/Smash), Foe, -Def, -Contaminated, Special",
+    "Ranged, Superior DMG(Energy), Foe -DEF"
   ]
 }

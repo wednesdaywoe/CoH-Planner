@@ -17,5 +17,19 @@
     43,
     37,
     34
+  ],
+  "power_display_names": [
+    "Flash Freeze",
+    "Frozen Armor",
+    "Hibernate",
+    "Hoarfrost",
+    "Snow Storm"
+  ],
+  "power_short_helps": [
+    "Ranged (Targeted AoE), DMG(Cold/Lethal), Foe Sleep",
+    "Toggle: Self +Def(Smash, Lethal), +Res(Cold, Fire)",
+    "Toggle: Self +Regeneration, +Recovery, Invulnerable; Self Hold",
+    "Self Heal, +Max HP, Res(Toxic)",
+    "Toggle: Ranged (Targeted AoE), Foe -Speed, -Recharge"
   ]
 }

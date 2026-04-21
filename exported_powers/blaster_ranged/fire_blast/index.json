@@ -25,5 +25,27 @@
     0,
     25,
     5
+  ],
+  "power_display_names": [
+    "Aim",
+    "Blaze",
+    "Blazing Bolt",
+    "Fire Ball",
+    "Fire Blast",
+    "Fire Breath",
+    "Flares",
+    "Inferno",
+    "Rain of Fire"
+  ],
+  "power_short_helps": [
+    "Self +To Hit, +DMG",
+    "Ranged, DMG(Fire)",
+    "Sniper, DMG(Fire), Self +Range",
+    "Ranged (Targeted AoE), DMG(Fire/Smash)",
+    "Ranged, DMG(Fire)",
+    "Close (Cone), DoT(Fire)",
+    "Ranged, DMG(Fire)",
+    "PBAoE, DMG(Fire/Smash), Foe DoT(Fire)",
+    "Ranged (Location AoE), DoT(Fire), -SPD"
   ]
 }

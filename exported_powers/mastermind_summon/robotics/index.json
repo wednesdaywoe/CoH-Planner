@@ -25,5 +25,27 @@
     1,
     17,
     25
+  ],
+  "power_display_names": [
+    "Assault Bot",
+    "Battle Drones",
+    "Equip Robot",
+    "Photon Grenade",
+    "Protector Bots",
+    "Pulse Rifle Blast",
+    "Pulse Rifle Burst",
+    "Maintenance Drone",
+    "Upgrade Robot"
+  ],
+  "power_short_helps": [
+    "Summon Assault Bot",
+    "Summon Battle Drones",
+    "Ranged, Equip Robot Henchman",
+    "Ranged (Targeted AoE), DMG(Energy), Disorient, -Regen",
+    "Summon Protector Bot",
+    "Ranged, DMG(Energy), -Regen",
+    "Ranged, DMG(Energy), Foe Knockback, -Regen",
+    "Summon Maintenance Robot",
+    "Ranged, Upgrade Robot Henchman"
   ]
 }

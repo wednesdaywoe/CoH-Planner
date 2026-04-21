@@ -25,5 +25,27 @@
     19,
     23,
     0
+  ],
+  "power_display_names": [
+    "Build Up",
+    "Fling Thorns",
+    "Impale",
+    "Ripper",
+    "Skewer",
+    "Thorn Barrage",
+    "Thorn Burst",
+    "Thorntrops",
+    "Thorny Darts"
+  ],
+  "power_short_helps": [
+    "Self +DMG, +To Hit",
+    "Ranged (Cone), Light DMG(Lethal), DoT(Toxic) -DEF",
+    "Ranged, High DMG(Lethal), DoT(Toxic), Immobilize, -DEF, -SPD, -Fly, -Jump",
+    "Melee (Cone), Superior DMG(Lethal), DoT(Toxic) -DEF, Knockback, -SPD",
+    "Melee, Moderate DMG(Lethal), DoT(Toxic) -DEF",
+    "Ranged, Extreme DMG(Lethal), DoT(Toxic) -DEF",
+    "PBAoE Melee, Light DMG(Lethal), DoT(Toxic) -DEF",
+    "Ranged (Location AoE), Minor DoT(Lethal), Foe -Speed",
+    "Ranged, Light DMG(Lethal), DoT(Toxic) -DEF"
   ]
 }

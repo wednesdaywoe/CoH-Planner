@@ -17,5 +17,19 @@
     40,
     37,
     43
+  ],
+  "power_display_names": [
+    "Chain Fences",
+    "Havoc Punch",
+    "Shocking Field",
+    "Paralyzing Jolt",
+    "Rehabilitating Circuit"
+  ],
+  "power_short_helps": [
+    "Ranged AoE, DMG(Energy), Foe Immobilize, -End, -Fly",
+    "Melee, DMG(Smash/Energy), Foe Sleep, -End, Knock back",
+    "Toggle: PBAoE, DoT(Energy), Foe -End",
+    "Ranged, DMG(Energy), Foe Stun, -End",
+    "Chain, Team +Heal"
   ]
 }

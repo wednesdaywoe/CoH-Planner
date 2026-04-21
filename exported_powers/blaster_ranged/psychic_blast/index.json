@@ -25,5 +25,27 @@
     21,
     1,
     0
+  ],
+  "power_display_names": [
+    "Psychic Focus",
+    "Mental Blast",
+    "Psionic Darts",
+    "Psionic Lance",
+    "Psionic Tornado",
+    "Psychic Wail",
+    "Scramble Minds",
+    "Telekinetic Blast",
+    "Dominate Will"
+  ],
+  "power_short_helps": [
+    "Self +To Hit, +DMG",
+    "Ranged, DMG(Psionic), Target -Recharge",
+    "Ranged, DMG(Psionic), Target -Recharge",
+    "Sniper, DMG(Psionic), Target -Recharge, Self +Range",
+    "Ranged (Targeted AoE), Dmg(Psionic), Foe Knockback",
+    "PBAoE, DMG(Psionic), Foe Disorient -Recharge",
+    "Chain, DMG(Psionic), Foe Disorient",
+    "Ranged, DMG(Smash/Psionic), Foe Knockback",
+    "Ranged, DMG(Psionic), Foe Sleep"
   ]
 }

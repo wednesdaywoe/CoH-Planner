@@ -31,5 +31,33 @@
     4294967295,
     29,
     19
+  ],
+  "power_display_names": [
+    "Ablative Carapace",
+    "Adaptation",
+    "Athletic Regulation",
+    "Defensive Adaptation",
+    "Efficient Adaptation",
+    "Environmental Adaptation",
+    "Genomic Evolution",
+    "Hardened Carapace",
+    "Inexhaustible",
+    "Offensive Adaptation",
+    "Parasitic Leech",
+    "Rebuild DNA"
+  ],
+  "power_short_helps": [
+    "Self, +Absorption, +Regeneration",
+    "Gain Efficient, Defensive and Offensive Adaptations",
+    "Auto: Self +SPD, +Special",
+    "Toggle: Bio Armor Defensive Mode",
+    "Toggle: Bio Armor Efficient Mode",
+    "Self Toggle, +Res(Hold, Knockdown, Immobilize), +Def(Energy, Negative, Fire, Cold, Psionic), +Special",
+    "Auto: +Res(All), +Special",
+    "Self Toggle, +Res(Lethal, Smash, Toxic, Disorient, Sleep), +Special",
+    "Auto: +Max HP, +Regen, +Recovery, +Res(Slow, End Drain), +Special",
+    "Toggle: Bio Armor Offensive Mode",
+    "PBAoE, Self +Absorb, +Regeneration, +Recovery, Foe -DMG",
+    "Self +HP, +End, +Special"
   ]
 }

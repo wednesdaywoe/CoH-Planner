@@ -25,5 +25,27 @@
     0,
     0,
     3
+  ],
+  "power_display_names": [
+    "Fissure",
+    "Heavy Mallet",
+    "Hurl Boulder",
+    "Mud Pots",
+    "Power Up",
+    "Seismic Smash",
+    "Stone Mallet",
+    "Stone Spears",
+    "Tremor"
+  ],
+  "power_short_helps": [
+    "Close (Targeted AoE), Light DMG(Smash), Foe Knockback, Disorient",
+    "Melee, Superior DMG(Smash), Knockback",
+    "Ranged, High DMG(Smash), Foe Knockback, -Fly",
+    "Toggle: PBAoE, Minor DoT(Fire), Foe Immobilize, -SPD",
+    "Self +Special, +Dmg(All)",
+    "Melee, Extreme DMG(Smash), Foe Hold",
+    "Melee, Moderate DMG(Smash), Knockback",
+    "Ranged, Light DMG(Lethal), Foe Knock Up",
+    "PBAoE, Light DMG(Smash), Knockback"
   ]
 }

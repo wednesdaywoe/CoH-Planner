@@ -11,5 +11,13 @@
   "available_level": [
     25,
     25
+  ],
+  "power_display_names": [
+    "Soul Transfer",
+    "Soul Transfer"
+  ],
+  "power_short_helps": [
+    "Self Rez, +Absorb, +Res(Disorient, Sleep, Hold, Immobilize, Knockback, -ToHit, -Endurance), +Special, Foe Disorient",
+    "Self Rez, +Absorb, +Res(Disorient, Sleep, Hold, Immobilize, Knockback, -ToHit, -Endurance), +Special, Foe Disorient"
   ]
 }

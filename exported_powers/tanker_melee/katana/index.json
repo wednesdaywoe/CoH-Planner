@@ -25,5 +25,27 @@
     3,
     9,
     23
+  ],
+  "power_display_names": [
+    "Build Up",
+    "Soaring Dragon",
+    "Sting of the Wasp",
+    "Golden Dragonfly",
+    "Divine Avalanche",
+    "Gambler's Cut",
+    "Flashing Steel",
+    "Dragon's Roar",
+    "The Lotus Drops"
+  ],
+  "power_short_helps": [
+    "Self +DMG, +To Hit",
+    "Melee, DMG(Lethal), Foe Knockup, -DEF",
+    "Melee, DMG(Lethal), Foe -Def",
+    "Melee, DMG(Lethal), Foe Knockback, -DEF",
+    "Melee, DMG(Lethal), Self +DEF (Melee, Lethal)",
+    "Melee, DMG(Lethal), Foe -Def",
+    "Melee (Cone), DMG(Lethal), Foe -Def",
+    "Ranged (Targeted AoE), Foe Taunt",
+    "PBAoE Melee, DMG(Lethal), Foe -Def"
   ]
 }

@@ -25,5 +25,27 @@
     5,
     11,
     0
+  ],
+  "power_display_names": [
+    "Beanbag",
+    "Buckshot",
+    "Burst",
+    "Flamethrower",
+    "Full Auto",
+    "Ignite",
+    "M30 Grenade",
+    "Sniper Rifle",
+    "Slug"
+  ],
+  "power_short_helps": [
+    "Ranged, Minor DMG(Smash), Foe Disorient",
+    "Ranged (Cone), DMG(Lethal), Foe Knockback",
+    "Ranged, DMG(Lethal), Foe -DEF",
+    "Ranged (Cone), DoT(Fire)",
+    "Ranged (Cone), DMG(Lethal), +Special",
+    "Ranged, DoT(Fire)",
+    "Ranged (Targeted AoE), DMG(Lethal/Fire), Knockback",
+    "Sniper, DMG(Lethal), Foe Knockback, Self +Range",
+    "Ranged, DMG(Lethal), Foe Knockback"
   ]
 }

@@ -17,5 +17,19 @@
     43,
     34,
     40
+  ],
+  "power_display_names": [
+    "Darkest Night",
+    "Murky Cloud",
+    "Soul Consumption",
+    "Tar Patch",
+    "Umbral Torrent"
+  ],
+  "power_short_helps": [
+    "Toggle: Ranged (Targeted AoE), Foe -DMG -To Hit",
+    "Toggle: Self +Res(Fire, Cold, Energy, Negative)",
+    "PBAoE Self +Max HP, +Max End, Foe: -Max HP, -Max End",
+    "Ranged (Location AoE), Target -Speed, -Res, -Fly",
+    "Ranged (Cone), DMG(Smashing), Foe -To Hit, Knockback"
   ]
 }

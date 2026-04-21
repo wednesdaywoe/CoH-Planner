@@ -27,5 +27,29 @@
     9,
     27,
     29
+  ],
+  "power_display_names": [
+    "Cloak of Darkness",
+    "Cloak of Fear",
+    "Dark Embrace",
+    "Dark Regeneration",
+    "Death Shroud",
+    "Murky Cloud",
+    "Obscure Sustenance",
+    "Obsidian Shield",
+    "Oppressive Gloom",
+    "Soul Transfer"
+  ],
+  "power_short_helps": [
+    "Toggle: Self Stealth, +DEF(All), +Perception, Res (Immobilize)",
+    "Toggle: PBAoE Self +Res(Knockback), Foe Fear, -ACC",
+    "Toggle: Self +Res(Smash, Lethal, Negative, Toxic)",
+    "PBAoE DMG(Negative), Self +HP",
+    "Toggle: PBAoE Minor DoT(Negative)",
+    "Toggle: Self +Res(Fire, Cold, Energy, Negative, End Drain)",
+    "Self Heal, +Regen, Res(-ToHit, -Regeneration), +Recovery(Special)",
+    "Toggle: Self +Res(Psionic, Sleep, Hold, Disorient, Fear)",
+    "Toggle: PBAoE, Foe Disorient, Self -HP",
+    "Self Rez, +Absorb, +Res(Disorient, Sleep, Hold, Immobilize, Knockback, -ToHit, -Endurance), +Special, Foe Disorient"
   ]
 }

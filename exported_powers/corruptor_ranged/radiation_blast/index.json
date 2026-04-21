@@ -25,5 +25,27 @@
     21,
     7,
     0
+  ],
+  "power_display_names": [
+    "Aim",
+    "Atomic Blast",
+    "Cosmic Burst",
+    "Electron Haze",
+    "Irradiate",
+    "Neutrino Bolt",
+    "Neutron Bomb",
+    "Proton Volley",
+    "X-Ray Beam"
+  ],
+  "power_short_helps": [
+    "Self +To Hit, +DMG",
+    "PBAoE, DMG(Energy/Smash), Foe Hold, -DEF",
+    "Ranged, DMG(Energy), Foe Disorient, -DEF",
+    "Close, Cone DMG(Energy), Foe -DEF, Knockback",
+    "Close (AoE), DoT(Energy), Foe -DEF",
+    "Ranged, DMG(Energy), Foe -DEF",
+    "Ranged (Targeted AoE), DMG(Energy), Foe -DEF",
+    "Sniper, DMG(Energy), Foe -DEF",
+    "Ranged, DMG(Energy), Foe -DEF"
   ]
 }

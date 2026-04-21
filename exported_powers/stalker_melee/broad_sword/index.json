@@ -27,5 +27,29 @@
     11,
     0,
     1
+  ],
+  "power_display_names": [
+    "Assassin's Slash",
+    "Boomerang Slice",
+    "Build Up",
+    "Disembowel",
+    "Hack",
+    "Head Splitter",
+    "Parry",
+    "Placate",
+    "Slash",
+    "Slice"
+  ],
+  "power_short_helps": [
+    "Melee, DMG(Lethal)",
+    "Melee (Cone), DMG(Lethal), Foe -DEF, -RES",
+    "Self +DMG, +To-hit",
+    "Melee, DMG(Lethal), Knockup, Foe -DEF",
+    "Melee, DMG(Lethal), Foe -DEF",
+    "Melee, DMG(Lethal), Foe Knockback, -DEF",
+    "Melee, DMG(Lethal), Self +DEF(Melee,Lethal)",
+    "Ranged, Foe Placate, Self Stealth/Hide",
+    "Melee, DMG(Lethal), Foe -DEF",
+    "Melee (Cone), DMG(Lethal), Foe -DEF, -Res(Dmg)"
   ]
 }

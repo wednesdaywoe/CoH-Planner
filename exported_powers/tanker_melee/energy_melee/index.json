@@ -25,5 +25,27 @@
     9,
     19,
     15
+  ],
+  "power_display_names": [
+    "Barrage",
+    "Bone Smasher",
+    "Build Up",
+    "Energy Punch",
+    "Energy Transfer",
+    "Power Crash",
+    "Taunt",
+    "Total Focus",
+    "Whirling Hands"
+  ],
+  "power_short_helps": [
+    "Melee, DMG(Smash/Energy), Foe Disorient, Special",
+    "Melee, DMG(Smash/Energy), Disorient",
+    "Self +DMG, +To Hit",
+    "Melee, DMG(Smash/Energy), Foe Disorient",
+    "Melee, DMG(Energy), Foe Disorient, Self -HP, Special",
+    "Melee (Cone), DMG(Smash/Energy), Foe Disorient, Special",
+    "Ranged (Targeted AoE), Foe Taunt",
+    "Melee, DMG(Smash/Energy), Foe Disorient, +Energy Focus",
+    "PBAoE Melee, DMG(Smash/Energy)"
   ]
 }

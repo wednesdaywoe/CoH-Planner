@@ -25,5 +25,27 @@
     11,
     0,
     1
+  ],
+  "power_display_names": [
+    "Assassin's Psi Blade",
+    "Boggle",
+    "Concentration",
+    "Greater Psi Blade",
+    "Mass Levitate",
+    "Mental Strike",
+    "Placate",
+    "Psi Blade",
+    "Telekinetic Blow"
+  ],
+  "power_short_helps": [
+    "Melee, DMG(Psionic/Smash), +Insight",
+    "Short Ranged, Target Confuse, +Special",
+    "Self +DMG, +To Hit",
+    "Melee, DMG(Psionic/Lethal), Foe -Rech, Hold; Self -Insight",
+    "PBAoE, DMG(Smash), Foe Knock Up, +Insight",
+    "Melee, DMG(Psionic/Smash), Foe -Rech; Self +Insight",
+    "Ranged, Foe Placate, Self Stealth/Hide",
+    "Melee, DMG(Psionic/Lethal), Foe -Rech, Self +Insight",
+    "Melee, DMG(Psionic/Smash), Foe Knock Up, Self +Insight"
   ]
 }

@@ -25,5 +25,27 @@
     0,
     19,
     29
+  ],
+  "power_display_names": [
+    "Bone Smasher",
+    "Boost Range",
+    "Build Up",
+    "Energize",
+    "Energy Punch",
+    "Power Boost",
+    "Power Thrust",
+    "Stun",
+    "Total Focus"
+  ],
+  "power_short_helps": [
+    "Melee, Superior DMG(Smash/Energy), Foe Disorient",
+    "Self Range Increase",
+    "Self +DMG, +To Hit",
+    "Self Endurance Discount, Heal, +Regen, Res(Stun)",
+    "Melee, High DMG(Smash/Energy), Foe Disorient",
+    "Self +Special",
+    "Melee, Minor DMG(Energy/Smash), Foe Knockback",
+    "Melee, Minor DMG(Energy/Smashing), Foe Disorient, Special",
+    "Melee, Extreme DMG(Energy/Smash), Foe Disorient"
   ]
 }

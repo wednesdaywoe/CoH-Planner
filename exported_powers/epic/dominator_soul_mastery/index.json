@@ -17,5 +17,19 @@
     37,
     40,
     43
+  ],
+  "power_display_names": [
+    "Dark Consumption",
+    "Dark Embrace",
+    "Dark Obliteration",
+    "Soul Drain",
+    "Summon Seer"
+  ],
+  "power_short_helps": [
+    "PBAoE DMG(Negative), Self +End",
+    "Toggle: Self +Res(Smash, Lethal, Negative, Toxic)",
+    "Ranged (Targeted AoE), DMG(Negative), Foe -ACC",
+    "PBAoE DMG(Negative), Self +DMG, +ACC",
+    "Summon Fortunata Seer: Ranged DMG(Psionic)"
   ]
 }

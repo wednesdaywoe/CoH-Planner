@@ -25,5 +25,27 @@
     17,
     0,
     0
+  ],
+  "power_display_names": [
+    "Assassin's Whisper",
+    "Attune",
+    "Build Up",
+    "Deafening Wave",
+    "Earsplitter",
+    "Placate",
+    "Sonic Clap",
+    "Sonic Thrust",
+    "Strident Echo"
+  ],
+  "power_short_helps": [
+    "Melee, DMG(Energy/Smashing), Sleep, -Res(DMG)",
+    "Melee Toggle, DMG(Energy), Foe DOT(Energy), Special",
+    "Self +DMG, +To Hit",
+    "PBAoE Melee, DMG(Energy/Smash), Foe Chance for Hold",
+    "Melee, DMG(Energy/Smash), Foe Chance for Hold",
+    "Ranged, Foe Placate, Self Stealth/Hide",
+    "Melee (Cone), Foe Disorient, Knockdown",
+    "Melee, DMG(Energy/Smash), Foe Knockback, -Res(Debuffs)",
+    "Melee, DMG(Energy/Smash), -Res(Debuffs), Foe Chance for Hold"
   ]
 }

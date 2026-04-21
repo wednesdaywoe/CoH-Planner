@@ -25,5 +25,27 @@
     0,
     23,
     9
+  ],
+  "power_display_names": [
+    "Foot Stomp",
+    "Hand Clap",
+    "Haymaker",
+    "Hurl",
+    "Jab",
+    "Knockout Blow",
+    "Punch",
+    "Rage",
+    "Taunt"
+  ],
+  "power_short_helps": [
+    "PBAoE Melee, DMG(Smash), Knockback",
+    "PBAoE, Foe Disorient, Knockback",
+    "Melee, DMG(Smash), Knockback",
+    "Ranged, Moderate DMG(Smash), Knockback, -Fly",
+    "Melee, DMG(Smash), Disorient",
+    "Melee, DMG(Smash), Foe Hold",
+    "Melee, DMG(Smash), Knockback",
+    "Self +DMG, +To Hit, Delayed Self(Weaken, Special)",
+    "Ranged (Targeted AoE), Foe Taunt"
   ]
 }

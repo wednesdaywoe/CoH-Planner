@@ -25,5 +25,27 @@
     21,
     0,
     5
+  ],
+  "power_display_names": [
+    "Aim",
+    "Aimed Shot",
+    "Blazing Arrow",
+    "Explosive Arrow",
+    "Fistful of Arrows",
+    "Rain of Arrows",
+    "Perfect Shot",
+    "Snap Shot",
+    "Stunning Shot"
+  ],
+  "power_short_helps": [
+    "Self +To Hit, +DMG, +Range",
+    "Ranged, Light DMG(Lethal)",
+    "Ranged, Superior DMG(Lethal), Minor DoT(Fire)",
+    "Ranged (Targeted AoE), Light DMG(Lethal/Fire), Knockback",
+    "Ranged (Cone), Light DMG(Lethal)",
+    "Ranged (Location AoE), Extreme DoT(Lethal)",
+    "Ranged, High DMG(Lethal)",
+    "Ranged, Light DMG(Lethal)",
+    "Ranged Disorient, Moderate DMG(Smashing)"
   ]
 }

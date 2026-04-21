@@ -17,5 +17,19 @@
     34,
     34,
     40
+  ],
+  "power_display_names": [
+    "Charged Armor",
+    "EM Pulse",
+    "Shocking Bolt",
+    "Static Discharge",
+    "Surge of Power"
+  ],
+  "power_short_helps": [
+    "Toggle: Self +Res(Smash, Lethal, Energy)",
+    "PBAoE, Foe Disorient, -END, -Regen, Special vs. Robots; Self -Recovery",
+    "Ranged, DoT(Energy), Foe Hold, -END",
+    "Ranged (Cone), DMG(Energy), -END",
+    "Self, +Res(Special)"
   ]
 }

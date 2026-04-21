@@ -25,5 +25,27 @@
     7,
     11,
     1
+  ],
+  "power_display_names": [
+    "Boggle",
+    "Concentration",
+    "Greater Psi Blade",
+    "Mass Levitate",
+    "Mental Strike",
+    "Psi Blade",
+    "Psi Blade Sweep",
+    "Taunt",
+    "Telekinetic Blow"
+  ],
+  "power_short_helps": [
+    "Short Ranged, Target Confuse, +Special",
+    "Self +DMG, +To Hit",
+    "Melee, DMG(Psionic/Lethal), Foe -Rech, Hold; Self -Insight",
+    "PBAoE, DMG(Smash), Foe Knock Up, +Insight",
+    "Melee, Light DMG(Psionic/Smash), Foe -Rech; Self +Insight",
+    "Melee, Moderate DMG(Psionic/Lethal), Foe -Rech, Self +Insight",
+    "Melee (Cone), DMG(Psionic/Lethal), Foe Disorient, -Rech; Self +Insight",
+    "Ranged (Targeted AoE), Foe Taunt",
+    "Melee, DMG(Psionic/Smash), Foe Knock Up, Self +Insight"
   ]
 }

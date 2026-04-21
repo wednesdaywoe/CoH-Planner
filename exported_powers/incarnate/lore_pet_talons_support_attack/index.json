@@ -9,5 +9,11 @@
   ],
   "available_level": [
     0
+  ],
+  "power_display_names": [
+    "Exhausting Song"
+  ],
+  "power_short_helps": [
+    "Ranged, Moderate DMG(Energy), Moderate DoT (Lethal), Chance for Heal (Self)"
   ]
 }

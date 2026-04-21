@@ -25,5 +25,27 @@
     7,
     17,
     21
+  ],
+  "power_display_names": [
+    "Beheader",
+    "Build Up",
+    "Chop",
+    "Cleave",
+    "Confront",
+    "Gash",
+    "Pendulum",
+    "Swoop",
+    "Axe Cyclone"
+  ],
+  "power_short_helps": [
+    "Melee, DMG(Lethal), Foe Knockdown, -Defense",
+    "Self +DMG, +To Hit",
+    "Melee, DMG(Lethal), Foe Knockdown, -Defense",
+    "Ranged, DMG(Lethal), Foe Knockdown",
+    "Ranged, Foe Taunt",
+    "Melee, DMG(Lethal), Foe Knockdown",
+    "Melee (Targeted AoE), DMG(Lethal), Foe Knockdown",
+    "Melee, DMG(Lethal), Foe Knockup",
+    "PBAoE Melee, DMG(Lethal), Foe Knockdown"
   ]
 }

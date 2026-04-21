@@ -15,5 +15,17 @@
     19,
     19,
     19
+  ],
+  "power_display_names": [
+    "Stun",
+    "Stun (Expanded)",
+    "Stun (Extended)",
+    "Stun (Extended+Expanded)"
+  ],
+  "power_short_helps": [
+    "Melee, Minor DMG(Energy/Smashing), Foe Disorient",
+    "Melee, Minor DMG(Energy/Smashing), Foe Disorient",
+    "Melee, Minor DMG(Energy/Smashing), Foe Disorient",
+    "Melee, Minor DMG(Energy/Smashing), Foe Disorient"
   ]
 }

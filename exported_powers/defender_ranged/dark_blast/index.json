@@ -25,5 +25,27 @@
     19,
     15,
     23
+  ],
+  "power_display_names": [
+    "Blackstar",
+    "Dark Blast",
+    "Dark Pit",
+    "Gloom",
+    "Life Drain",
+    "Moonbeam",
+    "Night Fall",
+    "Tenebrous Tentacles",
+    "Torrent"
+  ],
+  "power_short_helps": [
+    "PBAoE, DMG(Negative), Foe -To Hit",
+    "Ranged, DMG(Negative), Foe -To Hit",
+    "Ranged (Targeted AoE), Foe Disorient",
+    "Ranged, DoT(Negative), Foe -To Hit",
+    "Ranged, DMG(Negative), Target -To Hit, Self +HP",
+    "Sniper, DMG(Negative), Target -To Hit",
+    "Ranged (Cone), DMG(Negative), Foe -To Hit",
+    "Ranged (Cone), DMG(Negative), Foe Immobilize, -To Hit",
+    "Ranged (Cone), DMG(Negative), Foe -To Hit, Knockback"
   ]
 }

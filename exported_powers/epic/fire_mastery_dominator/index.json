@@ -17,5 +17,19 @@
     34,
     37,
     40
+  ],
+  "power_display_names": [
+    "Melt Armor",
+    "Fire Ball",
+    "Rain of Fire",
+    "Fire Shield",
+    "Rise of the Phoenix"
+  ],
+  "power_short_helps": [
+    "Ranged (Targeted AoE), Foe -Res, -DEF",
+    "Ranged (Targeted AoE), DMG(Fire/Smash)",
+    "Ranged (Location AoE), DoT(Fire), -SPD",
+    "Toggle: Self +Res(Fire, Lethal, Smash, Cold)",
+    "Self Rez, Special"
   ]
 }

@@ -27,5 +27,29 @@
     15,
     29,
     9
+  ],
+  "power_display_names": [
+    "Burn",
+    "Cauterizing Blaze",
+    "Consume",
+    "Fire Shield",
+    "Healing Flames",
+    "Hide",
+    "Phoenix Rising",
+    "Plasma Shield",
+    "Phoenix Rising",
+    "Temperature Protection"
+  ],
+  "power_short_helps": [
+    "Location (PBAoE), DoT (Fire), Self Res(Immobilize)",
+    "Toggle: Self +Heal Over Time",
+    "PBAoE, DMG(Fire), Self +End, +Max HP",
+    "Toggle: Self +Res(Fire, Lethal, Smash, Cold, Disorient)",
+    "Self Heal, +Res(Toxic)",
+    "Toggle: Self Stealth, +DEF(Melee, Ranged, AoE)",
+    "Self Rez, Special",
+    "Toggle: Self +Res(Energy, Negative, Fire, Hold, Sleep)",
+    "Self Rez, Special",
+    "Auto: Self +Res(Fire, Cold, Slow, Knock), +Regen"
   ]
 }

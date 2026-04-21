@@ -25,5 +25,27 @@
     5,
     0,
     17
+  ],
+  "power_display_names": [
+    "Carrion Creepers",
+    "Entangle",
+    "Fly Trap",
+    "Roots",
+    "Seeds of Confusion",
+    "Spirit Tree",
+    "Spore Burst",
+    "Strangler",
+    "Vines"
+  ],
+  "power_short_helps": [
+    "Summon Creepers, Ranged (Location AoE), Target -Speed, -Fly, -Jump,",
+    "Ranged, DoT(Smashing, Lethal), Foe Immobilize",
+    "Summon Fly Trap: Ranged Control Special",
+    "Ranged (Targeted AoE), DoT(Smashing, Lethal), Foe Immobilize",
+    "Ranged (Cone), Foe Confuse",
+    "Place Tree: PBAoE +Regen",
+    "Ranged (Targeted AoE), Foe Deep Sleep",
+    "Ranged, DoT(Smashing), Foe Hold",
+    "Ranged (Targeted AoE), Foe Hold, -DMG, -DoT(Toxic)"
   ]
 }

@@ -25,5 +25,27 @@
     3,
     27,
     29
+  ],
+  "power_display_names": [
+    "Fast Healing",
+    "Heightened Senses",
+    "Hide",
+    "High Pain Tolerance",
+    "Indomitable Will",
+    "Mind Over Body",
+    "Reconstruction",
+    "Resurgence",
+    "Strength of Will"
+  ],
+  "power_short_helps": [
+    "Auto: Self +Regeneration",
+    "Toggle: Self +DEF(Smash, Lethal, Fire, Cold, Energy, Negative Energy), +Per",
+    "Toggle: Self Stealth, +DEF(Melee, Ranged, AoE)",
+    "Auto: Self +Res (All), +MaxHealth",
+    "Toggle: Self Res (Disorient, Hold, Immobilize, Sleep, Fear, Confuse, Repel, Knockback). DEF(Psionics)",
+    "Toggle: Self +Res(Smash, Lethal, Psionics)",
+    "Self Heal, Res(Toxic)",
+    "Self Rez, Special",
+    "Self, +Res(Disorient, Sleep, Hold, Immobilize, Repel, Knockback, All DMG), +Recovery"
   ]
 }

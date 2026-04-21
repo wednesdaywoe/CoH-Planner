@@ -15,5 +15,17 @@
     17,
     17,
     0
+  ],
+  "power_display_names": [
+    "Gravity Distortion Field",
+    "Gravity Distortion Field",
+    "Gravity Distortion Field",
+    "Self Destruct"
+  ],
+  "power_short_helps": [
+    "Ranged (Targeted AoE), Foe Hold, Damage(Smashing), +Gravity Distortion",
+    "Ranged (Targeted AoE), Foe Hold, Damage(Smashing), +Gravity Distortion",
+    "Ranged (Targeted AoE), Foe Hold, Damage(Smashing), +Gravity Distortion",
+    "Self Destruct"
   ]
 }

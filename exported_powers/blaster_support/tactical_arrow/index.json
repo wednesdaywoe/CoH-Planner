@@ -25,5 +25,27 @@
     3,
     23,
     9
+  ],
+  "power_display_names": [
+    "Eagle Eye",
+    "Electrified Net Arrow",
+    "ESD Arrow",
+    "Flash Arrow",
+    "Glue Arrow",
+    "Oil Slick Arrow",
+    "Ice Arrow",
+    "Gymnastics",
+    "Upshot"
+  ],
+  "power_short_helps": [
+    "Toggle: Self +ACC, +Perception, +Res(DeBuff ToHit), +Regeneration, +Recovery",
+    "Ranged, DoT(Energy), Foe Immobilize, -Fly, -Recharge, -SPD, -Jump",
+    "Ranged (Targeted AoE), Foe Disorient, -End, Special vs. Robots",
+    "Ranged (Targeted AoE), Foe -Perception, -ToHit",
+    "Ranged (Targeted AoE), DoT(Toxic), Foe -SPD, -Recharge, -Fly, -Jump",
+    "Ranged (Location AoE), Foe Knockdown, -SPD, -Jump, +Special",
+    "Ranged, DoT(Cold), Foe Hold, -SPD, -Recharge",
+    "Toggle: Self +Recharge, +DEF(All), +SPD, +Res(Slow, Knockback)",
+    "Self +DMG, +ToHit, +Recharge"
   ]
 }

@@ -19,5 +19,21 @@
     3,
     4294967295,
     13
+  ],
+  "power_display_names": [
+    "Evasive Maneuvers",
+    "Air Superiority",
+    "Hover",
+    "Fly",
+    "Afterburner",
+    "Group Fly"
+  ],
+  "power_short_helps": [
+    "Toggle: Self +FlySpeed, Res(-Fly, Immobilize, Knockback), +Def(Special), +Flight Control",
+    "Melee, Light DMG(Smash), Foe -Fly",
+    "Toggle: Self Fly, +DEF(All)",
+    "Toggle: Self Fly",
+    "Self +FlySpeed (Special)",
+    "Toggle: Team Fly"
   ]
 }

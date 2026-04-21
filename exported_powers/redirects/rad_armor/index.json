@@ -13,5 +13,15 @@
     34,
     34,
     15
+  ],
+  "power_display_names": [
+    "Ground Zero",
+    "Ground Zero",
+    "Radiation Therapy"
+  ],
+  "power_short_helps": [
+    "PBAoE, Ally +HP, +Heal over time",
+    "PBAoE, Foe DMG(Energy), DoT (Toxic), -DEF(All)",
+    "PBAoE, DMG(Energy), Minor DoT(Toxic), Foe -Regen, Self +HP, +End, Res(-Regen)"
   ]
 }
