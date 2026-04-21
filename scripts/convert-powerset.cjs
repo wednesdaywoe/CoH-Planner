@@ -259,8 +259,11 @@ function collectRedirectTemplates(powerJson) {
     r => r.condition_expression === 'Always'
   );
   if (!defaultRedirect) {
+    // Dead-state exclusion — the CoD2 infix form was 'kHitPoints == 0'; the
+    // bin-parser form is RPN tokens ('kHitPoints 0 =='). Match either by
+    // checking for the kHitPoints token alone, which is specific enough.
     defaultRedirect = powerJson.redirect.find(
-      r => !r.condition_expression.includes('kHitPoints == 0')
+      r => !r.condition_expression.includes('kHitPoints')
     );
   }
   if (!defaultRedirect) return [];

@@ -157,6 +157,8 @@ def power_to_dict(pw, msgs=None) -> dict:
     d['effects'] = [_eg_to_dict(eg) for eg in pw.effects]
     if pw.activation_effects:
         d['activation_effects'] = [_eg_to_dict(eg) for eg in pw.activation_effects]
+    if pw.redirects:
+        d['redirect'] = pw.redirects
 
     return d
 

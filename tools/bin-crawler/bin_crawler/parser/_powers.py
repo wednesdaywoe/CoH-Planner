@@ -464,6 +464,50 @@ def _parse_effect_group(r: BinReader) -> EffectGroup:
     )
 
 
+def _parse_redirects(r: BinReader) -> list[dict]:
+    """Parse the Redirect struct_array from a power record.
+
+    Each element: power_name (string) + requires token list (string_array) +
+    show_in_info (u4). The condition_expression is:
+      - 'Always' when requires is empty or a tautology (`['1']`). This is the
+        CoD2 convention the downstream converter matches via `=== 'Always'`.
+      - Otherwise the space-joined RPN tokens (e.g.
+        'Redirects.X source.ownPower? !') — the downstream converter only
+        uses condition_expression for two sentinel checks ('Always' to prefer
+        the default, and 'kHitPoints' substring to skip dead-state
+        conditionals), so full infix normalization isn't required.
+
+    Guarded against wrong-position reads: count > 1000 or elem_len > remaining
+    raises so the caller can fall back to skip_to_end().
+    """
+    out = []
+    count = r.read_u4()
+    if count > 1000:
+        raise ValueError(f"implausible redirect count {count} — wrong position?")
+    for _ in range(count):
+        elem_len = r.read_u4()
+        if elem_len > (r._end - r._pos):
+            raise ValueError(f"redirect elem_len {elem_len} exceeds remaining {r._end - r._pos}")
+        er = r.sub_reader(elem_len)
+        try:
+            power_name = er.read_string()
+            req_tokens = er.read_string_array()
+            show_raw = er.read_u4()
+            if not req_tokens or req_tokens == ['1']:
+                cond = 'Always'
+            else:
+                cond = ' '.join(req_tokens)
+            out.append({
+                'name': power_name,
+                'condition_expression': cond,
+                'show_in_info': bool(show_raw & 0xff),
+            })
+        except Exception:
+            pass
+        r.skip(elem_len)
+    return out
+
+
 def _parse_effects(r: BinReader) -> tuple[list[EffectGroup], list[EffectGroup]]:
     """Parse the effects and activation_effects struct_arrays from a power record.
 
@@ -475,13 +519,13 @@ def _parse_effects(r: BinReader) -> tuple[list[EffectGroup], list[EffectGroup]]:
     Returns (effects, activation_effects) as two distinct lists so the
     converter can treat them with different semantics (redirect-follow,
     self-buff filtering).
-    """
-    # Pre-field 1: struct_array (recharge_groups or similar).
-    # When empty: u4(0). When populated: u4(count) + [u4(len) + data]* per element.
-    r.skip_struct_array()
-    # Pre-field 2: u4 (unknown scalar, typically 0)
-    r.read_u4()
 
+    NOTE: _parse_power MUST read the redirect pre-field + redirect struct_array
+    BEFORE calling this, since they sit between modes_suspended and the effects
+    struct_array in the record layout. Previously this function called
+    skip_struct_array() + read_u4() here, but that was silently absorbing the
+    redirect data (and happened to work by luck only when redirects were empty).
+    """
     effects = []
     # Effects struct_array
     eff_count = r.read_u4()
@@ -721,6 +765,24 @@ def _parse_power(r: BinReader, *, has_field_45b: bool = True, has_field_41b: boo
     r.read_u4_array()  # modes_disallowed
     r.read_u4_array()  # modes_suspended
 
+    # Redirect pre-field (always 0 in samples) + Redirect struct_array —
+    # top-level Redirect{Power..Requires..} blocks from the .def. Used by
+    # dual-mode powers (sniper slow/fast variants, Energy_Transfer, etc.).
+    # Per-element layout: power_name (string) + requires_tokens (string_array)
+    # + show_in_info (u4, 0xff=true). The old parser collapsed these into
+    # _parse_effects's skip_struct_array+read_u4 pre-fields, which worked
+    # only when redirects were empty — for non-empty redirects the whole
+    # effects parse would misalign and silently produce 0 effects.
+    #
+    # On parse failure: skip to end of record rather than risking a hang on
+    # garbage counts in _parse_effects.
+    r.read_u4()  # redirect pre-field (0 in all samples checked)
+    try:
+        redirects = _parse_redirects(r)
+    except Exception:
+        redirects = []
+        r.skip_to_end()
+
     # Parse effects
     try:
         effects, activation_effects = _parse_effects(r)
@@ -769,6 +831,7 @@ def _parse_power(r: BinReader, *, has_field_45b: bool = True, has_field_41b: boo
         cast_through=cast_through,
         effects=effects,
         activation_effects=activation_effects,
+        redirects=redirects,
     )
 
 

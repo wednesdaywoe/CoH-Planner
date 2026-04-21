@@ -114,6 +114,12 @@ class PowerRecord:
     effects: list[EffectGroup] = field(default_factory=list)
     activation_effects: list[EffectGroup] = field(default_factory=list)
 
+    # Top-level `Redirect` blocks — the .def grammar allows a power to declare
+    # one or more Redirect { Power X Requires Y } entries at the record level
+    # (dual-mode powers like Energy_Transfer, sniper attacks with slow/fast
+    # variants, etc.). Each element: {name, condition_expression, show_in_info}.
+    redirects: list[dict] = field(default_factory=list)
+
     # Fields kept from before for backward compat
     @property
     def power_type_name(self) -> str:
